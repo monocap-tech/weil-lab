@@ -165,6 +165,7 @@ The remaining problem is tracked as
 
 - [Horizon 1](docs/HORIZON_1.md) — first finite research horizon and phase gates.
 - [Abstract Defect Calculus](docs/ABSTRACT_DEFECT_CALCULUS.md) — H1-P1 zeta-independent operator theory.
+- [Restricted-Channel Transfer](docs/RESTRICTED_CHANNEL_TRANSFER.md) — selected finite sectors, background budget, and shorting.
 - [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
