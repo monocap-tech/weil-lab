@@ -166,9 +166,15 @@ and the exact equivalence between \(J\)-nonnegativity, Loewner domination, and c
 
 It also identified a distinct **non-attained approximate-neutral boundary** at critical screening norm.
 
+### Current result
+
+H1-P1.1 has now extracted the selected/background finite-index transfer calculus; see [Restricted-Channel and Finite-Index Transfer](RESTRICTED_CHANNEL_TRANSFER.md).
+
+The remaining H1-P1 abstraction target is the support/observation filtration and persistence limit.
+
 ### Exit condition
 
-There is a self-contained list of abstract definitions and theorems whose statements do not depend on zeta-specific notation, including the finite-index/restricted-channel extension now targeted by H1-P1.1.
+There is a self-contained list of abstract definitions and theorems whose statements do not depend on zeta-specific notation, including support-filtration persistence and critical-endpoint behavior.
 
 ---
 
