@@ -79,3 +79,16 @@ The public notes distinguish:
 - open obligation.
 
 That distinction should be retained in any future paper or exposition.
+
+
+## Shorted operators / Schur complements
+
+### W. N. Anderson, Jr. and G. E. Trapp
+
+*Shorted Operators. II.*
+
+SIAM Journal on Applied Mathematics **28** (1975).
+
+Used for the positive-operator shorting operation that extends Schur complementation beyond finite-dimensional/invertible block settings.
+
+https://doi.org/10.1137/0128007
