@@ -38,6 +38,24 @@ The working architecture is
 
 followed, only at the final stage, by questions about whether the **actual zeta divisor** can realize the remaining defect geometry.
 
+## First research horizon
+
+The project is currently organized under [Horizon 1 — Independent Weil-Defect Theory](docs/HORIZON_1.md).
+
+Its stop boundary is deliberately before RH closure. Horizon 1 is complete when the abstract defect calculus, zeta-Weil specialization, defect morphologies, proof audit, and public mathematical package are complete—even if the downstream actual-zeta interfaces remain open.
+
+Current position:
+
+\[
+\boxed{
+\text{H1-P0 closing}
+\longrightarrow
+\text{H1-P1 beginning}.
+}
+\]
+
+Project terms such as **horizon**, **phase**, **standing**, **interface**, **custody**, and **screening** are fixed in the [Terminology Registry](docs/TERMINOLOGY.md).
+
 ## Current theorem picture
 
 | Component | Current standing |
@@ -133,6 +151,8 @@ The remaining problem is tracked as
 
 ## Repository layout
 
+- [Horizon 1](docs/HORIZON_1.md) — first finite research horizon and phase gates.
+- [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
 - [References](docs/REFERENCES.md) — background literature used by the program.
