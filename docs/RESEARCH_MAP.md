@@ -1,5 +1,35 @@
 # Research Map
 
+## Current horizon
+
+The canonical phase plan is [Horizon 1 — Independent Weil-Defect Theory](HORIZON_1.md).
+
+\[
+\boxed{
+\begin{array}{ll}
+\textbf{H1-P0} & \text{Consolidation and custody}\\
+\textbf{H1-P1} & \text{Abstract defect calculus}\\
+\textbf{H1-P2} & \text{Zeta-Weil specialization}\\
+\textbf{H1-P3} & \text{Defect morphology theorem}\\
+\textbf{H1-P4} & \text{Proof audit and theorem normalization}\\
+\textbf{H1-P5} & \text{Public mathematical package}
+\end{array}
+}
+\]
+
+Current position:
+
+\[
+\boxed{
+\text{H1-P0 closing}
+\longrightarrow
+\text{H1-P1 beginning}.
+}
+\]
+
+The RH-facing statements at the bottom of this map are **interfaces out of Horizon 1**, not Horizon-1 completion requirements. Terminology is governed by the [Terminology Registry](TERMINOLOGY.md).
+
+
 ## Core dependency graph
 
 \[
