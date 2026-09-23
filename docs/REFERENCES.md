@@ -19,6 +19,20 @@ Useful for:
 
 https://eudml.org/doc/252338
 
+## Operator factorization
+
+### R. G. Douglas
+
+*On majorization, factorization, and range inclusion of operators on Hilbert space.*
+
+Proceedings of the American Mathematical Society **17** (2), 413–415 (1966).
+
+DOI: 10.1090/S0002-9939-1966-0203464-1
+
+Used for the equivalence between operator-range inclusion, Loewner majorization, and bounded factorization; in the unit-majorization case this yields contractive screening.
+
+https://doi.org/10.1090/S0002-9939-1966-0203464-1
+
 ## Operator-theoretic background
 
 ### Masatoshi Suzuki
