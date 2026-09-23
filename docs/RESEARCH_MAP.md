@@ -100,6 +100,48 @@ The abstract screening taxonomy is therefore:
 
 See [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md).
 
+H1-P1.1 now adds the selected/background transfer rule. For a finite selected negative sector (M) and background (B),
+
+[
+D_{m full}=D_M-S_BS_B^*,
+]
+
+so selected negativity survives aggregation but aggregate negativity does not preserve selected custody.
+
+If the background is contractively screenable with reduced map (X_B), define
+
+[
+R_B=I-X_BX_B^*,
+qquad
+S_{m eff}=S_+R_B^{1/2}.
+]
+
+Then the selected problem restarts as
+
+[
+D_{m full}
+=
+S_{m eff}S_{m eff}^*
+-
+S_MS_M^*.
+]
+
+For fixed finite (M), the reduced residual screening map (Y) satisfies
+
+[
+operatorname{ind}_-
+=
+#{sigma_j(Y)>1},
+qquad
+operatorname{nul}_J
+=
+#{sigma_j(Y)=1}.
+]
+
+Therefore non-attained approximate neutrality can arise only through an infinite or moving limiting mechanism, not from a single fixed finite selected packet.
+
+See [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md).
+
 ## Core dependency graph
 
 \[
@@ -190,6 +232,16 @@ or an equivalent actual-zeta theorem excluding the required weighted near-field 
 \]
 
 or an equivalent support theorem for the logarithmic-order compact-window operator.
+
+## Current H1-P1 cursor
+
+[
+oxed{
+	exttt{H1-P1.2 / SUPPORT FILTRATION AND PERSISTENCE LIMITS}
+}
+]
+
+The remaining abstraction target is the support/observation filtration: right-limit analysis spaces, persistence across a critical endpoint, representative blow-up, and moving finite-sector limits.
 
 ## Next consolidation pass
 
