@@ -34,6 +34,27 @@ The norm-one screening operator may fail to attain its norm, producing only an a
 
 ---
 
+## H1-P1.1 restricted-channel theorem package
+
+| Label | Statement | Standing |
+| --- | --- | --- |
+| WD-B1 | Selected negativity survives addition of negative background; converse custody fails | PROVED |
+| WD-B2 | An (m)-dimensional selected negative sector creates at most (m) negative directions | PROVED |
+| WD-B3 | Selected and background channels consume one shared screening budget | PROVED |
+| WD-B4 | Contractively screenable background reduces to a residual positive synthesis | PROVED |
+| WD-B5 | Finite selected-sector inertia is counted by singular values of the reduced residual screening map | PROVED |
+| WD-B6 | Legitimate residual-budget elimination can be iterated | PROVED |
+| WD-B7 | Complement elimination replaces direct compression by a Schur/shorted covariance | PROVED in the strictly positive setting |
+| WD-B8 | Finite positive shadows preserve negative signature but not analysis-space admissibility | PROVED |
+| WD-E3 | Individually screenable channels need not be jointly screenable | PROVED EXAMPLE |
+| WD-E4 | Direct finite-target covariance can stay strong while shorted covariance collapses | PROVED EXAMPLE |
+
+A fixed finite selected sector has no non-attained critical branch: if its reduced residual screening map (Y) has (|Y|=1), finite rank forces norm attainment and therefore an actual neutral mode.
+
+See [Restricted-Channel and Finite-Index Transfer](RESTRICTED_CHANNEL_TRANSFER.md).
+
+---
+
 ## 1. Finite negative-index theorem
 
 For finite symmetric zero sets, the finite Weil matrix has one negative direction per nonreal conjugate pair. In the two-quartet specialization used in the present program,
