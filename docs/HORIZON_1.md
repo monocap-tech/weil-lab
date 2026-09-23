@@ -45,9 +45,9 @@ Current position:
 
 \[
 \boxed{
-\text{H1-P0 closing}
-\longrightarrow
-\text{H1-P1 beginning}.
+\text{H1-P0 COMPLETE}
+\qquad
+\text{H1-P1 ACTIVE}.
 }
 \]
 
@@ -93,7 +93,7 @@ Every currently retained claim has:
 
 ### Current status
 
-**SUBSTANTIALLY COMPLETE; closes when terminology and horizon documents are integrated into the public map.**
+**COMPLETE.** The terminology, standing system, Horizon 1 specification, proof ledger, and public research map are integrated.
 
 ---
 
@@ -117,7 +117,7 @@ Determine which parts of the machinery survive after removing zeta-specific arit
 - positive screening complement;
 - rank-one defect operators;
 - finite-to-infinite screening;
-- negative versus neutral persistence;
+- negative, neutral, and approximate-neutral screening boundaries;
 - minimum-compensator graphs;
 - operator null modes.
 
@@ -131,8 +131,10 @@ The phase should isolate statements of the schematic form
 \text{screening alternative}
 \Longrightarrow
 \begin{cases}
-\text{persistent negative ray},\\
-\text{neutral null mode}.
+\text{negative defect},\\
+\text{attained neutral mode},\\
+\text{non-attained approximate-neutral boundary},\\
+\text{strict positive screening}.
 \end{cases}
 \]
 
@@ -152,9 +154,21 @@ and behind rank-one positivity defects of the form
 AA^*-g\otimes g.
 \]
 
+### Current result
+
+H1-P1.0 extracted the basis-free defect operator
+
+\[
+D=S_+S_+^*-S_-S_-^*
+\]
+
+and the exact equivalence between \(J\)-nonnegativity, Loewner domination, and contractive Douglas screening. See [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md).
+
+It also identified a distinct **non-attained approximate-neutral boundary** at critical screening norm.
+
 ### Exit condition
 
-There is a self-contained list of abstract definitions and theorems whose statements do not depend on zeta-specific notation.
+There is a self-contained list of abstract definitions and theorems whose statements do not depend on zeta-specific notation, including the finite-index/restricted-channel extension now targeted by H1-P1.1.
 
 ---
 
@@ -203,7 +217,7 @@ Every zeta-specific theorem states explicitly which H1-P1 theorem it specializes
 
 ### Purpose
 
-Package the two surviving screening branches as exact morphology theorems.
+Package the surviving screening-boundary morphologies as exact theorem families. H1-P1.0 shows that the abstract boundary has a third case beyond strict negative and attained neutral behavior: non-attained approximate neutrality.
 
 ### Negative branch target
 
@@ -237,13 +251,24 @@ W_ck=0
 }
 \]
 
+### Approximate-neutral branch target
+
+H1-P2/P3 must decide whether the abstract non-attained critical branch
+
+\[
+\|X\|=1
+\quad\text{with no norm-attaining vector}
+\]
+
+can occur in the zeta-Weil specialization and, if so, what arithmetic morphology it carries.
+
 ### Central question
 
-> If screening does not erase the defect, what exact form must the surviving obstruction take?
+> If screening does not erase the defect, or drives the margin to zero without producing a null mode, what exact form must the surviving obstruction take?
 
 ### Exit condition
 
-The negative and neutral branches are each stated as theorem packages with precise hypotheses, conclusions, and downstream open interfaces.
+The negative, attained-neutral, and any admissible approximate-neutral branches are stated as theorem packages with precise hypotheses, conclusions, and downstream open interfaces.
 
 ---
 
@@ -331,7 +356,7 @@ Horizon 1 is complete when all of the following hold:
 \begin{aligned}
 &\text{abstract defect theory extracted;}\\
 &\text{zeta-Weil specialization normalized;}\\
-&\text{negative and neutral morphologies classified;}\\
+&\text{negative, neutral, and approximate-neutral boundary morphologies classified;}\\
 &\text{all theorem standings independently audited;}\\
 &\text{RH-facing obligations isolated at explicit interfaces;}\\
 &\text{public manuscript/package assembled.}
