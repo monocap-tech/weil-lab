@@ -21,14 +21,84 @@ Current position:
 
 \[
 \boxed{
-\text{H1-P0 closing}
-\longrightarrow
-\text{H1-P1 beginning}.
+\text{H1-P0 COMPLETE}
+\qquad
+\text{H1-P1 ACTIVE}.
 }
 \]
 
 The RH-facing statements at the bottom of this map are **interfaces out of Horizon 1**, not Horizon-1 completion requirements. Terminology is governed by the [Terminology Registry](TERMINOLOGY.md).
 
+
+
+## Abstract screening normal form
+
+H1-P1.0 has extracted a zeta-independent synthesis model. For
+
+\[
+E(x,u)=S_+x+S_-u
+\]
+
+and
+
+\[
+\mathcal A=(\ker E)^\perp,
+\]
+
+define
+
+\[
+\boxed{
+D=S_+S_+^*-S_-S_-^*.
+}
+\]
+
+Then
+
+\[
+\boxed{
+\mathcal A\text{ is }J\text{-nonnegative}
+\iff
+D\succeq0
+\iff
+S_-=-S_+X
+\text{ for a contraction }X.
+}
+\]
+
+When exact range inclusion holds, the Douglas reduced solution gives
+
+\[
+\boxed{
+\mathcal A=\operatorname{graph}(-X^*).
+}
+\]
+
+The abstract screening taxonomy is therefore:
+
+\[
+\boxed{
+\begin{array}{ccl}
+\operatorname{Ran}S_-\not\subseteq\operatorname{Ran}S_+
+&\Rightarrow&
+\text{range-defect negativity},\\
+\operatorname{Ran}S_-\subseteq\operatorname{Ran}S_+,\ \|X\|>1
+&\Rightarrow&
+\text{over-budget negativity},\\
+\|X\|<1
+&\Rightarrow&
+\text{uniform positive screening},\\
+\|X\|=1\text{ attained}
+&\Rightarrow&
+\text{neutral mode},\\
+\|X\|=1\text{ not attained}
+&\Rightarrow&
+\text{approximate-neutral boundary}.
+\end{array}
+}
+\]
+
+See [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md).
 
 ## Core dependency graph
 
@@ -44,7 +114,7 @@ The RH-facing statements at the bottom of this map are **interfaces out of Horiz
 }
 \]
 
-The screening boundary then separates into two mathematically distinct branches:
+The zeta-specific work had isolated two explicit branches, but H1-P1.0 shows that the abstract screening boundary contains an additional non-attained critical case. Its zeta-Weil status remains to be determined in H1-P2/P3:
 
 \[
 \begin{array}{ccc}
@@ -65,7 +135,7 @@ O(z^{-2})&&
 \end{array}
 \]
 
-Only after these two branches are understood does the actual-zeta RH-facing problem begin.
+Only after the negative and attained-neutral branches are understood—and the approximate-neutral branch is either specialized or excluded—does the actual-zeta RH-facing problem begin.
 
 ## Three layers
 
