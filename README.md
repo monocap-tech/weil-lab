@@ -48,13 +48,23 @@ Current position:
 
 \[
 \boxed{
-\text{H1-P0 closing}
-\longrightarrow
-\text{H1-P1 beginning}.
+\text{H1-P0 COMPLETE}
+\qquad
+\text{H1-P1 ACTIVE}.
 }
 \]
 
 Project terms such as **horizon**, **phase**, **standing**, **interface**, **custody**, and **screening** are fixed in the [Terminology Registry](docs/TERMINOLOGY.md).
+
+H1-P1.0 has now extracted the first zeta-independent theorem package; see [Abstract Defect Calculus](docs/ABSTRACT_DEFECT_CALCULUS.md).
+
+Its central operator is
+
+\[
+D=S_+S_+^*-S_-S_-^*,
+\]
+
+and the sign problem is equivalent to contractive Douglas screening. The abstraction also reveals a non-attained **approximate-neutral boundary** distinct from an actual neutral mode.
 
 ## Current theorem picture
 
@@ -76,7 +86,9 @@ Project terms such as **horizon**, **phase**, **standing**, **interface**, **cus
 
 See [Proof status](docs/PROOF_STATUS.md) for precise hypotheses and scope.
 
-## Two surviving branches
+## Zeta-facing branches currently identified
+
+The prior zeta traversal explicitly produced the following negative and neutral branches. H1-P1.0 additionally identifies an abstract approximate-neutral critical case; whether that case is realizable in the zeta-Weil specialization is now an H1-P2/P3 question.
 
 ### Negative-persistence branch
 
@@ -152,6 +164,7 @@ The remaining problem is tracked as
 ## Repository layout
 
 - [Horizon 1](docs/HORIZON_1.md) — first finite research horizon and phase gates.
+- [Abstract Defect Calculus](docs/ABSTRACT_DEFECT_CALCULUS.md) — H1-P1 zeta-independent operator theory.
 - [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
