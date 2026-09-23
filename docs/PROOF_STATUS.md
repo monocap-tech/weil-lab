@@ -2,6 +2,38 @@
 
 This file records the standing of the current Weil-defect results. It is deliberately stricter than the project README.
 
+## H1-P1 abstract theorem package
+
+The first abstraction pass has produced the following zeta-independent results.
+
+| Label | Statement | Standing |
+| --- | --- | --- |
+| WD-A1 | (J)-sign on the analysis space is represented by (D=S_+S_+^*-S_-S_-^*), with matching negative index | PROVED |
+| WD-A2 | (D\succeq0) iff the negative synthesis factors contractively through the positive synthesis | PROVED using imported Douglas factorization |
+| WD-A3 | Under exact range inclusion, the analysis space is (operatorname{graph}(-X^*)) for the reduced screening solution | PROVED |
+| WD-A4 | Complete screening taxonomy: range defect, over-budget negative, strict positive, attained neutral, non-attained approximate-neutral | PROVED |
+| WD-A5 | The rank-one defect is the one-negative-channel specialization | PROVED |
+| WD-A6 | Increasing positive channels give monotone Loewner screening and nonincreasing negative index | PROVED |
+| WD-E1 | Finite strict negativity can screen completely to zero in the infinite limit | PROVED EXAMPLE |
+| WD-E2 | Critical screening norm need not produce an actual neutral vector | PROVED EXAMPLE |
+
+The canonical statements and proofs are in [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md).
+
+A major correction follows:
+
+[
+oxed{
+	ext{zero screening margin}
+
+otRightarrow
+	ext{existence of a neutral vector}.
+}
+]
+
+The norm-one screening operator may fail to attain its norm, producing only an approximate-neutral sequence.
+
+---
+
 ## 1. Finite negative-index theorem
 
 For finite symmetric zero sets, the finite Weil matrix has one negative direction per nonreal conjugate pair. In the two-quartet specialization used in the present program,
