@@ -234,3 +234,80 @@ but no nonzero vector \(a\) satisfying
 There is then no actual neutral vector, while normalized positive margins can still converge to zero along an approximate-neutral sequence.
 
 This term is distinct from **neutral persistence**.
+
+
+## Selected negative sector
+
+A **selected negative sector** is a distinguished closed subspace
+
+\[
+M\subseteq K_-
+\]
+
+whose defect ownership is tracked separately from the remaining negative channels.
+
+When \(M\) is finite dimensional, its dimension gives an upper bound on the negative index it can create by itself.
+
+## Negative background
+
+The **negative background** is the complementary negative channel space
+
+\[
+B=M^\perp\cap K_-.
+\]
+
+Background contributions can make a selected negative witness more negative, but aggregate negativity need not belong to the selected sector.
+
+## Residual screening budget
+
+If a background channel is contractively screened by \(X_B\), the **residual screening budget** is
+
+\[
+R_B=I-X_BX_B^*.
+\]
+
+It records the positive coefficient-space capacity remaining for later selected channels.
+
+## Effective positive synthesis
+
+The **effective positive synthesis** after background elimination is
+
+\[
+S_{\rm eff}=S_+R_B^{1/2}.
+\]
+
+It allows the selected problem to be re-entered into the same defect calculus after a legitimate background screening step.
+
+## Shared screening budget
+
+The **shared screening budget** principle is that negative channel blocks are jointly admissible only when their combined screening covariance fits inside the unit budget.
+
+Separate contractivity of each block is not sufficient.
+
+## Shorted covariance
+
+For a positive covariance \(K\) and a selected physical subspace \(W\), the **shorted covariance** is the covariance remaining on \(W\) after the complementary physical subspace has been optimized away.
+
+In an invertible block decomposition
+
+\[
+K=
+\begin{pmatrix}
+A&B\\
+B^*&C
+\end{pmatrix},
+\]
+
+it is
+
+\[
+H_W=A-BC^{-1}B^*.
+\]
+
+Direct compression \(A\) and shorted covariance \(H_W\) have different inverse-control meanings.
+
+## Signature shadow
+
+A **signature shadow** is a coordinate projection of an indefinite coefficient vector that preserves its algebraic sign margin but need not remain in the relevant analysis space.
+
+A signature shadow is not automatically an admissible persistent vector.
