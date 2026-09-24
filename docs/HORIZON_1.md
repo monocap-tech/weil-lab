@@ -359,11 +359,17 @@ Historical labels remain immutable aliases. Stable public IDs run from WD-T01 th
 
 Mathematical standing is now separated from verification status: an internal proof is not described as independently certified until a later audit explicitly promotes it.
 
+### P4.1 disposition
+
+All load-bearing external source families identified in P4.0 are now pinned in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
+
+The audit fixes the exact source locations and imported conventions for Douglas factorization, Bombieri finite Weil theory, zeta unit-height zero counting, the compact-window explicit formula, and the digamma asymptotic.
+
 ### Current cursor
 
 \[
 \boxed{
-\texttt{H1-P4.1 / IMPORTED SOURCE PINNING}
+\texttt{H1-P4.2 / INTERNAL PROOF AUDIT}
 }
 \]
 
