@@ -118,7 +118,7 @@ morphology documents linked below.
 | Spectral screening distinction | Structural |
 | Persistent normalized Weil negativity | Conditional theorem |
 | Quartet zero-moment law | Internal proof in the selected quartet model |
-| $O(|z|^{-2})$ far-field decay | Internal proof |
+| $O(\lvert z\rvert^{-2})$ far-field decay | Internal proof |
 | Weighted next-jet localization | Exact reduction |
 | Compact-window neutral equation $W_{c}k=0$ | Conditional theorem |
 | Fixed-window log-order operator + finite prime shifts | Derived |
