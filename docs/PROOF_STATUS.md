@@ -26,6 +26,7 @@ A theorem now carries two independent statuses.
 - **SOURCE-PIN-PENDING** — the external source family is known, but exact theorem/equation pinning remains.
 - **SOURCE-PINNED** — exact external theorem/equation and convention are fixed; internal consumption may still await audit.
 - **COMPOSITE-AUDIT-PENDING** — morphology package still needs expanded dependency/hypothesis audit.
+- **COMPOSITE-AUDIT-PASSED** — expanded dependency/hypothesis composition audit passed after any recorded corrections.
 - **SCOPE-ONLY** — no proof certification is claimed.
 
 The historical word **PROVED** in earlier files means internal proof standing. It does not mean independently certified or formally verified.
@@ -98,7 +99,7 @@ Anderson–Trapp shorting and Suzuki's operator framework remain contextual/non-
 ### WD-T37 — Negative defect morphology
 
 **Standing:** CONDITIONAL COMPOSITE.  
-**Verification:** COMPOSITE-AUDIT-PENDING.
+**Verification:** COMPOSITE-AUDIT-PASSED.
 
 Stops at:
 
@@ -113,7 +114,7 @@ with C-ACTUAL-KPH-FLOOR as a stronger special-packet interface.
 ### WD-T38 — Neutral defect morphology
 
 **Standing:** CONDITIONAL COMPOSITE.  
-**Verification:** COMPOSITE-AUDIT-PENDING.
+**Verification:** COMPOSITE-AUDIT-PASSED.
 
 Stops at:
 
@@ -126,7 +127,7 @@ Stops at:
 ### WD-T39 — Noncompact background morphology
 
 **Standing:** INTERNAL/CONDITIONAL COMPOSITE.  
-**Verification:** COMPOSITE-AUDIT-PENDING.
+**Verification:** COMPOSITE-AUDIT-PASSED.
 
 Introduces no new RH-facing interface.
 
