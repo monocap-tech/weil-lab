@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T08 | WeilDefect.WDT08.selected_adjoint_comp_injective + WeilDefect.WDT08.wd_t08_selected_negative_rank_le_finrank + WeilDefect.WDT08.wd_t08_background_null_finrank_lower + WeilDefect.WDT08.wd_t08_selected_negative_on_background_null + WeilDefect.WDT08.wd_t08_full_negative_rank_background_reduction + WeilDefect.WDT08.wd_t08_finite_selected_sector_index_cap | LEAN-CERTIFIED |
 | WD-T07 | WeilDefect.wd_t07_selected_full_identity + WeilDefect.wd_t07_selected_negative_implies_full + WeilDefect.WDT07.wd_t07_full_le_selected + WeilDefect.WDT07.wd_t07_negative_rank_custody + WeilDefect.WDT07.wd_t07_full_negative_without_selected_negative + WeilDefect.WDT07.wd_t07_selected_background_monotonicity_and_custody | LEAN-CERTIFIED |
 | WD-T06 | WeilDefect.WDT06.wd_t06_truncated_inner_identity + WeilDefect.WDT06.wd_t06_quadratic_mono + WeilDefect.WDT06.wd_t06_defect_mono + WeilDefect.WDT06.wd_t06_defect_le_full + WeilDefect.WDT06.wd_t06_defect_strong_tendsto + WeilDefect.WDT06.wd_t06_quadratic_tendsto + WeilDefect.WDT06.wd_t06_negative_rank_antitone + WeilDefect.WDT06.wd_t06_monotone_positive_screening | LEAN-CERTIFIED |
 | WD-T05 | WeilDefect.wd_t05_rank_one_covariance + WeilDefect.WDT05.wd_t05_defect_rank_one + WeilDefect.WDT05.wd_t05_signed_factor_iff_vector + WeilDefect.WDT05.wd_t05_covariance_iff_unit_vector + WeilDefect.WDT05.wd_t05_physical_nonnegative_iff_unit_vector + WeilDefect.WDT05.wd_t05_analysis_nonnegative_iff_unit_vector + WeilDefect.WDT05.wd_t05_rank_one_specialization | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -847,6 +848,115 @@ The certified theorem source blob is:
 
 \[
 \texttt{8a0acaef36c3c10df5f0ec6d7a692db1b420f32a}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- single-module Lake build;
+- unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
+
+
+## WD-T08 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T08: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.WDT08.selected_adjoint_comp_injective;
+- WeilDefect.WDT08.wd_t08_selected_negative_rank_le_finrank;
+- WeilDefect.WDT08.backgroundNullCoords;
+- WeilDefect.WDT08.wd_t08_background_null_finrank_lower;
+- WeilDefect.WDT08.wd_t08_selected_negative_on_background_null;
+- WeilDefect.WDT08.wd_t08_full_negative_rank_background_reduction;
+- WeilDefect.WDT08.wd_t08_finite_selected_sector_index_cap.
+
+For the selected sector, Lean proves that any k-dimensional negative witness
+forces the composed adjoint map
+
+\[
+S_M^*\circ T : \mathbb C^k \to M
+\]
+
+to be injective.  Finite-dimensional rank comparison therefore gives
+
+\[
+k\le \dim M.
+\]
+
+This is the finite-rank-spectrum form of
+
+\[
+\operatorname{ind}_{-}(D_M)\le \dim M.
+\]
+
+For the background correction, given any k-dimensional full negative witness
+T, Lean forms the canonical coordinate kernel
+
+\[
+\ker(S_B^*\circ T).
+\]
+
+Rank-nullity and the finite-dimensional range bound give
+
+\[
+k-\dim B
+\le
+\dim\ker(S_B^*\circ T).
+\]
+
+On this kernel the background term vanishes identically, so the full and
+selected quadratic forms agree, and Lean proves the selected form is strictly
+negative on the unit sphere of that kernel.  This is exactly the
+finite-dimensional kernel-slice argument underlying
+
+\[
+\operatorname{ind}_{-}(D_{\rm full})
+\le
+\operatorname{ind}_{-}(D_M)+\dim B.
+\]
+
+The stable theorem is therefore certified in the same finite-negative-rank /
+negative-subspace encoding used by the earlier index certificates.
+
+No imported theorem premise is used by WD-T08.
+
+The first dedicated build exposed only a normalization-through-kernel
+simplification issue.  The repair replaced automation by the explicit fact
+that a scalar multiple of a kernel vector remains in the kernel; no theorem
+statement or mathematical hypothesis changed.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.FiniteIndexCap}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36007743473}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{c2b318997f2aaa9ca756ae66f9149ba9ac34956a}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{9c61af90ab1374f65df446c558790a8b7f4dff27}.
 \]
 
 The run passed:
