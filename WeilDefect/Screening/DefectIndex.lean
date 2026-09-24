@@ -71,11 +71,11 @@ theorem wd_t01_defect_inner_identity
     inner ℂ (physicalDefect Spos Sneg h) h
       = ((physicalQ Spos Sneg h : ℝ) : ℂ) := by
   change
-    inner ℂ (Spos (Spos† h)) h - inner ℂ (Sneg (Sneg† h)) h
+    inner ℂ (Spos ((Spos†) h)) h - inner ℂ (Sneg ((Sneg†) h)) h
       =
-    ((‖Spos† h‖ ^ 2 - ‖Sneg† h‖ ^ 2 : ℝ) : ℂ)
-  rw [← ContinuousLinearMap.adjoint_inner_right Spos (Spos† h) h]
-  rw [← ContinuousLinearMap.adjoint_inner_right Sneg (Sneg† h) h]
+    ((‖(Spos†) h‖ ^ 2 - ‖(Sneg†) h‖ ^ 2 : ℝ) : ℂ)
+  rw [← ContinuousLinearMap.adjoint_inner_right Spos ((Spos†) h) h]
+  rw [← ContinuousLinearMap.adjoint_inner_right Sneg ((Sneg†) h) h]
   simp [inner_self_eq_norm_sq_to_K]
 
 /-- Nonnegativity on the physical carrier. -/
@@ -155,7 +155,7 @@ theorem reconstruct_basisValues
     reconstruct n (fun i => T (EuclideanSpace.basisFun (Fin n) ℂ i)) = T := by
   let b := EuclideanSpace.basisFun (Fin n) ℂ
   ext x
-  simp only [reconstruct, Finset.sum_apply, rankOne_apply]
+  simp only [reconstruct, _root_.sum_apply, rankOne_apply]
   calc
     (∑ i : Fin n, inner ℂ (b i) x • T (b i))
         =
@@ -164,7 +164,7 @@ theorem reconstruct_basisValues
         intro i _
         simp
     _ = T (∑ i : Fin n, inner ℂ (b i) x • b i) := by
-        simp
+        rw [map_sum]
     _ = T x := by
         rw [b.sum_repr']
 
@@ -210,9 +210,10 @@ theorem negativeMap_mem_nhds
       ∀ᶠ S in 𝓝 T, ∀ x ∈ sphere, q (S x) < 0 :=
     hsphere.eventually_forall_of_forall_eventually
       (P := fun S x => q (S x) < 0) hlocal
-  filter_upwards [hunif] with S hS
-  intro x hx
-  exact hS x (by simpa [sphere, Metric.mem_sphere, dist_eq_norm] using hx)
+  exact hunif.mono (by
+    intro S hS
+    intro x hx
+    exact hS x (by simpa [sphere, Metric.mem_sphere, dist_eq_norm] using hx))
 
 /--
 If every basis value of a finite-dimensional map lies in the closure of a set,
@@ -291,12 +292,12 @@ theorem wd_t01_analysis_to_physical_rank
   let Hmap : EuclideanSpace ℂ (Fin n) →L[ℂ] H :=
     reconstruct n hvec
   have hcomp : A ∘L Hmap = reconstruct n v := by
-    ext x
-    simp only [Hmap, reconstruct, Finset.sum_apply, rankOne_apply,
-      ContinuousLinearMap.comp_apply, map_sum, map_smul]
-    apply Finset.sum_congr rfl
-    intro i _
-    rw [hhvec i]
+    apply ContinuousLinearMap.ext
+    intro x
+    simp only [Hmap, reconstruct, ContinuousLinearMap.comp_apply,
+      _root_.sum_apply, rankOne_apply]
+    rw [map_sum]
+    simp_rw [map_smul, hhvec]
   refine ⟨Hmap, fun _ => Set.mem_univ _, ?_⟩
   intro x hx
   have hcoeff : coeffQ ((reconstruct n v) x) < 0 := hvU x hx
