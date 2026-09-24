@@ -18,7 +18,7 @@ Load-bearing pins currently used:
 
 - Lemma 10, p. 210 — multiplicity-null directions;
 - Theorem 8, p. 213 — finite negative-index count;
-- equation (7.7), p. 204 — matrix/kernel decay input.
+- equation (7.7), p. 204 — matrix/kernel decay context; after H1-P4.2 this is no longer load-bearing for WD-T28.
 
 ## Operator factorization
 
