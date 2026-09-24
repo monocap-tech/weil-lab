@@ -21,7 +21,8 @@ Horizon 1 now separates two axes.
 
 ### Verification status
 
-- **P4-AUDIT-PENDING** — proof text exists but has not yet completed Horizon-1 independent line-by-line audit.
+- **P4-AUDIT-PENDING** — proof text exists but has not yet completed Horizon-1 internal line-by-line audit.
+- **P4-AUDIT-PASSED** — the Horizon-1 internal proof audit passed after any recorded corrections; this is not independent certification.
 - **SOURCE-PIN-PENDING** — external source is identified, but exact theorem/equation pinning remains to be normalized.
 - **SOURCE-PINNED** — the exact external theorem/equation location and convention have been fixed; internal use may still await proof audit.
 - **COMPOSITE-AUDIT-PENDING** — a packaged morphology theorem whose dependency/hypothesis assembly still requires final audit.
@@ -35,25 +36,25 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 
 | Stable ID | Historical alias | Statement | Standing | Verification | Canonical source |
 | --- | --- | --- | --- | --- | --- |
-| WD-T01 | WD-A1 | Defect identity and equality of coefficient/physical negative index | INTERNAL-PROOF | P4-AUDIT-PENDING | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
-| WD-T02 | WD-A2 | Nonnegative defect iff contractive Douglas screening exists | INTERNAL-PROOF + IMPORTED Douglas | SOURCE-PINNED; P4-AUDIT-PENDING | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
-| WD-T03 | WD-A3 | Reduced-screening graph normal form under exact range inclusion | INTERNAL-PROOF | P4-AUDIT-PENDING | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
-| WD-T04 | WD-A4 | Abstract screening taxonomy including attained/non-attained criticality | INTERNAL-PROOF | P4-AUDIT-PENDING | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
-| WD-T05 | WD-A5 | Rank-one defect specialization | INTERNAL-PROOF | P4-AUDIT-PENDING | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
-| WD-T06 | WD-A6 | Monotone positive-channel restoration and nonincreasing negative index | INTERNAL-PROOF | P4-AUDIT-PENDING | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
-| WD-T07 | WD-B1 | Selected negativity survives negative-background aggregation; converse custody fails | INTERNAL-PROOF | P4-AUDIT-PENDING | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
-| WD-T08 | WD-B2 | Finite selected-sector negative-index cap | INTERNAL-PROOF | P4-AUDIT-PENDING | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
-| WD-T09 | WD-B3 | Selected and background channels share one screening budget | INTERNAL-PROOF | P4-AUDIT-PENDING | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
-| WD-T10 | WD-B4 | Contractively screened background reduces to residual positive synthesis | INTERNAL-PROOF | P4-AUDIT-PENDING | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
-| WD-T11 | WD-B5 | Finite-sector inertia/nullity counted by singular values of residual screening map | INTERNAL-PROOF | P4-AUDIT-PENDING | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
-| WD-T12 | WD-B6 | Sequential background consumption is closed under the defect calculus | INTERNAL-PROOF | P4-AUDIT-PENDING | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
-| WD-T13 | WD-B7 | Complement elimination replaces direct compression by Schur/shorted covariance in the strictly positive setting | INTERNAL-PROOF | P4-AUDIT-PENDING | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
-| WD-T14 | WD-B8 | Finite positive shadows preserve sign but not analysis-space admissibility | INTERNAL-PROOF | P4-AUDIT-PENDING | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
-| WD-T15 | WD-C1 + WD-C2 | Right-limit projection convergence and gap-space duality | INTERNAL-PROOF | P4-AUDIT-PENDING | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
-| WD-T16 | WD-C3 + WD-C5 | Fixed finite negative sector forces a nonzero persistent nonpositive/negative right-limit ray | INTERNAL-PROOF | P4-AUDIT-PENDING | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
-| WD-T17 | WD-C4 | Fixed-sector critical dichotomy: attained neutral limit or negative fall-through | INTERNAL-PROOF | P4-AUDIT-PENDING | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
-| WD-T18 | WD-C6 | Endpoint-jump quotient bounds new right-limit negative index | INTERNAL-PROOF | P4-AUDIT-PENDING | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
-| WD-T19 | WD-C7 + WD-C8 + WD-C9 | New endpoint vectors force boundary amplification / representative blow-up | INTERNAL-PROOF | P4-AUDIT-PENDING | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
+| WD-T01 | WD-A1 | Defect identity and equality of coefficient/physical negative index | INTERNAL-PROOF | P4-AUDIT-PASSED | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
+| WD-T02 | WD-A2 | Nonnegative defect iff contractive Douglas screening exists | INTERNAL-PROOF + IMPORTED Douglas | SOURCE-PINNED; P4-AUDIT-PASSED | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
+| WD-T03 | WD-A3 | Reduced-screening graph normal form under exact range inclusion | INTERNAL-PROOF | P4-AUDIT-PASSED | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
+| WD-T04 | WD-A4 | Abstract screening taxonomy including attained/non-attained criticality | INTERNAL-PROOF | P4-AUDIT-PASSED | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
+| WD-T05 | WD-A5 | Rank-one defect specialization | INTERNAL-PROOF | P4-AUDIT-PASSED | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
+| WD-T06 | WD-A6 | Monotone positive-channel restoration and nonincreasing negative index | INTERNAL-PROOF | P4-AUDIT-PASSED | [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md) |
+| WD-T07 | WD-B1 | Selected negativity survives negative-background aggregation; converse custody fails | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
+| WD-T08 | WD-B2 | Finite selected-sector negative-index cap | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
+| WD-T09 | WD-B3 | Selected and background channels share one screening budget | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
+| WD-T10 | WD-B4 | Contractively screened background reduces to residual positive synthesis | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
+| WD-T11 | WD-B5 | Finite-sector inertia/nullity counted by singular values of residual screening map | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
+| WD-T12 | WD-B6 | Sequential background consumption is closed under the defect calculus | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
+| WD-T13 | WD-B7 | Complement elimination replaces direct compression by Schur/shorted covariance in the strictly positive setting | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
+| WD-T14 | WD-B8 | Finite positive shadows preserve sign but not analysis-space admissibility | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
+| WD-T15 | WD-C1 + WD-C2 | Right-limit projection convergence and gap-space duality | INTERNAL-PROOF | P4-AUDIT-PASSED | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
+| WD-T16 | WD-C3 + WD-C5 | Fixed finite negative sector forces a nonzero persistent nonpositive/negative right-limit ray | INTERNAL-PROOF | P4-AUDIT-PASSED | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
+| WD-T17 | WD-C4 | Fixed-sector critical dichotomy: attained neutral limit or negative fall-through | INTERNAL-PROOF | P4-AUDIT-PASSED | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
+| WD-T18 | WD-C6 | Endpoint-jump quotient bounds new right-limit negative index | INTERNAL-PROOF | P4-AUDIT-PASSED | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
+| WD-T19 | WD-C7 + WD-C8 + WD-C9 | New endpoint vectors force boundary amplification / representative blow-up | INTERNAL-PROOF | P4-AUDIT-PASSED | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
 
 ---
 
@@ -61,16 +62,16 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 
 | Stable ID | Historical alias | Statement | Standing | Verification | Canonical source |
 | --- | --- | --- | --- | --- | --- |
-| WD-T20 | ZW1-T1 | Canonical conjugate-pair diagonalization into positive/negative Weil channels | INTERNAL-PROOF | P4-AUDIT-PENDING | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T21 | ZW1-T2 | One simple zeta quartet contributes two negative pair coordinates | INTERNAL-PROOF | P4-AUDIT-PENDING | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T22 | ZW1-T3 | Finite Weil negative index equals number of distinct nonreal conjugate pairs | IMPORTED + SPECIALIZED | SOURCE-PINNED; P4-AUDIT-PENDING | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T23 | ZW1-T4 | Multiplicity-null directions must be quotiented before independent index counting | IMPORTED/DERIVED | SOURCE-PINNED; P4-AUDIT-PENDING | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T24 | ZW1-T5 | Finite distinct-frequency exponential independence on a nonempty interval | INTERNAL-PROOF | P4-AUDIT-PENDING | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T25 | ZW1-T6 | No exact finite positive compensation for an anchored selected negative cell | INTERNAL-PROOF | P4-AUDIT-PENDING | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T26 | ZW1-T7 | Selected negative raw residues satisfy the zero-moment law \(\mathbf1^Tv=0\) | INTERNAL-PROOF | P4-AUDIT-PENDING | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T27 | ZW1-T8 | Zero moment gives universal \(R_v(z)=O(|z|^{-2})\) far decay | INTERNAL-PROOF | P4-AUDIT-PENDING | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T28 | ZW1-T9 | Native Problem-1 zero synthesis is Hilbert-Schmidt; off-axis helper covariance is trace class | DERIVED from imported estimate + standard zero count | SOURCE-PINNED; P4-AUDIT-PENDING | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T29 | ZW1-T10 | Exact bounded-budget infinite-helper target requires quantitative finite-head approximation | INTERNAL-PROOF | P4-AUDIT-PENDING | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T20 | ZW1-T1 | Canonical conjugate-pair diagonalization into positive/negative Weil channels | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T21 | ZW1-T2 | One simple zeta quartet contributes two negative pair coordinates | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T22 | ZW1-T3 | Finite Weil negative index equals number of distinct nonreal conjugate pairs | IMPORTED + SPECIALIZED | SOURCE-PINNED; P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T23 | ZW1-T4 | Multiplicity-null directions must be quotiented before independent index counting | IMPORTED/DERIVED | SOURCE-PINNED; P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T24 | ZW1-T5 | Finite distinct-frequency exponential independence on a nonempty interval | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T25 | ZW1-T6 | No exact finite positive compensation for an anchored selected negative cell | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T26 | ZW1-T7 | Selected negative raw residues satisfy the zero-moment law \(\mathbf1^Tv=0\) | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T27 | ZW1-T8 | Zero moment gives universal \(R_v(z)=O(|z|^{-2})\) far decay | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T28 | ZW1-T9 | Native Problem-1 zero synthesis is Hilbert-Schmidt; off-axis helper covariance is trace class | INTERNAL-PROOF + imported zero count | SOURCE-PINNED; P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T29 | ZW1-T10 | Exact bounded-budget infinite-helper target requires quantitative finite-head approximation | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 
 ---
 
@@ -78,13 +79,13 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 
 | Stable ID | Historical alias | Statement | Standing | Verification | Canonical source |
 | --- | --- | --- | --- | --- | --- |
-| WD-T30 | ZW2-T1 | Two-mode selected-preserving scalar multiplier exists | INTERNAL-PROOF | P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T31 | ZW2-T2 | Zero moment + zero counting gives \(O((\log R)/R)\) far complementary tail | INTERNAL-PROOF + imported zero count | SOURCE-PINNED; P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T32 | ZW2-T3 + ZW2-T4 | Complementary response equals the weighted completed-\(\Xi\) next-jet field | INTERNAL-PROOF | P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T33 | ZW2-T5 | Adaptive near-minus-archimedean cancellation collapses prime term onto far tail | INTERNAL-PROOF | P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T34 | ZW2-T6 | Fixed compact support activates only finitely many prime-power translations | DERIVED from IMPORTED compact-window formula | SOURCE-PINNED; P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T35 | ZW2-T7 | Compact-window Weil form has logarithmic Fourier/form order | DERIVED | SOURCE-PINNED; P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T36 | ZW2-T8 | Finite arithmetic translations give no automatic positive-Sobolev/quasianalytic bootstrap | INTERNAL-PROOF/ORDER CONSEQUENCE | P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T30 | ZW2-T1 | Two-mode selected-preserving scalar multiplier exists | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T31 | ZW2-T2 | Zero moment + zero counting gives \(O((\log R)/R)\) far complementary tail | INTERNAL-PROOF + imported zero count | SOURCE-PINNED; P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T32 | ZW2-T3 + ZW2-T4 | Complementary response equals the weighted completed-\(\Xi\) next-jet field | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T33 | ZW2-T5 | Adaptive near-minus-archimedean cancellation collapses prime term onto far tail | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T34 | ZW2-T6 | Fixed compact support activates only finitely many prime-power translations | DERIVED from IMPORTED compact-window formula | SOURCE-PINNED; P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T35 | ZW2-T7 | Compact-window Weil form has logarithmic Fourier/form order | DERIVED | SOURCE-PINNED; P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T36 | ZW2-T8 | Logarithmic form control yields no uniform positive-Sobolev coercive estimate; finite translations add no smoothing | INTERNAL-PROOF/SHARPNESS | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 
 ---
 
