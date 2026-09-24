@@ -402,3 +402,78 @@ A **moving-sector escape** occurs when the selected negative direction itself mo
 This can destroy every nonzero right-limit ray even when every stage contains a finite-dimensional negative direction.
 
 It is distinct from positive-coordinate mass loss with a fixed finite negative sector.
+
+
+## Zero-side Weil representation
+
+The **zero-side Weil representation** is the coefficient/synthesis realization of the Weil quadratic form in terms of zero channels.
+
+Its positive coefficient sector contains critical-line coordinates and positive off-axis pair directions; its negative sector contains antisymmetric off-axis pair directions.
+
+## Weil pair channels
+
+For a nonreal ordinate pair
+
+\[
+\gamma=T+i\delta,
+\qquad
+\bar\gamma=T-i\delta,
+\]
+
+the canonical **Weil pair channels** are
+
+\[
+p
+=
+\frac{e_\gamma+e_{\bar\gamma}}{\sqrt2},
+\qquad
+n
+=
+\frac{e_\gamma-e_{\bar\gamma}}{\sqrt2}.
+\]
+
+They satisfy
+
+\[
+Jp=p,
+\qquad
+Jn=-n.
+\]
+
+The \(p\)-channel is the positive/symmetric pair direction; the \(n\)-channel is the negative/antisymmetric pair direction.
+
+## Selected packet
+
+A **selected packet** \(\Pi\) is a fixed finite set of off-axis zero channels whose negative sector is tracked with custody through the defect calculus.
+
+Its selected negative coefficient space is denoted
+
+\[
+M_\Pi\subseteq K_-.
+\]
+
+## Unselected negative divisor
+
+The **unselected negative divisor** relative to \(\Pi\) is the complementary negative coefficient sector
+
+\[
+B_\Pi=M_\Pi^\perp\cap K_-.
+\]
+
+It is the zeta-Weil realization of the abstract negative background.
+
+## ZW-0 / ZW-1 / ZW-2
+
+Horizon 1 uses three zeta-specialization layers:
+
+- **ZW-0 — Weil/Krein pair geometry:** zero-side pair diagonalization, sign channels, finite index, and compact-window synthesis.
+- **ZW-1 — zeta-divisor structure:** functional-equation/conjugation structure, selected packets, zero-moment residues, actual zero-count/compactness inputs.
+- **ZW-2 — explicit-formula arithmetic:** prime, pole, archimedean, completed-\(\Xi\), next-jet, and finite translation structure.
+
+These labels distinguish where arithmetic genuinely enters.
+
+## Explicit-formula side
+
+The **explicit-formula side** is the prime/pole/archimedean representation of the same Weil quadratic form.
+
+It is not an additional positive screening sector and must not be added to \(K_+\) as though it supplied independent coefficient budget.
