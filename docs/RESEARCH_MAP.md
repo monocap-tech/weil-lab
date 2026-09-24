@@ -371,15 +371,33 @@ R_v(z)=O(|z|^{-2}).
 
 Prime/pole/archimedean terms begin only at ZW-2; they are not extra positive screening coordinates.
 
+## H1-P2.1 disposition
+
+The canonical ZW-1 theorem package is [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md).
+
+\[
+\boxed{
+\text{pair antisymmetry}
+\Longrightarrow
+\mathbf1^Tv=0
+\Longrightarrow
+R_v(z)=O(|z|^{-2}),
+}
+\]
+
+with inverse-square order sharp.
+
+Native Problem-1 synthesis is Hilbert-Schmidt/compact, so unweighted sampling/frame inputs remain metric-separated from native coercivity.
+
 ## Current cursor
 
 \[
 \boxed{
-\texttt{H1-P2.1 / QUARTET CHANNEL AND RESIDUE STRUCTURE}
+\texttt{H1-P2.2 / EXPLICIT-FORMULA ARITHMETIC ATTACHMENT}
 }
 \]
 
-The next pass will normalize canonical pair coordinates, finite negative-index specialization, finite exponential independence, the zero-moment theorem, helper-channel compactness, and critical-line positive completeness inputs.
+The next pass enters ZW-2: selected-preserving multipliers, far-tail localization, completed-\(\Xi\) next jets, explicit-formula co-adaptation, finite prime translations, and logarithmic principal order.
 
 ---
 
