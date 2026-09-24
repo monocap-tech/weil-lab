@@ -8,3 +8,4 @@ import WeilDefect.PairGeometry
 import WeilDefect.Residues
 import WeilDefect.Examples.Algebraic
 import WeilDefect.Screening.SequentialElimination
+import WeilDefect.Screening.ShortedCovariance
