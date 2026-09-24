@@ -200,3 +200,25 @@ All H1-P4 audit classes are complete.
 \texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
 }
 \`\`\`
+
+
+---
+
+## Lean formalization priority
+
+Formal certification now preempts H1-P5 public-package work.
+
+Canonical control:
+
+- [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md)
+- [Lean Status Ledger](LEAN_STATUS.md)
+
+Current cursor:
+
+\[
+\boxed{
+\texttt{LEAN-H1-P0 / INFRASTRUCTURE AND VERTICAL PILOT}
+}
+\]
+
+H1-P5 resumes only after LEAN-H1 exhaustion.
