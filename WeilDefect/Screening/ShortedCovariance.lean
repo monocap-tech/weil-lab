@@ -215,12 +215,12 @@ theorem wd_t13_schur_lower_bound
   have hfirst :
       A w + B (-z) = schurShort A B C w := by
     simp [schurShort, schurCorrection, z,
-      ContinuousLinearMap.comp_apply]
+      ContinuousLinearMap.comp_apply, sub_eq_add_neg]
   have hsecond :
       (B†) w + C (-z) = 0 := by
     rw [map_neg, hz]
     simp
-  rw [hfirst, hsecond, inner_zero_left, zero_add] at h
+  rw [hfirst, hsecond, inner_zero_left, add_zero] at h
   calc
     m * ‖w‖ ^ 2 ≤
         m * (‖w‖ ^ 2 + ‖z‖ ^ 2) := by
@@ -283,7 +283,7 @@ theorem wd_t13_block_solution_exists
       simp [H, schurShort, schurCorrection,
         ContinuousLinearMap.comp_apply]
     rw [hHdef] at hHx
-    simpa [y] using hHx
+    simpa [y, sub_eq_add_neg] using hHx
   · rw [hCy]
     simp
 
@@ -322,7 +322,7 @@ theorem wd_t13_block_solution_first_component
       schurShort A B C x = w := by
     rw [hy] at hfirst
     simpa [schurShort, schurCorrection,
-      ContinuousLinearMap.comp_apply] using hfirst
+      ContinuousLinearMap.comp_apply, sub_eq_add_neg] using hfirst
   calc
     x = operatorInverse (schurShort A B C)
         (schurShort A B C x) := by
@@ -343,7 +343,7 @@ theorem wd_t13_direct_compression_versus_shorted_covariance
     (B : V →L[ℂ] W)
     (C : V →L[ℂ] V)
     (hm : 0 < m)
-    (hAself : IsSelfAdjoint A)
+    (_hAself : IsSelfAdjoint A)
     (hCself : IsSelfAdjoint C)
     (hblock : BlockUniformlyPositive m A B C) :
     IsUnit C
