@@ -158,6 +158,26 @@ theorem wd_t10_full_defect_reduction
         (effectivePositive Spos X_B)† - S_M ∘L S_M† := by
         rw [hbg]
 
+/-- The full shared defect has the expected scalar quadratic form. -/
+theorem wd_t10_shared_defect_inner_identity
+    (Spos : Kpos →L[ℂ] H)
+    (S_M : M →L[ℂ] H)
+    (S_B : B →L[ℂ] H)
+    (h : H) :
+    inner ℂ (sharedDefect Spos S_M S_B h) h
+      = ((fullQuadratic Spos S_M S_B h : ℝ) : ℂ) := by
+  simp only [sharedDefect, fullQuadratic, selectedQuadratic,
+    ContinuousLinearMap.sub_apply,
+    ContinuousLinearMap.comp_apply]
+  rw [inner_sub_left, inner_sub_left]
+  rw [← ContinuousLinearMap.adjoint_inner_right
+    Spos ((Spos†) h) h]
+  rw [← ContinuousLinearMap.adjoint_inner_right
+    S_M ((S_M†) h) h]
+  rw [← ContinuousLinearMap.adjoint_inner_right
+    S_B ((S_B†) h) h]
+  simp [inner_self_eq_norm_sq_to_K]
+
 /--
 Full quadratic nonnegativity is exactly physical nonnegativity of the reduced
 two-channel problem.
@@ -171,57 +191,27 @@ theorem wd_t10_full_nonnegative_iff_effective_physical
     (hB : S_B = -(Spos ∘L X_B)) :
     FullNonnegative Spos S_M S_B
       ↔ PhysicalNonnegative (effectivePositive Spos X_B) S_M := by
-  constructor
-  · intro hfull h
-    have hh := hfull h
-    have hq :
-        fullQuadratic Spos S_M S_B h
-          =
-        physicalQ (effectivePositive Spos X_B) S_M h := by
-      have hop := wd_t10_full_defect_reduction Spos S_M S_B X_B hXB hB
-      have hfullInner :
-          inner ℂ (sharedDefect Spos S_M S_B h) h
-            = ((fullQuadratic Spos S_M S_B h : ℝ) : ℂ) := by
-        unfold sharedDefect fullQuadratic selectedQuadratic
-        simp only [ContinuousLinearMap.sub_apply,
-          ContinuousLinearMap.comp_apply]
-        rw [inner_sub_left, inner_sub_left]
-        rw [ContinuousLinearMap.adjoint_inner_right,
-          ContinuousLinearMap.adjoint_inner_right,
-          ContinuousLinearMap.adjoint_inner_right]
-        simp [inner_self_eq_norm_sq_to_K]
-      have heffInner :=
-        wd_t01_defect_inner_identity
-          (effectivePositive Spos X_B) S_M h
-      rw [hop] at hfullInner
-      rw [heffInner] at hfullInner
-      exact_mod_cast hfullInner
-    rwa [← hq]
-  · intro heff h
-    have hh := heff h
-    have hop := wd_t10_full_defect_reduction Spos S_M S_B X_B hXB hB
-    have hfullInner :
-        inner ℂ (sharedDefect Spos S_M S_B h) h
-          = ((fullQuadratic Spos S_M S_B h : ℝ) : ℂ) := by
-      unfold sharedDefect fullQuadratic selectedQuadratic
-      simp only [ContinuousLinearMap.sub_apply,
-        ContinuousLinearMap.comp_apply]
-      rw [inner_sub_left, inner_sub_left]
-      rw [ContinuousLinearMap.adjoint_inner_right,
-        ContinuousLinearMap.adjoint_inner_right,
-        ContinuousLinearMap.adjoint_inner_right]
-      simp [inner_self_eq_norm_sq_to_K]
-    have heffInner :=
+  have hop :=
+    wd_t10_full_defect_reduction Spos S_M S_B X_B hXB hB
+  have hq : ∀ h : H,
+      fullQuadratic Spos S_M S_B h
+        = physicalQ (effectivePositive Spos X_B) S_M h := by
+    intro h
+    have hfull :=
+      wd_t10_shared_defect_inner_identity Spos S_M S_B h
+    rw [hop] at hfull
+    have heff :=
       wd_t01_defect_inner_identity
         (effectivePositive Spos X_B) S_M h
-    rw [hop] at hfullInner
-    rw [heffInner] at hfullInner
-    have hq :
-        fullQuadratic Spos S_M S_B h
-          =
-        physicalQ (effectivePositive Spos X_B) S_M h := by
-      exact_mod_cast hfullInner
-    rwa [hq]
+    rw [heff] at hfull
+    exact_mod_cast hfull.symm
+  constructor
+  · intro hfull h
+    rw [← hq h]
+    exact hfull h
+  · intro heff h
+    rw [hq h]
+    exact heff h
 
 /--
 WD-T10 residual-budget screening equivalence downstream from the explicit
