@@ -1,3 +1,4 @@
+import WeilDefect.Arithmetic.Coadaptation
 import WeilDefect.Arithmetic.Scalarization
 import WeilDefect.Examples.SpectralScreening
 import WeilDefect.Screening.Quadratic
