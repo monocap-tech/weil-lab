@@ -126,3 +126,8 @@ theorem wd_t07_selected_background_monotonicity_and_custody :
     exact wd_t07_negative_rank_custody Spos Sneg S_B k
 
 end WeilDefect.WDT07
+
+
+namespace WeilDefect.WDT09
+
+end WeilDefect.WDT09
