@@ -150,20 +150,41 @@ theorem wd_t15_monotone_projection_limit
         ((rightLimit A c)ᗮ).toSubmodule := by
           rw [wd_t15_sequence_gap_eq_right_limit_orthogonal
             A c t hA hright ht]
-  have hgap' :
-      Tendsto
-        (fun n => G n |>.starProjection x)
-        atTop
-        (𝓝 (((rightLimit A c)ᗮ).toSubmodule.starProjection x)) := by
-    cases hclosed
-    exact hgap
+  let S : Submodule ℂ H := (⨆ n, G n).topologicalClosure
   have hsub :
       Tendsto
-        (fun n => x - G n |>.starProjection x)
+        (fun n => x - (G n).starProjection x)
         atTop
-        (𝓝 (x - ((rightLimit A c)ᗮ).toSubmodule.starProjection x)) :=
-    tendsto_const_nhds.sub hgap'
-  simpa [G, Submodule.starProjection_orthogonal_val] using hsub
+        (𝓝 (x - S.starProjection x)) := by
+    dsimp [S]
+    exact tendsto_const_nhds.sub hgap
+  have hy :
+      x - S.starProjection x ∈ (rightLimit A c).toSubmodule := by
+    have hmem :
+        x - S.starProjection x ∈ Sᗮ :=
+      Submodule.sub_starProjection_mem_orthogonal x
+    have hS :
+        S = ((rightLimit A c)ᗮ).toSubmodule := by
+      simpa [S] using hclosed
+    simpa [hS] using hmem
+  have hres :
+      x - (x - S.starProjection x) ∈
+        ((rightLimit A c).toSubmodule)ᗮ := by
+    have hp : S.starProjection x ∈ S :=
+      Submodule.starProjection_apply_mem S x
+    have hS :
+        S = ((rightLimit A c)ᗮ).toSubmodule := by
+      simpa [S] using hclosed
+    have hp' :
+        S.starProjection x ∈
+          ((rightLimit A c).toSubmodule)ᗮ := by
+      simpa [hS] using hp
+    simpa using hp'
+  have hproj :
+      (rightLimit A c).toSubmodule.starProjection x =
+        x - S.starProjection x :=
+    Submodule.eq_starProjection_of_mem_orthogonal hy hres
+  simpa [G, Submodule.starProjection_orthogonal_val, hproj] using hsub
 
 /--
 WD-T15 / WD-C1+WD-C2: right-limit projection convergence and gap-space
