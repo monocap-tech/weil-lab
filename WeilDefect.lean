@@ -11,3 +11,4 @@ import WeilDefect.Screening.SequentialElimination
 import WeilDefect.Screening.ShortedCovariance
 import WeilDefect.Screening.FinitePositiveShadows
 import WeilDefect.Filtration.RightLimit
+import WeilDefect.Filtration.FiniteNegativeSector
