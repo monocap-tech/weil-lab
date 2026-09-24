@@ -20,12 +20,20 @@ def synthesisMap
     (Kpos × Kneg) →L[ℂ] H :=
   Spos.coprod Sneg
 
-/-- The analysis submodule A=(ker E)⊥. -/
-def analysisSubmodule
+/-- Direct-sum Hilbert inner form on coefficient pairs. -/
+def pairInner
+    (z w : Kpos × Kneg) : ℂ :=
+  inner ℂ z.1 w.1 + inner ℂ z.2 w.2
+
+/--
+Membership in A=(ker E)⊥, expressed against the direct-sum Hilbert inner
+form without imposing the Banach product norm as a Hilbert norm.
+-/
+def AnalysisMember
     (Spos : Kpos →L[ℂ] H)
-    (Sneg : Kneg →L[ℂ] H) :
-    Submodule ℂ (Kpos × Kneg) :=
-  (synthesisMap Spos Sneg).kerᗮ
+    (Sneg : Kneg →L[ℂ] H)
+    (z : Kpos × Kneg) : Prop :=
+  ∀ w, synthesisMap Spos Sneg w = 0 → pairInner z w = 0
 
 /--
 Imported Douglas range-inclusion interface used by WD-T03.
@@ -81,7 +89,7 @@ theorem kernel_iff
     refine ⟨x - X u, ?_, ?_⟩
     · have h' := h
       simp [synthesisMap, hfac] at h'
-      simpa [map_sub] using h'
+      simpa [sub_eq_add_neg, map_sub] using h'
     · abel
   · rintro ⟨k, hk, rfl⟩
     simp [synthesisMap, hfac, hk]
@@ -93,8 +101,8 @@ theorem kernel_summands_orthogonal
     (hred : IsReducedFor Spos X)
     (k : Kpos) (u : Kneg)
     (hk : Spos k = 0) :
-    inner ℂ (k, (0 : Kneg)) (X u, u) = 0 := by
-  simpa using hred u k hk
+    pairInner (k, (0 : Kneg)) (X u, u) = 0 := by
+  simpa [pairInner] using hred u k hk
 
 /--
 WD-T03 kernel split, expressed pointwise:
@@ -112,7 +120,7 @@ theorem wd_t03_kernel_decomposition
       ∃! k : Kpos,
         Spos k = 0 ∧
         (x,u) = (k,0) + (X u,u) ∧
-        inner ℂ (k,(0 : Kneg)) (X u,u) = 0 := by
+        pairInner (k,(0 : Kneg)) (X u,u) = 0 := by
   constructor
   · intro h
     rcases (kernel_iff Spos Sneg X hfac x u).mp h with ⟨k, hk, hx⟩
@@ -124,7 +132,7 @@ theorem wd_t03_kernel_decomposition
       have h2 := congrArg Prod.fst (show (x,u) = (k,0) + (X u,u) by
         ext <;> simp [hx])
       simp at h1 h2
-      linarith
+      exact add_right_cancel (h1.symm.trans h2)
   · rintro ⟨k, hk, hsplit, -⟩
     apply (kernel_iff Spos Sneg X hfac x u).mpr
     refine ⟨k, hk, ?_⟩
@@ -132,9 +140,10 @@ theorem wd_t03_kernel_decomposition
     simpa using this
 
 /-- Membership in ker(Spos)⊥ written pointwise. -/
-def PosReducedSpace
-    (Spos : Kpos →L[ℂ] H) : Submodule ℂ Kpos :=
-  Spos.kerᗮ
+def PosReduced
+    (Spos : Kpos →L[ℂ] H)
+    (a : Kpos) : Prop :=
+  ∀ k, Spos k = 0 → inner ℂ a k = 0
 
 /--
 WD-T03 graph normal form:
@@ -147,45 +156,37 @@ theorem wd_t03_analysis_graph_iff
     (hfac : Sneg = -(Spos ∘L X))
     (hred : IsReducedFor Spos X)
     (a : Kpos) (v : Kneg) :
-    (a,v) ∈ analysisSubmodule Spos Sneg ↔
-      a ∈ PosReducedSpace Spos ∧ v = -(X†) a := by
+    AnalysisMember Spos Sneg (a,v) ↔
+      PosReduced Spos a ∧ v = -(X†) a := by
   constructor
   · intro hA
-    have horth :
-        ∀ y ∈ (synthesisMap Spos Sneg).ker,
-          inner ℂ (a,v) y = 0 :=
-      (Submodule.mem_orthogonal' _ _).mp hA
-    have ha : a ∈ PosReducedSpace Spos := by
-      rw [PosReducedSpace, Submodule.mem_orthogonal']
+    have ha : PosReduced Spos a := by
       intro k hk
-      have hker : (k,(0 : Kneg)) ∈ (synthesisMap Spos Sneg).ker := by
+      have hker : synthesisMap Spos Sneg (k,(0 : Kneg)) = 0 := by
         simp [synthesisMap, hk]
-      simpa using horth (k,0) hker
+      have hh := hA (k,0) hker
+      simpa [pairInner] using hh
     have hvEq : v = -(X†) a := by
-      apply (sub_eq_zero.mp ?_)
+      apply sub_eq_zero.mp
       apply (eq_zero_iff_forall_inner_eq_zero).2
       intro u
-      have hker : (X u,u) ∈ (synthesisMap Spos Sneg).ker := by
+      have hker : synthesisMap Spos Sneg (X u,u) = 0 := by
         simp [synthesisMap, hfac]
-      have hh := horth (X u,u) hker
-      rw [Prod.inner_apply] at hh
-      rw [← ContinuousLinearMap.adjoint_inner_left X u a] at hh
-      simp only [inner_sub_left, inner_neg_left]
-      linarith
+      have hh := hA (X u,u) hker
+      rw [pairInner, ← ContinuousLinearMap.adjoint_inner_left X u a] at hh
+      calc
+        inner ℂ (v - (-(X†) a)) u
+            = inner ℂ v u + inner ℂ ((X†) a) u := by
+                simp [inner_sub_left]
+        _ = 0 := by linarith
     exact ⟨ha, hvEq⟩
   · rintro ⟨ha, rfl⟩
-    rw [analysisSubmodule, Submodule.mem_orthogonal']
     intro y hy
     rcases y with ⟨x,u⟩
-    have hker :
-        synthesisMap Spos Sneg (x,u) = 0 := by
-      simpa [LinearMap.mem_ker] using hy
-    rcases (kernel_iff Spos Sneg X hfac x u).mp hker with ⟨k, hk, hx⟩
-    have hak : inner ℂ a k = 0 := by
-      exact (Submodule.mem_orthogonal' _ _).mp ha k hk
+    rcases (kernel_iff Spos Sneg X hfac x u).mp hy with ⟨k, hk, hx⟩
+    have hak : inner ℂ a k = 0 := ha k hk
     subst x
-    rw [Prod.inner_apply]
-    rw [inner_add_right, ← ContinuousLinearMap.adjoint_inner_left X u a]
+    rw [pairInner, inner_add_right, ← ContinuousLinearMap.adjoint_inner_left X u a]
     simp [hak]
 
 /-- WD-T03 signature identity on the graph. -/
@@ -224,8 +225,8 @@ theorem wd_t03_reduced_graph_normal_form
       Sneg = -(Spos ∘L X) ∧
       IsReducedFor Spos X ∧
       (∀ a v,
-        (a,v) ∈ analysisSubmodule Spos Sneg ↔
-          a ∈ PosReducedSpace Spos ∧ v = -(X†) a) ∧
+        AnalysisMember Spos Sneg (a,v) ↔
+          PosReduced Spos a ∧ v = -(X†) a) ∧
       physicalDefect Spos Sneg
         =
       Spos ∘L
