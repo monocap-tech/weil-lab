@@ -52,7 +52,9 @@ Current position:
 \qquad
 \text{H1-P1 COMPLETE}
 \qquad
-\text{H1-P2 ACTIVE}.
+\text{H1-P2 COMPLETE}
+\qquad
+\text{H1-P3 ACTIVE}.
 }
 \]
 
@@ -74,19 +76,37 @@ The project has now entered **H1-P2: Zeta-Weil specialization**. The first mappi
 
 The specialization separates generic screening theory from three zeta-facing layers: Weil/Krein pair geometry, zeta-divisor structure, and explicit-formula arithmetic.
 
-H1-P2.1 is also complete. Its main new theorem is the selected residue zero-moment law
+H1-P2 is now complete.
+
+The zero-side specialization gives the selected residue zero-moment law
 
 [
 mathbf1^Tv=0,
 ]
 
-which forces the universal far-field decay
+which forces
 
 [
 R_v(z)=O(|z|^{-2}).
 ]
 
-The native Bombieri Problem-1 synthesis is Hilbert-Schmidt/compact, so unweighted sampling-frame results are kept metric-separated from native coercivity.
+The explicit-formula attachment sharpens this to the quantitative far-tail estimate
+
+[
+mathcal F_{v,R}
+=
+O((log R)/R),
+]
+
+leaving the weighted completed-(Xi) next-jet field as the exact negative-branch arithmetic obstruction.
+
+On the neutral branch, fixed compact support yields finitely many prime translations and logarithmic principal order
+
+[
+Psi_c(t)=log|t|+O_c(1).
+]
+
+The project has now entered **H1-P3: defect morphology theorem**.
 
 ## Current theorem picture
 
@@ -191,6 +211,7 @@ The remaining problem is tracked as
 - [Support Filtration and Persistence](docs/SUPPORT_FILTRATION_PERSISTENCE.md) — right limits, endpoint jumps, and representative blow-up.
 - [Zeta-Weil Specialization Map](docs/ZETA_WEIL_SPECIALIZATION_MAP.md) — exact mapping from abstract carriers to the zero-side and arithmetic layers.
 - [Quartet Channel and Residue Structure](docs/QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) — canonical pair geometry, finite inertia, zero moments, and compact synthesis.
+- [Explicit-Formula Arithmetic Attachment](docs/EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) — far-tail localization, completed-Ξ next jets, finite prime shifts, and logarithmic form order.
 - [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
