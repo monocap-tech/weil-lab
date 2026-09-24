@@ -343,15 +343,43 @@ H1-P2 must determine whether any remaining zeta-Weil critical sequence without a
 
 ---
 
+## H1-P2 specialization layers
+
+The canonical mapping is now recorded in [Zeta-Weil Specialization Map](ZETA_WEIL_SPECIALIZATION_MAP.md).
+
+\[
+\boxed{
+\text{ZW-0: Weil/Krein pair geometry}
+\longrightarrow
+\text{ZW-1: zeta-divisor structure}
+\longrightarrow
+\text{ZW-2: explicit-formula arithmetic}.
+}
+\]
+
+The first genuinely non-abstract structural identity is the pair-antisymmetry law
+
+\[
+\mathbf1^Tv=0,
+\]
+
+which yields
+
+\[
+R_v(z)=O(|z|^{-2}).
+\]
+
+Prime/pole/archimedean terms begin only at ZW-2; they are not extra positive screening coordinates.
+
 ## Current cursor
 
 \[
 \boxed{
-\texttt{H1-P2.0 / ZETA-WEIL SPECIALIZATION MAP}
+\texttt{H1-P2.1 / QUARTET CHANNEL AND RESIDUE STRUCTURE}
 }
 \]
 
-The next pass must map each zeta-Weil object onto its exact H1-P1 carrier before any arithmetic strengthening is promoted.
+The next pass will normalize canonical pair coordinates, finite negative-index specialization, finite exponential independence, the zero-moment theorem, helper-channel compactness, and critical-line positive completeness inputs.
 
 ---
 
