@@ -458,11 +458,38 @@ R_v(z)=O(z^{-2})\\
 
 The theorem does not assert a generic lower bound for the near field. Its stop line is \(\texttt{AZ-NEXTJET-LOC}\).
 
+## H1-P3.1 disposition
+
+The attained-neutral branch is packaged in [Neutral Defect Morphology Theorem](NEUTRAL_DEFECT_MORPHOLOGY.md).
+
+\[
+\boxed{
+\text{fixed-packet criticality}
+\Longrightarrow
+\begin{cases}
+\text{negative fall-through to P3.0},\\
+\text{attained neutral mode}.
+\end{cases}
+}
+\]
+
+On the neutral branch,
+
+\[
+\boxed{
+W_ck=0,
+}
+\]
+
+and the corresponding compact-window operator has logarithmic principal order with finitely many prime translations.
+
+The unresolved fixed-vector support question is exactly \(\texttt{AZ-FIN-WEIL-NULL-EXTENSION}\).
+
 ## Current cursor
 
 \[
 \boxed{
-\texttt{H1-P3.1 / NEUTRAL DEFECT MORPHOLOGY THEOREM}
+\texttt{H1-P3.2 / NONCOMPACT BACKGROUND MORPHOLOGY THEOREM}
 }
 \]
 
