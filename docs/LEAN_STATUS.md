@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T12 | WeilDefect.WDT12.sequentialResidualBudget + WeilDefect.WDT12.wd_t12_sequential_budget_covariance + WeilDefect.WDT12.wd_t12_second_background_elimination + WeilDefect.WDT12.wd_t12_sequential_background_consumption | LEAN-CERTIFIED |
 | WD-T11 | WeilDefect.WDT11.wd_t11_norm_one_attains_neutral + WeilDefect.WDT11.wd_t11_graphQ_diagonal + WeilDefect.WDT11.wd_t11_negative_rank_le_count + WeilDefect.WDT11.wd_t11_negative_space_strict + WeilDefect.WDT11.wd_t11_negative_space_finrank + WeilDefect.WDT11.wd_t11_negative_index_exact + WeilDefect.WDT11.wd_t11_neutral_space_finrank + WeilDefect.WDT11.wd_t11_neutral_space_graphQ_zero + WeilDefect.WDT11.wd_t11_finite_sector_singular_value_inertia | LEAN-CERTIFIED |
 | WD-T10 | WeilDefect.WDT10.wd_t10_residual_budget_positive + WeilDefect.WDT10.wd_t10_residual_sqrt_sq + WeilDefect.WDT10.wd_t10_effective_covariance + WeilDefect.WDT10.wd_t10_background_covariance_elimination + WeilDefect.WDT10.wd_t10_full_defect_reduction + WeilDefect.WDT10.wd_t10_full_nonnegative_iff_effective_physical + WeilDefect.WDT10.wd_t10_full_nonnegative_iff_residual_screening + WeilDefect.WDT10.wd_t10_background_elimination_and_residual_budget | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T09 | WeilDefect.WDT09.wd_t09_full_quadratic_factorization + WeilDefect.WDT09.wd_t09_shared_defect_factorization + WeilDefect.WDT09.wd_t09_full_nonnegative_iff_joint_budget + WeilDefect.WDT09.wd_t09_separate_contractions_not_joint + WeilDefect.WDT09.wd_t09_shared_screening_budget | LEAN-CERTIFIED |
@@ -1310,3 +1311,89 @@ Next theorem cursor:
 \texttt{WD-T12 / WD-B6 — SEQUENTIAL ELIMINATION}
 }
 \]
+
+
+## WD-T12 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T12: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.WDT12.sequentialResidualBudget;
+- WeilDefect.WDT12.wd_t12_sequential_budget_covariance;
+- WeilDefect.WDT12.wd_t12_second_background_elimination;
+- WeilDefect.WDT12.wd_t12_sequential_background_consumption.
+
+The certificate formalizes sequential background consumption under the exact
+residual-factorization hypothesis. After the first contractive screen, the
+second background is required to factor through the first effective positive
+synthesis. Lean verifies that the twice-consumed covariance is both
+
+\[
+S_+
+\left(
+R_1-R_1^{1/2}Y_2Y_2^*R_1^{1/2}
+\right)
+S_+^*
+\]
+
+and
+
+\[
+S_1(I-Y_2Y_2^*)S_1^*.
+\]
+
+No imported project theorem premise is consumed by WD-T12. The proof reuses
+the native algebraic WD-T10 residual-budget lemmas and does not invoke a
+Douglas premise.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.SequentialElimination}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36057422878}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{cbbaf45442ec5f6cae5cb4e639882a3f2e2c6304}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{482eee655471c74e6e87733b3441b2bd26990ab9}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T12 module;
+- unfinished-proof/project-axiom rejection.
+
+WD-T12 compiled successfully on the first formal pass.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T13 / WD-B7 — DIRECT COMPRESSION VERSUS SHORTED COVARIANCE}
+}
+\]
+
+The audited WD-T13 hypothesis is the corrected uniformly positive setting
+\(K\succeq mI\), which guarantees bounded invertibility of the complementary
+block.
