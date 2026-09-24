@@ -277,11 +277,39 @@ Any nonpersistent critical behavior must instead be typed through:
 
 The negative, neutral, and noncompact-background morphologies are each stated as theorem packages with exact hypotheses, conclusions, and downstream interfaces.
 
+### P3.0 disposition
+
+The negative branch is now packaged in [Negative Defect Morphology Theorem](NEGATIVE_DEFECT_MORPHOLOGY.md).
+
+For a fixed finite selected packet, normalized persistent negativity forces:
+
+\[
+\boxed{
+\text{negative endpoint jump}
+\Longrightarrow
+\mathbf1^Tv=0
+\Longrightarrow
+R_v(z)=O(z^{-2})
+\Longrightarrow
+\mathcal F_{v,R}=O((\log R)/R)
+\Longrightarrow
+\text{weighted near next-jet morphology}.
+}
+\]
+
+The theorem stops at
+
+\[
+\texttt{AZ-NEXTJET-LOC}
+\]
+
+without assuming a source-free lower bound on the near field.
+
 ### Current cursor
 
 \[
 \boxed{
-\texttt{H1-P3.0 / NEGATIVE DEFECT MORPHOLOGY THEOREM}
+\texttt{H1-P3.1 / NEUTRAL DEFECT MORPHOLOGY THEOREM}
 }
 \]
 
