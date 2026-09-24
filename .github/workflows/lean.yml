@@ -3,7 +3,21 @@ name: Lean
 on:
   push:
     branches: [main]
+    paths:
+      - "lean-toolchain"
+      - "lakefile.toml"
+      - "lake-manifest.json"
+      - "WeilDefect.lean"
+      - "WeilDefect/**"
+      - ".github/workflows/lean.yml"
   pull_request:
+    paths:
+      - "lean-toolchain"
+      - "lakefile.toml"
+      - "lake-manifest.json"
+      - "WeilDefect.lean"
+      - "WeilDefect/**"
+      - ".github/workflows/lean.yml"
 
 jobs:
   build:
