@@ -79,4 +79,21 @@ theorem wd_t14_signature_shadow
     simpa [pow_two] using mul_self_le_mul_self (norm_nonneg qa) hqa
   linarith
 
+
+/--
+WD-T14 sharpness: a positive-coordinate shadow can preserve the negative
+signature comparison while breaking the graph relation.
+
+Here (x^ast(a₁,a₂)=a₁+a₂), the original point is (a=(1,1)) with
+(u=-2=-x^ast a), while the projected shadow (qa=(1,0)) no longer
+satisfies that relation.
+-/
+theorem wd_t14_shadow_can_break_graph :
+    let a : ℝ × ℝ := (1, 1)
+    let qa : ℝ × ℝ := (1, 0)
+    let xstar : (ℝ × ℝ) → ℝ := fun p => p.1 + p.2
+    let u : ℝ := -2
+    xstar a = -u ∧ xstar qa ≠ -u := by
+  norm_num
+
 end WeilDefect
