@@ -123,6 +123,34 @@ def HasNegativeRank
     (∀ x, T x ∈ carrier) ∧
     ∀ x, ‖x‖ = 1 → q (T x) < 0
 
+
+/--
+A unit-sphere negative witness is automatically injective when the quadratic
+form vanishes at zero. Thus HasNegativeRank really carries n independent
+negative directions.
+-/
+theorem negativeWitness_injective_of_zero
+    {E : Type*}
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
+    (q : E → ℝ)
+    (hq0 : q 0 = 0)
+    {n : ℕ}
+    (T : EuclideanSpace ℂ (Fin n) →L[ℂ] E)
+    (hneg : ∀ x, ‖x‖ = 1 → q (T x) < 0) :
+    Function.Injective T := by
+  intro x y hxy
+  by_contra hne
+  have hdne : x - y ≠ 0 := sub_ne_zero.mpr hne
+  let u : EuclideanSpace ℂ (Fin n) := NormedSpace.normalize (x - y)
+  have hu : ‖u‖ = 1 := NormedSpace.norm_normalize hdne
+  have hTu : T u = 0 := by
+    dsimp [u, NormedSpace.normalize]
+    rw [ContinuousLinearMap.map_smul_of_tower]
+    rw [map_sub, hxy, sub_self, smul_zero]
+  have hn := hneg u hu
+  rw [hTu, hq0] at hn
+  linarith
+
 def PhysicalHasNegativeRank
     (Spos : Kpos →L[ℂ] H)
     (Sneg : Kneg →L[ℂ] H)
