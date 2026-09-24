@@ -1,3 +1,4 @@
+import WeilDefect.Examples.SpectralScreening
 import WeilDefect.Screening.Quadratic
 import WeilDefect.PairGeometry
 import WeilDefect.Residues
