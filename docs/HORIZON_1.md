@@ -51,7 +51,9 @@ Current position:
 \qquad
 \text{H1-P2 COMPLETE}
 \qquad
-\text{H1-P3 ACTIVE}.
+\text{H1-P3 COMPLETE}
+\qquad
+\text{H1-P4 ACTIVE}.
 }
 \]
 
@@ -329,11 +331,31 @@ Its stop line is
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 \]
 
+### P3.2 disposition
+
+The remaining noncompact branches are packaged in [Noncompact Background Morphology Theorem](NONCOMPACT_BACKGROUND_MORPHOLOGY.md).
+
+The phase now distinguishes:
+
+\[
+\boxed{
+\begin{array}{l}
+\text{fixed-packet negative persistence},\\
+\text{fixed-packet attained-neutral persistence},\\
+\text{moving selected-sector escape},\\
+\text{unselected-background escape},\\
+\text{fixed full-divisor negative convergence}.
+\end{array}
+}
+\]
+
+Therefore **H1-P3 is COMPLETE**.
+
 ### Current cursor
 
 \[
 \boxed{
-\texttt{H1-P3.2 / NONCOMPACT BACKGROUND MORPHOLOGY THEOREM}
+\texttt{H1-P4.0 / THEOREM LEDGER AND DEPENDENCY AUDIT}
 }
 \]
 
@@ -341,7 +363,7 @@ Its stop line is
 
 ## H1-P4 — Proof audit and theorem normalization
 
-**Status:** PENDING.
+**Status:** ACTIVE.
 
 Every theorem will receive:
 
