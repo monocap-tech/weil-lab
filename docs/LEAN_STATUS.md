@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T05 | WeilDefect.wd_t05_rank_one_covariance + WeilDefect.WDT05.wd_t05_defect_rank_one + WeilDefect.WDT05.wd_t05_signed_factor_iff_vector + WeilDefect.WDT05.wd_t05_covariance_iff_unit_vector + WeilDefect.WDT05.wd_t05_physical_nonnegative_iff_unit_vector + WeilDefect.WDT05.wd_t05_analysis_nonnegative_iff_unit_vector + WeilDefect.WDT05.wd_t05_rank_one_specialization | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T04 | WeilDefect.WDT04.wd_t04_range_defect_no_exact_screening + WeilDefect.WDT04.wd_t04_range_defect_negative + WeilDefect.WDT04.wd_t04_over_budget_negative + WeilDefect.WDT04.wd_t04_strict_screened_lower_bound + WeilDefect.WDT04.wd_t04_attained_critical_neutral + WeilDefect.WDT04.wd_t04_nonattained_critical_positive + WeilDefect.WDT04.wd_t04_critical_approximate_neutral + WeilDefect.WDT04.wd_t04_complete_reduced_taxonomy | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T03 | WeilDefect.WDT03.wd_t03_kernel_decomposition + WeilDefect.WDT03.wd_t03_analysis_graph_iff + WeilDefect.WDT03.wd_t03_graph_signature + WeilDefect.WDT03.wd_t03_defect_factorization | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T02 | WeilDefect.WDT02.wd_t02_contractive_screening_equivalence + WeilDefect.WDT02.wd_t02_unique_reduced_solution | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -582,6 +583,84 @@ The certified theorem source blob is:
 
 \[
 \texttt{f86f72692fb4465827e4ec9f374a5a3c64f3d22a}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- single-module Lake build;
+- unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
+
+
+## WD-T05 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T05: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.wd_t05_rank_one_covariance;
+- WeilDefect.wd_t05_rank_one_covariance_apply;
+- WeilDefect.WDT05.rankOneNegative;
+- WeilDefect.WDT05.wd_t05_defect_rank_one;
+- WeilDefect.WDT05.wd_t05_signed_factor_iff_vector;
+- WeilDefect.WDT05.wd_t05_covariance_iff_unit_vector;
+- WeilDefect.WDT05.wd_t05_physical_nonnegative_iff_unit_vector;
+- WeilDefect.WDT05.wd_t05_analysis_nonnegative_iff_unit_vector;
+- WeilDefect.WDT05.wd_t05_rank_one_specialization.
+
+Lean verifies natively that the one-dimensional synthesis map
+\(\alpha\mapsto\alpha g\) has covariance \(g\otimes g\), hence
+
+\[
+D=S_+S_+^*-g\otimes g.
+\]
+
+It also verifies internally that a signed contractive map
+\(X:\mathbb C\to K_+\) is equivalent to a single coefficient vector
+\(c=X(1)\) with \(\|c\|\le1\), and reconstructs the converse factor from
+\(c\) by \(\operatorname{toSpanSingleton}(c)\).
+
+The covariance-majorization/positivity-to-factorization step is supplied by
+the explicit proposition-valued Douglas premise
+
+\[
+\texttt{WeilDefect.WDT02.DouglasUnitData}.
+\]
+
+Therefore the complete stable theorem is reported as
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE rather than native LEAN-CERTIFIED.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.RankOne}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{35966956166}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{ef3853ef4a3892662fa59761685dfe68b1f82844}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{2c37aaf3546b49cbab8be2c58ee954fd6989a965}.
 \]
 
 The run passed:
