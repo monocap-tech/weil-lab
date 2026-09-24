@@ -26,6 +26,7 @@ Horizon 1 now separates two axes.
 - **SOURCE-PIN-PENDING** — external source is identified, but exact theorem/equation pinning remains to be normalized.
 - **SOURCE-PINNED** — the exact external theorem/equation location and convention have been fixed; internal use may still await proof audit.
 - **COMPOSITE-AUDIT-PENDING** — a packaged morphology theorem whose dependency/hypothesis assembly still requires final audit.
+- **COMPOSITE-AUDIT-PASSED** — the packaged morphology has passed the Horizon-1 dependency/hypothesis composition audit after any recorded narrowing corrections.
 - **SCOPE-ONLY** — no proof certification is claimed because the item is a scope rule rather than a theorem.
 
 The legacy word **PROVED** in earlier files means “internal proof standing.” It does not mean independently certified proof.
@@ -69,7 +70,7 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 | WD-T24 | ZW1-T5 | Finite distinct-frequency exponential independence on a nonempty interval | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T25 | ZW1-T6 | No exact finite positive compensation for an anchored selected negative cell | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T26 | ZW1-T7 | Selected negative raw residues satisfy the zero-moment law $\mathbf{1}^Tv=0$ | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T27 | ZW1-T8 | Zero moment gives universal $R_v(z)=O(\vertz\vert^{-2})$ far decay | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T27 | ZW1-T8 | Zero moment gives universal $R_v(z)=O(|z|^{-2})$ far decay | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T28 | ZW1-T9 | Native Problem-1 zero synthesis is Hilbert-Schmidt; off-axis helper covariance is trace class | INTERNAL-PROOF + imported zero count | SOURCE-PINNED; P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T29 | ZW1-T10 | Exact bounded-budget infinite-helper target requires quantitative finite-head approximation | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 
@@ -93,9 +94,9 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 
 | Stable ID | Historical aliases | Statement | Standing | Verification | Canonical source |
 | --- | --- | --- | --- | --- | --- |
-| WD-T37 | P3-N1…P3-N7 | Fixed-packet persistent negative defect localizes to zero-moment source + weighted near next-jet morphology, stopping at AZ-NEXTJET-LOC | CONDITIONAL COMPOSITE | COMPOSITE-AUDIT-PENDING | [Negative Defect Morphology](NEGATIVE_DEFECT_MORPHOLOGY.md) |
-| WD-T38 | P3-U1…P3-U7 | Attained unit-gain neutral branch gives compact-window null mode with logarithmic order + finite shifts, stopping at AZ-FIN-WEIL-NULL-EXTENSION | CONDITIONAL COMPOSITE | COMPOSITE-AUDIT-PENDING | [Neutral Defect Morphology](NEUTRAL_DEFECT_MORPHOLOGY.md) |
-| WD-T39 | P3-B1…P3-B7 | Moving selected escape, unselected-background escape, and fixed full-divisor convergence are distinct compactness morphologies | INTERNAL/CONDITIONAL COMPOSITE | COMPOSITE-AUDIT-PENDING | [Noncompact Background Morphology](NONCOMPACT_BACKGROUND_MORPHOLOGY.md) |
+| WD-T37 | P3-N1…P3-N7 | Fixed-packet persistent negative defect localizes to zero-moment source + weighted near next-jet morphology, stopping at AZ-NEXTJET-LOC | CONDITIONAL COMPOSITE | COMPOSITE-AUDIT-PASSED | [Negative Defect Morphology](NEGATIVE_DEFECT_MORPHOLOGY.md) |
+| WD-T38 | P3-U1…P3-U7 | Attained unit-gain neutral branch gives a carrier-identified compact-window null mode with logarithmic order + threshold-aware finite shifts, stopping at AZ-FIN-WEIL-NULL-EXTENSION | CONDITIONAL COMPOSITE | COMPOSITE-AUDIT-PASSED | [Neutral Defect Morphology](NEUTRAL_DEFECT_MORPHOLOGY.md) |
+| WD-T39 | P3-B1…P3-B7 | Full-coefficient moving escape, unselected-background escape, and fixed full-divisor negative weak limits are distinct compactness morphologies | INTERNAL/CONDITIONAL COMPOSITE | COMPOSITE-AUDIT-PASSED | [Noncompact Background Morphology](NONCOMPACT_BACKGROUND_MORPHOLOGY.md) |
 
 ---
 
