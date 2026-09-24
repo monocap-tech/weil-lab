@@ -8,7 +8,7 @@ The horizon acceptance condition is:
 
 > An outside mathematician should be able to enter this repository, understand the objects, identify exactly which results are imported versus internally derived, and audit the complete Weil-defect theorem chain without needing to assume any unresolved RH-facing claim.
 
-Horizon 1 therefore ends **before** the actual-zeta exclusion problem.
+Horizon 1 ends **before** the actual-zeta exclusion problem.
 
 ## Stop boundary
 
@@ -49,7 +49,9 @@ Current position:
 \qquad
 \text{H1-P1 COMPLETE}
 \qquad
-\text{H1-P2 ACTIVE}.
+\text{H1-P2 COMPLETE}
+\qquad
+\text{H1-P3 ACTIVE}.
 }
 \]
 
@@ -57,57 +59,23 @@ Current position:
 
 ## H1-P0 — Consolidation and custody
 
-### Purpose
+**Status:** COMPLETE.
 
-Recover the theorem corpus, freeze terminology, separate imported results from internal derivations, and prevent accidental theorem promotion.
-
-### Required outputs
-
-- public README;
-- proof-status ledger;
-- research map;
-- terminology registry;
-- initial consolidation note;
-- Horizon 1 specification.
-
-### Exit condition
-
-Every currently retained claim has:
-
-1. a named object;
-2. a standing label;
-3. a known dependency location;
-4. a clear RH-facing or RH-independent classification.
-
-### Status
-
-**COMPLETE.**
+The public README, proof ledger, research map, terminology registry, initial consolidation note, and Horizon specification are integrated.
 
 ---
 
 ## H1-P1 — Abstract defect calculus
 
-### Purpose
+**Status:** COMPLETE.
 
-Determine what survives after all zeta-specific arithmetic is removed.
-
-### Central question
-
-\[
-\boxed{
-\text{What remains true for a general finite-index / Pontryagin-type screening problem?}
-}
-\]
-
-### Canonical theorem layers
-
-H1-P1 is now organized into three documents:
+Canonical documents:
 
 1. [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md);
 2. [Restricted-Channel and Finite-Index Transfer](RESTRICTED_CHANNEL_TRANSFER.md);
 3. [Support Filtration and Persistence Limits](SUPPORT_FILTRATION_PERSISTENCE.md).
 
-Together they establish:
+The phase establishes:
 
 - the physical defect operator
   \[
@@ -127,142 +95,152 @@ Together they establish:
 - representative blow-up;
 - moving-sector escape.
 
-### Key correction
-
-The abstract critical boundary is not automatically an actual neutral vector.
-
-For a general infinite screening map,
-
-\[
-\|X\|=1
-\]
-
-may fail to attain its norm.
-
-However, H1-P1.1 and H1-P1.2 sharpen this:
+A fixed finite selected sector obeys
 
 \[
 \boxed{
-\text{fixed finite selected sector}
-+
-\text{critical right-approach}
+\text{critical/negative right-approach}
 \Longrightarrow
 \text{nonzero nonpositive right-limit ray}.
 }
 \]
 
-Thus non-attained approximate neutrality is localized to infinite-sector or moving-sector noncompactness.
-
-### Exit condition
-
-A self-contained theorem package exists whose statements require no \(\zeta\), \(\Xi\), prime, quartet, or explicit-formula notation.
-
-### Status
-
-**COMPLETE.**
+Thus non-attained approximate neutrality without persistence is an infinite/moving-sector phenomenon.
 
 ---
 
 ## H1-P2 — Zeta-Weil specialization
 
-### Status
+**Status:** COMPLETE.
 
-**ACTIVE.**
+Canonical documents:
 
-### Purpose
+1. [Zeta-Weil Specialization Map](ZETA_WEIL_SPECIALIZATION_MAP.md);
+2. [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md);
+3. [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md).
 
-Reintroduce exactly the extra structure supplied by the zeta/Weil setting, while preserving the hypotheses and scope of H1-P1.
+### ZW-0 — Weil/Krein pair geometry
 
-### Central question
+The zero-side pair decomposition identifies
+
+\[
+K_+
+=
+K_{\rm crit}\oplus K_{{\rm off},+},
+\qquad
+K_-
+=
+K_{{\rm off},-}.
+\]
+
+Bombieri's finite inertia theorem saturates the abstract negative-index cap.
+
+### ZW-1 — zeta-divisor structure
+
+For a selected negative raw residue vector,
 
 \[
 \boxed{
-\text{Which stronger identities come specifically from functional-equation and explicit-formula geometry?}
+\mathbf1^Tv=0,
 }
 \]
 
-### Required specialization map
+hence
 
-The first pass must identify:
+\[
+\boxed{
+R_v(z)=O(|z|^{-2}),
+}
+\]
 
-- positive and negative Weil channels \(\to S_+,S_-\);
-- selected finite packet \(\to M\);
-- unselected negative divisor \(\to B\);
-- support window \(\to \mathcal A_t\);
-- right-persistent ray \(\to \mathcal A_{c+}\);
-- endpoint persistence \(\to \mathcal J_c\);
-- rank-one cell defect \(\to\) WD-A5;
-- spectral screening \(\to\) WD-A6 / WD-C1;
-- background consumption \(\to\) WD-B4;
-- shorted covariance \(\to\) WD-B7.
+with inverse-square order universally sharp.
 
-Only after that mapping is fixed should zeta-specific strengthening be imported.
+The native Problem-1 synthesis is Hilbert-Schmidt/compact, so unweighted sampling-frame statements remain metric-separated from native coercivity.
 
-### Required zeta-specific structures
+### ZW-2 — explicit-formula arithmetic
 
-- quartet channel decomposition;
-- raw selected residue vector \(v\);
-- zero-moment law
-  \[
-  \mathbf1^Tv=0;
-  \]
-- far response
-  \[
-  R_v(z)=O(|z|^{-2});
-  \]
-- completed-\(\Xi\) lift;
-- weighted next-jet field;
-- compact-window Weil operator;
-- finite prime-shift structure;
-- logarithmic principal order.
+For a fixed bounded selected-preserving multiplier,
 
-### Constraint
+\[
+\boxed{
+\mathcal F_{v,R}[\psi]
+=
+O\!\left(\frac{\log R}{R}\right),
+}
+\]
 
-H1-P2 may specialize H1-P1 but may not strengthen an abstract theorem silently by importing arithmetic structure after the fact.
+and the surviving finite/intermediate field is
+
+\[
+\boxed{
+\mathcal N_{v,R}[\psi]
+=
+\sum_{\mu}^{\rm near}
+m_\mu\psi(\mu)
+\frac{H_v^{(m_\mu)}(\mu)}
+{\Xi^{(m_\mu)}(\mu)}.
+}
+\]
+
+At fixed support \(c\), the compact-window operator contains only finitely many prime-power translations and has principal order
+
+\[
+\boxed{
+\Psi_c(t)=\log|t|+O_c(1).
+}
+\]
+
+No automatic positive-Sobolev/quasianalytic gain follows.
 
 ### Exit condition
 
-Every zeta-specific theorem states:
+**SATISFIED.**
 
-1. which H1-P1 theorem it specializes;
-2. which additional zeta/Weil hypothesis it consumes;
-3. which part of its conclusion is genuinely arithmetic rather than abstract.
-
-### First cursor
-
-\[
-\boxed{
-\texttt{H1-P2.0 / ZETA-WEIL SPECIALIZATION MAP}
-}
-\]
+Every retained zeta-specific result is now typed by its H1-P1 carrier and by the extra Weil/divisor/explicit-formula structure it consumes.
 
 ---
 
 ## H1-P3 — Defect morphology theorem
 
-### Purpose
+**Status:** ACTIVE.
 
-Package every surviving screening-boundary morphology as an exact theorem family.
+This phase packages the completed ingredients into theorem-shaped obstruction morphologies. It does not solve the RH-facing interfaces.
 
-### Negative branch target
+### P3.0 — Negative morphology
+
+Target chain:
 
 \[
 \boxed{
-\text{persistent defect}
-\Longrightarrow
-\text{normalized negative signature}
-\Longrightarrow
-\mathbf1^Tv=0
-\Longrightarrow
-O(z^{-2})
-\Longrightarrow
-\text{finite/intermediate localization}
-\Longrightarrow
-\text{weighted next jet}.
+\begin{aligned}
+\text{persistent selected negative defect}
+&\Longrightarrow
+\text{normalized negative Weil signature}\\
+&\Longrightarrow
+\mathbf1^Tv=0\\
+&\Longrightarrow
+R_v(z)=O(z^{-2})\\
+&\Longrightarrow
+\mathcal F_{v,R}=O((\log R)/R)\\
+&\Longrightarrow
+\text{weighted finite/intermediate next-jet field}.
+\end{aligned}
 }
 \]
 
-### Neutral branch target
+The theorem terminates at
+
+\[
+\boxed{
+\texttt{AZ-NEXTJET-LOC}
+}
+\]
+
+or the equivalent packetwise KPH/transversality interface.
+
+### P3.1 — Neutral morphology
+
+Target chain:
 
 \[
 \boxed{
@@ -270,38 +248,50 @@ O(z^{-2})
 \Longrightarrow
 W_ck=0
 \Longrightarrow
-\text{log-order operator}
+\text{logarithmic-order operator}
 +
 \text{finite arithmetic translations}.
 }
 \]
 
-### Approximate-neutral question
+The theorem terminates at
 
-H1-P1 shows that a fixed finite selected sector cannot sustain a non-attained critical limit without producing a nonzero nonpositive right-limit ray.
+\[
+\boxed{
+\texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
+}
+\]
 
-H1-P2/P3 must therefore determine whether any remaining approximate-neutral morphology in the actual zeta-Weil problem comes from:
+### P3.2 — Noncompact background morphology
 
-- a moving selected packet;
-- an infinite background sector;
-- positive-coordinate escape;
-- or another identified noncompactness mechanism.
+The fixed finite packet has no independent non-attained critical branch.
+
+Any nonpersistent critical behavior must instead be typed through:
+
+- moving selected packets;
+- infinite unselected-negative background;
+- coefficient-tail escape;
+- positive-coordinate mass loss, which actually strengthens the fixed-packet limit to negativity.
 
 ### Exit condition
 
-The negative, neutral, and any surviving approximate-neutral branches are stated with exact hypotheses, conclusions, and downstream interfaces.
+The negative, neutral, and noncompact-background morphologies are each stated as theorem packages with exact hypotheses, conclusions, and downstream interfaces.
+
+### Current cursor
+
+\[
+\boxed{
+\texttt{H1-P3.0 / NEGATIVE DEFECT MORPHOLOGY THEOREM}
+}
+\]
 
 ---
 
 ## H1-P4 — Proof audit and theorem normalization
 
-### Purpose
+**Status:** PENDING.
 
-Convert research-chain arguments into a theorem set that can be independently audited.
-
-### Required work
-
-Every theorem receives:
+Every theorem will receive:
 
 - a canonical theorem label;
 - exact hypotheses;
@@ -311,11 +301,9 @@ Every theorem receives:
 - proof with no hidden transfer;
 - finite/infinite scope;
 - standing;
-- sharpness or counterexample note where relevant.
+- sharpness/counterexample note where relevant.
 
-### Naming convention
-
-The public theorem sequence should use stable labels such as
+The normalized public theorem sequence will use stable labels such as
 
 \[
 \texttt{WD-T1},\texttt{ WD-T2},\ldots
@@ -323,19 +311,13 @@ The public theorem sequence should use stable labels such as
 
 with auxiliary lemmas and counterexamples under separate namespaces.
 
-### Exit condition
-
-Every theorem in the Horizon 1 dependency DAG has an auditable normalized statement and proof.
-
 ---
 
 ## H1-P5 — Public mathematical package
 
-### Purpose
+**Status:** PENDING.
 
-Turn the audited theorem system into a forward-facing mathematical artifact.
-
-### Required deliverables
+Required deliverables:
 
 1. technical manuscript;
 2. theorem index;
@@ -345,7 +327,7 @@ Turn the audited theorem system into a forward-facing mathematical artifact.
 6. appendix containing the RH-facing interfaces;
 7. repository README aligned with the manuscript.
 
-### Final public separation
+The final package must separate
 
 \[
 \boxed{
@@ -353,17 +335,13 @@ Turn the audited theorem system into a forward-facing mathematical artifact.
 }
 \]
 
-versus
+from
 
 \[
 \boxed{
 \text{Here are the additional actual-zeta statements needed for an RH application.}
 }
 \]
-
-### Exit condition
-
-An external reader can verify the Horizon 1 theorem package without traversing the original RH research history.
 
 ---
 
@@ -385,9 +363,3 @@ Horizon 1 is complete when:
 \]
 
 No RH proof is required for Horizon 1 completion.
-
-## Beyond Horizon 1
-
-Later horizons may attack one or more actual-zeta interfaces, extend the defect calculus, formalize proofs, or develop computational certification.
-
-Those horizons remain intentionally unspecified until Horizon 1 has a stable theorem inventory.
