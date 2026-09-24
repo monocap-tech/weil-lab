@@ -13,3 +13,10 @@ jobs:
       - uses: leanprover/lean-action@v1
         with:
           build: true
+      - name: Reject unfinished trusted declarations
+        shell: bash
+        run: |
+          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect WeilDefect.lean; then
+            echo "Unfinished or project-axiom declaration found."
+            exit 1
+          fi
