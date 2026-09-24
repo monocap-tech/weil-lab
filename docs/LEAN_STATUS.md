@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-X01 | WeilDefect.wd_x01_partial_sum + WeilDefect.wd_x01_finite_defect_negative + WeilDefect.wd_x01_finite_defect_formula + WeilDefect.wd_x01_defect_tendsto_zero | LEAN-CERTIFIED |
 | WD-T26 | \`WeilDefect.wd_t26_finite_pair_zero_moment\` | LEAN-IN-PROGRESS |
 | WD-X03 | \`WeilDefect.wd_x03_individual_not_compositional\` | LEAN-IN-PROGRESS |
 | WD-X04 | \`WeilDefect.wd_x04_shorted_covariance_identity\` | LEAN-IN-PROGRESS |
@@ -67,3 +68,53 @@ WD-T26 and WD-X07 remain LEAN-IN-PROGRESS because their current declarations cer
 \texttt{LEAN-H1-P1 / ALGEBRAIC AND FINITE-DIMENSIONAL CORE}.
 }
 \]
+
+
+## WD-X01 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-X01: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.wd_x01_weight_sq_telescope;
+- WeilDefect.wd_x01_partial_sum;
+- WeilDefect.wd_x01_finite_defect_negative;
+- WeilDefect.wd_x01_finite_defect_formula;
+- WeilDefect.wd_x01_defect_tendsto_zero.
+
+The dedicated theorem CI checked only:
+
+\[
+\texttt{WeilDefect/Examples/SpectralScreening.lean}.
+\]
+
+Certificate run:
+
+\[
+\boxed{
+\texttt{35952789867}
+}
+\]
+
+at repository head:
+
+\[
+\boxed{
+\texttt{6ef0dffba1a8732d554b15ee906c64fe60bc63c7}.
+}
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- Lean compilation of the WD-X01 target;
+- repository unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
