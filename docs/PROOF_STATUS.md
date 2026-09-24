@@ -512,6 +512,26 @@ The theorem deliberately stops before any actual-zeta exclusion of the weighted 
 
 ---
 
+# H1-P3.1 — Neutral defect morphology
+
+Canonical source: [Neutral Defect Morphology Theorem](NEUTRAL_DEFECT_MORPHOLOGY.md).
+
+| Label | Statement | Standing |
+| --- | --- | --- |
+| P3-U1 | Fixed-packet criticality gives either negative fall-through or an attained neutral right-limit ray | PROVED |
+| P3-U2 | The finite-exception unit-gain neutral realization gives a nonzero physical null mode (W_ck=0) | CONDITIONAL theorem |
+| P3-U3 | Fixed compact support gives finitely many prime-power translations | PROVED |
+| P3-U4 | The neutral compact-window operator has logarithmic principal order | DERIVED |
+| P3-U5 | Finite arithmetic shifts give no automatic positive-Sobolev/quasianalytic bootstrap | PROVED as operator-order statement |
+| P3-U6 | Neutrality is a global cancellation, not termwise vanishing | SCOPE/LOGICAL CONSEQUENCE |
+| P3-U7 | Exact persistence reduces to an exterior null-extension/support problem for the zero-extended physical mode | CONDITIONAL reduction |
+
+The theorem stops before any downstream support-rigidity, boundary-trace, or UCP theorem is imported.
+
+**Stop line:** (	exttt{AZ-FIN-WEIL-NULL-EXTENSION}).
+
+---
+
 # Open Horizon-1 interfaces
 
 The following are **not proved**:
