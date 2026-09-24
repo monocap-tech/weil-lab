@@ -29,7 +29,9 @@ Current position:
 \qquad
 \text{H1-P3 COMPLETE}
 \qquad
-\text{H1-P4 ACTIVE}.
+\text{H1-P4 COMPLETE}
+\qquad
+\text{H1-P5 ACTIVE}.
 }
 ```
 
@@ -533,11 +535,23 @@ The theorem-by-theorem audit and applied corrections are recorded in [Internal P
 
 WD-T37 through WD-T39 are COMPOSITE-AUDIT-PASSED. The expanded audit and corrections are recorded in [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
 
+## H1-P4.4 disposition
+
+All seven stable examples/sharpness witnesses are EXAMPLE-AUDIT-PASSED. See [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md).
+
+Thus
+
+```math
+\boxed{
+\textbf{H1-P4 — PROOF AUDIT AND THEOREM NORMALIZATION: COMPLETE.}
+}
+```
+
 ## Current cursor
 
 ```math
 \boxed{
-\texttt{H1-P4.4 / EXAMPLES AND SHARPNESS AUDIT}
+\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
 }
 ```
 
