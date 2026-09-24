@@ -28,6 +28,7 @@ A theorem now carries two independent statuses.
 - **COMPOSITE-AUDIT-PENDING** — morphology package still needs expanded dependency/hypothesis audit.
 - **COMPOSITE-AUDIT-PASSED** — expanded dependency/hypothesis composition audit passed after any recorded corrections.
 - **SCOPE-ONLY** — no proof certification is claimed.
+- **EXAMPLE-AUDIT-PASSED** — example calculation and sharpness role passed the Horizon-1 internal examples audit.
 
 The historical word **PROVED** in earlier files means internal proof standing. It does not mean independently certified or formally verified.
 
@@ -73,8 +74,8 @@ Historical labels such as WD-A1, ZW1-T7, or P3-N4 remain immutable aliases.
 | H1-P1 | COMPLETE | abstract defect calculus |
 | H1-P2 | COMPLETE | zeta-Weil specialization |
 | H1-P3 | COMPLETE | negative, neutral, and noncompact morphologies |
-| H1-P4 | ACTIVE | theorem/source/proof audit |
-| H1-P5 | PENDING | public manuscript/package |
+| H1-P4 | COMPLETE | theorem/source/proof audit |
+| H1-P5 | ACTIVE | public manuscript/package |
 
 ---
 
