@@ -2,6 +2,9 @@ import Mathlib
 
 namespace WeilDefect
 
+open Filter
+open scoped Topology
+
 /--
 WD-X03: separate channel budgets can each be positive while the joint budget is negative.
 The hypotheses isolate exactly the scalar inequalities used by the example.
@@ -102,10 +105,11 @@ theorem wd_x07_scaled_response_tendsto_neg_one :
   · funext N
     dsimp
     have hx0 : (N : ℝ) + 2 ≠ 0 := by positivity
-    have hx1 : (N : ℝ) + 2 ≠ 1 := by positivity
+    have hx1 : (N : ℝ) + 2 ≠ 1 := by
+      have hN : 0 ≤ (N : ℝ) := by positivity
+      nlinarith
     rw [wd_x07_real_response_formula ((N : ℝ) + 2) hx0 hx1]
     field_simp
     ring
-  · simp
 
 end WeilDefect
