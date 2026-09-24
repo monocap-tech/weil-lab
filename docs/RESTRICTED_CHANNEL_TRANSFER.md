@@ -189,7 +189,14 @@ there exists \(0\ne h\in L\cap\ker S_M^*\). But then
 
 contradicting negative definiteness.
 
-For the second statement, let \(L\) be negative definite for \(D_{\rm full}\). Then
+For the second statement, it is enough to consider finite-dimensional negative-definite subspaces \(L\) and then take the supremum. Since
+
+\[
+\operatorname{codim}\ker S_B^*
+\le b,
+\]
+
+we have
 
 \[
 \dim(L\cap\ker S_B^*)
@@ -197,19 +204,15 @@ For the second statement, let \(L\) be negative definite for \(D_{\rm full}\). T
 \dim L-b.
 \]
 
-On this intersection,
-
-\[
-D_{\rm full}=D_M
-\]
-
-quadratically. Therefore
+On this intersection the quadratic forms of \(D_{\rm full}\) and \(D_M\) agree. Therefore
 
 \[
 \dim L-b
 \le
 \operatorname{ind}_-(D_M).
 \]
+
+Taking the supremum over finite-dimensional negative subspaces gives the stated index bound.
 
 **Standing:** PROVED.
 
@@ -604,13 +607,19 @@ Individual screenability through the original \(S_+\) is insufficient.
 
 ## WD-B7 — Direct compression versus shorted covariance
 
-Let \(K\) be a strictly positive bounded operator on
+Let \(K\) be a uniformly positive bounded operator on
 
 \[
 \mathcal H=W\oplus W^\perp,
 \]
 
-written in blocks as
+meaning that
+
+\[
+K\succeq mI
+\]
+
+for some \(m>0\), and write it in blocks as
 
 \[
 K=
@@ -620,7 +629,7 @@ B^*&C
 \end{pmatrix}.
 \]
 
-Since \(K\) is strictly positive, \(C\) is invertible.
+Uniform positivity implies \(C\succeq mI_{W^\perp}\), so \(C\) is boundedly invertible.
 
 Define the Schur-shortened covariance on \(W\) by
 
@@ -662,7 +671,7 @@ Finite target dimension does not remove an infinite or large complementary inver
 
 The relevant covariance after eliminating the complement is the shorted covariance, not the direct compression.
 
-**Standing:** PROVED in the strictly positive / invertible-block setting.
+**Standing:** PROVED in the uniformly positive / invertible-block setting.
 
 ### Generalization
 
