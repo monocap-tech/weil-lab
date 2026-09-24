@@ -774,3 +774,19 @@ Verification status is distinct from whether the repository contains an internal
 **INTERNAL-PROOF** means that proof text is present in the repository under the stated hypotheses.
 
 It does not mean that the proof has been independently certified, formally verified, or externally refereed.
+
+
+## Source-pinned
+
+**SOURCE-PINNED** means that a load-bearing external input has been tied to an exact theorem, lemma, equation, or page location and that the convention imported from that source has been recorded.
+
+Source-pinned does not mean the repository's downstream use of the source has completed internal proof audit.
+
+## Source pin
+
+A **source pin** is the durable record connecting one external input to:
+
+1. its bibliographic source;
+2. its exact theorem/equation location;
+3. the notation or convention imported into this project;
+4. the stable theorem IDs that consume it.
