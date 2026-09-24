@@ -529,15 +529,19 @@ WD-T01 through WD-T36 are P4-AUDIT-PASSED at the internal Horizon-1 level.
 
 The theorem-by-theorem audit and applied corrections are recorded in [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
+## H1-P4.3 disposition
+
+WD-T37 through WD-T39 are COMPOSITE-AUDIT-PASSED. The expanded audit and corrections are recorded in [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
+
 ## Current cursor
 
 ```math
 \boxed{
-\texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
+\texttt{H1-P4.4 / EXAMPLES AND SHARPNESS AUDIT}
 }
 ```
 
-The next pass should expand WD-T37 through WD-T39 and verify every branch hypothesis/dependency transfer end-to-end.
+The next pass should verify WD-X01 through WD-X07 and attach each example to the precise theorem hypothesis or sharpness point it tests.
 
 ---
 
