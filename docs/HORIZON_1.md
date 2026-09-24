@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Horizon 1 packages the currently extracted Weil-defect machinery as an independently intelligible mathematical theory before any attempt to close the Riemann Hypothesis.
+Horizon 1 packages the extracted Weil-defect machinery as an independently intelligible mathematical theory before any attempt to close the Riemann Hypothesis.
 
 The horizon acceptance condition is:
 
@@ -61,20 +61,6 @@ Current position:
 
 Recover the theorem corpus, freeze terminology, separate imported results from internal derivations, and prevent accidental theorem promotion.
 
-### Entry condition
-
-Existing research contains multiple Weil-facing reductions and proof fragments but no independent public theorem architecture.
-
-### Allowed work
-
-- proof inventory;
-- terminology registry;
-- source/provenance classification;
-- dependency DAG;
-- standing labels;
-- separation of Weil-defect theory from RH closure;
-- repository-level custody rules.
-
 ### Required outputs
 
 - public README;
@@ -93,9 +79,9 @@ Every currently retained claim has:
 3. a known dependency location;
 4. a clear RH-facing or RH-independent classification.
 
-### Current status
+### Status
 
-**COMPLETE.** The terminology, standing system, Horizon 1 specification, proof ledger, and public research map are integrated.
+**COMPLETE.**
 
 ---
 
@@ -103,7 +89,7 @@ Every currently retained claim has:
 
 ### Purpose
 
-Determine which parts of the machinery survive after removing zeta-specific arithmetic.
+Determine what survives after all zeta-specific arithmetic is removed.
 
 ### Central question
 
@@ -113,76 +99,67 @@ Determine which parts of the machinery survive after removing zeta-specific arit
 }
 \]
 
-### Primary objects
+### Canonical theorem layers
 
-- finite negative index;
-- positive screening complement;
-- rank-one defect operators;
-- finite-to-infinite screening;
-- negative, neutral, and approximate-neutral screening boundaries;
-- minimum-compensator graphs;
-- operator null modes.
-
-### Target theorem family
-
-The phase should isolate statements of the schematic form
-
-\[
-\text{finite index}
-\Longrightarrow
-\text{screening alternative}
-\Longrightarrow
-\begin{cases}
-\text{negative defect},\\
-\text{attained neutral mode},\\
-\text{non-attained approximate-neutral boundary},\\
-\text{strict positive screening}.
-\end{cases}
-\]
-
-without using \(\zeta\), \(\Xi\), primes, or quartet arithmetic except as examples.
-
-### Main extraction problem
-
-Minimize the hypotheses behind relations such as
-
-\[
-u=-X^*a
-\]
-
-and behind rank-one positivity defects of the form
-
-\[
-AA^*-g\otimes g.
-\]
-
-### Current result
-
-H1-P1.0 extracted the basis-free defect operator
-
-\[
-D=S_+S_+^*-S_-S_-^*
-\]
-
-and the exact equivalence between \(J\)-nonnegativity, Loewner domination, and contractive Douglas screening. See [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md).
-
-It also identified a distinct **non-attained approximate-neutral boundary** at critical screening norm.
-
-### Current result
-
-H1-P1 is **COMPLETE**.
-
-The phase now consists of three canonical documents:
+H1-P1 is now organized into three documents:
 
 1. [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md);
 2. [Restricted-Channel and Finite-Index Transfer](RESTRICTED_CHANNEL_TRANSFER.md);
 3. [Support Filtration and Persistence Limits](SUPPORT_FILTRATION_PERSISTENCE.md).
 
-Together they cover the basis-free defect operator, Douglas screening, finite selected sectors, shared screening budgets, shorting, support filtrations, endpoint jumps, persistent-ray compactness, representative blow-up, and moving-sector escape.
+Together they establish:
+
+- the physical defect operator
+  \[
+  D=S_+S_+^*-S_-S_-^*;
+  \]
+- equality of physical and coefficient negative index;
+- Douglas screening and graph normal form;
+- rank-one specialization;
+- shared screening budgets;
+- recursive background elimination;
+- finite selected-sector singular-value inertia;
+- complement shorting;
+- monotone support filtration;
+- right-limit gap duality;
+- endpoint-jump control;
+- persistent-ray compactness;
+- representative blow-up;
+- moving-sector escape.
+
+### Key correction
+
+The abstract critical boundary is not automatically an actual neutral vector.
+
+For a general infinite screening map,
+
+\[
+\|X\|=1
+\]
+
+may fail to attain its norm.
+
+However, H1-P1.1 and H1-P1.2 sharpen this:
+
+\[
+\boxed{
+\text{fixed finite selected sector}
++
+\text{critical right-approach}
+\Longrightarrow
+\text{nonzero nonpositive right-limit ray}.
+}
+\]
+
+Thus non-attained approximate neutrality is localized to infinite-sector or moving-sector noncompactness.
 
 ### Exit condition
 
-**SATISFIED.** A self-contained zeta-independent theorem package now exists.
+A self-contained theorem package exists whose statements require no \(\zeta\), \(\Xi\), prime, quartet, or explicit-formula notation.
+
+### Status
+
+**COMPLETE.**
 
 ---
 
@@ -194,17 +171,34 @@ Together they cover the basis-free defect operator, Douglas screening, finite se
 
 ### Purpose
 
-Reintroduce precisely the extra structure supplied by the zeta/Weil setting.
+Reintroduce exactly the extra structure supplied by the zeta/Weil setting, while preserving the hypotheses and scope of H1-P1.
 
 ### Central question
 
 \[
 \boxed{
-\text{Which stronger identities come from functional-equation and explicit-formula geometry?}
+\text{Which stronger identities come specifically from functional-equation and explicit-formula geometry?}
 }
 \]
 
-### Required specialization results
+### Required specialization map
+
+The first pass must identify:
+
+- positive and negative Weil channels \(\to S_+,S_-\);
+- selected finite packet \(\to M\);
+- unselected negative divisor \(\to B\);
+- support window \(\to \mathcal A_t\);
+- right-persistent ray \(\to \mathcal A_{c+}\);
+- endpoint persistence \(\to \mathcal J_c\);
+- rank-one cell defect \(\to\) WD-A5;
+- spectral screening \(\to\) WD-A6 / WD-C1;
+- background consumption \(\to\) WD-B4;
+- shorted covariance \(\to\) WD-B7.
+
+Only after that mapping is fixed should zeta-specific strengthening be imported.
+
+### Required zeta-specific structures
 
 - quartet channel decomposition;
 - raw selected residue vector \(v\);
@@ -217,27 +211,30 @@ Reintroduce precisely the extra structure supplied by the zeta/Weil setting.
   R_v(z)=O(|z|^{-2});
   \]
 - completed-\(\Xi\) lift;
+- weighted next-jet field;
 - compact-window Weil operator;
 - finite prime-shift structure;
 - logarithmic principal order.
 
 ### Constraint
 
-H1-P2 may specialize H1-P1 but may not silently strengthen an abstract theorem by importing zeta-specific structure into its hypotheses after the fact.
+H1-P2 may specialize H1-P1 but may not strengthen an abstract theorem silently by importing arithmetic structure after the fact.
 
 ### Exit condition
 
-Every zeta-specific theorem states explicitly which H1-P1 theorem it specializes and which new arithmetic hypotheses it consumes.
+Every zeta-specific theorem states:
+
+1. which H1-P1 theorem it specializes;
+2. which additional zeta/Weil hypothesis it consumes;
+3. which part of its conclusion is genuinely arithmetic rather than abstract.
 
 ### First cursor
 
-[
-oxed{
-	exttt{H1-P2.0 / ZETA-WEIL SPECIALIZATION MAP}
+\[
+\boxed{
+\texttt{H1-P2.0 / ZETA-WEIL SPECIALIZATION MAP}
 }
-]
-
-The first pass must map the existing Weil objects onto the abstract carriers before proving any new arithmetic strengthening.
+\]
 
 ---
 
@@ -245,7 +242,7 @@ The first pass must map the existing Weil objects onto the abstract carriers bef
 
 ### Purpose
 
-Package the surviving screening-boundary morphologies as exact theorem families. H1-P1.0 shows that the abstract boundary has a third case beyond strict negative and attained neutral behavior: non-attained approximate neutrality.
+Package every surviving screening-boundary morphology as an exact theorem family.
 
 ### Negative branch target
 
@@ -279,24 +276,20 @@ W_ck=0
 }
 \]
 
-### Approximate-neutral branch target
+### Approximate-neutral question
 
-H1-P2/P3 must decide whether the abstract non-attained critical branch
+H1-P1 shows that a fixed finite selected sector cannot sustain a non-attained critical limit without producing a nonzero nonpositive right-limit ray.
 
-\[
-\|X\|=1
-\quad\text{with no norm-attaining vector}
-\]
+H1-P2/P3 must therefore determine whether any remaining approximate-neutral morphology in the actual zeta-Weil problem comes from:
 
-can occur in the zeta-Weil specialization and, if so, what arithmetic morphology it carries.
-
-### Central question
-
-> If screening does not erase the defect, or drives the margin to zero without producing a null mode, what exact form must the surviving obstruction take?
+- a moving selected packet;
+- an infinite background sector;
+- positive-coordinate escape;
+- or another identified noncompactness mechanism.
 
 ### Exit condition
 
-The negative, attained-neutral, and any admissible approximate-neutral branches are stated as theorem packages with precise hypotheses, conclusions, and downstream open interfaces.
+The negative, neutral, and any surviving approximate-neutral branches are stated with exact hypotheses, conclusions, and downstream interfaces.
 
 ---
 
@@ -306,18 +299,19 @@ The negative, attained-neutral, and any admissible approximate-neutral branches 
 
 Convert research-chain arguments into a theorem set that can be independently audited.
 
-### Required work for every theorem
+### Required work
 
-- canonical theorem label;
+Every theorem receives:
+
+- a canonical theorem label;
 - exact hypotheses;
 - exact conclusion;
 - dependency list;
 - source/import boundary;
 - proof with no hidden transfer;
-- edge cases;
-- finite/infinite distinction;
-- conditional/unconditional standing;
-- counterexample or sharpness note where relevant.
+- finite/infinite scope;
+- standing;
+- sharpness or counterexample note where relevant.
 
 ### Naming convention
 
@@ -353,8 +347,6 @@ Turn the audited theorem system into a forward-facing mathematical artifact.
 
 ### Final public separation
 
-The package should make the following distinction visually and logically explicit:
-
 \[
 \boxed{
 \text{Here is the Weil-defect theory.}
@@ -377,14 +369,14 @@ An external reader can verify the Horizon 1 theorem package without traversing t
 
 ## Horizon 1 completion condition
 
-Horizon 1 is complete when all of the following hold:
+Horizon 1 is complete when:
 
 \[
 \boxed{
 \begin{aligned}
 &\text{abstract defect theory extracted;}\\
 &\text{zeta-Weil specialization normalized;}\\
-&\text{negative, neutral, and approximate-neutral boundary morphologies classified;}\\
+&\text{screening-boundary morphologies classified;}\\
 &\text{all theorem standings independently audited;}\\
 &\text{RH-facing obligations isolated at explicit interfaces;}\\
 &\text{public manuscript/package assembled.}
@@ -398,4 +390,4 @@ No RH proof is required for Horizon 1 completion.
 
 Later horizons may attack one or more actual-zeta interfaces, extend the defect calculus, formalize proofs, or develop computational certification.
 
-Those horizons are intentionally left unspecified until Horizon 1 has a stable theorem inventory.
+Those horizons remain intentionally unspecified until Horizon 1 has a stable theorem inventory.
