@@ -80,9 +80,7 @@ theorem wd_t11_norm_one_attains_neutral
     simpa [W] using (wd_t11_norm_activeAdjoint Y).trans hY
   have hWne : W ≠ 0 := by
     intro hzero
-    have hfalse : (0 : ℝ) = 1 := by
-      simpa [hzero] using hWnorm
-    norm_num at hfalse
+    simpa [hzero] using hWnorm
   have hnotSub : ¬ Subsingleton (ActiveCarrier Y) := by
     intro hsub
     apply hWne
@@ -98,7 +96,11 @@ theorem wd_t11_norm_one_attains_neutral
   let u : ActiveCarrier Y := (‖x‖⁻¹ : ℂ) • x
   have hu : ‖u‖ = 1 := by
     have hxnorm : ‖x‖ ≠ 0 := norm_ne_zero_iff.mpr hx
-    simp [u, norm_smul, hxnorm]
+    calc
+      ‖u‖ = ‖(‖x‖⁻¹ : ℂ)‖ * ‖x‖ := by
+        rw [u, norm_smul]
+      _ = ‖x‖⁻¹ * ‖x‖ := by simp
+      _ = 1 := inv_mul_cancel₀ hxnorm
   have hsphere : (Metric.sphere (0 : ActiveCarrier Y) 1).Nonempty := by
     refine ⟨u, ?_⟩
     simpa [Metric.mem_sphere] using hu
@@ -113,17 +115,27 @@ theorem wd_t11_norm_one_attains_neutral
     by_cases hz0 : z = 0
     · simp [hz0]
     · let v : ActiveCarrier Y := (‖z‖⁻¹ : ℂ) • z
+      have hznorm : ‖z‖ ≠ 0 := norm_ne_zero_iff.mpr hz0
       have hv : ‖v‖ = 1 := by
-        have hznorm : ‖z‖ ≠ 0 := norm_ne_zero_iff.mpr hz0
-        simp [v, norm_smul, hznorm]
+        calc
+          ‖v‖ = ‖(‖z‖⁻¹ : ℂ)‖ * ‖z‖ := by
+            rw [v, norm_smul]
+          _ = ‖z‖⁻¹ * ‖z‖ := by simp
+          _ = 1 := inv_mul_cancel₀ hznorm
       have hvS : v ∈ Metric.sphere (0 : ActiveCarrier Y) 1 := by
         simpa [Metric.mem_sphere] using hv
       have hmax : ‖W v‖ ≤ ‖W a‖ := haMax hvS
       have hzrep : (‖z‖ : ℂ) • v = z := by
         simp [v, hz0]
-      rw [← hzrep, map_smul, norm_smul]
-      simpa [mul_comm] using
-        (mul_le_mul_of_nonneg_left hmax (norm_nonneg z))
+      have hWz : W z = (‖z‖ : ℂ) • W v := by
+        rw [← hzrep, map_smul]
+      calc
+        ‖W z‖ = ‖z‖ * ‖W v‖ := by
+          rw [hWz, norm_smul]
+          simp
+        _ ≤ ‖z‖ * ‖W a‖ :=
+          mul_le_mul_of_nonneg_left hmax (norm_nonneg z)
+        _ = ‖W a‖ * ‖z‖ := mul_comm _ _
   have hlower : ‖W a‖ ≤ ‖W‖ := by
     have h := W.le_opNorm a
     simpa [haNorm] using h
@@ -273,24 +285,25 @@ theorem wd_t11_graphQ_diagonal
                   =
                 _ at hcoord
               rw [hcoord]
-              simp [RCLike.inner_apply, RCLike.mul_conj,
-                mul_assoc, mul_left_comm, mul_comm]
+              simp only [RCLike.inner_apply, map_mul, RCLike.star_def,
+                RCLike.conj_ofReal]
+              rw [← mul_assoc, RCLike.mul_conj]
   have hnormW :
       ‖W a‖ ^ 2 =
         ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
           activeSigma Y i ^ 2 * ‖b.repr a i‖ ^ 2 := by
     have hc :
-        ((‖W a‖ : ℂ) ^ 2)
+        inner ℂ (W a) (W a)
           =
         ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
           (((activeSigma Y i ^ 2 * ‖b.repr a i‖ ^ 2 : ℝ) : ℂ)) := by
-      rw [← inner_self_eq_norm_sq_to_K]
       rw [← hinner, hdiag]
       apply Finset.sum_congr rfl
       intro i _
       rw [wd_t11_sigma_sq_eq_eigenvalue Y i]
       norm_cast
-    exact_mod_cast hc
+    have hre := congrArg Complex.re hc
+    simpa [inner_self_eq_norm_sq_to_K] using hre
   unfold activeGraphQ
   rw [hnormA, hnormW]
   rw [← Finset.sum_sub_distrib]
@@ -360,7 +373,11 @@ theorem wd_t11_negative_rank_le_count
     let u : EuclideanSpace ℂ (Fin n) := (‖x - y‖⁻¹ : ℂ) • (x - y)
     have hu : ‖u‖ = 1 := by
       have hdnorm : ‖x - y‖ ≠ 0 := norm_ne_zero_iff.mpr hd
-      simp [u, norm_smul, hdnorm]
+      calc
+        ‖u‖ = ‖(‖x - y‖⁻¹ : ℂ)‖ * ‖x - y‖ := by
+          rw [u, norm_smul]
+        _ = ‖x - y‖⁻¹ * ‖x - y‖ := by simp
+        _ = 1 := inv_mul_cancel₀ hdnorm
     have hCdiff : C (x - y) = 0 := by
       rw [map_sub, hxy, sub_self]
     have hCu : C u = 0 := by
@@ -398,7 +415,7 @@ theorem wd_t11_negative_space_coordinate_zero
             activeEigenbasis Y j.1)) := by
     simpa [negativeSpectralSpace] using a.property
   refine Submodule.span_induction
-    (p := fun x : ActiveCarrier Y =>
+    (p := fun x : ActiveCarrier Y _ =>
       inner ℂ (activeEigenbasis Y i) x = 0)
     ?_ ?_ ?_ ?_ ha
   · intro x hx
