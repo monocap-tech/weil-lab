@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T06 | WeilDefect.WDT06.wd_t06_truncated_inner_identity + WeilDefect.WDT06.wd_t06_quadratic_mono + WeilDefect.WDT06.wd_t06_defect_mono + WeilDefect.WDT06.wd_t06_defect_le_full + WeilDefect.WDT06.wd_t06_defect_strong_tendsto + WeilDefect.WDT06.wd_t06_quadratic_tendsto + WeilDefect.WDT06.wd_t06_negative_rank_antitone + WeilDefect.WDT06.wd_t06_monotone_positive_screening | LEAN-CERTIFIED |
 | WD-T05 | WeilDefect.wd_t05_rank_one_covariance + WeilDefect.WDT05.wd_t05_defect_rank_one + WeilDefect.WDT05.wd_t05_signed_factor_iff_vector + WeilDefect.WDT05.wd_t05_covariance_iff_unit_vector + WeilDefect.WDT05.wd_t05_physical_nonnegative_iff_unit_vector + WeilDefect.WDT05.wd_t05_analysis_nonnegative_iff_unit_vector + WeilDefect.WDT05.wd_t05_rank_one_specialization | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T04 | WeilDefect.WDT04.wd_t04_range_defect_no_exact_screening + WeilDefect.WDT04.wd_t04_range_defect_negative + WeilDefect.WDT04.wd_t04_over_budget_negative + WeilDefect.WDT04.wd_t04_strict_screened_lower_bound + WeilDefect.WDT04.wd_t04_attained_critical_neutral + WeilDefect.WDT04.wd_t04_nonattained_critical_positive + WeilDefect.WDT04.wd_t04_critical_approximate_neutral + WeilDefect.WDT04.wd_t04_complete_reduced_taxonomy | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T03 | WeilDefect.WDT03.wd_t03_kernel_decomposition + WeilDefect.WDT03.wd_t03_analysis_graph_iff + WeilDefect.WDT03.wd_t03_graph_signature + WeilDefect.WDT03.wd_t03_defect_factorization | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -661,6 +662,104 @@ The certified theorem source blob is:
 
 \[
 \texttt{2c37aaf3546b49cbab8be2c58ee954fd6989a965}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- single-module Lake build;
+- unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
+
+
+## WD-T06 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T06: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.WDT06.ProjectionChainData;
+- WeilDefect.WDT06.projection_inner_self;
+- WeilDefect.WDT06.projection_norm_mono;
+- WeilDefect.WDT06.wd_t06_truncated_inner_identity;
+- WeilDefect.WDT06.wd_t06_quadratic_mono;
+- WeilDefect.WDT06.wd_t06_quadratic_le_full;
+- WeilDefect.WDT06.wd_t06_defect_mono;
+- WeilDefect.WDT06.wd_t06_defect_le_full;
+- WeilDefect.WDT06.wd_t06_defect_strong_tendsto;
+- WeilDefect.WDT06.wd_t06_quadratic_tendsto;
+- WeilDefect.WDT06.wd_t06_negative_rank_antitone;
+- WeilDefect.WDT06.wd_t06_monotone_positive_screening.
+
+The projection-chain interface records exactly the operator properties consumed by
+the proof: self-adjointness, idempotence, nesting, contractivity, and strong
+convergence to the identity.
+
+Lean then verifies internally that
+
+\[
+D_N=S_+P_NS_+^*-S_-S_-^*
+\]
+
+has quadratic form
+
+\[
+\|P_NS_+^*h\|^2-\|S_-^*h\|^2,
+\]
+
+that the projected positive norms are nondecreasing under the nested
+contractive projections, and hence
+
+\[
+D_N\preceq D_{N+1}\preceq D.
+\]
+
+It also proves strong pointwise operator convergence
+
+\[
+D_Nh\to Dh,
+\]
+
+and pointwise convergence of the corresponding quadratic forms.
+
+Negative-index monotonicity is certified in the same dimension-by-dimension
+form used by WD-T01: every \(k\)-dimensional negative witness for
+\(D_{N+1}\) is already a \(k\)-dimensional negative witness for \(D_N\).
+Thus the attainable finite negative-rank spectrum is nonincreasing under
+positive-channel restoration.
+
+No imported theorem premise is used by WD-T06.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.MonotoneScreening}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{35967932548}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{6024cce8bf4f152ca21a545b93cb467e7cdadb31}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{b4424d28e14466275f593e58683170d9e952b134}.
 \]
 
 The run passed:
