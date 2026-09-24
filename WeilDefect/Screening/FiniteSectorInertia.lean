@@ -32,6 +32,28 @@ noncomputable def activeAdjoint (Y : M →L[ℂ] Kpos) :
     ActiveCarrier Y →L[ℂ] M :=
   (activeScreen Y)†
 
+/-- Corestriction to the active range preserves operator norm. -/
+theorem wd_t11_norm_activeScreen
+    (Y : M →L[ℂ] Kpos) :
+    ‖activeScreen Y‖ = ‖Y‖ := by
+  apply le_antisymm
+  · apply ContinuousLinearMap.opNorm_le_bound _ (norm_nonneg Y)
+    intro x
+    change ‖Y x‖ ≤ ‖Y‖ * ‖x‖
+    exact ContinuousLinearMap.le_opNorm Y x
+  · apply ContinuousLinearMap.opNorm_le_bound Y (norm_nonneg (activeScreen Y))
+    intro x
+    have h := ContinuousLinearMap.le_opNorm (activeScreen Y) x
+    simpa [activeScreen] using h
+
+/-- The adjoint active map has the same norm as the original selected screen. -/
+theorem wd_t11_norm_activeAdjoint
+    (Y : M →L[ℂ] Kpos) :
+    ‖activeAdjoint Y‖ = ‖Y‖ := by
+  rw [activeAdjoint, ContinuousLinearMap.adjoint.norm_map,
+    wd_t11_norm_activeScreen]
+
+
 /-- Active covariance on the finite-dimensional positive carrier. -/
 noncomputable def activeCovariance (Y : M →L[ℂ] Kpos) :
     ActiveCarrier Y →L[ℂ] ActiveCarrier Y :=
