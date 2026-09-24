@@ -84,8 +84,16 @@ theorem wd_t14_graph_admissibility_failure_example :
       ∧ 0 < shadowMargin a u
       ∧ u ≠ -((X†) ((⊥ : Submodule ℂ ℂ).starProjection a)) := by
   dsimp
+  have hXadj :
+      (((2 : ℂ) • ContinuousLinearMap.id ℂ ℂ)†)
+        =
+      (2 : ℂ) • ContinuousLinearMap.id ℂ ℂ := by
+    change star ((2 : ℂ) • ContinuousLinearMap.id ℂ ℂ) =
+      (2 : ℂ) • ContinuousLinearMap.id ℂ ℂ
+    simp [star_smul]
   constructor
-  · simp
+  · rw [hXadj]
+    norm_num
   constructor
   · norm_num [shadowMargin, Complex.norm_real]
   · simp
