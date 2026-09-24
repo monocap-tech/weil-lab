@@ -170,7 +170,7 @@ Same-frequency duplicate coefficient directions are quotient/null directions and
 
 ---
 
-## EXT-2C — kernel/column decay input
+## EXT-2C — kernel/column decay context
 
 ### Exact pin
 
@@ -191,20 +191,18 @@ Bombieri obtains, for fixed \(t\) and \(x,y\) in the stated horizontal strip,
 \min\!\left(1,\frac1{|x-y|}\right).
 \]
 
-He combines this with the unit-height zero count to establish the absolute-convergence/Fredholm properties of the infinite matrix and convergence of its finite truncations.
+This remains useful corroborating context for the high-height decay scale.
 
-### Consumed by
+### H1-P4.2 correction
 
-- the imported estimate component of WD-T28.
+WD-T28 no longer consumes (7.7) as a Hilbert-Gram input. Its Hilbert–Schmidt proof now uses a direct native Dirichlet-resolvent estimate plus EXT-3 zero counting.
 
-### Horizon-1 convention
-
-The H1-P2.1 Hilbert-Schmidt conclusion is an **internal derivation** from this decay input plus EXT-3 zero counting. Bombieri's equation (7.7) itself is the pinned external input; the Hilbert-Schmidt synthesis statement is not being attributed verbatim to Bombieri.
+Bombieri's matrix is complex symmetric in the relevant nonreal-zero setting, so the audit deliberately avoids interpreting it as an ordinary Hermitian Gram matrix.
 
 ### Pin status
 
 \[
-\boxed{\text{SOURCE-PINNED}}
+\boxed{\text{SOURCE-PINNED / CONTEXTUAL FOR WD-T28}}
 \]
 
 ---
@@ -518,7 +516,7 @@ Status:
 | Douglas factorization | Douglas (1966), Theorem 1, pp. 413–415 | WD-T02; downstream T03/T10/T11 | SOURCE-PINNED |
 | Bombieri finite inertia | Bombieri (2000), Theorem 8, p. 213 | WD-T22 | SOURCE-PINNED |
 | Bombieri multiplicity | Bombieri (2000), Lemma 10, p. 210 + proof continuation p. 213 | WD-T23 / T22 convention | SOURCE-PINNED |
-| Bombieri kernel decay | Bombieri (2000), Theorem 6 proof, eq. (7.7), p. 204 | WD-T28 external input | SOURCE-PINNED |
+| Bombieri kernel decay | Bombieri (2000), Theorem 6 proof, eq. (7.7), p. 204 | corroborating/contextual after P4.2 | SOURCE-PINNED / NON-LOAD-BEARING |
 | Unit-height zero count | Titchmarsh (1986), Theorem 9.2, eq. (9.2.1), p. 211 | WD-T28, WD-T31 | SOURCE-PINNED |
 | Compact-window formula | Zhu (2026), eqs. (2)–(3), p. 2 | WD-T34, WD-T35, WD-T38 | SOURCE-PINNED |
 | Digamma asymptotic | DLMF 5.11.2 | WD-T35 | SOURCE-PINNED |
