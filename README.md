@@ -95,7 +95,7 @@ The explicit-formula attachment sharpens the far-field contribution to
 O\!\left(\frac{\log R}{R}\right),
 ```
 
-leaving a weighted completed-$\Xi$ next-jet field as the negative-branch
+leaving a weighted completed $\Xi$ next-jet field as the negative-branch
 arithmetic obstruction.
 
 On the neutral branch, fixed compact support produces only finitely many
@@ -191,7 +191,7 @@ prove the Horizon-1 morphology theorem that reaches it.
 - [Quartet Channel and Residue Structure](docs/QUARTET_CHANNEL_RESIDUE_STRUCTURE.md)
   — pair geometry, finite inertia, zero moments, and compact synthesis.
 - [Explicit-Formula Arithmetic Attachment](docs/EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md)
-  — far-tail localization, completed-$\Xi$ next jets, finite prime shifts, and
+  — far-tail localization, completed $\Xi$ next jets, finite prime shifts, and
   logarithmic form order.
 
 ### H1-P3 — Defect morphology
