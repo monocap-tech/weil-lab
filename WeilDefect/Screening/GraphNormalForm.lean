@@ -21,7 +21,7 @@ def synthesisMap
   Spos.coprod Sneg
 
 /-- Direct-sum Hilbert inner form on coefficient pairs. -/
-def pairInner
+noncomputable def pairInner
     (z w : Kpos × Kneg) : ℂ :=
   inner ℂ z.1 w.1 + inner ℂ z.2 w.2
 
@@ -29,7 +29,7 @@ def pairInner
 Membership in A=(ker E)⊥, expressed against the direct-sum Hilbert inner
 form without imposing the Banach product norm as a Hilbert norm.
 -/
-def AnalysisMember
+noncomputable def AnalysisMember
     (Spos : Kpos →L[ℂ] H)
     (Sneg : Kneg →L[ℂ] H)
     (z : Kpos × Kneg) : Prop :=
@@ -133,14 +133,14 @@ theorem wd_t03_kernel_decomposition
         ext <;> simp [hx])
       simp at h1 h2
       exact add_right_cancel (h1.symm.trans h2)
-  · rintro ⟨k, hk, hsplit, -⟩
+  · rintro ⟨k, ⟨hk, hsplit, _⟩, _⟩
     apply (kernel_iff Spos Sneg X hfac x u).mpr
     refine ⟨k, hk, ?_⟩
     have := congrArg Prod.fst hsplit
     simpa using this
 
 /-- Membership in ker(Spos)⊥ written pointwise. -/
-def PosReduced
+noncomputable def PosReduced
     (Spos : Kpos →L[ℂ] H)
     (a : Kpos) : Prop :=
   ∀ k, Spos k = 0 → inner ℂ a k = 0
@@ -167,18 +167,14 @@ theorem wd_t03_analysis_graph_iff
       have hh := hA (k,0) hker
       simpa [pairInner] using hh
     have hvEq : v = -(X†) a := by
-      apply sub_eq_zero.mp
-      apply (eq_zero_iff_forall_inner_eq_zero).2
+      apply ext_inner_left ℂ
       intro u
       have hker : synthesisMap Spos Sneg (X u,u) = 0 := by
         simp [synthesisMap, hfac]
       have hh := hA (X u,u) hker
       rw [pairInner, ← ContinuousLinearMap.adjoint_inner_left X u a] at hh
-      calc
-        inner ℂ (v - (-(X†) a)) u
-            = inner ℂ v u + inner ℂ ((X†) a) u := by
-                simp [inner_sub_left]
-        _ = 0 := by linarith
+      rw [inner_neg_left]
+      exact eq_neg_of_add_eq_zero_right hh
     exact ⟨ha, hvEq⟩
   · rintro ⟨ha, rfl⟩
     intro y hy
