@@ -630,27 +630,31 @@ theorem wd_t11_neutral_basis_direction
   · exact (activeEigenbasis Y).toBasis.ne_zero i
 
 /--
-WD-T11 finite-sector spectral inertia package on the canonical active carrier:
-negative and neutral multiplicities are counted by sigma > 1 and sigma = 1,
-and every critical sigma = 1 produces an attained nonzero neutral graph vector.
+WD-T11 finite-sector singular-value inertia theorem on the canonical active
+carrier.  The sigma > 1 count is the exact maximal finite negative rank, the
+sigma = 1 count is the neutral dimension, and unit operator norm is necessarily
+attained by an actual nonzero neutral graph direction.
 -/
 theorem wd_t11_finite_sector_singular_value_inertia
     (Y : M →L[ℂ] Kpos) :
-    finrank ℂ (negativeSpectralSpace Y) = (negativeIndices Y).card
+    (HasNegativeRank
+      (activeGraphQ Y)
+      Set.univ
+      (negativeIndices Y).card
+      ∧
+      ∀ n : ℕ,
+        HasNegativeRank (activeGraphQ Y) Set.univ n →
+          n ≤ (negativeIndices Y).card)
     ∧
     finrank ℂ (neutralSpectralSpace Y) = (neutralIndices Y).card
     ∧
-    (∀ i, i ∈ negativeIndices Y →
-      activeGraphQ Y (activeEigenbasis Y i) < 0)
-    ∧
-    (∀ i, i ∈ neutralIndices Y →
-      activeGraphQ Y (activeEigenbasis Y i) = 0
-        ∧ activeEigenbasis Y i ≠ 0) := by
+    (‖Y‖ = 1 →
+      ∃ a : ActiveCarrier Y,
+        a ≠ 0 ∧ activeGraphQ Y a = 0) := by
   exact ⟨
-    wd_t11_negative_space_finrank Y,
+    wd_t11_negative_index_exact Y,
     wd_t11_neutral_space_finrank Y,
-    wd_t11_negative_basis_direction Y,
-    wd_t11_neutral_basis_direction Y
+    wd_t11_norm_one_attains_neutral Y
   ⟩
 
 end WeilDefect.WDT11
