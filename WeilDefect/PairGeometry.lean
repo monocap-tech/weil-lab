@@ -28,6 +28,33 @@ theorem wd_t20_pair_neg_eigen : pairSwap pairNeg = -pairNeg := by
   funext b
   cases b <;> simp [pairSwap, pairNeg]
 
+
+/--
+WD-T20: the raw two-coordinate pair is linearly equivalent to its
+positive/negative eigenchannel coordinates.
+-/
+def pairEigenEquiv : (ℂ × ℂ) ≃ₗ[ℂ] RawPair where
+  toFun p b := p.1 * pairPos b + p.2 * pairNeg b
+  invFun v :=
+    ((v false + v true) / 2, (v false - v true) / 2)
+  left_inv p := by
+    apply Prod.ext <;> simp [pairPos, pairNeg] <;> ring
+  right_inv v := by
+    funext b
+    cases b <;> simp [pairPos, pairNeg] <;> ring
+  map_add' x y := by
+    funext b
+    cases b <;> simp [pairPos, pairNeg] <;> ring
+  map_smul' a x := by
+    funext b
+    cases b <;> simp [pairPos, pairNeg] <;> ring
+
+/-- In eigenchannel coordinates, conjugation fixes the positive coordinate and negates the negative one. -/
+theorem wd_t20_pair_diagonalization (a b : ℂ) :
+    pairSwap (pairEigenEquiv (a, b)) = pairEigenEquiv (a, -b) := by
+  funext q
+  cases q <;> simp [pairSwap, pairEigenEquiv, pairPos, pairNeg] <;> ring
+
 /-- The selected negative coordinate type for one simple functional-equation quartet. -/
 abbrev SimpleQuartetNegative := Fin 2
 
