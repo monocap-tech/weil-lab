@@ -492,6 +492,26 @@ With this package, **H1-P2 is complete**.
 
 ---
 
+# H1-P3.0 — Negative defect morphology
+
+Canonical source: [Negative Defect Morphology Theorem](NEGATIVE_DEFECT_MORPHOLOGY.md).
+
+| Label | Statement | Standing |
+| --- | --- | --- |
+| P3-N1 | Uniform normalized selected negativity in a fixed packet forces a persistent negative endpoint ray | CONDITIONAL theorem |
+| P3-N2 | The persistent endpoint ray requires boundary-amplified physical representatives | CONDITIONAL theorem |
+| P3-N3 | Full Weil negativity remains bounded away from zero after selected-amplitude normalization | CONDITIONAL theorem |
+| P3-N4 | The persistent selected negative coordinate yields a nonzero zero-moment source with (O(z^{-2})) response | CONDITIONAL theorem |
+| P3-N5 | Complementary-divisor dependence localizes to a finite/intermediate neighborhood with (O((log R)/R)) far error | CONDITIONAL theorem |
+| P3-N6 | The localized complementary field is exactly a weighted completed-(Xi) next-jet field | CONDITIONAL theorem |
+| P3-N7 | Adaptive near cancellation forces the prime term onto the far tail | PROVED within the scalar explicit-formula setup |
+
+The theorem deliberately stops before any actual-zeta exclusion of the weighted near field.
+
+**Stop line:** (	exttt{AZ-NEXTJET-LOC}).
+
+---
+
 # Open Horizon-1 interfaces
 
 The following are **not proved**:
