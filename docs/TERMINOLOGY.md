@@ -740,3 +740,37 @@ On the negative morphology branch its full signature remains strictly negative.
 Selected-sector escape may produce normalized approximate zero-edge relations with weak coefficient limit zero.
 
 It is distinct from background escape.
+
+
+## Stable theorem ID
+
+A **stable theorem ID** is the additive public identifier assigned during H1-P4.
+
+Stable theorem IDs use the form
+
+\[
+\texttt{WD-T01},\texttt{ WD-T02},\ldots
+\]
+
+and do not replace historical labels. Historical labels remain immutable provenance aliases.
+
+A stable theorem ID is a name, not a certification mark.
+
+## Verification status
+
+**Verification status** records how far a theorem has progressed through proof/source audit independently of its mathematical standing.
+
+Current H1-P4 verification labels include:
+
+- **P4-AUDIT-PENDING**;
+- **SOURCE-PIN-PENDING**;
+- **COMPOSITE-AUDIT-PENDING**;
+- **SCOPE-ONLY**.
+
+Verification status is distinct from whether the repository contains an internal proof.
+
+## Internal proof standing
+
+**INTERNAL-PROOF** means that proof text is present in the repository under the stated hypotheses.
+
+It does not mean that the proof has been independently certified, formally verified, or externally refereed.
