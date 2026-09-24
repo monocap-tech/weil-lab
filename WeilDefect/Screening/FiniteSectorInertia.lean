@@ -82,7 +82,8 @@ theorem wd_t11_norm_one_attains_neutral
     intro hzero
     rw [hzero] at hWnorm
     have hzeroNorm :
-        ‖(0 : ActiveCarrier Y →L[ℂ] M)‖ = 0 := norm_zero
+        ‖(0 : ActiveCarrier Y →L[ℂ] M)‖ = 0 :=
+      ContinuousLinearMap.opNorm_zero
     have hfalse : (0 : ℝ) = 1 :=
       hzeroNorm.symm.trans hWnorm
     exact zero_ne_one hfalse
