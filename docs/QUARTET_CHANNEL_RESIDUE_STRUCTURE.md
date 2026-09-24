@@ -672,7 +672,54 @@ The unweighted exponential source naturally lives in the \(H^{-1}_L\) metric
 \langle f,Gf\rangle.
 \]
 
-Bombieri's kernel/column estimates give, for a zero ordinate of height \(|\gamma|\),
+For one coordinate vector \(e_\gamma\), let
+
+\[
+f_\gamma(u)=e^{-i\gamma u}
+\]
+
+and solve
+
+\[
+LF_\gamma=f_\gamma,
+\qquad
+F_\gamma(\pm t)=0.
+\]
+
+A particular solution is
+
+\[
+\frac{e^{-i\gamma u}}{\frac14+\gamma^2},
+\]
+
+and the Dirichlet correction is a linear combination of \(e^{u/2}\) and \(e^{-u/2}\). Because zeta ordinates stay in the fixed strip
+
+\[
+|\Im\gamma|<\frac12,
+\]
+
+the boundary data of the particular solution are \(O_t(|\gamma|^{-2})\), so the homogeneous correction is also \(O_t(|\gamma|^{-2})\) in \(L^2(-t,t)\). Hence
+
+\[
+\|F_\gamma\|_2
+\ll_t
+\frac1{1+|\gamma|^2},
+\qquad
+\|f_\gamma\|_2
+\ll_t1.
+\]
+
+Using
+
+\[
+\|f_\gamma\|_{H^{-1}_L}^2
+=
+\langle f_\gamma,Gf_\gamma\rangle
+=
+\langle f_\gamma,F_\gamma\rangle,
+\]
+
+we obtain
 
 \[
 \boxed{
@@ -682,15 +729,17 @@ Bombieri's kernel/column estimates give, for a zero ordinate of height \(|\gamma
 }
 \]
 
-The Riemann-von Mangoldt zero count gives
+Bombieri's equation (7.7) is consistent with the same high-height decay, but the Hilbert-space estimate above is the native proof used here; it does not identify Bombieri's complex-symmetric \(H\)-matrix with an ordinary Hilbert Gram matrix.
+
+The standard unit-height zero count gives
 
 \[
 N(T+1)-N(T)
 =
-O(\log(2+T)).
+O(\log(2+T))
 \]
 
-Therefore
+with multiplicity. Therefore
 
 \[
 \sum_{\gamma}
@@ -733,7 +782,7 @@ S_{{\rm off},+}S_{{\rm off},+}^*
 
 is trace class.
 
-**Standing:** DERIVED from Bombieri's kernel estimate + the zeta zero count.
+**Standing:** DERIVED from the direct Dirichlet-resolvent estimate above + the zeta zero count. Bombieri's kernel decay is corroborating/contextual for this theorem, not the Hilbert-Gram justification.
 
 ### Tail estimate
 
