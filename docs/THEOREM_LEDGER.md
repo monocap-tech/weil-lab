@@ -28,6 +28,7 @@ Horizon 1 now separates two axes.
 - **COMPOSITE-AUDIT-PENDING** — a packaged morphology theorem whose dependency/hypothesis assembly still requires final audit.
 - **COMPOSITE-AUDIT-PASSED** — the packaged morphology has passed the Horizon-1 dependency/hypothesis composition audit after any recorded narrowing corrections.
 - **SCOPE-ONLY** — no proof certification is claimed because the item is a scope rule rather than a theorem.
+- **EXAMPLE-AUDIT-PASSED** — explicit construction and its sharpness role passed the Horizon-1 internal examples audit.
 
 The legacy word **PROVED** in earlier files means “internal proof standing.” It does not mean independently certified proof.
 
@@ -114,7 +115,7 @@ Examples are not assigned theorem IDs.
 | WD-X06 | WD-E6 | Positive-coordinate mass loss can strengthen neutrality into negative persistence |
 | WD-X07 | ZW1-E1 | The inverse-square far order is universally sharp |
 
-All examples have verification status **P4-AUDIT-PENDING**.
+All examples have verification status **EXAMPLE-AUDIT-PASSED**. See [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md).
 
 ---
 
