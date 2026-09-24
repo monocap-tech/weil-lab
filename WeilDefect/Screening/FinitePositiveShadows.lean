@@ -97,7 +97,7 @@ theorem wd_t14_graph_admissibility_failure_example :
       change (ContinuousLinearMap.id ℂ ℂ)† =
         ContinuousLinearMap.id ℂ ℂ
       exact ContinuousLinearMap.adjoint_id
-    rw [hid]
+    rw [hid, star_ofNat]
   constructor
   · rw [hXadj]
     norm_num
