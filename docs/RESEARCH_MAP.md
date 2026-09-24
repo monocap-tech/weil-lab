@@ -23,7 +23,9 @@ Current position:
 \boxed{
 \text{H1-P0 COMPLETE}
 \qquad
-\text{H1-P1 ACTIVE}.
+\text{H1-P1 COMPLETE}
+\qquad
+\text{H1-P2 ACTIVE}.
 }
 \]
 
