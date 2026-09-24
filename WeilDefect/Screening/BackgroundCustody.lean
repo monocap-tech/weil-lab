@@ -63,7 +63,7 @@ theorem wd_t07_converse_failure :
     let I : ℂ →L[ℂ] ℂ := ContinuousLinearMap.id ℂ ℂ
     selectedQuadratic Z Z 1 = 0
       ∧ fullQuadratic Z Z I 1 < 0 := by
-  norm_num [selectedQuadratic, fullQuadratic]
+  simp [selectedQuadratic, fullQuadratic, ContinuousLinearMap.adjoint_id]
 
 /--
 A sharper scalar custody witness: full negativity is present at h=1 while
@@ -74,7 +74,7 @@ theorem wd_t07_full_negative_without_selected_negative :
     let I : ℂ →L[ℂ] ℂ := ContinuousLinearMap.id ℂ ℂ
     fullQuadratic Z Z I 1 < 0
       ∧ ¬ selectedQuadratic Z Z 1 < 0 := by
-  norm_num [selectedQuadratic, fullQuadratic]
+  simp [selectedQuadratic, fullQuadratic, ContinuousLinearMap.adjoint_id]
 
 /--
 WD-T07 assembled:
