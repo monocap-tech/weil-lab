@@ -102,9 +102,9 @@ theorem wd_t10_effective_covariance
   rw [ContinuousLinearMap.adjoint_comp]
   have hself := wd_t10_residual_sqrt_selfAdjoint X_B hXB
   rw [show (residualSqrt X_B)† = residualSqrt X_B from hself]
-  rw [← ContinuousLinearMap.comp_assoc]
+  rw [ContinuousLinearMap.comp_assoc
+    Spos (residualSqrt X_B) (residualSqrt X_B)]
   rw [wd_t10_residual_sqrt_sq X_B hXB]
-  rw [ContinuousLinearMap.comp_assoc]
 
 /--
 Background covariance elimination:
@@ -122,7 +122,7 @@ theorem wd_t10_background_covariance_elimination
     effectivePositive Spos X_B ∘L (effectivePositive Spos X_B)† := by
   rw [wd_t10_effective_covariance Spos X_B hXB]
   have hBadj := WDT09.adjoint_of_signed_factor Spos S_B X_B hB
-  rw [hB, hBadj]
+  rw [hBadj, hB]
   unfold residualBudget
   ext h
   simp only [ContinuousLinearMap.sub_apply,
@@ -145,9 +145,18 @@ theorem wd_t10_full_defect_reduction
     sharedDefect Spos S_M S_B
       =
     physicalDefect (effectivePositive Spos X_B) S_M := by
+  have hbg :=
+    wd_t10_background_covariance_elimination Spos S_B X_B hXB hB
   unfold sharedDefect physicalDefect
-  rw [← sub_sub]
-  rw [wd_t10_background_covariance_elimination Spos S_B X_B hXB hB]
+  calc
+    Spos ∘L Spos† - S_M ∘L S_M† - S_B ∘L S_B†
+        =
+      (Spos ∘L Spos† - S_B ∘L S_B†) - S_M ∘L S_M† := by
+        abel
+    _ =
+      effectivePositive Spos X_B ∘L
+        (effectivePositive Spos X_B)† - S_M ∘L S_M† := by
+        rw [hbg]
 
 /--
 Full quadratic nonnegativity is exactly physical nonnegativity of the reduced
