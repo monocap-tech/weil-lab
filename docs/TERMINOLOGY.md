@@ -477,3 +477,60 @@ These labels distinguish where arithmetic genuinely enters.
 The **explicit-formula side** is the prime/pole/archimedean representation of the same Weil quadratic form.
 
 It is not an additional positive screening sector and must not be added to \(K_+\) as though it supplied independent coefficient budget.
+
+
+## Raw residue vector
+
+Given a selected negative pair-coordinate vector \(u\), the **raw residue vector** \(v\) is obtained by undoing the canonical pair diagonalization back to the selected zero coordinates.
+
+For each negative pair channel, the two raw coefficients are equal and opposite.
+
+## Zero-moment law
+
+The **zero-moment law** is
+
+\[
+\mathbf1^Tv=0.
+\]
+
+It is a ZW-1 structural identity coming from antisymmetry of the negative pair channels.
+
+It is not a generic H1-P1 screening theorem and does not use the prime side of the explicit formula.
+
+## Rational response
+
+The **rational response** of a finite raw residue vector is
+
+\[
+R_v(z)
+=
+\sum_j\frac{v_j}{z-\rho_j}.
+\]
+
+Under the zero-moment law,
+
+\[
+R_v(z)=O(|z|^{-2}).
+\]
+
+The inverse-square order is the universal pair-geometric order unless additional moment cancellation is proved.
+
+## Native Problem-1 synthesis
+
+The **native Problem-1 synthesis** is Bombieri's Green-preconditioned zero synthesis into the Dirichlet \(H^{-1}\)-type physical carrier.
+
+For fixed support it is Hilbert-Schmidt, hence compact.
+
+This term distinguishes the actual Weil/Bombieri operator metric from unweighted exponential \(L^2\) models.
+
+## Unweighted mirror model
+
+An **unweighted mirror model** is an \(L^2/PW_t\) exponential or cosh/sinh sampling model in which the Green weights of native Problem 1 have been removed.
+
+Frame or sampling lower bounds in this model are auxiliary harmonic-analytic statements and are not automatically native Problem-1 coercivity estimates.
+
+## Metric separation
+
+**Metric separation** is the rule that a theorem proved in an unweighted exponential/sampling norm may not be transferred to the native Problem-1 \(H^{-1}\) operator without an explicit bounded comparison theorem.
+
+In particular, a stable unweighted frame does not contradict compactness of native Problem-1 synthesis.
