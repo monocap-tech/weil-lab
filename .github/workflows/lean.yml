@@ -10,9 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: leanprover/lean-action@v1
-        with:
-          build: true
+
+      - name: Install Elan
+        shell: bash
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve pinned dependencies
+        shell: bash
+        run: lake update
+
+      - name: Fetch mathlib cache
+        shell: bash
+        run: lake exe cache get
+
+      - name: Build Lean certificates
+        shell: bash
+        run: lake build
+
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |
