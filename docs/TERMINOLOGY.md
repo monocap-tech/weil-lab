@@ -311,3 +311,94 @@ Direct compression \(A\) and shorted covariance \(H_W\) have different inverse-c
 A **signature shadow** is a coordinate projection of an indefinite coefficient vector that preserves its algebraic sign margin but need not remain in the relevant analysis space.
 
 A signature shadow is not automatically an admissible persistent vector.
+
+
+## Right-limit analysis space
+
+For a monotone analysis-space filtration
+
+\[
+\mathcal A_s\subseteq\mathcal A_t
+\qquad(s<t),
+\]
+
+the **right-limit analysis space** at \(c\) is
+
+\[
+\mathcal A_{c+}
+=
+\bigcap_{t>c}\mathcal A_t.
+\]
+
+It contains coefficient vectors that persist at every support/observation scale immediately to the right of the endpoint.
+
+## Endpoint jump
+
+The **endpoint jump** is the Hilbert-space difference
+
+\[
+\mathcal J_c
+=
+\mathcal A_{c+}\ominus\mathcal A_c.
+\]
+
+A nonzero endpoint jump records failure of right continuity of the analysis-space filtration.
+
+When \(\mathcal A_c\) is \(J\)-nonnegative, any new right-limit negative index must inject into the quotient
+
+\[
+\mathcal A_{c+}/\mathcal A_c.
+\]
+
+## Right-persistent vector
+
+A **right-persistent vector** is a vector
+
+\[
+y\in\mathcal A_{c+}.
+\]
+
+It is **new at the endpoint** when
+
+\[
+y\notin\mathcal A_c.
+\]
+
+Negative and neutral persistence are sign-refined forms of this notion.
+
+## Boundary amplification
+
+Given a bounded physical realization
+
+\[
+\mathcal A_t
+=
+\overline{T(\mathscr H_t)},
+\]
+
+the **boundary amplification cost** of \(y\) is
+
+\[
+\mathfrak B_y(t,\varepsilon)
+=
+\inf
+\left\{
+\|h\|:
+h\in\mathscr H_t,\ 
+\|Th-y\|\le\varepsilon
+\right\}.
+\]
+
+For a genuinely new endpoint vector, this cost diverges as
+
+\[
+(t,\varepsilon)\to(c+,0).
+\]
+
+## Moving-sector escape
+
+A **moving-sector escape** occurs when the selected negative direction itself moves through an infinite coefficient space as the filtration approaches the endpoint.
+
+This can destroy every nonzero right-limit ray even when every stage contains a finite-dimensional negative direction.
+
+It is distinct from positive-coordinate mass loss with a fixed finite negative sector.
