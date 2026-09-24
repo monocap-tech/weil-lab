@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T09 | WeilDefect.WDT09.wd_t09_full_quadratic_factorization + WeilDefect.WDT09.wd_t09_shared_defect_factorization + WeilDefect.WDT09.wd_t09_full_nonnegative_iff_joint_budget + WeilDefect.WDT09.wd_t09_separate_contractions_not_joint + WeilDefect.WDT09.wd_t09_shared_screening_budget | LEAN-CERTIFIED |
 | WD-T08 | WeilDefect.WDT08.selected_adjoint_comp_injective + WeilDefect.WDT08.wd_t08_selected_negative_rank_le_finrank + WeilDefect.WDT08.wd_t08_background_null_finrank_lower + WeilDefect.WDT08.wd_t08_selected_negative_on_background_null + WeilDefect.WDT08.wd_t08_full_negative_rank_background_reduction + WeilDefect.WDT08.wd_t08_finite_selected_sector_index_cap | LEAN-CERTIFIED |
 | WD-T07 | WeilDefect.wd_t07_selected_full_identity + WeilDefect.wd_t07_selected_negative_implies_full + WeilDefect.WDT07.wd_t07_full_le_selected + WeilDefect.WDT07.wd_t07_negative_rank_custody + WeilDefect.WDT07.wd_t07_full_negative_without_selected_negative + WeilDefect.WDT07.wd_t07_selected_background_monotonicity_and_custody | LEAN-CERTIFIED |
 | WD-T06 | WeilDefect.WDT06.wd_t06_truncated_inner_identity + WeilDefect.WDT06.wd_t06_quadratic_mono + WeilDefect.WDT06.wd_t06_defect_mono + WeilDefect.WDT06.wd_t06_defect_le_full + WeilDefect.WDT06.wd_t06_defect_strong_tendsto + WeilDefect.WDT06.wd_t06_quadratic_tendsto + WeilDefect.WDT06.wd_t06_negative_rank_antitone + WeilDefect.WDT06.wd_t06_monotone_positive_screening | LEAN-CERTIFIED |
@@ -964,6 +965,129 @@ The run passed:
 - pinned dependency resolution;
 - mathlib cache retrieval;
 - single-module Lake build;
+- unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
+
+
+## WD-T09 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T09: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.WDT09.sharedDefect;
+- WeilDefect.WDT09.JointBudget;
+- WeilDefect.WDT09.FullNonnegative;
+- WeilDefect.WDT09.adjoint_of_signed_factor;
+- WeilDefect.WDT09.wd_t09_full_quadratic_factorization;
+- WeilDefect.WDT09.wd_t09_shared_defect_factorization;
+- WeilDefect.WDT09.wd_t09_full_nonnegative_iff_joint_budget;
+- WeilDefect.WDT09.wd_t09_separate_contractions_not_joint;
+- WeilDefect.WDT09.wd_t09_shared_screening_budget.
+
+The certificate is stated on the reduced positive carrier, encoded by
+
+\[
+\ker S_+=0,
+\]
+
+which is the abstract theorem's \((\ker S_+)^\perp\) target treated as its
+own Hilbert carrier.
+
+Under exact signed screening factorizations
+
+\[
+S_M=-S_+X_M,
+\qquad
+S_B=-S_+X_B,
+\]
+
+Lean verifies the operator identity
+
+\[
+D_{\rm full}
+=
+S_+
+\left(
+I-X_MX_M^*-X_BX_B^*
+\right)
+S_+^*.
+\]
+
+It also proves natively that full nonnegativity is equivalent to the shared
+quadratic budget
+
+\[
+\|X_M^*a\|^2+\|X_B^*a\|^2
+\le
+\|a\|^2
+\qquad
+\forall a.
+\]
+
+For the reverse implication from full physical nonnegativity to the global
+coefficient-space budget, Lean uses
+
+\[
+\overline{\operatorname{Ran}S_+^*}
+=
+(\ker S_+)^\perp
+=
+K_+,
+\]
+
+and closure of the budget inequality. Thus no Douglas factorization theorem
+premise is consumed by the WD-T09 certificate.
+
+The file imports the Douglas module only to reuse the IsContraction definition
+in the explicit separate-versus-joint counterexample. It does not consume
+DouglasUnitData or any imported theorem premise.
+
+Lean also certifies that separate unit bounds are insufficient: with both
+screening maps equal to the identity on \(\mathbb C\), each individual map
+has norm one, while the joint budget fails at \(a=1\).
+
+The first WD-T09 build exposed only local elaboration issues: theorem
+visibility, rewrite order, closed-set construction, and final scalar
+arithmetic. These were repaired without changing the theorem statement or
+mathematical hypotheses.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.BackgroundCustody}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36019357419}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{f08c8f8a5639e1cf9d23b6381ca852c6c2e1007a}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{eec7e8db876cf2504bc3cca349b68bb60d93a626}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T09-containing module;
 - unfinished-proof/project-axiom rejection.
 
 No other stable theorem ID is promoted by this run.
