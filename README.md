@@ -20,7 +20,7 @@ The project separates two mathematical layers that must not be conflated:
 The first layer can be developed and audited independently of the second. The
 working architecture is
 
-$$
+```math
 \boxed{
 \text{finite negative index}
 \longrightarrow
@@ -31,7 +31,7 @@ $$
 \text{neutral persistence}.
 \end{cases}
 }
-$$
+```
 
 Only after this defect geometry is isolated does the program ask whether the
 **actual zeta divisor** can realize the remaining branches.
@@ -66,9 +66,9 @@ Project terms such as **horizon**, **phase**, **standing**, **interface**,
 
 The abstract defect calculus is organized around
 
-$$
-D=S_+S_+^*-S_-S_-^*,
-$$
+```math
+D=S_{+}S_{+}^{*}-S_{-}S_{-}^{*},
+```
 
 with the sign problem reduced to contractive Douglas screening. For a fixed
 finite selected negative sector, critical or negative right-approach forces a
@@ -77,23 +77,23 @@ neutral branch therefore requires an infinite or moving-sector mechanism.
 
 Under the zeta-Weil specialization, a selected residue vector satisfies
 
-$$
-\mathbf 1^T v=0,
-$$
+```math
+\mathbf{1}^{T}v=0,
+```
 
 which forces
 
-$$
-R_v(z)=O(|z|^{-2}).
-$$
+```math
+R_{v}(z)=O(|z|^{-2}).
+```
 
 The explicit-formula attachment sharpens the far-field contribution to
 
-$$
-\mathcal F_{v,R}
+```math
+\mathcal{F}_{v,R}
 =
 O\!\left(\frac{\log R}{R}\right),
-$$
+```
 
 leaving a weighted completed-$\Xi$ next-jet field as the negative-branch
 arithmetic obstruction.
@@ -101,9 +101,9 @@ arithmetic obstruction.
 On the neutral branch, fixed compact support produces only finitely many
 prime-power translations, with principal order
 
-$$
-\Psi_c(t)=\log|t|+O_c(1).
-$$
+```math
+\Psi_{c}(t)=\log|t|+O_{c}(1).
+```
 
 These statements are packaged in the negative, neutral, and noncompact
 morphology documents linked below.
@@ -120,7 +120,7 @@ morphology documents linked below.
 | Quartet zero-moment law | Internal proof in the selected quartet model |
 | $O(|z|^{-2})$ far-field decay | Internal proof |
 | Weighted next-jet localization | Exact reduction |
-| Compact-window neutral equation $W_c k=0$ | Conditional theorem |
+| Compact-window neutral equation $W_{c}k=0$ | Conditional theorem |
 | Fixed-window log-order operator + finite prime shifts | Derived |
 | Actual-zeta next-jet exclusion | Open |
 | Neutral null-extension rigidity | Open |
@@ -133,27 +133,27 @@ standing, and verification state.
 
 Horizon 1 deliberately stops before the following actual-zeta obligations:
 
-- \`AZ-NEXTJET-LOC\` — control or exclusion of the weighted near next-jet field.
-- \`C-ACTUAL-KPH-FLOOR\` — stronger special-packet KPH/transversality floor.
-- \`AZ-FIN-WEIL-NULL-EXTENSION\` — exterior support/null-extension rigidity for
+- `AZ-NEXTJET-LOC` — control or exclusion of the weighted near next-jet field.
+- `C-ACTUAL-KPH-FLOOR` — stronger special-packet KPH/transversality floor.
+- `AZ-FIN-WEIL-NULL-EXTENSION` — exterior support/null-extension rigidity for
   an actual compact-window neutral mode.
 
 The negative morphology reaches the first interface after
 
-$$
-\mathbf 1^T v=0
+```math
+\mathbf{1}^{T}v=0
 \quad\Longrightarrow\quad
-R_v(z)=O(|z|^{-2})
+R_{v}(z)=O(|z|^{-2})
 \quad\Longrightarrow\quad
-\mathcal F_{v,R}=O\!\left(\frac{\log R}{R}\right).
-$$
+\mathcal{F}_{v,R}=O\!\left(\frac{\log R}{R}\right).
+```
 
 The neutral morphology reaches the third interface from the compact-window
 equation
 
-$$
-W_c k=0.
-$$
+```math
+W_{c}k=0.
+```
 
 These interfaces are downstream obligations; none is imported upstream to
 prove the Horizon-1 morphology theorem that reaches it.
