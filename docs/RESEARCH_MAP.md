@@ -329,7 +329,7 @@ H1-P2 must determine whether any remaining zeta-Weil critical sequence without a
 - representative blow-up;
 - moving-sector escape.
 
-### B. Zeta-Weil attachment — ACTIVE
+### B. Zeta-Weil attachment — COMPLETE
 
 - quartet channel decomposition;
 - selected/unselected divisor decomposition;
@@ -508,15 +508,24 @@ Thus
 \textbf{H1-P3 — DEFECT MORPHOLOGY THEOREM: COMPLETE.}
 \]
 
+## H1-P4.0 disposition
+
+Stable theorem labels and the normalized dependency graph are now canonical:
+
+- [Theorem Ledger](THEOREM_LEDGER.md);
+- [Dependency Audit](DEPENDENCY_AUDIT.md).
+
+The dependency graph is acyclic at the Horizon-1 level, and the RH-facing interfaces occur only downstream of the morphology theorems.
+
 ## Current cursor
 
 \[
 \boxed{
-\texttt{H1-P4.0 / THEOREM LEDGER AND DEPENDENCY AUDIT}
+\texttt{H1-P4.1 / IMPORTED SOURCE PINNING}
 }
 \]
 
-The next phase should add no new mathematical claims. It should normalize labels, dependencies, source boundaries, proof standing, and audit completeness.
+The next pass should pin every load-bearing external theorem/formula to its exact source location and normalize the conventions inherited from it.
 
 ---
 
