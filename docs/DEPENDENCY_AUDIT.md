@@ -544,9 +544,9 @@ WD-T01 through WD-T36 are P4-AUDIT-PASSED at the internal Horizon-1 level.
 
 Corrections and theorem-by-theorem findings are recorded in [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
-## P4.3 — Composite morphology audit
+## P4.3 — Composite morphology audit — COMPLETE
 
-Check WD-T37 through WD-T39 by expanding every composite dependency and confirming that no branch hypothesis is silently strengthened.
+WD-T37 through WD-T39 are COMPOSITE-AUDIT-PASSED after the scope corrections recorded in [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
 
 ## P4.4 — Examples and sharpness audit
 
@@ -613,3 +613,16 @@ Five audit-level corrections were applied:
 See [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
 This status is internal audit only, not independent certification.
+
+
+---
+
+# 12. P4.3 composite-audit disposition
+
+WD-T37 through WD-T39 are now COMPOSITE-AUDIT-PASSED.
+
+The composite audit applied seven scope corrections across carrier identification, multiplier uniformity, prime-threshold conventions, full-coordinate escape, and weak/strong convergence.
+
+See [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
+
+No RH-facing interface was imported upstream.
