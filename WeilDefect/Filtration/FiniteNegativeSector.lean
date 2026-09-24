@@ -69,10 +69,12 @@ theorem exists_weaklyTendsto_subseq_of_norm_le
           Metric.closedBall (0 : StrongDual ℂ S) R := by
     intro n
     change dist (WeakDual.toStrongDual (f n)) 0 ≤ R
-    simpa [f, vS] using hv n
+    change dist (InnerProductSpace.toDual ℂ S (vS n)) 0 ≤ R
+    rw [dist_zero_right, (InnerProductSpace.toDual ℂ S).norm_map]
+    simpa [vS] using hv n
   rcases
       (WeakDual.isSeqCompact_closedBall
-        (0 : StrongDual ℂ S) R) hfmem with
+        ℂ S (0 : StrongDual ℂ S) R) hfmem with
     ⟨fLim, hfLim, φ, hφ, hconv⟩
   let xS : S :=
     (InnerProductSpace.toDual ℂ S).symm
@@ -118,7 +120,8 @@ theorem weaklyTendsto_norm_le
   have hlim :
       ‖inner ℂ x x‖ ≤ R * ‖x‖ :=
     le_of_tendsto hinner hbound
-  rw [inner_self_eq_norm_sq] at hlim
+  have hlim' : ‖x‖ ^ 2 ≤ R * ‖x‖ := by
+    simpa [inner_self_eq_norm_sq_to_K] using hlim
   nlinarith
 
 /-- Weak limits inherit any uniform squared-norm upper bound. -/
@@ -147,7 +150,7 @@ theorem exists_tendsto_subseq_finiteDimensional
     ∃ φ : ℕ → ℕ, StrictMono φ ∧
       ∃ uLim : M, Tendsto (fun n => u (φ n)) atTop (𝓝 uLim) := by
   have hcompact : IsCompact (Metric.closedBall (0 : M) R) :=
-    Metric.isCompact_closedBall
+    isCompact_closedBall (0 : M) R
   have hmem : ∀ n, u n ∈ Metric.closedBall (0 : M) R := by
     intro n
     simpa [Metric.mem_closedBall] using hu n
@@ -320,7 +323,9 @@ theorem wd_t16_uniform_negative_margin_persists
     nlinarith [sq_nonneg ‖a 0‖]
   have haSq :
       ‖aLim‖ ^ 2 ≤ (1 - κ) / 2 := by
-    apply weaklyTendsto_norm_sq_le hB
+    apply weaklyTendsto_norm_sq_le
+      (v := fun n => a (φ n)) (x := aLim)
+      (B := (1 - κ) / 2) hB
     · intro n
       have h := hapos (φ n)
       linarith
@@ -346,8 +351,9 @@ theorem wd_t16_uniform_negative_margin_persists
     linarith
   have huNonzero : uLim ≠ 0 := by
     intro hu0
-    rw [hu0, norm_zero, zero_pow] at huSq
-    nlinarith
+    subst uLim
+    norm_num at huSq
+    linarith
   have hyNonzero : coeff aLim uLim ≠ 0 := by
     intro hy0
     have hsnd := congrArg (fun y : CoeffSpace Kpos M => y.snd) hy0
