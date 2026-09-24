@@ -115,6 +115,91 @@ theorem wd_t11_sigma_eq_one_iff_eigenvalue_eq_one
     rw [h] at hs
     nlinarith
 
+/--
+The active graph form is diagonal in the covariance eigenbasis, with one
+weight 1 - sigma_i^2 per active singular direction.
+-/
+theorem wd_t11_graphQ_diagonal
+    (Y : M →L[ℂ] Kpos)
+    (a : ActiveCarrier Y) :
+    activeGraphQ Y a
+      =
+    ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
+      (1 - activeSigma Y i ^ 2) *
+        ‖(activeEigenbasis Y).repr a i‖ ^ 2 := by
+  let W := activeAdjoint Y
+  let A := W† ∘L W
+  let b := activeEigenbasis Y
+  have hnormA :
+      ‖a‖ ^ 2 =
+        ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
+          ‖b.repr a i‖ ^ 2 := by
+    calc
+      ‖a‖ ^ 2 = ‖b.repr a‖ ^ 2 := by
+        rw [b.repr.norm_map]
+      _ = ∑ i, ‖b.repr a i‖ ^ 2 :=
+        EuclideanSpace.norm_sq_eq (b.repr a)
+  have hinner :
+      inner ℂ (A a) a = inner ℂ (W a) (W a) := by
+    unfold A
+    simp only [ContinuousLinearMap.comp_apply]
+    exact ContinuousLinearMap.adjoint_inner_left W a (W a)
+  have hdiag :
+      inner ℂ (A a) a
+        =
+      ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
+        (((W.toLinearMap.isSymmetric_adjoint_comp_self.eigenvalues rfl i : ℝ) : ℂ) *
+          ((‖b.repr a i‖ ^ 2 : ℝ) : ℂ)) := by
+    calc
+      inner ℂ (A a) a
+          = inner ℂ (b.repr (A a)) (b.repr a) := by
+              symm
+              exact b.repr.inner_map_map (A a) a
+      _ = ∑ i,
+          inner ℂ ((b.repr (A a)) i) ((b.repr a) i) := by
+              exact PiLp.inner_apply (b.repr (A a)) (b.repr a)
+      _ = ∑ i,
+          (((W.toLinearMap.isSymmetric_adjoint_comp_self.eigenvalues rfl i : ℝ) : ℂ) *
+            ((‖b.repr a i‖ ^ 2 : ℝ) : ℂ)) := by
+              apply Finset.sum_congr rfl
+              intro i _
+              have hcoord :=
+                W.toLinearMap.isSymmetric_adjoint_comp_self.eigenvectorBasis_apply_self_apply
+                  (rfl : finrank ℂ (ActiveCarrier Y) = finrank ℂ (ActiveCarrier Y))
+                  a i
+              change
+                inner ℂ ((b.repr (A a)) i) ((b.repr a) i)
+                  =
+                _
+              change
+                (b.repr (A a)) i
+                  =
+                _ at hcoord
+              rw [hcoord]
+              simp [RCLike.inner_apply, Complex.normSq_eq_abs]
+  have hnormW :
+      ‖W a‖ ^ 2 =
+        ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
+          activeSigma Y i ^ 2 * ‖b.repr a i‖ ^ 2 := by
+    have hc :
+        (((‖W a‖ ^ 2 : ℝ) : ℂ))
+          =
+        ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
+          (((activeSigma Y i ^ 2 * ‖b.repr a i‖ ^ 2 : ℝ) : ℂ)) := by
+      rw [← inner_self_eq_norm_sq_to_K]
+      rw [← hinner, hdiag]
+      apply Finset.sum_congr rfl
+      intro i _
+      rw [wd_t11_sigma_sq_eq_eigenvalue Y i]
+      norm_cast
+    exact_mod_cast hc
+  unfold activeGraphQ
+  rw [hnormA, hnormW]
+  rw [← Finset.sum_sub_distrib]
+  apply Finset.sum_congr rfl
+  intro i _
+  ring
+
 /-- Spectral indices carrying negative graph directions. -/
 noncomputable def negativeIndices (Y : M →L[ℂ] Kpos) :
     Finset (Fin (finrank ℂ (ActiveCarrier Y))) :=
