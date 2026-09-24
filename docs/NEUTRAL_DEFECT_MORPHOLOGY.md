@@ -731,7 +731,7 @@ Assume:
    C_cu=P_c^{*}k;
    ```
 7. $N_c=-P_cC_c$;
-8. the physical realization above is the same compact-window Weil form/operator realization used in H1-P2.2, with (k) in its form domain.
+8. the physical realization above is the same compact-window Weil form/operator realization used in H1-P2.2, with \(k\) in its form domain.
 
 Then:
 
@@ -862,7 +862,7 @@ whose operator is
 }
 ```
 
-with no automatic positive-order regularity gain.
+with no uniform positive-Sobolev coercive gain supplied by the retained form estimate.
 
 The unresolved question is purely a fixed-vector exterior support/null-extension problem.
 
