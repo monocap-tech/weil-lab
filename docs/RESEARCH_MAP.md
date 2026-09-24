@@ -29,13 +29,15 @@ Current position:
 }
 \]
 
-The RH-facing statements at the bottom of this map are **interfaces out of Horizon 1**, not Horizon-1 completion requirements. Terminology is governed by the [Terminology Registry](TERMINOLOGY.md).
+The RH-facing statements at the bottom of this map are **interfaces out of Horizon 1**, not Horizon-1 completion requirements.
 
+---
 
+## H1-P1 abstract core
 
-## Abstract screening normal form
+### 1. Defect operator and screening
 
-H1-P1.0 has extracted a zeta-independent synthesis model. For
+For
 
 \[
 E(x,u)=S_+x+S_-u
@@ -76,7 +78,127 @@ When exact range inclusion holds, the Douglas reduced solution gives
 }
 \]
 
-The abstract screening taxonomy is therefore:
+See [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md).
+
+### 2. Selected/background transfer
+
+For a selected finite negative sector \(M\) and negative background \(B\),
+
+\[
+D_{\rm full}
+=
+D_M-S_BS_B^*.
+\]
+
+Selected negativity survives aggregation, but aggregate negativity does not preserve selected-sector custody.
+
+If the background is contractively screened with reduced map \(X_B\), define
+
+\[
+R_B=I-X_BX_B^*
+\]
+
+and
+
+\[
+S_{\rm eff}=S_+R_B^{1/2}.
+\]
+
+Then the selected problem re-enters the same calculus:
+
+\[
+\boxed{
+D_{\rm full}
+=
+S_{\rm eff}S_{\rm eff}^*
+-
+S_MS_M^*.
+}
+\]
+
+For fixed finite \(M\), the reduced residual screening map \(Y\) satisfies
+
+\[
+\boxed{
+\operatorname{ind}_-
+=
+\#\{j:\sigma_j(Y)>1\},
+}
+\]
+
+and
+
+\[
+\boxed{
+\operatorname{nul}_J
+=
+\#\{j:\sigma_j(Y)=1\}.
+}
+\]
+
+See [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md).
+
+### 3. Support filtration and persistence
+
+For a monotone family
+
+\[
+\mathcal A_s\subseteq\mathcal A_t
+\qquad(s<t),
+\]
+
+the right-limit space is
+
+\[
+\boxed{
+\mathcal A_{c+}
+=
+\bigcap_{t>c}\mathcal A_t.
+}
+\]
+
+Its endpoint jump is
+
+\[
+\boxed{
+\mathcal J_c
+=
+\mathcal A_{c+}\ominus\mathcal A_c.
+}
+\]
+
+With a fixed finite negative sector, any normalized right-approaching sequence with
+
+\[
+[y_n,y_n]_J\to q_*\le0
+\]
+
+has a nonzero right-limit vector
+
+\[
+y\in\mathcal A_{c+}
+\]
+
+satisfying
+
+\[
+[y,y]_J\le q_*.
+\]
+
+At criticality, either:
+
+- the positive coordinates converge strongly and \(y\) is neutral; or
+- positive coefficient mass is lost and \(y\) becomes strictly negative.
+
+Thus non-attained approximate neutrality without persistence requires an infinite or moving negative-sector mechanism.
+
+Under a bounded physical realization, every genuinely new endpoint vector has diverging representation cost.
+
+See [Support Filtration and Persistence Limits](SUPPORT_FILTRATION_PERSISTENCE.md).
+
+---
+
+## Abstract screening taxonomy
 
 \[
 \boxed{
@@ -100,120 +222,140 @@ The abstract screening taxonomy is therefore:
 }
 \]
 
-See [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md).
-
-H1-P1.1 now adds the selected/background transfer rule. For a finite selected negative sector (M) and background (B),
-
-[
-D_{m full}=D_M-S_BS_B^*,
-]
-
-so selected negativity survives aggregation but aggregate negativity does not preserve selected custody.
-
-If the background is contractively screenable with reduced map (X_B), define
-
-[
-R_B=I-X_BX_B^*,
-qquad
-S_{m eff}=S_+R_B^{1/2}.
-]
-
-Then the selected problem restarts as
-
-[
-D_{m full}
-=
-S_{m eff}S_{m eff}^*
--
-S_MS_M^*.
-]
-
-For fixed finite (M), the reduced residual screening map (Y) satisfies
-
-[
-operatorname{ind}_-
-=
-#{sigma_j(Y)>1},
-qquad
-operatorname{nul}_J
-=
-#{sigma_j(Y)=1}.
-]
-
-Therefore non-attained approximate neutrality can arise only through an infinite or moving limiting mechanism, not from a single fixed finite selected packet.
-
-See [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md).
-
-## Core dependency graph
+H1-P1.2 refines the last line:
 
 \[
 \boxed{
-\begin{array}{c}
-\text{finite Weil negative index}\\
-\downarrow\\
-\text{finite negative modes}\\
-\downarrow\\
-\text{infinite spectral screening}
-\end{array}
+\text{fixed finite selected sector}
++
+\text{right-approach}
+\Longrightarrow
+\text{actual nonpositive right-limit ray}.
 }
 \]
 
-The zeta-specific work had isolated two explicit branches, but H1-P1.0 shows that the abstract screening boundary contains an additional non-attained critical case. Its zeta-Weil status remains to be determined in H1-P2/P3:
+Hence the genuinely nonpersistent approximate-neutral case belongs to moving/infinite-sector noncompactness.
+
+---
+
+## Zeta-Weil branches already identified
+
+The prior zeta traversal explicitly produced two arithmetic morphologies that H1-P2 must now attach to the abstract carriers.
+
+### Negative-persistence branch
 
 \[
-\begin{array}{ccc}
-&\text{screening boundary}&\\
-\swarrow && \searrow\\
-\textbf{negative persistence}&&\textbf{neutral persistence}\\
-\downarrow&&\downarrow\\
-\text{normalized negative ray}&&W_ck=0\\
-\downarrow&&\downarrow\\
-\mathbf1^Tv=0&&
-\log|D|+\text{finite shifts}+\text{pole}\\
-\downarrow&&\downarrow\\
-O(z^{-2})&&
-\text{logarithmic regularity only}\\
-\downarrow&&\downarrow\\
-\text{weighted next-jet localization}&&
-\text{null-extension/support rigidity}
-\end{array}
+\boxed{
+\text{persistent negative ray}
+\Longrightarrow
+\mathbf1^Tv=0
+\Longrightarrow
+R_v(z)=O(|z|^{-2})
+\Longrightarrow
+\text{weighted near next-jet field}.
+}
 \]
 
-Only after the negative and attained-neutral branches are understood—and the approximate-neutral branch is either specialized or excluded—does the actual-zeta RH-facing problem begin.
+The surviving arithmetic object is
+
+\[
+\mathcal N_v[\psi]
+=
+\sum_{\mu\notin F}^{\rm near}
+m_\mu\psi(\mu)
+\frac{H_v^{(m_\mu)}(\mu)}
+{\Xi^{(m_\mu)}(\mu)}.
+\]
+
+### Neutral branch
+
+\[
+\boxed{
+\text{neutral persistence}
+\Longrightarrow
+W_ck=0.
+}
+\]
+
+At fixed support,
+
+\[
+\mathcal W_c
+=
+\mathcal A_\infty
+-
+\sum_{\log n<2c}
+\frac{\Lambda(n)}{\sqrt n}
+(\tau_{\log n}+\tau_{-\log n})
++
+\mathcal R_{\rm pole},
+\]
+
+with principal symbol
+
+\[
+\Psi_c(t)=\log|t|+O_c(1).
+\]
+
+### Approximate-neutral question
+
+H1-P2 must determine whether any remaining zeta-Weil critical sequence without an attained neutral mode is caused by:
+
+- a moving selected packet;
+- an infinite negative background;
+- positive-coordinate escape;
+- or another explicitly identified noncompactness mechanism.
+
+---
 
 ## Three layers
 
-### A. General defect structure
+### A. General defect structure — COMPLETE
 
-Objects intended to survive abstraction away from zeta-specific arithmetic:
+- defect operator and negative-index transfer;
+- Douglas screening;
+- rank-one specialization;
+- shared screening budgets;
+- background elimination;
+- finite-sector singular-value inertia;
+- shorted covariance;
+- support filtration;
+- endpoint jumps;
+- persistent-ray compactness;
+- representative blow-up;
+- moving-sector escape.
 
-- finite negative index;
-- finite-to-infinite spectral screening;
-- rank-one positivity defects;
-- negative versus neutral persistence;
-- operator-null modes;
-- graph/minimum-compensator relations.
+### B. Zeta-Weil attachment — ACTIVE
 
-### B. Zeta-Weil attachment
-
-Objects using the actual quartet/explicit-formula geometry:
-
-- antisymmetric quartet residue coordinates;
+- quartet channel decomposition;
+- selected/unselected divisor decomposition;
 - zero-moment conservation;
 - \(O(z^{-2})\) rational far field;
 - completed-\(\Xi\) weighted next jets;
 - compact-window prime shifts;
 - logarithmic archimedean order.
 
-### C. RH-facing exclusion
-
-The unresolved statements that must attach the abstract machinery to the actual zeta divisor:
+### C. RH-facing exclusion — OUTSIDE HORIZON 1
 
 - worst-packet next-jet control;
-- an actual KPH floor or equivalent transversality statement;
+- actual KPH floor or equivalent transversality;
 - neutral null-extension/support rigidity.
 
-## Current frontier
+---
+
+## Current cursor
+
+\[
+\boxed{
+\texttt{H1-P2.0 / ZETA-WEIL SPECIALIZATION MAP}
+}
+\]
+
+The next pass must map each zeta-Weil object onto its exact H1-P1 carrier before any arithmetic strengthening is promoted.
+
+---
+
+## RH-facing interfaces
 
 ### Negative branch
 
@@ -223,7 +365,17 @@ The unresolved statements that must attach the abstract machinery to the actual 
 }
 \]
 
-or an equivalent actual-zeta theorem excluding the required weighted near-field compensation.
+or an equivalent actual-zeta theorem controlling the required weighted near-field compensation.
+
+### Selected screening floor
+
+\[
+\boxed{
+\texttt{C-ACTUAL-KPH-FLOOR}
+}
+\]
+
+or an equivalent packetwise transversality theorem.
 
 ### Neutral branch
 
@@ -234,23 +386,3 @@ or an equivalent actual-zeta theorem excluding the required weighted near-field 
 \]
 
 or an equivalent support theorem for the logarithmic-order compact-window operator.
-
-## Current H1-P1 cursor
-
-[
-oxed{
-	exttt{H1-P1.2 / SUPPORT FILTRATION AND PERSISTENCE LIMITS}
-}
-]
-
-The remaining abstraction target is the support/observation filtration: right-limit analysis spaces, persistence across a critical endpoint, representative blow-up, and moving finite-sector limits.
-
-## Next consolidation pass
-
-The next theorem-extraction pass should minimize hypotheses and classify each result as one of:
-
-1. **general Weil/Pontryagin defect theorem**;
-2. **zeta-Weil theorem**;
-3. **RH-facing corollary or open obligation**.
-
-The goal is to make the first two categories independently intelligible even if the third remains open.
