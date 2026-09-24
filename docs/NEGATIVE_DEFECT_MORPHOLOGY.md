@@ -872,7 +872,9 @@ The negative morphology theorem consumes:
 \begin{array}{c}
 \text{WD-C5 / fixed-sector persistence}\\
 \downarrow\\
-\text{WD-C7,C9 / representative blow-up}\\
+\text{direct selected-amplitude blow-up}\\
+\downarrow\\
+\text{WD-C7 only under common-carrier realization}\\
 \downarrow\\
 \text{WD-B1 / selected-full negativity}\\
 \downarrow\\
