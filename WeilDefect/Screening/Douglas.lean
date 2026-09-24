@@ -93,12 +93,7 @@ theorem reduced_neg_iff
     (B : Kpos →L[ℂ] H)
     (C : Kneg →L[ℂ] Kpos) :
     IsReducedFor B (-C) ↔ IsReducedFor B C := by
-  constructor <;> intro h u k hk
-  · have hh := h u k hk
-    simpa [IsReducedFor] using neg_eq_zero.mp (by
-      simpa [IsReducedFor] using congrArg Neg.neg hh)
-  · have hh := h u k hk
-    simpa [IsReducedFor, hh]
+  simp [IsReducedFor]
 
 /--
 Unique reduced solution in the signed project convention.
