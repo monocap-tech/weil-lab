@@ -2,84 +2,146 @@
 
 This file records the standing of the current Weil-defect results. It is deliberately stricter than the project README.
 
-## H1-P1 abstract theorem package
+## Standing labels
 
-The first abstraction pass has produced the following zeta-independent results.
+- **PROVED** — established within the stated framework/hypotheses.
+- **CONDITIONAL** — proved assuming an explicitly named branch condition.
+- **DERIVED** — exact reformulation or reduction from retained inputs.
+- **IMPORTED** — external theorem used with explicit scope.
+- **PROVED EXAMPLE** — explicit construction establishing possibility or sharpness.
+- **OPEN** — required later but not established.
+
+---
+
+# H1-P1 — Abstract defect calculus
+
+H1-P1 is complete.
+
+## H1-P1.0 — Abstract screening
 
 | Label | Statement | Standing |
 | --- | --- | --- |
-| WD-A1 | (J)-sign on the analysis space is represented by (D=S_+S_+^*-S_-S_-^*), with matching negative index | PROVED |
-| WD-A2 | (D\succeq0) iff the negative synthesis factors contractively through the positive synthesis | PROVED using imported Douglas factorization |
-| WD-A3 | Under exact range inclusion, the analysis space is (operatorname{graph}(-X^*)) for the reduced screening solution | PROVED |
-| WD-A4 | Complete screening taxonomy: range defect, over-budget negative, strict positive, attained neutral, non-attained approximate-neutral | PROVED |
+| WD-A1 | The \(J\)-form on the analysis space is represented by \(D=S_+S_+^*-S_-S_-^*\), with matching negative index | PROVED |
+| WD-A2 | \(D\succeq0\) iff the negative synthesis factors contractively through the positive synthesis | PROVED using IMPORTED Douglas factorization |
+| WD-A3 | Under exact range inclusion, the analysis space is \(\operatorname{graph}(-X^*)\) for the reduced screening solution | PROVED |
+| WD-A4 | Screening taxonomy: range defect, over-budget negative, strict positive, attained neutral, non-attained approximate-neutral | PROVED |
 | WD-A5 | The rank-one defect is the one-negative-channel specialization | PROVED |
 | WD-A6 | Increasing positive channels give monotone Loewner screening and nonincreasing negative index | PROVED |
 | WD-E1 | Finite strict negativity can screen completely to zero in the infinite limit | PROVED EXAMPLE |
 | WD-E2 | Critical screening norm need not produce an actual neutral vector | PROVED EXAMPLE |
 
-The canonical statements and proofs are in [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md).
+Canonical source: [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md).
 
-A major correction follows:
+The key correction is
 
-[
-oxed{
-	ext{zero screening margin}
-
-otRightarrow
-	ext{existence of a neutral vector}.
+\[
+\boxed{
+\text{zero screening margin}
+\not\Rightarrow
+\text{actual neutral vector}.
 }
-]
+\]
 
-The norm-one screening operator may fail to attain its norm, producing only an approximate-neutral sequence.
+In infinite dimension, the norm-one screening operator may fail to attain its norm.
 
 ---
 
-## H1-P1.1 restricted-channel theorem package
+## H1-P1.1 — Restricted channels and finite index
 
 | Label | Statement | Standing |
 | --- | --- | --- |
 | WD-B1 | Selected negativity survives addition of negative background; converse custody fails | PROVED |
-| WD-B2 | An (m)-dimensional selected negative sector creates at most (m) negative directions | PROVED |
+| WD-B2 | An \(m\)-dimensional selected negative sector creates at most \(m\) negative directions | PROVED |
 | WD-B3 | Selected and background channels consume one shared screening budget | PROVED |
 | WD-B4 | Contractively screenable background reduces to a residual positive synthesis | PROVED |
 | WD-B5 | Finite selected-sector inertia is counted by singular values of the reduced residual screening map | PROVED |
 | WD-B6 | Legitimate residual-budget elimination can be iterated | PROVED |
-| WD-B7 | Complement elimination replaces direct compression by a Schur/shorted covariance | PROVED in the strictly positive setting |
+| WD-B7 | Complement elimination replaces direct compression by a Schur/shorted covariance | PROVED in strictly positive setting |
 | WD-B8 | Finite positive shadows preserve negative signature but not analysis-space admissibility | PROVED |
 | WD-E3 | Individually screenable channels need not be jointly screenable | PROVED EXAMPLE |
 | WD-E4 | Direct finite-target covariance can stay strong while shorted covariance collapses | PROVED EXAMPLE |
 
-A fixed finite selected sector has no non-attained critical branch: if its reduced residual screening map (Y) has (|Y|=1), finite rank forces norm attainment and therefore an actual neutral mode.
+Canonical source: [Restricted-Channel and Finite-Index Transfer](RESTRICTED_CHANNEL_TRANSFER.md).
 
-See [Restricted-Channel and Finite-Index Transfer](RESTRICTED_CHANNEL_TRANSFER.md).
+For a fixed finite selected sector with reduced residual screening map \(Y\),
+
+\[
+\boxed{
+\operatorname{ind}_-
+=
+\#\{j:\sigma_j(Y)>1\},
+}
+\]
+
+and
+
+\[
+\boxed{
+\operatorname{nul}_J
+=
+\#\{j:\sigma_j(Y)=1\}.
+}
+\]
+
+Therefore
+
+\[
+\boxed{
+\|Y\|=1
+\Longrightarrow
+\text{an actual neutral vector exists}.
+}
+\]
+
+A fixed finite selected sector cannot realize the non-attained critical morphology by itself.
 
 ---
 
-## H1-P1.2 support-filtration theorem package
+## H1-P1.2 — Support filtration and persistence
 
 | Label | Statement | Standing |
 | --- | --- | --- |
 | WD-C1 | Monotone analysis-space projections converge strongly to the right-limit projection | PROVED |
 | WD-C2 | Right-limit analysis space is the orthogonal complement of the limiting gap union | PROVED |
-| WD-C3 | Fixed finite negative sectors force a nonzero nonpositive right-limit ray | PROVED |
-| WD-C4 | Critical sequences give either a neutral right-limit vector or a stricter negative limit via positive-mass loss | PROVED |
+| WD-C3 | Fixed finite negative sectors force a nonzero nonpositive right-limit ray from any unit critical/negative sequence | PROVED |
+| WD-C4 | Critical sequences give either an actual neutral right-limit vector or a stricter negative limit via positive-mass loss | PROVED |
 | WD-C5 | Uniform negative margin forces a persistent negative endpoint-jump vector | PROVED |
-| WD-C6 | New right-limit negative index is bounded by the endpoint-jump quotient dimension | PROVED |
+| WD-C6 | New right-limit negative index is bounded by endpoint-jump quotient dimension | PROVED |
 | WD-C7 | New endpoint vectors require representative-norm blow-up under bounded physical realization | PROVED |
-| WD-C8 | Boundary amplification cost diverges jointly as the endpoint and target accuracy are approached | PROVED |
+| WD-C8 | Boundary amplification cost diverges as support approaches the endpoint and target error tends to zero | PROVED |
 | WD-C9 | Vanishing coefficient amplitude becomes physical blow-up after normalization | PROVED |
 | WD-E5 | Moving finite sectors can lose every nonzero persistent ray | PROVED EXAMPLE |
-| WD-E6 | Positive-coordinate mass loss can strengthen criticality into strict negative persistence | PROVED EXAMPLE |
+| WD-E6 | Positive-coordinate mass loss can turn neutral approximants into a strict negative persistent limit | PROVED EXAMPLE |
 
-The canonical statements and proofs are in [Support Filtration and Persistence Limits](SUPPORT_FILTRATION_PERSISTENCE.md).
+Canonical source: [Support Filtration and Persistence Limits](SUPPORT_FILTRATION_PERSISTENCE.md).
 
-With WD-C1–C9, **H1-P1 is complete**. The next phase is H1-P2: zeta-Weil specialization.
+The decisive finite-sector result is
+
+\[
+\boxed{
+\text{fixed finite negative sector}
++
+[y_n,y_n]_J\to q_*\le0
+\Longrightarrow
+0\ne y\in\mathcal A_{c+},
+\quad
+[y,y]_J\le q_*.
+}
+\]
+
+Hence nonpersistent approximate neutrality requires a moving/infinite-sector mechanism.
 
 ---
 
-## 1. Finite negative-index theorem
+# Zeta-Weil results carried into H1-P2
 
-For finite symmetric zero sets, the finite Weil matrix has one negative direction per nonreal conjugate pair. In the two-quartet specialization used in the present program,
+The following statements originated in the prior zeta traversal and are now awaiting explicit specialization mapping onto H1-P1.
+
+## 1. Finite Weil negative index
+
+For finite symmetric zero sets, the finite Weil matrix has one negative direction per nonreal conjugate pair.
+
+In the two-quartet specialization used in the prior traversal,
 
 \[
 \operatorname{ind}_{-}=4,
@@ -91,7 +153,7 @@ For finite symmetric zero sets, the finite Weil matrix has one negative directio
 2.
 \]
 
-**Standing:** imported theorem + exact specialization.
+**Standing:** IMPORTED theorem + exact specialization.
 
 **Not implied:** survival of a strictly negative eigenvalue in the infinite-zero limit.
 
@@ -99,39 +161,27 @@ For finite symmetric zero sets, the finite Weil matrix has one negative directio
 
 ## 2. Spectral screening
 
-Let
+Finite negative eigenvalues may satisfy
 
 \[
 \lambda^-_{N,k}<0
 \]
 
-be a negative eigenvalue in a finite truncation containing the selected off-axis cells and finitely many critical-line ordinates.
-
-The infinite-dimensional obstruction is that
+for every finite truncation while
 
 \[
 \lambda^-_{N,k}\uparrow0
 \]
 
-may occur as the critical-line complement is restored.
+as the positive critical-line complement is restored.
 
-This is the project’s **spectral screening** distinction:
-
-\[
-\boxed{
-\text{finite negative index}
-\neq
-\text{infinite negative-mode survival}.
-}
-\]
-
-**Standing:** structural theorem/reduction.
+**Standing:** structural reduction, now abstractly covered by WD-A6 and WD-C1.
 
 ---
 
-## 3. Rank-one defect formulation
+## 3. Rank-one selected-cell defect
 
-The selected-cell screening problem admits the operator form
+The selected-cell screening problem takes the form
 
 \[
 \mathcal K_C(t)
@@ -141,7 +191,7 @@ The selected-cell screening problem admits the operator form
 \widetilde g_C\otimes\widetilde g_C.
 \]
 
-The corresponding threshold satisfies
+The threshold satisfies
 
 \[
 C_*(t)\le1
@@ -149,13 +199,15 @@ C_*(t)\le1
 \mathcal K_C(t)\succeq0.
 \]
 
-**Standing:** derived.
+**Standing:** DERIVED.
+
+**Abstract carrier:** WD-A5.
 
 ---
 
 ## 4. Critical-line tail monotonicity
 
-For the truncated denominator \(D_N\) and completed denominator \(D_\infty\),
+For truncated and completed denominators,
 
 \[
 D_\infty(h)\ge D_N(h),
@@ -164,24 +216,20 @@ D_\infty(h)\ge D_N(h),
 so
 
 \[
-Q_\infty(h)
-=
-\frac{|\langle g,h\rangle|^2}{D_\infty(h)}
-\le
-\frac{|\langle g,h\rangle|^2}{D_N(h)}
-=
-Q_N(h).
+Q_\infty(h)\le Q_N(h).
 \]
 
-Thus adding omitted critical-line zeros cannot increase the quotient.
+Adding omitted critical-line positive channels cannot increase the selected quotient.
 
-**Standing:** proved with stated input definitions.
+**Standing:** PROVED with stated input definitions.
+
+**Abstract carrier:** positive-channel monotonicity / WD-A6.
 
 ---
 
 ## 5. Persistent normalized negativity
 
-Assume a PAP/MTP-1 negative-persistence branch and write
+Assume the PAP/MTP-1 negative-persistence branch and write
 
 \[
 y=(a,u),
@@ -214,18 +262,20 @@ hence
 \le-\kappa.
 \]
 
-**Standing:** conditional theorem.
+**Standing:** CONDITIONAL.
 
-**Condition:** existence of the persistent negative ray.
+**Abstract carriers:** WD-B1, WD-C5, WD-C9.
 
 ---
 
 ## 6. Quartet zero-moment law
 
-The selected negative coordinate maps to a raw residue vector \(v\neq0\) satisfying
+The selected negative coordinate maps to a raw residue vector \(v\ne0\) satisfying
 
 \[
-\mathbf1^T v=0.
+\boxed{
+\mathbf1^Tv=0.
+}
 \]
 
 Therefore
@@ -239,9 +289,9 @@ R_v(z)
 O(|z|^{-2}).
 \]
 
-**Standing:** proved in the selected quartet model.
+**Standing:** PROVED in the selected quartet model.
 
-**Important scope:** no stronger universal moment cancellation has been established.
+**Abstract carrier:** none; this is genuinely zeta/functional-symmetry-specific structure.
 
 ---
 
@@ -264,7 +314,7 @@ m_\mu\psi(\mu)
 {\Xi^{(m_\mu)}(\mu)}.
 \]
 
-Thus the current negative branch compresses to
+The negative branch compresses to
 
 \[
 \boxed{
@@ -272,23 +322,15 @@ Thus the current negative branch compresses to
 \Longrightarrow
 \mathbf1^Tv=0
 \Longrightarrow
-O(z^{-2})\text{ far decay}
+O(z^{-2})
 \Longrightarrow
 \text{weighted near next-jet localization}.
 }
 \]
 
-Persistence also yields
+**Standing:** DERIVED exact reduction.
 
-\[
-u=-X^*a.
-\]
-
-Eliminating \(a\) strongly enough to obtain a stronger \(u\)-only law would require the missing marker/PAP theorem and would be circular.
-
-**Standing:** exact reduction.
-
-**Open gate:** \(\texttt{AZ-NEXTJET-LOC}\) / \(\texttt{C-ACTUAL-KPH-FLOOR}\).
+**Open interface:** \(\texttt{AZ-NEXTJET-LOC}\) / \(\texttt{C-ACTUAL-KPH-FLOOR}\).
 
 ---
 
@@ -297,28 +339,12 @@ Eliminating \(a\) strongly enough to obtain a stronger \(u\)-only law would requ
 For a physical neutral mode \(k\),
 
 \[
-C_cu=P_c^*k,
-\qquad
-C_c^*C_cu=u,
-\qquad
-N_c^*k=-u.
+W_ck=0.
 \]
 
-With
+**Standing:** CONDITIONAL on existence of the neutral mode.
 
-\[
-W_c=P_cP_c^*-N_cN_c^*,
-\]
-
-one obtains
-
-\[
-\boxed{W_ck=0}.
-\]
-
-**Standing:** conditional theorem.
-
-**Condition:** existence of the neutral mode.
+**Abstract carrier:** attained critical screening plus physical null-mode realization.
 
 ---
 
@@ -338,33 +364,21 @@ At fixed support \(c\),
 \mathcal R_{\rm pole}.
 \]
 
-Only finitely many prime-power translations occur.
-
-The principal symbol satisfies
+Only finitely many prime-power translations occur, and
 
 \[
 \Psi_c(t)=\log|t|+O_c(1).
 \]
 
-Consequently the natural form norm is logarithmic rather than positive-Sobolev:
+**Standing:** DERIVED from the compact-window explicit formula and standard asymptotics.
 
-\[
-Q_c(f)+C_c\|f\|_2^2
-\asymp
-\int_{\mathbb R}
-\log(e+|t|)
-|\widehat f(t)|^2\,dt.
-\]
-
-**Standing:** derived from the compact-window explicit formula and standard asymptotics.
-
-**Negative result:** finite arithmetic translation structure does not by itself provide a quasianalytic regularity bootstrap.
+**Negative result:** finite arithmetic translations do not by themselves provide a quasianalytic regularity bootstrap.
 
 ---
 
-## 10. Open obligations
+# Open Horizon-1 interfaces
 
-The following are **not proved** in this repository:
+The following are **not proved**:
 
 \[
 \texttt{AZ-NEXTJET-LOC},
@@ -375,9 +389,9 @@ The following are **not proved** in this repository:
 \]
 
 \[
-\texttt{AZ-FIN-WEIL-NULL-EXTENSION},
+\texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 \]
 
-PAP/MTP closure, and RH.
+PAP/MTP closure and RH are also not proved.
 
 The repository should be read as a theorem-bearing **defect calculus and reduction program**, not as an RH proof announcement.
