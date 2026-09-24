@@ -6,7 +6,7 @@ import Mathlib
 
 namespace WeilDefect.WDT10
 
-open scoped InnerProduct
+open scoped InnerProduct ComplexOrder
 open ContinuousLinearMap
 open InnerProductSpace
 open WeilDefect
@@ -32,8 +32,9 @@ theorem wd_t10_residual_budget_positive
     (residualBudget X_B).IsPositive := by
   rw [ContinuousLinearMap.isPositive_iff']
   constructor
-  · simp [residualBudget, IsSelfAdjoint,
-      ContinuousLinearMap.adjoint_comp]
+  · exact
+      ContinuousLinearMap.isPositive_id.isSelfAdjoint.sub
+        (ContinuousLinearMap.isPositive_self_comp_adjoint X_B).isSelfAdjoint
   · intro a
     unfold residualBudget
     simp only [ContinuousLinearMap.sub_apply,
@@ -47,7 +48,7 @@ theorem wd_t10_residual_budget_positive
     have hle :
         ‖(X_B†) a‖ ≤ ‖X_B†‖ * ‖a‖ :=
       ContinuousLinearMap.le_opNorm (X_B†) a
-    rw [ContinuousLinearMap.norm_adjoint] at hle
+    rw [ContinuousLinearMap.adjoint.norm_map] at hle
     have hx : ‖X_B‖ * ‖a‖ ≤ ‖a‖ := by
       calc
         ‖X_B‖ * ‖a‖ ≤ 1 * ‖a‖ :=
@@ -102,8 +103,14 @@ theorem wd_t10_effective_covariance
   rw [ContinuousLinearMap.adjoint_comp]
   have hself := wd_t10_residual_sqrt_selfAdjoint X_B hXB
   rw [show (residualSqrt X_B)† = residualSqrt X_B from hself]
-  rw [ContinuousLinearMap.comp_assoc
-    Spos (residualSqrt X_B) (residualSqrt X_B)]
+  ext h
+  simp only [ContinuousLinearMap.comp_apply]
+  change
+    Spos
+        ((residualSqrt X_B ∘L residualSqrt X_B)
+          ((Spos†) h))
+      =
+    Spos (residualBudget X_B ((Spos†) h))
   rw [wd_t10_residual_sqrt_sq X_B hXB]
 
 /--
