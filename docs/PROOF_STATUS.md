@@ -167,11 +167,11 @@ PAP/MTP closure and RH are not proved by this repository.
 
 WD-T01 through WD-T36 are now
 
-```math
+\`\`\`math
 \boxed{
 \text{P4-AUDIT-PASSED}.
 }
-```
+\`\`\`
 
 See [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
@@ -179,10 +179,24 @@ The composite morphology theorems WD-T37 through WD-T39 are COMPOSITE-AUDIT-PASS
 
 See [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
 
-## Current audit cursor
+## Examples and sharpness audit
 
-```math
+WD-X01 through WD-X07 are now
+
+\`\`\`math
 \boxed{
-\texttt{H1-P4.4 / EXAMPLES AND SHARPNESS AUDIT}
+\text{EXAMPLE-AUDIT-PASSED}.
 }
-```
+\`\`\`
+
+See [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md).
+
+All H1-P4 audit classes are complete.
+
+## Current cursor
+
+\`\`\`math
+\boxed{
+\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
+}
+\`\`\`
