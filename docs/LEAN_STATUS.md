@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T30 | WeilDefect.wd_t30_two_mode_kernel_combination + WeilDefect.wd_t30_zero_functional_preserves_every_mode | LEAN-CERTIFIED |
 | WD-X01 | WeilDefect.wd_x01_partial_sum + WeilDefect.wd_x01_finite_defect_negative + WeilDefect.wd_x01_finite_defect_formula + WeilDefect.wd_x01_defect_tendsto_zero | LEAN-CERTIFIED |
 | WD-T26 | \`WeilDefect.wd_t26_finite_pair_zero_moment\` | LEAN-IN-PROGRESS |
 | WD-X03 | \`WeilDefect.wd_x03_individual_not_compositional\` | LEAN-IN-PROGRESS |
@@ -167,3 +168,67 @@ confirmation; certification does not depend on it because the exact current
 Lean source blob is already kernel-checked.
 
 No other stable theorem ID is promoted by this certificate.
+
+
+## WD-T30 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T30: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.wd_t30_two_mode_selected_preserving;
+- WeilDefect.wd_t30_both_zero_selected_preserving;
+- WeilDefect.wd_t30_two_mode_kernel_combination;
+- WeilDefect.wd_t30_zero_functional_preserves_every_mode.
+
+The stable theorem is represented at the functional level:
+
+given a complex-linear selected-response functional \(C\) and two multiplier
+modes \(\psi_1,\psi_2\) whose selected responses are not both zero, Lean
+constructs a nontrivial coefficient pair \((\beta_1,\beta_2)\) with
+
+\[
+C(\beta_1\psi_1+\beta_2\psi_2)=0.
+\]
+
+The identically-zero functional branch is also formalized: every mode is
+selected-preserving.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Arithmetic.Scalarization}
+\]
+
+through Lake.
+
+Certificate run:
+
+\[
+\boxed{
+\texttt{35953990661}
+}
+\]
+
+at repository head:
+
+\[
+\boxed{
+\texttt{6836f64a22544a2bd51daeb97d97bf824d339def}.
+}
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- single-module Lake build;
+- unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
