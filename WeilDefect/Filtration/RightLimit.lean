@@ -23,7 +23,7 @@ def rightLimit
 Closed limiting gap space. Since suprema in ClosedSubmodule are closed spans,
 this is exactly the closure of the union/span of the right-hand gap spaces.
 -/
-def gapLimit
+noncomputable def gapLimit
     (A : ℝ → ClosedSubmodule ℂ H)
     (c : ℝ) : ClosedSubmodule ℂ H :=
   ⨆ t : RightIndex c, (A t.1)ᗮ
@@ -66,7 +66,7 @@ theorem wd_t15_sequence_right_limit_eq
   apply le_antisymm
   · refine le_iInf fun s => ?_
     have hev : ∀ᶠ n in atTop, t n < s.1 :=
-      ht.eventually (Set.Iio_mem_nhds s.2)
+      ht.eventually (Iio_mem_nhds s.2)
     rcases (eventually_atTop.1 hev) with ⟨N, hN⟩
     exact
       (iInf_le (fun n => A (t n)) N).trans
@@ -139,20 +139,30 @@ theorem wd_t15_monotone_projection_limit
       (⨆ n, G n).topologicalClosure
           =
         (⨆ n, (A (t n))ᗮ).toSubmodule := by
-          simpa [G] using
+          change
+            (⨆ n, ((A (t n))ᗮ).toSubmodule).topologicalClosure
+              =
+            (⨆ n, (A (t n))ᗮ).toSubmodule
+          exact
             (ClosedSubmodule.toSubmodule_iSup
               (fun n : ℕ => (A (t n))ᗮ)).symm
       _ =
         ((rightLimit A c)ᗮ).toSubmodule := by
           rw [wd_t15_sequence_gap_eq_right_limit_orthogonal
             A c t hA hright ht]
-  rw [hclosed] at hgap
+  have hgap' :
+      Tendsto
+        (fun n => G n |>.starProjection x)
+        atTop
+        (𝓝 (((rightLimit A c)ᗮ).toSubmodule.starProjection x)) := by
+    cases hclosed
+    exact hgap
   have hsub :
       Tendsto
         (fun n => x - G n |>.starProjection x)
         atTop
         (𝓝 (x - ((rightLimit A c)ᗮ).toSubmodule.starProjection x)) :=
-    tendsto_const_nhds.sub hgap
+    tendsto_const_nhds.sub hgap'
   simpa [G, Submodule.starProjection_orthogonal_val] using hsub
 
 /--
