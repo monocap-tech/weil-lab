@@ -110,6 +110,8 @@ The project has now entered **H1-P3: defect morphology theorem**.
 
 H1-P3.0 is complete: the negative branch is packaged in [Negative Defect Morphology Theorem](docs/NEGATIVE_DEFECT_MORPHOLOGY.md). It isolates the exact endpoint-jump, normalized-negativity, zero-moment, far-tail, and next-jet morphology without assuming the downstream actual-zeta exclusion.
 
+H1-P3.1 is also complete: [Neutral Defect Morphology Theorem](docs/NEUTRAL_DEFECT_MORPHOLOGY.md) packages the attained-neutral branch as a physical compact-window Weil null mode governed by a logarithmic-order operator plus finitely many arithmetic translations, with the support question left open.
+
 ## Current theorem picture
 
 | Component | Current standing |
@@ -215,6 +217,7 @@ The remaining problem is tracked as
 - [Quartet Channel and Residue Structure](docs/QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) — canonical pair geometry, finite inertia, zero moments, and compact synthesis.
 - [Explicit-Formula Arithmetic Attachment](docs/EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) — far-tail localization, completed-Ξ next jets, finite prime shifts, and logarithmic form order.
 - [Negative Defect Morphology Theorem](docs/NEGATIVE_DEFECT_MORPHOLOGY.md) — packaged fixed-packet negative endpoint morphology and stop line.
+- [Neutral Defect Morphology Theorem](docs/NEUTRAL_DEFECT_MORPHOLOGY.md) — attained-neutral null mode, logarithmic operator, and null-extension stop line.
 - [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
