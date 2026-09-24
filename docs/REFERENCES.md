@@ -1,6 +1,8 @@
 # References
 
-This is a working bibliography for the public Weil-defect project. It is not yet intended to be exhaustive.
+This is the working bibliography for the public Weil-defect project.
+
+A reference being listed here does not imply that every nearby theorem is imported from it. Exact load-bearing locations are recorded separately in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
 
 ## Foundational / finite-truncation background
 
@@ -8,16 +10,15 @@ This is a working bibliography for the public Weil-defect project. It is not yet
 
 *Remarks on Weil's quadratic functional in the theory of prime numbers, I.*
 
-Rendiconti Lincei, 2000.
+Rendiconti Lincei, Serie 9, **11** (2000), 183–233.
 
-Useful for:
+https://www.bdim.eu/item?id=RLIN_2000_9_11_3_183_0
 
-- the Weil quadratic functional;
-- finite truncations;
-- negative-eigenvalue counts under off-critical zeros;
-- the finite-to-infinite screening problem.
+Load-bearing pins currently used:
 
-https://eudml.org/doc/252338
+- Lemma 10, p. 210 — multiplicity-null directions;
+- Theorem 8, p. 213 — finite negative-index count;
+- equation (7.7), p. 204 — matrix/kernel decay input.
 
 ## Operator factorization
 
@@ -29,11 +30,61 @@ Proceedings of the American Mathematical Society **17** (2), 413–415 (1966).
 
 DOI: 10.1090/S0002-9939-1966-0203464-1
 
-Used for the equivalence between operator-range inclusion, Loewner majorization, and bounded factorization; in the unit-majorization case this yields contractive screening.
-
 https://doi.org/10.1090/S0002-9939-1966-0203464-1
 
-## Operator-theoretic background
+Load-bearing pin:
+
+- Theorem 1 — range inclusion / majorization / factorization equivalence and reduced solution.
+
+## Zeta zero counting
+
+### E. C. Titchmarsh; revised by D. R. Heath-Brown
+
+*The Theory of the Riemann Zeta-function*, 2nd ed.
+
+Oxford University Press, 1986.
+
+Public scan used for source pinning:
+
+https://sites.math.rutgers.edu/~zeilberg/EM18/TitchmarshZeta.pdf
+
+Load-bearing pin:
+
+- Chapter IX, Theorem 9.2, equation (9.2.1), p. 211:
+  \[
+  N(T+1)-N(T)=O(\log T).
+  \]
+
+## Compact-window explicit formula
+
+### Xuefeng Zhu
+
+*Weil positivity in compact windows: a finite reduction, certified two-sided bounds, and a Landau–Widom decay law.*
+
+arXiv:2608.24827v2 (2026).
+
+https://arxiv.org/abs/2608.24827
+
+Load-bearing pins:
+
+- equations (2)–(3), p. 2;
+- support convention \(\log n<2L\).
+
+## Special-function asymptotics
+
+### NIST Digital Library of Mathematical Functions
+
+§5.11(i), equation 5.11.2.
+
+https://dlmf.nist.gov/5.11.E2
+
+Load-bearing pin:
+
+\[
+\psi(z)\sim\log z-\frac1{2z}-\cdots.
+\]
+
+## Operator-theoretic context
 
 ### Masatoshi Suzuki
 
@@ -41,45 +92,9 @@ https://doi.org/10.1090/S0002-9939-1966-0203464-1
 
 arXiv:2606.09096 (2026).
 
-Useful for:
-
-- nonlocal finite-interval realizations of the Weil form;
-- continuous-function/operator formulations of the Weil distribution;
-- finite-window operator viewpoints.
-
 https://arxiv.org/abs/2606.09096
 
-## Compact-window positivity
-
-### *Weil positivity in compact windows: certified two-sided bounds and a Landau--Widom decay law*
-
-arXiv:2608.24827 (2026).
-
-Useful for:
-
-- compact-window positivity;
-- finite-matrix certification;
-- very small spectral margins;
-- Landau--Widom-type spectral behavior;
-- the geometric-side compact-window explicit formula.
-
-https://arxiv.org/abs/2608.24827
-
-## Citation policy for this repository
-
-A reference being listed here does **not** imply that every statement in the project is imported from that source.
-
-The public notes distinguish:
-
-- source theorem;
-- specialization;
-- internal derivation;
-- conditional theorem;
-- computational evidence;
-- open obligation.
-
-That distinction should be retained in any future paper or exposition.
-
+Currently contextual/non-load-bearing for the stable theorem statements.
 
 ## Shorted operators / Schur complements
 
@@ -89,6 +104,20 @@ That distinction should be retained in any future paper or exposition.
 
 SIAM Journal on Applied Mathematics **28** (1975).
 
-Used for the positive-operator shorting operation that extends Schur complementation beyond finite-dimensional/invertible block settings.
-
 https://doi.org/10.1137/0128007
+
+Currently contextual for the general shorted-operator extension. The stable WD-T13 statement is restricted to the strictly positive/invertible-block Schur-complement setting and does not require the general theorem.
+
+## Citation policy
+
+The public project distinguishes:
+
+- imported source theorem;
+- exact specialization;
+- internal proof;
+- derived reduction;
+- conditional morphology theorem;
+- computational evidence;
+- open interface.
+
+Exact source pinning and internal proof verification are separate audit steps.
