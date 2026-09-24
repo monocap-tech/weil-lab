@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T14 | WeilDefect.WDT14.wd_t14_positive_shadow_margin + WeilDefect.WDT14.wd_t14_positive_shadow_preserves_negative_margin + WeilDefect.WDT14.wd_t14_graph_shadow_admissible_iff + WeilDefect.WDT14.wd_t14_graph_admissibility_failure_example + WeilDefect.WDT14.wd_t14_finite_positive_shadows_preserve_signature_not_admissibility | LEAN-CERTIFIED |
 | WD-T13 | WeilDefect.WDT13.wd_t13_complement_isUnit + WeilDefect.WDT13.wd_t13_complement_inverse_nonnegative + WeilDefect.WDT13.wd_t13_schur_correction_positive + WeilDefect.WDT13.wd_t13_schur_le_compression + WeilDefect.WDT13.wd_t13_schur_lower_bound + WeilDefect.WDT13.wd_t13_schur_isUnit + WeilDefect.WDT13.wd_t13_block_solution_exists + WeilDefect.WDT13.wd_t13_block_solution_first_component + WeilDefect.WDT13.wd_t13_direct_compression_versus_shorted_covariance | LEAN-CERTIFIED |
 | WD-T12 | WeilDefect.WDT12.sequentialResidualBudget + WeilDefect.WDT12.wd_t12_sequential_budget_covariance + WeilDefect.WDT12.wd_t12_second_background_elimination + WeilDefect.WDT12.wd_t12_sequential_background_consumption | LEAN-CERTIFIED |
 | WD-T11 | WeilDefect.WDT11.wd_t11_norm_one_attains_neutral + WeilDefect.WDT11.wd_t11_graphQ_diagonal + WeilDefect.WDT11.wd_t11_negative_rank_le_count + WeilDefect.WDT11.wd_t11_negative_space_strict + WeilDefect.WDT11.wd_t11_negative_space_finrank + WeilDefect.WDT11.wd_t11_negative_index_exact + WeilDefect.WDT11.wd_t11_neutral_space_finrank + WeilDefect.WDT11.wd_t11_neutral_space_graphQ_zero + WeilDefect.WDT11.wd_t11_finite_sector_singular_value_inertia | LEAN-CERTIFIED |
@@ -1508,5 +1509,96 @@ Next theorem cursor:
 \[
 \boxed{
 \texttt{WD-T14 / WD-B8 — FINITE POSITIVE SHADOWS PRESERVE SIGNATURE BUT NOT ADMISSIBILITY}
+}
+\]
+
+
+## WD-T14 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T14: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.WDT14.shadowMargin;
+- WeilDefect.WDT14.wd_t14_positive_shadow_margin;
+- WeilDefect.WDT14.wd_t14_positive_shadow_preserves_negative_margin;
+- WeilDefect.WDT14.wd_t14_graph_shadow_admissible_iff;
+- WeilDefect.WDT14.wd_t14_graph_admissibility_failure_example;
+- WeilDefect.WDT14.wd_t14_finite_positive_shadows_preserve_signature_not_admissibility.
+
+For every orthogonal positive-coordinate projection \(P_U\), Lean certifies
+
+\[
+\|u\|^2-\|P_Ua\|^2
+\ge
+\|u\|^2-\|a\|^2.
+\]
+
+Hence positive truncation preserves, and can only strengthen, a positive
+negative margin.
+
+For graph vectors \(u=-X^*a\), Lean also proves the exact admissibility
+criterion
+
+\[
+u=-X^*P_Ua
+\iff
+X^*(a-P_Ua)=0.
+\]
+
+An explicit \(\mathbb C\) counterexample with \(X=2I\), \(a=1\),
+\(u=-2\), and zero positive projection has margin \(3>0\) before and after
+the signature shadow while the projected pair is not graph-admissible.
+
+Thus the stable distinction between signature shadow and admissible analysis
+vector is kernel-checked.
+
+No imported project theorem premise is consumed by WD-T14.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.FinitePositiveShadows}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36062388096}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{adcdc167eb274af899a1a53dfb86b76c5bc442ae}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{ed287dfd0dbe7e47cdbb074c0fda64bcd0bc6e41}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T14 module;
+- unfinished-proof/project-axiom rejection.
+
+The only repair residue was normalization of the concrete scaled-identity
+adjoint in the counterexample; no theorem statement or hypothesis changed.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T15 / WD-C1+WD-C2 — RIGHT-LIMIT PROJECTION CONVERGENCE AND GAP-SPACE DUALITY}
 }
 \]
