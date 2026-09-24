@@ -88,7 +88,24 @@ theorem exists_weaklyTendsto_subseq_of_norm_le
     intro z
     have heval :=
       (tendsto_iff_forall_eval_tendsto_topDualPairing.mp hconv) z
-    simpa [f, xS, WeaklyTendsto, Function.comp_def] using heval
+    have heval' :
+        Tendsto
+          (fun n => inner ℂ (vS (φ n)) z)
+          atTop
+          (𝓝 (fLim z)) := by
+      simpa only [
+        Function.comp_apply,
+        topDualPairing_apply,
+        StrongDual.toWeakDual_apply,
+        InnerProductSpace.toDual_apply_apply
+      ] using heval
+    have hlimEval : inner ℂ xS z = fLim z := by
+      simpa [xS] using
+        (InnerProductSpace.toDual_symm_apply
+          (𝕜 := ℂ) (E := S)
+          (x := z) (y := WeakDual.toStrongDual fLim))
+    rw [hlimEval]
+    exact heval'
   haveI : S.HasOrthogonalProjection := inferInstance
   let x : E := (xS : E)
   have hweak : WeaklyTendsto (fun n => v (φ n)) x := by
