@@ -12,6 +12,9 @@ theorem wd_t33_adaptive_cocancellation
     (hBalance : N + F = P + A)
     (hCancel : N = A) :
     P = F := by
-  linarith
+  calc
+    P = (P + A) - A := by ring
+    _ = (N + F) - A := by rw [← hBalance]
+    _ = F := by rw [hCancel]; ring
 
 end WeilDefect
