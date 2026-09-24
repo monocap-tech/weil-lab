@@ -133,6 +133,53 @@ Hence nonpersistent approximate neutrality requires a moving/infinite-sector mec
 
 ---
 
+# H1-P2.0 — Zeta-Weil specialization map
+
+The canonical mapping is [Zeta-Weil Specialization Map](ZETA_WEIL_SPECIALIZATION_MAP.md).
+
+The pass establishes the following standing distinctions:
+
+| Specialization statement | Standing |
+| --- | --- |
+| (K_+=K_{\rm crit}\oplus K_{{\rm off},+}), (K_-=K_{{\rm off},-}) | DERIVED specialization map |
+| finite selected packet (Pi\mapsto M_\Pi\subset K_-) | DERIVED specialization map |
+| unselected negative divisor (mapsto B_\Pi) | DERIVED specialization map |
+| selected/full sign identity (Q_W=Q_{\Pi,t}-\|S_{B_\Pi,t}^*h\|^2) | DERIVED from WD-B1 |
+| rank-one selected-cell defect = WD-B4 + WD-B7 + WD-A5 terminal form | DERIVED specialization map |
+| fixed finite packet criticality produces a nonpositive persistent ray | DERIVED from WD-C3/C4 |
+| representative blow-up is WD-C7/C9 rather than arithmetic | DERIVED classification |
+| (mathbf1^Tv=0) for selected negative pair residues | PROVED zeta/Weil-specific structure |
+| (R_v(z)=O(|z|^{-2})) | PROVED consequence of zero moment |
+| prime/pole/archimedean terms are an alternate Weil-form representation, not extra (K_+) channels | SCOPE CLASSIFICATION |
+
+The specialization therefore separates:
+
+[
+oxed{
+	ext{ZW-0 pair geometry}
+	o
+	ext{ZW-1 zeta-divisor structure}
+	o
+	ext{ZW-2 explicit-formula arithmetic}.
+}
+]
+
+A key derived correction is:
+
+[
+oxed{
+	ext{fixed finite packet}
++
+	ext{critical right-approach}
+Longrightarrow
+	ext{actual nonpositive persistent ray}.
+}
+]
+
+Thus a nonpersistent approximate-neutral morphology can remain only through moving/infinite-sector background mechanisms, not as an independent fixed-packet case.
+
+---
+
 # Zeta-Weil results carried into H1-P2
 
 The following statements originated in the prior zeta traversal and are now awaiting explicit specialization mapping onto H1-P1.
