@@ -174,12 +174,14 @@ WD-T01 through WD-T36 are now
 
 See [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
-The composite morphology theorems remain COMPOSITE-AUDIT-PENDING.
+The composite morphology theorems WD-T37 through WD-T39 are COMPOSITE-AUDIT-PASSED.
+
+See [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
 
 ## Current audit cursor
 
 ```math
 \boxed{
-\texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
+\texttt{H1-P4.4 / EXAMPLES AND SHARPNESS AUDIT}
 }
 ```
