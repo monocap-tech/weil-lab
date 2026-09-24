@@ -22,6 +22,7 @@ A theorem now carries two independent statuses.
 ### Verification status
 
 - **P4-AUDIT-PENDING** — internal proof has not yet completed the Horizon-1 line-by-line audit.
+- **P4-AUDIT-PASSED** — Horizon-1 internal audit passed after any recorded corrections; not independent certification.
 - **SOURCE-PIN-PENDING** — the external source family is known, but exact theorem/equation pinning remains.
 - **SOURCE-PINNED** — exact external theorem/equation and convention are fixed; internal consumption may still await audit.
 - **COMPOSITE-AUDIT-PENDING** — morphology package still needs expanded dependency/hypothesis audit.
@@ -160,10 +161,24 @@ The following remain OPEN:
 
 PAP/MTP closure and RH are not proved by this repository.
 
+## Internal theorem audit
+
+WD-T01 through WD-T36 are now
+
+\[
+\boxed{
+\text{P4-AUDIT-PASSED}.
+}
+\]
+
+See [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
+
+The composite morphology theorems remain COMPOSITE-AUDIT-PENDING.
+
 ## Current audit cursor
 
 \[
 \boxed{
-\texttt{H1-P4.2 / INTERNAL PROOF AUDIT}
+\texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
 }
 \]
