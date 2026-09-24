@@ -856,3 +856,10 @@ a_n\to a
 \]
 
 is also available.
+
+
+## Example-audit-passed
+
+**EXAMPLE-AUDIT-PASSED** means that an explicit example/sharpness construction has been checked algebraically and that the theorem boundary it is claimed to sharpen has been verified.
+
+It does not mean independent certification or external refereeing.
