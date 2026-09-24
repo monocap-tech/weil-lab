@@ -863,3 +863,33 @@ is also available.
 **EXAMPLE-AUDIT-PASSED** means that an explicit example/sharpness construction has been checked algebraically and that the theorem boundary it is claimed to sharpen has been verified.
 
 It does not mean independent certification or external refereeing.
+
+
+## Lean certification
+
+**LEAN-CERTIFIED** means that a mapped Lean declaration has passed the pinned Lean/mathlib build with no project-level unfinished proof placeholders or project axioms.
+
+Lean certification is separate from P4 internal audit status.
+
+## Lean-certified from imported premise
+
+**LEAN-CERTIFIED-FROM-IMPORTED-PREMISE** means Lean kernel-checks the project's downstream deduction from an explicitly represented external theorem premise, while the external theorem itself has not yet been reconstructed in Lean.
+
+This status must never be presented as formal verification of the imported source theorem.
+
+## Lean-blocked
+
+**LEAN-BLOCKED** means a formalization pass has been exhausted and a precise missing formal dependency, library theorem, or source reconstruction obligation has been recorded.
+
+It is a terminal status for the current LEAN-H1 exhaustion test, but not a claim that the theorem is impossible to formalize.
+
+## Lean formalization exhaustion
+
+**Lean formalization exhaustion** is reached when every stable Horizon-1 theorem/example is assigned one of:
+
+- LEAN-CERTIFIED;
+- LEAN-CERTIFIED-FROM-IMPORTED-PREMISE;
+- LEAN-BLOCKED with an exact blocker;
+- SCOPE-ONLY.
+
+No stable theorem/example may remain merely unattempted when LEAN-H1 closes.
