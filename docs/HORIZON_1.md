@@ -371,11 +371,17 @@ WD-T01 through WD-T36 have completed the Horizon-1 internal proof audit; see [In
 
 The audit applied several narrowing/clarification patches but found no internal contradiction or hidden use of an RH-facing interface in the audited theorem spine.
 
+### P4.3 disposition
+
+WD-T37 through WD-T39 have completed the Horizon-1 composite morphology audit; see [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
+
+The audited packages preserve carrier identification, multiplier uniformity, strict-right prime thresholds, full-coordinate escape requirements, and weak/strong convergence distinctions.
+
 ### Current cursor
 
 ```math
 \boxed{
-\texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
+\texttt{H1-P4.4 / EXAMPLES AND SHARPNESS AUDIT}
 }
 ```
 
