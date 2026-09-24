@@ -48,18 +48,19 @@ boundary is deliberately before RH closure.
 | H1-P1 | Abstract defect calculus | Complete |
 | H1-P2 | Zeta-Weil specialization | Complete |
 | H1-P3 | Defect morphology theorem | Complete |
-| H1-P4 | Proof audit and theorem normalization | **Active** |
-| H1-P5 | Public mathematical package | Pending |
+| H1-P4 | Proof audit and theorem normalization | Complete |
+| H1-P5 | Public mathematical package | **Active** |
 
-Within H1-P4, source pinning, the internal proof audit, and the composite
-morphology audit are complete. The current cursor is
-**H1-P4.4 / examples and sharpness audit**. Stable public theorem IDs and the
+Within H1-P4, source pinning, the internal proof audit, the composite
+morphology audit, and the examples/sharpness audit are complete. The current cursor is
+**H1-P5.0 / public package architecture**. Stable public theorem IDs and the
 audit surfaces are canonical in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
 [Dependency Audit](docs/DEPENDENCY_AUDIT.md),
 [Imported Source Pins](docs/IMPORTED_SOURCE_PINS.md),
 [Internal Proof Audit](docs/INTERNAL_PROOF_AUDIT.md), and
-[Composite Morphology Audit](docs/COMPOSITE_MORPHOLOGY_AUDIT.md).
+[Composite Morphology Audit](docs/COMPOSITE_MORPHOLOGY_AUDIT.md), and
+[Examples and Sharpness Audit](docs/EXAMPLES_SHARPNESS_AUDIT.md).
 
 Project terms such as **horizon**, **phase**, **standing**, **interface**,
 **custody**, and **screening** are fixed in the
