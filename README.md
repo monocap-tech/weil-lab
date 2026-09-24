@@ -54,7 +54,9 @@ Current position:
 \qquad
 \text{H1-P2 COMPLETE}
 \qquad
-\text{H1-P3 ACTIVE}.
+\text{H1-P3 COMPLETE}
+\qquad
+\text{H1-P4 ACTIVE}.
 }
 \]
 
@@ -80,31 +82,31 @@ H1-P2 is now complete.
 
 The zero-side specialization gives the selected residue zero-moment law
 
-[
-mathbf1^Tv=0,
-]
+\[
+\mathbf1^Tv=0,
+\]
 
 which forces
 
-[
+\[
 R_v(z)=O(|z|^{-2}).
-]
+\]
 
 The explicit-formula attachment sharpens this to the quantitative far-tail estimate
 
-[
-mathcal F_{v,R}
+\[
+\mathcal F_{v,R}
 =
-O((log R)/R),
-]
+O((\log R)/R),
+\]
 
-leaving the weighted completed-(Xi) next-jet field as the exact negative-branch arithmetic obstruction.
+leaving the weighted completed-\(\Xi\) next-jet field as the exact negative-branch arithmetic obstruction.
 
 On the neutral branch, fixed compact support yields finitely many prime translations and logarithmic principal order
 
-[
-Psi_c(t)=log|t|+O_c(1).
-]
+\[
+\Psi_c(t)=\log|t|+O_c(1).
+\]
 
 The project has now entered **H1-P3: defect morphology theorem**.
 
@@ -115,6 +117,10 @@ H1-P3.1 is also complete: [Neutral Defect Morphology Theorem](docs/NEUTRAL_DEFEC
 H1-P3.2 completes the morphology phase: [Noncompact Background Morphology Theorem](docs/NONCOMPACT_BACKGROUND_MORPHOLOGY.md) separates moving selected-sector escape from unselected-background escape and from fixed full-divisor convergence.
 
 The project is now in **H1-P4: proof audit and theorem normalization**.
+
+H1-P4.0 is complete. Stable public theorem IDs and the dependency/source audit are now canonical in [Theorem Ledger](docs/THEOREM_LEDGER.md) and [Dependency Audit](docs/DEPENDENCY_AUDIT.md).
+
+The audit separates **mathematical standing** from **verification status**. Earlier uses of “proved” mean an internal proof is present under stated hypotheses; they do not by themselves claim independent certification.
 
 ## Current theorem picture
 
@@ -223,6 +229,8 @@ The remaining problem is tracked as
 - [Negative Defect Morphology Theorem](docs/NEGATIVE_DEFECT_MORPHOLOGY.md) — packaged fixed-packet negative endpoint morphology and stop line.
 - [Neutral Defect Morphology Theorem](docs/NEUTRAL_DEFECT_MORPHOLOGY.md) — attained-neutral null mode, logarithmic operator, and null-extension stop line.
 - [Noncompact Background Morphology Theorem](docs/NONCOMPACT_BACKGROUND_MORPHOLOGY.md) — moving selected escape, background escape, and fixed full-divisor convergence.
+- [Theorem Ledger](docs/THEOREM_LEDGER.md) — stable public IDs, standing, verification status, and historical aliases.
+- [Dependency Audit](docs/DEPENDENCY_AUDIT.md) — normalized theorem DAG, source boundaries, scope guards, and audit queue.
 - [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
@@ -243,9 +251,6 @@ Particularly relevant references include:
 
 ## Public-status convention
 
-- **PROVED** — established within the stated framework/hypotheses.
-- **CONDITIONAL** — proved assuming an explicitly named hypothesis or branch condition.
-- **DERIVED** — exact reformulation/reduction from retained inputs.
-- **OPEN** — required for a later closure but not established.
+The public project now separates **mathematical standing** from **verification status**. See [Theorem Ledger](docs/THEOREM_LEDGER.md).
 
-No statement is promoted merely because it is repeatedly used or numerically supported.
+A theorem ID is a name, not a certification mark. No statement is described as independently certified or formally verified unless a later audit artifact explicitly promotes its verification status.
