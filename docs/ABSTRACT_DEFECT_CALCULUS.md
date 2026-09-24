@@ -129,7 +129,16 @@ If \(D\succeq0\), the \(J\)-form is nonnegative on \(\operatorname{Ran}E^*\), he
 
 Conversely, if \(\mathcal A\) is \(J\)-nonnegative, then \(E^*h\in\mathcal A\) for every \(h\), so the displayed identity gives \(\langle Dh,h\rangle\ge0\).
 
-For the index statement, a negative-definite subspace for \(D\) cannot meet \(\ker E^*\) nontrivially, and \(E^*\) maps it injectively to a \(J\)-negative subspace of \(\mathcal A\). In the other direction, every finite-dimensional \(J\)-negative subspace of \(\mathcal A\) can be approximated by vectors from the dense subspace \(\operatorname{Ran}E^*\); negative definiteness is stable under sufficiently small finite-dimensional perturbation. Taking suprema over finite dimensions gives equality.
+For the index statement, let \(L\subset\mathcal H\) be a finite-dimensional subspace on which \(D\) is negative definite. Then \(L\cap\ker E^*=\{0\}\), because \(E^*h=0\) gives \(\langle Dh,h\rangle=0\). Hence \(E^*|_L\) is injective and maps \(L\) to a \(J\)-negative subspace of \(\mathcal A\).
+
+Conversely, let \(M\subset\mathcal A\) be finite dimensional and \(J\)-negative. Compactness of the unit sphere of \(M\) gives a uniform margin \(\eta>0\) with
+
+\[
+[m,m]_J\le-\eta\|m\|^2
+\qquad(m\in M).
+\]
+
+Because \(\operatorname{Ran}E^*\) is dense in \(\mathcal A\), choose a basis of \(M\) and approximate it by vectors in \(\operatorname{Ran}E^*\) closely enough that the resulting linear map is injective and its Gram matrix remains negative definite. Thus \(\operatorname{Ran}E^*\) contains a \(J\)-negative subspace of dimension \(\dim M\), whose preimage under \(E^*\) is a \(D\)-negative subspace of the same dimension. Taking suprema over finite dimensions gives equality.
 
 **Standing:** PROVED.
 
@@ -291,13 +300,13 @@ If
 
 then no exact screening operator exists.
 
-By Douglas' theorem,
+By Douglas' theorem there is no finite \(\lambda\ge0\) such that
 
 \[
-S_-S_-^*\npreceq \lambda S_+S_+^*
+S_-S_-^*\preceq \lambda^2 S_+S_+^*.
 \]
 
-for every finite factorization constant adequate to the failed inclusion, and in particular contractive screening is impossible. Since \(D\succeq0\) would imply range inclusion, \(D\not\succeq0\), so \(\mathcal A\) contains a strictly negative direction.
+In particular contractive screening is impossible. Since \(D\succeq0\) would imply range inclusion, \(D\not\succeq0\), so \(\mathcal A\) contains a strictly negative direction.
 
 This is an **unscreened negative defect**.
 
