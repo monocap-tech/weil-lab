@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T11 | WeilDefect.WDT11.wd_t11_norm_one_attains_neutral + WeilDefect.WDT11.wd_t11_graphQ_diagonal + WeilDefect.WDT11.wd_t11_negative_rank_le_count + WeilDefect.WDT11.wd_t11_negative_space_strict + WeilDefect.WDT11.wd_t11_negative_space_finrank + WeilDefect.WDT11.wd_t11_negative_index_exact + WeilDefect.WDT11.wd_t11_neutral_space_finrank + WeilDefect.WDT11.wd_t11_neutral_space_graphQ_zero + WeilDefect.WDT11.wd_t11_finite_sector_singular_value_inertia | LEAN-CERTIFIED |
 | WD-T10 | WeilDefect.WDT10.wd_t10_residual_budget_positive + WeilDefect.WDT10.wd_t10_residual_sqrt_sq + WeilDefect.WDT10.wd_t10_effective_covariance + WeilDefect.WDT10.wd_t10_background_covariance_elimination + WeilDefect.WDT10.wd_t10_full_defect_reduction + WeilDefect.WDT10.wd_t10_full_nonnegative_iff_effective_physical + WeilDefect.WDT10.wd_t10_full_nonnegative_iff_residual_screening + WeilDefect.WDT10.wd_t10_background_elimination_and_residual_budget | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T09 | WeilDefect.WDT09.wd_t09_full_quadratic_factorization + WeilDefect.WDT09.wd_t09_shared_defect_factorization + WeilDefect.WDT09.wd_t09_full_nonnegative_iff_joint_budget + WeilDefect.WDT09.wd_t09_separate_contractions_not_joint + WeilDefect.WDT09.wd_t09_shared_screening_budget | LEAN-CERTIFIED |
 | WD-T08 | WeilDefect.WDT08.selected_adjoint_comp_injective + WeilDefect.WDT08.wd_t08_selected_negative_rank_le_finrank + WeilDefect.WDT08.wd_t08_background_null_finrank_lower + WeilDefect.WDT08.wd_t08_selected_negative_on_background_null + WeilDefect.WDT08.wd_t08_full_negative_rank_background_reduction + WeilDefect.WDT08.wd_t08_finite_selected_sector_index_cap | LEAN-CERTIFIED |
@@ -1232,3 +1233,80 @@ association, and scalar quadratic-form transport.  Those repairs did not alter
 the theorem statement or mathematical hypotheses.
 
 No other stable theorem ID is promoted by this run.
+
+
+## WD-T11 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T11: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.WDT11.wd_t11_norm_activeScreen;
+- WeilDefect.WDT11.wd_t11_norm_activeAdjoint;
+- WeilDefect.WDT11.wd_t11_norm_one_attains_neutral;
+- WeilDefect.WDT11.wd_t11_graphQ_eigenvector;
+- WeilDefect.WDT11.wd_t11_graphQ_diagonal;
+- WeilDefect.WDT11.wd_t11_negative_rank_le_count;
+- WeilDefect.WDT11.wd_t11_negative_space_strict;
+- WeilDefect.WDT11.wd_t11_negative_space_finrank;
+- WeilDefect.WDT11.wd_t11_negative_rank_count_exists;
+- WeilDefect.WDT11.wd_t11_negative_index_exact;
+- WeilDefect.WDT11.wd_t11_neutral_space_finrank;
+- WeilDefect.WDT11.wd_t11_neutral_space_graphQ_zero;
+- WeilDefect.WDT11.wd_t11_finite_sector_singular_value_inertia.
+
+The certificate formalizes finite-sector singular-value inertia on the canonical
+active carrier. Lean proves that the number of singular values strictly greater
+than one is the exact maximal finite negative rank, that the singular values
+equal to one give the neutral-space dimension, and that operator norm one is
+attained by an actual nonzero neutral graph direction.
+
+No imported project theorem premise is consumed by WD-T11.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.FiniteSectorInertia}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36032799794}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{44a2634f87604dc7d8d82ec36db8ba379e1b64aa}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{5404514d874c1cdc710045cab7819601d0a6994f}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T11 module;
+- unfinished-proof/project-axiom rejection.
+
+The certification repair passes changed proof engineering only; no stable theorem
+statement or mathematical hypothesis was weakened.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T12 / WD-B6 — SEQUENTIAL ELIMINATION}
+}
+\]
