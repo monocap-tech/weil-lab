@@ -344,7 +344,7 @@ The phase now distinguishes:
 \text{fixed-packet attained-neutral persistence},\\
 \text{moving selected-sector escape},\\
 \text{unselected-background escape},\\
-\text{fixed full-divisor negative convergence}.
+\text{fixed full-divisor negative weak limit}.
 \end{array}
 }
 ```
