@@ -432,15 +432,39 @@ Therefore
 \textbf{H1-P2 — ZETA-WEIL SPECIALIZATION: COMPLETE.}
 \]
 
+## H1-P3.0 disposition
+
+The fixed-packet negative branch is packaged in [Negative Defect Morphology Theorem](NEGATIVE_DEFECT_MORPHOLOGY.md).
+
+\[
+\boxed{
+\begin{aligned}
+\text{persistent selected negativity}
+&\Longrightarrow
+\text{negative endpoint jump}\\
+&\Longrightarrow
+\text{normalized full-Weil negativity}\\
+&\Longrightarrow
+\mathbf1^Tv=0\\
+&\Longrightarrow
+R_v(z)=O(z^{-2})\\
+&\Longrightarrow
+\mathcal F_{v,R}=O((\log R)/R)\\
+&\Longrightarrow
+\text{weighted finite/intermediate next-jet field}.
+\end{aligned}
+}
+\]
+
+The theorem does not assert a generic lower bound for the near field. Its stop line is \(\texttt{AZ-NEXTJET-LOC}\).
+
 ## Current cursor
 
 \[
 \boxed{
-\texttt{H1-P3.0 / NEGATIVE DEFECT MORPHOLOGY THEOREM}
+\texttt{H1-P3.1 / NEUTRAL DEFECT MORPHOLOGY THEOREM}
 }
 \]
-
-H1-P3 now packages, rather than discovers, the surviving obstruction morphologies.
 
 ---
 
