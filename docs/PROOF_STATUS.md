@@ -468,6 +468,30 @@ so no infinite-dimensional native lower frame bound should be inferred from unwe
 
 ---
 
+# H1-P2.2 — Explicit-formula arithmetic attachment
+
+Canonical source: [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md).
+
+| Label | Statement | Standing |
+| --- | --- | --- |
+| ZW2-T1 | A nontrivial two-mode scalar multiplier can preserve the selected contracted-residue term | PROVED |
+| ZW2-T2 | Zero moment + zero counting gives (mathcal F_{v,R}=O((log R)/R)) for fixed bounded multiplier | PROVED |
+| ZW2-T3 | At a complementary zero (mu), (R_v(mu)=H_v^{(m_mu)}(mu)/Xi^{(m_mu)}(mu)) | PROVED |
+| ZW2-T4 | The finite/intermediate complementary field is a weighted completed-(Xi) next-jet sum | PROVED |
+| ZW2-T5 | Adaptive near-minus-archimedean cancellation forces the prime term onto the far tail | PROVED |
+| ZW2-T6 | Fixed compact support activates only finitely many prime-power translations | PROVED from imported support formula |
+| ZW2-T7 | Compact-window form has logarithmic Fourier order | DERIVED |
+| ZW2-T8 | Finite prime translations do not yield an automatic quasianalytic/Sobolev bootstrap | PROVED as operator-order consequence |
+| ZW2-T9 | Neutral equality is a global quadratic cancellation, not termwise vanishing | SCOPE/LOGICAL CONSEQUENCE |
+
+The negative branch now terminates exactly at the open actual-zeta next-jet interface.
+
+The neutral branch now terminates exactly at the open compact-window null-extension interface.
+
+With this package, **H1-P2 is complete**.
+
+---
+
 # Open Horizon-1 interfaces
 
 The following are **not proved**:
