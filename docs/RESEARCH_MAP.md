@@ -517,15 +517,21 @@ Stable theorem labels and the normalized dependency graph are now canonical:
 
 The dependency graph is acyclic at the Horizon-1 level, and the RH-facing interfaces occur only downstream of the morphology theorems.
 
+## H1-P4.1 disposition
+
+Exact external pins are recorded in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
+
+The source boundary is now fixed for Douglas, Bombieri, standard zero counting, the compact-window formula, and the digamma asymptotic.
+
 ## Current cursor
 
 \[
 \boxed{
-\texttt{H1-P4.1 / IMPORTED SOURCE PINNING}
+\texttt{H1-P4.2 / INTERNAL PROOF AUDIT}
 }
 \]
 
-The next pass should pin every load-bearing external theorem/formula to its exact source location and normalize the conventions inherited from it.
+The next pass should inspect the internal theorem transitions for domains, topologies, finite/infinite passages, quantifiers, and hidden hypotheses.
 
 ---
 
