@@ -35,9 +35,8 @@ theorem selected_adjoint_comp_injective
   have hFsub : (((S_M†) ∘L T) (x - y)) = 0 := by
     rw [map_sub, hxy, sub_self]
   have hFu : (((S_M†) ∘L T) u) = 0 := by
-    dsimp [u, NormedSpace.normalize]
-    rw [ContinuousLinearMap.map_smul_of_tower]
-    simp [hFsub]
+    rw [show u = ‖x - y‖⁻¹ • (x - y) by rfl]
+    rw [ContinuousLinearMap.map_smul_of_tower, hFsub, smul_zero]
   have hSM : (S_M†) (T u) = 0 := by
     simpa using hFu
   have hn := hneg u hu
