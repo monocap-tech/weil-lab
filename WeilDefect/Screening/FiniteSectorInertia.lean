@@ -64,6 +64,64 @@ noncomputable def activeGraphQ (Y : M →L[ℂ] Kpos)
     (a : ActiveCarrier Y) : ℝ :=
   ‖a‖ ^ 2 - ‖activeAdjoint Y a‖ ^ 2
 
+/--
+Fixed finite-sector criticality is attained: if the selected screening map has
+operator norm one, the active graph form has an actual nonzero neutral vector.
+-/
+theorem wd_t11_norm_one_attains_neutral
+    (Y : M →L[ℂ] Kpos)
+    (hY : ‖Y‖ = 1) :
+    ∃ a : ActiveCarrier Y, a ≠ 0 ∧ activeGraphQ Y a = 0 := by
+  let W := activeAdjoint Y
+  have hWnorm : ‖W‖ = 1 := by
+    simpa [W] using (wd_t11_norm_activeAdjoint Y).trans hY
+  have hWne : W ≠ 0 := by
+    intro hzero
+    rw [hzero, norm_zero] at hWnorm
+    norm_num at hWnorm
+  have hnotSub : ¬ Subsingleton (ActiveCarrier Y) := by
+    intro hsub
+    apply hWne
+    apply ContinuousLinearMap.ext
+    intro x
+    have hx : x = 0 := Subsingleton.elim x 0
+    simp [hx]
+  letI : Nontrivial (ActiveCarrier Y) :=
+    not_subsingleton_iff_nontrivial.mp hnotSub
+  letI : ProperSpace (ActiveCarrier Y) :=
+    FiniteDimensional.proper_rclike ℂ (ActiveCarrier Y)
+  obtain ⟨x : ActiveCarrier Y, hx⟩ := exists_ne (0 : ActiveCarrier Y)
+  let u : ActiveCarrier Y := (‖x‖⁻¹ : ℂ) • x
+  have hu : ‖u‖ = 1 := by
+    simp [u, norm_smul_inv_norm hx]
+  have hsphere : (Metric.sphere (0 : ActiveCarrier Y) 1).Nonempty := by
+    refine ⟨u, ?_⟩
+    simpa [Metric.mem_sphere] using hu
+  obtain ⟨a, haS, haMax⟩ :=
+    (isCompact_sphere (0 : ActiveCarrier Y) 1).exists_isMaxOn
+      hsphere W.continuous.norm.continuousOn
+  have haNorm : ‖a‖ = 1 := by
+    simpa [Metric.mem_sphere] using haS
+  have hupper : ‖W‖ ≤ ‖W a‖ := by
+    apply W.opNorm_le_bound' (norm_nonneg (W a))
+    intro z hz
+    apply haMax
+    simpa [Metric.mem_sphere] using hz
+  have hlower : ‖W a‖ ≤ ‖W‖ := by
+    have h := W.le_opNorm a
+    simpa [haNorm] using h
+  have hWa : ‖W a‖ = 1 := by
+    have : ‖W a‖ = ‖W‖ := le_antisymm hlower hupper
+    rw [this, hWnorm]
+  refine ⟨a, ?_, ?_⟩
+  · intro ha0
+    rw [ha0, norm_zero] at haNorm
+    norm_num at haNorm
+  · unfold activeGraphQ
+    change ‖a‖ ^ 2 - ‖W a‖ ^ 2 = 0
+    rw [haNorm, hWa]
+    norm_num
+
 /-- Sorted eigenbasis of the active covariance. -/
 noncomputable def activeEigenbasis (Y : M →L[ℂ] Kpos) :
     OrthonormalBasis (Fin (finrank ℂ (ActiveCarrier Y))) ℂ (ActiveCarrier Y) :=
