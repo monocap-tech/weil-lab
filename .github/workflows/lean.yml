@@ -45,7 +45,7 @@ jobs:
 
       - name: Check current theorem target
         shell: bash
-        run: lake env lean WeilDefect/Examples/Algebraic.lean
+        run: lake env lean WeilDefect/Arithmetic/Scalarization.lean
 
       - name: Reject unfinished trusted declarations
         shell: bash
