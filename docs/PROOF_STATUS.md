@@ -423,6 +423,51 @@ Only finitely many prime-power translations occur, and
 
 ---
 
+# H1-P2.1 — Quartet channel and residue structure
+
+Canonical source: [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md).
+
+| Label | Statement | Standing |
+| --- | --- | --- |
+| ZW1-T1 | Each distinct nonreal conjugate pair diagonalizes into one positive and one negative Weil/Krein channel | PROVED |
+| ZW1-T2 | One simple zeta quartet contributes two negative pair coordinates | PROVED |
+| ZW1-T3 | Finite Weil negative index equals the number of distinct nonreal conjugate pairs | IMPORTED + specialized |
+| ZW1-T4 | Repeated same-frequency multiplicities contribute synthesis-null directions that must be quotiented | IMPORTED/DERIVED |
+| ZW1-T5 | Finite distinct exponentials are linearly independent on a nonempty interval | PROVED |
+| ZW1-T6 | A selected negative cell cannot be exactly canceled by finitely many distinct positive zero-side channels | PROVED |
+| ZW1-T7 | Every selected negative raw residue vector satisfies (mathbf1^Tv=0) | PROVED |
+| ZW1-T8 | Selected rational response satisfies (R_v(z)=O(|z|^{-2})) | PROVED |
+| ZW1-E1 | The inverse-square order is universally sharp | PROVED EXAMPLE |
+| ZW1-T9 | Native Problem-1 zero synthesis is Hilbert-Schmidt; off-axis helper covariance is trace class | DERIVED from Bombieri estimate + zero count |
+| ZW1-T10 | Exact unit-budget infinite helper targets must admit quantitative finite-head approximation | PROVED |
+| ZW1-S1 | Unweighted sampling/frame claims and native Problem-1 coercivity are metric-distinct | SCOPE NORMALIZATION |
+
+The key zeta-specific chain is
+
+[
+oxed{
+uin M_Pi
+Longrightarrow
+mathbf1^Tv=0
+Longrightarrow
+R_v(z)=O(|z|^{-2}),
+}
+]
+
+and the order cannot be improved universally without additional structure.
+
+A second key correction is
+
+[
+oxed{
+	ext{native Problem-1 synthesis is compact}
+}
+]
+
+so no infinite-dimensional native lower frame bound should be inferred from unweighted (L^2/PW_t) sampling statements.
+
+---
+
 # Open Horizon-1 interfaces
 
 The following are **not proved**:
