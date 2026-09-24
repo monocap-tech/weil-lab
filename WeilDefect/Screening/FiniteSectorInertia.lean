@@ -73,7 +73,7 @@ theorem wd_t11_graphQ_eigenvector
   let b :=
     W.toLinearMap.isSymmetric_adjoint_comp_self.eigenvectorBasis
       (rfl : finrank ℂ (ActiveCarrier Y) = finrank ℂ (ActiveCarrier Y))
-  have hb : ‖b i‖ = 1 := b.norm_eq i
+  have hb : ‖b i‖ = 1 := OrthonormalBasis.norm_eq_one b i
   have hAw :
       A (b i)
         =
@@ -89,7 +89,7 @@ theorem wd_t11_graphQ_eigenvector
         inner ℂ (W (b i)) (W (b i)) := by
       unfold A
       simp only [ContinuousLinearMap.comp_apply]
-      exact ContinuousLinearMap.adjoint_inner_left W (W (b i)) (b i)
+      exact ContinuousLinearMap.adjoint_inner_left W (b i) (W (b i))
     rw [hAw] at hinner
     simp [hb, inner_self_eq_norm_sq_to_K] at hinner
     exact_mod_cast hinner.symm
@@ -121,7 +121,7 @@ theorem wd_t11_negative_space_finrank
   unfold negativeSpectralSpace
   rw [finrank_span_eq_card]
   · exact Fintype.card_coe _
-  · exact (activeEigenbasis Y).linearIndependent.comp
+  · exact (activeEigenbasis Y).toBasis.linearIndependent.comp
       (fun i : {i // i ∈ negativeIndices Y} => i.1)
       Subtype.val_injective
 
