@@ -203,23 +203,39 @@ while
 
 This is the normalized endpoint-amplification morphology.
 
-More generally, because the limiting ray lies in
+The divergence above is direct from the selected-amplitude normalization and does not require identifying the varying maps \(\mathcal E_{\Pi,t}^*\) with the single common realization map used in WD-C7.
+
+A stronger statement—every increasingly accurate physical representation of the endpoint ray must blow up—follows from WD-C7 only if the selected support filtration is additionally realized by one common bounded map
 
 ```math
-\mathcal A_{\Pi,c+}\setminus\mathcal A_{\Pi,c},
+T:\mathscr H\to K,
+\qquad
+\mathcal A_{\Pi,t}=\overline{T(\mathscr H_t)},
 ```
 
-WD-C7 says every increasingly accurate physical representation of that new endpoint vector must lose norm compactness.
+with the right-continuous nested physical spaces required there.
 
 ---
 
 ## P3-N2 — Boundary-amplification conclusion
 
-A fixed-packet persistent negative endpoint ray cannot be represented by a uniformly bounded right-endpoint physical family.
+For the normalized witnesses in the P3-N1 setup,
 
-**Dependencies:** WD-C7, WD-C9.
+```math
+h_n=\varepsilon_n^{-1}g_n
+```
 
-**Standing:** PROVED CONDITIONAL on P3-N1 setup.
+satisfies
+
+```math
+\|h_n\|\to\infty.
+```
+
+If the additional common-carrier hypotheses of WD-C7 hold, then every increasingly accurate right-endpoint representation of the new endpoint vector is likewise unbounded.
+
+**Dependencies:** direct normalization; WD-C7 only for the stronger common-carrier statement.
+
+**Standing:** PROVED CONDITIONAL on P3-N1 setup, with the universal-representation version conditional on the WD-C7 realization hypotheses.
 
 ---
 
@@ -657,33 +673,35 @@ What P3-N6 does say is exact:
 
 # 11. Adaptive cancellation is not an escape
 
-Suppose the selected-preserving multiplier is additionally chosen so that
+Fix a cutoff \(R\). Suppose the selected-preserving multiplier is additionally chosen so that
 
 ```math
-\mathcal N_v[\psi]
+\mathcal N_{v,R}[\psi]
 =
 \mathcal A_v[\psi].
 ```
 
-ZW2-T5 forces
+ZW2-T5 forces, at that same cutoff,
 
 ```math
 \boxed{
 \mathcal P_v[\psi]
 =
-\mathcal F_v[\psi].
+\mathcal F_{v,R}[\psi].
 }
 ```
 
-Thus adaptive annihilation of the near-minus-archimedean field does not leave an independent prime lower bound.
+Thus cutoffwise adaptive annihilation of the near-minus-archimedean field does not leave an independent prime term.
 
-As the far cutoff is pushed outward,
+If the same fixed multiplier satisfies the cancellation along cutoffs tending to infinity, then
 
 ```math
 \mathcal F_{v,R}[\psi]\to0.
 ```
 
-So adaptive scalar choice does not bypass the next-jet seam.
+The same tail conclusion holds for a varying multiplier family only under the uniform boundedness required by WD-T31/WD-T33.
+
+No statement is made for an arbitrarily varying unbounded adaptive family.
 
 ---
 
@@ -693,9 +711,9 @@ Within the selected-preserving scalar explicit formula,
 
 ```math
 \boxed{
-\text{adaptive near cancellation}
+\text{cutoffwise adaptive near cancellation}
 \Longrightarrow
-\text{prime term collapses onto far tail}.
+\text{prime term equals the corresponding far tail}.
 }
 ```
 
@@ -748,7 +766,7 @@ y=(a,u)
 }
 ```
 
-Every normalized physical realization of that endpoint ray has diverging norm.
+The explicitly normalized representatives \(h_n=\varepsilon_n^{-1}g_n\) have diverging norm. A universal representation-cost statement additionally requires the common-carrier hypotheses of WD-C7.
 
 ### Full Weil signature
 
@@ -807,7 +825,7 @@ H_v^{(m_\mu)}(\mu)
 }
 ```
 
-Adaptive cancellation of this field cannot preserve an independent prime lower bound.
+Cutoffwise adaptive cancellation of this field collapses the prime term onto the corresponding far tail; an asymptotic tail conclusion requires a fixed or uniformly bounded multiplier family.
 
 ---
 
