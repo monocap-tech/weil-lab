@@ -78,7 +78,7 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 | Stable ID | Historical alias | Statement | Standing | Verification | Canonical source |
 | --- | --- | --- | --- | --- | --- |
 | WD-T30 | ZW2-T1 | Two-mode selected-preserving scalar multiplier exists | INTERNAL-PROOF | P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T31 | ZW2-T2 | Zero moment + zero counting gives \(O((\log R)/R)\) far complementary tail | INTERNAL-PROOF | P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T31 | ZW2-T2 | Zero moment + zero counting gives \(O((\log R)/R)\) far complementary tail | INTERNAL-PROOF + imported zero count | SOURCE-PIN-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 | WD-T32 | ZW2-T3 + ZW2-T4 | Complementary response equals the weighted completed-\(\Xi\) next-jet field | INTERNAL-PROOF | P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 | WD-T33 | ZW2-T5 | Adaptive near-minus-archimedean cancellation collapses prime term onto far tail | INTERNAL-PROOF | P4-AUDIT-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 | WD-T34 | ZW2-T6 | Fixed compact support activates only finitely many prime-power translations | DERIVED from IMPORTED compact-window formula | SOURCE-PIN-PENDING | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
