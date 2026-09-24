@@ -29,3 +29,41 @@ The statuses above become LEAN-CERTIFIED only after the pinned CI build succeeds
 \texttt{LEAN-H1-P0 / INFRASTRUCTURE AND VERTICAL PILOT}.
 }
 \]
+
+
+## First certificate evidence
+
+The first stable-ID certifications were built at Lean commit:
+
+\[
+\boxed{
+\texttt{c125114e2dd39fa3907f8690ca39d9c899468caf}.
+}
+\]
+
+GitHub Actions run:
+
+\[
+\boxed{
+\texttt{35949414095}.
+}
+\]
+
+The run completed successfully with all of:
+
+- pinned dependency resolution;
+- mathlib cache fetch;
+- Lake build;
+- unfinished/project-axiom rejection.
+
+Thus WD-X03 and WD-X04 satisfy the repository's LEAN-CERTIFIED rule.
+
+WD-T26 and WD-X07 remain LEAN-IN-PROGRESS because their current declarations certify only algebraic cores, not yet the complete stable theorem/example statements.
+
+## Current formalization cursor
+
+\[
+\boxed{
+\texttt{LEAN-H1-P1 / ALGEBRAIC AND FINITE-DIMENSIONAL CORE}.
+}
+\]
