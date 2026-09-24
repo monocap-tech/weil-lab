@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T10 | WeilDefect.WDT10.wd_t10_residual_budget_positive + WeilDefect.WDT10.wd_t10_residual_sqrt_sq + WeilDefect.WDT10.wd_t10_effective_covariance + WeilDefect.WDT10.wd_t10_background_covariance_elimination + WeilDefect.WDT10.wd_t10_full_defect_reduction + WeilDefect.WDT10.wd_t10_full_nonnegative_iff_effective_physical + WeilDefect.WDT10.wd_t10_full_nonnegative_iff_residual_screening + WeilDefect.WDT10.wd_t10_background_elimination_and_residual_budget | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T09 | WeilDefect.WDT09.wd_t09_full_quadratic_factorization + WeilDefect.WDT09.wd_t09_shared_defect_factorization + WeilDefect.WDT09.wd_t09_full_nonnegative_iff_joint_budget + WeilDefect.WDT09.wd_t09_separate_contractions_not_joint + WeilDefect.WDT09.wd_t09_shared_screening_budget | LEAN-CERTIFIED |
 | WD-T08 | WeilDefect.WDT08.selected_adjoint_comp_injective + WeilDefect.WDT08.wd_t08_selected_negative_rank_le_finrank + WeilDefect.WDT08.wd_t08_background_null_finrank_lower + WeilDefect.WDT08.wd_t08_selected_negative_on_background_null + WeilDefect.WDT08.wd_t08_full_negative_rank_background_reduction + WeilDefect.WDT08.wd_t08_finite_selected_sector_index_cap | LEAN-CERTIFIED |
 | WD-T07 | WeilDefect.wd_t07_selected_full_identity + WeilDefect.wd_t07_selected_negative_implies_full + WeilDefect.WDT07.wd_t07_full_le_selected + WeilDefect.WDT07.wd_t07_negative_rank_custody + WeilDefect.WDT07.wd_t07_full_negative_without_selected_negative + WeilDefect.WDT07.wd_t07_selected_background_monotonicity_and_custody | LEAN-CERTIFIED |
@@ -1089,5 +1090,145 @@ The run passed:
 - mathlib cache retrieval;
 - direct Lake build of the WD-T09-containing module;
 - unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
+
+
+## WD-T10 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T10: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.WDT10.residualBudget;
+- WeilDefect.WDT10.wd_t10_residual_budget_positive;
+- WeilDefect.WDT10.residualSqrt;
+- WeilDefect.WDT10.wd_t10_residual_sqrt_selfAdjoint;
+- WeilDefect.WDT10.wd_t10_residual_sqrt_sq;
+- WeilDefect.WDT10.effectivePositive;
+- WeilDefect.WDT10.wd_t10_effective_covariance;
+- WeilDefect.WDT10.wd_t10_background_covariance_elimination;
+- WeilDefect.WDT10.wd_t10_full_defect_reduction;
+- WeilDefect.WDT10.wd_t10_shared_defect_inner_identity;
+- WeilDefect.WDT10.wd_t10_full_nonnegative_iff_effective_physical;
+- WeilDefect.WDT10.wd_t10_full_nonnegative_iff_residual_screening;
+- WeilDefect.WDT10.wd_t10_background_elimination_and_residual_budget.
+
+Assuming an exact contractive background screen
+
+\[
+S_B=-S_+X_B,
+\qquad
+\|X_B\|\le1,
+\]
+
+Lean verifies natively that
+
+\[
+R_B=I-X_BX_B^*
+\]
+
+is positive.  The canonical square root is constructed by mathlib's continuous
+functional calculus,
+
+\[
+R_B^{1/2}:=\operatorname{CFC.sqrt}(R_B),
+\]
+
+and Lean checks both self-adjointness and
+
+\[
+R_B^{1/2}R_B^{1/2}=R_B.
+\]
+
+For
+
+\[
+S_{\rm eff}=S_+R_B^{1/2},
+\]
+
+Lean then proves internally
+
+\[
+S_{\rm eff}S_{\rm eff}^*
+=
+S_+R_BS_+^*
+=
+S_+S_+^*-S_BS_B^*,
+\]
+
+hence
+
+\[
+D_{\rm full}
+=
+S_{\rm eff}S_{\rm eff}^*-S_MS_M^*.
+\]
+
+The corresponding scalar quadratic forms are identified exactly, so full
+nonnegativity is reduced to physical nonnegativity of the effective
+two-channel defect.
+
+The final screening-existence clause consumes the explicit proposition-valued
+premise
+
+\[
+\texttt{WeilDefect.WDT02.DouglasUnitData\ S_M\ S_eff}.
+\]
+
+Downstream from that premise, Lean verifies
+
+\[
+D_{\rm full}\succeq0
+\iff
+\exists Y, \|Y\|\le1,\quad S_M=-S_{\rm eff}Y.
+\]
+
+The CFC square-root theorems are ordinary kernel-checked mathlib library
+results and are not an imported project theorem premise.  The only imported
+boundary in the stable WD-T10 statement is the same Douglas factorization
+interface already isolated in WD-T02.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.ResidualBudget}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36021712105}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{1e5b881fd412ce88de62564c57637702f16858c8}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{1ffb6b2a80620b266798d40e68fe3329dc2cfb78}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T10 module;
+- unfinished-proof/project-axiom rejection.
+
+The first two WD-T10 compiler passes exposed only local Lean representation and
+rewrite issues around adjoints, CFC square-root order hypotheses, composition
+association, and scalar quadratic-form transport.  Those repairs did not alter
+the theorem statement or mathematical hypotheses.
 
 No other stable theorem ID is promoted by this run.
