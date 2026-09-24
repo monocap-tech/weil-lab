@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T15 | WeilDefect.WDT15.wd_t15_gap_antitone + WeilDefect.WDT15.wd_t15_right_limit_gap_duality + WeilDefect.WDT15.wd_t15_sequence_right_limit_eq + WeilDefect.WDT15.wd_t15_sequence_gap_eq_right_limit_orthogonal + WeilDefect.WDT15.wd_t15_monotone_projection_limit + WeilDefect.WDT15.wd_t15_right_limit_projection_and_gap_duality | LEAN-CERTIFIED |
 | WD-T14 | WeilDefect.WDT14.wd_t14_positive_shadow_margin + WeilDefect.WDT14.wd_t14_positive_shadow_preserves_negative_margin + WeilDefect.WDT14.wd_t14_graph_shadow_admissible_iff + WeilDefect.WDT14.wd_t14_graph_admissibility_failure_example + WeilDefect.WDT14.wd_t14_finite_positive_shadows_preserve_signature_not_admissibility | LEAN-CERTIFIED |
 | WD-T13 | WeilDefect.WDT13.wd_t13_complement_isUnit + WeilDefect.WDT13.wd_t13_complement_inverse_nonnegative + WeilDefect.WDT13.wd_t13_schur_correction_positive + WeilDefect.WDT13.wd_t13_schur_le_compression + WeilDefect.WDT13.wd_t13_schur_lower_bound + WeilDefect.WDT13.wd_t13_schur_isUnit + WeilDefect.WDT13.wd_t13_block_solution_exists + WeilDefect.WDT13.wd_t13_block_solution_first_component + WeilDefect.WDT13.wd_t13_direct_compression_versus_shorted_covariance | LEAN-CERTIFIED |
 | WD-T12 | WeilDefect.WDT12.sequentialResidualBudget + WeilDefect.WDT12.wd_t12_sequential_budget_covariance + WeilDefect.WDT12.wd_t12_second_background_elimination + WeilDefect.WDT12.wd_t12_sequential_background_consumption | LEAN-CERTIFIED |
@@ -1600,5 +1601,102 @@ Next theorem cursor:
 \[
 \boxed{
 \texttt{WD-T15 / WD-C1+WD-C2 — RIGHT-LIMIT PROJECTION CONVERGENCE AND GAP-SPACE DUALITY}
+}
+\]
+
+
+## WD-T15 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T15: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.WDT15.rightLimit;
+- WeilDefect.WDT15.gapLimit;
+- WeilDefect.WDT15.wd_t15_gap_antitone;
+- WeilDefect.WDT15.wd_t15_right_limit_gap_duality;
+- WeilDefect.WDT15.wd_t15_sequence_right_limit_eq;
+- WeilDefect.WDT15.wd_t15_sequence_gap_eq_right_limit_orthogonal;
+- WeilDefect.WDT15.wd_t15_monotone_projection_limit;
+- WeilDefect.WDT15.wd_t15_right_limit_projection_and_gap_duality.
+
+The certificate represents the right-limit analysis space as the
+`ClosedSubmodule` infimum
+
+\[
+A_{c+}=\bigcap_{t>c}A_t
+\]
+
+and the limiting gap as the closed-submodule supremum
+
+\[
+G_{c+}
+=
+\overline{\operatorname{span}\bigcup_{t>c}A_t^\perp}.
+\]
+
+Lean proves the gap duality
+
+\[
+A_{c+}=G_{c+}^{\perp}.
+\]
+
+For every antitone real sequence \(t_n\downarrow c\) from the right and every
+vector \(x\), Lean also proves
+
+\[
+P_{A_{t_n}}x\to P_{A_{c+}}x.
+\]
+
+The P4 audit records that the sequential formulation suffices for the
+real-parameter strong-limit statement.
+
+No imported project theorem premise is consumed by WD-T15.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Filtration.RightLimit}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36070010269}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{ee1efb86924caa501e0bfaa4ab8a1478736c64d8}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{2df4a12993a7fdad3695deb5e68e7ae526b8ebee}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T15 module;
+- unfinished-proof/project-axiom rejection.
+
+Repair work changed Lean representation only; no theorem statement or
+mathematical hypothesis was weakened.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T16 / WD-C3+WD-C5 — FIXED FINITE NEGATIVE-SECTOR PERSISTENCE}
 }
 \]
