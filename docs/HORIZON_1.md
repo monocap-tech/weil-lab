@@ -14,7 +14,7 @@ Horizon 1 ends **before** the actual-zeta exclusion problem.
 
 The following are interfaces out of Horizon 1:
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC},
 \quad
@@ -22,13 +22,13 @@ The following are interfaces out of Horizon 1:
 \quad
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
-\]
+```
 
 Horizon 1 may complete while all three remain open.
 
 ## Phase map
 
-\[
+```math
 \boxed{
 \begin{array}{ll}
 \textbf{H1-P0} & \text{Consolidation and custody}\\
@@ -39,11 +39,11 @@ Horizon 1 may complete while all three remain open.
 \textbf{H1-P5} & \text{Public mathematical package}
 \end{array}
 }
-\]
+```
 
 Current position:
 
-\[
+```math
 \boxed{
 \text{H1-P0 COMPLETE}
 \qquad
@@ -55,7 +55,7 @@ Current position:
 \qquad
 \text{H1-P4 ACTIVE}.
 }
-\]
+```
 
 ---
 
@@ -80,9 +80,9 @@ Canonical documents:
 The phase establishes:
 
 - the physical defect operator
-  \[
-  D=S_+S_+^*-S_-S_-^*;
-  \]
+  ```math
+  D=S_{+}S_{+}^{*}-S_{-}S_{-}^{*};
+  ```
 - equality of physical and coefficient negative index;
 - Douglas screening and graph normal form;
 - rank-one specialization;
@@ -99,13 +99,13 @@ The phase establishes:
 
 A fixed finite selected sector obeys
 
-\[
+```math
 \boxed{
 \text{critical/negative right-approach}
 \Longrightarrow
 \text{nonzero nonpositive right-limit ray}.
 }
-\]
+```
 
 Thus non-attained approximate neutrality without persistence is an infinite/moving-sector phenomenon.
 
@@ -125,15 +125,15 @@ Canonical documents:
 
 The zero-side pair decomposition identifies
 
-\[
-K_+
+```math
+K_{+}
 =
 K_{\rm crit}\oplus K_{{\rm off},+},
 \qquad
-K_-
+K_{-}
 =
 K_{{\rm off},-}.
-\]
+```
 
 Bombieri's finite inertia theorem saturates the abstract negative-index cap.
 
@@ -141,19 +141,19 @@ Bombieri's finite inertia theorem saturates the abstract negative-index cap.
 
 For a selected negative raw residue vector,
 
-\[
+```math
 \boxed{
-\mathbf1^Tv=0,
+\mathbf{1}^Tv=0,
 }
-\]
+```
 
 hence
 
-\[
+```math
 \boxed{
 R_v(z)=O(|z|^{-2}),
 }
-\]
+```
 
 with inverse-square order universally sharp.
 
@@ -163,17 +163,17 @@ The native Problem-1 synthesis is Hilbert-Schmidt/compact, so unweighted samplin
 
 For a fixed bounded selected-preserving multiplier,
 
-\[
+```math
 \boxed{
 \mathcal F_{v,R}[\psi]
 =
 O\!\left(\frac{\log R}{R}\right),
 }
-\]
+```
 
 and the surviving finite/intermediate field is
 
-\[
+```math
 \boxed{
 \mathcal N_{v,R}[\psi]
 =
@@ -182,15 +182,15 @@ m_\mu\psi(\mu)
 \frac{H_v^{(m_\mu)}(\mu)}
 {\Xi^{(m_\mu)}(\mu)}.
 }
-\]
+```
 
-At fixed support \(c\), the compact-window operator contains only finitely many prime-power translations and has principal order
+At fixed support $c$, the compact-window operator contains only finitely many prime-power translations and has principal order
 
-\[
+```math
 \boxed{
 \Psi_c(t)=\log|t|+O_c(1).
 }
-\]
+```
 
 No automatic positive-Sobolev/quasianalytic gain follows.
 
@@ -212,14 +212,14 @@ This phase packages the completed ingredients into theorem-shaped obstruction mo
 
 Target chain:
 
-\[
+```math
 \boxed{
 \begin{aligned}
 \text{persistent selected negative defect}
 &\Longrightarrow
 \text{normalized negative Weil signature}\\
 &\Longrightarrow
-\mathbf1^Tv=0\\
+\mathbf{1}^Tv=0\\
 &\Longrightarrow
 R_v(z)=O(z^{-2})\\
 &\Longrightarrow
@@ -228,15 +228,15 @@ R_v(z)=O(z^{-2})\\
 \text{weighted finite/intermediate next-jet field}.
 \end{aligned}
 }
-\]
+```
 
 The theorem terminates at
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC}
 }
-\]
+```
 
 or the equivalent packetwise KPH/transversality interface.
 
@@ -244,7 +244,7 @@ or the equivalent packetwise KPH/transversality interface.
 
 Target chain:
 
-\[
+```math
 \boxed{
 \text{neutral persistence}
 \Longrightarrow
@@ -254,15 +254,15 @@ W_ck=0
 +
 \text{finite arithmetic translations}.
 }
-\]
+```
 
 The theorem terminates at
 
-\[
+```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
-\]
+```
 
 ### P3.2 — Noncompact background morphology
 
@@ -285,11 +285,11 @@ The negative branch is now packaged in [Negative Defect Morphology Theorem](NEGA
 
 For a fixed finite selected packet, normalized persistent negativity forces:
 
-\[
+```math
 \boxed{
 \text{negative endpoint jump}
 \Longrightarrow
-\mathbf1^Tv=0
+\mathbf{1}^Tv=0
 \Longrightarrow
 R_v(z)=O(z^{-2})
 \Longrightarrow
@@ -297,13 +297,13 @@ R_v(z)=O(z^{-2})
 \Longrightarrow
 \text{weighted near next-jet morphology}.
 }
-\]
+```
 
 The theorem stops at
 
-\[
+```math
 \texttt{AZ-NEXTJET-LOC}
-\]
+```
 
 without assuming a source-free lower bound on the near field.
 
@@ -311,7 +311,7 @@ without assuming a source-free lower bound on the near field.
 
 The attained-neutral fixed-packet branch is now packaged in [Neutral Defect Morphology Theorem](NEUTRAL_DEFECT_MORPHOLOGY.md).
 
-\[
+```math
 \boxed{
 \text{attained criticality}
 \Longrightarrow
@@ -321,15 +321,15 @@ W_ck=0
 +
 \text{finite prime translations}.
 }
-\]
+```
 
 The theorem explicitly does not infer persistence from logarithmic regularity or from the finite translation structure.
 
 Its stop line is
 
-\[
+```math
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
-\]
+```
 
 ### P3.2 disposition
 
@@ -337,7 +337,7 @@ The remaining noncompact branches are packaged in [Noncompact Background Morphol
 
 The phase now distinguishes:
 
-\[
+```math
 \boxed{
 \begin{array}{l}
 \text{fixed-packet negative persistence},\\
@@ -347,7 +347,7 @@ The phase now distinguishes:
 \text{fixed full-divisor negative convergence}.
 \end{array}
 }
-\]
+```
 
 Therefore **H1-P3 is COMPLETE**.
 
@@ -373,11 +373,11 @@ The audit applied several narrowing/clarification patches but found no internal 
 
 ### Current cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
 }
-\]
+```
 
 ---
 
@@ -399,9 +399,9 @@ Every theorem will receive:
 
 The normalized public theorem sequence will use stable labels such as
 
-\[
+```math
 \texttt{WD-T1},\texttt{ WD-T2},\ldots
-\]
+```
 
 with auxiliary lemmas and counterexamples under separate namespaces.
 
@@ -423,19 +423,19 @@ Required deliverables:
 
 The final package must separate
 
-\[
+```math
 \boxed{
 \text{Here is the Weil-defect theory.}
 }
-\]
+```
 
 from
 
-\[
+```math
 \boxed{
 \text{Here are the additional actual-zeta statements needed for an RH application.}
 }
-\]
+```
 
 ---
 
@@ -443,7 +443,7 @@ from
 
 Horizon 1 is complete when:
 
-\[
+```math
 \boxed{
 \begin{aligned}
 &\text{abstract defect theory extracted;}\\
@@ -454,6 +454,6 @@ Horizon 1 is complete when:
 &\text{public manuscript/package assembled.}
 \end{aligned}
 }
-\]
+```
 
 No RH proof is required for Horizon 1 completion.

@@ -28,63 +28,63 @@ https://doi.org/10.1090/S0002-9939-1966-0203464-1
 
 **Theorem 1**, pp. 413–415.
 
-For bounded Hilbert-space operators \(A,B\), the following are equivalent:
+For bounded Hilbert-space operators $A,B$, the following are equivalent:
 
-\[
+```math
 \operatorname{Ran}A\subseteq\operatorname{Ran}B,
-\]
+```
 
-\[
-AA^*\le \lambda^2BB^*
+```math
+AA^{*}\le \lambda^2BB^{*}
 \quad\text{for some }\lambda\ge0,
-\]
+```
 
 and
 
-\[
+```math
 A=BC
 \quad\text{for some bounded }C.
-\]
+```
 
 The theorem also specifies a unique reduced/Douglas solution satisfying the minimum-norm majorization formula together with
 
-\[
+```math
 \ker A=\ker C
-\]
+```
 
 and
 
-\[
+```math
 \operatorname{Ran}C
 \subseteq
-\overline{\operatorname{Ran}B^*}.
-\]
+\overline{\operatorname{Ran}B^{*}}.
+```
 
 ## Horizon-1 convention
 
 Apply Douglas with
 
-\[
-A=S_-,
+```math
+A=S_{-},
 \qquad
-B=S_+.
-\]
+B=S_{+}.
+```
 
 Then
 
-\[
-S_-S_-^*\preceq S_+S_+^*
-\]
+```math
+S_{-}S_{-}^{*}\preceq S_{+}S_{+}^{*}
+```
 
-is exactly the unit-majorization case and yields a reduced solution \(X\) with
+is exactly the unit-majorization case and yields a reduced solution $X$ with
 
-\[
-S_-=-S_+X,
+```math
+S_{-}=-S_{+}X,
 \qquad
 \|X\|\le1,
-\]
+```
 
-after absorbing the sign into \(X\).
+after absorbing the sign into $X$.
 
 ## Consumed by
 
@@ -93,9 +93,9 @@ after absorbing the sign into \(X\).
 
 ## Pin status
 
-\[
+```math
 \boxed{\text{SOURCE-PINNED}}
-\]
+```
 
 The primary bibliographic record and theorem identity are fixed. The H1-P4.2 audit still has to check every domain/codomain application in the internal proofs.
 
@@ -119,11 +119,11 @@ https://www.bdim.eu/item?id=RLIN_2000_9_11_3_183_0
 
 Bombieri states that the number of negative eigenvalues of
 
-\[
+```math
 H(\Gamma;t)
-\]
+```
 
-equals the number of **distinct complex-conjugate pairs** in \(\Gamma\).
+equals the number of **distinct complex-conjugate pairs** in $\Gamma$.
 
 ### Consumed by
 
@@ -137,9 +137,9 @@ A simple off-critical zeta quartet contributes two nonreal conjugate pairs in Bo
 
 ### Pin status
 
-\[
+```math
 \boxed{\text{SOURCE-PINNED}}
-\]
+```
 
 ---
 
@@ -149,7 +149,7 @@ A simple off-critical zeta quartet contributes two nonreal conjugate pairs in Bo
 
 **Lemma 10**, printed p. 210, together with the continuation of its proof on printed p. 213 immediately before Theorem 8.
 
-Lemma 10 states that \(H(\Gamma;t)\) has eigenvalue \(0\) exactly when an ordinate occurs with multiplicity greater than one; the null multiplicity is the sum of the corresponding \(m(\gamma)-1\) contributions over distinct repeated ordinates.
+Lemma 10 states that $H(\Gamma;t)$ has eigenvalue $0$ exactly when an ordinate occurs with multiplicity greater than one; the null multiplicity is the sum of the corresponding $m(\gamma)-1$ contributions over distinct repeated ordinates.
 
 The proof then identifies the remaining spectrum with the matrix over distinct ordinates weighted by their multiplicities.
 
@@ -164,9 +164,9 @@ Same-frequency duplicate coefficient directions are quotient/null directions and
 
 ### Pin status
 
-\[
+```math
 \boxed{\text{SOURCE-PINNED}}
-\]
+```
 
 ---
 
@@ -176,20 +176,20 @@ Same-frequency duplicate coefficient directions are quotient/null directions and
 
 Section 7, **Theorem 6**, printed pp. 203–206, especially equation
 
-\[
+```math
 \boxed{(7.7)}
-\]
+```
 
 on printed p. 204.
 
-Bombieri obtains, for fixed \(t\) and \(x,y\) in the stated horizontal strip,
+Bombieri obtains, for fixed $t$ and $x,y$ in the stated horizontal strip,
 
-\[
+```math
 |H(x,y;t)|
 \ll_t
 \frac{1}{(1+|x|)(1+|y|)}
 \min\!\left(1,\frac1{|x-y|}\right).
-\]
+```
 
 This remains useful corroborating context for the high-height decay scale.
 
@@ -201,9 +201,9 @@ Bombieri's matrix is complex symmetric in the relevant nonreal-zero setting, so 
 
 ### Pin status
 
-\[
+```math
 \boxed{\text{SOURCE-PINNED / CONTEXTUAL FOR WD-T28}}
-\]
+```
 
 ---
 
@@ -221,14 +221,14 @@ https://sites.math.rutgers.edu/~zeilberg/EM18/TitchmarshZeta.pdf
 
 Chapter IX, §9.2, **Theorem 9.2**, printed p. 211:
 
-\[
+```math
 \boxed{
 N(T+1)-N(T)=O(\log T).
 }
 \tag{9.2.1}
-\]
+```
 
-The immediately following text states the same bound for every fixed interval length \(h\) and notes that the multiplicity of a multiple zero at height \(T\) is \(O(\log T)\).
+The immediately following text states the same bound for every fixed interval length $h$ and notes that the multiplicity of a multiple zero at height $T$ is $O(\log T)$.
 
 ## Consumed by
 
@@ -239,31 +239,31 @@ The immediately following text states the same bound for every fixed interval le
 
 Zeros are counted with multiplicity.
 
-For a fixed selected packet and unit-height shell at distance \(n\), the number of complementary zeros in the shell is
+For a fixed selected packet and unit-height shell at distance $n$, the number of complementary zeros in the shell is
 
-\[
+```math
 O(\log(2+n+|T_F|)).
-\]
+```
 
 Together with
 
-\[
+```math
 R_v(\mu)=O(n^{-2}),
-\]
+```
 
 this gives the internal summation
 
-\[
+```math
 \sum_{n\ge R}\frac{\log n}{n^2}
 =
 O\!\left(\frac{\log R}{R}\right).
-\]
+```
 
 ## Pin status
 
-\[
+```math
 \boxed{\text{SOURCE-PINNED}}
-\]
+```
 
 ---
 
@@ -281,15 +281,15 @@ PDF printed p. 2, equations **(2)** and **(3)**.
 
 For
 
-\[
+```math
 \operatorname{supp}f\subseteq[-L,L],
 \qquad
 F=\widehat f,
-\]
+```
 
 the source writes
 
-\[
+```math
 \boxed{
 Q(f)
 =
@@ -300,11 +300,11 @@ Q(f)
 |F(t)|^2\Psi_L(t)\,dt
 }
 \tag{2}
-\]
+```
 
 for the real-even convention used there, with
 
-\[
+```math
 \boxed{
 \Psi_L(t)
 =
@@ -316,22 +316,22 @@ for the real-even convention used there, with
 \cos(t\log n).
 }
 \tag{3}
-\]
+```
 
 The text immediately following (3) states that, because
 
-\[
+```math
 \operatorname{supp}(f*\widetilde f)
 \subseteq[-2L,2L],
-\]
+```
 
 only prime powers satisfying
 
-\[
+```math
 \boxed{
 \log n<2L
 }
-\]
+```
 
 contribute.
 
@@ -339,51 +339,51 @@ contribute.
 
 Our support radius is
 
-\[
+```math
 \boxed{c=L}.
-\]
+```
 
 Therefore the active compact-window prime set is
 
-\[
+```math
 \boxed{
 \{n=p^m:\log n<2c\}.
 }
-\]
+```
 
-The source uses the **strict inequality** \(<\).
+The source uses the **strict inequality** $<$.
 
 At a threshold
 
-\[
+```math
 2c=\log n_0,
-\]
+```
 
-the threshold term is not in the source sum at \(c\) under this convention, but becomes active for every sufficiently small strict right enlargement \(c+\varepsilon\).
+the threshold term is not in the source sum at $c$ under this convention, but becomes active for every sufficiently small strict right enlargement $c+\varepsilon$.
 
 The source Fourier convention is the one in which multiplication by
 
-\[
+```math
 \cos(t\log n)
-\]
+```
 
 corresponds, up to the fixed transform-normalization convention, to the symmetric physical translation pair
 
-\[
+```math
 \frac12
 \left(
 \tau_{\log n}
 +
 \tau_{-\log n}
 \right).
-\]
+```
 
-The factor \(2\) in (3) cancels that \(1/2\) when the physical prime-delay coefficient is written as
+The factor $2$ in (3) cancels that $1/2$ when the physical prime-delay coefficient is written as
 
-\[
+```math
 \frac{\Lambda(n)}{\sqrt n}
 (\tau_{\log n}+\tau_{-\log n}).
-\]
+```
 
 ## Consumed by
 
@@ -393,9 +393,9 @@ The factor \(2\) in (3) cancels that \(1/2\) when the physical prime-delay coeff
 
 ## Pin status
 
-\[
+```math
 \boxed{\text{SOURCE-PINNED}}
-\]
+```
 
 The H1-P4.2 proof audit must still verify that every internal occurrence uses the same Fourier normalization and support-boundary convention.
 
@@ -411,9 +411,9 @@ https://dlmf.nist.gov/5.11.E2
 
 ## Exact pin
 
-As \(z\to\infty\) in a sector bounded away from the negative real axis,
+As $z\to\infty$ in a sector bounded away from the negative real axis,
 
-\[
+```math
 \boxed{
 \psi(z)
 \sim
@@ -425,45 +425,45 @@ As \(z\to\infty\) in a sector bounded away from the negative real axis,
 \frac{B_{2k}}{2kz^{2k}}.
 }
 \tag{DLMF 5.11.2}
-\]
+```
 
 ## Horizon-1 specialization
 
 Set
 
-\[
+```math
 z=\frac14+\frac{it}{2}.
-\]
+```
 
 Then
 
-\[
+```math
 \Re\log z
 =
 \log|z|
 =
 \log|t|-\log2+O(t^{-2}),
-\]
+```
 
 and the remaining terms are bounded/decaying.
 
 Therefore
 
-\[
+```math
 \Re\psi\!\left(\frac14+\frac{it}{2}\right)
 =
 \log|t|+O(1).
-\]
+```
 
 Combining with the finite bounded prime trigonometric polynomial from EXT-4 gives
 
-\[
+```math
 \boxed{
 \Psi_c(t)
 =
 \log|t|+O_c(1).
 }
-\]
+```
 
 ## Consumed by
 
@@ -471,9 +471,9 @@ Combining with the finite bounded prime trigonometric polynomial from EXT-4 give
 
 ## Pin status
 
-\[
+```math
 \boxed{\text{SOURCE-PINNED}}
-\]
+```
 
 ---
 
@@ -489,9 +489,9 @@ The current WD-T13 statement is deliberately restricted to a strictly positive/i
 
 Status:
 
-\[
+```math
 \boxed{\text{CONTEXTUAL / NON-LOAD-BEARING}}
-\]
+```
 
 ## Suzuki operator framework
 
@@ -503,9 +503,9 @@ The current WD-T34–WD-T38 chain derives its concrete operator formula from EXT
 
 Status:
 
-\[
+```math
 \boxed{\text{CONTEXTUAL / NON-LOAD-BEARING}}
-\]
+```
 
 ---
 
@@ -533,8 +533,8 @@ The next audit must inspect the **internal proof transitions** that consume thes
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.2 / INTERNAL PROOF AUDIT}
 }
-\]
+```

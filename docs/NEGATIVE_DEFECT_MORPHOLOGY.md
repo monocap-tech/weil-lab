@@ -7,11 +7,11 @@ It does **not** prove that the actual zeta divisor excludes the morphology.
 
 The theorem stops at the explicit Horizon-1 interface
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC}
 }
-\]
+```
 
 or an equivalent packetwise transversality/KPH floor.
 
@@ -21,93 +21,93 @@ or an equivalent packetwise transversality/KPH floor.
 
 Fix a finite selected off-axis packet
 
-\[
+```math
 \Pi
-\]
+```
 
 with finite selected negative coefficient space
 
-\[
-M_\Pi\subset K_-.
-\]
+```math
+M_\Pi\subset K_{-}.
+```
 
 Let
 
-\[
+```math
 \mathcal A_{\Pi,t}
-\]
+```
 
-be the corresponding selected analysis spaces for support parameter \(t\), with
+be the corresponding selected analysis spaces for support parameter $t$, with
 
-\[
+```math
 s<t
 \Longrightarrow
 \mathcal A_{\Pi,s}\subseteq\mathcal A_{\Pi,t}.
-\]
+```
 
-Fix an endpoint \(c>0\) and assume
+Fix an endpoint $c>0$ and assume
 
-\[
+```math
 \boxed{
 \mathcal A_{\Pi,c}
 \text{ is }J\text{-nonnegative}.
 }
-\]
+```
 
 Let
 
-\[
+```math
 t_n\downarrow c.
-\]
+```
 
 Suppose there are unit physical vectors
 
-\[
+```math
 g_n
-\]
+```
 
 and selected analysis amplitudes
 
-\[
+```math
 \varepsilon_n
 :=
-\|\mathcal E_{\Pi,t_n}^*g_n\|
+\|\mathcal E_{\Pi,t_n}^{*}g_n\|
 >0
-\]
+```
 
 such that
 
-\[
+```math
 \boxed{
 \varepsilon_n\to0.
 }
-\]
+```
 
 Normalize the selected coefficient vectors by
 
-\[
+```math
 \boxed{
 z_n
 :=
-\frac{\mathcal E_{\Pi,t_n}^*g_n}{\varepsilon_n},
+\frac{\mathcal E_{\Pi,t_n}^{*}g_n}{\varepsilon_n},
 \qquad
 \|z_n\|=1.
 }
-\]
+```
 
 Assume their selected indefinite signature has a fixed negative limit:
 
-\[
+```math
 \boxed{
 [z_n,z_n]_J\to-\kappa
 }
-\]
+```
 
 for some
 
-\[
+```math
 \kappa>0.
-\]
+```
 
 This is the abstract fixed-packet negative-collapse hypothesis.
 
@@ -115,40 +115,40 @@ This is the abstract fixed-packet negative-collapse hypothesis.
 
 # 2. Persistent endpoint ray
 
-Because \(M_\Pi\) is finite dimensional, WD-C5 applies.
+Because $M_\Pi$ is finite dimensional, WD-C5 applies.
 
 After passage to a subsequence there is
 
-\[
+```math
 y=(a,u)\in\mathcal A_{\Pi,c+}
-\]
+```
 
 such that
 
-\[
+```math
 \boxed{
 y\ne0,
 \qquad
 [y,y]_J\le-\kappa.
 }
-\]
+```
 
 Since the endpoint space is nonnegative,
 
-\[
+```math
 \boxed{
 y\in
 \mathcal A_{\Pi,c+}
 \setminus
 \mathcal A_{\Pi,c}.
 }
-\]
+```
 
 In particular,
 
-\[
+```math
 u\ne0.
-\]
+```
 
 Thus the branch carries a genuine negative endpoint jump, not merely a sequence of finite negative witnesses.
 
@@ -158,13 +158,13 @@ Thus the branch carries a genuine negative endpoint jump, not merely a sequence 
 
 Under the setup above,
 
-\[
+```math
 \boxed{
 \text{uniform normalized selected negativity}
 \Longrightarrow
 \text{nonzero persistent negative endpoint ray}.
 }
-\]
+```
 
 **Dependencies:** WD-C3, WD-C5.
 
@@ -176,38 +176,38 @@ Under the setup above,
 
 Define the rescaled physical representatives
 
-\[
+```math
 h_n
 :=
 \varepsilon_n^{-1}g_n.
-\]
+```
 
 Then
 
-\[
-\mathcal E_{\Pi,t_n}^*h_n
+```math
+\mathcal E_{\Pi,t_n}^{*}h_n
 =
 z_n,
-\]
+```
 
 while
 
-\[
+```math
 \boxed{
 \|h_n\|
 =
 \varepsilon_n^{-1}
 \to\infty.
 }
-\]
+```
 
 This is the normalized endpoint-amplification morphology.
 
 More generally, because the limiting ray lies in
 
-\[
+```math
 \mathcal A_{\Pi,c+}\setminus\mathcal A_{\Pi,c},
-\]
+```
 
 WD-C7 says every increasingly accurate physical representation of that new endpoint vector must lose norm compactness.
 
@@ -227,16 +227,16 @@ A fixed-packet persistent negative endpoint ray cannot be represented by a unifo
 
 For the selected signed form,
 
-\[
+```math
 Q_{\Pi,t_n}(g_n)
 =
 \varepsilon_n^2
 [z_n,z_n]_J.
-\]
+```
 
 Therefore
 
-\[
+```math
 \boxed{
 \frac{
 Q_{\Pi,t_n}(g_n)
@@ -246,31 +246,31 @@ Q_{\Pi,t_n}(g_n)
 \to
 -\kappa.
 }
-\]
+```
 
 Let
 
-\[
+```math
 B_\Pi
-\]
+```
 
 be the unselected negative divisor and define the normalized background response
 
-\[
+```math
 \boxed{
 b_n
 :=
 \frac{
-S_{B_\Pi,t_n}^*g_n
+S_{B_\Pi,t_n}^{*}g_n
 }{
 \varepsilon_n
 }.
 }
-\]
+```
 
 The selected/full sign identity gives exactly
 
-\[
+```math
 \boxed{
 \frac{
 Q_W(g_n)
@@ -282,11 +282,11 @@ Q_W(g_n)
 -
 \|b_n\|^2.
 }
-\]
+```
 
 Hence
 
-\[
+```math
 \boxed{
 \limsup_{n\to\infty}
 \frac{
@@ -297,7 +297,7 @@ Q_W(g_n)
 \le
 -\kappa.
 }
-\]
+```
 
 Thus the branch does not consist of arbitrarily weak negativity after normalization by its selected coefficient amplitude.
 
@@ -309,13 +309,13 @@ The unselected negative background can only make the normalized full Weil form m
 
 Every fixed-packet persistent negative branch carries full Weil witnesses whose normalized negativity is bounded away from zero:
 
-\[
+```math
 \boxed{
 \limsup
 Q_W(g_n)/\varepsilon_n^2
 \le-\kappa.
 }
-\]
+```
 
 **Dependencies:** WD-B1 + selected normalization.
 
@@ -327,9 +327,9 @@ Q_W(g_n)/\varepsilon_n^2
 
 The sequence
 
-\[
+```math
 b_n\in B_\Pi
-\]
+```
 
 creates a secondary compactness split.
 
@@ -337,48 +337,48 @@ creates a secondary compactness split.
 
 If either
 
-\[
+```math
 \|b_n\|\to\infty
-\]
+```
 
-or \(b_n\) is bounded but its coefficient mass is not tail-tight, the branch carries infinite-background noncompactness.
+or $b_n$ is bounded but its coefficient mass is not tail-tight, the branch carries infinite-background noncompactness.
 
 ### B2 — fixed full-divisor ray
 
-If \(b_n\) is bounded and coefficient-tail tight, then after a subsequence
+If $b_n$ is bounded and coefficient-tail tight, then after a subsequence
 
-\[
+```math
 b_n\to b
-\]
+```
 
 strongly.
 
 The limiting full coefficient vector is
 
-\[
+```math
 (a,u,b),
-\]
+```
 
 with signature
 
-\[
+```math
 \boxed{
 \|a\|^2-\|u\|^2-\|b\|^2
 \le
 -\kappa-\|b\|^2
 <0.
 }
-\]
+```
 
 Thus the background alternative is:
 
-\[
+```math
 \boxed{
 \text{background escape}
 \quad\text{or}\quad
 \text{fixed full-divisor negative ray}.
 }
-\]
+```
 
 This submorphology will be normalized separately in H1-P3.2.
 
@@ -388,48 +388,48 @@ This submorphology will be normalized separately in H1-P3.2.
 
 Take the nonzero selected negative coordinate
 
-\[
+```math
 u\in M_\Pi.
-\]
+```
 
 Undo the canonical Weil pair diagonalization and let
 
-\[
+```math
 v=(v_j)_{\rho_j\in\Pi}
-\]
+```
 
 be the corresponding raw selected residue vector.
 
 By ZW1-T7,
 
-\[
+```math
 \boxed{
 v\ne0,
 \qquad
-\mathbf1^Tv=0.
+\mathbf{1}^Tv=0.
 }
-\]
+```
 
 Define
 
-\[
+```math
 R_v(z)
 =
 \sum_{\rho_j\in\Pi}
 \frac{v_j}{z-\rho_j}.
-\]
+```
 
 Then ZW1-T8 gives
 
-\[
+```math
 \boxed{
 R_v(z)
 =
 O(|z|^{-2}).
 }
-\]
+```
 
-The inverse-square order is the universal pair-geometric order; no source-free \(O(z^{-3})\) upgrade is available.
+The inverse-square order is the universal pair-geometric order; no source-free $O(z^{-3})$ upgrade is available.
 
 ---
 
@@ -437,19 +437,19 @@ The inverse-square order is the universal pair-geometric order; no source-free \
 
 Every fixed-packet persistent negative endpoint ray determines a nonzero finite selected source satisfying
 
-\[
+```math
 \boxed{
-\mathbf1^Tv=0
+\mathbf{1}^Tv=0
 }
-\]
+```
 
 and hence
 
-\[
+```math
 \boxed{
 R_v(z)=O(|z|^{-2}).
 }
-\]
+```
 
 **Dependencies:** ZW1-T7, ZW1-T8.
 
@@ -459,17 +459,17 @@ R_v(z)=O(|z|^{-2}).
 
 # 7. Selected-preserving scalarization
 
-For the fixed nonzero source \(v\), choose a bounded selected-preserving multiplier \(\psi\) as in ZW2-T1:
+For the fixed nonzero source $v$, choose a bounded selected-preserving multiplier $\psi$ as in ZW2-T1:
 
-\[
+```math
 \boxed{
 \mathcal C_v[\psi]=0.
 }
-\]
+```
 
 The scalar explicit formula then reads
 
-\[
+```math
 \boxed{
 \mathcal N_v[\psi]
 +
@@ -479,7 +479,7 @@ The scalar explicit formula then reads
 +
 \mathcal A_v[\psi].
 }
-\]
+```
 
 No KPH null equation is assumed here.
 
@@ -491,19 +491,19 @@ No uniform projective source margin over a moving packet family is imported.
 
 # 8. Distant complement disappears
 
-For a radius \(R\), define
+For a radius $R$, define
 
-\[
+```math
 \mathcal F_{v,R}[\psi]
 =
 \sum_{\substack{\mu\notin\Pi\\
 |\Im\mu-T_\Pi|\ge R}}
 m_\mu\psi(\mu)R_v(\mu).
-\]
+```
 
 ZW2-T2 gives
 
-\[
+```math
 \boxed{
 \mathcal F_{v,R}[\psi]
 =
@@ -512,21 +512,21 @@ O_{v,\psi,\Pi}
 \frac{\log R}{R}
 \right).
 }
-\]
+```
 
 Therefore
 
-\[
+```math
 \boxed{
 \mathcal F_{v,R}[\psi]\to0.
 }
-\]
+```
 
-For every \(\eta>0\), one can choose a finite \(R\) such that
+For every $\eta>0$, one can choose a finite $R$ such that
 
-\[
+```math
 |\mathcal F_{v,R}[\psi]|<\eta.
-\]
+```
 
 Thus any complementary-divisor dependence that remains after selected scalarization can be localized, up to arbitrarily small error, to a finite/intermediate neighborhood of the selected packet.
 
@@ -536,7 +536,7 @@ Thus any complementary-divisor dependence that remains after selected scalarizat
 
 For every fixed persistent negative source and fixed bounded selected-preserving multiplier,
 
-\[
+```math
 \boxed{
 \text{complementary divisor response}
 =
@@ -544,17 +544,17 @@ For every fixed persistent negative source and fixed bounded selected-preserving
 +
 o_{R\to\infty}(1).
 }
-\]
+```
 
 Quantitatively,
 
-\[
+```math
 \boxed{
 \text{far error}
 =
 O((\log R)/R).
 }
-\]
+```
 
 **Dependencies:** ZW2-T1, ZW2-T2.
 
@@ -562,19 +562,19 @@ O((\log R)/R).
 
 ---
 
-# 9. Completed-\(\Xi\) next-jet morphology
+# 9. Completed $\Xi$ next-jet morphology
 
 Define
 
-\[
+```math
 H_v(z)
 =
 \Xi(z)R_v(z).
-\]
+```
 
-If \(\mu\notin\Pi\) is a complementary zero of multiplicity \(m_\mu\), ZW2-T3 gives
+If $\mu\notin\Pi$ is a complementary zero of multiplicity $m_\mu$, ZW2-T3 gives
 
-\[
+```math
 R_v(\mu)
 =
 \frac{
@@ -582,11 +582,11 @@ H_v^{(m_\mu)}(\mu)
 }{
 \Xi^{(m_\mu)}(\mu)
 }.
-\]
+```
 
 Hence the localized complementary field is
 
-\[
+```math
 \boxed{
 \mathcal N_{v,R}[\psi]
 =
@@ -599,7 +599,7 @@ H_v^{(m_\mu)}(\mu)
 \Xi^{(m_\mu)}(\mu)
 }.
 }
-\]
+```
 
 This is the exact arithmetic morphology of the complementary divisor seen by the selected source.
 
@@ -607,9 +607,9 @@ This is the exact arithmetic morphology of the complementary divisor seen by the
 
 ## P3-N6 — Weighted next-jet morphology theorem
 
-Every fixed-packet persistent negative endpoint defect admits a nonzero finite zero-moment selected source \(v\) such that, after an arbitrarily small far-tail error, all complementary-divisor dependence is carried by the weighted finite/intermediate next-jet field
+Every fixed-packet persistent negative endpoint defect admits a nonzero finite zero-moment selected source $v$ such that, after an arbitrarily small far-tail error, all complementary-divisor dependence is carried by the weighted finite/intermediate next-jet field
 
-\[
+```math
 \boxed{
 \sum_{\mu}^{\rm near}
 m_\mu\psi(\mu)
@@ -619,7 +619,7 @@ H_v^{(m_\mu)}(\mu)
 \Xi^{(m_\mu)}(\mu)
 }.
 }
-\]
+```
 
 **Dependencies:** P3-N4, P3-N5, ZW2-T3, ZW2-T4.
 
@@ -633,9 +633,9 @@ P3-N6 is a localization and representation theorem.
 
 It does **not** assert, without an additional source-margin hypothesis, that
 
-\[
+```math
 |\mathcal N_{v,R}[\psi]|
-\]
+```
 
 is uniformly bounded below.
 
@@ -659,29 +659,29 @@ What P3-N6 does say is exact:
 
 Suppose the selected-preserving multiplier is additionally chosen so that
 
-\[
+```math
 \mathcal N_v[\psi]
 =
 \mathcal A_v[\psi].
-\]
+```
 
 ZW2-T5 forces
 
-\[
+```math
 \boxed{
 \mathcal P_v[\psi]
 =
 \mathcal F_v[\psi].
 }
-\]
+```
 
 Thus adaptive annihilation of the near-minus-archimedean field does not leave an independent prime lower bound.
 
 As the far cutoff is pushed outward,
 
-\[
+```math
 \mathcal F_{v,R}[\psi]\to0.
-\]
+```
 
 So adaptive scalar choice does not bypass the next-jet seam.
 
@@ -691,13 +691,13 @@ So adaptive scalar choice does not bypass the next-jet seam.
 
 Within the selected-preserving scalar explicit formula,
 
-\[
+```math
 \boxed{
 \text{adaptive near cancellation}
 \Longrightarrow
 \text{prime term collapses onto far tail}.
 }
-\]
+```
 
 **Dependencies:** ZW2-T5.
 
@@ -713,22 +713,22 @@ Collecting P3-N1 through P3-N7:
 
 Assume:
 
-1. \(\Pi\) is a fixed finite selected off-axis packet;
-2. \(\mathcal A_{\Pi,c}\) is \(J\)-nonnegative;
-3. \(t_n\downarrow c\);
-4. \(g_n\) are unit physical vectors;
-5. \(\varepsilon_n=\|\mathcal E_{\Pi,t_n}^*g_n\|\to0\);
+1. $\Pi$ is a fixed finite selected off-axis packet;
+2. $\mathcal A_{\Pi,c}$ is $J$-nonnegative;
+3. $t_n\downarrow c$;
+4. $g_n$ are unit physical vectors;
+5. $\varepsilon_n=\|\mathcal E_{\Pi,t_n}^{*}g_n\|\to0$;
 6. the normalized selected vectors
-   \[
+   ```math
    z_n
    =
-   \mathcal E_{\Pi,t_n}^*g_n/\varepsilon_n
-   \]
+   \mathcal E_{\Pi,t_n}^{*}g_n/\varepsilon_n
+   ```
    satisfy
-   \[
+   ```math
    [z_n,z_n]_J\to-\kappa
-   \]
-   for some \(\kappa>0\).
+   ```
+   for some $\kappa>0$.
 
 Then, after passage to a subsequence:
 
@@ -736,7 +736,7 @@ Then, after passage to a subsequence:
 
 There exists a nonzero persistent negative endpoint ray
 
-\[
+```math
 \boxed{
 y=(a,u)
 \in
@@ -746,7 +746,7 @@ y=(a,u)
 \qquad
 [y,y]_J\le-\kappa.
 }
-\]
+```
 
 Every normalized physical realization of that endpoint ray has diverging norm.
 
@@ -754,7 +754,7 @@ Every normalized physical realization of that endpoint ray has diverging norm.
 
 The full Weil witnesses satisfy
 
-\[
+```math
 \boxed{
 \limsup
 \frac{
@@ -765,35 +765,35 @@ Q_W(g_n)
 \le
 -\kappa.
 }
-\]
+```
 
 ### Selected source
 
-The negative coordinate \(u\) determines a nonzero finite raw source \(v\) with
+The negative coordinate $u$ determines a nonzero finite raw source $v$ with
 
-\[
+```math
 \boxed{
-\mathbf1^Tv=0,
+\mathbf{1}^Tv=0,
 \qquad
 R_v(z)=O(|z|^{-2}).
 }
-\]
+```
 
 ### Arithmetic localization
 
-For any fixed bounded selected-preserving multiplier \(\psi\),
+For any fixed bounded selected-preserving multiplier $\psi$,
 
-\[
+```math
 \boxed{
 \mathcal F_{v,R}[\psi]
 =
 O((\log R)/R).
 }
-\]
+```
 
 Therefore, up to an arbitrarily small far-tail error, the complementary divisor is seen only through
 
-\[
+```math
 \boxed{
 \mathcal N_{v,R}[\psi]
 =
@@ -805,7 +805,7 @@ H_v^{(m_\mu)}(\mu)
 \Xi^{(m_\mu)}(\mu)
 }.
 }
-\]
+```
 
 Adaptive cancellation of this field cannot preserve an independent prime lower bound.
 
@@ -817,29 +817,29 @@ The morphology theorem is complete at the point where the finite/intermediate fi
 
 The theorem does **not** prove that actual zeta forbids
 
-\[
+```math
 \mathcal N_{v,R}[\psi].
-\]
+```
 
 The downstream question is:
 
-> Can the actual complementary zeta divisor realize the weighted reciprocal-\(\Xi^{(m)}\) next-jet geometry required by the selected source, with the quantifiers demanded by the application?
+> Can the actual complementary zeta divisor realize the weighted reciprocal $\Xi^{(m)}$ next-jet geometry required by the selected source, with the quantifiers demanded by the application?
 
 That is
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC}.
 }
-\]
+```
 
 For the special KPH/reciprocal-Cauchy packet class, an equivalent stronger interface is
 
-\[
+```math
 \boxed{
 \texttt{C-ACTUAL-KPH-FLOOR}.
 }
-\]
+```
 
 Both are outside the H1-P3.0 theorem.
 
@@ -849,7 +849,7 @@ Both are outside the H1-P3.0 theorem.
 
 The negative morphology theorem consumes:
 
-\[
+```math
 \boxed{
 \begin{array}{c}
 \text{WD-C5 / fixed-sector persistence}\\
@@ -867,7 +867,7 @@ The negative morphology theorem consumes:
 \text{ZW2-T5 / no adaptive bypass}.
 \end{array}
 }
-\]
+```
 
 No RH-facing exclusion theorem appears above the stop line.
 
@@ -881,11 +881,11 @@ Its output is not “RH is false” or “RH is true.”
 
 Its output is:
 
-\[
+```math
 \boxed{
 \text{if a fixed selected negative defect persists at the endpoint,}
 }
-\]
+```
 
 then it must carry simultaneously:
 
@@ -895,7 +895,7 @@ then it must carry simultaneously:
 4. a nonzero finite zero-moment selected source;
 5. inverse-square far decay;
 6. quantitative elimination of the distant divisor;
-7. a weighted finite/intermediate completed-\(\Xi\) next-jet field;
+7. a weighted finite/intermediate completed $\Xi$ next-jet field;
 8. no adaptive scalar bypass.
 
 That is the complete Horizon-1 negative defect morphology.
@@ -904,8 +904,8 @@ That is the complete Horizon-1 negative defect morphology.
 
 # Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P3.1 / NEUTRAL DEFECT MORPHOLOGY THEOREM}
 }
-\]
+```

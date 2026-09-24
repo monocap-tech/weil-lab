@@ -11,7 +11,7 @@ The canonical stable IDs are defined in [Theorem Ledger](THEOREM_LEDGER.md).
 
 ## Abstract screening spine
 
-\[
+```math
 \boxed{
 \text{WD-T01}
 \longrightarrow
@@ -23,19 +23,19 @@ The canonical stable IDs are defined in [Theorem Ledger](THEOREM_LEDGER.md).
 \text{WD-T05}.
 \end{cases}
 }
-\]
+```
 
 Positive restoration is separately encoded by
 
-\[
+```math
 \boxed{
 \text{WD-T06}.
 }
-\]
+```
 
 ## Selected/background spine
 
-\[
+```math
 \boxed{
 \text{WD-T07}
 \longrightarrow
@@ -44,11 +44,11 @@ Positive restoration is separately encoded by
 \text{WD-T09}
 \end{cases}
 }
-\]
+```
 
 and
 
-\[
+```math
 \boxed{
 \text{WD-T02}
 +
@@ -58,31 +58,31 @@ and
 \longrightarrow
 \text{WD-T12}.
 }
-\]
+```
 
 The finite-sector spectral statement is
 
-\[
+```math
 \boxed{
 \text{WD-T03}
 \longrightarrow
 \text{WD-T11}.
 }
-\]
+```
 
 Complement elimination and finite shadows are
 
-\[
+```math
 \boxed{
 \text{WD-T13},
 \qquad
 \text{WD-T14}.
 }
-\]
+```
 
 ## Support-filtration spine
 
-\[
+```math
 \boxed{
 \text{WD-T15}
 \longrightarrow
@@ -92,11 +92,11 @@ Complement elimination and finite shadows are
 \text{WD-T18}.
 \end{cases}
 }
-\]
+```
 
 Physical realization gives
 
-\[
+```math
 \boxed{
 \text{WD-T16}
 +
@@ -104,47 +104,47 @@ Physical realization gives
 \longrightarrow
 \text{WD-T19}.
 }
-\]
+```
 
 ## Zeta-Weil pair spine
 
-\[
+```math
 \boxed{
 \text{WD-T20}
 \longrightarrow
 \text{WD-T21}.
 }
-\]
+```
 
 Bombieri's imported finite inertia theorem supplies
 
-\[
+```math
 \boxed{
 \text{WD-T22}.
 }
-\]
+```
 
 Multiplicity reduction is
 
-\[
+```math
 \boxed{
 \text{WD-T23}.
 }
-\]
+```
 
 Finite exponential independence gives
 
-\[
+```math
 \boxed{
 \text{WD-T24}
 \longrightarrow
 \text{WD-T25}.
 }
-\]
+```
 
 The selected residue chain is
 
-\[
+```math
 \boxed{
 \text{WD-T20}
 \longrightarrow
@@ -152,23 +152,23 @@ The selected residue chain is
 \longrightarrow
 \text{WD-T27}.
 }
-\]
+```
 
 Native compact synthesis gives
 
-\[
+```math
 \boxed{
 \text{WD-T28}
 \longrightarrow
 \text{WD-T29}.
 }
-\]
+```
 
 ## Explicit-formula spine
 
 Scalarization and far localization are
 
-\[
+```math
 \boxed{
 \text{WD-T30}
 +
@@ -176,27 +176,27 @@ Scalarization and far localization are
 \longrightarrow
 \text{WD-T31}.
 }
-\]
+```
 
-The completed-\(\Xi\) representation is
+The completed $\Xi$ representation is
 
-\[
+```math
 \boxed{
 \text{WD-T32}.
 }
-\]
+```
 
 Explicit-formula co-adaptation is
 
-\[
+```math
 \boxed{
 \text{WD-T33}.
 }
-\]
+```
 
 The compact-window neutral arithmetic chain is
 
-\[
+```math
 \boxed{
 \text{WD-T34}
 \longrightarrow
@@ -204,7 +204,7 @@ The compact-window neutral arithmetic chain is
 \longrightarrow
 \text{WD-T36}.
 }
-\]
+```
 
 ---
 
@@ -212,7 +212,7 @@ The compact-window neutral arithmetic chain is
 
 ## Negative morphology
 
-\[
+```math
 \boxed{
 \begin{array}{c}
 \text{WD-T16}\\
@@ -232,21 +232,21 @@ The compact-window neutral arithmetic chain is
 \boxed{\text{WD-T37}}
 \end{array}
 }
-\]
+```
 
 The downstream interface is
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC}.
 }
-\]
+```
 
 C-ACTUAL-KPH-FLOOR is a stronger special-packet interface and is not used to prove WD-T37.
 
 ## Neutral morphology
 
-\[
+```math
 \boxed{
 \text{WD-T17}
 +
@@ -254,11 +254,11 @@ C-ACTUAL-KPH-FLOOR is a stronger special-packet interface and is not used to pro
 \longrightarrow
 \text{physical null mode}
 }
-\]
+```
 
 followed by
 
-\[
+```math
 \boxed{
 \text{WD-T34}
 \to
@@ -268,15 +268,15 @@ followed by
 \to
 \boxed{\text{WD-T38}}.
 }
-\]
+```
 
 The downstream interface is
 
-\[
+```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
-\]
+```
 
 No later boundary-trace, Stieltjes, or UCP diagnostic is consumed by WD-T38.
 
@@ -284,35 +284,35 @@ No later boundary-trace, Stieltjes, or UCP diagnostic is consumed by WD-T38.
 
 Moving selected-sector escape uses the compactness distinction encoded by
 
-\[
+```math
 \boxed{
 \text{WD-T15},
 \text{ WD-T16},
 \text{ WD-T17}
 }
-\]
+```
 
 plus explicit examples such as WD-X05.
 
 Unselected-background classification uses
 
-\[
+```math
 \boxed{
 \text{WD-T07}
 +
 \text{WD-T14}
 }
-\]
+```
 
 and fixed selected-ray hypotheses inherited from WD-T37.
 
 This packages as
 
-\[
+```math
 \boxed{
 \text{WD-T39}.
 }
-\]
+```
 
 ---
 
@@ -324,11 +324,11 @@ Only a small subset of the theorem spine consumes external theorems as load-bear
 
 Consumed by
 
-\[
+```math
 \boxed{
 \text{WD-T02}.
 }
-\]
+```
 
 Downstream theorems WD-T03, WD-T10, and WD-T11 use the reduced screening solution produced in that framework.
 
@@ -338,13 +338,13 @@ Downstream theorems WD-T03, WD-T10, and WD-T11 use the reduced screening solutio
 
 Consumed directly by
 
-\[
+```math
 \boxed{
 \text{WD-T22},
 \qquad
 \text{WD-T23}.
 }
-\]
+```
 
 Bombieri's kernel/column estimate is retained as corroborating context, but after P4.2 it is **not load-bearing** for WD-T28.
 
@@ -356,13 +356,13 @@ Exact source pins for the Bombieri finite-index and multiplicity statements are 
 
 Consumed in
 
-\[
+```math
 \boxed{
 \text{WD-T28},
 \qquad
 \text{WD-T31}.
 }
-\]
+```
 
 **Audit debt:** choose one canonical zero-count statement and specify whether multiplicity is included.
 
@@ -370,19 +370,19 @@ Consumed in
 
 Consumed in
 
-\[
+```math
 \boxed{
 \text{WD-T34},
 \qquad
 \text{WD-T35}.
 }
-\]
+```
 
 **Audit debt:** pin the exact support convention for
 
-\[
+```math
 \log n<2c
-\]
+```
 
 versus boundary equality, and pin the Fourier-normalization constants used by the operator form.
 
@@ -390,19 +390,19 @@ versus boundary equality, and pin the Fourier-normalization constants used by th
 
 Consumed in
 
-\[
+```math
 \boxed{
 \text{WD-T35}.
 }
-\]
+```
 
 **Audit debt:** record a standard source/formula for
 
-\[
+```math
 \Re\psi\!\left(\frac14+\frac{it}{2}\right)
 =
 \log|t|+O(1).
-\]
+```
 
 ## EXT-6 — Anderson–Trapp shorting
 
@@ -424,7 +424,7 @@ It is not load-bearing for WD-T34–WD-T38 as currently stated.
 
 The following stable theorem IDs have proofs contained in the current repository once standard Hilbert-space facts are admitted:
 
-\[
+```math
 \boxed{
 \begin{gathered}
 \text{WD-T01},\text{ T03--T19},\\
@@ -432,7 +432,7 @@ The following stable theorem IDs have proofs contained in the current repository
 \text{WD-T29--T33},\text{ T36}.
 \end{gathered}
 }
-\]
+```
 
 This classification is architectural only.
 
@@ -478,11 +478,11 @@ The following forbidden transfers are now explicit.
 
 ### SG-1 — Metric transfer
 
-Unweighted \(L^2/PW_t\) frame statements may not be promoted to native Problem-1 coercivity without an explicit comparison theorem.
+Unweighted $L^2/PW_t$ frame statements may not be promoted to native Problem-1 coercivity without an explicit comparison theorem.
 
 ### SG-2 — Double-counting arithmetic
 
-Prime/pole/archimedean explicit-formula terms are not additional \(K_+\) coefficient channels.
+Prime/pole/archimedean explicit-formula terms are not additional $K_{+}$ coefficient channels.
 
 ### SG-3 — Near-field lower bound
 
@@ -490,7 +490,7 @@ Weighted next-jet localization does not imply a uniform source-free lower bound 
 
 ### SG-4 — Neutral termwise vanishing
 
-\(Q_c(k)=0\) does not imply separate vanishing of pole, prime, and archimedean terms.
+$Q_c(k)=0$ does not imply separate vanishing of pole, prime, and archimedean terms.
 
 ### SG-5 — Background custody
 
@@ -508,19 +508,19 @@ The normalized Horizon-1 theorem graph is acyclic.
 
 The two open interfaces occur strictly downstream of the theorem packages:
 
-\[
+```math
 \text{WD-T37}
 \longrightarrow
 \texttt{AZ-NEXTJET-LOC},
-\]
+```
 
 and
 
-\[
+```math
 \text{WD-T38}
 \longrightarrow
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
-\]
+```
 
 Neither interface is used upstream to prove the morphology theorem that reaches it.
 
@@ -570,11 +570,11 @@ No mathematical theorem has been added in this pass.
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
 }
-\]
+```
 
 
 ---

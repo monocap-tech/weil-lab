@@ -5,19 +5,19 @@ This document packages the noncompact mechanisms left outside the fixed-packet n
 
 There are two distinct kinds of noncompactness:
 
-\[
+```math
 \boxed{
 \text{selected-sector noncompactness}
 }
-\]
+```
 
 and
 
-\[
+```math
 \boxed{
 \text{background-sector noncompactness}.
 }
-\]
+```
 
 They have different consequences.
 
@@ -31,50 +31,50 @@ An escaping unselected background cannot erase a negative ray already anchored i
 
 Let the full coefficient space be
 
-\[
+```math
 K
 =
-K_+
+K_{+}
 \oplus
-K_-.
-\]
+K_{-}.
+```
 
-For a fixed finite selected packet \(\Pi\), split
+For a fixed finite selected packet $\Pi$, split
 
-\[
-K_-
+```math
+K_{-}
 =
 M_\Pi
 \oplus
 B_\Pi,
-\]
+```
 
 where
 
-- \(M_\Pi\) is the finite selected negative sector;
-- \(B_\Pi\) is the unselected negative background.
+- $M_\Pi$ is the finite selected negative sector;
+- $B_\Pi$ is the unselected negative background.
 
 Let
 
-\[
+```math
 Q_R^-
-\]
+```
 
-be an increasing family of finite-rank coordinate projections on \(K_-\) satisfying
+be an increasing family of finite-rank coordinate projections on $K_{-}$ satisfying
 
-\[
+```math
 Q_R^-\to I
-\]
+```
 
 strongly.
 
 Likewise let
 
-\[
+```math
 Q_R^B
-\]
+```
 
-be the corresponding exhaustion on \(B_\Pi\).
+be the corresponding exhaustion on $B_\Pi$.
 
 ---
 
@@ -82,107 +82,107 @@ be the corresponding exhaustion on \(B_\Pi\).
 
 Consider normalized coefficient vectors
 
-\[
+```math
 w_n\in K,
 \qquad
 \|w_n\|=1,
-\]
+```
 
 carrying negative or near-critical signature, and suppose their physical synthesis tends to zero:
 
-\[
+```math
 \|Sw_n\|\to0.
-\]
+```
 
 This is the abstract zero-edge situation.
 
 Because the unit ball is weakly compact, after a subsequence
 
-\[
+```math
 w_n\rightharpoonup w.
-\]
+```
 
-If \(S\) is compact, then
+If $S$ is compact, then
 
-\[
+```math
 Sw_n\to Sw
-\]
+```
 
 strongly, hence
 
-\[
+```math
 Sw=0.
-\]
+```
 
 The decisive question is whether
 
-\[
+```math
 w\ne0.
-\]
+```
 
 ---
 
 ## P3-B1 — Anchored coefficient mass produces an exact relation
 
-Assume there is a fixed finite-rank coordinate projection \(Q_R\) such that
+Assume there is a fixed finite-rank coordinate projection $Q_R$ such that
 
-\[
+```math
 \boxed{
 \limsup_{n\to\infty}
 \|Q_Rw_n\|
 >0.
 }
-\]
+```
 
 Then every weakly convergent subsequence with this lower bound has
 
-\[
+```math
 \boxed{
 w\ne0.
 }
-\]
+```
 
 If additionally
 
-\[
+```math
 Sw_n\to0,
-\]
+```
 
 then
 
-\[
+```math
 \boxed{
 Sw=0,
 \qquad
 w\ne0.
 }
-\]
+```
 
 ### Proof
 
 Finite dimensionality gives
 
-\[
+```math
 Q_Rw_n\to Q_Rw
-\]
+```
 
 strongly along the weakly convergent subsequence.
 
 The positive lower bound implies
 
-\[
+```math
 Q_Rw\ne0.
-\]
+```
 
-Hence \(w\ne0\).
+Hence $w\ne0$.
 
-Boundedness of \(S\) gives weak convergence
+Boundedness of $S$ gives weak convergence
 
-\[
+```math
 Sw_n\rightharpoonup Sw,
-\]
+```
 
-while strong convergence to zero forces \(Sw=0\).
+while strong convergence to zero forces $Sw=0$.
 
 **Standing:** PROVED.
 
@@ -198,35 +198,35 @@ This is the coefficient-custody mechanism behind finite-exception compactness.
 
 Suppose instead that for every fixed finite coordinate block,
 
-\[
+```math
 \boxed{
 Q_Rw_n\to0.
 }
-\]
+```
 
 Then
 
-\[
+```math
 \boxed{
 w_n\rightharpoonup0.
 }
-\]
+```
 
 Thus it is possible to have
 
-\[
+```math
 \|w_n\|=1,
 \qquad
 \|Sw_n\|\to0,
-\]
+```
 
 while
 
-\[
+```math
 \boxed{
 \ker S=\{0\}
 }
-\]
+```
 
 and no nonzero limiting coefficient relation survives.
 
@@ -238,23 +238,23 @@ This is the **moving-sector escape** morphology.
 
 For
 
-\[
+```math
 Ae_n=\frac1n e_n,
-\]
+```
 
 we have
 
-\[
+```math
 \|Ae_n\|\to0,
 \qquad
 e_n\rightharpoonup0,
-\]
+```
 
 but
 
-\[
+```math
 \ker A=\{0\}.
-\]
+```
 
 The same geometry can occur when negative standing migrates through successively new off-axis coordinates.
 
@@ -262,37 +262,37 @@ The same geometry can occur when negative standing migrates through successively
 
 # 3. Why finite selected packets eliminate moving selected escape
 
-Now return to one fixed finite selected packet \(\Pi\).
+Now return to one fixed finite selected packet $\Pi$.
 
 Let
 
-\[
+```math
 z_n=(a_n,u_n)
-\]
+```
 
 be normalized selected coefficient vectors with
 
-\[
+```math
 u_n\in M_\Pi.
-\]
+```
 
 Because
 
-\[
+```math
 \dim M_\Pi<\infty,
-\]
+```
 
 any sequence with nontrivial selected negative norm has, after passage to a subsequence,
 
-\[
+```math
 u_n\to u
-\]
+```
 
 strongly with
 
-\[
+```math
 u\ne0.
-\]
+```
 
 Therefore the fixed selected packet supplies an automatic finite coordinate anchor.
 
@@ -314,9 +314,9 @@ Any nonpersistent selected zero-edge behavior must instead come from changing th
 
 The phrase
 
-\[
+```math
 \text{“approximate-neutral branch with no persistent ray”}
-\]
+```
 
 is globally meaningful only for a moving/infinite selected sector.
 
@@ -330,46 +330,46 @@ Assume now the P3.0 fixed-packet negative setup.
 
 Thus
 
-\[
+```math
 z_n=(a_n,u_n)\to y=(a,u)
-\]
+```
 
 in the selected right-limit sense, with
 
-\[
+```math
 [y,y]_J\le-\kappa
-\]
+```
 
 for some
 
-\[
+```math
 \kappa>0.
-\]
+```
 
 Let
 
-\[
+```math
 \varepsilon_n
-\]
+```
 
 be the selected amplitude normalization and define the normalized unselected negative response
 
-\[
+```math
 \boxed{
 b_n
 =
 \frac{
-S_{B_\Pi,t_n}^*g_n
+S_{B_\Pi,t_n}^{*}g_n
 }{
 \varepsilon_n
 }
 \in B_\Pi.
 }
-\]
+```
 
 The normalized full Weil identity is
 
-\[
+```math
 \boxed{
 \frac{Q_W(g_n)}{\varepsilon_n^2}
 =
@@ -377,38 +377,38 @@ The normalized full Weil identity is
 -
 \|b_n\|^2.
 }
-\]
+```
 
 The selected ray is already anchored.
 
-The only question is now the compactness of the background sequence \(b_n\).
+The only question is now the compactness of the background sequence $b_n$.
 
 ---
 
 # 5. Background compactness taxonomy
 
-Every sequence \(b_n\in B_\Pi\) admits, after passage to a subsequence, one of the following regimes.
+Every sequence $b_n\in B_\Pi$ admits, after passage to a subsequence, one of the following regimes.
 
 ## B∞ — norm escape
 
-\[
+```math
 \boxed{
 \|b_n\|\to\infty.
 }
-\]
+```
 
 Then
 
-\[
+```math
 \frac{Q_W(g_n)}{\varepsilon_n^2}
 \to-\infty
-\]
+```
 
 along that subsequence whenever
 
-\[
+```math
 [z_n,z_n]_J
-\]
+```
 
 remains bounded.
 
@@ -420,38 +420,38 @@ The normalized full negativity is increasingly carried by the unselected negativ
 
 Assume
 
-\[
+```math
 \sup_n\|b_n\|<\infty
-\]
+```
 
 but the sequence is not precompact.
 
 After a subsequence,
 
-\[
+```math
 b_n\rightharpoonup b
-\]
+```
 
 weakly.
 
 Define the escaped background mass
 
-\[
+```math
 \boxed{
 d_B
 :=
 \lim_{n\to\infty}\|b_n\|^2-\|b\|^2
 \ge0
 }
-\]
+```
 
 after selecting a further subsequence on which the norms converge.
 
 Then
 
-\[
+```math
 d_B>0
-\]
+```
 
 is the weak norm loss carried by the unselected background.
 
@@ -461,15 +461,15 @@ Equivalently, with respect to a canonical finite-coordinate exhaustion, uniform 
 
 ## BF — strong full-divisor compactness
 
-If \(b_n\) is bounded and uniformly coordinate-tail tight, then it is precompact in the \(\ell^2\)-type background coefficient space.
+If $b_n$ is bounded and uniformly coordinate-tail tight, then it is precompact in the $\ell^2$-type background coefficient space.
 
 Hence after a subsequence
 
-\[
+```math
 \boxed{
 b_n\to b
 }
-\]
+```
 
 strongly.
 
@@ -481,7 +481,7 @@ This is the fixed full-divisor ray regime.
 
 For the normalized unselected background, after passage to a subsequence:
 
-\[
+```math
 \boxed{
 \begin{array}{ll}
 \textbf{B∞}:&
@@ -492,7 +492,7 @@ b_n\text{ bounded but with positive tail/weak norm loss},\\[1mm]
 b_n\to b\text{ strongly}.
 \end{array}
 }
-\]
+```
 
 The first two cases are collectively the **background-escape morphology**.
 
@@ -504,29 +504,29 @@ The first two cases are collectively the **background-escape morphology**.
 
 Even in the bounded noncompact regime,
 
-\[
+```math
 b_n\rightharpoonup b,
-\]
+```
 
 the selected coordinates have already converged to
 
-\[
+```math
 y=(a,u)\ne0.
-\]
+```
 
 Hence the full weak coefficient limit is
 
-\[
+```math
 \boxed{
 (a,u,b),
 }
-\]
+```
 
-which remains nonzero because \(u\ne0\).
+which remains nonzero because $u\ne0$.
 
 Its full signature satisfies
 
-\[
+```math
 \begin{aligned}
 [(a,u,b),(a,u,b)]_{\rm full}
 &=
@@ -535,7 +535,7 @@ Its full signature satisfies
 -\kappa-\|b\|^2\\
 &<0.
 \end{aligned}
-\]
+```
 
 Thus unselected-background weak escape does not destroy the fixed selected negative ray.
 
@@ -545,25 +545,25 @@ It only prevents strong convergence of the complete background coefficient vecto
 
 ## P3-B5 — Fixed-selected-ray stability under background escape
 
-If a fixed selected negative ray survives with margin \(\kappa>0\), then every bounded weak background limit produces a nonzero full weak coefficient ray with
+If a fixed selected negative ray survives with margin $\kappa>0$, then every bounded weak background limit produces a nonzero full weak coefficient ray with
 
-\[
+```math
 \boxed{
 \text{full signature}
 \le
 -\kappa-\|b\|^2.
 }
-\]
+```
 
 Therefore:
 
-\[
+```math
 \boxed{
 \text{background noncompactness}
 \not\Rightarrow
 \text{loss of selected-ray custody}.
 }
-\]
+```
 
 **Standing:** PROVED CONDITIONAL on the P3.0 fixed selected ray.
 
@@ -573,32 +573,32 @@ Therefore:
 
 In the BF regime,
 
-\[
+```math
 b_n\to b
-\]
+```
 
 strongly.
 
 Then the normalized full coefficient vectors converge strongly in all negative coordinates to
 
-\[
+```math
 \boxed{
 Y_{\rm full}
 =
 (a,u,b).
 }
-\]
+```
 
 Its signature is
 
-\[
+```math
 \boxed{
 [Y_{\rm full},Y_{\rm full}]_{\rm full}
 \le
 -\kappa-\|b\|^2
 <0.
 }
-\]
+```
 
 Thus a genuine fixed full-divisor negative ray survives.
 
@@ -606,13 +606,13 @@ Thus a genuine fixed full-divisor negative ray survives.
 
 ## P3-B6 — Fixed full-divisor negative-ray theorem
 
-If the normalized unselected background is bounded and coefficient-tail tight, then a subsequence converges strongly to a fixed background vector \(b\), and the selected persistent ray extends to a fixed full-divisor negative coefficient ray
+If the normalized unselected background is bounded and coefficient-tail tight, then a subsequence converges strongly to a fixed background vector $b$, and the selected persistent ray extends to a fixed full-divisor negative coefficient ray
 
-\[
+```math
 \boxed{
 Y_{\rm full}=(a,u,b).
 }
-\]
+```
 
 **Standing:** PROVED CONDITIONAL on the P3.0 fixed selected ray + background tail tightness.
 
@@ -622,45 +622,45 @@ Y_{\rm full}=(a,u,b).
 
 Let
 
-\[
+```math
 P_F
-\]
+```
 
 be any finite-rank projection on the positive coefficient space.
 
 For the fixed selected negative ray
 
-\[
+```math
 y=(a,u),
 \qquad
 \|u\|^2-\|a\|^2\ge\kappa,
-\]
+```
 
 we have
 
-\[
+```math
 \boxed{
 \|u\|^2-\|P_Fa\|^2
 \ge
 \kappa.
 }
-\]
+```
 
 Thus the negative signature is already visible on finitely many positive coordinates together with the selected packet.
 
 But, as WD-B8 showed,
 
-\[
+```math
 (P_Fa,u)
-\]
+```
 
 need not remain in the relevant analysis space.
 
 And finite positive projection gives no compactness control over
 
-\[
+```math
 b_n\in B_\Pi.
-\]
+```
 
 Therefore the genuinely infinite issue in the background morphology is **background custody**, not visibility of the selected negative margin.
 
@@ -700,11 +700,11 @@ It splits further into:
 
 ### M3a — moving selected-sector escape
 
-\[
+```math
 \boxed{
 w_n\rightharpoonup0
 }
-\]
+```
 
 with coefficient mass moving through new selected/off-axis coordinates.
 
@@ -714,9 +714,9 @@ No nonzero selected limiting relation survives.
 
 A fixed selected ray survives, but
 
-\[
+```math
 b_n
-\]
+```
 
 is norm-unbounded or bounded/non-tail-tight.
 
@@ -726,9 +726,9 @@ The selected morphology remains valid, while the full-divisor coefficient vector
 
 The background is bounded and tail-tight, so
 
-\[
+```math
 b_n\to b
-\]
+```
 
 strongly and a fixed full negative ray survives.
 
@@ -753,7 +753,7 @@ Therefore selected-sector nonpersistence requires a moving or infinite selected 
 
 Once a fixed selected negative ray has been anchored, the normalized unselected negative background has exactly three subsequential compactness regimes:
 
-\[
+```math
 \boxed{
 \text{norm escape},
 \quad
@@ -761,7 +761,7 @@ Once a fixed selected negative ray has been anchored, the normalized unselected 
 \quad
 \text{strong full-divisor convergence}.
 }
-\]
+```
 
 The first two are background-escape morphologies.
 
@@ -779,21 +779,21 @@ It types where compactness can fail.
 
 If a fixed selected negative ray is already present, the arithmetic stop remains
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC}
 }
-\]
+```
 
 from P3.0.
 
 If a fixed selected neutral mode is present, the support stop remains
 
-\[
+```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}
 }
-\]
+```
 
 from P3.1.
 
@@ -811,7 +811,7 @@ H1-P3 now contains:
 
 Together they classify:
 
-\[
+```math
 \boxed{
 \begin{array}{c}
 \text{fixed negative persistence}\\
@@ -821,25 +821,25 @@ Together they classify:
 \text{fixed full-divisor negative convergence}.
 \end{array}
 }
-\]
+```
 
 Therefore
 
-\[
+```math
 \boxed{
 \textbf{H1-P3 — DEFECT MORPHOLOGY THEOREM: COMPLETE.}
 }
-\]
+```
 
 ---
 
 # Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.0 / THEOREM LEDGER AND DEPENDENCY AUDIT}
 }
-\]
+```
 
 H1-P4 should not add new mathematical claims.
 

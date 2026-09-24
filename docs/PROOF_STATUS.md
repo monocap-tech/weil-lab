@@ -36,27 +36,27 @@ The historical word **PROVED** in earlier files means internal proof standing. I
 
 Current canonical IDs:
 
-\[
+```math
 \boxed{
 \text{WD-T01 through WD-T39}
 }
-\]
+```
 
 for theorem/reduction statements,
 
-\[
+```math
 \boxed{
 \text{WD-X01 through WD-X07}
 }
-\]
+```
 
 for examples/sharpness witnesses, and
 
-\[
+```math
 \boxed{
 \text{WD-S01 through WD-S05}
 }
-\]
+```
 
 for scope guards.
 
@@ -102,11 +102,11 @@ Anderson–Trapp shorting and Suzuki's operator framework remain contextual/non-
 
 Stops at:
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC}
 }
-\]
+```
 
 with C-ACTUAL-KPH-FLOOR as a stronger special-packet interface.
 
@@ -117,11 +117,11 @@ with C-ACTUAL-KPH-FLOOR as a stronger special-packet interface.
 
 Stops at:
 
-\[
+```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
-\]
+```
 
 ### WD-T39 — Noncompact background morphology
 
@@ -136,11 +136,11 @@ Introduces no new RH-facing interface.
 
 The current audit prohibits the following silent transfers:
 
-- unweighted sampling frames \(\not\Rightarrow\) native Problem-1 coercivity;
+- unweighted sampling frames $\not\Rightarrow$ native Problem-1 coercivity;
 - explicit-formula arithmetic terms are not extra positive screening budget;
-- weighted next-jet localization \(\not\Rightarrow\) source-free near-field lower bound;
-- neutral equality \(\not\Rightarrow\) termwise vanishing;
-- background escape \(\not\Rightarrow\) loss of an anchored selected ray;
+- weighted next-jet localization $\not\Rightarrow$ source-free near-field lower bound;
+- neutral equality $\not\Rightarrow$ termwise vanishing;
+- background escape $\not\Rightarrow$ loss of an anchored selected ray;
 - fixed finite packet criticality does not admit a third non-attained/no-limit branch.
 
 ---
@@ -149,7 +149,7 @@ The current audit prohibits the following silent transfers:
 
 The following remain OPEN:
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC},
 \qquad
@@ -157,7 +157,7 @@ The following remain OPEN:
 \qquad
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
-\]
+```
 
 PAP/MTP closure and RH are not proved by this repository.
 
@@ -165,11 +165,11 @@ PAP/MTP closure and RH are not proved by this repository.
 
 WD-T01 through WD-T36 are now
 
-\[
+```math
 \boxed{
 \text{P4-AUDIT-PASSED}.
 }
-\]
+```
 
 See [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
@@ -177,8 +177,8 @@ The composite morphology theorems remain COMPOSITE-AUDIT-PENDING.
 
 ## Current audit cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
 }
-\]
+```

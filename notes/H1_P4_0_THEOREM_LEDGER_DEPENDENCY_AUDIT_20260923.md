@@ -35,25 +35,25 @@ The normalized theorem graph is acyclic.
 
 The RH-facing interfaces occur only downstream:
 
-\[
+```math
 \text{WD-T37}
 \longrightarrow
 \texttt{AZ-NEXTJET-LOC},
-\]
+```
 
 and
 
-\[
+```math
 \text{WD-T38}
 \longrightarrow
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
-\]
+```
 
 The stronger special-packet interface
 
-\[
+```math
 \texttt{C-ACTUAL-KPH-FLOOR}
-\]
+```
 
 is not used upstream in the generic negative morphology theorem.
 
@@ -82,18 +82,18 @@ The audit freezes the following transfer prohibitions:
 
 ## Phase status
 
-\[
+```math
 \boxed{
 \text{H1-P4 ACTIVE}.
 }
-\]
+```
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.1 / IMPORTED SOURCE PINNING}
 }
-\]
+```
 
 The next pass should pin the external inputs to exact source statements/equations and normalize all conventions they carry.

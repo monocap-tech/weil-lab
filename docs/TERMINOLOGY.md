@@ -45,13 +45,13 @@ An open interface is not automatically an incomplete proof inside the current ho
 
 For Horizon 1, the principal RH-facing interfaces are:
 
-\[
+```math
 \texttt{AZ-NEXTJET-LOC},
 \qquad
 \texttt{C-ACTUAL-KPH-FLOOR},
 \qquad
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
-\]
+```
 
 ## Re-entry
 
@@ -69,11 +69,11 @@ A valid reduction must not silently replace a selected packet, metric, support s
 
 **Spectral screening** is the finite-to-infinite phenomenon in which a negative eigenvalue present at every finite truncation may approach the zero boundary as the positive complement is restored:
 
-\[
+```math
 \lambda^-_{N,k}<0,
 \qquad
 \lambda^-_{N,k}\uparrow0.
-\]
+```
 
 It distinguishes finite negative index from infinite negative-mode survival.
 
@@ -83,13 +83,13 @@ A **defect** is the residual obstruction left after the positive/background cont
 
 In the rank-one formulation, a representative defect operator is
 
-\[
+```math
 \mathcal K_C(t)
 =
-\widetilde S_t\widetilde S_t^*
+\widetilde S_t\widetilde S_t^{*}
 -
 \widetilde g_C\otimes\widetilde g_C.
-\]
+```
 
 The term does not by itself assert negativity.
 
@@ -103,9 +103,9 @@ The term does not by itself assert negativity.
 
 In the current compact-window branch this is represented by
 
-\[
+```math
 W_ck=0.
-\]
+```
 
 ## Morphology
 
@@ -121,29 +121,29 @@ For Horizon 1, the two principal morphologies are:
 
 A **synthesis pair** is a pair of bounded operators
 
-\[
-S_+:K_+\to\mathcal H,
+```math
+S_{+}:K_{+}\to\mathcal H,
 \qquad
-S_-:K_-\to\mathcal H
-\]
+S_{-}:K_{-}\to\mathcal H
+```
 
 assembled into
 
-\[
-E(x,u)=S_+x+S_-u.
-\]
+```math
+E(x,u)=S_{+}x+S_{-}u.
+```
 
-The \(+\) and \(-\) labels refer to the coefficient-space indefinite signature, not to positivity of the operators themselves.
+The $+$ and $-$ labels refer to the coefficient-space indefinite signature, not to positivity of the operators themselves.
 
 ## Analysis space
 
 The **analysis space** associated with a synthesis pair is
 
-\[
+```math
 \mathcal A=(\ker E)^\perp
 =
-\overline{\operatorname{Ran}E^*}.
-\]
+\overline{\operatorname{Ran}E^{*}}.
+```
 
 It is the coefficient space actually visible to physical synthesis.
 
@@ -151,49 +151,49 @@ It is the coefficient space actually visible to physical synthesis.
 
 The **physical defect operator** is
 
-\[
+```math
 D
 =
-S_+S_+^*
+S_{+}S_{+}^{*}
 -
-S_-S_-^*
+S_{-}S_{-}^{*}
 =
-EJE^*.
-\]
+EJE^{*}.
+```
 
-Its quadratic form exactly represents the indefinite coefficient form on vectors of the form \(E^*h\).
+Its quadratic form exactly represents the indefinite coefficient form on vectors of the form $E^{*}h$.
 
 ## Exact screening
 
 **Exact screening** means
 
-\[
-\operatorname{Ran}S_-
+```math
+\operatorname{Ran}S_{-}
 \subseteq
-\operatorname{Ran}S_+.
-\]
+\operatorname{Ran}S_{+}.
+```
 
-Equivalently, there exists a bounded \(X\) such that
+Equivalently, there exists a bounded $X$ such that
 
-\[
-S_-=-S_+X.
-\]
+```math
+S_{-}=-S_{+}X.
+```
 
 Exact screening does not imply that the screening coefficient norm fits inside the unit budget.
 
 ## Reduced screening solution
 
-The **reduced screening solution** is the unique Douglas reduced solution \(X\) of
+The **reduced screening solution** is the unique Douglas reduced solution $X$ of
 
-\[
-S_+X=-S_-
-\]
+```math
+S_{+}X=-S_{-}
+```
 
 whose range lies in
 
-\[
-(\ker S_+)^\perp.
-\]
+```math
+(\ker S_{+})^\perp.
+```
 
 It is the minimum-norm canonical screening operator.
 
@@ -201,9 +201,9 @@ It is the minimum-norm canonical screening operator.
 
 An **over-budget defect** occurs when exact screening holds but the reduced screening solution satisfies
 
-\[
+```math
 \|X\|>1.
-\]
+```
 
 The negative physical channel lies in the positive range, but reproducing it requires more than the unit indefinite-metric budget.
 
@@ -211,9 +211,9 @@ The negative physical channel lies in the positive range, but reproducing it req
 
 **Critical screening** is the boundary case
 
-\[
+```math
 \|X\|=1.
-\]
+```
 
 Critical screening splits into attained and non-attained cases.
 
@@ -221,15 +221,15 @@ Critical screening splits into attained and non-attained cases.
 
 The **approximate-neutral boundary** is critical screening with
 
-\[
+```math
 \|X\|=1
-\]
+```
 
-but no nonzero vector \(a\) satisfying
+but no nonzero vector $a$ satisfying
 
-\[
-\|X^*a\|=\|a\|.
-\]
+```math
+\|X^{*}a\|=\|a\|.
+```
 
 There is then no actual neutral vector, while normalized positive margins can still converge to zero along an approximate-neutral sequence.
 
@@ -240,31 +240,31 @@ This term is distinct from **neutral persistence**.
 
 A **selected negative sector** is a distinguished closed subspace
 
-\[
-M\subseteq K_-
-\]
+```math
+M\subseteq K_{-}
+```
 
 whose defect ownership is tracked separately from the remaining negative channels.
 
-When \(M\) is finite dimensional, its dimension gives an upper bound on the negative index it can create by itself.
+When $M$ is finite dimensional, its dimension gives an upper bound on the negative index it can create by itself.
 
 ## Negative background
 
 The **negative background** is the complementary negative channel space
 
-\[
-B=M^\perp\cap K_-.
-\]
+```math
+B=M^\perp\cap K_{-}.
+```
 
 Background contributions can make a selected negative witness more negative, but aggregate negativity need not belong to the selected sector.
 
 ## Residual screening budget
 
-If a background channel is contractively screened by \(X_B\), the **residual screening budget** is
+If a background channel is contractively screened by $X_B$, the **residual screening budget** is
 
-\[
-R_B=I-X_BX_B^*.
-\]
+```math
+R_B=I-X_BX_B^{*}.
+```
 
 It records the positive coefficient-space capacity remaining for later selected channels.
 
@@ -272,9 +272,9 @@ It records the positive coefficient-space capacity remaining for later selected 
 
 The **effective positive synthesis** after background elimination is
 
-\[
-S_{\rm eff}=S_+R_B^{1/2}.
-\]
+```math
+S_{\rm eff}=S_{+}R_B^{1/2}.
+```
 
 It allows the selected problem to be re-entered into the same defect calculus after a legitimate background screening step.
 
@@ -286,25 +286,25 @@ Separate contractivity of each block is not sufficient.
 
 ## Shorted covariance
 
-For a positive covariance \(K\) and a selected physical subspace \(W\), the **shorted covariance** is the covariance remaining on \(W\) after the complementary physical subspace has been optimized away.
+For a positive covariance $K$ and a selected physical subspace $W$, the **shorted covariance** is the covariance remaining on $W$ after the complementary physical subspace has been optimized away.
 
 In an invertible block decomposition
 
-\[
+```math
 K=
 \begin{pmatrix}
 A&B\\
-B^*&C
+B^{*}&C
 \end{pmatrix},
-\]
+```
 
 it is
 
-\[
-H_W=A-BC^{-1}B^*.
-\]
+```math
+H_W=A-BC^{-1}B^{*}.
+```
 
-Direct compression \(A\) and shorted covariance \(H_W\) have different inverse-control meanings.
+Direct compression $A$ and shorted covariance $H_W$ have different inverse-control meanings.
 
 ## Signature shadow
 
@@ -317,18 +317,18 @@ A signature shadow is not automatically an admissible persistent vector.
 
 For a monotone analysis-space filtration
 
-\[
+```math
 \mathcal A_s\subseteq\mathcal A_t
 \qquad(s<t),
-\]
+```
 
-the **right-limit analysis space** at \(c\) is
+the **right-limit analysis space** at $c$ is
 
-\[
+```math
 \mathcal A_{c+}
 =
 \bigcap_{t>c}\mathcal A_t.
-\]
+```
 
 It contains coefficient vectors that persist at every support/observation scale immediately to the right of the endpoint.
 
@@ -336,33 +336,33 @@ It contains coefficient vectors that persist at every support/observation scale 
 
 The **endpoint jump** is the Hilbert-space difference
 
-\[
+```math
 \mathcal J_c
 =
 \mathcal A_{c+}\ominus\mathcal A_c.
-\]
+```
 
 A nonzero endpoint jump records failure of right continuity of the analysis-space filtration.
 
-When \(\mathcal A_c\) is \(J\)-nonnegative, any new right-limit negative index must inject into the quotient
+When $\mathcal A_c$ is $J$-nonnegative, any new right-limit negative index must inject into the quotient
 
-\[
+```math
 \mathcal A_{c+}/\mathcal A_c.
-\]
+```
 
 ## Right-persistent vector
 
 A **right-persistent vector** is a vector
 
-\[
+```math
 y\in\mathcal A_{c+}.
-\]
+```
 
 It is **new at the endpoint** when
 
-\[
+```math
 y\notin\mathcal A_c.
-\]
+```
 
 Negative and neutral persistence are sign-refined forms of this notion.
 
@@ -370,15 +370,15 @@ Negative and neutral persistence are sign-refined forms of this notion.
 
 Given a bounded physical realization
 
-\[
+```math
 \mathcal A_t
 =
 \overline{T(\mathscr H_t)},
-\]
+```
 
-the **boundary amplification cost** of \(y\) is
+the **boundary amplification cost** of $y$ is
 
-\[
+```math
 \mathfrak B_y(t,\varepsilon)
 =
 \inf
@@ -387,13 +387,13 @@ the **boundary amplification cost** of \(y\) is
 h\in\mathscr H_t,\ 
 \|Th-y\|\le\varepsilon
 \right\}.
-\]
+```
 
 For a genuinely new endpoint vector, this cost diverges as
 
-\[
+```math
 (t,\varepsilon)\to(c+,0).
-\]
+```
 
 ## Moving-sector escape
 
@@ -414,15 +414,15 @@ Its positive coefficient sector contains critical-line coordinates and positive 
 
 For a nonreal ordinate pair
 
-\[
+```math
 \gamma=T+i\delta,
 \qquad
 \bar\gamma=T-i\delta,
-\]
+```
 
 the canonical **Weil pair channels** are
 
-\[
+```math
 p
 =
 \frac{e_\gamma+e_{\bar\gamma}}{\sqrt2},
@@ -430,35 +430,35 @@ p
 n
 =
 \frac{e_\gamma-e_{\bar\gamma}}{\sqrt2}.
-\]
+```
 
 They satisfy
 
-\[
+```math
 Jp=p,
 \qquad
 Jn=-n.
-\]
+```
 
-The \(p\)-channel is the positive/symmetric pair direction; the \(n\)-channel is the negative/antisymmetric pair direction.
+The $p$-channel is the positive/symmetric pair direction; the $n$-channel is the negative/antisymmetric pair direction.
 
 ## Selected packet
 
-A **selected packet** \(\Pi\) is a fixed finite set of off-axis zero channels whose negative sector is tracked with custody through the defect calculus.
+A **selected packet** $\Pi$ is a fixed finite set of off-axis zero channels whose negative sector is tracked with custody through the defect calculus.
 
 Its selected negative coefficient space is denoted
 
-\[
-M_\Pi\subseteq K_-.
-\]
+```math
+M_\Pi\subseteq K_{-}.
+```
 
 ## Unselected negative divisor
 
-The **unselected negative divisor** relative to \(\Pi\) is the complementary negative coefficient sector
+The **unselected negative divisor** relative to $\Pi$ is the complementary negative coefficient sector
 
-\[
-B_\Pi=M_\Pi^\perp\cap K_-.
-\]
+```math
+B_\Pi=M_\Pi^\perp\cap K_{-}.
+```
 
 It is the zeta-Weil realization of the abstract negative background.
 
@@ -468,7 +468,7 @@ Horizon 1 uses three zeta-specialization layers:
 
 - **ZW-0 — Weil/Krein pair geometry:** zero-side pair diagonalization, sign channels, finite index, and compact-window synthesis.
 - **ZW-1 — zeta-divisor structure:** functional-equation/conjugation structure, selected packets, zero-moment residues, actual zero-count/compactness inputs.
-- **ZW-2 — explicit-formula arithmetic:** prime, pole, archimedean, completed-\(\Xi\), next-jet, and finite translation structure.
+- **ZW-2 — explicit-formula arithmetic:** prime, pole, archimedean, completed $\Xi$, next-jet, and finite translation structure.
 
 These labels distinguish where arithmetic genuinely enters.
 
@@ -476,12 +476,12 @@ These labels distinguish where arithmetic genuinely enters.
 
 The **explicit-formula side** is the prime/pole/archimedean representation of the same Weil quadratic form.
 
-It is not an additional positive screening sector and must not be added to \(K_+\) as though it supplied independent coefficient budget.
+It is not an additional positive screening sector and must not be added to $K_{+}$ as though it supplied independent coefficient budget.
 
 
 ## Raw residue vector
 
-Given a selected negative pair-coordinate vector \(u\), the **raw residue vector** \(v\) is obtained by undoing the canonical pair diagonalization back to the selected zero coordinates.
+Given a selected negative pair-coordinate vector $u$, the **raw residue vector** $v$ is obtained by undoing the canonical pair diagonalization back to the selected zero coordinates.
 
 For each negative pair channel, the two raw coefficients are equal and opposite.
 
@@ -489,9 +489,9 @@ For each negative pair channel, the two raw coefficients are equal and opposite.
 
 The **zero-moment law** is
 
-\[
-\mathbf1^Tv=0.
-\]
+```math
+\mathbf{1}^Tv=0.
+```
 
 It is a ZW-1 structural identity coming from antisymmetry of the negative pair channels.
 
@@ -501,48 +501,48 @@ It is not a generic H1-P1 screening theorem and does not use the prime side of t
 
 The **rational response** of a finite raw residue vector is
 
-\[
+```math
 R_v(z)
 =
 \sum_j\frac{v_j}{z-\rho_j}.
-\]
+```
 
 Under the zero-moment law,
 
-\[
+```math
 R_v(z)=O(|z|^{-2}).
-\]
+```
 
 The inverse-square order is the universal pair-geometric order unless additional moment cancellation is proved.
 
 ## Native Problem-1 synthesis
 
-The **native Problem-1 synthesis** is Bombieri's Green-preconditioned zero synthesis into the Dirichlet \(H^{-1}\)-type physical carrier.
+The **native Problem-1 synthesis** is Bombieri's Green-preconditioned zero synthesis into the Dirichlet $H^{-1}$-type physical carrier.
 
 For fixed support it is Hilbert-Schmidt, hence compact.
 
-This term distinguishes the actual Weil/Bombieri operator metric from unweighted exponential \(L^2\) models.
+This term distinguishes the actual Weil/Bombieri operator metric from unweighted exponential $L^2$ models.
 
 ## Unweighted mirror model
 
-An **unweighted mirror model** is an \(L^2/PW_t\) exponential or cosh/sinh sampling model in which the Green weights of native Problem 1 have been removed.
+An **unweighted mirror model** is an $L^2/PW_t$ exponential or cosh/sinh sampling model in which the Green weights of native Problem 1 have been removed.
 
 Frame or sampling lower bounds in this model are auxiliary harmonic-analytic statements and are not automatically native Problem-1 coercivity estimates.
 
 ## Metric separation
 
-**Metric separation** is the rule that a theorem proved in an unweighted exponential/sampling norm may not be transferred to the native Problem-1 \(H^{-1}\) operator without an explicit bounded comparison theorem.
+**Metric separation** is the rule that a theorem proved in an unweighted exponential/sampling norm may not be transferred to the native Problem-1 $H^{-1}$ operator without an explicit bounded comparison theorem.
 
 In particular, a stable unweighted frame does not contradict compactness of native Problem-1 synthesis.
 
 
 ## Selected-preserving multiplier
 
-A **selected-preserving multiplier** for a raw residue source \(v\) is an admissible scalar multiplier \(\psi\) satisfying
+A **selected-preserving multiplier** for a raw residue source $v$ is an admissible scalar multiplier $\psi$ satisfying
 
-\[
+```math
 \mathcal C_v[\psi]=0,
-\]
+```
 
 so the selected contracted-residue contribution is removed without discarding the complementary divisor, prime, and archimedean terms.
 
@@ -550,26 +550,26 @@ so the selected contracted-residue contribution is removed without discarding th
 
 The **far complementary field** is the contribution of unselected zeros outside a fixed neighborhood of the selected packet:
 
-\[
+```math
 \mathcal F_{v,R}[\psi]
 =
 \sum_{\substack{\mu\notin F\\|\Im\mu-T_F|\ge R}}
 m_\mu\psi(\mu)R_v(\mu).
-\]
+```
 
 For a fixed bounded multiplier and a zero-moment selected source,
 
-\[
+```math
 \mathcal F_{v,R}[\psi]
 =
 O((\log R)/R).
-\]
+```
 
 ## Weighted next-jet field
 
 The **weighted next-jet field** is
 
-\[
+```math
 \mathcal N_{v,R}[\psi]
 =
 \sum_{\mu}^{\rm near}
@@ -578,33 +578,33 @@ m_\mu\psi(\mu)
 {\Xi^{(m_\mu)}(\mu)},
 \qquad
 H_v=\Xi R_v.
-\]
+```
 
 It is the finite/intermediate complementary divisor object left after zero-moment far-tail localization.
 
 ## Explicit-formula co-adaptation
 
-**Explicit-formula co-adaptation** is the phenomenon that adapting \(\psi\) to cancel one side of the scalar explicit formula changes the remaining prime/archimedean balance simultaneously.
+**Explicit-formula co-adaptation** is the phenomenon that adapting $\psi$ to cancel one side of the scalar explicit formula changes the remaining prime/archimedean balance simultaneously.
 
 In particular, under selected preservation, if
 
-\[
+```math
 \mathcal N_v[\psi]=\mathcal A_v[\psi],
-\]
+```
 
 then
 
-\[
+```math
 \mathcal P_v[\psi]=\mathcal F_v[\psi].
-\]
+```
 
 Thus adaptive near cancellation does not leave an independent prime lower bound.
 
 ## Compact-window arithmetic operator
 
-The **compact-window arithmetic operator** at support \(c\) is the physical operator representing the geometric Weil form:
+The **compact-window arithmetic operator** at support $c$ is the physical operator representing the geometric Weil form:
 
-\[
+```math
 \mathcal W_c
 =
 \mathcal A_\infty
@@ -614,76 +614,76 @@ The **compact-window arithmetic operator** at support \(c\) is the physical oper
 (\tau_{\log n}+\tau_{-\log n})
 +
 \mathcal R_{\rm pole},
-\]
+```
 
 up to the fixed Fourier-normalization convention.
 
-At fixed \(c\), the prime-translation sum is finite.
+At fixed $c$, the prime-translation sum is finite.
 
 ## Logarithmic form order
 
 The **logarithmic form order** is the high-frequency asymptotic
 
-\[
+```math
 \Psi_c(t)
 =
 \log|t|+O_c(1).
-\]
+```
 
-It implies that the natural form norm is equivalent, after an \(L^2\) shift, to a logarithmic Fourier/Sobolev norm rather than to a positive-order Sobolev norm.
+It implies that the natural form norm is equivalent, after an $L^2$ shift, to a logarithmic Fourier/Sobolev norm rather than to a positive-order Sobolev norm.
 
 
 ## Unit-gain neutral relation
 
-A **unit-gain neutral relation** is a finite-exception selected direction \(u\neq0\) satisfying
+A **unit-gain neutral relation** is a finite-exception selected direction $u\neq0$ satisfying
 
-\[
-C_c^*C_cu=u.
-\]
+```math
+C_c^{*}C_cu=u.
+```
 
 Equivalently,
 
-\[
+```math
 \|C_cu\|=\|u\|.
-\]
+```
 
 This is the attained-neutral boundary condition in the selected compensator metric.
 
 ## Physical neutral mode
 
-A **physical neutral mode** is a nonzero physical vector \(k\) realizing a unit-gain neutral relation through
+A **physical neutral mode** is a nonzero physical vector $k$ realizing a unit-gain neutral relation through
 
-\[
-C_cu=P_c^*k.
-\]
+```math
+C_cu=P_c^{*}k.
+```
 
 With
 
-\[
+```math
 N_c=-P_cC_c,
-\]
+```
 
 it satisfies
 
-\[
-N_c^*k=-u
-\]
+```math
+N_c^{*}k=-u
+```
 
 and therefore
 
-\[
+```math
 W_ck=0,
 \qquad
-W_c=P_cP_c^*-N_cN_c^*.
-\]
+W_c=P_cP_c^{*}-N_cN_c^{*}.
+```
 
 ## Null-extension problem
 
-The **null-extension problem** asks whether the zero extension \(\widetilde k\) of a compact-window physical neutral mode has Weil output
+The **null-extension problem** asks whether the zero extension $\widetilde k$ of a compact-window physical neutral mode has Weil output
 
-\[
+```math
 \mathcal W_c^{\rm ext}\widetilde k
-\]
+```
 
 vanishing on a nontrivial exterior collar adjacent to the original support.
 
@@ -709,15 +709,15 @@ Background escape does not erase the fixed selected negative ray.
 
 ## Coefficient-tail tightness
 
-A bounded sequence \(b_n\) in an \(\ell^2\)-type coefficient space is **coefficient-tail tight** when, for a canonical increasing finite-coordinate exhaustion \(Q_R\),
+A bounded sequence $b_n$ in an $\ell^2$-type coefficient space is **coefficient-tail tight** when, for a canonical increasing finite-coordinate exhaustion $Q_R$,
 
-\[
+```math
 \lim_{R\to\infty}
 \sup_n
 \|(I-Q_R)b_n\|
 =
 0.
-\]
+```
 
 Bounded coefficient-tail tightness implies precompactness.
 
@@ -725,9 +725,9 @@ Bounded coefficient-tail tightness implies precompactness.
 
 A **fixed full-divisor ray** is a strong coefficient limit
 
-\[
+```math
 Y_{\rm full}=(a,u,b)
-\]
+```
 
 containing the positive coordinate, fixed selected negative coordinate, and a strongly convergent unselected negative background.
 
@@ -748,9 +748,9 @@ A **stable theorem ID** is the additive public identifier assigned during H1-P4.
 
 Stable theorem IDs use the form
 
-\[
+```math
 \texttt{WD-T01},\texttt{ WD-T02},\ldots
-\]
+```
 
 and do not replace historical labels. Historical labels remain immutable provenance aliases.
 

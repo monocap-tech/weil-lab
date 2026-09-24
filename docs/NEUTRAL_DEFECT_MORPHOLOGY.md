@@ -7,11 +7,11 @@ It does **not** prove that a nonzero neutral mode persists to a larger support.
 
 The theorem stops at the Horizon-1 interface
 
-\[
+```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
-\]
+```
 
 ---
 
@@ -19,55 +19,55 @@ The theorem stops at the Horizon-1 interface
 
 Fix a finite selected packet
 
-\[
+```math
 \Pi
-\]
+```
 
 with finite negative coefficient sector
 
-\[
+```math
 M_\Pi.
-\]
+```
 
 Let
 
-\[
+```math
 \mathcal A_{\Pi,t}
-\]
+```
 
 be the monotone selected analysis-space filtration and let
 
-\[
+```math
 t_n\downarrow c.
-\]
+```
 
 Suppose
 
-\[
+```math
 y_n=(a_n,u_n)\in\mathcal A_{\Pi,t_n},
 \qquad
 \|y_n\|=1,
-\]
+```
 
 with
 
-\[
+```math
 \boxed{
 [y_n,y_n]_J\to0.
 }
-\]
+```
 
-Because \(M_\Pi\) is finite dimensional, WD-C4 gives a nonzero right-limit vector
+Because $M_\Pi$ is finite dimensional, WD-C4 gives a nonzero right-limit vector
 
-\[
+```math
 y=(a,u)\in\mathcal A_{\Pi,c+}
-\]
+```
 
 with
 
-\[
+```math
 [y,y]_J\le0.
-\]
+```
 
 There are exactly two fixed-packet possibilities.
 
@@ -75,9 +75,9 @@ There are exactly two fixed-packet possibilities.
 
 If positive coefficient norm is lost in the weak limit, then
 
-\[
+```math
 [y,y]_J<0.
-\]
+```
 
 That branch is already covered by H1-P3.0.
 
@@ -85,21 +85,21 @@ That branch is already covered by H1-P3.0.
 
 If
 
-\[
+```math
 \|a\|^2=\frac12,
-\]
+```
 
 then
 
-\[
+```math
 [y,y]_J=0,
-\]
+```
 
 and
 
-\[
+```math
 y_n\to y
-\]
+```
 
 strongly.
 
@@ -111,7 +111,7 @@ Only this second alternative enters H1-P3.1.
 
 For a fixed finite selected packet,
 
-\[
+```math
 \boxed{
 \text{critical right-approach}
 \Longrightarrow
@@ -120,7 +120,7 @@ For a fixed finite selected packet,
 \text{attained nonzero neutral right-limit ray}.
 \end{cases}
 }
-\]
+```
 
 There is no independent non-attained critical branch.
 
@@ -136,47 +136,47 @@ The remainder of P3.1 concerns the retained finite-exception neutral branch.
 
 Assume the attained neutral coefficient vector is represented by a nonzero finite selected coordinate
 
-\[
+```math
 u
-\]
+```
 
 and an endpoint minimum-compensator map
 
-\[
+```math
 C_c
-\]
+```
 
 satisfying the unit-gain relation
 
-\[
+```math
 \boxed{
-C_c^*C_cu=u.
+C_c^{*}C_cu=u.
 }
-\]
+```
 
 Then
 
-\[
+```math
 \boxed{
 \|C_cu\|=\|u\|.
 }
-\]
+```
 
-Assume further that the neutral positive coordinate has a physical adjoint realization: there exists a physical vector \(k\ne0\) such that
+Assume further that the neutral positive coordinate has a physical adjoint realization: there exists a physical vector $k\ne0$ such that
 
-\[
+```math
 \boxed{
-C_cu=P_c^*k.
+C_cu=P_c^{*}k.
 }
-\]
+```
 
 Define the negative physical synthesis by
 
-\[
+```math
 \boxed{
 N_c=-P_cC_c.
 }
-\]
+```
 
 These are the finite-exception neutral hypotheses inherited from the endpoint reduction.
 
@@ -188,59 +188,59 @@ They are not consequences of abstract criticality alone.
 
 From
 
-\[
-C_cu=P_c^*k
-\]
+```math
+C_cu=P_c^{*}k
+```
 
 and
 
-\[
-C_c^*C_cu=u,
-\]
+```math
+C_c^{*}C_cu=u,
+```
 
 we get
 
-\[
-N_c^*k
+```math
+N_c^{*}k
 =
--C_c^*P_c^*k
+-C_c^{*}P_c^{*}k
 =
--C_c^*C_cu
+-C_c^{*}C_cu
 =
 -u.
-\]
+```
 
 Hence the fixed coefficient relation is
 
-\[
+```math
 \boxed{
 \Phi(u)
 =
-(P_c^*k,-N_c^*k)
+(P_c^{*}k,-N_c^{*}k)
 =
 (C_cu,u).
 }
-\]
+```
 
 Define the finite-exception physical Weil defect operator
 
-\[
+```math
 \boxed{
 W_c
 =
-P_cP_c^*
+P_cP_c^{*}
 -
-N_cN_c^*.
+N_cN_c^{*}.
 }
-\]
+```
 
 Then
 
-\[
+```math
 \begin{aligned}
 W_ck
 &=
-P_cP_c^*k-N_cN_c^*k\\
+P_cP_c^{*}k-N_cN_c^{*}k\\
 &=
 P_cC_cu-N_c(-u)\\
 &=
@@ -248,15 +248,15 @@ P_cC_cu+N_cu\\
 &=
 0.
 \end{aligned}
-\]
+```
 
 Thus
 
-\[
+```math
 \boxed{
 W_ck=0.
 }
-\]
+```
 
 ---
 
@@ -264,13 +264,13 @@ W_ck=0.
 
 Every finite-exception unit-gain neutral relation satisfying the physical adjoint realization above determines a nonzero physical null mode
 
-\[
+```math
 \boxed{
 k\ne0,
 \qquad
 W_ck=0.
 }
-\]
+```
 
 **Standing:** PROVED CONDITIONAL on the finite-exception unit-gain realization.
 
@@ -284,21 +284,21 @@ It is an actual compact-window Weil null mode.
 
 # 4. Compact-window arithmetic representation
 
-For a test function \(f\) supported in
+For a test function $f$ supported in
 
-\[
+```math
 [-c,c],
-\]
+```
 
 with Fourier transform
 
-\[
+```math
 F=\widehat f,
-\]
+```
 
 the compact-window Weil form has the geometric representation
 
-\[
+```math
 \boxed{
 Q_c(f)
 =
@@ -309,11 +309,11 @@ Q_c(f)
 |F(t)|^2
 \Psi_c(t)\,dt,
 }
-\]
+```
 
 where
 
-\[
+```math
 \boxed{
 \Psi_c(t)
 =
@@ -326,13 +326,13 @@ where
 \frac{2\Lambda(n)}{\sqrt n}
 \cos(t\log n).
 }
-\]
+```
 
 At fixed support, the prime-power sum is finite.
 
 In physical coordinates, up to the fixed Fourier-normalization convention, the corresponding whole-line operator species is
 
-\[
+```math
 \boxed{
 \mathcal W_c^{\rm ext}
 =
@@ -348,27 +348,27 @@ In physical coordinates, up to the fixed Fourier-normalization convention, the c
 +
 \mathcal R_{\rm pole}.
 }
-\]
+```
 
 Here:
 
-- \(\mathcal A_\infty\) is the archimedean nonlocal Fourier multiplier;
+- $\mathcal A_\infty$ is the archimedean nonlocal Fourier multiplier;
 - the prime part is a finite sum of symmetric translations;
-- \(\mathcal R_{\rm pole}\) is finite rank.
+- $\mathcal R_{\rm pole}$ is finite rank.
 
 ---
 
 ## P3-U3 — Finite arithmetic-shift theorem
 
-At every fixed compact support \(c\),
+At every fixed compact support $c$,
 
-\[
+```math
 \boxed{
 \text{the arithmetic part contains only finitely many prime-power translations}.
 }
-\]
+```
 
-The active prime set is locally constant under a sufficiently small right variation of \(c\), except at a discrete prime-power threshold, where only a finite threshold event occurs.
+The active prime set is locally constant under a sufficiently small right variation of $c$, except at a discrete prime-power threshold, where only a finite threshold event occurs.
 
 **Dependencies:** ZW2-T6.
 
@@ -386,7 +386,7 @@ The infinite-order part is archimedean.
 
 The digamma asymptotic gives
 
-\[
+```math
 \Re\psi\!\left(
 \frac14+\frac{it}{2}
 \right)
@@ -394,11 +394,11 @@ The digamma asymptotic gives
 \log|t|
 +
 O(1).
-\]
+```
 
-Because the prime sum is finite and bounded in \(t\),
+Because the prime sum is finite and bounded in $t$,
 
-\[
+```math
 \boxed{
 \Psi_c(t)
 =
@@ -406,11 +406,11 @@ Because the prime sum is finite and bounded in \(t\),
 +
 O_c(1).
 }
-\]
+```
 
-Consequently, after adding a sufficiently large harmless \(L^2\) shift,
+Consequently, after adding a sufficiently large harmless $L^2$ shift,
 
-\[
+```math
 \boxed{
 Q_c(f)+C_c^{(0)}\|f\|_2^2
 \asymp_c
@@ -418,9 +418,9 @@ Q_c(f)+C_c^{(0)}\|f\|_2^2
 \log(e+|t|)
 |F(t)|^2\,dt.
 }
-\]
+```
 
-The superscript on \(C_c^{(0)}\) distinguishes this scalar shift from the compensator map \(C_c\).
+The superscript on $C_c^{(0)}$ distinguishes this scalar shift from the compensator map $C_c$.
 
 ---
 
@@ -430,11 +430,11 @@ The physical neutral mode belongs naturally to a logarithmic Fourier/form domain
 
 The explicit-formula operator has principal order
 
-\[
+```math
 \boxed{
 \log|D|,
 }
-\]
+```
 
 perturbed only by order-zero finite translations and a finite-rank term.
 
@@ -448,25 +448,25 @@ perturbed only by order-zero finite translations and a finite-rank term.
 
 Translations preserve ordinary Sobolev and logarithmic Fourier norms:
 
-\[
+```math
 \|\tau_af\|_{H^s}
 =
 \|f\|_{H^s}.
-\]
+```
 
 Thus the finite prime-delay operator does not increase differential order.
 
 The compact-window neutral equation therefore does not, from the retained inputs alone, imply
 
-\[
+```math
 |D|^\varepsilon k\in L^2
-\]
+```
 
 for any
 
-\[
+```math
 \varepsilon>0.
-\]
+```
 
 Repeated substitution only creates further translated copies at the same order.
 
@@ -476,7 +476,7 @@ Repeated substitution only creates further translated copies at the same order.
 
 The neutral equation supplies logarithmic regularity but no automatic positive-Sobolev or quasianalytic bootstrap.
 
-\[
+```math
 \boxed{
 \text{finite prime translations}
 +
@@ -484,7 +484,7 @@ The neutral equation supplies logarithmic regularity but no automatic positive-S
 \not\Rightarrow
 H^\varepsilon
 }
-\]
+```
 
 without an additional theorem.
 
@@ -498,31 +498,31 @@ without an additional theorem.
 
 The null equality
 
-\[
+```math
 Q_c(k)=0
-\]
+```
 
 does not imply that the terms in the geometric explicit formula vanish separately.
 
 In particular, it does not imply individually that
 
-\[
+```math
 F(i/2)=0
-\]
+```
 
 or that
 
-\[
+```math
 \Psi_c(t)|F(t)|^2=0
-\]
+```
 
 pointwise.
 
 The prime trigonometric polynomial can make
 
-\[
+```math
 \Psi_c
-\]
+```
 
 sign-indefinite.
 
@@ -534,11 +534,11 @@ Thus the neutral mode is one global cancellation of the whole compact-window Wei
 
 Neutrality supplies
 
-\[
+```math
 \boxed{
 W_ck=0,
 }
-\]
+```
 
 but does not split into termwise prime, pole, and archimedean vanishing.
 
@@ -552,19 +552,19 @@ but does not split into termwise prime, pole, and archimedean vanishing.
 
 Let
 
-\[
+```math
 \widetilde k
-\]
+```
 
-denote the zero extension of \(k\) outside
+denote the zero extension of $k$ outside
 
-\[
+```math
 [-c,c].
-\]
+```
 
 The endpoint null-mode identity gives the interior equation
 
-\[
+```math
 \boxed{
 P_{[-c,c]}
 \mathcal W_c^{\rm ext}
@@ -572,7 +572,7 @@ P_{[-c,c]}
 =
 0
 }
-\]
+```
 
 in the retained operator/form realization.
 
@@ -584,9 +584,9 @@ The question is whether the **same fixed neutral relation** persists on a strict
 
 Equivalently, one asks whether the exterior Weil output
 
-\[
+```math
 \mathcal W_c^{\rm ext}\widetilde k
-\]
+```
 
 vanishes on a nontrivial collar adjacent to the support boundary, subject to the unit-gain/self-duality constraints above.
 
@@ -602,18 +602,18 @@ Thus the problem remains a finite-delay support question.
 
 Every finite-exception unit-gain neutral branch reduces to the following support problem:
 
-\[
+```math
 \boxed{
 P_{[-c,c]}
 \mathcal W_c^{\rm ext}\widetilde k=0,
 \qquad
 k\ne0,
 }
-\]
+```
 
 with
 
-\[
+```math
 \mathcal W_c^{\rm ext}
 =
 \text{logarithmic-order archimedean operator}
@@ -621,7 +621,7 @@ with
 \text{finitely many arithmetic translations}
 +
 \text{finite-rank pole term}.
-\]
+```
 
 Exact persistence to a larger support requires a nontrivial exterior collar on which the corresponding global Weil output continues to vanish, with the finite threshold convention included when necessary.
 
@@ -659,22 +659,22 @@ Collecting P3-U1 through P3-U7:
 
 Assume:
 
-1. \(\Pi\) is a fixed finite selected packet;
-2. \(t_n\downarrow c\);
-3. \(y_n\in\mathcal A_{\Pi,t_n}\) are unit critical vectors with
-   \[
+1. $\Pi$ is a fixed finite selected packet;
+2. $t_n\downarrow c$;
+3. $y_n\in\mathcal A_{\Pi,t_n}$ are unit critical vectors with
+   ```math
    [y_n,y_n]_J\to0;
-   \]
+   ```
 4. the fixed-packet critical limit falls in the attained-neutral rather than positive-mass-loss alternative;
-5. the resulting nonzero neutral selected coordinate \(u\) has the finite-exception unit-gain realization
-   \[
-   C_c^*C_cu=u;
-   \]
-6. there exists \(k\ne0\) with
-   \[
-   C_cu=P_c^*k;
-   \]
-7. \(N_c=-P_cC_c\).
+5. the resulting nonzero neutral selected coordinate $u$ has the finite-exception unit-gain realization
+   ```math
+   C_c^{*}C_cu=u;
+   ```
+6. there exists $k\ne0$ with
+   ```math
+   C_cu=P_c^{*}k;
+   ```
+7. $N_c=-P_cC_c$.
 
 Then:
 
@@ -684,13 +684,13 @@ The critical sequence converges strongly to a nonzero neutral right-limit vector
 
 ### Physical null mode
 
-\[
+```math
 \boxed{
 W_ck=0,
 \qquad
-W_c=P_cP_c^*-N_cN_c^*.
+W_c=P_cP_c^{*}-N_cN_c^{*}.
 }
-\]
+```
 
 ### Arithmetic operator species
 
@@ -698,11 +698,11 @@ The corresponding compact-window Weil operator is a logarithmic-order nonlocal a
 
 ### Form order
 
-\[
+```math
 \boxed{
 \Psi_c(t)=\log|t|+O_c(1).
 }
-\]
+```
 
 Its natural form domain is logarithmic rather than positive-Sobolev.
 
@@ -720,28 +720,28 @@ The remaining fixed-vector question is exactly whether the zero-extended neutral
 
 The theorem package ends at
 
-\[
+```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
-\]
+```
 
 The interface asks:
 
-> For an actual nonzero finite-exception unit-gain neutral mode \(k\) with
+> For an actual nonzero finite-exception unit-gain neutral mode $k$ with
 >
-> \[
+> ```math
 > P_{[-c,c]}
 > \mathcal W_c^{\rm ext}\widetilde k
 > =
 > 0,
-> \]
+> ```
 >
 > must
 >
-> \[
+> ```math
 > \mathcal W_c^{\rm ext}\widetilde k
-> \]
+> ```
 >
 > vanish on a nontrivial exterior collar, or can it activate immediately outside the old support?
 
@@ -753,7 +753,7 @@ The answer is not assumed in H1-P3.1.
 
 The neutral morphology theorem consumes
 
-\[
+```math
 \boxed{
 \begin{array}{c}
 \text{WD-C4 / attained critical branch}\\
@@ -771,7 +771,7 @@ W_ck=0\\
 \text{null-extension support interface}.
 \end{array}
 }
-\]
+```
 
 No downstream support-rigidity theorem is consumed above the stop line.
 
@@ -783,17 +783,17 @@ The neutral branch is now packaged as a single auditable morphology theorem.
 
 Its output is:
 
-\[
+```math
 \boxed{
 \text{attained fixed-packet criticality}
 \Longrightarrow
 \text{physical compact-window null mode}
 }
-\]
+```
 
 whose operator is
 
-\[
+```math
 \boxed{
 \text{logarithmic order}
 +
@@ -801,7 +801,7 @@ whose operator is
 +
 \text{finite-rank pole term},
 }
-\]
+```
 
 with no automatic positive-order regularity gain.
 
@@ -811,8 +811,8 @@ The unresolved question is purely a fixed-vector exterior support/null-extension
 
 # Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P3.2 / NONCOMPACT BACKGROUND MORPHOLOGY THEOREM}
 }
-\]
+```

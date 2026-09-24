@@ -9,13 +9,13 @@ The load-bearing external inputs are now pinned.
 
 Douglas (1966), Theorem 1, pp. 413–415:
 
-\[
+```math
 \operatorname{Ran}A\subseteq\operatorname{Ran}B
 \iff
-AA^*\le\lambda^2BB^*
+AA^{*}\le\lambda^2BB^{*}
 \iff
 A=BC,
-\]
+```
 
 with the reduced/minimum-norm solution.
 
@@ -33,11 +33,11 @@ Consumed by WD-T22, WD-T23, WD-T28.
 
 Titchmarsh, 2nd ed., Theorem 9.2, equation (9.2.1), p. 211:
 
-\[
+```math
 N(T+1)-N(T)=O(\log T).
-\]
+```
 
-The following text also records the fixed-\(h\) variant and multiplicity consequence.
+The following text also records the fixed $h$ variant and multiplicity consequence.
 
 Consumed by WD-T28 and WD-T31.
 
@@ -45,19 +45,19 @@ Consumed by WD-T28 and WD-T31.
 
 Zhu, arXiv:2608.24827v2, equations (2)–(3), p. 2.
 
-For support \([-L,L]\), only prime powers satisfying
+For support $[-L,L]$, only prime powers satisfying
 
-\[
+```math
 \log n<2L
-\]
+```
 
 occur.
 
 Horizon convention:
 
-\[
+```math
 L=c.
-\]
+```
 
 The strict support inequality is now frozen.
 
@@ -67,17 +67,17 @@ Consumed by WD-T34, WD-T35, WD-T38.
 
 DLMF 5.11.2:
 
-\[
+```math
 \psi(z)
 \sim
 \log z-\frac1{2z}-\cdots.
-\]
+```
 
-At \(z=1/4+it/2\),
+At $z=1/4+it/2$,
 
-\[
+```math
 \Re\psi(1/4+it/2)=\log|t|+O(1).
-\]
+```
 
 Consumed by WD-T35.
 
@@ -87,16 +87,16 @@ Anderson–Trapp and Suzuki remain contextual/non-load-bearing for the current t
 
 ## Phase status
 
-\[
+```math
 \boxed{
 \text{H1-P4 ACTIVE}.
 }
-\]
+```
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.2 / INTERNAL PROOF AUDIT}
 }
-\]
+```

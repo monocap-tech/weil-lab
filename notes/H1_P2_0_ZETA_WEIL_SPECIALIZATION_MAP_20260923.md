@@ -9,75 +9,75 @@ The existing Weil machinery has now been mapped onto the completed H1-P1 abstrac
 
 The zero-side Weil problem realizes
 
-\[
-K_+
+```math
+K_{+}
 =
 K_{\rm crit}\oplus K_{{\rm off},+},
 \qquad
-K_-
+K_{-}
 =
 K_{{\rm off},-}.
-\]
+```
 
-A finite selected packet \(\Pi\) gives
+A finite selected packet $\Pi$ gives
 
-\[
-M_\Pi\subset K_-,
+```math
+M_\Pi\subset K_{-},
 \qquad
 \dim M_\Pi<\infty,
-\]
+```
 
 while the unselected off-axis divisor is the negative background
 
-\[
-B_\Pi=M_\Pi^\perp\cap K_-.
-\]
+```math
+B_\Pi=M_\Pi^\perp\cap K_{-}.
+```
 
 The full zero-side physical defect is
 
-\[
-D=S_+S_+^*-S_-S_-^*.
-\]
+```math
+D=S_{+}S_{+}^{*}-S_{-}S_{-}^{*}.
+```
 
 The selected/full identity is exactly WD-B1:
 
-\[
+```math
 Q_W(h)
 =
 Q_{\Pi,t}(h)
 -
-\|S_{B_\Pi,t}^*h\|^2.
-\]
+\|S_{B_\Pi,t}^{*}h\|^2.
+```
 
 The rank-one selected-cell defect is not primitive. It is the composite terminal normal form
 
-\[
+```math
 \text{WD-B4}
 +
 \text{WD-B7}
 +
 \text{WD-A5}.
-\]
+```
 
 ## Support mapping
 
-The support parameter \(t\) gives a monotone analysis-space filtration
+The support parameter $t$ gives a monotone analysis-space filtration
 
-\[
+```math
 \mathcal A_{\Pi,s}
 \subseteq
 \mathcal A_{\Pi,t}
 \qquad(s<t).
-\]
+```
 
 The persistent packet space is
 
-\[
+```math
 \mathcal A_{\Pi,c+}
 =
 \bigcap_{t>c}
 \mathcal A_{\Pi,t}.
-\]
+```
 
 Representative blow-up is WD-C7/C9 and is not itself arithmetic.
 
@@ -85,9 +85,9 @@ Representative blow-up is WD-C7/C9 and is not itself arithmetic.
 
 Because
 
-\[
+```math
 \dim M_\Pi<\infty,
-\]
+```
 
 WD-C3/C4 imply that any normalized fixed-packet critical/negative right-approach has a nonzero nonpositive right-limit ray.
 
@@ -101,21 +101,21 @@ It can only reappear through:
 
 ## First genuinely new zeta-Weil structure
 
-For the raw selected residue vector \(v\) associated with a negative pair coordinate,
+For the raw selected residue vector $v$ associated with a negative pair coordinate,
 
-\[
+```math
 \boxed{
-\mathbf1^Tv=0.
+\mathbf{1}^Tv=0.
 }
-\]
+```
 
 Hence
 
-\[
+```math
 \boxed{
 R_v(z)=O(|z|^{-2}).
 }
-\]
+```
 
 This has no generic H1-P1 source. It comes from antisymmetric conjugate-pair geometry.
 
@@ -129,16 +129,16 @@ The weighted next-jet field and the finite prime-shift/logarithmic operator ther
 
 ## Phase status
 
-\[
+```math
 \boxed{
 \text{H1-P2 ACTIVE}.
 }
-\]
+```
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P2.1 / QUARTET CHANNEL AND RESIDUE STRUCTURE}
 }
-\]
+```

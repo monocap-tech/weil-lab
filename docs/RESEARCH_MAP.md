@@ -4,7 +4,7 @@
 
 The canonical phase plan is [Horizon 1 — Independent Weil-Defect Theory](HORIZON_1.md).
 
-\[
+```math
 \boxed{
 \begin{array}{ll}
 \textbf{H1-P0} & \text{Consolidation and custody}\\
@@ -15,11 +15,11 @@ The canonical phase plan is [Horizon 1 — Independent Weil-Defect Theory](HORIZ
 \textbf{H1-P5} & \text{Public mathematical package}
 \end{array}
 }
-\]
+```
 
 Current position:
 
-\[
+```math
 \boxed{
 \text{H1-P0 COMPLETE}
 \qquad
@@ -31,7 +31,7 @@ Current position:
 \qquad
 \text{H1-P4 ACTIVE}.
 }
-\]
+```
 
 The RH-facing statements at the bottom of this map are **interfaces out of Horizon 1**, not Horizon-1 completion requirements.
 
@@ -43,102 +43,102 @@ The RH-facing statements at the bottom of this map are **interfaces out of Horiz
 
 For
 
-\[
-E(x,u)=S_+x+S_-u
-\]
+```math
+E(x,u)=S_{+}x+S_{-}u
+```
 
 and
 
-\[
+```math
 \mathcal A=(\ker E)^\perp,
-\]
+```
 
 define
 
-\[
+```math
 \boxed{
-D=S_+S_+^*-S_-S_-^*.
+D=S_{+}S_{+}^{*}-S_{-}S_{-}^{*}.
 }
-\]
+```
 
 Then
 
-\[
+```math
 \boxed{
 \mathcal A\text{ is }J\text{-nonnegative}
 \iff
 D\succeq0
 \iff
-S_-=-S_+X
+S_{-}=-S_{+}X
 \text{ for a contraction }X.
 }
-\]
+```
 
 When exact range inclusion holds, the Douglas reduced solution gives
 
-\[
+```math
 \boxed{
-\mathcal A=\operatorname{graph}(-X^*).
+\mathcal A=\operatorname{graph}(-X^{*}).
 }
-\]
+```
 
 See [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md).
 
 ### 2. Selected/background transfer
 
-For a selected finite negative sector \(M\) and negative background \(B\),
+For a selected finite negative sector $M$ and negative background $B$,
 
-\[
+```math
 D_{\rm full}
 =
-D_M-S_BS_B^*.
-\]
+D_M-S_BS_B^{*}.
+```
 
 Selected negativity survives aggregation, but aggregate negativity does not preserve selected-sector custody.
 
-If the background is contractively screened with reduced map \(X_B\), define
+If the background is contractively screened with reduced map $X_B$, define
 
-\[
-R_B=I-X_BX_B^*
-\]
+```math
+R_B=I-X_BX_B^{*}
+```
 
 and
 
-\[
-S_{\rm eff}=S_+R_B^{1/2}.
-\]
+```math
+S_{\rm eff}=S_{+}R_B^{1/2}.
+```
 
 Then the selected problem re-enters the same calculus:
 
-\[
+```math
 \boxed{
 D_{\rm full}
 =
-S_{\rm eff}S_{\rm eff}^*
+S_{\rm eff}S_{\rm eff}^{*}
 -
-S_MS_M^*.
+S_MS_M^{*}.
 }
-\]
+```
 
-For fixed finite \(M\), the reduced residual screening map \(Y\) satisfies
+For fixed finite $M$, the reduced residual screening map $Y$ satisfies
 
-\[
+```math
 \boxed{
-\operatorname{ind}_-
+\operatorname{ind}_{-}
 =
 \#\{j:\sigma_j(Y)>1\},
 }
-\]
+```
 
 and
 
-\[
+```math
 \boxed{
 \operatorname{nul}_J
 =
 \#\{j:\sigma_j(Y)=1\}.
 }
-\]
+```
 
 See [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md).
 
@@ -146,53 +146,53 @@ See [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md).
 
 For a monotone family
 
-\[
+```math
 \mathcal A_s\subseteq\mathcal A_t
 \qquad(s<t),
-\]
+```
 
 the right-limit space is
 
-\[
+```math
 \boxed{
 \mathcal A_{c+}
 =
 \bigcap_{t>c}\mathcal A_t.
 }
-\]
+```
 
 Its endpoint jump is
 
-\[
+```math
 \boxed{
 \mathcal J_c
 =
 \mathcal A_{c+}\ominus\mathcal A_c.
 }
-\]
+```
 
 With a fixed finite negative sector, any normalized right-approaching sequence with
 
-\[
+```math
 [y_n,y_n]_J\to q_*\le0
-\]
+```
 
 has a nonzero right-limit vector
 
-\[
+```math
 y\in\mathcal A_{c+}
-\]
+```
 
 satisfying
 
-\[
+```math
 [y,y]_J\le q_*.
-\]
+```
 
 At criticality, either:
 
-- the positive coordinates converge strongly and \(y\) is neutral; or
-- positive coefficient mass is lost and \(y\) becomes strictly negative.
+- the positive coordinates converge strongly and $y$ is neutral; or
+- positive coefficient mass is lost and $y$ becomes strictly negative.
 
 Thus non-attained approximate neutrality without persistence requires an infinite or moving negative-sector mechanism.
 
@@ -204,13 +204,13 @@ See [Support Filtration and Persistence Limits](SUPPORT_FILTRATION_PERSISTENCE.m
 
 ## Abstract screening taxonomy
 
-\[
+```math
 \boxed{
 \begin{array}{ccl}
-\operatorname{Ran}S_-\not\subseteq\operatorname{Ran}S_+
+\operatorname{Ran}S_{-}\not\subseteq\operatorname{Ran}S_{+}
 &\Rightarrow&
 \text{range-defect negativity},\\
-\operatorname{Ran}S_-\subseteq\operatorname{Ran}S_+,\ \|X\|>1
+\operatorname{Ran}S_{-}\subseteq\operatorname{Ran}S_{+},\ \|X\|>1
 &\Rightarrow&
 \text{over-budget negativity},\\
 \|X\|<1
@@ -224,11 +224,11 @@ See [Support Filtration and Persistence Limits](SUPPORT_FILTRATION_PERSISTENCE.m
 \text{approximate-neutral boundary}.
 \end{array}
 }
-\]
+```
 
 H1-P1.2 refines the last line:
 
-\[
+```math
 \boxed{
 \text{fixed finite selected sector}
 +
@@ -236,7 +236,7 @@ H1-P1.2 refines the last line:
 \Longrightarrow
 \text{actual nonpositive right-limit ray}.
 }
-\]
+```
 
 Hence the genuinely nonpersistent approximate-neutral case belongs to moving/infinite-sector noncompactness.
 
@@ -248,42 +248,42 @@ The prior zeta traversal explicitly produced two arithmetic morphologies that H1
 
 ### Negative-persistence branch
 
-\[
+```math
 \boxed{
 \text{persistent negative ray}
 \Longrightarrow
-\mathbf1^Tv=0
+\mathbf{1}^Tv=0
 \Longrightarrow
 R_v(z)=O(|z|^{-2})
 \Longrightarrow
 \text{weighted near next-jet field}.
 }
-\]
+```
 
 The surviving arithmetic object is
 
-\[
+```math
 \mathcal N_v[\psi]
 =
 \sum_{\mu\notin F}^{\rm near}
 m_\mu\psi(\mu)
 \frac{H_v^{(m_\mu)}(\mu)}
 {\Xi^{(m_\mu)}(\mu)}.
-\]
+```
 
 ### Neutral branch
 
-\[
+```math
 \boxed{
 \text{neutral persistence}
 \Longrightarrow
 W_ck=0.
 }
-\]
+```
 
 At fixed support,
 
-\[
+```math
 \mathcal W_c
 =
 \mathcal A_\infty
@@ -293,13 +293,13 @@ At fixed support,
 (\tau_{\log n}+\tau_{-\log n})
 +
 \mathcal R_{\rm pole},
-\]
+```
 
 with principal symbol
 
-\[
+```math
 \Psi_c(t)=\log|t|+O_c(1).
-\]
+```
 
 ### Approximate-neutral question
 
@@ -334,8 +334,8 @@ H1-P2 must determine whether any remaining zeta-Weil critical sequence without a
 - quartet channel decomposition;
 - selected/unselected divisor decomposition;
 - zero-moment conservation;
-- \(O(z^{-2})\) rational far field;
-- completed-\(\Xi\) weighted next jets;
+- $O(z^{-2})$ rational far field;
+- completed $\Xi$ weighted next jets;
 - compact-window prime shifts;
 - logarithmic archimedean order.
 
@@ -351,7 +351,7 @@ H1-P2 must determine whether any remaining zeta-Weil critical sequence without a
 
 The canonical mapping is now recorded in [Zeta-Weil Specialization Map](ZETA_WEIL_SPECIALIZATION_MAP.md).
 
-\[
+```math
 \boxed{
 \text{ZW-0: Weil/Krein pair geometry}
 \longrightarrow
@@ -359,19 +359,19 @@ The canonical mapping is now recorded in [Zeta-Weil Specialization Map](ZETA_WEI
 \longrightarrow
 \text{ZW-2: explicit-formula arithmetic}.
 }
-\]
+```
 
 The first genuinely non-abstract structural identity is the pair-antisymmetry law
 
-\[
-\mathbf1^Tv=0,
-\]
+```math
+\mathbf{1}^Tv=0,
+```
 
 which yields
 
-\[
+```math
 R_v(z)=O(|z|^{-2}).
-\]
+```
 
 Prime/pole/archimedean terms begin only at ZW-2; they are not extra positive screening coordinates.
 
@@ -379,15 +379,15 @@ Prime/pole/archimedean terms begin only at ZW-2; they are not extra positive scr
 
 The canonical ZW-1 theorem package is [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md).
 
-\[
+```math
 \boxed{
 \text{pair antisymmetry}
 \Longrightarrow
-\mathbf1^Tv=0
+\mathbf{1}^Tv=0
 \Longrightarrow
 R_v(z)=O(|z|^{-2}),
 }
-\]
+```
 
 with inverse-square order sharp.
 
@@ -399,9 +399,9 @@ The canonical ZW-2 theorem package is [Explicit-Formula Arithmetic Attachment](E
 
 Negative branch:
 
-\[
+```math
 \boxed{
-\mathbf1^Tv=0
+\mathbf{1}^Tv=0
 \Longrightarrow
 R_v(z)=O(z^{-2})
 \Longrightarrow
@@ -411,11 +411,11 @@ O((\log R)/R)
 \Longrightarrow
 \text{weighted near next-jet field}.
 }
-\]
+```
 
 Neutral branch:
 
-\[
+```math
 \boxed{
 \text{fixed support}
 \Longrightarrow
@@ -423,22 +423,22 @@ Neutral branch:
 \quad\text{and}\quad
 \Psi_c(t)=\log|t|+O_c(1).
 }
-\]
+```
 
 The explicit formula supplies no automatic positive-Sobolev or quasianalytic gain.
 
 Therefore
 
-\[
+```math
 \boxed{
 \textbf{H1-P2 — ZETA-WEIL SPECIALIZATION: COMPLETE.}
-\]
+```
 
 ## H1-P3.0 disposition
 
 The fixed-packet negative branch is packaged in [Negative Defect Morphology Theorem](NEGATIVE_DEFECT_MORPHOLOGY.md).
 
-\[
+```math
 \boxed{
 \begin{aligned}
 \text{persistent selected negativity}
@@ -447,7 +447,7 @@ The fixed-packet negative branch is packaged in [Negative Defect Morphology Theo
 &\Longrightarrow
 \text{normalized full-Weil negativity}\\
 &\Longrightarrow
-\mathbf1^Tv=0\\
+\mathbf{1}^Tv=0\\
 &\Longrightarrow
 R_v(z)=O(z^{-2})\\
 &\Longrightarrow
@@ -456,15 +456,15 @@ R_v(z)=O(z^{-2})\\
 \text{weighted finite/intermediate next-jet field}.
 \end{aligned}
 }
-\]
+```
 
-The theorem does not assert a generic lower bound for the near field. Its stop line is \(\texttt{AZ-NEXTJET-LOC}\).
+The theorem does not assert a generic lower bound for the near field. Its stop line is $\texttt{AZ-NEXTJET-LOC}$.
 
 ## H1-P3.1 disposition
 
 The attained-neutral branch is packaged in [Neutral Defect Morphology Theorem](NEUTRAL_DEFECT_MORPHOLOGY.md).
 
-\[
+```math
 \boxed{
 \text{fixed-packet criticality}
 \Longrightarrow
@@ -473,40 +473,40 @@ The attained-neutral branch is packaged in [Neutral Defect Morphology Theorem](N
 \text{attained neutral mode}.
 \end{cases}
 }
-\]
+```
 
 On the neutral branch,
 
-\[
+```math
 \boxed{
 W_ck=0,
 }
-\]
+```
 
 and the corresponding compact-window operator has logarithmic principal order with finitely many prime translations.
 
-The unresolved fixed-vector support question is exactly \(\texttt{AZ-FIN-WEIL-NULL-EXTENSION}\).
+The unresolved fixed-vector support question is exactly $\texttt{AZ-FIN-WEIL-NULL-EXTENSION}$.
 
 ## H1-P3.2 disposition
 
 The remaining noncompact species are packaged in [Noncompact Background Morphology Theorem](NONCOMPACT_BACKGROUND_MORPHOLOGY.md).
 
-\[
+```math
 \boxed{
 \text{moving selected escape}
 \ne
 \text{unselected-background escape}.
 }
-\]
+```
 
 The former can erase every selected weak limit. The latter cannot erase an already anchored fixed selected negative ray; it only prevents strong full-divisor convergence.
 
 Thus
 
-\[
+```math
 \boxed{
 \textbf{H1-P3 — DEFECT MORPHOLOGY THEOREM: COMPLETE.}
-\]
+```
 
 ## H1-P4.0 disposition
 
@@ -531,11 +531,11 @@ The theorem-by-theorem audit and applied corrections are recorded in [Internal P
 
 ## Current cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
 }
-\]
+```
 
 The next pass should expand WD-T37 through WD-T39 and verify every branch hypothesis/dependency transfer end-to-end.
 
@@ -545,30 +545,30 @@ The next pass should expand WD-T37 through WD-T39 and verify every branch hypoth
 
 ### Negative branch
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC}
 }
-\]
+```
 
 or an equivalent actual-zeta theorem controlling the required weighted near-field compensation.
 
 ### Selected screening floor
 
-\[
+```math
 \boxed{
 \texttt{C-ACTUAL-KPH-FLOOR}
 }
-\]
+```
 
 or an equivalent packetwise transversality theorem.
 
 ### Neutral branch
 
-\[
+```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}
 }
-\]
+```
 
 or an equivalent support theorem for the logarithmic-order compact-window operator.

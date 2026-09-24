@@ -68,8 +68,8 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 | WD-T23 | ZW1-T4 | Multiplicity-null directions must be quotiented before independent index counting | IMPORTED/DERIVED | SOURCE-PINNED; P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T24 | ZW1-T5 | Finite distinct-frequency exponential independence on a nonempty interval | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T25 | ZW1-T6 | No exact finite positive compensation for an anchored selected negative cell | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T26 | ZW1-T7 | Selected negative raw residues satisfy the zero-moment law \(\mathbf1^Tv=0\) | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T27 | ZW1-T8 | Zero moment gives universal \(R_v(z)=O(|z|^{-2})\) far decay | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T26 | ZW1-T7 | Selected negative raw residues satisfy the zero-moment law $\mathbf{1}^Tv=0$ | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T27 | ZW1-T8 | Zero moment gives universal $R_v(z)=O(\vertz\vert^{-2})$ far decay | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T28 | ZW1-T9 | Native Problem-1 zero synthesis is Hilbert-Schmidt; off-axis helper covariance is trace class | INTERNAL-PROOF + imported zero count | SOURCE-PINNED; P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T29 | ZW1-T10 | Exact bounded-budget infinite-helper target requires quantitative finite-head approximation | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 
@@ -80,8 +80,8 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 | Stable ID | Historical alias | Statement | Standing | Verification | Canonical source |
 | --- | --- | --- | --- | --- | --- |
 | WD-T30 | ZW2-T1 | Two-mode selected-preserving scalar multiplier exists | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T31 | ZW2-T2 | Zero moment + zero counting gives \(O((\log R)/R)\) far complementary tail | INTERNAL-PROOF + imported zero count | SOURCE-PINNED; P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T32 | ZW2-T3 + ZW2-T4 | Complementary response equals the weighted completed-\(\Xi\) next-jet field | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T31 | ZW2-T2 | Zero moment + zero counting gives $O((\log R)/R)$ far complementary tail | INTERNAL-PROOF + imported zero count | SOURCE-PINNED; P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T32 | ZW2-T3 + ZW2-T4 | Complementary response equals the weighted completed $\Xi$ next-jet field | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 | WD-T33 | ZW2-T5 | Adaptive near-minus-archimedean cancellation collapses prime term onto far tail | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 | WD-T34 | ZW2-T6 | Fixed compact support activates only finitely many prime-power translations | DERIVED from IMPORTED compact-window formula | SOURCE-PINNED; P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 | WD-T35 | ZW2-T7 | Compact-window Weil form has logarithmic Fourier/form order | DERIVED | SOURCE-PINNED; P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
@@ -124,7 +124,7 @@ These are load-bearing jurisdiction rules, not theorems.
 | Stable scope ID | Historical alias | Rule |
 | --- | --- | --- |
 | WD-S01 | ZW1-S1 | Unweighted sampling/frame statements do not transfer to native Problem-1 coercivity without an explicit metric comparison |
-| WD-S02 | H1-P2.0 scope classification | Prime/pole/archimedean explicit-formula terms are an alternate representation of the Weil form, not additional \(K_+\) screening coordinates |
+| WD-S02 | H1-P2.0 scope classification | Prime/pole/archimedean explicit-formula terms are an alternate representation of the Weil form, not additional $K_{+}$ screening coordinates |
 | WD-S03 | ZW2-T9 / P3-U6 | Neutrality is a global quadratic cancellation, not termwise vanishing |
 | WD-S04 | P3-N6 scope guard | Weighted near next-jet localization does not imply a source-free uniform lower bound |
 | WD-S05 | P3-B5 custody guard | Unselected-background escape does not erase an already anchored fixed selected ray |

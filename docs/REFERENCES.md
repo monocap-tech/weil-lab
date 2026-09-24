@@ -51,9 +51,9 @@ https://sites.math.rutgers.edu/~zeilberg/EM18/TitchmarshZeta.pdf
 Load-bearing pin:
 
 - Chapter IX, Theorem 9.2, equation (9.2.1), p. 211:
-  \[
+  ```math
   N(T+1)-N(T)=O(\log T).
-  \]
+  ```
 
 ## Compact-window explicit formula
 
@@ -68,7 +68,7 @@ https://arxiv.org/abs/2608.24827
 Load-bearing pins:
 
 - equations (2)–(3), p. 2;
-- support convention \(\log n<2L\).
+- support convention $\log n<2L$.
 
 ## Special-function asymptotics
 
@@ -80,9 +80,9 @@ https://dlmf.nist.gov/5.11.E2
 
 Load-bearing pin:
 
-\[
+```math
 \psi(z)\sim\log z-\frac1{2z}-\cdots.
-\]
+```
 
 ## Operator-theoretic context
 

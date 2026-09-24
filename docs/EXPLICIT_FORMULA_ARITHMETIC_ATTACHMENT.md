@@ -1,5 +1,5 @@
 # Explicit-Formula Arithmetic Attachment
-## H1-P2.2 — Scalar localization, completed-\(\Xi\) next jets, and compact-window arithmetic operators
+## H1-P2.2 — Scalar localization, completed $\Xi$ next jets, and compact-window arithmetic operators
 
 This pass normalizes the ZW-2 layer.
 
@@ -7,23 +7,23 @@ The objective is not to prove an RH-facing exclusion theorem. It is to determine
 
 The result splits into two branches:
 
-\[
+```math
 \boxed{
 \text{negative persistent source}
 \longrightarrow
 \text{weighted near next-jet field},
 }
-\]
+```
 
 and
 
-\[
+```math
 \boxed{
 \text{neutral compact-window mode}
 \longrightarrow
 \text{logarithmic operator + finitely many prime shifts}.
 }
-\]
+```
 
 ---
 
@@ -31,79 +31,79 @@ and
 
 ## 1. Selected contracted-residue functional
 
-Let \(v\ne0\) be a finite selected raw residue vector on a packet \(F\), with
+Let $v\ne0$ be a finite selected raw residue vector on a packet $F$, with
 
-\[
-\mathbf1^Tv=0.
-\]
+```math
+\mathbf{1}^Tv=0.
+```
 
 Let
 
-\[
+```math
 R_v(z)=\sum_{\rho_j\in F}\frac{v_j}{z-\rho_j}.
-\]
+```
 
-For an admissible scalar multiplier \(\psi\), write
+For an admissible scalar multiplier $\psi$, write
 
-\[
+```math
 \mathcal C_v[\psi]
-\]
+```
 
 for the selected contracted-residue term in the scalar explicit formula.
 
 For the bounded-depth exponential family with real parameter
 
-\[
+```math
 \psi_\tau(s)=e^{\tau(s-c)},
 \qquad
 \tau\in\mathbb R,
-\]
+```
 
 define
 
-\[
+```math
 C_v(\tau):=\mathcal C_v[\psi_\tau].
-\]
+```
 
-Because \(F\) is finite, \(C_v(\tau)\) is an exponential polynomial in \(\tau\).
+Because $F$ is finite, $C_v(\tau)$ is an exponential polynomial in $\tau$.
 
 ---
 
 ## ZW2-T1 — Two-mode selected-preserving multiplier
 
-Choose \(\tau_1,\tau_2\) such that
+Choose $\tau_1,\tau_2$ such that
 
-\[
+```math
 (C_v(\tau_1),C_v(\tau_2))\ne(0,0).
-\]
+```
 
-Then there is a nonzero pair \((\beta_1,\beta_2)\) for which
+Then there is a nonzero pair $(\beta_1,\beta_2)$ for which
 
-\[
+```math
 \psi
 =
 \beta_1\psi_{\tau_1}
 +
 \beta_2\psi_{\tau_2}
-\]
+```
 
 satisfies
 
-\[
+```math
 \boxed{
 \mathcal C_v[\psi]=0.
 }
-\]
+```
 
 An explicit choice is
 
-\[
+```math
 (\beta_1,\beta_2)
 =
 \bigl(C_v(\tau_2),-C_v(\tau_1)\bigr).
-\]
+```
 
-If \(C_v\equiv0\), every member of the exponential family is already selected-preserving.
+If $C_v\equiv0$, every member of the exponential family is already selected-preserving.
 
 **Standing:** PROVED as finite-dimensional scalar algebra.
 
@@ -121,29 +121,29 @@ That stronger simultaneous nondegeneracy is retained as a source-specific input,
 
 # 2. Far-tail localization
 
-Fix a height center \(T_F\) for the selected packet.
+Fix a height center $T_F$ for the selected packet.
 
-Assume \(\psi\) is bounded on the zero strip:
+Assume $\psi$ is bounded on the zero strip:
 
-\[
+```math
 |\psi(\mu)|\le M_\psi.
-\]
+```
 
 By ZW1-T8,
 
-\[
+```math
 R_v(\mu)
 =
 O_v(|\mu|^{-2})
-\]
+```
 
 away from the finite selected packet.
 
 Use the standard unit-height zero count
 
-\[
+```math
 N(X+1)-N(X)=O(\log(2+X))
-\]
+```
 
 with multiplicity.
 
@@ -153,54 +153,54 @@ with multiplicity.
 
 Define the distant complementary response
 
-\[
+```math
 \mathcal F_{v,R}[\psi]
 :=
 \sum_{\substack{\mu\notin F\\
 |\Im\mu-T_F|\ge R}}
 m_\mu\psi(\mu)R_v(\mu).
-\]
+```
 
-Then for sufficiently large \(R\),
+Then for sufficiently large $R$,
 
-\[
+```math
 \boxed{
 |\mathcal F_{v,R}[\psi]|
 \ll_{v,\psi,F}
 \frac{\log R}{R}.
 }
-\]
+```
 
 In particular,
 
-\[
+```math
 \boxed{
 \mathcal F_{v,R}[\psi]\to0
 \qquad(R\to\infty).
 }
-\]
+```
 
 ### Proof
 
 Partition the complementary zeros into unit-height shells.
 
-On a shell at distance \(n\) from the fixed packet,
+On a shell at distance $n$ from the fixed packet,
 
-\[
+```math
 |R_v(\mu)|\ll_v n^{-2},
-\]
+```
 
 while the shell contains
 
-\[
+```math
 O(\log(2+n+|T_F|))
-\]
+```
 
 zeros counted with multiplicity.
 
 Thus
 
-\[
+```math
 |\mathcal F_{v,R}[\psi]|
 \ll
 M_\psi
@@ -208,7 +208,7 @@ M_\psi
 \frac{\log(2+n+|T_F|)}{n^2}
 \ll
 \frac{\log R}{R}.
-\]
+```
 
 **Standing:** PROVED from ZW1-T8 + zero counting.
 
@@ -216,7 +216,7 @@ M_\psi
 
 For a fixed selected source and multiplier, the infinite distant divisor is not the residual arithmetic obstruction.
 
-All macroscopically necessary compensation can be localized into a finite/intermediate neighborhood of \(F\).
+All macroscopically necessary compensation can be localized into a finite/intermediate neighborhood of $F$.
 
 ---
 
@@ -224,7 +224,7 @@ All macroscopically necessary compensation can be localized into a finite/interm
 
 Define the near response
 
-\[
+```math
 \boxed{
 \mathcal N_{v,R}[\psi]
 =
@@ -232,22 +232,22 @@ Define the near response
 |\Im\mu-T_F|<R}}
 m_\mu\psi(\mu)R_v(\mu).
 }
-\]
+```
 
-For fixed \(R\), this is a finite sum.
+For fixed $R$, this is a finite sum.
 
 Since
 
-\[
+```math
 R_v(\mu)
 =
 \sum_{\rho_j\in F}
 \frac{v_j}{\mu-\rho_j},
-\]
+```
 
 we may interchange the two finite sums:
 
-\[
+```math
 \boxed{
 \mathcal N_{v,R}[\psi]
 =
@@ -258,78 +258,78 @@ v_j
 \frac{m_\mu\psi(\mu)}
 {\mu-\rho_j}.
 }
-\]
+```
 
-Thus the remaining divisor burden is a finite weighted complementary logarithmic-derivative field evaluated against \(v\).
+Thus the remaining divisor burden is a finite weighted complementary logarithmic-derivative field evaluated against $v$.
 
 **Standing:** PROVED.
 
 ---
 
-# 4. Completed-\(\Xi\) lift
+# 4. Completed $\Xi$ lift
 
 Define
 
-\[
+```math
 \boxed{
 H_v(z):=\Xi(z)R_v(z).
 }
-\]
+```
 
-Let \(\mu\notin F\) be a zero of \(\Xi\) of multiplicity \(m_\mu\).
+Let $\mu\notin F$ be a zero of $\Xi$ of multiplicity $m_\mu$.
 
-Because \(\mu\) is not selected, \(R_v\) is analytic at \(\mu\).
+Because $\mu$ is not selected, $R_v$ is analytic at $\mu$.
 
 Write locally
 
-\[
+```math
 \Xi(z)
 =
 (z-\mu)^{m_\mu}g_\mu(z),
 \qquad
 g_\mu(\mu)\ne0.
-\]
+```
 
 Then
 
-\[
+```math
 H_v(z)
 =
 (z-\mu)^{m_\mu}g_\mu(z)R_v(z).
-\]
+```
 
 ---
 
 ## ZW2-T3 — Complementary next-jet identity
 
-At every complementary zero \(\mu\notin F\),
+At every complementary zero $\mu\notin F$,
 
-\[
+```math
 \boxed{
 R_v(\mu)
 =
 \frac{H_v^{(m_\mu)}(\mu)}
 {\Xi^{(m_\mu)}(\mu)}.
 }
-\]
+```
 
 ### Proof
 
-Differentiating exactly \(m_\mu\) times at \(z=\mu\) gives
+Differentiating exactly $m_\mu$ times at $z=\mu$ gives
 
-\[
+```math
 H_v^{(m_\mu)}(\mu)
 =
 m_\mu!\,g_\mu(\mu)R_v(\mu),
-\]
+```
 
 while
 
-\[
+```math
 \Xi^{(m_\mu)}(\mu)
 =
 m_\mu!\,g_\mu(\mu).
-\]
+```
 
 Divide.
 
@@ -341,7 +341,7 @@ Divide.
 
 Substituting ZW2-T3 into the near field gives
 
-\[
+```math
 \boxed{
 \mathcal N_{v,R}[\psi]
 =
@@ -354,7 +354,7 @@ H_v^{(m_\mu)}(\mu)
 \Xi^{(m_\mu)}(\mu)
 }.
 }
-\]
+```
 
 Thus the residual negative-branch arithmetic object is precisely a weighted complementary next-jet field.
 
@@ -364,27 +364,27 @@ Thus the residual negative-branch arithmetic object is precisely a weighted comp
 
 If a simple complementary zero approaches a selected point,
 
-\[
+```math
 \mu=\rho_j+\delta,
-\]
+```
 
 then
 
-\[
+```math
 R_v(\mu)
 =
 \frac{v_j}{\delta}
 +
 O(1).
-\]
+```
 
-The entire lift \(H_v\) remains regular; the large response is encoded by the reciprocal local metric
+The entire lift $H_v$ remains regular; the large response is encoded by the reciprocal local metric
 
-\[
+```math
 \frac1{\Xi'(\mu)}
-\]
+```
 
-or its multiplicity-\(m\) analogue.
+or its multiplicity $m$ analogue.
 
 Nothing in the abstract persistence calculus excludes this geometry.
 
@@ -394,7 +394,7 @@ Nothing in the abstract persistence calculus excludes this geometry.
 
 For the fixed selected source and admissible multiplier, write the scalar explicit formula schematically as
 
-\[
+```math
 \boxed{
 \mathcal C_v[\psi]
 +
@@ -406,25 +406,25 @@ For the fixed selected source and admissible multiplier, write the scalar explic
 +
 \mathcal A_v[\psi].
 }
-\]
+```
 
 Here:
 
-- \(\mathcal C_v\) is the selected contracted-residue term;
-- \(\mathcal N_v\) is the finite/intermediate complementary divisor term;
-- \(\mathcal F_v\) is the distant complementary divisor term;
-- \(\mathcal P_v\) is the prime-power term;
-- \(\mathcal A_v\) is the archimedean/pole term.
+- $\mathcal C_v$ is the selected contracted-residue term;
+- $\mathcal N_v$ is the finite/intermediate complementary divisor term;
+- $\mathcal F_v$ is the distant complementary divisor term;
+- $\mathcal P_v$ is the prime-power term;
+- $\mathcal A_v$ is the archimedean/pole term.
 
 For a selected-preserving multiplier,
 
-\[
+```math
 \mathcal C_v[\psi]=0,
-\]
+```
 
 so
 
-\[
+```math
 \boxed{
 \mathcal N_v[\psi]
 +
@@ -434,7 +434,7 @@ so
 +
 \mathcal A_v[\psi].
 }
-\]
+```
 
 **Standing:** retained exact explicit-formula decomposition.
 
@@ -442,45 +442,45 @@ so
 
 ## ZW2-T5 — Adaptive co-cancellation identity
 
-Fix a cutoff \(R\) and a selected-preserving multiplier \(\psi\). Suppose it is additionally chosen so that
+Fix a cutoff $R$ and a selected-preserving multiplier $\psi$. Suppose it is additionally chosen so that
 
-\[
+```math
 \mathcal N_{v,R}[\psi]
 =
 \mathcal A_v[\psi].
-\]
+```
 
 Then the split explicit formula forces
 
-\[
+```math
 \boxed{
 \mathcal P_v[\psi]
 =
 \mathcal F_{v,R}[\psi].
 }
-\]
+```
 
 Thus, at that same cutoff, adaptive cancellation of the near-minus-archimedean response does not leave an independent prime term: the prime functional is exactly the far functional.
 
-If one then sends \(R\to\infty\) while keeping \(\psi\) fixed, ZW2-T2 gives
+If one then sends $R\to\infty$ while keeping $\psi$ fixed, ZW2-T2 gives
 
-\[
+```math
 \mathcal F_{v,R}[\psi]\to0.
-\]
+```
 
-The same conclusion holds for a family \(\psi_R\) only when the multiplier bounds entering ZW2-T2 are uniform in \(R\). No uniform tail conclusion is claimed for an arbitrarily varying unbounded adaptive family.
+The same conclusion holds for a family $\psi_R$ only when the multiplier bounds entering ZW2-T2 are uniform in $R$. No uniform tail conclusion is claimed for an arbitrarily varying unbounded adaptive family.
 
 **Standing:** PROVED algebraically from the cutoff-split explicit-formula identity.
 
 ### Interpretation
 
-\[
+```math
 \boxed{
 \text{adaptive near cancellation}
 \ne
 \text{independent prime detection}.
 }
-\]
+```
 
 The multiplier must be chosen independently of the unknown near field if the prime signal is to carry separate information.
 
@@ -490,12 +490,12 @@ The multiplier must be chosen independently of the unknown near field if the pri
 
 Combining H1-P1, H1-P2.1, and ZW2-T1–T5 yields the lawful chain
 
-\[
+```math
 \boxed{
 \begin{aligned}
 \text{persistent selected negative ray}
 &\Longrightarrow
-v\ne0,\ \mathbf1^Tv=0\\
+v\ne0,\ \mathbf{1}^Tv=0\\
 &\Longrightarrow
 R_v(z)=O(|z|^{-2})\\
 &\Longrightarrow
@@ -511,7 +511,7 @@ m_\mu\psi(\mu)
 {\Xi^{(m_\mu)}(\mu)}.
 \end{aligned}
 }
-\]
+```
 
 This chain is a theorem/reduction package.
 
@@ -521,11 +521,11 @@ The next statement is **not** in the package:
 
 That is exactly the downstream interface
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC}
 }
-\]
+```
 
 or an equivalent actual-zeta KPH/transversality floor.
 
@@ -535,21 +535,21 @@ or an equivalent actual-zeta KPH/transversality floor.
 
 ## 7. Compact-window geometric explicit formula
 
-Let \(f\) be supported in
+Let $f$ be supported in
 
-\[
+```math
 [-c,c],
-\]
+```
 
 and let
 
-\[
+```math
 F=\widehat f.
-\]
+```
 
 The compact-window Weil form has the geometric representation
 
-\[
+```math
 \boxed{
 Q_c(f)
 =
@@ -560,11 +560,11 @@ Q_c(f)
 |F(t)|^2
 \Psi_c(t)\,dt,
 }
-\]
+```
 
 with
 
-\[
+```math
 \boxed{
 \Psi_c(t)
 =
@@ -577,13 +577,13 @@ with
 \frac{2\Lambda(n)}{\sqrt n}
 \cos(t\log n).
 }
-\]
+```
 
-At fixed \(c\), only finitely many prime powers satisfy
+At fixed $c$, only finitely many prime powers satisfy
 
-\[
+```math
 \log n<2c.
-\]
+```
 
 **Standing:** IMPORTED compact-window explicit-formula identity / specialization. The current compact-window literature explicitly works with this finite-support arithmetic truncation. 
 
@@ -591,26 +591,26 @@ At fixed \(c\), only finitely many prime powers satisfy
 
 ## ZW2-T6 — Finite prime-support theorem
 
-For every fixed support \(c<\infty\),
+For every fixed support $c<\infty$,
 
-\[
+```math
 \boxed{
 \#\{n=p^m:\log n<2c\}<\infty.
 }
-\]
+```
 
 Hence the prime contribution to the compact-window Weil operator is a finite trigonometric polynomial in Fourier space and a finite sum of translations in physical space.
 
 Moreover, because the threshold set
 
-\[
+```math
 \left\{
 \frac12\log n:
 n=p^m
 \right\}
-\]
+```
 
-is discrete, there exists a right neighborhood of \(c\) on which the active prime-power set is unchanged, except when \(c\) itself is a threshold, in which case one finite threshold event occurs before the set again stabilizes.
+is discrete, there exists a right neighborhood of $c$ on which the active prime-power set is unchanged, except when $c$ itself is a threshold, in which case one finite threshold event occurs before the set again stabilizes.
 
 **Standing:** PROVED from support truncation + discreteness of prime powers.
 
@@ -620,26 +620,26 @@ is discrete, there exists a right neighborhood of \(c\) on which the active prim
 
 Multiplication by
 
-\[
+```math
 \cos(t\log n)
-\]
+```
 
 in Fourier space corresponds, under the project Fourier convention, to the symmetric translation
 
-\[
+```math
 \frac12
 \left(
 \tau_{\log n}
 +
 \tau_{-\log n}
 \right)
-\]
+```
 
 in physical space.
 
 Define the archimedean multiplier
 
-\[
+```math
 \widehat{\mathcal A_\infty f}(t)
 =
 \left[
@@ -649,13 +649,13 @@ Define the archimedean multiplier
 -\log\pi
 \right]
 \widehat f(t).
-\]
+```
 
-Let \(\mathcal R_{\rm pole}\) denote the finite-rank pole/evaluation contribution.
+Let $\mathcal R_{\rm pole}$ denote the finite-rank pole/evaluation contribution.
 
-Then, up to the fixed Fourier-normalization convention already encoded in \(Q_c\),
+Then, up to the fixed Fourier-normalization convention already encoded in $Q_c$,
 
-\[
+```math
 \boxed{
 \mathcal W_c
 =
@@ -671,7 +671,7 @@ Then, up to the fixed Fourier-normalization convention already encoded in \(Q_c\
 +
 \mathcal R_{\rm pole}.
 }
-\]
+```
 
 **Standing:** DERIVED from the compact-window geometric formula.
 
@@ -681,7 +681,7 @@ Then, up to the fixed Fourier-normalization convention already encoded in \(Q_c\
 
 The digamma asymptotic gives
 
-\[
+```math
 \Re\psi\!\left(
 \frac14+\frac{it}{2}
 \right)
@@ -690,13 +690,13 @@ The digamma asymptotic gives
 +
 O(1)
 \qquad(|t|\to\infty).
-\]
+```
 
 The prime trigonometric polynomial is bounded because it contains finitely many terms.
 
 Therefore
 
-\[
+```math
 \boxed{
 \Psi_c(t)
 =
@@ -704,7 +704,7 @@ Therefore
 +
 O_c(1).
 }
-\]
+```
 
 ---
 
@@ -712,21 +712,21 @@ O_c(1).
 
 Work in the same compact-window admissible test class as the pinned geometric formula, with
 
-\[
+```math
 \operatorname{supp}f\subseteq[-c,c],
 \qquad
 F=\widehat f.
-\]
+```
 
 There exist constants
 
-\[
+```math
 A_c,B_c>0
-\]
+```
 
-and a real scalar shift \(C_c^{(0)}\) such that
+and a real scalar shift $C_c^{(0)}$ such that
 
-\[
+```math
 \boxed{
 A_c
 \int_{\mathbb R}
@@ -735,11 +735,11 @@ A_c
 \le
 Q_c(f)+C_c^{(0)}\|f\|_2^2
 }
-\]
+```
 
 and
 
-\[
+```math
 \boxed{
 Q_c(f)+C_c^{(0)}\|f\|_2^2
 \le
@@ -748,31 +748,31 @@ B_c
 \log(e+|t|)
 |F(t)|^2\,dt.
 }
-\]
+```
 
 ### Proof
 
 By EXT-5 and the finite prime support of ZW2-T6,
 
-\[
+```math
 \Psi_c(t)=\log|t|+O_c(1).
-\]
+```
 
-Hence there are positive constants \(a_c,b_c\) and a scalar \(C\) such that
+Hence there are positive constants $a_c,b_c$ and a scalar $C$ such that
 
-\[
+```math
 a_c\log(e+|t|)
 \le
 \Psi_c(t)+C
 \le
 b_c\log(e+|t|)
-\]
+```
 
-for all real \(t\).
+for all real $t$.
 
-The pole/evaluation term is bounded by the fixed-support \(L^2\) norm: by Cauchy–Schwarz,
+The pole/evaluation term is bounded by the fixed-support $L^2$ norm: by Cauchy–Schwarz,
 
-\[
+```math
 |F(i/2)|
 =
 \left|
@@ -784,9 +784,9 @@ f(x)e^{x/2}\,dx
 \int_{-c}^{c}e^x\,dx
 \right)^{1/2}
 \|f\|_2.
-\]
+```
 
-Absorbing this bounded finite-rank contribution into the scalar \(L^2\) shift gives the two-sided estimate above.
+Absorbing this bounded finite-rank contribution into the scalar $L^2$ shift gives the two-sided estimate above.
 
 Thus the natural compact-window form domain is a logarithmic Fourier/Sobolev space.
 
@@ -800,50 +800,50 @@ The finite arithmetic translations do not increase the principal regularity orde
 
 ## ZW2-T8 — No positive-Sobolev coercive bootstrap
 
-For every \(\varepsilon>0\), the logarithmic form norm of ZW2-T7 does not control the \(H^\varepsilon\) norm uniformly on the fixed support class.
+For every $\varepsilon>0$, the logarithmic form norm of ZW2-T7 does not control the $H^\varepsilon$ norm uniformly on the fixed support class.
 
 Indeed, choose a nonzero real-even
 
-\[
+```math
 \phi\in C_c^\infty(-c,c)
-\]
+```
 
 and set
 
-\[
+```math
 f_N(x)=\phi(x)\cos(Nx).
-\]
+```
 
-Then the Fourier mass of \(f_N\) is concentrated near \(\pm N\), so
+Then the Fourier mass of $f_N$ is concentrated near $\pm N$, so
 
-\[
+```math
 \int
 \log(e+|t|)
 |\widehat f_N(t)|^2\,dt
 \asymp
 \log N,
-\]
+```
 
 whereas
 
-\[
+```math
 \|f_N\|_{H^\varepsilon}^2
 \asymp
 N^{2\varepsilon}.
-\]
+```
 
-After normalizing by \((\log N)^{1/2}\), the logarithmic form norm stays bounded while the \(H^\varepsilon\) norm diverges.
+After normalizing by $(\log N)^{1/2}$, the logarithmic form norm stays bounded while the $H^\varepsilon$ norm diverges.
 
 Therefore no estimate of the form
 
-\[
+```math
 \|f\|_{H^\varepsilon}
 \le
 C
 \left(
 Q_c(f)+C_c^{(0)}\|f\|_2^2
 \right)^{1/2}
-\]
+```
 
 can follow from the compact-window form equivalence alone.
 
@@ -857,23 +857,23 @@ Finite translations do not change this conclusion: they are order-zero operators
 
 Suppose the compact-window defect operator is nonnegative:
 
-\[
+```math
 W_c\succeq0.
-\]
+```
 
-If a physical vector \(k\) satisfies
+If a physical vector $k$ satisfies
 
-\[
+```math
 Q_c(k)=0,
-\]
+```
 
 then positivity gives
 
-\[
+```math
 \boxed{
 W_ck=0
 }
-\]
+```
 
 in the corresponding operator/form sense.
 
@@ -881,7 +881,7 @@ This null-mode step is abstract positive-operator geometry.
 
 What ZW-2 adds is the concrete operator species:
 
-\[
+```math
 \boxed{
 \text{archimedean log multiplier}
 +
@@ -889,7 +889,7 @@ What ZW-2 adds is the concrete operator species:
 +
 \text{finite-rank pole term}.
 }
-\]
+```
 
 ---
 
@@ -897,23 +897,23 @@ What ZW-2 adds is the concrete operator species:
 
 The equality
 
-\[
+```math
 Q_c(k)=0
-\]
+```
 
 does **not** imply separately that
 
-\[
+```math
 F(i/2)=0
-\]
+```
 
 or that each pointwise integrand contribution vanishes.
 
 The symbol
 
-\[
+```math
 \Psi_c(t)
-\]
+```
 
 need not be pointwise nonnegative because the finite prime trigonometric polynomial can change its sign contribution.
 
@@ -925,11 +925,11 @@ Thus neutral equality is one global quadratic cancellation.
 
 # 11. Neutral-branch theorem boundary
 
-Let \(\widetilde k\) be the zero extension of a compact-window neutral mode.
+Let $\widetilde k$ be the zero extension of a compact-window neutral mode.
 
 The explicit operator is
 
-\[
+```math
 \boxed{
 \mathcal W_c^{\rm ext}
 =
@@ -945,25 +945,25 @@ The explicit operator is
 +
 \mathcal R_{\rm pole}.
 }
-\]
+```
 
 The arithmetic theorem package determines its order and finite translation structure.
 
 What it does **not** determine is whether
 
-\[
+```math
 \mathcal W_c^{\rm ext}\widetilde k
-\]
+```
 
 must vanish on a nontrivial exterior collar, or whether the finite arithmetic shifts can cancel the exterior archimedean tail.
 
 That is exactly the downstream interface
 
-\[
+```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
-\]
+```
 
 ---
 
@@ -975,10 +975,10 @@ The explicit-formula attachment is now normalized.
 
 Established:
 
-\[
+```math
 \boxed{
 \begin{aligned}
-\mathbf1^Tv=0
+\mathbf{1}^Tv=0
 &\Longrightarrow
 R_v(z)=O(z^{-2})\\
 &\Longrightarrow
@@ -989,7 +989,7 @@ R_v(z)=O(z^{-2})\\
 \text{weighted completed-}\Xi\text{ next jet}.
 \end{aligned}
 }
-\]
+```
 
 Adaptive cancellation cannot produce an independent prime signal because the exact explicit formula co-adapts.
 
@@ -999,21 +999,21 @@ The first unproved statement is actual-zeta control/exclusion of that near next-
 
 Established:
 
-\[
+```math
 \boxed{
 \text{fixed support}
 \Longrightarrow
 \text{finitely many prime translations},
 }
-\]
+```
 
 and
 
-\[
+```math
 \boxed{
 \Psi_c(t)=\log|t|+O_c(1).
 }
-\]
+```
 
 Hence the operator is logarithmic order with only bounded/order-zero arithmetic translations.
 
@@ -1037,28 +1037,28 @@ The theorem inventory indicates that the required specialization outputs have no
 
 Therefore:
 
-\[
+```math
 \boxed{
 \textbf{H1-P2 — ZETA-WEIL SPECIALIZATION: COMPLETE.}
 }
-\]
+```
 
 ---
 
 # Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P3.0 / NEGATIVE DEFECT MORPHOLOGY THEOREM}
 }
-\]
+```
 
 H1-P3 should no longer discover ingredients.
 
 It should package the already established chains into exact morphology theorems, starting with the negative branch and terminating explicitly at
 
-\[
+```math
 \texttt{AZ-NEXTJET-LOC}
-\]
+```
 
 without attempting to solve that interface.

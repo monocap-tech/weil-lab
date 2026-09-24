@@ -7,105 +7,105 @@ The selected/background problem closes to a recursive finite-index screening cal
 
 Let
 
-\[
-K_-=M\oplus B.
-\]
+```math
+K_{-}=M\oplus B.
+```
 
 Then
 
-\[
+```math
 D_{\rm full}
 =
-S_+S_+^*
+S_{+}S_{+}^{*}
 -
-S_MS_M^*
+S_MS_M^{*}
 -
-S_BS_B^*.
-\]
+S_BS_B^{*}.
+```
 
 The exact selected/background identity is
 
-\[
+```math
 \boxed{
 \langle D_{\rm full}h,h\rangle
 =
 \langle D_Mh,h\rangle
 -
-\|S_B^*h\|^2.
+\|S_B^{*}h\|^2.
 }
-\]
+```
 
 Hence selected negativity always survives in the full system, while full negativity does not preserve selected-sector custody.
 
-If \(\dim M=m\),
+If $\dim M=m$,
 
-\[
+```math
 \boxed{
-\operatorname{ind}_-(D_M)\le m.
+\operatorname{ind}_{-}(D_M)\le m.
 }
-\]
+```
 
 If the background is contractively screenable,
 
-\[
-S_B=-S_+X_B,
+```math
+S_B=-S_{+}X_B,
 \qquad
 \|X_B\|\le1,
-\]
+```
 
 then the residual budget is
 
-\[
-R_B=I-X_BX_B^*
-\]
+```math
+R_B=I-X_BX_B^{*}
+```
 
 and
 
-\[
+```math
 \boxed{
 D_{\rm full}
 =
-S_+R_BS_+^*
+S_{+}R_BS_{+}^{*}
 -
-S_MS_M^*.
+S_MS_M^{*}.
 }
-\]
+```
 
 Thus background elimination returns the problem to the same defect calculus with effective positive synthesis
 
-\[
-S_{\rm eff}=S_+R_B^{1/2}.
-\]
+```math
+S_{\rm eff}=S_{+}R_B^{1/2}.
+```
 
-For a fixed finite selected sector with reduced residual screening map \(Y\),
+For a fixed finite selected sector with reduced residual screening map $Y$,
 
-\[
+```math
 \boxed{
-\operatorname{ind}_-
+\operatorname{ind}_{-}
 =
 \#\{\sigma_j(Y)>1\},
 }
-\]
+```
 
 and
 
-\[
+```math
 \boxed{
 \operatorname{nul}_J
 =
 \#\{\sigma_j(Y)=1\}.
 }
-\]
+```
 
 The main correction from H1-P1.0 is therefore:
 
-\[
+```math
 \boxed{
 \text{fixed finite-sector critical screening}
 \Longrightarrow
 \text{actual neutral mode}.
 }
-\]
+```
 
 The non-attained approximate-neutral boundary requires an infinite-dimensional or moving limiting mechanism.
 
@@ -129,8 +129,8 @@ The pass also isolates two nonlocal effects:
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P1.2 / SUPPORT FILTRATION AND PERSISTENCE LIMITS}
 }
-\]
+```

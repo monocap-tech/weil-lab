@@ -7,9 +7,9 @@ The attained-neutral fixed-packet branch is now packaged.
 
 Start from a fixed finite selected packet and a critical right-approaching sequence
 
-\[
+```math
 [y_n,y_n]_J\to0.
-\]
+```
 
 Fixed-sector compactness gives either:
 
@@ -20,41 +20,41 @@ P3.1 concerns only the second case.
 
 Assume the finite-exception neutral realization
 
-\[
-C_c^*C_cu=u,
+```math
+C_c^{*}C_cu=u,
 \qquad
-C_cu=P_c^*k,
+C_cu=P_c^{*}k,
 \qquad
 N_c=-P_cC_c.
-\]
+```
 
 Then
 
-\[
-N_c^*k=-u
-\]
+```math
+N_c^{*}k=-u
+```
 
 and
 
-\[
+```math
 \boxed{
 W_ck=0,
 \qquad
-W_c=P_cP_c^*-N_cN_c^*.
+W_c=P_cP_c^{*}-N_cN_c^{*}.
 }
-\]
+```
 
 Thus the coefficient neutral relation is an actual physical compact-window Weil null mode.
 
-At fixed support \(c\), the geometric explicit formula contains only finitely many prime-power shifts:
+At fixed support $c$, the geometric explicit formula contains only finitely many prime-power shifts:
 
-\[
+```math
 \log n<2c.
-\]
+```
 
 The physical operator species is
 
-\[
+```math
 \mathcal W_c^{\rm ext}
 =
 \mathcal A_\infty
@@ -64,29 +64,29 @@ The physical operator species is
 (\tau_{\log n}+\tau_{-\log n})
 +
 \mathcal R_{\rm pole}.
-\]
+```
 
 Its symbol obeys
 
-\[
+```math
 \boxed{
 \Psi_c(t)=\log|t|+O_c(1).
 }
-\]
+```
 
 Hence its natural form domain is logarithmic.
 
 Finite translations do not bootstrap this to positive Sobolev/quasianalytic regularity, and the neutral equality is global rather than termwise.
 
-The remaining question is exactly whether the zero extension \(\widetilde k\) has global Weil output vanishing on a nontrivial exterior collar.
+The remaining question is exactly whether the zero extension $\widetilde k$ has global Weil output vanishing on a nontrivial exterior collar.
 
 ## Stop line
 
-\[
+```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
-\]
+```
 
 No answer to that support theorem is imported into H1-P3.1.
 
@@ -102,8 +102,8 @@ No answer to that support theorem is imported into H1-P3.1.
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P3.2 / NONCOMPACT BACKGROUND MORPHOLOGY THEOREM}
 }
-\]
+```
