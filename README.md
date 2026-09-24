@@ -51,12 +51,15 @@ boundary is deliberately before RH closure.
 | H1-P4 | Proof audit and theorem normalization | **Active** |
 | H1-P5 | Public mathematical package | Pending |
 
-Within H1-P4, source pinning is complete and the current cursor is
-**H1-P4.2 / internal proof audit**. Stable public theorem IDs and the
-dependency/source audit are canonical in the
+Within H1-P4, source pinning, the internal proof audit, and the composite
+morphology audit are complete. The current cursor is
+**H1-P4.4 / examples and sharpness audit**. Stable public theorem IDs and the
+audit surfaces are canonical in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
-[Dependency Audit](docs/DEPENDENCY_AUDIT.md), and
-[Imported Source Pins](docs/IMPORTED_SOURCE_PINS.md).
+[Dependency Audit](docs/DEPENDENCY_AUDIT.md),
+[Imported Source Pins](docs/IMPORTED_SOURCE_PINS.md),
+[Internal Proof Audit](docs/INTERNAL_PROOF_AUDIT.md), and
+[Composite Morphology Audit](docs/COMPOSITE_MORPHOLOGY_AUDIT.md).
 
 Project terms such as **horizon**, **phase**, **standing**, **interface**,
 **custody**, and **screening** are fixed in the
