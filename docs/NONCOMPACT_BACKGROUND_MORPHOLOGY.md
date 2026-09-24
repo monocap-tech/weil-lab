@@ -196,11 +196,13 @@ This is the coefficient-custody mechanism behind finite-exception compactness.
 
 ## P3-B2 — Moving-sector escape
 
-Suppose instead that for every fixed finite coordinate block,
+Suppose instead that for the full coefficient exhaustion, every fixed finite coordinate block vanishes:
 
 ```math
 \boxed{
-Q_Rw_n\to0.
+Q_Rw_n\to0
+\qquad
+\text{for every fixed }R.
 }
 ```
 
@@ -230,7 +232,7 @@ while
 
 and no nonzero limiting coefficient relation survives.
 
-This is the **moving-sector escape** morphology.
+This is the **full coefficient moving-sector escape** morphology. Escape of the selected negative coordinates alone is not enough to conclude (w_nightharpoonup0) if some positive coefficient block remains anchored.
 
 **Standing:** PROVED as a Hilbert-space compactness classification; realized explicitly by WD-E5 and the toy compact diagonal model.
 
@@ -300,11 +302,17 @@ Therefore the fixed selected packet supplies an automatic finite coordinate anch
 
 ## P3-B3 — Fixed-packet custody theorem
 
-For a fixed finite selected packet, selected negative mass cannot escape every finite coordinate block.
+For a fixed finite selected packet, any sequence satisfying
 
-Consequently, the moving-sector morphology P3-B2 is impossible **inside one fixed packet**.
+[
+limsup_n|u_n|>0
+]
 
-Any nonpersistent selected zero-edge behavior must instead come from changing the selected packet itself or from replacing the fixed finite sector by an infinite selected sector.
+has a subsequence on which the selected negative coordinate converges strongly to a nonzero (uin M_Pi).
+
+Consequently, **full coefficient** moving-sector escape P3-B2 is impossible on any fixed-packet branch whose selected negative norm stays bounded away from zero.
+
+Any loss of selected custody of that type must instead come from changing the selected packet, replacing it by an infinite selected sector, or allowing the selected negative norm itself to vanish.
 
 **Dependencies:** WD-C3, WD-C4, P3-B1.
 
@@ -579,7 +587,21 @@ b_n\to b
 
 strongly.
 
-Then the normalized full coefficient vectors converge strongly in all negative coordinates to
+Then the selected negative coordinate and the unselected negative background converge strongly,
+
+```math
+u_n\to u,
+\qquad
+b_n\to b,
+```
+
+while the positive coordinate generally converges only weakly,
+
+```math
+a_n\rightharpoonup a.
+```
+
+Thus the normalized full coefficient vectors have the fixed weak limit
 
 ```math
 \boxed{
@@ -588,6 +610,8 @@ Y_{\rm full}
 (a,u,b).
 }
 ```
+
+with strong convergence on the entire negative sector.
 
 Its signature is
 
@@ -600,7 +624,7 @@ Its signature is
 }
 ```
 
-Thus a genuine fixed full-divisor negative ray survives.
+Thus a fixed full-divisor negative **weak limit** survives. Strong convergence of the entire coefficient vector requires the additional hypothesis (a_n	o a) strongly.
 
 ---
 
@@ -722,7 +746,7 @@ is norm-unbounded or bounded/non-tail-tight.
 
 The selected morphology remains valid, while the full-divisor coefficient vector fails strong compactness.
 
-### M3c — fixed full-divisor ray
+### M3c — fixed full-divisor negative weak limit
 
 The background is bounded and tail-tight, so
 
@@ -730,7 +754,7 @@ The background is bounded and tail-tight, so
 b_n\to b
 ```
 
-strongly and a fixed full negative ray survives.
+strongly and a fixed full negative weak limit survives. Full strong coefficient convergence requires positive-coordinate compactness as an additional hypothesis.
 
 ---
 
@@ -765,7 +789,7 @@ Once a fixed selected negative ray has been anchored, the normalized unselected 
 
 The first two are background-escape morphologies.
 
-The third produces a fixed full-divisor negative ray.
+The third produces a fixed full-divisor negative weak limit with strong convergence on the negative sector; full strong convergence requires an additional positive-coordinate compactness hypothesis.
 
 Background escape cannot erase the already anchored selected negative ray.
 
@@ -818,7 +842,7 @@ Together they classify:
 \text{fixed attained-neutral persistence}\\
 \text{moving selected-sector escape}\\
 \text{unselected-background escape}\\
-\text{fixed full-divisor negative convergence}.
+\text{fixed full-divisor negative weak limit}.
 \end{array}
 }
 ```
