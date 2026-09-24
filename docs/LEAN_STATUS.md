@@ -19,7 +19,7 @@ This file records formal verification separately from mathematical standing and 
 | WD-T26 | \`WeilDefect.wd_t26_finite_pair_zero_moment\` | LEAN-IN-PROGRESS |
 | WD-X03 | \`WeilDefect.wd_x03_individual_not_compositional\` | LEAN-IN-PROGRESS |
 | WD-X04 | \`WeilDefect.wd_x04_shorted_covariance_identity\` | LEAN-IN-PROGRESS |
-| WD-X07 | \`WeilDefect.wd_x07_response_identity\` | LEAN-IN-PROGRESS |
+| WD-X07 | WeilDefect.wd_x07_response_identity + WeilDefect.wd_x07_real_response_formula + WeilDefect.wd_x07_scaled_response_tendsto_neg_one | LEAN-CERTIFIED |
 
 The statuses above become LEAN-CERTIFIED only after the pinned CI build succeeds.
 
@@ -118,3 +118,52 @@ The run passed:
 - repository unfinished-proof/project-axiom rejection.
 
 No other stable theorem ID is promoted by this run.
+
+
+## WD-X07 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-X07: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.wd_x07_response_identity;
+- WeilDefect.wd_x07_real_response_formula;
+- WeilDefect.wd_x07_scaled_response_tendsto_neg_one.
+
+The certificate proves the exact two-point rational identity and an explicit
+sharpness witness with nonzero inverse-square leading coefficient.
+
+The current theorem file blob
+
+\[
+\texttt{83196783b21e40eee21ca74c12b3b8094c2af391}
+\]
+
+is identical to the blob checked successfully by GitHub Actions run
+
+\[
+\boxed{
+\texttt{35951096357}.
+}
+\]
+
+That run checked repository commit
+
+\[
+\texttt{e9f158d3c8fb5b85494d08931d62cddfc8d4a534}
+\]
+
+under the pinned Lean 4.34.0 / mathlib v4.34.0 environment and passed the
+unfinished-proof/project-axiom gate.
+
+A later dedicated WD-X07 rerun was also launched for redundant single-target
+confirmation; certification does not depend on it because the exact current
+Lean source blob is already kernel-checked.
+
+No other stable theorem ID is promoted by this certificate.
