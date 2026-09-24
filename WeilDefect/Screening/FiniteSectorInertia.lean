@@ -471,6 +471,57 @@ theorem wd_t11_negative_space_finrank
       (fun i : {i // i ∈ negativeIndices Y} => i.1)
       Subtype.val_injective
 
+/-- The full sigma > 1 count is itself realized by a negative witness. -/
+theorem wd_t11_negative_rank_count_exists
+    (Y : M →L[ℂ] Kpos) :
+    HasNegativeRank
+      (activeGraphQ Y)
+      Set.univ
+      (negativeIndices Y).card := by
+  let E :
+      EuclideanSpace ℂ (Fin (negativeIndices Y).card)
+        ≃L[ℂ] negativeSpectralSpace Y :=
+    ContinuousLinearEquiv.ofFinrankEq (by
+      simpa [wd_t11_negative_space_finrank Y])
+  let T :
+      EuclideanSpace ℂ (Fin (negativeIndices Y).card)
+        →L[ℂ] ActiveCarrier Y :=
+    (negativeSpectralSpace Y).subtypeL.comp E.toContinuousLinearMap
+  refine ⟨T, ?_, ?_⟩
+  · intro x
+    exact Set.mem_univ _
+  · intro x hx
+    have hxne : x ≠ 0 := by
+      intro hx0
+      rw [hx0, norm_zero] at hx
+      norm_num at hx
+    have hEne : E x ≠ 0 := by
+      intro hEx
+      apply hxne
+      apply E.injective
+      simpa using hEx
+    simpa [T, ContinuousLinearMap.comp_apply] using
+      wd_t11_negative_space_strict Y (E x) hEne
+
+/--
+The sigma > 1 count is the exact maximal finite negative rank: it is attained,
+and every other finite negative witness has no larger rank.
+-/
+theorem wd_t11_negative_index_exact
+    (Y : M →L[ℂ] Kpos) :
+    HasNegativeRank
+      (activeGraphQ Y)
+      Set.univ
+      (negativeIndices Y).card
+    ∧
+    ∀ n : ℕ,
+      HasNegativeRank (activeGraphQ Y) Set.univ n →
+        n ≤ (negativeIndices Y).card := by
+  exact ⟨
+    wd_t11_negative_rank_count_exists Y,
+    fun _ h => wd_t11_negative_rank_le_count Y h
+  ⟩
+
 /-- The neutral space is the eigenspace of the active covariance at eigenvalue one. -/
 noncomputable def neutralSpectralSpace (Y : M →L[ℂ] Kpos) :
     Submodule ℂ (ActiveCarrier Y) :=
