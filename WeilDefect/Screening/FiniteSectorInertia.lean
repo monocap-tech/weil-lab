@@ -104,7 +104,8 @@ theorem wd_t11_sigma_eq_one_iff_eigenvalue_eq_one
       ↔
     (activeAdjoint Y).toLinearMap.isSymmetric_adjoint_comp_self.eigenvalues rfl i = 1 := by
   have hs := wd_t11_sigma_sq_eq_eigenvalue Y i
-  have hnonneg := (activeAdjoint Y).toLinearMap.singularValues_nonneg i
+  have hnonneg : 0 ≤ activeSigma Y i := by
+    exact (activeAdjoint Y).toLinearMap.singularValues_nonneg i
   constructor
   · intro h
     rw [h] at hs
@@ -166,6 +167,8 @@ theorem wd_t11_neutral_space_finrank
       =
       neutralIndices Y := by
     ext i
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and,
+      neutralIndices]
     change
       ((W.toLinearMap.isSymmetric_adjoint_comp_self.eigenvalues rfl i : ℂ)
           = (1 : ℂ))
@@ -212,11 +215,15 @@ theorem wd_t11_neutral_space_graphQ_zero
   unfold activeGraphQ
   change ‖(a : ActiveCarrier Y)‖ ^ 2 -
     ‖W (a : ActiveCarrier Y)‖ ^ 2 = 0
+  have hnormc :
+      (((‖(a : ActiveCarrier Y)‖ ^ 2 : ℝ) : ℂ))
+        =
+      (((‖W (a : ActiveCarrier Y)‖ ^ 2 : ℝ) : ℂ)) := by
+    simpa only [inner_self_eq_norm_sq_to_K] using hinner
   have hnorm :
       ‖(a : ActiveCarrier Y)‖ ^ 2
         = ‖W (a : ActiveCarrier Y)‖ ^ 2 := by
-    have hre := congrArg Complex.re hinner
-    simpa [inner_self_eq_norm_sq_to_K] using hre
+    exact_mod_cast hnormc
   exact sub_eq_zero.mpr hnorm
 
 /-- Each sigma > 1 basis direction is strictly negative. -/
