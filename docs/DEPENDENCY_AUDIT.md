@@ -543,9 +543,9 @@ This closes the principal circularity audit at the dependency-graph level.
 
 The next audit passes should proceed in this order.
 
-## P4.1 — Imported source pinning
+## P4.1 — Imported source pinning — COMPLETE
 
-Pin EXT-1 through EXT-5 to exact source statements/equations and normalize support/Fourier conventions.
+Exact pins are recorded in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
 
 ## P4.2 — Internal proof audit
 
@@ -586,6 +586,25 @@ No mathematical theorem has been added in this pass.
 
 \[
 \boxed{
-\texttt{H1-P4.1 / IMPORTED SOURCE PINNING}
+\texttt{H1-P4.2 / INTERNAL PROOF AUDIT}
 }
 \]
+
+
+---
+
+# 10. P4.1 source-pin disposition
+
+The following external inputs are now SOURCE-PINNED:
+
+- Douglas (1966), Theorem 1;
+- Bombieri (2000), Theorem 8;
+- Bombieri (2000), Lemma 10;
+- Bombieri (2000), equation (7.7) in the proof of Theorem 6;
+- Titchmarsh (1986), Theorem 9.2 / equation (9.2.1);
+- Zhu (2026), equations (2)–(3);
+- DLMF 5.11.2.
+
+Exact conventions are recorded in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
+
+Source pinning does not complete the internal proof audit.
