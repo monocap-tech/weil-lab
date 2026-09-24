@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T07 | WeilDefect.wd_t07_selected_full_identity + WeilDefect.wd_t07_selected_negative_implies_full + WeilDefect.WDT07.wd_t07_full_le_selected + WeilDefect.WDT07.wd_t07_negative_rank_custody + WeilDefect.WDT07.wd_t07_full_negative_without_selected_negative + WeilDefect.WDT07.wd_t07_selected_background_monotonicity_and_custody | LEAN-CERTIFIED |
 | WD-T06 | WeilDefect.WDT06.wd_t06_truncated_inner_identity + WeilDefect.WDT06.wd_t06_quadratic_mono + WeilDefect.WDT06.wd_t06_defect_mono + WeilDefect.WDT06.wd_t06_defect_le_full + WeilDefect.WDT06.wd_t06_defect_strong_tendsto + WeilDefect.WDT06.wd_t06_quadratic_tendsto + WeilDefect.WDT06.wd_t06_negative_rank_antitone + WeilDefect.WDT06.wd_t06_monotone_positive_screening | LEAN-CERTIFIED |
 | WD-T05 | WeilDefect.wd_t05_rank_one_covariance + WeilDefect.WDT05.wd_t05_defect_rank_one + WeilDefect.WDT05.wd_t05_signed_factor_iff_vector + WeilDefect.WDT05.wd_t05_covariance_iff_unit_vector + WeilDefect.WDT05.wd_t05_physical_nonnegative_iff_unit_vector + WeilDefect.WDT05.wd_t05_analysis_nonnegative_iff_unit_vector + WeilDefect.WDT05.wd_t05_rank_one_specialization | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T04 | WeilDefect.WDT04.wd_t04_range_defect_no_exact_screening + WeilDefect.WDT04.wd_t04_range_defect_negative + WeilDefect.WDT04.wd_t04_over_budget_negative + WeilDefect.WDT04.wd_t04_strict_screened_lower_bound + WeilDefect.WDT04.wd_t04_attained_critical_neutral + WeilDefect.WDT04.wd_t04_nonattained_critical_positive + WeilDefect.WDT04.wd_t04_critical_approximate_neutral + WeilDefect.WDT04.wd_t04_complete_reduced_taxonomy | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -760,6 +761,92 @@ The certified theorem source blob is:
 
 \[
 \texttt{b4424d28e14466275f593e58683170d9e952b134}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- single-module Lake build;
+- unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
+
+
+## WD-T07 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T07: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.wd_t07_selected_full_identity;
+- WeilDefect.wd_t07_selected_negative_implies_full;
+- WeilDefect.WDT07.wd_t07_full_le_selected;
+- WeilDefect.WDT07.wd_t07_negative_rank_custody;
+- WeilDefect.WDT07.wd_t07_converse_failure;
+- WeilDefect.WDT07.wd_t07_full_negative_without_selected_negative;
+- WeilDefect.WDT07.wd_t07_selected_background_monotonicity_and_custody.
+
+Lean verifies the exact quadratic identity
+
+\[
+q_{\rm full}(h)
+=
+q_M(h)-\|S_B^*h\|^2,
+\]
+
+and therefore the pointwise form order
+
+\[
+q_{\rm full}(h)\le q_M(h).
+\]
+
+It certifies the negative-index custody statement in finite-rank-spectrum form:
+for every \(k\), any \(k\)-dimensional negative witness for the selected
+quadratic form remains a \(k\)-dimensional negative witness for the full
+quadratic form after arbitrary negative-background aggregation.
+
+The converse is disproved internally by an explicit one-dimensional complex
+example: selected positive and negative synthesis maps are zero while the
+background synthesis is the identity.  At \(h=1\), the selected quadratic
+value is zero but the full quadratic value is strictly negative.  Thus full
+aggregate negativity does not identify the selected sector as the owner of the
+defect.
+
+No imported theorem premise is used by WD-T07.
+
+The first dedicated attempt exposed only a simplifier gap for the adjoint of
+the identity map; this was repaired explicitly using mathlib's
+`ContinuousLinearMap.adjoint_id`.  No theorem statement changed.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.BackgroundCustody}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{35968741697}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{48f20dfa63e5b36bd5786a0fc9fe23db9e63e21a}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{8a0acaef36c3c10df5f0ec6d7a692db1b420f32a}.
 \]
 
 The run passed:
