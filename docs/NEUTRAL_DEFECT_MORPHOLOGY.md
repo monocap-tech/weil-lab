@@ -178,9 +178,11 @@ N_c=-P_cC_c.
 }
 ```
 
-These are the finite-exception neutral hypotheses inherited from the endpoint reduction.
+These are finite-exception neutral hypotheses inherited from the endpoint reduction.
 
-They are not consequences of abstract criticality alone.
+For the arithmetic/operator part of P3.1, assume in addition that this physical realization is identified with the compact-window Weil form used in H1-P2.2: \(k\) belongs to its form domain and the algebraic null equation below is the endpoint realization of that same compact-window form.
+
+This carrier-identification hypothesis is not a consequence of abstract criticality alone.
 
 ---
 
@@ -456,10 +458,10 @@ Translations preserve ordinary Sobolev and logarithmic Fourier norms:
 
 Thus the finite prime-delay operator does not increase differential order.
 
-The compact-window neutral equation therefore does not, from the retained inputs alone, imply
+The compact-window logarithmic form estimate therefore supplies no **uniform coercive control** of a positive Sobolev norm
 
 ```math
-|D|^\varepsilon k\in L^2
+\|k\|_{H^\varepsilon}
 ```
 
 for any
@@ -470,11 +472,13 @@ for any
 
 Repeated substitution only creates further translated copies at the same order.
 
+This statement does not assert that a particular neutral mode can never possess additional \(H^\varepsilon\) regularity from some separate theorem.
+
 ---
 
 ## P3-U5 — No free quasianalyticity theorem
 
-The neutral equation supplies logarithmic regularity but no automatic positive-Sobolev or quasianalytic bootstrap.
+The retained operator estimates supply logarithmic form control but no uniform positive-Sobolev coercive estimate:
 
 ```math
 \boxed{
@@ -482,15 +486,15 @@ The neutral equation supplies logarithmic regularity but no automatic positive-S
 +
 \log|D|
 \not\Rightarrow
-H^\varepsilon
+\text{a uniform }H^\varepsilon\text{ bound}
 }
 ```
 
-without an additional theorem.
+for any \(\varepsilon>0\) without an additional theorem.
 
 **Dependencies:** ZW2-T8.
 
-**Standing:** PROVED as an operator-order statement.
+**Standing:** PROVED as the audited non-coercivity/order statement.
 
 ---
 
@@ -552,19 +556,19 @@ but does not split into termwise prime, pole, and archimedean vanishing.
 
 Let
 
-```math
+\[
 \widetilde k
-```
+\]
 
-denote the zero extension of $k$ outside
+denote the zero extension of \(k\) outside
 
-```math
+\[
 [-c,c].
-```
+\]
 
-The endpoint null-mode identity gives the interior equation
+The endpoint null-mode identity gives the interior endpoint equation
 
-```math
+\[
 \boxed{
 P_{[-c,c]}
 \mathcal W_c^{\rm ext}
@@ -572,60 +576,112 @@ P_{[-c,c]}
 =
 0
 }
-```
+\]
 
-in the retained operator/form realization.
+in the retained compact-window operator/form realization.
 
-The finite-exception MTP-2 question is not whether an approximate endpoint relation exists.
+For a strict right enlargement, the active prime set is governed by
 
-The fixed vector already exists.
+\[
+\log n<2t.
+\]
 
-The question is whether the **same fixed neutral relation** persists on a strictly larger interval.
+Define the **right-limit arithmetic operator**
 
-Equivalently, one asks whether the exterior Weil output
+\[
+\boxed{
+\mathcal W_{c+}^{\rm ext}
+:=
+\mathcal A_\infty
+-
+\sum_{\log n\le 2c}
+\frac{\Lambda(n)}{\sqrt n}
+\left(
+\tau_{\log n}
++
+\tau_{-\log n}
+\right)
++
+\mathcal R_{\rm pole}.
+}
+\]
 
-```math
+If \(c\) is not a prime-power threshold, then
+
+\[
+\mathcal W_{c+}^{\rm ext}
+=
+\mathcal W_c^{\rm ext}.
+\]
+
+If \(2c=\log n_0\) for one or more prime powers, the strict right enlargement activates exactly those finitely many equality-threshold translations, so
+
+\[
+\mathcal W_{c+}^{\rm ext}
+\ne
+\mathcal W_c^{\rm ext}
+\]
+
+by that finite threshold correction.
+
+The finite-exception persistence question is therefore not merely whether the endpoint output of \(\mathcal W_c^{\rm ext}\) has a collar.
+
+It is whether the **same fixed coefficient/physical relation** satisfies the correct right-limit compact-window equation after this finite threshold convention is applied.
+
+Away from thresholds, this reduces to asking whether
+
+\[
 \mathcal W_c^{\rm ext}\widetilde k
-```
+\]
 
-vanishes on a nontrivial collar adjacent to the support boundary, subject to the unit-gain/self-duality constraints above.
+vanishes on a nontrivial exterior collar.
 
-Away from a prime-power threshold, the active finite translation operator is locally unchanged.
+At a threshold, the corresponding statement uses
 
-At a threshold, the right enlargement introduces only the corresponding finite new arithmetic term before the active set stabilizes again.
+\[
+\mathcal W_{c+}^{\rm ext}\widetilde k
+\]
 
-Thus the problem remains a finite-delay support question.
+instead.
 
 ---
 
 ## P3-U7 — Neutral null-extension reduction
 
-Every finite-exception unit-gain neutral branch reduces to the following support problem:
+Every finite-exception unit-gain neutral branch reduces to a threshold-aware fixed-vector support problem.
 
-```math
+At the endpoint,
+
+\[
 \boxed{
 P_{[-c,c]}
 \mathcal W_c^{\rm ext}\widetilde k=0,
 \qquad
-k\ne0,
+k\ne0.
 }
-```
+\]
 
-with
+For strict right persistence, the relevant local operator is
 
-```math
-\mathcal W_c^{\rm ext}
+\[
+\boxed{
+\mathcal W_{c+}^{\rm ext}
 =
 \text{logarithmic-order archimedean operator}
 +
-\text{finitely many arithmetic translations}
+\text{the finite right-limit prime translations}
 +
 \text{finite-rank pole term}.
-```
+}
+\]
 
-Exact persistence to a larger support requires a nontrivial exterior collar on which the corresponding global Weil output continues to vanish, with the finite threshold convention included when necessary.
+If \(c\) is not a threshold, \(\mathcal W_{c+}^{\rm ext}=\mathcal W_c^{\rm ext}\).
 
-**Standing:** DERIVED CONDITIONAL on P3-U2.
+If \(c\) is a threshold, the right-limit operator contains the finitely many equality-threshold prime terms absent from the endpoint strict-\(<\) sum.
+
+Exact persistence to a larger support requires the same fixed relation to satisfy this right-limit equation on a nontrivial enlarged interval.
+
+**Standing:** DERIVED CONDITIONAL on P3-U2 and on the compact-window carrier-identification hypothesis.
 
 ---
 
@@ -674,7 +730,8 @@ Assume:
    ```math
    C_cu=P_c^{*}k;
    ```
-7. $N_c=-P_cC_c$.
+7. $N_c=-P_cC_c$;
+8. the physical realization above is the same compact-window Weil form/operator realization used in H1-P2.2, with (k) in its form domain.
 
 Then:
 
@@ -708,11 +765,11 @@ Its natural form domain is logarithmic rather than positive-Sobolev.
 
 ### Rigidity limit
 
-Neither the null equality nor the finite translation structure supplies a free quasianalytic/positive-Sobolev continuation theorem.
+Neither the null equality nor the finite translation structure supplies a uniform positive-Sobolev coercive estimate or, by itself, a quasianalytic continuation theorem.
 
 ### Persistence reduction
 
-The remaining fixed-vector question is exactly whether the zero-extended neutral mode can satisfy the same global Weil equation on a nontrivial exterior collar.
+The remaining fixed-vector question is whether the zero-extended neutral mode satisfies the correct **right-limit** compact-window equation on a nontrivial enlarged interval; away from prime thresholds this is the same operator, while at a threshold a finite equality-threshold correction is required.
 
 ---
 
@@ -728,22 +785,24 @@ The theorem package ends at
 
 The interface asks:
 
-> For an actual nonzero finite-exception unit-gain neutral mode $k$ with
+> For an actual nonzero finite-exception unit-gain neutral mode (k) satisfying the endpoint equation
 >
-> ```math
+> [
 > P_{[-c,c]}
-> \mathcal W_c^{\rm ext}\widetilde k
+> mathcal W_c^{m ext}widetilde k
 > =
 > 0,
-> ```
+> ]
 >
-> must
+> does the same fixed relation satisfy the correct right-limit equation for some strict enlargement?
 >
-> ```math
-> \mathcal W_c^{\rm ext}\widetilde k
-> ```
+> Away from a prime threshold this asks whether
 >
-> vanish on a nontrivial exterior collar, or can it activate immediately outside the old support?
+> [
+> mathcal W_c^{m ext}widetilde k
+> ]
+>
+> vanishes on a nontrivial exterior collar. At a threshold, the same question uses the finitely corrected right-limit operator (mathcal W_{c+}^{m ext}).
 
 The answer is not assumed in H1-P3.1.
 
