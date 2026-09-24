@@ -48,7 +48,7 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 | WD-T10 | WD-B4 | Contractively screened background reduces to residual positive synthesis | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
 | WD-T11 | WD-B5 | Finite-sector inertia/nullity counted by singular values of residual screening map | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
 | WD-T12 | WD-B6 | Sequential background consumption is closed under the defect calculus | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
-| WD-T13 | WD-B7 | Complement elimination replaces direct compression by Schur/shorted covariance in the strictly positive setting | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
+| WD-T13 | WD-B7 | Complement elimination replaces direct compression by Schur/shorted covariance in the uniformly positive setting | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
 | WD-T14 | WD-B8 | Finite positive shadows preserve sign but not analysis-space admissibility | INTERNAL-PROOF | P4-AUDIT-PASSED | [Restricted-Channel Transfer](RESTRICTED_CHANNEL_TRANSFER.md) |
 | WD-T15 | WD-C1 + WD-C2 | Right-limit projection convergence and gap-space duality | INTERNAL-PROOF | P4-AUDIT-PASSED | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
 | WD-T16 | WD-C3 + WD-C5 | Fixed finite negative sector forces a nonzero persistent nonpositive/negative right-limit ray | INTERNAL-PROOF | P4-AUDIT-PASSED | [Support Filtration](SUPPORT_FILTRATION_PERSISTENCE.md) |
