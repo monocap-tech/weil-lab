@@ -108,6 +108,8 @@ Psi_c(t)=log|t|+O_c(1).
 
 The project has now entered **H1-P3: defect morphology theorem**.
 
+H1-P3.0 is complete: the negative branch is packaged in [Negative Defect Morphology Theorem](docs/NEGATIVE_DEFECT_MORPHOLOGY.md). It isolates the exact endpoint-jump, normalized-negativity, zero-moment, far-tail, and next-jet morphology without assuming the downstream actual-zeta exclusion.
+
 ## Current theorem picture
 
 | Component | Current standing |
@@ -212,6 +214,7 @@ The remaining problem is tracked as
 - [Zeta-Weil Specialization Map](docs/ZETA_WEIL_SPECIALIZATION_MAP.md) — exact mapping from abstract carriers to the zero-side and arithmetic layers.
 - [Quartet Channel and Residue Structure](docs/QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) — canonical pair geometry, finite inertia, zero moments, and compact synthesis.
 - [Explicit-Formula Arithmetic Attachment](docs/EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) — far-tail localization, completed-Ξ next jets, finite prime shifts, and logarithmic form order.
+- [Negative Defect Morphology Theorem](docs/NEGATIVE_DEFECT_MORPHOLOGY.md) — packaged fixed-packet negative endpoint morphology and stop line.
 - [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
