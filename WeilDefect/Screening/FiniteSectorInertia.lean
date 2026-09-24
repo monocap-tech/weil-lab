@@ -81,9 +81,11 @@ theorem wd_t11_norm_one_attains_neutral
   have hWne : W ≠ 0 := by
     intro hzero
     rw [hzero] at hWnorm
-    have hfalse : (0 : ℝ) = 1 := by
-      simpa using hWnorm
-    norm_num at hfalse
+    have hzeroNorm :
+        ‖(0 : ActiveCarrier Y →L[ℂ] M)‖ = 0 := norm_zero
+    have hfalse : (0 : ℝ) = 1 :=
+      hzeroNorm.symm.trans hWnorm
+    exact zero_ne_one hfalse
   have hnotSub : ¬ Subsingleton (ActiveCarrier Y) := by
     intro hsub
     apply hWne
@@ -278,6 +280,7 @@ theorem wd_t11_graphQ_diagonal
                 _ = _ := by
                   rw [RCLike.mul_conj]
                   push_cast
+                  rfl
   have hnormW :
       ‖W a‖ ^ 2 =
         ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
@@ -296,6 +299,7 @@ theorem wd_t11_graphQ_diagonal
     simp only [inner_self_eq_norm_sq_to_K] at hc'
     refine Complex.ofReal_injective ?_
     push_cast
+    push_cast at hc'
     exact hc'
   unfold activeGraphQ
   rw [hnormA, hnormW]
