@@ -55,6 +55,28 @@ See [Restricted-Channel and Finite-Index Transfer](RESTRICTED_CHANNEL_TRANSFER.m
 
 ---
 
+## H1-P1.2 support-filtration theorem package
+
+| Label | Statement | Standing |
+| --- | --- | --- |
+| WD-C1 | Monotone analysis-space projections converge strongly to the right-limit projection | PROVED |
+| WD-C2 | Right-limit analysis space is the orthogonal complement of the limiting gap union | PROVED |
+| WD-C3 | Fixed finite negative sectors force a nonzero nonpositive right-limit ray | PROVED |
+| WD-C4 | Critical sequences give either a neutral right-limit vector or a stricter negative limit via positive-mass loss | PROVED |
+| WD-C5 | Uniform negative margin forces a persistent negative endpoint-jump vector | PROVED |
+| WD-C6 | New right-limit negative index is bounded by the endpoint-jump quotient dimension | PROVED |
+| WD-C7 | New endpoint vectors require representative-norm blow-up under bounded physical realization | PROVED |
+| WD-C8 | Boundary amplification cost diverges jointly as the endpoint and target accuracy are approached | PROVED |
+| WD-C9 | Vanishing coefficient amplitude becomes physical blow-up after normalization | PROVED |
+| WD-E5 | Moving finite sectors can lose every nonzero persistent ray | PROVED EXAMPLE |
+| WD-E6 | Positive-coordinate mass loss can strengthen criticality into strict negative persistence | PROVED EXAMPLE |
+
+The canonical statements and proofs are in [Support Filtration and Persistence Limits](SUPPORT_FILTRATION_PERSISTENCE.md).
+
+With WD-C1–C9, **H1-P1 is complete**. The next phase is H1-P2: zeta-Weil specialization.
+
+---
+
 ## 1. Finite negative-index theorem
 
 For finite symmetric zero sets, the finite Weil matrix has one negative direction per nonreal conjugate pair. In the two-quartet specialization used in the present program,
