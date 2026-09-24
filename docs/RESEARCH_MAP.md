@@ -27,7 +27,9 @@ Current position:
 \qquad
 \text{H1-P2 COMPLETE}
 \qquad
-\text{H1-P3 ACTIVE}.
+\text{H1-P3 COMPLETE}
+\qquad
+\text{H1-P4 ACTIVE}.
 }
 \]
 
@@ -485,13 +487,36 @@ and the corresponding compact-window operator has logarithmic principal order wi
 
 The unresolved fixed-vector support question is exactly \(\texttt{AZ-FIN-WEIL-NULL-EXTENSION}\).
 
+## H1-P3.2 disposition
+
+The remaining noncompact species are packaged in [Noncompact Background Morphology Theorem](NONCOMPACT_BACKGROUND_MORPHOLOGY.md).
+
+\[
+\boxed{
+\text{moving selected escape}
+\ne
+\text{unselected-background escape}.
+}
+\]
+
+The former can erase every selected weak limit. The latter cannot erase an already anchored fixed selected negative ray; it only prevents strong full-divisor convergence.
+
+Thus
+
+\[
+\boxed{
+\textbf{H1-P3 — DEFECT MORPHOLOGY THEOREM: COMPLETE.}
+\]
+
 ## Current cursor
 
 \[
 \boxed{
-\texttt{H1-P3.2 / NONCOMPACT BACKGROUND MORPHOLOGY THEOREM}
+\texttt{H1-P4.0 / THEOREM LEDGER AND DEPENDENCY AUDIT}
 }
 \]
+
+The next phase should add no new mathematical claims. It should normalize labels, dependencies, source boundaries, proof standing, and audit completeness.
 
 ---
 
