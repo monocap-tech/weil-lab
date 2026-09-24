@@ -44,7 +44,10 @@ theorem wd_t11_norm_activeScreen
   · apply ContinuousLinearMap.opNorm_le_bound Y (norm_nonneg (activeScreen Y))
     intro x
     have h := ContinuousLinearMap.le_opNorm (activeScreen Y) x
-    simpa [activeScreen] using h
+    change ‖((activeScreen Y x : ActiveCarrier Y) : Kpos)‖
+      ≤ ‖activeScreen Y‖ * ‖x‖ at h
+    change ‖Y x‖ ≤ ‖activeScreen Y‖ * ‖x‖
+    exact h
 
 /-- The adjoint active map has the same norm as the original selected screen. -/
 theorem wd_t11_norm_activeAdjoint
@@ -77,8 +80,9 @@ theorem wd_t11_norm_one_attains_neutral
     simpa [W] using (wd_t11_norm_activeAdjoint Y).trans hY
   have hWne : W ≠ 0 := by
     intro hzero
-    rw [hzero, norm_zero] at hWnorm
-    norm_num at hWnorm
+    have hfalse : (0 : ℝ) = 1 := by
+      simpa [hzero] using hWnorm
+    norm_num at hfalse
   have hnotSub : ¬ Subsingleton (ActiveCarrier Y) := by
     intro hsub
     apply hWne
@@ -93,7 +97,8 @@ theorem wd_t11_norm_one_attains_neutral
   obtain ⟨x : ActiveCarrier Y, hx⟩ := exists_ne (0 : ActiveCarrier Y)
   let u : ActiveCarrier Y := (‖x‖⁻¹ : ℂ) • x
   have hu : ‖u‖ = 1 := by
-    simp [u, norm_smul_inv_norm hx]
+    have hxnorm : ‖x‖ ≠ 0 := norm_ne_zero_iff.mpr hx
+    simp [u, norm_smul, hxnorm]
   have hsphere : (Metric.sphere (0 : ActiveCarrier Y) 1).Nonempty := by
     refine ⟨u, ?_⟩
     simpa [Metric.mem_sphere] using hu
@@ -103,10 +108,22 @@ theorem wd_t11_norm_one_attains_neutral
   have haNorm : ‖a‖ = 1 := by
     simpa [Metric.mem_sphere] using haS
   have hupper : ‖W‖ ≤ ‖W a‖ := by
-    apply W.opNorm_le_bound' (norm_nonneg (W a))
-    intro z hz
-    apply haMax
-    simpa [Metric.mem_sphere] using hz
+    apply W.opNorm_le_bound (norm_nonneg (W a))
+    intro z
+    by_cases hz0 : z = 0
+    · simp [hz0]
+    · let v : ActiveCarrier Y := (‖z‖⁻¹ : ℂ) • z
+      have hv : ‖v‖ = 1 := by
+        have hznorm : ‖z‖ ≠ 0 := norm_ne_zero_iff.mpr hz0
+        simp [v, norm_smul, hznorm]
+      have hvS : v ∈ Metric.sphere (0 : ActiveCarrier Y) 1 := by
+        simpa [Metric.mem_sphere] using hv
+      have hmax : ‖W v‖ ≤ ‖W a‖ := haMax hvS
+      have hzrep : (‖z‖ : ℂ) • v = z := by
+        simp [v, hz0]
+      rw [← hzrep, map_smul, norm_smul]
+      simpa [mul_comm] using
+        (mul_le_mul_of_nonneg_left hmax (norm_nonneg z))
   have hlower : ‖W a‖ ≤ ‖W‖ := by
     have h := W.le_opNorm a
     simpa [haNorm] using h
@@ -256,13 +273,14 @@ theorem wd_t11_graphQ_diagonal
                   =
                 _ at hcoord
               rw [hcoord]
-              simp [RCLike.inner_apply, Complex.normSq_eq_abs]
+              simp [RCLike.inner_apply, RCLike.mul_conj,
+                mul_assoc, mul_left_comm, mul_comm]
   have hnormW :
       ‖W a‖ ^ 2 =
         ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
           activeSigma Y i ^ 2 * ‖b.repr a i‖ ^ 2 := by
     have hc :
-        (((‖W a‖ ^ 2 : ℝ) : ℂ))
+        ((‖W a‖ : ℂ) ^ 2)
           =
         ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
           (((activeSigma Y i ^ 2 * ‖b.repr a i‖ ^ 2 : ℝ) : ℂ)) := by
@@ -341,7 +359,8 @@ theorem wd_t11_negative_rank_le_count
     have hd : x - y ≠ 0 := sub_ne_zero.mpr hne
     let u : EuclideanSpace ℂ (Fin n) := (‖x - y‖⁻¹ : ℂ) • (x - y)
     have hu : ‖u‖ = 1 := by
-      simp [u, norm_smul_inv_norm hd]
+      have hdnorm : ‖x - y‖ ≠ 0 := norm_ne_zero_iff.mpr hd
+      simp [u, norm_smul, hdnorm]
     have hCdiff : C (x - y) = 0 := by
       rw [map_sub, hxy, sub_self]
     have hCu : C u = 0 := by
@@ -378,20 +397,23 @@ theorem wd_t11_negative_space_coordinate_zero
           (Set.range (fun j : {j // j ∈ negativeIndices Y} =>
             activeEigenbasis Y j.1)) := by
     simpa [negativeSpectralSpace] using a.property
-  induction ha using Submodule.span_induction with
-  | mem x hx =>
-      obtain ⟨j, rfl⟩ := hx
-      have hij : i ≠ j.1 := by
-        intro h
-        apply hi
-        simpa [h] using j.2
-      simpa [hij] using
-        (orthonormal_iff_ite.mp (activeEigenbasis Y).orthonormal i j.1)
-  | zero => simp
-  | add x y _ _ hx hy =>
-      simp [inner_add_right, hx, hy]
-  | smul c x _ hx =>
-      simp [inner_smul_right, hx]
+  refine Submodule.span_induction
+    (p := fun x : ActiveCarrier Y =>
+      inner ℂ (activeEigenbasis Y i) x = 0)
+    ?_ ?_ ?_ ?_ ha
+  · intro x hx
+    obtain ⟨j, rfl⟩ := hx
+    have hij : i ≠ j.1 := by
+      intro h
+      apply hi
+      simpa [h] using j.2
+    simpa [hij] using
+      (orthonormal_iff_ite.mp (activeEigenbasis Y).orthonormal i j.1)
+  · simp
+  · intro x y hx hy
+    simp [inner_add_right, hx, hy]
+  · intro c x hx
+    simp [inner_smul_right, hx]
 
 /-- The whole negative spectral space, not just its basis rays, is strictly negative. -/
 theorem wd_t11_negative_space_strict
@@ -593,15 +615,12 @@ theorem wd_t11_neutral_space_graphQ_zero
   unfold activeGraphQ
   change ‖(a : ActiveCarrier Y)‖ ^ 2 -
     ‖W (a : ActiveCarrier Y)‖ ^ 2 = 0
-  have hnormc :
-      ((‖(a : ActiveCarrier Y)‖ : ℂ) ^ 2)
-        =
-      ((‖W (a : ActiveCarrier Y)‖ : ℂ) ^ 2) := by
-    simpa only [inner_self_eq_norm_sq_to_K] using hinner
   have hnorm :
       ‖(a : ActiveCarrier Y)‖ ^ 2
         = ‖W (a : ActiveCarrier Y)‖ ^ 2 := by
-    exact_mod_cast hnormc
+    have hinner' := hinner
+    simp only [inner_self_eq_norm_sq_to_K] at hinner'
+    exact_mod_cast hinner'
   exact sub_eq_zero.mpr hnorm
 
 /-- Each sigma > 1 basis direction is strictly negative. -/
