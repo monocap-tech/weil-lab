@@ -70,8 +70,13 @@ theorem wd_t01_defect_inner_identity
     (h : H) :
     inner ℂ (physicalDefect Spos Sneg h) h
       = ((physicalQ Spos Sneg h : ℝ) : ℂ) := by
-  simp [physicalDefect, physicalQ, coeffQ, analysisMap,
-    ContinuousLinearMap.adjoint_inner_left, inner_self_eq_norm_sq_to_K]
+  change
+    inner ℂ (Spos (Spos† h)) h - inner ℂ (Sneg (Sneg† h)) h
+      =
+    ((‖Spos† h‖ ^ 2 - ‖Sneg† h‖ ^ 2 : ℝ) : ℂ)
+  rw [← ContinuousLinearMap.adjoint_inner_right Spos (Spos† h) h]
+  rw [← ContinuousLinearMap.adjoint_inner_right Sneg (Sneg† h) h]
+  simp [inner_self_eq_norm_sq_to_K]
 
 /-- Nonnegativity on the physical carrier. -/
 def PhysicalNonnegative
@@ -135,7 +140,7 @@ def AnalysisHasNegativeRank
 /-- Orthonormal coordinate reconstruction from finitely many target vectors. -/
 noncomputable def reconstruct
     {E : Type*}
-    [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
     (n : ℕ)
     (v : Fin n → E) :
     EuclideanSpace ℂ (Fin n) →L[ℂ] E :=
@@ -144,18 +149,28 @@ noncomputable def reconstruct
 
 theorem reconstruct_basisValues
     {E : Type*}
-    [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
     (n : ℕ)
     (T : EuclideanSpace ℂ (Fin n) →L[ℂ] E) :
     reconstruct n (fun i => T (EuclideanSpace.basisFun (Fin n) ℂ i)) = T := by
+  let b := EuclideanSpace.basisFun (Fin n) ℂ
   ext x
   simp only [reconstruct, Finset.sum_apply, rankOne_apply]
-  rw [← T.map_sum]
-  exact congrArg T ((EuclideanSpace.basisFun (Fin n) ℂ).sum_repr' x)
+  calc
+    (∑ i : Fin n, inner ℂ (b i) x • T (b i))
+        =
+      ∑ i : Fin n, T (inner ℂ (b i) x • b i) := by
+        apply Finset.sum_congr rfl
+        intro i _
+        simp
+    _ = T (∑ i : Fin n, inner ℂ (b i) x • b i) := by
+        simp
+    _ = T x := by
+        rw [b.sum_repr']
 
 theorem continuous_reconstruct
     {E : Type*}
-    [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
     (n : ℕ) :
     Continuous (reconstruct (E := E) n) := by
   unfold reconstruct
@@ -191,8 +206,10 @@ theorem negativeMap_mem_nhds
             EuclideanSpace ℂ (Fin n) | q (z.1 z.2) < 0} := by
       exact isOpen_lt (hq.comp (by fun_prop)) continuous_const
     exact hopen.mem_nhds hxneg
-  have hunif :=
-    hsphere.eventually_forall_of_forall_eventually (x₀ := T) hlocal
+  have hunif :
+      ∀ᶠ S in 𝓝 T, ∀ x ∈ sphere, q (S x) < 0 :=
+    hsphere.eventually_forall_of_forall_eventually
+      (P := fun S x => q (S x) < 0) hlocal
   filter_upwards [hunif] with S hS
   intro x hx
   exact hS x (by simpa [sphere, Metric.mem_sphere, dist_eq_norm] using hx)
@@ -204,7 +221,7 @@ that set.
 -/
 theorem exists_reconstruct_mem_of_basis_mem_closure
     {E : Type*}
-    [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    [NormedAddCommGroup E] [NormedSpace ℂ E]
     (n : ℕ)
     (s : Set E)
     (T : EuclideanSpace ℂ (Fin n) →L[ℂ] E)
@@ -264,7 +281,9 @@ theorem wd_t01_analysis_to_physical_rank
     intro i
     exact hcarrier _
   obtain ⟨v, hvR, hvU⟩ :=
-    exists_reconstruct_mem_of_basis_mem_closure n R T hbasis hU
+    exists_reconstruct_mem_of_basis_mem_closure
+      (E := Coeff (Kpos := Kpos) (Kneg := Kneg))
+      n R T hbasis hU
   have hvRange : ∀ i, v i ∈ Set.range A := by
     intro i
     exact hvR i (Set.mem_univ i)
