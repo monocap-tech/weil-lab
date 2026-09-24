@@ -96,6 +96,24 @@ theorem wd_t11_graphQ_eigenvector
   change ‖b i‖ ^ 2 - ‖W (b i)‖ ^ 2 = _
   rw [hb, one_pow, hgram, wd_t11_sigma_sq_eq_eigenvalue Y i]
 
+/-- A singular value is critical exactly when its Gram eigenvalue is one. -/
+theorem wd_t11_sigma_eq_one_iff_eigenvalue_eq_one
+    (Y : M →L[ℂ] Kpos)
+    (i : Fin (finrank ℂ (ActiveCarrier Y))) :
+    activeSigma Y i = 1
+      ↔
+    (activeAdjoint Y).toLinearMap.isSymmetric_adjoint_comp_self.eigenvalues rfl i = 1 := by
+  have hs := wd_t11_sigma_sq_eq_eigenvalue Y i
+  have hnonneg := (activeAdjoint Y).toLinearMap.singularValues_nonneg i
+  constructor
+  · intro h
+    rw [h] at hs
+    norm_num at hs
+    exact hs.symm
+  · intro h
+    rw [h] at hs
+    nlinarith
+
 /-- Spectral indices carrying negative graph directions. -/
 noncomputable def negativeIndices (Y : M →L[ℂ] Kpos) :
     Finset (Fin (finrank ℂ (ActiveCarrier Y))) :=
@@ -148,22 +166,18 @@ theorem wd_t11_neutral_space_finrank
       =
       neutralIndices Y := by
     ext i
-    simp only [Finset.mem_filter, Finset.mem_univ, true_and, neutralIndices,
-      activeSigma]
-    have hs :=
-      W.toLinearMap.sq_singularValues_fin
-        (rfl : finrank ℂ (ActiveCarrier Y) = finrank ℂ (ActiveCarrier Y)) i
-    have hnonneg := W.toLinearMap.singularValues_nonneg i
+    change
+      ((W.toLinearMap.isSymmetric_adjoint_comp_self.eigenvalues rfl i : ℂ)
+          = (1 : ℂ))
+        ↔ activeSigma Y i = 1
     constructor
     · intro heig
-      have hs1 : W.toLinearMap.singularValues i ^ 2 = 1 := by
-        rw [hs]
-        exact_mod_cast heig
-      nlinarith
+      apply (wd_t11_sigma_eq_one_iff_eigenvalue_eq_one Y i).2
+      exact_mod_cast heig
     · intro hsigma
-      rw [hsigma] at hs
-      norm_num at hs
-      exact_mod_cast hs.symm
+      have hreal :=
+        (wd_t11_sigma_eq_one_iff_eigenvalue_eq_one Y i).1 hsigma
+      exact_mod_cast hreal
   change
     finrank ℂ
       (Module.End.eigenspace
@@ -181,7 +195,10 @@ theorem wd_t11_neutral_space_graphQ_zero
   let W := activeAdjoint Y
   have ha :
       ((W†) ∘L W) (a : ActiveCarrier Y) = (a : ActiveCarrier Y) := by
-    have hmem := a.property
+    have hmem :
+        (a : ActiveCarrier Y) ∈
+          Module.End.eigenspace (activeCovariance Y).toLinearMap (1 : ℂ) := by
+      simpa [neutralSpectralSpace] using a.property
     rw [Module.End.mem_eigenspace_iff] at hmem
     simpa [activeCovariance, W] using hmem
   have hinner :
@@ -190,14 +207,17 @@ theorem wd_t11_neutral_space_graphQ_zero
       inner ℂ (W (a : ActiveCarrier Y)) (W (a : ActiveCarrier Y)) := by
     simp only [ContinuousLinearMap.comp_apply]
     exact ContinuousLinearMap.adjoint_inner_left
-      W (W (a : ActiveCarrier Y)) (a : ActiveCarrier Y)
+      W (a : ActiveCarrier Y) (W (a : ActiveCarrier Y))
   rw [ha] at hinner
   unfold activeGraphQ
   change ‖(a : ActiveCarrier Y)‖ ^ 2 -
     ‖W (a : ActiveCarrier Y)‖ ^ 2 = 0
-  have hre := congrArg Complex.re hinner
-  simp [inner_self_eq_norm_sq_to_K] at hre
-  linarith
+  have hnorm :
+      ‖(a : ActiveCarrier Y)‖ ^ 2
+        = ‖W (a : ActiveCarrier Y)‖ ^ 2 := by
+    have hre := congrArg Complex.re hinner
+    simpa [inner_self_eq_norm_sq_to_K] using hre
+  exact sub_eq_zero.mpr hnorm
 
 /-- Each sigma > 1 basis direction is strictly negative. -/
 theorem wd_t11_negative_basis_direction
