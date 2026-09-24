@@ -167,7 +167,7 @@ theorem wd_t03_analysis_graph_iff
       have hh := hA (k,0) hker
       simpa [pairInner] using hh
     have hvEq : v = -(X†) a := by
-      apply ext_inner_left ℂ
+      apply ext_inner_right ℂ
       intro u
       have hker : synthesisMap Spos Sneg (X u,u) = 0 := by
         simp [synthesisMap, hfac]
