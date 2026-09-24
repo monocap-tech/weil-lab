@@ -39,7 +39,9 @@ theorem wd_t10_residual_budget_positive
     simp only [ContinuousLinearMap.sub_apply,
       ContinuousLinearMap.id_apply,
       ContinuousLinearMap.comp_apply]
-    rw [inner_sub_left, ContinuousLinearMap.adjoint_inner_right]
+    rw [inner_sub_left]
+    rw [← ContinuousLinearMap.adjoint_inner_right
+      X_B ((X_B†) a) a]
     simp only [inner_self_eq_norm_sq_to_K]
     apply sub_nonneg.mpr
     have hle :
@@ -52,7 +54,9 @@ theorem wd_t10_residual_budget_positive
           mul_le_mul_of_nonneg_right hXB (norm_nonneg a)
         _ = ‖a‖ := one_mul _
     have hnorm : ‖(X_B†) a‖ ≤ ‖a‖ := hle.trans hx
-    exact_mod_cast (sq_le_sq₀ (norm_nonneg _) (norm_nonneg _) |>.2 hnorm)
+    have hsquare : ‖(X_B†) a‖ ^ 2 ≤ ‖a‖ ^ 2 := by
+      nlinarith [norm_nonneg ((X_B†) a), norm_nonneg a]
+    exact_mod_cast hsquare
 
 /-- The canonical positive square root of the residual budget. -/
 noncomputable def residualSqrt
@@ -72,8 +76,10 @@ theorem wd_t10_residual_sqrt_sq
     (hXB : IsContraction X_B) :
     residualSqrt X_B ∘L residualSqrt X_B = residualBudget X_B := by
   have hpos := wd_t10_residual_budget_positive X_B hXB
+  have hnonneg : 0 ≤ residualBudget X_B :=
+    ContinuousLinearMap.nonneg_iff_isPositive.mpr hpos
   simpa [residualSqrt, ContinuousLinearMap.mul_def] using
-    (CFC.sqrt_mul_sqrt_self (residualBudget X_B) hpos)
+    (CFC.sqrt_mul_sqrt_self (residualBudget X_B) hnonneg)
 
 /-- Effective positive synthesis after consuming the background budget. -/
 noncomputable def effectivePositive
