@@ -532,6 +532,24 @@ The theorem stops before any downstream support-rigidity, boundary-trace, or UCP
 
 ---
 
+# H1-P3.2 — Noncompact background morphology
+
+Canonical source: [Noncompact Background Morphology Theorem](NONCOMPACT_BACKGROUND_MORPHOLOGY.md).
+
+| Label | Statement | Standing |
+| --- | --- | --- |
+| P3-B1 | Fixed finite coordinate anchoring turns zero-edge approximation into a nonzero exact coefficient relation | PROVED |
+| P3-B2 | Escape from every fixed finite coordinate block can yield weak zero with no exact anchored relation | PROVED |
+| P3-B3 | A fixed finite selected packet excludes moving selected-sector escape | PROVED |
+| P3-B4 | Normalized unselected background has norm-escape, bounded-tail-escape, or strong-convergence subsequential regimes | PROVED |
+| P3-B5 | Background weak escape cannot erase an already anchored fixed selected negative ray | CONDITIONAL theorem |
+| P3-B6 | Bounded tail-tight background produces a fixed full-divisor negative ray | CONDITIONAL theorem |
+| P3-B7 | Finite positive shadows preserve selected signature but do not compactify the background | PROVED |
+
+With P3.2, **H1-P3 is complete**.
+
+---
+
 # Open Horizon-1 interfaces
 
 The following are **not proved**:
