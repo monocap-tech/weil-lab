@@ -346,20 +346,11 @@ Consumed directly by
 }
 \]
 
-Bombieri's kernel/column estimate also supports the imported part of
+Bombieri's kernel/column estimate is retained as corroborating context, but after P4.2 it is **not load-bearing** for WD-T28.
 
-\[
-\boxed{
-\text{WD-T28}.
-}
-\]
+WD-T28 now uses an internal Dirichlet-resolvent estimate plus EXT-3 zero counting.
 
-**Audit debt:** pin exact theorem/lemma/equation locations separately for:
-- finite negative-index count;
-- multiplicity-null treatment;
-- kernel/column decay estimate.
-
-Do not assume one theorem number covers all three.
+Exact source pins for the Bombieri finite-index and multiplicity statements are recorded in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
 
 ## EXT-3 — Standard zeta zero counting
 
@@ -547,16 +538,11 @@ The next audit passes should proceed in this order.
 
 Exact pins are recorded in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
 
-## P4.2 — Internal proof audit
+## P4.2 — Internal proof audit — COMPLETE
 
-Check WD-T01 through WD-T36 theorem-by-theorem for:
-- domain assumptions;
-- closure/closed-range assumptions;
-- finite/infinite dimensional transitions;
-- strong/weak topology changes;
-- multiplicity handling;
-- uniformity of constants;
-- exact quantifiers.
+WD-T01 through WD-T36 are P4-AUDIT-PASSED at the internal Horizon-1 level.
+
+Corrections and theorem-by-theorem findings are recorded in [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
 ## P4.3 — Composite morphology audit
 
@@ -586,7 +572,7 @@ No mathematical theorem has been added in this pass.
 
 \[
 \boxed{
-\texttt{H1-P4.2 / INTERNAL PROOF AUDIT}
+\texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
 }
 \]
 
@@ -608,3 +594,22 @@ The following external inputs are now SOURCE-PINNED:
 Exact conventions are recorded in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
 
 Source pinning does not complete the internal proof audit.
+
+
+---
+
+# 11. P4.2 internal-audit disposition
+
+WD-T01 through WD-T36 are now P4-AUDIT-PASSED.
+
+Five audit-level corrections were applied:
+
+- WD-T13 uniformly positive Schur hypothesis;
+- WD-T28 direct resolvent Hilbert–Schmidt proof;
+- WD-T33 adaptive-multiplier quantifier restriction;
+- WD-T35 compact-window domain and pole bound;
+- WD-T36 no-positive-Sobolev-coercivity formulation.
+
+See [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
+
+This status is internal audit only, not independent certification.
