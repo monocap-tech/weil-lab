@@ -70,10 +70,9 @@ theorem wd_t01_defect_inner_identity
     (h : H) :
     inner ℂ (physicalDefect Spos Sneg h) h
       = ((physicalQ Spos Sneg h : ℝ) : ℂ) := by
-  change
-    inner ℂ (Spos ((Spos†) h)) h - inner ℂ (Sneg ((Sneg†) h)) h
-      =
-    ((‖(Spos†) h‖ ^ 2 - ‖(Sneg†) h‖ ^ 2 : ℝ) : ℂ)
+  simp only [physicalDefect, physicalQ, coeffQ, analysisMap,
+    ContinuousLinearMap.sub_apply, ContinuousLinearMap.comp_apply,
+    ContinuousLinearMap.prod_apply]
   rw [← ContinuousLinearMap.adjoint_inner_right Spos ((Spos†) h) h]
   rw [← ContinuousLinearMap.adjoint_inner_right Sneg ((Sneg†) h) h]
   simp [inner_self_eq_norm_sq_to_K]
@@ -209,7 +208,11 @@ theorem negativeMap_mem_nhds
   have hunif :
       ∀ᶠ S in 𝓝 T, ∀ x ∈ sphere, q (S x) < 0 :=
     hsphere.eventually_forall_of_forall_eventually
-      (P := fun S x => q (S x) < 0) hlocal
+      (P := fun
+        (S : EuclideanSpace ℂ (Fin n) →L[ℂ] E)
+        (x : EuclideanSpace ℂ (Fin n)) =>
+          q (S x) < 0)
+      hlocal
   exact hunif.mono (by
     intro S hS
     intro x hx
