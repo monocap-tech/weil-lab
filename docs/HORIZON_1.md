@@ -55,7 +55,9 @@ Current position:
 \qquad
 \text{H1-P4 COMPLETE}
 \qquad
-\text{H1-P5 ACTIVE}.
+\text{LEAN-H1 ACTIVE}
+\qquad
+\text{H1-P5 PAUSED}.
 }
 ```
 
@@ -397,7 +399,7 @@ Therefore **H1-P4 is COMPLETE**.
 
 ```math
 \boxed{
-\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
+\texttt{LEAN-H1-P0 / INFRASTRUCTURE AND VERTICAL PILOT}
 }
 ```
 
@@ -429,9 +431,22 @@ with auxiliary lemmas and counterexamples under separate namespaces.
 
 ---
 
+## Formalization priority override
+
+Per project priority, [LEAN-H1 — Certification Before H1-P5](LEAN_FORMALIZATION_TRACK.md) now preempts public-package assembly.
+
+H1-P5 resumes only after every stable Horizon-1 theorem/example has a durable Lean status of:
+
+- LEAN-CERTIFIED;
+- LEAN-CERTIFIED-FROM-IMPORTED-PREMISE;
+- LEAN-BLOCKED with an exact dependency/blocker; or
+- SCOPE-ONLY.
+
+Current formalization status is tracked in [Lean Status Ledger](LEAN_STATUS.md).
+
 ## H1-P5 — Public mathematical package
 
-**Status:** ACTIVE.
+**Status:** PAUSED pending LEAN-H1 exhaustion.
 
 Required deliverables:
 
