@@ -25,7 +25,9 @@ Current position:
 \qquad
 \text{H1-P1 COMPLETE}
 \qquad
-\text{H1-P2 ACTIVE}.
+\text{H1-P2 COMPLETE}
+\qquad
+\text{H1-P3 ACTIVE}.
 }
 \]
 
@@ -389,15 +391,56 @@ with inverse-square order sharp.
 
 Native Problem-1 synthesis is Hilbert-Schmidt/compact, so unweighted sampling/frame inputs remain metric-separated from native coercivity.
 
+## H1-P2.2 disposition
+
+The canonical ZW-2 theorem package is [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md).
+
+Negative branch:
+
+\[
+\boxed{
+\mathbf1^Tv=0
+\Longrightarrow
+R_v(z)=O(z^{-2})
+\Longrightarrow
+\mathcal F_{v,R}
+=
+O((\log R)/R)
+\Longrightarrow
+\text{weighted near next-jet field}.
+}
+\]
+
+Neutral branch:
+
+\[
+\boxed{
+\text{fixed support}
+\Longrightarrow
+\text{finitely many prime translations}
+\quad\text{and}\quad
+\Psi_c(t)=\log|t|+O_c(1).
+}
+\]
+
+The explicit formula supplies no automatic positive-Sobolev or quasianalytic gain.
+
+Therefore
+
+\[
+\boxed{
+\textbf{H1-P2 — ZETA-WEIL SPECIALIZATION: COMPLETE.}
+\]
+
 ## Current cursor
 
 \[
 \boxed{
-\texttt{H1-P2.2 / EXPLICIT-FORMULA ARITHMETIC ATTACHMENT}
+\texttt{H1-P3.0 / NEGATIVE DEFECT MORPHOLOGY THEOREM}
 }
 \]
 
-The next pass enters ZW-2: selected-preserving multipliers, far-tail localization, completed-\(\Xi\) next jets, explicit-formula co-adaptation, finite prime translations, and logarithmic principal order.
+H1-P3 now packages, rather than discovers, the surviving obstruction morphologies.
 
 ---
 
