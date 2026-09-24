@@ -364,6 +364,101 @@ noncomputable def negativeSpectralSpace (Y : M →L[ℂ] Kpos) :
     (Set.range (fun i : {i // i ∈ negativeIndices Y} =>
       activeEigenbasis Y i.1))
 
+/-- Coordinates outside the negative spectral block vanish on its span. -/
+theorem wd_t11_negative_space_coordinate_zero
+    (Y : M →L[ℂ] Kpos)
+    (a : negativeSpectralSpace Y)
+    (i : Fin (finrank ℂ (ActiveCarrier Y)))
+    (hi : i ∉ negativeIndices Y) :
+    (activeEigenbasis Y).repr (a : ActiveCarrier Y) i = 0 := by
+  rw [OrthonormalBasis.repr_apply_apply]
+  have ha :
+      (a : ActiveCarrier Y) ∈
+        Submodule.span ℂ
+          (Set.range (fun j : {j // j ∈ negativeIndices Y} =>
+            activeEigenbasis Y j.1)) := by
+    simpa [negativeSpectralSpace] using a.property
+  induction ha using Submodule.span_induction with
+  | mem x hx =>
+      obtain ⟨j, rfl⟩ := hx
+      have hij : i ≠ j.1 := by
+        intro h
+        apply hi
+        simpa [h] using j.2
+      simpa [hij] using
+        (orthonormal_iff_ite.mp (activeEigenbasis Y).orthonormal i j.1)
+  | zero => simp
+  | add x y _ _ hx hy =>
+      simp [inner_add_right, hx, hy]
+  | smul c x _ hx =>
+      simp [inner_smul_right, hx]
+
+/-- The whole negative spectral space, not just its basis rays, is strictly negative. -/
+theorem wd_t11_negative_space_strict
+    (Y : M →L[ℂ] Kpos)
+    (a : negativeSpectralSpace Y)
+    (ha : a ≠ 0) :
+    activeGraphQ Y (a : ActiveCarrier Y) < 0 := by
+  rw [wd_t11_graphQ_diagonal]
+  let t : Fin (finrank ℂ (ActiveCarrier Y)) → ℝ :=
+    fun i =>
+      (1 - activeSigma Y i ^ 2) *
+        ‖(activeEigenbasis Y).repr (a : ActiveCarrier Y) i‖ ^ 2
+  have hle : ∀ i ∈ (Finset.univ :
+      Finset (Fin (finrank ℂ (ActiveCarrier Y)))), t i ≤ 0 := by
+    intro i _
+    by_cases hi : i ∈ negativeIndices Y
+    · have hsig : 1 < activeSigma Y i := by
+        simpa [negativeIndices] using hi
+      have hweight : 1 - activeSigma Y i ^ 2 < 0 := by
+        nlinarith
+      exact mul_nonpos_of_nonpos_of_nonneg hweight.le (sq_nonneg _)
+    · have hz :=
+        wd_t11_negative_space_coordinate_zero Y a i hi
+      simp [t, hz]
+  have ha0 : (a : ActiveCarrier Y) ≠ 0 := by
+    intro h
+    apply ha
+    exact Subtype.ext h
+  have hrepr :
+      (activeEigenbasis Y).repr (a : ActiveCarrier Y) ≠ 0 := by
+    intro h
+    apply ha0
+    apply (activeEigenbasis Y).repr.injective
+    simpa using h
+  have hex :
+      ∃ i : Fin (finrank ℂ (ActiveCarrier Y)),
+        (activeEigenbasis Y).repr (a : ActiveCarrier Y) i ≠ 0 := by
+    by_contra h
+    push_neg at h
+    apply hrepr
+    ext i
+    exact h i
+  obtain ⟨i, hiCoord⟩ := hex
+  have hiNeg : i ∈ negativeIndices Y := by
+    by_contra hi
+    exact hiCoord (wd_t11_negative_space_coordinate_zero Y a i hi)
+  have hsig : 1 < activeSigma Y i := by
+    simpa [negativeIndices] using hiNeg
+  have hweight : 1 - activeSigma Y i ^ 2 < 0 := by
+    nlinarith
+  have hcoordpos :
+      0 < ‖(activeEigenbasis Y).repr (a : ActiveCarrier Y) i‖ ^ 2 := by
+    positivity
+  have hstrict : t i < 0 :=
+    mul_neg_of_neg_of_pos hweight hcoordpos
+  have hsum :
+      (∑ j ∈ (Finset.univ :
+          Finset (Fin (finrank ℂ (ActiveCarrier Y)))), t j)
+        <
+      ∑ _j ∈ (Finset.univ :
+          Finset (Fin (finrank ℂ (ActiveCarrier Y)))), (0 : ℝ) := by
+    refine Finset.sum_lt_sum ?_ ?_
+    · intro j hj
+      exact hle j hj
+    · exact ⟨i, Finset.mem_univ _, hstrict⟩
+  simpa [t] using hsum
+
 /-- The negative spectral space has exactly one complex dimension per singular value > 1. -/
 theorem wd_t11_negative_space_finrank
     (Y : M →L[ℂ] Kpos) :
