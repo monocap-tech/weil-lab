@@ -59,4 +59,53 @@ theorem wd_x07_response_identity
   field_simp [sub_ne_zero.mpr h₁, sub_ne_zero.mpr h₂]
   ring
 
+
+/-- Real two-point witness used to certify the sharp inverse-square order in WD-X07. -/
+noncomputable def wdX07RealResponse (x : ℝ) : ℝ :=
+  1 / x - 1 / (x - 1)
+
+/-- Exact response formula for the explicit WD-X07 witness. -/
+theorem wd_x07_real_response_formula
+    (x : ℝ)
+    (hx0 : x ≠ 0)
+    (hx1 : x ≠ 1) :
+    wdX07RealResponse x = -1 / (x * (x - 1)) := by
+  unfold wdX07RealResponse
+  field_simp [hx0, sub_ne_zero.mpr hx1]
+  ring
+
+/--
+WD-X07 asymptotic sharpness: for the explicit pair (0,1), the response
+has a nonzero inverse-square leading coefficient.
+-/
+theorem wd_x07_scaled_response_tendsto_neg_one :
+    Filter.Tendsto
+      (fun N : ℕ =>
+        let x : ℝ := N + 2
+        x ^ 2 * wdX07RealResponse x)
+      Filter.atTop
+      (𝓝 (-1 : ℝ)) := by
+  have hden :
+      Filter.Tendsto (fun N : ℕ => (N : ℝ) + 1)
+        Filter.atTop Filter.atTop :=
+    tendsto_atTop_add_const_right _ _ tendsto_natCast_atTop_atTop
+  have hinv :
+      Filter.Tendsto (fun N : ℕ => (((N : ℝ) + 1)⁻¹))
+        Filter.atTop (𝓝 0) :=
+    tendsto_inv_atTop_zero.comp hden
+  have hmain :
+      Filter.Tendsto
+        (fun N : ℕ => -(1 + (((N : ℝ) + 1)⁻¹)))
+        Filter.atTop (𝓝 (-1 : ℝ)) := by
+    simpa using (tendsto_const_nhds.add hinv).neg
+  convert hmain using 1
+  · funext N
+    dsimp
+    have hx0 : (N : ℝ) + 2 ≠ 0 := by positivity
+    have hx1 : (N : ℝ) + 2 ≠ 1 := by positivity
+    rw [wd_x07_real_response_formula ((N : ℝ) + 2) hx0 hx1]
+    field_simp
+    ring
+  · simp
+
 end WeilDefect
