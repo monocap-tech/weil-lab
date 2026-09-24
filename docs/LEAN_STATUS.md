@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T13 | WeilDefect.WDT13.wd_t13_complement_isUnit + WeilDefect.WDT13.wd_t13_complement_inverse_nonnegative + WeilDefect.WDT13.wd_t13_schur_correction_positive + WeilDefect.WDT13.wd_t13_schur_le_compression + WeilDefect.WDT13.wd_t13_schur_lower_bound + WeilDefect.WDT13.wd_t13_schur_isUnit + WeilDefect.WDT13.wd_t13_block_solution_exists + WeilDefect.WDT13.wd_t13_block_solution_first_component + WeilDefect.WDT13.wd_t13_direct_compression_versus_shorted_covariance | LEAN-CERTIFIED |
 | WD-T12 | WeilDefect.WDT12.sequentialResidualBudget + WeilDefect.WDT12.wd_t12_sequential_budget_covariance + WeilDefect.WDT12.wd_t12_second_background_elimination + WeilDefect.WDT12.wd_t12_sequential_background_consumption | LEAN-CERTIFIED |
 | WD-T11 | WeilDefect.WDT11.wd_t11_norm_one_attains_neutral + WeilDefect.WDT11.wd_t11_graphQ_diagonal + WeilDefect.WDT11.wd_t11_negative_rank_le_count + WeilDefect.WDT11.wd_t11_negative_space_strict + WeilDefect.WDT11.wd_t11_negative_space_finrank + WeilDefect.WDT11.wd_t11_negative_index_exact + WeilDefect.WDT11.wd_t11_neutral_space_finrank + WeilDefect.WDT11.wd_t11_neutral_space_graphQ_zero + WeilDefect.WDT11.wd_t11_finite_sector_singular_value_inertia | LEAN-CERTIFIED |
 | WD-T10 | WeilDefect.WDT10.wd_t10_residual_budget_positive + WeilDefect.WDT10.wd_t10_residual_sqrt_sq + WeilDefect.WDT10.wd_t10_effective_covariance + WeilDefect.WDT10.wd_t10_background_covariance_elimination + WeilDefect.WDT10.wd_t10_full_defect_reduction + WeilDefect.WDT10.wd_t10_full_nonnegative_iff_effective_physical + WeilDefect.WDT10.wd_t10_full_nonnegative_iff_residual_screening + WeilDefect.WDT10.wd_t10_background_elimination_and_residual_budget | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -1397,3 +1398,115 @@ Next theorem cursor:
 The audited WD-T13 hypothesis is the corrected uniformly positive setting
 \(K\succeq mI\), which guarantees bounded invertibility of the complementary
 block.
+
+
+## WD-T13 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T13: LEAN-CERTIFIED}.
+}
+\]
+
+The certificate uses the corrected uniformly positive hypothesis
+
+\[
+K\succeq mI,
+\qquad m>0,
+\]
+
+for the self-adjoint block operator. The Hilbert direct-sum lower bound is
+encoded explicitly in `WeilDefect.WDT13.BlockUniformlyPositive`.
+
+Formal declarations include:
+
+- WeilDefect.WDT13.wd_t13_complement_lower_bound;
+- WeilDefect.WDT13.wd_t13_complement_isUnit;
+- WeilDefect.WDT13.wd_t13_complement_inverse_nonnegative;
+- WeilDefect.WDT13.wd_t13_schur_correction_positive;
+- WeilDefect.WDT13.wd_t13_schur_le_compression;
+- WeilDefect.WDT13.wd_t13_schur_lower_bound;
+- WeilDefect.WDT13.wd_t13_schur_isUnit;
+- WeilDefect.WDT13.wd_t13_block_solution_exists;
+- WeilDefect.WDT13.wd_t13_block_solution_first_component;
+- WeilDefect.WDT13.wd_t13_direct_compression_versus_shorted_covariance.
+
+Lean derives bounded invertibility of the complementary block from the uniform
+lower bound; it is not assumed. For
+
+\[
+H_W=A-BC^{-1}B^*,
+\]
+
+Lean proves
+
+\[
+H_W\preceq A
+\]
+
+and a uniform lower bound on \(H_W\), hence bounded invertibility of
+\(H_W\).
+
+The inverse-compression identity is kernel-checked in its equivalent block
+solution form: every solution of
+
+\[
+Ax+By=w,
+\qquad
+B^*x+Cy=0
+\]
+
+has
+
+\[
+x=H_W^{-1}w,
+\]
+
+and such a solution is constructed for every \(w\). This is the coordinate
+form of \(P_WK^{-1}|_W=H_W^{-1}\).
+
+No imported project theorem premise is consumed by WD-T13.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.ShortedCovariance}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36059475701}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{b2af38e06332be4d68a57a159fdf4ca547e372cd}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{a0c3ee14272f34dff041601b5abdfaeca7841e8b}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T13 module;
+- unfinished-proof/project-axiom rejection.
+
+The certification retained the corrected uniformly positive hypothesis from the
+P4 audit; no theorem statement or mathematical hypothesis was weakened.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T14 / WD-B8 — FINITE POSITIVE SHADOWS PRESERVE SIGNATURE BUT NOT ADMISSIBILITY}
+}
+\]
