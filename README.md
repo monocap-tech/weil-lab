@@ -50,21 +50,27 @@ Current position:
 \boxed{
 \text{H1-P0 COMPLETE}
 \qquad
-\text{H1-P1 ACTIVE}.
+\text{H1-P1 COMPLETE}
+\qquad
+\text{H1-P2 ACTIVE}.
 }
 \]
 
 Project terms such as **horizon**, **phase**, **standing**, **interface**, **custody**, and **screening** are fixed in the [Terminology Registry](docs/TERMINOLOGY.md).
 
-H1-P1.0 has now extracted the first zeta-independent theorem package; see [Abstract Defect Calculus](docs/ABSTRACT_DEFECT_CALCULUS.md).
+H1-P1 is now complete. Its three abstract layers are [Abstract Defect Calculus](docs/ABSTRACT_DEFECT_CALCULUS.md), [Restricted-Channel Transfer](docs/RESTRICTED_CHANNEL_TRANSFER.md), and [Support Filtration and Persistence Limits](docs/SUPPORT_FILTRATION_PERSISTENCE.md).
 
-Its central operator is
+The central operator is
 
 \[
 D=S_+S_+^*-S_-S_-^*,
 \]
 
-and the sign problem is equivalent to contractive Douglas screening. The abstraction also reveals a non-attained **approximate-neutral boundary** distinct from an actual neutral mode.
+and the sign problem is equivalent to contractive Douglas screening.
+
+For a fixed finite selected negative sector, the support-filtration analysis further shows that critical or negative right-approaching sequences force a nonzero nonpositive right-limit ray. Therefore genuinely nonpersistent approximate neutrality requires an infinite or moving-sector mechanism.
+
+The project has now entered **H1-P2: Zeta-Weil specialization**.
 
 ## Current theorem picture
 
@@ -166,6 +172,7 @@ The remaining problem is tracked as
 - [Horizon 1](docs/HORIZON_1.md) — first finite research horizon and phase gates.
 - [Abstract Defect Calculus](docs/ABSTRACT_DEFECT_CALCULUS.md) — H1-P1 zeta-independent operator theory.
 - [Restricted-Channel Transfer](docs/RESTRICTED_CHANNEL_TRANSFER.md) — selected finite sectors, background budget, and shorting.
+- [Support Filtration and Persistence](docs/SUPPORT_FILTRATION_PERSISTENCE.md) — right limits, endpoint jumps, and representative blow-up.
 - [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
