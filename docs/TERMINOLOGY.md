@@ -534,3 +534,100 @@ Frame or sampling lower bounds in this model are auxiliary harmonic-analytic sta
 **Metric separation** is the rule that a theorem proved in an unweighted exponential/sampling norm may not be transferred to the native Problem-1 \(H^{-1}\) operator without an explicit bounded comparison theorem.
 
 In particular, a stable unweighted frame does not contradict compactness of native Problem-1 synthesis.
+
+
+## Selected-preserving multiplier
+
+A **selected-preserving multiplier** for a raw residue source \(v\) is an admissible scalar multiplier \(\psi\) satisfying
+
+\[
+\mathcal C_v[\psi]=0,
+\]
+
+so the selected contracted-residue contribution is removed without discarding the complementary divisor, prime, and archimedean terms.
+
+## Far complementary field
+
+The **far complementary field** is the contribution of unselected zeros outside a fixed neighborhood of the selected packet:
+
+\[
+\mathcal F_{v,R}[\psi]
+=
+\sum_{\substack{\mu\notin F\\|\Im\mu-T_F|\ge R}}
+m_\mu\psi(\mu)R_v(\mu).
+\]
+
+For a fixed bounded multiplier and a zero-moment selected source,
+
+\[
+\mathcal F_{v,R}[\psi]
+=
+O((\log R)/R).
+\]
+
+## Weighted next-jet field
+
+The **weighted next-jet field** is
+
+\[
+\mathcal N_{v,R}[\psi]
+=
+\sum_{\mu}^{\rm near}
+m_\mu\psi(\mu)
+\frac{H_v^{(m_\mu)}(\mu)}
+{\Xi^{(m_\mu)}(\mu)},
+\qquad
+H_v=\Xi R_v.
+\]
+
+It is the finite/intermediate complementary divisor object left after zero-moment far-tail localization.
+
+## Explicit-formula co-adaptation
+
+**Explicit-formula co-adaptation** is the phenomenon that adapting \(\psi\) to cancel one side of the scalar explicit formula changes the remaining prime/archimedean balance simultaneously.
+
+In particular, under selected preservation, if
+
+\[
+\mathcal N_v[\psi]=\mathcal A_v[\psi],
+\]
+
+then
+
+\[
+\mathcal P_v[\psi]=\mathcal F_v[\psi].
+\]
+
+Thus adaptive near cancellation does not leave an independent prime lower bound.
+
+## Compact-window arithmetic operator
+
+The **compact-window arithmetic operator** at support \(c\) is the physical operator representing the geometric Weil form:
+
+\[
+\mathcal W_c
+=
+\mathcal A_\infty
+-
+\sum_{\log n<2c}
+\frac{\Lambda(n)}{\sqrt n}
+(\tau_{\log n}+\tau_{-\log n})
++
+\mathcal R_{\rm pole},
+\]
+
+up to the fixed Fourier-normalization convention.
+
+At fixed \(c\), the prime-translation sum is finite.
+
+## Logarithmic form order
+
+The **logarithmic form order** is the high-frequency asymptotic
+
+\[
+\Psi_c(t)
+=
+\log|t|+O_c(1).
+\]
+
+It implies that the natural form norm is equivalent, after an \(L^2\) shift, to a logarithmic Fourier/Sobolev norm rather than to a positive-order Sobolev norm.
