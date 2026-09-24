@@ -51,10 +51,12 @@ For an admissible scalar multiplier \(\psi\), write
 
 for the selected contracted-residue term in the scalar explicit formula.
 
-For the bounded-depth exponential family
+For the bounded-depth exponential family with real parameter
 
 \[
 \psi_\tau(s)=e^{\tau(s-c)},
+\qquad
+\tau\in\mathbb R,
 \]
 
 define
@@ -440,33 +442,35 @@ so
 
 ## ZW2-T5 — Adaptive co-cancellation identity
 
-Suppose a selected-preserving multiplier is additionally chosen to satisfy
+Fix a cutoff \(R\) and a selected-preserving multiplier \(\psi\). Suppose it is additionally chosen so that
 
 \[
-\mathcal N_v[\psi]
+\mathcal N_{v,R}[\psi]
 =
 \mathcal A_v[\psi].
 \]
 
-Then the explicit formula forces
+Then the split explicit formula forces
 
 \[
 \boxed{
 \mathcal P_v[\psi]
 =
-\mathcal F_v[\psi].
+\mathcal F_{v,R}[\psi].
 }
 \]
 
-Hence an adaptive multiplier that annihilates the near-minus-archimedean response cannot simultaneously leave an independent prime lower bound: the prime term collapses onto the far tail.
+Thus, at that same cutoff, adaptive cancellation of the near-minus-archimedean response does not leave an independent prime term: the prime functional is exactly the far functional.
 
-By ZW2-T2, for a far cutoff sent outward,
+If one then sends \(R\to\infty\) while keeping \(\psi\) fixed, ZW2-T2 gives
 
 \[
 \mathcal F_{v,R}[\psi]\to0.
 \]
 
-**Standing:** PROVED algebraically from the explicit-formula identity.
+The same conclusion holds for a family \(\psi_R\) only when the multiplier bounds entering ZW2-T2 are uniform in \(R\). No uniform tail conclusion is claimed for an arbitrarily varying unbounded adaptive family.
+
+**Standing:** PROVED algebraically from the cutoff-split explicit-formula identity.
 
 ### Interpretation
 
@@ -706,13 +710,21 @@ O_c(1).
 
 ## ZW2-T7 — Logarithmic form-domain theorem
 
+Work in the same compact-window admissible test class as the pinned geometric formula, with
+
+\[
+\operatorname{supp}f\subseteq[-c,c],
+\qquad
+F=\widehat f.
+\]
+
 There exist constants
 
 \[
 A_c,B_c>0
 \]
 
-and \(C_c\in\mathbb R\) such that
+and a real scalar shift \(C_c^{(0)}\) such that
 
 \[
 \boxed{
@@ -721,7 +733,7 @@ A_c
 \log(e+|t|)
 |F(t)|^2\,dt
 \le
-Q_c(f)+C_c\|f\|_2^2
+Q_c(f)+C_c^{(0)}\|f\|_2^2
 }
 \]
 
@@ -729,7 +741,7 @@ and
 
 \[
 \boxed{
-Q_c(f)+C_c\|f\|_2^2
+Q_c(f)+C_c^{(0)}\|f\|_2^2
 \le
 B_c
 \int_{\mathbb R}
@@ -738,43 +750,106 @@ B_c
 }
 \]
 
+### Proof
+
+By EXT-5 and the finite prime support of ZW2-T6,
+
+\[
+\Psi_c(t)=\log|t|+O_c(1).
+\]
+
+Hence there are positive constants \(a_c,b_c\) and a scalar \(C\) such that
+
+\[
+a_c\log(e+|t|)
+\le
+\Psi_c(t)+C
+\le
+b_c\log(e+|t|)
+\]
+
+for all real \(t\).
+
+The pole/evaluation term is bounded by the fixed-support \(L^2\) norm: by Cauchy–Schwarz,
+
+\[
+|F(i/2)|
+=
+\left|
+\int_{-c}^{c}
+f(x)e^{x/2}\,dx
+\right|
+\le
+\left(
+\int_{-c}^{c}e^x\,dx
+\right)^{1/2}
+\|f\|_2.
+\]
+
+Absorbing this bounded finite-rank contribution into the scalar \(L^2\) shift gives the two-sided estimate above.
+
 Thus the natural compact-window form domain is a logarithmic Fourier/Sobolev space.
 
-**Standing:** DERIVED from ZW2-T6 + digamma asymptotics + boundedness of the finite-rank pole term.
+**Standing:** DERIVED from ZW2-T6 + the pinned digamma asymptotic + the fixed-support bound on the pole/evaluation functional.
 
 ### Consequence
 
-The finite arithmetic translations do not increase the principal regularity order.
-
-They preserve every ordinary Sobolev scale and every logarithmic Fourier scale.
-
-Therefore
-
-\[
-\boxed{
-\text{finite prime translations}
-\not\Rightarrow
-H^\varepsilon\text{ regularity gain}
-}
-\]
-
-for any \(\varepsilon>0\).
+The finite arithmetic translations do not increase the principal regularity order. They are order-zero on ordinary Sobolev and logarithmic Fourier scales.
 
 ---
 
-## ZW2-T8 — No automatic quasianalytic bootstrap
+## ZW2-T8 — No positive-Sobolev coercive bootstrap
 
-The compact-window explicit formula supplies logarithmic-frequency control, but does not by itself imply
+For every \(\varepsilon>0\), the logarithmic form norm of ZW2-T7 does not control the \(H^\varepsilon\) norm uniformly on the fixed support class.
+
+Indeed, choose a nonzero real-even
 
 \[
-|D|^\varepsilon f\in L^2
+\phi\in C_c^\infty(-c,c)
 \]
 
-for any \(\varepsilon>0\).
+and set
 
-Repeated substitution of the finite translation equation does not alter this conclusion: translations are order-zero operators and do not create smoothing.
+\[
+f_N(x)=\phi(x)\cos(Nx).
+\]
 
-**Standing:** PROVED as an operator-order consequence of ZW2-T7.
+Then the Fourier mass of \(f_N\) is concentrated near \(\pm N\), so
+
+\[
+\int
+\log(e+|t|)
+|\widehat f_N(t)|^2\,dt
+\asymp
+\log N,
+\]
+
+whereas
+
+\[
+\|f_N\|_{H^\varepsilon}^2
+\asymp
+N^{2\varepsilon}.
+\]
+
+After normalizing by \((\log N)^{1/2}\), the logarithmic form norm stays bounded while the \(H^\varepsilon\) norm diverges.
+
+Therefore no estimate of the form
+
+\[
+\|f\|_{H^\varepsilon}
+\le
+C
+\left(
+Q_c(f)+C_c^{(0)}\|f\|_2^2
+\right)^{1/2}
+\]
+
+can follow from the compact-window form equivalence alone.
+
+Finite translations do not change this conclusion: they are order-zero operators and repeated substitution creates translated copies but no positive-order smoothing.
+
+**Standing:** PROVED as a sharp non-coercivity consequence of ZW2-T7.
 
 ---
 
