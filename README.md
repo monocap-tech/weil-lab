@@ -120,6 +120,8 @@ The project is now in **H1-P4: proof audit and theorem normalization**.
 
 H1-P4.0 is complete. Stable public theorem IDs and the dependency/source audit are now canonical in [Theorem Ledger](docs/THEOREM_LEDGER.md) and [Dependency Audit](docs/DEPENDENCY_AUDIT.md).
 
+H1-P4.1 is also complete: [Imported Source Pins](docs/IMPORTED_SOURCE_PINS.md) fixes the exact load-bearing external theorem/equation locations and the conventions imported from them.
+
 The audit separates **mathematical standing** from **verification status**. Earlier uses of “proved” mean an internal proof is present under stated hypotheses; they do not by themselves claim independent certification.
 
 ## Current theorem picture
@@ -231,6 +233,7 @@ The remaining problem is tracked as
 - [Noncompact Background Morphology Theorem](docs/NONCOMPACT_BACKGROUND_MORPHOLOGY.md) — moving selected escape, background escape, and fixed full-divisor convergence.
 - [Theorem Ledger](docs/THEOREM_LEDGER.md) — stable public IDs, standing, verification status, and historical aliases.
 - [Dependency Audit](docs/DEPENDENCY_AUDIT.md) — normalized theorem DAG, source boundaries, scope guards, and audit queue.
+- [Imported Source Pins](docs/IMPORTED_SOURCE_PINS.md) — exact load-bearing external statements, equation locations, and convention map.
 - [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
