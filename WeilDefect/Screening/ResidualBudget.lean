@@ -32,11 +32,8 @@ theorem wd_t10_residual_budget_positive
     (residualBudget X_B).IsPositive := by
   rw [ContinuousLinearMap.isPositive_iff']
   constructor
-  · unfold residualBudget
-    rw [ContinuousLinearMap.adjoint_sub,
-      ContinuousLinearMap.adjoint_id,
-      ContinuousLinearMap.adjoint_comp,
-      ContinuousLinearMap.adjoint_adjoint]
+  · simp [residualBudget, IsSelfAdjoint,
+      ContinuousLinearMap.adjoint_comp]
   · intro a
     unfold residualBudget
     simp only [ContinuousLinearMap.sub_apply,
