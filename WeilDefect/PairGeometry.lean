@@ -33,7 +33,7 @@ theorem wd_t20_pair_neg_eigen : pairSwap pairNeg = -pairNeg := by
 WD-T20: the raw two-coordinate pair is linearly equivalent to its
 positive/negative eigenchannel coordinates.
 -/
-def pairEigenEquiv : (ℂ × ℂ) ≃ₗ[ℂ] RawPair where
+noncomputable def pairEigenEquiv : (ℂ × ℂ) ≃ₗ[ℂ] RawPair where
   toFun p b := p.1 * pairPos b + p.2 * pairNeg b
   invFun v :=
     ((v false + v true) / 2, (v false - v true) / 2)
@@ -74,6 +74,7 @@ theorem wd_t26_zero_moment (xs : List ℂ) :
   | nil =>
       simp [rawResiduesOfNegativePairs]
   | cons α xs ih =>
-      simp [rawResiduesOfNegativePairs, ih]
+      change ([α, -α] ++ rawResiduesOfNegativePairs xs).sum = 0
+      simp [ih]
 
 end WeilDefect
