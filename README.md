@@ -205,8 +205,8 @@ prove the Horizon-1 morphology theorem that reaches it.
   attained-neutral null mode, logarithmic operator, and null-extension stop
   line.
 - [Noncompact Background Morphology Theorem](docs/NONCOMPACT_BACKGROUND_MORPHOLOGY.md)
-  — moving selected escape, background escape, and fixed full-divisor
-  convergence.
+  — moving selected escape, background escape, and fixed full-divisor negative weak
+  limits.
 
 ### Consolidation record
 
