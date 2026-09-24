@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T03 | WeilDefect.WDT03.wd_t03_kernel_decomposition + WeilDefect.WDT03.wd_t03_analysis_graph_iff + WeilDefect.WDT03.wd_t03_graph_signature + WeilDefect.WDT03.wd_t03_defect_factorization | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T02 | WeilDefect.WDT02.wd_t02_contractive_screening_equivalence + WeilDefect.WDT02.wd_t02_unique_reduced_solution | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T01 | WeilDefect.WDT01.wd_t01_defect_inner_identity + WeilDefect.WDT01.wd_t01_nonnegative_iff + WeilDefect.WDT01.wd_t01_negative_rank_iff | LEAN-CERTIFIED |
 | WD-T33 | WeilDefect.wd_t33_adaptive_cocancellation | LEAN-CERTIFIED |
@@ -460,5 +461,63 @@ The run passed:
 - mathlib cache retrieval;
 - single-module Lake build;
 - unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
+
+
+## WD-T03 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T03: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.WDT03.signed_reduced_of_range;
+- WeilDefect.WDT03.wd_t03_kernel_decomposition;
+- WeilDefect.WDT03.wd_t03_analysis_graph_iff;
+- WeilDefect.WDT03.wd_t03_graph_signature;
+- WeilDefect.WDT03.wd_t03_defect_factorization;
+- WeilDefect.WDT03.wd_t03_reduced_graph_normal_form.
+
+The imported theorem is isolated in the explicit proposition-valued interface
+WeilDefect.WDT03.DouglasRangeData. It supplies only the Douglas
+range-inclusion step giving the unique reduced exact factor.
+
+Once the reduced signed solution X is supplied, Lean verifies internally the
+orthogonal kernel decomposition, graph characterization, graph signature
+identity, and defect factorization.
+
+The coefficient direct-sum inner form is represented explicitly as
+
+\[
+\langle(a,v),(x,u)\rangle_\oplus
+=
+\langle a,x\rangle+\langle v,u\rangle,
+\]
+
+so the formalization does not confuse Lean's ordinary product Banach norm with
+the Hilbert direct-sum norm.
+
+Dedicated theorem CI built WeilDefect.Screening.GraphNormalForm.
+
+Certificate run:
+
+\[
+\boxed{\texttt{35962199281}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{570dcb25de1e728bb2b135363e0b0d1ae735b5e5}}.
+\]
+
+The run passed the single-module Lake build and unfinished-proof/project-axiom
+gate. The Douglas source theorem itself remains unformalized.
 
 No other stable theorem ID is promoted by this run.
