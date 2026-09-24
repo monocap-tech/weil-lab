@@ -45,7 +45,7 @@ jobs:
 
       - name: Check current theorem target
         shell: bash
-        run: lake build WeilDefect.Screening.Taxonomy
+        run: lake build WeilDefect.Screening.RankOne
 
       - name: Reject unfinished trusted declarations
         shell: bash
