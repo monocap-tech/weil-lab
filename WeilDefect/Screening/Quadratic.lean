@@ -17,7 +17,7 @@ def coeffSignature (a : Kpos) (u : Kneg) : ℝ :=
   ‖a‖ ^ 2 - ‖u‖ ^ 2
 
 /-- Selected physical quadratic defect written through Hilbert adjoints. -/
-def selectedQuadratic
+noncomputable def selectedQuadratic
     (Spos : Kpos →L[𝕜] H)
     (Sneg : Kneg →L[𝕜] H)
     (h : H) : ℝ :=
@@ -35,7 +35,7 @@ theorem wd_t01_quadratic_identity
   rfl
 
 /-- Full quadratic defect after adding an unselected negative background channel. -/
-def fullQuadratic
+noncomputable def fullQuadratic
     (Spos : Kpos →L[𝕜] H)
     (Sneg : Kneg →L[𝕜] H)
     (S_B : B →L[𝕜] H)
