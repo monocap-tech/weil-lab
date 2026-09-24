@@ -53,7 +53,9 @@ Current position:
 \qquad
 \text{H1-P3 COMPLETE}
 \qquad
-\text{H1-P4 ACTIVE}.
+\text{H1-P4 COMPLETE}
+\qquad
+\text{H1-P5 ACTIVE}.
 }
 ```
 
@@ -377,11 +379,25 @@ WD-T37 through WD-T39 have completed the Horizon-1 composite morphology audit; s
 
 The audited packages preserve carrier identification, multiplier uniformity, strict-right prime thresholds, full-coordinate escape requirements, and weak/strong convergence distinctions.
 
+### P4.4 disposition
+
+WD-X01 through WD-X07 have completed the examples/sharpness audit; see [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md).
+
+All H1-P4 audit classes are now complete:
+
+- WD-T01 through WD-T36: P4-AUDIT-PASSED;
+- WD-T37 through WD-T39: COMPOSITE-AUDIT-PASSED;
+- WD-X01 through WD-X07: EXAMPLE-AUDIT-PASSED;
+- WD-S01 through WD-S05: SCOPE-ONLY;
+- load-bearing external inputs: SOURCE-PINNED.
+
+Therefore **H1-P4 is COMPLETE**.
+
 ### Current cursor
 
 ```math
 \boxed{
-\texttt{H1-P4.4 / EXAMPLES AND SHARPNESS AUDIT}
+\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
 }
 ```
 
@@ -389,7 +405,7 @@ The audited packages preserve carrier identification, multiplier uniformity, str
 
 ## H1-P4 — Proof audit and theorem normalization
 
-**Status:** ACTIVE.
+**Status:** COMPLETE.
 
 Every theorem will receive:
 
@@ -415,7 +431,7 @@ with auxiliary lemmas and counterexamples under separate namespaces.
 
 ## H1-P5 — Public mathematical package
 
-**Status:** PENDING.
+**Status:** ACTIVE.
 
 Required deliverables:
 
