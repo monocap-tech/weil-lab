@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T33 | WeilDefect.wd_t33_adaptive_cocancellation | LEAN-CERTIFIED |
 | WD-T30 | WeilDefect.wd_t30_two_mode_kernel_combination + WeilDefect.wd_t30_zero_functional_preserves_every_mode | LEAN-CERTIFIED |
 | WD-X01 | WeilDefect.wd_x01_partial_sum + WeilDefect.wd_x01_finite_defect_negative + WeilDefect.wd_x01_finite_defect_formula + WeilDefect.wd_x01_defect_tendsto_zero | LEAN-CERTIFIED |
 | WD-T26 | \`WeilDefect.wd_t26_finite_pair_zero_moment\` | LEAN-IN-PROGRESS |
@@ -232,3 +233,65 @@ The run passed:
 - unfinished-proof/project-axiom rejection.
 
 No other stable theorem ID is promoted by this run.
+
+
+## WD-T33 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T33: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declaration:
+
+- WeilDefect.wd_t33_adaptive_cocancellation.
+
+The certificate formalizes the exact cutoffwise algebraic implication:
+
+\[
+N+F=P+A,
+\qquad
+N=A
+\quad\Longrightarrow\quad
+P=F.
+\]
+
+This is the complete algebraic content of the audited WD-T33 co-adaptation theorem.
+The analytic interpretation of \(N,F,P,A\) belongs to the surrounding explicit-formula
+setup and is not assumed by the Lean proof.
+
+The current theorem file blob
+
+\[
+\texttt{d01f92d725b9ad412130424b74bea9efadcda1e1}
+\]
+
+is identical to the blob included in successful full-library GitHub Actions run
+
+\[
+\boxed{
+\texttt{35951096357}.
+}
+\]
+
+That run checked commit
+
+\[
+\texttt{e9f158d3c8fb5b85494d08931d62cddfc8d4a534}
+\]
+
+with:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- full Lake build;
+- unfinished-proof/project-axiom rejection.
+
+A later dedicated WD-T33-only CI run was also launched; certification does not depend
+on it because the exact current source blob was already kernel-checked in the successful
+full-library run.
+
+No other stable theorem ID is promoted by this certificate.
