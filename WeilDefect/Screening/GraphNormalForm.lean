@@ -20,26 +20,20 @@ def synthesisMap
     (Kpos × Kneg) →L[ℂ] H :=
   Spos.coprod Sneg
 
-/--
-The Hilbert-direct-sum inner product on coefficient pairs, written explicitly.
-This avoids conflating the Hilbert direct-sum norm with Lean's ordinary
-sup-norm product.
--/
-def coeffInner
+/-- Direct-sum Hilbert inner form on coefficient pairs. -/
+noncomputable def pairInner
     (z w : Kpos × Kneg) : ℂ :=
   inner ℂ z.1 w.1 + inner ℂ z.2 w.2
 
 /--
-Membership in the analysis space A=(ker E)⊥, expressed directly through the
-coefficient inner product.
+Membership in A=(ker E)⊥, expressed against the direct-sum Hilbert inner
+form without imposing the Banach product norm as a Hilbert norm.
 -/
-def AnalysisMem
+noncomputable def AnalysisMember
     (Spos : Kpos →L[ℂ] H)
     (Sneg : Kneg →L[ℂ] H)
     (z : Kpos × Kneg) : Prop :=
-  ∀ y : Kpos × Kneg,
-    synthesisMap Spos Sneg y = 0 →
-      coeffInner z y = 0
+  ∀ w, synthesisMap Spos Sneg w = 0 → pairInner z w = 0
 
 /--
 Imported Douglas range-inclusion interface used by WD-T03.
@@ -54,7 +48,9 @@ structure DouglasRangeData
       ∃! C : Kneg →L[ℂ] Kpos,
         A = B ∘L C ∧ IsReducedFor B C
 
-/-- Douglas reduced solution transferred to the project's sign convention. -/
+/--
+Douglas reduced solution transferred to the project's sign convention.
+-/
 theorem signed_reduced_of_range
     (Spos : Kpos →L[ℂ] H)
     (Sneg : Kneg →L[ℂ] H)
@@ -93,8 +89,7 @@ theorem kernel_iff
     refine ⟨x - X u, ?_, ?_⟩
     · have h' := h
       simp [synthesisMap, hfac] at h'
-      rw [map_sub]
-      simpa only [sub_eq_add_neg] using h'
+      simpa [sub_eq_add_neg, map_sub] using h'
     · abel
   · rintro ⟨k, hk, rfl⟩
     simp [synthesisMap, hfac, hk]
@@ -106,13 +101,13 @@ theorem kernel_summands_orthogonal
     (hred : IsReducedFor Spos X)
     (k : Kpos) (u : Kneg)
     (hk : Spos k = 0) :
-    coeffInner (k, (0 : Kneg)) (X u, u) = 0 := by
-  simp [coeffInner, hred u k hk]
+    pairInner (k, (0 : Kneg)) (X u, u) = 0 := by
+  simpa [pairInner] using hred u k hk
 
 /--
-WD-T03 kernel split, pointwise and unique:
-every kernel vector is the orthogonal sum of a positive-kernel vector and
-the graph vector (Xu,u).
+WD-T03 kernel split, expressed pointwise:
+every kernel vector decomposes uniquely as a kernel-positive component plus
+the graph component (Xu,u).
 -/
 theorem wd_t03_kernel_decomposition
     (Spos : Kpos →L[ℂ] H)
@@ -125,7 +120,7 @@ theorem wd_t03_kernel_decomposition
       ∃! k : Kpos,
         Spos k = 0 ∧
         (x,u) = (k,0) + (X u,u) ∧
-        coeffInner (k,(0 : Kneg)) (X u,u) = 0 := by
+        pairInner (k,(0 : Kneg)) (X u,u) = 0 := by
   constructor
   · intro h
     rcases (kernel_iff Spos Sneg X hfac x u).mp h with ⟨k, hk, hx⟩
@@ -134,34 +129,34 @@ theorem wd_t03_kernel_decomposition
       ext <;> simp [hx]
     · intro k' hk'
       have h1 := congrArg Prod.fst hk'.2.1
-      simp at h1
-      have heq : k' + X u = k + X u := h1.symm.trans hx
-      exact add_right_cancel heq
-  · rintro ⟨k, hk, hsplit, -⟩
+      have h2 := congrArg Prod.fst (show (x,u) = (k,0) + (X u,u) by
+        ext <;> simp [hx])
+      simp at h1 h2
+      exact add_right_cancel (h1.symm.trans h2)
+  · rintro ⟨k, ⟨hk, hsplit, _⟩, _⟩
     apply (kernel_iff Spos Sneg X hfac x u).mpr
     refine ⟨k, hk, ?_⟩
-    have hfst := congrArg Prod.fst hsplit
-    simpa using hfst
+    have := congrArg Prod.fst hsplit
+    simpa using this
 
-/--
-Positive-coordinate membership in (ker Spos)⊥, expressed pointwise.
--/
-def PosReduced
+/-- Membership in ker(Spos)⊥ written pointwise. -/
+noncomputable def PosReduced
     (Spos : Kpos →L[ℂ] H)
     (a : Kpos) : Prop :=
-  ∀ k : Kpos, Spos k = 0 → inner ℂ a k = 0
+  ∀ k, Spos k = 0 → inner ℂ a k = 0
 
 /--
 WD-T03 graph normal form:
-A=(ker E)⊥ is exactly graph(-X†) over (ker Spos)⊥.
+A=(ker E)⊥ is exactly graph(-X†) over ker(Spos)⊥.
 -/
 theorem wd_t03_analysis_graph_iff
     (Spos : Kpos →L[ℂ] H)
     (Sneg : Kneg →L[ℂ] H)
     (X : Kneg →L[ℂ] Kpos)
     (hfac : Sneg = -(Spos ∘L X))
+    (hred : IsReducedFor Spos X)
     (a : Kpos) (v : Kneg) :
-    AnalysisMem Spos Sneg (a,v) ↔
+    AnalysisMember Spos Sneg (a,v) ↔
       PosReduced Spos a ∧ v = -(X†) a := by
   constructor
   · intro hA
@@ -170,26 +165,24 @@ theorem wd_t03_analysis_graph_iff
       have hker : synthesisMap Spos Sneg (k,(0 : Kneg)) = 0 := by
         simp [synthesisMap, hk]
       have hh := hA (k,0) hker
-      simpa [coeffInner] using hh
-    have hv : v = -(X†) a := by
+      simpa [pairInner] using hh
+    have hvEq : v = -(X†) a := by
       apply ext_inner_right ℂ
       intro u
       have hker : synthesisMap Spos Sneg (X u,u) = 0 := by
         simp [synthesisMap, hfac]
       have hh := hA (X u,u) hker
-      unfold coeffInner at hh
-      rw [← ContinuousLinearMap.adjoint_inner_left X u a] at hh
+      rw [pairInner, ← ContinuousLinearMap.adjoint_inner_left X u a] at hh
       rw [inner_neg_left]
-      exact eq_neg_iff_add_eq_zero.mpr (by simpa [add_comm] using hh)
-    exact ⟨ha, hv⟩
+      exact eq_neg_of_add_eq_zero_right hh
+    exact ⟨ha, hvEq⟩
   · rintro ⟨ha, rfl⟩
     intro y hy
     rcases y with ⟨x,u⟩
     rcases (kernel_iff Spos Sneg X hfac x u).mp hy with ⟨k, hk, hx⟩
-    subst x
     have hak : inner ℂ a k = 0 := ha k hk
-    unfold coeffInner
-    rw [inner_add_right, ← ContinuousLinearMap.adjoint_inner_left X u a]
+    subst x
+    rw [pairInner, inner_add_right, ← ContinuousLinearMap.adjoint_inner_left X u a]
     simp [hak]
 
 /-- WD-T03 signature identity on the graph. -/
@@ -200,7 +193,9 @@ theorem wd_t03_graph_signature
       = ‖a‖ ^ 2 - ‖(X†) a‖ ^ 2 := by
   simp [coeffQ]
 
-/-- WD-T03 defect factorization D=Spos(I-XX†)Spos†. -/
+/--
+WD-T03 defect factorization D=Spos(I-XX†)Spos†.
+-/
 theorem wd_t03_defect_factorization
     (Spos : Kpos →L[ℂ] H)
     (Sneg : Kneg →L[ℂ] H)
@@ -226,7 +221,7 @@ theorem wd_t03_reduced_graph_normal_form
       Sneg = -(Spos ∘L X) ∧
       IsReducedFor Spos X ∧
       (∀ a v,
-        AnalysisMem Spos Sneg (a,v) ↔
+        AnalysisMember Spos Sneg (a,v) ↔
           PosReduced Spos a ∧ v = -(X†) a) ∧
       physicalDefect Spos Sneg
         =
@@ -237,7 +232,7 @@ theorem wd_t03_reduced_graph_normal_form
   refine ⟨X, ?_, ?_⟩
   · refine ⟨hX.1, hX.2, ?_, ?_⟩
     · intro a v
-      exact wd_t03_analysis_graph_iff Spos Sneg X hX.1 a v
+      exact wd_t03_analysis_graph_iff Spos Sneg X hX.1 hX.2 a v
     · exact wd_t03_defect_factorization Spos Sneg X hX.1
   · intro Y hY
     exact huniq Y ⟨hY.1, hY.2.1⟩
