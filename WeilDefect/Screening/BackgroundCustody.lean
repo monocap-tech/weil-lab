@@ -1,5 +1,6 @@
 import WeilDefect.Screening.Quadratic
 import WeilDefect.Screening.DefectIndex
+import WeilDefect.Screening.Douglas
 import Mathlib
 
 namespace WeilDefect.WDT07
@@ -182,7 +183,7 @@ theorem wd_t09_shared_defect_factorization
   have hBadj := adjoint_of_signed_factor Spos S_B X_B hB
   ext h
   simp only [sharedDefect, ContinuousLinearMap.sub_apply, ContinuousLinearMap.comp_apply]
-  rw [hM, hB, hMadj, hBadj]
+  rw [hMadj, hBadj, hM, hB]
   simp [map_sub]
 
 theorem wd_t09_full_nonnegative_iff_joint_budget
@@ -194,9 +195,14 @@ theorem wd_t09_full_nonnegative_iff_joint_budget
   constructor
   · intro hfull
     let C : Set Kpos := {a | ‖(X_M†) a‖ ^ 2 + ‖(X_B†) a‖ ^ 2 ≤ ‖a‖ ^ 2}
-    have hclosed : IsClosed C := by
-      unfold C
+    have hleft :
+        Continuous (fun a : Kpos =>
+          ‖(X_M†) a‖ ^ 2 + ‖(X_B†) a‖ ^ 2) := by
       fun_prop
+    have hright : Continuous (fun a : Kpos => ‖a‖ ^ 2) := by
+      fun_prop
+    have hclosed : IsClosed C := by
+      exact isClosed_le hleft hright
     have hrange : ((Spos†).range : Set Kpos) ⊆ C := by
       rintro a ⟨h, rfl⟩
       have hh := hfull h
@@ -225,7 +231,8 @@ theorem wd_t09_separate_contractions_not_joint :
   · simp [IsContraction]
   · intro hjoint
     have h := hjoint (1 : ℂ)
-    simp [JointBudget, ContinuousLinearMap.adjoint_id] at h
+    simp [ContinuousLinearMap.adjoint_id] at h
+    norm_num at h
 
 theorem wd_t09_shared_screening_budget
     (Spos : Kpos →L[ℂ] H) (S_M : M →L[ℂ] H) (S_B : B →L[ℂ] H)
