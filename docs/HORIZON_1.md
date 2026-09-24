@@ -204,7 +204,7 @@ Every retained zeta-specific result is now typed by its H1-P1 carrier and by the
 
 ## H1-P3 — Defect morphology theorem
 
-**Status:** ACTIVE.
+**Status:** COMPLETE.
 
 This phase packages the completed ingredients into theorem-shaped obstruction morphologies. It does not solve the RH-facing interfaces.
 
@@ -351,11 +351,19 @@ The phase now distinguishes:
 
 Therefore **H1-P3 is COMPLETE**.
 
+### P4.0 disposition
+
+The stable theorem inventory is now canonical in [Theorem Ledger](THEOREM_LEDGER.md), with dependency/source custody in [Dependency Audit](DEPENDENCY_AUDIT.md).
+
+Historical labels remain immutable aliases. Stable public IDs run from WD-T01 through WD-T39, with separate example and scope namespaces.
+
+Mathematical standing is now separated from verification status: an internal proof is not described as independently certified until a later audit explicitly promotes it.
+
 ### Current cursor
 
 \[
 \boxed{
-\texttt{H1-P4.0 / THEOREM LEDGER AND DEPENDENCY AUDIT}
+\texttt{H1-P4.1 / IMPORTED SOURCE PINNING}
 }
 \]
 
