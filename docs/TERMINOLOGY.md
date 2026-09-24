@@ -790,3 +790,10 @@ A **source pin** is the durable record connecting one external input to:
 2. its exact theorem/equation location;
 3. the notation or convention imported into this project;
 4. the stable theorem IDs that consume it.
+
+
+## P4-audit-passed
+
+**P4-AUDIT-PASSED** means that the theorem's current repository proof/reduction has passed the Horizon-1 internal audit for stated hypotheses, domains, topology transitions, quantifiers, and dependency custody, after any recorded corrections.
+
+It does not mean independent certification, formal verification, or external refereeing.
