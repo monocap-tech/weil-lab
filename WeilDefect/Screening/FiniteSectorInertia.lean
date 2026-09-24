@@ -290,6 +290,73 @@ noncomputable def neutralIndices (Y : M →L[ℂ] Kpos) :
     Finset (Fin (finrank ℂ (ActiveCarrier Y))) :=
   Finset.univ.filter (fun i => activeSigma Y i = 1)
 
+/-- Coordinates along the singular directions whose gain exceeds one. -/
+noncomputable def negativeCoordinates (Y : M →L[ℂ] Kpos) :
+    ActiveCarrier Y →L[ℂ] ({i // i ∈ negativeIndices Y} → ℂ) :=
+  ContinuousLinearMap.pi fun i =>
+    (EuclideanSpace.proj i.1).comp
+      (activeEigenbasis Y).repr.toContinuousLinearEquiv.toContinuousLinearMap
+
+/-- Vanishing of all negative spectral coordinates forces the graph form to be nonnegative. -/
+theorem wd_t11_graphQ_nonneg_of_negativeCoordinates_zero
+    (Y : M →L[ℂ] Kpos)
+    (a : ActiveCarrier Y)
+    (ha : negativeCoordinates Y a = 0) :
+    0 ≤ activeGraphQ Y a := by
+  rw [wd_t11_graphQ_diagonal]
+  apply Finset.sum_nonneg
+  intro i _
+  by_cases hi : i ∈ negativeIndices Y
+  · have hcoord := congrFun ha ⟨i, hi⟩
+    have hz : (activeEigenbasis Y).repr a i = 0 := by
+      simpa [negativeCoordinates] using hcoord
+    simp [hz]
+  · have hsle : activeSigma Y i ≤ 1 := by
+      simp only [negativeIndices, Finset.mem_filter, Finset.mem_univ,
+        true_and] at hi
+      exact le_of_not_gt hi
+    have hsnonneg : 0 ≤ activeSigma Y i :=
+      (activeAdjoint Y).toLinearMap.singularValues_nonneg i
+    have hweight : 0 ≤ 1 - activeSigma Y i ^ 2 := by
+      nlinarith
+    exact mul_nonneg hweight (sq_nonneg _)
+
+/--
+Any finite negative witness injects into the coordinates with singular value
+strictly larger than one. Hence its rank cannot exceed their number.
+-/
+theorem wd_t11_negative_rank_le_count
+    (Y : M →L[ℂ] Kpos)
+    {n : ℕ}
+    (hneg : HasNegativeRank (activeGraphQ Y) Set.univ n) :
+    n ≤ (negativeIndices Y).card := by
+  rcases hneg with ⟨T, _, hTneg⟩
+  let C :
+      EuclideanSpace ℂ (Fin n) →L[ℂ]
+        ({i // i ∈ negativeIndices Y} → ℂ) :=
+    (negativeCoordinates Y).comp T
+  have hCinj : Function.Injective C := by
+    intro x y hxy
+    by_contra hne
+    have hd : x - y ≠ 0 := sub_ne_zero.mpr hne
+    let u : EuclideanSpace ℂ (Fin n) := (‖x - y‖⁻¹ : ℂ) • (x - y)
+    have hu : ‖u‖ = 1 := by
+      simp [u, norm_smul_inv_norm hd]
+    have hCdiff : C (x - y) = 0 := by
+      rw [map_sub, hxy, sub_self]
+    have hCu : C u = 0 := by
+      simp [u, hCdiff]
+    have hcoord : negativeCoordinates Y (T u) = 0 := by
+      simpa [C, ContinuousLinearMap.comp_apply] using hCu
+    have hnonneg :=
+      wd_t11_graphQ_nonneg_of_negativeCoordinates_zero Y (T u) hcoord
+    have hstrict := hTneg u hu
+    linarith
+  have hdim :=
+    LinearMap.finrank_le_finrank_of_injective
+      (f := C.toLinearMap) hCinj
+  simpa [C, Fintype.card_coe] using hdim
+
 /-- The finite negative spectral space. -/
 noncomputable def negativeSpectralSpace (Y : M →L[ℂ] Kpos) :
     Submodule ℂ (ActiveCarrier Y) :=
