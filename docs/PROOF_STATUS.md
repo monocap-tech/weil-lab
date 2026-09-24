@@ -23,6 +23,7 @@ A theorem now carries two independent statuses.
 
 - **P4-AUDIT-PENDING** — internal proof has not yet completed the Horizon-1 line-by-line audit.
 - **SOURCE-PIN-PENDING** — the external source family is known, but exact theorem/equation pinning remains.
+- **SOURCE-PINNED** — exact external theorem/equation and convention are fixed; internal consumption may still await audit.
 - **COMPOSITE-AUDIT-PENDING** — morphology package still needs expanded dependency/hypothesis audit.
 - **SCOPE-ONLY** — no proof certification is claimed.
 
@@ -75,17 +76,19 @@ Historical labels such as WD-A1, ZW1-T7, or P3-N4 remain immutable aliases.
 
 ---
 
-## Imported-source audit queue
+## Imported-source status
 
-The load-bearing external inputs currently awaiting exact source pinning are:
+Exact pins are now complete in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
+
+SOURCE-PINNED inputs:
 
 1. Douglas factorization — WD-T02;
 2. Bombieri finite Weil inertia/multiplicity/kernel estimates — WD-T22, WD-T23, WD-T28;
 3. standard zeta zero counting — WD-T28, WD-T31;
 4. compact-window geometric explicit formula — WD-T34, WD-T35;
-5. digamma/Stirling asymptotics — WD-T35.
+5. digamma asymptotics — WD-T35.
 
-Anderson–Trapp shorting and Suzuki's operator framework are contextual/non-load-bearing for the current theorem statements.
+Anderson–Trapp shorting and Suzuki's operator framework remain contextual/non-load-bearing for the current theorem statements.
 
 ---
 
@@ -161,6 +164,6 @@ PAP/MTP closure and RH are not proved by this repository.
 
 \[
 \boxed{
-\texttt{H1-P4.1 / IMPORTED SOURCE PINNING}
+\texttt{H1-P4.2 / INTERNAL PROOF AUDIT}
 }
 \]
