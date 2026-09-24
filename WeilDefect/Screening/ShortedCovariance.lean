@@ -308,7 +308,9 @@ theorem wd_t13_block_solution_first_component
   have hy :
       y = -operatorInverse C ((B†) x) := by
     have hCy : C y = -((B†) x) := by
-      linarith only [hsecond]
+      have hsum : C y + (B†) x = 0 := by
+        simpa [add_comm] using hsecond
+      exact eq_neg_of_add_eq_zero_left hsum
     calc
       y = operatorInverse C (C y) := by
         symm
