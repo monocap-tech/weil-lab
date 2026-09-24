@@ -112,6 +112,10 @@ H1-P3.0 is complete: the negative branch is packaged in [Negative Defect Morphol
 
 H1-P3.1 is also complete: [Neutral Defect Morphology Theorem](docs/NEUTRAL_DEFECT_MORPHOLOGY.md) packages the attained-neutral branch as a physical compact-window Weil null mode governed by a logarithmic-order operator plus finitely many arithmetic translations, with the support question left open.
 
+H1-P3.2 completes the morphology phase: [Noncompact Background Morphology Theorem](docs/NONCOMPACT_BACKGROUND_MORPHOLOGY.md) separates moving selected-sector escape from unselected-background escape and from fixed full-divisor convergence.
+
+The project is now in **H1-P4: proof audit and theorem normalization**.
+
 ## Current theorem picture
 
 | Component | Current standing |
@@ -218,6 +222,7 @@ The remaining problem is tracked as
 - [Explicit-Formula Arithmetic Attachment](docs/EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) — far-tail localization, completed-Ξ next jets, finite prime shifts, and logarithmic form order.
 - [Negative Defect Morphology Theorem](docs/NEGATIVE_DEFECT_MORPHOLOGY.md) — packaged fixed-packet negative endpoint morphology and stop line.
 - [Neutral Defect Morphology Theorem](docs/NEUTRAL_DEFECT_MORPHOLOGY.md) — attained-neutral null mode, logarithmic operator, and null-extension stop line.
+- [Noncompact Background Morphology Theorem](docs/NONCOMPACT_BACKGROUND_MORPHOLOGY.md) — moving selected escape, background escape, and fixed full-divisor convergence.
 - [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
