@@ -73,6 +73,7 @@ theorem wd_t01_defect_inner_identity
   simp only [physicalDefect, physicalQ, coeffQ, analysisMap,
     ContinuousLinearMap.sub_apply, ContinuousLinearMap.comp_apply,
     ContinuousLinearMap.prod_apply]
+  rw [inner_sub_left]
   rw [← ContinuousLinearMap.adjoint_inner_right Spos ((Spos†) h) h]
   rw [← ContinuousLinearMap.adjoint_inner_right Sneg ((Sneg†) h) h]
   simp [inner_self_eq_norm_sq_to_K]
