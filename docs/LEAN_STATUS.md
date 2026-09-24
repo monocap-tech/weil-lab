@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T01 | WeilDefect.WDT01.wd_t01_defect_inner_identity + WeilDefect.WDT01.wd_t01_nonnegative_iff + WeilDefect.WDT01.wd_t01_negative_rank_iff | LEAN-CERTIFIED |
 | WD-T33 | WeilDefect.wd_t33_adaptive_cocancellation | LEAN-CERTIFIED |
 | WD-T30 | WeilDefect.wd_t30_two_mode_kernel_combination + WeilDefect.wd_t30_zero_functional_preserves_every_mode | LEAN-CERTIFIED |
 | WD-X01 | WeilDefect.wd_x01_partial_sum + WeilDefect.wd_x01_finite_defect_negative + WeilDefect.wd_x01_finite_defect_formula + WeilDefect.wd_x01_defect_tendsto_zero | LEAN-CERTIFIED |
@@ -295,3 +296,83 @@ on it because the exact current source blob was already kernel-checked in the su
 full-library run.
 
 No other stable theorem ID is promoted by this certificate.
+
+
+## WD-T01 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T01: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.WDT01.wd_t01_coeff_identity;
+- WeilDefect.WDT01.wd_t01_defect_inner_identity;
+- WeilDefect.WDT01.wd_t01_nonnegative_iff;
+- WeilDefect.WDT01.negativeWitness_injective_of_zero;
+- WeilDefect.WDT01.wd_t01_physical_to_analysis_rank;
+- WeilDefect.WDT01.wd_t01_analysis_to_physical_rank;
+- WeilDefect.WDT01.wd_t01_negative_rank_iff.
+
+The formal negative-index statement is encoded dimension-by-dimension.
+
+For each \(n\), Lean proves equivalence between:
+
+1. an \(n\)-direction negative witness in the physical carrier; and
+2. an \(n\)-direction negative witness in the closed analysis carrier.
+
+The bridge theorem proves such a unit-sphere negative witness is injective whenever
+the quadratic form vanishes at zero. Therefore these witnesses are genuine
+\(n\)-dimensional negative directions, and equality for every finite \(n\) is the
+formal finite-rank-spectrum version of equality of the supremum negative indices.
+
+The certificate also proves:
+
+\[
+[E^*h,E^*h]_J
+=
+\langle Dh,h\rangle,
+\]
+
+in the project coefficient/operator encoding, and
+
+\[
+\mathcal A\text{ nonnegative}
+\iff
+D\text{ nonnegative}.
+\]
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.DefectIndex}.
+\]
+
+Certificate run:
+
+\[
+\boxed{
+\texttt{35959085940}
+}
+\]
+
+at repository head:
+
+\[
+\boxed{
+\texttt{79218489b0a3cdeacc5ed7abe44565ee45fffca5}.
+}
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- single-module Lake build;
+- unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
