@@ -216,9 +216,9 @@ theorem wd_t11_neutral_space_graphQ_zero
   change ‖(a : ActiveCarrier Y)‖ ^ 2 -
     ‖W (a : ActiveCarrier Y)‖ ^ 2 = 0
   have hnormc :
-      (((‖(a : ActiveCarrier Y)‖ ^ 2 : ℝ) : ℂ))
+      ((‖(a : ActiveCarrier Y)‖ : ℂ) ^ 2)
         =
-      (((‖W (a : ActiveCarrier Y)‖ ^ 2 : ℝ) : ℂ)) := by
+      ((‖W (a : ActiveCarrier Y)‖ : ℂ) ^ 2) := by
     simpa only [inner_self_eq_norm_sq_to_K] using hinner
   have hnorm :
       ‖(a : ActiveCarrier Y)‖ ^ 2
