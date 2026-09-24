@@ -47,7 +47,7 @@ The imported premise itself remains separately unformalized until its source the
 
 ## Phases
 
-### LEAN-H1-P0 — Infrastructure and vertical pilot
+### LEAN-H1-P0 — Infrastructure and vertical pilot — COMPLETE
 
 - initialize Lake/mathlib project;
 - pin toolchain;
@@ -55,7 +55,7 @@ The imported premise itself remains separately unformalized until its source the
 - prohibit \`sorry\`, \`admit\`, and project \`axiom\`;
 - certify a small vertical slice of algebraic theorem/example statements.
 
-### LEAN-H1-P1 — Algebraic and finite-dimensional core
+### LEAN-H1-P1 — Algebraic and finite-dimensional core — ACTIVE
 
 Primary targets:
 
@@ -143,6 +143,6 @@ Only after this exhaustion condition is met does the project resume:
 
 \[
 \boxed{
-\texttt{LEAN-H1-P0 / INFRASTRUCTURE AND VERTICAL PILOT}.
+\texttt{LEAN-H1-P1 / ALGEBRAIC AND FINITE-DIMENSIONAL CORE}.
 }
 \]
