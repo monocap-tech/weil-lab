@@ -23,7 +23,7 @@ They have different consequences.
 
 A moving selected sector can erase every nonzero selected weak limit.
 
-An escaping unselected background cannot erase a negative ray already anchored in one fixed finite selected packet; it only prevents strong full-divisor convergence.
+An escaping unselected background cannot erase a negative ray already anchored in one fixed finite selected packet; it only prevents fixed full-divisor negative weak limit.
 
 ---
 
@@ -304,11 +304,15 @@ Therefore the fixed selected packet supplies an automatic finite coordinate anch
 
 For a fixed finite selected packet, any sequence satisfying
 
-[
-limsup_n|u_n|>0
-]
+\[
+\limsup_{n\to\infty}\|u_n\|>0
+\]
 
-has a subsequence on which the selected negative coordinate converges strongly to a nonzero (uin M_Pi).
+has a subsequence on which the selected negative coordinate converges strongly to a nonzero
+
+\[
+u\in M_\Pi.
+\]
 
 Consequently, **full coefficient** moving-sector escape P3-B2 is impossible on any fixed-packet branch whose selected negative norm stays bounded away from zero.
 
@@ -628,19 +632,63 @@ Thus a fixed full-divisor negative **weak limit** survives. Strong convergence o
 
 ---
 
-## P3-B6 — Fixed full-divisor negative-ray theorem
+## P3-B6 — Fixed full-divisor negative-limit theorem
 
-If the normalized unselected background is bounded and coefficient-tail tight, then a subsequence converges strongly to a fixed background vector $b$, and the selected persistent ray extends to a fixed full-divisor negative coefficient ray
+If the normalized unselected background is bounded and coefficient-tail tight, then after passage to a subsequence
 
-```math
+\[
+b_n\to b
+\]
+
+strongly.
+
+From the fixed selected-ray branch,
+
+\[
+u_n\to u
+\]
+
+strongly while, in general,
+
+\[
+a_n\rightharpoonup a
+\]
+
+only weakly.
+
+Therefore the full coefficient vectors have the fixed weak limit
+
+\[
 \boxed{
-Y_{\rm full}=(a,u,b).
+Y_{\rm full}=(a,u,b),
 }
-```
+\]
 
-**Standing:** PROVED CONDITIONAL on the P3.0 fixed selected ray + background tail tightness.
+and the entire negative sector converges strongly.
+
+Its full signature satisfies
+
+\[
+\boxed{
+[Y_{\rm full},Y_{\rm full}]_{\rm full}
+\le
+-\kappa-\|b\|^2
+<0.
+}
+\]
+
+If one additionally knows
+
+\[
+a_n\to a
+\]
+
+strongly, then the whole full-divisor coefficient vector converges strongly.
+
+**Standing:** PROVED CONDITIONAL on the P3.0 fixed selected ray + background tail tightness; full strong convergence requires the additional positive-coordinate compactness hypothesis.
 
 ---
+
 
 # 8. Finite positive shadows do not cure background noncompactness
 
@@ -783,7 +831,7 @@ Once a fixed selected negative ray has been anchored, the normalized unselected 
 \quad
 \text{bounded tail escape},
 \quad
-\text{strong full-divisor convergence}.
+\text{fixed full-divisor negative weak limit}.
 }
 ```
 
