@@ -47,7 +47,9 @@ Current position:
 \boxed{
 \text{H1-P0 COMPLETE}
 \qquad
-\text{H1-P1 ACTIVE}.
+\text{H1-P1 COMPLETE}
+\qquad
+\text{H1-P2 ACTIVE}.
 }
 \]
 
@@ -168,17 +170,27 @@ It also identified a distinct **non-attained approximate-neutral boundary** at c
 
 ### Current result
 
-H1-P1.1 has now extracted the selected/background finite-index transfer calculus; see [Restricted-Channel and Finite-Index Transfer](RESTRICTED_CHANNEL_TRANSFER.md).
+H1-P1 is **COMPLETE**.
 
-The remaining H1-P1 abstraction target is the support/observation filtration and persistence limit.
+The phase now consists of three canonical documents:
+
+1. [Abstract Defect Calculus](ABSTRACT_DEFECT_CALCULUS.md);
+2. [Restricted-Channel and Finite-Index Transfer](RESTRICTED_CHANNEL_TRANSFER.md);
+3. [Support Filtration and Persistence Limits](SUPPORT_FILTRATION_PERSISTENCE.md).
+
+Together they cover the basis-free defect operator, Douglas screening, finite selected sectors, shared screening budgets, shorting, support filtrations, endpoint jumps, persistent-ray compactness, representative blow-up, and moving-sector escape.
 
 ### Exit condition
 
-There is a self-contained list of abstract definitions and theorems whose statements do not depend on zeta-specific notation, including support-filtration persistence and critical-endpoint behavior.
+**SATISFIED.** A self-contained zeta-independent theorem package now exists.
 
 ---
 
 ## H1-P2 — Zeta-Weil specialization
+
+### Status
+
+**ACTIVE.**
 
 ### Purpose
 
@@ -216,6 +228,16 @@ H1-P2 may specialize H1-P1 but may not silently strengthen an abstract theorem b
 ### Exit condition
 
 Every zeta-specific theorem states explicitly which H1-P1 theorem it specializes and which new arithmetic hypotheses it consumes.
+
+### First cursor
+
+[
+oxed{
+	exttt{H1-P2.0 / ZETA-WEIL SPECIALIZATION MAP}
+}
+]
+
+The first pass must map the existing Weil objects onto the abstract carriers before proving any new arithmetic strengthening.
 
 ---
 
