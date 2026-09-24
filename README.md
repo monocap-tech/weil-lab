@@ -49,11 +49,12 @@ boundary is deliberately before RH closure.
 | H1-P2 | Zeta-Weil specialization | Complete |
 | H1-P3 | Defect morphology theorem | Complete |
 | H1-P4 | Proof audit and theorem normalization | Complete |
-| H1-P5 | Public mathematical package | **Active** |
+| LEAN-H1 | Lean certification track | **Active** |
+| H1-P5 | Public mathematical package | Paused until LEAN-H1 exhaustion |
 
 Within H1-P4, source pinning, the internal proof audit, the composite
 morphology audit, and the examples/sharpness audit are complete. The current cursor is
-**H1-P5.0 / public package architecture**. Stable public theorem IDs and the
+**LEAN-H1-P0 / infrastructure and vertical pilot**. Stable public theorem IDs and the
 audit surfaces are canonical in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
 [Dependency Audit](docs/DEPENDENCY_AUDIT.md),
@@ -65,6 +66,11 @@ audit surfaces are canonical in the
 Project terms such as **horizon**, **phase**, **standing**, **interface**,
 **custody**, and **screening** are fixed in the
 [Terminology Registry](docs/TERMINOLOGY.md).
+
+Formal verification now has priority over H1-P5 packaging. See the
+[Lean Formalization Track](docs/LEAN_FORMALIZATION_TRACK.md) and
+[Lean Status Ledger](docs/LEAN_STATUS.md). H1-P5 resumes only after the
+formalization track is exhausted under its explicit completion rule.
 
 ## Core mathematical picture
 
