@@ -305,11 +305,35 @@ The theorem stops at
 
 without assuming a source-free lower bound on the near field.
 
+### P3.1 disposition
+
+The attained-neutral fixed-packet branch is now packaged in [Neutral Defect Morphology Theorem](NEUTRAL_DEFECT_MORPHOLOGY.md).
+
+\[
+\boxed{
+\text{attained criticality}
+\Longrightarrow
+W_ck=0
+\Longrightarrow
+\text{logarithmic-order compact-window operator}
++
+\text{finite prime translations}.
+}
+\]
+
+The theorem explicitly does not infer persistence from logarithmic regularity or from the finite translation structure.
+
+Its stop line is
+
+\[
+\texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
+\]
+
 ### Current cursor
 
 \[
 \boxed{
-\texttt{H1-P3.1 / NEUTRAL DEFECT MORPHOLOGY THEOREM}
+\texttt{H1-P3.2 / NONCOMPACT BACKGROUND MORPHOLOGY THEOREM}
 }
 \]
 
