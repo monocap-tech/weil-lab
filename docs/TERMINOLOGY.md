@@ -631,3 +631,66 @@ The **logarithmic form order** is the high-frequency asymptotic
 \]
 
 It implies that the natural form norm is equivalent, after an \(L^2\) shift, to a logarithmic Fourier/Sobolev norm rather than to a positive-order Sobolev norm.
+
+
+## Unit-gain neutral relation
+
+A **unit-gain neutral relation** is a finite-exception selected direction \(u\neq0\) satisfying
+
+\[
+C_c^*C_cu=u.
+\]
+
+Equivalently,
+
+\[
+\|C_cu\|=\|u\|.
+\]
+
+This is the attained-neutral boundary condition in the selected compensator metric.
+
+## Physical neutral mode
+
+A **physical neutral mode** is a nonzero physical vector \(k\) realizing a unit-gain neutral relation through
+
+\[
+C_cu=P_c^*k.
+\]
+
+With
+
+\[
+N_c=-P_cC_c,
+\]
+
+it satisfies
+
+\[
+N_c^*k=-u
+\]
+
+and therefore
+
+\[
+W_ck=0,
+\qquad
+W_c=P_cP_c^*-N_cN_c^*.
+\]
+
+## Null-extension problem
+
+The **null-extension problem** asks whether the zero extension \(\widetilde k\) of a compact-window physical neutral mode has Weil output
+
+\[
+\mathcal W_c^{\rm ext}\widetilde k
+\]
+
+vanishing on a nontrivial exterior collar adjacent to the original support.
+
+It is a fixed-vector support question, not merely a regularity or approximate-closure question.
+
+## Negative fall-through
+
+**Negative fall-through** is the fixed-packet critical alternative in which positive coefficient mass is lost in the right-limit process, converting an approximately neutral sequence into a strictly negative persistent ray.
+
+Negative fall-through is assigned to the negative morphology theorem rather than to the neutral branch.
