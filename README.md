@@ -70,7 +70,9 @@ and the sign problem is equivalent to contractive Douglas screening.
 
 For a fixed finite selected negative sector, the support-filtration analysis further shows that critical or negative right-approaching sequences force a nonzero nonpositive right-limit ray. Therefore genuinely nonpersistent approximate neutrality requires an infinite or moving-sector mechanism.
 
-The project has now entered **H1-P2: Zeta-Weil specialization**.
+The project has now entered **H1-P2: Zeta-Weil specialization**. The first mapping pass is complete; see [Zeta-Weil Specialization Map](docs/ZETA_WEIL_SPECIALIZATION_MAP.md).
+
+The specialization separates generic screening theory from three zeta-facing layers: Weil/Krein pair geometry, zeta-divisor structure, and explicit-formula arithmetic.
 
 ## Current theorem picture
 
@@ -94,7 +96,7 @@ See [Proof status](docs/PROOF_STATUS.md) for precise hypotheses and scope.
 
 ## Zeta-facing branches currently identified
 
-The prior zeta traversal explicitly produced the following negative and neutral branches. H1-P1.0 additionally identifies an abstract approximate-neutral critical case; whether that case is realizable in the zeta-Weil specialization is now an H1-P2/P3 question.
+The prior zeta traversal explicitly produced the following negative and neutral branches. H1-P2.0 now sharpens the abstract approximate-neutral issue: for one fixed finite selected packet, critical right-approach already forces an actual nonpositive persistent ray. Nonpersistent approximate neutrality can remain only through moving packets or infinite-background escape.
 
 ### Negative-persistence branch
 
@@ -173,6 +175,7 @@ The remaining problem is tracked as
 - [Abstract Defect Calculus](docs/ABSTRACT_DEFECT_CALCULUS.md) — H1-P1 zeta-independent operator theory.
 - [Restricted-Channel Transfer](docs/RESTRICTED_CHANNEL_TRANSFER.md) — selected finite sectors, background budget, and shorting.
 - [Support Filtration and Persistence](docs/SUPPORT_FILTRATION_PERSISTENCE.md) — right limits, endpoint jumps, and representative blow-up.
+- [Zeta-Weil Specialization Map](docs/ZETA_WEIL_SPECIALIZATION_MAP.md) — exact mapping from abstract carriers to the zero-side and arithmetic layers.
 - [Terminology Registry](docs/TERMINOLOGY.md) — canonical project vocabulary.
 - [Proof status](docs/PROOF_STATUS.md) — theorem-by-theorem standing.
 - [Research map](docs/RESEARCH_MAP.md) — dependency graph and current frontier.
