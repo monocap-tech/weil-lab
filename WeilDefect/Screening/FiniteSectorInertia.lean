@@ -79,8 +79,9 @@ theorem wd_t11_norm_one_attains_neutral
   have hWnorm : ‖W‖ = 1 := by
     simpa [W] using (wd_t11_norm_activeAdjoint Y).trans hY
   have hWne : W ≠ 0 := by
-    intro hzero
-    simpa [hzero] using hWnorm
+    apply norm_ne_zero_iff.mp
+    rw [hWnorm]
+    norm_num
   have hnotSub : ¬ Subsingleton (ActiveCarrier Y) := by
     intro hsub
     apply hWne
@@ -95,12 +96,7 @@ theorem wd_t11_norm_one_attains_neutral
   obtain ⟨x : ActiveCarrier Y, hx⟩ := exists_ne (0 : ActiveCarrier Y)
   let u : ActiveCarrier Y := (‖x‖⁻¹ : ℂ) • x
   have hu : ‖u‖ = 1 := by
-    have hxnorm : ‖x‖ ≠ 0 := norm_ne_zero_iff.mpr hx
-    calc
-      ‖u‖ = ‖(‖x‖⁻¹ : ℂ)‖ * ‖x‖ := by
-        rw [u, norm_smul]
-      _ = ‖x‖⁻¹ * ‖x‖ := by simp
-      _ = 1 := inv_mul_cancel₀ hxnorm
+    simpa [u] using (norm_smul_inv_norm (𝕜 := ℂ) hx)
   have hsphere : (Metric.sphere (0 : ActiveCarrier Y) 1).Nonempty := by
     refine ⟨u, ?_⟩
     simpa [Metric.mem_sphere] using hu
@@ -110,32 +106,10 @@ theorem wd_t11_norm_one_attains_neutral
   have haNorm : ‖a‖ = 1 := by
     simpa [Metric.mem_sphere] using haS
   have hupper : ‖W‖ ≤ ‖W a‖ := by
-    apply W.opNorm_le_bound (norm_nonneg (W a))
-    intro z
-    by_cases hz0 : z = 0
-    · simp [hz0]
-    · let v : ActiveCarrier Y := (‖z‖⁻¹ : ℂ) • z
-      have hznorm : ‖z‖ ≠ 0 := norm_ne_zero_iff.mpr hz0
-      have hv : ‖v‖ = 1 := by
-        calc
-          ‖v‖ = ‖(‖z‖⁻¹ : ℂ)‖ * ‖z‖ := by
-            rw [v, norm_smul]
-          _ = ‖z‖⁻¹ * ‖z‖ := by simp
-          _ = 1 := inv_mul_cancel₀ hznorm
-      have hvS : v ∈ Metric.sphere (0 : ActiveCarrier Y) 1 := by
-        simpa [Metric.mem_sphere] using hv
-      have hmax : ‖W v‖ ≤ ‖W a‖ := haMax hvS
-      have hzrep : (‖z‖ : ℂ) • v = z := by
-        simp [v, hz0]
-      have hWz : W z = (‖z‖ : ℂ) • W v := by
-        rw [← hzrep, map_smul]
-      calc
-        ‖W z‖ = ‖z‖ * ‖W v‖ := by
-          rw [hWz, norm_smul]
-          simp
-        _ ≤ ‖z‖ * ‖W a‖ :=
-          mul_le_mul_of_nonneg_left hmax (norm_nonneg z)
-        _ = ‖W a‖ * ‖z‖ := mul_comm _ _
+    apply ContinuousLinearMap.opNorm_le_of_unit_norm (norm_nonneg (W a))
+    intro z hz
+    apply haMax
+    simpa [Metric.mem_sphere] using hz
   have hlower : ‖W a‖ ≤ ‖W‖ := by
     have h := W.le_opNorm a
     simpa [haNorm] using h
@@ -287,7 +261,8 @@ theorem wd_t11_graphQ_diagonal
               rw [hcoord]
               simp only [RCLike.inner_apply, map_mul, RCLike.star_def,
                 RCLike.conj_ofReal]
-              rw [← mul_assoc, RCLike.mul_conj]
+              rw [← RCLike.mul_conj ((b.repr a) i)]
+              ring
   have hnormW :
       ‖W a‖ ^ 2 =
         ∑ i : Fin (finrank ℂ (ActiveCarrier Y)),
@@ -302,8 +277,9 @@ theorem wd_t11_graphQ_diagonal
       intro i _
       rw [wd_t11_sigma_sq_eq_eigenvalue Y i]
       norm_cast
-    have hre := congrArg Complex.re hc
-    simpa [inner_self_eq_norm_sq_to_K] using hre
+    have hc' := hc
+    simp only [inner_self_eq_norm_sq_to_K] at hc'
+    exact_mod_cast hc'
   unfold activeGraphQ
   rw [hnormA, hnormW]
   rw [← Finset.sum_sub_distrib]
@@ -372,12 +348,7 @@ theorem wd_t11_negative_rank_le_count
     have hd : x - y ≠ 0 := sub_ne_zero.mpr hne
     let u : EuclideanSpace ℂ (Fin n) := (‖x - y‖⁻¹ : ℂ) • (x - y)
     have hu : ‖u‖ = 1 := by
-      have hdnorm : ‖x - y‖ ≠ 0 := norm_ne_zero_iff.mpr hd
-      calc
-        ‖u‖ = ‖(‖x - y‖⁻¹ : ℂ)‖ * ‖x - y‖ := by
-          rw [u, norm_smul]
-        _ = ‖x - y‖⁻¹ * ‖x - y‖ := by simp
-        _ = 1 := inv_mul_cancel₀ hdnorm
+      simpa [u] using (norm_smul_inv_norm (𝕜 := ℂ) hd)
     have hCdiff : C (x - y) = 0 := by
       rw [map_sub, hxy, sub_self]
     have hCu : C u = 0 := by
@@ -415,7 +386,7 @@ theorem wd_t11_negative_space_coordinate_zero
             activeEigenbasis Y j.1)) := by
     simpa [negativeSpectralSpace] using a.property
   refine Submodule.span_induction
-    (p := fun x : ActiveCarrier Y _ =>
+    (p := fun (x : ActiveCarrier Y) _ =>
       inner ℂ (activeEigenbasis Y i) x = 0)
     ?_ ?_ ?_ ?_ ha
   · intro x hx
@@ -427,10 +398,10 @@ theorem wd_t11_negative_space_coordinate_zero
     simpa [hij] using
       (orthonormal_iff_ite.mp (activeEigenbasis Y).orthonormal i j.1)
   · simp
-  · intro x y hx hy
-    simp [inner_add_right, hx, hy]
-  · intro c x hx
-    simp [inner_smul_right, hx]
+  · intro x y hx hy hix hiy
+    simp [inner_add_right, hix, hiy]
+  · intro c x hx hix
+    simp [inner_smul_right, hix]
 
 /-- The whole negative spectral space, not just its basis rays, is strictly negative. -/
 theorem wd_t11_negative_space_strict
