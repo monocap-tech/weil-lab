@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T02 | WeilDefect.WDT02.wd_t02_contractive_screening_equivalence + WeilDefect.WDT02.wd_t02_unique_reduced_solution | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T01 | WeilDefect.WDT01.wd_t01_defect_inner_identity + WeilDefect.WDT01.wd_t01_nonnegative_iff + WeilDefect.WDT01.wd_t01_negative_rank_iff | LEAN-CERTIFIED |
 | WD-T33 | WeilDefect.wd_t33_adaptive_cocancellation | LEAN-CERTIFIED |
 | WD-T30 | WeilDefect.wd_t30_two_mode_kernel_combination + WeilDefect.wd_t30_zero_functional_preserves_every_mode | LEAN-CERTIFIED |
@@ -365,6 +366,91 @@ at repository head:
 \[
 \boxed{
 \texttt{79218489b0a3cdeacc5ed7abe44565ee45fffca5}.
+}
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- single-module Lake build;
+- unfinished-proof/project-axiom rejection.
+
+No other stable theorem ID is promoted by this run.
+
+
+## WD-T02 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T02: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.WDT02.physicalNonnegative_iff_covarianceLe;
+- WeilDefect.WDT02.covarianceLe_iff_signed_contractive_factorization;
+- WeilDefect.WDT02.reduced_neg_iff;
+- WeilDefect.WDT02.signed_reduced_exists_unique;
+- WeilDefect.WDT02.wd_t02_contractive_screening_equivalence;
+- WeilDefect.WDT02.wd_t02_unique_reduced_solution.
+
+The imported theorem is represented explicitly by the proposition-valued structure
+
+\[
+\texttt{WeilDefect.WDT02.DouglasUnitData}.
+\]
+
+It supplies exactly the Douglas unit-majorization input:
+
+- covariance majorization iff contractive factorization;
+- existence and uniqueness of the reduced exact factor.
+
+It is passed as a theorem premise. It is not declared as a project axiom.
+
+Lean then verifies the full Horizon-1 convention transfer:
+
+\[
+\mathcal A\text{ nonnegative}
+\iff
+D\succeq0
+\iff
+S_-S_-^*\preceq S_+S_+^*
+\iff
+\exists X,\ \|X\|\le1,\ S_-=-S_+X,
+\]
+
+where covariance order is encoded by its quadratic-form inequality.
+
+Lean also verifies that the Douglas reduced solution transfers through the
+project sign convention and is unique among exact signed solutions whose range
+is orthogonal to \(\ker S_+\).
+
+The Douglas source theorem itself has not been reconstructed in Lean.
+Accordingly this theorem must not be reported as a native LEAN-CERTIFIED result.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Screening.Douglas}.
+\]
+
+Certificate run:
+
+\[
+\boxed{
+\texttt{35960549233}
+}
+\]
+
+at repository head:
+
+\[
+\boxed{
+\texttt{5dca4d98b7062e3676399b34dfc89b383bfe1662}.
 }
 \]
 
