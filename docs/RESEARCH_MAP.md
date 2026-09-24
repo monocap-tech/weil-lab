@@ -523,15 +523,21 @@ Exact external pins are recorded in [Imported Source Pins](IMPORTED_SOURCE_PINS.
 
 The source boundary is now fixed for Douglas, Bombieri, standard zero counting, the compact-window formula, and the digamma asymptotic.
 
+## H1-P4.2 disposition
+
+WD-T01 through WD-T36 are P4-AUDIT-PASSED at the internal Horizon-1 level.
+
+The theorem-by-theorem audit and applied corrections are recorded in [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
+
 ## Current cursor
 
 \[
 \boxed{
-\texttt{H1-P4.2 / INTERNAL PROOF AUDIT}
+\texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
 }
 \]
 
-The next pass should inspect the internal theorem transitions for domains, topologies, finite/infinite passages, quantifiers, and hidden hypotheses.
+The next pass should expand WD-T37 through WD-T39 and verify every branch hypothesis/dependency transfer end-to-end.
 
 ---
 
