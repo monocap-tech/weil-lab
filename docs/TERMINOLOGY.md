@@ -694,3 +694,49 @@ It is a fixed-vector support question, not merely a regularity or approximate-cl
 **Negative fall-through** is the fixed-packet critical alternative in which positive coefficient mass is lost in the right-limit process, converting an approximately neutral sequence into a strictly negative persistent ray.
 
 Negative fall-through is assigned to the negative morphology theorem rather than to the neutral branch.
+
+
+## Background escape
+
+**Background escape** is failure of strong compactness in the normalized unselected negative background after a fixed selected packet has already been anchored.
+
+It includes:
+
+- background norm escape;
+- bounded coefficient-tail escape.
+
+Background escape does not erase the fixed selected negative ray.
+
+## Coefficient-tail tightness
+
+A bounded sequence \(b_n\) in an \(\ell^2\)-type coefficient space is **coefficient-tail tight** when, for a canonical increasing finite-coordinate exhaustion \(Q_R\),
+
+\[
+\lim_{R\to\infty}
+\sup_n
+\|(I-Q_R)b_n\|
+=
+0.
+\]
+
+Bounded coefficient-tail tightness implies precompactness.
+
+## Fixed full-divisor ray
+
+A **fixed full-divisor ray** is a strong coefficient limit
+
+\[
+Y_{\rm full}=(a,u,b)
+\]
+
+containing the positive coordinate, fixed selected negative coordinate, and a strongly convergent unselected negative background.
+
+On the negative morphology branch its full signature remains strictly negative.
+
+## Selected-sector escape
+
+**Selected-sector escape** is the noncompact morphology in which selected negative standing itself moves through successively new coordinates so that every fixed finite coordinate projection tends to zero.
+
+Selected-sector escape may produce normalized approximate zero-edge relations with weak coefficient limit zero.
+
+It is distinct from background escape.
