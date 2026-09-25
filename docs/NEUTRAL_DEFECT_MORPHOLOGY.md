@@ -825,11 +825,11 @@ No downstream support-rigidity theorem is consumed above the stop line.
 
 The neutral branch is now packaged as a single auditable morphology theorem.
 
-Its output is:
+Its output, after the finite-exception unit-gain relation is identified with the compact-window Weil carrier specified in the theorem hypotheses, is:
 
 ```math
 \boxed{
-\text{attained fixed-packet criticality}
+\text{attained fixed-packet criticality + carrier identification}
 \Longrightarrow
 \text{physical compact-window null mode}
 }
@@ -849,7 +849,7 @@ whose operator is
 
 with no uniform positive-Sobolev coercive gain supplied by the retained form estimate.
 
-The unresolved question is purely a fixed-vector exterior support/null-extension problem.
+Within this carrier-identified neutral branch, the remaining H1-P3.1 interface is a fixed-vector exterior support/right-limit null-extension problem.
 
 ---
 
