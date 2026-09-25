@@ -1,5 +1,5 @@
 # Dependency Audit
-**H1-P4.0 — Theorem DAG, source boundaries, and audit debt**
+**H1-P4.0 — Theorem DAG, source boundaries, and audit closure**
 
 This document audits the architecture of the Horizon-1 theorem inventory without introducing new mathematical claims.
 
@@ -332,7 +332,7 @@ Consumed by
 
 Downstream theorems WD-T03, WD-T10, and WD-T11 use the reduced screening solution produced in that framework.
 
-**Audit debt:** pin the exact statement used: range inclusion / Loewner majorization / factorization equivalence and the reduced-solution normalization.
+**Source status:** PINNED. Douglas (1966), Theorem 1, pp. 413–415 supplies the range-inclusion/majorization/factorization equivalence together with the reduced-solution normalization used by WD-T02; see [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
 
 ### EXT-2 — Bombieri finite Weil theory
 
@@ -364,7 +364,7 @@ Consumed in
 }
 ```
 
-**Audit debt:** choose one canonical zero-count statement and specify whether multiplicity is included.
+**Source status:** PINNED. The canonical unit-height zero-count input and its multiplicity convention are fixed in [Imported Source Pins](IMPORTED_SOURCE_PINS.md) via Titchmarsh, Theorem 9.2, equation (9.2.1).
 
 ### EXT-4 — Compact-window geometric explicit formula
 
@@ -378,13 +378,13 @@ Consumed in
 }
 ```
 
-**Audit debt:** pin the exact support convention for
+**Source status:** PINNED. The strict support convention
 
 ```math
 \log n<2c
 ```
 
-versus boundary equality, and pin the Fourier-normalization constants used by the operator form.
+the equality-threshold treatment, and the Fourier-normalization convention used by the operator form are recorded in [Imported Source Pins](IMPORTED_SOURCE_PINS.md) from Zhu's equations (2)–(3).
 
 ### EXT-5 — Digamma/Stirling asymptotic
 
@@ -396,13 +396,15 @@ Consumed in
 }
 ```
 
-**Audit debt:** record a standard source/formula for
+**Source status:** PINNED. The asymptotic input
 
 ```math
 \Re\psi\!\left(\frac14+\frac{it}{2}\right)
 =
-\log|t|+O(1).
+\log|t|+O(1)
 ```
+
+is pinned to DLMF §5.11(i), equation 5.11.2; see [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
 
 ### EXT-6 — Anderson–Trapp shorting
 
