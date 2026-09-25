@@ -58,6 +58,28 @@ theorem wd_t38_p3_u1_fixed_packet_critical_dichotomy
     A c t hA ht a u hmem hnorm hq
 
 
+/--
+In the attained-neutral WD-T17 branch, the selected negative coordinate is
+automatically nonzero: both positive and negative squared norms equal one half.
+-/
+theorem wd_t38_attained_neutral_selected_coordinate_nonzero
+    {Kpos M : Type*}
+    [NormedAddCommGroup Kpos] [InnerProductSpace ℂ Kpos] [CompleteSpace Kpos]
+    [NormedAddCommGroup M] [InnerProductSpace ℂ M] [CompleteSpace M]
+    {aSeq : ℕ → Kpos} {uSeq : ℕ → M}
+    {phi : ℕ → ℕ} {aLim : Kpos} {uLim : M}
+    (h :
+      WeilDefect.WDT17.NeutralCriticalBranch
+        aSeq uSeq phi aLim uLim) :
+    uLim ≠ 0 := by
+  intro hu0
+  have ha := h.1
+  have hj := h.2.1
+  have huSq : ‖uLim‖ ^ 2 = 0 := by simp [hu0]
+  unfold WeilDefect.WDT16.jValue at hj
+  rw [ha, huSq] at hj
+  norm_num at hj
+
 /-- Prime powers present in the strict right-limit compact-window operator. -/
 def rightLimitPrimePowers (c : ℝ) : Set ℕ :=
   {n | IsPrimePow n ∧ Real.log (n : ℝ) ≤ 2 * c}
@@ -470,6 +492,7 @@ structure NeutralDefectMorphology
       WeilDefect.WDT15.rightLimit A c
   endpointNonzero :
     WeilDefect.WDT16.coeff aLim uLim ≠ 0
+  selectedCoordinateNonzero : uLim ≠ 0
   coefficientCarrier :
     aLim = C uLim
   physicalNull :
@@ -568,6 +591,8 @@ noncomputable def wd_t38_attained_unit_gain_neutral_morphology
       (EndpointObs := EndpointObs) (RightObs := RightObs)
       A c aSeq uSeq phi aLim uLim
       P C k Q shift lowerC upperC poleC density primeCoeff extend := by
+  have hu0 : uLim ≠ 0 :=
+    wd_t38_attained_neutral_selected_coordinate_nonzero hneutral
   have hnull :=
     wd_t38_p3_u2_physical_neutral_null_mode
       P C uLim k hunit hreal hk
@@ -585,6 +610,7 @@ noncomputable def wd_t38_attained_unit_gain_neutral_morphology
     attainedNeutral := hneutral
     endpointRight := hright
     endpointNonzero := hy0
+    selectedCoordinateNonzero := hu0
     coefficientCarrier := haCarrier
     physicalNull := hnull
     arithmetic := harith
