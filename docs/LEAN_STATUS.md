@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T31 | WeilDefect.logarithmicTailKernel + WeilDefect.logarithmicTailKernel_antitoneOn + WeilDefect.integral_logarithmicTailKernel_Ioi + WeilDefect.logarithmicTail_tsum_le | LEAN-IN-PROGRESS (analytic tail-kernel subpass certified) |
 | WD-T29 | WeilDefect.wd_t29_finite_head_approximation + WeilDefect.wd_t29_quantitative_finite_head_approximation | LEAN-CERTIFIED |
 | WD-T28 | WeilDefect.ZetaZeroShellCountData + WeilDefect.NativeProblemOneResolventData + WeilDefect.NativeHilbertSchmidtCriterion + WeilDefect.NativeTraceClassCovarianceCriterion + WeilDefect.wd_t28_native_problem_one_hilbert_schmidt_actual + WeilDefect.problemOneGreenPairing_eq_dirichletEnergy + WeilDefect.problemOneColumnEnergySq_eq_dirichletEnergy + WeilDefect.wd_t28_actual_dirichlet_energy_summable | LEAN-CERTIFIED |
 | WD-T27 | WeilDefect.rationalResponse + WeilDefect.residueFirstMoment + WeilDefect.rationalResponse_laurent_two + WeilDefect.rationalResponse_zero_moment_remainder_bound + WeilDefect.rationalResponse_zero_moment_remainder_isBigO + WeilDefect.rationalResponse_zero_moment_isBigO + WeilDefect.wd_t27_universal_inverse_square_far_decay + WeilDefect.wd_t27_universal_inverse_square_isBigO | LEAN-CERTIFIED |
@@ -3214,11 +3215,68 @@ The run passed:
 - rebuilding the WD-T28 Dirichlet-energy dependency;
 - unfinished-proof/project-axiom rejection.
 
-WD-T30 is already independently Lean-certified. Therefore the next unfinished
-sequential theorem cursor is:
+WD-T30 is already independently Lean-certified.
+
+## WD-T31 analytic tail-kernel subpass
+
+The analytic summation core of WD-T31 is now kernel-checked. Lean certifies the
+nonnegative antitone kernel
+
+\[
+k(x)=\frac{1+\log x}{x^2},
+\]
+
+its exact improper integral
+
+\[
+\int_R^\infty k(x)\,dx
+=
+\frac{\log R+2}{R},
+\]
+
+and the discrete shifted-tail estimate
+
+\[
+\sum_{n\ge R+1} k(n)
+\le
+\frac{\log R+2}{R}.
+\]
+
+Formal declarations include:
+
+- WeilDefect.logarithmicTailKernel;
+- WeilDefect.logarithmicTailKernel_nonneg;
+- WeilDefect.logarithmicTailKernel_antitoneOn;
+- WeilDefect.logarithmicTailKernel_integrableOn_Ioi;
+- WeilDefect.integral_logarithmicTailKernel_Ioi;
+- WeilDefect.logarithmicTail_tsum_le.
+
+This subpass passed pinned CI in:
+
+\[
+\boxed{\texttt{36155524899}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{ddb689c21d9278c05dc792f08b44d7d7e6feed01}}.
+\]
+
+The checked source blob is:
+
+\[
+\texttt{439db969240a2534e15709c9bf27c998421acb12}.
+\]
+
+WD-T31 itself is **not yet promoted**: the remaining obligation is to attach the
+imported unit-shell zero-count bound and WD-T27 inverse-square response estimate
+to this certified analytic tail kernel.
+
+Current formalization cursor:
 
 \[
 \boxed{
-\texttt{WD-T31 / ZW2-T2 — ZERO MOMENT + ZERO COUNTING GIVES }O((\log R)/R)\texttt{ FAR COMPLEMENTARY TAIL}
+\texttt{WD-T31 / SHELL AGGREGATION — ZERO COUNT × INVERSE-SQUARE RESPONSE }\Longrightarrow\texttt{ LOGARITHMIC FAR-TAIL BOUND}
 }
 \]
