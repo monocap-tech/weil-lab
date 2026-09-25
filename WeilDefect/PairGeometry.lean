@@ -68,13 +68,13 @@ def quartetPairNeg (T δ : ℝ) : ℂ × ℂ :=
 /-- Each positive-T pair is a genuine complex-conjugate pair. -/
 theorem wd_t21_quartet_pair_pos_conjugate (T δ : ℝ) :
     (quartetPairPos T δ).2 =
-      Complex.conj (quartetPairPos T δ).1 := by
+      star (quartetPairPos T δ).1 := by
   simp [quartetPairPos, sub_eq_add_neg]
 
 /-- Each negative-T pair is a genuine complex-conjugate pair. -/
 theorem wd_t21_quartet_pair_neg_conjugate (T δ : ℝ) :
     (quartetPairNeg T δ).2 =
-      Complex.conj (quartetPairNeg T δ).1 := by
+      star (quartetPairNeg T δ).1 := by
   simp [quartetPairNeg, sub_eq_add_neg]
 
 /-- Off-critical displacement makes both quartet pairs nonreal. -/
@@ -115,9 +115,9 @@ hence two canonical negative pair coordinates after WD-T20 diagonalization.
 theorem wd_t21_simple_quartet_pair_geometry
     (T δ : ℝ) (hT : T ≠ 0) (hδ : δ ≠ 0) :
     (quartetPairPos T δ).2 =
-        Complex.conj (quartetPairPos T δ).1
+        star (quartetPairPos T δ).1
     ∧ (quartetPairNeg T δ).2 =
-        Complex.conj (quartetPairNeg T δ).1
+        star (quartetPairNeg T δ).1
     ∧ (quartetPairPos T δ).1.im ≠ 0
     ∧ (quartetPairNeg T δ).1.im ≠ 0
     ∧ quartetPairPos T δ ≠ quartetPairNeg T δ
