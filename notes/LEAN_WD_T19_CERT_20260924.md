@@ -4,11 +4,11 @@ Stable ID: **WD-T19 / WD-C7 + WD-C8 + WD-C9**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Formal target
 
@@ -28,23 +28,23 @@ Certified source blob:
 
 Let
 
-\[
+```math
 \mathscr H_t
-\]
+```
 
 be a monotone family of closed complex Hilbert subspaces, and let
 
-\[
+```math
 T:\mathscr H\to K
-\]
+```
 
 be bounded linear.
 
 Lean defines the closed physical image
 
-\[
+```math
 \overline{T(\mathscr H_t)}
-\]
+```
 
 by
 
@@ -52,11 +52,11 @@ by
 
 The physical filtration is assumed right-continuous at the endpoint:
 
-\[
+```math
 \mathscr H_c
 =
 \bigcap_{t>c}\mathscr H_t.
-\]
+```
 
 ## Weak-limit infrastructure
 
@@ -79,27 +79,27 @@ already-certified Hilbert subsequence compactness theorem from WD-T16.
 
 Assume
 
-\[
+```math
 y\notin \overline{T(\mathscr H_c)}.
-\]
+```
 
 Let
 
-\[
+```math
 t_n\to c,
 \qquad
 h_n\in\mathscr H_{t_n},
 \qquad
 Th_n\to y.
-\]
+```
 
 Lean proves
 
-\[
+```math
 \boxed{
 \|h_n\|\to\infty.
 }
-\]
+```
 
 The contradiction mechanism is exactly the mathematical argument:
 
@@ -124,35 +124,35 @@ Lean defines the explicit local amplification predicate
 
 For every finite physical norm budget
 
-\[
+```math
 M>0,
-\]
+```
 
 there are
 
-\[
+```math
 \delta>0,
 \qquad
 \eta>0
-\]
+```
 
 such that
 
-\[
+```math
 c<t<c+\delta,
 \qquad
 h\in\mathscr H_t,
 \qquad
 \|Th-y\|<\eta
-\]
+```
 
 imply
 
-\[
+```math
 \boxed{
 M<\|h\|.
 }
-\]
+```
 
 Thus the boundary amplification is certified in the full local
 two-parameter form, not merely along a preselected sequence.
@@ -169,7 +169,7 @@ This is formalized by
 
 Suppose
 
-\[
+```math
 \|g_n\|=1,
 \qquad
 Tg_n=\varepsilon_n z_n,
@@ -177,37 +177,37 @@ Tg_n=\varepsilon_n z_n,
 \varepsilon_n>0,
 \qquad
 \varepsilon_n\to0.
-\]
+```
 
 Lean defines
 
-\[
+```math
 h_n
 =
 \varepsilon_n^{-1}g_n
-\]
+```
 
 using the complex scalar embedding and proves
 
-\[
+```math
 \boxed{
 Th_n=z_n,
 }
-\]
+```
 
-\[
+```math
 \boxed{
 \|h_n\|=\varepsilon_n^{-1},
 }
-\]
+```
 
 and therefore
 
-\[
+```math
 \boxed{
 \|h_n\|\to\infty.
 }
-\]
+```
 
 This is formalized by
 
@@ -227,11 +227,11 @@ The proof uses:
 
 Therefore the correct status is native:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Repair-pass result
 
@@ -277,8 +277,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{WD-T20 / ZW1-T1 — CANONICAL CONJUGATE-PAIR DIAGONALIZATION INTO POSITIVE/NEGATIVE WEIL CHANNELS}
 }
-\]
+```
