@@ -851,7 +851,7 @@ That is
 }
 ```
 
-For the special KPH/reciprocal-Cauchy packet class, an equivalent stronger interface is
+For the special KPH/reciprocal-Cauchy packet class, a stronger sufficient interface for closing the same packetwise branch is
 
 ```math
 \boxed{
@@ -907,18 +907,19 @@ Its output is:
 }
 ```
 
-then it must carry simultaneously:
+then the theorem yields, under its stated hypotheses:
 
 1. a negative endpoint jump;
-2. boundary-amplified physical representatives;
+2. explicit selected-amplitude-normalized representatives whose norms diverge;
 3. normalized full-Weil negativity bounded away from zero;
 4. a nonzero finite zero-moment selected source;
 5. inverse-square far decay;
 6. quantitative elimination of the distant divisor;
-7. a weighted finite/intermediate completed $\Xi$ next-jet field;
-8. no adaptive scalar bypass.
+7. a weighted finite/intermediate completed $\Xi$ next-jet field.
 
-That is the complete Horizon-1 negative defect morphology.
+If the support filtration is additionally realized through the common bounded carrier required by WD-C7/WD-T19, the stronger universal representation-cost blow-up statement also follows. Separately, WD-T33 shows that the scalar explicit-formula balance supplies no independent adaptive prime bypass under the fixed/uniformly bounded multiplier hypotheses.
+
+That is the complete Horizon-1 negative defect morphology at its stated stop line.
 
 ---
 
