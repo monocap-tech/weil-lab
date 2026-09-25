@@ -358,7 +358,9 @@ Bombieri (7.7) remains useful corroborating context for the same decay scale.
 
 The internal proof audit is complete through WD-T36.
 
-### Next cursor
+### Historical handoff from H1-P4.2
+
+This handoff is historical provenance, not the live project cursor. See [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md) for current control state.
 
 ```math
 \boxed{
