@@ -315,7 +315,7 @@ theorem problemOneGreenQ_shell_bound
       exact (inv_le_inv₀ hdenpos (sq_pos_of_pos hnpos)).2 hden
     _ = (((n : ℝ) + 1) ^ (-2 : ℝ)) := by
       rw [Real.rpow_neg_eq_inv_rpow, Real.rpow_two]
-      exact inv_pow ((n : ℝ) + 1) 2
+      exact (inv_pow ((n : ℝ) + 1) 2).symm
 
 /--
 The raw exponential source is uniformly bounded on a fixed compact window
