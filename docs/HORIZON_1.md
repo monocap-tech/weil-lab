@@ -12,7 +12,7 @@ Horizon 1 ends **before** the actual-zeta exclusion problem.
 
 ## Stop boundary
 
-The following are interfaces out of Horizon 1:
+The two primary interfaces out of Horizon 1 are `AZ-NEXTJET-LOC` and `AZ-FIN-WEIL-NULL-EXTENSION`. A stronger special-packet refinement, `C-ACTUAL-KPH-FLOOR`, is tracked alongside them:
 
 ```math
 \boxed{
@@ -24,7 +24,7 @@ The following are interfaces out of Horizon 1:
 }
 ```
 
-Horizon 1 may complete while all three remain open.
+Horizon 1 may complete while both primary interfaces and the stronger packetwise refinement remain open.
 
 ## Phase map
 
