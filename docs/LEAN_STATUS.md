@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T22 | WeilDefect.BombieriFiniteInertiaData + WeilDefect.wd_t22_finite_weil_inertia_saturation + WeilDefect.SimpleQuartetPacketNegative + WeilDefect.wd_t22_simple_quartet_packet_pair_count + WeilDefect.wd_t22_simple_quartet_packet_inertia + WeilDefect.wd_t22_two_simple_quartet_negative_index | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T21 | WeilDefect.quartetPairPos + WeilDefect.quartetPairNeg + WeilDefect.wd_t21_quartet_pair_pos_conjugate + WeilDefect.wd_t21_quartet_pair_neg_conjugate + WeilDefect.wd_t21_quartet_pairs_nonreal + WeilDefect.wd_t21_quartet_pairs_distinct + WeilDefect.wd_t21_simple_quartet_negative_count + WeilDefect.wd_t21_simple_quartet_pair_geometry | LEAN-CERTIFIED |
 | WD-T20 | WeilDefect.wd_t20_pair_pos_eigen + WeilDefect.wd_t20_pair_neg_eigen + WeilDefect.pairEigenEquiv + WeilDefect.wd_t20_pair_diagonalization | LEAN-CERTIFIED |
 | WD-T19 | WeilDefect.WDT19.analysisSpace + WeilDefect.WDT19.weak_limit_mem_physical_rightLimit + WeilDefect.WDT19.wd_t19_endpoint_representative_blowup + WeilDefect.WDT19.BoundaryAmplifies + WeilDefect.WDT19.wd_t19_boundary_amplification + WeilDefect.WDT19.wd_t19_vanishing_amplitude_normalized_blowup | LEAN-CERTIFIED |
@@ -2208,10 +2209,98 @@ The run passed:
 The only compiler repair was the pinned complex-conjugation API name; no
 mathematical statement was weakened.
 
+## WD-T22 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T22: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.BombieriFiniteInertiaData;
+- WeilDefect.wd_t22_finite_weil_inertia_saturation;
+- WeilDefect.SimpleQuartetPacketNegative;
+- WeilDefect.wd_t22_simple_quartet_packet_pair_count;
+- WeilDefect.wd_t22_simple_quartet_packet_inertia;
+- WeilDefect.wd_t22_two_simple_quartet_negative_index.
+
+The pinned Bombieri finite-inertia theorem (Theorem 8, p. 213) is represented
+explicitly by the proposition-valued premise
+
+\[
+\texttt{BombieriFiniteInertiaData}.
+\]
+
+It supplies exactly the imported equality between the finite Weil matrix's
+negative spectral index and the number of distinct nonreal conjugate pairs.
+It is passed as a theorem premise and is not declared as a project axiom.
+
+Lean then verifies the packet specialization internally.  Using WD-T21's
+two negative pair coordinates per simple quartet, a packet of \(q\) simple
+disjoint quartets has pair-coordinate cardinality
+
+\[
+2q.
+\]
+
+Therefore the imported Bombieri equality specializes to
+
+\[
+\operatorname{ind}_{-}=2q,
+\]
+
+and for the audited two-quartet packet:
+
+\[
+\boxed{
+\operatorname{ind}_{-}=4.
+}
+\]
+
+The Bombieri source theorem itself has not been reconstructed in Lean, so this
+result must not be reported as a native LEAN-CERTIFIED theorem.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.PairGeometry}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36089403584}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{83914d302ba9201983c5e0b0d4404b727714acbd}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{91bc6efce70e05a3ec1d320ec8ee1e99abc6be3d}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T22 target module;
+- unfinished-proof/project-axiom rejection.
+
+No stable theorem statement or mathematical hypothesis was weakened.
+
 Next theorem cursor:
 
 \[
 \boxed{
-\texttt{WD-T22 / ZW1-T3 — FINITE WEIL INERTIA SATURATION}
+\texttt{WD-T23 / ZW1-T4 — DISTINCT-FREQUENCY REDUCTION / MULTIPLICITY-NULL QUOTIENT}
 }
 \]
