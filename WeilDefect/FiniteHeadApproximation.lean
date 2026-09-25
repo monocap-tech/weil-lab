@@ -1,4 +1,4 @@
-import Mathlib
+import WeilDefect.DirichletEnergy
 
 namespace WeilDefect
 
