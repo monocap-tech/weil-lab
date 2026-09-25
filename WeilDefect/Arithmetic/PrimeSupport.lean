@@ -4,6 +4,8 @@ import Mathlib.Order.Filter.AtTopBot.Archimedean
 
 namespace WeilDefect
 
+open scoped BigOperators
+
 /-- Prime powers active under the compact-window support inequality log n < 2c. -/
 def activePrimePowers (c : ℝ) : Set ℕ :=
   {n | IsPrimePow n ∧ Real.log (n : ℝ) < 2 * c}
@@ -64,7 +66,7 @@ def translateBy
   f (x - a)
 
 /-- Symmetric translation pair associated to one prime power. -/
-def symmetricPrimeTranslation
+noncomputable def symmetricPrimeTranslation
     {E : Type*} [Add E]
     (n : ℕ) (f : ℝ → E) (x : ℝ) : E :=
   translateBy (Real.log (n : ℝ)) f x
