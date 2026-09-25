@@ -225,4 +225,4 @@ Current formalization cursor:
 
 WD-X06 is `LEAN-CERTIFIED`; all stable Horizon-1 theorem/example rows now have durable final Lean states. See [Lean Status Ledger](LEAN_STATUS.md) for certificate evidence.
 
-H1-P5.0 / Public Package Architecture and H1-P5.1 / Technical Manuscript Assembly are complete. Active package cursor: `H1-P5.2 / PUBLIC THEOREM INDEX AND VERIFICATION MATRIX`.
+H1-P5.0 through H1-P5.4 are complete. Active package cursor: `H1-P5.5 / FINAL PACKAGE ADVERSARIAL PASS`.
