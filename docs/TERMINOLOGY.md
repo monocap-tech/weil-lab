@@ -109,12 +109,13 @@ W_ck=0.
 
 ## Morphology
 
-A **defect morphology** is the exact structural form that a surviving defect must take after all completed reductions have been applied.
+A **defect morphology** is a theorem-level structural branch describing how a defect or critical sequence can persist, become neutral, or fail compactness after the completed reductions have been applied.
 
-For Horizon 1, the two principal morphologies are:
+Horizon 1 packages three morphology classes:
 
-1. weighted next-jet localization on the negative branch;
-2. compact-window null-extension/support rigidity on the neutral branch.
+1. fixed-packet negative persistence, ending at weighted next-jet localization;
+2. fixed-packet attained-neutral persistence, ending at compact-window null-extension/support rigidity;
+3. noncompact coefficient morphology, separating moving/infinite selected-sector escape from unselected-background escape and fixed full-divisor weak limits.
 
 
 ## Synthesis pair
@@ -723,7 +724,7 @@ Bounded coefficient-tail tightness implies precompactness.
 
 ## Fixed full-divisor ray
 
-A **fixed full-divisor ray** is a strong coefficient limit
+A **fixed full-divisor ray** is historical shorthand reserved for the stronger case of a full strong coefficient limit
 
 ```math
 Y_{\rm full}=(a,u,b)
@@ -731,11 +732,11 @@ Y_{\rm full}=(a,u,b)
 
 containing the positive coordinate, fixed selected negative coordinate, and a strongly convergent unselected negative background.
 
-On the negative morphology branch its full signature remains strictly negative.
+On the negative morphology branch its full signature remains strictly negative. The audited WD-T39 theorem generally guarantees only a **fixed full-divisor negative weak limit**; use “fixed full-divisor ray” only when positive-coordinate strong convergence is additionally available.
 
 ## Selected-sector escape
 
-**Selected-sector escape** is the noncompact morphology in which selected negative standing itself moves through successively new coordinates so that every fixed finite coordinate projection tends to zero.
+**Selected-sector escape** is the noncompact morphology in which the selected negative direction or mass moves through successively new coordinates so that every fixed finite coordinate projection tends to zero.
 
 Selected-sector escape may produce normalized approximate zero-edge relations with weak coefficient limit zero.
 
@@ -760,12 +761,15 @@ A stable theorem ID is a name, not a certification mark.
 
 **Verification status** records how far a theorem has progressed through proof/source audit independently of its mathematical standing.
 
-Current H1-P4 verification labels include:
+The completed H1-P4 verification labels used on the stable inventory are:
 
-- **P4-AUDIT-PENDING**;
-- **SOURCE-PIN-PENDING**;
-- **COMPOSITE-AUDIT-PENDING**;
+- **P4-AUDIT-PASSED**;
+- **SOURCE-PINNED**;
+- **COMPOSITE-AUDIT-PASSED**;
+- **EXAMPLE-AUDIT-PASSED**;
 - **SCOPE-ONLY**.
+
+The corresponding pending labels are queue/history states, not current terminal H1-P4 standings.
 
 Verification status is distinct from whether the repository contains an internal proof.
 
