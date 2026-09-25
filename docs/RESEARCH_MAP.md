@@ -555,7 +555,7 @@ Formalization currently preempts package assembly:
 
 ```math
 \boxed{
-\texttt{LEAN-H1-P1 / WD-X02 — CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}
+\texttt{LEAN-H1-P1 / WD-X05 — MOVING SECTORS CAN LOSE EVERY PERSISTENT RAY}
 }
 ```
 
