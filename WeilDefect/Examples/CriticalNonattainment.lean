@@ -100,4 +100,88 @@ theorem wd_x02_operator_norm_eq_one :
     (Eventually.of_forall wd_x02_weight_le_operator_norm)
 
 
+
+theorem wd_x02_operator_coord_norm
+    (x : WDX02Space) (n : ℕ) :
+    ‖(wdX02Operator x) n‖
+      = wdX02Weight n * ‖x n‖ := by
+  rw [wd_x02_operator_apply, norm_mul]
+  simp [wd_x02_weight_nonneg]
+
+theorem wd_x02_operator_coord_sq_le
+    (x : WDX02Space) (n : ℕ) :
+    ‖(wdX02Operator x) n‖ ^ (2 : ℝ)
+      ≤ ‖x n‖ ^ (2 : ℝ) := by
+  rw [wd_x02_operator_coord_norm]
+  rw [Real.rpow_two, Real.rpow_two]
+  have h0 := wd_x02_weight_nonneg n
+  have h1 := (wd_x02_weight_lt_one n).le
+  have hx := norm_nonneg (x n)
+  nlinarith
+
+theorem wd_x02_operator_coord_sq_lt
+    (x : WDX02Space) (n : ℕ)
+    (hx0 : x n ≠ 0) :
+    ‖(wdX02Operator x) n‖ ^ (2 : ℝ)
+      < ‖x n‖ ^ (2 : ℝ) := by
+  rw [wd_x02_operator_coord_norm]
+  rw [Real.rpow_two, Real.rpow_two]
+  have h0 := wd_x02_weight_nonneg n
+  have h1 := wd_x02_weight_lt_one n
+  have hx : 0 < ‖x n‖ := norm_pos_iff.mpr hx0
+  nlinarith
+
+theorem wd_x02_nonzero_has_coordinate
+    (x : WDX02Space) (hx : x ≠ 0) :
+    ∃ n : ℕ, x n ≠ 0 := by
+  by_contra h
+  push_neg at h
+  apply hx
+  ext n
+  simpa using h n
+
+theorem wd_x02_strict_norm_loss
+    (x : WDX02Space) (hx : x ≠ 0) :
+    ‖wdX02Operator x‖ < ‖x‖ := by
+  rcases wd_x02_nonzero_has_coordinate x hx with ⟨i, hi⟩
+  have hsummable :
+      Summable (fun n : ℕ => ‖x n‖ ^ (2 : ℝ)) :=
+    (lp.hasSum_norm (p := (2 : ℝ≥0∞)) (by norm_num) x).summable
+  have hsum :
+      (∑' n : ℕ, ‖(wdX02Operator x) n‖ ^ (2 : ℝ))
+        <
+      ∑' n : ℕ, ‖x n‖ ^ (2 : ℝ) := by
+    exact Summable.tsum_lt_tsum_of_nonneg
+      (fun n => Real.rpow_nonneg (norm_nonneg _) _)
+      (fun n => wd_x02_operator_coord_sq_le x n)
+      (wd_x02_operator_coord_sq_lt x i hi)
+      hsummable
+  rw [← lp.norm_rpow_eq_tsum (p := (2 : ℝ≥0∞)) (by norm_num)
+        (wdX02Operator x),
+      ← lp.norm_rpow_eq_tsum (p := (2 : ℝ≥0∞)) (by norm_num) x] at hsum
+  rw [Real.rpow_two, Real.rpow_two] at hsum
+  nlinarith [norm_nonneg (wdX02Operator x), norm_nonneg x]
+
+theorem wd_x02_no_nonzero_norm_attainer :
+    ¬ ∃ x : WDX02Space, x ≠ 0 ∧ ‖wdX02Operator x‖ = ‖x‖ := by
+  rintro ⟨x, hx, heq⟩
+  exact (ne_of_lt (wd_x02_strict_norm_loss x hx)) heq
+
+/--
+WD-X02 discrete critical screening witness:
+the contraction has norm exactly one, every nonzero vector loses norm
+strictly, while standard basis directions approach the critical value.
+-/
+theorem wd_x02_critical_nonattainment :
+    ‖wdX02Operator‖ = 1
+      ∧ (∀ x : WDX02Space, x ≠ 0 →
+          ‖wdX02Operator x‖ < ‖x‖)
+      ∧ Tendsto
+          (fun n : ℕ =>
+            ‖wdX02Operator (lp.single 2 n (1 : ℂ))‖)
+          atTop (𝓝 1) := by
+  refine ⟨wd_x02_operator_norm_eq_one, wd_x02_strict_norm_loss, ?_⟩
+  simpa [wd_x02_operator_single_norm] using wd_x02_weight_tendsto_one
+
+
 end WeilDefect
