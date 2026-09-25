@@ -15,7 +15,7 @@ The endpoint space, viewed as a submodule of the right-limit space.
 When A0 ≤ Aplus this is canonically just A0 with its codomain restricted
 to Aplus.
 -/
-def endpointInside
+noncomputable def endpointInside
     (A0 Aplus : ClosedSubmodule ℂ H) :
     Submodule ℂ Aplus :=
   A0.toSubmodule.comap Aplus.toSubmodule.subtype
@@ -29,7 +29,7 @@ abbrev EndpointQuotient
 A finite negative witness whose values lie in Aplus, followed by the canonical
 endpoint-jump quotient map.
 -/
-def endpointQuotientMap
+noncomputable def endpointQuotientMap
     {k : ℕ}
     (A0 Aplus : ClosedSubmodule ℂ H)
     (T : EuclideanSpace ℂ (Fin k) →L[ℂ] H)
@@ -66,17 +66,17 @@ theorem wd_t18_endpoint_quotient_map_injective
   have hFu : F u = 0 := by
     rw [show u = ‖x - y‖⁻¹ • (x - y) by rfl]
     rw [LinearMap.map_smul_of_tower, hFsub, smul_zero]
-  let Tplus :=
-    T.codRestrict Aplus.toSubmodule hmem
-  have hinside :
-      Tplus u ∈ endpointInside A0 Aplus := by
-    have hk :
-        Tplus u ∈ LinearMap.ker (endpointInside A0 Aplus).mkQ := by
-      rw [LinearMap.mem_ker]
-      simpa [F, endpointQuotientMap, Tplus] using hFu
-    simpa [Submodule.ker_mkQ] using hk
+  have hk :
+      ((T.toLinearMap.codRestrict Aplus.toSubmodule hmem) u)
+        ∈ LinearMap.ker (endpointInside A0 Aplus).mkQ := by
+    rw [LinearMap.mem_ker]
+    simpa [F, endpointQuotientMap] using hFu
+  rw [Submodule.ker_mkQ] at hk
   have hA0 : T u ∈ A0 := by
-    exact hinside
+    change
+      (((T.toLinearMap.codRestrict Aplus.toSubmodule hmem) u : Aplus) : H)
+        ∈ A0
+    exact hk
   have hnonneg := hendpoint (T u) hA0
   have hstrict := hneg u hu
   linarith
