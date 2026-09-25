@@ -1,5 +1,5 @@
 # Restricted-Channel and Finite-Index Transfer
-## H1-P1.1 — Selected sectors, background budget, and shorting
+**H1-P1.1 — Selected sectors, background budget, and shorting**
 
 This pass extends the abstract defect calculus to a selected finite-dimensional negative sector in the presence of additional negative and positive background channels.
 
@@ -57,7 +57,7 @@ P-S_MS_M^{*}-S_BS_B^{*}.
 
 ---
 
-## WD-B1 — Selected/background monotonicity and custody
+### WD-B1 — Selected/background monotonicity and custody
 
 For every $h\in\mathcal H$,
 
@@ -129,7 +129,7 @@ Thus a full aggregate defect does not by itself identify which negative sector o
 
 ---
 
-## WD-B2 — Finite selected-sector index cap
+### WD-B2 — Finite selected-sector index cap
 
 Assume
 
@@ -222,7 +222,7 @@ A fixed $m$-dimensional selected negative sector can create at most $m$ independ
 
 ---
 
-## WD-B3 — Shared screening budget
+### WD-B3 — Shared screening budget
 
 Assume the full negative synthesis is exactly contained in the positive synthesis range, and let
 
@@ -298,7 +298,7 @@ WD-A2 identifies contractivity of the reduced full screening map with nonnegativ
 
 ---
 
-## WD-E3 — Individual screenability is not compositional
+### WD-E3 — Individual screenability is not compositional
 
 Take
 
@@ -340,7 +340,7 @@ Thus two individually contractive screens can exceed the shared unit budget when
 
 ---
 
-## WD-B4 — Background elimination and residual budget
+### WD-B4 — Background elimination and residual budget
 
 Assume the background is contractively screenable:
 
@@ -440,7 +440,7 @@ This is the abstract form of “consume background first, then test the selected
 
 ---
 
-## WD-B5 — Finite-sector singular-value inertia theorem
+### WD-B5 — Finite-sector singular-value inertia theorem
 
 Assume
 
@@ -549,7 +549,7 @@ It can occur only through an infinite-dimensional negative sector, a moving fami
 
 ---
 
-## WD-B6 — Sequential background consumption
+### WD-B6 — Sequential background consumption
 
 Let the negative background split as
 
@@ -605,7 +605,7 @@ Individual screenability through the original $S_{+}$ is insufficient.
 
 ---
 
-## WD-B7 — Direct compression versus shorted covariance
+### WD-B7 — Direct compression versus shorted covariance
 
 Let $K$ be a uniformly positive bounded operator on
 
@@ -679,7 +679,7 @@ For merely positive $K$, the Anderson–Trapp shorted operator extends this Schu
 
 ---
 
-## WD-E4 — Direct sampling can remain strong while shorted covariance collapses
+### WD-E4 — Direct sampling can remain strong while shorted covariance collapses
 
 Take
 
@@ -723,7 +723,7 @@ Hence an excellent direct lower bound on the selected finite-dimensional target 
 
 ---
 
-## WD-B8 — Finite positive shadows preserve signature but not admissibility
+### WD-B8 — Finite positive shadows preserve signature but not admissibility
 
 Let
 
@@ -777,11 +777,11 @@ Finite positive truncation can certify that the coefficient signature is already
 
 ---
 
-# H1-P1.1 determination
+## H1-P1.1 determination
 
 The selected finite-index problem is now abstractly separated into three layers.
 
-## Layer 1 — Selected defect custody
+### Layer 1 — Selected defect custody
 
 ```math
 D_{\rm full}
@@ -791,7 +791,7 @@ D_M-S_BS_B^{*}.
 
 Selected negativity survives aggregation, but aggregate negativity does not identify the selected owner.
 
-## Layer 2 — Shared budget and background elimination
+### Layer 2 — Shared budget and background elimination
 
 A contractively screenable background consumes
 
@@ -811,7 +811,7 @@ The selected problem then restarts with effective positive synthesis
 S_{\rm eff}=S_{+}R_B^{1/2}.
 ```
 
-## Layer 3 — Finite-index spectral classification
+### Layer 3 — Finite-index spectral classification
 
 For a fixed finite selected sector, the reduced residual screening map $Y$ has finitely many singular values, and
 
@@ -833,7 +833,7 @@ Therefore fixed finite-sector criticality always produces an attained neutral mo
 
 The abstract non-attained critical branch from H1-P1.0 must come from an infinite or moving sector, not from a single fixed finite selected packet.
 
-## Main conceptual result
+### Main conceptual result
 
 ```math
 \boxed{
@@ -852,7 +852,7 @@ but
 
 Those remain sensitive to background coupling and complement shorting.
 
-## Next cursor
+### Next cursor
 
 ```math
 \boxed{
