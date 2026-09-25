@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T32 | WeilDefect.completedResponseLift + WeilDefect.iteratedDeriv_centered_power + WeilDefect.iteratedDeriv_centered_power_mul + WeilDefect.wd_t32_complementary_next_jet_identity + WeilDefect.nearComplementaryResponse + WeilDefect.weightedNearNextJetField + WeilDefect.wd_t32_weighted_near_next_jet_representation | LEAN-CERTIFIED |
 | WD-T31 | WeilDefect.ZetaLogShellCountData + WeilDefect.FarShellResponseData + WeilDefect.logarithmicTail_tsum_le + WeilDefect.farShellResponse_norm_le_logarithmic_kernel + WeilDefect.wd_t31_shell_aggregation + WeilDefect.rationalResponse_zero_moment_norm_le_inverse_square + WeilDefect.farShellResponseData_of_zero_moment + WeilDefect.wd_t31_zero_moment_zero_count_far_tail | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T29 | WeilDefect.wd_t29_finite_head_approximation + WeilDefect.wd_t29_quantitative_finite_head_approximation | LEAN-CERTIFIED |
 | WD-T28 | WeilDefect.ZetaZeroShellCountData + WeilDefect.NativeProblemOneResolventData + WeilDefect.NativeHilbertSchmidtCriterion + WeilDefect.NativeTraceClassCovarianceCriterion + WeilDefect.wd_t28_native_problem_one_hilbert_schmidt_actual + WeilDefect.problemOneGreenPairing_eq_dirichletEnergy + WeilDefect.problemOneColumnEnergySq_eq_dirichletEnergy + WeilDefect.wd_t28_actual_dirichlet_energy_summable | LEAN-CERTIFIED |
@@ -3346,10 +3347,91 @@ The final run passed pinned dependency resolution, mathlib cache retrieval,
 the dedicated \(\texttt{WeilDefect.Arithmetic.FarTail}\) build, and
 unfinished-proof/project-axiom rejection.
 
-WD-T31 is therefore closed. The next unfinished sequential theorem cursor is:
+WD-T31 is therefore closed.
+
+## WD-T32 certificate evidence
+
+Stable ID:
 
 \[
 \boxed{
-\texttt{WD-T32 / ZW2-T3+ZW2-T4 — COMPLEMENTARY RESPONSE = WEIGHTED COMPLETED }\Xi\texttt{ NEXT-JET FIELD}
+\text{WD-T32: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.completedResponseLift;
+- WeilDefect.iteratedDeriv_centered_power;
+- WeilDefect.iteratedDeriv_centered_power_mul;
+- WeilDefect.wd_t32_complementary_next_jet_identity;
+- WeilDefect.nearComplementaryResponse;
+- WeilDefect.weightedNearNextJetField;
+- WeilDefect.wd_t32_weighted_near_next_jet_representation.
+
+For a local multiplicity factorization
+
+\[
+\Xi(z)=(z-\mu)^m g(z),
+\qquad g(\mu)\ne0,
+\]
+
+Lean proves directly from the pinned iterated-derivative shift and Leibniz
+rules that
+
+\[
+\Xi^{(m)}(\mu)=m!\,g(\mu),
+\]
+
+and, for the completed lift \(H=\Xi R\),
+
+\[
+H^{(m)}(\mu)=m!\,g(\mu)R(\mu).
+\]
+
+The nonzero local factor therefore gives the exact quotient identity
+
+\[
+R(\mu)
+=
+\frac{H^{(m)}(\mu)}{\Xi^{(m)}(\mu)}.
+\]
+
+Lean then substitutes this identity termwise over an arbitrary finite
+complementary packet, certifying the ZW2-T4 weighted near next-jet
+representation.
+
+No project axiom or imported theorem premise is consumed by WD-T32. The local
+factorization, smoothness, and nonvanishing conditions appear explicitly as
+the mathematical hypotheses of the theorem.
+
+Dedicated theorem CI passed in:
+
+\[
+\boxed{\texttt{36167018245}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{c8d35dfef95e7e9989ca07faa5dbd531332c22ff}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{df0d86d7c86f7b6ae8ae142f6a5018bacb65a0b6}.
+\]
+
+The run passed pinned dependency resolution, mathlib cache retrieval, direct
+Lake build of \(\texttt{WeilDefect.Arithmetic.NextJet}\), and
+unfinished-proof/project-axiom rejection.
+
+WD-T33 is already independently Lean-certified. Therefore the next unfinished
+sequential theorem cursor is:
+
+\[
+\boxed{
+\texttt{WD-T34 / ZW2-T6 — FINITE PRIME-POWER TRANSLATIONS ON FIXED SUPPORT}
 }
 \]
