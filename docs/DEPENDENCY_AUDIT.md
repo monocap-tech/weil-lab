@@ -636,7 +636,7 @@ WD-X01 through WD-X07 are EXAMPLE-AUDIT-PASSED.
 
 All H1-P4 audit classes are now complete.
 
-\[
+```math
 \boxed{
 \textbf{H1-P4 — COMPLETE.}
 }
