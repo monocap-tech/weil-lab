@@ -320,7 +320,7 @@ structure NegativeDefectMorphology
     (gPhys : ℕ → P) (ε : ℕ → ℝ)
     (b : ℕ → B)
     (κ : ℝ)
-    (sourceOf : M → SelectedSourceData) : Prop where
+    (sourceOf : M → SelectedSourceData) where
   endpoint : WeilDefect.WDT16.CoeffSpace Kpos M
   endpoint_nonzero : endpoint ≠ 0
   endpoint_right :
