@@ -54,7 +54,7 @@ boundary is deliberately before RH closure.
 | H1-P5 | Public mathematical package | **Active** |
 
 Within H1-P4, source pinning, the internal proof audit, the composite
-morphology audit, and the examples/sharpness audit are complete. The Lean certification track is exhausted. **H1-P5.0 / Public Package Architecture** is complete; the active cursor is **H1-P5.1 / Technical Manuscript Assembly**. Stable public theorem IDs and the
+morphology audit, and the examples/sharpness audit are complete. The Lean certification track is exhausted. **H1-P5.0 / Public Package Architecture** and **H1-P5.1 / Technical Manuscript Assembly** are complete; the active cursor is **H1-P5.2 / Public Theorem Index and Verification Matrix**. Stable public theorem IDs and the
 audit surfaces are canonical in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
 [Dependency Audit](docs/DEPENDENCY_AUDIT.md),
