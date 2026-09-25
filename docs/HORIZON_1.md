@@ -395,13 +395,15 @@ All H1-P4 audit classes are now complete:
 
 Therefore **H1-P4 is COMPLETE**.
 
-### Current cursor
+### Current formalization cursor
 
 ```math
 \boxed{
-\texttt{LEAN-H1-P0 / INFRASTRUCTURE AND VERTICAL PILOT}
+\texttt{LEAN-H1-P1 / WD-X02 — CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}
 }
 ```
+
+The next public-package cursor remains `H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE`, but it is deferred until LEAN-H1 is exhausted.
 
 ---
 
@@ -409,7 +411,7 @@ Therefore **H1-P4 is COMPLETE**.
 
 **Status:** COMPLETE.
 
-Every theorem will receive:
+Every stable theorem received:
 
 - a canonical theorem label;
 - exact hypotheses;
@@ -424,7 +426,7 @@ Every theorem will receive:
 The normalized public theorem sequence will use stable labels such as
 
 ```math
-\texttt{WD-T1},\texttt{ WD-T2},\ldots
+\texttt{WD-T01},\texttt{ WD-T02},\ldots
 ```
 
 with auxiliary lemmas and counterexamples under separate namespaces.
