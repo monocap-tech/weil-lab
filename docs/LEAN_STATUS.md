@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T21 | WeilDefect.quartetPairPos + WeilDefect.quartetPairNeg + WeilDefect.wd_t21_quartet_pair_pos_conjugate + WeilDefect.wd_t21_quartet_pair_neg_conjugate + WeilDefect.wd_t21_quartet_pairs_nonreal + WeilDefect.wd_t21_quartet_pairs_distinct + WeilDefect.wd_t21_simple_quartet_negative_count + WeilDefect.wd_t21_simple_quartet_pair_geometry | LEAN-CERTIFIED |
 | WD-T20 | WeilDefect.wd_t20_pair_pos_eigen + WeilDefect.wd_t20_pair_neg_eigen + WeilDefect.pairEigenEquiv + WeilDefect.wd_t20_pair_diagonalization | LEAN-CERTIFIED |
 | WD-T19 | WeilDefect.WDT19.analysisSpace + WeilDefect.WDT19.weak_limit_mem_physical_rightLimit + WeilDefect.WDT19.wd_t19_endpoint_representative_blowup + WeilDefect.WDT19.BoundaryAmplifies + WeilDefect.WDT19.wd_t19_boundary_amplification + WeilDefect.WDT19.wd_t19_vanishing_amplitude_normalized_blowup | LEAN-CERTIFIED |
 | WD-T18 | WeilDefect.WDT18.endpointInside + WeilDefect.WDT18.endpointQuotientMap + WeilDefect.WDT18.wd_t18_endpoint_quotient_map_injective + WeilDefect.WDT18.wd_t18_endpoint_jump_negative_rank_le_quotient + WeilDefect.WDT18.wd_t18_one_dimensional_jump_rank_cap | LEAN-CERTIFIED |
@@ -2116,5 +2117,101 @@ Next theorem cursor:
 \[
 \boxed{
 \texttt{WD-T21 / ZW1-T2 — ONE SIMPLE ZETA QUARTET CONTRIBUTES TWO NEGATIVE PAIR COORDINATES}
+}
+\]
+
+
+## WD-T21 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T21: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.quartetPairPos;
+- WeilDefect.quartetPairNeg;
+- WeilDefect.wd_t21_quartet_pair_pos_conjugate;
+- WeilDefect.wd_t21_quartet_pair_neg_conjugate;
+- WeilDefect.wd_t21_quartet_pairs_nonreal;
+- WeilDefect.wd_t21_quartet_pairs_distinct;
+- WeilDefect.wd_t21_simple_quartet_negative_count;
+- WeilDefect.wd_t21_simple_quartet_pair_geometry.
+
+Under the simple off-critical nondegeneracy assumptions
+
+\[
+T\ne0,
+\qquad
+\delta\ne0,
+\]
+
+Lean certifies that the Bombieri ordinate coordinates
+
+\[
+\{T+i\delta,T-i\delta\}
+\]
+
+and
+
+\[
+\{-T+i\delta,-T-i\delta\}
+\]
+
+are two distinct nonreal complex-conjugate pairs.
+
+Combining this with WD-T20's pair diagonalization, one simple quartet has
+exactly two canonical negative pair coordinates. The formal coordinate type
+is `Fin 2`, with cardinality two.
+
+WD-T21 is only the coefficient-space count. Equality with the finite Weil
+matrix negative spectral index remains WD-T22 and uses Bombieri's imported
+finite-inertia theorem.
+
+No imported project theorem premise is consumed by WD-T21.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.PairGeometry}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36088674422}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{e8e1c6b9e1f9f9f566d6398b296d7b30b827ef3d}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{427fbe49617add15010ba812c6140e07a7b9507f}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T21 module;
+- unfinished-proof/project-axiom rejection.
+
+The only compiler repair was the pinned complex-conjugation API name; no
+mathematical statement was weakened.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T22 / ZW1-T3 — FINITE WEIL INERTIA SATURATION}
 }
 \]
