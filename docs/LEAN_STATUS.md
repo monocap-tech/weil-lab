@@ -68,7 +68,7 @@ This section is canonical for the live queue. The certificate sections below are
 | WD-X03 | `WeilDefect.wd_x03_individual_not_compositional` | LEAN-CERTIFIED |
 | WD-X04 | `WeilDefect.wd_x04_shorted_covariance_identity` | LEAN-CERTIFIED |
 | WD-X05 | WeilDefect.wdX05Delta + WeilDefect.wdX05PosAmp + WeilDefect.wdX05NegAmp + WeilDefect.wdX05Pos + WeilDefect.wdX05Neg + WeilDefect.wdX05Vector + WeilDefect.wd_x05_vector_norm_eq_one + WeilDefect.wd_x05_jvalue_formula + WeilDefect.wd_x05_jvalue_negative + WeilDefect.wd_x05_jvalue_tendsto_zero + WeilDefect.wdX05Tail + WeilDefect.wd_x05_tail_antitone + WeilDefect.wd_x05_vector_mem_tail + WeilDefect.wd_x05_tail_intersection_trivial + WeilDefect.wd_x05_moving_sectors_lose_persistent_ray | LEAN-CERTIFIED |
-| WD-X06 | — | LEAN-NOT-ATTEMPTED |
+| WD-X06 | WeilDefect.wdX06Amp + WeilDefect.wdX06Pos + WeilDefect.wdX06Neg + WeilDefect.wdX06Vector + WeilDefect.wdX06Limit + WeilDefect.wd_x06_vector_norm_eq_one + WeilDefect.wd_x06_vector_critical + WeilDefect.wd_x06_lp_coordinate_tendsto_zero + WeilDefect.wd_x06_positive_weakly_tendsto_zero + WeilDefect.wd_x06_vector_weakly_tendsto_limit + WeilDefect.wd_x06_limit_jvalue + WeilDefect.wd_x06_positive_mass_loss_fallthrough | LEAN-IN-PROGRESS |
 | WD-X07 | WeilDefect.wd_x07_response_identity + WeilDefect.wd_x07_real_response_formula + WeilDefect.wd_x07_scaled_response_tendsto_neg_one | LEAN-CERTIFIED |
 
 A `LEAN-IN-PROGRESS` entry becomes `LEAN-CERTIFIED` only after the pinned CI build succeeds. `LEAN-CERTIFIED` entries in the table already have certificate evidence recorded below.
