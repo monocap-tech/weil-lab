@@ -1,4 +1,5 @@
 import WeilDefect.Filtration.FiniteNegativeSector
+import WeilDefect.Filtration.CriticalDichotomy
 import WeilDefect.Screening.FinitePositiveShadows
 import WeilDefect.Screening.BackgroundCustody
 
@@ -475,6 +476,97 @@ theorem wd_t39_p3_b2_full_coordinate_escape_weak_zero
         add_lt_add hfirst hsecond
       _ < ε := by linarith
   simpa [dist_eq_norm] using htotal
+
+
+/-- The two possible regimes after imposing a uniform background bound. -/
+inductive BoundedBackgroundRegime
+    {B : Type*}
+    [NormedAddCommGroup B] [InnerProductSpace ℂ B]
+    (b : ℕ → B) : Prop where
+  | weakTailEscape
+      (φ : ℕ → ℕ) (bLim : B) (L : ℝ)
+      (hφ : StrictMono φ)
+      (hweak :
+        WeilDefect.WDT16.WeaklyTendsto
+          (fun n => b (φ n)) bLim)
+      (hnormSq :
+        Tendsto (fun n => ‖b (φ n)‖ ^ 2)
+          atTop (𝓝 L))
+      (defect_pos : 0 < L - ‖bLim‖ ^ 2)
+  | strongCompact
+      (φ : ℕ → ℕ) (bLim : B)
+      (hφ : StrictMono φ)
+      (hstrong :
+        Tendsto (fun n => b (φ n))
+          atTop (𝓝 bLim))
+
+/--
+P3-B4 bounded-background dichotomy.
+
+Every uniformly bounded Hilbert-space background sequence has a subsequence
+which is either strongly compact, or weakly convergent with a strictly
+positive norm-square loss.  This is precisely the BT/BF split after the
+unbounded B-infinity regime has been excluded.
+-/
+theorem wd_t39_p3_b4_bounded_background_dichotomy
+    {B : Type*}
+    [NormedAddCommGroup B] [InnerProductSpace ℂ B] [CompleteSpace B]
+    (b : ℕ → B) (R : ℝ)
+    (hbound : ∀ n, ‖b n‖ ≤ R) :
+    BoundedBackgroundRegime b := by
+  have hR : 0 ≤ R :=
+    (norm_nonneg (b 0)).trans (hbound 0)
+  rcases
+      WeilDefect.WDT16.exists_weaklyTendsto_subseq_of_norm_le
+        b R hR hbound with
+    ⟨φ₁, hφ₁, bLim, hweak₁, hbLim⟩
+  let s : ℕ → ℝ := fun n => ‖b (φ₁ n)‖ ^ 2
+  have hsMem :
+      ∀ n, s n ∈ Set.Icc (0 : ℝ) (R ^ 2) := by
+    intro n
+    constructor
+    · exact sq_nonneg _
+    · have hb := hbound (φ₁ n)
+      have hbn : 0 ≤ ‖b (φ₁ n)‖ := norm_nonneg _
+      nlinarith
+  rcases
+      (isCompact_Icc :
+        IsCompact (Set.Icc (0 : ℝ) (R ^ 2))).tendsto_subseq
+          hsMem with
+    ⟨L, hLmem, φ₂, hφ₂, hsq⟩
+  let φ : ℕ → ℕ := φ₁ ∘ φ₂
+  have hφ : StrictMono φ := hφ₁.comp hφ₂
+  have hweak :
+      WeilDefect.WDT16.WeaklyTendsto
+        (fun n => b (φ n)) bLim := by
+    intro z
+    simpa [φ, Function.comp_def] using
+      (hweak₁ z).comp hφ₂.tendsto_atTop
+  have hsq' :
+      Tendsto (fun n => ‖b (φ n)‖ ^ 2)
+        atTop (𝓝 L) := by
+    simpa [s, φ, Function.comp_def] using hsq
+  have hle :
+      ‖bLim‖ ^ 2 ≤ L :=
+    WeilDefect.WDT16.weaklyTendsto_norm_sq_le_of_tendsto
+      hweak hsq'
+  by_cases heq : ‖bLim‖ ^ 2 = L
+  · have hsqLim :
+        Tendsto (fun n => ‖b (φ n)‖ ^ 2)
+          atTop (𝓝 (‖bLim‖ ^ 2)) := by
+      simpa [heq] using hsq'
+    have hstrong :=
+      WeilDefect.WDT17.weaklyTendsto_strong_of_norm_sq_tendsto
+        hweak hsqLim
+    exact
+      BoundedBackgroundRegime.strongCompact
+        φ bLim hφ hstrong
+  · have hlt : ‖bLim‖ ^ 2 < L :=
+      lt_of_le_of_ne hle heq
+    exact
+      BoundedBackgroundRegime.weakTailEscape
+        φ bLim L hφ hweak hsq'
+        (sub_pos.mpr hlt)
 
 
 end WeilDefect
