@@ -44,9 +44,12 @@ theorem weaklyTendsto_strong_of_norm_sq_tendsto
         (fun n => ‖v n - x‖ ^ 2)
         atTop
         (𝓝 0) := by
-    have hcalc :=
-      (hnorm.sub htwo).add_const (‖x‖ ^ 2)
-    simpa [norm_sub_sq, inner_self_eq_norm_sq_to_K] using hcalc
+    have hzero :
+        ‖x‖ ^ 2 - 2 * RCLike.re (inner ℂ x x) + ‖x‖ ^ 2 = 0 := by
+      simp [inner_self_eq_norm_sq_to_K]
+    rw [← hzero]
+    simpa only [norm_sub_sq] using
+      ((hnorm.sub htwo).add_const (‖x‖ ^ 2))
   have hnormSub :
       Tendsto
         (fun n => ‖v n - x‖)
@@ -111,11 +114,11 @@ theorem wd_t17_critical_positive_mass_le_half
         (𝓝 ((1 : ℝ) / 2)) := by
     have hlim :=
       Tendsto.div_const (hone.add hqφ) (2 : ℝ)
-    apply hlim.congr'
-    filter_upwards with n
-    have hc := hcoord (φ n)
-    unfold jValue
-    nlinarith
+    convert hlim.congr'
+      (Eventually.of_forall fun n => by
+        have hc := hcoord (φ n)
+        unfold jValue
+        nlinarith) using 1 <;> norm_num
   exact
     weaklyTendsto_norm_sq_le_of_tendsto
       haWeak haSqTendsto
@@ -176,11 +179,11 @@ theorem wd_t17_fixed_sector_critical_dichotomy
         (𝓝 ((1 : ℝ) / 2)) := by
     have hlim :=
       Tendsto.div_const (hone.add hqφ) (2 : ℝ)
-    apply hlim.congr'
-    filter_upwards with n
-    have hc := hcoord (φ n)
-    unfold jValue
-    nlinarith
+    convert hlim.congr'
+      (Eventually.of_forall fun n => by
+        have hc := hcoord (φ n)
+        unfold jValue
+        nlinarith) using 1 <;> norm_num
   have huSqTendsto :
       Tendsto
         (fun n => ‖u (φ n)‖ ^ 2)
@@ -188,11 +191,11 @@ theorem wd_t17_fixed_sector_critical_dichotomy
         (𝓝 ((1 : ℝ) / 2)) := by
     have hlim :=
       Tendsto.div_const (hone.sub hqφ) (2 : ℝ)
-    apply hlim.congr'
-    filter_upwards with n
-    have hc := hcoord (φ n)
-    unfold jValue
-    nlinarith
+    convert hlim.congr'
+      (Eventually.of_forall fun n => by
+        have hc := hcoord (φ n)
+        unfold jValue
+        nlinarith) using 1 <;> norm_num
   have huStrongSq :
       Tendsto
         (fun n => ‖u (φ n)‖ ^ 2)
@@ -236,8 +239,15 @@ theorem wd_t17_fixed_sector_critical_dichotomy
         ((WithLp.prodContinuousLinearEquiv
           2 ℂ Kpos M).symm.continuous.tendsto
             (aLim, uLim)).comp hpair
-      simpa [coeff,
-        WithLp.prodContinuousLinearEquiv_symm_apply] using hmap
+      change
+        Tendsto
+          (fun n =>
+            (WithLp.prodContinuousLinearEquiv
+              2 ℂ Kpos M).symm (a (φ n), u (φ n)))
+          atTop
+          (𝓝 ((WithLp.prodContinuousLinearEquiv
+            2 ℂ Kpos M).symm (aLim, uLim)))
+      exact hmap
     have hj0 : jValue aLim uLim = 0 := by
       unfold jValue
       rw [haEq, huEq]
