@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T28 | WeilDefect.ZetaZeroShellCountData + WeilDefect.NativeProblemOneResolventData + WeilDefect.NativeHilbertSchmidtCriterion + WeilDefect.NativeTraceClassCovarianceCriterion + WeilDefect.nativeShellEnergy_summable + WeilDefect.wd_t28_native_basis_square_summable + WeilDefect.wd_t28_native_problem_one_hilbert_schmidt | LEAN-IN-PROGRESS |
 | WD-T27 | WeilDefect.rationalResponse + WeilDefect.residueFirstMoment + WeilDefect.rationalResponse_laurent_two + WeilDefect.rationalResponse_zero_moment_remainder_bound + WeilDefect.rationalResponse_zero_moment_remainder_isBigO + WeilDefect.rationalResponse_zero_moment_isBigO + WeilDefect.wd_t27_universal_inverse_square_far_decay + WeilDefect.wd_t27_universal_inverse_square_isBigO | LEAN-CERTIFIED |
 | WD-T26 | WeilDefect.rawResiduesOfNegativePairs + WeilDefect.wd_t26_zero_moment + WeilDefect.wd_t26_coefficient_mem_rawResidues + WeilDefect.wd_t26_nonzero_raw_residue_of_nonzero_coefficient + WeilDefect.wd_t26_selected_zero_moment_residue | LEAN-CERTIFIED |
 | WD-T25 | WeilDefect.problemOneDenominator + WeilDefect.problemOneL + WeilDefect.problemOneMode + WeilDefect.problemOneL_problemOneMode + WeilDefect.wd_t25_finite_problem_one_relation_trivial + WeilDefect.wd_t25_no_exact_finite_positive_compensation | LEAN-CERTIFIED |
@@ -2793,10 +2794,143 @@ The repair passes affected only finite-sum normalization, Bornology scope, and
 triangle-inequality elaboration.  No theorem statement or mathematical
 hypothesis was weakened.
 
-Next theorem cursor:
+## WD-T28 criterion-layer certificate evidence
+
+Stable ID remains:
 
 \[
 \boxed{
-\texttt{WD-T28 / ZW1-T9 — NATIVE PROBLEM-1 ZERO SYNTHESIS IS HILBERT-SCHMIDT}
+\text{WD-T28: LEAN-IN-PROGRESS}.
+}
+\]
+
+The Hilbert--Schmidt **criterion layer** is kernel-checked.
+
+Formal declarations include:
+
+- WeilDefect.ZetaShellIndex;
+- WeilDefect.ZetaZeroShellCountData;
+- WeilDefect.NativeProblemOneResolventData;
+- WeilDefect.NativeHilbertSchmidtCriterion;
+- WeilDefect.NativeTraceClassCovarianceCriterion;
+- WeilDefect.nativeShellEnergy;
+- WeilDefect.summable_shifted_rpow_neg_three_halves;
+- WeilDefect.nativeShellEnergy_le_three_halves;
+- WeilDefect.nativeShellEnergy_summable;
+- WeilDefect.wd_t28_native_basis_square_summable;
+- WeilDefect.wd_t28_native_problem_one_hilbert_schmidt.
+
+The pinned Mathlib version does not expose a native Hilbert--Schmidt or
+trace-class operator type.  Accordingly WD-T28 is represented at the standard
+\(\ell^2\)-basis criterion level:
+
+\[
+\sum_\gamma
+\|E_t e_\gamma\|_{H^{-1}_L}^2
+<
+\infty.
+\]
+
+The zero-count input is explicit.  The Titchmarsh
+\(O(\log T)\) unit-shell estimate is packaged through its elementary weaker
+consequence
+
+\[
+\#\Gamma_n
+\ll
+(n+1)^{1/2},
+\]
+
+which is sufficient for summability.
+
+The native column estimate is also explicit:
+
+\[
+\|E_t e_\gamma\|_{H^{-1}_L}^2
+\le
+A(n+1)^{-2}
+\]
+
+for a coordinate in unit shell \(n\).
+
+Lean then verifies internally that one shell contributes at most
+
+\[
+AC(n+1)^{-3/2},
+\]
+
+and proves summability via the \(p\)-series with exponent \(3/2\).
+The Sigma-type shell decomposition then yields summability over all zero
+coordinates.
+
+At the criterion level Lean therefore verifies both:
+
+\[
+\text{Hilbert--Schmidt basis-square summability},
+\]
+
+and the corresponding covariance trace-sum criterion.
+
+Dedicated criterion CI built:
+
+\[
+\texttt{WeilDefect.NativeHilbertSchmidt}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36100254156}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{b919ea890dfb83236cdb6ec0de625b5e59fd9e24}}.
+\]
+
+The checked theorem source blob is:
+
+\[
+\texttt{d94c9020fdd9c3acadf0e143735b21bb12bd8598}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T28 criterion module;
+- rebuilding the finite Problem-1 dependencies;
+- unfinished-proof/project-axiom rejection.
+
+### Remaining WD-T28 obligation
+
+The stable theorem is **not yet promoted** because the direct analytic
+Dirichlet-resolvent estimate itself is still represented by the explicit
+premise
+
+\[
+\texttt{NativeProblemOneResolventData}.
+\]
+
+The remaining kernel obligation is to realize the actual compact-window
+Problem-1 column and prove from its Dirichlet solution that
+
+\[
+\boxed{
+\|E_t e_\gamma\|_{H^{-1}_L}^2
+\ll_t
+(1+|\gamma|^2)^{-1}.
+}
+\]
+
+Only after that realization is kernel-checked should WD-T28 be promoted from
+LEAN-IN-PROGRESS.
+
+Current formalization cursor:
+
+\[
+\boxed{
+\texttt{WD-T28 / RESOLVENT REALIZATION — DIRECT DIRICHLET }H^{-1}_L\texttt{ COLUMN ESTIMATE}
 }
 \]
