@@ -2,7 +2,7 @@
 
 This page is the compact status surface for Horizon 1.
 
-The canonical theorem-by-theorem inventory is [Theorem Ledger](THEOREM_LEDGER.md).  
+The canonical theorem-by-theorem inventory is [Theorem Ledger](THEOREM_LEDGER.md).
 The canonical dependency/source audit is [Dependency Audit](DEPENDENCY_AUDIT.md).
 
 ## Two-axis status model
@@ -99,7 +99,7 @@ Anderson–Trapp shorting and Suzuki's operator framework remain contextual/non-
 
 ### WD-T37 — Negative defect morphology
 
-**Standing:** CONDITIONAL COMPOSITE.  
+**Standing:** CONDITIONAL COMPOSITE.
 **Verification:** COMPOSITE-AUDIT-PASSED.
 
 Stops at:
@@ -114,7 +114,7 @@ with C-ACTUAL-KPH-FLOOR as a stronger special-packet interface.
 
 ### WD-T38 — Neutral defect morphology
 
-**Standing:** CONDITIONAL COMPOSITE.  
+**Standing:** CONDITIONAL COMPOSITE.
 **Verification:** COMPOSITE-AUDIT-PASSED.
 
 Stops at:
@@ -127,7 +127,7 @@ Stops at:
 
 ### WD-T39 — Noncompact background morphology
 
-**Standing:** INTERNAL/CONDITIONAL COMPOSITE.  
+**Standing:** INTERNAL/CONDITIONAL COMPOSITE.
 **Verification:** COMPOSITE-AUDIT-PASSED.
 
 Introduces no new RH-facing interface.
