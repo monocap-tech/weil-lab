@@ -753,4 +753,145 @@ theorem wd_t39_p3_b4_background_compactness_trichotomy
 
 
 
+/--
+Universal package for WD-T39 / P3-B1...P3-B7.
+
+The fields deliberately quantify the selected/full-carrier and background
+problems separately.  In particular, this package does not assert that one
+sequence simultaneously realizes moving-sector escape and a fixed selected
+negative ray.
+-/
+structure NoncompactDefectMorphology : Prop where
+  anchoredMass :
+    ∀ {K H : Type*}
+      [NormedAddCommGroup K] [InnerProductSpace ℂ K] [CompleteSpace K]
+      [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+      (S : K →L[ℂ] H)
+      (Q : K →L[ℂ] K)
+      {w : ℕ → K} {wLim : K}
+      (δ : ℝ), 0 < δ →
+      WeilDefect.WDT16.WeaklyTendsto w wLim →
+      Tendsto (fun n => Q (w n)) atTop (𝓝 (Q wLim)) →
+      (∀ᶠ n in atTop, δ ≤ ‖Q (w n)‖) →
+      Tendsto (fun n => S (w n)) atTop (𝓝 0) →
+      wLim ≠ 0 ∧ S wLim = 0
+  fullCoordinateEscape :
+    ∀ {K : Type*}
+      [NormedAddCommGroup K] [InnerProductSpace ℂ K] [CompleteSpace K]
+      (E : FullCoordinateExhaustion K)
+      (w : ℕ → K),
+      (∀ n, ‖w n‖ ≤ 1) →
+      (∀ R,
+        Tendsto (fun n => E.block R (w n))
+          atTop (𝓝 0)) →
+      WeilDefect.WDT16.WeaklyTendsto w 0
+  fixedPacketCustody :
+    ∀ {M : Type*}
+      [NormedAddCommGroup M] [InnerProductSpace ℂ M] [CompleteSpace M]
+      [FiniteDimensional ℂ M]
+      (u : ℕ → M) (R δ : ℝ),
+      (∀ n, ‖u n‖ ≤ R) →
+      0 < δ →
+      (∃ᶠ n in atTop, δ ≤ ‖u n‖) →
+      ∃ φ : ℕ → ℕ, StrictMono φ ∧
+        ∃ uLim : M,
+          uLim ≠ 0 ∧
+          Tendsto (fun n => u (φ n)) atTop (𝓝 uLim)
+  backgroundTrichotomy :
+    ∀ {B : Type*}
+      [NormedAddCommGroup B] [InnerProductSpace ℂ B] [CompleteSpace B]
+      (b : ℕ → B),
+      BackgroundCompactnessRegime b
+  selectedRayStability :
+    ∀ {Kpos M B : Type*}
+      [NormedAddCommGroup Kpos] [NormedSpace ℂ Kpos]
+      [NormedAddCommGroup M] [NormedSpace ℂ M]
+      [NormedAddCommGroup B] [NormedSpace ℂ B]
+      (a : Kpos) (u : M) (b : B)
+      (κ : ℝ), 0 < κ →
+      WeilDefect.WDT16.jValue a u ≤ -κ →
+      u ≠ 0
+        ∧ fullJValue a u b ≤ -κ - ‖b‖ ^ 2
+        ∧ fullJValue a u b < 0
+  fixedFullDivisorWeakLimit :
+    ∀ {Kpos M B : Type*}
+      [NormedAddCommGroup Kpos] [InnerProductSpace ℂ Kpos] [CompleteSpace Kpos]
+      [NormedAddCommGroup M] [InnerProductSpace ℂ M] [CompleteSpace M]
+      [NormedAddCommGroup B] [InnerProductSpace ℂ B] [CompleteSpace B]
+      {a : ℕ → Kpos} {u : ℕ → M} {b : ℕ → B}
+      {aLim : Kpos} {uLim : M} {bLim : B}
+      (κ : ℝ), 0 < κ →
+      WeilDefect.WDT16.WeaklyTendsto a aLim →
+      Tendsto u atTop (𝓝 uLim) →
+      Tendsto b atTop (𝓝 bLim) →
+      WeilDefect.WDT16.jValue aLim uLim ≤ -κ →
+      WeilDefect.WDT16.WeaklyTendsto
+          (fun n => fullCoeff (a n) (u n) (b n))
+          (fullCoeff aLim uLim bLim)
+        ∧ Tendsto
+            (fun n => fullNegativeCoeff (u n) (b n))
+            atTop
+            (𝓝 (fullNegativeCoeff uLim bLim))
+        ∧ fullCoeff aLim uLim bLim ≠ 0
+        ∧ fullJValue aLim uLim bLim
+            ≤ -κ - ‖bLim‖ ^ 2
+        ∧ fullJValue aLim uLim bLim < 0
+  finiteShadowSeparation :
+    ∀ {Kpos M : Type*}
+      [NormedAddCommGroup Kpos] [InnerProductSpace ℂ Kpos] [CompleteSpace Kpos]
+      [NormedAddCommGroup M] [InnerProductSpace ℂ M] [CompleteSpace M]
+      (X : M →L[ℂ] Kpos)
+      (U : Submodule ℂ Kpos) [U.HasOrthogonalProjection]
+      (a : Kpos) (u : M) (κ : ℝ),
+      WeilDefect.WDT14.shadowMargin a u = κ →
+      0 < κ →
+      u = -((X†) a) →
+      WeilDefect.WDT14.shadowMargin (U.starProjection a) u ≥ κ
+        ∧
+      (u = -((X†) (U.starProjection a))
+        ↔ (X†) (a - U.starProjection a) = 0)
+
+/--
+WD-T39 / P3-B1...P3-B7 assembled.
+
+This theorem is purely internal Hilbert-space/operator morphology.  It adds no
+new RH-facing interface and preserves the audited distinctions:
+full-carrier escape is not selected-negative-only escape, background strong
+compactness does not imply positive-coordinate strong compactness, and
+background escape cannot erase an already anchored selected negative ray.
+-/
+theorem wd_t39_noncompact_background_morphology :
+    NoncompactDefectMorphology := by
+  refine {
+    anchoredMass := ?_
+    fullCoordinateEscape := ?_
+    fixedPacketCustody := ?_
+    backgroundTrichotomy := ?_
+    selectedRayStability := ?_
+    fixedFullDivisorWeakLimit := ?_
+    finiteShadowSeparation := ?_
+  }
+  · intro K H _ _ _ _ _ _ S Q w wLim δ hδ hweak hQ hanchor himage
+    exact wd_t39_p3_b1_anchored_mass
+      S Q δ hδ hweak hQ hanchor himage
+  · intro K _ _ _ E w hbound hblock
+    exact wd_t39_p3_b2_full_coordinate_escape_weak_zero
+      E w hbound hblock
+  · intro M _ _ _ _ u R δ hbound hδ hfreq
+    exact wd_t39_p3_b3_fixed_packet_custody
+      u R δ hbound hδ hfreq
+  · intro B _ _ _ b
+    exact wd_t39_p3_b4_background_compactness_trichotomy b
+  · intro Kpos M B _ _ _ _ _ _ a u b κ hκ hselected
+    exact wd_t39_p3_b5_fixed_selected_ray_stability
+      a u b κ hκ hselected
+  · intro Kpos M B _ _ _ _ _ _ _ _ _ a u b aLim uLim bLim
+      κ hκ ha hu hb hselected
+    exact wd_t39_p3_b6_fixed_full_divisor_negative_weak_limit
+      κ hκ ha hu hb hselected
+  · intro Kpos M _ _ _ _ _ _ X U _ a u κ hmargin hκ hgraph
+    exact wd_t39_p3_b7_finite_shadow_separation
+      X U a u κ hmargin hκ hgraph
+
+
 end WeilDefect
