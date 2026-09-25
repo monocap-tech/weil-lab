@@ -12,13 +12,13 @@ open scoped Topology BigOperators
 
 /--
 Finite indexed selected source used by the WD-T37 arithmetic morphology.
-The zero-moment field is the indexed form of WD-T26.
+Zero moment is not stored here: WD-T37 must derive it from the canonical
+WD-T26 raw-residue specialization before the arithmetic continuation.
 -/
 structure SelectedSourceData where
   n : ℕ
   rho : Fin n → ℂ
   v : Fin n → ℂ
-  zeroMoment : (∑ i : Fin n, v i) = 0
 
 namespace SelectedSourceData
 
@@ -26,6 +26,48 @@ def Nonzero (src : SelectedSourceData) : Prop :=
   ∃ i, src.v i ≠ 0
 
 end SelectedSourceData
+
+/--
+WD-T37 residue-custody bridge, zero-moment half.
+
+If the indexed source coefficients are exactly the canonical WD-T26 raw
+residues of finitely many negative pair coefficients, their indexed sum
+vanishes.
+-/
+theorem wd_t37_selected_source_zero_moment_of_wd_t26
+    (src : SelectedSourceData)
+    (xs : List ℂ)
+    (hraw :
+      List.ofFn src.v =
+        rawResiduesOfNegativePairs xs) :
+    (∑ i : Fin src.n, src.v i) = 0 := by
+  have hsum : (List.ofFn src.v).sum = 0 := by
+    rw [hraw]
+    exact wd_t26_zero_moment xs
+  simpa [List.sum_ofFn] using hsum
+
+/--
+WD-T37 residue-custody bridge, nondegeneracy half.
+
+A nonzero selected negative pair coefficient survives verbatim among the
+canonical WD-T26 raw residues, hence the indexed selected source is nonzero.
+-/
+theorem wd_t37_selected_source_nonzero_of_wd_t26
+    (src : SelectedSourceData)
+    (xs : List ℂ)
+    (hraw :
+      List.ofFn src.v =
+        rawResiduesOfNegativePairs xs)
+    (hxs : ∃ α ∈ xs, α ≠ 0) :
+    src.Nonzero := by
+  rcases
+      wd_t26_nonzero_raw_residue_of_nonzero_coefficient xs hxs with
+    ⟨r, hr, hr0⟩
+  have hr' : r ∈ List.ofFn src.v := by
+    rw [hraw]
+    exact hr
+  rcases List.mem_ofFn.mp hr' with ⟨i, hi⟩
+  exact ⟨i, fun hzero => hr0 (hi.symm.trans hzero)⟩
 
 /--
 P3-N1. A convergent strictly negative normalized signature in a fixed finite
@@ -150,6 +192,7 @@ theorem wd_t37_p3_n3_normalized_full_negativity
 /-- P3-N4: WD-T27 applied to an indexed nonzero zero-moment selected source. -/
 theorem wd_t37_p3_n4_zero_moment_source_far_decay
     (src : SelectedSourceData)
+    (hzero : (∑ i : Fin src.n, src.v i) = 0)
     (hsrc : src.Nonzero) :
     src.Nonzero
       ∧
@@ -158,7 +201,7 @@ theorem wd_t37_p3_n4_zero_moment_source_far_decay
     (fun z : ℂ => z⁻¹ ^ 2) := by
   exact ⟨hsrc,
     wd_t27_universal_inverse_square_isBigO
-      src.rho src.v src.zeroMoment⟩
+      src.rho src.v hzero⟩
 
 /--
 P3-N5. Quantitative finite-neighborhood localization from the zero-moment
@@ -166,6 +209,7 @@ source and logarithmic shell counting.
 -/
 theorem wd_t37_p3_n5_far_localization
     (src : SelectedSourceData)
+    (hzero : (∑ i : Fin src.n, src.v i) = 0)
     {count : ℕ → ℕ}
     (mu : FarShellIndex count → ℂ)
     (psi : ℂ → ℂ)
@@ -188,7 +232,7 @@ theorem wd_t37_p3_n5_far_localization
     ((M * zeroMomentResponseConstant src.rho src.v) * C)
       * ((Real.log R + 2) / R) := by
   exact wd_t31_zero_moment_zero_count_far_tail
-    src.rho src.v src.zeroMoment mu psi M C
+    src.rho src.v hzero mu psi M C
     hCount hM hPsi hShellNorm hSelectedFar R hR
 
 /--
@@ -242,6 +286,7 @@ this structure ends at the weighted near next-jet morphology.
 -/
 structure NegativeArithmeticMorphology
     (src : SelectedSourceData) : Prop where
+  zeroMoment : (∑ i : Fin src.n, src.v i) = 0
   sourceNonzero : src.Nonzero
   farDecay :
     (fun z : ℂ => rationalResponse src.rho src.v z)
@@ -320,7 +365,8 @@ structure NegativeDefectMorphology
     (gPhys : ℕ → P) (ε : ℕ → ℝ)
     (b : ℕ → B)
     (κ : ℝ)
-    (sourceOf : M → SelectedSourceData) where
+    (sourceOf : M → SelectedSourceData)
+    (pairCoefficientsOf : M → List ℂ) where
   endpoint : WeilDefect.WDT16.CoeffSpace Kpos M
   endpoint_nonzero : endpoint ≠ 0
   endpoint_right :
@@ -329,6 +375,11 @@ structure NegativeDefectMorphology
   endpoint_negative :
     WeilDefect.WDT16.jValue endpoint.fst endpoint.snd ≤ -κ
   negative_coordinate_nonzero : endpoint.snd ≠ 0
+  raw_residue_custody :
+    List.ofFn (sourceOf endpoint.snd).v =
+      rawResiduesOfNegativePairs (pairCoefficientsOf endpoint.snd)
+  pair_coefficients_nonzero :
+    ∃ α ∈ pairCoefficientsOf endpoint.snd, α ≠ 0
   representatives_blowup :
     Tendsto
       (fun n => ‖((ε n : ℂ)⁻¹) • gPhys n‖)
@@ -382,11 +433,16 @@ noncomputable def wd_t37_fixed_packet_persistent_negative_morphology
     (hgNorm : ∀ n, ‖gPhys n‖ = 1)
     (b : ℕ → B)
     (sourceOf : M → SelectedSourceData)
-    (hsourceNonzero :
+    (pairCoefficientsOf : M → List ℂ)
+    (hsourceRaw :
+      ∀ u0 : M,
+        List.ofFn (sourceOf u0).v =
+          rawResiduesOfNegativePairs (pairCoefficientsOf u0))
+    (hpairNonzero :
       ∀ u0 : M, u0 ≠ 0 →
-        (sourceOf u0).Nonzero) :
+        ∃ α ∈ pairCoefficientsOf u0, α ≠ 0) :
     NegativeDefectMorphology
-      A c a u gPhys ε b κ sourceOf := by
+      A c a u gPhys ε b κ sourceOf pairCoefficientsOf := by
   let hp :=
     wd_t37_p3_n1_endpoint_ray
       A c t hA ht a u κ hκ hmem hnorm hq hendpoint
@@ -405,20 +461,31 @@ noncomputable def wd_t37_fixed_packet_persistent_negative_morphology
     wd_t37_p3_n3_normalized_full_negativity
       a u b κ hq
   let src := sourceOf y.snd
+  have hraw :
+      List.ofFn src.v =
+        rawResiduesOfNegativePairs (pairCoefficientsOf y.snd) := by
+    simpa [src] using hsourceRaw y.snd
+  have hpair :
+      ∃ α ∈ pairCoefficientsOf y.snd, α ≠ 0 :=
+    hpairNonzero y.snd hySnd
+  have hsrcZero : (∑ i : Fin src.n, src.v i) = 0 :=
+    wd_t37_selected_source_zero_moment_of_wd_t26
+      src (pairCoefficientsOf y.snd) hraw
   have hsrcNonzero : src.Nonzero :=
-    hsourceNonzero y.snd hySnd
+    wd_t37_selected_source_nonzero_of_wd_t26
+      src (pairCoefficientsOf y.snd) hraw hpair
   have hfar :
       (fun z : ℂ => rationalResponse src.rho src.v z)
         =O[cobounded ℂ]
       (fun z : ℂ => z⁻¹ ^ 2) :=
     (wd_t37_p3_n4_zero_moment_source_far_decay
-      src hsrcNonzero).2
+      src hsrcZero hsrcNonzero).2
   have harith : NegativeArithmeticMorphology src := by
-    refine ⟨hsrcNonzero, hfar, ?_, ?_, ?_⟩
+    refine ⟨hsrcZero, hsrcNonzero, hfar, ?_, ?_, ?_⟩
     · intro count mu psi M0 C hCount hM hPsi
         hShellNorm hSelectedFar R hR
       exact wd_t37_p3_n5_far_localization
-        src mu psi M0 C hCount hM hPsi
+        src hsrcZero mu psi M0 C hCount hM hPsi
         hShellNorm hSelectedFar R hR
     · intro ι inst s mult mu psi Xi g0
         hXi hg hResp hg0
@@ -434,6 +501,8 @@ noncomputable def wd_t37_fixed_packet_persistent_negative_morphology
     endpoint_not_old := hyNot
     endpoint_negative := hyNeg
     negative_coordinate_nonzero := hySnd
+    raw_residue_custody := by simpa [src] using hraw
+    pair_coefficients_nonzero := hpair
     representatives_blowup := hblow
     normalized_full_negative := hfull
     arithmetic := by simpa [src] using harith
