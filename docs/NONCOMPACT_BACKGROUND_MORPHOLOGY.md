@@ -812,14 +812,14 @@ strongly and a fixed full negative weak limit survives. Full strong coefficient 
 
 ### Selected-sector statement
 
-For normalized zero-edge coefficient vectors with compact physical synthesis:
+For normalized zero-edge coefficient vectors in the stated finite-coordinate exhaustion:
 
 - finite coordinate anchoring forces a nonzero exact limiting coefficient relation;
 - escape from every fixed finite coordinate block permits weak convergence to zero and no exact anchored relation.
 
-For one fixed finite selected packet, the second alternative is impossible.
+For one fixed finite selected packet **whose selected negative norm stays bounded away from zero**, the second alternative is impossible because the finite selected coordinate supplies an anchor.
 
-Therefore selected-sector nonpersistence requires a moving or infinite selected sector.
+Thus nonpersistence of an already anchored selected ray requires a moving/infinite selected sector. If the selected negative norm itself vanishes, the sequence has left the anchored fixed-packet regime rather than furnishing a counterexample to it.
 
 ### Background statement
 
