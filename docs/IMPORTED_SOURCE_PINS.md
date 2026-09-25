@@ -1,5 +1,5 @@
 # Imported Source Pins
-## H1-P4.1 — Exact load-bearing external statements and conventions
+**H1-P4.1 — Exact load-bearing external statements and conventions**
 
 This file pins the external inputs identified in H1-P4.0.
 
@@ -14,9 +14,9 @@ A source pin records:
 
 ---
 
-# EXT-1 — Douglas factorization theorem
+## EXT-1 — Douglas factorization theorem
 
-## Source
+### Source
 
 R. G. Douglas, *On majorization, factorization, and range inclusion of operators on Hilbert space*, Proceedings of the American Mathematical Society **17** (1966), 413–415.
 
@@ -24,7 +24,7 @@ DOI:
 
 https://doi.org/10.1090/S0002-9939-1966-0203464-1
 
-## Exact pin
+### Exact pin
 
 **Theorem 1**, pp. 413–415.
 
@@ -60,7 +60,7 @@ and
 \overline{\operatorname{Ran}B^{*}}.
 ```
 
-## Horizon-1 convention
+### Horizon-1 convention
 
 Apply Douglas with
 
@@ -86,12 +86,12 @@ S_{-}=-S_{+}X,
 
 after absorbing the sign into $X$.
 
-## Consumed by
+### Consumed by
 
 - WD-T02 directly;
 - WD-T03, WD-T10, WD-T11 downstream through the reduced solution.
 
-## Pin status
+### Pin status
 
 ```math
 \boxed{\text{SOURCE-PINNED}}
@@ -101,9 +101,9 @@ The primary bibliographic record and theorem identity are fixed. The H1-P4.2 aud
 
 ---
 
-# EXT-2 — Bombieri finite Weil theory
+## EXT-2 — Bombieri finite Weil theory
 
-## Source
+### Source
 
 Enrico Bombieri, *Remarks on Weil's quadratic functional in the theory of prime numbers, I*, Rendiconti Lincei, Serie 9, **11** (2000), 183–233.
 
@@ -111,7 +111,7 @@ Public text:
 
 https://www.bdim.eu/item?id=RLIN_2000_9_11_3_183_0
 
-## EXT-2A — finite negative index
+### EXT-2A — finite negative index
 
 ### Exact pin
 
@@ -143,7 +143,7 @@ A simple off-critical zeta quartet contributes two nonreal conjugate pairs in Bo
 
 ---
 
-## EXT-2B — multiplicity-null directions
+### EXT-2B — multiplicity-null directions
 
 ### Exact pin
 
@@ -170,7 +170,7 @@ Same-frequency duplicate coefficient directions are quotient/null directions and
 
 ---
 
-## EXT-2C — kernel/column decay context
+### EXT-2C — kernel/column decay context
 
 ### Exact pin
 
@@ -207,9 +207,9 @@ Bombieri's matrix is complex symmetric in the relevant nonreal-zero setting, so 
 
 ---
 
-# EXT-3 — zeta zero counting in unit-height strips
+## EXT-3 — zeta zero counting in unit-height strips
 
-## Source
+### Source
 
 E. C. Titchmarsh, revised by D. R. Heath-Brown, *The Theory of the Riemann Zeta-function*, 2nd ed., Oxford University Press, 1986.
 
@@ -217,7 +217,7 @@ Public scan used for pinning:
 
 https://sites.math.rutgers.edu/~zeilberg/EM18/TitchmarshZeta.pdf
 
-## Exact pin
+### Exact pin
 
 Chapter IX, §9.2, **Theorem 9.2**, printed p. 211:
 
@@ -230,12 +230,12 @@ N(T+1)-N(T)=O(\log T).
 
 The immediately following text states the same bound for every fixed interval length $h$ and notes that the multiplicity of a multiple zero at height $T$ is $O(\log T)$.
 
-## Consumed by
+### Consumed by
 
 - WD-T28, together with Bombieri (7.7);
 - WD-T31, in the shell summation proving the far-tail estimate.
 
-## Horizon-1 convention
+### Horizon-1 convention
 
 Zeros are counted with multiplicity.
 
@@ -259,7 +259,7 @@ this gives the internal summation
 O\!\left(\frac{\log R}{R}\right).
 ```
 
-## Pin status
+### Pin status
 
 ```math
 \boxed{\text{SOURCE-PINNED}}
@@ -267,15 +267,15 @@ O\!\left(\frac{\log R}{R}\right).
 
 ---
 
-# EXT-4 — compact-window geometric explicit formula
+## EXT-4 — compact-window geometric explicit formula
 
-## Source
+### Source
 
 Xuefeng Zhu, *Weil positivity in compact windows: a finite reduction, certified two-sided bounds, and a Landau–Widom decay law*, arXiv:2608.24827v2, 2026.
 
 https://arxiv.org/abs/2608.24827
 
-## Exact pin
+### Exact pin
 
 PDF printed p. 2, equations **(2)** and **(3)**.
 
@@ -335,7 +335,7 @@ only prime powers satisfying
 
 contribute.
 
-## Horizon-1 convention map
+### Horizon-1 convention map
 
 Our support radius is
 
@@ -385,13 +385,13 @@ The factor $2$ in (3) cancels that $1/2$ when the physical prime-delay coefficie
 (\tau_{\log n}+\tau_{-\log n}).
 ```
 
-## Consumed by
+### Consumed by
 
 - WD-T34;
 - the compact-window formula input of WD-T35;
 - the arithmetic operator representation used in WD-T38.
 
-## Pin status
+### Pin status
 
 ```math
 \boxed{\text{SOURCE-PINNED}}
@@ -401,15 +401,15 @@ The H1-P4.2 proof audit must still verify that every internal occurrence uses th
 
 ---
 
-# EXT-5 — digamma asymptotic
+## EXT-5 — digamma asymptotic
 
-## Source
+### Source
 
 NIST Digital Library of Mathematical Functions, §5.11(i), equation **5.11.2**.
 
 https://dlmf.nist.gov/5.11.E2
 
-## Exact pin
+### Exact pin
 
 As $z\to\infty$ in a sector bounded away from the negative real axis,
 
@@ -427,7 +427,7 @@ As $z\to\infty$ in a sector bounded away from the negative real axis,
 \tag{DLMF 5.11.2}
 ```
 
-## Horizon-1 specialization
+### Horizon-1 specialization
 
 Set
 
@@ -465,11 +465,11 @@ Combining with the finite bounded prime trigonometric polynomial from EXT-4 give
 }
 ```
 
-## Consumed by
+### Consumed by
 
 - WD-T35.
 
-## Pin status
+### Pin status
 
 ```math
 \boxed{\text{SOURCE-PINNED}}
@@ -477,9 +477,9 @@ Combining with the finite bounded prime trigonometric polynomial from EXT-4 give
 
 ---
 
-# Contextual sources not load-bearing in the present theorem statements
+## Contextual sources not load-bearing in the present theorem statements
 
-## Anderson–Trapp shorting
+### Anderson–Trapp shorting
 
 W. N. Anderson, Jr. and G. E. Trapp, *Shorted Operators. II.*, SIAM Journal on Applied Mathematics **28** (1975).
 
@@ -493,7 +493,7 @@ Status:
 \boxed{\text{CONTEXTUAL / NON-LOAD-BEARING}}
 ```
 
-## Suzuki operator framework
+### Suzuki operator framework
 
 Masatoshi Suzuki, *Weil's quadratic form via the screw function*, arXiv:2606.09096 (2026).
 
@@ -509,7 +509,7 @@ Status:
 
 ---
 
-# Source-pin matrix
+## Source-pin matrix
 
 | External input | Exact pin | Stable theorem IDs | Status |
 | --- | --- | --- | --- |
@@ -523,7 +523,7 @@ Status:
 
 ---
 
-# H1-P4.1 determination
+## H1-P4.1 determination
 
 All load-bearing external source families identified in H1-P4.0 are now pinned to exact theorem/equation locations.
 
@@ -531,7 +531,7 @@ What remains is not source discovery.
 
 The next audit must inspect the **internal proof transitions** that consume these pins.
 
-## Next cursor
+### Next cursor
 
 ```math
 \boxed{
