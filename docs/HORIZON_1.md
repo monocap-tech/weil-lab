@@ -159,7 +159,7 @@ R_v(z)=O(|z|^{-2}),
 }
 ```
 
-with inverse-square order universally sharp.
+with inverse-square order sharp under the zero-moment hypothesis alone.
 
 The native Problem-1 synthesis is Hilbert-Schmidt/compact, so unweighted sampling-frame statements remain metric-separated from native coercivity.
 
@@ -242,7 +242,7 @@ The theorem terminates at
 }
 ```
 
-or the equivalent packetwise KPH/transversality interface.
+or, for the special packet class where it applies, a stronger sufficient packetwise KPH/transversality interface.
 
 ### P3.1 — Neutral morphology
 
