@@ -57,7 +57,7 @@ Current position:
 \qquad
 \text{LEAN-H1 EXHAUSTED}
 \qquad
-\text{H1-P5 READY — NOT STARTED}.
+\text{H1-P5 ACTIVE}.
 }
 ```
 
