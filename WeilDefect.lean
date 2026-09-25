@@ -13,3 +13,4 @@ import WeilDefect.Screening.FinitePositiveShadows
 import WeilDefect.Filtration.RightLimit
 import WeilDefect.Filtration.FiniteNegativeSector
 import WeilDefect.Filtration.CriticalDichotomy
+import WeilDefect.Filtration.EndpointJump
