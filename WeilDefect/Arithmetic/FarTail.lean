@@ -1,4 +1,5 @@
 import WeilDefect.RationalResponse
+import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
 
 namespace WeilDefect
 
@@ -15,13 +16,16 @@ private theorem hasDerivAt_logarithmicTailKernel
       ((-1 - 2 * Real.log x) / x ^ 3) x := by
   unfold logarithmicTailKernel
   have hnum :
-      HasDerivAt (fun y : ℝ => 1 + Real.log y) x⁻¹ x := by
-    simpa using (hasDerivAt_const x 1).add (Real.hasDerivAt_log hx)
+      HasDerivAt (fun y : ℝ => 1 + Real.log y) x⁻¹ x :=
+    (Real.hasDerivAt_log hx).const_add 1
   have hden :
       HasDerivAt (fun y : ℝ => y ^ 2) (2 * x) x := by
-    convert (hasDerivAt_id x).pow 2 using 1 <;> ring
-  convert hnum.div hden (pow_ne_zero 2 hx) using 1 <;>
-    field_simp [hx] <;> ring
+    simpa [id_eq, mul_comm] using (hasDerivAt_id x).pow 2
+  convert hnum.div hden (pow_ne_zero 2 hx) using 1
+  · ext y
+    rfl
+  · field_simp [hx]
+    ring
 
 /-- The logarithmic tail kernel is nonnegative on [1,∞). -/
 theorem logarithmicTailKernel_nonneg
@@ -65,9 +69,13 @@ private theorem hasDerivAt_logarithmicTailAntideriv
     (Real.hasDerivAt_log hx).add_const 2
   have hquot :=
     hnum.div (hasDerivAt_id x) hx
-  convert hquot.neg using 1 <;>
-    unfold logarithmicTailKernel <;>
-    field_simp [hx] <;> ring
+  convert hquot.neg using 1
+  · ext y
+    rfl
+  · unfold logarithmicTailKernel
+    simp only [id_eq]
+    field_simp [hx]
+    ring
 
 private theorem tendsto_logarithmicTailAntideriv :
     Tendsto (fun x : ℝ => -(Real.log x + 2) / x) atTop (𝓝 0) := by
@@ -79,8 +87,7 @@ private theorem tendsto_logarithmicTailAntideriv :
       Tendsto (fun x : ℝ => (2 : ℝ) / x) atTop (𝓝 0) := by
     exact tendsto_const_nhds.div_atTop tendsto_id
   have hadd := hlog.add hconst
-  convert hadd.neg using 1 <;>
-    simp [add_div]
+  simpa [add_div, add_comm] using hadd.neg
 
 /-- The kernel is integrable on every positive tail starting at c>=1. -/
 theorem logarithmicTailKernel_integrableOn_Ioi
@@ -116,7 +123,7 @@ theorem integral_logarithmicTailKernel_Ioi
         exact hasDerivAt_logarithmicTailAntideriv hx0)
       (fun x hx => logarithmicTailKernel_nonneg (hc.trans hx.le))
       tendsto_logarithmicTailAntideriv
-  simpa using h
+  convert h using 1 <;> ring
 
 /--
 Discrete logarithmic tail estimate.  This is the analytic summation step in
@@ -130,7 +137,9 @@ theorem logarithmicTail_tsum_le
       AntitoneOn logarithmicTailKernel (Ici (R : ℝ)) :=
     logarithmicTailKernel_antitoneOn.mono (by
       intro x hx
-      exact le_trans (by exact_mod_cast hR) hx)
+      have hRreal : (1 : ℝ) ≤ (R : ℝ) := by exact_mod_cast hR
+      have hxR : (R : ℝ) ≤ x := hx
+      exact hRreal.trans hxR)
   have hint :
       IntegrableOn logarithmicTailKernel (Ioi (R : ℝ)) :=
     logarithmicTailKernel_integrableOn_Ioi (by exact_mod_cast hR)
