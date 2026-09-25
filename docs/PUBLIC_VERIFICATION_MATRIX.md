@@ -2,7 +2,7 @@
 
 ## H1-P5.2 — Mathematical standing, Lean status, and source custody
 
-This matrix is intentionally orthogonal to the main mathematical narrative. It distinguishes mathematical standing, formal verification, source ancestry, the recorded certificate history, and open-interface exposure. The certificate record does not imply that every theorem had a dedicated single-target CI run; run scope varies and is documented in LEAN_STATUS.md.
+This matrix is intentionally orthogonal to the main mathematical narrative. It distinguishes mathematical standing, formal verification, source ancestry, the recorded certificate history, and open-interface exposure. These columns answer different questions: a theorem may be `LEAN-CERTIFIED` as an encoded conditional or structural statement while its intended mathematical instantiation still has source-pinned external ancestry. Conversely, `LEAN-CERTIFIED-FROM-IMPORTED-PREMISE` marks a formal deduction whose imported premise is explicit in the Lean boundary. The certificate record does not imply that every theorem had a dedicated single-target CI run; run scope varies and is documented in LEAN_STATUS.md.
 
 ### Stable theorems
 
