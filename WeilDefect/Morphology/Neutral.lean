@@ -1,5 +1,6 @@
 import WeilDefect.Filtration.CriticalDichotomy
 import WeilDefect.Screening.DefectIndex
+import WeilDefect.Arithmetic.PrimeSupport
 
 namespace WeilDefect
 
@@ -54,6 +55,48 @@ theorem wd_t38_p3_u1_fixed_packet_critical_dichotomy
               aLim uLim) := by
   exact WeilDefect.WDT17.wd_t17_fixed_sector_critical_dichotomy
     A c t hA ht a u hmem hnorm hq
+
+
+/-- Prime powers present in the strict right-limit compact-window operator. -/
+def rightLimitPrimePowers (c : ℝ) : Set ℕ :=
+  {n | IsPrimePow n ∧ Real.log (n : ℝ) ≤ 2 * c}
+
+/--
+The right-limit prime set is exactly the endpoint strict-active set plus the
+equality-threshold correction.
+-/
+theorem wd_t38_p3_u3_right_limit_prime_decomposition
+    (c : ℝ) :
+    rightLimitPrimePowers c =
+      activePrimePowers c ∪ primePowerThreshold c := by
+  ext n
+  simp only [rightLimitPrimePowers, activePrimePowers,
+    primePowerThreshold, Set.mem_setOf_eq, Set.mem_union]
+  constructor
+  · rintro ⟨hn, hle⟩
+    rcases lt_or_eq_of_le hle with hlt | heq
+    · exact Or.inl ⟨hn, hlt⟩
+    · exact Or.inr ⟨hn, heq⟩
+  · rintro (hactive | hthreshold)
+    · exact ⟨hactive.1, le_of_lt hactive.2⟩
+    · exact ⟨hthreshold.1, le_of_eq hthreshold.2⟩
+
+/--
+P3-U3 threshold-aware finiteness: the strict right-limit arithmetic support
+is finite.  Relative to the endpoint strict-< support, the only additional
+indices lie in the equality-threshold set, which contains at most one natural
+prime power.
+-/
+theorem wd_t38_p3_u3_right_limit_prime_support_finite
+    (c : ℝ) :
+    (rightLimitPrimePowers c).Finite
+      ∧ (primePowerThreshold c).Subsingleton := by
+  constructor
+  · rw [wd_t38_p3_u3_right_limit_prime_decomposition]
+    exact
+      (wd_t34_active_prime_powers_finite c).union
+        (primePowerThreshold_subsingleton c).finite
+  · exact primePowerThreshold_subsingleton c
 
 /--
 Negative synthesis attached to a finite-exception neutral compensator:
