@@ -399,11 +399,11 @@ Therefore **H1-P4 is COMPLETE**.
 
 ```math
 \boxed{
-\texttt{LEAN-H1-P1 / WD-X06 — POSITIVE-COORDINATE MASS LOSS STRENGTHENS CRITICALITY TO NEGATIVITY}
+\texttt{LEAN-H1 EXHAUSTED / NEXT: H1-P5.0 — PUBLIC PACKAGE ARCHITECTURE (NOT STARTED)}
 }
 ```
 
-The next public-package cursor remains `H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE`, but it is deferred until LEAN-H1 is exhausted.
+LEAN-H1 is exhausted. The next public-package cursor is `H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE`, but it has not been started.
 
 ---
 
@@ -435,9 +435,7 @@ with auxiliary lemmas and counterexamples under separate namespaces.
 
 ## Formalization priority override
 
-Per project priority, [LEAN-H1 — Certification Before H1-P5](LEAN_FORMALIZATION_TRACK.md) now preempts public-package assembly.
-
-H1-P5 resumes only after every stable Horizon-1 theorem/example has a durable Lean status of:
+[LEAN-H1 — Certification Before H1-P5](LEAN_FORMALIZATION_TRACK.md) has reached its exhaustion condition. Every stable Horizon-1 theorem/example now has a durable Lean status of:
 
 - LEAN-CERTIFIED;
 - LEAN-CERTIFIED-FROM-IMPORTED-PREMISE;
@@ -448,7 +446,7 @@ Current formalization status is tracked in [Lean Status Ledger](LEAN_STATUS.md).
 
 ## H1-P5 — Public mathematical package
 
-**Status:** PAUSED pending LEAN-H1 exhaustion.
+**Status:** READY — NOT STARTED.
 
 Required deliverables:
 
