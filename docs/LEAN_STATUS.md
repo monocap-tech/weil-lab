@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T38 | WeilDefect.wd_t38_p3_u1_fixed_packet_critical_dichotomy + WeilDefect.wd_t38_attained_neutral_selected_coordinate_nonzero + WeilDefect.rightLimitPrimePowers + WeilDefect.wd_t38_p3_u3_right_limit_prime_decomposition + WeilDefect.wd_t38_p3_u3_right_limit_prime_support_finite + WeilDefect.wd_t38_p3_u4_logarithmic_order_neutral_carrier + WeilDefect.wd_t38_p3_u5_no_free_positive_sobolev_control + WeilDefect.wd_t38_p3_u5_finite_prime_translations_no_smoothing + WeilDefect.wd_t38_p3_u6_global_cancellation_not_termwise + WeilDefect.neutralNegativeSynthesis + WeilDefect.neutralWeilOperator + WeilDefect.wd_t38_p3_u2_negative_adjoint_identity + WeilDefect.wd_t38_p3_u2_physical_neutral_null_mode + WeilDefect.NeutralNullExtensionInterface + WeilDefect.NeutralNullExtensionInterface.persistenceGoal + WeilDefect.wd_t38_p3_u7_neutral_null_extension_reduction + WeilDefect.NeutralArithmeticMorphology + WeilDefect.wd_t38_neutral_arithmetic_morphology + WeilDefect.NeutralDefectMorphology + WeilDefect.wd_t38_attained_unit_gain_neutral_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T37 | WeilDefect.wd_t37_selected_source_zero_moment_of_wd_t26 + WeilDefect.wd_t37_selected_source_nonzero_of_wd_t26 + WeilDefect.wd_t37_p3_n1_endpoint_ray + WeilDefect.wd_t37_p3_n2_normalized_representative_blowup + WeilDefect.wd_t37_p3_n3_normalized_full_negativity + WeilDefect.wd_t37_p3_n4_zero_moment_source_far_decay + WeilDefect.wd_t37_p3_n5_far_localization + WeilDefect.wd_t37_p3_n6_weighted_next_jet_morphology + WeilDefect.wd_t37_p3_n7_no_adaptive_scalar_bypass + WeilDefect.NegativeArithmeticMorphology + WeilDefect.NegativeDefectMorphology + WeilDefect.wd_t37_fixed_packet_persistent_negative_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T36 | WeilDefect.positiveSobolevFrequencyWeight + WeilDefect.logarithmicFourierWeight_isBigO_log + WeilDefect.logarithmicFourierWeight_isLittleO_positiveSobolev + WeilDefect.positiveSobolevFrequencyWeight_not_isBigO_logarithmic + WeilDefect.wd_t36_no_uniform_positive_sobolev_coercivity_of_witness + WeilDefect.wd_t36_no_positive_sobolev_bootstrap + WeilDefect.finitePrimeTrigCorrection + WeilDefect.finitePrimeTrigBound + WeilDefect.abs_finitePrimeTrigCorrection_le + WeilDefect.finitePrimeTrigCorrection_isBigO_logarithmic + WeilDefect.logarithmicPlusFinitePrimeCorrection_isBigO + WeilDefect.wd_t36_finite_prime_translations_add_no_smoothing | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T35 | WeilDefect.logarithmicFourierWeight + WeilDefect.one_le_logarithmicFourierWeight + WeilDefect.logarithmicFourierEnergy + WeilDefect.spectralMass + WeilDefect.shiftedCompactWeilForm + WeilDefect.wd_t35_shifted_form_logarithmic_order + WeilDefect.wd_t35_compact_weil_logarithmic_form_order | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -63,7 +64,7 @@ The statuses above become LEAN-CERTIFIED only after the pinned CI build succeeds
 
 \[
 \boxed{
-\texttt{WD-T38 / P3-U1…P3-U7 — ATTAINED UNIT-GAIN NEUTRAL DEFECT MORPHOLOGY}.
+\texttt{WD-T39 / P3-B1…P3-B7 — NONCOMPACT BACKGROUND MORPHOLOGY}.
 }
 \]
 
@@ -97,13 +98,15 @@ Thus WD-X03 and WD-X04 satisfy the repository's LEAN-CERTIFIED rule.
 
 WD-T26 and WD-X07 remain LEAN-IN-PROGRESS because their current declarations certify only algebraic cores, not yet the complete stable theorem/example statements.
 
-## Current formalization cursor
+## Historical phase cursor
 
 \[
 \boxed{
 \texttt{LEAN-H1-P1 / ALGEBRAIC AND FINITE-DIMENSIONAL CORE}.
 }
 \]
+
+This records the earlier phase checkpoint and is not the active cursor.
 
 
 ## WD-X01 certificate evidence
@@ -3842,10 +3845,145 @@ The final run passed pinned dependency resolution, mathlib cache retrieval,
 direct Lake build of \(\texttt{WeilDefect.Morphology.Negative}\), and
 unfinished-proof/project-axiom rejection.
 
-WD-T37 is therefore closed. The next unfinished sequential theorem cursor is:
+WD-T37 is therefore closed.
+
+## WD-T38 certificate evidence
+
+Stable ID:
 
 \[
 \boxed{
-\texttt{WD-T38 / P3-U1…P3-U7 — ATTAINED UNIT-GAIN NEUTRAL DEFECT MORPHOLOGY}
+\text{WD-T38: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.wd_t38_p3_u1_fixed_packet_critical_dichotomy;
+- WeilDefect.wd_t38_attained_neutral_selected_coordinate_nonzero;
+- WeilDefect.rightLimitPrimePowers;
+- WeilDefect.wd_t38_p3_u3_right_limit_prime_decomposition;
+- WeilDefect.wd_t38_p3_u3_right_limit_prime_support_finite;
+- WeilDefect.wd_t38_p3_u4_logarithmic_order_neutral_carrier;
+- WeilDefect.wd_t38_p3_u5_no_free_positive_sobolev_control;
+- WeilDefect.wd_t38_p3_u5_finite_prime_translations_no_smoothing;
+- WeilDefect.wd_t38_p3_u6_global_cancellation_not_termwise;
+- WeilDefect.neutralNegativeSynthesis;
+- WeilDefect.neutralWeilOperator;
+- WeilDefect.wd_t38_p3_u2_negative_adjoint_identity;
+- WeilDefect.wd_t38_p3_u2_physical_neutral_null_mode;
+- WeilDefect.NeutralNullExtensionInterface;
+- WeilDefect.NeutralNullExtensionInterface.persistenceGoal;
+- WeilDefect.wd_t38_p3_u7_neutral_null_extension_reduction;
+- WeilDefect.NeutralArithmeticMorphology;
+- WeilDefect.wd_t38_neutral_arithmetic_morphology;
+- WeilDefect.NeutralDefectMorphology;
+- WeilDefect.wd_t38_attained_unit_gain_neutral_morphology.
+
+The composite preserves the audited attained-neutral branch distinction from
+WD-T17. In particular, the retained selected coordinate is explicitly proved
+nonzero from the neutral branch equations rather than left as an implicit
+custody fact.
+
+For the finite-exception realization, Lean proves
+
+\[
+C^\ast C u=u,\qquad Cu=P^\ast k,\qquad N=-PC
+\]
+
+implies
+
+\[
+N^\ast k=-u
+\]
+
+and therefore
+
+\[
+(PP^\ast-NN^\ast)k=0,
+\qquad k\ne0.
+\]
+
+The arithmetic continuation is threshold-aware. Lean defines the strict
+right-limit prime support by
+
+\[
+\{n:\operatorname{IsPrimePow}(n),\ \log n\le 2c\}
+\]
+
+and proves it is exactly the endpoint strict-active set
+\(\log n<2c\) union the equality-threshold set. The latter is subsingleton, so
+the strict-right correction is finite and contains at most one natural prime
+power.
+
+The logarithmic-order and no-bootstrap clauses are transferred from WD-T35 and
+WD-T36 with their hypotheses preserved. Consequently WD-T38 inherits the
+source-pinned compact-window formula/symbol-comparison premise from WD-T35,
+which is why the composite receives
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE rather than an unconditional label.
+
+The global-cancellation scope theorem remains purely logical: a zero total
+cancellation does not imply termwise vanishing. No prime, pole, or
+archimedean term is separately forced to vanish.
+
+Most importantly, the null-extension endpoint is represented as a typed open
+interface. It records:
+
+- the nonzero zero-extended fixed vector;
+- distinct endpoint and strict-right operators;
+- the endpoint interior null equation;
+- equality of endpoint/right-limit operators only under the explicit
+  no-threshold carrier-identification premise;
+- finite right-limit prime support and subsingleton threshold support.
+
+The unresolved statement
+
+\[
+\texttt{NeutralNullExtensionInterface.persistenceGoal}
+\]
+
+is deliberately a proposition attached to the returned data, not a field
+proved by WD-T38. Thus no support-rigidity or unique-continuation theorem is
+silently imported upstream.
+
+The assembled composite first passed pinned CI in:
+
+\[
+\boxed{\texttt{36187216321}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{ec71653408d8254844039f851cab429d5c32ebb9}}.
+\]
+
+The final selected-coordinate custody refinement passed in:
+
+\[
+\boxed{\texttt{36187705896}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{1d09fa5c85b1a5970376db5adcda0c1b0872da75}}.
+\]
+
+The certified WD-T38 source blob is:
+
+\[
+\texttt{2f6f05486f61fd8be18d444f9ef1e2bde5ae1abd}.
+\]
+
+The final run passed pinned dependency resolution, mathlib cache retrieval,
+direct Lake build of \(\texttt{WeilDefect.Morphology.Neutral}\), and
+unfinished-proof/project-axiom rejection.
+
+WD-T38 is therefore closed. The next unfinished sequential theorem cursor is:
+
+\[
+\boxed{
+\texttt{WD-T39 / P3-B1…P3-B7 — NONCOMPACT BACKGROUND MORPHOLOGY}
 }
 \]
