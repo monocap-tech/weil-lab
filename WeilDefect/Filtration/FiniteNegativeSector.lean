@@ -159,6 +159,41 @@ theorem weaklyTendsto_norm_sq_le
   have hxR := weaklyTendsto_norm_le hR hvR hweak
   nlinarith [hR2, norm_nonneg x]
 
+/--
+Weak lower semicontinuity of the squared norm, in the sequential Hilbert
+form needed by WD-C3.
+-/
+theorem weaklyTendsto_norm_sq_le_of_tendsto
+    {E : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    {v : ℕ → E} {x : E} {B : ℝ}
+    (hweak : WeaklyTendsto v x)
+    (hsq : Tendsto (fun n => ‖v n‖ ^ 2) atTop (𝓝 B)) :
+    ‖x‖ ^ 2 ≤ B := by
+  have hB : 0 ≤ B :=
+    le_of_tendsto hsq
+      (Eventually.of_forall fun n => sq_nonneg ‖v n‖)
+  have hnorm :
+      Tendsto (fun n => ‖v n‖) atTop (𝓝 (Real.sqrt B)) := by
+    have hsqrt := hsq.sqrt
+    simpa only [Real.sqrt_sq (norm_nonneg _)] using hsqrt
+  by_cases hx : x = 0
+  · simpa [hx] using hB
+  have hinner := (hweak x).norm
+  have hrhs := hnorm.mul_const ‖x‖
+  have hle :
+      ∀ᶠ n in atTop,
+        ‖inner ℂ (v n) x‖ ≤ ‖v n‖ * ‖x‖ :=
+    Eventually.of_forall fun n => norm_inner_le_norm (v n) x
+  have hlim :=
+    le_of_tendsto_of_tendsto hinner hrhs hle
+  have hleft : ‖inner ℂ x x‖ = ‖x‖ ^ 2 := by
+    simp [inner_self_eq_norm_sq_to_K]
+  rw [hleft] at hlim
+  have hsqrtB : (Real.sqrt B) ^ 2 = B :=
+    Real.sq_sqrt hB
+  nlinarith [norm_pos_iff.mpr hx, Real.sqrt_nonneg B]
+
 /-- A bounded sequence in a finite-dimensional sector has a strongly convergent subsequence. -/
 theorem exists_tendsto_subseq_finiteDimensional
     [FiniteDimensional ℂ M]
@@ -294,6 +329,99 @@ theorem wd_t16_fixed_negative_sector_compactness
     weak_limit_mem_rightLimit
       A c (fun n => t (φ n)) hA htφ hmemφ hyWeak
   exact ⟨φ, hφ, aLim, uLim, haLim', huLim', hright⟩
+
+/--
+WD-C3: if the normalized signatures converge to qStar <= 0, the extracted
+right-limit vector is nonzero and has signature at most qStar.
+-/
+theorem wd_t16_nonpositive_limit_persists
+    [FiniteDimensional ℂ M]
+    (A : ℝ → ClosedSubmodule ℂ (CoeffSpace Kpos M))
+    (c : ℝ) (t : ℕ → ℝ)
+    (hA : Monotone A)
+    (ht : Tendsto t atTop (𝓝 c))
+    (a : ℕ → Kpos) (u : ℕ → M)
+    (qStar : ℝ) (hqStar : qStar ≤ 0)
+    (hmem : ∀ n, coeff (a n) (u n) ∈ A (t n))
+    (hnorm : ∀ n, ‖coeff (a n) (u n)‖ = 1)
+    (hq :
+      Tendsto (fun n => jValue (a n) (u n))
+        atTop (𝓝 qStar)) :
+    ∃ y : CoeffSpace Kpos M,
+      y ≠ 0
+      ∧ y ∈ WeilDefect.WDT15.rightLimit A c
+      ∧ jValue y.fst y.snd ≤ qStar := by
+  rcases
+      wd_t16_fixed_negative_sector_compactness
+        A c t hA ht a u hmem hnorm with
+    ⟨φ, hφ, aLim, uLim, haWeak, huStrong, hright⟩
+  have hcoord :
+      ∀ n, ‖a n‖ ^ 2 + ‖u n‖ ^ 2 = 1 := by
+    intro n
+    have hs := congrArg (fun r : ℝ => r ^ 2) (hnorm n)
+    simpa [coeff, WithLp.prod_norm_sq_eq_of_L2] using hs
+  have hqφ :
+      Tendsto
+        (fun n => jValue (a (φ n)) (u (φ n)))
+        atTop
+        (𝓝 qStar) :=
+    hq.comp hφ.tendsto_atTop
+  have haSqTendsto :
+      Tendsto
+        (fun n => ‖a (φ n)‖ ^ 2)
+        atTop
+        (𝓝 ((1 + qStar) / 2)) := by
+    have hlim :=
+      Tendsto.div_const
+        (tendsto_const_nhds.add hqφ) (2 : ℝ)
+    apply hlim.congr'
+    filter_upwards with n
+    have hc := hcoord (φ n)
+    unfold jValue
+    nlinarith
+  have huSqTendsto :
+      Tendsto
+        (fun n => ‖u (φ n)‖ ^ 2)
+        atTop
+        (𝓝 ((1 - qStar) / 2)) := by
+    have hlim :=
+      Tendsto.div_const
+        (tendsto_const_nhds.sub hqφ) (2 : ℝ)
+    apply hlim.congr'
+    filter_upwards with n
+    have hc := hcoord (φ n)
+    unfold jValue
+    nlinarith
+  have haSq :
+      ‖aLim‖ ^ 2 ≤ (1 + qStar) / 2 :=
+    weaklyTendsto_norm_sq_le_of_tendsto haWeak haSqTendsto
+  have huStrongSq :
+      Tendsto
+        (fun n => ‖u (φ n)‖ ^ 2)
+        atTop
+        (𝓝 (‖uLim‖ ^ 2)) :=
+    huStrong.norm.pow 2
+  have huEq :
+      ‖uLim‖ ^ 2 = (1 - qStar) / 2 :=
+    tendsto_nhds_unique huStrongSq huSqTendsto
+  have huSqPos : 0 < ‖uLim‖ ^ 2 := by
+    rw [huEq]
+    linarith
+  have huNonzero : uLim ≠ 0 := by
+    intro hu0
+    rw [hu0, norm_zero, zero_pow] at huSqPos
+    norm_num at huSqPos
+  have hj :
+      jValue aLim uLim ≤ qStar := by
+    unfold jValue
+    rw [huEq]
+    linarith
+  have hyNonzero : coeff aLim uLim ≠ 0 := by
+    intro hy0
+    have hsnd := congrArg
+      (fun y : CoeffSpace Kpos M => y.snd) hy0
+    simpa using huNonzero hsnd
+  exact ⟨coeff aLim uLim, hyNonzero, hright, by simpa using hj⟩
 
 /--
 WD-C5: a uniform negative margin in a fixed finite negative sector produces
