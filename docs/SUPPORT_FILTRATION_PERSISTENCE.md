@@ -724,7 +724,7 @@ define
 \inf
 \left\{
 \|h\|:
-h\in\mathscr H_t,\ 
+h\in\mathscr H_t,\
 \|Th-y\|\le\varepsilon
 \right\}.
 }
