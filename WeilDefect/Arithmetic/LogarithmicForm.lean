@@ -74,36 +74,47 @@ theorem wd_t35_shifted_form_logarithmic_order
       ∧
     shiftedCompactWeilForm symbol density shift pole
       ≤ (b + K) * logarithmicFourierEnergy density := by
-  have hlow_int :
-      Integrable
-        (fun t : ℝ =>
-          (a * logarithmicFourierWeight t) * density t) volume := by
-    simpa [mul_assoc] using hlog_int.const_mul a
-  have hupp_int :
-      Integrable
-        (fun t : ℝ =>
-          (b * logarithmicFourierWeight t) * density t) volume := by
-    simpa [mul_assoc] using hlog_int.const_mul b
   have hlow :
       a * logarithmicFourierEnergy density
         ≤
       ∫ t : ℝ, (symbol t + shift) * density t ∂volume := by
-    have hmono :=
-      integral_mono hlow_int hsymbol_int (fun t => by
-        exact mul_le_mul_of_nonneg_right (hlower t) (hdensity t))
-    unfold logarithmicFourierEnergy
-    rw [integral_const_mul] at hmono
-    exact hmono
+    calc
+      a * logarithmicFourierEnergy density
+          =
+        ∫ t : ℝ,
+          a * (logarithmicFourierWeight t * density t) ∂volume := by
+        unfold logarithmicFourierEnergy
+        rw [integral_const_mul]
+      _ ≤
+        ∫ t : ℝ, (symbol t + shift) * density t ∂volume := by
+        apply integral_mono (hlog_int.const_mul a) hsymbol_int
+        intro t
+        calc
+          a * (logarithmicFourierWeight t * density t)
+              =
+            (a * logarithmicFourierWeight t) * density t := by ring
+          _ ≤ (symbol t + shift) * density t :=
+            mul_le_mul_of_nonneg_right (hlower t) (hdensity t)
   have hupp :
       (∫ t : ℝ, (symbol t + shift) * density t ∂volume)
         ≤
       b * logarithmicFourierEnergy density := by
-    have hmono :=
-      integral_mono hsymbol_int hupp_int (fun t => by
-        exact mul_le_mul_of_nonneg_right (hupper t) (hdensity t))
-    unfold logarithmicFourierEnergy
-    rw [integral_const_mul] at hmono
-    exact hmono
+    calc
+      (∫ t : ℝ, (symbol t + shift) * density t ∂volume)
+          ≤
+        ∫ t : ℝ,
+          b * (logarithmicFourierWeight t * density t) ∂volume := by
+        apply integral_mono hsymbol_int (hlog_int.const_mul b)
+        intro t
+        calc
+          (symbol t + shift) * density t
+              ≤
+            (b * logarithmicFourierWeight t) * density t :=
+            mul_le_mul_of_nonneg_right (hupper t) (hdensity t)
+          _ = b * (logarithmicFourierWeight t * density t) := by ring
+      _ = b * logarithmicFourierEnergy density := by
+        unfold logarithmicFourierEnergy
+        rw [integral_const_mul]
   have hmass :
       spectralMass density ≤ logarithmicFourierEnergy density := by
     unfold spectralMass logarithmicFourierEnergy
