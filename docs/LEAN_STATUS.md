@@ -67,7 +67,7 @@ This section is canonical for the live queue. The certificate sections below are
 | WD-X02 | WeilDefect.wdX02Weight + WeilDefect.wdX02Coord + WeilDefect.wdX02Operator + WeilDefect.wd_x02_operator_norm_eq_one + WeilDefect.wd_x02_strict_norm_loss + WeilDefect.wd_x02_no_nonzero_norm_attainer + WeilDefect.wd_x02_critical_nonattainment | LEAN-CERTIFIED |
 | WD-X03 | `WeilDefect.wd_x03_individual_not_compositional` | LEAN-CERTIFIED |
 | WD-X04 | `WeilDefect.wd_x04_shorted_covariance_identity` | LEAN-CERTIFIED |
-| WD-X05 | — | LEAN-NOT-ATTEMPTED |
+| WD-X05 | WeilDefect.wdX05Delta + WeilDefect.wdX05PosAmp + WeilDefect.wdX05NegAmp + WeilDefect.wdX05Pos + WeilDefect.wdX05Neg + WeilDefect.wdX05Vector + WeilDefect.wd_x05_vector_norm_eq_one + WeilDefect.wd_x05_jvalue_formula + WeilDefect.wd_x05_jvalue_negative + WeilDefect.wd_x05_jvalue_tendsto_zero + WeilDefect.wdX05Tail + WeilDefect.wd_x05_tail_antitone + WeilDefect.wd_x05_vector_mem_tail + WeilDefect.wd_x05_tail_intersection_trivial + WeilDefect.wd_x05_moving_sectors_lose_persistent_ray | LEAN-CERTIFIED |
 | WD-X06 | — | LEAN-NOT-ATTEMPTED |
 | WD-X07 | WeilDefect.wd_x07_response_identity + WeilDefect.wd_x07_real_response_formula + WeilDefect.wd_x07_scaled_response_tendsto_neg_one | LEAN-CERTIFIED |
 
@@ -77,7 +77,7 @@ A `LEAN-IN-PROGRESS` entry becomes `LEAN-CERTIFIED` only after the pinned CI bui
 
 ```math
 \boxed{
-\texttt{WD-X05 / MOVING SECTORS CAN LOSE EVERY PERSISTENT RAY}
+\texttt{WD-X06 / POSITIVE-COORDINATE MASS LOSS STRENGTHENS CRITICALITY TO NEGATIVITY}
 }
 ```
 
@@ -4192,4 +4192,94 @@ WD-X02 is therefore closed. The next unfinished stable example cursor is:
 
 ```math
 \boxed{\texttt{WD-X05 / MOVING SECTORS CAN LOSE EVERY PERSISTENT RAY}}
+```
+
+
+## WD-X05 certificate evidence
+
+Stable ID:
+
+```math
+\boxed{\text{WD-X05: LEAN-CERTIFIED}.}
+```
+
+Lean certifies an explicit moving-sector witness on
+$\ell^2(\mathbb N)\oplus\ell^2(\mathbb N)$. For
+
+```math
+\delta_n=\frac1{n+2},
+```
+
+the positive and negative amplitudes are chosen with squared norms
+
+```math
+\|a_n\|^2=\frac{1-\delta_n}{2},
+\qquad
+\|u_n\|^2=\frac{1+\delta_n}{2}.
+```
+
+Hence every coefficient vector is normalized,
+
+```math
+\boxed{\|y_n\|=1},
+```
+
+while its Krein signature is exactly
+
+```math
+\boxed{[y_n,y_n]_J=-\delta_n<0},
+\qquad
+[y_n,y_n]_J\to0.
+```
+
+The moving-sector custody is encoded by nested coordinate-tail predicates
+$\texttt{wdX05Tail}\,N$. Lean proves
+
+```math
+N\le k \Longrightarrow y_k\in \texttt{wdX05Tail}\,N
+```
+
+and, crucially,
+
+```math
+\boxed{
+\left(\forall N,\ y\in\texttt{wdX05Tail}\,N\right)
+\Longrightarrow y=0.
+}
+```
+
+Thus stagewise finite-dimensional negative directions can move through
+infinitely many coordinates while the total nested intersection loses every
+nonzero persistent ray. This is the exact sharpness role of WD-X05 for the
+fixed-sector hypothesis in WD-T16/WD-T17 and for the moving/full-coordinate
+escape side of WD-T39.
+
+Certificate run:
+
+```math
+\boxed{\texttt{36196053927}}
+```
+
+at theorem head:
+
+```math
+\boxed{\texttt{a1fe7296738e48065c1e393723bf22b251c9728e}}.
+```
+
+Certified source blob:
+
+```math
+\texttt{e51c450d99e35d59e56ffc5803dc48ad9654302b}.
+```
+
+The run passed pinned dependency resolution, direct Lake build of
+$\texttt{WeilDefect.Examples.MovingSectors}$, and the
+unfinished-proof/project-axiom rejection gate.
+
+WD-X05 is therefore closed. The next unfinished stable example cursor is:
+
+```math
+\boxed{
+\texttt{WD-X06 / POSITIVE-COORDINATE MASS LOSS STRENGTHENS CRITICALITY TO NEGATIVITY}
+}
 ```
