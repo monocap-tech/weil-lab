@@ -270,14 +270,13 @@ The theorem terminates at
 
 ### P3.2 — Noncompact background morphology
 
-The fixed finite packet has no independent non-attained critical branch.
+For a fixed finite selected packet with nontrivial selected negative mass, there is no independent non-attained/no-limit critical branch.
 
-Any nonpersistent critical behavior must instead be typed through:
+The remaining mechanisms separate into distinct relations:
 
-- moving selected packets;
-- infinite unselected-negative background;
-- coefficient-tail escape;
-- positive-coordinate mass loss, which actually strengthens the fixed-packet limit to negativity.
+- **selected-sector nonpersistence** requires a moving or infinite selected sector;
+- **unselected-background escape** can destroy strong background/full-coefficient compactness after a fixed selected ray has already been anchored, but it does not erase that selected ray;
+- **positive-coordinate mass loss** is not an escape branch: in the fixed-packet critical limit it produces strict negative fall-through and therefore a persistent negative ray.
 
 ### Exit condition
 
