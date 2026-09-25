@@ -180,7 +180,7 @@ N_c=-P_cC_c.
 
 These are finite-exception neutral hypotheses inherited from the endpoint reduction.
 
-For the arithmetic/operator part of P3.1, assume in addition that this physical realization is identified with the compact-window Weil form used in H1-P2.2: \(k\) belongs to its form domain and the algebraic null equation below is the endpoint realization of that same compact-window form.
+For the arithmetic/operator part of P3.1, assume in addition that this physical realization is identified with the compact-window Weil form used in H1-P2.2: $k$ belongs to its form domain and the algebraic null equation below is the endpoint realization of that same compact-window form.
 
 This carrier-identification hypothesis is not a consequence of abstract criticality alone.
 
@@ -472,7 +472,7 @@ for any
 
 Repeated substitution only creates further translated copies at the same order.
 
-This statement does not assert that a particular neutral mode can never possess additional \(H^\varepsilon\) regularity from some separate theorem.
+This statement does not assert that a particular neutral mode can never possess additional $H^\varepsilon$ regularity from some separate theorem.
 
 ---
 
@@ -490,7 +490,7 @@ The retained operator estimates supply logarithmic form control but no uniform p
 }
 ```
 
-for any \(\varepsilon>0\) without an additional theorem.
+for any $\varepsilon>0$ without an additional theorem.
 
 **Dependencies:** ZW2-T8.
 
@@ -560,7 +560,7 @@ Let
 \widetilde k
 ```
 
-denote the zero extension of \(k\) outside
+denote the zero extension of $k$ outside
 
 ```math
 [-c,c].
@@ -606,7 +606,7 @@ Define the **right-limit arithmetic operator**
 }
 ```
 
-If \(c\) is not a prime-power threshold, then
+If $c$ is not a prime-power threshold, then
 
 ```math
 \mathcal W_{c+}^{\rm ext}
@@ -614,7 +614,7 @@ If \(c\) is not a prime-power threshold, then
 \mathcal W_c^{\rm ext}.
 ```
 
-If \(2c=\log n_0\) for one or more prime powers, the strict right enlargement activates exactly those finitely many equality-threshold translations, so
+If $2c=\log n_0$ for one or more prime powers, the strict right enlargement activates exactly those finitely many equality-threshold translations, so
 
 ```math
 \mathcal W_{c+}^{\rm ext}
@@ -624,7 +624,7 @@ If \(2c=\log n_0\) for one or more prime powers, the strict right enlargement ac
 
 by that finite threshold correction.
 
-The finite-exception persistence question is therefore not merely whether the endpoint output of \(\mathcal W_c^{\rm ext}\) has a collar.
+The finite-exception persistence question is therefore not merely whether the endpoint output of $\mathcal W_c^{\rm ext}$ has a collar.
 
 It is whether the **same fixed coefficient/physical relation** satisfies the correct right-limit compact-window equation after this finite threshold convention is applied.
 
@@ -675,9 +675,9 @@ For strict right persistence, the relevant local operator is
 }
 ```
 
-If \(c\) is not a threshold, \(\mathcal W_{c+}^{\rm ext}=\mathcal W_c^{\rm ext}\).
+If $c$ is not a threshold, $\mathcal W_{c+}^{\rm ext}=\mathcal W_c^{\rm ext}$.
 
-If \(c\) is a threshold, the right-limit operator contains the finitely many equality-threshold prime terms absent from the endpoint strict-\(<\) sum.
+If $c$ is a threshold, the right-limit operator contains the finitely many equality-threshold prime terms absent from the endpoint strict-$<$ sum.
 
 Exact persistence to a larger support requires the same fixed relation to satisfy this right-limit equation on a nontrivial enlarged interval.
 
@@ -731,7 +731,7 @@ Assume:
    C_cu=P_c^{*}k;
    ```
 7. $N_c=-P_cC_c$;
-8. the physical realization above is the same compact-window Weil form/operator realization used in H1-P2.2, with \(k\) in its form domain.
+8. the physical realization above is the same compact-window Weil form/operator realization used in H1-P2.2, with $k$ in its form domain.
 
 Then:
 
