@@ -4,11 +4,11 @@ Stable ID: **WD-T21 / ZW1-T2**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Formal target
 
@@ -29,15 +29,15 @@ Certified source blob:
 For a simple off-critical functional-equation quartet, the Bombieri ordinate
 coordinates are represented by the two conjugate pairs
 
-\[
+```math
 \{T+i\delta,,T-i\delta\}
-\]
+```
 
 and
 
-\[
+```math
 \{-T+i\delta,,-T-i\delta\}.
-\]
+```
 
 Lean defines these as
 
@@ -47,11 +47,11 @@ Lean defines these as
 The formal hypotheses are the minimal nondegeneracy conditions needed for the
 audited simple off-critical quartet geometry:
 
-\[
+```math
 T\ne0,
 \qquad
 \delta\ne0.
-\]
+```
 
 Here \(\delta\ne0\) makes each pair nonreal, while \(T\ne0\) separates
 the \(+T\) and \(-T\) pair centers.
@@ -60,15 +60,15 @@ the \(+T\) and \(-T\) pair centers.
 
 Lean proves natively that both pairs are complex-conjugate pairs:
 
-\[
+```math
 (T-i\delta)=\overline{(T+i\delta)}
-\]
+```
 
 and
 
-\[
+```math
 (-T-i\delta)=\overline{(-T+i\delta)}.
-\]
+```
 
 These are formalized by
 
@@ -82,11 +82,11 @@ operation.
 
 Lean proves
 
-\[
+```math
 \operatorname{Im}(T+i\delta)\ne0,
 \qquad
 \operatorname{Im}(-T+i\delta)\ne0
-\]
+```
 
 under \(\delta\ne0\), via
 
@@ -94,13 +94,13 @@ under \(\delta\ne0\), via
 
 It also proves
 
-\[
+```math
 \boxed{
 \{T+i\delta,T-i\delta\}
 \ne
 \{-T+i\delta,-T-i\delta\}
 }
-\]
+```
 
 under \(T\ne0\), via
 
@@ -119,11 +119,11 @@ The selected negative coordinate type for one simple quartet is therefore
 
 and Lean proves
 
-\[
+```math
 \boxed{
 \operatorname{card}(\texttt{SimpleQuartetNegative})=2.
 }
-\]
+```
 
 This is
 
@@ -157,11 +157,11 @@ WD-T20.
 
 Therefore the correct status is:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Repair-pass result
 
@@ -201,11 +201,11 @@ The run passed:
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{WD-T22 / ZW1-T3 — FINITE WEIL INERTIA SATURATION}
 }
-\]
+```
 
 This next cursor is not expected to be native-only: its theorem-ledger
 standing is imported Bombieri finite inertia plus exact specialization.
