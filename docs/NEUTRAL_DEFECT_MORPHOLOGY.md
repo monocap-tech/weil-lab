@@ -785,24 +785,9 @@ The theorem package ends at
 
 The interface asks:
 
-> For an actual nonzero finite-exception unit-gain neutral mode (k) satisfying the endpoint equation
+> For an actual nonzero finite-exception unit-gain neutral mode $k$ satisfying the endpoint equation $P_{[-c,c]}\mathcal W_c^{\rm ext}\widetilde k=0$, does the same fixed relation satisfy the correct right-limit equation for some strict enlargement?
 >
-> [
-> P_{[-c,c]}
-> mathcal W_c^{m ext}widetilde k
-> =
-> 0,
-> ]
->
-> does the same fixed relation satisfy the correct right-limit equation for some strict enlargement?
->
-> Away from a prime threshold this asks whether
->
-> [
-> mathcal W_c^{m ext}widetilde k
-> ]
->
-> vanishes on a nontrivial exterior collar. At a threshold, the same question uses the finitely corrected right-limit operator (mathcal W_{c+}^{m ext}).
+> Away from a prime threshold, this asks whether $\mathcal W_c^{\rm ext}\widetilde k$ vanishes on a nontrivial exterior collar. At a threshold, the same question uses the finitely corrected right-limit operator $\mathcal W_{c+}^{\rm ext}$.
 
 The answer is not assumed in H1-P3.1.
 
