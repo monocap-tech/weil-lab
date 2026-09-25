@@ -224,7 +224,6 @@ theorem rationalResponse_zero_moment_remainder_isBigO
     _ = C * ‖z⁻¹ ^ 3‖ := by
       rw [norm_pow, norm_inv]
       field_simp [hzpos.ne']
-      ring
 
 /--
 The full zero-moment rational response is literally big-O of z⁻² at complex
@@ -267,7 +266,8 @@ theorem rationalResponse_zero_moment_isBigO
         rationalResponse rho v z =
           (rationalResponse rho v z - lead) + lead := by ring
     rw [hadd]
-    exact norm_add_le _ _
+    exact norm_add_le
+      (rationalResponse rho v z - lead) lead
   have hcubic :
       2 * residueSecondMomentNorm rho v / ‖z‖ ^ 3
         ≤
@@ -285,8 +285,7 @@ theorem rationalResponse_zero_moment_isBigO
       2 * residueSecondMomentNorm rho v / ‖z‖ ^ 3
         + ‖residueFirstMoment rho v‖ / ‖z‖ ^ 2 := by
       gcongr
-      · simpa [lead] using hrem
-      · simp [lead, norm_div, norm_pow]
+      simpa [lead] using hrem
     _ ≤
       2 * residueSecondMomentNorm rho v / ‖z‖ ^ 2
         + ‖residueFirstMoment rho v‖ / ‖z‖ ^ 2 := by
