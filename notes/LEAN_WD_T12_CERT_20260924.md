@@ -4,11 +4,11 @@ Stable ID: **WD-T12 / WD-B6**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Formal target
 
@@ -28,52 +28,52 @@ Certified source blob:
 
 Let the first background channel factor as
 
-\[
+```math
 S_{B_1}=-S_+X_1,
 \qquad
 \|X_1\|\le 1,
-\]
+```
 
 with first residual budget
 
-\[
+```math
 R_1=I-X_1X_1^*
-\]
+```
 
 and first effective positive synthesis
 
-\[
+```math
 S_1=S_+R_1^{1/2}.
-\]
+```
 
 Let the second background factor through that residual synthesis,
 
-\[
+```math
 S_{B_2}=-S_1Y_2,
 \qquad
 \|Y_2\|\le 1.
-\]
+```
 
 The Lean module defines the sequential coefficient-space residual budget
 
-\[
+```math
 R_{12}
 =
 R_1-
 R_1^{1/2}Y_2Y_2^*R_1^{1/2}.
-\]
+```
 
 Lean then verifies natively that the twice-consumed covariance is exactly
 
-\[
+```math
 S_+R_{12}S_+^*,
-\]
+```
 
 and equivalently
 
-\[
+```math
 S_1(I-Y_2Y_2^*)S_1^*.
-\]
+```
 
 The formal declarations are:
 
@@ -128,11 +128,11 @@ required after the initial theorem implementation.
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{WD-T13 / WD-B7 — DIRECT COMPRESSION VERSUS SHORTED COVARIANCE}
 }
-\]
+```
 
 The audited WD-T13 hypothesis is the corrected uniformly positive setting
 \(K\succeq mI\), ensuring bounded invertibility of the complementary block.
