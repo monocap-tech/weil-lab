@@ -19,19 +19,21 @@ D=S_{+}S_{+}^{*}-S_{-}S_{-}^{*},
 whose negative index agrees with the negative index of the associated
 coefficient-space Krein form. Nonnegativity of \(D\) is equivalent, through
 Douglas factorization, to contractive screening of the negative synthesis
-through the positive synthesis. This produces a complete abstract screening
-taxonomy, including strictly screened, over-budget, attained-critical, and
-non-attained critical regimes.
+through the positive synthesis. For the reduced-solution split used here, this
+gives the full first-level screening taxonomy: range defect, over-budget
+screening, strict screening, attained criticality, and non-attained
+criticality.
 
 The calculus is stable under selected/background decompositions and legitimate
-background elimination. For a fixed finite selected negative sector, the
-finite-dimensional compactness of that sector forces any normalized critical
-or negative right-approaching sequence to retain a nonzero nonpositive
-right-limit ray. At criticality there are only two fixed-sector outcomes:
-an attained neutral limit or a strictly negative fall-through caused by loss
-of positive-coordinate norm. Moving selected sectors and unselected
-backgrounds are therefore separate noncompactness mechanisms rather than
-additional fixed-packet branches.
+background elimination. In the monotone support-filtration setting of
+WD-T16/WD-T17, a normalized right-approaching sequence whose selected negative
+coordinate stays in one fixed finite-dimensional sector and whose limiting
+signature is nonpositive has a nonzero nonpositive right-limit subsequence.
+At criticality, the resulting fixed-sector limit has the WD-T17 dichotomy: it
+is neutral when the positive-coordinate norm is retained, and strictly
+negative when positive-coordinate norm is lost. A moving or infinite selected
+sector is a different custody regime; unselected-background noncompactness is
+a separate mechanism that can occur after a selected ray is already anchored.
 
 We then specialize this structure to the zeta-Weil setting. Conjugate-pair
 geometry, finite Weil inertia, distinct-frequency rigidity, and selected
@@ -76,9 +78,9 @@ AZ-FIN-WEIL-NULL-EXTENSION
 ~~~
 
 with C-ACTUAL-KPH-FLOOR retained as a stronger special-packet refinement on
-the negative side. Horizon 1 proves the independent Weil-defect theory that
-reaches these interfaces; it does not prove the interfaces themselves and
-does not claim RH closure.
+the negative side. Horizon 1 proves the deduction up to these stop lines. It
+does not prove the interface statements themselves and does not claim RH
+closure.
 
 ---
 
@@ -171,7 +173,7 @@ and
 ~~~
 
 Coefficient-space negativity and physical-space negativity are therefore two
-representations of the same finite-dimensional obstruction.
+representations of the same negative-index obstruction.
 
 ### WD-T02 — Contractive screening
 
@@ -384,8 +386,8 @@ If \(\dim M=m<\infty\), then
 }
 ~~~
 
-A fixed finite selected sector can create only finitely many independent
-negative directions.
+The negative index attributable to the selected defect is therefore bounded
+by the dimension of the fixed selected sector.
 
 ### WD-T09 — Shared screening budget
 
@@ -622,9 +624,9 @@ dimension of the endpoint gap quotient.
 ### WD-T19 — Boundary amplification
 
 When a genuinely new right-limit vector is absent from the endpoint space,
-normalized endpoint representatives cannot remain uniformly controlled.
-Vanishing endpoint amplitude therefore forces representative blow-up under
-the theorem's common physical-realization hypotheses.
+normalized endpoint representatives cannot remain uniformly controlled. Under
+the common physical-realization and right-continuity hypotheses of WD-T19,
+vanishing endpoint amplitude therefore yields representative blow-up.
 
 ### Part I summary
 
@@ -641,8 +643,11 @@ Part I establishes
 }
 ~~~
 
-A globally non-attained critical morphology without a persistent selected ray
-requires a moving/infinite selected sector, as WD-X05 demonstrates.
+Within a branch that retains nontrivial selected negative mass, loss of a
+persistent selected ray requires leaving the fixed finite-sector regime, for
+example by moving through infinitely many selected coordinates as in WD-X05.
+If the selected negative mass itself vanishes, the sequence has instead left
+the anchored fixed-packet hypothesis.
 
 ---
 
@@ -666,7 +671,8 @@ multiplicity-null reduction.
 
 Bombieri's finite Weil theorem identifies the number of negative eigenvalues
 with the number of distinct nonreal conjugate pairs. Horizon 1 consumes this
-as the imported source EXT-2A plus exact specialization.
+as the imported source EXT-2A and specializes its count to the selected Weil
+pair geometry.
 
 ### WD-T23 — Multiplicity-null reduction
 
@@ -806,8 +812,8 @@ For support radius \(c\), the compact-window explicit formula activates only
 ~~~
 
 The active prime-power set is finite. At an equality threshold, the strict
-endpoint convention and the strict right limit differ only by the finite
-threshold contribution. The source is EXT-4.
+endpoint convention excludes the threshold term while the strict right limit
+includes the corresponding finite threshold correction. The source is EXT-4.
 
 ### WD-T35 — Logarithmic form order
 
@@ -853,10 +859,10 @@ finitely many arithmetic translations and no hidden regularity upgrade.
 
 ## 9. WD-T37 — Persistent selected negative morphology
 
-Assume a fixed finite selected packet survives the right-limit process with a
-strict negative margin. WD-T16 preserves a nonzero selected negative
-coordinate; WD-T07 transfers selected negativity to the full coefficient
-problem. The zeta-Weil chain then supplies:
+Assume the fixed-packet hypotheses of WD-T37, including a strict normalized
+negative limit. WD-T16 then yields a nonzero selected negative limit
+coordinate, and WD-T07 transfers the resulting selected negativity to the full
+coefficient problem. The zeta-Weil chain then supplies:
 
 1. a nonzero selected raw residue source;
 2. the zero-moment law;
@@ -902,9 +908,10 @@ remains downstream and open.
 
 ## 10. WD-T38 — Attained unit-gain neutral morphology
 
-Suppose the fixed selected critical branch is attained and the theorem's
-finite-exception carrier identification is available. The unit-gain relation
-then gives a nonzero compact-window null mode
+Suppose the fixed selected critical branch is attained and the finite-exception
+unit-gain, physical adjoint realization, and carrier-identification hypotheses
+of WD-T38 are all available. Those hypotheses give a nonzero compact-window
+null mode
 
 ~~~math
 \boxed{
@@ -951,10 +958,11 @@ This is a full-carrier condition, not merely selected-negative escape.
 
 ### Fixed selected-packet custody
 
-If one fixed finite selected packet retains positive selected negative mass,
-finite-dimensional compactness produces a nonzero strong selected-coordinate
-limit. WD-X05 shows the sharp opposite situation when the selected
-one-dimensional sector itself moves through infinitely many coordinates.
+If one fixed finite selected packet retains selected negative norm bounded away
+from zero, finite-dimensional compactness gives, after passage to a
+subsequence, a nonzero strong selected-coordinate limit. WD-X05 shows the
+contrasting regime in which the selected one-dimensional sector itself moves
+through infinitely many coordinates.
 
 ### Unselected-background trichotomy
 
@@ -1004,7 +1012,8 @@ positive complement gives zero defect. This is sharpness for WD-T06.
 ### WD-X02 — Critical norm one need not be attained
 
 The canonical audit model uses multiplication by \(t\) on \(L^2(0,1)\). The
-Lean certificate uses an equivalent diagonal \(\ell^2\) model. In both,
+Lean certificate uses a discrete diagonal \(\ell^2\) realization of the same
+sharpness phenomenon. In both,
 
 ~~~math
 \boxed{
@@ -1132,24 +1141,25 @@ Exact theorem/equation pins and convention transfers are recorded in
 
 ## 15. Outputs delivered to the actual-zeta boundary
 
-The negative branch reaches
+The negative branch leaves
 
 ~~~text
 AZ-NEXTJET-LOC
 ~~~
 
-after the zero-moment law, inverse-square far response, and
-\(O((\log R)/R)\) far-shell reduction. The stronger special-packet refinement
-C-ACTUAL-KPH-FLOOR is tracked separately.
+as its next unresolved actual-zeta obligation after the zero-moment law,
+inverse-square far response, and \(O((\log R)/R)\) far-shell reduction. The
+stronger special-packet refinement C-ACTUAL-KPH-FLOOR is tracked separately.
 
-The attained neutral branch reaches
+The attained neutral branch leaves
 
 ~~~text
 AZ-FIN-WEIL-NULL-EXTENSION
 ~~~
 
-after reduction to a compact-window null equation for a logarithmic-order
-operator with finitely many arithmetic translations.
+as its unresolved support/right-limit obligation after reduction to a
+compact-window null equation for a logarithmic-order operator with finitely
+many arithmetic translations.
 
 These are open downstream obligations, not theorem IDs.
 
