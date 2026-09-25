@@ -307,12 +307,12 @@ with principal symbol
 
 ### Approximate-neutral classification
 
-The completed H1-P2/H1-P3 audit classifies any remaining zeta-Weil critical sequence without an attained neutral mode through explicit noncompactness mechanisms:
+The completed H1-P2/H1-P3 audit separates failure of attained neutrality into two different outcomes:
 
-- a moving selected packet;
-- an infinite negative background;
-- coefficient-tail escape;
-- or positive-coordinate mass loss, which strengthens the fixed-packet limit to negativity.
+- **fixed-packet negative fall-through:** positive-coordinate mass loss produces a strictly negative persistent right-limit ray;
+- **genuine noncompact escape:** selected-sector nonpersistence requires a moving/infinite selected sector, while an infinite unselected background can separately fail strong compactness after a selected ray has already been anchored.
+
+These mechanisms are not interchangeable: background escape does not erase fixed selected custody, and positive-coordinate mass loss is a persistence mechanism rather than an escape mechanism.
 
 ---
 
