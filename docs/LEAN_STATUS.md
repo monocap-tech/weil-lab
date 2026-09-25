@@ -244,9 +244,9 @@ Formal declarations:
 
 The stable theorem is represented at the functional level:
 
-given a complex-linear selected-response functional \(C\) and two multiplier
-modes \(\psi_1,\psi_2\) whose selected responses are not both zero, Lean
-constructs a nontrivial coefficient pair \((\beta_1,\beta_2)\) with
+given a complex-linear selected-response functional $C$ and two multiplier
+modes $\psi_1,\psi_2$ whose selected responses are not both zero, Lean
+constructs a nontrivial coefficient pair $(\beta_1,\beta_2)$ with
 
 ```math
 C(\beta_1\psi_1+\beta_2\psi_2)=0.
@@ -314,7 +314,7 @@ P=F.
 ```
 
 This is the complete algebraic content of the audited WD-T33 co-adaptation theorem.
-The analytic interpretation of \(N,F,P,A\) belongs to the surrounding explicit-formula
+The analytic interpretation of $N,F,P,A$ belongs to the surrounding explicit-formula
 setup and is not assumed by the Lean proof.
 
 The current theorem file blob
@@ -373,14 +373,14 @@ Formal declarations:
 
 The formal negative-index statement is encoded dimension-by-dimension.
 
-For each \(n\), Lean proves equivalence between:
+For each $n$, Lean proves equivalence between:
 
-1. an \(n\)-direction negative witness in the physical carrier; and
-2. an \(n\)-direction negative witness in the closed analysis carrier.
+1. an $n$-direction negative witness in the physical carrier; and
+2. an $n$-direction negative witness in the closed analysis carrier.
 
 The bridge theorem proves such a unit-sphere negative witness is injective whenever
 the quadratic form vanishes at zero. Therefore these witnesses are genuine
-\(n\)-dimensional negative directions, and equality for every finite \(n\) is the
+$n$-dimensional negative directions, and equality for every finite $n$ is the
 formal finite-rank-spectrum version of equality of the supremum negative indices.
 
 The certificate also proves:
@@ -479,7 +479,7 @@ where covariance order is encoded by its quadratic-form inequality.
 
 Lean also verifies that the Douglas reduced solution transfers through the
 project sign convention and is unique among exact signed solutions whose range
-is orthogonal to \(\ker S_+\).
+is orthogonal to $\ker S_+$.
 
 The Douglas source theorem itself has not been reconstructed in Lean.
 Accordingly this theorem must not be reported as a native LEAN-CERTIFIED result.
@@ -667,16 +667,16 @@ Formal declarations:
 - WeilDefect.WDT05.wd_t05_rank_one_specialization.
 
 Lean verifies natively that the one-dimensional synthesis map
-\(\alpha\mapsto\alpha g\) has covariance \(g\otimes g\), hence
+$\alpha\mapsto\alpha g$ has covariance $g\otimes g$, hence
 
 ```math
 D=S_+S_+^*-g\otimes g.
 ```
 
 It also verifies internally that a signed contractive map
-\(X:\mathbb C\to K_+\) is equivalent to a single coefficient vector
-\(c=X(1)\) with \(\|c\|\le1\), and reconstructs the converse factor from
-\(c\) by \(\operatorname{toSpanSingleton}(c)\).
+$X:\mathbb C\to K_+$ is equivalent to a single coefficient vector
+$c=X(1)$ with $\|c\|\le1$, and reconstructs the converse factor from
+$c$ by $\operatorname{toSpanSingleton}(c)$.
 
 The covariance-majorization/positivity-to-factorization step is supplied by
 the explicit proposition-valued Douglas premise
@@ -779,8 +779,8 @@ D_Nh\to Dh,
 and pointwise convergence of the corresponding quadratic forms.
 
 Negative-index monotonicity is certified in the same dimension-by-dimension
-form used by WD-T01: every \(k\)-dimensional negative witness for
-\(D_{N+1}\) is already a \(k\)-dimensional negative witness for \(D_N\).
+form used by WD-T01: every $k$-dimensional negative witness for
+$D_{N+1}$ is already a $k$-dimensional negative witness for $D_N$.
 Thus the attainable finite negative-rank spectrum is nonincreasing under
 positive-channel restoration.
 
@@ -855,13 +855,13 @@ q_{\rm full}(h)\le q_M(h).
 ```
 
 It certifies the negative-index custody statement in finite-rank-spectrum form:
-for every \(k\), any \(k\)-dimensional negative witness for the selected
-quadratic form remains a \(k\)-dimensional negative witness for the full
+for every $k$, any $k$-dimensional negative witness for the selected
+quadratic form remains a $k$-dimensional negative witness for the full
 quadratic form after arbitrary negative-background aggregation.
 
 The converse is disproved internally by an explicit one-dimensional complex
 example: selected positive and negative synthesis maps are zero while the
-background synthesis is the identity.  At \(h=1\), the selected quadratic
+background synthesis is the identity.  At $h=1$, the selected quadratic
 value is zero but the full quadratic value is strictly negative.  Thus full
 aggregate negativity does not identify the selected sector as the owner of the
 defect.
@@ -1043,7 +1043,7 @@ The certificate is stated on the reduced positive carrier, encoded by
 \ker S_+=0,
 ```
 
-which is the abstract theorem's \((\ker S_+)^\perp\) target treated as its
+which is the abstract theorem's $(\ker S_+)^\perp$ target treated as its
 own Hilbert carrier.
 
 Under exact signed screening factorizations
@@ -1096,8 +1096,8 @@ in the explicit separate-versus-joint counterexample. It does not consume
 DouglasUnitData or any imported theorem premise.
 
 Lean also certifies that separate unit bounds are insufficient: with both
-screening maps equal to the identity on \(\mathbb C\), each individual map
-has norm one, while the joint budget fails at \(a=1\).
+screening maps equal to the identity on $\mathbb C$, each individual map
+has norm one, while the joint budget fails at $a=1$.
 
 The first WD-T09 build exposed only local elaboration issues: theorem
 visibility, rewrite order, closed-set construction, and final scalar
@@ -1437,7 +1437,7 @@ Next theorem cursor:
 ```
 
 The audited WD-T13 hypothesis is the corrected uniformly positive setting
-\(K\succeq mI\), which guarantees bounded invertibility of the complementary
+$K\succeq mI$, which guarantees bounded invertibility of the complementary
 block.
 
 
@@ -1487,8 +1487,8 @@ Lean proves
 H_W\preceq A
 ```
 
-and a uniform lower bound on \(H_W\), hence bounded invertibility of
-\(H_W\).
+and a uniform lower bound on $H_W$, hence bounded invertibility of
+$H_W$.
 
 The inverse-compression identity is kernel-checked in its equivalent block
 solution form: every solution of
@@ -1505,8 +1505,8 @@ has
 x=H_W^{-1}w,
 ```
 
-and such a solution is constructed for every \(w\). This is the coordinate
-form of \(P_WK^{-1}|_W=H_W^{-1}\).
+and such a solution is constructed for every $w$. This is the coordinate
+form of $P_WK^{-1}|_W=H_W^{-1}$.
 
 No imported project theorem premise is consumed by WD-T13.
 
@@ -1572,7 +1572,7 @@ Formal declarations:
 - WeilDefect.WDT14.wd_t14_graph_admissibility_failure_example;
 - WeilDefect.WDT14.wd_t14_finite_positive_shadows_preserve_signature_not_admissibility.
 
-For every orthogonal positive-coordinate projection \(P_U\), Lean certifies
+For every orthogonal positive-coordinate projection $P_U$, Lean certifies
 
 ```math
 \|u\|^2-\|P_Ua\|^2
@@ -1583,7 +1583,7 @@ For every orthogonal positive-coordinate projection \(P_U\), Lean certifies
 Hence positive truncation preserves, and can only strengthen, a positive
 negative margin.
 
-For graph vectors \(u=-X^*a\), Lean also proves the exact admissibility
+For graph vectors $u=-X^*a$, Lean also proves the exact admissibility
 criterion
 
 ```math
@@ -1592,8 +1592,8 @@ u=-X^*P_Ua
 X^*(a-P_Ua)=0.
 ```
 
-An explicit \(\mathbb C\) counterexample with \(X=2I\), \(a=1\),
-\(u=-2\), and zero positive projection has margin \(3>0\) before and after
+An explicit $\mathbb C$ counterexample with $X=2I$, $a=1$,
+$u=-2$, and zero positive projection has margin $3>0$ before and after
 the signature shadow while the projected pair is not graph-admissible.
 
 Thus the stable distinction between signature shadow and admissible analysis
@@ -1686,8 +1686,8 @@ Lean proves the gap duality
 A_{c+}=G_{c+}^{\perp}.
 ```
 
-For every antitone real sequence \(t_n\downarrow c\) from the right and every
-vector \(x\), Lean also proves
+For every antitone real sequence $t_n\downarrow c$ from the right and every
+vector $x$, Lean also proves
 
 ```math
 P_{A_{t_n}}x\to P_{A_{c+}}x.
@@ -1761,8 +1761,8 @@ Formal declarations include:
 - WeilDefect.WDT16.wd_t16_uniform_negative_margin_forces_endpoint_jump;
 - WeilDefect.WDT16.wd_t16_fixed_finite_negative_sector_persistence.
 
-The coefficient Hilbert space is represented by the actual \(L^2\)-product
-\(K_+\oplus M\), with \(M\) finite-dimensional.
+The coefficient Hilbert space is represented by the actual $L^2$-product
+$K_+\oplus M$, with $M$ finite-dimensional.
 
 Lean natively extracts a weakly convergent subsequence of the positive
 coordinates without assuming global separability: it localizes to the
@@ -1789,7 +1789,7 @@ J(y)\le q_*.
 }
 ```
 
-For a uniform margin \(\kappa>0\),
+For a uniform margin $\kappa>0$,
 
 ```math
 J(a_n,u_n)\le-\kappa,
@@ -1805,7 +1805,7 @@ J(y)\le-\kappa.
 }
 ```
 
-If the endpoint \(A_c\) is \(J\)-nonnegative, the produced vector is also
+If the endpoint $A_c$ is $J$-nonnegative, the produced vector is also
 certified to lie in
 
 ```math
@@ -1892,12 +1892,12 @@ Lean proves
 ```
 
 After the WD-T16 compactness extraction, the nonzero right-limit vector
-\(y=(a,u)\) satisfies exactly one of two alternatives:
+$y=(a,u)$ satisfies exactly one of two alternatives:
 
-1. \(\|a\|^2=1/2\), hence \(J(y)=0\), weak convergence of the positive
+1. $\|a\|^2=1/2$, hence $J(y)=0$, weak convergence of the positive
    coordinate upgrades to strong convergence, and the full coefficient
-   subsequence converges strongly to \(y\);
-2. \(\|a\|^2<1/2\), hence \(J(y)<0\).
+   subsequence converges strongly to $y$;
+2. $\|a\|^2<1/2$, hence $J(y)<0$.
 
 The assembled theorem proves both exhaustivity and mutual exclusion of these
 branches.
@@ -1965,9 +1965,9 @@ Formal declarations include:
 - WeilDefect.WDT18.wd_t18_endpoint_jump_negative_rank_le_quotient;
 - WeilDefect.WDT18.wd_t18_one_dimensional_jump_rank_cap.
 
-For closed endpoint/right-limit spaces \(A_0\subseteq A_+\), Lean formalizes
-the endpoint quotient \(A_+/A_0\). Any finite-dimensional strictly negative
-witness in \(A_+\) injects into that quotient when the endpoint is
+For closed endpoint/right-limit spaces $A_0\subseteq A_+$, Lean formalizes
+the endpoint quotient $A_+/A_0$. Any finite-dimensional strictly negative
+witness in $A_+$ injects into that quotient when the endpoint is
 nonnegative. Hence every such witness rank is bounded by the quotient
 dimension; in particular a one-dimensional jump caps the finite negative rank
 at one.
@@ -2032,7 +2032,7 @@ Formal declarations include:
 - WeilDefect.WDT19.wd_t19_boundary_amplification;
 - WeilDefect.WDT19.wd_t19_vanishing_amplitude_normalized_blowup.
 
-For a common bounded physical map \(T\) and right-continuous nested physical
+For a common bounded physical map $T$ and right-continuous nested physical
 spaces, Lean proves that any new endpoint vector requires representative norm
 blow-up, upgrades that statement to the full local boundary-amplification
 predicate, and certifies the reciprocal-growth identity for vanishing-amplitude
@@ -2095,7 +2095,7 @@ Formal declarations:
 
 For one distinct nonreal conjugate pair, Lean represents conjugation as a
 two-coordinate swap and proves that the symmetric and antisymmetric channels
-are the \(+1\) and \(-1\) eigendirections. The complex-linear
+are the $+1$ and $-1$ eigendirections. The complex-linear
 `pairEigenEquiv` identifies raw pair coefficients with positive/negative
 channel coordinates, in which the involution is exactly
 
@@ -2103,9 +2103,9 @@ channel coordinates, in which the involution is exactly
 (a,b)\mapsto(a,-b).
 ```
 
-The formal source uses unnormalized representatives \((1,1)\) and
-\((1,-1)\); these span the same canonical eigendirections as the normalized
-\(1/\sqrt2\) convention.
+The formal source uses unnormalized representatives $(1,1)$ and
+$(1,-1)$; these span the same canonical eigendirections as the normalized
+$1/\sqrt2$ convention.
 
 WD-T20 is pair-level algebra after reduction to a distinct conjugate-pair
 coordinate. The separate same-frequency multiplicity quotient remains WD-T23.
@@ -2272,7 +2272,7 @@ negative spectral index and the number of distinct nonreal conjugate pairs.
 It is passed as a theorem premise and is not declared as a project axiom.
 
 Lean then verifies the packet specialization internally.  Using WD-T21's
-two negative pair coordinates per simple quartet, a packet of \(q\) simple
+two negative pair coordinates per simple quartet, a packet of $q$ simple
 disjoint quartets has pair-coordinate cardinality
 
 ```math
@@ -2350,7 +2350,7 @@ Formal declarations:
 - WeilDefect.wd_t23_distinct_frequency_reduction.
 
 The direct coefficient mechanism is proved natively.  For duplicate
-same-frequency coordinates with common physical shape \(g\), Lean verifies
+same-frequency coordinates with common physical shape $g$, Lean verifies
 
 ```math
 \sum_i x_i g
@@ -2368,7 +2368,7 @@ continuation are represented by the explicit proposition-valued premise
 \texttt{BombieriMultiplicityNullData}.
 ```
 
-For distinct ordinates of raw multiplicities \(m_j\), it supplies exactly
+For distinct ordinates of raw multiplicities $m_j$, it supplies exactly
 
 ```math
 \operatorname{nullity}
@@ -2376,14 +2376,14 @@ For distinct ordinates of raw multiplicities \(m_j\), it supplies exactly
 \sum_j (m_j-1).
 ```
 
-For one ordinate of multiplicity \(m\), Lean specializes this to
+For one ordinate of multiplicity $m$, Lean specializes this to
 
 ```math
 \operatorname{nullity}=m-1
 ```
 
 and proves that a nontrivial multiplicity-null sector occurs exactly when
-\(m>1\).
+$m>1$.
 
 Thus multiplicity-null directions are formally separated from the active
 distinct-frequency channel before independent negative-index counting.  The
@@ -2443,16 +2443,16 @@ Formal declarations include:
 - WeilDefect.iteratedDeriv_finite_exp_sum;
 - WeilDefect.wd_t24_finite_distinct_frequency_exponential_independence.
 
-For distinct complex frequencies \(\lambda_i\), Lean certifies that if
+For distinct complex frequencies $\lambda_i$, Lean certifies that if
 
 ```math
 \sum_i c_i e^{\lambda_i x}=0
 ```
 
-throughout a nonempty real interval, then every coefficient \(c_i\) is zero.
+throughout a nonempty real interval, then every coefficient $c_i$ is zero.
 
-The proof is fully internal.  It chooses an interior point \(x_0\), differentiates
-the local zero relation through orders \(0,\dots,n-1\), and obtains
+The proof is fully internal.  It chooses an interior point $x_0$, differentiates
+the local zero relation through orders $0,\dots,n-1$, and obtains
 
 ```math
 \sum_i
@@ -2463,7 +2463,7 @@ the local zero relation through orders \(0,\dots,n-1\), and obtains
 
 Mathlib's Vandermonde nonsingularity theorem then forces all weighted
 coefficients to vanish.  Since the complex exponential is never zero, every
-\(c_i\) vanishes.
+$c_i$ vanishes.
 
 No analytic-continuation theorem and no imported project theorem premise is
 needed.
@@ -2532,7 +2532,7 @@ Lean represents the Problem-1 differential operator as
 L=-\frac{d^2}{dx^2}+\frac14.
 ```
 
-For an exponential mode \(e^{\lambda x}\), it certifies
+For an exponential mode $e^{\lambda x}$, it certifies
 
 ```math
 L e^{\lambda x}
@@ -2542,7 +2542,7 @@ L e^{\lambda x}
 
 A Green-preconditioned Problem-1 coordinate is represented as one reciprocal
 particular solution plus arbitrary boundary-homogeneous terms at frequencies
-\(\pm 1/2\).  Lean proves that the two boundary terms are killed by \(L\), and
+$\pm 1/2$.  Lean proves that the two boundary terms are killed by $L$, and
 that a reciprocal coefficient satisfying
 
 ```math
@@ -2552,7 +2552,7 @@ q\left(\frac14-\lambda^2\right)=1
 is mapped back to the raw exponential mode.
 
 Consequently, any finite exact relation among distinct-frequency
-Green-preconditioned coordinates on a nonempty interval is sent by \(L\) to a
+Green-preconditioned coordinates on a nonempty interval is sent by $L$ to a
 finite distinct-frequency exponential relation.  WD-T24 then forces every
 coefficient to vanish.
 
@@ -2637,8 +2637,8 @@ by pairwise antisymmetry.
 
 The nondegeneracy half is also certified: if at least one selected negative
 coefficient is nonzero, then at least one raw residue is nonzero.  The custody
-bridge is direct: each coefficient \(\alpha\) occurs verbatim as one of the
-two raw residues \((\alpha,-\alpha)\).
+bridge is direct: each coefficient $\alpha$ occurs verbatim as one of the
+two raw residues $(\alpha,-\alpha)$.
 
 Thus the associated raw residue vector has zero total residue and cannot
 collapse to the zero residue vector when the selected negative coefficient
@@ -2714,7 +2714,7 @@ Formal declarations include:
 - WeilDefect.wd_t27_universal_inverse_square_far_decay;
 - WeilDefect.wd_t27_universal_inverse_square_isBigO.
 
-For a finite residue vector \(v\) at locations \(\rho_i\), Lean certifies the
+For a finite residue vector $v$ at locations $\rho_i$, Lean certifies the
 exact Laurent decomposition
 
 ```math
@@ -2848,7 +2848,7 @@ Formal declarations include:
 
 The pinned Mathlib version does not expose a native Hilbert--Schmidt or
 trace-class operator type.  Accordingly WD-T28 is represented at the standard
-\(\ell^2\)-basis criterion level:
+$\ell^2$-basis criterion level:
 
 ```math
 \sum_\gamma
@@ -2858,7 +2858,7 @@ trace-class operator type.  Accordingly WD-T28 is represented at the standard
 ```
 
 The zero-count input is explicit.  The Titchmarsh
-\(O(\log T)\) unit-shell estimate is packaged through its elementary weaker
+$O(\log T)$ unit-shell estimate is packaged through its elementary weaker
 consequence
 
 ```math
@@ -2877,7 +2877,7 @@ The native column estimate is also explicit:
 A(n+1)^{-2}
 ```
 
-for a coordinate in unit shell \(n\).
+for a coordinate in unit shell $n$.
 
 Lean then verifies internally that one shell contributes at most
 
@@ -2885,7 +2885,7 @@ Lean then verifies internally that one shell contributes at most
 AC(n+1)^{-3/2},
 ```
 
-and proves summability via the \(p\)-series with exponent \(3/2\).
+and proves summability via the $p$-series with exponent $3/2$.
 The Sigma-type shell decomposition then yields summability over all zero
 coordinates.
 
@@ -2960,7 +2960,7 @@ Additional formal declarations include:
 - WeilDefect.nativeProblemOneResolventData_of_actual;
 - WeilDefect.wd_t28_native_problem_one_hilbert_schmidt_actual.
 
-For fixed \(t>0\), the explicit Green column is
+For fixed $t>0$, the explicit Green column is
 
 ```math
 F_\gamma(x)
@@ -2978,7 +2978,7 @@ q_\gamma
 \left(\frac14+\gamma^2\right)^{-1}
 ```
 
-and \(h_\pm\) are the canonical hyperbolic-sine Dirichlet interpolation
+and $h_\pm$ are the canonical hyperbolic-sine Dirichlet interpolation
 functions.
 
 Lean certifies
@@ -3052,7 +3052,7 @@ This run passed:
 
 - pinned dependency resolution;
 - mathlib cache retrieval;
-- direct Lake build of \(\texttt{WeilDefect.DirichletResolvent}\);
+- direct Lake build of $\texttt{WeilDefect.DirichletResolvent}$;
 - rebuilding the WD-T28 criterion dependencies;
 - unfinished-proof/project-axiom rejection.
 
@@ -3085,7 +3085,7 @@ The current scalar
 ```
 
 is defined as the norm of the Green pairing.  The mathematical native
-\(H^{-1}_L\) statement additionally identifies the pairing itself with the
+$H^{-1}_L$ statement additionally identifies the pairing itself with the
 positive Dirichlet energy:
 
 ```math
@@ -3210,7 +3210,7 @@ then
 ```
 
 Any quantitative operator-tail bound
-\(\|S_{>G}\|\le\varepsilon_G\) therefore transfers immediately to the
+$\|S_{>G}\|\le\varepsilon_G$ therefore transfers immediately to the
 same finite-head approximation rate.
 
 Certificate run:
@@ -3339,7 +3339,7 @@ with the constants explicitly assembled from the multiplier bound, selected
 residue moments, and shell-count constant.
 
 The imported part is exactly the source-pinned logarithmic unit-shell zero
-count represented by \(\texttt{ZetaLogShellCountData}\). It is not introduced
+count represented by $\texttt{ZetaLogShellCountData}$. It is not introduced
 as a project axiom.
 
 The generic shell aggregation first passed in CI run:
@@ -3367,7 +3367,7 @@ The final theorem source blob is:
 ```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
-the dedicated \(\texttt{WeilDefect.Arithmetic.FarTail}\) build, and
+the dedicated $\texttt{WeilDefect.Arithmetic.FarTail}$ build, and
 unfinished-proof/project-axiom rejection.
 
 WD-T31 is therefore closed.
@@ -3406,7 +3406,7 @@ rules that
 \Xi^{(m)}(\mu)=m!\,g(\mu),
 ```
 
-and, for the completed lift \(H=\Xi R\),
+and, for the completed lift $H=\Xi R$,
 
 ```math
 H^{(m)}(\mu)=m!\,g(\mu)R(\mu).
@@ -3447,7 +3447,7 @@ The certified theorem source blob is:
 ```
 
 The run passed pinned dependency resolution, mathlib cache retrieval, direct
-Lake build of \(\texttt{WeilDefect.Arithmetic.NextJet}\), and
+Lake build of $\texttt{WeilDefect.Arithmetic.NextJet}$, and
 unfinished-proof/project-axiom rejection.
 
 WD-T33 is already independently Lean-certified.
@@ -3478,7 +3478,7 @@ Formal declarations include:
 - WeilDefect.primePowerThreshold_subsingleton.
 
 Lean first certifies directly that, for every fixed real support radius
-\(c\), the compact-window threshold condition
+$c$, the compact-window threshold condition
 
 ```math
 \log n<2c
@@ -3539,7 +3539,7 @@ The final WD-T34 source blob is:
 ```
 
 The run passed pinned dependency resolution, mathlib cache retrieval, direct
-Lake build of \(\texttt{WeilDefect.Arithmetic.PrimeSupport}\), and
+Lake build of $\texttt{WeilDefect.Arithmetic.PrimeSupport}$, and
 unfinished-proof/project-axiom rejection.
 
 WD-T34 is therefore closed.
@@ -3570,7 +3570,7 @@ The canonical Fourier weight is represented exactly as
 w(t)=\log(e+|t|),
 ```
 
-and Lean certifies \(w(t)\ge1\) everywhere.
+and Lean certifies $w(t)\ge1$ everywhere.
 
 For a nonnegative spectral density, the imported compact-window specialization
 is isolated into explicit hypotheses:
@@ -3581,7 +3581,7 @@ is isolated into explicit hypotheses:
    ```
 2. the shifted geometric-form identity;
 3. a nonnegative pole/evaluation contribution bounded by
-   \(K\|F\|_2^2\).
+   $K\|F\|_2^2$.
 
 The symbol comparison is the source-pinned consequence of the digamma
 asymptotic together with WD-T34 finite prime support. The geometric identity
@@ -3631,7 +3631,7 @@ The certified WD-T35 source blob is:
 ```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
-direct Lake build of \(\texttt{WeilDefect.Arithmetic.LogarithmicForm}\),
+direct Lake build of $\texttt{WeilDefect.Arithmetic.LogarithmicForm}$,
 rebuilding WD-T34, and unfinished-proof/project-axiom rejection.
 
 WD-T35 is therefore closed.
@@ -3662,7 +3662,7 @@ Formal declarations include:
 - WeilDefect.logarithmicPlusFinitePrimeCorrection_isBigO;
 - WeilDefect.wd_t36_finite_prime_translations_add_no_smoothing.
 
-For every \(\varepsilon>0\), Lean certifies the asymptotic separation
+For every $\varepsilon>0$, Lean certifies the asymptotic separation
 
 ```math
 \log(e+|N|)
@@ -3699,7 +3699,7 @@ O(\text{Sobolev energy})
 cannot obey a uniform positive-Sobolev coercive estimate.
 
 The concrete compact-support construction
-\(f_N(x)=\phi(x)\cos(Nx)\), together with its Fourier concentration
+$f_N(x)=\phi(x)\cos(Nx)$, together with its Fourier concentration
 asymptotics, is not separately rebuilt in the current Lean corpus. Those
 standard witness asymptotics are therefore the explicit premise represented
 by the transfer theorem, which is why WD-T36 receives the
@@ -3770,7 +3770,7 @@ The final WD-T36 source blob is:
 ```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
-direct Lake build of \(\texttt{WeilDefect.Arithmetic.NoSobolevBootstrap}\),
+direct Lake build of $\texttt{WeilDefect.Arithmetic.NoSobolevBootstrap}$,
 the WD-T34/WD-T35 dependencies, and unfinished-proof/project-axiom rejection.
 
 WD-T36 is therefore closed.
@@ -3824,7 +3824,7 @@ source cannot be replaced by an unrelated zero-moment look-alike.
 
 The only imported analytic-number-theory premise inherited by the arithmetic
 localization is the logarithmic unit-shell zero-count interface
-\(\texttt{ZetaLogShellCountData}\) already isolated in WD-T31. No imported
+$\texttt{ZetaLogShellCountData}$ already isolated in WD-T31. No imported
 result is installed as a project axiom.
 
 The composite intentionally contains no actual-zeta exclusion field. Its exact
@@ -3859,7 +3859,7 @@ The certified WD-T37 source blob is:
 ```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
-direct Lake build of \(\texttt{WeilDefect.Morphology.Negative}\), and
+direct Lake build of $\texttt{WeilDefect.Morphology.Negative}$, and
 unfinished-proof/project-axiom rejection.
 
 WD-T37 is therefore closed.
@@ -3929,7 +3929,7 @@ right-limit prime support by
 ```
 
 and proves it is exactly the endpoint strict-active set
-\(\log n<2c\) union the equality-threshold set. The latter is subsingleton, so
+$\log n<2c$ union the equality-threshold set. The latter is subsingleton, so
 the strict-right correction is finite and contains at most one natural prime
 power.
 
@@ -3994,7 +3994,7 @@ The certified WD-T38 source blob is:
 ```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
-direct Lake build of \(\texttt{WeilDefect.Morphology.Neutral}\), and
+direct Lake build of $\texttt{WeilDefect.Morphology.Neutral}$, and
 unfinished-proof/project-axiom rejection.
 
 WD-T38 is therefore closed.
@@ -4100,7 +4100,7 @@ The certified WD-T39 source blob is:
 ```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
-direct Lake build of \(\texttt{WeilDefect.Morphology.Noncompact}\), and
+direct Lake build of $\texttt{WeilDefect.Morphology.Noncompact}$, and
 unfinished-proof/project-axiom rejection.
 
 WD-T39 is therefore closed. The next unfinished stable formalization cursor is:
@@ -4120,9 +4120,9 @@ Stable ID:
 \boxed{\text{WD-X02: LEAN-CERTIFIED}.}
 ```
 
-Lean certifies an explicit diagonal \(\ell^2(\mathbb N;\mathbb C)\) realization
+Lean certifies an explicit diagonal $\ell^2(\mathbb N;\mathbb C)$ realization
 of the same critical nonattainment geometry as the canonical
-\(L^2(0,1)\) multiplication-by-\(t\) witness in the audit document.
+$L^2(0,1)$ multiplication-by-$t$ witness in the audit document.
 
 The coordinate gains are
 
@@ -4134,7 +4134,7 @@ r_n=1-\frac1{n+2},
 r_n\to1.
 ```
 
-The induced coordinatewise operator \(X\) satisfies
+The induced coordinatewise operator $X$ satisfies
 
 ```math
 \boxed{\|X\|=1}
@@ -4185,7 +4185,7 @@ The certified source blob is:
 ```
 
 The run passed pinned dependency resolution, direct Lake build of
-\(\texttt{WeilDefect.Examples.CriticalNonattainment}\), and the
+$\texttt{WeilDefect.Examples.CriticalNonattainment}$, and the
 unfinished-proof/project-axiom rejection gate.
 
 WD-X02 is therefore closed. The next unfinished stable example cursor is:
