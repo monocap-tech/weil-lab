@@ -97,7 +97,7 @@ after absorbing the sign into $X$.
 \boxed{\text{SOURCE-PINNED}}
 ```
 
-The primary bibliographic record and theorem identity are fixed. The H1-P4.2 audit still has to check every domain/codomain application in the internal proofs.
+The primary bibliographic record and theorem identity are fixed. Project-level domain/codomain applications are a separate internal-proof question; their completed H1-P4.2 review is recorded in [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
 ---
 
