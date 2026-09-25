@@ -94,17 +94,19 @@ Complement elimination and finite shadows are
 }
 ```
 
-Physical realization gives
+The representative-blow-up theorem is independent of WD-T16 once its own physical-realization hypotheses and a new endpoint vector are supplied:
 
 ```math
 \boxed{
-\text{WD-T16}
+\text{new endpoint vector}
 +
-\text{physical realization hypotheses}
+\text{common bounded physical realization/right continuity}
 \longrightarrow
-\text{WD-T19}.
+\text{WD-T19 conclusion}.
 }
 ```
+
+WD-T16 is one way a later morphology application can produce the required persistent endpoint vector; it is not a theorem-level premise of WD-T19.
 
 ### Zeta-Weil pair spine
 
@@ -166,13 +168,15 @@ Native compact synthesis gives
 
 ### Explicit-formula spine
 
-Scalarization and far localization are
+Scalarization and far localization are separate steps. WD-T30 supplies a selected-preserving multiplier construction when its two-mode hypothesis is used. The far-tail theorem itself uses the zero-moment decay from WD-T27, zero counting, and boundedness of the chosen multiplier:
 
 ```math
 \boxed{
-\text{WD-T30}
-+
 \text{WD-T27}
++
+\text{EXT-3 zero counting}
++
+\text{bounded multiplier}
 \longrightarrow
 \text{WD-T31}.
 }
@@ -212,27 +216,29 @@ The compact-window neutral arithmetic chain is
 
 ### Negative morphology
 
+The load-bearing fixed-packet chain is:
+
 ```math
 \boxed{
 \begin{array}{c}
-\text{WD-T16}\\
+\text{WD-T16 / fixed selected negative persistence}\\
 \downarrow\\
-\text{WD-T19}\\
-\downarrow\\
-\text{WD-T07}\\
+\text{WD-T07 / selected-to-full sign transfer}\\
 \downarrow\\
 \text{WD-T26}\to\text{WD-T27}\\
 \downarrow\\
-\text{WD-T30}+\text{WD-T31}\\
+\text{WD-T31 / far-tail control}\\
 \downarrow\\
-\text{WD-T32}\\
+\text{WD-T32 / near completed-}\Xi\text{ representation}\\
 \downarrow\\
-\text{WD-T33}\\
+\text{WD-T33 / co-adaptation guard}\\
 \downarrow\\
 \boxed{\text{WD-T37}}
 \end{array}
 }
 ```
+
+WD-T30 can supply a selected-preserving multiplier for the scalarization step but is not a premise of the far-tail estimate itself. WD-T19 supplies the stronger universal representation-cost conclusion only when the common-carrier hypotheses required by that theorem are additionally available; WD-T37 otherwise uses the direct selected-amplitude normalization recorded in its canonical source.
 
 The downstream interface is
 
