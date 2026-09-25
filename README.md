@@ -54,7 +54,7 @@ boundary is deliberately before RH closure.
 
 Within H1-P4, source pinning, the internal proof audit, the composite
 morphology audit, and the examples/sharpness audit are complete. The current formalization cursor is
-**LEAN-H1-P1 / WD-X05 — moving sectors can lose every persistent ray**. Stable public theorem IDs and the
+**LEAN-H1-P1 / WD-X06 — positive-coordinate mass loss strengthens criticality to negativity**. Stable public theorem IDs and the
 audit surfaces are canonical in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
 [Dependency Audit](docs/DEPENDENCY_AUDIT.md),
