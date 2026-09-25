@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T36 | WeilDefect.positiveSobolevFrequencyWeight + WeilDefect.logarithmicFourierWeight_isBigO_log + WeilDefect.logarithmicFourierWeight_isLittleO_positiveSobolev + WeilDefect.positiveSobolevFrequencyWeight_not_isBigO_logarithmic + WeilDefect.wd_t36_no_uniform_positive_sobolev_coercivity_of_witness + WeilDefect.wd_t36_no_positive_sobolev_bootstrap + WeilDefect.finitePrimeTrigCorrection + WeilDefect.finitePrimeTrigBound + WeilDefect.abs_finitePrimeTrigCorrection_le + WeilDefect.finitePrimeTrigCorrection_isBigO_logarithmic + WeilDefect.logarithmicPlusFinitePrimeCorrection_isBigO + WeilDefect.wd_t36_finite_prime_translations_add_no_smoothing | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T35 | WeilDefect.logarithmicFourierWeight + WeilDefect.one_le_logarithmicFourierWeight + WeilDefect.logarithmicFourierEnergy + WeilDefect.spectralMass + WeilDefect.shiftedCompactWeilForm + WeilDefect.wd_t35_shifted_form_logarithmic_order + WeilDefect.wd_t35_compact_weil_logarithmic_form_order | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T34 | WeilDefect.activePrimePowers + WeilDefect.wd_t34_active_prime_powers_finite + WeilDefect.activePrimePowerFinset + WeilDefect.activePrimeTranslationShifts + WeilDefect.wd_t34_active_prime_translation_shifts_finite + WeilDefect.translateBy + WeilDefect.symmetricPrimeTranslation + WeilDefect.compactPrimeTranslationSum + WeilDefect.wd_t34_finite_prime_power_translations + WeilDefect.primePowerThreshold + WeilDefect.primePowerThreshold_subsingleton | LEAN-CERTIFIED |
 | WD-T32 | WeilDefect.completedResponseLift + WeilDefect.iteratedDeriv_centered_power + WeilDefect.iteratedDeriv_centered_power_mul + WeilDefect.wd_t32_complementary_next_jet_identity + WeilDefect.nearComplementaryResponse + WeilDefect.weightedNearNextJetField + WeilDefect.wd_t32_weighted_near_next_jet_representation | LEAN-CERTIFIED |
@@ -3613,10 +3614,149 @@ The final run passed pinned dependency resolution, mathlib cache retrieval,
 direct Lake build of \(\texttt{WeilDefect.Arithmetic.LogarithmicForm}\),
 rebuilding WD-T34, and unfinished-proof/project-axiom rejection.
 
-WD-T35 is therefore closed. The next unfinished sequential theorem cursor is:
+WD-T35 is therefore closed.
+
+## WD-T36 certificate evidence
+
+Stable ID:
 
 \[
 \boxed{
-\texttt{WD-T36 / ZW2-T8 — NO UNIFORM POSITIVE-SOBOLEV COERCIVE BOOTSTRAP}
+\text{WD-T36: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.positiveSobolevFrequencyWeight;
+- WeilDefect.logarithmicFourierWeight_isBigO_log;
+- WeilDefect.logarithmicFourierWeight_isLittleO_positiveSobolev;
+- WeilDefect.positiveSobolevFrequencyWeight_not_isBigO_logarithmic;
+- WeilDefect.wd_t36_no_uniform_positive_sobolev_coercivity_of_witness;
+- WeilDefect.wd_t36_no_positive_sobolev_bootstrap;
+- WeilDefect.finitePrimeTrigCorrection;
+- WeilDefect.finitePrimeTrigBound;
+- WeilDefect.finitePrimeTrigBound_nonneg;
+- WeilDefect.abs_finitePrimeTrigCorrection_le;
+- WeilDefect.finitePrimeTrigCorrection_isBigO_logarithmic;
+- WeilDefect.logarithmicPlusFinitePrimeCorrection_isBigO;
+- WeilDefect.wd_t36_finite_prime_translations_add_no_smoothing.
+
+For every \(\varepsilon>0\), Lean certifies the asymptotic separation
+
+\[
+\log(e+|N|)
+=
+o\!\left(N^{2\varepsilon}\right),
+\]
+
+in the precise Landau sense needed for the squared positive-Sobolev frequency
+weight. Consequently,
+
+\[
+N^{2\varepsilon}
+\not=
+O\!\left(\log(e+|N|)\right).
+\]
+
+The witness-transfer theorem then proves that any fixed-support oscillatory
+family satisfying the canonical growth inputs
+
+\[
+\text{shifted Weil-form energy}
+=
+O(\log(e+N))
+\]
+
+and
+
+\[
+N^{2\varepsilon}
+=
+O(\text{Sobolev energy})
+\]
+
+cannot obey a uniform positive-Sobolev coercive estimate.
+
+The concrete compact-support construction
+\(f_N(x)=\phi(x)\cos(Nx)\), together with its Fourier concentration
+asymptotics, is not separately rebuilt in the current Lean corpus. Those
+standard witness asymptotics are therefore the explicit premise represented
+by the transfer theorem, which is why WD-T36 receives the
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE label rather than an unconditional
+physical-space certification.
+
+The finite-arithmetic clause is kernel-checked internally. For every fixed
+WD-T34 active prime set and coefficient family, Lean defines the finite cosine
+correction
+
+\[
+P_c(t)
+=
+\sum_{n\in S_c}
+a_n\cos(t\log n)
+\]
+
+and proves
+
+\[
+|P_c(t)|
+\le
+\sum_{n\in S_c}|a_n|.
+\]
+
+Hence
+
+\[
+P_c
+=
+O\!\left(\log(e+|t|)\right)
+\]
+
+and even
+
+\[
+\log(e+|t|)+P_c(t)
+=
+O\!\left(\log(e+|t|)\right).
+\]
+
+Thus the finitely many prime translations do not raise the principal order and
+cannot repair the positive-Sobolev mismatch.
+
+The core asymptotic obstruction first passed in CI run:
+
+\[
+\boxed{\texttt{36176761127}}.
+\]
+
+The completed WD-T36 target, including the finite-prime order-zero clause,
+passed in:
+
+\[
+\boxed{\texttt{36177620078}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{ad575eded95f8b50e05aca512611f4f6db9cc190}}.
+\]
+
+The final WD-T36 source blob is:
+
+\[
+\texttt{57153cd26db57d683b5603913e9c1ace42ca8035}.
+\]
+
+The final run passed pinned dependency resolution, mathlib cache retrieval,
+direct Lake build of \(\texttt{WeilDefect.Arithmetic.NoSobolevBootstrap}\),
+the WD-T34/WD-T35 dependencies, and unfinished-proof/project-axiom rejection.
+
+WD-T36 is therefore closed. The next unfinished sequential theorem cursor is:
+
+\[
+\boxed{
+\texttt{WD-T37 / P3-N1…P3-N7 — FIXED-PACKET PERSISTENT NEGATIVE DEFECT MORPHOLOGY, STOPPING AT AZ-NEXTJET-LOC}
 }
 \]
