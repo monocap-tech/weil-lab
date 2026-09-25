@@ -196,10 +196,15 @@ noncomputable def farShellResponse
 /-- The logarithmic tail kernel sampled on natural shells is summable. -/
 theorem logarithmicTailKernel_summable_nat :
     Summable (fun n : ℕ => logarithmicTailKernel (n : ℝ)) := by
-  exact logarithmicTailKernel_antitoneOn.summable_of_integrableOn_Ioi
+  have hanti :
+      AntitoneOn logarithmicTailKernel (Ici ((1 : ℕ) : ℝ)) := by
+    simpa using logarithmicTailKernel_antitoneOn
+  exact hanti.summable_of_integrableOn_Ioi
     (N := 1)
     (logarithmicTailKernel_integrableOn_Ioi le_rfl)
-    (fun x hx => logarithmicTailKernel_nonneg hx.le)
+    (fun x hx => logarithmicTailKernel_nonneg (by
+      have hx' : (1 : ℝ) < x := by simpa only [mem_Ioi] using hx
+      exact hx'.le))
 
 /-- Every natural shift of the logarithmic shell kernel remains summable. -/
 theorem logarithmicTailKernel_shift_summable
@@ -251,7 +256,6 @@ theorem farShellResponse_norm_le_logarithmic_kernel
     _ = (A * C) * logarithmicTailKernel x := by
       unfold logarithmicTailKernel
       field_simp [hx.ne']
-      ring
 
 /--
 WD-T31 shell aggregation: logarithmic zero counting combined with an
@@ -265,7 +269,7 @@ theorem wd_t31_shell_aggregation
     (hCount : ZetaLogShellCountData count C)
     (hResponse : FarShellResponseData count response A)
     (R : ℕ) (hR : 1 ≤ R) :
-    ‖∑' k : ℕ, farShellResponse response (k + R + 1)‖
+    ‖∑' k : ℕ, farShellResponse response (k + R)‖
       ≤
     (A * C) * ((Real.log R + 2) / R) := by
   have hAC : 0 ≤ A * C :=
@@ -285,7 +289,7 @@ theorem wd_t31_shell_aggregation
     hkernel.mul_left (A * C)
   have hpoint :
       ∀ k : ℕ,
-        ‖farShellResponse response (k + R + 1)‖
+        ‖farShellResponse response (k + R)‖
           ≤
         (A * C) *
           logarithmicTailKernel ((k + R + 1 : ℕ) : ℝ) := by
@@ -294,7 +298,7 @@ theorem wd_t31_shell_aggregation
       farShellResponse_norm_le_logarithmic_kernel
         response A C hCount hResponse (k + R + 1)
   calc
-    ‖∑' k : ℕ, farShellResponse response (k + R + 1)‖
+    ‖∑' k : ℕ, farShellResponse response (k + R)‖
         ≤
       ∑' k : ℕ,
         (A * C) *
