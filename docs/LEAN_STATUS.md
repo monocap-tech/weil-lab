@@ -6,10 +6,19 @@ This file records formal verification separately from mathematical standing and 
 
 - **LEAN-NOT-ATTEMPTED** — not yet entered into the formalization queue.
 - **LEAN-IN-PROGRESS** — a Lean declaration or infrastructure exists but has not yet passed the pinned CI build.
-- **LEAN-CERTIFIED** — kernel-checked under the pinned toolchain with no project \`sorry\`, \`admit\`, or \`axiom\`.
+- **LEAN-CERTIFIED** — kernel-checked under the pinned toolchain with no project `sorry`, `admit`, or `axiom`.
 - **LEAN-CERTIFIED-FROM-IMPORTED-PREMISE** — Lean verifies the downstream deduction from an explicit external premise, but not the external theorem itself.
 - **LEAN-BLOCKED** — direct formalization is exhausted for the current pass and an exact missing formal dependency is recorded.
 - **SCOPE-ONLY** — jurisdiction rule rather than a theorem.
+
+## Current control state
+
+- **Formalization track:** LEAN-H1 active.
+- **Active phase:** LEAN-H1-P1 — algebraic and finite-dimensional core.
+- **Active cursor:** WD-X02 — critical screening without an attained neutral vector.
+- **Public packaging:** H1-P5 paused until LEAN-H1 exhaustion.
+
+This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
 
 ## Declaration map
 
@@ -55,38 +64,41 @@ This file records formal verification separately from mathematical standing and 
 | WD-T33 | WeilDefect.wd_t33_adaptive_cocancellation | LEAN-CERTIFIED |
 | WD-T30 | WeilDefect.wd_t30_two_mode_kernel_combination + WeilDefect.wd_t30_zero_functional_preserves_every_mode | LEAN-CERTIFIED |
 | WD-X01 | WeilDefect.wd_x01_partial_sum + WeilDefect.wd_x01_finite_defect_negative + WeilDefect.wd_x01_finite_defect_formula + WeilDefect.wd_x01_defect_tendsto_zero | LEAN-CERTIFIED |
-| WD-X03 | \`WeilDefect.wd_x03_individual_not_compositional\` | LEAN-IN-PROGRESS |
-| WD-X04 | \`WeilDefect.wd_x04_shorted_covariance_identity\` | LEAN-IN-PROGRESS |
+| WD-X02 | WeilDefect.wd_x02_operator_norm_eq_one + WeilDefect.wd_x02_strict_norm_loss + WeilDefect.wd_x02_no_nonzero_norm_attainer + WeilDefect.wd_x02_critical_nonattainment | LEAN-IN-PROGRESS |
+| WD-X03 | `WeilDefect.wd_x03_individual_not_compositional` | LEAN-CERTIFIED |
+| WD-X04 | `WeilDefect.wd_x04_shorted_covariance_identity` | LEAN-CERTIFIED |
+| WD-X05 | — | LEAN-NOT-ATTEMPTED |
+| WD-X06 | — | LEAN-NOT-ATTEMPTED |
 | WD-X07 | WeilDefect.wd_x07_response_identity + WeilDefect.wd_x07_real_response_formula + WeilDefect.wd_x07_scaled_response_tendsto_neg_one | LEAN-CERTIFIED |
 
-The statuses above become LEAN-CERTIFIED only after the pinned CI build succeeds.
+A `LEAN-IN-PROGRESS` entry becomes `LEAN-CERTIFIED` only after the pinned CI build succeeds. `LEAN-CERTIFIED` entries in the table already have certificate evidence recorded below.
 
 ## Current formalization cursor
 
-\[
+```math
 \boxed{
 \texttt{WD-X02 / CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}.
 }
-\]
+```
 
 
 ## First certificate evidence
 
 The first stable-ID certifications were built at Lean commit:
 
-\[
+```math
 \boxed{
 \texttt{c125114e2dd39fa3907f8690ca39d9c899468caf}.
 }
-\]
+```
 
 GitHub Actions run:
 
-\[
+```math
 \boxed{
 \texttt{35949414095}.
 }
-\]
+```
 
 The run completed successfully with all of:
 
@@ -97,15 +109,15 @@ The run completed successfully with all of:
 
 Thus WD-X03 and WD-X04 satisfy the repository's LEAN-CERTIFIED rule.
 
-WD-T26 and WD-X07 remain LEAN-IN-PROGRESS because their current declarations certify only algebraic cores, not yet the complete stable theorem/example statements.
+At this early checkpoint, WD-T26 and WD-X07 still remained LEAN-IN-PROGRESS because their declarations covered only algebraic cores. Both were promoted by later certificate runs recorded below.
 
 ## Historical phase cursor
 
-\[
+```math
 \boxed{
 \texttt{LEAN-H1-P1 / ALGEBRAIC AND FINITE-DIMENSIONAL CORE}.
 }
-\]
+```
 
 This records the earlier phase checkpoint and is not the active cursor.
 
@@ -114,11 +126,11 @@ This records the earlier phase checkpoint and is not the active cursor.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-X01: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -130,25 +142,25 @@ Formal declarations:
 
 The dedicated theorem CI checked only:
 
-\[
+```math
 \texttt{WeilDefect/Examples/SpectralScreening.lean}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{
 \texttt{35952789867}
 }
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{
 \texttt{6ef0dffba1a8732d554b15ee906c64fe60bc63c7}.
 }
-\]
+```
 
 The run passed:
 
@@ -164,11 +176,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-X07: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -181,23 +193,23 @@ sharpness witness with nonzero inverse-square leading coefficient.
 
 The current theorem file blob
 
-\[
+```math
 \texttt{83196783b21e40eee21ca74c12b3b8094c2af391}
-\]
+```
 
 is identical to the blob checked successfully by GitHub Actions run
 
-\[
+```math
 \boxed{
 \texttt{35951096357}.
 }
-\]
+```
 
 That run checked repository commit
 
-\[
+```math
 \texttt{e9f158d3c8fb5b85494d08931d62cddfc8d4a534}
-\]
+```
 
 under the pinned Lean 4.34.0 / mathlib v4.34.0 environment and passed the
 unfinished-proof/project-axiom gate.
@@ -213,11 +225,11 @@ No other stable theorem ID is promoted by this certificate.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T30: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -232,36 +244,36 @@ given a complex-linear selected-response functional \(C\) and two multiplier
 modes \(\psi_1,\psi_2\) whose selected responses are not both zero, Lean
 constructs a nontrivial coefficient pair \((\beta_1,\beta_2)\) with
 
-\[
+```math
 C(\beta_1\psi_1+\beta_2\psi_2)=0.
-\]
+```
 
 The identically-zero functional branch is also formalized: every mode is
 selected-preserving.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Arithmetic.Scalarization}
-\]
+```
 
 through Lake.
 
 Certificate run:
 
-\[
+```math
 \boxed{
 \texttt{35953990661}
 }
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{
 \texttt{6836f64a22544a2bd51daeb97d97bf824d339def}.
 }
-\]
+```
 
 The run passed:
 
@@ -277,11 +289,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T33: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declaration:
 
@@ -289,13 +301,13 @@ Formal declaration:
 
 The certificate formalizes the exact cutoffwise algebraic implication:
 
-\[
+```math
 N+F=P+A,
 \qquad
 N=A
 \quad\Longrightarrow\quad
 P=F.
-\]
+```
 
 This is the complete algebraic content of the audited WD-T33 co-adaptation theorem.
 The analytic interpretation of \(N,F,P,A\) belongs to the surrounding explicit-formula
@@ -303,23 +315,23 @@ setup and is not assumed by the Lean proof.
 
 The current theorem file blob
 
-\[
+```math
 \texttt{d01f92d725b9ad412130424b74bea9efadcda1e1}
-\]
+```
 
 is identical to the blob included in successful full-library GitHub Actions run
 
-\[
+```math
 \boxed{
 \texttt{35951096357}.
 }
-\]
+```
 
 That run checked commit
 
-\[
+```math
 \texttt{e9f158d3c8fb5b85494d08931d62cddfc8d4a534}
-\]
+```
 
 with:
 
@@ -339,11 +351,11 @@ No other stable theorem ID is promoted by this certificate.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T01: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -369,41 +381,41 @@ formal finite-rank-spectrum version of equality of the supremum negative indices
 
 The certificate also proves:
 
-\[
+```math
 [E^*h,E^*h]_J
 =
 \langle Dh,h\rangle,
-\]
+```
 
 in the project coefficient/operator encoding, and
 
-\[
+```math
 \mathcal A\text{ nonnegative}
 \iff
 D\text{ nonnegative}.
-\]
+```
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.DefectIndex}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{
 \texttt{35959085940}
 }
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{
 \texttt{79218489b0a3cdeacc5ed7abe44565ee45fffca5}.
 }
-\]
+```
 
 The run passed:
 
@@ -419,11 +431,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T02: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -436,9 +448,9 @@ Formal declarations:
 
 The imported theorem is represented explicitly by the proposition-valued structure
 
-\[
+```math
 \texttt{WeilDefect.WDT02.DouglasUnitData}.
-\]
+```
 
 It supplies exactly the Douglas unit-majorization input:
 
@@ -449,7 +461,7 @@ It is passed as a theorem premise. It is not declared as a project axiom.
 
 Lean then verifies the full Horizon-1 convention transfer:
 
-\[
+```math
 \mathcal A\text{ nonnegative}
 \iff
 D\succeq0
@@ -457,7 +469,7 @@ D\succeq0
 S_-S_-^*\preceq S_+S_+^*
 \iff
 \exists X,\ \|X\|\le1,\ S_-=-S_+X,
-\]
+```
 
 where covariance order is encoded by its quadratic-form inequality.
 
@@ -470,25 +482,25 @@ Accordingly this theorem must not be reported as a native LEAN-CERTIFIED result.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.Douglas}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{
 \texttt{35960549233}
 }
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{
 \texttt{5dca4d98b7062e3676399b34dfc89b383bfe1662}.
 }
-\]
+```
 
 The run passed:
 
@@ -504,11 +516,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T03: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -529,11 +541,11 @@ identity, and defect factorization.
 
 The coefficient direct-sum inner form is represented explicitly as
 
-\[
+```math
 \langle(a,v),(x,u)\rangle_\oplus
 =
 \langle a,x\rangle+\langle v,u\rangle,
-\]
+```
 
 so the formalization does not confuse Lean's ordinary product Banach norm with
 the Hilbert direct-sum norm.
@@ -542,15 +554,15 @@ Dedicated theorem CI built WeilDefect.Screening.GraphNormalForm.
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{35962199281}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{570dcb25de1e728bb2b135363e0b0d1ae735b5e5}}.
-\]
+```
 
 The run passed the single-module Lake build and unfinished-proof/project-axiom
 gate. The Douglas source theorem itself remains unformalized.
@@ -562,11 +574,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T04: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -596,27 +608,27 @@ positive when no nonzero adjoint vector attains norm one.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.Taxonomy}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{35965367830}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{fe4ab88bbed7e5a6b1091587569ccb7713522960}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{f86f72692fb4465827e4ec9f374a5a3c64f3d22a}.
-\]
+```
 
 The run passed:
 
@@ -632,11 +644,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T05: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -653,9 +665,9 @@ Formal declarations:
 Lean verifies natively that the one-dimensional synthesis map
 \(\alpha\mapsto\alpha g\) has covariance \(g\otimes g\), hence
 
-\[
+```math
 D=S_+S_+^*-g\otimes g.
-\]
+```
 
 It also verifies internally that a signed contractive map
 \(X:\mathbb C\to K_+\) is equivalent to a single coefficient vector
@@ -665,36 +677,36 @@ It also verifies internally that a signed contractive map
 The covariance-majorization/positivity-to-factorization step is supplied by
 the explicit proposition-valued Douglas premise
 
-\[
+```math
 \texttt{WeilDefect.WDT02.DouglasUnitData}.
-\]
+```
 
 Therefore the complete stable theorem is reported as
 LEAN-CERTIFIED-FROM-IMPORTED-PREMISE rather than native LEAN-CERTIFIED.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.RankOne}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{35966956166}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{ef3853ef4a3892662fa59761685dfe68b1f82844}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{2c37aaf3546b49cbab8be2c58ee954fd6989a965}.
-\]
+```
 
 The run passed:
 
@@ -710,11 +722,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T06: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -737,28 +749,28 @@ convergence to the identity.
 
 Lean then verifies internally that
 
-\[
+```math
 D_N=S_+P_NS_+^*-S_-S_-^*
-\]
+```
 
 has quadratic form
 
-\[
+```math
 \|P_NS_+^*h\|^2-\|S_-^*h\|^2,
-\]
+```
 
 that the projected positive norms are nondecreasing under the nested
 contractive projections, and hence
 
-\[
+```math
 D_N\preceq D_{N+1}\preceq D.
-\]
+```
 
 It also proves strong pointwise operator convergence
 
-\[
+```math
 D_Nh\to Dh,
-\]
+```
 
 and pointwise convergence of the corresponding quadratic forms.
 
@@ -772,27 +784,27 @@ No imported theorem premise is used by WD-T06.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.MonotoneScreening}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{35967932548}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{6024cce8bf4f152ca21a545b93cb467e7cdadb31}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{b4424d28e14466275f593e58683170d9e952b134}.
-\]
+```
 
 The run passed:
 
@@ -808,11 +820,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T07: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -826,17 +838,17 @@ Formal declarations:
 
 Lean verifies the exact quadratic identity
 
-\[
+```math
 q_{\rm full}(h)
 =
 q_M(h)-\|S_B^*h\|^2,
-\]
+```
 
 and therefore the pointwise form order
 
-\[
+```math
 q_{\rm full}(h)\le q_M(h).
-\]
+```
 
 It certifies the negative-index custody statement in finite-rank-spectrum form:
 for every \(k\), any \(k\)-dimensional negative witness for the selected
@@ -858,27 +870,27 @@ the identity map; this was repaired explicitly using mathlib's
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.BackgroundCustody}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{35968741697}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{48f20dfa63e5b36bd5786a0fc9fe23db9e63e21a}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{8a0acaef36c3c10df5f0ec6d7a692db1b420f32a}.
-\]
+```
 
 The run passed:
 
@@ -894,11 +906,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T08: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -913,47 +925,47 @@ Formal declarations:
 For the selected sector, Lean proves that any k-dimensional negative witness
 forces the composed adjoint map
 
-\[
+```math
 S_M^*\circ T : \mathbb C^k \to M
-\]
+```
 
 to be injective.  Finite-dimensional rank comparison therefore gives
 
-\[
+```math
 k\le \dim M.
-\]
+```
 
 This is the finite-rank-spectrum form of
 
-\[
+```math
 \operatorname{ind}_{-}(D_M)\le \dim M.
-\]
+```
 
 For the background correction, given any k-dimensional full negative witness
 T, Lean forms the canonical coordinate kernel
 
-\[
+```math
 \ker(S_B^*\circ T).
-\]
+```
 
 Rank-nullity and the finite-dimensional range bound give
 
-\[
+```math
 k-\dim B
 \le
 \dim\ker(S_B^*\circ T).
-\]
+```
 
 On this kernel the background term vanishes identically, so the full and
 selected quadratic forms agree, and Lean proves the selected form is strictly
 negative on the unit sphere of that kernel.  This is exactly the
 finite-dimensional kernel-slice argument underlying
 
-\[
+```math
 \operatorname{ind}_{-}(D_{\rm full})
 \le
 \operatorname{ind}_{-}(D_M)+\dim B.
-\]
+```
 
 The stable theorem is therefore certified in the same finite-negative-rank /
 negative-subspace encoding used by the earlier index certificates.
@@ -967,27 +979,27 @@ statement or mathematical hypothesis changed.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.FiniteIndexCap}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36007743473}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{c2b318997f2aaa9ca756ae66f9149ba9ac34956a}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{9c61af90ab1374f65df446c558790a8b7f4dff27}.
-\]
+```
 
 The run passed:
 
@@ -1003,11 +1015,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T09: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -1023,24 +1035,24 @@ Formal declarations:
 
 The certificate is stated on the reduced positive carrier, encoded by
 
-\[
+```math
 \ker S_+=0,
-\]
+```
 
 which is the abstract theorem's \((\ker S_+)^\perp\) target treated as its
 own Hilbert carrier.
 
 Under exact signed screening factorizations
 
-\[
+```math
 S_M=-S_+X_M,
 \qquad
 S_B=-S_+X_B,
-\]
+```
 
 Lean verifies the operator identity
 
-\[
+```math
 D_{\rm full}
 =
 S_+
@@ -1048,29 +1060,29 @@ S_+
 I-X_MX_M^*-X_BX_B^*
 \right)
 S_+^*.
-\]
+```
 
 It also proves natively that full nonnegativity is equivalent to the shared
 quadratic budget
 
-\[
+```math
 \|X_M^*a\|^2+\|X_B^*a\|^2
 \le
 \|a\|^2
 \qquad
 \forall a.
-\]
+```
 
 For the reverse implication from full physical nonnegativity to the global
 coefficient-space budget, Lean uses
 
-\[
+```math
 \overline{\operatorname{Ran}S_+^*}
 =
 (\ker S_+)^\perp
 =
 K_+,
-\]
+```
 
 and closure of the budget inequality. Thus no Douglas factorization theorem
 premise is consumed by the WD-T09 certificate.
@@ -1090,27 +1102,27 @@ mathematical hypotheses.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.BackgroundCustody}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36019357419}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{f08c8f8a5639e1cf9d23b6381ca852c6c2e1007a}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{eec7e8db876cf2504bc3cca349b68bb60d93a626}.
-\]
+```
 
 The run passed:
 
@@ -1126,11 +1138,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T10: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -1150,54 +1162,54 @@ Formal declarations include:
 
 Assuming an exact contractive background screen
 
-\[
+```math
 S_B=-S_+X_B,
 \qquad
 \|X_B\|\le1,
-\]
+```
 
 Lean verifies natively that
 
-\[
+```math
 R_B=I-X_BX_B^*
-\]
+```
 
 is positive.  The canonical square root is constructed by mathlib's continuous
 functional calculus,
 
-\[
+```math
 R_B^{1/2}:=\operatorname{CFC.sqrt}(R_B),
-\]
+```
 
 and Lean checks both self-adjointness and
 
-\[
+```math
 R_B^{1/2}R_B^{1/2}=R_B.
-\]
+```
 
 For
 
-\[
+```math
 S_{\rm eff}=S_+R_B^{1/2},
-\]
+```
 
 Lean then proves internally
 
-\[
+```math
 S_{\rm eff}S_{\rm eff}^*
 =
 S_+R_BS_+^*
 =
 S_+S_+^*-S_BS_B^*,
-\]
+```
 
 hence
 
-\[
+```math
 D_{\rm full}
 =
 S_{\rm eff}S_{\rm eff}^*-S_MS_M^*.
-\]
+```
 
 The corresponding scalar quadratic forms are identified exactly, so full
 nonnegativity is reduced to physical nonnegativity of the effective
@@ -1206,17 +1218,17 @@ two-channel defect.
 The final screening-existence clause consumes the explicit proposition-valued
 premise
 
-\[
+```math
 \texttt{WeilDefect.WDT02.DouglasUnitData\ S_M\ S_eff}.
-\]
+```
 
 Downstream from that premise, Lean verifies
 
-\[
+```math
 D_{\rm full}\succeq0
 \iff
 \exists Y, \|Y\|\le1,\quad S_M=-S_{\rm eff}Y.
-\]
+```
 
 The CFC square-root theorems are ordinary kernel-checked mathlib library
 results and are not an imported project theorem premise.  The only imported
@@ -1225,27 +1237,27 @@ interface already isolated in WD-T02.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.ResidualBudget}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36021712105}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{1e5b881fd412ce88de62564c57637702f16858c8}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{1ffb6b2a80620b266798d40e68fe3329dc2cfb78}.
-\]
+```
 
 The run passed:
 
@@ -1266,11 +1278,11 @@ No other stable theorem ID is promoted by this run.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T11: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -1298,27 +1310,27 @@ No imported project theorem premise is consumed by WD-T11.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.FiniteSectorInertia}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36032799794}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{44a2634f87604dc7d8d82ec36db8ba379e1b64aa}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{5404514d874c1cdc710045cab7819601d0a6994f}.
-\]
+```
 
 The run passed:
 
@@ -1332,22 +1344,22 @@ statement or mathematical hypothesis was weakened.
 
 Next theorem cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T12 / WD-B6 — SEQUENTIAL ELIMINATION}
 }
-\]
+```
 
 
 ## WD-T12 certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T12: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -1361,19 +1373,19 @@ residual-factorization hypothesis. After the first contractive screen, the
 second background is required to factor through the first effective positive
 synthesis. Lean verifies that the twice-consumed covariance is both
 
-\[
+```math
 S_+
 \left(
 R_1-R_1^{1/2}Y_2Y_2^*R_1^{1/2}
 \right)
 S_+^*
-\]
+```
 
 and
 
-\[
+```math
 S_1(I-Y_2Y_2^*)S_1^*.
-\]
+```
 
 No imported project theorem premise is consumed by WD-T12. The proof reuses
 the native algebraic WD-T10 residual-budget lemmas and does not invoke a
@@ -1381,27 +1393,27 @@ Douglas premise.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.SequentialElimination}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36057422878}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{cbbaf45442ec5f6cae5cb4e639882a3f2e2c6304}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{482eee655471c74e6e87733b3441b2bd26990ab9}.
-\]
+```
 
 The run passed:
 
@@ -1414,11 +1426,11 @@ WD-T12 compiled successfully on the first formal pass.
 
 Next theorem cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T13 / WD-B7 — DIRECT COMPRESSION VERSUS SHORTED COVARIANCE}
 }
-\]
+```
 
 The audited WD-T13 hypothesis is the corrected uniformly positive setting
 \(K\succeq mI\), which guarantees bounded invertibility of the complementary
@@ -1429,18 +1441,18 @@ block.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T13: LEAN-CERTIFIED}.
 }
-\]
+```
 
 The certificate uses the corrected uniformly positive hypothesis
 
-\[
+```math
 K\succeq mI,
 \qquad m>0,
-\]
+```
 
 for the self-adjoint block operator. The Hilbert direct-sum lower bound is
 encoded explicitly in `WeilDefect.WDT13.BlockUniformlyPositive`.
@@ -1461,15 +1473,15 @@ Formal declarations include:
 Lean derives bounded invertibility of the complementary block from the uniform
 lower bound; it is not assumed. For
 
-\[
+```math
 H_W=A-BC^{-1}B^*,
-\]
+```
 
 Lean proves
 
-\[
+```math
 H_W\preceq A
-\]
+```
 
 and a uniform lower bound on \(H_W\), hence bounded invertibility of
 \(H_W\).
@@ -1477,17 +1489,17 @@ and a uniform lower bound on \(H_W\), hence bounded invertibility of
 The inverse-compression identity is kernel-checked in its equivalent block
 solution form: every solution of
 
-\[
+```math
 Ax+By=w,
 \qquad
 B^*x+Cy=0
-\]
+```
 
 has
 
-\[
+```math
 x=H_W^{-1}w,
-\]
+```
 
 and such a solution is constructed for every \(w\). This is the coordinate
 form of \(P_WK^{-1}|_W=H_W^{-1}\).
@@ -1496,27 +1508,27 @@ No imported project theorem premise is consumed by WD-T13.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.ShortedCovariance}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36059475701}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{b2af38e06332be4d68a57a159fdf4ca547e372cd}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{a0c3ee14272f34dff041601b5abdfaeca7841e8b}.
-\]
+```
 
 The run passed:
 
@@ -1530,22 +1542,22 @@ P4 audit; no theorem statement or mathematical hypothesis was weakened.
 
 Next theorem cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T14 / WD-B8 — FINITE POSITIVE SHADOWS PRESERVE SIGNATURE BUT NOT ADMISSIBILITY}
 }
-\]
+```
 
 
 ## WD-T14 certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T14: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -1558,11 +1570,11 @@ Formal declarations:
 
 For every orthogonal positive-coordinate projection \(P_U\), Lean certifies
 
-\[
+```math
 \|u\|^2-\|P_Ua\|^2
 \ge
 \|u\|^2-\|a\|^2.
-\]
+```
 
 Hence positive truncation preserves, and can only strengthen, a positive
 negative margin.
@@ -1570,11 +1582,11 @@ negative margin.
 For graph vectors \(u=-X^*a\), Lean also proves the exact admissibility
 criterion
 
-\[
+```math
 u=-X^*P_Ua
 \iff
 X^*(a-P_Ua)=0.
-\]
+```
 
 An explicit \(\mathbb C\) counterexample with \(X=2I\), \(a=1\),
 \(u=-2\), and zero positive projection has margin \(3>0\) before and after
@@ -1587,27 +1599,27 @@ No imported project theorem premise is consumed by WD-T14.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Screening.FinitePositiveShadows}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36062388096}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{adcdc167eb274af899a1a53dfb86b76c5bc442ae}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{ed287dfd0dbe7e47cdbb074c0fda64bcd0bc6e41}.
-\]
+```
 
 The run passed:
 
@@ -1621,22 +1633,22 @@ adjoint in the counterexample; no theorem statement or hypothesis changed.
 
 Next theorem cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T15 / WD-C1+WD-C2 — RIGHT-LIMIT PROJECTION CONVERGENCE AND GAP-SPACE DUALITY}
 }
-\]
+```
 
 
 ## WD-T15 certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T15: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -1652,30 +1664,30 @@ Formal declarations include:
 The certificate represents the right-limit analysis space as the
 `ClosedSubmodule` infimum
 
-\[
+```math
 A_{c+}=\bigcap_{t>c}A_t
-\]
+```
 
 and the limiting gap as the closed-submodule supremum
 
-\[
+```math
 G_{c+}
 =
 \overline{\operatorname{span}\bigcup_{t>c}A_t^\perp}.
-\]
+```
 
 Lean proves the gap duality
 
-\[
+```math
 A_{c+}=G_{c+}^{\perp}.
-\]
+```
 
 For every antitone real sequence \(t_n\downarrow c\) from the right and every
 vector \(x\), Lean also proves
 
-\[
+```math
 P_{A_{t_n}}x\to P_{A_{c+}}x.
-\]
+```
 
 The P4 audit records that the sequential formulation suffices for the
 real-parameter strong-limit statement.
@@ -1684,27 +1696,27 @@ No imported project theorem premise is consumed by WD-T15.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Filtration.RightLimit}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36070010269}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{ee1efb86924caa501e0bfaa4ab8a1478736c64d8}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{2df4a12993a7fdad3695deb5e68e7ae526b8ebee}.
-\]
+```
 
 The run passed:
 
@@ -1718,22 +1730,22 @@ mathematical hypothesis was weakened.
 
 Next theorem cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T16 / WD-C3+WD-C5 — FIXED FINITE NEGATIVE-SECTOR PERSISTENCE}
 }
-\]
+```
 
 
 ## WD-T16 certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T16: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -1759,68 +1771,68 @@ coordinate. The assembled weak limit lies in the WD-T15 right-limit space.
 
 For normalized signatures
 
-\[
+```math
 J(a_n,u_n)\to q_*\le0,
-\]
+```
 
 Lean proves
 
-\[
+```math
 \boxed{
 \exists,0\ne y\in A_{c+},
 \qquad
 J(y)\le q_*.
 }
-\]
+```
 
 For a uniform margin \(\kappa>0\),
 
-\[
+```math
 J(a_n,u_n)\le-\kappa,
-\]
+```
 
 Lean proves
 
-\[
+```math
 \boxed{
 \exists,0\ne y\in A_{c+},
 \qquad
 J(y)\le-\kappa.
 }
-\]
+```
 
 If the endpoint \(A_c\) is \(J\)-nonnegative, the produced vector is also
 certified to lie in
 
-\[
+```math
 A_{c+}\setminus A_c.
-\]
+```
 
 No imported project theorem premise is consumed by WD-T16.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Filtration.FiniteNegativeSector}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36078296999}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{6c8bd4b57eb18c583d426c767beca21f06307f69}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{f7f2a50f8183ba1a617ce1cf97855461bbbbda5f}.
-\]
+```
 
 The run passed:
 
@@ -1834,22 +1846,22 @@ the certificate does not merely cover the compactness core.
 
 Next theorem cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T17 / WD-C4 — FIXED-SECTOR CRITICAL DICHOTOMY}
 }
-\]
+```
 
 
 ## WD-T17 certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T17: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -1863,17 +1875,17 @@ Formal declarations include:
 
 For a unit-normalized critical sequence in a fixed finite negative sector,
 
-\[
+```math
 J(y_n)\to0,
-\]
+```
 
 Lean proves
 
-\[
+```math
 \|a_n\|^2\to\frac12,
 \qquad
 \|u_n\|^2\to\frac12.
-\]
+```
 
 After the WD-T16 compactness extraction, the nonzero right-limit vector
 \(y=(a,u)\) satisfies exactly one of two alternatives:
@@ -1890,27 +1902,27 @@ No imported project theorem premise is consumed by WD-T17.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Filtration.CriticalDichotomy}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36081480092}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{ed92f76a62c26ab48f35f7637c07bdf9568dccab}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{7102a25b28f7a8cf72e805f845bad23daf535aa2}.
-\]
+```
 
 The run passed:
 
@@ -1924,22 +1936,22 @@ statement or mathematical hypothesis was weakened.
 
 Next theorem cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T18 / WD-C6 — ENDPOINT-JUMP QUOTIENT BOUNDS NEW RIGHT-LIMIT NEGATIVE INDEX}
 }
-\]
+```
 
 
 ## WD-T18 certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T18: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -1960,49 +1972,49 @@ No imported project theorem premise is consumed by WD-T18.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Filtration.EndpointJump}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36082262379}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{f02683ec35aa1d61ee056512f2a9977e081a7990}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{d7743465cac328c8aa6236fb12942117b8e67a7e}.
-\]
+```
 
 The run passed pinned dependency resolution, mathlib cache retrieval, the
 direct Lake build, and unfinished-proof/project-axiom rejection.
 
 Next theorem cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T19 / WD-C7+WD-C8+WD-C9 — NEW ENDPOINT VECTORS FORCE BOUNDARY AMPLIFICATION / REPRESENTATIVE BLOW-UP}
 }
-\]
+```
 
 
 ## WD-T19 certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T19: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -2026,49 +2038,49 @@ No imported project theorem premise is consumed by WD-T19.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.Filtration.RepresentativeBlowup}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36083158273}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{33f5a187baf7e195c19e179bb3b6b9befb7a0700}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{6645820485d46afe8566e1812de0e301fb290ba2}.
-\]
+```
 
 The run passed pinned dependency resolution, mathlib cache retrieval, the
 direct Lake build, and unfinished-proof/project-axiom rejection.
 
 Next theorem cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T20 / ZW1-T1 — CANONICAL CONJUGATE-PAIR DIAGONALIZATION INTO POSITIVE/NEGATIVE WEIL CHANNELS}
 }
-\]
+```
 
 
 ## WD-T20 certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T20: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -2083,9 +2095,9 @@ are the \(+1\) and \(-1\) eigendirections. The complex-linear
 `pairEigenEquiv` identifies raw pair coefficients with positive/negative
 channel coordinates, in which the involution is exactly
 
-\[
+```math
 (a,b)\mapsto(a,-b).
-\]
+```
 
 The formal source uses unnormalized representatives \((1,1)\) and
 \((1,-1)\); these span the same canonical eigendirections as the normalized
@@ -2098,27 +2110,27 @@ No imported project theorem premise is consumed by WD-T20.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.PairGeometry}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36087496196}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{9b8142168cb5e4a5bd53e4d6e903abec211465d4}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{a15e6eb544f9154836644d1a82a607f10639cbb3}.
-\]
+```
 
 The run passed:
 
@@ -2131,22 +2143,22 @@ The theorem source required no repair during this certification cursor.
 
 Next theorem cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T21 / ZW1-T2 — ONE SIMPLE ZETA QUARTET CONTRIBUTES TWO NEGATIVE PAIR COORDINATES}
 }
-\]
+```
 
 
 ## WD-T21 certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T21: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -2161,23 +2173,23 @@ Formal declarations include:
 
 Under the simple off-critical nondegeneracy assumptions
 
-\[
+```math
 T\ne0,
 \qquad
 \delta\ne0,
-\]
+```
 
 Lean certifies that the Bombieri ordinate coordinates
 
-\[
+```math
 \{T+i\delta,T-i\delta\}
-\]
+```
 
 and
 
-\[
+```math
 \{-T+i\delta,-T-i\delta\}
-\]
+```
 
 are two distinct nonreal complex-conjugate pairs.
 
@@ -2193,27 +2205,27 @@ No imported project theorem premise is consumed by WD-T21.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.PairGeometry}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36088674422}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{e8e1c6b9e1f9f9f566d6398b296d7b30b827ef3d}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{427fbe49617add15010ba812c6140e07a7b9507f}.
-\]
+```
 
 The run passed:
 
@@ -2229,11 +2241,11 @@ mathematical statement was weakened.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T22: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -2247,9 +2259,9 @@ Formal declarations:
 The pinned Bombieri finite-inertia theorem (Theorem 8, p. 213) is represented
 explicitly by the proposition-valued premise
 
-\[
+```math
 \texttt{BombieriFiniteInertiaData}.
-\]
+```
 
 It supplies exactly the imported equality between the finite Weil matrix's
 negative spectral index and the number of distinct nonreal conjugate pairs.
@@ -2259,50 +2271,50 @@ Lean then verifies the packet specialization internally.  Using WD-T21's
 two negative pair coordinates per simple quartet, a packet of \(q\) simple
 disjoint quartets has pair-coordinate cardinality
 
-\[
+```math
 2q.
-\]
+```
 
 Therefore the imported Bombieri equality specializes to
 
-\[
+```math
 \operatorname{ind}_{-}=2q,
-\]
+```
 
 and for the audited two-quartet packet:
 
-\[
+```math
 \boxed{
 \operatorname{ind}_{-}=4.
 }
-\]
+```
 
 The Bombieri source theorem itself has not been reconstructed in Lean, so this
 result must not be reported as a native LEAN-CERTIFIED theorem.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.PairGeometry}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36089403584}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{83914d302ba9201983c5e0b0d4404b727714acbd}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{91bc6efce70e05a3ec1d320ec8ee1e99abc6be3d}.
-\]
+```
 
 The run passed:
 
@@ -2317,11 +2329,11 @@ No stable theorem statement or mathematical hypothesis was weakened.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T23: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -2336,11 +2348,11 @@ Formal declarations:
 The direct coefficient mechanism is proved natively.  For duplicate
 same-frequency coordinates with common physical shape \(g\), Lean verifies
 
-\[
+```math
 \sum_i x_i g
 =
 \left(\sum_i x_i\right)g.
-\]
+```
 
 Hence every zero-sum duplicate coefficient combination is an exact
 synthesis-null direction.
@@ -2348,23 +2360,23 @@ synthesis-null direction.
 The exact nullity count is the imported part.  Bombieri Lemma 10 and its proof
 continuation are represented by the explicit proposition-valued premise
 
-\[
+```math
 \texttt{BombieriMultiplicityNullData}.
-\]
+```
 
 For distinct ordinates of raw multiplicities \(m_j\), it supplies exactly
 
-\[
+```math
 \operatorname{nullity}
 =
 \sum_j (m_j-1).
-\]
+```
 
 For one ordinate of multiplicity \(m\), Lean specializes this to
 
-\[
+```math
 \operatorname{nullity}=m-1
-\]
+```
 
 and proves that a nontrivial multiplicity-null sector occurs exactly when
 \(m>1\).
@@ -2376,27 +2388,27 @@ project axiom.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.PairGeometry}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36089684621}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{a16b63021e91639beb59bfc387946531aa1fdd83}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{853b2de7d7df4a435059d7f5cb3ae0fe89a5baeb}.
-\]
+```
 
 The run passed:
 
@@ -2411,11 +2423,11 @@ No stable theorem statement or mathematical hypothesis was weakened.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T24: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -2429,21 +2441,21 @@ Formal declarations include:
 
 For distinct complex frequencies \(\lambda_i\), Lean certifies that if
 
-\[
+```math
 \sum_i c_i e^{\lambda_i x}=0
-\]
+```
 
 throughout a nonempty real interval, then every coefficient \(c_i\) is zero.
 
 The proof is fully internal.  It chooses an interior point \(x_0\), differentiates
 the local zero relation through orders \(0,\dots,n-1\), and obtains
 
-\[
+```math
 \sum_i
 \bigl(c_i e^{\lambda_i x_0}\bigr)\lambda_i^k
 =
 0.
-\]
+```
 
 Mathlib's Vandermonde nonsingularity theorem then forces all weighted
 coefficients to vanish.  Since the complex exponential is never zero, every
@@ -2454,27 +2466,27 @@ needed.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.FiniteExponentialIndependence}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36093132364}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{79882bdc976581db62bbc783d52f8bb4ac01e214}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{7244cb18dd652c02619f6b56061443e00097df5f}.
-\]
+```
 
 The run passed:
 
@@ -2490,11 +2502,11 @@ ambiguities only; no theorem statement or mathematical hypothesis was weakened.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T25: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -2512,26 +2524,26 @@ Formal declarations include:
 
 Lean represents the Problem-1 differential operator as
 
-\[
+```math
 L=-\frac{d^2}{dx^2}+\frac14.
-\]
+```
 
 For an exponential mode \(e^{\lambda x}\), it certifies
 
-\[
+```math
 L e^{\lambda x}
 =
 \left(\frac14-\lambda^2\right)e^{\lambda x}.
-\]
+```
 
 A Green-preconditioned Problem-1 coordinate is represented as one reciprocal
 particular solution plus arbitrary boundary-homogeneous terms at frequencies
 \(\pm 1/2\).  Lean proves that the two boundary terms are killed by \(L\), and
 that a reciprocal coefficient satisfying
 
-\[
+```math
 q\left(\frac14-\lambda^2\right)=1
-\]
+```
 
 is mapped back to the raw exponential mode.
 
@@ -2548,27 +2560,27 @@ No imported project theorem premise is consumed by WD-T25.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.ProblemOneIndependence}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36093665687}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{ae100c2bfd4fddcc45296f52e0b38d844344477d}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{a799e0931c557a977b8163fc21940defa366fdee}.
-\]
+```
 
 The run passed:
 
@@ -2585,11 +2597,11 @@ or mathematical hypothesis was weakened.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T26: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -2601,21 +2613,21 @@ Formal declarations include:
 
 For a finite list of selected negative pair coefficients
 
-\[
+```math
 (\alpha_1,\dots,\alpha_m),
-\]
+```
 
 the raw residue map is represented as
 
-\[
+```math
 (\alpha_1,-\alpha_1,\dots,\alpha_m,-\alpha_m).
-\]
+```
 
 Lean certifies the zero-moment identity
 
-\[
+```math
 \sum_j v_j=0
-\]
+```
 
 by pairwise antisymmetry.
 
@@ -2633,33 +2645,33 @@ archimedean input is consumed by WD-T26.
 
 Dedicated theorem CI built:
 
-\[
+```math
 \texttt{WeilDefect.PairGeometry}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36095464414}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{a02e9176ca3f6dd071ab9b43226d025efb5f7592}}.
-\]
+```
 
 The certified WD-T26 source commit is:
 
-\[
+```math
 \texttt{61110e7fc77722dbfa0a1459f101d98ae90efff8}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{5361e8384880fcd799fbd62151b65be7a11f3cf8}.
-\]
+```
 
 The run passed:
 
@@ -2674,11 +2686,11 @@ No stable theorem statement or mathematical hypothesis was weakened.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T27: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -2701,7 +2713,7 @@ Formal declarations include:
 For a finite residue vector \(v\) at locations \(\rho_i\), Lean certifies the
 exact Laurent decomposition
 
-\[
+```math
 R_v(z)
 =
 \frac{\sum_i v_i}{z}
@@ -2710,31 +2722,31 @@ R_v(z)
 +
 \sum_i
 \frac{v_i\rho_i^2}{z^2(z-\rho_i)},
-\]
+```
 
 where
 
-\[
+```math
 M_1(v)=\sum_i \rho_i v_i.
-\]
+```
 
 Under the WD-T26 zero-moment condition
 
-\[
+```math
 \sum_i v_i=0,
-\]
+```
 
 the inverse-linear term disappears exactly.
 
 Lean then proves the quantitative far-field bound: whenever
 
-\[
+```math
 2\|\rho_i\|\le \|z\|
-\]
+```
 
 for every selected pole,
 
-\[
+```math
 \left\|
 R_v(z)-\frac{M_1(v)}{z^2}
 \right\|
@@ -2744,7 +2756,7 @@ R_v(z)-\frac{M_1(v)}{z^2}
 }{
 \|z\|^3
 }.
-\]
+```
 
 Thus the precise first-moment refinement is kernel-checked, with no hidden
 uniformity beyond the fixed finite packet.
@@ -2752,45 +2764,45 @@ uniformity beyond the fixed finite packet.
 The same module also certifies the literal Landau statements on the complex
 cobounded filter:
 
-\[
+```math
 R_v(z)-\frac{M_1(v)}{z^2}
 =
 O(\|z\|^{-3}),
-\]
+```
 
 and
 
-\[
+```math
 \boxed{
 R_v(z)=O(\|z\|^{-2}).
 }
-\]
+```
 
 No imported project theorem premise is consumed by WD-T27.
 
 The quantitative core first passed in CI run:
 
-\[
+```math
 \texttt{36096310211}.
-\]
+```
 
 The final certificate including the literal Landau corollaries is:
 
-\[
+```math
 \boxed{\texttt{36097347267}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{3990122ea425e7bb84b6093cd5e1b5a791c11e8c}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{aed1edaa7734adb0a1ede11aac2683053a1345da}.
-\]
+```
 
 The final run passed:
 
@@ -2808,11 +2820,11 @@ hypothesis was weakened.
 
 Stable ID remains:
 
-\[
+```math
 \boxed{
 \text{WD-T28: LEAN-IN-PROGRESS}.
 }
-\]
+```
 
 The Hilbert--Schmidt **criterion layer** is kernel-checked.
 
@@ -2834,40 +2846,40 @@ The pinned Mathlib version does not expose a native Hilbert--Schmidt or
 trace-class operator type.  Accordingly WD-T28 is represented at the standard
 \(\ell^2\)-basis criterion level:
 
-\[
+```math
 \sum_\gamma
 \|E_t e_\gamma\|_{H^{-1}_L}^2
 <
 \infty.
-\]
+```
 
 The zero-count input is explicit.  The Titchmarsh
 \(O(\log T)\) unit-shell estimate is packaged through its elementary weaker
 consequence
 
-\[
+```math
 \#\Gamma_n
 \ll
 (n+1)^{1/2},
-\]
+```
 
 which is sufficient for summability.
 
 The native column estimate is also explicit:
 
-\[
+```math
 \|E_t e_\gamma\|_{H^{-1}_L}^2
 \le
 A(n+1)^{-2}
-\]
+```
 
 for a coordinate in unit shell \(n\).
 
 Lean then verifies internally that one shell contributes at most
 
-\[
+```math
 AC(n+1)^{-3/2},
-\]
+```
 
 and proves summability via the \(p\)-series with exponent \(3/2\).
 The Sigma-type shell decomposition then yields summability over all zero
@@ -2875,35 +2887,35 @@ coordinates.
 
 At the criterion level Lean therefore verifies both:
 
-\[
+```math
 \text{Hilbert--Schmidt basis-square summability},
-\]
+```
 
 and the corresponding covariance trace-sum criterion.
 
 Dedicated criterion CI built:
 
-\[
+```math
 \texttt{WeilDefect.NativeHilbertSchmidt}.
-\]
+```
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36100254156}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{b919ea890dfb83236cdb6ec0de625b5e59fd9e24}}.
-\]
+```
 
 The checked theorem source blob is:
 
-\[
+```math
 \texttt{d94c9020fdd9c3acadf0e143735b21bb12bd8598}.
-\]
+```
 
 The run passed:
 
@@ -2946,91 +2958,91 @@ Additional formal declarations include:
 
 For fixed \(t>0\), the explicit Green column is
 
-\[
+```math
 F_\gamma(x)
 =
 q_\gamma e^{-i\gamma x}
 -q_\gamma e^{-i\gamma t}h_+(x)
 -q_\gamma e^{i\gamma t}h_-(x),
-\]
+```
 
 where
 
-\[
+```math
 q_\gamma
 =
 \left(\frac14+\gamma^2\right)^{-1}
-\]
+```
 
 and \(h_\pm\) are the canonical hyperbolic-sine Dirichlet interpolation
 functions.
 
 Lean certifies
 
-\[
+```math
 F_\gamma(\pm t)=0
-\]
+```
 
 and
 
-\[
+```math
 \left(-\partial_x^2+\frac14\right)F_\gamma
 =
 e^{-i\gamma x}.
-\]
+```
 
 Inside the fixed zeta strip
 
-\[
+```math
 |\Im\gamma|\le\frac12,
-\]
+```
 
 Lean proves the compact-window source and boundary-correction bounds and the
 shell-height reciprocal estimate
 
-\[
+```math
 \|q_\gamma\|
 \le
 (n+1)^{-2}
-\]
+```
 
 whenever the coordinate is assigned to a shell satisfying
 
-\[
+```math
 n+1\le |\Re\gamma|.
-\]
+```
 
 Consequently the Green pairing obeys the explicit bound
 
-\[
+```math
 \left|
 \int_{-t}^{t}
 \overline{e^{-i\gamma x}}\,F_\gamma(x)\,dx
 \right|
 \le
 6t\,e^t\,\|q_\gamma\|,
-\]
+```
 
 which supplies the inverse-square column-energy estimate consumed by the
 already-certified shell-summability theorem.
 
 The direct resolvent target passed in:
 
-\[
+```math
 \boxed{\texttt{36106100832}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{b4f66285b0060afce5af47310e98cbb5fef41cc9}}.
-\]
+```
 
 The checked resolvent source blob is:
 
-\[
+```math
 \texttt{2564a66892ed3c623249d621d54a556bcec8857b}.
-\]
+```
 
 This run passed:
 
@@ -3042,37 +3054,37 @@ This run passed:
 
 The former abstract premise
 
-\[
+```math
 \texttt{NativeProblemOneResolventData}
-\]
+```
 
 is therefore internally realized for the explicit shell data by
 
-\[
+```math
 \texttt{nativeProblemOneResolventData_of_actual}.
-\]
+```
 
 ### Remaining WD-T28 semantic obligation
 
 WD-T28 remains
 
-\[
+```math
 \boxed{\text{LEAN-IN-PROGRESS}}
-\]
+```
 
 for one narrower reason.
 
 The current scalar
 
-\[
+```math
 \texttt{problemOneColumnEnergySq}
-\]
+```
 
 is defined as the norm of the Green pairing.  The mathematical native
 \(H^{-1}_L\) statement additionally identifies the pairing itself with the
 positive Dirichlet energy:
 
-\[
+```math
 \boxed{
 \langle f_\gamma,Gf_\gamma\rangle
 =
@@ -3084,34 +3096,34 @@ positive Dirichlet energy:
 \right)\,dx
 \ge0.
 }
-\]
+```
 
 The next kernel obligation is therefore no longer the resolvent estimate.
 It is only this integration-by-parts positivity/energy identification.
 
 Current formalization cursor:
 
-\[
+```math
 \boxed{
 \texttt{WD-T28 / ENERGY IDENTIFICATION — GREEN PAIRING = POSITIVE }H^{-1}_L\texttt{ ENERGY}
 }
-\]
+```
 
 
 ## WD-T28 final certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T28: LEAN-CERTIFIED}.
 }
-\]
+```
 
 The remaining semantic obligation was the native Green-pairing / positive
 Dirichlet-energy identification. Lean now certifies the chain
 
-\[
+```math
 \langle f_\gamma,Gf_\gamma\rangle
 =
 \int_{-t}^{t}
@@ -3119,7 +3131,7 @@ Dirichlet-energy identification. Lean now certifies the chain
 |F_\gamma'(x)|^2+\frac14|F_\gamma(x)|^2
 \right)\,dx
 \ge 0,
-\]
+```
 
 together with the real/complex cast and the identification of
 `problemOneColumnEnergySq` with the positive Dirichlet energy.
@@ -3144,32 +3156,32 @@ was weakened.
 The final WD-T28 dependency was rebuilt successfully as part of the WD-T29
 certificate run:
 
-\[
+```math
 \boxed{\texttt{36149246351}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{766ddd2297e5d884a532e09379b7c2e6ad82db86}}.
-\]
+```
 
 The final Dirichlet-energy source blob is:
 
-\[
+```math
 \texttt{68c53704d15038b6365a9835d79b7c6d4a3d548b}.
-\]
+```
 
 
 ## WD-T29 certificate evidence
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T29: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations:
 
@@ -3178,20 +3190,20 @@ Formal declarations:
 
 Lean formalizes the exact necessary-condition mechanism. If
 
-\[
+```math
 y=S_{\le G}x_{\le G}+S_{>G}x_{>G},
 \qquad
 \|x_{>G}\|\le 1,
-\]
+```
 
 then
 
-\[
+```math
 \operatorname{dist}
 \bigl(y,\operatorname{Ran}S_{\le G}\bigr)
 \le
 \|S_{>G}\|.
-\]
+```
 
 Any quantitative operator-tail bound
 \(\|S_{>G}\|\le\varepsilon_G\) therefore transfers immediately to the
@@ -3199,21 +3211,21 @@ same finite-head approximation rate.
 
 Certificate run:
 
-\[
+```math
 \boxed{\texttt{36149246351}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{766ddd2297e5d884a532e09379b7c2e6ad82db86}}.
-\]
+```
 
 The WD-T29 source blob is:
 
-\[
+```math
 \texttt{1f0222e44d03a9b23d0ae3900c3f884893f2eaa1}.
-\]
+```
 
 The run passed:
 
@@ -3230,25 +3242,25 @@ WD-T30 is already independently Lean-certified.
 The analytic summation core of WD-T31 is now kernel-checked. Lean certifies the
 nonnegative antitone kernel
 
-\[
+```math
 k(x)=\frac{1+\log x}{x^2},
-\]
+```
 
 its exact improper integral
 
-\[
+```math
 \int_R^\infty k(x)\,dx
 =
 \frac{\log R+2}{R},
-\]
+```
 
 and the discrete shifted-tail estimate
 
-\[
+```math
 \sum_{n\ge R+1} k(n)
 \le
 \frac{\log R+2}{R}.
-\]
+```
 
 Formal declarations include:
 
@@ -3261,21 +3273,21 @@ Formal declarations include:
 
 This subpass passed pinned CI in:
 
-\[
+```math
 \boxed{\texttt{36155524899}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{ddb689c21d9278c05dc792f08b44d7d7e6feed01}}.
-\]
+```
 
 The checked source blob is:
 
-\[
+```math
 \texttt{439db969240a2534e15709c9bf27c998421acb12}.
-\]
+```
 
 The shell aggregation and WD-T27 bridge are now complete.
 
@@ -3283,11 +3295,11 @@ The shell aggregation and WD-T27 bridge are now complete.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T31: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Additional declarations include:
 
@@ -3311,13 +3323,13 @@ complementary zero; a uniformly bounded multiplier preserves that rate; the
 imported logarithmic unit-shell zero-count premise supplies the shell
 multiplicity bound. Lean then proves
 
-\[
+```math
 \left\|
 \sum_{n\ge R}\mathcal S_n
 \right\|
 \le
 AC\,\frac{\log R+2}{R},
-\]
+```
 
 with the constants explicitly assembled from the multiplier bound, selected
 residue moments, and shell-count constant.
@@ -3328,27 +3340,27 @@ as a project axiom.
 
 The generic shell aggregation first passed in CI run:
 
-\[
+```math
 \boxed{\texttt{36159321679}}.
-\]
+```
 
 The final zero-moment bridge and full WD-T31 target passed in:
 
-\[
+```math
 \boxed{\texttt{36160324368}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{2e36689aba0b8825c6ed553ca04849fa6fd3f511}}.
-\]
+```
 
 The final theorem source blob is:
 
-\[
+```math
 \texttt{d0461bbf09d2928f43807abc8e347c36883f231b}.
-\]
+```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
 the dedicated \(\texttt{WeilDefect.Arithmetic.FarTail}\) build, and
@@ -3360,11 +3372,11 @@ WD-T31 is therefore closed.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T32: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -3378,31 +3390,31 @@ Formal declarations include:
 
 For a local multiplicity factorization
 
-\[
+```math
 \Xi(z)=(z-\mu)^m g(z),
 \qquad g(\mu)\ne0,
-\]
+```
 
 Lean proves directly from the pinned iterated-derivative shift and Leibniz
 rules that
 
-\[
+```math
 \Xi^{(m)}(\mu)=m!\,g(\mu),
-\]
+```
 
 and, for the completed lift \(H=\Xi R\),
 
-\[
+```math
 H^{(m)}(\mu)=m!\,g(\mu)R(\mu).
-\]
+```
 
 The nonzero local factor therefore gives the exact quotient identity
 
-\[
+```math
 R(\mu)
 =
 \frac{H^{(m)}(\mu)}{\Xi^{(m)}(\mu)}.
-\]
+```
 
 Lean then substitutes this identity termwise over an arbitrary finite
 complementary packet, certifying the ZW2-T4 weighted near next-jet
@@ -3414,21 +3426,21 @@ the mathematical hypotheses of the theorem.
 
 Dedicated theorem CI passed in:
 
-\[
+```math
 \boxed{\texttt{36167018245}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{c8d35dfef95e7e9989ca07faa5dbd531332c22ff}}.
-\]
+```
 
 The certified theorem source blob is:
 
-\[
+```math
 \texttt{df0d86d7c86f7b6ae8ae142f6a5018bacb65a0b6}.
-\]
+```
 
 The run passed pinned dependency resolution, mathlib cache retrieval, direct
 Lake build of \(\texttt{WeilDefect.Arithmetic.NextJet}\), and
@@ -3440,11 +3452,11 @@ WD-T33 is already independently Lean-certified.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T34: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -3464,9 +3476,9 @@ Formal declarations include:
 Lean first certifies directly that, for every fixed real support radius
 \(c\), the compact-window threshold condition
 
-\[
+```math
 \log n<2c
-\]
+```
 
 selects only finitely many natural prime powers.  The proof exponentiates the
 support inequality and places every active index in one finite natural
@@ -3474,20 +3486,20 @@ interval.
 
 The corresponding physical arithmetic shifts
 
-\[
+```math
 \{\pm\log n:
 n\text{ prime-power active at }c\}
-\]
+```
 
 are therefore a finite set.  The module packages the arithmetic contribution
 as an actual finite sum of scalar-weighted symmetric translations.
 
 The exact threshold set
 
-\[
+```math
 \{n:
 n\text{ prime power},\ \log n=2c\}
-\]
+```
 
 is also certified to be subsingleton, so a fixed support boundary can contain
 at most one natural prime-power threshold event.
@@ -3499,28 +3511,28 @@ inside the Lean module.
 
 The core theorem build first passed in:
 
-\[
+```math
 \boxed{\texttt{36168682600}}.
-\]
+```
 
 After correcting the finite operator helper so its arithmetic coefficient acts
 by scalar multiplication, the final certificate run passed in:
 
-\[
+```math
 \boxed{\texttt{36168986069}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{3bb1f99e923b0b80729144bb2eb8e374c7f15ade}}.
-\]
+```
 
 The final WD-T34 source blob is:
 
-\[
+```math
 \texttt{ed91ac08a670ae1405cb994b05d06065f5452b5b}.
-\]
+```
 
 The run passed pinned dependency resolution, mathlib cache retrieval, direct
 Lake build of \(\texttt{WeilDefect.Arithmetic.PrimeSupport}\), and
@@ -3532,11 +3544,11 @@ WD-T34 is therefore closed.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T35: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -3550,9 +3562,9 @@ Formal declarations include:
 
 The canonical Fourier weight is represented exactly as
 
-\[
+```math
 w(t)=\log(e+|t|),
-\]
+```
 
 and Lean certifies \(w(t)\ge1\) everywhere.
 
@@ -3560,9 +3572,9 @@ For a nonnegative spectral density, the imported compact-window specialization
 is isolated into explicit hypotheses:
 
 1. the shifted symbol comparison
-   \[
+   ```math
    a\,w(t)\le \Psi_c(t)+C\le b\,w(t);
-   \]
+   ```
 2. the shifted geometric-form identity;
 3. a nonnegative pole/evaluation contribution bounded by
    \(K\|F\|_2^2\).
@@ -3575,44 +3587,44 @@ project axiom.
 Lean proves internally that spectral mass is bounded by logarithmic Fourier
 energy, absorbs the pole term, and obtains the two-sided estimate
 
-\[
+```math
 a
 \int_{\mathbb R}
 \log(e+|t|)\,|F(t)|^2\,dt
 \le
 Q_c(f)+C\|f\|_2^2
-\]
+```
 
 and
 
-\[
+```math
 Q_c(f)+C\|f\|_2^2
 \le
 (b+K)
 \int_{\mathbb R}
 \log(e+|t|)\,|F(t)|^2\,dt.
-\]
+```
 
 All integration is explicitly against Lebesgue volume; no ambient measure
 instance is left implicit.
 
 Dedicated theorem CI passed in:
 
-\[
+```math
 \boxed{\texttt{36171526106}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{37b89dd60cfe1963abc58c04c6113319fea383c1}}.
-\]
+```
 
 The certified WD-T35 source blob is:
 
-\[
+```math
 \texttt{ae932d4f3f7e4d6d06dbd778a5708927172238dc}.
-\]
+```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
 direct Lake build of \(\texttt{WeilDefect.Arithmetic.LogarithmicForm}\),
@@ -3624,11 +3636,11 @@ WD-T35 is therefore closed.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T36: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -3648,37 +3660,37 @@ Formal declarations include:
 
 For every \(\varepsilon>0\), Lean certifies the asymptotic separation
 
-\[
+```math
 \log(e+|N|)
 =
 o\!\left(N^{2\varepsilon}\right),
-\]
+```
 
 in the precise Landau sense needed for the squared positive-Sobolev frequency
 weight. Consequently,
 
-\[
+```math
 N^{2\varepsilon}
 \not=
 O\!\left(\log(e+|N|)\right).
-\]
+```
 
 The witness-transfer theorem then proves that any fixed-support oscillatory
 family satisfying the canonical growth inputs
 
-\[
+```math
 \text{shifted Weil-form energy}
 =
 O(\log(e+N))
-\]
+```
 
 and
 
-\[
+```math
 N^{2\varepsilon}
 =
 O(\text{Sobolev energy})
-\]
+```
 
 cannot obey a uniform positive-Sobolev coercive estimate.
 
@@ -3694,64 +3706,64 @@ The finite-arithmetic clause is kernel-checked internally. For every fixed
 WD-T34 active prime set and coefficient family, Lean defines the finite cosine
 correction
 
-\[
+```math
 P_c(t)
 =
 \sum_{n\in S_c}
 a_n\cos(t\log n)
-\]
+```
 
 and proves
 
-\[
+```math
 |P_c(t)|
 \le
 \sum_{n\in S_c}|a_n|.
-\]
+```
 
 Hence
 
-\[
+```math
 P_c
 =
 O\!\left(\log(e+|t|)\right)
-\]
+```
 
 and even
 
-\[
+```math
 \log(e+|t|)+P_c(t)
 =
 O\!\left(\log(e+|t|)\right).
-\]
+```
 
 Thus the finitely many prime translations do not raise the principal order and
 cannot repair the positive-Sobolev mismatch.
 
 The core asymptotic obstruction first passed in CI run:
 
-\[
+```math
 \boxed{\texttt{36176761127}}.
-\]
+```
 
 The completed WD-T36 target, including the finite-prime order-zero clause,
 passed in:
 
-\[
+```math
 \boxed{\texttt{36177620078}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{ad575eded95f8b50e05aca512611f4f6db9cc190}}.
-\]
+```
 
 The final WD-T36 source blob is:
 
-\[
+```math
 \texttt{57153cd26db57d683b5603913e9c1ace42ca8035}.
-\]
+```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
 direct Lake build of \(\texttt{WeilDefect.Arithmetic.NoSobolevBootstrap}\),
@@ -3763,11 +3775,11 @@ WD-T36 is therefore closed.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T37: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -3795,11 +3807,11 @@ The final residue-custody repair is load-bearing. SelectedSourceData no longer
 stores a free zero-moment proof. The composite constructor instead receives
 the negative-pair coefficient specialization and requires the exact identity
 
-\[
+```math
 \operatorname{List.ofFn}(v)
 =
 \operatorname{rawResiduesOfNegativePairs}(x).
-\]
+```
 
 Lean derives both zero moment and source nontriviality from the certified
 WD-T26 raw-residue lemmas before WD-T27 or WD-T31 can be applied. The output
@@ -3814,33 +3826,33 @@ result is installed as a project axiom.
 The composite intentionally contains no actual-zeta exclusion field. Its exact
 formal stop remains
 
-\[
+```math
 \boxed{\texttt{AZ-NEXTJET-LOC}}.
-\]
+```
 
 The data-valued endpoint-package repair first passed pinned CI in:
 
-\[
+```math
 \boxed{\texttt{36182014916}}.
-\]
+```
 
 The completed residue-custody target passed in:
 
-\[
+```math
 \boxed{\texttt{36182444478}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{144bef98b0f66dd7f6f82eb523c06c8eec85479e}}.
-\]
+```
 
 The certified WD-T37 source blob is:
 
-\[
+```math
 \texttt{ff0bae40f6aba4c04a8d3fd75a8fe309f8ea79ae}.
-\]
+```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
 direct Lake build of \(\texttt{WeilDefect.Morphology.Negative}\), and
@@ -3852,11 +3864,11 @@ WD-T37 is therefore closed.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T38: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -3888,29 +3900,29 @@ custody fact.
 
 For the finite-exception realization, Lean proves
 
-\[
+```math
 C^\ast C u=u,\qquad Cu=P^\ast k,\qquad N=-PC
-\]
+```
 
 implies
 
-\[
+```math
 N^\ast k=-u
-\]
+```
 
 and therefore
 
-\[
+```math
 (PP^\ast-NN^\ast)k=0,
 \qquad k\ne0.
-\]
+```
 
 The arithmetic continuation is threshold-aware. Lean defines the strict
 right-limit prime support by
 
-\[
+```math
 \{n:\operatorname{IsPrimePow}(n),\ \log n\le 2c\}
-\]
+```
 
 and proves it is exactly the endpoint strict-active set
 \(\log n<2c\) union the equality-threshold set. The latter is subsingleton, so
@@ -3939,9 +3951,9 @@ interface. It records:
 
 The unresolved statement
 
-\[
+```math
 \texttt{NeutralNullExtensionInterface.persistenceGoal}
-\]
+```
 
 is deliberately a proposition attached to the returned data, not a field
 proved by WD-T38. Thus no support-rigidity or unique-continuation theorem is
@@ -3949,33 +3961,33 @@ silently imported upstream.
 
 The assembled composite first passed pinned CI in:
 
-\[
+```math
 \boxed{\texttt{36187216321}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{ec71653408d8254844039f851cab429d5c32ebb9}}.
-\]
+```
 
 The final selected-coordinate custody refinement passed in:
 
-\[
+```math
 \boxed{\texttt{36187705896}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{1d09fa5c85b1a5970376db5adcda0c1b0872da75}}.
-\]
+```
 
 The certified WD-T38 source blob is:
 
-\[
+```math
 \texttt{2f6f05486f61fd8be18d444f9ef1e2bde5ae1abd}.
-\]
+```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
 direct Lake build of \(\texttt{WeilDefect.Morphology.Neutral}\), and
@@ -3987,11 +3999,11 @@ WD-T38 is therefore closed.
 
 Stable ID:
 
-\[
+```math
 \boxed{
 \text{WD-T39: LEAN-CERTIFIED}.
 }
-\]
+```
 
 Formal declarations include:
 
@@ -4029,7 +4041,7 @@ separate from fixed-packet custody.
 For the unselected background, Lean certifies the complete subsequential
 classification:
 
-\[
+```math
 \boxed{
 \text{norm escape}
 \;\vee\;
@@ -4037,7 +4049,7 @@ classification:
 \;\vee\;
 \text{strong background compactness}.
 }
-\]
+```
 
 The norm-escape arm is constructed explicitly from failure of every uniform
 norm bound. In the bounded case, weak compactness plus a convergent norm-square
@@ -4061,27 +4073,27 @@ simultaneously realizes incompatible compactness species.
 
 The complete core/trichotomy checkpoint passed pinned CI in:
 
-\[
+```math
 \boxed{\texttt{36190887350}}.
-\]
+```
 
 The final assembled WD-T39 target passed in:
 
-\[
+```math
 \boxed{\texttt{36191325215}}
-\]
+```
 
 at repository head:
 
-\[
+```math
 \boxed{\texttt{9f883eef5ec8cee9c8fd092576a5e0fff3326872}}.
-\]
+```
 
 The certified WD-T39 source blob is:
 
-\[
+```math
 \texttt{f5b029598b0b80c5fc8ef292a858bb63d9c3a076}.
-\]
+```
 
 The final run passed pinned dependency resolution, mathlib cache retrieval,
 direct Lake build of \(\texttt{WeilDefect.Morphology.Noncompact}\), and
@@ -4089,8 +4101,8 @@ unfinished-proof/project-axiom rejection.
 
 WD-T39 is therefore closed. The next unfinished stable formalization cursor is:
 
-\[
+```math
 \boxed{
 \texttt{WD-X02 / CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}
 }
-\]
+```
