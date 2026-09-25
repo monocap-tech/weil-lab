@@ -307,4 +307,42 @@ theorem wd_t26_zero_moment (xs : List ℂ) :
       change ([α, -α] ++ rawResiduesOfNegativePairs xs).sum = 0
       simp [ih]
 
+/--
+Every selected negative-pair coefficient occurs verbatim among its raw
+residues.  This is the custody bridge needed for the nondegeneracy half of
+WD-T26.
+-/
+theorem wd_t26_coefficient_mem_rawResidues
+    {xs : List ℂ} {α : ℂ}
+    (hα : α ∈ xs) :
+    α ∈ rawResiduesOfNegativePairs xs := by
+  simp only [rawResiduesOfNegativePairs, List.mem_flatMap]
+  exact ⟨α, hα, by simp⟩
+
+/--
+A genuinely nonzero selected negative coefficient produces a genuinely
+nonzero raw residue coordinate.
+-/
+theorem wd_t26_nonzero_raw_residue_of_nonzero_coefficient
+    (xs : List ℂ)
+    (hxs : ∃ α ∈ xs, α ≠ 0) :
+    ∃ r ∈ rawResiduesOfNegativePairs xs, r ≠ 0 := by
+  rcases hxs with ⟨α, hα, hα0⟩
+  exact ⟨α, wd_t26_coefficient_mem_rawResidues hα, hα0⟩
+
+/--
+WD-T26 / ZW1-T7: selected negative pair coordinates have zero total raw
+residue, and a nonzero selected coefficient vector cannot collapse to the zero
+raw-residue vector.
+-/
+theorem wd_t26_selected_zero_moment_residue
+    (xs : List ℂ) :
+    (rawResiduesOfNegativePairs xs).sum = 0
+      ∧ ((∃ α ∈ xs, α ≠ 0) →
+          ∃ r ∈ rawResiduesOfNegativePairs xs, r ≠ 0) := by
+  exact ⟨
+    wd_t26_zero_moment xs,
+    wd_t26_nonzero_raw_residue_of_nonzero_coefficient xs
+  ⟩
+
 end WeilDefect
