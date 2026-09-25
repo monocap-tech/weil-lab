@@ -217,7 +217,7 @@ Current cursor:
 
 \[
 \boxed{
-\texttt{LEAN-H1-P0 / INFRASTRUCTURE AND VERTICAL PILOT}
+\texttt{LEAN-H1-P5 / WD-T39 / NONCOMPACT BACKGROUND MORPHOLOGY}
 }
 \]
 
