@@ -33,7 +33,7 @@ Current position:
 \qquad
 \text{LEAN-H1 EXHAUSTED}
 \qquad
-\text{H1-P5 READY — NOT STARTED}.
+\text{H1-P5 ACTIVE}.
 }
 ```
 
@@ -553,15 +553,17 @@ Thus
 
 Lean certification has reached its exhaustion condition.
 
-Next project cursor, recorded but not started:
+Current package cursor:
 
 ```math
 \boxed{
-\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
+\texttt{H1-P5.1 / TECHNICAL MANUSCRIPT ASSEMBLY}
 }
 ```
 
-The example/sharpness audit is complete and LEAN-H1 is exhausted. Certificate evidence is recorded in [Lean Status](LEAN_STATUS.md). No H1-P5 work is started by this status transition.
+H1-P5.0 / Public Package Architecture is complete.
+
+The example/sharpness audit is complete and LEAN-H1 is exhausted. Certificate evidence is recorded in [Lean Status](LEAN_STATUS.md). Public-package work is now active under the canonical [Public Package Architecture](PUBLIC_PACKAGE_ARCHITECTURE.md).
 
 ---
 
