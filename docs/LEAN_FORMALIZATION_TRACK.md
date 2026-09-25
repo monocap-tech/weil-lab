@@ -1,11 +1,11 @@
 # Lean Formalization Track
 ## LEAN-H1 — Certification before H1-P5 — EXHAUSTED
 
-This track temporarily preempts H1-P5.
+This track preempted H1-P5 until its exhaustion condition was met.
 
-The project does **not** resume public-package assembly until LEAN-H1 is exhausted under the current Horizon-1 theorem inventory.
+LEAN-H1 is now exhausted under the current Horizon-1 theorem inventory. The gate on public-package assembly is therefore cleared, but H1-P5.0 remains **ready — not started** until work explicitly begins.
 
-This page is the **control surface** for the formalization queue. Certificate evidence and historical run records belong in [Lean Status](LEAN_STATUS.md); this page records only the current phase structure, completion rule, and active cursor.
+This page is the **control surface** for the completed formalization track. Certificate evidence and historical run records belong in [Lean Status](LEAN_STATUS.md); this page records the phase structure, exhaustion rule, and current post-LEAN handoff.
 
 ## Toolchain
 
