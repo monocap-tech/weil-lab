@@ -4,11 +4,11 @@ Stable ID: **WD-T09 / WD-B3**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Formal target
 
