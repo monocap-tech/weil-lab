@@ -82,7 +82,7 @@ D=S_{+}S_{+}^{*}-S_{-}S_{-}^{*},
 
 with the sign problem reduced to contractive Douglas screening. For a fixed
 finite selected negative sector, critical or negative right-approach forces a
-nonzero nonpositive right-limit ray. Within that fixed-finite-sector right-limit setting, a genuinely nonpersistent approximate-neutral branch is excluded; nonpersistence must instead enter through moving/infinite selected-sector or background noncompactness.
+nonzero nonpositive right-limit ray. Within that fixed-finite-sector right-limit setting, a genuinely nonpersistent **selected** approximate-neutral branch is excluded; selected-ray nonpersistence requires a moving/infinite selected sector. Unselected-background noncompactness is a separate later phenomenon: it can obstruct strong full-coefficient compactness after the selected ray is already anchored, but it does not erase that ray.
 
 Under the zeta-Weil specialization, a selected residue vector satisfies
 
