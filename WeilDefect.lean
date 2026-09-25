@@ -27,3 +27,5 @@ import WeilDefect.Filtration.CriticalDichotomy
 import WeilDefect.Filtration.EndpointJump
 import WeilDefect.Filtration.RepresentativeBlowup
 import WeilDefect.Morphology.Negative
+
+import WeilDefect.Morphology.Neutral
