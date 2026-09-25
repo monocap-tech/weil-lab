@@ -33,17 +33,17 @@ WD-T01 and WD-T08 received proof-expansion/quantifier clarifications without the
 
 ## Result
 
-\[
+```math
 \boxed{
 \text{WD-T01--WD-T36: P4-AUDIT-PASSED}.
 }
-\]
+```
 
 The composite morphology theorems remain pending.
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
-\]
+```
