@@ -1017,7 +1017,9 @@ This combination precisely identifies the zero-side screening problem before ari
 
 ---
 
-## Next cursor
+## Historical handoff from H1-P2.1
+
+This handoff is historical provenance, not the live project cursor. See [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md) for current control state.
 
 ```math
 \boxed{
@@ -1025,7 +1027,7 @@ This combination precisely identifies the zero-side screening problem before ari
 }
 ```
 
-The next pass should normalize the ZW-2 layer:
+At the close of H1-P2.1, the next pass was assigned to normalize the ZW-2 layer:
 
 1. selected-preserving scalar multipliers;
 2. far-tail localization from the zero moment;
