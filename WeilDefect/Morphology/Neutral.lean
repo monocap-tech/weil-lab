@@ -5,7 +5,7 @@ import WeilDefect.Arithmetic.NoSobolevBootstrap
 
 namespace WeilDefect
 
-open Filter MeasureTheory
+open Filter Asymptotics MeasureTheory
 open scoped Topology InnerProduct
 
 /--
