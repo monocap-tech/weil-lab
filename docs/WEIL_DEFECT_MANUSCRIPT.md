@@ -2,74 +2,83 @@
 
 > Public technical manuscript — Horizon 1.
 >
-> Mathematical statements are indexed by stable `WD-Txx` identifiers.
+> Mathematical statements are indexed by stable WD-Txx identifiers.
 > Mathematical standing, formal verification status, and imported-source
-> custody are separate axes.  The public verification matrix records the
-> formal axis; the theorem ledger and proof-status surfaces remain the
-> canonical detailed sources.
+> custody are separate axes.
 
 ## Abstract
 
 We develop an operator-theoretic defect calculus for indefinite coefficient
 spaces and use it to organize the sign geometry underlying finite Weil
-defects.  The basic object is the physical defect
-[
+defects. The basic object is the physical defect
+
+~~~math
 D=S_{+}S_{+}^{*}-S_{-}S_{-}^{*},
-]
+~~~
+
 whose negative index agrees with the negative index of the associated
-coefficient-space Krein form.  Nonnegativity of (D) is equivalent, through
+coefficient-space Krein form. Nonnegativity of \(D\) is equivalent, through
 Douglas factorization, to contractive screening of the negative synthesis
-through the positive synthesis.  This produces a complete abstract screening
+through the positive synthesis. This produces a complete abstract screening
 taxonomy, including strictly screened, over-budget, attained-critical, and
 non-attained critical regimes.
 
 The calculus is stable under selected/background decompositions and legitimate
-background elimination.  For a fixed finite selected negative sector, the
+background elimination. For a fixed finite selected negative sector, the
 finite-dimensional compactness of that sector forces any normalized critical
 or negative right-approaching sequence to retain a nonzero nonpositive
-right-limit ray.  At criticality there are only two fixed-sector outcomes:
+right-limit ray. At criticality there are only two fixed-sector outcomes:
 an attained neutral limit or a strictly negative fall-through caused by loss
-of positive-coordinate norm.  Moving selected sectors and unselected
+of positive-coordinate norm. Moving selected sectors and unselected
 backgrounds are therefore separate noncompactness mechanisms rather than
 additional fixed-packet branches.
 
-We then specialize this structure to the zeta-Weil setting.  Conjugate-pair
+We then specialize this structure to the zeta-Weil setting. Conjugate-pair
 geometry, finite Weil inertia, distinct-frequency rigidity, and selected
 residue structure imply a zero-moment law
-[
-mathbf 1^{T}v=0
-]
-for selected negative raw residues.  Consequently the associated rational
+
+~~~math
+\mathbf 1^{T}v=0
+~~~
+
+for selected negative raw residues. Consequently the associated rational
 response has universal inverse-square far decay,
-[
+
+~~~math
 R_v(z)=O(|z|^{-2}),
-]
-which is sharp under zero moment alone.  Combining this with unit-height zeta
+~~~
+
+which is sharp under zero moment alone. Combining this with unit-height zeta
 zero counting gives an explicit-formula far complementary tail
-[
-O!left(rac{log R}{R}ight).
-]
-The surviving near field is a weighted completed-(Xi) next-jet field.
-At fixed compact support, only finitely many prime-power translations are
-active and the compact-window operator has logarithmic principal order,
-[
-Psi_c(t)=log|t|+O_c(1),
-]
+
+~~~math
+O\!\left(\frac{\log R}{R}\right).
+~~~
+
+The surviving near field is a weighted completed-\(\Xi\) next-jet field. At
+fixed compact support, only finitely many prime-power translations are active
+and the compact-window operator has logarithmic principal order,
+
+~~~math
+\Psi_c(t)=\log|t|+O_c(1),
+~~~
+
 with no automatic positive-Sobolev coercive upgrade.
 
 These ingredients assemble into three morphology classes: persistent selected
 negative defect, attained unit-gain neutral defect, and noncompact
-moving/background morphology.  The first two terminate at explicit
+moving/background morphology. The first two terminate at explicit
 actual-zeta interfaces,
-[
-	exttt{AZ-NEXTJET-LOC},
-qquad
-	exttt{AZ-FIN-WEIL-NULL-EXTENSION},
-]
-with (	exttt{C-ACTUAL-KPH-FLOOR}) retained as a stronger special-packet
-refinement on the negative side.  Horizon 1 proves the independent
-Weil-defect theory that reaches these interfaces; it does not prove the
-interfaces themselves and does not claim RH closure.
+
+~~~text
+AZ-NEXTJET-LOC
+AZ-FIN-WEIL-NULL-EXTENSION
+~~~
+
+with C-ACTUAL-KPH-FLOOR retained as a stronger special-packet refinement on
+the negative side. Horizon 1 proves the independent Weil-defect theory that
+reaches these interfaces; it does not prove the interfaces themselves and
+does not claim RH closure.
 
 ---
 
@@ -78,229 +87,207 @@ interfaces themselves and does not claim RH closure.
 ## 1. Coefficient space, synthesis, and physical defect
 
 Let
-[
-mathcal H,qquad K_{+},qquad K_{-}
-]
+
+~~~math
+\mathcal H,\qquad K_{+},\qquad K_{-}
+~~~
+
 be complex Hilbert spaces and let
-[
-S_{+}:K_{+}	omathcal H,
-qquad
-S_{-}:K_{-}	omathcal H
-]
-be bounded synthesis operators.  On
-[
-K_{+}oplus K_{-}
-]
-use the fundamental symmetry
-[
+
+~~~math
+S_{+}:K_{+}\to\mathcal H,
+\qquad
+S_{-}:K_{-}\to\mathcal H
+~~~
+
+be bounded synthesis operators. On \(K_{+}\oplus K_{-}\) use
+
+~~~math
 J=
-egin{pmatrix}
-I&0\
+\begin{pmatrix}
+I&0\\
 0&-I
-end{pmatrix},
-qquad
+\end{pmatrix},
+\qquad
 [(x,u),(y,v)]_J
 =
-langle x,yangle-langle u,vangle.
-]
+\langle x,y\rangle-\langle u,v\rangle.
+~~~
 
 Define
-[
+
+~~~math
 E(x,u)=S_{+}x+S_{-}u,
-qquad
-mathcal A=(ker E)^perp
-=overline{operatorname{Ran}E^{*}},
-]
-and define the physical defect
-[
-oxed{
+\qquad
+\mathcal A=(\ker E)^\perp
+=\overline{\operatorname{Ran}E^{*}},
+~~~
+
+and
+
+~~~math
+\boxed{
 D=EJE^{*}
 =S_{+}S_{+}^{*}-S_{-}S_{-}^{*}.
 }
-]
+~~~
 
 ### WD-T01 — Defect identity and index transfer
 
-For every (hinmathcal H),
-[
-E^{*}h=(S_{+}^{*}h,S_{-}^{*}h)
-]
-and
-[
-oxed{
+For every \(h\in\mathcal H\),
+
+~~~math
+E^{*}h=(S_{+}^{*}h,S_{-}^{*}h),
+~~~
+
+so
+
+~~~math
+\boxed{
 [E^{*}h,E^{*}h]_J
 =
-langle Dh,hangle.
+\langle Dh,h\rangle.
 }
-]
+~~~
 
 Hence
-[
-oxed{
-mathcal A	ext{ is }J	ext{-nonnegative}
-iff
-Dsucceq0
-}
-]
-and, more generally,
-[
-oxed{
-operatorname{ind}_{-}(mathcal A,J)
-=
-operatorname{ind}_{-}(D).
-}
-]
 
-The equality of indices is the first custody principle of the theory:
-coefficient-space negativity and physical-space negativity are two
+~~~math
+\boxed{
+\mathcal A\text{ is }J\text{-nonnegative}
+\iff
+D\succeq0
+}
+~~~
+
+and
+
+~~~math
+\boxed{
+\operatorname{ind}_{-}(\mathcal A,J)
+=
+\operatorname{ind}_{-}(D).
+}
+~~~
+
+Coefficient-space negativity and physical-space negativity are therefore two
 representations of the same finite-dimensional obstruction.
 
 ### WD-T02 — Contractive screening
 
 The following are equivalent:
-[
-Dsucceq0,
-qquad
-S_{-}S_{-}^{*}preceq S_{+}S_{+}^{*},
-]
+
+~~~math
+D\succeq0,
+\qquad
+S_{-}S_{-}^{*}\preceq S_{+}S_{+}^{*},
+~~~
+
 and the existence of a contraction
-[
-X:K_{-}	o K_{+}
-]
+
+~~~math
+X:K_{-}\to K_{+}
+~~~
+
 such that
-[
-oxed{
+
+~~~math
+\boxed{
 S_{-}=-S_{+}X.
 }
-]
+~~~
 
-This is the unit-majorization case of the Douglas factorization theorem.
-The reduced solution is the canonical representative used throughout the
-screening calculus.  The external Douglas theorem is a load-bearing imported
-input; its exact pin is recorded as EXT-1 in
-[Imported Source Pins](IMPORTED_SOURCE_PINS.md).
-
-The interpretation is direct: a nonnegative defect means every negative
-synthesis channel can be reproduced through the positive synthesis without
-exceeding unit coefficient norm.
+This is the unit-majorization case of Douglas factorization. The external
+Douglas theorem is the load-bearing imported input EXT-1.
 
 ### WD-T03 — Reduced graph normal form
 
 Assume exact range inclusion
-[
-operatorname{Ran}S_{-}
-subseteq
-operatorname{Ran}S_{+}
-]
-and let (X) be the Douglas reduced solution of
-[
-S_{+}X=-S_{-}.
-]
-No contractivity assumption is needed.
 
-Then
-[
-oxed{
-mathcal A
+~~~math
+\operatorname{Ran}S_{-}
+\subseteq
+\operatorname{Ran}S_{+}
+~~~
+
+and let \(X\) be the reduced solution. Then
+
+~~~math
+\boxed{
+\mathcal A
 =
-{(a,-X^{*}a):
-ain(ker S_{+})^perp}.
+\{(a,-X^{*}a):
+a\in(\ker S_{+})^\perp\}.
 }
-]
+~~~
+
 On this graph,
-[
-oxed{
+
+~~~math
+\boxed{
 [(a,-X^{*}a),(a,-X^{*}a)]_J
 =
-|a|^{2}-|X^{*}a|^{2}.
+\|a\|^{2}-\|X^{*}a\|^{2},
 }
-]
-The physical defect factors as
-[
-oxed{
+~~~
+
+and
+
+~~~math
+\boxed{
 D=S_{+}(I-XX^{*})S_{+}^{*}.
 }
-]
+~~~
 
-Thus, after the unscreened range-defect case is separated, the sign problem
-is reduced to the norm geometry of the reduced screening map.
+After the range-defect branch is separated, the sign problem is therefore a
+reduced-screening norm problem.
 
 ### WD-T04 — Complete screening taxonomy
 
 The reduced solution gives five basic regimes.
 
-1. **Range defect.** If
-   [
-   operatorname{Ran}S_{-}
-otsubseteqoperatorname{Ran}S_{+},
-   ]
-   exact screening does not exist and (D
-otsucceq0).
-
-2. **Over-budget defect.** If range inclusion holds but
-   [
-   |X|>1,
-   ]
-   then (mathcal A) contains a strictly negative vector.
-
-3. **Strictly screened regime.** If
-   [
-   |X|=r<1,
-   ]
-   then
-   [
-   oxed{
+1. **Range defect:** no exact screening exists.
+2. **Over-budget defect:** range inclusion holds but \(\|X\|>1\).
+3. **Strict screening:** \(\|X\|=r<1\), with
+   ~~~math
    [y,y]_J
-   ge
-   rac{1-r^{2}}{1+r^{2}}|y|^{2}
-   qquad(yinmathcal A).
-   }
-   ]
+   \ge
+   \frac{1-r^2}{1+r^2}\|y\|^2.
+   ~~~
+4. **Attained criticality:** \(\|X\|=1\) and \(X^{*}\) attains its norm,
+   producing a nonzero neutral vector.
+5. **Non-attained criticality:** \(\|X\|=1\) with no nonzero norm-attaining
+   vector; all nonzero vectors remain strictly positive, but normalized
+   margins can tend to zero.
 
-4. **Attained critical regime.** If
-   [
-   |X|=1
-   ]
-   and (X^{*}) attains its norm, then (mathcal A) contains a nonzero
-   neutral vector.
-
-5. **Non-attained critical regime.** If
-   [
-   |X|=1
-   ]
-   but no nonzero norm-attaining vector exists, then every nonzero vector of
-   (mathcal A) is strictly positive while a normalized sequence can have
-   (J)-margin tending to zero.
-
-The final case is essential in infinite dimension.  It prevents the critical
-boundary from being collapsed into a simple positive/neutral dichotomy.
+The last regime is an essentially infinite-dimensional boundary phenomenon.
 
 ### WD-T05 — Rank-one specialization
 
-If (K_{-}=mathbb C) and
-[
-S_{-}alpha=alpha g,
-]
-then
-[
-S_{-}S_{-}^{*}=gotimes g
-]
-and
-[
-oxed{
-D=S_{+}S_{+}^{*}-gotimes g.
-}
-]
+If \(K_{-}=\mathbb C\) and \(S_{-}\alpha=\alpha g\), then
 
-Therefore (Dsucceq0) is equivalent to the existence of
-(cin K_{+}) with
-[
+~~~math
+S_{-}S_{-}^{*}=g\otimes g
+~~~
+
+and
+
+~~~math
+\boxed{
+D=S_{+}S_{+}^{*}-g\otimes g.
+}
+~~~
+
+Thus \(D\succeq0\) is equivalent to the existence of \(c\in K_{+}\) with
+
+~~~math
 g=-S_{+}c,
-qquad
-|c|le1.
-]
-The one-negative-channel defect used in the Weil traversal is therefore not a
-special ad hoc mechanism; it is the rank-one case of the abstract calculus.
+\qquad
+\|c\|\le1.
+~~~
+
+The one-negative-channel Weil defect is the rank-one case of the abstract
+calculus.
 
 ---
 
@@ -308,140 +295,124 @@ special ad hoc mechanism; it is the rank-one case of the abstract calculus.
 
 ### WD-T06 — Monotone positive screening
 
-Let (P_N) be increasing orthogonal projections on (K_{+}) with
-[
-P_N	o I
-]
-strongly, and define
-[
+Let \(P_N\) increase strongly to \(I\) and define
+
+~~~math
 D_N
 =
 S_{+}P_NS_{+}^{*}-S_{-}S_{-}^{*}.
-]
+~~~
+
 Then
-[
-oxed{
-D_Npreceq D_{N+1}preceq D,
-qquad
-D_N	o D	ext{ strongly}.
+
+~~~math
+\boxed{
+D_N\preceq D_{N+1}\preceq D,
+\qquad
+D_N\to D\text{ strongly},
 }
-]
-Consequently
-[
-oxed{
-operatorname{ind}_{-}(D_N)
-ge
-operatorname{ind}_{-}(D_{N+1}).
+~~~
+
+and
+
+~~~math
+\boxed{
+\operatorname{ind}_{-}(D_N)
+\ge
+\operatorname{ind}_{-}(D_{N+1}).
 }
-]
+~~~
 
-Negative directions can disappear as more positive screening channels are
-restored.  WD-X01 shows that this can happen completely: every finite
-truncation may be strictly negative even though the full defect is zero.
+Negative directions can disappear as positive channels are restored.
+WD-X01 shows that the disappearance can be complete.
 
-Now split the negative coefficient space as
-[
-K_{-}=Moplus B,
-]
-where (M) is a selected negative sector and (B) is the unselected negative
-background.  Write
-[
-S_M=S_{-}P_M,
-qquad
-S_B=S_{-}P_B.
-]
+Split
 
-### WD-T07 — Selected/background monotonicity and custody
+~~~math
+K_{-}=M\oplus B
+~~~
+
+into a selected negative sector \(M\) and an unselected negative background
+\(B\).
+
+### WD-T07 — Selected/background custody
 
 With
-[
-D_M
-=
-S_{+}S_{+}^{*}-S_MS_M^{*}
-]
+
+~~~math
+D_M=S_{+}S_{+}^{*}-S_MS_M^{*}
+~~~
+
 and
-[
-D_{m full}
+
+~~~math
+D_{\rm full}
 =
 S_{+}S_{+}^{*}
 -S_MS_M^{*}
 -S_BS_B^{*},
-]
-one has
-[
-oxed{
-D_{m full}preceq D_M.
-}
-]
-Thus
-[
-oxed{
-	ext{selected negativity}
-Longrightarrow
-	ext{full negativity}.
-}
-]
+~~~
 
-The converse is false.  Aggregate negativity does not identify which negative
-sector owns the defect.  This asymmetry is a permanent custody rule.
+one has
+
+~~~math
+\boxed{
+D_{\rm full}\preceq D_M.
+}
+~~~
+
+Hence
+
+~~~math
+\boxed{
+\text{selected negativity}
+\Longrightarrow
+\text{full negativity}.
+}
+~~~
+
+The converse fails: aggregate negativity does not identify the sector that
+owns the defect.
 
 ### WD-T08 — Finite selected-sector index cap
 
-If
-[
-m=dim M<infty,
-]
-then
-[
-oxed{
-operatorname{ind}_{-}(D_M)le m.
-}
-]
-If (B) is also finite dimensional, with (dim B=b), then
-[
-operatorname{ind}_{-}(D_{m full})
-le
-operatorname{ind}_{-}(D_M)+b.
-]
+If \(\dim M=m<\infty\), then
 
-A fixed finite selected sector can therefore generate only finitely many
-independent negative directions.
+~~~math
+\boxed{
+\operatorname{ind}_{-}(D_M)\le m.
+}
+~~~
+
+A fixed finite selected sector can create only finitely many independent
+negative directions.
 
 ### WD-T09 — Shared screening budget
 
-Assume the full negative synthesis is exactly contained in the positive range
-and let
-[
-X=[X_M;X_B]
-]
-be the reduced screening map.  Then
-[
-oxed{
-D_{m full}
+For the reduced full screening map \(X=[X_M\;X_B]\),
+
+~~~math
+\boxed{
+D_{\rm full}
 =
 S_{+}
-igl(I-X_MX_M^{*}-X_BX_B^{*}igr)
+\bigl(I-X_MX_M^{*}-X_BX_B^{*}\bigr)
 S_{+}^{*}.
 }
-]
-Therefore
-[
-oxed{
-D_{m full}succeq0
-iff
-X_MX_M^{*}+X_BX_B^{*}preceq I.
-}
-]
+~~~
 
-Separate bounds
-[
-|X_M|le1,
-qquad
-|X_B|le1
-]
-are not enough.  Screening is a joint resource-allocation problem.  WD-X03
-gives the one-dimensional counterexample in which each channel is separately
-screenable but the pair exceeds the shared unit budget.
+Therefore
+
+~~~math
+\boxed{
+D_{\rm full}\succeq0
+\iff
+X_MX_M^{*}+X_BX_B^{*}\preceq I.
+}
+~~~
+
+Separate contractivity of \(X_M\) and \(X_B\) is insufficient. WD-X03 is the
+explicit joint-budget counterexample.
 
 ---
 
@@ -449,274 +420,229 @@ screenable but the pair exceeds the shared unit budget.
 
 ### WD-T10 — Residual positive synthesis
 
-Assume the background is contractively screened,
-[
+If the background is contractively screened,
+
+~~~math
 S_B=-S_{+}X_B,
-qquad
-|X_B|le1.
-]
-Define
-[
-R_B=I-X_BX_B^{*}succeq0
-]
-and
-[
-S_{m eff}=S_{+}R_B^{1/2}.
-]
+\qquad
+\|X_B\|\le1,
+~~~
+
+define
+
+~~~math
+R_B=I-X_BX_B^{*}\succeq0,
+\qquad
+S_{\rm eff}=S_{+}R_B^{1/2}.
+~~~
+
 Then
-[
-oxed{
-D_{m full}
+
+~~~math
+\boxed{
+D_{\rm full}
 =
-S_{m eff}S_{m eff}^{*}
+S_{\rm eff}S_{\rm eff}^{*}
 -S_MS_M^{*}.
 }
-]
+~~~
 
-Legitimate elimination of a screened background returns the problem to the
-same two-channel defect calculus.  The selected sector must fit inside the
-residual positive budget left after the background has been paid for.
+Legitimate background elimination returns the problem to the original
+two-channel defect category.
 
 ### WD-T11 — Finite-sector singular-value inertia
 
-For fixed finite-dimensional (M), let (Y) denote the reduced residual
-screening map for
-[
-S_M=-S_{m eff}Y.
-]
-Then the selected negative index and neutral dimension are counted by the
-singular values of (Y):
-[
-oxed{
-operatorname{ind}_{-}
-=
-#{j:sigma_j(Y)>1},
-}
-]
-[
-oxed{
-operatorname{nul}_{J}
-=
-#{j:sigma_j(Y)=1}.
-}
-]
+For fixed finite-dimensional \(M\), let \(Y\) be the reduced residual
+screening map. Then
 
-The critical boundary is therefore a unit-singular-value boundary for the
-finite selected sector.
+~~~math
+\boxed{
+\operatorname{ind}_{-}
+=
+\#\{j:\sigma_j(Y)>1\},
+}
+~~~
+
+and
+
+~~~math
+\boxed{
+\operatorname{nul}_{J}
+=
+\#\{j:\sigma_j(Y)=1\}.
+}
+~~~
+
+The critical boundary is a unit-singular-value boundary for the selected
+sector.
 
 ### WD-T12 — Sequential background consumption
 
-Background elimination can be iterated.  Each legitimately screened
-background channel consumes part of the positive covariance and leaves a new
-residual budget operator.  The resulting selected problem remains inside the
-same defect calculus.  This closure property is what allows multi-stage
-screening to be analyzed without changing category.
+Background elimination may be iterated. Each legitimately screened background
+consumes positive covariance and leaves a new residual budget. The selected
+problem remains inside the same defect calculus.
 
 ### WD-T13 — Shorted covariance
 
-When the positive covariance is decomposed with respect to a selected positive
-subspace and a uniformly positive complementary block, eliminating the
-complement replaces the direct selected compression by the Schur/shorted
-covariance
-[
-oxed{
+Under the stated uniformly positive complement hypothesis, eliminating the
+positive complement replaces direct compression by
+
+~~~math
+\boxed{
 H_W=A-BC^{-1}B^{*}.
 }
-]
-The correction is positive, so
-[
-H_Wpreceq A.
-]
+~~~
 
-A lower bound on the direct compression alone does not yield a uniform
-family-level lower bound after shorting.  WD-X04 gives the exact (2	imes2)
-family
-[
-K_r=
-egin{pmatrix}
-1&r\
-r&1
-end{pmatrix}
-]
-for which the direct compression remains (1) while the shorted covariance
-is (1-r^{2}downarrow0).
+The correction is positive, so \(H_W\preceq A\). WD-X04 shows that a uniform
+lower bound on \(A\) alone does not yield a uniform family-level lower bound on
+\(H_W\).
 
 ### WD-T14 — Finite positive shadows
 
 Finite positive projections preserve an already-established algebraic
-negative margin, but they need not preserve membership in the relevant
-analysis space.  Therefore a finite positive shadow can expose the sign of a
-selected ray without supplying the graph/admissibility relation that made the
-ray physically meaningful.
-
-This separates **visibility of negativity** from **custody of the analysis
-relation**.
+negative margin, but they need not preserve the analysis-space relation. This
+separates visibility of sign from custody of the synthesis/graph relation.
 
 ---
 
 ## 4. Support filtration and fixed-sector persistence
 
 Let
-[
-mathcal A_ssubseteqmathcal A_t
-qquad(s<t)
-]
-be a monotone family of closed analysis spaces.  At an endpoint (c), define
-the right-limit space
-[
-oxed{
-mathcal A_{c+}
+
+~~~math
+\mathcal A_s\subseteq\mathcal A_t
+\qquad(s<t)
+~~~
+
+be a monotone family of closed analysis spaces. Define
+
+~~~math
+\boxed{
+\mathcal A_{c+}
 =
-igcap_{t>c}mathcal A_t
+\bigcap_{t>c}\mathcal A_t
 }
-]
-and the endpoint gap
-[
-oxed{
-mathcal J_c
+~~~
+
+and
+
+~~~math
+\boxed{
+\mathcal J_c
 =
-mathcal A_{c+}ominusmathcal A_c.
+\mathcal A_{c+}\ominus\mathcal A_c.
 }
-]
+~~~
 
 ### WD-T15 — Right-limit projection and gap duality
 
-Along any sequence (t_ndownarrow c), the monotone family of orthogonal
-projections converges to the projection onto (mathcal A_{c+}).  The
-right-limit gap is therefore the geometric carrier for vectors that appear
-arbitrarily close to the endpoint but are absent at the endpoint itself.
-
-This turns endpoint persistence into a closed-subspace limit problem rather
-than a pointwise heuristic.
+Along \(t_n\downarrow c\), the monotone orthogonal projections converge to the
+projection onto \(\mathcal A_{c+}\). The right-limit gap is the geometric
+carrier for vectors appearing arbitrarily close to the endpoint but absent at
+the endpoint itself.
 
 ### WD-T16 — Fixed finite negative-sector persistence
 
-Suppose the negative coordinate is restricted to a fixed finite-dimensional
-selected sector (M), and let
-[
+Let
+
+~~~math
 y_n=(a_n,u_n)
-]
-be normalized vectors approaching the endpoint from the right with
-[
-[y_n,y_n]_J	o q_{*}le0.
-]
-After passage to a subsequence, finite-dimensional compactness gives
-[
-u_n	o u
-]
-strongly, while boundedness gives
-[
-a_nightharpoonup a
-]
-weakly.  The limiting vector
-[
-y=(a,u)
-]
-belongs to (mathcal A_{c+}).
+~~~
 
-The key estimate is
-[
-|a|^{2}-|u|^{2}
-le
-liminf_{n	oinfty}
-igl(|a_n|^{2}-|u_n|^{2}igr)
-=
-q_{*}.
-]
-Normalization and (q_{*}le0) force (u
-eq0), hence (y
-eq0).  Therefore
-[
-oxed{
-	ext{fixed finite selected sector}
-+
-q_{*}le0
-Longrightarrow
-exists,0
-eq yinmathcal A_{c+}
-	ext{ with }[y,y]_Jle q_{*}.
+be normalized right-approaching vectors with \(u_n\) in one fixed
+finite-dimensional selected negative sector and
+
+~~~math
+[y_n,y_n]_J\to q_{*}\le0.
+~~~
+
+After a subsequence,
+
+~~~math
+u_n\to u
+~~~
+
+strongly and
+
+~~~math
+a_n\rightharpoonup a.
+~~~
+
+The limit \(y=(a,u)\) lies in \(\mathcal A_{c+}\), and
+
+~~~math
+\boxed{
+[y,y]_J\le q_{*},
+\qquad
+y\neq0.
 }
-]
+~~~
 
-If the approaching sequence has a uniform negative margin, the limiting ray
-remains strictly negative.
+Thus
+
+~~~math
+\boxed{
+\text{fixed finite selected sector}
++
+q_{*}\le0
+\Longrightarrow
+\text{nonzero nonpositive right-limit ray}.
+}
+~~~
+
+A uniform negative margin persists as a strict negative margin.
 
 ### WD-T17 — Critical dichotomy
 
 At criticality,
-[
-[y_n,y_n]_J	o0.
-]
-There are exactly two fixed-sector mechanisms.
 
-If
-[
-|a_n|	o|a|,
-]
-then weak convergence of (a_n) upgrades to strong convergence and the limit
-is neutral:
-[
-[y,y]_J=0.
-]
+~~~math
+[y_n,y_n]_J\to0.
+~~~
 
-If positive-coordinate norm is lost,
-[
-lim|a_n|^{2}>|a|^{2},
-]
-then the retained selected negative coordinate forces
-[
-oxed{
+If the positive-coordinate norms converge to the norm of the weak limit, then
+the positive coordinates converge strongly and the limit is neutral. If
+positive-coordinate norm is lost, the retained selected negative coordinate
+forces
+
+~~~math
+\boxed{
 [y,y]_J<0.
 }
-]
+~~~
 
-Thus weak convergence at criticality does not preserve neutrality.  WD-X06
-realizes this fall-through explicitly with
-[
-y_n=
-left(
-rac1{sqrt2}e_n,rac1{sqrt2}
-ight)
-ightharpoonup
-left(
-0,rac1{sqrt2}
-ight).
-]
+WD-X06 realizes this negative fall-through exactly.
 
 ### WD-T18 — Endpoint-jump index control
 
-New right-limit negative directions are carried by the endpoint quotient.
-The negative index contributed at the endpoint is bounded by the dimension of
-the right-limit gap quotient.  In the one-dimensional jump case this gives a
-one-direction rank cap.
+New right-limit negative directions are carried by the endpoint quotient. The
+negative index contributed by the right-limit jump is bounded by the
+dimension of the endpoint gap quotient.
 
 ### WD-T19 — Boundary amplification
 
-If a new right-limit vector is genuinely absent from the endpoint space, then
+When a genuinely new right-limit vector is absent from the endpoint space,
 normalized endpoint representatives cannot remain uniformly controlled.
-Equivalently, vanishing endpoint amplitude requires representative blow-up.
-
-This is the geometric boundary-amplification mechanism used later in the
-negative and neutral morphology packages.
+Vanishing endpoint amplitude therefore forces representative blow-up under
+the theorem's common physical-realization hypotheses.
 
 ### Part I summary
 
-Part I establishes the central structural theorem:
-[
-oxed{
-egin{array}{c}
-	ext{fixed finite selected sector}\
-+ 	ext{critical or negative right approach}
-end{array}
-Longrightarrow
-	ext{nonzero nonpositive right-limit ray}.
-}
-]
+Part I establishes
 
-The non-attained critical branch of WD-T04 remains possible in infinite
-dimension globally, but WD-X05 shows why it cannot be realized by a single
-fixed finite selected sector whose negative mass stays anchored: the sector
-itself must move or become infinite-dimensional.
+~~~math
+\boxed{
+\begin{array}{c}
+\text{fixed finite selected sector}\\
++\ \text{critical or negative right approach}
+\end{array}
+\Longrightarrow
+\text{nonzero nonpositive right-limit ray}.
+}
+~~~
+
+A globally non-attained critical morphology without a persistent selected ray
+requires a moving/infinite selected sector, as WD-X05 demonstrates.
 
 ---
 
@@ -724,40 +650,29 @@ itself must move or become infinite-dimensional.
 
 ## 5. Pair geometry, inertia, and multiplicity
 
-The zeta-Weil specialization identifies the abstract positive and negative
-channels using conjugate-pair geometry of the divisor.
-
 ### WD-T20 — Pair diagonalization
 
 Each nonreal conjugate-pair block admits a canonical positive/negative
-diagonalization.  This provides the coefficient-space (J)-splitting used by
-the abstract defect calculus.
+diagonalization. This realizes the abstract \(J\)-splitting in the finite Weil
+pair geometry.
 
 ### WD-T21 — Simple quartet geometry
 
 A simple off-critical functional-equation quartet contributes two distinct
-nonreal conjugate-pair coordinates to the negative side.  This is a geometric
-count before multiplicity-null directions are removed.
+nonreal conjugate-pair coordinates on the negative side before
+multiplicity-null reduction.
 
 ### WD-T22 — Finite Weil inertia
 
 Bombieri's finite Weil theorem identifies the number of negative eigenvalues
-with the number of distinct nonreal conjugate pairs.  Horizon 1 consumes this
-as an imported theorem plus exact specialization; the source is pinned as
-EXT-2A.
+with the number of distinct nonreal conjugate pairs. Horizon 1 consumes this
+as the imported source EXT-2A plus exact specialization.
 
-Thus the abstract finite selected-sector negative-index cap is saturated by
-the actual finite Weil pair geometry.
+### WD-T23 — Multiplicity-null reduction
 
-### WD-T23 — Multiplicity-null directions
-
-Repeated ordinates create zero directions rather than additional independent
-negative channels.  These multiplicity-null directions must be quotiented
-before independent finite negative-index counting.  The load-bearing external
-input is Bombieri's multiplicity result, pinned as EXT-2B.
-
-The distinction between **pair multiplicity** and **independent negative
-channel count** is fixed from this point forward.
+Repeated ordinates generate zero directions rather than additional
+independent negative channels. These null directions must be quotiented before
+independent negative-index counting. The imported source is EXT-2B.
 
 ---
 
@@ -766,85 +681,59 @@ channel count** is fixed from this point forward.
 ### WD-T24 — Finite distinct-frequency independence
 
 A finite linear combination of distinct exponential modes cannot vanish on a
-nonempty interval unless all coefficients vanish.  This is an internal
-finite-frequency rigidity theorem and supplies the local injectivity needed
-for the finite selected packet.
+nonempty interval unless all coefficients vanish.
 
 ### WD-T25 — No exact finite positive compensation
 
-For an anchored selected negative cell, no finite positive combination of the
-retained distinct-frequency Problem-1 modes can exactly reproduce the selected
-negative synthesis relation.  This prevents a finite positive helper set from
-trivially annihilating the selected defect.
+An anchored selected negative cell cannot be exactly reproduced by a finite
+positive combination of the retained distinct-frequency Problem-1 modes.
 
 ### WD-T26 — Zero-moment law
 
-For the raw residues associated with a selected negative pair combination,
-the residue coefficients satisfy
-[
-oxed{
-mathbf 1^{T}v=0.
-}
-]
+Selected negative raw residues satisfy
 
-This identity is not an imposed cancellation.  It is inherited from the
-selected pair structure.  It becomes the arithmetic entry point for the
-far-field analysis.
+~~~math
+\boxed{
+\mathbf 1^{T}v=0.
+}
+~~~
+
+This cancellation is inherited from selected pair structure; it is not an
+externally imposed moment condition.
 
 ---
 
 ## 7. Rational response and native compactness
 
-Define the selected rational response
-[
-R_v(z)=sum_jrac{v_j}{z-ho_j}.
-]
+Define
+
+~~~math
+R_v(z)=\sum_j\frac{v_j}{z-\rho_j}.
+~~~
 
 ### WD-T27 — Universal inverse-square far decay
 
-Expanding at infinity,
-[
-rac1{z-ho_j}
-=
-rac1z+rac{ho_j}{z^{2}}+O(|z|^{-3}),
-]
-so the zero-moment identity kills the (z^{-1}) term:
-[
-oxed{
-mathbf 1^{T}v=0
-Longrightarrow
+The zero-moment identity removes the \(z^{-1}\) Laurent term, giving
+
+~~~math
+\boxed{
 R_v(z)=O(|z|^{-2}).
 }
-]
+~~~
 
-WD-X07 shows sharpness.  For (v=(1,-1)) at two distinct points,
-[
-R_v(z)
-=
-rac{ho_1-ho_2}
-{(z-ho_1)(z-ho_2)}
-sim
-rac{ho_1-ho_2}{z^{2}}.
-]
-No universal (O(|z|^{-3})) improvement follows from zero moment alone.
+WD-X07 shows this order is sharp under zero moment alone.
 
 ### WD-T28 — Native Problem-1 compactness
 
-The native Problem-1 zero synthesis is Hilbert-Schmidt, and the corresponding
-off-axis helper covariance is trace class.  The proof uses the native
-Dirichlet-resolvent energy together with unit-height zeta zero counting.
-The zero-count input is the imported theorem pinned as EXT-3.
+The native Problem-1 zero synthesis is Hilbert-Schmidt and the associated
+off-axis helper covariance is trace class. The proof uses a native
+Dirichlet-resolvent estimate together with the imported unit-height zero count
+EXT-3.
 
-The consequence is metric-specific: native compactness does not license an
-unweighted sampling/frame conclusion.  This distinction is retained as a
-scope rule in the public package.
+### WD-T29 — Quantitative finite-head approximation
 
-### WD-T29 — Finite-head approximation
-
-A bounded-budget infinite-helper target can be approximated quantitatively by
-a finite head.  This is the correct finite reduction supplied by compactness:
-one gets approximation with controlled tail error, not an exact finite
-replacement unless additional structure is available.
+Compactness yields controlled approximation of an infinite helper target by a
+finite head. It does not by itself yield an exact finite replacement.
 
 ---
 
@@ -852,135 +741,111 @@ replacement unless additional structure is available.
 
 ### WD-T30 — Two-mode selected-preserving multiplier
 
-For two selected modes there exists a scalar multiplier that preserves the
-selected conditions while allowing one complementary mode to be cancelled.
-The construction is finite and exact.  It is used as a local algebraic tool,
-not as a global uniform annihilator.
+Under the two-mode hypotheses, a scalar multiplier can preserve the selected
+conditions while cancelling one chosen complementary mode. This is a finite
+algebraic tool, not a global uniform annihilator.
 
 ### WD-T31 — Far complementary tail
 
 Combine
-[
-R_v(mu)=O(|mu|^{-2})
-]
-with the unit-height zero count
-[
-N(T+1)-N(T)=O(log T).
-]
-Shell summation yields
-[
-sum_{nge R}rac{log n}{n^{2}}
-=
-O!left(rac{log R}{R}ight),
-]
-and hence
-[
-oxed{
-mathcal F_{v,R}[psi]
-=
-O!left(rac{log R}{R}ight)
-}
-]
-for the far complementary field under the stated bounded multiplier
-hypotheses.
 
-The estimate is downstream from the imported zero-counting premise; Lean
-certifies the shell deduction from an explicit formal premise, not the
-external zero-count theorem itself.
+~~~math
+R_v(\mu)=O(|\mu|^{-2})
+~~~
+
+with EXT-3:
+
+~~~math
+N(T+1)-N(T)=O(\log T).
+~~~
+
+Shell summation gives
+
+~~~math
+\boxed{
+\mathcal F_{v,R}[\psi]
+=
+O\!\left(\frac{\log R}{R}\right)
+}
+~~~
+
+under the stated bounded multiplier hypotheses.
 
 ### WD-T32 — Weighted completed next-jet field
 
-After the far tail is separated, the near complementary response is represented
-by a weighted next-jet of the completed (Xi)-function:
-[
-oxed{
-mathcal N_{v,R}[psi]
+After the far tail is separated, the near complementary response is
+
+~~~math
+\boxed{
+\mathcal N_{v,R}[\psi]
 =
-sum_{mu}^{m near}
-m_mupsi(mu)
-rac{H_v^{(m_mu)}(mu)}
-{Xi^{(m_mu)}(mu)}.
+\sum_{\mu}^{\rm near}
+m_\mu\psi(\mu)
+\frac{H_v^{(m_\mu)}(\mu)}
+{\Xi^{(m_\mu)}(\mu)}.
 }
-]
+~~~
 
-This is the finite/intermediate field that survives the zero-moment far-field
-gain.  It is the arithmetic object encountered by the persistent negative
-morphology.
+This is the finite/intermediate arithmetic field left after the zero-moment
+far-field gain.
 
-### WD-T33 — Adaptive cocancellation does not remove the obstruction
+### WD-T33 — Adaptive cocancellation guard
 
-At a fixed cutoff, one may choose an adaptive scalar to cancel a selected
-near-minus-archimedean contribution.  The corresponding prime term then
-collapses onto the far term.  The maneuver therefore reallocates the explicit
-formula rather than producing a source-free uniform lower bound.
-
-This is why an adaptive scalar is not a bypass of the next-jet obstruction.
+At a fixed cutoff, adaptive cancellation of one near-minus-archimedean
+contribution collapses the corresponding prime term onto the far term. The
+explicit formula is reallocated, not bypassed.
 
 ### WD-T34 — Finite prime-power translations
 
-For compact support radius (c), the compact-window explicit formula activates
-only prime powers satisfying
-[
-oxed{
-log n<2c.
-}
-]
-The set is finite.  At a threshold
-[
-2c=log n_0,
-]
-the source convention is strict at (c), while the threshold term appears in
-every sufficiently small strict right enlargement.  The right-limit
-bookkeeping therefore differs from the endpoint by at most the finite
-threshold contribution.
+For support radius \(c\), the compact-window explicit formula activates only
 
-The compact-window formula is imported and source-pinned as EXT-4.
+~~~math
+\boxed{
+\log n<2c.
+}
+~~~
+
+The active prime-power set is finite. At an equality threshold, the strict
+endpoint convention and the strict right limit differ only by the finite
+threshold contribution. The source is EXT-4.
 
 ### WD-T35 — Logarithmic form order
 
-The archimedean multiplier satisfies
-[
-Repsi!left(rac14+rac{it}{2}ight)
-=
-log|t|+O(1),
-]
-using the digamma asymptotic pinned as EXT-5.  The active prime contribution is
-a finite bounded trigonometric polynomial.  Therefore
-[
-oxed{
-Psi_c(t)=log|t|+O_c(1).
-}
-]
+Using EXT-5 together with EXT-4,
 
-The compact-window Weil form has logarithmic Fourier/form order.
+~~~math
+\boxed{
+\Psi_c(t)=\log|t|+O_c(1).
+}
+~~~
+
+The compact-window Weil form therefore has logarithmic Fourier/form order.
 
 ### WD-T36 — No free positive-Sobolev bootstrap
 
-Logarithmic form control does not imply a uniform estimate by any fixed
-positive-Sobolev weight.  Adding finitely many prime translations does not
-change that principal order and supplies no smoothing.
-
-Thus the neutral compact-window equation cannot be promoted automatically to
-a positive-Sobolev or quasianalytic rigidity statement.
+Logarithmic form control does not imply a uniform coercive estimate at any
+fixed positive Sobolev order. Finitely many prime translations do not change
+the principal order and add no smoothing.
 
 ### Part II summary
 
-The zeta-Weil specialization supplies the chain
-[
-oxed{
-mathbf 1^{T}v=0
-Longrightarrow
+The zeta-Weil specialization supplies
+
+~~~math
+\boxed{
+\mathbf 1^{T}v=0
+\Longrightarrow
 R_v(z)=O(|z|^{-2})
-Longrightarrow
-mathcal F_{v,R}
+\Longrightarrow
+\mathcal F_{v,R}
 =
-O!left(rac{log R}{R}ight),
+O\!\left(\frac{\log R}{R}\right),
 }
-]
-leaving the weighted completed next-jet field as the near arithmetic
-obstruction.  On the compact-window side, the operator has logarithmic
-principal order plus finitely many arithmetic translations, with no hidden
-regularity upgrade.
+~~~
+
+while the near field is the weighted completed-\(\Xi\) next-jet object. On the
+neutral side, the compact-window operator has logarithmic principal order plus
+finitely many arithmetic translations and no hidden regularity upgrade.
 
 ---
 
@@ -989,180 +854,141 @@ regularity upgrade.
 ## 9. WD-T37 — Persistent selected negative morphology
 
 Assume a fixed finite selected packet survives the right-limit process with a
-strict negative margin.  By WD-T16 the selected negative coordinate has a
-nonzero limit.  The normalized representative therefore retains selected
-custody, while WD-T19 records the corresponding endpoint representative
-blow-up when the ray is new at the boundary.
-
-The zeta-Weil specialization then supplies:
+strict negative margin. WD-T16 preserves a nonzero selected negative
+coordinate; WD-T07 transfers selected negativity to the full coefficient
+problem. The zeta-Weil chain then supplies:
 
 1. a nonzero selected raw residue source;
-2. the zero-moment law
-   [
-   mathbf1^{T}v=0;
-   ]
+2. the zero-moment law;
 3. inverse-square rational-response decay;
-4. the shell estimate
-   [
-   O((log R)/R)
-   ]
-   for the far complementary field;
-5. localization of the remaining arithmetic burden into the weighted near
-   completed-(Xi) next-jet field.
+4. the \(O((\log R)/R)\) far complementary estimate;
+5. localization of the remaining burden into the weighted completed-\(\Xi\)
+   next-jet field;
+6. the adaptive-cocancellation guard.
 
-Thus the public negative morphology is
-[
-oxed{
-egin{aligned}
-	ext{fixed-packet persistent negative defect}
-&Longrightarrow
-	ext{nonzero zero-moment selected source}\
-&Longrightarrow
-O(|z|^{-2})	ext{ far response}\
-&Longrightarrow
-O((log R)/R)	ext{ far field}\
-&Longrightarrow
-	ext{weighted near next-jet morphology}.
-end{aligned}
+Thus
+
+~~~math
+\boxed{
+\begin{aligned}
+\text{fixed-packet persistent negative defect}
+&\Longrightarrow
+\text{nonzero zero-moment selected source}\\
+&\Longrightarrow
+O(|z|^{-2})\text{ far response}\\
+&\Longrightarrow
+O((\log R)/R)\text{ far field}\\
+&\Longrightarrow
+\text{weighted near next-jet morphology}.
+\end{aligned}
 }
-]
+~~~
 
 The branch stops at
-[
-oxed{	exttt{AZ-NEXTJET-LOC}.}
-]
-Horizon 1 does not prove the actual-zeta localization/exclusion statement
-needed beyond that stop.
 
-The stronger
-[
-oxed{	exttt{C-ACTUAL-KPH-FLOOR}}
-]
-is retained as a special-packet sufficient refinement.  It is not silently
-substituted for the primary interface and is not a theorem of Horizon 1.
+~~~text
+AZ-NEXTJET-LOC
+~~~
+
+and the stronger special-packet refinement
+
+~~~text
+C-ACTUAL-KPH-FLOOR
+~~~
+
+remains downstream and open.
 
 ---
 
 ## 10. WD-T38 — Attained unit-gain neutral morphology
 
-Suppose the fixed selected critical branch is attained.  Then the residual
-screening map has an actual unit-gain vector.  After the carrier identification
-required by the theorem hypotheses, this produces a nonzero compact-window
-null mode
-[
-oxed{
+Suppose the fixed selected critical branch is attained and the theorem's
+finite-exception carrier identification is available. The unit-gain relation
+then gives a nonzero compact-window null mode
+
+~~~math
+\boxed{
 W_c k=0.
 }
-]
+~~~
 
-The compact-window arithmetic established in Part II gives:
+WD-T34–WD-T36 type the operator as:
 
 - finitely many active prime-power translations;
-- threshold-aware distinction between the endpoint and strict right limit;
-- logarithmic principal Fourier/form order;
+- threshold-aware endpoint/right-limit correction;
+- logarithmic principal order;
 - no automatic positive-Sobolev coercive gain;
 - global quadratic cancellation rather than termwise vanishing.
 
-The neutral morphology therefore has the schematic form
-[
-oxed{
-	ext{attained fixed-packet criticality}
-+
-	ext{carrier identification}
-Longrightarrow
-	ext{compact-window null mode of logarithmic order}.
-}
-]
+The branch stops at
 
-The remaining question is whether the compact-window null mode can be extended
-by zero while preserving the required operator equation through an exterior
-collar, including the finite right-limit correction at thresholds.  This is
-the open support interface
-[
-oxed{
-	exttt{AZ-FIN-WEIL-NULL-EXTENSION}.
-}
-]
+~~~text
+AZ-FIN-WEIL-NULL-EXTENSION
+~~~
 
-No unique-continuation, support-rigidity, or exterior-null theorem is imported
-upstream of this stop line.
+which asks for the actual support/null-extension rigidity needed beyond the
+compact-window null equation. No such theorem is imported upstream.
 
 ---
 
 ## 11. WD-T39 — Noncompact moving/background morphology
 
-The fixed-packet negative and neutral branches do not exhaust all global
-noncompact behavior.  WD-T39 separates three distinct custody questions.
+WD-T39 separates noncompactness before and after fixed selected custody is
+anchored.
 
-### 11.1 Full-coordinate moving escape
+### Full-coordinate moving escape
 
-For a uniformly bounded coefficient sequence, suppose every fixed block of a
-self-adjoint finite-coordinate exhaustion tends to zero.  Then the entire
-sequence converges weakly to zero:
-[
-oxed{
-Q_R w_n	o0 	ext{for every fixed }R
-Longrightarrow
-w_nightharpoonup0.
+For a uniformly bounded full coefficient sequence, if every fixed block of a
+self-adjoint finite-coordinate exhaustion tends to zero, then
+
+~~~math
+\boxed{
+w_n\rightharpoonup0.
 }
-]
+~~~
 
-This is a full-carrier statement.  Escape of selected negative coordinates
-alone is insufficient if a positive block remains anchored.
+This is a full-carrier condition, not merely selected-negative escape.
 
-### 11.2 Fixed selected-packet custody
+### Fixed selected-packet custody
 
-If a fixed finite selected packet retains positive selected negative mass,
-finite-dimensional compactness produces a strongly convergent subsequence of
-that selected coordinate with nonzero limit.  Therefore full-coordinate
-moving escape is impossible once the selected ray is genuinely anchored.
+If one fixed finite selected packet retains positive selected negative mass,
+finite-dimensional compactness produces a nonzero strong selected-coordinate
+limit. WD-X05 shows the sharp opposite situation when the selected
+one-dimensional sector itself moves through infinitely many coordinates.
 
-WD-X05 shows the sharp opposite situation: if the selected one-dimensional
-sector itself moves through infinitely many coordinates, the nested tail
-intersection can be trivial even though every stage contains a normalized
-strictly negative vector with signature tending to zero.
+### Unselected-background trichotomy
 
-### 11.3 Unselected-background compactness trichotomy
+After a fixed selected negative ray is anchored, the normalized unselected
+background has, after a subsequence, one of three regimes:
 
-After a fixed selected negative ray has been anchored, let (b_n) denote the
-normalized unselected negative background.  After passage to a subsequence,
-one of three regimes occurs:
-[
-oxed{
-egin{array}{ll}
-mathbf{B_infty}:&
-|b_n|	oinfty,\[1mm]
-mathbf{B_T}:&
-b_n	ext{ bounded with positive tail/weak norm loss},\[1mm]
-mathbf{B_F}:&
-b_n	o b	ext{ strongly}.
-end{array}
+~~~math
+\boxed{
+\begin{array}{ll}
+\mathbf{B_\infty}:&
+\|b_n\|\to\infty,\\
+\mathbf{B_T}:&
+b_n\text{ bounded with positive tail/weak norm loss},\\
+\mathbf{B_F}:&
+b_n\to b\text{ strongly}.
+\end{array}
 }
-]
+~~~
 
-In the bounded regimes a weak background limit cannot erase an already
-anchored selected negative ray.  If the selected limit has margin
-[
-[y,y]_Jle-kappa,
-qquad
-kappa>0,
-]
-then the full weak limit satisfies
-[
-oxed{
-[Y_{m full},Y_{m full}]_{m full}
-le
--kappa-|b|^{2}<0.
+If the selected limit has strict margin \(-\kappa\), then every bounded weak
+background limit satisfies
+
+~~~math
+\boxed{
+[Y_{\rm full},Y_{\rm full}]_{\rm full}
+\le
+-\kappa-\|b\|^2<0.
 }
-]
+~~~
 
-In the (mathbf{B_F}) regime the entire negative sector converges strongly.
-The positive coordinate remains, in general, only weakly convergent; full
-strong coefficient convergence requires an additional positive-coordinate
-compactness hypothesis.
+Background escape can prevent strong full-coefficient compactness, but it does
+not erase an already anchored fixed selected ray.
 
-WD-T39 introduces no new RH-facing interface.  It classifies where compactness
-can fail before or around the two fixed-packet morphologies.
+WD-T39 introduces no new RH-facing interface.
 
 ---
 
@@ -1170,144 +996,92 @@ can fail before or around the two fixed-packet morphologies.
 
 ## 12. Canonical sharpness witnesses
 
-The examples below are not proof-producing substitutes for the theorems.
-Each is attached to the exact theorem boundary it sharpens.
-
 ### WD-X01 — Finite negativity can screen completely
 
-There is an explicit rank-one model in which every finite positive truncation
-has one negative direction,
-[
-D_N=-rac1{N+1},
-]
-while the restored infinite positive channel gives
-[
-D=0.
-]
-This shows that WD-T06 cannot be strengthened to persistence of finite
-truncation negativity under infinite positive restoration.
+Every finite truncation may be strictly negative while the restored infinite
+positive complement gives zero defect. This is sharpness for WD-T06.
 
 ### WD-X02 — Critical norm one need not be attained
 
-The canonical audit model is multiplication by (t) on (L^2(0,1)):
-[
-|M_t|=1
-]
-but no nonzero vector attains the norm.  The Lean certificate uses an
-equivalent diagonal (ell^2) realization.  In either model every nonzero
-vector remains strictly positive while approximate-neutral directions exist.
+The canonical audit model uses multiplication by \(t\) on \(L^2(0,1)\). The
+Lean certificate uses an equivalent diagonal \(\ell^2\) model. In both,
 
-Thus
-[
-oxed{
-|X|=1
-
-otRightarrow
-	ext{actual neutral vector}
+~~~math
+\boxed{
+\|X\|=1
+\not\Rightarrow
+\text{actual neutral vector}.
 }
-]
-in infinite dimension.
+~~~
+
+This sharpens WD-T04.
 
 ### WD-X03 — Individual screening is not compositional
 
-With two scalar negative channels of size (r),
-[
-rac1{sqrt2}<r<1,
-]
-each channel is separately contractively screenable, but the combined map has
-norm
-[
-sqrt2,r>1.
-]
-This is the sharpness witness for the shared-budget statement WD-T09.
+Two separately contractive scalar screens can have combined norm greater than
+one. This sharpens the joint-budget theorem WD-T09.
 
 ### WD-X04 — Direct compression does not uniformly control shorting
 
-For
-[
-K_r=
-egin{pmatrix}
-1&r\
-r&1
-end{pmatrix},
-qquad
-0<r<1,
-]
-the direct selected compression is (1), while the Schur-shortened covariance
-is
-[
-1-r^{2}downarrow0.
-]
-Thus direct compression alone does not provide a uniform family-level shorted
-floor.
+A family with direct compression identically \(1\) can have shorted covariance
+\(1-r^2\downarrow0\). This sharpens WD-T13.
 
 ### WD-X05 — Moving finite sectors can lose every persistent ray
 
-Choose normalized strictly negative vectors supported on the (n)-th
-positive and negative coordinates with signature tending to zero.  The
-corresponding nested coordinate-tail sectors contain every sufficiently late
-vector, but
-[
-oxed{
-igcap_Nmathcal A_N={0}.
+Normalized strictly negative vectors may move through successive coordinates
+so that each late vector lies in each earlier tail sector while
+
+~~~math
+\boxed{
+\bigcap_N\mathcal A_N=\{0\}.
 }
-]
-Finite dimension at each stage is therefore not enough; the finite selected
-sector must be fixed.
+~~~
+
+This sharpens WD-T16, WD-T17, and the moving-sector branch of WD-T39.
 
 ### WD-X06 — Critical weak limits can become negative
 
-Let
-[
-y_n
-=
-left(
-rac1{sqrt2}e_n,
-rac1{sqrt2}
-ight).
-]
-Then
-[
-|y_n|=1,
-qquad
-[y_n,y_n]_J=0,
-]
-but
-[
-e_nightharpoonup0
-]
-and hence
-[
-y_nightharpoonup
-left(
-0,rac1{sqrt2}
-ight)
-]
+With
+
+~~~math
+y_n=
+\left(
+\frac1{\sqrt2}e_n,
+\frac1{\sqrt2}
+\right),
+~~~
+
+one has \(\|y_n\|=1\) and \([y_n,y_n]_J=0\), but
+
+~~~math
+y_n\rightharpoonup
+\left(
+0,\frac1{\sqrt2}
+\right)
+~~~
+
 with
-[
-oxed{
-[y,y]_J=-rac12.
+
+~~~math
+\boxed{
+[y,y]_J=-\frac12.
 }
-]
+~~~
+
 This realizes the negative-fall-through branch of WD-T17.
 
 ### WD-X07 — Inverse-square far decay is sharp
 
-For
-[
-v=(1,-1)
-]
-at two distinct selected points,
-[
-mathbf1^{T}v=0
-]
-but the first moment is nonzero, and
-[
+For two distinct selected points and \(v=(1,-1)\),
+
+~~~math
 R_v(z)
-sim
-rac{ho_1-ho_2}{z^{2}}.
-]
-Therefore zero moment alone does not imply (O(|z|^{-3})).
+\sim
+\frac{\rho_1-\rho_2}{z^2}.
+~~~
+
+Zero moment alone therefore cannot imply universal cubic far decay. This
+sharpens WD-T27.
 
 ---
 
@@ -1317,151 +1091,117 @@ Therefore zero moment alone does not imply (O(|z|^{-3})).
 
 Horizon 1 uses two independent status axes.
 
-The **mathematical standing** of a result records what sort of claim it is:
-internal proof, derived statement, imported theorem plus specialization,
-conditional composite, scope rule, example, or open interface.
+The **mathematical standing** records whether an item is an internal proof,
+derived statement, imported theorem plus specialization, conditional
+composite, example, scope rule, or open interface.
 
-The **formal verification standing** records what Lean verifies.  The durable
-labels are:
-[
-egin{array}{l}
-	exttt{LEAN-CERTIFIED},\
-	exttt{LEAN-CERTIFIED-FROM-IMPORTED-PREMISE},\
-	exttt{LEAN-BLOCKED},\
-	exttt{SCOPE-ONLY}.
-end{array}
-]
+The **formal verification standing** records what Lean verifies:
 
-The distinction is essential.  For example, when a Lean theorem consumes an
-explicit formal premise representing zeta zero counting or the compact-window
-formula, Lean certifies the downstream deduction from that premise.  It does
-not thereby certify the external analytic theorem itself.
+~~~text
+LEAN-CERTIFIED
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE
+LEAN-BLOCKED
+SCOPE-ONLY
+~~~
+
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE means that Lean certifies a downstream
+deduction from an explicit premise; it does not certify the external theorem
+represented by that premise.
 
 At the close of LEAN-H1, every stable Horizon-1 theorem and example has a
-durable final formal status.  Exact declaration maps and CI certificate
-evidence are recorded in [Lean Status](LEAN_STATUS.md).
+durable final formal status. See
+[Public Verification Matrix](PUBLIC_VERIFICATION_MATRIX.md) and
+[Lean Status](LEAN_STATUS.md).
 
 ---
 
 ## 14. Imported-source custody
 
-The public theory has a small, explicit set of load-bearing external inputs.
+The load-bearing external inputs are:
 
-- **EXT-1 — Douglas factorization.** Used directly by WD-T02 and downstream
-  reduced-screening statements.
-- **EXT-2A/2B — Bombieri finite inertia and multiplicity.** Used by WD-T22
-  and WD-T23.
-- **EXT-3 — Unit-height zeta zero counting.** Used by WD-T28 and WD-T31.
-- **EXT-4 — Compact-window geometric explicit formula.** Used by WD-T34,
-  WD-T35, and WD-T38.
-- **EXT-5 — Digamma asymptotic.** Used by WD-T35.
+- EXT-1 — Douglas factorization;
+- EXT-2A/2B — Bombieri finite inertia and multiplicity;
+- EXT-3 — unit-height zeta zero counting;
+- EXT-4 — compact-window geometric explicit formula;
+- EXT-5 — digamma asymptotic.
 
-These are source-pinned to exact theorem or equation locations in
-[Imported Source Pins](IMPORTED_SOURCE_PINS.md).  Contextual sources are not
-promoted to load-bearing status merely because they motivate the same
-geometry.
+Exact theorem/equation pins and convention transfers are recorded in
+[Imported Source Pins](IMPORTED_SOURCE_PINS.md).
 
 ---
 
 ## 15. Outputs delivered to the actual-zeta boundary
 
 The negative branch reaches
-[
-oxed{
-	exttt{AZ-NEXTJET-LOC}
-}
-]
-after the zero-moment law, inverse-square far response, and
-(O((log R)/R)) shell reduction have been proved.
 
-A stronger special-packet sufficient refinement is tracked as
-[
-oxed{
-	exttt{C-ACTUAL-KPH-FLOOR}.
-}
-]
+~~~text
+AZ-NEXTJET-LOC
+~~~
+
+after the zero-moment law, inverse-square far response, and
+\(O((\log R)/R)\) far-shell reduction. The stronger special-packet refinement
+C-ACTUAL-KPH-FLOOR is tracked separately.
 
 The attained neutral branch reaches
-[
-oxed{
-	exttt{AZ-FIN-WEIL-NULL-EXTENSION}
-}
-]
-after the compact-window null equation has been reduced to a logarithmic-order
-operator with finitely many arithmetic translations and the endpoint/right
-threshold distinction has been isolated.
 
-These are not theorem IDs.  They are open downstream obligations.
+~~~text
+AZ-FIN-WEIL-NULL-EXTENSION
+~~~
 
-The noncompact morphology adds no new actual-zeta interface; it determines
-which coefficient-custody failures prevent entry into a fixed-packet branch
-and which background failures remain possible after a selected ray is
-anchored.
+after reduction to a compact-window null equation for a logarithmic-order
+operator with finitely many arithmetic translations.
+
+These are open downstream obligations, not theorem IDs.
+
+The noncompact morphology adds no new actual-zeta interface; it classifies
+coefficient-custody failures around the fixed-packet branches.
 
 ---
 
 ## 16. Scope rules
 
-Several negative statements are structural jurisdiction rules rather than
-standalone theorems.
+The public package retains five jurisdiction rules.
 
-1. Unweighted sampling or frame statements do not automatically transfer to
-   native Problem-1 coercivity without an explicit metric comparison.
-
+1. Unweighted sampling/frame statements do not transfer automatically to
+   native Problem-1 coercivity.
 2. Prime, pole, and archimedean explicit-formula terms are an alternate
    representation of the Weil form, not extra positive screening coordinates.
-
-3. Neutrality is a global quadratic cancellation and does not imply termwise
-   vanishing of explicit-formula contributions.
-
-4. Weighted near next-jet localization does not by itself produce a
-   source-free uniform lower bound.
-
-5. Unselected-background escape cannot be used to erase an already anchored
-   fixed selected negative ray.
-
-These rules prevent category errors when the abstract defect calculus is
-translated back into arithmetic language.
+3. Neutrality is a global quadratic cancellation, not termwise vanishing.
+4. Weighted near next-jet localization does not imply a source-free uniform
+   lower bound.
+5. Unselected-background escape does not erase an already anchored fixed
+   selected negative ray.
 
 ---
 
 ## 17. Conclusion
 
-Horizon 1 produces an independent Weil-defect theory with a fully audited
-operator core, a typed zeta-Weil specialization, a complete fixed-packet and
-noncompact morphology classification, sharpness witnesses, and an exhausted
-Lean certification track.
+Horizon 1 produces an independent Weil-defect theory with:
 
-Its central structural conclusion is not a proof of RH.  It is a reduction of
-the possible defect mechanisms to sharply separated classes:
+- a fully audited abstract operator core;
+- a typed zeta-Weil specialization;
+- fixed-packet negative and neutral morphology theorems;
+- a separate noncompact moving/background morphology;
+- seven sharpness witnesses;
+- an exhausted Lean certification track;
+- explicit imported-source custody;
+- explicit downstream actual-zeta interfaces.
 
-[
-oxed{
-egin{array}{c}
-	ext{fixed selected negative persistence},\
-	ext{fixed attained-neutral persistence},\
-	ext{moving selected-sector escape},\
-	ext{unselected-background escape},\
-	ext{fixed full-divisor negative weak limit}.
-end{array}
+Its central structural conclusion is not a proof of RH. It is a classification
+of defect mechanisms and a precise transfer of responsibility to the remaining
+actual-zeta interface problem.
+
+The boundary is:
+
+~~~math
+\boxed{
+\text{independent Weil-defect theory}
+\quad\Vert\quad
+\text{actual-zeta interface problem}.
 }
-]
+~~~
 
-For the two fixed-packet branches, the remaining arithmetic responsibility is
-exposed at named interfaces rather than hidden inside the operator theory.
-
-The resulting boundary is therefore explicit:
-
-[
-oxed{
-	ext{independent Weil-defect theory}
-quadVertquad
-	ext{actual-zeta interface problem}.
-}
-]
-
-Discharging the open actual-zeta interfaces would be new work beyond this
-manuscript.  No such discharge is assumed here.
+Discharging the open interfaces is new work beyond this manuscript.
 
 ---
 
@@ -1469,20 +1209,20 @@ manuscript.  No such discharge is assumed here.
 
 ## Appendix A. Stable theorem index
 
-See `PUBLIC_THEOREM_INDEX.md` when assembled.
+See [Public Theorem Index](PUBLIC_THEOREM_INDEX.md).
 
 ## Appendix B. Verification matrix
 
-See `PUBLIC_VERIFICATION_MATRIX.md` when assembled.
+See [Public Verification Matrix](PUBLIC_VERIFICATION_MATRIX.md).
 
 ## Appendix C. Dependency map
 
-See `PUBLIC_DEPENDENCY_MAP.md` when assembled.
+See [Public Dependency Map](PUBLIC_DEPENDENCY_MAP.md).
 
 ## Appendix D. Examples and sharpness
 
-See `PUBLIC_EXAMPLES.md` when assembled.
+See [Public Examples and Sharpness](PUBLIC_EXAMPLES.md).
 
 ## Appendix E. RH-facing interfaces
 
-See `RH_INTERFACE_APPENDIX.md` when assembled.
+See [RH Interface Appendix](RH_INTERFACE_APPENDIX.md) when assembled.
