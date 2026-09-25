@@ -146,12 +146,12 @@ Only after this exhaustion condition is met does the project resume:
 - **LEAN-H1:** ACTIVE.
 - **H1-P5:** PAUSED until LEAN-H1 exhaustion.
 - **Active phase:** LEAN-H1-P1 — algebraic and finite-dimensional core.
-- **Active cursor:** WD-X02 — critical screening without an attained neutral vector.
+- **Active cursor:** WD-X05 — moving sectors can lose every persistent ray.
 
 ```math
 \boxed{
-\texttt{LEAN-H1-P1 / WD-X02 — CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}
+\texttt{LEAN-H1-P1 / WD-X05 — MOVING SECTORS CAN LOSE EVERY PERSISTENT RAY}
 }
 ```
 
-Implementation alone does not promote WD-X02 to `LEAN-CERTIFIED`; promotion requires a successful pinned CI build under the certification rule above. See [Lean Status](LEAN_STATUS.md) for the current declaration map and certificate evidence.
+WD-X02 is now `LEAN-CERTIFIED`. The active queue advances to WD-X05; certification still requires a successful pinned CI build under the rule above. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence.
