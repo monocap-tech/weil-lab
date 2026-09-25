@@ -384,7 +384,7 @@ the **boundary amplification cost** of $y$ is
 \inf
 \left\{
 \|h\|:
-h\in\mathscr H_t,\ 
+h\in\mathscr H_t,\
 \|Th-y\|\le\varepsilon
 \right\}.
 ```
@@ -827,7 +827,7 @@ the **right-limit compact-window operator** is the operator seen under arbitrari
 \mathcal R_{\rm pole}.
 ```
 
-Away from a prime-power threshold it equals \(\mathcal W_c^{\rm ext}\). At a threshold it differs by the finite equality-threshold translation terms.
+Away from a prime-power threshold it equals $\mathcal W_c^{\rm ext}$. At a threshold it differs by the finite equality-threshold translation terms.
 
 ## P4 audit clarification — fixed full-divisor limit
 
