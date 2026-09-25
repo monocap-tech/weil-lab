@@ -5,9 +5,9 @@ This page is the compact status surface for Horizon 1.
 The canonical theorem-by-theorem inventory is [Theorem Ledger](THEOREM_LEDGER.md).
 The canonical dependency/source audit is [Dependency Audit](DEPENDENCY_AUDIT.md).
 
-## Two-axis status model
+## Status model
 
-A theorem now carries two independent statuses.
+At the H1-P4 documentation layer, a theorem carries two independent classifications: **mathematical standing** and **audit/source verification status**. LEAN-H1 adds a third, separate **formal-certification status**, recorded in [Lean Status](LEAN_STATUS.md). None of these axes should be inferred from another.
 
 ### Mathematical standing
 
@@ -19,7 +19,7 @@ A theorem now carries two independent statuses.
 - **SCOPE** — jurisdiction rule rather than an independent theorem.
 - **OPEN** — downstream obligation not established.
 
-### Verification status
+### H1-P4 audit/source verification status
 
 - **P4-AUDIT-PENDING** — internal proof has not yet completed the Horizon-1 line-by-line audit.
 - **P4-AUDIT-PASSED** — Horizon-1 internal audit passed after any recorded corrections; not independent certification.
