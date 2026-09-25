@@ -5,23 +5,25 @@ This track temporarily preempts H1-P5.
 
 The project does **not** resume public-package assembly until LEAN-H1 is exhausted under the current Horizon-1 theorem inventory.
 
+This page is the **control surface** for the formalization queue. Certificate evidence and historical run records belong in [Lean Status](LEAN_STATUS.md); this page records only the current phase structure, completion rule, and active cursor.
+
 ## Toolchain
 
 Pinned baseline:
 
-\[
+```math
 \boxed{
 \text{Lean 4.34.0}
 \qquad
 \text{mathlib v4.34.0}.
 }
-\]
+```
 
 The project uses:
 
-- \`lean-toolchain\`;
-- \`lakefile.toml\`;
-- the \`WeilDefect\` Lean namespace;
+- `lean-toolchain`;
+- `lakefile.toml`;
+- the `WeilDefect` Lean namespace;
 - GitHub Actions build verification.
 
 ## Certification rule
@@ -29,7 +31,7 @@ The project uses:
 A theorem is **LEAN-CERTIFIED** only if:
 
 1. its Lean declaration exists in the repository;
-2. the declaration contains no \`sorry\`, \`admit\), or project \`axiom\`;
+2. the declaration contains no `sorry`, `admit`, or project `axiom`;
 3. the pinned Lean/mathlib build succeeds in CI;
 4. the theorem-ID-to-declaration map is recorded durably.
 
@@ -37,11 +39,11 @@ A proof downstream from an imported external theorem is not called a full Lean c
 
 Instead the status is:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
 }
-\]
+```
 
 The imported premise itself remains separately unformalized until its source theorem is reconstructed in Lean.
 
@@ -52,7 +54,7 @@ The imported premise itself remains separately unformalized until its source the
 - initialize Lake/mathlib project;
 - pin toolchain;
 - establish CI;
-- prohibit \`sorry\`, \`admit\`, and project \`axiom\`;
+- prohibit `sorry`, `admit`, and project `axiom`;
 - certify a small vertical slice of algebraic theorem/example statements.
 
 ### LEAN-H1-P1 — Algebraic and finite-dimensional core — ACTIVE
@@ -118,7 +120,7 @@ This phase may terminate with exact formalization blockers if reconstructing an 
 
 LEAN-H1 is exhausted only when every stable Horizon-1 theorem/example has one of the following durable states:
 
-\[
+```math
 \boxed{
 \begin{array}{l}
 \text{LEAN-CERTIFIED},\\
@@ -127,22 +129,29 @@ LEAN-H1 is exhausted only when every stable Horizon-1 theorem/example has one of
 \text{SCOPE-ONLY}.
 \end{array}
 }
-\]
+```
 
 A theorem may not remain merely “not attempted.”
 
 Only after this exhaustion condition is met does the project resume:
 
-\[
+```math
 \boxed{
 \texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}.
 }
-\]
+```
 
-## Current cursor
+## Current control state
 
-\[
+- **LEAN-H1:** ACTIVE.
+- **H1-P5:** PAUSED until LEAN-H1 exhaustion.
+- **Active phase:** LEAN-H1-P1 — algebraic and finite-dimensional core.
+- **Active cursor:** WD-X02 — critical screening without an attained neutral vector.
+
+```math
 \boxed{
-\texttt{LEAN-H1-P1 / WD-X02 — CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}.
+\texttt{LEAN-H1-P1 / WD-X02 — CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}
 }
-\]
+```
+
+Implementation alone does not promote WD-X02 to `LEAN-CERTIFIED`; promotion requires a successful pinned CI build under the certification rule above. See [Lean Status](LEAN_STATUS.md) for the current declaration map and certificate evidence.
