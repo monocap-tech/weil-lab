@@ -1,5 +1,5 @@
 # Theorem Ledger
-## H1-P4.0 — Stable public labels and standing/verification split
+**H1-P4.0 — Stable public labels and standing/verification split**
 
 This ledger is the canonical public index for Horizon 1.
 
@@ -34,7 +34,7 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 
 ---
 
-# A. Abstract defect calculus
+## A. Abstract defect calculus
 
 | Stable ID | Historical alias | Statement | Standing | Verification | Canonical source |
 | --- | --- | --- | --- | --- | --- |
@@ -60,7 +60,7 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 
 ---
 
-# B. Zeta-Weil zero-side specialization
+## B. Zeta-Weil zero-side specialization
 
 | Stable ID | Historical alias | Statement | Standing | Verification | Canonical source |
 | --- | --- | --- | --- | --- | --- |
@@ -77,7 +77,7 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 
 ---
 
-# C. Explicit-formula arithmetic attachment
+## C. Explicit-formula arithmetic attachment
 
 | Stable ID | Historical alias | Statement | Standing | Verification | Canonical source |
 | --- | --- | --- | --- | --- | --- |
@@ -91,7 +91,7 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 
 ---
 
-# D. Morphology theorems
+## D. Morphology theorems
 
 | Stable ID | Historical aliases | Statement | Standing | Verification | Canonical source |
 | --- | --- | --- | --- | --- | --- |
@@ -101,7 +101,7 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 
 ---
 
-# E. Examples and sharpness witnesses
+## E. Examples and sharpness witnesses
 
 Examples are not assigned theorem IDs.
 
@@ -119,7 +119,7 @@ All examples have verification status **EXAMPLE-AUDIT-PASSED**. See [Examples an
 
 ---
 
-# F. Scope rules
+## F. Scope rules
 
 These are load-bearing jurisdiction rules, not theorems.
 
@@ -135,7 +135,7 @@ Verification status: **SCOPE-ONLY**.
 
 ---
 
-# G. Open interfaces
+## G. Open interfaces
 
 These are deliberately not theorem IDs.
 
@@ -149,7 +149,7 @@ PAP/MTP closure and RH remain outside Horizon 1.
 
 ---
 
-# H. Publication rule
+## H. Publication rule
 
 A stable theorem ID is a name, not a certification mark.
 
