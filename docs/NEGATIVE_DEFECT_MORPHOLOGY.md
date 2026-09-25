@@ -623,7 +623,7 @@ This is the exact arithmetic morphology of the complementary divisor seen by the
 
 ### P3-N6 — Weighted next-jet morphology theorem
 
-Every fixed-packet persistent negative endpoint defect admits a nonzero finite zero-moment selected source $v$ such that, after an arbitrarily small far-tail error, all complementary-divisor dependence is carried by the weighted finite/intermediate next-jet field
+Every fixed-packet persistent negative endpoint defect admits a nonzero finite zero-moment selected source $v$ such that, for each fixed bounded selected-preserving multiplier $\psi$, the complementary-divisor response decomposes into the weighted finite/intermediate next-jet field
 
 ```math
 \boxed{
@@ -636,6 +636,8 @@ H_v^{(m_\mu)}(\mu)
 }.
 }
 ```
+
+plus the far remainder $\mathcal F_{v,R}[\psi]$, which tends to zero at the rate supplied by P3-N5 as $R\to\infty$.
 
 **Dependencies:** P3-N4, P3-N5, ZW2-T3, ZW2-T4.
 
@@ -667,7 +669,7 @@ Those belong to stronger special packet classes or to downstream actual-zeta que
 
 What P3-N6 does say is exact:
 
-> whenever the complementary divisor must participate in the scalar explicit-formula balance for this fixed selected source, its participation is exhausted—up to a vanishing far error—by the weighted near next-jet field.
+> for a fixed selected source and fixed bounded selected-preserving multiplier, the complementary-divisor contribution is the near weighted next-jet field plus a far remainder that vanishes as the cutoff tends to infinity.
 
 ---
 
