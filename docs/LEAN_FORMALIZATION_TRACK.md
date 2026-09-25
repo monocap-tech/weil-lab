@@ -143,6 +143,6 @@ Only after this exhaustion condition is met does the project resume:
 
 \[
 \boxed{
-\texttt{LEAN-H1-P1 / ALGEBRAIC AND FINITE-DIMENSIONAL CORE}.
+\texttt{LEAN-H1-P5 / WD-T38 / P3-U1…P3-U7 — ATTAINED UNIT-GAIN NEUTRAL DEFECT MORPHOLOGY}.
 }
 \]
