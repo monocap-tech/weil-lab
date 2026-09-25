@@ -829,9 +829,9 @@ while
 \#\{\sigma_j(Y)=1\}.
 ```
 
-Therefore fixed finite-sector criticality always produces an attained neutral mode.
+Therefore, for the finite-dimensional residual screening map $Y$ in this legitimate background-reduced setting, critical norm one is attained and produces a neutral mode.
 
-The abstract non-attained critical branch from H1-P1.0 must come from an infinite or moving sector, not from a single fixed finite selected packet.
+Within this reduced-screening setting, the non-attained critical branch from H1-P1.0 cannot come from one fixed finite selected packet; it requires an infinite/moving selected sector or another limiting operation that destroys the fixed finite-dimensional compactness used here.
 
 ### Main conceptual result
 
@@ -852,7 +852,7 @@ but
 
 Those remain sensitive to background coupling and complement shorting.
 
-### Next cursor
+### Historical handoff from H1-P1.1
 
 ```math
 \boxed{
@@ -860,7 +860,7 @@ Those remain sensitive to background coupling and complement shorting.
 }
 ```
 
-The next pass should abstract the remaining ingredient that has not yet been isolated:
+At the close of H1-P1.1, the next pass was assigned to abstract the remaining ingredient not yet isolated at that checkpoint:
 
 - a monotone support/observation filtration;
 - right-limit analysis spaces;
@@ -868,4 +868,4 @@ The next pass should abstract the remaining ingredient that has not yet been iso
 - representative blow-up at a critical endpoint;
 - when a moving finite-sector family can generate the approximate-neutral boundary excluded for a fixed finite sector.
 
-That should complete the abstract machinery needed before H1-P2.
+That handoff was subsequently completed in H1-P1.2 before H1-P2.
