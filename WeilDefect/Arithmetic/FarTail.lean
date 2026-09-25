@@ -27,7 +27,6 @@ private theorem hasDerivAt_logarithmicTailKernel
       field_simp [hy]
   · simp only [Pi.pow_apply, id_eq, Nat.cast_ofNat, Nat.reduceSub, pow_one, mul_one]
     field_simp [hx]
-    ring
 
 /-- The logarithmic tail kernel is nonnegative on [1,∞). -/
 theorem logarithmicTailKernel_nonneg
@@ -73,7 +72,7 @@ private theorem hasDerivAt_logarithmicTailAntideriv
     hnum.div (hasDerivAt_id x) hx
   convert hquot.neg using 1
   · funext y
-    simp only [Pi.neg_apply, Pi.div_apply, id_eq, div_eq_mul_inv]
+    simp only [Pi.neg_apply, Pi.mul_apply, Pi.inv_apply, id_eq, div_eq_mul_inv]
     ring
   · unfold logarithmicTailKernel
     simp only [id_eq]
