@@ -24,7 +24,6 @@ theorem problemOneDenominator_problemOneFreq (gamma : ℂ) :
     problemOneDenominator (problemOneFreq gamma) =
       problemOneGreenDenom gamma := by
   simp [problemOneDenominator, problemOneFreq, problemOneGreenDenom, mul_pow, Complex.I_sq]
-  ring
 
 /-- Real Dirichlet basis equal to 0 at -t and 1 at t. -/
 noncomputable def dirichletRightReal (t x : ℝ) : ℝ :=
@@ -35,10 +34,10 @@ noncomputable def dirichletLeftReal (t x : ℝ) : ℝ :=
   Real.sinh ((t - x) / 2) / Real.sinh t
 
 noncomputable def dirichletRightBasis (t x : ℝ) : ℂ :=
-  (dirichletRightReal t x : ℂ)
+  Complex.ofRealCLM (dirichletRightReal t x)
 
 noncomputable def dirichletLeftBasis (t x : ℝ) : ℂ :=
-  (dirichletLeftReal t x : ℂ)
+  Complex.ofRealCLM (dirichletLeftReal t x)
 
 theorem dirichletRightReal_neg (t : ℝ) :
     dirichletRightReal t (-t) = 0 := by
@@ -136,6 +135,7 @@ theorem hasDerivAt_dirichletRightReal
       ((hasDerivAt_const x t).add (hasDerivAt_id x)).div_const 2
     convert h using 1
     · funext y
+      simp only [Pi.add_apply, Pi.sub_apply, id_eq]
       ring
     · ring
   have hs := hinner.sinh
@@ -156,14 +156,15 @@ theorem hasDerivAt_dirichletRightReal_deriv
       ((hasDerivAt_const x t).add (hasDerivAt_id x)).div_const 2
     convert h using 1
     · funext y
+      simp only [Pi.add_apply, Pi.sub_apply, id_eq]
       ring
     · ring
   have hc := hinner.cosh
   have h := hc.div_const (2 * Real.sinh t)
   convert h using 1
   · ring
-  · simp [dirichletRightReal]
-    ring
+  · simp [dirichletRightReal, div_eq_mul_inv]
+    ring_nf
 
 /-- First derivative of the left real Dirichlet basis. -/
 theorem hasDerivAt_dirichletLeftReal
@@ -181,6 +182,7 @@ theorem hasDerivAt_dirichletLeftReal
       ((hasDerivAt_const x t).sub (hasDerivAt_id x)).div_const 2
     convert h using 1
     · funext y
+      simp only [Pi.add_apply, Pi.sub_apply, id_eq]
       ring
     · ring
   have hs := hinner.sinh
@@ -201,6 +203,7 @@ theorem hasDerivAt_dirichletLeftReal_deriv
       ((hasDerivAt_const x t).sub (hasDerivAt_id x)).div_const 2
     convert h using 1
     · funext y
+      simp only [Pi.add_apply, Pi.sub_apply, id_eq]
       ring
     · ring
   have hc := hinner.cosh
@@ -208,8 +211,8 @@ theorem hasDerivAt_dirichletLeftReal_deriv
   have h := hneg.div_const (2 * Real.sinh t)
   convert h using 1
   · ring
-  · simp [dirichletLeftReal]
-    ring
+  · simp [dirichletLeftReal, div_eq_mul_inv]
+    ring_nf
 
 theorem hasDerivAt_dirichletRightBasis
     (t x : ℝ) :
@@ -243,9 +246,7 @@ theorem iteratedDeriv_two_dirichletRightBasis
           ((Real.cosh ((t + y) / 2) / (2 * Real.sinh t) : ℝ) : ℂ) := by
     funext y
     exact (hasDerivAt_dirichletRightBasis t y).deriv
-  change deriv (deriv (dirichletRightBasis t)) x =
-    (1 / 4 : ℂ) * dirichletRightBasis t x
-  rw [h1]
+  rw [iteratedDeriv_succ, iteratedDeriv_one, h1]
   have h2 :=
     (hasDerivAt_dirichletRightReal_deriv t x).ofReal_comp
   simpa [dirichletRightBasis] using h2.deriv
@@ -260,9 +261,7 @@ theorem iteratedDeriv_two_dirichletLeftBasis
           ((-Real.cosh ((t - y) / 2) / (2 * Real.sinh t) : ℝ) : ℂ) := by
     funext y
     exact (hasDerivAt_dirichletLeftBasis t y).deriv
-  change deriv (deriv (dirichletLeftBasis t)) x =
-    (1 / 4 : ℂ) * dirichletLeftBasis t x
-  rw [h1]
+  rw [iteratedDeriv_succ, iteratedDeriv_one, h1]
   have h2 :=
     (hasDerivAt_dirichletLeftReal_deriv t x).ofReal_comp
   simpa [dirichletLeftBasis] using h2.deriv
@@ -325,7 +324,7 @@ theorem problemOneGreenQ_shell_bound
         ≤ (((n : ℝ) + 1) ^ 2)⁻¹ := by
       exact (inv_le_inv₀ hdenpos (sq_pos_of_pos hnpos)).2 hden
     _ = (((n : ℝ) + 1) ^ (-2 : ℝ)) := by
-      rw [Real.rpow_neg_eq_inv_rpow, Real.rpow_two]
+      rw [Real.rpow_neg_eq_inv_rpow, Real.rpow_two, inv_pow]
 
 /--
 The raw exponential source is uniformly bounded on a fixed compact window
@@ -384,7 +383,9 @@ theorem contDiffAt_dirichletRightBasis
     fun_prop
   have hcoe :=
     Complex.ofRealCLM.contDiff.contDiffAt.comp x hreal
-  simpa [dirichletRightBasis] using hcoe
+  change ContDiffAt ℝ k
+    (Complex.ofRealCLM ∘ dirichletRightReal t) x
+  exact hcoe
 
 theorem contDiffAt_dirichletLeftBasis
     (k : ℕ) (t x : ℝ) :
@@ -394,7 +395,9 @@ theorem contDiffAt_dirichletLeftBasis
     fun_prop
   have hcoe :=
     Complex.ofRealCLM.contDiff.contDiffAt.comp x hreal
-  simpa [dirichletLeftBasis] using hcoe
+  change ContDiffAt ℝ k
+    (Complex.ofRealCLM ∘ dirichletLeftReal t) x
+  exact hcoe
 
 /-- The explicit column solves L F = source whenever the Green denominator is nonzero. -/
 theorem problemOneL_dirichletProblemOneColumn
