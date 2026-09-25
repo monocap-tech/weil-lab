@@ -4,11 +4,11 @@ Stable ID: **WD-T10 / WD-B4**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}
 }
-\]
+```
 
 ## Formal target
 
