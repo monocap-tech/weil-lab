@@ -2,6 +2,9 @@ import Mathlib
 
 namespace WeilDefect
 
+local instance (priority := 1100) : NormedSpace ℝ ℂ :=
+  NormedSpace.complexToReal
+
 open Filter Set
 open scoped Topology
 
