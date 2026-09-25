@@ -118,8 +118,9 @@ theorem nativeShellEnergy_le_three_halves
           simp
     _ ≤
       (C * (x ^ (1 / 2 : ℝ))) * (A * (x ^ (-2 : ℝ))) := by
-        gcongr
-        simpa [x] using hCount.count_le_half_power n
+        apply mul_le_mul_of_nonneg_right
+        · simpa [x] using hCount.count_le_half_power n
+        · exact mul_nonneg hResolvent.A_nonneg (Real.rpow_nonneg hx.le _)
     _ = (A * C) * (x ^ (-(3 / 2 : ℝ))) := by
       calc
         (C * (x ^ (1 / 2 : ℝ))) * (A * (x ^ (-2 : ℝ)))
@@ -177,8 +178,14 @@ theorem wd_t28_native_basis_square_summable
   constructor
   · intro n
     exact Summable.of_finite
-  · simpa [nativeShellEnergy] using
-      nativeShellEnergy_summable energySq A C hCount hResolvent
+  · have hfun :
+        (fun n : ℕ => ∑' i : Fin (count n), energySq ⟨n, i⟩)
+          =
+        nativeShellEnergy energySq := by
+      funext n
+      simp [nativeShellEnergy]
+    rw [hfun]
+    exact nativeShellEnergy_summable energySq A C hCount hResolvent
   · intro gamma
     exact hResolvent.energy_nonneg gamma
 
