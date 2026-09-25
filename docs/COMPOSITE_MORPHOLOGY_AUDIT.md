@@ -38,7 +38,7 @@ Canonical source:
 
 WD-T37 assumes:
 
-- one fixed finite selected packet \(\Pi\);
+- one fixed finite selected packet $\Pi$;
 - one common selected coefficient carrier in which
   ```math
   \mathcal A_{\Pi,t}
@@ -52,7 +52,7 @@ WD-T37 assumes:
   ```math
   t_n\downarrow c;
   ```
-- unit physical witnesses \(g_n\);
+- unit physical witnesses $g_n$;
 - selected amplitude
   ```math
   \varepsilon_n
@@ -107,7 +107,7 @@ for selected scalarization and fixed-source far-tail localization,
 \text{WD-T32}
 ```
 
-for the completed-\(\Xi\) next-jet representation,
+for the completed-$\Xi$ next-jet representation,
 
 and
 
@@ -160,7 +160,7 @@ Thus WD-T19 is no longer an unconditional dependency of WD-T37.
 
 WD-T33 is cutoffwise.
 
-At fixed \(R\),
+At fixed $R$,
 
 ```math
 \mathcal N_{v,R}[\psi]
@@ -176,9 +176,9 @@ implies
 \mathcal F_{v,R}[\psi].
 ```
 
-The morphology now sends \(R\to\infty\) only for:
+The morphology now sends $R\to\infty$ only for:
 
-- one fixed multiplier \(\psi\); or
+- one fixed multiplier $\psi$; or
 - a multiplier family satisfying the uniform boundedness required by WD-T31.
 
 No asymptotic claim remains for an arbitrary unbounded adaptive family.
@@ -242,7 +242,7 @@ The audited theorem assumes:
 1. one fixed finite selected packet;
 2. a critical right-approaching sequence;
 3. the attained-neutral rather than negative-fall-through alternative of WD-T17;
-4. a nonzero selected coordinate \(u\) satisfying
+4. a nonzero selected coordinate $u$ satisfying
    ```math
    C_c^*C_cu=u;
    ```
@@ -256,7 +256,7 @@ The audited theorem assumes:
    ```math
    N_c=-P_cC_c;
    ```
-7. an explicit carrier identification saying that this physical realization is the same compact-window Weil form/operator realization used by H1-P2.2, with \(k\) in that form domain.
+7. an explicit carrier identification saying that this physical realization is the same compact-window Weil form/operator realization used by H1-P2.2, with $k$ in that form domain.
 
 Items 4–7 are finite-exception neutral hypotheses. They are not consequences of abstract criticality alone.
 
@@ -350,7 +350,7 @@ Therefore the endpoint operator and the strict-right-limit operator can differ w
 2c=\log n_0
 ```
 
-for a prime power \(n_0\).
+for a prime power $n_0$.
 
 Define
 
@@ -435,7 +435,7 @@ If
 Q_Rw_n\to0
 ```
 
-for every fixed \(R\), then
+for every fixed $R$, then
 
 ```math
 w_n\rightharpoonup0.
@@ -471,7 +471,7 @@ This is the precise fixed-packet custody statement.
 
 ### Unselected-background escape
 
-After a fixed selected negative ray is anchored, normalize the unselected background as \(b_n\).
+After a fixed selected negative ray is anchored, normalize the unselected background as $b_n$.
 
 After passage to a subsequence, exactly one of the following can be arranged:
 
@@ -504,13 +504,13 @@ b_n\to b
 
 strongly.
 
-For a bounded sequence in an \(\ell^2\)-type coefficient carrier, uniform coordinate-tail tightness is the relative-compactness criterion used to reach BF.
+For a bounded sequence in an $\ell^2$-type coefficient carrier, uniform coordinate-tail tightness is the relative-compactness criterion used to reach BF.
 
 ---
 
 ### Composite correction B-2 — positive-coordinate convergence
 
-Background tail tightness controls \(b_n\), not the positive coordinate \(a_n\).
+Background tail tightness controls $b_n$, not the positive coordinate $a_n$.
 
 From the fixed selected-ray compactness theorem one generally has only
 
@@ -561,7 +561,7 @@ Even under bounded weak background escape,
 (a,u,b)
 ```
 
-is nonzero because \(u\ne0\), and remains strictly negative.
+is nonzero because $u\ne0$, and remains strictly negative.
 
 Hence
 
@@ -634,7 +634,7 @@ The audit required seven compositional corrections:
 
 - U-1: compact-window form/operator carrier identification made explicit;
 - U-2: “no bootstrap” narrowed to no uniform positive-Sobolev coercive estimate;
-- U-3: null-extension reduction made threshold-aware under the strict \(\log n<2c\) source convention.
+- U-3: null-extension reduction made threshold-aware under the strict $\log n<2c$ source convention.
 
 ### Noncompact branch
 
