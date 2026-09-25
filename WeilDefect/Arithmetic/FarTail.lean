@@ -20,8 +20,14 @@ private theorem hasDerivAt_logarithmicTailKernel
     (Real.hasDerivAt_log hx).const_add 1
   have hden := (hasDerivAt_id x).pow 2
   convert hnum.div hden (by simp [hx]) using 1
-  field_simp [hx]
-  ring
+  · funext y
+    by_cases hy : y = 0
+    · simp [hy]
+    · field_simp [hy]
+      ring
+  · simp only [Pi.pow_apply, id_eq, Nat.cast_ofNat, Nat.reduceSub, pow_one, mul_one]
+    field_simp [hx]
+    ring
 
 /-- The logarithmic tail kernel is nonnegative on [1,∞). -/
 theorem logarithmicTailKernel_nonneg
@@ -66,8 +72,8 @@ private theorem hasDerivAt_logarithmicTailAntideriv
   have hquot :=
     hnum.div (hasDerivAt_id x) hx
   convert hquot.neg using 1
-  · ext y
-    simp [neg_div]
+  · funext y
+    ring
   · unfold logarithmicTailKernel
     simp only [id_eq]
     field_simp [hx]
