@@ -33,8 +33,10 @@ Layer E — Open actual-zeta interfaces
   AZ-FIN-WEIL-NULL-EXTENSION
 ~~~
 
-External source pins enter only where explicitly shown. Examples and scope
-rules attach laterally and do not create proof-producing edges.
+Direct external-source entry points are shown explicitly. Downstream theorem
+nodes inherit any transitive imported ancestry along the displayed theorem
+edges. Examples and scope rules attach laterally and do not create
+proof-producing edges.
 
 ---
 
@@ -248,7 +250,8 @@ WD-T37
   └────► C-ACTUAL-KPH-FLOOR   [OPEN stronger refinement]
 ~~~
 
-Neither open interface is used upstream to prove WD-T37.
+Neither open interface is a premise of WD-T37; both occur strictly downstream
+of the completed morphology theorem.
 
 ---
 
@@ -296,7 +299,7 @@ unselected-background analysis:
       WD-T39
 ~~~
 
-The key separation is:
+The key separation is between two different custody failures:
 
 ~~~math
 \boxed{
@@ -306,8 +309,10 @@ The key separation is:
 }
 ~~~
 
-Once a fixed selected negative ray is anchored, background escape may destroy
-strong full-coefficient compactness but does not erase selected-ray custody.
+The first can prevent a nonzero selected limit from forming. The second is
+analyzed after a fixed selected negative ray has already been anchored; in that
+regime it may destroy strong full-coefficient compactness but does not erase
+the selected ray.
 
 ---
 
@@ -322,8 +327,9 @@ strong full-coefficient compactness but does not erase selected-ray custody.
 | EXT-4 — Compact-window formula | WD-T34, WD-T35; arithmetic input to WD-T38 | Finite prime translations and compact-window form |
 | EXT-5 — Digamma asymptotic | WD-T35 | Logarithmic principal order |
 
-Transitive source dependence is inherited through theorem edges. An internal
-proof body does not erase an imported ancestor.
+Transitive source dependence is inherited through theorem edges. Calling a
+proof body internal describes where the deduction is carried out; it does not
+erase an imported premise in the theorem's ancestry.
 
 ---
 
@@ -358,7 +364,5 @@ and the stronger packetwise refinement
 WD-T37 ─────► C-ACTUAL-KPH-FLOOR
 ~~~
 
-is likewise downstream only.
-
-No open interface is imported upstream to prove the morphology theorem that
-reaches it.
+is also downstream only. No open interface is a premise of the morphology
+theorem from which its arrow originates.
