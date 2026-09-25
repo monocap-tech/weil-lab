@@ -155,4 +155,160 @@ theorem logarithmicTail_tsum_le
   rw [integral_logarithmicTailKernel_Ioi (by exact_mod_cast hR)] at hbound
   simpa [Nat.cast_add, Nat.cast_one] using hbound
 
+
+/-- Unit-height shell index for the WD-T31 complementary divisor model. -/
+abbrev FarShellIndex (count : ℕ → ℕ) :=
+  Σ n : ℕ, Fin (count n)
+
+/--
+Imported unit-height zero-count interface in its sharp logarithmic form.
+The intended source input is N(X+1)-N(X)=O(log(2+X)), with multiplicity.
+-/
+structure ZetaLogShellCountData
+    (count : ℕ → ℕ) (C : ℝ) : Prop where
+  C_nonneg : 0 ≤ C
+  count_le_log :
+    ∀ n : ℕ,
+      (count n : ℝ)
+        ≤ C * (1 + Real.log ((n : ℝ) + 1))
+
+/--
+Abstract inverse-square complementary response on each zero coordinate.
+WD-T27 supplies this species of bound from the selected zero-moment law.
+-/
+structure FarShellResponseData
+    (count : ℕ → ℕ)
+    (response : FarShellIndex count → ℂ)
+    (A : ℝ) : Prop where
+  A_nonneg : 0 ≤ A
+  response_le_inverse_square :
+    ∀ gamma,
+      ‖response gamma‖
+        ≤ A / (((gamma.1 : ℝ) + 1) ^ 2)
+
+/-- Finite response sum in one unit-height shell. -/
+noncomputable def farShellResponse
+    {count : ℕ → ℕ}
+    (response : FarShellIndex count → ℂ)
+    (n : ℕ) : ℂ :=
+  ∑ i : Fin (count n), response ⟨n, i⟩
+
+/-- The logarithmic tail kernel sampled on natural shells is summable. -/
+theorem logarithmicTailKernel_summable_nat :
+    Summable (fun n : ℕ => logarithmicTailKernel (n : ℝ)) := by
+  exact logarithmicTailKernel_antitoneOn.summable_of_integrableOn_Ioi
+    (N := 1)
+    (logarithmicTailKernel_integrableOn_Ioi le_rfl)
+    (fun x hx => logarithmicTailKernel_nonneg hx.le)
+
+/-- Every natural shift of the logarithmic shell kernel remains summable. -/
+theorem logarithmicTailKernel_shift_summable
+    (m : ℕ) :
+    Summable
+      (fun k : ℕ =>
+        logarithmicTailKernel ((k + m : ℕ) : ℝ)) := by
+  have h :=
+    (summable_nat_add_iff
+      (f := fun n : ℕ => logarithmicTailKernel (n : ℝ)) m).2
+      logarithmicTailKernel_summable_nat
+  simpa [Nat.cast_add] using h
+
+/--
+Zero counting times inverse-square response is dominated shellwise by the
+logarithmic kernel.
+-/
+theorem farShellResponse_norm_le_logarithmic_kernel
+    {count : ℕ → ℕ}
+    (response : FarShellIndex count → ℂ)
+    (A C : ℝ)
+    (hCount : ZetaLogShellCountData count C)
+    (hResponse : FarShellResponseData count response A)
+    (n : ℕ) :
+    ‖farShellResponse response n‖
+      ≤
+    (A * C) * logarithmicTailKernel ((n : ℝ) + 1) := by
+  let x : ℝ := (n : ℝ) + 1
+  have hx : 0 < x := by
+    dsimp [x]
+    positivity
+  calc
+    ‖farShellResponse response n‖
+        ≤ ∑ i : Fin (count n), ‖response ⟨n, i⟩‖ := by
+          unfold farShellResponse
+          exact norm_sum_le _ _
+    _ ≤ ∑ _i : Fin (count n), A / (x ^ 2) := by
+          apply Finset.sum_le_sum
+          intro i hi
+          simpa [x] using
+            hResponse.response_le_inverse_square ⟨n, i⟩
+    _ = (count n : ℝ) * (A / (x ^ 2)) := by
+          simp
+    _ ≤
+      (C * (1 + Real.log x)) * (A / (x ^ 2)) := by
+        apply mul_le_mul_of_nonneg_right
+        · simpa [x] using hCount.count_le_log n
+        · exact div_nonneg hResponse.A_nonneg (sq_nonneg x)
+    _ = (A * C) * logarithmicTailKernel x := by
+      unfold logarithmicTailKernel
+      field_simp [hx.ne']
+      ring
+
+/--
+WD-T31 shell aggregation: logarithmic zero counting combined with an
+inverse-square complementary response gives the quantitative O((log R)/R)
+far-tail bound.
+-/
+theorem wd_t31_shell_aggregation
+    {count : ℕ → ℕ}
+    (response : FarShellIndex count → ℂ)
+    (A C : ℝ)
+    (hCount : ZetaLogShellCountData count C)
+    (hResponse : FarShellResponseData count response A)
+    (R : ℕ) (hR : 1 ≤ R) :
+    ‖∑' k : ℕ, farShellResponse response (k + R + 1)‖
+      ≤
+    (A * C) * ((Real.log R + 2) / R) := by
+  have hAC : 0 ≤ A * C :=
+    mul_nonneg hResponse.A_nonneg hCount.C_nonneg
+  have hkernel :
+      Summable
+        (fun k : ℕ =>
+          logarithmicTailKernel ((k + R + 1 : ℕ) : ℝ)) := by
+    have h :=
+      logarithmicTailKernel_shift_summable (R + 1)
+    simpa [Nat.add_assoc] using h
+  have hmajor :
+      Summable
+        (fun k : ℕ =>
+          (A * C) *
+            logarithmicTailKernel ((k + R + 1 : ℕ) : ℝ)) :=
+    hkernel.mul_left (A * C)
+  have hpoint :
+      ∀ k : ℕ,
+        ‖farShellResponse response (k + R + 1)‖
+          ≤
+        (A * C) *
+          logarithmicTailKernel ((k + R + 1 : ℕ) : ℝ) := by
+    intro k
+    simpa [Nat.cast_add, Nat.cast_one] using
+      farShellResponse_norm_le_logarithmic_kernel
+        response A C hCount hResponse (k + R + 1)
+  calc
+    ‖∑' k : ℕ, farShellResponse response (k + R + 1)‖
+        ≤
+      ∑' k : ℕ,
+        (A * C) *
+          logarithmicTailKernel ((k + R + 1 : ℕ) : ℝ) :=
+      tsum_of_norm_bounded hmajor.hasSum hpoint
+    _ =
+      (A * C) *
+        (∑' k : ℕ,
+          logarithmicTailKernel ((k + R + 1 : ℕ) : ℝ)) := by
+      rw [tsum_mul_left]
+    _ ≤
+      (A * C) * ((Real.log R + 2) / R) := by
+      apply mul_le_mul_of_nonneg_left _ hAC
+      simpa [Nat.cast_add, Nat.cast_one] using
+        logarithmicTail_tsum_le R hR
+
 end WeilDefect
