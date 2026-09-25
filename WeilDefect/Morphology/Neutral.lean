@@ -1,6 +1,7 @@
 import WeilDefect.Filtration.CriticalDichotomy
 import WeilDefect.Screening.DefectIndex
 import WeilDefect.Arithmetic.PrimeSupport
+import WeilDefect.Arithmetic.NoSobolevBootstrap
 
 namespace WeilDefect
 
@@ -97,6 +98,32 @@ theorem wd_t38_p3_u3_right_limit_prime_support_finite
       (wd_t34_active_prime_powers_finite c).union
         (primePowerThreshold_subsingleton c).finite
   · exact primePowerThreshold_subsingleton c
+
+
+/--
+P3-U5 / WD-T38: logarithmic form control alone does not uniformly dominate
+any positive-Sobolev frequency weight.
+-/
+theorem wd_t38_p3_u5_no_free_positive_sobolev_control
+    {eps : ℝ} (heps : 0 < eps) :
+    ¬ (fun x : ℝ => positiveSobolevFrequencyWeight eps x)
+        =O[atTop] logarithmicFourierWeight :=
+  wd_t36_no_positive_sobolev_bootstrap heps
+
+/--
+P3-U5 with the fixed finite prime correction retained: finite arithmetic
+translations do not repair the positive-order mismatch.
+-/
+theorem wd_t38_p3_u5_finite_prime_translations_no_smoothing
+    {eps : ℝ} (heps : 0 < eps)
+    (c : ℝ) (coeff : ℕ → ℝ) :
+    ¬ (fun x : ℝ => positiveSobolevFrequencyWeight eps x)
+        =O[atTop]
+      (fun t : ℝ =>
+        logarithmicFourierWeight t
+          + finitePrimeTrigCorrection c coeff t) :=
+  wd_t36_finite_prime_translations_add_no_smoothing
+    heps c coeff
 
 /--
 Negative synthesis attached to a finite-exception neutral compensator:
