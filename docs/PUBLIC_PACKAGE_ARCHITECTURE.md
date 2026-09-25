@@ -275,14 +275,16 @@ Minimum columns:
 Stable ID
 Mathematical standing
 Lean status
-Imported premise?
-Dedicated certificate evidence?
+Imported premise ancestry?
+Certificate record?
 RH-facing dependency?
 ```
 
 The matrix must make it impossible to read
 `LEAN-CERTIFIED-FROM-IMPORTED-PREMISE` as certification of the external
-analytic input itself.
+analytic input itself. A certificate record means that the row's formal status
+is supported by the Lean-status evidence history; it does not imply that every
+row was checked by a dedicated single-theorem CI run.
 
 ---
 
