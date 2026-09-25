@@ -31,7 +31,9 @@ Current position:
 \qquad
 \text{H1-P4 COMPLETE}
 \qquad
-\text{H1-P5 ACTIVE}.
+\text{LEAN-H1 ACTIVE}
+\qquad
+\text{H1-P5 PAUSED}.
 }
 ```
 
@@ -303,14 +305,14 @@ with principal symbol
 \Psi_c(t)=\log|t|+O_c(1).
 ```
 
-### Approximate-neutral question
+### Approximate-neutral classification
 
-H1-P2 must determine whether any remaining zeta-Weil critical sequence without an attained neutral mode is caused by:
+The completed H1-P2/H1-P3 audit classifies any remaining zeta-Weil critical sequence without an attained neutral mode through explicit noncompactness mechanisms:
 
 - a moving selected packet;
 - an infinite negative background;
-- positive-coordinate escape;
-- or another explicitly identified noncompactness mechanism.
+- coefficient-tail escape;
+- or positive-coordinate mass loss, which strengthens the fixed-packet limit to negativity.
 
 ---
 
@@ -548,6 +550,16 @@ Thus
 ```
 
 ## Current cursor
+
+Formalization currently preempts package assembly:
+
+```math
+\boxed{
+\texttt{LEAN-H1-P1 / WD-X02 — CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}
+}
+```
+
+Deferred post-LEAN cursor:
 
 ```math
 \boxed{
