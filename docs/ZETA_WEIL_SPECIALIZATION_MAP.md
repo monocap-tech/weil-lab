@@ -653,7 +653,7 @@ The subsequent alternatives are not new sign algebra:
 
 They are compactness alternatives in the infinite negative background $B_\Pi$.
 
-Thus the “background escape” branch is the zeta realization of the **moving/infinite-sector noncompactness** already isolated abstractly in H1-P1.
+Thus the “background escape” branch is the zeta realization of the **infinite-background noncompactness** side of the abstract H1-P1 classification. It is distinct from moving selected-sector escape.
 
 ---
 
@@ -928,7 +928,7 @@ For one fixed finite selected packet,
 
 So P3 does not need a third nonpersistent approximate-neutral morphology **inside a fixed packet**.
 
-Any such global behavior must be typed as moving-packet or infinite-background noncompactness.
+Any such global behavior must be typed as moving/infinite selected-sector noncompactness or as infinite-background noncompactness.
 
 ### 3. The first genuinely new zeta-Weil identity is the zero moment
 
