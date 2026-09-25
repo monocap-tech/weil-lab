@@ -21,12 +21,12 @@ theorem one_le_logarithmicFourierWeight (t : ℝ) :
 /-- Logarithmic Fourier energy for a nonnegative spectral density. -/
 noncomputable def logarithmicFourierEnergy
     (density : ℝ → ℝ) : ℝ :=
-  ∫ t : ℝ, logarithmicFourierWeight t * density t
+  ∫ t : ℝ, logarithmicFourierWeight t * density t ∂volume
 
 /-- Spectral mass, corresponding to the L2 Fourier mass in the application. -/
 noncomputable def spectralMass
     (density : ℝ → ℝ) : ℝ :=
-  ∫ t : ℝ, density t
+  ∫ t : ℝ, density t ∂volume
 
 /--
 Shifted compact-window form model.  In the Weil application, density is
@@ -36,7 +36,7 @@ is the nonnegative finite-rank pole/evaluation contribution.
 noncomputable def shiftedCompactWeilForm
     (symbol density : ℝ → ℝ)
     (shift pole : ℝ) : ℝ :=
-  pole + ∫ t : ℝ, (symbol t + shift) * density t
+  pole + ∫ t : ℝ, (symbol t + shift) * density t ∂volume
 
 /--
 Core WD-T35 comparison: a symbol comparable to log(e+|t|), together with a
@@ -59,15 +59,15 @@ theorem wd_t35_shifted_form_logarithmic_order
     (hpole0 : 0 ≤ pole)
     (hpole :
       pole ≤ K * spectralMass density)
-    (hdensity_int : Integrable density)
+    (hdensity_int : Integrable density volume)
     (hlog_int :
       Integrable
         (fun t : ℝ =>
-          logarithmicFourierWeight t * density t))
+          logarithmicFourierWeight t * density t) volume)
     (hsymbol_int :
       Integrable
         (fun t : ℝ =>
-          (symbol t + shift) * density t)) :
+          (symbol t + shift) * density t) volume) :
     a * logarithmicFourierEnergy density
       ≤ shiftedCompactWeilForm symbol density shift pole
       ∧
@@ -76,17 +76,17 @@ theorem wd_t35_shifted_form_logarithmic_order
   have hlow_int :
       Integrable
         (fun t : ℝ =>
-          (a * logarithmicFourierWeight t) * density t) := by
+          (a * logarithmicFourierWeight t) * density t) volume := by
     simpa [mul_assoc] using hlog_int.const_mul a
   have hupp_int :
       Integrable
         (fun t : ℝ =>
-          (b * logarithmicFourierWeight t) * density t) := by
+          (b * logarithmicFourierWeight t) * density t) volume := by
     simpa [mul_assoc] using hlog_int.const_mul b
   have hlow :
       a * logarithmicFourierEnergy density
         ≤
-      ∫ t : ℝ, (symbol t + shift) * density t := by
+      ∫ t : ℝ, (symbol t + shift) * density t ∂volume := by
     have hmono :=
       integral_mono hlow_int hsymbol_int (fun t => by
         exact mul_le_mul_of_nonneg_right (hlower t) (hdensity t))
@@ -94,7 +94,7 @@ theorem wd_t35_shifted_form_logarithmic_order
     rw [integral_const_mul] at hmono
     exact hmono
   have hupp :
-      (∫ t : ℝ, (symbol t + shift) * density t)
+      (∫ t : ℝ, (symbol t + shift) * density t ∂volume)
         ≤
       b * logarithmicFourierEnergy density := by
     have hmono :=
@@ -145,15 +145,15 @@ theorem wd_t35_compact_weil_logarithmic_form_order
     (hpole0 : 0 ≤ pole)
     (hpole :
       pole ≤ K * spectralMass density)
-    (hdensity_int : Integrable density)
+    (hdensity_int : Integrable density volume)
     (hlog_int :
       Integrable
         (fun t : ℝ =>
-          logarithmicFourierWeight t * density t))
+          logarithmicFourierWeight t * density t) volume)
     (hsymbol_int :
       Integrable
         (fun t : ℝ =>
-          (symbol t + shift) * density t))
+          (symbol t + shift) * density t) volume)
     (hQ :
       Q + shift * spectralMass density
         =
