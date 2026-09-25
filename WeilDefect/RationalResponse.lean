@@ -2,7 +2,7 @@ import WeilDefect.PairGeometry
 
 namespace WeilDefect
 
-open Filter Set
+open Filter Set Bornology
 open scoped Topology
 
 /-- Finite rational response attached to residues v at locations rho. -/
