@@ -567,7 +567,7 @@ Deferred post-LEAN cursor:
 }
 ```
 
-The next pass should verify WD-X01 through WD-X07 and attach each example to the precise theorem hypothesis or sharpness point it tests.
+The example/sharpness audit is complete. Lean certification is a separate track and is recorded in [Lean Status](LEAN_STATUS.md).
 
 ---
 
