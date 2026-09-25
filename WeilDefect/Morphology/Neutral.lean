@@ -161,6 +161,95 @@ theorem wd_t38_p3_u6_global_cancellation_not_termwise :
   have hbad := h 1 (-1) (by norm_num)
   norm_num at hbad
 
+
+/--
+Typed Horizon-1 stop interface for the neutral branch.
+
+The data deliberately contains no proof of the strict-right persistence goal.
+The endpoint and right-limit operators are kept distinct, and their equality
+away from a prime-power threshold is an explicit carrier-identification
+premise rather than being inferred from abstract criticality.
+-/
+structure NeutralNullExtensionInterface
+    (c : ℝ)
+    (H EndpointObs RightObs : Type*)
+    [NormedAddCommGroup H] [NormedSpace ℂ H]
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs] where
+  kExt : H
+  kExt_ne : kExt ≠ 0
+  endpointOperator : H →L[ℂ] H
+  rightLimitOperator : H →L[ℂ] H
+  endpointRestriction : H →L[ℂ] EndpointObs
+  rightRestriction : H →L[ℂ] RightObs
+  endpointInteriorNull :
+    endpointRestriction (endpointOperator kExt) = 0
+  right_eq_endpoint_of_no_threshold :
+    primePowerThreshold c = ∅ →
+      rightLimitOperator = endpointOperator
+  rightPrimeSupportFinite :
+    (rightLimitPrimePowers c).Finite
+  thresholdSubsingleton :
+    (primePowerThreshold c).Subsingleton
+
+namespace NeutralNullExtensionInterface
+
+/--
+The unresolved AZ-FIN-WEIL-NULL-EXTENSION obligation attached to one typed
+neutral endpoint package.
+-/
+def persistenceGoal
+    {c : ℝ}
+    {H EndpointObs RightObs : Type*}
+    [NormedAddCommGroup H] [NormedSpace ℂ H]
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (d : NeutralNullExtensionInterface
+      c H EndpointObs RightObs) : Prop :=
+  d.rightRestriction (d.rightLimitOperator d.kExt) = 0
+
+end NeutralNullExtensionInterface
+
+/--
+P3-U7 / WD-T38 neutral null-extension reduction.
+
+From the endpoint null equation and the carrier-specific statement that the
+right-limit operator agrees with the endpoint operator away from arithmetic
+thresholds, Lean packages the exact unresolved fixed-vector persistence
+problem.  No proof of that persistence goal is returned.
+-/
+def wd_t38_p3_u7_neutral_null_extension_reduction
+    (c : ℝ)
+    {H EndpointObs RightObs : Type*}
+    [NormedAddCommGroup H] [NormedSpace ℂ H]
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (kExt : H)
+    (hk : kExt ≠ 0)
+    (Wc Wright : H →L[ℂ] H)
+    (Rendpoint : H →L[ℂ] EndpointObs)
+    (Rright : H →L[ℂ] RightObs)
+    (hendpoint : Rendpoint (Wc kExt) = 0)
+    (hAway :
+      primePowerThreshold c = ∅ →
+        Wright = Wc) :
+    NeutralNullExtensionInterface
+      c H EndpointObs RightObs := by
+  have hprime :=
+    wd_t38_p3_u3_right_limit_prime_support_finite c
+  exact {
+    kExt := kExt
+    kExt_ne := hk
+    endpointOperator := Wc
+    rightLimitOperator := Wright
+    endpointRestriction := Rendpoint
+    rightRestriction := Rright
+    endpointInteriorNull := hendpoint
+    right_eq_endpoint_of_no_threshold := hAway
+    rightPrimeSupportFinite := hprime.1
+    thresholdSubsingleton := hprime.2
+  }
+
 /--
 P3-U5 / WD-T38: logarithmic form control alone does not uniformly dominate
 any positive-Sobolev frequency weight.
