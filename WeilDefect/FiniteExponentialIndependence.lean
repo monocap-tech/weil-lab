@@ -23,9 +23,15 @@ complex frequency.
 -/
 theorem hasDerivAt_realExpMode (freq : ℂ) (x : ℝ) :
     HasDerivAt (realExpMode freq) (freq * realExpMode freq x) x := by
-  have h :=
-    hasDerivAt_exp_smul_const' (𝕂 := ℝ) (𝔸 := ℂ) freq x
-  simpa [realExpMode, ← Complex.exp_eq_exp_ℂ, smul_eq_mul] using h
+  have hcomplex :
+      HasDerivAt
+        (fun z : ℂ => Complex.exp (z * freq))
+        (freq * Complex.exp ((x : ℂ) * freq))
+        (x : ℂ) := by
+    have h :=
+      hasDerivAt_exp_smul_const' (𝕂 := ℂ) (𝔸 := ℂ) freq (x : ℂ)
+    simpa [← Complex.exp_eq_exp_ℂ, smul_eq_mul] using h
+  simpa [realExpMode] using hcomplex.comp_ofReal
 
 /--
 The k-th real derivative of x ↦ exp(x freq) is freq^k exp(x freq).
