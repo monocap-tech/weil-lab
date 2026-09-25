@@ -51,7 +51,7 @@ so the full defect is
 D=0.
 ```
 
-For the first-\(N\)-coordinate projection \(P_N\),
+For the first-$N$-coordinate projection $P_N$,
 
 ```math
 \sum_{j=1}^N c_j^2
@@ -125,7 +125,7 @@ Then
 \|X\|=1.
 ```
 
-But for every nonzero \(f\),
+But for every nonzero $f$,
 
 ```math
 \|Xf\|^2
@@ -137,7 +137,7 @@ But for every nonzero \(f\),
 \|f\|^2,
 ```
 
-because \(1-t^2>0\) almost everywhere.
+because $1-t^2>0$ almost everywhere.
 
 Thus the norm is not attained.
 
@@ -156,9 +156,9 @@ so
 >0
 ```
 
-for every nonzero \(f\).
+for every nonzero $f$.
 
-Choosing unit vectors supported in intervals approaching \(t=1\) makes this defect value tend to zero.
+Choosing unit vectors supported in intervals approaching $t=1$ makes this defect value tend to zero.
 
 ### Audit result
 
@@ -225,7 +225,7 @@ D_{\rm full}
 <0.
 ```
 
-Equivalently, the separate screening maps each have norm \(r<1\), while the combined map
+Equivalently, the separate screening maps each have norm $r<1$, while the combined map
 
 ```math
 X=[r\ r]
@@ -295,7 +295,7 @@ The direct compression is
 A=1.
 ```
 
-The complementary block is also \(C=1\), so the Schur-shortened covariance is
+The complementary block is also $C=1$, so the Schur-shortened covariance is
 
 ```math
 \boxed{
@@ -314,9 +314,9 @@ H_W\downarrow0
 \qquad(r\uparrow1)
 ```
 
-while the direct compression remains identically \(1\).
+while the direct compression remains identically $1$.
 
-For each fixed \(r<1\), \(K_r\) is uniformly positive; its smallest eigenvalue is \(1-r>0\).
+For each fixed $r<1$, $K_r$ is uniformly positive; its smallest eigenvalue is $1-r>0$.
 
 ### Audit result
 
@@ -326,7 +326,7 @@ The construction is exact.
 
 WD-X04 shows that a strong direct selected-block lower bound does not provide a uniform family-level lower bound on the shorted covariance when coupling to the eliminated complement approaches degeneracy.
 
-It does not say the fixed-\(r\) shorted covariance vanishes.
+It does not say the fixed-$r$ shorted covariance vanishes.
 
 Thus it sharpens WD-T13 as
 
@@ -356,7 +356,7 @@ Let
 K_+=K_-=\ell^2(\mathbb N)
 ```
 
-with the standard \(J\)-form.
+with the standard $J$-form.
 
 Choose
 
@@ -391,7 +391,7 @@ and
 [y_n,y_n]_J\to0.
 ```
 
-Because different \(n\) use orthogonal coordinates in both coefficient sectors, the \(y_n\) are Hilbert-orthonormal.
+Because different $n$ use orthogonal coordinates in both coefficient sectors, the $y_n$ are Hilbert-orthonormal.
 
 Define
 
@@ -480,7 +480,7 @@ Because
 e_n\rightharpoonup0
 ```
 
-in \(\ell^2\),
+in $\ell^2$,
 
 ```math
 y_n\rightharpoonup
@@ -507,15 +507,15 @@ Define
 \overline{\operatorname{span}}\{y_k:k\ge n\}.
 ```
 
-For every fixed \(n\), the tail \(\{y_k:k\ge n\}\) lies in \(\mathcal A_n\), and a closed subspace of a Hilbert space is weakly closed.
+For every fixed $n$, the tail $\{y_k:k\ge n\}$ lies in $\mathcal A_n$, and a closed subspace of a Hilbert space is weakly closed.
 
-Therefore its weak limit \(y\) also lies in \(\mathcal A_n\), so
+Therefore its weak limit $y$ also lies in $\mathcal A_n$, so
 
 ```math
 y\in\bigcap_n\mathcal A_n.
 ```
 
-The vectors \(y_n\) are not orthogonal; no orthogonality is needed for this argument.
+The vectors $y_n$ are not orthogonal; no orthogonality is needed for this argument.
 
 ### Audit result
 
@@ -615,7 +615,7 @@ There is no universal implication
 R_v(z)=O(|z|^{-3}).
 ```
 
-Any \(O(|z|^{-3})\) improvement requires the additional first-moment condition
+Any $O(|z|^{-3})$ improvement requires the additional first-moment condition
 
 ```math
 \sum_j\rho_jv_j=0
