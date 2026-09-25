@@ -46,7 +46,7 @@ theorem weaklyTendsto_strong_of_norm_sq_tendsto
         (𝓝 0) := by
     have hinnerSelfRe :
         RCLike.re (inner ℂ x x) = ‖x‖ ^ 2 := by
-      rw [inner_self_eq_norm_sq_to_K, RCLike.ofReal_re]
+      exact (norm_sq_eq_re_inner (𝕜 := ℂ) x).symm
     have hzero :
         ‖x‖ ^ 2 - 2 * RCLike.re (inner ℂ x x) + ‖x‖ ^ 2 = 0 := by
       rw [hinnerSelfRe]
