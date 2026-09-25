@@ -431,7 +431,8 @@ theorem farShellResponseData_of_zero_moment
       positivity
     have hx1 : 1 ≤ x := by
       dsimp [x]
-      positivity
+      have hn : 0 ≤ (gamma.1 : ℝ) := Nat.cast_nonneg _
+      linarith
     have hmu1 : 1 ≤ ‖mu gamma‖ :=
       hx1.trans (hShellNorm gamma)
     have hresp :=
