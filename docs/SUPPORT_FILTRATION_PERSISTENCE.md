@@ -703,7 +703,7 @@ contradiction.
 
 ### Interpretation
 
-A genuinely new endpoint coefficient vector can persist arbitrarily close to the endpoint only by losing physical compactness.
+Under the common bounded physical realization and right-continuity hypotheses above, a genuinely new endpoint coefficient vector can persist arbitrarily close to the endpoint only through loss of compactness in its physical representatives.
 
 ---
 
@@ -1114,7 +1114,7 @@ Therefore
 }
 ```
 
-### Next Horizon cursor
+### Historical handoff from H1-P1
 
 ```math
 \boxed{
@@ -1122,7 +1122,7 @@ Therefore
 }
 ```
 
-The next phase should map each zeta-Weil object to its precise H1-P1 abstract carrier before importing any arithmetic strengthening:
+At H1-P1 completion, the handoff to H1-P2 was to map each zeta-Weil object to its precise H1-P1 abstract carrier before importing arithmetic strengthening:
 
 - positive and negative quartet channels $\to S_{+},S_{-}$;
 - selected packet $\to M$;
