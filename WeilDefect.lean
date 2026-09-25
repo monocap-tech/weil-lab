@@ -1,4 +1,5 @@
 import WeilDefect.Arithmetic.PrimeSupport
+import WeilDefect.Arithmetic.LogarithmicForm
 import WeilDefect.Screening.RankOne
 import WeilDefect.Arithmetic.Coadaptation
 import WeilDefect.Arithmetic.Scalarization
