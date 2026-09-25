@@ -77,13 +77,13 @@ The compact-window prime translation operator is literally a finite sum over
 the active prime-power Finset.
 -/
 noncomputable def compactPrimeTranslationSum
-    {E : Type*} [AddCommMonoid E]
+    {E : Type*} [AddCommMonoid E] [Module ℝ E]
     (c : ℝ)
-    (weight : ℕ → E)
+    (weight : ℕ → ℝ)
     (f : ℝ → E)
     (x : ℝ) : E :=
   Finset.sum (activePrimePowerFinset c)
-    (fun n => weight n + symmetricPrimeTranslation n f x)
+    (fun n => weight n • symmetricPrimeTranslation n f x)
 
 /--
 WD-T34 / ZW2-T6: fixed compact support selects a finite index set of prime
