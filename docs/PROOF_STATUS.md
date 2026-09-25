@@ -75,7 +75,7 @@ Historical labels such as WD-A1, ZW1-T7, or P3-N4 remain immutable aliases.
 | H1-P2 | COMPLETE | zeta-Weil specialization |
 | H1-P3 | COMPLETE | negative, neutral, and noncompact morphologies |
 | H1-P4 | COMPLETE | theorem/source/proof audit |
-| H1-P5 | ACTIVE | public manuscript/package |
+| H1-P5 | PAUSED | public manuscript/package; resumes after LEAN-H1 exhaustion |
 
 ---
 
@@ -167,11 +167,11 @@ PAP/MTP closure and RH are not proved by this repository.
 
 WD-T01 through WD-T36 are now
 
-\`\`\`math
+```math
 \boxed{
 \text{P4-AUDIT-PASSED}.
 }
-\`\`\`
+```
 
 See [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
@@ -183,23 +183,25 @@ See [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
 
 WD-X01 through WD-X07 are now
 
-\`\`\`math
+```math
 \boxed{
 \text{EXAMPLE-AUDIT-PASSED}.
 }
-\`\`\`
+```
 
 See [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md).
 
 All H1-P4 audit classes are complete.
 
-## Current cursor
+## Deferred post-LEAN cursor
 
-\`\`\`math
+The mathematical audit is complete, but public-package assembly is intentionally paused while LEAN-H1 is active. When the formalization exhaustion condition is met, work resumes at:
+
+```math
 \boxed{
 \texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
 }
-\`\`\`
+```
 
 
 ---
@@ -213,12 +215,14 @@ Canonical control:
 - [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md)
 - [Lean Status Ledger](LEAN_STATUS.md)
 
-Current cursor:
+Current formalization cursor:
 
-\[
+```math
 \boxed{
-\texttt{LEAN-H1-P5 / WD-T39 / NONCOMPACT BACKGROUND MORPHOLOGY}
+\texttt{LEAN-H1-P1 / WD-X02 — CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}
 }
-\]
+```
+
+WD-X02 is not promoted to `LEAN-CERTIFIED` until its pinned CI build succeeds; see [Lean Status Ledger](LEAN_STATUS.md) for live certificate state.
 
 H1-P5 resumes only after LEAN-H1 exhaustion.
