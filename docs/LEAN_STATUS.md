@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T34 | WeilDefect.activePrimePowers + WeilDefect.wd_t34_active_prime_powers_finite + WeilDefect.activePrimePowerFinset + WeilDefect.activePrimeTranslationShifts + WeilDefect.wd_t34_active_prime_translation_shifts_finite + WeilDefect.translateBy + WeilDefect.symmetricPrimeTranslation + WeilDefect.compactPrimeTranslationSum + WeilDefect.wd_t34_finite_prime_power_translations + WeilDefect.primePowerThreshold + WeilDefect.primePowerThreshold_subsingleton | LEAN-CERTIFIED |
 | WD-T32 | WeilDefect.completedResponseLift + WeilDefect.iteratedDeriv_centered_power + WeilDefect.iteratedDeriv_centered_power_mul + WeilDefect.wd_t32_complementary_next_jet_identity + WeilDefect.nearComplementaryResponse + WeilDefect.weightedNearNextJetField + WeilDefect.wd_t32_weighted_near_next_jet_representation | LEAN-CERTIFIED |
 | WD-T31 | WeilDefect.ZetaLogShellCountData + WeilDefect.FarShellResponseData + WeilDefect.logarithmicTail_tsum_le + WeilDefect.farShellResponse_norm_le_logarithmic_kernel + WeilDefect.wd_t31_shell_aggregation + WeilDefect.rationalResponse_zero_moment_norm_le_inverse_square + WeilDefect.farShellResponseData_of_zero_moment + WeilDefect.wd_t31_zero_moment_zero_count_far_tail | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T29 | WeilDefect.wd_t29_finite_head_approximation + WeilDefect.wd_t29_quantitative_finite_head_approximation | LEAN-CERTIFIED |
@@ -3427,11 +3428,102 @@ The run passed pinned dependency resolution, mathlib cache retrieval, direct
 Lake build of \(\texttt{WeilDefect.Arithmetic.NextJet}\), and
 unfinished-proof/project-axiom rejection.
 
-WD-T33 is already independently Lean-certified. Therefore the next unfinished
-sequential theorem cursor is:
+WD-T33 is already independently Lean-certified.
+
+## WD-T34 certificate evidence
+
+Stable ID:
 
 \[
 \boxed{
-\texttt{WD-T34 / ZW2-T6 — FINITE PRIME-POWER TRANSLATIONS ON FIXED SUPPORT}
+\text{WD-T34: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.activePrimePowers;
+- WeilDefect.wd_t34_active_prime_powers_finite;
+- WeilDefect.activePrimePowerFinset;
+- WeilDefect.mem_activePrimePowerFinset;
+- WeilDefect.activePrimeTranslationShifts;
+- WeilDefect.wd_t34_active_prime_translation_shifts_finite;
+- WeilDefect.translateBy;
+- WeilDefect.symmetricPrimeTranslation;
+- WeilDefect.compactPrimeTranslationSum;
+- WeilDefect.wd_t34_finite_prime_power_translations;
+- WeilDefect.primePowerThreshold;
+- WeilDefect.primePowerThreshold_subsingleton.
+
+Lean first certifies directly that, for every fixed real support radius
+\(c\), the compact-window threshold condition
+
+\[
+\log n<2c
+\]
+
+selects only finitely many natural prime powers.  The proof exponentiates the
+support inequality and places every active index in one finite natural
+interval.
+
+The corresponding physical arithmetic shifts
+
+\[
+\{\pm\log n:
+n\text{ prime-power active at }c\}
+\]
+
+are therefore a finite set.  The module packages the arithmetic contribution
+as an actual finite sum of scalar-weighted symmetric translations.
+
+The exact threshold set
+
+\[
+\{n:
+n\text{ prime power},\ \log n=2c\}
+\]
+
+is also certified to be subsingleton, so a fixed support boundary can contain
+at most one natural prime-power threshold event.
+
+The identification of this threshold set as the prime part of the
+compact-window Weil formula remains the source-pinned specialization recorded
+in the theorem ledger; no external theorem is introduced as a project axiom
+inside the Lean module.
+
+The core theorem build first passed in:
+
+\[
+\boxed{\texttt{36168682600}}.
+\]
+
+After correcting the finite operator helper so its arithmetic coefficient acts
+by scalar multiplication, the final certificate run passed in:
+
+\[
+\boxed{\texttt{36168986069}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{3bb1f99e923b0b80729144bb2eb8e374c7f15ade}}.
+\]
+
+The final WD-T34 source blob is:
+
+\[
+\texttt{ed91ac08a670ae1405cb994b05d06065f5452b5b}.
+\]
+
+The run passed pinned dependency resolution, mathlib cache retrieval, direct
+Lake build of \(\texttt{WeilDefect.Arithmetic.PrimeSupport}\), and
+unfinished-proof/project-axiom rejection.
+
+WD-T34 is therefore closed. The next unfinished sequential theorem cursor is:
+
+\[
+\boxed{
+\texttt{WD-T35 / ZW2-T7 — COMPACT-WINDOW WEIL FORM HAS LOGARITHMIC FOURIER/FORM ORDER}
 }
 \]
