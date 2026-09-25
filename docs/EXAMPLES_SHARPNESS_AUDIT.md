@@ -1,5 +1,5 @@
 # Examples and Sharpness Audit
-## H1-P4.4 — WD-X01 through WD-X07
+**H1-P4.4 — WD-X01 through WD-X07**
 
 This document audits the Horizon-1 example/sharpness witnesses.
 
@@ -11,7 +11,7 @@ It does not mean independent certification or external refereeing.
 
 ---
 
-# WD-X01 — Complete finite-to-infinite screening
+## WD-X01 — Complete finite-to-infinite screening
 
 Historical alias: WD-E1.
 
@@ -69,11 +69,11 @@ D_N\uparrow0.
 }
 ```
 
-## Audit result
+### Audit result
 
 The calculation is exact.
 
-## Sharpness role
+### Sharpness role
 
 WD-X01 witnesses that WD-T06 cannot be strengthened from monotone index/sign screening to persistence of finite-truncation negativity in the strong limit.
 
@@ -95,7 +95,7 @@ Status:
 
 ---
 
-# WD-X02 — Critical screening without an attained neutral vector
+## WD-X02 — Critical screening without an attained neutral vector
 
 Historical alias: WD-E2.
 
@@ -160,11 +160,11 @@ for every nonzero \(f\).
 
 Choosing unit vectors supported in intervals approaching \(t=1\) makes this defect value tend to zero.
 
-## Audit result
+### Audit result
 
 The construction is exact.
 
-## Sharpness role
+### Sharpness role
 
 WD-X02 proves that the infinite-dimensional critical case in WD-T04 genuinely has a non-attained branch.
 
@@ -188,7 +188,7 @@ Status:
 
 ---
 
-# WD-X03 — Individual screening is not compositional
+## WD-X03 — Individual screening is not compositional
 
 Historical alias: WD-E3.
 
@@ -237,11 +237,11 @@ has
 \|X\|=\sqrt2\,r>1.
 ```
 
-## Audit result
+### Audit result
 
 The construction is exact.
 
-## Sharpness role
+### Sharpness role
 
 WD-X03 shows the shared-budget hypothesis of WD-T09 is essential.
 
@@ -263,7 +263,7 @@ Status:
 
 ---
 
-# WD-X04 — Direct compression does not control the shorted covariance uniformly
+## WD-X04 — Direct compression does not control the shorted covariance uniformly
 
 Historical alias: WD-E4.
 
@@ -318,11 +318,11 @@ while the direct compression remains identically \(1\).
 
 For each fixed \(r<1\), \(K_r\) is uniformly positive; its smallest eigenvalue is \(1-r>0\).
 
-## Audit result
+### Audit result
 
 The construction is exact.
 
-## Sharpness role
+### Sharpness role
 
 WD-X04 shows that a strong direct selected-block lower bound does not provide a uniform family-level lower bound on the shorted covariance when coupling to the eliminated complement approaches degeneracy.
 
@@ -346,7 +346,7 @@ Status:
 
 ---
 
-# WD-X05 — Moving sectors can lose every persistent ray
+## WD-X05 — Moving sectors can lose every persistent ray
 
 Historical alias: WD-E5.
 
@@ -407,11 +407,11 @@ For an orthonormal sequence,
 \bigcap_n\mathcal A_n=\{0\}.
 ```
 
-## Audit result
+### Audit result
 
 The construction is exact.
 
-## Sharpness role
+### Sharpness role
 
 WD-X05 shows that the fixed finite negative-sector hypothesis in WD-T16/WD-T17 is essential.
 
@@ -439,7 +439,7 @@ Status:
 
 ---
 
-# WD-X06 — Positive-coordinate mass loss strengthens criticality to negativity
+## WD-X06 — Positive-coordinate mass loss strengthens criticality to negativity
 
 Historical alias: WD-E6.
 
@@ -517,11 +517,11 @@ y\in\bigcap_n\mathcal A_n.
 
 The vectors \(y_n\) are not orthogonal; no orthogonality is needed for this argument.
 
-## Audit result
+### Audit result
 
 The construction is exact.
 
-## Sharpness role
+### Sharpness role
 
 WD-X06 realizes the negative-fall-through branch of WD-T17.
 
@@ -545,7 +545,7 @@ Status:
 
 ---
 
-# WD-X07 — The inverse-square far order is sharp
+## WD-X07 — The inverse-square far order is sharp
 
 Historical alias: ZW1-E1.
 
@@ -599,11 +599,11 @@ R_v(z)
 }
 ```
 
-## Audit result
+### Audit result
 
 The construction is exact.
 
-## Sharpness role
+### Sharpness role
 
 WD-X07 shows that WD-T27 is optimal under the zero-moment hypothesis alone.
 
@@ -631,7 +631,7 @@ Status:
 
 ---
 
-# Sharpness map
+## Sharpness map
 
 | Example | Theorem boundary sharpened |
 | --- | --- |
@@ -645,7 +645,7 @@ Status:
 
 ---
 
-# H1-P4.4 determination
+## H1-P4.4 determination
 
 Every stable example/sharpness witness has been checked and attached to a precise theorem boundary.
 
@@ -672,7 +672,7 @@ Therefore
 
 No open RH-facing interface has changed standing.
 
-## Next cursor
+### Next cursor
 
 ```math
 \boxed{
