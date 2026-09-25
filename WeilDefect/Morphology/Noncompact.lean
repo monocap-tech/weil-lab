@@ -492,6 +492,120 @@ theorem wd_t39_p3_b2_full_coordinate_escape_weak_zero
   simpa [dist_eq_norm] using htotal
 
 
+
+/--
+Explicit index extraction for a norm-unbounded sequence.  The hypothesis says
+that after every index and above every real threshold there is a later term
+whose norm exceeds that threshold.
+-/
+noncomputable def normEscapeSubsequence
+    {B : Type*}
+    [NormedAddCommGroup B]
+    (b : ℕ → B)
+    (htail :
+      ∀ (N : ℕ) (x : ℝ),
+        ∃ n : ℕ, N < n ∧ x < ‖b n‖) :
+    ℕ → ℕ
+  | 0 => Classical.choose (htail 0 0)
+  | n + 1 =>
+      Classical.choose
+        (htail
+          (normEscapeSubsequence b htail n)
+          ((n + 1 : ℕ) : ℝ))
+
+theorem normEscapeSubsequence_strictMono
+    {B : Type*}
+    [NormedAddCommGroup B]
+    (b : ℕ → B)
+    (htail :
+      ∀ (N : ℕ) (x : ℝ),
+        ∃ n : ℕ, N < n ∧ x < ‖b n‖) :
+    StrictMono (normEscapeSubsequence b htail) := by
+  apply strictMono_nat_of_lt_succ
+  intro n
+  simpa [normEscapeSubsequence] using
+    (Classical.choose_spec
+      (htail
+        (normEscapeSubsequence b htail n)
+        ((n + 1 : ℕ) : ℝ))).1
+
+theorem normEscapeSubsequence_norm_lower
+    {B : Type*}
+    [NormedAddCommGroup B]
+    (b : ℕ → B)
+    (htail :
+      ∀ (N : ℕ) (x : ℝ),
+        ∃ n : ℕ, N < n ∧ x < ‖b n‖)
+    (n : ℕ) :
+    (n : ℝ) ≤ ‖b (normEscapeSubsequence b htail n)‖ := by
+  cases n with
+  | zero =>
+      simpa using norm_nonneg (b (normEscapeSubsequence b htail 0))
+  | succ n =>
+      have h :=
+        (Classical.choose_spec
+          (htail
+            (normEscapeSubsequence b htail n)
+            ((n + 1 : ℕ) : ℝ))).2
+      exact le_of_lt (by
+        simpa [normEscapeSubsequence] using h)
+
+/--
+B-infinity extraction: failure of every uniform background norm bound produces
+a strictly indexed subsequence whose norms tend to +infinity.
+-/
+theorem wd_t39_p3_b4_norm_escape_of_unbounded
+    {B : Type*}
+    [NormedAddCommGroup B]
+    (b : ℕ → B)
+    (hunbounded :
+      ¬ ∃ R : ℝ, ∀ n, ‖b n‖ ≤ R) :
+    ∃ φ : ℕ → ℕ,
+      StrictMono φ ∧
+      Tendsto (fun n => ‖b (φ n)‖) atTop atTop := by
+  have hnotRange :
+      ¬ BddAbove (Set.range (fun n => ‖b n‖)) := by
+    intro h
+    rcases h with ⟨R, hR⟩
+    apply hunbounded
+    refine ⟨R, ?_⟩
+    intro n
+    exact hR (Set.mem_range_self n)
+  have htail :
+      ∀ (N : ℕ) (x : ℝ),
+        ∃ n : ℕ, N < n ∧ x < ‖b n‖ := by
+    intro N x
+    let S : ℝ :=
+      ∑ i ∈ Finset.range (N + 1), ‖b i‖
+    let M : ℝ := max x S
+    rcases (not_bddAbove_iff.mp hnotRange M) with
+      ⟨y, hy, hMy⟩
+    rcases hy with ⟨n, rfl⟩
+    refine ⟨n, ?_, ?_⟩
+    · by_contra hN
+      have hnle : n ≤ N := Nat.le_of_not_gt hN
+      have hnmem : n ∈ Finset.range (N + 1) :=
+        Finset.mem_range.mpr (Nat.lt_succ_of_le hnle)
+      have hnormSum : ‖b n‖ ≤ S := by
+        dsimp [S]
+        exact Finset.single_le_sum
+          (fun i _ => norm_nonneg (b i)) hnmem
+      have hSM : S ≤ M := le_max_right _ _
+      exact (not_lt_of_ge (hnormSum.trans hSM)) hMy
+    · exact (le_max_left x S).trans_lt hMy
+  let φ := normEscapeSubsequence b htail
+  have hφ : StrictMono φ := by
+    simpa [φ] using normEscapeSubsequence_strictMono b htail
+  have hlower :
+      ∀ n : ℕ, (n : ℝ) ≤ ‖b (φ n)‖ := by
+    intro n
+    simpa [φ] using
+      normEscapeSubsequence_norm_lower b htail n
+  have hnorm :
+      Tendsto (fun n => ‖b (φ n)‖) atTop atTop :=
+    tendsto_atTop_mono hlower tendsto_natCast_atTop_atTop
+  exact ⟨φ, hφ, hnorm⟩
+
 /-- The two possible regimes after imposing a uniform background bound. -/
 inductive BoundedBackgroundRegime
     {B : Type*}
@@ -581,6 +695,61 @@ theorem wd_t39_p3_b4_bounded_background_dichotomy
       BoundedBackgroundRegime.weakTailEscape
         φ bLim L hφ hweak hsq'
         (sub_pos.mpr hlt)
+
+
+/-- Full P3-B4 subsequential background compactness classification. -/
+inductive BackgroundCompactnessRegime
+    {B : Type*}
+    [NormedAddCommGroup B] [InnerProductSpace ℂ B]
+    (b : ℕ → B) : Prop where
+  | normEscape
+      (φ : ℕ → ℕ)
+      (hφ : StrictMono φ)
+      (hnorm :
+        Tendsto (fun n => ‖b (φ n)‖) atTop atTop)
+  | weakTailEscape
+      (φ : ℕ → ℕ) (bLim : B) (L : ℝ)
+      (hφ : StrictMono φ)
+      (hweak :
+        WeilDefect.WDT16.WeaklyTendsto
+          (fun n => b (φ n)) bLim)
+      (hnormSq :
+        Tendsto (fun n => ‖b (φ n)‖ ^ 2)
+          atTop (𝓝 L))
+      (defect_pos : 0 < L - ‖bLim‖ ^ 2)
+  | strongCompact
+      (φ : ℕ → ℕ) (bLim : B)
+      (hφ : StrictMono φ)
+      (hstrong :
+        Tendsto (fun n => b (φ n))
+          atTop (𝓝 bLim))
+
+/--
+P3-B4 / WD-T39 full background trichotomy.
+
+Every Hilbert-space background sequence has a subsequence in exactly one of the
+three morphology species produced here: norm escape, bounded weak/tail escape,
+or strong background compactness.  The theorem does not claim full positive
+coefficient compactness.
+-/
+theorem wd_t39_p3_b4_background_compactness_trichotomy
+    {B : Type*}
+    [NormedAddCommGroup B] [InnerProductSpace ℂ B] [CompleteSpace B]
+    (b : ℕ → B) :
+    BackgroundCompactnessRegime b := by
+  by_cases hbdd : ∃ R : ℝ, ∀ n, ‖b n‖ ≤ R
+  · rcases hbdd with ⟨R, hR⟩
+    cases wd_t39_p3_b4_bounded_background_dichotomy b R hR with
+    | weakTailEscape φ bLim L hφ hweak hnormSq hdef =>
+        exact BackgroundCompactnessRegime.weakTailEscape
+          φ bLim L hφ hweak hnormSq hdef
+    | strongCompact φ bLim hφ hstrong =>
+        exact BackgroundCompactnessRegime.strongCompact
+          φ bLim hφ hstrong
+  · rcases wd_t39_p3_b4_norm_escape_of_unbounded b hbdd with
+      ⟨φ, hφ, hnorm⟩
+    exact BackgroundCompactnessRegime.normEscape φ hφ hnorm
+
 
 
 end WeilDefect
