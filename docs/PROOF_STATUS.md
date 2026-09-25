@@ -219,10 +219,10 @@ Current formalization cursor:
 
 ```math
 \boxed{
-\texttt{LEAN-H1-P1 / WD-X06 — POSITIVE-COORDINATE MASS LOSS STRENGTHENS CRITICALITY TO NEGATIVITY}
+\texttt{LEAN-H1 EXHAUSTED}
 }
 ```
 
-WD-X05 is `LEAN-CERTIFIED`; the active sharpness-example cursor is WD-X06. See [Lean Status Ledger](LEAN_STATUS.md) for live certificate state.
+WD-X06 is `LEAN-CERTIFIED`; all stable Horizon-1 theorem/example rows now have durable final Lean states. See [Lean Status Ledger](LEAN_STATUS.md) for certificate evidence.
 
-H1-P5 resumes only after LEAN-H1 exhaustion.
+Next project cursor: `H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE` — not started.
