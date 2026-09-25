@@ -93,12 +93,12 @@ theorem exists_weaklyTendsto_subseq_of_norm_le
           (fun n => inner ℂ (vS (φ n)) z)
           atTop
           (𝓝 (fLim z)) := by
-      simpa only [
-        Function.comp_apply,
-        topDualPairing_apply,
-        StrongDual.toWeakDual_apply,
-        InnerProductSpace.toDual_apply_apply
-      ] using heval
+      change
+        Tendsto
+          (fun n => (f (φ n)) z)
+          atTop
+          (𝓝 (fLim z)) at heval
+      simpa [f] using heval
     have hlimEval : inner ℂ xS z = fLim z := by
       simpa [xS] using
         (InnerProductSpace.toDual_symm_apply
