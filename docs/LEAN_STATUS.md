@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T16 | WeilDefect.WDT16.exists_weaklyTendsto_subseq_of_norm_le + WeilDefect.WDT16.wd_t16_fixed_negative_sector_compactness + WeilDefect.WDT16.wd_t16_nonpositive_limit_persists + WeilDefect.WDT16.wd_t16_uniform_negative_margin_persists + WeilDefect.WDT16.wd_t16_uniform_negative_margin_forces_endpoint_jump + WeilDefect.WDT16.wd_t16_fixed_finite_negative_sector_persistence | LEAN-CERTIFIED |
 | WD-T15 | WeilDefect.WDT15.wd_t15_gap_antitone + WeilDefect.WDT15.wd_t15_right_limit_gap_duality + WeilDefect.WDT15.wd_t15_sequence_right_limit_eq + WeilDefect.WDT15.wd_t15_sequence_gap_eq_right_limit_orthogonal + WeilDefect.WDT15.wd_t15_monotone_projection_limit + WeilDefect.WDT15.wd_t15_right_limit_projection_and_gap_duality | LEAN-CERTIFIED |
 | WD-T14 | WeilDefect.WDT14.wd_t14_positive_shadow_margin + WeilDefect.WDT14.wd_t14_positive_shadow_preserves_negative_margin + WeilDefect.WDT14.wd_t14_graph_shadow_admissible_iff + WeilDefect.WDT14.wd_t14_graph_admissibility_failure_example + WeilDefect.WDT14.wd_t14_finite_positive_shadows_preserve_signature_not_admissibility | LEAN-CERTIFIED |
 | WD-T13 | WeilDefect.WDT13.wd_t13_complement_isUnit + WeilDefect.WDT13.wd_t13_complement_inverse_nonnegative + WeilDefect.WDT13.wd_t13_schur_correction_positive + WeilDefect.WDT13.wd_t13_schur_le_compression + WeilDefect.WDT13.wd_t13_schur_lower_bound + WeilDefect.WDT13.wd_t13_schur_isUnit + WeilDefect.WDT13.wd_t13_block_solution_exists + WeilDefect.WDT13.wd_t13_block_solution_first_component + WeilDefect.WDT13.wd_t13_direct_compression_versus_shorted_covariance | LEAN-CERTIFIED |
@@ -1698,5 +1699,121 @@ Next theorem cursor:
 \[
 \boxed{
 \texttt{WD-T16 / WD-C3+WD-C5 — FIXED FINITE NEGATIVE-SECTOR PERSISTENCE}
+}
+\]
+
+
+## WD-T16 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T16: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.WDT16.exists_weaklyTendsto_subseq_of_norm_le;
+- WeilDefect.WDT16.weaklyTendsto_norm_sq_le_of_tendsto;
+- WeilDefect.WDT16.wd_t16_fixed_negative_sector_compactness;
+- WeilDefect.WDT16.wd_t16_nonpositive_limit_persists;
+- WeilDefect.WDT16.wd_t16_uniform_negative_margin_persists;
+- WeilDefect.WDT16.wd_t16_uniform_negative_margin_forces_endpoint_jump;
+- WeilDefect.WDT16.wd_t16_fixed_finite_negative_sector_persistence.
+
+The coefficient Hilbert space is represented by the actual \(L^2\)-product
+\(K_+\oplus M\), with \(M\) finite-dimensional.
+
+Lean natively extracts a weakly convergent subsequence of the positive
+coordinates without assuming global separability: it localizes to the
+separable closed span of the sequence, passes through the Fréchet–Riesz
+isometry, applies sequential Banach–Alaoglu in the weak dual, and lifts the
+result back to the ambient Hilbert space.
+
+Finite-dimensional compactness gives strong convergence of the negative
+coordinate. The assembled weak limit lies in the WD-T15 right-limit space.
+
+For normalized signatures
+
+\[
+J(a_n,u_n)\to q_*\le0,
+\]
+
+Lean proves
+
+\[
+\boxed{
+\exists,0\ne y\in A_{c+},
+\qquad
+J(y)\le q_*.
+}
+\]
+
+For a uniform margin \(\kappa>0\),
+
+\[
+J(a_n,u_n)\le-\kappa,
+\]
+
+Lean proves
+
+\[
+\boxed{
+\exists,0\ne y\in A_{c+},
+\qquad
+J(y)\le-\kappa.
+}
+\]
+
+If the endpoint \(A_c\) is \(J\)-nonnegative, the produced vector is also
+certified to lie in
+
+\[
+A_{c+}\setminus A_c.
+\]
+
+No imported project theorem premise is consumed by WD-T16.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Filtration.FiniteNegativeSector}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36078296999}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{6c8bd4b57eb18c583d426c767beca21f06307f69}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{f7f2a50f8183ba1a617ce1cf97855461bbbbda5f}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T16 module;
+- unfinished-proof/project-axiom rejection.
+
+The final audited WD-C3 nonpositive-limit theorem was added before promotion;
+the certificate does not merely cover the compactness core.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T17 / WD-C4 — FIXED-SECTOR CRITICAL DICHOTOMY}
 }
 \]
