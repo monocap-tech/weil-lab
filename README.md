@@ -53,8 +53,8 @@ boundary is deliberately before RH closure.
 | H1-P5 | Public mathematical package | Paused until LEAN-H1 exhaustion |
 
 Within H1-P4, source pinning, the internal proof audit, the composite
-morphology audit, and the examples/sharpness audit are complete. The current cursor is
-**LEAN-H1-P5 / WD-T39 — noncompact background morphology**. Stable public theorem IDs and the
+morphology audit, and the examples/sharpness audit are complete. The current formalization cursor is
+**LEAN-H1-P1 / WD-X02 — critical screening without an attained neutral vector**. Stable public theorem IDs and the
 audit surfaces are canonical in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
 [Dependency Audit](docs/DEPENDENCY_AUDIT.md),
