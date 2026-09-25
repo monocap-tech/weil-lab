@@ -765,7 +765,7 @@ and, under exact range inclusion,
 }
 ```
 
-The abstract sign problem is therefore a reduced-screening norm problem.
+After the range-defect branch has been separated, the remaining exactly screenable sign problem is a reduced-screening norm problem.
 
 The pass also corrects the earlier public morphology map:
 
@@ -779,7 +779,7 @@ The pass also corrects the earlier public morphology map:
 
 There is a distinct non-attained approximate-neutral boundary.
 
-## Next H1-P1 cursor
+## Historical handoff from H1-P1.0
 
 ```math
 \boxed{
@@ -787,7 +787,7 @@ There is a distinct non-attained approximate-neutral boundary.
 }
 ```
 
-The next pass should determine how WD-A1–A6 behave when:
+At the close of H1-P1.0, the next pass was assigned to determine how WD-A1–A6 behave when:
 
 1. only a selected finite-dimensional negative subspace is tracked;
 2. the remaining negative channels are treated as background;
