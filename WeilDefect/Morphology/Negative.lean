@@ -271,7 +271,7 @@ structure NegativeArithmeticMorphology
       ((M * zeroMomentResponseConstant src.rho src.v) * C)
         * ((Real.log R + 2) / R)
   nextJetMorphology :
-    ∀ {ι : Type*} [DecidableEq ι]
+    ∀ {ι : Type} [DecidableEq ι]
       (s : Finset ι)
       (mult : ι → ℕ)
       (mu : ι → ℂ)
