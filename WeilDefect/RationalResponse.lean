@@ -35,6 +35,26 @@ theorem inv_sub_laurent_two
   ring
 
 /--
+Weighted one-pole Laurent identity through order two.
+-/
+theorem weighted_inv_sub_laurent_two
+    (v z rho : ℂ)
+    (hz : z ≠ 0)
+    (hzrho : z ≠ rho) :
+    v / (z - rho)
+      =
+    v / z + (rho * v) / z ^ 2
+      + v * rho ^ 2 / (z ^ 2 * (z - rho)) := by
+  calc
+    v / (z - rho) = v * (1 / (z - rho)) := by ring
+    _ = v * (1 / z + rho / z ^ 2
+        + rho ^ 2 / (z ^ 2 * (z - rho))) := by
+      rw [inv_sub_laurent_two z rho hz hzrho]
+    _ = v / z + (rho * v) / z ^ 2
+        + v * rho ^ 2 / (z ^ 2 * (z - rho)) := by
+      ring
+
+/--
 Exact finite Laurent decomposition of the rational response.
 -/
 theorem rationalResponse_laurent_two
@@ -54,26 +74,18 @@ theorem rationalResponse_laurent_two
     (∑ i : Fin n, v i / (z - rho i))
         =
       ∑ i : Fin n,
-        v i * (1 / z + rho i / z ^ 2
-          + rho i ^ 2 / (z ^ 2 * (z - rho i))) := by
+        (v i / z + (rho i * v i) / z ^ 2
+          + v i * rho i ^ 2 / (z ^ 2 * (z - rho i))) := by
       apply Finset.sum_congr rfl
       intro i hi
-      rw [← inv_sub_laurent_two z (rho i) hz (hzrho i)]
-      ring
+      exact weighted_inv_sub_laurent_two (v i) z (rho i) hz (hzrho i)
     _ =
       (∑ i : Fin n, v i) / z
         + (∑ i : Fin n, rho i * v i) / z ^ 2
         + ∑ i : Fin n,
             v i * rho i ^ 2 / (z ^ 2 * (z - rho i)) := by
-      simp only [Finset.sum_add_distrib]
-      rw [Finset.sum_div, Finset.sum_div]
-      congr 1
-      · apply Finset.sum_congr rfl
-        intro i hi
-        ring
-      · apply Finset.sum_congr rfl
-        intro i hi
-        ring
+      rw [Finset.sum_add_distrib, Finset.sum_add_distrib,
+        Finset.sum_div, Finset.sum_div]
 
 /--
 Zero residue moment removes the inverse-linear Laurent term exactly.
@@ -122,7 +134,6 @@ theorem rationalResponse_remainder_term_bound
         gcongr
     _ = 2 * (‖v‖ * ‖rho‖ ^ 2) / ‖z‖ ^ 3 := by
       field_simp [hzpos.ne']
-      ring
 
 /--
 Quantitative cubic remainder estimate for a finite zero-moment response.
@@ -140,12 +151,8 @@ theorem rationalResponse_zero_moment_remainder_bound
   have hzrho : ∀ i, z ≠ rho i := by
     intro i hzr
     subst z
-    have hzpos : 0 < ‖rho i‖ := by
-      apply norm_pos_iff.mpr
-      intro hr0
-      subst rho
-      exact hz rfl
-    have := hfar i
+    have hzpos : 0 < ‖rho i‖ := norm_pos_iff.mpr hz
+    have hself := hfar i
     linarith
   rw [rationalResponse_zero_moment_expansion rho v z hv0 hz hzrho]
   simp only [add_sub_cancel_left]
@@ -168,9 +175,6 @@ theorem rationalResponse_zero_moment_remainder_bound
       rw [← Finset.sum_div]
       congr 1
       rw [Finset.mul_sum]
-      apply Finset.sum_congr rfl
-      intro i hi
-      ring
 
 /--
 WD-T27 / ZW1-T8, quantitative form.
