@@ -7,6 +7,7 @@ import WeilDefect.Screening.Quadratic
 import WeilDefect.PairGeometry
 import WeilDefect.RationalResponse
 import WeilDefect.NativeHilbertSchmidt
+import WeilDefect.DirichletResolvent
 import WeilDefect.FiniteExponentialIndependence
 import WeilDefect.ProblemOneIndependence
 import WeilDefect.Residues
