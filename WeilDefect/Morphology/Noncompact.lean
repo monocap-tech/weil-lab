@@ -16,7 +16,7 @@ abbrev FullNegativeSpace
   WithLp 2 (M × B)
 
 /-- Assemble selected and background negative coordinates in the Hilbert L2 product. -/
-def fullNegativeCoeff
+noncomputable def fullNegativeCoeff
     {M B : Type*}
     [NormedAddCommGroup M] [InnerProductSpace ℂ M]
     [NormedAddCommGroup B] [InnerProductSpace ℂ B]
@@ -24,7 +24,7 @@ def fullNegativeCoeff
   WithLp.toLp 2 (u, b)
 
 /-- Assemble the positive coordinate with the entire negative sector. -/
-def fullCoeff
+noncomputable def fullCoeff
     {Kpos M B : Type*}
     [NormedAddCommGroup Kpos] [InnerProductSpace ℂ Kpos]
     [NormedAddCommGroup M] [InnerProductSpace ℂ M]
@@ -61,7 +61,9 @@ theorem tendsto_fullNegativeCoeff
   have hmap :=
     ((WithLp.prodContinuousLinearEquiv 2 ℂ M B).symm.continuous.tendsto
       (uLim, bLim)).comp hpair
-  simpa [fullNegativeCoeff] using hmap
+  simpa only [fullNegativeCoeff,
+    WithLp.prodContinuousLinearEquiv_symm_apply,
+    Function.comp_apply] using hmap
 
 /-- B-2 custody: weak convergence of the positive coordinate together with
 strong convergence on the entire negative sector gives a full weak limit. -/
@@ -113,7 +115,9 @@ theorem tendsto_fullCoeff_of_strong_positive
     ((WithLp.prodContinuousLinearEquiv
       2 ℂ Kpos (FullNegativeSpace M B)).symm.continuous.tendsto
         (aLim, fullNegativeCoeff uLim bLim)).comp hpair
-  simpa [fullCoeff, WeilDefect.WDT16.coeff] using hmap
+  simpa only [fullCoeff, WeilDefect.WDT16.coeff,
+    WithLp.prodContinuousLinearEquiv_symm_apply,
+    Function.comp_apply] using hmap
 
 /-- A nonzero selected negative coordinate makes the assembled full
 coefficient vector nonzero, independently of the background. -/
@@ -133,11 +137,13 @@ theorem fullCoeff_ne_zero_of_selected_ne
         (fun z : WeilDefect.WDT16.CoeffSpace
           Kpos (FullNegativeSpace M B) => z.snd)
         hzero
-    simpa [fullCoeff] using hsnd
+    change fullNegativeCoeff u b = 0 at hsnd
+    exact hsnd
   have hsel :=
     congrArg (fun z : FullNegativeSpace M B => z.fst) hneg
   apply hu
-  simpa [fullNegativeCoeff] using hsel
+  change u = 0 at hsel
+  exact hsel
 
 /--
 P3-B3 / WD-T39 fixed-packet custody in operational form.
@@ -173,9 +179,10 @@ theorem wd_t39_p3_b3_fixed_packet_custody
       Tendsto (fun n => u (φ n)) atTop (𝓝 uLim) := by
     simpa [φ, Function.comp_def] using huLim
   have hδle : δ ≤ ‖uLim‖ := by
-    apply le_of_tendsto' huLim'.norm
-    intro n
-    exact hlower (φ₂ n)
+    exact le_of_tendsto_of_tendsto'
+      (tendsto_const_nhds : Tendsto (fun _ : ℕ => δ) atTop (𝓝 δ))
+      huLim'.norm
+      (fun n => hlower (φ₂ n))
   have hu0 : uLim ≠ 0 := by
     intro hzero
     rw [hzero, norm_zero] at hδle
@@ -334,7 +341,8 @@ theorem weak_limit_mem_kernel_of_image_tendsto_zero
   have hstrongY :
       Tendsto (fun n => inner ℂ (S (w n)) y)
         atTop (𝓝 0) := by
-    simpa using (hc.tendsto 0).comp himage
+    simpa only [Function.comp_apply] using
+      (hc.tendsto 0).comp himage
   have heq :=
     tendsto_nhds_unique hweakY hstrongY
   simpa using heq
@@ -362,7 +370,10 @@ theorem wd_t39_p3_b1_anchored_mass
     (himage : Tendsto (fun n => S (w n)) atTop (𝓝 0)) :
     wLim ≠ 0 ∧ S wLim = 0 := by
   have hδle : δ ≤ ‖Q wLim‖ :=
-    le_of_tendsto hQ.norm hanchor
+    le_of_tendsto_of_tendsto
+      (tendsto_const_nhds :
+        Tendsto (fun _ : ℕ => δ) atTop (𝓝 δ))
+      hQ.norm hanchor
   have hw0 : wLim ≠ 0 := by
     intro hw
     rw [hw, map_zero, norm_zero] at hδle
@@ -391,9 +402,7 @@ theorem wd_t39_p3_b2_full_coordinate_escape_weak_zero
           atTop (𝓝 0)) :
     WeilDefect.WDT16.WeaklyTendsto w 0 := by
   intro z
-  change
-    Tendsto (fun n => inner ℂ (w n) z)
-      atTop (𝓝 0)
+  simp only [inner_zero_left]
   rw [Metric.tendsto_atTop]
   intro ε hε
   have hε4 : 0 < ε / 4 := by linarith
