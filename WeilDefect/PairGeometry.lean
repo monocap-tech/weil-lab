@@ -203,6 +203,96 @@ theorem wd_t22_two_simple_quartet_negative_index
     wd_t22_simple_quartet_packet_inertia 2 negativeIndex hBombieri
 
 
+/--
+Explicit imported interface for Bombieri's multiplicity-null theorem
+(Lemma 10, p. 210 with the proof continuation on p. 213).
+
+The list records the positive raw multiplicities of the distinct ordinates in a
+finite packet.  The imported premise states that the zero-eigenspace
+multiplicity is the sum of the duplicate contributions m - 1.
+-/
+structure BombieriMultiplicityNullData
+    (multiplicities : List ℕ)
+    (nullity : ℕ) : Prop where
+  multiplicities_pos :
+    ∀ m ∈ multiplicities, 0 < m
+  nullity_eq_sum :
+    nullity =
+      (multiplicities.map (fun m => m - 1)).sum
+
+/--
+Same-frequency synthesis factors through the sum of the raw coefficients.
+Thus only the total coefficient survives before the multiplicity quotient.
+-/
+theorem wd_t23_same_frequency_synthesis_factor
+    {H : Type*} [AddCommMonoid H] [Module ℂ H]
+    {ι : Type*} [Fintype ι]
+    (x : ι → ℂ) (g : H) :
+    (∑ i, x i • g) = (∑ i, x i) • g := by
+  simp [Finset.sum_smul]
+
+/--
+Every zero-sum coefficient combination of duplicate same-frequency coordinates
+is an exact synthesis-null direction.
+-/
+theorem wd_t23_same_frequency_zero_sum_null
+    {H : Type*} [AddCommMonoid H] [Module ℂ H]
+    {ι : Type*} [Fintype ι]
+    (x : ι → ℂ) (g : H)
+    (hzero : (∑ i, x i) = 0) :
+    (∑ i, x i • g) = 0 := by
+  rw [wd_t23_same_frequency_synthesis_factor x g, hzero, zero_smul]
+
+/--
+WD-T23: the imported Bombieri multiplicity theorem gives the total exact
+multiplicity-null dimension before distinct-frequency quotienting.
+-/
+theorem wd_t23_total_multiplicity_nullity
+    (multiplicities : List ℕ)
+    (nullity : ℕ)
+    (hBombieri : BombieriMultiplicityNullData multiplicities nullity) :
+    nullity =
+      (multiplicities.map (fun m => m - 1)).sum :=
+  hBombieri.nullity_eq_sum
+
+/--
+For one ordinate of raw multiplicity m, exactly m - 1 coefficient directions
+are multiplicity-null.
+-/
+theorem wd_t23_single_ordinate_nullity
+    (m nullity : ℕ)
+    (hBombieri : BombieriMultiplicityNullData [m] nullity) :
+    nullity = m - 1 := by
+  simpa using hBombieri.nullity_eq_sum
+
+/--
+For one genuine ordinate, a nontrivial multiplicity-null sector is present
+exactly when its raw multiplicity exceeds one.
+-/
+theorem wd_t23_single_ordinate_has_null_iff_repeated
+    (m nullity : ℕ)
+    (hBombieri : BombieriMultiplicityNullData [m] nullity) :
+    0 < nullity ↔ 1 < m := by
+  have hm : 0 < m := by
+    simpa using hBombieri.multiplicities_pos m (by simp)
+  rw [wd_t23_single_ordinate_nullity m nullity hBombieri]
+  omega
+
+/--
+WD-T23 / ZW1-T4: multiplicity-null directions are quotient directions, while
+the active same-frequency coordinate is the single coefficient sum.
+-/
+theorem wd_t23_distinct_frequency_reduction
+    (m nullity : ℕ)
+    (hBombieri : BombieriMultiplicityNullData [m] nullity) :
+    nullity = m - 1
+      ∧ (0 < nullity ↔ 1 < m) := by
+  exact ⟨
+    wd_t23_single_ordinate_nullity m nullity hBombieri,
+    wd_t23_single_ordinate_has_null_iff_repeated m nullity hBombieri
+  ⟩
+
+
 /-- Raw residues contributed by finitely many negative pair coefficients. -/
 def rawResiduesOfNegativePairs (xs : List ℂ) : List ℂ :=
   xs.flatMap fun α => [α, -α]
