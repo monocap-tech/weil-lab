@@ -45,7 +45,7 @@ jobs:
 
       - name: Check current theorem target
         shell: bash
-        run: lake build WeilDefect.Arithmetic.LogarithmicForm
+        run: lake build WeilDefect.Arithmetic.NoSobolevBootstrap
 
       - name: Reject unfinished trusted declarations
         shell: bash
