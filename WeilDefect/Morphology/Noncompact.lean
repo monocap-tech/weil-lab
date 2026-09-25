@@ -451,7 +451,8 @@ theorem wd_t39_p3_b2_full_coordinate_escape_weak_zero
     calc
       inner ℂ (w n) (E.block R z)
           =
-        inner ℂ (w n) ((E.block R)† z) := by
+        inner ℂ (w n)
+          (ContinuousLinearMap.adjoint (E.block R) z) := by
           rw [E.selfAdjoint R]
       _ = inner ℂ (E.block R (w n)) z :=
         ContinuousLinearMap.adjoint_inner_right
