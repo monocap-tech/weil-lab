@@ -655,7 +655,7 @@ After those corrections:
 
 This status remains internal to Horizon 1.
 
-The examples/sharpness witnesses WD-X01 through WD-X07 remain the only pending P4 audit class.
+At the close of P4.3, the examples/sharpness witnesses WD-X01 through WD-X07 were the remaining P4 audit class. That subsequent P4.4 audit is now complete; see [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md).
 
 ---
 
