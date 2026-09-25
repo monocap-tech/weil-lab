@@ -1,5 +1,5 @@
 # Noncompact Background Morphology Theorem
-## H1-P3.2 — Moving selected custody, unselected-background escape, and full-divisor limits
+**H1-P3.2 — Moving selected custody, unselected-background escape, and full-divisor limits**
 
 This document packages the noncompact mechanisms left outside the fixed-packet negative and neutral morphology theorems.
 
@@ -27,7 +27,7 @@ An escaping unselected background cannot erase a negative ray already anchored i
 
 ---
 
-# 1. Coordinate framework
+## 1. Coordinate framework
 
 Let the full coefficient space be
 
@@ -78,7 +78,7 @@ be the corresponding exhaustion on $B_\Pi$.
 
 ---
 
-# 2. Selected-sector custody versus escape
+## 2. Selected-sector custody versus escape
 
 Consider normalized coefficient vectors
 
@@ -122,7 +122,7 @@ w\ne0.
 
 ---
 
-## P3-B1 — Anchored coefficient mass produces an exact relation
+### P3-B1 — Anchored coefficient mass produces an exact relation
 
 Assume there is a fixed finite-rank coordinate projection $Q_R$ such that
 
@@ -194,7 +194,7 @@ This is the coefficient-custody mechanism behind finite-exception compactness.
 
 ---
 
-## P3-B2 — Moving-sector escape
+### P3-B2 — Moving-sector escape
 
 Suppose instead that for the full coefficient exhaustion, every fixed finite coordinate block vanishes:
 
@@ -262,7 +262,7 @@ The same geometry can occur when negative standing migrates through successively
 
 ---
 
-# 3. Why finite selected packets eliminate moving selected escape
+## 3. Why finite selected packets eliminate moving selected escape
 
 Now return to one fixed finite selected packet $\Pi$.
 
@@ -300,7 +300,7 @@ Therefore the fixed selected packet supplies an automatic finite coordinate anch
 
 ---
 
-## P3-B3 — Fixed-packet custody theorem
+### P3-B3 — Fixed-packet custody theorem
 
 For a fixed finite selected packet, any sequence satisfying
 
@@ -336,7 +336,7 @@ It is not a third fixed-packet morphology.
 
 ---
 
-# 4. Full-divisor background after a fixed selected negative ray
+## 4. Full-divisor background after a fixed selected negative ray
 
 Assume now the P3.0 fixed-packet negative setup.
 
@@ -397,11 +397,11 @@ The only question is now the compactness of the background sequence $b_n$.
 
 ---
 
-# 5. Background compactness taxonomy
+## 5. Background compactness taxonomy
 
 Every sequence $b_n\in B_\Pi$ admits, after passage to a subsequence, one of the following regimes.
 
-## B∞ — norm escape
+### B∞ — norm escape
 
 ```math
 \boxed{
@@ -428,7 +428,7 @@ The normalized full negativity is increasingly carried by the unselected negativ
 
 ---
 
-## BT — bounded but non-precompact background
+### BT — bounded but non-precompact background
 
 Assume
 
@@ -471,7 +471,7 @@ Equivalently, with respect to a canonical finite-coordinate exhaustion, uniform 
 
 ---
 
-## BF — strong full-divisor compactness
+### BF — strong full-divisor compactness
 
 If $b_n$ is bounded and uniformly coordinate-tail tight, then it is precompact in the $\ell^2$-type background coefficient space.
 
@@ -489,7 +489,7 @@ This is the fixed full-divisor ray regime.
 
 ---
 
-## P3-B4 — Background compactness trichotomy
+### P3-B4 — Background compactness trichotomy
 
 For the normalized unselected background, after passage to a subsequence:
 
@@ -512,7 +512,7 @@ The first two cases are collectively the **background-escape morphology**.
 
 ---
 
-# 6. Background escape cannot erase fixed selected negativity
+## 6. Background escape cannot erase fixed selected negativity
 
 Even in the bounded noncompact regime,
 
@@ -555,7 +555,7 @@ It only prevents strong convergence of the complete background coefficient vecto
 
 ---
 
-## P3-B5 — Fixed-selected-ray stability under background escape
+### P3-B5 — Fixed-selected-ray stability under background escape
 
 If a fixed selected negative ray survives with margin $\kappa>0$, then every bounded weak background limit produces a nonzero full weak coefficient ray with
 
@@ -581,7 +581,7 @@ Therefore:
 
 ---
 
-# 7. Strong full-divisor ray
+## 7. Strong full-divisor ray
 
 In the BF regime,
 
@@ -632,7 +632,7 @@ Thus a fixed full-divisor negative **weak limit** survives. Strong convergence o
 
 ---
 
-## P3-B6 — Fixed full-divisor negative-limit theorem
+### P3-B6 — Fixed full-divisor negative-limit theorem
 
 If the normalized unselected background is bounded and coefficient-tail tight, then after passage to a subsequence
 
@@ -690,7 +690,7 @@ strongly, then the whole full-divisor coefficient vector converges strongly.
 ---
 
 
-# 8. Finite positive shadows do not cure background noncompactness
+## 8. Finite positive shadows do not cure background noncompactness
 
 Let
 
@@ -738,7 +738,7 @@ Therefore the genuinely infinite issue in the background morphology is **backgro
 
 ---
 
-## P3-B7 — Finite-shadow separation principle
+### P3-B7 — Finite-shadow separation principle
 
 Finite positive-coordinate shadows can certify the algebraic selected negative margin, but they neither preserve the full persistence relation nor make the unselected negative background compact.
 
@@ -748,23 +748,23 @@ Finite positive-coordinate shadows can certify the algebraic selected negative m
 
 ---
 
-# 9. Global morphology classification
+## 9. Global morphology classification
 
 The completed H1-P3 theory now distinguishes three fundamentally different failure species.
 
-## M1 — fixed-packet negative morphology
+### M1 — fixed-packet negative morphology
 
 A fixed selected packet retains a negative endpoint ray.
 
 This is P3.0 and terminates at the weighted next-jet interface.
 
-## M2 — fixed-packet attained-neutral morphology
+### M2 — fixed-packet attained-neutral morphology
 
 A fixed selected packet reaches an attained neutral mode with finite-exception unit gain.
 
 This is P3.1 and terminates at the null-extension interface.
 
-## M3 — noncompact coefficient morphology
+### M3 — noncompact coefficient morphology
 
 Noncompactness occurs before a fixed-packet morphology can be fully anchored, or in the unselected background after anchoring.
 
@@ -806,9 +806,9 @@ strongly and a fixed full negative weak limit survives. Full strong coefficient 
 
 ---
 
-# 10. Noncompact Background Morphology Theorem
+## 10. Noncompact Background Morphology Theorem
 
-## H1-P3.2 Noncompact Background Morphology Theorem
+### H1-P3.2 Noncompact Background Morphology Theorem
 
 ### Selected-sector statement
 
@@ -843,7 +843,7 @@ Background escape cannot erase the already anchored selected negative ray.
 
 ---
 
-# 11. Relation to the Horizon-1 interfaces
+## 11. Relation to the Horizon-1 interfaces
 
 P3.2 introduces **no new RH-facing theorem interface**.
 
@@ -873,7 +873,7 @@ If selected mass itself moves through infinitely many sectors and no fixed selec
 
 ---
 
-# 12. H1-P3 completion
+## 12. H1-P3 completion
 
 H1-P3 now contains:
 
@@ -905,7 +905,7 @@ Therefore
 
 ---
 
-# Next cursor
+## Next cursor
 
 ```math
 \boxed{
