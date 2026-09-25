@@ -71,7 +71,7 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 | WD-T24 | ZW1-T5 | Finite distinct-frequency exponential independence on a nonempty interval | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T25 | ZW1-T6 | No exact finite positive compensation for an anchored selected negative cell | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T26 | ZW1-T7 | Selected negative raw residues satisfy the zero-moment law $\mathbf{1}^Tv=0$ | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
-| WD-T27 | ZW1-T8 | Zero moment gives universal $R_v(z)=O(|z|^{-2})$ far decay | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
+| WD-T27 | ZW1-T8 | Zero moment gives universal $R_v(z)=O(\lvert z\rvert^{-2})$ far decay | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T28 | ZW1-T9 | Native Problem-1 zero synthesis is Hilbert-Schmidt; off-axis helper covariance is trace class | INTERNAL-PROOF + imported zero count | SOURCE-PINNED; P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 | WD-T29 | ZW1-T10 | Exact bounded-budget infinite-helper target requires quantitative finite-head approximation | INTERNAL-PROOF | P4-AUDIT-PASSED | [Quartet Channel and Residue Structure](QUARTET_CHANNEL_RESIDUE_STRUCTURE.md) |
 
