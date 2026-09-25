@@ -248,7 +248,7 @@ Hence the genuinely nonpersistent approximate-neutral case belongs to moving/inf
 
 ## Zeta-Weil branches already identified
 
-The prior zeta traversal explicitly produced two arithmetic morphologies that H1-P2 must now attach to the abstract carriers.
+The prior zeta traversal produced two arithmetic-facing branches that H1-P2 subsequently attached to the abstract carriers.
 
 ### Negative-persistence branch
 
@@ -346,7 +346,7 @@ The completed H1-P2/H1-P3 audit classifies any remaining zeta-Weil critical sequ
 ### C. RH-facing exclusion — OUTSIDE HORIZON 1
 
 - worst-packet next-jet control;
-- actual KPH floor or equivalent transversality;
+- actual KPH floor or another sufficient transversality theorem;
 - neutral null-extension/support rigidity.
 
 ---
@@ -503,7 +503,7 @@ The remaining noncompact species are packaged in [Noncompact Background Morpholo
 }
 ```
 
-The former can erase every selected weak limit. The latter cannot erase an already anchored fixed selected negative ray; it only prevents strong full-divisor convergence.
+The former can erase every selected weak limit. The latter cannot erase an already anchored fixed selected negative ray. Bounded tail escape prevents strong background/full-coefficient compactness while still allowing a negative full weak limit; norm escape may prevent even a bounded full-coefficient weak limit.
 
 Thus
 
