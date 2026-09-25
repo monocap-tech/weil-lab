@@ -33,7 +33,8 @@ theorem wd_x05_delta_pos (n : ℕ) :
 theorem wd_x05_delta_le_half (n : ℕ) :
     wdX05Delta n ≤ 1 / 2 := by
   unfold wdX05Delta
-  have hden : (2 : ℝ) ≤ (n : ℝ) + 2 := by positivity
+  have hn : (0 : ℝ) ≤ (n : ℝ) := by positivity
+  have hden : (2 : ℝ) ≤ (n : ℝ) + 2 := by linarith
   exact one_div_le_one_div_of_le (by positivity) hden
 
 theorem wd_x05_delta_tendsto_zero :
@@ -41,8 +42,10 @@ theorem wd_x05_delta_tendsto_zero :
   have hden :
       Tendsto (fun n : ℕ => (n : ℝ) + 2) atTop atTop :=
     tendsto_atTop_add_const_right _ _ tendsto_natCast_atTop_atTop
-  simpa [wdX05Delta, one_div] using
-    tendsto_inv_atTop_zero.comp hden
+  change
+    Tendsto (fun n : ℕ => ((n : ℝ) + 2)⁻¹)
+      atTop (𝓝 0)
+  exact tendsto_inv_atTop_zero.comp hden
 
 theorem wd_x05_pos_argument_nonneg (n : ℕ) :
     0 ≤ (1 - wdX05Delta n) / 2 := by
@@ -56,11 +59,13 @@ theorem wd_x05_neg_argument_nonneg (n : ℕ) :
 
 theorem wd_x05_pos_amp_nonneg (n : ℕ) :
     0 ≤ wdX05PosAmp n := by
-  simp [wdX05PosAmp]
+  unfold wdX05PosAmp
+  exact Real.sqrt_nonneg _
 
 theorem wd_x05_neg_amp_nonneg (n : ℕ) :
     0 ≤ wdX05NegAmp n := by
-  simp [wdX05NegAmp]
+  unfold wdX05NegAmp
+  exact Real.sqrt_nonneg _
 
 theorem wd_x05_pos_amp_sq (n : ℕ) :
     wdX05PosAmp n ^ 2 = (1 - wdX05Delta n) / 2 := by
@@ -166,16 +171,39 @@ theorem wd_x05_tail_antitone
   exact hy i (lt_of_lt_of_le hi hNM)
 
 /-- The k-th moving vector lies in every earlier tail sector. -/
+theorem wd_x05_pos_apply_of_ne
+    {i k : ℕ} (hik : i ≠ k) :
+    wdX05Pos k i = 0 := by
+  unfold wdX05Pos
+  rw [show
+    ⇑((wdX05PosAmp k : ℂ) •
+        lp.single (E := fun _ : ℕ => ℂ) 2 k (1 : ℂ))
+      =
+    (wdX05PosAmp k : ℂ) •
+      ⇑(lp.single (E := fun _ : ℕ => ℂ) 2 k (1 : ℂ))
+    from lp.coeFn_smul _ _]
+  simp [Pi.smul_apply, lp.coeFn_single, Pi.single_apply, hik]
+
+theorem wd_x05_neg_apply_of_ne
+    {i k : ℕ} (hik : i ≠ k) :
+    wdX05Neg k i = 0 := by
+  unfold wdX05Neg
+  rw [show
+    ⇑((wdX05NegAmp k : ℂ) •
+        lp.single (E := fun _ : ℕ => ℂ) 2 k (1 : ℂ))
+      =
+    (wdX05NegAmp k : ℂ) •
+      ⇑(lp.single (E := fun _ : ℕ => ℂ) 2 k (1 : ℂ))
+    from lp.coeFn_smul _ _]
+  simp [Pi.smul_apply, lp.coeFn_single, Pi.single_apply, hik]
+
 theorem wd_x05_vector_mem_tail
     {N k : ℕ} (hNk : N ≤ k) :
     wdX05Tail N (wdX05Vector k) := by
   intro i hi
   have hik : i ≠ k := by omega
-  constructor
-  · simp [wdX05Vector, wdX05Pos, lp.coeFn_smul,
-      Pi.smul_apply, lp.single_apply, hik]
-  · simp [wdX05Vector, wdX05Neg, lp.coeFn_smul,
-      Pi.smul_apply, lp.single_apply, hik]
+  exact ⟨wd_x05_pos_apply_of_ne hik,
+    wd_x05_neg_apply_of_ne hik⟩
 
 /-- The intersection of all moving tail sectors contains only zero. -/
 theorem wd_x05_tail_intersection_trivial
