@@ -585,7 +585,7 @@ At fixed $c$, only finitely many prime powers satisfy
 \log n<2c.
 ```
 
-**Standing:** IMPORTED compact-window explicit-formula identity / specialization. The current compact-window literature explicitly works with this finite-support arithmetic truncation. 
+**Standing:** IMPORTED compact-window explicit-formula identity / specialization. The current compact-window literature explicitly works with this finite-support arithmetic truncation.
 
 ---
 
