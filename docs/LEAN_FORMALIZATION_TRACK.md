@@ -147,12 +147,12 @@ Only after this exhaustion condition is met does the project resume:
 - **H1-P5:** ACTIVE.
 - **Active Lean phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** H1-P5.1 — technical manuscript assembly.
+- **Next project cursor:** H1-P5.2 — public theorem index and verification matrix.
 
 ```math
 \boxed{
-\texttt{LEAN-H1 EXHAUSTED / H1-P5.1 — TECHNICAL MANUSCRIPT ASSEMBLY}
+\texttt{LEAN-H1 EXHAUSTED / H1-P5.2 — PUBLIC THEOREM INDEX AND VERIFICATION MATRIX}
 }
 ```
 
-WD-X06 is `LEAN-CERTIFIED` and LEAN-H1 is exhausted. H1-P5.0 / Public Package Architecture is complete; the active project cursor is H1-P5.1 / Technical Manuscript Assembly. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence.
+WD-X06 is `LEAN-CERTIFIED` and LEAN-H1 is exhausted. H1-P5.0 / Public Package Architecture and H1-P5.1 / Technical Manuscript Assembly are complete; the active project cursor is H1-P5.2 / Public Theorem Index and Verification Matrix. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence.
