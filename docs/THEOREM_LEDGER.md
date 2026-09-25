@@ -7,7 +7,7 @@ Historical theorem labels remain valid provenance aliases. They are not renamed.
 
 ## Status model
 
-Horizon 1 now separates two axes.
+The H1-P4 ledger separates **mathematical standing** from **audit/source verification status**. LEAN-H1 formal certification is a third independent axis tracked in [Lean Status](LEAN_STATUS.md); it is intentionally not folded into this table.
 
 ### Mathematical standing
 
@@ -19,7 +19,7 @@ Horizon 1 now separates two axes.
 - **SCOPE** — jurisdiction/interpretive statement, not an independent theorem.
 - **OPEN** — downstream obligation not established.
 
-### Verification status
+### H1-P4 audit/source verification status
 
 - **P4-AUDIT-PENDING** — proof text exists but has not yet completed Horizon-1 internal line-by-line audit.
 - **P4-AUDIT-PASSED** — the Horizon-1 internal proof audit passed after any recorded corrections; this is not independent certification.
