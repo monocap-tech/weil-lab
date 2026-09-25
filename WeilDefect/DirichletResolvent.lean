@@ -94,7 +94,7 @@ theorem norm_dirichletRightBasis_le_one
       Real.sinh ((t + x) / 2) / Real.sinh t ≤ 1 := by
     rw [div_le_one hspos]
     exact hsle
-  simp only [dirichletRightBasis, Complex.ofRealCLM_apply,
+  rw [dirichletRightBasis, Complex.ofRealCLM_apply,
     Complex.norm_real, Real.norm_eq_abs]
   rw [dirichletRightReal, abs_of_nonneg (div_nonneg hs0 hspos.le)]
   exact hdiv
@@ -116,7 +116,7 @@ theorem norm_dirichletLeftBasis_le_one
       Real.sinh ((t - x) / 2) / Real.sinh t ≤ 1 := by
     rw [div_le_one hspos]
     exact hsle
-  simp only [dirichletLeftBasis, Complex.ofRealCLM_apply,
+  rw [dirichletLeftBasis, Complex.ofRealCLM_apply,
     Complex.norm_real, Real.norm_eq_abs]
   rw [dirichletLeftReal, abs_of_nonneg (div_nonneg hs0 hspos.le)]
   exact hdiv
@@ -135,10 +135,7 @@ theorem hasDerivAt_dirichletRightReal
       HasDerivAt (fun y : ℝ => (t + y) / 2) (1 / 2 : ℝ) x := by
     have h :=
       ((hasDerivAt_const x t).add (hasDerivAt_id x)).div_const 2
-    convert h using 1
-    · funext y
-      simp only [Pi.add_apply, Pi.sub_apply, id_eq]
-    · ring
+    simpa only [Pi.add_apply, id_eq, zero_add] using h
   have hs := hinner.sinh
   convert hs.div_const (Real.sinh t) using 1
   ring
@@ -161,11 +158,9 @@ theorem hasDerivAt_dirichletRightReal_deriv
     · ring
   have hc := hinner.cosh
   have h := hc.div_const (2 * Real.sinh t)
-  convert h using 1
-  · unfold dirichletRightReal
-    rw [show (t + x) / 2 =
-      t * (1 / 2 : ℝ) + x * (1 / 2 : ℝ) by ring]
-    ring
+  convert h using 1 <;>
+    simp [dirichletRightReal, div_eq_mul_inv] <;>
+    ring_nf
 
 /-- First derivative of the left real Dirichlet basis. -/
 theorem hasDerivAt_dirichletLeftReal
@@ -181,10 +176,7 @@ theorem hasDerivAt_dirichletLeftReal
       HasDerivAt (fun y : ℝ => (t - y) / 2) (-1 / 2 : ℝ) x := by
     have h :=
       ((hasDerivAt_const x t).sub (hasDerivAt_id x)).div_const 2
-    convert h using 1
-    · funext y
-      simp only [Pi.add_apply, Pi.sub_apply, id_eq]
-    · ring
+    simpa only [Pi.sub_apply, id_eq, zero_sub] using h
   have hs := hinner.sinh
   convert hs.div_const (Real.sinh t) using 1
   ring
@@ -208,11 +200,9 @@ theorem hasDerivAt_dirichletLeftReal_deriv
   have hc := hinner.cosh
   have hneg := hc.neg
   have h := hneg.div_const (2 * Real.sinh t)
-  convert h using 1
-  · unfold dirichletLeftReal
-    rw [show (t - x) / 2 =
-      t * (1 / 2 : ℝ) + x * (-1 / 2 : ℝ) by ring]
-    ring
+  convert h using 1 <;>
+    simp [dirichletLeftReal, div_eq_mul_inv] <;>
+    ring_nf
 
 theorem hasDerivAt_dirichletRightBasis
     (t x : ℝ) :
@@ -324,7 +314,8 @@ theorem problemOneGreenQ_shell_bound
         ≤ (((n : ℝ) + 1) ^ 2)⁻¹ := by
       exact (inv_le_inv₀ hdenpos (sq_pos_of_pos hnpos)).2 hden
     _ = (((n : ℝ) + 1) ^ (-2 : ℝ)) := by
-      rw [Real.rpow_neg_eq_inv_rpow, Real.rpow_two, inv_pow]
+      rw [Real.rpow_neg_eq_inv_rpow, Real.rpow_two]
+      exact inv_pow ((n : ℝ) + 1) 2
 
 /--
 The raw exponential source is uniformly bounded on a fixed compact window
