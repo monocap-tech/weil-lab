@@ -35,7 +35,7 @@ theorem wd_t38_p3_u1_fixed_packet_critical_dichotomy
         atTop (𝓝 0)) :
     ∃ φ : ℕ → ℕ, StrictMono φ ∧
       ∃ aLim : Kpos, ∃ uLim : M,
-        WeaklyTendsto (fun n => a (φ n)) aLim
+        WeilDefect.WDT16.WeaklyTendsto (fun n => a (φ n)) aLim
         ∧ Tendsto (fun n => u (φ n)) atTop (𝓝 uLim)
         ∧ WeilDefect.WDT16.coeff aLim uLim ∈
             WeilDefect.WDT15.rightLimit A c
