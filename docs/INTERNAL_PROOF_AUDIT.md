@@ -47,11 +47,11 @@ No closed-range assumption is required.
 
 The equality
 
-\[
+```math
 \mathcal A
 =
 \overline{\operatorname{Ran}E^*}
-\]
+```
 
 is enough: only finite-dimensional negative subspaces must be approximated, and their negativity has a uniform margin.
 
@@ -59,15 +59,15 @@ is enough: only finite-dimensional negative subspaces must be approximated, and 
 
 If the reduced solution satisfies
 
-\[
+```math
 \|X\|>1,
-\]
+```
 
 then
 
-\[
+```math
 \|X^*\|>1.
-\]
+```
 
 Because \(X^*\) annihilates \(\ker S_+\), the norm can be tested on \((\ker S_+)^\perp\), which is exactly the graph parameter space.
 
@@ -90,11 +90,11 @@ Because \(X^*\) annihilates \(\ker S_+\), the norm can be tested on \((\ker S_+)
 
 The factorization
 
-\[
+```math
 D_{\rm full}
 =
 S_+(I-XX^*)S_+^*
-\]
+```
 
 alone would not justify positivity of \(I-XX^*\) without using the reduced solution.
 
@@ -106,15 +106,15 @@ The original wording “strictly positive” was ambiguous in infinite dimension
 
 The theorem now assumes
 
-\[
+```math
 K\succeq mI
-\]
+```
 
 for some \(m>0\), so
 
-\[
+```math
 C\succeq mI_{W^\perp}
-\]
+```
 
 and \(C^{-1}\) is bounded.
 
@@ -142,15 +142,15 @@ Thus the sequence proof suffices for the real one-parameter filtration.
 
 The theorem requires a **common** bounded map
 
-\[
+```math
 T:\mathscr H\to K
-\]
+```
 
 with
 
-\[
+```math
 \mathcal A_t=\overline{T(\mathscr H_t)}.
-\]
+```
 
 No theorem here claims blow-up when the analysis map itself varies with \(t\). Any such identification belongs to the later composite morphology audit.
 
@@ -183,41 +183,41 @@ No statement is made about applying \(L\) termwise to an infinite relation.
 
 For one coordinate,
 
-\[
+```math
 f_\gamma(u)=e^{-i\gamma u},
 \qquad
 LF_\gamma=f_\gamma,
 \qquad
 F_\gamma(\pm t)=0.
-\]
+```
 
 The explicit resolvent solution yields
 
-\[
+```math
 \|F_\gamma\|_2
 \ll_t
 (1+|\gamma|^2)^{-1}
-\]
+```
 
 because the zeta ordinate stays in the fixed transverse strip.
 
 Hence
 
-\[
+```math
 \|f_\gamma\|_{H^{-1}_L}^2
 =
 \langle f_\gamma,Gf_\gamma\rangle
 \ll_t
 (1+|\gamma|^2)^{-1}.
-\]
+```
 
 Pinned zero counting with multiplicity then gives
 
-\[
+```math
 \sum_\gamma
 \|E_te_\gamma\|_{H^{-1}_L}^2
 <\infty.
-\]
+```
 
 This proves the Hilbert–Schmidt statement without treating Bombieri's \(H\)-matrix as an ordinary Hermitian Gram matrix.
 
@@ -241,11 +241,11 @@ Bombieri equation (7.7) is therefore corroborating/contextual for WD-T28 rather 
 
 The estimate
 
-\[
+```math
 \mathcal F_{v,R}[\psi]
 =
 O_{v,\psi,F}\!\left(\frac{\log R}{R}\right)
-\]
+```
 
 is **not uniform over moving selected packets or unrestricted multiplier families**.
 
@@ -255,15 +255,15 @@ That is intentional and matches the fixed-source morphology theorem.
 
 At each fixed cutoff \(R\),
 
-\[
+```math
 \mathcal N_{v,R}[\psi]=\mathcal A_v[\psi]
-\]
+```
 
 implies
 
-\[
+```math
 \mathcal P_v[\psi]=\mathcal F_{v,R}[\psi].
-\]
+```
 
 Sending \(R\to\infty\) uses WD-T31 only if \(\psi\) is fixed, or if the multiplier family has the uniform bound required by the tail proof.
 
@@ -271,19 +271,19 @@ Sending \(R\to\infty\) uses WD-T31 only if \(\psi\) is fixed, or if the multipli
 
 The high-frequency estimate
 
-\[
+```math
 \Psi_c(t)=\log|t|+O_c(1)
-\]
+```
 
 gives global comparability after an \(L^2\) shift because \(\Psi_c\) is continuous on bounded frequency intervals.
 
 The pole evaluation satisfies
 
-\[
+```math
 |F(i/2)|
 \le
 C_c\|f\|_2
-\]
+```
 
 for fixed support, so it is absorbed by the same scalar shift.
 
@@ -291,17 +291,17 @@ for fixed support, so it is absorbed by the same scalar shift.
 
 For real-even \(\phi\in C_c^\infty(-c,c)\),
 
-\[
+```math
 f_N(x)=\phi(x)\cos(Nx)
-\]
+```
 
 has logarithmic form size \(\asymp\log N\) but
 
-\[
+```math
 \|f_N\|_{H^\varepsilon}^2
 \asymp
 N^{2\varepsilon}.
-\]
+```
 
 Thus no positive-Sobolev coercive estimate follows from WD-T35.
 
@@ -330,11 +330,11 @@ Two additional proof expositions were strengthened without changing hypotheses:
 
 After the corrections above:
 
-\[
+```math
 \boxed{
 \text{WD-T01 through WD-T36: P4-AUDIT-PASSED}
 }
-\]
+```
 
 at the **internal Horizon-1 audit level**.
 
@@ -360,7 +360,7 @@ The internal proof audit is complete through WD-T36.
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.3 / COMPOSITE MORPHOLOGY AUDIT}
-\]
+```
