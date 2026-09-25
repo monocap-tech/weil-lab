@@ -1,5 +1,5 @@
 # Explicit-Formula Arithmetic Attachment
-## H1-P2.2 — Scalar localization, completed $\Xi$ next jets, and compact-window arithmetic operators
+**H1-P2.2 — Scalar localization, completed $\Xi$ next jets, and compact-window arithmetic operators**
 
 This pass normalizes the ZW-2 layer.
 
@@ -27,9 +27,9 @@ and
 
 ---
 
-# Part I — Negative branch
+## Part I — Negative branch
 
-## 1. Selected contracted-residue functional
+### 1. Selected contracted-residue functional
 
 Let $v\ne0$ be a finite selected raw residue vector on a packet $F$, with
 
@@ -69,7 +69,7 @@ Because $F$ is finite, $C_v(\tau)$ is an exponential polynomial in $\tau$.
 
 ---
 
-## ZW2-T1 — Two-mode selected-preserving multiplier
+### ZW2-T1 — Two-mode selected-preserving multiplier
 
 Choose $\tau_1,\tau_2$ such that
 
@@ -119,7 +119,7 @@ That stronger simultaneous nondegeneracy is retained as a source-specific input,
 
 ---
 
-# 2. Far-tail localization
+## 2. Far-tail localization
 
 Fix a height center $T_F$ for the selected packet.
 
@@ -149,7 +149,7 @@ with multiplicity.
 
 ---
 
-## ZW2-T2 — Quantitative far-tail theorem
+### ZW2-T2 — Quantitative far-tail theorem
 
 Define the distant complementary response
 
@@ -220,7 +220,7 @@ All macroscopically necessary compensation can be localized into a finite/interm
 
 ---
 
-# 3. Near complementary field
+## 3. Near complementary field
 
 Define the near response
 
@@ -266,7 +266,7 @@ Thus the remaining divisor burden is a finite weighted complementary logarithmic
 
 ---
 
-# 4. Completed $\Xi$ lift
+## 4. Completed $\Xi$ lift
 
 Define
 
@@ -300,7 +300,7 @@ H_v(z)
 
 ---
 
-## ZW2-T3 — Complementary next-jet identity
+### ZW2-T3 — Complementary next-jet identity
 
 At every complementary zero $\mu\notin F$,
 
@@ -337,7 +337,7 @@ Divide.
 
 ---
 
-## ZW2-T4 — Weighted near next-jet representation
+### ZW2-T4 — Weighted near next-jet representation
 
 Substituting ZW2-T3 into the near field gives
 
@@ -390,7 +390,7 @@ Nothing in the abstract persistence calculus excludes this geometry.
 
 ---
 
-# 5. Explicit-formula decomposition
+## 5. Explicit-formula decomposition
 
 For the fixed selected source and admissible multiplier, write the scalar explicit formula schematically as
 
@@ -440,7 +440,7 @@ so
 
 ---
 
-## ZW2-T5 — Adaptive co-cancellation identity
+### ZW2-T5 — Adaptive co-cancellation identity
 
 Fix a cutoff $R$ and a selected-preserving multiplier $\psi$. Suppose it is additionally chosen so that
 
@@ -486,7 +486,7 @@ The multiplier must be chosen independently of the unknown near field if the pri
 
 ---
 
-# 6. Negative-branch theorem boundary
+## 6. Negative-branch theorem boundary
 
 Combining H1-P1, H1-P2.1, and ZW2-T1–T5 yields the lawful chain
 
@@ -531,9 +531,9 @@ or an equivalent actual-zeta KPH/transversality floor.
 
 ---
 
-# Part II — Neutral branch
+## Part II — Neutral branch
 
-## 7. Compact-window geometric explicit formula
+### 7. Compact-window geometric explicit formula
 
 Let $f$ be supported in
 
@@ -589,7 +589,7 @@ At fixed $c$, only finitely many prime powers satisfy
 
 ---
 
-## ZW2-T6 — Finite prime-support theorem
+### ZW2-T6 — Finite prime-support theorem
 
 For every fixed support $c<\infty$,
 
@@ -616,7 +616,7 @@ is discrete, there exists a right neighborhood of $c$ on which the active prime-
 
 ---
 
-# 8. Physical operator form
+## 8. Physical operator form
 
 Multiplication by
 
@@ -677,7 +677,7 @@ Then, up to the fixed Fourier-normalization convention already encoded in $Q_c$,
 
 ---
 
-# 9. Logarithmic principal order
+## 9. Logarithmic principal order
 
 The digamma asymptotic gives
 
@@ -708,7 +708,7 @@ O_c(1).
 
 ---
 
-## ZW2-T7 — Logarithmic form-domain theorem
+### ZW2-T7 — Logarithmic form-domain theorem
 
 Work in the same compact-window admissible test class as the pinned geometric formula, with
 
@@ -798,7 +798,7 @@ The finite arithmetic translations do not increase the principal regularity orde
 
 ---
 
-## ZW2-T8 — No positive-Sobolev coercive bootstrap
+### ZW2-T8 — No positive-Sobolev coercive bootstrap
 
 For every $\varepsilon>0$, the logarithmic form norm of ZW2-T7 does not control the $H^\varepsilon$ norm uniformly on the fixed support class.
 
@@ -853,7 +853,7 @@ Finite translations do not change this conclusion: they are order-zero operators
 
 ---
 
-# 10. Neutral null modes
+## 10. Neutral null modes
 
 Suppose the compact-window defect operator is nonnegative:
 
@@ -893,7 +893,7 @@ What ZW-2 adds is the concrete operator species:
 
 ---
 
-## ZW2-T9 — Neutrality is global, not termwise
+### ZW2-T9 — Neutrality is global, not termwise
 
 The equality
 
@@ -923,7 +923,7 @@ Thus neutral equality is one global quadratic cancellation.
 
 ---
 
-# 11. Neutral-branch theorem boundary
+## 11. Neutral-branch theorem boundary
 
 Let $\widetilde k$ be the zero extension of a compact-window neutral mode.
 
@@ -967,11 +967,11 @@ That is exactly the downstream interface
 
 ---
 
-# 12. H1-P2.2 determination
+## 12. H1-P2.2 determination
 
 The explicit-formula attachment is now normalized.
 
-## Negative branch
+### Negative branch
 
 Established:
 
@@ -995,7 +995,7 @@ Adaptive cancellation cannot produce an independent prime signal because the exa
 
 The first unproved statement is actual-zeta control/exclusion of that near next-jet field.
 
-## Neutral branch
+### Neutral branch
 
 Established:
 
@@ -1023,7 +1023,7 @@ The first unproved statement is the null-extension/support-rigidity interface.
 
 ---
 
-# H1-P2 completion status
+## H1-P2 completion status
 
 H1-P2 now has:
 
@@ -1045,7 +1045,7 @@ Therefore:
 
 ---
 
-# Next cursor
+## Next cursor
 
 ```math
 \boxed{
