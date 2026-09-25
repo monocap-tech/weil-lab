@@ -1,5 +1,5 @@
 # Internal Proof Audit
-## H1-P4.2 — WD-T01 through WD-T36
+**H1-P4.2 — WD-T01 through WD-T36**
 
 This document records the Horizon-1 internal proof audit.
 
@@ -13,7 +13,7 @@ It does **not** mean independently certified, formally verified, or externally r
 
 ---
 
-# 1. Audit criteria
+## 1. Audit criteria
 
 Each stable theorem was checked for:
 
@@ -30,7 +30,7 @@ Each stable theorem was checked for:
 
 ---
 
-# 2. Abstract defect calculus
+## 2. Abstract defect calculus
 
 | ID | Audit result | Notes |
 | --- | --- | --- |
@@ -73,7 +73,7 @@ Because \(X^*\) annihilates \(\ker S_+\), the norm can be tested on \((\ker S_+)
 
 ---
 
-# 3. Restricted-channel / finite-index transfer
+## 3. Restricted-channel / finite-index transfer
 
 | ID | Audit result | Notes |
 | --- | --- | --- |
@@ -122,7 +122,7 @@ No broader merely-injective positive-operator statement is claimed.
 
 ---
 
-# 4. Support filtration / persistence
+## 4. Support filtration / persistence
 
 | ID | Audit result | Notes |
 | --- | --- | --- |
@@ -156,7 +156,7 @@ No theorem here claims blow-up when the analysis map itself varies with \(t\). A
 
 ---
 
-# 5. Zeta-Weil pair / residue structure
+## 5. Zeta-Weil pair / residue structure
 
 | ID | Audit result | Notes |
 | --- | --- | --- |
@@ -225,7 +225,7 @@ Bombieri equation (7.7) is therefore corroborating/contextual for WD-T28 rather 
 
 ---
 
-# 6. Explicit-formula arithmetic attachment
+## 6. Explicit-formula arithmetic attachment
 
 | ID | Audit result | Notes |
 | --- | --- | --- |
@@ -309,7 +309,7 @@ The theorem does not claim that every individual logarithmic-form vector lies ou
 
 ---
 
-# 7. Audit corrections applied
+## 7. Audit corrections applied
 
 The audit required five substantive narrowing/clarification patches:
 
@@ -326,7 +326,7 @@ Two additional proof expositions were strengthened without changing hypotheses:
 
 ---
 
-# 8. Audit result
+## 8. Audit result
 
 After the corrections above:
 
@@ -344,7 +344,7 @@ It also does not change the OPEN status of any RH-facing interface.
 
 ---
 
-# 9. Source-custody adjustment
+## 9. Source-custody adjustment
 
 WD-T28 no longer consumes Bombieri equation (7.7) as a load-bearing Hilbert-Gram input.
 
@@ -354,11 +354,11 @@ Bombieri (7.7) remains useful corroborating context for the same decay scale.
 
 ---
 
-# H1-P4.2 determination
+## H1-P4.2 determination
 
 The internal proof audit is complete through WD-T36.
 
-## Next cursor
+### Next cursor
 
 ```math
 \boxed{
