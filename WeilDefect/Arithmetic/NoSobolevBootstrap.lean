@@ -166,7 +166,7 @@ theorem abs_finitePrimeTrigCorrection_le
       rw [Real.norm_eq_abs, abs_mul]
       simpa using
         mul_le_mul_of_nonneg_left
-          (abs_cos_le_one (t * Real.log (n : ℝ)))
+          (Real.abs_cos_le_one (t * Real.log (n : ℝ)))
           (abs_nonneg (coeff n))
 
 /--
