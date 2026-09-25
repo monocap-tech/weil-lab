@@ -1,5 +1,5 @@
 # Zeta-Weil Specialization Map
-## H1-P2.0 — Mapping the Weil problem onto the abstract defect calculus
+**H1-P2.0 — Mapping the Weil problem onto the abstract defect calculus**
 
 This document performs the first operation of H1-P2:
 
@@ -19,11 +19,11 @@ The purpose is to identify exactly:
 
 ---
 
-# 1. Three specialization layers
+## 1. Three specialization layers
 
 The zeta-facing theory separates naturally into three layers.
 
-## ZW-0 — Weil/Krein pair geometry
+### ZW-0 — Weil/Krein pair geometry
 
 This layer uses:
 
@@ -35,7 +35,7 @@ This layer uses:
 
 It does **not** yet require the prime side of the explicit formula.
 
-## ZW-1 — Zeta-divisor structure
+### ZW-1 — Zeta-divisor structure
 
 This layer additionally uses:
 
@@ -47,7 +47,7 @@ This layer additionally uses:
 
 This is where the zero-moment law appears.
 
-## ZW-2 — Explicit-formula arithmetic
+### ZW-2 — Explicit-formula arithmetic
 
 This layer uses the alternate prime/pole/archimedean representation of the same Weil form:
 
@@ -70,7 +70,7 @@ They are an arithmetic representation of the same Weil quadratic form, not extra
 
 ---
 
-# 2. Canonical pair coordinates
+## 2. Canonical pair coordinates
 
 Let a nonreal ordinate pair in Bombieri's zero coordinate be
 
@@ -160,7 +160,7 @@ The $+$ channel is symmetric across the transverse pair; the $-$ channel is anti
 
 ---
 
-# 3. Mapping table
+## 3. Mapping table
 
 | H1-P1 object | Zeta-Weil realization | Standing after mapping |
 | --- | --- | --- |
@@ -186,7 +186,7 @@ The $+$ channel is symmetric across the transverse pair; the $-$ channel is anti
 
 ---
 
-# 4. The full positive channel is larger than the critical-line channel
+## 4. The full positive channel is larger than the critical-line channel
 
 A selected negative cell $C$ does not screen only against critical-line zeros.
 
@@ -238,7 +238,7 @@ It becomes legitimate only after the remaining positive off-axis channels have b
 
 ---
 
-# 5. Selected packet and negative background
+## 5. Selected packet and negative background
 
 Fix a finite selected packet $\Pi$.
 
@@ -308,7 +308,7 @@ A negative full Weil value can be carried partly or entirely by unselected off-a
 
 ---
 
-# 6. Bombieri's finite negative index is stronger than the abstract index cap
+## 6. Bombieri's finite negative index is stronger than the abstract index cap
 
 WD-B2 gives only
 
@@ -336,7 +336,7 @@ It is an imported Weil-specific strengthening.
 
 ---
 
-# 7. Spectral screening is WD-A6 in zeta coordinates
+## 7. Spectral screening is WD-A6 in zeta coordinates
 
 Let $P_N$ restore increasing collections of positive zero-side channels.
 
@@ -388,7 +388,7 @@ The Weil problem supplies:
 
 ---
 
-# 8. The rank-one cell defect is a composite specialization
+## 8. The rank-one cell defect is a composite specialization
 
 The selected-cell rank-one operator
 
@@ -441,7 +441,7 @@ This explains why the rank-one defect was discovered only after substantial scre
 
 ---
 
-# 9. Support filtration and persistent packet geometry
+## 9. Support filtration and persistent packet geometry
 
 For a fixed finite packet $\Pi$, let
 
@@ -497,7 +497,7 @@ This is the abstract carrier of the persistent-negative-ray branch.
 
 ---
 
-# 10. Fixed-packet criticality has no third nonpersistent branch
+## 10. Fixed-packet criticality has no third nonpersistent branch
 
 This is the most useful immediate consequence of the H1-P1 mapping.
 
@@ -566,7 +566,7 @@ This is a **derived specialization consequence** of H1-P1, not a new arithmetic 
 
 ---
 
-# 11. Representative blow-up is abstract, not arithmetic
+## 11. Representative blow-up is abstract, not arithmetic
 
 Suppose a new persistent ray satisfies
 
@@ -621,7 +621,7 @@ The arithmetic problem begins when one asks what additional identities the zeta-
 
 ---
 
-# 12. Full-divisor background is WD-B1 plus an infinite-sector compactness problem
+## 12. Full-divisor background is WD-B1 plus an infinite-sector compactness problem
 
 For a persistent selected ray, normalize the unselected negative response as
 
@@ -657,7 +657,7 @@ Thus the “background escape” branch is the zeta realization of the **moving/
 
 ---
 
-# 13. The zero-moment law is genuinely new specialization structure
+## 13. The zero-moment law is genuinely new specialization structure
 
 Let
 
@@ -712,11 +712,11 @@ So the generic zeta-Weil gain stops at inverse-square decay unless additional ar
 
 ---
 
-# 14. Other zeta-specific strengthening already present in the corpus
+## 14. Other zeta-specific strengthening already present in the corpus
 
 The prior traversal contains additional structure that is not generic H1-P1 theory.
 
-## Off-axis positive helper compactness
+### Off-axis positive helper compactness
 
 Bombieri's weighted synthesis estimates plus zero counting give high-height decay of the off-axis positive helper columns.
 
@@ -730,13 +730,13 @@ is Hilbert-Schmidt on the relevant window, with high-height tails tending to zer
 
 This is a ZW-1 compactness input.
 
-## Critical-line positive completeness/frame information
+### Critical-line positive completeness/frame information
 
 The actual critical-line divisor supplies positive-channel sampling/completeness information unavailable in abstract Hilbert-space theory.
 
 This is a ZW-1 input.
 
-## Finite exponential independence
+### Finite exponential independence
 
 The selected pair's positive direction cannot by itself reproduce its negative direction, and no finite set of distinct positive-frequency exponentials gives an exact interval cancellation of the normalized selected negative source.
 
@@ -746,7 +746,7 @@ These statements should be normalized in H1-P2.1.
 
 ---
 
-# 15. Explicit-formula arithmetic begins only after the zero-side mapping
+## 15. Explicit-formula arithmetic begins only after the zero-side mapping
 
 The prime/pole/archimedean side evaluates the same full Weil form.
 
@@ -803,7 +803,7 @@ It belongs to ZW-2.
 
 ---
 
-# 16. Neutral compact-window branch: abstract carrier versus arithmetic content
+## 16. Neutral compact-window branch: abstract carrier versus arithmetic content
 
 Let
 
@@ -871,7 +871,7 @@ The finite prime translations and logarithmic archimedean order are arithmetic/e
 
 ---
 
-# 17. Specialization matrix: abstract versus new structure
+## 17. Specialization matrix: abstract versus new structure
 
 | Result | Abstract H1-P1 carrier | Genuinely new zeta/Weil content? |
 | --- | --- | --- |
@@ -894,7 +894,7 @@ The finite prime translations and logarithmic archimedean order are arithmetic/e
 
 ---
 
-# 18. H1-P2.0 determination
+## 18. H1-P2.0 determination
 
 The specialization map is complete enough to freeze the boundary between generic defect theory and zeta-Weil structure.
 
@@ -954,7 +954,7 @@ The weighted next jet, finite prime translations, and logarithmic archimedean op
 
 ---
 
-# Next cursor
+## Next cursor
 
 ```math
 \boxed{
