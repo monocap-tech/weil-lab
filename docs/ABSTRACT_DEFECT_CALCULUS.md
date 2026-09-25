@@ -150,7 +150,7 @@ The following are equivalent:
 
 1. $\mathcal A$ is $J$-nonnegative;
 2. $D\succeq0$;
-3. 
+3.
    ```math
    S_{-}S_{-}^{*}\preceq S_{+}S_{+}^{*};
    ```
