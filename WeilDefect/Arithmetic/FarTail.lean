@@ -201,10 +201,10 @@ theorem logarithmicTailKernel_summable_nat :
     simpa using logarithmicTailKernel_antitoneOn
   exact hanti.summable_of_integrableOn_Ioi
     (N := 1)
-    (logarithmicTailKernel_integrableOn_Ioi le_rfl)
-    (fun x hx => logarithmicTailKernel_nonneg (by
-      have hx' : (1 : ℝ) < x := by simpa only [mem_Ioi] using hx
-      exact hx'.le))
+    (logarithmicTailKernel_integrableOn_Ioi (by norm_num))
+    (fun x hx => by
+      norm_num at hx
+      exact logarithmicTailKernel_nonneg hx.le)
 
 /-- Every natural shift of the logarithmic shell kernel remains summable. -/
 theorem logarithmicTailKernel_shift_summable
@@ -296,7 +296,7 @@ theorem wd_t31_shell_aggregation
     intro k
     simpa [Nat.cast_add, Nat.cast_one] using
       farShellResponse_norm_le_logarithmic_kernel
-        response A C hCount hResponse (k + R + 1)
+        response A C hCount hResponse (k + R)
   calc
     ‖∑' k : ℕ, farShellResponse response (k + R)‖
         ≤
