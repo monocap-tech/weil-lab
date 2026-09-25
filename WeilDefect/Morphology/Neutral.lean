@@ -5,7 +5,7 @@ import WeilDefect.Arithmetic.NoSobolevBootstrap
 
 namespace WeilDefect
 
-open Filter
+open Filter MeasureTheory
 open scoped Topology InnerProduct
 
 /--
@@ -99,6 +99,67 @@ theorem wd_t38_p3_u3_right_limit_prime_support_finite
         (primePowerThreshold_subsingleton c).finite
   · exact primePowerThreshold_subsingleton c
 
+
+
+/--
+P3-U4 / WD-T38: once the physical neutral carrier is identified with the
+compact-window Weil form, its shifted quadratic form has logarithmic Fourier
+order.  The imported compact-window formula/symbol comparison remain explicit
+premises exactly as in WD-T35.
+-/
+theorem wd_t38_p3_u4_logarithmic_order_neutral_carrier
+    (Q : ℝ)
+    (symbol density : ℝ → ℝ)
+    (shift pole a b K : ℝ)
+    (hdensity : ∀ t, 0 ≤ density t)
+    (ha : 0 ≤ a)
+    (hK : 0 ≤ K)
+    (hlower :
+      ∀ t,
+        a * logarithmicFourierWeight t
+          ≤ symbol t + shift)
+    (hupper :
+      ∀ t,
+        symbol t + shift
+          ≤ b * logarithmicFourierWeight t)
+    (hpole0 : 0 ≤ pole)
+    (hpole :
+      pole ≤ K * spectralMass density)
+    (hdensity_int : Integrable density volume)
+    (hlog_int :
+      Integrable
+        (fun t : ℝ =>
+          logarithmicFourierWeight t * density t) volume)
+    (hsymbol_int :
+      Integrable
+        (fun t : ℝ =>
+          (symbol t + shift) * density t) volume)
+    (hQ :
+      Q + shift * spectralMass density
+        =
+      shiftedCompactWeilForm symbol density shift pole) :
+    a * logarithmicFourierEnergy density
+      ≤ Q + shift * spectralMass density
+      ∧
+    Q + shift * spectralMass density
+      ≤ (b + K) * logarithmicFourierEnergy density := by
+  exact wd_t35_compact_weil_logarithmic_form_order
+    Q symbol density shift pole a b K
+    hdensity ha hK hlower hupper hpole0 hpole
+    hdensity_int hlog_int hsymbol_int hQ
+
+/--
+P3-U6 scope guard in its purely logical form: vanishing of a total
+cancellation does not imply vanishing of the individual summands.
+
+This theorem intentionally says nothing stronger about the prime, pole, or
+archimedean pieces of a particular Weil-form realization.
+-/
+theorem wd_t38_p3_u6_global_cancellation_not_termwise :
+    ¬ (∀ x y : ℝ, x + y = 0 → x = 0 ∧ y = 0) := by
+  intro h
+  have hbad := h 1 (-1) (by norm_num)
+  norm_num at hbad
 
 /--
 P3-U5 / WD-T38: logarithmic form control alone does not uniformly dominate
