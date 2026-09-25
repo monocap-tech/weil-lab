@@ -604,8 +604,7 @@ At criticality,
 
 If the positive-coordinate norms converge to the norm of the weak limit, then
 the positive coordinates converge strongly and the limit is neutral. If
-positive-coordinate norm is lost, the retained selected negative coordinate
-forces
+positive-coordinate norm is lost, the WD-T17 norm comparison gives
 
 ~~~math
 \boxed{
@@ -613,7 +612,7 @@ forces
 }
 ~~~
 
-WD-X06 realizes this negative fall-through exactly.
+WD-X06 gives an explicit realization of this negative fall-through.
 
 ### WD-T18 — Endpoint-jump index control
 
