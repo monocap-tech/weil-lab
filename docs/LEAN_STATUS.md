@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T35 | WeilDefect.logarithmicFourierWeight + WeilDefect.one_le_logarithmicFourierWeight + WeilDefect.logarithmicFourierEnergy + WeilDefect.spectralMass + WeilDefect.shiftedCompactWeilForm + WeilDefect.wd_t35_shifted_form_logarithmic_order + WeilDefect.wd_t35_compact_weil_logarithmic_form_order | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T34 | WeilDefect.activePrimePowers + WeilDefect.wd_t34_active_prime_powers_finite + WeilDefect.activePrimePowerFinset + WeilDefect.activePrimeTranslationShifts + WeilDefect.wd_t34_active_prime_translation_shifts_finite + WeilDefect.translateBy + WeilDefect.symmetricPrimeTranslation + WeilDefect.compactPrimeTranslationSum + WeilDefect.wd_t34_finite_prime_power_translations + WeilDefect.primePowerThreshold + WeilDefect.primePowerThreshold_subsingleton | LEAN-CERTIFIED |
 | WD-T32 | WeilDefect.completedResponseLift + WeilDefect.iteratedDeriv_centered_power + WeilDefect.iteratedDeriv_centered_power_mul + WeilDefect.wd_t32_complementary_next_jet_identity + WeilDefect.nearComplementaryResponse + WeilDefect.weightedNearNextJetField + WeilDefect.wd_t32_weighted_near_next_jet_representation | LEAN-CERTIFIED |
 | WD-T31 | WeilDefect.ZetaLogShellCountData + WeilDefect.FarShellResponseData + WeilDefect.logarithmicTail_tsum_le + WeilDefect.farShellResponse_norm_le_logarithmic_kernel + WeilDefect.wd_t31_shell_aggregation + WeilDefect.rationalResponse_zero_moment_norm_le_inverse_square + WeilDefect.farShellResponseData_of_zero_moment + WeilDefect.wd_t31_zero_moment_zero_count_far_tail | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -3520,10 +3521,102 @@ The run passed pinned dependency resolution, mathlib cache retrieval, direct
 Lake build of \(\texttt{WeilDefect.Arithmetic.PrimeSupport}\), and
 unfinished-proof/project-axiom rejection.
 
-WD-T34 is therefore closed. The next unfinished sequential theorem cursor is:
+WD-T34 is therefore closed.
+
+## WD-T35 certificate evidence
+
+Stable ID:
 
 \[
 \boxed{
-\texttt{WD-T35 / ZW2-T7 — COMPACT-WINDOW WEIL FORM HAS LOGARITHMIC FOURIER/FORM ORDER}
+\text{WD-T35: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.logarithmicFourierWeight;
+- WeilDefect.one_le_logarithmicFourierWeight;
+- WeilDefect.logarithmicFourierEnergy;
+- WeilDefect.spectralMass;
+- WeilDefect.shiftedCompactWeilForm;
+- WeilDefect.wd_t35_shifted_form_logarithmic_order;
+- WeilDefect.wd_t35_compact_weil_logarithmic_form_order.
+
+The canonical Fourier weight is represented exactly as
+
+\[
+w(t)=\log(e+|t|),
+\]
+
+and Lean certifies \(w(t)\ge1\) everywhere.
+
+For a nonnegative spectral density, the imported compact-window specialization
+is isolated into explicit hypotheses:
+
+1. the shifted symbol comparison
+   \[
+   a\,w(t)\le \Psi_c(t)+C\le b\,w(t);
+   \]
+2. the shifted geometric-form identity;
+3. a nonnegative pole/evaluation contribution bounded by
+   \(K\|F\|_2^2\).
+
+The symbol comparison is the source-pinned consequence of the digamma
+asymptotic together with WD-T34 finite prime support. The geometric identity
+is the source-pinned compact-window Weil formula. Neither is installed as a
+project axiom.
+
+Lean proves internally that spectral mass is bounded by logarithmic Fourier
+energy, absorbs the pole term, and obtains the two-sided estimate
+
+\[
+a
+\int_{\mathbb R}
+\log(e+|t|)\,|F(t)|^2\,dt
+\le
+Q_c(f)+C\|f\|_2^2
+\]
+
+and
+
+\[
+Q_c(f)+C\|f\|_2^2
+\le
+(b+K)
+\int_{\mathbb R}
+\log(e+|t|)\,|F(t)|^2\,dt.
+\]
+
+All integration is explicitly against Lebesgue volume; no ambient measure
+instance is left implicit.
+
+Dedicated theorem CI passed in:
+
+\[
+\boxed{\texttt{36171526106}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{37b89dd60cfe1963abc58c04c6113319fea383c1}}.
+\]
+
+The certified WD-T35 source blob is:
+
+\[
+\texttt{ae932d4f3f7e4d6d06dbd778a5708927172238dc}.
+\]
+
+The final run passed pinned dependency resolution, mathlib cache retrieval,
+direct Lake build of \(\texttt{WeilDefect.Arithmetic.LogarithmicForm}\),
+rebuilding WD-T34, and unfinished-proof/project-axiom rejection.
+
+WD-T35 is therefore closed. The next unfinished sequential theorem cursor is:
+
+\[
+\boxed{
+\texttt{WD-T36 / ZW2-T8 — NO UNIFORM POSITIVE-SOBOLEV COERCIVE BOOTSTRAP}
 }
 \]
