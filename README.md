@@ -51,11 +51,10 @@ boundary is deliberately before RH closure.
 | H1-P3 | Defect morphology theorem | Complete |
 | H1-P4 | Proof audit and theorem normalization | Complete |
 | LEAN-H1 | Lean certification track | **Exhausted** |
-| H1-P5 | Public mathematical package | Ready — not started |
+| H1-P5 | Public mathematical package | **Active** |
 
 Within H1-P4, source pinning, the internal proof audit, the composite
-morphology audit, and the examples/sharpness audit are complete. The Lean certification track is exhausted. The next project cursor is
-**H1-P5.0 / Public Package Architecture**, recorded but not started. Stable public theorem IDs and the
+morphology audit, and the examples/sharpness audit are complete. The Lean certification track is exhausted. **H1-P5.0 / Public Package Architecture** is complete; the active cursor is **H1-P5.1 / Technical Manuscript Assembly**. Stable public theorem IDs and the
 audit surfaces are canonical in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
 [Dependency Audit](docs/DEPENDENCY_AUDIT.md),
@@ -70,7 +69,7 @@ Project terms such as **horizon**, **phase**, **standing**, **interface**,
 
 Formal verification has reached its exhaustion condition. See the
 [Lean Formalization Track](docs/LEAN_FORMALIZATION_TRACK.md) and
-[Lean Status Ledger](docs/LEAN_STATUS.md). H1-P5.0 is next, but no public-package work has been started in this closure pass.
+[Lean Status Ledger](docs/LEAN_STATUS.md). Public-package assembly is now active. See [Public Package Architecture](docs/PUBLIC_PACKAGE_ARCHITECTURE.md) and the [Weil-Defect Manuscript](docs/WEIL_DEFECT_MANUSCRIPT.md).
 
 ## Core mathematical picture
 
