@@ -195,7 +195,7 @@ theorem rationalResponse_zero_moment_remainder_isBigO
     (hv0 : (∑ i : Fin n, v i) = 0) :
     (fun z : ℂ =>
       rationalResponse rho v z - residueFirstMoment rho v / z ^ 2)
-      =O[Filter.cobounded ℂ]
+      =O[cobounded ℂ]
     (fun z : ℂ => z⁻¹ ^ 3) := by
   let C : ℝ := 2 * residueSecondMomentNorm rho v
   refine Asymptotics.IsBigO.of_bound C ?_
@@ -235,7 +235,7 @@ theorem rationalResponse_zero_moment_isBigO
     (rho v : Fin n → ℂ)
     (hv0 : (∑ i : Fin n, v i) = 0) :
     (fun z : ℂ => rationalResponse rho v z)
-      =O[Filter.cobounded ℂ]
+      =O[cobounded ℂ]
     (fun z : ℂ => z⁻¹ ^ 2) := by
   let C : ℝ :=
     ‖residueFirstMoment rho v‖ + 2 * residueSecondMomentNorm rho v
@@ -324,7 +324,7 @@ theorem wd_t27_universal_inverse_square_isBigO
     (rho v : Fin n → ℂ)
     (hv0 : (∑ i : Fin n, v i) = 0) :
     (fun z : ℂ => rationalResponse rho v z)
-      =O[Filter.cobounded ℂ]
+      =O[cobounded ℂ]
     (fun z : ℂ => z⁻¹ ^ 2) :=
   rationalResponse_zero_moment_isBigO rho v hv0
 
