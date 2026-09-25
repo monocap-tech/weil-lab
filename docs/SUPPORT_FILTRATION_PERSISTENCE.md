@@ -1,5 +1,5 @@
 # Support Filtration and Persistence Limits
-## H1-P1.2 — Right limits, endpoint jumps, and representative blow-up
+**H1-P1.2 — Right limits, endpoint jumps, and representative blow-up**
 
 This pass abstracts the support/observation-filtration mechanism that remained after H1-P1.0 and H1-P1.1.
 
@@ -7,7 +7,7 @@ No theorem below uses zeta-specific arithmetic.
 
 ---
 
-## 0. Coefficient-space filtration
+### 0. Coefficient-space filtration
 
 Let
 
@@ -79,7 +79,7 @@ is called a **new right-persistent coefficient vector** at the endpoint.
 
 ---
 
-## WD-C1 — Monotone projection limit
+### WD-C1 — Monotone projection limit
 
 Let $P_t$ be the orthogonal projection onto $\mathcal A_t$.
 
@@ -149,7 +149,7 @@ The limit is independent of the chosen sequence.
 
 ---
 
-## WD-C2 — Right-limit gap duality
+### WD-C2 — Right-limit gap duality
 
 Define the gap spaces
 
@@ -219,7 +219,7 @@ This is the abstract source of relations of the form
 
 ---
 
-## WD-C3 — Fixed finite negative-sector compactness
+### WD-C3 — Fixed finite negative-sector compactness
 
 Assume now
 
@@ -366,7 +366,7 @@ q_*.
 
 ---
 
-## WD-C4 — Critical-sequence dichotomy
+### WD-C4 — Critical-sequence dichotomy
 
 Under the hypotheses of WD-C3, suppose
 
@@ -450,7 +450,7 @@ There is no third possibility in which all coefficient mass disappears.
 
 ---
 
-## WD-C5 — Uniform negative margins produce persistent negative rays
+### WD-C5 — Uniform negative margins produce persistent negative rays
 
 Under the hypotheses of WD-C3, suppose there is
 
@@ -494,7 +494,7 @@ Thus a uniformly negative right-approaching sequence in a fixed finite negative 
 
 ---
 
-## WD-C6 — Endpoint jump controls new negative index
+### WD-C6 — Endpoint jump controls new negative index
 
 Assume
 
@@ -555,7 +555,7 @@ A one-dimensional endpoint jump can carry at most one new negative direction.
 
 ---
 
-# Physical realization
+## Physical realization
 
 The preceding results are purely coefficient-space statements.
 
@@ -597,7 +597,7 @@ be bounded, and define
 
 ---
 
-## WD-C7 — Endpoint representative blow-up principle
+### WD-C7 — Endpoint representative blow-up principle
 
 Let
 
@@ -707,7 +707,7 @@ A genuinely new endpoint coefficient vector can persist arbitrarily close to the
 
 ---
 
-## WD-C8 — Boundary amplification functional
+### WD-C8 — Boundary amplification functional
 
 For
 
@@ -801,7 +801,7 @@ Blow-up is necessary for a new endpoint vector, but it is not sufficient to prov
 
 ---
 
-## WD-C9 — Vanishing coefficient amplitude and normalized blow-up
+### WD-C9 — Vanishing coefficient amplitude and normalized blow-up
 
 Suppose
 
@@ -850,7 +850,7 @@ If $y\in\mathcal A_{c+}\setminus\mathcal A_c$, this is exactly the endpoint blow
 
 ---
 
-# Moving-sector escape
+## Moving-sector escape
 
 The finite-dimensional compactness in WD-C3 depends on using one fixed finite negative sector.
 
@@ -858,7 +858,7 @@ It fails if the selected negative coordinate itself moves through an infinite co
 
 ---
 
-## WD-E5 — Moving finite sectors can lose every persistent ray
+### WD-E5 — Moving finite sectors can lose every persistent ray
 
 Let
 
@@ -942,7 +942,7 @@ This is the principal abstract mechanism excluded by WD-C3 for a fixed finite ne
 
 ---
 
-## WD-E6 — Positive-mass escape strengthens a fixed-sector limit
+### WD-E6 — Positive-mass escape strengthens a fixed-sector limit
 
 Let
 
@@ -1016,11 +1016,11 @@ This explicitly realizes the positive-mass-loss branch of WD-C4.
 
 ---
 
-# H1-P1.2 determination
+## H1-P1.2 determination
 
 The remaining support-filtration mechanism is now abstractly classified.
 
-## 1. Right persistence is an endpoint jump
+### 1. Right persistence is an endpoint jump
 
 ```math
 \mathcal A_{c+}
@@ -1038,7 +1038,7 @@ and
 
 New negative index cannot appear without a nontrivial endpoint jump when $\mathcal A_c$ is nonnegative.
 
-## 2. Fixed finite negative sectors force a nonpositive right-limit ray
+### 2. Fixed finite negative sectors force a nonpositive right-limit ray
 
 For unit right-approaching vectors in a fixed finite negative sector,
 
@@ -1063,7 +1063,7 @@ Approximate neutrality becomes either:
 - an actual neutral right-limit vector; or
 - a stricter negative persistent vector caused by positive-coordinate mass loss.
 
-## 3. Moving sectors are the genuine escape
+### 3. Moving sectors are the genuine escape
 
 If the selected negative direction itself moves through an infinite coefficient field, the whole sequence may escape weakly and leave no persistent ray.
 
@@ -1075,7 +1075,7 @@ Thus the non-attained approximate-neutral morphology from H1-P1.0 is now localiz
 }
 ```
 
-## 4. New endpoint vectors require physical blow-up
+### 4. New endpoint vectors require physical blow-up
 
 Under a common bounded physical realization,
 
@@ -1089,7 +1089,7 @@ This is the abstract representative-blow-up theorem previously encountered in th
 
 ---
 
-# H1-P1 completion
+## H1-P1 completion
 
 The abstract defect calculus now contains:
 
@@ -1114,7 +1114,7 @@ Therefore
 }
 ```
 
-## Next Horizon cursor
+### Next Horizon cursor
 
 ```math
 \boxed{
