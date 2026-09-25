@@ -40,38 +40,38 @@ WD-T37 assumes:
 
 - one fixed finite selected packet \(\Pi\);
 - one common selected coefficient carrier in which
-  \[
+  ```math
   \mathcal A_{\Pi,t}
-  \]
+  ```
   forms the monotone filtration;
 - endpoint nonnegativity of
-  \[
+  ```math
   \mathcal A_{\Pi,c};
-  \]
+  ```
 - right supports
-  \[
+  ```math
   t_n\downarrow c;
-  \]
+  ```
 - unit physical witnesses \(g_n\);
 - selected amplitude
-  \[
+  ```math
   \varepsilon_n
   =
   \|\mathcal E_{\Pi,t_n}^*g_n\|
   \to0;
-  \]
+  ```
 - normalized selected vectors
-  \[
+  ```math
   z_n
   =
   \mathcal E_{\Pi,t_n}^*g_n/\varepsilon_n
-  \]
+  ```
   with
-  \[
+  ```math
   [z_n,z_n]_J\to-\kappa,
   \qquad
   \kappa>0.
-  \]
+  ```
 
 No actual-zeta existence theorem for such a branch is claimed.
 
@@ -79,41 +79,41 @@ No actual-zeta existence theorem for such a branch is claimed.
 
 The branch uses:
 
-\[
+```math
 \text{WD-T16}
-\]
+```
 
 for the persistent negative endpoint ray,
 
-\[
+```math
 \text{WD-T07}
-\]
+```
 
 for selected/full negativity,
 
-\[
+```math
 \text{WD-T26}\to\text{WD-T27}
-\]
+```
 
 for zero moment and inverse-square far decay,
 
-\[
+```math
 \text{WD-T30}+\text{WD-T31}
-\]
+```
 
 for selected scalarization and fixed-source far-tail localization,
 
-\[
+```math
 \text{WD-T32}
-\]
+```
 
 for the completed-\(\Xi\) next-jet representation,
 
 and
 
-\[
+```math
 \text{WD-T33}
-\]
+```
 
 for cutoffwise explicit-formula co-adaptation.
 
@@ -121,9 +121,9 @@ for cutoffwise explicit-formula co-adaptation.
 
 The original package cited WD-T19 as though the varying maps
 
-\[
+```math
 \mathcal E_{\Pi,t}^*
-\]
+```
 
 automatically formed the single common bounded realization map required by WD-T19.
 
@@ -133,20 +133,20 @@ The canonical theorem now separates:
 
 ### Direct normalized blow-up
 
-\[
+```math
 h_n
 =
 \varepsilon_n^{-1}g_n
-\]
+```
 
 satisfies
 
-\[
+```math
 \|h_n\|
 =
 \varepsilon_n^{-1}
 \to\infty
-\]
+```
 
 directly.
 
@@ -162,19 +162,19 @@ WD-T33 is cutoffwise.
 
 At fixed \(R\),
 
-\[
+```math
 \mathcal N_{v,R}[\psi]
 =
 \mathcal A_v[\psi]
-\]
+```
 
 implies
 
-\[
+```math
 \mathcal P_v[\psi]
 =
 \mathcal F_{v,R}[\psi].
-\]
+```
 
 The morphology now sends \(R\to\infty\) only for:
 
@@ -187,13 +187,13 @@ No asymptotic claim remains for an arbitrary unbounded adaptive family.
 
 WD-T37 continues to assert only:
 
-\[
+```math
 \boxed{
 \text{far tail vanishes}
 \quad\Longrightarrow\quad
 \text{remaining complementary dependence is the weighted near next-jet field}.
 }
-\]
+```
 
 It does not assert a generic lower bound on that field.
 
@@ -203,27 +203,27 @@ No KPH null equation, reciprocal-Cauchy packet structure, CF-A17 compactness, or
 
 The theorem terminates at
 
-\[
+```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC}.
 }
-\]
+```
 
 The stronger special-packet interface
 
-\[
+```math
 \texttt{C-ACTUAL-KPH-FLOOR}
-\]
+```
 
 is not consumed by WD-T37.
 
 ## WD-T37 audit result
 
-\[
+```math
 \boxed{
 \text{COMPOSITE-AUDIT-PASSED}
 }
-\]
+```
 
 after corrections N-1 and N-2.
 
@@ -243,19 +243,19 @@ The audited theorem assumes:
 2. a critical right-approaching sequence;
 3. the attained-neutral rather than negative-fall-through alternative of WD-T17;
 4. a nonzero selected coordinate \(u\) satisfying
-   \[
+   ```math
    C_c^*C_cu=u;
-   \]
+   ```
 5. a physical realization
-   \[
+   ```math
    C_cu=P_c^*k,
    \qquad
    k\ne0;
-   \]
+   ```
 6. the relation
-   \[
+   ```math
    N_c=-P_cC_c;
-   \]
+   ```
 7. an explicit carrier identification saying that this physical realization is the same compact-window Weil form/operator realization used by H1-P2.2, with \(k\) in that form domain.
 
 Items 4–7 are finite-exception neutral hypotheses. They are not consequences of abstract criticality alone.
@@ -266,35 +266,35 @@ WD-T17 supplies the fixed-packet critical bifurcation.
 
 The unit-gain/adjoint hypotheses give algebraically
 
-\[
+```math
 N_c^*k=-u
-\]
+```
 
 and
 
-\[
+```math
 W_ck=0.
-\]
+```
 
 The arithmetic/operator part then uses:
 
-\[
+```math
 \text{WD-T34}
-\]
+```
 
 for finite prime support,
 
-\[
+```math
 \text{WD-T35}
-\]
+```
 
 for logarithmic form order,
 
 and
 
-\[
+```math
 \text{WD-T36}
-\]
+```
 
 for the absence of a uniform positive-Sobolev coercive estimate.
 
@@ -304,9 +304,9 @@ The global-cancellation jurisdiction remains WD-S03.
 
 The algebraic null equation
 
-\[
+```math
 W_ck=0
-\]
+```
 
 does not, by itself, identify the algebraic synthesis operator with the compact-window explicit-formula form domain.
 
@@ -318,9 +318,9 @@ Accordingly, the logarithmic-form and arithmetic-translation conclusions are con
 
 The package previously used language that could be read as
 
-\[
+```math
 k\notin H^\varepsilon
-\]
+```
 
 for every neutral mode.
 
@@ -328,11 +328,11 @@ That is stronger than WD-T36.
 
 The audited statement is now
 
-\[
+```math
 \boxed{
 \text{the retained logarithmic form estimate supplies no uniform }H^\varepsilon\text{ coercive bound}.
 }
-\]
+```
 
 A particular neutral mode may possess additional regularity if another theorem supplies it.
 
@@ -340,21 +340,21 @@ A particular neutral mode may possess additional regularity if another theorem s
 
 The source-pinned compact-window convention is
 
-\[
+```math
 \log n<2c.
-\]
+```
 
 Therefore the endpoint operator and the strict-right-limit operator can differ when
 
-\[
+```math
 2c=\log n_0
-\]
+```
 
 for a prime power \(n_0\).
 
 Define
 
-\[
+```math
 \mathcal W_{c+}^{\rm ext}
 =
 \mathcal A_\infty
@@ -364,15 +364,15 @@ Define
 (\tau_{\log n}+\tau_{-\log n})
 +
 \mathcal R_{\rm pole}.
-\]
+```
 
 Away from a threshold,
 
-\[
+```math
 \mathcal W_{c+}^{\rm ext}
 =
 \mathcal W_c^{\rm ext}.
-\]
+```
 
 At a threshold, the right-limit operator contains the finite equality-threshold correction.
 
@@ -382,11 +382,11 @@ The null-extension interface is therefore threshold-aware.
 
 The theorem terminates at
 
-\[
+```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
-\]
+```
 
 The interface asks whether the same fixed neutral relation satisfies the correct right-limit compact-window equation on a strict enlargement.
 
@@ -394,11 +394,11 @@ No boundary-trace, Stieltjes, or UCP theorem is imported upstream.
 
 ## WD-T38 audit result
 
-\[
+```math
 \boxed{
 \text{COMPOSITE-AUDIT-PASSED}
 }
-\]
+```
 
 after corrections U-1 through U-3.
 
@@ -423,23 +423,23 @@ These must remain separate.
 
 Fix a finite-rank coordinate exhaustion
 
-\[
+```math
 Q_R\to I_K
-\]
+```
 
 strongly on the full coefficient carrier.
 
 If
 
-\[
+```math
 Q_Rw_n\to0
-\]
+```
 
 for every fixed \(R\), then
 
-\[
+```math
 w_n\rightharpoonup0.
-\]
+```
 
 This conclusion requires the full carrier exhaustion.
 
@@ -451,15 +451,15 @@ The canonical theorem now calls P3-B2 full coefficient moving-sector escape.
 
 For a fixed finite selected packet, if
 
-\[
+```math
 \limsup_n\|u_n\|>0,
-\]
+```
 
 then a subsequence has
 
-\[
+```math
 u_n\to u\ne0
-\]
+```
 
 strongly.
 
@@ -477,30 +477,30 @@ After passage to a subsequence, exactly one of the following can be arranged:
 
 ### B∞ — norm escape
 
-\[
+```math
 \|b_n\|\to\infty.
-\]
+```
 
 ### BT — bounded weak/tail escape
 
-\[
+```math
 b_n\rightharpoonup b
-\]
+```
 
 but not strongly; after taking a norm-convergent subsequence,
 
-\[
+```math
 d_B
 =
 \lim\|b_n\|^2-\|b\|^2
 >0.
-\]
+```
 
 ### BF — background strong compactness
 
-\[
+```math
 b_n\to b
-\]
+```
 
 strongly.
 
@@ -514,40 +514,40 @@ Background tail tightness controls \(b_n\), not the positive coordinate \(a_n\).
 
 From the fixed selected-ray compactness theorem one generally has only
 
-\[
+```math
 a_n\rightharpoonup a,
 \qquad
 u_n\to u.
-\]
+```
 
 Therefore BF gives
 
-\[
+```math
 b_n\to b
-\]
+```
 
 strongly and the fixed full weak limit
 
-\[
+```math
 Y_{\rm full}=(a,u,b),
-\]
+```
 
 with strong convergence on the entire negative sector.
 
 Its signature remains
 
-\[
+```math
 [Y_{\rm full},Y_{\rm full}]_{\rm full}
 \le
 -\kappa-\|b\|^2
 <0.
-\]
+```
 
 Full strong coefficient convergence requires the extra hypothesis
 
-\[
+```math
 a_n\to a.
-\]
+```
 
 The stable theorem therefore speaks of a fixed full-divisor negative weak limit, not unconditional full strong convergence.
 
@@ -557,31 +557,31 @@ The stable theorem therefore speaks of a fixed full-divisor negative weak limit,
 
 Even under bounded weak background escape,
 
-\[
+```math
 (a,u,b)
-\]
+```
 
 is nonzero because \(u\ne0\), and remains strictly negative.
 
 Hence
 
-\[
+```math
 \boxed{
 \text{background escape}
 \not\Rightarrow
 \text{loss of selected-ray custody}.
 }
-\]
+```
 
 This remains a valid scope guard.
 
 ## WD-T39 audit result
 
-\[
+```math
 \boxed{
 \text{COMPOSITE-AUDIT-PASSED}
 }
-\]
+```
 
 after corrections B-1 and B-2.
 
@@ -591,19 +591,19 @@ after corrections B-1 and B-2.
 
 After the corrections above:
 
-\[
+```math
 \text{WD-T37}
 \longrightarrow
 \texttt{AZ-NEXTJET-LOC}
-\]
+```
 
 and
 
-\[
+```math
 \text{WD-T38}
 \longrightarrow
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}
-\]
+```
 
 remain strictly downstream.
 
@@ -613,9 +613,9 @@ WD-T39 introduces no new RH-facing interface.
 
 The generic negative morphology still does not import
 
-\[
+```math
 \texttt{C-ACTUAL-KPH-FLOOR}.
-\]
+```
 
 Thus the composite-level dependency graph remains acyclic.
 
@@ -647,11 +647,11 @@ The audit required seven compositional corrections:
 
 After those corrections:
 
-\[
+```math
 \boxed{
 \text{WD-T37, WD-T38, WD-T39: COMPOSITE-AUDIT-PASSED}.
 }
-\]
+```
 
 This status remains internal to Horizon 1.
 
@@ -665,8 +665,8 @@ The morphology packages preserve their audited dependencies and branch hypothese
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.4 / EXAMPLES AND SHARPNESS AUDIT}
 }
-\]
+```
