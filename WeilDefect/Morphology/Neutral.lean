@@ -314,7 +314,7 @@ theorem wd_t38_p3_u2_negative_adjoint_identity
     (u : M) (k : H)
     (hunit : (C†) (C u) = u)
     (hreal : C u = (P†) k) :
-    (neutralNegativeSynthesis P C)† k = -u := by
+    ((neutralNegativeSynthesis P C)†) k = -u := by
   simp [neutralNegativeSynthesis,
     ContinuousLinearMap.adjoint_comp, ← hreal, hunit]
 
@@ -340,7 +340,7 @@ theorem wd_t38_p3_u2_physical_neutral_null_mode
   constructor
   · exact hk
   · have hneg :
-        (neutralNegativeSynthesis P C)† k = -u :=
+        ((neutralNegativeSynthesis P C)†) k = -u :=
       wd_t38_p3_u2_negative_adjoint_identity
         P C u k hunit hreal
     unfold neutralWeilOperator WeilDefect.WDT01.physicalDefect
