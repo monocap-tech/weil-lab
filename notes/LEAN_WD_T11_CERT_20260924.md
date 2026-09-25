@@ -4,11 +4,11 @@ Stable ID: **WD-T11 / WD-B5**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Formal target
 
@@ -28,9 +28,9 @@ Certified source blob:
 
 WD-T11 is formalized on the canonical finite-dimensional active carrier
 
-\[
+```math
 \operatorname{Ran}Y,
-\]
+```
 
 using the corestricted screen and its adjoint.
 
@@ -54,19 +54,19 @@ The assembled theorem is:
 
 Its formal conclusion packages:
 
-\[
+```math
 \operatorname{ind}_{-}
 =
 \#\{i:\sigma_i>1\},
-\]
+```
 
 in the project's finite-negative-rank witness encoding,
 
-\[
+```math
 \dim E_0
 =
 \#\{i:\sigma_i=1\},
-\]
+```
 
 and finite-sector norm-one attainment of a genuine nonzero neutral direction.
 
@@ -78,11 +78,11 @@ The module imports surrounding screening infrastructure, including the graph-nor
 
 Therefore the correct status is native:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 rather than `LEAN-CERTIFIED-FROM-IMPORTED-PREMISE`.
 
@@ -120,8 +120,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{WD-T12 / WD-B6 — SEQUENTIAL ELIMINATION}
 }
-\]
+```
