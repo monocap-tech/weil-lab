@@ -214,9 +214,7 @@ M_\psi
 
 ### Consequence
 
-For a fixed selected source and multiplier, the infinite distant divisor is not the residual arithmetic obstruction.
-
-All macroscopically necessary compensation can be localized into a finite/intermediate neighborhood of $F$.
+For a fixed selected source and bounded multiplier, the distant complementary contribution tends to zero. Equivalently, for every $\varepsilon>0$ there is a finite cutoff $R$ such that the complementary contribution from zeros beyond distance $R$ has magnitude below $\varepsilon$. Thus the complementary response is localized, up to an arbitrarily small far-tail error, to the finite/intermediate region inside that cutoff.
 
 ---
 
@@ -356,7 +354,7 @@ H_v^{(m_\mu)}(\mu)
 }
 ```
 
-Thus the residual negative-branch arithmetic object is precisely a weighted complementary next-jet field.
+Thus the **near complementary response** is exactly a weighted completed-$\Xi$ next-jet field. The full complementary response differs from it by the far term controlled in ZW2-T2.
 
 **Standing:** PROVED.
 
