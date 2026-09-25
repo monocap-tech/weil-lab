@@ -184,18 +184,38 @@ The public artifacts checked by the final adversarial pass have these blobs:
 
 | Artifact | Blob SHA |
 | --- | --- |
-| PUBLIC_PACKAGE_ARCHITECTURE.md | a5395e0bac4af67179720782d1ff20f707118a37 |
+| PUBLIC_PACKAGE_ARCHITECTURE.md | 8d7531d3730408aad3de8f5f4c03c1dd7e997e51 |
 | WEIL_DEFECT_MANUSCRIPT.md | 1733bbec96714551f48df64271ad36f23eb34ec6 |
 | PUBLIC_THEOREM_INDEX.md | de47be44e66e3fbc439a225195f5c37eeee89c40 |
 | PUBLIC_VERIFICATION_MATRIX.md | a4625a0ce629aa02b19c9af69cb4dbe503a445e5 |
 | PUBLIC_DEPENDENCY_MAP.md | 6d0c4527a50e424711c3c0d1b9c430e7b8f9111d |
 | PUBLIC_EXAMPLES.md | 12d762cd0971cf41ac0ec2c9b0eb13641a9641b3 |
 | RH_INTERFACE_APPENDIX.md | 1e7a4f7a573cbd8eb10244a0fa78b995c866a60f |
-| README.md | 915b338a7d6a4c24970bc7f1059e04d60db4706d |
+| README.md | 47678ab1595d59247065538ff6b32e295ccee1af |
 
 ---
 
-## 9. H1-P5 determination
+## 9. Closure-state recheck
+
+After the package audit passed, closure-only status edits marked H1-P5 and
+Horizon 1 complete in the README and control surfaces. A final read-only
+recheck confirmed:
+
+- no rendering, fence, or control-character defects;
+- no stale active H1-P5 cursor language;
+- H1-P5 marked complete in Horizon 1 and README;
+- Horizon 1 marked complete in Horizon 1, README, Proof Status, and Research Map;
+- no post-Horizon cursor selected;
+- all three actual-zeta interfaces remain explicitly OPEN.
+
+The two public artifact identities changed by those closure-only edits are
+the architecture and README blobs recorded above.
+
+**Result:** PASS.
+
+---
+
+## 10. H1-P5 determination
 
 All seven specialist/public surfaces and the repository entrypoint are
 assembled and have passed the final cross-surface adversarial audit.
