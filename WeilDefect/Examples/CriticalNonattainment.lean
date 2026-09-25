@@ -3,6 +3,8 @@ import Mathlib.Tactic
 
 namespace WeilDefect
 
+noncomputable section
+
 open Filter
 open scoped Topology ENNReal lp
 
@@ -13,7 +15,6 @@ noncomputable def wdX02Weight (n : ℕ) : ℝ :=
 theorem wd_x02_weight_nonneg (n : ℕ) :
     0 ≤ wdX02Weight n := by
   unfold wdX02Weight
-  have hn : 2 ≤ (n : ℝ) + 2 := by positivity
   have hden : 0 < (n : ℝ) + 2 := by positivity
   have hinv : 1 / ((n : ℝ) + 2) ≤ 1 := by
     exact (div_le_one hden).2 (by linarith)
@@ -34,8 +35,10 @@ theorem wd_x02_weight_tendsto_one :
   have hinv :
       Tendsto (fun n : ℕ => (((n : ℝ) + 2)⁻¹)) atTop (𝓝 0) :=
     tendsto_inv_atTop_zero.comp hden
-  simpa [wdX02Weight, div_eq_mul_inv] using
-    (tendsto_const_nhds.sub hinv)
+  have hone :
+      Tendsto (fun _ : ℕ => (1 : ℝ)) atTop (𝓝 1) :=
+    tendsto_const_nhds
+  simpa only [wdX02Weight, one_div] using hone.sub hinv
 
 /--
 The Hilbert carrier used for the discrete WD-X02 realization.
@@ -75,34 +78,52 @@ theorem wd_x02_operator_single
     (n : ℕ) :
     wdX02Operator (lp.single 2 n (1 : ℂ))
       =
-    (wdX02Weight n : ℂ) • lp.single 2 n (1 : ℂ) := by
+    lp.single 2 n (wdX02Weight n : ℂ) := by
   ext i
   by_cases h : n = i
   · subst i
-    simp [wd_x02_operator_apply]
+    simp [wd_x02_operator_apply, lp.single_apply]
   · simp [wd_x02_operator_apply, lp.single_apply, h]
 
 theorem wd_x02_operator_single_norm
     (n : ℕ) :
     ‖wdX02Operator (lp.single 2 n (1 : ℂ))‖ = wdX02Weight n := by
   rw [wd_x02_operator_single]
-  simp [wd_x02_weight_nonneg]
+  have hsingle :=
+    lp.norm_single
+      (E := fun _ : ℕ => ℂ)
+      (p := (2 : ℝ≥0∞))
+      (by norm_num : (0 : ℝ≥0∞) < 2)
+      n (wdX02Weight n : ℂ)
+  simpa [wd_x02_weight_nonneg n, abs_of_nonneg] using hsingle
 
 theorem wd_x02_weight_le_operator_norm (n : ℕ) :
     wdX02Weight n ≤ ‖wdX02Operator‖ := by
+  have hsingle :
+      ‖lp.single 2 n (1 : ℂ)‖ = 1 := by
+    simpa using
+      (lp.norm_single
+        (E := fun _ : ℕ => ℂ)
+        (p := (2 : ℝ≥0∞))
+        (by norm_num : (0 : ℝ≥0∞) < 2)
+        n (1 : ℂ))
   calc
     wdX02Weight n
         = ‖wdX02Operator (lp.single 2 n (1 : ℂ))‖ :=
           (wd_x02_operator_single_norm n).symm
     _ ≤ ‖wdX02Operator‖ * ‖lp.single 2 n (1 : ℂ)‖ :=
       wdX02Operator.le_opNorm _
-    _ = ‖wdX02Operator‖ := by simp
+    _ = ‖wdX02Operator‖ := by rw [hsingle, mul_one]
 
 theorem wd_x02_operator_norm_eq_one :
     ‖wdX02Operator‖ = 1 := by
   apply le_antisymm wd_x02_operator_norm_le_one
-  exact le_of_tendsto wd_x02_weight_tendsto_one
-    (Eventually.of_forall wd_x02_weight_le_operator_norm)
+  exact le_of_tendsto_of_tendsto'
+    wd_x02_weight_tendsto_one
+    (tendsto_const_nhds :
+      Tendsto (fun _ : ℕ => ‖wdX02Operator‖) atTop
+        (𝓝 ‖wdX02Operator‖))
+    wd_x02_weight_le_operator_norm
 
 
 
@@ -117,30 +138,42 @@ theorem wd_x02_operator_coord_sq_le
     (x : WDX02Space) (n : ℕ) :
     ‖(wdX02Operator x) n‖ ^ (2 : ℝ)
       ≤ ‖x n‖ ^ (2 : ℝ) := by
-  rw [wd_x02_operator_coord_norm]
-  rw [Real.rpow_two, Real.rpow_two]
-  have h0 := wd_x02_weight_nonneg n
-  have h1 := (wd_x02_weight_lt_one n).le
-  have hx := norm_nonneg (x n)
-  nlinarith
+  rw [wd_x02_operator_coord_norm, Real.rpow_two, Real.rpow_two]
+  have hw0 := wd_x02_weight_nonneg n
+  have hw1 := (wd_x02_weight_lt_one n).le
+  have hw2 : wdX02Weight n ^ 2 ≤ 1 := by
+    nlinarith
+  calc
+    (wdX02Weight n * ‖x n‖) ^ 2
+        = wdX02Weight n ^ 2 * ‖x n‖ ^ 2 := by ring
+    _ ≤ 1 * ‖x n‖ ^ 2 :=
+      mul_le_mul_of_nonneg_right hw2 (sq_nonneg _)
+    _ = ‖x n‖ ^ 2 := one_mul _
 
 theorem wd_x02_operator_coord_sq_lt
     (x : WDX02Space) (n : ℕ)
     (hx0 : x n ≠ 0) :
     ‖(wdX02Operator x) n‖ ^ (2 : ℝ)
       < ‖x n‖ ^ (2 : ℝ) := by
-  rw [wd_x02_operator_coord_norm]
-  rw [Real.rpow_two, Real.rpow_two]
-  have h0 := wd_x02_weight_nonneg n
-  have h1 := wd_x02_weight_lt_one n
+  rw [wd_x02_operator_coord_norm, Real.rpow_two, Real.rpow_two]
+  have hw0 := wd_x02_weight_nonneg n
+  have hw1 := wd_x02_weight_lt_one n
+  have hw2 : wdX02Weight n ^ 2 < 1 := by
+    nlinarith
   have hx : 0 < ‖x n‖ := norm_pos_iff.mpr hx0
-  nlinarith
+  have hx2 : 0 < ‖x n‖ ^ 2 := sq_pos_of_pos hx
+  calc
+    (wdX02Weight n * ‖x n‖) ^ 2
+        = wdX02Weight n ^ 2 * ‖x n‖ ^ 2 := by ring
+    _ < 1 * ‖x n‖ ^ 2 :=
+      mul_lt_mul_of_pos_right hw2 hx2
+    _ = ‖x n‖ ^ 2 := one_mul _
 
 theorem wd_x02_nonzero_has_coordinate
     (x : WDX02Space) (hx : x ≠ 0) :
     ∃ n : ℕ, x n ≠ 0 := by
   by_contra h
-  push_neg at h
+  push Not at h
   apply hx
   ext n
   simpa using h n
@@ -161,10 +194,32 @@ theorem wd_x02_strict_norm_loss
       (fun n => wd_x02_operator_coord_sq_le x n)
       (wd_x02_operator_coord_sq_lt x i hi)
       hsummable
-  rw [← lp.norm_rpow_eq_tsum (p := (2 : ℝ≥0∞)) (by norm_num)
-        (wdX02Operator x),
-      ← lp.norm_rpow_eq_tsum (p := (2 : ℝ≥0∞)) (by norm_num) x] at hsum
-  rw [Real.rpow_two, Real.rpow_two] at hsum
+  have hnormTx :
+      ‖wdX02Operator x‖ ^ (2 : ℝ)
+        =
+      ∑' n : ℕ, ‖(wdX02Operator x) n‖ ^ (2 : ℝ) := by
+    simpa using
+      (lp.norm_rpow_eq_tsum
+        (p := (2 : ℝ≥0∞))
+        (by norm_num)
+        (wdX02Operator x))
+  have hnormX :
+      ‖x‖ ^ (2 : ℝ)
+        =
+      ∑' n : ℕ, ‖x n‖ ^ (2 : ℝ) := by
+    simpa using
+      (lp.norm_rpow_eq_tsum
+        (p := (2 : ℝ≥0∞))
+        (by norm_num)
+        x)
+  have hsq :
+      ‖wdX02Operator x‖ ^ (2 : ℝ) < ‖x‖ ^ (2 : ℝ) := by
+    calc
+      ‖wdX02Operator x‖ ^ (2 : ℝ)
+          = ∑' n : ℕ, ‖(wdX02Operator x) n‖ ^ (2 : ℝ) := hnormTx
+      _ < ∑' n : ℕ, ‖x n‖ ^ (2 : ℝ) := hsum
+      _ = ‖x‖ ^ (2 : ℝ) := hnormX.symm
+  rw [Real.rpow_two, Real.rpow_two] at hsq
   nlinarith [norm_nonneg (wdX02Operator x), norm_nonneg x]
 
 theorem wd_x02_no_nonzero_norm_attainer :
@@ -186,7 +241,9 @@ theorem wd_x02_critical_nonattainment :
             ‖wdX02Operator (lp.single 2 n (1 : ℂ))‖)
           atTop (𝓝 1) := by
   refine ⟨wd_x02_operator_norm_eq_one, wd_x02_strict_norm_loss, ?_⟩
-  simpa [wd_x02_operator_single_norm] using wd_x02_weight_tendsto_one
+  convert wd_x02_weight_tendsto_one using 1
+  funext n
+  exact wd_x02_operator_single_norm n
 
 
 end WeilDefect
