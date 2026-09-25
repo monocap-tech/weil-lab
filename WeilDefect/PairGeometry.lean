@@ -131,6 +131,78 @@ theorem wd_t21_simple_quartet_pair_geometry
     wd_t21_simple_quartet_negative_count
   ⟩
 
+/--
+Explicit imported interface for Bombieri's finite Weil inertia theorem
+(Theorem 8, p. 213 in the pinned source).
+
+For a finite type indexing the distinct nonreal conjugate pairs of the
+multiplicity-reduced finite zero packet, the theorem premise identifies the
+finite Weil matrix negative spectral index with the cardinality of that pair
+type.
+
+The external theorem is a premise here; it is not introduced as a project axiom.
+-/
+structure BombieriFiniteInertiaData
+    (negativeIndex : ℕ)
+    (Pair : Type*) [Fintype Pair] : Prop where
+  index_eq_pairCount :
+    negativeIndex = Fintype.card Pair
+
+/--
+WD-T22: Bombieri's imported finite-inertia theorem saturates the abstract
+finite-sector negative-index cap: the negative spectral index is exactly the
+number of distinct nonreal conjugate pairs.
+-/
+theorem wd_t22_finite_weil_inertia_saturation
+    {Pair : Type*} [Fintype Pair]
+    (negativeIndex : ℕ)
+    (hBombieri : BombieriFiniteInertiaData negativeIndex Pair) :
+    negativeIndex = Fintype.card Pair :=
+  hBombieri.index_eq_pairCount
+
+/-- Negative pair-coordinate type for a packet of q simple disjoint quartets. -/
+abbrev SimpleQuartetPacketNegative (q : ℕ) :=
+  Fin q × SimpleQuartetNegative
+
+/--
+A packet of q simple quartets contains 2q distinct negative pair coordinates,
+using WD-T21's two-coordinate count for each quartet.
+-/
+theorem wd_t22_simple_quartet_packet_pair_count (q : ℕ) :
+    Fintype.card (SimpleQuartetPacketNegative q) = 2 * q := by
+  simp [SimpleQuartetPacketNegative, SimpleQuartetNegative, Nat.mul_comm]
+
+/--
+WD-T22 specialization: once Bombieri's finite-inertia theorem is supplied,
+a packet of q simple disjoint quartets has negative spectral index 2q.
+-/
+theorem wd_t22_simple_quartet_packet_inertia
+    (q negativeIndex : ℕ)
+    (hBombieri :
+      BombieriFiniteInertiaData
+        negativeIndex
+        (SimpleQuartetPacketNegative q)) :
+    negativeIndex = 2 * q := by
+  calc
+    negativeIndex =
+        Fintype.card (SimpleQuartetPacketNegative q) :=
+      wd_t22_finite_weil_inertia_saturation negativeIndex hBombieri
+    _ = 2 * q := wd_t22_simple_quartet_packet_pair_count q
+
+/--
+The audited two-simple-quartet specialization has finite Weil negative index 4.
+-/
+theorem wd_t22_two_simple_quartet_negative_index
+    (negativeIndex : ℕ)
+    (hBombieri :
+      BombieriFiniteInertiaData
+        negativeIndex
+        (SimpleQuartetPacketNegative 2)) :
+    negativeIndex = 4 := by
+  simpa using
+    wd_t22_simple_quartet_packet_inertia 2 negativeIndex hBombieri
+
+
 /-- Raw residues contributed by finitely many negative pair coefficients. -/
 def rawResiduesOfNegativePairs (xs : List ℂ) : List ℂ :=
   xs.flatMap fun α => [α, -α]
