@@ -7,7 +7,7 @@ No theorem below uses zeta-specific arithmetic.
 
 ---
 
-### 0. Coefficient-space filtration
+## 0. Coefficient-space filtration
 
 Let
 
@@ -79,7 +79,7 @@ is called a **new right-persistent coefficient vector** at the endpoint.
 
 ---
 
-### WD-C1 — Monotone projection limit
+## WD-C1 — Monotone projection limit
 
 Let $P_t$ be the orthogonal projection onto $\mathcal A_t$.
 
@@ -149,7 +149,7 @@ The limit is independent of the chosen sequence.
 
 ---
 
-### WD-C2 — Right-limit gap duality
+## WD-C2 — Right-limit gap duality
 
 Define the gap spaces
 
@@ -219,7 +219,7 @@ This is the abstract source of relations of the form
 
 ---
 
-### WD-C3 — Fixed finite negative-sector compactness
+## WD-C3 — Fixed finite negative-sector compactness
 
 Assume now
 
@@ -366,7 +366,7 @@ q_*.
 
 ---
 
-### WD-C4 — Critical-sequence dichotomy
+## WD-C4 — Critical-sequence dichotomy
 
 Under the hypotheses of WD-C3, suppose
 
@@ -450,7 +450,7 @@ There is no third possibility in which all coefficient mass disappears.
 
 ---
 
-### WD-C5 — Uniform negative margins produce persistent negative rays
+## WD-C5 — Uniform negative margins produce persistent negative rays
 
 Under the hypotheses of WD-C3, suppose there is
 
@@ -494,7 +494,7 @@ Thus a uniformly negative right-approaching sequence in a fixed finite negative 
 
 ---
 
-### WD-C6 — Endpoint jump controls new negative index
+## WD-C6 — Endpoint jump controls new negative index
 
 Assume
 
@@ -597,7 +597,7 @@ be bounded, and define
 
 ---
 
-### WD-C7 — Endpoint representative blow-up principle
+## WD-C7 — Endpoint representative blow-up principle
 
 Let
 
@@ -707,7 +707,7 @@ A genuinely new endpoint coefficient vector can persist arbitrarily close to the
 
 ---
 
-### WD-C8 — Boundary amplification functional
+## WD-C8 — Boundary amplification functional
 
 For
 
@@ -801,7 +801,7 @@ Blow-up is necessary for a new endpoint vector, but it is not sufficient to prov
 
 ---
 
-### WD-C9 — Vanishing coefficient amplitude and normalized blow-up
+## WD-C9 — Vanishing coefficient amplitude and normalized blow-up
 
 Suppose
 
@@ -858,7 +858,7 @@ It fails if the selected negative coordinate itself moves through an infinite co
 
 ---
 
-### WD-E5 — Moving finite sectors can lose every persistent ray
+## WD-E5 — Moving finite sectors can lose every persistent ray
 
 Let
 
@@ -942,7 +942,7 @@ This is the principal abstract mechanism excluded by WD-C3 for a fixed finite ne
 
 ---
 
-### WD-E6 — Positive-mass escape strengthens a fixed-sector limit
+## WD-E6 — Positive-mass escape strengthens a fixed-sector limit
 
 Let
 
