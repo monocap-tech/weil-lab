@@ -82,7 +82,7 @@ noncomputable def compactPrimeTranslationSum
     (weight : ℕ → E)
     (f : ℝ → E)
     (x : ℝ) : E :=
-  ∑ n in activePrimePowerFinset c,
+  ∑ n ∈ activePrimePowerFinset c,
     weight n + symmetricPrimeTranslation n f x
 
 /--
