@@ -35,3 +35,5 @@ import WeilDefect.Morphology.Noncompact
 import WeilDefect.Examples.CriticalNonattainment
 
 import WeilDefect.Examples.MovingSectors
+
+import WeilDefect.Examples.WeakCriticalFallthrough
