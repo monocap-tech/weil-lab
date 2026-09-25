@@ -43,7 +43,7 @@ An **interface** is a theorem-shaped boundary between one completed research pac
 
 An open interface is not automatically an incomplete proof inside the current horizon.
 
-For Horizon 1, the principal RH-facing interfaces are:
+For Horizon 1, the two primary RH-facing stop-line interfaces are `AZ-NEXTJET-LOC` and `AZ-FIN-WEIL-NULL-EXTENSION`. The registry also tracks the stronger special-packet refinement `C-ACTUAL-KPH-FLOOR`:
 
 ```math
 \texttt{AZ-NEXTJET-LOC},
