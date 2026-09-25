@@ -94,7 +94,8 @@ theorem norm_dirichletRightBasis_le_one
       Real.sinh ((t + x) / 2) / Real.sinh t ≤ 1 := by
     rw [div_le_one hspos]
     exact hsle
-  simp only [dirichletRightBasis, Complex.norm_real, Real.norm_eq_abs]
+  simp only [dirichletRightBasis, Complex.ofRealCLM_apply,
+    Complex.norm_real, Real.norm_eq_abs]
   rw [dirichletRightReal, abs_of_nonneg (div_nonneg hs0 hspos.le)]
   exact hdiv
 
@@ -115,7 +116,8 @@ theorem norm_dirichletLeftBasis_le_one
       Real.sinh ((t - x) / 2) / Real.sinh t ≤ 1 := by
     rw [div_le_one hspos]
     exact hsle
-  simp only [dirichletLeftBasis, Complex.norm_real, Real.norm_eq_abs]
+  simp only [dirichletLeftBasis, Complex.ofRealCLM_apply,
+    Complex.norm_real, Real.norm_eq_abs]
   rw [dirichletLeftReal, abs_of_nonneg (div_nonneg hs0 hspos.le)]
   exact hdiv
 
@@ -136,7 +138,6 @@ theorem hasDerivAt_dirichletRightReal
     convert h using 1
     · funext y
       simp only [Pi.add_apply, Pi.sub_apply, id_eq]
-      ring
     · ring
   have hs := hinner.sinh
   convert hs.div_const (Real.sinh t) using 1
@@ -157,14 +158,15 @@ theorem hasDerivAt_dirichletRightReal_deriv
     convert h using 1
     · funext y
       simp only [Pi.add_apply, Pi.sub_apply, id_eq]
-      ring
     · ring
   have hc := hinner.cosh
   have h := hc.div_const (2 * Real.sinh t)
   convert h using 1
-  · ring
+  · unfold dirichletRightReal
+    rw [show (t + x) / 2 =
+      t * (1 / 2 : ℝ) + x * (1 / 2 : ℝ) by ring]
+    ring
   · simp [dirichletRightReal, div_eq_mul_inv]
-    ring_nf
 
 /-- First derivative of the left real Dirichlet basis. -/
 theorem hasDerivAt_dirichletLeftReal
@@ -183,7 +185,6 @@ theorem hasDerivAt_dirichletLeftReal
     convert h using 1
     · funext y
       simp only [Pi.add_apply, Pi.sub_apply, id_eq]
-      ring
     · ring
   have hs := hinner.sinh
   convert hs.div_const (Real.sinh t) using 1
@@ -204,15 +205,16 @@ theorem hasDerivAt_dirichletLeftReal_deriv
     convert h using 1
     · funext y
       simp only [Pi.add_apply, Pi.sub_apply, id_eq]
-      ring
     · ring
   have hc := hinner.cosh
   have hneg := hc.neg
   have h := hneg.div_const (2 * Real.sinh t)
   convert h using 1
-  · ring
+  · unfold dirichletLeftReal
+    rw [show (t - x) / 2 =
+      t * (1 / 2 : ℝ) + x * (-1 / 2 : ℝ) by ring]
+    ring
   · simp [dirichletLeftReal, div_eq_mul_inv]
-    ring_nf
 
 theorem hasDerivAt_dirichletRightBasis
     (t x : ℝ) :
