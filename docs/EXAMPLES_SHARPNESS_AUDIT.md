@@ -672,7 +672,9 @@ Therefore
 
 No open RH-facing interface has changed standing.
 
-### Next cursor
+### Historical handoff from H1-P4.4
+
+This handoff is historical provenance, not the live project cursor. See [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md) for current control state.
 
 ```math
 \boxed{
