@@ -7,7 +7,7 @@ import WeilDefect.Arithmetic.Coadaptation
 
 namespace WeilDefect
 
-open Filter Asymptotics
+open Filter Asymptotics Bornology
 open scoped Topology BigOperators
 
 /--
@@ -112,9 +112,9 @@ theorem wd_t37_p3_n2_normalized_representative_blowup
 /-- Normalized full selected-plus-background signature used in P3-N3. -/
 def normalizedFullSignature
     {Kpos M B : Type*}
-    [NormedAddCommGroup Kpos] [Norm Kpos]
-    [NormedAddCommGroup M] [Norm M]
-    [NormedAddCommGroup B] [Norm B]
+    [NormedAddCommGroup Kpos]
+    [NormedAddCommGroup M]
+    [NormedAddCommGroup B]
     (a : ℕ → Kpos) (u : ℕ → M) (b : ℕ → B)
     (n : ℕ) : ℝ :=
   WeilDefect.WDT16.jValue (a n) (u n) - ‖b n‖ ^ 2
