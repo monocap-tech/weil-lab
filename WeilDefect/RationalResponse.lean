@@ -262,12 +262,13 @@ theorem rationalResponse_zero_moment_isBigO
       ‖rationalResponse rho v z‖
         ≤
       ‖rationalResponse rho v z - lead‖ + ‖lead‖ := by
-    have hadd :
-        rationalResponse rho v z =
-          (rationalResponse rho v z - lead) + lead := by ring
-    rw [hadd]
-    exact norm_add_le
-      (rationalResponse rho v z - lead) lead
+    calc
+      ‖rationalResponse rho v z‖ =
+          ‖(rationalResponse rho v z - lead) + lead‖ := by
+            congr 1
+            ring
+      _ ≤ ‖rationalResponse rho v z - lead‖ + ‖lead‖ :=
+        norm_add_le _ _
   have hcubic :
       2 * residueSecondMomentNorm rho v / ‖z‖ ^ 3
         ≤
