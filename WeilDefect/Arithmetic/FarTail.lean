@@ -24,9 +24,9 @@ private theorem hasDerivAt_logarithmicTailKernel
     by_cases hy : y = 0
     · simp [hy]
     · simp only [Pi.div_apply, Pi.pow_apply, id_eq]
-      field_simp [hy]
   · simp only [Pi.pow_apply, id_eq, Nat.cast_ofNat, Nat.reduceSub, pow_one, mul_one]
     field_simp [hx]
+    ring
 
 /-- The logarithmic tail kernel is nonnegative on [1,∞). -/
 theorem logarithmicTailKernel_nonneg
