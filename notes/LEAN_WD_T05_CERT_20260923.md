@@ -4,11 +4,11 @@ Stable ID: **WD-T05 / WD-A5**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}
 }
-\]
+```
 
 ## Formal target
 
@@ -28,15 +28,15 @@ Certified source blob:
 
 Lean verifies the native rank-one covariance identity
 
-\[
+```math
 (\alpha\mapsto\alpha g)(\alpha\mapsto\alpha g)^*=g\otimes g,
-\]
+```
 
 and hence
 
-\[
+```math
 D=S_+S_+^*-g\otimes g.
-\]
+```
 
 It also formalizes the one-dimensional factor/vector identification:
 
@@ -80,8 +80,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{WD-T06 / WD-A6 — MONOTONE POSITIVE SCREENING}
 }
-\]
+```
