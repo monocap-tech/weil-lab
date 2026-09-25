@@ -4,11 +4,11 @@ Stable ID: **WD-T14 / WD-B8**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Formal target
 
@@ -29,26 +29,26 @@ Certified source blob:
 For a positive coefficient (a) and negative coefficient (u), define the
 algebraic negative margin
 
-\[
+```math
 \kappa(a,u)=\|u\|^2-\|a\|^2.
-\]
+```
 
 For every closed positive subspace (U), Lean uses the actual orthogonal
 projection `U.starProjection` and mathlib's contraction theorem
 
-\[
+```math
 \|P_Ua\|\le \|a\|.
-\]
+```
 
 It then proves
 
-\[
+```math
 \boxed{
 \|u\|^2-\|P_Ua\|^2
 \ge
 \|u\|^2-\|a\|^2.
 }
-\]
+```
 
 Consequently, if the original margin equals some (kappa>0), every positive
 shadow retains margin at least (kappa) and remains algebraically negative.
@@ -57,19 +57,19 @@ shadow retains margin at least (kappa) and remains algebraically negative.
 
 For a graph vector
 
-\[
+```math
 u=-X^*a,
-\]
+```
 
 Lean proves the exact preservation criterion
 
-\[
+```math
 \boxed{
 u=-X^*P_Ua
 \iff
 X^*(a-P_Ua)=0.
 }
-\]
+```
 
 Thus graph admissibility is not a consequence of the signature estimate: it
 requires the discarded positive component to lie in the kernel of (X^*).
@@ -78,21 +78,21 @@ The certificate also contains an explicit negative-margin counterexample on
 (mathbb C): take (X=2I), (a=1), (u=-2), and project the positive
 coordinate to the zero subspace. Then
 
-\[
+```math
 u=-X^*a,
 \qquad
 \|u\|^2-\|a\|^2=3>0,
-\]
+```
 
 while the projected pair does not satisfy the graph relation.
 
 This formalizes the audited distinction
 
-\[
+```math
 \text{signature shadow}
 \neq
 \text{admissible analysis vector}.
-\]
+```
 
 ## Formal declarations
 
@@ -114,11 +114,11 @@ ordinary pinned mathlib results checked by the Lean kernel.
 
 Therefore the correct status is native:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Repair-pass result
 
@@ -155,8 +155,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{WD-T15 / WD-C1+WD-C2 — RIGHT-LIMIT PROJECTION CONVERGENCE AND GAP-SPACE DUALITY}
 }
-\]
+```
