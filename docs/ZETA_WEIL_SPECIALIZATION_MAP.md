@@ -883,7 +883,7 @@ The finite prime translations and logarithmic archimedean order are arithmetic/e
 | persistent negative ray | WD-C5 | selected packet identity |
 | representative blow-up | WD-C7/C9 | no |
 | approximate-neutral fixed-packet closure | WD-C3/C4 | no; derived specialization |
-| background escape | moving/infinite-sector noncompactness | actual unselected divisor |
+| background escape | infinite-background noncompactness after selected anchoring | actual unselected divisor |
 | zero-moment law | none | **YES** |
 | $O(z^{-2})$ selected response | none beyond algebraic consequence of zero moment | **YES** |
 | off-axis helper Hilbert-Schmidt decay | none | **YES** |
