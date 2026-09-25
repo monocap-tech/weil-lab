@@ -1,5 +1,5 @@
 # Quartet Channel and Residue Structure
-## H1-P2.1 — Canonical pair geometry, finite inertia, residue moments, and compact synthesis
+**H1-P2.1 — Canonical pair geometry, finite inertia, residue moments, and compact synthesis**
 
 This pass extracts the first genuinely Weil/zeta-specific theorem package after the abstract H1-P1 calculus.
 
@@ -17,7 +17,7 @@ Prime/pole/archimedean explicit-formula arithmetic is deferred to H1-P2.2.
 
 ---
 
-# 1. Canonical pair coordinates
+## 1. Canonical pair coordinates
 
 Let
 
@@ -79,7 +79,7 @@ and contributes only a positive coordinate.
 
 ---
 
-## ZW1-T1 — Pair-diagonalization theorem
+### ZW1-T1 — Pair-diagonalization theorem
 
 After quotienting same-frequency multiplicity-null directions, the zero-side coefficient space decomposes canonically as
 
@@ -141,7 +141,7 @@ is the antisymmetric negative pair direction.
 
 ---
 
-# 2. Functional-equation quartets
+## 2. Functional-equation quartets
 
 An off-critical zeta quartet has the form
 
@@ -179,7 +179,7 @@ Therefore one simple quartet contributes two canonical negative pair directions 
 
 ---
 
-## ZW1-T2 — Quartet negative-coordinate count
+### ZW1-T2 — Quartet negative-coordinate count
 
 A selected packet containing $q$ simple disjoint off-critical zeta quartets has
 
@@ -205,7 +205,7 @@ This is a coefficient-space count. The equality with the finite Weil matrix's ne
 
 ---
 
-# 3. Bombieri finite inertia
+## 3. Bombieri finite inertia
 
 Bombieri proves for his finite Weil matrices that, after multiplicity-null directions are separated, the number of negative eigenvalues equals the number of distinct nonreal conjugate pairs in the finite symmetric zero set.
 
@@ -213,7 +213,7 @@ Equivalently, the finite Weil matrix realizes the full available negative coeffi
 
 ---
 
-## ZW1-T3 — Finite Weil inertia saturation
+### ZW1-T3 — Finite Weil inertia saturation
 
 For a finite symmetric zero set $\Gamma$,
 
@@ -263,7 +263,7 @@ That saturation is genuinely Weil-specific.
 
 ---
 
-# 4. Multiplicity-null directions
+## 4. Multiplicity-null directions
 
 Suppose a raw ordinate $\gamma$ occurs with multiplicity
 
@@ -277,7 +277,7 @@ These directions are algebraic multiplicity kernels rather than independent defe
 
 ---
 
-## ZW1-T4 — Distinct-frequency reduction
+### ZW1-T4 — Distinct-frequency reduction
 
 For each repeated ordinate of multiplicity $m$,
 
@@ -311,13 +311,13 @@ Multiplicity must be quotiented before negative-channel dimension is interpreted
 
 ---
 
-# 5. Finite exponential independence
+## 5. Finite exponential independence
 
 The next statement is elementary but load-bearing.
 
 ---
 
-## ZW1-T5 — Finite distinct-frequency independence
+### ZW1-T5 — Finite distinct-frequency independence
 
 Let
 
@@ -363,7 +363,7 @@ The Vandermonde determinant is nonzero because the $\lambda_j$ are distinct.
 
 ---
 
-# 6. Bombieri Problem-1 independence after Green preconditioning
+## 6. Bombieri Problem-1 independence after Green preconditioning
 
 Bombieri's Problem-1 physical representative includes the Dirichlet Green preconditioning
 
@@ -404,7 +404,7 @@ Therefore every finite Problem-1 relation reduces, after applying $L$, to a fini
 
 ---
 
-## ZW1-T6 — No finite positive compensation for an anchored negative cell
+### ZW1-T6 — No finite positive compensation for an anchored negative cell
 
 Fix a selected negative pair direction $n_C$.
 
@@ -441,7 +441,7 @@ It does not exclude:
 
 ---
 
-# 7. Raw residue map for negative pair coordinates
+## 7. Raw residue map for negative pair coordinates
 
 Let $u\in M_\Pi$ be a selected negative coefficient vector.
 
@@ -472,7 +472,7 @@ Thus each negative pair contributes zero total raw residue.
 
 ---
 
-## ZW1-T7 — Selected zero-moment theorem
+### ZW1-T7 — Selected zero-moment theorem
 
 For every selected negative coefficient vector
 
@@ -516,7 +516,7 @@ No prime/pole/archimedean input is used.
 
 ---
 
-# 8. Rational response and optimal far order
+## 8. Rational response and optimal far order
 
 Define
 
@@ -557,7 +557,7 @@ ZW1-T7 cancels the first term.
 
 ---
 
-## ZW1-T8 — Universal inverse-square far decay
+### ZW1-T8 — Universal inverse-square far decay
 
 Every selected negative residue vector satisfies
 
@@ -589,7 +589,7 @@ M_1(v)
 
 ---
 
-## ZW1-E1 — The inverse-square order is sharp
+### ZW1-E1 — The inverse-square order is sharp
 
 For one distinct pair
 
@@ -648,7 +648,7 @@ must come from additional structure beyond canonical pair antisymmetry.
 
 ---
 
-# 9. Native Problem-1 synthesis is compact
+## 9. Native Problem-1 synthesis is compact
 
 The physically correct Problem-1 carrier is not the unweighted $L^2$ exponential model.
 
@@ -750,7 +750,7 @@ with multiplicity. Therefore
 
 ---
 
-## ZW1-T9 — Hilbert-Schmidt synthesis theorem
+### ZW1-T9 — Hilbert-Schmidt synthesis theorem
 
 For every fixed compact support window,
 
@@ -823,7 +823,7 @@ Thus arbitrarily high helper cells have vanishing operator-norm tail.
 
 ---
 
-# 10. Compact assistance does not imply finite assistance
+## 10. Compact assistance does not imply finite assistance
 
 ZW1-T6 says no finite positive-frequency set can close the selected negative relation exactly.
 
@@ -837,7 +837,7 @@ Thus an exact infinite compensator may require an infinite tail whose image norm
 
 ---
 
-## ZW1-T10 — Finite-head approximation necessity
+### ZW1-T10 — Finite-head approximation necessity
 
 Suppose
 
@@ -891,7 +891,7 @@ It does not prove exact finite-head membership.
 
 ---
 
-# 11. Metric separation: unweighted mirror frames versus native Problem-1 synthesis
+## 11. Metric separation: unweighted mirror frames versus native Problem-1 synthesis
 
 The prior traversal also developed unweighted $L^2(-t,t)$ sampling/frame statements for extracted real-ordinate or positive-mirror exponential families.
 
@@ -916,7 +916,7 @@ for the native Problem-1 operator on an infinite-dimensional carrier.
 
 ---
 
-## ZW1-S1 — Positive-channel completeness input is metric-typed
+### ZW1-S1 — Positive-channel completeness input is metric-typed
 
 The project retains harmonic-analytic sampling/completeness information for suitable unweighted zeta-ordinate/mirror families.
 
@@ -948,7 +948,7 @@ This removes the metric mismatch from the canonical theorem spine.
 
 ---
 
-# 12. What is now genuinely ZW-1?
+## 12. What is now genuinely ZW-1?
 
 After H1-P2.1, the following statements are certified as stronger than generic H1-P1 theory:
 
@@ -973,7 +973,7 @@ No prime-side explicit formula has been used to obtain this package.
 
 ---
 
-# H1-P2.1 determination
+## H1-P2.1 determination
 
 H1-P2.1 closes.
 
@@ -1017,7 +1017,7 @@ This combination precisely identifies the zero-side screening problem before ari
 
 ---
 
-# Next cursor
+## Next cursor
 
 ```math
 \boxed{
