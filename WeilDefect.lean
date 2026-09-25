@@ -6,6 +6,7 @@ import WeilDefect.Examples.SpectralScreening
 import WeilDefect.Screening.Quadratic
 import WeilDefect.PairGeometry
 import WeilDefect.FiniteExponentialIndependence
+import WeilDefect.ProblemOneIndependence
 import WeilDefect.Residues
 import WeilDefect.Examples.Algebraic
 import WeilDefect.Screening.SequentialElimination
