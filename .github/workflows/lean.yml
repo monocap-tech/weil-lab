@@ -45,7 +45,7 @@ jobs:
 
       - name: Check current theorem target
         shell: bash
-        run: lake build WeilDefect.Morphology.Negative
+        run: lake build WeilDefect.Morphology.NegativeDefect
 
       - name: Reject unfinished trusted declarations
         shell: bash
