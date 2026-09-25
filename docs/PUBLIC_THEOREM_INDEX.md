@@ -65,9 +65,8 @@ the verification matrix.
 
 | Theorem | Boundary output |
 | --- | --- |
-| WD-T37 | AZ-NEXTJET-LOC; C-ACTUAL-KPH-FLOOR is stronger refinement |
-| WD-T38 | AZ-FIN-WEIL-NULL-EXTENSION |
-| WD-T39 | No new interface; inherits fixed-branch stops where applicable |
+| Negative morphology (WD-T37) | AZ-NEXTJET-LOC; C-ACTUAL-KPH-FLOOR is stronger refinement |
+| Neutral morphology (WD-T38) | AZ-FIN-WEIL-NULL-EXTENSION |
+| Noncompact morphology (WD-T39) | No new interface; inherits fixed-branch stops where applicable |
 
-See [RH Interface Appendix](RH_INTERFACE_APPENDIX.md) when assembled for the
-full boundary specification.
+See [RH Interface Appendix](RH_INTERFACE_APPENDIX.md) for the full boundary specification.
