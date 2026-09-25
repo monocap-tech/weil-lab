@@ -309,7 +309,7 @@ It must not be restated as an RH proof.
 
 ---
 
-## 11. Package cursor
+## 11. Package determination
 
 Completed:
 
@@ -319,10 +319,15 @@ H1-P5.1 / TECHNICAL MANUSCRIPT ASSEMBLY
 H1-P5.2 / PUBLIC THEOREM INDEX AND VERIFICATION MATRIX
 H1-P5.3 / PUBLIC DEPENDENCY MAP AND EXAMPLES
 H1-P5.4 / RH-INTERFACE APPENDIX AND ENTRYPOINT ALIGNMENT
-```
-
-Active:
-
-```text
 H1-P5.5 / FINAL PACKAGE ADVERSARIAL PASS
 ```
+
+The final pass is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
+
+```math
+\boxed{
+\textbf{H1-P5 — PUBLIC MATHEMATICAL PACKAGE: COMPLETE.}
+}
+```
+
+No post-Horizon research cursor is selected here.
