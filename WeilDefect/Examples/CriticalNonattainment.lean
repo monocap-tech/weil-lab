@@ -60,4 +60,44 @@ theorem wd_x02_operator_norm_le_one :
   exact lp.norm_mapCLM_le
     2 wdX02Coord zero_le_one wd_x02_coord_norm_le_one
 
+
+theorem wd_x02_operator_apply
+    (x : WDX02Space) (n : ℕ) :
+    (wdX02Operator x) n = (wdX02Weight n : ℂ) * x n := by
+  rfl
+
+theorem wd_x02_operator_single
+    (n : ℕ) :
+    wdX02Operator (lp.single 2 n (1 : ℂ))
+      =
+    (wdX02Weight n : ℂ) • lp.single 2 n (1 : ℂ) := by
+  ext i
+  by_cases h : n = i
+  · subst i
+    simp [wd_x02_operator_apply]
+  · simp [wd_x02_operator_apply, lp.single_apply, h]
+
+theorem wd_x02_operator_single_norm
+    (n : ℕ) :
+    ‖wdX02Operator (lp.single 2 n (1 : ℂ))‖ = wdX02Weight n := by
+  rw [wd_x02_operator_single]
+  simp [wd_x02_weight_nonneg]
+
+theorem wd_x02_weight_le_operator_norm (n : ℕ) :
+    wdX02Weight n ≤ ‖wdX02Operator‖ := by
+  calc
+    wdX02Weight n
+        = ‖wdX02Operator (lp.single 2 n (1 : ℂ))‖ :=
+          (wd_x02_operator_single_norm n).symm
+    _ ≤ ‖wdX02Operator‖ * ‖lp.single 2 n (1 : ℂ)‖ :=
+      wdX02Operator.le_opNorm _
+    _ = ‖wdX02Operator‖ := by simp
+
+theorem wd_x02_operator_norm_eq_one :
+    ‖wdX02Operator‖ = 1 := by
+  apply le_antisymm wd_x02_operator_norm_le_one
+  exact le_of_tendsto wd_x02_weight_tendsto_one
+    (Eventually.of_forall wd_x02_weight_le_operator_norm)
+
+
 end WeilDefect
