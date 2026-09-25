@@ -570,7 +570,9 @@ The theorem inventory now has:
 
 No mathematical theorem has been added in this pass.
 
-### Next cursor
+### Historical handoff from H1-P4.0
+
+This handoff is historical provenance, not the live project cursor. See [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md) for current control state.
 
 ```math
 \boxed{
