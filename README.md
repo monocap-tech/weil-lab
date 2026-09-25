@@ -4,9 +4,10 @@ A public research repository for a defect-theoretic analysis of **Weil's quadrat
 form**, its finite negative-index structure, spectral screening, persistent
 negative directions, and compact-window neutral modes.
 
-> **Status:** Research program / theorem consolidation.
+> **Status:** Horizon 1 complete; downstream actual-zeta interfaces remain open.
 >
-> **Scope:** This repository does not claim a proof of the Riemann Hypothesis.
+> **Scope:** This repository packages an independent Weil-defect theory to its
+> stated stop boundary. It does not claim a proof of the Riemann Hypothesis.
 
 ## Scope and separation
 
@@ -54,13 +55,14 @@ boundary is deliberately before RH closure.
 | H1-P5 | Public mathematical package | **Complete** |
 | Horizon 1 | Independent Weil-defect theory | **Complete** |
 
-Within H1-P4, source pinning, the internal proof audit, the composite
-morphology audit, and the examples/sharpness audit are complete. The Lean certification track is exhausted, **H1-P5.0–H1-P5.5 are complete**, and **Horizon 1 is complete**. No post-Horizon research cursor is currently selected. Stable public theorem IDs and the
-audit surfaces are canonical in the
+Source pinning, internal proof audit, composite morphology audit, examples
+sharpness audit, Lean certification, and public packaging are complete for the
+Horizon-1 inventory. No post-Horizon research cursor is currently selected.
+Stable theorem IDs and the canonical audit surfaces are recorded in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
 [Dependency Audit](docs/DEPENDENCY_AUDIT.md),
 [Imported Source Pins](docs/IMPORTED_SOURCE_PINS.md),
-[Internal Proof Audit](docs/INTERNAL_PROOF_AUDIT.md), and
+[Internal Proof Audit](docs/INTERNAL_PROOF_AUDIT.md),
 [Composite Morphology Audit](docs/COMPOSITE_MORPHOLOGY_AUDIT.md), and
 [Examples and Sharpness Audit](docs/EXAMPLES_SHARPNESS_AUDIT.md).
 
@@ -80,17 +82,24 @@ The abstract defect calculus is organized around
 D=S_{+}S_{+}^{*}-S_{-}S_{-}^{*},
 ```
 
-with the sign problem reduced to contractive Douglas screening. For a fixed
-finite selected negative sector, critical or negative right-approach forces a
-nonzero nonpositive right-limit ray. Within that fixed-finite-sector right-limit setting, a genuinely nonpersistent **selected** approximate-neutral branch is excluded; selected-ray nonpersistence requires a moving/infinite selected sector. Unselected-background noncompactness is a separate later phenomenon: it can obstruct strong full-coefficient compactness after the selected ray is already anchored, but it does not erase that ray.
+with the sign problem reduced to contractive Douglas screening. In the
+monotone support-filtration setting of WD-T16/WD-T17, a normalized critical or
+negative right-approaching sequence whose negative coordinate remains in one
+fixed finite selected sector has a nonzero nonpositive right-limit subsequence.
+Accordingly, loss of a persistent selected ray while selected negative mass
+remains anchored requires leaving the fixed finite-sector regime. Unselected-
+background noncompactness is a separate mechanism: after a selected ray is
+anchored it may obstruct strong full-coefficient compactness, but it does not
+erase that selected ray.
 
-Under the zeta-Weil specialization, a selected residue vector satisfies
+Under the zeta-Weil specialization, the selected raw residue vector satisfies
 
 ```math
-\mathbf{1}^{T}v=0,
+\mathbf{1}^{T}v=0.
 ```
 
-which forces
+For the associated rational response, that zero-moment identity removes the
+first Laurent term and yields
 
 ```math
 R_{v}(z)=O(|z|^{-2}).
@@ -123,12 +132,12 @@ morphology documents linked below.
 | --- | --- |
 | Finite Weil negative index | Imported theorem + exact specialization |
 | Rank-one defect formulation | Derived |
-| Critical-line tail monotonicity | Internal proof with stated inputs |
-| Spectral screening distinction | Structural |
+| Support-filtration right-limit geometry | Internal proof with stated inputs |
+| Screening taxonomy and custody distinctions | Internal/structural package |
 | Persistent normalized Weil negativity | Conditional theorem |
 | Quartet zero-moment law | Internal proof in the selected quartet model |
 | $O(\lvert z\rvert^{-2})$ far-field decay | Internal proof |
-| Weighted next-jet localization | Internal reduction under stated source/multiplier hypotheses |
+| Reduction to weighted near next-jet representation | Internal deduction under stated source/multiplier hypotheses |
 | Compact-window neutral equation $W_{c}k=0$ | Conditional theorem |
 | Fixed-window log-order operator + finite prime shifts | Derived |
 | Actual-zeta next-jet exclusion | Open |
@@ -147,7 +156,8 @@ Horizon 1 deliberately stops before two primary actual-zeta interfaces, with one
 - `AZ-FIN-WEIL-NULL-EXTENSION` — exterior support/null-extension rigidity for
   an actual compact-window neutral mode.
 
-The negative morphology reaches the first interface after
+The negative morphology leaves `AZ-NEXTJET-LOC` as the next unresolved
+actual-zeta obligation after
 
 ```math
 \mathbf{1}^{T}v=0
@@ -157,23 +167,35 @@ R_{v}(z)=O(|z|^{-2})
 \mathcal{F}_{v,R}=O\!\left(\frac{\log R}{R}\right).
 ```
 
-The neutral morphology reaches the third interface from the compact-window
-equation
+The neutral morphology leaves `AZ-FIN-WEIL-NULL-EXTENSION` as its unresolved
+support/right-limit obligation after deriving the compact-window equation
 
 ```math
 W_{c}k=0.
 ```
 
-These interfaces are downstream obligations; none is imported upstream to
-prove the Horizon-1 morphology theorem that reaches it.
+These interfaces are downstream obligations; none is a premise of the
+Horizon-1 morphology theorem from which it emerges.
 
 ## Repository map
+
+
+### Public Horizon-1 package
+
+- [Public Package Architecture](docs/PUBLIC_PACKAGE_ARCHITECTURE.md) — reader-facing package structure and custody rules.
+- [Weil-Defect Manuscript](docs/WEIL_DEFECT_MANUSCRIPT.md) — assembled mathematical narrative.
+- [Public Theorem Index](docs/PUBLIC_THEOREM_INDEX.md) — stable-ID lookup with hypotheses, outputs, dependencies, standing, and Lean status.
+- [Public Verification Matrix](docs/PUBLIC_VERIFICATION_MATRIX.md) — mathematical standing, source ancestry, formal status, and certificate evidence.
+- [Public Dependency Map](docs/PUBLIC_DEPENDENCY_MAP.md) — compressed theorem/import/interface DAG.
+- [Public Examples and Sharpness](docs/PUBLIC_EXAMPLES.md) — canonical failure modes attached to theorem boundaries.
+- [RH-Facing Interface Appendix](docs/RH_INTERFACE_APPENDIX.md) — exact downstream obligations left open by Horizon 1.
+- [Public Package Audit](docs/PUBLIC_PACKAGE_AUDIT.md) — final package and reader-surface consistency checks.
 
 ### Horizon and audit control
 
 - [Horizon 1](docs/HORIZON_1.md) — phase gates and the Horizon-1 stop boundary.
-- [Theorem Ledger](docs/THEOREM_LEDGER.md) — stable theorem IDs, standing,
-  verification status, and historical aliases.
+- [Theorem Ledger](docs/THEOREM_LEDGER.md) — stable theorem IDs, mathematical
+  standing, H1-P4 audit/source status, and historical aliases.
 - [Dependency Audit](docs/DEPENDENCY_AUDIT.md) — normalized theorem DAG,
   imported-source boundaries, scope guards, and audit queue.
 - [Imported Source Pins](docs/IMPORTED_SOURCE_PINS.md) — exact load-bearing
