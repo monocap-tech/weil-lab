@@ -33,7 +33,11 @@ theorem hasDerivAt_realExpMode (freq : ℂ) (x : ℝ) :
     have h :=
       hasDerivAt_exp_smul_const' (𝕂 := ℂ) (𝔸 := ℂ) freq (x : ℂ)
     simpa [← Complex.exp_eq_exp_ℂ, smul_eq_mul] using h
-  simpa [realExpMode] using hcomplex.comp_ofReal
+  change HasDerivAt
+    (fun y : ℝ => Complex.exp ((y : ℂ) * freq))
+    (freq * Complex.exp ((x : ℂ) * freq))
+    x
+  exact hcomplex.comp_ofReal
 
 /--
 The k-th real derivative of x ↦ exp(x freq) is freq^k exp(x freq).
