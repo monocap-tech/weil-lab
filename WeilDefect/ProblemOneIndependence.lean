@@ -11,7 +11,7 @@ open scoped Topology
 The scalar symbol of the Dirichlet Green operator
 L = -d²/dx² + 1/4 on an exponential mode exp(freq x).
 -/
-def problemOneDenominator (freq : ℂ) : ℂ :=
+noncomputable def problemOneDenominator (freq : ℂ) : ℂ :=
   (1 / 4 : ℂ) - freq ^ 2
 
 /--
@@ -74,7 +74,16 @@ theorem contDiffAt_problemOneMode
     contDiffAt_const_mul_realExpMode k A (1 / 2 : ℂ) x
   have hminus :=
     contDiffAt_const_mul_realExpMode k B (-1 / 2 : ℂ) x
-  simpa [problemOneMode, Pi.add_apply] using (hmain.add hplus).add hminus
+  have hfun :
+      problemOneMode freq q A B =
+        (fun y : ℝ =>
+          q * realExpMode freq y
+            + A * realExpMode (1 / 2 : ℂ) y
+            + B * realExpMode (-1 / 2 : ℂ) y) := by
+    funext y
+    rfl
+  rw [hfun]
+  exact (hmain.add hplus).add hminus
 
 /--
 The two boundary-homogeneous frequencies are exactly in the kernel of L.
