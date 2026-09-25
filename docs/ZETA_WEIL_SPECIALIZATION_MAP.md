@@ -954,7 +954,9 @@ The weighted next jet, finite prime translations, and logarithmic archimedean op
 
 ---
 
-## Next cursor
+## Historical handoff from H1-P2.0
+
+This handoff is historical provenance, not the live project cursor. See [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md) for current control state.
 
 ```math
 \boxed{
@@ -962,7 +964,7 @@ The weighted next jet, finite prime translations, and logarithmic archimedean op
 }
 ```
 
-The next pass should normalize and prove the ZW-0/ZW-1 statements that are genuinely stronger than H1-P1:
+At the close of H1-P2.0, the next pass was assigned to normalize and prove the ZW-0/ZW-1 statements genuinely stronger than H1-P1:
 
 1. canonical pair diagonalization and quartet multiplicities;
 2. exact finite negative-index specialization;
