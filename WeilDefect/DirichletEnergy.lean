@@ -164,7 +164,8 @@ theorem problemOneDirichletEnergyComplex_eq_ofReal
   have hstar (z : ℂ) :
       star z * z = ((‖z‖ ^ 2 : ℝ) : ℂ) := by
     simpa [RCLike.star_def] using Complex.conj_mul' z
-  rw [hstar, hstar]
+  rw [hstar (iteratedDeriv 1 (dirichletProblemOneColumn t gamma) x)]
+  rw [mul_assoc, hstar (dirichletProblemOneColumn t gamma x)]
   norm_cast
   ring
 
@@ -254,9 +255,15 @@ theorem problemOneGreenPairing_eq_dirichletEnergyComplex
         +
       ∫ x in -t..t,
         (1 / 4 : ℂ) * star (F x) * F x := by
-          have hnegInt :=
+          have hnegInt :
+              IntervalIntegrable
+                (fun x => -(star (ddF x) * F x))
+                MeasureSpace.volume (-t) t :=
             hddprod.neg.intervalIntegrable (-t) t
-          have hmassInt :=
+          have hmassInt :
+              IntervalIntegrable
+                (fun x => (1 / 4 : ℂ) * star (F x) * F x)
+                MeasureSpace.volume (-t) t :=
             hmassprod.intervalIntegrable (-t) t
           rw [intervalIntegral.integral_add hnegInt hmassInt]
           rw [intervalIntegral.integral_neg]
@@ -275,9 +282,15 @@ theorem problemOneGreenPairing_eq_dirichletEnergyComplex
       ∫ x in -t..t,
         (star (dF x) * dF x
           + (1 / 4 : ℂ) * star (F x) * F x) := by
-          have hgradInt :=
+          have hgradInt :
+              IntervalIntegrable
+                (fun x => star (dF x) * dF x)
+                MeasureSpace.volume (-t) t :=
             hgradprod.intervalIntegrable (-t) t
-          have hmassInt :=
+          have hmassInt :
+              IntervalIntegrable
+                (fun x => (1 / 4 : ℂ) * star (F x) * F x)
+                MeasureSpace.volume (-t) t :=
             hmassprod.intervalIntegrable (-t) t
           rw [intervalIntegral.integral_add hgradInt hmassInt]
 
