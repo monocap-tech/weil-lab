@@ -349,4 +349,246 @@ theorem wd_t38_p3_u2_physical_neutral_null_mode
     rw [hneg]
     simp [neutralNegativeSynthesis, ← hreal]
 
+/--
+Arithmetic/operator-order package for the retained neutral branch.
+All fields are proof data: the right-limit arithmetic support is finite,
+the compact-window form has logarithmic order, finite prime translations do
+not supply positive-Sobolev coercivity, and global cancellation does not
+logically split termwise.
+-/
+structure NeutralArithmeticMorphology
+    (c Q shift lowerC upperC poleC : ℝ)
+    (density : ℝ → ℝ)
+    (primeCoeff : ℕ → ℝ) : Prop where
+  rightPrimeSupportFinite :
+    (rightLimitPrimePowers c).Finite
+  thresholdSubsingleton :
+    (primePowerThreshold c).Subsingleton
+  logarithmicOrder :
+    lowerC * logarithmicFourierEnergy density
+      ≤ Q + shift * spectralMass density
+      ∧
+    Q + shift * spectralMass density
+      ≤ (upperC + poleC) * logarithmicFourierEnergy density
+  noPositiveSobolevCoercivity :
+    ∀ eps : ℝ, 0 < eps →
+      ¬ (fun x : ℝ => positiveSobolevFrequencyWeight eps x)
+          =O[atTop]
+        (fun t : ℝ =>
+          logarithmicFourierWeight t
+            + finitePrimeTrigCorrection c primeCoeff t)
+  globalCancellationScope :
+    ¬ (∀ x y : ℝ, x + y = 0 → x = 0 ∧ y = 0)
+
+/--
+P3-U3--U6 assembled arithmetic continuation for one carrier-identified
+compact-window neutral branch.
+-/
+theorem wd_t38_neutral_arithmetic_morphology
+    (c Q : ℝ)
+    (symbol density : ℝ → ℝ)
+    (shift pole lowerC upperC poleC : ℝ)
+    (primeCoeff : ℕ → ℝ)
+    (hdensity : ∀ t, 0 ≤ density t)
+    (hlowerC : 0 ≤ lowerC)
+    (hpoleC : 0 ≤ poleC)
+    (hlower :
+      ∀ t,
+        lowerC * logarithmicFourierWeight t
+          ≤ symbol t + shift)
+    (hupper :
+      ∀ t,
+        symbol t + shift
+          ≤ upperC * logarithmicFourierWeight t)
+    (hpole0 : 0 ≤ pole)
+    (hpole :
+      pole ≤ poleC * spectralMass density)
+    (hdensity_int : Integrable density volume)
+    (hlog_int :
+      Integrable
+        (fun t : ℝ =>
+          logarithmicFourierWeight t * density t) volume)
+    (hsymbol_int :
+      Integrable
+        (fun t : ℝ =>
+          (symbol t + shift) * density t) volume)
+    (hQ :
+      Q + shift * spectralMass density
+        =
+      shiftedCompactWeilForm symbol density shift pole) :
+    NeutralArithmeticMorphology
+      c Q shift lowerC upperC poleC density primeCoeff := by
+  have hprime :=
+    wd_t38_p3_u3_right_limit_prime_support_finite c
+  have hlog :=
+    wd_t38_p3_u4_logarithmic_order_neutral_carrier
+      Q symbol density shift pole lowerC upperC poleC
+      hdensity hlowerC hpoleC hlower hupper hpole0 hpole
+      hdensity_int hlog_int hsymbol_int hQ
+  refine {
+    rightPrimeSupportFinite := hprime.1
+    thresholdSubsingleton := hprime.2
+    logarithmicOrder := hlog
+    noPositiveSobolevCoercivity := ?_
+    globalCancellationScope :=
+      wd_t38_p3_u6_global_cancellation_not_termwise
+  }
+  intro eps heps
+  exact wd_t38_p3_u5_finite_prime_translations_no_smoothing
+    heps c primeCoeff
+
+/--
+Typed output of WD-T38.
+
+The compact neutral null vector and its whole-line zero extension are linked by
+an explicit extension map.  The extended endpoint equation is an explicit
+carrier-identification input, and the returned null-extension interface
+contains the unresolved strict-right persistence goal but no proof of it.
+-/
+structure NeutralDefectMorphology
+    {Kpos M H Hext EndpointObs RightObs : Type*}
+    [NormedAddCommGroup Kpos] [InnerProductSpace ℂ Kpos] [CompleteSpace Kpos]
+    [NormedAddCommGroup M] [InnerProductSpace ℂ M] [CompleteSpace M]
+    [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+    [NormedAddCommGroup Hext] [NormedSpace ℂ Hext]
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (A : ℝ → ClosedSubmodule ℂ (WeilDefect.WDT16.CoeffSpace Kpos M))
+    (c : ℝ)
+    (aSeq : ℕ → Kpos) (uSeq : ℕ → M)
+    (phi : ℕ → ℕ) (aLim : Kpos) (uLim : M)
+    (P : Kpos →L[ℂ] H) (C : M →L[ℂ] Kpos) (k : H)
+    (Q shift lowerC upperC poleC : ℝ)
+    (density : ℝ → ℝ) (primeCoeff : ℕ → ℝ)
+    (extend : H →L[ℂ] Hext) where
+  subsequence_strictMono : StrictMono phi
+  attainedNeutral :
+    WeilDefect.WDT17.NeutralCriticalBranch
+      aSeq uSeq phi aLim uLim
+  endpointRight :
+    WeilDefect.WDT16.coeff aLim uLim ∈
+      WeilDefect.WDT15.rightLimit A c
+  endpointNonzero :
+    WeilDefect.WDT16.coeff aLim uLim ≠ 0
+  coefficientCarrier :
+    aLim = C uLim
+  physicalNull :
+    k ≠ 0 ∧ neutralWeilOperator P C k = 0
+  arithmetic :
+    NeutralArithmeticMorphology
+      c Q shift lowerC upperC poleC density primeCoeff
+  nullExtension :
+    NeutralNullExtensionInterface
+      c Hext EndpointObs RightObs
+  nullExtensionVector :
+    nullExtension.kExt = extend k
+
+/--
+WD-T38 / P3-U1...P3-U7.
+
+Conditional on selection of the attained-neutral WD-T17 branch, the explicit
+finite-exception unit-gain/physical realization, and the carrier
+identification with the compact-window explicit-formula operator, this
+constructor packages the neutral morphology through the exact Horizon-1 stop
+interface AZ-FIN-WEIL-NULL-EXTENSION.
+
+No strict-right persistence theorem is assumed or returned.
+-/
+noncomputable def wd_t38_attained_unit_gain_neutral_morphology
+    {Kpos M H Hext EndpointObs RightObs : Type*}
+    [NormedAddCommGroup Kpos] [InnerProductSpace ℂ Kpos] [CompleteSpace Kpos]
+    [NormedAddCommGroup M] [InnerProductSpace ℂ M] [CompleteSpace M]
+    [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+    [NormedAddCommGroup Hext] [NormedSpace ℂ Hext]
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (A : ℝ → ClosedSubmodule ℂ (WeilDefect.WDT16.CoeffSpace Kpos M))
+    (c : ℝ)
+    (aSeq : ℕ → Kpos) (uSeq : ℕ → M)
+    (phi : ℕ → ℕ) (aLim : Kpos) (uLim : M)
+    (hphi : StrictMono phi)
+    (hneutral :
+      WeilDefect.WDT17.NeutralCriticalBranch
+        aSeq uSeq phi aLim uLim)
+    (hright :
+      WeilDefect.WDT16.coeff aLim uLim ∈
+        WeilDefect.WDT15.rightLimit A c)
+    (hy0 :
+      WeilDefect.WDT16.coeff aLim uLim ≠ 0)
+    (P : Kpos →L[ℂ] H)
+    (C : M →L[ℂ] Kpos)
+    (k : H)
+    (haCarrier : aLim = C uLim)
+    (hunit : (C†) (C uLim) = uLim)
+    (hreal : C uLim = (P†) k)
+    (hk : k ≠ 0)
+    (Q : ℝ)
+    (symbol density : ℝ → ℝ)
+    (shift pole lowerC upperC poleC : ℝ)
+    (primeCoeff : ℕ → ℝ)
+    (hdensity : ∀ t, 0 ≤ density t)
+    (hlowerC : 0 ≤ lowerC)
+    (hpoleC : 0 ≤ poleC)
+    (hlower :
+      ∀ t,
+        lowerC * logarithmicFourierWeight t
+          ≤ symbol t + shift)
+    (hupper :
+      ∀ t,
+        symbol t + shift
+          ≤ upperC * logarithmicFourierWeight t)
+    (hpole0 : 0 ≤ pole)
+    (hpole :
+      pole ≤ poleC * spectralMass density)
+    (hdensity_int : Integrable density volume)
+    (hlog_int :
+      Integrable
+        (fun t : ℝ =>
+          logarithmicFourierWeight t * density t) volume)
+    (hsymbol_int :
+      Integrable
+        (fun t : ℝ =>
+          (symbol t + shift) * density t) volume)
+    (hQ :
+      Q + shift * spectralMass density
+        =
+      shiftedCompactWeilForm symbol density shift pole)
+    (extend : H →L[ℂ] Hext)
+    (hext0 : extend k ≠ 0)
+    (WextEndpoint WextRight : Hext →L[ℂ] Hext)
+    (Rendpoint : Hext →L[ℂ] EndpointObs)
+    (Rright : Hext →L[ℂ] RightObs)
+    (hendpointExt :
+      Rendpoint (WextEndpoint (extend k)) = 0)
+    (hAway :
+      primePowerThreshold c = ∅ →
+        WextRight = WextEndpoint) :
+    NeutralDefectMorphology
+      A c aSeq uSeq phi aLim uLim
+      P C k Q shift lowerC upperC poleC density primeCoeff extend := by
+  have hnull :=
+    wd_t38_p3_u2_physical_neutral_null_mode
+      P C uLim k hunit hreal hk
+  have harith :=
+    wd_t38_neutral_arithmetic_morphology
+      c Q symbol density shift pole lowerC upperC poleC
+      primeCoeff hdensity hlowerC hpoleC hlower hupper
+      hpole0 hpole hdensity_int hlog_int hsymbol_int hQ
+  let hnullExt :=
+    wd_t38_p3_u7_neutral_null_extension_reduction
+      c (extend k) hext0 WextEndpoint WextRight
+      Rendpoint Rright hendpointExt hAway
+  exact {
+    subsequence_strictMono := hphi
+    attainedNeutral := hneutral
+    endpointRight := hright
+    endpointNonzero := hy0
+    coefficientCarrier := haCarrier
+    physicalNull := hnull
+    arithmetic := harith
+    nullExtension := hnullExt
+    nullExtensionVector := rfl
+  }
+
+
 end WeilDefect
