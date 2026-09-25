@@ -141,10 +141,10 @@ standing, and verification state.
 
 ## RH-facing interfaces
 
-Horizon 1 deliberately stops before the following actual-zeta obligations:
+Horizon 1 deliberately stops before two primary actual-zeta interfaces, with one stronger special-packet refinement on the negative side:
 
 - `AZ-NEXTJET-LOC` — control or exclusion of the weighted near next-jet field.
-- `C-ACTUAL-KPH-FLOOR` — stronger special-packet KPH/transversality floor.
+- `C-ACTUAL-KPH-FLOOR` — stronger special-packet KPH/transversality floor that can serve as a sufficient refinement of `AZ-NEXTJET-LOC` where its packet hypotheses apply.
 - `AZ-FIN-WEIL-NULL-EXTENSION` — exterior support/null-extension rigidity for
   an actual compact-window neutral mode.
 
