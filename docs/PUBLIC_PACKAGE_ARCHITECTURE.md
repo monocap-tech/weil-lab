@@ -63,8 +63,7 @@ surface wins until the public package is repaired.
 
 ## 3. Manuscript architecture
 
-The technical manuscript is organized into four mathematical parts and three
-custody appendices.
+The technical manuscript is organized into four mathematical parts, a verification/boundary part, and five public appendices.
 
 ### Part I — Abstract Weil-defect calculus
 
