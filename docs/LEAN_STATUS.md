@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T26 | WeilDefect.rawResiduesOfNegativePairs + WeilDefect.wd_t26_zero_moment + WeilDefect.wd_t26_coefficient_mem_rawResidues + WeilDefect.wd_t26_nonzero_raw_residue_of_nonzero_coefficient + WeilDefect.wd_t26_selected_zero_moment_residue | LEAN-CERTIFIED |
 | WD-T25 | WeilDefect.problemOneDenominator + WeilDefect.problemOneL + WeilDefect.problemOneMode + WeilDefect.problemOneL_problemOneMode + WeilDefect.wd_t25_finite_problem_one_relation_trivial + WeilDefect.wd_t25_no_exact_finite_positive_compensation | LEAN-CERTIFIED |
 | WD-T24 | WeilDefect.realExpMode + WeilDefect.realExpMode_ne_zero + WeilDefect.hasDerivAt_realExpMode + WeilDefect.iteratedDeriv_realExpMode + WeilDefect.iteratedDeriv_finite_exp_sum + WeilDefect.wd_t24_finite_distinct_frequency_exponential_independence | LEAN-CERTIFIED |
 | WD-T23 | WeilDefect.BombieriMultiplicityNullData + WeilDefect.wd_t23_same_frequency_synthesis_factor + WeilDefect.wd_t23_same_frequency_zero_sum_null + WeilDefect.wd_t23_total_multiplicity_nullity + WeilDefect.wd_t23_single_ordinate_nullity + WeilDefect.wd_t23_single_ordinate_has_null_iff_repeated + WeilDefect.wd_t23_distinct_frequency_reduction | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -2568,10 +2569,99 @@ The run passed:
 The single repair pass changed Lean representation only; no theorem statement
 or mathematical hypothesis was weakened.
 
+## WD-T26 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T26: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.rawResiduesOfNegativePairs;
+- WeilDefect.wd_t26_zero_moment;
+- WeilDefect.wd_t26_coefficient_mem_rawResidues;
+- WeilDefect.wd_t26_nonzero_raw_residue_of_nonzero_coefficient;
+- WeilDefect.wd_t26_selected_zero_moment_residue.
+
+For a finite list of selected negative pair coefficients
+
+\[
+(\alpha_1,\dots,\alpha_m),
+\]
+
+the raw residue map is represented as
+
+\[
+(\alpha_1,-\alpha_1,\dots,\alpha_m,-\alpha_m).
+\]
+
+Lean certifies the zero-moment identity
+
+\[
+\sum_j v_j=0
+\]
+
+by pairwise antisymmetry.
+
+The nondegeneracy half is also certified: if at least one selected negative
+coefficient is nonzero, then at least one raw residue is nonzero.  The custody
+bridge is direct: each coefficient \(\alpha\) occurs verbatim as one of the
+two raw residues \((\alpha,-\alpha)\).
+
+Thus the associated raw residue vector has zero total residue and cannot
+collapse to the zero residue vector when the selected negative coefficient
+vector is genuinely nonzero.
+
+No imported project theorem premise, prime-side input, pole term, or
+archimedean input is consumed by WD-T26.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.PairGeometry}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36095464414}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{a02e9176ca3f6dd071ab9b43226d025efb5f7592}}.
+\]
+
+The certified WD-T26 source commit is:
+
+\[
+\texttt{61110e7fc77722dbfa0a1459f101d98ae90efff8}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{5361e8384880fcd799fbd62151b65be7a11f3cf8}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T26 target module;
+- unfinished-proof/project-axiom rejection.
+
+No stable theorem statement or mathematical hypothesis was weakened.
+
 Next theorem cursor:
 
 \[
 \boxed{
-\texttt{WD-T26 / ZW1-T7 — SELECTED ZERO-MOMENT RESIDUE THEOREM}
+\texttt{WD-T27 / ZW1-T8 — UNIVERSAL INVERSE-SQUARE FAR DECAY}
 }
 \]
