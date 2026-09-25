@@ -29,7 +29,8 @@ theorem logarithmicFourierWeight_isBigO_log :
   have hargpos : 0 < Real.exp 1 + x := by positivity
   have hsum : Real.exp 1 + x ≤ x ^ 2 := by
     calc
-      Real.exp 1 + x ≤ x + x := add_le_add_right hexp_le x
+      Real.exp 1 + x ≤ x + x := by
+        simpa [add_comm] using add_le_add_right hexp_le x
       _ = 2 * x := by ring
       _ ≤ x ^ 2 := by nlinarith
   have hlog :
@@ -47,9 +48,8 @@ theorem logarithmicFourierWeight_isBigO_log :
     have : (1 : ℝ) ≤ Real.exp 1 := by
       simpa using Real.one_le_exp 1
     linarith
-  rw [Real.norm_eq_abs, Real.norm_eq_abs,
-    abs_of_nonneg hlogarg, abs_of_nonneg hlogx]
-  simpa [logarithmicFourierWeight, abs_of_nonneg hx0] using hlog
+  simpa [logarithmicFourierWeight, abs_of_nonneg hx0,
+    abs_of_nonneg hlogarg, abs_of_nonneg hlogx] using hlog
 
 /--
 For every positive Sobolev exponent, logarithmic Fourier weight is little-o of
@@ -74,14 +74,11 @@ theorem positiveSobolevFrequencyWeight_not_isBigO_logarithmic
         =O[atTop] logarithmicFourierWeight := by
   have hfreq :
       ∃ᶠ x : ℝ in atTop,
-        positiveSobolevFrequencyWeight eps x ≠ 0 := by
-    have hev :
-        ∀ᶠ x : ℝ in atTop,
-          positiveSobolevFrequencyWeight eps x ≠ 0 := by
-      filter_upwards [eventually_gt_atTop (0 : ℝ)] with x hx
-      unfold positiveSobolevFrequencyWeight
-      exact (Real.rpow_pos_of_pos hx _).ne'
-    exact hev.frequently
+        logarithmicFourierWeight x ≠ 0 := by
+    exact Frequently.of_forall fun x =>
+      ne_of_gt
+        (lt_of_lt_of_le zero_lt_one
+          (one_le_logarithmicFourierWeight x))
   exact
     (logarithmicFourierWeight_isLittleO_positiveSobolev heps).not_isBigO
       hfreq
