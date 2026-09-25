@@ -63,7 +63,7 @@ theorem tendsto_fullNegativeCoeff
       (uLim, bLim)).comp hpair
   simpa only [fullNegativeCoeff,
     WithLp.prodContinuousLinearEquiv_symm_apply,
-    Function.comp_apply] using hmap
+    Function.comp_def] using hmap
 
 /-- B-2 custody: weak convergence of the positive coordinate together with
 strong convergence on the entire negative sector gives a full weak limit. -/
@@ -117,7 +117,7 @@ theorem tendsto_fullCoeff_of_strong_positive
         (aLim, fullNegativeCoeff uLim bLim)).comp hpair
   simpa only [fullCoeff, WeilDefect.WDT16.coeff,
     WithLp.prodContinuousLinearEquiv_symm_apply,
-    Function.comp_apply] using hmap
+    Function.comp_def] using hmap
 
 /-- A nonzero selected negative coordinate makes the assembled full
 coefficient vector nonzero, independently of the background. -/
@@ -341,7 +341,7 @@ theorem weak_limit_mem_kernel_of_image_tendsto_zero
   have hstrongY :
       Tendsto (fun n => inner ℂ (S (w n)) y)
         atTop (𝓝 0) := by
-    simpa only [Function.comp_apply] using
+    simpa only [Function.comp_def, inner_zero_left] using
       (hc.tendsto 0).comp himage
   have heq :=
     tendsto_nhds_unique hweakY hstrongY
@@ -421,7 +421,8 @@ theorem wd_t39_p3_b2_full_coordinate_escape_weak_zero
         atTop (𝓝 0) := by
     have hc : Continuous (fun x : K => inner ℂ x z) := by
       fun_prop
-    simpa using (hc.tendsto 0).comp (hblock R)
+    simpa only [Function.comp_def, inner_zero_left] using
+      (hc.tendsto 0).comp (hblock R)
   rcases
       Metric.tendsto_atTop.mp hinnerBlock
         (ε / 2) hε2 with
@@ -447,10 +448,14 @@ theorem wd_t39_p3_b2_full_coordinate_escape_weak_zero
       inner ℂ (w n) (E.block R z)
         =
       inner ℂ (E.block R (w n)) z := by
-    rw [← E.selfAdjoint R]
-    exact
-      ContinuousLinearMap.adjoint_inner_right
-        (E.block R) (w n) z
+    calc
+      inner ℂ (w n) (E.block R z)
+          =
+        inner ℂ (w n) ((E.block R)† z) := by
+          rw [E.selfAdjoint R]
+      _ = inner ℂ (E.block R (w n)) z :=
+        ContinuousLinearMap.adjoint_inner_right
+          (E.block R) (w n) z
   have hsecond :
       ‖inner ℂ (w n) (E.block R z)‖ < ε / 2 := by
     rw [hsecondEq]
