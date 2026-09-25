@@ -14,7 +14,7 @@ weaken hypotheses, or turn open interfaces into premises.
 
 The public graph is organized into five layers.
 
-\`\`\`text
+~~~text
 Layer A — Abstract operator/signature calculus
   WD-T01 ... WD-T06
 
@@ -31,7 +31,7 @@ Layer E — Open actual-zeta interfaces
   AZ-NEXTJET-LOC
   C-ACTUAL-KPH-FLOOR
   AZ-FIN-WEIL-NULL-EXTENSION
-\`\`\`
+~~~
 
 External source pins enter only where explicitly shown. Examples and scope
 rules attach laterally and do not create proof-producing edges.
@@ -40,7 +40,7 @@ rules attach laterally and do not create proof-producing edges.
 
 ## 2. Abstract screening spine
 
-\`\`\`text
+~~~text
 WD-T01
   │
   ▼
@@ -50,7 +50,7 @@ WD-T02  ← EXT-1 Douglas
   └────────► WD-T05
 
 WD-T06   (separate monotone-positive restoration branch)
-\`\`\`
+~~~
 
 Interpretation:
 
@@ -63,16 +63,16 @@ Interpretation:
 
 Sharpness attachments:
 
-\`\`\`text
+~~~text
 WD-T04 ← WD-X02
 WD-T06 ← WD-X01
-\`\`\`
+~~~
 
 ---
 
 ## 3. Selected/background transfer spine
 
-\`\`\`text
+~~~text
 WD-T07
   ├────────► WD-T08
   └────────► WD-T09
@@ -87,32 +87,32 @@ WD-T02 + WD-T09
 
 WD-T13   (Schur/shorted covariance branch)
 WD-T14   (finite positive-shadow branch)
-\`\`\`
+~~~
 
 The main custody rule is one-way:
 
-\`\`\`math
+~~~math
 \boxed{
 \text{selected negativity}
 \Longrightarrow
 \text{full negativity},
 }
-\`\`\`
+~~~
 
 while aggregate negativity alone does not recover selected-sector ownership.
 
 Sharpness attachments:
 
-\`\`\`text
+~~~text
 WD-T09 ← WD-X03
 WD-T13 ← WD-X04
-\`\`\`
+~~~
 
 ---
 
 ## 4. Support-filtration spine
 
-\`\`\`text
+~~~text
 WD-T15
   ├────────► WD-T16
   ├────────► WD-T17
@@ -123,7 +123,7 @@ new endpoint vector
   │
   ▼
 WD-T19
-\`\`\`
+~~~
 
 WD-T19 is not theorem-level downstream of WD-T16; a morphology application may
 use WD-T16 to provide the required endpoint vector, but the boundary-amplification
@@ -131,16 +131,16 @@ theorem has its own hypotheses.
 
 Sharpness attachments:
 
-\`\`\`text
+~~~text
 WD-T16 ← WD-X05
 WD-T17 ← WD-X05, WD-X06
-\`\`\`
+~~~
 
 ---
 
 ## 5. Zeta-Weil zero-side spine
 
-\`\`\`text
+~~~text
 WD-T20 ─────► WD-T21
 
 EXT-2A Bombieri finite inertia ─────► WD-T22
@@ -154,12 +154,12 @@ EXT-3 zero counting
        │
        ▼
      WD-T28 ─────► WD-T29
-\`\`\`
+~~~
 
 The selected residue chain is the bridge from pair geometry to arithmetic
 far-field cancellation:
 
-\`\`\`math
+~~~math
 \boxed{
 \text{pair geometry}
 \Longrightarrow
@@ -167,19 +167,19 @@ far-field cancellation:
 \Longrightarrow
 R_v(z)=O(|z|^{-2}).
 }
-\`\`\`
+~~~
 
 Sharpness attachment:
 
-\`\`\`text
+~~~text
 WD-T27 ← WD-X07
-\`\`\`
+~~~
 
 ---
 
 ## 6. Explicit-formula spine
 
-\`\`\`text
+~~~text
 WD-T30
   selected-preserving finite multiplier tool
 
@@ -201,7 +201,7 @@ WD-T34 ─────► WD-T35 ─────► WD-T36
                 ▲
                 │
         EXT-5 digamma asymptotic
-\`\`\`
+~~~
 
 WD-T31 and WD-T32 are complementary: the former controls the far field; the
 latter identifies the finite/intermediate field that remains.
@@ -212,7 +212,7 @@ latter identifies the finite/intermediate field that remains.
 
 The generic fixed-packet negative chain is:
 
-\`\`\`text
+~~~text
 WD-T16  fixed selected negative persistence
   │
   ▼
@@ -235,18 +235,18 @@ WD-T26 ─► WD-T27
              │
              ▼
      AZ-NEXTJET-LOC   [OPEN]
-\`\`\`
+~~~
 
 WD-T30 may supply a selected-preserving multiplier where its two-mode
 hypotheses apply; it is not a premise of the far-tail estimate itself.
 
 A stronger special-packet route is tracked separately:
 
-\`\`\`text
+~~~text
 WD-T37
   │
   └────► C-ACTUAL-KPH-FLOOR   [OPEN stronger refinement]
-\`\`\`
+~~~
 
 Neither open interface is used upstream to prove WD-T37.
 
@@ -254,7 +254,7 @@ Neither open interface is used upstream to prove WD-T37.
 
 ## 8. Neutral morphology
 
-\`\`\`text
+~~~text
 WD-T17
 + attained finite-exception unit-gain / physical-realization hypotheses
   │
@@ -271,7 +271,7 @@ physical compact-window null mode
           │
           ▼
 AZ-FIN-WEIL-NULL-EXTENSION   [OPEN]
-\`\`\`
+~~~
 
 No later support-rigidity or unique-continuation theorem is consumed above
 the stop line.
@@ -283,7 +283,7 @@ the stop line.
 WD-T39 classifies compactness failure rather than introducing a new
 actual-zeta interface.
 
-\`\`\`text
+~~~text
 moving selected-sector analysis:
   WD-T15, WD-T16, WD-T17
   + WD-X05 sharpness witness
@@ -294,17 +294,17 @@ unselected-background analysis:
         │
         ▼
       WD-T39
-\`\`\`
+~~~
 
 The key separation is:
 
-\`\`\`math
+~~~math
 \boxed{
 \text{moving selected-sector escape}
 \neq
 \text{unselected-background escape}.
 }
-\`\`\`
+~~~
 
 Once a fixed selected negative ray is anchored, background escape may destroy
 strong full-coefficient compactness but does not erase selected-ray custody.
@@ -331,13 +331,13 @@ proof body does not erase an imported ancestor.
 
 The following are lateral guards, not theorem-producing edges.
 
-\`\`\`text
+~~~text
 WD-S01  metric transfer guard
 WD-S02  explicit-formula double-counting guard
 WD-S03  global-neutrality / termwise-vanishing guard
 WD-S04  next-jet lower-bound guard
 WD-S05  background-custody guard
-\`\`\`
+~~~
 
 ---
 
@@ -347,16 +347,16 @@ The Horizon-1 proof graph is acyclic.
 
 The primary exits are strictly downstream:
 
-\`\`\`text
+~~~text
 WD-T37 ─────► AZ-NEXTJET-LOC
 WD-T38 ─────► AZ-FIN-WEIL-NULL-EXTENSION
-\`\`\`
+~~~
 
 and the stronger packetwise refinement
 
-\`\`\`text
+~~~text
 WD-T37 ─────► C-ACTUAL-KPH-FLOOR
-\`\`\`
+~~~
 
 is likewise downstream only.
 
