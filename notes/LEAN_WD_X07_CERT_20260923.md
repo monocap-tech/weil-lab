@@ -3,51 +3,51 @@ Date: 2026-09-23
 
 ## Target
 
-\[
+```math
 \boxed{
 \text{WD-X07 — inverse-square far order is sharp}.
 }
-\]
+```
 
 ## Formal content
 
 Lean proves the two-point identity
 
-\[
+```math
 \frac1{z-\rho_1}
 -
 \frac1{z-\rho_2}
 =
 \frac{\rho_1-\rho_2}
 {(z-\rho_1)(z-\rho_2)},
-\]
+```
 
 and for the explicit pair
 
-\[
+```math
 (\rho_1,\rho_2)=(0,1)
-\]
+```
 
 the real response
 
-\[
+```math
 R(x)=\frac1x-\frac1{x-1}
-\]
+```
 
 satisfies
 
-\[
+```math
 x^2R(x)\to-1.
-\]
+```
 
 Therefore the inverse-square coefficient is genuinely nonzero in an explicit
 zero-moment example.
 
 This formally witnesses that the universal conclusion
 
-\[
+```math
 R_v(z)=O(|z|^{-2})
-\]
+```
 
 cannot be improved to \(O(|z|^{-3})\) from zero moment alone.
 
@@ -55,30 +55,30 @@ cannot be improved to \(O(|z|^{-3})\) from zero moment alone.
 
 Current Lean source blob:
 
-\[
+```math
 \texttt{83196783b21e40eee21ca74c12b3b8094c2af391}.
-\]
+```
 
 The same blob was kernel-checked successfully in GitHub Actions run
 
-\[
+```math
 \texttt{35951096357}
-\]
+```
 
 at commit
 
-\[
+```math
 \texttt{e9f158d3c8fb5b85494d08931d62cddfc8d4a534}.
-\]
+```
 
 The pinned Lean/mathlib build and unfinished-proof/project-axiom checks passed.
 
 ## Status
 
-\[
+```math
 \boxed{
 \text{WD-X07: LEAN-CERTIFIED}.
 }
-\]
+```
 
 No second theorem was started in this pass.
