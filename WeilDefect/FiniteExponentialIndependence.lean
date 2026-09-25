@@ -10,7 +10,7 @@ The real-line exponential mode with complex frequency freq.
 This is exactly x ↦ exp(x freq).
 -/
 noncomputable def realExpMode (freq : ℂ) (x : ℝ) : ℂ :=
-  Complex.exp (freq * (x : ℂ))
+  Complex.exp (Complex.ofRealCLM x * freq)
 
 /-- The complex exponential mode never vanishes. -/
 theorem realExpMode_ne_zero (freq : ℂ) (x : ℝ) :
