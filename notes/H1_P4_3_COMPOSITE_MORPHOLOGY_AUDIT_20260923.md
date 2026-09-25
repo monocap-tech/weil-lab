@@ -27,17 +27,17 @@ WD-T37 through WD-T39 have passed the Horizon-1 composite audit after seven scop
 
 ## Result
 
-\[
+```math
 \boxed{
 \text{WD-T37--WD-T39: COMPOSITE-AUDIT-PASSED}.
 }
-\]
+```
 
 No downstream interface entered upstream.
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P4.4 / EXAMPLES AND SHARPNESS AUDIT}
-\]
+```
