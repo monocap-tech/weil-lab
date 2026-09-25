@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T24 | WeilDefect.realExpMode + WeilDefect.realExpMode_ne_zero + WeilDefect.hasDerivAt_realExpMode + WeilDefect.iteratedDeriv_realExpMode + WeilDefect.iteratedDeriv_finite_exp_sum + WeilDefect.wd_t24_finite_distinct_frequency_exponential_independence | LEAN-CERTIFIED |
 | WD-T23 | WeilDefect.BombieriMultiplicityNullData + WeilDefect.wd_t23_same_frequency_synthesis_factor + WeilDefect.wd_t23_same_frequency_zero_sum_null + WeilDefect.wd_t23_total_multiplicity_nullity + WeilDefect.wd_t23_single_ordinate_nullity + WeilDefect.wd_t23_single_ordinate_has_null_iff_repeated + WeilDefect.wd_t23_distinct_frequency_reduction | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T22 | WeilDefect.BombieriFiniteInertiaData + WeilDefect.wd_t22_finite_weil_inertia_saturation + WeilDefect.SimpleQuartetPacketNegative + WeilDefect.wd_t22_simple_quartet_packet_pair_count + WeilDefect.wd_t22_simple_quartet_packet_inertia + WeilDefect.wd_t22_two_simple_quartet_negative_index | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T21 | WeilDefect.quartetPairPos + WeilDefect.quartetPairNeg + WeilDefect.wd_t21_quartet_pair_pos_conjugate + WeilDefect.wd_t21_quartet_pair_neg_conjugate + WeilDefect.wd_t21_quartet_pairs_nonreal + WeilDefect.wd_t21_quartet_pairs_distinct + WeilDefect.wd_t21_simple_quartet_negative_count + WeilDefect.wd_t21_simple_quartet_pair_geometry | LEAN-CERTIFIED |
@@ -2392,10 +2393,89 @@ The run passed:
 
 No stable theorem statement or mathematical hypothesis was weakened.
 
+## WD-T24 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T24: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.realExpMode;
+- WeilDefect.realExpMode_ne_zero;
+- WeilDefect.hasDerivAt_realExpMode;
+- WeilDefect.iteratedDeriv_realExpMode;
+- WeilDefect.contDiffAt_const_mul_realExpMode;
+- WeilDefect.iteratedDeriv_finite_exp_sum;
+- WeilDefect.wd_t24_finite_distinct_frequency_exponential_independence.
+
+For distinct complex frequencies \(\lambda_i\), Lean certifies that if
+
+\[
+\sum_i c_i e^{\lambda_i x}=0
+\]
+
+throughout a nonempty real interval, then every coefficient \(c_i\) is zero.
+
+The proof is fully internal.  It chooses an interior point \(x_0\), differentiates
+the local zero relation through orders \(0,\dots,n-1\), and obtains
+
+\[
+\sum_i
+\bigl(c_i e^{\lambda_i x_0}\bigr)\lambda_i^k
+=
+0.
+\]
+
+Mathlib's Vandermonde nonsingularity theorem then forces all weighted
+coefficients to vanish.  Since the complex exponential is never zero, every
+\(c_i\) vanishes.
+
+No analytic-continuation theorem and no imported project theorem premise is
+needed.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.FiniteExponentialIndependence}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36093132364}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{79882bdc976581db62bbc783d52f8bb4ac01e214}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{7244cb18dd652c02619f6b56061443e00097df5f}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T24 target module;
+- unfinished-proof/project-axiom rejection.
+
+The repair passes resolved Lean parser and real/complex module-instance
+ambiguities only; no theorem statement or mathematical hypothesis was weakened.
+
 Next theorem cursor:
 
 \[
 \boxed{
-\texttt{WD-T24 / ZW1-T5 — FINITE DISTINCT-FREQUENCY EXPONENTIAL INDEPENDENCE}
+\texttt{WD-T25 / ZW1-T6 — NO EXACT FINITE POSITIVE COMPENSATION FOR AN ANCHORED NEGATIVE CELL}
 }
 \]
