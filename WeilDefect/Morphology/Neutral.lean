@@ -564,6 +564,8 @@ noncomputable def wd_t38_attained_unit_gain_neutral_morphology
       primePowerThreshold c = ∅ →
         WextRight = WextEndpoint) :
     NeutralDefectMorphology
+      (Kpos := Kpos) (M := M) (H := H) (Hext := Hext)
+      (EndpointObs := EndpointObs) (RightObs := RightObs)
       A c aSeq uSeq phi aLim uLim
       P C k Q shift lowerC upperC poleC density primeCoeff extend := by
   have hnull :=
