@@ -9,6 +9,7 @@ import WeilDefect.RationalResponse
 import WeilDefect.NativeHilbertSchmidt
 import WeilDefect.DirichletResolvent
 import WeilDefect.DirichletEnergy
+import WeilDefect.FiniteHeadApproximation
 import WeilDefect.FiniteExponentialIndependence
 import WeilDefect.ProblemOneIndependence
 import WeilDefect.Residues
