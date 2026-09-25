@@ -923,7 +923,9 @@ That is the complete Horizon-1 negative defect morphology at its stated stop lin
 
 ---
 
-## Next cursor
+## Historical handoff from H1-P3.0
+
+This handoff is historical provenance, not the live project cursor. See [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md) for current control state.
 
 ```math
 \boxed{
