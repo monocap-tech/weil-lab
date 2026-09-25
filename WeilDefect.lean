@@ -5,6 +5,7 @@ import WeilDefect.Arithmetic.Scalarization
 import WeilDefect.Examples.SpectralScreening
 import WeilDefect.Screening.Quadratic
 import WeilDefect.PairGeometry
+import WeilDefect.RationalResponse
 import WeilDefect.FiniteExponentialIndependence
 import WeilDefect.ProblemOneIndependence
 import WeilDefect.Residues
