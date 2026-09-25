@@ -18,14 +18,10 @@ private theorem hasDerivAt_logarithmicTailKernel
   have hnum :
       HasDerivAt (fun y : ℝ => 1 + Real.log y) x⁻¹ x :=
     (Real.hasDerivAt_log hx).const_add 1
-  have hden :
-      HasDerivAt (fun y : ℝ => y ^ 2) (2 * x) x := by
-    simpa [id_eq, mul_comm] using (hasDerivAt_id x).pow 2
-  convert hnum.div hden (pow_ne_zero 2 hx) using 1
-  · ext y
-    rfl
-  · field_simp [hx]
-    ring
+  have hden := (hasDerivAt_id x).pow 2
+  convert hnum.div hden (by simp [hx]) using 1
+  field_simp [hx]
+  ring
 
 /-- The logarithmic tail kernel is nonnegative on [1,∞). -/
 theorem logarithmicTailKernel_nonneg
@@ -71,7 +67,7 @@ private theorem hasDerivAt_logarithmicTailAntideriv
     hnum.div (hasDerivAt_id x) hx
   convert hquot.neg using 1
   · ext y
-    rfl
+    simp [neg_div]
   · unfold logarithmicTailKernel
     simp only [id_eq]
     field_simp [hx]
@@ -82,12 +78,12 @@ private theorem tendsto_logarithmicTailAntideriv :
   have hlog :
       Tendsto (fun x : ℝ => Real.log x / x) atTop (𝓝 0) := by
     simpa [Real.rpow_one] using
-      (Real.isLittleO_log_rpow_atTop (r := (1 : ℝ)) zero_lt_one).tendsto_div_nhds_zero
+      (isLittleO_log_rpow_atTop (r := (1 : ℝ)) zero_lt_one).tendsto_div_nhds_zero
   have hconst :
       Tendsto (fun x : ℝ => (2 : ℝ) / x) atTop (𝓝 0) := by
     exact tendsto_const_nhds.div_atTop tendsto_id
   have hadd := hlog.add hconst
-  simpa [add_div, add_comm] using hadd.neg
+  simpa [add_div, add_comm, neg_div] using hadd.neg
 
 /-- The kernel is integrable on every positive tail starting at c>=1. -/
 theorem logarithmicTailKernel_integrableOn_Ioi
