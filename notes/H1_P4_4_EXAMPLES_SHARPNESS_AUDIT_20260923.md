@@ -5,11 +5,11 @@ Date: 2026-09-23
 
 All seven stable example/sharpness witnesses pass internal audit.
 
-\[
+```math
 \boxed{
 \text{WD-X01--WD-X07: EXAMPLE-AUDIT-PASSED}.
 }
-\]
+```
 
 ### Sharpness roles
 
@@ -25,7 +25,7 @@ All seven stable example/sharpness witnesses pass internal audit.
 
 All P4 audit classes are now complete:
 
-\[
+```math
 \boxed{
 \begin{aligned}
 &\text{WD-T01--WD-T36: P4-AUDIT-PASSED},\\
@@ -35,19 +35,19 @@ All P4 audit classes are now complete:
 &\text{external load-bearing inputs: SOURCE-PINNED}.
 \end{aligned}
 }
-\]
+```
 
 Thus
 
-\[
+```math
 \boxed{
 \textbf{H1-P4: COMPLETE.}
-\]
+```
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
 }
-\]
+```
