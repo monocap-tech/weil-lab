@@ -905,7 +905,9 @@ Therefore
 
 ---
 
-## Next cursor
+## Historical handoff from H1-P3.2
+
+This handoff is historical provenance, not the live project cursor. See [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md) for current control state.
 
 ```math
 \boxed{
