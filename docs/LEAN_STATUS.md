@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T20 | WeilDefect.wd_t20_pair_pos_eigen + WeilDefect.wd_t20_pair_neg_eigen + WeilDefect.pairEigenEquiv + WeilDefect.wd_t20_pair_diagonalization | LEAN-CERTIFIED |
 | WD-T19 | WeilDefect.WDT19.analysisSpace + WeilDefect.WDT19.weak_limit_mem_physical_rightLimit + WeilDefect.WDT19.wd_t19_endpoint_representative_blowup + WeilDefect.WDT19.BoundaryAmplifies + WeilDefect.WDT19.wd_t19_boundary_amplification + WeilDefect.WDT19.wd_t19_vanishing_amplitude_normalized_blowup | LEAN-CERTIFIED |
 | WD-T18 | WeilDefect.WDT18.endpointInside + WeilDefect.WDT18.endpointQuotientMap + WeilDefect.WDT18.wd_t18_endpoint_quotient_map_injective + WeilDefect.WDT18.wd_t18_endpoint_jump_negative_rank_le_quotient + WeilDefect.WDT18.wd_t18_one_dimensional_jump_rank_cap | LEAN-CERTIFIED |
 | WD-T17 | WeilDefect.WDT17.weaklyTendsto_strong_of_norm_sq_tendsto + WeilDefect.WDT17.wd_t17_critical_positive_mass_le_half + WeilDefect.WDT17.wd_t17_fixed_sector_critical_dichotomy + WeilDefect.WDT17.wd_t17_neutral_branch + WeilDefect.WDT17.wd_t17_loss_branch | LEAN-CERTIFIED |
@@ -2037,5 +2038,83 @@ Next theorem cursor:
 \[
 \boxed{
 \texttt{WD-T20 / ZW1-T1 — CANONICAL CONJUGATE-PAIR DIAGONALIZATION INTO POSITIVE/NEGATIVE WEIL CHANNELS}
+}
+\]
+
+
+## WD-T20 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T20: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.wd_t20_pair_pos_eigen;
+- WeilDefect.wd_t20_pair_neg_eigen;
+- WeilDefect.pairEigenEquiv;
+- WeilDefect.wd_t20_pair_diagonalization.
+
+For one distinct nonreal conjugate pair, Lean represents conjugation as a
+two-coordinate swap and proves that the symmetric and antisymmetric channels
+are the \(+1\) and \(-1\) eigendirections. The complex-linear
+`pairEigenEquiv` identifies raw pair coefficients with positive/negative
+channel coordinates, in which the involution is exactly
+
+\[
+(a,b)\mapsto(a,-b).
+\]
+
+The formal source uses unnormalized representatives \((1,1)\) and
+\((1,-1)\); these span the same canonical eigendirections as the normalized
+\(1/\sqrt2\) convention.
+
+WD-T20 is pair-level algebra after reduction to a distinct conjugate-pair
+coordinate. The separate same-frequency multiplicity quotient remains WD-T23.
+
+No imported project theorem premise is consumed by WD-T20.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.PairGeometry}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36087496196}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{9b8142168cb5e4a5bd53e4d6e903abec211465d4}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{a15e6eb544f9154836644d1a82a607f10639cbb3}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T20 module;
+- unfinished-proof/project-axiom rejection.
+
+The theorem source required no repair during this certification cursor.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T21 / ZW1-T2 — ONE SIMPLE ZETA QUARTET CONTRIBUTES TWO NEGATIVE PAIR COORDINATES}
 }
 \]
