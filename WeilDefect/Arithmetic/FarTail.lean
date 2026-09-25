@@ -23,8 +23,8 @@ private theorem hasDerivAt_logarithmicTailKernel
   · funext y
     by_cases hy : y = 0
     · simp [hy]
-    · field_simp [hy]
-      ring
+    · simp only [Pi.div_apply, Pi.pow_apply, id_eq]
+      field_simp [hy]
   · simp only [Pi.pow_apply, id_eq, Nat.cast_ofNat, Nat.reduceSub, pow_one, mul_one]
     field_simp [hx]
     ring
@@ -73,6 +73,7 @@ private theorem hasDerivAt_logarithmicTailAntideriv
     hnum.div (hasDerivAt_id x) hx
   convert hquot.neg using 1
   · funext y
+    simp only [Pi.neg_apply, Pi.div_apply, id_eq, div_eq_mul_inv]
     ring
   · unfold logarithmicTailKernel
     simp only [id_eq]
