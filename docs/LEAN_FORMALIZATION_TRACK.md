@@ -143,6 +143,6 @@ Only after this exhaustion condition is met does the project resume:
 
 \[
 \boxed{
-\texttt{LEAN-H1-P5 / WD-T38 / P3-U1…P3-U7 — ATTAINED UNIT-GAIN NEUTRAL DEFECT MORPHOLOGY}.
+\texttt{LEAN-H1-P5 / WD-T39 / P3-B1…P3-B7 — NONCOMPACT BACKGROUND MORPHOLOGY}.
 }
 \]
