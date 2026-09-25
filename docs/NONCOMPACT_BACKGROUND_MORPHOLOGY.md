@@ -304,15 +304,15 @@ Therefore the fixed selected packet supplies an automatic finite coordinate anch
 
 For a fixed finite selected packet, any sequence satisfying
 
-\[
+```math
 \limsup_{n\to\infty}\|u_n\|>0
-\]
+```
 
 has a subsequence on which the selected negative coordinate converges strongly to a nonzero
 
-\[
+```math
 u\in M_\Pi.
-\]
+```
 
 Consequently, **full coefficient** moving-sector escape P3-B2 is impossible on any fixed-packet branch whose selected negative norm stays bounded away from zero.
 
@@ -636,52 +636,52 @@ Thus a fixed full-divisor negative **weak limit** survives. Strong convergence o
 
 If the normalized unselected background is bounded and coefficient-tail tight, then after passage to a subsequence
 
-\[
+```math
 b_n\to b
-\]
+```
 
 strongly.
 
 From the fixed selected-ray branch,
 
-\[
+```math
 u_n\to u
-\]
+```
 
 strongly while, in general,
 
-\[
+```math
 a_n\rightharpoonup a
-\]
+```
 
 only weakly.
 
 Therefore the full coefficient vectors have the fixed weak limit
 
-\[
+```math
 \boxed{
 Y_{\rm full}=(a,u,b),
 }
-\]
+```
 
 and the entire negative sector converges strongly.
 
 Its full signature satisfies
 
-\[
+```math
 \boxed{
 [Y_{\rm full},Y_{\rm full}]_{\rm full}
 \le
 -\kappa-\|b\|^2
 <0.
 }
-\]
+```
 
 If one additionally knows
 
-\[
+```math
 a_n\to a
-\]
+```
 
 strongly, then the whole full-divisor coefficient vector converges strongly.
 
