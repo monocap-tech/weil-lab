@@ -219,10 +219,10 @@ Current formalization cursor:
 
 ```math
 \boxed{
-\texttt{LEAN-H1-P1 / WD-X02 — CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}
+\texttt{LEAN-H1-P1 / WD-X05 — MOVING SECTORS CAN LOSE EVERY PERSISTENT RAY}
 }
 ```
 
-WD-X02 is not promoted to `LEAN-CERTIFIED` until its pinned CI build succeeds; see [Lean Status Ledger](LEAN_STATUS.md) for live certificate state.
+WD-X02 is `LEAN-CERTIFIED`; the active sharpness-example cursor is WD-X05. See [Lean Status Ledger](LEAN_STATUS.md) for live certificate state.
 
 H1-P5 resumes only after LEAN-H1 exhaustion.
