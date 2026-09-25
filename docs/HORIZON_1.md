@@ -450,10 +450,10 @@ Current formalization status is tracked in [Lean Status Ledger](LEAN_STATUS.md).
 Current subphase:
 
 ```math
-\boxed{\texttt{H1-P5.2 / PUBLIC THEOREM INDEX AND VERIFICATION MATRIX}}
+\boxed{\texttt{H1-P5.5 / FINAL PACKAGE ADVERSARIAL PASS}}
 ```
 
-H1-P5.0 / Public Package Architecture and H1-P5.1 / Technical Manuscript Assembly are complete; see [Public Package Architecture](PUBLIC_PACKAGE_ARCHITECTURE.md) and the assembled [Weil-Defect Manuscript](WEIL_DEFECT_MANUSCRIPT.md).
+H1-P5.0 through H1-P5.4 are complete. The architecture, manuscript, theorem index, verification matrix, dependency map, examples surface, RH-interface appendix, and README entrypoint are assembled; H1-P5.5 is the final cross-surface adversarial pass.
 
 Required deliverables:
 
