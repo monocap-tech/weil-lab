@@ -4,11 +4,11 @@ Stable ID: **WD-T15 / WD-C1 + WD-C2**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Formal target
 
@@ -28,28 +28,28 @@ Certified source blob:
 
 The certificate works with a monotone real-parameter family
 
-\[
+```math
 A:\mathbb R\to \operatorname{ClosedSubmodule}(\mathbb C,H).
-\]
+```
 
 For an endpoint \(c\), the right-limit space is encoded as the closed-submodule
 infimum over parameters strictly to the right,
 
-\[
+```math
 A_{c+}
 =
 \bigcap_{t>c} A_t,
-\]
+```
 
 via `WeilDefect.WDT15.rightLimit`.
 
 The limiting gap space is encoded as the closed-submodule supremum
 
-\[
+```math
 G_{c+}
 =
 \overline{\operatorname{span}\bigcup_{t>c} A_t^\perp},
-\]
+```
 
 via `WeilDefect.WDT15.gapLimit`. Because the lattice supremum of
 `ClosedSubmodule` already takes the closed span, the closure is part of the
@@ -59,11 +59,11 @@ formal object rather than an external side condition.
 
 Lean proves natively
 
-\[
+```math
 \boxed{
 A_{c+}=G_{c+}^{\perp}.
 }
-\]
+```
 
 The proof is the Hilbert-space lattice identity relating intersections and
 orthogonal complements, expressed through
@@ -76,19 +76,19 @@ analysis spaces produce antitone orthogonal complements.
 
 For every sequence \(t_n\) satisfying
 
-\[
+```math
 c<t_n,
 \qquad
 t_n\to c,
-\]
+```
 
 Lean proves
 
-\[
+```math
 \boxed{
 \bigcap_n A_{t_n}=A_{c+}.
 }
-\]
+```
 
 Thus any real sequence approaching the endpoint from the right is cofinal for
 the monotone filtration. The proof uses the real-order neighborhood structure
@@ -96,24 +96,24 @@ and monotonicity of \(A\).
 
 Lean further proves
 
-\[
+```math
 \overline{\operatorname{span}\bigcup_n A_{t_n}^{\perp}}
 =
 A_{c+}^{\perp}.
-\]
+```
 
 ## WD-C1 — strong projection limit
 
 For every antitone right-approach sequence \(t_n\downarrow c\) and every
 \(x\in H\), Lean proves the pointwise norm convergence
 
-\[
+```math
 \boxed{
 P_{A_{t_n}}x
 \longrightarrow
 P_{A_{c+}}x.
 }
-\]
+```
 
 This is the strong-operator convergence statement along arbitrary decreasing
 real sequences approaching \(c\).
@@ -151,11 +151,11 @@ complement, topology, and closed-submodule lattice theorems.
 
 Therefore the correct status is native:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Repair-pass result
 
@@ -192,8 +192,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{WD-T16 / WD-C3+WD-C5 — FIXED FINITE NEGATIVE-SECTOR PERSISTENCE}
 }
-\]
+```
