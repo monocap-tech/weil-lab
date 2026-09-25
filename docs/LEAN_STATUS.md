@@ -15,7 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
-| WD-T31 | WeilDefect.logarithmicTailKernel + WeilDefect.logarithmicTailKernel_antitoneOn + WeilDefect.integral_logarithmicTailKernel_Ioi + WeilDefect.logarithmicTail_tsum_le | LEAN-IN-PROGRESS (analytic tail-kernel subpass certified) |
+| WD-T31 | WeilDefect.ZetaLogShellCountData + WeilDefect.FarShellResponseData + WeilDefect.logarithmicTail_tsum_le + WeilDefect.farShellResponse_norm_le_logarithmic_kernel + WeilDefect.wd_t31_shell_aggregation + WeilDefect.rationalResponse_zero_moment_norm_le_inverse_square + WeilDefect.farShellResponseData_of_zero_moment + WeilDefect.wd_t31_zero_moment_zero_count_far_tail | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T29 | WeilDefect.wd_t29_finite_head_approximation + WeilDefect.wd_t29_quantitative_finite_head_approximation | LEAN-CERTIFIED |
 | WD-T28 | WeilDefect.ZetaZeroShellCountData + WeilDefect.NativeProblemOneResolventData + WeilDefect.NativeHilbertSchmidtCriterion + WeilDefect.NativeTraceClassCovarianceCriterion + WeilDefect.wd_t28_native_problem_one_hilbert_schmidt_actual + WeilDefect.problemOneGreenPairing_eq_dirichletEnergy + WeilDefect.problemOneColumnEnergySq_eq_dirichletEnergy + WeilDefect.wd_t28_actual_dirichlet_energy_summable | LEAN-CERTIFIED |
 | WD-T27 | WeilDefect.rationalResponse + WeilDefect.residueFirstMoment + WeilDefect.rationalResponse_laurent_two + WeilDefect.rationalResponse_zero_moment_remainder_bound + WeilDefect.rationalResponse_zero_moment_remainder_isBigO + WeilDefect.rationalResponse_zero_moment_isBigO + WeilDefect.wd_t27_universal_inverse_square_far_decay + WeilDefect.wd_t27_universal_inverse_square_isBigO | LEAN-CERTIFIED |
@@ -3269,14 +3269,87 @@ The checked source blob is:
 \texttt{439db969240a2534e15709c9bf27c998421acb12}.
 \]
 
-WD-T31 itself is **not yet promoted**: the remaining obligation is to attach the
-imported unit-shell zero-count bound and WD-T27 inverse-square response estimate
-to this certified analytic tail kernel.
+The shell aggregation and WD-T27 bridge are now complete.
 
-Current formalization cursor:
+## WD-T31 final certificate evidence
+
+Stable ID:
 
 \[
 \boxed{
-\texttt{WD-T31 / SHELL AGGREGATION — ZERO COUNT × INVERSE-SQUARE RESPONSE }\Longrightarrow\texttt{ LOGARITHMIC FAR-TAIL BOUND}
+\text{WD-T31: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Additional declarations include:
+
+- WeilDefect.FarShellIndex;
+- WeilDefect.ZetaLogShellCountData;
+- WeilDefect.FarShellResponseData;
+- WeilDefect.farShellResponse;
+- WeilDefect.logarithmicTailKernel_summable_nat;
+- WeilDefect.logarithmicTailKernel_shift_summable;
+- WeilDefect.farShellResponse_norm_le_logarithmic_kernel;
+- WeilDefect.wd_t31_shell_aggregation;
+- WeilDefect.zeroMomentResponseConstant;
+- WeilDefect.rationalResponse_zero_moment_norm_le_inverse_square;
+- WeilDefect.zeroMomentShellTerm;
+- WeilDefect.farShellResponseData_of_zero_moment;
+- WeilDefect.wd_t31_zero_moment_zero_count_far_tail.
+
+The final theorem consumes the selected zero-moment law directly. WD-T27 gives
+the pointwise inverse-square response bound on each sufficiently far
+complementary zero; a uniformly bounded multiplier preserves that rate; the
+imported logarithmic unit-shell zero-count premise supplies the shell
+multiplicity bound. Lean then proves
+
+\[
+\left\|
+\sum_{n\ge R}\mathcal S_n
+\right\|
+\le
+AC\,\frac{\log R+2}{R},
+\]
+
+with the constants explicitly assembled from the multiplier bound, selected
+residue moments, and shell-count constant.
+
+The imported part is exactly the source-pinned logarithmic unit-shell zero
+count represented by \(\texttt{ZetaLogShellCountData}\). It is not introduced
+as a project axiom.
+
+The generic shell aggregation first passed in CI run:
+
+\[
+\boxed{\texttt{36159321679}}.
+\]
+
+The final zero-moment bridge and full WD-T31 target passed in:
+
+\[
+\boxed{\texttt{36160324368}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{2e36689aba0b8825c6ed553ca04849fa6fd3f511}}.
+\]
+
+The final theorem source blob is:
+
+\[
+\texttt{d0461bbf09d2928f43807abc8e347c36883f231b}.
+\]
+
+The final run passed pinned dependency resolution, mathlib cache retrieval,
+the dedicated \(\texttt{WeilDefect.Arithmetic.FarTail}\) build, and
+unfinished-proof/project-axiom rejection.
+
+WD-T31 is therefore closed. The next unfinished sequential theorem cursor is:
+
+\[
+\boxed{
+\texttt{WD-T32 / ZW2-T3+ZW2-T4 — COMPLEMENTARY RESPONSE = WEIGHTED COMPLETED }\Xi\texttt{ NEXT-JET FIELD}
 }
 \]
