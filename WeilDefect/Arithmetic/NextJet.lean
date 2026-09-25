@@ -34,7 +34,12 @@ theorem iteratedDeriv_centered_power
     simpa using
       (iteratedDeriv_fun_pow_zero
         (𝕜 := ℂ) (n := k) (m := m))
-  simpa only [add_zero, add_sub_cancel_left] using hshift.trans hpow
+  have hshift0 :
+      iteratedDeriv k (fun z : ℂ => z ^ m) 0
+        =
+      iteratedDeriv k (fun z : ℂ => (z - mu) ^ m) mu := by
+    simpa only [add_zero, add_sub_cancel_left] using hshift
+  exact hshift0.symm.trans hpow
 
 /--
 Multiplicity-order derivative of a locally factored zero:
