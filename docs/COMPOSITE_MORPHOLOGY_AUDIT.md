@@ -663,7 +663,9 @@ At the close of P4.3, the examples/sharpness witnesses WD-X01 through WD-X07 wer
 
 The morphology packages preserve their audited dependencies and branch hypotheses after the corrections above.
 
-### Next cursor
+### Historical handoff from H1-P4.3
+
+This handoff is historical provenance, not the live project cursor. See [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md) for current control state.
 
 ```math
 \boxed{
