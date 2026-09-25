@@ -445,7 +445,15 @@ Current formalization status is tracked in [Lean Status Ledger](LEAN_STATUS.md).
 
 ## H1-P5 — Public mathematical package
 
-**Status:** READY — NOT STARTED.
+**Status:** ACTIVE.
+
+Current subphase:
+
+```math
+\boxed{\texttt{H1-P5.1 / TECHNICAL MANUSCRIPT ASSEMBLY}}
+```
+
+H1-P5.0 / Public Package Architecture is complete; see [Public Package Architecture](PUBLIC_PACKAGE_ARCHITECTURE.md) and the [Weil-Defect Manuscript](WEIL_DEFECT_MANUSCRIPT.md) skeleton.
 
 Required deliverables:
 
