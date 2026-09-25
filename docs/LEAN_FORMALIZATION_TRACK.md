@@ -146,12 +146,12 @@ Only after this exhaustion condition is met does the project resume:
 - **LEAN-H1:** ACTIVE.
 - **H1-P5:** PAUSED until LEAN-H1 exhaustion.
 - **Active phase:** LEAN-H1-P1 — algebraic and finite-dimensional core.
-- **Active cursor:** WD-X05 — moving sectors can lose every persistent ray.
+- **Active cursor:** WD-X06 — positive-coordinate mass loss strengthens criticality to negativity.
 
 ```math
 \boxed{
-\texttt{LEAN-H1-P1 / WD-X05 — MOVING SECTORS CAN LOSE EVERY PERSISTENT RAY}
+\texttt{LEAN-H1-P1 / WD-X06 — POSITIVE-COORDINATE MASS LOSS STRENGTHENS CRITICALITY TO NEGATIVITY}
 }
 ```
 
-WD-X02 is now `LEAN-CERTIFIED`. The active queue advances to WD-X05; certification still requires a successful pinned CI build under the rule above. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence.
+WD-X05 is now `LEAN-CERTIFIED`. The active queue advances to WD-X06; certification still requires a successful pinned CI build under the rule above. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence.
