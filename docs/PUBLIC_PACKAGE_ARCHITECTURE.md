@@ -310,10 +310,17 @@ It must not be restated as an RH proof.
 
 ---
 
-## 11. Next cursor
+## 11. Package cursor
 
-With the architecture fixed, the next packaging cursor is:
+Completed:
 
 ```text
+H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE
 H1-P5.1 / TECHNICAL MANUSCRIPT ASSEMBLY
+```
+
+Active:
+
+```text
+H1-P5.2 / PUBLIC THEOREM INDEX AND VERIFICATION MATRIX
 ```
