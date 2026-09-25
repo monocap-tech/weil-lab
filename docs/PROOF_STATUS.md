@@ -219,10 +219,10 @@ Current formalization cursor:
 
 ```math
 \boxed{
-\texttt{LEAN-H1-P1 / WD-X05 — MOVING SECTORS CAN LOSE EVERY PERSISTENT RAY}
+\texttt{LEAN-H1-P1 / WD-X06 — POSITIVE-COORDINATE MASS LOSS STRENGTHENS CRITICALITY TO NEGATIVITY}
 }
 ```
 
-WD-X02 is `LEAN-CERTIFIED`; the active sharpness-example cursor is WD-X05. See [Lean Status Ledger](LEAN_STATUS.md) for live certificate state.
+WD-X05 is `LEAN-CERTIFIED`; the active sharpness-example cursor is WD-X06. See [Lean Status Ledger](LEAN_STATUS.md) for live certificate state.
 
 H1-P5 resumes only after LEAN-H1 exhaustion.
