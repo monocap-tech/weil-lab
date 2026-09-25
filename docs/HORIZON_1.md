@@ -450,10 +450,10 @@ Current formalization status is tracked in [Lean Status Ledger](LEAN_STATUS.md).
 Current subphase:
 
 ```math
-\boxed{\texttt{H1-P5.1 / TECHNICAL MANUSCRIPT ASSEMBLY}}
+\boxed{\texttt{H1-P5.2 / PUBLIC THEOREM INDEX AND VERIFICATION MATRIX}}
 ```
 
-H1-P5.0 / Public Package Architecture is complete; see [Public Package Architecture](PUBLIC_PACKAGE_ARCHITECTURE.md) and the [Weil-Defect Manuscript](WEIL_DEFECT_MANUSCRIPT.md) skeleton.
+H1-P5.0 / Public Package Architecture and H1-P5.1 / Technical Manuscript Assembly are complete; see [Public Package Architecture](PUBLIC_PACKAGE_ARCHITECTURE.md) and the assembled [Weil-Defect Manuscript](WEIL_DEFECT_MANUSCRIPT.md).
 
 Required deliverables:
 
