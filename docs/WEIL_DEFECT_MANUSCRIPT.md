@@ -1225,4 +1225,4 @@ See [Public Examples and Sharpness](PUBLIC_EXAMPLES.md).
 
 ## Appendix E. RH-facing interfaces
 
-See [RH Interface Appendix](RH_INTERFACE_APPENDIX.md) when assembled.
+See [RH Interface Appendix](RH_INTERFACE_APPENDIX.md).
