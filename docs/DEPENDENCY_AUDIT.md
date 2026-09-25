@@ -422,24 +422,22 @@ It is not load-bearing for WD-T34–WD-T38 as currently stated.
 
 ---
 
-## 4. Source-free internal theorem boundary
+## 4. Internal proof bodies versus transitive source dependence
 
-The following stable theorem IDs have proofs contained in the current repository once standard Hilbert-space facts are admitted:
+A repository-contained proof body is **not** the same thing as a source-free theorem in the transitive dependency DAG.
 
-```math
-\boxed{
-\begin{gathered}
-\text{WD-T01},\text{ T03--T19},\\
-\text{WD-T20--T21},\text{ T24--T27},\\
-\text{WD-T29--T33},\text{ T36}.
-\end{gathered}
-}
-```
+For example:
 
-This classification is architectural only.
+- WD-T03–WD-T05 inherit the Douglas interface through WD-T02;
+- WD-T10 and its downstream residual-screening consequences inherit WD-T02;
+- WD-T29 inherits the zero-count input used by WD-T28;
+- WD-T36 inherits the compact-window/digamma source boundary carried by WD-T34–WD-T35.
 
-It does not convert their verification status from P4-AUDIT-PENDING to independently verified.
+Conversely, many theorem bodies are entirely internal once their explicitly typed premises are fixed. That fact describes **where the deduction is proved**, not **whether every premise in its ancestry was proved inside this repository**.
 
+Accordingly, source provenance is determined by the normalized DAG plus the EXT-1–EXT-5 pins above, while mathematical standing and H1-P4 audit status are recorded separately in [Theorem Ledger](THEOREM_LEDGER.md). Lean's distinction between `LEAN-CERTIFIED` and `LEAN-CERTIFIED-FROM-IMPORTED-PREMISE` is recorded separately in [Lean Status](LEAN_STATUS.md).
+
+This prevents the phrase “internal proof” from silently erasing an imported ancestor.
 ---
 
 ## 5. Conditional boundary
