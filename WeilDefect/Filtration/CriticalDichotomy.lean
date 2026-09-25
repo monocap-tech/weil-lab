@@ -46,8 +46,7 @@ theorem weaklyTendsto_strong_of_norm_sq_tendsto
         (𝓝 0) := by
     have hinnerSelfRe :
         RCLike.re (inner ℂ x x) = ‖x‖ ^ 2 := by
-      rw [inner_self_eq_norm_sq_to_K]
-      simp
+      rw [inner_self_eq_norm_sq_to_K, RCLike.ofReal_re]
     have hzero :
         ‖x‖ ^ 2 - 2 * RCLike.re (inner ℂ x x) + ‖x‖ ^ 2 = 0 := by
       rw [hinnerSelfRe]
@@ -118,14 +117,23 @@ theorem wd_t17_critical_positive_mass_le_half
         (fun n => ‖a (φ n)‖ ^ 2)
         atTop
         (𝓝 ((1 : ℝ) / 2)) := by
-    have hlim :=
+    have hlim :
+        Tendsto
+          (fun n =>
+            ((1 : ℝ) + jValue (a (φ n)) (u (φ n))) / 2)
+          atTop
+          (𝓝 (((1 : ℝ) + 0) / 2)) :=
       Tendsto.div_const (hone.add hqφ) (2 : ℝ)
-    have h :=
-      hlim.congr'
-        (Eventually.of_forall fun n => by
-          have hc := hcoord (φ n)
-          unfold jValue
-          nlinarith)
+    have hev :
+        (fun n =>
+          ((1 : ℝ) + jValue (a (φ n)) (u (φ n))) / 2)
+          =ᶠ[atTop]
+        (fun n => ‖a (φ n)‖ ^ 2) :=
+      Eventually.of_forall fun n => by
+        have hc := hcoord (φ n)
+        unfold jValue
+        nlinarith
+    have h := hlim.congr' hev
     norm_num at h
     exact h
   exact
@@ -186,14 +194,23 @@ theorem wd_t17_fixed_sector_critical_dichotomy
         (fun n => ‖a (φ n)‖ ^ 2)
         atTop
         (𝓝 ((1 : ℝ) / 2)) := by
-    have hlim :=
+    have hlim :
+        Tendsto
+          (fun n =>
+            ((1 : ℝ) + jValue (a (φ n)) (u (φ n))) / 2)
+          atTop
+          (𝓝 (((1 : ℝ) + 0) / 2)) :=
       Tendsto.div_const (hone.add hqφ) (2 : ℝ)
-    have h :=
-      hlim.congr'
-        (Eventually.of_forall fun n => by
-          have hc := hcoord (φ n)
-          unfold jValue
-          nlinarith)
+    have hev :
+        (fun n =>
+          ((1 : ℝ) + jValue (a (φ n)) (u (φ n))) / 2)
+          =ᶠ[atTop]
+        (fun n => ‖a (φ n)‖ ^ 2) :=
+      Eventually.of_forall fun n => by
+        have hc := hcoord (φ n)
+        unfold jValue
+        nlinarith
+    have h := hlim.congr' hev
     norm_num at h
     exact h
   have huSqTendsto :
@@ -201,14 +218,23 @@ theorem wd_t17_fixed_sector_critical_dichotomy
         (fun n => ‖u (φ n)‖ ^ 2)
         atTop
         (𝓝 ((1 : ℝ) / 2)) := by
-    have hlim :=
+    have hlim :
+        Tendsto
+          (fun n =>
+            ((1 : ℝ) - jValue (a (φ n)) (u (φ n))) / 2)
+          atTop
+          (𝓝 (((1 : ℝ) - 0) / 2)) :=
       Tendsto.div_const (hone.sub hqφ) (2 : ℝ)
-    have h :=
-      hlim.congr'
-        (Eventually.of_forall fun n => by
-          have hc := hcoord (φ n)
-          unfold jValue
-          nlinarith)
+    have hev :
+        (fun n =>
+          ((1 : ℝ) - jValue (a (φ n)) (u (φ n))) / 2)
+          =ᶠ[atTop]
+        (fun n => ‖u (φ n)‖ ^ 2) :=
+      Eventually.of_forall fun n => by
+        have hc := hcoord (φ n)
+        unfold jValue
+        nlinarith
+    have h := hlim.congr' hev
     norm_num at h
     exact h
   have huStrongSq :
