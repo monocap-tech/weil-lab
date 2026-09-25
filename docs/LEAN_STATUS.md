@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T27 | WeilDefect.rationalResponse + WeilDefect.residueFirstMoment + WeilDefect.rationalResponse_laurent_two + WeilDefect.rationalResponse_zero_moment_remainder_bound + WeilDefect.rationalResponse_zero_moment_remainder_isBigO + WeilDefect.rationalResponse_zero_moment_isBigO + WeilDefect.wd_t27_universal_inverse_square_far_decay + WeilDefect.wd_t27_universal_inverse_square_isBigO | LEAN-CERTIFIED |
 | WD-T26 | WeilDefect.rawResiduesOfNegativePairs + WeilDefect.wd_t26_zero_moment + WeilDefect.wd_t26_coefficient_mem_rawResidues + WeilDefect.wd_t26_nonzero_raw_residue_of_nonzero_coefficient + WeilDefect.wd_t26_selected_zero_moment_residue | LEAN-CERTIFIED |
 | WD-T25 | WeilDefect.problemOneDenominator + WeilDefect.problemOneL + WeilDefect.problemOneMode + WeilDefect.problemOneL_problemOneMode + WeilDefect.wd_t25_finite_problem_one_relation_trivial + WeilDefect.wd_t25_no_exact_finite_positive_compensation | LEAN-CERTIFIED |
 | WD-T24 | WeilDefect.realExpMode + WeilDefect.realExpMode_ne_zero + WeilDefect.hasDerivAt_realExpMode + WeilDefect.iteratedDeriv_realExpMode + WeilDefect.iteratedDeriv_finite_exp_sum + WeilDefect.wd_t24_finite_distinct_frequency_exponential_independence | LEAN-CERTIFIED |
@@ -2658,10 +2659,144 @@ The run passed:
 
 No stable theorem statement or mathematical hypothesis was weakened.
 
+## WD-T27 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T27: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.rationalResponse;
+- WeilDefect.residueFirstMoment;
+- WeilDefect.residueSecondMomentNorm;
+- WeilDefect.inv_sub_laurent_two;
+- WeilDefect.weighted_inv_sub_laurent_two;
+- WeilDefect.rationalResponse_laurent_two;
+- WeilDefect.rationalResponse_zero_moment_expansion;
+- WeilDefect.rationalResponse_remainder_term_bound;
+- WeilDefect.rationalResponse_zero_moment_remainder_bound;
+- WeilDefect.residueRadius;
+- WeilDefect.norm_le_residueRadius;
+- WeilDefect.rationalResponse_zero_moment_remainder_isBigO;
+- WeilDefect.rationalResponse_zero_moment_isBigO;
+- WeilDefect.wd_t27_universal_inverse_square_far_decay;
+- WeilDefect.wd_t27_universal_inverse_square_isBigO.
+
+For a finite residue vector \(v\) at locations \(\rho_i\), Lean certifies the
+exact Laurent decomposition
+
+\[
+R_v(z)
+=
+\frac{\sum_i v_i}{z}
++
+\frac{M_1(v)}{z^2}
++
+\sum_i
+\frac{v_i\rho_i^2}{z^2(z-\rho_i)},
+\]
+
+where
+
+\[
+M_1(v)=\sum_i \rho_i v_i.
+\]
+
+Under the WD-T26 zero-moment condition
+
+\[
+\sum_i v_i=0,
+\]
+
+the inverse-linear term disappears exactly.
+
+Lean then proves the quantitative far-field bound: whenever
+
+\[
+2\|\rho_i\|\le \|z\|
+\]
+
+for every selected pole,
+
+\[
+\left\|
+R_v(z)-\frac{M_1(v)}{z^2}
+\right\|
+\le
+\frac{
+2\sum_i \|v_i\|\|\rho_i\|^2
+}{
+\|z\|^3
+}.
+\]
+
+Thus the precise first-moment refinement is kernel-checked, with no hidden
+uniformity beyond the fixed finite packet.
+
+The same module also certifies the literal Landau statements on the complex
+cobounded filter:
+
+\[
+R_v(z)-\frac{M_1(v)}{z^2}
+=
+O(\|z\|^{-3}),
+\]
+
+and
+
+\[
+\boxed{
+R_v(z)=O(\|z\|^{-2}).
+}
+\]
+
+No imported project theorem premise is consumed by WD-T27.
+
+The quantitative core first passed in CI run:
+
+\[
+\texttt{36096310211}.
+\]
+
+The final certificate including the literal Landau corollaries is:
+
+\[
+\boxed{\texttt{36097347267}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{3990122ea425e7bb84b6093cd5e1b5a791c11e8c}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{aed1edaa7734adb0a1ede11aac2683053a1345da}.
+\]
+
+The final run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T27 target module;
+- rebuilding and checking the WD-T26 dependency;
+- unfinished-proof/project-axiom rejection.
+
+The repair passes affected only finite-sum normalization, Bornology scope, and
+triangle-inequality elaboration.  No theorem statement or mathematical
+hypothesis was weakened.
+
 Next theorem cursor:
 
 \[
 \boxed{
-\texttt{WD-T27 / ZW1-T8 — UNIVERSAL INVERSE-SQUARE FAR DECAY}
+\texttt{WD-T28 / ZW1-T9 — NATIVE PROBLEM-1 ZERO SYNTHESIS IS HILBERT-SCHMIDT}
 }
 \]
