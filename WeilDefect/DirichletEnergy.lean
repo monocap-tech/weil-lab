@@ -164,6 +164,16 @@ theorem problemOneDirichletEnergyComplex_eq_ofReal
   have hstar (z : ℂ) :
       star z * z = ((‖z‖ ^ 2 : ℝ) : ℂ) := by
     simpa [RCLike.star_def] using Complex.conj_mul' z
+  change
+    star (iteratedDeriv 1 (dirichletProblemOneColumn t gamma) x) *
+          iteratedDeriv 1 (dirichletProblemOneColumn t gamma) x
+        + (1 / 4 : ℂ) *
+          star (dirichletProblemOneColumn t gamma x) *
+          dirichletProblemOneColumn t gamma x
+      =
+    ((‖iteratedDeriv 1 (dirichletProblemOneColumn t gamma) x‖ ^ 2
+        + (1 / 4 : ℝ) *
+          ‖dirichletProblemOneColumn t gamma x‖ ^ 2 : ℝ) : ℂ)
   rw [hstar (iteratedDeriv 1 (dirichletProblemOneColumn t gamma) x)]
   rw [mul_assoc, hstar (dirichletProblemOneColumn t gamma x)]
   norm_cast
@@ -258,12 +268,12 @@ theorem problemOneGreenPairing_eq_dirichletEnergyComplex
           have hnegInt :
               IntervalIntegrable
                 (fun x => -(star (ddF x) * F x))
-                MeasureSpace.volume (-t) t :=
+                volume (-t) t :=
             hddprod.neg.intervalIntegrable (-t) t
           have hmassInt :
               IntervalIntegrable
                 (fun x => (1 / 4 : ℂ) * star (F x) * F x)
-                MeasureSpace.volume (-t) t :=
+                volume (-t) t :=
             hmassprod.intervalIntegrable (-t) t
           rw [intervalIntegral.integral_add hnegInt hmassInt]
           rw [intervalIntegral.integral_neg]
@@ -285,12 +295,12 @@ theorem problemOneGreenPairing_eq_dirichletEnergyComplex
           have hgradInt :
               IntervalIntegrable
                 (fun x => star (dF x) * dF x)
-                MeasureSpace.volume (-t) t :=
+                volume (-t) t :=
             hgradprod.intervalIntegrable (-t) t
           have hmassInt :
               IntervalIntegrable
                 (fun x => (1 / 4 : ℂ) * star (F x) * F x)
-                MeasureSpace.volume (-t) t :=
+                volume (-t) t :=
             hmassprod.intervalIntegrable (-t) t
           rw [intervalIntegral.integral_add hgradInt hmassInt]
 
