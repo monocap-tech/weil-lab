@@ -1,5 +1,5 @@
 # Lean Formalization Track
-## LEAN-H1 — Certification before H1-P5
+## LEAN-H1 — Certification before H1-P5 — EXHAUSTED
 
 This track temporarily preempts H1-P5.
 
@@ -57,7 +57,7 @@ The imported premise itself remains separately unformalized until its source the
 - prohibit `sorry`, `admit`, and project `axiom`;
 - certify a small vertical slice of algebraic theorem/example statements.
 
-### LEAN-H1-P1 — Algebraic and finite-dimensional core — ACTIVE
+### LEAN-H1-P1 — Algebraic and finite-dimensional core — COMPLETE
 
 Primary targets:
 
@@ -143,15 +143,16 @@ Only after this exhaustion condition is met does the project resume:
 
 ## Current control state
 
-- **LEAN-H1:** ACTIVE.
-- **H1-P5:** PAUSED until LEAN-H1 exhaustion.
-- **Active phase:** LEAN-H1-P1 — algebraic and finite-dimensional core.
-- **Active cursor:** WD-X06 — positive-coordinate mass loss strengthens criticality to negativity.
+- **LEAN-H1:** EXHAUSTED.
+- **H1-P5:** READY — NOT STARTED.
+- **Active Lean phase:** none.
+- **Active Lean cursor:** none.
+- **Next project cursor:** H1-P5.0 — public package architecture.
 
 ```math
 \boxed{
-\texttt{LEAN-H1-P1 / WD-X06 — POSITIVE-COORDINATE MASS LOSS STRENGTHENS CRITICALITY TO NEGATIVITY}
+\texttt{LEAN-H1 EXHAUSTED / NEXT: H1-P5.0 — PUBLIC PACKAGE ARCHITECTURE (NOT STARTED)}
 }
 ```
 
-WD-X05 is now `LEAN-CERTIFIED`. The active queue advances to WD-X06; certification still requires a successful pinned CI build under the rule above. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence.
+WD-X06 is now `LEAN-CERTIFIED`. Every stable Horizon-1 theorem/example has a durable final Lean state, so LEAN-H1 is exhausted. H1-P5.0 is the next project cursor but has not been started. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence.
