@@ -232,7 +232,7 @@ while
 
 and no nonzero limiting coefficient relation survives.
 
-This is the **full coefficient moving-sector escape** morphology. Escape of the selected negative coordinates alone is not enough to conclude (w_nightharpoonup0) if some positive coefficient block remains anchored.
+This is the **full coefficient moving-sector escape** morphology. Escape of the selected negative coordinates alone is not enough to conclude $w_n\rightharpoonup0$ if some positive coefficient block remains anchored.
 
 **Standing:** PROVED as a Hilbert-space compactness classification; realized explicitly by WD-E5 and the toy compact diagonal model.
 
@@ -628,7 +628,7 @@ Its signature is
 }
 ```
 
-Thus a fixed full-divisor negative **weak limit** survives. Strong convergence of the entire coefficient vector requires the additional hypothesis (a_n  o a) strongly.
+Thus a fixed full-divisor negative **weak limit** survives. Strong convergence of the entire coefficient vector requires the additional hypothesis $a_n\to a$ strongly.
 
 ---
 
