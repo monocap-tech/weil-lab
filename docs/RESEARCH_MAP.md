@@ -33,7 +33,9 @@ Current position:
 \qquad
 \text{LEAN-H1 EXHAUSTED}
 \qquad
-\text{H1-P5 ACTIVE}.
+\text{H1-P5 COMPLETE}\\
+\qquad
+\text{HORIZON 1 COMPLETE}.
 }
 ```
 
@@ -551,19 +553,15 @@ Thus
 
 ## Current cursor
 
-Lean certification has reached its exhaustion condition.
-
-Current package cursor:
+Horizon 1 is complete.
 
 ```math
 \boxed{
-\texttt{H1-P5.5 / FINAL PACKAGE ADVERSARIAL PASS}
+\texttt{HORIZON 1 COMPLETE / POST-H1 CURSOR NOT SELECTED}
 }
 ```
 
-H1-P5.0 through H1-P5.4 are complete; the package is assembled and awaiting the final cross-surface adversarial pass.
-
-The example/sharpness audit is complete and LEAN-H1 is exhausted. Certificate evidence is recorded in [Lean Status](LEAN_STATUS.md). Public-package work is now active under the canonical [Public Package Architecture](PUBLIC_PACKAGE_ARCHITECTURE.md).
+LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The final package certificate is [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). No post-Horizon research program has been started.
 
 ---
 
