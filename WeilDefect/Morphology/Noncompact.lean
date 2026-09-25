@@ -283,4 +283,198 @@ theorem wd_t39_p3_b7_finite_shadow_separation
       WeilDefect.WDT14.wd_t14_graph_shadow_admissible_iff
         X U a u hgraph
 
+/--
+A full-carrier coordinate exhaustion.  Finite-dimensionality of every block
+records the finite-rank morphology; the weak-zero implication below uses the
+strong approximate-identity and self-adjointness properties.
+-/
+structure FullCoordinateExhaustion
+    (K : Type*)
+    [NormedAddCommGroup K] [InnerProductSpace ℂ K] [CompleteSpace K] where
+  block : ℕ → K →L[ℂ] K
+  rangeFinite : ∀ R, FiniteDimensional ℂ (block R).range
+  selfAdjoint : ∀ R, (block R)† = block R
+  strongToId : ∀ z : K, Tendsto (fun R => block R z) atTop (𝓝 z)
+
+/--
+Continuous linear maps preserve Hilbert weak convergence.  This helper is
+used to pass a weak coefficient limit through a synthesis map.
+-/
+theorem weaklyTendsto_map
+    {K H : Type*}
+    [NormedAddCommGroup K] [InnerProductSpace ℂ K] [CompleteSpace K]
+    [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+    (S : K →L[ℂ] H)
+    {w : ℕ → K} {wLim : K}
+    (hweak : WeilDefect.WDT16.WeaklyTendsto w wLim) :
+    WeilDefect.WDT16.WeaklyTendsto
+      (fun n => S (w n)) (S wLim) := by
+  intro y
+  have h := hweak ((S†) y)
+  simpa [ContinuousLinearMap.adjoint_inner_right] using h
+
+/-- A weak coefficient limit whose synthesized images converge strongly to
+zero lies in the synthesis kernel. -/
+theorem weak_limit_mem_kernel_of_image_tendsto_zero
+    {K H : Type*}
+    [NormedAddCommGroup K] [InnerProductSpace ℂ K] [CompleteSpace K]
+    [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+    (S : K →L[ℂ] H)
+    {w : ℕ → K} {wLim : K}
+    (hweak : WeilDefect.WDT16.WeaklyTendsto w wLim)
+    (himage : Tendsto (fun n => S (w n)) atTop (𝓝 0)) :
+    S wLim = 0 := by
+  have hmap := weaklyTendsto_map S hweak
+  apply ext_inner_right ℂ
+  intro y
+  have hweakY := hmap y
+  have hc : Continuous (fun x : H => inner ℂ x y) := by
+    fun_prop
+  have hstrongY :
+      Tendsto (fun n => inner ℂ (S (w n)) y)
+        atTop (𝓝 0) := by
+    simpa using (hc.tendsto 0).comp himage
+  have heq :=
+    tendsto_nhds_unique hweakY hstrongY
+  simpa using heq
+
+/--
+P3-B1 / WD-T39 anchored-mass theorem.
+
+Once a fixed finite coordinate block converges strongly along the chosen weak
+subsequence and retains a positive amount of mass, the weak limit is nonzero.
+If the synthesized witnesses simultaneously converge strongly to zero, that
+nonzero limit lies in the synthesis kernel.
+-/
+theorem wd_t39_p3_b1_anchored_mass
+    {K H : Type*}
+    [NormedAddCommGroup K] [InnerProductSpace ℂ K] [CompleteSpace K]
+    [NormedAddCommGroup H] [InnerProductSpace ℂ H] [CompleteSpace H]
+    (S : K →L[ℂ] H)
+    (Q : K →L[ℂ] K)
+    {w : ℕ → K} {wLim : K}
+    (δ : ℝ) (hδ : 0 < δ)
+    (hweak : WeilDefect.WDT16.WeaklyTendsto w wLim)
+    (hQ :
+      Tendsto (fun n => Q (w n)) atTop (𝓝 (Q wLim)))
+    (hanchor : ∀ᶠ n in atTop, δ ≤ ‖Q (w n)‖)
+    (himage : Tendsto (fun n => S (w n)) atTop (𝓝 0)) :
+    wLim ≠ 0 ∧ S wLim = 0 := by
+  have hδle : δ ≤ ‖Q wLim‖ :=
+    le_of_tendsto hQ.norm hanchor
+  have hw0 : wLim ≠ 0 := by
+    intro hw
+    rw [hw, map_zero, norm_zero] at hδle
+    linarith
+  exact ⟨hw0,
+    weak_limit_mem_kernel_of_image_tendsto_zero
+      S hweak himage⟩
+
+/--
+P3-B2 / WD-T39 full-coefficient moving-sector escape.
+
+For a uniformly normalized sequence in the full coefficient carrier, if every
+fixed block of a self-adjoint strong coordinate exhaustion vanishes strongly,
+then the whole sequence converges weakly to zero.  The exhaustion acts on the
+full carrier; no selected-negative-only projection appears in the statement.
+-/
+theorem wd_t39_p3_b2_full_coordinate_escape_weak_zero
+    {K : Type*}
+    [NormedAddCommGroup K] [InnerProductSpace ℂ K] [CompleteSpace K]
+    (E : FullCoordinateExhaustion K)
+    (w : ℕ → K)
+    (hbound : ∀ n, ‖w n‖ ≤ 1)
+    (hblock :
+      ∀ R,
+        Tendsto (fun n => E.block R (w n))
+          atTop (𝓝 0)) :
+    WeilDefect.WDT16.WeaklyTendsto w 0 := by
+  intro z
+  change
+    Tendsto (fun n => inner ℂ (w n) z)
+      atTop (𝓝 0)
+  rw [Metric.tendsto_atTop]
+  intro ε hε
+  have hε4 : 0 < ε / 4 := by linarith
+  have hε2 : 0 < ε / 2 := by linarith
+  rcases
+      Metric.tendsto_atTop.mp (E.strongToId z)
+        (ε / 4) hε4 with
+    ⟨R, hR⟩
+  have hzApprox :
+      ‖z - E.block R z‖ < ε / 4 := by
+    have hz := hR R le_rfl
+    simpa [dist_eq_norm, norm_sub_rev] using hz
+  have hinnerBlock :
+      Tendsto
+        (fun n => inner ℂ (E.block R (w n)) z)
+        atTop (𝓝 0) := by
+    have hc : Continuous (fun x : K => inner ℂ x z) := by
+      fun_prop
+    simpa using (hc.tendsto 0).comp (hblock R)
+  rcases
+      Metric.tendsto_atTop.mp hinnerBlock
+        (ε / 2) hε2 with
+    ⟨N, hN⟩
+  refine ⟨N, ?_⟩
+  intro n hn
+  have hblockInner :
+      ‖inner ℂ (E.block R (w n)) z‖ < ε / 2 := by
+    have h := hN n hn
+    simpa [dist_eq_norm] using h
+  have hfirst :
+      ‖inner ℂ (w n) (z - E.block R z)‖ < ε / 4 := by
+    calc
+      ‖inner ℂ (w n) (z - E.block R z)‖
+          ≤ ‖w n‖ * ‖z - E.block R z‖ :=
+        norm_inner_le_norm _ _
+      _ ≤ 1 * ‖z - E.block R z‖ := by
+        exact mul_le_mul_of_nonneg_right
+          (hbound n) (norm_nonneg _)
+      _ < ε / 4 := by
+        simpa using hzApprox
+  have hsecondEq :
+      inner ℂ (w n) (E.block R z)
+        =
+      inner ℂ (E.block R (w n)) z := by
+    rw [← E.selfAdjoint R]
+    exact
+      ContinuousLinearMap.adjoint_inner_right
+        (E.block R) (w n) z
+  have hsecond :
+      ‖inner ℂ (w n) (E.block R z)‖ < ε / 2 := by
+    rw [hsecondEq]
+    exact hblockInner
+  have hdecomp :
+      inner ℂ (w n) z
+        =
+      inner ℂ (w n) (z - E.block R z)
+        + inner ℂ (w n) (E.block R z) := by
+    calc
+      inner ℂ (w n) z
+          =
+        inner ℂ (w n)
+          ((z - E.block R z) + E.block R z) := by
+            congr 1
+            abel
+      _ =
+        inner ℂ (w n) (z - E.block R z)
+          + inner ℂ (w n) (E.block R z) := by
+            rw [inner_add_right]
+  have htotal :
+      ‖inner ℂ (w n) z‖ < ε := by
+    rw [hdecomp]
+    calc
+      ‖inner ℂ (w n) (z - E.block R z)
+          + inner ℂ (w n) (E.block R z)‖
+          ≤
+        ‖inner ℂ (w n) (z - E.block R z)‖
+          + ‖inner ℂ (w n) (E.block R z)‖ :=
+        norm_add_le _ _
+      _ < ε / 4 + ε / 2 :=
+        add_lt_add hfirst hsecond
+      _ < ε := by linarith
+  simpa [dist_eq_norm] using htotal
+
+
 end WeilDefect
