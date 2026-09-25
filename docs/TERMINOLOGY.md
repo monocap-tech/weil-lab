@@ -809,13 +809,13 @@ It does not mean independent certification or external refereeing.
 
 Under the strict endpoint convention
 
-\[
+```math
 \log n<2c,
-\]
+```
 
 the **right-limit compact-window operator** is the operator seen under arbitrarily small strict right enlargement:
 
-\[
+```math
 \mathcal W_{c+}^{\rm ext}
 =
 \mathcal A_\infty
@@ -825,7 +825,7 @@ the **right-limit compact-window operator** is the operator seen under arbitrari
 (\tau_{\log n}+\tau_{-\log n})
 +
 \mathcal R_{\rm pole}.
-\]
+```
 
 Away from a prime-power threshold it equals \(\mathcal W_c^{\rm ext}\). At a threshold it differs by the finite equality-threshold translation terms.
 
@@ -833,27 +833,27 @@ Away from a prime-power threshold it equals \(\mathcal W_c^{\rm ext}\). At a thr
 
 In the audited stable theorem WD-T39, a **fixed full-divisor negative weak limit** is
 
-\[
+```math
 Y_{\rm full}=(a,u,b)
-\]
+```
 
 with
 
-\[
+```math
 a_n\rightharpoonup a,
 \qquad
 u_n\to u,
 \qquad
 b_n\to b.
-\]
+```
 
 Thus the whole negative sector converges strongly while the positive coordinate may converge only weakly.
 
 The earlier stronger phrase **fixed full-divisor ray** applies as a full strong limit only when the additional positive-coordinate compactness condition
 
-\[
+```math
 a_n\to a
-\]
+```
 
 is also available.
 
