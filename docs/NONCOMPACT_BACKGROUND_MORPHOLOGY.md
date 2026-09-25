@@ -628,7 +628,7 @@ Its signature is
 }
 ```
 
-Thus a fixed full-divisor negative **weak limit** survives. Strong convergence of the entire coefficient vector requires the additional hypothesis (a_n	o a) strongly.
+Thus a fixed full-divisor negative **weak limit** survives. Strong convergence of the entire coefficient vector requires the additional hypothesis (a_n  o a) strongly.
 
 ---
 
