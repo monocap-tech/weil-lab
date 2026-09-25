@@ -184,14 +184,14 @@ The public artifacts checked by the final adversarial pass have these blobs:
 
 | Artifact | Blob SHA |
 | --- | --- |
-| PUBLIC_PACKAGE_ARCHITECTURE.md | 8d7531d3730408aad3de8f5f4c03c1dd7e997e51 |
-| WEIL_DEFECT_MANUSCRIPT.md | 1733bbec96714551f48df64271ad36f23eb34ec6 |
-| PUBLIC_THEOREM_INDEX.md | de47be44e66e3fbc439a225195f5c37eeee89c40 |
-| PUBLIC_VERIFICATION_MATRIX.md | a4625a0ce629aa02b19c9af69cb4dbe503a445e5 |
-| PUBLIC_DEPENDENCY_MAP.md | 6d0c4527a50e424711c3c0d1b9c430e7b8f9111d |
-| PUBLIC_EXAMPLES.md | 12d762cd0971cf41ac0ec2c9b0eb13641a9641b3 |
-| RH_INTERFACE_APPENDIX.md | 1e7a4f7a573cbd8eb10244a0fa78b995c866a60f |
-| README.md | 47678ab1595d59247065538ff6b32e295ccee1af |
+| PUBLIC_PACKAGE_ARCHITECTURE.md | 2bb5bdffa97713cf6bc48672c326f5734df55bd0 |
+| WEIL_DEFECT_MANUSCRIPT.md | f5239e3a3a0a6071177999c977766b7b88032cba |
+| PUBLIC_THEOREM_INDEX.md | d85fd02f3261de2f10fc1718b206e3e051e8a656 |
+| PUBLIC_VERIFICATION_MATRIX.md | 9af172f89b7f2875e7f44c6cd299d1f89e5def3a |
+| PUBLIC_DEPENDENCY_MAP.md | e741977cf0c125a8d2cf2cb23c6e4033ab135946 |
+| PUBLIC_EXAMPLES.md | d82273d864e4b94923d6dd11962eb8278353d7ac |
+| RH_INTERFACE_APPENDIX.md | d6de13eec961bd51dcf898cb8b9c7cd9aa03525b |
+| README.md | 13cfe0fed8684dc166b23693ca21acd0723b057e |
 
 ---
 
@@ -215,7 +215,55 @@ the architecture and README blobs recorded above.
 
 ---
 
-## 10. H1-P5 determination
+## 10. Reader prose and relational-statement red-team pass
+
+After package closure, the reader-facing artifacts received a separate prose
+and relation audit. This pass did not alter theorem statements, mathematical
+standing, Lean status, dependency edges, source pins, or interface status.
+
+The pass corrected or clarified the following reader risks:
+
+- fixed-sector persistence language now names the WD-T16/WD-T17 support-
+  filtration hypotheses instead of sounding unconditional;
+- moving selected-sector escape is distinguished from vanishing selected mass
+  and from later unselected-background escape;
+- WD-T38 prose now names the unit-gain, physical-adjoint-realization, and
+  carrier-identification hypotheses before stating the compact-window null
+  conclusion;
+- discrete Lean witnesses for WD-X02 and WD-X05 are described as realizations
+  of the same sharpness phenomenon rather than as mathematically identical or
+  equivalent models;
+- the dependency map now distinguishes direct imported-source entry points
+  from transitive imported ancestry;
+- the verification matrix now distinguishes a certificate record from a
+  dedicated single-target CI run and explicitly separates Lean status from
+  mathematical source ancestry;
+- AZ-NEXTJET-LOC prose now states the quantified near-field obligation without
+  describing the far divisor as literally removed;
+- AZ-FIN-WEIL-NULL-EXTENSION prose now separates persistence transport from
+  exclusion of a nonzero endpoint mode rather than treating them as one
+  unspecified 'direction' of a theorem;
+- README status and theorem summaries now reflect Horizon-1 completion and
+  the actual mathematical standing of the rank-one specialization;
+- public architecture prose now matches the actual manuscript/example layout
+  and no longer implies that the manuscript ends where the RH appendix begins.
+
+Read-only validation after these edits confirmed:
+
+- all 39 public theorem rows still agree with the canonical theorem ledger and
+  Lean status ledger;
+- every relative Markdown link in the public reader artifacts resolves to a
+  repository file;
+- all math/code fences are balanced and no escaped-fence or control-character
+  defects remain;
+- all three actual-zeta interfaces remain explicitly open;
+- no post-Horizon cursor was introduced.
+
+**Result:** PASS.
+
+---
+
+## 11. H1-P5 determination
 
 All seven specialist/public surfaces and the repository entrypoint are
 assembled and have passed the final cross-surface adversarial audit.
