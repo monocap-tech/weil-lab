@@ -44,12 +44,18 @@ theorem weaklyTendsto_strong_of_norm_sq_tendsto
         (fun n => ‖v n - x‖ ^ 2)
         atTop
         (𝓝 0) := by
+    have hinnerSelfRe :
+        RCLike.re (inner ℂ x x) = ‖x‖ ^ 2 := by
+      rw [inner_self_eq_norm_sq_to_K]
+      simp
     have hzero :
         ‖x‖ ^ 2 - 2 * RCLike.re (inner ℂ x x) + ‖x‖ ^ 2 = 0 := by
-      simp [inner_self_eq_norm_sq_to_K]
-    rw [← hzero]
-    simpa only [norm_sub_sq] using
-      ((hnorm.sub htwo).add_const (‖x‖ ^ 2))
+      rw [hinnerSelfRe]
+      ring
+    have hcalc :=
+      (hnorm.sub htwo).add_const (‖x‖ ^ 2)
+    rw [hzero] at hcalc
+    simpa only [norm_sub_sq (𝕜 := ℂ)] using hcalc
   have hnormSub :
       Tendsto
         (fun n => ‖v n - x‖)
@@ -114,11 +120,14 @@ theorem wd_t17_critical_positive_mass_le_half
         (𝓝 ((1 : ℝ) / 2)) := by
     have hlim :=
       Tendsto.div_const (hone.add hqφ) (2 : ℝ)
-    convert hlim.congr'
-      (Eventually.of_forall fun n => by
-        have hc := hcoord (φ n)
-        unfold jValue
-        nlinarith) using 1 <;> norm_num
+    have h :=
+      hlim.congr'
+        (Eventually.of_forall fun n => by
+          have hc := hcoord (φ n)
+          unfold jValue
+          nlinarith)
+    norm_num at h
+    exact h
   exact
     weaklyTendsto_norm_sq_le_of_tendsto
       haWeak haSqTendsto
@@ -179,11 +188,14 @@ theorem wd_t17_fixed_sector_critical_dichotomy
         (𝓝 ((1 : ℝ) / 2)) := by
     have hlim :=
       Tendsto.div_const (hone.add hqφ) (2 : ℝ)
-    convert hlim.congr'
-      (Eventually.of_forall fun n => by
-        have hc := hcoord (φ n)
-        unfold jValue
-        nlinarith) using 1 <;> norm_num
+    have h :=
+      hlim.congr'
+        (Eventually.of_forall fun n => by
+          have hc := hcoord (φ n)
+          unfold jValue
+          nlinarith)
+    norm_num at h
+    exact h
   have huSqTendsto :
       Tendsto
         (fun n => ‖u (φ n)‖ ^ 2)
@@ -191,11 +203,14 @@ theorem wd_t17_fixed_sector_critical_dichotomy
         (𝓝 ((1 : ℝ) / 2)) := by
     have hlim :=
       Tendsto.div_const (hone.sub hqφ) (2 : ℝ)
-    convert hlim.congr'
-      (Eventually.of_forall fun n => by
-        have hc := hcoord (φ n)
-        unfold jValue
-        nlinarith) using 1 <;> norm_num
+    have h :=
+      hlim.congr'
+        (Eventually.of_forall fun n => by
+          have hc := hcoord (φ n)
+          unfold jValue
+          nlinarith)
+    norm_num at h
+    exact h
   have huStrongSq :
       Tendsto
         (fun n => ‖u (φ n)‖ ^ 2)
