@@ -161,8 +161,10 @@ theorem problemOneDirichletEnergyComplex_eq_ofReal
   rw [← intervalIntegral.integral_ofReal]
   apply intervalIntegral.integral_congr
   intro x hx
-  simp only [RCLike.star_def]
-  rw [Complex.conj_mul', Complex.conj_mul']
+  have hstar (z : ℂ) :
+      star z * z = ((‖z‖ ^ 2 : ℝ) : ℂ) := by
+    simpa [RCLike.star_def] using Complex.conj_mul' z
+  rw [hstar, hstar]
   norm_cast
   ring
 
@@ -252,9 +254,11 @@ theorem problemOneGreenPairing_eq_dirichletEnergyComplex
         +
       ∫ x in -t..t,
         (1 / 4 : ℂ) * star (F x) * F x := by
-          rw [intervalIntegral.integral_add
-            hddprod.neg.intervalIntegrable
-            hmassprod.intervalIntegrable]
+          have hnegInt :=
+            hddprod.neg.intervalIntegrable (-t) t
+          have hmassInt :=
+            hmassprod.intervalIntegrable (-t) t
+          rw [intervalIntegral.integral_add hnegInt hmassInt]
           rw [intervalIntegral.integral_neg]
     _ =
       (∫ x in -t..t, star (dF x) * dF x)
@@ -271,10 +275,11 @@ theorem problemOneGreenPairing_eq_dirichletEnergyComplex
       ∫ x in -t..t,
         (star (dF x) * dF x
           + (1 / 4 : ℂ) * star (F x) * F x) := by
-          rw [intervalIntegral.integral_add
-            hgradprod.intervalIntegrable
-            hmassprod.intervalIntegrable]
-  rfl
+          have hgradInt :=
+            hgradprod.intervalIntegrable (-t) t
+          have hmassInt :=
+            hmassprod.intervalIntegrable (-t) t
+          rw [intervalIntegral.integral_add hgradInt hmassInt]
 
 /--
 The native Green pairing is literally the real nonnegative H^{-1}_L energy.
