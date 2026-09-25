@@ -9,8 +9,8 @@ open scoped Topology
 The real-line exponential mode with complex frequency freq.
 This is exactly x ↦ exp(x freq).
 -/
-def realExpMode (freq : ℂ) (x : ℝ) : ℂ :=
-  Complex.exp ((x : ℂ) * freq)
+noncomputable def realExpMode (freq : ℂ) (x : ℝ) : ℂ :=
+  Complex.exp (freq * (x : ℂ))
 
 /-- The complex exponential mode never vanishes. -/
 theorem realExpMode_ne_zero (freq : ℂ) (x : ℝ) :
@@ -25,7 +25,7 @@ theorem hasDerivAt_realExpMode (freq : ℂ) (x : ℝ) :
     HasDerivAt (realExpMode freq) (freq * realExpMode freq x) x := by
   have h :=
     hasDerivAt_exp_smul_const' (𝕂 := ℝ) (𝔸 := ℂ) freq x
-  simpa [realExpMode, ← Complex.exp_eq_exp_ℂ, smul_eq_mul, mul_comm] using h
+  simpa [realExpMode, ← Complex.exp_eq_exp_ℂ, smul_eq_mul] using h
 
 /--
 The k-th real derivative of x ↦ exp(x freq) is freq^k exp(x freq).
@@ -50,6 +50,7 @@ finite iterated derivative required by the Vandermonde argument.
 theorem contDiffAt_const_mul_realExpMode
     (k : ℕ) (c freq : ℂ) (x : ℝ) :
     ContDiffAt ℝ k (fun y : ℝ => c * realExpMode freq y) x := by
+  unfold realExpMode
   fun_prop
 
 /--
@@ -66,7 +67,6 @@ theorem iteratedDeriv_finite_exp_sum
     intro i hi
     rw [iteratedDeriv_const_mul_field]
     rw [iteratedDeriv_realExpMode]
-    simp only [Pi.zero_apply]
     ring
   · intro i hi
     exact contDiffAt_const_mul_realExpMode k (c i) (freq i) x
