@@ -30,8 +30,10 @@ theorem iteratedDeriv_centered_power
   have hpow :
       iteratedDeriv k (fun z : ℂ => z ^ m) 0
         =
-      if k = m then (m.factorial : ℂ) else 0 :=
-    iteratedDeriv_fun_pow_zero
+      if k = m then (m.factorial : ℂ) else 0 := by
+    simpa using
+      (iteratedDeriv_fun_pow_zero
+        (𝕜 := ℂ) (n := k) (m := m))
   simpa only [add_zero, add_sub_cancel_left] using hshift.trans hpow
 
 /--
@@ -48,6 +50,11 @@ theorem iteratedDeriv_centered_power_mul
   have hp :
       ContDiffAt ℂ m (fun z : ℂ => (z - mu) ^ m) mu := by
     fun_prop
+  change
+    iteratedDeriv m
+      ((fun z : ℂ => (z - mu) ^ m) * g) mu
+      =
+    (m.factorial : ℂ) * g mu
   rw [iteratedDeriv_mul hp hg]
   classical
   rw [Finset.sum_eq_single m]
