@@ -83,8 +83,8 @@ The legacy word **PROVED** in earlier files means “internal proof standing.”
 | --- | --- | --- | --- | --- | --- |
 | WD-T30 | ZW2-T1 | Two-mode selected-preserving scalar multiplier exists | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 | WD-T31 | ZW2-T2 | Zero moment + zero counting gives $O((\log R)/R)$ far complementary tail | INTERNAL-PROOF + imported zero count | SOURCE-PINNED; P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T32 | ZW2-T3 + ZW2-T4 | Complementary response equals the weighted completed $\Xi$ next-jet field | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
-| WD-T33 | ZW2-T5 | Adaptive near-minus-archimedean cancellation collapses prime term onto far tail | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T32 | ZW2-T3 + ZW2-T4 | Near complementary response is represented by the weighted completed $\Xi$ next-jet field | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
+| WD-T33 | ZW2-T5 | At a fixed cutoff, adaptive near-minus-archimedean cancellation collapses the corresponding prime term onto the far term | INTERNAL-PROOF | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 | WD-T34 | ZW2-T6 | Fixed compact support activates only finitely many prime-power translations | DERIVED from IMPORTED compact-window formula | SOURCE-PINNED; P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 | WD-T35 | ZW2-T7 | Compact-window Weil form has logarithmic Fourier/form order | DERIVED | SOURCE-PINNED; P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
 | WD-T36 | ZW2-T8 | Logarithmic form control yields no uniform positive-Sobolev coercive estimate; finite translations add no smoothing | INTERNAL-PROOF/SHARPNESS | P4-AUDIT-PASSED | [Explicit-Formula Arithmetic Attachment](EXPLICIT_FORMULA_ARITHMETIC_ATTACHMENT.md) |
@@ -113,7 +113,7 @@ Examples are not assigned theorem IDs.
 | WD-X04 | WD-E4 | Direct compression can remain strong while shorted covariance collapses |
 | WD-X05 | WD-E5 | Moving finite sectors can lose every persistent ray |
 | WD-X06 | WD-E6 | Positive-coordinate mass loss can strengthen neutrality into negative persistence |
-| WD-X07 | ZW1-E1 | The inverse-square far order is universally sharp |
+| WD-X07 | ZW1-E1 | The inverse-square far order is sharp under the zero-moment hypothesis alone |
 
 All examples have verification status **EXAMPLE-AUDIT-PASSED**. See [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md).
 
@@ -139,13 +139,13 @@ Verification status: **SCOPE-ONLY**.
 
 These are deliberately not theorem IDs.
 
-| Interface | Role | Consumed by |
+| Interface | Role | Reached from |
 | --- | --- | --- |
 | AZ-NEXTJET-LOC | Actual-zeta control/exclusion of the weighted near next-jet field | WD-T37 |
 | C-ACTUAL-KPH-FLOOR | Stronger special-packet KPH/transversality floor | special refinement of WD-T37 |
 | AZ-FIN-WEIL-NULL-EXTENSION | Exterior support/null-extension theorem for actual unit-gain neutral modes | WD-T38 |
 
-PAP/MTP closure and RH remain outside Horizon 1.
+PAP/MTP closure and RH remain outside Horizon 1. These interfaces are downstream stop lines; WD-T37 and WD-T38 do not consume them as premises.
 
 ---
 
@@ -153,6 +153,6 @@ PAP/MTP closure and RH remain outside Horizon 1.
 
 A stable theorem ID is a name, not a certification mark.
 
-No theorem in this ledger should be described as “certified,” “formally verified,” or “independently checked” until its verification status is explicitly changed by a later audit/certificate artifact.
+`P4-AUDIT-PASSED` and related H1-P4 labels are internal audit statuses, not formal certification. Lean certification is tracked separately in [Lean Status](LEAN_STATUS.md); an entry should be described as `LEAN-CERTIFIED` only when that ledger records the successful certificate.
 
 Historical labels remain immutable provenance aliases.
