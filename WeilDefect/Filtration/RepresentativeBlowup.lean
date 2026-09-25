@@ -34,7 +34,7 @@ theorem weaklyTendsto_map
     (h : WeilDefect.WDT16.WeaklyTendsto v x) :
     WeilDefect.WDT16.WeaklyTendsto (fun n => T (v n)) (T x) := by
   intro z
-  have hz := h (T† z)
+  have hz := h ((T†) z)
   simpa [ContinuousLinearMap.adjoint_inner_right] using hz
 
 /-- Weak limits are unique in a complex Hilbert space. -/
@@ -198,22 +198,23 @@ theorem wd_t19_boundary_amplification
     intro n
     rcases hfail (r n) (hrpos n) (r n) (hrpos n) with
       ⟨t, hct, htc, h, hhmem, happ, hbudget⟩
-    exact ⟨t, hct, htc, h, hhmem, happ, le_of_not_gt hbudget⟩
+    exact ⟨t, hct, htc, h, hhmem, happ, hbudget⟩
   choose t ht using hw
   have hexh : ∀ n, ∃ h : P,
       h ∈ S (t n) ∧ ‖T h - y‖ < r n ∧ ‖h‖ ≤ M :=
     fun n => (ht n).2.2
   choose h hh using hexh
   have hr0 : Tendsto r atTop (𝓝 0) := by
-    simpa [r] using tendsto_one_div_add_atTop_nhds_zero_nat
+    simpa only [r] using tendsto_one_div_add_atTop_nhds_zero_nat
   have hdiff :
       Tendsto (fun n => t n - c) atTop (𝓝 0) := by
-    apply squeeze_zero
+    refine squeeze_zero
+      (f := fun n => t n - c) (g := r) ?_ ?_ hr0
     · intro n
       exact sub_nonneg.mpr (ht n).1.le
     · intro n
-      linarith [(ht n).2.1]
-    · exact hr0
+      exact sub_le_iff_le_add.mpr (by
+        simpa [add_comm] using (ht n).2.1.le)
   have ht0 : Tendsto t atTop (𝓝 c) := by
     have hadd := hdiff.add_const c
     simpa [sub_add_cancel] using hadd
@@ -230,11 +231,12 @@ theorem wd_t19_boundary_amplification
     wd_t19_endpoint_representative_blowup
       S T c hS hrc y hnew t ht0 h
       (fun n => (hh n).1) himage0
-  have hev : ∀ᶠ n in atTop, M < ‖h n‖ :=
-    (tendsto_atTop.1 hblow M).mono fun n hn => lt_of_le_of_lt hn (lt_add_one _)
+  have hev : ∀ᶠ n in atTop, M + 1 ≤ ‖h n‖ :=
+    tendsto_atTop.1 hblow (M + 1)
   rcases (eventually_atTop.1 hev) with ⟨N, hN⟩
-  have hcontra := hN N le_rfl
-  exact (not_lt_of_ge (hh N).2.2) hcontra
+  have hlarge := hN N le_rfl
+  have hbudget := (hh N).2.2
+  linarith
 
 /--
 WD-C9 normalized blow-up package. Vanishing coefficient amplitude converts
@@ -264,7 +266,8 @@ theorem wd_t19_vanishing_amplitude_normalized_blowup
     rw [inv_mul_cancel₀ hne, one_smul]
   have hnorm : ∀ n, ‖h n‖ = (ε n)⁻¹ := by
     intro n
-    rw [h, norm_smul, hgnorm n, mul_one]
+    change ‖((ε n : ℂ)⁻¹) • g n‖ = (ε n)⁻¹
+    rw [norm_smul, hgnorm n, mul_one]
     have hpos := hεpos n
     simp [Complex.norm_real, abs_of_pos hpos]
   have hεWithin : Tendsto ε atTop (𝓝[>] (0 : ℝ)) := by
