@@ -82,8 +82,8 @@ noncomputable def compactPrimeTranslationSum
     (weight : ℕ → E)
     (f : ℝ → E)
     (x : ℝ) : E :=
-  ∑ n ∈ activePrimePowerFinset c,
-    weight n + symmetricPrimeTranslation n f x
+  Finset.sum (activePrimePowerFinset c)
+    (fun n => weight n + symmetricPrimeTranslation n f x)
 
 /--
 WD-T34 / ZW2-T6: fixed compact support selects a finite index set of prime
