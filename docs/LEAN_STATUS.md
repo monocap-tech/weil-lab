@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T39 | WeilDefect.FullNegativeSpace + WeilDefect.fullNegativeCoeff + WeilDefect.fullCoeff + WeilDefect.fullJValue + WeilDefect.wd_t39_p3_b1_anchored_mass + WeilDefect.wd_t39_p3_b2_full_coordinate_escape_weak_zero + WeilDefect.wd_t39_p3_b3_fixed_packet_custody + WeilDefect.normEscapeSubsequence + WeilDefect.wd_t39_p3_b4_norm_escape_of_unbounded + WeilDefect.BoundedBackgroundRegime + WeilDefect.wd_t39_p3_b4_bounded_background_dichotomy + WeilDefect.BackgroundCompactnessRegime + WeilDefect.wd_t39_p3_b4_background_compactness_trichotomy + WeilDefect.wd_t39_p3_b5_fixed_selected_ray_stability + WeilDefect.wd_t39_p3_b6_fixed_full_divisor_negative_weak_limit + WeilDefect.wd_t39_p3_b7_finite_shadow_separation + WeilDefect.NoncompactDefectMorphology + WeilDefect.wd_t39_noncompact_background_morphology | LEAN-CERTIFIED |
 | WD-T38 | WeilDefect.wd_t38_p3_u1_fixed_packet_critical_dichotomy + WeilDefect.wd_t38_attained_neutral_selected_coordinate_nonzero + WeilDefect.rightLimitPrimePowers + WeilDefect.wd_t38_p3_u3_right_limit_prime_decomposition + WeilDefect.wd_t38_p3_u3_right_limit_prime_support_finite + WeilDefect.wd_t38_p3_u4_logarithmic_order_neutral_carrier + WeilDefect.wd_t38_p3_u5_no_free_positive_sobolev_control + WeilDefect.wd_t38_p3_u5_finite_prime_translations_no_smoothing + WeilDefect.wd_t38_p3_u6_global_cancellation_not_termwise + WeilDefect.neutralNegativeSynthesis + WeilDefect.neutralWeilOperator + WeilDefect.wd_t38_p3_u2_negative_adjoint_identity + WeilDefect.wd_t38_p3_u2_physical_neutral_null_mode + WeilDefect.NeutralNullExtensionInterface + WeilDefect.NeutralNullExtensionInterface.persistenceGoal + WeilDefect.wd_t38_p3_u7_neutral_null_extension_reduction + WeilDefect.NeutralArithmeticMorphology + WeilDefect.wd_t38_neutral_arithmetic_morphology + WeilDefect.NeutralDefectMorphology + WeilDefect.wd_t38_attained_unit_gain_neutral_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T37 | WeilDefect.wd_t37_selected_source_zero_moment_of_wd_t26 + WeilDefect.wd_t37_selected_source_nonzero_of_wd_t26 + WeilDefect.wd_t37_p3_n1_endpoint_ray + WeilDefect.wd_t37_p3_n2_normalized_representative_blowup + WeilDefect.wd_t37_p3_n3_normalized_full_negativity + WeilDefect.wd_t37_p3_n4_zero_moment_source_far_decay + WeilDefect.wd_t37_p3_n5_far_localization + WeilDefect.wd_t37_p3_n6_weighted_next_jet_morphology + WeilDefect.wd_t37_p3_n7_no_adaptive_scalar_bypass + WeilDefect.NegativeArithmeticMorphology + WeilDefect.NegativeDefectMorphology + WeilDefect.wd_t37_fixed_packet_persistent_negative_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T36 | WeilDefect.positiveSobolevFrequencyWeight + WeilDefect.logarithmicFourierWeight_isBigO_log + WeilDefect.logarithmicFourierWeight_isLittleO_positiveSobolev + WeilDefect.positiveSobolevFrequencyWeight_not_isBigO_logarithmic + WeilDefect.wd_t36_no_uniform_positive_sobolev_coercivity_of_witness + WeilDefect.wd_t36_no_positive_sobolev_bootstrap + WeilDefect.finitePrimeTrigCorrection + WeilDefect.finitePrimeTrigBound + WeilDefect.abs_finitePrimeTrigCorrection_le + WeilDefect.finitePrimeTrigCorrection_isBigO_logarithmic + WeilDefect.logarithmicPlusFinitePrimeCorrection_isBigO + WeilDefect.wd_t36_finite_prime_translations_add_no_smoothing | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -64,7 +65,7 @@ The statuses above become LEAN-CERTIFIED only after the pinned CI build succeeds
 
 \[
 \boxed{
-\texttt{WD-T39 / P3-B1…P3-B7 — NONCOMPACT BACKGROUND MORPHOLOGY}.
+\texttt{WD-X02 / CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}.
 }
 \]
 
@@ -3980,10 +3981,116 @@ The final run passed pinned dependency resolution, mathlib cache retrieval,
 direct Lake build of \(\texttt{WeilDefect.Morphology.Neutral}\), and
 unfinished-proof/project-axiom rejection.
 
-WD-T38 is therefore closed. The next unfinished sequential theorem cursor is:
+WD-T38 is therefore closed.
+
+## WD-T39 certificate evidence
+
+Stable ID:
 
 \[
 \boxed{
-\texttt{WD-T39 / P3-B1…P3-B7 — NONCOMPACT BACKGROUND MORPHOLOGY}
+\text{WD-T39: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.FullNegativeSpace;
+- WeilDefect.fullNegativeCoeff;
+- WeilDefect.fullCoeff;
+- WeilDefect.fullJValue;
+- WeilDefect.wd_t39_p3_b1_anchored_mass;
+- WeilDefect.FullCoordinateExhaustion;
+- WeilDefect.wd_t39_p3_b2_full_coordinate_escape_weak_zero;
+- WeilDefect.wd_t39_p3_b3_fixed_packet_custody;
+- WeilDefect.normEscapeSubsequence;
+- WeilDefect.wd_t39_p3_b4_norm_escape_of_unbounded;
+- WeilDefect.BoundedBackgroundRegime;
+- WeilDefect.wd_t39_p3_b4_bounded_background_dichotomy;
+- WeilDefect.BackgroundCompactnessRegime;
+- WeilDefect.wd_t39_p3_b4_background_compactness_trichotomy;
+- WeilDefect.wd_t39_p3_b5_fixed_selected_ray_stability;
+- WeilDefect.wd_t39_p3_b6_fixed_full_divisor_negative_weak_limit;
+- WeilDefect.wd_t39_p3_b7_finite_shadow_separation;
+- WeilDefect.NoncompactDefectMorphology;
+- WeilDefect.wd_t39_noncompact_background_morphology.
+
+The full-carrier escape theorem uses a self-adjoint finite-coordinate exhaustion
+converging strongly to the identity. If every fixed full-coordinate block
+vanishes on a uniformly bounded sequence, Lean proves that the entire
+coefficient sequence converges weakly to zero. The exhaustion is explicitly
+on the full carrier, preserving composite correction B-1.
+
+For one fixed finite selected packet, any frequently retained positive amount
+of selected negative norm admits a strongly convergent subsequence with
+nonzero selected limit. Thus the moving/full-carrier escape species is kept
+separate from fixed-packet custody.
+
+For the unselected background, Lean certifies the complete subsequential
+classification:
+
+\[
+\boxed{
+\text{norm escape}
+\;\vee\;
+\text{bounded weak/tail escape}
+\;\vee\;
+\text{strong background compactness}.
+}
+\]
+
+The norm-escape arm is constructed explicitly from failure of every uniform
+norm bound. In the bounded case, weak compactness plus a convergent norm-square
+subsequence gives either positive weak norm loss or, at equality, strong
+convergence.
+
+The fixed selected negative ray remains nonzero and strictly negative after
+any bounded background weak limit. In the strong-background regime the entire
+negative sector converges strongly, while the positive coordinate is retained
+only weakly unless an additional positive-coordinate compactness hypothesis is
+supplied. This preserves composite correction B-2.
+
+Finite positive shadows preserve the algebraic selected negative margin but
+retain a separate graph-admissibility condition, so no background compactness
+is inferred from a finite positive projection.
+
+WD-T39 introduces no imported analytic-number-theory premise and no new
+RH-facing interface. The assembled universal morphology packages the audited
+branch theorems separately rather than asserting that one sequence
+simultaneously realizes incompatible compactness species.
+
+The complete core/trichotomy checkpoint passed pinned CI in:
+
+\[
+\boxed{\texttt{36190887350}}.
+\]
+
+The final assembled WD-T39 target passed in:
+
+\[
+\boxed{\texttt{36191325215}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{9f883eef5ec8cee9c8fd092576a5e0fff3326872}}.
+\]
+
+The certified WD-T39 source blob is:
+
+\[
+\texttt{f5b029598b0b80c5fc8ef292a858bb63d9c3a076}.
+\]
+
+The final run passed pinned dependency resolution, mathlib cache retrieval,
+direct Lake build of \(\texttt{WeilDefect.Morphology.Noncompact}\), and
+unfinished-proof/project-axiom rejection.
+
+WD-T39 is therefore closed. The next unfinished stable formalization cursor is:
+
+\[
+\boxed{
+\texttt{WD-X02 / CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}
 }
 \]
