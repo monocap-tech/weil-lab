@@ -23,7 +23,7 @@ noncomputable def problemOneGreenQ (gamma : ℂ) : ℂ :=
 theorem problemOneDenominator_problemOneFreq (gamma : ℂ) :
     problemOneDenominator (problemOneFreq gamma) =
       problemOneGreenDenom gamma := by
-  simp [problemOneDenominator, problemOneFreq, problemOneGreenDenom, pow_two]
+  simp [problemOneDenominator, problemOneFreq, problemOneGreenDenom, mul_pow, Complex.I_sq]
   ring
 
 /-- Real Dirichlet basis equal to 0 at -t and 1 at t. -/
@@ -96,7 +96,7 @@ theorem norm_dirichletRightBasis_le_one
     rw [div_le_one hspos]
     exact hsle
   simp only [dirichletRightBasis, Complex.norm_real, Real.norm_eq_abs]
-  rw [abs_of_nonneg (div_nonneg hs0 hspos.le)]
+  rw [dirichletRightReal, abs_of_nonneg (div_nonneg hs0 hspos.le)]
   exact hdiv
 
 /-- The left Dirichlet basis is bounded by one on the support interval. -/
@@ -117,7 +117,7 @@ theorem norm_dirichletLeftBasis_le_one
     rw [div_le_one hspos]
     exact hsle
   simp only [dirichletLeftBasis, Complex.norm_real, Real.norm_eq_abs]
-  rw [abs_of_nonneg (div_nonneg hs0 hspos.le)]
+  rw [dirichletLeftReal, abs_of_nonneg (div_nonneg hs0 hspos.le)]
   exact hdiv
 
 /-- First derivative of the right real Dirichlet basis. -/
@@ -127,11 +127,20 @@ theorem hasDerivAt_dirichletRightReal
       (dirichletRightReal t)
       (Real.cosh ((t + x) / 2) / (2 * Real.sinh t))
       x := by
+  change HasDerivAt
+    (fun y : ℝ => Real.sinh ((t + y) / 2) / Real.sinh t)
+    (Real.cosh ((t + x) / 2) / (2 * Real.sinh t)) x
   have hinner :
       HasDerivAt (fun y : ℝ => (t + y) / 2) (1 / 2 : ℝ) x := by
-    convert ((hasDerivAt_const x t).add (hasDerivAt_id x)).div_const 2 using 1 <;> ring
+    have h :=
+      ((hasDerivAt_const x t).add (hasDerivAt_id x)).div_const 2
+    convert h using 1
+    · funext y
+      ring
+    · ring
   have hs := hinner.sinh
-  convert hs.div_const (Real.sinh t) using 1 <;> ring
+  convert hs.div_const (Real.sinh t) using 1
+  ring
 
 /-- Derivative of the first derivative of the right real Dirichlet basis. -/
 theorem hasDerivAt_dirichletRightReal_deriv
@@ -143,10 +152,18 @@ theorem hasDerivAt_dirichletRightReal_deriv
       x := by
   have hinner :
       HasDerivAt (fun y : ℝ => (t + y) / 2) (1 / 2 : ℝ) x := by
-    convert ((hasDerivAt_const x t).add (hasDerivAt_id x)).div_const 2 using 1 <;> ring
+    have h :=
+      ((hasDerivAt_const x t).add (hasDerivAt_id x)).div_const 2
+    convert h using 1
+    · funext y
+      ring
+    · ring
   have hc := hinner.cosh
   have h := hc.div_const (2 * Real.sinh t)
-  convert h using 1 <;> simp [dirichletRightReal] <;> ring
+  convert h using 1
+  · ring
+  · simp [dirichletRightReal]
+    ring
 
 /-- First derivative of the left real Dirichlet basis. -/
 theorem hasDerivAt_dirichletLeftReal
@@ -155,11 +172,20 @@ theorem hasDerivAt_dirichletLeftReal
       (dirichletLeftReal t)
       (-Real.cosh ((t - x) / 2) / (2 * Real.sinh t))
       x := by
+  change HasDerivAt
+    (fun y : ℝ => Real.sinh ((t - y) / 2) / Real.sinh t)
+    (-Real.cosh ((t - x) / 2) / (2 * Real.sinh t)) x
   have hinner :
       HasDerivAt (fun y : ℝ => (t - y) / 2) (-1 / 2 : ℝ) x := by
-    convert ((hasDerivAt_const x t).sub (hasDerivAt_id x)).div_const 2 using 1 <;> ring
+    have h :=
+      ((hasDerivAt_const x t).sub (hasDerivAt_id x)).div_const 2
+    convert h using 1
+    · funext y
+      ring
+    · ring
   have hs := hinner.sinh
-  convert hs.div_const (Real.sinh t) using 1 <;> ring
+  convert hs.div_const (Real.sinh t) using 1
+  ring
 
 /-- Derivative of the first derivative of the left real Dirichlet basis. -/
 theorem hasDerivAt_dirichletLeftReal_deriv
@@ -171,11 +197,19 @@ theorem hasDerivAt_dirichletLeftReal_deriv
       x := by
   have hinner :
       HasDerivAt (fun y : ℝ => (t - y) / 2) (-1 / 2 : ℝ) x := by
-    convert ((hasDerivAt_const x t).sub (hasDerivAt_id x)).div_const 2 using 1 <;> ring
+    have h :=
+      ((hasDerivAt_const x t).sub (hasDerivAt_id x)).div_const 2
+    convert h using 1
+    · funext y
+      ring
+    · ring
   have hc := hinner.cosh
   have hneg := hc.neg
   have h := hneg.div_const (2 * Real.sinh t)
-  convert h using 1 <;> simp [dirichletLeftReal] <;> ring
+  convert h using 1
+  · ring
+  · simp [dirichletLeftReal]
+    ring
 
 theorem hasDerivAt_dirichletRightBasis
     (t x : ℝ) :
@@ -183,8 +217,10 @@ theorem hasDerivAt_dirichletRightBasis
       (dirichletRightBasis t)
       ((Real.cosh ((t + x) / 2) / (2 * Real.sinh t) : ℝ) : ℂ)
       x := by
-  simpa [dirichletRightBasis] using
-    (hasDerivAt_dirichletRightReal t x).ofReal_comp
+  change HasDerivAt
+    (fun y : ℝ => (dirichletRightReal t y : ℂ))
+    ((Real.cosh ((t + x) / 2) / (2 * Real.sinh t) : ℝ) : ℂ) x
+  exact (hasDerivAt_dirichletRightReal t x).ofReal_comp
 
 theorem hasDerivAt_dirichletLeftBasis
     (t x : ℝ) :
@@ -192,8 +228,10 @@ theorem hasDerivAt_dirichletLeftBasis
       (dirichletLeftBasis t)
       ((-Real.cosh ((t - x) / 2) / (2 * Real.sinh t) : ℝ) : ℂ)
       x := by
-  simpa [dirichletLeftBasis] using
-    (hasDerivAt_dirichletLeftReal t x).ofReal_comp
+  change HasDerivAt
+    (fun y : ℝ => (dirichletLeftReal t y : ℂ))
+    ((-Real.cosh ((t - x) / 2) / (2 * Real.sinh t) : ℝ) : ℂ) x
+  exact (hasDerivAt_dirichletLeftReal t x).ofReal_comp
 
 theorem iteratedDeriv_two_dirichletRightBasis
     (t x : ℝ) :
@@ -205,7 +243,9 @@ theorem iteratedDeriv_two_dirichletRightBasis
           ((Real.cosh ((t + y) / 2) / (2 * Real.sinh t) : ℝ) : ℂ) := by
     funext y
     exact (hasDerivAt_dirichletRightBasis t y).deriv
-  rw [show (2 : ℕ) = 1 + 1 by norm_num, iteratedDeriv_succ, iteratedDeriv_one, h1]
+  change deriv (deriv (dirichletRightBasis t)) x =
+    (1 / 4 : ℂ) * dirichletRightBasis t x
+  rw [h1]
   have h2 :=
     (hasDerivAt_dirichletRightReal_deriv t x).ofReal_comp
   simpa [dirichletRightBasis] using h2.deriv
@@ -220,7 +260,9 @@ theorem iteratedDeriv_two_dirichletLeftBasis
           ((-Real.cosh ((t - y) / 2) / (2 * Real.sinh t) : ℝ) : ℂ) := by
     funext y
     exact (hasDerivAt_dirichletLeftBasis t y).deriv
-  rw [show (2 : ℕ) = 1 + 1 by norm_num, iteratedDeriv_succ, iteratedDeriv_one, h1]
+  change deriv (deriv (dirichletLeftBasis t)) x =
+    (1 / 4 : ℂ) * dirichletLeftBasis t x
+  rw [h1]
   have h2 :=
     (hasDerivAt_dirichletLeftReal_deriv t x).ofReal_comp
   simpa [dirichletLeftBasis] using h2.deriv
@@ -270,7 +312,8 @@ theorem problemOneGreenQ_shell_bound
   have hrepos : 0 < |gamma.re| := hnpos.trans_le hheight
   have hsq :
       ((n : ℝ) + 1) ^ 2 ≤ gamma.re ^ 2 := by
-    nlinarith [sq_nonneg gamma.re, sq_nonneg ((n : ℝ) + 1)]
+    exact sq_le_sq.mpr <| by
+      simpa [abs_of_pos hnpos] using hheight
   have hden :
       ((n : ℝ) + 1) ^ 2 ≤ ‖problemOneGreenDenom gamma‖ :=
     hsq.trans (problemOneGreenDenom_norm_lower gamma hstrip)
@@ -280,7 +323,7 @@ theorem problemOneGreenQ_shell_bound
   calc
     ‖problemOneGreenDenom gamma‖⁻¹
         ≤ (((n : ℝ) + 1) ^ 2)⁻¹ := by
-      exact inv_le_inv₀ (sq_pos_of_pos hnpos) hden
+      exact (inv_le_inv₀ hdenpos (sq_pos_of_pos hnpos)).2 hden
     _ = (((n : ℝ) + 1) ^ (-2 : ℝ)) := by
       rw [Real.rpow_neg_eq_inv_rpow, Real.rpow_two]
 
@@ -336,14 +379,22 @@ theorem dirichletProblemOneColumn_neg
 theorem contDiffAt_dirichletRightBasis
     (k : ℕ) (t x : ℝ) :
     ContDiffAt ℝ k (dirichletRightBasis t) x := by
-  unfold dirichletRightBasis dirichletRightReal
-  fun_prop
+  have hreal : ContDiffAt ℝ k (dirichletRightReal t) x := by
+    unfold dirichletRightReal
+    fun_prop
+  have hcoe :=
+    Complex.ofRealCLM.contDiff.contDiffAt.comp x hreal
+  simpa [dirichletRightBasis] using hcoe
 
 theorem contDiffAt_dirichletLeftBasis
     (k : ℕ) (t x : ℝ) :
     ContDiffAt ℝ k (dirichletLeftBasis t) x := by
-  unfold dirichletLeftBasis dirichletLeftReal
-  fun_prop
+  have hreal : ContDiffAt ℝ k (dirichletLeftReal t) x := by
+    unfold dirichletLeftReal
+    fun_prop
+  have hcoe :=
+    Complex.ofRealCLM.contDiff.contDiffAt.comp x hreal
+  simpa [dirichletLeftBasis] using hcoe
 
 /-- The explicit column solves L F = source whenever the Green denominator is nonzero. -/
 theorem problemOneL_dirichletProblemOneColumn
@@ -369,9 +420,11 @@ theorem problemOneL_dirichletProblemOneColumn
     simpa [f0] using
       contDiffAt_const_mul_realExpMode 2 q (problemOneFreq gamma) x
   have hfR : ContDiffAt ℝ 2 fR x := by
-    exact (contDiffAt_dirichletRightBasis 2 t x).const_mul _
+    exact (contDiff_const.contDiffAt.mul
+      (contDiffAt_dirichletRightBasis 2 t x))
   have hfL : ContDiffAt ℝ 2 fL x := by
-    exact (contDiffAt_dirichletLeftBasis 2 t x).const_mul _
+    exact (contDiff_const.contDiffAt.mul
+      (contDiffAt_dirichletLeftBasis 2 t x))
   have hcol :
       dirichletProblemOneColumn t gamma = f0 + fR + fL := by
     funext y
@@ -382,9 +435,9 @@ theorem problemOneL_dirichletProblemOneColumn
   have h0 :
       problemOneL f0 x =
         realExpMode (problemOneFreq gamma) x := by
-    simpa [f0] using
-      problemOneL_const_mul_realExpMode
-        q (problemOneFreq gamma) x hq
+    rw [show f0 =
+      fun y => q * realExpMode (problemOneFreq gamma) y by rfl]
+    rw [problemOneL_const_mul_realExpMode, hq, one_mul]
   have hR : problemOneL fR x = 0 := by
     rw [show fR =
       fun y => (-q * realExpMode (problemOneFreq gamma) t) *
@@ -431,8 +484,29 @@ theorem norm_dirichletProblemOneColumn_le
             dirichletRightBasis t x‖
         + ‖(-problemOneGreenQ gamma * realExpMode (problemOneFreq gamma) (-t)) *
             dirichletLeftBasis t x‖ := by
-          exact (norm_add_le _ _).trans <|
-            add_le_add_right (norm_add_le _ _) _
+          calc
+            ‖(problemOneGreenQ gamma * realExpMode (problemOneFreq gamma) x
+                + (-problemOneGreenQ gamma * realExpMode (problemOneFreq gamma) t) *
+                    dirichletRightBasis t x)
+                + (-problemOneGreenQ gamma * realExpMode (problemOneFreq gamma) (-t)) *
+                    dirichletLeftBasis t x‖
+                ≤
+              ‖problemOneGreenQ gamma * realExpMode (problemOneFreq gamma) x
+                + (-problemOneGreenQ gamma * realExpMode (problemOneFreq gamma) t) *
+                    dirichletRightBasis t x‖
+                + ‖(-problemOneGreenQ gamma *
+                    realExpMode (problemOneFreq gamma) (-t)) *
+                    dirichletLeftBasis t x‖ := norm_add_le _ _
+            _ ≤
+              (‖problemOneGreenQ gamma * realExpMode (problemOneFreq gamma) x‖
+                + ‖(-problemOneGreenQ gamma *
+                    realExpMode (problemOneFreq gamma) t) *
+                    dirichletRightBasis t x‖)
+                + ‖(-problemOneGreenQ gamma *
+                    realExpMode (problemOneFreq gamma) (-t)) *
+                    dirichletLeftBasis t x‖ := by
+                  gcongr
+                  exact norm_add_le _ _
     _ ≤
       ‖problemOneGreenQ gamma‖ * Real.exp (t / 2)
         + (‖problemOneGreenQ gamma‖ * Real.exp (t / 2)) * 1
