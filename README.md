@@ -131,7 +131,7 @@ morphology documents linked below.
 | Component | Current standing |
 | --- | --- |
 | Finite Weil negative index | Imported theorem + exact specialization |
-| Rank-one defect formulation | Derived |
+| Rank-one defect specialization | Internal proof; one-channel specialization of the abstract calculus |
 | Support-filtration right-limit geometry | Internal proof with stated inputs |
 | Screening taxonomy and custody distinctions | Internal/structural package |
 | Persistent normalized Weil negativity | Conditional theorem |
