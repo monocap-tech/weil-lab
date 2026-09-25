@@ -166,7 +166,6 @@ theorem hasDerivAt_dirichletRightReal_deriv
     rw [show (t + x) / 2 =
       t * (1 / 2 : ℝ) + x * (1 / 2 : ℝ) by ring]
     ring
-  · simp [dirichletRightReal, div_eq_mul_inv]
 
 /-- First derivative of the left real Dirichlet basis. -/
 theorem hasDerivAt_dirichletLeftReal
@@ -214,7 +213,6 @@ theorem hasDerivAt_dirichletLeftReal_deriv
     rw [show (t - x) / 2 =
       t * (1 / 2 : ℝ) + x * (-1 / 2 : ℝ) by ring]
     ring
-  · simp [dirichletLeftReal, div_eq_mul_inv]
 
 theorem hasDerivAt_dirichletRightBasis
     (t x : ℝ) :
