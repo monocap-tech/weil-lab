@@ -2,7 +2,7 @@
 
 ## H1-P5.2 — Stable theorem lookup
 
-This is the compact public lookup surface for WD-T01 through WD-T39. Mathematical standing, Lean verification, direct hypotheses, and normalized dependencies are kept in separate columns.
+This is the compact public lookup surface for WD-T01 through WD-T39. Mathematical standing, Lean verification, theorem hypotheses, and normalized dependency edges are kept in separate columns. The `Main output` column is a concise ledger description, not a substitute for the full canonical theorem statement.
 
 | Stable ID | Public name | Role | Inputs / hypotheses | Main output | Mathematical standing | Lean status | Dependencies | Sharpness | Canonical source |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
