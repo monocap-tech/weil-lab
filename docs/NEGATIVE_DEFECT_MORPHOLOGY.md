@@ -203,7 +203,7 @@ while
 
 This is the normalized endpoint-amplification morphology.
 
-The divergence above is direct from the selected-amplitude normalization and does not require identifying the varying maps \(\mathcal E_{\Pi,t}^*\) with the single common realization map used in WD-C7.
+The divergence above is direct from the selected-amplitude normalization and does not require identifying the varying maps $\mathcal E_{\Pi,t}^*$ with the single common realization map used in WD-C7.
 
 A stronger statement—every increasingly accurate physical representation of the endpoint ray must blow up—follows from WD-C7 only if the selected support filtration is additionally realized by one common bounded map
 
@@ -673,7 +673,7 @@ What P3-N6 does say is exact:
 
 ## 11. Adaptive cancellation is not an escape
 
-Fix a cutoff \(R\). Suppose the selected-preserving multiplier is additionally chosen so that
+Fix a cutoff $R$. Suppose the selected-preserving multiplier is additionally chosen so that
 
 ```math
 \mathcal N_{v,R}[\psi]
@@ -766,7 +766,7 @@ y=(a,u)
 }
 ```
 
-The explicitly normalized representatives \(h_n=\varepsilon_n^{-1}g_n\) have diverging norm. A universal representation-cost statement additionally requires the common-carrier hypotheses of WD-C7.
+The explicitly normalized representatives $h_n=\varepsilon_n^{-1}g_n$ have diverging norm. A universal representation-cost statement additionally requires the common-carrier hypotheses of WD-C7.
 
 ### Full Weil signature
 
