@@ -2,6 +2,7 @@ import WeilDefect.Arithmetic.PrimeSupport
 import WeilDefect.Screening.RankOne
 import WeilDefect.Arithmetic.Coadaptation
 import WeilDefect.Arithmetic.Scalarization
+import WeilDefect.Arithmetic.FarTail
 import WeilDefect.Examples.SpectralScreening
 import WeilDefect.Screening.Quadratic
 import WeilDefect.PairGeometry
