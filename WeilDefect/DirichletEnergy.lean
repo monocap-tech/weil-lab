@@ -5,7 +5,7 @@ namespace WeilDefect
 
 attribute [local instance 1100] NormedSpace.complexToReal
 
-open Filter Set
+open Filter Set MeasureTheory
 open scoped Topology BigOperators Interval ComplexConjugate
 
 /--
@@ -177,7 +177,7 @@ theorem problemOneDirichletEnergyComplex_eq_ofReal
   rw [hstar (iteratedDeriv 1 (dirichletProblemOneColumn t gamma) x)]
   rw [mul_assoc, hstar (dirichletProblemOneColumn t gamma x)]
   norm_cast
-  ring
+  ring_nf
 
 /--
 The real Dirichlet energy is nonnegative.
