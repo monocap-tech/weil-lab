@@ -1,5 +1,5 @@
 # Dependency Audit
-## H1-P4.0 — Theorem DAG, source boundaries, and audit debt
+**H1-P4.0 — Theorem DAG, source boundaries, and audit debt**
 
 This document audits the architecture of the Horizon-1 theorem inventory without introducing new mathematical claims.
 
@@ -7,9 +7,9 @@ The canonical stable IDs are defined in [Theorem Ledger](THEOREM_LEDGER.md).
 
 ---
 
-# 1. Normalized dependency DAG
+## 1. Normalized dependency DAG
 
-## Abstract screening spine
+### Abstract screening spine
 
 ```math
 \boxed{
@@ -33,7 +33,7 @@ Positive restoration is separately encoded by
 }
 ```
 
-## Selected/background spine
+### Selected/background spine
 
 ```math
 \boxed{
@@ -80,7 +80,7 @@ Complement elimination and finite shadows are
 }
 ```
 
-## Support-filtration spine
+### Support-filtration spine
 
 ```math
 \boxed{
@@ -106,7 +106,7 @@ Physical realization gives
 }
 ```
 
-## Zeta-Weil pair spine
+### Zeta-Weil pair spine
 
 ```math
 \boxed{
@@ -164,7 +164,7 @@ Native compact synthesis gives
 }
 ```
 
-## Explicit-formula spine
+### Explicit-formula spine
 
 Scalarization and far localization are
 
@@ -208,9 +208,9 @@ The compact-window neutral arithmetic chain is
 
 ---
 
-# 2. Morphology dependencies
+## 2. Morphology dependencies
 
-## Negative morphology
+### Negative morphology
 
 ```math
 \boxed{
@@ -244,7 +244,7 @@ The downstream interface is
 
 C-ACTUAL-KPH-FLOOR is a stronger special-packet interface and is not used to prove WD-T37.
 
-## Neutral morphology
+### Neutral morphology
 
 ```math
 \boxed{
@@ -280,7 +280,7 @@ The downstream interface is
 
 No later boundary-trace, Stieltjes, or UCP diagnostic is consumed by WD-T38.
 
-## Noncompact morphology
+### Noncompact morphology
 
 Moving selected-sector escape uses the compactness distinction encoded by
 
@@ -316,11 +316,11 @@ This packages as
 
 ---
 
-# 3. Imported-source boundary
+## 3. Imported-source boundary
 
 Only a small subset of the theorem spine consumes external theorems as load-bearing inputs.
 
-## EXT-1 — Douglas factorization theorem
+### EXT-1 — Douglas factorization theorem
 
 Consumed by
 
@@ -334,7 +334,7 @@ Downstream theorems WD-T03, WD-T10, and WD-T11 use the reduced screening solutio
 
 **Audit debt:** pin the exact statement used: range inclusion / Loewner majorization / factorization equivalence and the reduced-solution normalization.
 
-## EXT-2 — Bombieri finite Weil theory
+### EXT-2 — Bombieri finite Weil theory
 
 Consumed directly by
 
@@ -352,7 +352,7 @@ WD-T28 now uses an internal Dirichlet-resolvent estimate plus EXT-3 zero countin
 
 Exact source pins for the Bombieri finite-index and multiplicity statements are recorded in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
 
-## EXT-3 — Standard zeta zero counting
+### EXT-3 — Standard zeta zero counting
 
 Consumed in
 
@@ -366,7 +366,7 @@ Consumed in
 
 **Audit debt:** choose one canonical zero-count statement and specify whether multiplicity is included.
 
-## EXT-4 — Compact-window geometric explicit formula
+### EXT-4 — Compact-window geometric explicit formula
 
 Consumed in
 
@@ -386,7 +386,7 @@ Consumed in
 
 versus boundary equality, and pin the Fourier-normalization constants used by the operator form.
 
-## EXT-5 — Digamma/Stirling asymptotic
+### EXT-5 — Digamma/Stirling asymptotic
 
 Consumed in
 
@@ -404,7 +404,7 @@ Consumed in
 \log|t|+O(1).
 ```
 
-## EXT-6 — Anderson–Trapp shorting
+### EXT-6 — Anderson–Trapp shorting
 
 Not required for the strictly positive Schur-complement proof of WD-T13.
 
@@ -412,7 +412,7 @@ It is background support for extending shorting beyond the invertible-block sett
 
 Therefore it is non-load-bearing for the current WD-T13 statement.
 
-## EXT-7 — Suzuki operator framework
+### EXT-7 — Suzuki operator framework
 
 Contextual/background for the nonlocal operator species.
 
@@ -420,7 +420,7 @@ It is not load-bearing for WD-T34–WD-T38 as currently stated.
 
 ---
 
-# 4. Source-free internal theorem boundary
+## 4. Source-free internal theorem boundary
 
 The following stable theorem IDs have proofs contained in the current repository once standard Hilbert-space facts are admitted:
 
@@ -440,11 +440,11 @@ It does not convert their verification status from P4-AUDIT-PENDING to independe
 
 ---
 
-# 5. Conditional boundary
+## 5. Conditional boundary
 
 The morphology statements are conditional because they begin from explicit branch hypotheses.
 
-## WD-T37
+### WD-T37
 
 Consumes:
 - fixed finite selected packet;
@@ -454,7 +454,7 @@ Consumes:
 
 The theorem does not assert that such a branch exists for actual zeta.
 
-## WD-T38
+### WD-T38
 
 Consumes:
 - fixed finite selected packet;
@@ -464,7 +464,7 @@ Consumes:
 
 The theorem does not assert that every critical branch has these properties.
 
-## WD-T39
+### WD-T39
 
 Its background-stability/full-divisor statements are conditional on an already anchored fixed selected ray where stated.
 
@@ -472,7 +472,7 @@ The moving-sector compactness classification itself is unconditional Hilbert-spa
 
 ---
 
-# 6. Scope-guard audit
+## 6. Scope-guard audit
 
 The following forbidden transfers are now explicit.
 
@@ -502,7 +502,7 @@ A non-attained critical morphology with no right-limit ray cannot occur inside o
 
 ---
 
-# 7. Cycle audit
+## 7. Cycle audit
 
 The normalized Horizon-1 theorem graph is acyclic.
 
@@ -530,31 +530,31 @@ This closes the principal circularity audit at the dependency-graph level.
 
 ---
 
-# 8. P4 audit queue
+## 8. P4 audit queue
 
 The next audit passes should proceed in this order.
 
-## P4.1 — Imported source pinning — COMPLETE
+### P4.1 — Imported source pinning — COMPLETE
 
 Exact pins are recorded in [Imported Source Pins](IMPORTED_SOURCE_PINS.md).
 
-## P4.2 — Internal proof audit — COMPLETE
+### P4.2 — Internal proof audit — COMPLETE
 
 WD-T01 through WD-T36 are P4-AUDIT-PASSED at the internal Horizon-1 level.
 
 Corrections and theorem-by-theorem findings are recorded in [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md).
 
-## P4.3 — Composite morphology audit — COMPLETE
+### P4.3 — Composite morphology audit — COMPLETE
 
 WD-T37 through WD-T39 are COMPOSITE-AUDIT-PASSED after the scope corrections recorded in [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
 
-## P4.4 — Examples and sharpness audit — COMPLETE
+### P4.4 — Examples and sharpness audit — COMPLETE
 
 WD-X01 through WD-X07 are EXAMPLE-AUDIT-PASSED. See [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md).
 
 ---
 
-# 9. H1-P4.0 determination
+## 9. H1-P4.0 determination
 
 The theorem inventory now has:
 
@@ -568,7 +568,7 @@ The theorem inventory now has:
 
 No mathematical theorem has been added in this pass.
 
-## Next cursor
+### Next cursor
 
 ```math
 \boxed{
@@ -579,7 +579,7 @@ No mathematical theorem has been added in this pass.
 
 ---
 
-# 10. P4.1 source-pin disposition
+## 10. P4.1 source-pin disposition
 
 The following external inputs are now SOURCE-PINNED:
 
@@ -598,7 +598,7 @@ Source pinning does not complete the internal proof audit.
 
 ---
 
-# 11. P4.2 internal-audit disposition
+## 11. P4.2 internal-audit disposition
 
 WD-T01 through WD-T36 are now P4-AUDIT-PASSED.
 
@@ -617,7 +617,7 @@ This status is internal audit only, not independent certification.
 
 ---
 
-# 12. P4.3 composite-audit disposition
+## 12. P4.3 composite-audit disposition
 
 WD-T37 through WD-T39 are now COMPOSITE-AUDIT-PASSED.
 
@@ -630,7 +630,7 @@ No RH-facing interface was imported upstream.
 
 ---
 
-# 13. P4.4 examples/sharpness disposition
+## 13. P4.4 examples/sharpness disposition
 
 WD-X01 through WD-X07 are EXAMPLE-AUDIT-PASSED.
 
@@ -640,3 +640,4 @@ All H1-P4 audit classes are now complete.
 \boxed{
 \textbf{H1-P4 — COMPLETE.}
 }
+```
