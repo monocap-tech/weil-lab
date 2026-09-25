@@ -143,6 +143,6 @@ Only after this exhaustion condition is met does the project resume:
 
 \[
 \boxed{
-\texttt{LEAN-H1-P5 / WD-T39 / P3-B1…P3-B7 — NONCOMPACT BACKGROUND MORPHOLOGY}.
+\texttt{LEAN-H1-P1 / WD-X02 — CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}.
 }
 \]
