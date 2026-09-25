@@ -1,6 +1,7 @@
 import WeilDefect.Arithmetic.PrimeSupport
 import WeilDefect.Arithmetic.LogarithmicForm
 import WeilDefect.Arithmetic.NoSobolevBootstrap
+import WeilDefect.Morphology.NegativeDefect
 import WeilDefect.Screening.RankOne
 import WeilDefect.Arithmetic.Coadaptation
 import WeilDefect.Arithmetic.Scalarization
