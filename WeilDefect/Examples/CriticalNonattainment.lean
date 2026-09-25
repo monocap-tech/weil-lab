@@ -39,10 +39,8 @@ theorem wd_x02_weight_tendsto_one :
       Tendsto (fun _ : ℕ => (1 : ℝ)) atTop (𝓝 1) :=
     tendsto_const_nhds
   change
-    Tendsto
-      (fun n : ℕ => 1 - (((n : ℝ) + 2)⁻¹))
-      atTop (𝓝 1)
-  simpa using hone.sub hinv
+    Tendsto (fun n : ℕ => wdX02Weight n) atTop (𝓝 1)
+  simpa [wdX02Weight] using hone.sub hinv
 
 /--
 The Hilbert carrier used for the discrete WD-X02 realization.
@@ -103,21 +101,25 @@ theorem wd_x02_operator_single_norm
 
 theorem wd_x02_weight_le_operator_norm (n : ℕ) :
     wdX02Weight n ≤ ‖wdX02Operator‖ := by
-  have hsingle :
-      ‖lp.single (E := fun _ : ℕ => ℂ) 2 n (1 : ℂ)‖ = 1 := by
+  let e : WDX02Space :=
+    lp.single (E := fun _ : ℕ => ℂ) 2 n (1 : ℂ)
+  have he : ‖e‖ = 1 := by
+    dsimp [e]
     simpa using
       (lp.norm_single
         (E := fun _ : ℕ => ℂ)
         (p := (2 : ℝ≥0∞))
         (by norm_num : (0 : ℝ≥0∞) < 2)
         n (1 : ℂ))
+  have hTe :
+      ‖wdX02Operator e‖ = wdX02Weight n := by
+    dsimp [e]
+    exact wd_x02_operator_single_norm n
   calc
-    wdX02Weight n
-        = ‖wdX02Operator (lp.single 2 n (1 : ℂ))‖ :=
-          (wd_x02_operator_single_norm n).symm
-    _ ≤ ‖wdX02Operator‖ * ‖lp.single 2 n (1 : ℂ)‖ :=
-      wdX02Operator.le_opNorm _
-    _ = ‖wdX02Operator‖ := by rw [hsingle, mul_one]
+    wdX02Weight n = ‖wdX02Operator e‖ := hTe.symm
+    _ ≤ ‖wdX02Operator‖ * ‖e‖ :=
+      wdX02Operator.le_opNorm e
+    _ = ‖wdX02Operator‖ := by rw [he, mul_one]
 
 theorem wd_x02_operator_norm_eq_one :
     ‖wdX02Operator‖ = 1 := by
