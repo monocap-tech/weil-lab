@@ -16,44 +16,44 @@ substitutes for proof-producing theorem nodes.
 
 Take
 
-\`\`\`math
+~~~math
 \mathcal H=\mathbb C,
 \qquad
 K_-=\mathbb C,
 \qquad
 S_-=1,
-\`\`\`
+~~~
 
 and let \(K_+=\ell^2(\mathbb N)\) with
 
-\`\`\`math
+~~~math
 c_j=\frac1{\sqrt{j(j+1)}},
 \qquad
 S_+x=\sum_{j\ge1}c_jx_j.
-\`\`\`
+~~~
 
 Since
 
-\`\`\`math
+~~~math
 \sum_{j=1}^{\infty}c_j^2=1,
-\`\`\`
+~~~
 
 the full defect is zero. For the projection \(P_N\) onto the first \(N\)
 coordinates,
 
-\`\`\`math
+~~~math
 \sum_{j=1}^{N}c_j^2=1-\frac1{N+1},
-\`\`\`
+~~~
 
 so
 
-\`\`\`math
+~~~math
 \boxed{
 D_N=-\frac1{N+1}<0,
 \qquad
 D_N\uparrow0.
 }
-\`\`\`
+~~~
 
 Thus strict finite negativity need not survive restoration of the infinite
 positive complement.
@@ -68,7 +68,7 @@ positive complement.
 
 The canonical audit model is
 
-\`\`\`math
+~~~math
 \mathcal H=K_+=K_-=L^2(0,1),
 \qquad
 S_+=I,
@@ -76,39 +76,39 @@ S_+=I,
 X=M_t,
 \qquad
 S_-=-X.
-\`\`\`
+~~~
 
 Then
 
-\`\`\`math
+~~~math
 \|X\|=1
-\`\`\`
+~~~
 
 but no nonzero vector attains the norm because \(|t|<1\) almost everywhere on
 \((0,1)\). The defect is
 
-\`\`\`math
+~~~math
 D=I-M_{t^2},
-\`\`\`
+~~~
 
 and for every nonzero \(f\),
 
-\`\`\`math
+~~~math
 \langle Df,f\rangle
 =
 \int_0^1(1-t^2)|f(t)|^2\,dt
 >0.
-\`\`\`
+~~~
 
 Unit vectors concentrated near \(t=1\) make the defect tend to zero. Hence
 
-\`\`\`math
+~~~math
 \boxed{
 \|X\|=1
 \not\Rightarrow
 \text{actual neutral vector}.
 }
-\`\`\`
+~~~
 
 The Lean development certifies an equivalent diagonal \(\ell^2\) realization:
 every nonzero vector loses norm strictly while standard basis directions
@@ -124,47 +124,47 @@ approach the critical gain.
 
 Take
 
-\`\`\`math
+~~~math
 \mathcal H=K_+=M=B=\mathbb C,
 \qquad
 S_+=1,
-\`\`\`
+~~~
 
 and
 
-\`\`\`math
+~~~math
 S_M=S_B=-r,
 \qquad
 \frac1{\sqrt2}<r<1.
-\`\`\`
+~~~
 
 Each negative channel separately has defect
 
-\`\`\`math
+~~~math
 1-r^2>0.
-\`\`\`
+~~~
 
 Jointly,
 
-\`\`\`math
+~~~math
 D_{\rm full}=1-2r^2<0.
-\`\`\`
+~~~
 
 Equivalently, each individual screening coefficient is contractive while
 
-\`\`\`math
+~~~math
 \|[r\ r]\|=\sqrt2\,r>1.
-\`\`\`
+~~~
 
 Therefore
 
-\`\`\`math
+~~~math
 \boxed{
 \|X_M\|\le1,\ \|X_B\|\le1
 \not\Rightarrow
 X_MX_M^*+X_BX_B^*\preceq I.
 }
-\`\`\`
+~~~
 
 **Lean status:** LEAN-CERTIFIED.
 
@@ -176,7 +176,7 @@ X_MX_M^*+X_BX_B^*\preceq I.
 
 Let
 
-\`\`\`math
+~~~math
 K_r=
 \begin{pmatrix}
 1&r\\
@@ -184,43 +184,43 @@ r&1
 \end{pmatrix},
 \qquad
 0<r<1,
-\`\`\`
+~~~
 
 with selected subspace \(W=\operatorname{span}(e_1)\).
 
 The direct selected compression is
 
-\`\`\`math
+~~~math
 A=1,
-\`\`\`
+~~~
 
 but the Schur-shortened covariance is
 
-\`\`\`math
+~~~math
 \boxed{
 H_W=1-r^2.
 }
-\`\`\`
+~~~
 
 Hence
 
-\`\`\`math
+~~~math
 H_W\downarrow0
 \qquad(r\uparrow1)
-\`\`\`
+~~~
 
 while \(A\equiv1\). Each fixed \(r<1\) is still strictly positive; the failure
 is uniform across the family.
 
 Thus
 
-\`\`\`math
+~~~math
 \boxed{
 \text{direct compression floor}
 \not\Rightarrow
 \text{uniform shorted-covariance floor}.
 }
-\`\`\`
+~~~
 
 **Lean status:** LEAN-CERTIFIED.
 
@@ -232,24 +232,24 @@ Thus
 
 Canonical model:
 
-\`\`\`math
+~~~math
 K_+=K_-=\ell^2(\mathbb N),
-\`\`\`
+~~~
 
 with
 
-\`\`\`math
+~~~math
 y_n=
 \frac{(e_n,r_ne_n)}{\sqrt{1+r_n^2}},
 \qquad
 r_n>1,
 \qquad
 r_n\downarrow1.
-\`\`\`
+~~~
 
 Then
 
-\`\`\`math
+~~~math
 \|y_n\|=1,
 \qquad
 [y_n,y_n]_J
@@ -257,23 +257,23 @@ Then
 \frac{1-r_n^2}{1+r_n^2}<0,
 \qquad
 [y_n,y_n]_J\to0.
-\`\`\`
+~~~
 
 Define
 
-\`\`\`math
+~~~math
 \mathcal A_n
 =
 \overline{\operatorname{span}}\{y_k:k\ge n\}.
-\`\`\`
+~~~
 
 Because the \(y_n\) use disjoint coordinates,
 
-\`\`\`math
+~~~math
 \boxed{
 \bigcap_n\mathcal A_n=\{0\}.
 }
-\`\`\`
+~~~
 
 Therefore finite dimension at each stage is not enough. The selected finite
 sector must be fixed in order for WD-T16/WD-T17 compactness to apply.
@@ -292,47 +292,47 @@ trivial total tail intersection.
 
 Let
 
-\`\`\`math
+~~~math
 K_+=\ell^2(\mathbb N),
 \qquad
 M=\mathbb C,
-\`\`\`
+~~~
 
 and
 
-\`\`\`math
+~~~math
 y_n=
 \left(
 \frac1{\sqrt2}e_n,
 \frac1{\sqrt2}
 \right).
-\`\`\`
+~~~
 
 Then
 
-\`\`\`math
+~~~math
 \|y_n\|=1,
 \qquad
 [y_n,y_n]_J=0.
-\`\`\`
+~~~
 
 Since \(e_n\rightharpoonup0\),
 
-\`\`\`math
+~~~math
 y_n\rightharpoonup
 y=
 \left(
 0,\frac1{\sqrt2}
 \right),
-\`\`\`
+~~~
 
 and therefore
 
-\`\`\`math
+~~~math
 \boxed{
 [y,y]_J=-\frac12<0.
 }
-\`\`\`
+~~~
 
 Criticality is not weakly closed under loss of positive-coordinate norm.
 The fixed selected negative coordinate survives and the limit falls through
@@ -348,19 +348,19 @@ to strict negativity.
 
 For two distinct selected points \(\rho_1\neq\rho_2\), take
 
-\`\`\`math
+~~~math
 v=(1,-1).
-\`\`\`
+~~~
 
 Then
 
-\`\`\`math
+~~~math
 \mathbf1^Tv=0,
-\`\`\`
+~~~
 
 but
 
-\`\`\`math
+~~~math
 R_v(z)
 =
 \frac1{z-\rho_1}
@@ -369,17 +369,17 @@ R_v(z)
 =
 \frac{\rho_1-\rho_2}
 {(z-\rho_1)(z-\rho_2)}.
-\`\`\`
+~~~
 
 Hence
 
-\`\`\`math
+~~~math
 \boxed{
 R_v(z)
 \sim
 \frac{\rho_1-\rho_2}{z^2}.
 }
-\`\`\`
+~~~
 
 Zero moment alone therefore does not imply a universal \(O(|z|^{-3})\)
 bound. Any cubic-order improvement needs an additional first-moment
