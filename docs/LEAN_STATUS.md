@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T23 | WeilDefect.BombieriMultiplicityNullData + WeilDefect.wd_t23_same_frequency_synthesis_factor + WeilDefect.wd_t23_same_frequency_zero_sum_null + WeilDefect.wd_t23_total_multiplicity_nullity + WeilDefect.wd_t23_single_ordinate_nullity + WeilDefect.wd_t23_single_ordinate_has_null_iff_repeated + WeilDefect.wd_t23_distinct_frequency_reduction | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T22 | WeilDefect.BombieriFiniteInertiaData + WeilDefect.wd_t22_finite_weil_inertia_saturation + WeilDefect.SimpleQuartetPacketNegative + WeilDefect.wd_t22_simple_quartet_packet_pair_count + WeilDefect.wd_t22_simple_quartet_packet_inertia + WeilDefect.wd_t22_two_simple_quartet_negative_index | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T21 | WeilDefect.quartetPairPos + WeilDefect.quartetPairNeg + WeilDefect.wd_t21_quartet_pair_pos_conjugate + WeilDefect.wd_t21_quartet_pair_neg_conjugate + WeilDefect.wd_t21_quartet_pairs_nonreal + WeilDefect.wd_t21_quartet_pairs_distinct + WeilDefect.wd_t21_simple_quartet_negative_count + WeilDefect.wd_t21_simple_quartet_pair_geometry | LEAN-CERTIFIED |
 | WD-T20 | WeilDefect.wd_t20_pair_pos_eigen + WeilDefect.wd_t20_pair_neg_eigen + WeilDefect.pairEigenEquiv + WeilDefect.wd_t20_pair_diagonalization | LEAN-CERTIFIED |
@@ -2297,10 +2298,104 @@ The run passed:
 
 No stable theorem statement or mathematical hypothesis was weakened.
 
+## WD-T23 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T23: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.BombieriMultiplicityNullData;
+- WeilDefect.wd_t23_same_frequency_synthesis_factor;
+- WeilDefect.wd_t23_same_frequency_zero_sum_null;
+- WeilDefect.wd_t23_total_multiplicity_nullity;
+- WeilDefect.wd_t23_single_ordinate_nullity;
+- WeilDefect.wd_t23_single_ordinate_has_null_iff_repeated;
+- WeilDefect.wd_t23_distinct_frequency_reduction.
+
+The direct coefficient mechanism is proved natively.  For duplicate
+same-frequency coordinates with common physical shape \(g\), Lean verifies
+
+\[
+\sum_i x_i g
+=
+\left(\sum_i x_i\right)g.
+\]
+
+Hence every zero-sum duplicate coefficient combination is an exact
+synthesis-null direction.
+
+The exact nullity count is the imported part.  Bombieri Lemma 10 and its proof
+continuation are represented by the explicit proposition-valued premise
+
+\[
+\texttt{BombieriMultiplicityNullData}.
+\]
+
+For distinct ordinates of raw multiplicities \(m_j\), it supplies exactly
+
+\[
+\operatorname{nullity}
+=
+\sum_j (m_j-1).
+\]
+
+For one ordinate of multiplicity \(m\), Lean specializes this to
+
+\[
+\operatorname{nullity}=m-1
+\]
+
+and proves that a nontrivial multiplicity-null sector occurs exactly when
+\(m>1\).
+
+Thus multiplicity-null directions are formally separated from the active
+distinct-frequency channel before independent negative-index counting.  The
+Bombieri source theorem itself is not reconstructed in Lean and is not a
+project axiom.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.PairGeometry}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36089684621}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{a16b63021e91639beb59bfc387946531aa1fdd83}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{853b2de7d7df4a435059d7f5cb3ae0fe89a5baeb}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T23 target module;
+- unfinished-proof/project-axiom rejection.
+
+No stable theorem statement or mathematical hypothesis was weakened.
+
 Next theorem cursor:
 
 \[
 \boxed{
-\texttt{WD-T23 / ZW1-T4 — DISTINCT-FREQUENCY REDUCTION / MULTIPLICITY-NULL QUOTIENT}
+\texttt{WD-T24 / ZW1-T5 — FINITE DISTINCT-FREQUENCY EXPONENTIAL INDEPENDENCE}
 }
 \]
