@@ -1,5 +1,5 @@
 # Composite Morphology Audit
-## H1-P4.3 — WD-T37 through WD-T39
+**H1-P4.3 — WD-T37 through WD-T39**
 
 This document audits the three Horizon-1 composite morphology theorems against the internally audited theorem spine WD-T01 through WD-T36.
 
@@ -13,7 +13,7 @@ It does not mean independent certification or external refereeing.
 
 ---
 
-# 1. Audit criteria
+## 1. Audit criteria
 
 Each morphology package was checked for:
 
@@ -28,13 +28,13 @@ Each morphology package was checked for:
 
 ---
 
-# 2. WD-T37 — Negative defect morphology
+## 2. WD-T37 — Negative defect morphology
 
 Canonical source:
 
 [Negative Defect Morphology](NEGATIVE_DEFECT_MORPHOLOGY.md)
 
-## Entry hypotheses
+### Entry hypotheses
 
 WD-T37 assumes:
 
@@ -75,7 +75,7 @@ WD-T37 assumes:
 
 No actual-zeta existence theorem for such a branch is claimed.
 
-## Dependency expansion
+### Dependency expansion
 
 The branch uses:
 
@@ -117,7 +117,7 @@ and
 
 for cutoffwise explicit-formula co-adaptation.
 
-## Composite correction N-1 — blow-up carrier
+### Composite correction N-1 — blow-up carrier
 
 The original package cited WD-T19 as though the varying maps
 
@@ -156,7 +156,7 @@ The stronger statement that every increasingly accurate representation of the en
 
 Thus WD-T19 is no longer an unconditional dependency of WD-T37.
 
-## Composite correction N-2 — adaptive multiplier quantifier
+### Composite correction N-2 — adaptive multiplier quantifier
 
 WD-T33 is cutoffwise.
 
@@ -183,7 +183,7 @@ The morphology now sends \(R\to\infty\) only for:
 
 No asymptotic claim remains for an arbitrary unbounded adaptive family.
 
-## Near-field custody
+### Near-field custody
 
 WD-T37 continues to assert only:
 
@@ -199,7 +199,7 @@ It does not assert a generic lower bound on that field.
 
 No KPH null equation, reciprocal-Cauchy packet structure, CF-A17 compactness, or packet-uniform source margin is imported.
 
-## Stop line
+### Stop line
 
 The theorem terminates at
 
@@ -217,7 +217,7 @@ The stronger special-packet interface
 
 is not consumed by WD-T37.
 
-## WD-T37 audit result
+### WD-T37 audit result
 
 ```math
 \boxed{
@@ -229,13 +229,13 @@ after corrections N-1 and N-2.
 
 ---
 
-# 3. WD-T38 — Neutral defect morphology
+## 3. WD-T38 — Neutral defect morphology
 
 Canonical source:
 
 [Neutral Defect Morphology](NEUTRAL_DEFECT_MORPHOLOGY.md)
 
-## Entry hypotheses
+### Entry hypotheses
 
 The audited theorem assumes:
 
@@ -260,7 +260,7 @@ The audited theorem assumes:
 
 Items 4–7 are finite-exception neutral hypotheses. They are not consequences of abstract criticality alone.
 
-## Dependency expansion
+### Dependency expansion
 
 WD-T17 supplies the fixed-packet critical bifurcation.
 
@@ -300,7 +300,7 @@ for the absence of a uniform positive-Sobolev coercive estimate.
 
 The global-cancellation jurisdiction remains WD-S03.
 
-## Composite correction U-1 — carrier identification
+### Composite correction U-1 — carrier identification
 
 The algebraic null equation
 
@@ -314,7 +314,7 @@ That identification is now an explicit theorem hypothesis.
 
 Accordingly, the logarithmic-form and arithmetic-translation conclusions are conditional on this common-carrier identification.
 
-## Composite correction U-2 — regularity statement
+### Composite correction U-2 — regularity statement
 
 The package previously used language that could be read as
 
@@ -336,7 +336,7 @@ The audited statement is now
 
 A particular neutral mode may possess additional regularity if another theorem supplies it.
 
-## Composite correction U-3 — strict support threshold
+### Composite correction U-3 — strict support threshold
 
 The source-pinned compact-window convention is
 
@@ -378,7 +378,7 @@ At a threshold, the right-limit operator contains the finite equality-threshold 
 
 The null-extension interface is therefore threshold-aware.
 
-## Stop line
+### Stop line
 
 The theorem terminates at
 
@@ -392,7 +392,7 @@ The interface asks whether the same fixed neutral relation satisfies the correct
 
 No boundary-trace, Stieltjes, or UCP theorem is imported upstream.
 
-## WD-T38 audit result
+### WD-T38 audit result
 
 ```math
 \boxed{
@@ -404,7 +404,7 @@ after corrections U-1 through U-3.
 
 ---
 
-# 4. WD-T39 — Noncompact background morphology
+## 4. WD-T39 — Noncompact background morphology
 
 Canonical source:
 
@@ -419,7 +419,7 @@ These must remain separate.
 
 ---
 
-## Selected/full coefficient escape
+### Selected/full coefficient escape
 
 Fix a finite-rank coordinate exhaustion
 
@@ -445,7 +445,7 @@ This conclusion requires the full carrier exhaustion.
 
 Escape of selected negative coordinates alone is insufficient if a positive coefficient block remains anchored.
 
-## Composite correction B-1 — full versus selected coordinate escape
+### Composite correction B-1 — full versus selected coordinate escape
 
 The canonical theorem now calls P3-B2 full coefficient moving-sector escape.
 
@@ -469,7 +469,7 @@ This is the precise fixed-packet custody statement.
 
 ---
 
-## Unselected-background escape
+### Unselected-background escape
 
 After a fixed selected negative ray is anchored, normalize the unselected background as \(b_n\).
 
@@ -508,7 +508,7 @@ For a bounded sequence in an \(\ell^2\)-type coefficient carrier, uniform coordi
 
 ---
 
-## Composite correction B-2 — positive-coordinate convergence
+### Composite correction B-2 — positive-coordinate convergence
 
 Background tail tightness controls \(b_n\), not the positive coordinate \(a_n\).
 
@@ -553,7 +553,7 @@ The stable theorem therefore speaks of a fixed full-divisor negative weak limit,
 
 ---
 
-## Background custody
+### Background custody
 
 Even under bounded weak background escape,
 
@@ -575,7 +575,7 @@ Hence
 
 This remains a valid scope guard.
 
-## WD-T39 audit result
+### WD-T39 audit result
 
 ```math
 \boxed{
@@ -587,7 +587,7 @@ after corrections B-1 and B-2.
 
 ---
 
-# 5. Composite cycle audit
+## 5. Composite cycle audit
 
 After the corrections above:
 
@@ -621,7 +621,7 @@ Thus the composite-level dependency graph remains acyclic.
 
 ---
 
-# 6. Composite audit corrections
+## 6. Composite audit corrections
 
 The audit required seven compositional corrections:
 
@@ -643,7 +643,7 @@ The audit required seven compositional corrections:
 
 ---
 
-# 7. Audit result
+## 7. Audit result
 
 After those corrections:
 
@@ -659,11 +659,11 @@ The examples/sharpness witnesses WD-X01 through WD-X07 remain the only pending P
 
 ---
 
-# H1-P4.3 determination
+## H1-P4.3 determination
 
 The morphology packages preserve their audited dependencies and branch hypotheses after the corrections above.
 
-## Next cursor
+### Next cursor
 
 ```math
 \boxed{
