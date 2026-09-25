@@ -24,6 +24,7 @@ This section is canonical for the live queue. The certificate sections below are
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-X02 | WeilDefect.wdX02Weight + WeilDefect.wdX02Coord + WeilDefect.wdX02Operator + WeilDefect.wd_x02_operator_norm_eq_one + WeilDefect.wd_x02_strict_norm_loss + WeilDefect.wd_x02_no_nonzero_norm_attainer + WeilDefect.wd_x02_critical_nonattainment | LEAN-CERTIFIED |
 | WD-T39 | WeilDefect.FullNegativeSpace + WeilDefect.fullNegativeCoeff + WeilDefect.fullCoeff + WeilDefect.fullJValue + WeilDefect.wd_t39_p3_b1_anchored_mass + WeilDefect.wd_t39_p3_b2_full_coordinate_escape_weak_zero + WeilDefect.wd_t39_p3_b3_fixed_packet_custody + WeilDefect.normEscapeSubsequence + WeilDefect.wd_t39_p3_b4_norm_escape_of_unbounded + WeilDefect.BoundedBackgroundRegime + WeilDefect.wd_t39_p3_b4_bounded_background_dichotomy + WeilDefect.BackgroundCompactnessRegime + WeilDefect.wd_t39_p3_b4_background_compactness_trichotomy + WeilDefect.wd_t39_p3_b5_fixed_selected_ray_stability + WeilDefect.wd_t39_p3_b6_fixed_full_divisor_negative_weak_limit + WeilDefect.wd_t39_p3_b7_finite_shadow_separation + WeilDefect.NoncompactDefectMorphology + WeilDefect.wd_t39_noncompact_background_morphology | LEAN-CERTIFIED |
 | WD-T38 | WeilDefect.wd_t38_p3_u1_fixed_packet_critical_dichotomy + WeilDefect.wd_t38_attained_neutral_selected_coordinate_nonzero + WeilDefect.rightLimitPrimePowers + WeilDefect.wd_t38_p3_u3_right_limit_prime_decomposition + WeilDefect.wd_t38_p3_u3_right_limit_prime_support_finite + WeilDefect.wd_t38_p3_u4_logarithmic_order_neutral_carrier + WeilDefect.wd_t38_p3_u5_no_free_positive_sobolev_control + WeilDefect.wd_t38_p3_u5_finite_prime_translations_no_smoothing + WeilDefect.wd_t38_p3_u6_global_cancellation_not_termwise + WeilDefect.neutralNegativeSynthesis + WeilDefect.neutralWeilOperator + WeilDefect.wd_t38_p3_u2_negative_adjoint_identity + WeilDefect.wd_t38_p3_u2_physical_neutral_null_mode + WeilDefect.NeutralNullExtensionInterface + WeilDefect.NeutralNullExtensionInterface.persistenceGoal + WeilDefect.wd_t38_p3_u7_neutral_null_extension_reduction + WeilDefect.NeutralArithmeticMorphology + WeilDefect.wd_t38_neutral_arithmetic_morphology + WeilDefect.NeutralDefectMorphology + WeilDefect.wd_t38_attained_unit_gain_neutral_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T37 | WeilDefect.wd_t37_selected_source_zero_moment_of_wd_t26 + WeilDefect.wd_t37_selected_source_nonzero_of_wd_t26 + WeilDefect.wd_t37_p3_n1_endpoint_ray + WeilDefect.wd_t37_p3_n2_normalized_representative_blowup + WeilDefect.wd_t37_p3_n3_normalized_full_negativity + WeilDefect.wd_t37_p3_n4_zero_moment_source_far_decay + WeilDefect.wd_t37_p3_n5_far_localization + WeilDefect.wd_t37_p3_n6_weighted_next_jet_morphology + WeilDefect.wd_t37_p3_n7_no_adaptive_scalar_bypass + WeilDefect.NegativeArithmeticMorphology + WeilDefect.NegativeDefectMorphology + WeilDefect.wd_t37_fixed_packet_persistent_negative_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -4110,3 +4111,86 @@ WD-T39 is therefore closed. The next unfinished stable formalization cursor is:
 \texttt{WD-X02 / CRITICAL SCREENING WITHOUT AN ATTAINED NEUTRAL VECTOR}
 }
 ```
+
+
+## WD-X02 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{\text{WD-X02: LEAN-CERTIFIED}.}
+\]
+
+Lean certifies an explicit diagonal \(\ell^2(\mathbb N;\mathbb C)\) realization
+of the same critical nonattainment geometry as the canonical
+\(L^2(0,1)\) multiplication-by-\(t\) witness in the audit document.
+
+The coordinate gains are
+
+\[
+r_n=1-\frac1{n+2},
+\qquad
+0\le r_n<1,
+\qquad
+r_n\to1.
+\]
+
+The induced coordinatewise operator \(X\) satisfies
+
+\[
+\boxed{\|X\|=1}
+\]
+
+while every nonzero vector obeys
+
+\[
+\boxed{\|Xf\|<\|f\|}.
+\]
+
+Thus the critical operator norm is not attained by any nonzero vector.
+At the same time the standard basis vectors are unit vectors and satisfy
+
+\[
+\|Xe_n\|=r_n\to1,
+\]
+
+so the associated critical defect can be made arbitrarily small without an
+actual neutral vector.
+
+This is exactly the sharpness role required by WD-X02:
+
+\[
+\|X\|=1
+\not\Rightarrow
+\text{norm attainment / actual neutrality}
+\]
+
+in infinite dimension.
+
+Certificate run:
+
+\[
+\boxed{\texttt{36193606439}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{e29b843f20125f4a43152459b9c77a4bb60f8f1b}}.
+\]
+
+The certified source blob is:
+
+\[
+\texttt{eb98e663282551b1dfede47f148132d93051d079}.
+\]
+
+The run passed pinned dependency resolution, direct Lake build of
+\(\texttt{WeilDefect.Examples.CriticalNonattainment}\), and the
+unfinished-proof/project-axiom rejection gate.
+
+WD-X02 is therefore closed. The next unfinished stable example cursor is:
+
+\[
+\boxed{\texttt{WD-X05 / MOVING SECTORS CAN LOSE EVERY PERSISTENT RAY}}
+\]
