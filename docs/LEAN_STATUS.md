@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T17 | WeilDefect.WDT17.weaklyTendsto_strong_of_norm_sq_tendsto + WeilDefect.WDT17.wd_t17_critical_positive_mass_le_half + WeilDefect.WDT17.wd_t17_fixed_sector_critical_dichotomy + WeilDefect.WDT17.wd_t17_neutral_branch + WeilDefect.WDT17.wd_t17_loss_branch | LEAN-CERTIFIED |
 | WD-T16 | WeilDefect.WDT16.exists_weaklyTendsto_subseq_of_norm_le + WeilDefect.WDT16.wd_t16_fixed_negative_sector_compactness + WeilDefect.WDT16.wd_t16_nonpositive_limit_persists + WeilDefect.WDT16.wd_t16_uniform_negative_margin_persists + WeilDefect.WDT16.wd_t16_uniform_negative_margin_forces_endpoint_jump + WeilDefect.WDT16.wd_t16_fixed_finite_negative_sector_persistence | LEAN-CERTIFIED |
 | WD-T15 | WeilDefect.WDT15.wd_t15_gap_antitone + WeilDefect.WDT15.wd_t15_right_limit_gap_duality + WeilDefect.WDT15.wd_t15_sequence_right_limit_eq + WeilDefect.WDT15.wd_t15_sequence_gap_eq_right_limit_orthogonal + WeilDefect.WDT15.wd_t15_monotone_projection_limit + WeilDefect.WDT15.wd_t15_right_limit_projection_and_gap_duality | LEAN-CERTIFIED |
 | WD-T14 | WeilDefect.WDT14.wd_t14_positive_shadow_margin + WeilDefect.WDT14.wd_t14_positive_shadow_preserves_negative_margin + WeilDefect.WDT14.wd_t14_graph_shadow_admissible_iff + WeilDefect.WDT14.wd_t14_graph_admissibility_failure_example + WeilDefect.WDT14.wd_t14_finite_positive_shadows_preserve_signature_not_admissibility | LEAN-CERTIFIED |
@@ -1815,5 +1816,95 @@ Next theorem cursor:
 \[
 \boxed{
 \texttt{WD-T17 / WD-C4 — FIXED-SECTOR CRITICAL DICHOTOMY}
+}
+\]
+
+
+## WD-T17 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T17: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.WDT17.weaklyTendsto_strong_of_norm_sq_tendsto;
+- WeilDefect.WDT17.NeutralCriticalBranch;
+- WeilDefect.WDT17.NegativeFallthroughBranch;
+- WeilDefect.WDT17.wd_t17_critical_positive_mass_le_half;
+- WeilDefect.WDT17.wd_t17_fixed_sector_critical_dichotomy;
+- WeilDefect.WDT17.wd_t17_neutral_branch;
+- WeilDefect.WDT17.wd_t17_loss_branch.
+
+For a unit-normalized critical sequence in a fixed finite negative sector,
+
+\[
+J(y_n)\to0,
+\]
+
+Lean proves
+
+\[
+\|a_n\|^2\to\frac12,
+\qquad
+\|u_n\|^2\to\frac12.
+\]
+
+After the WD-T16 compactness extraction, the nonzero right-limit vector
+\(y=(a,u)\) satisfies exactly one of two alternatives:
+
+1. \(\|a\|^2=1/2\), hence \(J(y)=0\), weak convergence of the positive
+   coordinate upgrades to strong convergence, and the full coefficient
+   subsequence converges strongly to \(y\);
+2. \(\|a\|^2<1/2\), hence \(J(y)<0\).
+
+The assembled theorem proves both exhaustivity and mutual exclusion of these
+branches.
+
+No imported project theorem premise is consumed by WD-T17.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Filtration.CriticalDichotomy}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36081480092}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{ed92f76a62c26ab48f35f7637c07bdf9568dccab}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{7102a25b28f7a8cf72e805f845bad23daf535aa2}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T17 module;
+- unfinished-proof/project-axiom rejection.
+
+Repair work changed only Lean normalization and coercion details; no theorem
+statement or mathematical hypothesis was weakened.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T18 / WD-C6 — ENDPOINT-JUMP QUOTIENT BOUNDS NEW RIGHT-LIMIT NEGATIVE INDEX}
 }
 \]
