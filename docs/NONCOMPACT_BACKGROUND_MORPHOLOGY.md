@@ -23,7 +23,7 @@ They have different consequences.
 
 A moving selected sector can erase every nonzero selected weak limit.
 
-An escaping unselected background cannot erase a negative ray already anchored in one fixed finite selected packet; it only prevents fixed full-divisor negative weak limit.
+An escaping unselected background cannot erase a negative ray already anchored in one fixed finite selected packet. Bounded tail escape can still admit a fixed full-divisor negative weak limit, but it prevents strong background compactness; norm escape may prevent even a bounded full-coefficient weak limit.
 
 ---
 
@@ -471,7 +471,7 @@ Equivalently, with respect to a canonical finite-coordinate exhaustion, uniform 
 
 ---
 
-### BF — strong full-divisor compactness
+### BF — strong background compactness
 
 If $b_n$ is bounded and uniformly coordinate-tail tight, then it is precompact in the $\ell^2$-type background coefficient space.
 
@@ -485,7 +485,7 @@ b_n\to b
 
 strongly.
 
-This is the fixed full-divisor ray regime.
+This is the background-compact regime; combined with the already anchored selected ray it yields a fixed full-divisor negative weak limit. Full strong coefficient convergence still requires positive-coordinate compactness.
 
 ---
 
