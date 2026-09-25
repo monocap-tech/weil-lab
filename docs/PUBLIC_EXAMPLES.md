@@ -4,9 +4,10 @@
 
 These seven examples are the public sharpness witnesses for Horizon 1.
 
-Each example has one job: show that a specific theorem hypothesis or conclusion
-cannot be strengthened without additional structure. Examples are not used as
-substitutes for proof-producing theorem nodes.
+Each example isolates a specific failure mode at a theorem boundary. It shows
+why a named hypothesis cannot simply be dropped, or why a named conclusion
+cannot be strengthened without additional structure. Examples do not create
+proof-producing edges in the theorem DAG.
 
 ---
 
@@ -110,9 +111,9 @@ Unit vectors concentrated near \(t=1\) make the defect tend to zero. Hence
 }
 ~~~
 
-The Lean development certifies an equivalent diagonal \(\ell^2\) realization:
-every nonzero vector loses norm strictly while standard basis directions
-approach the critical gain.
+The Lean development certifies a discrete diagonal \(\ell^2\) realization of
+the same sharpness phenomenon: every nonzero vector loses norm strictly while
+standard basis directions approach the critical gain.
 
 **Lean status:** LEAN-CERTIFIED.
 
@@ -275,12 +276,13 @@ Because the \(y_n\) use disjoint coordinates,
 }
 ~~~
 
-Therefore finite dimension at each stage is not enough. The selected finite
-sector must be fixed in order for WD-T16/WD-T17 compactness to apply.
+Thus finite dimension at each stage is insufficient for WD-T16/WD-T17. Their
+compactness argument requires one fixed finite selected sector, with the
+selected negative mass remaining in that fixed sector.
 
-The Lean certificate uses an equivalent coordinate-tail realization with
-strictly negative normalized vectors, signature tending to zero, and a
-trivial total tail intersection.
+The Lean certificate uses a coordinate-tail realization of the same moving-
+sector failure mode: normalized vectors remain strictly negative with signature
+tending to zero, while the total tail intersection is trivial.
 
 **Lean status:** LEAN-CERTIFIED.
 
@@ -334,9 +336,10 @@ and therefore
 }
 ~~~
 
-Criticality is not weakly closed under loss of positive-coordinate norm.
-The fixed selected negative coordinate survives and the limit falls through
-to strict negativity.
+In this fixed-selected-coordinate example, weak convergence loses positive
+norm while the selected negative coordinate remains fixed. The limiting
+signature is therefore strictly negative, realizing the fall-through branch
+of WD-T17.
 
 **Lean status:** LEAN-CERTIFIED.
 
@@ -381,9 +384,9 @@ R_v(z)
 }
 ~~~
 
-Zero moment alone therefore does not imply a universal \(O(|z|^{-3})\)
-bound. Any cubic-order improvement needs an additional first-moment
-cancellation or stronger structure.
+Zero moment alone does not imply a universal \(O(|z|^{-3})\) bound. A
+universal cubic-order improvement would require an additional first-moment
+cancellation or some other stronger structure.
 
 **Lean status:** LEAN-CERTIFIED.
 
