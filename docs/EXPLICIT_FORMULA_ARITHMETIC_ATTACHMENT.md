@@ -482,13 +482,13 @@ The same conclusion holds for a family $\psi_R$ only when the multiplier bounds 
 }
 ```
 
-The multiplier must be chosen independently of the unknown near field if the prime signal is to carry separate information.
+The theorem rules out treating a multiplier chosen specifically to cancel the near-minus-archimedean field as producing an independent prime signal. Any argument for separate prime information therefore needs an additional non-coadaptation condition—for example, a multiplier fixed independently of the unknown near field.
 
 ---
 
 ## 6. Negative-branch theorem boundary
 
-Combining H1-P1, H1-P2.1, and ZW2-T1–T5 yields the lawful chain
+For a fixed bounded selected-preserving multiplier $\psi$ (or a multiplier family satisfying the uniform bounds required by ZW2-T2), H1-P1, H1-P2.1, and ZW2-T1–T5 yield the lawful chain
 
 ```math
 \boxed{
@@ -527,7 +527,7 @@ That is exactly the downstream interface
 }
 ```
 
-or an equivalent actual-zeta KPH/transversality floor.
+or, for the special packet class where it applies, a stronger sufficient actual-zeta KPH/transversality floor.
 
 ---
 
