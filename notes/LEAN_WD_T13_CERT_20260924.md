@@ -4,11 +4,11 @@ Stable ID: **WD-T13 / WD-B7**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Formal target
 
@@ -31,34 +31,34 @@ ambiguous phrase “strictly positive.”
 
 For the self-adjoint block operator
 
-\[
+```math
 K=
 \begin{pmatrix}
 A&B\\
 B^*&C
 \end{pmatrix}
-\]
+```
 
 on the Hilbert direct sum \(W\oplus V\), Lean assumes the explicit uniform
 quadratic lower bound
 
-\[
+```math
 m(\|w\|^2+\|v\|^2)
 \le
 \operatorname{Re}\left(
 \langle Aw+Bv,w\rangle+
 \langle B^*w+Cv,v\rangle
 \right)
-\]
+```
 
 for every \(w,v\), with \(m>0\), together with the self-adjoint block
 hypotheses.
 
 This is the formal version of
 
-\[
+```math
 K\succeq mI.
-\]
+```
 
 The product Hilbert norm is written explicitly as
 \(\|w\|^2+\|v\|^2\); Lean's generic product Banach norm is not substituted.
@@ -67,11 +67,11 @@ The product Hilbert norm is written explicitly as
 
 By setting \(w=0\), Lean derives
 
-\[
+```math
 m\|v\|^2
 \le
 \operatorname{Re}\langle Cv,v\rangle.
-\]
+```
 
 Using mathlib's bounded-operator coercivity criterion, Lean then proves
 `IsUnit C` in the continuous-linear endomorphism algebra. Thus bounded
@@ -89,35 +89,35 @@ nonnegative in the Loewner order.
 
 The formal Schur correction is
 
-\[
+```math
 BC^{-1}B^*,
-\]
+```
 
 and the shortened covariance is
 
-\[
+```math
 H_W=A-BC^{-1}B^*.
-\]
+```
 
 Lean proves that the correction is positive and therefore
 
-\[
+```math
 \boxed{H_W\preceq A}.
-\]
+```
 
 It further performs the minimizing-complement calculation with
 
-\[
+```math
 z=C^{-1}B^*w
-\]
+```
 
 and obtains
 
-\[
+```math
 m\|w\|^2
 \le
 \operatorname{Re}\langle H_Ww,w\rangle.
-\]
+```
 
 Hence \(H_W\) is itself a unit, again derived natively from the same
 uniform lower bound.
@@ -127,32 +127,32 @@ uniform lower bound.
 Rather than introducing a second bespoke block-matrix representation, the
 formal certificate encodes
 
-\[
+```math
 P_WK^{-1}|_W=H_W^{-1}
-\]
+```
 
 through the equivalent block-solution characterization.
 
 For every \(w\), Lean constructs \(x\in W\) and \(y\in V\) satisfying
 
-\[
+```math
 Ax+By=w,
 \qquad
 B^*x+Cy=0,
-\]
+```
 
 with
 
-\[
+```math
 x=H_W^{-1}w.
-\]
+```
 
 Conversely, Lean proves that **any** solution of those two block equations has
 first component
 
-\[
+```math
 x=H_W^{-1}w.
-\]
+```
 
 Thus the first coordinate of the inverse block problem is exactly the inverse
 Schur complement.
@@ -187,11 +187,11 @@ The certificate does not assume an inverse for \(C\), an inverse for
 
 Therefore the correct status is native:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Repair-pass result
 
@@ -226,8 +226,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{WD-T14 / WD-B8 — FINITE POSITIVE SHADOWS PRESERVE SIGNATURE BUT NOT ADMISSIBILITY}
 }
-\]
+```
