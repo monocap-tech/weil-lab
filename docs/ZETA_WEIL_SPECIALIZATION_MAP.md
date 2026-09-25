@@ -730,11 +730,11 @@ is Hilbert-Schmidt on the relevant window, with high-height tails tending to zer
 
 This is a ZW-1 compactness input.
 
-### Critical-line positive completeness/frame information
+### Auxiliary critical-line sampling/completeness information
 
-The actual critical-line divisor supplies positive-channel sampling/completeness information unavailable in abstract Hilbert-space theory.
+The project retains sampling/completeness information for suitable **unweighted** critical-line/mirror exponential families. This information is metric-typed: it is not a native Problem-1 lower-frame or coercivity statement, and it does not transfer to the native synthesis without an explicit comparison theorem.
 
-This is a ZW-1 input.
+It is therefore auxiliary ZW-1 structure rather than an additional native screening budget.
 
 ### Finite exponential independence
 
@@ -887,7 +887,7 @@ The finite prime translations and logarithmic archimedean order are arithmetic/e
 | zero-moment law | none | **YES** |
 | $O(z^{-2})$ selected response | none beyond algebraic consequence of zero moment | **YES** |
 | off-axis helper Hilbert-Schmidt decay | none | **YES** |
-| critical-line frame/completeness | none | **YES** |
+| auxiliary unweighted critical-line sampling/completeness | none | **YES, metric-typed; not native coercivity** |
 | weighted completed $\Xi$ next jet | none | **YES — ZW-2** |
 | compact-window finite prime shifts | none | **YES — ZW-2** |
 | logarithmic principal symbol | none | **YES — ZW-2** |
