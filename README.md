@@ -24,11 +24,12 @@ working architecture is
 \boxed{
 \text{finite negative index}
 \longrightarrow
-\text{spectral screening}
+\text{spectral screening / support filtration}
 \longrightarrow
 \begin{cases}
-\text{negative persistence},\\
-\text{neutral persistence}.
+\text{fixed-packet negative persistence},\\
+\text{fixed-packet attained-neutral persistence},\\
+\text{moving/infinite-sector or background noncompactness}.
 \end{cases}
 }
 ```
@@ -82,8 +83,7 @@ D=S_{+}S_{+}^{*}-S_{-}S_{-}^{*},
 
 with the sign problem reduced to contractive Douglas screening. For a fixed
 finite selected negative sector, critical or negative right-approach forces a
-nonzero nonpositive right-limit ray. A genuinely nonpersistent approximate
-neutral branch therefore requires an infinite or moving-sector mechanism.
+nonzero nonpositive right-limit ray. Within that fixed-finite-sector right-limit setting, a genuinely nonpersistent approximate-neutral branch is excluded; nonpersistence must instead enter through moving/infinite selected-sector or background noncompactness.
 
 Under the zeta-Weil specialization, a selected residue vector satisfies
 
@@ -129,7 +129,7 @@ morphology documents linked below.
 | Persistent normalized Weil negativity | Conditional theorem |
 | Quartet zero-moment law | Internal proof in the selected quartet model |
 | $O(\lvert z\rvert^{-2})$ far-field decay | Internal proof |
-| Weighted next-jet localization | Exact reduction |
+| Weighted next-jet localization | Internal reduction under stated source/multiplier hypotheses |
 | Compact-window neutral equation $W_{c}k=0$ | Conditional theorem |
 | Fixed-window log-order operator + finite prime shifts | Derived |
 | Actual-zeta next-jet exclusion | Open |
