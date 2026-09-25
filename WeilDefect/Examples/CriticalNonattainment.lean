@@ -37,7 +37,12 @@ theorem wd_x02_weight_tendsto_one :
   simpa [wdX02Weight, div_eq_mul_inv] using
     (tendsto_const_nhds.sub hinv)
 
-/-- The Hilbert carrier used for the discrete WD-X02 realization. -/
+/--
+The Hilbert carrier used for the discrete WD-X02 realization.
+
+This is the diagonal ℓ² model of the same non-attained critical geometry as
+the canonical L²(0,1) multiplication-by-t witness in the audit document.
+-/
 abbrev WDX02Space :=
   lp (fun _ : ℕ => ℂ) 2
 
