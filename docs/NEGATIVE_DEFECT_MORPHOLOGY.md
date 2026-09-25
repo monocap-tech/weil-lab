@@ -1,5 +1,5 @@
 # Negative Defect Morphology Theorem
-## H1-P3.0 — Fixed-packet persistent negative branch
+**H1-P3.0 — Fixed-packet persistent negative branch**
 
 This document packages the completed H1-P1 and H1-P2 ingredients into one theorem-shaped morphology.
 
@@ -17,7 +17,7 @@ or an equivalent packetwise transversality/KPH floor.
 
 ---
 
-# 1. Fixed-packet setup
+## 1. Fixed-packet setup
 
 Fix a finite selected off-axis packet
 
@@ -113,7 +113,7 @@ This is the abstract fixed-packet negative-collapse hypothesis.
 
 ---
 
-# 2. Persistent endpoint ray
+## 2. Persistent endpoint ray
 
 Because $M_\Pi$ is finite dimensional, WD-C5 applies.
 
@@ -154,7 +154,7 @@ Thus the branch carries a genuine negative endpoint jump, not merely a sequence 
 
 ---
 
-## P3-N1 — Fixed-packet persistent-negative theorem
+### P3-N1 — Fixed-packet persistent-negative theorem
 
 Under the setup above,
 
@@ -172,7 +172,7 @@ Under the setup above,
 
 ---
 
-# 3. Representative blow-up
+## 3. Representative blow-up
 
 Define the rescaled physical representatives
 
@@ -217,7 +217,7 @@ with the right-continuous nested physical spaces required there.
 
 ---
 
-## P3-N2 — Boundary-amplification conclusion
+### P3-N2 — Boundary-amplification conclusion
 
 For the normalized witnesses in the P3-N1 setup,
 
@@ -239,7 +239,7 @@ If the additional common-carrier hypotheses of WD-C7 hold, then every increasing
 
 ---
 
-# 4. Selected and full Weil negativity
+## 4. Selected and full Weil negativity
 
 For the selected signed form,
 
@@ -321,7 +321,7 @@ The unselected negative background can only make the normalized full Weil form m
 
 ---
 
-## P3-N3 — Normalized full-Weil negativity
+### P3-N3 — Normalized full-Weil negativity
 
 Every fixed-packet persistent negative branch carries full Weil witnesses whose normalized negativity is bounded away from zero:
 
@@ -339,7 +339,7 @@ Q_W(g_n)/\varepsilon_n^2
 
 ---
 
-# 5. Background submorphology
+## 5. Background submorphology
 
 The sequence
 
@@ -400,7 +400,7 @@ This submorphology will be normalized separately in H1-P3.2.
 
 ---
 
-# 6. Selected raw source
+## 6. Selected raw source
 
 Take the nonzero selected negative coordinate
 
@@ -449,7 +449,7 @@ The inverse-square order is the universal pair-geometric order; no source-free $
 
 ---
 
-## P3-N4 — Zero-moment source theorem
+### P3-N4 — Zero-moment source theorem
 
 Every fixed-packet persistent negative endpoint ray determines a nonzero finite selected source satisfying
 
@@ -473,7 +473,7 @@ R_v(z)=O(|z|^{-2}).
 
 ---
 
-# 7. Selected-preserving scalarization
+## 7. Selected-preserving scalarization
 
 For the fixed nonzero source $v$, choose a bounded selected-preserving multiplier $\psi$ as in ZW2-T1:
 
@@ -505,7 +505,7 @@ No uniform projective source margin over a moving packet family is imported.
 
 ---
 
-# 8. Distant complement disappears
+## 8. Distant complement disappears
 
 For a radius $R$, define
 
@@ -548,7 +548,7 @@ Thus any complementary-divisor dependence that remains after selected scalarizat
 
 ---
 
-## P3-N5 — Finite-neighborhood localization theorem
+### P3-N5 — Finite-neighborhood localization theorem
 
 For every fixed persistent negative source and fixed bounded selected-preserving multiplier,
 
@@ -578,7 +578,7 @@ O((\log R)/R).
 
 ---
 
-# 9. Completed $\Xi$ next-jet morphology
+## 9. Completed $\Xi$ next-jet morphology
 
 Define
 
@@ -621,7 +621,7 @@ This is the exact arithmetic morphology of the complementary divisor seen by the
 
 ---
 
-## P3-N6 — Weighted next-jet morphology theorem
+### P3-N6 — Weighted next-jet morphology theorem
 
 Every fixed-packet persistent negative endpoint defect admits a nonzero finite zero-moment selected source $v$ such that, after an arbitrarily small far-tail error, all complementary-divisor dependence is carried by the weighted finite/intermediate next-jet field
 
@@ -643,7 +643,7 @@ H_v^{(m_\mu)}(\mu)
 
 ---
 
-# 10. What P3-N6 does not say
+## 10. What P3-N6 does not say
 
 P3-N6 is a localization and representation theorem.
 
@@ -671,7 +671,7 @@ What P3-N6 does say is exact:
 
 ---
 
-# 11. Adaptive cancellation is not an escape
+## 11. Adaptive cancellation is not an escape
 
 Fix a cutoff \(R\). Suppose the selected-preserving multiplier is additionally chosen so that
 
@@ -705,7 +705,7 @@ No statement is made for an arbitrarily varying unbounded adaptive family.
 
 ---
 
-## P3-N7 — No adaptive scalar bypass
+### P3-N7 — No adaptive scalar bypass
 
 Within the selected-preserving scalar explicit formula,
 
@@ -723,11 +723,11 @@ Within the selected-preserving scalar explicit formula,
 
 ---
 
-# 12. Negative morphology theorem
+## 12. Negative morphology theorem
 
 Collecting P3-N1 through P3-N7:
 
-## H1-P3.0 Negative Defect Morphology Theorem
+### H1-P3.0 Negative Defect Morphology Theorem
 
 Assume:
 
@@ -829,7 +829,7 @@ Cutoffwise adaptive cancellation of this field collapses the prime term onto the
 
 ---
 
-# 13. Exact stop line
+## 13. Exact stop line
 
 The morphology theorem is complete at the point where the finite/intermediate field has been isolated.
 
@@ -863,7 +863,7 @@ Both are outside the H1-P3.0 theorem.
 
 ---
 
-# 14. Dependency chain
+## 14. Dependency chain
 
 The negative morphology theorem consumes:
 
@@ -893,7 +893,7 @@ No RH-facing exclusion theorem appears above the stop line.
 
 ---
 
-# H1-P3.0 determination
+## H1-P3.0 determination
 
 The negative branch is now packaged as a single auditable morphology theorem.
 
@@ -922,7 +922,7 @@ That is the complete Horizon-1 negative defect morphology.
 
 ---
 
-# Next cursor
+## Next cursor
 
 ```math
 \boxed{
