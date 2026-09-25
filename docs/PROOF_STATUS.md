@@ -75,7 +75,7 @@ Historical labels such as WD-A1, ZW1-T7, or P3-N4 remain immutable aliases.
 | H1-P2 | COMPLETE | zeta-Weil specialization |
 | H1-P3 | COMPLETE | negative, neutral, and noncompact morphologies |
 | H1-P4 | COMPLETE | theorem/source/proof audit |
-| H1-P5 | PAUSED | public manuscript/package; resumes after LEAN-H1 exhaustion |
+| H1-P5 | READY — NOT STARTED | public manuscript/package; LEAN-H1 gate satisfied |
 
 ---
 
@@ -193,9 +193,9 @@ See [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md).
 
 All H1-P4 audit classes are complete.
 
-## Deferred post-LEAN cursor
+## Next project cursor
 
-The mathematical audit is complete, but public-package assembly is intentionally paused while LEAN-H1 is active. When the formalization exhaustion condition is met, work resumes at:
+The mathematical audit is complete and LEAN-H1 has reached its exhaustion condition. Public-package assembly has not yet started; the next project cursor is:
 
 ```math
 \boxed{
@@ -206,9 +206,9 @@ The mathematical audit is complete, but public-package assembly is intentionally
 
 ---
 
-## Lean formalization priority
+## Lean formalization closure
 
-Formal certification now preempts H1-P5 public-package work.
+Formal certification no longer preempts H1-P5: the LEAN-H1 gate has been satisfied. This status transition records readiness only; it does not itself start public-package work.
 
 Canonical control:
 
