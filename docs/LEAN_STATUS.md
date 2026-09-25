@@ -82,6 +82,10 @@ A `LEAN-IN-PROGRESS` entry becomes `LEAN-CERTIFIED` only after the pinned CI bui
 ```
 
 
+## WD-X02 current attempt
+
+WD-X02 has a complete Lean implementation in `WeilDefect/Examples/CriticalNonattainment.lean`, but it is **not** certified yet. The most recent dedicated run for the implementation at commit `76fde3da2385c8f43bb9ac00c04dfcbec686f00a` was GitHub Actions run `36193331699`; it completed with failure. Therefore WD-X02 remains `LEAN-IN-PROGRESS` and the active cursor does not advance.
+
 ## First certificate evidence
 
 The first stable-ID certifications were built at Lean commit:
@@ -3101,7 +3105,7 @@ positive Dirichlet energy:
 The next kernel obligation is therefore no longer the resolvent estimate.
 It is only this integration-by-parts positivity/energy identification.
 
-Current formalization cursor:
+Cursor at this checkpoint:
 
 ```math
 \boxed{
