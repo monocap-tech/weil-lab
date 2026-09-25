@@ -55,9 +55,9 @@ Current position:
 \qquad
 \text{H1-P4 COMPLETE}
 \qquad
-\text{LEAN-H1 ACTIVE}
+\text{LEAN-H1 EXHAUSTED}
 \qquad
-\text{H1-P5 PAUSED}.
+\text{H1-P5 READY — NOT STARTED}.
 }
 ```
 
