@@ -2903,34 +2903,186 @@ The run passed:
 - rebuilding the finite Problem-1 dependencies;
 - unfinished-proof/project-axiom rejection.
 
-### Remaining WD-T28 obligation
+### WD-T28 resolvent-realization certificate
 
-The stable theorem is **not yet promoted** because the direct analytic
-Dirichlet-resolvent estimate itself is still represented by the explicit
-premise
+The previously abstract native-column premise has now been discharged by an
+explicit compact-window Dirichlet construction.
+
+Additional formal declarations include:
+
+- WeilDefect.problemOneFreq;
+- WeilDefect.problemOneGreenDenom;
+- WeilDefect.problemOneGreenQ;
+- WeilDefect.dirichletRightReal;
+- WeilDefect.dirichletLeftReal;
+- WeilDefect.dirichletRightBasis;
+- WeilDefect.dirichletLeftBasis;
+- WeilDefect.problemOneL_dirichletRightBasis;
+- WeilDefect.problemOneL_dirichletLeftBasis;
+- WeilDefect.problemOneGreenQ_shell_bound;
+- WeilDefect.norm_problemOne_source_le;
+- WeilDefect.dirichletProblemOneColumn;
+- WeilDefect.dirichletProblemOneColumn_pos;
+- WeilDefect.dirichletProblemOneColumn_neg;
+- WeilDefect.problemOneL_dirichletProblemOneColumn;
+- WeilDefect.norm_dirichletProblemOneColumn_le;
+- WeilDefect.problemOneGreenPairing;
+- WeilDefect.problemOneColumnEnergySq;
+- WeilDefect.problemOneColumnEnergySq_le;
+- WeilDefect.ActualProblemOneShellData;
+- WeilDefect.actualProblemOneEnergySq;
+- WeilDefect.nativeProblemOneResolventData_of_actual;
+- WeilDefect.wd_t28_native_problem_one_hilbert_schmidt_actual.
+
+For fixed \(t>0\), the explicit Green column is
 
 \[
-\texttt{NativeProblemOneResolventData}.
+F_\gamma(x)
+=
+q_\gamma e^{-i\gamma x}
+-q_\gamma e^{-i\gamma t}h_+(x)
+-q_\gamma e^{i\gamma t}h_-(x),
 \]
 
-The remaining kernel obligation is to realize the actual compact-window
-Problem-1 column and prove from its Dirichlet solution that
+where
+
+\[
+q_\gamma
+=
+\left(\frac14+\gamma^2\right)^{-1}
+\]
+
+and \(h_\pm\) are the canonical hyperbolic-sine Dirichlet interpolation
+functions.
+
+Lean certifies
+
+\[
+F_\gamma(\pm t)=0
+\]
+
+and
+
+\[
+\left(-\partial_x^2+\frac14\right)F_\gamma
+=
+e^{-i\gamma x}.
+\]
+
+Inside the fixed zeta strip
+
+\[
+|\Im\gamma|\le\frac12,
+\]
+
+Lean proves the compact-window source and boundary-correction bounds and the
+shell-height reciprocal estimate
+
+\[
+\|q_\gamma\|
+\le
+(n+1)^{-2}
+\]
+
+whenever the coordinate is assigned to a shell satisfying
+
+\[
+n+1\le |\Re\gamma|.
+\]
+
+Consequently the Green pairing obeys the explicit bound
+
+\[
+\left|
+\int_{-t}^{t}
+\overline{e^{-i\gamma x}}\,F_\gamma(x)\,dx
+\right|
+\le
+6t\,e^t\,\|q_\gamma\|,
+\]
+
+which supplies the inverse-square column-energy estimate consumed by the
+already-certified shell-summability theorem.
+
+The direct resolvent target passed in:
+
+\[
+\boxed{\texttt{36106100832}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{b4f66285b0060afce5af47310e98cbb5fef41cc9}}.
+\]
+
+The checked resolvent source blob is:
+
+\[
+\texttt{2564a66892ed3c623249d621d54a556bcec8857b}.
+\]
+
+This run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of \(\texttt{WeilDefect.DirichletResolvent}\);
+- rebuilding the WD-T28 criterion dependencies;
+- unfinished-proof/project-axiom rejection.
+
+The former abstract premise
+
+\[
+\texttt{NativeProblemOneResolventData}
+\]
+
+is therefore internally realized for the explicit shell data by
+
+\[
+\texttt{nativeProblemOneResolventData_of_actual}.
+\]
+
+### Remaining WD-T28 semantic obligation
+
+WD-T28 remains
+
+\[
+\boxed{\text{LEAN-IN-PROGRESS}}
+\]
+
+for one narrower reason.
+
+The current scalar
+
+\[
+\texttt{problemOneColumnEnergySq}
+\]
+
+is defined as the norm of the Green pairing.  The mathematical native
+\(H^{-1}_L\) statement additionally identifies the pairing itself with the
+positive Dirichlet energy:
 
 \[
 \boxed{
-\|E_t e_\gamma\|_{H^{-1}_L}^2
-\ll_t
-(1+|\gamma|^2)^{-1}.
+\langle f_\gamma,Gf_\gamma\rangle
+=
+\int_{-t}^{t}
+\left(
+|F_\gamma'(x)|^2
++
+\frac14|F_\gamma(x)|^2
+\right)\,dx
+\ge0.
 }
 \]
 
-Only after that realization is kernel-checked should WD-T28 be promoted from
-LEAN-IN-PROGRESS.
+The next kernel obligation is therefore no longer the resolvent estimate.
+It is only this integration-by-parts positivity/energy identification.
 
 Current formalization cursor:
 
 \[
 \boxed{
-\texttt{WD-T28 / RESOLVENT REALIZATION — DIRECT DIRICHLET }H^{-1}_L\texttt{ COLUMN ESTIMATE}
+\texttt{WD-T28 / ENERGY IDENTIFICATION — GREEN PAIRING = POSITIVE }H^{-1}_L\texttt{ ENERGY}
 }
 \]
