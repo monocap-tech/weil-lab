@@ -13,10 +13,11 @@ This file records formal verification separately from mathematical standing and 
 
 ## Current control state
 
-- **Formalization track:** LEAN-H1 active.
-- **Active phase:** LEAN-H1-P1 — algebraic and finite-dimensional core.
-- **Active cursor:** WD-X05 — moving sectors can lose every persistent ray.
-- **Public packaging:** H1-P5 paused until LEAN-H1 exhaustion.
+- **Formalization track:** LEAN-H1 exhausted.
+- **Active phase:** none.
+- **Active Lean cursor:** none.
+- **Next project cursor:** H1-P5.0 — public package architecture.
+- **Public packaging:** ready, not started.
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
 
@@ -68,7 +69,7 @@ This section is canonical for the live queue. The certificate sections below are
 | WD-X03 | `WeilDefect.wd_x03_individual_not_compositional` | LEAN-CERTIFIED |
 | WD-X04 | `WeilDefect.wd_x04_shorted_covariance_identity` | LEAN-CERTIFIED |
 | WD-X05 | WeilDefect.wdX05Delta + WeilDefect.wdX05PosAmp + WeilDefect.wdX05NegAmp + WeilDefect.wdX05Pos + WeilDefect.wdX05Neg + WeilDefect.wdX05Vector + WeilDefect.wd_x05_vector_norm_eq_one + WeilDefect.wd_x05_jvalue_formula + WeilDefect.wd_x05_jvalue_negative + WeilDefect.wd_x05_jvalue_tendsto_zero + WeilDefect.wdX05Tail + WeilDefect.wd_x05_tail_antitone + WeilDefect.wd_x05_vector_mem_tail + WeilDefect.wd_x05_tail_intersection_trivial + WeilDefect.wd_x05_moving_sectors_lose_persistent_ray | LEAN-CERTIFIED |
-| WD-X06 | WeilDefect.wdX06Amp + WeilDefect.wdX06Pos + WeilDefect.wdX06Neg + WeilDefect.wdX06Vector + WeilDefect.wdX06Limit + WeilDefect.wd_x06_vector_norm_eq_one + WeilDefect.wd_x06_vector_critical + WeilDefect.wd_x06_lp_coordinate_tendsto_zero + WeilDefect.wd_x06_positive_weakly_tendsto_zero + WeilDefect.wd_x06_vector_weakly_tendsto_limit + WeilDefect.wd_x06_limit_jvalue + WeilDefect.wd_x06_positive_mass_loss_fallthrough | LEAN-IN-PROGRESS |
+| WD-X06 | WeilDefect.wdX06Amp + WeilDefect.wdX06Pos + WeilDefect.wdX06Neg + WeilDefect.wdX06Vector + WeilDefect.wdX06Limit + WeilDefect.wd_x06_vector_norm_eq_one + WeilDefect.wd_x06_vector_critical + WeilDefect.wd_x06_lp_coordinate_tendsto_zero + WeilDefect.wd_x06_positive_weakly_tendsto_zero + WeilDefect.wd_x06_vector_weakly_tendsto_limit + WeilDefect.wd_x06_limit_jvalue + WeilDefect.wd_x06_positive_mass_loss_fallthrough | LEAN-CERTIFIED |
 | WD-X07 | WeilDefect.wd_x07_response_identity + WeilDefect.wd_x07_real_response_formula + WeilDefect.wd_x07_scaled_response_tendsto_neg_one | LEAN-CERTIFIED |
 
 A `LEAN-IN-PROGRESS` entry becomes `LEAN-CERTIFIED` only after the pinned CI build succeeds. `LEAN-CERTIFIED` entries in the table already have certificate evidence recorded below.
@@ -77,7 +78,15 @@ A `LEAN-IN-PROGRESS` entry becomes `LEAN-CERTIFIED` only after the pinned CI bui
 
 ```math
 \boxed{
-\texttt{WD-X06 / POSITIVE-COORDINATE MASS LOSS STRENGTHENS CRITICALITY TO NEGATIVITY}
+\texttt{LEAN-H1 EXHAUSTED}
+}
+```
+
+Next project cursor, not started:
+
+```math
+\boxed{
+\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
 }
 ```
 
@@ -4282,4 +4291,91 @@ WD-X05 is therefore closed. The next unfinished stable example cursor is:
 \boxed{
 \texttt{WD-X06 / POSITIVE-COORDINATE MASS LOSS STRENGTHENS CRITICALITY TO NEGATIVITY}
 }
+```
+
+
+## WD-X06 certificate evidence
+
+Stable ID:
+
+```math
+\boxed{\text{WD-X06: LEAN-CERTIFIED}.}
+```
+
+Lean certifies the critical weak-fall-through witness on
+$\ell^2(\mathbb N)\oplus\mathbb C$.
+
+For
+
+```math
+y_n=\left(\frac1{\sqrt2}e_n,\frac1{\sqrt2}\right),
+```
+
+the formal witness satisfies
+
+```math
+\boxed{\|y_n\|=1}
+\qquad
+\boxed{[y_n,y_n]_J=0}
+```
+
+for every $n$. Lean also proves the standard-basis weak convergence
+
+```math
+e_n\rightharpoonup0
+```
+
+directly from the $\ell^2$ coordinate square-summability identity. Therefore
+
+```math
+y_n\rightharpoonup
+y=\left(0,\frac1{\sqrt2}\right).
+```
+
+The limit has exact signature
+
+```math
+\boxed{[y,y]_J=-\frac12<0}.
+```
+
+Thus WD-X06 formally realizes the negative-fall-through branch of WD-T17:
+positive-coordinate mass can disappear under weak convergence while the
+selected negative coordinate remains fixed, strengthening criticality to
+strict negativity.
+
+Certificate run:
+
+```math
+\boxed{\texttt{36196899652}}
+```
+
+at theorem head:
+
+```math
+\boxed{\texttt{39353ab8185c99959481c334aa67d42c88e8f859}}.
+```
+
+Certified source blob:
+
+```math
+\texttt{746b1d4716e72a0f607c38c8412d61771d9acae2}.
+```
+
+The run passed pinned dependency resolution, direct Lake build of
+$\texttt{WeilDefect.Examples.WeakCriticalFallthrough}$, and the
+unfinished-proof/project-axiom rejection gate.
+
+WD-X06 is therefore closed.
+
+All stable Horizon-1 theorem/example rows now have durable final Lean states.
+Accordingly:
+
+```math
+\boxed{\texttt{LEAN-H1 EXHAUSTED}}
+```
+
+The next project cursor is recorded, but no H1-P5 work has been started:
+
+```math
+\boxed{\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}}
 ```
