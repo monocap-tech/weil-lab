@@ -176,8 +176,7 @@ theorem problemOneDirichletEnergyComplex_eq_ofReal
           ‖dirichletProblemOneColumn t gamma x‖ ^ 2 : ℝ) : ℂ)
   rw [hstar (iteratedDeriv 1 (dirichletProblemOneColumn t gamma) x)]
   rw [mul_assoc, hstar (dirichletProblemOneColumn t gamma x)]
-  norm_cast
-  ring_nf
+  push_cast
 
 /--
 The real Dirichlet energy is nonnegative.
