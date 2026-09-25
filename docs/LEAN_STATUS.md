@@ -15,7 +15,8 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
-| WD-T28 | WeilDefect.ZetaZeroShellCountData + WeilDefect.NativeProblemOneResolventData + WeilDefect.NativeHilbertSchmidtCriterion + WeilDefect.NativeTraceClassCovarianceCriterion + WeilDefect.nativeShellEnergy_summable + WeilDefect.wd_t28_native_basis_square_summable + WeilDefect.wd_t28_native_problem_one_hilbert_schmidt | LEAN-IN-PROGRESS |
+| WD-T29 | WeilDefect.wd_t29_finite_head_approximation + WeilDefect.wd_t29_quantitative_finite_head_approximation | LEAN-CERTIFIED |
+| WD-T28 | WeilDefect.ZetaZeroShellCountData + WeilDefect.NativeProblemOneResolventData + WeilDefect.NativeHilbertSchmidtCriterion + WeilDefect.NativeTraceClassCovarianceCriterion + WeilDefect.wd_t28_native_problem_one_hilbert_schmidt_actual + WeilDefect.problemOneGreenPairing_eq_dirichletEnergy + WeilDefect.problemOneColumnEnergySq_eq_dirichletEnergy + WeilDefect.wd_t28_actual_dirichlet_energy_summable | LEAN-CERTIFIED |
 | WD-T27 | WeilDefect.rationalResponse + WeilDefect.residueFirstMoment + WeilDefect.rationalResponse_laurent_two + WeilDefect.rationalResponse_zero_moment_remainder_bound + WeilDefect.rationalResponse_zero_moment_remainder_isBigO + WeilDefect.rationalResponse_zero_moment_isBigO + WeilDefect.wd_t27_universal_inverse_square_far_decay + WeilDefect.wd_t27_universal_inverse_square_isBigO | LEAN-CERTIFIED |
 | WD-T26 | WeilDefect.rawResiduesOfNegativePairs + WeilDefect.wd_t26_zero_moment + WeilDefect.wd_t26_coefficient_mem_rawResidues + WeilDefect.wd_t26_nonzero_raw_residue_of_nonzero_coefficient + WeilDefect.wd_t26_selected_zero_moment_residue | LEAN-CERTIFIED |
 | WD-T25 | WeilDefect.problemOneDenominator + WeilDefect.problemOneL + WeilDefect.problemOneMode + WeilDefect.problemOneL_problemOneMode + WeilDefect.wd_t25_finite_problem_one_relation_trivial + WeilDefect.wd_t25_no_exact_finite_positive_compensation | LEAN-CERTIFIED |
@@ -3084,5 +3085,140 @@ Current formalization cursor:
 \[
 \boxed{
 \texttt{WD-T28 / ENERGY IDENTIFICATION — GREEN PAIRING = POSITIVE }H^{-1}_L\texttt{ ENERGY}
+}
+\]
+
+
+## WD-T28 final certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T28: LEAN-CERTIFIED}.
+}
+\]
+
+The remaining semantic obligation was the native Green-pairing / positive
+Dirichlet-energy identification. Lean now certifies the chain
+
+\[
+\langle f_\gamma,Gf_\gamma\rangle
+=
+\int_{-t}^{t}
+\left(
+|F_\gamma'(x)|^2+\frac14|F_\gamma(x)|^2
+\right)\,dx
+\ge 0,
+\]
+
+together with the real/complex cast and the identification of
+`problemOneColumnEnergySq` with the positive Dirichlet energy.
+
+Final declarations include:
+
+- WeilDefect.problemOneDirichletEnergy;
+- WeilDefect.problemOneDirichletEnergyComplex;
+- WeilDefect.dirichlet_second_derivative_pairing;
+- WeilDefect.problemOneDirichletEnergyComplex_eq_ofReal;
+- WeilDefect.problemOneDirichletEnergy_nonneg;
+- WeilDefect.problemOneGreenPairing_eq_dirichletEnergyComplex;
+- WeilDefect.problemOneGreenPairing_eq_dirichletEnergy;
+- WeilDefect.problemOneColumnEnergySq_eq_dirichletEnergy;
+- WeilDefect.actualProblemOneEnergySq_eq_dirichletEnergy;
+- WeilDefect.wd_t28_actual_dirichlet_energy_summable.
+
+The final cast repair was proof-engineering only: after `push_cast`, the goal
+was reflexive and is closed by `rfl`. No mathematical statement or hypothesis
+was weakened.
+
+The final WD-T28 dependency was rebuilt successfully as part of the WD-T29
+certificate run:
+
+\[
+\boxed{\texttt{36149246351}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{766ddd2297e5d884a532e09379b7c2e6ad82db86}}.
+\]
+
+The final Dirichlet-energy source blob is:
+
+\[
+\texttt{68c53704d15038b6365a9835d79b7c6d4a3d548b}.
+\]
+
+
+## WD-T29 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T29: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations:
+
+- WeilDefect.wd_t29_finite_head_approximation;
+- WeilDefect.wd_t29_quantitative_finite_head_approximation.
+
+Lean formalizes the exact necessary-condition mechanism. If
+
+\[
+y=S_{\le G}x_{\le G}+S_{>G}x_{>G},
+\qquad
+\|x_{>G}\|\le 1,
+\]
+
+then
+
+\[
+\operatorname{dist}
+\bigl(y,\operatorname{Ran}S_{\le G}\bigr)
+\le
+\|S_{>G}\|.
+\]
+
+Any quantitative operator-tail bound
+\(\|S_{>G}\|\le\varepsilon_G\) therefore transfers immediately to the
+same finite-head approximation rate.
+
+Certificate run:
+
+\[
+\boxed{\texttt{36149246351}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{766ddd2297e5d884a532e09379b7c2e6ad82db86}}.
+\]
+
+The WD-T29 source blob is:
+
+\[
+\texttt{1f0222e44d03a9b23d0ae3900c3f884893f2eaa1}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of `WeilDefect.FiniteHeadApproximation`;
+- rebuilding the WD-T28 Dirichlet-energy dependency;
+- unfinished-proof/project-axiom rejection.
+
+WD-T30 is already independently Lean-certified. Therefore the next unfinished
+sequential theorem cursor is:
+
+\[
+\boxed{
+\texttt{WD-T31 / ZW2-T2 — ZERO MOMENT + ZERO COUNTING GIVES }O((\log R)/R)\texttt{ FAR COMPLEMENTARY TAIL}
 }
 \]
