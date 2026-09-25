@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T25 | WeilDefect.problemOneDenominator + WeilDefect.problemOneL + WeilDefect.problemOneMode + WeilDefect.problemOneL_problemOneMode + WeilDefect.wd_t25_finite_problem_one_relation_trivial + WeilDefect.wd_t25_no_exact_finite_positive_compensation | LEAN-CERTIFIED |
 | WD-T24 | WeilDefect.realExpMode + WeilDefect.realExpMode_ne_zero + WeilDefect.hasDerivAt_realExpMode + WeilDefect.iteratedDeriv_realExpMode + WeilDefect.iteratedDeriv_finite_exp_sum + WeilDefect.wd_t24_finite_distinct_frequency_exponential_independence | LEAN-CERTIFIED |
 | WD-T23 | WeilDefect.BombieriMultiplicityNullData + WeilDefect.wd_t23_same_frequency_synthesis_factor + WeilDefect.wd_t23_same_frequency_zero_sum_null + WeilDefect.wd_t23_total_multiplicity_nullity + WeilDefect.wd_t23_single_ordinate_nullity + WeilDefect.wd_t23_single_ordinate_has_null_iff_repeated + WeilDefect.wd_t23_distinct_frequency_reduction | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T22 | WeilDefect.BombieriFiniteInertiaData + WeilDefect.wd_t22_finite_weil_inertia_saturation + WeilDefect.SimpleQuartetPacketNegative + WeilDefect.wd_t22_simple_quartet_packet_pair_count + WeilDefect.wd_t22_simple_quartet_packet_inertia + WeilDefect.wd_t22_two_simple_quartet_negative_index | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -2472,10 +2473,105 @@ The run passed:
 The repair passes resolved Lean parser and real/complex module-instance
 ambiguities only; no theorem statement or mathematical hypothesis was weakened.
 
+## WD-T25 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T25: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.problemOneDenominator;
+- WeilDefect.problemOneL;
+- WeilDefect.problemOneL_realExpMode;
+- WeilDefect.problemOneMode;
+- WeilDefect.problemOneDenominator_half;
+- WeilDefect.problemOneDenominator_neg_half;
+- WeilDefect.problemOneL_problemOneMode;
+- WeilDefect.problemOneL_const_mul_problemOneMode;
+- WeilDefect.problemOneL_fin_sum;
+- WeilDefect.wd_t25_finite_problem_one_relation_trivial;
+- WeilDefect.wd_t25_no_exact_finite_positive_compensation.
+
+Lean represents the Problem-1 differential operator as
+
+\[
+L=-\frac{d^2}{dx^2}+\frac14.
+\]
+
+For an exponential mode \(e^{\lambda x}\), it certifies
+
+\[
+L e^{\lambda x}
+=
+\left(\frac14-\lambda^2\right)e^{\lambda x}.
+\]
+
+A Green-preconditioned Problem-1 coordinate is represented as one reciprocal
+particular solution plus arbitrary boundary-homogeneous terms at frequencies
+\(\pm 1/2\).  Lean proves that the two boundary terms are killed by \(L\), and
+that a reciprocal coefficient satisfying
+
+\[
+q\left(\frac14-\lambda^2\right)=1
+\]
+
+is mapped back to the raw exponential mode.
+
+Consequently, any finite exact relation among distinct-frequency
+Green-preconditioned coordinates on a nonempty interval is sent by \(L\) to a
+finite distinct-frequency exponential relation.  WD-T24 then forces every
+coefficient to vanish.
+
+The anchored corollary therefore proves that if one selected channel has a
+nonzero coefficient, no finite family of distinct-frequency compensating
+channels can cancel it exactly on a nontrivial interval.
+
+No imported project theorem premise is consumed by WD-T25.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.ProblemOneIndependence}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36093665687}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{ae100c2bfd4fddcc45296f52e0b38d844344477d}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{a799e0931c557a977b8163fc21940defa366fdee}.
+\]
+
+The run passed:
+
+- pinned dependency resolution;
+- mathlib cache retrieval;
+- direct Lake build of the WD-T25 target module;
+- rebuilding and rechecking the WD-T24 dependency;
+- unfinished-proof/project-axiom rejection.
+
+The single repair pass changed Lean representation only; no theorem statement
+or mathematical hypothesis was weakened.
+
 Next theorem cursor:
 
 \[
 \boxed{
-\texttt{WD-T25 / ZW1-T6 — NO EXACT FINITE POSITIVE COMPENSATION FOR AN ANCHORED NEGATIVE CELL}
+\texttt{WD-T26 / ZW1-T7 — SELECTED ZERO-MOMENT RESIDUE THEOREM}
 }
 \]
