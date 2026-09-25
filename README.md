@@ -54,7 +54,7 @@ boundary is deliberately before RH closure.
 
 Within H1-P4, source pinning, the internal proof audit, the composite
 morphology audit, and the examples/sharpness audit are complete. The current cursor is
-**LEAN-H1-P0 / infrastructure and vertical pilot**. Stable public theorem IDs and the
+**LEAN-H1-P5 / WD-T39 — noncompact background morphology**. Stable public theorem IDs and the
 audit surfaces are canonical in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
 [Dependency Audit](docs/DEPENDENCY_AUDIT.md),
