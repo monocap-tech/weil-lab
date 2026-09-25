@@ -1,5 +1,6 @@
 import WeilDefect.Arithmetic.PrimeSupport
 import Mathlib.MeasureTheory.Integral.Bochner.Basic
+import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
 
 namespace WeilDefect
 
