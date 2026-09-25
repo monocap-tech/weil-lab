@@ -15,6 +15,7 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T37 | WeilDefect.wd_t37_selected_source_zero_moment_of_wd_t26 + WeilDefect.wd_t37_selected_source_nonzero_of_wd_t26 + WeilDefect.wd_t37_p3_n1_endpoint_ray + WeilDefect.wd_t37_p3_n2_normalized_representative_blowup + WeilDefect.wd_t37_p3_n3_normalized_full_negativity + WeilDefect.wd_t37_p3_n4_zero_moment_source_far_decay + WeilDefect.wd_t37_p3_n5_far_localization + WeilDefect.wd_t37_p3_n6_weighted_next_jet_morphology + WeilDefect.wd_t37_p3_n7_no_adaptive_scalar_bypass + WeilDefect.NegativeArithmeticMorphology + WeilDefect.NegativeDefectMorphology + WeilDefect.wd_t37_fixed_packet_persistent_negative_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T36 | WeilDefect.positiveSobolevFrequencyWeight + WeilDefect.logarithmicFourierWeight_isBigO_log + WeilDefect.logarithmicFourierWeight_isLittleO_positiveSobolev + WeilDefect.positiveSobolevFrequencyWeight_not_isBigO_logarithmic + WeilDefect.wd_t36_no_uniform_positive_sobolev_coercivity_of_witness + WeilDefect.wd_t36_no_positive_sobolev_bootstrap + WeilDefect.finitePrimeTrigCorrection + WeilDefect.finitePrimeTrigBound + WeilDefect.abs_finitePrimeTrigCorrection_le + WeilDefect.finitePrimeTrigCorrection_isBigO_logarithmic + WeilDefect.logarithmicPlusFinitePrimeCorrection_isBigO + WeilDefect.wd_t36_finite_prime_translations_add_no_smoothing | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T35 | WeilDefect.logarithmicFourierWeight + WeilDefect.one_le_logarithmicFourierWeight + WeilDefect.logarithmicFourierEnergy + WeilDefect.spectralMass + WeilDefect.shiftedCompactWeilForm + WeilDefect.wd_t35_shifted_form_logarithmic_order + WeilDefect.wd_t35_compact_weil_logarithmic_form_order | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T34 | WeilDefect.activePrimePowers + WeilDefect.wd_t34_active_prime_powers_finite + WeilDefect.activePrimePowerFinset + WeilDefect.activePrimeTranslationShifts + WeilDefect.wd_t34_active_prime_translation_shifts_finite + WeilDefect.translateBy + WeilDefect.symmetricPrimeTranslation + WeilDefect.compactPrimeTranslationSum + WeilDefect.wd_t34_finite_prime_power_translations + WeilDefect.primePowerThreshold + WeilDefect.primePowerThreshold_subsingleton | LEAN-CERTIFIED |
@@ -52,7 +53,6 @@ This file records formal verification separately from mathematical standing and 
 | WD-T33 | WeilDefect.wd_t33_adaptive_cocancellation | LEAN-CERTIFIED |
 | WD-T30 | WeilDefect.wd_t30_two_mode_kernel_combination + WeilDefect.wd_t30_zero_functional_preserves_every_mode | LEAN-CERTIFIED |
 | WD-X01 | WeilDefect.wd_x01_partial_sum + WeilDefect.wd_x01_finite_defect_negative + WeilDefect.wd_x01_finite_defect_formula + WeilDefect.wd_x01_defect_tendsto_zero | LEAN-CERTIFIED |
-| WD-T26 | \`WeilDefect.wd_t26_finite_pair_zero_moment\` | LEAN-IN-PROGRESS |
 | WD-X03 | \`WeilDefect.wd_x03_individual_not_compositional\` | LEAN-IN-PROGRESS |
 | WD-X04 | \`WeilDefect.wd_x04_shorted_covariance_identity\` | LEAN-IN-PROGRESS |
 | WD-X07 | WeilDefect.wd_x07_response_identity + WeilDefect.wd_x07_real_response_formula + WeilDefect.wd_x07_scaled_response_tendsto_neg_one | LEAN-CERTIFIED |
@@ -63,7 +63,7 @@ The statuses above become LEAN-CERTIFIED only after the pinned CI build succeeds
 
 \[
 \boxed{
-\texttt{LEAN-H1-P0 / INFRASTRUCTURE AND VERTICAL PILOT}.
+\texttt{WD-T38 / P3-U1…P3-U7 — ATTAINED UNIT-GAIN NEUTRAL DEFECT MORPHOLOGY}.
 }
 \]
 
@@ -3753,10 +3753,99 @@ The final run passed pinned dependency resolution, mathlib cache retrieval,
 direct Lake build of \(\texttt{WeilDefect.Arithmetic.NoSobolevBootstrap}\),
 the WD-T34/WD-T35 dependencies, and unfinished-proof/project-axiom rejection.
 
-WD-T36 is therefore closed. The next unfinished sequential theorem cursor is:
+WD-T36 is therefore closed.
+
+## WD-T37 certificate evidence
+
+Stable ID:
 
 \[
 \boxed{
-\texttt{WD-T37 / P3-N1…P3-N7 — FIXED-PACKET PERSISTENT NEGATIVE DEFECT MORPHOLOGY, STOPPING AT AZ-NEXTJET-LOC}
+\text{WD-T37: LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.SelectedSourceData;
+- WeilDefect.wd_t37_selected_source_zero_moment_of_wd_t26;
+- WeilDefect.wd_t37_selected_source_nonzero_of_wd_t26;
+- WeilDefect.wd_t37_p3_n1_endpoint_ray;
+- WeilDefect.wd_t37_p3_n2_normalized_representative_blowup;
+- WeilDefect.wd_t37_p3_n3_normalized_full_negativity;
+- WeilDefect.wd_t37_p3_n4_zero_moment_source_far_decay;
+- WeilDefect.wd_t37_p3_n5_far_localization;
+- WeilDefect.wd_t37_p3_n6_weighted_next_jet_morphology;
+- WeilDefect.wd_t37_p3_n7_no_adaptive_scalar_bypass;
+- WeilDefect.NegativeArithmeticMorphology;
+- WeilDefect.NegativeDefectMorphology;
+- WeilDefect.wd_t37_fixed_packet_persistent_negative_morphology.
+
+Lean now packages the complete conditional negative morphology from persistent
+selected negativity through endpoint persistence, normalized representative
+blow-up, full-Weil negativity, selected raw-residue formation, inverse-square
+far decay, quantitative far localization, weighted completed-Xi next-jet
+morphology, and no adaptive scalar bypass.
+
+The final residue-custody repair is load-bearing. SelectedSourceData no longer
+stores a free zero-moment proof. The composite constructor instead receives
+the negative-pair coefficient specialization and requires the exact identity
+
+\[
+\operatorname{List.ofFn}(v)
+=
+\operatorname{rawResiduesOfNegativePairs}(x).
+\]
+
+Lean derives both zero moment and source nontriviality from the certified
+WD-T26 raw-residue lemmas before WD-T27 or WD-T31 can be applied. The output
+package retains this equality and the nonzero pair-coefficient witness, so the
+source cannot be replaced by an unrelated zero-moment look-alike.
+
+The only imported analytic-number-theory premise inherited by the arithmetic
+localization is the logarithmic unit-shell zero-count interface
+\(\texttt{ZetaLogShellCountData}\) already isolated in WD-T31. No imported
+result is installed as a project axiom.
+
+The composite intentionally contains no actual-zeta exclusion field. Its exact
+formal stop remains
+
+\[
+\boxed{\texttt{AZ-NEXTJET-LOC}}.
+\]
+
+The data-valued endpoint-package repair first passed pinned CI in:
+
+\[
+\boxed{\texttt{36182014916}}.
+\]
+
+The completed residue-custody target passed in:
+
+\[
+\boxed{\texttt{36182444478}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{144bef98b0f66dd7f6f82eb523c06c8eec85479e}}.
+\]
+
+The certified WD-T37 source blob is:
+
+\[
+\texttt{ff0bae40f6aba4c04a8d3fd75a8fe309f8ea79ae}.
+\]
+
+The final run passed pinned dependency resolution, mathlib cache retrieval,
+direct Lake build of \(\texttt{WeilDefect.Morphology.Negative}\), and
+unfinished-proof/project-axiom rejection.
+
+WD-T37 is therefore closed. The next unfinished sequential theorem cursor is:
+
+\[
+\boxed{
+\texttt{WD-T38 / P3-U1…P3-U7 — ATTAINED UNIT-GAIN NEUTRAL DEFECT MORPHOLOGY}
 }
 \]
