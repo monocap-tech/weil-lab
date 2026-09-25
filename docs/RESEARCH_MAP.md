@@ -31,9 +31,9 @@ Current position:
 \qquad
 \text{H1-P4 COMPLETE}
 \qquad
-\text{LEAN-H1 ACTIVE}
+\text{LEAN-H1 EXHAUSTED}
 \qquad
-\text{H1-P5 PAUSED}.
+\text{H1-P5 READY — NOT STARTED}.
 }
 ```
 
@@ -551,15 +551,9 @@ Thus
 
 ## Current cursor
 
-Formalization currently preempts package assembly:
+Lean certification has reached its exhaustion condition.
 
-```math
-\boxed{
-\texttt{LEAN-H1-P1 / WD-X06 — POSITIVE-COORDINATE MASS LOSS STRENGTHENS CRITICALITY TO NEGATIVITY}
-}
-```
-
-Deferred post-LEAN cursor:
+Next project cursor, recorded but not started:
 
 ```math
 \boxed{
@@ -567,7 +561,7 @@ Deferred post-LEAN cursor:
 }
 ```
 
-The example/sharpness audit is complete. Lean certification is a separate track and is recorded in [Lean Status](LEAN_STATUS.md).
+The example/sharpness audit is complete and LEAN-H1 is exhausted. Certificate evidence is recorded in [Lean Status](LEAN_STATUS.md). No H1-P5 work is started by this status transition.
 
 ---
 
