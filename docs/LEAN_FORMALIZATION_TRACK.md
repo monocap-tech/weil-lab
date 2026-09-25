@@ -3,7 +3,7 @@
 
 This track preempted H1-P5 until its exhaustion condition was met.
 
-LEAN-H1 is now exhausted under the current Horizon-1 theorem inventory. The gate on public-package assembly is therefore cleared, but H1-P5.0 remains **ready — not started** until work explicitly begins.
+LEAN-H1 is exhausted under the current Horizon-1 theorem inventory. The subsequent H1-P5 public-package phase is also complete; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This page is the **control surface** for the completed formalization track. Certificate evidence and historical run records belong in [Lean Status](LEAN_STATUS.md); this page records the phase structure, exhaustion rule, and current post-LEAN handoff.
 
@@ -144,15 +144,15 @@ Only after this exhaustion condition is met does the project resume:
 ## Current control state
 
 - **LEAN-H1:** EXHAUSTED.
-- **H1-P5:** ACTIVE.
+- **H1-P5:** COMPLETE.
 - **Active Lean phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** H1-P5.5 — final package adversarial pass.
+- **Next project cursor:** none selected.
 
 ```math
 \boxed{
-\texttt{LEAN-H1 EXHAUSTED / H1-P5.5 — FINAL PACKAGE ADVERSARIAL PASS}
+\texttt{LEAN-H1 EXHAUSTED / H1-P5 COMPLETE / HORIZON 1 COMPLETE}
 }
 ```
 
-WD-X06 is `LEAN-CERTIFIED` and LEAN-H1 is exhausted. H1-P5.0 through H1-P5.4 are complete; the active project cursor is H1-P5.5 / Final Package Adversarial Pass. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence.
+WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. No post-Horizon research cursor is selected. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
