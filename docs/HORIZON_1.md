@@ -57,7 +57,9 @@ Current position:
 \qquad
 \text{LEAN-H1 EXHAUSTED}
 \qquad
-\text{H1-P5 ACTIVE}.
+\text{H1-P5 COMPLETE}\\
+\qquad
+\text{HORIZON 1 COMPLETE}.
 }
 ```
 
@@ -445,15 +447,15 @@ Current formalization status is tracked in [Lean Status Ledger](LEAN_STATUS.md).
 
 ## H1-P5 — Public mathematical package
 
-**Status:** ACTIVE.
+**Status:** COMPLETE.
 
-Current subphase:
+Final subphase:
 
 ```math
-\boxed{\texttt{H1-P5.5 / FINAL PACKAGE ADVERSARIAL PASS}}
+\boxed{\texttt{H1-P5.5 / FINAL PACKAGE ADVERSARIAL PASS — PASSED}}
 ```
 
-H1-P5.0 through H1-P5.4 are complete. The architecture, manuscript, theorem index, verification matrix, dependency map, examples surface, RH-interface appendix, and README entrypoint are assembled; H1-P5.5 is the final cross-surface adversarial pass.
+H1-P5.0 through H1-P5.5 are complete. The final cross-surface certificate is [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 Required deliverables:
 
@@ -501,3 +503,11 @@ Horizon 1 is complete when:
 ```
 
 No RH proof is required for Horizon 1 completion.
+
+**Completion condition:** SATISFIED.
+
+```math
+\boxed{\textbf{HORIZON 1 — COMPLETE.}}
+```
+
+No post-Horizon research cursor has been selected.
