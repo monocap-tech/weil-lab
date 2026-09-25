@@ -81,7 +81,8 @@ theorem wd_x06_limit_jvalue :
     WeilDefect.WDT16.jValue
       (0 : WDX06Positive) wdX06Neg = -(1 / 2) := by
   unfold WeilDefect.WDT16.jValue
-  rw [norm_zero, zero_pow, wd_x06_neg_norm, wd_x06_amp_sq]
+  rw [norm_zero, zero_pow (by norm_num : (2 : ℕ) ≠ 0),
+    wd_x06_neg_norm, wd_x06_amp_sq]
   ring
 
 theorem wd_x06_limit_strictly_negative :
@@ -125,7 +126,8 @@ theorem wd_x06_positive_weakly_tendsto_zero :
     fun_prop
   have hinner :=
     (hc.tendsto 0).comp hz
-  simpa [wdX06Pos, lp.inner_single_left] using hinner
+  simpa [wdX06Pos, lp.inner_single_left,
+    Function.comp_def] using hinner
 
 /-- The full critical sequence converges weakly to the retained negative mode. -/
 theorem wd_x06_vector_weakly_tendsto_limit :
