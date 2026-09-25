@@ -18,9 +18,10 @@ The package has one governing separation:
 }
 ```
 
-The left side is the Horizon-1 mathematical product.  The right side is an
-explicit boundary appendix.  No open actual-zeta statement may be phrased as
-if it were proved by the Horizon-1 theory.
+The left side is the mathematical package established within Horizon 1. The
+right side records downstream actual-zeta obligations that remain open. No
+open actual-zeta statement may be presented as a theorem of the Horizon-1
+package.
 
 ---
 
@@ -63,7 +64,7 @@ surface wins until the public package is repaired.
 
 ## 3. Manuscript architecture
 
-The technical manuscript is organized into four mathematical parts, a verification/boundary part, and five public appendices.
+The technical manuscript is organized into four mathematical parts, one verification-and-boundary part, and five public appendices.
 
 ### Part I — Abstract Weil-defect calculus
 
@@ -142,9 +143,9 @@ Primary example range:
 WD-X01 — WD-X07
 ```
 
-Each example is placed immediately after the theorem boundary it sharpens in
-the narrative, while the consolidated public examples document provides a
-cross-reference table.
+The manuscript cites sharpness witnesses where their theorem boundaries are
+discussed and consolidates the full examples in Part IV. The separate public
+examples document provides the canonical cross-reference table.
 
 ---
 
@@ -184,9 +185,10 @@ Public theorem statements use stable IDs such as `WD-T17`.
 Historical labels may appear only as provenance annotations.  They do not
 replace stable IDs.
 
-External results are cited at the paragraph or theorem where they become
-load-bearing.  Public prose must not turn an imported premise into an
-unattributed internal fact.
+External results are identified at the theorem or paragraph where they first
+enter as load-bearing premises. Downstream prose must preserve that ancestry
+rather than redescribing an imported premise as an internally established
+analytic fact.
 
 Lean certificate run IDs belong in the verification matrix or theorem index,
 not in the main mathematical proof flow unless verification itself is being
@@ -196,8 +198,9 @@ discussed.
 
 ## 6. RH boundary architecture
 
-The main manuscript ends with the outputs delivered to the actual-zeta
-boundary.  The RH appendix begins only after that point.
+The manuscript keeps the Horizon-1 deductions and the downstream actual-zeta
+obligations visibly separate. The dedicated RH appendix records the latter in
+one place rather than extending the theorem chain past its stop line.
 
 The three tracked interfaces are:
 
@@ -216,8 +219,9 @@ The appendix records for each interface:
 5. what would follow if the interface were discharged;
 6. what does **not** follow without it.
 
-The manuscript may say that Horizon 1 reaches these interfaces.  It may not
-say that Horizon 1 proves RH.
+The manuscript may say that the Horizon-1 deduction terminates at these
+interfaces. It may not present an interface as discharged, or describe the
+package as an RH proof.
 
 ---
 
@@ -233,10 +237,10 @@ Layer D  Morphology composites
 Layer E  Open actual-zeta interfaces
 ```
 
-Examples and scope rules attach laterally to the relevant edge rather than
-being drawn as proof-producing nodes.
-
-Imported sources are visually distinct from internal theorem nodes.
+Examples and scope rules attach laterally to the theorem boundary they
+constrain; they are not proof-producing nodes. Direct imported-source entry
+points are shown separately, while downstream theorems retain their transitive
+source ancestry through the dependency graph.
 
 ---
 
