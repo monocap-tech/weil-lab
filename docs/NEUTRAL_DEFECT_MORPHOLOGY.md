@@ -1,5 +1,5 @@
 # Neutral Defect Morphology Theorem
-## H1-P3.1 — Attained critical branch and compact-window null mode
+**H1-P3.1 — Attained critical branch and compact-window null mode**
 
 This document packages the neutral branch of the completed H1-P1/H1-P2 theory.
 
@@ -15,7 +15,7 @@ The theorem stops at the Horizon-1 interface
 
 ---
 
-# 1. Critical right-approach and branch selection
+## 1. Critical right-approach and branch selection
 
 Fix a finite selected packet
 
@@ -107,7 +107,7 @@ Only this second alternative enters H1-P3.1.
 
 ---
 
-## P3-U1 — Fixed-packet critical dichotomy
+### P3-U1 — Fixed-packet critical dichotomy
 
 For a fixed finite selected packet,
 
@@ -130,7 +130,7 @@ There is no independent non-attained critical branch.
 
 ---
 
-# 2. Finite-exception unit-gain neutral realization
+## 2. Finite-exception unit-gain neutral realization
 
 The remainder of P3.1 concerns the retained finite-exception neutral branch.
 
@@ -186,7 +186,7 @@ This carrier-identification hypothesis is not a consequence of abstract critical
 
 ---
 
-# 3. Exact null-mode identity
+## 3. Exact null-mode identity
 
 From
 
@@ -262,7 +262,7 @@ W_ck=0.
 
 ---
 
-## P3-U2 — Physical neutral null-mode theorem
+### P3-U2 — Physical neutral null-mode theorem
 
 Every finite-exception unit-gain neutral relation satisfying the physical adjoint realization above determines a nonzero physical null mode
 
@@ -284,7 +284,7 @@ It is an actual compact-window Weil null mode.
 
 ---
 
-# 4. Compact-window arithmetic representation
+## 4. Compact-window arithmetic representation
 
 For a test function $f$ supported in
 
@@ -360,7 +360,7 @@ Here:
 
 ---
 
-## P3-U3 — Finite arithmetic-shift theorem
+### P3-U3 — Finite arithmetic-shift theorem
 
 At every fixed compact support $c$,
 
@@ -384,7 +384,7 @@ The infinite-order part is archimedean.
 
 ---
 
-# 5. Logarithmic principal order
+## 5. Logarithmic principal order
 
 The digamma asymptotic gives
 
@@ -426,7 +426,7 @@ The superscript on $C_c^{(0)}$ distinguishes this scalar shift from the compensa
 
 ---
 
-## P3-U4 — Logarithmic-order neutral carrier theorem
+### P3-U4 — Logarithmic-order neutral carrier theorem
 
 The physical neutral mode belongs naturally to a logarithmic Fourier/form domain.
 
@@ -446,7 +446,7 @@ perturbed only by order-zero finite translations and a finite-rank term.
 
 ---
 
-# 6. No automatic regularity bootstrap
+## 6. No automatic regularity bootstrap
 
 Translations preserve ordinary Sobolev and logarithmic Fourier norms:
 
@@ -476,7 +476,7 @@ This statement does not assert that a particular neutral mode can never possess 
 
 ---
 
-## P3-U5 — No free quasianalyticity theorem
+### P3-U5 — No free quasianalyticity theorem
 
 The retained operator estimates supply logarithmic form control but no uniform positive-Sobolev coercive estimate:
 
@@ -498,7 +498,7 @@ for any \(\varepsilon>0\) without an additional theorem.
 
 ---
 
-# 7. Neutrality is global
+## 7. Neutrality is global
 
 The null equality
 
@@ -534,7 +534,7 @@ Thus the neutral mode is one global cancellation of the whole compact-window Wei
 
 ---
 
-## P3-U6 — Global-cancellation scope theorem
+### P3-U6 — Global-cancellation scope theorem
 
 Neutrality supplies
 
@@ -552,7 +552,7 @@ but does not split into termwise prime, pole, and archimedean vanishing.
 
 ---
 
-# 8. Fixed-vector persistence problem
+## 8. Fixed-vector persistence problem
 
 Let
 
@@ -646,7 +646,7 @@ instead.
 
 ---
 
-## P3-U7 — Neutral null-extension reduction
+### P3-U7 — Neutral null-extension reduction
 
 Every finite-exception unit-gain neutral branch reduces to a threshold-aware fixed-vector support problem.
 
@@ -685,7 +685,7 @@ Exact persistence to a larger support requires the same fixed relation to satisf
 
 ---
 
-# 9. What P3-U7 does not say
+## 9. What P3-U7 does not say
 
 P3-U7 is a reduction theorem.
 
@@ -707,11 +707,11 @@ Those questions belong downstream.
 
 ---
 
-# 10. Neutral Defect Morphology Theorem
+## 10. Neutral Defect Morphology Theorem
 
 Collecting P3-U1 through P3-U7:
 
-## H1-P3.1 Neutral Defect Morphology Theorem
+### H1-P3.1 Neutral Defect Morphology Theorem
 
 Assume:
 
@@ -773,7 +773,7 @@ The remaining fixed-vector question is whether the zero-extended neutral mode sa
 
 ---
 
-# 11. Exact stop line
+## 11. Exact stop line
 
 The theorem package ends at
 
@@ -808,7 +808,7 @@ The answer is not assumed in H1-P3.1.
 
 ---
 
-# 12. Dependency chain
+## 12. Dependency chain
 
 The neutral morphology theorem consumes
 
@@ -836,7 +836,7 @@ No downstream support-rigidity theorem is consumed above the stop line.
 
 ---
 
-# H1-P3.1 determination
+## H1-P3.1 determination
 
 The neutral branch is now packaged as a single auditable morphology theorem.
 
@@ -868,7 +868,7 @@ The unresolved question is purely a fixed-vector exterior support/null-extension
 
 ---
 
-# Next cursor
+## Next cursor
 
 ```math
 \boxed{
