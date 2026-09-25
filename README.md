@@ -54,7 +54,7 @@ boundary is deliberately before RH closure.
 | H1-P5 | Public mathematical package | **Active** |
 
 Within H1-P4, source pinning, the internal proof audit, the composite
-morphology audit, and the examples/sharpness audit are complete. The Lean certification track is exhausted. **H1-P5.0 / Public Package Architecture** and **H1-P5.1 / Technical Manuscript Assembly** are complete; the active cursor is **H1-P5.2 / Public Theorem Index and Verification Matrix**. Stable public theorem IDs and the
+morphology audit, and the examples/sharpness audit are complete. The Lean certification track is exhausted. **H1-P5.0–H1-P5.4** are complete; the active cursor is **H1-P5.5 / Final Package Adversarial Pass**. Stable public theorem IDs and the
 audit surfaces are canonical in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
 [Dependency Audit](docs/DEPENDENCY_AUDIT.md),
@@ -69,7 +69,7 @@ Project terms such as **horizon**, **phase**, **standing**, **interface**,
 
 Formal verification has reached its exhaustion condition. See the
 [Lean Formalization Track](docs/LEAN_FORMALIZATION_TRACK.md) and
-[Lean Status Ledger](docs/LEAN_STATUS.md). Public-package assembly is now active. See [Public Package Architecture](docs/PUBLIC_PACKAGE_ARCHITECTURE.md) and the [Weil-Defect Manuscript](docs/WEIL_DEFECT_MANUSCRIPT.md).
+[Lean Status Ledger](docs/LEAN_STATUS.md). Public-package assembly is in its final adversarial pass. See [Public Package Architecture](docs/PUBLIC_PACKAGE_ARCHITECTURE.md), the [Weil-Defect Manuscript](docs/WEIL_DEFECT_MANUSCRIPT.md), the [Public Theorem Index](docs/PUBLIC_THEOREM_INDEX.md), the [Public Verification Matrix](docs/PUBLIC_VERIFICATION_MATRIX.md), the [Public Dependency Map](docs/PUBLIC_DEPENDENCY_MAP.md), the [Public Examples and Sharpness](docs/PUBLIC_EXAMPLES.md), and the [RH-Facing Interface Appendix](docs/RH_INTERFACE_APPENDIX.md).
 
 ## Core mathematical picture
 
