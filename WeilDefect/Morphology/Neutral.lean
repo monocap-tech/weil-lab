@@ -593,6 +593,13 @@ noncomputable def wd_t38_attained_unit_gain_neutral_morphology
       P C k Q shift lowerC upperC poleC density primeCoeff extend := by
   have hu0 : uLim ≠ 0 :=
     wd_t38_attained_neutral_selected_coordinate_nonzero hneutral
+  have huNonzero : uLim ≠ 0 := by
+    intro hu0
+    have hj0 := hneutral.2.1
+    have haHalf := hneutral.1
+    unfold WeilDefect.WDT16.jValue at hj0
+    rw [hu0, norm_zero] at hj0
+    nlinarith
   have hnull :=
     wd_t38_p3_u2_physical_neutral_null_mode
       P C uLim k hunit hreal hk
