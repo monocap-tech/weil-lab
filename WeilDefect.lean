@@ -8,6 +8,7 @@ import WeilDefect.PairGeometry
 import WeilDefect.RationalResponse
 import WeilDefect.NativeHilbertSchmidt
 import WeilDefect.DirichletResolvent
+import WeilDefect.DirichletEnergy
 import WeilDefect.FiniteExponentialIndependence
 import WeilDefect.ProblemOneIndependence
 import WeilDefect.Residues
