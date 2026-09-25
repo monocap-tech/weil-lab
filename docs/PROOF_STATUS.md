@@ -149,17 +149,17 @@ The current audit prohibits the following silent transfers:
 
 ## Open Horizon-1 interfaces
 
-The following remain OPEN:
+The two primary stop-line interfaces remain OPEN:
 
 ```math
 \boxed{
 \texttt{AZ-NEXTJET-LOC},
 \qquad
-\texttt{C-ACTUAL-KPH-FLOOR},
-\qquad
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
 ```
+
+`C-ACTUAL-KPH-FLOOR` is also open, but it is a stronger special-packet sufficient refinement of the negative interface rather than a third independent universal stop-line obligation.
 
 PAP/MTP closure and RH are not proved by this repository.
 
