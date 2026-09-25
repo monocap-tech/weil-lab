@@ -315,4 +315,205 @@ theorem wd_t31_shell_aggregation
       simpa [Nat.cast_add, Nat.cast_one] using
         logarithmicTail_tsum_le R hR
 
+
+/-- Explicit WD-T27 inverse-square constant for one selected zero-moment packet. -/
+noncomputable def zeroMomentResponseConstant
+    {m : ℕ}
+    (rho v : Fin m → ℂ) : ℝ :=
+  ‖residueFirstMoment rho v‖
+    + 2 * residueSecondMomentNorm rho v
+
+theorem zeroMomentResponseConstant_nonneg
+    {m : ℕ}
+    (rho v : Fin m → ℂ) :
+    0 ≤ zeroMomentResponseConstant rho v := by
+  unfold zeroMomentResponseConstant residueSecondMomentNorm
+  positivity
+
+/--
+Pointwise inverse-square form of WD-T27 on the explicit far region used by
+WD-T31.
+-/
+theorem rationalResponse_zero_moment_norm_le_inverse_square
+    {m : ℕ}
+    (rho v : Fin m → ℂ)
+    (z : ℂ)
+    (hv0 : (∑ i : Fin m, v i) = 0)
+    (hz1 : 1 ≤ ‖z‖)
+    (hfar : ∀ i, 2 * ‖rho i‖ ≤ ‖z‖) :
+    ‖rationalResponse rho v z‖
+      ≤
+    zeroMomentResponseConstant rho v / ‖z‖ ^ 2 := by
+  have hzpos : 0 < ‖z‖ := zero_lt_one.trans_le hz1
+  have hz0 : z ≠ 0 := norm_pos_iff.mp hzpos
+  have hrem :=
+    rationalResponse_zero_moment_remainder_bound
+      rho v z hv0 hz0 hfar
+  let lead : ℂ := residueFirstMoment rho v / z ^ 2
+  have htri :
+      ‖rationalResponse rho v z‖
+        ≤
+      ‖rationalResponse rho v z - lead‖ + ‖lead‖ := by
+    calc
+      ‖rationalResponse rho v z‖ =
+          ‖(rationalResponse rho v z - lead) + lead‖ := by
+            congr 1
+            ring
+      _ ≤ ‖rationalResponse rho v z - lead‖ + ‖lead‖ :=
+        norm_add_le _ _
+  have hcubic :
+      2 * residueSecondMomentNorm rho v / ‖z‖ ^ 3
+        ≤
+      2 * residueSecondMomentNorm rho v / ‖z‖ ^ 2 := by
+    have hCnonneg : 0 ≤ 2 * residueSecondMomentNorm rho v := by
+      unfold residueSecondMomentNorm
+      positivity
+    have hzpow : ‖z‖ ^ 2 ≤ ‖z‖ ^ 3 := by
+      nlinarith [sq_nonneg ‖z‖]
+    gcongr
+  calc
+    ‖rationalResponse rho v z‖
+        ≤ ‖rationalResponse rho v z - lead‖ + ‖lead‖ := htri
+    _ ≤
+      2 * residueSecondMomentNorm rho v / ‖z‖ ^ 3
+        + ‖residueFirstMoment rho v‖ / ‖z‖ ^ 2 := by
+      gcongr
+      simpa [lead] using hrem
+    _ ≤
+      2 * residueSecondMomentNorm rho v / ‖z‖ ^ 2
+        + ‖residueFirstMoment rho v‖ / ‖z‖ ^ 2 := by
+      gcongr
+    _ =
+      zeroMomentResponseConstant rho v / ‖z‖ ^ 2 := by
+      unfold zeroMomentResponseConstant
+      ring
+
+/-- Weighted complementary response term on one zero coordinate. -/
+noncomputable def zeroMomentShellTerm
+    {m : ℕ}
+    {count : ℕ → ℕ}
+    (rho v : Fin m → ℂ)
+    (mu : FarShellIndex count → ℂ)
+    (psi : ℂ → ℂ)
+    (gamma : FarShellIndex count) : ℂ :=
+  psi (mu gamma) * rationalResponse rho v (mu gamma)
+
+/--
+WD-T27 supplies the inverse-square response-data interface once shell height
+controls the zero norm and the multiplier is uniformly bounded.
+-/
+theorem farShellResponseData_of_zero_moment
+    {m : ℕ}
+    (rho v : Fin m → ℂ)
+    (hv0 : (∑ i : Fin m, v i) = 0)
+    {count : ℕ → ℕ}
+    (mu : FarShellIndex count → ℂ)
+    (psi : ℂ → ℂ)
+    (M : ℝ)
+    (hM : 0 ≤ M)
+    (hPsi : ∀ gamma, ‖psi (mu gamma)‖ ≤ M)
+    (hShellNorm :
+      ∀ gamma,
+        ((gamma.1 : ℝ) + 1) ≤ ‖mu gamma‖)
+    (hSelectedFar :
+      ∀ gamma i,
+        2 * ‖rho i‖ ≤ ‖mu gamma‖) :
+    FarShellResponseData count
+      (zeroMomentShellTerm rho v mu psi)
+      (M * zeroMomentResponseConstant rho v) := by
+  constructor
+  · exact mul_nonneg hM
+      (zeroMomentResponseConstant_nonneg rho v)
+  · intro gamma
+    let x : ℝ := (gamma.1 : ℝ) + 1
+    have hx : 0 < x := by
+      dsimp [x]
+      positivity
+    have hx1 : 1 ≤ x := by
+      dsimp [x]
+      positivity
+    have hmu1 : 1 ≤ ‖mu gamma‖ :=
+      hx1.trans (hShellNorm gamma)
+    have hresp :=
+      rationalResponse_zero_moment_norm_le_inverse_square
+        rho v (mu gamma) hv0 hmu1
+        (hSelectedFar gamma)
+    have hC :
+        0 ≤ zeroMomentResponseConstant rho v :=
+      zeroMomentResponseConstant_nonneg rho v
+    have hden :
+        zeroMomentResponseConstant rho v / ‖mu gamma‖ ^ 2
+          ≤
+        zeroMomentResponseConstant rho v / x ^ 2 := by
+      have hmu0 : 0 < ‖mu gamma‖ := zero_lt_one.trans_le hmu1
+      have hsquare : x ^ 2 ≤ ‖mu gamma‖ ^ 2 := by
+        gcongr
+        exact hShellNorm gamma
+      exact (div_le_div_iff₀ (sq_pos_of_pos hmu0) (sq_pos_of_pos hx)).2
+        (mul_le_mul_of_nonneg_left hsquare hC)
+    calc
+      ‖zeroMomentShellTerm rho v mu psi gamma‖
+          =
+        ‖psi (mu gamma)‖ *
+          ‖rationalResponse rho v (mu gamma)‖ := by
+        simp [zeroMomentShellTerm, norm_mul]
+      _ ≤
+        M *
+          (zeroMomentResponseConstant rho v / ‖mu gamma‖ ^ 2) := by
+        exact mul_le_mul
+          (hPsi gamma) hresp
+          (norm_nonneg _) hM
+      _ ≤
+        M *
+          (zeroMomentResponseConstant rho v / x ^ 2) := by
+        exact mul_le_mul_of_nonneg_left hden hM
+      _ =
+        (M * zeroMomentResponseConstant rho v) / x ^ 2 := by
+        ring
+      _ =
+        (M * zeroMomentResponseConstant rho v) /
+          (((gamma.1 : ℝ) + 1) ^ 2) := by
+        rfl
+
+/--
+WD-T31 / ZW2-T2 in its zero-moment form.
+
+The only imported analytic-number-theory input is the logarithmic unit-shell
+zero count encoded by ZetaLogShellCountData.  The inverse-square response is
+derived internally from WD-T27.
+-/
+theorem wd_t31_zero_moment_zero_count_far_tail
+    {m : ℕ}
+    (rho v : Fin m → ℂ)
+    (hv0 : (∑ i : Fin m, v i) = 0)
+    {count : ℕ → ℕ}
+    (mu : FarShellIndex count → ℂ)
+    (psi : ℂ → ℂ)
+    (M C : ℝ)
+    (hCount : ZetaLogShellCountData count C)
+    (hM : 0 ≤ M)
+    (hPsi : ∀ gamma, ‖psi (mu gamma)‖ ≤ M)
+    (hShellNorm :
+      ∀ gamma,
+        ((gamma.1 : ℝ) + 1) ≤ ‖mu gamma‖)
+    (hSelectedFar :
+      ∀ gamma i,
+        2 * ‖rho i‖ ≤ ‖mu gamma‖)
+    (R : ℕ) (hR : 1 ≤ R) :
+    ‖∑' k : ℕ,
+        farShellResponse
+          (zeroMomentShellTerm rho v mu psi)
+          (k + R)‖
+      ≤
+    ((M * zeroMomentResponseConstant rho v) * C)
+      * ((Real.log R + 2) / R) := by
+  exact wd_t31_shell_aggregation
+    (zeroMomentShellTerm rho v mu psi)
+    (M * zeroMomentResponseConstant rho v)
+    C
+    hCount
+    (farShellResponseData_of_zero_moment
+      rho v hv0 mu psi M hM hPsi hShellNorm hSelectedFar)
+    R hR
+
 end WeilDefect
