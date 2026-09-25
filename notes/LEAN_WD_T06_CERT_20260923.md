@@ -4,11 +4,11 @@ Stable ID: **WD-T06 / WD-A6**
 
 Result:
 
-\[
+```math
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+```
 
 ## Formal target
 
@@ -41,36 +41,36 @@ No external theorem is consumed by this certificate.
 
 For
 
-\[
+```math
 D_N=S_+P_NS_+^*-S_-S_-^*,
-\]
+```
 
 Lean verifies the truncated quadratic identity
 
-\[
+```math
 \langle D_Nh,h\rangle
 =
 \|P_NS_+^*h\|^2-\|S_-^*h\|^2.
-\]
+```
 
 Nesting plus contractivity gives
 
-\[
+```math
 \|P_Nx\|\le \|P_{N+1}x\|\le\|x\|,
-\]
+```
 
 hence
 
-\[
+```math
 D_N\preceq D_{N+1}\preceq D.
-\]
+```
 
 Strong convergence of the projections is propagated through the bounded
 synthesis operator to give
 
-\[
+```math
 D_Nh\to Dh
-\]
+```
 
 for every physical vector `h`, together with convergence of the scalar
 quadratic forms.
@@ -99,8 +99,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+```math
 \boxed{
 \texttt{WD-T07 / WD-B1 — SELECTED NEGATIVITY UNDER NEGATIVE-BACKGROUND AGGREGATION}
 }
-\]
+```
