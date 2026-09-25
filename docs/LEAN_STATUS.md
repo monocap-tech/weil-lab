@@ -15,6 +15,8 @@ This file records formal verification separately from mathematical standing and 
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T19 | WeilDefect.WDT19.analysisSpace + WeilDefect.WDT19.weak_limit_mem_physical_rightLimit + WeilDefect.WDT19.wd_t19_endpoint_representative_blowup + WeilDefect.WDT19.BoundaryAmplifies + WeilDefect.WDT19.wd_t19_boundary_amplification + WeilDefect.WDT19.wd_t19_vanishing_amplitude_normalized_blowup | LEAN-CERTIFIED |
+| WD-T18 | WeilDefect.WDT18.endpointInside + WeilDefect.WDT18.endpointQuotientMap + WeilDefect.WDT18.wd_t18_endpoint_quotient_map_injective + WeilDefect.WDT18.wd_t18_endpoint_jump_negative_rank_le_quotient + WeilDefect.WDT18.wd_t18_one_dimensional_jump_rank_cap | LEAN-CERTIFIED |
 | WD-T17 | WeilDefect.WDT17.weaklyTendsto_strong_of_norm_sq_tendsto + WeilDefect.WDT17.wd_t17_critical_positive_mass_le_half + WeilDefect.WDT17.wd_t17_fixed_sector_critical_dichotomy + WeilDefect.WDT17.wd_t17_neutral_branch + WeilDefect.WDT17.wd_t17_loss_branch | LEAN-CERTIFIED |
 | WD-T16 | WeilDefect.WDT16.exists_weaklyTendsto_subseq_of_norm_le + WeilDefect.WDT16.wd_t16_fixed_negative_sector_compactness + WeilDefect.WDT16.wd_t16_nonpositive_limit_persists + WeilDefect.WDT16.wd_t16_uniform_negative_margin_persists + WeilDefect.WDT16.wd_t16_uniform_negative_margin_forces_endpoint_jump + WeilDefect.WDT16.wd_t16_fixed_finite_negative_sector_persistence | LEAN-CERTIFIED |
 | WD-T15 | WeilDefect.WDT15.wd_t15_gap_antitone + WeilDefect.WDT15.wd_t15_right_limit_gap_duality + WeilDefect.WDT15.wd_t15_sequence_right_limit_eq + WeilDefect.WDT15.wd_t15_sequence_gap_eq_right_limit_orthogonal + WeilDefect.WDT15.wd_t15_monotone_projection_limit + WeilDefect.WDT15.wd_t15_right_limit_projection_and_gap_duality | LEAN-CERTIFIED |
@@ -1906,5 +1908,134 @@ Next theorem cursor:
 \[
 \boxed{
 \texttt{WD-T18 / WD-C6 — ENDPOINT-JUMP QUOTIENT BOUNDS NEW RIGHT-LIMIT NEGATIVE INDEX}
+}
+\]
+
+
+## WD-T18 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T18: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.WDT18.endpointInside;
+- WeilDefect.WDT18.endpointQuotientMap;
+- WeilDefect.WDT18.wd_t18_endpoint_quotient_map_injective;
+- WeilDefect.WDT18.wd_t18_endpoint_jump_negative_rank_le_quotient;
+- WeilDefect.WDT18.wd_t18_one_dimensional_jump_rank_cap.
+
+For closed endpoint/right-limit spaces \(A_0\subseteq A_+\), Lean formalizes
+the endpoint quotient \(A_+/A_0\). Any finite-dimensional strictly negative
+witness in \(A_+\) injects into that quotient when the endpoint is
+nonnegative. Hence every such witness rank is bounded by the quotient
+dimension; in particular a one-dimensional jump caps the finite negative rank
+at one.
+
+No imported project theorem premise is consumed by WD-T18.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Filtration.EndpointJump}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36082262379}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{f02683ec35aa1d61ee056512f2a9977e081a7990}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{d7743465cac328c8aa6236fb12942117b8e67a7e}.
+\]
+
+The run passed pinned dependency resolution, mathlib cache retrieval, the
+direct Lake build, and unfinished-proof/project-axiom rejection.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T19 / WD-C7+WD-C8+WD-C9 — NEW ENDPOINT VECTORS FORCE BOUNDARY AMPLIFICATION / REPRESENTATIVE BLOW-UP}
+}
+\]
+
+
+## WD-T19 certificate evidence
+
+Stable ID:
+
+\[
+\boxed{
+\text{WD-T19: LEAN-CERTIFIED}.
+}
+\]
+
+Formal declarations include:
+
+- WeilDefect.WDT19.analysisSpace;
+- WeilDefect.WDT19.weaklyTendsto_of_tendsto;
+- WeilDefect.WDT19.weaklyTendsto_map;
+- WeilDefect.WDT19.weaklyTendsto_unique;
+- WeilDefect.WDT19.weak_limit_mem_physical_rightLimit;
+- WeilDefect.WDT19.wd_t19_endpoint_representative_blowup;
+- WeilDefect.WDT19.BoundaryAmplifies;
+- WeilDefect.WDT19.wd_t19_boundary_amplification;
+- WeilDefect.WDT19.wd_t19_vanishing_amplitude_normalized_blowup.
+
+For a common bounded physical map \(T\) and right-continuous nested physical
+spaces, Lean proves that any new endpoint vector requires representative norm
+blow-up, upgrades that statement to the full local boundary-amplification
+predicate, and certifies the reciprocal-growth identity for vanishing-amplitude
+normalized representatives.
+
+No imported project theorem premise is consumed by WD-T19.
+
+Dedicated theorem CI built:
+
+\[
+\texttt{WeilDefect.Filtration.RepresentativeBlowup}.
+\]
+
+Certificate run:
+
+\[
+\boxed{\texttt{36083158273}}
+\]
+
+at repository head:
+
+\[
+\boxed{\texttt{33f5a187baf7e195c19e179bb3b6b9befb7a0700}}.
+\]
+
+The certified theorem source blob is:
+
+\[
+\texttt{6645820485d46afe8566e1812de0e301fb290ba2}.
+\]
+
+The run passed pinned dependency resolution, mathlib cache retrieval, the
+direct Lake build, and unfinished-proof/project-axiom rejection.
+
+Next theorem cursor:
+
+\[
+\boxed{
+\texttt{WD-T20 / ZW1-T1 — CANONICAL CONJUGATE-PAIR DIAGONALIZATION INTO POSITIVE/NEGATIVE WEIL CHANNELS}
 }
 \]
