@@ -38,7 +38,11 @@ theorem wd_x02_weight_tendsto_one :
   have hone :
       Tendsto (fun _ : ℕ => (1 : ℝ)) atTop (𝓝 1) :=
     tendsto_const_nhds
-  simpa only [wdX02Weight, one_div] using hone.sub hinv
+  change
+    Tendsto
+      (fun n : ℕ => 1 - (((n : ℝ) + 2)⁻¹))
+      atTop (𝓝 1)
+  simpa using hone.sub hinv
 
 /--
 The Hilbert carrier used for the discrete WD-X02 realization.
@@ -100,7 +104,7 @@ theorem wd_x02_operator_single_norm
 theorem wd_x02_weight_le_operator_norm (n : ℕ) :
     wdX02Weight n ≤ ‖wdX02Operator‖ := by
   have hsingle :
-      ‖lp.single 2 n (1 : ℂ)‖ = 1 := by
+      ‖lp.single (E := fun _ : ℕ => ℂ) 2 n (1 : ℂ)‖ = 1 := by
     simpa using
       (lp.norm_single
         (E := fun _ : ℕ => ℂ)
@@ -220,7 +224,10 @@ theorem wd_x02_strict_norm_loss
       _ < ∑' n : ℕ, ‖x n‖ ^ (2 : ℝ) := hsum
       _ = ‖x‖ ^ (2 : ℝ) := hnormX.symm
   rw [Real.rpow_two, Real.rpow_two] at hsq
-  nlinarith [norm_nonneg (wdX02Operator x), norm_nonneg x]
+  exact
+    (sq_lt_sq₀
+      (norm_nonneg (wdX02Operator x))
+      (norm_nonneg x)).mp hsq
 
 theorem wd_x02_no_nonzero_norm_attainer :
     ¬ ∃ x : WDX02Space, x ≠ 0 ∧ ‖wdX02Operator x‖ = ‖x‖ := by
@@ -245,5 +252,7 @@ theorem wd_x02_critical_nonattainment :
   funext n
   exact wd_x02_operator_single_norm n
 
+
+end
 
 end WeilDefect
