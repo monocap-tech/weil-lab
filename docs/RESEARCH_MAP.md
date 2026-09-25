@@ -557,11 +557,11 @@ Current package cursor:
 
 ```math
 \boxed{
-\texttt{H1-P5.2 / PUBLIC THEOREM INDEX AND VERIFICATION MATRIX}
+\texttt{H1-P5.5 / FINAL PACKAGE ADVERSARIAL PASS}
 }
 ```
 
-H1-P5.0 / Public Package Architecture and H1-P5.1 / Technical Manuscript Assembly are complete.
+H1-P5.0 through H1-P5.4 are complete; the package is assembled and awaiting the final cross-surface adversarial pass.
 
 The example/sharpness audit is complete and LEAN-H1 is exhausted. Certificate evidence is recorded in [Lean Status](LEAN_STATUS.md). Public-package work is now active under the canonical [Public Package Architecture](PUBLIC_PACKAGE_ARCHITECTURE.md).
 
