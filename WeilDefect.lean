@@ -31,3 +31,5 @@ import WeilDefect.Morphology.Negative
 import WeilDefect.Morphology.Neutral
 
 import WeilDefect.Morphology.Noncompact
+
+import WeilDefect.Examples.CriticalNonattainment
