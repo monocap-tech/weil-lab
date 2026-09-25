@@ -171,7 +171,7 @@ theorem weaklyTendsto_norm_sq_le_of_tendsto
     (hsq : Tendsto (fun n => ‖v n‖ ^ 2) atTop (𝓝 B)) :
     ‖x‖ ^ 2 ≤ B := by
   have hB : 0 ≤ B :=
-    le_of_tendsto hsq
+    ge_of_tendsto hsq
       (Eventually.of_forall fun n => sq_nonneg ‖v n‖)
   have hnorm :
       Tendsto (fun n => ‖v n‖) atTop (𝓝 (Real.sqrt B)) := by
@@ -371,9 +371,12 @@ theorem wd_t16_nonpositive_limit_persists
         (fun n => ‖a (φ n)‖ ^ 2)
         atTop
         (𝓝 ((1 + qStar) / 2)) := by
+    have hone :
+        Tendsto (fun _ : ℕ => (1 : ℝ)) atTop (𝓝 (1 : ℝ)) :=
+      tendsto_const_nhds
     have hlim :=
       Tendsto.div_const
-        (tendsto_const_nhds.add hqφ) (2 : ℝ)
+        (hone.add hqφ) (2 : ℝ)
     apply hlim.congr'
     filter_upwards with n
     have hc := hcoord (φ n)
@@ -384,9 +387,12 @@ theorem wd_t16_nonpositive_limit_persists
         (fun n => ‖u (φ n)‖ ^ 2)
         atTop
         (𝓝 ((1 - qStar) / 2)) := by
+    have hone :
+        Tendsto (fun _ : ℕ => (1 : ℝ)) atTop (𝓝 (1 : ℝ)) :=
+      tendsto_const_nhds
     have hlim :=
       Tendsto.div_const
-        (tendsto_const_nhds.sub hqφ) (2 : ℝ)
+        (hone.sub hqφ) (2 : ℝ)
     apply hlim.congr'
     filter_upwards with n
     have hc := hcoord (φ n)
@@ -409,8 +415,9 @@ theorem wd_t16_nonpositive_limit_persists
     linarith
   have huNonzero : uLim ≠ 0 := by
     intro hu0
-    rw [hu0, norm_zero, zero_pow] at huSqPos
-    norm_num at huSqPos
+    have hz : ‖uLim‖ ^ 2 = 0 := by simp [hu0]
+    rw [hz] at huSqPos
+    exact (lt_irrefl 0 huSqPos)
   have hj :
       jValue aLim uLim ≤ qStar := by
     unfold jValue
