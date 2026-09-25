@@ -42,10 +42,14 @@ theorem wd_x05_delta_tendsto_zero :
   have hden :
       Tendsto (fun n : ℕ => (n : ℝ) + 2) atTop atTop :=
     tendsto_atTop_add_const_right _ _ tendsto_natCast_atTop_atTop
+  have hinv :
+      Tendsto (fun n : ℕ => (((n : ℝ) + 2)⁻¹))
+        atTop (𝓝 0) :=
+    tendsto_inv_atTop_zero.comp hden
   change
-    Tendsto (fun n : ℕ => ((n : ℝ) + 2)⁻¹)
+    Tendsto (fun n : ℕ => wdX05Delta n)
       atTop (𝓝 0)
-  exact tendsto_inv_atTop_zero.comp hden
+  simpa [wdX05Delta] using hinv
 
 theorem wd_x05_pos_argument_nonneg (n : ℕ) :
     0 ≤ (1 - wdX05Delta n) / 2 := by
