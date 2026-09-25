@@ -556,19 +556,19 @@ but does not split into termwise prime, pole, and archimedean vanishing.
 
 Let
 
-\[
+```math
 \widetilde k
-\]
+```
 
 denote the zero extension of \(k\) outside
 
-\[
+```math
 [-c,c].
-\]
+```
 
 The endpoint null-mode identity gives the interior endpoint equation
 
-\[
+```math
 \boxed{
 P_{[-c,c]}
 \mathcal W_c^{\rm ext}
@@ -576,19 +576,19 @@ P_{[-c,c]}
 =
 0
 }
-\]
+```
 
 in the retained compact-window operator/form realization.
 
 For a strict right enlargement, the active prime set is governed by
 
-\[
+```math
 \log n<2t.
-\]
+```
 
 Define the **right-limit arithmetic operator**
 
-\[
+```math
 \boxed{
 \mathcal W_{c+}^{\rm ext}
 :=
@@ -604,23 +604,23 @@ Define the **right-limit arithmetic operator**
 +
 \mathcal R_{\rm pole}.
 }
-\]
+```
 
 If \(c\) is not a prime-power threshold, then
 
-\[
+```math
 \mathcal W_{c+}^{\rm ext}
 =
 \mathcal W_c^{\rm ext}.
-\]
+```
 
 If \(2c=\log n_0\) for one or more prime powers, the strict right enlargement activates exactly those finitely many equality-threshold translations, so
 
-\[
+```math
 \mathcal W_{c+}^{\rm ext}
 \ne
 \mathcal W_c^{\rm ext}
-\]
+```
 
 by that finite threshold correction.
 
@@ -630,17 +630,17 @@ It is whether the **same fixed coefficient/physical relation** satisfies the cor
 
 Away from thresholds, this reduces to asking whether
 
-\[
+```math
 \mathcal W_c^{\rm ext}\widetilde k
-\]
+```
 
 vanishes on a nontrivial exterior collar.
 
 At a threshold, the corresponding statement uses
 
-\[
+```math
 \mathcal W_{c+}^{\rm ext}\widetilde k
-\]
+```
 
 instead.
 
@@ -652,18 +652,18 @@ Every finite-exception unit-gain neutral branch reduces to a threshold-aware fix
 
 At the endpoint,
 
-\[
+```math
 \boxed{
 P_{[-c,c]}
 \mathcal W_c^{\rm ext}\widetilde k=0,
 \qquad
 k\ne0.
 }
-\]
+```
 
 For strict right persistence, the relevant local operator is
 
-\[
+```math
 \boxed{
 \mathcal W_{c+}^{\rm ext}
 =
@@ -673,7 +673,7 @@ For strict right persistence, the relevant local operator is
 +
 \text{finite-rank pole term}.
 }
-\]
+```
 
 If \(c\) is not a threshold, \(\mathcal W_{c+}^{\rm ext}=\mathcal W_c^{\rm ext}\).
 
