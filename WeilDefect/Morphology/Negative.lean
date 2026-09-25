@@ -348,7 +348,7 @@ negative-coordinate -> indexed selected-source specialization map, Lean
 packages the entire negative morphology through the weighted near next-jet
 field.  The theorem intentionally stops there.
 -/
-theorem wd_t37_fixed_packet_persistent_negative_morphology
+noncomputable def wd_t37_fixed_packet_persistent_negative_morphology
     {Kpos M P B : Type*}
     [NormedAddCommGroup Kpos] [InnerProductSpace ℂ Kpos] [CompleteSpace Kpos]
     [NormedAddCommGroup M] [InnerProductSpace ℂ M] [CompleteSpace M]
@@ -387,10 +387,17 @@ theorem wd_t37_fixed_packet_persistent_negative_morphology
         (sourceOf u0).Nonzero) :
     NegativeDefectMorphology
       A c a u gPhys ε b κ sourceOf := by
-  rcases
-      wd_t37_p3_n1_endpoint_ray
-        A c t hA ht a u κ hκ hmem hnorm hq hendpoint with
-    ⟨y, hy0, hyRight, hyNot, hyNeg, hySnd⟩
+  let hp :=
+    wd_t37_p3_n1_endpoint_ray
+      A c t hA ht a u κ hκ hmem hnorm hq hendpoint
+  let y := Classical.choose hp
+  have hySpec := Classical.choose_spec hp
+  have hy0 : y ≠ 0 := hySpec.1
+  have hyRight : y ∈ WeilDefect.WDT15.rightLimit A c := hySpec.2.1
+  have hyNot : y ∉ A c := hySpec.2.2.1
+  have hyNeg :
+      WeilDefect.WDT16.jValue y.fst y.snd ≤ -κ := hySpec.2.2.2.1
+  have hySnd : y.snd ≠ 0 := hySpec.2.2.2.2
   have hblow :=
     wd_t37_p3_n2_normalized_representative_blowup
       gPhys ε hεpos hε0 hgNorm
