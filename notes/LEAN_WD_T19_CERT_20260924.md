@@ -4,11 +4,11 @@ Stable ID: **WD-T19 / WD-C7 + WD-C8 + WD-C9**
 
 Result:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Formal target
 
@@ -28,23 +28,23 @@ Certified source blob:
 
 Let
 
-\[
+$$
 \mathscr H_t
-\]
+$$
 
 be a monotone family of closed complex Hilbert subspaces, and let
 
-\[
+$$
 T:\mathscr H\to K
-\]
+$$
 
 be bounded linear.
 
 Lean defines the closed physical image
 
-\[
+$$
 \overline{T(\mathscr H_t)}
-\]
+$$
 
 by
 
@@ -52,11 +52,11 @@ by
 
 The physical filtration is assumed right-continuous at the endpoint:
 
-\[
+$$
 \mathscr H_c
 =
 \bigcap_{t>c}\mathscr H_t.
-\]
+$$
 
 ## Weak-limit infrastructure
 
@@ -79,38 +79,38 @@ already-certified Hilbert subsequence compactness theorem from WD-T16.
 
 Assume
 
-\[
+$$
 y\notin \overline{T(\mathscr H_c)}.
-\]
+$$
 
 Let
 
-\[
+$$
 t_n\to c,
 \qquad
 h_n\in\mathscr H_{t_n},
 \qquad
 Th_n\to y.
-\]
+$$
 
 Lean proves
 
-\[
+$$
 \boxed{
 \|h_n\|\to\infty.
 }
-\]
+$$
 
 The contradiction mechanism is exactly the mathematical argument:
 
 1. failure of norm divergence yields a frequently bounded subsequence;
 2. WD-T16 extracts a weakly convergent subsubsequence;
 3. monotonicity and right continuity put its weak limit in
-   \(\mathscr H_c\);
-4. bounded linearity sends the weak limit to \(Tx\);
-5. strong convergence of the image gives the same weak limit \(y\);
-6. weak-limit uniqueness forces \(Tx=y\), contradicting
-   \(y\notin\overline{T(\mathscr H_c)}\).
+   $\mathscr H_c$;
+4. bounded linearity sends the weak limit to $Tx$;
+5. strong convergence of the image gives the same weak limit $y$;
+6. weak-limit uniqueness forces $Tx=y$, contradicting
+   $y\notin\overline{T(\mathscr H_c)}$.
 
 This is formalized by
 
@@ -124,41 +124,41 @@ Lean defines the explicit local amplification predicate
 
 For every finite physical norm budget
 
-\[
+$$
 M>0,
-\]
+$$
 
 there are
 
-\[
+$$
 \delta>0,
 \qquad
 \eta>0
-\]
+$$
 
 such that
 
-\[
+$$
 c<t<c+\delta,
 \qquad
 h\in\mathscr H_t,
 \qquad
 \|Th-y\|<\eta
-\]
+$$
 
 imply
 
-\[
+$$
 \boxed{
 M<\|h\|.
 }
-\]
+$$
 
 Thus the boundary amplification is certified in the full local
 two-parameter form, not merely along a preselected sequence.
 
 The proof negates the local statement, chooses shrinking windows
-\(r_n=1/(n+1)\), constructs bounded representatives inside those windows,
+$r_n=1/(n+1)$, constructs bounded representatives inside those windows,
 and invokes WD-C7.
 
 This is formalized by
@@ -169,7 +169,7 @@ This is formalized by
 
 Suppose
 
-\[
+$$
 \|g_n\|=1,
 \qquad
 Tg_n=\varepsilon_n z_n,
@@ -177,37 +177,37 @@ Tg_n=\varepsilon_n z_n,
 \varepsilon_n>0,
 \qquad
 \varepsilon_n\to0.
-\]
+$$
 
 Lean defines
 
-\[
+$$
 h_n
 =
 \varepsilon_n^{-1}g_n
-\]
+$$
 
 using the complex scalar embedding and proves
 
-\[
+$$
 \boxed{
 Th_n=z_n,
 }
-\]
+$$
 
-\[
+$$
 \boxed{
 \|h_n\|=\varepsilon_n^{-1},
 }
-\]
+$$
 
 and therefore
 
-\[
+$$
 \boxed{
 \|h_n\|\to\infty.
 }
-\]
+$$
 
 This is formalized by
 
@@ -227,11 +227,11 @@ The proof uses:
 
 Therefore the correct status is native:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Repair-pass result
 
@@ -277,8 +277,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+$$
 \boxed{
 \texttt{WD-T20 / ZW1-T1 — CANONICAL CONJUGATE-PAIR DIAGONALIZATION INTO POSITIVE/NEGATIVE WEIL CHANNELS}
 }
-\]
+$$

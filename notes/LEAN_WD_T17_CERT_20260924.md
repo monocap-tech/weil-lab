@@ -4,11 +4,11 @@ Stable ID: **WD-T17 / WD-C4**
 
 Result:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Formal target
 
@@ -29,45 +29,45 @@ Certified source blob:
 The certificate assumes the WD-T16 fixed finite negative-sector setting, with
 unit-normalized coefficient vectors
 
-\[
+$$
 y_n=(a_n,u_n)
-\]
+$$
 
 and critical signatures
 
-\[
+$$
 J(y_n)=\|a_n\|^2-\|u_n\|^2\to0.
-\]
+$$
 
 Using
 
-\[
+$$
 \|a_n\|^2+\|u_n\|^2=1,
-\]
+$$
 
 Lean proves
 
-\[
+$$
 \|a_n\|^2\to\frac12,
 \qquad
 \|u_n\|^2\to\frac12.
-\]
+$$
 
-WD-T16 compactness supplies a subsequence, written again as \(y_n\), with
+WD-T16 compactness supplies a subsequence, written again as $y_n$, with
 
-\[
+$$
 a_n\rightharpoonup a,
 \qquad
 u_n\to u,
 \qquad
 y=(a,u)\in A_{c+}.
-\]
+$$
 
 The negative coordinate satisfies
 
-\[
+$$
 \|u\|^2=\frac12,
-\]
+$$
 
 so the limit vector is nonzero.
 
@@ -79,33 +79,33 @@ The module proves the reusable Hilbert-space lemma
 
 If
 
-\[
+$$
 v_n\rightharpoonup v
-\]
+$$
 
 and
 
-\[
+$$
 \|v_n\|^2\to\|v\|^2,
-\]
+$$
 
 then
 
-\[
+$$
 v_n\to v
-\]
+$$
 
 in norm.
 
 The proof is kernel-transparent: it expands
 
-\[
+$$
 \|v_n-v\|^2
 =
 \|v_n\|^2
 -2\operatorname{Re}\langle v_n,v\rangle
 +\|v\|^2
-\]
+$$
 
 and sends each term to its limit.
 
@@ -117,30 +117,30 @@ Lean defines two explicit branches.
 
 If
 
-\[
+$$
 \|a\|^2=\frac12,
-\]
+$$
 
 then the already-proved negative-coordinate identity gives
 
-\[
+$$
 J(a,u)=0.
-\]
+$$
 
-Since the approximating positive norms also converge to \(1/2\), weak
+Since the approximating positive norms also converge to $1/2$, weak
 convergence upgrades to
 
-\[
+$$
 a_n\to a
-\]
+$$
 
-strongly. Together with \(u_n\to u\), Lean proves
+strongly. Together with $u_n\to u$, Lean proves
 
-\[
+$$
 y_n\to y
-\]
+$$
 
-strongly in the \(L^2\) coefficient Hilbert space.
+strongly in the $L^2$ coefficient Hilbert space.
 
 This branch is encoded by
 
@@ -150,18 +150,18 @@ This branch is encoded by
 
 If
 
-\[
+$$
 \|a\|^2<\frac12,
-\]
+$$
 
 then
 
-\[
+$$
 J(a,u)
 =
 \|a\|^2-\frac12
 <0.
-\]
+$$
 
 Thus an approximately neutral sequence falls through to a strictly negative
 right-persistent limit whenever positive mass is lost weakly.
@@ -179,19 +179,19 @@ The assembled theorem
 returns a concrete compactness subsequence and nonzero right-limit vector and
 proves
 
-\[
+$$
 \boxed{
 N\ \lor\ L
 }
-\]
+$$
 
 together with
 
-\[
+$$
 \boxed{
 \neg(N\ \land\ L).
 }
-\]
+$$
 
 Hence exactly one branch occurs.
 
@@ -215,11 +215,11 @@ introduced.
 
 Therefore the correct status is native:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Repair-pass result
 
@@ -258,8 +258,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+$$
 \boxed{
 \texttt{WD-T18 / WD-C6 — ENDPOINT-JUMP QUOTIENT BOUNDS NEW RIGHT-LIMIT NEGATIVE INDEX}
 }
-\]
+$$

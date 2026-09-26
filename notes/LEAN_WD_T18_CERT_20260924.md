@@ -4,11 +4,11 @@ Stable ID: **WD-T18 / WD-C6**
 
 Result:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Formal target
 
@@ -28,9 +28,9 @@ Certified source blob:
 
 Let
 
-\[
+$$
 A_0 \subseteq A_+
-\]
+$$
 
 be closed complex Hilbert subspaces, with (A_0) the endpoint space and
 (A_+) the right-limit space.
@@ -41,11 +41,11 @@ Lean defines the endpoint space internally in (A_+) by
 
 and the algebraic jump quotient
 
-\[
+$$
 \boxed{
 A_+/A_0
 }
-\]
+$$
 
 by
 
@@ -59,31 +59,31 @@ is exactly the endpoint subspace inside the right-limit carrier.
 
 Let
 
-\[
+$$
 q:H\to\mathbb R
-\]
+$$
 
 be any quadratic/signature functional for which the endpoint is nonnegative:
 
-\[
+$$
 y\in A_0
 \quad\Longrightarrow\quad
 q(y)\ge0.
-\]
+$$
 
 Suppose a finite-dimensional witness
 
-\[
+$$
 T:\mathbb C^k\to H
-\]
+$$
 
 takes values in (A_+) and is strictly negative on the unit sphere:
 
-\[
+$$
 \|x\|=1
 \quad\Longrightarrow\quad
 q(Tx)<0.
-\]
+$$
 
 Lean constructs the induced quotient map
 
@@ -91,12 +91,12 @@ Lean constructs the induced quotient map
 
 and proves
 
-\[
+$$
 \boxed{
 \mathbb C^k\longrightarrow A_+/A_0
 \text{ is injective.}
 }
-\]
+$$
 
 The proof is direct. If a nonzero witness direction vanished in the quotient,
 normalize it to a unit vector. Quotient-kernel membership puts its image in
@@ -110,12 +110,12 @@ This is formalized by
 
 When the endpoint quotient is finite-dimensional, Lean proves
 
-\[
+$$
 \boxed{
 k\le
 \operatorname{finrank}_{\mathbb C}(A_+/A_0)
 }
-\]
+$$
 
 for every (k)-dimensional strictly negative witness in (A_+).
 
@@ -128,15 +128,15 @@ This is formalized by
 
 Consequently, if
 
-\[
+$$
 \dim_{\mathbb C}(A_+/A_0)=1,
-\]
+$$
 
 then every finite negative witness satisfies
 
-\[
+$$
 \boxed{k\le1.}
-\]
+$$
 
 This is formalized by
 
@@ -146,15 +146,15 @@ This is formalized by
 
 The mathematical WD-C6 statement also identifies
 
-\[
+$$
 A_+/A_0
-\]
+$$
 
 with the Hilbert jump representative
 
-\[
+$$
 \mathcal J_c=A_+\ominus A_0.
-\]
+$$
 
 WD-T18 certifies the quotient form, which is the dimension statement needed
 for endpoint-index control. No separate orthogonal-representative theorem is
@@ -172,11 +172,11 @@ No external endpoint-jump/index theorem is introduced.
 
 Therefore the correct status is native:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Repair-pass result
 
@@ -218,8 +218,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+$$
 \boxed{
 \texttt{WD-T19 / WD-C7+WD-C8+WD-C9 — NEW ENDPOINT VECTORS FORCE BOUNDARY AMPLIFICATION / REPRESENTATIVE BLOW-UP}
 }
-\]
+$$

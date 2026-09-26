@@ -4,11 +4,11 @@ Stable ID: **WD-T20 / ZW1-T1**
 
 Result:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Formal target
 
@@ -29,9 +29,9 @@ Certified source blob:
 For one distinct nonreal conjugate pair, Lean represents the raw coefficient
 space as
 
-\[
+$$
 \mathbb C^2
-\]
+$$
 
 through the two-coordinate type
 
@@ -44,33 +44,33 @@ The conjugation involution is the coordinate swap
 The formal positive and negative pair channels are the symmetric and
 antisymmetric directions
 
-\[
+$$
 p=(1,1),
 \qquad
 n=(1,-1).
-\]
+$$
 
 These are unnormalized representatives of the same canonical eigendirections
 as the mathematical convention
 
-\[
+$$
 \frac{e_\gamma+e_{\bar\gamma}}{\sqrt2},
 \qquad
 \frac{e_\gamma-e_{\bar\gamma}}{\sqrt2}.
-\]
+$$
 
 Normalization does not change the eigenspaces or their one-dimensional
 positive/negative channel count.
 
 Lean proves
 
-\[
+$$
 \boxed{
 Jp=p,
 \qquad
 Jn=-n.
 }
-\]
+$$
 
 These are formalized by
 
@@ -87,11 +87,11 @@ from positive/negative eigenchannel coordinates to the raw pair coordinates.
 
 In those coordinates, the conjugation involution is diagonal:
 
-\[
+$$
 \boxed{
 (a,b)\longmapsto(a,-b).
 }
-\]
+$$
 
 Formally,
 
@@ -99,12 +99,12 @@ Formally,
 
 proves
 
-\[
+$$
 \operatorname{pairSwap}
   (\operatorname{pairEigenEquiv}(a,b))
 =
 \operatorname{pairEigenEquiv}(a,-b).
-\]
+$$
 
 Thus one distinct nonreal conjugate pair contributes exactly one positive and
 one negative coefficient eigendirection.
@@ -131,11 +131,11 @@ coordinate case analysis, checked by the pinned Lean/mathlib kernel.
 
 Therefore the correct status is native:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Certification result
 
@@ -170,8 +170,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+$$
 \boxed{
 \texttt{WD-T21 / ZW1-T2 — ONE SIMPLE ZETA QUARTET CONTRIBUTES TWO NEGATIVE PAIR COORDINATES}
 }
-\]
+$$
