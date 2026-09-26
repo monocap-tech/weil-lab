@@ -4,11 +4,11 @@ Stable ID: **WD-T07 / WD-B1**
 
 Result:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Formal target
 
@@ -28,17 +28,17 @@ Certified source blob:
 
 Lean verifies
 
-\[
+$$
 q_{\mathrm{full}}(h)
 =
 q_M(h)-\|S_B^*h\|^2,
-\]
+$$
 
 so
 
-\[
+$$
 q_{\mathrm{full}}(h)\le q_M(h)
-\]
+$$
 
 for every physical vector.
 
@@ -49,11 +49,11 @@ The index statement is encoded dimension-by-dimension: if the selected form
 admits a `k`-dimensional negative witness, then the full form admits the same
 witness. This is the formal finite-rank-spectrum version of
 
-\[
+$$
 \operatorname{ind}_{-}(D_{\mathrm{full}})
 \ge
 \operatorname{ind}_{-}(D_M).
-\]
+$$
 
 ## Converse failure
 
@@ -65,11 +65,11 @@ the identity.
 
 At `h = 1`:
 
-\[
+$$
 q_M(1)=0,
 \qquad
 q_{\mathrm{full}}(1)=-1<0.
-\]
+$$
 
 Thus aggregate negativity need not be owned by the selected sector.
 
@@ -98,8 +98,8 @@ No imported theorem premise is used.
 
 ## Next cursor
 
-\[
+$$
 \boxed{
 \texttt{WD-T08 / WD-B2 — FINITE SELECTED-SECTOR NEGATIVE-INDEX CAP}
 }
-\]
+$$

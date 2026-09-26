@@ -4,11 +4,11 @@ Stable ID: **WD-T16 / WD-C3 + WD-C5**
 
 Result:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Formal target
 
@@ -28,30 +28,30 @@ Certified source blob:
 
 The certificate works on the Hilbert direct sum
 
-\[
+$$
 K_+\oplus M
-\]
+$$
 
-represented by the actual \(L^2\)-product
-`WithLp 2 (Kpos × M)`, with \(M\) finite-dimensional.
+represented by the actual $L^2$-product
+`WithLp 2 (Kpos × M)`, with $M$ finite-dimensional.
 
 The Krein signature is encoded as
 
-\[
+$$
 J(a,u)=\|a\|^2-\|u\|^2.
-\]
+$$
 
 For unit-normalized vectors,
 
-\[
+$$
 \|(a_n,u_n)\|=1,
-\]
+$$
 
 Lean derives the exact coordinate identity
 
-\[
+$$
 \|a_n\|^2+\|u_n\|^2=1.
-\]
+$$
 
 ## Native weak subsequence extraction
 
@@ -78,27 +78,27 @@ This avoids assuming Eberlein–Šmulian or a project-level reflexivity premise.
 
 ## Finite-dimensional negative coordinate
 
-For the fixed finite-dimensional sector \(M\), Lean uses compactness of
+For the fixed finite-dimensional sector $M$, Lean uses compactness of
 closed balls to extract a norm-convergent subsequence
 
-\[
+$$
 u_{\phi(n)}\to u.
-\]
+$$
 
 After a further subsequence, the positive coordinates satisfy
 
-\[
+$$
 a_{\phi(n)}\rightharpoonup a.
-\]
+$$
 
 The assembled coefficient vectors converge weakly and the limit lies in the
 right-limit analysis space
 
-\[
+$$
 \boxed{
 (a,u)\in A_{c+}.
 }
-\]
+$$
 
 This is certified by
 
@@ -111,59 +111,59 @@ gap relations, using WD-T15's right-limit object.
 
 Suppose additionally
 
-\[
+$$
 J(a_n,u_n)\to q_*,
 \qquad
 q_*\le0.
-\]
+$$
 
 Lean proves the coordinate limits
 
-\[
+$$
 \|a_n\|^2\to\frac{1+q_*}{2},
 \qquad
 \|u_n\|^2\to\frac{1-q_*}{2}.
-\]
+$$
 
 A native weak lower-semicontinuity lemma for squared Hilbert norms gives
 
-\[
+$$
 \|a\|^2
 \le
 \frac{1+q_*}{2},
-\]
+$$
 
-while strong convergence in \(M\) gives
+while strong convergence in $M$ gives
 
-\[
+$$
 \|u\|^2
 =
 \frac{1-q_*}{2}.
-\]
+$$
 
 Hence
 
-\[
+$$
 \boxed{
 J(a,u)\le q_*.
 }
-\]
+$$
 
-Because \(q_*\le0\),
+Because $q_*\le0$,
 
-\[
+$$
 \|u\|^2
 =
 \frac{1-q_*}{2}
 \ge
 \frac12,
-\]
+$$
 
 so the right-limit vector is nonzero.
 
 Thus Lean certifies
 
-\[
+$$
 \boxed{
 q_n\to q_*\le0
 \Longrightarrow
@@ -171,7 +171,7 @@ q_n\to q_*\le0
 \quad
 J(y)\le q_*.
 }
-\]
+$$
 
 The formal declaration is
 
@@ -179,33 +179,33 @@ The formal declaration is
 
 ## WD-C5 — uniform negative margins
 
-If instead a fixed margin \(\kappa>0\) satisfies
+If instead a fixed margin $\kappa>0$ satisfies
 
-\[
+$$
 J(a_n,u_n)\le-\kappa
-\]
+$$
 
-for every \(n\), Lean proves that some nonzero right-limit vector satisfies
+for every $n$, Lean proves that some nonzero right-limit vector satisfies
 
-\[
+$$
 \boxed{
 0\ne y\in A_{c+},
 \qquad
 J(y)\le-\kappa.
 }
-\]
+$$
 
 This is
 
 `WeilDefect.WDT16.wd_t16_uniform_negative_margin_persists`.
 
-If the endpoint space \(A_c\) is \(J\)-nonnegative, Lean further proves
+If the endpoint space $A_c$ is $J$-nonnegative, Lean further proves
 
-\[
+$$
 \boxed{
 y\in A_{c+}\setminus A_c.
 }
-\]
+$$
 
 This is
 
@@ -249,11 +249,11 @@ introduced.
 
 Therefore the correct status is native:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Repair-pass result
 
@@ -293,8 +293,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+$$
 \boxed{
 \texttt{WD-T17 / WD-C4 — FIXED-SECTOR CRITICAL DICHOTOMY}
 }
-\]
+$$

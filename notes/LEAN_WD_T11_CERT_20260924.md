@@ -4,11 +4,11 @@ Stable ID: **WD-T11 / WD-B5**
 
 Result:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Formal target
 
@@ -28,9 +28,9 @@ Certified source blob:
 
 WD-T11 is formalized on the canonical finite-dimensional active carrier
 
-\[
+$$
 \operatorname{Ran}Y,
-\]
+$$
 
 using the corestricted screen and its adjoint.
 
@@ -38,10 +38,10 @@ Lean verifies natively:
 
 - corestriction to the active range preserves the operator norm;
 - the active adjoint has the same norm as the original selected screen;
-- if \(\|Y\|=1\), the active graph form attains an actual nonzero neutral direction;
+- if $\|Y\|=1$, the active graph form attains an actual nonzero neutral direction;
 - the active covariance diagonalizes in the singular-vector basis;
-- the graph form has diagonal weights \(1-\sigma_i^2\);
-- every finite negative witness injects into the \(\sigma_i>1\) coordinate block;
+- the graph form has diagonal weights $1-\sigma_i^2$;
+- every finite negative witness injects into the $\sigma_i>1$ coordinate block;
 - the full negative spectral space is strictly negative away from zero;
 - its complex dimension is exactly the number of singular values strictly greater than one;
 - that count is attained by a negative witness and is the exact maximal finite negative rank;
@@ -54,19 +54,19 @@ The assembled theorem is:
 
 Its formal conclusion packages:
 
-\[
+$$
 \operatorname{ind}_{-}
 =
 \#\{i:\sigma_i>1\},
-\]
+$$
 
 in the project's finite-negative-rank witness encoding,
 
-\[
+$$
 \dim E_0
 =
 \#\{i:\sigma_i=1\},
-\]
+$$
 
 and finite-sector norm-one attainment of a genuine nonzero neutral direction.
 
@@ -78,11 +78,11 @@ The module imports surrounding screening infrastructure, including the graph-nor
 
 Therefore the correct status is native:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 rather than `LEAN-CERTIFIED-FROM-IMPORTED-PREMISE`.
 
@@ -120,8 +120,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+$$
 \boxed{
 \texttt{WD-T12 / WD-B6 — SEQUENTIAL ELIMINATION}
 }
-\]
+$$

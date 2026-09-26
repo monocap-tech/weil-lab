@@ -4,11 +4,11 @@ Stable ID: **WD-T15 / WD-C1 + WD-C2**
 
 Result:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Formal target
 
@@ -28,28 +28,28 @@ Certified source blob:
 
 The certificate works with a monotone real-parameter family
 
-\[
+$$
 A:\mathbb R\to \operatorname{ClosedSubmodule}(\mathbb C,H).
-\]
+$$
 
-For an endpoint \(c\), the right-limit space is encoded as the closed-submodule
+For an endpoint $c$, the right-limit space is encoded as the closed-submodule
 infimum over parameters strictly to the right,
 
-\[
+$$
 A_{c+}
 =
 \bigcap_{t>c} A_t,
-\]
+$$
 
 via `WeilDefect.WDT15.rightLimit`.
 
 The limiting gap space is encoded as the closed-submodule supremum
 
-\[
+$$
 G_{c+}
 =
 \overline{\operatorname{span}\bigcup_{t>c} A_t^\perp},
-\]
+$$
 
 via `WeilDefect.WDT15.gapLimit`. Because the lattice supremum of
 `ClosedSubmodule` already takes the closed span, the closure is part of the
@@ -59,11 +59,11 @@ formal object rather than an external side condition.
 
 Lean proves natively
 
-\[
+$$
 \boxed{
 A_{c+}=G_{c+}^{\perp}.
 }
-\]
+$$
 
 The proof is the Hilbert-space lattice identity relating intersections and
 orthogonal complements, expressed through
@@ -74,49 +74,49 @@ analysis spaces produce antitone orthogonal complements.
 
 ## Cofinal right-approach sequences
 
-For every sequence \(t_n\) satisfying
+For every sequence $t_n$ satisfying
 
-\[
+$$
 c<t_n,
 \qquad
 t_n\to c,
-\]
+$$
 
 Lean proves
 
-\[
+$$
 \boxed{
 \bigcap_n A_{t_n}=A_{c+}.
 }
-\]
+$$
 
 Thus any real sequence approaching the endpoint from the right is cofinal for
 the monotone filtration. The proof uses the real-order neighborhood structure
-and monotonicity of \(A\).
+and monotonicity of $A$.
 
 Lean further proves
 
-\[
+$$
 \overline{\operatorname{span}\bigcup_n A_{t_n}^{\perp}}
 =
 A_{c+}^{\perp}.
-\]
+$$
 
 ## WD-C1 — strong projection limit
 
-For every antitone right-approach sequence \(t_n\downarrow c\) and every
-\(x\in H\), Lean proves the pointwise norm convergence
+For every antitone right-approach sequence $t_n\downarrow c$ and every
+$x\in H$, Lean proves the pointwise norm convergence
 
-\[
+$$
 \boxed{
 P_{A_{t_n}}x
 \longrightarrow
 P_{A_{c+}}x.
 }
-\]
+$$
 
 This is the strong-operator convergence statement along arbitrary decreasing
-real sequences approaching \(c\).
+real sequences approaching $c$.
 
 The proof dualizes to the increasing gap spaces, invokes mathlib's
 `Submodule.starProjection_tendsto_closure_iSup`, and then converts the gap
@@ -126,7 +126,7 @@ through dependent rewriting of projection typeclass instances.
 
 The P4 audit records that this sequential formulation suffices for the
 real-parameter right-limit statement: failure of the full strong limit would
-produce a violating sequence approaching \(c\).
+produce a violating sequence approaching $c$.
 
 ## Formal declarations
 
@@ -151,11 +151,11 @@ complement, topology, and closed-submodule lattice theorems.
 
 Therefore the correct status is native:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Repair-pass result
 
@@ -192,8 +192,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+$$
 \boxed{
 \texttt{WD-T16 / WD-C3+WD-C5 — FIXED FINITE NEGATIVE-SECTOR PERSISTENCE}
 }
-\]
+$$

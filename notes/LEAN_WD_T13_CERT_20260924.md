@@ -4,11 +4,11 @@ Stable ID: **WD-T13 / WD-B7**
 
 Result:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Formal target
 
@@ -31,47 +31,47 @@ ambiguous phrase “strictly positive.”
 
 For the self-adjoint block operator
 
-\[
+$$
 K=
 \begin{pmatrix}
 A&B\\
 B^*&C
 \end{pmatrix}
-\]
+$$
 
-on the Hilbert direct sum \(W\oplus V\), Lean assumes the explicit uniform
+on the Hilbert direct sum $W\oplus V$, Lean assumes the explicit uniform
 quadratic lower bound
 
-\[
+$$
 m(\|w\|^2+\|v\|^2)
 \le
 \operatorname{Re}\left(
 \langle Aw+Bv,w\rangle+
 \langle B^*w+Cv,v\rangle
 \right)
-\]
+$$
 
-for every \(w,v\), with \(m>0\), together with the self-adjoint block
+for every $w,v$, with $m>0$, together with the self-adjoint block
 hypotheses.
 
 This is the formal version of
 
-\[
+$$
 K\succeq mI.
-\]
+$$
 
 The product Hilbert norm is written explicitly as
-\(\|w\|^2+\|v\|^2\); Lean's generic product Banach norm is not substituted.
+$\|w\|^2+\|v\|^2$; Lean's generic product Banach norm is not substituted.
 
 ## Complementary block
 
-By setting \(w=0\), Lean derives
+By setting $w=0$, Lean derives
 
-\[
+$$
 m\|v\|^2
 \le
 \operatorname{Re}\langle Cv,v\rangle.
-\]
+$$
 
 Using mathlib's bounded-operator coercivity criterion, Lean then proves
 `IsUnit C` in the continuous-linear endomorphism algebra. Thus bounded
@@ -82,44 +82,44 @@ The canonical inverse is represented by
 
 `Ring.inverse C`.
 
-Lean verifies both inverse identities and proves that \(C^{-1}\) is
+Lean verifies both inverse identities and proves that $C^{-1}$ is
 nonnegative in the Loewner order.
 
 ## Schur-shortened covariance
 
 The formal Schur correction is
 
-\[
+$$
 BC^{-1}B^*,
-\]
+$$
 
 and the shortened covariance is
 
-\[
+$$
 H_W=A-BC^{-1}B^*.
-\]
+$$
 
 Lean proves that the correction is positive and therefore
 
-\[
+$$
 \boxed{H_W\preceq A}.
-\]
+$$
 
 It further performs the minimizing-complement calculation with
 
-\[
+$$
 z=C^{-1}B^*w
-\]
+$$
 
 and obtains
 
-\[
+$$
 m\|w\|^2
 \le
 \operatorname{Re}\langle H_Ww,w\rangle.
-\]
+$$
 
-Hence \(H_W\) is itself a unit, again derived natively from the same
+Hence $H_W$ is itself a unit, again derived natively from the same
 uniform lower bound.
 
 ## Inverse-compression identity
@@ -127,32 +127,32 @@ uniform lower bound.
 Rather than introducing a second bespoke block-matrix representation, the
 formal certificate encodes
 
-\[
+$$
 P_WK^{-1}|_W=H_W^{-1}
-\]
+$$
 
 through the equivalent block-solution characterization.
 
-For every \(w\), Lean constructs \(x\in W\) and \(y\in V\) satisfying
+For every $w$, Lean constructs $x\in W$ and $y\in V$ satisfying
 
-\[
+$$
 Ax+By=w,
 \qquad
 B^*x+Cy=0,
-\]
+$$
 
 with
 
-\[
+$$
 x=H_W^{-1}w.
-\]
+$$
 
 Conversely, Lean proves that **any** solution of those two block equations has
 first component
 
-\[
+$$
 x=H_W^{-1}w.
-\]
+$$
 
 Thus the first coordinate of the inverse block problem is exactly the inverse
 Schur complement.
@@ -182,16 +182,16 @@ No imported project theorem premise is consumed by WD-T13.
 
 The coercivity-to-unit step, positivity of the inverse, and the operator-order
 facts are ordinary pinned mathlib results checked by the Lean kernel.
-The certificate does not assume an inverse for \(C\), an inverse for
-\(H_W\), a Douglas interface, or an Anderson–Trapp theorem.
+The certificate does not assume an inverse for $C$, an inverse for
+$H_W$, a Douglas interface, or an Anderson–Trapp theorem.
 
 Therefore the correct status is native:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED}
 }
-\]
+$$
 
 ## Repair-pass result
 
@@ -200,7 +200,7 @@ The first direct build exposed only additive normal-form mismatches
 vector-equation tactic was corrected.
 
 No theorem statement or mathematical hypothesis was weakened. In particular,
-the corrected uniformly positive hypothesis \(K\succeq mI\) was preserved
+the corrected uniformly positive hypothesis $K\succeq mI$ was preserved
 through certification.
 
 ## CI evidence
@@ -226,8 +226,8 @@ The run passed:
 
 ## Next cursor
 
-\[
+$$
 \boxed{
 \texttt{WD-T14 / WD-B8 — FINITE POSITIVE SHADOWS PRESERVE SIGNATURE BUT NOT ADMISSIBILITY}
 }
-\]
+$$
