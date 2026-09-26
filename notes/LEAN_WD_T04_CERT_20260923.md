@@ -70,7 +70,7 @@ The run passed:
 
 ## Next cursor
 
-$
+$$
 \boxed{
 \texttt{WD-T05 / WD-A5 — RANK-ONE DEFECT SPECIALIZATION}
 }
