@@ -4,11 +4,11 @@ Stable ID: **WD-T04 / WD-A4**
 
 Result:
 
-\[
+$$
 \boxed{
 \text{LEAN-CERTIFIED-FROM-IMPORTED-PREMISE}
 }
-\]
+$$
 
 ## Formal target
 
@@ -70,8 +70,8 @@ The run passed:
 
 ## Next cursor
 
-[
+$
 \boxed{
 \texttt{WD-T05 / WD-A5 — RANK-ONE DEFECT SPECIALIZATION}
 }
-\]
+$$

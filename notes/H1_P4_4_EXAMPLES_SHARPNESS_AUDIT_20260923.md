@@ -5,11 +5,11 @@ Date: 2026-09-23
 
 All seven stable example/sharpness witnesses pass internal audit.
 
-\[
+$$
 \boxed{
 \text{WD-X01--WD-X07: EXAMPLE-AUDIT-PASSED}.
 }
-\]
+$$
 
 ### Sharpness roles
 
@@ -19,13 +19,13 @@ All seven stable example/sharpness witnesses pass internal audit.
 - WD-X04: a direct compression floor does not provide a uniform shorted-covariance floor across a degenerating family.
 - WD-X05: finite-dimensionality at each stage is insufficient when the selected sector moves.
 - WD-X06: critical weak convergence can lose positive mass and become strictly negative.
-- WD-X07: zero moment gives optimally \(O(z^{-2})\) far decay without an extra first-moment law.
+- WD-X07: zero moment gives optimally $O(z^{-2})$ far decay without an extra first-moment law.
 
 ## Phase disposition
 
 All P4 audit classes are now complete:
 
-\[
+$$
 \boxed{
 \begin{aligned}
 &\text{WD-T01--WD-T36: P4-AUDIT-PASSED},\\
@@ -35,19 +35,19 @@ All P4 audit classes are now complete:
 &\text{external load-bearing inputs: SOURCE-PINNED}.
 \end{aligned}
 }
-\]
+$$
 
 Thus
 
-\[
+$$
 \boxed{
 \textbf{H1-P4: COMPLETE.}
-\]
+$$
 
 ## Next cursor
 
-\[
+$$
 \boxed{
 \texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
 }
-\]
+$$
