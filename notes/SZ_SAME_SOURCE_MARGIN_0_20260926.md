@@ -1,0 +1,741 @@
+# SZ-SAME-SOURCE-MARGIN-0 — Exact affine-fiber margin law
+
+**Date:** 2026-09-26  
+**Branch:** sz-cross-collar  
+**Status:** UNRATIFIED RESIDUE / NF PASS  
+**Canonical parent:** SZ-CROSS-COLLAR-3  
+**Immediate parent residue:** SZ_CROSS_COLLAR_SAME_SOURCE_0_20260926.md  
+**Uses:** ratified cross-collar theorem, same-source correction residue,
+Suzuki lowest-eigenvalue continuity, Horizon-1 fixed-sector normalization.
+
+## 0. Objective
+
+For the fixed endpoint selected source
+
+~~~math
+u=\sigma_c(k)\ne0,
+~~~
+
+quantify the strongest strict-support negativity available while keeping
+
+~~~math
+\sigma_b(x)=u.
+~~~
+
+The preceding pass showed that every leaking quotient class has a
+selected-preserving representative.
+
+This pass identifies the exact same-source margin and separates:
+
+- fixed-margin leakage;
+- vanishing-margin leakage;
+- source-preserving directions that are already unboundedly negative.
+
+---
+
+## 1. The same-source affine fiber
+
+Fix \(b>c\) and write
+
+~~~math
+\widetilde k=E_{c,b}k.
+~~~
+
+Define
+
+~~~math
+V_b:=\ker\sigma_b.
+~~~
+
+Because
+
+~~~math
+\sigma_b(\widetilde k)=u,
+~~~
+
+the entire same-source fiber is
+
+~~~math
+\boxed{
+\mathcal X_b(u)
+=
+\widetilde k+V_b.
+}
+~~~
+
+Indeed, every \(x\) with \(\sigma_b(x)=u\) satisfies
+\(x-\widetilde k\in V_b\).
+
+The endpoint null relation gives
+
+~~~math
+q_b(\widetilde k)=0.
+~~~
+
+Define the cross functional restricted to selected-preserving directions:
+
+~~~math
+L_b(h)
+:=
+q_b(\widetilde k,h),
+\qquad
+h\in V_b.
+~~~
+
+The same-source correction theorem implies
+
+~~~math
+\boxed{
+\Lambda_{c,b;k}\ne0
+\iff
+L_b\ne0.
+}
+~~~
+
+---
+
+## 2. Exact affine quadratic formula
+
+For \(h\in V_b\),
+
+~~~math
+\boxed{
+q_b(\widetilde k+h)
+=
+2\operatorname{Re}L_b(h)
++
+q_b(h).
+}
+~~~
+
+More generally, for \(z\in\mathbb C\),
+
+~~~math
+q_b(\widetilde k+zh)
+=
+2\operatorname{Re}\!\left(
+zL_b(h)
+\right)
++
+|z|^2q_b(h).
+~~~
+
+This elementary identity contains the whole same-source margin law.
+
+---
+
+## 3. Define the optimal same-source margin
+
+Define
+
+~~~math
+\boxed{
+\mathfrak m_b(u)
+:=
+-\inf
+\{
+q_b(x):
+x\in\mathcal F_b,\ 
+\sigma_b(x)=u
+\}.
+}
+~~~
+
+Since \(\widetilde k\) belongs to the fiber and has value zero,
+
+~~~math
+\mathfrak m_b(u)\ge0.
+~~~
+
+If null persistence fails, the previous pass supplies a same-source negative
+point, hence
+
+~~~math
+\boxed{
+\Lambda_{c,b;k}\ne0
+\Longrightarrow
+\mathfrak m_b(u)>0
+}
+~~~
+
+with the convention that \(\mathfrak m_b(u)=+\infty\) is allowed.
+
+At the nonnegative neutral endpoint,
+
+~~~math
+\boxed{
+\mathfrak m_c(u)=0.
+}
+~~~
+
+---
+
+## 4. Unbounded-margin cases
+
+There are two ways the same-source fiber can be unbounded below.
+
+### M∞-1 — negative selected-preserving direction
+
+If there exists
+
+~~~math
+h\in V_b
+~~~
+
+with
+
+~~~math
+q_b(h)<0,
+~~~
+
+then
+
+~~~math
+q_b(\widetilde k+th)
+=
+2t\operatorname{Re}L_b(h)
++t^2q_b(h)
+\longrightarrow-\infty
+~~~
+
+as \(t\to+\infty\) after a harmless phase choice if needed.
+
+Hence
+
+~~~math
+\boxed{
+\mathfrak m_b(u)=+\infty.
+}
+~~~
+
+### M∞-2 — coupled null selected-preserving direction
+
+Suppose
+
+~~~math
+q_b(h)=0
+~~~
+
+but
+
+~~~math
+L_b(h)\ne0.
+~~~
+
+Choose a phase so that
+\(\operatorname{Re}L_b(h)<0\). Then
+
+~~~math
+q_b(\widetilde k+th)
+=
+2t\operatorname{Re}L_b(h)
+\longrightarrow-\infty.
+~~~
+
+Again,
+
+~~~math
+\boxed{
+\mathfrak m_b(u)=+\infty.
+}
+~~~
+
+So a finite same-source margin is possible only when
+
+~~~math
+q_b|_{V_b}\succeq0
+~~~
+
+and \(L_b\) vanishes on the nullspace of that restricted form.
+
+---
+
+## 5. Finite-margin law
+
+Assume now
+
+~~~math
+q_b(h)\ge0
+\qquad
+(h\in V_b),
+~~~
+
+and
+
+~~~math
+q_b(h)=0
+\Longrightarrow
+L_b(h)=0.
+~~~
+
+For any \(h\in V_b\) with \(q_b(h)>0\), optimize over the complex scalar
+\(z\).
+
+The minimum is attained at the phase/amplitude cancelling the linear term and
+equals
+
+~~~math
+\boxed{
+\inf_{z\in\mathbb C}
+q_b(\widetilde k+zh)
+=
+-
+\frac{|L_b(h)|^2}{q_b(h)}.
+}
+~~~
+
+Taking the best selected-preserving direction gives
+
+~~~math
+\boxed{
+\mathfrak m_b(u)
+=
+\sup_{\substack{h\in V_b\\q_b(h)>0}}
+\frac{|L_b(h)|^2}{q_b(h)}.
+}
+~~~
+
+Equivalently,
+
+~~~math
+\boxed{
+\mathfrak m_b(u)
+=
+\|L_b\|_{(V_b,q_b)^*}^{\,2},
+}
+~~~
+
+where the right side denotes the dual norm for the positive quotient
+pre-Hilbert space
+
+~~~math
+V_b/\ker(q_b|_{V_b}).
+~~~
+
+If this dual norm is infinite, the affine fiber is again unbounded below.
+
+Thus the cross-collar functional itself carries the exact quantitative
+same-source margin once measured in the correct restricted form metric.
+
+---
+
+## 6. Nonzero leakage does not imply a uniform margin
+
+The implication
+
+~~~math
+L_b\ne0
+\Longrightarrow
+\mathfrak m_b(u)>0
+~~~
+
+is pointwise only.
+
+There is no support-uniform lower bound from nonvanishing alone.
+
+A two-dimensional model shows sharpness.
+
+Let the endpoint old space be generated by \(e_1\), take
+
+~~~math
+k=e_1,
+~~~
+
+and for \(\varepsilon>0\) define the enlarged Hermitian form by
+
+~~~math
+Q_\varepsilon
+=
+\begin{pmatrix}
+0&-\varepsilon\\
+-\varepsilon&1
+\end{pmatrix}.
+~~~
+
+Let the selected coordinate be the first coordinate, so
+\(V=\mathbb Ce_2\).
+
+Then
+
+~~~math
+L_\varepsilon(e_2)=-\varepsilon,
+\qquad
+q_\varepsilon(e_2)=1.
+~~~
+
+Therefore
+
+~~~math
+\boxed{
+\mathfrak m_\varepsilon(u)
+=
+\varepsilon^2.
+}
+~~~
+
+Every \(\varepsilon>0\) has genuine cross leakage and same-source negativity,
+but
+
+~~~math
+\mathfrak m_\varepsilon(u)\to0.
+~~~
+
+So no fixed \(\kappa>0\) can be extracted from
+\(\Lambda\ne0\) alone.
+
+---
+
+## 7. Right-approaching margin dichotomy
+
+Take a sequence
+
+~~~math
+b_n\downarrow c
+~~~
+
+with
+
+~~~math
+\Lambda_{c,b_n;k}\ne0.
+~~~
+
+Set
+
+~~~math
+m_n:=\mathfrak m_{b_n}(u)\in(0,+\infty].
+~~~
+
+After passing to a subsequence, there are only two quantitative regimes.
+
+### MF — fixed same-source margin
+
+There exists
+
+~~~math
+\delta>0
+~~~
+
+such that
+
+~~~math
+\boxed{
+m_n\ge\delta
+}
+~~~
+
+for every \(n\) in the subsequence.
+
+Choose same-source witnesses \(x_n\) with
+
+~~~math
+q_{b_n}(x_n)\le-\frac{\delta}{2}.
+~~~
+
+### MV — vanishing same-source margin
+
+~~~math
+\boxed{
+m_n\to0.
+}
+~~~
+
+Every optimally chosen same-source negative value collapses back to zero.
+
+The toy model in Section 6 realizes MV.
+
+No third finite quantitative regime is needed after subsequence extraction.
+
+The unbounded case \(m_n=+\infty\) belongs to MF for every finite choice of
+\(\delta\).
+
+---
+
+## 8. Suzuki spectral continuity forces blow-up in MF
+
+Suzuki proves continuity of the lowest localized eigenvalue:
+
+~~~math
+\lambda_{b_n}\to\lambda_c=0.
+~~~
+
+Cross leakage gives
+
+~~~math
+\lambda_{b_n}<0.
+~~~
+
+For every form-domain vector,
+
+~~~math
+q_{b_n}(x)
+\ge
+\lambda_{b_n}\|x\|_{L^2}^2.
+~~~
+
+In the fixed-margin branch choose \(x_n\) as above. Then
+
+~~~math
+-\frac{\delta}{2}
+\ge
+q_{b_n}(x_n)
+\ge
+\lambda_{b_n}\|x_n\|_2^2.
+~~~
+
+Since \(\lambda_{b_n}<0\),
+
+~~~math
+\boxed{
+\|x_n\|_2^2
+\ge
+\frac{\delta/2}{|\lambda_{b_n}|}
+\longrightarrow
++\infty.
+}
+~~~
+
+Thus:
+
+~~~math
+\boxed{
+\text{fixed same-source form margin}
+\Longrightarrow
+\text{physical representative blow-up}.
+}
+~~~
+
+This is a genuine quantitative collar law.
+
+---
+
+## 9. Vanishing selected amplitude after physical normalization
+
+Normalize
+
+~~~math
+g_n
+=
+\frac{x_n}{\|x_n\|_2}.
+~~~
+
+Because the selected coordinate of \(x_n\) is exactly the fixed nonzero source
+
+~~~math
+\sigma_{b_n}(x_n)=u,
+~~~
+
+we have
+
+~~~math
+\sigma_{b_n}(g_n)
+=
+\frac{u}{\|x_n\|_2}.
+~~~
+
+Hence in MF,
+
+~~~math
+\boxed{
+\|\sigma_{b_n}(g_n)\|
+=
+\frac{\|u\|}{\|x_n\|_2}
+\longrightarrow0.
+}
+~~~
+
+So the fixed-margin branch automatically generates the vanishing physical
+selected-amplitude scale expected in the Horizon-1 negative morphology.
+
+---
+
+## 10. Fixed normalized residual coefficient signature
+
+Now additionally assume the background is admissible at each \(b_n\), so
+WD-T10 identifies the full form with the residual selected two-channel form.
+
+Write the residual selected coefficient of \(x_n\) as
+
+~~~math
+(a_n,u),
+~~~
+
+so
+
+~~~math
+q_{b_n}(x_n)
+=
+\|a_n\|^2-\|u\|^2.
+~~~
+
+From
+
+~~~math
+q_{b_n}(x_n)\le-\frac{\delta}{2},
+~~~
+
+we obtain
+
+~~~math
+\|a_n\|^2
+\le
+\|u\|^2-\frac{\delta}{2}.
+~~~
+
+Therefore the coefficient norm satisfies
+
+~~~math
+\|a_n\|^2+\|u\|^2
+\le
+2\|u\|^2.
+~~~
+
+After normalizing the residual coefficient pair to unit norm, its signature is
+
+~~~math
+\frac{
+\|a_n\|^2-\|u\|^2
+}{
+\|a_n\|^2+\|u\|^2
+}
+\le
+-\frac{\delta}{4\|u\|^2}.
+~~~
+
+Thus
+
+~~~math
+\boxed{
+\text{MF + background admissibility}
+\Longrightarrow
+\text{uniform normalized residual selected negativity}.
+}
+~~~
+
+The selected source direction remains fixed throughout.
+
+---
+
+## 11. Relation to WD-T37
+
+Sections 8–10 reproduce the two characteristic quantitative scalings of the
+WD-T37 branch:
+
+1. selected amplitude of unit physical witnesses tends to zero;
+2. normalized selected residual signature stays uniformly negative.
+
+However, a literal invocation of WD-T37 also requires the relevant residual
+analysis spaces to fit its monotone support-filtration hypotheses.
+
+The earlier Douglas-instability audit showed that support continuity of
+reduced residual screening maps cannot be assumed for free.
+
+Therefore the correct statement is
+
+~~~math
+\boxed{
+\text{MF supplies the WD-T37 quantitative data,}
+}
+~~~
+
+but
+
+~~~math
+\boxed{
+\text{WD-T37 itself still needs residual-filtration compatibility.}
+}
+~~~
+
+No such compatibility is asserted in this pass.
+
+---
+
+## 12. Background-inadmissible supports
+
+If the background is inadmissible along a subsequence, then the owner is
+already in the BG-R/BG-B branch.
+
+The same-source full margin \(\mathfrak m_b(u)\) remains well-defined, but it
+cannot be interpreted as selected residual ownership.
+
+Thus the complete margin/owner split along a right-approaching sequence is:
+
+~~~text
+background inadmissible
+    -> BG-R / BG-B;
+
+background admissible + MF
+    -> same-source residual selected defect
+       with fixed quantitative margin and physical blow-up;
+
+background admissible + MV
+    -> same-source residual selected defect
+       with infinitesimal margin.
+~~~
+
+---
+
+## 13. Result of this NF pass
+
+The exact same-source margin is the affine-fiber variational quantity
+
+~~~math
+\boxed{
+\mathfrak m_b(u)
+=
+-\inf_{\sigma_b(x)=u}q_b(x).
+}
+~~~
+
+When the selected-preserving restriction is nonnegative, it is exactly
+
+~~~math
+\boxed{
+\mathfrak m_b(u)
+=
+\sup_{q_b(h)>0,\ h\in\ker\sigma_b}
+\frac{|q_b(\widetilde k,h)|^2}{q_b(h)}.
+}
+~~~
+
+If a negative selected-preserving direction or a coupled null direction
+exists, the same-source fiber is unbounded below.
+
+Cross leakage guarantees only
+
+~~~math
+\mathfrak m_b(u)>0,
+~~~
+
+not a support-uniform lower bound.
+
+Along \(b_n\downarrow c\), the decisive quantitative fork is therefore
+
+~~~math
+\boxed{
+\text{fixed margin (MF)}
+\quad\text{versus}\quad
+\text{vanishing margin (MV)}.
+}
+~~~
+
+In MF, Suzuki eigenvalue continuity forces physical representative blow-up;
+with background admissibility, the normalized residual selected signature has
+a fixed negative lower margin.
+
+In MV, the collar branch remains genuinely infinitesimal and does not enter
+fixed-margin morphology from the present data.
+
+---
+
+## 14. Candidate follow-on if ratified
+
+~~~text
+SZ-MARGIN-MV / FIRST NONZERO ORDER
+~~~
+
+A future NF should analyze the vanishing-margin branch and determine whether
+Suzuki's collar residual or screw-kernel expansion forces a definite first
+nonzero asymptotic order for \(\mathfrak m_{c+\varepsilon}(u)\), or whether
+arbitrarily flat decay remains possible.
+
+**No canonical cursor movement is asserted by this residue.**
