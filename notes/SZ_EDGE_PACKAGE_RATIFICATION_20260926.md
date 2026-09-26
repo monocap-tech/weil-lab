@@ -396,7 +396,7 @@ x_0\in\Sigma_c
 such that the mode is nonzero on every relative neighborhood of \(x_0\) in
 the essential-support sense.
 
-Thus every flat-but-leaking mode is forced to remain locally nontrivial at at
+Thus every flat-but-leaking mode is forced to remain locally nontrivial at
 least one of finitely many arithmetic singular sites.
 
 This is localization, not yet elimination.
