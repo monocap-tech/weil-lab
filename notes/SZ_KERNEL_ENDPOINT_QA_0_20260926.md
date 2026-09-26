@@ -1,0 +1,678 @@
+# SZ-KERNEL-ENDPOINT-QA-0 — Finite-dimensional edge-germ reduction
+
+**Date:** 2026-09-26  
+**Branch:** sz-cross-collar  
+**Status:** UNRATIFIED RESIDUE / NF PASS  
+**Canonical parent:** SZ-CROSS-COLLAR-3  
+**Immediate parent residue:** SZ_MV_ROUGH_ENDPOINT_0_20260926.md  
+**External comparison:** Chen–Hauer–Weth, *An extension problem for the
+logarithmic Laplacian*, arXiv:2312.15689; Harrach–Lin–Weth, *The Calderón
+problem for the logarithmic Schrödinger equation*, arXiv:2412.17775.  
+**Suzuki pin:** Masatoshi Suzuki, *Weil's quadratic form via the screw
+function*, arXiv:2606.09096v3.
+
+## 0. Objective
+
+Test the proposed kernel-restricted quasi-analyticity statement:
+
+> if
+> \[
+> 0\ne u\in\ker G_c
+> \]
+> has collar residual
+> \[
+> \Delta_{c,c+\varepsilon}(u)
+> =
+> o(\varepsilon^N)
+> \qquad
+> \text{for every }N,
+> \]
+> must \(u\) actually persist to a nontrivial right collar?
+
+The present pass does **not** prove that implication.
+
+It does, however, reduce it to an exact finite-dimensional equality of
+edge-germ subspaces and shows why the currently available logarithmic
+unique-continuation theorems do not discharge it.
+
+---
+
+## 1. Fixed regular endpoint kernel
+
+Let
+
+\[
+K_c:=\ker G_c
+\subset L_0^2(-c,c).
+\]
+
+The preceding pass established
+
+\[
+\boxed{
+\dim K_c<\infty.
+}
+\]
+
+For \(\varepsilon>0\), let
+
+\[
+J_\varepsilon:
+L_0^2(-c,c)
+\hookrightarrow
+L_0^2(-c-\varepsilon,c+\varepsilon)
+\]
+
+be zero extension and define
+
+\[
+\boxed{
+T_\varepsilon:
+K_c
+\to
+L_0^2(-c-\varepsilon,c+\varepsilon),
+\qquad
+T_\varepsilon u
+:=
+G_{c+\varepsilon}J_\varepsilon u.
+}
+\]
+
+Then
+
+\[
+\Delta_{c,c+\varepsilon}(u)
+=
+\|T_\varepsilon u\|_2.
+\]
+
+Thus all regular collar persistence is encoded by the finite-dimensional
+operator family
+
+\[
+\varepsilon\longmapsto T_\varepsilon|_{K_c}.
+\]
+
+---
+
+## 2. Exact-persistence subspaces are nested
+
+For every \(\varepsilon>0\), define
+
+\[
+P_\varepsilon
+:=
+\ker T_\varepsilon
+\subseteq K_c.
+\]
+
+If
+
+\[
+0<\varepsilon_1<\varepsilon_2,
+\]
+
+then persistence to the larger collar implies persistence to the smaller one:
+
+\[
+\boxed{
+P_{\varepsilon_2}
+\subseteq
+P_{\varepsilon_1}.
+}
+\]
+
+This also follows from the monotonicity of the residual norm:
+
+\[
+\Delta_{c,c+\varepsilon_1}(u)
+\le
+\Delta_{c,c+\varepsilon_2}(u).
+\]
+
+Hence, as \(\varepsilon\downarrow0\), the spaces \(P_\varepsilon\) form a
+nested increasing family inside the finite-dimensional space \(K_c\).
+
+---
+
+## 3. The persistence filtration stabilizes on a collar
+
+Because nested subspaces of equal finite dimension are equal, every genuine
+change in \(P_\varepsilon\) changes its dimension.
+
+But
+
+\[
+0\le\dim P_\varepsilon\le\dim K_c.
+\]
+
+Therefore there can be only finitely many strict changes.
+
+Consequently there exists
+
+\[
+\boxed{
+\varepsilon_*>0
+}
+\]
+
+and one fixed subspace
+
+\[
+\boxed{
+P_c^{+}\subseteq K_c
+}
+\]
+
+such that
+
+\[
+\boxed{
+P_\varepsilon=P_c^{+}
+\qquad
+(0<\varepsilon<\varepsilon_*).
+}
+\]
+
+Thus, on the regular zero eigenspace, “persistence to some sufficiently small
+strict collar” is already a stable linear notion.
+
+Equivalently,
+
+\[
+u\in P_c^+
+\]
+
+if and only if
+
+\[
+T_\varepsilon u=0
+\]
+
+for every sufficiently small \(\varepsilon>0\).
+
+This stabilization uses only finite dimensionality and monotonicity; it is not
+a unique-continuation theorem.
+
+---
+
+## 4. Infinite-order flatness filtration
+
+For each integer \(N\ge0\), define
+
+\[
+\boxed{
+F_N
+:=
+\left\{
+u\in K_c:
+\|T_\varepsilon u\|_2
+=
+o(\varepsilon^N)
+\text{ as }\varepsilon\downarrow0
+\right\}.
+}
+\]
+
+Each \(F_N\) is a complex linear subspace of \(K_c\), and
+
+\[
+\boxed{
+F_{N+1}\subseteq F_N.
+}
+\]
+
+Define the superflat subspace
+
+\[
+\boxed{
+F_\infty
+:=
+\bigcap_{N\ge0}F_N.
+}
+\]
+
+Every exactly persistent mode is superflat:
+
+\[
+\boxed{
+P_c^+\subseteq F_\infty.
+}
+\]
+
+---
+
+## 5. The flatness filtration also stabilizes after finite order
+
+The descending chain
+
+\[
+F_0\supseteq F_1\supseteq F_2\supseteq\cdots
+\]
+
+lies in the finite-dimensional space \(K_c\).
+
+Every strict inclusion lowers dimension.
+
+Hence only finitely many strict inclusions can occur.
+
+Therefore there exists a finite integer
+
+\[
+\boxed{
+N_c<\infty
+}
+\]
+
+such that
+
+\[
+\boxed{
+F_N=F_{N_c}
+\qquad
+(N\ge N_c).
+}
+\]
+
+In particular,
+
+\[
+\boxed{
+F_\infty=F_{N_c}.
+}
+\]
+
+This is a useful reduction:
+
+> infinite-order flatness on the actual kernel is already detected by one
+> finite, although presently unknown, order \(N_c\).
+
+No estimate for \(N_c\) follows from dimension alone.
+
+---
+
+## 6. Exact reformulation of kernel endpoint quasi-analyticity
+
+The desired quasi-analyticity statement is now exactly
+
+\[
+\boxed{
+F_\infty=P_c^+.
+}
+\]
+
+Using Section 5, this is equivalent to the finite-order statement
+
+\[
+\boxed{
+F_{N_c}=P_c^+.
+}
+\]
+
+So the remaining question is not whether an arbitrary \(L^2\) Stieltjes
+transform is quasi-analytic.
+
+It is whether the special finite-dimensional family of edge germs generated by
+
+\[
+K_c=\ker G_c
+\]
+
+contains a nonpersistent vector in its stabilized flat subspace.
+
+Equivalently, define the quotient
+
+\[
+\boxed{
+\mathcal E_c
+:=
+F_\infty/P_c^+.
+}
+\]
+
+Then
+
+\[
+\boxed{
+\text{SZ-KERNEL-ENDPOINT-QA}
+\iff
+\mathcal E_c=0.
+}
+\]
+
+The possible obstruction has become a finite-dimensional vector space.
+
+---
+
+## 7. What failure would look like
+
+If
+
+\[
+\mathcal E_c\ne0,
+\]
+
+then there exists
+
+\[
+0\ne u\in K_c
+\]
+
+such that
+
+\[
+\Delta_{c,c+\varepsilon}(u)
+=
+o(\varepsilon^N)
+\qquad
+\forall N,
+\]
+
+but
+
+\[
+\Delta_{c,c+\varepsilon}(u)>0
+\]
+
+for every sufficiently small \(\varepsilon>0\).
+
+This is an actual **flat-but-leaking kernel mode**.
+
+The generic superflat Stieltjes construction in the preceding residue shows
+that such edge behavior is possible in unrestricted \(L^2\).
+
+What remains unknown is whether the first-kind equation
+
+\[
+G_cu=0
+\]
+
+permits it.
+
+---
+
+## 8. Why standard logarithmic-Laplacian UCP does not settle this
+
+Chen–Hauer–Weth derive an extension formulation for the logarithmic
+Laplacian and, from it, a weak unique-continuation principle.
+
+Harrach–Lin–Weth subsequently use logarithmic-Laplacian unique continuation
+and Runge approximation in the logarithmic Schrödinger inverse problem.
+
+The relevant UCP has the usual nonlocal open-set form: information that a
+function and its logarithmic-Laplacian image vanish on a nonempty open set
+forces global rigidity.
+
+Our condition is different.
+
+A flat-but-leaking mode has
+
+\[
+T_\varepsilon u\ne0
+\]
+
+for every strict collar.
+
+It vanishes only to infinite asymptotic order as the collar width tends to
+zero.
+
+Thus there is no open exterior set on which the residual is known to vanish.
+
+Therefore
+
+\[
+\boxed{
+\text{open-set UCP}
+\not\Rightarrow
+\text{edge quasi-analyticity}.
+}
+\]
+
+Using ordinary UCP here would be circular: once the exterior residual vanishes
+on an open collar, persistence is already established.
+
+---
+
+## 9. The Weil operator is also not a plain logarithmic Schrödinger operator
+
+The local principal species is logarithmic, but the compact-window Weil
+operator also contains
+
+- finitely many arithmetic translations;
+- a finite-rank pole term;
+- threshold-dependent right-limit corrections.
+
+These are not, in general, multiplication by a bounded potential.
+
+So even a strong UCP theorem for
+
+\[
+L_\Delta+q(x)
+\]
+
+does not transfer automatically to the full threshold-aware Weil operator.
+
+A dedicated argument would have to preserve the finite-delay structure.
+
+---
+
+## 10. Hopf/boundary regularity is only a conditional route
+
+Recent logarithmic-Laplacian boundary theory supplies optimal weak boundary
+moduli and Hopf-type lower bounds for suitable nonnegative solutions or
+supersolutions.
+
+That mechanism would be relevant if an actual kernel vector could first be
+placed in a sign-definite scalar boundary problem for the principal
+logarithmic operator.
+
+The present Weil null equation does not supply that:
+
+- the neutral mode may change sign;
+- the finite translation terms couple separated interior points;
+- no global maximum-principle hypothesis for this full operator has been
+  established at the support under study.
+
+Therefore the Hopf route is not currently load-bearing.
+
+It remains a possible special-case route if positivity of the relevant
+zero mode is proved independently.
+
+---
+
+## 11. The first-kind equation is the missing structure
+
+Inside the old interval,
+
+\[
+G_cu=0
+\]
+
+means that the screw potential is constant:
+
+\[
+F_u(x)=C_u,
+\qquad
+|x|<c.
+\]
+
+Differentiating twice in distributions yields a singular integral/delay
+equation whose principal term is
+
+\[
+\operatorname{Pf}
+\int_{-c}^{c}
+\frac{u(y)}{|x-y|}\,dy,
+\]
+
+together with
+
+- local terms;
+- finitely many prime-power shifts;
+- the smooth archimedean remainder.
+
+The exterior equation is the one-sided Stieltjes version of the same system.
+
+Hence the missing theorem is best formulated as an **edge propagation theorem
+for this first-kind singular integral/delay equation**, not as generic
+logarithmic-Laplacian UCP.
+
+---
+
+## 12. A sufficient route: a quasi-analytic edge class on \(K_c\)
+
+A sufficient condition for
+
+\[
+F_\infty=P_c^+
+\]
+
+would be to prove that the boundary germs
+
+\[
+u
+\longmapsto
+F_u(c+s)-m(c+s),
+\qquad
+u
+\longmapsto
+F_u(-c-s)-m(c+s)
+\]
+
+for \(u\in K_c\) belong to one quasi-analytic class in the variable \(s\ge0\).
+
+For example, a Denjoy–Carleman estimate of the form
+
+\[
+\left|
+\partial_s^n
+\bigl(F_u(c+s)-m(c+s)\bigr)
+\right|
+\le
+C^{n+1}M_n\|u\|
+\]
+
+with
+
+\[
+\sum_n M_n^{-1/n}=\infty
+\]
+
+would imply that an infinitely flat boundary germ vanishes identically near
+the endpoint.
+
+Nothing of this strength is presently supplied by the \(L^2\) first-kind
+equation.
+
+The generic Stieltjes counterexample shows that such bounds cannot come from
+the Cauchy kernel alone.
+
+---
+
+## 13. Quantitative consequence if the quotient vanishes
+
+Suppose a future theorem proves
+
+\[
+\mathcal E_c=0.
+\]
+
+Then every nonpersistent \(u\in K_c\) lies outside \(F_{N_c}\), so
+
+\[
+\Delta_{c,c+\varepsilon}(u)
+\ne
+o(\varepsilon^{N_c}).
+\]
+
+Equivalently,
+
+\[
+\boxed{
+\limsup_{\varepsilon\downarrow0}
+\frac{
+\Delta_{c,c+\varepsilon}(u)
+}{
+\varepsilon^{N_c}
+}
+>0.
+}
+\]
+
+Combined with the same-source residual-square law,
+
+\[
+\mathfrak m_{c+\varepsilon}(u)
+\gtrsim
+\Delta_{c,c+\varepsilon}(u)^2,
+\]
+
+this would provide a subsequential finite-order lower scale for every leaking
+regular kernel mode.
+
+A uniform all-small-\(\varepsilon\) power lower bound would require further
+control beyond this finite-dimensional filtration argument.
+
+---
+
+## 14. Result of this NF pass
+
+The first-kind rigidity question does **not** close from currently available
+logarithmic-Laplacian unique continuation or boundary estimates.
+
+The useful new reduction is:
+
+\[
+\boxed{
+P_\varepsilon
+\text{ stabilizes for small }\varepsilon,
+}
+\]
+
+\[
+\boxed{
+F_N
+\text{ stabilizes for large finite }N,
+}
+\]
+
+and hence
+
+\[
+\boxed{
+\text{kernel endpoint quasi-analyticity}
+\iff
+F_\infty=P_c^+
+\iff
+\mathcal E_c=0.
+}
+\]
+
+So the entire superflat MV obstruction is now a finite-dimensional
+**edge-defect space**
+
+\[
+\boxed{
+\mathcal E_c=F_\infty/P_c^+.
+}
+\]
+
+Standard UCP does not determine whether this space vanishes.
+
+The missing input is a kernel-specific edge propagation/quasi-analyticity
+theorem for the threshold-aware first-kind singular integral/delay equation.
+
+---
+
+## 15. Candidate follow-on if ratified
+
+~~~text
+SZ-KERNEL-EDGE-PROP / FIRST-KIND DELAY SYSTEM
+~~~
+
+A future NF should work directly with the distributional equation
+\(G_cu=0\), decompose the finite active prime shifts near each endpoint, and
+test whether the old-interior equation plus infinite exterior flatness forces
+the stabilized edge-defect space \(\mathcal E_c\) to vanish.
+
+**No canonical cursor movement is asserted by this residue.**
