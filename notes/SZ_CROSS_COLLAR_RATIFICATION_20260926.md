@@ -17,15 +17,15 @@ canonical cursor.
 
 | Pass | Ratification | Canonical role |
 | --- | --- | --- |
-| SZ-CROSS-COLLAR-1 | RATIFIED | regular (G_a)-carrier realization of the collar residual and quantitative spectral-drop implication |
-| SZ-CROSS-COLLAR-2 | PARTIAL / AUXILIARY | (C^1) screw-potential lemma, first-order collar flatness, and distributional exterior identity accepted; endpoint-trace jet retained only under its explicit extra hypotheses |
+| SZ-CROSS-COLLAR-1 | RATIFIED | regular $G_a$-carrier realization of the collar residual and quantitative spectral-drop implication |
+| SZ-CROSS-COLLAR-2 | PARTIAL / AUXILIARY | $C^1$ screw-potential lemma, first-order collar flatness, and distributional exterior identity accepted; endpoint-trace jet retained only under its explicit extra hypotheses |
 | SZ-CROSS-COLLAR-3 | RATIFIED / CANONICAL HEAD | full closed-form-domain cross-collar theorem |
 | SZ-CROSS-COLLAR-4 | NOT RATIFIED | abstract factorization lemma retained as residue; selected-coordinate preservation is not selected custody |
 
 ## 3. Ratified regular-carrier statement
 
-For (0<c<b), (u\in\ker G_c\setminus\{0\}), and zero extension
-(J_{c,b}u\), the enlarged residual
+For $0<c<b$, $u\in\ker G_c\setminus\{0\}$, and zero extension
+$J_{c,b}u$, the enlarged residual
 
 ```math
 \Delta_{c,b}(u):=\|G_bJ_{c,b}u\|
@@ -49,17 +49,17 @@ SZ-CROSS-COLLAR-1 are accepted.
 ## 4. Ratified auxiliary collar regularity
 
 From Suzuki's local screw-kernel regularity and compact support of
-(u\in L^2(-c,c)), the project derives
+$u\in L^2(-c,c)$, the project derives
 
 ```math
 F_u\in C^1_{\mathrm{loc}}.
 ```
 
-If (u\in\ker G_c), then (F_u) is constant on the old interval and hence
+If $u\in\ker G_c$, then $F_u$ is constant on the old interval and hence
 
 ```math
 F_u'(\pm c)=0,
-qquad
+\qquad
 \Delta_{c,c+\varepsilon}(u)=o(\varepsilon^{3/2}).
 ```
 
@@ -92,7 +92,7 @@ q_a=Q_W^a,
 
 be Suzuki's localized closed form and its form domain.
 
-For (0<c<b), zero extension gives
+For $0<c<b$, zero extension gives
 
 ```math
 E_{c,b}\mathcal F_c\subseteq\mathcal F_b.
@@ -104,7 +104,7 @@ If
 0\ne k\in\ker A_c,
 ```
 
-then the zero extension (widetilde k=E_{c,b}k) annihilates every old form
+then the zero extension $widetilde k=E_{c,b}k$ annihilates every old form
 direction. Therefore the cross functional
 
 ```math
@@ -149,7 +149,7 @@ while
 }
 ```
 
-Since (q_b(\widetilde k)=0), one also has
+Since $q_b(\widetilde k)=0$, one also has
 
 ```math
 \boxed{
@@ -190,4 +190,3 @@ RATIFIED
 No later SZ pass is canonical as a consequence of this ratification.
 
 Further work requires a new individual NF order.
-

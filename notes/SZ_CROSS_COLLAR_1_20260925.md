@@ -7,7 +7,7 @@
 
 **Ratification:** The explicit collar residual identity, the spectral-drop
 trial-vector lemma, and the one-way implication
-(Delta_{c,b}(u)>0Rightarrowlambda_b<0) are canonical. The displayed
+$Delta_{c,b}(u)>0\Rightarrow\lambda_b<0$ are canonical. The displayed
 numerical bound is retained as a non-optimized quantitative estimate.
 
 ## 0. Objective

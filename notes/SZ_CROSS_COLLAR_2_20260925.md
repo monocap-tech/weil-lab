@@ -7,7 +7,7 @@
 `SZ_CROSS_COLLAR_1_20260925.md`
 
 **Ratification:** Sections 1–3 are accepted as canonical auxiliary structure:
-the project-derived (C^1) screw-potential lemma, first-order collar flatness,
+the project-derived $C^1$ screw-potential lemma, first-order collar flatness,
 and the exterior second-derivative identity in the stated distributional
 sense. Sections 4–6 remain conditional auxiliary results under the explicit
 endpoint-trace and translated-sample regularity hypotheses; they are not

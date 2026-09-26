@@ -6,7 +6,7 @@
 **Depends on:** Horizon-1 neutral interface; Suzuki arXiv:2606.09096v3
 
 **Ratification:** This is the canonical post-Horizon Suzuki bridge. It is
-valid on the native closed form domain and does not require the (H_0^1)
+valid on the native closed form domain and does not require the $H_0^1$
 derivative-source realization used by the explicit screw-potential residue.
 
 ## 0. Correction of emphasis
@@ -19,7 +19,7 @@ u=Dk\in L_0^2.
 ```
 
 That coordinate may fail for a general neutral mode because Suzuki's
-self-adjoint domain is strictly larger than (H_0^1).
+self-adjoint domain is strictly larger than $H_0^1$.
 
 However, the **cross-collar mechanism itself does not require that
 regularity**.
@@ -36,7 +36,7 @@ with form domain
 \mathcal F_a:=\mathfrak D(q_a).
 ```
 
-Here (mathfrak D(q_a)) denotes the closed form domain of the localized
+Here $\mathfrak D(q_a)$ denotes the closed form domain of the localized
 semibounded form; no identification with a larger regularity class is assumed.
 
 This gives an exact full-domain formulation.
