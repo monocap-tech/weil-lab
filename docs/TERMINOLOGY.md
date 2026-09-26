@@ -936,3 +936,44 @@ is the **escape layer at depth (j+1)**: its nonzero classes remain inside the re
 The integer (j+1) is the **dyadic escape depth** of that layer.
 
 These terms are currently research-local and unratified. They do not assert that the escaped component is persistent, negative, or canonically identified with any zero-side channel.
+
+
+## Blind-transform filtration
+
+The **blind-transform filtration** is the descending finite-dimensional filtration obtained by measuring the boundary flatness of the archimedean transform of a one-sided blind source cell.
+
+For the first-prime cell width (a=log2), a blind-cell profile (bin L^2(0,a)) is observed by
+
+[
+(mathscr T_{m blind}b)(eta)
+=
+int_0^a
+a_infty''(eta+r)b(r),dr,
+qquad
+eta>0.
+]
+
+For a finite-dimensional blind-cell family (V), define
+
+[
+V_N^{m blind}
+=
+left{
+bin V:
+|mathscr T_{m blind}b|_{L^2(0,arepsilon)}
+=
+o(arepsilon^N)
+ight}.
+]
+
+The stabilized intersection
+
+[
+V_infty^{m blind}
+=
+igcap_N V_N^{m blind}
+]
+
+is the **blind-transform superflat subspace**.
+
+These terms are currently research-local and unratified. Transform superflatness refers to the observed archimedean field, not automatically to (L^2)-mass flatness of the blind source germ itself.
