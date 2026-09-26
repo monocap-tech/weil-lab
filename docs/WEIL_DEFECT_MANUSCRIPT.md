@@ -17,7 +17,7 @@ D=S_{+}S_{+}^{*}-S_{-}S_{-}^{*},
 ~~~
 
 whose negative index agrees with the negative index of the associated
-coefficient-space Krein form. Nonnegativity of \(D\) is equivalent, through
+coefficient-space Krein form. Nonnegativity of $D$ is equivalent, through
 Douglas factorization, to contractive screening of the negative synthesis
 through the positive synthesis. For the reduced-solution split used here, this
 gives the full first-level screening taxonomy: range defect, over-budget
@@ -57,7 +57,7 @@ zero counting gives an explicit-formula far complementary tail
 O\!\left(\frac{\log R}{R}\right).
 ~~~
 
-The surviving near field is a weighted completed-\(\Xi\) next-jet field. At
+The surviving near field is a weighted completed-$\Xi$ next-jet field. At
 fixed compact support, only finitely many prime-power translations are active
 and the compact-window operator has logarithmic principal order,
 
@@ -102,7 +102,7 @@ S_{+}:K_{+}\to\mathcal H,
 S_{-}:K_{-}\to\mathcal H
 ~~~
 
-be bounded synthesis operators. On \(K_{+}\oplus K_{-}\) use
+be bounded synthesis operators. On $K_{+}\oplus K_{-}$ use
 
 ~~~math
 J=
@@ -136,7 +136,7 @@ D=EJE^{*}
 
 ### WD-T01 — Defect identity and index transfer
 
-For every \(h\in\mathcal H\),
+For every $h\in\mathcal H$,
 
 ~~~math
 E^{*}h=(S_{+}^{*}h,S_{-}^{*}h),
@@ -212,7 +212,7 @@ Assume exact range inclusion
 \operatorname{Ran}S_{+}
 ~~~
 
-and let \(X\) be the reduced solution. Then
+and let $X$ be the reduced solution. Then
 
 ~~~math
 \boxed{
@@ -249,16 +249,16 @@ reduced-screening norm problem.
 The reduced solution gives five basic regimes.
 
 1. **Range defect:** no exact screening exists.
-2. **Over-budget defect:** range inclusion holds but \(\|X\|>1\).
-3. **Strict screening:** \(\|X\|=r<1\), with
+2. **Over-budget defect:** range inclusion holds but $\|X\|>1$.
+3. **Strict screening:** $\|X\|=r<1$, with
    ~~~math
    [y,y]_J
    \ge
    \frac{1-r^2}{1+r^2}\|y\|^2.
    ~~~
-4. **Attained criticality:** \(\|X\|=1\) and \(X^{*}\) attains its norm,
+4. **Attained criticality:** $\|X\|=1$ and $X^{*}$ attains its norm,
    producing a nonzero neutral vector.
-5. **Non-attained criticality:** \(\|X\|=1\) with no nonzero norm-attaining
+5. **Non-attained criticality:** $\|X\|=1$ with no nonzero norm-attaining
    vector; all nonzero vectors remain strictly positive, but normalized
    margins can tend to zero.
 
@@ -266,7 +266,7 @@ The last regime is an essentially infinite-dimensional boundary phenomenon.
 
 ### WD-T05 — Rank-one specialization
 
-If \(K_{-}=\mathbb C\) and \(S_{-}\alpha=\alpha g\), then
+If $K_{-}=\mathbb C$ and $S_{-}\alpha=\alpha g$, then
 
 ~~~math
 S_{-}S_{-}^{*}=g\otimes g
@@ -280,7 +280,7 @@ D=S_{+}S_{+}^{*}-g\otimes g.
 }
 ~~~
 
-Thus \(D\succeq0\) is equivalent to the existence of \(c\in K_{+}\) with
+Thus $D\succeq0$ is equivalent to the existence of $c\in K_{+}$ with
 
 ~~~math
 g=-S_{+}c,
@@ -297,7 +297,7 @@ calculus.
 
 ### WD-T06 — Monotone positive screening
 
-Let \(P_N\) increase strongly to \(I\) and define
+Let $P_N$ increase strongly to $I$ and define
 
 ~~~math
 D_N
@@ -334,8 +334,8 @@ Split
 K_{-}=M\oplus B
 ~~~
 
-into a selected negative sector \(M\) and an unselected negative background
-\(B\).
+into a selected negative sector $M$ and an unselected negative background
+$B$.
 
 ### WD-T07 — Selected/background custody
 
@@ -378,7 +378,7 @@ owns the defect.
 
 ### WD-T08 — Finite selected-sector index cap
 
-If \(\dim M=m<\infty\), then
+If $\dim M=m<\infty$, then
 
 ~~~math
 \boxed{
@@ -391,7 +391,7 @@ by the dimension of the fixed selected sector.
 
 ### WD-T09 — Shared screening budget
 
-For the reduced full screening map \(X=[X_M\;X_B]\),
+For the reduced full screening map $X=[X_M\;X_B]$,
 
 ~~~math
 \boxed{
@@ -413,7 +413,7 @@ X_MX_M^{*}+X_BX_B^{*}\preceq I.
 }
 ~~~
 
-Separate contractivity of \(X_M\) and \(X_B\) is insufficient. WD-X03 is the
+Separate contractivity of $X_M$ and $X_B$ is insufficient. WD-X03 is the
 explicit joint-budget counterexample.
 
 ---
@@ -454,7 +454,7 @@ two-channel defect category.
 
 ### WD-T11 — Finite-sector singular-value inertia
 
-For fixed finite-dimensional \(M\), let \(Y\) be the reduced residual
+For fixed finite-dimensional $M$, let $Y$ be the reduced residual
 screening map. Then
 
 ~~~math
@@ -495,9 +495,9 @@ H_W=A-BC^{-1}B^{*}.
 }
 ~~~
 
-The correction is positive, so \(H_W\preceq A\). WD-X04 shows that a uniform
-lower bound on \(A\) alone does not yield a uniform family-level lower bound on
-\(H_W\).
+The correction is positive, so $H_W\preceq A$. WD-X04 shows that a uniform
+lower bound on $A$ alone does not yield a uniform family-level lower bound on
+$H_W$.
 
 ### WD-T14 — Finite positive shadows
 
@@ -538,8 +538,8 @@ and
 
 ### WD-T15 — Right-limit projection and gap duality
 
-Along \(t_n\downarrow c\), the monotone orthogonal projections converge to the
-projection onto \(\mathcal A_{c+}\). The right-limit gap is the geometric
+Along $t_n\downarrow c$, the monotone orthogonal projections converge to the
+projection onto $\mathcal A_{c+}$. The right-limit gap is the geometric
 carrier for vectors appearing arbitrarily close to the endpoint but absent at
 the endpoint itself.
 
@@ -551,7 +551,7 @@ Let
 y_n=(a_n,u_n)
 ~~~
 
-be normalized right-approaching vectors with \(u_n\) in one fixed
+be normalized right-approaching vectors with $u_n$ in one fixed
 finite-dimensional selected negative sector and
 
 ~~~math
@@ -570,7 +570,7 @@ strongly and
 a_n\rightharpoonup a.
 ~~~
 
-The limit \(y=(a,u)\) lies in \(\mathcal A_{c+}\), and
+The limit $y=(a,u)$ lies in $\mathcal A_{c+}$, and
 
 ~~~math
 \boxed{
@@ -657,7 +657,7 @@ the anchored fixed-packet hypothesis.
 ### WD-T20 — Pair diagonalization
 
 Each nonreal conjugate-pair block admits a canonical positive/negative
-diagonalization. This realizes the abstract \(J\)-splitting in the finite Weil
+diagonalization. This realizes the abstract $J$-splitting in the finite Weil
 pair geometry.
 
 ### WD-T21 — Simple quartet geometry
@@ -718,7 +718,7 @@ R_v(z)=\sum_j\frac{v_j}{z-\rho_j}.
 
 ### WD-T27 — Universal inverse-square far decay
 
-The zero-moment identity removes the \(z^{-1}\) Laurent term, giving
+The zero-moment identity removes the $z^{-1}$ Laurent term, giving
 
 ~~~math
 \boxed{
@@ -802,7 +802,7 @@ explicit formula is reallocated, not bypassed.
 
 ### WD-T34 — Finite prime-power translations
 
-For support radius \(c\), the compact-window explicit formula activates only
+For support radius $c$, the compact-window explicit formula activates only
 
 ~~~math
 \boxed{
@@ -848,7 +848,7 @@ O\!\left(\frac{\log R}{R}\right),
 }
 ~~~
 
-while the near field is the weighted completed-\(\Xi\) next-jet object. On the
+while the near field is the weighted completed-$\Xi$ next-jet object. On the
 neutral side, the compact-window operator has logarithmic principal order plus
 finitely many arithmetic translations and no hidden regularity upgrade.
 
@@ -866,8 +866,8 @@ coefficient problem. The zeta-Weil chain then supplies:
 1. a nonzero selected raw residue source;
 2. the zero-moment law;
 3. inverse-square rational-response decay;
-4. the \(O((\log R)/R)\) far complementary estimate;
-5. localization of the remaining burden into the weighted completed-\(\Xi\)
+4. the $O((\log R)/R)$ far complementary estimate;
+5. localization of the remaining burden into the weighted completed-$\Xi$
    next-jet field;
 6. the adaptive-cocancellation guard.
 
@@ -981,7 +981,7 @@ b_n\to b\text{ strongly}.
 }
 ~~~
 
-If the selected limit has strict margin \(-\kappa\), then every bounded weak
+If the selected limit has strict margin $-\kappa$, then every bounded weak
 background limit satisfies
 
 ~~~math
@@ -1010,8 +1010,8 @@ positive complement gives zero defect. This is sharpness for WD-T06.
 
 ### WD-X02 — Critical norm one need not be attained
 
-The canonical audit model uses multiplication by \(t\) on \(L^2(0,1)\). The
-Lean certificate uses a discrete diagonal \(\ell^2\) realization of the same
+The canonical audit model uses multiplication by $t$ on $L^2(0,1)$. The
+Lean certificate uses a discrete diagonal $\ell^2$ realization of the same
 sharpness phenomenon. In both,
 
 ~~~math
@@ -1031,8 +1031,8 @@ one. This sharpens the joint-budget theorem WD-T09.
 
 ### WD-X04 — Direct compression does not uniformly control shorting
 
-A family with direct compression identically \(1\) can have shorted covariance
-\(1-r^2\downarrow0\). This sharpens WD-T13.
+A family with direct compression identically $1$ can have shorted covariance
+$1-r^2\downarrow0$. This sharpens WD-T13.
 
 ### WD-X05 — Moving finite sectors can lose every persistent ray
 
@@ -1059,7 +1059,7 @@ y_n=
 \right),
 ~~~
 
-one has \(\|y_n\|=1\) and \([y_n,y_n]_J=0\), but
+one has $\|y_n\|=1$ and $[y_n,y_n]_J=0$, but
 
 ~~~math
 y_n\rightharpoonup
@@ -1080,7 +1080,7 @@ This realizes the negative-fall-through branch of WD-T17.
 
 ### WD-X07 — Inverse-square far decay is sharp
 
-For two distinct selected points and \(v=(1,-1)\),
+For two distinct selected points and $v=(1,-1)$,
 
 ~~~math
 R_v(z)
@@ -1147,7 +1147,7 @@ AZ-NEXTJET-LOC
 ~~~
 
 as its next unresolved actual-zeta obligation after the zero-moment law,
-inverse-square far response, and \(O((\log R)/R)\) far-shell reduction. The
+inverse-square far response, and $O((\log R)/R)$ far-shell reduction. The
 stronger special-packet refinement C-ACTUAL-KPH-FLOOR is tracked separately.
 
 The attained neutral branch leaves

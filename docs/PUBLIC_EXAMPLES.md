@@ -25,7 +25,7 @@ K_-=\mathbb C,
 S_-=1,
 ~~~
 
-and let \(K_+=\ell^2(\mathbb N)\) with
+and let $K_+=\ell^2(\mathbb N)$ with
 
 ~~~math
 c_j=\frac1{\sqrt{j(j+1)}},
@@ -39,7 +39,7 @@ Since
 \sum_{j=1}^{\infty}c_j^2=1,
 ~~~
 
-the full defect is zero. For the projection \(P_N\) onto the first \(N\)
+the full defect is zero. For the projection $P_N$ onto the first $N$
 coordinates,
 
 ~~~math
@@ -85,14 +85,14 @@ Then
 \|X\|=1
 ~~~
 
-but no nonzero vector attains the norm because \(|t|<1\) almost everywhere on
-\((0,1)\). The defect is
+but no nonzero vector attains the norm because $|t|<1$ almost everywhere on
+$(0,1)$. The defect is
 
 ~~~math
 D=I-M_{t^2},
 ~~~
 
-and for every nonzero \(f\),
+and for every nonzero $f$,
 
 ~~~math
 \langle Df,f\rangle
@@ -101,7 +101,7 @@ and for every nonzero \(f\),
 >0.
 ~~~
 
-Unit vectors concentrated near \(t=1\) make the defect tend to zero. Hence
+Unit vectors concentrated near $t=1$ make the defect tend to zero. Hence
 
 ~~~math
 \boxed{
@@ -111,7 +111,7 @@ Unit vectors concentrated near \(t=1\) make the defect tend to zero. Hence
 }
 ~~~
 
-The Lean development certifies a discrete diagonal \(\ell^2\) realization of
+The Lean development certifies a discrete diagonal $\ell^2$ realization of
 the same sharpness phenomenon: every nonzero vector loses norm strictly while
 standard basis directions approach the critical gain.
 
@@ -187,7 +187,7 @@ r&1
 0<r<1,
 ~~~
 
-with selected subspace \(W=\operatorname{span}(e_1)\).
+with selected subspace $W=\operatorname{span}(e_1)$.
 
 The direct selected compression is
 
@@ -210,7 +210,7 @@ H_W\downarrow0
 \qquad(r\uparrow1)
 ~~~
 
-while \(A\equiv1\). Each fixed \(r<1\) is still strictly positive; the failure
+while $A\equiv1$. Each fixed $r<1$ is still strictly positive; the failure
 is uniform across the family.
 
 Thus
@@ -268,7 +268,7 @@ Define
 \overline{\operatorname{span}}\{y_k:k\ge n\}.
 ~~~
 
-Because the \(y_n\) use disjoint coordinates,
+Because the $y_n$ use disjoint coordinates,
 
 ~~~math
 \boxed{
@@ -318,7 +318,7 @@ Then
 [y_n,y_n]_J=0.
 ~~~
 
-Since \(e_n\rightharpoonup0\),
+Since $e_n\rightharpoonup0$,
 
 ~~~math
 y_n\rightharpoonup
@@ -349,7 +349,7 @@ of WD-T17.
 
 **Sharpens:** WD-T27.
 
-For two distinct selected points \(\rho_1\neq\rho_2\), take
+For two distinct selected points $\rho_1\neq\rho_2$, take
 
 ~~~math
 v=(1,-1).
@@ -384,7 +384,7 @@ R_v(z)
 }
 ~~~
 
-Zero moment alone does not imply a universal \(O(|z|^{-3})\) bound. A
+Zero moment alone does not imply a universal $O(|z|^{-3})$ bound. A
 universal cubic-order improvement would require an additional first-moment
 cancellation or some other stronger structure.
 
