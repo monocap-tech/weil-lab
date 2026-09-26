@@ -104,7 +104,7 @@ If
 0\ne k\in\ker A_c,
 ```
 
-then the zero extension $widetilde k=E_{c,b}k$ annihilates every old form
+then the zero extension $\widetilde k=E_{c,b}k$ annihilates every old form
 direction. Therefore the cross functional
 
 ```math
