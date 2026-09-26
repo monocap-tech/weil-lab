@@ -897,3 +897,42 @@ It is a terminal status for the current LEAN-H1 exhaustion test, but not a claim
 - SCOPE-ONLY.
 
 No stable theorem/example may remain merely unattempted when LEAN-H1 closes.
+
+
+## Dyadic escape filtration
+
+The **dyadic escape filtration** is the descending family attached to a finite-dimensional source subspace (Wsubseteq K_c) under repeated truncated translation by the first-prime length
+
+[
+a=log2.
+]
+
+With (S_a) denoting the right-oriented truncated shift, define
+
+[
+C_j(W)
+=
+left{
+fin W:
+S_a^k fin K_c
+	ext{ for }0le kle j
+ight}.
+]
+
+Thus
+
+[
+W=C_0(W)supseteq C_1(W)supseteqcdots.
+]
+
+The quotient
+
+[
+C_j(W)/C_{j+1}(W)
+]
+
+is the **escape layer at depth (j+1)**: its nonzero classes remain inside the regular kernel through (j) dyadic relocations and acquire a nonzero (K_c^perp) component at the next relocation.
+
+The integer (j+1) is the **dyadic escape depth** of that layer.
+
+These terms are currently research-local and unratified. They do not assert that the escaped component is persistent, negative, or canonically identified with any zero-side channel.
