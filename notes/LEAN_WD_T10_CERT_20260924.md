@@ -28,58 +28,58 @@ Certified source blob:
 
 Given
 
-$
+$$
 S_B=-S_+X_B,
 qquad
 \|X_B\|\le1,
-$
+$$
 
 define
 
-$
+$$
 R_B=I-X_BX_B^*.
-$
+$$
 
 Lean proves natively that `R_B` is positive.
 
 The residual square root is the canonical continuous-functional-calculus
 operator
 
-$
+$$
 R_B^{1/2}=\operatorname{CFC.sqrt}(R_B).
-$
+$$
 
 Lean verifies its self-adjointness and the exact square identity
 
-$
+$$
 R_B^{1/2}R_B^{1/2}=R_B.
-$
+$$
 
 ## Effective positive synthesis
 
 Define
 
-$
+$$
 S_{\rm eff}=S_+R_B^{1/2}.
-$
+$$
 
 Lean verifies
 
-$
+$$
 S_{\rm eff}S_{\rm eff}^*
 =
 S_+R_BS_+^*
 =
 S_+S_+^*-S_BS_B^*.
-$
+$$
 
 Consequently,
 
-$
+$$
 D_{\rm full}
 =
 S_{\rm eff}S_{\rm eff}^*-S_MS_M^*.
-$
+$$
 
 The operator identity and the corresponding scalar quadratic-form identity are
 both kernel-checked internally.
@@ -92,13 +92,13 @@ The final residual screening equivalence uses the explicit premise
 
 Downstream from that premise Lean proves
 
-$
+$$
 D_{\rm full}\succeq0
 \iff
 \exists Y:M\to K_+,quad
 \|Y\|\le1,quad
 S_M=-S_{\rm eff}Y.
-$
+$$
 
 Douglas itself is not reconstructed here and is not a project axiom.
 
@@ -125,8 +125,8 @@ The run passed:
 
 ## Next cursor
 
-$
+$$
 \boxed{
 \texttt{WD-T11 / WD-B5 — FINITE-SECTOR SINGULAR-VALUE INERTIA THEOREM}
 }
-$
+$$
