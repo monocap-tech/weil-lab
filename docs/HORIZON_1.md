@@ -396,15 +396,15 @@ All H1-P4 audit classes are now complete:
 
 Therefore **H1-P4 is COMPLETE**.
 
-### Current formalization cursor
+### Closure state
 
 ```math
 \boxed{
-\texttt{LEAN-H1 EXHAUSTED / NEXT: H1-P5.0 — PUBLIC PACKAGE ARCHITECTURE (NOT STARTED)}
+\texttt{HORIZON 1 COMPLETE / POST-H1 CURSOR NOT SELECTED}
 }
 ```
 
-LEAN-H1 is exhausted. The next public-package cursor is `H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE`, but it has not been started.
+LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The final package certificate is [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). No post-Horizon research program has been started.
 
 ---
 

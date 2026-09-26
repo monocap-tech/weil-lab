@@ -16,8 +16,8 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** H1-P5.0 — public package architecture.
-- **Public packaging:** ready, not started.
+- **Next project cursor:** none; no post-Horizon cursor has been selected.
+- **Public packaging:** complete; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
 
@@ -78,17 +78,11 @@ A `LEAN-IN-PROGRESS` entry becomes `LEAN-CERTIFIED` only after the pinned CI bui
 
 ```math
 \boxed{
-\texttt{LEAN-H1 EXHAUSTED}
+\texttt{LEAN-H1 EXHAUSTED / H1-P5 COMPLETE / POST-H1 CURSOR NOT SELECTED}
 }
 ```
 
-Next project cursor, not started:
-
-```math
-\boxed{
-\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}
-}
-```
+No further Lean or public-package cursor is active. The certificate sections below remain append-only history.
 
 
 ## WD-X02 earlier failed attempt

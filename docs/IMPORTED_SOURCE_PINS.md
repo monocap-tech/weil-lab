@@ -527,14 +527,16 @@ Status:
 
 All load-bearing external source families identified in H1-P4.0 are now pinned to exact theorem/equation locations.
 
-What remains is not source discovery.
+At that checkpoint, what remained was not source discovery.
 
-The next audit must inspect the **internal proof transitions** that consume these pins.
+The next audit was the **internal proof transitions** that consume these pins.
 
-### Next cursor
+### Historical handoff from H1-P4.1
 
 ```math
 \boxed{
 \texttt{H1-P4.2 / INTERNAL PROOF AUDIT}
 }
 ```
+
+That handoff was subsequently completed in H1-P4.2. It is retained here as provenance, not as the live project cursor.

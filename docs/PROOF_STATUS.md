@@ -75,7 +75,7 @@ Historical labels such as WD-A1, ZW1-T7, or P3-N4 remain immutable aliases.
 | H1-P2 | COMPLETE | zeta-Weil specialization |
 | H1-P3 | COMPLETE | negative, neutral, and noncompact morphologies |
 | H1-P4 | COMPLETE | theorem/source/proof audit |
-| H1-P5 | READY — NOT STARTED | public manuscript/package; LEAN-H1 gate satisfied |
+| H1-P5 | COMPLETE | public manuscript/package and final package audit |
 
 ---
 
