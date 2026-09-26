@@ -1,9 +1,15 @@
-# SZ-CROSS-COLLAR-4 — Selected-custody lift
+# SZ-CROSS-COLLAR-4 — Selected-coordinate factorization residue (not custody)
 
 **Date:** 2026-09-25  
 **Branch:** `sz-cross-collar`  
-**Status:** PRIVATE LAB / INTERNAL DERIVATION  
+**Status:** AUDITED RESIDUE / NOT RATIFIED — 2026-09-26  
 **Depends on:** `SZ_CROSS_COLLAR_3_20260925.md`, WD-T38 / P3-U2
+
+**Ratification decision:** The finite-dimensional factorization lemma is
+correct, but the application does **not** establish selected-sector negativity
+or selected ownership. Holding the selected coordinate fixed is weaker than
+proving that the selected defect itself is negative. This note is preserved as
+useful residue and is excluded from the canonical theorem spine.
 
 ## 0. Objective
 
@@ -113,7 +119,7 @@ linear.
 
 Exactly one of the following structural alternatives holds.
 
-### A. Custody-preserving coupling
+### A. Selected-coordinate-preserving coupling
 
 There exists
 
@@ -221,7 +227,14 @@ while
 Thus the enlarged negative test vector retains the **same nonzero selected
 packet coordinate**.
 
-This is stronger than anonymous aggregate negativity.
+This is a coordinate-preservation statement only. It does not imply
+
+```math
+Q_{\Pi,b}(Ek+t\omega h)<0,
+```
+
+and therefore does not by itself establish selected-sector ownership of the
+negative full Weil value.
 
 To feed this directly into WD-T37 still requires the carrier-specific
 statement that (q_b) is the same selected/residual defect used by the
@@ -363,10 +376,10 @@ coordinate map, there are only two possibilities:
 }
 ```
 
-There is no third possibility in which null persistence fails only through
-anonymous aggregate negativity.
-
-This is the selected-custody analogue of the fixed-sector critical dichotomy.
+There is no third **algebraic cross-functional** alternative in rank one.
+This is not yet a selected-custody dichotomy: the negative perturbation may
+still owe its sign to changes in the positive compensator or unselected
+background.
 
 ---
 
@@ -432,18 +445,19 @@ Can the negative perturbation be produced inside
 the kernel of selected-coordinate change?
 ```
 
-If yes, ownership is preserved by construction.
+If yes, the selected coordinate is preserved by construction, but selected
+negativity is not established.
 
-If no, the failure itself factors through the finite selected packet.
+If no, the cross functional factors through finite selected-coordinate data.
 
-So either branch retains custody information.
+Neither branch alone supplies the Horizon-1 custody conclusion.
 
 This is exactly the information that a lowest-eigenvalue trajectory by itself
 forgets.
 
 ---
 
-## 8. New bridge interface
+## 8. Proposed residue interface (noncanonical)
 
 The only new carrier-specific datum needed to instantiate the abstract
 dichotomy is the strict-support selected-coordinate map
@@ -471,12 +485,14 @@ SZ-SELECTED-COORD-CONSISTENCY
 It is conceptually smaller than the original null-extension interface:
 identify the same fixed selected packet coordinate under support enlargement.
 
-Once this map is available, rank-one selected packets satisfy the exact
-persistence-or-custody-preserving-negativity dichotomy above.
+Even if this map is available, rank-one selected packets yield only a
+persistence-or-selected-coordinate-preserving-negative-perturbation dichotomy.
+A separate selected-defect sign statement is still required before any custody
+claim or WD-T37 re-entry.
 
 ---
 
-## 9. Next cursor
+## 9. Unratified proposed handoff
 
 ```text
 SZ-CROSS-COLLAR-5 / SELECTED-COORDINATE CONSISTENCY
@@ -491,5 +507,8 @@ Targets:
    packet coordinate;
 4. if consistency is automatic, instantiate the rank-one dichotomy and test
    direct re-entry into WD-T37.
+
+This handoff is not canonical and does not move the ratified cursor beyond
+SZ-CROSS-COLLAR-3.
 
 **Do not promote to the public repository.**

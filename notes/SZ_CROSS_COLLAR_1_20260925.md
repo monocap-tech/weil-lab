@@ -2,8 +2,13 @@
 
 **Date:** 2026-09-25  
 **Branch:** `sz-cross-collar`  
-**Status:** PRIVATE LAB / INTERNAL DERIVATION  
+**Status:** RATIFIED / CANONICAL — 2026-09-26  
 **Depends on:** `SZ_CROSS_COLLAR_0_20260925.md`
+
+**Ratification:** The explicit collar residual identity, the spectral-drop
+trial-vector lemma, and the one-way implication
+(Delta_{c,b}(u)>0Rightarrowlambda_b<0) are canonical. The displayed
+numerical bound is retained as a non-optimized quantitative estimate.
 
 ## 0. Objective
 
@@ -204,8 +209,8 @@ Therefore
 }
 ```
 
-Thus the cross-collar defect is not merely qualitative: it supplies an
-explicit negative trial direction.
+The strict negativity itself implies (z\ne0). Thus the cross-collar defect
+is not merely qualitative: it supplies an explicit negative trial direction.
 
 ---
 
@@ -400,15 +405,15 @@ the target is now completely local to the two thin collars.
 The questions are:
 
 1. can (Delta_{c,c+\varepsilon}(u)) vanish identically for all sufficiently
-   small (arepsilon>0)?
-2. if not, what is its first nonzero order in (arepsilon)?
+   small (\varepsilon>0)?
+2. if not, what is its first nonzero order in (\varepsilon)?
 3. can that order be bounded below using the exterior Cauchy-transform term in
    the distributional formula for (-g'')?
 4. how do prime-power thresholds alter that first nonzero collar order?
 
 ---
 
-## 8. Next cursor
+## 8. Historical handoff
 
 ```text
 SZ-CROSS-COLLAR-2 / FIRST NONZERO COLLAR JET
@@ -416,8 +421,12 @@ SZ-CROSS-COLLAR-2 / FIRST NONZERO COLLAR JET
 
 Goal:
 
-Extract the first nonzero small-(arepsilon) term of
+Extract the first nonzero small-(\varepsilon) term of
 (Delta_{c,c+\varepsilon}(u)), or prove that vanishing of every collar jet
 forces a stronger rigidity condition on (u).
+
+This was the original proposed handoff from SZ-CROSS-COLLAR-1. The ratified
+canonical head after review is SZ-CROSS-COLLAR-3; this historical handoff does
+not itself advance the live cursor.
 
 **Do not promote to the public repository.**

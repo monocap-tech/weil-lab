@@ -2,8 +2,12 @@
 
 **Date:** 2026-09-25  
 **Branch:** `sz-cross-collar`  
-**Status:** PRIVATE LAB / INTERNAL DERIVATION  
+**Status:** RATIFIED / CANONICAL HEAD — 2026-09-26  
 **Depends on:** Horizon-1 neutral interface; Suzuki arXiv:2606.09096v3
+
+**Ratification:** This is the canonical post-Horizon Suzuki bridge. It is
+valid on the native closed form domain and does not require the (H_0^1)
+derivative-source realization used by the explicit screw-potential residue.
 
 ## 0. Correction of emphasis
 
@@ -23,16 +27,17 @@ regularity**.
 Suzuki defines the closed localized form directly by
 
 ```math
-q_a:=Q_W^{,a}=Q_W|_{L^2(-a,a)}
+q_a:=Q_W^{a}=Q_W|_{L^2(-a,a)}
 ```
 
 with form domain
 
 ```math
-\mathcal F_a:=\mathfrak D(q_a)
-=
-\{v\in L^2(-a,a):|q_a(v)|<\infty\}.
+\mathcal F_a:=\mathfrak D(q_a).
 ```
+
+Here (mathfrak D(q_a)) denotes the closed form domain of the localized
+semibounded form; no identification with a larger regularity class is assumed.
 
 This gives an exact full-domain formulation.
 
@@ -384,26 +389,21 @@ perturbation.
 
 ---
 
-## 9. Next cursor
+## 9. Ratified stop
 
 ```text
 SZ-CROSS-COLLAR-4 / SELECTED-CUSTODY LIFT
 ```
 
-Target:
+The canonical mathematical head stops here:
 
-Let the endpoint neutral mode come from the WD-T38 finite selected packet.
-Restrict the quotient cross functional to **selected-preserving new support
-directions**.
+```text
+SZ-CROSS-COLLAR-3 / FULL FORM-DOMAIN CROSS-COLLAR THEOREM — RATIFIED
+```
 
-Determine whether:
-
-1. the restricted functional is nonzero, in which case one can create enlarged
-   negativity without changing the selected packet coordinate; or
-2. it vanishes identically, in which case the cross coupling is forced through
-   directions that alter selected custody and must be analyzed separately.
-
-This is the point where the Suzuki spatial collar should reconnect to the
-Horizon-1 selected/background calculus.
+No selected-custody lift has been ratified. SZ-CROSS-COLLAR-4 and all later
+SZ notes presently on the branch remain residue unless separately audited and
+ratified. A future NF may reopen the selected-custody question from this head,
+but this ratification pass does not advance it.
 
 **Do not promote to the public repository.**

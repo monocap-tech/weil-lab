@@ -2,9 +2,16 @@
 
 **Date:** 2026-09-25  
 **Branch:** `sz-cross-collar`  
-**Status:** PRIVATE LAB / INTERNAL DERIVATION  
+**Status:** RATIFIED AUXILIARY / CONDITIONAL SPLIT — 2026-09-26  
 **Depends on:** `SZ_CROSS_COLLAR_0_20260925.md`,
 `SZ_CROSS_COLLAR_1_20260925.md`
+
+**Ratification:** Sections 1–3 are accepted as canonical auxiliary structure:
+the project-derived (C^1) screw-potential lemma, first-order collar flatness,
+and the exterior second-derivative identity in the stated distributional
+sense. Sections 4–6 remain conditional auxiliary results under the explicit
+endpoint-trace and translated-sample regularity hypotheses; they are not
+load-bearing for the canonical cursor.
 
 ## 0. Objective
 
@@ -74,7 +81,7 @@ F_u'(x)
 \int_{-c}^{c}g'(x-y)u(y)\,dy.
 ```
 
-Translation continuity in (L^2) therefore gives
+Translation continuity in (L^2) gives the project-derived lemma
 
 ```math
 \boxed{
@@ -82,8 +89,12 @@ F_u\in C^1_{\mathrm{loc}}(\mathbb R).
 }
 ```
 
-This slightly sharpens the (H^1) regularity explicitly recorded for the
-projected operator output in Suzuki.
+Indeed, on a fixed compact (x)-interval the translated kernels
+(g'(x-\cdot)) remain in one compact (L^2) window; translation is continuous
+there in (L^2), and Cauchy–Schwarz against the compactly supported
+(u\in L^2) makes (F_u') continuous. The distributional derivative of
+(F_u) is this continuous convolution. This is a project deduction from
+Suzuki's kernel regularity, not a theorem quoted verbatim from Suzuki.
 
 ---
 
@@ -409,7 +420,7 @@ remains constant on a strict larger interval?
 
 ---
 
-## 8. Next cursor
+## 8. Historical handoff
 
 ```text
 SZ-CROSS-COLLAR-3 / ENDPOINT REGULARITY BOOTSTRAP
@@ -424,5 +435,9 @@ Targets:
    the Cauchy-leakage argument using boundary averages or Hardy/Stieltjes
    transforms;
 4. keep generic radii and prime-power threshold radii separate.
+
+This was the original proposed handoff. SZ-CROSS-COLLAR-3 superseded the
+regularity route as the canonical full-form-domain statement, so no cursor
+advancement is inferred from this section.
 
 **Do not promote to the public repository.**
