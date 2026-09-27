@@ -2117,3 +2117,49 @@ Each P_lambda is a polynomial in D of degree at most four, so every J_lambda lie
 After splitting each J_lambda into its K_c and K_c^perp parts and applying the two-stage nonkernel escape detector to the K_c part, one obtains fifteen K_c^perp channels that are jointly injective on V.
 
 This term is research-local and unratified.
+
+
+## Dyadic eigenspace edge flexibility
+
+In the four-delay chamber let D=C_(log2)+gamma C_(log4), and let E_lambda=ker(D-lambda I) be one of its five ambient eigenspaces.
+
+The **dyadic eigenspace edge-flexibility** property is the existence, for every lambda in spec(D), of a sufficiently small two-sided physical edge neighborhood U_epsilon and an infinite-dimensional subspace
+
+E_lambda^edge
+subset
+E_lambda intersect L0^2(0,L)
+
+such that
+
+(G_c w)|_(U_epsilon)=0
+
+for every w in E_lambda^edge.
+
+For lambda=+-1 this follows from the two-chain fiber profile and a local second-kind equation at the log3 sample. For the three-chain eigenvalues it follows after choosing the free profile to vanish near the two source endpoints and solving local second-kind equations at the log(5/4) and L-log5 profile points. The remaining slope/centering/mean-zero conditions are finitely many scalar constraints on an infinite-dimensional far-profile space.
+
+Thus the explicit dyadic eigenpattern alone cannot prove the spectral-shadow finite edge Runge gate.
+
+This term is research-local and unratified.
+
+## Kernel-generated spectral-shadow edge gate
+
+Let V=K_c^{ps}, let P_lambda be the ambient dyadic spectral projections, and let U be a prescribed physical edge or Sigma_c neighborhood.
+
+The **kernel-generated spectral-shadow edge gate** is the joint injectivity statement
+
+f in V,
+(G_c P_lambda f)|_U=0 for every lambda
+implies
+f=0,
+
+possibly augmented by the secondary two-stage escape fields arising from the K_c-valued portions of (I-Pi_V)P_lambda f.
+
+Dyadic eigenspace edge flexibility shows that this gate cannot follow from D-eigenstructure alone. A proof must use the fact that all five spectral pieces arise simultaneously from one f satisfying both
+
+G_c f=0
+
+and
+
+(D+N)f=0.
+
+This term is research-local and unratified.
