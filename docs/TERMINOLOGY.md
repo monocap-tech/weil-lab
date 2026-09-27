@@ -977,3 +977,16 @@ V_infty^{m blind}
 is the **blind-transform superflat subspace**.
 
 These terms are currently research-local and unratified. Transform superflatness refers to the observed archimedean field, not automatically to (L^2)-mass flatness of the blind source germ itself.
+
+
+## Bilateral visible-superflat subspace
+
+The **bilateral visible-superflat subspace** is the subspace of the finite edge obstruction whose local (L^2)-mass is superflat to every algebraic order on the inward-visible half-collars for **both** right-edge and left-edge orientations.
+
+At a reflected prime site
+[
+c-ell=-c+(2c-ell),
+]
+the right-oriented blind physical half is the left-oriented visible physical half. Thus membership in the bilateral visible-superflat subspace makes the right-blind source germ itself (L^2)-superflat at every reflected site.
+
+This term is currently research-local and unratified. It does not assert that the full source vanishes near a reflected site, only that both one-sided visible mass functions are superflat there.
