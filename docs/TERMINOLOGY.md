@@ -2027,3 +2027,60 @@ for every f in V.
 Thus every nonzero prime-silent regular-kernel vector is detected either through holonomy of genuine kernel-custodied orbit vectors or through a finite K^perp ejection family. No ambient D^m source needs to be treated as a kernel vector.
 
 This term is research-local and unratified.
+
+
+## Dyadic spectral shadow
+
+In the four-delay chamber let D=C_(log2)+gamma C_(log4), let V=K_c^{ps}, and let Pi_V be orthogonal projection onto V. Let
+
+D = sum_{lambda in spec(D)} lambda P_lambda
+
+be the ambient spectral decomposition of the finite-spectrum self-adjoint dyadic block.
+
+For each dyadic eigenvalue lambda define the **dyadic spectral shadow**
+
+S_lambda
+=
+Pi_V P_lambda|_V.
+
+Then every S_lambda is positive semidefinite and self-adjoint on V,
+
+sum_lambda S_lambda=I_V,
+
+and for
+
+A_m=Pi_V D^m|_V
+
+one has
+
+A_m
+=
+sum_lambda lambda^m S_lambda.
+
+Because the five dyadic eigenvalues are distinct, the first five A_m are related to the five shadows by an invertible Vandermonde transform. The sixth source A_5 is constrained by the ambient annihilating polynomial p_D(D)=0 and adds no independent spectral shadow.
+
+This term is research-local and unratified.
+
+## Spectral-shadow diagonal hard core
+
+Let W_diag be a finite-center all-orders-superflat diagonal subspace inside V, for example the stabilized hard branch of the selected movable-center Suzuki diagonal observations.
+
+The **spectral-shadow diagonal hard core** is
+
+W_sh
+=
+{ f in V : S_lambda f in W_diag for every lambda in spec(D) }.
+
+Equivalently, by Vandermonde inversion,
+
+f in W_sh
+
+iff
+
+A_m f in W_diag for m=0,...,4.
+
+On W_sh, every recustodied source in the entire projected dyadic moment sequence A_m f has the same diagonal-superflat property, because the A_m satisfy the exact recurrence p_D in m.
+
+Current results do not force W_sh=0. The exact full-Suzuki local flat-profile space is infinite dimensional, so finite source multiplicity and the five-shadow Vandermonde structure alone do not supply local quasi-analytic rigidity.
+
+This term is research-local and unratified.
