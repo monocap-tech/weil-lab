@@ -1254,3 +1254,16 @@ Equivalently, with W=(X,S,X_k,S_k), the terminal endpoint row is
 The gate-free endpoint graph line is recovered when the translated-sheet term is absent.
 
 This term is research-local and unratified. It identifies the exact remaining endpoint closure condition after the zero-bulk identity-sheet artifact is removed.
+
+
+## Three-sheet boundary state
+
+In the four-delay SZ chamber, let k=log(16/15) and let u=L-log5. Since u<3k, every head coordinate x in (0,u) lies in one of the three k-cells
+
+(0,k), (k,2k), (2k,u).
+
+The **three-sheet boundary state** is the finite L2 state obtained by collecting the bulk state V=(X,S) on these three cells, with zero/truncation on the last cell when 2k>=u.
+
+All k-shift taps act only between adjacent sheets. The forward-gate source width satisfies alpha=u-k<=j<2k, so no fourth forward sheet can occur. The terminal k-gate is absent in the four-delay post-p chamber because k>h implies u-h>u-k=alpha on the terminal strip.
+
+This term is research-local and unratified. It corrects the earlier two-sheet state as a globally complete bookkeeping device; the two-sheet state remains valid for the one-excursion subfamilies already audited.
