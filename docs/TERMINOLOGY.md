@@ -1095,3 +1095,32 @@ J_c=(L-a,a).
 For every active prime-power delay (lambdage a), every interior movable center (hin(0,L)), and every admissible centered scale (0<delta<min(h,L-h)), the prime tent neighborhoods centered at (hpmlambda) are disjoint from (J_c). Consequently every source supported in (J_c) is exactly invisible to the complete finite prime-tent part of every movable-center equation.
 
 This term is currently research-local and unratified. Prime invisibility refers only to the prime translation channels; the archimedean diagonal channel still observes such a source.
+
+
+## Prime-silent regular kernel
+
+Let
+
+[
+(mathsf P_cf)(x)
+=
+sum_{lambdainmathscr H_c^circ}
+a_lambda
+left[
+f(x-lambda)+f(x+lambda)
+ight]
+]
+
+on ((0,2c)), with (f) extended by zero outside the support interval.
+
+The **prime-silent regular kernel** is
+
+[
+K_c^{m ps}
+=
+K_ccapkermathsf P_c.
+]
+
+Equivalently, it consists of regular kernel vectors whose complete all-center prime-tent observation vanishes identically. This is a canonical subspace of (K_c).
+
+Prime silence does not mean the source vanishes or is archimedean-invisible. It means only that the finite prime-translation part has zero interior second derivative / zero movable-center tent field.
