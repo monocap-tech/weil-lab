@@ -1742,3 +1742,32 @@ When combined with the seven-step spectral ejection F=H+M on a prime-silent regu
 - 14 secondary channels Q_K T^j H B^m, j=1,2.
 
 This term is research-local and unratified.
+
+
+## Arithmetic field-return detector
+
+Let V=K_c^{ps} in the four-delay chamber and let L_1,...,L_21:V->K_c^perp be the 21 nonkernel escape channels from the two-stage spectral escape theorem. Set
+
+W_NK = sum_i Ran(L_i),
+
+Y = G_c(W_NK) subset H^1(-c,c).
+
+The **arithmetic field-return detector** is a finite set of reachable arithmetic centers x_1,...,x_M such that point evaluation on Y at those centers is injective.
+
+Such a finite set exists because:
+- Y is finite dimensional;
+- H^1(-c,c) functions have continuous representatives;
+- reachable arithmetic centers are dense once the log2 and log3 prime bases are active;
+- a continuous field vanishing on that dense set is zero;
+- finite dimensionality extracts finitely many evaluations.
+
+Consequently there are constants epsilon_0>0 and c_ret>0 such that, for every f in V and 0<epsilon<epsilon_0,
+
+sum_{i=1}^{21} sum_{j=1}^M
+|| G_c L_i f ||^2_{L^2((x_j-epsilon,x_j+epsilon) intersect (-c,c))}
+>=
+c_ret epsilon ||f||^2.
+
+This is a shrinking-scale interior-field estimate. It does not place the centers at the physical edge or at the canonical singular set Sigma_c, and therefore is not yet a shrinking-collar coercivity theorem.
+
+This term is research-local and unratified.
