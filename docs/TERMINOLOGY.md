@@ -1165,3 +1165,16 @@ det D1
 For the exact Weil weights both factors are positive, so the paired defect block is invertible.
 
 This term is research-local and unratified. Invertibility of the paired defect block excludes local rank loss from the single k-feedback pair; it does not by itself prove global boundary transversality.
+
+
+## Boundary monodromy
+
+After finite atom folding of a prime-channel boundary-transfer system, eliminate every tree-like atom using the locally invertible defect/overlap blocks. The remaining cycle state is the **boundary monodromy state**.
+
+If C is the return map obtained by propagating that cycle state once around the surviving folded cycle, then global boundary rank loss occurs exactly when
+
+det(I-C)=0.
+
+In the first post-p chamber, the folded graph has cycle rank at most one when e<=k and at most two when k<e<=k+h. Therefore the monodromy state has at most two bulk-state copies: two scalar coordinates per cycle, hence at most four scalar coordinates.
+
+This term is research-local and unratified. Boundary monodromy concerns fixed-L prime-channel transversality; it does not imply shrinking-collar coercivity.
