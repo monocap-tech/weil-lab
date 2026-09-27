@@ -1076,3 +1076,22 @@ qquad
 The centered archimedean second-difference kernel is even in the source displacement from (h), so its nonanalytic local diagonal contribution depends only on (Sigma_{h,ho}f). The antisymmetric local germ (f(h+t)-f(h-t)) is exactly invisible to that local diagonal channel.
 
 This term is currently research-local and unratified. Vanishing of one diagonal symmetrization is a parity statement, not a claim that the full source or full movable-center equation vanishes.
+
+
+## Prime-invisible core
+
+Let (L=2c) and (a=log2). In the support regime
+
+[
+a<L<2a=log4,
+]
+
+the **prime-invisible core** is the open source interval
+
+[
+J_c=(L-a,a).
+]
+
+For every active prime-power delay (lambdage a), every interior movable center (hin(0,L)), and every admissible centered scale (0<delta<min(h,L-h)), the prime tent neighborhoods centered at (hpmlambda) are disjoint from (J_c). Consequently every source supported in (J_c) is exactly invisible to the complete finite prime-tent part of every movable-center equation.
+
+This term is currently research-local and unratified. Prime invisibility refers only to the prime translation channels; the archimedean diagonal channel still observes such a source.
