@@ -1394,3 +1394,42 @@ On the part of the terminal strip with t<h, P(t) is supplied by the P/J overlap 
 This elimination of the relay variables is the **relay Schur closure**. It shows that the nilpotent relay contributes no independent recurrence state; it contributes a finite terminal closure row on the base transfer system.
 
 This term is research-local and unratified.
+
+
+## Four-delay residue alphabet
+
+Let
+
+h=log(81/80),
+k=5h+kappa,
+p=8h+rho,
+
+with 0<kappa,rho<h.
+
+In the repaired four-delay transfer, any connected directed dependency component contains at most two k-moves and at most one one-way p-relay move. Therefore its base arguments occupy only the ten h-residue classes
+
+m kappa + epsilon rho mod h,
+
+m in {-2,-1,0,1,2},
+epsilon in {0,1}.
+
+This set is the **four-delay residue alphabet**.
+
+Its ten elements are distinct. Their order on [0,h) is
+
+0,
+rho-2kappa,
+kappa,
+rho-kappa,
+2kappa,
+rho,
+-2kappa,
+rho+kappa,
+-kappa,
+rho+2kappa
+
+with negative entries understood modulo h.
+
+The ordering can be certified without transcendental comparison by exponentiating: exp(h), exp(kappa), and exp(rho) are rational numbers, so every residue-order comparison reduces to an integer/rational inequality.
+
+This term is research-local and unratified. It is a per-dependency-component alphabet; it does not assert that the full function space decomposes into ten global residue classes.
