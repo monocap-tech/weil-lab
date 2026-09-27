@@ -1813,3 +1813,70 @@ where L2(U) is embedded by zero extension into L2(-c,c).
 If the gate holds, finite dimensionality extracts finitely many test functions supported in U that separate W, and the H1 regularity of G_c(W) gives a quantitative local observation. The current arithmetic field-return theorem proves this gate only for an adaptively chosen finite collection of interior point neighborhoods, not for the physical edge or the prescribed singular-site neighborhoods.
 
 This term is research-local and unratified.
+
+
+## Arithmetic transport holonomy
+
+In the four-delay chamber let
+
+D=C_(log2)+gamma C_(log4),
+
+N=beta C_(log3)+delta C_(log5),
+
+and define the **arithmetic transport holonomy**
+
+Hhol=[D,N]=DN-ND.
+
+Whole-line translations commute, so Hhol is produced entirely by support-truncation boundary commutators. Same-orientation truncated shifts commute exactly; only opposite-orientation pairs contribute.
+
+For 0<x<y<L, with L_x=S_x^+ and R_y=S_y^-,
+
+[L_x,R_y]f(s)
+=
+[
+1_(y-x,L-x)(s)
+-
+1_(y,L)(s)
+]
+f(s-(y-x)),
+
+and
+
+[R_x,L_y]f(s)
+=
+[
+1_(x,L-y+x)(s)
+-
+1_(0,L-y)(s)
+]
+f(s+(y-x)),
+
+with empty intervals omitted. The x>y case follows by antisymmetry.
+
+Thus Hhol is a finite sum of translated source restrictions to cells whose endpoints are arithmetic edge/ratio locations such as log(3/2), log(4/3), log(5/2), and log(5/4), together with reflected support endpoints.
+
+This term is research-local and unratified.
+
+## Six-step holonomy observability
+
+Let Z=ker(D+N), the ambient four-delay prime-silent space. The dyadic and nondyadic blocks satisfy relatively prime annihilating polynomials p_D(D)=0 and p_N(N)=0 from the seven-step spectral separation theorem.
+
+For f in Z, define Hhol=[D,N]. Then there exists a constant c_hol>0 depending only on the four fixed Weil weights such that
+
+(
+sum_{m=0}^5
+|| Hhol D^m f ||^2
+)^(1/2)
+>=
+c_hol ||f||.
+
+In particular,
+
+intersection_{m=0}^5
+ker(Hhol D^m|_Z)
+=
+{0}.
+
+The proof uses the recursion comparing N^j f with (-D)^j f. Every discrepancy is controlled by Hhol D^m f; the nondyadic annihilating polynomial therefore yields p_N(-D)f as a bounded linear combination of the six holonomy channels. Bezout with p_D then recovers f.
+
+This term is research-local and unratified.
