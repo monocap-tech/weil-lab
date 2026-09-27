@@ -1313,3 +1313,34 @@ and zero second-coordinate blocks.
 This rank-one delayed forcing is the **causal lag injection**. It is causal because k-h>0. For the exact Weil weights eta<9/10.
 
 This term is research-local and unratified. It isolates the sole remaining nonlocal ingredient after finite k-sheet closure.
+
+
+## Causal path expansion
+
+For the four-delay three-sheet transfer, write the exact recurrence at the output coordinate y=x+h as
+
+W(y) = K_r W(y-h) + b_r X(y-k).
+
+A **causal path** is a backward dependency word from y obtained by steps of length h or k. Every step strictly decreases the absolute coordinate.
+
+Because the head width satisfies u<3k, any causal path contains at most two k-steps. Hence repeated substitution produces a finite path expansion with causal degree at most two; there is no lag-generated feedback cycle.
+
+The injection also factors universally:
+
+K_r^(-1) b_r
+=
+-(d,0,...,0)^T,
+
+where
+
+d=(F,F/R)^T
+
+occupies only the first two-state sheet. Equivalently,
+
+W(y)
+=
+K_r [ W(y-h) - d_r X(y-k) ],
+
+with d_r=(d,0,...,0)^T.
+
+This term is research-local and unratified. The finite causal path expansion reduces global closure to finitely many endpoint path matrices; their nonvanishing is a separate transversality problem.
