@@ -2420,3 +2420,36 @@ The resulting partial action on the lower defect is the **low-head return cocycl
 For e>h both h- and kappa-returns are simultaneously internal to the lower defect on nonempty subintervals. Consequently no finite periodic residue lattice can be invariant under the exact return geometry. This blocks a chamber-independent reduction to one finite constant matrix indexed by a common arithmetic mesh.
 
 This term is research-local and unratified.
+
+
+## First-return-free parity chamber
+
+Let
+
+kappa = k-5h
+=
+log[(16/15)(80/81)^5]
+>0,
+
+with
+
+h=log(81/80),
+k=log(16/15).
+
+The **first-return-free parity chamber** is
+
+0<e<=kappa,
+
+for the post-log(16/3) parity edge recurrence.
+
+In this chamber, after exact tail Schur elimination, a generic recurrence orbit meets the lower defect (0,e) only in one reflection pair
+
+{t,e-t}.
+
+No nonzero translated lower-defect return is admissible.
+
+Consequently every generic orbit has one constant coefficient template, independent of e and of the seed t up to relabeling. The template has 124 source coordinates and 124 recurrence rows for either parity sign.
+
+The exceptional seeds that hit recurrence boundaries form a finite union of affine points and are null for the L2 problem.
+
+This term is research-local and unratified.
