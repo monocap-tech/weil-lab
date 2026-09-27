@@ -1454,3 +1454,14 @@ The **provenance-labeled residue state** is the pair consisting of the geometric
 This label is load-bearing for matrix generation. Treating the ten residues as unlabeled points can create spurious third k-moves or repeated p-relays and therefore a false enlarged matrix.
 
 This term is research-local and unratified.
+
+
+## Causal certificate subsystem
+
+A **causal certificate subsystem** is a provenance-respecting subset of the exact four-delay row equations, chosen so that every retained row is closed on a finite directed state alphabet and is used only on the domain where it was proved.
+
+Crucially, if one term of an exact row would leave the finite provenance budget, the term may not be discarded. The entire row must be omitted from that certificate subsystem. Every actual prime-silent source still satisfies every retained row, so full column rank of the subsystem is sufficient for injectivity of the actual source problem.
+
+This differs from a complete constraint matrix. The ten-symbol four-delay residue alphabet is not closed under all exact rows; it is only a candidate state alphabet for a directed causal certificate after row selection.
+
+This term is research-local and unratified.
