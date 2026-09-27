@@ -2332,3 +2332,91 @@ Conversely every L2 solution x of this system reconstructs a parity prime-silent
 Thus ambient four-delay prime-silent injectivity is equivalent to triviality of the two parity edge recurrences.
 
 This term is research-local and unratified.
+
+
+## Parity tail Schur reduction
+
+In the post-log(16/3) four-delay chamber, let
+
+c=beta gamma,
+Delta_c=1-c^2>0,
+
+and let x be one parity profile from the parity edge recurrence with sign epsilon.
+
+For the tail variable
+
+T(y)=x(q+y),
+
+0<y<omega=q+e,
+
+the final parity equation can be solved exactly.
+
+For 0<y<e,
+
+T(y)
+=
+-(c/Delta_c)
+[
+x(y)+c epsilon x(e-y)
+].
+
+For e<y<q,
+
+T(y)
+=
+-c
+[
+x(y)-epsilon x(q+e-y)
+].
+
+For 0<z<e,
+
+T(q+z)
+=
+(c/Delta_c)
+[
+c x(z)+epsilon x(e-z)
+].
+
+The **parity tail Schur reduction** is the elimination of every x-coordinate above q by these three formulas. It reduces the scalar recurrence to the base interval (0,q) with one forced zero strip (v,q).
+
+This term is research-local and unratified.
+
+## Low-head return cocycle
+
+Let
+
+h=log(81/80),
+k=log(16/15),
+
+and
+
+kappa=k-5h.
+
+In the exact incidence graph of the parity edge recurrence:
+
+- translation by +h is admissible on (0,u-h), with inverse -h on (h,u);
+- translation by +k is admissible from (0,e) to (k,u), with inverse -k;
+- therefore the composite +k followed by five -h steps gives a return by
+
+kappa=k-5h
+
+on (0,e-kappa), with inverse return -kappa on (kappa,e).
+
+The number kappa is positive because
+
+16*80^5-15*81^5=127033985>0.
+
+Moreover h/kappa is irrational: in the prime-log basis (log2,log3,log5),
+
+h=(-4,4,-1),
+
+kappa=(24,-21,4),
+
+and no nonzero rational proportionality is possible.
+
+The resulting partial action on the lower defect is the **low-head return cocycle**.
+
+For e>h both h- and kappa-returns are simultaneously internal to the lower defect on nonempty subintervals. Consequently no finite periodic residue lattice can be invariant under the exact return geometry. This blocks a chamber-independent reduction to one finite constant matrix indexed by a common arithmetic mesh.
+
+This term is research-local and unratified.
