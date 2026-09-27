@@ -1465,3 +1465,18 @@ Crucially, if one term of an exact row would leave the finite provenance budget,
 This differs from a complete constraint matrix. The ten-symbol four-delay residue alphabet is not closed under all exact rows; it is only a candidate state alphabet for a directed causal certificate after row selection.
 
 This term is research-local and unratified.
+
+
+## Sliding k-window
+
+In the four-delay chamber, the **sliding k-window** at base coordinate x is the physically present local stack
+
+V(x), V(x+k), V(x+2k),
+
+with absent translates deleted by support.
+
+Because u<3k, at most three consecutive k-translates can occur in one local window. The labels m=-2,...,2 used in residue bookkeeping describe possible relative displacements across different causal paths; they are not five simultaneous sheet coordinates and must not all be initialized as free entrance data.
+
+When the causal predecessor y-k is followed, the base of the sliding k-window moves backward by k. The new window overlaps the old one but is not represented by adding a permanent m=-1 sheet to the same local stack.
+
+This term is research-local and unratified. It replaces the unsafe interpretation of the four-delay residue alphabet as a fixed global column set.
