@@ -2251,3 +2251,84 @@ with T=S_(log2)^+.
 The fifteen spectral-shadow escape channels of GERM-57 are fixed rank-four linear combinations of these twelve channels. Hence the twelve-channel family is jointly injective on V and has a positive finite-dimensional norm floor.
 
 This term is research-local and unratified.
+
+
+## Prime-silent edge inverse system
+
+In the four-delay chamber let
+
+D=C_(log2)+gamma C_(log4),
+N=beta C_(log3)+delta C_(log5),
+
+so the ambient prime-silent equation is
+
+(D+N)f=0.
+
+Since 0 is not in spec(D), D is invertible. Define the edge source
+
+h=Df=-Nf.
+
+Because log3 and log5 exceed L/2, Nf is supported on the two log3-edge blocks
+
+(0,L-log3) union (log3,L).
+
+The **prime-silent edge inverse system** is the closed functional equation on this edge-supported h obtained by writing
+
+f=D^{-1}h
+
+fiberwise in the log2 residue decomposition and substituting into
+
+h=-Nf.
+
+It is exactly equivalent to the ambient four-delay prime-silent equation.
+
+This term is research-local and unratified.
+
+## Parity edge recurrence
+
+Let a=log2, b=log3, d=log5 and define
+
+R=d-b=log(5/3),
+r=b-a=log(3/2),
+q=2a-b=log(4/3),
+s=d-2a=log(5/4),
+p=R-r=log(10/9),
+u=L-d,
+w=R+u,
+omega=s+u,
+v=p+u.
+
+For an edge source h define
+
+x(t)=h(t),
+z(t)=h(b+t),
+0<t<w.
+
+The exact edge inverse system reduces on a reflection-parity sector epsilon in {+1,-1} by
+
+z(t)=epsilon x(w-t).
+
+The resulting single-profile **parity edge recurrence** is
+
+x(t)
++ beta x(r+t)
++ delta gamma [x(s+t)-epsilon x(u-t)]
+=0,
+0<t<u;
+
+x(t)+beta x(r+t)=0,
+u<t<v;
+
+x(t)=0,
+v<t<q;
+
+x(t)
++ beta gamma [x(t-q)-epsilon x(w-t)]
+=0,
+q<t<w.
+
+Conversely every L2 solution x of this system reconstructs a parity prime-silent source f=D^{-1}h.
+
+Thus ambient four-delay prime-silent injectivity is equivalent to triviality of the two parity edge recurrences.
+
+This term is research-local and unratified.
