@@ -1222,3 +1222,20 @@ K = E_minus E_plus.
 A separated one-k-excursion word is therefore represented by E_minus B4^m E_plus B4^n, or the reverse orientation.
 
 This term is research-local and unratified. An unmatched shear by itself leaves one doubled sheet unadvanced; complete boundary closure may require additional endpoint relations.
+
+
+## Endpoint graph line
+
+For the gate-free prime-channel boundary transfer, the **endpoint graph lines** are the one-dimensional bulk-state subspaces
+
+L_in = span((1,R)^T),
+
+L_out = span((1,R^(-1))^T),
+
+where R is the exact P/J transfer coefficient.
+
+They encode the entrance relation S=R X and the terminal relation S=R^(-1) X. When a doubled unmatched shear carries one sheet by an identity block, that carried sheet is not free: true endpoint closure restricts it to one of these graph lines.
+
+The resulting zero-bulk unmatched closure determinant is beta (mu^2-G^2)/(G delta^2), which is strictly positive for the exact Weil weights.
+
+This term is research-local and unratified. Gated endpoint atoms may require corrected graph subspaces with an additional translated-sheet coordinate.
