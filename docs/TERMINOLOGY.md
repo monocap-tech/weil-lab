@@ -1005,3 +1005,39 @@ ell-lambda=log(n/m).
 If (m) and (n) are powers of the same prime and (mmid n), this difference is another prime-power hinge. Otherwise it is an **off-hinge ratio germ**: a rough interior source germ sampled directly by the prime translation term even though its location is not one of the original edge prime singular sites.
 
 These terms are currently research-local and unratified. They describe source custody under multi-delay first-kind equations; they do not create a new singularity of the screw kernel at that physical point.
+
+
+## Ratio-germ filtration
+
+The **ratio-germ filtration** is the finite-dimensional local-mass filtration on the first off-hinge arithmetic ratio layer
+
+[
+mathscr R_c^{(1)}
+=
+{
+ell-lambda:
+0<lambda<ell,;
+lambda,ellinmathscr H_c^circ,;
+ell-lambda
+otinmathscr H_c^circ
+}.
+]
+
+For a finite obstruction family (W), the order-(N) ratio-flat subspace consists of those sources whose local (L^2)-mass on every right-sided ratio germ (d+eta), (dinmathscr R_c^{(1)}), is (o(arepsilon^N)). Its stabilized intersection is the **ratio-superflat subspace**.
+
+## Ratio incidence operator
+
+The **ratio incidence operator** is the finite weighted operator that inserts the off-hinge ratio germs into the vector of prime-threshold equations:
+
+[
+(mathsf A_c g)_ell
+=
+sum_{substack{lambda<ell\
+ell-lambdainmathscr R_c^{(1)}}}
+rac{Lambda(e^lambda)}{e^{lambda/2}},
+g_{ell-lambda}.
+]
+
+Here (g_d) denotes the local source germ at the ratio location (d). The operator records arithmetic multi-cell custody only; it does not include the archimedean cell transforms or the same-prime/endpoint terms already absorbed into the superflat remainder.
+
+These terms are currently research-local and unratified.
