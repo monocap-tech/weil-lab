@@ -1267,3 +1267,26 @@ The **three-sheet boundary state** is the finite L2 state obtained by collecting
 All k-shift taps act only between adjacent sheets. The forward-gate source width satisfies alpha=u-k<=j<2k, so no fourth forward sheet can occur. The terminal k-gate is absent in the four-delay post-p chamber because k>h implies u-h>u-k=alpha on the terminal strip.
 
 This term is research-local and unratified. It corrects the earlier two-sheet state as a globally complete bookkeeping device; the two-sheet state remains valid for the one-excursion subfamilies already audited.
+
+
+## Three-sheet scattering block
+
+Let M0 be the 2-state bulk transfer, C_plus=c_plus e2^T the forward k-coupling block, and C_minus=c_minus e1^T the backward coupling block.
+
+For three active k-sheets V0,V1,V2, define the homogeneous sheet update sequentially by
+
+Y0 = M0 V0 + C_plus V1,
+
+Y1 = M0 V1 + C_plus V2 - C_minus Y0,
+
+Y2 = M0 V2 - C_minus Y1.
+
+The resulting 6-by-6 matrix K3 is the **three-sheet scattering block**.
+
+Equivalently K3=L3 U3, where U3 is block upper bidiagonal with M0 on the diagonal and C_plus on the superdiagonal, while L3 is unit block lower bidiagonal with -C_minus on the subdiagonal.
+
+Hence det K3=(det M0)^3=1.
+
+More generally the same construction defines an r-sheet scattering block Kr with det Kr=(det M0)^r.
+
+This term is research-local and unratified. In the four-delay chamber only r=1,2,3 occur. A separate causal past-tap term may enter the first sheet when x>k-h; K3 denotes the homogeneous local scattering block after that past contribution is separated.
