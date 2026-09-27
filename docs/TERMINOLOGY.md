@@ -1178,3 +1178,24 @@ det(I-C)=0.
 In the first post-p chamber, the folded graph has cycle rank at most one when e<=k and at most two when k<e<=k+h. Therefore the monodromy state has at most two bulk-state copies: two scalar coordinates per cycle, hence at most four scalar coordinates.
 
 This term is research-local and unratified. Boundary monodromy concerns fixed-L prime-channel transversality; it does not imply shrinking-collar coercivity.
+
+
+## Matched defect scattering insertion
+
+In the post-p boundary transfer, suppose one lower point carries the forward k-tap and its paired point x+k carries the matching backward tap. Let V(x)=(X(x),S(x))^T, let M0 be the 2-state bulk transfer, let e1=(1,0)^T and e2=(0,1)^T, and let c_plus,c_minus be the exact forward/backward tap columns from the finite-tap transfer.
+
+The **matched defect scattering insertion** is the 4-by-4 transfer matrix K on the paired state (V(x),V(x+k)) defined by
+
+V(x+h) = M0 V(x) + c_plus e2^T V(x+k),
+
+V(x+k+h) = M0 V(x+k) - c_minus e1^T V(x+h).
+
+Equivalently,
+
+K =
+[[M0, c_plus e2^T],
+ [-c_minus e1^T M0, M0 - (e1^T c_plus)c_minus e2^T]].
+
+It factors into a lower shear times an upper block-triangular transfer and therefore det K = 1.
+
+This term is research-local and unratified. It isolates one matched k-excursion; additional endpoint/defect scattering may still be present in a complete boundary monodromy word.
