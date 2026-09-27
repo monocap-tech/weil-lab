@@ -1665,3 +1665,47 @@ Equivalently N satisfies the degree-seven polynomial
 z(z^2-beta^2)(z^4-(2 beta^2+delta^2)z^2+beta^4)=0.
 
 This term is research-local and unratified.
+
+
+## Seven-step spectral ejection
+
+In the four-delay chamber split the normalized prime operator as
+
+P_c/A2 = D + N,
+
+with
+
+D = C_(log2) + gamma C_(log4),
+
+N = beta C_(log3) + delta C_(log5).
+
+The dyadic block satisfies
+
+p_D(D)=0,
+
+p_D(z)=(z^2-1)(z+gamma)(z^2-gamma z-2),
+
+while the nondyadic edge operator satisfies
+
+p_N(N)=0,
+
+p_N(z)=z(z^2-beta^2)(z^4-(2 beta^2+delta^2)z^2+beta^4).
+
+The root sets of p_D(z) and p_N(-z) are disjoint for the exact Weil weights.
+
+For any closed subspace V subset ker(P_c), let Pi be orthogonal projection onto V and define
+
+B=Pi D|_V,
+F=(I-Pi)D|_V.
+
+Since N|_V=-D|_V, its compression/ejection are -B and -F.
+
+The **seven-step spectral ejection** property is
+
+intersection_{m=0}^6 ker(F B^m)={0}.
+
+It follows from the two incompatible annihilating polynomials: vanishing of F B^m through m=6 makes D^j and N^j agree with B^j and (-B)^j through the required polynomial degrees, forcing both p_D(B) and p_N(-B) to annihilate the vector; Bezout then forces the vector to be zero.
+
+A quantitative seven-step lower bound follows with a constant depending only on the fixed Weil weights, not on dim(V).
+
+This term is research-local and unratified.
