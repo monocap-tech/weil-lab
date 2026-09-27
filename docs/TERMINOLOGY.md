@@ -1880,3 +1880,53 @@ ker(Hhol D^m|_Z)
 The proof uses the recursion comparing N^j f with (-D)^j f. Every discrepancy is controlled by Hhol D^m f; the nondyadic annihilating polynomial therefore yields p_N(-D)f as a bounded linear combination of the six holonomy channels. Bezout with p_D then recovers f.
 
 This term is research-local and unratified.
+
+
+## Holonomy boundary atlas
+
+In the four-delay chamber, for each ordered pair 0<x<y<L with x+y>=L, the symmetric-shift commutator has the exact form
+
+[C_x,C_y]f(s)
+=
+1_(y-x,L-x)(s) f(s-(y-x))
+-
+1_(y,L)(s) f(s-(y-x))
++
+1_(x,x+L-y)(s) f(s+(y-x))
+-
+1_(0,L-y)(s) f(s+(y-x)).
+
+Its only cell boundaries are
+
+0, L, x, y, y-x
+
+and their reflected points
+
+L-x, L-y, L-(y-x).
+
+For the four commutators comprising the arithmetic transport holonomy [D,N], the union of these boundaries is the **holonomy boundary atlas** Xi_L. It consists of:
+- the physical source endpoints 0,L;
+- the active prime-power delays log2, log3, log4, log5 and their reflections;
+- the ratio gaps log(3/2), log(5/2), log(4/3), log(5/4) and their reflections.
+
+Thus Xi_L equals the canonical edge/prime singular geometry plus one finite off-hinge ratio layer.
+
+This term is research-local and unratified.
+
+## Holonomy interior core
+
+Let V be a finite-dimensional subspace of the four-delay prime-silent space, let Hhol=[D,N], and let Xi_L be the holonomy boundary atlas.
+
+For N>=0 define the joint boundary-flatness subspace by requiring every channel
+
+Hhol D^m f,  m=0,...,5,
+
+to have L2 mass o(epsilon^N) in the epsilon-neighborhood of every point of Xi_L.
+
+The descending chain stabilizes. Its terminal all-orders-flat subspace is the **holonomy interior core**.
+
+On a nonzero holonomy interior core, six-step holonomy observability forces a uniform fixed amount of the holonomy-channel mass to remain in the interiors of the finitely many Xi_L-cells after sufficiently small boundary neighborhoods are removed.
+
+The existence of this interior-core alternative shows that cell-boundary flatness alone does not close the holonomy detector. Eliminating the core requires a Weil-specific local range/unique-continuation statement for the associated nonkernel fields, or an equivalent cell-interior rigidity theorem.
+
+This term is research-local and unratified.
