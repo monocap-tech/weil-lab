@@ -1059,3 +1059,20 @@ Its points in ((0,2c)) are **reachable arithmetic centers** for movable-center b
 When at least two distinct prime bases are active, (Gamma_c) is dense in (mathbb R), because the logarithms of distinct primes have irrational ratio.
 
 This term is currently research-local and unratified. Density of the arithmetic center lattice concerns center reachability; it does not assert regularity or pointwise evaluation of (L^2) kernel vectors.
+
+
+## Diagonal symmetrization
+
+For an interior source center (h) and radius (ho>0) with ((h-ho,h+ho)subset(0,2c)), the **diagonal symmetrization** is
+
+[
+(Sigma_{h,ho}f)(t)
+=
+f(h+t)+f(h-t),
+qquad
+0<t<ho.
+]
+
+The centered archimedean second-difference kernel is even in the source displacement from (h), so its nonanalytic local diagonal contribution depends only on (Sigma_{h,ho}f). The antisymmetric local germ (f(h+t)-f(h-t)) is exactly invisible to that local diagonal channel.
+
+This term is currently research-local and unratified. Vanishing of one diagonal symmetrization is a parity statement, not a claim that the full source or full movable-center equation vanishes.
