@@ -1709,3 +1709,36 @@ It follows from the two incompatible annihilating polynomials: vanishing of F B^
 A quantitative seven-step lower bound follows with a constant depending only on the fixed Weil weights, not on dim(V).
 
 This term is research-local and unratified.
+
+
+## Two-stage nonkernel escape detector
+
+In the four-delay chamber let a=log2, let K=K_c be the regular screw kernel, and let Q_K=I-Pi_K.
+
+Because 2a<L<3a, the truncated one-sided first-prime shift T=S_a^+ satisfies T^3=0.
+
+The **two-stage nonkernel escape detector** on K is
+
+J_K g
+=
+(
+Q_K T g,
+Q_K T^2 g
+).
+
+It is injective on K. Indeed, if both components vanish, then Tg and T^2g lie in K. Since T^3g=0 and K intersects ker(T) trivially by the no-raw-descent theorem, backward induction gives T^2g=0, Tg=0, and g=0.
+
+Since K is finite dimensional, there is a fixed constant nu_K>0 such that
+
+||Q_K T g||^2 + ||Q_K T^2 g||^2
+>=
+nu_K^2 ||g||^2
+
+for all g in K.
+
+When combined with the seven-step spectral ejection F=H+M on a prime-silent regular-kernel branch, this yields a 21-channel detector landing entirely in K^perp:
+
+- 7 primary nonkernel channels M B^m;
+- 14 secondary channels Q_K T^j H B^m, j=1,2.
+
+This term is research-local and unratified.
