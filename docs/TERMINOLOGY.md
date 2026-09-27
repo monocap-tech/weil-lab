@@ -1199,3 +1199,26 @@ K =
 It factors into a lower shear times an upper block-triangular transfer and therefore det K = 1.
 
 This term is research-local and unratified. It isolates one matched k-excursion; additional endpoint/defect scattering may still be present in a complete boundary monodromy word.
+
+
+## Unmatched defect shear
+
+Let M0 be the two-state bulk transfer, let B4=diag(M0,M0), and let c_plus,c_minus be the exact forward/backward k-tap columns in the post-p boundary transfer.
+
+The **unmatched defect shears** are the doubled-state matrices
+
+E_plus =
+[[M0, c_plus e2^T],
+ [0,  I]],
+
+E_minus =
+[[I, 0],
+ [-c_minus e1^T, M0]].
+
+Both have determinant 1. The matched defect scattering insertion satisfies
+
+K = E_minus E_plus.
+
+A separated one-k-excursion word is therefore represented by E_minus B4^m E_plus B4^n, or the reverse orientation.
+
+This term is research-local and unratified. An unmatched shear by itself leaves one doubled sheet unadvanced; complete boundary closure may require additional endpoint relations.
