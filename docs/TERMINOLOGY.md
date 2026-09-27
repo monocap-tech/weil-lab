@@ -1124,3 +1124,20 @@ K_ccapkermathsf P_c.
 Equivalently, it consists of regular kernel vectors whose complete all-center prime-tent observation vanishes identically. This is a canonical subspace of (K_c).
 
 Prime silence does not mean the source vanishes or is archimedean-invisible. It means only that the finite prime-translation part has zero interior second derivative / zero movable-center tent field.
+
+
+## Boundary transfer state
+
+A **boundary transfer state** is the finite-dimensional source state used after a boundary-ordering change prevents scalar residue-chain closure.
+
+For the post-p SZ edge chamber, write X(x)=H(x), S(x)=H(s+x), h=log(81/80), p=log(10/9), and e=u-p. The bulk state is
+
+V(x)=(X(x),S(x))^T.
+
+On the overlap window e-h < x < p it obeys one constant unimodular transfer matrix V(x+h)=M V(x). The lower and upper defect strips (0,e) and (p,u) are paired by adjoining the translated copy V(p+t), 0<t<e. Thus the closed defect bookkeeping uses the two-sheet state
+
+W(t)=(V(t),V(p+t)),
+
+with only finitely many additional gated k=log(16/15) translations.
+
+This term is research-local and unratified. It describes the finite-state recurrence mechanism; it does not assert injectivity or shrinking-collar coercivity.
