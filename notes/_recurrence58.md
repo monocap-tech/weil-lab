@@ -1,0 +1,902 @@
+# SZ edge recurrence 58 — spectral-shadow edge Runge audit and eigenspace flexibility
+
+Date: 2026-09-27
+Branch: sz-cross-collar
+Status: UNRATIFIED RESIDUE / NF PASS
+Canonical parent: SZ-CROSS-COLLAR-3
+Immediate residue: series-57
+Public promotion: forbidden
+
+## Objective
+
+Test whether the spectral-shadow escape range from series-57 satisfies a finite edge Runge theorem merely because every primary source
+
+w = P_lambda f
+
+lies in one explicit dyadic eigenspace
+
+D w = lambda w.
+
+The proposed route was:
+
+edge-field vanishing
++
+explicit 2-/3-point dyadic fiber pattern
+=>
+w enters K_c
+=>
+ambient D-eigenvector contradiction.
+
+This pass shows that the first implication is false at the ambient eigenspace level.
+
+Every one of the five dyadic eigenspaces contains an infinite-dimensional family of nonzero mean-zero sources whose Suzuki screw field vanishes on sufficiently small neighborhoods of both physical edges.
+
+Therefore the dyadic eigenpattern alone cannot prove the finite edge Runge gate.
+
+Any successful shadow-edge theorem must use the stronger fact that the five spectral components arise simultaneously from one source
+
+f in K_c^{ps}
+
+satisfying both
+
+G_c f=0
+
+and
+
+(D+N)f=0.
+
+This is a genuine narrowing of the remaining interface.
+
+No fixed-L prime-silent triviality theorem is claimed.
+
+## 1. Source normalization for local edge vanishing
+
+Suzuki defines
+
+G u(x)
+=
+integral g(x-y)u(y)dy
+
+and
+
+G_c
+=
+P_c G P_c
+
+on the mean-zero interval carrier.
+
+Thus for
+
+w in L0^2(-c,c),
+
+G_c w
+
+is the screw potential F_w restricted to (-c,c), followed by subtraction of its interval mean.
+
+Consequently, on an open set U subset(-c,c),
+
+(G_c w)|_U=0
+
+if and only if
+
+F_w
+
+is equal there to the one global projection constant.
+
+Equivalently, it is enough to impose:
+
+1. F_w''=0 on U;
+2. F_w'=0 on U;
+3. the resulting constant equals the interval mean of F_w.
+
+The first condition is functional.
+The latter conditions are finitely many scalar linear constraints.
+
+This is the normalization needed below.
+
+## 2. Four-delay geometry
+
+Set
+
+a=log2,
+b=log3,
+d=log5,
+
+gamma=1/sqrt2,
+
+omega=L-2a,
+
+r=b-a=log(3/2),
+
+q=2a-b=log(4/3),
+
+s=d-2a=log(5/4),
+
+u=L-d.
+
+Across
+
+log5<L<=log6,
+
+one has
+
+0<u<s<omega<=r<a,
+
+omega=s+u,
+
+and
+
+r<L-b<=a.
+
+Write
+
+ell=L-b=q+omega.
+
+For strict L<log6,
+
+omega<r<ell<a.
+
+At L=log6,
+
+omega=r
+
+and
+
+ell=a.
+
+These endpoint coincidences do not change the one-sided constructions below.
+
+## 3. Dyadic two-chain eigenspaces
+
+For
+
+lambda=sigma in {+1,-1},
+
+the D-eigenspace consists of profiles
+
+psi in L2(omega,a)
+
+with
+
+w_psi(t)
+=
+psi(t),
+
+omega<t<a,
+
+w_psi(a+t)
+=
+sigma psi(t),
+
+omega<t<a,
+
+and zero elsewhere.
+
+Equivalently the two-point fiber vector is
+
+(1,sigma).
+
+For sigma=-1 the source has mean zero automatically.
+
+For sigma=+1 the mean-zero carrier requires the one scalar condition
+
+integral_(omega)^a psi(t)dt=0.
+
+## 4. Right-edge equation for the two-chain modes
+
+Use right-oriented source coordinates.
+
+At the physical right edge
+
+x=c-eta,
+
+with eta>0 sufficiently small, the source is separated from the diagonal singularity because
+
+supp w_psi
+subset
+(omega,a) union (a+omega,2a).
+
+Choose eta<omega.
+
+The only active prime-power sample that meets the source is the log3 sample.
+
+Indeed:
+
+- log2 samples a+eta, which lies in the middle gap (a,a+omega);
+- log4 samples 2a+eta, which lies in the terminal gap;
+- log5 samples d+eta>2a, also in the terminal gap;
+- log3 samples b+eta=a+r+eta, which lies in the second source cell when eta<q.
+
+Therefore
+
+boxed:
+F_(w_psi)''(c-eta)
+=
+(A_R^sigma psi)(eta)
++
+a_3 sigma psi(r+eta),
+
+where
+
+a_3=log3/sqrt3
+
+and
+
+(A_R^sigma psi)(eta)
+=
+integral_(omega)^a
+[
+a_infty''(t-eta)
++
+sigma a_infty''(a+t-eta)
+]
+psi(t)dt.
+
+For eta in a sufficiently small fixed interval,
+
+A_R^sigma
+
+has a bounded real-analytic kernel.
+
+## 5. Left-edge equation for the two-chain modes
+
+At the physical left edge
+
+x=-c+eta,
+
+the only prime sample meeting the source is again log3.
+
+The sampled profile point is
+
+L-b-eta
+=
+ell-eta.
+
+Thus
+
+boxed:
+F_(w_psi)''(-c+eta)
+=
+(A_L^sigma psi)(eta)
++
+a_3 psi(ell-eta),
+
+where
+
+(A_L^sigma psi)(eta)
+=
+integral_(omega)^a
+[
+a_infty''(L-t-eta)
++
+sigma a_infty''(a+omega-t-eta)
+]
+psi(t)dt.
+
+Again the kernel is bounded and real analytic for sufficiently small eta>0.
+
+## 6. Two-chain local second-kind system
+
+Choose epsilon>0 so small that
+
+I_R=(r,r+epsilon)
+
+and
+
+I_L=(ell-epsilon,ell)
+
+are disjoint subintervals of (omega,a), with the obvious one-sided interpretation at L=log6.
+
+Write
+
+J=I_R union I_L,
+
+and decompose
+
+psi
+=
+psi_J
++
+psi_far.
+
+The two edge equations
+
+F''(c-eta)=0,
+
+F''(-c+eta)=0,
+
+0<eta<epsilon,
+
+become
+
+boxed:
+a_3
+diag(sigma I,I)
+E psi_J
++
+K_J psi_J
+=
+-
+K_far psi_far,
+
+where:
+
+- E maps psi_J isometrically to
+  (psi(r+eta),psi(ell-eta));
+- K_J is the contribution of the analytic archimedean kernels from the two short unknown intervals;
+- K_far is the same analytic field generated by the remaining profile.
+
+Since the kernels are uniformly bounded,
+
+||K_J||
+=
+O(epsilon)
+
+as epsilon down to zero.
+
+Therefore for sufficiently small epsilon,
+
+a_3 diag(sigma I,I)E+K_J
+
+is invertible by a Neumann-series argument.
+
+Hence:
+
+boxed:
+for every far profile psi_far,
+there is a unique local profile psi_J
+that makes F'' vanish on both physical edge neighborhoods.
+
+The solution depends linearly and continuously on psi_far.
+
+## 7. Impose the full local G_c=0 condition
+
+After Section 6,
+
+F_w
+
+is affine on each edge interval.
+
+To obtain
+
+(G_c w)|_U=0
+
+on the union of the two edge intervals, impose the remaining scalar conditions:
+
+1. zero right-edge slope;
+2. zero left-edge slope;
+3. right-edge constant equals the interval mean of F_w;
+4. left-edge constant equals the same interval mean;
+5. when sigma=+1, the source mean-zero condition.
+
+These are finitely many homogeneous continuous linear conditions on the infinite-dimensional far-profile space.
+
+Their common kernel is infinite dimensional.
+
+The reconstruction map
+
+psi_far -> psi_far+psi_J
+
+is injective because the far component is unchanged.
+
+Therefore:
+
+boxed:
+for lambda=+1 and lambda=-1,
+the ambient dyadic eigenspace contains an infinite-dimensional mean-zero family with G_c w=0 on both physical edge neighborhoods.
+
+## 8. Three-chain eigenspaces
+
+Now take
+
+lambda in
+{
+-gamma,
+(1+sqrt17)/(2sqrt2),
+(1-sqrt17)/(2sqrt2)
+}.
+
+Let
+
+epsilon_lambda
+=
+-1
+
+for lambda=-gamma,
+
+and
+
+epsilon_lambda
+=
++1
+
+for the two roots of
+
+z^2-gamma z-2=0.
+
+Let
+
+m_lambda
+=
+0
+
+for lambda=-gamma,
+
+and
+
+m_lambda
+=
+lambda-gamma
+
+for the two symmetric roots.
+
+Every source in the lambda-eigenspace has one free profile
+
+phi in L2(0,omega)
+
+and the fiber pattern
+
+boxed:
+w_phi(t)
+=
+phi(t),
+
+w_phi(a+t)
+=
+m_lambda phi(t),
+
+w_phi(2a+t)
+=
+epsilon_lambda phi(t),
+
+0<t<omega.
+
+The vectors are:
+
+(1,0,-1)
+
+for lambda=-gamma,
+
+and
+
+(1,lambda-gamma,1)
+
+for the two symmetric eigenvalues.
+
+## 9. Remove the diagonal singularity for the construction
+
+Choose epsilon>0 much smaller than
+
+u,
+
+s-u,
+
+and the relevant cell gaps.
+
+Restrict the free profile space to profiles satisfying
+
+phi=0
+
+on small neighborhoods of
+
+0
+
+and
+
+omega.
+
+This is still infinite dimensional.
+
+Then on the two physical edge neighborhoods:
+
+- the origin/diagonal singular source germ is absent;
+- the dyadic prime samples at log2 and log4 vanish because they sample phi near the zero endpoint germs;
+- the log3 sample lies in a dyadic gap;
+- only the log5 sample survives.
+
+Thus the edge equations become analytic second-kind equations just as in the two-chain case.
+
+## 10. Right-edge equation for the three-chain modes
+
+At
+
+x=c-eta,
+
+the log5 delay samples
+
+d+eta
+=
+2a+s+eta,
+
+which lies in the terminal dyadic cell and equals
+
+epsilon_lambda phi(s+eta).
+
+Therefore
+
+boxed:
+F_(w_phi)''(c-eta)
+=
+(A_R^lambda phi)(eta)
++
+a_5 epsilon_lambda phi(s+eta),
+
+where
+
+a_5=log5/sqrt5
+
+and
+
+A_R^lambda
+
+is a bounded analytic integral operator on the endpoint-truncated profile class.
+
+## 11. Left-edge equation for the three-chain modes
+
+At
+
+x=-c+eta,
+
+the log5 delay samples
+
+L-d-eta
+=
+u-eta,
+
+which lies in the first dyadic cell.
+
+Hence
+
+boxed:
+F_(w_phi)''(-c+eta)
+=
+(A_L^lambda phi)(eta)
++
+a_5 phi(u-eta).
+
+Again
+
+A_L^lambda
+
+is bounded and analytic on the chosen endpoint-truncated profile class.
+
+Because
+
+0<u<s<omega,
+
+small profile intervals around
+
+u
+
+and
+
+s
+
+may be chosen disjoint and separated from the source endpoints.
+
+## 12. Three-chain second-kind solvability
+
+Let
+
+I_L=(u-epsilon,u),
+
+I_R=(s,s+epsilon).
+
+Treat
+
+phi|_(I_L union I_R)
+
+as the unknown local profile and the rest of phi as arbitrary far data.
+
+Exactly as in Section 6, the edge equations have the form
+
+a_5
+diag(I,epsilon_lambda I)
+E phi_J
++
+K_J phi_J
+=
+-
+K_far phi_far,
+
+with
+
+||K_J||=O(epsilon).
+
+Thus for sufficiently small epsilon, the local system is invertible.
+
+Arbitrary far data determine unique local pieces that make
+
+F''=0
+
+on both physical edge neighborhoods.
+
+The remaining:
+
+- two slope constraints;
+- two centering constraints;
+- and, when needed, one source mean-zero constraint
+
+are finitely many homogeneous scalar conditions on an infinite-dimensional far-profile space.
+
+Hence each three-chain eigenspace also contains an infinite-dimensional mean-zero family satisfying
+
+boxed:
+(G_c w)|_U=0
+
+on both physical edge neighborhoods.
+
+## 13. Ambient eigenspace flexibility theorem
+
+Combining Sections 7 and 12:
+
+boxed:
+For every
+lambda in spec(D),
+there exists epsilon_lambda>0 and an infinite-dimensional subspace
+
+E_lambda^edge
+subset
+ker(D-lambda I) intersect L0^2(0,L)
+
+such that
+
+(G_c w)|_(U_epsilon)=0
+
+on the union of the two physical edge neighborhoods.
+
+This is the dyadic eigenspace edge-flexibility theorem registered in the terminology file.
+
+The construction is exact for the Suzuki screw operator, not merely for the principal logarithmic approximation.
+
+## 14. The edge-flat eigenspace is not contained in K_c
+
+The regular kernel
+
+K_c
+
+is finite dimensional.
+
+Each
+
+E_lambda^edge
+
+is infinite dimensional.
+
+Therefore
+
+boxed:
+E_lambda^edge
+is not contained in K_c.
+
+In particular there exist
+
+0!=w in E_lambda^edge
+
+with
+
+w notin K_c.
+
+For such a w,
+
+n=Q_K w
+
+is nonzero and satisfies
+
+G_c n
+=
+G_c w,
+
+because the K_c projection has zero field.
+
+Hence
+
+boxed:
+there are nonzero sources n in K_c^perp,
+generated from explicit D-eigenmodes,
+whose G_c field vanishes on both physical edge neighborhoods.
+
+Therefore the finite edge Runge gate fails on the full ambient spectral-eigenspace escape family.
+
+## 15. Why this does not contradict series-57
+
+Series-57 does not use the whole eigenspace.
+
+Its primary sources are
+
+w_lambda
+=
+P_lambda f
+
+with one common
+
+f in V=K_c^{ps}.
+
+The five w_lambda are coupled by:
+
+1. the global kernel equation
+   G_c f=0;
+
+2. prime silence
+   (D+N)f=0;
+
+3. the identity
+   f=sum_lambda w_lambda;
+
+4. the fact that all five components arise from one finite-dimensional regular-kernel branch.
+
+The ambient edge-flexibility construction ignores these cross-lambda/global constraints.
+
+Therefore it does not produce a nonzero vector in
+
+K_c^{ps}.
+
+It proves only that:
+
+boxed:
+the explicit dyadic fiber pattern is insufficient by itself to establish edge Runge.
+
+## 16. Kernel-generated spectral-shadow edge gate
+
+The remaining positive statement must therefore be joint.
+
+Let U be the union of prescribed physical edge neighborhoods, or a prescribed Sigma_c neighborhood.
+
+A sufficient spectral-shadow edge theorem is:
+
+boxed:
+f in K_c^{ps},
+
+(G_c P_lambda f)|_U=0
+for every lambda in spec(D)
+
+implies
+
+f=0,
+
+together with the analogous secondary-field conditions if the K_c-valued shadow ejections carry part of the detector.
+
+This is the kernel-generated spectral-shadow edge gate registered in the terminology file.
+
+Dyadic eigenspace edge flexibility proves that the gate must use the common origin f, not merely properties of each eigenspace separately.
+
+## 17. Commutator representation of actual spectral-shadow fields
+
+There is one exact extra structure available on the true shadow range.
+
+For
+
+f in K_c,
+
+G_c f=0.
+
+Since each spectral projection is a polynomial in D,
+
+P_lambda
+=
+q_lambda(D),
+
+we have
+
+boxed:
+G_c P_lambda f
+=
+[G_c,q_lambda(D)]f.
+
+Using
+
+[G_c,D^j]
+=
+sum_(r=0)^(j-1)
+D^(j-1-r)
+[G_c,D]
+D^r,
+
+every true shadow field is a finite boundary-commutator expression generated from the original kernel vector.
+
+Thus the actual shadow range is much smaller than the ambient edge-flexible eigenspace.
+
+This is the new structure that a future edge theorem must exploit.
+
+## 18. Why the commutator formula does not close immediately
+
+The commutator expansion contains
+
+D^r f.
+
+For r>0 these ambient orbit vectors need not lie in K_c.
+
+Series-56 already supplied the correct recustody mechanism:
+
+D^r f
+=
+A_r f
++
+R_r f,
+
+with
+
+A_r f in K_c^{ps}
+
+and R_r a finite ejection word.
+
+Therefore the shadow-field commutator can itself be recustodied into:
+
+1. boundary commutators of genuine prime-silent kernel vectors A_r f;
+2. finite nonkernel ejection-word fields.
+
+This is finite and legal.
+
+But no theorem yet shows that vanishing of the resulting sum on a physical edge forces all components to vanish.
+
+So the edge Runge problem has become a finite coupled boundary-commutator problem, not an eigenspace problem.
+
+## 19. Result
+
+The spectral-shadow edge-Runge experiment has a precise negative/positive outcome.
+
+Negative:
+
+1. every one of the five ambient dyadic eigenspaces has infinite local edge flexibility;
+2. explicit 2-/3-point fiber patterns do not supply local unique continuation;
+3. the finite edge Runge gate fails on the full ambient eigenspace escape family.
+
+Positive:
+
+1. the actual shadow fields are not arbitrary eigenmodes;
+2. each is a finite commutator polynomial
+   [G_c,q_lambda(D)]f
+   of one common f in K_c^{ps};
+3. series-56 recustodies every ambient D-orbit term appearing in that commutator;
+4. therefore the remaining edge gate is finite, coupled, and fully typed.
+
+The surviving obstruction is now:
+
+boxed:
+joint boundary-commutator rigidity for the five spectral shadows of one common prime-silent kernel vector.
+
+## Fixed-L status
+
+This pass does not prove
+
+K_c^{ps}=0
+
+through the full four-delay chamber.
+
+The last load-bearing continuous prime-channel injectivity range remains
+
+0<L<=log(16/3).
+
+The canonical theorem cursor remains
+
+SZ-CROSS-COLLAR-3.
+
+## Next frontier
+
+Next target:
+
+SZ-KERNEL-EDGE-GERM-59 / SHADOW COMMUTATOR RECUSTODY
+
+The next pass should expand
+
+G_c P_lambda f
+=
+[G_c,q_lambda(D)]f
+
+for all five lambda and recustody every D^r f term.
+
+Priority:
+
+1. derive a common finite basis of boundary-commutator source fields for all five spectral shadows;
+
+2. use the Vandermonde/spectral-projection coefficients to determine the exact rank of the five shadow-field combinations in that common basis;
+
+3. separate kernel-custodied commutator fields from K_c^perp ejection fields;
+
+4. test whether joint vanishing of all five shadow fields on a physical edge neighborhood forces the common boundary-commutator basis to vanish;
+
+5. if yes, use the no-raw-descent / small-support positivity mechanism to kill f.
+
+A successful rank theorem at this stage would prove the kernel-generated spectral-shadow edge gate.
+
+No public promotion and no canonical cursor movement are asserted.
