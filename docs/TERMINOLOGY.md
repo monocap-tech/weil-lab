@@ -990,3 +990,18 @@ c-ell=-c+(2c-ell),
 the right-oriented blind physical half is the left-oriented visible physical half. Thus membership in the bilateral visible-superflat subspace makes the right-blind source germ itself (L^2)-superflat at every reflected site.
 
 This term is currently research-local and unratified. It does not assert that the full source vanishes near a reflected site, only that both one-sided visible mass functions are superflat there.
+
+
+## Arithmetic ratio germ
+
+An **arithmetic ratio germ** is a local source germ created by the exact threshold equation when a prime-power delay (lambda=log m) acts inside a larger threshold delay (ell=log n).
+
+Its source location in right-oriented coordinates is
+
+[
+ell-lambda=log(n/m).
+]
+
+If (m) and (n) are powers of the same prime and (mmid n), this difference is another prime-power hinge. Otherwise it is an **off-hinge ratio germ**: a rough interior source germ sampled directly by the prime translation term even though its location is not one of the original edge prime singular sites.
+
+These terms are currently research-local and unratified. They describe source custody under multi-delay first-kind equations; they do not create a new singularity of the screw kernel at that physical point.
