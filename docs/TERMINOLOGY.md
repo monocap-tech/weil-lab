@@ -1614,3 +1614,54 @@ intersection_{m=0}^{dim(V)-1} ker(Ecal B^m)={0}.
 This property is **symmetric first-prime observability**. It is the prime-pair analogue of dynamic one-sided ejection observability and is directly visible to the symmetric prime-silent equation.
 
 This term is research-local and unratified.
+
+
+## Nondyadic edge operator
+
+In the four-delay chamber let
+
+b=log3,
+d=log5,
+
+and define the weighted **nondyadic edge operator**
+
+N
+=
+beta C_b
++
+delta C_d,
+
+where C_lambda=S_lambda^+ + S_lambda^-.
+
+Because b,d>L/2, both C_b and C_d are two-edge partial swaps. Writing
+
+r=d-b=log(5/3),
+w_b=L-b=r+(L-d),
+
+the b-edge coordinate interval has length w_b<2r. In the decomposition into left/right b-edge blocks,
+
+C_b=[[0,I],[I,0]],
+
+C_d=[[0,T],[T^*,0]],
+
+where T is the truncated left shift by r on L2(0,w_b) and T^2=0.
+
+Hence
+
+N=[[0,beta I+delta T],[beta I+delta T^*,0]]
+
+on the b-edge space and N=0 on the central gap.
+
+Its spectrum is
+
+{0, +-beta, +-sigma_+, +-sigma_-},
+
+where sigma_+^2 and sigma_-^2 are the two roots of
+
+x^2-(2 beta^2+delta^2)x+beta^4=0.
+
+Equivalently N satisfies the degree-seven polynomial
+
+z(z^2-beta^2)(z^4-(2 beta^2+delta^2)z^2+beta^4)=0.
+
+This term is research-local and unratified.
