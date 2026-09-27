@@ -1290,3 +1290,26 @@ Hence det K3=(det M0)^3=1.
 More generally the same construction defines an r-sheet scattering block Kr with det Kr=(det M0)^r.
 
 This term is research-local and unratified. In the four-delay chamber only r=1,2,3 occur. A separate causal past-tap term may enter the first sheet when x>k-h; K3 denotes the homogeneous local scattering block after that past contribution is separated.
+
+
+## Causal lag injection
+
+In the four-delay three-sheet transfer, the backward tap column simplifies exactly to
+
+c_minus = (beta/delta) e1 = eta e1,
+
+with eta=beta/delta.
+
+After the active k-sheets are stacked and the internal backward taps are absorbed into the lower-triangular scattering block Kr, the only external history dependence is the scalar past coordinate
+
+X(x-(k-h)).
+
+For r active sheets its injection vector has first-coordinate blocks
+
+-eta, eta^2, ..., (-1)^r eta^r
+
+and zero second-coordinate blocks.
+
+This rank-one delayed forcing is the **causal lag injection**. It is causal because k-h>0. For the exact Weil weights eta<9/10.
+
+This term is research-local and unratified. It isolates the sole remaining nonlocal ingredient after finite k-sheet closure.
