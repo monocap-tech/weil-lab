@@ -1239,3 +1239,18 @@ They encode the entrance relation S=R X and the terminal relation S=R^(-1) X. Wh
 The resulting zero-bulk unmatched closure determinant is beta (mu^2-G^2)/(G delta^2), which is strictly positive for the exact Weil weights.
 
 This term is research-local and unratified. Gated endpoint atoms may require corrected graph subspaces with an additional translated-sheet coordinate.
+
+
+## Gated endpoint graph
+
+When the post-p terminal k-gate is active, the gate-free endpoint graph line S=R^(-1)X is replaced by the **gated endpoint graph** on the doubled state (V(x),V(x+k)):
+
+S(x) - R^(-1) X(x) + (beta/delta) S(x+k) = 0.
+
+Equivalently, with W=(X,S,X_k,S_k), the terminal endpoint row is
+
+(-R^(-1), 1, 0, beta/delta) W = 0.
+
+The gate-free endpoint graph line is recovered when the translated-sheet term is absent.
+
+This term is research-local and unratified. It identifies the exact remaining endpoint closure condition after the zero-bulk identity-sheet artifact is removed.
