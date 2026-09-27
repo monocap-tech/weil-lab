@@ -1480,3 +1480,22 @@ Because u<3k, at most three consecutive k-translates can occur in one local wind
 When the causal predecessor y-k is followed, the base of the sliding k-window moves backward by k. The new window overlaps the old one but is not represented by adding a permanent m=-1 sheet to the same local stack.
 
 This term is research-local and unratified. It replaces the unsafe interpretation of the four-delay residue alphabet as a fixed global column set.
+
+
+## Irrational sliding-window cocycle
+
+Set
+h=log(81/80),
+k=log(16/15),
+p=log(10/9).
+
+In the basis (log2,log3,log5), their exponent vectors are
+h=(-4,4,-1),
+k=(4,-1,-1),
+p=(1,-2,1).
+
+The determinant of this integer matrix is -1, so h,k,p are Q-linearly independent.
+
+The **irrational sliding-window cocycle** is the global exact-row system obtained by moving the finite local k-window through the compact equations. Although only at most three consecutive k-translates coexist locally, the window base drifts through an infinite dense residue orbit. Therefore finite local window width does not imply finite global residue closure.
+
+This term is research-local and unratified.
