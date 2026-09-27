@@ -1522,3 +1522,80 @@ This property holds for every nonzero V subset K_c. If a nonzero vector were ann
 For a prime-silent regular-kernel branch V=K_c^{ps}, the prime translation equation forces the dynamically observable first-prime ejection to be reproduced exactly by the weighted compensator ejections from the opposite first-prime direction and the other active prime delays.
 
 This term is research-local and unratified.
+
+
+## Symmetrized ejection
+
+Let R be reflection of the source interval, let V_epsilon be a parity subspace of a reflection-invariant regular-kernel branch, and let Pi_epsilon be the orthogonal projection onto V_epsilon. For an active delay lambda define
+
+C_lambda = S_lambda^+ + S_lambda^-,
+
+and the **symmetrized ejection**
+
+Ecal_lambda
+=
+(I-Pi_epsilon) C_lambda|_{V_epsilon}.
+
+If f has parity epsilon, then the oriented ejections satisfy
+
+E_{lambda,-} f
+=
+epsilon R E_{lambda,+} f,
+
+so
+
+Ecal_lambda f
+=
+E_{lambda,+}f+E_{lambda,-}f
+=
+2 P_epsilon E_{lambda,+}f.
+
+Thus the opposite-parity component of the one-sided ejection cancels within the same plus/minus prime pair and is invisible to prime silence.
+
+This term is research-local and unratified.
+
+## Dyadic prime reduction
+
+Let a=log2 and
+
+D_a
+=
+P_(0,a)
++
+P_(L-a,L)
+
+be the sum of the two boundary-strip multiplication projections in right-oriented source coordinates.
+
+For the symmetric first-prime shift
+
+C_a=S_a^+ + S_a^-,
+
+the exact truncated-shift identity is
+
+C_(2a)
+=
+C_a^2
+-
+2I
++
+D_a.
+
+Since log4=2a, the four-delay prime-silent equation is equivalently
+
+gamma C_a^2
++
+C_a
++
+beta C_(log3)
++
+delta C_(log5)
++
+gamma D_a
+-
+2 gamma I
+=
+0.
+
+This is the **dyadic prime reduction**. It shows that the log4 channel is a polynomial recurrence of the log2 channel plus an explicit boundary correction, not an independent compensator direction.
+
+This term is research-local and unratified.
