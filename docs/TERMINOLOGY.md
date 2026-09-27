@@ -1344,3 +1344,26 @@ K_r [ W(y-h) - d_r X(y-k) ],
 with d_r=(d,0,...,0)^T.
 
 This term is research-local and unratified. The finite causal path expansion reduces global closure to finitely many endpoint path matrices; their nonvanishing is a separate transversality problem.
+
+
+## p-defect relay
+
+In the post-p four-delay chamber, the finite-tap transfer derived from the P/J overlap is not valid on the entire lower defect. For 0<t<e define the **p-defect relay**
+
+P(t)=X(p+t),
+Q(t)=S(p+t).
+
+On 0<t<e-h the exact lower-defect equations are
+
+mu P(t+h)
+=
+G X(t)+delta S(t)+beta S(t+k),
+
+mu Q(t+h)
+=
+G S(t)-mu P(t)+delta X(t)
++beta 1_(t>k) X(t-k).
+
+Thus the relay is triangular: P(t+h) is determined directly from the base k-sheet state, while Q(t+h) depends on the current scalar P(t) but Q(t) does not feed forward. The relay introduces no independent p-lattice.
+
+This term is research-local and unratified. It repairs the domain gap in treating the P/J finite-tap recurrence as a globally complete head recurrence.
