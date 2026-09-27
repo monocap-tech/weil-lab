@@ -2163,3 +2163,91 @@ and
 (D+N)f=0.
 
 This term is research-local and unratified.
+
+
+## Four-field shadow commutator basis
+
+Let V=K_c^{ps}, let D be the dyadic finite-spectrum block with spectral projections P_lambda, and let G_c be the regular screw operator.
+
+For f in V, G_c f=0. Since every P_lambda is a degree-at-most-four polynomial
+
+P_lambda=q_lambda(D)=sum_(j=0)^4 q_(lambda,j) D^j,
+
+the five spectral-shadow fields satisfy
+
+G_c P_lambda f
+=
+sum_(j=1)^4
+q_(lambda,j) G_c D^j f.
+
+Conversely,
+
+G_c D^j f
+=
+sum_lambda
+lambda^j G_c P_lambda f,
+j=1,...,4.
+
+The 5-by-4 coefficient matrix (q_(lambda,j)) has rank four, because the five Lagrange polynomials q_lambda form a basis of the degree-at-most-four polynomial space and sum_lambda q_lambda=1.
+
+Thus the five shadow fields have exactly four independent operator directions. The family
+
+K_j f:=G_c D^j f,
+j=1,...,4,
+
+is the **four-field shadow commutator basis**.
+
+For every open set U,
+
+(G_c P_lambda f)|_U=0 for every lambda
+
+iff
+
+(K_j f)|_U=0 for j=1,...,4.
+
+This term is research-local and unratified.
+
+## Twelve-channel shadow recustody
+
+For j=1,...,4 write the exact recustody split
+
+D^j f
+=
+A_j f
++
+R_j f,
+
+with A_j f in V and R_j f in V^perp.
+
+Further split
+
+R_j f
+=
+H_j f
++
+N_j f,
+
+where
+
+H_j f=Pi_K R_j f in K_c,
+
+N_j f=Q_K R_j f in K_c^perp.
+
+Since G_c A_j f=G_c H_j f=0,
+
+G_c D^j f
+=
+G_c N_j f.
+
+The **twelve-channel shadow recustody** is the K_c^perp family
+
+N_j f,
+Q_K T H_j f,
+Q_K T^2 H_j f,
+j=1,...,4,
+
+with T=S_(log2)^+.
+
+The fifteen spectral-shadow escape channels of GERM-57 are fixed rank-four linear combinations of these twelve channels. Hence the twelve-channel family is jointly injective on V and has a positive finite-dimensional norm floor.
+
+This term is research-local and unratified.
