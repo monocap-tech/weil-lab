@@ -1041,3 +1041,21 @@ g_{ell-lambda}.
 Here (g_d) denotes the local source germ at the ratio location (d). The operator records arithmetic multi-cell custody only; it does not include the archimedean cell transforms or the same-prime/endpoint terms already absorbed into the superflat remainder.
 
 These terms are currently research-local and unratified.
+
+
+## Arithmetic center lattice
+
+The **arithmetic center lattice** associated to the active prime bases is the additive subgroup
+
+[
+Gamma_c
+=
+sum_{p:,log p<2c}mathbb Z,log p
+subsetmathbb R.
+]
+
+Its points in ((0,2c)) are **reachable arithmetic centers** for movable-center bookkeeping: repeated shifts by active prime delays move source locations and centers within this additive group.
+
+When at least two distinct prime bases are active, (Gamma_c) is dense in (mathbb R), because the logarithms of distinct primes have irrational ratio.
+
+This term is currently research-local and unratified. Density of the arithmetic center lattice concerns center reachability; it does not assert regularity or pointwise evaluation of (L^2) kernel vectors.
