@@ -1141,3 +1141,27 @@ W(t)=(V(t),V(p+t)),
 with only finitely many additional gated k=log(16/15) translations.
 
 This term is research-local and unratified. It describes the finite-state recurrence mechanism; it does not assert injectivity or shrinking-collar coercivity.
+
+
+## Paired defect block
+
+In the post-p boundary transfer, when the defect width e satisfies k < e <= k+h, the only defect-internal k-feedback pairs the lower strip 0<t<e-k with the upper strip k<t<e.
+
+After folding t with t+k, the local coefficient block on the four scalar values (X(t),S(t),X(t+k),S(t+k)) is
+
+D1 =
+[[G, delta, 0, beta],
+ [delta, G, 0, 0],
+ [0, 0, G, delta],
+ [beta, 0, delta, G]].
+
+This is the **paired defect block**. Its determinant factors as
+
+det D1
+=
+-(-G^2 + G beta + delta^2)
+ ( G^2 + G beta - delta^2).
+
+For the exact Weil weights both factors are positive, so the paired defect block is invertible.
+
+This term is research-local and unratified. Invertibility of the paired defect block excludes local rank loss from the single k-feedback pair; it does not by itself prove global boundary transversality.
