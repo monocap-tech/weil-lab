@@ -1599,3 +1599,18 @@ gamma D_a
 This is the **dyadic prime reduction**. It shows that the log4 channel is a polynomial recurrence of the log2 channel plus an explicit boundary correction, not an independent compensator direction.
 
 This term is research-local and unratified.
+
+
+## Symmetric first-prime observability
+
+Let a=log2 and C_a=S_a^+ + S_a^- on L2(0,L). In the four-delay chamber log5<L<=log6, one has 2a<L<3a. Fiber decomposition modulo a shows
+
+spec(C_a)={sqrt(2),0,-sqrt(2),1,-1}.
+
+The four-delay prime-silent equation excludes a nonzero eigenvector of C_a at each of these five eigenvalues. Therefore, for every finite-dimensional V subset ker(P_c), if Pi_V is orthogonal projection, B=Pi_V C_a|_V, and Ecal=(I-Pi_V)C_a|_V, then
+
+intersection_{m=0}^{dim(V)-1} ker(Ecal B^m)={0}.
+
+This property is **symmetric first-prime observability**. It is the prime-pair analogue of dynamic one-sided ejection observability and is directly visible to the symmetric prime-silent equation.
+
+This term is research-local and unratified.
