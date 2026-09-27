@@ -1367,3 +1367,30 @@ G S(t)-mu P(t)+delta X(t)
 Thus the relay is triangular: P(t+h) is determined directly from the base k-sheet state, while Q(t+h) depends on the current scalar P(t) but Q(t) does not feed forward. The relay introduces no independent p-lattice.
 
 This term is research-local and unratified. It repairs the domain gap in treating the P/J finite-tap recurrence as a globally complete head recurrence.
+
+
+## Relay Schur closure
+
+For the p-defect relay define the base forcing functionals
+
+A(t) = [G X(t)+delta S(t)+beta S(t+k)]/mu,
+
+B(t) = [G S(t)+delta X(t)+beta 1_(t>k) X(t-k)]/mu.
+
+Then on h<t<e,
+
+P(t)=A(t-h),
+
+Q(t)=B(t-h)-P(t-h).
+
+On the terminal relay strip max(0,e-h)<t<e, the exact endpoint constraint is P(t)=B(t).
+
+Therefore, wherever t>h, relay closure reduces to the scalar base-state equation
+
+A(t-h)=B(t).
+
+On the part of the terminal strip with t<h, P(t) is supplied by the P/J overlap output at x=p+t-h and is equated to B(t).
+
+This elimination of the relay variables is the **relay Schur closure**. It shows that the nilpotent relay contributes no independent recurrence state; it contributes a finite terminal closure row on the base transfer system.
+
+This term is research-local and unratified.
