@@ -1433,3 +1433,24 @@ with negative entries understood modulo h.
 The ordering can be certified without transcendental comparison by exponentiating: exp(h), exp(kappa), and exp(rho) are rational numbers, so every residue-order comparison reduces to an integer/rational inequality.
 
 This term is research-local and unratified. It is a per-dependency-component alphabet; it does not assert that the full function space decomposes into ten global residue classes.
+
+
+## Provenance-labeled residue state
+
+In the four-delay residue alphabet, a residue coordinate must retain its path label
+
+(m, epsilon),
+
+with m in {-2,-1,0,1,2} recording net k-sheet displacement and epsilon in {0,1} recording whether the one-way p-relay has been used.
+
+The **provenance-labeled residue state** is the pair consisting of the geometric h-residue and this label. Shift transitions are permitted only when the path budget allows them:
+
+- h-shift: (m,epsilon) -> (m,epsilon);
+- +k: (m,epsilon) -> (m+1,epsilon) only for m<2;
+- -k: (m,epsilon) -> (m-1,epsilon) only for m>-2;
+- +p: (m,0) -> (m,1);
+- no +p transition from epsilon=1.
+
+This label is load-bearing for matrix generation. Treating the ten residues as unlabeled points can create spurious third k-moves or repeated p-relays and therefore a false enlarged matrix.
+
+This term is research-local and unratified.
