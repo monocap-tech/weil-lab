@@ -1,0 +1,120 @@
+{
+  "format": "GERM74-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-74",
+  "standing": "UNRATIFIED",
+  "entry_commit": "5a3c0f58618e9ad5f24577f34e40d2fe43d87a7f",
+  "verifier_path": "tools/sz_fourth_section_internal_wrap_audit.py",
+  "verifier_sha256": "455da5af8ed16e6c3de3a03004e7232df3c73f24b62e27686ae449bd041ca5b1",
+  "verifier_git_blob": "2d6823b87496ea021797c05e243acec4222b8dcb",
+  "stdout_sha256": "bb7ba8c9c3813b69a6b13574a3750e423f84a5420484f1fdd77f00bf1e1171e8",
+  "complete_compact_audit_sha256": "dc82059bc911d6459e53e2d54f06d06d5dfb14d27e4da4624874ed776107c40d",
+  "execution_exit_code": 0,
+  "new_exclusion_scope": "3h-alpha<e<=3h-beta",
+  "experimental_endpoint": "log(3^3692/(2^4196*5^712))",
+  "parent_GERM72_correction": "RETAINED; factor 40 not used",
+  "physical_recalculation": "FRESH OUTWARD RATIONAL PAIRED-SOURCE SOLVES; grid 10^60",
+  "domain_certificate": "Third maps lift to original source steps once; every higher composition checks the proved lower domain at every intermediate source and verifies the affine target identity.",
+  "third_word_dictionary": {
+    "Q": [
+      "01-",
+      "11+",
+      "11+"
+    ],
+    "P": [
+      "11-",
+      "11+",
+      "11+",
+      "10+"
+    ],
+    "D": [
+      "01-",
+      "11+",
+      "11+",
+      "10+"
+    ],
+    "I": [
+      "11-",
+      "11+",
+      "11+",
+      "11+"
+    ]
+  },
+  "fourth_word_dictionary": {
+    "E": [
+      "Q",
+      "P"
+    ],
+    "J0": [
+      "Q",
+      "P",
+      "D"
+    ],
+    "J1": [
+      "Q",
+      "I",
+      "P"
+    ]
+  },
+  "fifth_word_dictionary": {
+    "0/4": [
+      "J0",
+      "E",
+      "E",
+      "E"
+    ],
+    "0/5": [
+      "J0",
+      "E",
+      "E",
+      "E",
+      "E"
+    ],
+    "1/4": [
+      "J1",
+      "E",
+      "E",
+      "E"
+    ],
+    "1/5": [
+      "J1",
+      "E",
+      "E",
+      "E",
+      "E"
+    ]
+  },
+  "sixth_chart": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "0",
+      "3"
+    ]
+  ],
+  "distinct_sixth_matrices": 41,
+  "sixth_low_domain_cells": 4,
+  "sixth_high_domain_cells": 39,
+  "common_forward_backward_factor": "8000",
+  "minimum_forward_lower": "41256.0115171278",
+  "minimum_forward_word": "18/19",
+  "minimum_backward_lower": "8230.6999492448",
+  "minimum_backward_word": "18/19",
+  "original_rotation_lengths": [
+    31129,
+    32783
+  ],
+  "upper_endpoint_faces": "delta=gamma; only s=N-1 for N=19,20; checked directly",
+  "new_guard_word": [
+    "11-",
+    "11+",
+    "11+"
+  ],
+  "new_guard_domain": "delta=gamma+zeta; 0<w<zeta<xi; third source alpha+w",
+  "complete_output": "Run verifier for complete indented JSON; bundle includes full indented and compact outputs.",
+  "full_parent_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE"
+}
