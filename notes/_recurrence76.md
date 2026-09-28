@@ -7,64 +7,78 @@
 **Entry commit:** 39da808600e0b7edee589317bf0baf396c103bba  
 **Public promotion:** forbidden
 
-## 0. Result
+## 0. Result and exact scope
 
-The first fifteenth-visit sixth-return matrix from GERM-75 is elliptic, but its legal first return to a smaller exterior section necessarily contains surrounding non-elliptic atoms. Grouping the forced sequence restores a uniform cone certificate.
-
-Define
-
-\[
-\eta_7=\xi-\omega,\qquad
-\chi_7=2\omega-\xi,\qquad
-\psi_7=2\xi-3\omega.
-\]
-
-The new source-equation theorem is
+The fifteenth-visit sixth-return matrix identified at the end of GERM-75 is genuinely elliptic, but its legal forced neighbors admit a new exterior first-return section with a common cone certificate.
 
 \[
 \boxed{
 3h-\beta+14\xi<e\le3h-\beta+14\xi+\eta_7
-\Longrightarrow x=0
-\text{ in both scalar parity kernels}.
+\Longrightarrow
+x=0
+\text{ in both scalar parity kernels},
 }
 \]
 
-Together with inherited coverage and the GERM-60 reconstruction, the experimental ambient endpoint is
+where
+
+\[
+\eta_7=\xi-\omega.
+\]
+
+Together with the inherited GERM-63/65–75 coverage and GERM-60 reconstruction, the experimental ambient endpoint becomes
 
 \[
 \boxed{
 L_{76}
 =
 \log\!\left(
-\frac{3^{1222107}}
-{2^{1390428}5^{235392}}
+\frac{3^{1222107}}{2^{1390428}5^{235392}}
 \right)
 =
-1.7112120261385615638\ldots .
+1.7112120261385615638\ldots.
 }
 \]
 
-This remains an unratified source-equation result. The inherited three-layer local formulas still extend through \(e=3h\). No canonical ratification, full-form-domain persistence theorem, selected-packet custody statement, or RH conclusion is added.
+The upper endpoint is included. This remains a scoped, unratified source-equation result. No exclusion above \(L_{76}\), canonical ratification, full-form-domain persistence theorem, selected-packet custody theorem, or RH conclusion is asserted.
 
-## 1. Custody
+Companion records are docs/TERMINOLOGY_GERM76.md, tools/sz_fifteen_visit_forced_neighbor_audit.py, and notes/_recurrence76_audit.json.
 
-Governance remains notes/SZ_CROSS_COLLAR_RATIFICATION_20260926.md and the pre-65 refold remains the integration record. The GERM-72 correction issued in GERM-73 remains in force.
+## 1. Source custody
 
-The new verifier pins tools/sz_fourth_section_self_overlap_audit.py by SHA-256
+The GERM-72 source-word correction remains in force. GERM-75 already proves the typed third-, fourth-, fifth-, and sixth-section source contracts used here. This pass does not rebuild those layers or restart flat orbit enumeration.
+
+Only the three sixth-return atoms adjacent to the new boundary are needed:
 
 \[
-\texttt{805831ec2a937babcd3bb37a4528af22fc17cdade5dcee032befb592a79149fd}.
+A_{19}=B_{14,19},
+\qquad
+A_{20}=B_{14,20},
+\qquad
+E_{20}=B_{15,20}.
 \]
 
-It freshly recalculates the physical matrices through that source stack at rational grid \(10^{60}\). Rounded parent matrices are not used as numerical proof input.
+Here \(E_{20}\) is the first fifteenth-visit atom. GERM-75 certifies it as projectively elliptic, so no generator-wise expanding-cone claim is made for it.
 
-Companion artifacts are:
+The verifier pins the GERM-75 verifier SHA-256
 
-- docs/TERMINOLOGY_GERM76.md;
-- tools/sz_fifteen_visit_forced_neighbor_audit.py;
-- notes/_recurrence76_audit.json.
+~~~text
+805831ec2a937babcd3bb37a4528af22fc17cdade5dcee032befb592a79149fd
+~~~
 
-## 2. Residual arithmetic
+and freshly recalculates the physical matrices through the inherited outward-rational source solver on the \(10^{60}\) grid.
+
+## 2. Seventh residual scale
+
+Define
+
+\[
+\eta_7=\xi-\omega,
+\qquad
+\chi_7=2\omega-\xi,
+\qquad
+\psi_7=2\xi-3\omega.
+\]
 
 Exact prime-power comparisons certify
 
@@ -75,56 +89,78 @@ Exact prime-power comparisons certify
 and
 
 \[
-\eta_7=\chi_7+\psi_7,\qquad
-\omega=\eta_7+\chi_7,\qquad
+\boxed{
+\eta_7=\chi_7+\psi_7,
+\qquad
+\omega=\eta_7+\chi_7,
+\qquad
 \xi=2\eta_7+\chi_7.
+}
+\]
+
+In the \((h,k)\) basis,
+
+\[
+\begin{aligned}
+\xi&=8593h-1654k,\\
+\omega&=-161724h+31129k,\\
+\eta_7&=170317h-32783k,\\
+\chi_7&=-332041h+63912k,\\
+\psi_7&=502358h-96695k.
+\end{aligned}
 \]
 
 For orientation only,
 
 \[
-\begin{aligned}
-\xi&=3.8605890045692569\cdot10^{-7},\\
-\omega&=2.4479594089087864\cdot10^{-7},\\
-\eta_7&=1.4126295956604706\cdot10^{-7},\\
-\chi_7&=1.0353298132483158\cdot10^{-7},\\
-\psi_7&=3.7729978241215486\cdot10^{-8}.
-\end{aligned}
+\eta_7\approx1.41255895869\times10^{-7},
+\quad
+\chi_7\approx1.03546881292\times10^{-7},
+\quad
+\psi_7\approx3.77094693249\times10^{-8}.
 \]
 
-Write
+Write the GERM-75 overlap width as
 
 \[
-d=\zeta-14\xi.
+\zeta=14\xi+d.
 \]
 
-GERM-76 treats
+The present pass treats
 
 \[
-0<d\le\eta_7.
+\boxed{0<d\le\eta_7.}
 \]
 
-The affine domain audit also certifies the rational enclosure
-
-\[
-\frac{777}{157}<\frac{\beta}{\gamma}<\frac{292}{59}.
-\]
+The domain audit verifies that this whole strip remains inside the GERM-75 sixth-section formula scope.
 
 ## 3. Seventh exterior section
 
-In the GERM-75 sixth-section circle \(0<y<\xi\), use
+In the GERM-75 sixth-section circle \(0<y<\xi\), choose
 
 \[
 \mathcal U_7=(2\eta_7,\xi).
 \]
 
-With
+Set
 
 \[
-y=2\eta_7+z,\qquad0<z<\chi_7,
+y=2\eta_7+z,
+\qquad
+0<z<\chi_7.
 \]
 
-the first return takes three steps when \(z>\psi_7\) and five steps when \(z<\psi_7\). In the section coordinate,
+The first return takes either three or five sixth-return steps:
+
+\[
+N(z)=
+\begin{cases}
+3,&\psi_7<z<\chi_7,\\
+5,&0<z<\psi_7.
+\end{cases}
+\]
+
+In the \(z\)-coordinate,
 
 \[
 \boxed{
@@ -132,35 +168,30 @@ S_7(z)=z-\psi_7\pmod{\chi_7}.
 }
 \]
 
-The two branches tile the \(\chi_7\)-circle, so the induced map is invertible and Lebesgue-measure preserving.
+The two translation images tile the \(\chi_7\)-circle up to endpoints, so \(S_7\) is invertible and Lebesgue-measure preserving.
 
 ## 4. Five legal complete words
 
-Only three sixth-return atoms occur:
+For the three-step branch:
 
-\[
-A_{19}=B_{14,19},\qquad
-A_{20}=B_{14,20},\qquad
-E_{20}=B_{15,20}.
-\]
+~~~text
+3out : A20, A20, A19
+3in  : A20, E20, A19
+~~~
 
-The five complete first-return words are:
+For the five-step branch:
 
-| type | chronological sixth-return word |
-| --- | --- |
-| 3out | \(A_{20},A_{20},A_{19}\) |
-| 3in | \(A_{20},E_{20},A_{19}\) |
-| 5out | \(A_{20},A_{20},A_{19},A_{20},A_{19}\) |
-| 5one | \(A_{20},E_{20},A_{19},A_{20},A_{19}\) |
-| 5two | \(A_{20},E_{20},A_{19},E_{20},A_{19}\) |
+~~~text
+5out : A20, A20, A19, A20, A19
+5one : A20, E20, A19, A20, A19
+5two : A20, E20, A19, E20, A19
+~~~
 
-The five-step branch therefore contains zero, one, or two elliptic \(E_{20}\) visits. A second visit can only occur after the first.
+Every intermediate source is checked against the already-proved GERM-75 sixth-return contract, and every affine output is required to equal the next input exactly. The endpoint \(d=\eta_7\) is checked directly.
 
-At \(d=\eta_7\), only 3in and 5two survive generically. Both endpoint faces are checked directly.
+The three-step words contain 96,695 original rotation steps. The five-step words contain 160,607. These are temporal products of \(2\times2\) matrices, not matrices of those dimensions.
 
-Every complete word has determinant one.
-
-## 5. Common cone
+## 5. Common rational cone certificate
 
 Use
 
@@ -172,57 +203,56 @@ C_{76}=
 \end{pmatrix}.
 \]
 
-Every conjugated complete return has strictly positive entries. Certified forward/backward lower factors are:
+Fresh outward rational arithmetic proves every entry of \(C_{76}^{-1}BC_{76}\) strictly positive for all five complete returns. No overall sign change is needed.
 
-| word | forward | backward |
+| word | forward factor | backward factor |
 | --- | ---: | ---: |
-| 3out | \(>76.4809\) | \(>105.3357\) |
-| 3in | \(>12.5150\) | \(>12.0261\) |
-| 5out | \(>1586.8816\) | \(>2186.7783\) |
-| 5one | \(>207.1842\) | \(>287.9598\) |
-| 5two | \(>30.8054\) | \(>25.4734\) |
+| 3out | \(>76.4809175528\) | \(>105.3357346073\) |
+| 3in | \(>12.5150991391\) | \(>12.0261122779\) |
+| 5out | \(>1586.8816360261\) | \(>2186.7783511693\) |
+| 5one | \(>207.1842039116\) | \(>287.9598515422\) |
+| 5two | \(>30.8054906505\) | \(>25.4734915551\) |
 
-Hence the weakened uniform statement is
+Hence
 
 \[
 \boxed{
-\|B'z\|_1\ge12\|z\|_1\quad(z\in C_+),
+\|B'z\|_1\ge12\|z\|_1
+\quad(z\in C_+),
 \qquad
-\|(B')^{-1}z\|_1\ge12\|z\|_1\quad(z\in C_-).
+\|(B')^{-1}z\|_1\ge12\|z\|_1
+\quad(z\in C_-).
 }
 \]
 
-This is a complete-return estimate. No expanding norm is asserted for \(E_{20}\) by itself.
+The factor 12 is per complete seventh return, not per original step and not an expanding norm for \(E_{20}\) alone.
 
-## 6. Domain certificate and \(L^2\) exclusion
+## 6. L2 exclusion and reconstruction
 
-Every sixth-return atom is already a typed GERM-75 source word. GERM-76 substitutes each affine seventh-section intermediate argument into those complete lower-level domain contracts.
+Restrict the inherited two-coordinate scalar-source observation to \(\mathcal U_7\) and apply \(C_{76}^{-1}\). This remains an \(L^2\) field.
 
-The generic cells check respectively 552, 552, 915, 915, and 915 affine margins on exact rational-polytope vertices. The immediate above-scope guard checks another 907 margins.
+On a common full-measure source set, the certified equations give the induced seventh-return recurrence. Forward expansion on the same-sign cone and backward inverse expansion on the opposite-sign cone, together with measure preservation, imply vanishing almost everywhere by the same integral argument used in the preceding passes.
 
-Thus legality is established through every intermediate source, not inferred from endpoint bits or spectra.
+The invertible sixth-return atoms then propagate zero to the full GERM-75 sixth circle. The inherited finite reconstruction propagates zero through the fifth, fourth, third, second, and first sections, the \(h\)-circle, low head, middle bands, and tail.
 
-The section field is an \(L^2\) restriction/translation of the actual two-coordinate scalar-source observation. After conjugating by \(C_{76}\), forward same-sign expansion and backward opposite-sign expansion, together with measure preservation, force the section field to vanish almost everywhere. Applying the argument separately to real and imaginary parts covers complex profiles.
-
-The finite invertible return maps then reconstruct zero through the GERM-75 sixth section and the inherited fifth, fourth, third, second, first, and \(h\)-circle sections. The established local reconstruction finally kills the low head, middle bands, and tail.
+All reconstruction statements concern actual source solutions; no surjectivity from arbitrary vector cocycles is assumed.
 
 ## 7. Endpoint arithmetic
 
-The new residual is
+The GERM-75 endpoint is
 
 \[
-\eta_7=170317h-32783k.
+e_{75}=3h-\beta+14\xi.
+\]
+
+Adding \(\eta_7\) gives
+
+\[
+e_{76}=3h-\beta+14\xi+\eta_7
+=291500h-56108k.
 \]
 
 Therefore
-
-\[
-3h-\beta+14\xi+\eta_7
-=
-291500h-56108k.
-\]
-
-Adding \(\log(16/3)\),
 
 \[
 L_{76}
@@ -232,107 +262,122 @@ L_{76}
 -235392\log5,
 \]
 
-which gives the exact expression in Section 0.
-
-The increment over \(L_{75}\) is exactly \(\eta_7\).
-
-Combining with the inherited ambient equivalence,
+equivalently
 
 \[
 \boxed{
-\ker P_c=\{0\},\qquad
-K_c^{\rm ps}=K_c\cap\ker P_c=\{0\},\qquad
+L_{76}
+=
+\log\!\left(
+\frac{3^{1222107}}{2^{1390428}5^{235392}}
+\right).
+}
+\]
+
+Numerically,
+
+\[
+L_{76}=1.7112120261385615638\ldots.
+\]
+
+The remaining distance to the inherited local three-layer endpoint is
+
+\[
+3h-e_{76}\approx3.19674287814\times10^{-5}.
+\]
+
+In the same unratified experimental scope,
+
+\[
+\boxed{
+\ker P_c=\{0\},
+\qquad
+K_c^{\rm ps}=K_c\cap\ker P_c=\{0\},
+\qquad
 0<L\le L_{76}.
 }
 \]
 
-The \(K_c\) statement remains in the regular-kernel scope.
+The \(K_c\) conclusion retains its regular-kernel scope.
 
-## 8. Exact stop
+## 8. Exact stopping word
 
-Immediately above the endpoint, let
+Immediately above \(d=\eta_7\), the seventh-section source itself enters the overlap. On the certified first new strip the required five-step word is
 
-\[
-d=\eta_7+\epsilon_*,
-\qquad
-0<z<\epsilon_*<
-\min(\psi_7,\chi_7-\psi_7).
-\]
+~~~text
+E20, E20, A19, E20, A19
+~~~
 
-The seventh-section source itself is now active. The first new five-step word is
+with positive determinant and
 
 \[
-\boxed{
-E_{20},E_{20},A_{19},E_{20},A_{19}.
-}
+-1.2071973591<
+\operatorname{tr}B_{\rm next}
+<-1.2071973590,
 \]
-
-Its source strip is certified exactly. The corresponding matrix satisfies
-
-\[
--1.2071973591<\operatorname{tr}B_{\rm new}<-1.2071973590,
-\]
-
-and
 
 \[
 -2.5426745365<
-(\operatorname{tr}B_{\rm new})^2-4\det B_{\rm new}
+(\operatorname{tr}B_{\rm next})^2-4\det B_{\rm next}
 <-2.5426745364.
 \]
 
-It is projectively elliptic. This stops the current five-word cone library, but does not construct a nonzero kernel or rule out another forced-neighbor induction.
+Thus the immediate new complete return is projectively elliptic. It cannot simply join the present common expanding-cone library. This does not construct a nonzero kernel and does not rule out another forced-neighbor induction.
 
-The remaining already-derived three-layer interval is
+The remaining already-derived three-layer range is
 
 \[
 3h-\beta+14\xi+\eta_7<e\le3h.
 \]
 
-The full unresolved four-delay range remains
-
-\[
-L_{76}<L\le\log6.
-\]
+The full unresolved four-delay range remains \(L_{76}<L\le\log6\).
 
 ## 9. Execution receipt
 
-The final local verifier completed successfully with exit code zero.
+Run with assertions enabled:
 
-Executed source SHA-256:
+~~~text
+python tools/sz_fifteen_visit_forced_neighbor_audit.py
+~~~
 
-\[
-\texttt{f823d55f9bc9f27b00c89d6d766c526fa44cc4c1ed11cc897ffd2758328a6bbc}.
-\]
+The verifier replayed successfully with exit code zero, and the replay output was byte-identical to the recorded successful output.
 
-Complete stdout SHA-256:
+Verifier SHA-256:
 
-\[
-\texttt{72a11e4cbf603b0aacc8b5f1b47a9edbcea56b20b668d7198262a76a275586b7}.
-\]
+~~~text
+f823d55f9bc9f27b00c89d6d766c526fa44cc4c1ed11cc897ffd2758328a6bbc
+~~~
 
-The committed verifier differs from the executed local file only in comments/formatting; every non-comment load-bearing line was compared line-by-line and matched exactly. The repository blob is recorded separately in the audit receipt.
+Repository Git blob:
 
-The full parent symbolic suites, full GERM-60 reduction, and old large determinant inventory were not rerun. This is an outward-rational computational certificate accompanying the written source-domain and \(L^2\) proof, not Lean certification or canonical ratification.
+~~~text
+e50144183dd2dd663f62c022dac8ee42df27812e
+~~~
+
+Complete indented stdout SHA-256:
+
+~~~text
+72a11e4cbf603b0aacc8b5f1b47a9edbcea56b20b668d7198262a76a275586b7
+~~~
+
+The full parent symbolic suites, full GERM-60 reduction, and old large determinant inventory were not rerun. This is a rational computational certificate accompanying the written source-domain and \(L^2\) proof, not Lean certification or canonical ratification.
 
 ## 10. Next individual target
 
-\[
-\boxed{
-\texttt{SZ-KERNEL-EDGE-GERM-77 / SEVENTH-SECTION SELF-OVERLAP CONTROL}.
-}
-\]
+~~~text
+SZ-KERNEL-EDGE-GERM-77 / SEVENTH-SECTION SELF-OVERLAP CONTROL
+~~~
 
-Start from the new elliptic five-step word and its exact source strip. Preserve the typed GERM-75 source domains and physical section coordinates. Seek forced-neighbor or section-dependent control; do not restart flat determinant enumeration or reopen the stopped screw route.
+Start from the new elliptic five-step word and its exact activation strip. Preserve the GERM-72 correction, typed compositional source domains, physical translations, and the current three-layer formula boundary.
 
 ~~~text
 GERM-76: COMPLETE AS A SCOPED EXPERIMENTAL PASS
-B15,20 ELLIPTIC ATOM: ABSORBED INTO FIVE COMPLETE SEVENTH RETURNS
-SEVENTH SECTION: ROTATION BY -psi7 ON A chi7-CIRCLE
+FIFTEENTH-VISIT ELLIPTIC ATOM: ABSORBED BY FORCED NEIGHBORS
+SEVENTH EXTERIOR SECTION: FIVE COMPLETE WORDS
 COMMON CONE FACTOR: 12
 NEW EXCLUSION: 0<d<=eta7
 EXPERIMENTAL ENDPOINT: L=log(3^1222107/(2^1390428*5^235392))
-FIRST ABOVE-SCOPE COMPLETE WORD: PROJECTIVELY ELLIPTIC
+FIRST ABOVE-SCOPE SEVENTH WORD: PROJECTIVELY ELLIPTIC
 THREE-LAYER LOCAL FORMULAS: STILL AVAILABLE THROUGH e=3h
 GERM-77: NOT EXECUTED
 CANONICAL THEOREM CURSOR: SZ-CROSS-COLLAR-3, UNCHANGED
