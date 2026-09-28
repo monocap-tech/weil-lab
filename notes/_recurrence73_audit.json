@@ -1,0 +1,150 @@
+{
+  "format": "GERM73-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-73",
+  "entry_commit": "e7ea1faf0a4c77439523b480b6d3f0c650c2bf99",
+  "standing": "UNRATIFIED",
+  "verifier_path": "tools/sz_fourth_section_elliptic_visit_audit.py",
+  "verifier_sha256": "1b36e699415e0ebf2a93946161745e5f8297132e7ab1c6f2930a73a19bbb483f",
+  "verifier_git_blob": "4fee37c9870b0f2f8220fefe04fa98085b15868b",
+  "stdout_sha256": "4aeeeb665bb5741122870da76762d8bf3bb9a5d282d85bf7f48874808b337df4",
+  "complete_compact_audit_sha256": "cd8602405239d16b4a66e1cd8198bd08d3766bd31bbbe9010051f18a13e33be5",
+  "execution_exit_code": 0,
+  "complete_output": "Run the verifier to reproduce full indented JSON; the bundle includes both serializations.",
+  "repair_scope": "3h-theta<e<=3h-theta+gamma",
+  "new_exclusion_scope": "3h-theta+gamma<e<=3h-alpha",
+  "experimental_endpoint": "log(2^3164*5^534/3^2777)",
+  "withdrawn_GERM72_claim": "Uncorrected A3/D3 assignments and factor 40. Its interval is recovered by the GERM-73 proof.",
+  "repair_factor": "5/2",
+  "new_factor": "2",
+  "repair_bounds": {
+    "A": [
+      -1,
+      "8.4665570271",
+      "6.3410136798"
+    ],
+    "O": [
+      1,
+      "24.5464559697",
+      "18.9019512961"
+    ],
+    "J": [
+      1,
+      "2.5466877051",
+      "3.0671910311"
+    ]
+  },
+  "new_bounds": {
+    "0/4": [
+      -1,
+      "2247.5785569458",
+      "1680.9445271841",
+      1357
+    ],
+    "1/4": [
+      -1,
+      "131.3355192855",
+      "63.6600622333",
+      1357
+    ],
+    "2/4": [
+      1,
+      "6.6480000918",
+      "4.4308611758",
+      1357
+    ],
+    "3/4": [
+      1,
+      "2.8340347804",
+      "2.4645255569",
+      1357
+    ],
+    "0/5": [
+      1,
+      "20444.1235307482",
+      "15289.9448716500",
+      1654
+    ],
+    "1/5": [
+      1,
+      "1194.3730043840",
+      "579.0309007201",
+      1654
+    ],
+    "2/5": [
+      -1,
+      "62.0472853884",
+      "40.6207640608",
+      1654
+    ],
+    "3/5": [
+      -1,
+      "24.0714187238",
+      "21.7387742099",
+      1654
+    ],
+    "4/5": [
+      -1,
+      "2.1773864353",
+      "2.4386965587",
+      1654
+    ]
+  },
+  "exact_geometry": {
+    "normalization": "gamma=1; 49/10<beta/gamma<5; variables (r,epsilon,seed)",
+    "old_word_counterexamples": {
+      "A": {
+        "vertices": 2,
+        "checked_margins": 781,
+        "weak_global": [],
+        "rejected": [
+          "00-",
+          "00+",
+          "00+"
+        ],
+        "required": [
+          "01-",
+          "11+",
+          "10+"
+        ]
+      },
+      "D": {
+        "vertices": 2,
+        "checked_margins": 1029,
+        "weak_global": [],
+        "rejected": [
+          "00-",
+          "00+",
+          "00+",
+          "00+"
+        ],
+        "required": [
+          "01-",
+          "11+",
+          "11+",
+          "10+"
+        ]
+      }
+    },
+    "third_map_cells": 4,
+    "fourth_map_cells": 4,
+    "new_word_cells": 9,
+    "new_word_margin_tests": 83776,
+    "repair_endpoint_faces": 2,
+    "new_endpoint_faces": 2,
+    "fifth_map": "z -> z+(beta-4gamma) mod gamma",
+    "image_tiling": "(beta-4gamma,gamma) and (0,beta-4gamma)",
+    "source_expansion": "THIRD -> GERM-71 SECOND -> GERM-71 FIRST -> original six-map words",
+    "above_scope_domain": "epsilon=beta+delta; 0<v<delta<gamma",
+    "above_scope_second_word": [
+      "11-",
+      "11+",
+      "11+",
+      "11+"
+    ],
+    "sampled_topology": false
+  },
+  "full_parent_symbolic_suites_rerun": false,
+  "large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE"
+}
