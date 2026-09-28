@@ -1,0 +1,66 @@
+{
+  "format": "GERM76-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-76",
+  "standing": "UNRATIFIED",
+  "entry_commit": "39da808600e0b7edee589317bf0baf396c103bba",
+  "verifier_path": "tools/sz_fifteen_visit_forced_neighbor_audit.py",
+  "executed_local_verifier_sha256": "f823d55f9bc9f27b00c89d6d766c526fa44cc4c1ed11cc897ffd2758328a6bbc",
+  "executed_stdout_sha256": "72a11e4cbf603b0aacc8b5f1b47a9edbcea56b20b668d7198262a76a275586b7",
+  "repository_verifier_blob_after_readback": "a7afdb6db63dd0c185eb95d7f6d9eb990401bd59",
+  "repository_vs_executed_load_bearing_lines": "EXACT MATCH; differences are comment/formatting only",
+  "execution_exit_code": 0,
+  "new_exclusion_scope": "3h-beta+14xi<e<=3h-beta+14xi+eta7",
+  "experimental_endpoint": "log(3^1222107/(2^1390428*5^235392))",
+  "direct_dependency_sha256": {
+    "tools/sz_fourth_section_self_overlap_audit.py": "805831ec2a937babcd3bb37a4528af22fc17cdade5dcee032befb592a79149fd"
+  },
+  "residuals": {
+    "eta7": "xi-omega",
+    "chi7": "2omega-xi",
+    "psi7": "2xi-3omega",
+    "relations": "eta7=chi7+psi7; omega=eta7+chi7; xi=2eta7+chi7"
+  },
+  "seventh_section": "2eta7<y<xi",
+  "seventh_section_coordinate": "0<z<chi7",
+  "seventh_map": "z -> z-psi7 mod chi7",
+  "return_times": [3,5],
+  "atom_dictionary": {
+    "A19": [14,19],
+    "A20": [14,20],
+    "E20": [15,20]
+  },
+  "five_complete_words": {
+    "3out": ["A20","A20","A19"],
+    "3in": ["A20","E20","A19"],
+    "5out": ["A20","A20","A19","A20","A19"],
+    "5one": ["A20","E20","A19","A20","A19"],
+    "5two": ["A20","E20","A19","E20","A19"]
+  },
+  "cone_chart": [["1","1"],["-5/2","-3"]],
+  "common_forward_backward_factor": "12",
+  "lower_bounds": {
+    "3out": ["76.4809175528","105.3357346073"],
+    "3in": ["12.5150991391","12.0261122779"],
+    "5out": ["1586.8816360261","2186.7783511693"],
+    "5one": ["207.1842039116","287.9598515422"],
+    "5two": ["30.8054906505","25.4734915551"]
+  },
+  "domain_margin_counts": {
+    "3out": 552,
+    "3in": 552,
+    "5out": 915,
+    "5one": 915,
+    "5two": 915,
+    "above_scope_guard": 907
+  },
+  "above_scope_word": ["E20","E20","A19","E20","A19"],
+  "above_scope_trace": ["-1.2071973591","-1.2071973590"],
+  "above_scope_discriminant": ["-2.5426745365","-2.5426745364"],
+  "above_scope_status": "PROJECTIVELY ELLIPTIC",
+  "sampled_topology_used": false,
+  "floating_sign_tests_used": false,
+  "full_parent_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE"
+}
