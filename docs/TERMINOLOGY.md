@@ -2462,3 +2462,82 @@ Equivalently, it asks whether the collar leakage
 (\mathcal L_{c,a}u) can vanish for some (a>c).
 
 **Status:** branch-local RPB terminology.
+
+
+## Screw--Weil collar equivalence
+
+Let (h\in H_0^1(-c,c)), extend (h) by zero, put
+
+```math
+u=Dh=i h',
+```
+
+and define the screw potential
+
+```math
+F_u=g*u.
+```
+
+Using the distributional identity
+
+```math
+-g''=W,
+```
+
+integration by parts gives
+
+```math
+F_u=i,g'*h,
+\qquad
+F_u'=-i,W*h.
+```
+
+The **screw--Weil collar equivalence** is therefore
+
+```math
+F_u
+\text{ constant on an open interval }I
+\iff
+W*h=0
+\text{ on }I
+```
+
+in the distributional sense.
+
+For a screw-visible endpoint neutral mode, persistence of the screw kernel to a
+strictly larger support is thus the core-regular form of the existing
+compact-window Weil null-extension/collar problem.
+
+**Status:** branch-local RPB terminology.
+
+## Arithmetic-kink regularity transfer
+
+For (t>0), Suzuki's zeta screw function has prime part
+
+```math
+g_{\rm pr}(t)
+=
+\sum_{\log n\le t}
+\frac{\Lambda(n)}{\sqrt n}
+(t-\log n).
+```
+
+For a compactly supported source (u), convolution across the moving kinks
+(t=\log n) yields, on a right exterior region,
+
+```math
+\frac{d^2}{dx^2}
+(g_{\rm pr}*u)(x)
+=
+\sum_n
+\frac{\Lambda(n)}{\sqrt n}
+u(x-\log n)
+```
+
+for the finitely many delays whose shifted arguments meet the source support.
+
+The **arithmetic-kink regularity transfer** is the fact that piecewise
+analyticity of (g) does not make (g*u) analytic: the prime kinks transfer
+the source regularity into finitely many delayed copies of (u).
+
+**Status:** branch-local RPB terminology.
