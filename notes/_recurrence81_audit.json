@@ -1,0 +1,171 @@
+{
+  "format": "GERM81-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-81",
+  "standing": "UNRATIFIED",
+  "entry_commit": "f20cf72ce881d68d9b343f911d6e7d5db08da968",
+  "verifier_path": "tools/sz_post_chi7_sixth_atom_audit.py",
+  "verifier_sha256": "f68e1f1bb2924462740bf54d992f50e76126a1de5d27717f5c2b5e504d979f17",
+  "verifier_git_blob": "8bb3c2dfbd33d3b092af8e4c6580579bea05b2c6",
+  "stdout_sha256": "01b29dab7256045bde981373094c0ae6ff10fedbacf8cea6964b54b4bb6eb90e",
+  "compact_complete_audit_sha256": "e18bf4275b8793cb9a907e4fab5c61eba85289af3a177f3fcd1e0472ac231815",
+  "execution_exit_code": 0,
+  "parent_GERM80_entry_replay_exit_code": 0,
+  "parent_GERM80_stdout_sha256": "d3ed7a8fc1157f406335e1c8e4c0c1dfdc1d8eb428cb1fd6790068938adccf16",
+  "parent_GERM80_recorded_stdout_match": true,
+  "new_exclusion_scope": "0<t<=sigma8, t=e-e80; L80<L<=L80+sigma8",
+  "experimental_endpoint": "log(3^7540488/(2^8579064*5^1452381))",
+  "increment": "sigma8",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "direct_dependency_sha256": {
+    "tools/sz_ninth_return_double_internal_audit.py": "febb0139baf1962838a937d5034670dcf0a1719f363c60605a88c7dd49ae9f3c"
+  },
+  "sixth_atom_dictionary": {
+    "A19": [
+      14,
+      19
+    ],
+    "E19": [
+      15,
+      19
+    ],
+    "E20": [
+      15,
+      20
+    ]
+  },
+  "seventh_word_dictionary": {
+    "U0": [
+      "E20",
+      "E20",
+      "A19"
+    ],
+    "U1": [
+      "E20",
+      "E20",
+      "E19"
+    ],
+    "V0": [
+      "E20",
+      "E20",
+      "A19",
+      "E20",
+      "A19"
+    ],
+    "V1": [
+      "E20",
+      "E20",
+      "E19",
+      "E20",
+      "A19"
+    ]
+  },
+  "eighth_word_dictionary": {
+    "A0": [
+      "V0",
+      "U0"
+    ],
+    "A1": [
+      "V1",
+      "U0"
+    ],
+    "B0": [
+      "V0",
+      "U0",
+      "U0"
+    ],
+    "B1": [
+      "V1",
+      "U0",
+      "U0"
+    ]
+  },
+  "ninth_word_dictionary": {
+    "P": [
+      "A0",
+      "B0",
+      "B0"
+    ],
+    "Q": [
+      "A1",
+      "B0",
+      "B0"
+    ],
+    "R": [
+      "A0",
+      "B0",
+      "B0",
+      "B0"
+    ],
+    "S": [
+      "A1",
+      "B0",
+      "B0",
+      "B0"
+    ]
+  },
+  "matrix_namespace": "GERM-81-local; not unchanged GERM-80 labels",
+  "formula_scopes": {
+    "sixth": "0<t<eta7",
+    "seventh": "0<t<chi7",
+    "eighth": "0<t<=psi7",
+    "ninth": "0<t<=sigma8"
+  },
+  "distinct_temporal_words": 23,
+  "low_domain_cells": 4,
+  "high_domain_cells": 21,
+  "shared_words": 2,
+  "chart": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "-8/5",
+      "8"
+    ]
+  ],
+  "common_forward_backward_factor": "75",
+  "minimum_forward_lower": "76.4597515893",
+  "minimum_backward_lower": "93.6191445456",
+  "original_step_counts": [
+    12838933,
+    14158226
+  ],
+  "endpoint_words": [
+    "new S^9 Q",
+    "new S^10 Q"
+  ],
+  "next_ninth_eighth_word": [
+    "A1",
+    "B0",
+    "B0",
+    "B1"
+  ],
+  "next_trace": [
+    [
+      [
+        "-118.5360808867",
+        "-118.5360808866"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "14046.8024719764",
+        "14046.8024719765"
+      ]
+    ]
+  ],
+  "next_status": "HYPERBOLIC; present chart has opposite row signs",
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Bundle includes complete stdout and compact output; pinned verifier reproduces stdout.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
