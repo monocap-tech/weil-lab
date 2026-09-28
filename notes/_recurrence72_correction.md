@@ -36,7 +36,7 @@ For example, choose `epsilon=gamma/2` and `v=3theta/4`. The second-section point
 ```
 Their exact overlap bits are `0,1,1,0`; hence the required word is `01-,11+,10+`. The analogous D3 witness is `v=alpha/2`, with bits `0,1,1,1,0`. GERM-73 certifies all these inequalities and their original-step lifts by exact affine tests, not sampled topology.
 
-GERM-72's Q3 and P3 assignments survive this audit. Its four-/five-letter composition arithmetic was not the missing obligation: the unchecked ordinary-word source domains were.
+GERM-72's Q3 and P3 assignments survive this audit. Its matrix-product arithmetic was not the missing obligation: the unchecked ordinary-word source domains were.
 
 ## Consequences
 
