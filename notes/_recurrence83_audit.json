@@ -1,0 +1,158 @@
+{
+  "format": "GERM83-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-83",
+  "standing": "UNRATIFIED",
+  "entry_commit": "d0d9a9258a5c33defcce9d3430ab4b628ebbfe99",
+  "verifier_path": "tools/sz_post_psi7_eighth_map_audit.py",
+  "verifier_sha256": "77d3aa03a9cd6b92d1203b746aba6c1c55ed02adcfcdffa86d33b54349609708",
+  "verifier_git_blob": "8b0b4889e2ecda0668e90138a51823ab9fefffb6",
+  "stdout_sha256": "cab2908540875e1b30cbd08d1b300efc30c5db48664764e842f6f9f24ee243b9",
+  "compact_complete_audit_sha256": "d277f19329cf41a6efcf0c7a0a7be728d9fd968cc17960890efe000e33386f28",
+  "execution_exit_code": 0,
+  "parent_GERM82_entry_replay_exit_code": 0,
+  "parent_GERM82_stdout_sha256": "e5aca38ee3c63d6b96fed9e7da1cf17ddc0e01ab4befecd3f2762286aaebba15",
+  "parent_GERM82_recorded_stdout_match": true,
+  "new_exclusion_scope": "psi7<t<=2psi7-2sigma8, t=e-e80; L82<L<=L82+psi7-2sigma8",
+  "experimental_endpoint": "log(2^12945856*5^2191647/3^11378629)",
+  "increment": "psi7-2sigma8=sigma8+rho9",
+  "direct_dependency_sha256": {
+    "tools/sz_post_sigma8_ninth_map_audit.py": "d1aef82e5dfc3673867f327b7fbcaff788f6c93f6cdbf099f38d10c8dc35e164"
+  },
+  "matrix_namespace": "U_i,V_i are GERM-81-local; A,D,E and ninth words are GERM-83-local",
+  "eighth_word_dictionary": {
+    "A": [
+      "V1",
+      "U0"
+    ],
+    "D": [
+      "V1",
+      "U0",
+      "U0"
+    ],
+    "E": [
+      "V1",
+      "U0",
+      "U1"
+    ]
+  },
+  "eighth_formula_scope": "psi7<t<=chi7-psi7, equivalently 0<a<=nu8",
+  "ninth_word_dictionary": {
+    "0/3": [
+      "A",
+      "D",
+      "D"
+    ],
+    "1/3": [
+      "A",
+      "D",
+      "E"
+    ],
+    "0/4": [
+      "A",
+      "D",
+      "D",
+      "D"
+    ],
+    "1/4": [
+      "A",
+      "D",
+      "D",
+      "E"
+    ],
+    "2/4": [
+      "A",
+      "D",
+      "E",
+      "E"
+    ]
+  },
+  "chart": [
+    [
+      "1",
+      "-1"
+    ],
+    [
+      "-12/5",
+      "21/10"
+    ]
+  ],
+  "same_chart_as_GERM82": true,
+  "common_forward_backward_factor": "13",
+  "signed_cone_bounds": {
+    "0/3": [
+      1,
+      "31.9750564213",
+      "34.7500602785"
+    ],
+    "1/3": [
+      -1,
+      "13.6484374279",
+      "14.4962295658"
+    ],
+    "0/4": [
+      1,
+      "205.3381249282",
+      "222.8330835644"
+    ],
+    "1/4": [
+      -1,
+      "89.9429607905",
+      "95.3474289513"
+    ],
+    "2/4": [
+      1,
+      "28.5340023901",
+      "25.3240462214"
+    ]
+  },
+  "original_step_counts": [
+    965296,
+    1319293
+  ],
+  "tenth_induction_used": false,
+  "new_retained_coordinates": 0,
+  "upper_endpoint_words": [
+    "A,D,E",
+    "A,D,E,E"
+  ],
+  "entry_regression": "A D^(n-1) equals GERM-82 B1^(n-1) A1 by literal substitution",
+  "formula_endpoint": "t=chi7-psi7: A/E faces checked, D disappears; no exclusion claimed through this formula endpoint",
+  "next_eighth_word": [
+    "A",
+    "E",
+    "E"
+  ],
+  "next_trace": [
+    [
+      [
+        "0.3437490284",
+        "0.3437490285"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "-3.8818366055",
+        "-3.8818366054"
+      ]
+    ]
+  ],
+  "next_domain": "a=amax+b; 0<y<b<c10",
+  "next_status": "ELLIPTIC COMPLETE NINTH RETURN; NO EXCLUSION ABOVE NEW ENDPOINT",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Bundle contains complete stdout and compact output; pinned verifier reproduces stdout.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
