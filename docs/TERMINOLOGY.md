@@ -2453,3 +2453,88 @@ Consequently every generic orbit has one constant coefficient template, independ
 The exceptional seeds that hit recurrence boundaries form a finite union of affine points and are null for the L2 problem.
 
 This term is research-local and unratified.
+
+
+## Single-scale multikappa parity chamber
+
+Let
+
+h=log(81/80),
+k=log(16/15),
+kappa=k-5h,
+
+and define the second return threshold
+
+lambda_ret
+=
+h-kappa
+=
+6h-k
+>0.
+
+The **single-scale multikappa parity chamber** is
+
+kappa < e <= lambda_ret
+
+inside the post-log(16/3) parity edge recurrence.
+
+In this chamber the only nonzero internal translation return of the lower defect that is needed for generic orbit closure is the kappa-return. The second independent return by lambda_ret has empty interior.
+
+Write
+
+e=n kappa + rho,
+
+with n in {1,2,3,4} and 0<=rho<kappa.
+
+For a generic fundamental seed y in (0,kappa), the lower-defect kappa-chain has:
+- n+1 points if 0<y<rho;
+- n points if rho<y<kappa.
+
+After adjoining the fixed recurrence shell and the parity-reflected companion chain, the only generic orbit-matrix sizes are
+
+124, 186, 248, 310, 372.
+
+This term is research-local and unratified.
+
+## Mixed-return onset
+
+With the same notation, the **mixed-return onset** is
+
+lambda_ret
+=
+h-kappa
+=
+6h-k.
+
+The exact incidence path
+
+t
+-> t+h
+-> t+2h
+-> ...
+-> t+6h
+-> t+6h-k
+=
+t+lambda_ret
+
+is admissible on
+
+0<t<e-lambda_ret.
+
+Thus the lambda_ret-return becomes internal exactly when
+
+e>lambda_ret.
+
+Since
+
+lambda_ret/kappa
+=
+h/kappa-1
+
+is irrational, the internal kappa- and lambda_ret-returns generate a genuine two-scale partial cocycle once e>lambda_ret.
+
+Therefore one periodic kappa-chain atomization cannot remain globally complete beyond this threshold.
+
+This corrects the coarser series-61 split at e=h: the first mixed return appears earlier, at e=h-kappa.
+
+This term is research-local and unratified.
