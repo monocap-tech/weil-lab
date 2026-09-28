@@ -1,0 +1,137 @@
+{
+  "format": "GERM77-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-77",
+  "standing": "UNRATIFIED",
+  "entry_commit": "dd887fa208fd91c7fa14284d2c3e4740fad6624f",
+  "verifier_path": "tools/sz_seventh_section_self_overlap_audit.py",
+  "verifier_sha256": "3b1f9d6316677668889d315beb171ffd79e8a3489c8c91c15b227d6344fe8431",
+  "verifier_git_blob": "e29f0ce2c06b0850080c5058c876d99ce15fa918",
+  "stdout_sha256": "2f73a1078b12a53b5644baab46811fbbd5d1387469b7c88b32335f83a8acbfe7",
+  "compact_complete_audit_sha256": "1e797eb40a036a9dced8ffb6549082e0c9ffa8bc0c13752acd85cb483533a4f0",
+  "execution_exit_code": 0,
+  "parent_GERM76_replay_exit_code": 0,
+  "parent_GERM76_replay_stdout_sha256": "72a11e4cbf603b0aacc8b5f1b47a9edbcea56b20b668d7198262a76a275586b7",
+  "parent_GERM76_recorded_stdout_match": true,
+  "new_exclusion_scope": "L76<L<=L76+psi7",
+  "experimental_endpoint": "log(3^3328234/(2^3786640*5^641055))",
+  "seventh_formula_scope": "0<delta<chi7",
+  "common_forward_backward_factor": "17",
+  "chart": [
+    [
+      "1",
+      "4"
+    ],
+    [
+      "-9/4",
+      "-11"
+    ]
+  ],
+  "arithmetic": {
+    "prime_power_checks": {
+      "psi_positive": "PASS",
+      "chi_gt_2psi": "PASS",
+      "chi_lt_3psi": "PASS",
+      "beta_gamma_lower": "PASS",
+      "beta_gamma_upper": "PASS",
+      "endpoint_below_3h": "PASS"
+    },
+    "endpoint_prime_log_vector": [
+      -3786640,
+      3328234,
+      -641055
+    ],
+    "endpoint_h_k_vector": [
+      793858,
+      -152803
+    ],
+    "endpoint_decimal": [
+      "1.71121206386853980502",
+      "1.71121206386853980503"
+    ],
+    "remaining_three_layer_width": [
+      "0.00003192969880320118",
+      "0.00003192969880320119"
+    ],
+    "corrected_GERM76_residual_decimals": {
+      "eta7": [
+        "0.0000001412629595660470612132",
+        "0.0000001412629595660470612133"
+      ],
+      "chi7": [
+        "0.0000001035329813248315753601",
+        "0.0000001035329813248315753602"
+      ],
+      "psi7": [
+        "0.0000000377299782412154858531",
+        "0.0000000377299782412154858532"
+      ]
+    },
+    "increment_psi7": [
+      "0.0000000377299782412154858531",
+      "0.0000000377299782412154858532"
+    ]
+  },
+  "cone_lower_bounds": {
+    "0/2": {
+      "sign": 1,
+      "forward_lower": "76.0643955383",
+      "backward_lower": "694.7949345701",
+      "original_step_count": 257302
+    },
+    "0/3": {
+      "sign": 1,
+      "forward_lower": "1302.2619876234",
+      "backward_lower": "11900.8684656055",
+      "original_step_count": 353997
+    },
+    "1/2": {
+      "sign": -1,
+      "forward_lower": "17.9087795699",
+      "backward_lower": "18.8058595131",
+      "original_step_count": 257302
+    },
+    "1/3": {
+      "sign": -1,
+      "forward_lower": "308.2676294962",
+      "backward_lower": "322.0089611921",
+      "original_step_count": 353997
+    }
+  },
+  "above_scope_trace": [
+    [
+      [
+        "-41.4490179157",
+        "-41.4490179156"
+      ]
+    ]
+  ],
+  "above_scope_status": "HYPERBOLIC; NEITHER OVERALL SIGN PRESERVES THE PRESENT QUADRANT",
+  "full_parent_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "complete_output": "Run the verifier; the bundle contains indented and compact complete JSON. This repository file is a receipt, not all stdout fields.",
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "source_domain_certificate": {
+    "sixth_atom_margins": {
+      "A19": 176,
+      "A20": 185,
+      "E20": 185
+    },
+    "seventh_map_margins": {
+      "U0": 34,
+      "U1": 34,
+      "V0": 51,
+      "V1": 51
+    },
+    "eighth_return_margins": {
+      "0/2": 23,
+      "0/3": 32,
+      "1/2": 23,
+      "1/3": 32
+    },
+    "upper_endpoint_faces": "1/2 and 1/3 checked exactly",
+    "first_above_scope_domain": "delta=psi7+a; 0<a<min(sigma,nu); sigma<z<sigma+a",
+    "above_scope_margins": 31,
+    "method": "Every new composition checks each proved lower source domain and exact next-input identity. Complete word dictionaries are in the executable and full stdout."
+  }
+}
