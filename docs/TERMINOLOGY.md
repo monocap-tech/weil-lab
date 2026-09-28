@@ -2538,3 +2538,81 @@ Therefore one periodic kappa-chain atomization cannot remain globally complete b
 This corrects the coarser series-61 split at e=h: the first mixed return appears earlier, at e=h-kappa.
 
 This term is research-local and unratified.
+
+
+## Partial mixed-return rotation
+
+In the parity edge recurrence let
+
+kappa = k-5h,
+
+lambda_ret = h-kappa,
+
+and
+
+tau = lambda_ret - 4 kappa.
+
+Series-63 proves
+
+4 kappa < lambda_ret < 5 kappa,
+
+hence
+
+0 < tau < kappa.
+
+For a lower-defect parameter e with
+
+lambda_ret < e < h = lambda_ret + kappa,
+
+the new lambda_ret-return is active exactly on
+
+0<t<e-lambda_ret.
+
+Since this interval has width strictly less than kappa, only the lowest representative y of a kappa-residue class can initiate the new return.
+
+Modulo kappa, the return sends
+
+y
+->
+y+tau mod kappa.
+
+The **partial mixed-return rotation** is this irrational rotation restricted to the active interval
+
+A_e=(0,e-lambda_ret)
+
+inside the residue circle R/(kappa Z).
+
+Every connected component is a finite path, because the irrational rotation orbit of any point is dense and therefore must leave the proper active interval in both time directions.
+
+For each fixed e<h the path lengths are uniformly bounded, although the bound diverges as e approaches h from below.
+
+This term is research-local and unratified.
+
+## Full mixed-return cocycle threshold
+
+At
+
+e=h=lambda_ret+kappa,
+
+the active interval of the partial mixed-return rotation fills the kappa-residue circle up to endpoints.
+
+Because
+
+tau/kappa is irrational,
+
+the generic residue orbit becomes infinite and dense.
+
+For e>h the base residue of every kappa-chain is active for the lambda_ret-return, and additional higher-level returns may also appear.
+
+The **full mixed-return cocycle threshold** is therefore
+
+e=h=log(81/80).
+
+This distinguishes:
+
+- lambda_ret < e < h: finite but nonperiodic partial-rotation paths;
+- e >= h: genuine infinite irrational return cocycle.
+
+This refines the earlier statement that the second return merely begins at e=lambda_ret.
+
+This term is research-local and unratified.
