@@ -1,0 +1,205 @@
+{
+  "format": "GERM85-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-85",
+  "standing": "UNRATIFIED",
+  "entry_commit": "fe2e3a73749606d30e0e46a3b1512fafa495e250",
+  "verifier_path": "tools/sz_post_psi7_tenth_all_internal_audit.py",
+  "verifier_sha256": "d1eaaed262ca98036d43743b52c927f04385a541d91dcb1aa073951a7a9c204c",
+  "verifier_git_blob": "ec50372532603cdc5faa5aa80dc496906f133e47",
+  "stdout_sha256": "ace38826a43e3727d2c51d3d0e7f5a81b50840aaa7ac5484dba7a17ee474e47d",
+  "compact_complete_audit_sha256": "3b665547d1ce458fe00c78ca5cae8f8a036452e43118235676883a87fefb8e94",
+  "execution_exit_code": 0,
+  "parent_GERM84_entry_replay_exit_code": 0,
+  "parent_GERM84_stdout_sha256": "0e97ac4592156512c51633b13e51caa290ebdb50d465b1f2214de956654630af",
+  "parent_GERM84_recorded_stdout_match": true,
+  "new_exclusion_scope": "rho9<b<=sigma8, b=e-e83; L84<L<=L84+c10",
+  "experimental_endpoint": "log(2^4173408*5^706529/3^3668172)",
+  "increment": "c10=sigma8-rho9",
+  "completed_window": "GERM-83 eighth formula domain through t=chi7-psi7",
+  "direct_dependency_sha256": {
+    "tools/sz_post_psi7_ninth_double_visit_audit.py": "7bb3f91f9a99ff741438763e9c9541820f78afc0560cc828f105ca765ddb1558"
+  },
+  "matrix_namespace": "P/Q/R/S are GERM-84-local; U/V are GERM-85-local tenth maps except the explicitly GERM-81-local next guard",
+  "tenth_word_dictionary": {
+    "V0": [
+      "Q",
+      "R",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S"
+    ],
+    "V1": [
+      "Q",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S"
+    ],
+    "U0": [
+      "Q",
+      "R",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S"
+    ],
+    "U1": [
+      "Q",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S"
+    ]
+  },
+  "chart": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "-53/25",
+      "-199/100"
+    ]
+  ],
+  "common_forward_backward_factor": "5/2",
+  "distinct_temporal_words": 11,
+  "low_domain_cells": 4,
+  "high_domain_cells": 9,
+  "shared_words": 2,
+  "signed_cone_bounds": {
+    "out/4": [
+      1,
+      "10611.1237644119",
+      "14419.7376469084"
+    ],
+    "out/5": [
+      1,
+      "115093.3205618902",
+      "156403.1131475269"
+    ],
+    "0/4": [
+      -1,
+      "522.1296866817",
+      "728.3994737606"
+    ],
+    "1/4": [
+      1,
+      "66.2802117506",
+      "189.4055655924"
+    ],
+    "2/4": [
+      -1,
+      "6.6712431065",
+      "17.9478780380"
+    ],
+    "3/4": [
+      -1,
+      "3.6865868968",
+      "3.8665556171"
+    ],
+    "0/5": [
+      -1,
+      "5663.2771475524",
+      "7900.5533694505"
+    ],
+    "1/5": [
+      1,
+      "719.1723692681",
+      "2054.5945549400"
+    ],
+    "2/5": [
+      -1,
+      "76.1914198039",
+      "200.7248568271"
+    ],
+    "3/5": [
+      1,
+      "6.6679994044",
+      "12.5068996943"
+    ],
+    "4/5": [
+      1,
+      "3.6976959311",
+      "2.8531471022"
+    ]
+  },
+  "original_step_counts": [
+    55313611,
+    69471837
+  ],
+  "upper_endpoint_words": [
+    "U1^3 V1",
+    "U1^4 V1"
+  ],
+  "endpoint_source_checks": [
+    "GERM-83 eighth A/E",
+    "GERM-84 ninth Q/S",
+    "GERM-85 tenth V1/U1",
+    "both eleventh full-internal words"
+  ],
+  "remaining_eighth_formula_width": "ZERO",
+  "remaining_three_layer_width": [
+    "0.00003179809279703395427971888149026221",
+    "0.00003179809279703395427971888149026222"
+  ],
+  "next_seventh_word": [
+    "V1",
+    "U1"
+  ],
+  "next_matrix_namespace": "GERM-81-local U1 V1",
+  "next_trace": [
+    [
+      [
+        "14.6654817840",
+        "14.6654817841"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "211.0763559580",
+        "211.0763559581"
+      ]
+    ]
+  ],
+  "next_domain": "t=chi7-psi7+a; 0<z<a<sigma8",
+  "next_status": "HYPERBOLIC NEW EIGHTH WORD; NO EXCLUSION ABOVE COMPLETED WINDOW",
+  "initial_local_attempt": "Stopped at an exact endpoint-vector assertion due to a transcribed h-coefficient; corrected before final execution, assertion retained",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Both complete serializations are in the bundle; pinned verifier reproduces stdout.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
