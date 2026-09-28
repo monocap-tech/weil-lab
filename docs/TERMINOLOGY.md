@@ -2654,3 +2654,85 @@ forces all such germs to vanish.
 This is stronger and more specific than black-box logarithmic-Laplacian UCP.
 
 **Status:** branch-local RPB terminology.
+
+
+## Prime-log delay group
+
+For a support radius \(c\), let
+
+\`\`\`math
+\mathcal D_{c+}
+=
+\{\log(p^m):p^m\le e^{2c}\}
+\`\`\`
+
+with the equality convention appropriate to strict-right enlargement.
+
+The **prime-log delay group** is
+
+\`\`\`math
+\Gamma_c
+=
+\operatorname{span}_{\mathbb Z}\mathcal D_{c+}
+=
+\sum_{p\le e^{2c}}
+\mathbb Z\log p,
+\`\`\`
+
+where only primes having at least one active power occur.
+
+Unique factorization makes the active prime logarithms \(\mathbb Z\)-linearly
+independent.  If at least two distinct primes are active, \(\Gamma_c\) is
+dense in \(\mathbb R\).
+
+**Status:** branch-local RPB terminology.
+
+## Dense delay-orbit obstruction
+
+For \(x\in(-c,c)\), the **delay orbit** is
+
+\`\`\`math
+\mathcal O_c(x)
+=
+(x+\Gamma_c)\cap(-c,c).
+\`\`\`
+
+When \(\Gamma_c\) contains two distinct prime generators, this orbit is dense
+in \((-c,c)\).
+
+The **dense delay-orbit obstruction** is the failure of support-order
+triangularization: repeated use of the \(\pm\log p\) shifts generates
+infinitely many interior sample locations and admits arbitrarily small nonzero
+net displacements.  There is no smallest positive orbit step with which to
+march monotonically inward from the boundary.
+
+Density by itself is not a zero-propagation theorem; such a conclusion would
+require an additional scalar transport or isolating relation among orbit
+values.
+
+**Status:** branch-local RPB terminology.
+
+## Universal screw mean-periodicity no-gain
+
+Suzuki's zeta screw function has a nonzero mean-periodicity annihilator
+\(\phi\) with
+
+\`\`\`math
+g*\phi=0.
+\`\`\`
+
+For every compact source \(u\), the associated screw potential satisfies
+
+\`\`\`math
+(g*u)*\phi
+=
+u*(g*\phi)
+=
+0.
+\`\`\`
+
+Thus this known mean-periodicity relation is **universal in the source** and
+does not distinguish a screw-kernel source, collar persistence, or a selected
+neutral direction.
+
+**Status:** branch-local RPB terminology.
