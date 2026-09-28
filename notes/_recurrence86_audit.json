@@ -1,0 +1,253 @@
+{
+  "format": "GERM86-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-86",
+  "standing": "UNRATIFIED",
+  "entry_commit": "6fc35f3e58f9299ea09fa645713fc2e467cb2630",
+  "verifier_path": "tools/sz_post_chi_minus_psi_eighth_map_audit.py",
+  "verifier_sha256": "97fd7d30a211e4bf0ae464df0c3f8dd41aab92d0e25be1de41343a6f4c6dae48",
+  "verifier_git_blob": "fe32a492e0a761b715e7522f47de3ec4041e3f5a",
+  "stdout_sha256": "3e489d7fe1273318ce75fb8a921f8393773811484703cd5d6f94610c16bc23a6",
+  "compact_complete_audit_sha256": "1b62a6a0ec3e0230665fcedd50f45131bad53e4ac865b7dd7c0563256a6d69da",
+  "execution_exit_code": 0,
+  "parent_GERM85_entry_replay_exit_code": 0,
+  "parent_GERM85_stdout_sha256": "ace38826a43e3727d2c51d3d0e7f5a81b50840aaa7ac5484dba7a17ee474e47d",
+  "parent_GERM85_recorded_stdout_match": true,
+  "new_exclusion_scope": "0<a<=c10, a=e-e85; L85<L<=L85+c10",
+  "experimental_endpoint": "log(3^25067529/(2^28520172*5^4828280))",
+  "increment": "c10=sigma8-rho9",
+  "direct_dependency_sha256": {
+    "tools/sz_post_psi7_tenth_all_internal_audit.py": "d1eaaed262ca98036d43743b52c927f04385a541d91dcb1aa073951a7a9c204c"
+  },
+  "matrix_namespace": "seventh U/V are GERM-81-local; eighth A0/A1/B, ninth P/Q/R/S and tenth U/V are GERM-86-local",
+  "eighth_word_dictionary": {
+    "A0": [
+      "V1",
+      "U0"
+    ],
+    "A1": [
+      "V1",
+      "U1"
+    ],
+    "B": [
+      "V1",
+      "U0",
+      "U1"
+    ]
+  },
+  "ninth_word_dictionary": {
+    "P": [
+      "A0",
+      "B",
+      "B"
+    ],
+    "Q": [
+      "A1",
+      "B",
+      "B"
+    ],
+    "R": [
+      "A0",
+      "B",
+      "B",
+      "B"
+    ],
+    "S": [
+      "A1",
+      "B",
+      "B",
+      "B"
+    ]
+  },
+  "tenth_word_dictionary": {
+    "V0": [
+      "P",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R"
+    ],
+    "V1": [
+      "Q",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R"
+    ],
+    "U0": [
+      "P",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R"
+    ],
+    "U1": [
+      "Q",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R"
+    ]
+  },
+  "formula_scopes": {
+    "eighth": "0<a<=sigma8",
+    "ninth": "0<a<=sigma8",
+    "tenth": "0<a<=c10"
+  },
+  "chart": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "-11/5",
+      "-8/5"
+    ]
+  ],
+  "common_forward_backward_factor": "5/2",
+  "distinct_temporal_words": 11,
+  "low_domain_cells": 4,
+  "high_domain_cells": 9,
+  "shared_words": 2,
+  "signed_cone_bounds": {
+    "out/4": [
+      -1,
+      "2.8001425310",
+      "2.9146457757"
+    ],
+    "out/5": [
+      1,
+      "2.6417477842",
+      "2.7696277117"
+    ],
+    "0/4": [
+      1,
+      "18.0528499744",
+      "47.2945248863"
+    ],
+    "1/4": [
+      1,
+      "284.6406325009",
+      "632.4515263104"
+    ],
+    "2/4": [
+      1,
+      "13147.0420987376",
+      "29029.5212355626"
+    ],
+    "3/4": [
+      1,
+      "530296.2470517531",
+      "1169501.2986900512"
+    ],
+    "0/5": [
+      -1,
+      "15.5166937402",
+      "33.9033881109"
+    ],
+    "1/5": [
+      -1,
+      "255.2399485207",
+      "568.1857935758"
+    ],
+    "2/5": [
+      -1,
+      "13428.7017149241",
+      "29681.6263135193"
+    ],
+    "3/5": [
+      -1,
+      "620816.3497319909",
+      "1370799.9430035651"
+    ],
+    "4/5": [
+      -1,
+      "25041122.9560907640",
+      "55225029.3278974079"
+    ]
+  },
+  "original_step_counts": [
+    55313611,
+    69471837
+  ],
+  "upper_endpoint_words": [
+    "GERM-86-local U1^3 V1",
+    "GERM-86-local U1^4 V1"
+  ],
+  "remaining_new_eighth_formula_width": [
+    "0.00000000875911804477083925517585367378",
+    "0.00000000875911804477083925517585367379"
+  ],
+  "remaining_three_layer_width": [
+    "0.00003179719496167991023677473336252693",
+    "0.00003179719496167991023677473336252694"
+  ],
+  "next_ninth_word": [
+    "Q",
+    "R",
+    "R",
+    "R",
+    "R",
+    "R",
+    "R",
+    "R",
+    "R",
+    "R",
+    "S"
+  ],
+  "next_matrix": "S R^9 Q, GERM-86-local",
+  "next_domain": "a=c10+eps; 0<eps<omega10; c11<y<c11+eps",
+  "next_trace": [
+    [
+      [
+        "7901.9649676841",
+        "7901.9649676842"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "62441046.3505068185",
+        "62441046.3505068186"
+      ]
+    ]
+  ],
+  "next_status": "HYPERBOLIC NEW TENTH SOURCE WORD; NO EXCLUSION ABOVE a=c10",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Both full serializations are included in the bundle; pinned verifier reproduces stdout.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
