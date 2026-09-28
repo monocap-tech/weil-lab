@@ -2541,3 +2541,116 @@ analyticity of (g) does not make (g*u) analytic: the prime kinks transfer
 the source regularity into finitely many delayed copies of (u).
 
 **Status:** branch-local RPB terminology.
+
+
+## Finite-delay Cauchy-data defect
+
+Let (h) vanish on a nonempty exterior collar (I), while the actual
+compact-window Weil equation has the form
+
+```math
+mathcal W^{m ext}h
+=
+mathcal A_infty h
+-
+sum_{ellinmathcal D}
+a_ell
+(	au_ell+	au_{-ell})h
++
+mathcal R_{m pole}h
+=
+0
+quad	ext{on }I.
+```
+
+The **finite-delay Cauchy-data defect** is the fact that
+
+```math
+h|_I=0
+```
+
+does not imply vanishing of the logarithmic-principal datum on (I), because
+the inward shifts (h(x-ell)) may sample the old support and the finite-rank
+term is global.
+
+Consequently the standard weak unique-continuation trigger
+
+```math
+h=0,
+qquad
+L_Delta h=0
+quad	ext{on the same open set}
+```
+
+is not available merely from the Weil collar equation.
+
+**Status:** branch-local RPB terminology.
+
+## Bounded-perturbation UCP instability
+
+The **bounded-perturbation UCP instability** is the observation that weak
+unique continuation for a self-adjoint operator (A) is not inherited by
+arbitrary bounded finite-rank perturbations.
+
+For any nonzero (hinmathfrak D(A)) vanishing on a chosen nonempty open
+set, put
+
+```math
+e=rac{h}{|h|},
+qquad
+r=-rac{Ah}{|h|}.
+```
+
+When (A) is self-adjoint, (langle r,eangleinmathbb R), and the
+finite-rank self-adjoint operator
+
+```math
+R
+=
+rotimes e
++
+eotimes r
+-
+langle r,eangle,eotimes e
+```
+
+satisfies
+
+```math
+(A+R)h=0.
+```
+
+Thus no UCP theorem for the actual Weil operator can follow solely from the
+facts that its non-principal terms are bounded or finite rank; their specific
+arithmetic structure must be used.
+
+**Status:** branch-local RPB terminology.
+
+## Two-sided arithmetic delay-orbit problem
+
+For a core-neutral compactly supported mode (h), the right and left collar
+equations sample finitely many translated interior germs
+
+```math
+h(c-ell+s),
+qquad
+h(-c+ell-s),
+qquad
+ellinmathcal D_{c+}.
+```
+
+The **two-sided arithmetic delay-orbit problem** asks whether the special delay
+set
+
+```math
+mathcal D_{c+}
+=
+{log n:n=p^m, log nle 2c}
+```
+
+together with parity, the interior null equation, and both exterior collars
+forces all such germs to vanish.
+
+This is stronger and more specific than black-box logarithmic-Laplacian UCP.
+
+**Status:** branch-local RPB terminology.
