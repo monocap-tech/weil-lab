@@ -6,7 +6,7 @@ eta7=xi-omega. Retains all GERM-75 typed source domains. The first newly
 legal B15,20 elliptic return is grouped with its forced neighbors. Exact
 source-domain contracts and outward rational cone bounds are checked.
 Run with assertions enabled. No parent full symbolic suite or large
-determinant inventory is rerun.
+Determinant inventory is rerun.
 """
 from __future__ import annotations
 from fractions import Fraction as F
@@ -69,9 +69,9 @@ af,add,sub,val,vertices=parent.af,parent.add,parent.sub,parent.val,parent.vertic
 zero,one=af(),af(1)
 beta,zeta,seed=parent.beta,parent.zeta,parent.seed
 xi,omega=parent.xi,parent.omega
-eta7=sub(xi,omega)
-chi7=sub(scale(2,omega),xi)
-psi7=sub(eta7,chi7)
+eta7=sub(xi,omega)                  # xi-omega
+chi7=sub(scale(2,omega),xi)         # 2omega-xi
+psi7=sub(eta7,chi7)                 # 2xi-3omega
 base75=scale(14,xi)
 d=sub(zeta,base75)
 RANGE=(sub(beta,af(F(777,157))),sub(af(F(292,59)),beta))
@@ -148,7 +148,7 @@ def geometry_audit():
         cells[name]=item
 
     assert sub(add(psi7,chi7),eta7)==zero
-    assert sub(add(psi7,eta7),xi) == sub(psi7,add(eta7,chi7))
+    assert sub(add(psi7,eta7),xi) == sub(psi7,add(eta7,chi7))  # affine sanity
     eps=sub(d,eta7)
     pp=seventh_positions(5,seed)
     guard_word=['E20','E20','A19','E20','A19']
