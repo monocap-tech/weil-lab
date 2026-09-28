@@ -630,3 +630,14 @@ The next pass should:
 A successful cone theorem could close both remaining return phases without any further orbit enumeration.
 
 No public promotion and no canonical cursor movement are asserted.
+
+## Pre-GERM-65 refold — additive handoff update, 2026-09-27
+
+Before executing the next frontier above, read
+[SZ kernel edge — pre-GERM-65 refold and integrated handoff](SZ_KERNEL_EDGE_PRE65_REFOLD_20260927.md).
+
+That record pins the parallel return-cocycle work through RETURN-COCYCLE-5 and the screw-family regroup audit, reconciles them with series-63/64, and specifies the remaining source-state, shell/link, cone, endpoint, and L2 obligations. It supersedes stale imported status and routing statements, not the mathematical content of this historical pass.
+
+The five-template series-63 coverage is retained. The existing lab assemblers are located; the fresh parallel 124/186 source reconstructions are additional scoped inputs, not a reason to repeat an unrelated finite-layer traversal. Bulk Chebyshev compression is not a substitute for deriving the actual return maps.
+
+This addition is a refold only. GERM-64 remains the last completed experimental mathematical pass; GERM-65 has not been executed by this operation. The canonical theorem cursor remains SZ-CROSS-COLLAR-3. No new determinant, interval, ratification, or public promotion is asserted.
