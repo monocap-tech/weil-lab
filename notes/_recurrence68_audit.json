@@ -1,0 +1,586 @@
+{
+  "pass": "SZ-KERNEL-EDGE-GERM-68",
+  "standing": "UNRATIFIED",
+  "entry_commit": "1a2738cf539efb7d50644be1e47d64d94db66134",
+  "inherited_formula_scope": "2h < e <= 3h",
+  "new_exclusion_scope": "2h+kappa < e <= 3h-kappa",
+  "experimental_endpoint": "log(3^32/(2^32*5^7))",
+  "endpoint_rational": "1853020188851841/335544320000000",
+  "dependency_sha256": {
+    "tools/sz_mixed_return_cone_audit.py": "f43eaf0e86e823a2f7ebeb6580b8ea12fcf4587ad405f708c3b66d6939b2a6c0",
+    "notes/_recurrence67_audit.json": "db2dcd27d30ca3199c444e449d7a2b93b674a7fe2b2d4cc764b38a9a863e0b09"
+  },
+  "rational_audit": {
+    "local_source_recalculation": "OUTWARD RATIONAL GAUSSIAN ELIMINATION",
+    "layer_pivots": {
+      "2": [
+        [
+          [
+            "38.9080628605",
+            "38.9080628606"
+          ],
+          [
+            "-4.0980139123",
+            "-4.0980139122"
+          ],
+          [
+            "-11.1742671893",
+            "-11.1742671892"
+          ],
+          [
+            "-1.2994825415",
+            "-1.2994825414"
+          ]
+        ]
+      ],
+      "3": [
+        [
+          [
+            "38.9080628605",
+            "38.9080628606"
+          ],
+          [
+            "-4.0980139123",
+            "-4.0980139122"
+          ],
+          [
+            "23.2375754832",
+            "23.2375754833"
+          ],
+          [
+            "-5.2228853520",
+            "-5.2228853519"
+          ],
+          [
+            "-12.7212917748",
+            "-12.7212917747"
+          ],
+          [
+            "-1.1414536656",
+            "-1.1414536655"
+          ]
+        ]
+      ]
+    },
+    "local_maps_and_inverses_inf_bound": 300,
+    "parent_six_matrix_enclosures": "ALL RECOMPUTED ENCLOSURES CONTAINED IN PINNED BOXES",
+    "chart": [
+      [
+        "1",
+        "1"
+      ],
+      [
+        "1/2",
+        "2"
+      ]
+    ],
+    "common_forward_backward_factor": "5/4",
+    "full_return_blocks": {
+      "1/5": {
+        "overlap_visits": 1,
+        "total_rotation_steps": 5,
+        "chronological_word": [
+          "01-",
+          "10+",
+          "00+",
+          "00+",
+          "00+"
+        ],
+        "overall_sign": 1,
+        "positive_conjugate": [
+          [
+            [
+              "72.0904413411",
+              "72.0904413412"
+            ],
+            [
+              "78.9629678195",
+              "78.9629678196"
+            ]
+          ],
+          [
+            [
+              "68.3402029548",
+              "68.3402029549"
+            ],
+            [
+              "74.8690831446",
+              "74.8690831447"
+            ]
+          ]
+        ],
+        "determinant_enclosure": [
+          [
+            [
+              "0.9999999999",
+              "1.0000000001"
+            ]
+          ]
+        ],
+        "forward_lower": "140.43064429",
+        "backward_lower": "143.20928609"
+      },
+      "2/5": {
+        "overlap_visits": 2,
+        "total_rotation_steps": 5,
+        "chronological_word": [
+          "01-",
+          "11+",
+          "10+",
+          "00+",
+          "00+"
+        ],
+        "overall_sign": 1,
+        "positive_conjugate": [
+          [
+            [
+              "11.9263022975",
+              "11.9263022976"
+            ],
+            [
+              "10.7637504409",
+              "10.7637504410"
+            ]
+          ],
+          [
+            [
+              "11.6087704019",
+              "11.6087704020"
+            ],
+            [
+              "10.5610191986",
+              "10.5610191987"
+            ]
+          ]
+        ],
+        "determinant_enclosure": [
+          [
+            [
+              "0.9999999999",
+              "1.0000000001"
+            ]
+          ]
+        ],
+        "forward_lower": "21.32476963",
+        "backward_lower": "22.16978960"
+      },
+      "3/5": {
+        "overlap_visits": 3,
+        "total_rotation_steps": 5,
+        "chronological_word": [
+          "01-",
+          "11+",
+          "11+",
+          "10+",
+          "00+"
+        ],
+        "overall_sign": -1,
+        "positive_conjugate": [
+          [
+            [
+              "1.1328459592",
+              "1.1328459593"
+            ],
+            [
+              "2.2731003106",
+              "2.2731003107"
+            ]
+          ],
+          [
+            [
+              "0.1440099030",
+              "0.1440099031"
+            ],
+            [
+              "1.1716941254",
+              "1.1716941255"
+            ]
+          ]
+        ],
+        "determinant_enclosure": [
+          [
+            [
+              "0.9999999999",
+              "1.0000000001"
+            ]
+          ]
+        ],
+        "forward_lower": "1.27685586",
+        "backward_lower": "1.31570402"
+      },
+      "4/5": {
+        "overlap_visits": 4,
+        "total_rotation_steps": 5,
+        "chronological_word": [
+          "01-",
+          "11+",
+          "11+",
+          "11+",
+          "10+"
+        ],
+        "overall_sign": -1,
+        "positive_conjugate": [
+          [
+            [
+              "2.0725582868",
+              "2.0725582869"
+            ],
+            [
+              "2.2921232792",
+              "2.2921232793"
+            ]
+          ],
+          [
+            [
+              "0.6321139394",
+              "0.6321139395"
+            ],
+            [
+              "1.1815750086",
+              "1.1815750087"
+            ]
+          ]
+        ],
+        "determinant_enclosure": [
+          [
+            [
+              "0.9999999999",
+              "1.0000000001"
+            ]
+          ]
+        ],
+        "forward_lower": "2.70467222",
+        "backward_lower": "1.81368894"
+      },
+      "1/6": {
+        "overlap_visits": 1,
+        "total_rotation_steps": 6,
+        "chronological_word": [
+          "01-",
+          "10+",
+          "00+",
+          "00+",
+          "00+",
+          "00+"
+        ],
+        "overall_sign": 1,
+        "positive_conjugate": [
+          [
+            [
+              "246.4946536187",
+              "246.4946536188"
+            ],
+            [
+              "270.0181893540",
+              "270.0181893541"
+            ]
+          ],
+          [
+            [
+              "233.4690001572",
+              "233.4690001573"
+            ],
+            [
+              "255.7535255522",
+              "255.7535255523"
+            ]
+          ]
+        ],
+        "determinant_enclosure": [
+          [
+            [
+              "0.9999999999",
+              "1.0000000001"
+            ]
+          ]
+        ],
+        "forward_lower": "479.96365377",
+        "backward_lower": "489.22252570"
+      },
+      "2/6": {
+        "overlap_visits": 2,
+        "total_rotation_steps": 6,
+        "chronological_word": [
+          "01-",
+          "11+",
+          "10+",
+          "00+",
+          "00+",
+          "00+"
+        ],
+        "overall_sign": 1,
+        "positive_conjugate": [
+          [
+            [
+              "41.3183705683",
+              "41.3183705684"
+            ],
+            [
+              "37.4400763596",
+              "37.4400763597"
+            ]
+          ],
+          [
+            [
+              "39.2235449530",
+              "39.2235449531"
+            ],
+            [
+              "35.5660810900",
+              "35.5660810901"
+            ]
+          ]
+        ],
+        "determinant_enclosure": [
+          [
+            [
+              "0.9999999999",
+              "1.0000000001"
+            ]
+          ]
+        ],
+        "forward_lower": "73.00615744",
+        "backward_lower": "74.78962604"
+      },
+      "3/6": {
+        "overlap_visits": 3,
+        "total_rotation_steps": 6,
+        "chronological_word": [
+          "01-",
+          "11+",
+          "11+",
+          "10+",
+          "00+",
+          "00+"
+        ],
+        "overall_sign": -1,
+        "positive_conjugate": [
+          [
+            [
+              "2.2172788616",
+              "2.2172788617"
+            ],
+            [
+              "6.0212392508",
+              "6.0212392509"
+            ]
+          ],
+          [
+            [
+              "1.8281479415",
+              "1.8281479416"
+            ],
+            [
+              "5.4155191524",
+              "5.4155191525"
+            ]
+          ]
+        ],
+        "determinant_enclosure": [
+          [
+            [
+              "0.9999999999",
+              "1.0000000001"
+            ]
+          ]
+        ],
+        "forward_lower": "4.04542680",
+        "backward_lower": "7.24366709"
+      },
+      "4/6": {
+        "overlap_visits": 4,
+        "total_rotation_steps": 6,
+        "chronological_word": [
+          "01-",
+          "11+",
+          "11+",
+          "11+",
+          "10+",
+          "00+"
+        ],
+        "overall_sign": -1,
+        "positive_conjugate": [
+          [
+            [
+              "4.7131166704",
+              "4.7131166705"
+            ],
+            [
+              "6.0717634835",
+              "6.0717634836"
+            ]
+          ],
+          [
+            [
+              "4.0743153688",
+              "4.0743153689"
+            ],
+            [
+              "5.4609892088",
+              "5.4609892089"
+            ]
+          ]
+        ],
+        "determinant_enclosure": [
+          [
+            [
+              "0.9999999999",
+              "1.0000000001"
+            ]
+          ]
+        ],
+        "forward_lower": "8.78743203",
+        "backward_lower": "9.53530457"
+      },
+      "5/6": {
+        "overlap_visits": 5,
+        "total_rotation_steps": 6,
+        "chronological_word": [
+          "01-",
+          "11+",
+          "11+",
+          "11+",
+          "11+",
+          "10+"
+        ],
+        "overall_sign": -1,
+        "positive_conjugate": [
+          [
+            [
+              "1.2744259580",
+              "1.2744259581"
+            ],
+            [
+              "1.1931600885",
+              "1.1931600886"
+            ]
+          ],
+          [
+            [
+              "2.2881955456",
+              "2.2881955457"
+            ],
+            [
+              "2.9269519946",
+              "2.9269519947"
+            ]
+          ]
+        ],
+        "determinant_enclosure": [
+          [
+            [
+              "0.9999999999",
+              "1.0000000001"
+            ]
+          ]
+        ],
+        "forward_lower": "3.56262150",
+        "backward_lower": "2.46758604"
+      }
+    },
+    "old_two_visit_elliptic_trace": [
+      [
+        [
+          "1.8106874868",
+          "1.8106874869"
+        ]
+      ]
+    ],
+    "above_scope_changed_word": [
+      "11-",
+      "11+",
+      "11+",
+      "11+",
+      "11+",
+      "10+"
+    ],
+    "above_scope_conjugate": [
+      [
+        [
+          "-0.7001606686",
+          "-0.7001606685"
+        ],
+        [
+          "0.1141853479",
+          "0.1141853480"
+        ]
+      ],
+      [
+        [
+          "-1.8992013856",
+          "-1.8992013855"
+        ],
+        [
+          "-2.0413861259",
+          "-2.0413861258"
+        ]
+      ]
+    ],
+    "above_scope_old_signed_quadrant_test": "FAILS: MIXED ENTRY SIGNS"
+  },
+  "exact_geometry": {
+    "fixed_prime_power_inequalities": "PASS",
+    "parameter_scope": "kappa < eta <= lambda = h-kappa",
+    "section": "(lambda,h)",
+    "section_coordinate": "t=lambda+z, 0<z<kappa",
+    "return_time": "6 for z<tau; 5 for z>tau",
+    "induced_map": "z -> z-tau mod kappa",
+    "image_tiling": "EXACT; Lebesgue measure preserved",
+    "all_nine_word_cells": {
+      "1/5": {
+        "parameter_vertices": 5,
+        "source_word_domains": "PASS",
+        "first_return_no_earlier_section_hit": "PASS"
+      },
+      "2/5": {
+        "parameter_vertices": 6,
+        "source_word_domains": "PASS",
+        "first_return_no_earlier_section_hit": "PASS"
+      },
+      "3/5": {
+        "parameter_vertices": 6,
+        "source_word_domains": "PASS",
+        "first_return_no_earlier_section_hit": "PASS"
+      },
+      "4/5": {
+        "parameter_vertices": 5,
+        "source_word_domains": "PASS",
+        "first_return_no_earlier_section_hit": "PASS",
+        "eta_equals_lambda_face": "PASS"
+      },
+      "1/6": {
+        "parameter_vertices": 4,
+        "source_word_domains": "PASS",
+        "first_return_no_earlier_section_hit": "PASS"
+      },
+      "2/6": {
+        "parameter_vertices": 6,
+        "source_word_domains": "PASS",
+        "first_return_no_earlier_section_hit": "PASS"
+      },
+      "3/6": {
+        "parameter_vertices": 6,
+        "source_word_domains": "PASS",
+        "first_return_no_earlier_section_hit": "PASS"
+      },
+      "4/6": {
+        "parameter_vertices": 6,
+        "source_word_domains": "PASS",
+        "first_return_no_earlier_section_hit": "PASS"
+      },
+      "5/6": {
+        "parameter_vertices": 4,
+        "source_word_domains": "PASS",
+        "first_return_no_earlier_section_hit": "PASS",
+        "eta_equals_lambda_face": "PASS"
+      }
+    },
+    "endpoint_eta_equals_lambda": "PASS",
+    "above_scope_guard": "0<z<eta-lambda<tau; changed six-step word verified",
+    "sampled_topology": false
+  },
+  "full_parent_symbolic_suite_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE"
+}
