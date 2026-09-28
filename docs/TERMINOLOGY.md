@@ -897,3 +897,1568 @@ It is a terminal status for the current LEAN-H1 exhaustion test, but not a claim
 - SCOPE-ONLY.
 
 No stable theorem/example may remain merely unattempted when LEAN-H1 closes.
+
+
+## Physical probe
+
+A **physical probe** is a compactly supported smooth test function
+
+```math
+f\in C_c^\infty(\mathbb R)
+```
+
+used as an input to the physical Weil preform.
+
+In the reflected-packet bridge, a physical probe is distinct from a **selected packet** (Pi), which is a finite set of zero-side divisor channels.
+
+## Weil translation system
+
+The **Weil translation system** is the triple
+
+```math
+(\mathscr D,T,\mathfrak q),
+\qquad
+\mathscr D=C_c^\infty(\mathbb R),
+```
+
+where
+
+```math
+(T_tf)(x)=f(x-t)
+```
+
+is the real translation action and (mathfrak q) is the Hermitian Weil preform on the common compact-support core.
+
+The system is translation-covariant in the sense
+
+```math
+\mathfrak q(T_af,T_ag)=\mathfrak q(f,g).
+```
+
+This term refers to the form together with its translation action, not to a single compact-window compression and not to a single scalar observable.
+
+**Status:** branch-local RPB terminology; noncanonical outside the reflected-packet investigation.
+
+## Polarized translated Weil kernel
+
+Given the Weil translation system, the **polarized translated Weil kernel** is the matrix-coefficient family
+
+```math
+\mathcal K_{\mathfrak q}(f,g;t)
+:=
+\mathfrak q(T_tf,g).
+```
+
+Equivalently, by common-translation covariance,
+
+```math
+\mathcal K_{\mathfrak q}(f,g;t)
+=
+\mathfrak q(T_{t/2}f,T_{-t/2}g).
+```
+
+It satisfies the Hermitian symmetry
+
+```math
+\mathcal K_{\mathfrak q}(f,g;t)
+=
+\overline{
+\mathcal K_{\mathfrak q}(g,f;-t)
+}.
+```
+
+The frozen reflected scalar (Q_h(y)) is the diagonal centered slice
+
+```math
+Q_h(y)
+=
+\mathcal K_{\mathfrak q}(h,h;2y).
+```
+
+**Status:** branch-local RPB terminology; noncanonical outside the reflected-packet investigation.
+
+## Mellin probe weight
+
+For compact physical probes (f,g) with correlation
+
+```math
+C_{f,g}(r)
+=
+\int
+\overline{f(x-r)}g(x)\,dx,
+```
+
+the associated **Mellin probe weight** is
+
+```math
+W_{f,g}(u)
+=
+u^{-1/2}C_{f,g}(-\log u),
+\qquad
+u>0.
+```
+
+Its Mellin transform satisfies
+
+```math
+\widetilde W_{f,g}(s)
+=
+M_{f,g}\!\left(\frac12-s\right),
+```
+
+where (M_{f,g}) is the bilateral Laplace transform of (C_{f,g}).
+
+On a finite selected zero set, RPB source custody is expressed by
+
+```math
+m_\rho\widetilde W_{f,g}(\rho)=v_\rho.
+```
+
+**Status:** branch-local RPB terminology.
+
+## RPB-POL-TAIL
+
+`RPB-POL-TAIL` is the branch-local candidate interface asking for a subcritical large-separation growth estimate for a polarized translated Weil kernel whose selected Mellin residues encode a fixed WD-T37 source.
+
+A source-specific sufficient form is
+
+```math
+\mathcal K_{\mathfrak q}(f_v,g_v;2y)
+=
+O(e^{\kappa_v y}),
+\qquad
+\kappa_v<2\delta_v,
+```
+
+where (delta_v) is the largest positive real displacement of an active selected zero carried by (v).
+
+Equivalently, in multiplicative scale it is a source-adapted smoothed prime-number-theorem remainder bound.
+
+`RPB-POL-TAIL` is not a public Horizon-1 interface and is not currently known to follow from `AZ-NEXTJET-LOC` or imply it.
+
+
+## Weil screw potential
+
+The **Weil screw potential** is the branch-local name for Suzuki's continuous real-even function (g_\zeta(t)) associated with the zeta Weil form.
+
+Its load-bearing relation to the Weil translation system is distributional:
+
+```math
+k_\zeta
+=
+-g_\zeta'',
+```
+
+where (k_\zeta) is the translation-invariant distribution kernel representing the Weil preform.
+
+The term **potential** emphasizes that (g_\zeta) is two distributional integrations smoother than the original Weil kernel. It does not assert that (g_\zeta) is positive definite unconditionally.
+
+Suzuki's stronger Krein--Langer screw-kernel positivity condition is RH-equivalent.
+
+**Status:** branch-local RPB terminology; source is Suzuki's screw-function formalism.
+
+## Screw-kernel regularization
+
+The **screw-kernel regularization** of the Weil form is the continuous Hermitian kernel
+
+```math
+\widetilde g_\zeta(x,y)
+=
+g_\zeta(x-y)
+-
+g_\zeta(x)
+-
+g_\zeta(-y)
++
+g_\zeta(0).
+```
+
+On zero-mean functions, the subtraction terms vanish after integration, so the corresponding quadratic form agrees with convolution by (g_\zeta(x-y)).
+
+This regularization is a continuous-kernel realization of the same Weil form after differentiation of test functions; it is not an independent arithmetic source.
+
+**Status:** branch-local RPB terminology.
+
+## Potentialization
+
+**Potentialization** is the passage from the distribution kernel (k_\zeta) of the Weil preform to its normalized continuous second primitive (g_\zeta):
+
+```math
+k_\zeta=-g_\zeta''.
+```
+
+At the matrix-coefficient level, potentialization replaces a translated Weil coefficient by the second derivative of a smoother translated screw-potential coefficient.
+
+This lowers distributional order but does not remove the underlying spectral data.
+
+**Status:** branch-local RPB terminology.
+
+
+## Neutral spectral plateau
+
+Let (Q_W^a) be the localized Weil form on the support window ([-a,a]), with associated self-adjoint operator (A_a), and let
+
+```math
+\lambda_a
+=
+\inf_{0\ne f}
+\frac{Q_W^a(f)}{\|f\|_2^2}
+```
+
+be its lowest spectral value.
+
+Given an endpoint (c) with a nonzero neutral mode (k) satisfying (A_ck=0), a **neutral spectral plateau** is an interval of larger supports on which
+
+```math
+\lambda_a=0.
+```
+
+Because the zero extension of (k) has the same global Weil quadratic value on every larger support, every point of such a plateau carries the same fixed mode in the kernel of (A_a).
+
+**Status:** branch-local RPB terminology.
+
+## Neutral sign-persistence dichotomy
+
+The **neutral sign-persistence dichotomy** is the following branch-local reduction.
+
+For a zero-extended endpoint neutral mode (k) and any larger support (b>c),
+
+```math
+Q_W^b(k)=0.
+```
+
+Therefore exactly one of the following occurs:
+
+```math
+\lambda_b=0,
+```
+
+in which case the larger localized form is nonnegative and the same fixed (k) lies in (ker A_b); or
+
+```math
+\lambda_b<0,
+```
+
+in which case the enlarged compact-window Weil form has entered a negative spectral regime.
+
+This dichotomy refines the branch-local interpretation of `AZ-FIN-WEIL-NULL-EXTENSION`. It does not by itself identify selected negative-sector custody after a negative fall-through.
+
+**Status:** branch-local RPB terminology.
+
+
+## Global Weil radical
+
+A compactly supported physical vector (k) lies in the **global Weil radical** when
+
+```math
+\mathfrak q(k,h)=0
+\qquad
+\text{for every }h\in C_c^\infty(\mathbb R).
+```
+
+Equivalently, every translated matrix coefficient with (k) in one slot vanishes after using common-translation covariance.
+
+In the RPB neutral-plateau analysis, persistence of the same compact mode in the kernel of every sufficiently large localized Weil operator forces membership in the global Weil radical.
+
+**Status:** branch-local RPB terminology.
+
+## Entire-density obstruction
+
+The **entire-density obstruction** is the incompatibility between:
+
+1. a nonzero compactly supported (L^2) function (k), whose Fourier transform is an entire function of finite exponential type and hence has only (O(R)) zeros in (|z|\le R); and
+2. a requirement that (widehat k) vanish at a set of distinct real points with counting function (gg R\log R).
+
+In RPB-11, Conrey's unconditional positive proportion of simple critical-line zeta zeros supplies such a set of real ordinates.
+
+**Status:** branch-local RPB terminology.
+
+
+## Finite-head sign capture
+
+Let
+
+```math
+Q_W(h)
+=
+\|S_+^*h\|^2
+-
+\|S_-^*h\|^2
+```
+
+be the full zero-side Weil form, and let (P_G^-) be a finite-coordinate exhaustion of the negative coefficient sector.
+
+A negative witness (h) has **finite-head sign capture at height (G)** when
+
+```math
+\|S_+^*h\|^2
+-
+\|P_G^-S_-^*h\|^2
+<0.
+```
+
+Every strict full-form negative witness has finite-head sign capture for some finite (G), because the negative coefficient tail is square summable.
+
+**Status:** branch-local RPB terminology.
+
+## Sign-custody escape
+
+A right-approaching sequence of strict full-form negative witnesses exhibits **sign-custody escape** when each witness has finite-head sign capture, but the least/canonical height needed to capture the strict sign tends to infinity.
+
+Equivalently, for every fixed finite negative-coordinate block, the selected finite-head form is eventually nonnegative even though the full form remains strictly negative.
+
+Sign-custody escape is weaker than full selected-sector escape: fixed low negative coordinates may remain strongly anchored, but an increasingly remote negative tail is required to tip the total signature below zero as the full negative margin tends to zero.
+
+**Status:** branch-local RPB terminology.
+
+
+## Sign-capture scale
+
+For a strict full-form negative witness (h) at support (a), the **sign-capture scale** (G_{m cap}(a,h)) is the least cutoff in a fixed canonical finite negative-coordinate exhaustion for which the truncated selected form is already negative:
+
+```math
+Q_{G,a}(h)<0.
+```
+
+When a post-neutral branch (h_delta) approaches a plateau edge (c_*), the behavior of (G_{m cap}(c_*+delta,h_delta)) distinguishes bounded finite-head custody from sign-custody escape.
+
+**Status:** branch-local RPB terminology.
+
+## Relative negative-tail control
+
+For a post-plateau negative branch with margin
+
+```math
+m(delta)
+=
+-Q_W^{c_*+delta}(h_delta)>0,
+```
+
+a fixed negative-coordinate cutoff (G) has **relative negative-tail control** when
+
+```math
+|(I-P_G^-)S_-^*h_delta|^2
+=
+o(m(delta))
+qquad
+(deltadownarrow0).
+```
+
+Relative negative-tail control, unlike an absolute uniform tail bound, is sufficient to preserve the strict negative sign in one fixed finite packet arbitrarily close to the plateau edge.
+
+**Status:** branch-local RPB terminology.
+
+
+## Selected crossing support
+
+Fix a finite selected zero packet (Pi) carrying an endpoint neutral vector at support (c).
+
+The **selected crossing support** is
+
+```math
+c_\Pi
+=
+\inf
+\left\{
+a\ge c:
+\mathcal A_{\Pi,a}
+\text{ contains a strictly }J\text{-negative vector}
+\right\},
+```
+
+with (c_\Pi=+\infty) if no such support exists.
+
+Because the endpoint neutral vector remains in every larger selected analysis space by support monotonicity, the fixed selected packet can only remain critical/nonnegative or cross into a negative regime; it cannot become strictly positive.
+
+**Status:** branch-local RPB terminology.
+
+
+## Background screenability boundary
+
+Fix a decomposition of the negative zero-side coefficient sector
+
+```math
+K_-
+=
+M_\Pi\oplus B_\Pi
+```
+
+relative to a finite selected packet (Pi).
+
+The **background screenability boundary** is the first support at which the background-only defect
+
+```math
+D_{B,a}
+=
+S_{+,a}S_{+,a}^{*}
+-
+S_{B_\Pi,a}S_{B_\Pi,a}^{*}
+```
+
+fails to be nonnegative.
+
+Equivalently, before this boundary the background admits a contractive Douglas screening map and may be legitimately absorbed into the residual positive budget by WD-B4.
+
+**Status:** branch-local RPB terminology.
+
+## Residual selected custody
+
+A fixed finite selected sector (M_\Pi) has **residual selected custody** at support (a) when the negative background (B_\Pi) is contractively screenable and has been eliminated by WD-B4, leaving
+
+```math
+D_{\rm full,a}
+=
+S_{{\rm eff},a}S_{{\rm eff},a}^{*}
+-
+S_{M_\Pi,a}S_{M_\Pi,a}^{*}.
+```
+
+In this representation, every negative direction of the full defect is owned by the same fixed selected sector (M_\Pi) relative to the residual positive budget.
+
+Residual selected custody is not the same as negativity of the raw selected form obtained by simply deleting the background term.
+
+**Status:** branch-local RPB terminology.
+
+
+## Background right-edge stability
+
+Relative to a fixed finite selected packet (Pi), the unselected negative background has **background right-edge stability** at support (c) when there exists (delta>0) such that the background-only defect remains nonnegative on every strict right enlargement:
+
+```math
+D_{B,a}\succeq0
+\qquad
+(c\le a<c+\delta).
+```
+
+Equivalently, the background remains contractively screenable throughout some right neighborhood of (c).
+
+Endpoint screenability
+
+```math
+D_{B,c}\succeq0
+```
+
+does not by itself imply background right-edge stability.
+
+**Status:** branch-local RPB terminology.
+
+## Strict background screening margin
+
+The background has a **strict background screening margin** at support (c) when its background-only analysis space is uniformly (J)-positive, equivalently when the reduced background screening solution satisfies
+
+```math
+\|X_{B,c}\|<1.
+```
+
+A strict margin can be propagated to a right neighborhood only with an additional continuity theorem strong enough to control the background defect/reduced screening map in operator norm. Horizon 1 does not currently supply that support-parameter continuity statement.
+
+**Status:** branch-local RPB terminology.
+
+
+## Full-nullspace coverage
+
+At a nonnegative compact-window support (c), let (A_c) be the canonical self-adjoint Weil operator and let (M_Pi) be a fixed finite selected negative sector with selected physical covariance
+
+```math
+K_M
+=
+S_M S_M^{*}.
+```
+
+The selected sector has **full-nullspace coverage** when
+
+```math
+ker A_c
+cap
+ker S_M^{*}
+=
+{0}.
+```
+
+Equivalently, the selected analysis map is injective on the finite-dimensional full nullspace.
+
+For the background-only operator
+
+```math
+A_{B,c}
+=
+A_c+K_M,
+```
+
+full-nullspace coverage is exactly the condition that (A_{B,c}) have trivial kernel.
+
+**Status:** branch-local RPB terminology.
+
+## Background physical spectral gap
+
+The background-only compact-window operator has a **background physical spectral gap** at support (c) when
+
+```math
+A_{B,c}
+\succeq
+\eta I
+```
+
+on (L^2(-c,c)) for some (eta>0).
+
+Because the canonical compact-window Weil operator has discrete lower-bounded spectrum, adding a bounded finite-rank selected covariance preserves compact resolvent/discrete spectrum. At a nonnegative endpoint, full-nullspace coverage is therefore equivalent to a positive background physical spectral gap.
+
+This is an (L^2)-spectral statement. It must not be identified with a coefficient-space contraction gap (|X_B|<1) without an explicit metric/comparison theorem.
+
+**Status:** branch-local RPB terminology.
+
+
+## Nullspace-covering selected packet
+
+At a nonnegative compact-window support (c), let
+
+```math
+N_c=\ker A_c
+```
+
+be the finite-dimensional full Weil nullspace.
+
+A finite selected negative packet (M_{\Pi'}\subset K_-) is a **nullspace-covering selected packet** when
+
+```math
+N_c\cap\ker S_{M_{\Pi'}}^*
+=
+\{0\}.
+```
+
+Equivalently, its selected negative analysis map is injective on the entire full nullspace.
+
+A nullspace-covering packet need not coincide with the originally chosen finite-exception packet; it may be a finite enlargement.
+
+**Status:** branch-local RPB terminology.
+
+## Finite nullspace capture
+
+**Finite nullspace capture** is the principle that, if the full negative analysis map
+
+```math
+S_-^*|_{N_c}:N_c\to K_-
+```
+
+is injective and (N_c) is finite dimensional, then some finite negative-coordinate projection (P_G^-) remains injective on (N_c):
+
+```math
+P_G^-S_-^*|_{N_c}
+\text{ is injective}.
+```
+
+After completing the retained coordinates to the project’s symmetric zero-packet convention, they form a nullspace-covering selected packet.
+
+**Status:** branch-local RPB terminology.
+
+
+## Finite-enlarged background ground level
+
+For a finite symmetric selected packet \(\Pi'\), define the complementary-background quadratic form at support \(a\) by
+
+```math
+Q_{B',a}(h)
+=
+Q_W^a(h)
++
+\|S_{M_{\Pi'},a}^{*}h\|^2.
+```
+
+Its **finite-enlarged background ground level** is
+
+```math
+\lambda_{B',a}
+=
+\inf_{0\ne h}
+\frac{Q_{B',a}(h)}{\|h\|_2^2}.
+```
+
+Equivalently, \(\lambda_{B',a}\) is the lowest spectral value of the background-only operator obtained by removing the finitely selected negative channels \(M_{\Pi'}\) from the full negative divisor.
+
+Under the fixed-interval scaling used by Suzuki, the added selected covariance is a finite-rank bounded quadratic perturbation depending continuously on the support parameter.
+
+**Status:** branch-local RPB terminology.
+
+
+## Critical source custody
+
+A fixed finite selected sector has **critical source custody** along a right-approaching negative branch when normalized selected analysis vectors
+
+```math
+z_n=(a_n,u_n),
+\qquad
+\|z_n\|=1,
+\qquad
+[z_n,z_n]_J<0,
+```
+
+admit, after passage to a subsequence, a limit selected coordinate
+
+```math
+u_n\to u_*\ne0
+```
+
+even though the limiting (J)-signature may be neutral:
+
+```math
+[z_n,z_n]_J\to0.
+```
+
+The nonzero (u_*) determines a fixed finite raw zero source (v_*
+e0) with the canonical zero-moment law
+
+```math
+\mathbf 1^Tv_*=0.
+```
+
+Critical source custody is weaker than persistent strict-negative-ray custody: it preserves the selected arithmetic source even when the normalized negative margin collapses.
+
+**Status:** branch-local RPB terminology.
+
+
+## Source-level next-jet object
+
+For a fixed finite nonzero selected raw source (v) with
+
+```math
+\mathbf 1^Tv=0,
+```
+
+the **source-level next-jet object** is the arithmetic package
+
+```math
+R_v(z)
+=
+\sum_{\rho_j\in\Pi}
+\frac{v_j}{z-\rho_j},
+```
+
+```math
+\mathcal F_{v,R}[\psi]
+=
+O\!\left(\frac{\log R}{R}\right),
+```
+
+and
+
+```math
+\mathcal N_{v,R}[\psi]
+=
+\sum_{\mu}^{\rm near}
+m_\mu\psi(\mu)
+\frac{H_v^{(m_\mu)}(\mu)}
+{\Xi^{(m_\mu)}(\mu)}.
+```
+
+This object depends on the fixed source and multiplier/cutoff regime, not on how the source was produced.
+
+It must be distinguished from the canonical branch-level interface `AZ-NEXTJET-LOC`, whose closure semantics are currently attached to WD-T37.
+
+**Status:** branch-local RPB terminology.
+
+## Branch contradiction datum
+
+A **branch contradiction datum** is additional information, beyond existence of a fixed nonzero zero-moment source and its source-level next-jet representation, that makes a proposed actual-zeta next-jet estimate incompatible with the morphology branch that produced the source.
+
+Examples include a fixed normalized negative margin, a nonzero forcing functional, a transversality lower bound, or another quantified relation whose failure excludes the branch.
+
+The source-level next-jet object by itself is an identity/localization package and is not a contradiction datum.
+
+**Status:** branch-local RPB terminology.
+
+
+## Background Birman--Schwinger matrix
+
+Fix a finite selected negative sector (M) and a strictly positive complementary-background operator
+
+```math
+A_{B,a}\succ0.
+```
+
+Let (S_{M,a}:M\to\mathcal H_a) be the selected physical synthesis.
+
+The **background Birman--Schwinger matrix** is the finite-dimensional positive operator
+
+```math
+\mathsf K_a
+:=
+S_{M,a}^{*}
+A_{B,a}^{-1}
+S_{M,a}
+\quad\text{on }M.
+```
+
+When the background has been eliminated by WD-B4, (mathsf K_a) equals (C_a^{*}C_a) for the Douglas reduced residual screening map (C_a).
+
+Thus
+
+```math
+D_{\rm full,a}\succeq0
+\iff
+\mathsf K_a\preceq I,
+```
+
+while strict selected over-budget negativity is equivalent to
+
+```math
+\lambda_{\max}(\mathsf K_a)>1.
+```
+
+**Status:** branch-local RPB terminology.
+
+## Inverse-background source energy
+
+For a selected coefficient (u\in M), its **inverse-background source energy** at support (a) is
+
+```math
+\mathfrak E_a(u)
+=
+\langle
+\mathsf K_a u,u
+\rangle
+-
+\|u\|^2.
+```
+
+Equivalently,
+
+```math
+\mathfrak E_a(u)
+=
+\langle
+A_{B,a}^{-1}S_{M,a}u,
+S_{M,a}u
+\rangle
+-
+\|u\|^2.
+```
+
+At a unit-gain neutral crossing this energy is zero on an endpoint singular direction; post-edge over-budget crossing means it is positive for some selected direction.
+
+After pair-to-raw conversion, the same quadratic form may be regarded as a finite-dimensional metric on zero-moment selected raw sources.
+
+**Status:** branch-local RPB terminology.
+
+
+## Birman--Schwinger carrier caution
+
+The branch-local background Birman--Schwinger matrix
+
+```math
+\mathsf K_a
+=
+\Phi_a
+A_{B,a}^{-1}
+\Phi_a^{*}
+```
+
+is a **canonical-physical/form-carrier** object, where (A_{B,a}) is the strictly positive compact-window background operator on the (L^2)/form realization and
+
+```math
+\Phi_a:L^2(-a,a)\to M
+```
+
+is the finite selected analysis map.
+
+It must not be identified without an explicit intertwining theorem with a coefficient-space Douglas Gram (C_a^{*}C_a) formed in the Green-preconditioned native Problem-1 carrier.
+
+The native zero synthesis is Hilbert--Schmidt in the (H^{-1}_L) metric, while the canonical compact-window operator is an unbounded compact-resolvent operator on (L^2). These are equivalent representations of the quadratic-form problem only after the relevant Green/metric transport is explicitly supplied.
+
+**Status:** branch-local RPB custody rule.
+
+
+## Green-congruence transport
+
+Fix a compact support interval and the positive Dirichlet operator
+
+```math
+L=-\partial_u^2+\frac14,
+\qquad
+G=L^{-1}.
+```
+
+Let (H^{-1}_L) be the completion of (L^2) for
+
+```math
+\langle f,g\rangle_{-1,L}
+=
+\langle f,Gg\rangle_{L^2}.
+```
+
+The map
+
+```math
+U=G^{1/2}
+```
+
+extends to a unitary
+
+```math
+U:H^{-1}_L\to L^2.
+```
+
+For a canonical compact-window closed form (q_A) with operator (A), its Green-preconditioned/native realization is the form
+
+```math
+q_{\rm nat}[h]
+=
+q_A[Gh].
+```
+
+After transport by (U),
+
+```math
+\widetilde q_{\rm nat}[k]
+=
+q_A[G^{1/2}k],
+```
+
+so the transported bounded/preconditioned operator is the form congruence
+
+```math
+\widetilde D
+=
+G^{1/2}AG^{1/2}.
+```
+
+This is a form/metric intertwiner. It does not assert ordinary bounded similarity between (A) and (widetilde D).
+
+**Status:** branch-local RPB terminology.
+
+## Native inverse-form Gram
+
+Let a strictly positive canonical background operator (A_B) have Green-preconditioned transport
+
+```math
+\widetilde D_B
+=
+G^{1/2}A_BG^{1/2},
+```
+
+and let (Phi:L^2\to M) be a finite selected analysis map. Put
+
+```math
+\widetilde S_M
+=
+G^{1/2}\Phi^{*}.
+```
+
+The **native inverse-form Gram** is the finite matrix defined by
+
+```math
+\langle \mathsf K_{\rm nat}u,u\rangle
+=
+\|\widetilde D_B^{-1/2}\widetilde S_Mu\|^2,
+```
+
+where the inverse is understood on its natural quadratic-form domain.
+
+Under Green-congruence transport,
+
+```math
+\mathsf K_{\rm nat}
+=
+\Phi A_B^{-1}\Phi^{*}.
+```
+
+Although (widetilde D_B) is compact and not boundedly invertible on an infinite-dimensional carrier, this finite sandwich is bounded whenever (A_B\succ0).
+
+**Status:** branch-local RPB terminology.
+
+
+## Resolvent extremizer
+
+For a strictly positive complementary-background operator (A_{B,a}), finite selected analysis map (Phi_a), and selected coefficient (u), the **resolvent extremizer** is
+
+```math
+h_{a,u}
+=
+A_{B,a}^{-1}Phi_a^{*}u.
+```
+
+It is the unique physical vector representing the Riesz extremizer for the inverse-background source energy:
+
+```math
+\langle
+\Phi_aA_{B,a}^{-1}\Phi_a^{*}u,u
+\rangle
+=
+\langle
+\Phi_a^{*}u,h_{a,u}
+\rangle
+=
+Q_{B,a}[h_{a,u}].
+```
+
+If (u) is an eigenvector of the Birman--Schwinger matrix with eigenvalue (kappa), then
+
+```math
+\Phi_a h_{a,u}
+=
+\kappa u.
+```
+
+**Status:** branch-local RPB terminology.
+
+## Support-decoupling obstruction
+
+The **support-decoupling obstruction** is the mismatch that a fixed raw selected source (v) determines the meromorphic reciprocal-Cauchy response
+
+```math
+R_v(\mu)
+=
+\sum_j
+\frac{v_j}{\mu-\rho_j},
+```
+
+independently of the compact-window support parameter (a), while the inverse-background Gram
+
+```math
+\mathsf K_a
+=
+\Phi_aA_{B,a}^{-1}\Phi_a^{*}
+```
+
+is intrinsically support-dependent and may cross the unit threshold as (a) varies.
+
+Therefore the bare source-level Cauchy response cannot by itself encode the support crossing. Any bridge must introduce additional support-dependent data, such as a resolvent extremizer, dual multiplier, or reproducing kernel.
+
+**Status:** branch-local RPB terminology.
+
+
+## Resolvent multiplier candidate
+
+For a compact-window resolvent extremizer
+
+```math
+h_{a,u}
+=
+A_{B,a}^{-1}\Phi_a^{*}u,
+```
+
+the **resolvent multiplier candidate** is its centered bilateral Laplace transform
+
+```math
+\psi_{a,u}^{\rm res}(s)
+=
+\int_{-a}^{a}
+h_{a,u}(x)
+e^{x(s-1/2)}
+\,dx.
+```
+
+On any bounded support neighborhood and the closed critical strip
+
+```math
+0\le\Re s\le1,
+```
+
+a uniform (L^2) bound on (h_{a,u}) gives a uniform strip bound on
+(psi_{a,u}^{\rm res}).
+
+The selected zero evaluations of this transform recover the selected analysis
+coordinates of (h_{a,u}), up to the fixed raw/pair normalization convention.
+
+**Status:** branch-local RPB terminology.
+
+## Selected-preserving projection of a multiplier family
+
+Let (\mathcal C_v) be the selected contracted-residue functional for a fixed
+source (v), and let (\chi) be a fixed admissible multiplier with
+
+```math
+\mathcal C_v[\chi]\ne0.
+```
+
+For any multiplier family (\phi_a), its **selected-preserving projection
+relative to (\chi)** is
+
+```math
+\Pi_v^{\chi}\phi_a
+=
+\phi_a
+-
+\frac{\mathcal C_v[\phi_a]}
+{\mathcal C_v[\chi]}
+\chi.
+```
+
+Then
+
+```math
+\mathcal C_v[
+\Pi_v^{\chi}\phi_a
+]
+=
+0.
+```
+
+Uniform boundedness of the projected family requires uniform boundedness of
+both (\phi_a) and the scalar ratios
+(\mathcal C_v[\phi_a]/\mathcal C_v[\chi]).
+
+**Status:** branch-local RPB terminology.
+
+## Scalar crossing-custody gap
+
+The **scalar crossing-custody gap** is the unresolved step of proving that a
+support-dependent multiplier derived from the resolvent extremizer carries the
+Birman--Schwinger over-budget datum
+
+```math
+\kappa_a-1
+```
+
+through the scalar selected-contraction / explicit-formula normalization.
+
+Horizon 1 treats (\mathcal C_v) abstractly and does not identify it with the
+Hermitian selected-coordinate pairing. Therefore the vector identity
+
+```math
+\Phi_a h_{a,u_a}
+=
+\kappa_a u_a
+```
+
+does not, by itself, give a certified scalar identity involving
+(\mathcal C_v[\psi_{a,u_a}^{\rm res}]).
+
+**Status:** branch-local RPB terminology.
+
+
+## Logarithmic support modulus
+
+After scaling compact-window support to a fixed interval, a prime translation
+with delay \(\ell=\log n\) contributes a Fourier multiplier of the form
+
+```math
+m_{\ell,a}(\xi)
+=
+\cos\!\left(
+\frac{\ell\xi}{a}
+\right).
+```
+
+For nearby supports \(a,b\) in a compact positive interval,
+
+```math
+|m_{\ell,a}(\xi)-m_{\ell,b}(\xi)|
+\lesssim
+\min\!\left(
+1,
+|a-b|\,|\xi|
+\right).
+```
+
+Relative to the logarithmic form weight
+\(\log(e+|\xi|)\), the resulting operator/form modulus is of order
+
+```math
+\omega_{\log}(r)
+=
+\frac{1}{
+\log(e+r^{-1})
+}.
+```
+
+This is the **logarithmic support modulus**. It tends to zero but is weaker
+than every positive power \(r^\alpha\).
+
+**Status:** branch-local RPB terminology.
+
+## Crossing-normalized first-variation gap
+
+Let \(\kappa_a>1\) denote the post-edge Birman--Schwinger top eigenvalue
+with \(\kappa_a\to1\) as \(a\downarrow c_*\), and let
+\(\psi_a^{\rm sp}\) be a selected-preserving support-dependent multiplier.
+
+The **crossing-normalized first-variation gap** is the missing control needed
+to make sense of, or extract a nonzero limit from,
+
+```math
+\frac{
+\psi_a^{\rm sp}
+-
+\psi_{c_*}^{\rm sp}
+}{
+\kappa_a-1
+}.
+```
+
+Continuity of numerator and denominator separately is insufficient. A closure
+requires a quantitative comparison of their vanishing orders, supplied for
+example by differentiability plus a nonzero transversality derivative, or by
+another two-sided modulus theorem.
+
+**Status:** branch-local RPB terminology.
+
+
+## Half-Sobolev boundary obstruction
+
+For a compactly supported function (h) on an interval, the **half-Sobolev
+boundary obstruction** is the failure of its zero extension to belong to
+(H^{1/2}(\mathbb R)).
+
+A sufficient diagnostic near a boundary point is
+
+```math
+\int_0^\varepsilon
+\frac{|h(c-r)|^2}{r}\,dr
+=
+\infty.
+```
+
+Indeed this integral is contained, up to constants, in the cross-boundary part
+of the (H^{1/2}) Gagliardo seminorm of the zero extension.
+
+For logarithmic Dirichlet problems, the optimal model boundary scale
+
+```math
+|h(c-r)|
+\asymp
+\frac1{\sqrt{\log(1/r)}}
+```
+
+produces precisely such divergence.
+
+**Status:** branch-local RPB terminology.
+
+## Selected boundary-cancellation obligation
+
+The **selected boundary-cancellation obligation** is the additional statement
+needed to show that the special resolvent extremizers
+
+```math
+h_{a,u}
+=
+A_{B,a}^{-1}\Phi_a^*u
+```
+
+avoid the generic logarithmic Dirichlet boundary layer strongly enough to lie
+uniformly in (H^{1/2}), or in another regularity class sufficient for support
+differentiation.
+
+Smoothness of the finite selected forcing (\Phi_a^*u) alone does not satisfy
+this obligation.
+
+**Status:** branch-local RPB terminology.
+
+
+## Selected half-Sobolev regularity kernel
+
+For a fixed support (a) with strictly positive complementary-background
+operator (A_{B,a}), let
+
+```math
+h_{a,u}
+=
+A_{B,a}^{-1}\Phi_a^{*}u,
+\qquad
+u\in M.
+```
+
+The **selected half-Sobolev regularity kernel** is
+
+```math
+\mathcal R_{1/2}(a)
+:=
+\left\{
+u\in M:
+\widetilde h_{a,u}
+\in
+H^{1/2}(\mathbb R)
+\right\},
+```
+
+where (\widetilde h_{a,u}) is the zero extension outside the support
+interval.
+
+Because (u\mapsto h_{a,u}) is linear and (H^{1/2}) is a vector space,
+(\mathcal R_{1/2}(a)) is a linear subspace of the finite selected sector.
+
+This definition avoids assuming that a pointwise logarithmic boundary
+coefficient exists.
+
+**Status:** branch-local RPB terminology.
+
+## Boundary-coefficient existence gap
+
+The **boundary-coefficient existence gap** is the missing theorem required to
+replace sharp logarithmic boundary bounds
+
+```math
+|h(x)|
+\lesssim
+\ell^{1/2}(\operatorname{dist}(x,\partial I))
+```
+
+and Hopf-type positive lower bounds by a genuine signed/complex asymptotic
+
+```math
+h(a-r)
+=
+\mathfrak b^{+}(h)\,
+\ell^{1/2}(r)
++
+o(\ell^{1/2}(r)),
+```
+
+and similarly at the left endpoint.
+
+Existing logarithmic-Laplacian boundary regularity does not by itself provide
+such a linear coefficient map for arbitrary signed/complex solutions, and no
+such theorem is presently established for the finite-enlarged Weil background
+operator.
+
+**Status:** branch-local RPB terminology.
+
+
+## Neutral-resolvent isomorphism
+
+At a support where the complementary-background operator (A_B) is strictly
+positive, let
+
+```math
+\mathsf K
+=
+\Phi A_B^{-1}\Phi^*
+```
+
+on the finite selected sector (M), and let
+
+```math
+A_{\rm full}
+=
+A_B-\Phi^*\Phi.
+```
+
+The **neutral-resolvent isomorphism** is the bijection
+
+```math
+J:
+\ker(\mathsf K-I)
+\longrightarrow
+\ker A_{\rm full},
+\qquad
+J(u)=A_B^{-1}\Phi^*u,
+```
+
+with inverse
+
+```math
+J^{-1}(h)=\Phi h.
+```
+
+Thus selected unit-gain multiplicity equals full physical nullity whenever the
+background is strictly positive.
+
+**Status:** branch-local RPB terminology.
+
+## Half-Sobolev neutral nullspace
+
+For a compact-window full operator (A_{\rm full}), define the
+**half-Sobolev neutral nullspace**
+
+```math
+N^{1/2}
+=
+\left\{
+h\in\ker A_{\rm full}:
+\widetilde h\in H^{1/2}(\mathbb R)
+\right\}.
+```
+
+Under the neutral-resolvent isomorphism,
+
+```math
+J\left(
+\ker(\mathsf K-I)
+\cap
+\mathcal R_{1/2}
+\right)
+=
+N^{1/2}.
+```
+
+Hence the selected regularity-intersection problem is exactly the physical
+regularity problem for neutral null modes.
+
+**Status:** branch-local RPB terminology.
+
+
+## Arithmetic domain invariance
+
+On a fixed compact support interval, write the canonical logarithmic principal
+operator as (A_{\log,c}).  The compact-window Weil background differs from
+this principal operator by a bounded self-adjoint perturbation:
+
+```math
+A_{B,c}
+=
+A_{\log,c}
++
+B_c,
+\qquad
+B_c\in\mathcal B(L^2(-c,c)).
+```
+
+The bounded term contains the bounded archimedean remainder after subtracting
+the logarithmic principal symbol, finitely many prime cosine/translation
+multipliers, the finite-rank pole contribution, and any fixed finite selected
+covariance restored into the background.
+
+Therefore
+
+```math
+\mathfrak D(A_{B,c})
+=
+\mathfrak D(A_{\log,c})
+```
+
+with equivalent graph norms.
+
+This is **arithmetic domain invariance**: the known finite/support-local
+arithmetic corrections can move the spectrum and nullspace but do not raise the
+operator-domain regularity order.
+
+**Status:** branch-local RPB terminology.
+
+## Neutral core-domain lift
+
+Let (A_c) be the Friedrichs extension of a symmetric core operator (B_c)
+whose core domain is stronger, for example (H_0^1(-c,c)).
+
+A **neutral core-domain lift** is a theorem of the form
+
+```math
+h\in\ker A_c
+\quad\Longrightarrow\quad
+h\in\mathfrak D(B_c).
+```
+
+Such a lift would upgrade a neutral Friedrichs eigenvector into the stronger
+core regularity class and can therefore bypass the generic logarithmic-domain
+boundary obstruction.
+
+No such implication follows from the definition of a Friedrichs extension
+alone.
+
+**Status:** branch-local RPB terminology.
+
+
+## Screw-core kernel criterion
+
+For Suzuki's compact-window screw realization
+
+```math
+B_c=D^*G_cD,
+\qquad
+\mathfrak D(B_c)=H_0^1(-c,c),
+```
+
+with
+
+```math
+D=i\frac{d}{dx}:
+H_0^1(-c,c)
+\overset{\sim}{\longrightarrow}
+L_0^2(-c,c),
+```
+
+the **screw-core kernel criterion** is
+
+```math
+\ker A_c
+\cap
+H_0^1(-c,c)
+=
+D^{-1}(\ker G_c),
+```
+
+where (A_c) is the Friedrichs extension of (B_c).
+
+Thus a neutral Friedrichs mode lies in the stronger screw core exactly when its
+derivative is a zero mode of the compact projected screw operator (G_c).
+
+**Status:** branch-local RPB terminology.
+
+## Core-lift nullity defect
+
+Define
+
+```math
+\delta_{\rm core}(c)
+=
+\dim\ker A_c
+-
+\dim\ker G_c.
+```
+
+Under the screw-core kernel criterion, (\delta_{\rm core}(c)) counts neutral
+Friedrichs directions that are not represented by (H_0^1) screw-core zero
+modes.
+
+A full zero-mode core-domain lift at support (c) is equivalent to
+
+```math
+\delta_{\rm core}(c)=0.
+```
+
+**Status:** branch-local RPB terminology.
+
+
+## Screw-visible neutral direction
+
+At a compact-window support (c) with (0insigma(A_c)), a **screw-visible
+neutral direction** is a nonzero vector
+
+```math
+u\in\ker G_c
+\subset L_0^2(-c,c),
+```
+
+equivalently a zero mode of Suzuki's generalized eigenvalue problem at spectral
+parameter (0).
+
+Suzuki's generalized formulation
+
+```math
+G_cu=\lambda K_cu
+```
+
+has the same spectrum as the localized Weil operator (A_c), and the case
+(lambda=0) reduces exactly to the (0)-eigenspace of (G_c).
+
+By the screw-core kernel criterion, every screw-visible neutral direction lifts
+through (D^{-1}) to a nonzero core-domain neutral mode in
+(H_0^1(-c,c)).
+
+**Status:** branch-local RPB terminology.
+
+## Screw-visible core neutral subspace
+
+Define
+
+```math
+N_{\rm screw}(c)
+:=
+D^{-1}(\ker G_c)
+=
+\ker A_c\cap H_0^1(-c,c).
+```
+
+The **screw-visible core neutral subspace** is the part of the localized Weil
+nullspace already visible in the compact projected screw operator before
+Friedrichs completion.
+
+At a neutral edge, Suzuki's generalized eigenvalue formulation guarantees this
+subspace is nonzero.
+
+**Status:** branch-local RPB terminology.
+
+
+## Screw compression stationarity
+
+For (0<c<a), let
+
+```math
+J_{c,a}:
+L_0^2(-c,c)
+\to
+L_0^2(-a,a)
+```
+
+be zero extension.  For the projected screw operators
+
+```math
+G_r=P_rGP_r,
+```
+
+the **screw compression stationarity** identity is
+
+```math
+\boxed{
+J_{c,a}^*G_aJ_{c,a}
+=
+G_c.
+}
+```
+
+Thus enlarging support changes the admissible carrier but does not change the
+quadratic form on vectors already supported in the old zero-mean carrier.
+
+In particular, if (N_c=\ker G_c), then the diagonal compression of every
+larger (G_a) to (J_{c,a}N_c) is identically zero.
+
+**Status:** branch-local RPB terminology.
+
+## Screw-kernel collar leakage
+
+Let
+
+```math
+\mathcal C_{c,a}
+=
+J_{c,a}L_0^2(-c,c)^\perp
+\cap
+L_0^2(-a,a).
+```
+
+For (u\in\ker G_c), screw compression stationarity implies
+
+```math
+G_aJ_{c,a}u
+\in
+\mathcal C_{c,a}.
+```
+
+The vector
+
+```math
+\mathcal L_{c,a}u
+:=
+G_aJ_{c,a}u
+```
+
+is the **screw-kernel collar leakage** of (u).
+
+If (\mathcal L_{c,a}u\ne0), then (G_a) is indefinite: the mixed vector
+
+```math
+J_{c,a}u-t\mathcal L_{c,a}u
+```
+
+has negative quadratic value for all sufficiently small (t>0).
+
+If (\mathcal L_{c,a}u=0), the zero-extended vector remains an actual kernel
+vector of (G_a).
+
+**Status:** branch-local RPB terminology.
+
+## Screw-potential collar rigidity
+
+For (u\in L_0^2(-c,c)), define the screw potential
+
+```math
+F_u(x)
+=
+\int_{-c}^{c}
+g(x-y)u(y)\,dy.
+```
+
+Because (G_c=P_cGP_c),
+
+```math
+u\in\ker G_c
+```
+
+means that (F_u) is constant on ((-c,c)).
+
+The **screw-potential collar rigidity** question asks whether a nonzero
+(u\in\ker G_c) can have the same potential remain constant on any strictly
+larger interval.
+
+Equivalently, it asks whether the collar leakage
+(\mathcal L_{c,a}u) can vanish for some (a>c).
+
+**Status:** branch-local RPB terminology.
