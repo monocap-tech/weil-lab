@@ -1,0 +1,139 @@
+{
+  "format": "GERM84-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-84",
+  "standing": "UNRATIFIED",
+  "entry_commit": "6ad58be47a9861dd495ce45168d0e6c2055b3795",
+  "verifier_path": "tools/sz_post_psi7_ninth_double_visit_audit.py",
+  "verifier_sha256": "7bb3f91f9a99ff741438763e9c9541820f78afc0560cc828f105ca765ddb1558",
+  "verifier_git_blob": "149645c2bb46cba4e2f0fc06707714142a462e03",
+  "stdout_sha256": "0e97ac4592156512c51633b13e51caa290ebdb50d465b1f2214de956654630af",
+  "compact_complete_audit_sha256": "39d532815f69553d7f3d4389f0a84bd0585ba0f51127770459df4a50882f19d7",
+  "execution_exit_code": 0,
+  "parent_GERM83_entry_replay_exit_code": 0,
+  "parent_GERM83_stdout_sha256": "cab2908540875e1b30cbd08d1b300efc30c5db48664764e842f6f9f24ee243b9",
+  "parent_GERM83_recorded_stdout_match": true,
+  "new_exclusion_scope": "0<b<=rho9, b=e-e83; L83<L<=L83+rho9",
+  "experimental_endpoint": "log(2^36866988*5^6241338/3^32403873)",
+  "increment": "rho9=psi7-3sigma8=sigma8-c10",
+  "direct_dependency_sha256": {
+    "tools/sz_post_psi7_eighth_map_audit.py": "77d3aa03a9cd6b92d1203b746aba6c1c55ed02adcfcdffa86d33b54349609708"
+  },
+  "matrix_namespace": "A/D/E are GERM-83-local; P/Q/R/S and tenth words are GERM-84-local",
+  "ninth_word_dictionary": {
+    "P": [
+      "A",
+      "D",
+      "E"
+    ],
+    "Q": [
+      "A",
+      "E",
+      "E"
+    ],
+    "R": [
+      "A",
+      "D",
+      "E",
+      "E"
+    ],
+    "S": [
+      "A",
+      "E",
+      "E",
+      "E"
+    ]
+  },
+  "ninth_formula_scope": "0<b<=sigma8; new exclusion only through b=rho9",
+  "low_word_count": 4,
+  "high_word_count": 19,
+  "shared_word_count": 2,
+  "distinct_temporal_word_count": 21,
+  "cone_chart_tests": 23,
+  "low_chart": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "-97/50",
+      "-19/10"
+    ]
+  ],
+  "high_chart": [
+    [
+      "1",
+      "-1"
+    ],
+    [
+      "-97/50",
+      "199/100"
+    ]
+  ],
+  "low_sign_rule": "exterior P start -1; interior Q start +1",
+  "high_sign_rule": "(-1)^floor(s/2)",
+  "common_forward_backward_factor": "5",
+  "high_minimum_forward_lower": "7.9570314109",
+  "high_minimum_backward_lower": "5.3100600607",
+  "original_step_counts": [
+    12838933,
+    14158226
+  ],
+  "upper_endpoint_words": [
+    "S^8 R Q",
+    "S^9 R Q"
+  ],
+  "remaining_eighth_formula_width": [
+    "0.000000000897835354044042944148127735",
+    "0.000000000897835354044042944148127736"
+  ],
+  "remaining_three_layer_width": [
+    "0.000031798990632387998322663029617997",
+    "0.000031798990632387998322663029617998"
+  ],
+  "next_tenth_word": [
+    "Q",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S"
+  ],
+  "next_matrix": "S^9 Q, GERM-84-local",
+  "next_domain": "b=rho9+eps; 0<y<eps<c10-omega10",
+  "next_trace": [
+    [
+      [
+        "1.7249387847",
+        "1.7249387848"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "-1.0245861890",
+        "-1.0245861889"
+      ]
+    ]
+  ],
+  "next_status": "ELLIPTIC; OUTSIDE CURRENT EXPANDING LIBRARY",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Both complete serializations are in the bundle; the pinned executable reproduces stdout.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
