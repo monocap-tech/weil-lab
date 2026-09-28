@@ -1,0 +1,146 @@
+{
+  "format": "GERM79-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-79",
+  "standing": "UNRATIFIED",
+  "entry_commit": "c0b870e1dc14bd8d8db85d64ff133a2a5ba1c4e5",
+  "verifier_path": "tools/sz_eighth_return_all_internal_audit.py",
+  "verifier_sha256": "f55b5e8db3837c59dce5d0f6c37f3624b8dccff49e9aa0615f86b3b31fa6dbba",
+  "verifier_git_blob": "4cff8e5a4588ec17503706ecb2c93efb81f4d179",
+  "stdout_sha256": "15a6e3f3bf667d5387268b5b9687599829ccfd20e95a9d2c1f0fbf6bba951b84",
+  "compact_complete_audit_sha256": "ffa7ebd002f0c47dc9dc92d392a5b283013b70de313897735919351146b4d4e8",
+  "execution_exit_code": 0,
+  "parent_GERM78_entry_replay_exit_code": 0,
+  "parent_GERM78_stdout_sha256": "ffe68ffb19671811126db5a132b541d0a38dccffcc92c328ef4e9e7173cccfb0",
+  "parent_GERM78_recorded_stdout_match": true,
+  "new_exclusion_scope": "L78<L<=L78+psi7-2sigma8",
+  "experimental_endpoint": "log(2^8965832*5^1517855/3^7880426)",
+  "new_increment": "psi7-2sigma8",
+  "eighth_formula_scope": "2psi7<delta<chi7, equivalently 0<a<nu8",
+  "direct_dependency_sha256": {
+    "tools/sz_eighth_return_internal_visit_audit.py": "92e0a7fb61bb0122037d6c0d46239725dc81ad7384aad69a70b611089176d7ae"
+  },
+  "eighth_word_dictionary": {
+    "A": [
+      "V1",
+      "U1"
+    ],
+    "D": [
+      "V1",
+      "U0",
+      "U1"
+    ],
+    "E": [
+      "V1",
+      "U1",
+      "U1"
+    ]
+  },
+  "ninth_word_dictionary": {
+    "0/3": [
+      "A",
+      "D",
+      "D"
+    ],
+    "1/3": [
+      "A",
+      "D",
+      "E"
+    ],
+    "0/4": [
+      "A",
+      "D",
+      "D",
+      "D"
+    ],
+    "1/4": [
+      "A",
+      "D",
+      "D",
+      "E"
+    ],
+    "2/4": [
+      "A",
+      "D",
+      "E",
+      "E"
+    ]
+  },
+  "chart": [
+    [
+      "1",
+      "4"
+    ],
+    [
+      "-2",
+      "-23/2"
+    ]
+  ],
+  "common_forward_backward_factor": "20",
+  "lower_bounds": {
+    "0/3": [
+      -1,
+      "1150.2946190546",
+      "54.0531384220"
+    ],
+    "1/3": [
+      1,
+      "50.3456672009",
+      "94.8569880197"
+    ],
+    "0/4": [
+      1,
+      "47650.8050021155",
+      "2239.1357400190"
+    ],
+    "1/4": [
+      -1,
+      "2086.1700524493",
+      "3929.4626661197"
+    ],
+    "2/4": [
+      1,
+      "27.1568272934",
+      "22.1051092849"
+    ]
+  },
+  "original_step_counts": [
+    965296,
+    1319293
+  ],
+  "upper_endpoint_faces": [
+    "1/3",
+    "2/4"
+  ],
+  "internal_junction_faces": [
+    "1/3",
+    "1/4"
+  ],
+  "above_scope_word": [
+    "A",
+    "E",
+    "E"
+  ],
+  "above_scope_trace": [
+    [
+      [
+        "-0.5773206695",
+        "-0.5773206694"
+      ]
+    ]
+  ],
+  "above_scope_discriminant": [
+    [
+      [
+        "-3.6667008447",
+        "-3.6667008446"
+      ]
+    ]
+  ],
+  "complete_output": "Both complete serializations are in the bundle; the pinned executable reproduces stdout.",
+  "full_parent_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
