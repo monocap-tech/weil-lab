@@ -1,0 +1,163 @@
+{
+  "format": "GERM82-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-82",
+  "standing": "UNRATIFIED",
+  "entry_commit": "d7da5057bc1f8d998037d51005fb67f6c6df6719",
+  "verifier_path": "tools/sz_post_sigma8_ninth_map_audit.py",
+  "verifier_sha256": "d1aef82e5dfc3673867f327b7fbcaff788f6c93f6cdbf099f38d10c8dc35e164",
+  "verifier_git_blob": "c6b35a25fd47527ab00c7074f36ec040bc2dc41c",
+  "stdout_sha256": "e5aca38ee3c63d6b96fed9e7da1cf17ddc0e01ab4befecd3f2762286aaebba15",
+  "compact_complete_audit_sha256": "dd2274f3a6f7b54535e323895018e03efa57526fb8b02b67114249ede759d1fa",
+  "execution_exit_code": 0,
+  "parent_GERM81_entry_replay_exit_code": 0,
+  "parent_GERM81_stdout_sha256": "01b29dab7256045bde981373094c0ae6ff10fedbacf8cea6964b54b4bb6eb90e",
+  "parent_GERM81_recorded_stdout_match": true,
+  "new_exclusion_scope": "sigma8<t<=psi7, t=e-e80; L81<L<=L80+psi7",
+  "experimental_endpoint": "log(3^1936158/(2^2202828*5^372926))",
+  "increment": "nu8=psi7-sigma8",
+  "direct_dependency_sha256": {
+    "tools/sz_post_chi7_sixth_atom_audit.py": "f68e1f1bb2924462740bf54d992f50e76126a1de5d27717f5c2b5e504d979f17"
+  },
+  "matrix_namespace": "A_i,B_i,U_i,V_i are GERM-81-local; N_(s,n) is GERM-82-local",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "ninth_word_dictionary": {
+    "0/3": [
+      "A1",
+      "B0",
+      "B0"
+    ],
+    "1/3": [
+      "A1",
+      "B0",
+      "B1"
+    ],
+    "2/3": [
+      "A1",
+      "B1",
+      "B1"
+    ],
+    "0/4": [
+      "A1",
+      "B0",
+      "B0",
+      "B0"
+    ],
+    "1/4": [
+      "A1",
+      "B0",
+      "B0",
+      "B1"
+    ],
+    "2/4": [
+      "A1",
+      "B0",
+      "B1",
+      "B1"
+    ],
+    "3/4": [
+      "A1",
+      "B1",
+      "B1",
+      "B1"
+    ]
+  },
+  "chart": [
+    [
+      "1",
+      "-1"
+    ],
+    [
+      "-12/5",
+      "21/10"
+    ]
+  ],
+  "common_forward_backward_factor": "7/2",
+  "signed_cone_bounds": {
+    "0/3": [
+      -1,
+      "18.3195707992",
+      "13.7512787550"
+    ],
+    "1/3": [
+      -1,
+      "98.8939893415",
+      "68.1494896679"
+    ],
+    "2/3": [
+      1,
+      "31.9750564213",
+      "34.7500602785"
+    ],
+    "0/4": [
+      -1,
+      "3.8887760770",
+      "3.5598692789"
+    ],
+    "1/4": [
+      -1,
+      "117.7379717628",
+      "80.0936023511"
+    ],
+    "2/4": [
+      -1,
+      "635.0599571410",
+      "438.3575866658"
+    ],
+    "3/4": [
+      1,
+      "205.3381249282",
+      "222.8330835644"
+    ]
+  },
+  "original_step_counts": [
+    965296,
+    1319293
+  ],
+  "tenth_return_induction_used": false,
+  "all_ninth_discriminants": "POSITIVE",
+  "upper_endpoint": "t=psi7 checked from eighth contracts; surviving ninth words B1^2 A1 and B1^3 A1",
+  "junction_faces": [
+    "t=sigma8 entry",
+    "t=2sigma8",
+    "t=3sigma8",
+    "t=psi7 endpoint"
+  ],
+  "next_eighth_seventh_word": [
+    "V1",
+    "U0",
+    "U1"
+  ],
+  "next_domain": "t=psi7+eps; 0<eps<nu8; sigma8<z<sigma8+eps",
+  "next_trace": [
+    [
+      [
+        "-2.4551989352",
+        "-2.4551989351"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "2.0280018112",
+        "2.0280018113"
+      ]
+    ]
+  ],
+  "next_status": "NEW EIGHTH SOURCE WORD; HYPERBOLIC; NO EXCLUSION CLAIM ABOVE t=psi7",
+  "initial_local_attempt": "JSON serialization failed after summary-variable collision; repaired before final execution without removing mathematical assertions",
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Both full serializations are in the bundle; the pinned verifier reproduces stdout.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
