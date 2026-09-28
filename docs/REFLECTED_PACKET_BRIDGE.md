@@ -3,65 +3,44 @@
 **Repository:** Weil-Lab  
 **Branch:** `research/reflected-packet-bridge`  
 **Standing:** experimental / not canonical promotion  
-**Imported provenance source:** `monocap-tech/weil@research/reflected-packet-bridge` through RPB-34.
+**Imported provenance source:** `monocap-tech/weil@research/reflected-packet-bridge` through RPB-35.
 
 ## Current standing
 
 ```math
 \boxed{
-\textbf{RPB-34 — THE SCREW-KERNEL DIAGONAL CROSSING FORM IS IDENTICALLY ZERO; THE RELEVANT OBJECT IS COLLAR LEAKAGE.}
+\textbf{RPB-35 — SCREW-POTENTIAL COLLAR RIGIDITY IS EXACTLY THE CORE-REGULAR WEIL NULL-EXTENSION INTERFACE.}
 }
 ```
 
-For nested supports (0<c<a), zero extension (J_{c,a}) satisfies
+For a screw-visible neutral direction (u=Dh=i h') with (h\in H_0^1(-c,c)),
 
 ```math
-J_{c,a}^*G_aJ_{c,a}=G_c.
+F_u=g*u=i,g'*h,
+\qquad
+F_u'=-i,W*h.
 ```
 
-Hence for every (u\in\ker G_c),
+Hence screw-potential constancy on a strict enlargement is equivalent to the
+whole-line Weil null equation on that enlargement. The explicit prime kinks in
+(g) do not yield an analytic-continuation shortcut: after convolution they
+produce finitely many shifted source terms (u(x-\log n)).
 
-```math
-\langle G_aJ_{c,a}u,J_{c,a}u\rangle=0.
-```
-
-Define the collar leakage
-
-```math
-\mathcal L_{c,a}u:=G_aJ_{c,a}u.
-```
-
-Then
-
-```math
-\mathcal L_{c,a}u=0
-\Longrightarrow
-J_{c,a}u\in\ker G_a,
-```
-
-while
-
-```math
-\mathcal L_{c,a}u\ne0
-\Longrightarrow
-G_a\text{ has a negative direction}.
-```
-
-Immediate right negativity does not by itself force kernel leakage because compact positive-tail escape remains possible.
+Thus the neutral RPB line has refolded into
+`AZ-FIN-WEIL-NULL-EXTENSION` on the nonzero core-visible neutral subspace
+identified in RPB-33.
 
 ## Next cursor
 
 ```text
-RPB-35 / SCREW-POTENTIAL COLLAR RIGIDITY OF ker G_{c_*}
+RPB-36 / FINITE-DELAY UNIQUE CONTINUATION FOR CORE-NEUTRAL WEIL MODE
 ```
 
-The next pass should test whether a nonzero (u\in\ker G_{c_*}) can have
-
-```math
-F_u(x)=\int_{-c_*}^{c_*}g(x-y)u(y)\,dy
-```
-
-remain constant on any strict enlargement of ((-c_*,c_*)).
+The next pass should test whether logarithmic-Laplacian unique continuation can
+be extended to the actual compact-window Weil operator with finite arithmetic
+delays and finite-rank/global lower-order terms, using the extra (H_0^1)
+regularity of the screw-visible neutral mode and simultaneous left/right collar
+equations.
 
 ## Governance
 
