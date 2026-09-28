@@ -1,0 +1,177 @@
+{
+  "format": "GERM75-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-75",
+  "standing": "UNRATIFIED",
+  "entry_commit": "20d06346bf81479c97c4e06aa24bab0238fae4c2",
+  "verifier_path": "tools/sz_fourth_section_self_overlap_audit.py",
+  "verifier_sha256": "805831ec2a937babcd3bb37a4528af22fc17cdade5dcee032befb592a79149fd",
+  "verifier_git_blob": "74ecad6272dee07b8247f48acb83d2b65b2e2abf",
+  "stdout_sha256": "26468ce0da3470170b8368d58931e7a4c2548cbba814ce749ebef9699ebd3ad7",
+  "complete_compact_audit_sha256": "834e66c7923ded5e08cf5ab29af59c1f941fffbf4aa73afa55a3f8a96ceb38ae",
+  "execution_exit_code": 0,
+  "new_exclusion_scope": "3h-beta<e<=3h-beta+14xi",
+  "experimental_endpoint": "log(3^508056/(2^578028*5^97858))",
+  "physical_recalculation": "FRESH OUTWARD RATIONAL PAIRED-SOURCE SOLVES; grid 10^60",
+  "parent_GERM72_correction": "RETAINED; factor 40 not used",
+  "third_word_dictionary": {
+    "Q": [
+      "01-",
+      "11+",
+      "11+"
+    ],
+    "N": [
+      "11-",
+      "11+",
+      "11+"
+    ],
+    "P": [
+      "11-",
+      "11+",
+      "11+",
+      "10+"
+    ],
+    "I": [
+      "11-",
+      "11+",
+      "11+",
+      "11+"
+    ]
+  },
+  "fourth_word_dictionary": {
+    "00+": [
+      "Q",
+      "P"
+    ],
+    "01+": [
+      "Q",
+      "I"
+    ],
+    "11+": [
+      "N",
+      "I"
+    ],
+    "00-": [
+      "Q",
+      "I",
+      "P"
+    ],
+    "10-": [
+      "N",
+      "I",
+      "P"
+    ],
+    "11-": [
+      "N",
+      "I",
+      "I"
+    ]
+  },
+  "fifth_word_dictionary": {
+    "00+": [
+      "00-",
+      "00+",
+      "00+",
+      "00+",
+      "00+"
+    ],
+    "01+": [
+      "00-",
+      "00+",
+      "00+",
+      "00+",
+      "01+"
+    ],
+    "11+": [
+      "10-",
+      "00+",
+      "00+",
+      "00+",
+      "01+"
+    ],
+    "00-": [
+      "00-",
+      "00+",
+      "00+",
+      "00+"
+    ],
+    "10-": [
+      "10-",
+      "00+",
+      "00+",
+      "00+"
+    ],
+    "11-": [
+      "10-",
+      "00+",
+      "00+",
+      "01+"
+    ]
+  },
+  "word_count": 30,
+  "visit_counts": "0 through 14",
+  "return_lengths": [
+    19,
+    20
+  ],
+  "original_step_counts": [
+    31129,
+    32783
+  ],
+  "chart": [
+    [
+      "-1",
+      "4"
+    ],
+    [
+      "1",
+      "-48/5"
+    ]
+  ],
+  "common_forward_backward_factor": "3",
+  "minimum_forward_lower": "3.0369644396",
+  "minimum_backward_lower": "3.0647157106",
+  "above_scope_word": [
+    "00+",
+    "00+",
+    "00+",
+    "00+",
+    "01+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "10-"
+  ],
+  "above_scope_trace": [
+    [
+      [
+        "1.3211689698",
+        "1.3211689699"
+      ]
+    ]
+  ],
+  "above_scope_discriminant": [
+    [
+      [
+        "-2.2545125532",
+        "-2.2545125531"
+      ]
+    ]
+  ],
+  "source_domain_certificate": "Third original-step lifts; every higher composition checks each proved lower source domain and exact target identity. Endpoint faces and immediate guard are checked.",
+  "full_parent_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "complete_output": "Run the pinned verifier; both complete serializations are included in the certificate bundle.",
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE"
+}
