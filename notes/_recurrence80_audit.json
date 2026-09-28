@@ -1,0 +1,132 @@
+{
+  "format": "GERM80-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-80",
+  "standing": "UNRATIFIED",
+  "entry_commit": "e7210aeb5441c9fe5b66eeac07877b4ee2980b72",
+  "verifier_path": "tools/sz_ninth_return_double_internal_audit.py",
+  "verifier_sha256": "febb0139baf1962838a937d5034670dcf0a1719f363c60605a88c7dd49ae9f3c",
+  "verifier_git_blob": "e5139105e58d589f169b4b9683a377ea0640e6ed",
+  "stdout_sha256": "d3ed7a8fc1157f406335e1c8e4c0c1dfdc1d8eb428cb1fd6790068938adccf16",
+  "compact_complete_audit_sha256": "d3612d6272936a44143d813bb15153d6a994e48fdb9f5bd86d7bb5405f0d5e64",
+  "execution_exit_code": 0,
+  "parent_GERM79_entry_replay_exit_code": 0,
+  "parent_GERM79_stdout_sha256": "15a6e3f3bf667d5387268b5b9687599829ccfd20e95a9d2c1f0fbf6bba951b84",
+  "parent_GERM79_recorded_stdout_match": true,
+  "new_exclusion_scope": "chi7-sigma8<delta<=chi7; L79<L<=L76+chi7",
+  "experimental_endpoint": "log(2^193384*5^32737/3^169969)",
+  "new_increment": "sigma8",
+  "endpoint_inclusion": "delta=chi7 checked bottom-up from sixth source contracts; no continuity inference",
+  "direct_dependency_sha256": {
+    "tools/sz_eighth_return_all_internal_audit.py": "f55b5e8db3837c59dce5d0f6c37f3624b8dccff49e9aa0615f86b3b31fa6dbba"
+  },
+  "precision": {
+    "rational_grid": "10^120",
+    "log_series_terms": 400,
+    "order_tests": "outward rational logarithm enclosures"
+  },
+  "ninth_word_dictionary": {
+    "P": [
+      "A",
+      "D",
+      "E"
+    ],
+    "Q": [
+      "A",
+      "E",
+      "E"
+    ],
+    "R": [
+      "A",
+      "D",
+      "E",
+      "E"
+    ],
+    "S": [
+      "A",
+      "E",
+      "E",
+      "E"
+    ]
+  },
+  "distinct_temporal_word_count": 23,
+  "cone_chart_test_count": 25,
+  "low_word_count": 4,
+  "high_word_count": 21,
+  "shared_word_count": 2,
+  "low_chart": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "-293/100",
+      "-14/5"
+    ]
+  ],
+  "high_chart": [
+    [
+      "1",
+      "-1"
+    ],
+    [
+      "-113/40",
+      "277/100"
+    ]
+  ],
+  "common_forward_backward_factor": "400",
+  "high_minimum_forward_lower": "404.8638977532",
+  "high_minimum_backward_lower": "607.5773965892",
+  "original_step_counts": [
+    12838933,
+    14158226
+  ],
+  "endpoint_surviving_sixth_atoms": [
+    "A19",
+    "E20"
+  ],
+  "endpoint_surviving_seventh_maps": [
+    "U1",
+    "V1"
+  ],
+  "endpoint_surviving_eighth_maps": [
+    "A",
+    "E"
+  ],
+  "endpoint_surviving_ninth_maps": [
+    "Q",
+    "S"
+  ],
+  "endpoint_tenth_words": [
+    "S^9 Q",
+    "S^10 Q"
+  ],
+  "next_sixth_atom": "B15,19",
+  "next_trace": [
+    [
+      [
+        "0.4988087447",
+        "0.4988087448"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "-3.7511898362",
+        "-3.7511898361"
+      ]
+    ]
+  ],
+  "complete_output": "Both complete serializations are in the bundle; the pinned executable reproduces stdout.",
+  "initial_direct_prime_power_attempt": "Stopped before completion; not the executed final verifier",
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_parent_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
