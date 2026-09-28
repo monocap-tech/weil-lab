@@ -25,6 +25,8 @@ product=parent.product
 
 def scale(n,x): return tuple(n*t for t in x)
 
+# Sixth-return atoms. The new elliptic atom is B15,20; B14,* are the
+# previously certified exterior atoms immediately surrounding it.
 ATOMS={'A19':(14,19),'A20':(14,20),'E20':(15,20)}
 SEVENTH={
  '3out':['A20','A20','A19'],
@@ -33,6 +35,7 @@ SEVENTH={
  '5one':['A20','E20','A19','A20','A19'],
  '5two':['A20','E20','A19','E20','A19'],
 }
+
 
 def rational_audit():
     original,pivots=parent.parent.parent.parent.parent.recalculate_returns()
@@ -50,6 +53,8 @@ def rational_audit():
         item=parent.parent.parent.cone_test(b,chart,1,F(12))
         item['sixth_return_word']=w
         cert[name]=item
+    # Immediate above-scope source-overlap word: the seventh-section source
+    # itself becomes internal and the N=5 return has three E20 visits.
     guard=['E20','E20','A19','E20','A19']
     b=product(guard,atoms)
     tr=b[0][0]+b[1][1]; d=parent.det(b); disc=tr*tr-4*d
@@ -65,6 +70,8 @@ def rational_audit():
       'above_scope_discriminant':old.display_matrix([[disc]]),
       'above_scope_status':'PROJECTIVELY ELLIPTIC'}
 
+# Geometry in the exact affine coordinates inherited from GERM-75:
+# gamma=1, beta=r, zeta=eta-variable, seed=z-variable.
 af,add,sub,val,vertices=parent.af,parent.add,parent.sub,parent.val,parent.vertices
 zero,one=af(),af(1)
 beta,zeta,seed=parent.beta,parent.zeta,parent.seed
@@ -75,6 +82,7 @@ psi7=sub(eta7,chi7)                 # 2xi-3omega
 base75=scale(14,xi)
 d=sub(zeta,base75)
 RANGE=(sub(beta,af(F(777,157))),sub(af(F(292,59)),beta))
+
 
 def audit(margins,vv):
     assert vv
@@ -87,9 +95,11 @@ def audit(margins,vv):
             weak.append(name)
     return {'vertices':len(vv),'checked_margins':len(margins),'weak_global':weak}
 
+
 def atom_lift(name,y):
     s,n=ATOMS[name]
     return parent.sixth_lift(s,n,y)
+
 
 def seventh_positions(n,z):
     y0=add(scale(2,eta7),z)
@@ -99,7 +109,9 @@ def seventh_positions(n,z):
     return [y0,add(eta7,z),z,add(omega,z),add(chi7,z),
             add(add(eta7,scale(2,chi7)),z)]
 
+
 def geometry_audit():
+    # Exact prime-log fixed inequalities.
     H,K=old.H,old.KAP
     TAU=old.sub(H,old.mul(5,K)); TH=old.sub(K,old.mul(8,TAU))
     A=old.sub(TAU,old.mul(3,TH)); B=old.sub(TH,A); G=old.sub(A,B)
@@ -147,8 +159,10 @@ def geometry_audit():
             item['d_equals_eta7_face']=audit(margins,vertices(face))
         cells[name]=item
 
+    # Return map in z-coordinate: z -> z-psi7 mod chi7.
     assert sub(add(psi7,chi7),eta7)==zero
     assert sub(add(psi7,eta7),xi) == sub(psi7,add(eta7,chi7))  # affine sanity
+    # Above-scope guard: d=eta7+eps, 0<z<eps<min(psi7,chi7-psi7).
     eps=sub(d,eta7)
     pp=seventh_positions(5,seed)
     guard_word=['E20','E20','A19','E20','A19']
@@ -170,7 +184,9 @@ def geometry_audit():
       'above_scope_word':guard_word,'above_scope_guard':guard,
       'sampled_topology':False}
 
+
 def main():
+    # Exact endpoint arithmetic via the residual definitions.
     H=F(81,80); K=F(16,15)
     kap=K/H**5; tau=H/kap**5; theta=kap/tau**8
     alpha=tau/theta**3; beta_r=theta/alpha; gamma=alpha/beta_r
