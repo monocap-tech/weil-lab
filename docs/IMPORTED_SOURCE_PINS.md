@@ -789,3 +789,94 @@ RPB-45.
 \`\`\`math
 \boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
 \`\`\`
+
+
+---
+
+## RPB-EXT-A5 — Mellin diagonalization of the Carleman operator
+
+### Source
+
+D. R. Yafaev,
+*Spectral and scattering theory for differential and Hankel operators*,
+arXiv:1511.04683 (2015), and the classical Carleman diagonalization recalled
+there.
+
+A directly stated formula also appears in D. R. Yafaev,
+*Diagonalizations of two classes of unbounded Hankel operators*,
+Bulletin of Mathematical Sciences **3** (2013), Theorem 3.2 and the discussion
+immediately following it.
+
+### Exact input consumed by RPB-46
+
+For the Carleman Hankel operator
+
+\`\`\`math
+(\mathcal C f)(x)
+=
+\int_0^\infty
+\frac{f(y)}{x+y}\,dy
+\`\`\`
+
+on \(L^2(\mathbb R_+)\), the Mellin transform diagonalizes
+\(\mathcal C\) with multiplier
+
+\`\`\`math
+\boxed{
+\frac{\pi}{\cosh(\pi t)}.
+}
+\`\`\`
+
+Consequently
+
+\`\`\`math
+\sigma(\mathcal C)
+=
+[0,\pi]
+\`\`\`
+
+and the spectrum is absolutely continuous.
+
+### RPB specialization
+
+The threshold endpoint model is
+
+\`\`\`math
+\frac12\mathcal C
++
+\varepsilon a_0 I,
+\qquad
+a_0
+=
+\frac{\Lambda(n_0)}{\sqrt{n_0}}.
+\`\`\`
+
+On the \(L^2\) Mellin line, its multiplier is
+
+\`\`\`math
+\frac{\pi}{2\cosh(\pi t)}
++
+\varepsilon a_0.
+\`\`\`
+
+For \(\varepsilon=+1\) it has no real zero.
+
+For \(\varepsilon=-1\), because \(0<a_0<\pi/2\), it has exactly two real zeros
+
+\`\`\`math
+t=\pm\tau_0,
+\qquad
+\cosh(\pi\tau_0)
+=
+\frac{\pi}{2a_0}.
+\`\`\`
+
+This global \(L^2\) spectral statement is used only to type the local Mellin
+indicial geometry.  The truncated endpoint equation is not identified with a
+global Carleman eigenvalue problem.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
