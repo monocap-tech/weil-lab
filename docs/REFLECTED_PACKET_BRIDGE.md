@@ -9,42 +9,44 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-73 — F-1 HAS PASSED DECLARATION, TYPECLASS, AND PROOF-TERM STATIC AUDITS; NO STATIC SOURCE BLOCKER REMAINS.}
+\textbf{RPB-74 — F-1 IS STATICALLY EXHAUSTED AND FROZEN; THE ONLY REMAINING OBLIGATION IS A REAL LEAN BUILD OF THE AUDITED BLOB.}
 }
 ~~~
 
-The current carrier source is:
+Frozen carrier:
 
 ~~~text
 WeilDefect/Morphology/NeutralFourierCarrier.lean
+git blob:
+93f05eceb07ffda593181d0e9293caa0a05705ac
 ~~~
 
-Static status:
+Static audit state:
 
 ~~~text
-DECLARATION/API SHAPES:
-    PASS  [RPB-71]
-
-TYPECLASS GRAPH:
-    PASS  [RPB-72]
-
-PROOF-TERM / PARSER AUDIT:
-    PASS  [RPB-73]
+RPB-71  STATIC API PASS
+RPB-72  TYPECLASS STATIC PASS
+RPB-73  PROOF-TERM STATIC PASS
 ~~~
 
-The proof bodies now use direct target-explicit forms:
+RPB-74 strengthens the canonical handoff script:
 
-- WD-T38 adapter: explicit `change` + stored equality;
-- nonzero transfer: equality composition into `kExt_ne`;
-- support exclusion: one ordinary `by_contra` using definitional
-  `Function.support` membership;
-- Fourier compatibility: explicit coercion `change` + pinned theorem;
-- residual vanishing: direct `IsVanishingOn.mono` application with named sets.
+~~~text
+scripts/check_neutral_fourier_carrier.sh
+~~~
 
-The carrier contains no metavariable proof holes, no `simpa`, and no
-rewrite-driven proof state.
+The script now:
 
-Current formalization state:
+1. verifies the carrier file is exactly the frozen audited Git blob;
+2. verifies the root library imports the carrier;
+3. runs
+   `lake build WeilDefect.Morphology.NeutralFourierCarrier`;
+4. rejects top-level `axiom`, `sorry`, or `admit` declarations.
+
+If the source changes, the handoff fails before build and prints the expected
+and actual blob IDs.
+
+Current state:
 
 ~~~text
 F-1  physical Fourier carrier lift
@@ -52,30 +54,34 @@ F-1  physical Fourier carrier lift
      STATIC API PASS
      TYPECLASS STATIC PASS
      PROOF-TERM STATIC PASS
+     STATIC LINE EXHAUSTED
      BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
 
 F-2  actual compact-window Weil multiplier realization
      NOT STARTED
 ~~~
 
-No identified static source blocker remains in F-1.
+No further static source audit is live.
 
-The only unresolved F-1 question is actual Lean elaboration/kernel checking,
-which cannot be performed until a working Lean runner is available.
+F-1 may reopen only if:
+
+- the frozen carrier blob changes; or
+- a real Lean compiler diagnostic identifies a defect.
 
 WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 
 ## Next cursor
 
 ~~~text
-RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF
+RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
 ~~~
 
-The next pass should freeze the audited F-1 source, verify the deterministic
-build handoff matches the exact carrier module/trust checks, and mark the
-static line exhausted pending a real Lean runner.
+The next pass should attempt only the frozen handoff on any newly available
+working Lean environment.
 
-Do not start F-2.
+If no Lean runner exists, record the unchanged gate and halt.
+
+Do not restart static audits and do not begin F-2.
 
 ## Governance
 
@@ -88,4 +94,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_73_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_74_20260929.md.
