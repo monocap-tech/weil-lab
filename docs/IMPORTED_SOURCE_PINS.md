@@ -667,3 +667,125 @@ transcendental.
 \`\`\`math
 \boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
 \`\`\`
+
+
+---
+
+## RPB-EXT-A3 — Suzuki base-endpoint screw singularity
+
+### Source
+
+Masatoshi Suzuki,
+*Aspects of the screw function corresponding to the Riemann zeta-function*,
+Journal of the London Mathematical Society **108** (2023), 1448--1487.
+
+### Exact input consumed by RPB-45
+
+Formula (1.1) defines \(\Psi\), with \(g=-\Psi\).
+
+In the proof of Theorem 4.1, for
+
+\`\`\`math
+0<t<\log2
+\`\`\`
+
+the prime sum is absent and Suzuki gives
+
+\`\`\`math
+\Psi'(t)
+=
+2(e^{t/2}-e^{-t/2})
++
+c_0
+-
+\arctan(e^{t/2})
++
+\operatorname{arctanh}(e^{-t/2}),
+\`\`\`
+
+where
+
+\`\`\`math
+c_0
+=
+\frac{\pi}{4}
+-
+\frac{\gamma_0+3\log2}{2}.
+\`\`\`
+
+Expanding at \(t=0+\) gives
+
+\`\`\`math
+g(t)
+=
+\frac{t}{2}\log t
++
+\frac{\gamma_0+\log2-1}{2}t
++
+O(t^2),
+\`\`\`
+
+and therefore
+
+\`\`\`math
+\boxed{
+g''(t)
+=
+\frac1{2t}
++
+O(1)
+}
+\qquad
+(t\downarrow0).
+\`\`\`
+
+The coefficient \(1/2\) of the Stieltjes kernel is load-bearing in RPB-45.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
+
+---
+
+## RPB-EXT-A4 — Sokhotskii--Plemelj jump principle
+
+### Source
+
+Encyclopedia of Mathematics,
+**Sokhotskii formulas**.
+
+### Exact input consumed by RPB-45
+
+For a Cauchy-type integral with \(L^p\) density, \(1<p<\infty\), the
+non-tangential boundary values from the two sides exist almost everywhere and
+their difference recovers the density.
+
+### RPB specialization
+
+For
+
+\`\`\`math
+S_f(z)
+=
+\int_0^\delta
+\frac{f(r)}{z+r}\,dr,
+\qquad
+f\in L^2(0,\delta),
+\`\`\`
+
+the cut is \([-\delta,0]\).
+
+If \(S_f\) admits a holomorphic continuation through an open subinterval of
+that cut, the jump there is zero, hence \(f=0\) almost everywhere on the
+corresponding reflected source interval.
+
+This is the exact support-removal step used in the nonthreshold branch of
+RPB-45.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
