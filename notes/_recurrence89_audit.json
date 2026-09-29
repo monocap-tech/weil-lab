@@ -1,0 +1,193 @@
+{
+  "format": "GERM89-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-89",
+  "standing": "UNRATIFIED",
+  "entry_commit": "71199c7def07f58da2785ed5c2e97772805fdfb1",
+  "verifier_path": "tools/sz_post_2psi7_eighth_map_audit.py",
+  "verifier_sha256": "68404e3d6426f4346793f966eebc42000e8ebf7a5f821fbc133ef61693d451f6",
+  "verifier_git_blob": "51425a80bfee1d677c259aea85f54aa24df73665",
+  "stdout_sha256": "4064a089e55acd49a8a2ef805416cc21879dd430cf6b3799336786d0ca73353b",
+  "compact_complete_audit_sha256": "f3c49d67dd66763cdf16b105a1d9dec94dfc55d19225cf2a797c518cd058408a",
+  "execution_exit_code": 0,
+  "parent_GERM88_entry_replay_exit_code": 0,
+  "parent_GERM88_stdout_sha256": "02bc4165bcd15a40e16bd276c3c2f9e0a5a9c15b7cda1fba5ef3e3fdf27819eb",
+  "parent_GERM88_recorded_stdout_match": true,
+  "new_exclusion_scope": "2psi7<t<=chi7, t=e-e80; L88<L<=L80+chi7",
+  "experimental_endpoint": "log(2^1777196*5^300866/3^1562045)",
+  "endpoint_decimal": [
+    "1.71121223320452421346876876907011492672",
+    "1.71121223320452421346876876907011492673"
+  ],
+  "increment": "nu8=chi7-2psi7=psi7-sigma8",
+  "increment_decimal": [
+    "0.00000002807302484240060365382381649192",
+    "0.00000002807302484240060365382381649193"
+  ],
+  "direct_dependency_sha256": {
+    "tools/sz_post_omega10_ten_step_audit.py": "2568c96ed8880132dc7a8d8996f6088040afa0f26f652b2f39155bb7244594b3"
+  },
+  "matrix_namespace": "A/D/E are GERM-89-local; input U/V and sixth atoms are GERM-81-local",
+  "eighth_word_dictionary": {
+    "A": [
+      "V1",
+      "U1"
+    ],
+    "D": [
+      "V1",
+      "U0",
+      "U1"
+    ],
+    "E": [
+      "V1",
+      "U1",
+      "U1"
+    ]
+  },
+  "ninth_word_dictionary": {
+    "0/3": [
+      "A",
+      "D",
+      "D"
+    ],
+    "1/3": [
+      "A",
+      "D",
+      "E"
+    ],
+    "2/3": [
+      "A",
+      "E",
+      "E"
+    ],
+    "0/4": [
+      "A",
+      "D",
+      "D",
+      "D"
+    ],
+    "1/4": [
+      "A",
+      "D",
+      "D",
+      "E"
+    ],
+    "2/4": [
+      "A",
+      "D",
+      "E",
+      "E"
+    ],
+    "3/4": [
+      "A",
+      "E",
+      "E",
+      "E"
+    ]
+  },
+  "chart": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "-21/10",
+      "0"
+    ]
+  ],
+  "common_forward_backward_factor": "30",
+  "signed_cone_bounds": {
+    "0/3": [
+      1,
+      "34.4685168967",
+      "45.0495281453"
+    ],
+    "1/3": [
+      1,
+      "87.4703890774",
+      "142.7501704829"
+    ],
+    "2/3": [
+      1,
+      "1152.5037160409",
+      "1806.3962015100"
+    ],
+    "0/4": [
+      -1,
+      "70.5177136609",
+      "85.5044051805"
+    ],
+    "1/4": [
+      -1,
+      "179.4312744532",
+      "295.5729869924"
+    ],
+    "2/4": [
+      -1,
+      "2840.0279398401",
+      "4459.6431959727"
+    ],
+    "3/4": [
+      -1,
+      "37570.5869949864",
+      "58887.3568971359"
+    ]
+  },
+  "original_step_counts": [
+    965296,
+    1319293
+  ],
+  "tenth_induction_used": false,
+  "new_retained_coordinates": 0,
+  "endpoint_source_checks": [
+    "GERM-81 sixth atoms at t=chi7",
+    "seventh U1/V1 from sixth source equations",
+    "GERM-89 eighth A/E",
+    "both ninth E^2 A and E^3 A"
+  ],
+  "completed_window": "Seventh-map formula window through t=chi7, endpoint checked bottom-up",
+  "remaining_seventh_formula_width": "ZERO",
+  "remaining_three_layer_width": [
+    "0.00003176036281879273879386573369236121",
+    "0.00003176036281879273879386573369236122"
+  ],
+  "next_seventh_sixth_word": [
+    "E20",
+    "E20",
+    "E19",
+    "E20",
+    "E19"
+  ],
+  "next_domain": "t=chi7+excess; 0<z<excess<psi7",
+  "next_trace": [
+    [
+      [
+        "3.0650001400",
+        "3.0650001401"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "5.3942258585",
+        "5.3942258586"
+      ]
+    ]
+  ],
+  "next_status": "HYPERBOLIC CHANGED FIVE-STEP SEVENTH SOURCE WORD; NO EXCLUSION ABOVE t=chi7",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Complete stdout and compact serialization included in the bundle; pinned executable reproduces stdout.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
