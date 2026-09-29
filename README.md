@@ -4,7 +4,7 @@ A public research repository for a defect-theoretic analysis of **Weil's quadrat
 form**, its finite negative-index structure, spectral screening, persistent
 negative directions, and compact-window neutral modes.
 
-> **Status:** Horizon 1 complete; downstream actual-zeta interfaces remain open.
+> **Status:** Horizon 1 complete; WD-T40 now discharges the fixed-packet neutral null-extension interface negatively, while the negative-side actual-zeta interfaces remain open.
 >
 > **Scope:** This repository packages an independent Weil-defect theory to its
 > stated stop boundary. It does not claim a proof of the Riemann Hypothesis.
@@ -56,8 +56,10 @@ boundary is deliberately before RH closure.
 | Horizon 1 | Independent Weil-defect theory | **Complete** |
 
 Source pinning, internal proof audit, composite morphology audit, examples
-sharpness audit, Lean certification, and public packaging are complete for the
-Horizon-1 inventory. No post-Horizon research cursor is currently selected.
+sharpness audit, historical LEAN-H1 certification, and public packaging are
+complete for the original Horizon-1 inventory. Post-Horizon RPB work has added
+WD-T40; its mathematical proof is audited, while its Lean formalization is
+currently LEAN-NOT-ATTEMPTED.
 Stable theorem IDs and the canonical audit surfaces are recorded in the
 [Theorem Ledger](docs/THEOREM_LEDGER.md),
 [Dependency Audit](docs/DEPENDENCY_AUDIT.md),
@@ -141,7 +143,7 @@ morphology documents linked below.
 | Compact-window neutral equation $W_{c}k=0$ | Conditional theorem |
 | Fixed-window log-order operator + finite prime shifts | Derived |
 | Actual-zeta next-jet exclusion | Open |
-| Neutral null-extension rigidity | Open |
+| Neutral null-extension rigidity | **Discharged negatively by WD-T40 under WD-T38 carrier hypotheses** |
 | RH | Open |
 
 See [Proof Status](docs/PROOF_STATUS.md) for precise hypotheses, mathematical
@@ -149,12 +151,11 @@ standing, and verification state.
 
 ## RH-facing interfaces
 
-Horizon 1 deliberately stops before two primary actual-zeta interfaces, with one stronger special-packet refinement on the negative side:
+The current RH-facing boundary has two open negative-side obligations and one resolved neutral interface:
 
-- `AZ-NEXTJET-LOC` — control or exclusion of the weighted near next-jet field.
-- `C-ACTUAL-KPH-FLOOR` — stronger special-packet KPH/transversality floor that can serve as a sufficient refinement of `AZ-NEXTJET-LOC` where its packet hypotheses apply.
-- `AZ-FIN-WEIL-NULL-EXTENSION` — exterior support/null-extension rigidity for
-  an actual compact-window neutral mode.
+- `AZ-NEXTJET-LOC` — **OPEN**; control or exclusion of the weighted near next-jet field.
+- `C-ACTUAL-KPH-FLOOR` — **OPEN**; stronger special-packet KPH/transversality floor that can serve as a sufficient refinement of `AZ-NEXTJET-LOC` where its packet hypotheses apply.
+- `AZ-FIN-WEIL-NULL-EXTENSION` — **DISCHARGED NEGATIVELY by WD-T40** under the WD-T38 carrier hypotheses.
 
 The negative morphology leaves `AZ-NEXTJET-LOC` as the next unresolved
 actual-zeta obligation after
@@ -167,15 +168,13 @@ R_{v}(z)=O(|z|^{-2})
 \mathcal{F}_{v,R}=O\!\left(\frac{\log R}{R}\right).
 ```
 
-The neutral morphology leaves `AZ-FIN-WEIL-NULL-EXTENSION` as its unresolved
-support/right-limit obligation after deriving the compact-window equation
+The original neutral morphology reduced strict persistence to `AZ-FIN-WEIL-NULL-EXTENSION` after deriving
 
 ```math
 W_{c}k=0.
 ```
 
-These interfaces are downstream obligations; none is a premise of the
-Horizon-1 morphology theorem from which it emerges.
+WD-T40 now closes that support/right-limit interface negatively by Gaussian support-gap coercivity. The remaining open interfaces are downstream obligations of the negative branch and are not premises of WD-T37.
 
 ## Repository map
 
@@ -188,7 +187,7 @@ Horizon-1 morphology theorem from which it emerges.
 - [Public Verification Matrix](docs/PUBLIC_VERIFICATION_MATRIX.md) — mathematical standing, source ancestry, formal status, and certificate evidence.
 - [Public Dependency Map](docs/PUBLIC_DEPENDENCY_MAP.md) — compressed theorem/import/interface DAG.
 - [Public Examples and Sharpness](docs/PUBLIC_EXAMPLES.md) — canonical failure modes attached to theorem boundaries.
-- [RH-Facing Interface Appendix](docs/RH_INTERFACE_APPENDIX.md) — exact downstream obligations left open by Horizon 1.
+- [RH-Facing Interface Appendix](docs/RH_INTERFACE_APPENDIX.md) — current status of downstream interfaces, including the WD-T40 neutral discharge.
 - [Public Package Audit](docs/PUBLIC_PACKAGE_AUDIT.md) — final package and reader-surface consistency checks.
 
 ### Horizon and audit control
