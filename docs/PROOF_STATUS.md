@@ -229,7 +229,7 @@ The post-Horizon RPB promotion audit has added WD-T40. The next research cursor 
 
 ```math
 \boxed{
-\texttt{RPB-77 / WD-T40 F-1 BUILD GATE RECHECK}
+\texttt{RPB-78 / WD-T40 F-1 BUILD GATE RECHECK}
 }
 ```
 
