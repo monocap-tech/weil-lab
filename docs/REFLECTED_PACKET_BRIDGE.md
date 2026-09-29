@@ -9,104 +9,95 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-62 — FINITE DELAY CYCLES DIE AFTER RECENTERING; ONLY INFINITE OR ACCUMULATING DELAY COMPONENTS REMAIN.}
+\textbf{RPB-63 — COUNTABLE ACCUMULATING DELAY RESIDUES ARE IMPOSSIBLE; ANY SURVIVING BLOCKER-A SET HAS A NONEMPTY PERFECT SELF-SUPPORTING KERNEL.}
 }
 ~~~
 
-RPB-61 left finite self-supporting analytic singular cycles as an
-infinite-logarithmic residue.
+RPB-62 excludes every finite isolated self-supporting delay component.
 
-RPB-62 solves the finite-component problem by recentering all singular points
-to one common local coordinate.
+RPB-63 applies Cantor--Bendixson descent to the compact projected analytic
+singular set.
 
-For a finite isolated component
-
-~~~math
-\mathcal C=\{x_1,\dots,x_N\},
-~~~
-
-define
+For a finite symmetric delay set
 
 ~~~math
-U_j(s)=h(x_j+s).
+D=\{\pm\ell_1,\dots,\pm\ell_J\},
 ~~~
 
-An internal prime translation satisfying
+the RPB-61 witness relation is
 
 ~~~math
-x_j+\sigma\ell_\nu=x_k
+x\in S
+\Longrightarrow
+\exists d\in D:
+x+d\in S.
 ~~~
 
-then becomes simply
-
-~~~math
-U_j(s)\mapsto U_k(s).
-~~~
-
-Thus the finite-delay FIO geometry becomes a constant finite matrix coupling.
-The local system is
+If \(S'\) is the derived set of accumulation points of \(S\), the finiteness of
+\(D\) lets one pass to a subsequence with one fixed witness delay.  Therefore
 
 ~~~math
 \boxed{
-\left(
-\mathcal A_{\infty,\rm loc}I_N-M
-\right)U
-=
-G_{\rm an}.
+S'
+\text{ is again delay-self-supporting}.
 }
 ~~~
 
-Its high-frequency symbol is
+The same argument survives every transfinite Cantor--Bendixson derivative,
+including limit stages.
 
-~~~math
-P(\xi)
-=
-m_\infty(\xi)I_N-M.
-~~~
+Hence a nonempty countable compact delay-self-supporting set would eventually
+produce a finite nonempty self-supporting derivative.
 
-Since
+RPB-62 forbids that.
 
-~~~math
-m_\infty(\xi)
-=
-\log|\xi|+O(1),
-~~~
-
-one has, for sufficiently large \(|\xi|\),
-
-~~~math
-P(\xi)^{-1}
-=
-O(1/\log|\xi|).
-~~~
-
-The inverse satisfies analytic order-zero derivative bounds, so the finite
-matrix system has an analytic pseudodifferential parametrix.
-
-Therefore every component germ is analytic, contradicting membership in the
-analytic singular support.
-
-Hence:
+Therefore:
 
 ~~~math
 \boxed{
-\text{no finite isolated self-supporting delay component exists.}
+\text{no nonempty countable compact self-supporting analytic singular set exists.}
 }
 ~~~
 
-This eliminates the two-point cycles that were still permitted at the
-set-valued level in RPB-61.
+Any surviving compact residue must contain a nonempty perfect
+delay-self-supporting kernel.
+
+At fixed support the exact prime-log group
+
+~~~math
+\Gamma_c
+=
+\sum_{p\in P_c}\mathbb Z\log p
+~~~
+
+is countable, so every exact graph component lies in one countable arithmetic
+orbit.
+
+A perfect kernel is uncountable.
+
+Thus the surviving topology must be
+
+~~~math
+\boxed{
+\text{uncountably many countable graph components with interlacing closures}.
+}
+~~~
+
+This also explains why simply replacing the finite RPB-62 matrix by an
+\(\ell^2(\Gamma_c)\) matrix is not enough: one orbit is not closed under
+topological accumulation, and a common isolated analytic chart radius may
+collapse to zero.
 
 Current blocker state:
 
 ~~~text
-FINITE DELAY CYCLES:
+FINITE SELF-SUPPORTING COMPONENT:
     EXCLUDED
 
-FINITE INFINITE-LOG RESIDUE:
-    EMPTY
+COUNTABLE COMPACT SELF-SUPPORTING SET:
+    EXCLUDED
 
-INFINITE / ACCUMULATING DELAY COMPONENT:
+NONEMPTY PERFECT DELAY KERNEL:
     OPEN
 
 RPB-57/58 FULL-FRIEDRICHS EXCLUSION:
@@ -119,12 +110,13 @@ AZ-FIN-WEIL-NULL-EXTENSION:
 ## Next cursor
 
 ~~~text
-RPB-63 / ACCUMULATING DELAY-COMPONENT COMPACTNESS TEST
+RPB-64 / PERFECT-KERNEL FBI MAXIMUM TEST
 ~~~
 
-The next pass should test whether an infinite self-supporting analytic singular
-component can exist inside the compact support, and whether incommensurable
-near-returns can evade the finite matrix ellipticity mechanism.
+The next pass should replace set-valued topology by a quantitative analytic
+microlocal amplitude estimate and test whether the growing logarithmic
+diagonal beats the finite-degree translation coupling uniformly on the compact
+perfect kernel.
 
 ## Governance
 
@@ -137,4 +129,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_62_20260929.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_63_20260929.md.
