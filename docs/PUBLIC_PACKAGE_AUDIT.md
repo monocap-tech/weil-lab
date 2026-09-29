@@ -488,7 +488,7 @@ WD-T40 formal state.
 ### 13.3 Next cursor
 
 ~~~text
-RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF
+RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
 ~~~
 
 
@@ -527,7 +527,7 @@ WD-T40 remains LEAN-BLOCKED.
 The next cursor is:
 
 ~~~text
-RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF
+RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
 ~~~
 
 **Result:** PASS as a custody/status update.
@@ -558,7 +558,7 @@ Both temporary validation PRs were closed without merge. The research branch con
 Next cursor:
 
 ~~~text
-RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF
+RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
 ~~~
 
 
@@ -584,7 +584,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF
+RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
 ~~~
 
 **Result:** PASS as a custody/status update.
@@ -614,7 +614,7 @@ No declaration-shape mismatch remains. Build certification remains infrastructur
 Next cursor:
 
 ~~~text
-RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF
+RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
 ~~~
 
 **Result:** PASS as a static API audit.
@@ -640,7 +640,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF
+RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
 ~~~
 
 **Result:** PASS as a static typeclass audit.
@@ -664,7 +664,43 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF
+RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
 ~~~
 
 **Result:** PASS as a static proof-term audit.
+
+
+---
+
+## 20. Post-RPB-74 F-1 static closure delta
+
+RPB-74 closes the static F-1 line.
+
+Frozen carrier blob:
+
+~~~text
+93f05eceb07ffda593181d0e9293caa0a05705ac
+~~~
+
+Canonical handoff script:
+
+~~~text
+scripts/check_neutral_fourier_carrier.sh
+~~~
+
+The script now checks the frozen blob, root import, exact module build, and unfinished-proof/project-axiom scan.
+
+Current state:
+
+~~~text
+F-1: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / STATIC LINE EXHAUSTED / BUILD INFRASTRUCTURE-BLOCKED
+F-2: NOT STARTED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+~~~
+
+**Result:** PASS as a static-closure/build-handoff audit.
