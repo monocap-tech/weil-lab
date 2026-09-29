@@ -9,58 +9,68 @@
 
 \`\`\`math
 \boxed{
-\textbf{RPB-41 — THE CARLEMAN INDICATOR MATCHES THE MAXIMAL COLLAR EDGE EXACTLY, BUT PROVIDES NO INDEPENDENT SOURCE-SUPPORT CONTRADICTION.}
+\textbf{RPB-42 — MAXIMAL COLLAR FIRST ACTIVATION MUST OCCUR AT A PRIME-POWER SHIFT OF SOURCE ANALYTIC SINGULAR SUPPORT.}
 }
 \`\`\`
 
-Along \(z=iY\), the compact-source term and the finite-interval correction
-carry the same source-edge exponential scale but cancel exactly into the true
-exterior potential tail:
+Using Suzuki's explicit positive-half screw formula,
 
 \`\`\`math
-V(iY)\frac{\xi'}{\xi}(1/2+Y)
+g(t)
+=
+g_{\rm an}(t)
 +
-Y^2E_{+,a}(iY)
-=
--
-Y^2\int_a^\infty F_u(x)e^{-Yx}\,dx.
+\sum_{n\ge2}
+\frac{\Lambda(n)}{\sqrt n}
+(t-\log n)_+,
+\qquad t>0,
 \`\`\`
 
-The elementary collar-constant term then removes the constant plateau.  The
-divisor-cleared numerator is invariant under movement of the artificial cutoff
-inside that plateau:
+the non-prime part is real analytic away from \(t=0\), while each prime-ramp
+convolution satisfies
 
 \`\`\`math
-\partial_aN_{+,a}=0.
+P_{n,u}''(x)
+=
+\frac{\Lambda(n)}{\sqrt n}
+u(x-\log n).
 \`\`\`
 
-If \(a_{\max}\) is the maximal symmetric interval on which the screw potential
-is constant, then
+Hence if no translated analytic singularity of \(u\) meets a neighborhood of
+the maximal collar edge, the full potential is analytic there and its constant
+value analytically continues past that edge. Therefore
 
 \`\`\`math
-\limsup_{Y\to\infty}
-\frac{
-\log|N_+(iY)|-\log\xi(1/2+Y)
-}{Y}
-=
--a_{\max}.
+a_{\max}
+\in
+\bigcup_{n=p^m}
+\left(
+\log n+\operatorname{singsupp}_{\omega}u
+\right).
 \`\`\`
 
-Thus the indicator records the true end of the plateau but does not determine
-it from the compact-source support edge.
+Equivalently, for some prime power and source analytic singularity,
+
+\`\`\`math
+a_{\max}=\log n+y,
+\qquad
+e^{a_{\max}-c}\le n\le e^{a_{\max}+c}.
+\`\`\`
+
+This localizes first activation but does not force \(y\) to be a support
+endpoint; parity and zero mean do not supply a further exclusion.
 
 ## Next cursor
 
 ```text
-RPB-42 / MAXIMAL COLLAR FIRST-ACTIVATION GEOMETRY
+RPB-43 / ANALYTIC-SINGULAR-SUPPORT PROPAGATION UNDER PRIME DELAYS
 ```
 
-The next pass should analyze the local geometry where the maximal constant
-collar first fails: separate the analytic archimedean/pole pieces from the
-moving prime-power kinks, identify the shifted-source activation sets
-\(\log n+\operatorname{supp}u\), and determine whether the first activation
-point is arithmetically constrained or simply another form of the existing
-null-extension obstruction.
+The next pass should test whether the interior neutral equation propagates
+analytic singularities along the active prime-log delay graph strongly enough
+to force endpoint ownership, dense analytic singular support, incompatibility
+with compact support, or else a sharp no-go showing that analytic-wavefront
+propagation does not improve the current null-extension interface.
 
 ## Governance
 
