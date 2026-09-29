@@ -9,9 +9,84 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-67 — WD-T40 LEAN PREFLIGHT COMPLETE; THE THEOREM IS FORMALIZABLE IN PRINCIPLE BUT LEAN-BLOCKED AT THE CURRENT PROJECT ABSTRACTION.}
+\textbf{RPB-68 — THE WD-T40 PHYSICAL FOURIER CARRIER NOW EXISTS IN LEAN SOURCE; F-1 IS SOURCE-COMPLETE BUT NOT YET BUILD-CERTIFIED.}
 }
 ~~~
+
+The new module is
+
+~~~text
+WeilDefect/Morphology/NeutralFourierCarrier.lean
+~~~
+
+and is imported by the root library.
+
+It adds:
+
+~~~text
+RealComplexL2
+RealComplexTempered
+NeutralPhysicalFourierCarrier
+NeutralStrictResidualData
+~~~
+
+The concrete carrier binds the abstract WD-T38 mode to an actual representative
+
+~~~text
+h : R -> C
+~~~
+
+with:
+
+- L2 membership;
+- support inside [-c,c];
+- exact equality between the WD-T38 kExt and the representative's L2 class;
+- a forgetful adapter back to NeutralNullExtensionInterface;
+- a nonzero concrete L2 mode;
+- a tempered-distribution lift;
+- L2/tempered-distribution Fourier compatibility from mathlib.
+
+Strict enlarged residual vanishing is typed by
+
+~~~text
+Distribution.IsVanishingOn
+~~~
+
+on the interval (-a,a).
+
+The module deliberately does not yet identify the residual with the actual
+Weil multiplier applied to the mode. That remains F-2.
+
+Current formalization stack:
+
+~~~text
+F-1  physical Fourier carrier lift
+     SOURCE IMPLEMENTED / BUILD UNVERIFIED
+
+F-2  actual compact-window Weil multiplier realization
+     NOT STARTED
+
+F-3  support-gap Gaussian pairing
+     NOT STARTED
+
+F-4  Gaussian coercivity -> exponential Fourier weight
+     NOT STARTED
+
+F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
+     NOT STARTED
+
+F-6  final WD-T40 assembly from EXT-4 / EXT-5 premises
+     NOT STARTED
+~~~
+
+A temporary validation branch and draft PR #1 were used to try to compile the
+new module without changing the research-branch workflow.
+
+GitHub Actions run 36638336287 ended in failure, but exposed no job steps,
+compiler output, or useful commit status. It therefore supplies no lawful Lean
+diagnostic.
+
+The temporary PR was closed without merge.
 
 WD-T40 remains mathematically:
 
@@ -20,97 +95,36 @@ INTERNAL-PROOF / CONDITIONAL ON WD-T38 HYPOTHESES
 P4-AUDIT-PASSED
 ~~~
 
-and continues to discharge
-
-~~~text
-AZ-FIN-WEIL-NULL-EXTENSION
-~~~
-
-negatively under those hypotheses.
-
-RPB-67 audits only the separate formal-verification axis.
-
-The present WD-T38 Lean carrier is abstract:
-
-~~~text
-NeutralNullExtensionInterface
-    H
-    EndpointObs
-    RightObs
-~~~
-
-and therefore does not expose the concrete real-line data used by WD-T40:
-
-- L2 Fourier transform;
-- compact support in [-c,c];
-- whole-line tempered-distribution residual;
-- actual compact-window Weil Fourier multiplier;
-- strict-collar support separation.
-
-Mathlib v4.34 already supplies the base infrastructure needed downstream:
-
-~~~text
-L2 Fourier isometry / Plancherel
-L2 <-> tempered-distribution Fourier compatibility
-Gaussian Fourier transform
-Fourier inversion
-complex analytic continuation tools
-~~~
-
-Thus the formal blocker is project-local, not a missing base Fourier library.
-
-Current WD-T40 formal status:
+and formally:
 
 ~~~text
 LEAN-BLOCKED
 ~~~
 
-Exact dependency stack:
-
-~~~text
-F-1  physical real-line Fourier/distribution carrier lift
-F-2  actual compact-window Weil multiplier realization
-F-3  support-gap Gaussian pairing
-F-4  Gaussian coercivity -> exponential Fourier weight
-F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
-F-6  final WD-T40 assembly from explicit EXT-4 / EXT-5 premises
-~~~
-
-A faithful completion would normally receive
-
-~~~text
-LEAN-CERTIFIED-FROM-IMPORTED-PREMISE
-~~~
-
-unless EXT-4 and EXT-5 are themselves reconstructed.
-
-No surrogate WD-T40 theorem was added.
-
-No mathematical standing changed.
+until the F-1 module receives a real build certificate and the remaining stack
+is discharged.
 
 ## Next cursor
 
 ~~~text
-RPB-68 / WD-T40 PHYSICAL FOURIER CARRIER LIFT
+RPB-69 / WD-T40 PHYSICAL FOURIER CARRIER BUILD CERTIFICATION
 ~~~
 
-The next pass should attack F-1 only:
+The next pass should solve only the module-build gate.
 
-1. select the exact Lp/function/tempered-distribution representation;
-2. encode compact support and strict enlarged residual vanishing;
-3. preserve compatibility with the existing abstract WD-T38 theorem;
-4. prove an adapter into NeutralNullExtensionInterface;
-5. stop before Gaussian coercivity unless the carrier layer is complete.
+Do not move into the actual Weil multiplier realization until the carrier
+module has either passed a genuine Lean build or produced an exact compiler
+blocker.
 
 ## Governance
 
 Historical RPB notes remain immutable. Later corrections are additive.
 
-Mathematical standing, audit status, and Lean certification remain separate
-status axes.
+Mathematical standing, audit status, source implementation, build
+certification, and final Lean certification are separate status axes.
 
 ## Ledger
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_67_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_68_20260929.md.
