@@ -3274,3 +3274,75 @@ Parity and the zero-mean law preserve/support-symmetrize this condition but do
 not force the activation point to a source endpoint.
 
 **Status:** branch-local RPB terminology.
+
+
+## Analytic first-activation set
+
+Let \(\operatorname{singsupp}_{\omega}u\) denote the real-analytic singular
+support of the compact screw source \(u\).
+
+Define the **analytic first-activation set**
+
+\`\`\`math
+\mathscr A_{\omega,+}(u)
+=
+\bigcup_{n=p^m\ge2}
+\left(
+\log n+\operatorname{singsupp}_{\omega}u
+\right).
+\`\`\`
+
+For the maximal constant screw-collar radius,
+
+\`\`\`math
+a_{\max}
+\in
+\mathscr A_{\omega,+}(u).
+\`\`\`
+
+Indeed, if all translated sources \(u(\,\cdot-\log n)\) were real analytic in
+a neighborhood of \(a_{\max}\), then the prime-ramp convolution pieces would
+be real analytic there; the non-prime screw contribution is already analytic
+for positive separation.  The full potential would therefore be analytic
+near \(a_{\max}\), and constancy on the left would analytically continue to
+the right, contradicting maximality.
+
+Since
+
+\`\`\`math
+\operatorname{singsupp}_{\omega}u
+\subseteq
+\operatorname{ess\,supp}u,
+\`\`\`
+
+this sharpens the arithmetic first-activation set.
+
+**Status:** branch-local RPB terminology.
+
+## Analytic-singularity activation shell
+
+The **analytic-singularity activation shell** is the finite localization
+
+\`\`\`math
+a_{\max}
+=
+\log n+y,
+\qquad
+y\in\operatorname{singsupp}_{\omega}u,
+\`\`\`
+
+for at least one prime power satisfying
+
+\`\`\`math
+e^{a_{\max}-c}
+\le
+n
+\le
+e^{a_{\max}+c}.
+\`\`\`
+
+This identifies the first failure of collar constancy with a translated
+analytic singularity of the source, but it does not force \(y\) to be a
+support endpoint.
+
+**Status:** branch-local RPB terminology.
