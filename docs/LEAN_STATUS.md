@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-72 / WD-T40 carrier typeclass synthesis audit.
+- **Next project cursor:** RPB-73 / WD-T40 carrier proof-term elaboration audit.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -33,7 +33,7 @@ Fourier/distribution data consumed by the Gaussian support-gap proof.
 Exact blocking stack:
 
 ~~~text
-F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / STATIC API PASS / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED / TYPECLASS AUDIT NEXT
+F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED / PROOF-TERM AUDIT NEXT
 F-2  actual compact-window Weil multiplier realization
 F-3  support-gap Gaussian pairing theorem
 F-4  Gaussian coercivity -> exponential Fourier weight
@@ -4531,3 +4531,20 @@ Four elaboration-hardening edits are now present: explicit volume, explicit resi
 No declaration-shape mismatch remains. Build certification is still infrastructure-blocked, so F-1 is not Lean-certified and F-2 remains unopened.
 
 Next cursor: RPB-72 / WD-T40 carrier typeclass synthesis audit.
+
+
+---
+
+## RPB-72 typeclass synthesis delta
+
+Every implicit instance required by the F-1 carrier was traced through pinned mathlib v4.34.0.
+
+Resolved statically: ENNReal p=2 fact, real inner-product and finite-dimensional structure, real measurable/Borel/second-countable structure, canonical volume/Haar measure, temperate growth of volume, local finiteness, complex inner-product/completeness, and both L2 and tempered Fourier instances.
+
+No local instance shim was added because the required classes are already globally registered.
+
+Current F-1 state: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED.
+
+F-2 remains NOT STARTED.
+
+Next cursor: RPB-73 / WD-T40 carrier proof-term elaboration audit.
