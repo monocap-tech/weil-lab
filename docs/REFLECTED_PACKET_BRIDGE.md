@@ -9,141 +9,96 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-65 — GAUSSIAN SUPPORT-GAP NULL-EXTENSION EXCLUSION PASSES PROMOTION AUDIT AND IS PROMOTED AS WD-T40.}
+\textbf{RPB-66 — POST-PROMOTION NEUTRAL-BRANCH REFOLD COMPLETE; WD-T40 IS CONSISTENT ACROSS STABLE, PUBLIC, AND FORMAL-STATUS SURFACES.}
 }
 ~~~
 
-RPB-64 introduced the Gaussian support-gap proof.
-
-RPB-65 audited its four load-bearing steps:
+RPB-65 promoted
 
 ~~~text
-WHOLE-LINE RESIDUAL / SUPPORT-GAP PAIRING:
-    PASS
-
-FINITE-RANK POLE GAUSSIAN ESTIMATE:
-    PASS
-
-EXACT SYMBOL LOWER BOUND, INCLUDING THRESHOLDS:
-    PASS
-
-EXPONENTIAL FOURIER WEIGHT -> STRIP HOLOMORPHY:
-    PASS
+WD-T40 / Gaussian support-gap null-extension exclusion
 ~~~
 
-The promoted theorem is:
-
-### WD-T40 — Gaussian support-gap null-extension exclusion
-
-Under the carrier-identification hypotheses of WD-T38, let
-
-~~~math
-0\ne h,
-\qquad
-\operatorname{supp}h\subseteq[-c,c].
-~~~
-
-Then the same zero-extended physical mode cannot satisfy the correct compact-window Weil null equation on any strict enlargement
-
-~~~math
-(-a,a),
-\qquad
-a>c.
-~~~
-
-The proof uses moving Gaussian frequency windows
-
-~~~math
-\phi_R^\pm(\eta)
-=
-\exp\!\left(
--\frac{(\eta\mp R)^2}{R}
-\right)
-~~~
-
-and the exact enlarged symbol asymptotic
-
-~~~math
-\Psi_a(\eta)
-=
-\log|\eta|
-+
-O_a(1).
-~~~
-
-The support gap \(a-c>0\) makes the residual pairing exponentially small, while the logarithmic symbol is coercive on the moving frequency window:
-
-~~~math
-\boxed{
-(\log R-C_a)
-\int
-\phi_R^\pm(\eta)
-|\widehat h(\eta)|^2\,d\eta
-\le
-Ce^{-\kappa R}.
-}
-~~~
-
-This implies
-
-~~~math
-\int_{\mathbb R}
-e^{\alpha|\eta|}
-|\widehat h(\eta)|^2\,d\eta
-<
-\infty
-~~~
-
-for some \(\alpha>0\).
-
-Hence \(h\) is strip-holomorphic. Compact support then forces \(h=0\), contradiction.
-
-Therefore:
-
-~~~math
-\boxed{
-\texttt{AZ-FIN-WEIL-NULL-EXTENSION}
-\text{ is DISCHARGED NEGATIVELY under the WD-T38 hypotheses.}
-}
-~~~
-
-Canonical status:
+and discharged
 
 ~~~text
+AZ-FIN-WEIL-NULL-EXTENSION
+~~~
+
+negatively under the retained WD-T38 carrier hypotheses.
+
+RPB-66 performs the post-promotion refold.
+
+Current stable theorem range:
+
+~~~text
+WD-T01 through WD-T40
+~~~
+
+Current neutral-branch status:
+
+~~~text
+WD-T38:
+    carrier-identified attained neutral compact-window null mode
+
 WD-T40:
-    INTERNAL-PROOF / CONDITIONAL ON WD-T38 HYPOTHESES
-    P4-AUDIT-PASSED
+    strict enlarged/right-limit Weil null extension excluded
 
 AZ-FIN-WEIL-NULL-EXTENSION:
     DISCHARGED NEGATIVELY
+~~~
 
+The public package has been revalidated with 40 theorem rows.
+
+WD-T40's formal-verification status is kept separate from mathematical standing:
+
+~~~text
+MATHEMATICAL:
+    INTERNAL-PROOF / CONDITIONAL ON WD-T38 HYPOTHESES
+    P4-AUDIT-PASSED
+
+LEAN:
+    LEAN-NOT-ATTEMPTED
+~~~
+
+The remaining open actual-zeta interfaces are:
+
+~~~text
 AZ-NEXTJET-LOC:
     OPEN
 
 C-ACTUAL-KPH-FLOOR:
-    OPEN
-
-RH:
-    NOT CLAIMED
+    OPEN / stronger special-packet refinement
 ~~~
 
-The earlier RPB-43/57/58 analytic/Mellin route is non-load-bearing for WD-T40.
-RPB-60--63 remain retained as corrections and failure-mode classification.
+The historical RPB-43/57/58 analytic/Mellin route remains non-load-bearing for
+WD-T40.
+
+RPB-60--63 remain retained as valid corrections and failure-mode
+classification.
+
+No RH closure is claimed.
 
 ## Next cursor
 
 ~~~text
-RPB-66 / POST-PROMOTION NEUTRAL-BRANCH REFOLD
+RPB-67 / WD-T40 LEAN CERTIFICATION PREFLIGHT
 ~~~
 
-The next pass should be cleanup only: reconcile any remaining live summaries that still describe the neutral interface as open, mark the superseded local analytic route as non-load-bearing, and leave the new WD-T40 theorem unchanged unless a direct objection appears.
+The next pass should determine whether WD-T40 admits a faithful formalization
+at the present abstraction level.
+
+Do not weaken the mathematical theorem merely to obtain a Lean certificate.
 
 ## Governance
 
 Historical RPB notes remain immutable. Later corrections are additive.
 
-The promoted WD-T40 statement is now part of the stable Horizon-1 theorem surface on this branch. It does not imply RH closure.
+Mathematical standing, audit status, and Lean certification remain separate
+status axes.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_65_20260929.md.
+The full pass-by-pass record is stored in
+notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
+notes/REFLECTED_PACKET_BRIDGE_66_20260929.md.
