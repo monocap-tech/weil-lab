@@ -4492,3 +4492,72 @@ General logarithmic-Laplacian boundary regularity gives the optimal
 source-dependent conormal coefficient map.
 
 **Status:** branch-local RPB terminology.
+
+
+## Allowed-amplitude rank no-gain
+
+The threshold amplitude matrix records coefficients in the **admissible**
+Carleman--Mellin channels.
+
+A persistent nonzero threshold mode must have at least one such coefficient
+nonzero.
+
+Therefore
+
+\`\`\`math
+\operatorname{rank}\mathbf T_c
+=
+\dim E_*^{\rm tc}
+\`\`\`
+
+would not exclude persistence.  It would only say that every nonzero
+threshold-compatible unit-gain vector carries some admissible endpoint
+amplitude.
+
+This is the **allowed-amplitude rank no-gain**.
+
+The obstruction to persistence lives in the complementary boundary defect,
+not in nonvanishing of an allowed amplitude.
+
+**Status:** branch-local RPB terminology.
+
+## Threshold boundary-defect operator
+
+For a unit-gain/core vector \(v\), the right-limit endpoint expansion of
+
+\`\`\`math
+D A_{B,c}^{-1}\Phi_c^*v
+\`\`\`
+
+contains:
+
+1. admissible indicial channels, whose coefficients form
+   \(\mathbf T_c v\);
+2. forbidden/nonmatching Mellin channels;
+3. an analytic exterior remainder germ.
+
+The **threshold boundary-defect operator**
+
+\`\`\`math
+\mathbf D_c
+\`\`\`
+
+is the finite-dimensional boundary map collecting the coefficients/germs that
+must vanish for the actual right-limit equation to hold.
+
+Schematically,
+
+\`\`\`math
+\boxed{
+\text{strict threshold persistence}
+\Longrightarrow
+\mathbf D_c v=0,
+\qquad
+\mathbf T_c v\ne0.
+}
+\`\`\`
+
+An exact construction of \(\mathbf D_c\) requires the endpoint parametrix or
+boundary symbol of the actual background resolvent.
+
+**Status:** branch-local RPB terminology.
