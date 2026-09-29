@@ -3346,3 +3346,152 @@ analytic singularity of the source, but it does not force \(y\) to be a
 support endpoint.
 
 **Status:** branch-local RPB terminology.
+
+
+## Interior analytic regularity of a core-neutral mode
+
+Let \(h\in H_0^1(-c,c)\) satisfy the compact-window neutral equation
+
+\`\`\`math
+A_ch=0.
+\`\`\`
+
+Write the translation-invariant whole-line part as
+
+\`\`\`math
+\Psi_c(D)
+=
+\mathcal A_\infty
+-
+\sum_{\log n<2c}
+\frac{\Lambda(n)}{\sqrt n}
+(\tau_{\log n}+\tau_{-\log n}),
+\`\`\`
+
+with the endpoint/right-limit convention appropriate to the equation under
+consideration.
+
+The multiplier \(\Psi_c(\xi)\) is real analytic and analytically elliptic at
+high frequency because
+
+\`\`\`math
+\Psi_c(\xi)
+=
+\log|\xi|+O_c(1).
+\`\`\`
+
+The finite-rank pole term has real-analytic physical range.  Analytic elliptic
+regularity therefore gives
+
+\`\`\`math
+h\in C^\omega(-c,c).
+\`\`\`
+
+Since \(u=Dh=ih'\),
+
+\`\`\`math
+u\in C^\omega(-c,c)
+\`\`\`
+
+as well.
+
+This is **interior analytic regularity of a core-neutral mode**.  It is an
+interior statement only and does not improve the endpoint boundary layer.
+
+**Status:** branch-local RPB terminology.
+
+## Endpoint-only analytic singular support
+
+For a nonzero core-neutral screw source \(u=Dh\), interior analyticity and
+compact support imply
+
+\`\`\`math
+\operatorname{ess\,supp}u=[-c,c].
+\`\`\`
+
+Indeed a nonzero real-analytic function on the connected interval \((-c,c)\)
+cannot vanish on a nonempty open subinterval.
+
+For the zero extension to the real line,
+
+\`\`\`math
+\operatorname{singsupp}_{\omega}u
+=
+\{-c,c\}.
+\`\`\`
+
+If an endpoint were analytically regular across the support boundary, the zero
+exterior germ would analytically continue inward and force \(u\equiv0\).
+
+This is the **endpoint-only analytic singular support** property.
+
+**Status:** branch-local RPB terminology.
+
+## Endpoint activation spectrum
+
+Under endpoint-only analytic singular support, the right first-activation set
+reduces to
+
+\`\`\`math
+\mathscr E_c
+=
+\left\{
+c+\log n:n=p^m
+\right\}
+\cup
+\left\{
+\log n-c:n=p^m,\ \log n>2c
+\right\}.
+\`\`\`
+
+If a nonzero screw-visible neutral potential has a strict constant collar with
+maximal radius \(a_{\max}>c\), then
+
+\`\`\`math
+a_{\max}\in\mathscr E_c.
+\`\`\`
+
+The first family is the event where a moving prime kink exits through the
+right source endpoint \(+c\); the second is where it enters through the left
+endpoint \(-c\).
+
+**Status:** branch-local RPB terminology.
+
+## First endpoint-activation radius
+
+Let
+
+\`\`\`math
+n_+(c)
+=
+\min\{p^m:\log(p^m)>2c\}.
+\`\`\`
+
+When \(2c\ne\log(p^m)\) for every prime power, define the
+**first endpoint-activation radius**
+
+\`\`\`math
+a_1(c)
+=
+\min\left\{
+c+\log2,\,
+\log n_+(c)-c
+\right\}.
+\`\`\`
+
+No endpoint activation lies in \((c,a_1(c))\).
+
+If a strict constant collar exists, it cannot cross the first endpoint
+activation: at such an event a unique endpoint singular germ is present on
+at least one side, while all other local contributions are analytic there.
+Hence
+
+\`\`\`math
+a_{\max}=a_1(c).
+\`\`\`
+
+At an equality threshold \(2c=\log n\), the corresponding left-endpoint
+activation occurs already at \(x=c\), so strict collar persistence is not
+obtained by this mechanism.
+
+**Status:** branch-local RPB terminology.
