@@ -1,0 +1,162 @@
+{
+  "format": "GERM97-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-97",
+  "standing": "UNRATIFIED",
+  "entry_commit": "6c10a79b5b8b486acd5ed8836937fda3bb680dcf",
+  "verifier_path": "tools/sz_post_d_omega_sixth_19_step_audit.py",
+  "verifier_sha256": "a550c7ac2c8b4baaa69ea8823fcaa6f2da313b4370f7126cd8fe362a2d48a196",
+  "verifier_git_blob": "19a017a966228a85765edbd3661f53c62df2c27e",
+  "stdout_sha256": "121afe9e00c4ed9445219502d0f7097a1c73824af4d5ca7a6a35da4b6552cfdb",
+  "compact_complete_audit_sha256": "3325d1dd838bd0a80d1f1cbc0173f431aedc1234832313706fb931df6a93afcf",
+  "execution_exit_code": 0,
+  "parent_GERM96_entry_replay_exit_code": 0,
+  "parent_GERM96_stdout_sha256": "b0547142055ac9b48bd3d477667e629c21bee69c068535cfa2a2dc525a52b21e",
+  "parent_GERM96_recorded_stdout_match": true,
+  "inherited_bundle_manifest_entries_checked": 85,
+  "direct_dependency_sha256": {
+    "tools/sz_post_delta_4c11_eleventh_all_u1_audit.py": "a82ca16fe4668962d072ac52453ad5313a098d69a256d50c0f1da31cace3a51a"
+  },
+  "new_exclusion_scope": "0<u<=c11, u=e-e96=GERM91 d-omega",
+  "experimental_endpoint": "log(3^308248311/(2^350704536*5^59371983))",
+  "endpoint_decimal": [
+    "1.71121251594967884123248138190995899557",
+    "1.71121251594967884123248138190995899558"
+  ],
+  "increment": "c11",
+  "increment_decimal": [
+    "0.00000000021923549566959018630542367902",
+    "0.00000000021923549566959018630542367903"
+  ],
+  "sixth_atoms": {
+    "E19": [
+      15,
+      19
+    ],
+    "F19": [
+      16,
+      19
+    ],
+    "F20": [
+      16,
+      20
+    ]
+  },
+  "seventh_words": {
+    "U0": [
+      "F20",
+      "F20",
+      "E19"
+    ],
+    "U1": [
+      "F20",
+      "F20",
+      "F19"
+    ],
+    "V0": [
+      "F20",
+      "F20",
+      "E19",
+      "F20",
+      "E19"
+    ],
+    "V1": [
+      "F20",
+      "F20",
+      "F19",
+      "F20",
+      "E19"
+    ],
+    "V2": [
+      "F20",
+      "F20",
+      "F19",
+      "F20",
+      "F19"
+    ]
+  },
+  "formula_scopes": {
+    "sixth_seventh": "0<u<=eta7",
+    "eighth": "0<u<=psi7",
+    "ninth": "0<u<=sigma8",
+    "tenth": "0<u<=c10",
+    "eleventh": "0<u<=c11"
+  },
+  "matrix_namespace": "A0/A1/B0/B1 are distinct GERM-97-local names at each return level",
+  "twelfth_word_family": "B0 A0^(N-s-1) A1^s; N=10,11; 0<=s<N; also B1 A1^(N-1)",
+  "chart": [
+    [
+      1,
+      1
+    ],
+    [
+      -1,
+      3
+    ]
+  ],
+  "chart_unchanged_from_GERM96": true,
+  "common_forward_backward_factor": "2000",
+  "distinct_temporal_words": 23,
+  "minimum_forward_lower": "2875.6228955296",
+  "minimum_backward_lower": "2227.1672714168",
+  "original_step_counts": [
+    567294336,
+    622607947
+  ],
+  "endpoint_words": [
+    "B1 A1^9",
+    "B1 A1^10"
+  ],
+  "remaining_sixth_seventh_formula_width": [
+    "0.00000014104372407037747102696178651589",
+    "0.00000014104372407037747102696178651590"
+  ],
+  "remaining_tenth_formula_width": [
+    "0.00000000067859985837445275784270405625",
+    "0.00000000067859985837445275784270405626"
+  ],
+  "remaining_three_layer_width": [
+    "0.00003147761766416497508125289384829236",
+    "0.00003147761766416497508125289384829237"
+  ],
+  "next_level10_word": [
+    "A1",
+    "B0",
+    "B0",
+    "B0",
+    "B1"
+  ],
+  "next_matrix": "B[10,1] B[10,0]^3 A[10,1], GERM-97-local tenth maps",
+  "next_domain": "u=c11+v; 0<v<omega11; c11-omega11<y<c11-omega11+v",
+  "next_trace": [
+    [
+      [
+        "0.4042814015",
+        "0.4042814016"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "-3.8365565484",
+        "-3.8365565483"
+      ]
+    ]
+  ],
+  "next_status": "ELLIPTIC NEW ELEVENTH SOURCE WORD",
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "thirteenth_or_deeper_induction_used": false,
+  "new_retained_coordinates": 0,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Complete stdout and sorted compact serialization included in the certificate bundle.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true,
+  "clean_bundle_manifest_entries_checked": 94,
+  "repository_verifier_git_blob_confirmed": "19a017a966228a85765edbd3661f53c62df2c27e"
+}
