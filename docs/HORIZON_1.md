@@ -402,11 +402,11 @@ Therefore **H1-P4 is COMPLETE**.
 
 ```math
 \boxed{
-\texttt{HORIZON 1 COMPLETE / RPB-69 WD-T40 PHYSICAL FOURIER CARRIER BUILD CERTIFICATION}
+\texttt{HORIZON 1 COMPLETE / RPB-70 WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY}
 }
 ```
 
-Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-69 / WD-T40 physical Fourier carrier build certification.
+Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-70 / WD-T40 carrier build infrastructure recovery.
 
 ---
 
