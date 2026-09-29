@@ -122,7 +122,7 @@ variable {c : ℝ}
 theorem vanishes_on_old_interval
     (d : NeutralStrictResidualData c) :
     Distribution.IsVanishingOn d.residual (Set.Ioo (-c) c) := by
-  apply d.residual_vanishes.mono
+  apply Distribution.IsVanishingOn.mono _ d.residual_vanishes
   intro x hx
   exact ⟨lt_trans (neg_lt_neg d.strict) hx.1, lt_trans hx.2 d.strict⟩
 
