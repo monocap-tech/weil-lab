@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-68 — THE WD-T40 PHYSICAL FOURIER CARRIER NOW EXISTS IN LEAN SOURCE; F-1 IS SOURCE-COMPLETE BUT NOT YET BUILD-CERTIFIED.}
+\textbf{RPB-69 — F-1 BUILD CERTIFICATION IS BLOCKED BEFORE LEAN BY GITHUB ACTIONS RUNNER ALLOCATION FAILURE.}
 }
 ~~~
 
@@ -61,7 +61,7 @@ Current formalization stack:
 
 ~~~text
 F-1  physical Fourier carrier lift
-     SOURCE IMPLEMENTED / BUILD UNVERIFIED
+     SOURCE IMPLEMENTED / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
 
 F-2  actual compact-window Weil multiplier realization
      NOT STARTED
@@ -79,14 +79,18 @@ F-6  final WD-T40 assembly from EXT-4 / EXT-5 premises
      NOT STARTED
 ~~~
 
-A temporary validation branch and draft PR #1 were used to try to compile the
-new module without changing the research-branch workflow.
+RPB-69 performed two independent validation attempts.
 
-GitHub Actions run 36638336287 ended in failure, but exposed no job steps,
-compiler output, or useful commit status. It therefore supplies no lawful Lean
-diagnostic.
+Validation #1 used PR #1 against research/reflected-packet-bridge and run
+36638336287. Its failed job was re-run; attempt 2 reported runner_id 0,
+an empty runner name, and zero steps.
 
-The temporary PR was closed without merge.
+Validation #2 used PR #2 against the default main branch and run 36641237210.
+It produced the same runner_id 0 / empty-runner / zero-step state.
+
+Therefore neither validation reached checkout, toolchain setup, lake, or Lean.
+No compiler diagnostic exists. Both temporary PRs were closed without merge,
+and no validation-only workflow change entered the research branch.
 
 WD-T40 remains mathematically:
 
@@ -102,15 +106,16 @@ LEAN-BLOCKED
 ~~~
 
 until the F-1 module receives a real build certificate and the remaining stack
-is discharged.
+is discharged. The present F-1 blocker is runner allocation, not a diagnosed
+Lean source failure.
 
 ## Next cursor
 
 ~~~text
-RPB-69 / WD-T40 PHYSICAL FOURIER CARRIER BUILD CERTIFICATION
+RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY
 ~~~
 
-The next pass should solve only the module-build gate.
+The next pass should recover a lawful build route that actually executes Lean.
 
 Do not move into the actual Weil multiplier realization until the carrier
 module has either passed a genuine Lean build or produced an exact compiler
@@ -127,4 +132,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_68_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_69_20260929.md.
