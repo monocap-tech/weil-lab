@@ -1,0 +1,224 @@
+{
+  "format": "GERM95-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-95",
+  "standing": "UNRATIFIED",
+  "entry_commit": "811e573aedbd311567491720dac72e309b63df83",
+  "verifier_path": "tools/sz_post_eps_rho9_tenth_all_s_audit.py",
+  "verifier_sha256": "ba86da8cf1213d210e7c8fe52b6865919dfcf11af8cfdbc0d68e8502ccd9d348",
+  "verifier_git_blob": "f5f4546756e100fc90047bacf2fd0c7ea58805f0",
+  "stdout_sha256": "523ebbd154351bf3c54e38988d14d7cf40d5434ee082db0f84c2bb0e5d8d0c7a",
+  "compact_complete_audit_sha256": "ea331d12f7f3799201e198f6f7405068b15b33cee31f6c57741ceda551c569ed",
+  "execution_exit_code": 0,
+  "parent_GERM94_entry_replay_exit_code": 0,
+  "parent_GERM94_stdout_sha256": "d99b735d6ec3cdb9ad54694387819e5b1f4b36c4a89dd7b98f9caae5766fccbb",
+  "parent_GERM94_recorded_stdout_match": true,
+  "inherited_bundle_manifest_entries_checked": 67,
+  "direct_dependency_sha256": {
+    "tools/sz_post_r_nu8_ninth_all_b1_audit.py": "dcf1a50ba7a3cfa794a871d0bc4e5d900158866659a43f2b63e2d0e9b4ba0766"
+  },
+  "new_exclusion_scope": "0<delta<=4c11, delta=epsilon-rho9=e-e94; epsilon=e-e93",
+  "formula_scope": "0<delta<=c10, four tenth maps",
+  "experimental_endpoint": "log(3^1204659372/(2^1370581752*5^232030517))",
+  "endpoint_decimal": [
+    "1.71121251570954997419720899667810229736",
+    "1.71121251570954997419720899667810229737"
+  ],
+  "increment": "4c11",
+  "increment_decimal": [
+    "0.00000000087694198267836074522169471609",
+    "0.00000000087694198267836074522169471610"
+  ],
+  "matrix_namespace": "P/Q/R/S are GERM-94-local; tenth U/V are GERM-95-local",
+  "tenth_word_dictionary": {
+    "V0": [
+      "Q",
+      "R",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S"
+    ],
+    "V1": [
+      "Q",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S"
+    ],
+    "U0": [
+      "Q",
+      "R",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S"
+    ],
+    "U1": [
+      "Q",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S",
+      "S"
+    ]
+  },
+  "charts": {
+    "low": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "-20",
+        "-1"
+      ]
+    ],
+    "middle": [
+      [
+        "1",
+        "-1/8"
+      ],
+      [
+        "-23/5",
+        "18/5"
+      ]
+    ],
+    "high": [
+      [
+        "1",
+        "3/4"
+      ],
+      [
+        "-6",
+        "6"
+      ]
+    ]
+  },
+  "chart_determinants": [
+    "-1",
+    "121/40",
+    "21/2"
+  ],
+  "common_forward_backward_factor": "2",
+  "distinct_temporal_words": 10,
+  "parameter_chart_tests": 14,
+  "regimes": {
+    "low": "0<delta<=c11",
+    "middle": "c11<=delta<=omega10",
+    "high": "omega10<=delta<=4c11"
+  },
+  "minimum_cone_bounds": {
+    "low": {
+      "forward": "212.8975665404",
+      "backward": "59.0673817181"
+    },
+    "middle": {
+      "forward": "19.8669717188",
+      "backward": "19.7956078676"
+    },
+    "high": {
+      "forward": "2.3909449736",
+      "backward": "2.3982733644"
+    }
+  },
+  "original_step_counts": [
+    55313611,
+    69471837
+  ],
+  "exclusion_endpoint_words": [
+    "U1^3 V1",
+    "U1^3 U0 V1"
+  ],
+  "formula_endpoint_maps": [
+    "V1",
+    "U1"
+  ],
+  "remaining_parent_formula_width": [
+    "0.00000000002089337136568219892643301918",
+    "0.00000000002089337136568219892643301919"
+  ],
+  "remaining_parent_formula_width_name": "omega11=c10-4c11",
+  "remaining_three_layer_width": [
+    "0.00003147785779303201035363812570499057",
+    "0.00003147785779303201035363812570499058"
+  ],
+  "next_tenth_word": [
+    "V1",
+    "U1",
+    "U1",
+    "U1",
+    "U1"
+  ],
+  "next_matrix": "U1^4 V1, GERM-95-local tenth maps",
+  "next_domain": "delta=4c11+b; 0<b<omega11; c11-omega11<y<c11-omega11+b",
+  "next_trace": [
+    [
+      [
+        "1.7687064538",
+        "1.7687064539"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "-0.8716774801",
+        "-0.8716774800"
+      ]
+    ]
+  ],
+  "next_status": "ELLIPTIC COMPLETE FIVE-STEP ELEVENTH RETURN",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Complete stdout and compact serialization included in the executable certificate bundle.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true,
+  "clean_bundle_manifest_entries_checked": 76,
+  "twelfth_or_deeper_induction_used": false,
+  "new_retained_coordinates": 0,
+  "low_word_family": "U0^(N-1)Vi; i=0,1; N=4,5",
+  "middle_word_family": "U1^s U0^(N-s-1)V1; N=4,5; 0<=s<=N-2",
+  "high_word_indices": [
+    [
+      2,
+      4
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      3,
+      5
+    ]
+  ]
+}
