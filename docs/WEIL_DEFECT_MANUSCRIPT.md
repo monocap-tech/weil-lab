@@ -959,7 +959,7 @@ Hence
 ~~~
 
 WD-T40 is an internal proof conditional on the WD-T38 carrier hypotheses. Its
-current Lean status is LEAN-NOT-ATTEMPTED.
+current Lean status is LEAN-BLOCKED pending the physical Fourier/distribution carrier lift and support-gap analytic stack recorded in RPB-67.
 
 ---
 
@@ -1145,8 +1145,7 @@ deduction from an explicit premise; it does not certify the external theorem
 represented by that premise.
 
 At the close of historical LEAN-H1, every original Horizon-1 theorem and
-example had a durable final formal status. The post-Horizon theorem WD-T40 is
-currently LEAN-NOT-ATTEMPTED. See
+example had a durable final formal status. The post-Horizon theorem WD-T40 is currently LEAN-BLOCKED with an exact formal dependency record in RPB-67 / LEAN_STATUS.md. See
 [Public Verification Matrix](PUBLIC_VERIFICATION_MATRIX.md) and
 [Lean Status](LEAN_STATUS.md).
 
