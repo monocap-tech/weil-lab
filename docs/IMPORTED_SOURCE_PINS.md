@@ -1031,3 +1031,122 @@ displayed \(L_\Delta\) coefficient.
 \`\`\`math
 \boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
 \`\`\`
+
+
+---
+
+## RPB-EXT-A8 — Zhu strict prime convention and exact Gauss/digamma kernel
+
+### Source
+
+Xuefeng Zhu,
+*Weil positivity in compact windows: a finite reduction, certified two-sided
+bounds, and a Landau--Widom decay law*,
+arXiv:2608.24827v2 (2026).
+
+### Exact inputs consumed by RPB-57/58
+
+Equation (3) gives the fixed-window symbol with prime-power support convention
+
+~~~math
+\Psi_L(t)
+=
+\Re\psi\!\left(
+\frac14+\frac{it}{2}
+\right)
+-
+\log\pi
+-
+\sum_{\log n<2L}
+\frac{2\Lambda(n)}{\sqrt n}\cos(t\log n).
+~~~
+
+Thus equality-threshold prime powers with
+
+~~~math
+\log n=2L
+~~~
+
+are absent from the endpoint operator and enter every strict right enlargement.
+
+Equation (9) gives Gauss's representation
+
+~~~math
+\Re\psi\!\left(
+\frac14+\frac{it}{2}
+\right)
+=
+-\gamma
++
+\int_0^\infty
+\frac{2}{
+1-e^{-2x}
+}
+\left[
+e^{-2x}
+-
+e^{-x/2}\cos(tx)
+\right]dx.
+~~~
+
+Hence the off-diagonal physical kernel factor is
+
+~~~math
+q(x)
+=
+\frac{
+2e^{-x/2}
+}{
+1-e^{-2x}
+}
+=
+\frac1x
++
+q_{\rm an}(x),
+~~~
+
+with \(q_{\rm an}\) analytic near \(x=0\).
+
+This is the exact source input used by RPB-57 to split the endpoint
+Stieltjes singularity from a holomorphic exterior remainder.
+
+### Consumed by
+
+- RPB-57 / full nonthreshold Friedrichs null-extension candidate;
+- RPB-58 / equality-threshold endpoint/right-limit convention.
+
+### Status
+
+~~~math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+~~~
+
+---
+
+## RPB-EXT-A1 promotion caution — logarithmic-order specialization not yet certified
+
+RPB-EXT-A1 correctly pins the standard analytic-wavefront elliptic regularity
+theorem.
+
+RPB-59 records that canonical promotion additionally requires a direct
+verification that the actual compact-window logarithmic-order Fourier
+multiplier satisfies the precise analytic pseudodifferential hypotheses needed
+for
+
+~~~math
+\mathcal P_ch\in C^\omega_{\rm loc}
+\Longrightarrow
+h\in C^\omega_{\rm loc}
+~~~
+
+for arbitrary Friedrichs zero modes.
+
+Until that specialization is proved internally or source-pinned, the
+RPB-57 interior-analyticity step remains branch-local and is not treated as a
+stable theorem input.
+
+### Status
+
+~~~math
+\boxed{\text{PROMOTION CAUTION / OPEN CERTIFICATION OBLIGATION}}
+~~~
