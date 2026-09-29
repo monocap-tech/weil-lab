@@ -5191,3 +5191,106 @@ regularity residue that remains before the null-extension interface can be
 reduced entirely to log-flat modes.
 
 **Status:** branch-local RPB terminology.
+
+
+## Optimal logarithmic boundary envelope
+
+The **optimal logarithmic boundary envelope** is the estimate
+
+~~~math
+|u(x)|
+\le
+C\ell^{1/2}(d(x,\partial\Omega)),
+~~~
+
+proved for bounded weak solutions of the pure Dirichlet logarithmic Laplacian
+with bounded forcing on domains satisfying the relevant exterior-sphere
+hypothesis.
+
+This is a sharp upper size estimate.  It is not a statement that the quotient
+\(u/\ell^{1/2}\) has a boundary limit.
+
+**Status:** branch-local RPB terminology.
+
+## Optimal-log trace coefficient
+
+An **optimal-log trace coefficient** at the right endpoint is a scalar \(b_+\)
+for which
+
+~~~math
+h(c-r)
+=
+b_+\ell^{1/2}(r)
++
+o(\ell^{1/2}(r)).
+~~~
+
+The analogous left coefficient is \(b_-\).
+
+Current general logarithmic-Laplacian boundary regularity does not supply such
+coefficients for arbitrary sign-changing Friedrichs zero modes.  Their
+existence is therefore an additional boundary hypothesis, not part of the
+generic optimal envelope theorem.
+
+**Status:** branch-local RPB terminology.
+
+## Cumulative boundary mass
+
+For a compact-window mode \(h\), define the right cumulative boundary mass
+
+~~~math
+M_+(s;h)
+=
+\int_s^\delta
+\frac{h(c-r)}{r}\,dr,
+~~~
+
+and analogously
+
+~~~math
+M_-(s;h)
+=
+\int_s^\delta
+\frac{h(-c+r)}{r}\,dr.
+~~~
+
+The cumulative mass is the boundary quantity naturally seen by the exterior
+logarithmic kernel.
+
+For example,
+
+~~~math
+h(c-r)\sim b\ell^{1/2}(r)
+\quad\Longrightarrow\quad
+M_+(s;h)\sim2b\sqrt{\log(1/s)},
+~~~
+
+while
+
+~~~math
+h(c-r)\sim\frac{b}{\log(1/r)}
+\quad\Longrightarrow\quad
+M_+(s;h)\sim b\log\log(1/s).
+~~~
+
+Thus exterior leakage can be present even when the leading
+\(\ell^{1/2}\) trace coefficient vanishes.
+
+**Status:** branch-local RPB terminology.
+
+## Cumulative-mass cancellation residue
+
+A **cumulative-mass cancellation residue** is a boundary germ for which the
+pointwise decay may be noncore but
+
+~~~math
+M_\pm(s;h)
+~~~
+
+remain bounded because of sign or oscillatory cancellation.
+
+RPB-55 isolates this as the next thinner null-extension residue after
+amplitude-bearing modes.  Bounded cumulative mass is not yet identified with
+screw-core regularity.
+
+**Status:** branch-local RPB terminology.
