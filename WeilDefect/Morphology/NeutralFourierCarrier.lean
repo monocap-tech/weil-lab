@@ -61,7 +61,7 @@ def toNeutralNullExtensionInterface
 theorem interface_kExt_eq_l2Mode
     (d : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
     d.interface.kExt = d.l2Mode := by
-  unfold l2Mode
+  change d.interface.kExt = d.h_memLp.toLp d.h
   exact d.kExt_eq_toLp
 
 /-- The physical L2 mode is nonzero because the attached WD-T38 mode is nonzero. -/
