@@ -183,7 +183,7 @@ IsVanishingOn.mono direction:             PASS
 
 No pinned-API mismatch was found.
 
-Three hardening edits are now present in the carrier source:
+Four hardening edits are now present in the carrier source:
 
 1. explicit volume in RealComplexL2;
 2. explicit s₁/s₂ in IsVanishingOn.mono;
