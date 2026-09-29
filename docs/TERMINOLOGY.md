@@ -3703,3 +3703,223 @@ boundary \(x=c\) occurs; that base-endpoint problem also contains the
 non-prime screw singularity at separation \(t=0\).
 
 **Status:** branch-local RPB terminology.
+
+
+## Base-endpoint Stieltjes singularity
+
+For the zeta screw function \(g\),
+
+\`\`\`math
+g''(t)
+=
+\frac1{2t}
++
+O(1)
+\qquad
+(t\downarrow0).
+\`\`\`
+
+If \(u\) is the compact screw source and
+
+\`\`\`math
+f(r)
+=
+u(c-r),
+\qquad
+0<r<2c,
+\`\`\`
+
+then on the right exterior side
+
+\`\`\`math
+x=c+s,
+\qquad
+s>0,
+\`\`\`
+
+the \(t=0\) singularity contributes
+
+\`\`\`math
+\frac12
+\int_0^{2c}
+\frac{f(r)}{s+r}\,dr.
+\`\`\`
+
+This is the **base-endpoint Stieltjes singularity**.
+
+All nonthreshold prime shifts and the non-singular remainder are real analytic
+in \(s\) near \(0\).
+
+**Status:** branch-local RPB terminology.
+
+## Nonthreshold base-crossing exclusion
+
+If
+
+\`\`\`math
+2c
+\ne
+\log n
+\`\`\`
+
+for every prime power \(n\), then every term in the exterior second-derivative
+equation other than the base-endpoint Stieltjes transform is real analytic
+through \(s=0\).
+
+A strict constant collar would therefore force the Stieltjes transform to
+extend holomorphically through the endpoint of its cut.
+
+By the Sokhotskii--Plemelj jump principle, this forces the endpoint source
+density to vanish on a nonempty interval.  Interior analyticity of the
+core-neutral source then gives \(u\equiv0\), contradiction.
+
+Hence
+
+\`\`\`math
+\boxed{
+\text{strict collar persistence}
+\Longrightarrow
+2c=\log n_0
+\text{ for some prime power }n_0.
+}
+\`\`\`
+
+This is the **nonthreshold base-crossing exclusion**.
+
+**Status:** branch-local RPB terminology.
+
+## Threshold base-endpoint Carleman equation
+
+Assume
+
+\`\`\`math
+2c
+=
+\log n_0
+\`\`\`
+
+for a prime power \(n_0\), and let
+
+\`\`\`math
+a_0
+=
+\frac{\Lambda(n_0)}{\sqrt{n_0}}.
+\`\`\`
+
+For a parity-resolved screw source
+
+\`\`\`math
+u(-x)
+=
+\varepsilon_u u(x),
+\qquad
+\varepsilon_u\in\{+1,-1\},
+\`\`\`
+
+put
+
+\`\`\`math
+f(s)
+=
+u(c-s),
+\qquad
+s>0.
+\`\`\`
+
+Then a strict constant collar forces, near \(s=0+\),
+
+\`\`\`math
+\boxed{
+\frac12
+\int_0^{2c}
+\frac{f(r)}{s+r}\,dr
++
+\varepsilon_u a_0 f(s)
++
+A(s)
+=
+0,
+}
+\`\`\`
+
+where \(A\) is real analytic across \(s=0\).
+
+Equivalently,
+
+\`\`\`math
+\frac12 S_f(s)
++
+\varepsilon_u a_0 f(s)
+\in
+C^\omega
+\`\`\`
+
+at the endpoint.
+
+This is the **threshold base-endpoint Carleman equation**.
+
+**Status:** branch-local RPB terminology.
+
+## Prime-power threshold quantization of strict persistence
+
+A strict null-extension of a nonzero screw-visible neutral mode can occur only
+if the original support radius satisfies
+
+\`\`\`math
+\boxed{
+e^{2c}
+=
+n_0
+}
+\`\`\`
+
+for a prime power \(n_0\).
+
+Thus strict persistence, if it exists at all, is quantized to the discrete
+prime-power threshold set.
+
+**Status:** branch-local RPB terminology.
+
+## Threshold Mellin indicial equation
+
+For the singular model
+
+\`\`\`math
+\frac12
+\int_0^\delta
+\frac{f(r)}{s+r}\,dr
++
+\varepsilon_u a_0 f(s)
+=
+\text{analytic},
+\`\`\`
+
+a formal endpoint mode
+
+\`\`\`math
+f(s)\sim s^\beta
+\`\`\`
+
+has nonanalytic Mellin coefficient
+
+\`\`\`math
+-\frac{\pi}{2\sin(\pi\beta)}
++
+\varepsilon_u a_0.
+\`\`\`
+
+Therefore the formal indicial equation is
+
+\`\`\`math
+\boxed{
+\sin(\pi\beta)
+=
+\frac{\pi}{2\varepsilon_u a_0}.
+}
+\`\`\`
+
+This is a branch-local candidate for classifying threshold endpoint germs.
+RPB-45 does not claim a full Mellin asymptotic theorem from this formal symbol
+alone.
+
+**Status:** branch-local RPB terminology / open realization.
