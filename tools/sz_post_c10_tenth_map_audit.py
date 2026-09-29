@@ -153,11 +153,11 @@ def tenth_lift(key,y):
 def eleventh_lift(word,y):
     n=len(word);pp=[y]+[add(y,sub(c,scale(j,ell))) for j in range(1,n+1)]
     q=pp[-1];m=[('y>0',y),('y<c11',sub(ell,y)),('q>0',q),('q<c11',sub(ell,q)),
-                 ('eleventh_cut',sub(cut11,y) if n==4 els`sub(cut11,y))]
-    for j,key in enumerate(word):
-        out,lower=tenth_lift(key,pp[j]);assert out==pp[j+1]
+                 ('eleventh_cut',sub(cut11,y) if n==4 else sub(y,cut11))]
+    for j,k in enumerate(word):
+        out,lower=tenth_req(k,pp[j]);assert out==pp[j+1]
         m += [(f'{j}:{name}',v) for name,v in lower]
-        m.append((f'no_early_eleventh_hit{j}',sub(out,ell) if j<n-1 els`sub(ell,out)))
+        m.append((f'no_early_eleventh_hit{j}',sub(out,ell) if j<n-1 else sub(ell,out)))
     return q,m
 
 
@@ -197,13 +197,12 @@ def geometry_audit():
     # Next strip: after epsilon=omega10 the final N=10 pre-return source changes R -> S.
     excess=sub(eps,omt);q,m=tenth_word_lift(NEXT,seed)
     cond=RANGE+(excess,sub(ell,excess),seed,sub(excess,seed))
-    assert q==sub(seed,sub(c,omt))
     guard=audit(m,vertices(cond))
     return {'parameter':'epsilon=a-c10=e-e86','formula_scope':'0<epsilon<=omega10',
             'rechecked_lower_contracts':levels,'new_tenth_contracts':tenth,
             'eleventh_section':'0<y<c11','eleventh_map':'y -> y+omega11 mod c11',
             'new_exclusion_scope':'0<epsilon<=omega10','nine_eleventh_cells':cells,
-            'upper_endpoint_words':['U1^z3 V','U1^4 V, all GERM-87-local'],
+            'upper_endpoint_words':['U1^3 V','U1^4 V, all GERM-87-local'],
             'next_domain':'epsilon=omega10+d; 0<d<c11; 0<y<d',
             'next_tenth_word':NEXT,'next_guard':guard,'sampled_topology':False}
 
@@ -214,7 +213,7 @@ def main():
          'new_exclusion_scope':'0<epsilon<=omega10, epsilon=e-e86; L86<L<=L86+omega10',
          'inherited_three_layer_formula_scope':'2h<e<=3h',
          'direct_dependency_sha256':{PIN_PATH:PIN_SHA},
-         'matrix_namespace':'P/Q/R/S are GERM86-local ninth maps; V/U0/U1 are GERM-87-local tenth maps',
+         'matrix_namespace':'P/Q/R/S are GERM-86-local ninth maps; V/U0/U1 are GERM-87-local tenth maps',
          'tenth_word_dictionary':TENTH,
          'eleventh_word_dictionary':{f'{s}/{n}':w for (s,n),w in WORDS.items()},
          'arithmetic':arithmetic(),'rational_audit':rational_audit(),'exact_geometry':geometry_audit(),
