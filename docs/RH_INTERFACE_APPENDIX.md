@@ -2,8 +2,9 @@
 
 ## H1-P5.4 — Exact Horizon-1 stop boundary
 
-This appendix records the open actual-zeta interfaces reached by the
-independent Weil-defect theory.
+This appendix records the status of actual-zeta interfaces reached by the
+independent Weil-defect theory, including interfaces that remain open and the
+neutral support interface now discharged by WD-T40.
 
 It is not part of the proof-producing theorem spine. No interface listed here
 is a premise of the Horizon-1 theorem from which that interface emerges as the
