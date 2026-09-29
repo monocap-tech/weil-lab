@@ -1,0 +1,241 @@
+{
+  "format": "GERM93-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-93",
+  "standing": "UNRATIFIED",
+  "entry_commit": "632fde680e614faf9601942e84e09e27bcea10b6",
+  "verifier_path": "tools/sz_post_b_nu8_eighth_two_step_audit.py",
+  "verifier_sha256": "d21672ee25dbdd5181f0c43b5f4423027ca92c9762c7a8b05b1d343f27857776",
+  "verifier_git_blob": "a49dcabfdc17a3f8ed503d23c27e2653e2c64f73",
+  "stdout_sha256": "852da0f8c53cb9853dcdf2323a668dee41148904ab05b44ead766ca73b1ea418",
+  "compact_complete_audit_sha256": "b51908bb2f884c94729d76994c224e55a46374cc4f7383200f933bfe00db0ad7",
+  "execution_exit_code": 0,
+  "parent_GERM92_entry_replay_exit_code": 0,
+  "parent_GERM92_stdout_sha256": "93b984b88f8a262ab714189f72e66a22d94e1400b67e9c3459c3be73ee9764bd",
+  "parent_GERM92_recorded_stdout_match": true,
+  "inherited_bundle_manifest_entries_checked": 51,
+  "direct_dependency_sha256": {
+    "tools/sz_seventh_double_f20_nonwrap_audit.py": "54e831e0db0573252b48b1aec1ca758f223dd0cf1e83a447610478551f22bd42"
+  },
+  "new_exclusion_scope": "0<r<=nu8, r=e-e92",
+  "formula_scope": "0<r<=psi7, four eighth maps",
+  "experimental_endpoint": "log(2^8924844*5^1510916/3^7844400)",
+  "endpoint_decimal": [
+    "1.71121250607348994674800899628055390748",
+    "1.71121250607348994674800899628055390749"
+  ],
+  "increment": "nu8",
+  "increment_decimal": [
+    "0.00000002807302484240060365382381649192",
+    "0.00000002807302484240060365382381649193"
+  ],
+  "matrix_namespace": "U1/U2/V3 are GERM-91-local; A0/A1/B0/B1 are GERM-93-local",
+  "eighth_word_dictionary": {
+    "A0": [
+      "V3",
+      "U1"
+    ],
+    "A1": [
+      "V3",
+      "U2"
+    ],
+    "B0": [
+      "V3",
+      "U1",
+      "U2"
+    ],
+    "B1": [
+      "V3",
+      "U2",
+      "U2"
+    ]
+  },
+  "low_ninth_words": {
+    "0/3": [
+      "A0",
+      "B0",
+      "B0"
+    ],
+    "1/3": [
+      "A1",
+      "B0",
+      "B0"
+    ],
+    "0/4": [
+      "A0",
+      "B0",
+      "B0",
+      "B0"
+    ],
+    "1/4": [
+      "A1",
+      "B0",
+      "B0",
+      "B0"
+    ]
+  },
+  "high_ninth_words": {
+    "0/3": [
+      "A1",
+      "B0",
+      "B0"
+    ],
+    "1/3": [
+      "A1",
+      "B0",
+      "B1"
+    ],
+    "0/4": [
+      "A1",
+      "B0",
+      "B0",
+      "B0"
+    ],
+    "1/4": [
+      "A1",
+      "B0",
+      "B0",
+      "B1"
+    ],
+    "2/4": [
+      "A1",
+      "B0",
+      "B1",
+      "B1"
+    ]
+  },
+  "charts": {
+    "low": [
+      [
+        1,
+        1
+      ],
+      [
+        -4,
+        -3
+      ]
+    ],
+    "high": [
+      [
+        1,
+        1
+      ],
+      [
+        -4,
+        5
+      ]
+    ]
+  },
+  "common_forward_backward_factor": "7/2",
+  "distinct_temporal_words": 7,
+  "parameter_chart_tests": 9,
+  "shared_words": 2,
+  "signed_cone_bounds": {
+    "low": {
+      "0/3": [
+        1,
+        "222.4842591711",
+        "262.6329422360"
+      ],
+      "1/3": [
+        -1,
+        "29.9553750602",
+        "29.9393450876"
+      ],
+      "0/4": [
+        1,
+        "1355.8458725749",
+        "1596.5674685394"
+      ],
+      "1/4": [
+        -1,
+        "182.7675057740",
+        "183.2587729879"
+      ]
+    },
+    "high": {
+      "0/3": [
+        -1,
+        "29.9553750602",
+        "4.3854041756"
+      ],
+      "1/3": [
+        -1,
+        "9.9104906886",
+        "7.5375773632"
+      ],
+      "0/4": [
+        -1,
+        "182.7675057740",
+        "26.6444521851"
+      ],
+      "1/4": [
+        -1,
+        "60.2024198923",
+        "45.8253731499"
+      ],
+      "2/4": [
+        -1,
+        "3.9799714145",
+        "4.1929690397"
+      ]
+    }
+  },
+  "original_step_counts": [
+    965296,
+    1319293
+  ],
+  "exclusion_endpoint_words": [
+    "B1 B0 A1",
+    "B1^2 B0 A1"
+  ],
+  "formula_endpoint_maps": [
+    "A1",
+    "B1"
+  ],
+  "tenth_or_deeper_induction_used": false,
+  "new_retained_coordinates": 0,
+  "remaining_parent_formula_width": [
+    "0.00000000965695339881488219932398140906",
+    "0.00000000965695339881488219932398140907"
+  ],
+  "remaining_three_layer_width": [
+    "0.00003148749385305945955363852325338045",
+    "0.00003148749385305945955363852325338046"
+  ],
+  "next_eighth_word": [
+    "A1",
+    "B1",
+    "B1"
+  ],
+  "next_matrix": "B1^2 A1, GERM-93-local eighth maps",
+  "next_domain": "r=nu8+excess; 0<y<excess<c10",
+  "next_trace": [
+    [
+      [
+        "-0.9777761565",
+        "-0.9777761564"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "-3.0439537880",
+        "-3.0439537879"
+      ]
+    ]
+  ],
+  "next_status": "ELLIPTIC COMPLETE THREE-STEP NINTH RETURN",
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Complete stdout and compact serialization included in the certificate bundle.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true,
+  "clean_bundle_manifest_entries_checked": 58
+}
