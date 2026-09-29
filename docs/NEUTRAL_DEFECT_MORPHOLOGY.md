@@ -3,15 +3,15 @@
 
 This document packages the neutral branch of the completed H1-P1/H1-P2 theory.
 
-It does **not** prove that a nonzero neutral mode persists to a larger support.
-
-The theorem stops at the Horizon-1 interface
+The original H1-P3.1 package reduced strict persistence to the Horizon-1 interface
 
 ```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
 ```
+
+That historical stop is now discharged negatively by the additive post-audit theorem WD-T40 / P3-U8 below.
 
 ---
 
@@ -795,7 +795,7 @@ The answer was not assumed in the original H1-P3.1 package.
 
 ---
 
-## 12. Dependency chain
+## 12. Historical dependency chain through P3-U7
 
 The neutral morphology theorem consumes
 
@@ -851,7 +851,7 @@ whose operator is
 
 with no uniform positive-Sobolev coercive gain supplied by the retained form estimate.
 
-Within this carrier-identified neutral branch, the remaining H1-P3.1 interface is a fixed-vector exterior support/right-limit null-extension problem.
+Within the original H1-P3.1 package, the remaining interface was the fixed-vector exterior support/right-limit null-extension problem. The current post-audit extension P3-U8 / WD-T40 closes that interface negatively under the same carrier hypotheses.
 
 ---
 
