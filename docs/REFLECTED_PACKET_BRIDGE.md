@@ -9,90 +9,119 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-52 — THE COMPLETED GENERALIZED ZERO EQUATION DOES NOT FORCE AN ORDINARY \(L^2\) SCREW-CORE REPRESENTATIVE.}
+\textbf{RPB-53 — ZERO SPECTRAL VALUE DOES NOT KILL THE GENERIC LOGARITHMIC BOUNDARY LAYER; THE CURRENT CORE-LIFT ROUTE IS EXHAUSTED WITHOUT A NEW ACTUAL-WEIL BOUNDARY-CANCELLATION THEOREM.}
 }
 ~~~
 
-RPB-51 corrected Suzuki's generalized zero eigenspace to the completed screw
-space
+The actual localized zero equation has the same logarithmic endpoint principal
+operator identified in RPB-49:
 
 ~~~math
-\mathcal H(S_c)\not\subset L^2(-c,c).
+\mathcal N_{\log}H
+=
+2tH-\int^tH.
 ~~~
 
-RPB-52 tests whether the exceptional value \(\lambda=0\) nevertheless forces
-a completed zero mode back into the ordinary carrier.
-
-It does not by abstract structure alone.
-
-Suzuki's generalized equation is
+Its homogeneous boundary exponent is
 
 ~~~math
-G_cu=\lambda K_cu,
+\alpha=\frac12,
+~~~
+
+so
+
+~~~math
+H(t)\sim t^{-1/2}
+~~~
+
+is already a zero mode of the leading endpoint operator.  The eigenvalue term
+is lower in the endpoint hierarchy; setting \(\lambda=0\) does not force the
+coefficient of this layer to vanish.
+
+RPB-53 also records a sharp pure-model witness.  For the Dirichlet operator
+
+~~~math
+\mathcal H_\Omega
+=
+\frac12L_\Delta,
+~~~
+
+the scaling law
+
+~~~math
+\lambda_1(R\Omega)
+=
+\lambda_1(\Omega)-\log R
+~~~
+
+allows a support scaling with
+
+~~~math
+\lambda_1(R\Omega)=0.
+~~~
+
+The corresponding positive principal eigenfunction satisfies the optimal
+logarithmic Hopf lower bound
+
+~~~math
+\phi_1(x_0-s\nu)
+\gtrsim
+\ell^{1/2}(s),
 \qquad
-u\in\mathcal H(S_c),
+\ell(s)\asymp\frac1{\log(1/s)}.
 ~~~
 
-and at \(\lambda=0\) the explicit inverse-Neumann term disappears:
+Thus a genuine zero eigenfunction can carry the generic noncore logarithmic
+boundary layer.
 
-~~~math
-G_cu=0.
-~~~
-
-Rewriting with \(S_c=G_c-\mu K_c\) remains an identity in the completed
-form/operator realization and does not license application of the ordinary
-\(L^2\) smoothing map \(K_c\) before \(u\in L^2\) is known.
-
-RPB-52 gives a sharp abstract Friedrichs/screw countermodel with
-
-~~~math
-D:V\overset{\sim}{\longrightarrow}H,
-\qquad
-G=(D^{-1})^*AD^{-1},
-~~~
-
-where \(G\) is compact nonnegative and the closed core form generates the
-Friedrichs operator \(A\), yet
-
-~~~math
-\boxed{
-\ker A\ne0,
-\qquad
-\ker A\cap V=0,
-\qquad
-\ker_HG=0.
-}
-~~~
-
-Thus a genuine Friedrichs zero eigenvector can live entirely outside the screw
-core while the ordinary compact screw operator has trivial kernel.
-
-This closes the proposed "zero itself regularizes" route negatively.
-
-Current branch-local status:
+Consequently:
 
 ~~~text
-ZERO-EIGENVALUE REGULARIZATION: NO-GO FROM ABSTRACT STRUCTURE
-COMPLETED-TO-L2 CORE LIFT: OPEN FOR THE ACTUAL WEIL OPERATOR
+GENERIC DOMAIN BOOTSTRAP: EXHAUSTED
+GENERALIZED-PENCIL ZERO LIFT: EXHAUSTED
+ZERO-SPECTRAL-VALUE ENDPOINT LIFT: EXHAUSTED
+ACTUAL-WEIL CORE LIFT: REQUIRES NEW BOUNDARY-AMPLITUDE CANCELLATION
 CORE-RESTRICTED RPB-34–50 MECHANISM: INTACT CONDITIONALLY
-ACTUAL-EDGE L2 SCREW-CORE EXISTENCE: OPEN
 FULL AZ-FIN-WEIL-NULL-EXTENSION: OPEN
 ~~~
+
+A new complementary route is visible.  If an actual Friedrichs zero mode has
+
+~~~math
+h(c-r)
+\sim
+b\,(\log(1/r))^{-1/2},
+\qquad
+b\ne0,
+~~~
+
+then the zero-extension logarithmic kernel just outside the support contains
+
+~~~math
+-\int_0^\delta
+\frac{h(c-r)}{s+r}\,dr,
+~~~
+
+whose model leading size is
+
+~~~math
+-\mathrm{const}\cdot b\sqrt{\log(1/s)}.
+~~~
+
+Finite prime translations sample interior points and do not have this boundary
+divergence.  This suggests a direct noncore null-extension obstruction rather
+than another attempt to force the mode into \(H_0^1\).
 
 ## Next cursor
 
 ~~~text
-RPB-53 / ACTUAL ZERO-MODE ENDPOINT REGULARITY TEST
+RPB-54 / NONCORE LOG-LAYER EXTERIOR LEAKAGE TEST
 ~~~
 
-The next pass should leave the abstract generalized pencil and return to the
-actual localized Weil equation \(A_cv=0\).
-
-Priority is the endpoint boundary class: determine whether the zero spectral
-value removes the generic noncore logarithmic boundary layer or whether the
-Friedrichs zero mode may still carry it.  If only the generic logarithmic form
-regularity already known from RPB-31 is recovered, record the core-lift route
-as exhausted absent a new actual-Weil boundary theorem.
+The next pass should compute the exterior singularity rigorously for a mode
+with nonzero optimal logarithmic boundary amplitude, verify that the remaining
+actual-Weil terms cannot cancel it, and isolate the residual class with
+vanishing leading logarithmic amplitude.
 
 ## Governance
 
@@ -105,4 +134,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_52_20260928.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_53_20260928.md.
