@@ -9,123 +9,105 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-61 — DELAY-WAVEFRONT PROPAGATION IS EXISTENTIAL; COMPACT SUPPORT AND DENSE PRIME-LOG ARITHMETIC DO NOT BY THEMSELVES EXCLUDE CLOSED SINGULAR CYCLES.}
+\textbf{RPB-62 — FINITE DELAY CYCLES DIE AFTER RECENTERING; ONLY INFINITE OR ACCUMULATING DELAY COMPONENTS REMAIN.}
 }
 ~~~
 
-For the interior equation
+RPB-61 left finite self-supporting analytic singular cycles as an
+infinite-logarithmic residue.
+
+RPB-62 solves the finite-component problem by recentering all singular points
+to one common local coordinate.
+
+For a finite isolated component
 
 ~~~math
-\mathcal A_\infty h
--
-\sum_j a_j
+\mathcal C=\{x_1,\dots,x_N\},
+~~~
+
+define
+
+~~~math
+U_j(s)=h(x_j+s).
+~~~
+
+An internal prime translation satisfying
+
+~~~math
+x_j+\sigma\ell_\nu=x_k
+~~~
+
+then becomes simply
+
+~~~math
+U_j(s)\mapsto U_k(s).
+~~~
+
+Thus the finite-delay FIO geometry becomes a constant finite matrix coupling.
+The local system is
+
+~~~math
+\boxed{
 \left(
-\tau_{\ell_j}
-+
-\tau_{-\ell_j}
-\right)h
+\mathcal A_{\infty,\rm loc}I_N-M
+\right)U
 =
-g_{\rm an},
-~~~
-
-the archimedean component is the lawful diagonal analytic pseudodifferential
-part, while each prime translation transports analytic wavefront by
-
-~~~math
-(x,\xi)
-\longleftrightarrow
-(x\pm\ell_j,\xi).
-~~~
-
-Hence, writing
-
-~~~math
-S=WF_A(h),
-~~~
-
-the correct set-level propagation law is
-
-~~~math
-\boxed{
-S
-\subseteq
-\bigcup_jT_{+\ell_j}S
-\cup
-\bigcup_jT_{-\ell_j}S.
+G_{\rm an}.
 }
 ~~~
 
-Equivalently,
+Its high-frequency symbol is
 
 ~~~math
-(x,\xi)\in WF_A(h)
-\Longrightarrow
-\exists j,\sigma\in\{\pm1\}:
-(x+\sigma\ell_j,\xi)\in WF_A(h).
-~~~
-
-This is an **existential witness relation**.
-
-It does not imply that an actual singular orbit is closed under the whole
-additive group
-
-~~~math
-\Gamma_c
+P(\xi)
 =
-\sum_p\mathbb Z\log p.
+m_\infty(\xi)I_N-M.
 ~~~
 
-Therefore the density result from RPB-37 remains an arithmetic fact but cannot
-be used to claim that every actual singular witness orbit is dense.
-
-Indeed, because the delay set is symmetric, a two-point configuration
+Since
 
 ~~~math
-x
-\longleftrightarrow
-x+\ell_j
+m_\infty(\xi)
+=
+\log|\xi|+O(1),
 ~~~
 
-already satisfies the set-valued witness requirement whenever both points lie
-inside the support.
+one has, for sufficiently large \(|\xi|\),
 
-Compact support alone therefore does not force every singular witness path to
-exit through an endpoint.
+~~~math
+P(\xi)^{-1}
+=
+O(1/\log|\xi|).
+~~~
 
-The high-frequency logarithmic dominance still gives a quantitative gain:
-each successful use of the interior equation adds one power of
-\(\log\langle D\rangle\) relative to bounded translations.
+The inverse satisfies analytic order-zero derivative bounds, so the finite
+matrix system has an analytic pseudodifferential parametrix.
 
-Thus a finite self-supporting delay cycle is forced into
+Therefore every component germ is analytic, contradicting membership in the
+analytic singular support.
+
+Hence:
 
 ~~~math
 \boxed{
-\bigcap_{N\ge0}H_{\log}^{N}
+\text{no finite isolated self-supporting delay component exists.}
 }
 ~~~
 
-microlocally.
+This eliminates the two-point cycles that were still permitted at the
+set-valued level in RPB-61.
 
-But this infinite-log class is nonquasianalytic and may remain below every
-positive Sobolev order.
-
-So the promotion blocker is now narrower but unresolved:
+Current blocker state:
 
 ~~~text
-RPB-43 FULL-SYMBOL ANALYTICITY:
-    WITHDRAWN
+FINITE DELAY CYCLES:
+    EXCLUDED
 
-SET-LEVEL DELAY-WAVEFRONT PROPAGATION:
-    CLASSIFIED
+FINITE INFINITE-LOG RESIDUE:
+    EMPTY
 
-DENSE PRIME-LOG GROUP => DENSE ACTUAL SINGULAR ORBIT:
-    FALSE
-
-FINITE CLOSED WITNESS CYCLE:
-    FORCED TO INFINITE LOG REGULARITY
-
-INFINITE LOG REGULARITY => ANALYTICITY:
-    FALSE / NO-GO
+INFINITE / ACCUMULATING DELAY COMPONENT:
+    OPEN
 
 RPB-57/58 FULL-FRIEDRICHS EXCLUSION:
     STILL CONDITIONAL / UNPROMOTED
@@ -134,24 +116,15 @@ AZ-FIN-WEIL-NULL-EXTENSION:
     OPEN
 ~~~
 
-RPB-EXT-A9 records a current analytic-FIO source as contextual confirmation
-that analytic Fourier-integral operators transport ultradifferentiable
-wavefront sets along their canonical relations.  It is non-load-bearing for
-the exact translation formula used here.
-
 ## Next cursor
 
 ~~~text
-RPB-62 / INFINITE-LOG DELAY-CYCLE EXTINCTION TEST
+RPB-63 / ACCUMULATING DELAY-COMPONENT COMPACTNESS TEST
 ~~~
 
-The next pass should move beyond set-valued wavefront geometry and use the
-actual coupled high-frequency equations on a finite delay cycle.
-
-The target is to determine whether the growing diagonal
-\(\log|\xi|\) term against a bounded translation matrix, together with
-localization commutators, upgrades infinite-log regularity enough to eliminate
-finite cycles—or whether a genuinely nonquasianalytic cycle survives.
+The next pass should test whether an infinite self-supporting analytic singular
+component can exist inside the compact support, and whether incommensurable
+near-returns can evade the finite matrix ellipticity mechanism.
 
 ## Governance
 
@@ -164,4 +137,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_61_20260929.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_62_20260929.md.
