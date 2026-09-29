@@ -9,120 +9,148 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-55 — CURRENT BOUNDARY REGULARITY DOES NOT PRODUCE A UNIVERSAL OPTIMAL LOG TRACE COEFFICIENT, AND VANISHING OF SUCH A COEFFICIENT DOES NOT FORCE SCREW-CORE MEMBERSHIP.}
+\textbf{RPB-56 — THE EXTERIOR STIELTJES TRANSFORM, NOT CUMULATIVE MASS ALONE, IS THE EXACT BOUNDARY LEAKAGE OBJECT.}
 }
 ~~~
 
-RPB-54 excluded every mode carrying a nonzero optimal logarithmic boundary
-amplitude.  RPB-55 audits whether that amplitude exists for every Friedrichs
-zero mode.
-
-The current sharp pure-logarithmic boundary theorem gives the envelope
+For the right and left endpoints define
 
 ~~~math
-|u(x)|
-\le
-C\ell^{1/2}(d(x,\partial\Omega))
-~~~
-
-for bounded weak solutions with bounded forcing.  It does not assert existence
-of a boundary quotient limit
-
-~~~math
-u/\ell^{1/2}\to b.
-~~~
-
-Matching lower bounds are known for special positive/Hopf classes, such as the
-torsion function and nonnegative supersolutions, but not for arbitrary
-sign-changing zero modes.
-
-For the actual compact-window Weil operator, RPB-31 only gives logarithmic
-operator-domain regularity.  Current inputs do not yet prove that every
-Friedrichs zero mode falls into the bounded-solution/bounded-forcing class of
-the optimal boundary theorem.
-
-Therefore the boundary-untyped residue remains real at the present theorem
-level.
-
-Moreover, even if an optimal coefficient exists and vanishes,
-
-~~~math
-h=o(\ell^{1/2}),
-~~~
-
-this does not imply
-
-~~~math
-h\in H_0^1.
-~~~
-
-For example,
-
-~~~math
-h(c-r)=\ell(r)=\frac1{\log(1/r)}
-~~~
-
-is log-flat relative to \(\ell^{1/2}\), while its derivative is not square
-integrable near the endpoint.
-
-The more robust boundary object is the cumulative boundary mass
-
-~~~math
-M_+(s;h)
+\Sigma_+(s;h)
 =
-\int_s^\delta
-\frac{h(c-r)}{r}\,dr,
+\int_0^\delta
+\frac{h(c-r)}{s+r}\,dr,
+\qquad
+\Sigma_-(s;h)
+=
+\int_0^\delta
+\frac{h(-c+r)}{s+r}\,dr.
 ~~~
 
-and similarly \(M_-\) at the left endpoint.
-
-This recovers the RPB-54 amplitude leak as
+These transforms occur directly in the exterior zero-extension formula:
 
 ~~~math
-h(c-r)\sim b\ell^{1/2}(r)
-\Longrightarrow
-M_+(s;h)\sim2b\sqrt{\log(1/s)},
+L_\Delta\widetilde h(c+s)
+=
+-\Sigma_+(s;h)+O(1),
 ~~~
 
-but also detects slower log-flat leakage:
+and similarly at the left endpoint.
+
+In logarithmic coordinates \(s=e^{-T}\), \(r=e^{-t}\),
 
 ~~~math
-h(c-r)\sim\frac{b}{\log(1/r)}
-\Longrightarrow
-M_+(s;h)\sim b\log\log(1/s).
+\Sigma_+(e^{-T};h)
+=
+\int_{t_0}^{\infty}
+\frac{H_+(t)}{1+e^{t-T}}\,dt,
 ~~~
 
-Thus a scalar trace coefficient is not the fundamental null-extension datum.
-The remaining thin residue is the class in which cumulative boundary mass
-stays bounded by cancellation.
+whereas the cumulative mass is the sharp primitive
 
-Current branch-local partition:
+~~~math
+M_+(e^{-T};h)
+=
+\int_{t_0}^{T}H_+(t)\,dt.
+~~~
+
+Thus the Stieltjes transform is a logistic/Fermi smoothing of cumulative
+boundary mass.
+
+For bounded boundary germs,
+
+~~~math
+\boxed{
+\Sigma_\pm(s;h)-M_\pm(s;h)=O(1).
+}
+~~~
+
+Hence RPB-55's cumulative-mass criterion is valid on the bounded boundary
+classes already covered by the optimal logarithmic envelope.
+
+The actual archimedean exterior output is
+
+~~~math
+\mathcal A_\infty\widetilde h(c+s)
+=
+-\frac12\Sigma_+(s;h)+O(1),
+~~~
+
+with the analogous left formula.
+
+Therefore, away from equality thresholds, strict null extension requires
+
+~~~math
+\boxed{
+\Sigma_+(s;h)=O(1),
+\qquad
+\Sigma_-(s;h)=O(1).
+}
+~~~
+
+At a threshold
+
+~~~math
+2c=\log n_0,
+\qquad
+a_0=\frac{\Lambda(n_0)}{\sqrt{n_0}},
+~~~
+
+the newly active equality-prime term samples the opposite endpoint, so
+persistence must satisfy the coupled boundary system
+
+~~~math
+\boxed{
+\frac12\Sigma_+(s;h)+a_0h(-c+s)=O(1),
+}
+~~~
+
+~~~math
+\boxed{
+\frac12\Sigma_-(s;h)+a_0h(c-s)=O(1).
+}
+~~~
+
+Thus RPB-54 is recovered as a growth-separation special case, but RPB-56 also
+covers coefficient-free boundary classes.
+
+A crucial no-go remains: bounded Stieltjes data do **not** imply screw-core
+regularity by boundary geometry alone.  The analytic germ
+
+~~~math
+h(c-r)=\sin(\log(1/r))
+~~~
+
+has bounded cumulative mass and bounded Stieltjes transform but is not in
+\(H_0^1\).
+
+So the remaining discriminator is now the **actual interior endpoint
+equation**, not generic boundary regularity.
+
+Current branch-local residue:
 
 ~~~text
-CORE ZERO MODE:
-    excluded conditionally by RPB-34–49
+NONTHRESHOLD:
+    bounded right and left Stieltjes transforms
 
-NONCORE MODE WITH NONZERO OPTIMAL LOG AMPLITUDE:
-    excluded by RPB-54
+THRESHOLD:
+    coupled Stieltjes/opposite-endpoint cancellation class
 
-BOUNDARY-UNTYPED OR LOG-FLAT MODE WITH UNBOUNDED CUMULATIVE MASS:
-    candidate direct-leak class
-
-BOUNDED CUMULATIVE-MASS CANCELLATION RESIDUE:
-    OPEN
+BOUNDARY GEOMETRY ALONE:
+    insufficient to force H_0^1
 ~~~
 
 ## Next cursor
 
 ~~~text
-RPB-56 / CUMULATIVE BOUNDARY-MASS LEAKAGE AND CANCELLATION TEST
+RPB-57 / BOUNDED STIELTJES RESIDUE VS INTERIOR ENDPOINT EQUATION
 ~~~
 
-The next pass should derive the exterior Weil output directly in terms of
-\(M_\pm\), without assuming a pointwise trace coefficient, and determine
-whether every unbounded cumulative mass dominates the remaining actual-Weil
-terms.  The residual bounded-mass class should then be tested against the
-interior zero equation.
+The next pass should combine bounded Stieltjes data with the actual
+logarithmic endpoint equation and determine whether the leading
+\(t^{-1/2}\) homogeneous component must vanish, what next boundary species
+remain, and how the threshold two-endpoint coupling modifies that
+classification.
 
 ## Governance
 
@@ -135,4 +163,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_55_20260928.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_56_20260928.md.
