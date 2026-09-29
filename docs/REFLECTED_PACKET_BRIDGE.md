@@ -9,11 +9,11 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-70 — ALL BUILD ROUTES AVAILABLE HERE ARE EXHAUSTED BEFORE LEAN EXECUTION; F-1 REMAINS SOURCE-COMPLETE AND BUILD-UNCERTIFIED.}
+\textbf{RPB-71 — THE F-1 CARRIER IS STATICALLY API-CONSISTENT WITH PINNED MATHLIB V4.34 AFTER ELABORATION HARDENING.}
 }
 ~~~
 
-The new module is
+The physical Fourier carrier remains in
 
 ~~~text
 WeilDefect/Morphology/NeutralFourierCarrier.lean
@@ -21,105 +21,77 @@ WeilDefect/Morphology/NeutralFourierCarrier.lean
 
 and is imported by the root library.
 
-It adds:
+RPB-71 audited the source directly against the pinned declarations for:
+
+- MeasureTheory.Lp;
+- MemLp.toLp;
+- the Lp-to-tempered-distribution CoeHead;
+- the L2 Fourier transform instance;
+- the tempered-distribution Fourier transform instance;
+- MeasureTheory.Lp.fourier_toTemperedDistribution_eq;
+- Distribution.IsVanishingOn;
+- Distribution.IsVanishingOn.mono.
+
+All declaration shapes match.
+
+Four elaboration-hardening edits are now present:
 
 ~~~text
-RealComplexL2
-RealComplexTempered
-NeutralPhysicalFourierCarrier
-NeutralStrictResidualData
+1. RealComplexL2 uses explicit volume.
+2. The WD-T38 adapter unfolds l2Mode and uses the stored equality directly.
+3. Fourier compatibility exposes both coercions explicitly before applying the pinned theorem.
+4. Residual vanishing names s1/s2 explicitly in IsVanishingOn.mono.
 ~~~
 
-The concrete carrier binds the abstract WD-T38 mode to an actual representative
+No static API mismatch remains.
 
-~~~text
-h : R -> C
-~~~
-
-with:
-
-- L2 membership;
-- support inside [-c,c];
-- exact equality between the WD-T38 kExt and the representative's L2 class;
-- a forgetful adapter back to NeutralNullExtensionInterface;
-- a nonzero concrete L2 mode;
-- a tempered-distribution lift;
-- L2/tempered-distribution Fourier compatibility from mathlib.
-
-Strict enlarged residual vanishing is typed by
-
-~~~text
-Distribution.IsVanishingOn
-~~~
-
-on the interval (-a,a).
-
-The module deliberately does not yet identify the residual with the actual
-Weil multiplier applied to the mode. That remains F-2.
-
-Current formalization stack:
+Current formalization state:
 
 ~~~text
 F-1  physical Fourier carrier lift
-     SOURCE IMPLEMENTED / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
+     SOURCE IMPLEMENTED
+     STATIC API PASS
+     BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
 
 F-2  actual compact-window Weil multiplier realization
      NOT STARTED
-
-F-3  support-gap Gaussian pairing
-     NOT STARTED
-
-F-4  Gaussian coercivity -> exponential Fourier weight
-     NOT STARTED
-
-F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
-     NOT STARTED
-
-F-6  final WD-T40 assembly from EXT-4 / EXT-5 premises
-     NOT STARTED
 ~~~
 
-RPB-69 performed two independent validation attempts.
+The remaining untested risk is no longer declaration shape. It is implicit
+instance/typeclass synthesis plus ordinary elaboration, which cannot be
+compiler-certified while no Lean runner is available.
 
-Validation #1 used PR #1 against research/reflected-packet-bridge and run
-36638336287. Its failed job was re-run; attempt 2 reported runner_id 0,
-an empty runner name, and zero steps.
-
-Validation #2 used PR #2 against the default main branch and run 36641237210.
-It produced the same runner_id 0 / empty-runner / zero-step state.
-
-Therefore neither validation reached checkout, toolchain setup, lake, or Lean.
-No compiler diagnostic exists. Both temporary PRs were closed without merge,
-and no validation-only workflow change entered the research branch.
-
-WD-T40 remains mathematically:
+WD-T40 remains:
 
 ~~~text
-INTERNAL-PROOF / CONDITIONAL ON WD-T38 HYPOTHESES
-P4-AUDIT-PASSED
+MATHEMATICAL:
+    INTERNAL-PROOF / CONDITIONAL ON WD-T38 HYPOTHESES
+    P4-AUDIT-PASSED
+
+LEAN:
+    LEAN-BLOCKED
 ~~~
-
-and formally:
-
-~~~text
-LEAN-BLOCKED
-~~~
-
-until the F-1 module receives a real build certificate and the remaining stack
-is discharged. The present F-1 blocker is runner allocation, not a diagnosed
-Lean source failure.
 
 ## Next cursor
 
 ~~~text
-RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT
+RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
 ~~~
 
-The next pass should statically audit the carrier source against the exact pinned mathlib v4.34 API while the build infrastructure remains unavailable.
+The next pass should inspect the exact implicit instances required by the
+carrier source under pinned mathlib v4.34:
 
-Do not move into the actual Weil multiplier realization until the carrier
-module has either passed a genuine Lean build or produced an exact compiler
-blocker.
+~~~text
+Fact (1 <= (2 : ENNReal))
+volume.HasTemperateGrowth
+IsLocallyFiniteMeasure volume
+InnerProductSpace R R
+FiniteDimensional R R
+BorelSpace R
+FourierTransform instances
+~~~
+
+Do not start F-2.
 
 ## Governance
 
@@ -132,4 +104,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_70_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_71_20260929.md.
