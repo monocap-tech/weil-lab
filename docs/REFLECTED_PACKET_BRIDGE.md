@@ -9,114 +9,165 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-63 — COUNTABLE ACCUMULATING DELAY RESIDUES ARE IMPOSSIBLE; ANY SURVIVING BLOCKER-A SET HAS A NONEMPTY PERFECT SELF-SUPPORTING KERNEL.}
+\textbf{RPB-64 — STRICT WEIL NULL EXTENSION IS IMPOSSIBLE BY GAUSSIAN SUPPORT-GAP COERCIVITY.}
 }
 ~~~
 
-RPB-62 excludes every finite isolated self-supporting delay component.
+RPB-60--63 audited and corrected the local analytic-wavefront route.
 
-RPB-63 applies Cantor--Bendixson descent to the compact projected analytic
-singular set.
+RPB-64 then bypasses that route entirely.
 
-For a finite symmetric delay set
+Assume a nonzero physical mode is supported in
 
 ~~~math
-D=\{\pm\ell_1,\dots,\pm\ell_J\},
+[-c,c]
 ~~~
 
-the RPB-61 witness relation is
+and satisfies the correct enlarged/right-limit null equation on some strict
+larger interval
 
 ~~~math
-x\in S
-\Longrightarrow
-\exists d\in D:
-x+d\in S.
+(-a,a),
+\qquad
+a>c.
 ~~~
 
-If \(S'\) is the derived set of accumulation points of \(S\), the finiteness of
-\(D\) lets one pass to a subsequence with one fixed witness delay.  Therefore
+Let
 
 ~~~math
-\boxed{
-S'
-\text{ is again delay-self-supporting}.
-}
-~~~
-
-The same argument survives every transfinite Cantor--Bendixson derivative,
-including limit stages.
-
-Hence a nonempty countable compact delay-self-supporting set would eventually
-produce a finite nonempty self-supporting derivative.
-
-RPB-62 forbids that.
-
-Therefore:
-
-~~~math
-\boxed{
-\text{no nonempty countable compact self-supporting analytic singular set exists.}
-}
-~~~
-
-Any surviving compact residue must contain a nonempty perfect
-delay-self-supporting kernel.
-
-At fixed support the exact prime-log group
-
-~~~math
-\Gamma_c
+q
 =
-\sum_{p\in P_c}\mathbb Z\log p
+\mathcal W_a^{\rm ext}h.
 ~~~
 
-is countable, so every exact graph component lies in one countable arithmetic
-orbit.
+Strict persistence gives
 
-A perfect kernel is uncountable.
+~~~math
+q=0
+\quad
+\text{on }(-a,a),
+~~~
 
-Thus the surviving topology must be
+so there is a positive spatial gap
+
+~~~math
+\delta=a-c>0
+~~~
+
+between the support of \(h\) and the support of the exterior residual.
+
+For the Gaussian frequency windows
+
+~~~math
+\phi_R^\pm(\eta)
+=
+\exp\!\left(
+-\frac{(\eta\mp R)^2}{R}
+\right),
+~~~
+
+the physical kernel is a modulated Gaussian of width \(R^{-1/2}\).
+The support gap therefore gives an exponentially small residual pairing:
+
+~~~math
+\left|
+\left\langle
+q,
+(P_R^\pm)^2h
+\right\rangle
+\right|
+\le
+Ce^{-\kappa R}.
+~~~
+
+On the Fourier side, the exact enlarged compact-window scalar symbol satisfies
+
+~~~math
+\Psi_a(\eta)
+=
+\log|\eta|
++
+O_a(1),
+~~~
+
+while the pole contribution is finite rank with analytic exponential range.
+
+Hence
 
 ~~~math
 \boxed{
-\text{uncountably many countable graph components with interlacing closures}.
+(\log R-C_a)
+\int
+\phi_R^\pm(\eta)
+|\widehat h(\eta)|^2\,d\eta
+\le
+Ce^{-\kappa R}.
 }
 ~~~
 
-This also explains why simply replacing the finite RPB-62 matrix by an
-\(\ell^2(\Gamma_c)\) matrix is not enough: one orbit is not closed under
-topological accumulation, and a common isolated analytic chart radius may
-collapse to zero.
+Taking unit subintervals inside the moving windows gives exponential
+\(L^2\)-Fourier decay on both frequency half-lines:
 
-Current blocker state:
+~~~math
+\int_{\mathbb R}
+e^{\alpha|\eta|}
+|\widehat h(\eta)|^2\,d\eta
+<
+\infty
+~~~
+
+for some \(\alpha>0\).
+
+Therefore \(h\) extends holomorphically to a nontrivial horizontal strip.
+
+But \(h\) is compactly supported on the real axis, so the strip-holomorphic
+representative vanishes on an open real interval and hence vanishes
+identically.
+
+Thus:
+
+~~~math
+\boxed{
+0\ne h,\quad
+\operatorname{supp}h\subseteq[-c,c]
+\Longrightarrow
+\text{no correct strict Weil null extension exists.}
+}
+~~~
+
+This argument is uniform across prime-power thresholds because a threshold
+changes the enlarged scalar symbol only by finitely many bounded cosine terms.
+
+The final RPB branch-local status is therefore:
 
 ~~~text
-FINITE SELF-SUPPORTING COMPONENT:
-    EXCLUDED
-
-COUNTABLE COMPACT SELF-SUPPORTING SET:
-    EXCLUDED
-
-NONEMPTY PERFECT DELAY KERNEL:
-    OPEN
-
-RPB-57/58 FULL-FRIEDRICHS EXCLUSION:
-    STILL CONDITIONAL / UNPROMOTED
-
 AZ-FIN-WEIL-NULL-EXTENSION:
-    OPEN
+    DISCHARGED NEGATIVELY IN RPB
+
+RPB-43/57/58 ANALYTIC-MELLIN ROUTE:
+    NON-LOAD-BEARING FOR FINAL DISCHARGE
+
+RPB-60--63 CORRECTIONS:
+    RETAINED AS VALID AUDIT / FAILURE-MODE CLASSIFICATION
+
+CANONICAL HORIZON-1 STATUS:
+    STILL OPEN PENDING RPB-65 PROMOTION AUDIT
 ~~~
 
 ## Next cursor
 
 ~~~text
-RPB-64 / PERFECT-KERNEL FBI MAXIMUM TEST
+RPB-65 / GAUSSIAN SUPPORT-GAP PROMOTION AUDIT
 ~~~
 
-The next pass should replace set-valued topology by a quantitative analytic
-microlocal amplitude estimate and test whether the growing logarithmic
-diagonal beats the finite-degree translation coupling uniformly on the compact
-perfect kernel.
+The next pass should audit only the RPB-64 proof:
+
+1. whole-line residual growth and the Gaussian support-gap pairing;
+2. the finite-rank pole Gaussian estimate;
+3. the exact symbol lower bound including threshold corrections;
+4. exponential Fourier decay to strip holomorphy.
+
+If all four pass, update the stable Horizon-1 interface and theorem package.
 
 ## Governance
 
@@ -129,4 +180,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_63_20260929.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_64_20260929.md.
