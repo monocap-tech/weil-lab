@@ -540,3 +540,72 @@ The next audit was the **internal proof transitions** that consume these pins.
 ```
 
 That handoff was subsequently completed in H1-P4.2. It is retained here as provenance, not as the live project cursor.
+
+
+---
+
+## RPB-EXT-A1 — analytic elliptic regularity for analytic wavefront sets
+
+### Source
+
+L. Hörmander,
+*The Analysis of Linear Partial Differential Operators I*,
+2nd ed., Springer, Grundlehren 256,
+Theorem 9.5.1, p. 353.
+
+### Exact input consumed by RPB-43
+
+For an analytic (pseudo)differential operator \(P\),
+
+\`\`\`math
+WF_A(Pu)
+\subseteq
+WF_A(u)
+\subseteq
+\operatorname{Char}(P)
+\cup
+WF_A(Pu).
+\`\`\`
+
+Hence if \(P\) is analytic-elliptic on the conic region under consideration,
+
+\`\`\`math
+WF_A(u)=WF_A(Pu).
+\`\`\`
+
+### RPB specialization
+
+The whole-line compact-window Weil multiplier
+
+\`\`\`math
+\Psi_c(\xi)
+=
+\Re\psi\!\left(\frac14+\frac{i\xi}{2}\right)
+-\log\pi
+-
+\sum_{\log n<2c}
+\frac{2\Lambda(n)}{\sqrt n}\cos(\xi\log n)
+\`\`\`
+
+is real analytic in \(\xi\) and satisfies
+
+\`\`\`math
+\Psi_c(\xi)
+=
+\log|\xi|+O_c(1)
+\qquad
+(|\xi|\to\infty).
+\`\`\`
+
+Thus it is elliptic at high frequency in the analytic pseudodifferential
+sense relevant to analytic wavefront sets.  The compact-window pole/evaluation
+term has finite-dimensional real-analytic range.
+
+Therefore an interior neutral equation with analytic pole datum implies
+interior real analyticity of the neutral core mode.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
