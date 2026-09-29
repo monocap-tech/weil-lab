@@ -5294,3 +5294,104 @@ amplitude-bearing modes.  Bounded cumulative mass is not yet identified with
 screw-core regularity.
 
 **Status:** branch-local RPB terminology.
+
+
+## Exterior Stieltjes boundary transform
+
+For a compact-window mode \(h\), define
+
+~~~math
+\Sigma_+(s;h)
+=
+\int_0^\delta
+\frac{h(c-r)}{s+r}\,dr,
+~~~
+
+and
+
+~~~math
+\Sigma_-(s;h)
+=
+\int_0^\delta
+\frac{h(-c+r)}{s+r}\,dr.
+~~~
+
+These are the **exterior Stieltjes boundary transforms**.  They are the exact
+near-endpoint quantities appearing in the zero-extension formula for the
+one-dimensional logarithmic Laplacian outside the support.
+
+For bounded boundary germs,
+
+~~~math
+\Sigma_\pm(s;h)-M_\pm(s;h)=O(1),
+~~~
+
+so cumulative boundary mass and Stieltjes leakage have the same unbounded
+asymptotic content.
+
+**Status:** branch-local RPB terminology.
+
+## Threshold Stieltjes coupling
+
+At an equality threshold
+
+~~~math
+2c=\log n_0,
+\qquad
+a_0=\frac{\Lambda(n_0)}{\sqrt{n_0}},
+~~~
+
+strict right-limit persistence couples the right and left endpoint data through
+
+~~~math
+\frac12\Sigma_+(s;h)
++
+a_0h(-c+s)
+=
+O(1),
+~~~
+
+and
+
+~~~math
+\frac12\Sigma_-(s;h)
++
+a_0h(c-s)
+=
+O(1),
+~~~
+
+up to the fixed sign convention for translations.
+
+This is the **threshold Stieltjes coupling**.
+
+It replaces the nonthreshold bounded-Stieltjes condition because the newly
+active equality-prime translation samples the opposite endpoint.
+
+**Status:** branch-local RPB terminology.
+
+## Bounded-Stieltjes residue
+
+The **bounded-Stieltjes residue** is the class of endpoint germs for which
+
+~~~math
+\Sigma_+(s;h)=O(1),
+\qquad
+\Sigma_-(s;h)=O(1)
+~~~
+
+as \(s\downarrow0\), or, at a threshold, the corresponding coupled
+Stieltjes/opposite-endpoint cancellation system holds.
+
+Bounded Stieltjes data do not by themselves imply screw-core regularity.
+
+RPB-56 gives the local counterexample
+
+~~~math
+h(c-r)=\sin(\log(1/r)),
+~~~
+
+which has bounded cumulative mass and bounded Stieltjes transform but fails
+\(H_0^1\).
+
+**Status:** branch-local RPB terminology.
