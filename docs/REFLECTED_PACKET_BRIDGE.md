@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-69 — F-1 BUILD CERTIFICATION IS BLOCKED BEFORE LEAN BY GITHUB ACTIONS RUNNER ALLOCATION FAILURE.}
+\textbf{RPB-70 — ALL BUILD ROUTES AVAILABLE HERE ARE EXHAUSTED BEFORE LEAN EXECUTION; F-1 REMAINS SOURCE-COMPLETE AND BUILD-UNCERTIFIED.}
 }
 ~~~
 
@@ -112,10 +112,10 @@ Lean source failure.
 ## Next cursor
 
 ~~~text
-RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY
+RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT
 ~~~
 
-The next pass should recover a lawful build route that actually executes Lean.
+The next pass should statically audit the carrier source against the exact pinned mathlib v4.34 API while the build infrastructure remains unavailable.
 
 Do not move into the actual Weil multiplier realization until the carrier
 module has either passed a genuine Lean build or produced an exact compiler
@@ -132,4 +132,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_69_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_70_20260929.md.
