@@ -3163,3 +3163,114 @@ subleading Carleman indicator, but is not determined by the compact source
 edge alone.
 
 **Status:** branch-local RPB terminology.
+
+
+## Arithmetic first-activation set
+
+For a nonzero compact screw source \(u\) with essential support
+
+\`\`\`math
+K_u
+=
+\operatorname{ess\,supp}u
+\subset[-c,c],
+\`\`\`
+
+define the **right arithmetic first-activation set**
+
+\`\`\`math
+\mathscr A_+(u)
+=
+\bigcup_{n=p^m\ge2}
+\left(
+\log n+K_u
+\right).
+\`\`\`
+
+On every bounded exterior interval this union is locally finite, because only
+finitely many prime powers have logarithm in the corresponding bounded delay
+range.
+
+For \(x>c\), the prime part of the screw potential satisfies
+
+\`\`\`math
+F_{{\rm pr},u}''(x)
+=
+\sum_n
+\frac{\Lambda(n)}{\sqrt n}
+u(x-\log n)
+\`\`\`
+
+distributionally and locally with only finitely many nonzero summands.
+
+If the maximal constant collar radius is \(a_{\max}\), then
+
+\`\`\`math
+a_{\max}\in\mathscr A_+(u).
+\`\`\`
+
+Otherwise the prime part is locally affine and the non-prime part is analytic
+near \(a_{\max}\), so constancy analytically continues past the alleged maximal
+edge.
+
+**Status:** branch-local RPB terminology.
+
+## Activation-shell theorem
+
+If
+
+\`\`\`math
+a_{\max}\in\mathscr A_+(u),
+\`\`\`
+
+then there exists a prime power \(n=p^m\) and a source point
+\(y\in K_u\) such that
+
+\`\`\`math
+a_{\max}
+=
+\log n+y.
+\`\`\`
+
+Since \(K_u\subset[-c,c]\), the responsible prime power lies in the finite
+**activation shell**
+
+\`\`\`math
+e^{a_{\max}-c}
+\le
+n
+\le
+e^{a_{\max}+c}.
+\`\`\`
+
+This is a necessary localization of first activation.  It does not by itself
+force \(y\) to be a support endpoint, nor does it exclude activation when
+\(K_u\) fills the whole support interval.
+
+**Status:** branch-local RPB terminology.
+
+## Full-support activation no-gain
+
+If the essential support of the screw source is the full interval
+
+\`\`\`math
+K_u=[-c,c],
+\`\`\`
+
+then the arithmetic first-activation condition becomes
+
+\`\`\`math
+a_{\max}\in
+\bigcup_{n=p^m}
+[\log n-c,\log n+c].
+\`\`\`
+
+Near the live neutral regime this union can cover the entire relevant exterior
+region.  The **full-support activation no-gain** is the warning that the
+activation-shell theorem may then impose no useful numerical restriction on
+\(a_{\max}\).
+
+Parity and the zero-mean law preserve/support-symmetrize this condition but do
+not force the activation point to a source endpoint.
+
+**Status:** branch-local RPB terminology.
