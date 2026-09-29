@@ -2823,3 +2823,130 @@ This is a Wiener--Hopf-type factorization problem.  It is strictly stronger
 than inspecting the zero set of the scalar symbol.
 
 **Status:** branch-local RPB terminology.
+
+
+## Half-strip Carleman separation
+
+Let \(u\) be compactly supported and \(F_u=g*u\), where the zeta screw
+function satisfies unconditionally
+
+\`\`\`math
+g(t)
+=
+O\!\left(
+e^{|t|/2-\kappa\sqrt{|t|}}
+\right).
+\`\`\`
+
+If \(F_u\) is constant on \((-a,a)\), subtract that constant and split
+
+\`\`\`math
+R=R_-+R_+,
+\qquad
+\operatorname{supp}R_-\subset(-\infty,-a],
+\qquad
+\operatorname{supp}R_+\subset[a,\infty).
+\`\`\`
+
+The one-sided Fourier--Carleman transforms are analytic in the disjoint
+half-planes
+
+\`\`\`math
+\Im z<-\frac12,
+\qquad
+\Im z>\frac12.
+\`\`\`
+
+This **half-strip Carleman separation** means there is no common strip of
+ordinary bilateral convergence and no common real-line Hardy boundary
+available unconditionally.
+
+**Status:** branch-local RPB terminology.
+
+## Divisor-bearing Carleman continuation
+
+Suzuki's one-sided transform gives
+
+\`\`\`math
+G_+(z)
+=
+\int_0^\infty
+g(t)e^{izt}\,dt
+=
+\frac1{z^2}
+\frac{\xi'}{\xi}
+\!\left(
+\frac12-iz
+\right),
+\qquad
+\Im z>\frac12.
+\`\`\`
+
+For a compact source with transform
+
+\`\`\`math
+V(z)=\int u(y)e^{izy}\,dy,
+\`\`\`
+
+the right exterior-tail transform equals
+
+\`\`\`math
+V(z)G_+(z)
+\`\`\`
+
+minus a finite-interval entire correction and an elementary collar-constant
+term.
+
+Its meromorphic continuation therefore carries poles at the zero divisor of
+
+\`\`\`math
+\xi\!\left(\frac12-iz\right)
+\`\`\`
+
+except where the compact-source factor \(V\) vanishes.
+
+This is the **divisor-bearing Carleman continuation**.
+
+**Status:** branch-local RPB terminology.
+
+## Wiener--Hopf contour obstruction
+
+The **Wiener--Hopf contour obstruction** is the failure of the exterior-tail
+factorization to admit an ordinary one-line Wiener--Hopf formulation:
+
+1. the right and left tail transforms are initially analytic only in disjoint
+   half-planes separated by \(|\Im z|\le1/2\);
+2. meromorphic continuation across that strip crosses the zeta divisor;
+3. zeta spectral survival shows that a nonzero compact source does not cancel
+   \(\gg T\log T\) simple critical-line poles;
+4. hence the continued tail transform has infinitely many poles on the real
+   contour.
+
+The conventional winding-number/index factorization for a nonvanishing
+boundary symbol is therefore not presently available.
+
+**Status:** branch-local RPB terminology.
+
+## Divisor-cleared Carleman numerator
+
+Multiplying a divisor-bearing continuation by
+
+\`\`\`math
+\xi\!\left(\frac12-iz\right)
+\`\`\`
+
+removes the logarithmic-derivative poles and produces a
+**divisor-cleared Carleman numerator** involving
+
+\`\`\`math
+V(z)\,
+\xi'\!\left(\frac12-iz\right)
+\`\`\`
+
+plus the source-dependent correction multiplied by \(\xi\).
+
+This operation is algebraically lawful but does not preserve the original
+Hardy/Carleman growth class automatically, because \(\xi\) is an entire
+function of order one.
+
+**Status:** branch-local RPB terminology.
