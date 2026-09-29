@@ -25,7 +25,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
 
@@ -45,7 +45,7 @@ jobs:
 
       - name: Check current theorem target
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
+        run: lake build WeilDefect.Examples.WeakCriticalFallthrough WeilDefect.Morphology.NeutralFourierCarrier
 
       - name: Reject unfinished trusted declarations
         shell: bash
