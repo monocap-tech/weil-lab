@@ -9,106 +9,112 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-59 — FULL NULL-EXTENSION PROMOTION IS BLOCKED BY TWO CERTIFICATION GAPS, NOT BY THE EXTERIOR/THRESHOLD GEOMETRY.}
+\textbf{RPB-60 — THE STANDARD ANALYTIC-PSEUDODIFFERENTIAL ROUTE DOES NOT CERTIFY INTERIOR ANALYTICITY FOR THE FINITE-DELAY WEIL OPERATOR.}
 }
 ~~~
 
-RPB-57/58 produced the branch-local candidate
+RPB-59 isolated logarithmic-order interior analyticity as the first promotion
+blocker.
+
+RPB-60 shows that the historical RPB-43 proof does not certify it.
+
+The archimedean component is a diagonal logarithmic pseudodifferential
+operator, but each prime translation
 
 ~~~math
-0\ne h\in\ker A_c
-\Longrightarrow
-\widetilde h
-\text{ cannot satisfy the correct strict enlarged null equation for any }a>c.
+(\tau_\ell h)(x)=h(x-\ell)
 ~~~
 
-RPB-59 audits that candidate for canonical Horizon-1 promotion.
-
-The following pieces pass:
-
-~~~text
-ZHU STRICT PRIME CONVENTION:              PASS
-ZHU EXACT GAUSS/DIGAMMA KERNEL:           PASS
-STIELTJES JUMP:                           PASS
-RPB-33 INDEPENDENCE:                      PASS AFTER RETYPING
-PHYSICAL THRESHOLD EXPONENTS:             PASS
-CARLEMAN CHANNEL IDENTIFICATION:          PASS
-ENDPOINT LOG-ENHANCEMENT GIVEN CHANNEL:    PASS
-~~~
-
-Zhu v2 equation (3) verifies the strict endpoint convention
+has kernel
 
 ~~~math
-\log n<2c,
+\delta(x-y-\ell),
 ~~~
 
-and equation (9) gives the exact archimedean kernel split
+singular on the shifted diagonal \(x-y=\ell\).
+
+Therefore prime shifts are translation Fourier-integral operators with
+off-diagonal canonical relation, not ordinary analytic pseudodifferential
+lower-order terms.
+
+The Fourier multiplier
 
 ~~~math
-\frac{
-2e^{-x/2}
-}{
-1-e^{-2x}
-}
+e^{-i\ell\xi}
+~~~
+
+also fails the decaying \(\xi\)-derivative bounds used by the standard
+\(S^0_{1,0}\) pseudodifferential calculus.
+
+Hence the full scalar multiplier
+
+~~~math
+\Psi_c(\xi)
 =
-\frac1x
-+
-\text{analytic}.
+m_\infty(\xi)
+-
+\sum_j2a_j\cos(\ell_j\xi)
 ~~~
 
-These inputs are now pinned as RPB-EXT-A8.
-
-Two load-bearing promotion blockers remain.
-
-### Blocker A — logarithmic-order analytic interior regularity
-
-RPB-57 needs
+cannot be inserted directly into the ordinary analytic-wavefront elliptic
+theorem merely because
 
 ~~~math
-\mathcal P_ch\in C^\omega_{\rm loc}
-\Longrightarrow
-h\in C^\omega_{\rm loc}
+|\Psi_c(\xi)|
+\gtrsim\log|\xi|
 ~~~
 
-for arbitrary Friedrichs zero modes.
+at high frequency.
 
-The standard analytic-wavefront theorem is pinned, but its specialization to
-the actual logarithmic-order multiplier has not yet been independently
-certified at promotion level.
+The correct local problem is an analytic-wavefront **delay-orbit propagation**
+problem:
 
-### Blocker B — local Mellin-conormal completeness
+~~~math
+(x,\xi)\in WF_A(h)
+~~~
 
-RPB-58 identifies the physical Carleman indicial roots correctly, but still
-needs a theorem proving that every arbitrary \(L^2\) solution of the
-inhomogeneous truncated Carleman--Stieltjes equation decomposes completely into
-those indicial channels plus an analytic/Taylor remainder.
+may be coupled to
 
-The classical Carleman Mellin multiplier alone does not supply that
-completeness statement.
+~~~math
+(x\pm\ell_j,\xi)\in WF_A(h).
+~~~
 
-Therefore RPB-59 does **not** modify the stable theorem ledger, proof status,
-RH-facing interface appendix, or H1-P3.1 theorem package.
+This is structurally consistent with the finite-delay obstruction already seen
+in RPB-36/37.
 
-The canonical status remains:
+Consequences:
 
 ~~~text
-AZ-FIN-WEIL-NULL-EXTENSION: OPEN
+RPB-43 FULL-SYMBOL ANALYTIC-ELLIPTIC SHORTCUT:
+    WITHDRAWN
+
+INTERIOR ANALYTICITY OF ARBITRARY FRIEDRICHS ZERO MODES:
+    OPEN
+
+RPB-57 FULL NONTHRESHOLD FRIEDRICHS EXCLUSION:
+    CONDITIONAL / UNPROMOTED
+
+RPB-58 FULL THRESHOLD FRIEDRICHS EXCLUSION:
+    CONDITIONAL / UNPROMOTED
+
+AZ-FIN-WEIL-NULL-EXTENSION:
+    OPEN
 ~~~
 
-while the RPB-57/58 all-support exclusion remains a strong branch-local
-candidate.
+The external source pin RPB-EXT-A1 itself remains valid for ordinary analytic
+pseudodifferential operators; only its earlier specialization to the full
+finite-delay operator is withdrawn.
 
 ## Next cursor
 
 ~~~text
-RPB-60 / LOG-ORDER INTERIOR ANALYTICITY CERTIFICATION
+RPB-61 / ANALYTIC-WAVEFRONT DELAY-ORBIT PROPAGATION
 ~~~
 
-The next pass should isolate Blocker A and either prove or source-pin analytic
-hypoellipticity for the actual compact-window logarithmic-order scalar
-multiplier, with hypotheses broad enough for arbitrary Friedrichs zero modes.
-
-Do not use the historical RPB-33 screw-core bridge.
+The next pass should derive the correct singularity-propagation relation for
+the logarithmic archimedean operator coupled to finite translations and test
+whether compact support/end-point zero regions forbid a closed or infinite
+singular delay orbit.
 
 ## Governance
 
@@ -121,4 +127,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_59_20260929.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_60_20260929.md.
