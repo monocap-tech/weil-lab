@@ -952,9 +952,9 @@ forces it to vanish identically, contradicting the nonzero WD-T38 mode.
 Hence
 
 ~~~math
-oxed{
-	exttt{AZ-FIN-WEIL-NULL-EXTENSION}
-	ext{ is discharged negatively under the WD-T38 hypotheses.}
+\boxed{
+\texttt{AZ-FIN-WEIL-NULL-EXTENSION}
+\text{ is discharged negatively under the WD-T38 hypotheses.}
 }
 ~~~
 
