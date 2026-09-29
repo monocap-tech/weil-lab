@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-75 — THE EXACT FROZEN F-1 HANDOFF WAS ATTEMPTED AND AGAIN BLOCKED BEFORE LEAN EXECUTION; THE GATE IS UNCHANGED.}
+\textbf{RPB-76 — THE F-1 BUILD GATE IS UNCHANGED; THE EXACT FROZEN HANDOFF STILL CANNOT REACH LEAN EXECUTION.}
 }
 ~~~
 
@@ -27,22 +27,13 @@ Canonical handoff:
 scripts/check_neutral_fourier_carrier.sh
 ~~~
 
-RPB-75 tested that exact frozen handoff from a fresh temporary branch based on
-the current RPB-74 research head.
-
-Draft PR #4 targeted main and changed only the validation workflow to call:
-
-~~~text
-bash scripts/check_neutral_fourier_carrier.sh
-~~~
-
-GitHub Actions run:
+RPB-76 reran the exact frozen-handoff validation job from run:
 
 ~~~text
 36645302165
 ~~~
 
-failed before runner allocation:
+Attempt 2 again failed before runner allocation:
 
 ~~~text
 runner_id:   0
@@ -51,14 +42,9 @@ steps:       []
 conclusion:  failure
 ~~~
 
-Thus the exact frozen handoff did not execute.
+No checkout, handoff script, Lake, or Lean process ran.
 
-The local environment was also rechecked and still has no lean, lake, or elan
-binary.
-
-PR #4 was closed without merge.
-
-The research branch contains no validation-only workflow change.
+No source change is justified.
 
 Current formalization state:
 
@@ -78,13 +64,13 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 The next pass should recheck only for newly available Lean execution
 infrastructure.
 
-If no runner is available, record the unchanged gate and halt.
+If runner allocation is still unavailable, record the unchanged gate and halt.
 
 Do not reopen static audits and do not begin F-2.
 
@@ -99,4 +85,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_75_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_76_20260929.md.
