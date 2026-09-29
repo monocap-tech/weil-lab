@@ -9,58 +9,77 @@
 
 \`\`\`math
 \boxed{
-\textbf{RPB-48 — THE THRESHOLD BOUNDARY MATRIX IS THE ENDPOINT MELLIN TRACE OF THE BACKGROUND RESOLVENT; BIRMAN--SCHWINGER GRAM DATA DO NOT DETERMINE IT.}
+\textbf{RPB-49 — THE LOGARITHMIC ENDPOINT PRINCIPAL SYMBOL KILLS EVERY THRESHOLD MELLIN AMPLITUDE; NO NONZERO SCREW-CORE NEUTRAL MODE ADMITS A STRICT NULL EXTENSION.}
 }
 \`\`\`
 
-Choose selected basis vectors \(e_j\), forcing columns
-\(g_j=\Phi_c^*e_j\), and resolvent columns
-\(h_j=A_{B,c}^{-1}g_j\).  Then every admissible threshold boundary row is
+The one-dimensional logarithmic endpoint normal form is
 
 \`\`\`math
-(\mathbf B_c)_{\ell j}
+\mathcal N_{\log}H(t)
 =
-\mathfrak a_{\beta_\ell}(Dh_j)
-=
-\mathfrak a_{\beta_\ell}
-\left(
-D A_{B,c}^{-1}\Phi_c^*e_j
-\right).
+2tH(t)
+-
+\int^t H(w)\,dw,
+\qquad
+t=\log(1/s),
 \`\`\`
 
-Thus the finite boundary matrix is exact once the endpoint Mellin symbol of
-the background resolvent is known.
+with generic homogeneous boundary scale \(H(t)\sim t^{-1/2}\).  Screw-core
+regularity \(h\in H_0^1\) lies strictly below every finite inverse-logarithmic
+boundary layer.
 
-The Birman--Schwinger matrix stores only
+More decisively, any noninteger conormal physical component
 
 \`\`\`math
-(\mathsf K_c)_{kj}
-=
-\langle h_j,g_k\rangle,
+h(c-s)\sim b\,s^\lambda
 \`\`\`
 
-and does not determine these endpoint conormal residues.  An abstract
-finite-rank perturbation model shows that identical compressed Gram data can
-coexist with different boundary rows.
+produces under the archimedean logarithmic principal part an unavoidable
 
-Also, full rank of the **allowed amplitude** matrix is not an exclusion
-criterion: a nonzero persistent threshold mode must carry a nonzero admissible
-amplitude.  The actual persistence obstruction is the complementary boundary
-defect consisting of forbidden Mellin channels plus the analytic exterior
-remainder.
+\`\`\`math
+b\,s^\lambda\log(1/s)
+\`\`\`
+
+term.  At the endpoint, the active prime translations, pole/evaluation row,
+and smoother archimedean remainder cannot produce the same extra logarithm at
+that noninteger exponent.
+
+A nonzero RPB-46 threshold Mellin amplitude of \(u=Dh\) gives exactly such a
+noninteger conormal component of \(h\).  Hence every lawful threshold amplitude
+must vanish.  RPB-47, however, proved that every nonzero threshold-persistent
+source must have a nonzero full threshold amplitude vector.
+
+Therefore the threshold persistence branch is empty.  Combined with RPB-45's
+nonthreshold exclusion,
+
+\`\`\`math
+0\ne u\in\ker G_c
+\Longrightarrow
+G_aJ_{c,a}u\ne0
+\qquad
+(a>c)
+\`\`\`
+
+on the screw-visible/core neutral subspace.
+
+This remains branch-local experimental standing.  The effect on the full
+Friedrichs nullspace and the canonical null-extension interface still requires
+the multiplicity/core-lift audit.
 
 ## Next cursor
 
 ```text
-RPB-49 / BACKGROUND RESOLVENT ENDPOINT PARAMETRIX
+RPB-50 / NULL-EXTENSION DISCHARGE AND NEUTRAL-PLATEAU COLLAPSE AUDIT
 ```
 
-The next pass should attack the missing endpoint symbol of the actual
-background resolvent: put \(A_{B,c}\) into endpoint coordinates, separate the
-universal logarithmic-Laplacian singular kernel from bounded prime/fixed-rank
-terms, construct the local Mellin/Wiener--Hopf parametrix, and determine the
-coefficient map from selected analytic forcing to both admissible and forbidden
-boundary channels.
+The next pass should audit the consequences of the core strict-null-extension
+exclusion against the earlier neutral branch: determine whether one nonzero
+core leakage direction collapses every positive-length neutral plateau, map the
+result through the neutral-resolvent/screw-visible identifications, decide the
+exact status of \`AZ-FIN-WEIL-NULL-EXTENSION\`, and isolate any remaining
+Friedrichs multiplicity or selected-custody caveat without promoting beyond the
+proved scope.
 
 ## Governance
 
