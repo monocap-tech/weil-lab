@@ -94,8 +94,10 @@ theorem fourier_temperedMode_eq
     (d : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
     𝓕 d.temperedMode =
       ((𝓕 d.l2Mode : RealComplexL2) : RealComplexTempered) := by
-  simpa [temperedMode] using
-    MeasureTheory.Lp.fourier_toTemperedDistribution_eq d.l2Mode
+  change
+    𝓕 (d.l2Mode : RealComplexTempered) =
+      ((𝓕 d.l2Mode : RealComplexL2) : RealComplexTempered)
+  exact MeasureTheory.Lp.fourier_toTemperedDistribution_eq d.l2Mode
 
 end NeutralPhysicalFourierCarrier
 
