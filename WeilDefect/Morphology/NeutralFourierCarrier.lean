@@ -8,7 +8,7 @@ open MeasureTheory Distribution
 open scoped FourierTransform Topology
 
 /-- Concrete complex L2 carrier on the physical real line used by WD-T40. -/
-abbrev RealComplexL2 := MeasureTheory.Lp (α := ℝ) ℂ 2
+abbrev RealComplexL2 := MeasureTheory.Lp (α := ℝ) ℂ 2 volume
 
 /-- Concrete tempered-distribution carrier on the physical real line. -/
 abbrev RealComplexTempered := TemperedDistribution ℝ ℂ
@@ -122,7 +122,10 @@ variable {c : ℝ}
 theorem vanishes_on_old_interval
     (d : NeutralStrictResidualData c) :
     Distribution.IsVanishingOn d.residual (Set.Ioo (-c) c) := by
-  apply Distribution.IsVanishingOn.mono _ d.residual_vanishes
+  apply Distribution.IsVanishingOn.mono
+    (s₁ := Set.Ioo (-d.a) d.a)
+    (s₂ := Set.Ioo (-c) c)
+    ?_ d.residual_vanishes
   intro x hx
   exact ⟨lt_trans (neg_lt_neg d.strict) hx.1, lt_trans hx.2 d.strict⟩
 
