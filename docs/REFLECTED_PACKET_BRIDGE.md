@@ -7,79 +7,97 @@
 
 ## Current standing
 
-\`\`\`math
-\boxed{
-\textbf{RPB-49 — THE LOGARITHMIC ENDPOINT PRINCIPAL SYMBOL KILLS EVERY THRESHOLD MELLIN AMPLITUDE; NO NONZERO SCREW-CORE NEUTRAL MODE ADMITS A STRICT NULL EXTENSION.}
+```math
+oxed{
+	extbf{RPB-50 — ONE NONZERO SCREW-CORE NEUTRAL DIRECTION COLLAPSES EVERY POSITIVE-LENGTH NEUTRAL PLATEAU; THE CORE-RESTRICTED NULL-EXTENSION INTERFACE IS DISCHARGED NEGATIVELY.}
 }
-\`\`\`
+```
 
-The one-dimensional logarithmic endpoint normal form is
+RPB-49 proved that every nonzero screw-core endpoint null direction leaks under
+every strict support enlargement:
 
-\`\`\`math
-\mathcal N_{\log}H(t)
+```math
+0
+e uinker G_c
+Longrightarrow
+G_aJ_{c,a}u
+e0
+qquad
+(a>c).
+```
+
+RPB-34 already showed that any such leakage produces a strict negative test
+direction by the collar (2	imes2) argument.  Therefore
+
+```math
+oxed{
+G_csucceq0,
+quad
+ker G_c
+e0
+Longrightarrow
+G_a
+otsucceq0
+qquad
+(a>c).
+}
+```
+
+So an actual neutral edge cannot begin a positive-length nonnegative/neutral
+right plateau.
+
+Through the RPB-30 neutral-resolvent isomorphism and the RPB-32/33 screw-core
+identification, the selected unit-gain eigenspace contains the nonzero core
+subspace
+
+```math
+E_*^{m core}
 =
-2tH(t)
--
-\int^t H(w)\,dw,
-\qquad
-t=\log(1/s),
-\`\`\`
+J_*^{-1}
+left(
+D^{-1}(ker G_{c_*})
+ight)
 
-with generic homogeneous boundary scale \(H(t)\sim t^{-1/2}\).  Screw-core
-regularity \(h\in H_0^1\) lies strictly below every finite inverse-logarithmic
-boundary layer.
+e{0}.
+```
 
-More decisively, any noninteger conormal physical component
+Every nonzero physical representative of this subspace fails strict
+null-extension.  Thus the core-restricted form of
+`AZ-FIN-WEIL-NULL-EXTENSION` is discharged negatively.
 
-\`\`\`math
-h(c-s)\sim b\,s^\lambda
-\`\`\`
+The full canonical mode-wise interface is not promoted closed here because the
+remaining multiplicity defect
 
-produces under the archimedean logarithmic principal part an unavoidable
+```math
+delta_{m core}(c)
+=
+dimker A_c-dimker G_c
+```
 
-\`\`\`math
-b\,s^\lambda\log(1/s)
-\`\`\`
-
-term.  At the endpoint, the active prime translations, pole/evaluation row,
-and smoother archimedean remainder cannot produce the same extra logarithm at
-that noninteger exponent.
-
-A nonzero RPB-46 threshold Mellin amplitude of \(u=Dh\) gives exactly such a
-noninteger conormal component of \(h\).  Hence every lawful threshold amplitude
-must vanish.  RPB-47, however, proved that every nonzero threshold-persistent
-source must have a nonzero full threshold amplitude vector.
-
-Therefore the threshold persistence branch is empty.  Combined with RPB-45's
-nonthreshold exclusion,
-
-\`\`\`math
-0\ne u\in\ker G_c
-\Longrightarrow
-G_aJ_{c,a}u\ne0
-\qquad
-(a>c)
-\`\`\`
-
-on the screw-visible/core neutral subspace.
-
-This remains branch-local experimental standing.  The effect on the full
-Friedrichs nullspace and the canonical null-extension interface still requires
-the multiplicity/core-lift audit.
+has not yet been proved to vanish.  Noncore Friedrichs zero modes, if they
+exist, could still pose a mode-wise null-extension question; they cannot,
+however, restore a nonnegative plateau because the already-existing core mode
+forces right-side negativity.
 
 ## Next cursor
 
 ```text
-RPB-50 / NULL-EXTENSION DISCHARGE AND NEUTRAL-PLATEAU COLLAPSE AUDIT
+RPB-51 / ZERO-EIGENSPACE MULTIPLICITY AND CORE-LIFT AUDIT
 ```
 
-The next pass should audit the consequences of the core strict-null-extension
-exclusion against the earlier neutral branch: determine whether one nonzero
-core leakage direction collapses every positive-length neutral plateau, map the
-result through the neutral-resolvent/screw-visible identifications, decide the
-exact status of \`AZ-FIN-WEIL-NULL-EXTENSION\`, and isolate any remaining
-Friedrichs multiplicity or selected-custody caveat without promoting beyond the
-proved scope.
+The next pass should test
+
+```math
+dimker A_c
+stackrel{?}{=}
+dimker G_c
+```
+
+at the actual neutral edge using Suzuki's generalized eigenvalue equivalence
+with explicit multiplicity bookkeeping.  Equality would promote the
+core-restricted negative null-extension result to the entire Friedrichs zero
+eigenspace; failure would isolate the noncore zero-mode quotient as the final
+irreducible residue.
 
 ## Governance
 
@@ -89,4 +107,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in `notes/REFLECTED_PACKET_BRIDGE_0_20260928.md` through `notes/REFLECTED_PACKET_BRIDGE_34_20260928.md`.
+The full pass-by-pass record is stored in `notes/REFLECTED_PACKET_BRIDGE_0_20260928.md` through `notes/REFLECTED_PACKET_BRIDGE_50_20260928.md`.
