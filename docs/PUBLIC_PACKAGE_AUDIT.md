@@ -488,7 +488,7 @@ WD-T40 formal state.
 ### 13.3 Next cursor
 
 ~~~text
-RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY
+RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT
 ~~~
 
 
@@ -527,7 +527,7 @@ WD-T40 remains LEAN-BLOCKED.
 The next cursor is:
 
 ~~~text
-RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY
+RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT
 ~~~
 
 **Result:** PASS as a custody/status update.
@@ -558,5 +558,33 @@ Both temporary validation PRs were closed without merge. The research branch con
 Next cursor:
 
 ~~~text
-RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY
+RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT
 ~~~
+
+
+---
+
+## 16. Post-RPB-70 infrastructure-recovery delta
+
+RPB-70 exhausted the build routes available in the current execution environment.
+
+A third hosted validation used ubuntu-slim and again failed before runner allocation with runner_id 0 and zero steps. The local execution environment has no Lean/Lake toolchain and no outbound DNS, so it cannot install one.
+
+A deterministic carrier build check is present at scripts/check_neutral_fourier_carrier.sh.
+
+Current status:
+
+~~~text
+F-1 source: IMPLEMENTED
+F-1 build: INFRASTRUCTURE-BLOCKED
+WD-T40: LEAN-BLOCKED
+F-2: NOT STARTED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT
+~~~
+
+**Result:** PASS as a custody/status update.
