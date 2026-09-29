@@ -557,11 +557,11 @@ Horizon 1 is complete.
 
 ```math
 \boxed{
-\texttt{HORIZON 1 COMPLETE / RPB-70 WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY}
+\texttt{HORIZON 1 COMPLETE / RPB-71 WD-T40 CARRIER STATIC ELABORATION AUDIT}
 }
 ```
 
-Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-70 / WD-T40 carrier build infrastructure recovery.
+Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-71 / WD-T40 carrier static elaboration audit.
 
 ---
 
