@@ -229,7 +229,7 @@ The post-Horizon RPB promotion audit has added WD-T40. The next research cursor 
 
 ```math
 \boxed{
-\texttt{RPB-69 / WD-T40 PHYSICAL FOURIER CARRIER BUILD CERTIFICATION}
+\texttt{RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY}
 }
 ```
 
