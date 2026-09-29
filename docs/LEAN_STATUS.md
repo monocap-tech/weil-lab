@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-71 / WD-T40 carrier static elaboration audit.
+- **Next project cursor:** RPB-72 / WD-T40 carrier typeclass synthesis audit.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -33,7 +33,7 @@ Fourier/distribution data consumed by the Gaussian support-gap proof.
 Exact blocking stack:
 
 ~~~text
-F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED / STATIC API AUDIT NEXT
+F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / STATIC API PASS / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED / TYPECLASS AUDIT NEXT
 F-2  actual compact-window Weil multiplier realization
 F-3  support-gap Gaussian pairing theorem
 F-4  Gaussian coercivity -> exponential Fourier weight
@@ -4507,3 +4507,27 @@ A deterministic repository check now exists at scripts/check_neutral_fourier_car
 F-1 remains source-implemented and build-uncertified. F-2 remains unopened.
 
 Next cursor: RPB-71 / WD-T40 carrier static elaboration audit.
+
+
+---
+
+## RPB-71 static API audit delta
+
+The F-1 carrier source was checked declaration-by-declaration against pinned Lean/mathlib v4.34.0.
+
+Static result:
+
+~~~text
+Lp / MemLp.toLp signatures: PASS
+Lp -> tempered-distribution coercion: PASS
+L2 Fourier instance: PASS
+tempered Fourier instance: PASS
+fourier_toTemperedDistribution_eq: PASS
+Distribution.IsVanishingOn / mono direction: PASS
+~~~
+
+Four elaboration-hardening edits are now present: explicit volume, explicit residual set arguments, explicit Fourier coercions, and a direct unfold/exact adapter proof.
+
+No declaration-shape mismatch remains. Build certification is still infrastructure-blocked, so F-1 is not Lean-certified and F-2 remains unopened.
+
+Next cursor: RPB-72 / WD-T40 carrier typeclass synthesis audit.
