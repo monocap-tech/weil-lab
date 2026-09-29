@@ -488,5 +488,46 @@ WD-T40 formal state.
 ### 13.3 Next cursor
 
 ~~~text
-RPB-68 / WD-T40 PHYSICAL FOURIER CARRIER LIFT
+RPB-69 / WD-T40 PHYSICAL FOURIER CARRIER BUILD CERTIFICATION
 ~~~
+
+
+---
+
+## 14. Post-RPB-68 carrier-lift delta
+
+RPB-68 implemented the first WD-T40 formalization bridge in Lean source.
+
+New module:
+
+~~~text
+WeilDefect/Morphology/NeutralFourierCarrier.lean
+~~~
+
+Current F-1 state:
+
+~~~text
+SOURCE IMPLEMENTED
+BUILD UNVERIFIED
+~~~
+
+The source now contains the concrete real-line L2 representative, compact
+support, adapter to the WD-T38 abstract interface, tempered-distribution lift,
+Fourier compatibility, and semantic strict residual vanishing.
+
+A temporary validation PR attempted to compile the new module, but the GitHub
+Actions run failed without exposing steps or compiler logs. The validation
+result is therefore inconclusive rather than a Lean source failure.
+
+The temporary PR was closed without merge and no CI-only workflow change
+entered the research branch.
+
+WD-T40 remains LEAN-BLOCKED.
+
+The next cursor is:
+
+~~~text
+RPB-69 / WD-T40 PHYSICAL FOURIER CARRIER BUILD CERTIFICATION
+~~~
+
+**Result:** PASS as a custody/status update.
