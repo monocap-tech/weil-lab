@@ -2950,3 +2950,101 @@ Hardy/Carleman growth class automatically, because \(\xi\) is an entire
 function of order one.
 
 **Status:** branch-local RPB terminology.
+
+
+## Finite-type tail extinction
+
+Let \(R_+\not\equiv0\) be a locally integrable right tail of exponential order,
+supported in a half-line \([a,\infty)\), with Laplace transform
+
+\`\`\`math
+L_+(Y)
+=
+\int_a^\infty R_+(x)e^{-Yx}\,dx.
+\`\`\`
+
+The standard Laplace support theorem says that a nonzero tail with finite
+left support edge cannot have
+
+\`\`\`math
+L_+(Y)
+=
+O_A(e^{-AY})
+\`\`\`
+
+for every \(A>0\).
+
+The **finite-type tail extinction** principle in RPB is the contrapositive:
+if a proposed normalization forces the tail Laplace transform to decay faster
+than every exponential, then the tail must vanish identically.
+
+**Status:** branch-local RPB terminology.
+
+## Maximal-type Carleman numerator
+
+For the divisor-cleared right-tail numerator
+
+\`\`\`math
+N_+(z)
+=
+z^2
+\xi\!\left(\frac12-iz\right)
+\mathcal C_+^{\rm mer}(z),
+\`\`\`
+
+the **maximal-type Carleman numerator** property is
+
+\`\`\`math
+\operatorname{ord}(N_+)=1,
+\qquad
+\operatorname{type}_1(N_+)=\infty,
+\`\`\`
+
+provided the corresponding exterior tail is nonzero.
+
+Indeed, finite exponential type would force
+\(\mathcal C_+(iY)\) to cancel the
+\(\exp(\frac12Y\log Y+O(Y))\) growth of
+\(\xi(\frac12+Y)\), hence to decay faster than every exponential, contradicting
+finite-type tail extinction.
+
+The same definition applies to \(N_-\).
+
+**Status:** branch-local RPB terminology.
+
+## Cartwright exclusion for divisor-cleared tails
+
+The **Cartwright exclusion for divisor-cleared tails** is the consequence that
+a nonzero maximal-type Carleman numerator \(N_\pm\) cannot belong to the
+Cartwright class, since Cartwright entire functions have finite exponential
+type.
+
+Therefore Jensen/Cartwright zero-density arguments of the finite-type species
+cannot be applied directly to \(N_\pm\).
+
+**Status:** branch-local RPB terminology.
+
+## RH-conditional de Branges caution
+
+The natural xi-based function
+
+\`\`\`math
+E_\xi(z)
+=
+\xi\!\left(\frac12-iz\right)
++
+\xi'\!\left(\frac12-iz\right)
+\`\`\`
+
+is known to belong to the Hermite--Biehler class under the Riemann hypothesis
+in the Lagarias/Suzuki framework.
+
+The **RH-conditional de Branges caution** is that this Hermite--Biehler
+property cannot be imported as an unconditional normalization in an RH-facing
+closure argument.
+
+Dividing the RPB Carleman numerator by
+\(\xi(\frac12-iz)\) is not a substitute: it restores the uncancelled zeta
+poles and is meromorphic rather than entire.
+
+**Status:** branch-local RPB terminology.
