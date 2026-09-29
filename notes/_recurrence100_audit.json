@@ -1,0 +1,179 @@
+{
+  "format": "GERM100-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-100",
+  "standing": "UNRATIFIED",
+  "entry_commit": "2c28b18ea653fea5f8501f869a6ede18996bc3c2",
+  "verifier_path": "tools/sz_post_v_omega11_eleventh_transfer_audit.py",
+  "verifier_sha256": "5051313d43e18a288bf35a866d27a7f55253ffb559c051d037640a105c251d2e",
+  "verifier_git_blob": "fc6d3fab877dbc536641eeb31a1cadd6f97ae88c",
+  "stdout_sha256": "82ac1f1d884aaa4a6255a0e36570d4b5972b7edff43ad135a68b14558a74efc5",
+  "compact_complete_audit_sha256": "ae50042dc59e1d330093512a9690874d5ccbfeffcd2991776d4db1f898486305",
+  "execution_exit_code": 0,
+  "parent_GERM99_entry_replay_exit_code": 0,
+  "parent_GERM99_stdout_sha256": "e1ecd2bbb2d61c417441e49536e1b298aa82c29cec59c916abd26ab484727b7c",
+  "parent_GERM99_recorded_stdout_match": true,
+  "inherited_archive_manifest_entries_checked": 138,
+  "dependency_sha256": {
+    "tools/sz_post_v_delta13_thirteenth_transfer_audit.py": "0fe14d514e97559904d267eefdc6e6a3cded44a187235d62b6687f0fab93f9e6"
+  },
+  "new_exclusion_scope": "0<a<=9omega11, a=e-e99",
+  "formula_scope": "0<a<=c11, four new eleventh maps",
+  "experimental_endpoint": "log(2^13356636944*5^2261191167/3^11739684839)",
+  "endpoint_decimal": [
+    "1.7112125161586125548893033711742891874409",
+    "1.7112125161586125548893033711742891874410"
+  ],
+  "increment": "9omega11",
+  "increment_decimal": [
+    "0.0000000001880403422911397903378971726765",
+    "0.0000000001880403422911397903378971726766"
+  ],
+  "eleventh_word_dictionary": {
+    "A0": [
+      "A1",
+      "B0",
+      "B0",
+      "B0"
+    ],
+    "A1": [
+      "A1",
+      "B0",
+      "B0",
+      "B1"
+    ],
+    "B0": [
+      "A1",
+      "B0",
+      "B0",
+      "B0",
+      "B1"
+    ],
+    "B1": [
+      "A1",
+      "B0",
+      "B0",
+      "B1",
+      "B1"
+    ]
+  },
+  "charts": {
+    "low": [
+      [
+        31,
+        38
+      ],
+      [
+        -46,
+        -56
+      ]
+    ],
+    "high": [
+      [
+        1,
+        46
+      ],
+      [
+        -3,
+        -62
+      ]
+    ]
+  },
+  "chart_determinants": [
+    12,
+    76
+  ],
+  "common_forward_backward_factor": "6/5",
+  "distinct_temporal_words": 20,
+  "parameter_chart_tests": 22,
+  "regimes": {
+    "low": "0<a<=8omega11; s=0..8, N=10,11",
+    "high": "8omega11<=a<=9omega11; s=8,9, N=10,11"
+  },
+  "minimum_cone_bounds": {
+    "low": {
+      "forward": "7.9967366297",
+      "backward": "4.0253690314"
+    },
+    "high": {
+      "forward": "1.2371167790",
+      "backward": "1.2599016484"
+    }
+  },
+  "original_step_counts": [
+    567294336,
+    622607947
+  ],
+  "exclusion_endpoint_words": [
+    "B0 A1^9",
+    "B0 A0 A1^9"
+  ],
+  "formula_endpoint_maps": [
+    "A1",
+    "B1"
+  ],
+  "remaining_new_eleventh_formula_width": [
+    "0.0000000000311951533784503959675265063471",
+    "0.0000000000311951533784503959675265063472"
+  ],
+  "remaining_tenth_formula_width": [
+    "0.0000000004696661447176307685783738643946",
+    "0.0000000004696661447176307685783738643947"
+  ],
+  "remaining_three_layer_width": [
+    "0.0000314774087304513182592636295181005006",
+    "0.0000314774087304513182592636295181005007"
+  ],
+  "next_word": [
+    "A1",
+    "A1",
+    "A1",
+    "A1",
+    "A1",
+    "A1",
+    "A1",
+    "A1",
+    "A1",
+    "A1",
+    "B0"
+  ],
+  "next_matrix": "B0 A1^10, GERM-100-local eleventh maps",
+  "next_domain": "a=9omega11+b; 0<y<b<rho12",
+  "next_trace": [
+    [
+      [
+        "-0.0923647465",
+        "-0.0923647464"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "-3.9914687537",
+        "-3.9914687536"
+      ]
+    ]
+  ],
+  "next_source_guard": "CHECKED AGAINST EVERY ELEVENTH CONTRACT",
+  "next_status": "ELLIPTIC TEN-INITIAL-A1 ELEVEN-STEP TWELFTH RETURN",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "thirteenth_or_deeper_induction_used": false,
+  "new_retained_coordinates": 0,
+  "full_lower_symbolic_suites_rerun": false,
+  "complete_GERM60_reduction_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Full stdout and sorted compact serialization included in the certificate bundle.",
+  "clean_bundle_policy": "Source files only; generated Python bytecode caches and inherited stale manifests are excluded.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true,
+  "clean_bundle_manifest_entries_checked": 114
+}
