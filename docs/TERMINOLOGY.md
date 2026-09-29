@@ -3588,3 +3588,118 @@ For a parity eigenmode this becomes a weighted reflected endpoint-germ
 matching condition.
 
 **Status:** branch-local RPB terminology.
+
+
+## Paired endpoint collision resonance
+
+A **paired endpoint collision resonance** occurs when a right-endpoint exit
+
+\`\`\`math
+c+\log n
+\`\`\`
+
+and a left-endpoint entry
+
+\`\`\`math
+\log m-c
+\`\`\`
+
+coincide.  Equivalently,
+
+\`\`\`math
+\boxed{
+e^{2c}
+=
+\frac{m}{n}
+}
+\`\`\`
+
+for prime powers \(m,n\).
+
+At such a collision, constancy of the screw potential across the event forces
+the two one-sided endpoint source germs to match after multiplication by the
+corresponding von Mangoldt weights.
+
+**Status:** branch-local RPB terminology.
+
+## Endpoint weight-matching obstruction
+
+Let
+
+\`\`\`math
+a_n
+=
+\frac{\Lambda(n)}{\sqrt n}.
+\`\`\`
+
+At a paired endpoint collision, parity and analyticity imply the necessary
+condition
+
+\`\`\`math
+\boxed{
+a_n=a_m.
+}
+\`\`\`
+
+For prime powers
+
+\`\`\`math
+n=p^r,
+\qquad
+m=q^s,
+\`\`\`
+
+this equality is impossible unless \(m=n\).
+
+If \(p=q\), equality forces \(r=s\).
+
+If \(p\ne q\), it would imply
+
+\`\`\`math
+\frac{\log p}{\log q}
+=
+\frac{p^{r/2}}{q^{s/2}},
+\`\`\`
+
+making \(\log p/\log q\) algebraic.  The quotient is irrational by unique
+factorization, hence Gel'fond--Schneider makes this impossible.
+
+Thus no positive-support paired endpoint collision can satisfy the required
+weight match.
+
+**Status:** branch-local RPB terminology.
+
+## Prime-endpoint collision exclusion
+
+For every \(c>0\), a constant screw collar cannot cross a prime-power endpoint
+activation at \(x>c\), whether the activation is unpaired or paired.
+
+- unpaired events are excluded by endpoint analytic-singularity persistence;
+- paired events are excluded by the endpoint weight-matching obstruction.
+
+Consequently, conditional on the existence of any strict collar past \(c\),
+its maximal radius is the first prime-endpoint activation strictly larger than
+\(c\):
+
+\`\`\`math
+a_{\max}
+=
+\min\left\{
+c+\log2,\,
+\log n_+(c)-c
+\right\},
+\`\`\`
+
+where
+
+\`\`\`math
+n_+(c)
+=
+\min\{p^m:\log(p^m)>2c\}.
+\`\`\`
+
+This theorem does not settle whether the initial crossing of the support
+boundary \(x=c\) occurs; that base-endpoint problem also contains the
+non-prime screw singularity at separation \(t=0\).
+
+**Status:** branch-local RPB terminology.
