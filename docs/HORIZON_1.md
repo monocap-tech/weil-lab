@@ -12,19 +12,17 @@ Horizon 1 ends **before** the actual-zeta exclusion problem.
 
 ## Stop boundary
 
-The two primary interfaces out of Horizon 1 are `AZ-NEXTJET-LOC` and `AZ-FIN-WEIL-NULL-EXTENSION`. A stronger special-packet refinement, `C-ACTUAL-KPH-FLOOR`, is tracked alongside them:
+The original Horizon-1 package exposed two primary interfaces: `AZ-NEXTJET-LOC` and `AZ-FIN-WEIL-NULL-EXTENSION`, with `C-ACTUAL-KPH-FLOOR` as a stronger special-packet refinement.
 
-```math
-\boxed{
-\texttt{AZ-NEXTJET-LOC},
-\quad
-\texttt{C-ACTUAL-KPH-FLOOR},
-\quad
-\texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
-}
+Post-Horizon theorem WD-T40 now discharges the neutral interface negatively under the WD-T38 carrier hypotheses. The current boundary state is:
+
+```text
+AZ-NEXTJET-LOC                 OPEN
+C-ACTUAL-KPH-FLOOR             OPEN / stronger special-packet refinement
+AZ-FIN-WEIL-NULL-EXTENSION     DISCHARGED NEGATIVELY BY WD-T40
 ```
 
-Horizon 1 may complete while both primary interfaces and the stronger packetwise refinement remain open.
+Horizon 1 remains complete; WD-T40 is an additive post-audit extension of its stable theorem surface.
 
 ## Phase map
 
@@ -360,7 +358,7 @@ Therefore **H1-P3 is COMPLETE**.
 
 The stable theorem inventory is now canonical in [Theorem Ledger](THEOREM_LEDGER.md), with dependency/source custody in [Dependency Audit](DEPENDENCY_AUDIT.md).
 
-Historical labels remain immutable aliases. Stable public IDs run from WD-T01 through WD-T39, with separate example and scope namespaces.
+Historical labels remain immutable aliases. Stable public IDs now run from WD-T01 through WD-T40, with WD-T40 added by the post-Horizon RPB promotion audit and with separate example and scope namespaces.
 
 Mathematical standing is now separated from verification status: an internal proof is not described as independently certified until a later audit explicitly promotes it.
 
@@ -378,7 +376,7 @@ The audit applied several narrowing/clarification patches but found no internal 
 
 ### P4.3 disposition
 
-WD-T37 through WD-T39 have completed the Horizon-1 composite morphology audit; see [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
+WD-T37 through WD-T39 completed the Horizon-1 composite morphology audit; see [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md). WD-T40 is a post-Horizon internal theorem with P4-AUDIT-PASSED status from RPB-65.
 
 The audited packages preserve carrier identification, multiplier uniformity, strict-right prime thresholds, full-coordinate escape requirements, and weak/strong convergence distinctions.
 
