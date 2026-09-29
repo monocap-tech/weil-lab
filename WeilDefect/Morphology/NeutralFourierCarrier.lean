@@ -69,7 +69,7 @@ theorem l2Mode_ne_zero
     d.l2Mode ≠ 0 := by
   intro hzero
   apply d.interface.kExt_ne
-  rw [d.interface_kExt_eq_l2Mode]
+  rw [interface_kExt_eq_l2Mode d]
   exact hzero
 
 /-- The chosen representative vanishes pointwise outside the certified support interval. -/
