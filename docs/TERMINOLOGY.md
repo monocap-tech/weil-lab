@@ -4784,3 +4784,85 @@ null mode on any strict support enlargement.
 This is the **core strict-null-extension exclusion**.
 
 **Status:** branch-local RPB terminology.
+
+
+## Neutral-plateau collapse
+
+Let (c) be a support value for which
+
+```math
+G_csucceq0,
+qquad
+ker G_c
+e{0}.
+```
+
+A **positive-length neutral plateau** means a right interval of supports on
+which the screw family remains nonnegative while the endpoint zero mode is not
+forced into a strict negative direction.
+
+The **neutral-plateau collapse** is the RPB consequence
+
+```math
+0
+e uinker G_c,
+qquad
+G_aJ_{c,a}u
+e0
+quad(a>c)
+```
+
+together with the RPB-34 collar test, which yields
+
+```math
+G_a
+otsucceq0
+qquad
+(a>c).
+```
+
+Thus one leaking screw-kernel direction is sufficient to rule out every
+positive-length nonnegative/neutral right plateau from (c).
+
+**Status:** branch-local RPB terminology.
+
+## Core-restricted null-extension discharge
+
+Let (A_c) be the localized Friedrichs Weil operator and let
+
+```math
+ker A_c^{m core}
+:=
+ker A_ccap H_0^1(-c,c)
+=
+D^{-1}(ker G_c).
+```
+
+The **core-restricted null-extension discharge** is the negative resolution of
+the null-extension question on this subspace:
+
+```math
+0
+e hinker A_c^{m core}
+Longrightarrow
+widetilde h
+otinker A_a
+qquad
+(a>c),
+```
+
+with the threshold-aware interpretation supplied by RPB-35 through RPB-49.
+
+This does not identify (ker A_c^{m core}) with the entire Friedrichs
+nullspace.  The residual multiplicity defect
+
+```math
+delta_{m core}(c)
+=
+dimker A_c-dimker G_c
+```
+
+may still be positive until a separate zero-eigenspace multiplicity/core-lift
+audit closes it.
+
+**Status:** branch-local RPB terminology.
