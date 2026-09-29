@@ -9,68 +9,64 @@
 
 \`\`\`math
 \boxed{
-\textbf{RPB-42 — MAXIMAL COLLAR FIRST ACTIVATION MUST OCCUR AT A PRIME-POWER SHIFT OF SOURCE ANALYTIC SINGULAR SUPPORT.}
+\textbf{RPB-43 — CORE-NEUTRAL ANALYTIC SINGULAR SUPPORT IS ENDPOINT-ONLY; MAXIMAL COLLAR ACTIVATION IS DISCRETE AND ENDPOINT-ARITHMETIC.}
 }
 \`\`\`
 
-Using Suzuki's explicit positive-half screw formula,
+The full translation-invariant compact-window Weil symbol is analytic and
+elliptic at high frequency.  Since the pole/evaluation term has analytic
+finite-dimensional range, analytic elliptic regularity gives
 
 \`\`\`math
-g(t)
-=
-g_{\rm an}(t)
-+
-\sum_{n\ge2}
-\frac{\Lambda(n)}{\sqrt n}
-(t-\log n)_+,
-\qquad t>0,
+h,u\in C^\omega(-c,c),
+\qquad
+u=Dh.
 \`\`\`
 
-the non-prime part is real analytic away from \(t=0\), while each prime-ramp
-convolution satisfies
+For the zero-extended nonzero source,
 
 \`\`\`math
-P_{n,u}''(x)
+\operatorname{singsupp}_{\omega}u
 =
-\frac{\Lambda(n)}{\sqrt n}
-u(x-\log n).
+\{-c,c\}.
 \`\`\`
 
-Hence if no translated analytic singularity of \(u\) meets a neighborhood of
-the maximal collar edge, the full potential is analytic there and its constant
-value analytically continues past that edge. Therefore
+Therefore RPB-42's first-activation set collapses to the discrete endpoint
+spectrum
 
 \`\`\`math
 a_{\max}
 \in
-\bigcup_{n=p^m}
-\left(
-\log n+\operatorname{singsupp}_{\omega}u
-\right).
+\{c+\log n,\ \log n-c:n=p^m\}.
 \`\`\`
 
-Equivalently, for some prime power and source analytic singularity,
+An unpaired endpoint activation cannot be crossed by a constant plateau.  The
+only possible crossing mechanism is a paired right-exit/left-entry collision,
 
 \`\`\`math
-a_{\max}=\log n+y,
-\qquad
-e^{a_{\max}-c}\le n\le e^{a_{\max}+c}.
+e^{2c}=m/n,
 \`\`\`
 
-This localizes first activation but does not force \(y\) to be a support
-endpoint; parity and zero mean do not supply a further exclusion.
+together with a weighted analytic endpoint-germ matching condition.  In the
+nonresonant case,
+
+\`\`\`math
+a_{\max}
+=
+\min\{c+\log2,\ \log n_+(c)-c\}.
+\`\`\`
 
 ## Next cursor
 
 ```text
-RPB-43 / ANALYTIC-SINGULAR-SUPPORT PROPAGATION UNDER PRIME DELAYS
+RPB-44 / PAIRED ENDPOINT COLLISION RESONANCE AND GERM MATCHING
 ```
 
-The next pass should test whether the interior neutral equation propagates
-analytic singularities along the active prime-log delay graph strongly enough
-to force endpoint ownership, dense analytic singular support, incompatibility
-with compact support, or else a sharp no-go showing that analytic-wavefront
-propagation does not improve the current null-extension interface.
+The next pass should analyze the resonant branch
+\(e^{2c}=m/n\) for prime powers \(m,n\): use parity to derive the exact
+endpoint-germ matching relation, test whether the von Mangoldt weights can
+satisfy it, and determine whether crossing one collision forces a further
+collision ladder compatible with a finite maximal collar.
 
 ## Governance
 
