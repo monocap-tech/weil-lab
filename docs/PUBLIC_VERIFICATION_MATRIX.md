@@ -47,7 +47,7 @@ This matrix is intentionally orthogonal to the main mathematical narrative. It d
 | WD-T37 | CONDITIONAL COMPOSITE | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE | Transitive | via WD-T31 and imported ancestry | Recorded in LEAN_STATUS.md; run scope varies | AZ-NEXTJET-LOC; C-ACTUAL-KPH-FLOOR stronger refinement |
 | WD-T38 | CONDITIONAL COMPOSITE | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE | Transitive | via WD-T34–WD-T36 | Recorded in LEAN_STATUS.md; run scope varies | AZ-FIN-WEIL-NULL-EXTENSION |
 | WD-T39 | INTERNAL/CONDITIONAL COMPOSITE | LEAN-CERTIFIED | No load-bearing imported theorem in normalized DAG | — | Recorded in LEAN_STATUS.md; run scope varies | No new interface |
-| WD-T40 | INTERNAL-PROOF / CONDITIONAL on WD-T38 hypotheses | LEAN-NOT-ATTEMPTED | Direct + transitive | EXT-4, EXT-5; via WD-T38 | No Lean certificate; post-Horizon theorem | Discharges AZ-FIN-WEIL-NULL-EXTENSION negatively |
+| WD-T40 | INTERNAL-PROOF / CONDITIONAL on WD-T38 hypotheses | LEAN-BLOCKED | Direct + transitive | EXT-4, EXT-5; via WD-T38 | Exact formal dependency blocker recorded in LEAN_STATUS.md / RPB-67 | Discharges AZ-FIN-WEIL-NULL-EXTENSION negatively |
 
 ### Sharpness examples
 
