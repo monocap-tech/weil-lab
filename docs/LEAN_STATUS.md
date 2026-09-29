@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-76 / WD-T40 F-1 build gate recheck.
+- **Next project cursor:** RPB-77 / WD-T40 F-1 build gate recheck.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -4591,3 +4591,16 @@ Run 36645302165 again failed before runner allocation with runner_id 0 and zero 
 No compiler process ran. The frozen carrier and handoff script are unchanged. F-1 remains build-uncertified and F-2 remains NOT STARTED.
 
 Next cursor: RPB-76 / WD-T40 F-1 build gate recheck.
+
+
+---
+
+## RPB-76 build gate delta
+
+The exact frozen-handoff job from run 36645302165 was rerun.
+
+Attempt 2 again failed before runner allocation with runner_id 0, empty runner name, and zero steps. No checkout, handoff script, Lake, or Lean process executed.
+
+The frozen carrier blob and canonical handoff script are unchanged. F-1 remains statically exhausted and build-uncertified. F-2 remains NOT STARTED.
+
+Next cursor: RPB-77 / WD-T40 F-1 build gate recheck.
