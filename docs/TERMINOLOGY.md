@@ -5954,3 +5954,39 @@ RPB-57/58 remain historical branch-local candidate proofs, but they are no
 longer load-bearing for the RPB null-extension discharge.
 
 **Status:** branch-local RPB terminology.
+
+
+## WD-T40 physical Fourier carrier lift
+
+The **WD-T40 physical Fourier carrier lift** is the missing formal bridge from
+the abstract WD-T38 Lean neutral interface to a concrete real-line carrier that
+exposes:
+
+- an L2 physical mode;
+- compact support;
+- a tempered-distribution realization;
+- the actual compact-window Weil Fourier multiplier;
+- distributional vanishing of the enlarged residual on a strict collar.
+
+RPB-67 identifies this as the first formalization blocker for a faithful
+WD-T40 Lean certificate.
+
+**Status:** post-Horizon formalization terminology.
+
+## WD-T40 formalization stack
+
+The **WD-T40 formalization stack** is the ordered dependency chain:
+
+~~~text
+F-1  physical Fourier carrier lift
+F-2  actual Weil multiplier realization
+F-3  support-gap Gaussian pairing
+F-4  Gaussian coercivity -> exponential Fourier weight
+F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
+F-6  final WD-T40 assembly from EXT-4 / EXT-5 premises
+~~~
+
+A faithful certificate must preserve the internal WD-T40 steps F-3 through
+F-5 rather than replacing them by opaque assumptions.
+
+**Status:** post-Horizon formalization terminology.
