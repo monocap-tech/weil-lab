@@ -1226,3 +1226,52 @@ Interior analyticity for arbitrary Friedrichs zero modes:
 ~~~math
 \boxed{\text{SOURCE PIN VALID / FORMER SPECIALIZATION WITHDRAWN}}
 ~~~
+
+
+---
+
+## RPB-EXT-A9 — analytic Fourier-integral operators transport ultradifferentiable wavefront sets
+
+### Source
+
+Stefan Fürdös,
+*Hypoellipticity of analytic differential operators in general
+ultradifferentiable classes*,
+Journal of Pseudo-Differential Operators and Applications **17** (2026),
+Article 72.
+DOI: 10.1007/s11868-026-00803-0.
+
+### Exact contextual input consumed by RPB-61
+
+The paper develops microlocal regularity for semiregular
+ultradifferentiable classes and, in particular, records that analytic
+Fourier-integral operators transform the corresponding ultradifferentiable
+wavefront sets along their canonical relations.
+
+RPB-61 uses this only as contextual confirmation of the operator typing:
+
+~~~math
+\tau_\ell
+:
+(x,\xi)
+\mapsto
+(x+\ell,\xi).
+~~~
+
+The RPB propagation formula for an exact translation is elementary and does
+not depend on a deep theorem from this paper.
+
+The source does **not** supply a unique-continuation theorem for the mixed
+operator
+
+~~~math
+\mathcal A_\infty
+-
+\sum_j a_j(\tau_{\ell_j}+\tau_{-\ell_j}).
+~~~
+
+### Status
+
+~~~math
+\boxed{\text{CONTEXTUAL / NON-LOAD-BEARING RPB}}
+~~~
