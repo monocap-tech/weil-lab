@@ -2,7 +2,7 @@
 
 ## H1-P5.5 — Final cross-surface adversarial pass
 
-**Status:** PASSED. **Post-WD-T40 revalidation:** PASSED.
+**Status:** PASSED. **Post-WD-T40 revalidation:** PASSED. **Post-RPB-67 formal-status delta:** PASSED.
 
 This audit certifies the internal consistency of the Horizon-1 public package.
 It does not add a theorem, change a theorem standing, formalize an imported
@@ -421,4 +421,72 @@ The next research cursor is:
 
 ~~~text
 RPB-67 / WD-T40 LEAN CERTIFICATION PREFLIGHT
+~~~
+
+
+---
+
+## 13. Post-RPB-67 formal-status delta
+
+RPB-67 completed the WD-T40 Lean certification preflight.
+
+The mathematical theorem and interface status are unchanged.
+
+The formal-verification state changed from the RPB-66 checkpoint:
+
+~~~text
+WD-T40:
+    LEAN-NOT-ATTEMPTED
+~~~
+
+to the exact current state:
+
+~~~text
+WD-T40:
+    LEAN-BLOCKED
+~~~
+
+The blocker is not a mathematical objection and is not a missing base Fourier
+library. The exact missing project layer is the physical real-line
+Fourier/distribution carrier and the downstream Gaussian support-gap analytic
+stack recorded in RPB-67 / LEAN_STATUS.md.
+
+The expected final certification class, if the internal formalization stack is
+completed while EXT-4 and EXT-5 remain imported premises, is:
+
+~~~text
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE
+~~~
+
+### 13.1 Current public artifact identities after the formal-status refold
+
+| Artifact | Current blob SHA |
+| --- | --- |
+| PUBLIC_PACKAGE_ARCHITECTURE.md | 33562faa809f2a7a701b6e9642a66d1732daf69b |
+| WEIL_DEFECT_MANUSCRIPT.md | a63e489e648c031e4a8b1505e611196be8d68af4 |
+| PUBLIC_THEOREM_INDEX.md | 2cbe6424e416321838686dc28e21360422794167 |
+| PUBLIC_VERIFICATION_MATRIX.md | 450bdb9c78665885c2e2cb330f1919816360eaef |
+| PUBLIC_DEPENDENCY_MAP.md | 5224de4866595ab16f7b222f402d17f7561afe48 |
+| PUBLIC_EXAMPLES.md | 1bcc4033a12b4955000c68a49b8e3301ab03f524 |
+| RH_INTERFACE_APPENDIX.md | 0774a1d6f0efcc9590f3069309156fc2881e7af7 |
+| README.md | 9730e775cc2125dffd8bdff0fb7ff798f1e5f4a1 |
+
+### 13.2 Revalidation result
+
+The theorem count remains 40.
+
+The neutral interface remains discharged negatively by WD-T40.
+
+The remaining open negative-side interfaces are unchanged.
+
+The public theorem index, verification matrix, README, manuscript, package
+architecture, Lean status ledger, and RPB control surface now agree on the
+WD-T40 formal state.
+
+**Result:** PASS.
+
+### 13.3 Next cursor
+
+~~~text
+RPB-68 / WD-T40 PHYSICAL FOURIER CARRIER LIFT
 ~~~
