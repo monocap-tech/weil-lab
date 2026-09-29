@@ -2,7 +2,7 @@
 
 ## H1-P5.5 — Final cross-surface adversarial pass
 
-**Status:** PASSED.
+**Status:** PASSED. **Post-WD-T40 revalidation:** PASSED.
 
 This audit certifies the internal consistency of the Horizon-1 public package.
 It does not add a theorem, change a theorem standing, formalize an imported
@@ -301,3 +301,128 @@ Therefore,
 ~~~
 
 No post-Horizon research cursor is selected by this audit.
+
+
+---
+
+## 12. Post-WD-T40 package revalidation
+
+The original H1-P5 audit above is retained as historical evidence for the
+WD-T01--WD-T39 package state.
+
+RPB-65 subsequently promoted WD-T40, and RPB-66 refolded that additive theorem
+through the public surfaces.
+
+The current revalidation checks the updated package rather than rewriting the
+historical certificate.
+
+### 12.1 Stable-ID coverage
+
+Current theorem range:
+
+~~~text
+WD-T01 through WD-T40
+~~~
+
+The public theorem index now contains 40 theorem rows.
+
+The public verification matrix now contains 40 theorem rows, all seven example
+rows, and all five scope-rule rows.
+
+WD-T40 appears with:
+
+~~~text
+Mathematical standing:
+    INTERNAL-PROOF / CONDITIONAL on WD-T38 hypotheses
+
+P4 audit:
+    P4-AUDIT-PASSED
+
+Lean status:
+    LEAN-NOT-ATTEMPTED
+~~~
+
+**Result:** PASS.
+
+### 12.2 Interface status
+
+Current RH-facing interface state:
+
+~~~text
+AZ-NEXTJET-LOC                 OPEN
+C-ACTUAL-KPH-FLOOR             OPEN / stronger special-packet refinement
+AZ-FIN-WEIL-NULL-EXTENSION     DISCHARGED NEGATIVELY BY WD-T40
+~~~
+
+The public manuscript, theorem index, verification matrix, dependency map,
+RH-facing appendix, README, Research Map, Horizon page, and proof-status page
+now agree on that state.
+
+No public surface claims RH closure.
+
+**Result:** PASS.
+
+### 12.3 Dependency/source custody
+
+WD-T40 is shown downstream of WD-T38 and consumes the already pinned
+compact-window inputs EXT-4 and EXT-5 through the WD-T34/WD-T35 arithmetic
+surface.
+
+The public dependency map does not import either remaining open negative-side
+interface upstream.
+
+The historical RPB-43/57/58 analytic/Mellin route is not load-bearing for
+WD-T40.
+
+**Result:** PASS.
+
+### 12.4 Formal-status custody
+
+Historical LEAN-H1 remains exhausted for the original Horizon-1 inventory.
+
+WD-T40 is a post-Horizon theorem and currently has no Lean certificate.
+
+The Lean Status Ledger, Public Theorem Index, Public Verification Matrix,
+README, manuscript, and package architecture consistently record
+
+~~~text
+WD-T40: LEAN-NOT-ATTEMPTED.
+~~~
+
+No mathematical audit label is used as a substitute for Lean certification.
+
+**Result:** PASS.
+
+### 12.5 Current public artifact identities
+
+| Artifact | Current blob SHA |
+| --- | --- |
+| PUBLIC_PACKAGE_ARCHITECTURE.md | 021c8d8759ec34c78cdf42b6f686a5b8cfaa2a7f |
+| WEIL_DEFECT_MANUSCRIPT.md | a65ee74d00c5897f8c813bdeffcee083d1ebb834 |
+| PUBLIC_THEOREM_INDEX.md | afed1d08a02ce7de6b8b92f8137c01ab40571271 |
+| PUBLIC_VERIFICATION_MATRIX.md | 8dd13015364fcbf0f5fb5ccc31ab3242ca2addd8 |
+| PUBLIC_DEPENDENCY_MAP.md | 5224de4866595ab16f7b222f402d17f7561afe48 |
+| PUBLIC_EXAMPLES.md | 1bcc4033a12b4955000c68a49b8e3301ab03f524 |
+| RH_INTERFACE_APPENDIX.md | 0774a1d6f0efcc9590f3069309156fc2881e7af7 |
+| README.md | d5959117883dffa5c4f4c026e2b24273cfc5e978 |
+
+The package-architecture blob listed above predates the final cursor-only edit
+within this same RPB-66 pass; the repository content is authoritative and the
+final integrity check below records the resulting branch head.
+
+### 12.6 Revalidation determination
+
+~~~math
+\boxed{
+\textbf{POST-WD-T40 PUBLIC PACKAGE REVALIDATION: PASSED.}
+}
+~~~
+
+The public package remains internally consistent after the theorem-count and
+interface-state change.
+
+The next research cursor is:
+
+~~~text
+RPB-67 / WD-T40 LEAN CERTIFICATION PREFLIGHT
+~~~
