@@ -9,64 +9,64 @@
 
 \`\`\`math
 \boxed{
-\textbf{RPB-43 — CORE-NEUTRAL ANALYTIC SINGULAR SUPPORT IS ENDPOINT-ONLY; MAXIMAL COLLAR ACTIVATION IS DISCRETE AND ENDPOINT-ARITHMETIC.}
+\textbf{RPB-44 — PAIRED PRIME-ENDPOINT RESONANCES CANNOT SATISFY THE REQUIRED WEIGHT MATCHING; ALL LATER PRIME ACTIVATIONS ARE UNCROSSABLE.}
 }
 \`\`\`
 
-The full translation-invariant compact-window Weil symbol is analytic and
-elliptic at high frequency.  Since the pole/evaluation term has analytic
-finite-dimensional range, analytic elliptic regularity gives
+At a paired endpoint collision
 
 \`\`\`math
-h,u\in C^\omega(-c,c),
-\qquad
-u=Dh.
-\`\`\`
-
-For the zero-extended nonzero source,
-
-\`\`\`math
-\operatorname{singsupp}_{\omega}u
+c+\log n
 =
-\{-c,c\}.
+\log m-c,
 \`\`\`
 
-Therefore RPB-42's first-activation set collapses to the discrete endpoint
-spectrum
+parity and analytic germ matching force
 
 \`\`\`math
-a_{\max}
-\in
-\{c+\log n,\ \log n-c:n=p^m\}.
+\frac{\Lambda(n)}{\sqrt n}
+=
+\frac{\Lambda(m)}{\sqrt m}.
 \`\`\`
 
-An unpaired endpoint activation cannot be crossed by a constant plateau.  The
-only possible crossing mechanism is a paired right-exit/left-entry collision,
+For prime powers this equality implies \(m=n\): distinct underlying primes
+would make \(\log p/\log q\) algebraic, contradicting Gel'fond--Schneider,
+while the same prime forces equal exponents.
+
+But the collision equation then gives
 
 \`\`\`math
-e^{2c}=m/n,
+e^{2c}=m/n=1,
 \`\`\`
 
-together with a weighted analytic endpoint-germ matching condition.  In the
-nonresonant case,
+hence \(c=0\), impossible in the live branch.
+
+Thus no prime-power endpoint activation strictly above \(c\) can be crossed.
+Conditional on the existence of any strict collar,
 
 \`\`\`math
 a_{\max}
 =
-\min\{c+\log2,\ \log n_+(c)-c\}.
+\min\{c+\log2,\ \log n_+(c)-c\},
 \`\`\`
+
+where \(n_+(c)\) is the first prime power with \(\log n>2c\).
+
+The remaining uncertainty is now entirely the initial crossing of the original
+support boundary \(x=c\), where the non-prime screw kernel itself meets
+separation \(t=0\).
 
 ## Next cursor
 
 ```text
-RPB-44 / PAIRED ENDPOINT COLLISION RESONANCE AND GERM MATCHING
+RPB-45 / BASE-ENDPOINT t=0 SCREW-SINGULARITY MATCHING
 ```
 
-The next pass should analyze the resonant branch
-\(e^{2c}=m/n\) for prime powers \(m,n\): use parity to derive the exact
-endpoint-germ matching relation, test whether the von Mangoldt weights can
-satisfy it, and determine whether crossing one collision forces a further
-collision ladder compatible with a finite maximal collar.
+The next pass should return to the original support boundary \(x=c\):
+derive the local \(t\downarrow0\) singular expansion of Suzuki's non-prime
+screw kernel, convolve it with the analytic endpoint germ of the source,
+include any equality-threshold prime event, and decide whether the endpoint
+constant germ can extend even infinitesimally outside the support.
 
 ## Governance
 
