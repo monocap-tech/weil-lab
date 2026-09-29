@@ -155,7 +155,7 @@ Only after this exhaustion condition is met does the project resume:
 }
 ```
 
-WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier source is implemented, but module build certification is infrastructure-blocked: three validation routes received no GitHub runner and executed zero steps, while the local environment has no Lean/Lake toolchain and no outbound DNS. The next research cursor is RPB-77 / WD-T40 F-1 build gate recheck. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
+WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier source is implemented, but module build certification is infrastructure-blocked: three validation routes received no GitHub runner and executed zero steps, while the local environment has no Lean/Lake toolchain and no outbound DNS. The next research cursor is RPB-78 / WD-T40 F-1 build gate recheck. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
 
 
 ---
@@ -177,7 +177,7 @@ abstract WD-T38 neutral interface to:
 The next cursor is:
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 No Gaussian coercivity theorem should be attempted before that carrier bridge
