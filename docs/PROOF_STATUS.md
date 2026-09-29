@@ -88,8 +88,8 @@ SOURCE-PINNED inputs:
 1. Douglas factorization — WD-T02;
 2. Bombieri finite Weil inertia/multiplicity/kernel estimates — WD-T22, WD-T23, WD-T28;
 3. standard zeta zero counting — WD-T28, WD-T31;
-4. compact-window geometric explicit formula — WD-T34, WD-T35;
-5. digamma asymptotics — WD-T35.
+4. compact-window geometric explicit formula — WD-T34, WD-T35, WD-T38, WD-T40;
+5. digamma asymptotics — WD-T35, WD-T40.
 
 Anderson–Trapp shorting and Suzuki's operator framework remain contextual/non-load-bearing for the current theorem statements.
 
