@@ -5872,3 +5872,85 @@ Hence no nonempty countable compact delay-self-supporting analytic singular set
 can survive.
 
 **Status:** branch-local RPB terminology.
+
+
+## Gaussian support-gap null-extension exclusion
+
+Let \(h\) be compactly supported in \([-c,c]\) and suppose its whole-line Weil
+residual \(q\) vanishes on a strict enlargement \((-a,a)\), \(a>c\).
+
+For a moving Gaussian frequency window
+
+~~~math
+\phi_R^\pm(\eta)
+=
+\exp\!\left(
+-\frac{(\eta\mp R)^2}{R}
+\right),
+~~~
+
+the positive collar width \(a-c\) makes the physical pairing of the residual
+with the filtered mode exponentially small, while the exact compact-window
+symbol satisfies
+
+~~~math
+\Psi_a(\eta)
+=
+\log|\eta|
++
+O_a(1).
+~~~
+
+This yields the coercive estimate
+
+~~~math
+(\log R-C_a)
+\int
+\phi_R^\pm(\eta)
+|\widehat h(\eta)|^2\,d\eta
+\le
+Ce^{-\kappa R}.
+~~~
+
+The **Gaussian support-gap null-extension exclusion** is the conclusion that
+the resulting exponential Fourier decay makes \(h\) strip-holomorphic, hence
+a compactly supported such mode must vanish identically.
+
+**Status:** branch-local RPB theorem; canonical promotion pending RPB-65 audit.
+
+## Moving Gaussian frequency window
+
+A **moving Gaussian frequency window** is the multiplier
+
+~~~math
+\phi_R^\pm(\eta)
+=
+\exp\!\left(
+-\frac{(\eta\mp R)^2}{R}
+\right).
+~~~
+
+Its physical kernel is a modulated Gaussian of width \(R^{-1/2}\).
+
+When a compactly supported mode and a residual are separated by a positive
+spatial gap, the filtered pairing is exponentially small in \(R\).
+
+This is the localization device used in RPB-64.
+
+**Status:** branch-local RPB terminology.
+
+## Support-gap coercivity bypass
+
+The **support-gap coercivity bypass** is the RPB-64 observation that strict
+null extension already supplies enough spatial separation to prove the
+null-extension exclusion directly from high-frequency symbol coercivity.
+
+It bypasses the two earlier promotion blockers:
+
+- interior analytic regularity for the finite-delay operator;
+- Mellin-conormal completeness at thresholds.
+
+RPB-57/58 remain historical branch-local candidate proofs, but they are no
+longer load-bearing for the RPB null-extension discharge.
+
+**Status:** branch-local RPB terminology.
