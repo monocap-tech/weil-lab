@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-74 / WD-T40 F-1 static closure and build handoff.
+- **Next project cursor:** RPB-75 / WD-T40 F-1 build execution gate.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -33,7 +33,7 @@ Fourier/distribution data consumed by the Gaussian support-gap proof.
 Exact blocking stack:
 
 ~~~text
-F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED / STATIC CLOSURE NEXT
+F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / STATIC LINE EXHAUSTED / FROZEN AUDITED BLOB / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
 F-2  actual compact-window Weil multiplier realization
 F-3  support-gap Gaussian pairing theorem
 F-4  Gaussian coercivity -> exponential Fourier weight
@@ -4563,3 +4563,18 @@ Current F-1 state: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS 
 F-2 remains NOT STARTED.
 
 Next cursor: RPB-74 / WD-T40 F-1 static closure and build handoff.
+
+
+---
+
+## RPB-74 F-1 static closure delta
+
+The audited F-1 source is frozen at Git blob `93f05eceb07ffda593181d0e9293caa0a05705ac`.
+
+The deterministic handoff script `scripts/check_neutral_fourier_carrier.sh` now verifies the frozen blob, root import, exact module build, and unfinished-proof/project-axiom scan before reporting success.
+
+Current F-1 state: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / STATIC LINE EXHAUSTED / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED.
+
+No further static audit is live unless the frozen source changes or a real compiler diagnostic appears. F-2 remains NOT STARTED.
+
+Next cursor: RPB-75 / WD-T40 F-1 build execution gate.
