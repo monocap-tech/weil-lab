@@ -488,7 +488,7 @@ WD-T40 formal state.
 ### 13.3 Next cursor
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 
@@ -527,7 +527,7 @@ WD-T40 remains LEAN-BLOCKED.
 The next cursor is:
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a custody/status update.
@@ -558,7 +558,7 @@ Both temporary validation PRs were closed without merge. The research branch con
 Next cursor:
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 
@@ -584,7 +584,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a custody/status update.
@@ -614,7 +614,7 @@ No declaration-shape mismatch remains. Build certification remains infrastructur
 Next cursor:
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a static API audit.
@@ -640,7 +640,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a static typeclass audit.
@@ -664,7 +664,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a static proof-term audit.
@@ -700,7 +700,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a static-closure/build-handoff audit.
@@ -726,7 +726,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as an unchanged build-gate custody update.
@@ -745,7 +745,26 @@ The frozen carrier source and canonical handoff script remain unchanged. F-1 rem
 Next cursor:
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as an unchanged build-gate custody update.
+
+
+---
+
+## 23. Post-RPB-77 build-gate delta
+
+RPB-77 reran the exact frozen-handoff job from run 36645302165 as attempt 3.
+
+Attempt 3 again failed before runner allocation: runner_id 0, empty runner name, zero steps. No Lean process ran.
+
+The frozen carrier source and canonical handoff remain unchanged. F-1 remains statically exhausted and build-infrastructure-blocked; F-2 remains NOT STARTED.
+
+Next cursor:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as an unchanged build-gate custody update.
