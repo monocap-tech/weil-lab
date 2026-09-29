@@ -9,56 +9,58 @@
 
 \`\`\`math
 \boxed{
-\textbf{RPB-40 — DIVISOR-CLEARED CARLEMAN NUMERATORS ARE ORDER-ONE MAXIMAL TYPE; CARTWRIGHT/UNCONDITIONAL DE BRANGES CLOSURE FAILS.}
+\textbf{RPB-41 — THE CARLEMAN INDICATOR MATCHES THE MAXIMAL COLLAR EDGE EXACTLY, BUT PROVIDES NO INDEPENDENT SOURCE-SUPPORT CONTRADICTION.}
 }
 \`\`\`
 
-For the nonzero right/left exterior tails,
+Along \(z=iY\), the compact-source term and the finite-interval correction
+carry the same source-edge exponential scale but cancel exactly into the true
+exterior potential tail:
 
 \`\`\`math
-N_\pm(z)
+V(iY)\frac{\xi'}{\xi}(1/2+Y)
++
+Y^2E_{+,a}(iY)
 =
-z^2
-\xi\!\left(\frac12\mp iz\right)
-\mathcal C_\pm^{\rm mer}(z)
+-
+Y^2\int_a^\infty F_u(x)e^{-Yx}\,dx.
 \`\`\`
 
-are entire of order one and infinite/maximal type.  Finite exponential type
-would force the corresponding one-sided Laplace transform to decay faster than
-every exponential, which by the Laplace support theorem would make the tail
-vanish identically; RPB-11 excludes that for a nonzero compact neutral mode.
+The elementary collar-constant term then removes the constant plateau.  The
+divisor-cleared numerator is invariant under movement of the artificial cutoff
+inside that plateau:
 
-Hence \(N_\pm\) are not Cartwright, and \(T\log T\)-scale zeta interpolation is
-compatible with their growth. The natural \(\xi\)-based Hermite--Biehler/de
-Branges normalization is RH-conditional, while dividing by \(\xi\) restores
-the uncancelled divisor and loses entire structure.
+\`\`\`math
+\partial_aN_{+,a}=0.
+\`\`\`
 
-The surviving datum is the subleading vertical indicator:
+If \(a_{\max}\) is the maximal symmetric interval on which the screw potential
+is constant, then
 
 \`\`\`math
 \limsup_{Y\to\infty}
 \frac{
-\log|N_+(iY)|
--
-\log\xi(1/2+Y)
+\log|N_+(iY)|-\log\xi(1/2+Y)
 }{Y}
 =
--b_+,
+-a_{\max}.
 \`\`\`
 
-where \(b_+\) is the first support point of the right exterior tail.
+Thus the indicator records the true end of the plateau but does not determine
+it from the compact-source support edge.
 
 ## Next cursor
 
 ```text
-RPB-41 / CARLEMAN INDICATOR SUPPORT-EDGE MATCHING
+RPB-42 / MAXIMAL COLLAR FIRST-ACTIVATION GEOMETRY
 ```
 
-The next pass should compute the same vertical indicator from the explicit
-identity for \(N_+\), using the Paley--Wiener support indicators of the compact
-source and finite-interval correction, and test whether the tail onset \(b_+\)
-is forced to equal the collar edge \(a\), a source-support endpoint, or another
-rigid value.
+The next pass should analyze the local geometry where the maximal constant
+collar first fails: separate the analytic archimedean/pole pieces from the
+moving prime-power kinks, identify the shifted-source activation sets
+\(\log n+\operatorname{supp}u\), and determine whether the first activation
+point is arithmetically constrained or simply another form of the existing
+null-extension obstruction.
 
 ## Governance
 
