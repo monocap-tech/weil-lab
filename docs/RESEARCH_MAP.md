@@ -557,11 +557,11 @@ Horizon 1 is complete.
 
 ```math
 \boxed{
-\texttt{HORIZON 1 COMPLETE / RPB-72 WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT}
+\texttt{HORIZON 1 COMPLETE / RPB-73 WD-T40 CARRIER PROOF-TERM ELABORATION AUDIT}
 }
 ```
 
-Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-72 / WD-T40 carrier typeclass synthesis audit.
+Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-73 / WD-T40 carrier proof-term elaboration audit.
 
 ---
 
