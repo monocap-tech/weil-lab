@@ -343,7 +343,7 @@ The final pass is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 }
 ```
 
-The current post-Horizon research cursor is RPB-75 / WD-T40 F-1 build execution gate.
+The current post-Horizon research cursor is RPB-76 / WD-T40 F-1 build gate recheck.
 
 
 ---
@@ -388,7 +388,7 @@ This is recorded as an infrastructure blocker rather than as a Lean theorem or s
 Current cursor:
 
 ~~~text
-RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 
@@ -402,4 +402,4 @@ The deterministic build handoff checks that exact blob before compiling, verifie
 
 F-1 is therefore statically exhausted but not Lean-certified. A real pinned build remains required before F-2 may begin.
 
-Current cursor: RPB-75 / WD-T40 F-1 build execution gate.
+Current cursor: RPB-76 / WD-T40 F-1 build gate recheck.
