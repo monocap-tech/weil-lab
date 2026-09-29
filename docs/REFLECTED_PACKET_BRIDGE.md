@@ -9,117 +9,92 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-54 — A NONZERO OPTIMAL LOGARITHMIC BOUNDARY AMPLITUDE FORCES AN UNCANCELLABLE \(\sqrt{\log(1/s)}\) EXTERIOR WEIL LEAK.}
+\textbf{RPB-55 — CURRENT BOUNDARY REGULARITY DOES NOT PRODUCE A UNIVERSAL OPTIMAL LOG TRACE COEFFICIENT, AND VANISHING OF SUCH A COEFFICIENT DOES NOT FORCE SCREW-CORE MEMBERSHIP.}
 }
 ~~~
 
-Let \(\widetilde h\) be the zero extension of a compact-window Friedrichs zero
-mode and suppose at the right endpoint
+RPB-54 excluded every mode carrying a nonzero optimal logarithmic boundary
+amplitude.  RPB-55 audits whether that amplitude exists for every Friedrichs
+zero mode.
+
+The current sharp pure-logarithmic boundary theorem gives the envelope
 
 ~~~math
-h(c-r)
+|u(x)|
+\le
+C\ell^{1/2}(d(x,\partial\Omega))
+~~~
+
+for bounded weak solutions with bounded forcing.  It does not assert existence
+of a boundary quotient limit
+
+~~~math
+u/\ell^{1/2}\to b.
+~~~
+
+Matching lower bounds are known for special positive/Hopf classes, such as the
+torsion function and nonnegative supersolutions, but not for arbitrary
+sign-changing zero modes.
+
+For the actual compact-window Weil operator, RPB-31 only gives logarithmic
+operator-domain regularity.  Current inputs do not yet prove that every
+Friedrichs zero mode falls into the bounded-solution/bounded-forcing class of
+the optimal boundary theorem.
+
+Therefore the boundary-untyped residue remains real at the present theorem
+level.
+
+Moreover, even if an optimal coefficient exists and vanishes,
+
+~~~math
+h=o(\ell^{1/2}),
+~~~
+
+this does not imply
+
+~~~math
+h\in H_0^1.
+~~~
+
+For example,
+
+~~~math
+h(c-r)=\ell(r)=\frac1{\log(1/r)}
+~~~
+
+is log-flat relative to \(\ell^{1/2}\), while its derivative is not square
+integrable near the endpoint.
+
+The more robust boundary object is the cumulative boundary mass
+
+~~~math
+M_+(s;h)
 =
-b_+\,
-(\log(1/r))^{-1/2}
-+
-o\!\left((\log(1/r))^{-1/2}\right),
-\qquad
-b_+\ne0.
+\int_s^\delta
+\frac{h(c-r)}{r}\,dr,
 ~~~
 
-Using the one-dimensional Chen--Weth integral representation outside the
-support,
+and similarly \(M_-\) at the left endpoint.
+
+This recovers the RPB-54 amplitude leak as
 
 ~~~math
-L_\Delta\widetilde h(c+s)
-=
--
-\int_{-c}^{c}
-\frac{h(y)}{c+s-y}\,dy,
+h(c-r)\sim b\ell^{1/2}(r)
+\Longrightarrow
+M_+(s;h)\sim2b\sqrt{\log(1/s)},
 ~~~
 
-and the model integral
+but also detects slower log-flat leakage:
 
 ~~~math
-\int_0^\delta
-\frac{dr}{
-(s+r)\sqrt{\log(1/r)}
-}
-=
-2\sqrt{\log(1/s)}
-+
-O(1),
+h(c-r)\sim\frac{b}{\log(1/r)}
+\Longrightarrow
+M_+(s;h)\sim b\log\log(1/s).
 ~~~
 
-RPB-54 obtains
-
-~~~math
-\boxed{
-L_\Delta\widetilde h(c+s)
-=
--2b_+\sqrt{\log(1/s)}
-+
-o(\sqrt{\log(1/s)}).
-}
-~~~
-
-Since
-
-~~~math
-\mathcal A_\infty
-=
-\frac12L_\Delta
--
-\log(2\pi)I
-+
-\mathcal S_{-2},
-~~~
-
-the actual archimedean contribution satisfies
-
-~~~math
-\boxed{
-\mathcal A_\infty\widetilde h(c+s)
-=
--b_+\sqrt{\log(1/s)}
-+
-o(\sqrt{\log(1/s)}).
-}
-~~~
-
-RPB-43's analytic-ellipticity argument extends to every Friedrichs zero mode:
-the proof uses compact support plus the scalar equation, not screw-core
-membership.  Hence every strict-endpoint active prime translation samples a
-fixed analytic interior point and is \(O(1)\) near the exterior edge.
-
-Therefore, away from a prime-power equality threshold, a single nonzero
-endpoint amplitude already excludes strict null extension.
-
-At a threshold
-
-~~~math
-2c=\log n_0,
-~~~
-
-the strict right-limit operator adds the equality-prime translation.  Under a
-two-sided optimal logarithmic trace,
-
-~~~math
-h(-c+s)
-=
-O((\log(1/s))^{-1/2}),
-~~~
-
-so this correction is still lower by a factor of \(\log(1/s)\) than the
-archimedean exterior leak and cannot cancel it.
-
-Thus every optimal-trace mode with
-
-~~~math
-(b_+,b_-)\ne(0,0)
-~~~
-
-is excluded from strict null extension.
+Thus a scalar trace coefficient is not the fundamental null-extension datum.
+The remaining thin residue is the class in which cumulative boundary mass
+stays bounded by cancellation.
 
 Current branch-local partition:
 
@@ -130,33 +105,24 @@ CORE ZERO MODE:
 NONCORE MODE WITH NONZERO OPTIMAL LOG AMPLITUDE:
     excluded by RPB-54
 
-LOG-FLAT NONCORE ZERO MODE:
-    OPEN
+BOUNDARY-UNTYPED OR LOG-FLAT MODE WITH UNBOUNDED CUMULATIVE MASS:
+    candidate direct-leak class
 
-BOUNDARY-UNTYPED ZERO MODE:
+BOUNDED CUMULATIVE-MASS CANCELLATION RESIDUE:
     OPEN
 ~~~
 
 ## Next cursor
 
 ~~~text
-RPB-55 / OPTIMAL LOG-TRACE EXISTENCE AND FLAT-RESIDUE TEST
+RPB-56 / CUMULATIVE BOUNDARY-MASS LEAKAGE AND CANCELLATION TEST
 ~~~
 
-The next pass should determine whether every actual Friedrichs zero mode admits
-a two-sided optimal logarithmic trace
-
-~~~math
-h(\pm c\mp r)
-=
-b_\pm(h)\,(\log(1/r))^{-1/2}
-+
-o((\log(1/r))^{-1/2}).
-~~~
-
-If so, the boundary-untyped residue disappears.  Then test whether simultaneous
-vanishing \(b_+=b_-=0\) forces screw-core membership, triviality, or a smaller
-next boundary species.
+The next pass should derive the exterior Weil output directly in terms of
+\(M_\pm\), without assuming a pointwise trace coefficient, and determine
+whether every unbounded cumulative mass dominates the remaining actual-Weil
+terms.  The residual bounded-mass class should then be tested against the
+interior zero equation.
 
 ## Governance
 
@@ -169,4 +135,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_54_20260928.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_55_20260928.md.
