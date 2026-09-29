@@ -9,64 +9,73 @@
 
 \`\`\`math
 \boxed{
-\textbf{RPB-44 — PAIRED PRIME-ENDPOINT RESONANCES CANNOT SATISFY THE REQUIRED WEIGHT MATCHING; ALL LATER PRIME ACTIVATIONS ARE UNCROSSABLE.}
+\textbf{RPB-45 — THE BASE }t=0\textbf{ SCREW SINGULARITY EXCLUDES ALL NONTHRESHOLD STRICT COLLARS; ONLY PRIME-POWER THRESHOLD CARLEMAN MATCHING SURVIVES.}
 }
 \`\`\`
 
-At a paired endpoint collision
+Suzuki's small-\(t\) expansion gives
 
 \`\`\`math
-c+\log n
+g''(t)
 =
-\log m-c,
+\frac1{2t}
++
+O(1)
+\qquad
+(t\downarrow0).
 \`\`\`
 
-parity and analytic germ matching force
+At the right support edge \(x=c+s\), this produces the endpoint Stieltjes
+transform
 
 \`\`\`math
-\frac{\Lambda(n)}{\sqrt n}
+\frac12
+\int_0^{2c}
+\frac{u(c-r)}{s+r}\,dr.
+\`\`\`
+
+If \(2c\) is not a prime-power logarithm, every other local term is analytic
+through \(s=0\).  A strict collar would then force this Cauchy transform to
+extend holomorphically through the endpoint of its cut, and the Plemelj jump
+would force the endpoint source to vanish.  Interior analyticity then gives
+\(u\equiv0\), contradiction.
+
+Therefore strict persistence is possible only at a threshold
+
+\`\`\`math
+2c=\log n_0.
+\`\`\`
+
+At such a threshold, parity reduces the equality-threshold prime contribution
+to the exact endpoint equation
+
+\`\`\`math
+\frac12
+\int_0^{2c}
+\frac{f(r)}{s+r}\,dr
++
+\varepsilon_u
+\frac{\Lambda(n_0)}{\sqrt{n_0}}
+f(s)
++
+A(s)
 =
-\frac{\Lambda(m)}{\sqrt m}.
+0,
 \`\`\`
 
-For prime powers this equality implies \(m=n\): distinct underlying primes
-would make \(\log p/\log q\) algebraic, contradicting Gel'fond--Schneider,
-while the same prime forces equal exponents.
-
-But the collision equation then gives
-
-\`\`\`math
-e^{2c}=m/n=1,
-\`\`\`
-
-hence \(c=0\), impossible in the live branch.
-
-Thus no prime-power endpoint activation strictly above \(c\) can be crossed.
-Conditional on the existence of any strict collar,
-
-\`\`\`math
-a_{\max}
-=
-\min\{c+\log2,\ \log n_+(c)-c\},
-\`\`\`
-
-where \(n_+(c)\) is the first prime power with \(\log n>2c\).
-
-The remaining uncertainty is now entirely the initial crossing of the original
-support boundary \(x=c\), where the non-prime screw kernel itself meets
-separation \(t=0\).
+with \(f(s)=u(c-s)\) and \(A\) analytic.  This is the only surviving
+base-crossing mechanism.
 
 ## Next cursor
 
 ```text
-RPB-45 / BASE-ENDPOINT t=0 SCREW-SINGULARITY MATCHING
+RPB-46 / THRESHOLD CARLEMAN-MELLIN ENDPOINT REALIZATION
 ```
 
-The next pass should return to the original support boundary \(x=c\):
-derive the local \(t\downarrow0\) singular expansion of Suzuki's non-prime
-screw kernel, convolve it with the analytic endpoint germ of the source,
-include any equality-threshold prime event, and decide whether the endpoint
-constant germ can extend even infinitesimally outside the support.
+The next pass should analyze the threshold singular integral equation itself:
+identify the endpoint Carleman/Mellin operator, determine the parity-dependent
+spectrum and actual \(L^2\) endpoint germs, and test whether any such germ is
+compatible with the global neutral mode and zero-mean normalization.
 
 ## Governance
 
