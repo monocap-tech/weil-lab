@@ -880,3 +880,56 @@ global Carleman eigenvalue problem.
 \`\`\`math
 \boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
 \`\`\`
+
+
+---
+
+## RPB-EXT-A6 — optimal boundary scale for the logarithmic Laplacian
+
+### Source
+
+Víctor Hernández-Santamaría, Luis Fernando López Ríos, Alberto Saldaña,
+*Optimal boundary regularity and a Hopf-type lemma for Dirichlet problems
+involving the logarithmic Laplacian*,
+Discrete and Continuous Dynamical Systems **45** (2025), 1--36,
+DOI 10.3934/dcds.2024084.
+
+### Exact input / scope consumed by RPB-48
+
+Theorem 1.1 proves the optimal upper boundary scale
+
+\`\`\`math
+|u(x)|
+\le
+C
+\ell^{1/2}
+\!\left(
+\operatorname{dist}(x,\partial\Omega)
+\right)
+\`\`\`
+
+for bounded Dirichlet solutions with bounded forcing.
+
+Theorem 1.2 shows the same \(\ell^{1/2}\) scale is sharp for the torsion
+function in a ball.
+
+### RPB use
+
+RPB-48 uses this only as a scope check:
+
+- available general logarithmic-Laplacian boundary theory controls the
+  **size/regularity scale**;
+- it does not provide the source-dependent endpoint Mellin residue map needed
+  for
+  \[
+  D A_{B,c}^{-1}\Phi_c^*v
+  \]
+  in the actual Weil background operator.
+
+No positivity/Hopf conclusion is applied to the sign-changing RPB neutral mode.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / CONTEXTUAL FOR RPB-48}}
+\`\`\`
