@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-70 / WD-T40 carrier build infrastructure recovery.
+- **Next project cursor:** RPB-71 / WD-T40 carrier static elaboration audit.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -33,7 +33,7 @@ Fourier/distribution data consumed by the Gaussian support-gap proof.
 Exact blocking stack:
 
 ~~~text
-F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
+F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED / STATIC API AUDIT NEXT
 F-2  actual compact-window Weil multiplier realization
 F-3  support-gap Gaussian pairing theorem
 F-4  Gaussian coercivity -> exponential Fourier weight
@@ -4484,3 +4484,26 @@ WD-T40:
 
 The next cursor is RPB-70 / WD-T40 carrier build infrastructure recovery.
 
+
+
+---
+
+## RPB-70 infrastructure-recovery delta
+
+Three hosted validation routes now fail before runner allocation:
+
+~~~text
+ubuntu-latest / research-base
+ubuntu-latest / main-base
+ubuntu-slim / main-base
+~~~
+
+All three report runner_id 0, empty runner name, and zero steps.
+
+The local execution environment has no Lean/Lake toolchain and cannot resolve external hosts, so it cannot install Elan/mathlib.
+
+A deterministic repository check now exists at scripts/check_neutral_fourier_carrier.sh.
+
+F-1 remains source-implemented and build-uncertified. F-2 remains unopened.
+
+Next cursor: RPB-71 / WD-T40 carrier static elaboration audit.
