@@ -4302,3 +4302,193 @@ This correction preserves the earlier definition on its lawful domain and
 supersedes any broader reading of that entry.
 
 **Status:** branch-local RPB correction.
+
+
+## Background resolvent boundary symbol
+
+At a threshold \(2c=\log n_0\), let
+
+\`\`\`math
+\mathcal B_{\beta,c}(g)
+=
+\mathfrak a_\beta
+\left(
+D A_{B,c}^{-1}g
+\right)
+\`\`\`
+
+whenever the background resolvent output has threshold-compatible endpoint
+Mellin behavior.
+
+The functional \(\mathcal B_{\beta,c}\) is the **background resolvent boundary
+symbol** in channel \(\beta\).
+
+For selected forcing,
+
+\`\`\`math
+g=\Phi_c^*v,
+\`\`\`
+
+the Birman--Schwinger boundary-transfer row is exactly
+
+\`\`\`math
+\boxed{
+\mathfrak T_{\beta,c}
+=
+\mathcal B_{\beta,c}\Phi_c^*.
+}
+\`\`\`
+
+Computing \(\mathcal B_{\beta,c}\) is the missing boundary-resolvent datum.
+
+**Status:** branch-local RPB terminology.
+
+## Selected-column boundary matrix
+
+Choose a basis \(e_1,\dots,e_d\) of the finite selected space and put
+
+\`\`\`math
+g_j=\Phi_c^*e_j,
+\qquad
+h_j=A_{B,c}^{-1}g_j.
+\`\`\`
+
+For admissible threshold channels \(\beta_1,\dots,\beta_M\), define the
+**selected-column boundary matrix**
+
+\`\`\`math
+\boxed{
+(\mathbf B_c)_{\ell j}
+=
+\mathfrak a_{\beta_\ell}
+\left(
+D h_j
+\right).
+}
+\`\`\`
+
+Then on the threshold-compatible unit-gain space,
+
+\`\`\`math
+\mathbf T_c
+=
+\mathbf B_c|_{E_*^{\rm tc}}.
+\`\`\`
+
+The matrix is finite and basis-covariant.  Its rank, rather than the ordinary
+Birman--Schwinger Gram rank, controls the conormal boundary channels.
+
+**Status:** branch-local RPB terminology.
+
+## Gram/boundary data separation
+
+The **Gram/boundary data separation** is the distinction between
+
+\`\`\`math
+\mathsf K_c
+=
+\Phi_cA_{B,c}^{-1}\Phi_c^*
+\`\`\`
+
+and
+
+\`\`\`math
+\mathbf B_c
+=
+\mathcal B_cA_{B,c}^{-1}\Phi_c^*,
+\`\`\`
+
+where \(\mathcal B_c\) denotes the finite collection of endpoint Mellin
+boundary rows.
+
+The first records finite interior pairings of the background resolvent
+columns.  The second records endpoint conormal residues of those columns.
+
+The Birman--Schwinger Gram matrix does not determine the boundary matrix by
+finite-dimensional linear algebra alone.
+
+**Status:** branch-local RPB terminology.
+
+## Boundary-transfer nonidentifiability model
+
+There is no abstract reconstruction of a boundary row from compressed Gram
+data alone.
+
+Indeed, let \(H\) be a Hilbert space, \(M\) finite dimensional,
+\(\Phi:H\to M\), and \(B:H\to\mathbb C\) a boundary functional.  In a model
+with positive invertible \(X\), choose
+
+\`\`\`math
+w\in\ker\Phi,
+\qquad
+y\in\operatorname{Ran}\Phi^*,
+\qquad
+B(w)\ne0,
+\`\`\`
+
+and the finite-rank self-adjoint perturbation
+
+\`\`\`math
+Q
+=
+w\otimes y
++
+y\otimes w.
+\`\`\`
+
+Then
+
+\`\`\`math
+\Phi Q\Phi^*=0,
+\`\`\`
+
+while generically
+
+\`\`\`math
+BQ\Phi^*\ne0.
+\`\`\`
+
+For sufficiently small perturbations in a bounded positive model,
+\(X+\varepsilon Q\) stays positive invertible, so
+
+\`\`\`math
+\Phi(X+\varepsilon Q)\Phi^*
+=
+\Phi X\Phi^*
+\`\`\`
+
+but
+
+\`\`\`math
+B(X+\varepsilon Q)\Phi^*
+\ne
+BX\Phi^*.
+\`\`\`
+
+This **boundary-transfer nonidentifiability model** shows that the type of
+data stored by \(\mathsf K_c\) is insufficient, without additional structure,
+to recover the endpoint Mellin rows.
+
+It is a scope/no-go model, not a perturbation of the actual Weil operator.
+
+**Status:** branch-local RPB terminology.
+
+## Threshold resolvent-boundary stop
+
+The **threshold resolvent-boundary stop** is the remaining obligation after
+RPB-48:
+
+> determine the endpoint Mellin boundary symbol
+> \[
+> \mathcal B_{\beta,c}
+> :
+> g\mapsto
+> \mathfrak a_\beta(D A_{B,c}^{-1}g)
+> \]
+> for the actual background Weil resolvent at a prime-power threshold.
+
+General logarithmic-Laplacian boundary regularity gives the optimal
+\(\ell^{1/2}\) size scale for bounded forcing, but does not compute this
+source-dependent conormal coefficient map.
+
+**Status:** branch-local RPB terminology.
