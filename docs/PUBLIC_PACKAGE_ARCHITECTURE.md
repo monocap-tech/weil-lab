@@ -343,4 +343,4 @@ The final pass is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 }
 ```
 
-No post-Horizon research cursor is selected here.
+The current post-Horizon research cursor is RPB-67 / WD-T40 Lean certification preflight.
