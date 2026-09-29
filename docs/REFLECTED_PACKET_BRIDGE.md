@@ -9,79 +9,74 @@
 
 \`\`\`math
 \boxed{
-\textbf{RPB-46 — THE PRIME-THRESHOLD CARLEMAN EQUATION HAS GENUINE \(L^2\)-ADMISSIBLE LOG-OSCILLATORY CONORMAL MODES; LOCAL ENDPOINT ANALYSIS DOES NOT EXCLUDE STRICT PERSISTENCE.}
+\textbf{RPB-47 — THRESHOLD MELLIN AMPLITUDES ARE LAWFUL BOUNDARY RESIDUES, BUT ZERO MEAN AND UNIT GAIN DO NOT FORCE THEIR VANISHING.}
 }
 \`\`\`
 
-At a prime-power threshold
+At a prime-power threshold, localizing the endpoint source and Mellin
+transforming gives the principal equation
 
 \`\`\`math
-2c=\log n_0,
-\qquad
-a_0=\Lambda(n_0)/\sqrt{n_0},
-\`\`\`
-
-the local singular operator is
-
-\`\`\`math
-\frac12\mathcal C_\delta+\varepsilon_u a_0 I,
-\qquad
-(\mathcal C_\delta f)(s)=\int_0^\delta\frac{f(r)}{s+r}\,dr.
-\`\`\`
-
-For a cutoff monomial \(s^\beta\),
-
-\`\`\`math
-\mathcal C_\delta(s^\beta)
+\left(
+\frac{\pi}{2\sin(\pi z)}
++
+\varepsilon_u a_0
+\right)
+\widehat f_M(z)
 =
--\frac{\pi}{\sin(\pi\beta)}s^\beta
-+\text{analytic},
+H_f(z),
 \`\`\`
 
-so the exact indicial family is
+so the admissible endpoint coefficients are the cutoff-independent residues
 
 \`\`\`math
-\mathfrak m_{\varepsilon_u}(\beta)
+\mathfrak a_\beta(u)
 =
--\frac{\pi}{2\sin(\pi\beta)}
-+\varepsilon_u a_0.
+\operatorname*{Res}_{z=-\beta}
+\widehat f_M(z)
 \`\`\`
 
-Writing
+at the RPB-46 indicial roots.
+
+For a nonzero persistent source, the full amplitude vector is nonzero.  The
+zero-mean condition is instead the ordinary Mellin value
 
 \`\`\`math
-\cosh(\pi\tau_0)=\frac{\pi}{2a_0},
+\widehat f_M(1)=0,
 \`\`\`
 
-the first \(L^2\)-admissible endpoint source exponents are
+and does not annihilate those residues.
+
+Via the neutral-resolvent isomorphism, each amplitude gives a boundary row on
+the threshold-compatible unit-gain subspace,
 
 \`\`\`math
-\beta=\frac12\pm i\tau_0
+\mathfrak T_{\beta,c}(v)
+=
+\mathfrak a_\beta
+\left(
+D A_{B,c}^{-1}\Phi_c^*v
+\right).
 \`\`\`
 
-for an even screw source and
-
-\`\`\`math
-\beta=\frac32\pm i\tau_0
-\`\`\`
-
-for an odd screw source.
-
-Thus the exceptional threshold branch survives local Mellin analysis; what
-remains is whether the actual global neutral mode realizes a nonzero amplitude
-in one of these channels.
+The existing Birman--Schwinger identity
+\(\mathsf K_cv=v\) does not compute or annihilate this row.  Since the
+unit-gain space is finite dimensional, the entire family of threshold Mellin
+rows collapses to a finite boundary-transfer matrix.
 
 ## Next cursor
 
 ```text
-RPB-47 / GLOBAL THRESHOLD MELLIN-AMPLITUDE MATCHING
+RPB-48 / THRESHOLD BIRMAN--SCHWINGER BOUNDARY-TRANSFER MATRIX
 ```
 
-The next pass should return to the actual finite-dimensional screw-visible
-endpoint nullspace: define a lawful threshold Mellin-amplitude map, reduce it
-by parity and zero mean, and test whether the global interior neutral equation
-or the selected Birman--Schwinger unit-gain relation forces the admissible
-endpoint amplitude to vanish.
+The next pass should attempt to compute the threshold boundary-transfer rows
+directly from the resolvent extremizer
+\(h_v=A_{B,c}^{-1}\Phi_c^*v\): derive the boundary Mellin formula for the
+background resolvent, express the first admissible amplitude row in selected
+coordinates, and determine whether the resulting finite matrix has full column
+rank on the unit-gain eigenspace or whether an additional resolvent boundary
+symbol is genuinely missing.
 
 ## Governance
 
