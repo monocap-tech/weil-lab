@@ -5716,3 +5716,82 @@ RPB-61 identifies infinite-log delay cycles as the narrowed residue of
 promotion Blocker A.
 
 **Status:** branch-local RPB terminology.
+
+
+## Recentered finite delay system
+
+Let
+
+~~~math
+\mathcal C=\{x_1,\dots,x_N\}
+~~~
+
+be a finite isolated component of the projected analytic singular support.
+
+After introducing the common local coordinate
+
+~~~math
+U_j(s)=h(x_j+s),
+~~~
+
+every internal delay edge becomes a constant matrix coupling between the
+components of
+
+~~~math
+U=(U_1,\dots,U_N)^T.
+~~~
+
+The resulting local system has the form
+
+~~~math
+\left(
+\mathcal A_{\infty,\rm loc}I_N-M
+\right)U
+=
+G_{\rm an},
+~~~
+
+with constant finite matrix \(M\).
+
+This is the **recentered finite delay system**.
+
+**Status:** branch-local RPB terminology.
+
+## Finite-cycle analytic extinction
+
+For a recentered finite delay system, the high-frequency matrix symbol is
+
+~~~math
+m_\infty(\xi)I_N-M.
+~~~
+
+Because
+
+~~~math
+m_\infty(\xi)\sim\log|\xi|,
+~~~
+
+the matrix is invertible for sufficiently large \(|\xi|\), with analytic
+order-zero inverse symbol.
+
+Therefore the local system has an analytic parametrix and every component germ
+is analytic.
+
+The **finite-cycle analytic extinction** is the conclusion that no finite
+isolated self-supporting delay component can carry analytic wavefront.
+
+This supersedes the weaker RPB-61 statement that finite cycles were only forced
+into infinite logarithmic regularity.
+
+**Status:** branch-local RPB terminology.
+
+## Accumulating delay component
+
+An **accumulating delay component** is an infinite self-supporting component of
+the projected analytic singular support for which no finite family of isolated
+charts contains the whole component.
+
+RPB-62 isolates such components as the remaining form of promotion Blocker A
+after finite delay cycles are analytically extinguished.
+
+**Status:** branch-local RPB terminology.
