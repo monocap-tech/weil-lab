@@ -343,7 +343,7 @@ The final pass is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 }
 ```
 
-The current post-Horizon research cursor is RPB-74 / WD-T40 F-1 static closure and build handoff.
+The current post-Horizon research cursor is RPB-75 / WD-T40 F-1 build execution gate.
 
 
 ---
@@ -388,5 +388,18 @@ This is recorded as an infrastructure blocker rather than as a Lean theorem or s
 Current cursor:
 
 ~~~text
-RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF
+RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
 ~~~
+
+
+---
+
+## WD-T40 F-1 static freeze
+
+RPB-74 freezes the audited carrier source at Git blob `93f05eceb07ffda593181d0e9293caa0a05705ac`.
+
+The deterministic build handoff checks that exact blob before compiling, verifies the root import, and rejects top-level `axiom`, `sorry`, or `admit` declarations.
+
+F-1 is therefore statically exhausted but not Lean-certified. A real pinned build remains required before F-2 may begin.
+
+Current cursor: RPB-75 / WD-T40 F-1 build execution gate.
