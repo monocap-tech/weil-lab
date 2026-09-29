@@ -1150,3 +1150,79 @@ stable theorem input.
 ~~~math
 \boxed{\text{PROMOTION CAUTION / OPEN CERTIFICATION OBLIGATION}}
 ~~~
+
+
+---
+
+## RPB-EXT-A1 correction — finite translations are outside the ordinary analytic-pseudodifferential specialization
+
+RPB-EXT-A1 remains a correct source pin for ordinary analytic
+pseudodifferential elliptic regularity.
+
+RPB-60 corrects its earlier RPB-43 specialization to the full compact-window
+Weil operator.
+
+For one prime delay,
+
+~~~math
+(\tau_\ell h)(x)=h(x-\ell),
+~~~
+
+the Schwartz kernel is
+
+~~~math
+K_\ell(x,y)=\delta(x-y-\ell),
+~~~
+
+which is singular on the shifted diagonal \(x-y=\ell\).
+
+Thus \(\tau_\ell\) is a translation Fourier-integral operator with an
+off-diagonal canonical relation, not an ordinary pseudodifferential operator
+with diagonal canonical relation.
+
+Equivalently, although the Fourier multiplier is
+
+~~~math
+e^{-i\ell\xi},
+~~~
+
+its derivatives satisfy
+
+~~~math
+\left|
+\partial_\xi^k e^{-i\ell\xi}
+\right|
+=
+\ell^k,
+~~~
+
+and do not have the high-frequency derivative decay used in the standard
+\(S^0_{1,0}\) analytic pseudodifferential calculus.
+
+Therefore the ordinary analytic-wavefront theorem may be applied to the
+archimedean pseudodifferential component, but it does **not** justify treating
+
+~~~math
+\mathcal A_\infty
+-
+\sum_j a_j(\tau_{\ell_j}+\tau_{-\ell_j})
+~~~
+
+as a single local analytic pseudodifferential operator merely because its
+global Fourier multiplier is nonzero at high frequency.
+
+### Correct RPB status
+
+~~~text
+RPB-43 full-symbol analytic-ellipticity shortcut:
+    WITHDRAWN BY RPB-60
+
+Interior analyticity for arbitrary Friedrichs zero modes:
+    OPEN DELAY-PROPAGATION OBLIGATION
+~~~
+
+### Status
+
+~~~math
+\boxed{\text{SOURCE PIN VALID / FORMER SPECIALIZATION WITHDRAWN}}
+~~~
