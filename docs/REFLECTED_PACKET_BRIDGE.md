@@ -9,86 +9,98 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-66 — POST-PROMOTION NEUTRAL-BRANCH REFOLD COMPLETE; WD-T40 IS CONSISTENT ACROSS STABLE, PUBLIC, AND FORMAL-STATUS SURFACES.}
+\textbf{RPB-67 — WD-T40 LEAN PREFLIGHT COMPLETE; THE THEOREM IS FORMALIZABLE IN PRINCIPLE BUT LEAN-BLOCKED AT THE CURRENT PROJECT ABSTRACTION.}
 }
 ~~~
 
-RPB-65 promoted
+WD-T40 remains mathematically:
 
 ~~~text
-WD-T40 / Gaussian support-gap null-extension exclusion
+INTERNAL-PROOF / CONDITIONAL ON WD-T38 HYPOTHESES
+P4-AUDIT-PASSED
 ~~~
 
-and discharged
+and continues to discharge
 
 ~~~text
 AZ-FIN-WEIL-NULL-EXTENSION
 ~~~
 
-negatively under the retained WD-T38 carrier hypotheses.
+negatively under those hypotheses.
 
-RPB-66 performs the post-promotion refold.
+RPB-67 audits only the separate formal-verification axis.
 
-Current stable theorem range:
-
-~~~text
-WD-T01 through WD-T40
-~~~
-
-Current neutral-branch status:
+The present WD-T38 Lean carrier is abstract:
 
 ~~~text
-WD-T38:
-    carrier-identified attained neutral compact-window null mode
-
-WD-T40:
-    strict enlarged/right-limit Weil null extension excluded
-
-AZ-FIN-WEIL-NULL-EXTENSION:
-    DISCHARGED NEGATIVELY
+NeutralNullExtensionInterface
+    H
+    EndpointObs
+    RightObs
 ~~~
 
-The public package has been revalidated with 40 theorem rows.
+and therefore does not expose the concrete real-line data used by WD-T40:
 
-WD-T40's formal-verification status is kept separate from mathematical standing:
+- L2 Fourier transform;
+- compact support in [-c,c];
+- whole-line tempered-distribution residual;
+- actual compact-window Weil Fourier multiplier;
+- strict-collar support separation.
+
+Mathlib v4.34 already supplies the base infrastructure needed downstream:
 
 ~~~text
-MATHEMATICAL:
-    INTERNAL-PROOF / CONDITIONAL ON WD-T38 HYPOTHESES
-    P4-AUDIT-PASSED
-
-LEAN:
-    LEAN-NOT-ATTEMPTED
+L2 Fourier isometry / Plancherel
+L2 <-> tempered-distribution Fourier compatibility
+Gaussian Fourier transform
+Fourier inversion
+complex analytic continuation tools
 ~~~
 
-The remaining open actual-zeta interfaces are:
+Thus the formal blocker is project-local, not a missing base Fourier library.
+
+Current WD-T40 formal status:
 
 ~~~text
-AZ-NEXTJET-LOC:
-    OPEN
-
-C-ACTUAL-KPH-FLOOR:
-    OPEN / stronger special-packet refinement
+LEAN-BLOCKED
 ~~~
 
-The historical RPB-43/57/58 analytic/Mellin route remains non-load-bearing for
-WD-T40.
+Exact dependency stack:
 
-RPB-60--63 remain retained as valid corrections and failure-mode
-classification.
+~~~text
+F-1  physical real-line Fourier/distribution carrier lift
+F-2  actual compact-window Weil multiplier realization
+F-3  support-gap Gaussian pairing
+F-4  Gaussian coercivity -> exponential Fourier weight
+F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
+F-6  final WD-T40 assembly from explicit EXT-4 / EXT-5 premises
+~~~
 
-No RH closure is claimed.
+A faithful completion would normally receive
+
+~~~text
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE
+~~~
+
+unless EXT-4 and EXT-5 are themselves reconstructed.
+
+No surrogate WD-T40 theorem was added.
+
+No mathematical standing changed.
 
 ## Next cursor
 
 ~~~text
-RPB-67 / WD-T40 LEAN CERTIFICATION PREFLIGHT
+RPB-68 / WD-T40 PHYSICAL FOURIER CARRIER LIFT
 ~~~
 
-The next pass should determine whether WD-T40 admits a faithful formalization
-at the present abstraction level.
+The next pass should attack F-1 only:
 
-Do not weaken the mathematical theorem merely to obtain a Lean certificate.
+1. select the exact Lp/function/tempered-distribution representation;
+2. encode compact support and strict enlarged residual vanishing;
+3. preserve compatibility with the existing abstract WD-T38 theorem;
+4. prove an adapter into NeutralNullExtensionInterface;
+5. stop before Gaussian coercivity unless the carrier layer is complete.
 
 ## Governance
 
@@ -101,4 +113,4 @@ status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_66_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_67_20260929.md.
