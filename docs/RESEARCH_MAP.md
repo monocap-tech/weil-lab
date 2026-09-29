@@ -557,11 +557,11 @@ Horizon 1 is complete.
 
 ```math
 \boxed{
-\texttt{HORIZON 1 COMPLETE / RPB-77 WD-T40 F-1 BUILD GATE RECHECK}
+\texttt{HORIZON 1 COMPLETE / RPB-78 WD-T40 F-1 BUILD GATE RECHECK}
 }
 ```
 
-Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-77 / WD-T40 F-1 build gate recheck.
+Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-78 / WD-T40 F-1 build gate recheck.
 
 ---
 
