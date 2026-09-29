@@ -518,8 +518,8 @@ Status:
 | Bombieri multiplicity | Bombieri (2000), Lemma 10, p. 210 + proof continuation p. 213 | WD-T23 / T22 convention | SOURCE-PINNED |
 | Bombieri kernel decay | Bombieri (2000), Theorem 6 proof, eq. (7.7), p. 204 | corroborating/contextual after P4.2 | SOURCE-PINNED / NON-LOAD-BEARING |
 | Unit-height zero count | Titchmarsh (1986), Theorem 9.2, eq. (9.2.1), p. 211 | WD-T28, WD-T31 | SOURCE-PINNED |
-| Compact-window formula | Zhu (2026), eqs. (2)–(3), p. 2 | WD-T34, WD-T35, WD-T38 | SOURCE-PINNED |
-| Digamma asymptotic | DLMF 5.11.2 | WD-T35 | SOURCE-PINNED |
+| Compact-window formula | Zhu (2026), eqs. (2)–(3), p. 2 | WD-T34, WD-T35, WD-T38, WD-T40 | SOURCE-PINNED |
+| Digamma asymptotic | DLMF 5.11.2 | WD-T35, WD-T40 | SOURCE-PINNED |
 
 ---
 
@@ -1274,4 +1274,27 @@ operator
 
 ~~~math
 \boxed{\text{CONTEXTUAL / NON-LOAD-BEARING RPB}}
+~~~
+
+
+---
+
+## WD-T40 source boundary — Gaussian support-gap null-extension exclusion
+
+WD-T40 consumes only already pinned external inputs:
+
+- EXT-4: compact-window formula, finite prime support, and strict threshold convention;
+- EXT-5: digamma asymptotic giving
+  \[
+  \Psi_a(\eta)=\log|\eta|+O_a(1).
+  \]
+
+The Gaussian support-gap argument itself is internal.
+
+No RPB analytic-wavefront, Mellin-conormal, or Suzuki completed-space theorem is load-bearing for WD-T40.
+
+### Status
+
+~~~math
+\boxed{\text{SOURCE BOUNDARY AUDITED / WD-T40}}
 ~~~
