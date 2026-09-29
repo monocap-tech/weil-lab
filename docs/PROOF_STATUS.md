@@ -229,7 +229,7 @@ The post-Horizon RPB promotion audit has added WD-T40. The next research cursor 
 
 ```math
 \boxed{
-\texttt{RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF}
+\texttt{RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE}
 }
 ```
 
