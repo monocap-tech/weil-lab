@@ -398,7 +398,7 @@ No mathematical audit label is used as a substitute for Lean certification.
 | Artifact | Current blob SHA |
 | --- | --- |
 | PUBLIC_PACKAGE_ARCHITECTURE.md | a1aa7874e5d70a0e0fb0e134039aa3273c9c711e |
-| WEIL_DEFECT_MANUSCRIPT.md | a65ee74d00c5897f8c813bdeffcee083d1ebb834 |
+| WEIL_DEFECT_MANUSCRIPT.md | 5ea337d42607a206285af1ab6e41be9f11920a61 |
 | PUBLIC_THEOREM_INDEX.md | afed1d08a02ce7de6b8b92f8137c01ab40571271 |
 | PUBLIC_VERIFICATION_MATRIX.md | 8dd13015364fcbf0f5fb5ccc31ab3242ca2addd8 |
 | PUBLIC_DEPENDENCY_MAP.md | 5224de4866595ab16f7b222f402d17f7561afe48 |
