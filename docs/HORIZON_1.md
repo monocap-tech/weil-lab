@@ -406,7 +406,7 @@ Therefore **H1-P4 is COMPLETE**.
 }
 ```
 
-LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The final package certificate is [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). No post-Horizon research program has been started.
+Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-67 / WD-T40 Lean certification preflight.
 
 ---
 
