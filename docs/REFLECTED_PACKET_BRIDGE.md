@@ -9,90 +9,117 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-50 — ONE NONZERO SCREW-CORE NEUTRAL DIRECTION COLLAPSES EVERY POSITIVE-LENGTH NEUTRAL PLATEAU; THE CORE-RESTRICTED NULL-EXTENSION INTERFACE IS DISCHARGED NEGATIVELY.}
+\textbf{RPB-51 — SUZUKI'S GENERALIZED ZERO EIGENSPACE LIVES IN THE COMPLETED SCREW SPACE; §8.5 DOES NOT CLOSE THE ORDINARY \(L^2\) CORE-LIFT DEFECT.}
 }
 ~~~
 
-RPB-49 proved that every nonzero screw-core endpoint null direction leaks under
-every strict support enlargement:
+RPB-51 corrects the source interpretation used in RPB-33.
+
+Suzuki first has the ordinary core map
 
 ~~~math
-0\ne u\in\ker G_c
-\Longrightarrow
-G_aJ_{c,a}u\ne0
-\qquad
-(a>c).
+D:H_0^1(-a,a)\overset{\sim}{\longrightarrow}L_0^2(-a,a),
 ~~~
 
-RPB-34 already showed that any such leakage produces a strict negative test
-direction by the collar \(2\times2\) argument. Therefore
+but then extends it to a unitary map between form completions
+
+~~~math
+\bar D:
+\mathcal H(T_a)
+\overset{\sim}{\longrightarrow}
+\mathcal H(S_a),
+~~~
+
+and explicitly notes
+
+~~~math
+\mathcal H(S_a)\not\subset L^2(-a,a).
+~~~
+
+His §8.5 generalized problem is
+
+~~~math
+G_au=\lambda K_au,
+\qquad
+u\in\mathcal H(S_a).
+~~~
+
+Therefore the exceptional zero generalized eigenspace belongs to the completed
+space.  Define
+
+~~~math
+\mathcal N_a^S
+=
+\{u\in\mathcal H(S_a):G_au=0\}.
+~~~
+
+The source supports the completed-space correspondence
+
+~~~math
+\ker A_a
+\longleftrightarrow
+\mathcal N_a^S,
+~~~
+
+not the stronger ordinary-carrier identification
+
+~~~math
+\ker A_a
+\stackrel{?}{\longleftrightarrow}
+\ker_{L^2}G_a.
+~~~
+
+The exact ordinary core statement from RPB-32 remains
 
 ~~~math
 \boxed{
-G_c\succeq0,
-\quad
-\ker G_c\ne0
-\Longrightarrow
-G_a\not\succeq0
-\qquad
-(a>c).
+D^{-1}(\ker_{L^2}G_a)
+=
+\ker A_a\cap H_0^1(-a,a).
 }
 ~~~
 
-So an actual neutral edge cannot begin a positive-length nonnegative/neutral
-right plateau.
+Accordingly, RPB-33's source-based conclusion that the actual neutral edge
+necessarily has a nonzero ordinary \(L^2\) screw-kernel direction is withdrawn.
+Historical RPB notes remain immutable; RPB-51 is the additive correction.
 
-Through the RPB-30 neutral-resolvent isomorphism and the RPB-32/33 screw-core
-identification, the selected unit-gain eigenspace contains the nonzero core
-subspace
+The RPB-34 through RPB-50 leakage/null-extension mechanism remains valid
+**conditionally on an explicitly supplied nonzero**
+\(u\in\ker_{L^2}G_c\).  What is no longer established is the bridge from an
+arbitrary Friedrichs neutral edge to such a core vector.
 
-~~~math
-E_*^{\rm core}
-=
-J_*^{-1}
-\left(
-D^{-1}(\ker G_{c_*})
-\right)
-\ne\{0\}.
+Current branch-local status:
+
+~~~text
+CORE-RESTRICTED NULL-EXTENSION EXCLUSION: PROVED CONDITIONALLY
+CORE-RESTRICTED PLATEAU COLLAPSE: PROVED CONDITIONALLY
+ACTUAL-EDGE L2 SCREW-CORE EXISTENCE: OPEN
+ACTUAL-EDGE PLATEAU COLLAPSE VIA THIS ROUTE: OPEN
+FULL AZ-FIN-WEIL-NULL-EXTENSION: OPEN
 ~~~
-
-Every nonzero physical representative of this subspace fails strict
-null-extension. Thus the core-restricted form of
-AZ-FIN-WEIL-NULL-EXTENSION is discharged negatively.
-
-The full canonical mode-wise interface is not promoted closed here because the
-remaining multiplicity defect
-
-~~~math
-\delta_{\rm core}(c)
-=
-\dim\ker A_c-\dim\ker G_c
-~~~
-
-has not yet been proved to vanish. Noncore Friedrichs zero modes, if they
-exist, could still pose a mode-wise null-extension question; they cannot,
-however, restore a nonnegative plateau because the already-existing core mode
-forces right-side negativity.
 
 ## Next cursor
 
 ~~~text
-RPB-51 / ZERO-EIGENSPACE MULTIPLICITY AND CORE-LIFT AUDIT
+RPB-52 / COMPLETED-TO-L2 SCREW CORE-LIFT TEST
 ~~~
 
-The next pass should test
+The next pass should test whether a completed generalized zero mode
 
 ~~~math
-\dim\ker A_c
-\stackrel{?}{=}
-\dim\ker G_c
+u\in\mathcal N_c^S
 ~~~
 
-at the actual neutral edge using Suzuki's generalized eigenvalue equivalence
-with explicit multiplicity bookkeeping. Equality would promote the
-core-restricted negative null-extension result to the entire Friedrichs zero
-eigenspace; failure would isolate the noncore zero-mode quotient as the final
-irreducible residue.
+is forced into the ordinary carrier
+
+~~~math
+L_0^2(-c,c).
+~~~
+
+Priority is zero-eigenvalue regularization of the completed kernel equation,
+not another multiplicity count.  If no lift exists, the quotient between the
+completed zero space and the ordinary \(L^2\) screw kernel is the exact
+remaining object.
 
 ## Governance
 
@@ -102,4 +129,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_50_20260928.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_51_20260928.md.
