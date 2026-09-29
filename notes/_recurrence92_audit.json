@@ -1,0 +1,136 @@
+{
+  "format": "GERM92-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-92",
+  "standing": "UNRATIFIED",
+  "entry_commit": "23c019e7e9caf103d5ccc3f8b6f38f0b9f8eceec",
+  "verifier_path": "tools/sz_seventh_double_f20_nonwrap_audit.py",
+  "verifier_sha256": "54e831e0db0573252b48b1aec1ca758f223dd0cf1e83a447610478551f22bd42",
+  "verifier_git_blob": "38514c9d15dddd5e2cd6ab2f4c493c34dd373386",
+  "stdout_sha256": "93b984b88f8a262ab714189f72e66a22d94e1400b67e9c3459c3be73ee9764bd",
+  "compact_complete_audit_sha256": "4bd9b0be6c2f556146115a9fd8aa2b3cc2c85e4d39ac339d8eb2451e7b857b40",
+  "execution_exit_code": 0,
+  "parent_GERM91_entry_replay_exit_code": 0,
+  "parent_GERM91_stdout_sha256": "dea727677e8573a6f3f5f589803e971ddc0448e047df430629d29b55738fee2b",
+  "parent_GERM91_recorded_stdout_match": true,
+  "inherited_bundle_manifest_entries_checked": 44,
+  "direct_dependency_sha256": {
+    "tools/sz_post_t_eta7_sixteenth_visit_audit.py": "909435197072a187936ec43799a2475bc6263b276d0f3f7c1c68fa307fcbef5a"
+  },
+  "new_exclusion_scope": "0<b<=nu8, b=e-e91",
+  "experimental_endpoint": "log(2^2548608*5^431461/3^2240070)",
+  "endpoint_decimal": [
+    "1.71121247800046510434740534245673741555",
+    "1.71121247800046510434740534245673741556"
+  ],
+  "increment": "nu8=chi7-2psi7",
+  "increment_decimal": [
+    "0.00000002807302484240060365382381649192",
+    "0.00000002807302484240060365382381649193"
+  ],
+  "matrix_namespace": "U1/U2/V3 are GERM-91-local seventh maps; A/D/E are GERM-92-local eighth maps",
+  "eighth_word_dictionary": {
+    "A": [
+      "V3",
+      "U1"
+    ],
+    "D": [
+      "V3",
+      "U1",
+      "U1"
+    ],
+    "E": [
+      "V3",
+      "U1",
+      "U2"
+    ]
+  },
+  "chart": [
+    [
+      "1",
+      "-3/2"
+    ],
+    [
+      "3/10",
+      "2"
+    ]
+  ],
+  "chart_determinant": "49/20",
+  "common_forward_backward_factor": "5",
+  "signed_cone_bounds": {
+    "A": [
+      1,
+      "6.8122901796",
+      "5.6155293903"
+    ],
+    "D": [
+      -1,
+      "10.8450215151",
+      "11.4267368533"
+    ],
+    "E": [
+      1,
+      "6.0515531638",
+      "5.6413316302"
+    ]
+  },
+  "original_step_counts": [
+    257302,
+    353997
+  ],
+  "entry_maps": [
+    "A",
+    "D"
+  ],
+  "endpoint_maps": [
+    "A",
+    "E"
+  ],
+  "ninth_or_deeper_induction_used": false,
+  "new_retained_coordinates": 0,
+  "remaining_parent_sixth_seventh_formula_width": [
+    "0.00000003772997824121548585314779790099",
+    "0.00000003772997824121548585314779790100"
+  ],
+  "remaining_three_layer_width": [
+    "0.00003151556687790186015729234706987238",
+    "0.00003151556687790186015729234706987239"
+  ],
+  "next_seventh_word": [
+    "V3",
+    "U2"
+  ],
+  "next_matrix_namespace": "GERM-91-local seventh U2 V3",
+  "next_trace": [
+    [
+      [
+        "-1.1875949973",
+        "-1.1875949972"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "-2.5896181226",
+        "-2.5896181225"
+      ]
+    ]
+  ],
+  "next_domain": "b=nu8+excess; 0<z<excess<sigma8",
+  "next_status": "ELLIPTIC NEW TWO-STEP EIGHTH WORD",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Complete stdout and compact serialization are included in the executable certificate bundle.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
