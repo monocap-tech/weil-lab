@@ -4988,3 +4988,98 @@ Therefore any completed-to-\(L^2\) lift at the actual Weil zero mode requires
 an additional actual-kernel boundary regularity theorem.
 
 **Status:** branch-local RPB terminology.
+
+
+## Zero-spectral logarithmic boundary-layer witness
+
+The **zero-spectral logarithmic boundary-layer witness** is the RPB-53 pure
+Dirichlet logarithmic-Laplacian example showing that eigenvalue zero is
+compatible with the optimal noncore endpoint species.
+
+For the Dirichlet operator
+
+~~~math
+\mathcal H_\Omega=\frac12L_\Delta,
+~~~
+
+the scaling law
+
+~~~math
+\lambda_1(R\Omega)
+=
+\lambda_1(\Omega)-\log R
+~~~
+
+allows a scaling with \(\lambda_1(R\Omega)=0\).
+
+The positive principal eigenfunction then satisfies the logarithmic Hopf lower
+bound
+
+~~~math
+\phi_1(x_0-s\nu)
+\gtrsim
+\ell^{1/2}(s),
+\qquad
+\ell(s)\asymp\frac1{\log(1/s)}.
+~~~
+
+Thus zero spectral value does not force removal of the generic logarithmic
+boundary layer and does not imply screw-core regularity.
+
+**Status:** branch-local RPB terminology.
+
+## Noncore logarithmic boundary amplitude
+
+A **noncore logarithmic boundary amplitude** is a leading endpoint coefficient
+of the schematic form
+
+~~~math
+h(c-s)
+=
+b\,\ell^{1/2}(s)
++
+o(\ell^{1/2}(s)),
+\qquad
+b\ne0,
+~~~
+
+when such an asymptotic expansion is available.
+
+RPB-53 does not assert that every Friedrichs zero mode has a classical
+coefficient \(b\).  The term names the leading optimal logarithmic edge species
+whose nonvanishing obstructs \(H_0^1\) core membership.
+
+**Status:** branch-local RPB terminology.
+
+## Noncore log-layer exterior leakage
+
+The **noncore log-layer exterior leakage** is the proposed mechanism that a
+nonzero boundary amplitude
+
+~~~math
+h(c-r)\sim b\,\ell^{1/2}(r)
+~~~
+
+produces, just outside the support,
+
+~~~math
+L_\Delta h(c+s)
+\sim
+-\mathrm{const}\cdot b\sqrt{\log(1/s)},
+~~~
+
+because
+
+~~~math
+\int_s^\delta
+\frac{dr}{r\sqrt{\log(1/r)}}
+=
+2\sqrt{\log(1/s)}
++
+O(1).
+~~~
+
+RPB-53 registers this as the next mechanism to test, not yet as a theorem for
+all actual Friedrichs zero modes.
+
+**Status:** branch-local RPB terminology.
