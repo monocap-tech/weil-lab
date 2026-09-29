@@ -4561,3 +4561,226 @@ An exact construction of \(\mathbf D_c\) requires the endpoint parametrix or
 boundary symbol of the actual background resolvent.
 
 **Status:** branch-local RPB terminology.
+
+
+## Logarithmic edge normal operator
+
+At the right endpoint \(x=c-s\), \(s\downarrow0\), the universal singular
+part of the one-dimensional Dirichlet logarithmic Laplacian is
+
+\`\`\`math
+\mathcal E h(s)
+=
+\int_0^\delta
+\frac{h(s)-h(r)}{|s-r|}\,dr
++
+h(s)\log\frac1s.
+\`\`\`
+
+In logarithmic boundary coordinates
+
+\`\`\`math
+t=\log\frac1s,
+\qquad
+H(t)=h(e^{-t}),
+\`\`\`
+
+its leading large-\(t\) normal form is
+
+\`\`\`math
+\boxed{
+\mathcal N_{\log}H(t)
+=
+2tH(t)
+-
+\int^t H(w)\,dw.
+}
+\`\`\`
+
+For \(H(t)=t^{-\alpha}\), \(0<\alpha<1\),
+
+\`\`\`math
+\mathcal E h
+=
+\frac{1-2\alpha}{1-\alpha}
+t^{1-\alpha}
++
+o\!\left(t^{1-\alpha}\right).
+\`\`\`
+
+Thus the homogeneous logarithmic boundary exponent is
+
+\`\`\`math
+\boxed{\alpha=\frac12,}
+\`\`\`
+
+i.e. the boundary scale
+\(\ell^{1/2}(s)\asymp(\log(1/s))^{-1/2}\).
+
+**Status:** branch-local RPB terminology.
+
+## Core logarithmic-layer annihilation
+
+If
+
+\`\`\`math
+h\in H_0^1(-c,c),
+\`\`\`
+
+then the one-dimensional trace estimate gives
+
+\`\`\`math
+|h(c-s)|
+\le
+s^{1/2}
+\|h'\|_{L^2(c-s,c)}.
+\`\`\`
+
+Hence
+
+\`\`\`math
+h(c-s)
+=
+o\!\left(
+(\log(1/s))^{-N}
+\right)
+\`\`\`
+
+for every fixed \(N\).
+
+The **core logarithmic-layer annihilation** is the fact that screw-core
+regularity removes every finite inverse-logarithmic boundary layer, including
+the universal \(\ell^{1/2}\) mode.
+
+**Status:** branch-local RPB terminology.
+
+## Conormal log-enhancement
+
+Let the zero extension of \(h\) have a noninteger right-endpoint conormal term
+
+\`\`\`math
+h(c-s)
+=
+b\,s^\lambda
++
+\text{higher terms},
+\qquad
+b\ne0,
+\qquad
+\lambda\notin\mathbb Z_{\ge0}.
+\`\`\`
+
+Then the Chen--Weth edge kernel gives
+
+\`\`\`math
+L_\Delta h(c-s)
+=
+2b\,s^\lambda
+\log\frac1s
++
+O_{\rm conormal}(s^\lambda)
++
+\text{analytic powers}.
+\`\`\`
+
+Since the Weil archimedean multiplier has principal symbol
+\(\log|\xi|\), its contribution contains
+
+\`\`\`math
+\boxed{
+b\,s^\lambda
+\log\frac1s
+}
+\`\`\`
+
+with nonzero coefficient.
+
+This unavoidable extra logarithm is the **conormal log-enhancement**.
+
+Finite active prime translations, pole/evaluation terms, and the
+\(O(|\xi|^{-2})\) archimedean remainder do not create an extra logarithm at the
+same noninteger exponent.
+
+**Status:** branch-local RPB terminology.
+
+## Mellin double-pole obstruction
+
+A simple endpoint Mellin pole of \(h\) at
+
+\`\`\`math
+z=-\lambda
+\`\`\`
+
+corresponds to a conormal term \(s^\lambda\).
+
+Multiplication by
+
+\`\`\`math
+\log\frac1s
+\`\`\`
+
+differentiates the Mellin transform and turns that simple pole into a double
+pole.
+
+The **Mellin double-pole obstruction** is the following:
+
+> in the endpoint null equation, the archimedean logarithmic principal part
+> creates a nonzero double pole at every noninteger conormal pole of \(h\),
+> while the finite prime translations and analytic finite-rank terms create at
+> most simple poles or analytic terms there.
+
+Therefore an endpoint neutral mode with analytic interior/lower-order data
+cannot carry such a noninteger conormal Mellin residue.
+
+**Status:** branch-local RPB terminology.
+
+## Threshold amplitude extinction
+
+Let \(u=Dh\) be a screw-core endpoint neutral source at a prime-power threshold,
+and suppose the threshold Mellin amplitude
+
+\`\`\`math
+\mathfrak a_\beta(u)
+\`\`\`
+
+is lawful in the sense of RPB-47.
+
+Integration by parts gives a nonzero Mellin residue of \(h\) at
+
+\`\`\`math
+z=-(\beta+1)
+\`\`\`
+
+whenever \(\mathfrak a_\beta(u)\ne0\).
+
+All RPB-46 admissible \(\beta\) are nonreal, hence \(\beta+1\) is a
+noninteger conormal exponent.
+
+The Mellin double-pole obstruction therefore forces
+
+\`\`\`math
+\boxed{
+\mathfrak a_\beta(u)=0
+}
+\`\`\`
+
+for every admissible threshold channel.
+
+This is **threshold amplitude extinction**.
+
+**Status:** branch-local RPB terminology.
+
+## Core strict-null-extension exclusion
+
+RPB-45 excludes strict neutral collars away from prime-power thresholds.
+
+At a threshold, RPB-47 says every nonzero persistent source must have a
+nonzero full threshold amplitude vector, while threshold amplitude extinction
+forces every admissible amplitude to vanish.
+
+Therefore a nonzero screw-visible core neutral mode cannot persist as an exact
+null mode on any strict support enlargement.
+
+This is the **core strict-null-extension exclusion**.
+
+**Status:** branch-local RPB terminology.
