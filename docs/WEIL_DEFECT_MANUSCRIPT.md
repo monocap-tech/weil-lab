@@ -69,18 +69,13 @@ with no automatic positive-Sobolev coercive upgrade.
 
 These ingredients assemble into three morphology classes: persistent selected
 negative defect, attained unit-gain neutral defect, and noncompact
-moving/background morphology. The first two terminate at explicit
-actual-zeta interfaces,
-
-~~~text
-AZ-NEXTJET-LOC
-AZ-FIN-WEIL-NULL-EXTENSION
-~~~
-
-with C-ACTUAL-KPH-FLOOR retained as a stronger special-packet refinement on
-the negative side. Horizon 1 proves the deduction up to these stop lines. It
-does not prove the interface statements themselves and does not claim RH
-closure.
+moving/background morphology. The negative branch terminates at the open
+actual-zeta interface AZ-NEXTJET-LOC, with C-ACTUAL-KPH-FLOOR retained as a
+stronger special-packet refinement. The original neutral package terminated at
+AZ-FIN-WEIL-NULL-EXTENSION; the additive theorem WD-T40 now discharges that
+interface negatively under the WD-T38 carrier hypotheses by Gaussian
+support-gap coercivity. This does not close the negative or noncompact
+branches and does not claim RH closure.
 
 ---
 
@@ -926,14 +921,45 @@ WD-T34–WD-T36 type the operator as:
 - no automatic positive-Sobolev coercive gain;
 - global quadratic cancellation rather than termwise vanishing.
 
-The branch stops at
+Historically the branch stopped at
 
 ~~~text
 AZ-FIN-WEIL-NULL-EXTENSION
 ~~~
 
-which asks for the actual support/null-extension rigidity needed beyond the
-compact-window null equation. No such theorem is imported upstream.
+which asked for support/null-extension rigidity beyond the compact-window null
+equation.
+
+### WD-T40 — Gaussian support-gap null-extension exclusion
+
+Assume the WD-T38 carrier-identified mode is nonzero and compactly supported in
+([-c,c]), and suppose its zero extension satisfied the correct Weil null
+equation on some strict enlargement ((-a,a)), (a>c).
+
+The enlarged residual then vanishes on an interval containing the support with
+positive spatial margin. Moving Gaussian frequency windows convert that gap
+into an exponentially small residual pairing. On the same windows, the exact
+enlarged compact-window symbol satisfies
+
+~~~math
+Psi_a(eta)=log|eta|+O_a(1),
+~~~
+
+so logarithmic coercivity forces exponential (L^2)-Fourier decay of the mode.
+The mode therefore extends holomorphically to a strip. Compact support then
+forces it to vanish identically, contradicting the nonzero WD-T38 mode.
+
+Hence
+
+~~~math
+oxed{
+	exttt{AZ-FIN-WEIL-NULL-EXTENSION}
+	ext{ is discharged negatively under the WD-T38 hypotheses.}
+}
+~~~
+
+WD-T40 is an internal proof conditional on the WD-T38 carrier hypotheses. Its
+current Lean status is LEAN-NOT-ATTEMPTED.
 
 ---
 
@@ -1103,9 +1129,11 @@ The **mathematical standing** records whether an item is an internal proof,
 derived statement, imported theorem plus specialization, conditional
 composite, example, scope rule, or open interface.
 
-The **formal verification standing** records what Lean verifies:
+The **formal verification standing** records what Lean verifies or has not yet
+attempted:
 
 ~~~text
+LEAN-NOT-ATTEMPTED
 LEAN-CERTIFIED
 LEAN-CERTIFIED-FROM-IMPORTED-PREMISE
 LEAN-BLOCKED
@@ -1116,8 +1144,9 @@ LEAN-CERTIFIED-FROM-IMPORTED-PREMISE means that Lean certifies a downstream
 deduction from an explicit premise; it does not certify the external theorem
 represented by that premise.
 
-At the close of LEAN-H1, every stable Horizon-1 theorem and example has a
-durable final formal status. See
+At the close of historical LEAN-H1, every original Horizon-1 theorem and
+example had a durable final formal status. The post-Horizon theorem WD-T40 is
+currently LEAN-NOT-ATTEMPTED. See
 [Public Verification Matrix](PUBLIC_VERIFICATION_MATRIX.md) and
 [Lean Status](LEAN_STATUS.md).
 
@@ -1150,17 +1179,18 @@ as its next unresolved actual-zeta obligation after the zero-moment law,
 inverse-square far response, and $O((\log R)/R)$ far-shell reduction. The
 stronger special-packet refinement C-ACTUAL-KPH-FLOOR is tracked separately.
 
-The attained neutral branch leaves
+The attained neutral branch historically left
 
 ~~~text
 AZ-FIN-WEIL-NULL-EXTENSION
 ~~~
 
-as its unresolved support/right-limit obligation after reduction to a
-compact-window null equation for a logarithmic-order operator with finitely
-many arithmetic translations.
+as its support/right-limit obligation. WD-T40 now discharges that interface
+negatively under the WD-T38 hypotheses.
 
-These are open downstream obligations, not theorem IDs.
+The remaining open downstream obligations are AZ-NEXTJET-LOC and the stronger
+special-packet refinement C-ACTUAL-KPH-FLOOR. They are interfaces, not theorem
+IDs.
 
 The noncompact morphology adds no new actual-zeta interface; it classifies
 coefficient-custody failures around the fixed-packet branches.
@@ -1190,6 +1220,8 @@ Horizon 1 produces an independent Weil-defect theory with:
 - a fully audited abstract operator core;
 - a typed zeta-Weil specialization;
 - fixed-packet negative and neutral morphology theorems;
+- WD-T40, excluding strict persistence of the attained fixed-packet neutral
+  mode under the WD-T38 carrier hypotheses;
 - a separate noncompact moving/background morphology;
 - seven sharpness witnesses;
 - an exhausted Lean certification track;
@@ -1210,7 +1242,9 @@ The boundary is:
 }
 ~~~
 
-Discharging the open interfaces is new work beyond this manuscript.
+The remaining open negative-side interfaces require further work beyond this
+manuscript. The neutral support/null-extension interface is already discharged
+negatively by WD-T40.
 
 ---
 
