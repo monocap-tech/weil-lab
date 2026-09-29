@@ -4789,11 +4789,11 @@ This is the **core strict-null-extension exclusion**.
 
 Let \(c\) be a support value for which
 
-\`\`\`math
+~~~math
 G_c\succeq0,
 \qquad
 \ker G_c\ne\{0\}.
-\`\`\`
+~~~
 
 A **positive-length neutral plateau** means a right interval of supports on
 which the screw family remains nonnegative while the endpoint zero mode is not
@@ -4801,20 +4801,20 @@ forced into a strict negative direction.
 
 The **neutral-plateau collapse** is the RPB consequence
 
-\`\`\`math
+~~~math
 0\ne u\in\ker G_c,
 \qquad
 G_aJ_{c,a}u\ne0
 \quad(a>c)
-\`\`\`
+~~~
 
 together with the RPB-34 collar test, which yields
 
-\`\`\`math
+~~~math
 G_a\not\succeq0
 \qquad
 (a>c).
-\`\`\`
+~~~
 
 Thus one leaking screw-kernel direction is sufficient to rule out every
 positive-length nonnegative/neutral right plateau from \(c\).
@@ -4825,35 +4825,35 @@ positive-length nonnegative/neutral right plateau from \(c\).
 
 Let \(A_c\) be the localized Friedrichs Weil operator and let
 
-\`\`\`math
+~~~math
 \ker A_c^{\rm core}
 :=
 \ker A_c\cap H_0^1(-c,c)
 =
 D^{-1}(\ker G_c).
-\`\`\`
+~~~
 
 The **core-restricted null-extension discharge** is the negative resolution of
 the null-extension question on this subspace:
 
-\`\`\`math
+~~~math
 0\ne h\in\ker A_c^{\rm core}
 \Longrightarrow
 \widetilde h\notin\ker A_a
 \qquad
 (a>c),
-\`\`\`
+~~~
 
 with the threshold-aware interpretation supplied by RPB-35 through RPB-49.
 
 This does not identify \(\ker A_c^{\rm core}\) with the entire Friedrichs
-nullspace.  The residual multiplicity defect
+nullspace. The residual multiplicity defect
 
-\`\`\`math
+~~~math
 \delta_{\rm core}(c)
 =
 \dim\ker A_c-\dim\ker G_c
-\`\`\`
+~~~
 
 may still be positive until a separate zero-eigenspace multiplicity/core-lift
 audit closes it.
