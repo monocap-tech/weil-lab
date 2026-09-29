@@ -9,41 +9,56 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-71 — THE F-1 CARRIER IS STATICALLY API-CONSISTENT WITH PINNED MATHLIB V4.34 AFTER ELABORATION HARDENING.}
+\textbf{RPB-72 — EVERY IMPLICIT INSTANCE REQUIRED BY THE F-1 CARRIER IS PRESENT IN PINNED MATHLIB V4.34.0.}
 }
 ~~~
 
-The physical Fourier carrier remains in
+RPB-71 established a static declaration/API pass.
+
+RPB-72 audits the implicit typeclass graph.
+
+Pinned instance chain:
 
 ~~~text
-WeilDefect/Morphology/NeutralFourierCarrier.lean
+Fact (1 <= (2 : ENNReal)):
+    fact_one_le_two_ennreal
+
+InnerProductSpace R R:
+    RCLike.toInnerProductSpaceReal
+
+FiniteDimensional R R:
+    finiteDimensional_self
+
+MeasurableSpace / BorelSpace / SecondCountableTopology R:
+    global real-line instances
+
+MeasureSpace R / volume:
+    canonical finite-dimensional inner-product-space volume
+    plus Real.measureSpace
+
+IsAddHaarMeasure volume:
+    canonical volume Haar instance
+
+volume.HasTemperateGrowth:
+    IsAddHaarMeasure.instHasTemperateGrowth
+
+InnerProductSpace C C:
+    RCLike.innerProductSpace
+
+CompleteSpace C:
+    global Complex complete-space instance
+
+L2 FourierTransform:
+    Mathlib.Analysis.Fourier.LpSpace
+
+TemperedDistribution FourierTransform:
+    Mathlib.Analysis.Distribution.TemperedDistribution
 ~~~
 
-and is imported by the root library.
+No missing implicit instance was found.
 
-RPB-71 audited the source directly against the pinned declarations for:
-
-- MeasureTheory.Lp;
-- MemLp.toLp;
-- the Lp-to-tempered-distribution CoeHead;
-- the L2 Fourier transform instance;
-- the tempered-distribution Fourier transform instance;
-- MeasureTheory.Lp.fourier_toTemperedDistribution_eq;
-- Distribution.IsVanishingOn;
-- Distribution.IsVanishingOn.mono.
-
-All declaration shapes match.
-
-Four elaboration-hardening edits are now present:
-
-~~~text
-1. RealComplexL2 uses explicit volume.
-2. The WD-T38 adapter unfolds l2Mode and uses the stored equality directly.
-3. Fourier compatibility exposes both coercions explicitly before applying the pinned theorem.
-4. Residual vanishing names s1/s2 explicitly in IsVanishingOn.mono.
-~~~
-
-No static API mismatch remains.
+No local instance shim was added because the required instances are already
+globally registered.
 
 Current formalization state:
 
@@ -51,45 +66,26 @@ Current formalization state:
 F-1  physical Fourier carrier lift
      SOURCE IMPLEMENTED
      STATIC API PASS
+     TYPECLASS STATIC PASS
      BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
 
 F-2  actual compact-window Weil multiplier realization
      NOT STARTED
 ~~~
 
-The remaining untested risk is no longer declaration shape. It is implicit
-instance/typeclass synthesis plus ordinary elaboration, which cannot be
-compiler-certified while no Lean runner is available.
+The remaining static risk is ordinary proof-term/parser/elaboration behavior,
+not a missing declaration or typeclass path.
 
-WD-T40 remains:
-
-~~~text
-MATHEMATICAL:
-    INTERNAL-PROOF / CONDITIONAL ON WD-T38 HYPOTHESES
-    P4-AUDIT-PASSED
-
-LEAN:
-    LEAN-BLOCKED
-~~~
+WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 
 ## Next cursor
 
 ~~~text
-RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
+RPB-73 / WD-T40 CARRIER PROOF-TERM ELABORATION AUDIT
 ~~~
 
-The next pass should inspect the exact implicit instances required by the
-carrier source under pinned mathlib v4.34:
-
-~~~text
-Fact (1 <= (2 : ENNReal))
-volume.HasTemperateGrowth
-IsLocallyFiniteMeasure volume
-InnerProductSpace R R
-FiniteDimensional R R
-BorelSpace R
-FourierTransform instances
-~~~
+The next pass should inspect the carrier proof bodies and syntax line-by-line
+against pinned Lean/mathlib idioms.
 
 Do not start F-2.
 
@@ -104,4 +100,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_71_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_72_20260929.md.
