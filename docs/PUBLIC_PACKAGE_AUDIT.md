@@ -488,7 +488,7 @@ WD-T40 formal state.
 ### 13.3 Next cursor
 
 ~~~text
-RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
+RPB-73 / WD-T40 CARRIER PROOF-TERM ELABORATION AUDIT
 ~~~
 
 
@@ -527,7 +527,7 @@ WD-T40 remains LEAN-BLOCKED.
 The next cursor is:
 
 ~~~text
-RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
+RPB-73 / WD-T40 CARRIER PROOF-TERM ELABORATION AUDIT
 ~~~
 
 **Result:** PASS as a custody/status update.
@@ -558,7 +558,7 @@ Both temporary validation PRs were closed without merge. The research branch con
 Next cursor:
 
 ~~~text
-RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
+RPB-73 / WD-T40 CARRIER PROOF-TERM ELABORATION AUDIT
 ~~~
 
 
@@ -584,7 +584,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
+RPB-73 / WD-T40 CARRIER PROOF-TERM ELABORATION AUDIT
 ~~~
 
 **Result:** PASS as a custody/status update.
@@ -614,7 +614,33 @@ No declaration-shape mismatch remains. Build certification remains infrastructur
 Next cursor:
 
 ~~~text
-RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
+RPB-73 / WD-T40 CARRIER PROOF-TERM ELABORATION AUDIT
 ~~~
 
 **Result:** PASS as a static API audit.
+
+
+---
+
+## 18. Post-RPB-72 typeclass synthesis delta
+
+RPB-72 traced every implicit instance required by the F-1 carrier through pinned mathlib v4.34.0.
+
+Static typeclass result: PASS. The real domain geometry/topology/measure stack, p=2 Fact, volume Haar/temperate-growth chain, complex Hilbert-space value structure, and both FourierTransform instances are all globally available.
+
+No local instance shims were added; F-1 remains build-uncertified solely because no Lean runner is available.
+
+Current state:
+
+~~~text
+F-1: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / BUILD INFRASTRUCTURE-BLOCKED
+F-2: NOT STARTED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-73 / WD-T40 CARRIER PROOF-TERM ELABORATION AUDIT
+~~~
+
+**Result:** PASS as a static typeclass audit.
