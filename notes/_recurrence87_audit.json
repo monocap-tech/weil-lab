@@ -1,0 +1,189 @@
+{
+  "format": "GERM87-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-87",
+  "standing": "UNRATIFIED",
+  "entry_commit": "93b2023a0211ef6a946d563a6d379318580d6ef2",
+  "verifier_path": "tools/sz_post_c10_tenth_map_audit.py",
+  "verifier_sha256": "7194b18fbfd427038f4fe5b73f5adcc46038f0cc8d89da82ae9c7d88025ea18f",
+  "verifier_git_blob": "e16a6cdf95200f91013658a471cbbc1b22a70aec",
+  "stdout_sha256": "9dad372a549c5d0c2a8e777ba071f792d1b3ad33db81eefd41725147572ca7d3",
+  "compact_complete_audit_sha256": "c21c1cee6c86b3a6d22d0a87800e98f7a75fee53f9a57dd7e35eceee93b91b95",
+  "execution_exit_code": 0,
+  "parent_GERM86_replay_exit_code": 0,
+  "parent_GERM86_stdout_sha256": "3e489d7fe1273318ce75fb8a921f8393773811484703cd5d6f94610c16bc23a6",
+  "parent_GERM86_recorded_stdout_match": true,
+  "new_exclusion_scope": "0<epsilon<=omega10, epsilon=e-e86; L86<L<=L86+omega10",
+  "experimental_endpoint": "(289643180,-254579024,49034692) in (log2,log3,log5)",
+  "endpoint_decimal": [
+    "1.71121219705098118467177861791314881",
+    "1.71121219705098118467177861791314882"
+  ],
+  "increment": "omega10",
+  "direct_dependency_sha256": {
+    "tools/sz_post_chi_minus_psi_eighth_map_audit.py": "97fd7d30a211e4bf0ae464df0c3f8dd41aab92d0e25be1de41343a6f4c6dae48"
+  },
+  "matrix_namespace": "P/Q/R/S are GERM-86-local ninth maps; V/U0/U1 are GERM-87-local tenth maps",
+  "tenth_word_dictionary": {
+    "V": [
+      "Q",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R"
+    ],
+    "U0": [
+      "Q",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R"
+    ],
+    "U1": [
+      "Q",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "R",
+      "S"
+    ]
+  },
+  "eleventh_word_dictionary": {
+    "0/4": [
+      "V",
+      "U0",
+      "U0",
+      "U0"
+    ],
+    "1/4": [
+      "V",
+      "U0",
+      "U0",
+      "U1"
+    ],
+    "2/4": [
+      "V",
+      "U0",
+      "U1",
+      "U1"
+    ],
+    "3/4": [
+      "V",
+      "U1",
+      "U1",
+      "U1"
+    ],
+    "0/5": [
+      "V",
+      "U0",
+      "U0",
+      "U0",
+      "U0"
+    ],
+    "1/5": [
+      "V",
+      "U0",
+      "U0",
+      "U0",
+      "U1"
+    ],
+    "2/5": [
+      "V",
+      "U0",
+      "U0",
+      "U1",
+      "U1"
+    ],
+    "3/5": [
+      "V",
+      "U0",
+      "U1",
+      "U1",
+      "U1"
+    ],
+    "4/5": [
+      "V",
+      "U1",
+      "U1",
+      "U1"
+    ]
+  },
+  "chart": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "-11/5",
+      "-8/5"
+    ]
+  ],
+  "common_forward_backward_factor": "100",
+  "minimum_forward_lower": "530296.2470517531",
+  "minimum_backward_lower": "1169501.2986900512",
+  "distinct_temporal_words": 9,
+  "original_step_counts": [
+    55313611,
+    69471837
+  ],
+  "upper_endpoint_words": [
+    "U1^3 V",
+    "U1^4 V"
+  ],
+  "remaining_eighth_formula_width": [
+    "0.00000000875911804477083925517585367378",
+    "0.00000000875911804477083925517585367379"
+  ],
+  "remaining_three_layer_width": [
+    "0.00003179651636182153578401689065847067",
+    "0.00003179651636182153578401689065847068"
+  ],
+  "next_tenth_word": [
+    "Q",
+    "R",
+    "R",
+    "R",
+    "R",
+    "R",
+    "R",
+    "R",
+    "R",
+    "S"
+  ],
+  "next_trace": [
+    [
+      [
+        "-8007.1476005063",
+        "-8007.1476005062"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "64114408.6962925359",
+        "64114408.6962925360"
+      ]
+    ]
+  ],
+  "next_status": "HYPERBOLIC NEW TEN-STEP TENTH SOURCE WORD",
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE"
+}
