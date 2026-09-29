@@ -1,0 +1,113 @@
+{
+  "format": "GERM88-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-88",
+  "standing": "UNRATIFIED",
+  "entry_commit": "37d28daff273ff5bccfc96e225b759408682c5e7",
+  "verifier_path": "tools/sz_post_omega10_ten_step_audit.py",
+  "verifier_sha256": "2568c96ed8880132dc7a8d8996f6088040afa0f26f652b2f39155bb7244594b3",
+  "verifier_git_blob": "12f4fbee3c8964dcfbfd6f3780018d92023ad1a8",
+  "stdout_sha256": "02bc4165bcd15a40e16bd276c3c2f9e0a5a9c15b7cda1fba5ef3e3fdf27819eb",
+  "compact_complete_audit_sha256": "fa3b1eb02bb2984a87027be0e35e89e96ece0ee5c525d1bcf3be8820617d757e",
+  "execution_exit_code": 0,
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true,
+  "GERM87_recovery": {
+    "corrupted_repository_blob": "e16a6cdf95200f91013658a471cbbc1b22a70aec",
+    "restored_executed_blob": "df63d04fc29402ca873a945c4c4962385e6eb121",
+    "restored_executed_sha256": "7194b18fbfd427038f4fe5b73f5adcc46038f0cc8d89da82ae9c7d88025ea18f",
+    "restoration_commit": "410d6c966f05e843bcd536f70961b424c8d528ef",
+    "entry_bundle_replay_exit_code": 0,
+    "entry_bundle_stdout_sha256": "9dad372a549c5d0c2a8e777ba071f792d1b3ad33db81eefd41725147572ca7d3",
+    "recorded_successful_stdout_match": true,
+    "old_repository_byte_identity_claim": "WITHDRAWN; corrupted source did not match executed bundle",
+    "reporting_correction": "GERM87 remaining eighth window was rho9-omega10, not rho9"
+  },
+  "direct_dependency_sha256": {
+    "tools/sz_post_c10_tenth_map_audit.py": "7194b18fbfd427038f4fe5b73f5adcc46038f0cc8d89da82ae9c7d88025ea18f",
+    "tools/sz_post_chi_minus_psi_eighth_map_audit.py": "97fd7d30a211e4bf0ae464df0c3f8dd41aab92d0e25be1de41343a6f4c6dae48"
+  },
+  "direct_proved_range": "c10<a<=sigma8, a=e-e85; overlaps and re-proves GERM87",
+  "strictly_new_range": "c10+omega10<a<=sigma8; L87<L<=L85+sigma8",
+  "experimental_endpoint": "log(3^4042285/(2^4599040*5^778589))",
+  "endpoint_decimal": [
+    "1.71121220513149937106816511524629843479",
+    "1.71121220513149937106816511524629843480"
+  ],
+  "new_increment": "rho9-omega10",
+  "increment_decimal": [
+    "0.00000000808051818639638649733314961753",
+    "0.00000000808051818639638649733314961754"
+  ],
+  "matrix_namespace": "P/Q/R/S are GERM-86-local; next U/V are GERM-81-local seventh matrices",
+  "same_chart_as_GERM86_87": true,
+  "chart": [
+    [
+      "1",
+      "1"
+    ],
+    [
+      "-11/5",
+      "-8/5"
+    ]
+  ],
+  "common_forward_backward_factor": "4",
+  "direct_range_word_count": 21,
+  "strictly_new_range_word_count": 20,
+  "word_family": "S^s R^(N-s-1) Q; N=10,11; 0<=s<N",
+  "minimum_forward_lower": "4.4123822156",
+  "minimum_backward_lower": "9.6536190713",
+  "sign_rule": "N=10: -(-1)^floor(s/2); N=11: -1 if s=0, else (-1)^floor((s-1)/2)",
+  "original_step_counts": [
+    12838933,
+    14158226
+  ],
+  "eleventh_induction_used": false,
+  "endpoint_words": [
+    "S^9 Q",
+    "S^10 Q; GERM86-local"
+  ],
+  "completed_window": "GERM86 eighth/ninth formula range through a=sigma8, t=2psi7",
+  "remaining_eighth_formula_width": "ZERO",
+  "remaining_three_layer_width": [
+    "0.00003178843584363513939751955750885314",
+    "0.00003178843584363513939751955750885315"
+  ],
+  "next_eighth_seventh_word": [
+    "V1",
+    "U1",
+    "U1"
+  ],
+  "next_matrix_namespace": "GERM-81-local seventh U1^2 V1",
+  "next_trace": [
+    [
+      [
+        "-32.6297541633",
+        "-32.6297541632"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "1060.7008567544",
+        "1060.7008567545"
+      ]
+    ]
+  ],
+  "next_domain": "t=2psi7+d; 0<d<nu8; sigma8<z<sigma8+d",
+  "next_status": "HYPERBOLIC NEW EIGHTH SOURCE WORD; NO EXCLUSION BEYOND t=2psi7",
+  "initial_local_attempt": "Stopped on empty integer-junction polytope; selected exact nonempty s=j-1 faces before successful run; mathematical assertions retained",
+  "precision": {
+    "grid": "10^120",
+    "log_series_terms": 400
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Complete stdout and compact serialization included in the bundle; pinned executable reproduces stdout."
+}
