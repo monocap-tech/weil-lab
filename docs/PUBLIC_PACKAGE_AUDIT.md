@@ -488,7 +488,7 @@ WD-T40 formal state.
 ### 13.3 Next cursor
 
 ~~~text
-RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 
@@ -527,7 +527,7 @@ WD-T40 remains LEAN-BLOCKED.
 The next cursor is:
 
 ~~~text
-RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a custody/status update.
@@ -558,7 +558,7 @@ Both temporary validation PRs were closed without merge. The research branch con
 Next cursor:
 
 ~~~text
-RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 
@@ -584,7 +584,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a custody/status update.
@@ -614,7 +614,7 @@ No declaration-shape mismatch remains. Build certification remains infrastructur
 Next cursor:
 
 ~~~text
-RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a static API audit.
@@ -640,7 +640,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a static typeclass audit.
@@ -664,7 +664,7 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a static proof-term audit.
@@ -700,7 +700,33 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as a static-closure/build-handoff audit.
+
+
+---
+
+## 21. Post-RPB-75 frozen build-gate delta
+
+RPB-75 tested the exact RPB-74 frozen carrier handoff from a fresh validation branch based on the current research head.
+
+Draft PR #4 called `scripts/check_neutral_fourier_carrier.sh` directly. GitHub Actions run 36645302165 again failed before runner allocation: runner_id 0, empty runner name, and zero steps.
+
+No Lean process ran. PR #4 was closed without merge. The research branch contains no validation-only workflow change.
+
+Current state:
+
+~~~text
+F-1: STATICALLY EXHAUSTED / BUILD INFRASTRUCTURE-BLOCKED
+F-2: NOT STARTED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as an unchanged build-gate custody update.
