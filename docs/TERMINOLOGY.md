@@ -5651,3 +5651,68 @@ the local canonical relation even though the total multiplier is
 nonvanishing at large \(|\xi|\).
 
 **Status:** branch-local RPB correction.
+
+
+## Analytic-wavefront delay-witness relation
+
+Let
+
+~~~math
+S=WF_A(h)
+~~~
+
+for a solution of the finite-delay interior Weil equation.
+
+The **analytic-wavefront delay-witness relation** is
+
+~~~math
+S
+\subseteq
+\bigcup_jT_{+\ell_j}S
+\cup
+\bigcup_jT_{-\ell_j}S.
+~~~
+
+Equivalently, every analytic singular point must have at least one singular
+witness at one active prime-delay translate.
+
+The relation is existential.  It does not imply closure of the singular set
+under the full additive prime-log group.
+
+**Status:** branch-local RPB terminology.
+
+## Delay-group closure correction
+
+The **delay-group closure correction** is the RPB-61 distinction between:
+
+1. the arithmetic group
+   \[
+   \Gamma_c=\sum_p\mathbb Z\log p,
+   \]
+   which may be dense; and
+2. an actual analytic singular witness path, which at each step needs only one
+   active translated witness.
+
+Therefore density of \(\Gamma_c\) does not imply density of one actual
+singular orbit.
+
+**Status:** branch-local RPB correction.
+
+## Infinite-log delay cycle
+
+A self-supporting finite delay component is an **infinite-log delay cycle** if
+iteration of the interior equation forces, for every \(N\),
+
+~~~math
+h\in H_{\log}^{N}
+~~~
+
+microlocally on that component.
+
+Such a component is smoother than every finite logarithmic order but need not
+belong to any positive Sobolev class and need not be analytic.
+
+RPB-61 identifies infinite-log delay cycles as the narrowed residue of
+promotion Blocker A.
+
+**Status:** branch-local RPB terminology.
