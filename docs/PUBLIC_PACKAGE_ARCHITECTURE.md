@@ -343,7 +343,7 @@ The final pass is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 }
 ```
 
-The current post-Horizon research cursor is RPB-73 / WD-T40 carrier proof-term elaboration audit.
+The current post-Horizon research cursor is RPB-74 / WD-T40 F-1 static closure and build handoff.
 
 
 ---
@@ -388,5 +388,5 @@ This is recorded as an infrastructure blocker rather than as a Lean theorem or s
 Current cursor:
 
 ~~~text
-RPB-73 / WD-T40 CARRIER PROOF-TERM ELABORATION AUDIT
+RPB-74 / WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF
 ~~~
