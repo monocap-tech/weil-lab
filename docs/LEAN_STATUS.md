@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-73 / WD-T40 carrier proof-term elaboration audit.
+- **Next project cursor:** RPB-74 / WD-T40 F-1 static closure and build handoff.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -33,7 +33,7 @@ Fourier/distribution data consumed by the Gaussian support-gap proof.
 Exact blocking stack:
 
 ~~~text
-F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED / PROOF-TERM AUDIT NEXT
+F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED / STATIC CLOSURE NEXT
 F-2  actual compact-window Weil multiplier realization
 F-3  support-gap Gaussian pairing theorem
 F-4  Gaussian coercivity -> exponential Fourier weight
@@ -4548,3 +4548,18 @@ Current F-1 state: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS 
 F-2 remains NOT STARTED.
 
 Next cursor: RPB-73 / WD-T40 carrier proof-term elaboration audit.
+
+
+---
+
+## RPB-73 proof-term elaboration delta
+
+The F-1 carrier proof bodies were audited line-by-line against pinned Lean/mathlib idioms.
+
+Static result: PASS. The adapter target is explicit, nonzero transfer uses equality composition, Fourier compatibility uses an explicit change plus the pinned theorem, and residual monotonicity is a direct theorem application with named sets. No metavariable holes, simpa dependence, or rewrite-driven proof state remains.
+
+Current F-1 state: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED.
+
+F-2 remains NOT STARTED.
+
+Next cursor: RPB-74 / WD-T40 F-1 static closure and build handoff.
