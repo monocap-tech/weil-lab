@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-76 — THE F-1 BUILD GATE IS UNCHANGED; THE EXACT FROZEN HANDOFF STILL CANNOT REACH LEAN EXECUTION.}
+\textbf{RPB-77 — THE F-1 BUILD GATE IS UNCHANGED; ATTEMPT 3 STILL FAILS BEFORE LEAN EXECUTION.}
 }
 ~~~
 
@@ -27,13 +27,13 @@ Canonical handoff:
 scripts/check_neutral_fourier_carrier.sh
 ~~~
 
-RPB-76 reran the exact frozen-handoff validation job from run:
+RPB-77 reran the exact frozen-handoff validation run:
 
 ~~~text
 36645302165
 ~~~
 
-Attempt 2 again failed before runner allocation:
+Attempt 3 again failed before runner allocation:
 
 ~~~text
 runner_id:   0
@@ -42,7 +42,8 @@ steps:       []
 conclusion:  failure
 ~~~
 
-No checkout, handoff script, Lake, or Lean process ran.
+The local environment was also rechecked and still has no lean, lake, or elan
+binary.
 
 No source change is justified.
 
@@ -64,7 +65,7 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-77 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 The next pass should recheck only for newly available Lean execution
@@ -85,4 +86,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_76_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_77_20260929.md.
