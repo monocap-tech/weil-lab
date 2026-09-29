@@ -15,9 +15,15 @@
   },
   "new_exclusion_scope": "delta13<v<=omega11; x=v-delta13=e-e98",
   "experimental_endpoint": "log(2^1020029612*5^172684332/3^896545004)",
-  "endpoint_decimal": ["1.711212515970572212598163580836392014764434228","1.711212515970572212598163580836392014764434229"],
+  "endpoint_decimal": [
+    "1.711212515970572212598163580836392014764434228",
+    "1.711212515970572212598163580836392014764434229"
+  ],
   "increment": "2rho12",
-  "increment_decimal": ["0.000000000020603564025536394082186974321804882","0.000000000020603564025536394082186974321804883"],
+  "increment_decimal": [
+    "0.000000000020603564025536394082186974321804882",
+    "0.000000000020603564025536394082186974321804883"
+  ],
   "chart": [["-27","-145"],["40","-488"]],
   "common_forward_backward_factor": "1000000",
   "minimum_forward_lower": "8339804.0046873668",
@@ -36,5 +42,8 @@
   "new_retained_coordinates": 0,
   "canonical_cursor": "SZ-CROSS-COLLAR-3",
   "canonical_effect": "NONE",
-  "verifier_git_blob": "2b9fd83b9e2ac664c44fe2b783bcf2740fe1fafc"
+  "verifier_git_blob": "2b9fd83b9e2ac664c44fe2b783bcf2740fe1fafc",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true,
+  "clean_bundle_manifest_entries_checked": 138
 }
