@@ -5795,3 +5795,80 @@ RPB-62 isolates such components as the remaining form of promotion Blocker A
 after finite delay cycles are analytically extinguished.
 
 **Status:** branch-local RPB terminology.
+
+
+## Delay-self-supporting singular set
+
+Fix one analytic cotangent direction and let \(S\) be its projected spatial
+analytic singular set.
+
+The set is **delay-self-supporting** when
+
+~~~math
+x\in S
+\Longrightarrow
+\exists d\in D:
+x+d\in S,
+~~~
+
+for the finite symmetric active-delay set
+
+~~~math
+D=\{\pm\ell_1,\dots,\pm\ell_J\}.
+~~~
+
+RPB-63 proves that every Cantor--Bendixson derivative of a
+delay-self-supporting compact set is again delay-self-supporting.
+
+**Status:** branch-local RPB terminology.
+
+## Perfect delay kernel
+
+A **perfect delay kernel** is a nonempty perfect subset \(P\) of the projected
+analytic singular support that is delay-self-supporting.
+
+RPB-63 proves that, after finite components are excluded by RPB-62, every
+nonempty compact residual analytic singular set must contain such a kernel.
+
+It is the current topological form of promotion Blocker A.
+
+**Status:** branch-local RPB terminology.
+
+## Interlaced orbit decomposition
+
+At fixed support, the prime-log group
+
+~~~math
+\Gamma_c
+=
+\sum_{p\in P_c}\mathbb Z\log p
+~~~
+
+is countable, so every exact delay-graph component lies in one countable orbit
+
+~~~math
+x+\Gamma_c.
+~~~
+
+A nonempty perfect delay kernel is uncountable.
+
+Therefore it necessarily consists of uncountably many countable exact graph
+components whose closures interlace.
+
+This structure is the **interlaced orbit decomposition**.
+
+**Status:** branch-local RPB terminology.
+
+## Cantor--Bendixson delay descent
+
+The **Cantor--Bendixson delay descent** is the RPB-63 argument that all
+transfinite derivatives \(S^{(\alpha)}\) of a compact delay-self-supporting set
+remain delay-self-supporting.
+
+A nonempty countable compact set eventually reaches a finite nonempty
+derivative, contradicting RPB-62 finite-cycle extinction.
+
+Hence no nonempty countable compact delay-self-supporting analytic singular set
+can survive.
+
+**Status:** branch-local RPB terminology.
