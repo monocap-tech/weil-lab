@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-68 / WD-T40 physical Fourier carrier lift.
+- **Next project cursor:** RPB-69 / WD-T40 physical Fourier carrier build certification.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -33,7 +33,7 @@ Fourier/distribution data consumed by the Gaussian support-gap proof.
 Exact blocking stack:
 
 ~~~text
-F-1  physical real-line L2 / tempered-distribution carrier lift
+F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / BUILD UNVERIFIED
 F-2  actual compact-window Weil multiplier realization
 F-3  support-gap Gaussian pairing theorem
 F-4  Gaussian coercivity -> exponential Fourier weight
@@ -4409,3 +4409,33 @@ The next project cursor is recorded, but no H1-P5 work has been started:
 ```math
 \boxed{\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}}
 ```
+
+
+---
+
+## RPB-68 carrier-lift delta
+
+The source layer for F-1 now exists in
+
+~~~text
+WeilDefect/Morphology/NeutralFourierCarrier.lean
+~~~
+
+and is imported by WeilDefect.lean.
+
+Implemented source components:
+
+- concrete real-line L2 representative;
+- compact-support field in [-c,c];
+- adapter back to NeutralNullExtensionInterface;
+- nonzero transfer to the concrete L2 mode;
+- coercion to tempered distributions;
+- L2/tempered-distribution Fourier compatibility;
+- semantic strict residual vanishing via Distribution.IsVanishingOn.
+
+A temporary validation PR attempted to compile the new module, but GitHub
+Actions run 36638336287 failed before exposing job steps or compiler logs.
+Therefore the carrier is source-implemented but not yet build-certified.
+
+WD-T40 remains LEAN-BLOCKED.
+
