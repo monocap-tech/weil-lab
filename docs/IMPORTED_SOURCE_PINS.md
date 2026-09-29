@@ -609,3 +609,61 @@ interior real analyticity of the neutral core mode.
 \`\`\`math
 \boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
 \`\`\`
+
+
+---
+
+## RPB-EXT-A2 — Gel'fond--Schneider theorem
+
+### Source
+
+Encyclopedia of Mathematics,
+**Gel'fond--Schneider method**.
+
+Classical theorem of A. O. Gel'fond and Th. Schneider (1934), solving
+Hilbert's seventh problem.
+
+### Exact input consumed by RPB-44
+
+If \(\alpha\) is algebraic with \(\alpha\ne0,1\) and \(\beta\) is algebraic
+irrational, then
+
+\`\`\`math
+\alpha^\beta
+\`\`\`
+
+is transcendental.
+
+### RPB specialization
+
+For distinct primes \(p\ne q\), the quotient
+
+\`\`\`math
+\frac{\log p}{\log q}
+\`\`\`
+
+cannot be algebraic.
+
+Indeed, unique factorization shows that this quotient is irrational.  If it
+were algebraic irrational, Gel'fond--Schneider applied to
+
+\`\`\`math
+q^{\log p/\log q}
+=
+p
+\`\`\`
+
+would make the left side transcendental, contradiction.
+
+Thus for distinct primes the ratio of their real logarithms is
+transcendental.
+
+### Consumed by
+
+- RPB-44 / paired endpoint collision resonance.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
