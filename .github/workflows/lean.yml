@@ -45,7 +45,7 @@ jobs:
 
       - name: Check current theorem target
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
+        run: bash scripts/check_neutral_fourier_carrier.sh
 
       - name: Reject unfinished trusted declarations
         shell: bash
