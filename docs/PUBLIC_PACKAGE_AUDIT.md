@@ -397,7 +397,7 @@ No mathematical audit label is used as a substitute for Lean certification.
 
 | Artifact | Current blob SHA |
 | --- | --- |
-| PUBLIC_PACKAGE_ARCHITECTURE.md | 021c8d8759ec34c78cdf42b6f686a5b8cfaa2a7f |
+| PUBLIC_PACKAGE_ARCHITECTURE.md | a1aa7874e5d70a0e0fb0e134039aa3273c9c711e |
 | WEIL_DEFECT_MANUSCRIPT.md | a65ee74d00c5897f8c813bdeffcee083d1ebb834 |
 | PUBLIC_THEOREM_INDEX.md | afed1d08a02ce7de6b8b92f8137c01ab40571271 |
 | PUBLIC_VERIFICATION_MATRIX.md | 8dd13015364fcbf0f5fb5ccc31ab3242ca2addd8 |
@@ -405,10 +405,6 @@ No mathematical audit label is used as a substitute for Lean certification.
 | PUBLIC_EXAMPLES.md | 1bcc4033a12b4955000c68a49b8e3301ab03f524 |
 | RH_INTERFACE_APPENDIX.md | 0774a1d6f0efcc9590f3069309156fc2881e7af7 |
 | README.md | d5959117883dffa5c4f4c026e2b24273cfc5e978 |
-
-The package-architecture blob listed above predates the final cursor-only edit
-within this same RPB-66 pass; the repository content is authoritative and the
-final integrity check below records the resulting branch head.
 
 ### 12.6 Revalidation determination
 
