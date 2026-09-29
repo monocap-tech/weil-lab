@@ -1,0 +1,143 @@
+{
+  "format": "GERM90-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-90",
+  "standing": "UNRATIFIED",
+  "entry_commit": "adf21cb4e4af55e00ddf02775b133a7db8aaa8c7",
+  "verifier_path": "tools/sz_post_t_chi7_seventh_wrap_audit.py",
+  "verifier_sha256": "9c643f44d12669776cb07cd6acea7ef8e3485f5c7643ed987173d72c4eedcc79",
+  "verifier_git_blob": "13b44c418f143475a899472237e5e0f2b9951bc7",
+  "stdout_sha256": "0a454282fc04e8b18da30ca5d911db5e59938e3393a8deda5d9b0786f726a8dd",
+  "compact_complete_audit_sha256": "37cf83447c3dfd9797f524ddcc23cface42e70b75f1d2402b6b6d7fb78201871",
+  "execution_exit_code": 0,
+  "parent_GERM89_entry_replay_exit_code": 0,
+  "parent_GERM89_stdout_sha256": "4064a089e55acd49a8a2ef805416cc21879dd430cf6b3799336786d0ca73353b",
+  "parent_GERM89_recorded_stdout_match": true,
+  "new_exclusion_scope": "chi7<t<=eta7, t=e-e80; L89<L<=L80+eta7",
+  "experimental_endpoint": "log(3^544082/(2^619016*5^104797))",
+  "increment": "psi7",
+  "direct_dependency_sha256": {
+    "tools/sz_post_2psi7_eighth_map_audit.py": "68404e3d6426f4346793f966eebc42000e8ebf7a5f821fbc133ef61693d451f6"
+  },
+  "seventh_word_dictionary": {
+    "U": [
+      "E20",
+      "E20",
+      "E19"
+    ],
+    "V0": [
+      "E20",
+      "E20",
+      "E19",
+      "E20",
+      "A19"
+    ],
+    "V1": [
+      "E20",
+      "E20",
+      "E19",
+      "E20",
+      "E19"
+    ]
+  },
+  "chart": [
+    [
+      "1",
+      "-1"
+    ],
+    [
+      "-21/10",
+      "7/3"
+    ]
+  ],
+  "common_forward_backward_factor": "9/5",
+  "signed_cone_bounds": {
+    "U": [
+      -1,
+      "1.8896676452",
+      "2.0719032155"
+    ],
+    "V0": [
+      -1,
+      "4.8243264289",
+      "5.2182449102"
+    ],
+    "V1": [
+      1,
+      "2.3071309806",
+      "2.1132288879"
+    ]
+  },
+  "original_step_counts": [
+    96695,
+    160607
+  ],
+  "eighth_or_deeper_induction_used": false,
+  "new_retained_coordinates": 0,
+  "endpoint_source_checks": [
+    "E19/E20 sixth atoms from fifth contracts",
+    "U/V1 seventh endpoint faces"
+  ],
+  "completed_window": "GERM-81 sixth source window through t=eta7",
+  "remaining_sixth_formula_width": "ZERO",
+  "endpoint_decimal": [
+    "1.71121227093450245468425462221791282772",
+    "1.71121227093450245468425462221791282773"
+  ],
+  "remaining_three_layer_width": [
+    "0.00003172263284055152330801258589446022",
+    "0.00003172263284055152330801258589446023"
+  ],
+  "next_sixth_atom": "B16,20",
+  "next_fifth_word": [
+    "00+",
+    "00+",
+    "00+",
+    "01+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "11+",
+    "10-"
+  ],
+  "next_domain": "t=eta7+d; 0<d<psi7; eta7<y<eta7+d",
+  "next_trace": [
+    [
+      [
+        "-0.7967598225",
+        "-0.7967598224"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "-3.3651737853",
+        "-3.3651737852"
+      ]
+    ]
+  ],
+  "next_status": "ELLIPTIC NEW SIXTH ATOM; NO EXCLUSION ABOVE t=eta7",
+  "initial_local_attempt": "Stopped because the exact chart determinant 7/30 was required to have a degenerate grid enclosure; fixed by exact rational determinant equality and positive interval containment, without weakening source or cone assertions",
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "complete_output": "Complete stdout and compact serialization included in the certificate bundle; pinned verifier reproduces stdout.",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
