@@ -4859,3 +4859,67 @@ may still be positive until a separate zero-eigenspace multiplicity/core-lift
 audit closes it.
 
 **Status:** branch-local RPB terminology.
+
+
+## Completed generalized screw zero space
+
+For a support radius \(a\), let \(\mathcal H(S_a)\) be Suzuki's completed screw
+space obtained from the quadratic form associated with
+\(S_a=G_a-\mu K_a\), with \(\mu<\lambda_a\).
+
+The **completed generalized screw zero space** is
+
+~~~math
+\mathcal N_a^S
+:=
+\left\{
+u\in\mathcal H(S_a):
+G_au=0
+\text{ in the generalized/form realization}
+\right\}.
+~~~
+
+Suzuki's §8.5 generalized eigenvalue problem is posed in
+\(\mathcal H(S_a)\), not in the ordinary \(L_0^2(-a,a)\) screw carrier, and
+Suzuki explicitly notes that \(\mathcal H(S_a)\not\subset L^2(-a,a)\).
+
+Accordingly, \(\mathcal N_a^S\) is the completed-space zero eigenspace
+corresponding to the Friedrichs zero spectral point; it must not be silently
+identified with \(\ker_{L^2}G_a\).
+
+**Status:** branch-local RPB terminology.
+
+## Completed-to-\(L^2\) core-lift defect
+
+The **completed-to-\(L^2\) core-lift defect** is the possible difference between
+
+~~~math
+\mathcal N_a^S
+~~~
+
+and the ordinary compact screw kernel
+
+~~~math
+\ker_{L^2}G_a.
+~~~
+
+On the physical side,
+
+~~~math
+D^{-1}(\ker_{L^2}G_a)
+=
+\ker A_a\cap H_0^1(-a,a),
+~~~
+
+so this defect is exactly the obstruction to lifting an arbitrary Friedrichs
+zero mode into the screw core.
+
+When finite-dimensional nullities are available, it may be recorded as
+
+~~~math
+\delta_{\rm core}(a)
+=
+\dim\mathcal N_a^S-\dim\ker_{L^2}G_a.
+~~~
+
+**Status:** branch-local RPB terminology.
