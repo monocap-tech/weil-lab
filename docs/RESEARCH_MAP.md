@@ -349,7 +349,7 @@ These mechanisms are not interchangeable: background escape does not erase fixed
 
 - worst-packet next-jet control;
 - actual KPH floor or another sufficient transversality theorem;
-- neutral null-extension/support rigidity.
+- neutral null-extension/support rigidity — **resolved negatively by WD-T40 under WD-T38 carrier hypotheses**.
 
 ---
 
@@ -491,7 +491,7 @@ W_ck=0,
 
 and the corresponding compact-window operator has logarithmic principal order with finitely many prime translations.
 
-The unresolved fixed-vector support question is exactly $\texttt{AZ-FIN-WEIL-NULL-EXTENSION}$.
+The original fixed-vector support question was $\texttt{AZ-FIN-WEIL-NULL-EXTENSION}$. WD-T40 now discharges that interface negatively under the WD-T38 carrier hypotheses by Gaussian support-gap coercivity.
 
 ## H1-P3.2 disposition
 
@@ -537,7 +537,7 @@ The theorem-by-theorem audit and applied corrections are recorded in [Internal P
 
 ## H1-P4.3 disposition
 
-WD-T37 through WD-T39 are COMPOSITE-AUDIT-PASSED. The expanded audit and corrections are recorded in [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
+WD-T37 through WD-T39 are COMPOSITE-AUDIT-PASSED. WD-T40 is P4-AUDIT-PASSED as a post-Horizon internal theorem. The expanded audit and corrections are recorded in [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md).
 
 ## H1-P4.4 disposition
 
@@ -592,7 +592,8 @@ or an equivalent packetwise transversality theorem.
 ```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}
+\text{ — DISCHARGED NEGATIVELY BY WD-T40}
 }
 ```
 
-or an equivalent support theorem for the logarithmic-order compact-window operator.
+The attained fixed-packet neutral persistence branch is therefore excluded under the retained WD-T38 carrier hypotheses.
