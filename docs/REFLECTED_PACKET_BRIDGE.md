@@ -9,132 +9,138 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-57 — FULL NONTHRESHOLD FRIEDRICHS NULL-EXTENSION IS EXCLUDED BY HOLOMORPHIC STIELTJES CONTINUATION; ONLY PRIME-POWER THRESHOLDS REMAIN.}
+\textbf{RPB-58 — THE PRIME-POWER THRESHOLD CARLEMAN CHANNELS ARE INCOMPATIBLE WITH THE ENDPOINT FRIEDRICHS NULL EQUATION; FULL NULL EXTENSION IS EXCLUDED AT EVERY SUPPORT.}
 }
 ~~~
 
-RPB-56 identified the exact endpoint leakage object
+RPB-57 already proved full Friedrichs null-extension exclusion away from
+prime-power thresholds by holomorphic continuation of the endpoint Stieltjes
+transform.
+
+RPB-58 classifies the remaining equality-threshold residue directly on the
+physical endpoint density
 
 ~~~math
-\Sigma_+(s;h)
-=
-\int_0^\delta
-\frac{h(c-r)}{s+r}\,dr
+f(s)=h(c-s).
 ~~~
 
-and its left-endpoint analogue.
-
-RPB-57 strengthens the nonthreshold argument from boundedness to analytic
-continuation.
-
-The exact digamma/Gamma-factor kernel has, near zero separation, the form
+After parity diagonalization, the strict right-limit equations are
 
 ~~~math
-\frac1t
+\frac12\mathcal C_\delta f
 +
-\text{analytic remainder}.
-~~~
-
-Thus, at a nonthreshold support, every exterior Weil term other than the
-universal Stieltjes singularity is a holomorphic germ across \(s=0\):
-
-- strict-endpoint prime translations sample fixed analytic interior points;
-- the pole/evaluation range is entire;
-- the archimedean remainder after subtracting the \(1/t\) kernel is analytic;
-- far-support contributions are analytic because their separation stays
-  positive.
-
-If a zero extension persisted on a strict exterior collar, the exterior
-equation would therefore force
-
-~~~math
-\Sigma_+(s;h)
+a_0f
 =
-A_+(s)
+A_{\rm ev},
 ~~~
 
-for \(s>0\) near zero, with \(A_+\) holomorphic across \(s=0\).
-
-The identity theorem extends the Stieltjes transform through a portion of its
-negative-axis cut.  Its Sokhotskii--Plemelj jump then yields
+for even physical parity, and
 
 ~~~math
-h(c-r)=0
-~~~
-
-on an actual endpoint collar.
-
-Since every Friedrichs zero mode is real analytic in the open support by the
-scalar analytic-ellipticity argument, collar vanishing forces
-
-~~~math
-h\equiv0.
-~~~
-
-Hence
-
-~~~math
-\boxed{
-2c\notin\{\log(p^m)\}
-\Longrightarrow
-\text{no nonzero Friedrichs zero mode can persist to a strict enlargement}.
-}
-~~~
-
-This removes the core-membership restriction entirely off threshold.
-
-At an equality threshold
-
-~~~math
-2c=\log n_0,
-~~~
-
-the new prime translation samples the opposite endpoint.  The exterior
-equations become coupled rather than holomorphic-isolating.
-
-After parity diagonalization they take the form
-
-~~~math
-\boxed{
-\frac12\Sigma_{\rm ev}(s)
-+
-a_0f_{\rm ev}(s)
-=
-A_{\rm ev}(s),
-}
-~~~
-
-~~~math
-\boxed{
-\frac12\Sigma_{\rm odd}(s)
+\frac12\mathcal C_\delta f
 -
-a_0f_{\rm odd}(s)
+a_0f
 =
-A_{\rm odd}(s),
+A_{\rm odd},
+~~~
+
+for odd physical parity, with analytic forcing and
+
+~~~math
+a_0=\frac{\Lambda(n_0)}{\sqrt{n_0}}.
+~~~
+
+The physical indicial family is
+
+~~~math
+\mathfrak m_\varepsilon(\beta)
+=
+-\frac{\pi}{2\sin(\pi\beta)}
++
+\varepsilon a_0.
+~~~
+
+The first \(L^2\)-admissible physical channels are
+
+~~~math
+\boxed{
+\beta=\frac12\pm i\tau_0
 }
 ~~~
 
-with
+in even parity and
 
 ~~~math
-a_0=\frac{\Lambda(n_0)}{\sqrt{n_0}},
+\boxed{
+\beta=\frac32\pm i\tau_0
+}
 ~~~
 
-and holomorphic \(A_{\rm ev},A_{\rm odd}\).
+in odd parity.
 
-Thus the full Friedrichs residue is now **threshold-only** and is exactly a
-pair of inhomogeneous Carleman--Stieltjes endpoint systems.
+Every nonzero threshold-persistent physical mode must carry a nonzero Mellin
+amplitude in one of these noninteger channels.  If all such amplitudes vanish,
+the remaining analytic endpoint germ has a first Taylor term whose Carleman
+transform produces an uncancellable \(s^k\log s\), forcing the germ—and then
+the mode—to vanish.
+
+But at the endpoint support the prime convention is strict:
+
+~~~math
+\log n<2c.
+~~~
+
+So the equality-prime term responsible for the exterior multiplication
+\(\pm a_0f\) is absent from the endpoint operator \(A_c\).
+
+A nonzero physical channel \(s^\beta\) therefore acquires from the
+archimedean principal operator the RPB-49 enhancement
+
+~~~math
+s^\beta\log(1/s),
+~~~
+
+while all endpoint active primes and pole terms are analytic at that
+noninteger exponent.
+
+Hence the endpoint equation forces every physical threshold Mellin amplitude
+to vanish.
+
+Thus the threshold persistence branch is empty.
+
+Combining RPB-57 and RPB-58 gives, for every \(c>0\),
+
+~~~math
+\boxed{
+0\ne h\in\ker A_c
+\Longrightarrow
+\widetilde h
+\text{ cannot satisfy the correct strict enlarged null equation for any }a>c.
+}
+~~~
+
+Therefore, within the RPB experimental branch and under the existing
+carrier-identification hypotheses of WD-T38,
+
+~~~math
+\boxed{
+\texttt{AZ-FIN-WEIL-NULL-EXTENSION}
+\text{ is discharged negatively.}
+}
+~~~
+
+This has **not yet been promoted** into the stable theorem ledger or public
+Horizon-1 package.
 
 ## Next cursor
 
 ~~~text
-RPB-58 / FRIEDRICHS THRESHOLD CARLEMAN--STIELTJES CLASSIFICATION
+RPB-59 / FULL NULL-EXTENSION DISCHARGE PROMOTION AUDIT
 ~~~
 
-The next pass should Mellin-diagonalize the homogeneous parity equations
-without assuming screw-core regularity, determine the \(L^2\)-admissible
-physical endpoint exponents, and test whether the analytic inhomogeneous germ
-can excite any of them.
+The next pass should audit the full RPB-57/58 chain for source pins, scope,
+dependency independence from the corrected RPB-33 claim, and exact endpoint /
+right-limit threshold conventions before any canonical status change.
 
 ## Governance
 
@@ -147,4 +153,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_57_20260928.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_58_20260928.md.
