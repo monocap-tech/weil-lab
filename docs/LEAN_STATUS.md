@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-75 / WD-T40 F-1 build execution gate.
+- **Next project cursor:** RPB-76 / WD-T40 F-1 build gate recheck.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -4578,3 +4578,16 @@ Current F-1 state: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS 
 No further static audit is live unless the frozen source changes or a real compiler diagnostic appears. F-2 remains NOT STARTED.
 
 Next cursor: RPB-75 / WD-T40 F-1 build execution gate.
+
+
+---
+
+## RPB-75 build gate delta
+
+The exact frozen F-1 handoff was attempted from a fresh validation branch based on the current RPB-74 research head.
+
+Run 36645302165 again failed before runner allocation with runner_id 0 and zero steps. The local environment still has no Lean/Lake/Elan toolchain.
+
+No compiler process ran. The frozen carrier and handoff script are unchanged. F-1 remains build-uncertified and F-2 remains NOT STARTED.
+
+Next cursor: RPB-76 / WD-T40 F-1 build gate recheck.
