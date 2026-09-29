@@ -9,73 +9,79 @@
 
 \`\`\`math
 \boxed{
-\textbf{RPB-45 — THE BASE }t=0\textbf{ SCREW SINGULARITY EXCLUDES ALL NONTHRESHOLD STRICT COLLARS; ONLY PRIME-POWER THRESHOLD CARLEMAN MATCHING SURVIVES.}
+\textbf{RPB-46 — THE PRIME-THRESHOLD CARLEMAN EQUATION HAS GENUINE \(L^2\)-ADMISSIBLE LOG-OSCILLATORY CONORMAL MODES; LOCAL ENDPOINT ANALYSIS DOES NOT EXCLUDE STRICT PERSISTENCE.}
 }
 \`\`\`
 
-Suzuki's small-\(t\) expansion gives
+At a prime-power threshold
 
 \`\`\`math
-g''(t)
-=
-\frac1{2t}
-+
-O(1)
+2c=\log n_0,
 \qquad
-(t\downarrow0).
+a_0=\Lambda(n_0)/\sqrt{n_0},
 \`\`\`
 
-At the right support edge \(x=c+s\), this produces the endpoint Stieltjes
-transform
+the local singular operator is
 
 \`\`\`math
-\frac12
-\int_0^{2c}
-\frac{u(c-r)}{s+r}\,dr.
+\frac12\mathcal C_\delta+\varepsilon_u a_0 I,
+\qquad
+(\mathcal C_\delta f)(s)=\int_0^\delta\frac{f(r)}{s+r}\,dr.
 \`\`\`
 
-If \(2c\) is not a prime-power logarithm, every other local term is analytic
-through \(s=0\).  A strict collar would then force this Cauchy transform to
-extend holomorphically through the endpoint of its cut, and the Plemelj jump
-would force the endpoint source to vanish.  Interior analyticity then gives
-\(u\equiv0\), contradiction.
-
-Therefore strict persistence is possible only at a threshold
+For a cutoff monomial \(s^\beta\),
 
 \`\`\`math
-2c=\log n_0.
-\`\`\`
-
-At such a threshold, parity reduces the equality-threshold prime contribution
-to the exact endpoint equation
-
-\`\`\`math
-\frac12
-\int_0^{2c}
-\frac{f(r)}{s+r}\,dr
-+
-\varepsilon_u
-\frac{\Lambda(n_0)}{\sqrt{n_0}}
-f(s)
-+
-A(s)
+\mathcal C_\delta(s^\beta)
 =
-0,
+-\frac{\pi}{\sin(\pi\beta)}s^\beta
++\text{analytic},
 \`\`\`
 
-with \(f(s)=u(c-s)\) and \(A\) analytic.  This is the only surviving
-base-crossing mechanism.
+so the exact indicial family is
+
+\`\`\`math
+\mathfrak m_{\varepsilon_u}(\beta)
+=
+-\frac{\pi}{2\sin(\pi\beta)}
++\varepsilon_u a_0.
+\`\`\`
+
+Writing
+
+\`\`\`math
+\cosh(\pi\tau_0)=\frac{\pi}{2a_0},
+\`\`\`
+
+the first \(L^2\)-admissible endpoint source exponents are
+
+\`\`\`math
+\beta=\frac12\pm i\tau_0
+\`\`\`
+
+for an even screw source and
+
+\`\`\`math
+\beta=\frac32\pm i\tau_0
+\`\`\`
+
+for an odd screw source.
+
+Thus the exceptional threshold branch survives local Mellin analysis; what
+remains is whether the actual global neutral mode realizes a nonzero amplitude
+in one of these channels.
 
 ## Next cursor
 
 ```text
-RPB-46 / THRESHOLD CARLEMAN-MELLIN ENDPOINT REALIZATION
+RPB-47 / GLOBAL THRESHOLD MELLIN-AMPLITUDE MATCHING
 ```
 
-The next pass should analyze the threshold singular integral equation itself:
-identify the endpoint Carleman/Mellin operator, determine the parity-dependent
-spectrum and actual \(L^2\) endpoint germs, and test whether any such germ is
-compatible with the global neutral mode and zero-mean normalization.
+The next pass should return to the actual finite-dimensional screw-visible
+endpoint nullspace: define a lawful threshold Mellin-amplitude map, reduce it
+by parity and zero mean, and test whether the global interior neutral equation
+or the selected Birman--Schwinger unit-gain relation forces the admissible
+endpoint amplitude to vanish.
 
 ## Governance
 
