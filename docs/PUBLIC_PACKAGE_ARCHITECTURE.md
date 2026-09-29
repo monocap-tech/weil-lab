@@ -343,4 +343,25 @@ The final pass is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 }
 ```
 
-The current post-Horizon research cursor is RPB-67 / WD-T40 Lean certification preflight.
+The current post-Horizon research cursor is RPB-68 / WD-T40 physical Fourier carrier lift.
+
+
+---
+
+## WD-T40 formal status
+
+WD-T40 is mathematically promoted and P4-AUDIT-PASSED.
+
+RPB-67 determined that a faithful Lean certificate is blocked at the current
+project abstraction by the missing physical real-line Fourier/distribution
+carrier and downstream Gaussian-support analytic stack.
+
+Current formal status:
+
+~~~text
+WD-T40: LEAN-BLOCKED
+~~~
+
+The blocker is exact and project-local; mathlib v4.34 already supplies the
+base L2 Fourier, tempered-distribution, Gaussian-transform, Fourier-inversion,
+and complex-analytic infrastructure.
