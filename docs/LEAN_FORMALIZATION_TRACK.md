@@ -155,7 +155,7 @@ Only after this exhaustion condition is met does the project resume:
 }
 ```
 
-WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The next research cursor is RPB-68 / WD-T40 physical Fourier carrier lift. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
+WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier source is now implemented, but its module build is not yet certified. The next research cursor is RPB-69 / WD-T40 physical Fourier carrier build certification. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
 
 
 ---
@@ -177,7 +177,7 @@ abstract WD-T38 neutral interface to:
 The next cursor is:
 
 ~~~text
-RPB-68 / WD-T40 PHYSICAL FOURIER CARRIER LIFT
+RPB-69 / WD-T40 PHYSICAL FOURIER CARRIER BUILD CERTIFICATION
 ~~~
 
 No Gaussian coercivity theorem should be attempted before that carrier bridge
