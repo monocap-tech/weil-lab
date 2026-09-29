@@ -1,0 +1,217 @@
+{
+  "format": "GERM101-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-101",
+  "standing": "UNRATIFIED",
+  "entry_commit": "e80d69344ab2f3e191b4d96fd4363007df965707",
+  "verifier_path": "tools/sz_post_a_9omega11_twelfth_ten_visit_audit.py",
+  "verifier_sha256": "fc0d153bccf205823ef35b4cc4bfde85aeb4b261fcd0a88c4722b0a9f0f76a00",
+  "verifier_git_blob": "cae12cd7ccc1d90002c36fb511ad26625ccdc419",
+  "stdout_sha256": "0b433a19d593ebb7bd9fe2ec15b946a7a352d8a60da68ebe73285ee4567d17a0",
+  "compact_complete_audit_sha256": "3bdd2c3bc55f80b04df8dd5dc77e3cd5ef3ecc75b7c945d37fe9a9093e7cd6c1",
+  "execution_exit_code": 0,
+  "parent_GERM100_entry_replay_exit_code": 0,
+  "parent_GERM100_stdout_sha256": "82ac1f1d884aaa4a6255a0e36570d4b5972b7edff43ad135a68b14558a74efc5",
+  "parent_GERM100_recorded_stdout_match": true,
+  "inherited_manifest_entries_checked": 114,
+  "dependency_sha256": {
+    "tools/sz_post_v_omega11_eleventh_transfer_audit.py": "5051313d43e18a288bf35a866d27a7f55253ffb559c051d037640a105c251d2e"
+  },
+  "new_exclusion_scope": "0<b<=35delta13, b=e-e100",
+  "new_formula_scope": "0<b<=rho12, three twelfth and four thirteenth maps",
+  "experimental_endpoint": "log(2^1045406220964*5^176980427362/3^918849529144)",
+  "endpoint_decimal": [
+    "1.711212516168755811794406540722900757697682",
+    "1.711212516168755811794406540722900757697683"
+  ],
+  "increment": "35delta13",
+  "increment_decimal": [
+    "0.000000000010143256905103169548611570256708",
+    "0.000000000010143256905103169548611570256709"
+  ],
+  "twelfth_words": {
+    "C": [
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "B0"
+    ],
+    "D": [
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A0",
+      "B0"
+    ],
+    "E": [
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "A1",
+      "B0"
+    ]
+  },
+  "thirteenth_names": "H0/H1/J0/J1 correspond to verifier A0/A1/B0/B1",
+  "thirteenth_words": {
+    "A0": [
+      "D",
+      "C"
+    ],
+    "A1": [
+      "E",
+      "C"
+    ],
+    "B0": [
+      "D",
+      "C",
+      "C"
+    ],
+    "B1": [
+      "E",
+      "C",
+      "C"
+    ]
+  },
+  "fourteenth_family": "J0 H0^(N-s-1) H1^s, N=35,36, 0<=s<N; plus J1 H1^34",
+  "fourteenth_section": "(0,delta13)",
+  "fourteenth_map": "y -> y-tau14 mod delta13",
+  "tau14": "rho12-35delta13",
+  "tau14_decimal": [
+    "0.000000000000158525107665027492481916904194",
+    "0.000000000000158525107665027492481916904195"
+  ],
+  "charts": {
+    "I": [
+      [
+        -581,
+        -58
+      ],
+      [
+        814,
+        82
+      ]
+    ],
+    "II": [
+      [
+        -80,
+        -579
+      ],
+      [
+        60,
+        815
+      ]
+    ],
+    "III": [
+      [
+        -581,
+        -58
+      ],
+      [
+        814,
+        82
+      ]
+    ],
+    "IV": [
+      [
+        -57,
+        -30
+      ],
+      [
+        82,
+        40
+      ]
+    ]
+  },
+  "chart_determinants": [
+    -430,
+    -30460,
+    180
+  ],
+  "distinct_words": 72,
+  "chart_tests": 78,
+  "distinct_charts": 3,
+  "regimes": {
+    "I": "0<b<=23delta13",
+    "II": "23delta13<=b<=25delta13",
+    "III": "25delta13<=b<=34delta13",
+    "IV": "34delta13<=b<=35delta13"
+  },
+  "common_factor": "9/8",
+  "minimum_forward_lower": "6533598811/5000000000",
+  "minimum_backward_lower": "575614453/500000000",
+  "original_step_counts": [
+    42213874241,
+    43403776524
+  ],
+  "endpoint_words": [
+    "J1 H1^34",
+    "J0 H1^35"
+  ],
+  "remaining_new_formula_width": [
+    "0.000000000000158525107665027492481916904194",
+    "0.000000000000158525107665027492481916904195"
+  ],
+  "remaining_parent_eleventh_width": [
+    "0.000000000021051896473347226418914936090476",
+    "0.000000000021051896473347226418914936090477"
+  ],
+  "remaining_three_layer_width": [
+    "0.000031477398587194413156094080906530243908",
+    "0.000031477398587194413156094080906530243909"
+  ],
+  "next_word": "J1 H1^35, GERM-101-local thirteenth maps",
+  "next_domain": "b=35delta13+z; 0<y<z<tau14",
+  "next_trace": [
+    [
+      [
+        "-0.1944103190",
+        "-0.1944103189"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "-3.9622046279",
+        "-3.9622046278"
+      ]
+    ]
+  ],
+  "next_status": "ELLIPTIC COMPLETE 36-STEP FOURTEENTH RETURN",
+  "precision": {
+    "grid": "10^240",
+    "log_series_terms": 800
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "initial_attempts": "120-grid probe did not certify a determinant enclosure; recomputed with 240-grid and 800 log terms. Draft exact chart determinants corrected; all assertions retained.",
+  "fifteenth_or_deeper_induction_used": false,
+  "new_retained_coordinates": 0,
+  "full_lower_symbolic_suites_rerun": false,
+  "complete_GERM60_reduction_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true,
+  "clean_bundle_manifest_entries_checked": 121
+}
