@@ -5492,3 +5492,91 @@ and \(A_{\rm ev},A_{\rm odd}\) holomorphic endpoint germs.
 These are the **Friedrichs threshold Carleman--Stieltjes systems**.
 
 **Status:** branch-local RPB terminology.
+
+
+## Physical threshold Mellin-amplitude vector
+
+At a prime-power threshold
+
+~~~math
+2c=\log n_0,
+~~~
+
+strict persistence of a physical Friedrichs zero mode yields a
+parity-diagonal Carleman--Stieltjes equation for the endpoint density
+
+~~~math
+f(s)=h(c-s).
+~~~
+
+For each \(L^2\)-admissible noninteger physical indicial root \(\beta\), define
+
+~~~math
+\mathfrak b_\beta(h)
+=
+\operatorname*{Res}_{z=-\beta}
+\widehat f_M(z).
+~~~
+
+The collection
+
+~~~math
+\mathfrak B_c(h)
+=
+(\mathfrak b_\beta(h))_{\beta\in\mathcal I_c^{\rm phys}}
+~~~
+
+is the **physical threshold Mellin-amplitude vector**.
+
+For a nonzero threshold-persistent physical mode, this vector must be nonzero.
+
+**Status:** branch-local RPB terminology.
+
+## Full Friedrichs strict-null-extension exclusion
+
+The **full Friedrichs strict-null-extension exclusion** is the RPB-57/58
+conclusion that, for every support radius \(c>0\),
+
+~~~math
+0\ne h\in\ker A_c
+~~~
+
+cannot have its zero extension satisfy the correct strict enlarged
+compact-window null equation for any \(a>c\).
+
+Off threshold, the proof uses holomorphic continuation of the endpoint
+Stieltjes transform and its jump formula.
+
+At a prime-power threshold, strict persistence forces a nonzero physical
+Carleman--Mellin amplitude, while the endpoint null equation forces every such
+noninteger amplitude to vanish by conormal log-enhancement.
+
+**Status:** branch-local RPB theorem; canonical promotion pending audit.
+
+## Threshold physical-channel extinction
+
+The **threshold physical-channel extinction** is the RPB-58 contradiction
+
+~~~math
+\text{threshold persistence}
+\Longrightarrow
+\mathfrak B_c(h)\ne0,
+~~~
+
+while
+
+~~~math
+A_ch=0
+\Longrightarrow
+\mathfrak B_c(h)=0.
+~~~
+
+The first implication comes from the parity-diagonal Carleman--Stieltjes
+classification.
+
+The second uses the strict endpoint prime convention: the equality-threshold
+prime is absent from \(A_c\), so the archimedean
+\(s^\beta\log(1/s)\) enhancement at every noninteger physical channel has no
+matching lower-order cancellation.
+
+**Status:** branch-local RPB terminology.
