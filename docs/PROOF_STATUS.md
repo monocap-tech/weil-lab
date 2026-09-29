@@ -141,6 +141,14 @@ Concludes:
 }
 ```
 
+
+
+**Formalization:** LEAN-BLOCKED after RPB-67. The exact blocker is the missing
+physical real-line Fourier/distribution carrier lift, followed by the
+project-local Gaussian support-gap and strip-holomorphy stack. A completed
+faithful formalization is expected to be
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE unless EXT-4/EXT-5 are reconstructed.
+
 ### WD-T39 — Noncompact background morphology
 
 **Standing:** INTERNAL/CONDITIONAL COMPOSITE.
@@ -221,7 +229,7 @@ The post-Horizon RPB promotion audit has added WD-T40. The next research cursor 
 
 ```math
 \boxed{
-\texttt{RPB-67 / WD-T40 LEAN CERTIFICATION PREFLIGHT}
+\texttt{RPB-68 / WD-T40 PHYSICAL FOURIER CARRIER LIFT}
 }
 ```
 
