@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-69 / WD-T40 physical Fourier carrier build certification.
+- **Next project cursor:** RPB-70 / WD-T40 carrier build infrastructure recovery.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -33,7 +33,7 @@ Fourier/distribution data consumed by the Gaussian support-gap proof.
 Exact blocking stack:
 
 ~~~text
-F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / BUILD UNVERIFIED
+F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
 F-2  actual compact-window Weil multiplier realization
 F-3  support-gap Gaussian pairing theorem
 F-4  Gaussian coercivity -> exponential Fourier weight
@@ -4438,4 +4438,49 @@ Actions run 36638336287 failed before exposing job steps or compiler logs.
 Therefore the carrier is source-implemented but not yet build-certified.
 
 WD-T40 remains LEAN-BLOCKED.
+
+
+
+---
+
+## RPB-69 build-gate blocker
+
+Two independent temporary validation PRs attempted to compile
+
+~~~text
+WeilDefect.Morphology.NeutralFourierCarrier
+~~~
+
+without merging validation-only workflow changes into the research branch.
+
+Both GitHub Actions jobs failed before runner allocation.
+
+Observed job state in both cases:
+
+~~~text
+runner_id:          0
+runner_name:        ""
+runner_group_id:    0
+runner_group_name:  ""
+steps:              []
+~~~
+
+Therefore no checkout, toolchain setup, lake invocation, or Lean compiler
+process occurred.
+
+The F-1 carrier source is not certified and is not diagnosed as failing to
+compile.
+
+Current status:
+
+~~~text
+F-1:
+    SOURCE IMPLEMENTED
+    BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
+
+WD-T40:
+    LEAN-BLOCKED
+~~~
+
+The next cursor is RPB-70 / WD-T40 carrier build infrastructure recovery.
 
