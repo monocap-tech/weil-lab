@@ -2736,3 +2736,90 @@ does not distinguish a screw-kernel source, collar persistence, or a selected
 neutral direction.
 
 **Status:** branch-local RPB terminology.
+
+
+## Compressed-symbol caution
+
+Let \(M(\xi)\) be a whole-line Fourier multiplier and let \(P_c\) denote
+restriction/compression to a compact support window.
+
+The **compressed-symbol caution** is the distinction
+
+\`\`\`math
+P_c M(D) P_c h=0
+\quad\not\Longrightarrow\quad
+M(\xi)\widehat h(\xi)=0
+\text{ on the frequency line}.
+\`\`\`
+
+A compact-window null vector is a kernel vector of a compressed
+Wiener--Hopf/Toeplitz-type operator, not a whole-line multiplier kernel.
+
+Consequently the real zero set of the scalar symbol does not by itself
+localize the Fourier transform of a compact-window neutral mode.
+
+**Status:** branch-local RPB terminology.
+
+## Zeta spectral survival under a compact source
+
+Let \(u\ne0\) be compactly supported and let
+
+\`\`\`math
+U(z)=\int u(y)e^{-izy}\,dy.
+\`\`\`
+
+The **zeta spectral survival** statement is that \(U\), being an entire
+function of finite exponential type, can vanish at only \(O(T)\) points in
+\(|z|\le T\), whereas the zeta divisor contains \(\gg T\log T\) distinct
+simple critical-line ordinates unconditionally.
+
+Hence convolution of Suzuki's zeta screw function with a nonzero compact
+source retains \(\gg T\log T\) nonzero critical spectral coefficients.
+
+This rules out finite spectral cancellation by the compact source, but does
+not imply local unique continuation.
+
+**Status:** branch-local RPB terminology.
+
+## Fourier--Carleman collar-gap problem
+
+For a compact source \(h\), let
+
+\`\`\`math
+q=\mathcal W^{\rm ext}h.
+\`\`\`
+
+Under a hypothetical strict null extension, \(q\) has a central spatial gap:
+
+\`\`\`math
+q=0
+\quad\text{on }(-a,a).
+\`\`\`
+
+The **Fourier--Carleman collar-gap problem** is to exploit the split exterior
+tails
+
+\`\`\`math
+q=q_-+q_+,
+\qquad
+\operatorname{supp}q_-\subset(-\infty,-a],
+\qquad
+\operatorname{supp}q_+\subset[a,\infty),
+\`\`\`
+
+together with
+
+\`\`\`math
+\widehat q
+=
+\Psi_{c+}\widehat h
++
+\widehat{\mathcal R_{\rm pole}h}
+\`\`\`
+
+in the appropriate distributional/Fourier--Carleman sense.
+
+This is a Wiener--Hopf-type factorization problem.  It is strictly stronger
+than inspecting the zero set of the scalar symbol.
+
+**Status:** branch-local RPB terminology.
