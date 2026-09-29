@@ -9,138 +9,106 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-58 — THE PRIME-POWER THRESHOLD CARLEMAN CHANNELS ARE INCOMPATIBLE WITH THE ENDPOINT FRIEDRICHS NULL EQUATION; FULL NULL EXTENSION IS EXCLUDED AT EVERY SUPPORT.}
+\textbf{RPB-59 — FULL NULL-EXTENSION PROMOTION IS BLOCKED BY TWO CERTIFICATION GAPS, NOT BY THE EXTERIOR/THRESHOLD GEOMETRY.}
 }
 ~~~
 
-RPB-57 already proved full Friedrichs null-extension exclusion away from
-prime-power thresholds by holomorphic continuation of the endpoint Stieltjes
-transform.
-
-RPB-58 classifies the remaining equality-threshold residue directly on the
-physical endpoint density
+RPB-57/58 produced the branch-local candidate
 
 ~~~math
-f(s)=h(c-s).
-~~~
-
-After parity diagonalization, the strict right-limit equations are
-
-~~~math
-\frac12\mathcal C_\delta f
-+
-a_0f
-=
-A_{\rm ev},
-~~~
-
-for even physical parity, and
-
-~~~math
-\frac12\mathcal C_\delta f
--
-a_0f
-=
-A_{\rm odd},
-~~~
-
-for odd physical parity, with analytic forcing and
-
-~~~math
-a_0=\frac{\Lambda(n_0)}{\sqrt{n_0}}.
-~~~
-
-The physical indicial family is
-
-~~~math
-\mathfrak m_\varepsilon(\beta)
-=
--\frac{\pi}{2\sin(\pi\beta)}
-+
-\varepsilon a_0.
-~~~
-
-The first \(L^2\)-admissible physical channels are
-
-~~~math
-\boxed{
-\beta=\frac12\pm i\tau_0
-}
-~~~
-
-in even parity and
-
-~~~math
-\boxed{
-\beta=\frac32\pm i\tau_0
-}
-~~~
-
-in odd parity.
-
-Every nonzero threshold-persistent physical mode must carry a nonzero Mellin
-amplitude in one of these noninteger channels.  If all such amplitudes vanish,
-the remaining analytic endpoint germ has a first Taylor term whose Carleman
-transform produces an uncancellable \(s^k\log s\), forcing the germ—and then
-the mode—to vanish.
-
-But at the endpoint support the prime convention is strict:
-
-~~~math
-\log n<2c.
-~~~
-
-So the equality-prime term responsible for the exterior multiplication
-\(\pm a_0f\) is absent from the endpoint operator \(A_c\).
-
-A nonzero physical channel \(s^\beta\) therefore acquires from the
-archimedean principal operator the RPB-49 enhancement
-
-~~~math
-s^\beta\log(1/s),
-~~~
-
-while all endpoint active primes and pole terms are analytic at that
-noninteger exponent.
-
-Hence the endpoint equation forces every physical threshold Mellin amplitude
-to vanish.
-
-Thus the threshold persistence branch is empty.
-
-Combining RPB-57 and RPB-58 gives, for every \(c>0\),
-
-~~~math
-\boxed{
 0\ne h\in\ker A_c
 \Longrightarrow
 \widetilde h
 \text{ cannot satisfy the correct strict enlarged null equation for any }a>c.
-}
 ~~~
 
-Therefore, within the RPB experimental branch and under the existing
-carrier-identification hypotheses of WD-T38,
+RPB-59 audits that candidate for canonical Horizon-1 promotion.
+
+The following pieces pass:
+
+~~~text
+ZHU STRICT PRIME CONVENTION:              PASS
+ZHU EXACT GAUSS/DIGAMMA KERNEL:           PASS
+STIELTJES JUMP:                           PASS
+RPB-33 INDEPENDENCE:                      PASS AFTER RETYPING
+PHYSICAL THRESHOLD EXPONENTS:             PASS
+CARLEMAN CHANNEL IDENTIFICATION:          PASS
+ENDPOINT LOG-ENHANCEMENT GIVEN CHANNEL:    PASS
+~~~
+
+Zhu v2 equation (3) verifies the strict endpoint convention
 
 ~~~math
-\boxed{
-\texttt{AZ-FIN-WEIL-NULL-EXTENSION}
-\text{ is discharged negatively.}
-}
+\log n<2c,
 ~~~
 
-This has **not yet been promoted** into the stable theorem ledger or public
-Horizon-1 package.
+and equation (9) gives the exact archimedean kernel split
+
+~~~math
+\frac{
+2e^{-x/2}
+}{
+1-e^{-2x}
+}
+=
+\frac1x
++
+\text{analytic}.
+~~~
+
+These inputs are now pinned as RPB-EXT-A8.
+
+Two load-bearing promotion blockers remain.
+
+### Blocker A — logarithmic-order analytic interior regularity
+
+RPB-57 needs
+
+~~~math
+\mathcal P_ch\in C^\omega_{\rm loc}
+\Longrightarrow
+h\in C^\omega_{\rm loc}
+~~~
+
+for arbitrary Friedrichs zero modes.
+
+The standard analytic-wavefront theorem is pinned, but its specialization to
+the actual logarithmic-order multiplier has not yet been independently
+certified at promotion level.
+
+### Blocker B — local Mellin-conormal completeness
+
+RPB-58 identifies the physical Carleman indicial roots correctly, but still
+needs a theorem proving that every arbitrary \(L^2\) solution of the
+inhomogeneous truncated Carleman--Stieltjes equation decomposes completely into
+those indicial channels plus an analytic/Taylor remainder.
+
+The classical Carleman Mellin multiplier alone does not supply that
+completeness statement.
+
+Therefore RPB-59 does **not** modify the stable theorem ledger, proof status,
+RH-facing interface appendix, or H1-P3.1 theorem package.
+
+The canonical status remains:
+
+~~~text
+AZ-FIN-WEIL-NULL-EXTENSION: OPEN
+~~~
+
+while the RPB-57/58 all-support exclusion remains a strong branch-local
+candidate.
 
 ## Next cursor
 
 ~~~text
-RPB-59 / FULL NULL-EXTENSION DISCHARGE PROMOTION AUDIT
+RPB-60 / LOG-ORDER INTERIOR ANALYTICITY CERTIFICATION
 ~~~
 
-The next pass should audit the full RPB-57/58 chain for source pins, scope,
-dependency independence from the corrected RPB-33 claim, and exact endpoint /
-right-limit threshold conventions before any canonical status change.
+The next pass should isolate Blocker A and either prove or source-pin analytic
+hypoellipticity for the actual compact-window logarithmic-order scalar
+multiplier, with hypotheses broad enough for arbitrary Friedrichs zero modes.
+
+Do not use the historical RPB-33 screw-core bridge.
 
 ## Governance
 
@@ -153,4 +121,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_58_20260928.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_59_20260929.md.
