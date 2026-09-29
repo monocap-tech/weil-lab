@@ -402,11 +402,11 @@ Therefore **H1-P4 is COMPLETE**.
 
 ```math
 \boxed{
-\texttt{HORIZON 1 COMPLETE / RPB-74 WD-T40 F-1 STATIC CLOSURE AND BUILD HANDOFF}
+\texttt{HORIZON 1 COMPLETE / RPB-75 WD-T40 F-1 BUILD EXECUTION GATE}
 }
 ```
 
-Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-74 / WD-T40 F-1 static closure and build handoff.
+Historical LEAN-H1 is exhausted and H1-P5.0 through H1-P5.5 are complete. The post-WD-T40 package revalidation is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md). The current post-Horizon cursor is RPB-75 / WD-T40 F-1 build execution gate.
 
 ---
 
