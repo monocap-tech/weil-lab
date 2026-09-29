@@ -3048,3 +3048,118 @@ Dividing the RPB Carleman numerator by
 poles and is meromorphic rather than entire.
 
 **Status:** branch-local RPB terminology.
+
+
+## Source-edge Carleman cancellation
+
+Let \(u\) be a nonzero compact source with left support edge
+
+\`\`\`math
+\alpha
+=
+\inf\operatorname{ess\,supp}u,
+\`\`\`
+
+and let \(V\) and \(E_{+,a}\) be the compact-source and finite-interval terms
+in the right-tail Carleman numerator.
+
+Along \(z=iY\),
+
+\`\`\`math
+V(iY)
+\frac{\xi'}{\xi}
+\!\left(
+\frac12+Y
+\right)
+\`\`\`
+
+and
+
+\`\`\`math
+Y^2E_{+,a}(iY)
+\`\`\`
+
+both have the source-edge exponential indicator \(-\alpha\), but their sum is
+
+\`\`\`math
+-Y^2
+\int_a^\infty
+F_u(x)e^{-Yx}\,dx.
+\`\`\`
+
+The **source-edge Carleman cancellation** is this exact cancellation of the
+individual source-support indicator when the two terms are recombined into the
+actual exterior potential tail.
+
+**Status:** branch-local RPB terminology.
+
+## Collar-cutoff invariance
+
+Suppose \(F_u(x)=C\) on a symmetric constant plateau and let \(a\) vary inside
+that plateau.  The right divisor-cleared numerator
+
+\`\`\`math
+N_{+,a}(z)
+=
+V(z)\xi'
+-
+z^2\xi E_{+,a}(z)
++
+\frac{Cz}{i}e^{iaz}\xi
+\`\`\`
+
+is independent of \(a\).
+
+Indeed,
+
+\`\`\`math
+\partial_aE_{+,a}(z)
+=
+C e^{iaz},
+\`\`\`
+
+so the derivatives of the last two terms cancel exactly.
+
+This **collar-cutoff invariance** means that the vertical indicator cannot
+distinguish an arbitrary interior cutoff from the actual end of the constant
+plateau.
+
+**Status:** branch-local RPB terminology.
+
+## Maximal screw-collar radius
+
+For a nonzero parity-resolved screw potential \(F_u\), define
+
+\`\`\`math
+a_{\max}
+=
+\sup
+\left\{
+r>0:
+F_u
+\text{ is constant on }(-r,r)
+\right\}.
+\`\`\`
+
+RPB-11 excludes \(a_{\max}=\infty\) for the nonzero compact neutral modes under
+study.
+
+By continuity and parity, the first essential support point of the right
+residual \(F_u-C\) equals \(a_{\max}\).  Hence
+
+\`\`\`math
+\limsup_{Y\to\infty}
+\frac{
+\log|N_+(iY)|
+-
+\log\xi(1/2+Y)
+}{Y}
+=
+-a_{\max}.
+\`\`\`
+
+The **maximal screw-collar radius** is therefore encoded exactly by the
+subleading Carleman indicator, but is not determined by the compact source
+edge alone.
+
+**Status:** branch-local RPB terminology.
