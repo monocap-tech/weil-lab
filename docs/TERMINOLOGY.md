@@ -4079,3 +4079,203 @@ RPB-46 does not identify local indicial admissibility with global neutral
 persistence.
 
 **Status:** branch-local RPB terminology.
+
+
+## Threshold Mellin-amplitude functional
+
+At a prime-power threshold \(2c=\log n_0\), let
+
+\`\`\`math
+f(s)=u(c-s)
+\`\`\`
+
+be the right-endpoint source germ and choose a cutoff
+\(\chi\in C_c^\infty([0,\delta))\) with \(\chi=1\) near \(0\).
+
+For a threshold-compatible endpoint germ, the localized Mellin transform
+
+\`\`\`math
+\widehat f_M(z)
+=
+\int_0^\delta
+\chi(s)f(s)s^{z-1}\,ds
+\`\`\`
+
+continues meromorphically across the initial \(L^2\) half-plane.  Its
+noninteger poles occur at
+
+\`\`\`math
+z=-\beta,
+\qquad
+\mathfrak m_{\varepsilon_u}(\beta)=0.
+\`\`\`
+
+The **threshold Mellin-amplitude functional** in the channel \(\beta\) is
+
+\`\`\`math
+\boxed{
+\mathfrak a_\beta(u)
+=
+\operatorname*{Res}_{z=-\beta}
+\widehat f_M(z).
+}
+\`\`\`
+
+It is independent of the cutoff as long as the cutoff equals one near the
+endpoint.
+
+For a real source,
+
+\`\`\`math
+\mathfrak a_{\bar\beta}(u)
+=
+\overline{\mathfrak a_\beta(u)}.
+\`\`\`
+
+**Status:** branch-local RPB terminology.
+
+## Full threshold amplitude vector
+
+Let \(\mathcal I_{\varepsilon}\) be the set of \(L^2\)-admissible roots of the
+threshold Carleman indicial family.
+
+The **full threshold amplitude vector** is
+
+\`\`\`math
+\boxed{
+\mathfrak A_c(u)
+=
+\left(
+\mathfrak a_\beta(u)
+\right)_{\beta\in\mathcal I_\varepsilon}.
+}
+\`\`\`
+
+For a nonzero threshold-persistent source this vector is nonzero.
+
+If every noninteger Mellin residue vanished, the endpoint equation would leave
+an analytic source germ.  The Carleman transform of a nonzero analytic Taylor
+coefficient produces an uncancelled integer-power logarithmic term, so all
+Taylor coefficients would have to vanish.  Interior analyticity would then
+force \(u\equiv0\).
+
+Thus the full amplitude vector separates nonzero persistent endpoint germs.
+
+**Status:** branch-local RPB terminology.
+
+## Zero-mean / Mellin-residue separation
+
+For
+
+\`\`\`math
+f(s)=u(c-s),
+\`\`\`
+
+the screw zero-mean condition is
+
+\`\`\`math
+\boxed{
+\widehat f_M(1)
+=
+\int_0^{2c}f(s)\,ds
+=
+\int_{-c}^{c}u(x)\,dx
+=
+0.
+}
+\`\`\`
+
+The threshold amplitudes are residues at the nonreal points
+\(z=-\beta\), not values at \(z=1\).
+
+The **zero-mean / Mellin-residue separation** is the absence of any current
+identity converting the global value constraint at \(z=1\) into vanishing of
+the threshold Mellin residues.
+
+For odd screw sources the zero-mean condition is automatic by parity.
+
+**Status:** branch-local RPB terminology.
+
+## Birman--Schwinger boundary-transfer functional
+
+Let
+
+\`\`\`math
+E_*
+=
+\ker(\mathsf K_c-I)
+\`\`\`
+
+be the endpoint unit-gain eigenspace and let
+
+\`\`\`math
+J_*v
+=
+A_{B,c}^{-1}\Phi_c^*v
+\`\`\`
+
+be the neutral-resolvent isomorphism into the physical nullspace.
+
+On the screw-visible/core subspace for which
+
+\`\`\`math
+u
+=
+D J_*v
+\`\`\`
+
+is defined, compose the endpoint Mellin amplitude with this map:
+
+\`\`\`math
+\boxed{
+\mathfrak T_{\beta,c}(v)
+=
+\mathfrak a_\beta
+\left(
+D J_*v
+\right).
+}
+\`\`\`
+
+This is the **Birman--Schwinger boundary-transfer functional**.
+
+The unit-gain equation
+
+\`\`\`math
+\mathsf K_cv=v
+\`\`\`
+
+does not by itself imply
+
+\`\`\`math
+\mathfrak T_{\beta,c}(v)=0.
+\`\`\`
+
+A theorem identifying the endpoint boundary-transfer row with the
+Birman--Schwinger matrix is an additional obligation.
+
+**Status:** branch-local RPB terminology.
+
+## Threshold finite-dimensional boundary-transfer gap
+
+The **threshold finite-dimensional boundary-transfer gap** is the remaining
+problem of determining the restrictions of the amplitude functionals
+
+\`\`\`math
+\mathfrak T_{\beta,c}
+\`\`\`
+
+to the finite-dimensional unit-gain/core eigenspace.
+
+Because the domain is finite dimensional, only finitely many independent
+Mellin-amplitude rows can occur on that space, even though the formal indicial
+set is infinite.
+
+Strict threshold persistence requires a nonzero unit-gain/core vector whose
+boundary-transfer data realize the admissible conormal expansion and whose
+analytic exterior remainder also vanishes.
+
+No existing RPB theorem computes this finite-dimensional boundary-transfer
+matrix.
+
+**Status:** branch-local RPB terminology.
