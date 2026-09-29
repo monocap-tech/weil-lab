@@ -229,7 +229,7 @@ The post-Horizon RPB promotion audit has added WD-T40. The next research cursor 
 
 ```math
 \boxed{
-\texttt{RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY}
+\texttt{RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT}
 }
 ```
 
