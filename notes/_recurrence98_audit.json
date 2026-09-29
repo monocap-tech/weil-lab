@@ -1,0 +1,72 @@
+{
+  "format": "GERM98-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-98",
+  "standing": "UNRATIFIED",
+  "entry_commit": "4b1c24633f9e06b523857529c868ae36714e70a0",
+  "verifier_path": "tools/sz_post_u_c11_eleventh_last_visit_audit.py",
+  "verifier_sha256": "9cf48a34efe672d09edd083d32c3d8e17e45d8dbd0a7d37c0e029412d8ab15c7",
+  "verifier_git_blob": "35a7f8f5ef552886f55754c2bf44bfdb97834807",
+  "stdout_sha256": "f0377404a754d45848db57a7a053238732de3ececcfb4e75a75671de5764f6a0",
+  "compact_complete_audit_sha256": "3dbf21a547fe64d7df29381853747011b8c106a808b6af77917282f51529cc73",
+  "execution_exit_code": 0,
+  "parent_GERM97_entry_replay_exit_code": 0,
+  "parent_GERM97_stdout_sha256": "121afe9e00c4ed9445219502d0f7097a1c73824af4d5ca7a6a35da4b6552cfdb",
+  "parent_GERM97_recorded_stdout_match": true,
+  "direct_dependency_sha256": {
+    "tools/sz_post_d_omega_sixth_19_step_audit.py": "a550c7ac2c8b4baaa69ea8823fcaa6f2da313b4370f7126cd8fe362a2d48a196"
+  },
+  "new_exclusion_scope": "0<v<=delta13, v=e-e97; delta13=omega12-rho12",
+  "experimental_endpoint": "log(2^29136426436*5^4932606194/3^25609175812)",
+  "endpoint_decimal": [
+    "1.7112125159499686485726271867542050404426",
+    "1.7112125159499686485726271867542050404427"
+  ],
+  "increment": "delta13=omega12-rho12",
+  "increment_decimal": [
+    "0.0000000000002898073401458048442460448644",
+    "0.0000000000002898073401458048442460448645"
+  ],
+  "matrix_namespace": "GERM-97 level-10 inputs; GERM-98-local eleventh/twelfth/thirteenth maps",
+  "eleventh_word_dictionary": {
+    "A": ["A1","B0","B0","B0"],
+    "D": ["A1","B0","B0","B0","B0"],
+    "E": ["A1","B0","B0","B0","B1"]
+  },
+  "twelfth_word_dictionary": {
+    "D10": ["A","A","A","A","A","A","A","A","A","D"],
+    "E10": ["A","A","A","A","A","A","A","A","A","E"],
+    "D11": ["A","A","A","A","A","A","A","A","A","A","D"]
+  },
+  "thirteenth_word_dictionary": {
+    "A": ["D11","D10"],
+    "D": ["D11","D10","D10"],
+    "E": ["D11","D10","E10"]
+  },
+  "chart": [["-27","-145"],["40","-488"]],
+  "chart_determinant": "18976",
+  "common_forward_backward_factor": "1000000",
+  "minimum_forward_lower": "98470565.0909541958",
+  "minimum_backward_lower": "29837698051318.5168881062",
+  "next_thirteenth_word": ["D11","E10"],
+  "next_trace": [[["-725770969.5804560826","-725770969.5804560825"]]],
+  "next_discriminant": [[["526743500285755304.3471593701","526743500285755304.3471593702"]]],
+  "next_status": "HYPERBOLIC NEW TWO-STEP THIRTEENTH RETURN",
+  "remaining_eleventh_formula_width": [
+    "0.0000000000206035640255363940821869743218",
+    "0.0000000000206035640255363940821869743219"
+  ],
+  "remaining_three_layer_width": [
+    "0.0000314776173743576349354480496022474989",
+    "0.0000314776173743576349354480496022474990"
+  ],
+  "fourteenth_or_deeper_induction_used": false,
+  "new_retained_coordinates": 0,
+  "full_lower_symbolic_suites_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "second_replay_stdout_identical": true,
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true,
+  "clean_bundle_manifest_entries_checked": 101
+}
