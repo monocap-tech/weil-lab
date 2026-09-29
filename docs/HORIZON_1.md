@@ -260,13 +260,15 @@ W_ck=0
 }
 ```
 
-The theorem terminates at
+The original theorem package terminated at
 
 ```math
 \boxed{
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 }
 ```
+
+The additive post-Horizon theorem WD-T40 now discharges that interface negatively under the retained WD-T38 carrier hypotheses.
 
 ### P3.2 — Noncompact background morphology
 
@@ -328,11 +330,13 @@ W_ck=0
 
 The theorem explicitly does not infer persistence from logarithmic regularity or from the finite translation structure.
 
-Its stop line is
+Its historical stop line was
 
 ```math
 \texttt{AZ-FIN-WEIL-NULL-EXTENSION}.
 ```
+
+Current status: discharged negatively by WD-T40.
 
 ### P3.2 disposition
 
