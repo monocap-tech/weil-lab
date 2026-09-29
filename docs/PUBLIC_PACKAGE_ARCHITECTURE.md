@@ -343,7 +343,7 @@ The final pass is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 }
 ```
 
-The current post-Horizon research cursor is RPB-68 / WD-T40 physical Fourier carrier lift.
+The current post-Horizon research cursor is RPB-69 / WD-T40 physical Fourier carrier build certification.
 
 
 ---
