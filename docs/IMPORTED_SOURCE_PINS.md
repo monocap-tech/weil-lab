@@ -933,3 +933,101 @@ No positivity/Hopf conclusion is applied to the sign-changing RPB neutral mode.
 \`\`\`math
 \boxed{\text{SOURCE-PINNED / CONTEXTUAL FOR RPB-48}}
 \`\`\`
+
+
+---
+
+## RPB-EXT-A7 — one-dimensional logarithmic-Laplacian edge kernel
+
+### Source
+
+Huyuan Chen and Tobias Weth,
+*The Dirichlet problem for the logarithmic Laplacian*,
+Communications in Partial Differential Equations **44** (2019), 1100--1139,
+Theorem 1.1 / the integral representation of \(L_\Delta\).
+
+### Exact input consumed by RPB-49
+
+The logarithmic Laplacian has Fourier symbol
+
+\`\`\`math
+2\log|\xi|
+\`\`\`
+
+and pointwise representation
+
+\`\`\`math
+L_\Delta u(x)
+=
+c_N
+\int_{\mathbb R^N}
+\frac{
+u(x)\mathbf1_{B_1(x)}(y)-u(y)
+}{
+|x-y|^N
+}\,dy
++
+\rho_Nu(x).
+\`\`\`
+
+For \(N=1\),
+
+\`\`\`math
+c_1
+=
+\pi^{-1/2}\Gamma(1/2)
+=
+1.
+\`\`\`
+
+### RPB endpoint specialization
+
+At the right endpoint of an interval, put
+
+\`\`\`math
+x=c-s,
+\qquad
+r=c-y.
+\`\`\`
+
+For a cutoff conormal germ
+
+\`\`\`math
+u(c-r)
+=
+r^\lambda
+\`\`\`
+
+with \(\lambda\notin\mathbb Z_{\ge0}\), direct splitting of the
+Chen--Weth integral gives the universal nonanalytic term
+
+\`\`\`math
+\boxed{
+L_\Delta u(c-s)
+=
+2s^\lambda
+\log\frac1s
++
+O_{\rm conormal}(s^\lambda)
++
+\text{analytic powers}.
+}
+\`\`\`
+
+The coefficient \(2\) comes from two equal logarithmic pieces:
+
+1. the exterior zero-extension integral;
+2. the \(u(x)\)-part of the interior singular integral.
+
+No external theorem on the power asymptotic is imported; the coefficient is
+derived directly from the pinned integral representation in RPB-49.
+
+Since the Weil archimedean multiplier has principal symbol
+\(\log|\xi|\), its endpoint log-enhancement coefficient is one half of the
+displayed \(L_\Delta\) coefficient.
+
+### Status
+
+\`\`\`math
+\boxed{\text{SOURCE-PINNED / BRANCH-LOCAL RPB}}
+\`\`\`
