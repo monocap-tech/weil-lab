@@ -9,112 +9,149 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-60 — THE STANDARD ANALYTIC-PSEUDODIFFERENTIAL ROUTE DOES NOT CERTIFY INTERIOR ANALYTICITY FOR THE FINITE-DELAY WEIL OPERATOR.}
+\textbf{RPB-61 — DELAY-WAVEFRONT PROPAGATION IS EXISTENTIAL; COMPACT SUPPORT AND DENSE PRIME-LOG ARITHMETIC DO NOT BY THEMSELVES EXCLUDE CLOSED SINGULAR CYCLES.}
 }
 ~~~
 
-RPB-59 isolated logarithmic-order interior analyticity as the first promotion
-blocker.
-
-RPB-60 shows that the historical RPB-43 proof does not certify it.
-
-The archimedean component is a diagonal logarithmic pseudodifferential
-operator, but each prime translation
+For the interior equation
 
 ~~~math
-(\tau_\ell h)(x)=h(x-\ell)
-~~~
-
-has kernel
-
-~~~math
-\delta(x-y-\ell),
-~~~
-
-singular on the shifted diagonal \(x-y=\ell\).
-
-Therefore prime shifts are translation Fourier-integral operators with
-off-diagonal canonical relation, not ordinary analytic pseudodifferential
-lower-order terms.
-
-The Fourier multiplier
-
-~~~math
-e^{-i\ell\xi}
-~~~
-
-also fails the decaying \(\xi\)-derivative bounds used by the standard
-\(S^0_{1,0}\) pseudodifferential calculus.
-
-Hence the full scalar multiplier
-
-~~~math
-\Psi_c(\xi)
-=
-m_\infty(\xi)
+\mathcal A_\infty h
 -
-\sum_j2a_j\cos(\ell_j\xi)
+\sum_j a_j
+\left(
+\tau_{\ell_j}
++
+\tau_{-\ell_j}
+\right)h
+=
+g_{\rm an},
 ~~~
 
-cannot be inserted directly into the ordinary analytic-wavefront elliptic
-theorem merely because
+the archimedean component is the lawful diagonal analytic pseudodifferential
+part, while each prime translation transports analytic wavefront by
 
 ~~~math
-|\Psi_c(\xi)|
-\gtrsim\log|\xi|
+(x,\xi)
+\longleftrightarrow
+(x\pm\ell_j,\xi).
 ~~~
 
-at high frequency.
+Hence, writing
 
-The correct local problem is an analytic-wavefront **delay-orbit propagation**
-problem:
+~~~math
+S=WF_A(h),
+~~~
+
+the correct set-level propagation law is
+
+~~~math
+\boxed{
+S
+\subseteq
+\bigcup_jT_{+\ell_j}S
+\cup
+\bigcup_jT_{-\ell_j}S.
+}
+~~~
+
+Equivalently,
 
 ~~~math
 (x,\xi)\in WF_A(h)
+\Longrightarrow
+\exists j,\sigma\in\{\pm1\}:
+(x+\sigma\ell_j,\xi)\in WF_A(h).
 ~~~
 
-may be coupled to
+This is an **existential witness relation**.
+
+It does not imply that an actual singular orbit is closed under the whole
+additive group
 
 ~~~math
-(x\pm\ell_j,\xi)\in WF_A(h).
+\Gamma_c
+=
+\sum_p\mathbb Z\log p.
 ~~~
 
-This is structurally consistent with the finite-delay obstruction already seen
-in RPB-36/37.
+Therefore the density result from RPB-37 remains an arithmetic fact but cannot
+be used to claim that every actual singular witness orbit is dense.
 
-Consequences:
+Indeed, because the delay set is symmetric, a two-point configuration
+
+~~~math
+x
+\longleftrightarrow
+x+\ell_j
+~~~
+
+already satisfies the set-valued witness requirement whenever both points lie
+inside the support.
+
+Compact support alone therefore does not force every singular witness path to
+exit through an endpoint.
+
+The high-frequency logarithmic dominance still gives a quantitative gain:
+each successful use of the interior equation adds one power of
+\(\log\langle D\rangle\) relative to bounded translations.
+
+Thus a finite self-supporting delay cycle is forced into
+
+~~~math
+\boxed{
+\bigcap_{N\ge0}H_{\log}^{N}
+}
+~~~
+
+microlocally.
+
+But this infinite-log class is nonquasianalytic and may remain below every
+positive Sobolev order.
+
+So the promotion blocker is now narrower but unresolved:
 
 ~~~text
-RPB-43 FULL-SYMBOL ANALYTIC-ELLIPTIC SHORTCUT:
+RPB-43 FULL-SYMBOL ANALYTICITY:
     WITHDRAWN
 
-INTERIOR ANALYTICITY OF ARBITRARY FRIEDRICHS ZERO MODES:
-    OPEN
+SET-LEVEL DELAY-WAVEFRONT PROPAGATION:
+    CLASSIFIED
 
-RPB-57 FULL NONTHRESHOLD FRIEDRICHS EXCLUSION:
-    CONDITIONAL / UNPROMOTED
+DENSE PRIME-LOG GROUP => DENSE ACTUAL SINGULAR ORBIT:
+    FALSE
 
-RPB-58 FULL THRESHOLD FRIEDRICHS EXCLUSION:
-    CONDITIONAL / UNPROMOTED
+FINITE CLOSED WITNESS CYCLE:
+    FORCED TO INFINITE LOG REGULARITY
+
+INFINITE LOG REGULARITY => ANALYTICITY:
+    FALSE / NO-GO
+
+RPB-57/58 FULL-FRIEDRICHS EXCLUSION:
+    STILL CONDITIONAL / UNPROMOTED
 
 AZ-FIN-WEIL-NULL-EXTENSION:
     OPEN
 ~~~
 
-The external source pin RPB-EXT-A1 itself remains valid for ordinary analytic
-pseudodifferential operators; only its earlier specialization to the full
-finite-delay operator is withdrawn.
+RPB-EXT-A9 records a current analytic-FIO source as contextual confirmation
+that analytic Fourier-integral operators transport ultradifferentiable
+wavefront sets along their canonical relations.  It is non-load-bearing for
+the exact translation formula used here.
 
 ## Next cursor
 
 ~~~text
-RPB-61 / ANALYTIC-WAVEFRONT DELAY-ORBIT PROPAGATION
+RPB-62 / INFINITE-LOG DELAY-CYCLE EXTINCTION TEST
 ~~~
 
-The next pass should derive the correct singularity-propagation relation for
-the logarithmic archimedean operator coupled to finite translations and test
-whether compact support/end-point zero regions forbid a closed or infinite
-singular delay orbit.
+The next pass should move beyond set-valued wavefront geometry and use the
+actual coupled high-frequency equations on a finite delay cycle.
+
+The target is to determine whether the growing diagonal
+\(\log|\xi|\) term against a bounded translation matrix, together with
+localization commutators, upgrades infinite-log regularity enough to eliminate
+finite cycles—or whether a genuinely nonquasianalytic cycle survives.
 
 ## Governance
 
@@ -127,4 +164,4 @@ Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_60_20260929.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_61_20260929.md.
