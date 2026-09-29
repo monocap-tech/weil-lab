@@ -9,41 +9,49 @@
 
 \`\`\`math
 \boxed{
-\textbf{RPB-37 — THE ACTUAL NEUTRAL EDGE HAS A DENSE MULTI-PRIME DELAY ORBIT; SUPPORT-ORDER TRIANGULARIZATION DOES NOT CLOSE THE COLLAR PROBLEM.}
+\textbf{RPB-38 — PRIME-LOG SYMBOL NONDEGENERACY DOES NOT CLOSE THE COMPRESSED COLLAR PROBLEM; THE COMPACT SOURCE RETAINS THE ZETA SPECTRUM.}
 }
 \`\`\`
 
-The current unconditional compact-window positivity certificate gives
-\(c_*>0.8\), so the active strict-right delay set already contains
-\(\log2\) and \(\log3\). Their ratio is irrational, hence
+The strict-right scalar symbol
 
 \`\`\`math
-\Gamma_{c_*}
+\Psi_{c_*+}(\xi)
 =
-\operatorname{span}_{\mathbb Z}\mathcal D_{c_*+}
+\Re\psi\!\left(\frac14+\frac{i\xi}{2}\right)
+-\log\pi
+-
+\sum_{\log n\le2c_*}
+\frac{2\Lambda(n)}{\sqrt n}\cos(\xi\log n)
 \`\`\`
 
-is dense in \(\mathbb R\).
+is real analytic and tends to \(+\infty\), so it has only finitely many real
+zeros.
 
-Thus every interior delay orbit is dense and has arbitrarily small nonzero net
-steps.  This rules out a finite support lattice or a monotone boundary-to-
-interior triangularization.
+But the compact-window neutral mode is a kernel vector of a compressed
+operator, not a whole-line multiplier kernel.  Its Fourier transform is
+therefore not localized to the real zero set of \(\Psi_{c_*+}\).
 
-Density still does not propagate zero because the Weil equation supplies a
-weighted multi-delay relation plus a global archimedean field, not a scalar
-transport law.
+Conversely, a nonzero compact screw source cannot cancel the zeta spectrum:
+its entire transform has only \(O(T)\) zeros, while there are
+\(\gg T\log T\) distinct simple critical-line zeta ordinates.  Hence
+\(\gg T\log T\) critical spectral coefficients survive.
+
+The remaining frequency-side problem is a spatial-gap/Fourier--Carleman
+factorization of the left and right exterior tails.
 
 ## Next cursor
 
 ```text
-RPB-38 / PRIME-LOG DELAY SYMBOL SPECTRAL-SYNTHESIS TEST
+RPB-39 / EXTERIOR-TAIL FOURIER-CARLEMAN FACTORIZATION
 ```
 
-The next pass should leave spatial support-order iteration and work in the
-frequency/symbol picture: analyze the quasiperiodic prime-delay symbol, combine
-it with the archimedean multiplier and pole term, and test whether compact
-support / Paley--Wiener or Suzuki's Fourier--Carleman mean-periodic framework
-yields an isolating spectral-synthesis relation.
+The next pass should type the exterior tails
+\(q=\mathcal W^{\rm ext}_{c_*+}h\) precisely, determine their half-plane
+Fourier--Carleman growth classes, derive the exact left/right boundary-value
+identity with the completed Weil symbol and finite pole row, and test whether a
+Wiener--Hopf factorization or index calculation rules out a nonzero
+Paley--Wiener numerator.
 
 ## Governance
 
