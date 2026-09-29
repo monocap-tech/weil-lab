@@ -9,124 +9,100 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-51 — SUZUKI'S GENERALIZED ZERO EIGENSPACE LIVES IN THE COMPLETED SCREW SPACE; §8.5 DOES NOT CLOSE THE ORDINARY \(L^2\) CORE-LIFT DEFECT.}
+\textbf{RPB-52 — THE COMPLETED GENERALIZED ZERO EQUATION DOES NOT FORCE AN ORDINARY \(L^2\) SCREW-CORE REPRESENTATIVE.}
 }
 ~~~
 
-RPB-51 corrects the source interpretation used in RPB-33.
-
-Suzuki first has the ordinary core map
+RPB-51 corrected Suzuki's generalized zero eigenspace to the completed screw
+space
 
 ~~~math
-D:H_0^1(-a,a)\overset{\sim}{\longrightarrow}L_0^2(-a,a),
+\mathcal H(S_c)\not\subset L^2(-c,c).
 ~~~
 
-but then extends it to a unitary map between form completions
+RPB-52 tests whether the exceptional value \(\lambda=0\) nevertheless forces
+a completed zero mode back into the ordinary carrier.
+
+It does not by abstract structure alone.
+
+Suzuki's generalized equation is
 
 ~~~math
-\bar D:
-\mathcal H(T_a)
-\overset{\sim}{\longrightarrow}
-\mathcal H(S_a),
-~~~
-
-and explicitly notes
-
-~~~math
-\mathcal H(S_a)\not\subset L^2(-a,a).
-~~~
-
-His §8.5 generalized problem is
-
-~~~math
-G_au=\lambda K_au,
+G_cu=\lambda K_cu,
 \qquad
-u\in\mathcal H(S_a).
+u\in\mathcal H(S_c),
 ~~~
 
-Therefore the exceptional zero generalized eigenspace belongs to the completed
-space.  Define
+and at \(\lambda=0\) the explicit inverse-Neumann term disappears:
 
 ~~~math
-\mathcal N_a^S
-=
-\{u\in\mathcal H(S_a):G_au=0\}.
+G_cu=0.
 ~~~
 
-The source supports the completed-space correspondence
+Rewriting with \(S_c=G_c-\mu K_c\) remains an identity in the completed
+form/operator realization and does not license application of the ordinary
+\(L^2\) smoothing map \(K_c\) before \(u\in L^2\) is known.
+
+RPB-52 gives a sharp abstract Friedrichs/screw countermodel with
 
 ~~~math
-\ker A_a
-\longleftrightarrow
-\mathcal N_a^S,
+D:V\overset{\sim}{\longrightarrow}H,
+\qquad
+G=(D^{-1})^*AD^{-1},
 ~~~
 
-not the stronger ordinary-carrier identification
-
-~~~math
-\ker A_a
-\stackrel{?}{\longleftrightarrow}
-\ker_{L^2}G_a.
-~~~
-
-The exact ordinary core statement from RPB-32 remains
+where \(G\) is compact nonnegative and the closed core form generates the
+Friedrichs operator \(A\), yet
 
 ~~~math
 \boxed{
-D^{-1}(\ker_{L^2}G_a)
-=
-\ker A_a\cap H_0^1(-a,a).
+\ker A\ne0,
+\qquad
+\ker A\cap V=0,
+\qquad
+\ker_HG=0.
 }
 ~~~
 
-Accordingly, RPB-33's source-based conclusion that the actual neutral edge
-necessarily has a nonzero ordinary \(L^2\) screw-kernel direction is withdrawn.
-Historical RPB notes remain immutable; RPB-51 is the additive correction.
+Thus a genuine Friedrichs zero eigenvector can live entirely outside the screw
+core while the ordinary compact screw operator has trivial kernel.
 
-The RPB-34 through RPB-50 leakage/null-extension mechanism remains valid
-**conditionally on an explicitly supplied nonzero**
-\(u\in\ker_{L^2}G_c\).  What is no longer established is the bridge from an
-arbitrary Friedrichs neutral edge to such a core vector.
+This closes the proposed "zero itself regularizes" route negatively.
 
 Current branch-local status:
 
 ~~~text
-CORE-RESTRICTED NULL-EXTENSION EXCLUSION: PROVED CONDITIONALLY
-CORE-RESTRICTED PLATEAU COLLAPSE: PROVED CONDITIONALLY
+ZERO-EIGENVALUE REGULARIZATION: NO-GO FROM ABSTRACT STRUCTURE
+COMPLETED-TO-L2 CORE LIFT: OPEN FOR THE ACTUAL WEIL OPERATOR
+CORE-RESTRICTED RPB-34–50 MECHANISM: INTACT CONDITIONALLY
 ACTUAL-EDGE L2 SCREW-CORE EXISTENCE: OPEN
-ACTUAL-EDGE PLATEAU COLLAPSE VIA THIS ROUTE: OPEN
 FULL AZ-FIN-WEIL-NULL-EXTENSION: OPEN
 ~~~
 
 ## Next cursor
 
 ~~~text
-RPB-52 / COMPLETED-TO-L2 SCREW CORE-LIFT TEST
+RPB-53 / ACTUAL ZERO-MODE ENDPOINT REGULARITY TEST
 ~~~
 
-The next pass should test whether a completed generalized zero mode
+The next pass should leave the abstract generalized pencil and return to the
+actual localized Weil equation \(A_cv=0\).
 
-~~~math
-u\in\mathcal N_c^S
-~~~
-
-is forced into the ordinary carrier
-
-~~~math
-L_0^2(-c,c).
-~~~
-
-Priority is zero-eigenvalue regularization of the completed kernel equation,
-not another multiplicity count.  If no lift exists, the quotient between the
-completed zero space and the ordinary \(L^2\) screw kernel is the exact
-remaining object.
+Priority is the endpoint boundary class: determine whether the zero spectral
+value removes the generic noncore logarithmic boundary layer or whether the
+Friedrichs zero mode may still carry it.  If only the generic logarithmic form
+regularity already known from RPB-31 is recovered, record the core-lift route
+as exhausted absent a new actual-Weil boundary theorem.
 
 ## Governance
 
-The RPB line is a lab investigation. A committed pass may contain proved branch-local statements, imported results, scope/no-go statements, or open residue. Commit status is not canonical status. Promotion into the stable Weil theorem line requires a separate explicit audit.
+The RPB line is a lab investigation. A committed pass may contain proved
+branch-local statements, imported results, scope/no-go statements, or open
+residue. Commit status is not canonical status. Promotion into the stable Weil
+theorem line requires a separate explicit audit.
 
 Historical RPB notes are immutable. Later corrections are additive.
 
 ## Ledger
 
-The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_51_20260928.md.
+The full pass-by-pass record is stored in notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through notes/REFLECTED_PACKET_BRIDGE_52_20260928.md.
