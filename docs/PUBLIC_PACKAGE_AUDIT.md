@@ -488,7 +488,7 @@ WD-T40 formal state.
 ### 13.3 Next cursor
 
 ~~~text
-RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT
+RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
 ~~~
 
 
@@ -527,7 +527,7 @@ WD-T40 remains LEAN-BLOCKED.
 The next cursor is:
 
 ~~~text
-RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT
+RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
 ~~~
 
 **Result:** PASS as a custody/status update.
@@ -558,7 +558,7 @@ Both temporary validation PRs were closed without merge. The research branch con
 Next cursor:
 
 ~~~text
-RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT
+RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
 ~~~
 
 
@@ -584,7 +584,37 @@ F-2: NOT STARTED
 Next cursor:
 
 ~~~text
-RPB-71 / WD-T40 CARRIER STATIC ELABORATION AUDIT
+RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
 ~~~
 
 **Result:** PASS as a custody/status update.
+
+
+---
+
+## 17. Post-RPB-71 static elaboration delta
+
+RPB-71 checked the F-1 carrier declaration-by-declaration against pinned Lean/mathlib v4.34.0.
+
+Static API result:
+
+~~~text
+Lp / MemLp.toLp signatures: PASS
+Lp -> tempered-distribution coercion: PASS
+L2 Fourier instance: PASS
+tempered Fourier instance: PASS
+fourier_toTemperedDistribution_eq: PASS
+Distribution.IsVanishingOn / mono direction: PASS
+~~~
+
+Four elaboration-hardening edits are present in the carrier source: explicit volume, explicit residual-set arguments, explicit Fourier coercions, and a direct unfold/exact adapter proof.
+
+No declaration-shape mismatch remains. Build certification remains infrastructure-blocked and F-2 remains unopened.
+
+Next cursor:
+
+~~~text
+RPB-72 / WD-T40 CARRIER TYPECLASS SYNTHESIS AUDIT
+~~~
+
+**Result:** PASS as a static API audit.
