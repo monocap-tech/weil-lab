@@ -343,7 +343,7 @@ The final pass is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 }
 ```
 
-The current post-Horizon research cursor is RPB-69 / WD-T40 physical Fourier carrier build certification.
+The current post-Horizon research cursor is RPB-70 / WD-T40 carrier build infrastructure recovery.
 
 
 ---
@@ -365,3 +365,28 @@ WD-T40: LEAN-BLOCKED
 The blocker is exact and project-local; mathlib v4.34 already supplies the
 base L2 Fourier, tempered-distribution, Gaussian-transform, Fourier-inversion,
 and complex-analytic infrastructure.
+
+
+---
+
+## GitHub Actions runner-allocation blocker
+
+RPB-69 attempted to build the post-Horizon WD-T40 carrier module through two temporary validation PRs.
+
+Both jobs failed before runner allocation:
+
+~~~text
+runner_id: 0
+runner_name: ""
+steps: []
+~~~
+
+Accordingly, the carrier source has no module-build certificate yet and no compiler error has been observed.
+
+This is recorded as an infrastructure blocker rather than as a Lean theorem or source failure.
+
+Current cursor:
+
+~~~text
+RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY
+~~~
