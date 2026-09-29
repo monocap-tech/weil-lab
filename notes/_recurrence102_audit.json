@@ -1,0 +1,222 @@
+{
+  "format": "GERM102-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-102",
+  "standing": "UNRATIFIED",
+  "entry_commit": "c5237bc961b4db5330df7beda7dca82323584b0c",
+  "verifier_path": "tools/sz_post_b_35delta13_fourteenth_all_internal_audit.py",
+  "verifier_sha256": "bc9f783b9c9c89072e5c6a468cf29d3dd98e85299bd9cf3cb274f078ea247a5e",
+  "verifier_git_blob": "2686d5b8438c31d9c4fa47e6caeceb3b2eeb8167",
+  "stdout_sha256": "c25c502d1d3c714837675760b9d1d748794ba440cc03c7003ceef03d77c5ca90",
+  "compact_complete_audit_sha256": "45caef577ab0595c3c856f21a745d235dfe422dbb30a73b10ac7d5708ff96318",
+  "execution_exit_code": 0,
+  "parent_GERM101_entry_replay_exit_code": 0,
+  "parent_GERM101_stdout_sha256": "0b433a19d593ebb7bd9fe2ec15b946a7a352d8a60da68ebe73285ee4567d17a0",
+  "parent_GERM101_recorded_stdout_match": true,
+  "inherited_manifest_entries_checked": 121,
+  "dependency_sha256": {
+    "tools/sz_post_a_9omega11_twelfth_ten_visit_audit.py": "fc0d153bccf205823ef35b4cc4bfde85aeb4b261fcd0a88c4722b0a9f0f76a00"
+  },
+  "new_exclusion_scope": "0<z<=s15, z=e-e101; s15=delta13-tau14",
+  "new_formula_scope": "0<z<=tau14, three fourteenth and five fifteenth maps",
+  "experimental_endpoint": "log(2^2121001134368*5^359071602665/3^1864233112976)",
+  "endpoint_decimal": [
+    "1.711212516168887094026887318074664885657965886",
+    "1.711212516168887094026887318074664885657965887"
+  ],
+  "increment": "s15=delta13-tau14",
+  "increment_decimal": [
+    "0.000000000000131282232480777351764127960283129",
+    "0.000000000000131282232480777351764127960283130"
+  ],
+  "residual_definitions": {
+    "s15": "delta13-tau14",
+    "t15": "2tau14-delta13",
+    "rho16": "s15-4t15",
+    "cut16": "t15-rho16"
+  },
+  "residual_decimals": {
+    "delta13": [
+      "0.000000000000289807340145804844246044864477376",
+      "0.000000000000289807340145804844246044864477377"
+    ],
+    "tau14": [
+      "0.000000000000158525107665027492481916904194247",
+      "0.000000000000158525107665027492481916904194248"
+    ],
+    "s15": [
+      "0.000000000000131282232480777351764127960283129",
+      "0.000000000000131282232480777351764127960283130"
+    ],
+    "t15": [
+      "0.000000000000027242875184250140717788943911118",
+      "0.000000000000027242875184250140717788943911119"
+    ],
+    "rho16": [
+      "0.000000000000022310731743776788892972184638655",
+      "0.000000000000022310731743776788892972184638656"
+    ],
+    "cut16": [
+      "0.000000000000004932143440473351824816759272462",
+      "0.000000000000004932143440473351824816759272463"
+    ]
+  },
+  "fourteenth_word_definitions": {
+    "A": "34 copies of H1, then J1",
+    "D": "35 copies of H1, then J0",
+    "E": "35 copies of H1, then J1"
+  },
+  "fifteenth_words": {
+    "H0": [
+      "D",
+      "A"
+    ],
+    "H1": [
+      "E",
+      "A"
+    ],
+    "J0": [
+      "D",
+      "D",
+      "A"
+    ],
+    "J1": [
+      "E",
+      "D",
+      "A"
+    ],
+    "J2": [
+      "E",
+      "E",
+      "A"
+    ]
+  },
+  "matrix_namespace": "GERM-101 thirteenth inputs; GERM-102-local fourteenth A/D/E and fifteenth H/J",
+  "sixteenth_word_families": {
+    "low": "H0^(N-1)Ji, i=0,1, N=4,5",
+    "high": "H1^q H0^(N-q-1)J1, N=4,5, 0<=q<N"
+  },
+  "sixteenth_section": "(0,t15)",
+  "sixteenth_map": "y -> y+rho16 mod t15",
+  "charts": {
+    "low": [
+      [
+        50,
+        50
+      ],
+      [
+        -72,
+        -71
+      ]
+    ],
+    "high": [
+      [
+        500,
+        -1000
+      ],
+      [
+        -708,
+        1413
+      ]
+    ]
+  },
+  "chart_determinants": [
+    50,
+    -1500
+  ],
+  "regimes": {
+    "low": "0<z<=t15",
+    "high": "t15<=z<=s15"
+  },
+  "common_factor": "7",
+  "distinct_words": 11,
+  "chart_tests": 13,
+  "minimum_forward_lower": "7.7107292065",
+  "minimum_backward_lower": "7.0195109142",
+  "original_step_counts": [
+    385874379584,
+    471492030349
+  ],
+  "endpoint_words": [
+    "H1^3 J1",
+    "H1^4 J1"
+  ],
+  "formula_endpoint_maps": [
+    "H1",
+    "J2"
+  ],
+  "parent_geometry_rechecked": true,
+  "parent_geometry_compact_sha256": "f18e03a1a7d747ab600353d431ca3faf658a6512e49f8d11f55437a7a4226f35",
+  "remaining_new_formula_width": [
+    "0.000000000000027242875184250140717788943911118",
+    "0.000000000000027242875184250140717788943911119"
+  ],
+  "remaining_GERM100_eleventh_width": [
+    "0.000000000020920614240866449067150808130193377",
+    "0.000000000020920614240866449067150808130193378"
+  ],
+  "remaining_three_layer_width": [
+    "0.000031477398455912180675316729142402283625111",
+    "0.000031477398455912180675316729142402283625112"
+  ],
+  "next_map": "J2=AE^2, GERM-102-local fifteenth map",
+  "next_complete_word": "H1^3 J2",
+  "next_domain": "z=s15+excess; 0<y<excess<cut16",
+  "next_trace": [
+    [
+      [
+        "2.4406602180",
+        "2.4406602181"
+      ]
+    ]
+  ],
+  "next_discriminant": [
+    [
+      [
+        "1.9568223001",
+        "1.9568223002"
+      ]
+    ]
+  ],
+  "next_high_chart": [
+    [
+      [
+        "9.5995828349",
+        "9.5995828350"
+      ],
+      [
+        "-19.1708502433",
+        "-19.1708502432"
+      ]
+    ],
+    [
+      [
+        "3.6369107152",
+        "3.6369107153"
+      ],
+      [
+        "-7.1589226169",
+        "-7.1589226168"
+      ]
+    ]
+  ],
+  "next_status": "HYPERBOLIC; MIXED SIGNS IN CURRENT HIGH CHART",
+  "precision": {
+    "grid": "10^240",
+    "log_series_terms": 800
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "sympy": "1.14.0"
+  },
+  "seventeenth_or_deeper_induction_used": false,
+  "new_retained_coordinates": 0,
+  "full_lower_symbolic_suites_rerun": false,
+  "complete_GERM60_reduction_rerun": false,
+  "old_large_determinants_rerun": false,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE",
+  "clean_bundle_policy": "Source files, notes and recorded output; no generated bytecode, probes, or inherited stale manifest.",
+  "clean_bundle_manifest_entries_checked": 128,
+  "clean_bundle_replay_exit_code": 0,
+  "clean_bundle_replay_stdout_identical": true
+}
