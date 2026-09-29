@@ -488,7 +488,7 @@ WD-T40 formal state.
 ### 13.3 Next cursor
 
 ~~~text
-RPB-69 / WD-T40 PHYSICAL FOURIER CARRIER BUILD CERTIFICATION
+RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY
 ~~~
 
 
@@ -527,7 +527,36 @@ WD-T40 remains LEAN-BLOCKED.
 The next cursor is:
 
 ~~~text
-RPB-69 / WD-T40 PHYSICAL FOURIER CARRIER BUILD CERTIFICATION
+RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY
 ~~~
 
 **Result:** PASS as a custody/status update.
+
+
+---
+
+## 15. Post-RPB-69 build-infrastructure delta
+
+RPB-69 attempted to certify the F-1 carrier module build using two temporary validation PRs.
+
+Runs 36638336287 and 36641237210 both failed before runner allocation. In both job records: runner_id was 0, runner_name was empty, and steps was empty.
+
+Therefore neither validation reached repository checkout or Lean compilation. No compiler diagnostic exists.
+
+Current state:
+
+~~~text
+WD-T40: LEAN-BLOCKED
+F-1 source: IMPLEMENTED
+F-1 build: INFRASTRUCTURE-BLOCKED
+~~~
+
+Both temporary validation PRs were closed without merge. The research branch contains no validation-only workflow change.
+
+**Result:** PASS as a custody/status update.
+
+Next cursor:
+
+~~~text
+RPB-70 / WD-T40 CARRIER BUILD INFRASTRUCTURE RECOVERY
+~~~
