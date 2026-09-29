@@ -69,9 +69,7 @@ theorem l2Mode_ne_zero
     (d : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
     d.l2Mode ≠ 0 := by
   intro hzero
-  apply d.interface.kExt_ne
-  rw [interface_kExt_eq_l2Mode d]
-  exact hzero
+  exact d.interface.kExt_ne ((interface_kExt_eq_l2Mode d).trans hzero)
 
 /-- The chosen representative vanishes pointwise outside the certified support interval. -/
 theorem representative_eq_zero_of_not_mem
@@ -125,12 +123,12 @@ variable {c : ℝ}
 theorem vanishes_on_old_interval
     (d : NeutralStrictResidualData c) :
     Distribution.IsVanishingOn d.residual (Set.Ioo (-c) c) := by
-  apply Distribution.IsVanishingOn.mono
+  exact Distribution.IsVanishingOn.mono
     (s₁ := Set.Ioo (-d.a) d.a)
     (s₂ := Set.Ioo (-c) c)
-    ?_ d.residual_vanishes
-  intro x hx
-  exact ⟨lt_trans (neg_lt_neg d.strict) hx.1, lt_trans hx.2 d.strict⟩
+    (fun _ hx =>
+      ⟨lt_trans (neg_lt_neg d.strict) hx.1, lt_trans hx.2 d.strict⟩)
+    d.residual_vanishes
 
 end NeutralStrictResidualData
 
