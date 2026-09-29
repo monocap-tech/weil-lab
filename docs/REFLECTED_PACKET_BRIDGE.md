@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-74 — F-1 IS STATICALLY EXHAUSTED AND FROZEN; THE ONLY REMAINING OBLIGATION IS A REAL LEAN BUILD OF THE AUDITED BLOB.}
+\textbf{RPB-75 — THE EXACT FROZEN F-1 HANDOFF WAS ATTEMPTED AND AGAIN BLOCKED BEFORE LEAN EXECUTION; THE GATE IS UNCHANGED.}
 }
 ~~~
 
@@ -17,71 +17,76 @@ Frozen carrier:
 
 ~~~text
 WeilDefect/Morphology/NeutralFourierCarrier.lean
-git blob:
+blob:
 93f05eceb07ffda593181d0e9293caa0a05705ac
 ~~~
 
-Static audit state:
-
-~~~text
-RPB-71  STATIC API PASS
-RPB-72  TYPECLASS STATIC PASS
-RPB-73  PROOF-TERM STATIC PASS
-~~~
-
-RPB-74 strengthens the canonical handoff script:
+Canonical handoff:
 
 ~~~text
 scripts/check_neutral_fourier_carrier.sh
 ~~~
 
-The script now:
+RPB-75 tested that exact frozen handoff from a fresh temporary branch based on
+the current RPB-74 research head.
 
-1. verifies the carrier file is exactly the frozen audited Git blob;
-2. verifies the root library imports the carrier;
-3. runs
-   `lake build WeilDefect.Morphology.NeutralFourierCarrier`;
-4. rejects top-level `axiom`, `sorry`, or `admit` declarations.
-
-If the source changes, the handoff fails before build and prints the expected
-and actual blob IDs.
-
-Current state:
+Draft PR #4 targeted main and changed only the validation workflow to call:
 
 ~~~text
-F-1  physical Fourier carrier lift
-     SOURCE IMPLEMENTED
+bash scripts/check_neutral_fourier_carrier.sh
+~~~
+
+GitHub Actions run:
+
+~~~text
+36645302165
+~~~
+
+failed before runner allocation:
+
+~~~text
+runner_id:   0
+runner_name: ""
+steps:       []
+conclusion:  failure
+~~~
+
+Thus the exact frozen handoff did not execute.
+
+The local environment was also rechecked and still has no lean, lake, or elan
+binary.
+
+PR #4 was closed without merge.
+
+The research branch contains no validation-only workflow change.
+
+Current formalization state:
+
+~~~text
+F-1  SOURCE IMPLEMENTED
      STATIC API PASS
      TYPECLASS STATIC PASS
      PROOF-TERM STATIC PASS
      STATIC LINE EXHAUSTED
      BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
 
-F-2  actual compact-window Weil multiplier realization
-     NOT STARTED
+F-2  NOT STARTED
 ~~~
-
-No further static source audit is live.
-
-F-1 may reopen only if:
-
-- the frozen carrier blob changes; or
-- a real Lean compiler diagnostic identifies a defect.
 
 WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 
 ## Next cursor
 
 ~~~text
-RPB-75 / WD-T40 F-1 BUILD EXECUTION GATE
+RPB-76 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
-The next pass should attempt only the frozen handoff on any newly available
-working Lean environment.
+The next pass should recheck only for newly available Lean execution
+infrastructure.
 
-If no Lean runner exists, record the unchanged gate and halt.
+If no runner is available, record the unchanged gate and halt.
 
-Do not restart static audits and do not begin F-2.
+Do not reopen static audits and do not begin F-2.
 
 ## Governance
 
@@ -94,4 +99,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_74_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_75_20260929.md.
