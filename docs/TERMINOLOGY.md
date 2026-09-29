@@ -4279,3 +4279,26 @@ No existing RPB theorem computes this finite-dimensional boundary-transfer
 matrix.
 
 **Status:** branch-local RPB terminology.
+
+
+## Birman--Schwinger boundary-transfer functional — domain correction
+
+The branch-local entry **Birman--Schwinger boundary-transfer functional** is
+to be read on the threshold-compatible subspace
+
+\`\`\`math
+E_*^{\rm tc}
+\subseteq
+E_*=\ker(\mathsf K_c-I),
+\`\`\`
+
+consisting of unit-gain/core directions whose endpoint germ satisfies the
+threshold singular compatibility needed for the Mellin continuation.
+
+An arbitrary unit-gain vector is not assigned a threshold Mellin residue before
+that compatibility is established.
+
+This correction preserves the earlier definition on its lawful domain and
+supersedes any broader reading of that entry.
+
+**Status:** branch-local RPB correction.
