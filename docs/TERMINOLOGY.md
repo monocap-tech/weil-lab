@@ -5395,3 +5395,100 @@ which has bounded cumulative mass and bounded Stieltjes transform but fails
 \(H_0^1\).
 
 **Status:** branch-local RPB terminology.
+
+
+## Holomorphic Stieltjes continuation
+
+Suppose the endpoint Stieltjes transform
+
+~~~math
+\Sigma_+(z)
+=
+\int_0^\delta
+\frac{h(c-r)}{z+r}\,dr
+~~~
+
+agrees, for \(z=s>0\) near \(0\), with a holomorphic germ defined on a full
+disc across \(z=0\).
+
+Then the identity theorem extends \(\Sigma_+\) through a subinterval of its
+original cut \((-\delta,0)\).
+
+The Stieltjes jump formula then gives
+
+~~~math
+h(c-r)=0
+~~~
+
+for almost every sufficiently small \(r>0\).
+
+RPB-57 calls this mechanism **holomorphic Stieltjes continuation**.
+
+**Status:** branch-local RPB terminology.
+
+## Full nonthreshold Friedrichs null-extension exclusion
+
+At a nonthreshold support
+
+~~~math
+2c\notin\{\log(p^m)\},
+~~~
+
+strict persistence of a Friedrichs zero mode makes every non-Stieltjes exterior
+Weil term holomorphic across the endpoint after the universal \(1/(s+r)\)
+archimedean singularity is separated.
+
+Therefore the endpoint Stieltjes transform extends holomorphically across the
+cut, its boundary density vanishes on a collar, and interior analytic
+continuation forces the mode to vanish identically.
+
+This is the **full nonthreshold Friedrichs null-extension exclusion**.
+
+Unlike the earlier core-restricted exclusion, it does not assume
+\(H_0^1\) screw-core membership.
+
+**Status:** branch-local RPB terminology.
+
+## Friedrichs threshold Carleman--Stieltjes system
+
+At an equality threshold
+
+~~~math
+2c=\log n_0,
+~~~
+
+the newly active prime translation samples the opposite endpoint and prevents
+the endpoint Stieltjes transform from being isolated as an analytic germ.
+
+After parity diagonalization, strict persistence gives scalar systems of the
+form
+
+~~~math
+\frac12\Sigma_{\rm ev}(s)
++
+a_0f_{\rm ev}(s)
+=
+A_{\rm ev}(s),
+~~~
+
+and
+
+~~~math
+\frac12\Sigma_{\rm odd}(s)
+-
+a_0f_{\rm odd}(s)
+=
+A_{\rm odd}(s),
+~~~
+
+with
+
+~~~math
+a_0=\frac{\Lambda(n_0)}{\sqrt{n_0}},
+~~~
+
+and \(A_{\rm ev},A_{\rm odd}\) holomorphic endpoint germs.
+
+These are the **Friedrichs threshold Carleman--Stieltjes systems**.
+
+**Status:** branch-local RPB terminology.
