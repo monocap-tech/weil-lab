@@ -3495,3 +3495,96 @@ activation occurs already at \(x=c\), so strict collar persistence is not
 obtained by this mechanism.
 
 **Status:** branch-local RPB terminology.
+
+
+## First endpoint-activation radius — resonance correction
+
+The earlier branch-local entry **First endpoint-activation radius** requires a
+nonresonance qualifier.
+
+A right-endpoint event
+
+\`\`\`math
+x_0=c+\log n
+\`\`\`
+
+and a left-endpoint event
+
+\`\`\`math
+x_0=\log m-c
+\`\`\`
+
+can coincide precisely when
+
+\`\`\`math
+\boxed{
+e^{2c}
+=
+\frac{m}{n}
+}
+\`\`\`
+
+for prime powers \(m,n\).
+
+At such a **paired endpoint collision**, the one-sided endpoint germs can in
+principle glue to an analytic germ across \(x_0\); crossing the event is not
+excluded by analytic-singular-support bookkeeping alone.
+
+Therefore the corrected statement is:
+
+- if the first endpoint activation above \(c\) is unpaired, then the maximal
+  constant collar ends there;
+- more generally, a constant collar can cross an endpoint activation only
+  through a paired collision satisfying the arithmetic resonance above and
+  the corresponding analytic germ-matching condition;
+- in the nonresonant case
+  \[
+  e^{2c}\notin
+  \{m/n:m,n\text{ prime powers}\},
+  \]
+  one has
+  \[
+  a_{\max}
+  =
+  \min\{c+\log2,\ \log n_+(c)-c\}.
+  \]
+
+At a threshold \(2c=\log m\), the left-endpoint activation occurs already at
+\(x=c\) without a matching \(\log1\) prime event, so this resonance mechanism
+does not automatically provide strict persistence.
+
+**Status:** branch-local RPB correction; this entry supersedes the unconditional
+sentence in **First endpoint-activation radius** while preserving the historical
+wording additively.
+
+## Endpoint-collision germ matching
+
+At a paired collision
+
+\`\`\`math
+x_0=c+\log n=\log m-c,
+\`\`\`
+
+write \(s=x-x_0\).  Up to analytic terms, the second derivative of the screw
+potential has one-sided endpoint contributions
+
+\`\`\`math
+\frac{\Lambda(n)}{\sqrt n}\,u(c+s)
+\quad(s<0),
+\`\`\`
+
+and
+
+\`\`\`math
+\frac{\Lambda(m)}{\sqrt m}\,u(-c+s)
+\quad(s>0).
+\`\`\`
+
+Crossing the collision while the potential remains constant requires these
+one-sided germs to be restrictions of the same analytic germ after inclusion
+of the common analytic remainder.
+
+For a parity eigenmode this becomes a weighted reflected endpoint-germ
+matching condition.
+
+**Status:** branch-local RPB terminology.
