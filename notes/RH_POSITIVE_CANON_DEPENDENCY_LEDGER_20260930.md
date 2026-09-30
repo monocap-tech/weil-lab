@@ -188,3 +188,59 @@ This does not imply `C-ACTUAL-KPH-FLOOR`; the KPH jurisdiction is absent rather 
 ]
 
 Next pass asks whether failure of the common RH-positive norm/isometry junction factors canonically into the same launch objects that generate the finite-neutral and KPH/LJFR project branches.
+
+
+## CANON-3 — positive-junction failure factorization
+
+The symmetric two-branch picture is rejected.
+
+### Common canonical defect
+
+Retained provenance factorization:
+
+\[
+\Theta_\xi=e^{i\beta}\frac{B_Z}{B_P}.
+\]
+
+Under RH, the pole/Hardy defect disappears and the model-space kernels diagonalize.
+
+Off RH, the retained atom identity is
+
+\[
+B_PF_\eta
+=
+\text{const}_\eta
+\left(
+k_{\bar\eta}^{B_Z}
+-
+k_{\bar\eta}^{B_P}
+\right).
+\]
+
+The first canonical failure layer is therefore a signed Krein-kernel decomposition plus the cross-model coupling
+
+\[
+C_{ZP}=P_{K(B_Z)}|_{K(B_P)}.
+\]
+
+### Neutral/global route
+
+Loss of the RH-positive geometry universally feeds Weil negativity / first-crossing machinery. The later finite \`FIN-WEIGHTED-ENDPOINT\` condition is a deep descendant, not the immediate positive-junction failure object.
+
+### KPH/LJFR route
+
+Nontrivial signed defect does **not** universally force KPH softness. An additional selected-packet/attachment theorem is required before the KPH jurisdiction is entered.
+
+Thus the common defect has asymmetric descendants:
+
+- universal sign/endpoint route;
+- conditional selected KPH route.
+
+## Current cursor after CANON-3
+
+\[
+\boxed{
+\texttt{RH-POSITIVE-CANON-4 / KREIN-DEFECT TO KPH ATTACHMENT}
+\]
+
+Next pass is KPH-side only: test whether the selected KPH/Cauchy carrier is an exact finite compression, Schur complement, divided difference, or other projection of the common \(B_Z/B_P\) Krein defect.
