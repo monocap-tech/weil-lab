@@ -244,3 +244,82 @@ Thus the common defect has asymmetric descendants:
 \]
 
 Next pass is KPH-side only: test whether the selected KPH/Cauchy carrier is an exact finite compression, Schur complement, divided difference, or other projection of the common \(B_Z/B_P\) Krein defect.
+
+
+## CANON-4 — Krein defect to KPH attachment
+
+The direct operator-identification hypothesis is rejected under current custody.
+
+### Exact common lower-level carrier
+
+For a selected packet coefficient vector \(v\),
+
+\[
+E_v(\tau)=\sum_j v_j e^{-i\rho_j\tau},
+\qquad
+R_v(w)=\sum_j\frac{v_j}{w-\rho_j},
+\]
+
+with the exact half-line transform
+
+\[
+R_v(w)
+=
+-i\int_0^\infty e^{iw\tau}E_v(\tau)\,d\tau.
+\]
+
+This is the common raw exponential/Cauchy carrier.
+
+### Krein-side finite Cauchy system
+
+The bounded Suzuki/Emmel samples naturally produce
+
+\[
+M_{q,\gamma}
+=
+\frac{m_\gamma}{q-\gamma},
+\]
+
+with rows \(q\in Z(B_Z)\) and columns at zeta zeros \(\gamma\).
+
+Finite q-sample combinations cannot isolate a finite selected zeta marker; SUZ-BOMB-BRIDGE-0 gives the exact rational-function obstruction.
+
+### KPH-side finite Cauchy system
+
+\[
+(C_F)_{jk}
+=
+\frac1{\lambda_j-\lambda_k},
+\qquad
+KPH(F)=\sigma_{\min}(I+C_F).
+\]
+
+Both indices lie in one selected packet, and the native leverage/barycentric metric is essential.
+
+### Attachment verdict
+
+No retained exact theorem makes \(I+C_F\) a custody-preserving finite compression, Schur complement, or divided difference of \(C_{ZP}\).
+
+The two routes meet at the raw Cauchy/resolvent carrier and separate again when selector, support, and native metric are imposed.
+
+The missing edge is therefore:
+
+\[
+\boxed{
+\text{global Krein/Hardy defect}
+\longrightarrow
+\text{selected packet KPH native geometry}
+}
+\]
+
+with exact selected-compression/native-metric transport.
+
+## Current cursor after CANON-4
+
+\[
+\boxed{
+\texttt{RH-POSITIVE-CANON-5 / COMMON-PARENT OPERATOR TEST}
+}
+\]
+
+Next pass searches only the already-custodied paired-divisor/explicit-formula tensors for a true common parent whose two exact reductions recover the Krein cross-model defect and the KPH packet pencil.
