@@ -162,3 +162,28 @@ A result with an exceptional set is not automatically usable for S-II.
 A result averaged over zeros or heights is not a worst-packet theorem.
 
 A theorem assuming RH cannot be used inside the false-RH reductio unless only an implication valid before the RH assumption is extracted.
+
+
+## NJDG-1 hostile control pin
+
+### ashaffer/riemann-zeta — derivative-zero quartet gate
+
+Pinned file:
+
+`results/ZETA23-SPEISER-DERIVATIVE-ZERO-QUARTET-GATE-2026-08-12.md`
+
+Pinned repository commit:
+
+`ca617bed2607aec5dd0c7e2664d7ecbbdd0c1778`
+
+NJDG use:
+
+- exact symmetric quartet polynomial showing off-axis original zeros need not force off-axis derivative zeros;
+- explicit warning that (Xi') and (zeta') are different local geometric objects;
+- aggregate Speiser / Levinson-Montgomery quantifier audit.
+
+Disposition:
+
+**HOSTILE CONTROL / SEARCH-SPACE PRUNING.**
+
+No theorem from this file is promoted to canonical provenance by NJDG-1. The local pair-capture lemma and inverse-gap cofactor dichotomy in NJDG-1 are derived independently in Weil-Lab.
