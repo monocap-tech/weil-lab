@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-85 / WD-T40 F-2 tempered-multiplier core build certification.
+- **Next project cursor:** RPB-86 / WD-T40 F-2 EXT-4 weak-realization constructor.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -34,7 +34,7 @@ Exact blocking stack:
 
 ~~~text
 F-1  physical real-line L2 / tempered-distribution carrier lift — BUILD-CERTIFIED / audited blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d / run 36649140221
-F-2  actual compact-window Weil multiplier realization — IN PROGRESS / strict-right scalar symbol BUILD-CERTIFIED / exponential-growth residual carrier BUILD-CERTIFIED / EXT-5D polygamma derivative asymptotics SOURCE-PINNED / explicit symbol-temperate imported premise + canonical tempered multiplier core SOURCE IMPLEMENTED / multiplier-core build pending / EXT-4 realization still open
+F-2  actual compact-window Weil multiplier realization — IN PROGRESS / strict-right scalar symbol BUILD-CERTIFIED / exponential-growth residual carrier BUILD-CERTIFIED / EXT-5D SOURCE-PINNED / explicit symbol-temperate imported premise BUILD-CERTIFIED AS INTERFACE / canonical tempered multiplier core BUILD-CERTIFIED / EXT-4 weak-realization constructor still open
 F-3  support-gap Gaussian pairing theorem
 F-4  Gaussian coercivity -> exponential Fourier weight
 F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
