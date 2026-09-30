@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-94 — THE FINAL WHOLE-LINE RESIDUAL PAIRING ESTIMATE IS IMPLEMENTED IN LEAN SOURCE; F-3 NOW HAS ONLY ITS FINAL BUILD GATE.}
+\textbf{RPB-95 — F-3 IS COMPLETE: THE FULL GAUSSIAN SUPPORT-GAP PAIRING LAYER IS BUILD-CERTIFIED.}
 }
 ~~~
 
@@ -92,9 +92,11 @@ F-3  support-gap Gaussian pairing
      exterior Gaussian tail integrability BUILD-CERTIFIED
      blob 7ee6dacf94e4e6b4c694209a7be9ee4ba72846e6
      run 36763669865
-     final whole-line residual pairing SOURCE IMPLEMENTED
-     explicit two-Gaussian-mass bound SOURCE IMPLEMENTED
-     final F-3 build certification pending
+     final whole-line residual pairing BUILD-CERTIFIED
+     explicit two-Gaussian-mass bound BUILD-CERTIFIED
+     final blob 54732470ab2cf2a3a99be646372fdc186225363a
+     run 36769646305
+     F-3 COMPLETE
 
 F-4  Gaussian coercivity -> exponential Fourier weight
      NOT STARTED
@@ -111,12 +113,12 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-95 / WD-T40 F-3 FINAL PAIRING BUILD CERTIFICATION
+RPB-96 / WD-T40 F-4 LOGARITHMIC GAUSSIAN COERCIVITY
 ~~~
 
-RPB-94 implemented the final whole-line residual pairing, its exterior
-integrability, and the explicit Gaussian-mass bound. The next pass is only the
-pinned build certification of that final F-3 source. F-4 remains closed.
+RPB-95 build-certified the final whole-line residual pairing and closes F-3.
+The next pass may open only F-4 logarithmic Gaussian coercivity. F-5 remains
+closed.
 
 ## Governance
 
@@ -129,4 +131,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_94_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_95_20260930.md.
