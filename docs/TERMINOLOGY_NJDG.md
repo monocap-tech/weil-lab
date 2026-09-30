@@ -120,3 +120,49 @@ This remains logically distinct from a moat theorem and from a full KPH floor.
 Historical terminology is immutable. Corrections are additive.
 
 No term in this registry may be promoted to canonical `monocap-tech/provenance` terminology without a separate custody and theorem-interface audit.
+
+
+## collision-transfer trichotomy
+
+The **collision-transfer trichotomy** is the NJDG-1 local classification for a selected/exterior pair after the pair factors are removed.
+
+For an isolated pair (a,b) with midpoint (m=(a+b)/2), half-gap (d=(b-a)/2), and
+[
+Xi(z)=ig((z-m)^2-d^2ig)G(z),
+]
+with (G) nonzero on the local pair disk, one of the following must occur:
+
+1. an additional (Xi)-zero enters the pair-scale disk, producing a higher cluster;
+2. the cofactor field (G'/G) is of inverse-gap size;
+3. (Xi') has a critical point in a controlled subdisk around the midpoint.
+
+This is a reduction device, not a canonical theorem target.
+
+## cofactor blow-up branch
+
+The **cofactor blow-up branch** is the second branch of the collision-transfer trichotomy:
+[
+sup left|rac{G'}{G}ight| gtrsim |d|^{-1}.
+]
+
+It records that failure of local critical-point capture must be paid by a background logarithmic-derivative field at the same inverse-gap scale that drives NEXTJET.
+
+No current theorem is assumed to exclude this branch.
+
+## derivative-capture branch
+
+The **derivative-capture branch** is the third branch of the collision-transfer trichotomy: an isolated close pair with moderate cofactor logarithmic derivative forces a zero of (Xi') in a controlled neighborhood of the pair midpoint.
+
+Derivative capture does not by itself imply an off-axis (Xi')-zero, a forbidden (zeta')-zero, or a NEXTJET bound.
+
+## quartet-axis countercontrol
+
+The **quartet-axis countercontrol** is the exact symmetric polynomial model
+[
+Q_{a,gamma}(z)
+=
+((z-igamma)^2-a^2)((z+igamma)^2-a^2),
+]
+whose four zeros are off the symmetry axis but whose derivative zeros all lie on that axis.
+
+NJDG uses this as a hostile control against any claim that functional-equation quartet geometry alone forces forbidden derivative-zero displacement.
