@@ -490,3 +490,59 @@ C(u)T(t)-C(t)T(u).
 \]
 
 A two-mode critical-curvature construction that controls the whole weighted first RENJET therefore acts directly on the already-extracted Q-loc complement-wedge shadow at leading order; it is not a new independent theorem object.
+
+
+## divisor-switch obstruction
+
+The **divisor-switch obstruction** is the NJDG-7 distinction between the two natural logarithmic derivatives
+\[
+U(z)=\frac{\Xi'}{\Xi}(z)
+\]
+and
+\[
+V(z)=\frac{\Xi''}{\Xi'}(z).
+\]
+
+Weighted contour integrals of \(U\) have poles at the original \(\Xi\)-zeros and therefore recover the zero-side kernels relevant to RENJET. A simple \(\Xi'\)-zero is a zero of \(U\), not a pole, and contributes no residue.
+
+Weighted contour integrals of \(V\) have poles at the \(\Xi'\)-zeros, but they therefore encode the derivative divisor rather than the original divisor.
+
+Passing from \(U\) to \(V\) changes the zero set being sampled. No mixed-divisor transfer is licensed without an explicit theorem.
+
+## weighted-contour reconstruction
+
+A **weighted-contour reconstruction** is a residue identity of the schematic form
+\[
+\frac{1}{2\pi i}
+\oint_\Gamma
+\frac{e^{t(z-c)}}{(z-c)^2}
+\frac{\Xi'}{\Xi}(z)\,dz
+=
+\sum_{\rho\in Z(\Xi)\cap\Gamma}
+m_\rho
+\frac{e^{t(\rho-c)}}{(\rho-c)^2}
++
+\text{center terms}.
+\]
+
+This reconstructs the mode-weighted second-resolvent kernel directly from the original divisor.
+
+NJDG treats this as the canonical weighted explicit-formula/RENJET object, not as a derivative-critical shortcut. Zeros of \(\Xi'\) inside the contour do not appear in the residue sum.
+
+## mixed-divisor weighted identity
+
+A **mixed-divisor weighted identity** is a genuinely new theorem, if one exists, coupling weighted sums over zeros of \(\Xi\) to weighted data over zeros of \(\Xi'\) while preserving packet-local scale, phase, and the frozen SOURCE-II mode pair.
+
+Ordinary separate explicit formulas for \(\Xi\) and \(\Xi'\) do not constitute such an identity.
+
+## NJDG TSTOP
+
+**NJDG TSTOP** means the derivative-geometry branch has exhausted:
+
+- raw collision-to-critical-point transfer;
+- finite critical-point frames;
+- finite curvature enrichment;
+- finite rational-resolvent synthesis;
+- direct local weighted critical identities from the ordinary derivative equation.
+
+Re-entry requires genuinely new mixed-divisor weighted structure, a growing/continuum critical transform with controlled conditioning, or an external theorem acting directly on the canonical complement wedge / KPH floor.
