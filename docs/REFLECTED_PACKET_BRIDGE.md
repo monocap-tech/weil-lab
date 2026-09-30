@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-91 — THE ACTUAL FILTERED-MODE GAUSSIAN ENVELOPE IS BUILD-CERTIFIED; F-3 NOW REDUCES TO RESIDUAL GAUSSIAN TAIL INTEGRATION.}
+\textbf{RPB-92 — THE RESIDUAL EXPONENTIAL GROWTH HAS BEEN REDUCED IN LEAN SOURCE TO AN INTEGRABLE EXTERIOR GAUSSIAN TAIL WITH AN EXPLICIT EXPONENTIAL COLLAR FACTOR.}
 }
 ~~~
 
@@ -87,7 +87,11 @@ F-3  support-gap Gaussian pairing
      exterior filtered-mode envelope BUILD-CERTIFIED
      blob d29c784bfdb15681c103e906f42a3ff946a0db76
      run 36752658074
-     Gaussian tail integration open
+     full exterior x-Gaussian envelope SOURCE IMPLEMENTED
+     residual-growth Gaussian completion SOURCE IMPLEMENTED
+     exterior Gaussian tail integrability SOURCE IMPLEMENTED
+     build certification pending
+     final residual pairing integral bound open
 
 F-4  Gaussian coercivity -> exponential Fourier weight
      NOT STARTED
@@ -104,13 +108,13 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-92 / WD-T40 F-3 RESIDUAL GAUSSIAN TAIL INTEGRATION
+RPB-93 / WD-T40 F-3 GAUSSIAN TAIL COMPLETION BUILD CERTIFICATION
 ~~~
 
-RPB-91 build-certified the actual convention-parametric moving-Gaussian
-kernel, compact-support convolution, and correct exterior-only envelope. The
-next pass addresses only the residual Gaussian tail integration. F-4 remains
-closed.
+RPB-92 implemented the stronger x-dependent exterior envelope, the
+completion-of-the-square absorption of residual growth, and integrability of
+the remaining Gaussian tail. The next pass build-certifies that source slice.
+The final pairing integral and F-4 remain closed.
 
 ## Governance
 
@@ -123,4 +127,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_91_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_92_20260930.md.
