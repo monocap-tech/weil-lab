@@ -6110,3 +6110,46 @@ The premise does **not** include the Gaussian support-gap estimate, exponential
 Fourier decay, or strip holomorphy.  Those remain F-3 through F-5.
 
 **Status:** post-Horizon F-2 formalization terminology; registered at RPB-86.
+
+
+## Moving Gaussian physical kernel
+
+The **moving Gaussian physical kernel** is the physical-space kernel associated
+with the frequency window centered at (R), retained with an explicit
+Fourier-normalization constant (C_K):
+
+~~~math
+K_{R,C_K}(z)
+=
+C_K\sqrt R\,
+e^{-R|z|^2/4}
+e^{iRz}.
+~~~
+
+Its modulus is
+
+~~~math
+|K_{R,C_K}(z)|
+=
+|C_K|\sqrt R\,e^{-R|z|^2/4}.
+~~~
+
+The normalization constant is left explicit because the project carries a
+fixed Fourier convention but F-3 should not silently hard-code a convention
+factor that is irrelevant to the support-gap mechanism.
+
+For a physical mode (h) supported in ([-c,c]), the corresponding filtered
+mode is the compact-support convolution
+
+~~~math
+G_R(x)
+=
+\int_{-c}^{c}
+h(y)K_{R,C_K}(x-y)\,dy.
+~~~
+
+The load-bearing F-3 estimate is required only for
+(x\notin(-a,a)) with (a>c).  No global envelope inside ([-c,c]) is
+asserted.
+
+**Status:** post-Horizon F-3 formalization terminology; registered at RPB-90.
