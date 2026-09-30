@@ -33,6 +33,7 @@ import WeilDefect.Morphology.NeutralFourierCarrier
 import WeilDefect.Morphology.NeutralWeilMultiplier
 import WeilDefect.Morphology.NeutralWeilResidualCarrier
 import WeilDefect.Morphology.NeutralGaussianSupportGap
+import WeilDefect.Morphology.NeutralGaussianTail
 
 import WeilDefect.Morphology.Noncompact
 
