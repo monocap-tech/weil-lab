@@ -320,3 +320,71 @@ The strongest microscopic local logarithmic-derivative input found is RH-conditi
 The higher-derivative sources remain density, mean-value, or almost-all in character.
 
 This is a bounded source audit, not a literature-exhaustion theorem.
+
+
+## NJDG-5 critical-value enrichment source audit
+
+### Pearce-Crump — moments at local extrema
+
+Primary source:
+
+Andrew Pearce-Crump, *Moments of the Riemann zeta function at its local extrema*, Mathematika 71 (2025), e70035.
+
+Relevant scope:
+
+- evaluates first moments of (zeta) and its derivatives at local extrema on the critical line;
+- the main extrema theorems are stated under RH;
+- the sampling points are zeros of the derivative of Hardy's (Z)-function / an auxiliary critical-point function, not arbitrary zeros of (zeta') in the strip;
+- the output is an averaged asymptotic over many extrema, not an individual pointwise upper bound for (zeta''(	au)/zeta(	au)).
+
+NJDG disposition:
+
+**ENRICHED DERIVATIVE DATA EXISTS / WRONG CRITICAL OBJECT + RH-CONDITIONAL + AVERAGED.**
+
+This confirms that derivative values at critical points are analytically tractable in aggregate, but does not supply the every-dangerous-packet critical-curvature row required by NJDG-5.
+
+### Chorge — zeta values at critical points
+
+Primary source:
+
+Shashank Chorge, *Extreme values of the Riemann zeta function at its critical points in the critical strip*, arXiv:2110.14229.
+
+Relevant scope:
+
+studies large and small values of (|zeta(ho')|) for critical points (ho') satisfying (zeta'(ho')=0) in the right half of the critical strip.
+
+NJDG disposition:
+
+**CORRECT CRITICAL OBJECT / VALUE OF ZETA, NOT CRITICAL CURVATURE.**
+
+It does not provide a uniform pointwise estimate for
+[
+zeta''(ho')/zeta(ho')
+]
+nor a packet-conditioned transport to RENJET.
+
+### Direct search for zeta-double-prime values at zeta-prime zeros
+
+GitHub and public-web searches for theorem statements controlling
+
+[
+zeta''(ho')/zeta(ho'),
+qquad
+zeta'(ho')=0,
+]
+
+did not locate an unconditional every-critical-point upper bound suitable for NJDG.
+
+Located neighboring results concern:
+
+- locations/distribution of (zeta')-zeros;
+- values of (zeta) at critical points;
+- moments of derivatives at Hardy-(Z) extrema;
+- zeros of higher derivatives;
+- argument-principle use of (zeta''/zeta').
+
+NJDG disposition:
+
+**NO POINTWISE CRITICAL-CURVATURE HIT LOCATED.**
+
+This is a bounded source audit, not a literature-exhaustion theorem.
