@@ -5,6 +5,8 @@ namespace WeilDefect
 
 noncomputable section
 
+open MeasureTheory
+
 /--
 Physical Gaussian envelope centered on the compact support interval [-c,c].
 
@@ -181,6 +183,208 @@ theorem residual_mul_gaussianExterior_bound
       · exact mul_nonneg
           residual.growthConstant_nonneg
           (Real.exp_nonneg _)
+
+
+/--
+Convention-parametric moving Gaussian physical kernel.
+
+The scalar `Ck` retains the fixed Fourier-normalization constant explicitly.
+Only its norm matters for the support-gap envelope.
+-/
+def movingGaussianPhysicalKernel
+    (Ck : ℂ) (R z : ℝ) : ℂ :=
+  Ck
+    * (Real.sqrt R : ℂ)
+    * (Real.exp (-R * |z| ^ 2 / 4) : ℂ)
+    * Complex.exp (((R * z : ℝ) : ℂ) * Complex.I)
+
+/-- Exact modulus of the moving Gaussian physical kernel. -/
+theorem norm_movingGaussianPhysicalKernel
+    (Ck : ℂ) (R z : ℝ)
+    (hR : 0 ≤ R) :
+    ‖movingGaussianPhysicalKernel Ck R z‖
+      =
+    ‖Ck‖ * Real.sqrt R
+      * Real.exp (-R * |z| ^ 2 / 4) := by
+  simp [movingGaussianPhysicalKernel, norm_mul,
+    Real.norm_of_nonneg (Real.sqrt_nonneg R),
+    Real.norm_of_nonneg (Real.exp_nonneg _),
+    Complex.norm_exp_ofReal_mul_I, hR, mul_assoc]
+
+/--
+The concrete F-1 representative is integrable on its certified compact support
+interval.
+-/
+theorem neutralPhysicalRepresentative_integrableOn
+    {c : ℝ}
+    {EndpointObs RightObs : Type*}
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
+    IntegrableOn carrier.h (Set.Icc (-c) c) volume := by
+  exact
+    (carrier.h_memLp.locallyIntegrable
+      (by norm_num : (1 : ℝ≥0∞) ≤ 2)).integrableOn_isCompact
+        isCompact_Icc
+
+/-- Compact L1 mass of the concrete F-1 representative. -/
+def neutralPhysicalCompactL1Mass
+    {c : ℝ}
+    {EndpointObs RightObs : Type*}
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) : ℝ :=
+  ∫ y in Set.Icc (-c) c, ‖carrier.h y‖
+
+theorem neutralPhysicalCompactL1Mass_nonneg
+    {c : ℝ}
+    {EndpointObs RightObs : Type*}
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
+    0 ≤ neutralPhysicalCompactL1Mass carrier := by
+  unfold neutralPhysicalCompactL1Mass
+  exact integral_nonneg (fun _ => norm_nonneg _)
+
+/--
+Actual physical moving-Gaussian filtered mode of the certified F-1
+representative.
+-/
+def movingGaussianFilteredMode
+    {c : ℝ}
+    {EndpointObs RightObs : Type*}
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (Ck : ℂ) (R : ℝ)
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
+    (x : ℝ) : ℂ :=
+  ∫ y in Set.Icc (-c) c,
+    carrier.h y * movingGaussianPhysicalKernel Ck R (x - y)
+
+/--
+For y in [-c,c] and x outside (-a,a), the physical kernel displacement
+inherits the same strict collar a-c.
+-/
+theorem supportGap_le_abs_sub_point
+    {c a x y : ℝ}
+    (hc : 0 ≤ c)
+    (hca : c < a)
+    (hx : x ∉ Set.Ioo (-a) a)
+    (hy : y ∈ Set.Icc (-c) c) :
+    a - c ≤ |x - y| := by
+  have ha : 0 ≤ a := hc.trans (le_of_lt hca)
+  have hxabs : a ≤ |x| :=
+    radius_le_abs_of_not_mem_Ioo ha hx
+  have hyabs : |y| ≤ c := by
+    exact (abs_le).2 hy
+  calc
+    a - c ≤ |x| - |y| := sub_le_sub hxabs hyabs
+    _ ≤ ||x| - |y|| := le_abs_self _
+    _ ≤ |x - y| := abs_sub_abs_le_abs_sub x y
+
+/--
+Pointwise exterior modulus bound for the actual moving Gaussian physical
+kernel.
+-/
+theorem movingGaussianPhysicalKernel_norm_le_gap
+    {Ck : ℂ} {R c a x y : ℝ}
+    (hR : 0 ≤ R)
+    (hc : 0 ≤ c)
+    (hca : c < a)
+    (hx : x ∉ Set.Ioo (-a) a)
+    (hy : y ∈ Set.Icc (-c) c) :
+    ‖movingGaussianPhysicalKernel Ck R (x - y)‖
+      ≤
+    ‖Ck‖ * Real.sqrt R
+      * Real.exp (-R * (a - c) ^ 2 / 4) := by
+  rw [norm_movingGaussianPhysicalKernel Ck R (x - y) hR]
+  have hgap := supportGap_le_abs_sub_point hc hca hx hy
+  have hgap0 : 0 ≤ a - c := sub_nonneg.mpr (le_of_lt hca)
+  have hsq : (a - c) ^ 2 ≤ |x - y| ^ 2 := by
+    nlinarith [sq_nonneg (|x - y| - (a - c))]
+  have hexp :
+      Real.exp (-R * |x - y| ^ 2 / 4)
+        ≤ Real.exp (-R * (a - c) ^ 2 / 4) := by
+    apply Real.exp_le_exp.mpr
+    have hmul :
+        R * (a - c) ^ 2 ≤ R * |x - y| ^ 2 :=
+      mul_le_mul_of_nonneg_left hsq hR
+    nlinarith
+  exact mul_le_mul_of_nonneg_left hexp
+    (mul_nonneg (norm_nonneg Ck) (Real.sqrt_nonneg R))
+
+/--
+Exterior Gaussian envelope for the actual filtered F-1 mode.
+
+This is the corrected RPB-90 form: the estimate is asserted only outside the
+strict enlarged interval, where the support gap is available.  No global
+interior envelope is claimed.
+-/
+theorem movingGaussianFilteredMode_norm_le_exterior
+    {c : ℝ}
+    {EndpointObs RightObs : Type*}
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
+    (residual : NeutralExponentialResidualCarrier c)
+    (Ck : ℂ) (R x : ℝ)
+    (hc : 0 ≤ c)
+    (hR : 0 ≤ R)
+    (hx : x ∉ Set.Ioo (-residual.a) residual.a) :
+    ‖movingGaussianFilteredMode Ck R carrier x‖
+      ≤
+    (‖Ck‖ * Real.sqrt R
+      * Real.exp (-R * (residual.a - c) ^ 2 / 4))
+      * neutralPhysicalCompactL1Mass carrier := by
+  let K : ℝ :=
+    ‖Ck‖ * Real.sqrt R
+      * Real.exp (-R * (residual.a - c) ^ 2 / 4)
+  have hInt :
+      IntegrableOn carrier.h (Set.Icc (-c) c) volume :=
+    neutralPhysicalRepresentative_integrableOn carrier
+  have hKernelCont :
+      Continuous
+        (fun y : ℝ =>
+          movingGaussianPhysicalKernel Ck R (x - y)) := by
+    fun_prop
+  have hProd :
+      IntegrableOn
+        (fun y : ℝ =>
+          carrier.h y * movingGaussianPhysicalKernel Ck R (x - y))
+        (Set.Icc (-c) c) volume := by
+    exact hInt.mul_continuousOn
+      hKernelCont.continuousOn isCompact_Icc
+  calc
+    ‖movingGaussianFilteredMode Ck R carrier x‖
+        ≤ ∫ y in Set.Icc (-c) c,
+            ‖carrier.h y
+              * movingGaussianPhysicalKernel Ck R (x - y)‖ := by
+      unfold movingGaussianFilteredMode
+      exact norm_integral_le_integral_norm _
+    _ ≤ ∫ y in Set.Icc (-c) c,
+          K * ‖carrier.h y‖ := by
+      refine setIntegral_mono_ae_restrict
+        hProd.norm
+        (hInt.norm.const_mul K) ?_
+      rw [EventuallyLE, ae_restrict_iff' measurableSet_Icc]
+      exact ae_of_all volume fun y hy => by
+        rw [norm_mul]
+        calc
+          ‖carrier.h y‖
+              * ‖movingGaussianPhysicalKernel Ck R (x - y)‖
+              ≤ ‖carrier.h y‖ * K := by
+                apply mul_le_mul_of_nonneg_left
+                · exact movingGaussianPhysicalKernel_norm_le_gap
+                    hR hc residual.strict hx hy
+                · exact norm_nonneg _
+          _ = K * ‖carrier.h y‖ := by ring
+    _ = K * neutralPhysicalCompactL1Mass carrier := by
+      rw [integral_const_mul]
+      rfl
+    _ = (‖Ck‖ * Real.sqrt R
+          * Real.exp (-R * (residual.a - c) ^ 2 / 4))
+          * neutralPhysicalCompactL1Mass carrier := by
+      rfl
 
 end
 
