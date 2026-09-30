@@ -368,3 +368,28 @@ Priority order:
 3. test whether differentiation in mode depth or a fixed two-mode combination removes the unweighted/weighted mismatch;
 4. compare with the multiplier-free complement wedge;
 5. stop if the construction is only a reparameterization of the same complement-response theorem.
+
+
+## 18. NJDG-6 standing
+
+NJDG-6 is complete.
+
+The frozen two-mode RENJET near kernel is an entire nonconstant exponential/divided-difference kernel. Any finite family of derivative-critical value/curvature/higher-resolvent rows spans only finite rational resolvent kernels. Therefore no exact universal linear transfer from finitely many enriched critical points to the frozen mode-weighted RENJET exists.
+
+Moreover the two-mode first RENJET wedge is exactly the \(L^{-1}\) coefficient of the already-extracted Q-loc complement wedge. Controlling it would not create a new theorem class, and first-order control alone does not dominate the higher jet tower.
+
+The finite critical-row enrichment route is therefore frozen as an exact linear mechanism.
+
+## 19. Current cursor
+
+\[
+\boxed{\text{NJDG-7 / DIRECT WEIGHTED CRITICAL IDENTITY SCREEN}}
+\]
+
+Priority order:
+
+1. search only for derivative-critical identities whose zero-side kernel is already exponentially/mode weighted;
+2. preserve the frozen SOURCE-II mode pair and selection order;
+3. compare every candidate with RH-T0117 immediately;
+4. reject finite rational-resolvent synthesis by NJDG-6;
+5. if no genuinely weighted identity exists, place NJDG at TSTOP.
