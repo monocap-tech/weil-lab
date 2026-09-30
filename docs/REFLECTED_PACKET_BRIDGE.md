@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-82 — THE CORRECTED EXPONENTIAL-GROWTH FULL-RESIDUAL CARRIER AND EXT-4 WEAK-REALIZATION TARGET ARE IMPLEMENTED IN LEAN SOURCE.}
+\textbf{RPB-83 — THE CORRECTED EXPONENTIAL-GROWTH RESIDUAL CARRIER IS BUILD-CERTIFIED; F-2 NOW MOVES TO EXACT-SYMBOL TEMPERATE GROWTH.}
 }
 ~~~
 
@@ -65,9 +65,10 @@ F-2  actual compact-window Weil multiplier realization
      blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202
      run 36677931966
      full pole-restored residual not assumed tempered
-     exponential-growth physical carrier SOURCE IMPLEMENTED
-     weak-realization target SOURCE IMPLEMENTED
-     build certification pending
+     exponential-growth physical carrier BUILD-CERTIFIED
+     weak-realization target BUILD-CERTIFIED AS INTERFACE
+     exact symbol HasTemperateGrowth open
+     actual multiplier core open
      EXT-4 instantiation open
 
 F-3  support-gap Gaussian pairing
@@ -88,12 +89,13 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-83 / WD-T40 F-2 RESIDUAL-CARRIER BUILD CERTIFICATION
+RPB-84 / WD-T40 F-2 SCALAR-SYMBOL TEMPERATE-GROWTH REALIZATION
 ~~~
 
-RPB-82 implemented the corrected exponential-growth physical carrier and a
-compact-test weak-realization target. The next pass must build-certify that
-source only. EXT-4 instantiation and F-3 remain closed.
+RPB-83 build-certified the corrected exponential-growth carrier and the
+compact-test weak-realization target interface. The next pass addresses only
+the exact scalar symbol's temperate-growth obligation and multiplier core.
+EXT-4 instantiation and F-3 remain closed.
 
 ## Governance
 
@@ -106,4 +108,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_82_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_83_20260930.md.
