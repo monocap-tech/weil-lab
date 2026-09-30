@@ -147,7 +147,7 @@ Only after this exhaustion condition is met does the project resume:
 - **H1-P5:** COMPLETE.
 - **Active Lean phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-83 / WD-T40 F-2 residual-carrier build certification.
+- **Next project cursor:** RPB-84 / WD-T40 F-2 scalar-symbol temperate-growth realization.
 
 ```math
 \boxed{
@@ -155,7 +155,7 @@ Only after this exhaustion condition is met does the project resume:
 }
 ```
 
-WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier is now build-certified under pinned Lean 4.34.0 / mathlib v4.34.0 (run 36649140221, carrier blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d). The remaining WD-T40 formalization frontier begins at F-2, the actual compact-window Weil multiplier realization. The exact strict-right scalar symbol is build-certified by RPB-80 (run 36677931966, blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202). RPB-81 then found that the full pole-restored residual is not lawfully typed as tempered because the promoted theorem allows fixed exponential growth. RPB-82 implemented the corrected exponential-growth residual carrier and compact-test weak-realization target. The next research cursor is RPB-83 / WD-T40 F-2 residual-carrier build certification. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
+WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier is now build-certified under pinned Lean 4.34.0 / mathlib v4.34.0 (run 36649140221, carrier blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d). The remaining WD-T40 formalization frontier begins at F-2, the actual compact-window Weil multiplier realization. The exact strict-right scalar symbol is build-certified by RPB-80 (run 36677931966, blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202). RPB-81 then found that the full pole-restored residual is not lawfully typed as tempered because the promoted theorem allows fixed exponential growth. RPB-83 build-certified the corrected exponential-growth residual carrier and compact-test weak-realization target interface. The next research cursor is RPB-84 / WD-T40 F-2 scalar-symbol temperate-growth realization. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
 
 
 ---
@@ -179,14 +179,14 @@ RPB-81 corrected the target carrier: the scalar multiplier core remains
 tempered, but the full pole-restored residual requires a broader physical
 exponential-growth carrier.
 
-The corrected exponential-growth residual carrier is now implemented in
-source, together with the compact-test weak-realization target.
+The corrected exponential-growth residual carrier and compact-test
+weak-realization target interface are now build-certified.
 
 The next cursor is:
 
 ~~~text
-RPB-83 / WD-T40 F-2 RESIDUAL-CARRIER BUILD CERTIFICATION
+RPB-84 / WD-T40 F-2 SCALAR-SYMBOL TEMPERATE-GROWTH REALIZATION
 ~~~
 
 No EXT-4 instantiation or Gaussian support-gap theorem should be attempted
-before that carrier source is build-certified.
+until the exact scalar symbol has a lawful multiplier realization.
