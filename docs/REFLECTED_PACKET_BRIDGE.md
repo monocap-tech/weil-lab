@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-81 — THE FULL WEIL RESIDUAL REQUIRES AN EXPONENTIAL-GROWTH PHYSICAL CARRIER; THE F-1 TEMPERED RESIDUAL TYPE IS TOO NARROW FOR THE POLE-RESTORED OBJECT.}
+\textbf{RPB-82 — THE CORRECTED EXPONENTIAL-GROWTH FULL-RESIDUAL CARRIER AND EXT-4 WEAK-REALIZATION TARGET ARE IMPLEMENTED IN LEAN SOURCE.}
 }
 ~~~
 
@@ -64,10 +64,11 @@ F-2  actual compact-window Weil multiplier realization
      exact strict-right scalar symbol BUILD-CERTIFIED
      blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202
      run 36677931966
-     RPB-81 carrier correction:
-       full pole-restored residual not assumed tempered
-     exponential-growth physical carrier open
-     weak operator/residual identity open
+     full pole-restored residual not assumed tempered
+     exponential-growth physical carrier SOURCE IMPLEMENTED
+     weak-realization target SOURCE IMPLEMENTED
+     build certification pending
+     EXT-4 instantiation open
 
 F-3  support-gap Gaussian pairing
      NOT STARTED
@@ -87,13 +88,12 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-82 / WD-T40 F-2 EXPONENTIAL-GROWTH RESIDUAL CARRIER
+RPB-83 / WD-T40 F-2 RESIDUAL-CARRIER BUILD CERTIFICATION
 ~~~
 
-RPB-81 found that the full pole-restored residual cannot be identified with
-F-1's tempered residual type without an unjustified extra hypothesis. The next
-pass must implement the corrected exponential-growth physical carrier. F-3
-remains closed until F-2 is complete.
+RPB-82 implemented the corrected exponential-growth physical carrier and a
+compact-test weak-realization target. The next pass must build-certify that
+source only. EXT-4 instantiation and F-3 remain closed.
 
 ## Governance
 
@@ -106,4 +106,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_81_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_82_20260930.md.
