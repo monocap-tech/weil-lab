@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-92 — THE RESIDUAL EXPONENTIAL GROWTH HAS BEEN REDUCED IN LEAN SOURCE TO AN INTEGRABLE EXTERIOR GAUSSIAN TAIL WITH AN EXPLICIT EXPONENTIAL COLLAR FACTOR.}
+\textbf{RPB-93 — THE GAUSSIAN TAIL COMPLETION LAYER IS BUILD-CERTIFIED; F-3 NOW HAS ONLY THE FINAL RESIDUAL PAIRING INTEGRAL TO CLOSE.}
 }
 ~~~
 
@@ -87,10 +87,11 @@ F-3  support-gap Gaussian pairing
      exterior filtered-mode envelope BUILD-CERTIFIED
      blob d29c784bfdb15681c103e906f42a3ff946a0db76
      run 36752658074
-     full exterior x-Gaussian envelope SOURCE IMPLEMENTED
-     residual-growth Gaussian completion SOURCE IMPLEMENTED
-     exterior Gaussian tail integrability SOURCE IMPLEMENTED
-     build certification pending
+     full exterior x-Gaussian envelope BUILD-CERTIFIED
+     residual-growth Gaussian completion BUILD-CERTIFIED
+     exterior Gaussian tail integrability BUILD-CERTIFIED
+     blob 7ee6dacf94e4e6b4c694209a7be9ee4ba72846e6
+     run 36763669865
      final residual pairing integral bound open
 
 F-4  Gaussian coercivity -> exponential Fourier weight
@@ -108,13 +109,12 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-93 / WD-T40 F-3 GAUSSIAN TAIL COMPLETION BUILD CERTIFICATION
+RPB-94 / WD-T40 F-3 FINAL RESIDUAL PAIRING INTEGRAL
 ~~~
 
-RPB-92 implemented the stronger x-dependent exterior envelope, the
-completion-of-the-square absorption of residual growth, and integrability of
-the remaining Gaussian tail. The next pass build-certifies that source slice.
-The final pairing integral and F-4 remain closed.
+RPB-93 build-certified the stronger x-dependent exterior envelope,
+residual-growth completion, and exterior Gaussian tail integrability. The next
+pass addresses only the final residual pairing integral. F-4 remains closed.
 
 ## Governance
 
@@ -127,4 +127,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_92_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_93_20260930.md.
