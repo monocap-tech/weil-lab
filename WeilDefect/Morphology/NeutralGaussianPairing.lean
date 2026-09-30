@@ -75,8 +75,11 @@ theorem movingGaussianFilteredMode_eq_convolution
     (Ck : ℂ) (R : ℝ) :
     movingGaussianFilteredMode Ck R carrier
       =
-    carrier.h ⋆[lsmul ℂ ℂ, volume]
-      movingGaussianPhysicalKernel Ck R := by
+    MeasureTheory.convolution
+      carrier.h
+      (movingGaussianPhysicalKernel Ck R)
+      (lsmul ℂ ℂ)
+      volume := by
   funext x
   unfold movingGaussianFilteredMode
   rw [MeasureTheory.convolution_def]
@@ -314,10 +317,10 @@ theorem gaussianExteriorTail_integral_le
             simp
       _ = ∫ t : ℝ,
           Real.exp (-(R / 16) * t ^ 2) := by
-            simpa only [neg_mul] using
-              (integral_sub_right_eq_self
+            exact
+              integral_sub_right_eq_self
                 (μ := volume)
-                (fun t : ℝ => Real.exp (-(R / 16) * t ^ 2)) c)
+                (fun t : ℝ => Real.exp (-(R / 16) * t ^ 2)) c
       _ = Real.sqrt (Real.pi / (R / 16)) :=
         integral_gaussian (R / 16)
   have hleft :
@@ -352,7 +355,7 @@ theorem gaussianExteriorTail_integral_le
             simp
       _ = ∫ t : ℝ,
           Real.exp (-(R / 16) * t ^ 2) := by
-            simpa only [sub_neg_eq_add, neg_mul] using
+            simpa only [sub_neg_eq_add] using
               integral_sub_right_eq_self
                 (μ := volume)
                 (fun t : ℝ =>
