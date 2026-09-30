@@ -349,3 +349,78 @@ An **RH-conditional microscopic derivative law** is a theorem that genuinely rea
 Such a theorem may be an important structural control, but it cannot be inserted into the project's false-RH reductio as an unconditional source input.
 
 Haseo Ki's 2007 local logarithmic-derivative equivalence is the NJDG-4 reference example.
+
+
+## critical-curvature row
+
+A **critical-curvature row** is the first logarithmic-derivative jet supplied by a second-derivative value at a simple derivative zero.
+
+If
+[
+zeta'(	au)=0,
+qquad
+zeta(	au)
+e0,
+]
+then
+[
+left(rac{zeta'}{zeta}ight)'(	au)
+=
+rac{zeta''(	au)}{zeta(	au)}.
+]
+
+Hence (zeta''(	au)/zeta(	au)), together with the completion and the explicitly removed selected/near poles, determines (A'_{F,Omega}(	au)) exactly.
+
+The corresponding completed statement at a simple (Xi')-zero is
+[
+left(rac{Xi'}{Xi}ight)'(	au)
+=
+rac{Xi''(	au)}{Xi(	au)}.
+]
+
+## curvature–resolvent identity
+
+The **curvature–resolvent identity** is the observation that a critical-curvature row is not a lower-order datum: after logarithmic differentiation it is a second-resolvent statistic of the zero divisor.
+
+Schematically,
+[
+left(rac{Xi'}{Xi}ight)'(	au)
+=
+-sum_ho rac{m_ho}{(	au-ho)^2}
++	ext{canonical entire/completion correction}.
+]
+
+Thus pointwise control of critical curvature is already control of the same resolvent order that appears in the first RENJET finite-part form.
+
+## transport-to-center gap
+
+The **transport-to-center gap** is the remaining distinction between knowing (A'_{F,Omega}(	au)) at a derivative critical point and controlling (A'_{F,Omega}(c)) at the selected packet center.
+
+For a path inside the pole-removed analytic region,
+[
+A'(c)-A'(	au)
+=
+int_	au^c A''(z),dz,
+]
+hence
+[
+|A'(c)-A'(	au)|
+le
+|c-	au|sup_U|A''|.
+]
+
+This transport has no inverse-spacing denominator, but it is useful only if the critical point is sufficiently close and the higher pole-removed derivative bound is strong enough at the required projective scale.
+
+## enrichment equivalence warning
+
+The **enrichment equivalence warning** states that a theorem bounding
+[
+rac{zeta''(	au)}{zeta(	au)}
+]
+or
+[
+rac{Xi''(	au)}{Xi(	au)}
+]
+at the relevant critical point is not automatically weaker than RENJET control.
+
+Because the curvature value is itself second-resolvent data, the theorem may already contain essentially the missing local zero-interaction estimate. Its implication strength must be audited explicitly.
