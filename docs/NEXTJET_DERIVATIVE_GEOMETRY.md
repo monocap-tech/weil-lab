@@ -222,3 +222,46 @@ Priority order:
 3. test whether any pointwise consequence survives without RH or simplicity assumptions;
 4. if only averaged information exists, determine whether the selected dangerous packet can be forced into the good set;
 5. stop rather than relabel an average theorem as worst-packet control.
+
+
+## 8. NJDG-1 standing
+
+NJDG-1 is complete.
+
+It proves the local collision-transfer trichotomy:
+
+[
+oxed{
+	ext{selected/exterior collision}
+Longrightarrow
+	ext{higher cluster}
+lor
+	ext{pair-scale derivative capture}
+lor
+	ext{inverse-gap cofactor field}.
+}
+]
+
+The direct hope
+
+[
+	ext{off-axis collision}
+Longrightarrow
+	ext{forbidden derivative zero}
+]
+
+fails. Functional-equation symmetric pair/quartet models can place the derivative zero on the symmetry axis, and current Speiser-class inputs are aggregate rather than worst-packet.
+
+## 9. Current cursor
+
+[
+oxed{	ext{NJDG-2 / COFACTOR BLOW-UP AND CLUSTER-BRANCH AUDIT}}
+]
+
+Priority order:
+
+1. express the pair-removed cofactor field in canonical zero/pole/completion coordinates;
+2. compare its inverse-gap blow-up with existing local logarithmic-derivative estimates;
+3. determine whether the higher-cluster branch is already controlled by G2C collision/reblocking or belongs to a different selected/exterior jurisdiction;
+4. identify any exact transfer from cofactor blow-up into the SOURCE-II jet tower;
+5. stop if the pass merely re-expresses NEXTJET.
