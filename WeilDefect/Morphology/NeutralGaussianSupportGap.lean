@@ -209,7 +209,8 @@ theorem norm_movingGaussianPhysicalKernel
   have hgauss :
       ‖((Real.exp (-R * |z| ^ 2 / 4) : ℝ) : ℂ)‖
         = Real.exp (-R * |z| ^ 2 / 4) := by
-    simp [abs_of_nonneg (Real.exp_nonneg _)]
+    rw [Complex.norm_exp]
+    simp
   have hphase :
       ‖Complex.exp (((R * z : ℝ) : ℂ) * Complex.I)‖ = 1 := by
     rw [Complex.norm_exp]
@@ -285,7 +286,6 @@ theorem supportGap_le_abs_sub_point
     exact (abs_le).2 hy
   calc
     a - c ≤ |x| - |y| := sub_le_sub hxabs hyabs
-    _ ≤ abs (|x| - |y|) := le_abs_self _
     _ ≤ |x - y| := abs_sub_abs_le_abs_sub x y
 
 /--
@@ -375,15 +375,15 @@ theorem movingGaussianFilteredMode_norm_le_exterior
         (hInt.norm.const_mul K) ?_
       filter_upwards [self_mem_ae_restrict measurableSet_Icc] with y hy
       rw [norm_mul]
-        calc
-          ‖carrier.h y‖
-              * ‖movingGaussianPhysicalKernel Ck R (x - y)‖
-              ≤ ‖carrier.h y‖ * K := by
-                apply mul_le_mul_of_nonneg_left
-                · exact movingGaussianPhysicalKernel_norm_le_gap
-                    hR hc residual.strict hx hy
-                · exact norm_nonneg _
-          _ = K * ‖carrier.h y‖ := by ring
+      calc
+        ‖carrier.h y‖
+            * ‖movingGaussianPhysicalKernel Ck R (x - y)‖
+            ≤ ‖carrier.h y‖ * K := by
+              apply mul_le_mul_of_nonneg_left
+              · exact movingGaussianPhysicalKernel_norm_le_gap
+                  hR hc residual.strict hx hy
+              · exact norm_nonneg _
+        _ = K * ‖carrier.h y‖ := by ring
     _ = K * neutralPhysicalCompactL1Mass carrier := by
       rw [integral_const_mul]
       rfl
