@@ -8,41 +8,27 @@ Historical definitions and the GERM-72 / GERM-87 corrections remain unchanged.
 
 ## Post-s15 excess
 
-Retain GERM-102's parameter
-
-\[
-z=e-e_{101}.
-\]
-
-Write
+Retain \(z=e-e_{101}\) and define
 
 \[
 \varepsilon=z-s_{15}=e-e_{102}.
 \]
 
-GERM-103 treats
-
-\[
-0<\varepsilon\le t_{15}.
-\]
+GERM-103 treats \(0<\varepsilon\le t_{15}\).
 
 ## Seventeenth residuals
 
-Retain the GERM-102 sixteenth circle length (t_{15}), its translation residual
-(ho_{16}), and
+Retain the GERM-102 sixteenth circle length \(t_{15}\) and its residual \(\rho_{16}\). Define
 
 \[
-c_{16}=t_{15}-\rho_{16}.
-\]
-
-Define
-
-\[
-\rho_{17}=t_{15}-5c_{16},\qquad
+c_{16}=t_{15}-\rho_{16},
+\qquad
+\rho_{17}=t_{15}-5c_{16},
+\qquad
 c_{17}=c_{16}-\rho_{17}.
 \]
 
-The seventeenth section is (K_{17}=(0,c_{16})), with induced map
+The seventeenth section is \(K_{17}=(0,c_{16})\), with map
 
 \[
 y\mapsto y+\rho_{17}\pmod{c_{16}},
@@ -52,24 +38,24 @@ and return times five or six.
 
 ## GERM-103-local sixteenth maps
 
-All (H_1,J_1,J_2) inputs retain their GERM-102 fifteenth definitions.
+All \(H_1,J_1,J_2\) inputs retain their GERM-102 fifteenth definitions:
 
-- (A_0=H_1^3J_1)
-- (A_1=H_1^3J_2)
-- (B_0=H_1^4J_1)
-- (B_1=H_1^4J_2)
-
-The (A)-maps are four-step sixteenth returns and the (B)-maps are five-step returns. The suffix records whether the initial fifteenth source is exterior or interior to the newly active (arepsilon)-interval.
+\[
+A_0=H_1^3J_1,\qquad
+A_1=H_1^3J_2,\qquad
+B_0=H_1^4J_1,\qquad
+B_1=H_1^4J_2.
+\]
 
 ## Complete seventeenth words
 
-For (0<\varepsilon\le c_{16}), the legal words are
+For \(0<\varepsilon\le c_{16}\):
 
 \[
 B_0^{N-1}A_i,\qquad i\in\{0,1\},\quad N\in\{5,6\}.
 \]
 
-For (c_{16}\le\varepsilon\le t_{15}), the initial map is (A_1) and later internal visits form a final consecutive run:
+For \(c_{16}\le\varepsilon\le t_{15}\):
 
 \[
 B_1^sB_0^{N-s-1}A_1,
@@ -78,7 +64,7 @@ B_1^sB_0^{N-s-1}A_1,
 
 Products act rightmost first.
 
-The low and high cone charts are
+The cone charts are
 
 \[
 C_{\rm low}=
