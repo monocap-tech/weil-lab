@@ -6085,3 +6085,28 @@ In Lean this is represented by
 premise**, not an internally reconstructed special-function theorem.
 
 **Status:** post-Horizon F-2 formalization terminology; registered at RPB-84.
+
+
+## EXT-4 weak-realization premise
+
+The **EXT-4 weak-realization premise** is the explicit imported F-2 interface
+that identifies the actual strict-right compact-window Weil residual with the
+sum of:
+
+1. the certified tempered multiplier core built from the exact strict-right
+   scalar symbol and the concrete F-1 physical mode; and
+2. the explicit physical pole/evaluation contribution.
+
+The identity is required only on compactly supported Schwartz tests.  This is
+the common legal test class shared by the tempered multiplier core, the locally
+integrable pole term, and the exponential-growth physical residual.
+
+In Lean the premise is represented by
+`RightLimitWeilWeakRealizationPremise`.  The constructor theorem
+`rightLimitWeilWeakRealization` merely packages that imported identity into
+the already certified `NeutralWeilResidualWeakRealization` target.
+
+The premise does **not** include the Gaussian support-gap estimate, exponential
+Fourier decay, or strip holomorphy.  Those remain F-3 through F-5.
+
+**Status:** post-Horizon F-2 formalization terminology; registered at RPB-86.
