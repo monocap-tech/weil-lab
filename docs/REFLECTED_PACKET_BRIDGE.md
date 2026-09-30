@@ -9,55 +9,70 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-77 — THE F-1 BUILD GATE IS UNCHANGED; ATTEMPT 3 STILL FAILS BEFORE LEAN EXECUTION.}
+\textbf{RPB-78 — F-1 IS BUILD-CERTIFIED; THE PHYSICAL FOURIER CARRIER GATE IS CLOSED.}
 }
 ~~~
 
-Frozen carrier:
+Certified carrier:
 
 ~~~text
 WeilDefect/Morphology/NeutralFourierCarrier.lean
 blob:
-93f05eceb07ffda593181d0e9293caa0a05705ac
+03fe8ab1b6a3190e40a91b7a467c975e0d87841d
 ~~~
 
-Canonical handoff:
+The restored GitHub-hosted runner exposed two compiler-level source defects:
 
 ~~~text
-scripts/check_neutral_fourier_carrier.sh
+1. the file required a noncomputable section because Real.measureSpace is noncomputable;
+2. that unnamed section required a matching plain end.
 ~~~
 
-RPB-77 reran the exact frozen-handoff validation run:
+Both were repaired without changing mathematical content.
+
+Successful pinned CI evidence:
 
 ~~~text
-36645302165
+run:       36649140221
+job:       109679039673
+runner_id: 1000001147
+runner:    GitHub Actions 1000001147
+head:      5e2e9a1a3edad1f57e7afb0f357b822b92dc9099
 ~~~
 
-Attempt 3 again failed before runner allocation:
+Lean reported:
 
 ~~~text
-runner_id:   0
-runner_name: ""
-steps:       []
-conclusion:  failure
+Built WeilDefect.Morphology.NeutralFourierCarrier
+Build completed successfully (8934 jobs).
+NeutralFourierCarrier audited blob, root import, build, and trust checks passed.
 ~~~
 
-The local environment was also rechecked and still has no lean, lake, or elan
-binary.
+The repository-wide unfinished trusted declaration gate also passed.
 
-No source change is justified.
+Draft PR #4 was closed without merge and no validation-only workflow mutation
+entered the research branch.
 
 Current formalization state:
 
 ~~~text
-F-1  SOURCE IMPLEMENTED
-     STATIC API PASS
-     TYPECLASS STATIC PASS
-     PROOF-TERM STATIC PASS
-     STATIC LINE EXHAUSTED
-     BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
+F-1  physical Fourier carrier lift
+     BUILD-CERTIFIED
 
-F-2  NOT STARTED
+F-2  actual compact-window Weil multiplier realization
+     NOT STARTED
+
+F-3  support-gap Gaussian pairing
+     NOT STARTED
+
+F-4  Gaussian coercivity -> exponential Fourier weight
+     NOT STARTED
+
+F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
+     NOT STARTED
+
+F-6  final WD-T40 assembly
+     NOT STARTED
 ~~~
 
 WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
@@ -65,15 +80,12 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-79 / WD-T40 ACTUAL WEIL MULTIPLIER REALIZATION
 ~~~
 
-The next pass should recheck only for newly available Lean execution
-infrastructure.
+F-2 is now the next authorized formalization target.
 
-If runner allocation is still unavailable, record the unchanged gate and halt.
-
-Do not reopen static audits and do not begin F-2.
+RPB-78 does not begin it.
 
 ## Governance
 
@@ -86,4 +98,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_77_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_78_20260929.md.
