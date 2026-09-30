@@ -1298,3 +1298,88 @@ No RPB analytic-wavefront, Mellin-conormal, or Suzuki completed-space theorem is
 ~~~math
 \boxed{\text{SOURCE BOUNDARY AUDITED / WD-T40}}
 ~~~
+
+
+---
+
+## EXT-5D — polygamma derivative asymptotics
+
+### Source
+
+NIST Digital Library of Mathematical Functions, §5.15, equation **5.15.9**.
+
+https://dlmf.nist.gov/5.15.E9
+
+### Exact pin
+
+For every integer `n >= 1`, as `z -> infinity` in a sector
+`|ph z| <= pi - delta`,
+
+~~~math
+\psi^{(n)}(z)
+\sim
+(-1)^{n-1}
+\left(
+\frac{(n-1)!}{z^n}
++
+\frac{n!}{2z^{n+1}}
++
+\sum_{k\ge1}
+\frac{(2k+n-1)!}{(2k)!}
+\frac{B_{2k}}{z^{2k+n}}
+\right).
+~~~
+
+DLMF §5.15 explicitly identifies these as the asymptotic expansions of the
+polygamma derivatives.
+
+### F-2 specialization
+
+Along the pole-free vertical line
+
+~~~math
+z(t)=\frac14+\frac{it}{2},
+~~~
+
+the zeroth derivative is already pinned by EXT-5:
+
+~~~math
+\Re\psi(z(t))=\log|t|+O(1).
+~~~
+
+For every positive derivative order, EXT-5D gives decay by a negative power of
+`|t|`. Hence every derivative of
+
+~~~math
+t \mapsto \Re\psi(z(t))
+~~~
+
+has polynomial growth (indeed, all positive derivatives decay at infinity).
+The finite prime trigonometric correction has bounded derivatives of every
+order. Smoothness on the compact frequency core follows from the absence of
+digamma poles on `Re z=1/4`.
+
+Therefore the exact strict-right symbol is mathematically of temperate growth.
+
+### Formalization role
+
+The project does not reconstruct DLMF 5.15.9 in Lean in the current pass.
+Instead, RPB-84 exposes its consequence explicitly through:
+
+~~~lean
+RightLimitWeilSymbolTemperatePremise
+~~~
+
+A final WD-T40 certificate consuming this premise therefore remains
+`LEAN-CERTIFIED-FROM-IMPORTED-PREMISE`, consistent with the existing EXT-4
+and EXT-5 treatment.
+
+### Consumed by
+
+- WD-T40 F-2 exact tempered multiplier realization.
+
+### Pin status
+
+~~~math
+\boxed{\text{SOURCE-PINNED / EXPLICIT IMPORTED PREMISE}}
+~~~
