@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-87 / WD-T40 F-2 EXT-4 weak-realization build certification.
+- **Next project cursor:** RPB-88 / WD-T40 F-3 Gaussian support-gap pairing.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -34,7 +34,7 @@ Exact blocking stack:
 
 ~~~text
 F-1  physical real-line L2 / tempered-distribution carrier lift — BUILD-CERTIFIED / audited blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d / run 36649140221
-F-2  actual compact-window Weil multiplier realization — IN PROGRESS / all internal carrier pieces BUILD-CERTIFIED / explicit EXT-4 weak-realization premise + packaging theorem SOURCE IMPLEMENTED / build certification pending
+F-2  actual compact-window Weil multiplier realization — COMPLETE / BUILD-CERTIFIED FROM EXPLICIT EXT-4 + EXT-5D IMPORTED-PREMISE INTERFACES / final residual-carrier blob d11e51ea0199f134b3c8f17f76c341a27d6d2881 / run 36735403643
 F-3  support-gap Gaussian pairing theorem
 F-4  Gaussian coercivity -> exponential Fourier weight
 F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
