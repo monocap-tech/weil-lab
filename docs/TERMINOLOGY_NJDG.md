@@ -166,3 +166,47 @@ Q_{a,gamma}(z)
 whose four zeros are off the symmetry axis but whose derivative zeros all lie on that axis.
 
 NJDG uses this as a hostile control against any claim that functional-equation quartet geometry alone forces forbidden derivative-zero displacement.
+
+
+## cofactor recombination
+
+**Cofactor recombination** is the NJDG-2 correction to reading the pair-removed field (G'/G) as an independent NEXTJET obstruction.
+
+If a selected zero (ho_j) and an unselected near zero (mu) are both removed from the completed divisor, then locally
+[
+rac{G'}{G}(z)
+=
+rac{Xi'}{Xi}(z)
+-rac1{z-ho_j}
+-rac1{z-mu}.
+]
+
+After all selected poles and all authorized near-complement poles are removed, this field is part of the canonical analytic outside field
+[
+A_{F,Omega}(z)
+=
+rac{Xi'}{Xi}(z)
+-sum_{hoin F}rac1{z-ho}
+-sum_{muinOmega}rac{m_mu}{z-mu}.
+]
+
+In the scalar-preserving SOURCE-II identity, the omitted pole terms recombine with the near response into collision-safe divided differences. Thus inverse-gap growth of a pair cofactor is not, by itself, a new native theorem deficit.
+
+## selected/internal versus selected/exterior collision
+
+A **selected/internal collision** is a collision among nodes already inside the selected finite packet (F). G2C collision/Feshbach compactification applies to this jurisdiction.
+
+A **selected/exterior collision** involves at least one unselected complement zero (mu
+otin F). It is not converted into a G2C internal collision by enlarging (F) after the complement is observed, because that would alter the selected packet/channel after hostile data is read.
+
+The canonical scalar route handles selected/exterior reciprocal poles instead through SOURCE-II collision renormalization.
+
+## derivative-to-RENJET transfer
+
+A **derivative-to-RENJET transfer** is a genuinely new theorem, if one exists, that uses (Xi'), (zeta'), or higher-derivative zero geometry to control the canonical collision-safe joint renormalized jet
+[
+mathfrak J_{F,Omega}[psi]
+]
+or the full frozen selected-only jet tower, with the required every-packet quantifier.
+
+Derivative information that controls only an individual reciprocal gap, raw (G'/G), or one derivative zero does not qualify unless its implication to the joint renormalized jet is explicit.
