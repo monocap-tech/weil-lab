@@ -343,3 +343,28 @@ Priority order:
 3. search for unconditional pointwise bounds at derivative zeros;
 4. test transport to the packet center and the second-resolvent RENJET term;
 5. stop if the enrichment theorem is equivalent to the missing RENJET control.
+
+
+## 16. NJDG-5 standing
+
+NJDG-5 is complete.
+
+A single simple derivative critical point enriched by its second-derivative value does provide the pole-removed field first jet exactly. This removes the need for a second separated critical point for that one field component.
+
+However the curvature quotient is itself second-resolvent data, transport to the packet center costs proximity times a higher pole-removed derivative, and the canonical RENJET still contains a mode-weighted collision-safe near kernel not determined by unweighted critical curvature.
+
+No unconditional every-critical-point bound on the required curvature quotient was located.
+
+## 17. Current cursor
+
+[
+oxed{	ext{NJDG-6 / MODE-WEIGHTED CRITICAL-CURVATURE TRANSFER}}
+]
+
+Priority order:
+
+1. express the fixed selected-mode RENJET kernel in terms of second-resolvent curvature data;
+2. preserve the already-frozen SOURCE-II mode pair;
+3. test whether differentiation in mode depth or a fixed two-mode combination removes the unweighted/weighted mismatch;
+4. compare with the multiplier-free complement wedge;
+5. stop if the construction is only a reparameterization of the same complement-response theorem.
