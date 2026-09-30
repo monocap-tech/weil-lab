@@ -6,7 +6,7 @@ namespace WeilDefect
 
 noncomputable section
 
-open MeasureTheory
+open MeasureTheory ContinuousLinearMap
 open Set
 
 /-- The certified compactly supported F-1 representative is globally integrable. -/
@@ -314,7 +314,7 @@ theorem gaussianExteriorTail_integral_le
             simp
       _ = ∫ t : ℝ,
           Real.exp (-(R / 16) * t ^ 2) := by
-            simpa using
+            simpa only [neg_mul] using
               (integral_sub_right_eq_self
                 (μ := volume)
                 (fun t : ℝ => Real.exp (-(R / 16) * t ^ 2)) c)
@@ -352,8 +352,9 @@ theorem gaussianExteriorTail_integral_le
             simp
       _ = ∫ t : ℝ,
           Real.exp (-(R / 16) * t ^ 2) := by
-            simpa only [sub_neg_eq_add] using
+            simpa only [sub_neg_eq_add, neg_mul] using
               integral_sub_right_eq_self
+                (μ := volume)
                 (fun t : ℝ =>
                   Real.exp (-(R / 16) * t ^ 2)) (-c)
       _ = Real.sqrt (Real.pi / (R / 16)) :=
@@ -464,7 +465,7 @@ theorem movingGaussianResidualPairing_norm_le
           exact mul_nonneg
             (mul_nonneg h₁ (Real.exp_nonneg _))
             (Real.exp_nonneg _)
-        refine setIntegral_mono_ae
+        refine setIntegral_mono_ae_restrict
           hfext.norm
           ((gaussianExteriorTail_integrableOn hR hc residual.strict).const_mul A) ?_
         have hextMeas : MeasurableSet (gaussianExteriorSet residual.a) := by
