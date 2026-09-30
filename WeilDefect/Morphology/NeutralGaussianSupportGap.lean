@@ -209,8 +209,7 @@ theorem norm_movingGaussianPhysicalKernel
   have hgauss :
       ‖((Real.exp (-R * |z| ^ 2 / 4) : ℝ) : ℂ)‖
         = Real.exp (-R * |z| ^ 2 / 4) := by
-    rw [Complex.norm_exp]
-    simp
+    rw [Complex.norm_real, Real.norm_of_nonneg (Real.exp_nonneg _)]
   have hphase :
       ‖Complex.exp (((R * z : ℝ) : ℂ) * Complex.I)‖ = 1 := by
     rw [Complex.norm_exp]
