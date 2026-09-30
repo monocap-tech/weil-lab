@@ -388,3 +388,32 @@ NJDG disposition:
 **NO POINTWISE CRITICAL-CURVATURE HIT LOCATED.**
 
 This is a bounded source audit, not a literature-exhaustion theorem.
+
+
+## NJDG-7 weighted critical identity screen
+
+The direct GitHub source screen located:
+
+- Farmer–Gonek–Lee lineage: explicit-formula / pair-correlation machinery for the zeros of \(\Xi'\);
+- \`teal-sea/zeta-lab\`: higher-\(\Xi\) derivative resolvents and derivative-divisor statistics;
+- \`x67ai/riemann-rh-program\`: exploratory mixed \((\Xi,\Xi')\) programs, including an adversarial audit explicitly rejecting the conflation of \(\Xi\)-zero data with \(\Xi'\)-zero data without a transfer theorem;
+- generic Mellin/logarithmic-derivative weighted identities.
+
+No located source supplied a packet-local identity taking the derivative divisor and reconstructing the frozen original-divisor RENJET kernel.
+
+NJDG classification:
+
+**NO HIT / DERIVATIVE-DIVISOR SWITCH UNRESOLVED.**
+
+Important distinction:
+
+\[
+\frac{\Xi'}{\Xi}
+\]
+has poles at the original \(\Xi\)-zeros and zeros at simple \(\Xi'\)-zeros, while
+\[
+\frac{\Xi''}{\Xi'}
+\]
+has poles at the derivative zeros. Separate explicit formulas for the two do not by themselves yield a mixed-divisor weighted theorem.
+
+Re-entry requires a source whose statement explicitly couples the two divisor species with the every-dangerous-packet quantifier and the frozen SOURCE-II weight.
