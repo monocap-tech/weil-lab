@@ -6,7 +6,7 @@ namespace WeilDefect
 
 noncomputable section
 
-open MeasureTheory
+open MeasureTheory TopologicalSpace
 open scoped Distributions SchwartzMap
 
 /--
