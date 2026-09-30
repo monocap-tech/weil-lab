@@ -18,10 +18,9 @@ theorem neutralPhysicalRepresentative_integrable
     (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
     Integrable carrier.h volume := by
   exact
-    (neutralPhysicalRepresentative_integrableOn carrier)
-      .integrable_of_forall_notMem_eq_zero
-        (fun x hx =>
-          carrier.representative_eq_zero_of_not_mem hx)
+    (neutralPhysicalRepresentative_integrableOn carrier).integrable_of_forall_notMem_eq_zero
+      (fun x hx =>
+        carrier.representative_eq_zero_of_not_mem hx)
 
 /-- The convention-parametric moving Gaussian physical kernel is continuous. -/
 theorem movingGaussianPhysicalKernel_continuous
@@ -44,7 +43,8 @@ theorem movingGaussianPhysicalKernel_norm_le
       Real.exp (-R * |z| ^ 2 / 4) ≤ 1 := by
     rw [← Real.exp_zero]
     apply Real.exp_le_exp.mpr
-    positivity
+    have hnonneg : 0 ≤ R * |z| ^ 2 / 4 := by positivity
+    linarith
   exact mul_le_of_le_one_right
     (mul_nonneg (norm_nonneg Ck) (Real.sqrt_nonneg R))
     hexp
@@ -75,7 +75,7 @@ theorem movingGaussianFilteredMode_eq_convolution
     (Ck : ℂ) (R : ℝ) :
     movingGaussianFilteredMode Ck R carrier
       =
-    carrier.h ⋆[ContinuousLinearMap.lsmul ℂ ℂ, volume]
+    carrier.h ⋆[lsmul ℂ ℂ, volume]
       movingGaussianPhysicalKernel Ck R := by
   funext x
   unfold movingGaussianFilteredMode
@@ -98,11 +98,10 @@ theorem movingGaussianFilteredMode_continuous
     Continuous (movingGaussianFilteredMode Ck R carrier) := by
   rw [movingGaussianFilteredMode_eq_convolution carrier Ck R]
   exact
-    (movingGaussianPhysicalKernel_bddAbove_norm hR)
-      .continuous_convolution_right_of_integrable
-        (ContinuousLinearMap.lsmul ℂ ℂ)
-        (neutralPhysicalRepresentative_integrable carrier)
-        (movingGaussianPhysicalKernel_continuous Ck R)
+    (movingGaussianPhysicalKernel_bddAbove_norm hR).continuous_convolution_right_of_integrable
+      (lsmul ℂ ℂ)
+      (neutralPhysicalRepresentative_integrable carrier)
+      (movingGaussianPhysicalKernel_continuous Ck R)
 
 /--
 Pointwise completed-tail bound for the actual residual-filtered-mode product.
@@ -162,11 +161,15 @@ theorem residualFilteredMode_norm_le_completedTail
       * Real.exp (residual.growthRate * c)
       * Real.exp (-R * (residual.a - c) ^ 2 / 16))
       * Real.exp (-R * (|x| - c) ^ 2 / 16) := by
+        have hkernel : 0 ≤ ‖Ck‖ * Real.sqrt R :=
+          mul_nonneg (norm_nonneg Ck) (Real.sqrt_nonneg R)
         have hnonneg :
             0 ≤ residual.growthConstant
               * (‖Ck‖ * Real.sqrt R)
-              * neutralPhysicalCompactL1Mass carrier := by
-          positivity
+              * neutralPhysicalCompactL1Mass carrier :=
+          mul_nonneg
+            (mul_nonneg residual.growthConstant_nonneg hkernel)
+            (neutralPhysicalCompactL1Mass_nonneg carrier)
         nlinarith [hcompletion]
 
 /--
@@ -197,13 +200,26 @@ theorem residualFilteredMode_integrableOn_exterior
       * neutralPhysicalCompactL1Mass carrier
       * Real.exp (residual.growthRate * c)
       * Real.exp (-R * (residual.a - c) ^ 2 / 16)
+  have hA : 0 ≤ A := by
+    dsimp [A]
+    have hkernel : 0 ≤ ‖Ck‖ * Real.sqrt R :=
+      mul_nonneg (norm_nonneg Ck) (Real.sqrt_nonneg R)
+    have h₁ :
+        0 ≤ residual.growthConstant
+          * (‖Ck‖ * Real.sqrt R)
+          * neutralPhysicalCompactL1Mass carrier :=
+      mul_nonneg
+        (mul_nonneg residual.growthConstant_nonneg hkernel)
+        (neutralPhysicalCompactL1Mass_nonneg carrier)
+    exact mul_nonneg
+      (mul_nonneg h₁ (Real.exp_nonneg _))
+      (Real.exp_nonneg _)
   have htail :
       IntegrableOn
         (fun x : ℝ =>
           A * Real.exp (-R * (|x| - c) ^ 2 / 16))
         (gaussianExteriorSet residual.a) volume :=
-    (gaussianExteriorTail_integrableOn hR hc residual.strict)
-      .const_mul A
+    (gaussianExteriorTail_integrableOn hR hc residual.strict).const_mul A
   have hfilteredMeas :
       AEStronglyMeasurable
         (movingGaussianFilteredMode Ck R carrier) volume :=
@@ -217,18 +233,24 @@ theorem residualFilteredMode_integrableOn_exterior
     residual.q_locallyIntegrable.aestronglyMeasurable.mul
       hfilteredMeas
   apply Integrable.mono htail hpairMeas.restrict
-  filter_upwards [self_mem_ae_restrict
-    (by
-      unfold gaussianExteriorSet
-      exact measurableSet_Iic.union measurableSet_Ici)] with x hx
+  have hextMeas : MeasurableSet (gaussianExteriorSet residual.a) := by
+    unfold gaussianExteriorSet
+    exact measurableSet_Iic.union measurableSet_Ici
+  filter_upwards [self_mem_ae_restrict hextMeas] with x hx
   have hxout :
       x ∉ Set.Ioo (-residual.a) residual.a := by
-    simp [gaussianExteriorSet] at hx
-    linarith
+    rw [gaussianExteriorSet] at hx
+    rcases hx with hxleft | hxright
+    · exact fun hin => (not_lt_of_ge hxleft) hin.1
+    · exact fun hin => (not_lt_of_ge hxright) hin.2
   have hbound :=
     residualFilteredMode_norm_le_completedTail
       carrier residual Ck hc hR.le hlarge hxout
-  simpa [A, Real.norm_eq_abs, abs_of_nonneg (by positivity)] using hbound
+  have htailNonneg :
+      0 ≤ A * Real.exp (-R * (|x| - c) ^ 2 / 16) :=
+    mul_nonneg hA (Real.exp_nonneg _)
+  rw [Real.norm_eq_abs, abs_of_nonneg htailNonneg]
+  simpa [A] using hbound
 
 /--
 The completed Gaussian tail mass on the two exterior half-lines is bounded by
@@ -274,19 +296,28 @@ theorem gaussianExteriorTail_integral_le
           apply setIntegral_congr_fun measurableSet_Ici
           intro x hx
           have hx0 : 0 ≤ x := ha.le.trans hx
+          change
+            Real.exp (-R * (|x| - c) ^ 2 / 16)
+              =
+            Real.exp (-(R / 16) * (x - c) ^ 2)
           rw [abs_of_nonneg hx0]
           congr 1
           ring
-      _ ≤ ∫ x : ℝ,
+      _ ≤ ∫ x in Set.univ,
           Real.exp (-(R / 16) * (x - c) ^ 2) := by
-            rw [← setIntegral_univ]
             exact setIntegral_mono_set
               hrightShift.integrableOn
               (ae_of_all _ fun _ => Real.exp_nonneg _)
               (Set.subset_univ _).eventuallySubset
+      _ = ∫ x : ℝ,
+          Real.exp (-(R / 16) * (x - c) ^ 2) := by
+            simp
       _ = ∫ t : ℝ,
           Real.exp (-(R / 16) * t ^ 2) := by
-            rw [integral_sub_right_eq_self]
+            simpa using
+              (integral_sub_right_eq_self
+                (μ := volume)
+                (fun t : ℝ => Real.exp (-(R / 16) * t ^ 2)) c)
       _ = Real.sqrt (Real.pi / (R / 16)) :=
         integral_gaussian (R / 16)
   have hleft :
@@ -303,16 +334,22 @@ theorem gaussianExteriorTail_integral_le
           intro x hx
           have hx0 : x ≤ 0 :=
             hx.trans (neg_nonpos.mpr ha.le)
+          change
+            Real.exp (-R * (|x| - c) ^ 2 / 16)
+              =
+            Real.exp (-(R / 16) * (x + c) ^ 2)
           rw [abs_of_nonpos hx0]
           congr 1
           ring
-      _ ≤ ∫ x : ℝ,
+      _ ≤ ∫ x in Set.univ,
           Real.exp (-(R / 16) * (x + c) ^ 2) := by
-            rw [← setIntegral_univ]
             exact setIntegral_mono_set
               hleftShift.integrableOn
               (ae_of_all _ fun _ => Real.exp_nonneg _)
               (Set.subset_univ _).eventuallySubset
+      _ = ∫ x : ℝ,
+          Real.exp (-(R / 16) * (x + c) ^ 2) := by
+            simp
       _ = ∫ t : ℝ,
           Real.exp (-(R / 16) * t ^ 2) := by
             simpa only [sub_neg_eq_add] using
@@ -399,6 +436,8 @@ theorem movingGaussianResidualPairing_norm_le
         x ∈ Set.Ioo (-residual.a) residual.a := by
       simp [gaussianExteriorSet] at hnot
       exact ⟨hnot.1, hnot.2⟩
+    change
+      residual.q x * movingGaussianFilteredMode Ck R carrier x = 0
     rw [hx hin, zero_mul]
   rw [movingGaussianResidualPairing, show
     (fun x : ℝ =>
@@ -411,18 +450,33 @@ theorem movingGaussianResidualPairing_norm_le
         exact norm_integral_le_integral_norm _
     _ ≤ ∫ x in gaussianExteriorSet residual.a,
           A * Real.exp (-R * (|x| - c) ^ 2 / 16) := by
+        have hA : 0 ≤ A := by
+          dsimp [A]
+          have hkernel : 0 ≤ ‖Ck‖ * Real.sqrt R :=
+            mul_nonneg (norm_nonneg Ck) (Real.sqrt_nonneg R)
+          have h₁ :
+              0 ≤ residual.growthConstant
+                * (‖Ck‖ * Real.sqrt R)
+                * neutralPhysicalCompactL1Mass carrier :=
+            mul_nonneg
+              (mul_nonneg residual.growthConstant_nonneg hkernel)
+              (neutralPhysicalCompactL1Mass_nonneg carrier)
+          exact mul_nonneg
+            (mul_nonneg h₁ (Real.exp_nonneg _))
+            (Real.exp_nonneg _)
         refine setIntegral_mono_ae
           hfext.norm
-          ((gaussianExteriorTail_integrableOn hR hc residual.strict)
-            .const_mul A) ?_
-        filter_upwards [self_mem_ae_restrict
-          (by
-            unfold gaussianExteriorSet
-            exact measurableSet_Iic.union measurableSet_Ici)] with x hx
+          ((gaussianExteriorTail_integrableOn hR hc residual.strict).const_mul A) ?_
+        have hextMeas : MeasurableSet (gaussianExteriorSet residual.a) := by
+          unfold gaussianExteriorSet
+          exact measurableSet_Iic.union measurableSet_Ici
+        filter_upwards [self_mem_ae_restrict hextMeas] with x hx
         have hxout :
             x ∉ Set.Ioo (-residual.a) residual.a := by
-          simp [gaussianExteriorSet] at hx
-          linarith
+          rw [gaussianExteriorSet] at hx
+          rcases hx with hxleft | hxright
+          · exact fun hin => (not_lt_of_ge hxleft) hin.1
+          · exact fun hin => (not_lt_of_ge hxright) hin.2
         have hbound :=
           residualFilteredMode_norm_le_completedTail
             carrier residual Ck hc hR.le hlarge hxout
@@ -431,12 +485,24 @@ theorem movingGaussianResidualPairing_norm_le
       A * (∫ x in gaussianExteriorSet residual.a,
         Real.exp (-R * (|x| - c) ^ 2 / 16)) := by
           rw [← integral_const_mul]
-          rfl
     _ ≤
       A * (2 * Real.sqrt (Real.pi / (R / 16))) := by
-        apply mul_le_mul_of_nonneg_left
-          (gaussianExteriorTail_integral_le hR hc residual.strict)
-        positivity
+        have hA : 0 ≤ A := by
+          dsimp [A]
+          have hkernel : 0 ≤ ‖Ck‖ * Real.sqrt R :=
+            mul_nonneg (norm_nonneg Ck) (Real.sqrt_nonneg R)
+          have h₁ :
+              0 ≤ residual.growthConstant
+                * (‖Ck‖ * Real.sqrt R)
+                * neutralPhysicalCompactL1Mass carrier :=
+            mul_nonneg
+              (mul_nonneg residual.growthConstant_nonneg hkernel)
+              (neutralPhysicalCompactL1Mass_nonneg carrier)
+          exact mul_nonneg
+            (mul_nonneg h₁ (Real.exp_nonneg _))
+            (Real.exp_nonneg _)
+        exact mul_le_mul_of_nonneg_left
+          (gaussianExteriorTail_integral_le hR hc residual.strict) hA
     _ =
       (residual.growthConstant
         * (‖Ck‖ * Real.sqrt R)
