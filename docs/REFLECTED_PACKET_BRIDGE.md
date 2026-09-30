@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-96 — THE F-4 PREFLIGHT FOUND AND REPAIRED A LOAD-BEARING t=2\pi\xi FOURIER-COORDINATE MISMATCH; THE NORMALIZED DEPENDENCY CHAIN MUST NOW BE REBUILT.}
+\textbf{RPB-97 — THE t=2\pi\xi FOURIER-NORMALIZATION REPAIR IS BUILD-CERTIFIED THROUGH THE FULL F-3 STACK; F-4 NOW REDUCES TO THE GAUSSIAN-ADMISSIBILITY DOMAIN BRIDGE.}
 }
 ~~~
 
@@ -113,12 +113,13 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-97 / WD-T40 FOURIER-NORMALIZATION REPAIR BUILD CERTIFICATION
+RPB-98 / WD-T40 F-4 GAUSSIAN-ADMISSIBILITY WEAK-REALIZATION BRIDGE
 ~~~
 
-RPB-96 audited the Fourier convention before F-4 and installed the required
-source-frequency to mathlib-frequency map t=2*pi*xi in the multiplier core.
-The next pass rebuilds the integrated chain. F-4 and F-5 remain closed.
+RPB-97 build-certified the normalized multiplier through the full F-3
+pairing stack. The next pass addresses only the Gaussian-admissibility domain
+bridge needed to test the F-2 weak realization against the noncompact moving
+Gaussian mode. F-5 remains closed.
 
 ## Governance
 
@@ -131,4 +132,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_96_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_97_20260930.md.
