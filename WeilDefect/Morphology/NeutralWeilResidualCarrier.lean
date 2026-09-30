@@ -82,6 +82,68 @@ structure NeutralWeilResidualWeakRealization (c : ℝ) where
         multiplierCore u
           + ∫ x : ℝ, u x * pole x ∂volume
 
+
+/--
+Explicit imported EXT-4 premise tying the certified F-1 physical mode to the
+actual strict-right compact-window Weil residual.
+
+The identity is stated only on compactly supported Schwartz tests.  Its
+multiplier term is the certified conditional tempered multiplier core at the
+strict-right radius stored by the residual carrier.
+
+This premise contains exactly the external compact-window operator
+identification needed to finish F-2.  It does not contain any Gaussian
+support-gap estimate or downstream WD-T40 conclusion.
+-/
+structure RightLimitWeilWeakRealizationPremise
+    (c : ℝ)
+    {EndpointObs RightObs : Type*}
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
+    (residual : NeutralExponentialResidualCarrier c)
+    (hSymbol : RightLimitWeilSymbolTemperatePremise residual.a)
+    (pole : ℝ → ℂ) : Prop where
+  pole_locallyIntegrable : LocallyIntegrable pole volume
+  weakIdentity :
+    ∀ u : SchwartzMap ℝ ℂ,
+      HasCompactSupport u →
+        (∫ x : ℝ, u x * residual.q x ∂volume)
+          =
+        rightLimitWeilMultiplierCore
+            residual.a hSymbol carrier.temperedMode u
+          + ∫ x : ℝ, u x * pole x ∂volume
+
+/--
+F-2 packaging theorem: an explicit EXT-4 weak-realization premise produces the
+already certified weak-realization target for the actual strict-right mode.
+
+No analytic estimate is proved here; the theorem only transfers the imported
+operator identity into the project carrier.
+-/
+theorem rightLimitWeilWeakRealization
+    (c : ℝ)
+    {EndpointObs RightObs : Type*}
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
+    (residual : NeutralExponentialResidualCarrier c)
+    (hSymbol : RightLimitWeilSymbolTemperatePremise residual.a)
+    (pole : ℝ → ℂ)
+    (hEXT4 :
+      RightLimitWeilWeakRealizationPremise
+        c carrier residual hSymbol pole) :
+    NeutralWeilResidualWeakRealization c := by
+  exact {
+    residual := residual
+    multiplierCore :=
+      rightLimitWeilMultiplierCore
+        residual.a hSymbol carrier.temperedMode
+    pole := pole
+    pole_locallyIntegrable := hEXT4.pole_locallyIntegrable
+    weakIdentity := hEXT4.weakIdentity
+  }
+
 end
 
 end WeilDefect
