@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-97 — THE t=2\pi\xi FOURIER-NORMALIZATION REPAIR IS BUILD-CERTIFIED THROUGH THE FULL F-3 STACK; F-4 NOW REDUCES TO THE GAUSSIAN-ADMISSIBILITY DOMAIN BRIDGE.}
+\textbf{RPB-98 — THE GAUSSIAN-ADMISSIBILITY DOMAIN SEAM IS EXPLICITLY TYPED IN LEAN SOURCE; COMPACT-TEST EXT-4 IS NO LONGER SILENTLY EXTENDED TO THE NONCOMPACT MOVING GAUSSIAN.}
 }
 ~~~
 
@@ -113,13 +113,14 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-98 / WD-T40 F-4 GAUSSIAN-ADMISSIBILITY WEAK-REALIZATION BRIDGE
+RPB-99 / WD-T40 F-4 GAUSSIAN-ADMISSIBILITY BRIDGE BUILD CERTIFICATION
 ~~~
 
-RPB-97 build-certified the normalized multiplier through the full F-3
-pairing stack. The next pass addresses only the Gaussian-admissibility domain
-bridge needed to test the F-2 weak realization against the noncompact moving
-Gaussian mode. F-5 remains closed.
+RPB-98 typed the Gaussian-admissibility bridge explicitly: compact EXT-4
+realization, Schwartz realization of the actual filtered mode, genuine
+residual/pole pairing integrability, and the extended weak identity. The next
+pass build-certifies that interface. Its cutoff/growth discharge and all
+coercivity remain open.
 
 ## Governance
 
@@ -132,4 +133,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_97_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_98_20260930.md.
