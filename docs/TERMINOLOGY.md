@@ -6268,3 +6268,37 @@ A scalar amplitude constant alone does not repair a Fourier-coordinate
 mismatch; the symbol argument itself must be rescaled.
 
 **Status:** registered at RPB-96 after Fourier-normalization audit.
+
+
+## Gaussian-admissibility weak-realization bridge
+
+The **Gaussian-admissibility weak-realization bridge** is the narrow interface
+that extends the compact-test EXT-4 weak realization to the one noncompact test
+family used by WD-T40:
+
+~~~math
+G_R=\phi_R(D)h.
+~~~
+
+It contains exactly:
+
+1. the already-required compact-support EXT-4 weak realization;
+2. a Schwartz-space representative of the actual moving-Gaussian filtered
+   mode;
+3. integrability of the residual pairing and the explicit pole pairing against
+   that representative; and
+4. the same weak identity evaluated on that representative.
+
+It does **not** contain:
+
+- any logarithmic lower bound for the Weil symbol;
+- any Gaussian-window coercivity inequality;
+- any exponential Fourier-weight conclusion;
+- any strip-holomorphy statement.
+
+The intended discharge is a cutoff/limit argument using the exponential-growth
+residual and the explicit finite-dimensional pole species. Until that cutoff
+argument is formalized, the bridge remains an explicit theorem-facing premise
+rather than a hidden domain assumption.
+
+**Status:** registered at RPB-98.
