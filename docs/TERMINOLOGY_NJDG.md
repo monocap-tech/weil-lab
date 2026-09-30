@@ -287,3 +287,24 @@ left(rac{zeta'}{zeta}ight)'(	au)=0,
 and hence the derivative of the completed logarithmic derivative at (	au) is fixed by the completion factor.
 
 NJDG does not assume such multiple critical points are forced by a dangerous packet.
+
+
+## resolvent-order gap
+
+The **resolvent-order gap** is the distinction between the first-resolvent information naturally visible in a critical-point equation and the second-resolvent / second-divided-difference information appearing in the first canonical RENJET.
+
+A critical point constrains a quantity of the form
+[
+sum_
+u rac{m_
+u}{	au-
+u}
+]
+through a logarithmic derivative value. The RENJET finite-part form contains terms of the form
+[
+sum_{muinOmega}
+m_murac{psi(mu)}{(mu-c)^2},
+]
+jointly cancelled against ((psi B_F)'(c)).
+
+A transfer between these orders requires an additional local analytic or arithmetic theorem; it is not supplied by the critical-point identity alone.
