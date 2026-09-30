@@ -29,11 +29,16 @@ theorem neutralPhysicalRepresentative_polynomialNorm_integrable
   have hweight :
       Continuous (fun x : ℝ => ‖x‖ ^ n) := by
     fun_prop
+  have hnormOn :
+      IntegrableOn
+        (fun x : ℝ => ‖carrier.h x‖)
+        (Set.Icc (-c) c) volume :=
+    hbase.norm
   have hon :
       IntegrableOn
         (fun x : ℝ => ‖carrier.h x‖ * ‖x‖ ^ n)
         (Set.Icc (-c) c) volume :=
-    hbase.norm.mul_continuousOn hweight.continuousOn isCompact_Icc
+    hnormOn.mul_continuousOn hweight.continuousOn isCompact_Icc
   have hon' :
       IntegrableOn
         (fun x : ℝ => ‖x‖ ^ n * ‖carrier.h x‖)
@@ -78,7 +83,7 @@ theorem neutralPhysicalRepresentative_fourier_contDiff
     [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
     [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
     (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
-    ContDiff ℝ ∞ (𝓕 carrier.h) := by
+    ContDiff ℝ ⊤ (𝓕 carrier.h) := by
   apply Real.contDiff_fourier
   intro n hn
   exact neutralPhysicalRepresentative_polynomialNorm_integrable carrier n
