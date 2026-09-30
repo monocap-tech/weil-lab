@@ -6021,3 +6021,38 @@ RPB-79 introduces the Lean definitions
 `rightLimitCompactWeilSymbol`.
 
 **Status:** post-Horizon F-2 formalization terminology.
+
+
+## Exponential-growth residual carrier
+
+The **exponential-growth residual carrier** is the corrected whole-line carrier
+for the full enlarged Weil residual
+
+~~~math
+q=\mathcal W_a^{\rm ext}h.
+~~~
+
+The scalar Fourier-multiplier component is naturally tempered, but the
+finite-rank pole/evaluation contribution can contain fixed real exponentials.
+Therefore the full residual is not assumed to be a tempered distribution.
+
+The faithful F-2 split is:
+
+~~~text
+tempered multiplier core
+    +
+locally integrable / ordinary-distribution pole component
+    =
+full exponential-growth physical residual.
+~~~
+
+For the later Gaussian support-gap step, the full carrier must expose enough
+physical growth control to pair the residual with noncompact Gaussian test
+functions.  A bare ordinary distribution is therefore not by itself the final
+F-3 interface.
+
+The earlier F-1 type `NeutralStrictResidualData` remains a valid typed
+tempered semantic object, but after RPB-81 it is **not** identified with the
+full pole-restored enlarged residual.
+
+**Status:** post-Horizon F-2 formalization terminology; registered at RPB-81.
