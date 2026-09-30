@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-78 — F-1 IS BUILD-CERTIFIED; THE PHYSICAL FOURIER CARRIER GATE IS CLOSED.}
+\textbf{RPB-79 — THE EXACT THRESHOLD-CORRECTED SCALAR WEIL SYMBOL IS IMPLEMENTED; F-2 IS NOW IN PROGRESS.}
 }
 ~~~
 
@@ -60,7 +60,10 @@ F-1  physical Fourier carrier lift
      BUILD-CERTIFIED
 
 F-2  actual compact-window Weil multiplier realization
-     NOT STARTED
+     IN PROGRESS
+     exact strict-right scalar symbol source implemented
+     build certification pending
+     distributional residual/operator identity open
 
 F-3  support-gap Gaussian pairing
      NOT STARTED
@@ -80,12 +83,12 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-79 / WD-T40 ACTUAL WEIL MULTIPLIER REALIZATION
+RPB-80 / WD-T40 F-2 SCALAR-SYMBOL BUILD CERTIFICATION
 ~~~
 
-F-2 is now the next authorized formalization target.
-
-RPB-78 does not begin it.
+RPB-79 opened F-2 only through the exact scalar-symbol layer.  The next pass
+must build-certify that source before the distributional operator/residual
+bridge is attempted.
 
 ## Governance
 
@@ -98,4 +101,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_78_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_79_20260929.md.
