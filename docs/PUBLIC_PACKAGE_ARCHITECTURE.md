@@ -343,7 +343,7 @@ The final pass is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 }
 ```
 
-The current post-Horizon research cursor is RPB-78 / WD-T40 F-1 build gate recheck.
+The current post-Horizon research cursor is RPB-79 / WD-T40 actual Weil multiplier realization.
 
 
 ---
@@ -388,7 +388,7 @@ This is recorded as an infrastructure blocker rather than as a Lean theorem or s
 Current cursor:
 
 ~~~text
-RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+RPB-79 / WD-T40 ACTUAL WEIL MULTIPLIER REALIZATION
 ~~~
 
 
@@ -402,4 +402,31 @@ The deterministic build handoff checks that exact blob before compiling, verifie
 
 F-1 is therefore statically exhausted but not Lean-certified. A real pinned build remains required before F-2 may begin.
 
-Current cursor: RPB-78 / WD-T40 F-1 build gate recheck.
+Current cursor: RPB-79 / WD-T40 actual Weil multiplier realization.
+
+
+---
+
+## WD-T40 F-1 build certificate
+
+RPB-78 closes the physical Fourier carrier build gate.
+
+Certified carrier blob:
+
+~~~text
+03fe8ab1b6a3190e40a91b7a467c975e0d87841d
+~~~
+
+Successful pinned CI evidence:
+
+~~~text
+run: 36649140221
+job: 109679039673
+runner_id: 1000001147
+~~~
+
+The exact carrier module build and repository-wide unfinished-proof/project-axiom rejection gate both passed.
+
+F-1 is BUILD-CERTIFIED. WD-T40 remains LEAN-BLOCKED only because F-2 through F-6 remain open.
+
+Current cursor: RPB-79 / WD-T40 actual Weil multiplier realization.
