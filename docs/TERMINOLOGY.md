@@ -6056,3 +6056,32 @@ tempered semantic object, but after RPB-81 it is **not** identified with the
 full pole-restored enlarged residual.
 
 **Status:** post-Horizon F-2 formalization terminology; registered at RPB-81.
+
+
+## Strict-right symbol temperate premise
+
+The **strict-right symbol temperate premise** is the explicit imported
+formalization interface asserting that the exact complex-valued strict-right
+scalar Weil symbol
+
+~~~math
+t \longmapsto \Psi_a^{\mathrm{right}}(t)
+~~~
+
+has mathlib `Function.HasTemperateGrowth`.
+
+This property is stronger than the zeroth-order estimate
+`\Psi_a(t)=\log|t|+O(1)`: mathlib requires smoothness and a global
+polynomial bound for every iterated derivative.
+
+RPB-84 pins the derivative input to DLMF §5.15, equation 5.15.9, which gives
+the asymptotic expansion of every polygamma derivative. Combined with the
+pole-free vertical line `1/4+it/2`, compact-core continuity, and the finite
+cosine prime sum, this supplies the mathematical premise needed by the
+tempered Fourier-multiplier API.
+
+In Lean this is represented by
+`RightLimitWeilSymbolTemperatePremise`. It remains an **explicit imported
+premise**, not an internally reconstructed special-function theorem.
+
+**Status:** post-Horizon F-2 formalization terminology; registered at RPB-84.
