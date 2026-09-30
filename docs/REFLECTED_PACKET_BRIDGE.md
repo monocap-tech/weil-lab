@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-89 — THE F-3 STRICT-COLLAR GEOMETRY AND EXTERIOR POINTWISE GAUSSIAN DOMINATION ARE BUILD-CERTIFIED; THE NEXT OBSTRUCTION IS THE ACTUAL FILTERED-MODE GAUSSIAN ENVELOPE.}
+\textbf{RPB-90 — THE ACTUAL MOVING-GAUSSIAN PHYSICAL KERNEL, COMPACT-SUPPORT CONVOLUTION, AND EXTERIOR FILTERED-MODE ENVELOPE ARE IMPLEMENTED IN LEAN SOURCE.}
 }
 ~~~
 
@@ -82,7 +82,10 @@ F-3  support-gap Gaussian pairing
      exterior pointwise Gaussian domination BUILD-CERTIFIED
      blob ca837ad7eb468f6fb392f3df7649bb24ff143084
      run 36739623602
-     filtered-mode convolution bound open
+     moving-Gaussian kernel SOURCE IMPLEMENTED
+     actual compact-support convolution SOURCE IMPLEMENTED
+     exterior filtered-mode envelope SOURCE IMPLEMENTED
+     build certification pending
      Gaussian tail integration open
 
 F-4  Gaussian coercivity -> exponential Fourier weight
@@ -100,12 +103,12 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-90 / WD-T40 F-3 FILTERED-MODE GAUSSIAN ENVELOPE
+RPB-91 / WD-T40 F-3 FILTERED-MODE ENVELOPE BUILD CERTIFICATION
 ~~~
 
-RPB-89 build-certified the strict-collar geometry and exterior pointwise
-Gaussian domination. The next pass addresses only the actual filtered-mode
-Gaussian envelope. Tail integration and F-4 remain closed.
+RPB-90 implemented the actual convention-parametric moving-Gaussian kernel,
+compact-support convolution, and correct exterior-only envelope. The next pass
+build-certifies that slice. Tail integration and F-4 remain closed.
 
 ## Governance
 
@@ -118,4 +121,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_89_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_90_20260930.md.
