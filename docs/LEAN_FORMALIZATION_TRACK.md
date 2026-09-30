@@ -147,7 +147,7 @@ Only after this exhaustion condition is met does the project resume:
 - **H1-P5:** COMPLETE.
 - **Active Lean phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-80 / WD-T40 F-2 scalar-symbol build certification.
+- **Next project cursor:** RPB-81 / WD-T40 F-2 distributional operator-residual bridge.
 
 ```math
 \boxed{
@@ -155,7 +155,7 @@ Only after this exhaustion condition is met does the project resume:
 }
 ```
 
-WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier is now build-certified under pinned Lean 4.34.0 / mathlib v4.34.0 (run 36649140221, carrier blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d). The remaining WD-T40 formalization frontier begins at F-2, the actual compact-window Weil multiplier realization. The next research cursor is RPB-79 / WD-T40 actual Weil multiplier realization. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
+WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier is now build-certified under pinned Lean 4.34.0 / mathlib v4.34.0 (run 36649140221, carrier blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d). The remaining WD-T40 formalization frontier begins at F-2, the actual compact-window Weil multiplier realization. The exact strict-right scalar symbol is now build-certified by RPB-80 (run 36677931966, blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202). The next research cursor is RPB-81 / WD-T40 F-2 distributional operator-residual bridge. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
 
 
 ---
@@ -173,10 +173,12 @@ The physical real-line carrier bridge F-1 is now build-certified. The next missi
 - tempered-distribution residuals;
 - the actual compact-window Weil multiplier.
 
+The strict-right scalar symbol layer of F-2 is build-certified.
+
 The next cursor is:
 
 ~~~text
-RPB-79 / WD-T40 ACTUAL WEIL MULTIPLIER REALIZATION
+RPB-81 / WD-T40 F-2 DISTRIBUTIONAL OPERATOR-RESIDUAL BRIDGE
 ~~~
 
-No Gaussian coercivity theorem should be attempted before the F-2 actual Weil multiplier realization is complete.
+No Gaussian support-gap theorem should be attempted before the remaining F-2 distributional realization is complete.
