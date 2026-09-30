@@ -42,9 +42,10 @@ Threshold-corrected finite prime trigonometric part of the strict-right
 compact-window symbol.
 -/
 def rightLimitPrimeSymbol (a t : ℝ) : ℝ :=
-  ∑ n in rightLimitPrimePowerFinset a,
-    compactWindowPrimeCoefficient n
-      * Real.cos (t * Real.log (n : ℝ))
+  Finset.sum (rightLimitPrimePowerFinset a)
+    (fun n =>
+      compactWindowPrimeCoefficient n
+        * Real.cos (t * Real.log (n : ℝ)))
 
 /--
 Exact scalar symbol used by the strict-right compact-window Weil operator,
@@ -60,9 +61,10 @@ theorem rightLimitCompactWeilSymbol_eq
     (a t : ℝ) :
     rightLimitCompactWeilSymbol a t =
       compactWindowArchimedeanSymbol t
-        - ∑ n in rightLimitPrimePowerFinset a,
-            compactWindowPrimeCoefficient n
-              * Real.cos (t * Real.log (n : ℝ)) := by
+        - Finset.sum (rightLimitPrimePowerFinset a)
+            (fun n =>
+              compactWindowPrimeCoefficient n
+                * Real.cos (t * Real.log (n : ℝ))) := by
   rfl
 
 /-- Every strict-active prime power is retained by the right-limit symbol. -/
