@@ -31,6 +31,7 @@ import WeilDefect.Morphology.Negative
 import WeilDefect.Morphology.Neutral
 import WeilDefect.Morphology.NeutralFourierCarrier
 import WeilDefect.Morphology.NeutralWeilMultiplier
+import WeilDefect.Morphology.NeutralWeilResidualCarrier
 
 import WeilDefect.Morphology.Noncompact
 
