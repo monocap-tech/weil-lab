@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-80 — THE STRICT-RIGHT SCALAR WEIL SYMBOL IS BUILD-CERTIFIED; F-2 NOW REDUCES TO THE DISTRIBUTIONAL OPERATOR-RESIDUAL BRIDGE.}
+\textbf{RPB-81 — THE FULL WEIL RESIDUAL REQUIRES AN EXPONENTIAL-GROWTH PHYSICAL CARRIER; THE F-1 TEMPERED RESIDUAL TYPE IS TOO NARROW FOR THE POLE-RESTORED OBJECT.}
 }
 ~~~
 
@@ -64,7 +64,10 @@ F-2  actual compact-window Weil multiplier realization
      exact strict-right scalar symbol BUILD-CERTIFIED
      blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202
      run 36677931966
-     distributional residual/operator identity open
+     RPB-81 carrier correction:
+       full pole-restored residual not assumed tempered
+     exponential-growth physical carrier open
+     weak operator/residual identity open
 
 F-3  support-gap Gaussian pairing
      NOT STARTED
@@ -84,12 +87,13 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-81 / WD-T40 F-2 DISTRIBUTIONAL OPERATOR-RESIDUAL BRIDGE
+RPB-82 / WD-T40 F-2 EXPONENTIAL-GROWTH RESIDUAL CARRIER
 ~~~
 
-RPB-80 build-certified the exact scalar-symbol layer.  The next pass may now
-open only the faithful distributional operator/residual bridge.  F-3 remains
-closed until F-2 is complete.
+RPB-81 found that the full pole-restored residual cannot be identified with
+F-1's tempered residual type without an unjustified extra hypothesis. The next
+pass must implement the corrected exponential-growth physical carrier. F-3
+remains closed until F-2 is complete.
 
 ## Governance
 
@@ -102,4 +106,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_80_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_81_20260930.md.
