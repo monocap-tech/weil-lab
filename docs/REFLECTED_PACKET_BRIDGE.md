@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-83 — THE CORRECTED EXPONENTIAL-GROWTH RESIDUAL CARRIER IS BUILD-CERTIFIED; F-2 NOW MOVES TO EXACT-SYMBOL TEMPERATE GROWTH.}
+\textbf{RPB-84 — EXT-5D NOW PINS ALL POLYGAMMA DERIVATIVE ASYMPTOTICS; THE EXPLICIT SYMBOL-TEMPERATE PREMISE AND CANONICAL TEMPERED MULTIPLIER CORE ARE IMPLEMENTED IN LEAN SOURCE.}
 }
 ~~~
 
@@ -67,8 +67,10 @@ F-2  actual compact-window Weil multiplier realization
      full pole-restored residual not assumed tempered
      exponential-growth physical carrier BUILD-CERTIFIED
      weak-realization target BUILD-CERTIFIED AS INTERFACE
-     exact symbol HasTemperateGrowth open
-     actual multiplier core open
+     EXT-5D derivative asymptotics SOURCE-PINNED
+     explicit symbol-temperate premise SOURCE IMPLEMENTED
+     canonical tempered multiplier core SOURCE IMPLEMENTED
+     multiplier-core build pending
      EXT-4 instantiation open
 
 F-3  support-gap Gaussian pairing
@@ -89,13 +91,13 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-84 / WD-T40 F-2 SCALAR-SYMBOL TEMPERATE-GROWTH REALIZATION
+RPB-85 / WD-T40 F-2 TEMPERED-MULTIPLIER CORE BUILD CERTIFICATION
 ~~~
 
-RPB-83 build-certified the corrected exponential-growth carrier and the
-compact-test weak-realization target interface. The next pass addresses only
-the exact scalar symbol's temperate-growth obligation and multiplier core.
-EXT-4 instantiation and F-3 remain closed.
+RPB-84 pinned the missing all-derivative input as EXT-5D and implemented an
+explicit imported temperate-growth premise plus the canonical tempered
+multiplier core. The next pass build-certifies that source only. EXT-4
+instantiation and F-3 remain closed.
 
 ## Governance
 
@@ -108,4 +110,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_83_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_84_20260930.md.
