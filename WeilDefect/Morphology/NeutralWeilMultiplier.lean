@@ -1,12 +1,13 @@
 import WeilDefect.Morphology.NeutralFourierCarrier
 import Mathlib.Analysis.SpecialFunctions.Gamma.Digamma
+import Mathlib.Analysis.Distribution.FourierMultiplier
 import Mathlib.NumberTheory.ArithmeticFunction.VonMangoldt
 
 namespace WeilDefect
 
 noncomputable section
 
-open scoped BigOperators ArithmeticFunction
+open scoped BigOperators ArithmeticFunction SchwartzMap FourierTransform
 
 /--
 Finite prime-power set for the strict-right compact-window operator.
@@ -84,6 +85,39 @@ theorem threshold_mem_rightLimitPrimePowerFinset
   change IsPrimePow n ∧ Real.log (n : ℝ) = 2 * a at hn
   rw [mem_rightLimitPrimePowerFinset]
   exact ⟨hn.1, le_of_eq hn.2⟩
+
+
+/--
+Explicit imported F-2 premise for the exact strict-right scalar symbol.
+
+Mathlib's `HasTemperateGrowth` requires smoothness and polynomial control of
+every iterated derivative.  EXT-5 gives the zeroth-order digamma asymptotic;
+EXT-5D (DLMF 5.15.9) supplies the corresponding polygamma derivative
+asymptotics.  The project keeps that special-function input explicit rather
+than reconstructing it internally in this pass.
+-/
+structure RightLimitWeilSymbolTemperatePremise (a : ℝ) : Prop where
+  hasTemperateGrowth :
+    Function.HasTemperateGrowth
+      (fun t : ℝ => (rightLimitCompactWeilSymbol a t : ℂ))
+
+/--
+Canonical tempered-distribution realization of the exact strict-right scalar
+multiplier, conditional on the explicit EXT-5D temperate-growth premise.
+
+The proof parameter is semantically load-bearing: it certifies that mathlib's
+Schwartz multiplication branch is the genuine pointwise multiplier rather
+than the fallback zero map.
+-/
+noncomputable def rightLimitWeilMultiplierCore
+    (a : ℝ)
+    (_hSymbol : RightLimitWeilSymbolTemperatePremise a)
+    (f : RealComplexTempered) :
+    RealComplexTempered :=
+  TemperedDistribution.fourierMultiplierCLM ℂ
+    (fun t : ℝ => (rightLimitCompactWeilSymbol a t : ℂ))
+    f
+
 
 end
 
