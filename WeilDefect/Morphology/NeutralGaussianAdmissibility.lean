@@ -230,7 +230,8 @@ theorem poleFilteredMode_integrable
         (fun x : ℝ =>
           pole x * movingGaussianFilteredMode Ck R carrier x)
         (Set.Icc (-residual.a) residual.a) volume := by
-    have hpoleInt :=
+    have hpoleInt :
+        IntegrableOn pole (Set.Icc (-residual.a) residual.a) volume :=
       hpole.pole_locallyIntegrable.integrableOn_isCompact isCompact_Icc
     exact hpoleInt.mul_continuousOn
       (movingGaussianFilteredMode_continuous
