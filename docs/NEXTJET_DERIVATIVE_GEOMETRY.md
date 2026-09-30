@@ -293,3 +293,28 @@ Priority order:
 3. preserve the frozen selected-only multiplier order;
 4. classify pointwise versus average implications;
 5. stop if derivative geometry merely rewrites the same pole-removed logarithmic derivative.
+
+
+## 12. NJDG-3 standing
+
+NJDG-3 is complete.
+
+An ordinary zero of (zeta') or (Xi') gives one exact value row for the pole-removed logarithmic derivative. The first canonical RENJET requires a first jet of that field and a second-resolvent / second-divided-difference near statistic.
+
+Two critical points can recover the first jet only with inverse-spacing conditioning. A multiple critical point can lift one jet order directly, but no every-dangerous-packet theorem forces such a confluent configuration.
+
+Thus derivative-zero data become relevant only through a uniformly conditioned local critical-point frame, a forced confluent lift, or a direct theorem on the full RENJET/tower.
+
+## 13. Current cursor
+
+[
+oxed{	ext{NJDG-4 / CRITICAL-POINT FRAME SOURCE AUDIT}}
+]
+
+Priority order:
+
+1. search only for pointwise local cluster-to-critical-point theorems;
+2. require explicit packet-scale location and separation/confluence;
+3. reject density, average, and existence-only statements;
+4. test whether any source reaches the second-resolvent order of RENJET;
+5. stop if the source class remains quantifier- or jet-order-mismatched.
