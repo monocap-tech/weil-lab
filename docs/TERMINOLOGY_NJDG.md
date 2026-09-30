@@ -308,3 +308,44 @@ m_murac{psi(mu)}{(mu-c)^2},
 jointly cancelled against ((psi B_F)'(c)).
 
 A transfer between these orders requires an additional local analytic or arithmetic theorem; it is not supplied by the critical-point identity alone.
+
+
+## one-way critical proximity
+
+A **one-way critical proximity theorem** is a pointwise statement of the form
+[
+zeta'(ho')=0
+Longrightarrow
+exists,ho:zeta(ho)=0,quad
+|Imho-Imho'|le Phi(ho').
+]
+
+Such a theorem locates an original zero near a known derivative zero. It does not invert to produce one or more derivative zeros from a prescribed dangerous zeta packet.
+
+Garaev–Yıldırım's theorem
+[
+|gamma-gamma'|
+ll
+sqrt{|eta'-1/2|}
+]
+for some zeta zero (eta+igamma) attached to every zeta-prime zero (eta'+igamma') is the principal NJDG-4 example.
+
+## frame-source gate
+
+The **frame-source gate** is the exact source requirement left by NJDG-4:
+
+Given every admitted dangerous selected packet, produce before any complement-adaptive source redesign either
+
+1. at least two suitably located derivative-critical rows with a projective lower conditioning bound; or
+2. a confluent/multiple-critical configuration supplying the missing jet rows directly; or
+3. a direct theorem on the canonical RENJET/tower.
+
+A theorem about the distribution of derivative zeros does not cross this gate unless it has the required packet-conditioned, pointwise direction and jet order.
+
+## RH-conditional microscopic derivative law
+
+An **RH-conditional microscopic derivative law** is a theorem that genuinely reaches the (1/log T) neighborhood of the critical line but assumes RH in deriving the geometry.
+
+Such a theorem may be an important structural control, but it cannot be inserted into the project's false-RH reductio as an unconditional source input.
+
+Haseo Ki's 2007 local logarithmic-derivative equivalence is the NJDG-4 reference example.
