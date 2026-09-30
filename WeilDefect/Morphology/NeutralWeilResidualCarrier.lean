@@ -121,7 +121,7 @@ already certified weak-realization target for the actual strict-right mode.
 No analytic estimate is proved here; the theorem only transfers the imported
 operator identity into the project carrier.
 -/
-theorem rightLimitWeilWeakRealization
+noncomputable def rightLimitWeilWeakRealization
     (c : ℝ)
     {EndpointObs RightObs : Type*}
     [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
