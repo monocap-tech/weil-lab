@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-99 — THE GAUSSIAN-ADMISSIBILITY DOMAIN INTERFACE IS BUILD-CERTIFIED; ITS CUTOFF/GROWTH DISCHARGE IS NOW THE SOLE PRE-COERCIVITY OBLIGATION.}
+\textbf{RPB-100 — COMPACT-CUTOFF LIMITS NOW DERIVE THE GAUSSIAN WEAK IDENTITY INTERNALLY, AND EXPLICIT POLE EXPONENTIAL GROWTH DISCHARGES POLE-PAIRING INTEGRABILITY IN SOURCE.}
 }
 ~~~
 
@@ -113,13 +113,14 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-100 / WD-T40 F-4 GAUSSIAN-ADMISSIBILITY CUTOFF/GROWTH DISCHARGE
+RPB-101 / WD-T40 F-4 CUTOFF/GROWTH DISCHARGE BUILD CERTIFICATION
 ~~~
 
-RPB-99 build-certified the Gaussian-admissibility interface on the first exact
-attempt. The next pass addresses only its actual cutoff/growth discharge from
-the existing carrier plus any explicitly needed pole-growth data. Logarithmic
-coercivity remains closed.
+RPB-100 implemented the internal cutoff-limit theorem deriving the Gaussian
+weak identity from compact EXT-4 tests, and proved pole-Gaussian whole-line
+integrability from explicit exponential pole growth. The remaining burden is
+construction of the cutoff package and instantiation of actual pole growth.
+The next pass build-certifies this source layer.
 
 ## Governance
 
@@ -132,4 +133,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_99_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_100_20260930.md.
