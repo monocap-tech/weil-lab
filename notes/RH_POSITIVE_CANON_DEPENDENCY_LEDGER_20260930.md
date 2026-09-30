@@ -78,3 +78,66 @@ Not yet executed. CANON-1 intentionally stopped at source mapping.
 ]
 
 Next pass is Track B only.
+
+
+## Reconciliation override — CANON-1R
+
+CANON-1 is retyped as a recovery/reindexing pass.
+
+### Inherited neutral frontier from provenance
+
+The prior finite chain already reached:
+
+[
+W_c	ext{ nullity}
+	o
+A_c^{m Suz}/G_c	ext{ kernel identification}
+	o
+	ext{prime-delay collar cancellation}
+	o
+	ext{selected angle Gram}
+	o
+	ext{weighted Christoffel endpoint}.
+]
+
+Current inherited return trigger:
+
+[
+oxed{	exttt{FIN-WEIGHTED-ENDPOINT}}
+]
+
+not the earlier raw null-extension node.
+
+### Inherited negative frontier from provenance
+
+The prior Key/G2C chain already reached:
+
+[
+	ext{raw next jet}
+	o
+	ext{corrected jet/KPH geometry}
+	o
+	exttt{LJFR}
+	o
+	ext{local KPH-floor equivalence}.
+]
+
+Current inherited return trigger:
+
+[
+oxed{	exttt{C-ACTUAL-KPH-FLOOR}}
+]
+
+with LJFR as its precise lower-frame representative in the flat feature jurisdiction.
+
+Generic BRS/Suzuki/de Branges re-screening is frozen absent genuinely new theorem input.
+
+## Current cursor after reconciliation
+
+[
+oxed{
+	exttt{RH-POSITIVE-CANON-2 / POST-CUSTODY RH-DEPENDENCY BOUNDARY}
+}
+]
+
+The next pass starts after the inherited frontiers and asks where RH first changes the dependency chain.
