@@ -68,6 +68,30 @@ theorem rightLimitCompactWeilSymbol_eq
                 * Real.cos (t * Real.log (n : ℝ))) := by
   rfl
 
+
+/--
+Strict-right compact-window Weil symbol in mathlib's real Fourier coordinate.
+
+The pinned source symbol uses the source frequency `t`, while mathlib's
+Fourier transform uses `exp (-2 * pi * i * x * xi)`. Hence physical
+translations at shifts `± log n` require the coordinate map
+
+`t = 2 * pi * xi`.
+-/
+def rightLimitCompactWeilSymbolMathlib (a ξ : ℝ) : ℝ :=
+  rightLimitCompactWeilSymbol a (2 * Real.pi * ξ)
+
+theorem rightLimitCompactWeilSymbolMathlib_eq
+    (a ξ : ℝ) :
+    rightLimitCompactWeilSymbolMathlib a ξ =
+      compactWindowArchimedeanSymbol (2 * Real.pi * ξ)
+        - Finset.sum (rightLimitPrimePowerFinset a)
+            (fun n =>
+              compactWindowPrimeCoefficient n
+                * Real.cos
+                    ((2 * Real.pi * ξ) * Real.log (n : ℝ))) := by
+  rfl
+
 /-- Every strict-active prime power is retained by the right-limit symbol. -/
 theorem active_mem_rightLimitPrimePowerFinset
     {a : ℝ} {n : ℕ}
@@ -88,7 +112,8 @@ theorem threshold_mem_rightLimitPrimePowerFinset
 
 
 /--
-Explicit imported F-2 premise for the exact strict-right scalar symbol.
+Explicit imported F-2 premise for the exact strict-right scalar symbol in
+mathlib Fourier coordinates.
 
 Mathlib's `HasTemperateGrowth` requires smoothness and polynomial control of
 every iterated derivative.  EXT-5 gives the zeroth-order digamma asymptotic;
@@ -99,11 +124,12 @@ than reconstructing it internally in this pass.
 structure RightLimitWeilSymbolTemperatePremise (a : ℝ) : Prop where
   hasTemperateGrowth :
     Function.HasTemperateGrowth
-      (fun t : ℝ => (rightLimitCompactWeilSymbol a t : ℂ))
+      (fun ξ : ℝ => (rightLimitCompactWeilSymbolMathlib a ξ : ℂ))
 
 /--
 Canonical tempered-distribution realization of the exact strict-right scalar
-multiplier, conditional on the explicit EXT-5D temperate-growth premise.
+multiplier in mathlib Fourier coordinates, conditional on the explicit
+EXT-5D temperate-growth premise.
 
 The proof parameter is semantically load-bearing: it certifies that mathlib's
 Schwartz multiplication branch is the genuine pointwise multiplier rather
@@ -115,7 +141,7 @@ noncomputable def rightLimitWeilMultiplierCore
     (f : RealComplexTempered) :
     RealComplexTempered :=
   TemperedDistribution.fourierMultiplierCLM ℂ
-    (fun t : ℝ => (rightLimitCompactWeilSymbol a t : ℂ))
+    (fun ξ : ℝ => (rightLimitCompactWeilSymbolMathlib a ξ : ℂ))
     f
 
 
