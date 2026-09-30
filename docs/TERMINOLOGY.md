@@ -6153,3 +6153,46 @@ The load-bearing F-3 estimate is required only for
 asserted.
 
 **Status:** post-Horizon F-3 formalization terminology; registered at RPB-90.
+
+
+## Gaussian tail completion
+
+The **Gaussian tail completion** is the F-3 inequality that absorbs the fixed
+exponential growth of the whole-line residual into part of the physical
+Gaussian decay while retaining both:
+
+1. an explicit exponential factor in the moving parameter (R); and
+2. an integrable Gaussian tail in the physical variable.
+
+Write
+
+~~~math
+\delta=a-c>0,
+\qquad
+d(x)=|x|-c.
+~~~
+
+On the exterior (x\notin(-a,a)), one has (d(x)\ge\delta).  If
+
+~~~math
+8\kappa\le R\delta,
+~~~
+
+then
+
+~~~math
+\boxed{
+e^{\kappa|x|}
+e^{-R d(x)^2/4}
+\le
+e^{\kappa c}
+e^{-R\delta^2/16}
+e^{-R d(x)^2/16}.
+}
+~~~
+
+This is the load-bearing completion used to pair the exponential-growth
+residual with the moving Gaussian filtered mode.  The final Gaussian factor is
+integrable on the exterior half-lines.
+
+**Status:** post-Horizon F-3 terminology; registered at RPB-92.
