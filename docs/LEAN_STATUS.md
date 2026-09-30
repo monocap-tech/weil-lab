@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-92 / WD-T40 F-3 residual Gaussian tail integration.
+- **Next project cursor:** RPB-93 / WD-T40 F-3 Gaussian tail completion build certification.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -35,7 +35,7 @@ Exact blocking stack:
 ~~~text
 F-1  physical real-line L2 / tempered-distribution carrier lift — BUILD-CERTIFIED / audited blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d / run 36649140221
 F-2  actual compact-window Weil multiplier realization — COMPLETE / BUILD-CERTIFIED FROM EXPLICIT EXT-4 + EXT-5D IMPORTED-PREMISE INTERFACES / final residual-carrier blob d11e51ea0199f134b3c8f17f76c341a27d6d2881 / run 36735403643
-F-3  support-gap Gaussian pairing theorem — IN PROGRESS / strict collar geometry + exterior pointwise domination BUILD-CERTIFIED / actual moving-Gaussian kernel + compact-support convolution + exterior filtered-mode envelope BUILD-CERTIFIED / blob d29c784bfdb15681c103e906f42a3ff946a0db76 / run 36752658074 / residual Gaussian tail integration still open
+F-3  support-gap Gaussian pairing theorem — IN PROGRESS / geometry + actual filtered-mode envelope BUILD-CERTIFIED / full x-dependent exterior envelope + Gaussian completion + exterior tail integrability SOURCE IMPLEMENTED / build pending / final residual pairing integral bound still open
 F-4  Gaussian coercivity -> exponential Fourier weight
 F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
 F-6  final WD-T40 assembly from explicit EXT-4 / EXT-5 premises
