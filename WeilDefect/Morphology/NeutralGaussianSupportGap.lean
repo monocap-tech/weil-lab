@@ -206,10 +206,17 @@ theorem norm_movingGaussianPhysicalKernel
       =
     ‖Ck‖ * Real.sqrt R
       * Real.exp (-R * |z| ^ 2 / 4) := by
-  simp [movingGaussianPhysicalKernel, norm_mul,
-    Real.norm_of_nonneg (Real.sqrt_nonneg R),
-    Real.norm_of_nonneg (Real.exp_nonneg _),
-    Complex.norm_exp_ofReal_mul_I, hR, mul_assoc]
+  have hgauss :
+      ‖((Real.exp (-R * |z| ^ 2 / 4) : ℝ) : ℂ)‖
+        = Real.exp (-R * |z| ^ 2 / 4) := by
+    simp [abs_of_nonneg (Real.exp_nonneg _)]
+  have hphase :
+      ‖Complex.exp (((R * z : ℝ) : ℂ) * Complex.I)‖ = 1 := by
+    rw [Complex.norm_exp]
+    simp
+  rw [movingGaussianPhysicalKernel, norm_mul, norm_mul, norm_mul,
+    hgauss, hphase]
+  simp [Real.norm_eq_abs, abs_of_nonneg (Real.sqrt_nonneg R), mul_assoc]
 
 /--
 The concrete F-1 representative is integrable on its certified compact support
@@ -224,8 +231,7 @@ theorem neutralPhysicalRepresentative_integrableOn
     IntegrableOn carrier.h (Set.Icc (-c) c) volume := by
   exact
     (carrier.h_memLp.locallyIntegrable
-      (by norm_num : (1 : ℝ≥0∞) ≤ 2)).integrableOn_isCompact
-        isCompact_Icc
+      (by norm_num)).integrableOn_isCompact isCompact_Icc
 
 /-- Compact L1 mass of the concrete F-1 representative. -/
 def neutralPhysicalCompactL1Mass
@@ -279,7 +285,7 @@ theorem supportGap_le_abs_sub_point
     exact (abs_le).2 hy
   calc
     a - c ≤ |x| - |y| := sub_le_sub hxabs hyabs
-    _ ≤ ||x| - |y|| := le_abs_self _
+    _ ≤ abs (|x| - |y|) := le_abs_self _
     _ ≤ |x - y| := abs_sub_abs_le_abs_sub x y
 
 /--
@@ -346,6 +352,7 @@ theorem movingGaussianFilteredMode_norm_le_exterior
       Continuous
         (fun y : ℝ =>
           movingGaussianPhysicalKernel Ck R (x - y)) := by
+    unfold movingGaussianPhysicalKernel
     fun_prop
   have hProd :
       IntegrableOn
@@ -366,9 +373,8 @@ theorem movingGaussianFilteredMode_norm_le_exterior
       refine setIntegral_mono_ae_restrict
         hProd.norm
         (hInt.norm.const_mul K) ?_
-      rw [EventuallyLE, ae_restrict_iff' measurableSet_Icc]
-      exact ae_of_all volume fun y hy => by
-        rw [norm_mul]
+      filter_upwards [self_mem_ae_restrict measurableSet_Icc] with y hy
+      rw [norm_mul]
         calc
           ‖carrier.h y‖
               * ‖movingGaussianPhysicalKernel Ck R (x - y)‖
