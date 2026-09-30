@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-101 / WD-T40 F-4 cutoff/growth discharge build certification.
+- **Next project cursor:** RPB-102 / WD-T40 F-4 actual moving-filtered-mode Schwartz realization.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -36,7 +36,7 @@ Exact blocking stack:
 F-1  physical real-line L2 / tempered-distribution carrier lift — BUILD-CERTIFIED / audited blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d / run 36649140221
 F-2  actual compact-window Weil multiplier realization — COMPLETE / NORMALIZED BUILD-CERTIFIED / t=2*pi*xi source-to-mathlib map / multiplier blob 4c24084c8a058cbb6685d54bc8226b746cabc413 / integrated run 36774149872 / explicit EXT-4 + EXT-5D premise custody unchanged
 F-3  support-gap Gaussian pairing theorem — COMPLETE / BUILD-CERTIFIED AGAINST NORMALIZED F-2 / final pairing blob 54732470ab2cf2a3a99be646372fdc186225363a / integrated run 36774149872 / no new imported premise
-F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE IN PROGRESS / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability SOURCE IMPLEMENTED / build pending / actual Schwartz-cutoff construction + pole-growth instantiation still open / coercivity not started
+F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE IN PROGRESS / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability BUILD-CERTIFIED by RPB-101 / actual moving-mode Schwartz realization + Schwartz-cutoff construction + pole-growth instantiation still open / coercivity not started
 F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
 F-6  final WD-T40 assembly from explicit EXT-4 / EXT-5 premises
 ~~~
@@ -4647,3 +4647,58 @@ The exact module build and repository-wide unfinished-proof/project-axiom scan b
 F-1 is therefore BUILD-CERTIFIED. WD-T40 remains LEAN-BLOCKED because F-2 through F-6 remain open.
 
 Next cursor: RPB-79 / WD-T40 actual Weil multiplier realization.
+
+
+---
+
+## RPB-101 Gaussian-admissibility build certification delta
+
+The RPB-100 source layer was compiled directly through:
+
+~~~text
+lake build WeilDefect.Morphology.NeutralGaussianAdmissibility
+~~~
+
+The first compiler run exposed one elaboration-only defect at the compact
+central interval: Lean could not infer the endpoints hidden behind
+`isCompact_Icc`.
+
+The repair gave the local statement its intended explicit type:
+
+~~~lean
+have hpoleInt :
+    IntegrableOn pole (Set.Icc (-residual.a) residual.a) volume :=
+  hpole.pole_locallyIntegrable.integrableOn_isCompact isCompact_Icc
+~~~
+
+No mathematical hypothesis or theorem statement changed.
+
+Successful validation evidence:
+
+~~~text
+run:  36780605398
+job:  110109603982
+head: 83a3635a294b7c16f9d382dbb87eee6532d9871b
+blob: dfcfb49e443a00a6bea91c6bed15daed88ff0282
+~~~
+
+The exact module build and repository-wide unfinished-proof/project-axiom
+rejection gate both passed.
+
+Current F-4 state:
+
+~~~text
+CUTOFF-LIMIT CONSTRUCTOR: BUILD-CERTIFIED
+POLE × MOVING-GAUSSIAN INTEGRABILITY FROM EXPONENTIAL GROWTH: BUILD-CERTIFIED
+ACTUAL MOVING FILTERED MODE AS SCHWARTZMAP: OPEN
+ACTUAL COMPACT SCHWARTZ CUTOFF PACKAGE: OPEN
+RESIDUAL/POLE CUTOFF CONVERGENCE: OPEN
+ACTUAL EXT-4 POLE GROWTH INSTANTIATION: OPEN
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-102 / WD-T40 F-4 ACTUAL MOVING-FILTERED-MODE SCHWARTZ REALIZATION
+~~~
