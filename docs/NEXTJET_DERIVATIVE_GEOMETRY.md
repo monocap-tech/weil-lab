@@ -265,3 +265,31 @@ Priority order:
 3. determine whether the higher-cluster branch is already controlled by G2C collision/reblocking or belongs to a different selected/exterior jurisdiction;
 4. identify any exact transfer from cofactor blow-up into the SOURCE-II jet tower;
 5. stop if the pass merely re-expresses NEXTJET.
+
+
+## 10. NJDG-2 standing
+
+NJDG-2 is complete.
+
+The pair-removed cofactor field is not a new native obstruction. After all selected and authorized near-complement poles are removed, it is part of the canonical analytic outside field (A_{F,Omega}). SOURCE-II scalar-preserving collision renormalization cancels the raw selected/exterior reciprocal poles, and the surviving object is the collision-safe joint renormalized jet.
+
+G2C collision compactification and SOURCE-II collision renormalization therefore have distinct jurisdictions:
+
+- G2C: selected-internal packet collisions;
+- SOURCE-II: selected/exterior complement collisions.
+
+The complement-oblivious selection order forbids enlarging the selected packet after hostile complement data is observed.
+
+## 11. Current cursor
+
+[
+oxed{	ext{NJDG-3 / DERIVATIVE-TO-RENJET TRANSFER AUDIT}}
+]
+
+Priority order:
+
+1. map local derivative-zero information into the canonical joint renormalized jet rather than a raw reciprocal gap;
+2. test for any sign, phase, or magnitude constraint on the full joint jet;
+3. preserve the frozen selected-only multiplier order;
+4. classify pointwise versus average implications;
+5. stop if derivative geometry merely rewrites the same pole-removed logarithmic derivative.
