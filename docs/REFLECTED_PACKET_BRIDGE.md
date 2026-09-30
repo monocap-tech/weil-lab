@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-85 — THE CONDITIONAL TEMPERED MULTIPLIER CORE IS BUILD-CERTIFIED; F-2 NOW REDUCES TO THE EXT-4 ACTUAL WEAK-REALIZATION IDENTIFICATION.}
+\textbf{RPB-86 — THE EXT-4 ACTUAL WEAK-REALIZATION PREMISE AND PACKAGING THEOREM ARE IMPLEMENTED IN LEAN SOURCE; F-2 NOW HAS ONLY A BUILD GATE.}
 }
 ~~~
 
@@ -70,7 +70,9 @@ F-2  actual compact-window Weil multiplier realization
      EXT-5D derivative asymptotics SOURCE-PINNED
      explicit symbol-temperate premise BUILD-CERTIFIED AS INTERFACE
      canonical tempered multiplier core BUILD-CERTIFIED
-     EXT-4 weak-realization constructor open
+     EXT-4 weak-realization premise SOURCE IMPLEMENTED
+     EXT-4 packaging theorem SOURCE IMPLEMENTED
+     build certification pending
 
 F-3  support-gap Gaussian pairing
      NOT STARTED
@@ -90,12 +92,12 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-86 / WD-T40 F-2 EXT-4 WEAK-REALIZATION CONSTRUCTOR
+RPB-87 / WD-T40 F-2 EXT-4 WEAK-REALIZATION BUILD CERTIFICATION
 ~~~
 
-RPB-85 build-certified the explicit symbol-temperate premise interface and
-canonical tempered multiplier core. The next pass may now implement only the
-explicit imported EXT-4 weak-realization constructor. F-3 remains closed.
+RPB-86 implemented the explicit imported EXT-4 weak-realization premise and
+packaging theorem. The next pass is only their pinned build certification.
+F-3 remains closed.
 
 ## Governance
 
@@ -108,4 +110,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_85_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_86_20260930.md.
