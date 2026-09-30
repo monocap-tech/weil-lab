@@ -768,3 +768,45 @@ RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
 ~~~
 
 **Result:** PASS as an unchanged build-gate custody update.
+
+
+---
+
+## 24. Post-RPB-78 F-1 build certification delta
+
+GitHub-hosted runner access was restored and the F-1 carrier reached the pinned Lean compiler.
+
+The first real compiler run exposed two non-mathematical source issues: the file needed a `noncomputable section` because `Real.measureSpace` is noncomputable, and that unnamed section needed a matching plain `end`. Both were repaired without changing theorem statements or proof content.
+
+Certified carrier blob:
+
+~~~text
+03fe8ab1b6a3190e40a91b7a467c975e0d87841d
+~~~
+
+Successful validation:
+
+~~~text
+run: 36649140221
+job: 109679039673
+runner_id: 1000001147
+head: 5e2e9a1a3edad1f57e7afb0f357b822b92dc9099
+~~~
+
+The carrier module built successfully and both module-local and repository-wide unfinished trusted declaration scans passed. Draft PR #4 was closed without merge; validation-only workflow changes did not enter the research branch.
+
+Current state:
+
+~~~text
+F-1: BUILD-CERTIFIED
+F-2: NOT STARTED
+WD-T40: LEAN-BLOCKED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-79 / WD-T40 ACTUAL WEIL MULTIPLIER REALIZATION
+~~~
+
+**Result:** PASS as an F-1 build certification delta.
