@@ -1512,7 +1512,7 @@ for fixed nonnegative constants \(C_p,\kappa_p\).
 The Lean formalization exposes that consequence through
 
 ~~~lean
-RightLimitWeilPoleExponentialGrowthPremise
+NeutralPoleExponentialGrowthData
 ~~~
 
 rather than deriving the concrete coefficients of the pole basis in the same
