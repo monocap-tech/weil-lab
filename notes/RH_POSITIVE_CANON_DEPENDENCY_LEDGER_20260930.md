@@ -6,7 +6,7 @@ Standing: LAB / OPEN
 
 ## Purpose
 
-This ledger records candidate canonical representatives for the two primary Horizon-1 RH-facing branches and the dependency distance between each representative and an RH-sensitive theorem edge.
+Record canonical representatives for the two primary Horizon-1 RH-facing branches and the theorem-DAG distance from each representative to the unresolved interface.
 
 ## Track A — negative / next-jet
 
@@ -14,65 +14,67 @@ Project interface: `AZ-NEXTJET-LOC`
 
 Auxiliary refinement: `C-ACTUAL-KPH-FLOOR`
 
-| Candidate family | Candidate object | Ring | Exact slot? | Backward dependency | Forward dependency | Current mismatch | Source pin |
-|---|---|---:|---|---|---|---|---|
-| BRS mixed interpolation | zeta-zero values/jets + log-integer Fourier samples | pending | pending | pending | pending | native next-jet weighting / Martin or packet metric transport not yet pinned here | pending |
-| Suzuki screw framework | zero-sample relation coordinates / screw kernel data | pending | pending | pending | pending | next-jet versus zero-value/sample arity | pending |
-| Burnol / Sonine / de Branges | evaluator or biorthogonal zero systems | pending | pending | pending | pending | support and metric transport | pending |
-| completed-zeta resolvent/log derivative | reciprocal-zero interaction / local jet data | pending | pending | pending | pending | exact packet weighting and quantifiers | pending |
+| Candidate family | Candidate object | Ring | Slot status | Current mismatch | Source pin |
+|---|---|---:|---|---|---|
+| BRS mixed interpolation | zeta-zero values/jets + log-integer Fourier samples | A | **NEAR SLOT** | packet-weighted quotient functional; prime-power/all-integer and quantifier transport | Theorem 1.1, Corollary 1.1, DOI 10.1007/s00365-022-09599-w |
+| Suzuki 2023 screw framework | screw kernel + xi'/xi Fourier transform | E | close global resolvent | no selected signed packet / weighted complementary next-jet functional | Theorems 1.1–1.4, DOI 10.1112/jlms.12785 |
+| Burnol / Sonine / de Branges | complete/minimal zero evaluator systems | A | related | native metric, support, packet weighting | JTNB 16 (2004), DOI 10.5802/jtnb.434 |
+| completed-zeta resolvent/log derivative | reciprocal-zero interaction | E neighborhood | related | local packet quotient and worst-packet quantifiers | Suzuki 2023 eq. (1.2) |
 
-### Track-A target localization
+### Track-A localization after CANON-1
 
 [
 \text{selected zero-moment source}
 \to
-\text{near completed-}\Xi\text{ jet field}
+\text{weighted near completed-}\Xi\text{ jet field}
 \to
-\boxed{?\text{ canonical slot }?}
+\boxed{\text{BRS mixed-jet neighborhood}}
 \to
-\text{published consequence}.
+\text{transport still missing}.
 ]
 
-Do not accept “RH removes the selected packet” as the slot identification.
+No exact slot is promoted yet.
 
 ## Track B — neutral / null-extension
 
 Project interface: `AZ-FIN-WEIL-NULL-EXTENSION`
 
-| Candidate family | Candidate object | Ring | Exact slot? | Backward dependency | Forward dependency | Current mismatch | Source pin |
-|---|---|---:|---|---|---|---|---|
-| compact-window Weil theory | null vector / zero eigenmode of compact-window form/operator | pending | pending | pending | pending | strict-right zero-extension theorem | pending |
-| Suzuki screw framework | compact screw-kernel zero eigenspace / zero samples | pending | pending | pending | pending | support enlargement/right-limit transport | pending |
-| Burnol / Sonine / de Branges | support/evaluator kernel | pending | pending | pending | pending | native compact-window metric and support parameter | pending |
-| operator extension / spectral flow | endpoint kernel under window enlargement | pending | pending | pending | pending | actual-zeta threshold corrections and theorem source | pending |
+| Candidate family | Candidate object | Ring | Slot status | Current mismatch | Source pin |
+|---|---|---:|---|---|---|
+| localized Weil theory | self-adjoint operator (A_a) representing (Q_W^a) | A with E surrounding criterion | **EXACT ENDPOINT SLOT** | convention/domain identification; strict-right same-vector extension remains open | Suzuki 2026, Theorem 1.1, eqs. (1.1), (1.4)–(1.7), arXiv:2606.09096v3 |
+| Suzuki screw framework | finite-interval screw operator (G_a) | E | exact nondegeneracy neighborhood | derivative/Friedrichs transport to endpoint operator; enlargement behavior | Suzuki 2023, Theorems 1.3–1.5 |
+| Burnol / Sonine / de Branges | support/evaluator kernel | A | secondary | farther metric/support transport | Burnol 2004 |
+| operator extension / spectral flow | endpoint kernel under window enlargement | pending | pending | same-vector strict-right behavior and threshold corrections | pending |
 
-### Track-B target localization
+### Track-B localization after CANON-1
 
 [
 W_ck=0
+\leadsto
+\boxed{A_ck=0}
 \to
-\boxed{?\text{ canonical kernel slot }?}
-\to
-\text{strict-right support/enlargement behavior}.
+\text{strict-right support/spectral behavior}.
 ]
 
-The ledger must keep kernel identification, null-extension, unique continuation, and strict positivity as separate theorem layers.
+The endpoint object is now identified. The remaining question is beyond the endpoint slot.
 
 ## Overshoot record
 
-For every candidate promoted beyond “pending”, add:
+Not yet executed. CANON-1 intentionally stopped at source mapping.
 
-- exact theorem/source;
-- theorem inputs;
-- theorem output;
-- immediate prerequisite theorem;
-- immediate consuming theorem;
-- RH status Ring E/C/A;
-- distance from the project interface;
-- whether the interface is upstream / identical / downstream / external.
+## Pass record
+
+### RH-POSITIVE-CANON-1
+
+- Track A: **NEAR SLOT FOUND** at BRS mixed zero-jet/log-integer interpolation.
+- Track B: **EXACT ENDPOINT SLOT FOUND** at Suzuki's localized Weil operator (A_a).
+- No null-extension theorem located.
+- No RH claim.
 
 ## Current cursor
 
 [
-\boxed{\texttt{RH-POSITIVE-CANON-1 / TWO-SLOT SOURCE MAP}}
+\boxed{\texttt{RH-POSITIVE-CANON-2 / LOCALIZED-WEIL SLOT OVERSHOOT}}
 ]
+
+Next pass is Track B only.
