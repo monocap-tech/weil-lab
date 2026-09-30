@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-95 — F-3 IS COMPLETE: THE FULL GAUSSIAN SUPPORT-GAP PAIRING LAYER IS BUILD-CERTIFIED.}
+\textbf{RPB-96 — THE F-4 PREFLIGHT FOUND AND REPAIRED A LOAD-BEARING t=2\pi\xi FOURIER-COORDINATE MISMATCH; THE NORMALIZED DEPENDENCY CHAIN MUST NOW BE REBUILT.}
 }
 ~~~
 
@@ -113,12 +113,12 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-96 / WD-T40 F-4 LOGARITHMIC GAUSSIAN COERCIVITY
+RPB-97 / WD-T40 FOURIER-NORMALIZATION REPAIR BUILD CERTIFICATION
 ~~~
 
-RPB-95 build-certified the final whole-line residual pairing and closes F-3.
-The next pass may open only F-4 logarithmic Gaussian coercivity. F-5 remains
-closed.
+RPB-96 audited the Fourier convention before F-4 and installed the required
+source-frequency to mathlib-frequency map t=2*pi*xi in the multiplier core.
+The next pass rebuilds the integrated chain. F-4 and F-5 remain closed.
 
 ## Governance
 
@@ -131,4 +131,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_95_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_96_20260930.md.
