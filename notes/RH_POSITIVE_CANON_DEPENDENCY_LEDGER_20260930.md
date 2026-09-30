@@ -141,3 +141,50 @@ Generic BRS/Suzuki/de Branges re-screening is frozen absent genuinely new theore
 ]
 
 The next pass starts after the inherited frontiers and asks where RH first changes the dependency chain.
+
+
+## CANON-2 — RH-positive dependency boundary
+
+### Common positive junction
+
+Suzuki 2025 supplies the RH-equivalent norm identity
+
+[
+\|\widehat{\mathcal P_{D\psi}}\|_2^2
+=
+\pi\langle\psi,\psi\rangle_W,
+]
+
+and, under RH, the Weil Hilbert space identifies with the de Branges/model space while the canonical zeta kernels form an orthonormal basis.
+
+This is now the canonical common positive-side junction.
+
+### Neutral branch
+
+Suzuki 2023 Theorems 1.3–1.4 give:
+
+[
+RH
+\Longleftrightarrow
+\text{all finite screw windows are nondegenerate},
+]
+
+with positive definiteness under RH.
+
+Therefore `FIN-WEIGHTED-ENDPOINT` is downstream of the failure of this all-window property; under RH there is no first-crossing endpoint on which the weighted-endpoint object is defined.
+
+### Negative / KPH branch
+
+Under RH there is no off-axis selected packet. The positive analogue of the lower-frame slot is the orthonormal/isometric zero-kernel geometry of the model space.
+
+This does not imply `C-ACTUAL-KPH-FLOOR`; the KPH jurisdiction is absent rather than solved.
+
+### Cursor
+
+[
+\boxed{
+\texttt{RH-POSITIVE-CANON-3 / POSITIVE-JUNCTION FAILURE FACTORIZATION}
+}
+]
+
+Next pass asks whether failure of the common RH-positive norm/isometry junction factors canonically into the same launch objects that generate the finite-neutral and KPH/LJFR project branches.
