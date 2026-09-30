@@ -4,6 +4,8 @@ import Mathlib.Analysis.Distribution.Support
 
 namespace WeilDefect
 
+noncomputable section
+
 open MeasureTheory Distribution
 open scoped FourierTransform Topology
 
