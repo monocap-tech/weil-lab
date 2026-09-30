@@ -5990,3 +5990,34 @@ A faithful certificate must preserve the internal WD-T40 steps F-3 through
 F-5 rather than replacing them by opaque assumptions.
 
 **Status:** post-Horizon formalization terminology.
+
+
+## Right-limit compact-window Weil symbol
+
+The **right-limit compact-window Weil symbol** at support radius \(a\) is
+
+~~~math
+\Psi_a^{\mathrm{right}}(t)
+=
+\Re\psi\!\left(\frac14+\frac{it}{2}\right)
+-\log\pi
+-
+\sum_{\substack{n=p^m\\ \log n\le 2a}}
+\frac{2\Lambda(n)}{\sqrt n}
+\cos(t\log n).
+~~~
+
+The weak inequality is deliberate: it is the strict-right convention and
+therefore retains a prime power lying exactly at \(\log n=2a\).
+
+The term denotes only the scalar Fourier-multiplier component.  The
+finite-rank pole/evaluation contribution remains separate, and the definition
+does **not** identify a compact-window compressed kernel vector with a
+pointwise zero of the scalar symbol.
+
+RPB-79 introduces the Lean definitions
+`rightLimitPrimePowerFinset`, `compactWindowArchimedeanSymbol`,
+`compactWindowPrimeCoefficient`, `rightLimitPrimeSymbol`, and
+`rightLimitCompactWeilSymbol`.
+
+**Status:** post-Horizon F-2 formalization terminology.
