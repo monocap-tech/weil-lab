@@ -3,7 +3,7 @@ set -euo pipefail
 
 module_file="WeilDefect/Morphology/NeutralFourierCarrier.lean"
 root_file="WeilDefect.lean"
-expected_blob="231ef346f14ba210826471a7817208d9c44059e6"
+expected_blob="03fe8ab1b6a3190e40a91b7a467c975e0d87841d"
 
 actual_blob="$(git hash-object "$module_file")"
 if [[ "$actual_blob" != "$expected_blob" ]]; then
