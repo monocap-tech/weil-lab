@@ -147,7 +147,7 @@ Only after this exhaustion condition is met does the project resume:
 - **H1-P5:** COMPLETE.
 - **Active Lean phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-96 / WD-T40 F-4 logarithmic Gaussian coercivity.
+- **Next project cursor:** RPB-97 / WD-T40 Fourier-normalization repair build certification.
 
 ```math
 \boxed{
@@ -155,7 +155,7 @@ Only after this exhaustion condition is met does the project resume:
 }
 ```
 
-WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier is now build-certified under pinned Lean 4.34.0 / mathlib v4.34.0 (run 36649140221, carrier blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d). The remaining WD-T40 formalization frontier begins at F-2, the actual compact-window Weil multiplier realization. The exact strict-right scalar symbol is build-certified by RPB-80 (run 36677931966, blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202). RPB-81 then found that the full pole-restored residual is not lawfully typed as tempered because the promoted theorem allows fixed exponential growth. RPB-95 build-certified the final whole-line residual pairing and closes F-3. The next research cursor is RPB-96 / WD-T40 F-4 logarithmic Gaussian coercivity. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
+WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier is now build-certified under pinned Lean 4.34.0 / mathlib v4.34.0 (run 36649140221, carrier blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d). The remaining WD-T40 formalization frontier begins at F-2, the actual compact-window Weil multiplier realization. The exact strict-right scalar symbol is build-certified by RPB-80 (run 36677931966, blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202). RPB-81 then found that the full pole-restored residual is not lawfully typed as tempered because the promoted theorem allows fixed exponential growth. RPB-96 found and repaired the source-frequency / mathlib-frequency mismatch t=2*pi*xi before F-4. The next research cursor is RPB-97 / WD-T40 Fourier-normalization repair build certification. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
 
 
 ---
@@ -199,14 +199,16 @@ The residual's fixed exponential growth is now reduced by a build-certified
 completion layer to an integrable exterior Gaussian tail while retaining an
 explicit exponentially small collar factor in the moving parameter.
 
-The full F-3 Gaussian support-gap pairing layer is now build-certified,
-including the a.e. null-interval reduction and explicit Gaussian tail mass
-bound.
+The physical F-3 Gaussian support-gap layer retains its local build
+certificate, but RPB-96 found an upstream Fourier-coordinate mismatch at the
+F-2/F-4 boundary.  The strict-right multiplier is now evaluated at the lawful
+mathlib coordinate via t = 2*pi*xi.
 
 The next cursor is:
 
 ~~~text
-RPB-96 / WD-T40 F-4 LOGARITHMIC GAUSSIAN COERCIVITY
+RPB-97 / WD-T40 FOURIER-NORMALIZATION REPAIR BUILD CERTIFICATION
 ~~~
 
-F-4 may now open. F-5 strip holomorphy remains closed.
+F-4 coercivity and F-5 strip holomorphy remain closed until the normalized
+dependency chain is rebuilt.
