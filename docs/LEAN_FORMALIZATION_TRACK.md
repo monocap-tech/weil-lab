@@ -147,7 +147,7 @@ Only after this exhaustion condition is met does the project resume:
 - **H1-P5:** COMPLETE.
 - **Active Lean phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** none selected.
+- **Next project cursor:** RPB-80 / WD-T40 F-2 scalar-symbol build certification.
 
 ```math
 \boxed{
