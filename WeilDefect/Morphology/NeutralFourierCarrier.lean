@@ -134,4 +134,6 @@ theorem vanishes_on_old_interval
 
 end NeutralStrictResidualData
 
+end
+
 end WeilDefect
