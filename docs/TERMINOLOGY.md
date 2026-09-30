@@ -6196,3 +6196,25 @@ residual with the moving Gaussian filtered mode.  The final Gaussian factor is
 integrable on the exterior half-lines.
 
 **Status:** post-Horizon F-3 terminology; registered at RPB-92.
+
+
+## Moving Gaussian residual pairing
+
+The **moving Gaussian residual pairing** is the whole-line physical pairing
+
+~~~math
+\int_{\mathbb R}
+q(x)\,G_R(x)\,dx,
+~~~
+
+where (q) is the certified full exponential-growth Weil residual and
+(G_R) is the certified moving-Gaussian filtered F-1 mode.
+
+Because (q=0) a.e. on the strict enlarged null interval ((-a,a)), this
+pairing reduces exactly to the two exterior half-lines.
+
+RPB-94 bounds that exterior pairing by the certified Gaussian completion and
+the exact full real Gaussian mass.  This is the final internal F-3 quantity
+before logarithmic Fourier-side coercivity begins.
+
+**Status:** post-Horizon F-3 terminology; registered at RPB-94.
