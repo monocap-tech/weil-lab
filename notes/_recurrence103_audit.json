@@ -1,0 +1,65 @@
+{
+  "format": "GERM103-EXECUTION-RECEIPT-1",
+  "pass": "SZ-KERNEL-EDGE-GERM-103",
+  "standing": "UNRATIFIED",
+  "entry_commit": "26cc010882c02069da2d7298f530e710f116db58",
+  "verifier_path": "tools/sz_post_z_s15_fifteenth_double_internal_audit.py",
+  "verifier_sha256": "5b06f0988b6588f67373405f68956cf2f1f8a7b0e0c23a7f4226b00d305a2706",
+  "verifier_git_blob": "28f75485f42cfc05218a9ca909c5d02617e823d0",
+  "stdout_sha256": "79bb378559d659228d701d7381216f72a982f27dcd3b4733acb17e2d692c5a59",
+  "compact_complete_audit_sha256": "f0a2583ddae3ade816d96659c3e32a861fe14971439f76e7b56fa753fe5c34b4",
+  "execution_exit_code": 0,
+  "parent_GERM102_stdout_sha256": "c25c502d1d3c714837675760b9d1d748794ba440cc03c7003ceef03d77c5ca90",
+  "parent_GERM102_recorded_stdout_match": true,
+  "dependency_sha256": {
+    "tools/sz_post_b_35delta13_fourteenth_all_internal_audit.py": "bc9f783b9c9c89072e5c6a468cf29d3dd98e85299bd9cf3cb274f078ea247a5e"
+  },
+  "new_exclusion_scope": "0<epsilon<=t15, epsilon=e-e102",
+  "experimental_endpoint": "log(3^616630565/(2^701561468*5^118769764))",
+  "endpoint_decimal": [
+    "1.711212516168914336902071568215382674601877004879",
+    "1.711212516168914336902071568215382674601877004880"
+  ],
+  "increment": "t15",
+  "increment_decimal": [
+    "0.000000000000027242875184250140717788943911118422",
+    "0.000000000000027242875184250140717788943911118423"
+  ],
+  "sixteenth_words": {
+    "A0": ["J1","H1","H1","H1"],
+    "A1": ["J2","H1","H1","H1"],
+    "B0": ["J1","H1","H1","H1","H1"],
+    "B1": ["J2","H1","H1","H1","H1"]
+  },
+  "seventeenth_section": "(0,cut16)",
+  "seventeenth_map": "y -> y+rho17 mod cut16",
+  "return_times": [5,6],
+  "charts": {
+    "low": [["1","1"],["-2827/2000","-27/20"]],
+    "high": [["1","1"],["-279/200","-283/200"]]
+  },
+  "chart_determinants": ["127/2000","-1/50"],
+  "common_forward_backward_factor": "20",
+  "distinct_temporal_words": 13,
+  "parameter_chart_tests": 15,
+  "minimum_forward_lower": "21.2185157340",
+  "minimum_backward_lower": "20.5144189739",
+  "original_step_counts": [2271842500980,2743334531329],
+  "endpoint_words": ["B1^4 A1","B1^5 A1"],
+  "remaining_GERM100_eleventh_width": [
+    "0.000000000020893371365682198926433019186282259509",
+    "0.000000000020893371365682198926433019186282259510"
+  ],
+  "remaining_three_layer_width": [
+    "0.000031477398428669305491066588424613339713993483",
+    "0.000031477398428669305491066588424613339713993484"
+  ],
+  "next_word": "B1 A1^9, GERM-100-local eleventh maps",
+  "next_trace": [[["0.7071860460","0.7071860461"]]],
+  "next_discriminant": [[["-3.4998878964","-3.4998878963"]]],
+  "next_status": "ELLIPTIC CHANGED TEN-STEP TWELFTH SOURCE WORD",
+  "eighteenth_or_deeper_induction_used": false,
+  "new_retained_coordinates": 0,
+  "canonical_cursor": "SZ-CROSS-COLLAR-3",
+  "canonical_effect": "NONE"
+}
