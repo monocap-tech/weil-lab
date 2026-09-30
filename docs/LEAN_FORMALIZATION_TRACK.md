@@ -147,7 +147,7 @@ Only after this exhaustion condition is met does the project resume:
 - **H1-P5:** COMPLETE.
 - **Active Lean phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-88 / WD-T40 F-3 Gaussian support-gap pairing.
+- **Next project cursor:** RPB-89 / WD-T40 F-3 support-gap geometry build certification.
 
 ```math
 \boxed{
@@ -155,7 +155,7 @@ Only after this exhaustion condition is met does the project resume:
 }
 ```
 
-WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier is now build-certified under pinned Lean 4.34.0 / mathlib v4.34.0 (run 36649140221, carrier blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d). The remaining WD-T40 formalization frontier begins at F-2, the actual compact-window Weil multiplier realization. The exact strict-right scalar symbol is build-certified by RPB-80 (run 36677931966, blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202). RPB-81 then found that the full pole-restored residual is not lawfully typed as tempered because the promoted theorem allows fixed exponential growth. RPB-87 build-certified the final EXT-4 weak-realization layer. F-2 is complete conditional on the explicit imported EXT-4 / EXT-5D premises. The next research cursor is RPB-88 / WD-T40 F-3 Gaussian support-gap pairing. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
+WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier is now build-certified under pinned Lean 4.34.0 / mathlib v4.34.0 (run 36649140221, carrier blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d). The remaining WD-T40 formalization frontier begins at F-2, the actual compact-window Weil multiplier realization. The exact strict-right scalar symbol is build-certified by RPB-80 (run 36677931966, blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202). RPB-81 then found that the full pole-restored residual is not lawfully typed as tempered because the promoted theorem allows fixed exponential growth. RPB-88 opened F-3 and implemented the strict support-gap geometry plus exterior pointwise Gaussian domination. The next research cursor is RPB-89 / WD-T40 F-3 support-gap geometry build certification. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
 
 
 ---
@@ -188,11 +188,15 @@ conditional canonical tempered multiplier core are now build-certified.
 The actual EXT-4 weak-realization bridge is now build-certified, and F-2 is
 complete conditional on the explicit imported EXT-4 / EXT-5D premises.
 
+F-3 is now open.  The strict collar geometry and exterior pointwise Gaussian
+domination are implemented in source; the actual filtered-mode convolution
+bound and Gaussian tail integration remain open.
+
 The next cursor is:
 
 ~~~text
-RPB-88 / WD-T40 F-3 GAUSSIAN SUPPORT-GAP PAIRING
+RPB-89 / WD-T40 F-3 SUPPORT-GAP GEOMETRY BUILD CERTIFICATION
 ~~~
 
-F-3 may now open.  F-4 Gaussian coercivity remains closed until F-3 is
+F-4 Gaussian coercivity remains closed until the whole F-3 pairing theorem is
 complete.
