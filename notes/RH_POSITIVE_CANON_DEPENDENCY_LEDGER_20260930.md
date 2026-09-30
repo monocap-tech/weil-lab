@@ -323,3 +323,70 @@ with exact selected-compression/native-metric transport.
 \]
 
 Next pass searches only the already-custodied paired-divisor/explicit-formula tensors for a true common parent whose two exact reductions recover the Krein cross-model defect and the KPH packet pencil.
+
+
+## CANON-5 — common-parent operator test
+
+### Best common object
+
+The strongest custodied common object is:
+
+\[
+\mathfrak Q_D(A,B)=A^*\Sigma_D B
+\]
+
+with its finite confluent/jet extensions (RH-T0132).
+
+This is a genuine common arithmetic response tensor.
+
+### Why it is not the desired common parent
+
+It does not provide a native Hilbert/operator parent with faithful reductions to both:
+
+\[
+C_{ZP}=P_{K(B_Z)}|_{K(B_P)}
+\]
+
+and
+
+\[
+I+C_F.
+\]
+
+No retained theorem identifies:
+
+- \(C_{ZP}\) as a native compression of \(\mathfrak Q_D\);
+- \(I+C_F\) as a principal compression, Schur complement, Feshbach reduction, or divided difference of \(\mathfrak Q_D\);
+- one common native metric/inverse order for both.
+
+The exact commonality stops at response algebra.
+
+### Terminal missing edge
+
+The remaining edge is:
+
+\[
+\boxed{
+\text{RH-T0186 event-to-form attachment}
+}
+\]
+
+or, at response-column level,
+
+\[
+\boxed{
+\text{RH-T0134 cross-column arithmetic coherence}.
+}
+\]
+
+These are genuine new theorem inputs, not representation rewrites.
+
+### Branch status
+
+\[
+\boxed{
+\texttt{STOP-RH-POSITIVE-CANON-CURRENT-INPUTS}
+}
+\]
+
+No automatic CANON-6 is authorized without new theorem/source input.
