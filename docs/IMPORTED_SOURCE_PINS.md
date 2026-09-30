@@ -1383,3 +1383,101 @@ and EXT-5 treatment.
 ~~~math
 \boxed{\text{SOURCE-PINNED / EXPLICIT IMPORTED PREMISE}}
 ~~~
+
+
+---
+
+## RPB-96 Fourier-coordinate correction
+
+### Scope
+
+This is a **convention correction**, not a new external source.
+
+EXT-4 remains pinned exactly as before in its source frequency variable \(t\).
+Mathlib's real Fourier transform uses
+
+~~~math
+\widehat f(\xi)
+=
+\int_{\mathbb R} e^{-2\pi i x\xi} f(x)\,dx.
+~~~
+
+Therefore the source variable and mathlib Fourier variable obey
+
+~~~math
+\boxed{t=2\pi\xi.}
+~~~
+
+### Corrected strict-right multiplier coordinate
+
+The source-frequency symbol remains
+
+~~~math
+\Psi_a^{\rm src}(t).
+~~~
+
+The actual symbol passed to mathlib's Fourier multiplier must be
+
+~~~math
+\boxed{
+\Psi_a^{\rm ml}(\xi)
+=
+\Psi_a^{\rm src}(2\pi\xi).
+}
+~~~
+
+Then the prime factor
+
+~~~math
+\cos((2\pi\xi)\log n)
+~~~
+
+corresponds to the physical translation pair at
+
+~~~math
+\pm\log n,
+~~~
+
+which is exactly the displacement used by the project arithmetic carrier.
+
+The archimedean term is rescaled by the same coordinate map.
+
+### Effect on EXT-5 / EXT-5D
+
+No new asymptotic theorem is required.  Since multiplication of the frequency
+variable by the fixed positive constant \(2\pi\) preserves logarithmic order
+and temperate growth,
+
+~~~math
+\Psi_a^{\rm src}(t)
+=
+\log|t|+O_a(1)
+~~~
+
+becomes
+
+~~~math
+\Psi_a^{\rm ml}(\xi)
+=
+\log|\xi|+O_a(1).
+~~~
+
+Likewise the EXT-5D derivative-growth conclusion remains valid after the
+linear rescaling.
+
+### Certificate consequence
+
+The earlier F-2 compiler certificates remain valid records for the source that
+was compiled at those checkpoints, but they are **not the current semantic
+certificate** after this convention correction.
+
+The normalized multiplier/residual dependency chain must be rebuilt before
+F-4 may consume it.
+
+### Status
+
+~~~math
+\boxed{
+\textbf{FOURIER-CONVENTION CORRECTED / REBUILD REQUIRED}
+}
+~~~
