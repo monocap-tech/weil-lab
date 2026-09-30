@@ -187,3 +187,136 @@ Disposition:
 **HOSTILE CONTROL / SEARCH-SPACE PRUNING.**
 
 No theorem from this file is promoted to canonical provenance by NJDG-1. The local pair-capture lemma and inverse-gap cofactor dichotomy in NJDG-1 are derived independently in Weil-Lab.
+
+
+## NJDG-4 critical-point-frame source audit
+
+### Garaev–Yıldırım — small distances between zeta and zeta-prime zeros
+
+Primary source:
+
+M. Z. Garaev and C. Y. Yıldırım, *On small distances between ordinates of zeros of zeta(s) and zeta'(s)*, IMRN 2007, arXiv:math/0610377.
+
+Verified primary abstract statement:
+
+For every zero
+[
+ho'=eta'+igamma'
+]
+of (zeta'), there exists a zero
+[
+ho=eta+igamma
+]
+of (zeta) such that
+[
+|gamma-gamma'|
+ll
+sqrt{|eta'-1/2|}.
+]
+
+NJDG disposition:
+
+**POINTWISE BUT WRONG DIRECTION / ONE ROW ONLY.**
+
+It begins with a derivative zero and locates one zeta zero ordinate. NJDG requires the converse type of input: every dangerous selected zeta packet must force enough derivative-critical rows to reconstruct RENJET. The theorem supplies neither two critical points nor a conditioning floor.
+
+### Haseo Ki — zeros of zeta-prime near the critical line
+
+Primary source:
+
+Haseo Ki, *The zeros of the derivative of the Riemann zeta function near the critical line*, arXiv:math/0701726.
+
+Verified primary abstract statement:
+
+Assuming RH, Ki proves an equivalence between
+[
+liminf(eta'-1/2)loggamma'
+e0
+]
+and a microscopic nearest-zero approximation
+[
+rac{zeta'}{zeta}(s)
+=
+rac1{s-ho}
++
+O(log t)
+]
+uniformly in (|sigma-1/2|<c/log t), where (ho) is the closest zeta zero.
+
+NJDG disposition:
+
+**MICROSCOPICALLY RELEVANT / RH-CONDITIONAL / NO FALSE-RH REENTRY.**
+
+This is exactly the scale NJDG cares about, but the theorem assumes RH and still does not furnish a two-row critical-point frame or a second-resolvent RENJET bound.
+
+### Farmer–Ki — Landau–Siegel zeros and zeta-prime zeros
+
+Primary source:
+
+David W. Farmer and Haseo Ki, *Landau-Siegel zeros and zeros of the derivative of the Riemann zeta function*, arXiv:1002.1616.
+
+Verified primary abstract statement:
+
+If (zeta') has sufficiently many zeros close to the critical line, then (zeta) has many closely spaced zeros.
+
+NJDG disposition:
+
+**AGGREGATE / WRONG QUANTIFIER FOR FRAME SOURCE.**
+
+The hypothesis concerns sufficiently many derivative zeros; it does not produce a uniformly conditioned local derivative frame from one adversarial selected packet.
+
+### Levinson–Montgomery lineage
+
+Primary bibliographic anchor:
+
+Norman Levinson and Hugh L. Montgomery, *Zeros of the derivatives of the Riemann zeta-function*, Acta Math. 133 (1974), 49–65.
+
+Modern source confirmations identify the classical result as the derivative-zero counterpart of Speiser and as a global/counting theorem.
+
+NJDG disposition:
+
+**GLOBAL COUNTING / NO PACKET-LOCAL FRAME.**
+
+The known count comparison and Speiser equivalence do not supply location, separation, or jet order for two derivative rows attached to one selected packet.
+
+### Das–Pujahari — higher derivatives
+
+Primary source:
+
+Mithun Kumar Das and Sudhir Pujahari, *Zeros of higher derivatives of Riemann zeta function*, arXiv:2104.10243.
+
+Verified primary abstract statement:
+
+The work studies mollified mean values in short intervals, refines error terms in zero-density results for (zeta^{(k)}), and proves an almost-all clustering result for zeros of an associated higher-derivative function.
+
+NJDG disposition:
+
+**HIGHER-DERIVATIVE / DENSITY-MEAN-VALUE / NOT POINTWISE FRAME.**
+
+It does not force a confluent or uniformly conditioned derivative configuration on every dangerous packet.
+
+### Guo / Feng / Zhang near-critical-line lineage
+
+Located bibliographic anchors:
+
+- C. R. Guo, *On the zeros of the derivative of the Riemann zeta function*, Proc. London Math. Soc. 72 (1996), 28–62.
+- Shaoji Feng, *A note on the zeros of the derivative of the Riemann zeta function near the critical line*, Acta Arith. 120 (2005), 59–68.
+- Yitang Zhang, *On the zeros of zeta'(s) near the critical line*, Duke Math. J. 110 (2001), 555–572.
+
+NJDG disposition:
+
+**NEAREST-NEIGHBOR LITERATURE / NO LOCATED EVERY-PACKET TWO-ROW FRAME THEOREM.**
+
+The current source audit did not locate a theorem in this lineage giving, for every prescribed dangerous zeta packet, two derivative-critical points with explicit packet-scale location and projective separation, nor a forced confluent critical point carrying the missing RENJET jet order.
+
+## NJDG-4 source conclusion
+
+No located source crosses the frame-source gate.
+
+The strongest pointwise unconditional input found is one-way derivative-to-zeta ordinate proximity.
+
+The strongest microscopic local logarithmic-derivative input found is RH-conditional.
+
+The higher-derivative sources remain density, mean-value, or almost-all in character.
+
+This is a bounded source audit, not a literature-exhaustion theorem.
