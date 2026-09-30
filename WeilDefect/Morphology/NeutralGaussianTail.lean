@@ -212,12 +212,16 @@ theorem gaussianExteriorTail_integrableOn
     have hshift :
         Integrable
           (fun x : ℝ =>
-            Real.exp (-(R / 16) * (x - c) ^ 2)) := by
-      convert hbase.comp_sub_right c using 1 <;> ring
+            Real.exp (-(R / 16) * (x - c) ^ 2)) :=
+      hbase.comp_sub_right c
     refine (integrableOn_congr_fun ?_ measurableSet_Ici).2
       hshift.integrableOn
     intro x hx
     have hx0 : 0 ≤ x := ha.le.trans hx
+    change
+      Real.exp (-R * (|x| - c) ^ 2 / 16)
+        =
+      Real.exp (-(R / 16) * (x - c) ^ 2)
     rw [abs_of_nonneg hx0]
     congr 1
     ring
@@ -230,11 +234,15 @@ theorem gaussianExteriorTail_integrableOn
         Integrable
           (fun x : ℝ =>
             Real.exp (-(R / 16) * (x + c) ^ 2)) := by
-      convert hbase.comp_sub_right (-c) using 1 <;> ring
+      simpa only [sub_neg_eq_add] using hbase.comp_sub_right (-c)
     refine (integrableOn_congr_fun ?_ measurableSet_Iic).2
       hshift.integrableOn
     intro x hx
     have hx0 : x ≤ 0 := hx.trans (neg_nonpos.mpr ha.le)
+    change
+      Real.exp (-R * (|x| - c) ^ 2 / 16)
+        =
+      Real.exp (-(R / 16) * (x + c) ^ 2)
     rw [abs_of_nonpos hx0]
     congr 1
     ring
