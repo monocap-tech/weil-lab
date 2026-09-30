@@ -210,3 +210,80 @@ mathfrak J_{F,Omega}[psi]
 or the full frozen selected-only jet tower, with the required every-packet quantifier.
 
 Derivative information that controls only an individual reciprocal gap, raw (G'/G), or one derivative zero does not qualify unless its implication to the joint renormalized jet is explicit.
+
+
+## critical-value row
+
+A **critical-value row** is the scalar constraint on the pole-removed logarithmic derivative produced by a zero of (zeta') or (Xi').
+
+For a zero (	au) of (zeta') with (zeta(	au)
+e0),
+[
+rac{Xi'}{Xi}(	au)=rac{H'}H(	au),
+]
+so
+[
+A_{F,Omega}(	au)
+=
+rac{H'}H(	au)
+-
+sum_{hoin F}rac1{	au-ho}
+-
+sum_{muinOmega}rac{m_mu}{	au-mu}.
+]
+
+For a zero (	au) of (Xi') with (Xi(	au)
+e0),
+[
+A_{F,Omega}(	au)
+=
+-
+sum_{hoin F}rac1{	au-ho}
+-
+sum_{muinOmega}rac{m_mu}{	au-mu}.
+]
+
+A critical-value row constrains the value of (A_{F,Omega}), not its first derivative.
+
+## value-to-jet gap
+
+The **value-to-jet gap** is the NJDG-3 mismatch between derivative-zero data and the first canonical RENJET.
+
+The first RENJET contains
+[
+(psi A_{F,Omega})'(c)
+=
+psi'(c)A_{F,Omega}(c)
++
+psi(c)A_{F,Omega}'(c),
+]
+whereas one ordinary critical point supplies only one value (A_{F,Omega}(	au)).
+
+No source-free implication from one critical-value row to the required first jet is assumed.
+
+## critical-point frame
+
+A **critical-point frame** is a local collection of two or more critical-value rows whose interpolation matrix is uniformly conditioned strongly enough to recover the first or higher jets of (A_{F,Omega}) at the packet center.
+
+For two points (	au_1,	au_2), first-jet recovery carries a condition number proportional to (|	au_1-	au_2|^{-1}), plus a remainder controlled by higher derivatives of (A_{F,Omega}).
+
+A useful critical-point-frame theorem must therefore include pointwise separation/geometry and higher-derivative control; mere existence or density of critical points does not suffice.
+
+## multiple-critical-point lift
+
+A **multiple-critical-point lift** is the special case where a critical point also kills the next derivative, so derivative-zero data directly constrain a higher logarithmic-derivative jet.
+
+For example, if
+[
+zeta'(	au)=zeta''(	au)=0,
+qquad
+zeta(	au)
+e0,
+]
+then
+[
+left(rac{zeta'}{zeta}ight)'(	au)=0,
+]
+and hence the derivative of the completed logarithmic derivative at (	au) is fixed by the completion factor.
+
+NJDG does not assume such multiple critical points are forced by a dangerous packet.
