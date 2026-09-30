@@ -83,7 +83,7 @@ theorem movingGaussianFilteredMode_eq_convolution
   funext x
   unfold movingGaussianFilteredMode
   rw [MeasureTheory.convolution_def]
-  symm
+  simp only [lsmul_apply, smul_eq_mul]
   apply setIntegral_eq_integral_of_forall_compl_eq_zero
   intro y hy
   rw [carrier.representative_eq_zero_of_not_mem hy]
