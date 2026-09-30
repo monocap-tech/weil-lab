@@ -16,15 +16,51 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** none; no post-Horizon cursor has been selected.
-- **Public packaging:** complete; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
+- **Next project cursor:** RPB-101 / WD-T40 F-4 cutoff/growth discharge build certification.
+- **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
+
+## WD-T40 blocker record
+
+RPB-67 completed the formalization preflight.
+
+WD-T40 is mathematically P4-AUDIT-PASSED but is not directly certifiable from
+the current project abstraction because the WD-T38 Lean interface is generic
+in its physical Hilbert space and does not yet expose the concrete real-line
+Fourier/distribution data consumed by the Gaussian support-gap proof.
+
+Exact blocking stack:
+
+~~~text
+F-1  physical real-line L2 / tempered-distribution carrier lift — BUILD-CERTIFIED / audited blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d / run 36649140221
+F-2  actual compact-window Weil multiplier realization — COMPLETE / NORMALIZED BUILD-CERTIFIED / t=2*pi*xi source-to-mathlib map / multiplier blob 4c24084c8a058cbb6685d54bc8226b746cabc413 / integrated run 36774149872 / explicit EXT-4 + EXT-5D premise custody unchanged
+F-3  support-gap Gaussian pairing theorem — COMPLETE / BUILD-CERTIFIED AGAINST NORMALIZED F-2 / final pairing blob 54732470ab2cf2a3a99be646372fdc186225363a / integrated run 36774149872 / no new imported premise
+F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE IN PROGRESS / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability SOURCE IMPLEMENTED / build pending / actual Schwartz-cutoff construction + pole-growth instantiation still open / coercivity not started
+F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
+F-6  final WD-T40 assembly from explicit EXT-4 / EXT-5 premises
+~~~
+
+Mathlib v4.34 already provides L2 Plancherel, L2/tempered-distribution Fourier
+compatibility, Gaussian Fourier formulas, Fourier inversion, and complex
+analytic continuation tools. The blocker is therefore project-local
+integration, not absence of base Fourier mathematics.
+
+A faithful completed formalization would be expected to carry status
+
+~~~text
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE
+~~~
+
+unless EXT-4 and EXT-5 are themselves reconstructed in Lean.
+
+
 
 ## Declaration map
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
+| WD-T40 | — F-1 carrier, F-2 strict-right scalar symbol, and corrected exponential-growth residual carrier are build-certified; weak-realization target is certified as an interface but not instantiated; exact symbol temperate-growth/multiplier realization and F-3--F-6 remain open | LEAN-BLOCKED |
 | WD-T39 | WeilDefect.FullNegativeSpace + WeilDefect.fullNegativeCoeff + WeilDefect.fullCoeff + WeilDefect.fullJValue + WeilDefect.wd_t39_p3_b1_anchored_mass + WeilDefect.wd_t39_p3_b2_full_coordinate_escape_weak_zero + WeilDefect.wd_t39_p3_b3_fixed_packet_custody + WeilDefect.normEscapeSubsequence + WeilDefect.wd_t39_p3_b4_norm_escape_of_unbounded + WeilDefect.BoundedBackgroundRegime + WeilDefect.wd_t39_p3_b4_bounded_background_dichotomy + WeilDefect.BackgroundCompactnessRegime + WeilDefect.wd_t39_p3_b4_background_compactness_trichotomy + WeilDefect.wd_t39_p3_b5_fixed_selected_ray_stability + WeilDefect.wd_t39_p3_b6_fixed_full_divisor_negative_weak_limit + WeilDefect.wd_t39_p3_b7_finite_shadow_separation + WeilDefect.NoncompactDefectMorphology + WeilDefect.wd_t39_noncompact_background_morphology | LEAN-CERTIFIED |
 | WD-T38 | WeilDefect.wd_t38_p3_u1_fixed_packet_critical_dichotomy + WeilDefect.wd_t38_attained_neutral_selected_coordinate_nonzero + WeilDefect.rightLimitPrimePowers + WeilDefect.wd_t38_p3_u3_right_limit_prime_decomposition + WeilDefect.wd_t38_p3_u3_right_limit_prime_support_finite + WeilDefect.wd_t38_p3_u4_logarithmic_order_neutral_carrier + WeilDefect.wd_t38_p3_u5_no_free_positive_sobolev_control + WeilDefect.wd_t38_p3_u5_finite_prime_translations_no_smoothing + WeilDefect.wd_t38_p3_u6_global_cancellation_not_termwise + WeilDefect.neutralNegativeSynthesis + WeilDefect.neutralWeilOperator + WeilDefect.wd_t38_p3_u2_negative_adjoint_identity + WeilDefect.wd_t38_p3_u2_physical_neutral_null_mode + WeilDefect.NeutralNullExtensionInterface + WeilDefect.NeutralNullExtensionInterface.persistenceGoal + WeilDefect.wd_t38_p3_u7_neutral_null_extension_reduction + WeilDefect.NeutralArithmeticMorphology + WeilDefect.wd_t38_neutral_arithmetic_morphology + WeilDefect.NeutralDefectMorphology + WeilDefect.wd_t38_attained_unit_gain_neutral_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T37 | WeilDefect.wd_t37_selected_source_zero_moment_of_wd_t26 + WeilDefect.wd_t37_selected_source_nonzero_of_wd_t26 + WeilDefect.wd_t37_p3_n1_endpoint_ray + WeilDefect.wd_t37_p3_n2_normalized_representative_blowup + WeilDefect.wd_t37_p3_n3_normalized_full_negativity + WeilDefect.wd_t37_p3_n4_zero_moment_source_far_decay + WeilDefect.wd_t37_p3_n5_far_localization + WeilDefect.wd_t37_p3_n6_weighted_next_jet_morphology + WeilDefect.wd_t37_p3_n7_no_adaptive_scalar_bypass + WeilDefect.NegativeArithmeticMorphology + WeilDefect.NegativeDefectMorphology + WeilDefect.wd_t37_fixed_packet_persistent_negative_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -4373,3 +4409,241 @@ The next project cursor is recorded, but no H1-P5 work has been started:
 ```math
 \boxed{\texttt{H1-P5.0 / PUBLIC PACKAGE ARCHITECTURE}}
 ```
+
+
+---
+
+## RPB-68 carrier-lift delta
+
+The source layer for F-1 now exists in
+
+~~~text
+WeilDefect/Morphology/NeutralFourierCarrier.lean
+~~~
+
+and is imported by WeilDefect.lean.
+
+Implemented source components:
+
+- concrete real-line L2 representative;
+- compact-support field in [-c,c];
+- adapter back to NeutralNullExtensionInterface;
+- nonzero transfer to the concrete L2 mode;
+- coercion to tempered distributions;
+- L2/tempered-distribution Fourier compatibility;
+- semantic strict residual vanishing via Distribution.IsVanishingOn.
+
+A temporary validation PR attempted to compile the new module, but GitHub
+Actions run 36638336287 failed before exposing job steps or compiler logs.
+Therefore the carrier is source-implemented but not yet build-certified.
+
+WD-T40 remains LEAN-BLOCKED.
+
+
+
+---
+
+## RPB-69 build-gate blocker
+
+Two independent temporary validation PRs attempted to compile
+
+~~~text
+WeilDefect.Morphology.NeutralFourierCarrier
+~~~
+
+without merging validation-only workflow changes into the research branch.
+
+Both GitHub Actions jobs failed before runner allocation.
+
+Observed job state in both cases:
+
+~~~text
+runner_id:          0
+runner_name:        ""
+runner_group_id:    0
+runner_group_name:  ""
+steps:              []
+~~~
+
+Therefore no checkout, toolchain setup, lake invocation, or Lean compiler
+process occurred.
+
+The F-1 carrier source is not certified and is not diagnosed as failing to
+compile.
+
+Current status:
+
+~~~text
+F-1:
+    SOURCE IMPLEMENTED
+    BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
+
+WD-T40:
+    LEAN-BLOCKED
+~~~
+
+The next cursor is RPB-70 / WD-T40 carrier build infrastructure recovery.
+
+
+
+---
+
+## RPB-70 infrastructure-recovery delta
+
+Three hosted validation routes now fail before runner allocation:
+
+~~~text
+ubuntu-latest / research-base
+ubuntu-latest / main-base
+ubuntu-slim / main-base
+~~~
+
+All three report runner_id 0, empty runner name, and zero steps.
+
+The local execution environment has no Lean/Lake toolchain and cannot resolve external hosts, so it cannot install Elan/mathlib.
+
+A deterministic repository check now exists at scripts/check_neutral_fourier_carrier.sh.
+
+F-1 remains source-implemented and build-uncertified. F-2 remains unopened.
+
+Next cursor: RPB-71 / WD-T40 carrier static elaboration audit.
+
+
+---
+
+## RPB-71 static API audit delta
+
+The F-1 carrier source was checked declaration-by-declaration against pinned Lean/mathlib v4.34.0.
+
+Static result:
+
+~~~text
+Lp / MemLp.toLp signatures: PASS
+Lp -> tempered-distribution coercion: PASS
+L2 Fourier instance: PASS
+tempered Fourier instance: PASS
+fourier_toTemperedDistribution_eq: PASS
+Distribution.IsVanishingOn / mono direction: PASS
+~~~
+
+Four elaboration-hardening edits are now present: explicit volume, explicit residual set arguments, explicit Fourier coercions, and a direct unfold/exact adapter proof.
+
+No declaration-shape mismatch remains. Build certification is still infrastructure-blocked, so F-1 is not Lean-certified and F-2 remains unopened.
+
+Next cursor: RPB-72 / WD-T40 carrier typeclass synthesis audit.
+
+
+---
+
+## RPB-72 typeclass synthesis delta
+
+Every implicit instance required by the F-1 carrier was traced through pinned mathlib v4.34.0.
+
+Resolved statically: ENNReal p=2 fact, real inner-product and finite-dimensional structure, real measurable/Borel/second-countable structure, canonical volume/Haar measure, temperate growth of volume, local finiteness, complex inner-product/completeness, and both L2 and tempered Fourier instances.
+
+No local instance shim was added because the required classes are already globally registered.
+
+Current F-1 state: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED.
+
+F-2 remains NOT STARTED.
+
+Next cursor: RPB-73 / WD-T40 carrier proof-term elaboration audit.
+
+
+---
+
+## RPB-73 proof-term elaboration delta
+
+The F-1 carrier proof bodies were audited line-by-line against pinned Lean/mathlib idioms.
+
+Static result: PASS. The adapter target is explicit, nonzero transfer uses equality composition, Fourier compatibility uses an explicit change plus the pinned theorem, and residual monotonicity is a direct theorem application with named sets. No metavariable holes, simpa dependence, or rewrite-driven proof state remains.
+
+Current F-1 state: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED.
+
+F-2 remains NOT STARTED.
+
+Next cursor: RPB-74 / WD-T40 F-1 static closure and build handoff.
+
+
+---
+
+## RPB-74 F-1 static closure delta
+
+The audited F-1 source is frozen at Git blob `93f05eceb07ffda593181d0e9293caa0a05705ac`.
+
+The deterministic handoff script `scripts/check_neutral_fourier_carrier.sh` now verifies the frozen blob, root import, exact module build, and unfinished-proof/project-axiom scan before reporting success.
+
+Current F-1 state: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / STATIC LINE EXHAUSTED / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED.
+
+No further static audit is live unless the frozen source changes or a real compiler diagnostic appears. F-2 remains NOT STARTED.
+
+Next cursor: RPB-75 / WD-T40 F-1 build execution gate.
+
+
+---
+
+## RPB-75 build gate delta
+
+The exact frozen F-1 handoff was attempted from a fresh validation branch based on the current RPB-74 research head.
+
+Run 36645302165 again failed before runner allocation with runner_id 0 and zero steps. The local environment still has no Lean/Lake/Elan toolchain.
+
+No compiler process ran. The frozen carrier and handoff script are unchanged. F-1 remains build-uncertified and F-2 remains NOT STARTED.
+
+Next cursor: RPB-76 / WD-T40 F-1 build gate recheck.
+
+
+---
+
+## RPB-76 build gate delta
+
+The exact frozen-handoff job from run 36645302165 was rerun.
+
+Attempt 2 again failed before runner allocation with runner_id 0, empty runner name, and zero steps. No checkout, handoff script, Lake, or Lean process executed.
+
+The frozen carrier blob and canonical handoff script are unchanged. F-1 remains statically exhausted and build-uncertified. F-2 remains NOT STARTED.
+
+Next cursor: RPB-77 / WD-T40 F-1 build gate recheck.
+
+
+---
+
+## RPB-77 build gate delta
+
+The exact frozen-handoff job from run 36645302165 was rerun as attempt 3.
+
+Attempt 3 again failed before runner allocation with runner_id 0, empty runner name, and zero steps. The local environment still has no lean/lake/elan binary.
+
+No Lean process ran. The frozen carrier and canonical handoff are unchanged. F-1 remains statically exhausted and build-uncertified. F-2 remains NOT STARTED.
+
+Next cursor: RPB-78 / WD-T40 F-1 build gate recheck.
+
+
+---
+
+## RPB-78 F-1 build certification delta
+
+GitHub-hosted runner access was restored and the exact audited F-1 carrier reached Lean.
+
+Two compiler-level issues were resolved: the file required a `noncomputable section` because `Real.measureSpace` is noncomputable, and that unnamed section then required a matching plain `end` before `end WeilDefect`.
+
+Certified carrier blob:
+
+~~~text
+03fe8ab1b6a3190e40a91b7a467c975e0d87841d
+~~~
+
+Successful validation evidence:
+
+~~~text
+run: 36649140221
+job: 109679039673
+runner_id: 1000001147
+head: 5e2e9a1a3edad1f57e7afb0f357b822b92dc9099
+~~~
+
+The exact module build and repository-wide unfinished-proof/project-axiom scan both passed.
+
+F-1 is therefore BUILD-CERTIFIED. WD-T40 remains LEAN-BLOCKED because F-2 through F-6 remain open.
+
+Next cursor: RPB-79 / WD-T40 actual Weil multiplier realization.

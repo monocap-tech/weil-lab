@@ -2,7 +2,7 @@
 
 ## H1-P5.5 — Final cross-surface adversarial pass
 
-**Status:** PASSED.
+**Status:** PASSED. **Post-WD-T40 revalidation:** PASSED. **Post-RPB-67 formal-status delta:** PASSED.
 
 This audit certifies the internal consistency of the Horizon-1 public package.
 It does not add a theorem, change a theorem standing, formalize an imported
@@ -301,3 +301,512 @@ Therefore,
 ~~~
 
 No post-Horizon research cursor is selected by this audit.
+
+
+---
+
+## 12. Post-WD-T40 package revalidation
+
+The original H1-P5 audit above is retained as historical evidence for the
+WD-T01--WD-T39 package state.
+
+RPB-65 subsequently promoted WD-T40, and RPB-66 refolded that additive theorem
+through the public surfaces.
+
+The current revalidation checks the updated package rather than rewriting the
+historical certificate.
+
+### 12.1 Stable-ID coverage
+
+Current theorem range:
+
+~~~text
+WD-T01 through WD-T40
+~~~
+
+The public theorem index now contains 40 theorem rows.
+
+The public verification matrix now contains 40 theorem rows, all seven example
+rows, and all five scope-rule rows.
+
+WD-T40 appears with:
+
+~~~text
+Mathematical standing:
+    INTERNAL-PROOF / CONDITIONAL on WD-T38 hypotheses
+
+P4 audit:
+    P4-AUDIT-PASSED
+
+Lean status:
+    LEAN-NOT-ATTEMPTED
+~~~
+
+**Result:** PASS.
+
+### 12.2 Interface status
+
+Current RH-facing interface state:
+
+~~~text
+AZ-NEXTJET-LOC                 OPEN
+C-ACTUAL-KPH-FLOOR             OPEN / stronger special-packet refinement
+AZ-FIN-WEIL-NULL-EXTENSION     DISCHARGED NEGATIVELY BY WD-T40
+~~~
+
+The public manuscript, theorem index, verification matrix, dependency map,
+RH-facing appendix, README, Research Map, Horizon page, and proof-status page
+now agree on that state.
+
+No public surface claims RH closure.
+
+**Result:** PASS.
+
+### 12.3 Dependency/source custody
+
+WD-T40 is shown downstream of WD-T38 and consumes the already pinned
+compact-window inputs EXT-4 and EXT-5 through the WD-T34/WD-T35 arithmetic
+surface.
+
+The public dependency map does not import either remaining open negative-side
+interface upstream.
+
+The historical RPB-43/57/58 analytic/Mellin route is not load-bearing for
+WD-T40.
+
+**Result:** PASS.
+
+### 12.4 Formal-status custody
+
+Historical LEAN-H1 remains exhausted for the original Horizon-1 inventory.
+
+WD-T40 is a post-Horizon theorem and currently has no Lean certificate.
+
+The Lean Status Ledger, Public Theorem Index, Public Verification Matrix,
+README, manuscript, and package architecture consistently record
+
+~~~text
+WD-T40: LEAN-NOT-ATTEMPTED.
+~~~
+
+No mathematical audit label is used as a substitute for Lean certification.
+
+**Result:** PASS.
+
+### 12.5 Current public artifact identities
+
+| Artifact | Current blob SHA |
+| --- | --- |
+| PUBLIC_PACKAGE_ARCHITECTURE.md | a1aa7874e5d70a0e0fb0e134039aa3273c9c711e |
+| WEIL_DEFECT_MANUSCRIPT.md | 5ea337d42607a206285af1ab6e41be9f11920a61 |
+| PUBLIC_THEOREM_INDEX.md | afed1d08a02ce7de6b8b92f8137c01ab40571271 |
+| PUBLIC_VERIFICATION_MATRIX.md | 8dd13015364fcbf0f5fb5ccc31ab3242ca2addd8 |
+| PUBLIC_DEPENDENCY_MAP.md | 5224de4866595ab16f7b222f402d17f7561afe48 |
+| PUBLIC_EXAMPLES.md | 1bcc4033a12b4955000c68a49b8e3301ab03f524 |
+| RH_INTERFACE_APPENDIX.md | 0774a1d6f0efcc9590f3069309156fc2881e7af7 |
+| README.md | d5959117883dffa5c4f4c026e2b24273cfc5e978 |
+
+### 12.6 Revalidation determination
+
+~~~math
+\boxed{
+\textbf{POST-WD-T40 PUBLIC PACKAGE REVALIDATION: PASSED.}
+}
+~~~
+
+The public package remains internally consistent after the theorem-count and
+interface-state change.
+
+The next research cursor is:
+
+~~~text
+RPB-67 / WD-T40 LEAN CERTIFICATION PREFLIGHT
+~~~
+
+
+---
+
+## 13. Post-RPB-67 formal-status delta
+
+RPB-67 completed the WD-T40 Lean certification preflight.
+
+The mathematical theorem and interface status are unchanged.
+
+The formal-verification state changed from the RPB-66 checkpoint:
+
+~~~text
+WD-T40:
+    LEAN-NOT-ATTEMPTED
+~~~
+
+to the exact current state:
+
+~~~text
+WD-T40:
+    LEAN-BLOCKED
+~~~
+
+The blocker is not a mathematical objection and is not a missing base Fourier
+library. The exact missing project layer is the physical real-line
+Fourier/distribution carrier and the downstream Gaussian support-gap analytic
+stack recorded in RPB-67 / LEAN_STATUS.md.
+
+The expected final certification class, if the internal formalization stack is
+completed while EXT-4 and EXT-5 remain imported premises, is:
+
+~~~text
+LEAN-CERTIFIED-FROM-IMPORTED-PREMISE
+~~~
+
+### 13.1 Current public artifact identities after the formal-status refold
+
+| Artifact | Current blob SHA |
+| --- | --- |
+| PUBLIC_PACKAGE_ARCHITECTURE.md | 33562faa809f2a7a701b6e9642a66d1732daf69b |
+| WEIL_DEFECT_MANUSCRIPT.md | a63e489e648c031e4a8b1505e611196be8d68af4 |
+| PUBLIC_THEOREM_INDEX.md | 2cbe6424e416321838686dc28e21360422794167 |
+| PUBLIC_VERIFICATION_MATRIX.md | 450bdb9c78665885c2e2cb330f1919816360eaef |
+| PUBLIC_DEPENDENCY_MAP.md | 5224de4866595ab16f7b222f402d17f7561afe48 |
+| PUBLIC_EXAMPLES.md | 1bcc4033a12b4955000c68a49b8e3301ab03f524 |
+| RH_INTERFACE_APPENDIX.md | 0774a1d6f0efcc9590f3069309156fc2881e7af7 |
+| README.md | 9730e775cc2125dffd8bdff0fb7ff798f1e5f4a1 |
+
+### 13.2 Revalidation result
+
+The theorem count remains 40.
+
+The neutral interface remains discharged negatively by WD-T40.
+
+The remaining open negative-side interfaces are unchanged.
+
+The public theorem index, verification matrix, README, manuscript, package
+architecture, Lean status ledger, and RPB control surface now agree on the
+WD-T40 formal state.
+
+**Result:** PASS.
+
+### 13.3 Next cursor
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+
+---
+
+## 14. Post-RPB-68 carrier-lift delta
+
+RPB-68 implemented the first WD-T40 formalization bridge in Lean source.
+
+New module:
+
+~~~text
+WeilDefect/Morphology/NeutralFourierCarrier.lean
+~~~
+
+Current F-1 state:
+
+~~~text
+SOURCE IMPLEMENTED
+BUILD UNVERIFIED
+~~~
+
+The source now contains the concrete real-line L2 representative, compact
+support, adapter to the WD-T38 abstract interface, tempered-distribution lift,
+Fourier compatibility, and semantic strict residual vanishing.
+
+A temporary validation PR attempted to compile the new module, but the GitHub
+Actions run failed without exposing steps or compiler logs. The validation
+result is therefore inconclusive rather than a Lean source failure.
+
+The temporary PR was closed without merge and no CI-only workflow change
+entered the research branch.
+
+WD-T40 remains LEAN-BLOCKED.
+
+The next cursor is:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as a custody/status update.
+
+
+---
+
+## 15. Post-RPB-69 build-infrastructure delta
+
+RPB-69 attempted to certify the F-1 carrier module build using two temporary validation PRs.
+
+Runs 36638336287 and 36641237210 both failed before runner allocation. In both job records: runner_id was 0, runner_name was empty, and steps was empty.
+
+Therefore neither validation reached repository checkout or Lean compilation. No compiler diagnostic exists.
+
+Current state:
+
+~~~text
+WD-T40: LEAN-BLOCKED
+F-1 source: IMPLEMENTED
+F-1 build: INFRASTRUCTURE-BLOCKED
+~~~
+
+Both temporary validation PRs were closed without merge. The research branch contains no validation-only workflow change.
+
+**Result:** PASS as a custody/status update.
+
+Next cursor:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+
+---
+
+## 16. Post-RPB-70 infrastructure-recovery delta
+
+RPB-70 exhausted the build routes available in the current execution environment.
+
+A third hosted validation used ubuntu-slim and again failed before runner allocation with runner_id 0 and zero steps. The local execution environment has no Lean/Lake toolchain and no outbound DNS, so it cannot install one.
+
+A deterministic carrier build check is present at scripts/check_neutral_fourier_carrier.sh.
+
+Current status:
+
+~~~text
+F-1 source: IMPLEMENTED
+F-1 build: INFRASTRUCTURE-BLOCKED
+WD-T40: LEAN-BLOCKED
+F-2: NOT STARTED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as a custody/status update.
+
+
+---
+
+## 17. Post-RPB-71 static elaboration delta
+
+RPB-71 checked the F-1 carrier declaration-by-declaration against pinned Lean/mathlib v4.34.0.
+
+Static API result:
+
+~~~text
+Lp / MemLp.toLp signatures: PASS
+Lp -> tempered-distribution coercion: PASS
+L2 Fourier instance: PASS
+tempered Fourier instance: PASS
+fourier_toTemperedDistribution_eq: PASS
+Distribution.IsVanishingOn / mono direction: PASS
+~~~
+
+Four elaboration-hardening edits are present in the carrier source: explicit volume, explicit residual-set arguments, explicit Fourier coercions, and a direct unfold/exact adapter proof.
+
+No declaration-shape mismatch remains. Build certification remains infrastructure-blocked and F-2 remains unopened.
+
+Next cursor:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as a static API audit.
+
+
+---
+
+## 18. Post-RPB-72 typeclass synthesis delta
+
+RPB-72 traced every implicit instance required by the F-1 carrier through pinned mathlib v4.34.0.
+
+Static typeclass result: PASS. The real domain geometry/topology/measure stack, p=2 Fact, volume Haar/temperate-growth chain, complex Hilbert-space value structure, and both FourierTransform instances are all globally available.
+
+No local instance shims were added; F-1 remains build-uncertified solely because no Lean runner is available.
+
+Current state:
+
+~~~text
+F-1: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / BUILD INFRASTRUCTURE-BLOCKED
+F-2: NOT STARTED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as a static typeclass audit.
+
+
+---
+
+## 19. Post-RPB-73 proof-term elaboration delta
+
+RPB-73 audited the remaining F-1 proof bodies and parser-sensitive syntax.
+
+Static proof-term result: PASS. No metavariable holes, simpa dependence, rewrite-driven proof state, or project-specific tactics remain in the carrier's substantive lemmas. Two tactic-state-sensitive proofs were rewritten as direct terms, and the WD-T38 adapter now uses an explicit change target.
+
+Current state:
+
+~~~text
+F-1: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / BUILD INFRASTRUCTURE-BLOCKED
+F-2: NOT STARTED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as a static proof-term audit.
+
+
+---
+
+## 20. Post-RPB-74 F-1 static closure delta
+
+RPB-74 closes the static F-1 line.
+
+Frozen carrier blob:
+
+~~~text
+93f05eceb07ffda593181d0e9293caa0a05705ac
+~~~
+
+Canonical handoff script:
+
+~~~text
+scripts/check_neutral_fourier_carrier.sh
+~~~
+
+The script now checks the frozen blob, root import, exact module build, and unfinished-proof/project-axiom scan.
+
+Current state:
+
+~~~text
+F-1: SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / STATIC LINE EXHAUSTED / BUILD INFRASTRUCTURE-BLOCKED
+F-2: NOT STARTED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as a static-closure/build-handoff audit.
+
+
+---
+
+## 21. Post-RPB-75 frozen build-gate delta
+
+RPB-75 tested the exact RPB-74 frozen carrier handoff from a fresh validation branch based on the current research head.
+
+Draft PR #4 called `scripts/check_neutral_fourier_carrier.sh` directly. GitHub Actions run 36645302165 again failed before runner allocation: runner_id 0, empty runner name, and zero steps.
+
+No Lean process ran. PR #4 was closed without merge. The research branch contains no validation-only workflow change.
+
+Current state:
+
+~~~text
+F-1: STATICALLY EXHAUSTED / BUILD INFRASTRUCTURE-BLOCKED
+F-2: NOT STARTED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as an unchanged build-gate custody update.
+
+
+---
+
+## 22. Post-RPB-76 build-gate delta
+
+RPB-76 reran the exact frozen-handoff job from run 36645302165.
+
+Attempt 2 again failed before runner allocation: runner_id 0, empty runner name, zero steps. No Lean process ran.
+
+The frozen carrier source and canonical handoff script remain unchanged. F-1 remains statically exhausted and build-infrastructure-blocked; F-2 remains NOT STARTED.
+
+Next cursor:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as an unchanged build-gate custody update.
+
+
+---
+
+## 23. Post-RPB-77 build-gate delta
+
+RPB-77 reran the exact frozen-handoff job from run 36645302165 as attempt 3.
+
+Attempt 3 again failed before runner allocation: runner_id 0, empty runner name, zero steps. No Lean process ran.
+
+The frozen carrier source and canonical handoff remain unchanged. F-1 remains statically exhausted and build-infrastructure-blocked; F-2 remains NOT STARTED.
+
+Next cursor:
+
+~~~text
+RPB-78 / WD-T40 F-1 BUILD GATE RECHECK
+~~~
+
+**Result:** PASS as an unchanged build-gate custody update.
+
+
+---
+
+## 24. Post-RPB-78 F-1 build certification delta
+
+GitHub-hosted runner access was restored and the F-1 carrier reached the pinned Lean compiler.
+
+The first real compiler run exposed two non-mathematical source issues: the file needed a `noncomputable section` because `Real.measureSpace` is noncomputable, and that unnamed section needed a matching plain `end`. Both were repaired without changing theorem statements or proof content.
+
+Certified carrier blob:
+
+~~~text
+03fe8ab1b6a3190e40a91b7a467c975e0d87841d
+~~~
+
+Successful validation:
+
+~~~text
+run: 36649140221
+job: 109679039673
+runner_id: 1000001147
+head: 5e2e9a1a3edad1f57e7afb0f357b822b92dc9099
+~~~
+
+The carrier module built successfully and both module-local and repository-wide unfinished trusted declaration scans passed. Draft PR #4 was closed without merge; validation-only workflow changes did not enter the research branch.
+
+Current state:
+
+~~~text
+F-1: BUILD-CERTIFIED
+F-2: NOT STARTED
+WD-T40: LEAN-BLOCKED
+~~~
+
+Next cursor:
+
+~~~text
+RPB-79 / WD-T40 ACTUAL WEIL MULTIPLIER REALIZATION
+~~~
+
+**Result:** PASS as an F-1 build certification delta.
