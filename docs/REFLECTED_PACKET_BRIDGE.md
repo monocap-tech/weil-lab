@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-87 — F-2 IS COMPLETE AND BUILD-CERTIFIED FROM EXPLICIT IMPORTED EXT-4 / EXT-5D PREMISES; THE FORMALIZATION FRONTIER ADVANCES TO F-3.}
+\textbf{RPB-88 — F-3 IS OPEN: STRICT SUPPORT-GAP GEOMETRY AND EXTERIOR POINTWISE GAUSSIAN DOMINATION ARE IMPLEMENTED IN LEAN SOURCE.}
 }
 ~~~
 
@@ -77,7 +77,12 @@ F-2  actual compact-window Weil multiplier realization
      run 36735403643
 
 F-3  support-gap Gaussian pairing
-     NOT STARTED
+     IN PROGRESS
+     strict collar geometry SOURCE IMPLEMENTED
+     exterior pointwise Gaussian domination SOURCE IMPLEMENTED
+     build certification pending
+     filtered-mode convolution bound open
+     Gaussian tail integration open
 
 F-4  Gaussian coercivity -> exponential Fourier weight
      NOT STARTED
@@ -94,11 +99,12 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-88 / WD-T40 F-3 GAUSSIAN SUPPORT-GAP PAIRING
+RPB-89 / WD-T40 F-3 SUPPORT-GAP GEOMETRY BUILD CERTIFICATION
 ~~~
 
-RPB-87 build-certified the final EXT-4 weak-realization layer and closes F-2.
-The next pass may open F-3 Gaussian support-gap pairing. F-4 remains closed.
+RPB-88 opened F-3 and implemented only the strict-collar geometry and
+exterior pointwise Gaussian domination. The next pass build-certifies that
+slice. The actual convolution estimate, tail integration, and F-4 remain closed.
 
 ## Governance
 
@@ -111,4 +117,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_87_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_88_20260930.md.
