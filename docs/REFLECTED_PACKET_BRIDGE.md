@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-79 — THE EXACT THRESHOLD-CORRECTED SCALAR WEIL SYMBOL IS IMPLEMENTED; F-2 IS NOW IN PROGRESS.}
+\textbf{RPB-80 — THE STRICT-RIGHT SCALAR WEIL SYMBOL IS BUILD-CERTIFIED; F-2 NOW REDUCES TO THE DISTRIBUTIONAL OPERATOR-RESIDUAL BRIDGE.}
 }
 ~~~
 
@@ -61,8 +61,9 @@ F-1  physical Fourier carrier lift
 
 F-2  actual compact-window Weil multiplier realization
      IN PROGRESS
-     exact strict-right scalar symbol source implemented
-     build certification pending
+     exact strict-right scalar symbol BUILD-CERTIFIED
+     blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202
+     run 36677931966
      distributional residual/operator identity open
 
 F-3  support-gap Gaussian pairing
@@ -83,12 +84,12 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-80 / WD-T40 F-2 SCALAR-SYMBOL BUILD CERTIFICATION
+RPB-81 / WD-T40 F-2 DISTRIBUTIONAL OPERATOR-RESIDUAL BRIDGE
 ~~~
 
-RPB-79 opened F-2 only through the exact scalar-symbol layer.  The next pass
-must build-certify that source before the distributional operator/residual
-bridge is attempted.
+RPB-80 build-certified the exact scalar-symbol layer.  The next pass may now
+open only the faithful distributional operator/residual bridge.  F-3 remains
+closed until F-2 is complete.
 
 ## Governance
 
@@ -101,4 +102,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_79_20260929.md.
+notes/REFLECTED_PACKET_BRIDGE_80_20260929.md.
