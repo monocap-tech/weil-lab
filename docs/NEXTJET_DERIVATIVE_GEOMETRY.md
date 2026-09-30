@@ -318,3 +318,28 @@ Priority order:
 3. reject density, average, and existence-only statements;
 4. test whether any source reaches the second-resolvent order of RENJET;
 5. stop if the source class remains quantifier- or jet-order-mismatched.
+
+
+## 14. NJDG-4 standing
+
+NJDG-4 is complete.
+
+No located source crosses the critical-point-frame or forced-confluent-lift gate.
+
+The strongest unconditional pointwise theorem found is one-way: every zero of (zeta') has a nearby zeta-zero ordinate. The strongest microscopic (1/log T)-scale local logarithmic-derivative theorem found is Ki's, which assumes RH. The higher-derivative sources remain mean-value, density, or almost-all in character.
+
+Therefore the generic derivative-zero location search is frozen unless a new source changes the packet-local quantifier or supplies explicit jet conditioning.
+
+## 15. Current cursor
+
+[
+oxed{	ext{NJDG-5 / CRITICAL-VALUE ENRICHMENT AT SIMPLE DERIVATIVE ZEROS}}
+]
+
+Priority order:
+
+1. use (zeta''(	au)) or (Xi''(	au)) values at an already located simple critical point rather than searching for another critical point;
+2. identify the exact first-jet information obtained;
+3. search for unconditional pointwise bounds at derivative zeros;
+4. test transport to the packet center and the second-resolvent RENJET term;
+5. stop if the enrichment theorem is equivalent to the missing RENJET control.
