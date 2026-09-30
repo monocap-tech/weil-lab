@@ -9,7 +9,7 @@
 
 ~~~math
 \boxed{
-\textbf{RPB-98 — THE GAUSSIAN-ADMISSIBILITY DOMAIN SEAM IS EXPLICITLY TYPED IN LEAN SOURCE; COMPACT-TEST EXT-4 IS NO LONGER SILENTLY EXTENDED TO THE NONCOMPACT MOVING GAUSSIAN.}
+\textbf{RPB-99 — THE GAUSSIAN-ADMISSIBILITY DOMAIN INTERFACE IS BUILD-CERTIFIED; ITS CUTOFF/GROWTH DISCHARGE IS NOW THE SOLE PRE-COERCIVITY OBLIGATION.}
 }
 ~~~
 
@@ -113,14 +113,13 @@ WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
 ## Next cursor
 
 ~~~text
-RPB-99 / WD-T40 F-4 GAUSSIAN-ADMISSIBILITY BRIDGE BUILD CERTIFICATION
+RPB-100 / WD-T40 F-4 GAUSSIAN-ADMISSIBILITY CUTOFF/GROWTH DISCHARGE
 ~~~
 
-RPB-98 typed the Gaussian-admissibility bridge explicitly: compact EXT-4
-realization, Schwartz realization of the actual filtered mode, genuine
-residual/pole pairing integrability, and the extended weak identity. The next
-pass build-certifies that interface. Its cutoff/growth discharge and all
-coercivity remain open.
+RPB-99 build-certified the Gaussian-admissibility interface on the first exact
+attempt. The next pass addresses only its actual cutoff/growth discharge from
+the existing carrier plus any explicitly needed pole-growth data. Logarithmic
+coercivity remains closed.
 
 ## Governance
 
@@ -133,4 +132,4 @@ certification, and final Lean certification are separate status axes.
 
 The full pass-by-pass record is stored in
 notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_98_20260930.md.
+notes/REFLECTED_PACKET_BRIDGE_99_20260930.md.
