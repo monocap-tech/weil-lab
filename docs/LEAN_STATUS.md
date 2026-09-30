@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-78 / WD-T40 F-1 build gate recheck.
+- **Next project cursor:** RPB-79 / WD-T40 actual Weil multiplier realization.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -33,8 +33,8 @@ Fourier/distribution data consumed by the Gaussian support-gap proof.
 Exact blocking stack:
 
 ~~~text
-F-1  physical real-line L2 / tempered-distribution carrier lift — SOURCE IMPLEMENTED / STATIC API PASS / TYPECLASS STATIC PASS / PROOF-TERM STATIC PASS / STATIC LINE EXHAUSTED / FROZEN AUDITED BLOB / BUILD CERTIFICATION INFRASTRUCTURE-BLOCKED
-F-2  actual compact-window Weil multiplier realization
+F-1  physical real-line L2 / tempered-distribution carrier lift — BUILD-CERTIFIED / audited blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d / run 36649140221
+F-2  actual compact-window Weil multiplier realization — NOT STARTED
 F-3  support-gap Gaussian pairing theorem
 F-4  Gaussian coercivity -> exponential Fourier weight
 F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
@@ -4617,3 +4617,33 @@ Attempt 3 again failed before runner allocation with runner_id 0, empty runner n
 No Lean process ran. The frozen carrier and canonical handoff are unchanged. F-1 remains statically exhausted and build-uncertified. F-2 remains NOT STARTED.
 
 Next cursor: RPB-78 / WD-T40 F-1 build gate recheck.
+
+
+---
+
+## RPB-78 F-1 build certification delta
+
+GitHub-hosted runner access was restored and the exact audited F-1 carrier reached Lean.
+
+Two compiler-level issues were resolved: the file required a `noncomputable section` because `Real.measureSpace` is noncomputable, and that unnamed section then required a matching plain `end` before `end WeilDefect`.
+
+Certified carrier blob:
+
+~~~text
+03fe8ab1b6a3190e40a91b7a467c975e0d87841d
+~~~
+
+Successful validation evidence:
+
+~~~text
+run: 36649140221
+job: 109679039673
+runner_id: 1000001147
+head: 5e2e9a1a3edad1f57e7afb0f357b822b92dc9099
+~~~
+
+The exact module build and repository-wide unfinished-proof/project-axiom scan both passed.
+
+F-1 is therefore BUILD-CERTIFIED. WD-T40 remains LEAN-BLOCKED because F-2 through F-6 remain open.
+
+Next cursor: RPB-79 / WD-T40 actual Weil multiplier realization.
