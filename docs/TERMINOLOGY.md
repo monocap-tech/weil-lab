@@ -6218,3 +6218,53 @@ the exact full real Gaussian mass.  This is the final internal F-3 quantity
 before logarithmic Fourier-side coercivity begins.
 
 **Status:** post-Horizon F-3 terminology; registered at RPB-94.
+
+
+## Source-frequency / mathlib-frequency convention map
+
+The compact-window source variable \(t\) and mathlib's real Fourier variable
+\(\xi\) are **not the same coordinate**.
+
+The pinned compact-window formula is written in the convention in which
+
+~~~math
+\cos(t\log n)
+~~~
+
+corresponds to physical translations by \(\pm\log n\).
+
+Mathlib's real Fourier transform is
+
+~~~math
+\widehat f(\xi)
+=
+\int_{\mathbb R}
+e^{-2\pi i x\xi}f(x)\,dx.
+~~~
+
+Therefore the lawful convention map is
+
+~~~math
+\boxed{t=2\pi\xi.}
+~~~
+
+The project name for the strict-right scalar symbol after this coordinate
+change is the **mathlib-frequency strict-right Weil symbol**:
+
+~~~math
+\Psi_a^{\rm ml}(\xi)
+=
+\Psi_a^{\rm src}(2\pi\xi).
+~~~
+
+This map is load-bearing for:
+
+- prime translations at physical displacement \(\pm\log n\);
+- the archimedean digamma multiplier;
+- the moving Gaussian frequency window;
+- every Fourier-side coercivity estimate.
+
+A scalar amplitude constant alone does not repair a Fourier-coordinate
+mismatch; the symbol argument itself must be rescaled.
+
+**Status:** registered at RPB-96 after Fourier-normalization audit.
