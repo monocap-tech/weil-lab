@@ -897,3 +897,49 @@ It is a terminal status for the current LEAN-H1 exhaustion test, but not a claim
 - SCOPE-ONLY.
 
 No stable theorem/example may remain merely unattempted when LEAN-H1 closes.
+
+
+## RH-positive canon traversal
+
+An **RH-positive canon traversal** is a diagnostic source-facing traversal in which RH is assumed as a temporary hypothesis and the project asks what theorem-level structures, identities, positivity statements, kernels, sampling systems, or spectral objects are then available in the established literature.
+
+The traversal is not a proof of RH and may not export RH-dependent conclusions into an unconditional theorem line.
+
+Its purpose is dependency localization: identify canonical objects occupying the same structural slots as the project's RH-facing defect interfaces, then trace their immediate theorem dependencies.
+
+## Canonical representative
+
+A **canonical representative** of a project interface is a literature-defined mathematical object or theorem whose typed data and role match the project object closely enough to support an explicit map of hypotheses, variables, operators, and outputs.
+
+Similarity of terminology or qualitative analogy is insufficient.
+
+A representative is promoted only after a correspondence table records:
+
+1. object type;
+2. domain/support convention;
+3. zero or prime data consumed;
+4. metric or inner product;
+5. quantifiers;
+6. exact theorem/source location;
+7. mismatches that remain.
+
+## Canonical overshoot
+
+**Canonical overshoot** is the rule that locating a plausible canonical representative does not end a canon traversal.
+
+After a representative is identified, the traversal continues through at least:
+
+- one dependency edge toward the theorem/input that constructs or constrains the representative; and
+- one dependency edge toward a theorem/output that consumes it,
+
+when such edges exist in the cited source chain.
+
+The objective is to locate the nearest RH-sensitive dependency boundary rather than stop at an object-level resemblance.
+
+## Positive slot
+
+A **positive slot** is the theorem/dependency position occupied, under the temporary RH assumption, by a canonical object corresponding to a project defect interface.
+
+If RH makes the defect morphology itself impossible, the traversal must still identify the positive slot whenever the underlying typed object survives (for example as zero-jet data, a sampling map, a kernel, a compact-window operator, or a support-extension relation).
+
+“RH rules out the bad branch” is therefore not by itself a completed positive-slot identification.
