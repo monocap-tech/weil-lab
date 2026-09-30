@@ -393,3 +393,53 @@ Priority order:
 3. compare every candidate with RH-T0117 immediately;
 4. reject finite rational-resolvent synthesis by NJDG-6;
 5. if no genuinely weighted identity exists, place NJDG at TSTOP.
+
+
+## 20. NJDG-7 standing
+
+NJDG-7 is complete.
+
+The direct weighted critical-identity screen found no new bridge.
+
+The canonical mode-weighted RENJET contour uses \(\Xi'/\Xi\), so it samples the original \(\Xi\)-zero divisor. A simple derivative critical point is a zero of \(\Xi'/\Xi\), not a pole, and contributes no residue. Switching to \(\Xi''/\Xi'\) makes derivative zeros visible only by changing to the derivative divisor.
+
+Thus:
+
+\[
+\boxed{
+\text{original-divisor weighted identity}
+\Rightarrow
+\text{existing complement wedge},
+}
+\]
+
+while
+
+\[
+\boxed{
+\text{derivative-divisor weighted identity}
+\Rightarrow
+\text{new mixed-divisor transfer required}.
+}
+\]
+
+No such mixed-divisor packet-local transfer was located or derived.
+
+## 21. Current standing
+
+\[
+\boxed{
+\texttt{TSTOP-NJDG-PENDING-NEW-MIXED-DIVISOR-WEIGHTED-INPUT}
+}
+\]
+
+There is no automatic NJDG-8.
+
+Re-entry is licensed only for:
+
+1. a genuinely new mixed-divisor weighted theorem;
+2. a conditioned continuum/growing critical transform;
+3. an actual-zero weighted interpolation theorem with projective conditioning;
+4. direct control of the canonical complement wedge or KPH floor.
+
+Do not reopen finite critical frames, finite derivative towers, raw reciprocal-gap, cofactor, or coordinate-rewrite variants.
