@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-102 / WD-T40 F-4 actual moving-filtered-mode Schwartz realization.
+- **Next project cursor:** RPB-103 / WD-T40 F-4 Gaussian Schwartz seed + moving-mode Fourier identification.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -36,7 +36,7 @@ Exact blocking stack:
 F-1  physical real-line L2 / tempered-distribution carrier lift — BUILD-CERTIFIED / audited blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d / run 36649140221
 F-2  actual compact-window Weil multiplier realization — COMPLETE / NORMALIZED BUILD-CERTIFIED / t=2*pi*xi source-to-mathlib map / multiplier blob 4c24084c8a058cbb6685d54bc8226b746cabc413 / integrated run 36774149872 / explicit EXT-4 + EXT-5D premise custody unchanged
 F-3  support-gap Gaussian pairing theorem — COMPLETE / BUILD-CERTIFIED AGAINST NORMALIZED F-2 / final pairing blob 54732470ab2cf2a3a99be646372fdc186225363a / integrated run 36774149872 / no new imported premise
-F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE IN PROGRESS / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability BUILD-CERTIFIED by RPB-101 / actual moving-mode Schwartz realization + Schwartz-cutoff construction + pole-growth instantiation still open / coercivity not started
+F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE IN PROGRESS / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability BUILD-CERTIFIED by RPB-101 / carrier Fourier moments + C-infinity + temperate growth BUILD-CERTIFIED by RPB-102 / Gaussian seed + exact moving-mode Fourier identification still open / Schwartz-cutoff construction + pole-growth instantiation still open / coercivity not started
 F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
 F-6  final WD-T40 assembly from explicit EXT-4 / EXT-5 premises
 ~~~
@@ -4702,3 +4702,80 @@ Next cursor:
 ~~~text
 RPB-102 / WD-T40 F-4 ACTUAL MOVING-FILTERED-MODE SCHWARTZ REALIZATION
 ~~~
+
+
+---
+
+## RPB-102 moving-mode Schwartz carrier-side reduction delta
+
+A new source module now records the carrier-side part of the moving-mode
+Schwartz problem:
+
+~~~text
+WeilDefect/Morphology/NeutralGaussianSchwartz.lean
+~~~
+
+Build-certified declarations:
+
+~~~text
+neutralPhysicalRepresentative_polynomialNorm_integrable
+neutralPhysicalRepresentative_polynomialSmul_integrable
+neutralPhysicalRepresentative_fourier_contDiff
+neutralPhysicalRepresentative_fourier_hasTemperateGrowth
+~~~
+
+The first two declarations prove every polynomial norm/scalar moment of the
+compactly supported F-1 representative is integrable.  No differentiability
+of the representative is required.
+
+Pinned mathlib's Fourier-derivative API then proves that the ordinary Fourier
+transform of the representative is C-infinity.  The derivative formulas plus
+the L1 norm bound for the Fourier integral give uniform bounds on every
+derivative, hence:
+
+~~~text
+Function.HasTemperateGrowth (𝓕 carrier.h)
+~~~
+
+with polynomial degree zero sufficient for each derivative.
+
+Successful validation evidence:
+
+~~~text
+carrier moment + Fourier smoothness:
+    run:  36794685260
+    job:  110155298721
+    head: 2c9b74e74590d1766f681ac2155bdc418f9845d0
+
+temperate-growth extension:
+    run:  36795139285
+    job:  110156751629
+    head: eedbd92800e750711c02e7a5c30b97f50f75d85c
+    blob: 4bb1fec7270d25fc8a9b899b8d3f204e12b342b1
+~~~
+
+Both exact module builds and unfinished-proof/project-axiom rejection gates
+passed.
+
+The carrier therefore contributes no remaining smoothness assumption to the
+F-4 Schwartz seam.
+
+Current remaining seam:
+
+~~~text
+1. bundle the positive-R Gaussian seed as SchwartzMap ℝ ℂ;
+2. impose the exact project Fourier normalization / modulation / scaling;
+3. multiply the seed by the certified temperate multiplier 𝓕 h;
+4. inverse Fourier transform;
+5. identify the resulting SchwartzMap pointwise with
+   movingGaussianFilteredMode Ck R carrier.
+~~~
+
+Next cursor:
+
+~~~text
+RPB-103 / WD-T40 F-4 GAUSSIAN SCHWARTZ SEED + MOVING-MODE FOURIER IDENTIFICATION
+~~~
+
+Do not add a smoothness premise on carrier.h.  Compact cutoff convergence and
+logarithmic coercivity remain downstream.
