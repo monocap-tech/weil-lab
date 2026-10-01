@@ -5,7 +5,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory Filter
-open scoped ComplexConjugate SchwartzMap
+open scoped ComplexConjugate SchwartzMap Topology
 
 /-- Integral-growth residual: genuine weighted L1 mass replaces the stronger
 pointwise exponential field. Source realization is a separate obligation. -/
@@ -37,8 +37,8 @@ theorem integralGrowth_pairing_bound
     by_cases hin : x ∈ Set.Ioo (-a) a
     · simp only [hx hin, mul_zero, norm_zero, zero_mul, le_refl]
     · have he : Real.exp (κ * |x|) * Real.exp (-κ * |x|) = 1 := by
-        rw [← Real.exp_add]
-        convert Real.exp_zero using 1 <;> ring
+      rw [← Real.exp_add]
+        rw [show κ * |x| + -κ * |x| = 0 by ring, Real.exp_zero]
       have hid :
           (‖q x‖ * Real.exp (-κ * |x|)) * (‖g x‖ * Real.exp (κ * |x|)) =
             ‖g x‖ * ‖q x‖ := by
@@ -109,6 +109,7 @@ theorem movingGaussianFilteredMode_weighted_exterior_bound
   have hf := movingGaussianFilteredMode_norm_le_radiusEnvelope carrier a hca Ck R x hc hR hx
   have ht := gaussianTailCompletion_bound hκ hR hc hca hlarge hx
   have he : Real.exp (-R * (|x|-c)^2 / 16) ≤ 1 := by
+    rw [← Real.exp_zero]
     apply Real.exp_le_exp.mpr
     nlinarith [mul_nonneg hR (sq_nonneg (|x|-c))]
   have ht' : Real.exp (κ * |x|) * gaussianSupportEnvelope R c x ≤
