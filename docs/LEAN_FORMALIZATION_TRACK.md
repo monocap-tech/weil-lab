@@ -1,5 +1,43 @@
 # Lean Formalization Track
 
+## RPB-108 — explicit real source diagonal and retained shifted comparison
+
+This pass continues from `71dddf5382d0b876b96599406a4a923950ed654e`.
+`WeilDefect.Morphology.NeutralWeilSourceDiagonal` evaluates the actual
+multiplier-plus-pole form's diagonal as real normalized multiplier energy
+plus `2 Re(conj(Mminus) Mplus)`. Signed energy genuinely converges, and
+the carrier's pole expression agrees with the real Hermitian pairing against
+the previously named physical source pole.
+
+The absolute-symbol estimate needed for mixed convergence is now derived from
+the retained shifted lower/upper logarithmic comparisons. The new constructor
+consumes those comparisons directly; no independent absolute-bound analytic
+input is required. The mixed comparison consumes the explicit source
+quadratic formula on the same retained domain.
+
+Certification: exact module passed 8,956 jobs on Lean 4.34.0 and mathlib
+`5ed2965256430c3649e86755f9576b54eca72435`. Validation head
+`3e285dea9d9ca673fd7f568003d10763b5e7f398`, run `36907744139`,
+job `110522433582`, source blob `e1949dd4a3996e2e9445c3117aaa3459d3da36b9`.
+All ten audited endpoints use only `propext`, `Classical.choice`, and
+`Quot.sound`; the unfinished/project-axiom declaration gate passed.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+NEXT: ACTUAL SOURCE DOMAIN / EXPLICIT QUADRATIC IDENTITY / NORMALIZED ESTIMATES
+      + ACTUAL CORE REPRESENTATIVE / REGULARITY / GROWTH / CENTRAL CANCELLATION
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+Actual source witnesses remain unconstructed. The real diagonal identity
+does not establish a regular core representative or extend the domain to
+the exterior Gaussian test. WD-T40 and canonical standing are unchanged.
+
+See [source-diagonal checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_DIAGONAL_20261001.md)
+and [registered terminology](TERMINOLOGY_RPB108_SOURCE_DIAGONAL.md).
+
+
 ## RPB-108 — concrete source-domain mixed form
 
 This pass continues from `275f0a21f90fbb4b939b4b621efe09a62e5fc288`.
