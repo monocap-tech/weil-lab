@@ -1,5 +1,54 @@
 # Lean Formalization Track
 
+## RPB-108 — strict-source/right-limit threshold correction certified
+
+The pinned source's strict prime convention and the project's equality-retaining
+right-limit convention are now separate build-certified objects.
+
+New module:
+
+~~~text
+WeilDefect/Morphology/NeutralWeilSourceThreshold.lean
+~~~
+
+Lean proves that the correction Finset is exactly the at-most-one set of prime
+powers satisfying `log n = 2a`, and certifies
+
+~~~math
+\Psi_a^{\le}
+=
+\Psi_a^{<}-\Theta_a.
+~~~
+
+Away from a threshold the symbols coincide.  The finite threshold term has
+temperate growth, so the strict source symbol inherits temperate growth from
+the existing right-limit symbol premise with no additional external
+special-function input.
+
+~~~text
+run: 36867533110 / job: 110386685114
+checked-out head: db27a3a2536746060d6eb7c3dabe756b7f85b62e
+Lean: leanprover/lean4:v4.34.0
+mathlib: 5ed2965256430c3649e86755f9576b54eca72435
+target: lake build WeilDefect.Morphology.NeutralWeilSourceThreshold
+source blob: ae44725b1147992aa0392e130e46611e3a268bad
+build: PASS (8953 jobs)
+four audited endpoint axiom closures: propext, Classical.choice, Quot.sound
+declaration rejection gate: PASS
+~~~
+
+The remaining RPB-108 source frontier is no longer threshold bookkeeping:
+
+~~~text
+NEXT:
+FINITE-WINDOW SOURCE FORM-DOMAIN
++ HERMITIAN POLARIZATION / COMPLEXIFICATION
++ ACTUAL WHOLE-LINE RESIDUAL REPRESENTATIVE ATTACHMENT
+
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+
 ## RPB-108 — shell-corrected source-window globalization certified
 
 The all-compact frozen weak-realization premise is no longer the minimal

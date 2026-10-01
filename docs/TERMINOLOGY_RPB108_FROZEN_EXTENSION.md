@@ -88,3 +88,50 @@ conventions.
 
 **Registration:** RPB-108 source-window continuation, September 30, 2026
 (America/Los_Angeles).
+
+
+## Strict-source threshold correction
+
+The **strict-source symbol** uses exactly the prime convention in the pinned
+compact-window formula:
+
+~~~math
+\log n < 2a.
+~~~
+
+The project **right-limit symbol** instead retains equality-threshold prime
+powers:
+
+~~~math
+\log n \le 2a.
+~~~
+
+Their difference is the **equality-threshold correction**.  Its index set is
+
+~~~text
+rightLimitThresholdFinset a
+=
+rightLimitPrimePowerFinset a \ activePrimePowerFinset a.
+~~~
+
+It contains exactly the prime powers satisfying `log n = 2a`, and hence is
+subsingleton.
+
+In mathlib Fourier coordinates the exact relation is
+
+~~~math
+\Psi_a^{\le}(\xi)
+=
+\Psi_a^{<}(\xi)-\Theta_a(\xi),
+~~~
+
+where `Θ_a` is the finite threshold trigonometric contribution.  Away from
+a threshold, `Θ_a=0` and the source and right-limit symbols coincide.
+
+This correction is finite and temperate.  Therefore the strict-source symbol
+inherits temperate growth from the already-certified right-limit symbol plus
+the explicit threshold term; no additional special-function asymptotic is
+imported.
+
+**Registration:** RPB-108 threshold-correction continuation, October 1, 2026
+(America/Los_Angeles).

@@ -48,6 +48,7 @@ import WeilDefect.Morphology.NeutralGaussianHermitianBridge
 import WeilDefect.Morphology.NeutralWeilFrozenExtension
 import WeilDefect.Morphology.NeutralWeilPrimeShellTranslation
 import WeilDefect.Morphology.NeutralWeilSourceWindowAttachment
+import WeilDefect.Morphology.NeutralWeilSourceThreshold
 
 import WeilDefect.Morphology.Noncompact
 

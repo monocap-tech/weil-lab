@@ -1,5 +1,46 @@
 # Lean Status
 
+## RPB-108 strict-source/right-limit threshold delta
+
+The source strict `<` prime convention and project right-limit `≤`
+convention are now explicitly separated and build-certified.
+
+~~~text
+run: 36867533110
+job: 110386685114
+head: db27a3a2536746060d6eb7c3dabe756b7f85b62e
+target: lake build WeilDefect.Morphology.NeutralWeilSourceThreshold
+blob: ae44725b1147992aa0392e130e46611e3a268bad
+result: PASS
+axiom audit: only propext, Classical.choice, Quot.sound
+declaration gate: PASS
+~~~
+
+Certified relation:
+
+~~~math
+\Psi_a^{\le}(\xi)
+=
+\Psi_a^{<}(\xi)-\Theta_a(\xi),
+~~~
+
+where `Theta_a` is supported on the at-most-one equality-threshold prime
+power.  The strict source symbol is also internally certified to have
+temperate growth from the right-limit premise plus this finite correction.
+
+Remaining blocker:
+
+~~~text
+FINITE-WINDOW SOURCE FORM-DOMAIN
++ HERMITIAN POLARIZATION / COMPLEXIFICATION
++ ACTUAL RESIDUAL REPRESENTATION
+  (local integrability + central vanishing + exponential growth)
+~~~
+
+RPB-108 remains active.  Logarithmic coercivity has not started.
+
+
+
 ## RPB-108 source-window globalization delta
 
 The finite prime-shell transport now permits a lawful reduction of the
