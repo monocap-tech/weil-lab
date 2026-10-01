@@ -5,7 +5,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory
-open scoped SchwartzMap
+open scoped SchwartzMap ComplexConjugate
 
 /-- Complex conjugation preserves Schwartz class because it is real-linear and isometric. -/
 def conjugateSchwartz (f : SchwartzMap ℝ ℂ) : SchwartzMap ℝ ℂ :=
@@ -13,7 +13,7 @@ def conjugateSchwartz (f : SchwartzMap ℝ ℂ) : SchwartzMap ℝ ℂ :=
 
 @[simp]
 theorem conjugateSchwartz_apply (f : SchwartzMap ℝ ℂ) (x : ℝ) :
-    conjugateSchwartz f x = Complex.conj (f x) := by
+    conjugateSchwartz f x = conj (f x) := by
   rw [conjugateSchwartz, SchwartzMap.postcompCLM_apply]
   rfl
 
@@ -43,7 +43,7 @@ theorem movingGaussianFilteredModeDualTest_apply
     (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
     (x : ℝ) :
     movingGaussianFilteredModeDualTest Ck R hR carrier x =
-      Complex.conj (movingGaussianFilteredMode Ck R carrier x) := by
+      conj (movingGaussianFilteredMode Ck R carrier x) := by
   simp [movingGaussianFilteredModeDualTest,
     movingGaussianFilteredModeSchwartz_apply]
 
@@ -116,7 +116,7 @@ theorem neutralWeilSourcePole_pairing_eq
         B * (carrier.h x * (Real.exp (-(1 / 2 : ℝ) * x) : ℂ))) := by
     funext x
     simp [neutralWeilSourcePole, neutralWeilExponentialPole, A, B]
-    ring
+    ring_nf
   rw [hfun, integral_add (hplus.const_mul A) (hminus.const_mul B),
     integral_const_mul, integral_const_mul]
   rw [← neutralWeilPoleMoment_eq_integral carrier (1 / 2)]
@@ -130,18 +130,24 @@ At phase i this flips sign.
 -/
 theorem complex_bilinear_phase_I (z w : ℂ) :
     (Complex.I * z) * (Complex.I * w) = -(z * w) := by
-  ring_nf
+  calc
+    (Complex.I * z) * (Complex.I * w)
+        = (Complex.I * Complex.I) * (z * w) := by ring
+    _ = -(z * w) := by rw [Complex.I_mul_I]; simp
 
 /--
 A Hermitian pairing is invariant under a common unit phase.
 At phase i the conjugation cancels the square-phase sign.
 -/
 theorem complex_hermitian_phase_I (z w : ℂ) :
-    Complex.conj (Complex.I * z) * (Complex.I * w)
+    conj (Complex.I * z) * (Complex.I * w)
       =
-    Complex.conj z * w := by
-  simp [Complex.conj_mul]
-  ring
+    conj z * w := by
+  rw [map_mul, Complex.conj_I]
+  calc
+    (-Complex.I * conj z) * (Complex.I * w)
+        = -(Complex.I * Complex.I) * (conj z * w) := by ring
+    _ = conj z * w := by rw [Complex.I_mul_I]; simp
 
 end
 
