@@ -1,5 +1,35 @@
 # Lean Formalization Track
 
+## RPB-108 — finite digamma tail split and Gauss kernel limit
+
+Continues from `e873b75ea172e31a55362bf39ab303c0da68bbfd`.
+`NeutralFiniteGauss` derives the actual scalar digamma tail identity from
+mathlib's proved recurrence. It constructs the finite geometric exponential
+kernel, proves its exact remainder formula, and proves its pointwise limit
+away from the singular diagonal. No Gauss identity is retained as a premise.
+
+The pinned mathlib Digamma file explicitly lists Gauss's integral representation
+as TODO. The new finite identities do not assert Fourier identification or an
+operator limit. Finite resolvent/kernel Fourier transfer and control of the
+shifted tail are next; source cancellation, boundary reconstruction and actual
+source-domain/polarization attachment remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_GAUSS_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,963 build jobs passed. Six endpoints use only `propext`, `Classical.choice`,
+and `Quot.sound`; declaration gate passed. Validation head
+`fc66ef1e6111d637f5c538f0e4f8c48cda386aa9`, run `36942968489`,
+job `110638504163`, source blob `b5ba95325f037c893d1da96866bb3fd064764978`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+FINITE DIGAMMA TAIL IDENTITY / GEOMETRIC KERNEL LIMIT: CONSTRUCTED
+NEXT: FINITE RESOLVENT FOURIER TRANSFER + SHIFTED TAIL OPERATOR LIMIT
+      → ARCHIMEDEAN SOURCE ATTACHMENT; CENTRAL/BOUNDARY RECONSTRUCTION
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — full physical prime action and exact core split
 
 Continues from `353d42a6aa48881be3a73aca7215881fcacba0d8`.

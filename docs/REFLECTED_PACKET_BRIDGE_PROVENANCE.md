@@ -224,3 +224,26 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 finite digamma tail and Gauss kernel limit, October 1, 2026
+
+Recovered research head: `e873b75ea172e31a55362bf39ab303c0da68bbfd`.
+Exact-module validation head: `fc66ef1e6111d637f5c538f0e4f8c48cda386aa9`.
+Run `36942968489`, job `110638504163`, source blob
+`b5ba95325f037c893d1da96866bb3fd064764978`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,963 jobs passed. All six audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; the declaration gate passed.
+
+The actual finite scalar tail identity follows from the proved digamma
+recurrence. The finite geometric Gauss kernel has an exact remainder formula
+and converges pointwise off the diagonal to the positive half-density.
+The pinned Digamma file lists Gauss integral representation as TODO; no
+missing Gauss premise is assumed. Finite Fourier transfer, shifted-tail
+operator control, source attachment, central/boundary reconstruction and
+actual source-domain attachment remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.

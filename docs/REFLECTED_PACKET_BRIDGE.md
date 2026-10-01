@@ -9,7 +9,7 @@
 
 ## Current standing
 
-This pass continues from `353d42a6aa48881be3a73aca7215881fcacba0d8`.
+This pass continues from `e873b75ea172e31a55362bf39ab303c0da68bbfd`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -77,10 +77,16 @@ mass at every rate above one half, and supplies all analytic residual fields
 at rate one. Central source cancellation and whole-line distribution/source
 identification remain open. See [exterior residual continuation](../notes/REFLECTED_PACKET_BRIDGE_108_EXTERIOR_RESIDUAL_20261001.md).
 
-The current continuation attaches the full physical finite-prime action and
+The core split continuation attaches the full physical finite-prime action and
 splits the actual multiplier core into the archimedean action minus that
 explicit convergent prime pairing. The unidentified physical multiplier
 component is precisely archimedean. See [core split continuation](../notes/REFLECTED_PACKET_BRIDGE_108_CORE_SPLIT_20261001.md).
+
+The current continuation derives an exact finite digamma tail identity from
+the proved recurrence and constructs the finite Gauss kernel with its exact
+geometric remainder and off-diagonal pointwise limit. Fourier identification
+and the shifted-tail operator limit remain open; no Gauss identity is assumed.
+See [finite Gauss continuation](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_GAUSS_20261001.md).
 
 | Obligation | Current state |
 | --- | --- |
@@ -99,6 +105,7 @@ component is precisely archimedean. See [core split continuation](../notes/REFLE
 | Actual archimedean exterior function, regularity and weighted mass | Constructed; 8,960 build jobs and nine axiom audits passed |
 | Concrete exterior residual candidate and all analytic residual fields | Constructed; 8,961 build jobs and eight axiom audits passed |
 | Full physical prime action and exact actual multiplier core split | Constructed; 8,962 build jobs and six axiom audits passed |
+| Actual finite digamma tail identity and off-diagonal kernel limit | Constructed; 8,963 build jobs and six axiom audits passed |
 | Actual source form-domain membership and form identification | Open |
 | Actual core representative, regularity/growth and central cancellation | Open |
 | F-4 logarithmic Gaussian coercivity | Not started |
@@ -121,7 +128,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    analytic fields; its exact exterior distribution attachment, central source
    cancellation and boundary/whole-line reconstruction remain open. The full
    finite-prime action is attached; singular archimedean identification is
-   the remaining physical multiplier component.
+   the remaining physical multiplier component. The finite scalar tail split
+   and geometric kernel limit are constructed; finite Fourier transfer and
+   the shifted-tail operator limit remain open.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
@@ -162,3 +171,6 @@ registers the explicit candidate and its separate central reconstruction attachm
 
 The [core split supplement](TERMINOLOGY_RPB108_CORE_SPLIT.md) distinguishes
 the actual archimedean multiplier action from its unproved physical attachment.
+
+The [finite Gauss supplement](TERMINOLOGY_RPB108_FINITE_GAUSS.md) registers
+the finite scalar/kernel construction without asserting its operator transfer.
