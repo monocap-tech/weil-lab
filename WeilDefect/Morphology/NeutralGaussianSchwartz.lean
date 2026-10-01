@@ -88,6 +88,44 @@ theorem neutralPhysicalRepresentative_fourier_contDiff
   intro n hn
   exact neutralPhysicalRepresentative_polynomialNorm_integrable carrier n
 
+
+/--
+The ordinary Fourier transform of the compactly supported F-1 representative
+has temperate growth.  In fact every derivative is uniformly bounded, so
+degree zero suffices in the temperate-growth bound.
+-/
+theorem neutralPhysicalRepresentative_fourier_hasTemperateGrowth
+    {c : ℝ}
+    {EndpointObs RightObs : Type*}
+    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
+    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
+    Function.HasTemperateGrowth (𝓕 carrier.h) := by
+  refine ⟨neutralPhysicalRepresentative_fourier_contDiff carrier, ?_⟩
+  intro n
+  let g : ℝ → ℂ :=
+    fun x : ℝ =>
+      (-2 * Real.pi * Complex.I * x) ^ n • carrier.h x
+  refine ⟨0, ∫ x : ℝ, ‖g x‖, ?_⟩
+  intro ξ
+  have hderiv :
+      iteratedDeriv n (𝓕 carrier.h) = 𝓕 g := by
+    simpa [g] using
+      (Real.iteratedDeriv_fourier
+        (f := carrier.h)
+        (N := (⊤ : ℕ∞))
+        (n := n)
+        (fun m hm =>
+          neutralPhysicalRepresentative_polynomialSmul_integrable
+            carrier m)
+        le_top)
+  rw [norm_iteratedFDeriv_eq_norm_iteratedDeriv, hderiv]
+  simp only [pow_zero, mul_one]
+  rw [Real.fourier_real_eq]
+  exact
+    (norm_integral_le_integral_norm _).trans_eq
+      (by simp [g])
+
 end
 
 end WeilDefect
