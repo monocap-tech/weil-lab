@@ -33,17 +33,42 @@ theorem compactSchwartz_support_in_symmetric_window
     exact ⟨by linarith, by linarith⟩
 
 /--
-Source-facing local-window premise.
+For an arbitrary Schwartz test, the base frozen action equals the larger-window
+action plus the exact physical prime shell added between the two radii.
 
-For every enlarged finite window, the source supplies:
-1. the already explicit temperate-growth witness for that window's symbol;
-2. the polarized compact-test identity for tests supported in that same window.
-
-This is deliberately weaker than an all-compact-test whole-line identity at
-one frozen cutoff.  The globalization theorem below derives the latter using
-the certified finite-prime-shell compression theorem.
+Unlike the old-window compression theorem, this statement imposes no support
+restriction on the test.  The shell term is precisely what is lost when the
+test leaves the old window.
 -/
-structure RightLimitWeilPolarizedSourceWindowPremise
+theorem frozenWeilCompactAction_eq_larger_add_shell
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
+    {a b : ℝ} (hab : a ≤ b)
+    (ha : RightLimitWeilSymbolTemperatePremise a)
+    (hb : RightLimitWeilSymbolTemperatePremise b)
+    (u : SchwartzMap ℝ ℂ) (hu : HasCompactSupport u) :
+    frozenWeilCompactAction carrier a ha u hu =
+      frozenWeilCompactAction carrier b hb u hu +
+        ∫ x : ℝ, u x * frozenWeilPrimeShellPhysical carrier a b x ∂volume := by
+  have hdiff :=
+    frozenWeilCompactAction_radius_correction carrier hab ha hb u hu
+  rw [frozenWeilPrimeShell_fourier_physical_pairing] at hdiff
+  linear_combination hdiff
+
+/--
+Source-facing shell-corrected local-window premise.
+
+For every enlarged finite source window, the source-side realization must
+identify the selected frozen residual with the larger-window compact action
+plus the explicit finite prime shell needed to return to the fixed base
+cutoff.
+
+This is the lawful replacement for the invalid statement that a larger-window
+action can be compressed to the base action on an arbitrary larger-support
+test.  On tests already supported in the base window, the shell pairing
+vanishes by the certified support theorem and this reduces to ordinary
+compression.
+-/
+structure RightLimitWeilCorrectedSourceWindowPremise
     (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
     (residual : NeutralExponentialResidualCarrier c) : Prop where
   symbolAt :
@@ -54,22 +79,25 @@ structure RightLimitWeilPolarizedSourceWindowPremise
       (u : SchwartzMap ℝ ℂ) (hu : HasCompactSupport u),
       Function.support u ⊆ Set.Ioo (-b) b →
       (∫ x : ℝ, u x * residual.q x ∂volume) =
-        frozenWeilCompactAction carrier b (symbolAt b hab) u hu
+        frozenWeilCompactAction carrier b (symbolAt b hab) u hu +
+          ∫ x : ℝ,
+            u x * frozenWeilPrimeShellPhysical carrier residual.a b x
+            ∂volume
 
 /--
-Window-local polarized source identities globalize to the exact frozen-cutoff
-weak-realization premise.
+Shell-corrected finite-window source identities globalize to the exact
+all-compact-test frozen weak-realization premise.
 
-The proof uses only compactness of the test support and the certified internal
-compression equality between the base frozen action and any larger-window
-frozen action.
+The compact support of each test is used only to choose a large enough source
+window.  The return from that window to the fixed base cutoff carries the
+finite prime-shell correction explicitly.
 -/
-theorem rightLimitWeilWeakRealizationPremise_of_sourceWindows
+theorem rightLimitWeilWeakRealizationPremise_of_correctedSourceWindows
     (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
     (residual : NeutralExponentialResidualCarrier c)
     (hBase : RightLimitWeilSymbolTemperatePremise residual.a)
     (hSource :
-      RightLimitWeilPolarizedSourceWindowPremise carrier residual) :
+      RightLimitWeilCorrectedSourceWindowPremise carrier residual) :
     RightLimitWeilWeakRealizationPremise
       c carrier residual hBase (neutralWeilSourcePole carrier) := by
   refine ⟨(neutralWeilSourcePole_growthData carrier).pole_locallyIntegrable, ?_⟩
@@ -79,26 +107,32 @@ theorem rightLimitWeilWeakRealizationPremise_of_sourceWindows
   let hb := hSource.symbolAt b hab
   have hlocal :
       (∫ x : ℝ, u x * residual.q x ∂volume) =
-        frozenWeilCompactAction carrier b hb u hu := by
+        frozenWeilCompactAction carrier b hb u hu +
+          ∫ x : ℝ,
+            u x * frozenWeilPrimeShellPhysical carrier residual.a b x
+            ∂volume := by
     exact hSource.weakIdentityOnWindow b hab u hu huWindow
-  have hcompress :
+  have hreturn :
       frozenWeilCompactAction carrier residual.a hBase u hu =
-        frozenWeilCompactAction carrier b hb u hu := by
-    exact frozenWeilCompactAction_compression_eq
-      carrier hab residual.strict.le hBase hb u hu huWindow
-  exact hlocal.trans hcompress.symm
+        frozenWeilCompactAction carrier b hb u hu +
+          ∫ x : ℝ,
+            u x * frozenWeilPrimeShellPhysical carrier residual.a b x
+            ∂volume :=
+    frozenWeilCompactAction_eq_larger_add_shell
+      carrier hab hBase hb u hu
+  exact hlocal.trans hreturn.symm
 
 /--
-The previously certified Hermitian Gaussian bridge can consume the weaker
-source-window premise after globalization.  No new Gaussian identity is
-assumed here.
+The certified Hermitian Gaussian bridge consumes the shell-corrected
+finite-window source premise after globalization.  No new Gaussian identity is
+assumed.
 -/
-theorem rightLimitWeilGaussianHermitian_of_sourceWindows
+theorem rightLimitWeilGaussianHermitian_of_correctedSourceWindows
     (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
     (residual : NeutralExponentialResidualCarrier c)
     (hBase : RightLimitWeilSymbolTemperatePremise residual.a)
     (hSource :
-      RightLimitWeilPolarizedSourceWindowPremise carrier residual)
+      RightLimitWeilCorrectedSourceWindowPremise carrier residual)
     (Ck : ℂ) {R : ℝ} (hc : 0 ≤ c) (hR : 0 < R)
     (hqLarge :
       8 * residual.growthRate ≤ R * (residual.a - c))
@@ -125,7 +159,7 @@ theorem rightLimitWeilGaussianHermitian_of_sourceWindows
           neutralWeilSourcePole carrier x
         ∂volume := by
   let hEXT4 :=
-    rightLimitWeilWeakRealizationPremise_of_sourceWindows
+    rightLimitWeilWeakRealizationPremise_of_correctedSourceWindows
       carrier residual hBase hSource
   exact
     rightLimitWeilGaussianHermitian_of_growth
