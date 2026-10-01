@@ -56,6 +56,9 @@ jobs:
           #print axioms WeilDefect.rightLimitThresholdPrimeSymbolMathlib_eq
           #print axioms WeilDefect.rightLimitCompactWeilSymbolMathlib_eq_strictSource_sub_threshold
           #print axioms WeilDefect.strictSourceCompactWeilSymbolMathlib_hasTemperateGrowth
+          #print axioms WeilDefect.rightLimitThresholdPrime_fourier_physical_pairing
+          #print axioms WeilDefect.frozenWeilCompactAction_eq_strictSource_sub_threshold
+          #print axioms WeilDefect.StrictSourceCorrectedWindowPremise.toRightLimit
           LEAN
           lake env lean /tmp/rpb108-threshold-audit.lean | tee /tmp/rpb108-threshold-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-threshold-axioms.txt; then exit 1; fi
