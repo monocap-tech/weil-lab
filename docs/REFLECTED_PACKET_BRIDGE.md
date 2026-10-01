@@ -9,7 +9,7 @@
 
 ## Current standing
 
-This pass continues from `200e25ba4ce3d261841176b30372579bc5cf0782`.
+This pass continues from `238f9afcfe9ae41176e95f58b33d0f6670b58301`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -45,12 +45,18 @@ carrier, this pole expression equals the real Hermitian pairing with the named
 physical pole. The source comparison now consumes this explicit quadratic
 formula on the retained domain. See [source-diagonal continuation](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_DIAGONAL_20261001.md).
 
-The current continuation establishes actual global L1/local integrability,
+The finite-prime continuation establishes actual global L1/local integrability,
 compact support and exponential-weighted norm integrability for the finite
 prime translations. Their support-gap pairing is controlled by L1 mass.
 The full residual's present pointwise growth fields require additional
 regularity or an integral-growth bridge; compact L2 support does not supply
 them. See [prime-regularity continuation](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME_REGULARITY_20261001.md).
+
+The current continuation constructs the integral-growth Gaussian bridge:
+finite weighted L1 mass and a.e. central cancellation suffice for genuine
+Hermitian pairing integrability and explicit collar decay of the actual
+Gaussian mode. The physical shell supplies a concrete instance; full source
+realization remains open. See [integral-growth continuation](../notes/REFLECTED_PACKET_BRIDGE_108_INTEGRAL_GROWTH_20261001.md).
 
 | Obligation | Current state |
 | --- | --- |
@@ -64,6 +70,7 @@ them. See [prime-regularity continuation](../notes/REFLECTED_PACKET_BRIDGE_108_P
 | Real source diagonal and derived shifted-comparison bound | Build-certified from retained inputs |
 | Residual construction from represented core | Build-certified |
 | Actual finite-prime local regularity and integral growth | Build-certified |
+| Integral-growth Gaussian pairing and actual shell instance | Build-certified |
 | Actual source form-domain membership and form identification | Open |
 | Actual core representative, regularity/growth and central cancellation | Open |
 | F-4 logarithmic Gaussian coercivity | Not started |
@@ -80,7 +87,8 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    estimates there; the diagonal and mixed comparison bridges are constructed.
 3. Establish the actual core representative with regularity and growth,
    and attach central cancellation of r + p_h. The finite-prime L1 component
-   is constructed; the archimedean core and growth bridge remain open.
+   is constructed, and the integral-growth Gaussian pairing bridge is
+   constructed; the archimedean function and weighted mass remain open.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
@@ -106,3 +114,6 @@ The explicit real diagonal and shifted-bound attachment are registered in the
 
 Finite-prime and integral-growth wording is registered in the additive
 [prime-regularity supplement](TERMINOLOGY_RPB108_PRIME_REGULARITY.md).
+
+Integral-growth Gaussian wording is registered in the additive
+[integral-growth supplement](TERMINOLOGY_RPB108_INTEGRAL_GROWTH.md).
