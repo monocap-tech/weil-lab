@@ -45,7 +45,19 @@ jobs:
 
       - name: Check current theorem target
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
+        run: lake build WeilDefect.Morphology.NeutralWeilSourceThreshold
+
+      - name: Inspect transitive endpoint axioms
+        shell: bash
+        run: |
+          cat > /tmp/rpb108-threshold-action-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralWeilSourceThreshold
+          #print axioms WeilDefect.rightLimitThresholdPrime_fourier_physical_pairing
+          #print axioms WeilDefect.frozenWeilCompactAction_eq_strictSource_sub_threshold
+          #print axioms WeilDefect.StrictSourceCorrectedWindowPremise.toRightLimit
+          LEAN
+          lake env lean /tmp/rpb108-threshold-action-audit.lean | tee /tmp/rpb108-threshold-action-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-threshold-action-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
