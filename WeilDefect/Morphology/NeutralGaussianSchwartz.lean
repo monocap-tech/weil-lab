@@ -84,9 +84,12 @@ theorem neutralPhysicalRepresentative_fourier_contDiff
     [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
     (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
     ContDiff ℝ ⊤ (𝓕 carrier.h) := by
-  apply Real.contDiff_fourier
-  intro n hn
-  exact neutralPhysicalRepresentative_polynomialNorm_integrable carrier n
+  have h :
+      ContDiff ℝ (↑(⊤ : ℕ∞)) (𝓕 carrier.h) := by
+    apply Real.contDiff_fourier (N := (⊤ : ℕ∞))
+    intro n hn
+    exact neutralPhysicalRepresentative_polynomialNorm_integrable carrier n
+  simpa using h
 
 end
 
