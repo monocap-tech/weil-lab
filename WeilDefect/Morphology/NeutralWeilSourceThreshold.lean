@@ -139,8 +139,15 @@ theorem strictSourceCompactWeilSymbolMathlib_hasTemperateGrowth
         (fun ξ : ℝ => (rightLimitCompactWeilSymbolMathlib a ξ : ℂ)) +
           (fun ξ : ℝ => (rightLimitThresholdPrimeSymbolMathlib a ξ : ℂ)) := by
     funext ξ
-    rw [rightLimitCompactWeilSymbolMathlib_eq_strictSource_sub_threshold]
-    ring
+    simp only [Pi.add_apply]
+    have hreal :
+        strictSourceCompactWeilSymbolMathlib a ξ =
+          rightLimitCompactWeilSymbolMathlib a ξ +
+            rightLimitThresholdPrimeSymbolMathlib a ξ := by
+      have h :=
+        rightLimitCompactWeilSymbolMathlib_eq_strictSource_sub_threshold a ξ
+      linarith
+    exact_mod_cast hreal
   rw [heq]
   exact hRight.hasTemperateGrowth.add hthreshold
 
