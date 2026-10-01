@@ -54,6 +54,7 @@ import WeilDefect.Morphology.NeutralWeilSourceMixedForm
 import WeilDefect.Morphology.NeutralWeilSourceDiagonal
 import WeilDefect.Morphology.NeutralWeilPrimeRegularity
 import WeilDefect.Morphology.NeutralIntegralGrowthGaussian
+import WeilDefect.Morphology.NeutralIntegralGrowthWeilIdentity
 
 import WeilDefect.Morphology.Noncompact
 

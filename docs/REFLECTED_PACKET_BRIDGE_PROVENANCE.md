@@ -114,6 +114,28 @@ workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
 
+## RPB-108 weighted Hermitian source identity, October 1, 2026
+
+Recovered research head: `e5653d51f559e9ecdcd249692a08902488748a27`.
+Validation head: `965b934fed9a7cca1c7ddad5d4c427c253fa3ed1`.
+Run `36931697060`, job `110602273298`, source blob
+`733587e649dadbc4fdbc8d2b97a2774813889753`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,959 jobs passed. All four audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; the declaration gate passed.
+
+Actual pole/Gaussian integrability uses radius geometry and half-rate growth,
+independently of residual pointwise growth. The weighted Hermitian Gaussian
+multiplier-plus-pole identity follows from the retained compact source
+realization, with both convergence obligations proved. Actual archimedean
+representation, weighted mass, central cancellation, compact source witness,
+and source-domain attachment remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.
+
 ## RPB-108 integral-growth Gaussian bridge, October 1, 2026
 
 Recovered research head: `238f9afcfe9ae41176e95f58b33d0f6670b58301`.

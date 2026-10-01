@@ -9,7 +9,7 @@
 
 ## Current standing
 
-This pass continues from `238f9afcfe9ae41176e95f58b33d0f6670b58301`.
+This pass continues from `e5653d51f559e9ecdcd249692a08902488748a27`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -52,11 +52,17 @@ The full residual's present pointwise growth fields require additional
 regularity or an integral-growth bridge; compact L2 support does not supply
 them. See [prime-regularity continuation](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME_REGULARITY_20261001.md).
 
-The current continuation constructs the integral-growth Gaussian bridge:
+The integral-growth continuation constructs the weighted Gaussian bridge:
 finite weighted L1 mass and a.e. central cancellation suffice for genuine
 Hermitian pairing integrability and explicit collar decay of the actual
 Gaussian mode. The physical shell supplies a concrete instance; full source
 realization remains open. See [integral-growth continuation](../notes/REFLECTED_PACKET_BRIDGE_108_INTEGRAL_GROWTH_20261001.md).
+
+The current continuation proves actual source-pole Gaussian convergence from
+radius geometry and derives the weighted Hermitian multiplier-plus-pole
+Gaussian identity from compact source realization. Both pairings genuinely
+converge; the compact source witness remains open. See [weighted weak-identity
+continuation](../notes/REFLECTED_PACKET_BRIDGE_108_WEIGHTED_WEAK_IDENTITY_20261001.md).
 
 | Obligation | Current state |
 | --- | --- |
@@ -71,6 +77,7 @@ realization remains open. See [integral-growth continuation](../notes/REFLECTED_
 | Residual construction from represented core | Build-certified |
 | Actual finite-prime local regularity and integral growth | Build-certified |
 | Integral-growth Gaussian pairing and actual shell instance | Build-certified |
+| Weighted pole convergence and Hermitian Gaussian weak extension | Build-certified from compact source input |
 | Actual source form-domain membership and form identification | Open |
 | Actual core representative, regularity/growth and central cancellation | Open |
 | F-4 logarithmic Gaussian coercivity | Not started |
@@ -117,3 +124,6 @@ Finite-prime and integral-growth wording is registered in the additive
 
 Integral-growth Gaussian wording is registered in the additive
 [integral-growth supplement](TERMINOLOGY_RPB108_INTEGRAL_GROWTH.md).
+
+Weighted weak-identity wording is registered in the additive
+[weak-identity supplement](TERMINOLOGY_RPB108_WEIGHTED_WEAK_IDENTITY.md).
