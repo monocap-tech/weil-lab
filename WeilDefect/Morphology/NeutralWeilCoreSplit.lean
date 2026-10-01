@@ -14,8 +14,7 @@ def neutralFinitePrimeSymbol (S : Finset ℕ) (ξ : ℝ) : ℝ :=
 
 theorem neutralFinitePrimeSymbol_temperate (S : Finset ℕ) :
     Function.HasTemperateGrowth (fun ξ : ℝ => (neutralFinitePrimeSymbol S ξ : ℂ)) := by
-  unfold neutralFinitePrimeSymbol
-  push_cast
+  simp only [neutralFinitePrimeSymbol, Complex.ofReal_sum, Complex.ofReal_mul]
   fun_prop
 
 variable {c : ℝ} {EndpointObs RightObs : Type*}
@@ -132,9 +131,10 @@ theorem neutralWeilMultiplierCore_eq_archimedean_sub_prime
     simp only [TemperedDistribution.fourierMultiplierCLM_apply_apply,
       SchwartzMap.smulLeftCLM_add hSymbol.hasTemperateGrowth
         (neutralFinitePrimeSymbol_temperate _),
-      ContinuousLinearMap.add_apply, map_add]
+      ContinuousLinearMap.add_apply, FourierTransform.fourier_add, map_add]
   rw [neutralFinitePrime_fourier_physical_pairing] at hadd
-  linear_combination hadd
+  rw [hadd]
+  ring
 
 end
 
