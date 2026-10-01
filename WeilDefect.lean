@@ -44,6 +44,7 @@ import WeilDefect.Morphology.NeutralGaussianCutoffPairing
 import WeilDefect.Morphology.NeutralWeilPoleGrowth
 import WeilDefect.Morphology.NeutralGaussianAssembly
 import WeilDefect.Morphology.NeutralGaussianDualityAudit
+import WeilDefect.Morphology.NeutralGaussianHermitianBridge
 
 import WeilDefect.Morphology.Noncompact
 
