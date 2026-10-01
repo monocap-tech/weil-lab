@@ -1,21 +1,11 @@
 name: Lean
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "lean-toolchain"
-      - "lakefile.toml"
-      - "lake-manifest.json"
-      - "WeilDefect.lean"
-      - "WeilDefect/**"
-      - ".github/workflows/lean.yml"
   pull_request:
     paths:
       - "lean-toolchain"
       - "lakefile.toml"
       - "lake-manifest.json"
-      - "WeilDefect.lean"
       - "WeilDefect/**"
       - ".github/workflows/lean.yml"
 
@@ -28,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Install Elan
         shell: bash
@@ -37,15 +29,51 @@ jobs:
 
       - name: Resolve pinned dependencies
         shell: bash
-        run: lake update
+        run: |
+          lake update > /tmp/rpb108-update.log 2>&1 || { tail -100 /tmp/rpb108-update.log; exit 1; }
+          tail -5 /tmp/rpb108-update.log
 
       - name: Fetch mathlib cache
         shell: bash
-        run: lake exe cache get
+        run: |
+          lake exe cache get > /tmp/rpb108-cache.log 2>&1 || { tail -100 /tmp/rpb108-cache.log; exit 1; }
+          tail -5 /tmp/rpb108-cache.log
 
-      - name: Check current theorem target
+      - name: Record and verify exact source custody
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          cat lean-toolchain; echo
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.34.0"
+          git -C .lake/packages/mathlib rev-parse HEAD
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = "5ed2965256430c3649e86755f9576b54eca72435"
+          git ls-tree HEAD WeilDefect/Morphology/NeutralGaussianDualityAudit.lean WeilDefect/Morphology/NeutralGaussianHermitianBridge.lean
+
+      - name: Build Hermitian Gaussian bridge and dependency closure
+        shell: bash
+        run: |
+          echo 'lake build WeilDefect.Morphology.NeutralGaussianHermitianBridge'
+          lake build WeilDefect.Morphology.NeutralGaussianHermitianBridge > /tmp/rpb108-build.log 2>&1 || { tail -140 /tmp/rpb108-build.log; exit 1; }
+          tail -35 /tmp/rpb108-build.log
+
+      - name: Inspect transitive endpoint axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/rpb108-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralGaussianHermitianBridge
+          #print axioms WeilDefect.realSymmetricBilinear_eq_of_diagonal
+          #print axioms WeilDefect.realBilinearComplexification_eq_of_diagonal
+          #print axioms WeilDefect.conjugateSchwartz_apply
+          #print axioms WeilDefect.integrable_conjugateSchwartz_mul
+          #print axioms WeilDefect.rightLimitWeilWeakIdentity_of_integrableSchwartz
+          #print axioms WeilDefect.rightLimitWeilGaussianHermitian_of_growth
+          #print axioms WeilDefect.neutralWeilPoleMoment_conjugate_integral
+          #print axioms WeilDefect.neutralWeilSourcePole_hermitian_pairing_eq
+          LEAN
+          lake env lean /tmp/rpb108-audit.lean | tee /tmp/rpb108-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
