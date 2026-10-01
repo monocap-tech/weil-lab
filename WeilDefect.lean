@@ -41,6 +41,8 @@ import WeilDefect.Morphology.NeutralGaussianSchwartzSeed
 import WeilDefect.Morphology.NeutralGaussianFilteredSchwartz
 import WeilDefect.Morphology.NeutralGaussianCutoff
 import WeilDefect.Morphology.NeutralGaussianCutoffPairing
+import WeilDefect.Morphology.NeutralWeilPoleGrowth
+import WeilDefect.Morphology.NeutralGaussianAssembly
 
 import WeilDefect.Morphology.Noncompact
 
