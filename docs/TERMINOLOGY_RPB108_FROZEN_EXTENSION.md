@@ -42,3 +42,49 @@ The source defines both expressions separately. Their Fourier compatibility is a
 Residual attachment means proving that the chosen actual residual represents `E_a(h;u)` for every compact Schwartz test. The theorem `frozenWeilCompactAction_represents_iff` characterizes exactly this obligation by the existing `RightLimitWeilWeakRealizationPremise`; it does not discharge it.
 
 **Registration:** RPB-108 frozen-extension continuation, September 30, 2026 (America/Los_Angeles).
+
+
+## Shell-corrected source-window premise
+
+The **shell-corrected source-window premise** is the finite-window source
+attachment used after the prime cutoff has been frozen at a base radius
+`a`.
+
+For a larger window `b >= a`, the base action is not identified with the
+larger-window action by support enlargement alone.  The exact relation is
+
+~~~math
+E_a(h;u)
+=
+E_b(h;u)
++
+\int_{\mathbb R}u(x)P_{a,b}h(x)\,dx,
+~~~
+
+where `P_{a,b}h` is the previously registered physical prime shell.
+
+Accordingly, a finite-window realization of the selected frozen residual has
+to carry that shell term explicitly:
+
+~~~math
+\int u(x)q_a(x)\,dx
+=
+E_b(h;u)
++
+\int u(x)P_{a,b}h(x)\,dx.
+~~~
+
+This premise is intentionally not called a free globalization or a
+compression identity.  The old-window compression theorem applies only when
+the test is already supported in the old window; an arbitrary compact test
+may require a larger source window and then the shell correction is
+load-bearing.
+
+The source's displayed compact-window prime condition uses a strict cutoff,
+while the project right-limit symbol retains equality-threshold prime powers.
+Therefore source reconstruction of this premise must keep the corresponding
+threshold correction explicit rather than silently identifying the two
+conventions.
+
+**Registration:** RPB-108 source-window continuation, September 30, 2026
+(America/Los_Angeles).

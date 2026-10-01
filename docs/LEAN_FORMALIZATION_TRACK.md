@@ -1,5 +1,51 @@
 # Lean Formalization Track
 
+## RPB-108 — shell-corrected source-window globalization certified
+
+The all-compact frozen weak-realization premise is no longer the minimal
+external source boundary.  The new certified module
+`NeutralWeilSourceWindowAttachment.lean` proves that it follows from a
+shell-corrected identity on each sufficiently large finite source window.
+
+A free support globalization was explicitly rejected: `E_b` compresses to
+`E_a` without correction only for tests already supported in the old
+window.  For arbitrary compact tests the exact certified relation is
+
+~~~math
+E_a(h;u)=E_b(h;u)+\int u(x)P_{a,b}h(x)\,dx.
+~~~
+
+The new finite-window premise carries that shell term explicitly and then
+globalizes to the existing `RightLimitWeilWeakRealizationPremise`.
+
+~~~text
+run: 36824968898 / job: 110248500881
+checked-out head: af0060d6acef81062a01eb06087dd3566bc800bb
+Lean: leanprover/lean4:v4.34.0
+mathlib: 5ed2965256430c3649e86755f9576b54eca72435
+target: lake build WeilDefect.Morphology.NeutralWeilSourceWindowAttachment
+source blob: 5be297c758f1f169be2f4eadf00996beeae3a6e4
+build: PASS (8952 jobs)
+four audited endpoint axiom closures: propext, Classical.choice, Quot.sound
+declaration rejection gate: PASS
+~~~
+
+The earlier green run `36823900387` built an unrelated inherited target and
+is explicitly not a certificate.
+
+The source reconstruction frontier is now finite-window:
+form-domain inclusion, polarization/complexification of the source quadratic
+identity, the strict-cutoff/right-limit equality-threshold correction, and
+attachment of the actual residual with its retained regularity/growth fields.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+NEXT: SOURCE QUADRATIC FORM-DOMAIN + THRESHOLD-CORRECTED LOCAL RESIDUAL ATTACHMENT
+HERMITIAN GAUSSIAN BRIDGE: READY DOWNSTREAM
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+
 ## RPB-108 — Fourier/physical shell certified; source attachment continues
 
 The [prime-shell translation certificate](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME_SHELL_TRANSLATION_20260930.md)

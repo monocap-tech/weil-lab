@@ -1,4 +1,58 @@
-# Lean Status Ledger
+# Lean Status
+
+## RPB-108 source-window globalization delta
+
+The finite prime-shell transport now permits a lawful reduction of the
+remaining EXT-4 source boundary.
+
+New certified module:
+
+~~~text
+WeilDefect/Morphology/NeutralWeilSourceWindowAttachment.lean
+~~~
+
+The base frozen action and a larger-window action satisfy, on every compact
+Schwartz test,
+
+~~~math
+E_a(h;u)=E_b(h;u)+\int uP_{a,b}h.
+~~~
+
+Therefore a shell-corrected finite-window source identity is sufficient to
+derive the exact all-compact-test `RightLimitWeilWeakRealizationPremise`.
+The previously certified Hermitian Gaussian theorem can consume that derived
+witness directly.
+
+Certification:
+
+~~~text
+run: 36824968898
+job: 110248500881
+head: af0060d6acef81062a01eb06087dd3566bc800bb
+target: lake build WeilDefect.Morphology.NeutralWeilSourceWindowAttachment
+blob: 5be297c758f1f169be2f4eadf00996beeae3a6e4
+result: PASS
+axiom audit: only propext, Classical.choice, Quot.sound
+declaration gate: PASS
+~~~
+
+The free-globalization draft was rejected: old-window compression cannot be
+used on an arbitrary test whose support only fits a larger source window.
+The finite shell is load-bearing there.
+
+Remaining blocker:
+
+~~~text
+SOURCE QUADRATIC FORM-DOMAIN
++ POLARIZATION/COMPLEXIFICATION ON EACH FINITE WINDOW
++ STRICT-< SOURCE PRIME CUTOFF TO RIGHT-LIMIT <= THRESHOLD CORRECTION
++ ACTUAL RESIDUAL REPRESENTATION / LOCAL INTEGRABILITY / CENTRAL VANISHING /
+  EXPONENTIAL-GROWTH ATTACHMENT
+~~~
+
+RPB-108 remains active.  Logarithmic coercivity has not started.
+
+ Ledger
 
 This file records formal verification separately from mathematical standing and P4 audit status.
 
