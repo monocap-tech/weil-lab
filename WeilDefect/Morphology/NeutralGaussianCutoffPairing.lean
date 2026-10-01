@@ -42,8 +42,10 @@ theorem residualFilteredMode_integrable
       simp [gaussianExteriorSet] at hxe
       exact ⟨hxe.1, hxe.2⟩
     have hq : residual.q x = 0 := hx hxin
-    simp [Set.indicator_of_not_mem hxe, f, hq]
+    simp [Set.indicator, hxe, f, hq]
 
+/-- Dominated convergence after explicitly factoring the cutoff scalar from
+an integrable product. No separate measurability assumption on g is needed. -/
 theorem neutralGaussianSchwartzCutoff_pairing_tendsto
     (f : SchwartzMap ℝ ℂ)
     (g : ℝ → ℂ)
@@ -51,58 +53,41 @@ theorem neutralGaussianSchwartzCutoff_pairing_tendsto
     Tendsto
       (fun N : ℕ =>
         ∫ x : ℝ,
-          neutralGaussianSchwartzCutoff ((N : ℝ) + 1) f x * g x
-          ∂volume)
-      atTop
-      (𝓝 (∫ x : ℝ, f x * g x ∂volume)) := by
-  apply tendsto_integral_of_dominated_convergence
-    (fun x : ℝ => ‖f x * g x‖)
+          neutralGaussianSchwartzCutoff ((N : ℝ) + 1) f x * g x ∂volume)
+      atTop (𝓝 (∫ x : ℝ, f x * g x ∂volume)) := by
+  have hrewrite (N : ℕ) :
+      (fun x : ℝ => neutralGaussianSchwartzCutoff ((N : ℝ) + 1) f x * g x) =
+      (fun x : ℝ => (neutralGaussianCutoffScalar ((N : ℝ) + 1) x : ℂ) *
+        (f x * g x)) := by
+    funext x
+    rw [neutralGaussianSchwartzCutoff_apply (by positivity : (N : ℝ) + 1 ≠ 0)]
+    exact mul_assoc _ _ _
+  simp_rw [hrewrite]
+  apply tendsto_integral_of_dominated_convergence (fun x : ℝ => ‖f x * g x‖)
   · intro N
-    have hcut :
-        AEStronglyMeasurable
-          (fun x : ℝ =>
-            (neutralGaussianCutoffScalar ((N : ℝ) + 1) x : ℂ)) volume := by
-      exact
-        (Complex.ofRealCLM.continuous.comp
-          (neutralGaussianCutoffScalar_contDiff ((N : ℝ) + 1)).continuous).aestronglyMeasurable
-    have hm := hcut.mul hpair.aestronglyMeasurable
-    refine hm.congr ?_
-    filter_upwards with x
-    rw [neutralGaussianSchwartzCutoff_apply
-      (by positivity : (N : ℝ) + 1 ≠ 0)]
-    simp only [Complex.ofReal_mul]
-    ring
+    have hcut : AEStronglyMeasurable
+        (fun x : ℝ => (neutralGaussianCutoffScalar ((N : ℝ) + 1) x : ℂ)) volume :=
+      (Complex.ofRealCLM.continuous.comp
+        (neutralGaussianCutoffScalar_contDiff ((N : ℝ) + 1)).continuous).aestronglyMeasurable
+    exact hcut.mul hpair.aestronglyMeasurable
   · exact hpair.norm
   · intro N
     exact Eventually.of_forall fun x => by
-      rw [neutralGaussianSchwartzCutoff_apply
-        (by positivity : (N : ℝ) + 1 ≠ 0),
-        norm_mul, Complex.norm_real]
-      have h0 : 0 ≤ neutralGaussianCutoffScalar ((N : ℝ) + 1) x := by
-        exact neutralGaussianCutoffBump.nonneg
-      have h1 : neutralGaussianCutoffScalar ((N : ℝ) + 1) x ≤ 1 := by
-        exact neutralGaussianCutoffBump.le_one
-      rw [abs_of_nonneg h0]
-      calc
-        neutralGaussianCutoffScalar ((N : ℝ) + 1) x * ‖f x‖ * ‖g x‖
-            = neutralGaussianCutoffScalar ((N : ℝ) + 1) x * ‖f x * g x‖ := by
-                rw [norm_mul]
-        _ ≤ 1 * ‖f x * g x‖ := by
-              exact mul_le_mul_of_nonneg_right h1 (norm_nonneg _)
-        _ = ‖f x * g x‖ := one_mul _
+      have h0 : 0 ≤ neutralGaussianCutoffScalar ((N : ℝ) + 1) x :=
+        neutralGaussianCutoffBump.nonneg
+      have h1 : neutralGaussianCutoffScalar ((N : ℝ) + 1) x ≤ 1 :=
+        neutralGaussianCutoffBump.le_one
+      rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg h0]
+      exact mul_le_of_le_one_left (norm_nonneg _) h1
   · exact Eventually.of_forall fun x => by
       have hr : Tendsto (fun N : ℕ => (N : ℝ) + 1) atTop atTop :=
         (tendsto_natCast_atTop_atTop :
           Tendsto (fun N : ℕ => (N : ℝ)) atTop atTop).atTop_add
             (tendsto_const_nhds (x := (1 : ℝ)))
-      have hev : ∀ᶠ N : ℕ in atTop, |x| ≤ (N : ℝ) + 1 :=
-        hr.eventually_ge_atTop |x|
-      apply tendsto_of_eventually_eq tendsto_const_nhds
-      filter_upwards [hev] with N hN
-      rw [neutralGaussianSchwartzCutoff_apply
-        (by positivity : (N : ℝ) + 1 ≠ 0),
-        neutralGaussianCutoffScalar_one
-          (by positivity : 0 < (N : ℝ) + 1) hN]
+      refine (tendsto_const_nhds (x := f x * g x)).congr' ?_
+      filter_upwards [hr.eventually_ge_atTop |x|] with N hN
+      rw [neutralGaussianCutoffScalar_one
+        (by positivity : 0 < (N : ℝ) + 1) hN]
       simp
 
 theorem movingGaussianFilteredModeCompactCutoff_residual_pairing_tendsto
