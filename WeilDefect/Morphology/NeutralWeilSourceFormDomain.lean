@@ -18,7 +18,7 @@ theorem sourceFormDomain_polarization
         Complex.I * B (x - Complex.I • y) (x - Complex.I • y)) / 4 := by
   simp only [map_add, map_sub, LinearMap.add_apply, LinearMap.sub_apply,
     map_smulₛₗ, LinearMap.smul_apply, smul_eq_mul, RingHom.id_apply,
-    starRingEnd_apply, Complex.star_def, Complex.conj_I,
+    Complex.conj_I,
     ← pow_two, Complex.I_sq, mul_add, ← mul_assoc, mul_neg, neg_neg,
     one_mul, neg_one_mul, mul_sub, sub_sub]
   ring
@@ -138,6 +138,7 @@ theorem neutralWeilResidualFromCore_weakRealization
   rw [integral_add
     (compactSchwartz_mul_locallyIntegrable u hu core.r core.locallyIntegrable)
     (frozenWeilCompactAction_pole_integrable carrier u hu), core.represents u hu]
+  rfl
 
 end
 
