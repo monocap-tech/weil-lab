@@ -29,6 +29,7 @@ theorem compactSchwartz_support_in_symmetric_window
     have hts : x ∈ tsupport u := subset_tsupport u hx
     have hball := hsub hts
     rw [Real.closedBall_eq_Icc, zero_sub, zero_add] at hball
+    rcases hball with ⟨hxl, hxr⟩
     dsimp [b]
     exact ⟨by linarith, by linarith⟩
 
