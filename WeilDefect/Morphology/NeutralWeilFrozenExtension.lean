@@ -113,6 +113,7 @@ theorem temperedFourierMultiplier_sub
   ext u
   simp [TemperedDistribution.fourierMultiplierCLM_apply_apply,
     SchwartzMap.smulLeftCLM_sub h₁ h₂]
+  exact (f.comp (FourierTransform.fourierCLM ℂ (SchwartzMap ℝ ℂ))).map_sub _ _
 
 /-- The frozen multiplier core is recovered from a larger cutoff by adding
 back exactly the shell multiplier. No global equality of the two cores is used. -/
