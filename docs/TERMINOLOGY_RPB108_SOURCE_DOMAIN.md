@@ -7,7 +7,8 @@ attachment.
 ## Retained source form domain
 
 The retained source form domain is a complex submodule of physical L2 whose
-members have finite logarithmically weighted Fourier energy. The attachment
+members are supported a.e. in the specified source window and have finite
+logarithmically weighted Fourier energy. The attachment
 `NeutralSourceFormDomainAttachment` requires explicit membership of the actual
 carrier. It does not infer membership from compact support, L2 membership, or
 smoothness of its ordinary Fourier transform. A diagonal source identity must

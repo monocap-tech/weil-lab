@@ -44,8 +44,11 @@ logarithmic energy are supplied explicitly, rather than inferred from L2 or
 from smoothness of the ordinary Fourier transform. Source diagonal attachment
 is a separate obligation. -/
 structure NeutralSourceFormDomainAttachment
-    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) where
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
+    (a : ℝ) where
   domain : Submodule ℂ RealComplexL2
+  supported : ∀ f : domain, ∀ᵐ x ∂volume,
+    x ∉ Set.Icc (-a) a → (f.val : ℝ → ℂ) x = 0
   carrier_mem : carrier.l2Mode ∈ domain
   logEnergy :
     ∀ f : domain,
