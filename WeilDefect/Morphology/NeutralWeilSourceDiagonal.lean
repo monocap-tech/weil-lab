@@ -60,6 +60,7 @@ theorem sourceDomain_signedEnergy_integrable (f : D.domain) :
   · filter_upwards [] with ξ
     simp only [Real.norm_eq_abs, abs_mul,
       abs_of_nonneg (sq_nonneg ‖(𝓕 f.val : RealComplexL2) ξ‖)]
+    exact le_rfl
 
 /-- The actual complex multiplier pairing diagonal is exactly the real
 normalized symbol energy, with no hidden Fourier scaling constant. -/
