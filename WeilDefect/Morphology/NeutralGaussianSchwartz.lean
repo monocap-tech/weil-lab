@@ -6,7 +6,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory
-open scoped FourierTransform SchwartzMap Topology
+open scoped FourierTransform SchwartzMap Topology ContDiff
 
 /--
 Compact support of the physical F-1 representative upgrades its L1
@@ -83,13 +83,10 @@ theorem neutralPhysicalRepresentative_fourier_contDiff
     [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
     [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
     (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
-    ContDiff ℝ ⊤ (𝓕 carrier.h) := by
-  have h :
-      ContDiff ℝ (↑(⊤ : ℕ∞)) (𝓕 carrier.h) := by
-    apply Real.contDiff_fourier (N := (⊤ : ℕ∞))
-    intro n hn
-    exact neutralPhysicalRepresentative_polynomialNorm_integrable carrier n
-  simpa using h
+    ContDiff ℝ ∞ (𝓕 carrier.h) := by
+  apply Real.contDiff_fourier (N := (⊤ : ℕ∞))
+  intro n hn
+  exact neutralPhysicalRepresentative_polynomialNorm_integrable carrier n
 
 end
 
