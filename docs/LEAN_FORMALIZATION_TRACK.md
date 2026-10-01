@@ -1,4 +1,15 @@
 # Lean Formalization Track
+
+## RPB-106 certification correction and live handoff
+
+The effective post-RPB-105 state and next cursor are recorded in [RPB-106 — certification repair and source-pole assembly](../notes/REFLECTED_PACKET_BRIDGE_106_20260930.md). That record supersedes the RPB-104/105 certificate claims in the historical snapshot below and in `LEAN_STATUS.md`.
+
+The original RPB-104 and RPB-105 green runs built `WeilDefect.Examples.WeakCriticalFallthrough`, not the named cutoff modules. Their statuses are preserved as run history, but their claimed certification scope is withdrawn. Repaired source must be associated with its own correct-target run and exact blobs; no later success retroactively changes what those original runs checked.
+
+For all subsequent certificates, read the actual build command and compiler trace, record the checked-out commit, pinned dependency revision and target blobs, and inspect the endpoint's transitive axioms. A green run on an unrelated target is not a certificate. Gaussian admissibility remains distinct from logarithmic coercivity, and the imported EXT-4 witness must identify the very pole supplied to the assembly constructor.
+
+The LEAN-H1 material and pre-RPB-106 post-Horizon snapshot below are retained for provenance. They are not the current RPB cursor.
+
 ## LEAN-H1 — Certification before H1-P5 — EXHAUSTED
 
 This track preempted H1-P5 until its exhaustion condition was met.
@@ -141,7 +152,7 @@ Only after this exhaustion condition is met does the project resume:
 }
 ```
 
-## Current control state
+## Historical pre-RPB-106 control snapshot
 
 - **LEAN-H1:** EXHAUSTED.
 - **H1-P5:** COMPLETE.
