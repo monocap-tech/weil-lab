@@ -98,7 +98,10 @@ theorem sourceDomainMultiplierPairing_add_right (f g k : D.domain) :
   apply integral_congr_ae
   have hae := Lp.coeFn_add (𝓕 g.val : RealComplexL2) (𝓕 k.val : RealComplexL2)
   filter_upwards [hae] with ξ hξ
-  simp only [Submodule.coe_add, fourier_add, hξ, Pi.add_apply, mul_add]
+  have hFourier : (𝓕 (g + k).val : RealComplexL2) = 𝓕 g.val + 𝓕 k.val :=
+    (Lp.fourierTransformₗᵢ ℝ ℂ).map_add g.val k.val
+  rw [hFourier, hξ]
+  simp only [Pi.add_apply, mul_add]
 
 include hSymbol C hbound in
 theorem sourceDomainMultiplierPairing_add_left (f g k : D.domain) :
@@ -110,7 +113,10 @@ theorem sourceDomainMultiplierPairing_add_left (f g k : D.domain) :
   apply integral_congr_ae
   have hae := Lp.coeFn_add (𝓕 f.val : RealComplexL2) (𝓕 g.val : RealComplexL2)
   filter_upwards [hae] with ξ hξ
-  simp only [Submodule.coe_add, fourier_add, hξ, Pi.add_apply, map_add, add_mul]
+  have hFourier : (𝓕 (f + g).val : RealComplexL2) = 𝓕 f.val + 𝓕 g.val :=
+    (Lp.fourierTransformₗᵢ ℝ ℂ).map_add f.val g.val
+  rw [hFourier, hξ]
+  simp only [Pi.add_apply, map_add, add_mul]
 
 theorem sourceDomainMultiplierPairing_smul_right (z : ℂ) (f g : D.domain) :
     sourceDomainMultiplierPairing D f (z • g) =
