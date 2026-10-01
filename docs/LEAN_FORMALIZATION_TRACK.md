@@ -1,5 +1,43 @@
 # Lean Formalization Track
 
+## RPB-108 — Fourier/physical shell certified; source attachment continues
+
+The [prime-shell translation certificate](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME_SHELL_TRANSLATION_20260930.md)
+closes the previously missing Fourier/physical connection. The finite cosine
+shell multiplier now equals the physical symmetric-translation shell in its
+pairing with every complex Schwartz test. Genuine pairing integrability is
+proved without adding smoothness to the compact L2 carrier.
+
+~~~text
+run: 36818895703 / job: 110229945734
+checked-out head: bf38f197440a0fd1ea11b699813547672dad3b34
+Lean: leanprover/lean4:v4.34.0
+mathlib: 5ed2965256430c3649e86755f9576b54eca72435
+target: lake build WeilDefect.Morphology.NeutralWeilPrimeShellTranslation
+source blob: 628f979cb0e7b33d22c1a1144ae9e5c25560d257
+build and declaration gate: PASS
+all nine endpoint axiom closures: propext, Classical.choice, Quot.sound
+~~~
+
+Combined with the existing radius correction and shell support theorem, this
+proves equality of the two internally defined frozen actions on compact tests
+supported in the old open window. It does not identify those actions with the
+external source form or construct the supplied residual witness.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+FOURIER/PHYSICAL PRIME-SHELL IDENTIFICATION: CERTIFIED
+INTERNAL FROZEN-ACTION COMPRESSION EQUALITY: CERTIFIED
+NEXT: SOURCE FORM-DOMAIN / POLARIZED COMPRESSION ATTACHMENT
+THEN: ACTUAL RESIDUAL REPRESENTATION WITH RETAINED DOMAIN/GROWTH CONDITIONS
+HERMITIAN GAUSSIAN CUTOFF BRIDGE: CERTIFIED CONDITIONAL
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+Do not restart the Gaussian or cosine/translation constructions. Imported
+hypotheses remain explicit parameters. The full EXT-4 attachment remains open;
+earlier handoffs below are preserved as history, not current instructions.
+
 ## RPB-108 — frozen-cutoff action and radius-correction continuation
 
 The [frozen-extension continuation certificate](../notes/REFLECTED_PACKET_BRIDGE_108_FROZEN_EXTENSION_20260930.md)
