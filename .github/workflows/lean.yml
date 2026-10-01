@@ -28,29 +28,61 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Install Elan
         shell: bash
         run: |
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-
       - name: Resolve pinned dependencies
         shell: bash
-        run: lake update
-
+        run: |
+          lake update > /tmp/rpb108-update.log 2>&1 || { tail -100 /tmp/rpb108-update.log; exit 1; }
+          tail -5 /tmp/rpb108-update.log
       - name: Fetch mathlib cache
         shell: bash
-        run: lake exe cache get
-
-      - name: Check current theorem target
+        run: |
+          lake exe cache get > /tmp/rpb108-cache.log 2>&1 || { tail -100 /tmp/rpb108-cache.log; exit 1; }
+          tail -5 /tmp/rpb108-cache.log
+      - name: Record and verify exact source custody
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
-
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          cat lean-toolchain; echo
+          test "$(cat lean-toolchain)" = "leanprover/lean4:v4.34.0"
+          git -C .lake/packages/mathlib rev-parse HEAD
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = "5ed2965256430c3649e86755f9576b54eca72435"
+          git ls-tree HEAD WeilDefect/Morphology/NeutralWeilFrozenExtension.lean WeilDefect/Morphology/NeutralWeilPrimeShellTranslation.lean
+      - name: Build prime-shell translation and dependency closure
+        shell: bash
+        run: |
+          echo 'lake build WeilDefect.Morphology.NeutralWeilPrimeShellTranslation'
+          lake build WeilDefect.Morphology.NeutralWeilPrimeShellTranslation > /tmp/rpb108-build.log 2>&1 || { tail -180 /tmp/rpb108-build.log; exit 1; }
+          tail -45 /tmp/rpb108-build.log
+      - name: Inspect transitive endpoint axioms
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/rpb108-translation-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralWeilPrimeShellTranslation
+          #print axioms WeilDefect.inverseFourier_sub_const
+          #print axioms WeilDefect.cosine_eq_fourierChar_pair
+          #print axioms WeilDefect.schwartz_cosineMultiplier_transpose
+          #print axioms WeilDefect.neutralPhysical_temperedMode_apply
+          #print axioms WeilDefect.neutralPhysical_shift_pairing_integrable
+          #print axioms WeilDefect.cosineFourierMultiplier_physical_pairing
+          #print axioms WeilDefect.frozenWeilPrimeShell_fourier_physical_pairing
+          #print axioms WeilDefect.frozenWeilPrimeShell_pairing_integrable
+          #print axioms WeilDefect.frozenWeilCompactAction_compression_eq
+          LEAN
+          lake env lean /tmp/rpb108-translation-audit.lean | tee /tmp/rpb108-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |
           if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect WeilDefect.lean; then
-            echo "Unfinished or project-axiom declaration found."
+            echo 'Unfinished or project-axiom declaration found.'
             exit 1
           fi
