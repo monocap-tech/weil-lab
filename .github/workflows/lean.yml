@@ -75,13 +75,13 @@ jobs:
           cat > /tmp/rpb108-exterior-residual-audit.lean <<'LEAN'
           import WeilDefect.Morphology.NeutralExteriorResidual
           #print axioms WeilDefect.neutralPole_weightedNorm_integrable
-#print axioms WeilDefect.neutralExteriorResidualIngredients_locallyIntegrable
-#print axioms WeilDefect.neutralExteriorResidualIngredients_weightedNorm_integrable
-#print axioms WeilDefect.neutralExteriorResidualCandidate_zero
-#print axioms WeilDefect.neutralExteriorResidualCandidate_eq_exterior
-#print axioms WeilDefect.neutralExteriorResidualCandidate_locallyIntegrable
-#print axioms WeilDefect.neutralExteriorResidualCandidate_weightedNorm_integrable
-#print axioms WeilDefect.neutralExteriorIntegralGrowthResidual
+          #print axioms WeilDefect.neutralExteriorResidualIngredients_locallyIntegrable
+          #print axioms WeilDefect.neutralExteriorResidualIngredients_weightedNorm_integrable
+          #print axioms WeilDefect.neutralExteriorResidualCandidate_zero
+          #print axioms WeilDefect.neutralExteriorResidualCandidate_eq_exterior
+          #print axioms WeilDefect.neutralExteriorResidualCandidate_locallyIntegrable
+          #print axioms WeilDefect.neutralExteriorResidualCandidate_weightedNorm_integrable
+          #print axioms WeilDefect.neutralExteriorIntegralGrowthResidual
           LEAN
           lake env lean /tmp/rpb108-exterior-residual-audit.lean | tee /tmp/rpb108-exterior-residual-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-exterior-residual-axioms.txt; then exit 1; fi
