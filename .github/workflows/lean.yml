@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralExteriorResidual.lean
+          git hash-object WeilDefect/Morphology/NeutralWeilCoreSplit.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralExteriorResidual
+          lake build WeilDefect.Morphology.NeutralWeilCoreSplit
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,19 +72,17 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-exterior-residual-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralExteriorResidual
-          #print axioms WeilDefect.neutralPole_weightedNorm_integrable
-          #print axioms WeilDefect.neutralExteriorResidualIngredients_locallyIntegrable
-          #print axioms WeilDefect.neutralExteriorResidualIngredients_weightedNorm_integrable
-          #print axioms WeilDefect.neutralExteriorResidualCandidate_zero
-          #print axioms WeilDefect.neutralExteriorResidualCandidate_eq_exterior
-          #print axioms WeilDefect.neutralExteriorResidualCandidate_locallyIntegrable
-          #print axioms WeilDefect.neutralExteriorResidualCandidate_weightedNorm_integrable
-          #print axioms WeilDefect.neutralExteriorIntegralGrowthResidual
+          cat > /tmp/rpb108-core-split-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralWeilCoreSplit
+          #print axioms WeilDefect.neutralFinitePrimeSymbol_temperate
+          #print axioms WeilDefect.neutralFinitePrime_fourier_physical_pairing
+          #print axioms WeilDefect.neutralFinitePrime_pairing_integrable
+          #print axioms WeilDefect.neutralArchimedeanSymbol_eq_core_add_prime
+          #print axioms WeilDefect.neutralArchimedeanSymbol_temperate
+          #print axioms WeilDefect.neutralWeilMultiplierCore_eq_archimedean_sub_prime
           LEAN
-          lake env lean /tmp/rpb108-exterior-residual-audit.lean | tee /tmp/rpb108-exterior-residual-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-exterior-residual-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-core-split-audit.lean | tee /tmp/rpb108-core-split-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-core-split-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
