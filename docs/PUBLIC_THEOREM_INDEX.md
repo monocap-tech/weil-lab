@@ -2,7 +2,7 @@
 
 ## H1-P5.2 — Stable theorem lookup
 
-This is the compact public lookup surface for WD-T01 through WD-T39. Mathematical standing, Lean verification, theorem hypotheses, and normalized dependency edges are kept in separate columns. The `Main output` column is a concise ledger description, not a substitute for the full canonical theorem statement.
+This is the compact public lookup surface for WD-T01 through WD-T40. Mathematical standing, Lean verification, theorem hypotheses, and normalized dependency edges are kept in separate columns. The `Main output` column is a concise ledger description, not a substitute for the full canonical theorem statement.
 
 | Stable ID | Public name | Role | Inputs / hypotheses | Main output | Mathematical standing | Lean status | Dependencies | Sharpness | Canonical source |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -45,13 +45,14 @@ This is the compact public lookup surface for WD-T01 through WD-T39. Mathematica
 | WD-T37 | Persistent negative morphology | Composite morphology | fixed finite packet; nonnegative endpoint; vanishing selected amplitude; strict normalized negative limit | Fixed-packet persistent negative defect localizes to zero-moment source + weighted near next-jet morphology, stopping at AZ-NEXTJET-LOC | CONDITIONAL COMPOSITE | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE | WD-T16; WD-T07; WD-T26; WD-T27; WD-T31; WD-T32; WD-T33 | — | [Negative Defect Morphology](NEGATIVE_DEFECT_MORPHOLOGY.md) |
 | WD-T38 | Attained neutral morphology | Composite morphology | fixed finite packet; attained critical branch; unit-gain physical realization; carrier identification | Attained unit-gain neutral branch gives a carrier-identified compact-window null mode with logarithmic order + threshold-aware finite shifts, stopping at AZ-FIN-WEIL-NULL-EXTENSION | CONDITIONAL COMPOSITE | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE | WD-T17; WD-T34; WD-T35; WD-T36 | — | [Neutral Defect Morphology](NEUTRAL_DEFECT_MORPHOLOGY.md) |
 | WD-T39 | Noncompact background morphology | Composite morphology | full-coordinate exhaustion and/or anchored selected ray with unselected background | Full-coefficient moving escape, unselected-background escape, and fixed full-divisor negative weak limits are distinct compactness morphologies | INTERNAL/CONDITIONAL COMPOSITE | LEAN-CERTIFIED | WD-T15–T17; WD-T07; WD-T14 | WD-X05, WD-X06 | [Noncompact Background Morphology](NONCOMPACT_BACKGROUND_MORPHOLOGY.md) |
+| WD-T40 | Gaussian support-gap null-extension exclusion | Neutral support rigidity | WD-T38 carrier-identified nonzero compact-window mode; hypothetical strict enlarged null equation | Gaussian support-gap coercivity excludes every strict compact-window Weil null extension; AZ-FIN-WEIL-NULL-EXTENSION is discharged negatively | INTERNAL-PROOF / CONDITIONAL on WD-T38 hypotheses | LEAN-BLOCKED | WD-T38; WD-T34; WD-T35; EXT-4; EXT-5 | — | [Neutral Defect Morphology](NEUTRAL_DEFECT_MORPHOLOGY.md) |
 
 ## RH-facing outputs
 
 | Morphology | Boundary output |
 | --- | --- |
 | Negative morphology (WD-T37) | AZ-NEXTJET-LOC; C-ACTUAL-KPH-FLOOR stronger refinement |
-| Neutral morphology (WD-T38) | AZ-FIN-WEIL-NULL-EXTENSION |
+| Neutral morphology (WD-T38 + WD-T40) | AZ-FIN-WEIL-NULL-EXTENSION — **discharged negatively by WD-T40** |
 | Noncompact morphology (WD-T39) | No new interface |
 
 See [RH Interface Appendix](RH_INTERFACE_APPENDIX.md) for the full boundary specification.
