@@ -88,7 +88,7 @@ theorem neutralFinitePrimePhysical_weightedNorm_integrable_all
   apply neutralFinitePrimePhysical_weightedNorm_integrable carrier S
     (∑ n ∈ S, |Real.log (n : ℝ)|) κ
   intro n hn
-  exact Finset.single_le_sum (fun m hm => abs_nonneg (Real.log (m : ℝ))) hn
+  exact Finset.single_le_sum (fun (m : ℕ) hm => abs_nonneg (Real.log (m : ℝ))) hn
 
 /-- Support-gap pairing estimate for an L1 residual piece. No pointwise bound
 on q is needed; the exterior test bound carries the Gaussian decay. -/
