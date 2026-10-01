@@ -28,6 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Install Elan
         shell: bash
@@ -45,7 +47,24 @@ jobs:
 
       - name: Check current theorem target
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
+        run: |
+          git rev-parse HEAD
+          git hash-object WeilDefect/Morphology/NeutralWeilSourceFormDomain.lean
+          lean --version
+          lake build WeilDefect.Morphology.NeutralWeilSourceFormDomain
+
+      - name: Inspect transitive endpoint axioms
+        shell: bash
+        run: |
+          cat > /tmp/rpb108-source-domain-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralWeilSourceFormDomain
+          #print axioms WeilDefect.sourceFormDomain_polarization
+          #print axioms WeilDefect.sourceFormDomain_eq_of_diagonal
+          #print axioms WeilDefect.neutralWeilResidualFromCore
+          #print axioms WeilDefect.neutralWeilResidualFromCore_weakRealization
+          LEAN
+          lake env lean /tmp/rpb108-source-domain-audit.lean | tee /tmp/rpb108-source-domain-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-source-domain-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
