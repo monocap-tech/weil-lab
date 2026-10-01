@@ -112,6 +112,7 @@ theorem projectCenteredGaussianSchwartz_apply
       (Real.exp (-R * x ^ 2 / 4) : ℂ) := by
   rw [projectCenteredGaussianSchwartz, SchwartzMap.postcompCLM_apply,
     projectCenteredGaussianSchwartzReal_apply]
+  simp only [Complex.ofRealCLM_apply]
 
 /-- The oscillatory phase in the project moving Gaussian kernel is temperate. -/
 theorem movingGaussianPhase_hasTemperateGrowth (R : ℝ) :
