@@ -1,5 +1,34 @@
 # Lean Status
 
+## RPB-108 — actual archimedean exterior function and weighted mass
+
+Continues from `d8a521255334bd9b09abb7ce7a3b2499b093d866`.
+`NeutralArchimedeanExterior` constructs a continuous bounded convolution of
+the actual compact rough carrier with the gap-truncated Gauss kernel. Outside
+the strict enlarged interval, truncation is inactive and the value equals the
+genuinely convergent untruncated exterior integral. Its norm has finite
+exponentially weighted mass for every positive rate.
+
+The small-displacement continuation is auxiliary. No whole-line multiplier
+representation or interior identification is inferred. Exterior distribution/
+Fourier attachment, central reconstruction and compact source realization
+remain open. See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_EXTERIOR_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,960 build jobs passed. Nine endpoints use only `propext`, `Classical.choice`,
+and `Quot.sound`; declaration gate passed. Validation head
+`38f82d8b8328a7c0ce4e07e6b1476a9a2d3c9407`, run `36933467318`,
+job `110608114891`, source blob `dc3e8c0e1b72769c8cdd6970c8b1131d395c24bc`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL ARCHIMEDEAN EXTERIOR FUNCTION / REGULARITY / WEIGHTED MASS: CONSTRUCTED
+NEXT: EXTERIOR DISTRIBUTION ATTACHMENT / CENTRAL RESIDUAL RECONSTRUCTION
+      + COMPACT SOURCE WEAK IDENTITY / ACTUAL SOURCE-DOMAIN ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — weighted Hermitian source identity and actual pole convergence
 
 Continues from `e5653d51f559e9ecdcd249692a08902488748a27`.

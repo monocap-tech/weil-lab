@@ -157,3 +157,25 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 archimedean exterior function, October 1, 2026
+
+Recovered research head: `d8a521255334bd9b09abb7ce7a3b2499b093d866`.
+Exact-module validation head: `38f82d8b8328a7c0ce4e07e6b1476a9a2d3c9407`.
+Run `36933467318`, job `110608114891`, source blob
+`dc3e8c0e1b72769c8cdd6970c8b1131d395c24bc`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,960 jobs passed. All nine audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; the declaration gate passed.
+
+The actual rough compact carrier convolved with the gap-truncated Gauss
+kernel is continuous and uniformly bounded. Outside the strict enlarged
+interval it equals the genuinely convergent untruncated integral. Its norm
+has finite exponentially weighted mass for every positive rate.
+Exterior Fourier/distribution identification, central residual reconstruction,
+compact source weak realization and actual source-domain attachment remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.

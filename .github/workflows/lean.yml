@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralArchimedeanExterior.lean
+          git hash-object WeilDefect/Morphology/NeutralExteriorResidual.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralArchimedeanExterior
+          lake build WeilDefect.Morphology.NeutralExteriorResidual
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,20 +72,19 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-archimedean-exterior-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralArchimedeanExterior
-          #print axioms WeilDefect.archimedeanGapKernel_continuous
-          #print axioms WeilDefect.archimedeanGapKernel_bound
-          #print axioms WeilDefect.neutralArchimedeanGapFunction_continuous
-          #print axioms WeilDefect.neutralArchimedeanGapFunction_integrand_integrable
-          #print axioms WeilDefect.neutralArchimedeanGapFunction_norm_bound
-          #print axioms WeilDefect.neutralArchimedeanGapFunction_eq_exteriorFormula
-          #print axioms WeilDefect.neutralArchimedeanExterior_integrand_integrable
-          #print axioms WeilDefect.integrable_exp_neg_rate_abs
-          #print axioms WeilDefect.neutralArchimedeanGapFunction_weightedNorm_integrable
+          cat > /tmp/rpb108-exterior-residual-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralExteriorResidual
+          #print axioms WeilDefect.neutralPole_weightedNorm_integrable
+#print axioms WeilDefect.neutralExteriorResidualIngredients_locallyIntegrable
+#print axioms WeilDefect.neutralExteriorResidualIngredients_weightedNorm_integrable
+#print axioms WeilDefect.neutralExteriorResidualCandidate_zero
+#print axioms WeilDefect.neutralExteriorResidualCandidate_eq_exterior
+#print axioms WeilDefect.neutralExteriorResidualCandidate_locallyIntegrable
+#print axioms WeilDefect.neutralExteriorResidualCandidate_weightedNorm_integrable
+#print axioms WeilDefect.neutralExteriorIntegralGrowthResidual
           LEAN
-          lake env lean /tmp/rpb108-archimedean-exterior-audit.lean | tee /tmp/rpb108-archimedean-exterior-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-archimedean-exterior-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-exterior-residual-audit.lean | tee /tmp/rpb108-exterior-residual-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-exterior-residual-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
