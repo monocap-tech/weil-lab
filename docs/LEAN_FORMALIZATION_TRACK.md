@@ -2,6 +2,33 @@
 
 ## RPB-106 certification correction and live handoff
 
+**Repair complete.** Correct-target validation run `36803460601` / job
+`110182696916` checked out
+`d9c0b171263862ed088620597f3d8d5ff7512278` and directly built
+`WeilDefect.Morphology.NeutralGaussianAssembly`. The build transitively
+compiled the repaired RPB-104 cutoff module, repaired RPB-105 pairing module,
+the concrete two-exponential pole-growth module, and the Gaussian assembly.
+The six endpoint declarations audited by `#print axioms` contain only
+`propext`, `Classical.choice`, and `Quot.sound`; no `sorryAx` appears.
+This is the actual certificate for the repaired 104/105 dependency closure;
+the original wrong-target green runs remain historical and are not
+retroactively reclassified.
+
+The concrete source-pole growth and conditional Gaussian-admissibility
+assembly are therefore certified.  The assembly still requires an explicit
+compact EXT-4 witness whose pole is exactly
+`neutralWeilSourcePole carrier`; EXT-4 itself has not been reconstructed in
+Lean.  The next live cursor is:
+
+~~~text
+RPB-107 / WD-T40 F-4
+CONCRETE EXT-4 POLE ATTACHMENT + TEST-DUALITY AUDIT
+~~~
+
+Do not enter logarithmic coercivity until the imported compact identity is
+attached to the named pole and the bilinear/Hermitian test convention is
+audited.
+
 The effective post-RPB-105 state and next cursor are recorded in [RPB-106 — certification repair and source-pole assembly](../notes/REFLECTED_PACKET_BRIDGE_106_20260930.md). That record supersedes the RPB-104/105 certificate claims in the historical snapshot below and in `LEAN_STATUS.md`.
 
 The original RPB-104 and RPB-105 green runs built `WeilDefect.Examples.WeakCriticalFallthrough`, not the named cutoff modules. Their statuses are preserved as run history, but their claimed certification scope is withdrawn. Repaired source must be associated with its own correct-target run and exact blobs; no later success retroactively changes what those original runs checked.
