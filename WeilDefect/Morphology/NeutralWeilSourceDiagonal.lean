@@ -48,8 +48,8 @@ variable (D : NeutralSourceFormDomainAttachment carrier a)
   (hbound : ∀ ξ, |rightLimitCompactWeilSymbolMathlib a ξ| ≤
     C * logarithmicFourierWeight ξ)
 
-/-- The signed real diagonal energy also genuinely converges. -/
 include hSymbol C hbound in
+/-- The signed real diagonal energy also genuinely converges. -/
 theorem sourceDomain_signedEnergy_integrable (f : D.domain) :
     Integrable (fun ξ => rightLimitCompactWeilSymbolMathlib a ξ *
       ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2) volume := by
@@ -58,14 +58,15 @@ theorem sourceDomain_signedEnergy_integrable (f : D.domain) :
       hSymbol.hasTemperateGrowth.1.continuous).aestronglyMeasurable.mul
       ((Lp.aestronglyMeasurable (𝓕 f.val : RealComplexL2)).norm.pow 2)
   · filter_upwards [] with ξ
-    simp only [Real.norm_eq_abs, abs_mul, abs_of_nonneg (sq_nonneg _)]
+    simp only [Real.norm_eq_abs, abs_mul,
+      abs_of_nonneg (sq_nonneg ‖(𝓕 f.val : RealComplexL2) ξ‖)]
 
 /-- The actual complex multiplier pairing diagonal is exactly the real
 normalized symbol energy, with no hidden Fourier scaling constant. -/
 theorem sourceDomainMultiplierPairing_diagonal (f : D.domain) :
     sourceDomainMultiplierPairing D f f =
-      ((∫ ξ, rightLimitCompactWeilSymbolMathlib a ξ *
-        ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2) : ℂ) := by
+      (((∫ ξ, rightLimitCompactWeilSymbolMathlib a ξ *
+        ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2) : ℝ) : ℂ) := by
   unfold sourceDomainMultiplierPairing
   calc
     _ = ∫ ξ, ((rightLimitCompactWeilSymbolMathlib a ξ *
@@ -75,7 +76,7 @@ theorem sourceDomainMultiplierPairing_diagonal (f : D.domain) :
       calc
         _ = (rightLimitCompactWeilSymbolMathlib a ξ : ℂ) *
             (conj ((𝓕 f.val : RealComplexL2) ξ) * (𝓕 f.val : RealComplexL2) ξ) := by ring
-        _ = _ := by simp only [Complex.conj_mul', Complex.ofReal_mul]
+        _ = _ := by simp only [Complex.conj_mul', Complex.ofReal_mul, Complex.ofReal_pow]
     _ = _ := integral_complex_ofReal
 
 /-- Hermitian pole cross terms have the real quadratic diagonal. The real
