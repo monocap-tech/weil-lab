@@ -9,7 +9,7 @@
 
 ## Current standing
 
-This pass continues from `e5653d51f559e9ecdcd249692a08902488748a27`.
+This pass continues from `d8a521255334bd9b09abb7ce7a3b2499b093d866`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -58,11 +58,17 @@ Hermitian pairing integrability and explicit collar decay of the actual
 Gaussian mode. The physical shell supplies a concrete instance; full source
 realization remains open. See [integral-growth continuation](../notes/REFLECTED_PACKET_BRIDGE_108_INTEGRAL_GROWTH_20261001.md).
 
-The current continuation proves actual source-pole Gaussian convergence from
+The weighted weak-identity continuation proves actual source-pole Gaussian convergence from
 radius geometry and derives the weighted Hermitian multiplier-plus-pole
 Gaussian identity from compact source realization. Both pairings genuinely
 converge; the compact source witness remains open. See [weighted weak-identity
 continuation](../notes/REFLECTED_PACKET_BRIDGE_108_WEIGHTED_WEAK_IDENTITY_20261001.md).
+
+The current continuation constructs the actual archimedean exterior function:
+gap truncation yields a continuous bounded convolution, exterior agreement
+with the genuinely convergent Gauss integral, and finite weighted norm mass.
+The small-displacement continuation is auxiliary; whole-core identification
+remains open. See [archimedean exterior continuation](../notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_EXTERIOR_20261001.md).
 
 | Obligation | Current state |
 | --- | --- |
@@ -78,6 +84,7 @@ continuation](../notes/REFLECTED_PACKET_BRIDGE_108_WEIGHTED_WEAK_IDENTITY_202610
 | Actual finite-prime local regularity and integral growth | Build-certified |
 | Integral-growth Gaussian pairing and actual shell instance | Build-certified |
 | Weighted pole convergence and Hermitian Gaussian weak extension | Build-certified from compact source input |
+| Actual archimedean exterior function, regularity and weighted mass | Constructed; 8,960 build jobs and nine axiom audits passed |
 | Actual source form-domain membership and form identification | Open |
 | Actual core representative, regularity/growth and central cancellation | Open |
 | F-4 logarithmic Gaussian coercivity | Not started |
@@ -95,7 +102,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
 3. Establish the actual core representative with regularity and growth,
    and attach central cancellation of r + p_h. The finite-prime L1 component
    is constructed, and the integral-growth Gaussian pairing bridge is
-   constructed; the archimedean function and weighted mass remain open.
+   constructed; the archimedean exterior function and weighted mass are now
+   constructed. Exterior distribution attachment and central reconstruction
+   remain open.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
@@ -127,3 +136,6 @@ Integral-growth Gaussian wording is registered in the additive
 
 Weighted weak-identity wording is registered in the additive
 [weak-identity supplement](TERMINOLOGY_RPB108_WEIGHTED_WEAK_IDENTITY.md).
+
+Archimedean exterior wording is registered in the additive
+[archimedean supplement](TERMINOLOGY_RPB108_ARCHIMEDEAN_EXTERIOR.md).
