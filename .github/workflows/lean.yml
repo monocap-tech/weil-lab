@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralIntegralGrowthGaussian.lean
+          git hash-object WeilDefect/Morphology/NeutralIntegralGrowthWeilIdentity.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralIntegralGrowthGaussian
+          lake build WeilDefect.Morphology.NeutralIntegralGrowthWeilIdentity
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,17 +72,15 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-integral-growth-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralIntegralGrowthGaussian
-          #print axioms WeilDefect.integralGrowth_pairing_bound
-          #print axioms WeilDefect.movingGaussianFilteredMode_norm_le_radiusEnvelope
-          #print axioms WeilDefect.movingGaussianFilteredMode_weighted_exterior_bound
-          #print axioms WeilDefect.integralGrowthGaussian_pairing_bound
-          #print axioms WeilDefect.primeShellIntegralGrowthResidual
-          #print axioms WeilDefect.integralGrowth_weakIdentity_of_integrableSchwartz
+          cat > /tmp/rpb108-weighted-weak-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralIntegralGrowthWeilIdentity
+          #print axioms WeilDefect.poleFilteredMode_norm_le_radiusTail
+          #print axioms WeilDefect.poleFilteredMode_integrable_of_radius
+          #print axioms WeilDefect.neutralWeilSourcePole_dualGaussian_integrable
+          #print axioms WeilDefect.integralGrowthWeilGaussianHermitian
           LEAN
-          lake env lean /tmp/rpb108-integral-growth-audit.lean | tee /tmp/rpb108-integral-growth-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-integral-growth-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-weighted-weak-audit.lean | tee /tmp/rpb108-weighted-weak-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-weighted-weak-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

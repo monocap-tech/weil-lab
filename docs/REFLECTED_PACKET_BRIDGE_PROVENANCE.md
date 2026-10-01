@@ -113,3 +113,25 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 integral-growth Gaussian bridge, October 1, 2026
+
+Recovered research head: `238f9afcfe9ae41176e95f58b33d0f6670b58301`.
+Exact-module validation head: `8250f691fbfcf7fbc58be23c21d4a279820d89df`.
+Run `36930149011`, job `110597667759`, source blob
+`a6c45e4a13c704a522164d0a420435bdc7858636`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,958 jobs passed. All six audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; the declaration gate passed.
+
+The additive integral-growth residual interface supports genuine actual
+Hermitian Gaussian pairing and explicit collar decay from weighted L1 mass.
+The actual prime shell supplies a zero-rate instance. Compact weak identities
+extend to integrably paired Schwartz tests independently of pointwise growth.
+The whole archimedean function, weighted mass, central cancellation, actual
+source weak identity and source-domain attachment remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.

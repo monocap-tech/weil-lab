@@ -1,5 +1,35 @@
 # Lean Status
 
+## RPB-108 — integral-growth Gaussian support-gap bridge
+
+Continues from `238f9afcfe9ae41176e95f58b33d0f6670b58301`.
+`NeutralIntegralGrowthGaussian` supplies an additive residual interface with
+finite exponentially weighted L1 mass and a.e. central cancellation. The
+actual Hermitian Gaussian pairing genuinely converges and is bounded by
+that fixed mass times the explicit support-gap collar decay and sqrt(R).
+
+The actual physical prime shell constructs an instance with rate zero.
+The compact-test weak-identity cutoff extension is independent of the old
+pointwise-growth package. Full source realization and pole pairing remain
+inputs; no whole residual is supplied by the shell constructor.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_INTEGRAL_GROWTH_20261001.md).
+
+Certification: exact module passed 8,958 jobs on Lean 4.34.0 and mathlib
+`5ed2965256430c3649e86755f9576b54eca72435`. Validation head
+`8250f691fbfcf7fbc58be23c21d4a279820d89df`, run `36930149011`,
+job `110597667759`, source blob `a6c45e4a13c704a522164d0a420435bdc7858636`.
+All six audited endpoints use only `propext`, `Classical.choice`, and
+`Quot.sound`; the unfinished/project-axiom declaration gate passed.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+INTEGRAL-GROWTH GAUSSIAN PAIRING BRIDGE: CONSTRUCTED
+NEXT: ACTUAL ARCHIMEDEAN FUNCTION / WEIGHTED MASS / CENTRAL CANCELLATION
+      + COMPACT WEAK IDENTITY / POLE PAIRING / ACTUAL SOURCE ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — actual finite-prime regularity and L1 gap pairing
 
 Continues from `200e25ba4ce3d261841176b30372579bc5cf0782`.
