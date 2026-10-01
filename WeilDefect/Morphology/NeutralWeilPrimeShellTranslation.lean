@@ -124,7 +124,7 @@ theorem frozenWeilPrimeShell_term_pairing_integrable
   have hp := neutralPhysical_shift_pairing_integrable carrier u (Real.log (n : ℝ))
   convert (hm.add hp).const_mul ((compactWindowPrimeCoefficient n / 2 : ℝ) : ℂ) using 1
   ext x
-  simp only [sub_eq_add_neg]
+  simp only [Pi.add_apply, sub_eq_add_neg]
   ring
 
 /-- The full finite Fourier shell is the physical translation shell on every Schwartz test.
@@ -177,7 +177,8 @@ theorem frozenWeilPrimeShell_fourier_physical_pairing
     push_cast
     ring
   simp_rw [hterm]
-  rw [← integral_finsetSum (fun n _ => frozenWeilPrimeShell_term_pairing_integrable carrier u n)]
+  rw [← integral_finsetSum (frozenWeilPrimeShell a b)
+    (fun n _ => frozenWeilPrimeShell_term_pairing_integrable carrier u n)]
   apply integral_congr_ae
   filter_upwards with x
   simp [frozenWeilPrimeShellPhysical, Finset.mul_sum, mul_assoc]
