@@ -45,7 +45,19 @@ jobs:
 
       - name: Check current theorem target
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
+        run: lake build WeilDefect.Morphology.NeutralWeilSourceWindowAttachment
+
+      - name: Inspect transitive endpoint axioms
+        shell: bash
+        run: |
+          cat > /tmp/rpb108-source-window-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralWeilSourceWindowAttachment
+          #print axioms WeilDefect.compactSchwartz_support_in_symmetric_window
+          #print axioms WeilDefect.rightLimitWeilWeakRealizationPremise_of_sourceWindows
+          #print axioms WeilDefect.rightLimitWeilGaussianHermitian_of_sourceWindows
+          LEAN
+          lake env lean /tmp/rpb108-source-window-audit.lean | tee /tmp/rpb108-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
