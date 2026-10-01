@@ -9,7 +9,7 @@
 
 ## Current standing
 
-This pass continues from `42324e13e69718c51b9b4408f3a8e8d1faaf6ee4`.
+This pass continues from `353d42a6aa48881be3a73aca7215881fcacba0d8`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -70,12 +70,17 @@ with the genuinely convergent Gauss integral, and finite weighted norm mass.
 The small-displacement continuation is auxiliary; whole-core identification
 remains open. See [archimedean exterior continuation](../notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_EXTERIOR_20261001.md).
 
-The current continuation constructs a specific exterior residual candidate
+The exterior residual continuation constructs a specific candidate
 from that archimedean function, the actual right-limit finite prime function,
 and the named pole. Its zero continuation is locally integrable, has weighted
 mass at every rate above one half, and supplies all analytic residual fields
 at rate one. Central source cancellation and whole-line distribution/source
 identification remain open. See [exterior residual continuation](../notes/REFLECTED_PACKET_BRIDGE_108_EXTERIOR_RESIDUAL_20261001.md).
+
+The current continuation attaches the full physical finite-prime action and
+splits the actual multiplier core into the archimedean action minus that
+explicit convergent prime pairing. The unidentified physical multiplier
+component is precisely archimedean. See [core split continuation](../notes/REFLECTED_PACKET_BRIDGE_108_CORE_SPLIT_20261001.md).
 
 | Obligation | Current state |
 | --- | --- |
@@ -93,6 +98,7 @@ identification remain open. See [exterior residual continuation](../notes/REFLEC
 | Weighted pole convergence and Hermitian Gaussian weak extension | Build-certified from compact source input |
 | Actual archimedean exterior function, regularity and weighted mass | Constructed; 8,960 build jobs and nine axiom audits passed |
 | Concrete exterior residual candidate and all analytic residual fields | Constructed; 8,961 build jobs and eight axiom audits passed |
+| Full physical prime action and exact actual multiplier core split | Constructed; 8,962 build jobs and six axiom audits passed |
 | Actual source form-domain membership and form identification | Open |
 | Actual core representative, regularity/growth and central cancellation | Open |
 | F-4 logarithmic Gaussian coercivity | Not started |
@@ -113,7 +119,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    constructed; the archimedean exterior function and weighted mass are now
    constructed. The concrete exterior residual candidate now supplies all
    analytic fields; its exact exterior distribution attachment, central source
-   cancellation and boundary/whole-line reconstruction remain open.
+   cancellation and boundary/whole-line reconstruction remain open. The full
+   finite-prime action is attached; singular archimedean identification is
+   the remaining physical multiplier component.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
@@ -151,3 +159,6 @@ Archimedean exterior wording is registered in the additive
 
 The [exterior residual supplement](TERMINOLOGY_RPB108_EXTERIOR_RESIDUAL.md)
 registers the explicit candidate and its separate central reconstruction attachment.
+
+The [core split supplement](TERMINOLOGY_RPB108_CORE_SPLIT.md) distinguishes
+the actual archimedean multiplier action from its unproved physical attachment.

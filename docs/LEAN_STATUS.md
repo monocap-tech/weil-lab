@@ -1,5 +1,35 @@
 # Lean Status
 
+## RPB-108 — full physical prime action and exact core split
+
+Continues from `353d42a6aa48881be3a73aca7215881fcacba0d8`.
+`NeutralWeilCoreSplit` proves the Fourier/physical identity for the full
+finite prime part, on every Schwartz test, with genuine pairing convergence.
+The actual fixed-cutoff multiplier core equals the archimedean multiplier
+action minus that explicit physical prime integral. Archimedean temperate
+growth follows from the retained full-symbol premise and proved finite-prime
+growth; no additional special-function premise is assumed.
+
+The unidentified physical multiplier component is now precisely archimedean.
+Its Gauss/source attachment, central cancellation and boundary/whole-line
+reconstruction remain open, together with source-domain/polarization attachment.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_CORE_SPLIT_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,962 build jobs passed. Six endpoints use only `propext`, `Classical.choice`,
+and `Quot.sound`; declaration gate passed. Validation head
+`3ddfff780beea34612ea31ef30a770b4fdfc5ca3`, run `36938066537`,
+job `110622897036`, source blob `19705b44e1d3795be15b7b00646530f6e4ffd601`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+FULL PHYSICAL PRIME ACTION / ACTUAL MULTIPLIER CORE SPLIT: CONSTRUCTED
+NEXT: SINGULAR ARCHIMEDEAN SOURCE ATTACHMENT + CENTRAL/BOUNDARY RECONSTRUCTION
+      → COMPACT WEAK REALIZATION; ACTUAL SOURCE-DOMAIN ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — concrete exterior residual candidate
 
 Continues from `42324e13e69718c51b9b4408f3a8e8d1faaf6ee4`.
