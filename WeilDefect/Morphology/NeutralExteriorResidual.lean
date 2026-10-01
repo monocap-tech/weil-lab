@@ -70,7 +70,8 @@ theorem neutralExteriorResidualIngredients_weightedNorm_integrable
         ‖neutralFinitePrimePhysical carrier (rightLimitPrimePowerFinset a) x‖ +
         ‖neutralWeilSourcePole carrier x‖ :=
       (norm_add_le _ _).trans (add_le_add (norm_sub_le _ _) le_rfl)
-    simpa only [add_mul] using mul_le_mul_of_nonneg_right hn (Real.exp_nonneg (-κ * |x|))
+    simpa only [Pi.add_apply, add_mul] using
+      mul_le_mul_of_nonneg_right hn (Real.exp_nonneg (-κ * |x|))
 
 /-- Zero continuation of the actual exterior ingredients. Source cancellation
 and representation of the multiplier distribution are not asserted. -/
