@@ -4,6 +4,7 @@ namespace WeilDefect
 
 noncomputable section
 
+open MeasureTheory
 open scoped BigOperators SchwartzMap FourierTransform
 
 /--
