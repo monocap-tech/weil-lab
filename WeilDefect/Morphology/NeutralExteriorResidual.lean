@@ -61,8 +61,7 @@ theorem neutralExteriorResidualIngredients_weightedNorm_integrable
   have hp := neutralPole_weightedNorm_integrable _
     (neutralWeilSourcePole_growthData carrier) hκ
   apply ((ha.add hf).add hp).mono'
-  · exact (neutralExteriorResidualIngredients_locallyIntegrable carrier hca).
-      aestronglyMeasurable.norm.mul
+  · exact (neutralExteriorResidualIngredients_locallyIntegrable carrier hca).aestronglyMeasurable.norm.mul
       (by fun_prop : Continuous (fun x : ℝ => Real.exp (-κ * |x|))).aestronglyMeasurable
   · filter_upwards [] with x
     rw [Real.norm_eq_abs, abs_of_nonneg (by positivity)]
@@ -70,7 +69,7 @@ theorem neutralExteriorResidualIngredients_weightedNorm_integrable
         ‖neutralArchimedeanGapFunction carrier (a-c) x‖ +
         ‖neutralFinitePrimePhysical carrier (rightLimitPrimePowerFinset a) x‖ +
         ‖neutralWeilSourcePole carrier x‖ :=
-      (norm_add_le _ _).trans (add_le_add_right (norm_sub_le _ _) _)
+      (norm_add_le _ _).trans (add_le_add (norm_sub_le _ _) le_rfl)
     simpa only [add_mul] using mul_le_mul_of_nonneg_right hn (Real.exp_nonneg (-κ * |x|))
 
 /-- Zero continuation of the actual exterior ingredients. Source cancellation
@@ -106,8 +105,7 @@ theorem neutralExteriorResidualCandidate_weightedNorm_integrable
     Integrable (fun x => ‖neutralExteriorResidualCandidate carrier a x‖ *
       Real.exp (-κ * |x|)) volume := by
   apply (neutralExteriorResidualIngredients_weightedNorm_integrable carrier hca hκ).mono'
-  · exact (neutralExteriorResidualCandidate_locallyIntegrable carrier hca).
-      aestronglyMeasurable.norm.mul
+  · exact (neutralExteriorResidualCandidate_locallyIntegrable carrier hca).aestronglyMeasurable.norm.mul
       (by fun_prop : Continuous (fun x : ℝ => Real.exp (-κ * |x|))).aestronglyMeasurable
   · filter_upwards [] with x
     rw [Real.norm_eq_abs, abs_of_nonneg (by positivity)]
