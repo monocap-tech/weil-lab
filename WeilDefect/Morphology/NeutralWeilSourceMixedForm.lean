@@ -22,7 +22,8 @@ theorem integrable_mixedMultiplier
   · exact ((Complex.continuous_conj.comp_aestronglyMeasurable hF).mul
       (Complex.continuous_ofReal.comp_aestronglyMeasurable hm)).mul hG
   · filter_upwards [] with x
-    simp only [norm_mul, Complex.norm_conj, Complex.norm_real, Real.norm_eq_abs]
+    simp only [norm_mul, Complex.norm_conj, Complex.norm_real, Real.norm_eq_abs,
+      Pi.add_apply]
     have hs : ‖F x‖ * ‖G x‖ ≤ ‖F x‖ ^ 2 + ‖G x‖ ^ 2 := by
       nlinarith [sq_nonneg (‖F x‖ - ‖G x‖), sq_nonneg ‖F x‖, sq_nonneg ‖G x‖]
     nlinarith [mul_le_mul_of_nonneg_left hs (abs_nonneg (m x))]
@@ -87,6 +88,7 @@ variable (D : NeutralSourceFormDomainAttachment carrier a)
   (hbound : ∀ ξ, |rightLimitCompactWeilSymbolMathlib a ξ| ≤
     C * logarithmicFourierWeight ξ)
 
+include hSymbol C hbound in
 theorem sourceDomainMultiplierPairing_add_right (f g k : D.domain) :
     sourceDomainMultiplierPairing D f (g + k) =
       sourceDomainMultiplierPairing D f g + sourceDomainMultiplierPairing D f k := by
@@ -98,6 +100,7 @@ theorem sourceDomainMultiplierPairing_add_right (f g k : D.domain) :
   filter_upwards [hae] with ξ hξ
   simp only [Submodule.coe_add, fourier_add, hξ, Pi.add_apply, mul_add]
 
+include hSymbol C hbound in
 theorem sourceDomainMultiplierPairing_add_left (f g k : D.domain) :
     sourceDomainMultiplierPairing D (f + g) k =
       sourceDomainMultiplierPairing D f k + sourceDomainMultiplierPairing D g k := by
@@ -200,16 +203,30 @@ def sourceDomainPoleForm : D.domain →ₗ⋆[ℂ] D.domain →ₗ[ℂ] ℂ wher
         conj (sourceWindowMoment a (-(1 / 2)) f.val) * sourceWindowMoment a (1 / 2) g.val +
         conj (sourceWindowMoment a (1 / 2) f.val) * sourceWindowMoment a (-(1 / 2)) g.val
       map_add' := by intros; simp only [Submodule.coe_add, map_add]; ring
-      map_smul' := by intros; simp only [Submodule.coe_smul, map_smul, smul_eq_mul]; ring }
-  map_add' := by
-    intros
-    ext
-    simp only [Submodule.coe_add, map_add, LinearMap.add_apply]
+      map_smul' := by
+        intros
+        simp only [Submodule.coe_smul, map_smul, smul_eq_mul, RingHom.id_apply]
+        ring }
+  map_add' f g := by
+    ext k
+    change
+      conj (sourceWindowMoment a (-(1 / 2)) (f + g).val) * sourceWindowMoment a (1 / 2) k.val +
+      conj (sourceWindowMoment a (1 / 2) (f + g).val) * sourceWindowMoment a (-(1 / 2)) k.val =
+      (conj (sourceWindowMoment a (-(1 / 2)) f.val) * sourceWindowMoment a (1 / 2) k.val +
+       conj (sourceWindowMoment a (1 / 2) f.val) * sourceWindowMoment a (-(1 / 2)) k.val) +
+      (conj (sourceWindowMoment a (-(1 / 2)) g.val) * sourceWindowMoment a (1 / 2) k.val +
+       conj (sourceWindowMoment a (1 / 2) g.val) * sourceWindowMoment a (-(1 / 2)) k.val)
+    simp only [Submodule.coe_add, map_add]
     ring
-  map_smul' := by
-    intros
-    ext
-    simp only [Submodule.coe_smul, map_smul, smul_eq_mul, map_mul, LinearMap.smul_apply]
+  map_smul' z f := by
+    ext k
+    change
+      conj (sourceWindowMoment a (-(1 / 2)) (z • f).val) * sourceWindowMoment a (1 / 2) k.val +
+      conj (sourceWindowMoment a (1 / 2) (z • f).val) * sourceWindowMoment a (-(1 / 2)) k.val =
+      conj z *
+      (conj (sourceWindowMoment a (-(1 / 2)) f.val) * sourceWindowMoment a (1 / 2) k.val +
+       conj (sourceWindowMoment a (1 / 2) f.val) * sourceWindowMoment a (-(1 / 2)) k.val)
+    simp only [Submodule.coe_smul, map_smul, smul_eq_mul, map_mul]
     ring
 
 /-- The actual normalized multiplier integral plus its named pole moment
