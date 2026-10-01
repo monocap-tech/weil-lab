@@ -78,6 +78,7 @@ jobs:
           #print axioms WeilDefect.neutralFinitePrimePhysical_locallyIntegrable
           #print axioms WeilDefect.neutralFinitePrimePhysical_zero_outside
           #print axioms WeilDefect.neutralFinitePrimePhysical_weightedNorm_integrable
+          #print axioms WeilDefect.neutralFinitePrimePhysical_weightedNorm_integrable_all
           #print axioms WeilDefect.integrable_pairing_of_L1_gap
           #print axioms WeilDefect.frozenWeilPrimeShellPhysical_integrable
           #print axioms WeilDefect.frozenWeilPrimeShellPhysical_L1_gap

@@ -74,10 +74,21 @@ theorem neutralFinitePrimePhysical_weightedNorm_integrable
       (Set.Icc (-(c + L)) (c + L)) volume :=
     (neutralFinitePrimePhysical_integrable carrier S).norm.integrableOn
   have hCont : Continuous (fun x : ℝ => Real.exp (κ * |x|)) := by fun_prop
-  exact (hOn.mul_continuousOn hCont.continuousOn isCompact_Icc).
-    integrable_of_forall_notMem_eq_zero (fun x hx => by
+  exact (hOn.mul_continuousOn hCont.continuousOn isCompact_Icc).integrable_of_forall_notMem_eq_zero (fun x hx => by
       rw [neutralFinitePrimePhysical_zero_outside carrier S L hL hx,
         norm_zero, zero_mul])
+
+/-- Every finite prime set supplies its own shift bound. No analytic growth
+premise is needed for exponential-weighted norm integrability. -/
+theorem neutralFinitePrimePhysical_weightedNorm_integrable_all
+    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)
+    (S : Finset ℕ) (κ : ℝ) :
+    Integrable (fun x => ‖neutralFinitePrimePhysical carrier S x‖ *
+      Real.exp (κ * |x|)) volume := by
+  apply neutralFinitePrimePhysical_weightedNorm_integrable carrier S
+    (∑ n ∈ S, |Real.log (n : ℝ)|) κ
+  intro n hn
+  exact Finset.single_le_sum (fun m hm => abs_nonneg (Real.log (m : ℝ))) hn
 
 /-- Support-gap pairing estimate for an L1 residual piece. No pointwise bound
 on q is needed; the exterior test bound carries the Gaussian decay. -/
@@ -92,11 +103,12 @@ theorem integrable_pairing_of_L1_gap
   have hdom : ∀ x, ‖conj (g x) * q x‖ ≤ B * ‖q x‖ := by
     intro x
     by_cases hx : x ∈ Set.Ioo (-a) a
-    · rw [hzero x hx, mul_zero, norm_zero, norm_zero, mul_zero]
+    · simp only [hzero x hx, mul_zero, norm_zero, le_refl]
     · rw [norm_mul, Complex.norm_conj]
       exact mul_le_mul_of_nonneg_right (hbound x hx) (norm_nonneg _)
   have hi : Integrable (fun x => conj (g x) * q x) volume :=
-    (hq.norm.const_mul B).mono' (hg.conj.mul hq.aestronglyMeasurable)
+    (hq.norm.const_mul B).mono'
+      ((Complex.continuous_conj.comp_aestronglyMeasurable hg).mul hq.aestronglyMeasurable)
       (Filter.Eventually.of_forall hdom)
   refine ⟨hi, ?_⟩
   calc
