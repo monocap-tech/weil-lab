@@ -36,6 +36,7 @@ import WeilDefect.Morphology.NeutralGaussianSupportGap
 import WeilDefect.Morphology.NeutralGaussianTail
 import WeilDefect.Morphology.NeutralGaussianPairing
 import WeilDefect.Morphology.NeutralGaussianAdmissibility
+import WeilDefect.Morphology.NeutralGaussianSchwartz
 
 import WeilDefect.Morphology.Noncompact
 
