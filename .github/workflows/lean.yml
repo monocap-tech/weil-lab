@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralWeilSourceDiagonal.lean
+          git hash-object WeilDefect/Morphology/NeutralWeilPrimeRegularity.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralWeilSourceDiagonal
+          lake build WeilDefect.Morphology.NeutralWeilPrimeRegularity
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,21 +72,18 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-source-diagonal-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralWeilSourceDiagonal
-          #print axioms WeilDefect.absoluteSymbolBound_of_shiftedComparison
-          #print axioms WeilDefect.rightLimitWeil_absoluteSymbolBound
-          #print axioms WeilDefect.sourceDomain_signedEnergy_integrable
-          #print axioms WeilDefect.sourceDomainMultiplierPairing_diagonal
-          #print axioms WeilDefect.sourcePoleCrossTerms_diagonal
-          #print axioms WeilDefect.sourceDomainWeilForm_diagonal
-          #print axioms WeilDefect.sourceDomainQuadratic_carrier
-          #print axioms WeilDefect.sourceDomainWeilForm_eq_of_sourceQuadratic
-          #print axioms WeilDefect.sourceDomainWeilFormFromShiftedComparison
-          #print axioms WeilDefect.sourceDomainWeilFormFromShiftedComparison_eq_of_sourceQuadratic
+          cat > /tmp/rpb108-prime-regularity-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralWeilPrimeRegularity
+          #print axioms WeilDefect.neutralFinitePrimePhysical_integrable
+          #print axioms WeilDefect.neutralFinitePrimePhysical_locallyIntegrable
+          #print axioms WeilDefect.neutralFinitePrimePhysical_zero_outside
+          #print axioms WeilDefect.neutralFinitePrimePhysical_weightedNorm_integrable
+          #print axioms WeilDefect.integrable_pairing_of_L1_gap
+          #print axioms WeilDefect.frozenWeilPrimeShellPhysical_integrable
+          #print axioms WeilDefect.frozenWeilPrimeShellPhysical_L1_gap
           LEAN
-          lake env lean /tmp/rpb108-source-diagonal-audit.lean | tee /tmp/rpb108-source-diagonal-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-source-diagonal-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-prime-regularity-audit.lean | tee /tmp/rpb108-prime-regularity-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-prime-regularity-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

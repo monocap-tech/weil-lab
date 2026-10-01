@@ -70,3 +70,24 @@ remain open. Threshold bookkeeping stays closed; coercivity has not started.
 Promotion excludes the validation-only workflow and preserves its original
 research blob `f194e9564577d3b79831b7abfb91b5933f3af98f`. Historical notes,
 `main`, canonical Weil, and WD-T40 mathematical standing are unchanged.
+
+## RPB-108 explicit real source diagonal, October 1, 2026
+
+Recovered research head: `71dddf5382d0b876b96599406a4a923950ed654e`.
+Exact-module validation head: `3e285dea9d9ca673fd7f568003d10763b5e7f398`.
+Run `36907744139`, job `110522433582`, source blob
+`e1949dd4a3996e2e9445c3117aaa3459d3da36b9`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,956 jobs passed, all ten audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`, and the declaration gate passed.
+
+The continuation derives the absolute-symbol bound from retained shifted
+estimates, proves signed-energy convergence, identifies the real diagonal
+and physical pole pairing, and consumes the explicit same-domain source
+quadratic identity through polarization. Actual source attachment and the
+regular core/residual representative remain open. Threshold bookkeeping is
+closed; logarithmic coercivity has not started.
+
+Promotion excludes validation-only workflow/cache changes and preserves the
+original research workflow blob `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes, `main`, canonical Weil, and WD-T40 standing are unchanged.
