@@ -1,5 +1,43 @@
 # Lean Status
 
+## RPB-108 — retained source domain and constructed residual certified
+
+The recovered research base is `fe92dffc4794a519a382a2533dc4313580fa443d`.
+Threshold bookkeeping remains closed. The previously stale RPB-100 overview
+is repaired at [Reflected-Packet Bridge](REFLECTED_PACKET_BRIDGE.md).
+
+The new module `WeilDefect.Morphology.NeutralWeilSourceFormDomain` certifies
+complex polarization on a retained source domain and constructs the full
+residual `q = r + p_h`, including its compact weak realization, from an
+explicit core representative and central cancellation.
+
+~~~text
+run: 36876381132 / job: 110416765195
+checked-out head: aa16a1a47ac3e8c457f30cc04f3e10610f6cdccd
+source blob: f094847751d2f3fb346eb766b8a1a9e541241b57
+exact-module build: PASS (8954 jobs)
+four endpoint axiom closures: propext, Classical.choice, Quot.sound
+declaration gate: PASS
+~~~
+
+The historical WD-T38 source-domain membership and carrier identification are
+retained mathematical hypotheses. Their attachment to the concrete Lean lift
+remains open; the new domain structure is not itself a supplied source
+witness. The actual source diagonal equality, core representation,
+regularity/growth and central cancellation also remain open. Scoped
+polarization supplies mixed terms only on its stated domain.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+NEXT: ATTACH RETAINED WD-T38 SOURCE FORM-DOMAIN / DIAGONAL IDENTITY
+      + ACTUAL CORE REPRESENTATIVE / REGULARITY / GROWTH / CENTRAL CANCELLATION
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+See [source-domain checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_FORM_DOMAIN_20261001.md)
+and the additive [terminology supplement](TERMINOLOGY_RPB108_SOURCE_DOMAIN.md).
+
 ## RPB-108 strict-source action threshold delta
 
 The source strict prime convention and the project right-limit convention are

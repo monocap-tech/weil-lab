@@ -1,136 +1,72 @@
 # Reflected-Packet Bridge
 
-**Repository:** Weil-Lab  
-**Branch:** research/reflected-packet-bridge  
-**Standing:** RPB experimental line with WD-T40 promoted into the stable Horizon-1 theorem surface  
-**Imported provenance source:** monocap-tech/weil@research/reflected-packet-bridge through RPB-35.
+**Repository:** Weil-Lab
+
+**Branch:** `research/reflected-packet-bridge`
+
+**Current cursor:** RPB-108 / WD-T40 F-4
+**Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
 
-~~~math
-\boxed{
-\textbf{RPB-100 — COMPACT-CUTOFF LIMITS NOW DERIVE THE GAUSSIAN WEAK IDENTITY INTERNALLY, AND EXPLICIT POLE EXPONENTIAL GROWTH DISCHARGES POLE-PAIRING INTEGRABILITY IN SOURCE.}
-}
-~~~
+The live pointer was recovered from `fe92dffc4794a519a382a2533dc4313580fa443d`.
+The former RPB-100 overview was stale and is superseded by this current view.
+Historical pass notes remain immutable.
 
-Certified carrier:
+The Hermitian Gaussian cutoff bridge, frozen compact-test action,
+Fourier/physical prime-shell identification, shell-corrected source-window
+globalization, and strict-source/right-limit threshold action correction are
+build-certified. Threshold bookkeeping is closed.
 
-~~~text
-WeilDefect/Morphology/NeutralFourierCarrier.lean
-blob:
-03fe8ab1b6a3190e40a91b7a467c975e0d87841d
-~~~
+The latest threshold-action certificate is run `36871575764`, job
+`110400389955`, module blob `2e1a1d755da1414651fe088cf42a787a3df213fa`.
+See [threshold-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_THRESHOLD_ACTION_20261001.md).
 
-The restored GitHub-hosted runner exposed two compiler-level source defects:
+The new continuation retains the actual source domain explicitly, proves
+complex polarization on that domain, and constructs `q = r + p_h` with the
+full compact weak identity from a represented core and central cancellation.
+Exact-module validation passed in run `36876381132` (8,954 jobs). These constructions do not supply their
+actual source witnesses. See [source-domain continuation](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_FORM_DOMAIN_20261001.md).
 
-~~~text
-1. the file required a noncomputable section because Real.measureSpace is noncomputable;
-2. that unnamed section required a matching plain end.
-~~~
-
-Both were repaired without changing mathematical content.
-
-Successful pinned CI evidence:
-
-~~~text
-run:       36649140221
-job:       109679039673
-runner_id: 1000001147
-runner:    GitHub Actions 1000001147
-head:      5e2e9a1a3edad1f57e7afb0f357b822b92dc9099
-~~~
-
-Lean reported:
-
-~~~text
-Built WeilDefect.Morphology.NeutralFourierCarrier
-Build completed successfully (8934 jobs).
-NeutralFourierCarrier audited blob, root import, build, and trust checks passed.
-~~~
-
-The repository-wide unfinished trusted declaration gate also passed.
-
-Draft PR #4 was closed without merge and no validation-only workflow mutation
-entered the research branch.
-
-Current formalization state:
-
-~~~text
-F-1  physical Fourier carrier lift
-     BUILD-CERTIFIED
-
-F-2  actual compact-window Weil multiplier realization
-     IN PROGRESS
-     exact strict-right scalar symbol BUILD-CERTIFIED
-     blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202
-     run 36677931966
-     full pole-restored residual not assumed tempered
-     exponential-growth physical carrier BUILD-CERTIFIED
-     weak-realization target BUILD-CERTIFIED AS INTERFACE
-     EXT-5D derivative asymptotics SOURCE-PINNED
-     explicit symbol-temperate premise BUILD-CERTIFIED AS INTERFACE
-     canonical tempered multiplier core BUILD-CERTIFIED
-     EXT-4 weak-realization premise BUILD-CERTIFIED AS INTERFACE
-     EXT-4 packaging definition BUILD-CERTIFIED
-     F-2 COMPLETE
-     final blob d11e51ea0199f134b3c8f17f76c341a27d6d2881
-     run 36735403643
-
-F-3  support-gap Gaussian pairing
-     IN PROGRESS
-     strict collar geometry BUILD-CERTIFIED
-     exterior pointwise Gaussian domination BUILD-CERTIFIED
-     blob ca837ad7eb468f6fb392f3df7649bb24ff143084
-     run 36739623602
-     moving-Gaussian kernel BUILD-CERTIFIED
-     actual compact-support convolution BUILD-CERTIFIED
-     exterior filtered-mode envelope BUILD-CERTIFIED
-     blob d29c784bfdb15681c103e906f42a3ff946a0db76
-     run 36752658074
-     full exterior x-Gaussian envelope BUILD-CERTIFIED
-     residual-growth Gaussian completion BUILD-CERTIFIED
-     exterior Gaussian tail integrability BUILD-CERTIFIED
-     blob 7ee6dacf94e4e6b4c694209a7be9ee4ba72846e6
-     run 36763669865
-     final whole-line residual pairing BUILD-CERTIFIED
-     explicit two-Gaussian-mass bound BUILD-CERTIFIED
-     final blob 54732470ab2cf2a3a99be646372fdc186225363a
-     run 36769646305
-     F-3 COMPLETE
-
-F-4  Gaussian coercivity -> exponential Fourier weight
-     NOT STARTED
-
-F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
-     NOT STARTED
-
-F-6  final WD-T40 assembly
-     NOT STARTED
-~~~
-
-WD-T40 remains LEAN-BLOCKED with mathematical standing unchanged.
+| Obligation | Current state |
+| --- | --- |
+| F-1 physical Fourier carrier | Build-certified |
+| Exact normalized multiplier and pole | Build-certified with imported symbol premise |
+| F-3 support-gap Gaussian pairing | Build-certified for the specified residual carrier |
+| Hermitian cutoff extension | Build-certified conditional on actual compact realization |
+| Shell/globalization/threshold action corrections | Build-certified; bookkeeping closed |
+| Scoped complex polarization | Build-certified |
+| Residual construction from represented core | Build-certified |
+| Actual source form-domain membership and form identification | Open |
+| Actual core representative, regularity/growth and central cancellation | Open |
+| F-4 logarithmic Gaussian coercivity | Not started |
+| F-5 exponential weight, strip holomorphy, compact-support zero | Not started |
+| F-6 final WD-T40 assembly | Not started |
 
 ## Next cursor
 
 ~~~text
-RPB-101 / WD-T40 F-4 CUTOFF/GROWTH DISCHARGE BUILD CERTIFICATION
+RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
+
+1. Identify the finite-window source domain and attach WD-T38's retained membership hypothesis.
+2. Attach the diagonal multiplier/pole form there; consume scoped polarization.
+3. Establish the actual core representative with regularity and growth,
+   and attach central cancellation of r + p_h.
+4. Consume the constructed compact weak realization in the certified
+   Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
 
-RPB-100 implemented the internal cutoff-limit theorem deriving the Gaussian
-weak identity from compact EXT-4 tests, and proved pole-Gaussian whole-line
-integrability from explicit exponential pole growth. The remaining burden is
-construction of the cutoff package and instantiation of actual pole growth.
-The next pass build-certifies this source layer.
+Compact support and L2 membership do not stand in for these source inputs.
+Defining a form-domain or core-representation structure does not discharge it.
+No Gaussian construction or threshold investigation is to be restarted.
 
-## Governance
+## Governance and custody
 
-Historical RPB notes remain immutable. Later corrections are additive.
+Mathematical standing, implementation, build certification and final Lean
+certification remain separate. Validation-only workflow changes are excluded
+from research promotion. `weil-lab/main` and canonical Weil are unchanged.
 
-Mathematical standing, audit status, source implementation, build
-certification, and final Lean certification are separate status axes.
-
-## Ledger
-
-The full pass-by-pass record is stored in
-notes/REFLECTED_PACKET_BRIDGE_0_20260928.md through
-notes/REFLECTED_PACKET_BRIDGE_100_20260930.md.
+The current detailed control is [Lean Formalization Track](LEAN_FORMALIZATION_TRACK.md).
+Provenance is in [Reflected-Packet Bridge Provenance](REFLECTED_PACKET_BRIDGE_PROVENANCE.md).
+Definitions are in [Terminology](TERMINOLOGY.md) and its additive
+[source-domain supplement](TERMINOLOGY_RPB108_SOURCE_DOMAIN.md).
