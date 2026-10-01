@@ -1,5 +1,36 @@
 # Lean Formalization Track
 
+## RPB-108 — concrete exterior residual candidate
+
+Continues from `42324e13e69718c51b9b4408f3a8e8d1faaf6ee4`.
+`NeutralExteriorResidual` constructs the actual exterior ingredients:
+archimedean gap convolution minus the right-limit finite prime translations
+plus the named source pole. Their zero continuation inside the enlarged
+interval is locally integrable and has finite weighted norm mass for every
+rate above one half. At rate one it supplies all analytic fields of
+`NeutralIntegralGrowthResidual`.
+
+Central vanishing is imposed by the explicit zero continuation. This does
+not establish central cancellation of the source distribution. Exact exterior
+Fourier/distribution attachment and the compact source weak identity remain
+open, as does actual source-domain/polarization attachment.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_EXTERIOR_RESIDUAL_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,961 build jobs passed. Eight endpoints use only `propext`, `Classical.choice`,
+and `Quot.sound`; declaration gate passed. Validation head
+`b5b421fa5f0092fbe146229c72d599a329d8242d`, run `36936688172`,
+job `110618484466`, source blob `016129d75f5368032392af46db03df752149f217`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+EXTERIOR RESIDUAL CANDIDATE / ALL ANALYTIC FIELDS: CONSTRUCTED
+NEXT: EXACT EXTERIOR DISTRIBUTION + CENTRAL SOURCE CANCELLATION
+      → COMPACT WEAK REALIZATION; ACTUAL SOURCE-DOMAIN ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — actual archimedean exterior function and weighted mass
 
 Continues from `d8a521255334bd9b09abb7ce7a3b2499b093d866`.

@@ -179,3 +179,25 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 concrete exterior residual candidate, October 1, 2026
+
+Recovered research head: `42324e13e69718c51b9b4408f3a8e8d1faaf6ee4`.
+Exact-module validation head: `b5b421fa5f0092fbe146229c72d599a329d8242d`.
+Run `36936688172`, job `110618484466`, source blob
+`016129d75f5368032392af46db03df752149f217`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,961 jobs passed. All eight audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; the declaration gate passed.
+
+The concrete exterior candidate uses the actual archimedean gap convolution,
+right-limit finite prime translations and named source pole. It is locally
+integrable and has weighted norm mass at every rate above one half. Its zero
+continuation supplies all analytic residual fields at rate one. Central source
+cancellation, exact exterior distribution and boundary/whole-line identification,
+compact source weak realization and source-domain attachment remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.

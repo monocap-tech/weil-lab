@@ -56,6 +56,7 @@ import WeilDefect.Morphology.NeutralWeilPrimeRegularity
 import WeilDefect.Morphology.NeutralIntegralGrowthGaussian
 import WeilDefect.Morphology.NeutralIntegralGrowthWeilIdentity
 import WeilDefect.Morphology.NeutralArchimedeanExterior
+import WeilDefect.Morphology.NeutralExteriorResidual
 
 import WeilDefect.Morphology.Noncompact
 
