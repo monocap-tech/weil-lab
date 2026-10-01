@@ -6,20 +6,8 @@ namespace WeilDefect
 
 noncomputable section
 
-open MeasureTheory
+open MeasureTheory Filter
 open scoped Convolution FourierTransform SchwartzMap Topology
-
-/-- The compactly supported physical representative is globally L1. -/
-theorem neutralPhysicalRepresentative_integrable
-    {c : ℝ}
-    {EndpointObs RightObs : Type*}
-    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
-    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
-    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
-    Integrable carrier.h volume := by
-  exact
-    (neutralPhysicalRepresentative_integrableOn carrier).integrable_of_forall_notMem_eq_zero
-      (fun x hx => carrier.representative_eq_zero_of_not_mem hx)
 
 /--
 Frequency-side Schwartz realization of the filtered mode.
@@ -104,7 +92,7 @@ theorem movingGaussianFilteredModeSchwartz_eq_convolution
   have hbounded :
       BddAbove (Set.range fun y : ℝ => ‖k y‖) :=
     ⟨SchwartzMap.seminorm ℝ 0 0 k,
-      fun _ ⟨y, hy⟩ => hy ▸ norm_le_seminorm ℝ k y⟩
+      fun _ ⟨y, hy⟩ => hy ▸ SchwartzMap.norm_le_seminorm ℝ k y⟩
   have hconvCont : Continuous conv := by
     exact hbounded.continuous_convolution_right_of_integrable
       (ContinuousLinearMap.mul ℂ ℂ) hh k.continuous
@@ -126,9 +114,8 @@ theorem movingGaussianFilteredModeSchwartz_eq_convolution
             rw [movingGaussianFilteredModeSchwartz]
             rw [SchwartzMap.fourierInv_coe]
     _ = 𝓕⁻ (𝓕 conv) x := by
-          congr 1
-          funext ξ
-          exact hfreqEq ξ
+          have hfuneq : (freq : ℝ → ℂ) = 𝓕 conv := funext hfreqEq
+          rw [hfuneq]
     _ = conv x := by rw [hinv]
     _ =
       (carrier.h ⋆[ContinuousLinearMap.mul ℂ ℂ]
