@@ -1,5 +1,51 @@
 # Lean Formalization Track
 
+## RPB-108 — certified Hermitian bridge; source attachment remains open
+
+**Effective live state:** the Hermitian Gaussian cutoff bridge, scoped real
+polarization/complexification algebra, and the correct conjugate cross-moment
+pole pairing are now build-certified. The full EXT-4 source-operator
+attachment is not yet discharged; RPB-108 remains active.
+
+~~~text
+run:  36813420117
+job:  110213211667
+checked-out head: db57718d34c7e064744ba8e7b6eca21be0b6592a
+Lean: leanprover/lean4:v4.34.0
+mathlib: 5ed2965256430c3649e86755f9576b54eca72435
+target: lake build WeilDefect.Morphology.NeutralGaussianHermitianBridge
+source blob: b32fc8623b6c3e69efd3c0e82019997bf76a1e92
+build: PASS
+all eight inspected endpoint axiom closures: propext, Classical.choice, Quot.sound
+declaration rejection gate: PASS
+~~~
+
+The existing bilinear distribution interface is valid. The corrected energy
+test is the conjugated Gaussian, and its weak identity is now derived by
+compact cutoffs under the exact existing compact weak witness. No additional
+Gaussian identity is assumed.
+
+The source's fixed-window quadratic formula can be polarized within its
+form domain, but this does not automatically extend the fixed-cutoff operator
+to all compact tests on the whole line. Define that frozen-cutoff extension,
+identify its compression with the polarized source form, and attach the
+actual residual representative. Preserve the form-domain, growth, threshold,
+and Fourier-normalization conditions explicitly.
+
+~~~text
+RPB-108 / WD-T40 F-4
+CONTINUE: FROZEN-CUTOFF EXT-4 EXTENSION + ACTUAL RESIDUAL WITNESS ATTACHMENT
+HERMITIAN GAUSSIAN CUTOFF BRIDGE: CERTIFIED CONDITIONAL
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+The [final RPB-108 certificate](../notes/REFLECTED_PACKET_BRIDGE_108_CERTIFICATE_20260930.md)
+supersedes the build-pending status of the [implementation checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_20260930.md).
+The general `LEAN_STATUS.md` queue remains RPB-108. Do not restart the
+Gaussian seed, moving-mode Schwartz realization, or the generic cutoff
+convergence proofs. Do not mark the whole source attachment closed from the
+conditional bridge certificate. Earlier handoffs below are historical.
+
 ## RPB-107 duality audit and live handoff
 
 RPB-107 is build-certified under pinned Lean 4.34.0 / mathlib
