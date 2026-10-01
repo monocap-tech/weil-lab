@@ -147,7 +147,7 @@ Only after this exhaustion condition is met does the project resume:
 - **H1-P5:** COMPLETE.
 - **Active Lean phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** none selected.
+- **Next project cursor:** RPB-102 / WD-T40 F-4 actual moving-filtered-mode Schwartz realization.
 
 ```math
 \boxed{
@@ -155,4 +155,70 @@ Only after this exhaustion condition is met does the project resume:
 }
 ```
 
-WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. No post-Horizon research cursor is selected. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
+WD-X06 is `LEAN-CERTIFIED`, LEAN-H1 is exhausted, and H1-P5.0 through H1-P5.5 are complete. Horizon 1 is complete. The historical LEAN-H1 track remains exhausted. Post-Horizon theorem WD-T40 is now LEAN-BLOCKED after RPB-67: a faithful certificate requires a new physical real-line Fourier/distribution carrier layer. The F-1 physical Fourier carrier is now build-certified under pinned Lean 4.34.0 / mathlib v4.34.0 (run 36649140221, carrier blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d). The remaining WD-T40 formalization frontier begins at F-2, the actual compact-window Weil multiplier realization. The exact strict-right scalar symbol is build-certified by RPB-80 (run 36677931966, blob fe0b84a5c7a1d8d7acfe57ce2674c36d8e386202). RPB-81 then found that the full pole-restored residual is not lawfully typed as tempered because the promoted theorem allows fixed exponential growth. RPB-100 implemented the cutoff-limit constructor that derives the Gaussian weak identity and the exponential-pole Gaussian integrability layer. RPB-101 then build-certified that source layer after one elaboration-only repair making the compact central interval explicit (run 36780605398; blob dfcfb49e443a00a6bea91c6bed15daed88ff0282). The next research cursor is RPB-102 / WD-T40 F-4 actual moving-filtered-mode Schwartz realization. See [Lean Status](LEAN_STATUS.md) for the declaration map and certificate evidence and [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md) for package closure.
+
+
+---
+
+## Post-Horizon WD-T40 formalization frontier
+
+RPB-67 determined that mathlib v4.34 has the required base Fourier/Gaussian
+infrastructure, but the current WeilDefect Lean abstraction is too high-level
+to state WD-T40 faithfully.
+
+The physical real-line carrier bridge F-1 is now build-certified. The next missing bridge connects that carrier to:
+
+- L2 Fourier data;
+- compact support;
+- tempered-distribution residuals;
+- the actual compact-window Weil multiplier.
+
+The strict-right scalar symbol layer of F-2 is build-certified.
+
+RPB-81 corrected the target carrier: the scalar multiplier core remains
+tempered, but the full pole-restored residual requires a broader physical
+exponential-growth carrier.
+
+The corrected exponential-growth residual carrier and compact-test
+weak-realization target interface are now build-certified.
+
+The exact scalar symbol's imported temperate-growth premise interface and the
+conditional canonical tempered multiplier core are now build-certified.
+
+The actual EXT-4 weak-realization bridge is now build-certified, and F-2 is
+complete conditional on the explicit imported EXT-4 / EXT-5D premises.
+
+F-3 remains open.  The strict collar geometry and exterior pointwise Gaussian
+domination are now build-certified; the actual filtered-mode convolution
+envelope and Gaussian tail integration remain open.
+
+The actual moving-Gaussian kernel, compact-support convolution, and corrected
+exterior filtered-mode envelope are now build-certified.
+
+The residual's fixed exponential growth is now reduced by a build-certified
+completion layer to an integrable exterior Gaussian tail while retaining an
+explicit exponentially small collar factor in the moving parameter.
+
+The source-frequency to mathlib-frequency repair t = 2*pi*xi is now
+build-certified through the full F-3 pairing stack.
+
+The next cursor is:
+
+~~~text
+RPB-98 / WD-T40 F-4 GAUSSIAN-ADMISSIBILITY WEAK-REALIZATION BRIDGE
+~~~
+
+The noncompact moving-Gaussian domain seam is now represented by a
+build-certified admissibility interface.  The interface itself is typed and
+kernel-checked; its cutoff/growth discharge from the current carrier remains
+open.
+
+The Gaussian weak identity is now an internal consequence of compact-test EXT-4 plus a cutoff package, and exponential pole growth is sufficient for whole-line pole pairing integrability in source. The actual cutoff package and actual pole-growth instantiation remain open.
+
+The next cursor is:
+
+~~~text
+RPB-102 / WD-T40 F-4 ACTUAL MOVING-FILTERED-MODE SCHWARTZ REALIZATION
+~~~
+
+The RPB-100 Gaussian-admissibility source layer is now build-certified. The actual Schwartz realization of the moving filtered mode, compact cutoff convergence, residual/pole cutoff convergence, and actual pole-growth instantiation remain open. The logarithmic coercivity inequality and F-5 strip holomorphy remain closed.
