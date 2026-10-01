@@ -91,3 +91,25 @@ closed; logarithmic coercivity has not started.
 Promotion excludes validation-only workflow/cache changes and preserves the
 original research workflow blob `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes, `main`, canonical Weil, and WD-T40 standing are unchanged.
+
+## RPB-108 actual finite-prime regularity, October 1, 2026
+
+Recovered research head: `200e25ba4ce3d261841176b30372579bc5cf0782`.
+Exact-module validation head: `d83af4b35838e08050e82019018c2f81828d6cb4`.
+Run `36923201866`, job `110574045820`, source blob
+`7e6d285d64357e775816dfcedbc2486e44b5049f`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,957 jobs passed. All eight audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; the declaration gate passed.
+
+The actual finite prime translations are globally L1 and locally integrable,
+compactly supported, and have integrable norm against every fixed exponential
+weight. The shell admits an L1 support-gap pairing bound. Compact L2 support
+does not supply the current full-residual pointwise exponential fields; the
+growth bridge must reflect this distinction. The archimedean core, central
+cancellation, and actual source attachment remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.
