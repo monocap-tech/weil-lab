@@ -201,3 +201,26 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 full physical prime action and core split, October 1, 2026
+
+Recovered research head: `353d42a6aa48881be3a73aca7215881fcacba0d8`.
+Exact-module validation head: `3ddfff780beea34612ea31ef30a770b4fdfc5ca3`.
+Run `36938066537`, job `110622897036`, source blob
+`19705b44e1d3795be15b7b00646530f6e4ffd601`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,962 jobs passed. All six audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; the declaration gate passed.
+
+The full finite prime Fourier action equals the actual physical translation
+pairing on every Schwartz test, with genuine convergence. The exact actual
+multiplier core splits into the archimedean action minus that physical prime
+integral. Archimedean temperate growth is derived from the retained full-symbol
+premise and proved finite-prime growth. Singular Gauss/source attachment,
+central cancellation, boundary/whole-line reconstruction, compact weak
+realization and actual source-domain attachment remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.

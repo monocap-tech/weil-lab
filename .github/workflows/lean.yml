@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralWeilCoreSplit.lean
+          git hash-object WeilDefect/Morphology/NeutralFiniteGauss.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralWeilCoreSplit
+          lake build WeilDefect.Morphology.NeutralFiniteGauss
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,17 +72,17 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-core-split-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralWeilCoreSplit
-          #print axioms WeilDefect.neutralFinitePrimeSymbol_temperate
-          #print axioms WeilDefect.neutralFinitePrime_fourier_physical_pairing
-          #print axioms WeilDefect.neutralFinitePrime_pairing_integrable
-          #print axioms WeilDefect.neutralArchimedeanSymbol_eq_core_add_prime
-          #print axioms WeilDefect.neutralArchimedeanSymbol_temperate
-          #print axioms WeilDefect.neutralWeilMultiplierCore_eq_archimedean_sub_prime
+          cat > /tmp/rpb108-finite-gauss-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralFiniteGauss
+          #print axioms WeilDefect.neutralDigammaLine_ne_neg_nat
+          #print axioms WeilDefect.neutralDigammaLine_inv_re
+          #print axioms WeilDefect.neutralArchimedeanSymbol_finite_tail
+          #print axioms WeilDefect.neutralFiniteGaussKernel_nonneg
+          #print axioms WeilDefect.neutralFiniteGaussKernel_eq
+          #print axioms WeilDefect.neutralFiniteGaussKernel_tendsto
           LEAN
-          lake env lean /tmp/rpb108-core-split-audit.lean | tee /tmp/rpb108-core-split-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-core-split-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-finite-gauss-audit.lean | tee /tmp/rpb108-finite-gauss-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-finite-gauss-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
