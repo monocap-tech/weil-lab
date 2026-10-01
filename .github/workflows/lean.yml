@@ -1,15 +1,6 @@
 name: Lean
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "lean-toolchain"
-      - "lakefile.toml"
-      - "lake-manifest.json"
-      - "WeilDefect.lean"
-      - "WeilDefect/**"
-      - ".github/workflows/lean.yml"
   pull_request:
     paths:
       - "lean-toolchain"
@@ -28,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Install Elan
         shell: bash
@@ -43,9 +36,31 @@ jobs:
         shell: bash
         run: lake exe cache get
 
-      - name: Check current theorem target
+      - name: Record exact source custody
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
+        run: |
+          git rev-parse HEAD
+          cat lean-toolchain; echo
+          git -C .lake/packages/mathlib rev-parse HEAD
+          git ls-tree HEAD WeilDefect/Morphology/NeutralWeilPolePolarization.lean WeilDefect/Morphology/NeutralWeilPoleGrowth.lean
+
+      - name: Build pole polarization audit
+        shell: bash
+        run: lake build WeilDefect.Morphology.NeutralWeilPolePolarization
+
+      - name: Inspect transitive theorem axioms
+        shell: bash
+        run: |
+          set -o pipefail
+          cat > /tmp/rpb107-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralWeilPolePolarization
+          #print axioms WeilDefect.neutralWeilSourcePole_pairing
+          #print axioms WeilDefect.neutralWeilSourcePole_self_pairing
+          #print axioms WeilDefect.complex_bilinear_phase_square
+          #print axioms WeilDefect.complex_hermitian_phase_normSq
+          LEAN
+          lake env lean /tmp/rpb107-audit.lean | tee /tmp/rpb107-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb107-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
