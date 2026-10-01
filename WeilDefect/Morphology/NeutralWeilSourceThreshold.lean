@@ -302,9 +302,9 @@ theorem frozenWeilCompactAction_eq_strictSource_sub_threshold
     unfold rightLimitWeilMultiplierCore strictSourceWeilMultiplierCore
     rw [hfun, temperedFourierMultiplier_sub _ _ hstrict hthreshold]
   have hcore_u := congrArg (fun T : RealComplexTempered => T u) hcore
+  simp only [ContinuousLinearMap.sub_apply] at hcore_u
   rw [rightLimitThresholdPrime_fourier_physical_pairing] at hcore_u
   unfold frozenWeilCompactAction strictSourceCompactAction
-  simp only [ContinuousLinearMap.sub_apply] at hcore_u
   linear_combination hcore_u
 
 /--
