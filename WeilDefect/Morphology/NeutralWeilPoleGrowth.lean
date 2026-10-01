@@ -32,7 +32,7 @@ theorem neutralWeilExponentialPole_norm_le (aPlus aMinus : ℂ) (x : ℝ) :
         ‖aPlus * (Real.exp (x / 2) : ℂ)‖ +
           ‖aMinus * (Real.exp (-x / 2) : ℂ)‖ := norm_add_le _ _
     _ = ‖aPlus‖ * Real.exp (x / 2) + ‖aMinus‖ * Real.exp (-x / 2) := by
-      simp [norm_mul, Complex.norm_real, Real.norm_eq_abs, Real.exp_pos]
+      simp [Complex.norm_exp]
     _ ≤ ‖aPlus‖ * Real.exp ((1 / 2 : ℝ) * |x|) +
           ‖aMinus‖ * Real.exp ((1 / 2 : ℝ) * |x|) :=
       add_le_add (mul_le_mul_of_nonneg_left hp (norm_nonneg _))
