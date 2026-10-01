@@ -153,6 +153,7 @@ theorem neutralArchimedeanGapFunction_eq_exteriorFormula
   rw [neutralArchimedeanGapFunction_eq_compactIntegral]
   apply setIntegral_congr_fun measurableSet_Icc
   intro y hy
+  dsimp only
   rw [archimedeanGapKernelComplex_eq_offDiagonal
     (supportGap_le_abs_sub_point hc hca hx hy)]
 
@@ -166,6 +167,7 @@ theorem neutralArchimedeanExterior_integrand_integrable
   apply (integrableOn_congr_fun ?_ measurableSet_Icc).mp
     (neutralArchimedeanGapFunction_integrand_integrable carrier (sub_pos.mpr hca) x)
   intro y hy
+  dsimp only
   rw [archimedeanGapKernelComplex_eq_offDiagonal
     (supportGap_le_abs_sub_point hc hca hx hy)]
 
@@ -175,14 +177,16 @@ theorem integrable_exp_neg_rate_abs {κ : ℝ} (hκ : 0 < κ) :
   have hl : IntegrableOn (fun x : ℝ => Real.exp (-κ * |x|)) (Set.Iic 0) volume := by
     apply (integrableOn_congr_fun ?_ measurableSet_Iic).mp (integrableOn_exp_mul_Iic hκ 0)
     intro x hx
-    rw [abs_of_nonpos hx]
+    dsimp only
+    rw [abs_of_nonpos (Set.mem_Iic.mp hx)]
     congr 1
     ring
   have hr : IntegrableOn (fun x : ℝ => Real.exp (-κ * |x|)) (Set.Ioi 0) volume := by
     apply (integrableOn_congr_fun ?_ measurableSet_Ioi).mp
       (integrableOn_exp_mul_Ioi (neg_lt_zero.mpr hκ) 0)
     intro x hx
-    rw [abs_of_pos hx]
+    dsimp only
+    rw [abs_of_pos (Set.mem_Ioi.mp hx)]
   have hall := hl.union hr
   rw [Set.Iic_union_Ioi] at hall
   exact integrableOn_univ.mp hall
