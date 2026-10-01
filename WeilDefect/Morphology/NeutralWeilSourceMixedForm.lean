@@ -4,7 +4,7 @@ namespace WeilDefect
 
 noncomputable section
 
-open MeasureTheory
+open MeasureTheory FourierTransform
 open scoped SchwartzMap ComplexConjugate FourierTransform
 
 /-- Mixed energy is genuinely integrable, not merely a totalized integral.
@@ -50,6 +50,8 @@ theorem NeutralSourceFormDomainAttachment.absoluteSymbolEnergy
   · exact hm.abs.aestronglyMeasurable.mul
       ((Lp.aestronglyMeasurable (𝓕 f.val : RealComplexL2)).norm.pow 2)
   · filter_upwards [] with ξ
+    rw [Real.norm_eq_abs, abs_of_nonneg
+      (mul_nonneg (abs_nonneg _) (sq_nonneg _))]
     simpa only [mul_assoc] using mul_le_mul_of_nonneg_right
       (hbound ξ) (sq_nonneg ‖(𝓕 f.val : RealComplexL2) ξ‖)
 
