@@ -36,7 +36,13 @@ theorem neutralArchimedeanSymbol_finite_tail (N : ℕ) (t : ℝ) :
         ∑ n ∈ Finset.range N, neutralGaussReciprocal n t := by
   have h := congrArg Complex.re
     (Complex.digamma_apply_add_nat (neutralDigammaLine_ne_neg_nat t) N)
-  simp only [Complex.add_re, Complex.sum_re, neutralDigammaLine_inv_re] at h
+  have hsum : (∑ n ∈ Finset.range N, (neutralDigammaLine t + (n : ℂ))⁻¹).re =
+      ∑ n ∈ Finset.range N, neutralGaussReciprocal n t := by
+    induction N with
+    | zero => simp
+    | succ N ih =>
+      simp only [Finset.sum_range_succ, Complex.add_re, ih, neutralDigammaLine_inv_re]
+  simp only [Complex.add_re, hsum] at h
   change (Complex.digamma (neutralDigammaLine t)).re - Real.log Real.pi = _
   rw [h]
   ring
@@ -71,7 +77,10 @@ theorem neutralFiniteGaussKernel_tendsto {z : ℝ} (hz : z ≠ 0) :
     nlinarith [abs_pos.mpr hz]
   have hp := tendsto_pow_atTop_nhds_zero_of_lt_one (Real.exp_nonneg (-2*|z|)) hr
   simp_rw [neutralFiniteGaussKernel_eq _ hz]
-  simpa using (tendsto_const_nhds.mul (tendsto_const_nhds.sub hp))
+  have hc : Tendsto (fun _ : ℕ => archimedeanGapKernel |z| z) atTop
+      (𝓝 (archimedeanGapKernel |z| z)) := tendsto_const_nhds
+  have h1 : Tendsto (fun _ : ℕ => (1 : ℝ)) atTop (𝓝 (1 : ℝ)) := tendsto_const_nhds
+  simpa using hc.mul (h1.sub hp)
 
 end
 
