@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-104 / WD-T40 F-4 compact Schwartz cutoff construction + Schwartz-topology convergence.
+- **Next project cursor:** RPB-105 / WD-T40 F-4 residual + pole cutoff pairing convergence.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -36,7 +36,7 @@ Exact blocking stack:
 F-1  physical real-line L2 / tempered-distribution carrier lift — BUILD-CERTIFIED / audited blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d / run 36649140221
 F-2  actual compact-window Weil multiplier realization — COMPLETE / NORMALIZED BUILD-CERTIFIED / t=2*pi*xi source-to-mathlib map / multiplier blob 4c24084c8a058cbb6685d54bc8226b746cabc413 / integrated run 36774149872 / explicit EXT-4 + EXT-5D premise custody unchanged
 F-3  support-gap Gaussian pairing theorem — COMPLETE / BUILD-CERTIFIED AGAINST NORMALIZED F-2 / final pairing blob 54732470ab2cf2a3a99be646372fdc186225363a / integrated run 36774149872 / no new imported premise
-F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE IN PROGRESS / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability BUILD-CERTIFIED by RPB-101 / carrier Fourier moments + C-infinity + temperate growth BUILD-CERTIFIED by RPB-102 / exact moving filtered mode as SchwartzMap BUILD-CERTIFIED by RPB-103 / compact Schwartz-cutoff construction + residual/pole cutoff convergence + pole-growth instantiation still open / coercivity not started
+F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE IN PROGRESS / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability BUILD-CERTIFIED by RPB-101 / carrier Fourier moments + C-infinity + temperate growth BUILD-CERTIFIED by RPB-102 / exact moving filtered mode as SchwartzMap BUILD-CERTIFIED by RPB-103 / compact Schwartz-cutoff construction + full Schwartz-topology convergence BUILD-CERTIFIED by RPB-104 / residual + pole cutoff pairing convergence + pole-growth instantiation still open / coercivity not started
 F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
 F-6  final WD-T40 assembly from explicit EXT-4 / EXT-5 premises
 ~~~
@@ -4852,6 +4852,78 @@ Next cursor:
 
 ~~~text
 RPB-104 / WD-T40 F-4 COMPACT SCHWARTZ CUTOFF CONSTRUCTION + SCHWARTZ-TOPOLOGY CONVERGENCE
+~~~
+
+Logarithmic coercivity remains unopened.
+
+
+---
+
+## RPB-104 compact Schwartz cutoff convergence delta
+
+The actual moving filtered mode now has an explicit compactly supported
+Schwartz approximation sequence.
+
+New module:
+
+~~~text
+WeilDefect/Morphology/NeutralGaussianCutoff.lean
+~~~
+
+The construction uses a fixed `ContDiffBump` with inner radius 1 and outer
+radius 2 and rescales it by `R^{-1}`.
+
+Core declarations:
+
+~~~text
+neutralGaussianCutoffScalar
+neutralGaussianSchwartzCutoff
+neutralGaussianSchwartzCutoff_compact
+neutralGaussianSchwartzCutoff_seminorm_le
+neutralGaussianSchwartzCutoff_tendsto
+movingGaussianFilteredModeCompactCutoff
+movingGaussianFilteredModeCompactCutoff_compact
+movingGaussianFilteredModeCompactCutoff_tendsto
+~~~
+
+For every Schwartz function `f`, the cutoff error satisfies an explicit
+seminorm estimate of order `O(1/R)`.  Taking `R=N+1` gives convergence in
+the complete Schwartz topology, not merely pointwise or in an Lp norm.
+
+Applied to the RPB-103 moving filtered mode, Lean certifies:
+
+~~~text
+each cutoff term: compactly supported
+cutoff sequence:  tends to movingGaussianFilteredModeSchwartz
+                  in Schwartz topology
+~~~
+
+Successful validation evidence:
+
+~~~text
+run:  36800396833
+job:  110173193606
+head: 8e8cf915220bf5bff355d4df006b3c18b926a780
+blob: e8f5319b0b8a8b2a1c840e8630f53f2c7dce08da
+~~~
+
+The exact module build and repository-wide unfinished-proof/project-axiom
+rejection gate both passed.
+
+RPB-100 burden B is therefore closed.
+
+Remaining pre-coercivity burdens:
+
+~~~text
+C. residual pairing convergence along cutoffs
+D. pole pairing convergence along cutoffs
+E. actual EXT-4 pole exponential-growth instantiation
+~~~
+
+Next cursor:
+
+~~~text
+RPB-105 / WD-T40 F-4 RESIDUAL + POLE CUTOFF PAIRING CONVERGENCE
 ~~~
 
 Logarithmic coercivity remains unopened.
