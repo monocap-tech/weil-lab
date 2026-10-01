@@ -50,3 +50,23 @@ workflow is excluded. Historical RPB notes are unchanged; the stale current
 RPB-100 overview is replaced by the recovered RPB-108 pointer.
 Actual source witnesses remain open, and no canonical theorem standing is
 promoted by this conditional build certificate.
+
+## RPB-108 concrete mixed-form continuation, October 1, 2026
+
+Recovered research head: `275f0a21f90fbb4b939b4b621efe09a62e5fc288`.
+Exact-module validation head: `d6a1a42985a22c229422d242bb5e0fb9f2dc6298`.
+Run `36896248362`, job `110483849939`, source blob
+`f2ce89e5e020f09de54d1864da928bd99a841cbd`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,955 jobs passed, eight audited endpoints use only the standard three axioms,
+and the unfinished/project-axiom declaration gate passed.
+
+The promoted source constructs the genuinely convergent normalized multiplier
+and pole sesquilinear form on the retained domain, proves carrier moment
+compatibility, and consumes scoped polarization for this concrete form.
+Actual source diagonal/domain/symbol attachment and the regular core witness
+remain open. Threshold bookkeeping stays closed; coercivity has not started.
+
+Promotion excludes the validation-only workflow and preserves its original
+research blob `f194e9564577d3b79831b7abfb91b5933f3af98f`. Historical notes,
+`main`, canonical Weil, and WD-T40 mathematical standing are unchanged.

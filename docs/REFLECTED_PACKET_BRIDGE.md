@@ -9,7 +9,7 @@
 
 ## Current standing
 
-The live pointer was recovered from `fe92dffc4794a519a382a2533dc4313580fa443d`.
+This pass continues from `275f0a21f90fbb4b939b4b621efe09a62e5fc288`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -22,11 +22,21 @@ The latest threshold-action certificate is run `36871575764`, job
 `110400389955`, module blob `2e1a1d755da1414651fe088cf42a787a3df213fa`.
 See [threshold-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_THRESHOLD_ACTION_20261001.md).
 
-The new continuation retains the actual source domain explicitly, proves
+The previous continuation retains the actual source domain explicitly, proves
 complex polarization on that domain, and constructs `q = r + p_h` with the
 full compact weak identity from a represented core and central cancellation.
 Exact-module validation passed in run `36876381132` (8,954 jobs). These constructions do not supply their
 actual source witnesses. See [source-domain continuation](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_FORM_DOMAIN_20261001.md).
+
+The current continuation constructs the actual normalized multiplier-plus-pole
+sesquilinear form on that retained domain. Mixed integrals genuinely converge
+from the retained log energy and explicit upper symbol bound; Lp a.e. laws
+and compact-window moment convergence justify its linear laws. The carrier
+moments agree with the previously named pole coefficients. Scoped polarization
+now applies to this concrete form, conditional on the retained source diagonal
+identity. Exact-module validation passed in run `36896248362` (8,955 jobs),
+with eight endpoint axiom closures restricted to the standard three axioms.
+See [mixed-form continuation](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_MIXED_FORM_20261001.md).
 
 | Obligation | Current state |
 | --- | --- |
@@ -36,6 +46,7 @@ actual source witnesses. See [source-domain continuation](../notes/REFLECTED_PAC
 | Hermitian cutoff extension | Build-certified conditional on actual compact realization |
 | Shell/globalization/threshold action corrections | Build-certified; bookkeeping closed |
 | Scoped complex polarization | Build-certified |
+| Concrete retained-domain multiplier-plus-pole form | Build-certified with explicit domain/symbol inputs |
 | Residual construction from represented core | Build-certified |
 | Actual source form-domain membership and form identification | Open |
 | Actual core representative, regularity/growth and central cancellation | Open |
@@ -49,7 +60,8 @@ actual source witnesses. See [source-domain continuation](../notes/REFLECTED_PAC
 RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
 
 1. Identify the finite-window source domain and attach WD-T38's retained membership hypothesis.
-2. Attach the diagonal multiplier/pole form there; consume scoped polarization.
+2. Attach the source diagonal identity to the constructed multiplier/pole
+   form there; consume scoped polarization.
 3. Establish the actual core representative with regularity and growth,
    and attach central cancellation of r + p_h.
 4. Consume the constructed compact weak realization in the certified
@@ -70,3 +82,5 @@ The current detailed control is [Lean Formalization Track](LEAN_FORMALIZATION_TR
 Provenance is in [Reflected-Packet Bridge Provenance](REFLECTED_PACKET_BRIDGE_PROVENANCE.md).
 Definitions are in [Terminology](TERMINOLOGY.md) and its additive
 [source-domain supplement](TERMINOLOGY_RPB108_SOURCE_DOMAIN.md).
+The concrete mixed form is registered in the additive
+[mixed-form supplement](TERMINOLOGY_RPB108_MIXED_FORM.md).

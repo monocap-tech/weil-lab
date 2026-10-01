@@ -1,5 +1,43 @@
 # Lean Status
 
+## RPB-108 — concrete source-domain mixed form
+
+This pass continues from `275f0a21f90fbb4b939b4b621efe09a62e5fc288`.
+`WeilDefect.Morphology.NeutralWeilSourceMixedForm` constructs the actual
+normalized multiplier-plus-pole sesquilinear form on the retained domain.
+Mixed integrals genuinely converge using retained logarithmic energy and
+the explicit upper symbol bound. Lp/Fourier a.e. representative laws justify
+linearity; compact-window pole moments are genuine linear maps and agree
+with the actual carrier's named source moments by support.
+
+Scoped polarization now compares the source form with this concrete form,
+conditional on their same-domain diagonal identity. Actual source-domain
+and diagonal attachment, the exact normalized symbol-bound attachment, and
+the regular core witness with growth and central cancellation remain open.
+The existing core-to-residual construction is retained, not replaced with
+an inference of regularity from logarithmic quadratic energy.
+
+~~~text
+run: 36896248362 / job: 110483849939
+checked-out head: d6a1a42985a22c229422d242bb5e0fb9f2dc6298
+source blob: f2ce89e5e020f09de54d1864da928bd99a841cbd
+Lean: 4.34.0 / mathlib: 5ed2965256430c3649e86755f9576b54eca72435
+exact-module build: PASS (8955 jobs)
+eight audited endpoint axiom closures: propext, Classical.choice, Quot.sound
+declaration gate: PASS
+~~~
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+NEXT: RETAINED SOURCE DOMAIN / CONCRETE DIAGONAL ATTACHMENT
+      + ACTUAL CORE REPRESENTATIVE / REGULARITY / GROWTH / CENTRAL CANCELLATION
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+See [mixed-form checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_MIXED_FORM_20261001.md)
+and [mixed-form terminology](TERMINOLOGY_RPB108_MIXED_FORM.md).
+
 ## RPB-108 — retained source domain and constructed residual certified
 
 The recovered research base is `fe92dffc4794a519a382a2533dc4313580fa443d`.
