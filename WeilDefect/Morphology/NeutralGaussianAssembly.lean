@@ -71,7 +71,8 @@ def rightLimitWeilGaussianAdmissibility_sourcePole
   apply rightLimitWeilGaussianAdmissibility_of_growth carrier residual hSymbol
     (neutralWeilSourcePole carrier) (neutralWeilSourcePole_growthData carrier)
     hEXT4 Ck hc hR hqLarge
-  simpa [neutralWeilSourcePole_growthData, neutralWeilExponentialPole_growthData] using hpLarge
+  norm_num [neutralWeilSourcePole_growthData, neutralWeilExponentialPole_growthData]
+  exact hpLarge
 
 end
 
