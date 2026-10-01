@@ -27,7 +27,7 @@ def neutralGaussReciprocal (n : ℕ) (t : ℝ) : ℝ :=
 theorem neutralDigammaLine_inv_re (n : ℕ) (t : ℝ) :
     ((neutralDigammaLine t + (n : ℂ))⁻¹).re = neutralGaussReciprocal n t := by
   simp [neutralDigammaLine, neutralGaussReciprocal, Complex.inv_re,
-    Complex.normSq_apply, pow_two, add_comm, add_left_comm, add_assoc]
+    Complex.normSq_apply, pow_two, add_comm]
 
 /-- Actual source symbol split, derived solely from the proved recurrence. -/
 theorem neutralArchimedeanSymbol_finite_tail (N : ℕ) (t : ℝ) :
@@ -38,6 +38,7 @@ theorem neutralArchimedeanSymbol_finite_tail (N : ℕ) (t : ℝ) :
     (Complex.digamma_apply_add_nat (neutralDigammaLine_ne_neg_nat t) N)
   have hsum : (∑ n ∈ Finset.range N, (neutralDigammaLine t + (n : ℂ))⁻¹).re =
       ∑ n ∈ Finset.range N, neutralGaussReciprocal n t := by
+    clear h
     induction N with
     | zero => simp
     | succ N ih =>
