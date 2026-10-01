@@ -53,8 +53,9 @@ jobs:
           cat > /tmp/rpb108-source-window-audit.lean <<'LEAN'
           import WeilDefect.Morphology.NeutralWeilSourceWindowAttachment
           #print axioms WeilDefect.compactSchwartz_support_in_symmetric_window
-          #print axioms WeilDefect.rightLimitWeilWeakRealizationPremise_of_sourceWindows
-          #print axioms WeilDefect.rightLimitWeilGaussianHermitian_of_sourceWindows
+          #print axioms WeilDefect.frozenWeilCompactAction_eq_larger_add_shell
+          #print axioms WeilDefect.rightLimitWeilWeakRealizationPremise_of_correctedSourceWindows
+          #print axioms WeilDefect.rightLimitWeilGaussianHermitian_of_correctedSourceWindows
           LEAN
           lake env lean /tmp/rpb108-source-window-audit.lean | tee /tmp/rpb108-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-axioms.txt; then exit 1; fi
