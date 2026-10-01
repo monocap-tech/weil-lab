@@ -16,12 +16,62 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-106 / WD-T40 F-4 actual EXT-4 pole exponential-growth instantiation.
+- **Next project cursor:** RPB-107 / WD-T40 F-4 concrete EXT-4 pole attachment + test-duality audit.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
 
 ## WD-T40 blocker record
+
+### RPB-106 corrected certificate
+
+The former RPB-104 and RPB-105 green runs remain wrong-target historical
+records.  Their source obligations were subsequently repaired and certified
+through the actual Gaussian assembly dependency closure.
+
+~~~text
+run:  36803460601
+job:  110182696916
+head: d9c0b171263862ed088620597f3d8d5ff7512278
+Lean: leanprover/lean4:v4.34.0
+mathlib: 5ed2965256430c3649e86755f9576b54eca72435
+target: lake build WeilDefect.Morphology.NeutralGaussianAssembly
+result: PASS
+~~~
+
+Certified source blobs:
+
+~~~text
+NeutralGaussianCutoff.lean:
+1cbe03541d4521026205de8475f78a733e62abe0
+
+NeutralGaussianCutoffPairing.lean:
+1accc07c182e5348212734f0b00cdf676a02b164
+
+NeutralWeilPoleGrowth.lean:
+2c1b440bb7b8c32dcde58ac5addc0fbbeab607a2
+
+NeutralGaussianAssembly.lean:
+01ce40bffd08cf73eb7d70e70f544ff479bfb4ce
+~~~
+
+The endpoint axiom audit reports only `propext`, `Classical.choice`, and
+`Quot.sound`, with no `sorryAx`, for the cutoff topology theorem, both
+pairing-limit theorems, the explicit exponential-pole bound, the concrete
+source-pole growth instance, and the source-pole Gaussian-admissibility
+constructor.
+
+The concrete pole is the two-exponential species with growth rate `1/2`.
+The final constructor is intentionally conditional on
+
+~~~lean
+RightLimitWeilWeakRealizationPremise
+  c carrier residual hSymbol (neutralWeilSourcePole carrier)
+~~~
+
+so no arbitrary locally-integrable EXT-4 pole is silently identified with the
+source pole.  This imported witness attachment, together with the
+bilinear/Hermitian test-duality audit, is the live pre-coercivity seam.
 
 RPB-67 completed the formalization preflight.
 
@@ -36,7 +86,7 @@ Exact blocking stack:
 F-1  physical real-line L2 / tempered-distribution carrier lift — BUILD-CERTIFIED / audited blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d / run 36649140221
 F-2  actual compact-window Weil multiplier realization — COMPLETE / NORMALIZED BUILD-CERTIFIED / t=2*pi*xi source-to-mathlib map / multiplier blob 4c24084c8a058cbb6685d54bc8226b746cabc413 / integrated run 36774149872 / explicit EXT-4 + EXT-5D premise custody unchanged
 F-3  support-gap Gaussian pairing theorem — COMPLETE / BUILD-CERTIFIED AGAINST NORMALIZED F-2 / final pairing blob 54732470ab2cf2a3a99be646372fdc186225363a / integrated run 36774149872 / no new imported premise
-F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE IN PROGRESS / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability BUILD-CERTIFIED by RPB-101 / carrier Fourier moments + C-infinity + temperate growth BUILD-CERTIFIED by RPB-102 / exact moving filtered mode as SchwartzMap BUILD-CERTIFIED by RPB-103 / compact Schwartz-cutoff construction + full Schwartz-topology convergence BUILD-CERTIFIED by RPB-104 / residual cutoff pairing convergence + pole cutoff pairing convergence conditional on explicit pole-growth carrier BUILD-CERTIFIED by RPB-105 / actual EXT-4 pole-growth instantiation still open / coercivity not started
+F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE REPAIRED THROUGH CONDITIONAL ASSEMBLY / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability BUILD-CERTIFIED by RPB-101 / carrier Fourier moments + C-infinity + temperate growth BUILD-CERTIFIED by RPB-102 / exact moving filtered mode as SchwartzMap BUILD-CERTIFIED by RPB-103 / corrected compact Schwartz-cutoff + full Schwartz-topology convergence and corrected residual/pole pairing limits RE-CERTIFIED transitively by RPB-106 run 36803460601 / concrete two-exponential source-pole growth BUILD-CERTIFIED / Gaussian admissibility assembly BUILD-CERTIFIED-FROM-IMPORTED-PREMISE when EXT-4 names exactly neutralWeilSourcePole carrier / concrete EXT-4 attachment + bilinear/Hermitian test-duality audit still open / coercivity not started
 F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
 F-6  final WD-T40 assembly from explicit EXT-4 / EXT-5 premises
 ~~~
@@ -60,7 +110,7 @@ unless EXT-4 and EXT-5 are themselves reconstructed in Lean.
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
-| WD-T40 | — F-1 carrier, F-2 strict-right scalar symbol, and corrected exponential-growth residual carrier are build-certified; weak-realization target is certified as an interface but not instantiated; exact symbol temperate-growth/multiplier realization and F-3--F-6 remain open | LEAN-BLOCKED |
+| WD-T40 | F-1 carrier + normalized F-2 multiplier + F-3 support-gap pairing + repaired RPB-104/105 cutoff/pairing dependency closure + concrete source-pole growth + conditional Gaussian-admissibility assembly are kernel-checked; the imported compact EXT-4 witness must still be attached to the named source pole and the bilinear/Hermitian Gaussian test convention audited before coercivity | LEAN-BLOCKED |
 | WD-T39 | WeilDefect.FullNegativeSpace + WeilDefect.fullNegativeCoeff + WeilDefect.fullCoeff + WeilDefect.fullJValue + WeilDefect.wd_t39_p3_b1_anchored_mass + WeilDefect.wd_t39_p3_b2_full_coordinate_escape_weak_zero + WeilDefect.wd_t39_p3_b3_fixed_packet_custody + WeilDefect.normEscapeSubsequence + WeilDefect.wd_t39_p3_b4_norm_escape_of_unbounded + WeilDefect.BoundedBackgroundRegime + WeilDefect.wd_t39_p3_b4_bounded_background_dichotomy + WeilDefect.BackgroundCompactnessRegime + WeilDefect.wd_t39_p3_b4_background_compactness_trichotomy + WeilDefect.wd_t39_p3_b5_fixed_selected_ray_stability + WeilDefect.wd_t39_p3_b6_fixed_full_divisor_negative_weak_limit + WeilDefect.wd_t39_p3_b7_finite_shadow_separation + WeilDefect.NoncompactDefectMorphology + WeilDefect.wd_t39_noncompact_background_morphology | LEAN-CERTIFIED |
 | WD-T38 | WeilDefect.wd_t38_p3_u1_fixed_packet_critical_dichotomy + WeilDefect.wd_t38_attained_neutral_selected_coordinate_nonzero + WeilDefect.rightLimitPrimePowers + WeilDefect.wd_t38_p3_u3_right_limit_prime_decomposition + WeilDefect.wd_t38_p3_u3_right_limit_prime_support_finite + WeilDefect.wd_t38_p3_u4_logarithmic_order_neutral_carrier + WeilDefect.wd_t38_p3_u5_no_free_positive_sobolev_control + WeilDefect.wd_t38_p3_u5_finite_prime_translations_no_smoothing + WeilDefect.wd_t38_p3_u6_global_cancellation_not_termwise + WeilDefect.neutralNegativeSynthesis + WeilDefect.neutralWeilOperator + WeilDefect.wd_t38_p3_u2_negative_adjoint_identity + WeilDefect.wd_t38_p3_u2_physical_neutral_null_mode + WeilDefect.NeutralNullExtensionInterface + WeilDefect.NeutralNullExtensionInterface.persistenceGoal + WeilDefect.wd_t38_p3_u7_neutral_null_extension_reduction + WeilDefect.NeutralArithmeticMorphology + WeilDefect.wd_t38_neutral_arithmetic_morphology + WeilDefect.NeutralDefectMorphology + WeilDefect.wd_t38_attained_unit_gain_neutral_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T37 | WeilDefect.wd_t37_selected_source_zero_moment_of_wd_t26 + WeilDefect.wd_t37_selected_source_nonzero_of_wd_t26 + WeilDefect.wd_t37_p3_n1_endpoint_ray + WeilDefect.wd_t37_p3_n2_normalized_representative_blowup + WeilDefect.wd_t37_p3_n3_normalized_full_negativity + WeilDefect.wd_t37_p3_n4_zero_moment_source_far_decay + WeilDefect.wd_t37_p3_n5_far_localization + WeilDefect.wd_t37_p3_n6_weighted_next_jet_morphology + WeilDefect.wd_t37_p3_n7_no_adaptive_scalar_bypass + WeilDefect.NegativeArithmeticMorphology + WeilDefect.NegativeDefectMorphology + WeilDefect.wd_t37_fixed_packet_persistent_negative_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
