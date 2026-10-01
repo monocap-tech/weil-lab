@@ -38,7 +38,7 @@ theorem neutralGaussianCutoffScalar_one
   apply neutralGaussianCutoffBump.one_of_mem_closedBall
   simp only [Metric.mem_closedBall, dist_zero_right, Real.norm_eq_abs]
   rw [abs_mul, abs_inv, abs_of_pos hR]
-  exact (inv_mul_le_iff₀ hR).2 hx
+  exact (inv_mul_le_iff₀ hR).2 (by simpa [neutralGaussianCutoffBump] using hx)
 
 /-- The fixed bump itself, bundled as a Schwartz function. -/
 def neutralGaussianCutoffBumpSchwartz : SchwartzMap ℝ ℝ :=
