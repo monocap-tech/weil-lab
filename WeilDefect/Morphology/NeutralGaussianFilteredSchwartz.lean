@@ -9,17 +9,6 @@ noncomputable section
 open MeasureTheory Filter
 open scoped Convolution FourierTransform SchwartzMap Topology
 
-/-- The compactly supported physical representative is globally L1. -/
-theorem neutralPhysicalRepresentative_integrable
-    {c : ℝ}
-    {EndpointObs RightObs : Type*}
-    [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
-    [NormedAddCommGroup RightObs] [NormedSpace ℂ RightObs]
-    (carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :
-    Integrable carrier.h volume := by
-  exact
-    (neutralPhysicalRepresentative_integrableOn carrier).integrable_of_forall_notMem_eq_zero
-      (fun x hx => carrier.representative_eq_zero_of_not_mem hx)
 
 /--
 Frequency-side Schwartz realization of the filtered mode.
