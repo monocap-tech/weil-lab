@@ -135,3 +135,33 @@ imported.
 
 **Registration:** RPB-108 threshold-correction continuation, October 1, 2026
 (America/Los_Angeles).
+
+
+## Strict-source action threshold correction
+
+The **strict-source action** uses exactly the pinned compact-window prime
+condition `log n < 2a`; the project **right-limit action** retains
+equality-threshold prime powers with `log n <= 2a`.
+
+At action level:
+
+~~~math
+E_a^{<=}(h;u)
+=
+E_a^{<}(h;u)
+-
+\int_{\mathbb R}u(x)\Theta_a^{phys}h(x)\,dx.
+~~~
+
+The physical threshold correction is the symmetric translation contribution
+of the at-most-one equality-threshold prime power.  It is not folded into the
+source action by convention.
+
+A **strict-source corrected window premise** is the finite-window attachment
+stated in the source convention, with both this equality-threshold correction
+and the larger-window prime shell explicit.  The certified
+`StrictSourceCorrectedWindowPremise.toRightLimit` adapter converts it to the
+right-limit source-window premise used downstream.
+
+**Registration:** RPB-108 action-level threshold continuation, October 1,
+2026 (America/Los_Angeles).

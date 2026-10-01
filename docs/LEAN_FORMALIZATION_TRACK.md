@@ -1,5 +1,56 @@
 # Lean Formalization Track
 
+## RPB-108 — strict-source action threshold correction certified
+
+The source strict `<` and project right-limit `<=` conventions are now
+connected at the physical action level.
+
+Certified additions to `NeutralWeilSourceThreshold.lean` include
+
+~~~text
+rightLimitThresholdPrimePhysical
+rightLimitThresholdPrime_pairing_integrable
+rightLimitThresholdPrime_fourier_physical_pairing
+strictSourceWeilMultiplierCore
+strictSourceCompactAction
+frozenWeilCompactAction_eq_strictSource_sub_threshold
+StrictSourceCorrectedWindowPremise
+StrictSourceCorrectedWindowPremise.toRightLimit
+~~~
+
+with
+
+~~~math
+E_a^{<=}(h;u)
+=
+E_a^{<}(h;u)
+-
+\int u\,\Theta_a^{phys}h.
+~~~
+
+The remaining source premise can therefore be stated literally with the
+pinned strict prime cutoff and converted internally to the right-limit window
+premise already consumed downstream.
+
+~~~text
+run: 36871575764 / job: 110400389955
+head: 3bf8577200c8ef4d1648c0613106aaf6d7706931
+target: lake build WeilDefect.Morphology.NeutralWeilSourceThreshold
+blob: 2e1a1d755da1414651fe088cf42a787a3df213fa
+build: PASS (8953 jobs)
+three endpoint axiom closures: propext, Classical.choice, Quot.sound
+declaration gate: PASS
+~~~
+
+The threshold convention is no longer part of the open source boundary.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+NEXT: FINITE-WINDOW SOURCE FORM-DOMAIN + HERMITIAN POLARIZATION/COMPLEXIFICATION + ACTUAL RESIDUAL REPRESENTATION
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+
 ## RPB-108 — strict-source/right-limit threshold correction certified
 
 The pinned source's strict prime convention and the project's equality-retaining

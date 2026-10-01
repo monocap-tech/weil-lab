@@ -1,5 +1,50 @@
 # Lean Status
 
+## RPB-108 strict-source action threshold delta
+
+The source strict prime convention and the project right-limit convention are
+now connected at the physical compact-test action level:
+
+~~~math
+E_a^{<=}(h;u)
+=
+E_a^{<}(h;u)
+-
+\int u\,\Theta_a^{phys}h.
+~~~
+
+The threshold physical term is the exact symmetric translation contributed by
+the at-most-one prime power satisfying `log n = 2a`.
+
+`StrictSourceCorrectedWindowPremise` can now state the remaining
+finite-window attachment in the literal source convention, and its certified
+`toRightLimit` adapter supplies the right-limit premise already used by the
+globalization/Hermitian Gaussian stack.
+
+~~~text
+run: 36871575764
+job: 110400389955
+head: 3bf8577200c8ef4d1648c0613106aaf6d7706931
+blob: 2e1a1d755da1414651fe088cf42a787a3df213fa
+target: lake build WeilDefect.Morphology.NeutralWeilSourceThreshold
+result: PASS
+axiom audit: only propext, Classical.choice, Quot.sound
+declaration gate: PASS
+~~~
+
+Remaining blocker:
+
+~~~text
+FINITE-WINDOW SOURCE FORM-DOMAIN
++ HERMITIAN POLARIZATION / COMPLEXIFICATION
++ ACTUAL RESIDUAL REPRESENTATION
+  with local integrability, central vanishing, and exponential growth
+~~~
+
+RPB-108 remains active.  Logarithmic coercivity has not started.
+
+
+
 ## RPB-108 strict-source/right-limit threshold delta
 
 The source strict `<` prime convention and project right-limit `≤`
