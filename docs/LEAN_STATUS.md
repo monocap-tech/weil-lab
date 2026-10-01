@@ -16,7 +16,7 @@ This file records formal verification separately from mathematical standing and 
 - **Formalization track:** LEAN-H1 exhausted.
 - **Active phase:** none.
 - **Active Lean cursor:** none.
-- **Next project cursor:** RPB-107 / WD-T40 F-4 concrete EXT-4 pole attachment + test-duality audit.
+- **Next project cursor:** RPB-108 / WD-T40 F-4 polarized EXT-4 operator realization + Hermitian Gaussian cutoff bridge.
 - **Public packaging:** complete and post-WD-T40 refolded; see [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 
 This section is canonical for the live queue. The certificate sections below are an append-only evidence history and may describe what was still pending at an earlier checkpoint.
@@ -86,7 +86,7 @@ Exact blocking stack:
 F-1  physical real-line L2 / tempered-distribution carrier lift — BUILD-CERTIFIED / audited blob 03fe8ab1b6a3190e40a91b7a467c975e0d87841d / run 36649140221
 F-2  actual compact-window Weil multiplier realization — COMPLETE / NORMALIZED BUILD-CERTIFIED / t=2*pi*xi source-to-mathlib map / multiplier blob 4c24084c8a058cbb6685d54bc8226b746cabc413 / integrated run 36774149872 / explicit EXT-4 + EXT-5D premise custody unchanged
 F-3  support-gap Gaussian pairing theorem — COMPLETE / BUILD-CERTIFIED AGAINST NORMALIZED F-2 / final pairing blob 54732470ab2cf2a3a99be646372fdc186225363a / integrated run 36774149872 / no new imported premise
-F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE REPAIRED THROUGH CONDITIONAL ASSEMBLY / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability BUILD-CERTIFIED by RPB-101 / carrier Fourier moments + C-infinity + temperate growth BUILD-CERTIFIED by RPB-102 / exact moving filtered mode as SchwartzMap BUILD-CERTIFIED by RPB-103 / corrected compact Schwartz-cutoff + full Schwartz-topology convergence and corrected residual/pole pairing limits RE-CERTIFIED transitively by RPB-106 run 36803460601 / concrete two-exponential source-pole growth BUILD-CERTIFIED / Gaussian admissibility assembly BUILD-CERTIFIED-FROM-IMPORTED-PREMISE when EXT-4 names exactly neutralWeilSourcePole carrier / concrete EXT-4 attachment + bilinear/Hermitian test-duality audit still open / coercivity not started
+F-4  Gaussian coercivity -> exponential Fourier weight — PRE-COERCIVITY DOMAIN BRIDGE REPAIRED THROUGH CONDITIONAL ASSEMBLY / admissibility interface BUILD-CERTIFIED / cutoff-limit constructor + pole exponential-growth integrability BUILD-CERTIFIED by RPB-101 / carrier Fourier moments + C-infinity + temperate growth BUILD-CERTIFIED by RPB-102 / exact moving filtered mode as SchwartzMap BUILD-CERTIFIED by RPB-103 / corrected compact Schwartz-cutoff + full Schwartz-topology convergence and corrected residual/pole pairing limits RE-CERTIFIED transitively by RPB-106 run 36803460601 / concrete two-exponential source-pole growth BUILD-CERTIFIED / Gaussian admissibility assembly BUILD-CERTIFIED-FROM-IMPORTED-PREMISE when EXT-4 names exactly neutralWeilSourcePole carrier / two-exponential pole quadratic algebra + Hermitian Gaussian dual test BUILD-CERTIFIED by RPB-107 / full polarized EXT-4 complex operator realization + Hermitian cutoff-limit bridge still open / coercivity not started
 F-5  exponential Fourier weight -> strip holomorphy -> compact-support zero
 F-6  final WD-T40 assembly from explicit EXT-4 / EXT-5 premises
 ~~~
@@ -110,7 +110,7 @@ unless EXT-4 and EXT-5 are themselves reconstructed in Lean.
 
 | Stable ID | Lean declaration | Status |
 | --- | --- | --- |
-| WD-T40 | F-1 carrier + normalized F-2 multiplier + F-3 support-gap pairing + repaired RPB-104/105 cutoff/pairing dependency closure + concrete source-pole growth + conditional Gaussian-admissibility assembly are kernel-checked; the imported compact EXT-4 witness must still be attached to the named source pole and the bilinear/Hermitian Gaussian test convention audited before coercivity | LEAN-BLOCKED |
+| WD-T40 | F-1 carrier + normalized F-2 multiplier + F-3 support-gap pairing + repaired cutoff/pairing closure + concrete source-pole growth + conditional Gaussian-admissibility assembly are kernel-checked; RPB-107 additionally certifies the exact two-exponential pole quadratic factor and the conjugated Hermitian Gaussian dual test. The remaining blocker is the source-faithful polarization/complexification of EXT-4 into a compact-test operator identity and its cutoff extension to that dual test before coercivity | LEAN-BLOCKED |
 | WD-T39 | WeilDefect.FullNegativeSpace + WeilDefect.fullNegativeCoeff + WeilDefect.fullCoeff + WeilDefect.fullJValue + WeilDefect.wd_t39_p3_b1_anchored_mass + WeilDefect.wd_t39_p3_b2_full_coordinate_escape_weak_zero + WeilDefect.wd_t39_p3_b3_fixed_packet_custody + WeilDefect.normEscapeSubsequence + WeilDefect.wd_t39_p3_b4_norm_escape_of_unbounded + WeilDefect.BoundedBackgroundRegime + WeilDefect.wd_t39_p3_b4_bounded_background_dichotomy + WeilDefect.BackgroundCompactnessRegime + WeilDefect.wd_t39_p3_b4_background_compactness_trichotomy + WeilDefect.wd_t39_p3_b5_fixed_selected_ray_stability + WeilDefect.wd_t39_p3_b6_fixed_full_divisor_negative_weak_limit + WeilDefect.wd_t39_p3_b7_finite_shadow_separation + WeilDefect.NoncompactDefectMorphology + WeilDefect.wd_t39_noncompact_background_morphology | LEAN-CERTIFIED |
 | WD-T38 | WeilDefect.wd_t38_p3_u1_fixed_packet_critical_dichotomy + WeilDefect.wd_t38_attained_neutral_selected_coordinate_nonzero + WeilDefect.rightLimitPrimePowers + WeilDefect.wd_t38_p3_u3_right_limit_prime_decomposition + WeilDefect.wd_t38_p3_u3_right_limit_prime_support_finite + WeilDefect.wd_t38_p3_u4_logarithmic_order_neutral_carrier + WeilDefect.wd_t38_p3_u5_no_free_positive_sobolev_control + WeilDefect.wd_t38_p3_u5_finite_prime_translations_no_smoothing + WeilDefect.wd_t38_p3_u6_global_cancellation_not_termwise + WeilDefect.neutralNegativeSynthesis + WeilDefect.neutralWeilOperator + WeilDefect.wd_t38_p3_u2_negative_adjoint_identity + WeilDefect.wd_t38_p3_u2_physical_neutral_null_mode + WeilDefect.NeutralNullExtensionInterface + WeilDefect.NeutralNullExtensionInterface.persistenceGoal + WeilDefect.wd_t38_p3_u7_neutral_null_extension_reduction + WeilDefect.NeutralArithmeticMorphology + WeilDefect.wd_t38_neutral_arithmetic_morphology + WeilDefect.NeutralDefectMorphology + WeilDefect.wd_t38_attained_unit_gain_neutral_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
 | WD-T37 | WeilDefect.wd_t37_selected_source_zero_moment_of_wd_t26 + WeilDefect.wd_t37_selected_source_nonzero_of_wd_t26 + WeilDefect.wd_t37_p3_n1_endpoint_ray + WeilDefect.wd_t37_p3_n2_normalized_representative_blowup + WeilDefect.wd_t37_p3_n3_normalized_full_negativity + WeilDefect.wd_t37_p3_n4_zero_moment_source_far_decay + WeilDefect.wd_t37_p3_n5_far_localization + WeilDefect.wd_t37_p3_n6_weighted_next_jet_morphology + WeilDefect.wd_t37_p3_n7_no_adaptive_scalar_bypass + WeilDefect.NegativeArithmeticMorphology + WeilDefect.NegativeDefectMorphology + WeilDefect.wd_t37_fixed_packet_persistent_negative_morphology | LEAN-CERTIFIED-FROM-IMPORTED-PREMISE |
@@ -5054,6 +5054,82 @@ Next cursor:
 
 ~~~text
 RPB-106 / WD-T40 F-4 ACTUAL EXT-4 POLE EXPONENTIAL-GROWTH INSTANTIATION
+~~~
+
+Logarithmic coercivity remains unopened.
+
+
+## RPB-107 source-pole attachment and test-duality audit
+
+RPB-107 separates two issues that had been compressed into the former
+"concrete EXT-4 attachment" cursor.
+
+The new module
+
+~~~text
+WeilDefect/Morphology/NeutralGaussianDualityAudit.lean
+~~~
+
+is build-certified under the pinned toolchain:
+
+~~~text
+run:  36807944842
+job:  110196386366
+head: 52c22e7dd49ac50f8ea228b046db5faf5b2362de
+blob: e9d4fde62ea2bbd8e7c586b134e81e58103b9085
+target: lake build WeilDefect.Morphology.NeutralGaussianDualityAudit
+result: PASS (8948 jobs)
+unfinished/project-axiom rejection gate: PASS
+~~~
+
+Certified declarations include:
+
+~~~text
+conjugateSchwartz
+movingGaussianFilteredModeDualTest
+neutralWeilPoleMoment_eq_integral
+neutralWeilPoleMoment_integrable_global
+neutralWeilSourcePole_pairing_eq
+complex_bilinear_phase_I
+complex_hermitian_phase_I
+~~~
+
+The source-pole theorem gives exactly
+
+~~~math
+\int h(x)p_h(x)\,dx
+=
+2M_{-1/2}(h)M_{1/2}(h),
+~~~
+
+so the RPB-106 two-exponential pole is attached at the quadratic-algebra
+level to the two evaluation factors in the pinned compact-window formula.
+
+The duality audit also proves that the present unconjugated complex pairing
+has bilinear phase scaling: a common phase \(i\) changes its sign.  By
+contrast, the conjugated test
+
+~~~math
+G_R^\vee(x)=\overline{G_R(x)}
+~~~
+
+has Hermitian phase invariance.  This is the test species required before the
+weak identity can be interpreted as the Fourier energy containing
+\(|\widehat h|^2\).
+
+The pinned EXT-4 source gives a quadratic form.  The current
+`RightLimitWeilWeakRealizationPremise` is a stronger polarized complex
+operator identity against arbitrary compact complex Schwartz tests.  RPB-107
+does not manufacture that strengthening from the source.  The exact remaining
+formal seam is therefore polarization/complexification plus cutoff passage for
+the Hermitian Gaussian dual test.
+
+Next cursor:
+
+~~~text
+RPB-108 / WD-T40 F-4
+POLARIZED EXT-4 OPERATOR REALIZATION
++ HERMITIAN GAUSSIAN CUTOFF BRIDGE
 ~~~
 
 Logarithmic coercivity remains unopened.
