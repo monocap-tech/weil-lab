@@ -64,7 +64,6 @@ theorem integral_mul_neutralWeilExponentialPole
       aPlus * neutralWeilTestMoment u (1 / 2)
         + aMinus * neutralWeilTestMoment u (-(1 / 2)) := by
           simp [neutralWeilTestMoment, integral_const_mul]
-          congr 2 <;> funext x <;> congr 2 <;> ring
 
 /-- The concrete source pole pairs with a compact test by the exact symmetric
 polarization of the two source evaluation moments. -/
