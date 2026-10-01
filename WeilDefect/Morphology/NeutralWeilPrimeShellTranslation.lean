@@ -33,7 +33,7 @@ theorem cosine_eq_fourierChar_pair (s ξ : ℝ) :
       (1 / 2 : ℂ) *
         ((Real.fourierChar (s * ξ) : ℂ) +
           (Real.fourierChar ((-s) * ξ) : ℂ)) := by
-  rw [← Complex.ofReal_cos]
+  rw [Complex.ofReal_cos]
   simp only [Complex.cos, Real.fourierChar_apply]
   push_cast
   ring_nf
@@ -111,7 +111,7 @@ theorem cosineFourierMultiplier_physical_pairing
   simp only [SchwartzMap.compSubConstCLM_apply]
   rw [neutralPhysical_shift_pairing carrier u s,
     neutralPhysical_shift_pairing carrier u (-s)]
-  simp only [add_neg_eq_sub]
+  simp only [sub_eq_add_neg]
 
 /-- Integrability of every weighted physical shell term against any Schwartz test. -/
 theorem frozenWeilPrimeShell_term_pairing_integrable
@@ -124,7 +124,7 @@ theorem frozenWeilPrimeShell_term_pairing_integrable
   have hp := neutralPhysical_shift_pairing_integrable carrier u (Real.log (n : ℝ))
   convert (hm.add hp).const_mul ((compactWindowPrimeCoefficient n / 2 : ℝ) : ℂ) using 1
   ext x
-  simp only [add_neg_eq_sub]
+  simp only [sub_eq_add_neg]
   ring
 
 /-- The full finite Fourier shell is the physical translation shell on every Schwartz test.
@@ -143,11 +143,11 @@ theorem frozenWeilPrimeShell_fourier_physical_pairing
     dsimp [g]
     fun_prop
   have heq : (fun ξ : ℝ => (frozenWeilPrimeShellSymbol a b ξ : ℂ)) =
-      ∑ n ∈ frozenWeilPrimeShell a b, g n := by
+      (fun ξ : ℝ => ∑ n ∈ frozenWeilPrimeShell a b, g n ξ) := by
     ext ξ
     simp [frozenWeilPrimeShellSymbol, g]
   rw [heq, TemperedDistribution.fourierMultiplierCLM_sum ℂ (fun n _ => hg n)]
-  simp only [Finset.sum_apply]
+  simp only [sum_apply]
   have hterm (n : ℕ) :
       TemperedDistribution.fourierMultiplierCLM ℂ (g n) carrier.temperedMode u =
         ∫ x : ℝ, u x * ((compactWindowPrimeCoefficient n / 2 : ℝ) : ℂ) *
@@ -164,7 +164,7 @@ theorem frozenWeilPrimeShell_fourier_physical_pairing
     simp only [smul_apply, smul_eq_mul]
     rw [cosineFourierMultiplier_physical_pairing]
     have hm : Integrable (fun x : ℝ => u x * carrier.h (x - Real.log (n : ℝ))) volume := by
-      simpa only [add_neg_eq_sub] using
+      simpa only [sub_eq_add_neg] using
         neutralPhysical_shift_pairing_integrable carrier u (-Real.log (n : ℝ))
     have hp := neutralPhysical_shift_pairing_integrable carrier u (Real.log (n : ℝ))
     have hf : (fun x : ℝ => u x * ((compactWindowPrimeCoefficient n / 2 : ℝ) : ℂ) *
