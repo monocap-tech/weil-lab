@@ -37,6 +37,8 @@ import WeilDefect.Morphology.NeutralGaussianTail
 import WeilDefect.Morphology.NeutralGaussianPairing
 import WeilDefect.Morphology.NeutralGaussianAdmissibility
 import WeilDefect.Morphology.NeutralGaussianSchwartz
+import WeilDefect.Morphology.NeutralGaussianSchwartzSeed
+import WeilDefect.Morphology.NeutralGaussianFilteredSchwartz
 
 import WeilDefect.Morphology.Noncompact
 
