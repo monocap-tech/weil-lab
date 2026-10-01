@@ -9,7 +9,7 @@
 
 ## Current standing
 
-This pass continues from `71dddf5382d0b876b96599406a4a923950ed654e`.
+This pass continues from `200e25ba4ce3d261841176b30372579bc5cf0782`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -38,12 +38,19 @@ identity. Exact-module validation passed in run `36896248362` (8,955 jobs),
 with eight endpoint axiom closures restricted to the standard three axioms.
 See [mixed-form continuation](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_MIXED_FORM_20261001.md).
 
-The current continuation derives the absolute-symbol bound from retained
+The source-diagonal continuation derives the absolute-symbol bound from retained
 shifted lower/upper estimates and evaluates the concrete diagonal as the real
 normalized multiplier energy plus `2 Re(conj(Mminus) Mplus)`. For the actual
 carrier, this pole expression equals the real Hermitian pairing with the named
 physical pole. The source comparison now consumes this explicit quadratic
 formula on the retained domain. See [source-diagonal continuation](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_DIAGONAL_20261001.md).
+
+The current continuation establishes actual global L1/local integrability,
+compact support and exponential-weighted norm integrability for the finite
+prime translations. Their support-gap pairing is controlled by L1 mass.
+The full residual's present pointwise growth fields require additional
+regularity or an integral-growth bridge; compact L2 support does not supply
+them. See [prime-regularity continuation](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME_REGULARITY_20261001.md).
 
 | Obligation | Current state |
 | --- | --- |
@@ -56,6 +63,7 @@ formula on the retained domain. See [source-diagonal continuation](../notes/REFL
 | Concrete retained-domain multiplier-plus-pole form | Build-certified with explicit domain/symbol inputs |
 | Real source diagonal and derived shifted-comparison bound | Build-certified from retained inputs |
 | Residual construction from represented core | Build-certified |
+| Actual finite-prime local regularity and integral growth | Build-certified |
 | Actual source form-domain membership and form identification | Open |
 | Actual core representative, regularity/growth and central cancellation | Open |
 | F-4 logarithmic Gaussian coercivity | Not started |
@@ -71,7 +79,8 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
 2. Attach the explicit source quadratic identity and normalized shifted
    estimates there; the diagonal and mixed comparison bridges are constructed.
 3. Establish the actual core representative with regularity and growth,
-   and attach central cancellation of r + p_h.
+   and attach central cancellation of r + p_h. The finite-prime L1 component
+   is constructed; the archimedean core and growth bridge remain open.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
@@ -94,3 +103,6 @@ The concrete mixed form is registered in the additive
 [mixed-form supplement](TERMINOLOGY_RPB108_MIXED_FORM.md).
 The explicit real diagonal and shifted-bound attachment are registered in the
 [source-diagonal supplement](TERMINOLOGY_RPB108_SOURCE_DIAGONAL.md).
+
+Finite-prime and integral-growth wording is registered in the additive
+[prime-regularity supplement](TERMINOLOGY_RPB108_PRIME_REGULARITY.md).

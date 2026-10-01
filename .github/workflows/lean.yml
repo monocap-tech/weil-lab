@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralWeilPrimeRegularity.lean
+          git hash-object WeilDefect/Morphology/NeutralIntegralGrowthGaussian.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralWeilPrimeRegularity
+          lake build WeilDefect.Morphology.NeutralIntegralGrowthGaussian
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,19 +72,17 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-prime-regularity-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralWeilPrimeRegularity
-          #print axioms WeilDefect.neutralFinitePrimePhysical_integrable
-          #print axioms WeilDefect.neutralFinitePrimePhysical_locallyIntegrable
-          #print axioms WeilDefect.neutralFinitePrimePhysical_zero_outside
-          #print axioms WeilDefect.neutralFinitePrimePhysical_weightedNorm_integrable
-          #print axioms WeilDefect.neutralFinitePrimePhysical_weightedNorm_integrable_all
-          #print axioms WeilDefect.integrable_pairing_of_L1_gap
-          #print axioms WeilDefect.frozenWeilPrimeShellPhysical_integrable
-          #print axioms WeilDefect.frozenWeilPrimeShellPhysical_L1_gap
+          cat > /tmp/rpb108-integral-growth-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralIntegralGrowthGaussian
+          #print axioms WeilDefect.integralGrowth_pairing_bound
+          #print axioms WeilDefect.movingGaussianFilteredMode_norm_le_radiusEnvelope
+          #print axioms WeilDefect.movingGaussianFilteredMode_weighted_exterior_bound
+          #print axioms WeilDefect.integralGrowthGaussian_pairing_bound
+          #print axioms WeilDefect.primeShellIntegralGrowthResidual
+          #print axioms WeilDefect.integralGrowth_weakIdentity_of_integrableSchwartz
           LEAN
-          lake env lean /tmp/rpb108-prime-regularity-audit.lean | tee /tmp/rpb108-prime-regularity-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-prime-regularity-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-integral-growth-audit.lean | tee /tmp/rpb108-integral-growth-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-integral-growth-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

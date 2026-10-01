@@ -1,5 +1,35 @@
 # Lean Formalization Track
 
+## RPB-108 — actual finite-prime regularity and L1 gap pairing
+
+Continues from `200e25ba4ce3d261841176b30372579bc5cf0782`.
+`NeutralWeilPrimeRegularity` proves global L1 and local integrability of the
+actual finite prime translations, their compact support enclosure, and
+integrability of their norm against fixed exponential weights. The physical
+shell specializes these results and has an L1 support-gap pairing bound.
+
+Growth audit: compact L2 support does not supply the pointwise exponential
+fields currently demanded of the full core/residual. The finite-prime pairing
+admits an L1 route without boundedness of the carrier. The remaining bridge
+must establish additional regularity or admit integral growth explicitly.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME_REGULARITY_20261001.md).
+
+Certification: exact module passed 8,957 jobs on Lean 4.34.0 and mathlib
+`5ed2965256430c3649e86755f9576b54eca72435`. Validation head
+`d83af4b35838e08050e82019018c2f81828d6cb4`, run `36923201866`,
+job `110574045820`, source blob `7e6d285d64357e775816dfcedbc2486e44b5049f`.
+All eight audited endpoints use only `propext`, `Classical.choice`, and
+`Quot.sound`; the unfinished/project-axiom declaration gate passed.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL FINITE-PRIME REGULARITY / INTEGRAL GROWTH: CONSTRUCTED
+NEXT: ARCHIMEDEAN CORE / CENTRAL CANCELLATION / INTEGRAL-GROWTH BRIDGE
+      + ACTUAL SOURCE DOMAIN / QUADRATIC IDENTITY / NORMALIZED ESTIMATES
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — explicit real source diagonal and retained shifted comparison
 
 This pass continues from `71dddf5382d0b876b96599406a4a923950ed654e`.
