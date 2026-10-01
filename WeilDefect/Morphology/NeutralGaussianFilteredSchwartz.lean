@@ -155,9 +155,9 @@ theorem movingGaussianFilteredModeSchwartz_apply
   rw [MeasureTheory.convolution_def]
   simp only [ContinuousLinearMap.mul_apply']
   symm
-  apply setIntegral_eq_integral_of_ae_compl_eq_zero
-  filter_upwards with y hy
-  rw [carrier.representative_eq_zero_of_not_mem hy, zero_mul]
+  exact setIntegral_eq_integral_of_ae_compl_eq_zero
+    (Eventually.of_forall fun y hy => by
+      rw [carrier.representative_eq_zero_of_not_mem hy, zero_mul])
 
 end
 
