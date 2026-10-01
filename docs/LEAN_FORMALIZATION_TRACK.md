@@ -1,5 +1,34 @@
 # Lean Formalization Track
 
+## RPB-108 — weighted Hermitian source identity and actual pole convergence
+
+Continues from `e5653d51f559e9ecdcd249692a08902488748a27`.
+`NeutralIntegralGrowthWeilIdentity` removes residual growth data from the
+pole/Gaussian convergence proof. The actual named pole has half-rate growth;
+4 ≤ R(a-c) suffices. Both residual and pole product integrability are derived
+before the compact weak identity extends to the actual Hermitian Gaussian.
+
+The compact source identity is retained explicitly in
+`IntegralGrowthWeilWeakRealization`; no Gaussian identity is assumed there.
+The whole archimedean function, weighted mass, and compact source witness are
+not constructed. See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_WEIGHTED_WEAK_IDENTITY_20261001.md).
+
+Certification: exact module passed 8,959 jobs on Lean 4.34.0 and mathlib
+`5ed2965256430c3649e86755f9576b54eca72435`. Validation head
+`965b934fed9a7cca1c7ddad5d4c427c253fa3ed1`, run `36931697060`,
+job `110602273298`, source blob `733587e649dadbc4fdbc8d2b97a2774813889753`.
+All four audited endpoints use only `propext`, `Classical.choice`, and
+`Quot.sound`; the unfinished/project-axiom declaration gate passed.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+WEIGHTED POLE CONVERGENCE / HERMITIAN GAUSSIAN WEAK EXTENSION: CONSTRUCTED
+NEXT: ACTUAL ARCHIMEDEAN FUNCTION / WEIGHTED MASS / CENTRAL CANCELLATION
+      + COMPACT SOURCE WEAK IDENTITY / ACTUAL SOURCE-DOMAIN ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — integral-growth Gaussian support-gap bridge
 
 Continues from `238f9afcfe9ae41176e95f58b33d0f6670b58301`.
