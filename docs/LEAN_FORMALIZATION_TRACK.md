@@ -1,5 +1,43 @@
 # Lean Formalization Track
 
+## RPB-107 duality audit and live handoff
+
+RPB-107 is build-certified under pinned Lean 4.34.0 / mathlib
+5ed2965256430c3649e86755f9576b54eca72435.
+
+~~~text
+run:  36807944842
+job:  110196386366
+head: 52c22e7dd49ac50f8ea228b046db5faf5b2362de
+target: lake build WeilDefect.Morphology.NeutralGaussianDualityAudit
+result: PASS
+blob: e9d4fde62ea2bbd8e7c586b134e81e58103b9085
+~~~
+
+The exact two-exponential source pole now reproduces the source quadratic pole
+factor through a certified whole-line pairing identity.  The same pass
+constructs the conjugated moving Gaussian as a Schwartz test and certifies the
+phase distinction between the existing complex-bilinear pairing and the
+Hermitian pairing required by the Fourier energy.
+
+This does not reconstruct EXT-4.  The pinned source presents a quadratic form,
+whereas the existing Lean compact weak-realization premise asserts a polarized
+complex operator identity against every compact complex Schwartz test.  The
+remaining task is to derive that polarization/complexification explicitly and
+then pass it to the Hermitian Gaussian dual test by compact cutoffs.
+
+The next live cursor is:
+
+~~~text
+RPB-108 / WD-T40 F-4
+POLARIZED EXT-4 OPERATOR REALIZATION
++ HERMITIAN GAUSSIAN CUTOFF BRIDGE
+~~~
+
+Do not begin logarithmic coercivity until the Hermitian compact-test identity
+and its Gaussian cutoff limit are certified.
+
+
 ## RPB-106 certification correction and live handoff
 
 **Repair complete.** Correct-target validation run `36803460601` / job
