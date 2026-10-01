@@ -37,7 +37,7 @@ theorem integralGrowth_pairing_bound
     by_cases hin : x ∈ Set.Ioo (-a) a
     · simp only [hx hin, mul_zero, norm_zero, zero_mul, le_refl]
     · have he : Real.exp (κ * |x|) * Real.exp (-κ * |x|) = 1 := by
-      rw [← Real.exp_add]
+        rw [← Real.exp_add]
         rw [show κ * |x| + -κ * |x| = 0 by ring, Real.exp_zero]
       have hid :
           (‖q x‖ * Real.exp (-κ * |x|)) * (‖g x‖ * Real.exp (κ * |x|)) =
