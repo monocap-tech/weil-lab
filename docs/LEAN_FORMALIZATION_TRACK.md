@@ -1,5 +1,35 @@
 # Lean Formalization Track
 
+## RPB-108 — frozen-cutoff action and radius-correction continuation
+
+The [frozen-extension continuation certificate](../notes/REFLECTED_PACKET_BRIDGE_108_FROZEN_EXTENSION_20260930.md)
+records the exact source and build evidence for this subpass. The selected
+compact-test action now holds the prime cutoff fixed independently of the
+test support. Its pole pairing is integrable. The difference between two
+cutoff radii is explicitly the finite added-prime-shell multiplier, with the
+source-to-mathlib frequency normalization retained.
+
+The separately defined physical shell vanishes on the old open window when
+`c <= a`. Its identification with the Fourier shell multiplier still needs
+its own translation/Fourier proof. Do not treat these separately certified
+identities as an already certified source-compression theorem.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+FROZEN COMPACT-TEST ACTION + EXACT MULTIPLIER RADIUS CORRECTION: CONSTRUCTED
+PHYSICAL ADDED-SHELL VANISHING ON THE OLD WINDOW: PROVED
+NEXT: FOURIER/PHYSICAL SHELL IDENTIFICATION + SOURCE COMPRESSION
+THEN: ACTUAL RESIDUAL REPRESENTATION WITH RETAINED DOMAIN/GROWTH CONDITIONS
+HERMITIAN GAUSSIAN CUTOFF BRIDGE: CERTIFIED CONDITIONAL
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+The `frozenWeilCompactAction_represents_iff` equivalence characterizes the
+remaining residual attachment; it is not a construction of that witness.
+Definitions are registered in the additive [RPB-108 terminology supplement](TERMINOLOGY_RPB108_FROZEN_EXTENSION.md).
+No Gaussian seed, Schwartz realization, or cutoff-limit proof is restarted.
+The earlier certificates and handoffs below remain historical records.
+
 ## RPB-108 — certified Hermitian bridge; source attachment remains open
 
 **Effective live state:** the Hermitian Gaussian cutoff bridge, scoped real
