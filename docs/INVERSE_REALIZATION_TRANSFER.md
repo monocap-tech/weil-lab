@@ -484,3 +484,54 @@ the full positivity/innerness statement.
 \texttt{IRT-0C1 / SUZUKI-SHIFT PARAMETER-FLOW AUDIT}
 }
 \]
+
+
+## 18. IRT-0C1 determination — Suzuki shift parameter flow
+
+The Suzuki shift family supplies an exact parameter transform for the shifted
+screw functions \(\Psi_\omega\). For positive increment \(\eta\), the transform
+
+\[
+\Psi_\omega\mapsto\Psi_{\omega+\eta}
+\]
+
+has nonnegative kernels and therefore propagates nonnegativity **outward** to
+larger shift.
+
+The required safe-to-critical direction is inward. The inverse transform is not
+positivity preserving.
+
+Moreover, eventual nonnegativity of \(\Psi_\omega\) is equivalent to the global
+zero-free half-plane
+
+\[
+\Re s>\frac12+\omega,
+\]
+
+so the transported sign is not a packet-local invariant.
+
+An off-critical reflected pair does create an explicit negative shift well when
+\(\omega\) crosses its horizontal displacement. However the divergent part is
+the selected pole itself. Canonical selected-pole subtraction leaves its regular
+finite part, which is exactly the existing pole-removed outside-field species
+\(A_{F,\Omega}\). Higher shift derivatives similarly reduce to the already
+available higher-resolvent/jet tower.
+
+Thus:
+
+\[
+\boxed{
+\text{EXACT SHIFT FLOW LOCATED / WRONG POSITIVITY DIRECTION /
+THRESHOLD SIGNATURE COLLAPSES TO EXISTING COMPLEMENT FIELD}.
+}
+\]
+
+See [IRT-0C1 checkpoint](../notes/IRT_0C1_SUZUKI_SHIFT_FLOW_20261002.md).
+
+## 19. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-0D / SYSTEMS-REALIZATION + LOEWNER EXACTNESS SCREEN}
+}
+\]
