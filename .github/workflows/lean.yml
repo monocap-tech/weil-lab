@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralDigammaPairingLimit.lean
+          git hash-object WeilDefect/Morphology/NeutralDigammaRealAnchor.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralDigammaPairingLimit
+          lake build WeilDefect.Morphology.NeutralDigammaRealAnchor
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,18 +72,19 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-digamma-pairing-limit-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralDigammaPairingLimit
-          #print axioms WeilDefect.neutralCenteredDigammaCubicMass_nonneg
-          #print axioms WeilDefect.neutralCenteredDigammaPairingMajorant_integrable
-          #print axioms WeilDefect.neutralCenteredDigammaPairing_norm_bound
-          #print axioms WeilDefect.neutralCenteredDigamma_frequency_pairing_tendsto
-          #print axioms WeilDefect.neutralCenteredDigammaAction_frequency_pairing
-          #print axioms WeilDefect.neutralCenteredDigammaAction_residual_tendsto
-          #print axioms WeilDefect.neutralCenteredDigammaResidualPairing_eq_exterior_defect
+          cat > /tmp/rpb108-digamma-real-anchor-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralDigammaRealAnchor
+          #print axioms WeilDefect.neutralPositiveReal_ne_neg_nat
+          #print axioms WeilDefect.neutralDigamma_real_shift_sub_log_tendsto
+          #print axioms WeilDefect.neutralDigamma_real_finite_recurrence
+          #print axioms WeilDefect.neutralDigamma_real_euler_partial_tendsto
+          #print axioms WeilDefect.neutralDigamma_real_euler_term_bound
+          #print axioms WeilDefect.neutralDigamma_real_euler_summable
+          #print axioms WeilDefect.neutralDigamma_real_euler_hasSum
+          #print axioms WeilDefect.neutralDigamma_real_eq_euler_series
           LEAN
-          lake env lean /tmp/rpb108-digamma-pairing-limit-audit.lean | tee /tmp/rpb108-digamma-pairing-limit-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-digamma-pairing-limit-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-digamma-real-anchor-audit.lean | tee /tmp/rpb108-digamma-real-anchor-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-digamma-real-anchor-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
