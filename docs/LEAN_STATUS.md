@@ -1,5 +1,42 @@
 # Lean Status
 
+## RPB-108 — regular source defect boundary removal
+
+Continues from `48771be33f1091d4a5e89ed9bdfce08e9c795ebc`.
+
+`NeutralSourceBoundaryRemoval` transfers mathlib's smooth compact-test
+fundamental lemma to complex compact Schwartz tests on open sets. If a
+locally integrable function represents the actual compact source defect,
+certified exterior attachment forces it to vanish almost everywhere outside
+[-a,a]. Actual central source cancellation forces it to vanish almost
+everywhere in (-a,a). The two endpoints are volume-null, so the representative
+vanishes almost everywhere and every compact defect is zero. This gives
+whole compact weak realization for the existing integral-growth candidate.
+
+This is a conditional reconstruction theorem. Actual central cancellation
+and a locally integrable representation of the actual defect are retained
+as explicit, unconstructed hypotheses. In particular, regularity is not
+inferred from exterior equality or from a tempered distribution. Under this
+regularity hypothesis boundary removal is proved, rather than assumed.
+Whole-source realization is not yet constructed. Actual source-domain/
+quadratic/polarization/normalized estimate witnesses remain open.
+Full-symbol growth is retained. Threshold bookkeeping is closed;
+logarithmic coercivity has not started.
+
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_BOUNDARY_REMOVAL_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,983 build jobs passed. All five endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `d26dbe343dd85772593ee963d9d073af6bda9145`, run `37073137273`, job `111056978955`, source blob `5cb7d738eed3876a2acf3ca03252954be1dbbbda`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+REGULAR DEFECT BOUNDARY REMOVAL: PROVED CONDITIONALLY
+WHOLE COMPACT INTEGRAL-GROWTH REALIZATION: DERIVED CONDITIONALLY
+ACTUAL REGULAR DEFECT REPRESENTATION + CENTRAL CANCELLATION: OPEN
+ACTUAL SOURCE-DOMAIN / QUADRATIC / POLARIZATION WITNESSES: OPEN
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — compact source defect localization
 
 Continues from `0a987d79c62dfee094fe5d5b9a515952312be424`.

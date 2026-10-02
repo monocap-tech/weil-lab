@@ -78,6 +78,7 @@ import WeilDefect.Morphology.NeutralDigammaCancellation
 import WeilDefect.Morphology.NeutralExteriorAttachment
 import WeilDefect.Morphology.NeutralExteriorSourceAttachment
 import WeilDefect.Morphology.NeutralSourceDefectLocalization
+import WeilDefect.Morphology.NeutralSourceBoundaryRemoval
 
 import WeilDefect.Morphology.Noncompact
 
