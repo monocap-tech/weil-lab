@@ -518,3 +518,35 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
 is closed; logarithmic coercivity has not started.
+
+
+## 2026-10-02 — RPB-108 actual centered residual pairing limit
+
+Continues from research head `536987d576594fd7ec9c110e8ecf26f79099dd1d`.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,974 build jobs passed. All seven audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `726048d7d95a6002f74e5adda6ed19737be4eb9a`,
+run `37028063173`, job `110907648291`, source blob
+`23afba0e8b87f3255ebd9023f9d70161c22c3a7a`.
+
+The actual carrier's global L1 mass and two actual Schwartz multipliers
+construct an explicit integrable frequency majorant uniform in the shift.
+Dominated convergence passes the actual pointwise centered residual into
+the frequency pairing on every Schwartz test. Fourier Fubini attaches that
+integral to the existing actual centered multiplier action. On separated
+tests its residual limit equals the previously isolated physical source-
+attachment defect. Neither representation is asserted zero.
+
+The existing full-symbol temperate-growth premise is retained. No smooth
+limiting-symbol multiplier, bounded rough carrier or residual cancellation
+is postulated. Pairing domination and actual-action limit passage are closed.
+Actual residual cancellation, tail vanishing, exterior/whole source attachment,
+central/boundary reconstruction and actual source-domain/quadratic/
+polarization/normalized estimate witnesses remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
+is closed; logarithmic coercivity has not started.

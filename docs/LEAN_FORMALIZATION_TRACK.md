@@ -1,5 +1,41 @@
 # Lean Formalization Track
 
+## RPB-108 — actual centered residual pairing limit
+
+Continues from `536987d576594fd7ec9c110e8ecf26f79099dd1d`.
+`NeutralDigammaPairingLimit` constructs an explicit integrable majorant
+from two Schwartz multipliers and the actual carrier's global L1 norm
+mass. It dominates every actual centered frequency pairing uniformly in
+N. Dominated convergence passes the represented pointwise residual into
+that pairing on every Schwartz test. The existing actual centered action
+has exactly this Fourier integral and therefore the same residual limit.
+On support-separated tests that frequency residual equals the previously
+isolated physical source-attachment defect.
+
+This transfer retains `RightLimitWeilSymbolTemperatePremise a`, the existing
+full-symbol growth premise. No zero limit, smooth limiting-symbol multiplier,
+or source cancellation is assumed. Actual residual cancellation, exterior/
+whole source attachment, central/boundary reconstruction and actual source-
+domain/quadratic/polarization/normalized estimate witnesses remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_PAIRING_LIMIT_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,974 build jobs passed. All seven audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `726048d7d95a6002f74e5adda6ed19737be4eb9a`,
+run `37028063173`, job `110907648291`, source blob
+`23afba0e8b87f3255ebd9023f9d70161c22c3a7a`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL CENTERED FREQUENCY PAIRING DOMINATION / LIMIT PASSAGE: CONSTRUCTED
+ACTUAL FREQUENCY RESIDUAL = EXTERIOR SOURCE-ATTACHMENT DEFECT: CONSTRUCTED
+NEXT: ACTUAL RESIDUAL CANCELLATION → TAIL VANISHING / EXTERIOR ATTACHMENT
+      → WHOLE SOURCE + SOURCE DOMAIN / POLARIZATION
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — actual centered limit and uniform frequency envelope
 
 Continues from `1522fd5cbe750d9bb68db255698ecd074da22dcb`.
