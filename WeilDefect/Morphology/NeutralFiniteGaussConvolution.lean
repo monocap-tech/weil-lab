@@ -6,7 +6,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory
-open scoped BigOperators Convolution FourierTransform SchwartzMap
+open scoped BigOperators Convolution FourierTransform SchwartzMap RealInnerProductSpace
 
 def neutralFiniteGaussKernelComplex (N : ℕ) (x : ℝ) : ℂ :=
   Complex.ofReal (neutralFiniteGaussKernel N x)
@@ -87,13 +87,13 @@ theorem neutralFiniteGaussConvolution_weak_fourier
       ∫ ξ, 𝓕⁻ u ξ * (𝓕 carrier.h ξ *
         (∑ n ∈ Finset.range N, neutralGaussReciprocal n (2*Real.pi*ξ) : ℝ)) := by
   have h := VectorFourier.integral_bilin_fourierIntegral_eq_flip
-    (ContinuousLinearMap.mul ℂ ℂ) (L := innerₗ ℝ ℝ)
+    (ContinuousLinearMap.mul ℂ ℂ) (L := innerₗ ℝ)
     Real.continuous_fourierChar continuous_inner (𝓕⁻ u).integrable
     (neutralFiniteGaussConvolution_integrable carrier N)
   have hu : 𝓕 (fun x : ℝ => 𝓕⁻ u x) = (u : ℝ → ℂ) := by
     rw [← SchwartzMap.fourier_coe, FourierTransform.fourier_fourierInv_eq]
-  simpa only [ContinuousLinearMap.mul_apply', ← SchwartzMap.fourierInv_coe,
-    hu, neutralFiniteGaussConvolution_fourier] using h
+  simpa [ContinuousLinearMap.mul_apply', ← SchwartzMap.fourierInv_coe,
+    hu, neutralFiniteGaussConvolution_fourier] using! h
 
 end
 
