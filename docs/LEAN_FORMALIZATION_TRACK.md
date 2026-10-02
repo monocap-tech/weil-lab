@@ -1,5 +1,34 @@
 # Lean Formalization Track
 
+## RPB-108 — normalized Laplace Fourier / Gauss reciprocal transfer
+
+Continues from `279c732efb791a1553beae31c78ef8cd95a4fa0d`.
+`NeutralLaplaceFourier` evaluates the genuinely convergent damped Fourier
+integral by its two complex-exponential half-line integrals. With mathlib's
+frequency t=2πξ, exp(-b|x|) transforms to 2b/(b²+t²). At b=2n+1/2 this is
+exactly the real reciprocal coefficient in the finite digamma recurrence.
+
+This attaches each finite rational term to its physical exponential.
+Finite-sum/convolution weak transfer and the shifted-tail operator limit
+remain open, together with central/boundary reconstruction and actual source
+form-domain/polarization attachment. No whole Gauss source identity is inferred.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_LAPLACE_FOURIER_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,964 build jobs passed. Five endpoints use only `propext`, `Classical.choice`,
+and `Quot.sound`; declaration gate passed. Validation head
+`bdad467cfd28555410444825f9642a629c88f2fa`, run `36944797734`,
+job `110644359699`, source blob `63ed6b78651ff2ad5c9e4f78ede851d84b4ba70d`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+NORMALIZED LAPLACE FOURIER / FINITE GAUSS RECIPROCAL TRANSFER: CONSTRUCTED
+NEXT: FINITE-SUM / CONVOLUTION WEAK TRANSFER + SHIFTED TAIL OPERATOR LIMIT
+      → ARCHIMEDEAN SOURCE ATTACHMENT; CENTRAL/BOUNDARY RECONSTRUCTION
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — finite digamma tail split and Gauss kernel limit
 
 Continues from `e873b75ea172e31a55362bf39ab303c0da68bbfd`.

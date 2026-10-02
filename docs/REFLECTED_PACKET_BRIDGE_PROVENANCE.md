@@ -247,3 +247,25 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 normalized Laplace Fourier transfer, October 1, 2026
+
+Recovered research head: `279c732efb791a1553beae31c78ef8cd95a4fa0d`.
+Exact-module validation head: `bdad467cfd28555410444825f9642a629c88f2fa`.
+Run `36944797734`, job `110644359699`, source blob
+`63ed6b78651ff2ad5c9e4f78ede851d84b4ba70d`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,964 jobs passed. All five audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; the declaration gate passed.
+
+The globally integrable damped exponential has an actual Fourier transform
+computed from convergent complex-exponential integrals on both half-lines.
+The exact t=2πξ normalization identifies every finite digamma reciprocal
+term with its physical Laplace exponential. Finite-sum/convolution weak
+transfer, shifted-tail operator control, whole archimedean source attachment,
+central/boundary reconstruction and actual source-domain attachment remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.
