@@ -60,6 +60,7 @@ import WeilDefect.Morphology.NeutralExteriorResidual
 import WeilDefect.Morphology.NeutralWeilCoreSplit
 import WeilDefect.Morphology.NeutralFiniteGauss
 import WeilDefect.Morphology.NeutralLaplaceFourier
+import WeilDefect.Morphology.NeutralFiniteGaussConvolution
 
 import WeilDefect.Morphology.Noncompact
 
