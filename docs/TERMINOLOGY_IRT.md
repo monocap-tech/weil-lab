@@ -959,3 +959,182 @@ A second-channel observable \(\mathcal O_F\) satisfies the
 
 Without this contract, the soft-cone sandwich is only a tautological
 repackaging of KPH.
+
+
+## Derivative Cauchy frame
+
+Let
+
+\[
+F=\{\rho_1,\ldots,\rho_n\}
+\]
+
+be the selected packet and let
+\(\Tau=\{\tau_1,\ldots,\tau_m\}\) be a canonically selected family of
+\(\Xi'\)-zeros, chosen without using the KPH soft vector.
+
+The **derivative Cauchy frame** is
+
+\[
+D_{\Tau,F}
+=
+\left(
+\frac1{\tau_\ell-\rho_j}
+\right)_{\ell,j},
+\]
+
+acting on a selected coefficient vector \(v\) by
+
+\[
+(D_{\Tau,F}v)_\ell
+=
+R_v(\tau_\ell),
+\qquad
+R_v(z)=\sum_j\frac{v_j}{z-\rho_j}.
+\]
+
+## Augmented Cauchy--Vandermonde frame
+
+On the zero-moment sector
+
+\[
+{\bf1}^Tv=0,
+\]
+
+write
+
+\[
+\mathcal F_{\Tau,F}
+=
+\begin{pmatrix}
+{\bf1}^T\\
+D_{\Tau,F}
+\end{pmatrix}.
+\]
+
+When \(m=n-1\), all selected nodes are distinct, all sampling points are
+distinct, and no \(\tau_\ell\) is a selected node, the determinant is, up to an
+overall sign,
+
+\[
+\det \mathcal F_{\Tau,F}
+=
+\pm
+\frac{
+\prod_{j<k}(\rho_k-\rho_j)
+\prod_{\ell<r}(\tau_r-\tau_\ell)
+}{
+\prod_{\ell,j}(\tau_\ell-\rho_j)
+}.
+\]
+
+Hence \(D_{\Tau,F}\) is injective on \(\{{\bf1}^Tv=0\}\).
+
+A projective lower frame bound additionally requires quantitative control of
+all factors in this determinant and of the ambient operator norm.
+
+## Derivative-frame activation
+
+**Derivative-frame activation** is the quantitative form
+
+\[
+{\bf1}^Tv=0,\quad \|v\|=1
+\Longrightarrow
+\|D_{\Tau,F}v\|
+\ge H_F^{-a}.
+\]
+
+For fixed \(n\), it follows from a projectively conditioned
+Cauchy--Vandermonde geometry of the selected nodes and derivative sampling
+points.
+
+Near the simple-kernel CF-A17 jurisdiction, a weaker one-row version may
+suffice if a canonically chosen derivative point has projectively nonzero
+pairing with the one-dimensional soft ray.
+
+## Weighted-criticality mismatch
+
+At an ordinary derivative zero \(\tau\) of the completed carrier,
+
+\[
+0=
+\frac{\Xi'}{\Xi}(\tau)
+=
+\sum_{j=1}^n\frac1{\tau-\rho_j}
++
+\frac{G_F'}{G_F}(\tau).
+\]
+
+This constrains the unweighted Cauchy row
+
+\[
+D_{\tau,F}{\bf1},
+\]
+
+not the weighted observation
+
+\[
+D_{\tau,F}v
+=
+R_v(\tau).
+\]
+
+On the CF-A17 dangerous channel,
+\({\bf1}^Tv=0\), so ordinary criticality does not by itself attach the
+derivative row to the KPH soft vector.
+
+This is the **weighted-criticality mismatch**.
+
+## Mixed Cauchy alignment theorem
+
+A **mixed Cauchy alignment theorem** is a zeta-specific theorem that controls
+the derivative Cauchy frame on the KPH soft sector in a way not implied by the
+ordinary unweighted critical equation.
+
+One admissible form is a projective factor-through relation
+
+\[
+D_{\Tau,F}
+=
+M_FA_F^{\rm KPH}+E_F
+\]
+
+on the relevant soft sector, with projectively bounded \(M_F\) and subordinate
+\(E_F\).
+
+Another admissible form is a direct scalar/vector inequality implying that a
+KPH-soft vector must have derivative-frame response below a projective scale.
+
+## Factorization-cost identity
+
+When \(A_F^{\rm KPH}\) is invertible, the exact factorization
+
+\[
+D_{\Tau,F}
+=
+\left(
+D_{\Tau,F}(A_F^{\rm KPH})^{-1}
+\right)
+A_F^{\rm KPH}
+\]
+
+shows that the minimal unrestricted factorization cost is governed by
+
+\[
+\|D_{\Tau,F}(A_F^{\rm KPH})^{-1}\|.
+\]
+
+If \(v_{\min}\) is a unit right singular vector of \(A_F^{\rm KPH}\) with
+singular value \(KPH(F)\), then
+
+\[
+\|D_{\Tau,F}(A_F^{\rm KPH})^{-1}\|
+\ge
+\frac{\|D_{\Tau,F}v_{\min}\|}{KPH(F)}.
+\]
+
+Therefore a projective derivative-frame lower bound makes any projectively
+bounded factor-through theorem quantitatively KPH-floor strength.
+
+This does not make the theorem useless; it identifies exactly where the new
+actual-zeta content must reside.
