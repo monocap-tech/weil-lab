@@ -25,14 +25,14 @@ theorem neutralLaplaceKernel_polynomialNorm_integrable {b : ℝ} (hb : 0 < b) (n
   by_cases hx : x = 0
   · subst x
     simp [g, neutralLaplaceKernel, Complex.norm_real, Real.norm_eq_abs]
-    split_ifs <;> norm_num
+    cases n <;> norm_num
   · by_cases hxp : 0 < x
     · have hxn : ¬ 0 ≤ -x := by linarith
-      simp [g, Pi.add_apply, neutralLaplaceKernel, Complex.norm_real, Real.norm_eq_abs,
+      simp [g, Pi.add_apply, neutralLaplaceKernel, Complex.norm_exp, Real.norm_eq_abs,
         abs_of_pos hxp, hxp.le, hxn, mul_comm]
     · have hxm : x < 0 := lt_of_le_of_ne (le_of_not_gt hxp) hx
       have hxnn : 0 ≤ -x := by linarith
-      simp [g, Pi.add_apply, neutralLaplaceKernel, Complex.norm_real, Real.norm_eq_abs,
+      simp [g, Pi.add_apply, neutralLaplaceKernel, Complex.norm_exp, Real.norm_eq_abs,
         abs_of_neg hxm, not_le.mpr hxm, hxnn, mul_comm]
 
 /-- General moment-based Fourier multiplier regularity; no physical smoothness. -/
