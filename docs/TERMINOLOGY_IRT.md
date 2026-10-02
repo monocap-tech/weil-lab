@@ -1138,3 +1138,70 @@ bounded factor-through theorem quantitatively KPH-floor strength.
 
 This does not make the theorem useless; it identifies exactly where the new
 actual-zeta content must reside.
+
+
+## Vanishing-response criterion
+
+Let \(A_F^{\rm KPH}\) be the native KPH operator and let \(\mathcal O_F\) be an
+independently defined second-channel observable.
+
+The **vanishing-response criterion** is any upper-control law
+
+\[
+\|\mathcal O_Fv\|
+\le
+\Phi_F\!\left(\|A_F^{\rm KPH}v\|\right),
+\]
+
+on the relevant soft sector, where \(\Phi_F(r)\to0\) as \(r\to0\) with a
+projectively controlled modulus.
+
+Combined with a projective lower activation bound
+
+\[
+\|\mathcal O_Fv\|\ge \alpha_F,
+\]
+
+it yields a KPH floor by inversion of \(\Phi_F\).
+
+Thus bounded linear factorization is only one convenient special case; the
+alignment theorem may be nonlinear or scalar provided it has a projectively
+invertible vanishing modulus.
+
+## Alignment-necessity principle
+
+The **alignment-necessity principle** is the IRT-1D conclusion that any useful
+second channel must contain theorem-strength information precisely at the
+point where it couples to the KPH soft vector.
+
+Independent observability alone is insufficient. A vanishing-response bridge
+alone is insufficient. Their combination is quantitatively equivalent to
+excluding superprojective KPH softness.
+
+This does not make every such theorem tautological: it may still be proved
+from genuinely independent actual-zeta structure. It does mean there is no
+representation-only weakening left.
+
+## Ray mismatch
+
+A **ray mismatch** occurs when an independent channel is rigorously attached to
+one selected coefficient ray \(v_1\), while the KPH failure theorem is attached
+to another ray \(v_2\), with no projective overlap or transfer theorem between
+them.
+
+The LOTUS same-event P/Q program exhibits this phenomenon: the P activation ray
+is exact and Q-evaluable, but the Q-loc SOURCE-II shadow uses its own
+minimal-cubic dangerous channel.
+
+A ray-mismatch theorem requires an explicit overlap/alignment law; common
+packet identity is not enough.
+
+## World-to-soft-cone separator
+
+A **World-to-soft-cone separator** is an actual-zeta theorem whose conclusion
+directly decides one atomic observable on the KPH soft cone using global zeta
+provenance, without first reconstructing a larger carrier.
+
+This is the surviving theorem-input species after IRT-1D. It may be scalar or
+low rank, but it must satisfy the correct every-packet quantifier and imply a
+projective KPH floor explicitly.
