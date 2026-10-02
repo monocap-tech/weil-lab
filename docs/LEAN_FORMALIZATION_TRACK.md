@@ -1,5 +1,34 @@
 # Lean Formalization Track
 
+## RPB-108 — actual exterior multiplier attachment
+
+Continues from `fe9566792500d73678639ff1afbf82ac0b01cdee`.
+`NeutralExteriorAttachment` consumes actual centered cancellation and scalar
+carrier annihilation to prove the uncentered shifted tail tends to zero on
+support-separated Schwartz tests. The certified exterior-defect identity
+then identifies actual archimedean multiplier pairings with the gap function.
+The exact finite prime split identifies the full right-limit fixed-cutoff
+multiplier core with the concrete gap-minus-prime pairing. That pairing is
+genuinely integrable. Existing full-symbol temperate growth is retained.
+
+Exterior multiplier attachment is constructed. Next: add the physical pole
+on compact tests and reconstruct the whole source, including the central
+region and boundaries. Whole compact weak realization and actual source-
+domain/quadratic/polarization/normalized estimate witnesses remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_EXTERIOR_ATTACHMENT_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,980 build jobs passed. All four endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `850bfece8cc0dbc7667a39450e9c0607122b8fbb`, run `37069105759`, job `111044051054`, source blob `10b8eee12415382b27e69bd25e210973e20f8120`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL EXTERIOR MULTIPLIER ATTACHMENT: CONSTRUCTED
+FULL-SYMBOL TEMPERATE GROWTH: RETAINED
+NEXT: POLE ADDITION + CENTRAL / BOUNDARY RECONSTRUCTION → WHOLE SOURCE
+      → ACTUAL SOURCE-DOMAIN / QUADRATIC / POLARIZATION WITNESSES
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — actual centered digamma residual cancellation
 
 Continues from `66ed85ef2dccd622e84a062489876e825912e248`.

@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralExteriorAttachment.lean
+          git hash-object WeilDefect/Morphology/NeutralExteriorSourceAttachment.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralExteriorAttachment
+          lake build WeilDefect.Morphology.NeutralExteriorSourceAttachment
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,15 +72,15 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-exterior-attachment-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralExteriorAttachment
-          #print axioms WeilDefect.neutralShiftedDigammaAction_exterior_tendsto_zero
-          #print axioms WeilDefect.neutralArchimedeanMultiplierCore_exterior_pairing
-          #print axioms WeilDefect.neutralExteriorMultiplierCore_pairing_integrable
-          #print axioms WeilDefect.neutralWeilMultiplierCore_exterior_pairing
+          cat > /tmp/rpb108-exterior-source-attachment-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralExteriorSourceAttachment
+          #print axioms WeilDefect.neutralExteriorResidualIngredients_compact_pairing_integrable
+          #print axioms WeilDefect.neutralExteriorResidualCandidate_pairing_eq_ingredients
+          #print axioms WeilDefect.frozenWeilCompactAction_exterior_pairing
+          #print axioms WeilDefect.neutralExteriorResidualCandidate_exterior_represents
           LEAN
-          lake env lean /tmp/rpb108-exterior-attachment-audit.lean | tee /tmp/rpb108-exterior-attachment-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-exterior-attachment-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-exterior-source-attachment-audit.lean | tee /tmp/rpb108-exterior-source-attachment-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-exterior-source-attachment-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
