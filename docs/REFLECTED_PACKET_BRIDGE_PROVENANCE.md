@@ -692,3 +692,28 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
 is closed; logarithmic coercivity has not started.
+
+## 2026-10-02 — RPB-108 actual exterior multiplier attachment
+
+Continues from research head `fe9566792500d73678639ff1afbf82ac0b01cdee`.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,980 build jobs passed. All four endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `850bfece8cc0dbc7667a39450e9c0607122b8fbb`, run `37069105759`, job `111044051054`, source blob `10b8eee12415382b27e69bd25e210973e20f8120`.
+
+Scalar carrier annihilation identifies actual centered and uncentered tail
+actions on support-separated Schwartz tests. Certified cancellation gives
+the uncentered zero limit. The exterior-defect identity attaches actual
+archimedean multiplier pairings to the gap function. The exact finite prime
+split attaches the full right-limit fixed-cutoff multiplier core to the
+gap-minus-prime pairing. Both component integrals genuinely converge;
+the combined exterior pairing is integrable. Existing full-symbol
+temperate growth is retained. No physical representation premise is added.
+
+Next: physical pole addition on compact tests, central/boundary reconstruction
+and whole compact weak source realization. Actual source-domain/quadratic/
+polarization/normalized estimate witnesses remain open. Exterior pairing
+identities do not supply a whole-source representation witness.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
+is closed; logarithmic coercivity has not started.

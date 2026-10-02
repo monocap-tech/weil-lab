@@ -9,12 +9,22 @@
 
 ## Current standing
 
+Actual exterior multiplier attachment is now constructed on Schwartz tests
+vanishing on (-a,a), for 0≤c<a. The shifted digamma tail tends to zero;
+the archimedean core equals the gap-function pairing, and the full fixed-
+cutoff core equals the gap-minus-prime pairing with genuine integrability.
+Existing full-symbol growth is retained. Pole addition on compact tests,
+central/boundary reconstruction and whole source attachment remain next.
+See [exterior-attachment checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_EXTERIOR_ATTACHMENT_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_EXTERIOR_ATTACHMENT.md).
+
 The actual centered digamma residual is now cancelled from the actual
 source-line Euler HasSum. Zero-frequency subtraction removes regularization;
 the remaining reciprocal series cancels the initial centered value.
 The symbol tends pointwise to zero, and the actual centered action tends
 to zero on every Schwartz test through the certified dominated transfer,
-which retains its full-symbol growth premise. Exterior attachment is next.
+which retains its full-symbol growth premise. Exterior multiplier attachment
+is now supplied above; whole source attachment remains open.
 See [cancellation checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_CANCELLATION_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_CANCELLATION.md).
 
@@ -23,7 +33,7 @@ throughout the right half-plane. Gamma holomorphy and nonvanishing give
 actual digamma holomorphy; analytic uniqueness extends the full positive-real
 anchor across this connected domain. Independent summability gives an
 actual HasSum. Source-line specialization and cancellation are now supplied
-above; exterior source attachment is next.
+above, together with exterior multiplier attachment.
 See [actual-Euler-identity checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_EULER_IDENTITY_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_EULER_IDENTITY.md).
 
@@ -57,7 +67,8 @@ uniform in the shift index. Dominated convergence attaches the represented
 pointwise residual to the existing actual multiplier action on every Schwartz
 test. On separated tests it equals the physical source-attachment defect.
 This transfer retains the existing full-symbol growth premise. Actual residual
-cancellation is now supplied above; source attachment remains open.
+cancellation and exterior multiplier attachment are now supplied above;
+whole source attachment remains open.
 See [pairing-limit checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_PAIRING_LIMIT_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_PAIRING_LIMIT.md).
 
@@ -89,7 +100,8 @@ and [terminology](TERMINOLOGY_RPB108_DIGAMMA_CENTERING.md).
 Independent actual Gamma differentiation, recurrence and log-convexity now
 give log(x-1)≤Re ψ(x)≤log x for x>1. The shifted source symbol's zero-
 frequency value has the exact corresponding bracket. Nonzero-frequency
-remainder control and tail vanishing remain open.
+centered remainder control and separated-test tail vanishing are now
+supplied above.
 See [real-digamma checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_REAL_BOUNDS_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_REAL_BOUNDS.md).
 
@@ -97,7 +109,7 @@ The exterior finite convolution now converges in genuine pairings on
 Schwartz tests vanishing on (-a,a), with explicit geometric error times
 actual test L1 norm. The actual shifted-tail pairing converges to the
 archimedean action minus signed gap-function pairing. Its vanishing is
-equivalent to exterior source attachment and remains open.
+equivalent to exterior multiplier attachment, now supplied above.
 See [exterior-weak checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_GAUSS_EXTERIOR_WEAK_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_GAUSS_EXTERIOR_WEAK.md).
 
@@ -112,11 +124,11 @@ The actual shifted digamma action now has fixed-N temperate growth inherited
 from the retained full-symbol premise and proved finite Gauss growth. On
 every Schwartz test, the actual whole multiplier core equals that shifted
 action minus the genuine finite Gauss convolution and finite prime pairings.
-A uniform tail estimate and support-separated weak/operator limit remain open.
+The support-separated shifted-tail pairing limit is now zero as proved above.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `66ed85ef2dccd622e84a062489876e825912e248`.
+This pass continues from `fe9566792500d73678639ff1afbf82ac0b01cdee`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -186,13 +198,14 @@ identification remain open. See [exterior residual continuation](../notes/REFLEC
 
 The core split continuation attaches the full physical finite-prime action and
 splits the actual multiplier core into the archimedean action minus that
-explicit convergent prime pairing. The unidentified physical multiplier
-component is precisely archimedean. See [core split continuation](../notes/REFLECTED_PACKET_BRIDGE_108_CORE_SPLIT_20261001.md).
+explicit convergent prime pairing. The archimedean component is now attached
+on exterior tests above; its whole-source reconstruction remains open.
+See [core split continuation](../notes/REFLECTED_PACKET_BRIDGE_108_CORE_SPLIT_20261001.md).
 
 The finite Gauss continuation derives an exact digamma tail identity from
 the proved recurrence and constructs the finite Gauss kernel with its exact
 geometric remainder and off-diagonal pointwise limit. Fourier identification
-and the shifted-tail operator limit remain open; no Gauss identity is assumed.
+and separated-test shifted-tail zero limits are now supplied above.
 See [finite Gauss continuation](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_GAUSS_20261001.md).
 
 The Laplace continuation proves the exact normalized Fourier transform of
@@ -282,7 +295,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    half-plane. Source-line specialization and residual cancellation are
    supplied below.
    Actual source-line HasSum now cancels the represented centered residual;
-   the symbol and actual action tend to zero. Exterior attachment is next.
+   the symbol and actual action tend to zero. Exterior multiplier attachment
+   is constructed; pole addition and central/boundary reconstruction remain
+   before whole source attachment.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
