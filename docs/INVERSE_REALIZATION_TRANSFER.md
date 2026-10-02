@@ -586,3 +586,63 @@ See [IRT-0D checkpoint](../notes/IRT_0D_SYSTEMS_LOEWNER_20261002.md).
 \texttt{IRT-0D1 / RESOLVENT-TO-SEMIGROUP CONTINUUM-CONTROL SCREEN}
 }
 \]
+
+
+## 22. IRT-0D1 determination — continuum resolvent control collapses to NJDG-7
+
+For the finite near-divisor realization, the Riesz--Dunford formula gives
+
+\[
+c^\ast f(A_\Omega)b
+=
+\frac1{2\pi i}\oint_\Gamma
+f(z)c^\ast(zI-A_\Omega)^{-1}b\,dz.
+\]
+
+Since the resolvent scalar is a finite pole sum, this is exactly the residue
+formula
+
+\[
+\sum_{\mu\in\Omega}m_\mu f(w_\mu).
+\]
+
+For \(f=K_t\), the continuum systems bridge is therefore the same
+original-divisor weighted contour already isolated in NJDG-7.
+
+Classical unconditional local formulas for \(\zeta'/\zeta\) have the form
+
+\[
+\text{log derivative}
+=
+\text{nearby pole sum}
++
+O(\log T)\text{ regular remainder}
+\]
+
+on fixed-width regions, with corresponding local \(L^1\) control. These
+estimates control the pole-removed analytic field after the local divisor has
+been extracted; they do not independently control the target weighted residue
+functional.
+
+Contour deformation toward easier regions crosses additional zeros and merely
+moves the complementary field into explicit residue terms.
+
+Thus:
+
+\[
+\boxed{
+\text{DUNFORD/CONTINUUM BRIDGE EXACT BUT NOT NEW;}
+\quad
+\text{COMPLEMENT DEBT RETAINED}.
+}
+\]
+
+See [IRT-0D1 checkpoint](../notes/IRT_0D1_RESOLVENT_SEMIGROUP_CONTINUUM_20261002.md).
+
+## 23. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-0E / MOMENT--PRONY--SUPERRESOLUTION SCREEN}
+}
+\]
