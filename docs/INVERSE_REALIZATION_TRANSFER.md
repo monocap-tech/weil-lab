@@ -344,3 +344,44 @@ nonpositive-type spectral data.
 \texttt{IRT-0B / GENERALIZED-NEVANLINNA-PONTRYAGIN SCREEN}
 }
 \]
+
+
+## 12. IRT-0B determination — generalized Nevanlinna / Pontryagin screen
+
+IRT-0B separates the generalized-Nevanlinna route into two different regimes.
+
+A single global class \(N_\kappa\) with finite \(\kappa\) is too restrictive as
+a general false-RH ambient class: the negative index is a finite budget on
+nonpositive-type exceptional structure, and the scalar theory permits only
+finitely many nonreal poles in the upper half-plane.
+
+The branch therefore does not assume one global finite Pontryagin index for a
+carrier whose pole divisor is intended to include all off-critical zeta zeros.
+
+However, the foreign literature contains a distinct theory of **local
+generalized Nevanlinna functions** and self-adjoint Krein-space relations that
+are locally of type \(\pi_+\). In that theory the finite negative index may
+depend on the selected subdomain.
+
+This yields a surviving architecture aligned with the canonical packet/window
+structure:
+
+\[
+\boxed{
+\Omega\mapsto\kappa(\Omega)<\infty
+\quad\text{locally, without a uniform global finite bound.}
+}
+\]
+
+No zeta-derived carrier has yet been proved to satisfy this local class
+condition, and no mixed-divisor RENJET transfer follows from locality alone.
+
+See [IRT-0B checkpoint](../notes/IRT_0B_GENERALIZED_NEVANLINNA_20261002.md).
+
+## 13. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-0B1 / LOCAL-}\pi_+\texttt{ CLASS-MEMBERSHIP + DIVISOR-COUPLING SCREEN}
+}
+\]
