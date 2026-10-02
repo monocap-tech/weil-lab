@@ -718,3 +718,114 @@ After the reciprocal transformation relevant to the false-RH divisor, the
 nodes may be complex and the effective amplitudes
 \(m_\mu\psi(\mu)(\mu-c)^{-1}\) are generally complex. Those positivity-based
 convex recovery theorems therefore do not transfer directly.
+
+
+## Independent rigidity source
+
+An **independent rigidity source** is information constraining the unknown
+complement/divisor that is fixed or valid before the complement-dependent
+response being bounded is observed.
+
+Examples in foreign theories include:
+
+- Herglotz positivity and self-adjointness;
+- a fixed finite negative index;
+- a canonical-system Hamiltonian law;
+- a prescribed finite realization rank plus enough external samples;
+- a known sparse model plus an independent moment stream.
+
+A representation theorem is not an independent rigidity source if it is built
+from the same unknown function/divisor it is later used to constrain.
+
+## Complement-oblivious observability law
+
+A **complement-oblivious observability law** is a quantitative theorem of the
+form
+
+\[
+\mathcal D(F)\ \Longrightarrow\
+\|\mathcal O_F x\|
+\ge
+L^{-C}\|x\|
+\]
+
+or an equivalent signed/discrepancy statement, where:
+
+1. \(\mathcal D(F)\) is selected/public data available before the unselected
+   complement response is read;
+2. \(\mathcal O_F\) is fixed from that data and canonical source rules;
+3. the bound holds for every admitted actual complement;
+4. its condition number is projective;
+5. no coefficient of \(\mathcal O_F\) is chosen after inspecting the complement.
+
+This is the abstract foreign-theory feature missing from the current
+NEXTJET/KPH stack.
+
+## Stable mixed-divisor observability
+
+A **stable mixed-divisor observability theorem** is a complement-oblivious
+observability law whose measurements come from a genuinely different divisor
+or realization channel and whose output controls the original-divisor
+weighted response.
+
+Schematically,
+
+\[
+\boxed{
+\text{independent second channel}
++
+\text{stable observability}
+\Longrightarrow
+\text{original-divisor weighted packet control}.
+}
+\]
+
+The second channel must remain informative after the canonical selected-pole
+renormalizations and must not reduce to the same joint finite-part tower.
+
+## Representation--rigidity dichotomy
+
+The **representation--rigidity dichotomy** is the IRT-0 synthesis:
+
+- if an architecture is weak enough to represent arbitrary false-RH local
+  geometry, its free holomorphic/rank/complement parameters retain the missing
+  \(A_{F,\Omega}\)-type information;
+- if it constrains those parameters strongly enough to determine the divisor,
+  its standard global form usually imports positivity, finite exceptional
+  budget, complete data, or conditioning assumptions at least as strong as the
+  desired packet theorem.
+
+Progress therefore requires a zeta-specific intermediate rigidity law rather
+than another representation.
+
+## Upstream theorem criterion
+
+An **upstream theorem** is a theorem whose statement can be verified or invoked
+before the SOURCE-II selected-only multiplier is frozen against the actual
+complement.
+
+Because SOURCE-II-8 makes oblivious smallness of the frozen total jet tower
+projectively equivalent to the local KPH-floor failure-sequence exclusion, a
+purportedly weaker theorem stated only as post-freeze tower smallness is not a
+new intermediate gate.
+
+An IRT theorem counts as a genuinely different input only if it constrains the
+actual divisor upstream -- for example through an independent mixed-divisor
+frame, discrepancy law, or local orientation theorem -- and only afterwards
+implies the canonical packet exclusion.
+
+## Observable-orientation theorem
+
+An **observable-orientation theorem** is the weakest abstract theorem shape
+currently surviving IRT-0:
+
+For every admitted dangerous selected packet, an independently specified
+measurement family from a second channel produces a quantity whose phase,
+sign, or distance from the soft direction has a projective lower bound,
+uniformly over the actual complement.
+
+It need not reconstruct the complement. It must only prevent the exact
+compensating alignment responsible for KPH/NEXTJET failure.
+
+This theorem shape is strictly about information orientation, not another
+coordinate representation of the existing explicit formula.
