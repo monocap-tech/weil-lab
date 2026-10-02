@@ -385,3 +385,54 @@ See [IRT-0B checkpoint](../notes/IRT_0B_GENERALIZED_NEVANLINNA_20261002.md).
 \texttt{IRT-0B1 / LOCAL-}\pi_+\texttt{ CLASS-MEMBERSHIP + DIVISOR-COUPLING SCREEN}
 }
 \]
+
+
+## 14. IRT-0B1 determination — local class membership is non-rigid
+
+The local generalized-Nevanlinna definition allows
+
+\[
+\tau=\tau_0+\tau_{(0)}
+\]
+
+with \(\tau_0\) generalized Nevanlinna and \(\tau_{(0)}\) arbitrary holomorphic
+on the selected relatively compact window.
+
+For a real-symmetric meromorphic logarithmic derivative with finitely many
+poles in that window, a rational function can match all local principal parts;
+every real-symmetric rational function belongs to some \(N_\kappa\). The
+remainder is holomorphic.
+
+Thus the zeta logarithmic derivative belongs locally to the class for essentially
+formal meromorphic reasons. The corresponding local Weyl realization is
+representational rather than restrictive.
+
+Moreover, the holomorphic summand is exactly the species of the already
+canonical pole-removed outside field \(A_{F,\Omega}\). It can alter the local
+zero divisor without changing the captured pole principal parts.
+
+Therefore:
+
+\[
+\boxed{
+N(\Omega)\text{ membership}
++
+\text{local }\pi_+\text{ realization}
+\not\Rightarrow
+\text{mixed-divisor control}.
+}
+\]
+
+See [IRT-0B1 checkpoint](../notes/IRT_0B1_LOCAL_PI_PLUS_20261002.md).
+
+The surviving question is whether a stricter realization architecture controls
+the holomorphic slack without already imposing RH-strength real-spectrum
+positivity.
+
+## 15. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-0C / CANONICAL-SYSTEM + DE BRANGES RIGIDITY SCREEN}
+}
+\]
