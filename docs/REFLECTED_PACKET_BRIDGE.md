@@ -9,7 +9,7 @@
 
 ## Current standing
 
-This pass continues from `542d00ae49757f9926654b5ded58988ebf9f1c89`.
+This pass continues from `5d341dfb342fd01ff42c30899caac9f5409a3051`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -92,12 +92,19 @@ The Laplace continuation proves the exact normalized Fourier transform of
 exp(-b|x|), including genuine integral convergence. At b=2n+1/2 it equals the
 finite digamma reciprocal coefficient. See [Laplace Fourier continuation](../notes/REFLECTED_PACKET_BRIDGE_108_LAPLACE_FOURIER_20261001.md).
 
-The current continuation identifies the full finite geometric kernel with
+The finite convolution continuation identifies the full finite geometric kernel with
 its integrable Laplace sum, computes its Fourier symbol, and constructs the
 actual globally L1 rough-carrier convolution. Every Schwartz-test pairing
 has the exact inverse-test Fourier representation by lawful L1 Fubini.
-Distributional multiplier packaging and shifted-tail control remain open.
 See [finite Gauss convolution continuation](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_GAUSS_CONVOLUTION_20261001.md).
+
+The current continuation derives all polynomial norm moments of the actual
+Laplace kernels and obtains temperate growth of the finite reciprocal symbol
+from lawful Fourier differentiation and bounded derivatives. It identifies
+the existing tempered multiplier action on the actual carrier with the
+physical finite convolution on every Schwartz test. Shifted-tail control
+and whole archimedean source reconstruction remain open.
+See [finite Gauss multiplier continuation](../notes/REFLECTED_PACKET_BRIDGE_108_GAUSS_MULTIPLIER_20261001.md).
 
 | Obligation | Current state |
 | --- | --- |
@@ -119,6 +126,7 @@ See [finite Gauss convolution continuation](../notes/REFLECTED_PACKET_BRIDGE_108
 | Actual finite digamma tail identity and off-diagonal kernel limit | Constructed; 8,963 build jobs and six axiom audits passed |
 | Normalized Laplace Fourier and finite Gauss reciprocal transfer | Certified: 8,964 jobs; five endpoint audits |
 | Finite Gauss kernel, rough-carrier convolution and weak Fourier identity | Certified: 8,965 jobs; seven endpoint audits |
+| Moment-derived finite Gauss temperate symbol and actual tempered multiplier attachment | Certified: 8,966 jobs; four endpoint audits |
 | Actual source form-domain membership and form identification | Open |
 | Actual core representative, regularity/growth and central cancellation | Open |
 | F-4 logarithmic Gaussian coercivity | Not started |
@@ -144,8 +152,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    the remaining physical multiplier component. The finite scalar tail split
    and geometric kernel limit are constructed. The full finite kernel and
    actual rough-carrier convolution have exact Fourier transforms and a
-   Schwartz weak pairing identity. Packaging this as the existing tempered
-   multiplier action and controlling the shifted-tail operator limit are next.
+   Schwartz weak pairing identity. Its moment-derived temperate symbol now
+   attaches the existing tempered multiplier to the physical finite convolution.
+   Controlling the shifted-tail weak/operator limit is next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~

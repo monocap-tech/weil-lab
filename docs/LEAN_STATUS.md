@@ -1,5 +1,37 @@
 # Lean Status
 
+## RPB-108 — moment-derived finite Gauss multiplier attachment
+
+Continues from `5d341dfb342fd01ff42c30899caac9f5409a3051`.
+`NeutralGaussMultiplier` proves actual global integrability of every
+polynomial norm moment of each Laplace kernel. A general Fourier argument
+derives smoothness and uniformly bounded derivatives from these moments.
+The actual finite reciprocal symbol therefore has temperate growth, with
+no new symbol premise. The existing tempered Fourier-multiplier CLM on the
+actual carrier equals the certified finite physical convolution pairing
+on every Schwartz test.
+
+The finite distributional multiplier attachment is constructed. The shifted
+digamma tail still needs weak/operator control. Whole archimedean source
+attachment, central/boundary reconstruction and actual source-domain/
+quadratic/polarization/normalized estimate attachment remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_GAUSS_MULTIPLIER_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,966 build jobs passed. Four endpoints use only `propext`, `Classical.choice`,
+and `Quot.sound`; declaration gate passed. Validation head
+`c791f2def581ef83e6ea271e27dd0c0f497a2ce5`, run `36960906345`,
+job `110694146452`, source blob `fd9a0350a97f5f02ce1d3eadc242cf74a83b11b7`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+FINITE GAUSS TEMPERED MULTIPLIER / PHYSICAL CONVOLUTION ATTACHMENT: CONSTRUCTED
+NEXT: SHIFTED DIGAMMA TAIL WEAK/OPERATOR CONTROL
+      → WHOLE ARCHIMEDEAN SOURCE; CENTRAL/BOUNDARY + SOURCE DOMAIN ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — finite Gauss convolution and weak Fourier transfer
 
 Continues from `542d00ae49757f9926654b5ded58988ebf9f1c89`.

@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralGaussMultiplier.lean
+          git hash-object WeilDefect/Morphology/NeutralShiftedDigammaAction.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralGaussMultiplier
+          lake build WeilDefect.Morphology.NeutralShiftedDigammaAction
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,15 +72,15 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-gauss-multiplier-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralGaussMultiplier
-          #print axioms WeilDefect.neutralLaplaceKernel_polynomialNorm_integrable
-          #print axioms WeilDefect.neutralMomentFourier_temperate
-          #print axioms WeilDefect.neutralFiniteGaussSymbol_temperate
-          #print axioms WeilDefect.neutralFiniteGaussMultiplier_physical_pairing
+          cat > /tmp/rpb108-shifted-digamma-action-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralShiftedDigammaAction
+          #print axioms WeilDefect.neutralShiftedDigammaSymbol_eq_add
+          #print axioms WeilDefect.neutralShiftedDigammaSymbol_temperate
+          #print axioms WeilDefect.neutralArchimedeanMultiplierCore_eq_shifted_sub_convolution
+          #print axioms WeilDefect.neutralWeilMultiplierCore_eq_shifted_sub_physical
           LEAN
-          lake env lean /tmp/rpb108-gauss-multiplier-audit.lean | tee /tmp/rpb108-gauss-multiplier-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-gauss-multiplier-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-shifted-digamma-action-audit.lean | tee /tmp/rpb108-shifted-digamma-action-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-shifted-digamma-action-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

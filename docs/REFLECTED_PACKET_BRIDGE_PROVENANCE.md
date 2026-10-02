@@ -293,3 +293,28 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 moment-derived finite Gauss multiplier attachment, October 1, 2026
+
+Recovered research head: `5d341dfb342fd01ff42c30899caac9f5409a3051`.
+Exact-module validation head: `c791f2def581ef83e6ea271e27dd0c0f497a2ce5`.
+Run `36960906345`, job `110694146452`, source blob
+`fd9a0350a97f5f02ce1d3eadc242cf74a83b11b7`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,966 jobs passed. All four audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; the declaration gate passed.
+
+The actual Laplace kernels have globally integrable polynomial norm moments
+of every order. Lawful Fourier differentiation gives smoothness and bounded
+derivatives of the finite kernel Fourier transform, hence temperate growth
+of its actual finite reciprocal symbol without a new symbol premise.
+The existing tempered Fourier-multiplier CLM on the actual carrier equals
+the certified finite physical convolution pairing on every Schwartz test.
+Shifted-tail weak/operator control, whole archimedean source attachment,
+central/boundary reconstruction and actual source-domain/quadratic/
+polarization/normalized estimate attachment remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.
