@@ -26,6 +26,7 @@ theorem neutralLogGamma_hasDerivAt {x : ℝ} (hx : 0 < x) :
       (deriv Complex.Gamma (x : ℂ)).re / Real.Gamma x := by
     simp [Complex.digamma_def, logDeriv_apply, Complex.Gamma_ofReal,
       Complex.div_re, Complex.normSq_apply]
+    field_simp [ne_of_gt (Real.Gamma_pos_of_pos hx)]
   rwa [← heq] at hlog
 
 /-- The Gamma recurrence gives the exact adjacent logarithmic slope. -/
