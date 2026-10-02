@@ -9,6 +9,13 @@
 
 ## Current standing
 
+Actual centered digamma increments now have the independent cubic bound
+64(πξ)^2/(N+1)^3 and an absolutely summable norm series at each frequency.
+The centered limiting value and frequency domination remain unidentified;
+increment decay alone does not prove tail vanishing.
+See [step-decay checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_STEP_DECAY_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_DIGAMMA_STEP_DECAY.md).
+
 Scalar action separation is now exact: subtracting any scalar symbol
 changes the multiplier pairing only by that scalar times actual carrier
 evaluation. Support-separated tests annihilate the carrier, so the actual
@@ -47,7 +54,7 @@ A uniform tail estimate and support-separated weak/operator limit remain open.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `0ed9df1239eabbfbba06eec7509badbe07432d9b`.
+This pass continues from `1ce945e7da95f500184643b674474ea4f940f63f`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -199,8 +206,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    constructed. The shifted-tail pairing converges to the exact source-
    attachment defect. Independent real-axis digamma bounds now control
    the actual shifted zero-frequency value. Scalar action separation is now
-   exact on support-separated tests. Independent centered nonzero-frequency
-   digamma control proving tail vanishing is next.
+   exact on support-separated tests. Actual centered increments have a cubic
+   bound and an absolutely summable norm series. Independent identification
+   of the actual centered limiting value and frequency domination are next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~

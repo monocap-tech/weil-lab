@@ -1,5 +1,39 @@
 # Lean Formalization Track
 
+## RPB-108 — actual centered digamma cubic step decay
+
+Continues from `1ce945e7da95f500184643b674474ea4f940f63f`.
+`NeutralDigammaStepDecay` proves the exact real centered reciprocal
+deficit and its nonnegative cubic bound. The actual digamma recurrence
+identifies each centered-symbol increment with minus that deficit.
+Its norm is at most 64(πξ)^2/(N+1)^3, independently of the retained
+full-symbol growth premise and without a Gauss representation premise.
+The increment norm series is summable at every fixed frequency.
+
+Increment decay does not determine the limiting value. Independent actual
+Gamma derivative/series control and lawful frequency domination remain
+open, as do tail vanishing, exterior/whole source identity, central/boundary
+reconstruction and actual source-domain/quadratic/polarization/normalized
+estimate witnesses.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_STEP_DECAY_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,972 build jobs passed. All five audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `5ceb3f1b15f99e10c176fec47d47b61469ff19e4`,
+run `37019259247`, job `110877798396`, source blob
+`ebdc030a45724aa77a9e96a9f4f847744824bded`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL CENTERED DIGAMMA CUBIC STEP BOUND / ABSOLUTE SUMMABILITY: CONSTRUCTED
+NEXT: ACTUAL CENTERED LIMIT IDENTIFICATION + FREQUENCY DOMINATION
+      → TAIL VANISHING / EXTERIOR ATTACHMENT → WHOLE SOURCE + SOURCE DOMAIN
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+
 ## RPB-108 — actual scalar action separation and centered digamma tail
 
 Continues from `0ed9df1239eabbfbba06eec7509badbe07432d9b`.
