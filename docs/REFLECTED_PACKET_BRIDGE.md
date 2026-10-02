@@ -9,11 +9,21 @@
 
 ## Current standing
 
+The actual centered digamma residual is now cancelled from the actual
+source-line Euler HasSum. Zero-frequency subtraction removes regularization;
+the remaining reciprocal series cancels the initial centered value.
+The symbol tends pointwise to zero, and the actual centered action tends
+to zero on every Schwartz test through the certified dominated transfer,
+which retains its full-symbol growth premise. Exterior attachment is next.
+See [cancellation checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_CANCELLATION_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_DIGAMMA_CANCELLATION.md).
+
 Actual digamma is now identified with the independent complex Euler series
 throughout the right half-plane. Gamma holomorphy and nonvanishing give
 actual digamma holomorphy; analytic uniqueness extends the full positive-real
 anchor across this connected domain. Independent summability gives an
-actual HasSum. Source-line specialization and residual cancellation are next.
+actual HasSum. Source-line specialization and cancellation are now supplied
+above; exterior source attachment is next.
 See [actual-Euler-identity checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_EULER_IDENTITY_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_EULER_IDENTITY.md).
 
@@ -21,7 +31,7 @@ The independent complex Euler candidate is now absolutely summable and
 holomorphic throughout the right half-plane. A rational cancellation
 identity gives a quadratic summable norm majorant uniform on bounded open
 regions separated from the imaginary axis. Actual digamma identification
-is now supplied above; source-line residual cancellation remains next.
+and source-line residual cancellation are now supplied above.
 See [holomorphic-candidate checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_EULER_HOLOMORPHIC_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_EULER_HOLOMORPHIC.md).
 
@@ -29,7 +39,7 @@ Actual digamma is now proved real-valued at every positive real argument by
 comparing actual complex and real Gamma derivatives. The certified real
 Euler anchor upgrades to a full complex HasSum and Euler-series identity
 there. Holomorphic series construction and actual complex identification
-are now supplied above; source-line residual cancellation remains next.
+are now supplied above, together with source-line residual cancellation.
 See [full-real-anchor checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_REAL_COMPLEX_ANCHOR_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_REAL_COMPLEX_ANCHOR.md).
 
@@ -37,8 +47,8 @@ An independent actual positive-real Euler anchor is now constructed:
 Re ψ(N+x)-log N tends to zero for x>0 by log-convex Gamma bounds, and
 Re ψ(x)=-γ+∑' n,[1/(n+1)-1/(x+n)] with independent absolute summability.
 No Gauss representation or full-symbol growth premise is used in this anchor.
-Complex analytic identification is now supplied above. Actual source-line
-residual cancellation remains open.
+Complex analytic identification and actual source-line residual cancellation
+are now supplied above.
 See [real-anchor checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_REAL_ANCHOR_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_REAL_ANCHOR.md).
 
@@ -47,7 +57,7 @@ uniform in the shift index. Dominated convergence attaches the represented
 pointwise residual to the existing actual multiplier action on every Schwartz
 test. On separated tests it equals the physical source-attachment defect.
 This transfer retains the existing full-symbol growth premise. Actual residual
-cancellation and source attachment remain open.
+cancellation is now supplied above; source attachment remains open.
 See [pairing-limit checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_PAIRING_LIMIT_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_PAIRING_LIMIT.md).
 
@@ -56,7 +66,7 @@ its initial value plus the absolutely convergent actual reciprocal-increment
 series. A fixed cubic-series mass gives an envelope uniform in every
 natural shift: ‖C_N(ξ)‖ ≤ ‖C_0(ξ)‖ + 64(πξ)^2 S. Zero convergence is
 equivalent to cancellation of this explicit actual residual. Pairing domination
-and limit passage are now constructed above; cancellation remains open.
+and limit passage are now constructed above, together with cancellation.
 See [limit checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_LIMIT_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_LIMIT.md).
 
@@ -71,7 +81,8 @@ Scalar action separation is now exact: subtracting any scalar symbol
 changes the multiplier pairing only by that scalar times actual carrier
 evaluation. Support-separated tests annihilate the carrier, so the actual
 zero-frequency-centered tail has exactly the same action and defect limit.
-Independent centered remainder control and tail vanishing remain open.
+Centered pointwise and action zero limits are now supplied above; the
+support-separated shifted-tail consequence is next.
 See [centering checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_CENTERING_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_CENTERING.md).
 
@@ -105,7 +116,7 @@ A uniform tail estimate and support-separated weak/operator limit remain open.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `d83104a00e91112b50b538a2b86585b26c735c21`.
+This pass continues from `66ed85ef2dccd622e84a062489876e825912e248`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -268,7 +279,10 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    are constructed, supplying the later identity-theorem equality input.
    Independent complex Euler candidate summability and right-half-plane
    holomorphy are constructed. Actual digamma is now identified on that
-   half-plane; source-line specialization and residual cancellation are next.
+   half-plane. Source-line specialization and residual cancellation are
+   supplied below.
+   Actual source-line HasSum now cancels the represented centered residual;
+   the symbol and actual action tend to zero. Exterior attachment is next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
