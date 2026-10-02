@@ -535,3 +535,54 @@ See [IRT-0C1 checkpoint](../notes/IRT_0C1_SUZUKI_SHIFT_FLOW_20261002.md).
 \texttt{IRT-0D / SYSTEMS-REALIZATION + LOEWNER EXACTNESS SCREEN}
 }
 \]
+
+
+## 20. IRT-0D determination — systems realization / Loewner exactness
+
+The systems-theory screen identifies the first RENJET near kernel as an exact
+semigroup observable:
+
+\[
+K_t(w)=\int_0^t(t-r)e^{rw}\,dr.
+\]
+
+For a fixed finite near block \(\Omega\), the exponential population is
+\(c^\ast e^{rA_\Omega}b\), the mode-weighted near response is
+\(c^\ast K_t(A_\Omega)b\), and derivative-critical rows are resolvent
+observations \(c^\ast(\delta I-A_\Omega)^{-1}b\) and their derivatives.
+
+Thus the canonical deficit has a precise systems interpretation:
+
+\[
+\boxed{
+\text{resolvent observations}
+\longrightarrow
+\text{semigroup / matrix-function observable}.
+}
+\]
+
+Finite Loewner realization can solve this exactly for one finite rational near
+transfer only with enough well-conditioned samples commensurate with its
+McMillan degree. The canonical derivative-zero branch does not supply such an
+every-packet sample frame; this is the existing NJDG realization-rank/
+conditioning debt in systems language.
+
+Structured realization can represent exponential/delay dependence exactly
+when the analytic basis functions are prescribed in advance, but that bakes the
+already known RENJET structure into the model rather than deriving it from
+critical rows.
+
+The surviving distinct theorem class uses continuum resolvent control:
+Hille--Yosida, inverse-Laplace, Kreiss/Gearhart-type mechanisms control
+semigroup behavior from resolvent bounds on a ray, half-plane, contour, or
+boundary family rather than from finitely many scalar samples.
+
+See [IRT-0D checkpoint](../notes/IRT_0D_SYSTEMS_LOEWNER_20261002.md).
+
+## 21. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-0D1 / RESOLVENT-TO-SEMIGROUP CONTINUUM-CONTROL SCREEN}
+}
+\]
