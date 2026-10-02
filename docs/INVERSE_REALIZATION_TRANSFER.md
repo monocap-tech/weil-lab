@@ -756,3 +756,65 @@ See [IRT-0F checkpoint](../notes/IRT_0F_CROSS_ARCH_SYNTHESIS_20261002.md).
 \texttt{IRT-1A / OBSERVABLE-ORIENTATION THEOREM DESIGN}
 }
 \]
+
+
+## 28. IRT-1A determination — observable-orientation theorem design
+
+The dangerous Key-C direction is the right-singular soft cone of
+
+\[
+A_F^{\rm KPH}=I+\varepsilon^{-1}C_F.
+\]
+
+A full second-channel frame bound is unnecessary.
+
+It is enough to construct an upstream observation operator
+\(\mathcal O_F\) satisfying two inequalities on the KPH soft cone:
+
+\[
+\boxed{
+\|\mathcal O_Fv\|\ge H_F^{-a}
+}
+\]
+
+and
+
+\[
+\boxed{
+\|\mathcal O_Fv\|
+\le
+H_F^b\|A_F^{\rm KPH}v\|
++\frac12H_F^{-a}.
+}
+\]
+
+The elementary sandwich gives
+
+\[
+KPH(F)\ge \frac12H_F^{-(a+b)}.
+\]
+
+This is the minimal IRT implication contract. Its content lies in proving the
+two inequalities from an independent actual-zeta channel, not in the sandwich
+itself.
+
+Existing feature/APR channels do not produce a new local Key-C interface:
+CF-A17 makes source-free feature/KPH factor-through false, and JOINT-2 shows an
+actual-zeta feature/KPH attachment near \(U_*\) is projectively equivalent to
+the KPH floor itself.
+
+SOURCE-II post-freeze observables fail the upstream independence contract.
+
+The derivative divisor remains the cleanest independently typed candidate:
+the next pass will design a canonical \(\Xi'\)-observation operator and ask only
+for transversality to the KPH soft cone, not reconstruction of RENJET.
+
+See [IRT-1A checkpoint](../notes/IRT_1A_OBSERVABLE_ORIENTATION_DESIGN_20261002.md).
+
+## 29. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-1B / MIXED-DIVISOR SOFT-CONE FRAME DESIGN}
+}
+\]
