@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralDigammaRealBounds.lean
+          git hash-object WeilDefect/Morphology/NeutralDigammaCentering.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralDigammaRealBounds
+          lake build WeilDefect.Morphology.NeutralDigammaCentering
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,16 +72,17 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-digamma-real-bounds-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralDigammaRealBounds
-          #print axioms WeilDefect.neutralLogGamma_hasDerivAt
-          #print axioms WeilDefect.neutralLogGamma_unit_slope
-          #print axioms WeilDefect.neutralDigamma_real_le_log
-          #print axioms WeilDefect.neutralDigamma_log_sub_one_le
-          #print axioms WeilDefect.neutralShiftedDigammaSymbol_zero_bounds
+          cat > /tmp/rpb108-digamma-centering-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralDigammaCentering
+          #print axioms WeilDefect.neutralCenteredDigammaSymbol_temperate
+          #print axioms WeilDefect.neutralFourierMultiplier_sub_const_pairing
+          #print axioms WeilDefect.neutralPhysical_temperedMode_exterior_zero
+          #print axioms WeilDefect.neutralCenteredDigammaAction_eq_shifted_exterior
+          #print axioms WeilDefect.neutralCenteredDigammaAction_exterior_defect_tendsto
+          #print axioms WeilDefect.neutralCenteredDigammaAction_exterior_zero_iff
           LEAN
-          lake env lean /tmp/rpb108-digamma-real-bounds-audit.lean | tee /tmp/rpb108-digamma-real-bounds-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-digamma-real-bounds-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-digamma-centering-audit.lean | tee /tmp/rpb108-digamma-centering-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-digamma-centering-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

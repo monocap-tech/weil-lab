@@ -1,5 +1,38 @@
 # Lean Status
 
+## RPB-108 — independent actual real-axis digamma bounds
+
+Continues from `b2be21a14300825e897a5242665192480d85887a`.
+`NeutralDigammaRealBounds` identifies the derivative of actual positive-
+real log Gamma with Re ψ(x). The actual Gamma recurrence gives the exact
+unit secant slope log x. Log-convexity then proves Re ψ(x)≤log x for x>0
+and log(x-1)≤Re ψ(x) for x>1, independently of retained source comparison
+hypotheses and without assuming a Gauss integral representation.
+
+For N≥1 the actual shifted source symbol at zero frequency lies between
+log(N-3/4)-log π and log(N+1/4)-log π. This controls its scalar value,
+not the centered nonzero-frequency remainder or shifted-tail vanishing.
+Exterior/whole source attachment, central/boundary reconstruction and actual
+source-domain/quadratic/polarization/normalized estimate witnesses remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_REAL_BOUNDS_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,970 build jobs passed. All five audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `1d21396b8414c7524be3fa72cc80b7024136b455`,
+run `36972763212`, job `110730043467`, source blob
+`82d0918374ac39fb1e1799a5ebf67e27e46ab87f`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL REAL-AXIS DIGAMMA / SHIFTED ZERO-FREQUENCY BRACKET: CONSTRUCTED
+NEXT: SCALAR ACTION SEPARATION + CENTERED NONZERO-FREQUENCY DIGAMMA CONTROL
+      → TAIL VANISHING / EXTERIOR ATTACHMENT → WHOLE SOURCE + SOURCE DOMAIN
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+
 ## RPB-108 — exterior weak convergence and exact shifted-tail defect
 
 Continues from `c22d1b4a18d8918c617153f1a3296ab73cfd2aee`.
