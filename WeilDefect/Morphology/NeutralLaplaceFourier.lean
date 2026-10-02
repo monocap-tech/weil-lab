@@ -103,8 +103,7 @@ theorem neutralLaplace_resolvent_eq {b : ℝ} (hb : 0 < b) (t : ℝ) :
     simp only [Complex.add_re, Complex.add_im, Complex.inv_re, Complex.inv_im,
       Complex.sub_re, Complex.sub_im, Complex.mul_re, Complex.mul_im,
       Complex.ofReal_re, Complex.ofReal_im, Complex.I_re, Complex.I_im,
-      Complex.normSq_apply, Complex.ofReal_div, Complex.ofReal_mul,
-      Complex.ofReal_add, Complex.ofReal_pow, zero_mul, mul_zero, mul_one,
+      Complex.normSq_apply, zero_mul, mul_zero, mul_one,
       sub_zero, zero_sub, add_zero, zero_add, neg_neg, neg_sq] <;>
     field_simp <;> ring
 
