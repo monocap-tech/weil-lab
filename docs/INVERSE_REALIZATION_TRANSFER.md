@@ -304,3 +304,43 @@ This branch preserves the NJDG stop. It does not reopen NJDG by renaming it.
 ]
 
 No RH claim is made.
+
+
+## 10. IRT-0A determination — Weyl/Herglotz screen
+
+IRT-0A located the exact foreign architecture sought at launch.
+
+Classical meromorphic Herglotz/Weyl theory couples zeros and poles because one
+common self-adjoint realization supplies positivity, real spectral support,
+interlacing, normalization, and inverse reconstruction. Rank-one perturbation
+and two-spectra theorems show that this can recover the full realized object,
+so the NJDG-6 finite-rational obstruction is not universal when complete
+realization data are available.
+
+The same mechanism is too strong for direct use in the negative false-RH
+branch: a classical scalar Herglotz realization whose pole set is the full
+critical-line-coordinate \(\Xi\)-divisor forces that spectral pole set onto the
+real axis. That is incompatible with using the realization as an assumption
+while analyzing an off-critical zero.
+
+Thus the classical route is:
+
+\[
+\boxed{
+\text{FORMALLY MATCHED / REALIZATION MECHANISM IDENTIFIED / DIRECT FALSE-RH USE BLOCKED}.
+}
+\]
+
+See [IRT-0A checkpoint](../notes/IRT_0A_WEYL_HERGLOTZ_20261002.md).
+
+The next question is whether generalized Nevanlinna/Pontryagin realization
+retains enough two-divisor rigidity while admitting controlled nonreal or
+nonpositive-type spectral data.
+
+## 11. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-0B / GENERALIZED-NEVANLINNA-PONTRYAGIN SCREEN}
+}
+\]
