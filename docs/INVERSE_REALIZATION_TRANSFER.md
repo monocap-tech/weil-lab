@@ -700,3 +700,59 @@ See [IRT-0E checkpoint](../notes/IRT_0E_PRONY_SUPERRESOLUTION_20261002.md).
 \texttt{IRT-0F / CROSS-ARCHITECTURE SYNTHESIS + NEW-THEOREM-TYPE EXTRACTION}
 }
 \]
+
+
+## 26. IRT-0F determination — cross-architecture synthesis
+
+IRT-0 has completed the planned foreign-architecture screen.
+
+Across Weyl/Herglotz, generalized Nevanlinna, canonical systems, systems
+realization, and Prony/super-resolution, successful transfer always requires:
+
+\[
+\boxed{
+\text{independent model rigidity}
++
+\text{independent observations}
++
+\text{stable observability/conditioning}.
+}
+\]
+
+When those ingredients are weakened enough to admit arbitrary false-RH local
+geometry, the missing information reappears as holomorphic slack,
+complement-field freedom, realization-rank debt, or unstable inversion.
+
+When they are strengthened enough to determine the divisor globally, the
+standard versions import RH-strength real-spectrum positivity, a finite global
+exceptional budget, complete data, or equivalent conditioning assumptions.
+
+SOURCE-II-8 adds a decisive project-specific constraint: post-freeze smallness
+of the selected-only total jet tower on every dangerous packet is not a weaker
+localization lemma. It is projectively equivalent to excluding the local
+KPH-floor failure sequence.
+
+Therefore a genuinely different input must act **upstream** of the frozen
+tower and provide complement-oblivious orientation information from an
+independent channel.
+
+The surviving theorem signature is
+
+\[
+\boxed{
+\textbf{STABLE MIXED-DIVISOR OBSERVABILITY / ORIENTATION}
+}
+\]
+
+with a projective condition number and the correct selected-before-complement
+quantifier order.
+
+See [IRT-0F checkpoint](../notes/IRT_0F_CROSS_ARCH_SYNTHESIS_20261002.md).
+
+## 27. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-1A / OBSERVABLE-ORIENTATION THEOREM DESIGN}
+}
+\]
