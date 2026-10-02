@@ -67,15 +67,19 @@ theorem neutralDigamma_euler_tsum_differentiableOn {a R : ℝ}
   have ho : IsOpen {z : ℂ | a < z.re ∧ ‖z-1‖ < R} :=
     (isOpen_lt continuous_const Complex.continuous_re).inter
       (isOpen_lt (continuous_id.sub continuous_const).norm continuous_const)
-  apply Complex.differentiableOn_tsum_of_summable_norm
-    (neutralDigamma_euler_majorant_summable (R / a)) _ ho
+  refine Complex.differentiableOn_tsum_of_summable_norm
+    (F := fun n z => neutralDigammaEulerTerm n z)
+    (neutralDigamma_euler_majorant_summable (R / a)) ?_ ho ?_
   · intro n z hz
     have hn : (0 : ℝ) ≤ n := Nat.cast_nonneg n
     have hne : z+(n : ℂ) ≠ 0 := Complex.ne_zero_of_re_pos (by
       simp only [Complex.add_re, Complex.natCast_re]
       linarith [hz.1])
-    exact ((differentiableAt_const _).sub
-      ((differentiableAt_const _).div (differentiableAt_id.add_const _) hne)).differentiableWithinAt
+    change DifferentiableWithinAt ℂ
+      (fun w : ℂ => 1 / ((n : ℂ)+1) - 1 / (w+(n : ℂ))) _ z
+    exact ((differentiableAt_const (1 / ((n : ℂ)+1))).sub
+      ((differentiableAt_const (1 : ℂ)).div
+        (differentiableAt_id.add_const (n : ℂ)) hne)).differentiableWithinAt
   · intro n z hz
     exact (neutralDigamma_euler_term_bound ha hz.1.le ha1 n).trans (by
       gcongr
@@ -86,8 +90,9 @@ the right half-plane. This does not yet identify actual complex digamma. -/
 theorem neutralDigamma_eulerSeries_differentiableOn :
     DifferentiableOn ℂ neutralDigammaEulerSeries {z : ℂ | 0 < z.re} := by
   intro z hz
+  change 0 < z.re at hz
   let a := min z.re 1 / 2
-  have ha : 0 < a := by dsimp [a]; positivity
+  have ha : 0 < a := div_pos (lt_min hz zero_lt_one) (by norm_num)
   have ha1 : a ≤ 1 := by dsimp [a]; linarith [min_le_right z.re 1]
   have haz : a < z.re := by dsimp [a]; linarith [min_le_left z.re 1]
   have ho : IsOpen {w : ℂ | a < w.re ∧ ‖w-1‖ < ‖z-1‖+1} :=
