@@ -646,3 +646,57 @@ See [IRT-0D1 checkpoint](../notes/IRT_0D1_RESOLVENT_SEMIGROUP_CONTINUUM_20261002
 \texttt{IRT-0E / MOMENT--PRONY--SUPERRESOLUTION SCREEN}
 }
 \]
+
+
+## 24. IRT-0E determination — moment / Prony / super-resolution
+
+The higher-resolvent near statistics admit an exact reciprocal-coordinate
+Prony form:
+
+\[
+S_r^\Omega(\psi)
+=
+\sum_{\mu\in\Omega}
+m_\mu\frac{\psi(\mu)}{(\mu-c)^{r+1}}
+=
+\sum_{\mu\in\Omega}a_\mu y_\mu^r,
+\]
+
+with \(y_\mu=(\mu-c)^{-1}\).
+
+This is a genuine formal identification of the SOURCE-II near tower with a
+finite-rate-of-innovation / exponential-moment model.
+
+However, SOURCE-II does not expose \(S_r^\Omega\) as an independent measurement
+stream. It appears only inside the joint finite-part jet together with the
+\(B_F\)/outside-field derivative. Isolating the Prony moments therefore
+requires independent complement-field information.
+
+Even if those moments were supplied by an oracle, exact Prony inversion has a
+rank-scale data cost, while stable inversion near collisions has a
+Vandermonde/super-resolution conditioning cost. SOURCE-II supplies arbitrary
+**fixed** jet order and a finite truncation remainder, not a uniform
+rank-adaptive exact moment stream or a packetwise separation/conditioning
+floor.
+
+Separation-free noiseless uniqueness therefore does not close the actual
+problem, because the project requires quantitative stability under nonzero
+truncation/far-tail error.
+
+Thus:
+
+\[
+\boxed{
+\text{PRONY MODEL MATCHES EXACTLY / OBSERVABILITY + RANK + STABILITY DEBTS REMAIN}.
+}
+\]
+
+See [IRT-0E checkpoint](../notes/IRT_0E_PRONY_SUPERRESOLUTION_20261002.md).
+
+## 25. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-0F / CROSS-ARCHITECTURE SYNTHESIS + NEW-THEOREM-TYPE EXTRACTION}
+}
+\]
