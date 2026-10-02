@@ -9,7 +9,7 @@
 
 ## Current standing
 
-This pass continues from `279c732efb791a1553beae31c78ef8cd95a4fa0d`.
+This pass continues from `542d00ae49757f9926654b5ded58988ebf9f1c89`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -88,10 +88,16 @@ geometric remainder and off-diagonal pointwise limit. Fourier identification
 and the shifted-tail operator limit remain open; no Gauss identity is assumed.
 See [finite Gauss continuation](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_GAUSS_20261001.md).
 
-The current continuation proves the exact normalized Fourier transform of
+The Laplace continuation proves the exact normalized Fourier transform of
 exp(-b|x|), including genuine integral convergence. At b=2n+1/2 it equals the
-finite digamma reciprocal coefficient. Finite-sum/convolution weak transfer
-and shifted-tail control remain open. See [Laplace Fourier continuation](../notes/REFLECTED_PACKET_BRIDGE_108_LAPLACE_FOURIER_20261001.md).
+finite digamma reciprocal coefficient. See [Laplace Fourier continuation](../notes/REFLECTED_PACKET_BRIDGE_108_LAPLACE_FOURIER_20261001.md).
+
+The current continuation identifies the full finite geometric kernel with
+its integrable Laplace sum, computes its Fourier symbol, and constructs the
+actual globally L1 rough-carrier convolution. Every Schwartz-test pairing
+has the exact inverse-test Fourier representation by lawful L1 Fubini.
+Distributional multiplier packaging and shifted-tail control remain open.
+See [finite Gauss convolution continuation](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_GAUSS_CONVOLUTION_20261001.md).
 
 | Obligation | Current state |
 | --- | --- |
@@ -112,6 +118,7 @@ and shifted-tail control remain open. See [Laplace Fourier continuation](../note
 | Full physical prime action and exact actual multiplier core split | Constructed; 8,962 build jobs and six axiom audits passed |
 | Actual finite digamma tail identity and off-diagonal kernel limit | Constructed; 8,963 build jobs and six axiom audits passed |
 | Normalized Laplace Fourier and finite Gauss reciprocal transfer | Certified: 8,964 jobs; five endpoint audits |
+| Finite Gauss kernel, rough-carrier convolution and weak Fourier identity | Certified: 8,965 jobs; seven endpoint audits |
 | Actual source form-domain membership and form identification | Open |
 | Actual core representative, regularity/growth and central cancellation | Open |
 | F-4 logarithmic Gaussian coercivity | Not started |
@@ -135,10 +142,10 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    cancellation and boundary/whole-line reconstruction remain open. The full
    finite-prime action is attached; singular archimedean identification is
    the remaining physical multiplier component. The finite scalar tail split
-   and geometric kernel limit are constructed; finite Fourier transfer and
-   the shifted-tail operator limit remain open. Individual rational terms are
-   attached to their normalized exponential Fourier kernels; finite-sum and
-   convolution weak transfer are next.
+   and geometric kernel limit are constructed. The full finite kernel and
+   actual rough-carrier convolution have exact Fourier transforms and a
+   Schwartz weak pairing identity. Packaging this as the existing tempered
+   multiplier action and controlling the shifted-tail operator limit are next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~

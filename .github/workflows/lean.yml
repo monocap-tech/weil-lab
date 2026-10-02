@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralFiniteGaussConvolution.lean
+          git hash-object WeilDefect/Morphology/NeutralGaussMultiplier.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralFiniteGaussConvolution
+          lake build WeilDefect.Morphology.NeutralGaussMultiplier
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,18 +72,15 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-finite-gauss-convolution-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralFiniteGaussConvolution
-          #print axioms WeilDefect.neutralFiniteGaussKernelComplex_eq_sum
-          #print axioms WeilDefect.neutralFiniteGaussKernelComplex_integrable
-          #print axioms WeilDefect.neutralFiniteGaussKernelComplex_fourier
-          #print axioms WeilDefect.neutralFiniteGaussConvolution_integrable
-          #print axioms WeilDefect.neutralFiniteGaussConvolution_fourier
-          #print axioms WeilDefect.neutralFiniteGaussConvolution_pairing_integrable
-          #print axioms WeilDefect.neutralFiniteGaussConvolution_weak_fourier
+          cat > /tmp/rpb108-gauss-multiplier-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralGaussMultiplier
+          #print axioms WeilDefect.neutralLaplaceKernel_polynomialNorm_integrable
+          #print axioms WeilDefect.neutralMomentFourier_temperate
+          #print axioms WeilDefect.neutralFiniteGaussSymbol_temperate
+          #print axioms WeilDefect.neutralFiniteGaussMultiplier_physical_pairing
           LEAN
-          lake env lean /tmp/rpb108-finite-gauss-convolution-audit.lean | tee /tmp/rpb108-finite-gauss-convolution-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-finite-gauss-convolution-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-gauss-multiplier-audit.lean | tee /tmp/rpb108-gauss-multiplier-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-gauss-multiplier-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

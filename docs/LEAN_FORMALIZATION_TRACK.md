@@ -1,5 +1,36 @@
 # Lean Formalization Track
 
+## RPB-108 — finite Gauss convolution and weak Fourier transfer
+
+Continues from `542d00ae49757f9926654b5ded58988ebf9f1c89`.
+`NeutralFiniteGaussConvolution` identifies the prior geometric kernel with
+its finite sum of Laplace exponentials, proves its global L1 integrability,
+and computes its exact finite reciprocal Fourier symbol. Its convolution
+with the actual rough compact carrier is globally integrable and has the
+actual product Fourier transform. On every Schwartz test the physical
+pairing equals the inverse-test Fourier pairing by lawful L1 Fubini.
+
+This is a finite weak Fourier identity, not an infinite Gauss/source
+representation. Distributional multiplier packaging, shifted-tail operator
+control, central/boundary reconstruction and actual source-domain/quadratic/
+polarization attachment remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_GAUSS_CONVOLUTION_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,965 build jobs passed. Seven endpoints use only `propext`, `Classical.choice`,
+and `Quot.sound`; declaration gate passed. Validation head
+`9d88d87631c8526cad40e106fe8f25e8feff1eed`, run `36958521515`,
+job `110686795036`, source blob `38c6bf719c8cb5aecc4ffcb5673d14af57d0fad9`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+FINITE GAUSS KERNEL / ROUGH-CARRIER CONVOLUTION / WEAK FOURIER TRANSFER: CONSTRUCTED
+NEXT: DISTRIBUTIONAL MULTIPLIER PACKAGING + SHIFTED TAIL OPERATOR CONTROL
+      → WHOLE ARCHIMEDEAN SOURCE; CENTRAL/BOUNDARY + SOURCE DOMAIN ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — normalized Laplace Fourier / Gauss reciprocal transfer
 
 Continues from `279c732efb791a1553beae31c78ef8cd95a4fa0d`.

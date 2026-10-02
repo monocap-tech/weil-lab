@@ -269,3 +269,27 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 finite Gauss convolution and weak Fourier transfer, October 1, 2026
+
+Recovered research head: `542d00ae49757f9926654b5ded58988ebf9f1c89`.
+Exact-module validation head: `9d88d87631c8526cad40e106fe8f25e8feff1eed`.
+Run `36958521515`, job `110686795036`, source blob
+`38c6bf719c8cb5aecc4ffcb5673d14af57d0fad9`.
+Lean 4.34.0, mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,965 jobs passed. All seven audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; the declaration gate passed.
+
+The prior finite geometric kernel is exactly a globally integrable Laplace
+sum with the actual finite reciprocal Fourier symbol. Its convolution with
+the actual rough compact carrier is globally L1 and has the exact product
+Fourier transform. Every Schwartz-test physical pairing equals the inverse-
+test Fourier pairing by lawful L1 Fubini and Schwartz inversion.
+Distributional multiplier packaging, shifted-tail operator control, whole
+archimedean source attachment, central/boundary reconstruction and actual
+source-domain/quadratic/polarization attachment remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.
