@@ -54,6 +54,7 @@ theorem neutralPhysical_temperedMode_exterior_zero
   rw [neutralPhysical_temperedMode_apply]
   apply integral_eq_zero_of_ae
   filter_upwards with x
+  change u x * carrier.h x = (0 : ℂ)
   by_cases hx : x ∈ Set.Icc (-c) c
   · have hxa : x ∈ Set.Ioo (-a) a := by
       rcases hx with ⟨hl, hr⟩
