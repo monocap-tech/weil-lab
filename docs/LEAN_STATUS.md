@@ -1,5 +1,32 @@
 # Lean Status
 
+## RPB-108 — witness attachment custody audit
+
+Recovered source head: `a212c087ae269a27e17f7b715531caaa95b37088`.
+
+The retained WD-T38 source-identification hypothesis is present in the written
+theorem but is not carried as concrete identification data by its Lean adapter.
+Its independent density/symbol/Q inputs do not identify the physical carrier,
+canonical domain or concrete source form. No actual source witness was attached
+in this audit. Existing diagonal/polarization/comparison bridges remain
+conditional on those missing identifications.
+
+Endpoint nullity on (-c,c) must be kept separate from strict enlarged nullity
+on (-a,a), c < a. The latter is the strict-persistence contradiction hypothesis,
+not a consequence of the endpoint equation. Global spectral-product L2
+membership is not established by the retained form estimates; the stronger
+route is stopped. Next: reconstruct the omitted source identification and
+investigate the weakest locally integrable actual defect through local
+off-support representation, without adding spectral membership.
+
+See [witness audit](../notes/REFLECTED_PACKET_BRIDGE_108_WITNESS_ATTACHMENT_AUDIT_20261002.md). This documentation-only pass adds no
+theorem or axiom; the latest source certificate remains 8,987 jobs and five
+clean endpoint audits at a212c087.
+
+Threshold bookkeeping is closed. Actual source attachment, enlarged central
+cancellation, regularity and whole compact realization remain open.
+Logarithmic Gaussian coercivity has not started.
+
 ## RPB-108 — physical operator/quadratic bridge
 
 Continues from `41e3532aa83905dac6255b5cf5dbd9f3f799becc`.
