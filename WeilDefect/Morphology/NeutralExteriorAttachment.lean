@@ -42,7 +42,7 @@ theorem neutralExteriorMultiplierCore_pairing_integrable
     Integrable (fun x : ℝ => u x *
       (neutralArchimedeanGapFunction carrier (a-c) x -
         neutralFinitePrimePhysical carrier (rightLimitPrimePowerFinset a) x)) volume := by
-  simpa only [mul_sub] using
+  simpa only [mul_sub, Pi.sub_apply] using
     (neutralArchimedeanGapFunction_pairing_integrable carrier (sub_pos.mpr hca) u).sub
       (neutralFinitePrime_pairing_integrable carrier _ u)
 
