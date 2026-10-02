@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralDigammaStepDecay.lean
+          git hash-object WeilDefect/Morphology/NeutralDigammaLimit.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralDigammaStepDecay
+          lake build WeilDefect.Morphology.NeutralDigammaLimit
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,16 +72,19 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-digamma-step-decay-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralDigammaStepDecay
-          #print axioms WeilDefect.neutralGaussReciprocal_centered_deficit
-          #print axioms WeilDefect.neutralGaussReciprocal_centered_bound
-          #print axioms WeilDefect.neutralCenteredDigammaSymbol_step
-          #print axioms WeilDefect.neutralCenteredDigammaSymbol_step_norm_bound
-          #print axioms WeilDefect.neutralCenteredDigammaSymbol_step_norm_summable
+          cat > /tmp/rpb108-digamma-limit-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralDigammaLimit
+          #print axioms WeilDefect.neutralCenteredDigammaCubic_summable
+          #print axioms WeilDefect.neutralCenteredDigammaSymbol_step_summable
+          #print axioms WeilDefect.neutralCenteredDigammaSymbol_telescoping
+          #print axioms WeilDefect.neutralCenteredDigammaSymbol_tendsto
+          #print axioms WeilDefect.neutralCenteredDigammaLimit_eq_reciprocal_series
+          #print axioms WeilDefect.neutralCenteredDigammaSymbol_uniform_displacement_bound
+          #print axioms WeilDefect.neutralCenteredDigammaSymbol_uniform_norm_bound
+          #print axioms WeilDefect.neutralCenteredDigammaSymbol_zero_limit_iff
           LEAN
-          lake env lean /tmp/rpb108-digamma-step-decay-audit.lean | tee /tmp/rpb108-digamma-step-decay-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-digamma-step-decay-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-digamma-limit-audit.lean | tee /tmp/rpb108-digamma-limit-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-digamma-limit-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
