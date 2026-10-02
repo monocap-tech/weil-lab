@@ -829,3 +829,133 @@ compensating alignment responsible for KPH/NEXTJET failure.
 
 This theorem shape is strictly about information orientation, not another
 coordinate representation of the existing explicit formula.
+
+
+## KPH soft cone
+
+For the native local KPH operator
+
+\[
+A_F^{\rm KPH}
+=
+I+\varepsilon^{-1}C_F,
+\qquad
+KPH(F)=\sigma_{\min}(A_F^{\rm KPH}),
+\]
+
+and an exponent \(B>0\), the **KPH soft cone** is
+
+\[
+\mathcal S_B(F)
+=
+\left\{
+v:\|v\|=1,\ 
+\|A_F^{\rm KPH}v\|\le H_F^{-B}
+\right\}.
+\]
+
+A theorem may act only on this cone; it need not control every coefficient
+direction.
+
+## Soft-cone activation
+
+Let \(\mathcal O_F\) be a second-channel observation operator fixed by an
+upstream rule.
+
+**Soft-cone activation** means that for some fixed exponent \(a\),
+
+\[
+v\in\mathcal S_B(F)
+\Longrightarrow
+\|\mathcal O_Fv\|\ge H_F^{-a}.
+\]
+
+This is weaker than a global frame bound
+\(\sigma_{\min}(\mathcal O_F)\ge H_F^{-a}\).
+
+The observation operator must not be defined using the KPH minimizing vector or
+the post-freeze complement response.
+
+## Projective factor-through bridge
+
+A **projective factor-through bridge** from the KPH residual to a second
+channel is an identity or estimate of the form
+
+\[
+\mathcal O_F
+=
+M_F A_F^{\rm KPH}+E_F
+\]
+
+with
+
+\[
+\|M_F\|\le H_F^b,
+\qquad
+\|E_F\|\le \eta_F,
+\]
+
+for fixed projective exponent \(b\) and sufficiently small error
+\(\eta_F\).
+
+A weaker pointwise version on the soft cone is also admissible:
+
+\[
+\|\mathcal O_Fv\|
+\le
+H_F^b\|A_F^{\rm KPH}v\|+\eta_F.
+\]
+
+## Soft-cone sandwich lemma
+
+If, for every unit \(v\) in a proposed KPH soft cone,
+
+\[
+\|\mathcal O_Fv\|\ge H_F^{-a}
+\]
+
+and
+
+\[
+\|\mathcal O_Fv\|
+\le
+H_F^b\|A_F^{\rm KPH}v\|+\frac12H_F^{-a},
+\]
+
+then
+
+\[
+\|A_F^{\rm KPH}v\|
+\ge
+\frac12H_F^{-(a+b)}.
+\]
+
+Consequently
+
+\[
+KPH(F)\ge \frac12H_F^{-(a+b)}
+\]
+
+provided the lower-activation statement applies to every vector below that
+candidate floor.
+
+This elementary inequality is the minimal abstract implication contract for
+IRT-1A.
+
+## Independent-channel contract
+
+A second-channel observable \(\mathcal O_F\) satisfies the
+**independent-channel contract** only if:
+
+1. its rule is fixed from actual-zeta/selected/public data upstream of the
+   complement response being bounded;
+2. it is not \(A_F^{\rm KPH}\), a scalar multiple of it, or a coordinate
+   rewriting of the same reciprocal-Cauchy matrix;
+3. its activation lower bound comes from a theorem independent of
+   C-ACTUAL-KPH-FLOOR and SOURCE-II post-freeze tower smallness;
+4. its factor-through bridge is separately proved;
+5. both constants are projective and uniform over the admitted actual packet
+   jurisdiction.
+
+Without this contract, the soft-cone sandwich is only a tautological
+repackaging of KPH.
