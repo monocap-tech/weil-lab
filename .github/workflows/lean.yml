@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralSourceBoundaryRemoval.lean
+          git hash-object WeilDefect/Morphology/NeutralSourceOperatorDomain.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralSourceBoundaryRemoval
+          lake build WeilDefect.Morphology.NeutralSourceOperatorDomain
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,16 +72,17 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-source-boundary-removal-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralSourceBoundaryRemoval
-          #print axioms WeilDefect.locallyIntegrable_ae_zero_of_compactSchwartz_on_open
-          #print axioms WeilDefect.neutralCompactSourceDefect_regular_exterior_zero
-          #print axioms WeilDefect.neutralCompactSourceDefect_regular_central_zero
-          #print axioms WeilDefect.neutralCompactSourceDefect_zero_of_regular_central_cancellation
-          #print axioms WeilDefect.neutralExteriorIntegralGrowthResidual_realizes_of_regular_cancellation
+          cat > /tmp/rpb108-source-operator-domain-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralSourceOperatorDomain
+          #print axioms WeilDefect.l2SpectralProduct_toTemperedDistribution
+          #print axioms WeilDefect.neutralWeilOperatorDomainCore_toTemperedDistribution
+          #print axioms WeilDefect.neutralWeilOperatorDomainCore_pairing
+          #print axioms WeilDefect.neutralWeilOperatorDomainDefect_locallyIntegrable
+          #print axioms WeilDefect.neutralWeilOperatorDomainDefect_represents
+          #print axioms WeilDefect.neutralExteriorIntegralGrowthResidual_realizes_of_operatorDomain
           LEAN
-          lake env lean /tmp/rpb108-source-boundary-removal-audit.lean | tee /tmp/rpb108-source-boundary-removal-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-source-boundary-removal-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-source-operator-domain-audit.lean | tee /tmp/rpb108-source-operator-domain-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-source-operator-domain-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

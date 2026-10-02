@@ -9,6 +9,17 @@
 
 ## Current standing
 
+Boundary removal is now proved for a regular actual compact source defect.
+Compact-test detection gives almost-everywhere vanishing on the central and
+exterior open regions; the two endpoints have zero volume. This yields whole
+compact integral-growth weak realization when actual central cancellation
+and a locally integrable actual defect representation are supplied. Those
+two witnesses remain open, as do actual source-domain/quadratic/polarization
+witnesses. Full-symbol growth is retained. Next: construct actual regularity
+and central source cancellation; conditional reconstruction is available.
+See [boundary-removal checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_BOUNDARY_REMOVAL_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_SOURCE_BOUNDARY_REMOVAL.md).
+
 The actual remaining compact source defect is now localized: it is additive,
 vanishes on compact exterior tests, and depends only on the central open-window
 restriction of a test. On central tests it equals the actual corrected source
