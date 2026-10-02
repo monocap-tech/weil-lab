@@ -278,3 +278,78 @@ statement whose continuation would already be equivalent to RH.
 A parameter-flow argument counts as new progress only if its propagated
 quantity maps explicitly to the frozen RENJET/KPH target and is strictly
 weaker than global Hamiltonian positivity.
+
+
+## Outward shift semigroup
+
+The **outward shift semigroup** is Suzuki's exact transformation
+
+\[
+\Psi_{\omega+\eta}(t)
+=
+e^{-\eta t}\Psi_\omega(t)
++
+2\eta\int_0^t e^{-\eta u}\Psi_\omega(u)\,du
++
+\eta^2\int_0^t (t-u)e^{-\eta u}\Psi_\omega(u)\,du,
+\]
+
+for real \(\omega,\eta\).
+
+When \(\eta>0\), every coefficient/kernel in this formula is nonnegative.
+Therefore nonnegativity of \(\Psi_\omega\) on an interval propagates to the
+larger shift \(\omega+\eta\).
+
+This propagation is **outward**, away from the critical line.
+
+## Inward sign-loss
+
+**Inward sign-loss** is the failure of the preceding transform to preserve
+positivity when run toward smaller \(\omega\).
+
+Substituting a negative shift changes the sign of the first integral coefficient
+while introducing exponential growth in the pointwise factor. Thus positivity
+at a safe outer shift does not propagate inward by the same theorem.
+
+In Laplace variables, the outward operator has multiplier
+
+\[
+F_\omega(p+\eta)\longmapsto
+\frac{(p+\eta)^2}{p^2}F_\omega(p+\eta),
+\]
+
+so its inverse is not positivity-preserving.
+
+## Zero-free shift threshold
+
+The **zero-free shift threshold** is the horizontal parameter detected by
+Suzuki's shifted screw function:
+
+\[
+\xi(s)\ne0\ \text{for }\Re s>\frac12+\omega
+\]
+
+if and only if \(\Psi_\omega(t)\) is eventually nonnegative.
+
+This is a global half-plane threshold. It does not identify which packet or
+height is responsible for failure below the threshold.
+
+## Parameter-flow compensation debt
+
+The **parameter-flow compensation debt** is the fact that the imaginary part of
+the shifted logarithmic derivative decomposes as a sum over all zeros,
+
+\[
+\Im\!\left[i\frac{\xi'}{\xi}(s+\omega)\right]
+=
+\sum_\rho
+\frac{\Re(s+\omega)-\Re\rho}{|s+\omega-\rho|^2}.
+\]
+
+An off-critical zero can contribute with the adverse sign when the shift crosses
+its horizontal displacement, but the total remains a sum over the entire
+divisor. Turning that one adverse term into a packetwise lower bound therefore
+requires control of the complementary field.
+
+This is the shift-family version of the existing NEXTJET/KPH compensation
+problem, not an automatic bypass.
