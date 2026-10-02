@@ -82,6 +82,7 @@ import WeilDefect.Morphology.NeutralSourceBoundaryRemoval
 import WeilDefect.Morphology.NeutralSourceOperatorDomain
 import WeilDefect.Morphology.NeutralCanonicalFormDomain
 import WeilDefect.Morphology.NeutralOperatorFormEnergy
+import WeilDefect.Morphology.NeutralOperatorQuadraticBridge
 
 import WeilDefect.Morphology.Noncompact
 

@@ -1,5 +1,44 @@
 # Lean Formalization Track
 
+## RPB-108 — physical operator/quadratic bridge
+
+Continues from `41e3532aa83905dac6255b5cf5dbd9f3f799becc`.
+
+`NeutralOperatorQuadraticBridge` identifies the physical L2 core pairing
+with the exact normalized spectral multiplier pairing by Plancherel.
+Genuine L2 Hermitian integrability and a.e. spectral representative laws
+justify the physical pairing. On the carrier column, every test vector in
+the concrete source form domain now has its multiplier pairing identified
+with the physical operator core. Combining the certified real diagonal
+with the existing Hermitian pole identity gives the concrete carrier
+quadratic energy as the real physical core pairing plus the real pole pairing.
+The chosen physical carrier representative also has a genuinely convergent
+core pairing.
+
+Actual spectral operator-domain membership remains an explicit open input.
+The bridge adds no positive comparison, central cancellation or imported
+source quadratic identity premise. It identifies the constructed form and
+constructed operator core, not a separately imported source form or the
+abstract endpoint-null extension. That source attachment, polarization
+attachment, central cancellation and actual whole-source realization remain
+open. Threshold bookkeeping is closed; logarithmic coercivity has not started.
+
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_OPERATOR_QUADRATIC_BRIDGE_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,987 build jobs passed. All five endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `f202f6ddc684478102061f9b1cfc0f2e8ff4f741`, run `37077578096`, job `111070781347`, source blob `89e41c3a3bf68c4685d461a1d989a0532a020f32`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+PHYSICAL CORE ↔ EXACT SPECTRAL CARRIER COLUMN: IDENTIFIED
+CONCRETE QUADRATIC ↔ PHYSICAL CORE + POLE ENERGY: IDENTIFIED
+PHYSICAL CARRIER CORE PAIRING: GENUINELY INTEGRABLE
+ACTUAL SPECTRAL OPERATOR MEMBERSHIP: OPEN
+IMPORTED SOURCE / ENDPOINT-NULL ATTACHMENT: OPEN
+CENTRAL CANCELLATION + WHOLE SOURCE REALIZATION: OPEN
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — operator-domain to logarithmic form-energy transfer
 
 Continues from `b83dd8999ba68bb22d04547d92a371bab0fca580`.

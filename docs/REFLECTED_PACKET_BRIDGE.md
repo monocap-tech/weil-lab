@@ -9,6 +9,17 @@
 
 ## Current standing
 
+Plancherel now identifies the concrete multiplier form's carrier column with
+the actual physical L2 operator-core pairing. The concrete carrier quadratic
+diagonal is its real core pairing plus the already represented real pole
+pairing. These identities retain spectral operator-domain membership but
+introduce no new source quadratic identity or symbol comparison premise.
+Actual spectral membership, imported source/endpoint-null attachment and
+central cancellation remain open. Threshold bookkeeping is closed;
+logarithmic coercivity has not started.
+See [physical quadratic checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_OPERATOR_QUADRATIC_BRIDGE_20261002.md) and
+[terminology](TERMINOLOGY_RPB108_OPERATOR_QUADRATIC_BRIDGE.md).
+
 The conditional operator-domain route now supplies finite logarithmic energy
 and the carrier's canonical form-domain attachment without a separate energy
 premise. It retains spectral-product L2 membership and a strictly positive
