@@ -9,6 +9,13 @@
 
 ## Current standing
 
+Independent actual Gamma differentiation, recurrence and log-convexity now
+give log(x-1)≤Re ψ(x)≤log x for x>1. The shifted source symbol's zero-
+frequency value has the exact corresponding bracket. Nonzero-frequency
+remainder control and tail vanishing remain open.
+See [real-digamma checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_REAL_BOUNDS_20261001.md)
+and [terminology](TERMINOLOGY_RPB108_DIGAMMA_REAL_BOUNDS.md).
+
 The exterior finite convolution now converges in genuine pairings on
 Schwartz tests vanishing on (-a,a), with explicit geometric error times
 actual test L1 norm. The actual shifted-tail pairing converges to the
@@ -32,7 +39,7 @@ A uniform tail estimate and support-separated weak/operator limit remain open.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `c22d1b4a18d8918c617153f1a3296ab73cfd2aee`.
+This pass continues from `b2be21a14300825e897a5242665192480d85887a`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -182,8 +189,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    geometric exterior error and its pointwise limit is constructed. The
    finite physical pairing limit on support-separated Schwartz tests is now
    constructed. The shifted-tail pairing converges to the exact source-
-   attachment defect. Independent digamma control proving its vanishing
-   is next.
+   attachment defect. Independent real-axis digamma bounds now control
+   the actual shifted zero-frequency value. Scalar action separation and
+   centered nonzero-frequency digamma control proving tail vanishing are next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~

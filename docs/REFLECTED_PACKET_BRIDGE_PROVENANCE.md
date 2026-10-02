@@ -400,3 +400,30 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 independent actual real-axis digamma bounds, October 1, 2026
+
+Recovered research head: `b2be21a14300825e897a5242665192480d85887a`.
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,970 build jobs passed. All five audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `1d21396b8414c7524be3fa72cc80b7024136b455`,
+run `36972763212`, job `110730043467`, source blob
+`82d0918374ac39fb1e1799a5ebf67e27e46ab87f`.
+
+Actual complex Gamma differentiation restricted to the real axis identifies
+the derivative of positive-real log Gamma with Re ψ(x). Actual recurrence
+gives the unit secant slope log x; log-convexity gives Re ψ(x)≤log x for
+x>0 and log(x-1)≤Re ψ(x) for x>1. The actual shifted source symbol at
+zero frequency has its exact log(N-3/4)-log π / log(N+1/4)-log π bracket.
+No retained source estimate or Gauss representation premise is used.
+
+Scalar action separation and centered nonzero-frequency control remain
+open, as do tail vanishing, exterior/whole source attachment, central/
+boundary reconstruction and actual source-domain/quadratic/polarization/
+normalized estimate witnesses.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.
