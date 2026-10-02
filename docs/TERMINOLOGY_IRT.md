@@ -185,3 +185,52 @@ with a self-adjoint relation that is locally of type \(\pi_+\).
 The route is useful only if it yields the actual mixed-divisor weighted
 functional with packetwise conditioning. Local realizability by itself is not
 canonical progress.
+
+
+## Holomorphic slack
+
+**Holomorphic slack** is the unconstrained locally holomorphic summand
+\(\tau_{(0)}\) in a local generalized-Nevanlinna decomposition
+
+\[
+\tau=\tau_0+\tau_{(0)}.
+\]
+
+On a bounded packet window for a logarithmic derivative, the rational/generalized-
+Nevanlinna part can be chosen to carry the finitely many local principal parts,
+while the pole-removed outside field is absorbed into \(\tau_{(0)}\).
+
+Holomorphic slack can move or create zeros without changing the captured pole
+principal parts. Therefore local generalized-Nevanlinna membership alone does
+not couple the zero and pole divisors strongly enough for IRT.
+
+## Local realization universality
+
+**Local realization universality** is the fact that on bounded windows, a
+real-symmetric meromorphic function with locally finite poles can be decomposed
+as
+
+\[
+\text{real-symmetric rational principal-part carrier}
++
+\text{holomorphic remainder},
+\]
+
+and every real-symmetric rational function belongs to some generalized
+Nevanlinna class \(N_\kappa\).
+
+Consequently membership in the local class \(N(\Omega)\), and the existence of
+a corresponding local Weyl/Krein realization, may be representational rather
+than restrictive.
+
+IRT must not count such a universal realization as divisor-control progress.
+
+## Rigid realization subclass
+
+A **rigid realization subclass** is a realization class that constrains the
+holomorphic slack by additional global or local structure: for example a fixed
+Nevanlinna index with normalization, a canonical-system/de Branges law, a
+definitizing function of controlled complexity, a phase/interlacing rule, or
+another condition that quantitatively couples zeros and poles.
+
+Only such additional rigidity can qualify as a candidate mixed-divisor input.
