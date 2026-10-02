@@ -1,0 +1,306 @@
+# Inverse Realization Transfer
+
+**Branch:** `research/inverse-realization-transfer`  
+**Launch date:** 2026-10-02  
+**Parent:** `research/nextjet-derivative-geometry`  
+**Standing:** EXPERIMENTAL / NEGATIVE-BRANCH INVESTIGATION / NO CANONICAL PROMOTION.
+
+See [IRT terminology](TERMINOLOGY_IRT.md) before using the terms below.
+
+## 1. Why this branch exists
+
+NJDG terminated at
+
+[
+oxed{
+	exttt{TSTOP-NJDG-PENDING-NEW-MIXED-DIVISOR-WEIGHTED-INPUT}
+}
+]
+
+after showing that the known finite derivative-critical routes do not exactly
+reconstruct the frozen mode-weighted RENJET kernel.
+
+The stop does not prove that derivative-divisor information is useless. It
+shows that the attempted transfers remained inside one insufficient data class:
+
+- local values of a logarithmic derivative;
+- finitely many derivatives/jets;
+- finite rational-resolvent combinations;
+- separate explicit formulas for the original and derivative divisors.
+
+IRT asks a different question:
+
+[
+oxed{
+	ext{Can both divisor species be realized as constrained data of one
+ambient analytic/operator object?}
+}
+]
+
+If yes, the missing transfer might come from realization rigidity rather than
+another local zeta identity.
+
+## 2. Exact inherited obstruction
+
+Set
+
+[
+U(z)=rac{Xi'(z)}{Xi(z)}.
+]
+
+The zeros of (Xi) are poles of (U), while ordinary zeros of (Xi') are
+zeros of (U).
+
+The weighted contour on (U) naturally sees the original divisor and produces
+the exponential/mode-weighted kernel class used by RENJET. Switching to
+(Xi''/Xi') exposes derivative zeros as poles only by changing divisor.
+
+NJDG-6 further shows that any finite family of derivative-critical value and
+curvature rows generates a finite rational-resolvent kernel, while the frozen
+two-mode RENJET kernel is nonconstant entire/exponential type.
+
+Thus IRT inherits two hard requirements:
+
+1. couple the two divisor species without silently replacing one by the other;
+2. escape the finite-rational realization class exactly, not approximately.
+
+## 3. Candidate foreign architectures
+
+The first screen is deliberately outside ordinary zeta-zero technique.
+
+### IRT-A — Weyl/Herglotz inverse spectral architecture
+
+Audit Weyl (m)-functions, Herglotz/Nevanlinna representations, two-spectra
+theorems, rank-one perturbations, and spectral-measure reconstruction.
+
+Question:
+
+> Under what hypotheses can poles and zeros of one meromorphic transfer
+> function be interpreted as two coupled spectra, and which weighted spectral
+> functionals become recoverable?
+
+Load-bearing features to isolate:
+
+- positivity or sign of the imaginary part;
+- real-axis pole/zero geometry;
+- interlacing;
+- normalization at infinity;
+- complete versus local spectral data;
+- residue positivity;
+- uniqueness/reconstruction theorem.
+
+### IRT-B — generalized Nevanlinna / Pontryagin architecture
+
+Audit generalized Nevanlinna classes (N_kappa), negative squares, Pontryagin
+space realizations, definitizable operators, and finite-negative-index
+spectral reconstruction.
+
+Question:
+
+> Can finite failure of positivity replace ordinary Herglotz positivity in a
+> way compatible with a false-RH reductio and still couple zero/pole data?
+
+The branch must not assume that a zeta-derived carrier has finite negative
+index. Class membership itself is a theorem obligation.
+
+### IRT-C — canonical-system / de Branges architecture
+
+Audit canonical systems, Hermite-Biehler functions, de Branges spaces, and
+their Weyl functions.
+
+Question:
+
+> Is there a realization in which the relevant entire/logarithmic-derivative
+> data arise from one canonical system, so zeros/poles or phase derivatives
+> inherit a spectral law strong enough for the weighted packet functional?
+
+Any RH-equivalent positivity condition must be identified explicitly and may
+not be used inside a false-RH argument.
+
+### IRT-D — rank-one perturbation / Clark-measure architecture
+
+Audit theorems where Möbius transforms of one Herglotz/inner object generate
+different spectral measures or interlacing point sets.
+
+Question:
+
+> Can the two divisor species be interpreted as spectra of related rank-one
+> perturbations, with a transfer identity for weighted observables?
+
+This track is particularly relevant if a single transfer function can be
+normalized into an admissible Schur/Herglotz object.
+
+### IRT-E — systems realization / Loewner architecture
+
+Audit rational interpolation, Loewner realization, descriptor systems,
+infinite-dimensional transfer functions, and delay/exponential systems.
+
+Question:
+
+> Can NJDG-6 be reformulated as a minimal-realization obstruction, and what
+> exact infinite/growing realization would be required to recover the RENJET
+> exponential kernel?
+
+Finite-order approximation or Padé accuracy is not enough. The target is an
+exact transfer or a theorem with an error term strong enough for the canonical
+packet contradiction.
+
+### IRT-F — moment / Prony / super-resolution architecture
+
+Audit finite-rate-of-innovation reconstruction, exponential sums, moment
+problems, collision conditioning, confluent Prony systems, and sparse measure
+recovery.
+
+Question:
+
+> Which assumptions permit stable recovery of an exponential population from
+> finitely/growingly many rational or moment observations, especially through
+> collisions?
+
+This track is useful primarily for conditioning and information-count
+obstructions. Sparsity/separation assumptions must be compared against the
+actual selected/complement packet geometry rather than silently imported.
+
+## 4. Primary target
+
+IRT does not seek a generic analogy. Its first target is to locate an abstract
+theorem schema of the form
+
+[
+oxed{
+egin{array}{c}
+	ext{one realized transfer/Weyl object}\
++ 	ext{zero/pole divisor data}\
++ 	ext{realization rigidity}
+end{array}
+Longrightarrow
+	ext{controlled weighted functional of the pole divisor}
+}
+]
+
+where the controlling data can be supplied by the derivative divisor or by a
+second spectrum naturally coupled to it.
+
+The weighted output must be comparable to the frozen RENJET complement wedge or
+to (	exttt{C-ACTUAL-KPH-FLOOR}).
+
+## 5. First theorem-shape tests
+
+Every candidate architecture should be reduced to the following questions.
+
+### T1 — common-carrier test
+
+Are both point sets genuinely spectral/divisor data of one realized object, or
+are two unrelated formulas merely being compared?
+
+### T2 — exact-kernel test
+
+Does the theorem recover the exponential/mode-weighted kernel exactly, or only
+a finite rational approximation?
+
+### T3 — quantifier test
+
+Is the result packetwise/every-configuration, or only averaged/almost-everywhere?
+
+### T4 — conditioning test
+
+Does the transfer carry an inverse-spacing, inverse-residue, or small-singular
+value loss? If yes, is that loss projectively controlled?
+
+### T5 — false-RH compatibility test
+
+Does the theorem assume positivity, real zeros, self-adjointness, or an
+equivalent RH-strength property that is unavailable inside the reductio?
+
+### T6 — locality/data-volume test
+
+Does the theorem require complete infinite spectral data? If so, can the
+canonical setup lawfully supply it, or does the supposed bridge simply import
+more information than NEXTJET has?
+
+## 6. Failure classes
+
+The following outcomes do not count as canonical progress:
+
+- another finite jet identity;
+- another rational interpolation of the frozen entire kernel;
+- a two-spectra theorem whose hypotheses already force real zeros;
+- an operator realization obtained only under RH;
+- average spectral reconstruction promoted to every packet;
+- approximation without an error theorem at the required projective scale;
+- a theorem relating two auxiliary spectra without identifying them with the
+  actual (Xi) and (Xi') divisor species;
+- class membership asserted by analogy.
+
+## 7. Promotion ladder
+
+### IRT-0 — architecture screen
+
+Locate and classify foreign theorem families by their exact hypotheses and
+outputs.
+
+### IRT-1 — abstract transfer candidate
+
+Select at least one theorem architecture whose output type can represent the
+frozen RENJET weighted functional.
+
+### IRT-2 — zeta-carrier compatibility
+
+Construct a precise transform of the actual zeta-derived carrier and test all
+class-membership/normalization hypotheses.
+
+### IRT-3 — mixed-divisor transfer
+
+Prove or import a theorem that couples the actual divisor species and produces
+the required weighted response with lawful quantifiers and conditioning.
+
+### IRT-4 — canonical re-entry
+
+Map the result explicitly into (	exttt{AZ-NEXTJET-LOC}) or
+(	exttt{C-ACTUAL-KPH-FLOOR}).
+
+No stage is skipped.
+
+## 8. Initial cursor
+
+[
+oxed{
+	exttt{IRT-0 / FOREIGN REALIZATION ARCHITECTURE SCREEN}
+}
+]
+
+First priority order:
+
+1. Weyl/Herglotz two-spectra and rank-one perturbation;
+2. generalized Nevanlinna/Pontryagin realization;
+3. canonical systems/de Branges;
+4. infinite-dimensional systems realization;
+5. Prony/moment conditioning.
+
+The purpose of IRT-0 is not to prove RH-facing content. It is to determine
+whether the missing theorem type already has a mature abstract analogue and,
+if so, exactly which hypothesis supplies the coupling that NJDG lacked.
+
+## 9. Canonical status guard
+
+This branch preserves the NJDG stop. It does not reopen NJDG by renaming it.
+
+[
+oxed{
+	exttt{AZ-NEXTJET-LOC: OPEN}
+}
+]
+
+[
+oxed{
+	exttt{C-ACTUAL-KPH-FLOOR: OPEN}
+}
+]
+
+[
+oxed{
+	exttt{NJDG: TSTOP RETAINED}
+}
+]
+
+No RH claim is made.
