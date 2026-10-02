@@ -27,21 +27,24 @@ theorem neutralFiniteGaussKernelComplex_eq_sum (N : ℕ) (x : ℝ) :
 
 theorem neutralFiniteGaussKernelComplex_integrable (N : ℕ) :
     Integrable (neutralFiniteGaussKernelComplex N) volume := by
-  simp_rw [neutralFiniteGaussKernelComplex_eq_sum]
+  have heq : neutralFiniteGaussKernelComplex N =
+      fun x => ∑ n ∈ Finset.range N, neutralLaplaceKernel (2*(n : ℝ)+1/2) x :=
+    funext (neutralFiniteGaussKernelComplex_eq_sum N)
+  rw [heq]
   exact integrable_finsetSum _ (fun n _ => neutralLaplaceKernel_integrable (by positivity))
 
 /-- Finite interchange is justified by genuine integrability of every term. -/
 theorem neutralFiniteGaussKernelComplex_fourier (N : ℕ) (ξ : ℝ) :
     𝓕 (neutralFiniteGaussKernelComplex N) ξ =
       (∑ n ∈ Finset.range N, neutralGaussReciprocal n (2*Real.pi*ξ) : ℝ) := by
-  rw [Real.fourier_real_eq_integral_exp_smul]
+  rw [Real.fourier_eq]
   simp_rw [neutralFiniteGaussKernelComplex_eq_sum, Finset.smul_sum]
   rw [integral_finsetSum (Finset.range N)]
-  · simp_rw [← Real.fourier_real_eq_integral_exp_smul, neutralGaussReciprocal_fourier]
+  · simp_rw [← Real.fourier_eq, neutralGaussReciprocal_fourier]
     simp only [Complex.ofReal_sum]
   · intro n hn
     exact (Real.fourierIntegral_convergent_iff ξ).mpr
-      (neutralLaplaceKernel_integrable (by positivity))
+      (neutralLaplaceKernel_integrable (b := 2*(n : ℝ)+1/2) (by positivity))
 
 variable {c : ℝ} {EndpointObs RightObs : Type*}
   [NormedAddCommGroup EndpointObs] [NormedSpace ℂ EndpointObs]
@@ -75,7 +78,7 @@ theorem neutralFiniteGaussConvolution_pairing_integrable
   apply (hq.norm.const_mul (SchwartzMap.seminorm ℝ 0 0 u)).mono'
     (u.continuous.aestronglyMeasurable.mul hq.aestronglyMeasurable)
   filter_upwards with x
-  rw [norm_mul]
+  simp only [Pi.mul_apply, norm_mul]
   exact mul_le_mul_of_nonneg_right (SchwartzMap.norm_le_seminorm ℝ u x) (norm_nonneg _)
 
 /-- Weak transfer on every Schwartz test, with the inverse-test sign fixed
@@ -87,7 +90,7 @@ theorem neutralFiniteGaussConvolution_weak_fourier
       ∫ ξ, 𝓕⁻ u ξ * (𝓕 carrier.h ξ *
         (∑ n ∈ Finset.range N, neutralGaussReciprocal n (2*Real.pi*ξ) : ℝ)) := by
   have h := VectorFourier.integral_bilin_fourierIntegral_eq_flip
-    (ContinuousLinearMap.mul ℂ ℂ) (L := innerₗ ℝ)
+    (ContinuousLinearMap.mul ℂ ℂ) (L := innerₗ ℝ) (μ := volume) (ν := volume)
     Real.continuous_fourierChar continuous_inner (𝓕⁻ u).integrable
     (neutralFiniteGaussConvolution_integrable carrier N)
   have hu : 𝓕 (fun x : ℝ => 𝓕⁻ u x) = (u : ℝ → ℂ) := by
