@@ -100,7 +100,6 @@ theorem neutralDigamma_real_euler_term_bound {x : ℝ} (hx : 0 < x) (n : ℕ) :
     _ = (|x-1| / min x 1) * (1 / ((n : ℝ)+1)^2) := by
       dsimp [d]
       field_simp [ne_of_gt (lt_min hx zero_lt_one), ne_of_gt hs]
-      ring
 
 theorem neutralDigamma_real_euler_summable {x : ℝ} (hx : 0 < x) :
     Summable (fun n : ℕ => 1 / ((n : ℝ)+1) - 1 / (x+(n : ℝ))) := by
