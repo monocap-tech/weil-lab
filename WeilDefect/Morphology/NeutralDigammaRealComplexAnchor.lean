@@ -10,7 +10,7 @@ open scoped BigOperators
 
 /-- Uniqueness after restricting actual complex Gamma to the real axis. -/
 theorem neutralGamma_deriv_ofReal {x : ℝ} (hx : 0 < x) :
-    deriv Complex.Gamma (x : ℂ) = (deriv Real.Gamma x : ℂ) := by
+    deriv Complex.Gamma (x : ℂ) = ((deriv Real.Gamma x : ℝ) : ℂ) := by
   have hc := (Complex.differentiableAt_Gamma (x : ℂ)
     (neutralPositiveReal_ne_neg_nat hx)).hasDerivAt.comp_ofReal
   have hr := (Real.differentiableAt_Gamma (s := x) (fun n => by
