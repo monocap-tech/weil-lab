@@ -79,9 +79,10 @@ theorem neutralFiniteGaussConvolution_exterior_error
         carrier.h y * archimedeanGapKernelComplex (a-c) (x-y)‖ :=
           norm_integral_le_integral_norm _
     _ ≤ ∫ y in Set.Icc (-c) c, B * ‖carrier.h y‖ := by
-      refine setIntegral_mono_ae_restrict (hf.add hg).norm
-        ((neutralPhysicalRepresentative_integrableOn carrier).norm.const_mul B) ?_
-      filter_upwards [] with y hy
+      refine setIntegral_mono_on (hf.add hg).norm
+        ((neutralPhysicalRepresentative_integrableOn carrier).norm.const_mul B)
+        measurableSet_Icc ?_
+      intro y hy
       rw [← mul_add, norm_mul]
       calc
         _ ≤ ‖carrier.h y‖ * B := mul_le_mul_of_nonneg_left
@@ -102,7 +103,11 @@ theorem neutralFiniteGaussConvolution_exterior_tendsto
     apply Real.exp_lt_exp.mpr
     linarith
   have hp := tendsto_pow_atTop_nhds_zero_of_lt_one (Real.exp_nonneg (-2*(a-c))) hr
-  have hb := (tendsto_const_nhds.mul hp).mul_const (neutralPhysicalCompactL1Mass carrier)
+  have hb : Tendsto (fun N : ℕ =>
+      ((1 / (1 - Real.exp (-2*(a-c)))) * (Real.exp (-2*(a-c)))^N) *
+        neutralPhysicalCompactL1Mass carrier) atTop (𝓝 0) := by
+    simpa using (tendsto_const_nhds.mul hp).mul_const
+      (neutralPhysicalCompactL1Mass carrier)
   have hn : Tendsto (fun N : ℕ => ‖neutralFiniteGaussConvolution carrier N x +
       neutralArchimedeanGapFunction carrier (a-c) x‖) atTop (𝓝 0) := by
     apply squeeze_zero (fun N => norm_nonneg _) (fun N =>
