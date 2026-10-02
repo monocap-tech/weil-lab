@@ -611,3 +611,110 @@ sign information already controls those pole contributions.
 Deforming the contour to a region where the logarithmic derivative is easier
 to estimate crosses other zeros and adds their residues. This reproduces the
 original selected-versus-complement accounting rather than bypassing it.
+
+
+## Reciprocal Prony sequence
+
+For a fixed exponential selector \(\psi\), the SOURCE-II higher-resolvent
+near statistic
+
+\[
+S_r^\Omega(\psi)
+=
+\sum_{\mu\in\Omega}
+m_\mu\frac{\psi(\mu)}{(\mu-c)^{r+1}}
+\]
+
+is a **reciprocal Prony sequence**. With
+
+\[
+y_\mu=(\mu-c)^{-1},
+\qquad
+a_\mu=m_\mu\psi(\mu)(\mu-c)^{-1},
+\]
+
+one has
+
+\[
+S_r^\Omega(\psi)=\sum_{\mu\in\Omega}a_\mu y_\mu^r.
+\]
+
+Thus, if the \(S_r^\Omega\) were independently known through sufficiently many
+orders, classical Prony/annihilating-filter machinery would apply.
+
+## Prony observability debt
+
+The **Prony observability debt** is the fact that SOURCE-II does not expose
+\(S_r^\Omega\) as an independent data stream.
+
+The canonical higher jet has the joint finite-part form
+
+\[
+\mathfrak J_r
+=
+S_r(x,v)\psi^{(r+1)}(c)
++
+\frac{M_r}{r!}(\psi B_F)^{(r)}(c)
++
+M_r S_r^\Omega(\psi).
+\]
+
+The \(B_F\) term contains the same unselected divisor whose explicit
+higher-resolvent contribution appears in \(S_r^\Omega\); the two pieces form a
+collision-safe finite part.
+
+Recovering the Prony sequence by subtraction therefore requires independent
+knowledge of the pole-removed/complement field. That is the existing NEXTJET
+debt, not free measurement data.
+
+## Prony rank debt
+
+The **Prony rank debt** is the requirement that exact algebraic recovery of an
+\(n\)-node exponential sum needs a number of independent exact moments
+commensurate with \(n\) (classically \(2n\) scalar moments in the generic
+Prony system).
+
+SOURCE-II supplies arbitrary **fixed** finite jet order for any preassigned
+projective accuracy. It does not supply a uniform fixed bound on the number of
+unselected nodes in every admissible mesoscopic block, nor a growing-order
+theorem with constants uniform in the required reconstruction rank.
+
+## Confluent stability debt
+
+The **confluent stability debt** distinguishes collision-safe uniqueness from
+stable inversion.
+
+Confluent Prony systems can encode exact collisions/multiplicities, and
+separation-free noiseless reconstruction theorems exist for finite sparse
+models. But near-collisions make the inverse Prony/Vandermonde map badly
+conditioned. Quantitative super-resolution error bounds deteriorate with the
+cluster size and inverse separation.
+
+Since the SOURCE-II tower is an asymptotic finite-order normal form with a
+nonzero truncation/far-tail remainder, noiseless uniqueness alone is
+insufficient for a projective packet theorem.
+
+## Truncated-moment nullspace
+
+The **truncated-moment nullspace** is the algebraic nonuniqueness remaining
+when only finitely many moments of an unbounded-rank signed/complex atomic
+measure are known.
+
+If \(f\) is not in the finite span of the measured moment kernels, one can
+choose a finite signed atomic configuration annihilating all measured moments
+while retaining a nonzero \(f\)-functional.
+
+Therefore finite moment data cannot determine the entire RENJET kernel
+uniformly over packets of unbounded realization rank without additional
+sparsity, positivity, separation, or structural constraints.
+
+## Positive-measure mismatch
+
+The **positive-measure mismatch** records that some separation-free
+super-resolution theorems exploit positivity of a measure on a real compact
+domain.
+
+After the reciprocal transformation relevant to the false-RH divisor, the
+nodes may be complex and the effective amplitudes
+\(m_\mu\psi(\mu)(\mu-c)^{-1}\) are generally complex. Those positivity-based
+convex recovery theorems therefore do not transfer directly.
