@@ -30,10 +30,12 @@ theorem neutralDigamma_real_shift_sub_log_tendsto {x : ℝ} (hx : 0 < x) :
     have hn : (2 : ℝ) ≤ N := by exact_mod_cast hN
     have h := neutralDigamma_log_sub_one_le (x := (N : ℝ)+x) (by linarith)
     have he : (N : ℝ)+(x-1) = (N : ℝ)+x-1 := by ring
+    change Real.log ((N : ℝ)+(x-1)) - Real.log (N : ℝ) ≤ _
     rw [he]
     linarith
   · filter_upwards with N
     have h := neutralDigamma_real_le_log (x := (N : ℝ)+x) (by positivity)
+    change _ ≤ Real.log ((N : ℝ)+x) - Real.log (N : ℝ)
     linarith
 
 theorem neutralDigamma_real_finite_recurrence {x : ℝ} (hx : 0 < x) (N : ℕ) :
@@ -114,7 +116,7 @@ argument. No complex source-line cancellation is claimed here. -/
 theorem neutralDigamma_real_euler_hasSum {x : ℝ} (hx : 0 < x) :
     HasSum (fun n : ℕ => 1 / ((n : ℝ)+1) - 1 / (x+(n : ℝ)))
       ((Complex.digamma (x : ℂ)).re + Real.eulerMascheroniConstant) :=
-  (hasSum_iff_tendsto_nat (neutralDigamma_real_euler_summable hx)).mpr
+  ((neutralDigamma_real_euler_summable hx).hasSum_iff_tendsto_nat).mpr
     (neutralDigamma_real_euler_partial_tendsto hx)
 
 theorem neutralDigamma_real_eq_euler_series {x : ℝ} (hx : 0 < x) :
