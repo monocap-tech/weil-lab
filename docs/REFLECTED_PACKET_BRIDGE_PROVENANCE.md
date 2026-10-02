@@ -828,3 +828,30 @@ Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca
 Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged.
+
+## 2026-10-02 — RPB-108 canonical supported logarithmic form domain
+
+Continues from `e12e1a1c2499f20829148cd1115cfa9b551e7241`.
+
+`NeutralCanonicalFormDomain` constructs the full complex submodule of
+physical L2 vectors supported almost everywhere in [-a,a] whose normalized
+Fourier transforms have finite logarithmic energy. Weight continuity,
+a.e. L2 representative laws and a square-norm domination prove genuine
+addition and complex-scaling closure. Every lawful existing source-domain
+attachment is contained in this concrete domain. A constructor attaches
+the actual physical carrier to it from one explicit finite-log-energy
+witness, deriving the enlarged support condition from the carrier itself.
+
+Actual finite logarithmic energy of the carrier remains open. The constructor
+does not identify the imported source form or prove its quadratic identity.
+Source quadratic/polarization/normalized estimate attachment, actual spectral
+operator-domain membership, central cancellation and whole-source realization
+remain open. The canonical form domain is not the stronger operator domain;
+no form-to-operator-domain upgrade is claimed. Threshold bookkeeping is closed;
+logarithmic coercivity has not started.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,985 build jobs passed. All six endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `c35677bfc7b61f08e9adc56fff688005c145a835`, run `37075421157`, job `111064120041`, source blob `2bf19165fce3a0cfa6e4d782d68caab268aaf82b`.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged.

@@ -9,6 +9,18 @@
 
 ## Current standing
 
+The full supported logarithmic form domain is now a concrete complex L2
+submodule, with genuine addition/scaling closure and an exact membership
+criterion. Every lawful source-domain attachment lies inside it. Its carrier
+attachment constructor derives support from the actual carrier and retains
+one finite-logarithmic-energy witness. That actual witness and the imported
+source quadratic identity remain open. This form domain remains distinct
+from the stronger spectral operator domain. Central cancellation and actual
+whole-source realization remain open; threshold bookkeeping is closed and
+logarithmic coercivity has not started.
+See [canonical-domain checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_CANONICAL_FORM_DOMAIN_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_CANONICAL_FORM_DOMAIN.md).
+
 A concrete spectral operator-domain criterion now constructs source regularity:
 if the exact symbol times the carrier's L2 Fourier transform is L2, its inverse
 Fourier transform represents the actual whole-line multiplier core. Adding
