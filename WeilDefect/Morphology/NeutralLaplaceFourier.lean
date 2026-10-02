@@ -7,16 +7,17 @@ noncomputable section
 open MeasureTheory
 open scoped FourierTransform
 
-def neutralLaplaceKernel (b x : ℝ) : ℂ := (Real.exp (-b * |x|) : ℂ)
+def neutralLaplaceKernel (b x : ℝ) : ℂ := Complex.ofReal (Real.exp (-b * |x|))
 
 def neutralLaplaceOscillation (b t x : ℝ) : ℂ :=
-  Complex.exp (-(b : ℂ) * (|x| : ℂ) - (t : ℂ) * (x : ℂ) * Complex.I)
+  Complex.exp (-(b : ℂ) * ((|x| : ℝ) : ℂ) - (t : ℂ) * (x : ℂ) * Complex.I)
 
 theorem neutralLaplaceKernel_integrable {b : ℝ} (hb : 0 < b) :
     Integrable (neutralLaplaceKernel b) volume := by
   apply (integrable_norm_iff (by
-    exact (by fun_prop : Continuous (neutralLaplaceKernel b)).aestronglyMeasurable)).mp
-  simpa [neutralLaplaceKernel, Complex.norm_real, Real.norm_eq_abs,
+    exact (by unfold neutralLaplaceKernel; fun_prop :
+      Continuous (neutralLaplaceKernel b)).aestronglyMeasurable)).mp
+  simpa only [neutralLaplaceKernel, Complex.norm_real, Real.norm_eq_abs,
     abs_of_pos (Real.exp_pos _)] using integrable_exp_neg_rate_abs hb
 
 theorem neutralLaplaceOscillation_left (b t x : ℝ) (hx : x ≤ 0) :
@@ -59,14 +60,14 @@ theorem neutralLaplaceOscillation_integral {b : ℝ} (hb : 0 < b) (t : ℝ) :
     rw [Set.Iic_union_Ioi] at h
     exact integrableOn_univ.mp h
   refine ⟨hi, ?_⟩
-  rw [← integral_add_compl measurableSet_Iic hi, Set.compl_Iic]
+  rw [← integral_add_compl (s := Set.Iic (0 : ℝ)) measurableSet_Iic hi, Set.compl_Iic]
   have hleft : (∫ x in Set.Iic 0, neutralLaplaceOscillation b t x) =
-      ∫ x in Set.Iic 0, Complex.exp (((b : ℂ) - (t : ℂ) * Complex.I) * (x : ℂ)) := by
+      ∫ x : ℝ in Set.Iic 0, Complex.exp (((b : ℂ) - (t : ℂ) * Complex.I) * (x : ℂ)) := by
     apply setIntegral_congr_fun measurableSet_Iic
     intro x hx
     exact (neutralLaplaceOscillation_left b t x (Set.mem_Iic.mp hx)).symm
   have hright : (∫ x in Set.Ioi 0, neutralLaplaceOscillation b t x) =
-      ∫ x in Set.Ioi 0, Complex.exp ((-(b : ℂ) - (t : ℂ) * Complex.I) * (x : ℂ)) := by
+      ∫ x : ℝ in Set.Ioi 0, Complex.exp ((-(b : ℂ) - (t : ℂ) * Complex.I) * (x : ℂ)) := by
     apply setIntegral_congr_fun measurableSet_Ioi
     intro x hx
     exact (neutralLaplaceOscillation_right b t x (Set.mem_Ioi.mp hx)).symm
@@ -86,8 +87,8 @@ theorem neutralLaplaceKernel_fourier {b : ℝ} (hb : 0 < b) (ξ : ℝ) :
   have heq : (fun x : ℝ => Complex.exp ((-2 * Real.pi * x * ξ : ℝ) * Complex.I) •
       neutralLaplaceKernel b x) = neutralLaplaceOscillation b (2 * Real.pi * ξ) := by
     ext x
-    simp only [neutralLaplaceKernel, neutralLaplaceOscillation, smul_eq_mul,
-      ← Complex.ofReal_exp, ← Complex.exp_add]
+    simp only [neutralLaplaceKernel, neutralLaplaceOscillation, smul_eq_mul]
+    rw [Complex.ofReal_exp, ← Complex.exp_add]
     congr 1
     push_cast
     ring
@@ -99,7 +100,12 @@ theorem neutralLaplace_resolvent_eq {b : ℝ} (hb : 0 < b) (t : ℝ) :
       ((2*b / (b^2+t^2) : ℝ) : ℂ) := by
   have hd : b^2+t^2 ≠ 0 := ne_of_gt (by nlinarith [sq_nonneg t, sq_pos_of_pos hb])
   apply Complex.ext <;>
-    simp [Complex.inv_re, Complex.inv_im, Complex.normSq_apply, pow_two] <;>
+    simp only [Complex.add_re, Complex.add_im, Complex.inv_re, Complex.inv_im,
+      Complex.sub_re, Complex.sub_im, Complex.mul_re, Complex.mul_im,
+      Complex.ofReal_re, Complex.ofReal_im, Complex.I_re, Complex.I_im,
+      Complex.normSq_apply, Complex.ofReal_div, Complex.ofReal_mul,
+      Complex.ofReal_add, Complex.ofReal_pow, zero_mul, mul_zero, mul_one,
+      sub_zero, zero_sub, add_zero, zero_add, neg_neg, neg_sq] <;>
     field_simp <;> ring
 
 /-- The rational term in the finite digamma recurrence is exactly the
