@@ -905,3 +905,32 @@ See [IRT-1B checkpoint](../notes/IRT_1B_MIXED_DIVISOR_SOFT_CONE_FRAME_20261002.m
 \texttt{IRT-1C / MIXED-CAUCHY-ALIGNMENT SOURCE SCREEN}
 }
 \]
+
+
+## 34. IRT-1D determination — theorem-input stop
+
+Alternate-channel triage found no retained channel satisfying both independent
+soft-cone activation and a projectively invertible response law that vanishes
+with the KPH residual.
+
+Derivative-divisor observations remain the cleanest independently typed
+channel, but their weighted alignment theorem is source-stopped. The
+selected-only total-source wedge stays large on the dangerous sequence rather
+than vanishing. Selected-only phase data are blocked by CF-A17; full-\(\Xi\)
+phase returns to the complement field. The LOTUS same-event channel has a ray
+and jurisdiction mismatch. APR/native feature channels reduce to the known
+actual-zeta attachment gate. The zero-moment global null-response scalar
+vanishes identically and therefore cannot activate the soft cone.
+
+The remaining theorem species is a direct actual-zeta World-to-soft-cone
+orientation/separator law.
+
+See [IRT-1D checkpoint](../notes/IRT_1D_ALIGNMENT_NECESSITY_ALT_CHANNEL_TRIAGE_20261002.md).
+
+## 35. Current cursor
+
+\[
+\boxed{
+\texttt{TSTOP-IRT-PENDING-ACTUAL-ZETA-WORLD-SOFT-ORIENTATION-INPUT}
+}
+\]
