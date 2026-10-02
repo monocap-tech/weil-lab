@@ -21,7 +21,7 @@ theorem neutralArchimedeanGapFunction_pairing_integrable
     (u.continuous.aestronglyMeasurable.mul
       (neutralArchimedeanGapFunction_continuous carrier hδ).aestronglyMeasurable)
   filter_upwards with x
-  rw [norm_mul]
+  simp only [Pi.mul_apply, norm_mul]
   exact mul_le_mul_of_nonneg_left
     (neutralArchimedeanGapFunction_norm_bound carrier hδ x) (norm_nonneg _)
 
@@ -54,9 +54,9 @@ theorem neutralFiniteGaussConvolution_exterior_pairing_error
     _ ≤ ∫ x : ℝ, B * ‖u x‖ := by
       apply integral_mono_ae (hf.add hg).norm (u.integrable.norm.const_mul B)
       filter_upwards with x
+      simp only [Pi.add_apply]
       by_cases hx : x ∈ Set.Ioo (-a) a
-      · simp only [hu x hx, zero_mul, zero_add, norm_zero]
-        exact mul_nonneg hB (norm_nonneg _)
+      · simp [hu x hx]
       · rw [← mul_add, norm_mul]
         calc
           _ ≤ ‖u x‖ * B := mul_le_mul_of_nonneg_left
