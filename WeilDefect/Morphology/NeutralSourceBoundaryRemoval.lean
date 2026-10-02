@@ -7,7 +7,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory
-open scoped SchwartzMap
+open scoped SchwartzMap ContDiff
 
 /-- Compact complex Schwartz tests detect a locally integrable function on
 an open set, by the smooth compact-test fundamental lemma. -/
