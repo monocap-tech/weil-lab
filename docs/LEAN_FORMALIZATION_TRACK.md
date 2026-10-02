@@ -1,5 +1,34 @@
 # Lean Formalization Track
 
+## RPB-108 — independent holomorphic complex Euler candidate
+
+Continues from `b500cb88d2fbc22b25bc9cd22cb8d24d25775cc4`.
+`NeutralDigammaEulerHolomorphic` defines the regularized rational terms and
+Euler candidate independently of actual digamma. For 0<a≤1 and a≤Re z,
+the term norm is at most (‖z-1‖/a)/(n+1)^2. This proves absolute
+summability at every point of the right half-plane and supplies uniform
+summable bounds on bounded open regions separated from its boundary.
+The complex sum theorem gives holomorphy on each region; localization
+therefore proves candidate holomorphy throughout the right half-plane.
+
+Actual digamma identification via the full positive-real anchor and a
+complex identity theorem remains next. Actual source-line residual
+cancellation remains open. Existing pairing transfer retains full-symbol
+growth; exterior/whole source attachment, central/boundary reconstruction
+and actual source-domain/quadratic/polarization/normalized estimates remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_EULER_HOLOMORPHIC_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,977 build jobs passed. All five endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `c2659d1fba74be355f672b65dcaebc8a12f43aa4`, run `37064676684`, job `111029397055`, source blob `e3ae2c1ecd5d0bca73ba5b2eb9fa1d328c0a69e1`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+INDEPENDENT RIGHT-HALF-PLANE EULER CANDIDATE HOLOMORPHY: CONSTRUCTED
+NEXT: ACTUAL DIGAMMA HOLOMORPHY + IDENTITY THEOREM
+      → ACTUAL RESIDUAL CANCELLATION → EXTERIOR / WHOLE SOURCE ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — full complex actual digamma positive-real anchor
 
 Continues from `bb800b705de708043a33b3d880cb8afc8edaa71a`.

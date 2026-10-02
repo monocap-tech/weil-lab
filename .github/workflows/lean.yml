@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralDigammaEulerHolomorphic.lean
+          git hash-object WeilDefect/Morphology/NeutralDigammaEulerIdentity.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralDigammaEulerHolomorphic
+          lake build WeilDefect.Morphology.NeutralDigammaEulerIdentity
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,16 +72,17 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-digamma-euler-holomorphic-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralDigammaEulerHolomorphic
-          #print axioms WeilDefect.neutralDigamma_euler_term_bound
-          #print axioms WeilDefect.neutralDigamma_euler_majorant_summable
-          #print axioms WeilDefect.neutralDigamma_euler_summable
-          #print axioms WeilDefect.neutralDigamma_euler_tsum_differentiableOn
-          #print axioms WeilDefect.neutralDigamma_eulerSeries_differentiableOn
+          cat > /tmp/rpb108-digamma-euler-identity-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralDigammaEulerIdentity
+          #print axioms WeilDefect.neutralRightHalf_ne_neg_nat
+          #print axioms WeilDefect.neutralDigamma_rightHalf_differentiableOn
+          #print axioms WeilDefect.neutralDigamma_eulerSeries_ofReal
+          #print axioms WeilDefect.neutralDigamma_euler_equality_accumulation
+          #print axioms WeilDefect.neutralDigamma_eq_eulerSeries
+          #print axioms WeilDefect.neutralDigamma_rightHalf_euler_hasSum
           LEAN
-          lake env lean /tmp/rpb108-digamma-euler-holomorphic-audit.lean | tee /tmp/rpb108-digamma-euler-holomorphic-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-digamma-euler-holomorphic-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-digamma-euler-identity-audit.lean | tee /tmp/rpb108-digamma-euler-identity-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-digamma-euler-identity-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
