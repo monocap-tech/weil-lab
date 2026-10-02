@@ -818,3 +818,90 @@ See [IRT-1A checkpoint](../notes/IRT_1A_OBSERVABLE_ORIENTATION_DESIGN_20261002.m
 \texttt{IRT-1B / MIXED-DIVISOR SOFT-CONE FRAME DESIGN}
 }
 \]
+
+
+## 30. IRT-1B determination — mixed-divisor soft-cone frame
+
+The derivative-divisor channel admits a canonical finite-dimensional
+observation matrix
+
+\[
+D_{\Tau,F}
+=
+\left(
+\frac1{\tau_\ell-\rho_j}
+\right)_{\ell,j},
+\qquad
+(D_{\Tau,F}v)_\ell=R_v(\tau_\ell).
+\]
+
+On the dangerous zero-moment sector
+\({\bf1}^Tv=0\), the rational numerator of \(R_v\) has degree at most
+\(n-2\). Hence \(n-1\) distinct legal sampling points give exact injectivity.
+
+The augmented frame has explicit Cauchy--Vandermonde determinant
+
+\[
+\det
+\begin{pmatrix}
+{\bf1}^T\\
+D_{\Tau,F}
+\end{pmatrix}
+=
+\pm
+\frac{
+\prod_{j<k}(\rho_k-\rho_j)
+\prod_{\ell<r}(\tau_r-\tau_\ell)
+}{
+\prod_{\ell,j}(\tau_\ell-\rho_j)
+}.
+\]
+
+Thus derivative-frame activation reduces to a quantitative theorem on the
+geometry of the \(\Xi'\)-sampling points.
+
+However ordinary derivative criticality gives only
+
+\[
+D_{\tau,F}{\bf1}
+=
+-\frac{G_F'}{G_F}(\tau),
+\]
+
+not \(D_{\tau,F}v\). Since the CF-A17 channel has
+\({\bf1}^Tv=0\), the derivative critical equation is typed to the wrong
+coefficient direction.
+
+A mixed factor-through theorem
+
+\[
+D_{\Tau,F}
+=
+M_FA_F^{\rm KPH}+E_F
+\]
+
+with projectively bounded \(M_F\), subordinate \(E_F\), and a conditioned
+derivative frame would imply the KPH floor directly. Indeed
+
+\[
+\|D_{\Tau,F}(A_F^{\rm KPH})^{-1}\|
+\ge
+\frac{\|D_{\Tau,F}v_{\min}\|}{KPH(F)}.
+\]
+
+Therefore the new content must be an actual-zeta mixed-divisor alignment law,
+not generic Cauchy algebra.
+
+The resulting minimal source signature is
+\(\texttt{AZ-MIXED-CAUCHY-ALIGN}\): a projectively conditioned derivative
+Cauchy frame plus a weighted alignment inequality on the KPH soft cone.
+
+See [IRT-1B checkpoint](../notes/IRT_1B_MIXED_DIVISOR_SOFT_CONE_FRAME_20261002.md).
+
+## 31. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-1C / MIXED-CAUCHY-ALIGNMENT SOURCE SCREEN}
+}
+\]
