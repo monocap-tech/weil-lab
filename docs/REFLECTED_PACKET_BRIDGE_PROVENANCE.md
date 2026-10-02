@@ -455,3 +455,32 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+
+## 2026-10-02 — RPB-108 actual centered digamma cubic step decay
+
+Continues from research head `1ce945e7da95f500184643b674474ea4f940f63f`.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,972 build jobs passed. All five audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `5ceb3f1b15f99e10c176fec47d47b61469ff19e4`,
+run `37019259247`, job `110877798396`, source blob
+`ebdc030a45724aa77a9e96a9f4f847744824bded`.
+
+The exact reciprocal deficit and actual finite digamma recurrence give
+‖centeredSymbol_(N+1)(ξ)-centeredSymbol_N(ξ)‖ ≤ 64(πξ)^2/(N+1)^3
+for every natural shift, including zero. The actual centered increments
+have an absolutely summable norm series at each fixed frequency. These
+results use neither a Gauss representation nor the retained full-symbol
+growth premise. They do not identify the centered limiting value as zero.
+
+Next: independent actual centered-limit identification and frequency
+domination. Tail vanishing, exterior/whole source attachment, central/
+boundary reconstruction and actual source-domain/quadratic/polarization/
+normalized estimate witnesses remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
+is closed; logarithmic coercivity has not started.
