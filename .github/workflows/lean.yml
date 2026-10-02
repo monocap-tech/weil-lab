@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralOperatorFormEnergy.lean
+          git hash-object WeilDefect/Morphology/NeutralOperatorQuadraticBridge.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralOperatorFormEnergy
+          lake build WeilDefect.Morphology.NeutralOperatorQuadraticBridge
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,15 +72,16 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-operator-form-energy-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralOperatorFormEnergy
-          #print axioms WeilDefect.logarithmicWeight_le_symbol_square
-          #print axioms WeilDefect.finiteLogEnergy_of_spectralProduct
-          #print axioms WeilDefect.neutralCarrier_logEnergy_of_operatorDomain
-          #print axioms WeilDefect.neutralCanonicalSourceFormDomain_of_operatorDomain
+          cat > /tmp/rpb108-operator-quadratic-bridge-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralOperatorQuadraticBridge
+          #print axioms WeilDefect.l2HermitianPairing_integrable
+          #print axioms WeilDefect.neutralWeilOperatorDomainCore_hermitian_pairing
+          #print axioms WeilDefect.sourceDomainMultiplierPairing_operatorCore
+          #print axioms WeilDefect.neutralWeilOperatorDomainCore_carrier_pairing_integrable
+          #print axioms WeilDefect.sourceDomainQuadratic_operatorCore
           LEAN
-          lake env lean /tmp/rpb108-operator-form-energy-audit.lean | tee /tmp/rpb108-operator-form-energy-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-operator-form-energy-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-operator-quadratic-bridge-audit.lean | tee /tmp/rpb108-operator-quadratic-bridge-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-operator-quadratic-bridge-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

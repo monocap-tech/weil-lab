@@ -855,3 +855,29 @@ Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca
 Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged.
+
+## 2026-10-02 — RPB-108 — operator-domain to logarithmic form-energy transfer
+
+Continues from `b83dd8999ba68bb22d04547d92a371bab0fca580`.
+
+`NeutralOperatorFormEnergy` proves that base Fourier L2 mass and L2
+membership of the spectral product imply finite logarithmic Fourier energy
+under a retained strictly positive shifted lower symbol comparison. The
+pointwise estimate bounds one logarithmic weight by the square of the
+symbol plus a constant; both dominating integrals genuinely converge.
+For the exact physical carrier, this constructs its canonical supported
+form-domain attachment without a separate finite-log-energy premise.
+
+Actual spectral operator-domain membership and the actual positive normalized
+symbol comparison remain open inputs. This conditional transfer does not
+establish the imported source quadratic identity, polarization, normalized
+estimate attachment, central cancellation or whole-source realization.
+The stronger operator criterion implies form energy under the comparison;
+no reverse implication is claimed. Threshold bookkeeping is closed;
+logarithmic coercivity has not started.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,986 build jobs passed. All four endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `e6ba7157ad663f0b5d8004224405da8bc1dbc910`, run `37076463446`, job `111067373804`, source blob `862434360f90cbdd9bd4024a9fd6dd1f5afd79b3`.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged.
