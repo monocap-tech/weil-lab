@@ -39,12 +39,12 @@ the holomorphy domain. -/
 theorem neutralDigamma_euler_equality_accumulation :
     (1 : ℂ) ∈ closure ({z | Complex.digamma z = neutralDigammaEulerSeries z} \ {1}) := by
   have hr : (1 : ℝ) ∈ closure (Ioi (1 : ℝ)) := by
-    rw [closure_Ioi]
-    exact le_rfl
+    simpa only [closure_Ioi, mem_Ici] using (le_refl (1 : ℝ))
   have hc : (1 : ℂ) ∈ closure (Complex.ofReal '' Ioi (1 : ℝ)) :=
     image_closure_subset_closure_image Complex.continuous_ofReal ⟨1, hr, rfl⟩
   apply closure_mono (s := Complex.ofReal '' Ioi (1 : ℝ)) _ hc
   rintro z ⟨x, hx, rfl⟩
+  change (1 : ℝ) < x at hx
   refine ⟨neutralDigamma_eulerSeries_ofReal (by linarith), ?_⟩
   simp only [mem_singleton_iff]
   intro h
@@ -63,8 +63,7 @@ theorem neutralDigamma_eq_eulerSeries {z : ℂ} (hz : 0 < z.re) :
       map_smul := by intro a w; simp }
   have hc : IsPreconnected {w : ℂ | 0 < w.re} :=
     (convex_halfSpace_gt hlin 0).isPreconnected
-  exact (neutralDigamma_rightHalf_differentiableOn.analyticOnNhd ho).
-    eqOn_of_preconnected_of_mem_closure
+  exact (neutralDigamma_rightHalf_differentiableOn.analyticOnNhd ho).eqOn_of_preconnected_of_mem_closure
       (neutralDigamma_eulerSeries_differentiableOn.analyticOnNhd ho)
       hc (by norm_num) neutralDigamma_euler_equality_accumulation hz
 
