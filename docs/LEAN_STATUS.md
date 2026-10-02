@@ -1,5 +1,35 @@
 # Lean Status
 
+## RPB-108 — actual right-half-plane digamma Euler identity
+
+Continues from `d83104a00e91112b50b538a2b86585b26c735c21`.
+`NeutralDigammaEulerIdentity` proves actual digamma holomorphy on the
+right half-plane from Gamma differentiability, holomorphy of its derivative
+and nonvanishing. The independent Euler candidate is holomorphic there.
+Full complex positive-real equality accumulates at 1 inside this connected
+domain, so analytic uniqueness identifies actual digamma with the candidate
+throughout the right half-plane. Absolute summability gives the actual
+complex HasSum with endpoint ψ(z)+γ.
+
+No Gauss representation or full-symbol growth premise enters this identity.
+Next: specialize the actual representation to the source line and cancel
+the represented centered residual. Existing pairing transfer retains its
+full-symbol growth premise. Residual cancellation, tail vanishing, exterior/
+whole source attachment, central/boundary reconstruction and actual source-
+domain/quadratic/polarization/normalized estimate witnesses remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_EULER_IDENTITY_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,978 build jobs passed. All six endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `42497ee96cc557201b2f87a12dee1f78e6786791`, run `37066190783`, job `111034442714`, source blob `5e236a85ccd8335f116e917e8c77cd94198ef626`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL RIGHT-HALF-PLANE DIGAMMA EULER IDENTITY: CONSTRUCTED
+NEXT: SOURCE-LINE SPECIALIZATION → ACTUAL RESIDUAL CANCELLATION
+      → EXTERIOR / WHOLE SOURCE ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — independent holomorphic complex Euler candidate
 
 Continues from `b500cb88d2fbc22b25bc9cd22cb8d24d25775cc4`.

@@ -635,3 +635,31 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
 is closed; logarithmic coercivity has not started.
+
+## 2026-10-02 — RPB-108 actual right-half-plane digamma Euler identity
+
+Continues from research head `d83104a00e91112b50b538a2b86585b26c735c21`.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,978 build jobs passed. All six endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `42497ee96cc557201b2f87a12dee1f78e6786791`, run `37066190783`, job `111034442714`, source blob `5e236a85ccd8335f116e917e8c77cd94198ef626`.
+
+Actual Gamma differentiability, derivative holomorphy and nonvanishing give
+actual digamma holomorphy on the right half-plane. The independently
+constructed Euler candidate is holomorphic there as well. Full positive-
+real equality accumulates at the interior point 1. Convexity gives
+preconnectedness, and analytic uniqueness identifies actual digamma with
+the candidate on the whole right half-plane. Independent absolute
+summability supplies the actual complex HasSum with endpoint ψ(z)+γ.
+No Gauss representation or retained full-symbol growth premise enters
+this actual representation proof.
+
+Next: source-line specialization and alignment with the certified reciprocal
+increments, then actual centered residual cancellation. Existing pairing
+transfer retains its full-symbol growth premise. Residual cancellation,
+tail vanishing, exterior/whole source attachment, central/boundary
+reconstruction and actual source-domain/quadratic/polarization/normalized
+estimate witnesses remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
+is closed; logarithmic coercivity has not started.
