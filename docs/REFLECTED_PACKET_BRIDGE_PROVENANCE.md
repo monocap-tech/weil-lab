@@ -663,3 +663,32 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
 is closed; logarithmic coercivity has not started.
+
+## 2026-10-02 — RPB-108 actual centered digamma residual cancellation
+
+Continues from research head `66ed85ef2dccd622e84a062489876e825912e248`.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,979 build jobs passed. All seven endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `55758c60bff80e626d63d461f150f0c7613d9449`, run `37067232863`, job `111038005004`, source blob `6f1ffdfdd94ab79ce0f08ed1afa6195150e4b81d`.
+
+The actual right-half-plane Euler HasSum specializes to the source line.
+Mapping to real parts and subtracting the zero-frequency instance cancels
+regularization and gives the reciprocal-difference HasSum. Its endpoint
+is the negative initial centered digamma value after the actual increment
+formula and complex embedding. The represented pointwise residual is zero,
+and the actual centered symbol tends to zero at every frequency. No
+representation or growth premise enters this cancellation.
+
+The represented residual pairing is zero on every Schwartz test. The
+certified dominated transfer gives zero convergence of the actual centered
+action, retaining its existing full-symbol growth premise.
+
+Next: consume the existing exterior-defect identity to establish actual
+exterior source attachment. Whole source attachment, central/boundary
+reconstruction and actual source-domain/quadratic/polarization/normalized
+estimate witnesses remain open. No smooth limiting-symbol multiplier or
+operator norm convergence is asserted.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
+is closed; logarithmic coercivity has not started.

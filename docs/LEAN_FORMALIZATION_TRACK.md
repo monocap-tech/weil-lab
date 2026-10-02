@@ -1,5 +1,34 @@
 # Lean Formalization Track
 
+## RPB-108 — actual centered digamma residual cancellation
+
+Continues from `66ed85ef2dccd622e84a062489876e825912e248`.
+`NeutralDigammaCancellation` maps the actual source-line Euler HasSum to
+real parts, then subtracts its zero-frequency instance. The regularizing
+terms cancel, leaving the reciprocal-difference series. Its actual HasSum
+endpoint is the negative initial centered digamma value. Alignment with
+the certified increment formula proves the represented pointwise residual
+is zero and the actual centered symbol tends to zero at every frequency.
+
+The represented residual pairing is therefore zero on every Schwartz test.
+The certified dominated transfer gives zero convergence of the actual
+centered action, retaining its existing full-symbol growth premise.
+Next: consume the exterior-defect identity to attach the actual exterior
+source. Whole source attachment, central/boundary reconstruction and actual
+source-domain/quadratic/polarization/normalized estimate witnesses remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_CANCELLATION_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,979 build jobs passed. All seven endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `55758c60bff80e626d63d461f150f0c7613d9449`, run `37067232863`, job `111038005004`, source blob `6f1ffdfdd94ab79ce0f08ed1afa6195150e4b81d`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL CENTERED DIGAMMA RESIDUAL CANCELLATION: CONSTRUCTED
+ACTUAL CENTERED ACTION ZERO LIMIT: CONSTRUCTED, FULL-SYMBOL GROWTH RETAINED
+NEXT: EXTERIOR SOURCE ATTACHMENT → WHOLE SOURCE / ACTUAL SOURCE WITNESSES
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — actual right-half-plane digamma Euler identity
 
 Continues from `d83104a00e91112b50b538a2b86585b26c735c21`.

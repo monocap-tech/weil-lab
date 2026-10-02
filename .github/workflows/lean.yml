@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralDigammaCancellation.lean
+          git hash-object WeilDefect/Morphology/NeutralExteriorAttachment.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralDigammaCancellation
+          lake build WeilDefect.Morphology.NeutralExteriorAttachment
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,18 +72,15 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-digamma-cancellation-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralDigammaCancellation
-          #print axioms WeilDefect.neutralDigammaLine_real_euler_hasSum
-          #print axioms WeilDefect.neutralDigammaLine_centered_reciprocal_hasSum
-          #print axioms WeilDefect.neutralCenteredDigammaSymbol_step_hasSum_neg_initial
-          #print axioms WeilDefect.neutralCenteredDigammaLimit_zero
-          #print axioms WeilDefect.neutralCenteredDigammaSymbol_tendsto_zero
-          #print axioms WeilDefect.neutralCenteredDigammaResidualPairing_zero
-          #print axioms WeilDefect.neutralCenteredDigammaAction_tendsto_zero
+          cat > /tmp/rpb108-exterior-attachment-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralExteriorAttachment
+          #print axioms WeilDefect.neutralShiftedDigammaAction_exterior_tendsto_zero
+          #print axioms WeilDefect.neutralArchimedeanMultiplierCore_exterior_pairing
+          #print axioms WeilDefect.neutralExteriorMultiplierCore_pairing_integrable
+          #print axioms WeilDefect.neutralWeilMultiplierCore_exterior_pairing
           LEAN
-          lake env lean /tmp/rpb108-digamma-cancellation-audit.lean | tee /tmp/rpb108-digamma-cancellation-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-digamma-cancellation-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-exterior-attachment-audit.lean | tee /tmp/rpb108-exterior-attachment-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-exterior-attachment-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
