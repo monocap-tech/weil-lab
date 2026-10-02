@@ -543,3 +543,71 @@ to semigroup information only from continuum/half-plane or contour-scale
 resolvent hypotheses, not from a fixed finite collection of scalar samples.
 
 This is the systems-theoretic analogue of the NJDG finite-row obstruction.
+
+
+## Dunford-residue collapse
+
+The **Dunford-residue collapse** is the exact identification, for a finite
+diagonal near-divisor realization,
+
+\[
+Q_f(\Omega)
+=
+c^\ast f(A_\Omega)b
+=
+\frac{1}{2\pi i}
+\oint_\Gamma
+f(z)\,
+c^\ast(zI-A_\Omega)^{-1}b\,dz
+=
+\sum_{\mu\in\Omega}m_\mu f(w_\mu).
+\]
+
+For \(f=K_t\), this is the first RENJET near response.
+
+Because the resolvent scalar is a sum of simple pole terms, the
+Riesz--Dunford functional-calculus contour is exactly the ordinary residue
+formula for the original divisor.
+
+Therefore the continuum systems representation is not a new weighted identity
+relative to NJDG-7.
+
+## Regular-remainder bound
+
+A **regular-remainder bound** is a local estimate obtained after all nearby zero
+poles have been explicitly extracted from the zeta logarithmic derivative.
+
+Classically, on fixed-width regions at height \(T\), one has a representation
+of the form
+
+\[
+-\frac{\zeta'}{\zeta}(s)
+=
+-\sum_{\rho\ {\rm nearby}}\frac1{s-\rho}
++
+\frac1{s-1}
++
+O(\log T),
+\]
+
+with \(O(\log T)\) nearby zeros in a fixed disk and corresponding local
+\(L^1\) control of the logarithmic derivative.
+
+Such a bound controls the pole-removed analytic remainder. It does not bound
+the selected weighted residue functional independently of the extracted pole
+sum.
+
+## Contour compensation debt
+
+The **contour compensation debt** is the failure of a contour norm estimate on
+the full logarithmic derivative to separate the target near-divisor residues
+from the complementary field.
+
+If a contour encloses the target near poles, the target weighted sum is exactly
+the residue contribution to the contour integral. Bounding the integral via
+the full logarithmic derivative therefore requires a bound whose strength or
+sign information already controls those pole contributions.
+
+Deforming the contour to a region where the logarithmic derivative is easier
+to estimate crosses other zeros and adds their residues. This reproduces the
+original selected-versus-complement accounting rather than bypassing it.
