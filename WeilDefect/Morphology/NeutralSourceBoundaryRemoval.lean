@@ -24,7 +24,9 @@ theorem locallyIntegrable_ae_zero_of_compactSchwartz_on_open
   have hd : ContDiff ℝ ∞ gc := Complex.ofRealCLM.contDiff.comp hg
   let u : SchwartzMap ℝ ℂ := hc.toSchwartzMap hd
   have hu : HasCompactSupport u := hc
-  have hs : tsupport u ⊆ U := (tsupport_comp_subset rfl g).trans hgs
+  have hsc : tsupport (Complex.ofRealCLM ∘ g) ⊆ tsupport g :=
+    tsupport_comp_subset rfl g
+  have hs : tsupport u ⊆ U := hsc.trans hgs
   have hz := hzero u hu hs
   change (∫ x : ℝ, (g x : ℂ) * q x) = 0 at hz
   simpa only [Complex.real_smul] using hz
