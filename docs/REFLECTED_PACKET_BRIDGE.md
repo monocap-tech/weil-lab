@@ -9,6 +9,15 @@
 
 ## Current standing
 
+The actual remaining compact source defect is now localized: it is additive,
+vanishes on compact exterior tests, and depends only on the central open-window
+restriction of a test. On central tests it equals the actual corrected source
+action. This does not establish central cancellation or exclude boundary-supported
+distributions. Whole compact weak realization remains open; full-symbol growth
+is retained. Next: actual central cancellation and boundary reconstruction.
+See [defect-localization checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_DEFECT_LOCALIZATION_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_SOURCE_DEFECT_LOCALIZATION.md).
+
 The existing zero-continued residual candidate now realizes the actual
 corrected source action on compact exterior tests. Actual compact-test
 pole integrability justifies pole addition to the exterior multiplier
