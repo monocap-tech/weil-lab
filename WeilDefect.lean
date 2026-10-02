@@ -72,6 +72,7 @@ import WeilDefect.Morphology.NeutralDigammaLimit
 import WeilDefect.Morphology.NeutralDigammaPairingLimit
 import WeilDefect.Morphology.NeutralDigammaRealAnchor
 import WeilDefect.Morphology.NeutralDigammaRealComplexAnchor
+import WeilDefect.Morphology.NeutralDigammaEulerHolomorphic
 
 import WeilDefect.Morphology.Noncompact
 

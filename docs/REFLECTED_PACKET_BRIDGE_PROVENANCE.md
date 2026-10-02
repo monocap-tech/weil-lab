@@ -608,3 +608,30 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
 is closed; logarithmic coercivity has not started.
+
+## 2026-10-02 — RPB-108 independent holomorphic complex Euler candidate
+
+Continues from research head `b500cb88d2fbc22b25bc9cd22cb8d24d25775cc4`.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,977 build jobs passed. All five endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `c2659d1fba74be355f672b65dcaebc8a12f43aa4`, run `37064676684`, job `111029397055`, source blob `e3ae2c1ecd5d0bca73ba5b2eb9fa1d328c0a69e1`.
+
+The regularized rational term identity gives the independent bound
+‖T_n(z)‖≤(‖z-1‖/a)/(n+1)^2 whenever 0<a≤1 and a≤Re z.
+The shifted quadratic p-series proves absolute summability throughout the
+right half-plane. On bounded open regions separated from its boundary,
+the bound is uniform and each rational term is holomorphic. The complex
+sum theorem and localization prove candidate holomorphy on the whole
+right half-plane. No actual digamma representation or full-symbol growth
+premise enters the construction.
+
+Next: actual digamma holomorphy and the complex identity theorem using
+the full positive-real anchor, then actual source-line residual cancellation.
+Existing pairing transfer retains its full-symbol growth premise. Residual
+cancellation, tail vanishing, exterior/whole source attachment, central/
+boundary reconstruction and actual source-domain/quadratic/polarization/
+normalized estimate witnesses remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
+is closed; logarithmic coercivity has not started.

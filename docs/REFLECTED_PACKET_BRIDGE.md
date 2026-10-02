@@ -9,11 +9,19 @@
 
 ## Current standing
 
+The independent complex Euler candidate is now absolutely summable and
+holomorphic throughout the right half-plane. A rational cancellation
+identity gives a quadratic summable norm majorant uniform on bounded open
+regions separated from the imaginary axis. Actual digamma identification
+via the full positive-real anchor remains next, then residual cancellation.
+See [holomorphic-candidate checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_EULER_HOLOMORPHIC_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_DIGAMMA_EULER_HOLOMORPHIC.md).
+
 Actual digamma is now proved real-valued at every positive real argument by
 comparing actual complex and real Gamma derivatives. The certified real
 Euler anchor upgrades to a full complex HasSum and Euler-series identity
-there. Holomorphic series construction and actual complex identification
-on the right half-plane remain next for source-line residual cancellation.
+there. Holomorphic series construction is now supplied above; actual
+complex identification remains next for source-line residual cancellation.
 See [full-real-anchor checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_REAL_COMPLEX_ANCHOR_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_REAL_COMPLEX_ANCHOR.md).
 
@@ -89,7 +97,7 @@ A uniform tail estimate and support-separated weak/operator limit remain open.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `bb800b705de708043a33b3d880cb8afc8edaa71a`.
+This pass continues from `b500cb88d2fbc22b25bc9cd22cb8d24d25775cc4`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -250,6 +258,8 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    analytic series identification is next for source-line cancellation.
    Actual digamma real-valuedness and the full complex positive-real anchor
    are constructed, supplying the later identity-theorem equality input.
+   Independent complex Euler candidate summability and right-half-plane
+   holomorphy are constructed; actual digamma identification remains next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
