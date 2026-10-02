@@ -345,3 +345,31 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 quantitative exterior finite Gauss convergence, October 1, 2026
+
+Recovered research head: `d1649813180a75d93222e0fffc0f1d9e14df7fe8`.
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,968 build jobs passed. All five audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `3650789ba52f28a3c08c8f7e49c0881c9bc62e34`,
+run `36964811880`, job `110706170139`, source blob
+`9ec7fdf7e472a0b602482c1089a22ab7d7005eb8`.
+
+The geometric finite kernel error is bounded uniformly beyond any positive
+gap. The actual finite convolution is a genuinely convergent compact
+carrier integral. Its exterior error is at most actual compact L1 mass
+times exp(-2(a-c))^N / (1-exp(-2(a-c))), uniformly over exterior points.
+Geometric decay gives pointwise convergence to the negative signed gap
+function. No pointwise boundedness or smoothness of the carrier is assumed.
+
+The finite physical exterior limit is constructed. The shifted digamma
+action's support-separated estimate and weak/operator limit remain open.
+Whole residual/source attachment, central/boundary reconstruction and
+actual source-domain/quadratic/polarization/normalized estimate witnesses
+remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.
