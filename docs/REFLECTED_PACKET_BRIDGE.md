@@ -9,6 +9,15 @@
 
 ## Current standing
 
+An independent actual positive-real Euler anchor is now constructed:
+Re ψ(N+x)-log N tends to zero for x>0 by log-convex Gamma bounds, and
+Re ψ(x)=-γ+∑' n,[1/(n+1)-1/(x+n)] with independent absolute summability.
+No Gauss representation or full-symbol growth premise is used in this anchor.
+Complex analytic identification and actual source-line residual cancellation
+remain open.
+See [real-anchor checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_REAL_ANCHOR_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_DIGAMMA_REAL_ANCHOR.md).
+
 Actual centered frequency pairings now have an explicit integrable majorant
 uniform in the shift index. Dominated convergence attaches the represented
 pointwise residual to the existing actual multiplier action on every Schwartz
@@ -72,7 +81,7 @@ A uniform tail estimate and support-separated weak/operator limit remain open.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `536987d576594fd7ec9c110e8ecf26f79099dd1d`.
+This pass continues from `0bb110454c42d58f99c62ade4cc0cf2b68611344`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -229,6 +238,8 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    and a uniform-in-shift frequency envelope are constructed. Actual residual
    cancellation is next: integrable pairing domination and actual action
    limit passage are constructed, retaining the full-symbol growth premise.
+   An independent actual positive-real Euler anchor is constructed; complex
+   analytic series identification is next for source-line cancellation.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~

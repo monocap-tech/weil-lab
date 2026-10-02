@@ -550,3 +550,36 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
 is closed; logarithmic coercivity has not started.
+
+
+## 2026-10-02 — RPB-108 independent actual digamma positive-real Euler anchor
+
+Continues from research head `0bb110454c42d58f99c62ade4cc0cf2b68611344`.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,975 build jobs passed. All eight audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `5bf141ade97f784c857cd5fd9538d43dae4d013f`,
+run `37061473678`, job `111018892567`, source blob
+`ab7c5f233a4a2976bc3f6cca96dd529145fedff4`.
+
+Independent actual log-convex Gamma bounds prove Re ψ(N+x)-log N → 0
+for every real x>0. The actual finite recurrence and the harmonic Euler-
+Mascheroni limit identify Re ψ(x)=-γ+∑' n,[1/(n+1)-1/(x+n)]. The
+regularized real terms have the independent bound
+(|x-1|/min(x,1))/(n+1)², proving absolute summability and an actual HasSum.
+No Gauss representation or retained full-symbol growth premise enters
+these proofs; no pointwise Gamma approximation limit is differentiated.
+
+Next: full real-axis equality, independently justified holomorphic complex
+Euler series, actual complex identification and source-line residual
+cancellation. Equality of real parts alone does not justify a complex
+identity theorem. Existing pairing domination/limit passage retains the
+full-symbol growth premise. Residual cancellation, tail vanishing, exterior/
+whole source attachment, central/boundary reconstruction and actual source-
+domain/quadratic/polarization/normalized estimate witnesses remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
+is closed; logarithmic coercivity has not started.
