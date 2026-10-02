@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralLaplaceFourier.lean
+          git hash-object WeilDefect/Morphology/NeutralFiniteGaussConvolution.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralLaplaceFourier
+          lake build WeilDefect.Morphology.NeutralFiniteGaussConvolution
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,16 +72,18 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-laplace-fourier-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralLaplaceFourier
-          #print axioms WeilDefect.neutralLaplaceKernel_integrable
-          #print axioms WeilDefect.neutralLaplaceOscillation_integral
-          #print axioms WeilDefect.neutralLaplaceKernel_fourier
-          #print axioms WeilDefect.neutralLaplace_resolvent_eq
-          #print axioms WeilDefect.neutralGaussReciprocal_fourier
+          cat > /tmp/rpb108-finite-gauss-convolution-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralFiniteGaussConvolution
+          #print axioms WeilDefect.neutralFiniteGaussKernelComplex_eq_sum
+          #print axioms WeilDefect.neutralFiniteGaussKernelComplex_integrable
+          #print axioms WeilDefect.neutralFiniteGaussKernelComplex_fourier
+          #print axioms WeilDefect.neutralFiniteGaussConvolution_integrable
+          #print axioms WeilDefect.neutralFiniteGaussConvolution_fourier
+          #print axioms WeilDefect.neutralFiniteGaussConvolution_pairing_integrable
+          #print axioms WeilDefect.neutralFiniteGaussConvolution_weak_fourier
           LEAN
-          lake env lean /tmp/rpb108-laplace-fourier-audit.lean | tee /tmp/rpb108-laplace-fourier-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-laplace-fourier-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-finite-gauss-convolution-audit.lean | tee /tmp/rpb108-finite-gauss-convolution-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-finite-gauss-convolution-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

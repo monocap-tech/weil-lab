@@ -9,7 +9,7 @@
 
 ## Current standing
 
-This pass continues from `e873b75ea172e31a55362bf39ab303c0da68bbfd`.
+This pass continues from `279c732efb791a1553beae31c78ef8cd95a4fa0d`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -82,11 +82,16 @@ splits the actual multiplier core into the archimedean action minus that
 explicit convergent prime pairing. The unidentified physical multiplier
 component is precisely archimedean. See [core split continuation](../notes/REFLECTED_PACKET_BRIDGE_108_CORE_SPLIT_20261001.md).
 
-The current continuation derives an exact finite digamma tail identity from
+The finite Gauss continuation derives an exact digamma tail identity from
 the proved recurrence and constructs the finite Gauss kernel with its exact
 geometric remainder and off-diagonal pointwise limit. Fourier identification
 and the shifted-tail operator limit remain open; no Gauss identity is assumed.
 See [finite Gauss continuation](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_GAUSS_20261001.md).
+
+The current continuation proves the exact normalized Fourier transform of
+exp(-b|x|), including genuine integral convergence. At b=2n+1/2 it equals the
+finite digamma reciprocal coefficient. Finite-sum/convolution weak transfer
+and shifted-tail control remain open. See [Laplace Fourier continuation](../notes/REFLECTED_PACKET_BRIDGE_108_LAPLACE_FOURIER_20261001.md).
 
 | Obligation | Current state |
 | --- | --- |
@@ -106,6 +111,7 @@ See [finite Gauss continuation](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_GAUS
 | Concrete exterior residual candidate and all analytic residual fields | Constructed; 8,961 build jobs and eight axiom audits passed |
 | Full physical prime action and exact actual multiplier core split | Constructed; 8,962 build jobs and six axiom audits passed |
 | Actual finite digamma tail identity and off-diagonal kernel limit | Constructed; 8,963 build jobs and six axiom audits passed |
+| Normalized Laplace Fourier and finite Gauss reciprocal transfer | Certified: 8,964 jobs; five endpoint audits |
 | Actual source form-domain membership and form identification | Open |
 | Actual core representative, regularity/growth and central cancellation | Open |
 | F-4 logarithmic Gaussian coercivity | Not started |
@@ -130,7 +136,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    finite-prime action is attached; singular archimedean identification is
    the remaining physical multiplier component. The finite scalar tail split
    and geometric kernel limit are constructed; finite Fourier transfer and
-   the shifted-tail operator limit remain open.
+   the shifted-tail operator limit remain open. Individual rational terms are
+   attached to their normalized exponential Fourier kernels; finite-sum and
+   convolution weak transfer are next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
@@ -174,3 +182,6 @@ the actual archimedean multiplier action from its unproved physical attachment.
 
 The [finite Gauss supplement](TERMINOLOGY_RPB108_FINITE_GAUSS.md) registers
 the finite scalar/kernel construction without asserting its operator transfer.
+
+The [Laplace Fourier supplement](TERMINOLOGY_RPB108_LAPLACE_FOURIER.md)
+registers the exact termwise transform without claiming the whole operator limit.
