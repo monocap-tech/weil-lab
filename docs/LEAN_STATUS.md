@@ -1,5 +1,40 @@
 # Lean Status
 
+## RPB-108 — actual scalar action separation and centered digamma tail
+
+Continues from `0ed9df1239eabbfbba06eec7509badbe07432d9b`.
+`NeutralDigammaCentering` proves the generic existing multiplier law
+M(m-k)f(u)=M(m)f(u)-k f(u). Actual compact carrier support makes its
+distribution evaluate to zero on tests vanishing on (-a,a), with c<a.
+This annihilates the carrier, not the archimedean source action.
+
+The actual shifted symbol minus its own zero-frequency value has lawful
+fixed-N temperate growth. Its action agrees exactly with the uncentered
+tail on separated tests. It therefore has the same constructed source-
+attachment defect limit, and its zero limit is equivalent to exterior
+attachment. Scalar action separation is closed; independent centered
+nonzero-frequency control and tail vanishing remain open, as do whole
+source identity, central/boundary reconstruction and actual source-domain/
+quadratic/polarization/normalized estimate witnesses.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_CENTERING_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,971 build jobs passed. All six audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `4c562ff72edae1571e590ca3357bbc03a0c3940f`,
+run `37009813241`, job `110846577087`, source blob
+`0e2c679ae105a1fc0e7cead1cb33a6e190ea3183`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL SCALAR ACTION SEPARATION / CENTERED TAIL REDUCTION: CONSTRUCTED
+NEXT: INDEPENDENT CENTERED NONZERO-FREQUENCY DIGAMMA CONTROL
+      → TAIL VANISHING / EXTERIOR ATTACHMENT → WHOLE SOURCE + SOURCE DOMAIN
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+
 ## RPB-108 — independent actual real-axis digamma bounds
 
 Continues from `b2be21a14300825e897a5242665192480d85887a`.
