@@ -49,7 +49,7 @@ theorem neutralDigamma_real_finite_recurrence {x : ℝ} (hx : 0 < x) (N : ℕ) :
     intro n _
     rw [← Complex.ofReal_natCast, ← Complex.ofReal_add, ← Complex.ofReal_inv,
       Complex.ofReal_re, one_div]
-  rw [hs] at h
+  simp only [Complex.add_re, hs] at h
   convert h using 1 <;> simp only [Complex.ofReal_add, Complex.ofReal_natCast, add_comm]
 
 /-- Actual Euler normalization on the whole positive real axis. -/
@@ -97,6 +97,7 @@ theorem neutralDigamma_real_euler_term_bound {x : ℝ} (hx : 0 < x) (n : ℕ) :
       div_le_div_of_nonneg_left (abs_nonneg _) (by positivity) hden
     _ = (|x-1| / min x 1) * (1 / ((n : ℝ)+1)^2) := by
       dsimp [d]
+      field_simp [ne_of_gt (lt_min hx zero_lt_one), ne_of_gt hs]
       ring
 
 theorem neutralDigamma_real_euler_summable {x : ℝ} (hx : 0 < x) :
