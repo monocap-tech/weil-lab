@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralShiftedDigammaAction.lean
+          git hash-object WeilDefect/Morphology/NeutralGaussExteriorLimit.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralShiftedDigammaAction
+          lake build WeilDefect.Morphology.NeutralGaussExteriorLimit
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,15 +72,16 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-shifted-digamma-action-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralShiftedDigammaAction
-          #print axioms WeilDefect.neutralShiftedDigammaSymbol_eq_add
-          #print axioms WeilDefect.neutralShiftedDigammaSymbol_temperate
-          #print axioms WeilDefect.neutralArchimedeanMultiplierCore_eq_shifted_sub_convolution
-          #print axioms WeilDefect.neutralWeilMultiplierCore_eq_shifted_sub_physical
+          cat > /tmp/rpb108-gauss-exterior-limit-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralGaussExteriorLimit
+          #print axioms WeilDefect.neutralFiniteGaussKernel_gap_error
+          #print axioms WeilDefect.neutralFiniteGaussConvolution_eq_compactIntegral
+          #print axioms WeilDefect.neutralFiniteGaussConvolution_integrand_integrable
+          #print axioms WeilDefect.neutralFiniteGaussConvolution_exterior_error
+          #print axioms WeilDefect.neutralFiniteGaussConvolution_exterior_tendsto
           LEAN
-          lake env lean /tmp/rpb108-shifted-digamma-action-audit.lean | tee /tmp/rpb108-shifted-digamma-action-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-shifted-digamma-action-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-gauss-exterior-limit-audit.lean | tee /tmp/rpb108-gauss-exterior-limit-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-gauss-exterior-limit-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
