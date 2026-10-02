@@ -54,6 +54,7 @@ theorem neutralWeilOperatorDomainCore_toTemperedDistribution
     ← l2SpectralProduct_toTemperedDistribution _ hSymbol.hasTemperateGrowth
       (𝓕 carrier.l2Mode : RealComplexL2) hp,
     Lp.fourierInv_toTemperedDistribution_eq]
+  rfl
 
 /-- Actual whole-line core pairing, without pointwise exponential growth. -/
 theorem neutralWeilOperatorDomainCore_pairing
@@ -97,9 +98,12 @@ theorem neutralWeilOperatorDomainDefect_represents
     ((Lp.memLp _).locallyIntegrable (by norm_num))
   have hpole := frozenWeilCompactAction_pole_integrable carrier u hu
   have he := neutralExteriorResidualCandidate_compact_pairing_integrable carrier hca u hu
+  have hsum : Integrable (fun x : ℝ =>
+      u x * neutralWeilOperatorDomainCore carrier a hp x +
+        u x * neutralWeilSourcePole carrier x) volume := hr.add hpole
   unfold neutralWeilOperatorDomainDefect neutralCompactSourceDefect frozenWeilCompactAction
   simp only [mul_sub, mul_add]
-  rw [integral_sub (hr.add hpole) he, integral_add hr hpole,
+  rw [integral_sub hsum he, integral_add hr hpole,
     neutralWeilOperatorDomainCore_pairing carrier a hSymbol hp u]
 
 /-- The spectral operator-domain criterion supplies the regularity witness
