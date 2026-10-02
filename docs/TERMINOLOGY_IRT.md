@@ -146,3 +146,42 @@ IRT does **not** alter:
 - WD-T40 / neutral-branch status;
 - RH standing.
 
+
+
+## Finite-index global realization
+
+A **finite-index global realization** is a realization of one global carrier in a
+fixed generalized Nevanlinna class \(N_\kappa\) for one finite \(\kappa\).
+
+For scalar \(N_\kappa\), the negative index is a finite global budget on
+nonpositive-type exceptional structure. IRT must not silently treat such a fixed
+\(\kappa\) as compatible with an uncontrolled infinite off-axis divisor.
+
+## Local generalized Nevanlinna realization
+
+A **local generalized Nevanlinna realization** is a realization on a domain
+\(\Omega\) whose restriction to each admissible smaller domain can be decomposed
+using a generalized Nevanlinna component plus a locally holomorphic component.
+
+The finite negative index of the generalized Nevanlinna component may depend on
+the chosen subdomain. This is qualitatively different from membership in one
+global fixed class \(N_\kappa\).
+
+## Windowed Pontryagin index
+
+The **windowed Pontryagin index**, written schematically as
+\(\kappa(\Omega)\), denotes the finite negative index required by a local
+Pontryagin/generalized-Nevanlinna realization on one admissible spectral window.
+
+This is investigation notation only. No function of the zeta carrier has yet
+been proved to possess such an index.
+
+## Local \(\pi_+\) route
+
+The **local \(\pi_+\) route** asks whether the zeta-derived carrier can be
+realized on each canonical packet/window as a Weyl or \(Q\)-function associated
+with a self-adjoint relation that is locally of type \(\pi_+\).
+
+The route is useful only if it yields the actual mixed-divisor weighted
+functional with packetwise conditioning. Local realizability by itself is not
+canonical progress.
