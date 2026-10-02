@@ -9,10 +9,19 @@
 
 ## Current standing
 
+The actual centered digamma sequence now has a proved pointwise limit:
+its initial value plus the absolutely convergent actual reciprocal-increment
+series. A fixed cubic-series mass gives an envelope uniform in every
+natural shift: ‖C_N(ξ)‖ ≤ ‖C_0(ξ)‖ + 64(πξ)^2 S. Zero convergence is
+equivalent to cancellation of this explicit actual residual. Cancellation
+and integrable domination in the existing Schwartz/carrier pairing remain open.
+See [limit checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_LIMIT_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_DIGAMMA_LIMIT.md).
+
 Actual centered digamma increments now have the independent cubic bound
 64(πξ)^2/(N+1)^3 and an absolutely summable norm series at each frequency.
-The centered limiting value and frequency domination remain unidentified;
-increment decay alone does not prove tail vanishing.
+This is the input to the actual pointwise limit and uniform envelope above;
+increment decay alone does not prove cancellation or tail vanishing.
 See [step-decay checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_STEP_DECAY_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_DIGAMMA_STEP_DECAY.md).
 
@@ -54,7 +63,7 @@ A uniform tail estimate and support-separated weak/operator limit remain open.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `1ce945e7da95f500184643b674474ea4f940f63f`.
+This pass continues from `1522fd5cbe750d9bb68db255698ecd074da22dcb`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -207,8 +216,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    attachment defect. Independent real-axis digamma bounds now control
    the actual shifted zero-frequency value. Scalar action separation is now
    exact on support-separated tests. Actual centered increments have a cubic
-   bound and an absolutely summable norm series. Independent identification
-   of the actual centered limiting value and frequency domination are next.
+   bound and an absolutely summable norm series. Their exact pointwise limit
+   and a uniform-in-shift frequency envelope are constructed. Actual residual
+   cancellation and integrable pairing domination/limit passage are next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~

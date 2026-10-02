@@ -1,5 +1,42 @@
 # Lean Status
 
+## RPB-108 — actual centered limit and uniform frequency envelope
+
+Continues from `1522fd5cbe750d9bb68db255698ecd074da22dcb`.
+`NeutralDigammaLimit` proves pointwise convergence of the actual centered
+symbol to its initial value plus the absolutely convergent actual increment
+series. The recurrence rewrites that limit as an explicit reciprocal series.
+The actual displacement has the uniform-in-N bound
+64(πξ)^2 S, where S = ∑' n, 1/(n+1)^3 is a fixed finite real mass.
+Consequently every centered symbol is bounded by ‖centeredSymbol_0(ξ)‖
+plus that same quadratic envelope, for all natural shifts including zero.
+No retained full-symbol growth premise is used in these proofs.
+
+Zero convergence is equivalent to cancellation of the explicit actual
+residual. That cancellation is still open, as is integrability of the
+frequency envelope in the actual Schwartz/carrier pairing and passage to
+its distributional limit. Tail vanishing, exterior/whole source attachment,
+central/boundary reconstruction and actual source-domain/quadratic/
+polarization/normalized estimate witnesses remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_LIMIT_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,973 build jobs passed. All eight audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `808ffbd8a7fb1e3c286ac8373e2583419243d14e`,
+run `37026931252`, job `110903822905`, source blob
+`68e9451c4e899c659f0d61e17b49384dc260aeb4`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL CENTERED POINTWISE LIMIT / RECIPROCAL-SERIES RESIDUAL: CONSTRUCTED
+UNIFORM-IN-SHIFT FREQUENCY ENVELOPE: CONSTRUCTED
+NEXT: ACTUAL RESIDUAL CANCELLATION + PAIRING DOMINATION / LIMIT PASSAGE
+      → TAIL VANISHING / EXTERIOR ATTACHMENT → WHOLE SOURCE + SOURCE DOMAIN
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — actual centered digamma cubic step decay
 
 Continues from `1ce945e7da95f500184643b674474ea4f940f63f`.
