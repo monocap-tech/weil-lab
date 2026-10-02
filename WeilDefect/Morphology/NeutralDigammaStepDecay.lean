@@ -27,7 +27,7 @@ theorem neutralGaussReciprocal_centered_bound (n : ℕ) (t : ℝ) :
   have hr : 0 < r := by dsimp [r]; positivity
   have hs : 0 < s := by dsimp [s]; positivity
   have hd : 0 < r * (r^2+(t/2)^2) := by positivity
-  have hsr : s ≤ 4*r := by dsimp [s,r]; nlinarith [Nat.cast_nonneg n (R := ℝ)]
+  have hsr : s ≤ 4*r := by dsimp [s,r]; nlinarith [Nat.cast_nonneg n (α := ℝ)]
   have hc : s^3 ≤ (4*r)^3 := pow_le_pow_left₀ hs.le hsr 3
   constructor
   · exact div_nonneg (sq_nonneg _) hd.le
