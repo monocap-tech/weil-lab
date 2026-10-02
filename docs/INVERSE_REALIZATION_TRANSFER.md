@@ -436,3 +436,51 @@ positivity.
 \texttt{IRT-0C / CANONICAL-SYSTEM + DE BRANGES RIGIDITY SCREEN}
 }
 \]
+
+
+## 16. IRT-0C determination — canonical-system / de Branges rigidity
+
+Classical canonical systems genuinely solve the holomorphic-slack problem:
+one positive semidefinite Hamiltonian controls the Weyl coefficient, transfer
+matrix, Hermite--Biehler endpoint function, phase, and self-adjoint spectral
+zero sets.
+
+The same positivity is too strong for direct use on the false-RH branch.
+A direct realization of the critical-line completed-zeta divisor as a
+self-adjoint/de Branges spectral component forces the relevant zeros onto the
+real spectral axis.
+
+The zeta-specific Suzuki family confirms the boundary. For
+
+\[
+\Theta_\omega(z)
+=
+\frac{\xi(1/2-\omega-iz)}
+     {\xi(1/2+\omega-iz)},
+\]
+
+an explicit canonical system is known unconditionally in the large-shift
+regime \(\omega>1\), while extension of the positive Hamiltonian construction
+through all \(\omega>0\) gives an RH criterion.
+
+Therefore the classical positive route is:
+
+\[
+\boxed{
+\text{RIGID ENOUGH / DIRECT FALSE-RH USE TOO STRONG}.
+}
+\]
+
+See [IRT-0C checkpoint](../notes/IRT_0C_CANONICAL_DEBRANGES_20261002.md).
+
+A narrower unresolved route remains: propagate only a packet-local invariant
+from the large-shift realized regime toward the critical regime, strictly below
+the full positivity/innerness statement.
+
+## 17. Current cursor
+
+\[
+\boxed{
+\texttt{IRT-0C1 / SUZUKI-SHIFT PARAMETER-FLOW AUDIT}
+}
+\]
