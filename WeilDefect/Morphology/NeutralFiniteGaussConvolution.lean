@@ -93,10 +93,11 @@ theorem neutralFiniteGaussConvolution_weak_fourier
     (ContinuousLinearMap.mul ℂ ℂ) (L := innerₗ ℝ) (μ := volume) (ν := volume)
     Real.continuous_fourierChar continuous_inner (𝓕⁻ u).integrable
     (neutralFiniteGaussConvolution_integrable carrier N)
-  have hu : 𝓕 (fun x : ℝ => 𝓕⁻ u x) = (u : ℝ → ℂ) := by
-    rw [← SchwartzMap.fourier_coe, FourierTransform.fourier_fourierInv_eq]
-  simpa [ContinuousLinearMap.mul_apply', ← SchwartzMap.fourierInv_coe,
-    hu, neutralFiniteGaussConvolution_fourier] using! h
+  have h' : (∫ x, 𝓕 (𝓕⁻ u) x * neutralFiniteGaussConvolution carrier N x) =
+      ∫ ξ, 𝓕⁻ u ξ * 𝓕 (neutralFiniteGaussConvolution carrier N) ξ := by
+    simpa [ContinuousLinearMap.mul_apply'] using! h
+  rw [FourierTransform.fourier_fourierInv_eq] at h'
+  simpa only [neutralFiniteGaussConvolution_fourier] using h'
 
 end
 
