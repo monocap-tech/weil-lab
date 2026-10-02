@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralDigammaRealAnchor.lean
+          git hash-object WeilDefect/Morphology/NeutralDigammaRealComplexAnchor.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralDigammaRealAnchor
+          lake build WeilDefect.Morphology.NeutralDigammaRealComplexAnchor
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,19 +72,17 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-digamma-real-anchor-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralDigammaRealAnchor
-          #print axioms WeilDefect.neutralPositiveReal_ne_neg_nat
-          #print axioms WeilDefect.neutralDigamma_real_shift_sub_log_tendsto
-          #print axioms WeilDefect.neutralDigamma_real_finite_recurrence
-          #print axioms WeilDefect.neutralDigamma_real_euler_partial_tendsto
-          #print axioms WeilDefect.neutralDigamma_real_euler_term_bound
-          #print axioms WeilDefect.neutralDigamma_real_euler_summable
-          #print axioms WeilDefect.neutralDigamma_real_euler_hasSum
-          #print axioms WeilDefect.neutralDigamma_real_eq_euler_series
+          cat > /tmp/rpb108-digamma-real-complex-anchor-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralDigammaRealComplexAnchor
+          #print axioms WeilDefect.neutralGamma_deriv_ofReal
+          #print axioms WeilDefect.neutralDigamma_ofReal_eq_real_quotient
+          #print axioms WeilDefect.neutralDigamma_ofReal_im_zero
+          #print axioms WeilDefect.neutralDigamma_ofReal_eq_re
+          #print axioms WeilDefect.neutralDigamma_ofReal_euler_hasSum
+          #print axioms WeilDefect.neutralDigamma_ofReal_eq_complex_euler_series
           LEAN
-          lake env lean /tmp/rpb108-digamma-real-anchor-audit.lean | tee /tmp/rpb108-digamma-real-anchor-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-digamma-real-anchor-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-digamma-real-complex-anchor-audit.lean | tee /tmp/rpb108-digamma-real-complex-anchor-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-digamma-real-complex-anchor-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

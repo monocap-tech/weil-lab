@@ -1,5 +1,40 @@
 # Lean Formalization Track
 
+## RPB-108 — independent actual digamma positive-real Euler anchor
+
+Continues from `0bb110454c42d58f99c62ade4cc0cf2b68611344`.
+`NeutralDigammaRealAnchor` proves actual Re ψ(N+x)-log N → 0 for every
+positive real x, using the independent log-convex Gamma bounds. The actual
+finite recurrence and the harmonic Euler-Mascheroni limit then identify
+Re ψ(x) as -γ plus the regularized reciprocal series
+∑' n, [1/(n+1)-1/(x+n)]. An independent summable bound proves the actual
+series is absolutely summable on the positive real axis.
+
+No full-symbol growth or Gauss representation premise enters this anchor;
+no differentiation of a pointwise Gamma approximation limit is used.
+Complex analytic series identification and cancellation on the actual
+source line remain open. The certified pairing transfer retains its
+existing full-symbol growth premise. Exterior/whole source attachment,
+central/boundary reconstruction and actual source-domain/quadratic/
+polarization/normalized estimate witnesses remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_REAL_ANCHOR_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,975 build jobs passed. All eight audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `5bf141ade97f784c857cd5fd9538d43dae4d013f`,
+run `37061473678`, job `111018892567`, source blob
+`ab7c5f233a4a2976bc3f6cca96dd529145fedff4`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL POSITIVE-REAL DIGAMMA EULER SERIES ANCHOR: CONSTRUCTED
+NEXT: COMPLEX ANALYTIC SERIES IDENTIFICATION → ACTUAL RESIDUAL CANCELLATION
+      → TAIL VANISHING / EXTERIOR ATTACHMENT → WHOLE SOURCE + SOURCE DOMAIN
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — actual centered residual pairing limit
 
 Continues from `536987d576594fd7ec9c110e8ecf26f79099dd1d`.
