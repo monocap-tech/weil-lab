@@ -1,5 +1,40 @@
 # Lean Formalization Track
 
+## RPB-108 — exterior weak convergence and exact shifted-tail defect
+
+Continues from `c22d1b4a18d8918c617153f1a3296ab73cfd2aee`.
+`NeutralGaussExteriorWeak` proves genuine signed gap-function pairings for
+every Schwartz test. For tests vanishing on (-a,a), the finite convolution
+pairing error is bounded by actual carrier L1 mass times test L1 norm
+times the geometric gap error. Thus its pairing converges to minus the
+signed gap-function pairing.
+
+The exact operator split now proves that the actual shifted-tail pairing
+converges to actual archimedean action minus signed gap-function pairing.
+Tail convergence to zero is equivalent to exterior source attachment on
+the test. The limit is constructed; its vanishing remains unproved.
+No new tail-vanishing premise is added. Whole residual/source identity,
+central/boundary reconstruction and actual source-domain/quadratic/
+polarization/normalized estimate witnesses remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_GAUSS_EXTERIOR_WEAK_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,969 build jobs passed. All five audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `20948ced81df10d90d34de9dea740628ead1c53e`,
+run `36969430502`, job `110720096333`, source blob
+`079b87d17502e6159dffee61b3fb993ab31fa735`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+EXTERIOR PHYSICAL WEAK LIMIT + EXACT SHIFTED-TAIL DEFECT LIMIT: CONSTRUCTED
+NEXT: INDEPENDENT ACTUAL DIGAMMA CONTROL → TAIL VANISHING / EXTERIOR ATTACHMENT
+      → WHOLE SOURCE; CENTRAL/BOUNDARY + SOURCE DOMAIN ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+
 ## RPB-108 — quantitative exterior finite Gauss convergence
 
 Continues from `d1649813180a75d93222e0fffc0f1d9e14df7fe8`.

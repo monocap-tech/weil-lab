@@ -9,6 +9,14 @@
 
 ## Current standing
 
+The exterior finite convolution now converges in genuine pairings on
+Schwartz tests vanishing on (-a,a), with explicit geometric error times
+actual test L1 norm. The actual shifted-tail pairing converges to the
+archimedean action minus signed gap-function pairing. Its vanishing is
+equivalent to exterior source attachment and remains open.
+See [exterior-weak checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_GAUSS_EXTERIOR_WEAK_20261001.md)
+and [terminology](TERMINOLOGY_RPB108_GAUSS_EXTERIOR_WEAK.md).
+
 The actual finite Gauss convolution now has a uniform geometric exterior
 error bound from the rough carrier's actual L1 mass. It converges at every
 exterior point to the negative of the signed gap function. The shifted
@@ -24,7 +32,7 @@ A uniform tail estimate and support-separated weak/operator limit remain open.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `d1649813180a75d93222e0fffc0f1d9e14df7fe8`.
+This pass continues from `c22d1b4a18d8918c617153f1a3296ab73cfd2aee`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -172,8 +180,10 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    The actual shifted digamma action is now isolated by an exact operator
    split on every Schwartz test. The actual finite convolution has a uniform
    geometric exterior error and its pointwise limit is constructed. The
-   shifted digamma action's own support-separated estimate and weak/operator
-   limit are next.
+   finite physical pairing limit on support-separated Schwartz tests is now
+   constructed. The shifted-tail pairing converges to the exact source-
+   attachment defect. Independent digamma control proving its vanishing
+   is next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~

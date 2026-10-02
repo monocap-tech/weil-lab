@@ -373,3 +373,30 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 exterior weak convergence and exact shifted-tail defect, October 1, 2026
+
+Recovered research head: `c22d1b4a18d8918c617153f1a3296ab73cfd2aee`.
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,969 build jobs passed. All five audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `20948ced81df10d90d34de9dea740628ead1c53e`,
+run `36969430502`, job `110720096333`, source blob
+`079b87d17502e6159dffee61b3fb993ab31fa735`.
+
+The signed gap-function pairing genuinely converges on every Schwartz test.
+On support-separated tests the finite convolution pairing has an explicit
+geometric error times actual test L1 norm and converges to minus the signed
+gap-function pairing. The actual shifted-tail pairing therefore converges
+to actual archimedean action minus signed gap-function pairing. Uniqueness
+of limits makes tail vanishing equivalent to exterior attachment on the
+test. Neither the zero limit nor actual attachment is supplied as a witness.
+
+Independent digamma control proving tail vanishing remains open. Whole
+residual/source identity, central/boundary reconstruction and actual source-
+domain/quadratic/polarization/normalized estimate witnesses remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.
