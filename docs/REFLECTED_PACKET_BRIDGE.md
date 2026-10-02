@@ -9,6 +9,18 @@
 
 ## Current standing
 
+A concrete spectral operator-domain criterion now constructs source regularity:
+if the exact symbol times the carrier's L2 Fourier transform is L2, its inverse
+Fourier transform represents the actual whole-line multiplier core. Adding
+the physical pole and subtracting the exterior candidate constructs the
+locally integrable actual defect with its compact pairing. Boundary removal
+then gives whole compact integral-growth realization with central cancellation.
+Actual spectral L2 membership and actual central cancellation remain open.
+The spectral criterion is stronger than source form energy; no upgrade from
+form-domain membership is claimed. Full-symbol growth remains retained.
+See [operator-domain checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_OPERATOR_DOMAIN_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_SOURCE_OPERATOR_DOMAIN.md).
+
 Boundary removal is now proved for a regular actual compact source defect.
 Compact-test detection gives almost-everywhere vanishing on the central and
 exterior open regions; the two endpoints have zero volume. This yields whole

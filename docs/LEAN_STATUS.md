@@ -1,5 +1,44 @@
 # Lean Status
 
+## RPB-108 — spectral operator-domain source regularity
+
+Continues from `592eaf780c9c93b93689156b9c3a649971981fc3`.
+
+`NeutralSourceOperatorDomain` gives a concrete spectral route to source
+regularity. If the exact right-limit symbol times the carrier's L2 Fourier
+transform lies in L2, its inverse Fourier transform is an actual physical
+L2 core. Distributional multiplication is identified with the spectral
+product using genuine a.e. representative laws. Compatibility of L2 and
+tempered Fourier transforms proves exact whole-line core attachment and
+pairing. Adding the actual pole and subtracting the existing exterior
+candidate constructs a locally integrable representative of the actual
+compact source defect, with the correct compact-test pairing. The preceding
+boundary-removal theorem then derives whole compact integral-growth weak
+realization when actual central source cancellation is supplied.
+
+Actual spectral operator-domain membership and actual central cancellation
+remain open witnesses. This criterion is stronger than the source form's
+one-logarithm quadratic energy; no form-to-operator-domain upgrade is claimed.
+No pointwise exponential growth premise or actual full-source weak identity
+is assumed to construct the core. Full-symbol temperate growth is retained.
+Whole-source realization and actual source-domain/quadratic/polarization/
+normalized estimate witnesses remain open. Threshold bookkeeping is closed;
+logarithmic coercivity has not started.
+
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_OPERATOR_DOMAIN_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,984 build jobs passed. All six endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `ab3cdf9f9740142e2a4313b86f0c19eb1509d935`, run `37074199465`, job `111060294126`, source blob `2d7f07fe842550a4b2e5958e7d3a0d8c2de81250`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+EXACT L2 CORE + REGULAR ACTUAL DEFECT: CONSTRUCTED FROM SPECTRAL L2
+WHOLE COMPACT REALIZATION: DERIVED FROM SPECTRAL L2 + CENTRAL CANCELLATION
+ACTUAL SPECTRAL L2 MEMBERSHIP + CENTRAL SOURCE CANCELLATION: OPEN
+ACTUAL SOURCE FORM-DOMAIN / QUADRATIC / POLARIZATION WITNESSES: OPEN
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — regular source defect boundary removal
 
 Continues from `48771be33f1091d4a5e89ed9bdfce08e9c795ebc`.
