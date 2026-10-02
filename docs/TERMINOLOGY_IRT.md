@@ -234,3 +234,47 @@ definitizing function of controlled complexity, a phase/interlacing rule, or
 another condition that quantitatively couples zeros and poles.
 
 Only such additional rigidity can qualify as a candidate mixed-divisor input.
+
+
+## Positive canonical-system barrier
+
+The **positive canonical-system barrier** is the following structural fact.
+
+A classical two-dimensional canonical system with positive semidefinite
+Hamiltonian has a Herglotz--Nevanlinna Weyl coefficient, and its finite-stage
+endpoint entire function is Hermite--Biehler. Consequently the corresponding
+real spectral components have real/interlacing zero sets.
+
+For IRT, a direct identification of the completed-zeta critical-line entire
+function with such a spectral component therefore imports RH-strength
+real-zero information rather than deriving a weaker mixed-divisor estimate.
+
+## Suzuki shift family
+
+The **Suzuki shift family** is
+
+\[
+\Theta_\omega(z)
+=
+\frac{\xi(1/2-\omega-iz)}
+     {\xi(1/2+\omega-iz)},
+\qquad \omega>0,
+\]
+
+as used by Masatoshi Suzuki in the canonical-system criterion for RH.
+
+The family supplies an unconditional positive-canonical-system realization in
+the known large-shift regime \(\omega>1\). Extending the corresponding positive
+Hamiltonian construction through all \(\omega>0\) is RH-criterion strength.
+
+## Parameter-flow residual
+
+The **parameter-flow residual** is the narrower surviving IRT question whether
+one can use a regime with an already valid canonical-system realization
+(e.g. the large-shift Suzuki regime) and propagate only a packet-local invariant
+toward the critical regime, without proving the full positivity/innerness
+statement whose continuation would already be equivalent to RH.
+
+A parameter-flow argument counts as new progress only if its propagated
+quantity maps explicitly to the frozen RENJET/KPH target and is strictly
+weaker than global Hamiltonian positivity.
