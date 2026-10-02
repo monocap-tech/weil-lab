@@ -37,7 +37,7 @@ theorem neutralCompactSourceDefect_add
       neutralCompactSourceDefect carrier a hSymbol u hu +
       neutralCompactSourceDefect carrier a hSymbol v hv := by
   unfold neutralCompactSourceDefect
-  rw [frozenWeilCompactAction_add]
+  rw [frozenWeilCompactAction_add carrier a hSymbol u v hu hv]
   simp only [SchwartzMap.add_apply, add_mul]
   rw [integral_add
     (neutralExteriorResidualCandidate_compact_pairing_integrable carrier hca u hu)
@@ -70,8 +70,7 @@ theorem neutralCompactSourceDefect_eq_of_central_eq
   have hz := neutralCompactSourceDefect_exterior_zero carrier hc hca hSymbol
     (u - v) hw (by intro x hx; simp only [SchwartzMap.sub_apply, heq x hx, sub_self])
   have hadd := neutralCompactSourceDefect_add carrier hca hSymbol (u - v) v hw hv
-  rw [sub_add_cancel] at hadd
-  simpa only [hz, zero_add] using hadd
+  simpa only [sub_add_cancel, hz, zero_add] using hadd
 
 /-- On a central test, the exterior candidate contributes zero. Central
 cancellation is therefore exactly cancellation of the actual source action. -/
