@@ -1,5 +1,38 @@
 # Lean Formalization Track
 
+## RPB-108 — actual shifted digamma action and physical finite split
+
+Continues from `3d0347e1738b2d8abc776a0eb0a5af57e22c11e3`.
+`NeutralShiftedDigammaAction` lifts the proved finite recurrence to the
+actual multiplier functions at t=2πξ. For every fixed N, the shifted
+digamma symbol has temperate growth derived from the retained full-symbol
+premise and proved finite Gauss growth; no new tail premise is introduced.
+The actual archimedean action equals the shifted digamma action minus
+the genuine finite physical convolution pairing on every Schwartz test.
+The actual whole core also subtracts the genuine finite prime pairing.
+
+A bound uniform in N and the support-separated weak/operator tail limit
+remain open, as do whole archimedean/source attachment, central/boundary
+reconstruction and actual source-domain/quadratic/polarization/normalized
+estimate witnesses. See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,967 build jobs passed. All four audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `b5539d09ef9c7661d5d512a1f24f4affc3333856`,
+run `36962858435`, job `110700132811`, source blob
+`3a769eee13cff80100c34b154e153d1bfe2d2d7f`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL SHIFTED DIGAMMA ACTION / FINITE PHYSICAL OPERATOR SPLIT: CONSTRUCTED
+NEXT: SUPPORT-SEPARATED SHIFTED TAIL ESTIMATE + WEAK/OPERATOR LIMIT
+      → WHOLE ARCHIMEDEAN SOURCE; CENTRAL/BOUNDARY + SOURCE DOMAIN ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+
 ## RPB-108 — moment-derived finite Gauss multiplier attachment
 
 Continues from `5d341dfb342fd01ff42c30899caac9f5409a3051`.

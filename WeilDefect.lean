@@ -62,6 +62,7 @@ import WeilDefect.Morphology.NeutralFiniteGauss
 import WeilDefect.Morphology.NeutralLaplaceFourier
 import WeilDefect.Morphology.NeutralFiniteGaussConvolution
 import WeilDefect.Morphology.NeutralGaussMultiplier
+import WeilDefect.Morphology.NeutralShiftedDigammaAction
 
 import WeilDefect.Morphology.Noncompact
 

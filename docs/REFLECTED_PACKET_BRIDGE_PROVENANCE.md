@@ -318,3 +318,30 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 actual shifted digamma action and physical finite split, October 1, 2026
+
+Recovered research head: `3d0347e1738b2d8abc776a0eb0a5af57e22c11e3`.
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,967 build jobs passed. All four audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `b5539d09ef9c7661d5d512a1f24f4affc3333856`,
+run `36962858435`, job `110700132811`, source blob
+`3a769eee13cff80100c34b154e153d1bfe2d2d7f`.
+
+The actual shifted digamma symbol equals the original archimedean symbol
+plus the proved finite reciprocal symbol. Fixed-N temperate growth is
+inherited from the retained full-symbol premise; no new tail premise is
+introduced. The actual archimedean action is the shifted action minus the
+genuine finite Gauss convolution pairing. The actual whole core also
+subtracts the genuine finite prime pairing, on every Schwartz test.
+
+Uniform tail estimates and support-separated weak/operator limits remain
+open, as do whole archimedean/source attachment, central/boundary
+reconstruction and actual source-domain/quadratic/polarization/normalized
+estimate witnesses. No whole singular Gauss identity is claimed.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.

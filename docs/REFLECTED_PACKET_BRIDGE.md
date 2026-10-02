@@ -9,7 +9,15 @@
 
 ## Current standing
 
-This pass continues from `5d341dfb342fd01ff42c30899caac9f5409a3051`.
+The actual shifted digamma action now has fixed-N temperate growth inherited
+from the retained full-symbol premise and proved finite Gauss growth. On
+every Schwartz test, the actual whole multiplier core equals that shifted
+action minus the genuine finite Gauss convolution and finite prime pairings.
+A uniform tail estimate and support-separated weak/operator limit remain open.
+See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
+and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
+
+This pass continues from `3d0347e1738b2d8abc776a0eb0a5af57e22c11e3`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -154,7 +162,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    actual rough-carrier convolution have exact Fourier transforms and a
    Schwartz weak pairing identity. Its moment-derived temperate symbol now
    attaches the existing tempered multiplier to the physical finite convolution.
-   Controlling the shifted-tail weak/operator limit is next.
+   The actual shifted digamma action is now isolated by an exact operator
+   split on every Schwartz test. A support-separated tail estimate and
+   weak/operator limit are next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
