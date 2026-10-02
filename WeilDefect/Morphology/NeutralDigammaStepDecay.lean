@@ -14,8 +14,7 @@ theorem neutralGaussReciprocal_centered_deficit (n : ℕ) (t : ℝ) :
   have hr : 0 < (n : ℝ)+1/4 := by positivity
   have hd : 0 < ((n : ℝ)+1/4)^2 + (t/2)^2 := by positivity
   unfold neutralGaussReciprocal
-  field_simp
-  <;> ring
+  field_simp [ne_of_gt hr, ne_of_gt hd] <;> ring
 
 /-- A concrete cubic bound uniform in the natural shift index. -/
 theorem neutralGaussReciprocal_centered_bound (n : ℕ) (t : ℝ) :
@@ -35,7 +34,7 @@ theorem neutralGaussReciprocal_centered_bound (n : ℕ) (t : ℝ) :
   · change (t/2)^2 / (r*(r^2+(t/2)^2)) ≤ 64*(t/2)^2/s^3
     apply (div_le_div_iff₀ hd (pow_pos hs 3)).mpr
     have h := mul_le_mul_of_nonneg_left hc (sq_nonneg (t/2))
-    nlinarith [sq_nonneg (t/2), mul_nonneg hr.le (sq_nonneg (t/2))]
+    nlinarith [mul_nonneg hr.le (sq_nonneg ((t/2)^2))]
 
 /-- Exact actual centered digamma increment, derived from the recurrence. -/
 theorem neutralCenteredDigammaSymbol_step (N : ℕ) (ξ : ℝ) :
