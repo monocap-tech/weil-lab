@@ -413,3 +413,133 @@ resolvent/jet data of the same type already covered by SOURCE-II/NJDG.
 
 Therefore the divergent reflected-pair shift well does not survive canonical
 selected-pole renormalization as a new independent theorem object.
+
+
+## RENJET semigroup realization
+
+For the first exponential-mode near kernel
+
+\[
+K_t(w)=\frac{e^{tw}-1-tw}{w^2},
+\qquad K_t(0)=\frac{t^2}{2},
+\]
+
+the **RENJET semigroup realization** is the exact identity
+
+\[
+K_t(w)=\int_0^t (t-r)e^{rw}\,dr.
+\]
+
+Thus \(K_t(-s)\) is the Laplace transform of the triangular finite-impulse
+kernel \((t-r)\mathbf 1_{[0,t]}(r)\).
+
+For a finite near divisor
+\(\Omega=\{w_1,\ldots,w_n\}\) with multiplicity/weight vector \(b\), define
+
+\[
+A_\Omega=\operatorname{diag}(w_1,\ldots,w_n),
+\qquad
+c^\ast=(1,\ldots,1).
+\]
+
+Then
+
+\[
+E_\Omega(r)=c^\ast e^{rA_\Omega}b
+\]
+
+and the mode-weighted near response is
+
+\[
+Q_t(\Omega)
+=
+c^\ast K_t(A_\Omega)b
+=
+\int_0^t(t-r)c^\ast e^{rA_\Omega}b\,dr.
+\]
+
+This is an exact finite-dimensional semigroup realization for each fixed finite
+near block.
+
+## Resolvent row
+
+A **resolvent row** for the near realization is
+
+\[
+H_\Omega(\delta)
+=
+c^\ast(\delta I-A_\Omega)^{-1}b
+=
+\sum_{\mu\in\Omega}\frac{m_\mu}{\delta-w_\mu}.
+\]
+
+Higher critical curvature rows correspond to higher resolvent powers/derivatives.
+
+This terminology records the exact systems interpretation of the NJDG
+critical-value/curvature data.
+
+## Loewner exactness route
+
+The **Loewner exactness route** is the conditional reconstruction:
+
+\[
+\text{sufficient well-conditioned samples of }H_\Omega
+\Longrightarrow
+\text{finite rational realization of }H_\Omega
+\Longrightarrow
+A_\Omega\text{-realization}
+\Longrightarrow
+Q_t(\Omega).
+\]
+
+For a rational transfer function of McMillan degree \(n\), a sufficiently rich
+Loewner data set can recover a minimal degree-\(n\) interpolant exactly.
+
+IRT may count this route only if the required sample locations and values are
+available under the canonical selected-only order and with projective
+conditioning.
+
+## Realization-rank debt
+
+The **realization-rank debt** is the need for a number of independent,
+well-conditioned resolvent observations commensurate with the McMillan
+degree/rank of the finite near transfer function.
+
+If the near block size can grow or its nodes collide, no fixed finite number of
+critical rows supplies a uniform exact reconstruction theorem.
+
+## Structure-baked interpolation
+
+**Structure-baked interpolation** is structured realization in which the
+analytic basis functions \(h_k(s)\), such as delay factors \(e^{-\tau s}\), are
+prescribed in advance and only the finite coefficient matrices are identified.
+
+Such a realization may represent a transcendental transfer function exactly,
+but it does not derive the prescribed exponential structure from finite
+unstructured data.
+
+For IRT, inserting the already known RENJET exponential kernel as a prescribed
+basis function is representational, not a mixed-divisor theorem.
+
+## Resolvent-to-semigroup gap
+
+The **resolvent-to-semigroup gap** is the distinction between finitely many
+point samples
+
+\[
+c^\ast(\lambda_j I-A)^{-1}b
+\]
+
+and control of
+
+\[
+c^\ast e^{tA}b
+\]
+
+or of a matrix function such as \(c^\ast K_t(A)b\).
+
+Classical semigroup generation/stability theorems bridge resolvent information
+to semigroup information only from continuum/half-plane or contour-scale
+resolvent hypotheses, not from a fixed finite collection of scalar samples.
+
+This is the systems-theoretic analogue of the NJDG finite-row obstruction.
