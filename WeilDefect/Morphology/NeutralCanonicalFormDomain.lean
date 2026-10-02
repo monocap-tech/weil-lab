@@ -23,7 +23,9 @@ theorem finiteLogFourierEnergy_add {f g : RealComplexL2}
   · exact logarithmicFourierWeight_continuous.aestronglyMeasurable.mul
       ((Lp.aestronglyMeasurable (𝓕 (f + g) : RealComplexL2)).norm.pow 2)
   · filter_upwards [Lp.coeFn_add (𝓕 f : RealComplexL2) (𝓕 g : RealComplexL2)] with ξ hξ
-    rw [fourier_add, hξ]
+    have hadd : (𝓕 (f + g) : RealComplexL2) = 𝓕 f + 𝓕 g :=
+      (Lp.fourierTransformₗᵢ ℝ ℂ).map_add f g
+    rw [hadd, hξ]
     simp only [Pi.add_apply]
     have hw : 0 ≤ logarithmicFourierWeight ξ :=
       le_trans (by norm_num) (one_le_logarithmicFourierWeight ξ)
@@ -58,7 +60,10 @@ def neutralCanonicalLogFormDomain (a : ℝ) : Submodule ℂ RealComplexL2 where
       exact hx
     · apply (integrable_zero ℝ ℝ volume).congr
       filter_upwards [Lp.coeFn_zero ℂ 2 volume] with ξ hξ
-      simp only [fourier_zero, hξ, Pi.zero_apply, norm_zero, zero_pow (by decide : 2 ≠ 0), mul_zero]
+      have hzero : (𝓕 (0 : RealComplexL2) : RealComplexL2) = 0 :=
+        (Lp.fourierTransformₗᵢ ℝ ℂ).map_zero
+      rw [hzero]
+      simp only [hξ, Pi.zero_apply, norm_zero, zero_pow (by decide : 2 ≠ 0), mul_zero]
   add_mem' := by
     intro f g hf hg
     constructor
