@@ -77,6 +77,7 @@ import WeilDefect.Morphology.NeutralDigammaEulerIdentity
 import WeilDefect.Morphology.NeutralDigammaCancellation
 import WeilDefect.Morphology.NeutralExteriorAttachment
 import WeilDefect.Morphology.NeutralExteriorSourceAttachment
+import WeilDefect.Morphology.NeutralSourceDefectLocalization
 
 import WeilDefect.Morphology.Noncompact
 

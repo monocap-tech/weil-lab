@@ -717,3 +717,28 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
 is closed; logarithmic coercivity has not started.
+
+## 2026-10-02 — RPB-108 compact exterior source realization
+
+Continues from research head `b5e35610cc3c790d4deb7e03e022f97196ad0750`.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,981 build jobs passed. All four endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `cbbee3e50dd3e4d68451b12ad874fe31887cee47`, run `37069776850`, job `111046209012`, source blob `49daf738913f8f6e4587adfe8a509dcfb90895b3`.
+
+Actual compact-test pole integrability justifies adding the physical pole
+to the certified exterior multiplier representation. The exterior ingredients
+pair integrably with compact Schwartz tests. On exterior tests, central test
+vanishing identifies these pairings with those of the existing zero-continued
+residual candidate. That candidate therefore realizes the frozen corrected
+source action on every compact exterior test. Existing full-symbol growth
+is retained; no whole representation premise is added.
+
+Next: central cancellation and boundary reconstruction to obtain realization
+on arbitrary compact tests. Candidate central vanishing does not prove
+central vanishing of the actual action, and exterior equality does not rule
+out a boundary-supported defect. Whole compact weak realization and actual
+source-domain/quadratic/polarization/normalized estimate witnesses remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
+is closed; logarithmic coercivity has not started.

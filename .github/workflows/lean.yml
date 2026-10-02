@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralExteriorSourceAttachment.lean
+          git hash-object WeilDefect/Morphology/NeutralSourceDefectLocalization.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralExteriorSourceAttachment
+          lake build WeilDefect.Morphology.NeutralSourceDefectLocalization
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,15 +72,16 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-exterior-source-attachment-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralExteriorSourceAttachment
-          #print axioms WeilDefect.neutralExteriorResidualIngredients_compact_pairing_integrable
-          #print axioms WeilDefect.neutralExteriorResidualCandidate_pairing_eq_ingredients
-          #print axioms WeilDefect.frozenWeilCompactAction_exterior_pairing
-          #print axioms WeilDefect.neutralExteriorResidualCandidate_exterior_represents
+          cat > /tmp/rpb108-source-defect-localization-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralSourceDefectLocalization
+          #print axioms WeilDefect.neutralExteriorResidualCandidate_compact_pairing_integrable
+          #print axioms WeilDefect.neutralCompactSourceDefect_add
+          #print axioms WeilDefect.neutralCompactSourceDefect_exterior_zero
+          #print axioms WeilDefect.neutralCompactSourceDefect_eq_of_central_eq
+          #print axioms WeilDefect.neutralCompactSourceDefect_central_eq_action
           LEAN
-          lake env lean /tmp/rpb108-exterior-source-attachment-audit.lean | tee /tmp/rpb108-exterior-source-attachment-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-exterior-source-attachment-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-source-defect-localization-audit.lean | tee /tmp/rpb108-source-defect-localization-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-source-defect-localization-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash

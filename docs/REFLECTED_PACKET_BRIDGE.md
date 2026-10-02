@@ -9,12 +9,22 @@
 
 ## Current standing
 
+The existing zero-continued residual candidate now realizes the actual
+corrected source action on compact exterior tests. Actual compact-test
+pole integrability justifies pole addition to the exterior multiplier
+attachment. Central test vanishing identifies candidate and ingredients
+pairings. Full-symbol growth is retained. Central cancellation and boundary
+reconstruction remain before realization on arbitrary compact tests.
+See [exterior-source checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_EXTERIOR_SOURCE_ATTACHMENT_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_EXTERIOR_SOURCE_ATTACHMENT.md).
+
 Actual exterior multiplier attachment is now constructed on Schwartz tests
 vanishing on (-a,a), for 0≤c<a. The shifted digamma tail tends to zero;
 the archimedean core equals the gap-function pairing, and the full fixed-
 cutoff core equals the gap-minus-prime pairing with genuine integrability.
-Existing full-symbol growth is retained. Pole addition on compact tests,
-central/boundary reconstruction and whole source attachment remain next.
+Existing full-symbol growth is retained. Pole addition on compact exterior
+tests is now supplied above; central/boundary and whole-source reconstruction
+remain open.
 See [exterior-attachment checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_EXTERIOR_ATTACHMENT_20261002.md)
 and [terminology](TERMINOLOGY_RPB108_EXTERIOR_ATTACHMENT.md).
 
@@ -128,7 +138,7 @@ The support-separated shifted-tail pairing limit is now zero as proved above.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `fe9566792500d73678639ff1afbf82ac0b01cdee`.
+This pass continues from `b5e35610cc3c790d4deb7e03e022f97196ad0750`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -296,8 +306,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    supplied below.
    Actual source-line HasSum now cancels the represented centered residual;
    the symbol and actual action tend to zero. Exterior multiplier attachment
-   is constructed; pole addition and central/boundary reconstruction remain
-   before whole source attachment.
+   is constructed. Pole addition gives actual compact exterior realization
+   by the existing residual candidate. Central cancellation and boundary
+   reconstruction remain before whole source attachment.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~

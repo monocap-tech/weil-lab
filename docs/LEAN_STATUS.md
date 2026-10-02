@@ -1,5 +1,35 @@
 # Lean Status
 
+## RPB-108 — compact exterior source realization
+
+Continues from `b5e35610cc3c790d4deb7e03e022f97196ad0750`.
+`NeutralExteriorSourceAttachment` adds the actual physical pole to the
+certified exterior multiplier pairing using genuine compact-test pole
+integrability. The full exterior ingredients pair integrably with compact
+Schwartz tests. On exterior tests their pairing equals that of the existing
+zero-continued residual candidate, because the test vanishes centrally.
+The candidate therefore represents the frozen corrected source action on
+every compact exterior test. Full-symbol temperate growth is retained.
+
+Next: central cancellation and boundary reconstruction to extend this
+restricted identity to arbitrary compact tests. A central or boundary-
+supported distribution defect has not been excluded. Whole compact weak
+realization and actual source-domain/quadratic/polarization/normalized
+estimate witnesses remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_EXTERIOR_SOURCE_ATTACHMENT_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,981 build jobs passed. All four endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `cbbee3e50dd3e4d68451b12ad874fe31887cee47`, run `37069776850`, job `111046209012`, source blob `49daf738913f8f6e4587adfe8a509dcfb90895b3`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+ACTUAL COMPACT EXTERIOR SOURCE REALIZATION: CONSTRUCTED
+ACTUAL PHYSICAL POLE ADDITION: CONSTRUCTED
+NEXT: CENTRAL CANCELLATION + BOUNDARY RECONSTRUCTION → WHOLE SOURCE
+      → ACTUAL SOURCE-DOMAIN / QUADRATIC / POLARIZATION WITNESSES
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — actual exterior multiplier attachment
 
 Continues from `fe9566792500d73678639ff1afbf82ac0b01cdee`.
