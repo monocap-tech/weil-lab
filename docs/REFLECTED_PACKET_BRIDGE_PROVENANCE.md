@@ -427,3 +427,31 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Historical notes and canonical standing are unchanged. Threshold bookkeeping
 is closed; coercivity has not started.
+
+## RPB-108 actual scalar action separation and centered digamma tail, October 2, 2026
+
+Recovered research head: `0ed9df1239eabbfbba06eec7509badbe07432d9b`.
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,971 build jobs passed. All six audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `4c562ff72edae1571e590ca3357bbc03a0c3940f`,
+run `37009813241`, job `110846577087`, source blob
+`0e2c679ae105a1fc0e7cead1cb33a6e190ea3183`.
+
+The generic existing multiplier scalar-subtraction law is proved. Actual
+compact carrier support makes its distribution evaluate to zero on
+separated tests. The zero-frequency-centered actual shifted symbol has
+lawful fixed-N temperate growth, and its action equals the uncentered tail
+on every such test. It has the same exact source-attachment defect limit;
+its zero limit is equivalent to exterior attachment but remains unproved.
+Carrier annihilation is not archimedean/source residual cancellation.
+
+Scalar action separation is closed. Independent centered nonzero-frequency
+control, tail vanishing, exterior/whole source attachment, central/boundary
+reconstruction and actual source-domain/quadratic/polarization/normalized
+estimate witnesses remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Historical notes and canonical standing are unchanged. Threshold bookkeeping
+is closed; coercivity has not started.

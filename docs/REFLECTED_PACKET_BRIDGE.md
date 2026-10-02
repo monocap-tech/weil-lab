@@ -9,6 +9,14 @@
 
 ## Current standing
 
+Scalar action separation is now exact: subtracting any scalar symbol
+changes the multiplier pairing only by that scalar times actual carrier
+evaluation. Support-separated tests annihilate the carrier, so the actual
+zero-frequency-centered tail has exactly the same action and defect limit.
+Independent centered remainder control and tail vanishing remain open.
+See [centering checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_CENTERING_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_DIGAMMA_CENTERING.md).
+
 Independent actual Gamma differentiation, recurrence and log-convexity now
 give log(x-1)≤Re ψ(x)≤log x for x>1. The shifted source symbol's zero-
 frequency value has the exact corresponding bracket. Nonzero-frequency
@@ -39,7 +47,7 @@ A uniform tail estimate and support-separated weak/operator limit remain open.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `b2be21a14300825e897a5242665192480d85887a`.
+This pass continues from `0ed9df1239eabbfbba06eec7509badbe07432d9b`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -190,8 +198,9 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    finite physical pairing limit on support-separated Schwartz tests is now
    constructed. The shifted-tail pairing converges to the exact source-
    attachment defect. Independent real-axis digamma bounds now control
-   the actual shifted zero-frequency value. Scalar action separation and
-   centered nonzero-frequency digamma control proving tail vanishing are next.
+   the actual shifted zero-frequency value. Scalar action separation is now
+   exact on support-separated tests. Independent centered nonzero-frequency
+   digamma control proving tail vanishing is next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~
