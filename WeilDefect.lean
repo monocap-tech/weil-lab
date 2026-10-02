@@ -68,6 +68,7 @@ import WeilDefect.Morphology.NeutralGaussExteriorWeak
 import WeilDefect.Morphology.NeutralDigammaRealBounds
 import WeilDefect.Morphology.NeutralDigammaCentering
 import WeilDefect.Morphology.NeutralDigammaStepDecay
+import WeilDefect.Morphology.NeutralDigammaLimit
 
 import WeilDefect.Morphology.Noncompact
 

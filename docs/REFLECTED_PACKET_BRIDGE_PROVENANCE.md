@@ -484,3 +484,37 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
 is closed; logarithmic coercivity has not started.
+
+
+## 2026-10-02 — RPB-108 actual centered limit and uniform frequency envelope
+
+Continues from research head `1522fd5cbe750d9bb68db255698ecd074da22dcb`.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,973 build jobs passed. All eight audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `808ffbd8a7fb1e3c286ac8373e2583419243d14e`,
+run `37026931252`, job `110903822905`, source blob
+`68e9451c4e899c659f0d61e17b49384dc260aeb4`.
+
+The actual centered digamma sequence converges pointwise to its initial
+centered value plus the absolutely convergent actual increment series.
+The actual recurrence rewrites that residual as the centered reciprocal
+series plus the initial actual value. Zero convergence is equivalent to
+cancellation of this residual; cancellation is not yet proved.
+
+A fixed finite cubic-series mass S yields the envelope
+‖C_N(ξ)‖ ≤ ‖C_0(ξ)‖ + 64(πξ)^2 S for every natural shift including zero.
+These results use no retained full-symbol growth premise. Integrability
+of this envelope in the actual Schwartz/carrier pairing and distributional
+limit passage are still open.
+
+Next: actual residual cancellation and integrable pairing domination.
+Tail vanishing, exterior/whole source attachment, central/boundary
+reconstruction and actual source-domain/quadratic/polarization/normalized
+estimate witnesses remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
+is closed; logarithmic coercivity has not started.
