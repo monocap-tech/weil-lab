@@ -50,8 +50,11 @@ theorem neutralDigamma_log_sub_one_le {x : ℝ} (hx : 1 < x) :
   have h := Real.convexOn_log_Gamma.slope_le_of_hasDerivAt hp
     (show 0 < x by linarith) (show x-1 < x by linarith)
     (neutralLogGamma_hasDerivAt (by linarith : 0 < x))
-  have heq : x = (x-1)+1 := by ring
-  simpa only [Function.comp_def, heq, neutralLogGamma_unit_slope hp] using h
+  have hs : slope (fun y : ℝ => Real.log (Real.Gamma y)) (x-1) x =
+      Real.log (x-1) := by
+    convert neutralLogGamma_unit_slope hp using 1 <;> ring
+  change slope (fun y : ℝ => Real.log (Real.Gamma y)) (x-1) x ≤ _ at h
+  rwa [hs] at h
 
 /-- The exact shifted source symbol at zero frequency has explicit bounds.
 This controls its scalar contact value, not its frequency-dependent remainder. -/
