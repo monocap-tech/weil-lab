@@ -9,6 +9,14 @@
 
 ## Current standing
 
+Actual digamma is now proved real-valued at every positive real argument by
+comparing actual complex and real Gamma derivatives. The certified real
+Euler anchor upgrades to a full complex HasSum and Euler-series identity
+there. Holomorphic series construction and actual complex identification
+on the right half-plane remain next for source-line residual cancellation.
+See [full-real-anchor checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_REAL_COMPLEX_ANCHOR_20261002.md)
+and [terminology](TERMINOLOGY_RPB108_DIGAMMA_REAL_COMPLEX_ANCHOR.md).
+
 An independent actual positive-real Euler anchor is now constructed:
 Re ψ(N+x)-log N tends to zero for x>0 by log-convex Gamma bounds, and
 Re ψ(x)=-γ+∑' n,[1/(n+1)-1/(x+n)] with independent absolute summability.
@@ -81,7 +89,7 @@ A uniform tail estimate and support-separated weak/operator limit remain open.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `0bb110454c42d58f99c62ade4cc0cf2b68611344`.
+This pass continues from `bb800b705de708043a33b3d880cb8afc8edaa71a`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -240,6 +248,8 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    limit passage are constructed, retaining the full-symbol growth premise.
    An independent actual positive-real Euler anchor is constructed; complex
    analytic series identification is next for source-line cancellation.
+   Actual digamma real-valuedness and the full complex positive-real anchor
+   are constructed, supplying the later identity-theorem equality input.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~

@@ -583,3 +583,28 @@ Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
 is closed; logarithmic coercivity has not started.
+
+## 2026-10-02 — RPB-108 full complex actual digamma positive-real Euler anchor
+
+Continues from research head `bb800b705de708043a33b3d880cb8afc8edaa71a`.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,976 build jobs passed. All six endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `bf973e0f991b129030d6e72371ab0317ed313ad4`, run `37063437169`, job `111025310561`, source blob `ec5ef4a4c4eaf1c21b96b3f5a979fd4764a0531f`.
+
+Restricting actual complex Gamma to the real axis and uniqueness of the
+real-to-complex derivative proves comparison with the embedded real Gamma
+derivative. Actual digamma at every positive real argument is real-valued.
+Mapping the certified real HasSum through the continuous real embedding
+therefore gives full complex Euler-series equality for actual digamma.
+No full-symbol growth or Gauss representation premise enters this anchor.
+
+Next: justify the holomorphic complex Euler series on the right half-plane,
+identify actual digamma there from this full equality, then cancel the actual
+source-line residual. The existing pairing transfer retains its full-symbol
+growth premise. Residual cancellation, tail vanishing, exterior/whole source
+attachment, central/boundary reconstruction and actual source-domain/
+quadratic/polarization/normalized estimate witnesses remain open.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged. Threshold bookkeeping
+is closed; logarithmic coercivity has not started.

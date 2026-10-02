@@ -1,5 +1,35 @@
 # Lean Formalization Track
 
+## RPB-108 — full complex actual digamma positive-real anchor
+
+Continues from `bb800b705de708043a33b3d880cb8afc8edaa71a`.
+`NeutralDigammaRealComplexAnchor` compares actual complex and real Gamma
+derivatives by restriction to the positive real axis and uniqueness.
+Actual digamma there equals the real Gamma logarithmic derivative; its
+imaginary part is zero. The certified real Euler anchor therefore upgrades
+to a full complex HasSum and complex Euler-series identity at every x>0.
+This supplies actual complex equality, not just equality of real parts,
+for the later identity-theorem step.
+
+No full-symbol growth or Gauss representation premise enters these proofs.
+Holomorphic regularized-series construction on the right half-plane, actual
+complex identification there and source-line residual cancellation remain
+open. The existing pairing transfer retains its full-symbol growth premise.
+Exterior/whole source attachment, central/boundary reconstruction and actual
+source-domain/quadratic/polarization/normalized estimate witnesses remain open.
+See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_DIGAMMA_REAL_COMPLEX_ANCHOR_20261002.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,976 build jobs passed. All six endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `bf973e0f991b129030d6e72371ab0317ed313ad4`, run `37063437169`, job `111025310561`, source blob `ec5ef4a4c4eaf1c21b96b3f5a979fd4764a0531f`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+FULL COMPLEX ACTUAL DIGAMMA POSITIVE-REAL EULER ANCHOR: CONSTRUCTED
+NEXT: HOLOMORPHIC COMPLEX EULER SERIES + IDENTITY THEOREM
+      → ACTUAL RESIDUAL CANCELLATION → EXTERIOR / WHOLE SOURCE ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
 ## RPB-108 — independent actual digamma positive-real Euler anchor
 
 Continues from `0bb110454c42d58f99c62ade4cc0cf2b68611344`.
