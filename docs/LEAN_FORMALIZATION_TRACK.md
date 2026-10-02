@@ -1,5 +1,39 @@
 # Lean Formalization Track
 
+## RPB-108 — quantitative exterior finite Gauss convergence
+
+Continues from `d1649813180a75d93222e0fffc0f1d9e14df7fe8`.
+`NeutralGaussExteriorLimit` proves a geometric kernel error uniform over
+displacements beyond a positive gap. The actual finite convolution equals
+its compact carrier integral with a genuinely integrable integrand.
+For every x outside (-a,a), its difference from the negative signed gap
+function is bounded by the actual carrier L1 mass times
+exp(-2(a-c))^N / (1-exp(-2(a-c))). This bound is uniform over the exterior;
+geometric decay gives actual pointwise convergence there.
+
+The finite physical exterior limit is constructed. The actual shifted
+digamma action still needs its own support-separated estimate and weak/
+operator limit. Whole residual/source identity, central/boundary reconstruction
+and actual source-domain/quadratic/polarization/normalized estimate witnesses
+remain open. See [checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_GAUSS_EXTERIOR_LIMIT_20261001.md).
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`;
+8,968 build jobs passed. All five audited endpoints use only `propext`,
+`Classical.choice`, and `Quot.sound`; declaration gate passed.
+Validation head `3650789ba52f28a3c08c8f7e49c0881c9bc62e34`,
+run `36964811880`, job `110706170139`, source blob
+`9ec7fdf7e472a0b602482c1089a22ab7d7005eb8`.
+
+~~~text
+RPB-108 / WD-T40 F-4 — CONTINUES
+FINITE GAUSS CONVOLUTION: UNIFORM EXTERIOR ERROR + POINTWISE LIMIT CONSTRUCTED
+NEXT: ACTUAL SHIFTED DIGAMMA SUPPORT-SEPARATED ESTIMATE + WEAK/OPERATOR LIMIT
+      → WHOLE ARCHIMEDEAN SOURCE; CENTRAL/BOUNDARY + SOURCE DOMAIN ATTACHMENT
+THRESHOLD BOOKKEEPING: CLOSED
+LOGARITHMIC COERCIVITY: NOT STARTED
+~~~
+
+
 ## RPB-108 — actual shifted digamma action and physical finite split
 
 Continues from `3d0347e1738b2d8abc776a0eb0a5af57e22c11e3`.

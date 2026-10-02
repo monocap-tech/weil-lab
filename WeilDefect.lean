@@ -64,6 +64,7 @@ import WeilDefect.Morphology.NeutralFiniteGaussConvolution
 import WeilDefect.Morphology.NeutralGaussMultiplier
 import WeilDefect.Morphology.NeutralShiftedDigammaAction
 import WeilDefect.Morphology.NeutralGaussExteriorLimit
+import WeilDefect.Morphology.NeutralGaussExteriorWeak
 
 import WeilDefect.Morphology.Noncompact
 

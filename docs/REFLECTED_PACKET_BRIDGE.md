@@ -9,6 +9,13 @@
 
 ## Current standing
 
+The actual finite Gauss convolution now has a uniform geometric exterior
+error bound from the rough carrier's actual L1 mass. It converges at every
+exterior point to the negative of the signed gap function. The shifted
+digamma action's own estimate/limit remains open.
+See [exterior-limit checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_GAUSS_EXTERIOR_LIMIT_20261001.md)
+and [terminology](TERMINOLOGY_RPB108_GAUSS_EXTERIOR_LIMIT.md).
+
 The actual shifted digamma action now has fixed-N temperate growth inherited
 from the retained full-symbol premise and proved finite Gauss growth. On
 every Schwartz test, the actual whole multiplier core equals that shifted
@@ -17,7 +24,7 @@ A uniform tail estimate and support-separated weak/operator limit remain open.
 See [shifted-action checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_DIGAMMA_ACTION_20261001.md)
 and [terminology](TERMINOLOGY_RPB108_SHIFTED_DIGAMMA_ACTION.md).
 
-This pass continues from `3d0347e1738b2d8abc776a0eb0a5af57e22c11e3`.
+This pass continues from `d1649813180a75d93222e0fffc0f1d9e14df7fe8`.
 The former RPB-100 overview was stale and is superseded by this current view.
 Historical pass notes remain immutable.
 
@@ -163,8 +170,10 @@ RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
    Schwartz weak pairing identity. Its moment-derived temperate symbol now
    attaches the existing tempered multiplier to the physical finite convolution.
    The actual shifted digamma action is now isolated by an exact operator
-   split on every Schwartz test. A support-separated tail estimate and
-   weak/operator limit are next.
+   split on every Schwartz test. The actual finite convolution has a uniform
+   geometric exterior error and its pointwise limit is constructed. The
+   shifted digamma action's own support-separated estimate and weak/operator
+   limit are next.
 4. Consume the constructed compact weak realization in the certified
    Hermitian Gaussian bridge, then begin logarithmic coercivity.
 ~~~

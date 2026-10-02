@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralGaussExteriorLimit.lean
+          git hash-object WeilDefect/Morphology/NeutralGaussExteriorWeak.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralGaussExteriorLimit
+          lake build WeilDefect.Morphology.NeutralGaussExteriorWeak
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,16 +72,16 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-gauss-exterior-limit-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralGaussExteriorLimit
-          #print axioms WeilDefect.neutralFiniteGaussKernel_gap_error
-          #print axioms WeilDefect.neutralFiniteGaussConvolution_eq_compactIntegral
-          #print axioms WeilDefect.neutralFiniteGaussConvolution_integrand_integrable
-          #print axioms WeilDefect.neutralFiniteGaussConvolution_exterior_error
-          #print axioms WeilDefect.neutralFiniteGaussConvolution_exterior_tendsto
+          cat > /tmp/rpb108-gauss-exterior-weak-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralGaussExteriorWeak
+          #print axioms WeilDefect.neutralArchimedeanGapFunction_pairing_integrable
+          #print axioms WeilDefect.neutralFiniteGaussConvolution_exterior_pairing_error
+          #print axioms WeilDefect.neutralFiniteGaussConvolution_exterior_pairing_tendsto
+          #print axioms WeilDefect.neutralShiftedDigammaAction_exterior_defect_tendsto
+          #print axioms WeilDefect.neutralShiftedDigammaAction_exterior_zero_iff
           LEAN
-          lake env lean /tmp/rpb108-gauss-exterior-limit-audit.lean | tee /tmp/rpb108-gauss-exterior-limit-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-gauss-exterior-limit-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-gauss-exterior-weak-audit.lean | tee /tmp/rpb108-gauss-exterior-weak-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-gauss-exterior-weak-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
