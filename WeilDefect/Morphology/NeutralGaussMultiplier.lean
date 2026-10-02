@@ -16,7 +16,7 @@ theorem neutralLaplaceKernel_polynomialNorm_integrable {b : ℝ} (hb : 0 < b) (n
     integrableOn_exp_neg_mul_of_isBigO_exp
       ((by fun_prop : Continuous (fun x : ℝ => x^n)).continuousOn.locallyIntegrableOn
         measurableSet_Ici)
-      (Real.isLittleO_pow_exp_pos_mul_atTop n (half_pos hb)).isBigO (by linarith)
+      (isLittleO_pow_exp_pos_mul_atTop n (half_pos hb)).isBigO (by linarith)
   let g : ℝ → ℝ := (Set.Ici 0).indicator (fun x => Real.exp (-b*x) * x^n)
   have hg : Integrable g volume := (integrable_indicator_iff measurableSet_Ici).mpr hp
   have hs := hg.add hg.comp_neg
@@ -119,7 +119,6 @@ theorem neutralFiniteGaussMultiplier_physical_pairing
   dsimp [v]
   rw [SchwartzMap.smulLeftCLM_apply_apply (neutralFiniteGaussSymbol_temperate N)]
   simp only [smul_eq_mul]
-  dsimp [m]
   ring
 
 end
