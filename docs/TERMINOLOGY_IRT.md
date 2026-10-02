@@ -353,3 +353,63 @@ requires control of the complementary field.
 
 This is the shift-family version of the existing NEXTJET/KPH compensation
 problem, not an automatic bypass.
+
+
+## Reflected-pair shift well
+
+Let an off-critical zero in critical-line coordinates have horizontal
+displacement \(\delta>0\) and ordinate \(\gamma\), so the same-height reflected
+pair lies at \(1/2\pm\delta+i\gamma\).
+
+For the shifted Herglotz/logarithmic-derivative kernel evaluated at ordinate
+\(t\), the pair contributes
+
+\[
+C_{\delta,\gamma}(\omega,t)
+=
+\frac{\omega-\delta}
+     {(\omega-\delta)^2+(t-\gamma)^2}
++
+\frac{\omega+\delta}
+     {(\omega+\delta)^2+(t-\gamma)^2}.
+\]
+
+Algebraically,
+
+\[
+C_{\delta,\gamma}(\omega,t)
+=
+\frac{
+2\omega\bigl(\omega^2+(t-\gamma)^2-\delta^2\bigr)}
+{
+\bigl((\omega-\delta)^2+(t-\gamma)^2\bigr)
+\bigl((\omega+\delta)^2+(t-\gamma)^2\bigr)
+}.
+\]
+
+Hence for \(0<\omega<\delta\) it is negative on
+
+\[
+|t-\gamma|<\sqrt{\delta^2-\omega^2}.
+\]
+
+At \(t=\gamma\) it diverges negatively as \(\omega\uparrow\delta\).
+
+This local well is the horizontal-shift manifestation of approaching the
+selected pole. It is not yet a canonical packet lower bound.
+
+## Threshold finite-part collapse
+
+**Threshold finite-part collapse** is the fact that subtracting the selected
+pole from the shifted logarithmic derivative and then taking
+\(\omega\to\delta\) leaves the regular Laurent coefficient at that zero.
+
+That coefficient is the pole-removed cofactor logarithmic derivative, hence the
+same analytic outside-field species already represented canonically by
+\(A_{F,\Omega}\).
+
+Higher \(\omega\)-derivatives after selected-pole subtraction produce higher
+resolvent/jet data of the same type already covered by SOURCE-II/NJDG.
+
+Therefore the divergent reflected-pair shift well does not survive canonical
+selected-pole renormalization as a new independent theorem object.
