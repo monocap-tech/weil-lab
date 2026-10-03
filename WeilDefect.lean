@@ -121,3 +121,5 @@ import WeilDefect.Morphology.NeutralNativeWeakDerivative
 import WeilDefect.Morphology.NeutralNativeSupport
 
 import WeilDefect.Morphology.NeutralNativeFourierDerivative
+
+import WeilDefect.Morphology.NeutralNativeFourierRepresentative
