@@ -1184,3 +1184,23 @@ The unfinished/project-axiom declaration gate passed.
 New module blob: `edef77b3479b2908a1bfd46b3b8df035786979b6`.
 Root import blob: `b840b5acd8cdc50f7a86f3bc1278ca4708af03ad`.
 The validation-only workflow is excluded from research promotion.
+
+## RPB-108 — concrete finite selected background expression
+
+Continues from `e8fd1045112219bef7fe0784ba05f39adb17749a`.
+See the [background source attachment note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_BACKGROUND_ATTACHMENT_20261003.md).
+
+The actual finite selected negative energy is now a concrete sum of the certified compact-column rank-one operators on the complete logarithmic carrier. Its mixed/quadratic identities and nonnegativity are certified. Adding it to the actual multiplier-plus-pole form constructs the explicit background expression; its real diagonal retains the actual physical multiplier, Hermitian pole, and finite selected squared norms. Exact subtraction recovers the full actual form, and conjugating the packet preserves the expression.
+
+Whole-root validation: 9,027 jobs; eight standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the concrete background expression, not its strict positivity or native-source identification. Actual-zeta packet assignment, global sampling, native Green/background transport and the completed current WD-T38 source/null witness remain written/retained or OPEN. Enlarged central cancellation remains OPEN. Spectral L2 is unproved from WD-T38 and unassumed; finite selected energy gives no squared-multiplier regularity upgrade. The existing inner-collar/regularity/boundary-removal assembly awaits actual enlarged cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+Certified validation head: `7b47409488d8fa5d00b865487aa11418e03e9814`.
+Run: `37130176505`; job: `111223557507`.
+Whole-root `lake build WeilDefect`: 9,027 jobs succeeded.
+Eight axiom audits contain only `propext`, `Classical.choice`, and `Quot.sound`.
+The unfinished/project-axiom declaration gate passed.
+New module blob: `c6b675d53cdd8e8d8bb7f1f032a01430151663a9`.
+Root import blob: `04446fec78e8c4f6e27f0bad4491b0e0de529a99`.
+The validation-only workflow is excluded from research promotion.

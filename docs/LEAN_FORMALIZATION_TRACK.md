@@ -1,5 +1,16 @@
 # Lean Formalization Track
 
+## RPB-108 — concrete finite selected background expression
+
+Continues from `e8fd1045112219bef7fe0784ba05f39adb17749a`.
+See the [background source attachment note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_BACKGROUND_ATTACHMENT_20261003.md).
+
+The actual finite selected negative energy is now a concrete sum of the certified compact-column rank-one operators on the complete logarithmic carrier. Its mixed/quadratic identities and nonnegativity are certified. Adding it to the actual multiplier-plus-pole form constructs the explicit background expression; its real diagonal retains the actual physical multiplier, Hermitian pole, and finite selected squared norms. Exact subtraction recovers the full actual form, and conjugating the packet preserves the expression.
+
+Whole-root validation: 9,027 jobs; eight standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the concrete background expression, not its strict positivity or native-source identification. Actual-zeta packet assignment, global sampling, native Green/background transport and the completed current WD-T38 source/null witness remain written/retained or OPEN. Enlarged central cancellation remains OPEN. Spectral L2 is unproved from WD-T38 and unassumed; finite selected energy gives no squared-multiplier regularity upgrade. The existing inner-collar/regularity/boundary-removal assembly awaits actual enlarged cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
 ## RPB-108 — actual selected source columns and pair convention
 
 Continues from `9d8c80a5391f98c10ea7ef37053af630259cc465`.

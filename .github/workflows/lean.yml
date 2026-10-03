@@ -42,29 +42,28 @@ jobs:
         run: lake update
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Check actual background source expression
+      - name: Check actual background energy bound
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralLogBackgroundSourceAttachment.lean
+          git hash-object WeilDefect/Morphology/NeutralLogBackgroundEnergy.lean
           lean --version
           lake build WeilDefect
-      - name: Inspect actual background attachment axioms
+      - name: Inspect actual energy bound axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-background-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralLogBackgroundSourceAttachment
-          #print axioms WeilDefect.neutralLogFiniteSelectedOperator_mixed
-          #print axioms WeilDefect.neutralLogFiniteSelectedOperator_diagonal
-          #print axioms WeilDefect.neutralLogFiniteSelectedOperator_nonnegative
-          #print axioms WeilDefect.neutralLogFiniteSelectedOperator_conjugate
-          #print axioms WeilDefect.neutralLogBackgroundOperator_mixed
-          #print axioms WeilDefect.neutralLogBackgroundOperator_diagonal
-          #print axioms WeilDefect.neutralLogBackgroundOperator_sub_selected
-          #print axioms WeilDefect.neutralLogBackgroundOperator_conjugate
+          cat > /tmp/rpb108-energy-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralLogBackgroundEnergy
+          #print axioms WeilDefect.neutralPhysicalL2_norm_sq
+          #print axioms WeilDefect.neutralSourceWindowMoment_sq_bound
+          #print axioms WeilDefect.neutralPhysicalPoleEnergyConstant_nonnegative
+          #print axioms WeilDefect.neutralPhysicalPoleEnergy_abs_le
+          #print axioms WeilDefect.neutralLogPhysical_shiftedSymbolEnergy_eq
+          #print axioms WeilDefect.neutralLogWeilFormOperator_garding
+          #print axioms WeilDefect.neutralLogBackgroundOperator_garding
           LEAN
-          lake env lean /tmp/rpb108-background-audit.lean | tee /tmp/rpb108-background-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-background-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-energy-audit.lean | tee /tmp/rpb108-energy-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-energy-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |

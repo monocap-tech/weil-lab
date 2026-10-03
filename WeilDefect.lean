@@ -106,3 +106,4 @@ import WeilDefect.Morphology.NeutralLogPoleSourceAttachment
 import WeilDefect.Morphology.NeutralLogMultiplierSourceAttachment
 import WeilDefect.Morphology.NeutralLogSelectedSourceAttachment
 import WeilDefect.Morphology.NeutralLogBackgroundSourceAttachment
+import WeilDefect.Morphology.NeutralLogBackgroundEnergy
