@@ -9,7 +9,7 @@ open MeasureTheory FourierTransform
 open scoped FourierTransform
 
 /-- Pointwise multiplication by an actual measurable contraction. -/
-private def contractiveMultiplyMemLp
+private theorem contractiveMultiplyMemLp
     (m : ℝ → ℂ) (hm : AEStronglyMeasurable m volume)
     (hb : ∀ x, ‖m x‖ ≤ 1) (f : RealComplexL2) :
     MemLp (fun x => m x * f x) 2 volume := by
@@ -40,8 +40,9 @@ private def contractiveMultiplyLinear
       with x hzf hf hz hout
     change (contractiveMultiplyMemLp m hm hb (z • f)).toLp _ x =
       (z • (contractiveMultiplyMemLp m hm hb f).toLp _) x
-    rw [hzf, hout, hz, hf]
+    rw [hzf, hout, hz]
     simp only [Pi.smul_apply, smul_eq_mul]
+    rw [hf]
     ring
 
 private theorem contractiveMultiplyLinear_norm_le
@@ -163,7 +164,8 @@ private theorem neutralOutsideRestriction_zero_iff (a : ℝ) (f : RealComplexL2)
     rw [hx, hzero]
     by_cases hout : x ∉ Set.Icc (-a) a
     · simp [neutralOutsideWeight, hout, hfx hout]
-    · simp [neutralOutsideWeight, hout]
+    · have hin : x ∈ Set.Icc (-a) a := not_not.mp hout
+      simp [neutralOutsideWeight, hin]
 
 /-- Closed weighted-coordinate realization of the supported logarithmic
 form carrier. Closure is proved by the kernel of a concrete bounded map. -/
