@@ -373,7 +373,8 @@ theorem wd_t38_p3_u2_physical_neutral_null_mode
 
 /--
 Arithmetic/operator-order package for the retained neutral branch.
-All fields are proof data: the right-limit arithmetic support is finite,
+All fields are proof data: the supplied density and logarithmic-energy integrability
+witnesses are retained, the right-limit arithmetic support is finite,
 the compact-window form has logarithmic order, finite prime translations do
 not supply positive-Sobolev coercivity, and global cancellation does not
 logically split termwise.
@@ -382,6 +383,11 @@ structure NeutralArithmeticMorphology
     (c Q shift lowerC upperC poleC : ℝ)
     (density : ℝ → ℝ)
     (primeCoeff : ℕ → ℝ) : Prop where
+  /-- Preserve the original source input; no Fourier-density identification is inferred. -/
+  densityIntegrable : Integrable density volume
+  /-- Preserve one-logarithm form energy; this is not spectral operator-domain L2. -/
+  logEnergyIntegrable :
+    Integrable (fun t : ℝ => logarithmicFourierWeight t * density t) volume
   rightPrimeSupportFinite :
     (rightLimitPrimePowers c).Finite
   thresholdSubsingleton :
@@ -448,6 +454,8 @@ theorem wd_t38_neutral_arithmetic_morphology
       hdensity hlowerC hpoleC hlower hupper hpole0 hpole
       hdensity_int hlog_int hsymbol_int hQ
   refine {
+    densityIntegrable := hdensity_int
+    logEnergyIntegrable := hlog_int
     rightPrimeSupportFinite := hprime.1
     thresholdSubsingleton := hprime.2
     logarithmicOrder := hlog

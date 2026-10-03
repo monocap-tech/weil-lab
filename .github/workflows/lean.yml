@@ -3,13 +3,6 @@ name: Lean
 on:
   push:
     branches: [main]
-    paths:
-      - "lean-toolchain"
-      - "lakefile.toml"
-      - "lake-manifest.json"
-      - "WeilDefect.lean"
-      - "WeilDefect/**"
-      - ".github/workflows/lean.yml"
   pull_request:
     paths:
       - "lean-toolchain"
@@ -30,13 +23,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-
       - name: Install Elan
         shell: bash
         run: |
           curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-
       - name: Restore validation build cache
         id: rpb_cache
         uses: actions/cache/restore@v4
@@ -44,43 +35,29 @@ jobs:
         with:
           path: .lake
           key: rpb108-lean434-mathlib5ed296-base71dddf5-v1
-
       - name: Resolve pinned dependencies
-        shell: bash
         run: lake update
-
       - name: Fetch mathlib cache
-        shell: bash
         run: lake exe cache get
-
-      - name: Check current theorem target
+      - name: Check whole root with retained energy witnesses
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralSelectedBackground.lean
+          git hash-object WeilDefect/Morphology/Neutral.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralSelectedBackground
-
-      - name: Save validation build cache
-        if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
-        continue-on-error: true
-        with:
-          path: .lake
-          key: rpb108-lean434-mathlib5ed296-base71dddf5-v1
-
-      - name: Inspect transitive endpoint axioms
+          lake build WeilDefect
+      - name: Inspect retained witnesses and constructor axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-selected-background-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralSelectedBackground
-          #print axioms WeilDefect.wd_t38_full_defect_on_selected_neutral
-          #print axioms WeilDefect.wd_t38_full_null_iff_background_analysis_zero
-          #print axioms WeilDefect.wd_t38_effective_positive_full_null
+          cat > /tmp/rpb108-energy-custody-audit.lean <<'LEAN'
+          import WeilDefect
+          #print axioms WeilDefect.NeutralArithmeticMorphology.densityIntegrable
+          #print axioms WeilDefect.NeutralArithmeticMorphology.logEnergyIntegrable
+          #print axioms WeilDefect.wd_t38_neutral_arithmetic_morphology
+          #print axioms WeilDefect.wd_t38_attained_unit_gain_neutral_morphology
           LEAN
-          lake env lean /tmp/rpb108-selected-background-audit.lean | tee /tmp/rpb108-selected-background-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-selected-background-axioms.txt; then exit 1; fi
-
+          lake env lean /tmp/rpb108-energy-custody-audit.lean | tee /tmp/rpb108-energy-custody-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-energy-custody-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |
