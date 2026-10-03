@@ -9,6 +9,25 @@
 
 ## Current standing
 
+## RPB-108 — concrete native Dirichlet L2 coordinates
+
+Continues from `e22564aa10df22ff1dcb508bd319a0737182f49a`.
+See the [native L2 coordinate note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_DIRICHLET_L2_COORDINATES_20261003.md).
+
+Proved actual compact derivative-column L2 membership, same-window mixed
+L2 pairings for derivative and Green columns, and the exact native source
+pairing in these coordinates. The already certified native diagonal energy
+is now the derivative L2 norm squared plus one quarter of the Green L2
+norm squared. This uses the existing C2, mixed Green, and diagonal bridges.
+
+Current WD-T38 carrier/source-null identification and enlarged central
+cancellation remain open. Its spectral L2 membership is neither derived
+from retained hypotheses nor assumed. The native background completion is
+still retained/written; the existing locally integrable residual theorem
+is ready for actual central cancellation. Threshold bookkeeping is closed;
+F-4 remains pending.
+
+
 ## RPB-108 — actual mixed native Green source and reciprocity
 
 Continues from `ea23d3bffdf941f661cf52a4290866ebe2fcedef`.

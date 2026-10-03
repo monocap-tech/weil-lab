@@ -1294,3 +1294,21 @@ integrable inner-collar/boundary route remains ready. Thresholds closed; F-4,
 WD-T40, and RH remain open.
 
 Validation: `41b1606db89ae51d8ce819b28985002988d64346`, [run 37136385069](https://github.com/monocap-tech/weil-lab/actions/runs/37136385069), job `111241663248`. Whole-root `lake build WeilDefect` passed (9,031 jobs). All three public theorem axiom audits reported only `[propext, Classical.choice, Quot.sound]`; unfinished/project-axiom gate passed. Research workflow and historical notes remain unchanged.
+
+## RPB-108 — concrete native Dirichlet L2 coordinates
+
+Continues from `e22564aa10df22ff1dcb508bd319a0737182f49a`.
+See the [native L2 coordinate note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_DIRICHLET_L2_COORDINATES_20261003.md).
+
+Proved actual compact derivative-column L2 membership, same-window mixed
+L2 pairings for derivative and Green columns, and the exact native source
+pairing in these coordinates. The already certified native diagonal energy
+is now the derivative L2 norm squared plus one quarter of the Green L2
+norm squared. This uses the existing C2, mixed Green, and diagonal bridges.
+
+Current WD-T38 carrier/source-null identification and enlarged central
+cancellation remain open. Its spectral L2 membership is neither derived
+from retained hypotheses nor assumed. The native background completion is
+still retained/written; the existing locally integrable residual theorem
+is ready for actual central cancellation. Threshold bookkeeping is closed;
+F-4 remains pending.
