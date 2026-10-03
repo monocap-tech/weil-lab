@@ -1561,3 +1561,27 @@ central-to-regular-defect/boundary-removal theorem. Threshold work is
 closed; F-4 remains pending.
 
 See [actual zeta multiplicity symmetry](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ZETA_MULTIPLICITY_SYMMETRY_20261003.md).
+
+### RPB-108: actual weighted sampling and multiplicity-copy energy (2026-10-03)
+
+Actual sqrt(m)-weighted negative sources now realize concrete compact-window
+sampling at the actual partner ordinates on the logarithmic Hilbert carrier
+and the canonical supported logarithmic form domain. The m-weighted selected
+operator is proved to be exactly the rank-one of that source. Its mixed and
+quadratic energies agree with the weighted analysis, and all m repeated
+divisor copies compress to the same operator and mixed energy.
+
+Actual finite selections have exact mixed and quadratic identities and
+nonnegative selected energy. Repeated finite indices remain explicit; no
+pair-orbit choice or infinite divisor enumeration is inferred. This closes
+the finite weighted sampling/normalization attachment, not the infinite
+actual Weil explicit-formula identity or its extension to the complete domain.
+
+Current WD-T38 coefficient identification, physical source-null attachment
+and enlarged central cancellation remain open. Background completion remains
+retained/written. Current full Weil spectral L2 is unproved and unassumed.
+Consume the existing central-to-regular-defect/boundary-removal theorem
+immediately once actual central cancellation is available. Threshold work
+is closed; F-4 remains pending.
+
+See [actual weighted sampling](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ZETA_WEIGHTED_SAMPLING_20261003.md).
