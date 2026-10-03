@@ -69,7 +69,7 @@ theorem neutralLogWeightedL2_norm_sq {a : ℝ}
       ∫ ξ, logarithmicFourierWeight ξ * ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2 := by
   have hi : ⟪neutralLogWeightedL2 f, neutralLogWeightedL2 f⟫ =
       ((∫ ξ, logarithmicFourierWeight ξ *
-        ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2) : ℂ) := by
+        ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2 : ℝ) : ℂ) := by
     rw [L2.inner_def, ← integral_complex_ofReal]
     apply integral_congr_ae
     filter_upwards [neutralLogWeightedL2_sq_norm_ae f] with ξ hξ
