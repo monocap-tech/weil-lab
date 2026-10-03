@@ -97,7 +97,6 @@ theorem neutralLogPoleOperator_mixed (a : ℝ) (f g : NeutralLogHilbertCarrier a
   rw [← inner_conj_symm f (neutralLogMomentSource a (-(1/2))),
     ← inner_conj_symm f (neutralLogMomentSource a (1/2))]
   simp only [neutralLogMomentSource_inner]
-  ring
 
 theorem neutralLogPoleOperator_diagonal (a : ℝ) (f : NeutralLogHilbertCarrier a) :
     inner ℂ f (neutralLogPoleOperator a f) =
