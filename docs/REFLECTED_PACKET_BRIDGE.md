@@ -9,6 +9,15 @@
 
 ## Current standing
 
+## RPB-108 — retained EXT-4 complex source law recovered
+
+Continues from `f66fc319b88d3efdde0bfc90d66783a5c04921b5`.
+See the [source recovery note](../notes/REFLECTED_PACKET_BRIDGE_108_RETAINED_SOURCE_RECOVERY_20261003.md).
+
+The primary EXT-4 text has now been inspected directly: §1.6 fixes the Fourier sign, §2 equation (7) identifies the geometric and zero-side functionals on admissible tests, and §6.1 Lemma 6.1 supplies the signed odd pole and general-complex extension. The recovered complex pole is the Hermitian cross term already used by `sourceDomainQuadratic`; the real-even positive pole is not a lawful substitute on the full complex domain. This is source recovery and a written normalization dictionary, not a new Lean attachment theorem.
+
+The older `monocap-tech/weil` research branch at `d8bd75eda7442ecda12c23d4f6b76a582a336783` contains the original 44 Lean files, with the same original modules apart from the subsequent lab custody repair in `Neutral.lean`; no additional actual source realization was recovered there. The inspected source passages do not supply the WD-T38 synthesis/form-carrier map, a same-domain closed-form identification, or enlarged mixed nullity. Those actual witnesses remain OPEN. Spectral L2 membership is not derived from WD-T38 and remains unproved and unassumed. The certified inner-collar theorem already consumes actual central cancellation without a separate regularity assumption. Threshold bookkeeping stays CLOSED; F-4 coercivity is NOT STARTED. No Lean or workflow bytes change in this pass.
+
 ## RPB-108 — certified source-witness independence audit
 
 Continues from `ec88ac9a8de20b1f7ae8e3375d9129564702eb54`.

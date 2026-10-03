@@ -1075,3 +1075,14 @@ Whole-root `lake build WeilDefect` passed: **9,022 jobs**. All five audited decl
 The final validation dependency cache contains the complete successful root build under `rpb108-lean434-mathlib5ed296-rpb108-root-v1`. This is validation infrastructure only; no workflow change is promoted.
 
 Promotion carries the identical certified module and root import, terminology, a new immutable pass note and current status/track/overview/provenance updates. All Lean modules and pinned manifests match the whole-root certificate. The original research workflow is byte-identical; the validation PR is closed unmerged. Historical notes are unchanged.
+
+## 2026-10-03 — RPB-108 retained EXT-4 source recovery
+
+Continues from `f66fc319b88d3efdde0bfc90d66783a5c04921b5`.
+See the [source recovery note](../notes/REFLECTED_PACKET_BRIDGE_108_RETAINED_SOURCE_RECOVERY_20261003.md).
+
+The primary EXT-4 text has now been inspected directly: §1.6 fixes the Fourier sign, §2 equation (7) identifies the geometric and zero-side functionals on admissible tests, and §6.1 Lemma 6.1 supplies the signed odd pole and general-complex extension. The recovered complex pole is the Hermitian cross term already used by `sourceDomainQuadratic`; the real-even positive pole is not a lawful substitute on the full complex domain. This is source recovery and a written normalization dictionary, not a new Lean attachment theorem.
+
+The older `monocap-tech/weil` research branch at `d8bd75eda7442ecda12c23d4f6b76a582a336783` contains the original 44 Lean files, with the same original modules apart from the subsequent lab custody repair in `Neutral.lean`; no additional actual source realization was recovered there. The inspected source passages do not supply the WD-T38 synthesis/form-carrier map, a same-domain closed-form identification, or enlarged mixed nullity. Those actual witnesses remain OPEN. Spectral L2 membership is not derived from WD-T38 and remains unproved and unassumed. The certified inner-collar theorem already consumes actual central cancellation without a separate regularity assumption. Threshold bookkeeping stays CLOSED; F-4 coercivity is NOT STARTED. No Lean or workflow bytes change in this pass.
+
+Primary source inspected at §1.6, §2 equation (7), and §6.1 Lemma 6.1. Documentation-only promotion; all Lean/manifests/workflow entries remain byte-identical to the recovered parent. No new build or axiom certificate is claimed.

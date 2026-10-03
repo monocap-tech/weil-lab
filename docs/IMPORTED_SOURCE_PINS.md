@@ -1588,3 +1588,14 @@ obligation beginning at RPB-108.
 ~~~math
 \boxed{\text{SOURCE-PINNED / POLE ALGEBRA ONLY / POLARIZED OPERATOR ATTACHMENT OPEN}}
 ~~~
+
+
+## RPB-108 — EXT-4 general-complex source recovery (2026-10-03)
+
+The primary [v2 HTML text](https://arxiv.org/html/2608.24827v2) has been inspected directly at §1.6, §2 equation (7), and §6.1 Lemma 6.1 with its proof.
+
+Section 1.6 uses the positive-sign angular Fourier transform. Equation (7) identifies the admissible-test geometric functional with its zero-side sum. Lemma 6.1 gives the negative odd pole and the complex real/imaginary decomposition. Consequently the full-complex pole is `2 Re(conj(M-) * M+)`, with `M± = ∫ f(x) exp(±x/2) dx`; the nonnegative real-even pole in equation (2) must not be substituted on the full complex domain.
+
+The corresponding angular-to-mathlib frequency dictionary uses the even symbol at `2πξ`, with the Jacobian canceling the source `1/(2π)`. See the [recovery note](../notes/REFLECTED_PACKET_BRIDGE_108_RETAINED_SOURCE_RECOVERY_20261003.md) for the written calculation and exact scope.
+
+This pin supplies a source test formula and conventions. It does not supply the actual WD-T38 synthesis/form-carrier map, a core-extension theorem identifying the abstract form on the canonical logarithmic domain, or enlarged mixed nullity. No new Lean attachment, spectral L2, or central cancellation witness is claimed.
