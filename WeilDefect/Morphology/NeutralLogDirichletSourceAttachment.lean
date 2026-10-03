@@ -41,8 +41,8 @@ theorem neutralDirichletGreenColumnL2_inner (a : ℝ) (z : ℂ)
     (neutralDirichletGreenColumn a z) x) (f x) = _
   rw [hx]
   by_cases hmem : x ∈ Set.Icc (-a) a
-  · simp [neutralDirichletGreenColumn, hmem, RCLike.inner_apply']
-  · simp [neutralDirichletGreenColumn, hmem, RCLike.inner_apply']
+  · simp [neutralDirichletGreenColumn, hmem, mul_comm]
+  · simp [neutralDirichletGreenColumn, hmem]
 
 /-- Form Riesz representative of the actual Green-column functional.
 This is not an assumed square-root Green operator. -/
@@ -69,7 +69,10 @@ theorem neutralDirichletGreen_differentialSource (a : ℝ) (z : ℂ)
   by_cases hx : x ∈ Set.Icc (-a) a
   · simp only [Set.indicator_of_mem hx, neutralExponentialColumn,
       problemOneL_dirichletProblemOneColumn a x z hden]
-    simp [realExpMode, problemOneFreq]
+    change Complex.exp ((x : ℂ) * (-Complex.I * z)) =
+      Complex.exp (-Complex.I * z * (x : ℂ))
+    congr 1
+    ring
   · simp [neutralExponentialColumn, hx]
 
 /-- The native differential source is genuinely L2 because it is the
@@ -94,8 +97,14 @@ theorem neutralLogDirichletGreen_differentialSource_inner (a : ℝ) (z : ℂ)
   apply integral_congr_ae
   filter_upwards [] with x
   rw [problemOneL_dirichletProblemOneColumn a x z hden]
-  simp only [realExpMode, problemOneFreq, ← Complex.exp_conj, map_mul, map_neg,
-    Complex.conj_I, Complex.conj_ofReal, neg_neg]
+  have he : conj (realExpMode (problemOneFreq z) x) =
+      Complex.exp (Complex.I * conj z * (x : ℂ)) := by
+    change conj (Complex.exp ((x : ℂ) * (-Complex.I * z))) = _
+    rw [← Complex.exp_conj]
+    congr 1
+    simp only [map_mul, map_neg, Complex.conj_I, Complex.conj_ofReal, neg_neg]
+    ring
+  rw [he]
   ring
 
 end
