@@ -1,5 +1,31 @@
 # Lean Formalization Track
 
+### RPB-108: native source custody countercheck (2026-10-03)
+
+The new `NeutralNativeSourceCustodyAudit` certifies that the current
+`ActualProblemOneShellData` accepts the real arithmetic grid n+1 for every
+count function. Its concrete negative pair sources and all finite selected
+negative operators vanish. No zeta-zero, complete divisor enumeration,
+multiplicity/reflection, or explicit-formula identification is checked by
+that shell record. This is a custody countercheck, not an actual-zeta
+counterexample.
+
+The native synthesis/domain theorems remain valid for their supplied
+columns, but no recovered proof identifies the independently constructed
+lp 2 Green sum with the current retained physical Rk or background
+completion vector V^(-1)(Cu). Further native smoothing estimates do not
+close that gap. Next: actual divisor/core and same-domain explicit-formula
+transport, or direct retained background/physical-map identification;
+then current source/null attachment and enlarged central cancellation.
+
+Native background completion remains retained/written. Current full Weil
+spectral L2 is unproved and unassumed. The existing central-to-regularity
+and whole-realization assembly awaits actual central cancellation.
+Threshold work stays closed; F-4 remains pending.
+
+See [native source custody audit](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_SOURCE_CUSTODY_AUDIT_20261003.md).
+
+
 ### RPB-108: actual native logarithmic form-domain attachment (2026-10-03)
 
 The actual native Green synthesis now has derived finite logarithmic

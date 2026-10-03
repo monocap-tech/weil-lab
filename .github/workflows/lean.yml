@@ -47,19 +47,21 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralNativeSourceCustodyAudit.lean
+          git hash-object WeilDefect/Arithmetic/ActualZetaZeroCoordinates.lean
           lean --version
           lake build WeilDefect
       - name: Inspect actual Green energy axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralNativeSourceCustodyAudit
-          #print axioms WeilDefect.nativeShellArithmeticGrid
-          #print axioms WeilDefect.nativeShellArithmeticGrid_conjugate
-          #print axioms WeilDefect.nativeShellArithmeticGrid_negativeSource
-          #print axioms WeilDefect.nativeShellArithmeticGrid_selectedOperator
-          #print axioms WeilDefect.nativeShellArithmeticGrid_finiteSelectedOperator
+          import WeilDefect.Arithmetic.ActualZetaZeroCoordinates
+          #print axioms WeilDefect.neutralActualZetaOrdinate_source
+          #print axioms WeilDefect.neutralActualZetaOrdinate_zeta
+          #print axioms WeilDefect.neutralActualZetaOrdinate_strictStrip
+          #print axioms WeilDefect.neutralActualZetaZeroReflect
+          #print axioms WeilDefect.neutralActualZetaZeroReflect_involutive
+          #print axioms WeilDefect.neutralActualZetaOrdinate_reflect
+          #print axioms WeilDefect.neutralActualZetaOrdinate_greenDenom_ne_zero
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
