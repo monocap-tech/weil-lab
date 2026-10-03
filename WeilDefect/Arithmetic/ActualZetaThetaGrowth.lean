@@ -73,8 +73,12 @@ theorem neutralActualZetaThetaRemainder_polynomial_bound
   have hpow : t ^ n ≤ ((n.factorial : ℝ) / (p / 2) ^ n) *
       Real.exp ((p / 2) * t) := by
     rw [mul_pow, div_le_iff₀ hf] at hx
-    apply (mul_le_mul_left (pow_pos hq n)).mp
-    convert hx using 1 <;> field_simp [ne_of_gt hp] <;> ring
+    calc
+      t ^ n = ((p / 2) ^ n * t ^ n) / (p / 2) ^ n := by
+        field_simp [ne_of_gt hp]
+      _ ≤ (Real.exp ((p / 2) * t) * (n.factorial : ℝ)) / (p / 2) ^ n :=
+        div_le_div_of_nonneg_right hx (pow_pos hq n).le
+      _ = _ := by ring
   calc
     _ ≤ t ^ n * (C * Real.exp (-p * t)) :=
       mul_le_mul_of_nonneg_left (hbound t ht) (pow_nonneg ht0 n)
@@ -114,7 +118,7 @@ theorem neutralActualZetaThetaRemainder_moments :
       (fun t : ℝ => t ^ n * |neutralActualZetaThetaRemainder t|) (Ioi 1) :=
     (by fun_prop : ContinuousOn (fun t : ℝ => t ^ n) (Ioi 1)).mul
       (neutralActualZetaThetaRemainder_continuousOn.mono
-        (show Ioi (1 : ℝ) ⊆ Ioi 0 from fun t ht => zero_lt_one.trans ht)).abs
+        (Ioi_subset_Ioi (show (0 : ℝ) ≤ 1 by norm_num))).abs
   have hi : MeasureTheory.IntegrableOn
       (fun t : ℝ => t ^ n * |neutralActualZetaThetaRemainder t|) (Ioi 1) := by
     apply hm.mono' (hc.aestronglyMeasurable measurableSet_Ioi)
