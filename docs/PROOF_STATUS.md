@@ -1,5 +1,29 @@
 # Proof Status
 
+## RPB-108 — actual linear source-domain realization
+
+Continues from `f079d9aec01743905d3897bfb0283f6da05be14c`.
+See the [actual linear source-domain realization](../notes/REFLECTED_PACKET_BRIDGE_108_LINEAR_SOURCE_DOMAIN_REALIZATION_20261003.md).
+
+The canonical supported finite-log-energy domain is now complex-linearly
+identified with the complete logarithmic Hilbert carrier. Every lawful source
+domain has an actual injective linear lift preserving its physical vector,
+with squared Hilbert norm equal to its genuine logarithmic Fourier energy.
+The concrete operator's diagonal is exactly the existing
+`sourceDomainQuadratic`; its mixed pairing is exactly the existing normalized
+`sourceDomainWeilFormFromShiftedComparison`. No hrep is assumed. These are
+linear maps, not a claim that the ordinary L2 and logarithmic norms are
+equivalent.
+
+Current WD-T38 finite-energy custody and imported quadratic/null identification
+remain open; native background completion remains retained/written.
+Enlarged central cancellation is still open. The certified locally integrable
+inner-collar/boundary-removal route is ready once that witness is proved.
+Actual Weil spectral L2 membership is unproved from WD-T38 and unassumed.
+Threshold bookkeeping is closed; F-4, WD-T40, and RH remain open.
+
+Validation: `a9f7686f1512fb4841650a20782529757c364643`, [run 37134529034](https://github.com/monocap-tech/weil-lab/actions/runs/37134529034), job `111236237732`. Whole-root `lake build WeilDefect` passed (9,030 jobs). All seven public declaration axiom audits reported only `[propext, Classical.choice, Quot.sound]`; unfinished/project-axiom gate passed. Research workflow and historical notes remain unchanged.
+
 ## RPB-108 — actual native Dirichlet source attachment
 
 Continues from `bead3b17bafd5a8cf14144a4ac262f08ffe898a9`.
