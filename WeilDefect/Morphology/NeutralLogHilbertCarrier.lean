@@ -15,7 +15,7 @@ private def contractiveMultiplyMemLp
     MemLp (fun x => m x * f x) 2 volume := by
   apply (Lp.memLp f).of_le (hm.mul (Lp.aestronglyMeasurable f))
   filter_upwards [] with x
-  simpa only [norm_mul, one_mul] using
+  simpa only [Pi.mul_apply, norm_mul, one_mul] using
     mul_le_mul_of_nonneg_right (hb x) (norm_nonneg (f x))
 
 private def contractiveMultiplyLinear
@@ -38,7 +38,10 @@ private def contractiveMultiplyLinear
       Lp.coeFn_smul z f,
       Lp.coeFn_smul z ((contractiveMultiplyMemLp m hm hb f).toLp _)]
       with x hzf hf hz hout
-    simp only [hzf, hout, Pi.smul_apply, hf, hz, smul_eq_mul]
+    change (contractiveMultiplyMemLp m hm hb (z • f)).toLp _ x =
+      (z • (contractiveMultiplyMemLp m hm hb f).toLp _) x
+    rw [hzf, hout, hz, hf]
+    simp only [Pi.smul_apply, smul_eq_mul]
     ring
 
 private theorem contractiveMultiplyLinear_norm_le
@@ -80,7 +83,7 @@ theorem neutralLogInverseWeight_measurable :
     AEStronglyMeasurable neutralLogInverseWeight volume := by
   unfold neutralLogInverseWeight
   exact (Complex.continuous_ofReal.comp
-    (Real.continuous_sqrt.comp logarithmicFourierWeight_continuous)).aestronglyMeasurable.inv
+    (Real.continuous_sqrt.comp logarithmicFourierWeight_continuous)).measurable.inv.aestronglyMeasurable
 
 /-- Actual bounded inverse of the square-root logarithmic weight. -/
 def neutralLogUnweight : RealComplexL2 →L[ℂ] RealComplexL2 :=
@@ -111,6 +114,7 @@ theorem neutralLogPhysical_weighted {a : ℝ}
     (f : neutralCanonicalLogFormDomain a) :
     neutralLogPhysical (neutralLogWeightedL2 f) = f.val := by
   apply (Lp.fourierTransformₗᵢ ℝ ℂ).injective
+  change (𝓕 (neutralLogPhysical (neutralLogWeightedL2 f)) : RealComplexL2) = 𝓕 f.val
   rw [neutralLogPhysical_fourier]
   apply Lp.ext
   filter_upwards [neutralLogUnweight_coe (neutralLogWeightedL2 f),
@@ -145,6 +149,8 @@ private theorem neutralOutsideRestriction_zero_iff (a : ℝ) (f : RealComplexL2)
       Lp.coeFn_zero ℂ 2 volume] with x hx hzero
     intro hout
     have hh : neutralOutsideRestriction a f x = 0 := by rw [hz]; exact hzero
+    change contractiveMultiply (neutralOutsideWeight a)
+      (neutralOutsideWeight_measurable a) (neutralOutsideWeight_bound a) f x = 0 at hh
     rw [hx] at hh
     simpa [neutralOutsideWeight, hout] using hh
   · intro hf
@@ -152,6 +158,8 @@ private theorem neutralOutsideRestriction_zero_iff (a : ℝ) (f : RealComplexL2)
     filter_upwards [hf, contractiveMultiply_coe (neutralOutsideWeight a)
       (neutralOutsideWeight_measurable a) (neutralOutsideWeight_bound a) f,
       Lp.coeFn_zero ℂ 2 volume] with x hfx hx hzero
+    change contractiveMultiply (neutralOutsideWeight a)
+      (neutralOutsideWeight_measurable a) (neutralOutsideWeight_bound a) f x = (0 : RealComplexL2) x
     rw [hx, hzero]
     by_cases hout : x ∉ Set.Icc (-a) a
     · simp [neutralOutsideWeight, hout, hfx hout]
@@ -188,7 +196,7 @@ theorem neutralLogPhysical_energy (k : RealComplexL2) :
     Real.sqrt_pos.mpr (lt_of_lt_of_le zero_lt_one (one_le_logarithmicFourierWeight ξ))
   simp only [norm_mul, norm_inv, Complex.norm_real, Real.norm_eq_abs,
     abs_of_nonneg (Real.sqrt_nonneg _), mul_pow]
-  rw [← inv_pow, Real.sq_sqrt hw]
+  rw [inv_pow, Real.sq_sqrt hw]
   rw [← mul_assoc, mul_inv_cancel₀ (ne_of_gt
     (lt_of_lt_of_le zero_lt_one (one_le_logarithmicFourierWeight ξ))), one_mul]
 
@@ -221,6 +229,7 @@ theorem neutralLogHilbertToCanonical_rightInverse {a : ℝ} :
   apply Lp.ext
   filter_upwards [neutralLogWeightedL2_coe (neutralLogHilbertToCanonical k),
     neutralLogUnweight_coe k.val] with ξ hw hk
+  change neutralLogWeightedL2 (neutralLogHilbertToCanonical k) ξ = k.val ξ
   rw [hw]
   unfold neutralLogWeightedFourier neutralLogHilbertToCanonical
   rw [neutralLogPhysical_fourier, hk]
