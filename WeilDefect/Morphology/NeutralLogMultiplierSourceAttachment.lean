@@ -137,8 +137,7 @@ theorem neutralLogMultiplierOperator_mixed (f g : NeutralLogHilbertCarrier a) :
     (neutralLogSymbolRatio_measurable a ha) (|upperC|+|shift|)
     (neutralLogSymbolRatio_bound a lowerC upperC shift h0 hl hu) g.val]
     with ξ hmix hmul
-  change conj (f.val ξ) *
-    (neutralLogSymbolMultiplication a ha lowerC upperC shift h0 hl hu g.val ξ) = _
+  simp only [RCLike.inner_apply']
   change conj (f.val ξ) *
     ((boundedLogMultiply (neutralLogSymbolRatio a)
       (neutralLogSymbolRatio_measurable a ha) (|upperC|+|shift|)
@@ -159,6 +158,8 @@ theorem neutralLogMultiplierOperator_mixed (f g : NeutralLogHilbertCarrier a) :
       rw [Complex.ofReal_div]
       field_simp [hw]
       <;> ring
+
+include ha lowerC upperC shift h0 hl hu
 
 /-- Genuine convergence of the physical signed multiplier on this
 complete form carrier follows from the retained comparison. -/
@@ -220,6 +221,17 @@ theorem neutralLogWeilFormOperator_mixed (f g : NeutralLogHilbertCarrier a) :
         sourceWindowMoment a (-(1/2)) (neutralLogPhysical g.val)) := by
   simp only [neutralLogWeilFormOperator, ContinuousLinearMap.add_apply,
     inner_add_right, neutralLogMultiplierOperator_mixed, neutralLogPoleOperator_mixed]
+
+/-- The concrete operator has the actual real multiplier-plus-pole diagonal. -/
+theorem neutralLogWeilFormOperator_diagonal (f : NeutralLogHilbertCarrier a) :
+    inner ℂ f (neutralLogWeilFormOperator a ha lowerC upperC shift h0 hl hu f) =
+      (((∫ ξ, rightLimitCompactWeilSymbolMathlib a ξ *
+        ‖(𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ‖ ^ 2) +
+        2 * (conj (sourceWindowMoment a (-(1/2)) (neutralLogPhysical f.val)) *
+          sourceWindowMoment a (1/2) (neutralLogPhysical f.val)).re : ℝ) : ℂ) := by
+  simp only [neutralLogWeilFormOperator, ContinuousLinearMap.add_apply,
+    inner_add_right, neutralLogMultiplierOperator_diagonal,
+    neutralLogPoleOperator_diagonal, Complex.ofReal_add]
 
 end
 

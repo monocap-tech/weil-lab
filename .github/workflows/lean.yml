@@ -61,6 +61,7 @@ jobs:
           #print axioms WeilDefect.neutralLogMultiplier_mixed_integrable
           #print axioms WeilDefect.neutralLogMultiplierOperator_diagonal
           #print axioms WeilDefect.neutralLogWeilFormOperator_mixed
+          #print axioms WeilDefect.neutralLogWeilFormOperator_diagonal
           LEAN
           lake env lean /tmp/rpb108-multiplier-audit.lean | tee /tmp/rpb108-multiplier-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-multiplier-axioms.txt; then exit 1; fi
