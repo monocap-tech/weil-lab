@@ -9,6 +9,17 @@
 
 ## Current standing
 
+## RPB-108 — actual pole source attachment on the complete form carrier
+
+Continues from `69c836c8e0203349f7abb01263a834fcf87976c4`.
+See the [pole source attachment note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_POLE_ATTACHMENT_20261003.md).
+
+Actual compact exponential L2 columns realize the retained sourceWindowMoment integrals as continuous linear functionals. Their adjoints through the concrete physical inclusion construct actual source columns on the complete logarithmic Hilbert carrier. The concrete two-column pole operator has exactly the retained Hermitian mixed cross terms and real quadratic diagonal on that same domain. No source-identity field, positivity of the complex pole, or spectral-domain premise is introduced.
+
+Whole-root validation: 9,024 jobs; six standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the POLE COMPONENT. The full actual normalized multiplier and retained WD-T38 source/quadratic/null identification remain unattached; enlarged central cancellation remains OPEN. Global actual-zeta sampling and effective background endpoint attachment are still written/retained. Current-carrier spectral L2 is unproved and unassumed. The certified inner-collar/boundary-removal assembly is ready to consume actual enlarged central cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
 ## RPB-108 — complete concrete logarithmic Hilbert carrier
 
 Continues from `6645b05195b6232b99d5796a7adddb5b1c3b71e5`.

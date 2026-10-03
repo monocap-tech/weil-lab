@@ -42,27 +42,25 @@ jobs:
         run: lake update
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Check concrete pole source attachment
+      - name: Check concrete normalized multiplier attachment
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralLogPoleSourceAttachment.lean
+          git hash-object WeilDefect/Morphology/NeutralLogMultiplierSourceAttachment.lean
           lean --version
           lake build WeilDefect
-      - name: Inspect concrete pole attachment axioms
+      - name: Inspect normalized multiplier attachment axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-pole-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralLogPoleSourceAttachment
-          #print axioms WeilDefect.neutralMomentColumn_memLp
-          #print axioms WeilDefect.neutralMomentColumnL2_inner
-          #print axioms WeilDefect.neutralSourceWindowMomentCLM_eq
-          #print axioms WeilDefect.neutralLogMomentSource_inner
-          #print axioms WeilDefect.neutralLogPoleOperator_mixed
-          #print axioms WeilDefect.neutralLogPoleOperator_diagonal
+          cat > /tmp/rpb108-multiplier-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralLogMultiplierSourceAttachment
+          #print axioms WeilDefect.neutralLogSymbolRatio_bound
+          #print axioms WeilDefect.neutralLogSymbolRatio_measurable
+          #print axioms WeilDefect.neutralLogMultiplierOperator_mixed
+          #print axioms WeilDefect.neutralLogWeilFormOperator_mixed
           LEAN
-          lake env lean /tmp/rpb108-pole-audit.lean | tee /tmp/rpb108-pole-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-pole-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-multiplier-audit.lean | tee /tmp/rpb108-multiplier-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-multiplier-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |
