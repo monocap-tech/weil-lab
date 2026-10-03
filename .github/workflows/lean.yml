@@ -42,23 +42,21 @@ jobs:
         run: lake update
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Check actual Green integration-by-parts energy
+      - name: Check actual mixed Green identity and reciprocity
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/DirichletGreenEnergy.lean
+          git hash-object WeilDefect/DirichletGreenMixed.lean
           lean --version
           lake build WeilDefect
       - name: Inspect actual Green energy axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.DirichletGreenEnergy
-          #print axioms WeilDefect.contDiff_dirichletProblemOneColumn
+          import WeilDefect.DirichletGreenMixed
           #print axioms WeilDefect.dirichletProblemOneColumn_green_mixed
-          #print axioms WeilDefect.problemOneGreenPairing_eq_dirichletEnergy
-          #print axioms WeilDefect.problemOneDirichletEnergy_nonnegative
-          #print axioms WeilDefect.problemOneColumnEnergySq_eq_dirichletEnergy
+          #print axioms WeilDefect.dirichletProblemOneColumn_green_reciprocity
+          #print axioms WeilDefect.dirichletProblemOneColumn_green_mixed_diagonal
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi

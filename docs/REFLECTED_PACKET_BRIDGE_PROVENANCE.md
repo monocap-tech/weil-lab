@@ -1204,3 +1204,71 @@ The unfinished/project-axiom declaration gate passed.
 New module blob: `c6b675d53cdd8e8d8bb7f1f032a01430151663a9`.
 Root import blob: `04446fec78e8c4f6e27f0bad4491b0e0de529a99`.
 The validation-only workflow is excluded from research promotion.
+
+## RPB-108 — actual background logarithmic energy estimate
+
+Continues from `8b332c1a212212a5c809812d50a99cfc1a256861`.
+See the [actual background energy note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_BACKGROUND_ENERGY_20261003.md).
+
+Actual compact moment bounds now control both signs of the Hermitian pole by physical L2 energy, with a concrete constant from the two compact exponential columns. Ordinary L2 Plancherel identifies the retained constant symbol shift with physical L2 mass exactly. The retained normalized lower comparison therefore gives actual full/background logarithmic lower estimates with physical L2 correction on the complete same domain. No spectral product membership, positivity of the complex pole, or new representation field is assumed.
+
+Whole-root validation: 9,028 jobs; seven standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the energy estimate needed for background completion, not strict positivity or Gaussian coercivity. Native Green/core source transport and identification of the retained strict background with this specific expression remain written/retained or OPEN. Current WD-T38 logarithmic-energy/source/quadratic/null attachment and enlarged central cancellation remain OPEN. Spectral L2 is unproved from WD-T38 and unassumed. The certified inner-collar/regularity/boundary-removal assembly awaits actual enlarged cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+Certified validation head: `517eb90dae857977e26e89560f027d817ac78abe`.
+Run: `37131988362`; job: `111228747667`.
+Whole-root `lake build WeilDefect`: 9,028 jobs succeeded.
+Seven axiom audits contain only `propext`, `Classical.choice`, and `Quot.sound`.
+The unfinished/project-axiom declaration gate passed.
+New module blob: `77112d87bad6633ce59690df69a212399bf45e63`.
+Root import blob: `886b83d752fbd32f56881bdcadf805594fe2f933`.
+The validation-only workflow is excluded from research promotion.
+
+## RPB-108 — actual native Dirichlet source attachment
+
+Continues from `bead3b17bafd5a8cf14144a4ac262f08ffe898a9`.
+See the [actual native Dirichlet source attachment](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_DIRICHLET_SOURCE_ATTACHMENT_20261003.md).
+
+The full endpoint-corrected native Green column now has a concrete compact
+physical L2 realization and exact integral pairing. Its physical inclusion
+adjoint is an actual form Riesz source on the complete logarithmic carrier.
+Under the existing nonzero Green-denominator condition, applying the actual
+differential expression recovers the compact raw exponential source exactly;
+its same-domain pairing is the retained conjugate-ordinate window evaluation.
+No Weil spectral L2 premise is used.
+
+These individual source columns do not identify the current WD-T38
+`P,C,k,Q,density,extend` instance or prove its actual quadratic/null witness.
+Native Green square-root/background model identification and strict completion
+remain retained/written; enlarged central cancellation remains open. Spectral
+L2 membership of the actual Weil product is unproved and unassumed. The
+certified inner-collar/locally-integrable boundary-removal route is ready once
+central cancellation is proved. Threshold bookkeeping is closed; F-4, WD-T40,
+and RH remain open.
+
+Validation: `5ea502a1b601420846ad908a5d7834c3c5f8dac7`, [run 37133188266](https://github.com/monocap-tech/weil-lab/actions/runs/37133188266), job `111232254587`. Whole-root `lake build WeilDefect` passed (9,029 jobs). All six public theorem axiom audits reported only `[propext, Classical.choice, Quot.sound]`; unfinished/project-axiom gate passed. Research workflow and historical notes remain unchanged.
+
+## RPB-108 — actual linear source-domain realization
+
+Continues from `f079d9aec01743905d3897bfb0283f6da05be14c`.
+See the [actual linear source-domain realization](../notes/REFLECTED_PACKET_BRIDGE_108_LINEAR_SOURCE_DOMAIN_REALIZATION_20261003.md).
+
+The canonical supported finite-log-energy domain is now complex-linearly
+identified with the complete logarithmic Hilbert carrier. Every lawful source
+domain has an actual injective linear lift preserving its physical vector,
+with squared Hilbert norm equal to its genuine logarithmic Fourier energy.
+The concrete operator's diagonal is exactly the existing
+`sourceDomainQuadratic`; its mixed pairing is exactly the existing normalized
+`sourceDomainWeilFormFromShiftedComparison`. No hrep is assumed. These are
+linear maps, not a claim that the ordinary L2 and logarithmic norms are
+equivalent.
+
+Current WD-T38 finite-energy custody and imported quadratic/null identification
+remain open; native background completion remains retained/written.
+Enlarged central cancellation is still open. The certified locally integrable
+inner-collar/boundary-removal route is ready once that witness is proved.
+Actual Weil spectral L2 membership is unproved from WD-T38 and unassumed.
+Threshold bookkeeping is closed; F-4, WD-T40, and RH remain open.
+
+Validation: `a9f7686f1512fb4841650a20782529757c364643`, [run 37134529034](https://github.com/monocap-tech/weil-lab/actions/runs/37134529034), job `111236237732`. Whole-root `lake build WeilDefect` passed (9,030 jobs). All seven public declaration axiom audits reported only `[propext, Classical.choice, Quot.sound]`; unfinished/project-axiom gate passed. Research workflow and historical notes remain unchanged.

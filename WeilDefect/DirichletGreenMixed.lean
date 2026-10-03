@@ -1,5 +1,4 @@
-import WeilDefect.DirichletResolvent
-import Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts
+import WeilDefect.DirichletEnergy
 
 namespace WeilDefect
 
@@ -9,12 +8,6 @@ attribute [local instance 1100] NormedSpace.complexToReal
 
 open MeasureTheory
 open scoped Interval ComplexConjugate
-
-theorem contDiff_dirichletProblemOneColumn (n : ℕ) (a : ℝ) (z : ℂ) :
-    ContDiff ℝ n (dirichletProblemOneColumn a z) := by
-  unfold dirichletProblemOneColumn dirichletRightBasis dirichletLeftBasis
-    dirichletRightReal dirichletLeftReal realExpMode
-  fun_prop
 
 /-- Integration by parts for the full actual Green columns. Only the source
 column's existing nonresonance condition and the Dirichlet endpoints are used. -/
@@ -28,8 +21,8 @@ theorem dirichletProblemOneColumn_green_mixed (a : ℝ) (z w : ℂ)
       conj (dirichletProblemOneColumn a z x) * dirichletProblemOneColumn a w x) := by
   let g := dirichletProblemOneColumn a z
   let h := dirichletProblemOneColumn a w
-  have hg : ContDiff ℝ 2 g := contDiff_dirichletProblemOneColumn 2 a z
-  have hh : ContDiff ℝ 2 h := contDiff_dirichletProblemOneColumn 2 a w
+  have hg : ContDiff ℝ 2 g := contDiff_dirichletProblemOneColumn a z
+  have hh : ContDiff ℝ 2 h := contDiff_dirichletProblemOneColumn a w
   have hdg : ContDiff ℝ 1 (deriv g) := hg.deriv'
   have hddg : Continuous (deriv (deriv g)) :=
     hdg.continuous_deriv (by norm_num)
@@ -79,38 +72,41 @@ theorem dirichletProblemOneColumn_green_mixed (a : ℝ) (z w : ℂ)
         linear_combination -hsum
       rw [heq]
 
-/-- Genuine positive Dirichlet energy of the actual full Green column. -/
-def problemOneDirichletEnergy (a : ℝ) (z : ℂ) : ℝ :=
-  (∫ x in -a..a, ‖deriv (dirichletProblemOneColumn a z) x‖ ^ 2) +
-    (1 / 4 : ℝ) * (∫ x in -a..a, ‖dirichletProblemOneColumn a z x‖ ^ 2)
+/-- Reciprocity of distinct actual native source/Green columns. -/
+theorem dirichletProblemOneColumn_green_reciprocity (a : ℝ) (z w : ℂ)
+    (ha : a ≠ 0) (hz : problemOneGreenDenom z ≠ 0)
+    (hw : problemOneGreenDenom w ≠ 0) :
+    (∫ x in -a..a, conj (realExpMode (problemOneFreq z) x) *
+      dirichletProblemOneColumn a w x) =
+    conj (∫ x in -a..a, conj (realExpMode (problemOneFreq w) x) *
+      dirichletProblemOneColumn a z x) := by
+  have hconj (f g : ℝ → ℂ) :
+      (∫ x in -a..a, conj (f x) * g x) =
+        conj (∫ x in -a..a, conj (g x) * f x) := by
+    rw [← intervalIntegral.intervalIntegral_conj]
+    apply intervalIntegral.integral_congr
+    intro x _
+    simp [mul_comm]
+  rw [dirichletProblemOneColumn_green_mixed a z w ha hz,
+    dirichletProblemOneColumn_green_mixed a w z ha hw, map_add, map_mul]
+  have hq : conj (1 / 4 : ℂ) = 1 / 4 := by norm_num
+  rw [hq, hconj (deriv (dirichletProblemOneColumn a z))
+    (deriv (dirichletProblemOneColumn a w)),
+    hconj (dirichletProblemOneColumn a z) (dirichletProblemOneColumn a w)]
 
-theorem problemOneGreenPairing_eq_dirichletEnergy (a : ℝ) (z : ℂ)
-    (ha : a ≠ 0) (hz : problemOneGreenDenom z ≠ 0) :
-    problemOneGreenPairing a z = (problemOneDirichletEnergy a z : ℂ) := by
-  unfold problemOneGreenPairing
-  simp only [← starRingEnd_apply]
-  rw [dirichletProblemOneColumn_green_mixed a z z ha hz]
-  simp only [Complex.conj_mul', ← Complex.ofReal_pow, intervalIntegral.integral_ofReal]
-  simp only [problemOneDirichletEnergy, Complex.ofReal_add, Complex.ofReal_mul,
-    Complex.ofReal_div, Complex.ofReal_one, Complex.ofReal_ofNat]
-
-theorem problemOneDirichletEnergy_nonnegative (a : ℝ) (z : ℂ) (ha : 0 ≤ a) :
-    0 ≤ problemOneDirichletEnergy a z := by
-  unfold problemOneDirichletEnergy
-  apply add_nonneg
-  · exact intervalIntegral.integral_nonneg_of_forall (by linarith) (fun x => sq_nonneg _)
-  · apply mul_nonneg (by norm_num)
-    exact intervalIntegral.integral_nonneg_of_forall (by linarith) (fun x => sq_nonneg _)
-
-/-- The retained native column energy is now the genuine Dirichlet energy.
-This is column regularity, not Weil spectral L2 membership of a WD-T38 mode. -/
-theorem problemOneColumnEnergySq_eq_dirichletEnergy (a : ℝ) (z : ℂ)
+/-- The mixed law's diagonal agrees with the already certified native
+Dirichlet energy; no second energy definition is introduced. -/
+theorem dirichletProblemOneColumn_green_mixed_diagonal (a : ℝ) (z : ℂ)
     (ha : 0 < a) (hz : problemOneGreenDenom z ≠ 0) :
-    problemOneColumnEnergySq a z = problemOneDirichletEnergy a z := by
-  rw [problemOneColumnEnergySq,
-    problemOneGreenPairing_eq_dirichletEnergy a z (ne_of_gt ha) hz,
-    Complex.norm_real, Real.norm_eq_abs,
-    abs_of_nonneg (problemOneDirichletEnergy_nonnegative a z ha.le)]
+    (∫ x in -a..a, conj (deriv (dirichletProblemOneColumn a z) x) *
+      deriv (dirichletProblemOneColumn a z) x) +
+    (1 / 4 : ℂ) * (∫ x in -a..a,
+      conj (dirichletProblemOneColumn a z x) * dirichletProblemOneColumn a z x) =
+        (problemOneDirichletEnergy a z : ℂ) := by
+  rw [← dirichletProblemOneColumn_green_mixed a z z ha.ne' hz]
+  have he := problemOneGreenPairing_eq_dirichletEnergy a z ha hz
+  unfold problemOneGreenPairing at he
+  simpa only [starRingEnd_apply] using he
 
 end
 
