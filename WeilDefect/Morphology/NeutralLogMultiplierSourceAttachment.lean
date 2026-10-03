@@ -185,7 +185,8 @@ theorem neutralLogPhysical_signedSymbolEnergy (k : RealComplexL2) :
   · exact (Complex.continuous_re.comp ha.hasTemperateGrowth.1.continuous).aestronglyMeasurable.mul
       ((Lp.aestronglyMeasurable (𝓕 (neutralLogPhysical k) : RealComplexL2)).norm.pow 2)
   · filter_upwards [] with ξ
-    simp only [Real.norm_eq_abs, abs_mul, abs_of_nonneg (sq_nonneg _)]
+    simp only [Real.norm_eq_abs, abs_mul,
+      abs_of_nonneg (sq_nonneg ‖(𝓕 (neutralLogPhysical k) : RealComplexL2) ξ‖)]
     exact le_rfl
 
 /-- The retained normalized comparison now controls the actual shifted
@@ -203,7 +204,8 @@ theorem neutralLogPhysical_shiftedComparison (f : NeutralLogHilbertCarrier a) :
     (Lp.aestronglyMeasurable (𝓕 (neutralLogPhysical f.val) : RealComplexL2))).mp (Lp.memLp _)
   have ht : Integrable (fun ξ => (rightLimitCompactWeilSymbolMathlib a ξ + shift) *
       ‖(𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ‖ ^ 2) volume := by
-    convert hs.add (hn.const_mul shift) using 1 <;> funext ξ <;> ring
+    convert hs.add (hn.const_mul shift) using 1 <;> funext ξ <;>
+      simp only [Pi.add_apply] <;> ring
   simp only [neutralLogHilbertCarrier_norm_sq]
   constructor
   · rw [← integral_const_mul]
