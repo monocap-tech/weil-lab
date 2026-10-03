@@ -48,7 +48,7 @@ theorem dirichletProblemOneColumn_green_mixed (a : ℝ) (z w : ℂ)
   have hsum : (∫ x in -a..a, conj (deriv (deriv g) x) * h x) +
       (∫ x in -a..a, conj (deriv g x) * deriv h x) = 0 := by
     rw [← intervalIntegral.integral_add h1 h2]
-    simpa only [h, dirichletProblemOneColumn_pos a w ha,
+    simpa only [starRingEnd_apply, h, dirichletProblemOneColumn_pos a w ha,
       dirichletProblemOneColumn_neg a w ha, mul_zero, sub_zero] using hib
   have hsource : ∀ x, conj (realExpMode (problemOneFreq z) x) * h x =
       -(conj (deriv (deriv g) x) * h x) +
@@ -67,8 +67,10 @@ theorem dirichletProblemOneColumn_green_mixed (a : ℝ) (z w : ℂ)
       exact hsource x
     _ = -(∫ x in -a..a, conj (deriv (deriv g) x) * h x) +
         (1 / 4 : ℂ) * (∫ x in -a..a, conj (g x) * h x) := by
-      rw [intervalIntegral.integral_add h1.neg (h3.const_mul _),
-        intervalIntegral.integral_neg, intervalIntegral.integral_const_mul]
+      have hadd := intervalIntegral.integral_add h1.neg
+        (h3.const_mul (1 / 4 : ℂ))
+      simpa only [Pi.neg_apply, intervalIntegral.integral_neg,
+        intervalIntegral.integral_const_mul] using hadd
     _ = _ := by
       change -(∫ x in -a..a, conj (deriv (deriv g) x) * h x) + _ =
         (∫ x in -a..a, conj (deriv g x) * deriv h x) + _
@@ -85,7 +87,9 @@ def problemOneDirichletEnergy (a : ℝ) (z : ℂ) : ℝ :=
 theorem problemOneGreenPairing_eq_dirichletEnergy (a : ℝ) (z : ℂ)
     (ha : a ≠ 0) (hz : problemOneGreenDenom z ≠ 0) :
     problemOneGreenPairing a z = (problemOneDirichletEnergy a z : ℂ) := by
-  rw [problemOneGreenPairing, dirichletProblemOneColumn_green_mixed a z z ha hz]
+  unfold problemOneGreenPairing
+  simp only [← starRingEnd_apply]
+  rw [dirichletProblemOneColumn_green_mixed a z z ha hz]
   simp only [Complex.conj_mul', Complex.ofReal_pow, intervalIntegral.integral_ofReal,
     problemOneDirichletEnergy, Complex.ofReal_add, Complex.ofReal_mul,
     Complex.ofReal_div, Complex.ofReal_one, Complex.ofReal_ofNat]
