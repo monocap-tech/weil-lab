@@ -87,6 +87,8 @@ import WeilDefect.Morphology.NeutralLogFormGraph
 import WeilDefect.Morphology.NeutralLogFormEnergy
 import WeilDefect.Morphology.NeutralSelectedBackground
 
+import WeilDefect.Morphology.NeutralInnerCollarRegularity
+
 import WeilDefect.Morphology.Noncompact
 
 import WeilDefect.Examples.CriticalNonattainment

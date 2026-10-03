@@ -1,5 +1,16 @@
 # Proof Status
 
+## RPB-108 — certified inner-collar regularity assembly
+
+Continues from `4cea4deb386799457578f9cefccccc329a859f4b`.
+See the [certified assembly note](../notes/REFLECTED_PACKET_BRIDGE_108_INNER_COLLAR_ASSEMBLY_20261002.md).
+
+The inner-collar regularity reduction is now implemented in `NeutralInnerCollarRegularity.lean`. The auxiliary symbol's temperate growth is derived from the retained target symbol and certified finite-prime growth. The constructed collar is locally integrable; its archimedean gap is `b-c` while its full prime cutoff remains `a`. Actual central cancellation proves zero on the open overlap, yielding almost-everywhere agreement with the existing concrete residual. A constructed smooth bump splits every compact test; the resulting whole-test identity gives the zero function as a genuine representative of the actual defect. The final theorem immediately consumes the existing boundary-removal theorem.
+
+No spectral L2 or independent regular-defect representation premise is introduced. The only remaining source-specific input to this regularity/whole-realization assembly is actual central cancellation, alongside the existing carrier, strict support margin and target-symbol hypotheses. The theorem does not attach or prove that central witness. Actual WD-T38 carrier density/form-domain/quadratic identification and same-domain mixed/normalized attachment remain OPEN. Named-density energy custody remains certified. Spectral L2 membership is unproved and unassumed; the weaker regularity route now suffices conditional on actual central cancellation. Threshold bookkeeping stays CLOSED; F-4 logarithmic Gaussian coercivity is NOT STARTED. WD-T40/RH standing is unchanged.
+
+Whole-root validation: **9,021 jobs; nine clean axiom audits**. Run `37088695271`, job `111104179282`, module blob `68166c337aa9845133eddbc6374bdd9223f57ff0`. This certifies the previously written inner-collar reduction; it does not instantiate the missing central witness.
+
 ## RPB-108 — inner-collar regularity reduction (written; not Lean-certified)
 
 Continues from `ec1b0fa24e853d604f7a2feab8283dcf55fea4f4`.
