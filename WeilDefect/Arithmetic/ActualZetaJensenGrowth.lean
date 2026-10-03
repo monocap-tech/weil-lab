@@ -94,10 +94,10 @@ theorem neutralActualZetaDivisorHeightWindow_card_le_mass (T : ℝ) :
     (Fintype.card (neutralActualZetaDivisorHeightWindow T) : ℤ) ≤
       neutralActualZetaJensenMass (|T| + 2) := by
   classical
-  let D := divisor neutralActualZetaEntire (closedBall (0 : ℂ) (|T| + 2))
+  let D := divisor neutralActualZetaEntire (closedBall (0 : ℂ) ||T| + 2|)
   have ha : AnalyticOnNhd ℂ neutralActualZetaEntire
-      (closedBall (0 : ℂ) (|T| + 2)) := fun z _ => neutralActualZetaEntire_analytic z
-  have hfinite := D.finiteSupport (isCompact_closedBall (0 : ℂ) (|T| + 2))
+      (closedBall (0 : ℂ) ||T| + 2|) := fun z _ => neutralActualZetaEntire_analytic z
+  have hfinite := D.finiteSupport (isCompact_closedBall (0 : ℂ) ||T| + 2|)
   have hpoint (ρ : neutralActualZetaPointHeightWindow T) :
       ρ.val.val ∈ closedBall (0 : ℂ) (|T| + 2) := by
     have hn := Complex.norm_le_abs_re_add_abs_im ρ.val.val
@@ -107,12 +107,9 @@ theorem neutralActualZetaDivisorHeightWindow_card_le_mass (T : ℝ) :
     simpa only [mem_closedBall, dist_zero_right] using hb
   have hD (ρ : neutralActualZetaPointHeightWindow T) :
       D ρ.val.val = (neutralActualZetaMultiplicity ρ.val : ℤ) := by
-    simpa only [abs_of_pos (by positivity : 0 < |T| + 2)] using
-      neutralActualZetaEntire_divisor (r := |T| + 2) ρ.val
-        (by simpa only [abs_of_pos (by positivity : 0 < |T| + 2)] using hpoint ρ)
+    exact neutralActualZetaEntire_divisor (r := |T| + 2) ρ.val
+      (by simpa only [abs_of_pos (by positivity : 0 < |T| + 2)] using hpoint ρ)
   rw [neutralActualZetaDivisorHeightWindow_card, Nat.cast_sum]
-  unfold neutralActualZetaJensenMass
-  rw [abs_of_pos (by positivity : 0 < |T| + 2)]
   change (∑ ρ : neutralActualZetaPointHeightWindow T,
     (neutralActualZetaMultiplicity ρ.val : ℤ)) ≤ ∑ᶠ z, D z
   rw [finsum_eq_sum_of_support_subset D (by
