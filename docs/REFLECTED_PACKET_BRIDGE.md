@@ -9,6 +9,27 @@
 
 ## Current standing
 
+## RPB-108 — actual native Dirichlet synthesis
+
+Continues from `387ab390612a3209663f6c0b19f99b91f492e52f`.
+See the [actual native synthesis note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_DIRICHLET_SYNTHESIS_20261003.md).
+
+Constructed genuine physical L2 sums of the full Green columns and compact
+derivative columns for native shell coefficients in `lp 2`. Under the
+retained positive-window shell-data/count inputs, both series converge
+absolutely in L2, have certified HasSum witnesses, and commute with every
+fixed physical L2 mixed pairing. No assumed representation is used.
+
+The derivative relation between the two synthesized vectors and their
+supported logarithmic-domain attachment remain separate obligations.
+Native background completion remains retained/written. The current WD-T38
+mode has not been identified with this native synthesis or completion;
+its source quadratic/null and enlarged central cancellation remain open.
+Current spectral L2 is unproved and unassumed. The existing locally
+integrable residual theorem is ready for actual central cancellation.
+Threshold bookkeeping is closed; F-4 remains pending.
+
+
 ## RPB-108 — concrete native Dirichlet coordinate summability
 
 Continues from `7e1cd8537a3c16d3c217e66df1ed502441fb50be`.
