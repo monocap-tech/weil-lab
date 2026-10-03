@@ -34,8 +34,9 @@ jobs:
         continue-on-error: true
         with:
           path: .lake
-          key: rpb108-mellin-growth-compiled-v1
+          key: rpb108-mellin-representation-compiled-v1
           restore-keys: |
+            rpb108-mellin-growth-compiled-v1
             rpb108-theta-growth-final-compiled-v1
             rpb108-theta-growth-verified-compiled-v1
             rpb108-lean434-mathlib5ed296-jensen-root-v1
@@ -56,17 +57,24 @@ jobs:
           git hash-object WeilDefect/Arithmetic/ActualZetaMellinRepresentation.lean
           lean --version
           lake build WeilDefect.Arithmetic.ActualZetaMellinRepresentation
+          lake build WeilDefect.Arithmetic.ActualZetaFactorialEnvelope
+          lake build WeilDefect
       - name: Inspect actual Jensen bridge axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaMellinRepresentation
+          import WeilDefect.Arithmetic.ActualZetaFactorialEnvelope
           #print axioms WeilDefect.neutralActualZetaThetaTailKernel_weight
           #print axioms WeilDefect.neutralActualZetaThetaTailKernel_mellin
           #print axioms WeilDefect.neutralActualZetaThetaTailKernel_convergent
           #print axioms WeilDefect.neutralActualZetaModifiedKernel_eq
           #print axioms WeilDefect.neutralActualZetaThetaReflected_convergent
           #print axioms WeilDefect.neutralActualZetaCompleted_mellin_tails
+          #print axioms WeilDefect.neutralActualZetaCompleted_factorial_bound
+          #print axioms WeilDefect.neutralActualZetaFactorialMajorant_one_le
+          #print axioms WeilDefect.neutralActualZetaEntire_factorial_bound
+          #print axioms WeilDefect.neutralActualZetaCircleEnvelope_factorial_bound
+          #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_card_le_factorial
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi

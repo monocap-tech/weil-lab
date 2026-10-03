@@ -145,3 +145,6 @@ import WeilDefect.Arithmetic.ActualZetaJensenGrowth
 import WeilDefect.Arithmetic.ActualZetaThetaGrowth
 
 import WeilDefect.Arithmetic.ActualZetaMellinGrowth
+
+import WeilDefect.Arithmetic.ActualZetaMellinRepresentation
+import WeilDefect.Arithmetic.ActualZetaFactorialEnvelope

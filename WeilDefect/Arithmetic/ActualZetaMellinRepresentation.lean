@@ -111,5 +111,27 @@ theorem neutralActualZetaCompleted_mellin_tails (z : ℂ) :
   rw [ha, neutralActualZetaThetaTailKernel_mellin,
     neutralActualZetaThetaTailKernel_mellin]
 
+/-- Both actual Mellin tails give a common factorial bound for the actual
+pole-removed completed zeta on every natural-radius disk. -/
+theorem neutralActualZetaCompleted_factorial_bound :
+    ∃ p C : ℝ, 0 < p ∧ 0 < C ∧ ∀ (n : ℕ) (z : ℂ),
+      ‖z‖ ≤ (n : ℝ) →
+      ‖completedRiemannZeta₀ z‖ ≤
+        C * ((n.factorial : ℝ) / (p / 2) ^ n) *
+          (Real.exp (-(p / 2)) / (p / 2)) := by
+  obtain ⟨p, C, hp, hC, hb⟩ := neutralActualZetaThetaMellinTail_bound
+  refine ⟨p, C, hp, hC, fun n z hz => ?_⟩
+  have hd := neutralActualZetaThetaMellinTail_disk_exponents n hz
+  have hleft := (hb n (z / 2) hd.1).2
+  have hright := (hb n ((1 - z) / 2) hd.2).2
+  rw [neutralActualZetaCompleted_mellin_tails, norm_div, norm_ofNat]
+  calc
+    _ ≤ ((‖∫ t : ℝ in Ioi 1,
+            neutralActualZetaThetaMellinTailIntegrand (z / 2) t‖) +
+          (‖∫ t : ℝ in Ioi 1,
+            neutralActualZetaThetaMellinTailIntegrand ((1 - z) / 2) t‖)) / 2 :=
+      div_le_div_of_nonneg_right (norm_add_le _ _) (by norm_num)
+    _ ≤ _ := by linarith
+
 end
 end WeilDefect
