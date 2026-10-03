@@ -9,6 +9,27 @@
 
 ## Current standing
 
+## RPB-108 — actual native weak derivative attachment
+
+Continues from `6a4d9dad1c4587af595294b891ddf692bf67fba8`.
+See the [native weak derivative note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_WEAK_DERIVATIVE_20261003.md).
+
+Attached the compact derivative column as the global weak derivative of
+the actual zero-extended full Green column, against every Schwartz test.
+The law passes through the already constructed L2 syntheses: the actual
+derivative synthesis is the weak derivative of the actual Green synthesis
+under the retained shell-data/count inputs. No test support restriction
+or spectral-domain hypothesis is needed.
+
+Native support/Fourier logarithmic-domain attachment and background
+completion remain separate obligations. The current WD-T38 mode remains
+unidentified with the native synthesis/completion; its source quadratic/null,
+same-domain mixed/normalized, and enlarged central attachments are open.
+Its spectral L2 membership is unproved from WD-T38 and unassumed.
+The certified locally integrable residual route is ready for actual central
+cancellation. Threshold bookkeeping is closed; F-4 remains pending.
+
+
 ## RPB-108 — actual native Dirichlet synthesis
 
 Continues from `387ab390612a3209663f6c0b19f99b91f492e52f`.
