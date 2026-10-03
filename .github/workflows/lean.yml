@@ -47,9 +47,15 @@ jobs:
             rpb108-lean434-mathlib5ed296-inner-collar-v1
             rpb108-lean434-mathlib5ed296-base71dddf5-v1
       - name: Resolve pinned dependencies
+        env:
+          MATHLIB_NO_CACHE_ON_UPDATE: "1"
         run: lake update
-      - name: Fetch mathlib cache
-        run: lake exe cache get
+      - name: Fetch mathlib cache if compiled dependency is missing
+        shell: bash
+        run: |
+          if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
+            lake exe cache get
+          fi
       - name: Check actual Mellin tail comparison
         shell: bash
         run: |
