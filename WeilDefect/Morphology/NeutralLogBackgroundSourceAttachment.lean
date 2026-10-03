@@ -85,7 +85,7 @@ theorem neutralLogBackgroundOperator_sub_selected :
     neutralLogBackgroundOperator a ha lowerC upperC shift h0 hl hu z -
       neutralLogFiniteSelectedOperator a z =
         neutralLogWeilFormOperator a ha lowerC upperC shift h0 hl hu := by
-  exact add_sub_cancel_right _ _
+  simp only [neutralLogBackgroundOperator, add_sub_cancel_right]
 
 theorem neutralLogBackgroundOperator_conjugate :
     neutralLogBackgroundOperator a ha lowerC upperC shift h0 hl hu
