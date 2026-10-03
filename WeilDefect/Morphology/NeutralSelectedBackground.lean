@@ -20,7 +20,7 @@ theorem wd_t38_full_defect_on_selected_neutral
     (P : Kpos →L[ℂ] H) (C : M →L[ℂ] Kpos)
     (S_B : B →L[ℂ] H) (u : M) (k : H)
     (hunit : (C†) (C u) = u) (hreal : C u = (P†) k) (hk : k ≠ 0) :
-    WDT07.sharedDefect P (neutralNegativeSynthesis P C) S_B k =
+    WDT09.sharedDefect P (neutralNegativeSynthesis P C) S_B k =
       -S_B ((S_B†) k) := by
   have hn := (wd_t38_p3_u2_physical_neutral_null_mode P C u k hunit hreal hk).2
   change (WDT01.physicalDefect P (neutralNegativeSynthesis P C) -
@@ -36,7 +36,7 @@ theorem wd_t38_full_null_iff_background_analysis_zero
     (P : Kpos →L[ℂ] H) (C : M →L[ℂ] Kpos)
     (S_B : B →L[ℂ] H) (u : M) (k : H)
     (hunit : (C†) (C u) = u) (hreal : C u = (P†) k) (hk : k ≠ 0) :
-    WDT07.sharedDefect P (neutralNegativeSynthesis P C) S_B k = 0 ↔
+    WDT09.sharedDefect P (neutralNegativeSynthesis P C) S_B k = 0 ↔
       (S_B†) k = 0 := by
   rw [wd_t38_full_defect_on_selected_neutral P C S_B u k hunit hreal hk,
     neg_eq_zero]
@@ -61,7 +61,7 @@ theorem wd_t38_effective_positive_full_null
     (hunit : (C†) (C u) = u)
     (hreal : C u = ((WDT10.effectivePositive Spos X_B)†) k)
     (hk : k ≠ 0) :
-    WDT07.sharedDefect Spos
+    WDT09.sharedDefect Spos
       (neutralNegativeSynthesis (WDT10.effectivePositive Spos X_B) C) S_B k = 0 := by
   rw [WDT10.wd_t10_full_defect_reduction Spos
     (neutralNegativeSynthesis (WDT10.effectivePositive Spos X_B) C)
