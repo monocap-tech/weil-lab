@@ -8,7 +8,7 @@ noncomputable section
 attribute [local instance 1100] NormedSpace.complexToReal
 
 open MeasureTheory FourierTransform
-open scoped SchwartzMap FourierTransform Real
+open scoped SchwartzMap FourierTransform Real ContDiff
 
 /-- The actual first-derivative frequency product of the native physical
 Green vector. This is not the full Weil spectral product. -/
@@ -26,8 +26,7 @@ theorem neutralNativeFourierDerivativeProduct_locallyIntegrable
     LocallyIntegrable (neutralNativeFourierDerivativeProduct a data v) volume := by
   have hc : Continuous (fun ξ : ℝ => (2 * Real.pi * Complex.I) * (ξ : ℂ)) := by
     fun_prop
-  exact ((Lp.memLp (𝓕 (neutralNativeGreenSynthesis a data v) : RealComplexL2)).
-    locallyIntegrable (by norm_num)).continuous_mul hc
+  exact ((Lp.memLp (𝓕 (neutralNativeGreenSynthesis a data v) : RealComplexL2)).locallyIntegrable (by norm_num)).continuous_mul hc
 
 /-- The certified actual distribution identity gives the concrete Schwartz
 pairing of the derivative frequency product. -/
@@ -67,8 +66,7 @@ theorem neutralNativeFourierDerivativeProduct_ae
     (𝓕 (neutralNativeGradientSynthesis a data v) : RealComplexL2) =ᵐ[volume]
       neutralNativeFourierDerivativeProduct a data v := by
   apply ae_eq_of_integral_contDiff_smul_eq
-    ((Lp.memLp (𝓕 (neutralNativeGradientSynthesis a data v) : RealComplexL2)).
-      locallyIntegrable (by norm_num))
+    ((Lp.memLp (𝓕 (neutralNativeGradientSynthesis a data v) : RealComplexL2)).locallyIntegrable (by norm_num))
     (neutralNativeFourierDerivativeProduct_locallyIntegrable a data v)
   intro g hg hgc
   let gc : ℝ → ℂ := Complex.ofRealCLM ∘ g
@@ -90,8 +88,8 @@ theorem neutralNativeFourierDerivativeProduct_memLp
     (hCount : ZetaZeroShellCountData count C)
     (v : NeutralNativeShellCoefficients count) :
     MemLp (neutralNativeFourierDerivativeProduct a data v) 2 volume :=
-  (Lp.memLp (𝓕 (neutralNativeGradientSynthesis a data v) : RealComplexL2)).congr
-    (neutralNativeFourierDerivativeProduct_ae a ha data C hCount v)
+  (memLp_congr_ae (neutralNativeFourierDerivativeProduct_ae a ha data C hCount v)).mp
+    (Lp.memLp (𝓕 (neutralNativeGradientSynthesis a data v) : RealComplexL2))
 
 end
 
