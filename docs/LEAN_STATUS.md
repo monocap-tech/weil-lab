@@ -1,5 +1,30 @@
 # Lean Status
 
+### RPB-108: actual theta exponential and factorial moment bounds (2026-10-03)
+
+The actual zero-parameter even theta remainder is now bounded by
+C exp(-p t) for all t ≥ 1, with positive p and C obtained from the
+actual kernel. Pinned exponential decay supplies the tail; continuity
+and compactness supply the finite initial interval.
+
+For every natural n, its polynomially weighted absolute value is bounded
+by C n!/(p/2)^n exp(-(p/2)t). All moments on (1,∞) are integrable,
+with the same actual constants and the explicit bound
+C n!/(p/2)^n exp(-p/2)/(p/2). No divisor-count, shell-growth, or
+spectral-domain premise is supplied.
+
+Next: connect these actual moments to the completed-zeta complex Mellin
+weights and prove an explicit rate for the existing actual circle
+envelope. This chunk does not prove that envelope rate, local unit-height
+logarithmic counts, infinite sampling boundedness or full Weil-form extension.
+
+WD-T38 coefficient/source-null attachment and enlarged central cancellation
+remain open. Background completion remains retained; spectral L2 unproved
+and unassumed. Threshold closed; F-4 pending; RH standing unchanged.
+
+See [actual theta growth](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_THETA_GROWTH_20261003.md).
+
+
 ### RPB-108: actual entire-zeta Jensen count bridge (2026-10-03)
 
 The actual entire pole-cleared completed-zeta function

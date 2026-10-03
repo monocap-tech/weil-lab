@@ -6351,3 +6351,7 @@ identity is interpreted as the Fourier energy used in logarithmic coercivity.
 ## RPB-108: actual zeta Jensen growth (2026-10-03)
 
 See [actual Jensen growth definitions](TERMINOLOGY_RPB108_ACTUAL_JENSEN_GROWTH.md) for the actual pole-cleared entire function, analytic Jensen mass, actual circle growth envelope, and count-to-growth bridge. These definitions accompany the first load-bearing source use. An explicit growth rate and local logarithmic sampling bound remain open.
+
+## RPB-108: actual theta growth (2026-10-03)
+
+See [actual theta growth definitions](TERMINOLOGY_RPB108_ACTUAL_THETA_GROWTH.md) for the actual theta remainder, its global exponential majorant, and factorial moment bound. The completed-zeta circle-envelope rate remains the next analytic obligation.

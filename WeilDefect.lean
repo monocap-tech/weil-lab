@@ -141,3 +141,5 @@ import WeilDefect.Arithmetic.ActualZetaWeightedSampling
 import WeilDefect.Arithmetic.ActualZetaDivisorWindows
 
 import WeilDefect.Arithmetic.ActualZetaJensenGrowth
+
+import WeilDefect.Arithmetic.ActualZetaThetaGrowth

@@ -1637,3 +1637,39 @@ unproved and unassumed. Threshold closed; F-4 pending; RH standing unchanged.
 See [actual zeta Jensen growth](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ZETA_JENSEN_GROWTH_20261003.md).
 
 Validated candidate `cefaea2a29a2a075a402e7f1061d8a9f0346fb16`, run `37156729768`, job `111301541891`; root 9,047 jobs, thirteen standard-axiom audits. Verified source/root import promoted separately; validation workflow excluded.
+
+### RPB-108: actual theta exponential and factorial moment bounds (2026-10-03)
+
+The actual zero-parameter even theta remainder is now bounded by
+C exp(-p t) for all t ≥ 1, with positive p and C obtained from the
+actual kernel. Pinned exponential decay supplies the tail; continuity
+and compactness supply the finite initial interval.
+
+For every natural n, its polynomially weighted absolute value is bounded
+by C n!/(p/2)^n exp(-(p/2)t). All moments on (1,∞) are integrable,
+with the same actual constants and the explicit bound
+C n!/(p/2)^n exp(-p/2)/(p/2). No divisor-count, shell-growth, or
+spectral-domain premise is supplied.
+
+Next: connect these actual moments to the completed-zeta complex Mellin
+weights and prove an explicit rate for the existing actual circle
+envelope. This chunk does not prove that envelope rate, local unit-height
+logarithmic counts, infinite sampling boundedness or full Weil-form extension.
+
+WD-T38 coefficient/source-null attachment and enlarged central cancellation
+remain open. Background completion remains retained; spectral L2 unproved
+and unassumed. Threshold closed; F-4 pending; RH standing unchanged.
+
+See [actual theta growth](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_THETA_GROWTH_20261003.md).
+
+## Validation
+
+Exact candidate `5ee1aa9ace2f8f652d89d9b3961ef1f6177e5926` passed
+[run 37159106688](https://github.com/monocap-tech/weil-lab/actions/runs/37159106688),
+job `111308606670`. The isolated module and full `lake build WeilDefect`
+passed (3,204 and 9,048 jobs). All four new public declaration audits
+report only `[propext, Classical.choice, Quot.sound]`. The unfinished/project-axiom
+gate passed. Source and root import are promoted without the validation workflow.
+
+The validation runner retained compiled dependencies under
+`rpb108-theta-growth-verified-compiled-v1` for the next bounded proof chunk.
