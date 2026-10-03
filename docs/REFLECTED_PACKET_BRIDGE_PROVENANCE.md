@@ -1051,3 +1051,27 @@ Whole-root `lake build WeilDefect` succeeded: **9,021 jobs**. The nine declarati
 The initial theorem-target check also passed (8,984 jobs, nine clean audits) at `fa657f3b7f0a980266582dfb178f78a5e89dcb33`, run `37088301589`, job `111103010825`. The final whole-root certificate uses the identical module bytes.
 
 Promotion contains exactly the certified module and root import, a new immutable pass note, and current status/track/overview/provenance updates. All other Lean blobs and pinned manifests match the whole-root certificate. The original research workflow is preserved byte-identically and the validation PR is closed unmerged. No historical note is rewritten.
+
+
+## 2026-10-02 — RPB-108 certified source-witness independence audit
+
+Recovered parent: `ec88ac9a8de20b1f7ae8e3375d9129564702eb54`, tree `e1fc96875ea0ca27ffe4d18732a9de3db2a10618`.
+
+The source-witness independence audit is certified in `NeutralSourceWitnessAudit.lean`. The named scalar source identity accepts zero density and zero pole for any symbol and shift; all corresponding integrals are genuinely zero. Zero named density and scalar Q satisfy the existing arithmetic output. More decisively, every `NeutralDefectMorphology` can be reindexed to those zero arithmetic data while preserving the attained neutral branch, coefficient/physical carrier, physical null equation, extension map, and the exact same null-extension package (endpoint vector, operators, restrictions and proofs). Separately, L2 Fourier inversion proves that the nonzero concrete physical carrier's normalized Fourier norm-square density is not almost-everywhere zero.
+
+Thus the named-density identification is not enforced by the current typed output. The audit does not instantiate an actual-zeta neutral branch, refute the documented mathematical carrier-identification hypothesis, or prove nonderivability of form energy or spectral L2 by every possible argument. It certifies why simply consuming the retained named-density integrability cannot be called an actual carrier attachment.
+
+Actual carrier density/source-form-domain/quadratic identification and same-domain polarization/normalized attachment remain OPEN. Actual enlarged central cancellation remains OPEN. The certified inner-collar assembly from `ec88ac9` already derives regularity and whole compact realization once actual central cancellation is supplied, with no independent regularity premise. Spectral L2 membership remains unproved and unassumed. Threshold bookkeeping is CLOSED; F-4 logarithmic Gaussian coercivity is NOT STARTED. WD-T40/RH standing is unchanged.
+
+Whole-root `lake build WeilDefect` passed: **9,022 jobs**. All five audited declarations use only `propext`, `Classical.choice` and `Quot.sound`. The unfinished-declaration gate passed.
+
+- Validation commit: `e1959d1c6858c092a7cc51511bf667b13812768e`.
+- Validation tree: `ea9e54de264c48b085bb8258792008e13b6155d2`.
+- Run: `37089994701`.
+- Job: `111108107011`.
+- Certified source blob: `cef6b6e6802491f18263132356d0a57ebbccea21`.
+- Root import blob: `67e5592e0c07889cb1d5ada2c740a94b90687d88`.
+
+The final validation dependency cache contains the complete successful root build under `rpb108-lean434-mathlib5ed296-rpb108-root-v1`. This is validation infrastructure only; no workflow change is promoted.
+
+Promotion carries the identical certified module and root import, terminology, a new immutable pass note and current status/track/overview/provenance updates. All Lean modules and pinned manifests match the whole-root certificate. The original research workflow is byte-identical; the validation PR is closed unmerged. Historical notes are unchanged.

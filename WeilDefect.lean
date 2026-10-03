@@ -89,6 +89,8 @@ import WeilDefect.Morphology.NeutralSelectedBackground
 
 import WeilDefect.Morphology.NeutralInnerCollarRegularity
 
+import WeilDefect.Morphology.NeutralSourceWitnessAudit
+
 import WeilDefect.Morphology.Noncompact
 
 import WeilDefect.Examples.CriticalNonattainment

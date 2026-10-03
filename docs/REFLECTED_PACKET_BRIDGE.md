@@ -9,6 +9,19 @@
 
 ## Current standing
 
+## RPB-108 — certified source-witness independence audit
+
+Continues from `ec88ac9a8de20b1f7ae8e3375d9129564702eb54`.
+See the [audit note](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_WITNESS_INDEPENDENCE_20261002.md).
+
+The source-witness independence audit is certified in `NeutralSourceWitnessAudit.lean`. The named scalar source identity accepts zero density and zero pole for any symbol and shift; all corresponding integrals are genuinely zero. Zero named density and scalar Q satisfy the existing arithmetic output. More decisively, every `NeutralDefectMorphology` can be reindexed to those zero arithmetic data while preserving the attained neutral branch, coefficient/physical carrier, physical null equation, extension map, and the exact same null-extension package (endpoint vector, operators, restrictions and proofs). Separately, L2 Fourier inversion proves that the nonzero concrete physical carrier's normalized Fourier norm-square density is not almost-everywhere zero.
+
+Thus the named-density identification is not enforced by the current typed output. The audit does not instantiate an actual-zeta neutral branch, refute the documented mathematical carrier-identification hypothesis, or prove nonderivability of form energy or spectral L2 by every possible argument. It certifies why simply consuming the retained named-density integrability cannot be called an actual carrier attachment.
+
+Actual carrier density/source-form-domain/quadratic identification and same-domain polarization/normalized attachment remain OPEN. Actual enlarged central cancellation remains OPEN. The certified inner-collar assembly from `ec88ac9` already derives regularity and whole compact realization once actual central cancellation is supplied, with no independent regularity premise. Spectral L2 membership remains unproved and unassumed. Threshold bookkeeping is CLOSED; F-4 logarithmic Gaussian coercivity is NOT STARTED. WD-T40/RH standing is unchanged.
+
+Whole-root validation: **9,022 jobs; five clean axiom audits**. Run `37089994701`, job `111108107011`, module blob `cef6b6e6802491f18263132356d0a57ebbccea21`. This certifies the typed-interface attachment obstruction, not an actual source witness.
+
 ## RPB-108 — certified inner-collar regularity assembly
 
 Continues from `4cea4deb386799457578f9cefccccc329a859f4b`.
