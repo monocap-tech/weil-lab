@@ -1,15 +1,6 @@
 name: Lean
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "lean-toolchain"
-      - "lakefile.toml"
-      - "lake-manifest.json"
-      - "WeilDefect.lean"
-      - "WeilDefect/**"
-      - ".github/workflows/lean.yml"
   pull_request:
     paths:
       - "lean-toolchain"
@@ -28,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Install Elan
         shell: bash
@@ -37,15 +30,46 @@ jobs:
 
       - name: Resolve pinned dependencies
         shell: bash
-        run: lake update
+        run: |
+          lake update > /tmp/rpb106-update.log 2>&1 || { tail -100 /tmp/rpb106-update.log; exit 1; }
+          tail -5 /tmp/rpb106-update.log
 
       - name: Fetch mathlib cache
         shell: bash
-        run: lake exe cache get
+        run: |
+          lake exe cache get > /tmp/rpb106-cache.log 2>&1 || { tail -100 /tmp/rpb106-cache.log; exit 1; }
+          tail -5 /tmp/rpb106-cache.log
 
-      - name: Check current theorem target
+      - name: Record exact source custody
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
+        run: |
+          git rev-parse HEAD
+          cat lean-toolchain; echo
+          git -C .lake/packages/mathlib rev-parse HEAD
+          git ls-tree HEAD WeilDefect/Morphology/NeutralGaussianCutoff.lean WeilDefect/Morphology/NeutralGaussianCutoffPairing.lean WeilDefect/Morphology/NeutralWeilPoleGrowth.lean WeilDefect/Morphology/NeutralGaussianAssembly.lean
+
+      - name: Build actual Gaussian assembly dependency closure
+        shell: bash
+        run: |
+          echo 'lake build WeilDefect.Morphology.NeutralGaussianAssembly'
+          lake build WeilDefect.Morphology.NeutralGaussianAssembly > /tmp/rpb106-build.log 2>&1 || { tail -180 /tmp/rpb106-build.log; exit 1; }
+          tail -60 /tmp/rpb106-build.log
+
+      - name: Inspect transitive theorem axioms
+        shell: bash
+        run: |
+          set -o pipefail
+          cat > /tmp/rpb106-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralGaussianAssembly
+          #print axioms WeilDefect.movingGaussianFilteredModeCompactCutoff_tendsto
+          #print axioms WeilDefect.movingGaussianFilteredModeCompactCutoff_residual_pairing_tendsto
+          #print axioms WeilDefect.movingGaussianFilteredModeCompactCutoff_pole_pairing_tendsto
+          #print axioms WeilDefect.neutralWeilExponentialPole_norm_le
+          #print axioms WeilDefect.neutralWeilSourcePole_growthData
+          #print axioms WeilDefect.rightLimitWeilGaussianAdmissibility_sourcePole
+          LEAN
+          lake env lean /tmp/rpb106-audit.lean | tee /tmp/rpb106-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb106-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
