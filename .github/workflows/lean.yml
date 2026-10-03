@@ -47,21 +47,23 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Arithmetic/ActualZetaZeroCoordinates.lean
+          git hash-object WeilDefect/Arithmetic/ActualZetaPairSourceAttachment.lean
           lean --version
           lake build WeilDefect
       - name: Inspect actual Green energy axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaZeroCoordinates
-          #print axioms WeilDefect.neutralActualZetaOrdinate_source
-          #print axioms WeilDefect.neutralActualZetaOrdinate_zeta
-          #print axioms WeilDefect.neutralActualZetaOrdinate_strictStrip
-          #print axioms WeilDefect.neutralActualZetaZeroReflect
-          #print axioms WeilDefect.neutralActualZetaZeroReflect_involutive
-          #print axioms WeilDefect.neutralActualZetaOrdinate_reflect
-          #print axioms WeilDefect.neutralActualZetaOrdinate_greenDenom_ne_zero
+          import WeilDefect.Arithmetic.ActualZetaPairSourceAttachment
+          #print axioms WeilDefect.neutralActualZetaZeroConjugate
+          #print axioms WeilDefect.neutralActualZetaZeroConjugate_involutive
+          #print axioms WeilDefect.neutralActualZetaOrdinate_conjugate
+          #print axioms WeilDefect.neutralActualZetaZeroConjugate_reflect
+          #print axioms WeilDefect.neutralActualZetaZeroPair_involutive
+          #print axioms WeilDefect.neutralActualZetaOrdinate_pair
+          #print axioms WeilDefect.neutralActualZetaPair_positiveSource
+          #print axioms WeilDefect.neutralActualZetaPair_negativeSource
+          #print axioms WeilDefect.neutralActualZetaPair_selectedOperator
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi

@@ -1,5 +1,25 @@
 # Lean Formalization Track
 
+### RPB-108: actual zeta zero point coordinates (2026-10-03)
+
+`ActualZetaZeroCoordinates` now constructs its point carrier directly
+from mathlib's actual `riemannZeta` open-strip zeros, not the unlinked
+shell record. It proves exact rho=1/2+I gamma source reconstruction and
+the actual zero equation, |Im gamma| < 1/2 without RH, functional-equation
+reflection rho -> 1-rho (gamma -> -gamma) with involution, and nonzero
+actual Green denominator without a shell-height or spectral premise.
+
+This is actual point custody, not a multiplicity-weighted divisor or
+current WD-T38 instance. Next: actual conjugate-ordinate transport,
+divisor/multiplicity/count custody and same-domain explicit-formula or
+retained background/physical-map transport. Current source/null and
+enlarged central cancellation remain open. Background completion remains
+retained/written; full Weil spectral L2 is unproved and unassumed.
+Threshold work stays closed; F-4 remains pending.
+
+See [actual zeta zero coordinates](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ZETA_ZERO_COORDINATES_20261003.md).
+
+
 ### RPB-108: native source custody countercheck (2026-10-03)
 
 The new `NeutralNativeSourceCustodyAudit` certifies that the current
