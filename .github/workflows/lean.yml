@@ -36,6 +36,7 @@ jobs:
           path: .lake
           key: rpb108-mellin-growth-compiled-v1
           restore-keys: |
+            rpb108-theta-growth-final-compiled-v1
             rpb108-theta-growth-verified-compiled-v1
             rpb108-lean434-mathlib5ed296-jensen-root-v1
             rpb108-lean434-mathlib5ed296-jensen-deps-v1
@@ -80,4 +81,4 @@ jobs:
         continue-on-error: true
         with:
           path: .lake
-          key: rpb108-theta-growth-verified-compiled-v1
+          key: rpb108-mellin-growth-compiled-v1

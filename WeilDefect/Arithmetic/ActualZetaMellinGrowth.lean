@@ -63,7 +63,8 @@ theorem neutralActualZetaThetaMellinTail_disk_exponents
     (z / 2).re - 1 ≤ (n : ℝ) ∧
       ((1 - z) / 2).re - 1 ≤ (n : ℝ) := by
   have hr := Complex.re_le_norm z
-  have hl := Complex.neg_norm_le_re z
+  have hl : -z.re ≤ ‖z‖ := by
+    simpa only [Complex.neg_re, norm_neg] using Complex.re_le_norm (-z)
   have hn : (0 : ℝ) ≤ n := Nat.cast_nonneg n
   constructor <;> simp only [Complex.div_ofNat_re, Complex.sub_re,
     Complex.one_re] <;> linarith
