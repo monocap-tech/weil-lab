@@ -1,5 +1,6 @@
 import WeilDefect.Arithmetic.ActualZetaJensenGrowth
 import Mathlib.Analysis.SpecialFunctions.Exp
+import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
 
 namespace WeilDefect
 
@@ -88,6 +89,46 @@ theorem neutralActualZetaThetaRemainder_polynomial_bound
       rw [mul_assoc, mul_assoc, ← Real.exp_add]
       congr 2
       ring
+
+
+/-- The actual theta polynomial moments are integrable, with an explicit
+factorial bound uniform in the moment order. -/
+theorem neutralActualZetaThetaRemainder_moments :
+    ∃ p C : ℝ, 0 < p ∧ 0 < C ∧ ∀ n : ℕ,
+      MeasureTheory.IntegrableOn
+        (fun t : ℝ => t ^ n * |neutralActualZetaThetaRemainder t|) (Ioi 1) ∧
+      (∫ t : ℝ in Ioi 1, t ^ n * |neutralActualZetaThetaRemainder t|) ≤
+        C * ((n.factorial : ℝ) / (p / 2) ^ n) *
+          (Real.exp (-(p / 2)) / (p / 2)) := by
+  obtain ⟨p, C, hp, hC, hb⟩ := neutralActualZetaThetaRemainder_exponential_bound
+  refine ⟨p, C, hp, hC, fun n => ?_⟩
+  let K : ℝ := C * ((n.factorial : ℝ) / (p / 2) ^ n)
+  have hm : MeasureTheory.IntegrableOn
+      (fun t : ℝ => K * Real.exp (-(p / 2) * t)) (Ioi 1) :=
+    (integrableOn_exp_mul_Ioi (by linarith : -(p / 2) < 0) 1).const_mul K
+  have hc : ContinuousOn
+      (fun t : ℝ => t ^ n * |neutralActualZetaThetaRemainder t|) (Ioi 1) :=
+    (by fun_prop : ContinuousOn (fun t : ℝ => t ^ n) (Ioi 1)).mul
+      (neutralActualZetaThetaRemainder_continuousOn.mono
+        (fun t ht => zero_lt_one.trans ht)).abs
+  have hi : MeasureTheory.IntegrableOn
+      (fun t : ℝ => t ^ n * |neutralActualZetaThetaRemainder t|) (Ioi 1) := by
+    apply hm.mono' (hc.aestronglyMeasurable measurableSet_Ioi)
+    filter_upwards [MeasureTheory.ae_restrict_mem measurableSet_Ioi] with t ht
+    have ht0 : 0 ≤ t := zero_le_one.trans ht.le
+    rw [Real.norm_eq_abs, abs_of_nonneg (by positivity)]
+    exact neutralActualZetaThetaRemainder_polynomial_bound hp hb n ht.le
+  refine ⟨hi, ?_⟩
+  calc
+    _ ≤ ∫ t : ℝ in Ioi 1, K * Real.exp (-(p / 2) * t) := by
+      apply MeasureTheory.integral_mono_ae hi hm
+      filter_upwards [MeasureTheory.ae_restrict_mem measurableSet_Ioi] with t ht
+      exact neutralActualZetaThetaRemainder_polynomial_bound hp hb n ht.le
+    _ = K * (Real.exp (-(p / 2)) / (p / 2)) := by
+      rw [MeasureTheory.integral_const_mul,
+        integral_exp_mul_Ioi (by linarith : -(p / 2) < 0) 1]
+      simp
+    _ = _ := rfl
 
 end
 end WeilDefect

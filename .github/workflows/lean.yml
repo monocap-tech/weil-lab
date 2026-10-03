@@ -61,6 +61,7 @@ jobs:
           import WeilDefect.Arithmetic.ActualZetaThetaGrowth
           #print axioms WeilDefect.neutralActualZetaThetaRemainder_continuousOn
           #print axioms WeilDefect.neutralActualZetaThetaRemainder_exponential_bound
+          #print axioms WeilDefect.neutralActualZetaThetaRemainder_moments
           #print axioms WeilDefect.neutralActualZetaThetaRemainder_polynomial_bound
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
