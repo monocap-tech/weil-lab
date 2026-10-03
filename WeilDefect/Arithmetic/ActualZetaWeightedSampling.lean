@@ -65,9 +65,9 @@ theorem neutralActualZetaWeightedSelectedOperator_rankOne
   apply ContinuousLinearMap.ext
   intro f
   simp only [neutralActualZetaWeightedSelectedOperator,
-    neutralActualZetaWeightedNegativeSource, neutralLogSelectedPairOperator,
-    _root_.smul_apply, rankOne_apply, _root_.inner_smul_left,
-    Complex.conj_ofReal, smul_smul]
+    neutralLogSelectedPairOperator, _root_.smul_apply, rankOne_apply, smul_smul]
+  rw [neutralActualZetaWeightedNegativeSource_inner_factor]
+  simp only [neutralActualZetaWeightedNegativeSource, smul_smul]
   rw [mul_right_comm (Real.sqrt (neutralActualZetaMultiplicity ρ : ℝ) : ℂ), hs]
 
 theorem neutralActualZetaWeightedSelectedOperator_mixed
