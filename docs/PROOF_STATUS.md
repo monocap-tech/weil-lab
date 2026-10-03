@@ -1,5 +1,16 @@
 # Proof Status
 
+## RPB-108 — actual background logarithmic energy estimate
+
+Continues from `8b332c1a212212a5c809812d50a99cfc1a256861`.
+See the [actual background energy note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_BACKGROUND_ENERGY_20261003.md).
+
+Actual compact moment bounds now control both signs of the Hermitian pole by physical L2 energy, with a concrete constant from the two compact exponential columns. Ordinary L2 Plancherel identifies the retained constant symbol shift with physical L2 mass exactly. The retained normalized lower comparison therefore gives actual full/background logarithmic lower estimates with physical L2 correction on the complete same domain. No spectral product membership, positivity of the complex pole, or new representation field is assumed.
+
+Whole-root validation: 9,028 jobs; seven standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the energy estimate needed for background completion, not strict positivity or Gaussian coercivity. Native Green/core source transport and identification of the retained strict background with this specific expression remain written/retained or OPEN. Current WD-T38 logarithmic-energy/source/quadratic/null attachment and enlarged central cancellation remain OPEN. Spectral L2 is unproved from WD-T38 and unassumed. The certified inner-collar/regularity/boundary-removal assembly awaits actual enlarged cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
 ## RPB-108 — concrete finite selected background expression
 
 Continues from `e8fd1045112219bef7fe0784ba05f39adb17749a`.

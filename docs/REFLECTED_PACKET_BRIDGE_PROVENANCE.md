@@ -1204,3 +1204,23 @@ The unfinished/project-axiom declaration gate passed.
 New module blob: `c6b675d53cdd8e8d8bb7f1f032a01430151663a9`.
 Root import blob: `04446fec78e8c4f6e27f0bad4491b0e0de529a99`.
 The validation-only workflow is excluded from research promotion.
+
+## RPB-108 — actual background logarithmic energy estimate
+
+Continues from `8b332c1a212212a5c809812d50a99cfc1a256861`.
+See the [actual background energy note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_BACKGROUND_ENERGY_20261003.md).
+
+Actual compact moment bounds now control both signs of the Hermitian pole by physical L2 energy, with a concrete constant from the two compact exponential columns. Ordinary L2 Plancherel identifies the retained constant symbol shift with physical L2 mass exactly. The retained normalized lower comparison therefore gives actual full/background logarithmic lower estimates with physical L2 correction on the complete same domain. No spectral product membership, positivity of the complex pole, or new representation field is assumed.
+
+Whole-root validation: 9,028 jobs; seven standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the energy estimate needed for background completion, not strict positivity or Gaussian coercivity. Native Green/core source transport and identification of the retained strict background with this specific expression remain written/retained or OPEN. Current WD-T38 logarithmic-energy/source/quadratic/null attachment and enlarged central cancellation remain OPEN. Spectral L2 is unproved from WD-T38 and unassumed. The certified inner-collar/regularity/boundary-removal assembly awaits actual enlarged cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+Certified validation head: `517eb90dae857977e26e89560f027d817ac78abe`.
+Run: `37131988362`; job: `111228747667`.
+Whole-root `lake build WeilDefect`: 9,028 jobs succeeded.
+Seven axiom audits contain only `propext`, `Classical.choice`, and `Quot.sound`.
+The unfinished/project-axiom declaration gate passed.
+New module blob: `77112d87bad6633ce59690df69a212399bf45e63`.
+Root import blob: `886b83d752fbd32f56881bdcadf805594fe2f933`.
+The validation-only workflow is excluded from research promotion.
