@@ -4,10 +4,21 @@
 
 **Branch:** `research/reflected-packet-bridge`
 
-**Current cursor:** RPB-108 / WD-T40 F-4
+**Current cursor:** RPB-108 / WD-T38 source witness attachment; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
+
+## RPB-108 — actual selected source columns and pair convention
+
+Continues from `9d8c80a5391f98c10ea7ef37053af630259cc465`.
+See the [selected source attachment note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_SELECTED_ATTACHMENT_20261003.md).
+
+Actual compact complex exponential L2 columns now construct the selected analysis on the complete logarithmic carrier through the physical inclusion adjoint. The exact linear evaluation is at the conjugate ordinate, using a compact window integral rather than point evaluation of an L2 Fourier representative. The positive/negative pair source formulas and conjugation signs are certified; the actual selected negative rank-one block has exact mixed/quadratic energy and is invariant under the convention swap. No assumed source-equality or spectral-domain premise is introduced.
+
+Whole-root validation: 9,026 jobs; eleven standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the selected raw analysis component of the written native dictionary. It does not identify the logarithmic Riesz column with a native Dirichlet Green column or identify the independent current WD-T38 `P,C,k,extend`. Global actual-zeta sampling, effective background completion and current source/quadratic/null attachment remain written/retained or OPEN. Enlarged central cancellation remains OPEN. Spectral L2 is unproved from WD-T38 and unassumed. The certified inner-collar/regularity/boundary-removal assembly awaits actual enlarged cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
 
 ## RPB-108 — actual normalized multiplier-plus-pole form attachment
 
