@@ -94,10 +94,10 @@ theorem neutralActualZetaDivisorHeightWindow_card_le_mass (T : ℝ) :
     (Fintype.card (neutralActualZetaDivisorHeightWindow T) : ℤ) ≤
       neutralActualZetaJensenMass (|T| + 2) := by
   classical
-  let D := divisor neutralActualZetaEntire (closedBall (0 : ℂ) ||T| + 2|)
+  let D := divisor neutralActualZetaEntire (closedBall (0 : ℂ) |(|T| + 2)|)
   have ha : AnalyticOnNhd ℂ neutralActualZetaEntire
-      (closedBall (0 : ℂ) ||T| + 2|) := fun z _ => neutralActualZetaEntire_analytic z
-  have hfinite := D.finiteSupport (isCompact_closedBall (0 : ℂ) ||T| + 2|)
+      (closedBall (0 : ℂ) |(|T| + 2)|) := fun z _ => neutralActualZetaEntire_analytic z
+  have hfinite := D.finiteSupport (isCompact_closedBall (0 : ℂ) |(|T| + 2)|)
   have hpoint (ρ : neutralActualZetaPointHeightWindow T) :
       ρ.val.val ∈ closedBall (0 : ℂ) (|T| + 2) := by
     have hn := Complex.norm_le_abs_re_add_abs_im ρ.val.val
