@@ -53,18 +53,19 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Arithmetic/ActualZetaMellinGrowth.lean
+          git hash-object WeilDefect/Arithmetic/ActualZetaMellinRepresentation.lean
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaMellinGrowth
-          lake build WeilDefect
+          lake build WeilDefect.Arithmetic.ActualZetaMellinRepresentation
       - name: Inspect actual Jensen bridge axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaMellinGrowth
-          #print axioms WeilDefect.neutralActualZetaThetaMellinTail_norm_le
-          #print axioms WeilDefect.neutralActualZetaThetaMellinTail_bound
-          #print axioms WeilDefect.neutralActualZetaThetaMellinTail_disk_exponents
+          import WeilDefect.Arithmetic.ActualZetaMellinRepresentation
+          #print axioms WeilDefect.neutralActualZetaThetaTailKernel_mellin
+          #print axioms WeilDefect.neutralActualZetaThetaTailKernel_convergent
+          #print axioms WeilDefect.neutralActualZetaModifiedKernel_eq
+          #print axioms WeilDefect.neutralActualZetaThetaReflected_convergent
+          #print axioms WeilDefect.neutralActualZetaCompleted_mellin_tails
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
