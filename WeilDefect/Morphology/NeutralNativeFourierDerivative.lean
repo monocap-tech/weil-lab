@@ -29,7 +29,7 @@ theorem neutralNative_derivative_conjugateTest (u : SchwartzMap ℝ ℂ) :
   simp only [SchwartzMap.derivCLM_apply, conjugateSchwartz_apply]
   have hc : (conjugateSchwartz u : ℝ → ℂ) = (fun y => star (u y)) := by
     funext y
-    simp [conjugateSchwartz_apply, starRingEnd_apply]
+    simp only [conjugateSchwartz_apply, starRingEnd_apply]
   rw [hc]
   simpa only [starRingEnd_apply] using (u.hasDerivAt x).star.deriv
 
