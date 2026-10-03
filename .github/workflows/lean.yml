@@ -33,9 +33,13 @@ jobs:
         uses: actions/cache/restore@v4
         continue-on-error: true
         with:
-          path: .lake
-          key: rpb108-mellin-representation-compiled-v1
+          path: |
+            .lake
+            lake-manifest.json
+          key: rpb108-mellin-manifest-final-v1
           restore-keys: |
+            rpb108-mellin-factorial-verified-v1
+            rpb108-mellin-representation-compiled-v1
             rpb108-mellin-growth-compiled-v1
             rpb108-theta-growth-final-compiled-v1
             rpb108-theta-growth-verified-compiled-v1
@@ -96,5 +100,7 @@ jobs:
         uses: actions/cache/save@v4
         continue-on-error: true
         with:
-          path: .lake
-          key: rpb108-mellin-factorial-verified-v1
+          path: |
+            .lake
+            lake-manifest.json
+          key: rpb108-mellin-manifest-final-v1

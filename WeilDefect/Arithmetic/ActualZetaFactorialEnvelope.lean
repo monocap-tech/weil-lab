@@ -44,8 +44,10 @@ theorem neutralActualZetaEntire_factorial_bound :
     _ ≤ ‖z * (z - 1) * completedRiemannZeta₀ z‖ + ‖(1 : ℂ)‖ := norm_add_le _ _
     _ = (‖z‖ * ‖z - 1‖) * ‖completedRiemannZeta₀ z‖ + 1 := by
       rw [norm_mul, norm_mul, norm_one]
-    _ ≤ _ := add_le_add_right (mul_le_mul hprod (hb n z hz)
-      (norm_nonneg _) (mul_nonneg hn (by positivity))) 1
+    _ ≤ _ := by
+      have h := mul_le_mul hprod (hb n z hz)
+        (norm_nonneg _) (mul_nonneg hn (by positivity))
+      linarith
 
 /-- The actual enclosing-circle envelope has an explicit factorial
 majorant as soon as the enclosing radius is bounded by the moment order. -/
