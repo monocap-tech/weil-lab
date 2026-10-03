@@ -1224,3 +1224,27 @@ The unfinished/project-axiom declaration gate passed.
 New module blob: `77112d87bad6633ce59690df69a212399bf45e63`.
 Root import blob: `886b83d752fbd32f56881bdcadf805594fe2f933`.
 The validation-only workflow is excluded from research promotion.
+
+## RPB-108 — actual native Dirichlet source attachment
+
+Continues from `bead3b17bafd5a8cf14144a4ac262f08ffe898a9`.
+See the [actual native Dirichlet source attachment](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_DIRICHLET_SOURCE_ATTACHMENT_20261003.md).
+
+The full endpoint-corrected native Green column now has a concrete compact
+physical L2 realization and exact integral pairing. Its physical inclusion
+adjoint is an actual form Riesz source on the complete logarithmic carrier.
+Under the existing nonzero Green-denominator condition, applying the actual
+differential expression recovers the compact raw exponential source exactly;
+its same-domain pairing is the retained conjugate-ordinate window evaluation.
+No Weil spectral L2 premise is used.
+
+These individual source columns do not identify the current WD-T38
+`P,C,k,Q,density,extend` instance or prove its actual quadratic/null witness.
+Native Green square-root/background model identification and strict completion
+remain retained/written; enlarged central cancellation remains open. Spectral
+L2 membership of the actual Weil product is unproved and unassumed. The
+certified inner-collar/locally-integrable boundary-removal route is ready once
+central cancellation is proved. Threshold bookkeeping is closed; F-4, WD-T40,
+and RH remain open.
+
+Validation: `5ea502a1b601420846ad908a5d7834c3c5f8dac7`, [run 37133188266](https://github.com/monocap-tech/weil-lab/actions/runs/37133188266), job `111232254587`. Whole-root `lake build WeilDefect` passed (9,029 jobs). All six public theorem axiom audits reported only `[propext, Classical.choice, Quot.sound]`; unfinished/project-axiom gate passed. Research workflow and historical notes remain unchanged.
