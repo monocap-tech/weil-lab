@@ -61,6 +61,7 @@ jobs:
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
           import WeilDefect.Arithmetic.ActualZetaMellinRepresentation
+          #print axioms WeilDefect.neutralActualZetaThetaTailKernel_weight
           #print axioms WeilDefect.neutralActualZetaThetaTailKernel_mellin
           #print axioms WeilDefect.neutralActualZetaThetaTailKernel_convergent
           #print axioms WeilDefect.neutralActualZetaModifiedKernel_eq

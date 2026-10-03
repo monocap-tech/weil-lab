@@ -10,24 +10,32 @@ open scoped Topology
 def neutralActualZetaThetaTailKernel : ℝ → ℂ :=
   (Ioi 1).indicator (fun t => (neutralActualZetaThetaRemainder t : ℂ))
 
+theorem neutralActualZetaThetaTailKernel_weight (s : ℂ) :
+    (fun t : ℝ => (t : ℂ) ^ (s - 1) • neutralActualZetaThetaTailKernel t) =
+      (Ioi 1).indicator (neutralActualZetaThetaMellinTailIntegrand s) := by
+  funext t
+  by_cases ht : t ∈ Ioi (1 : ℝ)
+  · simp [neutralActualZetaThetaTailKernel,
+      neutralActualZetaThetaMellinTailIntegrand, ht, smul_eq_mul]
+  · simp [neutralActualZetaThetaTailKernel,
+      neutralActualZetaThetaMellinTailIntegrand, ht]
+
 theorem neutralActualZetaThetaTailKernel_mellin (s : ℂ) :
     mellin neutralActualZetaThetaTailKernel s =
       ∫ t : ℝ in Ioi 1, neutralActualZetaThetaMellinTailIntegrand s t := by
-  simp only [mellin, neutralActualZetaThetaTailKernel, ← indicator_smul,
+  unfold mellin
+  rw [neutralActualZetaThetaTailKernel_weight,
     setIntegral_indicator measurableSet_Ioi,
-    inter_eq_right.mpr (Ioi_subset_Ioi (show (0 : ℝ) ≤ 1 by norm_num)),
-    smul_eq_mul, neutralActualZetaThetaMellinTailIntegrand]
+    inter_eq_right.mpr (Ioi_subset_Ioi (show (0 : ℝ) ≤ 1 by norm_num))]
 
 theorem neutralActualZetaThetaTailKernel_convergent (s : ℂ) :
     MellinConvergent neutralActualZetaThetaTailKernel s := by
   obtain ⟨p, C, hp, hC, hb⟩ := neutralActualZetaThetaMellinTail_bound
   obtain ⟨n, hn⟩ := exists_nat_gt (s.re - 1)
   have hi := (hb n s hn.le).1
-  change IntegrableOn (fun t : ℝ =>
-    (t : ℂ) ^ (s - 1) • neutralActualZetaThetaTailKernel t) (Ioi 0)
-  simpa only [neutralActualZetaThetaTailKernel, ← indicator_smul,
-    smul_eq_mul, neutralActualZetaThetaMellinTailIntegrand] using
-    (hi.integrable_indicator measurableSet_Ioi).integrableOn (s := Ioi 0)
+  unfold MellinConvergent
+  rw [neutralActualZetaThetaTailKernel_weight]
+  exact (hi.integrable_indicator measurableSet_Ioi).integrableOn
 
 /-- Identify the actual modified FE-pair kernel with its two tail pieces.
 The equality includes t=1, where all pieces are zero. -/
@@ -46,7 +54,8 @@ theorem neutralActualZetaModifiedKernel_eq {t : ℝ} (ht0 : 0 < t) :
     rw [← HurwitzZeta.evenKernel_eq_cosKernel_of_zero] at hf
     have he : HurwitzZeta.evenKernel 0 t - t ^ (-(1 / 2 : ℝ)) =
         t ^ (-(1 / 2 : ℝ)) * neutralActualZetaThetaRemainder t⁻¹ := by
-      rw [neutralActualZetaThetaRemainder, hf, Real.rpow_neg ht0.le, one_div]
+      rw [neutralActualZetaThetaRemainder, hf, Real.rpow_neg ht0.le]
+      simp only [one_div]
       ring
     simp only [WeakFEPair.f_modif, HurwitzZeta.hurwitzEvenFEPair,
       Function.comp_apply, if_pos rfl, one_mul, smul_eq_mul, mul_one,
@@ -90,6 +99,7 @@ theorem neutralActualZetaCompleted_mellin_tails (z : ℂ) :
           neutralActualZetaThetaTailKernel t⁻¹) (z / 2) := by
     apply setIntegral_congr_fun measurableSet_Ioi
     intro t ht
+    dsimp only
     rw [neutralActualZetaModifiedKernel_eq ht]
     rfl
   have hs := (hasMellin_add
