@@ -5,7 +5,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory InnerProductSpace
-open scoped BigOperators
+open scoped BigOperators ENNReal
 
 /-- The actual square-summable native shell coefficient space. -/
 abbrev NeutralNativeShellCoefficients (count : ℕ → ℕ) :=
