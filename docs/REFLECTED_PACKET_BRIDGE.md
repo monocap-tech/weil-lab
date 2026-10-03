@@ -9,6 +9,15 @@
 
 ## Current standing
 
+## RPB-108 — exact native dictionary and background form completion (written)
+
+Continues from `b382eecec14866087fc2760f65757d9838947a80`.
+See the [dictionary and completion note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_COEFFICIENT_DICTIONARY_20261003.md).
+
+Direct quotient/pair algebra pins sqrt(multiplicity), the conjugate-ordinate linear analysis convention, and the fixed negative-coordinate sign change. RPB-24's Green factor acts on the physical function, not as an extra q_gamma coefficient weight. In its retained effective background model, completing the Green core in the actual background form norm constructs an onto isometry to the reduced coefficient space. The SAME reduced Cu therefore has a unique physical logarithmic preimage; the signed C law and unit gain give endpoint full mixed nullity on that same domain without native H1 or spectral L2.
+
+This is a written model deduction, NOT LEAN-CERTIFIED. RPB-24's retained strict background positivity/realization is used, not newly proved for the generic WD-T38 fields. Identification with the current physical carrier and fixed enlarged extension remains OPEN; endpoint nullity does not establish enlarged central cancellation. Current-carrier spectral L2 remains unproved and unassumed. The certified inner-collar/boundary-removal assembly consumes actual enlarged central cancellation immediately when available. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
 ## RPB-108 — actual-zeta logarithmic analysis construction (written)
 
 Continues from `a5fecc6c41bb6ce6ce9eb5e4a00f87eda886f986`.
