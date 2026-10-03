@@ -109,3 +109,4 @@ import WeilDefect.Morphology.NeutralLogBackgroundSourceAttachment
 import WeilDefect.Morphology.NeutralLogBackgroundEnergy
 import WeilDefect.Morphology.NeutralLogDirichletSourceAttachment
 import WeilDefect.Morphology.NeutralLogSourceDomainRealization
+import WeilDefect.DirichletGreenEnergy
