@@ -1,5 +1,26 @@
 # Lean Formalization Track
 
+### RPB-108: actual zeta conjugate-ordinate source attachment (2026-10-03)
+
+`ActualZetaPairSourceAttachment` consumes the pinned actual zeta
+conjugation theorem. It proves conjugation/reflection commute and
+constructs the involutive actual point pair rho -> 1-conj rho, whose
+ordinate is conj gamma. Conjugation alone instead gives -conj gamma.
+The existing actual positive source, negative source and selected
+rank-one operator symmetry bridges are consumed immediately: positive
+unchanged, negative negated, selected operator unchanged.
+
+Next: actual analytic multiplicity/divisor and count custody, then
+same-domain explicit-formula or retained background/physical-map
+transport. Point symmetry does not certify sqrt(multiplicity) quotient
+normalization. Current WD-T38 source/null and enlarged central cancellation
+remain open; background completion remains retained/written. Full Weil
+spectral L2 is unproved and unassumed. Threshold work stays closed;
+F-4 remains pending.
+
+See [actual zeta pair-source attachment](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ZETA_PAIR_SOURCE_ATTACHMENT_20261003.md).
+
+
 ### RPB-108: actual zeta zero point coordinates (2026-10-03)
 
 `ActualZetaZeroCoordinates` now constructs its point carrier directly

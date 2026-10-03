@@ -47,23 +47,23 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Arithmetic/ActualZetaPairSourceAttachment.lean
+          git hash-object WeilDefect/Arithmetic/ActualZetaMultiplicity.lean
           lean --version
           lake build WeilDefect
       - name: Inspect actual Green energy axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaPairSourceAttachment
-          #print axioms WeilDefect.neutralActualZetaZeroConjugate
-          #print axioms WeilDefect.neutralActualZetaZeroConjugate_involutive
-          #print axioms WeilDefect.neutralActualZetaOrdinate_conjugate
-          #print axioms WeilDefect.neutralActualZetaZeroConjugate_reflect
-          #print axioms WeilDefect.neutralActualZetaZeroPair_involutive
-          #print axioms WeilDefect.neutralActualZetaOrdinate_pair
-          #print axioms WeilDefect.neutralActualZetaPair_positiveSource
-          #print axioms WeilDefect.neutralActualZetaPair_negativeSource
-          #print axioms WeilDefect.neutralActualZetaPair_selectedOperator
+          import WeilDefect.Arithmetic.ActualZetaMultiplicity
+          #print axioms WeilDefect.neutralActualZetaZeroPoint_ne_one
+          #print axioms WeilDefect.neutralActualZetaZeroPoint_analytic
+          #print axioms WeilDefect.neutralActualZetaOrder_ne_top
+          #print axioms WeilDefect.neutralActualZetaMultiplicity_order
+          #print axioms WeilDefect.neutralActualZetaMultiplicity_pos
+          #print axioms WeilDefect.neutralActualZetaMultiplicity_factor
+          #print axioms WeilDefect.neutralActualZetaDivisorOrdinate_zeta
+          #print axioms WeilDefect.neutralActualZetaMultiplicity_copies
+          #print axioms WeilDefect.neutralActualZetaMultiplicity_card
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
