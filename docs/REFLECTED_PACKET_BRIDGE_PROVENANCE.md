@@ -1371,3 +1371,23 @@ same-domain mixed/normalized, and enlarged central attachments are open.
 Its spectral L2 membership is unproved from WD-T38 and unassumed.
 The certified locally integrable residual route is ready for actual central
 cancellation. Threshold bookkeeping is closed; F-4 remains pending.
+
+## RPB-108 — actual native synthesis support
+
+Continues from `f9916c79029abc714d9ab269e7eca2c27908f5e6`.
+See the [native support note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_SYNTHESIS_SUPPORT_20261003.md).
+
+The actual compact Green and derivative columns and both convergent native
+L2 syntheses vanish almost everywhere outside the same closed window.
+Support of the series is proved through the existing bounded physical
+outside-restriction map, now public together with its vanishing/support
+equivalence. The existing logarithmic Hilbert carrier still uses that map.
+
+Together with the previous global weak derivative identity, the native
+synthesis now has actual compact support and an attached L2 weak derivative.
+Its Fourier derivative/logarithmic-domain attachment and native background
+completion remain open. The current WD-T38 mode is still unidentified with
+that native vector; source quadratic/null, mixed/normalized, and enlarged
+central attachments remain open. Current spectral L2 is not derived from
+WD-T38 and is not assumed. The certified locally integrable residual route
+is ready for central cancellation. Thresholds are closed; F-4 is pending.
