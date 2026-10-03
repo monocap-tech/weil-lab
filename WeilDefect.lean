@@ -123,3 +123,5 @@ import WeilDefect.Morphology.NeutralNativeSupport
 import WeilDefect.Morphology.NeutralNativeFourierDerivative
 
 import WeilDefect.Morphology.NeutralNativeFourierRepresentative
+
+import WeilDefect.Morphology.NeutralNativeLogFormAttachment

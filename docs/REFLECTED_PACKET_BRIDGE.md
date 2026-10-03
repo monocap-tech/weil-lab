@@ -9,6 +9,26 @@
 
 ## Current standing
 
+### RPB-108: actual native logarithmic form-domain attachment (2026-10-03)
+
+The actual native Green synthesis now has derived finite logarithmic
+Fourier energy and inhabits the existing canonical supported form domain.
+The new module `NeutralNativeLogFormAttachment` removes only the nonzero
+Fourier derivative constant from the proved native L2 product, then uses
+the direct bound `log(e + |xi|) <= e + xi^2` and actual base/derivative
+L2 mass. Canonical and complete logarithmic-carrier attachment preserve
+the actual physical synthesis exactly.
+
+Next: identify the current WD-T38 physical carrier with its lawful native
+or retained form-completion vector and attach the actual source/null
+equation. Native background completion remains retained/written.
+Same-domain mixed/normalized and enlarged central cancellation are still
+open for that current carrier. Full Weil spectral L2 is unproved and
+unassumed. Threshold work stays closed; F-4 remains pending.
+
+See [native log-form attachment](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_LOG_FORM_ATTACHMENT_20261003.md).
+
+
 ## RPB-108 — actual native Fourier representative identified
 
 Continues from `5647cf49c7b6abe2edd58fa0daf34444d01ec7dd`.
