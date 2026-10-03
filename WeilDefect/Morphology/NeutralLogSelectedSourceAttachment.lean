@@ -103,9 +103,10 @@ theorem neutralLogPositivePairSource_inner (a : ℝ) (z : ℂ)
       neutralWindowEvaluation a (conj z) (neutralLogPhysical f.val) :=
     neutralLogExponentialSource_inner a z f
   have h2 : inner ℂ (neutralLogExponentialSource a (conj z)).val f.val =
-      neutralWindowEvaluation a z (neutralLogPhysical f.val) := by
-    simpa only [starRingEnd_apply, star_star] using
-      neutralLogExponentialSource_inner a (conj z) f
+      neutralWindowEvaluation a (conj (conj z)) (neutralLogPhysical f.val) :=
+    neutralLogExponentialSource_inner a (conj z) f
+  have hz : conj (conj z) = z := star_star z
+  rw [hz] at h2
   rw [h1, h2]
   simp only [map_inv₀, Complex.conj_ofReal]
 
@@ -124,9 +125,10 @@ theorem neutralLogNegativePairSource_inner (a : ℝ) (z : ℂ)
       neutralWindowEvaluation a (conj z) (neutralLogPhysical f.val) :=
     neutralLogExponentialSource_inner a z f
   have h2 : inner ℂ (neutralLogExponentialSource a (conj z)).val f.val =
-      neutralWindowEvaluation a z (neutralLogPhysical f.val) := by
-    simpa only [starRingEnd_apply, star_star] using
-      neutralLogExponentialSource_inner a (conj z) f
+      neutralWindowEvaluation a (conj (conj z)) (neutralLogPhysical f.val) :=
+    neutralLogExponentialSource_inner a (conj z) f
+  have hz : conj (conj z) = z := star_star z
+  rw [hz] at h2
   rw [h1, h2]
   simp only [map_inv₀, Complex.conj_ofReal]
 
