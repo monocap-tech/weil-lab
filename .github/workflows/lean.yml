@@ -42,27 +42,28 @@ jobs:
         run: lake update
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Check actual native Dirichlet source attachment
+      - name: Check actual source-domain realization
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralLogDirichletSourceAttachment.lean
+          git hash-object WeilDefect/Morphology/NeutralLogSourceDomainRealization.lean
           lean --version
           lake build WeilDefect
-      - name: Inspect actual native source axioms
+      - name: Inspect actual source-domain axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-dirichlet-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralLogDirichletSourceAttachment
-          #print axioms WeilDefect.neutralDirichletGreenColumn_memLp
-          #print axioms WeilDefect.neutralDirichletGreenColumnL2_inner
-          #print axioms WeilDefect.neutralLogDirichletGreenSource_inner
-          #print axioms WeilDefect.neutralDirichletGreen_differentialSource
-          #print axioms WeilDefect.neutralDirichletGreen_differentialSource_memLp
-          #print axioms WeilDefect.neutralLogDirichletGreen_differentialSource_inner
+          cat > /tmp/rpb108-domain-realization-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralLogSourceDomainRealization
+          #print axioms WeilDefect.neutralLogHilbertCanonicalLinearEquiv
+          #print axioms WeilDefect.neutralSourceDomainToLogHilbert_physical
+          #print axioms WeilDefect.neutralSourceDomainToLogHilbert_injective
+          #print axioms WeilDefect.neutralSourceDomainToLogHilbert_norm_sq
+          #print axioms WeilDefect.neutralSourceDomainToLogHilbert_carrier
+          #print axioms WeilDefect.neutralSourceDomainToLogHilbert_mixed
+          #print axioms WeilDefect.neutralSourceDomainToLogHilbert_quadratic
           LEAN
-          lake env lean /tmp/rpb108-dirichlet-audit.lean | tee /tmp/rpb108-dirichlet-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-dirichlet-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-domain-realization-audit.lean | tee /tmp/rpb108-domain-realization-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-domain-realization-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |
