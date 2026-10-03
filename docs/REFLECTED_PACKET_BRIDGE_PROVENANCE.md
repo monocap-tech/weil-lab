@@ -1095,3 +1095,12 @@ See the [Green-map recovery note](../notes/REFLECTED_PACKET_BRIDGE_108_GREEN_MAP
 RPB-24 retains the physical map `J_c = G_c^{1/2} U_c` from the native negative-order carrier to `H_0^1(-c,c)`. The physical vector is `J_c g`, not merely the unitary transport `U_c g`. This gives a written route to actual logarithmic energy and spectral L2 for that mapped vector, using H1 rather than upgrading one-log energy. The native mixed null law has an exact compact-test lift `v=L_c u`. Fixed physical extension requires the commuting law with `L_a E J_c`; WD-T38's arbitrary extension does not certify it.
 
 This is recovered retained mathematics and a written derivation, not a new Lean witness. Equality of the actual WD-T38/current carrier with this mapped vector, full/effective source realization, and enlarged mixed null transport remain OPEN. Spectral L2 for the current carrier is still unproved and unassumed. Existing inner-collar regularity/boundary removal remains ready to consume actual central cancellation. No Lean/workflow changes. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+## 2026-10-03 — RPB-108 native adjoint-range condition
+
+Continues from `cbd4e49f02c1cbf8394fe1cc9e090e93149a5fde`.
+See the [range-condition note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_ADJOINT_RANGE_20261003.md).
+
+A written deduction in the retained RPB-24 model identifies `T†k=Cu` with `A_B⁻¹ Phi†u ∈ H_0^1`, using the signed reduced Douglas factor and the Green form congruence. Unit gain and finiteness of the inverse-form sandwich do not supply this adjoint-range condition. WD-T38 assumes an adjoint realization separately; its actual source is not yet identified with this native model. The Green route would yield spectral L2 once that actual transport is proved, but cannot replace it.
+
+The Green/spectral shortcut is stopped pending actual source realization. No H1 or spectral premise is added. Actual same-domain source attachment and enlarged central cancellation remain OPEN; spectral L2 of the current carrier remains unproved and unassumed. The certified inner-collar theorem still consumes actual central cancellation without a spectral prerequisite. Documentation-only; no new Lean witness. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.

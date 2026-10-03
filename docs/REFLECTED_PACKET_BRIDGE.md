@@ -9,6 +9,15 @@
 
 ## Current standing
 
+## RPB-108 — native adjoint-range condition pinned
+
+Continues from `cbd4e49f02c1cbf8394fe1cc9e090e93149a5fde`.
+See the [range-condition note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_ADJOINT_RANGE_20261003.md).
+
+A written deduction in the retained RPB-24 model identifies `T†k=Cu` with `A_B⁻¹ Phi†u ∈ H_0^1`, using the signed reduced Douglas factor and the Green form congruence. Unit gain and finiteness of the inverse-form sandwich do not supply this adjoint-range condition. WD-T38 assumes an adjoint realization separately; its actual source is not yet identified with this native model. The Green route would yield spectral L2 once that actual transport is proved, but cannot replace it.
+
+The Green/spectral shortcut is stopped pending actual source realization. No H1 or spectral premise is added. Actual same-domain source attachment and enlarged central cancellation remain OPEN; spectral L2 of the current carrier remains unproved and unassumed. The certified inner-collar theorem still consumes actual central cancellation without a spectral prerequisite. Documentation-only; no new Lean witness. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
 ## RPB-108 — recovered native Green form-carrier map
 
 Continues from `bd36dee70a3473e2a9e16cafad24f2b709d1af6d`.
