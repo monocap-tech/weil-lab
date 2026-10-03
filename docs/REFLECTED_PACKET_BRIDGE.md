@@ -1025,3 +1025,31 @@ the finite scalar/kernel construction without asserting its operator transfer.
 
 The [Laplace Fourier supplement](TERMINOLOGY_RPB108_LAPLACE_FOURIER.md)
 registers the exact termwise transform without claiming the whole operator limit.
+
+### RPB-108: actual complex Mellin tail comparison (2026-10-03)
+
+Actual theta moments now control complex Mellin tail integrals on (1,∞).
+For s.re - 1 ≤ n, the norm of t^(s-1) K(t) is bounded by
+t^n |K(t)|. The complex tail is integrable and its integral norm is
+bounded by C n!/(p/2)^n exp(-p/2)/(p/2), with the same positive
+actual kernel constants p and C for all n and s.
+
+If ‖z‖ ≤ n, both completed-zeta exponents z/2 and (1-z)/2 satisfy
+that moment condition. No divisor-count or spectral-domain premise enters.
+
+Next: identify completedRiemannZeta₀ with half the sum of these two
+tail integrals, including the reflected small-t part and its Jacobian.
+Then derive the pole-cleared disk/circle bound and its logarithmic rate.
+These identification and envelope results remain open; cumulative
+counts do not certify local unit-height counts or bounded sampling.
+
+WD-T38 source/null attachment and enlarged central cancellation remain
+open. Spectral L2 unproved and unassumed; threshold closed; F-4 pending.
+RH standing unchanged.
+
+See [actual Mellin comparison](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MELLIN_GROWTH_20261003.md).
+
+
+Exact candidate `bd69341e8aec0243e08381446c6d37ea17cf7aea` passed [run 37160286394](https://github.com/monocap-tech/weil-lab/actions/runs/37160286394), job `111312154237`. The isolated module and full `lake build WeilDefect` passed (3,205 and 9,049 jobs). All three theorem audits report only `[propext, Classical.choice, Quot.sound]`. The unfinished/project-axiom gate passed. Source, root import and terminology are promoted without the validation workflow.
+
+The runner saved the compiled project/dependency cache under `rpb108-mellin-growth-compiled-v1`. Reuse the existing validation branch and draft PR #35 for the next bounded analytic chunk, retaining access to this validation cache.
