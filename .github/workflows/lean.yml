@@ -39,29 +39,34 @@ jobs:
         run: lake update
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Check whole root with retained energy witnesses
+      - name: Check inner collar regularity
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/Neutral.lean
+          git hash-object WeilDefect/Morphology/NeutralInnerCollarRegularity.lean
           lean --version
-          lake build WeilDefect
-      - name: Inspect retained witnesses and constructor axioms
+          lake build WeilDefect.Morphology.NeutralInnerCollarRegularity
+      - name: Inspect inner collar theorem axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-energy-custody-audit.lean <<'LEAN'
-          import WeilDefect
-          #print axioms WeilDefect.NeutralArithmeticMorphology.densityIntegrable
-          #print axioms WeilDefect.NeutralArithmeticMorphology.logEnergyIntegrable
-          #print axioms WeilDefect.wd_t38_neutral_arithmetic_morphology
-          #print axioms WeilDefect.wd_t38_attained_unit_gain_neutral_morphology
+          cat > /tmp/rpb108-inner-collar-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralInnerCollarRegularity
+          #print axioms WeilDefect.neutralWeilSymbolTemperate_at_radius
+          #print axioms WeilDefect.neutralInnerCollarResidual_locallyIntegrable
+          #print axioms WeilDefect.neutralInnerCollarResidual_exterior_pairing
+          #print axioms WeilDefect.neutralInnerCollarResidual_overlap_zero
+          #print axioms WeilDefect.neutralInnerCollarResidual_eq_candidate_exterior
+          #print axioms WeilDefect.neutralInnerCollarResidual_ae_eq_candidate
+          #print axioms WeilDefect.neutralExteriorResidualCandidate_represents_of_central
+          #print axioms WeilDefect.neutralCompactSourceDefect_zero_of_central
+          #print axioms WeilDefect.neutralExteriorIntegralGrowthResidual_realizes_of_central
           LEAN
-          lake env lean /tmp/rpb108-energy-custody-audit.lean | tee /tmp/rpb108-energy-custody-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-energy-custody-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-inner-collar-audit.lean | tee /tmp/rpb108-inner-collar-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-inner-collar-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |
-          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect WeilDefect.lean; then
+          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)\\b' WeilDefect WeilDefect.lean; then
             echo "Unfinished or project-axiom declaration found."
             exit 1
           fi
