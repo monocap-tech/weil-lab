@@ -89,7 +89,8 @@ theorem dirichletProblemOneColumn_green_reciprocity (a : ℝ) (z w : ℂ)
     simp [mul_comm]
   rw [dirichletProblemOneColumn_green_mixed a z w ha hz,
     dirichletProblemOneColumn_green_mixed a w z ha hw, map_add, map_mul]
-  have hq : conj (1 / 4 : ℂ) = 1 / 4 := by norm_num
+  have hq : conj (1 / 4 : ℂ) = 1 / 4 := by
+    simp only [map_div₀, map_one, map_ofNat]
   rw [hq, hconj (deriv (dirichletProblemOneColumn a z))
     (deriv (dirichletProblemOneColumn a w)),
     hconj (dirichletProblemOneColumn a z) (dirichletProblemOneColumn a w)]
