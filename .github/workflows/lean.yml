@@ -34,8 +34,9 @@ jobs:
         continue-on-error: true
         with:
           path: .lake
-          key: rpb108-lean434-mathlib5ed296-rpb108-root-v1
+          key: rpb108-lean434-mathlib5ed296-rpb108-root-v2
           restore-keys: |
+            rpb108-lean434-mathlib5ed296-rpb108-root-v1
             rpb108-lean434-mathlib5ed296-inner-collar-v1
             rpb108-lean434-mathlib5ed296-base71dddf5-v1
       - name: Resolve pinned dependencies
@@ -46,17 +47,19 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/DirichletGreenMixed.lean
+          git hash-object WeilDefect/Morphology/NeutralNativeDirichletCoordinates.lean
           lean --version
           lake build WeilDefect
       - name: Inspect actual Green energy axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.DirichletGreenMixed
-          #print axioms WeilDefect.dirichletProblemOneColumn_green_mixed
-          #print axioms WeilDefect.dirichletProblemOneColumn_green_reciprocity
-          #print axioms WeilDefect.dirichletProblemOneColumn_green_mixed_diagonal
+          import WeilDefect.Morphology.NeutralNativeDirichletCoordinates
+          #print axioms WeilDefect.neutralDirichletGradientColumn_memLp
+          #print axioms WeilDefect.neutralDirichletGradientColumnL2_mixed
+          #print axioms WeilDefect.neutralDirichletGreenColumnL2_mixed
+          #print axioms WeilDefect.neutralDirichletGreen_nativeL2_pairing
+          #print axioms WeilDefect.neutralDirichletGreen_nativeL2_energy
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
@@ -73,4 +76,4 @@ jobs:
         continue-on-error: true
         with:
           path: .lake
-          key: rpb108-lean434-mathlib5ed296-rpb108-root-v1
+          key: rpb108-lean434-mathlib5ed296-rpb108-root-v2
