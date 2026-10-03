@@ -94,7 +94,7 @@ theorem neutralLogPositivePairSource_inner (a : ℝ) (z : ℂ)
       ((Real.sqrt 2)⁻¹ : ℂ) *
         (neutralWindowEvaluation a (conj z) (neutralLogPhysical f.val) +
           neutralWindowEvaluation a z (neutralLogPhysical f.val)) := by
-  simp only [neutralLogPositivePairSource, inner_smul_left, inner_add_left,
+  simp only [neutralLogPositivePairSource, _root_.inner_smul_left, _root_.inner_add_left,
     neutralLogExponentialSource_inner, starRingEnd_apply, Complex.conj_ofReal,
     map_inv₀, star_star]
 
@@ -104,7 +104,7 @@ theorem neutralLogNegativePairSource_inner (a : ℝ) (z : ℂ)
       ((Real.sqrt 2)⁻¹ : ℂ) *
         (neutralWindowEvaluation a (conj z) (neutralLogPhysical f.val) -
           neutralWindowEvaluation a z (neutralLogPhysical f.val)) := by
-  simp only [neutralLogNegativePairSource, inner_smul_left, inner_sub_left,
+  simp only [neutralLogNegativePairSource, _root_.inner_smul_left, _root_.inner_sub_left,
     neutralLogExponentialSource_inner, starRingEnd_apply, Complex.conj_ofReal,
     map_inv₀, star_star]
 
@@ -136,7 +136,7 @@ theorem neutralLogSelectedPairOperator_diagonal (a : ℝ) (z : ℂ)
     (f : NeutralLogHilbertCarrier a) :
     inner ℂ f (neutralLogSelectedPairOperator a z f) =
       ((‖inner ℂ (neutralLogNegativePairSource a z) f‖ ^ 2 : ℝ) : ℂ) := by
-  simp only [neutralLogSelectedPairOperator_mixed, Complex.conj_mul']
+  simp only [neutralLogSelectedPairOperator_mixed, Complex.conj_mul', Complex.ofReal_pow]
 
 /-- The convention swap leaves the concrete selected pair operator unchanged. -/
 theorem neutralLogSelectedPairOperator_conjugate (a : ℝ) (z : ℂ) :
