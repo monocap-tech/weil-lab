@@ -9,6 +9,17 @@
 
 ## Current standing
 
+## RPB-108 — actual normalized multiplier-plus-pole form attachment
+
+Continues from `a28a1cc6fabf0f50c0c205558a8932e66ea75b2e`.
+See the [actual multiplier attachment note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_MULTIPLIER_ATTACHMENT_20261003.md).
+
+The retained normalized comparison now constructs actual bounded multiplication by `m/w` in weighted Fourier coordinates. Compression to the already complete supported logarithmic carrier realizes exactly the physical mixed multiplier integral. Adding the certified pole operator gives the actual multiplier-plus-Hermitian-pole mixed identity and real quadratic diagonal on that same domain. Absolute, signed, and mixed convergence are proved. The retained shifted lower/upper comparison bounds also control the actual shifted physical energy on every form vector.
+
+Whole-root validation: 9,025 jobs; ten standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the CONCRETE FORM and its retained comparison transfer. It does not attach WD-T38's retained source/null witness merely by constructing that form: current-carrier logarithmic energy and native source-vector identification remain OPEN, as does enlarged central cancellation. Actual-zeta sampling/background endpoint attachment remains written/retained. Spectral L2 membership is unproved from WD-T38 and unassumed; bounded `m/w` in the form norm does not give physical `m*FT(carrier)` in L2. The existing inner-collar/regularity/boundary-removal assembly is ready for immediate consumption once actual enlarged central cancellation is proved. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
 ## RPB-108 — actual pole source attachment on the complete form carrier
 
 Continues from `69c836c8e0203349f7abb01263a834fcf87976c4`.
