@@ -74,7 +74,7 @@ theorem neutralActualZetaThetaRemainder_polynomial_bound
       Real.exp ((p / 2) * t) := by
     rw [mul_pow, div_le_iff₀ hf] at hx
     apply (mul_le_mul_left (pow_pos hq n)).mp
-    convert hx using 1 <;> field_simp <;> ring
+    convert hx using 1 <;> field_simp [ne_of_gt hp] <;> ring
   calc
     _ ≤ t ^ n * (C * Real.exp (-p * t)) :=
       mul_le_mul_of_nonneg_left (hbound t ht) (pow_nonneg ht0 n)
@@ -88,9 +88,11 @@ theorem neutralActualZetaThetaRemainder_polynomial_bound
       exact mul_le_mul_of_nonneg_left
         (mul_le_mul_of_nonneg_right hpow (Real.exp_pos _).le) hC
     _ = _ := by
-      rw [mul_assoc, mul_assoc, ← Real.exp_add]
-      congr 2
-      ring
+      have he : (p / 2) * t + -p * t = -(p / 2) * t := by ring
+      calc
+        _ = (C * ((n.factorial : ℝ) / (p / 2) ^ n)) *
+            (Real.exp ((p / 2) * t) * Real.exp (-p * t)) := by ring
+        _ = _ := by rw [← Real.exp_add, he]
 
 
 /-- The actual theta polynomial moments are integrable, with an explicit
