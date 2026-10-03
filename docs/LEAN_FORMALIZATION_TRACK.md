@@ -1,5 +1,26 @@
 # Lean Formalization Track
 
+## RPB-108 — actual native Fourier representative identified
+
+Continues from `5647cf49c7b6abe2edd58fa0daf34444d01ec7dd`.
+See the [native Fourier representative note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FOURIER_REPRESENTATIVE_20261003.md).
+
+The actual first-derivative frequency product of the native Green synthesis
+is locally integrable, and the certified distribution identity gives its
+actual Schwartz pairings. Compact-smooth test uniqueness identifies that
+product almost everywhere with the L2 Fourier transform of the constructed
+derivative synthesis. Its native `MemLp 2` witness is therefore derived,
+without an assumed operator-domain or representation premise.
+
+This product is the linear derivative frequency multiplier, not the full
+Weil spectral product of the current WD-T38 carrier. Finite logarithmic
+energy and canonical form-domain attachment are next. Native background
+completion remains retained/written; current source quadratic/null,
+mixed/normalized, and enlarged central attachment remain open. Current
+spectral L2 is unproved from WD-T38 and unassumed. The certified locally
+integrable residual route is ready for central cancellation.
+Thresholds are closed; F-4 is pending.
+
 ## RPB-108 — actual native Fourier derivative bridge
 
 Continues from `36fa17302379e6f515ef78239bf8404df487f446`.
