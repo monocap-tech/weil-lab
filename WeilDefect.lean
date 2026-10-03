@@ -83,6 +83,7 @@ import WeilDefect.Morphology.NeutralSourceOperatorDomain
 import WeilDefect.Morphology.NeutralCanonicalFormDomain
 import WeilDefect.Morphology.NeutralOperatorFormEnergy
 import WeilDefect.Morphology.NeutralOperatorQuadraticBridge
+import WeilDefect.Morphology.NeutralLogFormGraph
 
 import WeilDefect.Morphology.Noncompact
 

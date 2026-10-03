@@ -881,3 +881,63 @@ Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca
 Validation-only workflow/cache changes are excluded. The original research
 workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
 Canonical Weil, main and WD-T40 standing are unchanged.
+
+## 2026-10-02 — RPB-108 — physical operator/quadratic bridge
+
+Continues from `41e3532aa83905dac6255b5cf5dbd9f3f799becc`.
+
+`NeutralOperatorQuadraticBridge` identifies the physical L2 core pairing
+with the exact normalized spectral multiplier pairing by Plancherel.
+Genuine L2 Hermitian integrability and a.e. spectral representative laws
+justify the physical pairing. On the carrier column, every test vector in
+the concrete source form domain now has its multiplier pairing identified
+with the physical operator core. Combining the certified real diagonal
+with the existing Hermitian pole identity gives the concrete carrier
+quadratic energy as the real physical core pairing plus the real pole pairing.
+The chosen physical carrier representative also has a genuinely convergent
+core pairing.
+
+Actual spectral operator-domain membership remains an explicit open input.
+The bridge adds no positive comparison, central cancellation or imported
+source quadratic identity premise. It identifies the constructed form and
+constructed operator core, not a separately imported source form or the
+abstract endpoint-null extension. That source attachment, polarization
+attachment, central cancellation and actual whole-source realization remain
+open. Threshold bookkeeping is closed; logarithmic coercivity has not started.
+
+Certification: Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`; 8,987 build jobs passed. All five endpoint audits use only `propext`, `Classical.choice`, and `Quot.sound`; declaration gate passed. Validation head `f202f6ddc684478102061f9b1cfc0f2e8ff4f741`, run `37077578096`, job `111070781347`, source blob `89e41c3a3bf68c4685d461a1d989a0532a020f32`.
+
+Validation-only workflow/cache changes are excluded. The original research
+workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`.
+Canonical Weil, main and WD-T40 standing are unchanged.
+
+## 2026-10-02 — RPB-108 — witness attachment custody audit
+
+Recovered source head: `a212c087ae269a27e17f7b715531caaa95b37088`.
+
+The retained WD-T38 source-identification hypothesis is present in the written
+theorem but is not carried as concrete identification data by its Lean adapter.
+Its independent density/symbol/Q inputs do not identify the physical carrier,
+canonical domain or concrete source form. No actual source witness was attached
+in this audit. Existing diagonal/polarization/comparison bridges remain
+conditional on those missing identifications.
+
+Endpoint nullity on (-c,c) must be kept separate from strict enlarged nullity
+on (-a,a), c < a. The latter is the strict-persistence contradiction hypothesis,
+not a consequence of the endpoint equation. Global spectral-product L2
+membership is not established by the retained form estimates; the stronger
+route is stopped. Next: reconstruct the omitted source identification and
+investigate the weakest locally integrable actual defect through local
+off-support representation, without adding spectral membership.
+
+See [witness audit](../notes/REFLECTED_PACKET_BRIDGE_108_WITNESS_ATTACHMENT_AUDIT_20261002.md). This documentation-only pass adds no
+theorem or axiom; the latest source certificate remains 8,987 jobs and five
+clean endpoint audits at a212c087.
+
+Threshold bookkeeping is closed. Actual source attachment, enlarged central
+cancellation, regularity and whole compact realization remain open.
+Logarithmic Gaussian coercivity has not started.
+
+Source files and the research workflow are unchanged. This pass records the
+missing witness custody and corrects the live next-work order; it does not
+promote a new mathematical result or reopen historical note bodies.

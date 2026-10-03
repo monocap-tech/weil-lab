@@ -9,6 +9,50 @@
 
 ## Current standing
 
+Source reconstruction now has an explicit type boundary: the bounded ordinary-L2
+operator in the lifted abstract interface cannot represent the unbounded
+logarithmic Weil quadratic form on the full canonical domain. Preserve the
+source form-space topology and its map into L2, or use the compressed weak
+form/observation relation. The required actual realization remains missing;
+no new conditional representation module was added. See the
+[source reconstruction note](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_TYPE_BOUNDARY_20261002.md).
+
+Recovered source head: `a212c087ae269a27e17f7b715531caaa95b37088`.
+
+The retained WD-T38 source-identification hypothesis is present in the written
+theorem but is not carried as concrete identification data by its Lean adapter.
+Its independent density/symbol/Q inputs do not identify the physical carrier,
+canonical domain or concrete source form. No actual source witness was attached
+in this audit. Existing diagonal/polarization/comparison bridges remain
+conditional on those missing identifications.
+
+Endpoint nullity on (-c,c) must be kept separate from strict enlarged nullity
+on (-a,a), c < a. The latter is the strict-persistence contradiction hypothesis,
+not a consequence of the endpoint equation. Global spectral-product L2
+membership is not established by the retained form estimates; the stronger
+route is stopped. Next: reconstruct the omitted source identification and
+investigate the weakest locally integrable actual defect through local
+off-support representation, without adding spectral membership.
+
+See [witness audit](../notes/REFLECTED_PACKET_BRIDGE_108_WITNESS_ATTACHMENT_AUDIT_20261002.md). This documentation-only pass adds no
+theorem or axiom; the latest source certificate remains 8,987 jobs and five
+clean endpoint audits at a212c087.
+
+Threshold bookkeeping is closed. Actual source attachment, enlarged central
+cancellation, regularity and whole compact realization remain open.
+Logarithmic Gaussian coercivity has not started.
+
+Plancherel now identifies the concrete multiplier form's carrier column with
+the actual physical L2 operator-core pairing. The concrete carrier quadratic
+diagonal is its real core pairing plus the already represented real pole
+pairing. These identities retain spectral operator-domain membership but
+introduce no new source quadratic identity or symbol comparison premise.
+Actual spectral membership, imported source/endpoint-null attachment and
+central cancellation remain open. Threshold bookkeeping is closed;
+logarithmic coercivity has not started.
+See [physical quadratic checkpoint](../notes/REFLECTED_PACKET_BRIDGE_108_OPERATOR_QUADRATIC_BRIDGE_20261002.md) and
+[terminology](TERMINOLOGY_RPB108_OPERATOR_QUADRATIC_BRIDGE.md).
+
 The conditional operator-domain route now supplies finite logarithmic energy
 and the carrier's canonical form-domain attachment without a separate energy
 premise. It retains spectral-product L2 membership and a strictly positive
@@ -307,57 +351,26 @@ See [finite Gauss multiplier continuation](../notes/REFLECTED_PACKET_BRIDGE_108_
 
 ## Next cursor
 
-~~~text
-RPB-108 / WD-T40 F-4 — ACTUAL SOURCE ATTACHMENT
+RPB-108 / WD-T40 F-4 — WITNESS ATTACHMENT.
 
-1. Identify the finite-window source domain and attach WD-T38's retained membership hypothesis.
-2. Attach the explicit source quadratic identity and normalized shifted
-   estimates there; the diagonal and mixed comparison bridges are constructed.
-3. Establish the actual core representative with regularity and growth,
-   and attach central cancellation of r + p_h. The finite-prime L1 component
-   is constructed, and the integral-growth Gaussian pairing bridge is
-   constructed; the archimedean exterior function and weighted mass are now
-   constructed. The concrete exterior residual candidate now supplies all
-   analytic fields; its exact exterior distribution attachment, central source
-   cancellation and boundary/whole-line reconstruction remain open. The full
-   finite-prime action is attached; singular archimedean identification is
-   the remaining physical multiplier component. The finite scalar tail split
-   and geometric kernel limit are constructed. The full finite kernel and
-   actual rough-carrier convolution have exact Fourier transforms and a
-   Schwartz weak pairing identity. Its moment-derived temperate symbol now
-   attaches the existing tempered multiplier to the physical finite convolution.
-   The actual shifted digamma action is now isolated by an exact operator
-   split on every Schwartz test. The actual finite convolution has a uniform
-   geometric exterior error and its pointwise limit is constructed. The
-   finite physical pairing limit on support-separated Schwartz tests is now
-   constructed. The shifted-tail pairing converges to the exact source-
-   attachment defect. Independent real-axis digamma bounds now control
-   the actual shifted zero-frequency value. Scalar action separation is now
-   exact on support-separated tests. Actual centered increments have a cubic
-   bound and an absolutely summable norm series. Their exact pointwise limit
-   and a uniform-in-shift frequency envelope are constructed. Actual residual
-   cancellation is next: integrable pairing domination and actual action
-   limit passage are constructed, retaining the full-symbol growth premise.
-   An independent actual positive-real Euler anchor is constructed; complex
-   analytic series identification is next for source-line cancellation.
-   Actual digamma real-valuedness and the full complex positive-real anchor
-   are constructed, supplying the later identity-theorem equality input.
-   Independent complex Euler candidate summability and right-half-plane
-   holomorphy are constructed. Actual digamma is now identified on that
-   half-plane. Source-line specialization and residual cancellation are
-   supplied below.
-   Actual source-line HasSum now cancels the represented centered residual;
-   the symbol and actual action tend to zero. Exterior multiplier attachment
-   is constructed. Pole addition gives actual compact exterior realization
-   by the existing residual candidate. Central cancellation and boundary
-   reconstruction remain before whole source attachment.
-4. Consume the constructed compact weak realization in the certified
-   Hermitian Gaussian bridge, then begin logarithmic coercivity.
-~~~
+1. Reconstruct the actual retained WD-T38 source domain, carrier inclusion and
+   source/endpoint operator identification omitted from the Lean adapter.
+2. Attach the source diagonal to sourceDomainQuadratic on its lawful domain;
+   consume the existing polarization and normalized shifted comparison bridges.
+3. Translate endpoint nullity on (-c,c). In the WD-T40 contradiction,
+   separately translate the strict-persistence input to central cancellation
+   on (-a,a), c < a; do not infer enlargement from endpoint nullity.
+4. Global spectral L2 membership is not established by the retained form
+   estimates. Stop that stronger route and investigate local off-support
+   representation plus the attached central equation for the weakest actual
+   locally integrable defect.
+5. Once regularity and enlarged cancellation are attached, immediately consume
+   the existing boundary-removal and whole compact realization theorems.
+6. Close actual source attachment before entering F-4 logarithmic Gaussian
+   coercivity.
 
-Compact support and L2 membership do not stand in for these source inputs.
-Defining a form-domain or core-representation structure does not discharge it.
-No Gaussian construction or threshold investigation is to be restarted.
+See [exact custody audit](../notes/REFLECTED_PACKET_BRIDGE_108_WITNESS_ATTACHMENT_AUDIT_20261002.md). No new conditional representation
+layer was added by this pass.
 
 ## Governance and custody
 
