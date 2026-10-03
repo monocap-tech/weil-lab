@@ -42,31 +42,31 @@ jobs:
         run: lake update
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Check concrete normalized multiplier attachment
+      - name: Check concrete selected source attachment
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralLogMultiplierSourceAttachment.lean
+          git hash-object WeilDefect/Morphology/NeutralLogSelectedSourceAttachment.lean
           lean --version
           lake build WeilDefect
-      - name: Inspect normalized multiplier attachment axioms
+      - name: Inspect selected source attachment axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-multiplier-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralLogMultiplierSourceAttachment
-          #print axioms WeilDefect.neutralLogSymbolRatio_bound
-          #print axioms WeilDefect.neutralLogSymbolRatio_measurable
-          #print axioms WeilDefect.neutralLogMultiplierOperator_mixed
-          #print axioms WeilDefect.neutralLogPhysical_absoluteSymbolEnergy
-          #print axioms WeilDefect.neutralLogPhysical_signedSymbolEnergy
-          #print axioms WeilDefect.neutralLogPhysical_shiftedComparison
-          #print axioms WeilDefect.neutralLogMultiplier_mixed_integrable
-          #print axioms WeilDefect.neutralLogMultiplierOperator_diagonal
-          #print axioms WeilDefect.neutralLogWeilFormOperator_mixed
-          #print axioms WeilDefect.neutralLogWeilFormOperator_diagonal
+          cat > /tmp/rpb108-selected-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralLogSelectedSourceAttachment
+          #print axioms WeilDefect.neutralExponentialColumn_memLp
+          #print axioms WeilDefect.neutralExponentialColumnL2_inner
+          #print axioms WeilDefect.neutralLogExponentialSource_inner
+          #print axioms WeilDefect.neutralLogExponentialAnalysis_eq
+          #print axioms WeilDefect.neutralLogPositivePairSource_inner
+          #print axioms WeilDefect.neutralLogNegativePairSource_inner
+          #print axioms WeilDefect.neutralLogPositivePairSource_conjugate
+          #print axioms WeilDefect.neutralLogNegativePairSource_conjugate
+          #print axioms WeilDefect.neutralLogSelectedPairOperator_mixed
+          #print axioms WeilDefect.neutralLogSelectedPairOperator_conjugate
           LEAN
-          lake env lean /tmp/rpb108-multiplier-audit.lean | tee /tmp/rpb108-multiplier-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-multiplier-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-selected-audit.lean | tee /tmp/rpb108-selected-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-selected-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |

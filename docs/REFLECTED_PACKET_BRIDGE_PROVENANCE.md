@@ -1144,3 +1144,23 @@ Actual compact exponential L2 columns realize the retained sourceWindowMoment in
 Whole-root validation: 9,024 jobs; six standard-axiom audits; unfinished-declaration gate passed.
 
 This certifies the POLE COMPONENT. The full actual normalized multiplier and retained WD-T38 source/quadratic/null identification remain unattached; enlarged central cancellation remains OPEN. Global actual-zeta sampling and effective background endpoint attachment are still written/retained. Current-carrier spectral L2 is unproved and unassumed. The certified inner-collar/boundary-removal assembly is ready to consume actual enlarged central cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+## RPB-108 — actual normalized multiplier-plus-pole form attachment
+
+Continues from `a28a1cc6fabf0f50c0c205558a8932e66ea75b2e`.
+See the [actual multiplier attachment note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_MULTIPLIER_ATTACHMENT_20261003.md).
+
+The retained normalized comparison now constructs actual bounded multiplication by `m/w` in weighted Fourier coordinates. Compression to the already complete supported logarithmic carrier realizes exactly the physical mixed multiplier integral. Adding the certified pole operator gives the actual multiplier-plus-Hermitian-pole mixed identity and real quadratic diagonal on that same domain. Absolute, signed, and mixed convergence are proved. The retained shifted lower/upper comparison bounds also control the actual shifted physical energy on every form vector.
+
+Whole-root validation: 9,025 jobs; ten standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the CONCRETE FORM and its retained comparison transfer. It does not attach WD-T38's retained source/null witness merely by constructing that form: current-carrier logarithmic energy and native source-vector identification remain OPEN, as does enlarged central cancellation. Actual-zeta sampling/background endpoint attachment remains written/retained. Spectral L2 membership is unproved from WD-T38 and unassumed; bounded `m/w` in the form norm does not give physical `m*FT(carrier)` in L2. The existing inner-collar/regularity/boundary-removal assembly is ready for immediate consumption once actual enlarged central cancellation is proved. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+Certified validation head: `696acc4ce502fb7b48b803b4568d6115ff60d7f0`.
+Run: `37126512016`; job: `111212760495`.
+Whole-root `lake build WeilDefect`: 9,025 jobs succeeded.
+Ten axiom audits contain only `propext`, `Classical.choice`, and `Quot.sound`.
+The unfinished/project-axiom declaration gate passed.
+New module blob: `170c31cc3c09cd63c0aeb372f800043ad8a3cc4a`.
+Root import blob: `a2fcf2016fe70c71657041c1c185088a528b0c8c`.
+The validation-only workflow is excluded from research promotion.
