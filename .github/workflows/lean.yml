@@ -48,25 +48,25 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Arithmetic/ActualZetaWeightedSampling.lean
+          git hash-object WeilDefect/Arithmetic/ActualZetaDivisorWindows.lean
           lean --version
+          lake build WeilDefect.Arithmetic.ActualZetaDivisorWindows
           lake build WeilDefect
       - name: Inspect actual Green energy axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaWeightedSampling
-          #print axioms WeilDefect.neutralActualZetaWeightedNegativeSource_inner_factor
-          #print axioms WeilDefect.neutralActualZetaWeightedNegativeSource_sampling
-          #print axioms WeilDefect.neutralActualZetaWeightedNegativeSource_canonicalSampling
-          #print axioms WeilDefect.neutralActualZetaWeightedSelectedOperator_rankOne
-          #print axioms WeilDefect.neutralActualZetaWeightedSelectedOperator_mixed
-          #print axioms WeilDefect.neutralActualZetaWeightedSelectedOperator_diagonal
-          #print axioms WeilDefect.neutralActualZetaWeightedSelectedOperator_copies
-          #print axioms WeilDefect.neutralActualZetaWeightedSelectedOperator_copyEnergy
-          #print axioms WeilDefect.neutralActualZetaWeightedFiniteSelectedOperator_mixed
-          #print axioms WeilDefect.neutralActualZetaWeightedFiniteSelectedOperator_diagonal
-          #print axioms WeilDefect.neutralActualZetaWeightedFiniteSelectedOperator_nonnegative
+          import WeilDefect.Arithmetic.ActualZetaDivisorWindows
+          #print axioms WeilDefect.neutralActualZetaPointHeightWindow_finite
+          #print axioms WeilDefect.neutralActualZetaHeightCopiesEquiv
+          #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_finite
+          #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_card
+          #print axioms WeilDefect.neutralActualZetaPointHeightWindow_cover
+          #print axioms WeilDefect.neutralActualZetaZeroPoint_countable
+          #print axioms WeilDefect.neutralActualZetaDivisorCoordinate_countable
+          #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_ordinate
+          #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_pair
+          #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_mono
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
