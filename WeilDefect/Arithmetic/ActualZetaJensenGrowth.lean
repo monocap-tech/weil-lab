@@ -87,6 +87,94 @@ theorem neutralActualZetaJensenMass_le {r R M : ℝ}
     norm_one, div_one] using
     ha.sum_divisor_le hr hrR hM (by rw [neutralActualZetaEntire_zero]; norm_num) hbound
 
+/-- Actual multiplicity-copy counts are bounded by the analytic divisor
+mass in their enclosing disk. Extra zeros only enlarge this bound. -/
+theorem neutralActualZetaDivisorHeightWindow_card_le_mass (T : ℝ) :
+    (Fintype.card (neutralActualZetaDivisorHeightWindow T) : ℤ) ≤
+      neutralActualZetaJensenMass (|T| + 2) := by
+  classical
+  let D := divisor neutralActualZetaEntire (closedBall (0 : ℂ) (|T| + 2))
+  have ha : AnalyticOnNhd ℂ neutralActualZetaEntire
+      (closedBall (0 : ℂ) (|T| + 2)) := fun z _ => neutralActualZetaEntire_analytic z
+  have hfinite := D.finiteSupport (isCompact_closedBall (0 : ℂ) (|T| + 2))
+  have hpoint (ρ : neutralActualZetaPointHeightWindow T) :
+      ρ.val.val ∈ closedBall (0 : ℂ) (|T| + 2) := by
+    have hn := Complex.norm_le_abs_re_add_abs_im ρ.val.val
+    rw [abs_of_pos ρ.val.property.2.1] at hn
+    have hi : |ρ.val.val.im| ≤ |T| := ρ.property.trans (le_abs_self T)
+    have hb : ‖ρ.val.val‖ ≤ |T| + 2 := by linarith [ρ.val.property.2.2]
+    simpa only [mem_closedBall, dist_zero_right] using hb
+  have hD (ρ : neutralActualZetaPointHeightWindow T) :
+      D ρ.val.val = (neutralActualZetaMultiplicity ρ.val : ℤ) := by
+    exact neutralActualZetaEntire_divisor ρ.val
+      (by simpa only [abs_of_pos (by positivity : 0 < |T| + 2)] using hpoint ρ)
+  rw [neutralActualZetaDivisorHeightWindow_card, Nat.cast_sum]
+  change (∑ ρ : neutralActualZetaPointHeightWindow T,
+    (neutralActualZetaMultiplicity ρ.val : ℤ)) ≤ ∑ᶠ z, D z
+  rw [finsum_eq_sum_of_support_subset D (by
+    intro z hz; exact hfinite.mem_toFinset.mpr hz)]
+  apply Finset.sum_le_sum_of_injOn (fun ρ : neutralActualZetaPointHeightWindow T => ρ.val.val)
+  · intro ρ _ σ _ h
+    exact Subtype.ext (Subtype.ext h)
+  · intro z hz
+    obtain ⟨ρ, _, rfl⟩ := Finset.mem_image.mp hz
+    apply hfinite.mem_toFinset.mpr
+    rw [Function.mem_support, hD]
+    exact_mod_cast (neutralActualZetaMultiplicity_pos ρ.val).ne'
+  · intro ρ _
+    exact (hD ρ).ge
+  · intro z _ _
+    exact ha.divisor_nonneg z
+
+/-- A quantitative actual full multiplicity count bound, using growth of
+actual pole-cleared zeta rather than an independent shell-count premise. -/
+theorem neutralActualZetaDivisorHeightWindow_card_le_jensen (T : ℝ) {M : ℝ}
+    (hM : 1 ≤ M)
+    (hbound : ∀ z ∈ sphere (0 : ℂ) (2 * (|T| + 2)),
+      ‖neutralActualZetaEntire z‖ ≤ M) :
+    (Fintype.card (neutralActualZetaDivisorHeightWindow T) : ℝ) ≤
+      Real.log M / Real.log 2 := by
+  have hc : (Fintype.card (neutralActualZetaDivisorHeightWindow T) : ℝ) ≤
+      (neutralActualZetaJensenMass (|T| + 2) : ℝ) := by
+    exact_mod_cast neutralActualZetaDivisorHeightWindow_card_le_mass T
+  apply hc.trans
+  have hr : 0 < |T| + 2 := by positivity
+  have hj := neutralActualZetaJensenMass_le
+    (r := |T| + 2) (R := 2 * (|T| + 2)) (M := M)
+    (by simpa only [abs_of_pos hr] using hr)
+    (by rw [abs_of_pos hr, abs_of_pos (by positivity)]; linarith)
+    hM (by simpa only [abs_of_pos (by positivity : 0 < 2 * (|T| + 2))] using hbound)
+  convert hj using 1
+  congr 2
+  field_simp
+
+/-- Actual enclosing-circle growth envelope, bounded by compactness and
+normalized to at least one. No packet count data enters this definition. -/
+def neutralActualZetaCircleEnvelope (T : ℝ) : ℝ :=
+  max 1 (sSup ((fun z => ‖neutralActualZetaEntire z‖) ''
+    sphere (0 : ℂ) (2 * (|T| + 2))))
+
+theorem neutralActualZetaCircleEnvelope_one_le (T : ℝ) :
+    1 ≤ neutralActualZetaCircleEnvelope T := le_max_left _ _
+
+theorem neutralActualZetaCircleEnvelope_bound (T : ℝ) :
+    ∀ z ∈ sphere (0 : ℂ) (2 * (|T| + 2)),
+      ‖neutralActualZetaEntire z‖ ≤ neutralActualZetaCircleEnvelope T := by
+  intro z hz
+  have hb : BddAbove ((fun z => ‖neutralActualZetaEntire z‖) ''
+      sphere (0 : ℂ) (2 * (|T| + 2))) :=
+    ((isCompact_sphere (0 : ℂ) (2 * (|T| + 2))).image
+      (continuous_norm.comp neutralActualZetaEntire_differentiable.continuous)).bddAbove
+  exact (le_csSup hb ⟨z, hz, rfl⟩).trans (le_max_right _ _)
+
+/-- Unconditional actual divisor count bound in terms of actual completed
+zeta growth. A rate for this envelope remains a separate analytic theorem. -/
+theorem neutralActualZetaDivisorHeightWindow_card_le_envelope (T : ℝ) :
+    (Fintype.card (neutralActualZetaDivisorHeightWindow T) : ℝ) ≤
+      Real.log (neutralActualZetaCircleEnvelope T) / Real.log 2 :=
+  neutralActualZetaDivisorHeightWindow_card_le_jensen T
+    (neutralActualZetaCircleEnvelope_one_le T) (neutralActualZetaCircleEnvelope_bound T)
+
 end
 
 end WeilDefect

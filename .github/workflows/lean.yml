@@ -65,6 +65,11 @@ jobs:
           #print axioms WeilDefect.neutralActualZetaEntire_divisor
           #print axioms WeilDefect.neutralActualZetaJensenMass_nonnegative
           #print axioms WeilDefect.neutralActualZetaJensenMass_le
+          #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_card_le_mass
+          #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_card_le_jensen
+          #print axioms WeilDefect.neutralActualZetaCircleEnvelope_one_le
+          #print axioms WeilDefect.neutralActualZetaCircleEnvelope_bound
+          #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_card_le_envelope
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
