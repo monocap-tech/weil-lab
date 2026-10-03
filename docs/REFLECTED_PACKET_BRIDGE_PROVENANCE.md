@@ -1029,3 +1029,25 @@ This is a written reduction, **not a newly certified Lean theorem or an actual W
 
 
 Source custody: existing whole-root certificate run `37085401789`, job `111094526098`, 9,020 jobs and four clean audits remains unchanged. This pass modifies six Markdown files only. No new Lean build or axiom audit is claimed. The new terminology and analytic note distinguish the written reduction from formal certification and actual witness attachment. Historical note bodies are unchanged.
+
+
+## 2026-10-02 — RPB-108 certified inner-collar regularity assembly
+
+Parent: `4cea4deb386799457578f9cefccccc329a859f4b`, tree `4181562c470bfb76ef5a0482ea8886888ee30098`.
+
+The inner-collar regularity reduction is now implemented in `NeutralInnerCollarRegularity.lean`. The auxiliary symbol's temperate growth is derived from the retained target symbol and certified finite-prime growth. The constructed collar is locally integrable; its archimedean gap is `b-c` while its full prime cutoff remains `a`. Actual central cancellation proves zero on the open overlap, yielding almost-everywhere agreement with the existing concrete residual. A constructed smooth bump splits every compact test; the resulting whole-test identity gives the zero function as a genuine representative of the actual defect. The final theorem immediately consumes the existing boundary-removal theorem.
+
+No spectral L2 or independent regular-defect representation premise is introduced. The only remaining source-specific input to this regularity/whole-realization assembly is actual central cancellation, alongside the existing carrier, strict support margin and target-symbol hypotheses. The theorem does not attach or prove that central witness. Actual WD-T38 carrier density/form-domain/quadratic identification and same-domain mixed/normalized attachment remain OPEN. Named-density energy custody remains certified. Spectral L2 membership is unproved and unassumed; the weaker regularity route now suffices conditional on actual central cancellation. Threshold bookkeeping stays CLOSED; F-4 logarithmic Gaussian coercivity is NOT STARTED. WD-T40/RH standing is unchanged.
+
+Whole-root `lake build WeilDefect` succeeded: **9,021 jobs**. The nine declarations above passed individual axiom audits with only `propext`, `Classical.choice`, and `Quot.sound`. The unfinished-declaration gate passed.
+
+- Validation commit: `f1489847e9f5ac62ad7d2f9b6742ba47722b45a2`.
+- Validation tree: `dcb6a25062bac2a1b9448762c815ed0870a1e24c`.
+- Run: `37088695271`.
+- Job: `111104179282`.
+- Certified module blob: `68166c337aa9845133eddbc6374bdd9223f57ff0`.
+- Root import blob: `8402bdefa1507bd31a809bdf974fd8dc2d09f1cf`.
+
+The initial theorem-target check also passed (8,984 jobs, nine clean audits) at `fa657f3b7f0a980266582dfb178f78a5e89dcb33`, run `37088301589`, job `111103010825`. The final whole-root certificate uses the identical module bytes.
+
+Promotion contains exactly the certified module and root import, a new immutable pass note, and current status/track/overview/provenance updates. All other Lean blobs and pinned manifests match the whole-root certificate. The original research workflow is preserved byte-identically and the validation PR is closed unmerged. No historical note is rewritten.

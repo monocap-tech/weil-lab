@@ -41,30 +41,26 @@ jobs:
         run: lake update
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Check inner collar regularity
+      - name: Check source witness audit regularity
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralInnerCollarRegularity.lean
+          git hash-object WeilDefect/Morphology/NeutralSourceWitnessAudit.lean
           lean --version
           lake build WeilDefect
-      - name: Inspect inner collar theorem axioms
+      - name: Inspect source witness audit theorem axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-inner-collar-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralInnerCollarRegularity
-          #print axioms WeilDefect.neutralWeilSymbolTemperate_at_radius
-          #print axioms WeilDefect.neutralInnerCollarResidual_locallyIntegrable
-          #print axioms WeilDefect.neutralInnerCollarResidual_exterior_pairing
-          #print axioms WeilDefect.neutralInnerCollarResidual_overlap_zero
-          #print axioms WeilDefect.neutralInnerCollarResidual_eq_candidate_exterior
-          #print axioms WeilDefect.neutralInnerCollarResidual_ae_eq_candidate
-          #print axioms WeilDefect.neutralExteriorResidualCandidate_represents_of_central
-          #print axioms WeilDefect.neutralCompactSourceDefect_zero_of_central
-          #print axioms WeilDefect.neutralExteriorIntegralGrowthResidual_realizes_of_central
+          cat > /tmp/rpb108-source-witness-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralSourceWitnessAudit
+          #print axioms WeilDefect.wd_t38_zero_density_sourceIdentity
+          #print axioms WeilDefect.wd_t38_zero_density_arithmetic
+          #print axioms WeilDefect.NeutralDefectMorphology.zeroDensityReindex
+          #print axioms WeilDefect.NeutralDefectMorphology.zeroDensityReindex_nullExtension
+          #print axioms WeilDefect.neutralPhysicalFourierDensity_ne_zero
           LEAN
-          lake env lean /tmp/rpb108-inner-collar-audit.lean | tee /tmp/rpb108-inner-collar-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-inner-collar-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-source-witness-audit.lean | tee /tmp/rpb108-source-witness-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-source-witness-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |
