@@ -55,7 +55,7 @@ source identification remains separate. -/
 theorem wd_t38_effective_positive_full_null
     (Spos : Kpos →L[ℂ] H) (X_B : B →L[ℂ] Kpos)
     (S_B : B →L[ℂ] H)
-    (hXB : WeilDefect.IsContraction X_B)
+    (hXB : WDT02.IsContraction X_B)
     (hB : S_B = -(Spos ∘L X_B))
     (C : M →L[ℂ] Kpos) (u : M) (k : H)
     (hunit : (C†) (C u) = u)
