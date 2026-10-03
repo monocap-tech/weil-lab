@@ -26,7 +26,7 @@ theorem neutralMomentColumn_memLp (a s : ℝ) :
   apply (memLp_two_iff_integrable_sq_norm hm).mpr
   have hi : IntegrableOn (fun x : ℝ => ‖(Real.exp (s*x) : ℂ)‖ ^ 2)
       (Set.Icc (-a) a) volume :=
-    (hc.norm.pow 2).continuousOn.integrableOn_isCompact isCompact_Icc
+    (hc.norm.pow 2).integrableOn_Icc
   apply (hi.integrable_indicator measurableSet_Icc).congr
   filter_upwards [] with x
   by_cases hx : x ∈ Set.Icc (-a) a <;>
@@ -47,7 +47,9 @@ theorem neutralMomentColumnL2_inner (a s : ℝ) (f : RealComplexL2) :
     (f x) = _
   rw [hx]
   by_cases hmem : x ∈ Set.Icc (-a) a
-  · simp [neutralMomentColumn, hmem, RCLike.inner_apply', mul_comm]
+  · simp only [neutralMomentColumn, Set.indicator_of_mem hmem,
+      RCLike.inner_apply', Complex.conj_ofReal]
+    ring
   · simp [neutralMomentColumn, hmem, RCLike.inner_apply']
 
 /-- The retained source moment is an actual continuous linear functional,
@@ -90,15 +92,9 @@ theorem neutralLogPoleOperator_mixed (a : ℝ) (f g : NeutralLogHilbertCarrier a
         sourceWindowMoment a (1/2) (neutralLogPhysical g.val) +
       conj (sourceWindowMoment a (1/2) (neutralLogPhysical f.val)) *
         sourceWindowMoment a (-(1/2)) (neutralLogPhysical g.val) := by
-  change inner ℂ f
-    (inner ℂ (neutralLogMomentSource a (1/2)) g •
-      neutralLogMomentSource a (-(1/2)) +
-    inner ℂ (neutralLogMomentSource a (-(1/2))) g •
-      neutralLogMomentSource a (1/2)) = _
-  rw [inner_add_right]
-  simp only [inner_smul_right (𝕜 := ℂ)]
-  rw [
-    ← inner_conj_symm f (neutralLogMomentSource a (-(1/2))),
+  simp only [neutralLogPoleOperator, ContinuousLinearMap.add_apply,
+    inner_add_right, inner_right_rankOne_apply]
+  rw [← inner_conj_symm f (neutralLogMomentSource a (-(1/2))),
     ← inner_conj_symm f (neutralLogMomentSource a (1/2))]
   simp only [neutralLogMomentSource_inner]
   ring
