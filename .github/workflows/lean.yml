@@ -47,7 +47,7 @@ jobs:
           git rev-parse HEAD
           git hash-object WeilDefect/Morphology/NeutralInnerCollarRegularity.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralInnerCollarRegularity
+          lake build WeilDefect
       - name: Inspect inner collar theorem axioms
         shell: bash
         run: |
@@ -68,7 +68,7 @@ jobs:
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |
-          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)\\b' WeilDefect WeilDefect.lean; then
+          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:](]|$)' WeilDefect WeilDefect.lean; then
             echo "Unfinished or project-axiom declaration found."
             exit 1
           fi
