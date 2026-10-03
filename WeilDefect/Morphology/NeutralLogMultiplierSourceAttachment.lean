@@ -176,6 +176,47 @@ theorem neutralLogPhysical_absoluteSymbolEnergy (k : RealComplexL2) :
       (rightLimitWeil_absoluteSymbolBound lowerC upperC shift h0 hl hu ξ)
       (sq_nonneg ‖(𝓕 (neutralLogPhysical k) : RealComplexL2) ξ‖)
 
+
+/-- The signed physical multiplier energy is genuinely integrable. -/
+theorem neutralLogPhysical_signedSymbolEnergy (k : RealComplexL2) :
+    Integrable (fun ξ => rightLimitCompactWeilSymbolMathlib a ξ *
+      ‖(𝓕 (neutralLogPhysical k) : RealComplexL2) ξ‖ ^ 2) volume := by
+  apply (neutralLogPhysical_absoluteSymbolEnergy a ha lowerC upperC shift h0 hl hu k).mono'
+  · exact (Complex.continuous_re.comp ha.hasTemperateGrowth.1.continuous).aestronglyMeasurable.mul
+      ((Lp.aestronglyMeasurable (𝓕 (neutralLogPhysical k) : RealComplexL2)).norm.pow 2)
+  · filter_upwards [] with ξ
+    simp only [Real.norm_eq_abs, abs_mul, abs_of_nonneg (sq_nonneg _)]
+    exact le_rfl
+
+/-- The retained normalized comparison now controls the actual shifted
+energy on every vector of the complete logarithmic carrier. -/
+theorem neutralLogPhysical_shiftedComparison (f : NeutralLogHilbertCarrier a) :
+    lowerC * ‖f‖ ^ 2 ≤
+      (∫ ξ, (rightLimitCompactWeilSymbolMathlib a ξ + shift) *
+        ‖(𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ‖ ^ 2) ∧
+    (∫ ξ, (rightLimitCompactWeilSymbolMathlib a ξ + shift) *
+        ‖(𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ‖ ^ 2) ≤
+      upperC * ‖f‖ ^ 2 := by
+  have he := neutralLogPhysical_energy f.val
+  have hs := neutralLogPhysical_signedSymbolEnergy a ha lowerC upperC shift h0 hl hu f.val
+  have hn := (memLp_two_iff_integrable_sq_norm
+    (Lp.aestronglyMeasurable (𝓕 (neutralLogPhysical f.val) : RealComplexL2))).mp (Lp.memLp _)
+  have ht : Integrable (fun ξ => (rightLimitCompactWeilSymbolMathlib a ξ + shift) *
+      ‖(𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ‖ ^ 2) volume := by
+    convert hs.add (hn.const_mul shift) using 1 <;> funext ξ <;> ring
+  simp only [neutralLogHilbertCarrier_norm_sq]
+  constructor
+  · rw [← integral_const_mul]
+    apply integral_mono (he.const_mul lowerC) ht
+    intro ξ
+    simpa only [mul_assoc] using mul_le_mul_of_nonneg_right (hl ξ)
+      (sq_nonneg ‖(𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ‖)
+  · rw [← integral_const_mul]
+    apply integral_mono ht (he.const_mul upperC)
+    intro ξ
+    simpa only [mul_assoc] using mul_le_mul_of_nonneg_right (hu ξ)
+      (sq_nonneg ‖(𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ‖)
+
 theorem neutralLogMultiplier_mixed_integrable (f g : NeutralLogHilbertCarrier a) :
     Integrable (fun ξ => conj ((𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ) *
       (rightLimitCompactWeilSymbolMathlib a ξ : ℂ) *
