@@ -100,10 +100,12 @@ theorem neutralPhysicalFourierDensity_ne_zero
       apply norm_eq_zero.mp
       nlinarith [norm_nonneg ((𝓕 carrier.l2Mode : RealComplexL2) ξ)]
     exact hv.trans hzero.symm
-  have heq : (Lp.fourierTransformₗᵢ ℝ ℂ) carrier.l2Mode =
-      (Lp.fourierTransformₗᵢ ℝ ℂ) 0 := by
-    simpa only [map_zero] using hfourier
-  exact carrier.l2Mode_ne_zero ((Lp.fourierTransformₗᵢ ℝ ℂ).injective heq)
+  have hmode : carrier.l2Mode = 0 := by
+    calc
+      carrier.l2Mode = (𝓕⁻ (𝓕 carrier.l2Mode : RealComplexL2) : RealComplexL2) :=
+        (fourierInv_fourier_eq _).symm
+      _ = 0 := by rw [hfourier, fourierInv_zero]
+  exact carrier.l2Mode_ne_zero hmode
 
 end
 
