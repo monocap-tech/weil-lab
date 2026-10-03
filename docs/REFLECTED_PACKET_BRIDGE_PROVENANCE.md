@@ -1272,3 +1272,25 @@ Actual Weil spectral L2 membership is unproved from WD-T38 and unassumed.
 Threshold bookkeeping is closed; F-4, WD-T40, and RH remain open.
 
 Validation: `a9f7686f1512fb4841650a20782529757c364643`, [run 37134529034](https://github.com/monocap-tech/weil-lab/actions/runs/37134529034), job `111236237732`. Whole-root `lake build WeilDefect` passed (9,030 jobs). All seven public declaration axiom audits reported only `[propext, Classical.choice, Quot.sound]`; unfinished/project-axiom gate passed. Research workflow and historical notes remain unchanged.
+
+## RPB-108 — actual mixed native Green source and reciprocity
+
+Continues from `ea23d3bffdf941f661cf52a4290866ebe2fcedef`.
+See the [actual mixed Green source note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_GREEN_MIXED_RECIPROCITY_20261003.md).
+
+The existing `DirichletEnergy.lean` already certifies the actual diagonal
+energy; it is reused. New integration by parts for distinct full Green
+columns proves the actual mixed source/Dirichlet identity and Hermitian
+source/Green reciprocity. The new mixed diagonal agrees with the existing
+energy, with no duplicate definition, assumed Green operator, or hrep.
+
+This certifies a native column-level mixed witness. Native Hilbert completion,
+Green square-root/background realization and current WD-T38 model
+identification remain retained/written or open. Actual current-mode logarithmic
+custody, source/null attachment, and enlarged central cancellation remain open.
+Actual Weil spectral L2 membership is unproved from WD-T38 and unassumed;
+column Dirichlet energy is not that membership. The certified locally
+integrable inner-collar/boundary route remains ready. Thresholds closed; F-4,
+WD-T40, and RH remain open.
+
+Validation: `41b1606db89ae51d8ce819b28985002988d64346`, [run 37136385069](https://github.com/monocap-tech/weil-lab/actions/runs/37136385069), job `111241663248`. Whole-root `lake build WeilDefect` passed (9,031 jobs). All three public theorem axiom audits reported only `[propext, Classical.choice, Quot.sound]`; unfinished/project-axiom gate passed. Research workflow and historical notes remain unchanged.
