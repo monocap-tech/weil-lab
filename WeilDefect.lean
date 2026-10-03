@@ -85,6 +85,7 @@ import WeilDefect.Morphology.NeutralOperatorFormEnergy
 import WeilDefect.Morphology.NeutralOperatorQuadraticBridge
 import WeilDefect.Morphology.NeutralLogFormGraph
 import WeilDefect.Morphology.NeutralLogFormEnergy
+import WeilDefect.Morphology.NeutralSelectedBackground
 
 import WeilDefect.Morphology.Noncompact
 
