@@ -1,5 +1,14 @@
 # Lean Formalization Track
 
+## RPB-108 — actual-zeta logarithmic analysis construction (written)
+
+Continues from `a5fecc6c41bb6ce6ce9eb5e4a00f87eda886f986`.
+See the [construction note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md).
+
+A written construction uses actual-zeta upper zero counting and a Fourier strip/submean estimate to bound multiplicity-normalized zero analysis on the canonical logarithmic form Hilbert space. Smooth-core density extends the actual explicit-formula diagonal and polarization to that same domain. The logarithmic Garding estimate, compact physical embedding and critical-line analysis injectivity give a qualitative closed-range reconstruction of physical vectors from this specified coefficient closure. No H1, spectral L2, RH positivity or assumed sampling lower bound is used.
+
+This is a new written model construction, NOT LEAN-CERTIFIED and not yet an attachment to the current WD-T38 instance. Exact equality with the retained coefficient metric/Green weights and effective-positive/background realization remains OPEN. Selected Q equals full Q plus the unselected negative-analysis square; they are not conflated. Actual enlarged central cancellation remains OPEN; current-carrier spectral L2 remains unproved and unassumed. Existing inner-collar/boundary removal is ready to consume central cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
 ## RPB-108 — native adjoint-range condition pinned
 
 Continues from `cbd4e49f02c1cbf8394fe1cc9e090e93149a5fde`.
