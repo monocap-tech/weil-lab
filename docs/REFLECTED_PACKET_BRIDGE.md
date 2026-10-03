@@ -9,6 +9,32 @@
 
 ## Current standing
 
+### RPB-108: actual bounded divisor windows and count custody (2026-10-03)
+
+Every bounded absolute-height window of actual open-strip zeta points is
+proved finite using actual zeta discreteness and a compact enclosing ball.
+The full multiplicity-copy truncation is equivalent to the dependent sum
+of the actual finite multiplicity fibers, so it is finite and its cardinal
+equals the sum of the actual analytic multiplicities in the point window.
+Integer height windows cover the point carrier, proving point and divisor
+countability. The ordinate-height dictionary, pair invariance and monotone
+truncations are certified.
+
+These are actual divisor count witnesses, without a packet shell-count
+premise. They provide no quantitative growth bound in height and do not
+prove infinite-divisor sampling summability, boundedness, or the full Weil
+form identity on the canonical logarithmic domain. Those remain the next
+transport obligations.
+
+Current WD-T38 coefficient identification, physical source-null attachment
+and enlarged central cancellation remain open. Background completion remains
+retained/written; full spectral L2 is unproved and unassumed. Consume the
+existing central-to-regular-defect/boundary-removal theorem immediately once
+actual central cancellation is available. Threshold work is closed; F-4 pending.
+
+See [actual divisor windows](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ZETA_DIVISOR_WINDOWS_20261003.md).
+
+
 ### RPB-108: actual weighted sampling and multiplicity-copy energy (2026-10-03)
 
 Actual sqrt(m)-weighted negative sources now realize concrete compact-window
