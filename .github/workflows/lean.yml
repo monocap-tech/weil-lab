@@ -63,6 +63,7 @@ jobs:
           #print axioms WeilDefect.neutralLogPositivePairSource_conjugate
           #print axioms WeilDefect.neutralLogNegativePairSource_conjugate
           #print axioms WeilDefect.neutralLogSelectedPairOperator_mixed
+          #print axioms WeilDefect.neutralLogSelectedPairOperator_diagonal
           #print axioms WeilDefect.neutralLogSelectedPairOperator_conjugate
           LEAN
           lake env lean /tmp/rpb108-selected-audit.lean | tee /tmp/rpb108-selected-axioms.txt

@@ -96,7 +96,7 @@ theorem neutralLogPositivePairSource_inner (a : ℝ) (z : ℂ)
           neutralWindowEvaluation a z (neutralLogPhysical f.val)) := by
   simp only [neutralLogPositivePairSource, inner_smul_left, inner_add_left,
     neutralLogExponentialSource_inner, starRingEnd_apply, Complex.conj_ofReal,
-    map_inv₀, conj_conj]
+    map_inv₀, star_star]
 
 theorem neutralLogNegativePairSource_inner (a : ℝ) (z : ℂ)
     (f : NeutralLogHilbertCarrier a) :
@@ -106,17 +106,16 @@ theorem neutralLogNegativePairSource_inner (a : ℝ) (z : ℂ)
           neutralWindowEvaluation a z (neutralLogPhysical f.val)) := by
   simp only [neutralLogNegativePairSource, inner_smul_left, inner_sub_left,
     neutralLogExponentialSource_inner, starRingEnd_apply, Complex.conj_ofReal,
-    map_inv₀, conj_conj]
+    map_inv₀, star_star]
 
 theorem neutralLogPositivePairSource_conjugate (a : ℝ) (z : ℂ) :
     neutralLogPositivePairSource a (conj z) = neutralLogPositivePairSource a z := by
-  simp only [neutralLogPositivePairSource, conj_conj]
+  simp only [neutralLogPositivePairSource, starRingEnd_apply, star_star]
   rw [add_comm]
 
 theorem neutralLogNegativePairSource_conjugate (a : ℝ) (z : ℂ) :
     neutralLogNegativePairSource a (conj z) = -neutralLogNegativePairSource a z := by
-  simp only [neutralLogNegativePairSource, conj_conj]
-  rw [← smul_neg, neg_sub]
+  simp only [neutralLogNegativePairSource, starRingEnd_apply, star_star, smul_sub, neg_sub]
 
 /-- Actual selected negative pair energy, constructed from the compact columns. -/
 def neutralLogSelectedPairOperator (a : ℝ) (z : ℂ) :
@@ -130,6 +129,14 @@ theorem neutralLogSelectedPairOperator_mixed (a : ℝ) (z : ℂ)
         inner ℂ (neutralLogNegativePairSource a z) g := by
   rw [neutralLogSelectedPairOperator, inner_right_rankOne_apply,
     ← inner_conj_symm f (neutralLogNegativePairSource a z)]
+
+
+/-- Actual real quadratic energy of the selected negative pair. -/
+theorem neutralLogSelectedPairOperator_diagonal (a : ℝ) (z : ℂ)
+    (f : NeutralLogHilbertCarrier a) :
+    inner ℂ f (neutralLogSelectedPairOperator a z f) =
+      ((‖inner ℂ (neutralLogNegativePairSource a z) f‖ ^ 2 : ℝ) : ℂ) := by
+  simp only [neutralLogSelectedPairOperator_mixed, Complex.conj_mul']
 
 /-- The convention swap leaves the concrete selected pair operator unchanged. -/
 theorem neutralLogSelectedPairOperator_conjugate (a : ℝ) (z : ℂ) :
