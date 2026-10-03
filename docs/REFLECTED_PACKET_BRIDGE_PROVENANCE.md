@@ -1122,3 +1122,14 @@ See the [dictionary and completion note](../notes/REFLECTED_PACKET_BRIDGE_108_NA
 Direct quotient/pair algebra pins sqrt(multiplicity), the conjugate-ordinate linear analysis convention, and the fixed negative-coordinate sign change. RPB-24's Green factor acts on the physical function, not as an extra q_gamma coefficient weight. In its retained effective background model, completing the Green core in the actual background form norm constructs an onto isometry to the reduced coefficient space. The SAME reduced Cu therefore has a unique physical logarithmic preimage; the signed C law and unit gain give endpoint full mixed nullity on that same domain without native H1 or spectral L2.
 
 This is a written model deduction, NOT LEAN-CERTIFIED. RPB-24's retained strict background positivity/realization is used, not newly proved for the generic WD-T38 fields. Identification with the current physical carrier and fixed enlarged extension remains OPEN; endpoint nullity does not establish enlarged central cancellation. Current-carrier spectral L2 remains unproved and unassumed. The certified inner-collar/boundary-removal assembly consumes actual enlarged central cancellation immediately when available. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+## 2026-10-03 — RPB-108 complete concrete logarithmic Hilbert carrier
+
+Continues from `6645b05195b6232b99d5796a7adddb5b1c3b71e5`.
+See the [carrier construction note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_HILBERT_CARRIER_20261003.md).
+
+The concrete supported logarithmic form carrier is constructed as the closed kernel of an actual bounded map on weighted Fourier L2. Physical reconstruction uses inverse Fourier transformation after the inverse square-root logarithmic weight. Lean proves completeness, exact correspondence with the existing canonical supported finite-energy domain, and equality of the carrier norm squared with genuine logarithmic Fourier energy. No source-identity or spectral-product premise is introduced.
+
+Whole-root validation: 9,023 jobs; six standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the actual complete DOMAIN and its norm. Identification of the current WD-T38 physical vector/source synthesis and attachment of its quadratic/null law remain OPEN. The previous actual-zeta sampling and effective-background endpoint construction remain written/retained, not Lean-certified by this module. Enlarged central cancellation remains OPEN. Current-carrier spectral L2 is unproved and unassumed; the existing inner-collar theorem remains ready to derive regularity and consume boundary removal from actual central cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
