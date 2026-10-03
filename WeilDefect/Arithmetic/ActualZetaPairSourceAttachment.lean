@@ -52,7 +52,7 @@ theorem neutralActualZetaZeroPair_involutive :
   intro ρ
   apply Subtype.ext
   change 1 - conj (1 - conj ρ.val) = ρ.val
-  simp only [map_sub, map_one, star_star]
+  simp only [map_sub, map_one, starRingEnd_apply, star_star]
   ring
 
 /-- The actual point partner has precisely the required conjugate ordinate. -/
