@@ -31,7 +31,7 @@ theorem neutralActualZetaEntire_eq_completed {z : ℂ} (h0 : z ≠ 0) (h1 : z �
   rw [completedRiemannZeta_eq]
   unfold neutralActualZetaEntire
   field_simp
-  <;> ring
+  ring
 
 /-- Pole clearing preserves every actual open-strip analytic multiplicity. -/
 theorem neutralActualZetaEntire_order (ρ : NeutralActualZetaZeroPoint) :
@@ -107,8 +107,9 @@ theorem neutralActualZetaDivisorHeightWindow_card_le_mass (T : ℝ) :
     simpa only [mem_closedBall, dist_zero_right] using hb
   have hD (ρ : neutralActualZetaPointHeightWindow T) :
       D ρ.val.val = (neutralActualZetaMultiplicity ρ.val : ℤ) := by
-    exact neutralActualZetaEntire_divisor (r := |T| + 2) ρ.val
-      (by simpa only [abs_of_pos (by positivity : 0 < |T| + 2)] using hpoint ρ)
+    simpa only [abs_of_pos (by positivity : 0 < |T| + 2)] using
+      neutralActualZetaEntire_divisor (r := |T| + 2) ρ.val
+        (by simpa only [abs_of_pos (by positivity : 0 < |T| + 2)] using hpoint ρ)
   rw [neutralActualZetaDivisorHeightWindow_card, Nat.cast_sum]
   unfold neutralActualZetaJensenMass
   rw [abs_of_pos (by positivity : 0 < |T| + 2)]
