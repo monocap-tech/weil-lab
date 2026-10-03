@@ -17,7 +17,7 @@ private theorem native_square_summable_smul
     (u : lp (fun _ : ι => ℂ) 2) :
     Summable (fun i => u i • v i) := by
   have hu : Summable (fun i => ‖u i‖ ^ 2) := by
-    simpa only [Real.rpow_two] using
+    simpa only [ENNReal.toReal_ofNat, Real.rpow_two] using
       (lp.hasSum_norm (p := (2 : ℝ≥0∞)) (by norm_num) u).summable
   have hn : Summable (fun i => ‖u i • v i‖) := by
     apply Summable.of_nonneg_of_le (fun i => norm_nonneg _) (fun i => ?_) (hu.add hv)
