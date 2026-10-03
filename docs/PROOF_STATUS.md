@@ -1,5 +1,24 @@
 # Proof Status
 
+## RPB-108 — concrete native Dirichlet coordinate summability
+
+Continues from `7e1cd8537a3c16d3c217e66df1ed502441fb50be`.
+See the [native coordinate summability note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_DIRICHLET_COORDINATE_SUMMABILITY_20261003.md).
+
+The retained WD-T28 shell-energy theorem is attached to the full native
+Green columns' actual physical L2 coordinates. Their combined energy,
+derivative norms squared, and Green norms squared are summable under the
+existing explicit shell-data and shell-count hypotheses. No representation
+hypothesis or stronger current-mode domain assumption is introduced.
+
+This certifies a concrete square-summability input to native completion;
+it does not instantiate the current WD-T38 carrier or construct the
+completion itself. Current source quadratic/null attachment, same-domain
+mixed/normalized attachment, and enlarged central cancellation remain open.
+Current-mode spectral L2 is unproved and unassumed. The certified locally
+integrable residual route is ready once central cancellation is attached.
+Threshold bookkeeping is closed; F-4 remains pending.
+
 ## RPB-108 — concrete native Dirichlet L2 coordinates
 
 Continues from `e22564aa10df22ff1dcb508bd319a0737182f49a`.

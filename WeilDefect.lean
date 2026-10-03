@@ -111,3 +111,5 @@ import WeilDefect.Morphology.NeutralLogDirichletSourceAttachment
 import WeilDefect.Morphology.NeutralLogSourceDomainRealization
 import WeilDefect.DirichletGreenMixed
 import WeilDefect.Morphology.NeutralNativeDirichletCoordinates
+
+import WeilDefect.Morphology.NeutralNativeDirichletSummability
