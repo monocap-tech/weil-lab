@@ -5,7 +5,7 @@ namespace WeilDefect
 
 noncomputable section
 
-open ContinuousLinearMap
+open ContinuousLinearMap InnerProductSpace
 open scoped ComplexConjugate BigOperators
 
 /-- The actual sqrt(m) source weight uses the first-antilinear convention. -/
@@ -14,10 +14,10 @@ theorem neutralActualZetaWeightedNegativeSource_inner_factor
     inner ℂ (neutralActualZetaWeightedNegativeSource a ρ) f =
       (Real.sqrt (neutralActualZetaMultiplicity ρ : ℝ) : ℂ) *
         inner ℂ (neutralLogNegativePairSource a (neutralActualZetaOrdinate ρ)) f := by
-  change inner ℂ
-    ((Real.sqrt (neutralActualZetaMultiplicity ρ : ℝ) : ℂ) •
-      (neutralLogNegativePairSource a (neutralActualZetaOrdinate ρ)).val) f.val = _
-  rw [_root_.inner_smul_left (𝕜 := ℂ) (E := RealComplexL2), Complex.conj_ofReal]
+  simpa only [neutralActualZetaWeightedNegativeSource, Complex.conj_ofReal] using
+    (_root_.inner_smul_left (𝕜 := ℂ) (E := NeutralLogHilbertCarrier a)
+      (neutralLogNegativePairSource a (neutralActualZetaOrdinate ρ)) f
+      (Real.sqrt (neutralActualZetaMultiplicity ρ : ℝ) : ℂ))
 
 /-- Concrete window sampling at the two actual partner ordinates. -/
 theorem neutralActualZetaWeightedNegativeSource_sampling
@@ -66,7 +66,7 @@ theorem neutralActualZetaWeightedSelectedOperator_rankOne
   intro f
   simp only [neutralActualZetaWeightedSelectedOperator,
     neutralActualZetaWeightedNegativeSource, neutralLogSelectedPairOperator,
-    ContinuousLinearMap.smul_apply, rankOne_apply, _root_.inner_smul_left,
+    _root_.smul_apply, rankOne_apply, _root_.inner_smul_left,
     Complex.conj_ofReal, smul_smul]
   rw [mul_right_comm (Real.sqrt (neutralActualZetaMultiplicity ρ : ℝ) : ℂ), hs]
 
@@ -94,8 +94,9 @@ theorem neutralActualZetaWeightedSelectedOperator_copies
       neutralActualZetaWeightedSelectedOperator a ρ := by
   classical
   simp only [neutralLogFiniteSelectedOperator, Finset.sum_const,
-    Finset.card_univ, Fintype.card_fin, neutralActualZetaWeightedSelectedOperator,
-    Nat.cast_smul_eq_nsmul]
+    Finset.card_univ, Fintype.card_fin, neutralActualZetaWeightedSelectedOperator]
+  exact (Nat.cast_smul_eq_nsmul (R := ℂ) (neutralActualZetaMultiplicity ρ)
+    (neutralLogSelectedPairOperator a (neutralActualZetaOrdinate ρ))).symm
 
 /-- Repeated actual divisor copies and weighted analysis give the same mixed
 energy on the same logarithmic carrier. -/
