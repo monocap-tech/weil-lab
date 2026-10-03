@@ -1515,3 +1515,23 @@ spectral L2 is unproved and unassumed. Threshold work stays closed;
 F-4 remains pending.
 
 See [actual zeta pair-source attachment](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ZETA_PAIR_SOURCE_ATTACHMENT_20261003.md).
+
+### RPB-108: actual zeta multiplicity and divisor coordinates (2026-10-03)
+
+Actual open-strip zeta zeros now have a proved finite, positive analytic
+multiplicity. Analyticity on the connected punctured plane and actual
+nonvanishing at 2 exclude infinite order. The same multiplicity gives an
+actual local analytic factorization and a divisor-coordinate fiber with
+exactly that many copies, each satisfying the actual zeta source equation.
+No simplicity, RH, shell enumeration, or zero-existence premise is added.
+
+Multiplicity transport under the actual pair, the divisor sampling/form
+identity, and identification with the retained WD-T38 coefficients remain
+open. Current WD-T38 physical source-null attachment and enlarged central
+cancellation are not proved. Background completion remains retained/written;
+full Weil spectral L2 is unproved and unassumed. Once actual central
+cancellation is available, the existing central-to-regular-defect and
+boundary-removal theorem is to be consumed immediately. Threshold work is
+closed; F-4 is pending.
+
+See [actual zeta multiplicity](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ZETA_MULTIPLICITY_20261003.md).

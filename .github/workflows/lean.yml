@@ -47,23 +47,25 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Arithmetic/ActualZetaMultiplicity.lean
+          git hash-object WeilDefect/Arithmetic/ActualZetaMultiplicitySymmetry.lean
           lean --version
           lake build WeilDefect
       - name: Inspect actual Green energy axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaMultiplicity
-          #print axioms WeilDefect.neutralActualZetaZeroPoint_ne_one
-          #print axioms WeilDefect.neutralActualZetaZeroPoint_analytic
-          #print axioms WeilDefect.neutralActualZetaOrder_ne_top
-          #print axioms WeilDefect.neutralActualZetaMultiplicity_order
-          #print axioms WeilDefect.neutralActualZetaMultiplicity_pos
-          #print axioms WeilDefect.neutralActualZetaMultiplicity_factor
-          #print axioms WeilDefect.neutralActualZetaDivisorOrdinate_zeta
-          #print axioms WeilDefect.neutralActualZetaMultiplicity_copies
-          #print axioms WeilDefect.neutralActualZetaMultiplicity_card
+          import WeilDefect.Arithmetic.ActualZetaMultiplicitySymmetry
+          #print axioms WeilDefect.neutralActualZetaIteratedDeriv_conjugate
+          #print axioms WeilDefect.neutralActualZetaOrder_conjugate
+          #print axioms WeilDefect.neutralActualZetaOrder_completed
+          #print axioms WeilDefect.neutralActualZetaOrder_reflect
+          #print axioms WeilDefect.neutralActualZetaMultiplicity_conjugate
+          #print axioms WeilDefect.neutralActualZetaMultiplicity_reflect
+          #print axioms WeilDefect.neutralActualZetaMultiplicity_pair
+          #print axioms WeilDefect.neutralActualZetaDivisorPair_involutive
+          #print axioms WeilDefect.neutralActualZetaDivisorOrdinate_pair
+          #print axioms WeilDefect.neutralActualZetaWeightedNegativeSource_pair
+          #print axioms WeilDefect.neutralActualZetaWeightedSelectedOperator_pair
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
