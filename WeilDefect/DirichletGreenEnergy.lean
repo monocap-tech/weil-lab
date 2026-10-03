@@ -90,8 +90,8 @@ theorem problemOneGreenPairing_eq_dirichletEnergy (a : ℝ) (z : ℂ)
   unfold problemOneGreenPairing
   simp only [← starRingEnd_apply]
   rw [dirichletProblemOneColumn_green_mixed a z z ha hz]
-  simp only [Complex.conj_mul', Complex.ofReal_pow, intervalIntegral.integral_ofReal,
-    problemOneDirichletEnergy, Complex.ofReal_add, Complex.ofReal_mul,
+  simp only [Complex.conj_mul', ← Complex.ofReal_pow, intervalIntegral.integral_ofReal]
+  simp only [problemOneDirichletEnergy, Complex.ofReal_add, Complex.ofReal_mul,
     Complex.ofReal_div, Complex.ofReal_one, Complex.ofReal_ofNat]
 
 theorem problemOneDirichletEnergy_nonnegative (a : ℝ) (z : ℂ) (ha : 0 ≤ a) :
