@@ -74,9 +74,9 @@ jobs:
             exit 1
           fi
       - name: Save validation dependency cache
-        if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
+        if: always()
         uses: actions/cache/save@v4
         continue-on-error: true
         with:
           path: .lake
-          key: rpb108-lean434-mathlib5ed296-jensen-root-v1
+          key: rpb108-theta-growth-ab5d32-compiled-v1

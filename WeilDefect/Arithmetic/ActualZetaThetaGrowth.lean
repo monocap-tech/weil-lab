@@ -26,7 +26,9 @@ theorem neutralActualZetaThetaRemainder_exponential_bound :
   obtain ⟨p, hp, hdecay⟩ := HurwitzZeta.isBigO_atTop_evenKernel_sub (0 : UnitAddCircle)
   have hd : neutralActualZetaThetaRemainder =O[atTop]
       (fun t : ℝ => Real.exp (-p * t)) := by
-    simpa only [neutralActualZetaThetaRemainder, ite_true] using hdecay
+    change (fun t : ℝ => HurwitzZeta.evenKernel 0 t - 1) =O[atTop]
+      (fun t : ℝ => Real.exp (-p * t))
+    simpa only [ite_true] using hdecay
   obtain ⟨c, hc, hcb⟩ := hd.exists_pos
   have he : ∀ᶠ t : ℝ in atTop,
       |neutralActualZetaThetaRemainder t| ≤ c * Real.exp (-p * t) := by
@@ -66,7 +68,7 @@ theorem neutralActualZetaThetaRemainder_polynomial_bound
   have ht0 : 0 ≤ t := zero_le_one.trans ht
   have hq : 0 < p / 2 := by positivity
   have hf : (0 : ℝ) < n.factorial := by positivity
-  have hx := Real.pow_div_factorial_le_exp
+  have hx := Real.pow_div_factorial_le_exp ((p / 2) * t)
     (show 0 ≤ (p / 2) * t by positivity) n
   have hpow : t ^ n ≤ ((n.factorial : ℝ) / (p / 2) ^ n) *
       Real.exp ((p / 2) * t) := by
@@ -110,7 +112,7 @@ theorem neutralActualZetaThetaRemainder_moments :
       (fun t : ℝ => t ^ n * |neutralActualZetaThetaRemainder t|) (Ioi 1) :=
     (by fun_prop : ContinuousOn (fun t : ℝ => t ^ n) (Ioi 1)).mul
       (neutralActualZetaThetaRemainder_continuousOn.mono
-        (fun t ht => zero_lt_one.trans ht)).abs
+        (show Ioi (1 : ℝ) ⊆ Ioi 0 from fun t ht => zero_lt_one.trans ht)).abs
   have hi : MeasureTheory.IntegrableOn
       (fun t : ℝ => t ^ n * |neutralActualZetaThetaRemainder t|) (Ioi 1) := by
     apply hm.mono' (hc.aestronglyMeasurable measurableSet_Ioi)
