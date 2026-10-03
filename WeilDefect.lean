@@ -119,3 +119,5 @@ import WeilDefect.Morphology.NeutralNativeDirichletSynthesis
 import WeilDefect.Morphology.NeutralNativeWeakDerivative
 
 import WeilDefect.Morphology.NeutralNativeSupport
+
+import WeilDefect.Morphology.NeutralNativeFourierDerivative

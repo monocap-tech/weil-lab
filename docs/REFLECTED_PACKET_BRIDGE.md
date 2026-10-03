@@ -9,6 +9,27 @@
 
 ## Current standing
 
+## RPB-108 — actual native Fourier derivative bridge
+
+Continues from `36fa17302379e6f515ef78239bf8404df487f446`.
+See the [native Fourier derivative note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FOURIER_DERIVATIVE_20261003.md).
+
+The native synthesis's proved L2 weak derivative is attached to its actual
+tempered distribution. Fourier transformation identifies the linear
+frequency multiplier of the actual Green Fourier vector with the actual
+L2 Fourier transform of its constructed derivative synthesis, as tempered
+distributions. Schwartz conjugation fixes the Hermitian/bilinear convention;
+the pinned L2/Fourier compatibility theorem is consumed directly.
+
+This is an actual equality, with no assumed representation. Pointwise
+frequency-product L2 and finite logarithmic energy still require the
+representative-identification step. Native background completion and
+current WD-T38 source quadratic/null, mixed/normalized, and enlarged central
+attachment remain open. Current spectral L2 is not derived from WD-T38
+and is not assumed. The locally integrable residual route is ready for
+actual central cancellation. Thresholds are closed; F-4 is pending.
+
+
 ## RPB-108 — actual native synthesis support
 
 Continues from `f9916c79029abc714d9ab269e7eca2c27908f5e6`.
