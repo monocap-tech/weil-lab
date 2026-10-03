@@ -25,9 +25,8 @@ theorem neutralActualZetaOrdinate_im (ρ : NeutralActualZetaZeroPoint) :
 /-- The actual source argument reconstructs the same zeta zero exactly. -/
 theorem neutralActualZetaOrdinate_source (ρ : NeutralActualZetaZeroPoint) :
     (1 / 2 : ℂ) + Complex.I * neutralActualZetaOrdinate ρ = ρ.val := by
-  unfold neutralActualZetaOrdinate
-  simp only [neg_mul, mul_neg, ← mul_assoc, Complex.I_sq]
-  ring
+  apply Complex.ext <;>
+    simp [neutralActualZetaOrdinate, Complex.mul_re, Complex.mul_im] <;> ring
 
 theorem neutralActualZetaOrdinate_zeta (ρ : NeutralActualZetaZeroPoint) :
     riemannZeta ((1 / 2 : ℂ) + Complex.I * neutralActualZetaOrdinate ρ) = 0 := by
