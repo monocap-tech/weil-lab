@@ -27,7 +27,7 @@ theorem neutralActualZetaOrder_ne_top (ρ : NeutralActualZetaZeroPoint) :
     rw [analyticOrderAt_eq_zero.mpr
       (.inr (riemannZeta_ne_zero_of_one_le_re (by norm_num)))]
     exact ENat.zero_ne_top
-  exact analyticOrderAt_ne_top_of_isPreconnected
+  exact AnalyticOnNhd.analyticOrderAt_ne_top_of_isPreconnected
     analyticOn_riemannZeta
     (isConnected_compl_singleton_of_one_lt_rank (by simp) (1 : ℂ)).isPreconnected
     (by norm_num : (2 : ℂ) ∈ ({1}ᶜ : Set ℂ))
