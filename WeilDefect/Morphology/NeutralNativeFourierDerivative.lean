@@ -27,6 +27,10 @@ theorem neutralNative_derivative_conjugateTest (u : SchwartzMap ℝ ℂ) :
       conjugateSchwartz (SchwartzMap.derivCLM ℂ ℂ u) := by
   ext x
   simp only [SchwartzMap.derivCLM_apply, conjugateSchwartz_apply]
+  have hc : (conjugateSchwartz u : ℝ → ℂ) = (fun y => star (u y)) := by
+    funext y
+    simp [conjugateSchwartz_apply, starRingEnd_apply]
+  rw [hc]
   simpa only [starRingEnd_apply] using (u.hasDerivAt x).star.deriv
 
 /-- The constructed native L2 weak derivative is the derivative of its
@@ -47,7 +51,7 @@ theorem neutralNativeGreenSynthesis_temperedDerivative
     (conjugateSchwartz u)
   rw [neutralNative_derivative_conjugateTest,
     neutralNative_conjugateTest_inner, neutralNative_conjugateTest_inner] at h
-  simp only [SchwartzMap.derivCLM_apply] at h
+  simp only [SchwartzMap.derivCLM_apply] at h ⊢
   linear_combination -h
 
 private theorem nativeLineDerivative_one (f : TemperedDistribution ℝ ℂ) :
@@ -56,9 +60,6 @@ private theorem nativeLineDerivative_one (f : TemperedDistribution ℝ ℂ) :
   rw [TemperedDistribution.lineDerivOp_apply_apply,
     TemperedDistribution.derivCLM_apply_apply]
   congr 1
-  ext x
-  simp only [SchwartzMap.neg_apply, SchwartzMap.lineDerivOp_apply_eq_fderiv,
-    SchwartzMap.derivCLM_apply, fderiv_apply_one_eq_deriv]
 
 /-- Actual native Fourier derivative bridge. The frequency multiplier of
 the Green synthesis is represented, as a distribution, by the actual L2
