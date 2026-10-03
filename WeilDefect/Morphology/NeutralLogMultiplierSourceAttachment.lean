@@ -119,7 +119,7 @@ theorem neutralLogMultiplierOperator_mixed (f g : NeutralLogHilbertCarrier a) :
         (rightLimitCompactWeilSymbolMathlib a ξ : ℂ) *
         (𝓕 (neutralLogPhysical g.val) : RealComplexL2) ξ := by
   change inner ℂ f
-    (((neutralLogHilbertSubmodule a).toSubmodule.subtypeL)†
+    ((((neutralLogHilbertSubmodule a).toSubmodule.subtypeL)†)
       (neutralLogSymbolMultiplication a ha lowerC upperC shift h0 hl hu g.val)) = _
   rw [adjoint_inner_right]
   change inner ℂ f.val
@@ -139,9 +139,10 @@ theorem neutralLogMultiplierOperator_mixed (f g : NeutralLogHilbertCarrier a) :
     with ξ hmix hmul
   change conj (f.val ξ) *
     (neutralLogSymbolMultiplication a ha lowerC upperC shift h0 hl hu g.val ξ) = _
-  change (boundedLogMultiply (neutralLogSymbolRatio a)
-    (neutralLogSymbolRatio_measurable a ha) (|upperC|+|shift|)
-    (neutralLogSymbolRatio_bound a lowerC upperC shift h0 hl hu) g.val) ξ = _ at hmul
+  change conj (f.val ξ) *
+    ((boundedLogMultiply (neutralLogSymbolRatio a)
+      (neutralLogSymbolRatio_measurable a ha) (|upperC|+|shift|)
+      (neutralLogSymbolRatio_bound a lowerC upperC shift h0 hl hu) g.val) ξ) = _
   rw [hmul]
   calc
     _ = neutralLogSymbolRatio a ξ * (conj (f.val ξ) * g.val ξ) := by ring
@@ -156,8 +157,51 @@ theorem neutralLogMultiplierOperator_mixed (f g : NeutralLogHilbertCarrier a) :
           (one_le_logarithmicFourierWeight ξ))
       unfold neutralLogSymbolRatio
       rw [Complex.ofReal_div]
-      field_simp
+      field_simp [hw]
       <;> ring
+
+/-- Genuine convergence of the physical signed multiplier on this
+complete form carrier follows from the retained comparison. -/
+theorem neutralLogPhysical_absoluteSymbolEnergy (k : RealComplexL2) :
+    Integrable (fun ξ => |rightLimitCompactWeilSymbolMathlib a ξ| *
+      ‖(𝓕 (neutralLogPhysical k) : RealComplexL2) ξ‖ ^ 2) volume := by
+  apply ((neutralLogPhysical_energy k).const_mul (|upperC|+|shift|)).mono'
+  · exact (Complex.continuous_re.comp ha.hasTemperateGrowth.1.continuous).abs.aestronglyMeasurable.mul
+      ((Lp.aestronglyMeasurable (𝓕 (neutralLogPhysical k) : RealComplexL2)).norm.pow 2)
+  · filter_upwards [] with ξ
+    rw [Real.norm_eq_abs, abs_of_nonneg
+      (mul_nonneg (abs_nonneg _) (sq_nonneg _))]
+    simpa only [mul_assoc] using mul_le_mul_of_nonneg_right
+      (rightLimitWeil_absoluteSymbolBound lowerC upperC shift h0 hl hu ξ)
+      (sq_nonneg ‖(𝓕 (neutralLogPhysical k) : RealComplexL2) ξ‖)
+
+theorem neutralLogMultiplier_mixed_integrable (f g : NeutralLogHilbertCarrier a) :
+    Integrable (fun ξ => conj ((𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ) *
+      (rightLimitCompactWeilSymbolMathlib a ξ : ℂ) *
+      (𝓕 (neutralLogPhysical g.val) : RealComplexL2) ξ) volume := by
+  apply integrable_mixedMultiplier
+  · exact (Complex.continuous_re.comp ha.hasTemperateGrowth.1.continuous).aestronglyMeasurable
+  · exact Lp.aestronglyMeasurable _
+  · exact Lp.aestronglyMeasurable _
+  · exact neutralLogPhysical_absoluteSymbolEnergy a ha lowerC upperC shift h0 hl hu f.val
+  · exact neutralLogPhysical_absoluteSymbolEnergy a ha lowerC upperC shift h0 hl hu g.val
+
+theorem neutralLogMultiplierOperator_diagonal (f : NeutralLogHilbertCarrier a) :
+    inner ℂ f (neutralLogMultiplierOperator a ha lowerC upperC shift h0 hl hu f) =
+      ((∫ ξ, rightLimitCompactWeilSymbolMathlib a ξ *
+        ‖(𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ‖ ^ 2 : ℝ) : ℂ) := by
+  rw [neutralLogMultiplierOperator_mixed]
+  calc
+    _ = ∫ ξ, ((rightLimitCompactWeilSymbolMathlib a ξ *
+        ‖(𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ‖ ^ 2 : ℝ) : ℂ) := by
+      apply integral_congr_ae
+      filter_upwards [] with ξ
+      calc
+        _ = (rightLimitCompactWeilSymbolMathlib a ξ : ℂ) *
+          (conj ((𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ) *
+            (𝓕 (neutralLogPhysical f.val) : RealComplexL2) ξ) := by ring
+        _ = _ := by simp only [Complex.conj_mul', Complex.ofReal_mul, Complex.ofReal_pow]
+    _ = _ := integral_complex_ofReal
 
 /-- Actual multiplier-plus-pole realization in the form Hilbert norm. -/
 def neutralLogWeilFormOperator :

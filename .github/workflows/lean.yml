@@ -57,6 +57,9 @@ jobs:
           #print axioms WeilDefect.neutralLogSymbolRatio_bound
           #print axioms WeilDefect.neutralLogSymbolRatio_measurable
           #print axioms WeilDefect.neutralLogMultiplierOperator_mixed
+          #print axioms WeilDefect.neutralLogPhysical_absoluteSymbolEnergy
+          #print axioms WeilDefect.neutralLogMultiplier_mixed_integrable
+          #print axioms WeilDefect.neutralLogMultiplierOperator_diagonal
           #print axioms WeilDefect.neutralLogWeilFormOperator_mixed
           LEAN
           lake env lean /tmp/rpb108-multiplier-audit.lean | tee /tmp/rpb108-multiplier-axioms.txt
