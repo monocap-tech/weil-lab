@@ -9,6 +9,174 @@
 
 ## Current standing
 
+## RPB-108 — actual native Fourier representative identified
+
+Continues from `5647cf49c7b6abe2edd58fa0daf34444d01ec7dd`.
+See the [native Fourier representative note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FOURIER_REPRESENTATIVE_20261003.md).
+
+The actual first-derivative frequency product of the native Green synthesis
+is locally integrable, and the certified distribution identity gives its
+actual Schwartz pairings. Compact-smooth test uniqueness identifies that
+product almost everywhere with the L2 Fourier transform of the constructed
+derivative synthesis. Its native `MemLp 2` witness is therefore derived,
+without an assumed operator-domain or representation premise.
+
+This product is the linear derivative frequency multiplier, not the full
+Weil spectral product of the current WD-T38 carrier. Finite logarithmic
+energy and canonical form-domain attachment are next. Native background
+completion remains retained/written; current source quadratic/null,
+mixed/normalized, and enlarged central attachment remain open. Current
+spectral L2 is unproved from WD-T38 and unassumed. The certified locally
+integrable residual route is ready for central cancellation.
+Thresholds are closed; F-4 is pending.
+
+
+## RPB-108 — actual native Fourier derivative bridge
+
+Continues from `36fa17302379e6f515ef78239bf8404df487f446`.
+See the [native Fourier derivative note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FOURIER_DERIVATIVE_20261003.md).
+
+The native synthesis's proved L2 weak derivative is attached to its actual
+tempered distribution. Fourier transformation identifies the linear
+frequency multiplier of the actual Green Fourier vector with the actual
+L2 Fourier transform of its constructed derivative synthesis, as tempered
+distributions. Schwartz conjugation fixes the Hermitian/bilinear convention;
+the pinned L2/Fourier compatibility theorem is consumed directly.
+
+This is an actual equality, with no assumed representation. Pointwise
+frequency-product L2 and finite logarithmic energy still require the
+representative-identification step. Native background completion and
+current WD-T38 source quadratic/null, mixed/normalized, and enlarged central
+attachment remain open. Current spectral L2 is not derived from WD-T38
+and is not assumed. The locally integrable residual route is ready for
+actual central cancellation. Thresholds are closed; F-4 is pending.
+
+
+## RPB-108 — actual native synthesis support
+
+Continues from `f9916c79029abc714d9ab269e7eca2c27908f5e6`.
+See the [native support note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_SYNTHESIS_SUPPORT_20261003.md).
+
+The actual compact Green and derivative columns and both convergent native
+L2 syntheses vanish almost everywhere outside the same closed window.
+Support of the series is proved through the existing bounded physical
+outside-restriction map, now public together with its vanishing/support
+equivalence. The existing logarithmic Hilbert carrier still uses that map.
+
+Together with the previous global weak derivative identity, the native
+synthesis now has actual compact support and an attached L2 weak derivative.
+Its Fourier derivative/logarithmic-domain attachment and native background
+completion remain open. The current WD-T38 mode is still unidentified with
+that native vector; source quadratic/null, mixed/normalized, and enlarged
+central attachments remain open. Current spectral L2 is not derived from
+WD-T38 and is not assumed. The certified locally integrable residual route
+is ready for central cancellation. Thresholds are closed; F-4 is pending.
+
+
+## RPB-108 — actual native weak derivative attachment
+
+Continues from `6a4d9dad1c4587af595294b891ddf692bf67fba8`.
+See the [native weak derivative note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_WEAK_DERIVATIVE_20261003.md).
+
+Attached the compact derivative column as the global weak derivative of
+the actual zero-extended full Green column, against every Schwartz test.
+The law passes through the already constructed L2 syntheses: the actual
+derivative synthesis is the weak derivative of the actual Green synthesis
+under the retained shell-data/count inputs. No test support restriction
+or spectral-domain hypothesis is needed.
+
+Native support/Fourier logarithmic-domain attachment and background
+completion remain separate obligations. The current WD-T38 mode remains
+unidentified with the native synthesis/completion; its source quadratic/null,
+same-domain mixed/normalized, and enlarged central attachments are open.
+Its spectral L2 membership is unproved from WD-T38 and unassumed.
+The certified locally integrable residual route is ready for actual central
+cancellation. Threshold bookkeeping is closed; F-4 remains pending.
+
+
+## RPB-108 — actual native Dirichlet synthesis
+
+Continues from `387ab390612a3209663f6c0b19f99b91f492e52f`.
+See the [actual native synthesis note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_DIRICHLET_SYNTHESIS_20261003.md).
+
+Constructed genuine physical L2 sums of the full Green columns and compact
+derivative columns for native shell coefficients in `lp 2`. Under the
+retained positive-window shell-data/count inputs, both series converge
+absolutely in L2, have certified HasSum witnesses, and commute with every
+fixed physical L2 mixed pairing. No assumed representation is used.
+
+The derivative relation between the two synthesized vectors and their
+supported logarithmic-domain attachment remain separate obligations.
+Native background completion remains retained/written. The current WD-T38
+mode has not been identified with this native synthesis or completion;
+its source quadratic/null and enlarged central cancellation remain open.
+Current spectral L2 is unproved and unassumed. The existing locally
+integrable residual theorem is ready for actual central cancellation.
+Threshold bookkeeping is closed; F-4 remains pending.
+
+
+## RPB-108 — concrete native Dirichlet coordinate summability
+
+Continues from `7e1cd8537a3c16d3c217e66df1ed502441fb50be`.
+See the [native coordinate summability note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_DIRICHLET_COORDINATE_SUMMABILITY_20261003.md).
+
+The retained WD-T28 shell-energy theorem is attached to the full native
+Green columns' actual physical L2 coordinates. Their combined energy,
+derivative norms squared, and Green norms squared are summable under the
+existing explicit shell-data and shell-count hypotheses. No representation
+hypothesis or stronger current-mode domain assumption is introduced.
+
+This certifies a concrete square-summability input to native completion;
+it does not instantiate the current WD-T38 carrier or construct the
+completion itself. Current source quadratic/null attachment, same-domain
+mixed/normalized attachment, and enlarged central cancellation remain open.
+Current-mode spectral L2 is unproved and unassumed. The certified locally
+integrable residual route is ready once central cancellation is attached.
+Threshold bookkeeping is closed; F-4 remains pending.
+
+
+## RPB-108 — concrete native Dirichlet L2 coordinates
+
+Continues from `e22564aa10df22ff1dcb508bd319a0737182f49a`.
+See the [native L2 coordinate note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_DIRICHLET_L2_COORDINATES_20261003.md).
+
+Proved actual compact derivative-column L2 membership, same-window mixed
+L2 pairings for derivative and Green columns, and the exact native source
+pairing in these coordinates. The already certified native diagonal energy
+is now the derivative L2 norm squared plus one quarter of the Green L2
+norm squared. This uses the existing C2, mixed Green, and diagonal bridges.
+
+Current WD-T38 carrier/source-null identification and enlarged central
+cancellation remain open. Its spectral L2 membership is neither derived
+from retained hypotheses nor assumed. The native background completion is
+still retained/written; the existing locally integrable residual theorem
+is ready for actual central cancellation. Threshold bookkeeping is closed;
+F-4 remains pending.
+
+
+## RPB-108 — actual mixed native Green source and reciprocity
+
+Continues from `ea23d3bffdf941f661cf52a4290866ebe2fcedef`.
+See the [actual mixed Green source note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_GREEN_MIXED_RECIPROCITY_20261003.md).
+
+The existing `DirichletEnergy.lean` already certifies the actual diagonal
+energy; it is reused. New integration by parts for distinct full Green
+columns proves the actual mixed source/Dirichlet identity and Hermitian
+source/Green reciprocity. The new mixed diagonal agrees with the existing
+energy, with no duplicate definition, assumed Green operator, or hrep.
+
+This certifies a native column-level mixed witness. Native Hilbert completion,
+Green square-root/background realization and current WD-T38 model
+identification remain retained/written or open. Actual current-mode logarithmic
+custody, source/null attachment, and enlarged central cancellation remain open.
+Actual Weil spectral L2 membership is unproved from WD-T38 and unassumed;
+column Dirichlet energy is not that membership. The certified locally
+integrable inner-collar/boundary route remains ready. Thresholds closed; F-4,
+WD-T40, and RH remain open.
+
+Validation: `41b1606db89ae51d8ce819b28985002988d64346`, [run 37136385069](https://github.com/monocap-tech/weil-lab/actions/runs/37136385069), job `111241663248`. Whole-root `lake build WeilDefect` passed (9,031 jobs). All three public theorem axiom audits reported only `[propext, Classical.choice, Quot.sound]`; unfinished/project-axiom gate passed. Research workflow and historical notes remain unchanged.
+
+
 ## RPB-108 — actual linear source-domain realization
 
 Continues from `f079d9aec01743905d3897bfb0283f6da05be14c`.
