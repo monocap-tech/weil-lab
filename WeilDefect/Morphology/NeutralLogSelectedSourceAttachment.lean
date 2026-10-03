@@ -94,9 +94,10 @@ theorem neutralLogPositivePairSource_inner (a : ℝ) (z : ℂ)
       ((Real.sqrt 2)⁻¹ : ℂ) *
         (neutralWindowEvaluation a (conj z) (neutralLogPhysical f.val) +
           neutralWindowEvaluation a z (neutralLogPhysical f.val)) := by
-  simp only [neutralLogPositivePairSource, _root_.inner_smul_left, _root_.inner_add_left,
-    neutralLogExponentialSource_inner, starRingEnd_apply, Complex.conj_ofReal,
-    map_inv₀, star_star]
+  rw [neutralLogPositivePairSource, _root_.inner_smul_left (𝕜 := ℂ),
+    _root_.inner_add_left (𝕜 := ℂ)]
+  simp only [neutralLogExponentialSource_inner, map_inv₀,
+    Complex.conj_ofReal, starRingEnd_apply, star_star]
 
 theorem neutralLogNegativePairSource_inner (a : ℝ) (z : ℂ)
     (f : NeutralLogHilbertCarrier a) :
@@ -104,9 +105,10 @@ theorem neutralLogNegativePairSource_inner (a : ℝ) (z : ℂ)
       ((Real.sqrt 2)⁻¹ : ℂ) *
         (neutralWindowEvaluation a (conj z) (neutralLogPhysical f.val) -
           neutralWindowEvaluation a z (neutralLogPhysical f.val)) := by
-  simp only [neutralLogNegativePairSource, _root_.inner_smul_left, _root_.inner_sub_left,
-    neutralLogExponentialSource_inner, starRingEnd_apply, Complex.conj_ofReal,
-    map_inv₀, star_star]
+  rw [neutralLogNegativePairSource, _root_.inner_smul_left (𝕜 := ℂ),
+    _root_.inner_sub_left (𝕜 := ℂ)]
+  simp only [neutralLogExponentialSource_inner, map_inv₀,
+    Complex.conj_ofReal, starRingEnd_apply, star_star]
 
 theorem neutralLogPositivePairSource_conjugate (a : ℝ) (z : ℂ) :
     neutralLogPositivePairSource a (conj z) = neutralLogPositivePairSource a z := by
