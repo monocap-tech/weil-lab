@@ -26,8 +26,8 @@ theorem neutralMomentColumn_memLp (a s : ℝ) :
   apply (memLp_two_iff_integrable_sq_norm hm).mpr
   have hi : IntegrableOn (fun x : ℝ => ‖(Real.exp (s*x) : ℂ)‖ ^ 2)
       (Set.Icc (-a) a) volume :=
-    (hc.norm.pow 2).integrableOn_isCompact isCompact_Icc
-  apply (hi.indicator measurableSet_Icc).congr
+    (hc.norm.pow 2).continuousOn.integrableOn_isCompact isCompact_Icc
+  apply (hi.integrable_indicator measurableSet_Icc).congr
   filter_upwards [] with x
   by_cases hx : x ∈ Set.Icc (-a) a <;>
     simp [neutralMomentColumn, hx]
@@ -43,6 +43,8 @@ theorem neutralMomentColumnL2_inner (a s : ℝ) (f : RealComplexL2) :
   rw [← integral_indicator measurableSet_Icc]
   apply integral_congr_ae
   filter_upwards [(neutralMomentColumn_memLp a s).coeFn_toLp] with x hx
+  change inner ℂ ((neutralMomentColumn_memLp a s).toLp (neutralMomentColumn a s) x)
+    (f x) = _
   rw [hx]
   by_cases hmem : x ∈ Set.Icc (-a) a
   · simp [neutralMomentColumn, hmem, RCLike.inner_apply', mul_comm]
@@ -93,7 +95,9 @@ theorem neutralLogPoleOperator_mixed (a : ℝ) (f g : NeutralLogHilbertCarrier a
       neutralLogMomentSource a (-(1/2)) +
     inner ℂ (neutralLogMomentSource a (-(1/2))) g •
       neutralLogMomentSource a (1/2)) = _
-  rw [inner_add_right, inner_smul_right, inner_smul_right,
+  rw [inner_add_right]
+  simp only [inner_smul_right (𝕜 := ℂ)]
+  rw [
     ← inner_conj_symm f (neutralLogMomentSource a (-(1/2))),
     ← inner_conj_symm f (neutralLogMomentSource a (1/2))]
   simp only [neutralLogMomentSource_inner]
@@ -104,7 +108,6 @@ theorem neutralLogPoleOperator_diagonal (a : ℝ) (f : NeutralLogHilbertCarrier 
       ((2 * (conj (sourceWindowMoment a (-(1/2)) (neutralLogPhysical f.val)) *
         sourceWindowMoment a (1/2) (neutralLogPhysical f.val)).re : ℝ) : ℂ) := by
   rw [neutralLogPoleOperator_mixed, sourcePoleCrossTerms_diagonal]
-  rfl
 
 end
 
