@@ -9,6 +9,14 @@
 
 ## Current standing
 
+Source reconstruction now has an explicit type boundary: the bounded ordinary-L2
+operator in the lifted abstract interface cannot represent the unbounded
+logarithmic Weil quadratic form on the full canonical domain. Preserve the
+source form-space topology and its map into L2, or use the compressed weak
+form/observation relation. The required actual realization remains missing;
+no new conditional representation module was added. See the
+[source reconstruction note](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_TYPE_BOUNDARY_20261002.md).
+
 Recovered source head: `a212c087ae269a27e17f7b715531caaa95b37088`.
 
 The retained WD-T38 source-identification hypothesis is present in the written
