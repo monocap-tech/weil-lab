@@ -1,5 +1,30 @@
 # Lean Formalization Track
 
+### RPB-108: actual entire-zeta Jensen count bridge (2026-10-03)
+
+The actual entire pole-cleared completed-zeta function
+X(z) = z(z-1) completedRiemannZeta₀(z) + 1 is constructed without a
+spectral L2 premise. Away from 0 and 1 it equals z(z-1) completedRiemannZeta(z).
+Its analytic order at every actual open-strip zero equals the actual zeta
+order, so the analytic divisor retains the exact actual multiplicity.
+
+Actual height-window divisor cardinality is bounded by the actual analytic
+divisor mass in the enclosing disk of radius |T|+2. Jensen then bounds it by
+log(M_X(T))/log(2), where M_X(T) is the actual enclosing-circle supremum,
+normalized to at least one. Compactness supplies the envelope bound, so this
+last count theorem has no external count or shell-growth premise.
+
+This closes the actual-divisor-to-Jensen bridge, not an explicit asymptotic
+count rate or local logarithmic sampling estimate. Next: obtain an explicit
+growth rate and local multiplicity count/sampling control sufficient for the
+canonical logarithmic form domain, then transport the full zero-side form.
+
+WD-T38 physical source-null attachment and enlarged central cancellation
+remain open. Background completion remains retained/written; spectral L2
+unproved and unassumed. Threshold closed; F-4 pending; RH standing unchanged.
+
+See [actual zeta Jensen growth](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ZETA_JENSEN_GROWTH_20261003.md).
+
 ### RPB-108: actual bounded divisor windows and count custody (2026-10-03)
 
 Every bounded absolute-height window of actual open-strip zeta points is

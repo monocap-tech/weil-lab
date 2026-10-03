@@ -6347,3 +6347,7 @@ the duality correction that must be made explicit before the Gaussian weak
 identity is interpreted as the Fourier energy used in logarithmic coercivity.
 
 **Status:** post-Horizon F-4 terminology; registered at RPB-107.
+
+## RPB-108: actual zeta Jensen growth (2026-10-03)
+
+See [actual Jensen growth definitions](TERMINOLOGY_RPB108_ACTUAL_JENSEN_GROWTH.md) for the actual pole-cleared entire function, analytic Jensen mass, actual circle growth envelope, and count-to-growth bridge. These definitions accompany the first load-bearing source use. An explicit growth rate and local logarithmic sampling bound remain open.
