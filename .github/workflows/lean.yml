@@ -42,32 +42,29 @@ jobs:
         run: lake update
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Check concrete selected source attachment
+      - name: Check actual background source expression
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralLogSelectedSourceAttachment.lean
+          git hash-object WeilDefect/Morphology/NeutralLogBackgroundSourceAttachment.lean
           lean --version
           lake build WeilDefect
-      - name: Inspect selected source attachment axioms
+      - name: Inspect actual background attachment axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-selected-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralLogSelectedSourceAttachment
-          #print axioms WeilDefect.neutralExponentialColumn_memLp
-          #print axioms WeilDefect.neutralExponentialColumnL2_inner
-          #print axioms WeilDefect.neutralLogExponentialSource_inner
-          #print axioms WeilDefect.neutralLogExponentialAnalysis_eq
-          #print axioms WeilDefect.neutralLogPositivePairSource_inner
-          #print axioms WeilDefect.neutralLogNegativePairSource_inner
-          #print axioms WeilDefect.neutralLogPositivePairSource_conjugate
-          #print axioms WeilDefect.neutralLogNegativePairSource_conjugate
-          #print axioms WeilDefect.neutralLogSelectedPairOperator_mixed
-          #print axioms WeilDefect.neutralLogSelectedPairOperator_diagonal
-          #print axioms WeilDefect.neutralLogSelectedPairOperator_conjugate
+          cat > /tmp/rpb108-background-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralLogBackgroundSourceAttachment
+          #print axioms WeilDefect.neutralLogFiniteSelectedOperator_mixed
+          #print axioms WeilDefect.neutralLogFiniteSelectedOperator_diagonal
+          #print axioms WeilDefect.neutralLogFiniteSelectedOperator_nonnegative
+          #print axioms WeilDefect.neutralLogFiniteSelectedOperator_conjugate
+          #print axioms WeilDefect.neutralLogBackgroundOperator_mixed
+          #print axioms WeilDefect.neutralLogBackgroundOperator_diagonal
+          #print axioms WeilDefect.neutralLogBackgroundOperator_sub_selected
+          #print axioms WeilDefect.neutralLogBackgroundOperator_conjugate
           LEAN
-          lake env lean /tmp/rpb108-selected-audit.lean | tee /tmp/rpb108-selected-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-selected-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-background-audit.lean | tee /tmp/rpb108-background-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-background-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |
