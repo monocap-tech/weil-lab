@@ -59,9 +59,9 @@ variable
 zero named density and Q while preserving its actual physical/null data.
 This is an audit construction, not a new source realization. -/
 def NeutralDefectMorphology.zeroDensityReindex
-    (d : NeutralDefectMorphology A c aSeq uSeq phi aLim uLim
+    (d : NeutralDefectMorphology (EndpointObs := EndpointObs) (RightObs := RightObs) A c aSeq uSeq phi aLim uLim
       P C k Q shift lowerC upperC poleC density primeCoeff extend) :
-    NeutralDefectMorphology A c aSeq uSeq phi aLim uLim
+    NeutralDefectMorphology (EndpointObs := EndpointObs) (RightObs := RightObs) A c aSeq uSeq phi aLim uLim
       P C k 0 shift lowerC upperC poleC (fun _ => 0) primeCoeff extend where
   subsequence_strictMono := d.subsequence_strictMono
   attainedNeutral := d.attainedNeutral
@@ -76,7 +76,7 @@ def NeutralDefectMorphology.zeroDensityReindex
 
 /-- Reindexing does not change the endpoint vector, operators or restrictions. -/
 theorem NeutralDefectMorphology.zeroDensityReindex_nullExtension
-    (d : NeutralDefectMorphology A c aSeq uSeq phi aLim uLim
+    (d : NeutralDefectMorphology (EndpointObs := EndpointObs) (RightObs := RightObs) A c aSeq uSeq phi aLim uLim
       P C k Q shift lowerC upperC poleC density primeCoeff extend) :
     d.zeroDensityReindex.nullExtension = d.nullExtension := rfl
 
