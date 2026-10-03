@@ -70,7 +70,7 @@ theorem neutralNativeGreenSynthesis_logEnergy
         mul_le_mul_of_nonneg_right
           (logarithmicFourierWeight_le_derivativeWeight ξ) (sq_nonneg _)
       _ = _ := by
-        simp only [norm_mul, Complex.norm_real, Real.norm_eq_abs, mul_pow, sq_abs]
+        simp only [Pi.add_apply, norm_mul, Complex.norm_real, Real.norm_eq_abs, mul_pow, sq_abs]
         ring
 
 /-- The actual native physical vector now inhabits the canonical supported
