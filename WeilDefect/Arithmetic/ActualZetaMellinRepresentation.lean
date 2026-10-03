@@ -124,7 +124,8 @@ theorem neutralActualZetaCompleted_factorial_bound :
   have hd := neutralActualZetaThetaMellinTail_disk_exponents n hz
   have hleft := (hb n (z / 2) hd.1).2
   have hright := (hb n ((1 - z) / 2) hd.2).2
-  rw [neutralActualZetaCompleted_mellin_tails, norm_div, norm_ofNat]
+  rw [neutralActualZetaCompleted_mellin_tails, norm_div,
+    show ‖(2 : ℂ)‖ = (2 : ℝ) by norm_num]
   calc
     _ ≤ ((‖∫ t : ℝ in Ioi 1,
             neutralActualZetaThetaMellinTailIntegrand (z / 2) t‖) +
