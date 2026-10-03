@@ -47,19 +47,18 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralNativeDirichletCoordinates.lean
+          git hash-object WeilDefect/Morphology/NeutralNativeDirichletSummability.lean
           lean --version
           lake build WeilDefect
       - name: Inspect actual Green energy axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralNativeDirichletCoordinates
-          #print axioms WeilDefect.neutralDirichletGradientColumn_memLp
-          #print axioms WeilDefect.neutralDirichletGradientColumnL2_mixed
-          #print axioms WeilDefect.neutralDirichletGreenColumnL2_mixed
-          #print axioms WeilDefect.neutralDirichletGreen_nativeL2_pairing
-          #print axioms WeilDefect.neutralDirichletGreen_nativeL2_energy
+          import WeilDefect.Morphology.NeutralNativeDirichletSummability
+          #print axioms WeilDefect.neutralNativeDirichlet_energy_coordinates
+          #print axioms WeilDefect.neutralNativeDirichlet_coordinates_summable
+          #print axioms WeilDefect.neutralNativeDirichlet_gradient_square_summable
+          #print axioms WeilDefect.neutralNativeDirichlet_green_square_summable
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
