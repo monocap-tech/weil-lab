@@ -52,7 +52,9 @@ def neutralLogFormGraphEmbedding (a : ℝ) :
         with ξ hfg hf hg hadd hfour
       change neutralLogWeightedL2 (f + g) ξ =
         (neutralLogWeightedL2 f + neutralLogWeightedL2 g) ξ
-      rw [hfg, hadd, hf, hg]
+      rw [hfg, hadd]
+      simp only [Pi.add_apply]
+      rw [hf, hg]
       unfold neutralLogWeightedFourier
       have hFT : (𝓕 (f + g).val : RealComplexL2) = 𝓕 f.val + 𝓕 g.val :=
         (Lp.fourierTransformₗᵢ ℝ ℂ).map_add f.val g.val
@@ -66,7 +68,9 @@ def neutralLogFormGraphEmbedding (a : ℝ) :
         Lp.coeFn_smul z (neutralLogWeightedL2 f),
         Lp.coeFn_smul z (𝓕 f.val : RealComplexL2)] with ξ hzf hf hz hfour
       change neutralLogWeightedL2 (z • f) ξ = (z • neutralLogWeightedL2 f) ξ
-      rw [hzf, hz, hf]
+      rw [hzf, hz]
+      simp only [Pi.smul_apply]
+      rw [hf]
       unfold neutralLogWeightedFourier
       have hFT : (𝓕 (z • f).val : RealComplexL2) = z • 𝓕 f.val :=
         (Lp.fourierTransformₗᵢ ℝ ℂ).map_smul z f.val
