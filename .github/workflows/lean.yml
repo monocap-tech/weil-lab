@@ -57,9 +57,9 @@ jobs:
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralLogFormGraph.lean
+          git hash-object WeilDefect/Morphology/NeutralLogFormEnergy.lean
           lean --version
-          lake build WeilDefect.Morphology.NeutralLogFormGraph
+          lake build WeilDefect.Morphology.NeutralLogFormEnergy
 
       - name: Save validation build cache
         if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
@@ -72,18 +72,16 @@ jobs:
       - name: Inspect transitive endpoint axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-log-form-graph-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralLogFormGraph
-          #print axioms WeilDefect.neutralLogWeightedFourier_memLp
-          #print axioms WeilDefect.neutralLogWeightedL2_coe
-          #print axioms WeilDefect.neutralLogFormGraphEmbedding_injective
-          #print axioms WeilDefect.neutralLogFormGraphNorm_eq_max
-          #print axioms WeilDefect.neutralLogFormGraphNorm_add_le
-          #print axioms WeilDefect.neutralLogFormGraphNorm_smul
-          #print axioms WeilDefect.neutralLogFormGraphNorm_eq_zero_iff
+          cat > /tmp/rpb108-log-form-energy-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralLogFormEnergy
+          #print axioms WeilDefect.neutralLogWeightedL2_sq_norm_ae
+          #print axioms WeilDefect.neutralLogWeightedL2_mixed_ae
+          #print axioms WeilDefect.neutralCanonicalLog_mixed_integrable
+          #print axioms WeilDefect.neutralLogWeightedL2_inner
+          #print axioms WeilDefect.neutralLogWeightedL2_norm_sq
           LEAN
-          lake env lean /tmp/rpb108-log-form-graph-audit.lean | tee /tmp/rpb108-log-form-graph-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-log-form-graph-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-log-form-energy-audit.lean | tee /tmp/rpb108-log-form-energy-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-log-form-energy-axioms.txt; then exit 1; fi
 
       - name: Reject unfinished trusted declarations
         shell: bash
