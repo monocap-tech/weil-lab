@@ -100,3 +100,5 @@ import WeilDefect.Examples.MovingSectors
 import WeilDefect.Examples.WeakCriticalFallthrough
 
 import WeilDefect.Morphology.NeutralLogHilbertCarrier
+
+import WeilDefect.Morphology.NeutralLogPoleSourceAttachment

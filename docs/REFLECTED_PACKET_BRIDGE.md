@@ -9,6 +9,17 @@
 
 ## Current standing
 
+## RPB-108 — complete concrete logarithmic Hilbert carrier
+
+Continues from `6645b05195b6232b99d5796a7adddb5b1c3b71e5`.
+See the [carrier construction note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_HILBERT_CARRIER_20261003.md).
+
+The concrete supported logarithmic form carrier is constructed as the closed kernel of an actual bounded map on weighted Fourier L2. Physical reconstruction uses inverse Fourier transformation after the inverse square-root logarithmic weight. Lean proves completeness, exact correspondence with the existing canonical supported finite-energy domain, and equality of the carrier norm squared with genuine logarithmic Fourier energy. No source-identity or spectral-product premise is introduced.
+
+Whole-root validation: 9,023 jobs; six standard-axiom audits; unfinished-declaration gate passed.
+
+This certifies the actual complete DOMAIN and its norm. Identification of the current WD-T38 physical vector/source synthesis and attachment of its quadratic/null law remain OPEN. The previous actual-zeta sampling and effective-background endpoint construction remain written/retained, not Lean-certified by this module. Enlarged central cancellation remains OPEN. Current-carrier spectral L2 is unproved and unassumed; the existing inner-collar theorem remains ready to derive regularity and consume boundary removal from actual central cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
 ## RPB-108 — exact native dictionary and background form completion (written)
 
 Continues from `b382eecec14866087fc2760f65757d9838947a80`.
