@@ -113,3 +113,5 @@ import WeilDefect.DirichletGreenMixed
 import WeilDefect.Morphology.NeutralNativeDirichletCoordinates
 
 import WeilDefect.Morphology.NeutralNativeDirichletSummability
+
+import WeilDefect.Morphology.NeutralNativeDirichletSynthesis
