@@ -98,3 +98,5 @@ import WeilDefect.Examples.CriticalNonattainment
 import WeilDefect.Examples.MovingSectors
 
 import WeilDefect.Examples.WeakCriticalFallthrough
+
+import WeilDefect.Morphology.NeutralLogHilbertCarrier

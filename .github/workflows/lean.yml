@@ -42,26 +42,27 @@ jobs:
         run: lake update
       - name: Fetch mathlib cache
         run: lake exe cache get
-      - name: Check source witness audit regularity
+      - name: Check concrete logarithmic Hilbert carrier
         shell: bash
         run: |
           git rev-parse HEAD
-          git hash-object WeilDefect/Morphology/NeutralSourceWitnessAudit.lean
+          git hash-object WeilDefect/Morphology/NeutralLogHilbertCarrier.lean
           lean --version
           lake build WeilDefect
-      - name: Inspect source witness audit theorem axioms
+      - name: Inspect concrete carrier theorem axioms
         shell: bash
         run: |
-          cat > /tmp/rpb108-source-witness-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralSourceWitnessAudit
-          #print axioms WeilDefect.wd_t38_zero_density_sourceIdentity
-          #print axioms WeilDefect.wd_t38_zero_density_arithmetic
-          #print axioms WeilDefect.NeutralDefectMorphology.zeroDensityReindex
-          #print axioms WeilDefect.NeutralDefectMorphology.zeroDensityReindex_nullExtension
-          #print axioms WeilDefect.neutralPhysicalFourierDensity_ne_zero
+          cat > /tmp/rpb108-log-hilbert-audit.lean <<'LEAN'
+          import WeilDefect.Morphology.NeutralLogHilbertCarrier
+          #print axioms WeilDefect.neutralLogPhysical_weighted
+          #print axioms WeilDefect.neutralLogPhysical_energy
+          #print axioms WeilDefect.neutralLogHilbertToCanonical_rightInverse
+          #print axioms WeilDefect.neutralLogHilbertCarrier_complete
+          #print axioms WeilDefect.neutralLogHilbertCarrier_norm_sq
+          #print axioms WeilDefect.neutralLogHilbertCanonicalEquiv
           LEAN
-          lake env lean /tmp/rpb108-source-witness-audit.lean | tee /tmp/rpb108-source-witness-axioms.txt
-          if grep -q 'sorryAx' /tmp/rpb108-source-witness-axioms.txt; then exit 1; fi
+          lake env lean /tmp/rpb108-log-hilbert-audit.lean | tee /tmp/rpb108-log-hilbert-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-log-hilbert-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |

@@ -1,5 +1,63 @@
 # Lean Formalization Track
 
+## RPB-108 — exact native dictionary and background form completion (written)
+
+Continues from `b382eecec14866087fc2760f65757d9838947a80`.
+See the [dictionary and completion note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_COEFFICIENT_DICTIONARY_20261003.md).
+
+Direct quotient/pair algebra pins sqrt(multiplicity), the conjugate-ordinate linear analysis convention, and the fixed negative-coordinate sign change. RPB-24's Green factor acts on the physical function, not as an extra q_gamma coefficient weight. In its retained effective background model, completing the Green core in the actual background form norm constructs an onto isometry to the reduced coefficient space. The SAME reduced Cu therefore has a unique physical logarithmic preimage; the signed C law and unit gain give endpoint full mixed nullity on that same domain without native H1 or spectral L2.
+
+This is a written model deduction, NOT LEAN-CERTIFIED. RPB-24's retained strict background positivity/realization is used, not newly proved for the generic WD-T38 fields. Identification with the current physical carrier and fixed enlarged extension remains OPEN; endpoint nullity does not establish enlarged central cancellation. Current-carrier spectral L2 remains unproved and unassumed. The certified inner-collar/boundary-removal assembly consumes actual enlarged central cancellation immediately when available. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+## RPB-108 — actual-zeta logarithmic analysis construction (written)
+
+Continues from `a5fecc6c41bb6ce6ce9eb5e4a00f87eda886f986`.
+See the [construction note](../notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md).
+
+A written construction uses actual-zeta upper zero counting and a Fourier strip/submean estimate to bound multiplicity-normalized zero analysis on the canonical logarithmic form Hilbert space. Smooth-core density extends the actual explicit-formula diagonal and polarization to that same domain. The logarithmic Garding estimate, compact physical embedding and critical-line analysis injectivity give a qualitative closed-range reconstruction of physical vectors from this specified coefficient closure. No H1, spectral L2, RH positivity or assumed sampling lower bound is used.
+
+This is a new written model construction, NOT LEAN-CERTIFIED and not yet an attachment to the current WD-T38 instance. Exact equality with the retained coefficient metric/Green weights and effective-positive/background realization remains OPEN. Selected Q equals full Q plus the unselected negative-analysis square; they are not conflated. Actual enlarged central cancellation remains OPEN; current-carrier spectral L2 remains unproved and unassumed. Existing inner-collar/boundary removal is ready to consume central cancellation. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+## RPB-108 — native adjoint-range condition pinned
+
+Continues from `cbd4e49f02c1cbf8394fe1cc9e090e93149a5fde`.
+See the [range-condition note](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_ADJOINT_RANGE_20261003.md).
+
+A written deduction in the retained RPB-24 model identifies `T†k=Cu` with `A_B⁻¹ Phi†u ∈ H_0^1`, using the signed reduced Douglas factor and the Green form congruence. Unit gain and finiteness of the inverse-form sandwich do not supply this adjoint-range condition. WD-T38 assumes an adjoint realization separately; its actual source is not yet identified with this native model. The Green route would yield spectral L2 once that actual transport is proved, but cannot replace it.
+
+The Green/spectral shortcut is stopped pending actual source realization. No H1 or spectral premise is added. Actual same-domain source attachment and enlarged central cancellation remain OPEN; spectral L2 of the current carrier remains unproved and unassumed. The certified inner-collar theorem still consumes actual central cancellation without a spectral prerequisite. Documentation-only; no new Lean witness. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+## RPB-108 — recovered native Green form-carrier map
+
+Continues from `bd36dee70a3473e2a9e16cafad24f2b709d1af6d`.
+See the [Green-map recovery note](../notes/REFLECTED_PACKET_BRIDGE_108_GREEN_MAP_RECOVERY_20261003.md).
+
+RPB-24 retains the physical map `J_c = G_c^{1/2} U_c` from the native negative-order carrier to `H_0^1(-c,c)`. The physical vector is `J_c g`, not merely the unitary transport `U_c g`. This gives a written route to actual logarithmic energy and spectral L2 for that mapped vector, using H1 rather than upgrading one-log energy. The native mixed null law has an exact compact-test lift `v=L_c u`. Fixed physical extension requires the commuting law with `L_a E J_c`; WD-T38's arbitrary extension does not certify it.
+
+This is recovered retained mathematics and a written derivation, not a new Lean witness. Equality of the actual WD-T38/current carrier with this mapped vector, full/effective source realization, and enlarged mixed null transport remain OPEN. Spectral L2 for the current carrier is still unproved and unassumed. Existing inner-collar regularity/boundary removal remains ready to consume actual central cancellation. No Lean/workflow changes. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
+
+## RPB-108 — retained EXT-4 complex source law recovered
+
+Continues from `f66fc319b88d3efdde0bfc90d66783a5c04921b5`.
+See the [source recovery note](../notes/REFLECTED_PACKET_BRIDGE_108_RETAINED_SOURCE_RECOVERY_20261003.md).
+
+The primary EXT-4 text has now been inspected directly: §1.6 fixes the Fourier sign, §2 equation (7) identifies the geometric and zero-side functionals on admissible tests, and §6.1 Lemma 6.1 supplies the signed odd pole and general-complex extension. The recovered complex pole is the Hermitian cross term already used by `sourceDomainQuadratic`; the real-even positive pole is not a lawful substitute on the full complex domain. This is source recovery and a written normalization dictionary, not a new Lean attachment theorem.
+
+The older `monocap-tech/weil` research branch at `d8bd75eda7442ecda12c23d4f6b76a582a336783` contains the original 44 Lean files, with the same original modules apart from the subsequent lab custody repair in `Neutral.lean`; no additional actual source realization was recovered there. The inspected source passages do not supply the WD-T38 synthesis/form-carrier map, a same-domain closed-form identification, or enlarged mixed nullity. Those actual witnesses remain OPEN. Spectral L2 membership is not derived from WD-T38 and remains unproved and unassumed. The certified inner-collar theorem already consumes actual central cancellation without a separate regularity assumption. Threshold bookkeeping stays CLOSED; F-4 coercivity is NOT STARTED. No Lean or workflow bytes change in this pass.
+
+## RPB-108 — certified source-witness independence audit
+
+Continues from `ec88ac9a8de20b1f7ae8e3375d9129564702eb54`.
+See the [audit note](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_WITNESS_INDEPENDENCE_20261002.md).
+
+The source-witness independence audit is certified in `NeutralSourceWitnessAudit.lean`. The named scalar source identity accepts zero density and zero pole for any symbol and shift; all corresponding integrals are genuinely zero. Zero named density and scalar Q satisfy the existing arithmetic output. More decisively, every `NeutralDefectMorphology` can be reindexed to those zero arithmetic data while preserving the attained neutral branch, coefficient/physical carrier, physical null equation, extension map, and the exact same null-extension package (endpoint vector, operators, restrictions and proofs). Separately, L2 Fourier inversion proves that the nonzero concrete physical carrier's normalized Fourier norm-square density is not almost-everywhere zero.
+
+Thus the named-density identification is not enforced by the current typed output. The audit does not instantiate an actual-zeta neutral branch, refute the documented mathematical carrier-identification hypothesis, or prove nonderivability of form energy or spectral L2 by every possible argument. It certifies why simply consuming the retained named-density integrability cannot be called an actual carrier attachment.
+
+Actual carrier density/source-form-domain/quadratic identification and same-domain polarization/normalized attachment remain OPEN. Actual enlarged central cancellation remains OPEN. The certified inner-collar assembly from `ec88ac9` already derives regularity and whole compact realization once actual central cancellation is supplied, with no independent regularity premise. Spectral L2 membership remains unproved and unassumed. Threshold bookkeeping is CLOSED; F-4 logarithmic Gaussian coercivity is NOT STARTED. WD-T40/RH standing is unchanged.
+
+Whole-root validation: **9,022 jobs; five clean axiom audits**. Run `37089994701`, job `111108107011`, module blob `cef6b6e6802491f18263132356d0a57ebbccea21`. This certifies the typed-interface attachment obstruction, not an actual source witness.
+
 ## RPB-108 — certified inner-collar regularity assembly
 
 Continues from `4cea4deb386799457578f9cefccccc329a859f4b`.
