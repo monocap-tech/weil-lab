@@ -16,7 +16,9 @@ theorem neutralActualZetaIteratedDeriv_conjugate (n : ℕ) (z : ℂ) :
       conj (iteratedDeriv n riemannZeta z) := by
   have hzero : conj ∘ riemannZeta ∘ conj = riemannZeta := by
     funext w
-    simp only [Function.comp_apply, riemannZeta_conj, starRingEnd_apply, star_star]
+    change conj (riemannZeta (conj w)) = riemannZeta w
+    rw [riemannZeta_conj]
+    exact star_star _
   have hall : ∀ k : ℕ, conj ∘ iteratedDeriv k riemannZeta ∘ conj =
       iteratedDeriv k riemannZeta := by
     intro k
@@ -63,7 +65,7 @@ theorem neutralActualZetaZeroPoint_ne_zero (ρ : NeutralActualZetaZeroPoint) :
 /-- Actual completed zeta is analytic at every open-strip zero point. -/
 theorem neutralActualZetaCompleted_analytic (ρ : NeutralActualZetaZeroPoint) :
     AnalyticAt ℂ completedRiemannZeta ρ.val := by
-  apply analyticAt_iff_eventually_differentiableAt.mpr
+  apply Complex.analyticAt_iff_eventually_differentiableAt.mpr
   have hzero : {0}ᶜ ∈ 𝓝 ρ.val :=
     isOpen_compl_singleton.mem_nhds
       (by simpa using neutralActualZetaZeroPoint_ne_zero ρ)
@@ -86,12 +88,20 @@ theorem neutralActualZetaOrder_completed (ρ : NeutralActualZetaZeroPoint) :
     filter_upwards [hzero] with z hz
     simpa only [div_eq_mul_inv] using
       riemannZeta_def_of_ne_zero (by simpa using hz)
-  rw [analyticOrderAt_congr heq,
-    analyticOrderAt_mul (neutralActualZetaCompleted_analytic ρ)
-      (Complex.differentiable_Gammaℝ_inv.analyticAt ρ.val),
+  have hinv : analyticOrderAt (fun z : ℂ => (Complex.Gammaℝ z)⁻¹) ρ.val = 0 :=
     analyticOrderAt_eq_zero.mpr
-      (.inr (inv_ne_zero (Complex.Gammaℝ_ne_zero_of_re_pos ρ.property.2.1))),
-    add_zero]
+      (.inr (inv_ne_zero (Complex.Gammaℝ_ne_zero_of_re_pos ρ.property.2.1)))
+  calc
+    analyticOrderAt completedRiemannZeta ρ.val =
+        analyticOrderAt completedRiemannZeta ρ.val +
+          analyticOrderAt (fun z : ℂ => (Complex.Gammaℝ z)⁻¹) ρ.val := by
+            rw [hinv, add_zero]
+    _ = analyticOrderAt
+        (completedRiemannZeta * fun z : ℂ => (Complex.Gammaℝ z)⁻¹) ρ.val :=
+      (analyticOrderAt_mul (neutralActualZetaCompleted_analytic ρ)
+        (Complex.differentiable_Gammaℝ_inv.analyticAt ρ.val)).symm
+    _ = analyticOrderAt riemannZeta ρ.val :=
+      (analyticOrderAt_congr heq).symm
 
 /-- The actual functional equation preserves analytic multiplicity:
 its completed form is invariant under the affine map with derivative -1. -/
