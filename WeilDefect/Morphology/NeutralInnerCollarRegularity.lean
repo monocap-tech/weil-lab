@@ -65,11 +65,17 @@ theorem neutralInnerCollarResidual_exterior_pairing
   have hp := neutralFinitePrime_pairing_integrable carrier
     (rightLimitPrimePowerFinset a) u
   have hq := frozenWeilCompactAction_pole_integrable carrier u hu
-  rw [← integral_sub hg hp, ← integral_add (hg.sub hp) hq]
-  apply integral_congr_ae
-  filter_upwards [] with x
-  unfold neutralInnerCollarResidual
-  ring
+  rw [← integral_sub hg hp]
+  calc
+    _ = ∫ x : ℝ, (u x * neutralArchimedeanGapFunction carrier (b-c) x -
+        u x * neutralFinitePrimePhysical carrier (rightLimitPrimePowerFinset a) x) +
+          u x * neutralWeilSourcePole carrier x := by
+      simpa only [Pi.sub_apply, Pi.add_apply] using (integral_add (hg.sub hp) hq).symm
+    _ = _ := by
+      apply integral_congr_ae
+      filter_upwards [] with x
+      unfold neutralInnerCollarResidual
+      ring
 
 /-- Actual central cancellation proves compatibility of the constructed
 collar function with zero on the open overlap. -/
@@ -153,7 +159,7 @@ theorem neutralExteriorResidualCandidate_represents_of_central
   have hwc : HasCompactSupport (fun x : ℝ => (χ x : ℂ) * u x) :=
     hu.mul_left
   have hwd : ContDiff ℝ ∞ (fun x : ℝ => (χ x : ℂ) * u x) :=
-    (Complex.ofRealCLM.contDiff.comp χ.contDiff).mul (u.smooth ∞)
+    (Complex.ofRealCLM.contDiff.comp χ.contDiff).mul (u.smooth ⊤)
   let w : SchwartzMap ℝ ℂ := hwc.toSchwartzMap hwd
   have hw : HasCompactSupport w := hwc
   have hws : tsupport w ⊆ Set.Ioo (-a) a := by
@@ -194,13 +200,16 @@ theorem neutralExteriorResidualCandidate_represents_of_central
   have hiw : (∫ x : ℝ, w x * neutralExteriorResidualCandidate carrier a x) = 0 := by
     apply integral_eq_zero_of_ae
     filter_upwards [] with x
+    change w x * neutralExteriorResidualCandidate carrier a x = (0 : ℂ)
     by_cases hx : w x = 0
     · rw [hx, zero_mul]
     · rw [neutralExteriorResidualCandidate_zero carrier
         (hws (subset_tsupport w hx)), mul_zero]
   have huw : w + v = u := by dsimp [v]; abel
-  have hadd := frozenWeilCompactAction_add carrier a ha w v hw hv
-  rw [huw, hcentral w hw hws, zero_add, hav, hiv] at hadd
+  have hadd : frozenWeilCompactAction carrier a ha u hu =
+      frozenWeilCompactAction carrier a ha w hw + frozenWeilCompactAction carrier a ha v hv := by
+    simpa only [huw] using frozenWeilCompactAction_add carrier a ha w v hw hv
+  rw [hcentral w hw hws, zero_add, hav, hiv] at hadd
   conv_lhs => rw [← huw]
   calc
     _ = (∫ x : ℝ, w x * neutralExteriorResidualCandidate carrier a x) +

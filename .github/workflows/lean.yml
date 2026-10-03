@@ -34,7 +34,9 @@ jobs:
         continue-on-error: true
         with:
           path: .lake
-          key: rpb108-lean434-mathlib5ed296-base71dddf5-v1
+          key: rpb108-lean434-mathlib5ed296-inner-collar-v1
+          restore-keys: |
+            rpb108-lean434-mathlib5ed296-base71dddf5-v1
       - name: Resolve pinned dependencies
         run: lake update
       - name: Fetch mathlib cache
@@ -70,3 +72,10 @@ jobs:
             echo "Unfinished or project-axiom declaration found."
             exit 1
           fi
+      - name: Save validation dependency cache
+        if: always() && steps.rpb_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: .lake
+          key: rpb108-lean434-mathlib5ed296-inner-collar-v1
