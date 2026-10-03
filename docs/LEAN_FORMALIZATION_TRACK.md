@@ -1,5 +1,32 @@
 # Lean Formalization Track
 
+### RPB-108: actual zeta multiplicity symmetry and weighted pair attachment (2026-10-03)
+
+Actual zeta analytic multiplicity is preserved by conjugation and by
+functional-equation reflection, hence by the actual conjugate-ordinate
+point pair. Conjugation transports every iterated derivative; reflection
+uses the completed functional equation and the analytic, nonvanishing
+reciprocal Gamma factor in the open strip. The point pair now lifts to
+an involution on actual multiplicity-sized divisor copies, preserving
+copy labels and conjugating their Bombieri ordinates.
+
+The same actual multiplicity immediately attaches weighted pair symmetry
+to the existing logarithmic source/operator: sqrt(m)-weighted negative
+source changes sign and m-weighted selected operator is invariant.
+This does not identify the retained WD-T38 coefficient system with the
+actual divisor, assert a shell count, or establish its sampling/form
+identity. Those actual transport obligations remain open.
+
+Current WD-T38 physical source-null attachment and enlarged central
+cancellation remain open; background completion remains retained/written.
+Current full Weil spectral L2 is unproved and unassumed. Once actual
+central cancellation is proved, immediately consume the certified
+central-to-regular-defect/boundary-removal theorem. Threshold work is
+closed; F-4 remains pending.
+
+See [actual zeta multiplicity symmetry](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ZETA_MULTIPLICITY_SYMMETRY_20261003.md).
+
+
 ### RPB-108: actual zeta multiplicity and divisor coordinates (2026-10-03)
 
 Actual open-strip zeta zeros now have a proved finite, positive analytic
