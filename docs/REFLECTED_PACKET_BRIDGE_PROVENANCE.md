@@ -1086,3 +1086,12 @@ The primary EXT-4 text has now been inspected directly: §1.6 fixes the Fourier 
 The older `monocap-tech/weil` research branch at `d8bd75eda7442ecda12c23d4f6b76a582a336783` contains the original 44 Lean files, with the same original modules apart from the subsequent lab custody repair in `Neutral.lean`; no additional actual source realization was recovered there. The inspected source passages do not supply the WD-T38 synthesis/form-carrier map, a same-domain closed-form identification, or enlarged mixed nullity. Those actual witnesses remain OPEN. Spectral L2 membership is not derived from WD-T38 and remains unproved and unassumed. The certified inner-collar theorem already consumes actual central cancellation without a separate regularity assumption. Threshold bookkeeping stays CLOSED; F-4 coercivity is NOT STARTED. No Lean or workflow bytes change in this pass.
 
 Primary source inspected at §1.6, §2 equation (7), and §6.1 Lemma 6.1. Documentation-only promotion; all Lean/manifests/workflow entries remain byte-identical to the recovered parent. No new build or axiom certificate is claimed.
+
+## 2026-10-03 — RPB-108 recovered native Green form-carrier map
+
+Continues from `bd36dee70a3473e2a9e16cafad24f2b709d1af6d`.
+See the [Green-map recovery note](../notes/REFLECTED_PACKET_BRIDGE_108_GREEN_MAP_RECOVERY_20261003.md).
+
+RPB-24 retains the physical map `J_c = G_c^{1/2} U_c` from the native negative-order carrier to `H_0^1(-c,c)`. The physical vector is `J_c g`, not merely the unitary transport `U_c g`. This gives a written route to actual logarithmic energy and spectral L2 for that mapped vector, using H1 rather than upgrading one-log energy. The native mixed null law has an exact compact-test lift `v=L_c u`. Fixed physical extension requires the commuting law with `L_a E J_c`; WD-T38's arbitrary extension does not certify it.
+
+This is recovered retained mathematics and a written derivation, not a new Lean witness. Equality of the actual WD-T38/current carrier with this mapped vector, full/effective source realization, and enlarged mixed null transport remain OPEN. Spectral L2 for the current carrier is still unproved and unassumed. Existing inner-collar regularity/boundary removal remains ready to consume actual central cancellation. No Lean/workflow changes. Thresholds CLOSED; F-4 NOT STARTED; WD-T40/RH unchanged.
