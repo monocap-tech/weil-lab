@@ -16,7 +16,8 @@ def neutralActualZetaEntire (z : ℂ) : ℂ :=
 theorem neutralActualZetaEntire_differentiable :
     Differentiable ℂ neutralActualZetaEntire := by
   unfold neutralActualZetaEntire
-  fun_prop (disch := exact differentiable_completedZeta₀)
+  exact ((differentiable_id.mul (differentiable_id.sub_const 1)).mul
+    differentiable_completedZeta₀).add_const 1
 
 theorem neutralActualZetaEntire_analytic (z : ℂ) :
     AnalyticAt ℂ neutralActualZetaEntire z :=
@@ -106,9 +107,11 @@ theorem neutralActualZetaDivisorHeightWindow_card_le_mass (T : ℝ) :
     simpa only [mem_closedBall, dist_zero_right] using hb
   have hD (ρ : neutralActualZetaPointHeightWindow T) :
       D ρ.val.val = (neutralActualZetaMultiplicity ρ.val : ℤ) := by
-    exact neutralActualZetaEntire_divisor ρ.val
+    exact neutralActualZetaEntire_divisor (r := |T| + 2) ρ.val
       (by simpa only [abs_of_pos (by positivity : 0 < |T| + 2)] using hpoint ρ)
   rw [neutralActualZetaDivisorHeightWindow_card, Nat.cast_sum]
+  unfold neutralActualZetaJensenMass
+  rw [abs_of_pos (by positivity : 0 < |T| + 2)]
   change (∑ ρ : neutralActualZetaPointHeightWindow T,
     (neutralActualZetaMultiplicity ρ.val : ℤ)) ≤ ∑ᶠ z, D z
   rw [finsum_eq_sum_of_support_subset D (by
@@ -139,10 +142,12 @@ theorem neutralActualZetaDivisorHeightWindow_card_le_jensen (T : ℝ) {M : ℝ}
     exact_mod_cast neutralActualZetaDivisorHeightWindow_card_le_mass T
   apply hc.trans
   have hr : 0 < |T| + 2 := by positivity
+  have hR : 0 < 2 * (|T| + 2) := by positivity
   have hj := neutralActualZetaJensenMass_le
     (r := |T| + 2) (R := 2 * (|T| + 2)) (M := M)
     (by simpa only [abs_of_pos hr] using hr)
-    (by rw [abs_of_pos hr, abs_of_pos (by positivity)]; linarith)
+    (by simpa only [abs_of_pos hr, abs_of_pos hR] using
+      (show |T| + 2 < 2 * (|T| + 2) by linarith))
     hM (by simpa only [abs_of_pos (by positivity : 0 < 2 * (|T| + 2))] using hbound)
   convert hj using 1
   congr 2
