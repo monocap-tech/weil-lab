@@ -73,7 +73,8 @@ theorem neutralLogWeightedL2_norm_sq {a : ℝ}
     rw [L2.inner_def, ← integral_complex_ofReal]
     apply integral_congr_ae
     filter_upwards [neutralLogWeightedL2_sq_norm_ae f] with ξ hξ
-    rw [inner_self_eq_norm_sq_to_K, hξ]
+    rw [inner_self_eq_norm_sq_to_K]
+    exact_mod_cast hξ
   rw [norm_sq_eq_re_inner (𝕜 := ℂ), hi]
   rfl
 
