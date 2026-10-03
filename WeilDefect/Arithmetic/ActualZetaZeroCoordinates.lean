@@ -20,8 +20,7 @@ theorem neutralActualZetaOrdinate_re (ρ : NeutralActualZetaZeroPoint) :
 
 theorem neutralActualZetaOrdinate_im (ρ : NeutralActualZetaZeroPoint) :
     (neutralActualZetaOrdinate ρ).im = 1 / 2 - ρ.val.re := by
-  simp [neutralActualZetaOrdinate, Complex.mul_im]
-  ring
+  simp [neutralActualZetaOrdinate, Complex.mul_im] <;> ring
 
 /-- The actual source argument reconstructs the same zeta zero exactly. -/
 theorem neutralActualZetaOrdinate_source (ρ : NeutralActualZetaZeroPoint) :
