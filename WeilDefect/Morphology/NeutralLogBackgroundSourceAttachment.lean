@@ -85,7 +85,8 @@ theorem neutralLogBackgroundOperator_sub_selected :
     neutralLogBackgroundOperator a ha lowerC upperC shift h0 hl hu z -
       neutralLogFiniteSelectedOperator a z =
         neutralLogWeilFormOperator a ha lowerC upperC shift h0 hl hu := by
-  simp only [neutralLogBackgroundOperator, add_sub_cancel_right]
+  unfold neutralLogBackgroundOperator
+  abel
 
 theorem neutralLogBackgroundOperator_conjugate :
     neutralLogBackgroundOperator a ha lowerC upperC shift h0 hl hu
