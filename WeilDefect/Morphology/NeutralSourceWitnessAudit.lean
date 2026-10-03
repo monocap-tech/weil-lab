@@ -103,8 +103,8 @@ theorem neutralPhysicalFourierDensity_ne_zero
   have hmode : carrier.l2Mode = 0 := by
     calc
       carrier.l2Mode = (𝓕⁻ (𝓕 carrier.l2Mode : RealComplexL2) : RealComplexL2) :=
-        (fourierInv_fourier_eq _).symm
-      _ = 0 := by rw [hfourier, fourierInv_zero]
+        (FourierTransform.fourierInv_fourier_eq _).symm
+      _ = 0 := by rw [hfourier, FourierTransform.fourierInv_zero]
   exact carrier.l2Mode_ne_zero hmode
 
 end

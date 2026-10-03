@@ -34,8 +34,9 @@ jobs:
         continue-on-error: true
         with:
           path: .lake
-          key: rpb108-lean434-mathlib5ed296-inner-collar-v1
+          key: rpb108-lean434-mathlib5ed296-rpb108-root-v1
           restore-keys: |
+            rpb108-lean434-mathlib5ed296-inner-collar-v1
             rpb108-lean434-mathlib5ed296-base71dddf5-v1
       - name: Resolve pinned dependencies
         run: lake update
@@ -74,4 +75,4 @@ jobs:
         continue-on-error: true
         with:
           path: .lake
-          key: rpb108-lean434-mathlib5ed296-inner-collar-v1
+          key: rpb108-lean434-mathlib5ed296-rpb108-root-v1
