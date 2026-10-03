@@ -136,11 +136,13 @@ private theorem neutralOutsideWeight_bound (a x : ℝ) :
   unfold neutralOutsideWeight
   by_cases hx : x ∈ (Set.Icc (-a) a)ᶜ <;> simp [hx]
 
-private def neutralOutsideRestriction (a : ℝ) : RealComplexL2 →L[ℂ] RealComplexL2 :=
+/-- Actual bounded physical restriction to the complement of the compact window. -/
+def neutralOutsideRestriction (a : ℝ) : RealComplexL2 →L[ℂ] RealComplexL2 :=
   contractiveMultiply (neutralOutsideWeight a) (neutralOutsideWeight_measurable a)
     (neutralOutsideWeight_bound a)
 
-private theorem neutralOutsideRestriction_zero_iff (a : ℝ) (f : RealComplexL2) :
+/-- The actual outside restriction vanishes exactly for supported physical L2 vectors. -/
+theorem neutralOutsideRestriction_zero_iff (a : ℝ) (f : RealComplexL2) :
     neutralOutsideRestriction a f = 0 ↔
       ∀ᵐ x ∂volume, x ∉ Set.Icc (-a) a → f x = 0 := by
   constructor
