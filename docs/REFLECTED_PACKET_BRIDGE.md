@@ -9,6 +9,14 @@
 
 ## Current standing
 
+## RPB-108 — inner-collar regularity reduction (written; not Lean-certified)
+
+Continues from `ec1b0fa24e853d604f7a2feab8283dcf55fea4f4`.
+
+The [new analytic note](../notes/REFLECTED_PACKET_BRIDGE_108_INNER_COLLAR_REGULARITY_20261002.md) shows how actual central cancellation, once attached, supplies a locally integrable actual defect without spectral operator-domain L2. Choose `c<b<a`, use the certified archimedean attachment at the inner gap, retain the full prime cutoff at `a`, prove overlap compatibility, and split every compact test with a smooth cutoff. The existing concrete residual then represents the whole action; the zero actual defect can consume the existing boundary-removal theorem.
+
+This is a written reduction, **not a newly certified Lean theorem or an actual WD-T38 witness**. Formal cutoff/gluing assembly remains to be checked. Named-density energy custody is certified; actual carrier density/source quadratic identification and enlarged central cancellation remain OPEN. Spectral L2 is unproved and unassumed. The reduction introduces no independent representation or regularity premise. Source polarization/normalized attachment and whole actual realization remain OPEN. Threshold bookkeeping is CLOSED; F-4 coercivity is NOT STARTED.
+
 ## RPB-108 — retained WD-T38 arithmetic energy custody
 
 Continues from `c968341ec2655ae5b68d597a6d6d46122524fa64`.

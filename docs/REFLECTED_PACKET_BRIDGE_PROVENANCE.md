@@ -1017,3 +1017,15 @@ Spectral-product L2 membership remains unproved and is not assumed. One-logarith
 Certification: whole-root `lake build WeilDefect` passed under Lean 4.34.0 / pinned mathlib `5ed2965256430c3649e86755f9576b54eca72435`: 9,020 build jobs. All four retained-field/constructor audits use only `propext`, `Classical.choice`, and `Quot.sound`; unfinished-declaration gate passed. Validation head `53e6ac21137286efe6e1c72cfdea0539e3c31712`, run `37085401789`, job `111094526098`, source blob `4dc461eb06a2839d6e181958f623ede3e21818be`.
 
 Validation-only workflow changes are excluded. The original research workflow blob remains `f194e9564577d3b79831b7abfb91b5933f3af98f`. Historical note bodies remain unchanged.
+
+
+## 2026-10-02 — RPB-108 written inner-collar regularity reduction
+
+Recovered parent: `ec1b0fa24e853d604f7a2feab8283dcf55fea4f4`, tree `b04926b07e92a2875c1477af48cfe95aa001b830`.
+
+The [new analytic note](../notes/REFLECTED_PACKET_BRIDGE_108_INNER_COLLAR_REGULARITY_20261002.md) shows how actual central cancellation, once attached, supplies a locally integrable actual defect without spectral operator-domain L2. Choose `c<b<a`, use the certified archimedean attachment at the inner gap, retain the full prime cutoff at `a`, prove overlap compatibility, and split every compact test with a smooth cutoff. The existing concrete residual then represents the whole action; the zero actual defect can consume the existing boundary-removal theorem.
+
+This is a written reduction, **not a newly certified Lean theorem or an actual WD-T38 witness**. Formal cutoff/gluing assembly remains to be checked. Named-density energy custody is certified; actual carrier density/source quadratic identification and enlarged central cancellation remain OPEN. Spectral L2 is unproved and unassumed. The reduction introduces no independent representation or regularity premise. Source polarization/normalized attachment and whole actual realization remain OPEN. Threshold bookkeeping is CLOSED; F-4 coercivity is NOT STARTED.
+
+
+Source custody: existing whole-root certificate run `37085401789`, job `111094526098`, 9,020 jobs and four clean audits remains unchanged. This pass modifies six Markdown files only. No new Lean build or axiom audit is claimed. The new terminology and analytic note distinguish the written reduction from formal certification and actual witness attachment. Historical note bodies are unchanged.
