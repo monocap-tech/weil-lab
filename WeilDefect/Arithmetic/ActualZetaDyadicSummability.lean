@@ -63,14 +63,18 @@ theorem neutralActualZetaDivisorDyadicBand_card_bound :
       K * ((2 : ℝ) ^ (n + 1) + 1) * Real.log ((2 : ℝ) ^ (n + 1) + 2) := by
     have hh := hcount ((2 : ℝ) ^ (n + 1))
     rw [abs_of_nonneg (by positivity)] at hh
-    exact (by exact_mod_cast Fintype.card_le_of_injective f hf).trans hh
+    have hcard : (Fintype.card (neutralActualZetaDivisorDyadicBand n) : ℝ) ≤
+        (Fintype.card (neutralActualZetaDivisorHeightWindow ((2 : ℝ) ^ (n + 1))) : ℝ) := by
+      exact_mod_cast Fintype.card_le_of_injective f hf
+    exact hcard.trans hh
   have hd : 1 ≤ (2 : ℝ) ^ n := one_le_pow₀ (by norm_num)
   have hn : 0 ≤ (n : ℝ) := Nat.cast_nonneg n
   have hT : (2 : ℝ) ^ (n + 1) + 1 ≤ 3 * (2 : ℝ) ^ n := by
     rw [pow_succ]; linarith only [hd]
   have hl : Real.log ((2 : ℝ) ^ (n + 1) + 2) ≤ 2 * ((n : ℝ) + 2) := by
     have harg : (2 : ℝ) ^ (n + 1) + 2 ≤ (2 : ℝ) ^ (n + 2) := by
-      rw [show n + 2 = (n + 1) + 1 by omega, pow_succ, pow_succ]
+      rw [show n + 2 = (n + 1) + 1 by omega]
+      simp only [pow_succ]
       linarith only [hd]
     have hm := Real.log_le_log (by positivity : 0 < (2 : ℝ) ^ (n + 1) + 2) harg
     rw [Real.log_pow, Nat.cast_add, Nat.cast_ofNat] at hm
@@ -119,7 +123,7 @@ theorem neutralActualZetaDivisorQuadraticWeight_summable :
         rw [← one_div_pow]
         have hp : (2 : ℝ) ^ n ≠ 0 := by positivity
         field_simp
-        <;> ring
+        <;> first | ring | (rw [← mul_pow]; norm_num)
   have hs : Summable (fun n : ℕ => ∑' q : neutralActualZetaDivisorDyadicBand n,
       neutralActualZetaDivisorQuadraticWeight q.val) :=
     Summable.of_nonneg_of_le (fun n => tsum_nonneg (fun q => by
