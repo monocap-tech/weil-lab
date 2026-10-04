@@ -116,11 +116,11 @@ theorem neutralLogPairSource_mixed_difference (a : ℝ) (z : ℂ)
   let c : ℂ := ((Real.sqrt 2)⁻¹ : ℂ)
   have hc : c ^ 2 = (1 / 2 : ℂ) := by
     dsimp [c]
-    rw [← Complex.ofReal_pow, inv_pow, Real.sq_sqrt (by norm_num)]
+    rw [inv_pow, ← Complex.ofReal_pow, Real.sq_sqrt (by norm_num)]
     norm_num
   rw [neutralLogPositivePairSource_inner, neutralLogPositivePairSource_inner,
     neutralLogNegativePairSource_inner, neutralLogNegativePairSource_inner]
-  simp only [map_mul, map_add, map_sub, Complex.conj_ofReal]
+  simp only [map_mul, map_add, map_sub, map_inv₀, Complex.conj_ofReal]
   calc
     _ = c ^ 2 * (2 *
       (conj (neutralWindowEvaluation a (conj z) (neutralLogPhysical f.val)) *
@@ -167,14 +167,14 @@ theorem neutralActualZetaGreenZeroForm_source_decomposition
   rw [← (neutralActualZetaGreenCanonical_positiveSource_mixed_summable a ha v w).tsum_sub
     (neutralActualZetaGreenCanonical_negativeSource_mixed_summable a ha v w)]
   have he : (∑' q : NeutralActualZetaDivisorCoordinate,
-      conj (inner ℂ (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q))
+      (conj (inner ℂ (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q))
           (neutralCanonicalToLogHilbert (neutralActualZetaGreenCanonical a ha v))) *
         inner ℂ (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q))
           (neutralCanonicalToLogHilbert (neutralActualZetaGreenCanonical a ha w)) -
       conj (inner ℂ (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q))
           (neutralCanonicalToLogHilbert (neutralActualZetaGreenCanonical a ha v))) *
         inner ℂ (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q))
-          (neutralCanonicalToLogHilbert (neutralActualZetaGreenCanonical a ha w))) =
+          (neutralCanonicalToLogHilbert (neutralActualZetaGreenCanonical a ha w)))) =
       ∑' q, (F q + R q) := by
     apply tsum_congr
     intro q

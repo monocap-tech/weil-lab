@@ -47,7 +47,6 @@ jobs:
             rpb108-log-growth-compiled-v1
             rpb108-mellin-manifest-final-v1
             rpb108-mellin-factorial-verified-v1
-            rpb108-mellin-representation-compiled-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
