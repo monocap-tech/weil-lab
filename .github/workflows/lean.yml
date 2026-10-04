@@ -36,8 +36,9 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-correlation-poles-verified-v1
+          key: rpb108-actual-correlation-regularity-verified-v1
           restore-keys: |
+            rpb108-actual-correlation-poles-verified-v1
             rpb108-actual-correlation-transform-verified-v1
             rpb108-actual-source-decomposition-verified-v1
             rpb108-actual-weil-zero-verified-v1
@@ -46,7 +47,6 @@ jobs:
             rpb108-actual-green-energy-verified-v1
             rpb108-actual-green-sampling-verified-v1
             rpb108-divisor-summability-compiled-v1
-            rpb108-log-growth-compiled-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
@@ -57,25 +57,23 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Check actual correlation poles
+      - name: Check actual correlation regularity
         shell: bash
         run: |
           git rev-parse HEAD
           git hash-object WeilDefect/Arithmetic/ActualZetaMellinRepresentation.lean
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaCorrelationPoles
+          lake build WeilDefect.Arithmetic.ActualZetaCorrelationRegularity
           lake build WeilDefect
-      - name: Inspect actual correlation poles axioms
+      - name: Inspect actual correlation regularity axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaCorrelationPoles
-          #print axioms WeilDefect.neutralWindowEvaluation_imaginary
-          #print axioms WeilDefect.neutralWindowCorrelation_imaginary
-          #print axioms WeilDefect.neutralWindowCorrelation_poleCrossTerms
-          #print axioms WeilDefect.neutralLogHilbertCorrelation_poleOperator
-          #print axioms WeilDefect.neutralLogHilbertCorrelation_poleDiagonal
-          #print axioms WeilDefect.neutralActualZetaGreenCorrelation_poleOperator
+          import WeilDefect.Arithmetic.ActualZetaCorrelationRegularity
+          #print axioms WeilDefect.neutralActualZetaGreenCorrelationSpectrum_integrable
+          #print axioms WeilDefect.neutralActualZetaGreenCorrelationSpectrum_secondMoment
+          #print axioms WeilDefect.neutralActualZetaGreenCorrelationSpectrum_moments
+          #print axioms WeilDefect.neutralActualZetaGreenCorrelationInverse_contDiff
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
@@ -94,4 +92,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-correlation-poles-verified-v1
+          key: rpb108-actual-correlation-regularity-verified-v1
