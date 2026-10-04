@@ -36,14 +36,14 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-background-finite-tests-verified-v1
+          key: rpb108-actual-background-gram-tests-verified-v1
           restore-keys: |
+            rpb108-actual-background-finite-tests-verified-v1
             rpb108-actual-carrier-factorization-verified-v1
             rpb108-actual-green-copy-observability-verified-v1
             rpb108-actual-green-graph-analysis-verified-v1
             rpb108-actual-green-packet-density-verified-v1
             rpb108-actual-green-graph-packets-verified-v1
-            rpb108-actual-green-closed-subspace-verified-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
@@ -54,26 +54,26 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual background finite tests
+      - name: Compile actual background Gram tests
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaBackgroundFiniteTests
+          lake build WeilDefect.Arithmetic.ActualZetaBackgroundGramTests
           lake build WeilDefect
-      - name: Audit actual background finite tests
+      - name: Audit actual background Gram tests
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaBackgroundFiniteTests
-          #print axioms WeilDefect.neutralActualZetaGreenBackgroundTest_hilbert
-          #print axioms WeilDefect.neutralActualZetaGreenBackgroundTest_continuous
-          #print axioms WeilDefect.neutralActualZetaGreenBackground_nonnegative_iff_lifts
-          #print axioms WeilDefect.neutralActualZetaGreenBackground_lifts_iff_finite
-          #print axioms WeilDefect.neutralActualZetaGreenBackground_factorization_iff_finite
-          #print axioms WeilDefect.neutralActualZetaGreenBackground_negative_iff_finite
-          #print axioms WeilDefect.neutralActualZetaGreenBackgroundTest_native
-          #print axioms WeilDefect.neutralActualZetaGreenBackground_no_factor_iff_finite_negative
+          import WeilDefect.Arithmetic.ActualZetaBackgroundGramTests
+          #print axioms WeilDefect.CarrierAudit.backgroundGram_diagonal
+          #print axioms WeilDefect.CarrierAudit.backgroundGram_hermitian
+          #print axioms WeilDefect.CarrierAudit.backgroundGram_cauchy_schwarz
+          #print axioms WeilDefect.neutralActualZetaBackgroundGram_diagonal
+          #print axioms WeilDefect.neutralActualZetaBackgroundGram_operator
+          #print axioms WeilDefect.neutralActualZetaBackgroundGram_synthesis_collision
+          #print axioms WeilDefect.neutralActualZetaBackgroundGram_cauchy_schwarz
+          #print axioms WeilDefect.neutralActualZetaBackgroundGram_violation_finite_negative
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -92,4 +92,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-background-finite-tests-verified-v1
+          key: rpb108-actual-background-gram-tests-verified-v1
