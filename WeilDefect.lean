@@ -218,3 +218,5 @@ import WeilDefect.Arithmetic.ActualZetaBackgroundFiniteTests
 import WeilDefect.Arithmetic.ActualZetaBackgroundGramTests
 
 import WeilDefect.Arithmetic.ActualZetaNativeSymbolSign
+
+import WeilDefect.Arithmetic.ActualZetaDistinctObservationRigidity
