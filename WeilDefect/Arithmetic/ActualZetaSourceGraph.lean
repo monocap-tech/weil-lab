@@ -41,7 +41,8 @@ def neutralActualZetaSourceGraphSubmodule (a : ℝ) :
     · change c * x.2.2 q = inner ℂ
         (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) (c • x.1)
       exact (congrArg (fun z : ℂ => c * z) (hx q).2).trans
-        (inner_smul_right _ _ _).symm
+        (inner_smul_right (𝕜 := ℂ)
+          (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) x.1 c).symm
 
 /-- Closure is proved coordinatewise, using bounded Hilbert source evaluation
 and continuous evaluation in ℓ². No retained-mode membership is assumed. -/
