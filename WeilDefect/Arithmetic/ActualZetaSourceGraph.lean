@@ -36,7 +36,8 @@ def neutralActualZetaSourceGraphSubmodule (a : ℝ) :
     · change c * x.2.1 q = inner ℂ
         (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) (c • x.1)
       exact (congrArg (fun z : ℂ => c * z) (hx q).1).trans
-        (inner_smul_right _ _ _).symm
+        (inner_smul_right (𝕜 := ℂ)
+          (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) x.1 c).symm
     · change c * x.2.2 q = inner ℂ
         (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) (c • x.1)
       exact (congrArg (fun z : ℂ => c * z) (hx q).2).trans
@@ -59,9 +60,15 @@ theorem neutralActualZetaSourceGraph_isClosed (a : ℝ) :
   have hn : Continuous (fun x : NeutralActualZetaSourceAmbient a => x.2.2 q) :=
       ((lp.evalCLM ℂ (fun _ : NeutralActualZetaDivisorCoordinate => ℂ) 2 q).continuous.comp
         (continuous_snd.comp continuous_snd))
+  have hfst : Continuous (fun x : NeutralActualZetaSourceAmbient a => x.1) :=
+    continuous_fst
+  have hcp : Continuous (fun _ : NeutralActualZetaSourceAmbient a =>
+      neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) := continuous_const
+  have hcn : Continuous (fun _ : NeutralActualZetaSourceAmbient a =>
+      neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) := continuous_const
   have hsp : Continuous (fun x : NeutralActualZetaSourceAmbient a =>
       inner ℂ (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) x.1) :=
-    continuous_const.inner (𝕜 := ℂ) continuous_fst
+    hcp.inner (𝕜 := ℂ) hfst
   have hsn : Continuous (fun x : NeutralActualZetaSourceAmbient a =>
       inner ℂ (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) x.1) :=
     continuous_const.inner (𝕜 := ℂ) continuous_fst
