@@ -173,3 +173,5 @@ import WeilDefect.Arithmetic.ActualZetaCorrelationRegularity
 import WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement
 
 import WeilDefect.Arithmetic.ActualZetaCorrelationInverseAttachment
+
+import WeilDefect.External.Zeta23.Theorems.Thm_Zeta23_WeilEF_EF_lit_zeta
