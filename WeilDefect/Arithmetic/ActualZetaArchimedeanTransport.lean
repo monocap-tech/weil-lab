@@ -57,9 +57,9 @@ theorem neutralActualZetaArchimedeanSymbol_bound :
           |Real.log Real.pi| := by
         exact norm_sub_le _ _
       _ ≤ ‖Complex.digamma z‖ + |Real.log Real.pi| :=
-        add_le_add_right (Complex.abs_re_le_norm _) _
+        by linarith [Complex.abs_re_le_norm (Complex.digamma z)]
       _ ≤ C * Real.log (2 + |z.im|) + |Real.log Real.pi| :=
-        add_le_add_right hd _
+        by linarith [hd]
       _ ≤ C * (2 + |r|) + |Real.log Real.pi| :=
         by linarith [mul_le_mul_of_nonneg_left hl hC.le]
   let D := C * (2 + 2 * Real.pi) + |Real.log Real.pi| + 1
