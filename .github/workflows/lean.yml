@@ -36,8 +36,9 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-green-graph-analysis-verified-v1
+          key: rpb108-actual-green-copy-observability-verified-v1
           restore-keys: |
+            rpb108-actual-green-graph-analysis-verified-v1
             rpb108-actual-green-packet-density-verified-v1
             rpb108-actual-green-graph-packets-verified-v1
             rpb108-actual-green-closed-subspace-verified-v1
@@ -62,24 +63,25 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual Green graph analysis
+      - name: Compile actual Green copy observability
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaGreenGraphAnalysis
+          lake build WeilDefect.Arithmetic.ActualZetaGreenCopyObservability
           lake build WeilDefect
-      - name: Audit actual Green graph analysis
+      - name: Audit actual Green copy observability
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaGreenGraphAnalysis
-          #print axioms WeilDefect.neutralActualZetaHilbertSource_inner_coordinates
-          #print axioms WeilDefect.neutralActualZetaGreenPacket_test_coordinates
-          #print axioms WeilDefect.neutralActualZetaGreenGraphAnalysis_duality
-          #print axioms WeilDefect.neutralActualZetaGreenGraphAnalysis_ker
-          #print axioms WeilDefect.neutralActualZetaGreenGraphAnalysis_eq_zero_iff_packets
-          #print axioms WeilDefect.neutralActualZetaGreenGraphClosure_mem_iff_analysis_kernel
+          import WeilDefect.Arithmetic.ActualZetaGreenCopyObservability
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_single
+          #print axioms WeilDefect.neutralActualZetaGreenPacketColumn_l2
+          #print axioms WeilDefect.neutralActualZetaGreenPacketColumn_eq_of_ordinate
+          #print axioms WeilDefect.neutralActualZetaGreenHilbertSource_collision
+          #print axioms WeilDefect.neutralActualZetaGreenCoefficient_collision_ne_zero
+          #print axioms WeilDefect.neutralActualZetaGreenGraphAnalysis_coordinate
+          #print axioms WeilDefect.neutralActualZetaGreenGraphAnalysis_same_ordinate
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -98,4 +100,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-green-graph-analysis-verified-v1
+          key: rpb108-actual-green-copy-observability-verified-v1
