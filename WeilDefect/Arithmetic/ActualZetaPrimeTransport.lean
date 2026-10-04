@@ -64,7 +64,7 @@ theorem neutralActualZetaGreenCorrelationInverse_spectral
 private theorem real_phase_integrable (f : ℝ → ℂ) (hf : Integrable f) (t : ℝ) :
     Integrable (fun ξ : ℝ => f ξ *
       Complex.exp (Complex.I * ((2 * Real.pi * t : ℝ) : ℂ) * (ξ : ℂ))) := by
-  apply hf.mul_bdd
+  apply hf.mul_bdd (c := 1)
     (show Continuous (fun ξ : ℝ =>
       Complex.exp (Complex.I * ((2 * Real.pi * t : ℝ) : ℂ) * (ξ : ℂ))) from by
         fun_prop).aestronglyMeasurable
@@ -133,6 +133,7 @@ private theorem prime_integrand_integrable
         ((ArithmeticFunction.vonMangoldt n / Real.sqrt n : ℝ) : ℂ)
   apply h.congr
   filter_upwards [] with ξ
+  simp only [Pi.add_apply]
   rw [pair_integrand, prime_integrand_eq]
 
 theorem neutralActualZetaGreenPrimeSummand_spectral
