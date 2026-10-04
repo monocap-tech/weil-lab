@@ -167,3 +167,5 @@ import WeilDefect.Arithmetic.ActualZetaSourceDecomposition
 import WeilDefect.Arithmetic.ActualZetaCorrelationTransform
 
 import WeilDefect.Arithmetic.ActualZetaCorrelationPoles
+
+import WeilDefect.Arithmetic.ActualZetaCorrelationRegularity
