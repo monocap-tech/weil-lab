@@ -154,3 +154,6 @@ import WeilDefect.Arithmetic.ActualZetaLogGrowth
 import WeilDefect.Arithmetic.ActualZetaDivisorSummability
 
 import WeilDefect.Arithmetic.ActualZetaGreenSampling
+
+import WeilDefect.Arithmetic.ActualZetaDyadicSummability
+import WeilDefect.Arithmetic.ActualZetaGreenEnergy
