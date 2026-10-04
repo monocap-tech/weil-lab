@@ -36,8 +36,9 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-raw-green-verified-v1
+          key: rpb108-actual-weil-zero-verified-v1
           restore-keys: |
+            rpb108-actual-raw-green-verified-v1
             rpb108-actual-green-canonical-verified-v1
             rpb108-actual-green-energy-verified-v1
             rpb108-actual-green-sampling-verified-v1
@@ -56,27 +57,25 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Check actual raw Green sampling
+      - name: Check actual Weil zero form
         shell: bash
         run: |
           git rev-parse HEAD
           git hash-object WeilDefect/Arithmetic/ActualZetaMellinRepresentation.lean
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaRawGreenSampling
+          lake build WeilDefect.Arithmetic.ActualZetaWeilZeroForm
           lake build WeilDefect
-      - name: Inspect actual raw Green sampling axioms
+      - name: Inspect actual Weil zero form axioms
         shell: bash
         run: |
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaRawGreenSampling
-          #print axioms WeilDefect.neutralWindowEvaluation_eq_inner
-          #print axioms WeilDefect.neutralActualZetaGreenColumn_windowDerivative
-          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_windowDerivative
-          #print axioms WeilDefect.neutralExponentialColumnL2_sq_bound
-          #print axioms WeilDefect.neutralWindowEvaluation_sq_bound
-          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_window_sq_le
-          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_window_sq_summable
-          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_window_mixed_summable
+          import WeilDefect.Arithmetic.ActualZetaWeilZeroForm
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_partner_sq_summable
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_partner_mixed_summable
+          #print axioms WeilDefect.neutralActualZetaGreenZeroForm_hermitian
+          #print axioms WeilDefect.neutralActualZetaGreenZeroForm_diagonal_im
+          #print axioms WeilDefect.neutralActualZetaGreenCanonical_negativeSource_sampling
+          #print axioms WeilDefect.neutralActualZetaGreenCanonical_negativeSource_sq_summable
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
@@ -95,4 +94,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-raw-green-verified-v1
+          key: rpb108-actual-weil-zero-verified-v1

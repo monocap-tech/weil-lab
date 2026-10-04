@@ -2557,3 +2557,41 @@ WD-T38 source/null attachment, central cancellation, background completion
 and F-4 remain open. Earlier residue is preserved. SOURCE stays off the
 critical path; threshold remains closed. Retained-mode spectral L²/operator
 domain membership is unproved and unassumed. RH remains open.
+
+
+## RPB-108 raw actual-divisor sampling of the constructed Green carrier — 2026-10-04 UTC
+
+Raw window evaluation is E(a,z,f)=integral over [-a,a] of f(x)exp(i*z*x).
+It now obeys i*z*E(G)=-E(D) for the actual full-divisor Green synthesis G
+and its constructed gradient D. This is derived by Dirichlet endpoint
+cancellation and passing the concrete column identities through convergent
+physical L² synthesis.
+
+The raw exponential-column norm bound on the ordinate strip implies
+|E(a,gamma(q),G)|²<=8*a*exp(a/2)²*||D||²/(1+|Im rho(q)|)² outside a finite
+low-height divisor window. The certified inverse-square weight therefore
+proves raw square sampling over every actual analytic multiplicity copy.
+Mixed raw evaluations of two such actual syntheses are absolutely summable.
+The sampling kernel is raw exponential; the input is the constructed Green
+synthesis. This does not establish raw sampling for every vector of the
+entire logarithmic form domain.
+
+Definitions:
+[raw sampling terminology](TERMINOLOGY_RPB108_ACTUAL_RAW_GREEN_SAMPLING.md).
+Proof, retained-witness boundary and validation:
+[raw actual sampling note](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_RAW_GREEN_SAMPLING_20261004.md).
+
+Exact candidate `029075a4d5fa0dca6e4c7c0b63e6846541d92b03` passed [run 37170307358](https://github.com/monocap-tech/weil-lab/actions/runs/37170307358), job `111341779278`: isolated module 9,025 jobs; full `lake build WeilDefect` 9,058 jobs. All eight theorem audits report only `[propext, Classical.choice, Quot.sound]`. The unfinished/project-axiom gate passed. Certified source and import are promoted separately from the validation workflow and dependency manifest.
+
+Next cursor: actual zero-side mixed-form to explicit-formula transport on
+this supported H¹ synthesis class, plus recovery of the retained coefficient/
+source dictionary and same-vector identity. The WD-T38 typed record still
+permits independently named density/Q and abstract P/C operators; the
+existing zero-density reindex audit shows its fields do not supply the
+missing physical-density/source attachment.
+
+WD-T38 source/null attachment, central cancellation, background completion
+and F-4 remain open. Sharp unit-height logarithmic counts and full log-domain
+raw sampling remain open. Earlier residue is preserved. SOURCE stays off
+the critical path; threshold stays closed. Retained-mode spectral L²/operator
+domain membership is unproved and unassumed. RH remains open.
