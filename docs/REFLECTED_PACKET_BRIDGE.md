@@ -1053,3 +1053,35 @@ See [actual Mellin comparison](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MELLI
 Exact candidate `bd69341e8aec0243e08381446c6d37ea17cf7aea` passed [run 37160286394](https://github.com/monocap-tech/weil-lab/actions/runs/37160286394), job `111312154237`. The isolated module and full `lake build WeilDefect` passed (3,205 and 9,049 jobs). All three theorem audits report only `[propext, Classical.choice, Quot.sound]`. The unfinished/project-axiom gate passed. Source, root import and terminology are promoted without the validation workflow.
 
 The runner saved the compiled project/dependency cache under `rpb108-mellin-growth-compiled-v1`. Reuse the existing validation branch and draft PR #35 for the next bounded analytic chunk, retaining access to this validation cache.
+
+### RPB-108: actual reflected Mellin identity and factorial envelope (2026-10-03)
+
+Mathlib's actual modified zero-parameter theta kernel is identified with
+the large-t tail plus its t^(-1/2)-weighted inverse. Both pieces are
+Mellin-convergent, and completedRiemannZeta₀(z) is exactly half the sum
+of the two actual tail integrals at z/2 and (1-z)/2.
+
+The actual completed term is bounded by the existing factorial moment
+bound on every natural-radius disk. Pole clearing gives the actual
+entire-function majorant
+A_n = n(n+1) C n!/(p/2)^n exp(-p/2)/(p/2) + 1.
+For 2(|T|+2) ≤ n, the actual circle envelope is at most A_n and the
+actual height-window multiplicity count is at most log(A_n)/log 2.
+Positive p and C come from the actual theta kernel; no divisor-count
+or spectral-domain premise is supplied.
+
+Next: choose a natural moment order proportional to |T|+1 and convert
+log(A_n) into a uniform O((|T|+1) log(|T|+2)) cumulative count bound.
+The logarithmic rate, local unit-height counts, bounded logarithmic-domain
+sampling and full Weil-form extension are not certified by this chunk.
+
+WD-T38 source/null attachment and enlarged central cancellation remain
+open. Spectral L2 unproved and unassumed; threshold closed; F-4 pending.
+RH standing unchanged.
+
+See [actual Mellin representation and envelope](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MELLIN_REPRESENTATION_20261003.md).
+
+
+Exact candidate `4fc7534156b635a6c2c1ff5841398d0642e496a7` passed [run 37162369635](https://github.com/monocap-tech/weil-lab/actions/runs/37162369635), job `111318270964`. The isolated representation, factorial envelope and full `lake build WeilDefect` passed (3,206, 9,007 and 9,051 jobs). All eleven new theorem audits report only `[propext, Classical.choice, Quot.sound]`. The unfinished/project-axiom gate passed.
+
+The theorem source, root imports, terminology and proof notes are promoted separately from the validation workflow and validation dependency manifest. The runner saved the full compiled project/dependency tree and its root manifest under `rpb108-mellin-manifest-final-v1`. Reuse draft PR #35 and the existing validation branch for the next bounded scalar-growth chunk, synchronizing the promoted head before further import changes.

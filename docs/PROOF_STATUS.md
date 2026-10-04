@@ -1,5 +1,32 @@
 # Proof Status
 
+### RPB-108: actual reflected Mellin identity and factorial envelope (2026-10-03)
+
+Mathlib's actual modified zero-parameter theta kernel is identified with
+the large-t tail plus its t^(-1/2)-weighted inverse. Both pieces are
+Mellin-convergent, and completedRiemannZeta₀(z) is exactly half the sum
+of the two actual tail integrals at z/2 and (1-z)/2.
+
+The actual completed term is bounded by the existing factorial moment
+bound on every natural-radius disk. Pole clearing gives the actual
+entire-function majorant
+A_n = n(n+1) C n!/(p/2)^n exp(-p/2)/(p/2) + 1.
+For 2(|T|+2) ≤ n, the actual circle envelope is at most A_n and the
+actual height-window multiplicity count is at most log(A_n)/log 2.
+Positive p and C come from the actual theta kernel; no divisor-count
+or spectral-domain premise is supplied.
+
+Next: choose a natural moment order proportional to |T|+1 and convert
+log(A_n) into a uniform O((|T|+1) log(|T|+2)) cumulative count bound.
+The logarithmic rate, local unit-height counts, bounded logarithmic-domain
+sampling and full Weil-form extension are not certified by this chunk.
+
+WD-T38 source/null attachment and enlarged central cancellation remain
+open. Spectral L2 unproved and unassumed; threshold closed; F-4 pending.
+RH standing unchanged.
+
+See [actual Mellin representation and envelope](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MELLIN_REPRESENTATION_20261003.md).
+
 ### RPB-108: actual complex Mellin tail comparison (2026-10-03)
 
 Actual theta moments now control complex Mellin tail integrals on (1,∞).
