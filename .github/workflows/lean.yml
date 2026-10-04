@@ -43,16 +43,6 @@ jobs:
             rpb108-actual-green-graph-packets-verified-v1
             rpb108-actual-green-closed-subspace-verified-v1
             rpb108-actual-green-graph-mixed-verified-v1
-            rpb108-actual-green-graph-closure-verified-v1
-            rpb108-actual-native-form-operator-verified-v1
-            rpb108-actual-canonical-native-energy-verified-v1
-            rpb108-actual-native-log-bounds-verified-v1
-            rpb108-actual-hilbert-source-graph-verified-v1
-            rpb108-actual-selected-background-verified-v1
-            rpb108-actual-source-graph-verified-v1
-            rpb108-retained-unit-gain-custody-verified-v1
-            rpb108-actual-native-source-attachment-verified-v1
-            rpb108-actual-native-weil-form-verified-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
