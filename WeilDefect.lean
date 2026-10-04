@@ -187,3 +187,5 @@ import WeilDefect.Arithmetic.ActualZetaArchimedeanTransport
 import WeilDefect.Arithmetic.ActualZetaNativeWeilForm
 
 import WeilDefect.Arithmetic.ActualZetaNativeSourceAttachment
+
+import WeilDefect.Arithmetic.ActualZetaSourceGraph
