@@ -72,6 +72,11 @@ jobs:
           #print axioms WeilDefect.neutralActualZetaGreenColumn_sq_summable
           #print axioms WeilDefect.neutralActualZetaGreenSample_sq_summable
           #print axioms WeilDefect.neutralActualZetaGreenSample_mixed_summable
+          #print axioms WeilDefect.neutralActualZetaLogGreenSample_sq_summable
+          #print axioms WeilDefect.neutralActualZetaLogGreenSample_mixed_summable
+          #print axioms WeilDefect.neutralActualZetaGreenSeries_summable
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_hasSum
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_inner
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
