@@ -171,3 +171,5 @@ import WeilDefect.Arithmetic.ActualZetaCorrelationPoles
 import WeilDefect.Arithmetic.ActualZetaCorrelationRegularity
 
 import WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement
+
+import WeilDefect.Arithmetic.ActualZetaCorrelationInverseAttachment
