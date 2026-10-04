@@ -19,18 +19,33 @@ private theorem inverse_correlation_pairing
   have hK : Integrable K := neutralWindowCorrelation_integrable a _ _
   have hS : Integrable S := neutralActualZetaGreenCorrelationSpectrum_integrable a v w
   have hi : (∫ x, u x * (𝓕⁻ S) x) = ∫ ξ, (𝓕⁻ u) ξ * S ξ := by
-    simpa [mul_comm] using!
-      VectorFourier.integral_bilin_fourierIntegral_eq_flip
-        (ContinuousLinearMap.mul ℂ ℂ) (L := -innerₗ ℝ)
-        Real.continuous_fourierChar (by fun_prop)
-        hS (show Integrable (u : ℝ → ℂ) volume from u.integrable)
+    have hF := VectorFourier.integral_bilin_fourierIntegral_eq_flip
+      (ContinuousLinearMap.mul ℂ ℂ) (L := -innerₗ ℝ)
+      Real.continuous_fourierChar (by fun_prop)
+      hS (show Integrable (u : ℝ → ℂ) volume from u.integrable)
+    have hflip : (-innerₗ ℝ).flip = -innerₗ ℝ := by
+      ext x y
+      change -(y * x) = -(x * y)
+      ring
+    rw [hflip] at hF
+    change (∫ ξ, (𝓕⁻ S) ξ * u ξ) =
+      ∫ x, S x * (𝓕⁻ (u : ℝ → ℂ)) x at hF
+    rw [← SchwartzMap.fourierInv_coe u] at hF
+    simpa only [mul_comm] using hF
   have hd : (∫ x, u x * K x) = ∫ ξ, (𝓕⁻ u) ξ * (𝓕 K) ξ := by
-    simpa using!
-      VectorFourier.integral_bilin_fourierIntegral_eq_flip
-        (ContinuousLinearMap.mul ℂ ℂ) (L := innerₗ ℝ)
-        Real.continuous_fourierChar continuous_inner
-        (show Integrable ((𝓕⁻ u : SchwartzMap ℝ ℂ) : ℝ → ℂ) volume
-          from (𝓕⁻ u : SchwartzMap ℝ ℂ).integrable) hK
+    have hF := VectorFourier.integral_bilin_fourierIntegral_eq_flip
+      (ContinuousLinearMap.mul ℂ ℂ) (L := innerₗ ℝ)
+      Real.continuous_fourierChar continuous_inner
+      (show Integrable ((𝓕⁻ u : SchwartzMap ℝ ℂ) : ℝ → ℂ) volume
+        from (𝓕⁻ u : SchwartzMap ℝ ℂ).integrable) hK
+    have hflip : (innerₗ ℝ).flip = innerₗ ℝ := by
+      ext x y
+      change y * x = x * y
+      ring
+    rw [hflip] at hF
+    change (∫ ξ, (𝓕 (𝓕⁻ u : SchwartzMap ℝ ℂ)) ξ * K ξ) =
+      ∫ x, (𝓕⁻ u) x * (𝓕 K) x at hF
+    simpa only [fourier_fourierInv_eq] using hF
   change (∫ x, u x * (𝓕⁻ S) x) = ∫ x, u x * K x
   rw [hi, hd]
   apply integral_congr_ae
@@ -74,7 +89,7 @@ theorem neutralActualZetaGreenCorrelationInverse_supported
     exact neutralWindowCorrelation_supported a _ _ x hout
   exact Measure.eqOn_open_of_ae_eq hz isClosed_Icc.isOpen_compl
     (neutralActualZetaGreenCorrelationInverse_contDiff a ha v w).continuous.continuousOn
-    continuous_const.continuousOn t ht
+    continuous_const.continuousOn ht
 
 /-- The proved C² inverse representative has the exact doubled compact window. -/
 theorem neutralActualZetaGreenCorrelationInverse_hasCompactSupport
