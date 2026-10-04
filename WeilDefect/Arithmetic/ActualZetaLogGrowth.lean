@@ -28,7 +28,7 @@ theorem neutralActualZetaFactorialMajorant_log_bound
   have hD : 0 < D := by dsimp [D]; positivity
   refine ⟨D, hD, fun n => ?_⟩
   let x : ℝ := (n : ℝ) + 1
-  have hx : 1 ≤ x := by dsimp [x]; linarith [Nat.cast_nonneg (R := ℝ) n]
+  have hx : 1 ≤ x := by dsimp [x]; linarith [Nat.cast_nonneg (α := ℝ) n]
   have hxpos : 0 < x := lt_of_lt_of_le zero_lt_one hx
   have hn : 0 ≤ (n : ℝ) := Nat.cast_nonneg n
   have hf : (n.factorial : ℝ) ≤ x ^ n := by
@@ -156,7 +156,7 @@ theorem neutralActualZetaDivisorHeightWindow_card_le_log_growth :
     nlinarith only [h, hlog7]
   have hmul : ((n : ℝ) + 1) * Real.log ((n : ℝ) + 2) ≤
       (6 * (|T| + 1)) * (D * Real.log (|T| + 2)) :=
-    mul_le_mul hn1 hnlog (Real.log_nonneg (by have := Nat.cast_nonneg (R := ℝ) n; linarith)) (by positivity)
+    mul_le_mul hn1 hnlog (Real.log_nonneg (by have := Nat.cast_nonneg (α := ℝ) n; linarith)) (by positivity)
   calc
     _ ≤ K * ((n : ℝ) + 1) * Real.log ((n : ℝ) + 2) := hcount T n hnlo
     _ = K * (((n : ℝ) + 1) * Real.log ((n : ℝ) + 2)) := by ring
