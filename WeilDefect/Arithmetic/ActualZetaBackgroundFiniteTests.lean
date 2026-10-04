@@ -45,7 +45,14 @@ theorem neutralActualZetaGreenBackgroundTest_continuous (a : ℝ) (ha : 0 < a)
     (neutralActualZetaGreenHilbertSourceContinuous a ha).continuous).norm.pow 2
   have hb := ((neutralActualZetaHilbertBackgroundAnalysis a s).continuous.comp
     (neutralActualZetaGreenHilbertSourceContinuous a ha).continuous).norm.pow 2
-  simpa only [neutralActualZetaGreenBackgroundTest_hilbert] using hp.sub hb
+  have he : neutralActualZetaGreenBackgroundTest a ha s = fun v =>
+      ‖neutralActualZetaHilbertPositiveAnalysis a
+        (neutralActualZetaGreenHilbertSourceContinuous a ha v)‖ ^ 2 -
+      ‖neutralActualZetaHilbertBackgroundAnalysis a s
+        (neutralActualZetaGreenHilbertSourceContinuous a ha v)‖ ^ 2 :=
+    funext (neutralActualZetaGreenBackgroundTest_hilbert a ha s)
+  rw [he]
+  exact hp.sub hb
 
 /-- Positivity on the certified completion is exactly positivity on actual
 Green lifts, by continuity in the full source graph topology. -/
@@ -106,7 +113,7 @@ theorem neutralActualZetaGreenBackground_lifts_iff_finite
           neutralActualZetaFiniteCoefficients t (fun q => v q))
         atTop (𝓝 v) := lp.hasSum_single ENNReal.ofNat_ne_top v
     have hq := (neutralActualZetaGreenBackgroundTest_continuous a ha s).continuousAt.tendsto.comp hv
-    exact le_of_tendsto hq (Eventually.of_forall fun t => h t (fun q => v q))
+    exact ge_of_tendsto hq (Eventually.of_forall fun t => h t (fun q => v q))
 
 /-- Exact finite test criterion for the unique WD-T10 background contraction
 on the relevant positive completion. No extra representation input remains. -/
@@ -139,7 +146,7 @@ theorem neutralActualZetaGreenBackground_negative_iff_finite
   have h := (neutralActualZetaGreenBackground_nonnegative_iff_lifts a ha s).trans
     (neutralActualZetaGreenBackground_lifts_iff_finite a ha s)
   have hn := not_congr h
-  push_neg at hn
+  push Not at hn
   exact hn
 
 /-- No unit background factor exists exactly when a finite actual packet
