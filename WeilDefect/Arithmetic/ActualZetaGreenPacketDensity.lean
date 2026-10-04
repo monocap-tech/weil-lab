@@ -5,7 +5,6 @@ noncomputable section
 open ContinuousLinearMap InnerProductSpace
 open scoped InnerProduct
 set_option maxHeartbeats 800000
-set_option synthInstance.maxHeartbeats 200000
 set_option backward.isDefEq.respectTransparency false
 local instance : DecidableEq NeutralActualZetaDivisorCoordinate := Classical.decEq _
 
@@ -42,9 +41,12 @@ theorem neutralActualZetaGreenHilbertSourceLift_mem_packetClosedSpan
     (a : ℝ) (ha : 0 < a) (v : NeutralActualZetaGreenCoefficients) :
     neutralActualZetaGreenHilbertSourceLift a ha v ∈
       neutralActualZetaGreenPacketClosedSpan a ha := by
-  rw [← (neutralActualZetaGreenHilbertSource_hasSum_packets a ha v).tsum_eq]
-  apply tsum_mem (neutralActualZetaGreenPacketClosedSpan a ha).isClosed
-  intro q
+  apply (neutralActualZetaGreenPacketClosedSpan a ha).isClosed.mem_of_tendsto
+    (neutralActualZetaGreenHilbertSource_hasSum_packets a ha v)
+  apply Filter.Eventually.of_forall
+  intro s
+  apply (neutralActualZetaGreenPacketClosedSpan a ha).toSubmodule.sum_mem
+  intro q hq
   rw [neutralActualZetaGreenPacket_single_scalar]
   apply (neutralActualZetaGreenPacketClosedSpan a ha).toSubmodule.smul_mem
   exact (neutralActualZetaGreenPacketSpan a ha).le_topologicalClosure
