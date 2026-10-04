@@ -56,7 +56,7 @@ theorem neutralActualZetaGreenSynthesis_smul (a : ℝ) (ha : 0 < a)
     neutralActualZetaGreenSynthesis a (c • v) = c • neutralActualZetaGreenSynthesis a v := by
   unfold neutralActualZetaGreenSynthesis
   simp only [lp.coeFn_smul, Pi.smul_apply, smul_smul]
-  exact tsum_smul c (fun q => v q • neutralActualZetaGreenColumn a q)
+  exact Summable.tsum_const_smul c (neutralActualZetaGreenSeries_summable a ha v)
 
 /-- Actual canonical Green attachment is linear on the full coefficient
 space. No boundedness in the source graph norm is assumed. -/
