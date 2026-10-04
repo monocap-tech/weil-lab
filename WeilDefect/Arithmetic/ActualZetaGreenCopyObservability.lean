@@ -67,8 +67,17 @@ theorem neutralActualZetaGreenGraphAnalysis_coordinate
       inner ℂ (neutralActualZetaGreenPacketColumn a ha q) f := by
   have h := neutralActualZetaGreenGraphAnalysis_duality a ha f (lp.single 2 q 1)
   rw [lp.inner_single_right] at h
-  simpa [RCLike.inner_apply', inner_conj_symm, neutralActualZetaGreenPacketColumn] using
-    congrArg (starRingEnd ℂ) h
+  have h' : (starRingEnd ℂ) (neutralActualZetaGreenGraphAnalysis a ha f q) =
+      inner ℂ f (neutralActualZetaGreenPacketColumn a ha q) := by
+    simpa [RCLike.inner_apply', neutralActualZetaGreenPacketColumn] using h
+  calc
+    neutralActualZetaGreenGraphAnalysis a ha f q =
+        (starRingEnd ℂ) ((starRingEnd ℂ) (neutralActualZetaGreenGraphAnalysis a ha f q)) := by
+      simp
+    _ = (starRingEnd ℂ) (inner ℂ f (neutralActualZetaGreenPacketColumn a ha q)) :=
+      congrArg (starRingEnd ℂ) h'
+    _ = inner ℂ (neutralActualZetaGreenPacketColumn a ha q) f :=
+      inner_conj_symm (𝕜 := ℂ) _ _
 
 /-- Actual analysis observations are constant across copies at the same
 ordinate, although every copy remains in the coefficient-energy sums. -/
