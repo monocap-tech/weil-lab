@@ -348,7 +348,7 @@ lemma ZetaSum_aux1 {a b : ℕ} {s : ℂ} (s_ne_one : s ≠ 1) (s_ne_zero : s ≠
 
 
 
-lemma ZetaSum_aux1_3 (x : ℝ) : ‖(⌊x⌋ + 1/2 - x)‖ ≤ 1/2 :=
+private lemma ZetaSum_aux1_3 (x : ℝ) : ‖(⌊x⌋ + 1/2 - x)‖ ≤ 1/2 :=
   abs_le.mpr ⟨(by linarith [Int.lt_floor_add_one x]), (by linarith [Int.floor_le x])⟩
 
 
@@ -392,7 +392,7 @@ lemma Complex.cpow_inv_tendsto {s : ℂ} (hs : 0 < s.re) :
   apply Filter.Tendsto.inv_tendsto_atTop
   exact (tendsto_rpow_atTop hs).comp tendsto_natCast_atTop_atTop
 
-lemma ZetaSum_aux2a : ∃ C, ∀ (x : ℝ), ‖⌊x⌋ + 1 / 2 - x‖ ≤ C := by
+private lemma ZetaSum_aux2a : ∃ C, ∀ (x : ℝ), ‖⌊x⌋ + 1 / 2 - x‖ ≤ C := by
   use 1 / 2; exact ZetaSum_aux1_3
 
 lemma ZetaSum_aux3 {N : ℕ} {s : ℂ} (s_re_gt : 1 < s.re) :
@@ -407,7 +407,7 @@ lemma ZetaSum_aux3 {N : ℕ} {s : ℂ} (s_re_gt : 1 < s.re) :
   · congr; ext n; simp only [one_div, Nat.cast_add, Nat.cast_one, f]
   · rwa [summable_nat_add_iff (k := 1)]
 
-lemma integrableOn_of_Zeta0_fun {N : ℕ} (N_pos : 0 < N) {s : ℂ} (s_re_gt : 0 < s.re) :
+private lemma integrableOn_of_Zeta0_fun {N : ℕ} (N_pos : 0 < N) {s : ℂ} (s_re_gt : 0 < s.re) :
     MeasureTheory.IntegrableOn (fun (x : ℝ) ↦ (⌊x⌋ + 1 / 2 - x) * (x : ℂ) ^ (-(s + 1))) (Ioi N)
     MeasureTheory.volume := by
   obtain ⟨c, hc⟩ := ZetaSum_aux2a

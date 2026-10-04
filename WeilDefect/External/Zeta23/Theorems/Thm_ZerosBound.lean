@@ -153,7 +153,7 @@ theorem ZerosBound {B r R : ℝ} {f : ℂ → ℂ}
       = ∏ ρ ∈ (finiteSetOfZeros_mono r_lt_one finiteZeros).toFinset, (R / r) ^ analyticOrderNatAt f ρ := by
         rw [Finset.prod_pow_eq_pow_sum]
     _ ≤ ∏ ρ ∈ (finiteSetOfZeros_mono r_lt_one finiteZeros).toFinset, (R / ‖ρ‖) ^ analyticOrderNatAt f ρ := by
-      apply Finset.prod_le_prod
+      apply Finset.prod_le_prod₀
       · intro ρ _
         exact pow_nonneg (div_nonneg (le_of_lt R_pos) (le_of_lt r_pos)) _
       · intro ρ hρ

@@ -115,6 +115,10 @@ lemma f_eq_prod_mul_Cf {f : ℂ → ℂ} {r : ℝ} (hr1 : r < 1) (hfin : (SetOfZ
 (Mathlib's `logDeriv_prod` + `logDeriv_fun_pow`). -/
 lemma logDeriv_zero_prod {s : Finset ℂ} {m : ℂ → ℕ} {z : ℂ} (hz : ∀ ρ ∈ s, z ≠ ρ) :
     logDeriv (fun w => ∏ ρ ∈ s, (w - ρ) ^ m ρ) z = ∑ ρ ∈ s, (m ρ : ℂ) / (z - ρ) := by
+  rw [show (fun w => ∏ ρ ∈ s, (w - ρ) ^ m ρ) =
+      ∏ ρ ∈ s, (fun w : ℂ => (w - ρ) ^ m ρ) from by
+        ext w
+        simp only [Finset.prod_apply]]
   rw [logDeriv_prod (f := fun ρ w => (w - ρ) ^ m ρ)
     (fun ρ hρ => pow_ne_zero _ (sub_ne_zero.mpr (hz ρ hρ))) (fun ρ _ => by fun_prop)]
   refine Finset.sum_congr rfl fun ρ _ => ?_

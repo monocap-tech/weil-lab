@@ -61,7 +61,7 @@ namespace DigammaSeries
 open Complex Filter Topology
 
 
-lemma one_add_wTerm (n : ℕ) (z : ℂ) :
+private lemma one_add_wTerm (n : ℕ) (z : ℂ) :
     1 + wTerm n z = (1 + z / (n + 1)) * Complex.exp (-(z / (n + 1))) := by
   unfold wTerm
   ring

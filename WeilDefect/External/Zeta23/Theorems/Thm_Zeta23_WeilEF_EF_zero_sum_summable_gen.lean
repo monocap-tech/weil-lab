@@ -183,7 +183,7 @@ open Complex Set Filter MeasureTheory
 
 /-! ### γ_ρ bookkeeping -/
 
-lemma gammaOf_re (ρ : ℂ) : (gammaOf ρ).re = ρ.im := by
+private lemma gammaOf_re (ρ : ℂ) : (gammaOf ρ).re = ρ.im := by
   simp [gammaOf, Complex.div_I]
 
 lemma gammaOf_im (ρ : ℂ) : (gammaOf ρ).im = 1 / 2 - ρ.re := by

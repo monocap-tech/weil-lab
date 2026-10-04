@@ -54,12 +54,12 @@ end Rectangle
 
 
 @[simp]
-theorem preimage_equivRealProdCLM_reProdIm (s t : Set ℝ) :
+private theorem preimage_equivRealProdCLM_reProdIm (s t : Set ℝ) :
     equivRealProdCLM.symm ⁻¹' (s ×ℂ t) = s ×ˢ t :=
   rfl
 
 @[simp]
-theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm {R : Type*} {S : Type*} [Semiring R]
+private theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm {R : Type*} {S : Type*} [Semiring R]
     [Semiring S] {σ : R →+* S} {σ' : S →+* R} [RingHomInvPair σ σ'] [RingHomInvPair σ' σ]
     (M : Type*) [TopologicalSpace M]
     [AddCommMonoid M] {M₂ : Type*} [TopologicalSpace M₂] [AddCommMonoid M₂] [Module R M]
@@ -85,7 +85,7 @@ theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm {R : Type*} {S : Type*} [Se
 
 
 
-lemma rectangle_mem_nhds_iff {z w p : ℂ} :
+private lemma rectangle_mem_nhds_iff {z w p : ℂ} :
     Rectangle z w ∈ 𝓝 p ↔ p ∈ (Set.uIoo z.re w.re) ×ℂ (Set.uIoo z.im w.im) := by
   simp_rw [← mem_interior_iff_mem_nhds, Rectangle, Complex.interior_reProdIm, uIoo, uIcc,
     interior_Icc]
@@ -244,7 +244,9 @@ theorem Zeta23.Analytic.rectangleIntegralPrime_mul_logDeriv_of_poles {f g : ℂ 
           have e1 : logDeriv f s
               = logDeriv (fun s => (s - q) ^ analyticOrderNatAt f q * h s) s := by
             simp only [logDeriv_apply, hfs.deriv_eq, hfs.self_of_nhds, smul_eq_mul]
-          rw [e1, logDeriv_mul (f := fun s : ℂ => (s - q) ^ analyticOrderNatAt f q) (g := h) s
+          rw [e1]
+          change logDeriv ((fun s : ℂ => (s - q) ^ analyticOrderNatAt f q) * h) s = _
+          rw [logDeriv_mul (f := fun s : ℂ => (s - q) ^ analyticOrderNatAt f q) (g := h) s
             (pow_ne_zero _ hsq) hhs (by fun_prop) hhas.differentiableAt]
           have e2 : logDeriv (fun s : ℂ => (s - q) ^ analyticOrderNatAt f q) s
               = (analyticOrderNatAt f q : ℂ) / (s - q) := by
@@ -308,7 +310,9 @@ theorem Zeta23.Analytic.rectangleIntegralPrime_mul_logDeriv_of_poles {f g : ℂ 
         have hfs : f s ≠ 0 := fun h => hFs (by simp [hF, h])
         have hfd : DifferentiableAt ℂ f s := (hf s hsRP).differentiableAt
         have hldF : logDeriv F s = (m q : ℂ) / (s - q) + logDeriv f s := by
-          rw [hF, logDeriv_mul (f := fun s : ℂ => (s - q) ^ m q) (g := f) s
+          rw [hF]
+          change logDeriv ((fun s : ℂ => (s - q) ^ m q) * f) s = _
+          rw [logDeriv_mul (f := fun s : ℂ => (s - q) ^ m q) (g := f) s
             (pow_ne_zero _ hsq') hfs (by fun_prop) hfd]
           have e2 : logDeriv (fun s : ℂ => (s - q) ^ m q) s = (m q : ℂ) / (s - q) := by
             rw [show (fun s : ℂ => (s - q) ^ m q) = (fun x : ℂ => x ^ m q) ∘ (fun s => s - q)
