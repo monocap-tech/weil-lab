@@ -204,7 +204,6 @@ theorem neutralActualZetaGreenBackground_factorization_iff (a : ℝ) (ha : 0 < a
         norm_nonneg (neutralActualZetaGreenBackgroundObservation a ha s f)]
   exact he.trans (domination_iff_unique_contraction _ _)
 
-set_option backward.isDefEq.respectTransparency true in
 /-- After the exact positivity test, WD-T10 factors the actual background
 operator itself, not merely a replacement representation. -/
 theorem neutralActualZetaBackground_operator_wdt10 (a : ℝ)
@@ -221,12 +220,8 @@ theorem neutralActualZetaBackground_operator_wdt10 (a : ℝ)
             ((observationMap (neutralActualZetaHilbertPositiveAnalysis a))†) X ∘L
           (WDT10.effectivePositive
             ((observationMap (neutralActualZetaHilbertPositiveAnalysis a))†) X)† := by
-  apply Exists.imp _ (neutralActualZetaBackground_wdt10_of_nonnegative a s h)
-  intro X hX
-  refine ⟨hX.1, hX.2.1, ?_⟩
-  have hc := hX.2.2
-  rw [observation_covariance] at hc
-  exact hc
+  simpa only [observation_covariance, neutralActualZetaHilbertBackgroundOperator] using
+    neutralActualZetaBackground_wdt10_of_nonnegative a s h
 
 end
 end WeilDefect
