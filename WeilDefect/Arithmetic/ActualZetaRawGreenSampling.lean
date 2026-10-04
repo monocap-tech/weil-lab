@@ -112,7 +112,7 @@ theorem neutralExponentialColumnL2_sq_bound (a : ℝ) (ha : 0 < a) (z : ℂ)
       ((neutralExponentialColumn_memLp a z).toLp (neutralExponentialColumn a z) x) = _
     rw [hx]
     by_cases hmem : x ∈ Set.Icc (-a) a <;>
-      simp [neutralExponentialColumn, g, hmem, RCLike.inner_apply', mul_comm, Complex.mul_conj]
+      simp [neutralExponentialColumn, g, hmem, RCLike.inner_apply', mul_comm, Complex.mul_conj, Complex.normSq_eq_norm_sq]
   have he : ‖neutralExponentialColumnL2 a z‖ ^ 2 =
       ‖∫ x in -a..a, conj (g x) * g x‖ := by
     rw [intervalIntegral.integral_of_le (by linarith : -a ≤ a),
@@ -194,6 +194,25 @@ theorem neutralActualZetaGreenSynthesis_window_sq_summable (a : ℝ) (ha : 0 < a
     ‖neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
       (neutralActualZetaGreenSynthesis a v)‖)]
   exact neutralActualZetaGreenSynthesis_window_sq_le a ha v q hh
+
+/-- Mixed raw evaluations of two actual Green syntheses converge absolutely. -/
+theorem neutralActualZetaGreenSynthesis_window_mixed_summable (a : ℝ) (ha : 0 < a)
+    (v w : NeutralActualZetaGreenCoefficients) :
+    Summable (fun q : NeutralActualZetaDivisorCoordinate =>
+      conj (neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
+        (neutralActualZetaGreenSynthesis a v)) *
+      neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
+        (neutralActualZetaGreenSynthesis a w)) := by
+  apply Summable.of_norm_bounded
+    ((neutralActualZetaGreenSynthesis_window_sq_summable a ha v).add
+      (neutralActualZetaGreenSynthesis_window_sq_summable a ha w))
+  intro q
+  rw [norm_mul, Complex.norm_conj]
+  nlinarith only [sq_nonneg
+    (‖neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
+        (neutralActualZetaGreenSynthesis a v)‖ -
+      ‖neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
+        (neutralActualZetaGreenSynthesis a w)‖)]
 
 end
 end WeilDefect
