@@ -1691,3 +1691,25 @@ completion and F-4 remain open. SOURCE traversal stays off the critical path;
 threshold stays closed; spectral L2 remains unproved/unassumed; RH remains open.
 
 See [logarithmic growth and recovered residue](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LOG_GROWTH_20261004.md).
+
+
+### RPB-108: full actual-divisor quartic summability (2026-10-04 UTC)
+
+The actual multiplicity divisor now has a unique finite unit-band partition
+and a certified summable weight `1/(1+|Im rho|)^4`. Coarse band counts
+`card(band n) <= A(n+1)^2` follow from the actual cumulative growth theorem.
+Each band contributes at most `A/(n+1)^2`; the nonnegative partition theorem
+proves the full sum converges. Complex samples bounded by a multiple of
+this weight are absolutely summable. The weight theorem is unconditional;
+the analytic decay of a particular sample family remains to be attached.
+
+Exact candidate `57cedf4573225a2eb2d993ca7a4b93ff02dd926b` passed [run 37166971973](https://github.com/monocap-tech/weil-lab/actions/runs/37166971973), job `111331807032`. The isolated module and full `lake build WeilDefect` passed (9,009 and 9,053 jobs). All eight theorem audits report only `[propext, Classical.choice, Quot.sound]`; the unfinished/project-axiom gate passed. Certified source and imports are promoted separately from the validation workflow and dependency manifest.
+
+Next: attach concrete window-test decay and mixed sample/form convergence.
+Sharp local logarithmic counts and bounded sampling on the entire canonical
+logarithmic form domain remain open. WD-T38 source/null attachment, enlarged
+central cancellation, background completion and F-4 remain open. SOURCE stays
+off the critical path; threshold stays closed; spectral L2 is unproved/unassumed;
+RH remains open.
+
+See [full actual-divisor summability](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_DIVISOR_SUMMABILITY_20261004.md).
