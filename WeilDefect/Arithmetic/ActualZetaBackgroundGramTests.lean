@@ -19,8 +19,8 @@ def backgroundGram (A : D →L[ℂ] E) (B : D →L[ℂ] F) (u v : D) : ℂ :=
 
 theorem backgroundGram_diagonal (A : D →L[ℂ] E) (B : D →L[ℂ] F) (u : D) :
     (backgroundGram A B u u).re = ‖A u‖ ^ 2 - ‖B u‖ ^ 2 := by
-  simp only [backgroundGram, inner_self_eq_norm_sq_to_K, map_sub,
-    RCLike.re_ofReal_pow]
+  simp only [backgroundGram, inner_self_eq_norm_sq_to_K, Complex.sub_re,
+    ← Complex.ofReal_pow, Complex.ofReal_re]
 
 theorem backgroundGram_hermitian (A : D →L[ℂ] E) (B : D →L[ℂ] F) (u v : D) :
     backgroundGram A B u v = conj (backgroundGram A B v u) := by
@@ -37,19 +37,21 @@ theorem backgroundGram_cauchy_schwarz (A : D →L[ℂ] E) (B : D →L[ℂ] F)
   have hc' : A† ∘L A - B† ∘L B = R ∘L R† := by
     rw [← observation_covariance A]
     exact hc
-  have hi (x y : D) : backgroundGram A B x y = inner ℂ (R† x) (R† y) := by
+  have hi (x y : D) : backgroundGram A B x y = inner ℂ ((R†) x) ((R†) y) := by
     calc
       _ = inner ℂ x ((A† ∘L A - B† ∘L B) y) := by
         simp only [backgroundGram, sub_apply, comp_apply, inner_sub_right,
           adjoint_inner_right]
       _ = inner ℂ x ((R ∘L R†) y) := by rw [hc']
-      _ = _ := by simp only [comp_apply, adjoint_inner_right]
+      _ = _ := by
+        simp only [comp_apply]
+        exact (adjoint_inner_left R ((R†) y) x).symm
   rw [hi u v, hi u u, hi v v, inner_self_eq_norm_sq_to_K,
-    inner_self_eq_norm_sq_to_K, RCLike.re_ofReal_pow, RCLike.re_ofReal_pow]
-  have hn := norm_inner_le_norm (𝕜 := ℂ) (R† u) (R† v)
+    inner_self_eq_norm_sq_to_K, ← Complex.ofReal_pow, Complex.ofReal_re]
+  have hn := norm_inner_le_norm (𝕜 := ℂ) ((R†) u) ((R†) v)
   have hp := mul_nonneg (sub_nonneg.mpr hn)
-    (add_nonneg (norm_nonneg (inner ℂ (R† u) (R† v)))
-      (mul_nonneg (norm_nonneg (R† u)) (norm_nonneg (R† v))))
+    (add_nonneg (norm_nonneg (inner ℂ ((R†) u) ((R†) v)))
+      (mul_nonneg (norm_nonneg ((R†) u)) (norm_nonneg ((R†) v))))
   nlinarith
 
 end CarrierAudit
