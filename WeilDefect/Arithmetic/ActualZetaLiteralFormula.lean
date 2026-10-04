@@ -96,11 +96,15 @@ theorem neutralActualZetaGreenZeroForm_arithmetic
           (neutralCanonicalToLogHilbert (neutralActualZetaGreenCanonical a ha w))) -
       neutralActualZetaGreenPrimeForm a v w + neutralActualZetaGreenArchimedeanForm a v w := by
   rw [← neutralActualZetaGreenCorrelationInverse_poleOperator a ha v w]
+  have hp : Complex.I * (((1 / 2 : ℝ)) : ℂ) = Complex.I / 2 := by
+    push_cast
+    ring
+  have hm : Complex.I * ((-(1 / 2 : ℝ)) : ℂ) = -Complex.I / 2 := by
+    push_cast
+    ring
+  rw [hp, hm]
   simpa only [Zeta23.EF.literatureRHS, neutralActualZetaGreenPrimeForm,
-    neutralActualZetaGreenArchimedeanForm, neutralRawTransform_eq_paperFT,
-    Complex.ofReal_div, Complex.ofReal_one, Complex.ofReal_ofNat,
-    Complex.ofReal_neg, mul_div_assoc, mul_one, mul_neg, neg_div,
-    div_eq_mul_inv, one_mul] using
+    neutralActualZetaGreenArchimedeanForm, neutralRawTransform_eq_paperFT] using
       neutralActualZetaGreenZeroForm_literature a ha v w
 
 end
