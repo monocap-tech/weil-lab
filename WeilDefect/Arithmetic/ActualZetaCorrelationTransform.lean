@@ -35,7 +35,7 @@ because the raw L² input is restricted to a finite compact window. -/
 theorem neutralWindowRepresentative_twist_integrable (a : ℝ) (f : RealComplexL2) (z : ℂ) :
     Integrable (fun x : ℝ => neutralWindowRepresentative a f x *
       Complex.exp (Complex.I * z * (x : ℂ))) := by
-  have hf := (f.memLp.locallyIntegrable (by norm_num : (1 : ℝ≥0∞) ≤ 2)).integrableOn_isCompact
+  have hf := ((Lp.memLp f).locallyIntegrable (by norm_num)).integrableOn_isCompact
     (isCompact_Icc : IsCompact (Set.Icc (-a) a))
   have he : Continuous (fun x : ℝ => Complex.exp (Complex.I * z * (x : ℂ))) := by fun_prop
   have hi := (hf.mul_continuousOn he.continuousOn isCompact_Icc).integrable_indicator
@@ -86,12 +86,16 @@ theorem neutralWindowCorrelation_integrable (a : ℝ) (f g : RealComplexL2) :
     Integrable (neutralWindowCorrelation a f g) := by
   rw [correlation_eq_convolution]
   exact (windowRepresentative_integrable a g).integrable_convolution
-    (ContinuousLinearMap.mul ℂ ℂ) ((windowRepresentative_integrable a f).star.comp_neg)
+    (ContinuousLinearMap.mul ℂ ℂ)
+    ((Complex.conjCLE.toContinuousLinearMap.integrable_comp
+      (windowRepresentative_integrable a f)).comp_neg)
 
 private theorem reflected_twist_integral (a : ℝ) (f : RealComplexL2) (z : ℂ) :
     (∫ x : ℝ, conj (neutralWindowRepresentative a f (-x) *
       Complex.exp (Complex.I * conj z * ((-x : ℝ) : ℂ)))) =
       conj (neutralWindowEvaluation a (conj z) f) := by
+  change (∫ x : ℝ, (fun y : ℝ => conj (neutralWindowRepresentative a f y *
+    Complex.exp (Complex.I * conj z * (y : ℂ)))) (-x)) = _
   rw [integral_neg_eq_self, integral_conj]
   exact congrArg (starRingEnd ℂ) (rawTransform_window a f (conj z))
 
@@ -105,7 +109,8 @@ theorem neutralWindowCorrelation_rawTransform (a : ℝ) (f g : RealComplexL2) (z
     Complex.exp (Complex.I * conj z * ((-x : ℝ) : ℂ)))
   have hG : Integrable G := neutralWindowRepresentative_twist_integrable a g z
   have hF : Integrable F :=
-    (neutralWindowRepresentative_twist_integrable a f (conj z)).star.comp_neg
+    (Complex.conjCLE.toContinuousLinearMap.integrable_comp
+      (neutralWindowRepresentative_twist_integrable a f (conj z))).comp_neg
   have hp (t : ℝ) : neutralWindowCorrelation a f g t *
       Complex.exp (Complex.I * z * (t : ℂ)) =
         (G ⋆[ContinuousLinearMap.mul ℂ ℂ] F) t := by
@@ -117,9 +122,7 @@ theorem neutralWindowCorrelation_rawTransform (a : ℝ) (f g : RealComplexL2) (z
     rw [map_mul, ← Complex.exp_conj]
     have he : conj (Complex.I * conj z * ((-(t - s) : ℝ) : ℂ)) =
         -(Complex.I * z * ((s - t : ℝ) : ℂ)) := by
-      simp only [map_mul, Complex.conj_I, starRingEnd_apply, star_star,
-        Complex.conj_ofReal, neg_sub]
-      ring
+      simp [neg_sub] <;> ring
     rw [he]
     have he' : Complex.exp (Complex.I * z * (s : ℂ)) *
         Complex.exp (-(Complex.I * z * ((s - t : ℝ) : ℂ))) =
