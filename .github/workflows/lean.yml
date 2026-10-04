@@ -13,7 +13,7 @@ on:
       - ".github/workflows/lean.yml"
 
 concurrency:
-  group: lean-${{ github.ref }}
+  group: lean-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -41,16 +41,6 @@ jobs:
             rpb108-mellin-manifest-final-v1
             rpb108-mellin-factorial-verified-v1
             rpb108-mellin-representation-compiled-v1
-            rpb108-mellin-growth-compiled-v1
-            rpb108-theta-growth-final-compiled-v1
-            rpb108-theta-growth-verified-compiled-v1
-            rpb108-lean434-mathlib5ed296-jensen-root-v1
-            rpb108-lean434-mathlib5ed296-jensen-deps-v1
-            rpb108-lean434-mathlib5ed296-rpb108-root-v3
-            rpb108-lean434-mathlib5ed296-rpb108-root-v2
-            rpb108-lean434-mathlib5ed296-rpb108-root-v1
-            rpb108-lean434-mathlib5ed296-inner-collar-v1
-            rpb108-lean434-mathlib5ed296-base71dddf5-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
