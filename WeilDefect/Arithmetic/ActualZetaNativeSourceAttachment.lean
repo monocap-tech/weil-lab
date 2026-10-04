@@ -20,7 +20,6 @@ theorem neutralActualZetaGreenZeroForm_source_quadratic
   rw [neutralActualZetaGreenZeroForm_native_diagonal a ha v,
     neutralLogPoleOperator_diagonal, neutralActualZetaGreenCanonical_physical,
     Complex.ofReal_add]
-  rfl
 
 /-- Real quadratic attachment follows from the complex identity, without
 a positivity or retained-mode membership premise. -/
