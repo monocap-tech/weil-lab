@@ -2,6 +2,7 @@ import WeilDefect.Arithmetic.ActualZetaDistinctObservationRigidity
 
 namespace WeilDefect
 noncomputable section
+set_option backward.isDefEq.respectTransparency false
 open ContinuousLinearMap
 open scoped ComplexConjugate
 
@@ -42,7 +43,7 @@ theorem neutralActualZetaBackgroundNegative_coordinate
   change (neutralActualZetaNormalizedNegativeAnalysis a f -
     neutralActualZetaSelectedProjection s
       (neutralActualZetaNormalizedNegativeAnalysis a f)) q = _
-  rw [lp.coeFn_sub, neutralActualZetaSelectedProjection_coordinate]
+  rw [lp.coeFn_sub, Pi.sub_apply, neutralActualZetaSelectedProjection_coordinate]
   simp only [hq, ite_false, sub_zero]
   rw [neutralActualZetaNormalizedNegativeAnalysis, ContinuousLinearMap.smul_apply,
     lp.coeFn_smul]
@@ -66,15 +67,15 @@ theorem neutralActualZetaBackgroundNegative_zero_iff_offline
     change (neutralActualZetaNormalizedNegativeAnalysis a f -
       neutralActualZetaSelectedProjection s
         (neutralActualZetaNormalizedNegativeAnalysis a f)) q = (0 : NeutralActualZetaGreenCoefficients) q at hv
-    rw [lp.coeFn_sub, neutralActualZetaSelectedProjection_coordinate] at hv
+    rw [lp.coeFn_sub, Pi.sub_apply, neutralActualZetaSelectedProjection_coordinate] at hv
     simpa [hq] using hv
   · intro h
     apply lp.ext
-    intro q
+    funext q
     change (neutralActualZetaNormalizedNegativeAnalysis a f -
       neutralActualZetaSelectedProjection s
         (neutralActualZetaNormalizedNegativeAnalysis a f)) q = (0 : NeutralActualZetaGreenCoefficients) q
-    rw [lp.coeFn_sub, neutralActualZetaSelectedProjection_coordinate]
+    rw [lp.coeFn_sub, Pi.sub_apply, neutralActualZetaSelectedProjection_coordinate]
     by_cases hq : q ∈ s
     · simp [hq]
     · by_cases hc : q.1.val.re = 1 / 2
