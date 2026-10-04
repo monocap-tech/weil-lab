@@ -180,7 +180,6 @@ theorem neutralActualZetaGreenZeroForm_source_decomposition
     intro q
     rw [neutralLogPairSource_mixed_difference,
       neutralActualZetaGreenCanonical_physical, neutralActualZetaGreenCanonical_physical]
-    rfl
   rw [he, hf.tsum_add hr, ht]
   change 2 * (∑' q, F q) = (∑' q, F q) + (∑' q, F q)
   ring
