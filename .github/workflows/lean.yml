@@ -36,17 +36,11 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-retained-unit-gain-custody-verified-v1
+          key: rpb108-actual-source-graph-verified-v1
           restore-keys: |
+            rpb108-retained-unit-gain-custody-verified-v1
             rpb108-actual-native-source-attachment-verified-v1
             rpb108-actual-native-weil-form-verified-v1
-            rpb108-actual-archimedean-transport-verified-v1
-            rpb108-actual-archimedean-coordinates-verified-v1
-            rpb108-actual-prime-transport-verified-v1
-            rpb108-actual-literal-formula-verified-v1
-            rpb108-ef-closure-port-verified-v1
-            rpb108-actual-correlation-inverse-attachment-verified-v1
-            rpb108-actual-correlation-fourier-agreement-verified-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
@@ -57,22 +51,24 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile retained unit-gain custody
+      - name: Compile actual source graph
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Morphology.NeutralSourceWitnessAudit
+          lake build WeilDefect.Arithmetic.ActualZetaSourceGraph
           lake build WeilDefect
-      - name: Audit retained unit-gain custody
+      - name: Audit actual source graph
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Morphology.NeutralSourceWitnessAudit
-          #print axioms WeilDefect.NeutralDefectMorphology.unitGain
-          #print axioms WeilDefect.NeutralDefectMorphology.physicalAdjoint
-          #print axioms WeilDefect.wd_t38_attained_unit_gain_neutral_morphology
-          #print axioms WeilDefect.NeutralDefectMorphology.zeroDensityReindex
+          import WeilDefect.Arithmetic.ActualZetaSourceGraph
+          #print axioms WeilDefect.neutralActualZetaSourceGraph_isClosed
+          #print axioms WeilDefect.neutralActualZetaSourceDomain_complete
+          #print axioms WeilDefect.neutralActualZetaSourceAnalysis_sampling
+          #print axioms WeilDefect.neutralActualZetaSourceAnalysis_norm_le
+          #print axioms WeilDefect.neutralActualZetaGreenSourceLift_physical
+          #print axioms WeilDefect.neutralActualZetaGreenSourceLift_energy
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -91,4 +87,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-retained-unit-gain-custody-verified-v1
+          key: rpb108-actual-source-graph-verified-v1
