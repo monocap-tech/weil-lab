@@ -28,8 +28,8 @@ private theorem inverse_correlation_pairing
       intro x
       apply LinearMap.ext
       intro y
-      change -(y * x) = -(x * y)
-      ring
+      simp only [LinearMap.flip_apply, LinearMap.neg_apply,
+        innerₗ_apply_apply, real_inner_comm]
     rw [hflip] at hF
     change (∫ ξ, (𝓕⁻ S) ξ * u ξ) =
       ∫ x, S x * (𝓕⁻ (u : ℝ → ℂ)) x at hF
@@ -46,8 +46,7 @@ private theorem inverse_correlation_pairing
       intro x
       apply LinearMap.ext
       intro y
-      change y * x = x * y
-      ring
+      simp only [LinearMap.flip_apply, innerₗ_apply_apply, real_inner_comm]
     rw [hflip] at hF
     change (∫ ξ, (𝓕 (𝓕⁻ u : SchwartzMap ℝ ℂ)) ξ * K ξ) =
       ∫ x, (𝓕⁻ u) x * (𝓕 K) x at hF
