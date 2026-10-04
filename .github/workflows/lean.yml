@@ -2,7 +2,7 @@ name: Lean
 
 on:
   push:
-    branches: [main]
+    branches: [main, validation/rpb108-mellin-growth]
   pull_request:
     paths:
       - "lean-toolchain"
@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Install Elan
         shell: bash
         run: |
