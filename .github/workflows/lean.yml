@@ -36,8 +36,9 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-hilbert-source-graph-verified-v1
+          key: rpb108-actual-native-log-bounds-verified-v1
           restore-keys: |
+            rpb108-actual-hilbert-source-graph-verified-v1
             rpb108-actual-selected-background-verified-v1
             rpb108-actual-source-graph-verified-v1
             rpb108-retained-unit-gain-custody-verified-v1
@@ -53,30 +54,24 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual Hilbert source graph
+      - name: Compile actual native logarithmic bounds
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaHilbertSourceGraph
+          lake build WeilDefect.Arithmetic.ActualZetaNativeLogBounds
           lake build WeilDefect
-      - name: Audit actual Hilbert source graph
+      - name: Audit actual native logarithmic bounds
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaHilbertSourceGraph
-          #print axioms WeilDefect.neutralActualZetaHilbertSourceDomain_innerProduct
-          #print axioms WeilDefect.neutralActualZetaHilbertSourceDomain_complete
-          #print axioms WeilDefect.neutralActualZetaHilbertToSource_sourceToHilbert
-          #print axioms WeilDefect.neutralActualZetaSourceToHilbert_hilbertToSource
-          #print axioms WeilDefect.neutralActualZetaHilbertSourceDomain_norm_sq
-          #print axioms WeilDefect.neutralActualZetaHilbertSourceOperator_mixed
-          #print axioms WeilDefect.neutralActualZetaHilbertBackgroundOperator_mixed
-          #print axioms WeilDefect.neutralActualZetaHilbertSourceOperator_diagonal
-          #print axioms WeilDefect.neutralActualZetaHilbertBackgroundOperator_diagonal
-          #print axioms WeilDefect.neutralActualZetaGreenHilbertSourceLift_custody
-          #print axioms WeilDefect.neutralActualZetaGreenHilbertSourceOperator_diagonal
-          #print axioms WeilDefect.neutralActualZetaGreenHilbertBackgroundOperator_diagonal
+          import WeilDefect.Arithmetic.ActualZetaNativeLogBounds
+          #print axioms WeilDefect.neutralActualZetaDigamma_log_error
+          #print axioms WeilDefect.neutralActualZetaArchimedean_log_bound
+          #print axioms WeilDefect.neutralActualZetaPrimeSymbolBound_nonneg
+          #print axioms WeilDefect.neutralActualZetaPrimeSymbol_abs_le
+          #print axioms WeilDefect.neutralActualZetaNativeSymbol_log_bound
+          #print axioms WeilDefect.neutralActualZetaNativeSymbol_shifted_log_bounds
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -95,4 +90,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-hilbert-source-graph-verified-v1
+          key: rpb108-actual-native-log-bounds-verified-v1
