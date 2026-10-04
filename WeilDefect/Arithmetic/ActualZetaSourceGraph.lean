@@ -4,7 +4,7 @@ import Mathlib.Topology.Algebra.Module.ClosedSubmodule
 namespace WeilDefect
 noncomputable section
 open InnerProductSpace MeasureTheory FourierTransform
-open scoped FourierTransform ComplexConjugate
+open scoped FourierTransform ComplexConjugate ENNReal
 set_option maxHeartbeats 800000
 
 /-- Physical logarithmic coordinate together with both complete actual-divisor
@@ -24,19 +24,21 @@ def neutralActualZetaSourceGraphSubmodule (a : ℝ) :
   add_mem' := by
     intro x y hx hy q
     constructor
-    · change x.2.1 q + y.2.1 q = _
+    · change x.2.1 q + y.2.1 q = inner ℂ
+        (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) (x.1 + y.1)
       rw [inner_add_right, (hx q).1, (hy q).1]
-    · change x.2.2 q + y.2.2 q = _
+    · change x.2.2 q + y.2.2 q = inner ℂ
+        (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) (x.1 + y.1)
       rw [inner_add_right, (hx q).2, (hy q).2]
   smul_mem' := by
     intro c x hx q
     constructor
-    · change c • x.2.1 q = _
+    · change c * x.2.1 q = inner ℂ
+        (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) (c • x.1)
       rw [inner_smul_right, (hx q).1]
-      rfl
-    · change c • x.2.2 q = _
+    · change c * x.2.2 q = inner ℂ
+        (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) (c • x.1)
       rw [inner_smul_right, (hx q).2]
-      rfl
 
 /-- Closure is proved coordinatewise, using bounded Hilbert source evaluation
 and continuous evaluation in ℓ². No retained-mode membership is assumed. -/
@@ -49,14 +51,19 @@ theorem neutralActualZetaSourceGraph_isClosed (a : ℝ) :
   simp only [Set.setOf_forall]
   apply isClosed_iInter
   intro q
-  exact (isClosed_eq
+  have hp : Continuous (fun x : NeutralActualZetaSourceAmbient a => x.2.1 q) :=
     ((lp.evalCLM ℂ (fun _ : NeutralActualZetaDivisorCoordinate => ℂ) 2 q).continuous.comp
       (continuous_fst.comp continuous_snd))
-    (continuous_const.inner continuous_fst)).inter
-    (isClosed_eq
+  have hn : Continuous (fun x : NeutralActualZetaSourceAmbient a => x.2.2 q) :=
       ((lp.evalCLM ℂ (fun _ : NeutralActualZetaDivisorCoordinate => ℂ) 2 q).continuous.comp
         (continuous_snd.comp continuous_snd))
-      (continuous_const.inner continuous_fst))
+  have hsp : Continuous (fun x : NeutralActualZetaSourceAmbient a =>
+      inner ℂ (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) x.1) :=
+    continuous_const.inner continuous_fst
+  have hsn : Continuous (fun x : NeutralActualZetaSourceAmbient a =>
+      inner ℂ (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) x.1) :=
+    continuous_const.inner continuous_fst
+  exact (isClosed_eq hp hsp).inter (isClosed_eq hn hsn)
 
 /-- A concrete complete source domain with the graph norm. -/
 def neutralActualZetaSourceGraph (a : ℝ) :
