@@ -69,6 +69,8 @@ def NeutralDefectMorphology.zeroDensityReindex
   endpointNonzero := d.endpointNonzero
   selectedCoordinateNonzero := d.selectedCoordinateNonzero
   coefficientCarrier := d.coefficientCarrier
+  unitGain := d.unitGain
+  physicalAdjoint := d.physicalAdjoint
   physicalNull := d.physicalNull
   arithmetic := wd_t38_zero_density_arithmetic c shift lowerC upperC poleC primeCoeff
   nullExtension := d.nullExtension
