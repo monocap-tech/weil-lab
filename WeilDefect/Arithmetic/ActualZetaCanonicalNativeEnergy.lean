@@ -64,8 +64,8 @@ theorem neutralActualZetaCanonical_signedEnergy_integrable
   · exact (neutralActualZetaNativeSymbol_continuous a).aestronglyMeasurable.mul
       ((Lp.aestronglyMeasurable (𝓕 f.val : RealComplexL2)).norm.pow 2)
   · filter_upwards [] with ξ
-    simp only [Real.norm_eq_abs, abs_mul, abs_of_nonneg (sq_nonneg _)]
-    exact le_refl _
+    simp only [Real.norm_eq_abs, abs_mul,
+      abs_of_nonneg (sq_nonneg ‖(𝓕 f.val : RealComplexL2) ξ‖)]
 
 /-- The native mixed multiplier also genuinely converges on this same domain. -/
 theorem neutralActualZetaCanonical_mixed_integrable
@@ -74,8 +74,7 @@ theorem neutralActualZetaCanonical_mixed_integrable
       (rightLimitCompactWeilSymbolMathlib a ξ : ℂ) *
       (𝓕 g.val : RealComplexL2) ξ) := by
   apply integrable_mixedMultiplier
-  · exact (Complex.continuous_ofReal.comp
-      (neutralActualZetaNativeSymbol_continuous a)).aestronglyMeasurable
+  · exact (neutralActualZetaNativeSymbol_continuous a).aestronglyMeasurable
   · exact Lp.aestronglyMeasurable _
   · exact Lp.aestronglyMeasurable _
   · exact neutralActualZetaCanonical_absoluteEnergy_integrable a f
@@ -167,10 +166,11 @@ theorem neutralActualZetaCanonicalNativeQuadratic_abs_le
         ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2| ≤
       ∫ ξ, |rightLimitCompactWeilSymbolMathlib a ξ| *
         ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2 := by
-    have h := norm_integral_le_integral_norm
+    have h := norm_integral_le_integral_norm (μ := volume)
       (fun ξ => rightLimitCompactWeilSymbolMathlib a ξ *
         ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2)
-    simpa only [Real.norm_eq_abs, abs_mul, abs_of_nonneg (sq_nonneg _)] using h
+    simpa only [Real.norm_eq_abs, abs_mul, abs_of_nonneg
+      (sq_nonneg ‖(𝓕 f.val : RealComplexL2) _‖)] using h
   have hb : (∫ ξ, |rightLimitCompactWeilSymbolMathlib a ξ| *
       ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2) ≤
       (1 + neutralActualZetaNativeLogError a) * ‖neutralLogWeightedL2 f‖ ^ 2 := by
@@ -200,8 +200,11 @@ theorem neutralActualZetaGreenZeroForm_canonical_quadratic
     Complex.ofReal_re]
   change _ = (∫ ξ, rightLimitCompactWeilSymbolMathlib a ξ *
     ‖(𝓕 (neutralActualZetaGreenSynthesis a v) : RealComplexL2) ξ‖ ^ 2) + _
-  rw [neutralLogPhysical_weighted]
-  rfl
+  have hp : neutralLogPhysical
+      (neutralCanonicalToLogHilbert (neutralActualZetaGreenCanonical a ha v)).val =
+      (neutralActualZetaGreenCanonical a ha v).val :=
+    neutralLogPhysical_weighted _
+  rw [hp]
 
 /-- The actual zero form inherits the native logarithmic Gårding inequality
 on the unchanged Green vector. No retained k is silently replaced by this vector. -/
