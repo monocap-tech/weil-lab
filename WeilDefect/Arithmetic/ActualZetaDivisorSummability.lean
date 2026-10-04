@@ -54,7 +54,8 @@ theorem neutralActualZetaDivisorUnitBand_card_bound :
   have hf : Function.Injective f := by
     intro q r h
     apply Subtype.ext
-    exact congrArg Subtype.val h
+    exact congrArg
+      (fun x : neutralActualZetaDivisorHeightWindow ((n : ℝ) + 1) => x.val) h
   have hcard : (Fintype.card (neutralActualZetaDivisorUnitBand n) : ℝ) ≤
       (Fintype.card (neutralActualZetaDivisorHeightWindow ((n : ℝ) + 1)) : ℝ) := by
     exact_mod_cast Fintype.card_le_of_injective f hf
@@ -96,8 +97,9 @@ theorem neutralActualZetaDivisorQuarticWeight_summable :
     have h := (Real.summable_one_div_nat_pow (p := 2)).2 (by norm_num)
     have hi : Function.Injective (fun n : ℕ => n + 1) := by
       intro n m hnm
-      omega
-    simpa only [Nat.cast_add, Nat.cast_one] using h.comp_injective hi
+      change n + 1 = m + 1 at hnm
+      exact Nat.add_right_cancel hnm
+    simpa only [Function.comp_apply, Nat.cast_add, Nat.cast_one] using h.comp_injective hi
   have hband : ∀ n : ℕ,
       (∑' q : neutralActualZetaDivisorUnitBand n,
         neutralActualZetaDivisorQuarticWeight q.val) ≤ A * (1 / ((n : ℝ) + 1) ^ 2) := by
@@ -124,7 +126,7 @@ theorem neutralActualZetaDivisorQuarticWeight_summable :
     (f := neutralActualZetaDivisorQuarticWeight)
     (fun q => by unfold neutralActualZetaDivisorQuarticWeight; positivity)
     neutralActualZetaDivisorUnitBand_partition).2
-  exact ⟨fun n => summable_of_finite _, hsum⟩
+  exact ⟨fun n => Summable.of_finite, hsum⟩
 
 /-- Absolute convergence of complex actual-divisor samples with quartic
 decay. The analytic sample-decay hypothesis is explicit and separate. -/
