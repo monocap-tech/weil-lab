@@ -5,6 +5,7 @@ noncomputable section
 open ContinuousLinearMap InnerProductSpace
 open scoped InnerProduct
 set_option maxHeartbeats 800000
+set_option synthInstance.maxHeartbeats 200000
 set_option backward.isDefEq.respectTransparency false
 local instance : DecidableEq NeutralActualZetaDivisorCoordinate := Classical.decEq _
 
@@ -96,7 +97,7 @@ theorem neutralActualZetaGreenGraphClosure_orthogonal_packets_iff
     have hc : IsClosed ((innerSL ℂ f).ker :
         Set (NeutralActualZetaHilbertSourceDomain a)) :=
       isClosed_eq (innerSL ℂ f).continuous continuous_const
-    have hcl := Submodule.topologicalClosure_minimal hspan hc
+    have hcl := (neutralActualZetaGreenPacketSpan a ha).topologicalClosure_minimal hspan hc
     have hm : g ∈ neutralActualZetaGreenPacketClosedSpan a ha := by
       rw [← neutralActualZetaGreenPacketClosedSpan_coe a ha] at hg
       exact hg
