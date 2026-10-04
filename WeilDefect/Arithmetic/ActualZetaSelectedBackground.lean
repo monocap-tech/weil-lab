@@ -24,6 +24,7 @@ theorem neutralActualZetaSelectedProjection_apply
     neutralActualZetaSelectedProjection s u = ∑ q ∈ s, lp.single 2 q (u q) := by
   classical
   simp [neutralActualZetaSelectedProjection, _root_.sum_apply, lp.evalCLM, lp.evalₗ]
+  rfl
 
 theorem neutralActualZetaSelectedProjection_coordinate
     (s : Finset NeutralActualZetaDivisorCoordinate)
