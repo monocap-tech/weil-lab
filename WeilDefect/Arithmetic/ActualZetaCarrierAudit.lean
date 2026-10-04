@@ -26,6 +26,13 @@ def neutralActualZetaGreenPositiveObservation (a : ℝ) (ha : 0 < a) :
 abbrev NeutralActualZetaGreenPositiveEnergyCarrier (a : ℝ) (ha : 0 < a) :=
   ObservationCarrier (neutralActualZetaGreenPositiveObservation a ha)
 
+/-- Background restricted to the same certified Green graph domain. -/
+def neutralActualZetaGreenBackgroundObservation (a : ℝ) (ha : 0 < a)
+    (s : Finset NeutralActualZetaDivisorCoordinate) :
+    NeutralActualZetaGreenGraphDomain a ha →L[ℂ] NeutralActualZetaGreenCoefficients :=
+  (neutralActualZetaHilbertBackgroundAnalysis a s).comp
+    (neutralActualZetaGreenClosedSubmodule a ha).toSubmodule.subtypeL
+
 /-- The graph-observation completion is exactly the existing certified Green
 closed submodule, not the entire source graph. -/
 theorem neutralActualZetaObservationClosure_eq (a : ℝ) (ha : 0 < a) :
@@ -149,11 +156,73 @@ theorem neutralActualZetaBackground_wdt10_of_nonnegative (a : ℝ)
         (neutralActualZetaHilbertBackgroundAnalysis a s)† ∘L
           neutralActualZetaHilbertBackgroundAnalysis a s =
         WDT10.effectivePositive
-            (observationMap (neutralActualZetaHilbertPositiveAnalysis a))† X ∘L
+            ((observationMap (neutralActualZetaHilbertPositiveAnalysis a))†) X ∘L
           (WDT10.effectivePositive
-            (observationMap (neutralActualZetaHilbertPositiveAnalysis a))† X)† :=
+            ((observationMap (neutralActualZetaHilbertPositiveAnalysis a))†) X)† :=
   domination_gives_wdt10_factor _ _
     ((neutralActualZetaBackground_domination_iff_nonnegative a s).mpr h)
+
+/-- Positive coefficient completion preserves the actual signed source
+operator, hence every same-domain null equation. No retained membership is used. -/
+theorem neutralActualZetaPositiveCarrier_source_operator (a : ℝ) :
+    neutralActualZetaHilbertSourceOperator a =
+      (observationMap (neutralActualZetaHilbertPositiveAnalysis a))† ∘L
+        observationMap (neutralActualZetaHilbertPositiveAnalysis a) -
+      (neutralActualZetaHilbertNegativeAnalysis a)† ∘L
+        neutralActualZetaHilbertNegativeAnalysis a := by
+  rw [observation_covariance]
+  rfl
+
+/-- Minimal relevant-domain version: background contraction on the Green
+positive completion is equivalent to unshifted positivity only on that graph. -/
+theorem neutralActualZetaGreenBackground_factorization_iff (a : ℝ) (ha : 0 < a)
+    (s : Finset NeutralActualZetaDivisorCoordinate) :
+    (∀ f : NeutralActualZetaGreenGraphDomain a ha,
+      0 ≤ neutralActualZetaEffectiveBackgroundQuadratic a s
+        (neutralActualZetaHilbertToSource a f.val)) ↔
+    ∃! T : NeutralActualZetaGreenPositiveEnergyCarrier a ha →L[ℂ]
+        NeutralActualZetaGreenCoefficients,
+      ‖T‖ ≤ 1 ∧ ∀ f,
+        T (observationMap (neutralActualZetaGreenPositiveObservation a ha) f) =
+          neutralActualZetaGreenBackgroundObservation a ha s f := by
+  have he :
+      (∀ f : NeutralActualZetaGreenGraphDomain a ha,
+        0 ≤ neutralActualZetaEffectiveBackgroundQuadratic a s
+          (neutralActualZetaHilbertToSource a f.val)) ↔
+      ∀ f : NeutralActualZetaGreenGraphDomain a ha,
+        ‖neutralActualZetaGreenBackgroundObservation a ha s f‖ ≤
+          ‖neutralActualZetaGreenPositiveObservation a ha f‖ := by
+    change (∀ f : NeutralActualZetaGreenGraphDomain a ha,
+      0 ≤ ‖neutralActualZetaGreenPositiveObservation a ha f‖ ^ 2 -
+        ‖neutralActualZetaGreenBackgroundObservation a ha s f‖ ^ 2) ↔ _
+    constructor
+    · intro h f
+      nlinarith [h f, norm_nonneg (neutralActualZetaGreenPositiveObservation a ha f),
+        norm_nonneg (neutralActualZetaGreenBackgroundObservation a ha s f)]
+    · intro h f
+      nlinarith [h f, norm_nonneg (neutralActualZetaGreenPositiveObservation a ha f),
+        norm_nonneg (neutralActualZetaGreenBackgroundObservation a ha s f)]
+  exact he.trans (domination_iff_unique_contraction _ _)
+
+/-- After the exact positivity test, WD-T10 factors the actual background
+operator itself, not merely a replacement representation. -/
+theorem neutralActualZetaBackground_operator_wdt10 (a : ℝ)
+    (s : Finset NeutralActualZetaDivisorCoordinate)
+    (h : ∀ f : NeutralActualZetaHilbertSourceDomain a,
+      0 ≤ neutralActualZetaEffectiveBackgroundQuadratic a s
+        (neutralActualZetaHilbertToSource a f)) :
+    ∃ X : NeutralActualZetaGreenCoefficients →L[ℂ] NeutralActualZetaPositiveEnergyCarrier a,
+      ‖X‖ ≤ 1 ∧
+      (neutralActualZetaHilbertBackgroundAnalysis a s)† =
+        -((observationMap (neutralActualZetaHilbertPositiveAnalysis a))† ∘L X) ∧
+      neutralActualZetaHilbertBackgroundOperator a s =
+        WDT10.effectivePositive
+            ((observationMap (neutralActualZetaHilbertPositiveAnalysis a))†) X ∘L
+          (WDT10.effectivePositive
+            ((observationMap (neutralActualZetaHilbertPositiveAnalysis a))†) X)† := by
+  obtain ⟨X, hn, hf, hc⟩ := neutralActualZetaBackground_wdt10_of_nonnegative a s h
+  rw [observation_covariance] at hc
+  exact ⟨X, hn, hf, hc⟩
 
 end
 end WeilDefect

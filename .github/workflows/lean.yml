@@ -83,6 +83,10 @@ jobs:
           #print axioms WeilDefect.neutralActualZetaBackground_no_factor_iff_negative
           #print axioms WeilDefect.neutralActualZetaBackground_kernel_of_nonnegative
           #print axioms WeilDefect.neutralActualZetaBackground_wdt10_of_nonnegative
+          #print axioms WeilDefect.CarrierAudit.observation_covariance
+          #print axioms WeilDefect.neutralActualZetaPositiveCarrier_source_operator
+          #print axioms WeilDefect.neutralActualZetaGreenBackground_factorization_iff
+          #print axioms WeilDefect.neutralActualZetaBackground_operator_wdt10
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
