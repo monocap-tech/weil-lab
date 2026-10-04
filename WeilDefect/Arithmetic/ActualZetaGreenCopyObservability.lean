@@ -77,7 +77,7 @@ theorem neutralActualZetaGreenGraphAnalysis_coordinate
     _ = (starRingEnd ℂ) (inner ℂ f (neutralActualZetaGreenPacketColumn a ha q)) :=
       congrArg (starRingEnd ℂ) h'
     _ = inner ℂ (neutralActualZetaGreenPacketColumn a ha q) f :=
-      inner_conj_symm (𝕜 := ℂ) _ _
+      inner_conj_symm (𝕜 := ℂ) (neutralActualZetaGreenPacketColumn a ha q) f
 
 /-- Actual analysis observations are constant across copies at the same
 ordinate, although every copy remains in the coefficient-energy sums. -/
