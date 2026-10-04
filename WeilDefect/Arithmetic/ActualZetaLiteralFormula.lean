@@ -102,6 +102,7 @@ theorem neutralActualZetaGreenZeroForm_arithmetic
   have hm : Complex.I * ((-(1 / 2 : ℝ)) : ℂ) = -Complex.I / 2 := by
     push_cast
     ring
+  simp only [Complex.ofReal_neg]
   rw [hp, hm]
   simpa only [Zeta23.EF.literatureRHS, neutralActualZetaGreenPrimeForm,
     neutralActualZetaGreenArchimedeanForm, neutralRawTransform_eq_paperFT] using
