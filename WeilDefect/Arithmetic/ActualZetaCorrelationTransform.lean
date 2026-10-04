@@ -94,10 +94,14 @@ private theorem reflected_twist_integral (a : ℝ) (f : RealComplexL2) (z : ℂ)
     (∫ x : ℝ, conj (neutralWindowRepresentative a f (-x) *
       Complex.exp (Complex.I * conj z * ((-x : ℝ) : ℂ)))) =
       conj (neutralWindowEvaluation a (conj z) f) := by
-  change (∫ x : ℝ, (fun y : ℝ => conj (neutralWindowRepresentative a f y *
-    Complex.exp (Complex.I * conj z * (y : ℂ)))) (-x)) = _
-  rw [integral_neg_eq_self, integral_conj]
-  exact congrArg (starRingEnd ℂ) (rawTransform_window a f (conj z))
+  calc
+    _ = ∫ x : ℝ, conj (neutralWindowRepresentative a f x *
+        Complex.exp (Complex.I * conj z * (x : ℂ))) :=
+      integral_neg_eq_self _ volume
+    _ = conj (neutralRawTransform (neutralWindowRepresentative a f) (conj z)) := by
+      unfold neutralRawTransform
+      rw [integral_conj]
+    _ = _ := congrArg (starRingEnd ℂ) (rawTransform_window a f (conj z))
 
 /-- All-complex mixed correlation transform, proved directly for compact-window L² inputs. -/
 theorem neutralWindowCorrelation_rawTransform (a : ℝ) (f g : RealComplexL2) (z : ℂ) :
@@ -122,7 +126,7 @@ theorem neutralWindowCorrelation_rawTransform (a : ℝ) (f g : RealComplexL2) (z
     rw [map_mul, ← Complex.exp_conj]
     have he : conj (Complex.I * conj z * ((-(t - s) : ℝ) : ℂ)) =
         -(Complex.I * z * ((s - t : ℝ) : ℂ)) := by
-      simp [neg_sub] <;> ring
+      simp [neg_sub]
     rw [he]
     have he' : Complex.exp (Complex.I * z * (s : ℂ)) *
         Complex.exp (-(Complex.I * z * ((s - t : ℝ) : ℂ))) =
