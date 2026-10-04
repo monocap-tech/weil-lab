@@ -33,10 +33,11 @@ theorem neutralActualZetaGreenHilbertSource_native_operator_mixed
       (neutralActualZetaLogWeilFormOperator a
         (neutralActualZetaHilbertSourcePhysical a
           (neutralActualZetaGreenHilbertSourceLift a ha w))) := by
-  have hc : conj neutralActualZetaSourceNormalization *
-      neutralActualZetaSourceNormalization = (1 / 2 : ℂ) := by
-    rw [← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq]
-    exact_mod_cast neutralActualZetaSourceNormalization_norm_sq
+  have hc : neutralActualZetaSourceNormalization *
+      conj neutralActualZetaSourceNormalization = (1 / 2 : ℂ) := by
+    rw [mul_comm, ← Complex.normSq_eq_conj_mul_self, Complex.normSq_eq_norm_sq,
+      neutralActualZetaSourceNormalization_norm_sq]
+    norm_num
   rw [neutralActualZetaHilbertSourceOperator_mixed]
   simp only [neutralActualZetaHilbertPositiveAnalysis,
     neutralActualZetaHilbertNegativeAnalysis, comp_apply,
@@ -84,7 +85,8 @@ theorem neutralActualZetaGreenGraphClosure_mixed
     exact neutralActualZetaGreenHilbertSource_native_operator_mixed a ha v w
   have hs : Continuous (fun x : NeutralActualZetaHilbertSourceDomain a =>
       inner ℂ x (neutralActualZetaHilbertSourceOperator a g)) :=
-    continuous_id.inner (𝕜 := ℂ) continuous_const
+    (ContinuousLinearMap.id ℂ (NeutralActualZetaHilbertSourceDomain a)).continuous.inner
+      (𝕜 := ℂ) continuous_const
   have hn : Continuous (fun x : NeutralActualZetaHilbertSourceDomain a =>
       inner ℂ (neutralActualZetaHilbertSourcePhysical a x)
         (neutralActualZetaLogWeilFormOperator a (neutralActualZetaHilbertSourcePhysical a g))) :=
