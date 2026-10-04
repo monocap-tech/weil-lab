@@ -73,6 +73,7 @@ jobs:
           #print axioms WeilDefect.neutralActualZetaGreenBackground_factorization_iff_finite
           #print axioms WeilDefect.neutralActualZetaGreenBackground_negative_iff_finite
           #print axioms WeilDefect.neutralActualZetaGreenBackgroundTest_native
+          #print axioms WeilDefect.neutralActualZetaGreenBackground_no_factor_iff_finite_negative
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi

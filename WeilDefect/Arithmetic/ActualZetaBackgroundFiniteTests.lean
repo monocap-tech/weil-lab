@@ -142,6 +142,24 @@ theorem neutralActualZetaGreenBackground_negative_iff_finite
   push_neg at hn
   exact hn
 
+/-- No unit background factor exists exactly when a finite actual packet
+has negative unshifted background energy. -/
+theorem neutralActualZetaGreenBackground_no_factor_iff_finite_negative
+    (a : ℝ) (ha : 0 < a) (s : Finset NeutralActualZetaDivisorCoordinate) :
+    (¬ ∃ T : NeutralActualZetaGreenPositiveEnergyCarrier a ha →L[ℂ]
+        NeutralActualZetaGreenCoefficients,
+      ‖T‖ ≤ 1 ∧ ∀ f,
+        T (CarrierAudit.observationMap (neutralActualZetaGreenPositiveObservation a ha) f) =
+          neutralActualZetaGreenBackgroundObservation a ha s f) ↔
+    ∃ (t : Finset NeutralActualZetaDivisorCoordinate)
+      (c : NeutralActualZetaDivisorCoordinate → ℂ),
+      neutralActualZetaGreenBackgroundTest a ha s
+        (neutralActualZetaFiniteCoefficients t c) < 0 :=
+  (CarrierAudit.no_contraction_iff_negative_witness
+    (neutralActualZetaGreenPositiveObservation a ha)
+    (neutralActualZetaGreenBackgroundObservation a ha s)).trans
+      (neutralActualZetaGreenBackground_negative_iff_finite a ha s)
+
 /-- The finite test is the already certified native multiplier-plus-pole
 form plus exactly the selected negative energy, with raw multiplicity custody. -/
 theorem neutralActualZetaGreenBackgroundTest_native (a : ℝ) (ha : 0 < a)
