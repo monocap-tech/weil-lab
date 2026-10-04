@@ -36,14 +36,14 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-carrier-factorization-verified-v1
+          key: rpb108-actual-background-finite-tests-verified-v1
           restore-keys: |
+            rpb108-actual-carrier-factorization-verified-v1
             rpb108-actual-green-copy-observability-verified-v1
             rpb108-actual-green-graph-analysis-verified-v1
             rpb108-actual-green-packet-density-verified-v1
             rpb108-actual-green-graph-packets-verified-v1
             rpb108-actual-green-closed-subspace-verified-v1
-            rpb108-actual-green-graph-mixed-verified-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
@@ -54,39 +54,25 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual carrier factorization
+      - name: Compile actual background finite tests
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaCarrierAudit
+          lake build WeilDefect.Arithmetic.ActualZetaBackgroundFiniteTests
           lake build WeilDefect
-      - name: Audit actual carrier factorization
+      - name: Audit actual background finite tests
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaCarrierAudit
-          #print axioms WeilDefect.CarrierAudit.quotientObservationNorm_mk
-          #print axioms WeilDefect.CarrierAudit.observationMap_dense
-          #print axioms WeilDefect.CarrierAudit.kernel_iff_algebraic_descent
-          #print axioms WeilDefect.CarrierAudit.domination_iff_unique_contraction
-          #print axioms WeilDefect.CarrierAudit.domination_iff_covariance_order
-          #print axioms WeilDefect.CarrierAudit.no_contraction_iff_negative_witness
-          #print axioms WeilDefect.CarrierAudit.bounded_inverse_iff_coercivity
-          #print axioms WeilDefect.CarrierAudit.synthesis_positive_kernel_comparison
-          #print axioms WeilDefect.CarrierAudit.domination_gives_wdt10_factor
-          #print axioms WeilDefect.CarrierAudit.kernel_inclusion_not_domination
-          #print axioms WeilDefect.neutralActualZetaObservationClosure_eq
-          #print axioms WeilDefect.neutralActualZetaSynthesis_positive_kernel_comparison
-          #print axioms WeilDefect.neutralActualZetaGreenPositive_recovery_iff
-          #print axioms WeilDefect.neutralActualZetaBackground_factorization_iff
-          #print axioms WeilDefect.neutralActualZetaBackground_no_factor_iff_negative
-          #print axioms WeilDefect.neutralActualZetaBackground_kernel_of_nonnegative
-          #print axioms WeilDefect.neutralActualZetaBackground_wdt10_of_nonnegative
-          #print axioms WeilDefect.CarrierAudit.observation_covariance
-          #print axioms WeilDefect.neutralActualZetaPositiveCarrier_source_operator
-          #print axioms WeilDefect.neutralActualZetaGreenBackground_factorization_iff
-          #print axioms WeilDefect.neutralActualZetaBackground_operator_wdt10
+          import WeilDefect.Arithmetic.ActualZetaBackgroundFiniteTests
+          #print axioms WeilDefect.neutralActualZetaGreenBackgroundTest_hilbert
+          #print axioms WeilDefect.neutralActualZetaGreenBackgroundTest_continuous
+          #print axioms WeilDefect.neutralActualZetaGreenBackground_nonnegative_iff_lifts
+          #print axioms WeilDefect.neutralActualZetaGreenBackground_lifts_iff_finite
+          #print axioms WeilDefect.neutralActualZetaGreenBackground_factorization_iff_finite
+          #print axioms WeilDefect.neutralActualZetaGreenBackground_negative_iff_finite
+          #print axioms WeilDefect.neutralActualZetaGreenBackgroundTest_native
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -105,4 +91,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-carrier-factorization-verified-v1
+          key: rpb108-actual-background-finite-tests-verified-v1
