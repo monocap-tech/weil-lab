@@ -60,6 +60,7 @@ theorem neutralActualZetaGreenGraphClosure_diagonal (a : ℝ) (ha : 0 < a)
           inner ℂ (neutralActualZetaHilbertSourcePhysical a x)
             (neutralActualZetaLogWeilFormOperator a (neutralActualZetaHilbertSourcePhysical a x))} := by
     rintro x ⟨v, rfl⟩
+    simp only [Set.mem_setOf_eq]
     rw [neutralActualZetaGreenHilbertSourcePhysical a ha v]
     exact neutralActualZetaGreenHilbertSource_native_operator_diagonal a ha v
   exact closure_minimal hsub hc hf
