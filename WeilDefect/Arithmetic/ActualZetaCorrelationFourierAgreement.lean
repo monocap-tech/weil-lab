@@ -3,7 +3,7 @@ import WeilDefect.Arithmetic.ActualZetaCorrelationRegularity
 namespace WeilDefect
 noncomputable section
 open MeasureTheory FourierTransform
-open scoped FourierTransform ComplexConjugate SchwartzMap
+open scoped FourierTransform ComplexConjugate SchwartzMap ContDiff
 set_option maxHeartbeats 800000
 
 private theorem ordinary_fourier_continuous (f : RealComplexL2) (hf : Integrable f) :
@@ -24,7 +24,8 @@ private theorem integrableL2_fourier_pairing (f : RealComplexL2) (hf : Integrabl
   simpa only [ContinuousLinearMap.mul_apply'] using
     VectorFourier.integral_bilin_fourierIntegral_eq_flip
       (ContinuousLinearMap.mul ℂ ℂ) (L := innerₗ ℝ)
-      Real.continuous_fourierChar continuous_inner u.integrable hf
+      Real.continuous_fourierChar continuous_inner
+      (show Integrable (u : ℝ → ℂ) volume from u.integrable) hf
 
 /-- The ordinary L¹ Fourier integral and the existing L² Fourier coordinate
 agree almost everywhere, proved by compact smooth test uniqueness. -/
