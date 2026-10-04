@@ -99,7 +99,9 @@ theorem neutralActualZetaDivisorQuarticWeight_summable :
       intro n m hnm
       change n + 1 = m + 1 at hnm
       exact Nat.add_right_cancel hnm
-    simpa only [Function.comp_apply, Nat.cast_add, Nat.cast_one] using h.comp_injective hi
+    have hs : Summable (fun n : ℕ => 1 / (((n + 1 : ℕ) : ℝ)) ^ 2) :=
+      h.comp_injective hi
+    exact hs.congr (fun n => by rw [Nat.cast_add, Nat.cast_one])
   have hband : ∀ n : ℕ,
       (∑' q : neutralActualZetaDivisorUnitBand n,
         neutralActualZetaDivisorQuarticWeight q.val) ≤ A * (1 / ((n : ℝ) + 1) ^ 2) := by
@@ -127,6 +129,14 @@ theorem neutralActualZetaDivisorQuarticWeight_summable :
     (fun q => by unfold neutralActualZetaDivisorQuarticWeight; positivity)
     neutralActualZetaDivisorUnitBand_partition).2
   exact ⟨fun n => Summable.of_finite, hsum⟩
+
+/-- Absolute summability of quartically bounded actual-divisor samples. -/
+theorem neutralActualZetaDivisor_norm_summable_of_quartic_bound
+    (f : NeutralActualZetaDivisorCoordinate → ℂ) (M : ℝ)
+    (hf : ∀ q, ‖f q‖ ≤ M * neutralActualZetaDivisorQuarticWeight q) :
+    Summable (fun q => ‖f q‖) :=
+  Summable.of_nonneg_of_le (fun q => norm_nonneg _) hf
+    (neutralActualZetaDivisorQuarticWeight_summable.mul_left M)
 
 /-- Absolute convergence of complex actual-divisor samples with quartic
 decay. The analytic sample-decay hypothesis is explicit and separate. -/
