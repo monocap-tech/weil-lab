@@ -169,8 +169,7 @@ theorem neutralActualZetaCanonicalNativeQuadratic_abs_le
     have h := norm_integral_le_integral_norm (μ := volume)
       (fun ξ => rightLimitCompactWeilSymbolMathlib a ξ *
         ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2)
-    simpa only [Real.norm_eq_abs, abs_mul, abs_of_nonneg
-      (sq_nonneg ‖(𝓕 f.val : RealComplexL2) _‖)] using h
+    simpa only [Real.norm_eq_abs, abs_mul, abs_pow, abs_norm] using h
   have hb : (∫ ξ, |rightLimitCompactWeilSymbolMathlib a ξ| *
       ‖(𝓕 f.val : RealComplexL2) ξ‖ ^ 2) ≤
       (1 + neutralActualZetaNativeLogError a) * ‖neutralLogWeightedL2 f‖ ^ 2 := by
