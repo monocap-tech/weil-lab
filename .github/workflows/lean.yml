@@ -36,14 +36,14 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-native-envelope-obstruction-verified-v1
+          key: rpb108-actual-supported-absorption-verified-v1
           restore-keys: |
+            rpb108-actual-native-envelope-obstruction-verified-v1
             rpb108-actual-native-symbol-sign-verified-v1
             rpb108-actual-background-gram-tests-verified-v1
             rpb108-actual-background-finite-tests-verified-v1
             rpb108-actual-carrier-factorization-verified-v1
             rpb108-actual-green-copy-observability-verified-v1
-            rpb108-actual-green-graph-analysis-verified-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
@@ -54,22 +54,22 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual native envelope obstruction
+      - name: Compile actual supported absorption audit
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
           lake build WeilDefect.Arithmetic.ActualZetaNativeSymbolSign
           lake build WeilDefect
-      - name: Audit actual native envelope obstruction
+      - name: Audit actual supported absorption audit
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
           import WeilDefect.Arithmetic.ActualZetaNativeSymbolSign
-          #print axioms WeilDefect.neutralActualZetaNativeLogEnvelope_zero_lower_bound
-          #print axioms WeilDefect.neutralActualZetaNativeLogEnvelope_gt_one
-          #print axioms WeilDefect.neutralActualZetaNativeLogError_gt_one
-          #print axioms WeilDefect.neutralActualZetaNativeGardingError_gt_one
+          #print axioms WeilDefect.neutralActualZetaNativeSymbol_zero_lt_neg_two
+          #print axioms WeilDefect.neutralActualZetaNativeLogEnvelope_gt_three
+          #print axioms WeilDefect.neutralActualZetaNativeLogError_gt_three
+          #print axioms WeilDefect.neutralActualZetaNativeGardingError_gt_three
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -88,4 +88,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-native-envelope-obstruction-verified-v1
+          key: rpb108-actual-supported-absorption-verified-v1

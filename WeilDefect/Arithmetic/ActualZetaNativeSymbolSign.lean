@@ -72,6 +72,19 @@ theorem neutralActualZetaNativeSymbol_zero_negative (a : ℝ) :
   have hpi := Real.pi_pos
   linarith
 
+/-- A rational strict deficit from the actual special value, independent of
+prime thresholds and of any chosen absolute-envelope constant. -/
+theorem neutralActualZetaNativeSymbol_zero_lt_neg_two (a : ℝ) :
+    rightLimitCompactWeilSymbolMathlib a 0 < -2 := by
+  rw [neutralActualZetaNativeSymbol_zero]
+  have hp : 0 ≤ ∑ n ∈ rightLimitPrimePowerFinset a, compactWindowPrimeCoefficient n :=
+    Finset.sum_nonneg fun n _ => neutralActualZetaPrimeCoefficient_nonnegative n
+  have hl2 : 0 < Real.log 2 := Real.log_pos (by norm_num)
+  have hlpi : 0 < Real.log Real.pi := Real.log_pos (by linarith [Real.pi_gt_three])
+  have hg := Real.one_half_lt_eulerMascheroniConstant
+  have hpi := Real.pi_gt_three
+  linarith
+
 theorem neutralActualZetaNativeSymbol_not_pointwise_positive (a : ℝ) :
     ¬ ∀ ξ : ℝ, 0 ≤ rightLimitCompactWeilSymbolMathlib a ξ := by
   intro h
@@ -115,6 +128,26 @@ theorem neutralActualZetaNativeLogError_gt_one (a : ℝ) :
     1 < neutralActualZetaNativeLogError a :=
   neutralActualZetaNativeLogEnvelope_gt_one a _
     (neutralActualZetaNativeLogError_spec a).2
+
+theorem neutralActualZetaNativeLogEnvelope_gt_three
+    (a C : ℝ) (hC : ∀ ξ : ℝ,
+      |rightLimitCompactWeilSymbolMathlib a ξ - logarithmicFourierWeight ξ| ≤ C) :
+    3 < C := by
+  have he := neutralActualZetaNativeLogEnvelope_zero_lower_bound a C hC
+  have hw := one_le_logarithmicFourierWeight (0 : ℝ)
+  have hs := neutralActualZetaNativeSymbol_zero_lt_neg_two a
+  linarith
+
+theorem neutralActualZetaNativeLogError_gt_three (a : ℝ) :
+    3 < neutralActualZetaNativeLogError a :=
+  neutralActualZetaNativeLogEnvelope_gt_three a _
+    (neutralActualZetaNativeLogError_spec a).2
+
+theorem neutralActualZetaNativeGardingError_gt_three (a : ℝ) :
+    3 < neutralActualZetaNativeLogError a + neutralPhysicalPoleEnergyConstant a := by
+  have he := neutralActualZetaNativeLogError_gt_three a
+  have hp := neutralPhysicalPoleEnergyConstant_nonnegative a
+  linarith
 
 /-- The existing Gårding mass-error coefficient is strictly above one.
 The native quadratic may still admit a sharper supported estimate. -/
