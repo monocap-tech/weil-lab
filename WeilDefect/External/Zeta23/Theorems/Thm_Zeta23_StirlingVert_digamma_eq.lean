@@ -83,11 +83,11 @@ not match ℂ's default instance path under `rw`; cf. Zeta23.integral_const_mul_
 section Seq
 variable {w : ℂ}
 
-theorem natp1_re_pos (hw : 0 < w.re) (n : ℕ) : 0 < ((n : ℂ) + 1 + w).re := by
+theorem natp1_re_pos_rpb108Local (hw : 0 < w.re) (n : ℕ) : 0 < ((n : ℂ) + 1 + w).re := by
   simp; positivity
 
-theorem natp1_ne_zero (hw : 0 < w.re) (n : ℕ) : (n : ℂ) + 1 + w ≠ 0 := fun h => by
-  have := natp1_re_pos hw n; rw [h] at this; simp at this
+theorem natp1_ne_zero_rpb108Local (hw : 0 < w.re) (n : ℕ) : (n : ℂ) + 1 + w ≠ 0 := fun h => by
+  have := natp1_re_pos_rpb108Local hw n; rw [h] at this; simp at this
 
 
 theorem natp1_le_norm (hw : 0 < w.re) (n : ℕ) : (n : ℝ) + 1 ≤ ‖(n : ℂ) + 1 + w‖ := by
@@ -100,7 +100,7 @@ theorem natp1_le_norm (hw : 0 < w.re) (n : ℕ) : (n : ℝ) + 1 ≤ ‖(n : ℂ)
 
 theorem norm_rho_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
     ‖rho w n‖ ≤ 1 / (‖(n : ℂ) + 1 + w‖ ^ 2 * |w.im|) := by
-  have h1 := natp1_ne_zero hw n
+  have h1 := natp1_ne_zero_rpb108Local hw n
   have hn2 : |w.im| ≤ ‖(n : ℂ) + 2 + w‖ := by
     have := Complex.abs_im_le_norm ((n : ℂ) + 2 + w); simpa using this
   have ht0 : 0 < |w.im| := by linarith

@@ -76,7 +76,7 @@ abstractly.
 
 CONVENTIONS (paper [Notation]).  Paper Fourier transform:
     f̂(τ) = h_f(τ) := ∫_ℝ f(u) e^{iτu} du,   inversion  f(u) = (1/2π) ∫_ℝ h_f(r) e^{-iru} dr.
-Mathlib: 𝓕 f w = ∫ v, exp(-2πi v w) • f v.  Dictionary (proved below, `paperFT_ofReal_eq_fourier`):
+Mathlib: 𝓕 f w = ∫ v, exp(-2πi v w) • f v.  Dictionary (proved below, `paperFT_ofReal_eq_fourier_rpb108Local`):
     h_f(τ) = 𝓕 f (-τ/(2π)).
 -/
 
@@ -117,7 +117,7 @@ a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `
 /-! ## Dictionary with Mathlib's Fourier transform -/
 
 /-- `h_k(τ) = 𝓕 k (−τ/(2π))` for real τ. -/
-theorem paperFT_ofReal_eq_fourier (k : ℝ → ℂ) (τ : ℝ) :
+theorem paperFT_ofReal_eq_fourier_rpb108Local (k : ℝ → ℂ) (τ : ℝ) :
     paperFT k τ = 𝓕 k (-τ / (2 * π)) := by
   rw [Real.fourier_real_eq_integral_exp_smul]
   unfold paperFT
@@ -134,7 +134,7 @@ theorem paperFT_ofReal_eq_fourier (k : ℝ → ℂ) (τ : ℝ) :
 theorem integrable_paperFT_ofReal {k : ℝ → ℂ} (hFk : Integrable (𝓕 k)) :
     Integrable (fun τ : ℝ => paperFT k τ) := by
   have : (fun τ : ℝ => paperFT k τ) = fun τ => (𝓕 k) ((-(1 / (2 * π))) * τ) := by
-    ext τ; rw [paperFT_ofReal_eq_fourier, show -(1 / (2 * π)) * τ = -τ / (2 * π) by ring]
+    ext τ; rw [paperFT_ofReal_eq_fourier_rpb108Local, show -(1 / (2 * π)) * τ = -τ / (2 * π) by ring]
   rw [this]
   exact hFk.comp_mul_left' (neg_ne_zero.mpr (by positivity))
 

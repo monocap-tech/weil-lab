@@ -158,12 +158,12 @@ end Rectangle
 
 
 @[simp]
-theorem preimage_equivRealProdCLM_reProdIm (s t : Set ℝ) :
+theorem preimage_equivRealProdCLM_reProdIm_rpb108Local (s t : Set ℝ) :
     equivRealProdCLM.symm ⁻¹' (s ×ℂ t) = s ×ˢ t :=
   rfl
 
 @[simp]
-theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm {R : Type*} {S : Type*} [Semiring R]
+theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm_rpb108Local {R : Type*} {S : Type*} [Semiring R]
     [Semiring S] {σ : R →+* S} {σ' : S →+* R} [RingHomInvPair σ σ'] [RingHomInvPair σ' σ]
     (M : Type*) [TopologicalSpace M]
     [AddCommMonoid M] {M₂ : Type*} [TopologicalSpace M₂] [AddCommMonoid M₂] [Module R M]
@@ -184,7 +184,7 @@ theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm {R : Type*} {S : Type*} [Se
 
 
 
-lemma rectangleBorder_subset_rectangle (z w : ℂ) : RectangleBorder z w ⊆ Rectangle z w := by
+lemma rectangleBorder_subset_rectangle_rpb108Local (z w : ℂ) : RectangleBorder z w ⊆ Rectangle z w := by
   intro x hx
   obtain ⟨⟨h | h⟩ | h⟩ | h := hx
   · exact ⟨h.1, h.2 ▸ left_mem_uIcc⟩
@@ -196,7 +196,7 @@ lemma rectangleBorder_subset_rectangle (z w : ℂ) : RectangleBorder z w ⊆ Rec
 
 
 
-lemma rectangle_mem_nhds_iff {z w p : ℂ} :
+lemma rectangle_mem_nhds_iff_rpb108Local {z w p : ℂ} :
     Rectangle z w ∈ 𝓝 p ↔ p ∈ (Set.uIoo z.re w.re) ×ℂ (Set.uIoo z.im w.im) := by
   simp_rw [← mem_interior_iff_mem_nhds, Rectangle, Complex.interior_reProdIm, uIoo, uIcc,
     interior_Icc]
@@ -401,7 +401,7 @@ theorem Zeta23.WeilEF.rectangle_identity {k : ℝ → ℂ} (hk : ContDiff ℝ 2 
       exact lt_irrefl _ h2
   have hPint : ∀ p ∈ P, Rectangle z w ∈ 𝓝 p := by
     intro p hp
-    rw [rectangle_mem_nhds_iff, Complex.mem_reProdIm, Set.uIoo_of_le hre, Set.uIoo_of_le him,
+    rw [rectangle_mem_nhds_iff_rpb108Local, Complex.mem_reProdIm, Set.uIoo_of_le hre, Set.uIoo_of_le him,
       hzre, hzim, hwre, hwim]
     rw [hPdef] at hp
     simp only [Finset.mem_insert, Finset.mem_singleton] at hp
@@ -431,7 +431,7 @@ theorem Zeta23.WeilEF.rectangle_identity {k : ℝ → ℂ} (hk : ContDiff ℝ 2 
     exact hdiff.analyticAt s
   have hborder : ∀ s ∈ RectangleBorder z w, completedRiemannZeta s ≠ 0 := by
     intro s hs h0
-    have hsrect := rectangleBorder_subset_rectangle z w hs
+    have hsrect := rectangleBorder_subset_rectangle_rpb108Local z w hs
     obtain ⟨⟨hr1, hr2⟩, ⟨hi1, hi2⟩⟩ := (hmem s).mp hsrect
     simp only [RectangleBorder, Set.mem_union, Complex.mem_reProdIm, Set.mem_singleton_iff,
       hzre, hzim, hwre, hwim] at hs

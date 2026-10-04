@@ -245,14 +245,14 @@ theorem riemannZeta_zeros_finite_of_isCompact {K : Set ℂ} (hK : IsCompact K) :
   exact mem_iUnion₂.mpr ⟨z, hzI, hρz, hρ⟩
 
 
-lemma comp_affine_analyticAt {s₀ c z : ℂ} (h : s₀ + c * z ≠ 1) :
+lemma comp_affine_analyticAt_rpb108Local {s₀ c z : ℂ} (h : s₀ + c * z ≠ 1) :
     AnalyticAt ℂ (fun z : ℂ => riemannZeta (s₀ + c * z)) z := by
   have hζ : AnalyticAt ℂ riemannZeta (s₀ + c * z) := riemannZeta_analyticOnNhd_compl_one _ h
   have haff : AnalyticAt ℂ (fun z : ℂ => s₀ + c * z) z := by fun_prop
   exact hζ.comp_of_eq haff rfl
 
 lemma gfun_analyticAt {s₀ c u z : ℂ} (h : s₀ + c * z ≠ 1) : AnalyticAt ℂ (gfun s₀ c u) z := by
-  have h1 := comp_affine_analyticAt h
+  have h1 := comp_affine_analyticAt_rpb108Local h
   have h2 : AnalyticAt ℂ (fun _ : ℂ => u) z := analyticAt_const
   have := h1.mul h2
   exact this
