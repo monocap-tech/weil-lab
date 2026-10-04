@@ -2,14 +2,7 @@ name: Lean
 
 on:
   push:
-    branches: [main]
-    paths:
-      - "lean-toolchain"
-      - "lakefile.toml"
-      - "lake-manifest.json"
-      - "WeilDefect.lean"
-      - "WeilDefect/**"
-      - ".github/workflows/lean.yml"
+    branches: [main, validation/rpb108-mellin-growth]
   pull_request:
     paths:
       - "lean-toolchain"
@@ -20,7 +13,7 @@ on:
       - ".github/workflows/lean.yml"
 
 concurrency:
-  group: lean-${{ github.ref }}
+  group: lean-${{ github.event.pull_request.head.ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -28,29 +21,78 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Install Elan
         shell: bash
         run: |
-          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-
+      - name: Restore validation build cache
+        id: rpb_cache
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: |
+            .lake
+            lake-manifest.json
+          key: rpb108-actual-raw-green-verified-v1
+          restore-keys: |
+            rpb108-actual-green-canonical-verified-v1
+            rpb108-actual-green-energy-verified-v1
+            rpb108-actual-green-sampling-verified-v1
+            rpb108-divisor-summability-compiled-v1
+            rpb108-log-growth-compiled-v1
+            rpb108-mellin-manifest-final-v1
+            rpb108-mellin-factorial-verified-v1
+            rpb108-mellin-representation-compiled-v1
       - name: Resolve pinned dependencies
-        shell: bash
+        env:
+          MATHLIB_NO_CACHE_ON_UPDATE: "1"
         run: lake update
-
-      - name: Fetch mathlib cache
+      - name: Fetch mathlib cache if compiled dependency is missing
         shell: bash
-        run: lake exe cache get
-
-      - name: Check current theorem target
+        run: |
+          if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
+            lake exe cache get
+          fi
+      - name: Check actual raw Green sampling
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
-
+        run: |
+          git rev-parse HEAD
+          git hash-object WeilDefect/Arithmetic/ActualZetaMellinRepresentation.lean
+          lean --version
+          lake build WeilDefect.Arithmetic.ActualZetaRawGreenSampling
+          lake build WeilDefect
+      - name: Inspect actual raw Green sampling axioms
+        shell: bash
+        run: |
+          cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
+          import WeilDefect.Arithmetic.ActualZetaRawGreenSampling
+          #print axioms WeilDefect.neutralWindowEvaluation_eq_inner
+          #print axioms WeilDefect.neutralActualZetaGreenColumn_windowDerivative
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_windowDerivative
+          #print axioms WeilDefect.neutralExponentialColumnL2_sq_bound
+          #print axioms WeilDefect.neutralWindowEvaluation_sq_bound
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_window_sq_le
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_window_sq_summable
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_window_mixed_summable
+          LEAN
+          lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt
+          if grep -q 'sorryAx' /tmp/rpb108-green-energy-axioms.txt; then exit 1; fi
       - name: Reject unfinished trusted declarations
         shell: bash
         run: |
-          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)\b' WeilDefect WeilDefect.lean; then
+          if grep -R -nE '^[[:space:]]*(axiom|sorry|admit)([[:space:](]|$)' WeilDefect WeilDefect.lean; then
             echo "Unfinished or project-axiom declaration found."
             exit 1
           fi
+      - name: Save validation dependency cache
+        if: success()
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: |
+            .lake
+            lake-manifest.json
+          key: rpb108-actual-raw-green-verified-v1
