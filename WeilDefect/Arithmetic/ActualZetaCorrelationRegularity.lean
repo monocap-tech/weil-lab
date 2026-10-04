@@ -26,6 +26,7 @@ private theorem mixed_norm_integrable {f g : ℝ → ℂ}
     ((memLp_two_iff_integrable_sq_norm hg.aestronglyMeasurable).mp hg)
   apply hi.mono' (hf.aestronglyMeasurable.norm.mul hg.aestronglyMeasurable.norm)
   filter_upwards [] with ξ
+  change ‖‖f ξ‖ * ‖g ξ‖‖ ≤ ‖f ξ‖ ^ 2 + ‖g ξ‖ ^ 2
   rw [Real.norm_eq_abs, abs_of_nonneg (mul_nonneg (norm_nonneg _) (norm_nonneg _))]
   nlinarith only [sq_nonneg (‖f ξ‖ - ‖g ξ‖)]
 
@@ -33,7 +34,7 @@ private theorem spectrum_aestronglyMeasurable
     (a : ℝ) (v w : NeutralActualZetaGreenCoefficients) :
     AEStronglyMeasurable (neutralActualZetaGreenCorrelationSpectrum a v w) volume :=
   (Lp.aestronglyMeasurable
-    (𝓕 (neutralActualZetaGreenSynthesis a v) : RealComplexL2)).conj.mul
+    (𝓕 (neutralActualZetaGreenSynthesis a v) : RealComplexL2)).star.mul
     (Lp.aestronglyMeasurable
       (𝓕 (neutralActualZetaGreenSynthesis a w) : RealComplexL2))
 
@@ -76,7 +77,10 @@ theorem neutralActualZetaGreenCorrelationSpectrum_moments
       ((continuous_norm.pow 1).aestronglyMeasurable.mul
         (spectrum_aestronglyMeasurable a v w).norm)
     filter_upwards [] with ξ
-    rw [pow_one, Real.norm_eq_abs,
+    change ‖‖ξ‖ * ‖neutralActualZetaGreenCorrelationSpectrum a v w ξ‖‖ ≤
+      ‖neutralActualZetaGreenCorrelationSpectrum a v w ξ‖ +
+        ‖ξ‖ ^ 2 * ‖neutralActualZetaGreenCorrelationSpectrum a v w ξ‖
+    rw [Real.norm_eq_abs,
       abs_of_nonneg (mul_nonneg (norm_nonneg _) (norm_nonneg _))]
     have hξ : ‖ξ‖ ≤ 1 + ‖ξ‖ ^ 2 := by nlinarith only [sq_nonneg (‖ξ‖ - 1)]
     simpa only [add_mul, one_mul] using
@@ -99,7 +103,7 @@ theorem neutralActualZetaGreenCorrelationInverse_contDiff
       (𝓕 (neutralActualZetaGreenCorrelationSpectrum a v w)) ∘
         (fun x : ℝ => -x) := by
     funext x
-    exact fourierInv_eq_fourier_neg _ _
+    exact Real.fourierInv_eq_fourier_neg _ _
   rw [he]
   exact h.comp contDiff_neg
 
