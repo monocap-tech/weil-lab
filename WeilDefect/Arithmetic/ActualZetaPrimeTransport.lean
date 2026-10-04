@@ -154,7 +154,7 @@ theorem neutralActualZetaGreenPrimeForm_spectral
     neutralActualZetaGreenPrimeForm a v w =
       ∫ ξ : ℝ, (rightLimitPrimeSymbol a (2 * Real.pi * ξ) : ℂ) *
         neutralActualZetaGreenCorrelationSpectrum a v w ξ := by
-  rw [neutralActualZetaGreenPrimeForm_finite]
+  rw [neutralActualZetaGreenPrimeForm_finite a ha v w]
   simp_rw [neutralActualZetaGreenPrimeSummand_spectral]
   rw [← integral_finset_sum _ (fun n _ => prime_integrand_integrable a v w n)]
   apply integral_congr_ae
