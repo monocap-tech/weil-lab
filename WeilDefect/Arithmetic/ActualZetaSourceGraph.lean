@@ -35,10 +35,12 @@ def neutralActualZetaSourceGraphSubmodule (a : ℝ) :
     constructor
     · change c * x.2.1 q = inner ℂ
         (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) (c • x.1)
-      rw [inner_smul_right, (hx q).1]
+      exact (congrArg (fun z : ℂ => c * z) (hx q).1).trans
+        (inner_smul_right _ _ _).symm
     · change c * x.2.2 q = inner ℂ
         (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) (c • x.1)
-      rw [inner_smul_right, (hx q).2]
+      exact (congrArg (fun z : ℂ => c * z) (hx q).2).trans
+        (inner_smul_right _ _ _).symm
 
 /-- Closure is proved coordinatewise, using bounded Hilbert source evaluation
 and continuous evaluation in ℓ². No retained-mode membership is assumed. -/
@@ -48,7 +50,7 @@ theorem neutralActualZetaSourceGraph_isClosed (a : ℝ) :
   change IsClosed {x : NeutralActualZetaSourceAmbient a | ∀ q,
     x.2.1 q = inner ℂ (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) x.1 ∧
     x.2.2 q = inner ℂ (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) x.1}
-  simp only [Set.setOf_forall]
+  simp only [Set.ofPred_forall]
   apply isClosed_iInter
   intro q
   have hp : Continuous (fun x : NeutralActualZetaSourceAmbient a => x.2.1 q) :=
@@ -59,10 +61,10 @@ theorem neutralActualZetaSourceGraph_isClosed (a : ℝ) :
         (continuous_snd.comp continuous_snd))
   have hsp : Continuous (fun x : NeutralActualZetaSourceAmbient a =>
       inner ℂ (neutralLogPositivePairSource a (neutralActualZetaDivisorOrdinate q)) x.1) :=
-    continuous_const.inner continuous_fst
+    continuous_const.inner (𝕜 := ℂ) continuous_fst
   have hsn : Continuous (fun x : NeutralActualZetaSourceAmbient a =>
       inner ℂ (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) x.1) :=
-    continuous_const.inner continuous_fst
+    continuous_const.inner (𝕜 := ℂ) continuous_fst
   exact (isClosed_eq hp hsp).inter (isClosed_eq hn hsn)
 
 /-- A concrete complete source domain with the graph norm. -/
