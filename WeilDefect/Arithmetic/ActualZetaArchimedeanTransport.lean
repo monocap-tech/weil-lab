@@ -26,8 +26,10 @@ theorem neutralActualZetaGammaBracket_continuous :
       (1 / 4 + Complex.I * (r : ℂ) / 2)) := by
     apply continuous_iff_continuousAt.mpr
     intro r
-    exact (Zeta23.Stirling.differentiableAt_digamma
-      (quarter_line_noninteger r)).continuousAt.comp (by fun_prop)
+    exact ContinuousAt.comp (g := Complex.digamma)
+      (f := fun t : ℝ => (1 / 4 + Complex.I * (t : ℂ) / 2 : ℂ))
+      (Zeta23.Stirling.differentiableAt_digamma
+        (quarter_line_noninteger r)).continuousAt (by fun_prop)
   exact (Complex.continuous_re.comp h).sub continuous_const
 
 /-- A linear majorant for the native symbol follows from certified digamma growth. -/
@@ -46,6 +48,8 @@ theorem neutralActualZetaArchimedeanSymbol_bound :
       have hp : 0 < 2 + |z.im| := by positivity
       have h := Real.log_le_sub_one_of_pos hp
       rw [him, abs_div] at h
+      rw [him, abs_div]
+      norm_num
       norm_num at h
       linarith [abs_nonneg r]
     calc
@@ -57,7 +61,7 @@ theorem neutralActualZetaArchimedeanSymbol_bound :
       _ ≤ C * Real.log (2 + |z.im|) + |Real.log Real.pi| :=
         add_le_add_right hd _
       _ ≤ C * (2 + |r|) + |Real.log Real.pi| :=
-        add_le_add_right (mul_le_mul_of_nonneg_left hl hC.le) _
+        by linarith [mul_le_mul_of_nonneg_left hl hC.le]
   let D := C * (2 + 2 * Real.pi) + |Real.log Real.pi| + 1
   refine ⟨D, by dsimp [D]; positivity, ?_⟩
   intro ξ
@@ -67,10 +71,12 @@ theorem neutralActualZetaArchimedeanSymbol_bound :
     rw [abs_mul, abs_mul, abs_of_pos Real.pi_pos]
     norm_num [Real.norm_eq_abs]
   rw [he] at h
+  simp only [Real.norm_eq_abs] at h ⊢
   dsimp [D]
-  nlinarith [norm_nonneg ξ, abs_nonneg (Real.log Real.pi),
-    mul_nonneg hC.le (norm_nonneg ξ),
-    mul_nonneg (mul_nonneg hC.le Real.pi_pos.le) (norm_nonneg ξ)]
+  nlinarith [abs_nonneg ξ, abs_nonneg (Real.log Real.pi),
+    mul_nonneg hC.le (abs_nonneg ξ),
+    mul_nonneg (abs_nonneg (Real.log Real.pi)) (abs_nonneg ξ),
+    mul_nonneg hC.le Real.pi_pos.le]
 
 /-- Absolute integrability of the digamma-weighted concrete mixed spectrum
 is derived from the already proved zeroth and first Fourier moments. -/
@@ -135,7 +141,7 @@ theorem neutralActualZetaGreenArchimedeanForm_spectral
   have habs : |(-2 * Real.pi)⁻¹| = 1 / (2 * Real.pi) := by
     rw [show -2 * Real.pi = -(2 * Real.pi) by ring,
       inv_neg, abs_neg, abs_of_pos (inv_pos.mpr (by positivity))]
-    rfl
+    simp only [one_div]
   rw [habs, Complex.real_smul] at h
   have he : (∫ ξ : ℝ, F ((-2 * Real.pi) * ξ)) =
       ∫ ξ : ℝ, (compactWindowArchimedeanSymbol (2 * Real.pi * ξ) : ℂ) *
