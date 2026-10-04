@@ -21,7 +21,7 @@ private theorem integrableL2_fourier_pairing (f : RealComplexL2) (hf : Integrabl
     Lp.toTemperedDistribution_apply] at h
   simp only [smul_eq_mul] at h
   rw [← h]
-  simpa only [ContinuousLinearMap.mul_apply'] using
+  simpa using!
     VectorFourier.integral_bilin_fourierIntegral_eq_flip
       (ContinuousLinearMap.mul ℂ ℂ) (L := innerₗ ℝ)
       Real.continuous_fourierChar continuous_inner
