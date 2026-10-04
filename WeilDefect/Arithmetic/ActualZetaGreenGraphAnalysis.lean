@@ -6,6 +6,7 @@ open ContinuousLinearMap InnerProductSpace
 open scoped InnerProduct
 set_option maxHeartbeats 800000
 set_option backward.isDefEq.respectTransparency false
+local instance : DecidableEq NeutralActualZetaDivisorCoordinate := Classical.decEq _
 
 /-- The actual graph inner product keeps the physical logarithmic coordinate
 and both full, unnormalized divisor coefficient vectors. -/
@@ -22,8 +23,7 @@ theorem neutralActualZetaHilbertSource_inner_coordinates (a : ℝ)
     inner ℂ f.val.fst g.val.fst +
     inner ℂ f.val.snd.fst g.val.snd.fst +
     inner ℂ f.val.snd.snd g.val.snd.snd
-  rw [WithLp.prod_inner_apply, WithLp.prod_inner_apply]
-  ring
+  simp only [WithLp.prod_inner_apply, WithLp.ofLp_fst, WithLp.ofLp_snd, add_assoc]
 
 /-- Concrete packet test, with source coordinates of the same actual unit
 Green packet and no discarded negative or multiplicity coordinates. -/
