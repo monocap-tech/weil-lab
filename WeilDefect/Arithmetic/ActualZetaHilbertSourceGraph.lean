@@ -40,7 +40,8 @@ abbrev NeutralActualZetaHilbertSourceDomain (a : ℝ) :=
 
 instance neutralActualZetaHilbertSourceDomain_innerProduct (a : ℝ) :
     InnerProductSpace ℂ (NeutralActualZetaHilbertSourceDomain a) :=
-  Submodule.innerProductSpace (neutralActualZetaHilbertSourceGraph a).toSubmodule
+  Submodule.innerProductSpace (𝕜 := ℂ) (E := NeutralActualZetaHilbertAmbient a)
+    (neutralActualZetaHilbertSourceGraph a).toSubmodule
 
 instance neutralActualZetaHilbertSourceDomain_complete (a : ℝ) :
     CompleteSpace (NeutralActualZetaHilbertSourceDomain a) :=
@@ -105,17 +106,25 @@ def neutralActualZetaHilbertBackgroundAnalysis (a : ℝ)
 This is a graph-domain operator, not an asserted physical Weil operator. -/
 def neutralActualZetaHilbertSourceOperator (a : ℝ) :
     NeutralActualZetaHilbertSourceDomain a →L[ℂ] NeutralActualZetaHilbertSourceDomain a :=
-  (neutralActualZetaHilbertPositiveAnalysis a)† ∘L neutralActualZetaHilbertPositiveAnalysis a -
-    (neutralActualZetaHilbertNegativeAnalysis a)† ∘L neutralActualZetaHilbertNegativeAnalysis a
+  ((ContinuousLinearMap.adjoint (𝕜 := ℂ)
+    (E := NeutralActualZetaHilbertSourceDomain a) (F := NeutralActualZetaGreenCoefficients)
+    (neutralActualZetaHilbertPositiveAnalysis a)).comp (neutralActualZetaHilbertPositiveAnalysis a)) -
+  ((ContinuousLinearMap.adjoint (𝕜 := ℂ)
+    (E := NeutralActualZetaHilbertSourceDomain a) (F := NeutralActualZetaGreenCoefficients)
+    (neutralActualZetaHilbertNegativeAnalysis a)).comp (neutralActualZetaHilbertNegativeAnalysis a))
 
 /-- The corresponding signed effective-background covariance. Positivity and
 a WD-T10-compatible factorization remain separate obligations. -/
 def neutralActualZetaHilbertBackgroundOperator (a : ℝ)
     (s : Finset NeutralActualZetaDivisorCoordinate) :
     NeutralActualZetaHilbertSourceDomain a →L[ℂ] NeutralActualZetaHilbertSourceDomain a :=
-  (neutralActualZetaHilbertPositiveAnalysis a)† ∘L neutralActualZetaHilbertPositiveAnalysis a -
-    (neutralActualZetaHilbertBackgroundAnalysis a s)† ∘L
-      neutralActualZetaHilbertBackgroundAnalysis a s
+  ((ContinuousLinearMap.adjoint (𝕜 := ℂ)
+    (E := NeutralActualZetaHilbertSourceDomain a) (F := NeutralActualZetaGreenCoefficients)
+    (neutralActualZetaHilbertPositiveAnalysis a)).comp (neutralActualZetaHilbertPositiveAnalysis a)) -
+  ((ContinuousLinearMap.adjoint (𝕜 := ℂ)
+    (E := NeutralActualZetaHilbertSourceDomain a) (F := NeutralActualZetaGreenCoefficients)
+    (neutralActualZetaHilbertBackgroundAnalysis a s)).comp
+      (neutralActualZetaHilbertBackgroundAnalysis a s))
 
 theorem neutralActualZetaHilbertSourceOperator_mixed (a : ℝ)
     (f g : NeutralActualZetaHilbertSourceDomain a) :
@@ -145,7 +154,7 @@ theorem neutralActualZetaHilbertSourceOperator_diagonal (a : ℝ)
   rw [neutralActualZetaHilbertSourceOperator_mixed]
   simp only [inner_self_eq_norm_sq_to_K, neutralActualZetaSourceQuadratic,
     neutralActualZetaHilbertPositiveAnalysis, neutralActualZetaHilbertNegativeAnalysis,
-    comp_apply, Complex.ofReal_sub]
+    comp_apply, Complex.ofReal_sub, Complex.ofReal_pow]
 
 theorem neutralActualZetaHilbertBackgroundOperator_diagonal (a : ℝ)
     (s : Finset NeutralActualZetaDivisorCoordinate)
@@ -156,7 +165,7 @@ theorem neutralActualZetaHilbertBackgroundOperator_diagonal (a : ℝ)
   rw [neutralActualZetaHilbertBackgroundOperator_mixed]
   simp only [inner_self_eq_norm_sq_to_K, neutralActualZetaEffectiveBackgroundQuadratic,
     neutralActualZetaHilbertPositiveAnalysis, neutralActualZetaHilbertBackgroundAnalysis,
-    comp_apply, Complex.ofReal_sub]
+    comp_apply, Complex.ofReal_sub, Complex.ofReal_pow]
 
 /-- Every certified Green source lift enters the equivalent Hilbert graph
 without changing any source or physical coordinate. -/
