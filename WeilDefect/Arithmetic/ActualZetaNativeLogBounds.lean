@@ -62,7 +62,9 @@ theorem neutralActualZetaArchimedean_log_bound :
         show ‖(1 / 4 : ℂ)‖ = (1 / 4 : ℝ) by norm_num] using h
     let x : ℝ := Real.exp 1 + |ξ|
     have hx : 0 < x := by dsimp [x]; positivity
-    have he : 1 ≤ Real.exp 1 := Real.one_le_exp.mpr (by norm_num)
+    have he : 1 ≤ Real.exp 1 := by
+      rw [← Real.exp_zero]
+      exact Real.exp_le_exp.mpr (by norm_num)
     have hlo : x ≤ (Real.exp 1 + 1) * ‖z‖ := by
       dsimp [x]
       nlinarith [mul_le_mul_of_nonneg_left hn (Real.exp_nonneg 1)]
@@ -90,7 +92,8 @@ theorem neutralActualZetaArchimedean_log_bound :
     change |(Complex.digamma z).re - Real.log Real.pi - Real.log x| ≤ _
     have h := abs_add_le ((Complex.digamma z).re - Real.log ‖z‖)
       (Real.log ‖z‖ - Real.log x)
-    have h' := abs_sub_le ((Complex.digamma z).re - Real.log x) (Real.log Real.pi)
+    have h' := norm_sub_le ((Complex.digamma z).re - Real.log x) (Real.log Real.pi)
+    simp only [Real.norm_eq_abs] at h'
     have heq : (Complex.digamma z).re - Real.log ‖z‖ +
         (Real.log ‖z‖ - Real.log x) = (Complex.digamma z).re - Real.log x := by ring
     rw [heq] at h
@@ -102,7 +105,8 @@ theorem neutralActualZetaArchimedean_log_bound :
       compactWindowArchimedeanSymbol (2 * Real.pi * ξ)) := by
     have h := neutralActualZetaGammaBracket_continuous.comp
       (continuous_const.mul continuous_id : Continuous (fun ξ : ℝ => 2 * Real.pi * ξ))
-    simpa only [neutralActualZetaGammaBracket_native] using h
+    simpa only [Function.comp_def, Pi.mul_apply,
+      neutralActualZetaGammaBracket_native] using h
   have hcont : Continuous (fun ξ : ℝ =>
       |compactWindowArchimedeanSymbol (2 * Real.pi * ξ)
         - logarithmicFourierWeight ξ|) :=
@@ -151,9 +155,10 @@ theorem neutralActualZetaNativeSymbol_log_bound (a : ℝ) :
   refine ⟨B + neutralActualZetaPrimeSymbolBound a,
     add_nonneg hB (neutralActualZetaPrimeSymbolBound_nonneg a), ?_⟩
   intro ξ
-  have h := abs_sub_le
+  have h := norm_sub_le
     (compactWindowArchimedeanSymbol (2 * Real.pi * ξ) - logarithmicFourierWeight ξ)
     (rightLimitPrimeSymbol a (2 * Real.pi * ξ))
+  simp only [Real.norm_eq_abs] at h
   have hp := neutralActualZetaPrimeSymbol_abs_le a (2 * Real.pi * ξ)
   unfold rightLimitCompactWeilSymbolMathlib rightLimitCompactWeilSymbol
   have he : compactWindowArchimedeanSymbol (2 * Real.pi * ξ) -
