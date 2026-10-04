@@ -91,5 +91,38 @@ theorem neutralActualZetaNativeSymbol_negative_neighborhood (a : ℝ) :
   apply hb
   simpa only [Metric.mem_ball, Real.dist_eq, sub_zero] using hξ
 
+/-- Every uniform absolute logarithmic envelope pays the actual zero-frequency
+deficit, independently of how its constant is chosen. -/
+theorem neutralActualZetaNativeLogEnvelope_zero_lower_bound
+    (a C : ℝ) (hC : ∀ ξ : ℝ,
+      |rightLimitCompactWeilSymbolMathlib a ξ - logarithmicFourierWeight ξ| ≤ C) :
+    logarithmicFourierWeight 0 - rightLimitCompactWeilSymbolMathlib a 0 ≤ C := by
+  have h := (abs_le.mp (hC 0)).1
+  linarith
+
+/-- Scalar negativity forces every uniform absolute envelope constant above
+one. This rules out only the direct mass-to-log-norm absorption route. -/
+theorem neutralActualZetaNativeLogEnvelope_gt_one
+    (a C : ℝ) (hC : ∀ ξ : ℝ,
+      |rightLimitCompactWeilSymbolMathlib a ξ - logarithmicFourierWeight ξ| ≤ C) :
+    1 < C := by
+  have he := neutralActualZetaNativeLogEnvelope_zero_lower_bound a C hC
+  have hw := one_le_logarithmicFourierWeight (0 : ℝ)
+  have hs := neutralActualZetaNativeSymbol_zero_negative a
+  linarith
+
+theorem neutralActualZetaNativeLogError_gt_one (a : ℝ) :
+    1 < neutralActualZetaNativeLogError a :=
+  neutralActualZetaNativeLogEnvelope_gt_one a _
+    (neutralActualZetaNativeLogError_spec a).2
+
+/-- The existing Gårding mass-error coefficient is strictly above one.
+The native quadratic may still admit a sharper supported estimate. -/
+theorem neutralActualZetaNativeGardingError_gt_one (a : ℝ) :
+    1 < neutralActualZetaNativeLogError a + neutralPhysicalPoleEnergyConstant a := by
+  have he := neutralActualZetaNativeLogError_gt_one a
+  have hp := neutralPhysicalPoleEnergyConstant_nonnegative a
+  linarith
+
 end
 end WeilDefect
