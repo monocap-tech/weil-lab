@@ -66,6 +66,7 @@ theorem neutralActualZetaCanonical_signedEnergy_integrable
   · filter_upwards [] with ξ
     simp only [Real.norm_eq_abs, abs_mul,
       abs_of_nonneg (sq_nonneg ‖(𝓕 f.val : RealComplexL2) ξ‖)]
+    exact le_refl _
 
 /-- The native mixed multiplier also genuinely converges on this same domain. -/
 theorem neutralActualZetaCanonical_mixed_integrable
