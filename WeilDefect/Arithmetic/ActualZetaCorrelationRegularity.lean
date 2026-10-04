@@ -77,6 +77,7 @@ theorem neutralActualZetaGreenCorrelationSpectrum_moments
       ((continuous_norm.pow 1).aestronglyMeasurable.mul
         (spectrum_aestronglyMeasurable a v w).norm)
     filter_upwards [] with ξ
+    simp only [Pi.mul_apply, Pi.pow_apply, Pi.add_apply, pow_one]
     change ‖‖ξ‖ * ‖neutralActualZetaGreenCorrelationSpectrum a v w ξ‖‖ ≤
       ‖neutralActualZetaGreenCorrelationSpectrum a v w ξ‖ +
         ‖ξ‖ ^ 2 * ‖neutralActualZetaGreenCorrelationSpectrum a v w ξ‖
