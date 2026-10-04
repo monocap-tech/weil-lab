@@ -36,8 +36,9 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-native-weil-form-verified-v1
+          key: rpb108-actual-native-source-attachment-verified-v1
           restore-keys: |
+            rpb108-actual-native-weil-form-verified-v1
             rpb108-actual-archimedean-transport-verified-v1
             rpb108-actual-archimedean-coordinates-verified-v1
             rpb108-actual-prime-transport-verified-v1
@@ -46,7 +47,6 @@ jobs:
             rpb108-actual-correlation-inverse-attachment-verified-v1
             rpb108-actual-correlation-fourier-agreement-verified-v1
             rpb108-actual-correlation-regularity-verified-v1
-            rpb108-actual-correlation-poles-verified-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
@@ -57,23 +57,22 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual native Weil form
+      - name: Compile actual native source attachment
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaNativeWeilForm
+          lake build WeilDefect.Arithmetic.ActualZetaNativeSourceAttachment
           lake build WeilDefect
-      - name: Audit actual native Weil form
+      - name: Audit actual native source attachment
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaNativeWeilForm
-          #print axioms WeilDefect.neutralActualZetaGreenPrime_spectral_integrable
-          #print axioms WeilDefect.neutralActualZetaGreenWeil_spectral_integrable
-          #print axioms WeilDefect.neutralActualZetaGreenZeroForm_native
-          #print axioms WeilDefect.neutralActualZetaGreenZeroForm_native_mixed
-          #print axioms WeilDefect.neutralActualZetaGreenZeroForm_native_diagonal
+          import WeilDefect.Arithmetic.ActualZetaNativeSourceAttachment
+          #print axioms WeilDefect.neutralActualZetaGreenZeroForm_source_quadratic
+          #print axioms WeilDefect.neutralActualZetaGreenZeroForm_source_quadratic_re
+          #print axioms WeilDefect.neutralActualZetaGreenSourceForms_native_mixed
+          #print axioms WeilDefect.neutralActualZetaGreenSourceEnergy_native_quadratic
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -92,4 +91,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-native-weil-form-verified-v1
+          key: rpb108-actual-native-source-attachment-verified-v1
