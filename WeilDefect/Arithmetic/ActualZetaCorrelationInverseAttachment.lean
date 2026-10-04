@@ -24,7 +24,10 @@ private theorem inverse_correlation_pairing
       Real.continuous_fourierChar (by fun_prop)
       hS (show Integrable (u : ℝ → ℂ) volume from u.integrable)
     have hflip : (-innerₗ ℝ).flip = -innerₗ ℝ := by
-      ext x y
+      apply LinearMap.ext
+      intro x
+      apply LinearMap.ext
+      intro y
       change -(y * x) = -(x * y)
       ring
     rw [hflip] at hF
@@ -39,7 +42,10 @@ private theorem inverse_correlation_pairing
       (show Integrable ((𝓕⁻ u : SchwartzMap ℝ ℂ) : ℝ → ℂ) volume
         from (𝓕⁻ u : SchwartzMap ℝ ℂ).integrable) hK
     have hflip : (innerₗ ℝ).flip = innerₗ ℝ := by
-      ext x y
+      apply LinearMap.ext
+      intro x
+      apply LinearMap.ext
+      intro y
       change y * x = x * y
       ring
     rw [hflip] at hF
