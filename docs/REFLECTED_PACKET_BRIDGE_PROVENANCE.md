@@ -1713,3 +1713,35 @@ off the critical path; threshold stays closed; spectral L2 is unproved/unassumed
 RH remains open.
 
 See [full actual-divisor summability](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_DIVISOR_SUMMABILITY_20261004.md).
+
+
+## RPB-108 actual full-divisor Green sampling — 2026-10-04 UTC
+
+The actual Green column is the compact endpoint-corrected Dirichlet column
+in physical L², indexed directly by every actual zeta multiplicity copy.
+The Green coefficient is Q(gamma)=(1/4+gamma²)⁻¹. Its square is bounded
+eventually by 16 times the certified quartic height weight; the exceptional
+low-height window is finite. The concrete column norm estimate then proves
+unconditional square summability of the actual Green column family.
+
+Physical L² Green samples and canonical logarithmic-carrier Green samples
+are square summable; mixed pairings are absolutely summable. Every lp²
+coefficient family on the full actual divisor gives a convergent physical
+Green synthesis, with HasSum and a same-vector inner-product identity.
+This removes the external shell-count premise for Green value synthesis.
+
+Definitions and exact theorem mapping:
+[actual Green terminology](TERMINOLOGY_RPB108_ACTUAL_GREEN_SAMPLING.md).
+Proof and validation:
+[actual Green sampling note](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_GREEN_SAMPLING_20261004.md).
+
+Exact candidate `1fd137394b34c7562e63c21a8896809832e2603c` passed [run 37167951376](https://github.com/monocap-tech/weil-lab/actions/runs/37167951376), job `111335525272`: isolated module 9,014 jobs; full `lake build WeilDefect` 9,054 jobs. All eleven theorem audits report only `[propext, Classical.choice, Quot.sound]`. The unfinished/project-axiom gate passed. The certified source and import are promoted separately from the validation workflow and dependency manifest.
+
+Next cursor: inverse-square actual-divisor tails via dyadic bands, followed
+by gradient/energy convergence. Raw exponential/window-transform sampling,
+sharp local counts, and bounded unregularized sampling on the whole canonical
+logarithmic form domain remain separate open obligations.
+WD-T38 source/null attachment, central cancellation, background completion
+and F-4 remain open. Earlier residue is preserved. SOURCE stays off the
+critical path; threshold remains closed; retained-mode spectral L²/operator
+domain membership is unproved and unassumed. RH remains open.
