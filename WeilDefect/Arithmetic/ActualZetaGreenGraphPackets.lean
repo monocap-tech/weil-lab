@@ -7,6 +7,7 @@ open ContinuousLinearMap InnerProductSpace
 open scoped InnerProduct ComplexConjugate ENNReal
 set_option maxHeartbeats 800000
 set_option backward.isDefEq.respectTransparency false
+local instance : DecidableEq NeutralActualZetaDivisorCoordinate := Classical.decEq _
 
 /-- Fixed physical test samples at every actual multiplicity copy. The
 certified square summability makes this an actual coefficient vector. -/
@@ -104,7 +105,9 @@ theorem neutralActualZetaGreenHilbertSourceLinear_graph_closed (a : ℝ) (ha : 0
       {x | neutralActualZetaHilbertSourceL2 a x.2 =
         neutralActualZetaGreenPhysicalContinuous a ha x.1} := by
     ext x
-    change (x.2 = neutralActualZetaGreenHilbertSourceLift a ha x.1) ↔ _
+    change (x.2 = neutralActualZetaGreenHilbertSourceLift a ha x.1) ↔
+      (neutralActualZetaHilbertSourceL2 a x.2 =
+        neutralActualZetaGreenPhysicalContinuous a ha x.1)
     constructor
     · intro h
       rw [h]
