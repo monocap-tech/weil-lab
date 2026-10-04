@@ -1192,3 +1192,39 @@ WD-T38 source/null attachment, central cancellation, background completion
 and F-4 remain open. Earlier residue is preserved. SOURCE remains off the
 critical path; threshold remains closed. Retained-mode spectral L²/operator
 domain membership is unproved and unassumed. RH remains open.
+
+
+## RPB-108 actual Green canonical form-domain attachment — 2026-10-04 UTC
+
+The actual full-divisor Green synthesis now has its concrete gradient
+synthesis as a global weak derivative. Both physical vectors vanish almost
+everywhere outside [-a,a]. The derived tempered-distribution Fourier identity,
+followed by uniqueness of locally integrable test pairings, identifies
+(2*pi*i)*xi*Fourier(G) almost everywhere with Fourier of the constructed
+gradient. This proves the actual first-derivative frequency product is in L².
+
+The logarithmic Fourier weight bound by exp(1)+xi² gives logarithmic energy
+integrability. The actual Green synthesis therefore inhabits the canonical
+supported logarithmic form domain. Its canonical value and complete
+log-Hilbert physical realization are exactly the original physical synthesis.
+There is no external shell-count or shell-enumeration premise.
+
+Definitions:
+[actual Green canonical terminology](TERMINOLOGY_RPB108_ACTUAL_GREEN_CANONICAL.md).
+Proof and validation:
+[actual Green canonical attachment note](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_GREEN_CANONICAL_20261004.md).
+
+Exact candidate `44eaedb467a591ea451f6f63361d0aa614c7cafb` passed [run 37169473303](https://github.com/monocap-tech/weil-lab/actions/runs/37169473303), job `111339297712`: isolated module 9024 jobs; full `lake build WeilDefect` 9057 jobs. All thirteen theorem audits report only `[propext, Classical.choice, Quot.sound]`. The unfinished/project-axiom gate passed. Certified source and import are promoted separately from the validation workflow and dependency manifest.
+
+Next cursor: identify the retained WD-T38 source witness with the actual
+canonical carrier and attach its quadratic/null identity to the concrete
+multiplier-plus-pole source form, including the actual selected divisor
+and background terms. This requires the retained coefficient/source
+dictionary and same-vector identity; carrier membership alone does not
+supply the retained witness or its null equation.
+
+Raw unregularized divisor sampling, sharp unit-band logarithmic counts,
+WD-T38 source/null attachment, central cancellation, background completion
+and F-4 remain open. Earlier residue is preserved. SOURCE stays off the
+critical path; threshold remains closed. Retained-mode spectral L²/operator
+domain membership is unproved and unassumed. RH remains open.
