@@ -22,14 +22,15 @@ private theorem inverse_correlation_pairing
     simpa [mul_comm] using!
       VectorFourier.integral_bilin_fourierIntegral_eq_flip
         (ContinuousLinearMap.mul ℂ ℂ) (L := -innerₗ ℝ)
-        Real.continuous_fourierChar (by simpa using continuous_inner.neg)
+        Real.continuous_fourierChar (by fun_prop)
         hS (show Integrable (u : ℝ → ℂ) volume from u.integrable)
   have hd : (∫ x, u x * K x) = ∫ ξ, (𝓕⁻ u) ξ * (𝓕 K) ξ := by
     simpa using!
       VectorFourier.integral_bilin_fourierIntegral_eq_flip
         (ContinuousLinearMap.mul ℂ ℂ) (L := innerₗ ℝ)
         Real.continuous_fourierChar continuous_inner
-        (show Integrable (𝓕⁻ u : ℝ → ℂ) volume from (𝓕⁻ u).integrable) hK
+        (show Integrable ((𝓕⁻ u : SchwartzMap ℝ ℂ) : ℝ → ℂ) volume
+          from (𝓕⁻ u : SchwartzMap ℝ ℂ).integrable) hK
   change (∫ x, u x * (𝓕⁻ S) x) = ∫ x, u x * K x
   rw [hi, hd]
   apply integral_congr_ae
@@ -64,14 +65,16 @@ theorem neutralActualZetaGreenCorrelationInverse_supported
     neutralActualZetaGreenCorrelationInverse a v w t = 0 := by
   have hz : neutralActualZetaGreenCorrelationInverse a v w =ᵐ[
       volume.restrict (Set.Icc (-(2 * a)) (2 * a))ᶜ] (fun _ => (0 : ℂ)) := by
+    change ∀ᵐ x ∂volume.restrict (Set.Icc (-(2 * a)) (2 * a))ᶜ,
+      neutralActualZetaGreenCorrelationInverse a v w x = 0
     rw [ae_restrict_iff' measurableSet_Icc.compl]
     filter_upwards [neutralActualZetaGreenCorrelationInverse_ae a ha v w] with x hx
     intro hout
     rw [hx]
     exact neutralWindowCorrelation_supported a _ _ x hout
-  exact eqOn_open_of_ae_eq hz isClosed_Icc.isOpen_compl
+  exact Measure.eqOn_open_of_ae_eq hz isClosed_Icc.isOpen_compl
     (neutralActualZetaGreenCorrelationInverse_contDiff a ha v w).continuous.continuousOn
-    continuous_const.continuousOn ht
+    continuous_const.continuousOn t ht
 
 /-- The proved C² inverse representative has the exact doubled compact window. -/
 theorem neutralActualZetaGreenCorrelationInverse_hasCompactSupport
