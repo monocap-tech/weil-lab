@@ -7,6 +7,7 @@ noncomputable section
 open InnerProductSpace ContinuousLinearMap
 open scoped ComplexConjugate InnerProduct ENNReal
 set_option maxHeartbeats 800000
+set_option backward.isDefEq.respectTransparency false
 
 /-- Hilbert product of the two full actual-divisor coefficient spaces. -/
 abbrev NeutralActualZetaHilbertCoefficients :=
@@ -36,6 +37,10 @@ def neutralActualZetaHilbertSourceGraph (a : ℝ) :
 
 abbrev NeutralActualZetaHilbertSourceDomain (a : ℝ) :=
   (neutralActualZetaHilbertSourceGraph a).toSubmodule
+
+instance neutralActualZetaHilbertSourceDomain_innerProduct (a : ℝ) :
+    InnerProductSpace ℂ (NeutralActualZetaHilbertSourceDomain a) :=
+  Submodule.innerProductSpace (neutralActualZetaHilbertSourceGraph a).toSubmodule
 
 instance neutralActualZetaHilbertSourceDomain_complete (a : ℝ) :
     CompleteSpace (NeutralActualZetaHilbertSourceDomain a) :=

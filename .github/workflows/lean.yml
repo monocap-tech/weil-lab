@@ -65,6 +65,7 @@ jobs:
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
           import WeilDefect.Arithmetic.ActualZetaHilbertSourceGraph
+          #print axioms WeilDefect.neutralActualZetaHilbertSourceDomain_innerProduct
           #print axioms WeilDefect.neutralActualZetaHilbertSourceDomain_complete
           #print axioms WeilDefect.neutralActualZetaHilbertToSource_sourceToHilbert
           #print axioms WeilDefect.neutralActualZetaSourceToHilbert_hilbertToSource
