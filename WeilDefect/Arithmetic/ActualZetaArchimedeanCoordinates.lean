@@ -35,8 +35,10 @@ theorem neutralActualZetaGreenCorrelationInverse_raw_spectrum_ae
     (fun ξ : ℝ => neutralRawTransform (neutralActualZetaGreenCorrelationInverse a v w)
       ((-2 * Real.pi * ξ : ℝ) : ℂ)) =ᵐ[volume]
       neutralActualZetaGreenCorrelationSpectrum a v w := by
-  simpa only [neutralRawTransform_fourier] using
-    neutralActualZetaGreenCorrelationInverse_fourier_ae a ha v w
+  filter_upwards [neutralActualZetaGreenCorrelationInverse_fourier_ae a ha v w]
+    with ξ hξ
+  rw [← neutralRawTransform_fourier]
+  exact hξ
 
 /-- Conjugation symmetry of digamma gives an even real gamma bracket. -/
 theorem neutralActualZetaGammaBracket_even (r : ℝ) :
