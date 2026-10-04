@@ -503,6 +503,12 @@ structure NeutralDefectMorphology
   selectedCoordinateNonzero : uLim ≠ 0
   coefficientCarrier :
     aLim = C uLim
+  /-- Preserve the constructor's original finite-exception unit-gain witness. -/
+  unitGain :
+    (C†) (C uLim) = uLim
+  /-- Preserve the same physical-adjoint realization used to prove nullity. -/
+  physicalAdjoint :
+    C uLim = (P†) k
   physicalNull :
     k ≠ 0 ∧ neutralWeilOperator P C k = 0
   arithmetic :
@@ -627,6 +633,8 @@ noncomputable def wd_t38_attained_unit_gain_neutral_morphology
     endpointNonzero := hy0
     selectedCoordinateNonzero := hu0
     coefficientCarrier := haCarrier
+    unitGain := hunit
+    physicalAdjoint := hreal
     physicalNull := hnull
     arithmetic := harith
     nullExtension := hnullExt
