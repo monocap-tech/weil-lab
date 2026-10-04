@@ -1266,3 +1266,17 @@ and F-4 remain open. Sharp unit-height logarithmic counts and full log-domain
 raw sampling remain open. Earlier residue is preserved. SOURCE stays off
 the critical path; threshold stays closed. Retained-mode spectral L²/operator
 domain membership is unproved and unassumed. RH remains open.
+
+
+## RPB108 actual conjugate-partner zero form — 2026-10-04
+
+Definitions: [actual partner terminology](TERMINOLOGY_RPB108_ACTUAL_WEIL_ZERO_FORM.md).
+Proof and witness boundary: [actual zero-form note](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_WEIL_ZERO_FORM_20261004.md).
+
+The actual multiplicity-preserving divisor involution supplies the conjugate ordinate in the first slot of Z_a(v,w). Partner raw square sampling and mixed absolute convergence are certified for the constructed supported H¹ Green carrier. Actual partner reindexing proves Hermitian symmetry and a real diagonal, without positivity. The existing negative pair source on its exact canonical realization equals the normalized raw-evaluation difference and has square-summable actual-divisor analysis. The previous same-index sum is distinct from this partner form.
+
+Exact candidate `1ab244918869f602a4b1ba2a9ff1283ab69b4563` passed [run 37171227339](https://github.com/monocap-tech/weil-lab/actions/runs/37171227339), job `111344423551`: isolated module 9,026 jobs; full `lake build WeilDefect` 9,059 jobs. All six theorem audits report only `[propext, Classical.choice, Quot.sound]`. The unfinished/project-axiom gate passed. The source and root import below are the exact validated contents; validation workflow and pinned manifest are excluded from research promotion.
+
+Next cursor: derive the convergent positive-minus-negative source decomposition of Z_a on this same constructed vector, and prove its actual arithmetic explicit-formula transport. Recover the retained WD-T38 coefficient/source dictionary and same-vector identity before using these constructed-carrier theorems on that witness. Do not replace the missing identity with a conditional representation wrapper.
+
+WD-T38 source/null attachment, central cancellation, background completion and F-4 remain open. The retained coefficient/source dictionary and identity with G_a(v) are unproved. The typed WD-T38 record permits independently named density/Q and abstract P/C operators; the existing zero-density reindex audit prevents inferring attachment from those fields. Retained-mode spectral L²/operator-domain membership is unproved and unassumed. Full log-domain raw sampling and sharp unit-height logarithmic counts remain open. Earlier residue is preserved. SOURCE stays off the critical path; threshold stays closed. RH remains open.
