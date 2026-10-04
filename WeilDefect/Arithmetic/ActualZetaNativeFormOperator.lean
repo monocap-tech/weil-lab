@@ -96,7 +96,9 @@ theorem neutralActualZetaLogSymbolMultiplication_coe (a : ℝ) (f : RealComplexL
 theorem neutralActualZetaLogSymbolMultiplication_norm_le (a : ℝ) (f : RealComplexL2) :
     ‖neutralActualZetaLogSymbolMultiplication a f‖ ≤
       (1 + neutralActualZetaNativeLogError a) * ‖f‖ :=
-  nativeMultiplyLinear_norm_le _ _ _ _ f
+  nativeMultiplyLinear_norm_le (neutralLogSymbolRatio a)
+    (neutralActualZetaLogSymbolRatio_measurable a) (1 + neutralActualZetaNativeLogError a)
+    (neutralActualZetaLogSymbolRatio_bound a) f
 
 /-- Compress the actual ratio to the complete supported logarithmic carrier.
 This is a form-norm operator, not an ordinary physical L2 spectral operator. -/
@@ -214,7 +216,8 @@ theorem neutralActualZetaLogWeilFormOperator_garding
   rw [neutralActualZetaLogWeilFormOperator_diagonal, Complex.ofReal_re]
   have h := neutralActualZetaCanonicalNativeQuadratic_garding a
     (neutralLogHilbertToCanonical f)
-  have he := congrArg Subtype.val (neutralLogHilbertToCanonical_rightInverse f)
+  have he : neutralLogWeightedL2 (neutralLogHilbertToCanonical f) = f.val :=
+    congrArg Subtype.val (neutralLogHilbertToCanonical_rightInverse f)
   rw [he] at h
   exact h
 
