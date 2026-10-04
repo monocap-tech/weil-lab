@@ -197,3 +197,5 @@ import WeilDefect.Arithmetic.ActualZetaHilbertSourceGraph
 import WeilDefect.Arithmetic.ActualZetaNativeLogBounds
 
 import WeilDefect.Arithmetic.ActualZetaCanonicalNativeEnergy
+
+import WeilDefect.Arithmetic.ActualZetaNativeFormOperator
