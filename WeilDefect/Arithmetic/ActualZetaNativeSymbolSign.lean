@@ -56,7 +56,7 @@ theorem neutralActualZetaNativeSymbol_zero (a : ℝ) :
         ∑ n ∈ rightLimitPrimePowerFinset a, compactWindowPrimeCoefficient n := by
   simp only [rightLimitCompactWeilSymbolMathlib, rightLimitCompactWeilSymbol,
     rightLimitPrimeSymbol, compactWindowArchimedeanSymbol,
-    mul_zero, zero_div, add_zero, Real.cos_zero, mul_one]
+    mul_zero, zero_mul, Complex.ofReal_zero, zero_div, add_zero, Real.cos_zero, mul_one]
   rw [neutralActualZetaDigamma_quarter_re]
 
 /-- The actual scalar symbol is strictly negative at zero for every window.
