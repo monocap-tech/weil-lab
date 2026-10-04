@@ -75,6 +75,7 @@ jobs:
           cat > /tmp/rpb108-green-energy-audit.lean <<'LEAN'
           import WeilDefect.Arithmetic.ActualZetaLogGrowth
           #print axioms WeilDefect.neutralActualZetaFactorialMajorant_log_bound
+          #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_card_le_log_growth
           #print axioms WeilDefect.neutralActualZetaDivisorHeightWindow_card_le_log_moment
           LEAN
           lake env lean /tmp/rpb108-green-energy-audit.lean | tee /tmp/rpb108-green-energy-axioms.txt

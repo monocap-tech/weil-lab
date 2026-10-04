@@ -1,8 +1,10 @@
+import Mathlib.Algebra.Order.Floor.Semiring
 import WeilDefect.Arithmetic.ActualZetaFactorialEnvelope
 import Mathlib.Data.Nat.Factorial.Basic
 
 namespace WeilDefect
 noncomputable section
+set_option maxHeartbeats 800000
 
 /-- Scalar logarithmic conversion of the certified factorial majorant.
 The constants depend only on the positive theta-kernel constants. -/
@@ -26,7 +28,7 @@ theorem neutralActualZetaFactorialMajorant_log_bound
   have hD : 0 < D := by dsimp [D]; positivity
   refine ⟨D, hD, fun n => ?_⟩
   let x : ℝ := (n : ℝ) + 1
-  have hx : 1 ≤ x := by dsimp [x]; positivity
+  have hx : 1 ≤ x := by dsimp [x]; linarith [Nat.cast_nonneg (R := ℝ) n]
   have hxpos : 0 < x := lt_of_lt_of_le zero_lt_one hx
   have hn : 0 ≤ (n : ℝ) := Nat.cast_nonneg n
   have hf : (n.factorial : ℝ) ≤ x ^ n := by
@@ -41,7 +43,7 @@ theorem neutralActualZetaFactorialMajorant_log_bound
       _ = (n.factorial : ℝ) * (1 / q) ^ n := by simp
       _ ≤ x ^ n * b ^ n := mul_le_mul hf hqpow (by positivity) (by positivity)
   have hpoly : (n : ℝ) * ((n : ℝ) + 1) ≤ x ^ 2 := by
-    dsimp [x]; nlinarith
+    dsimp [x]; nlinarith only [hn]
   have hmain : (n : ℝ) * ((n : ℝ) + 1) *
       (C * ((n.factorial : ℝ) / q ^ n) * (Real.exp (-q) / q)) ≤
       B * x ^ (n + 2) * b ^ n := by
@@ -60,7 +62,7 @@ theorem neutralActualZetaFactorialMajorant_log_bound
       (B + 1) * x ^ (n + 2) * b ^ n := by
     change (n : ℝ) * ((n : ℝ) + 1) *
       (C * ((n.factorial : ℝ) / q ^ n) * (Real.exp (-q) / q)) + 1 ≤ _
-    nlinarith
+    nlinarith only [hmain, hunit]
   have hlog := Real.log_le_log
     (lt_of_lt_of_le zero_lt_one (neutralActualZetaFactorialMajorant_one_le hp hC n))
     hmajor
@@ -77,19 +79,21 @@ theorem neutralActualZetaFactorialMajorant_log_bound
   have hly0 : 0 ≤ Real.log ((n : ℝ) + 2) := hL.le.trans hly
   have hlx : Real.log x ≤ Real.log ((n : ℝ) + 2) :=
     Real.log_le_log hxpos (by dsimp [x]; linarith)
-  have hxly : Real.log 2 ≤ x * Real.log ((n : ℝ) + 2) := by nlinarith
+  have hxly : Real.log 2 ≤ x * Real.log ((n : ℝ) + 2) := by
+    exact hly.trans (by simpa only [one_mul] using mul_le_mul_of_nonneg_right hx hly0)
   have h1 : Real.log (B + 1) ≤
       (Real.log (B + 1) / Real.log 2) * x * Real.log ((n : ℝ) + 2) := by
     have h := mul_le_mul_of_nonneg_left hxly (div_nonneg hLB hL.le)
     have he : (Real.log (B + 1) / Real.log 2) * Real.log 2 =
         Real.log (B + 1) := div_mul_cancel₀ _ hL.ne'
     rw [he] at h
-    nlinarith
+    nlinarith only [h]
   have h2 : ((n : ℝ) + 2) * Real.log x ≤
       2 * x * Real.log ((n : ℝ) + 2) := by
     have h := mul_le_mul_of_nonneg_left hlx (by positivity : 0 ≤ (n : ℝ) + 2)
-    dsimp [x] at *
-    nlinarith
+    have h' := mul_le_mul_of_nonneg_right
+      (show (n : ℝ) + 2 ≤ 2 * x by dsimp [x]; linarith) hly0
+    nlinarith only [h, h']
   have h3 : (n : ℝ) * Real.log b ≤
       (Real.log b / Real.log 2) * x * Real.log ((n : ℝ) + 2) := by
     have h := mul_le_mul_of_nonneg_left hly (div_nonneg hLb hL.le)
@@ -97,10 +101,10 @@ theorem neutralActualZetaFactorialMajorant_log_bound
     have h' := mul_le_mul_of_nonneg_left h hxpos.le
     have hn' : (n : ℝ) * Real.log b ≤ x * Real.log b :=
       mul_le_mul_of_nonneg_right (by dsimp [x]; linarith) hLb
-    nlinarith
+    nlinarith only [h', hn']
   change _ ≤ D * x * Real.log ((n : ℝ) + 2)
   dsimp [D]
-  nlinarith
+  nlinarith only [hlog, h1, h2, h3]
 
 /-- Multiplicity-weighted actual height counts have logarithmic moment-order
 growth, directly from the actual theta/Jensen estimates. -/
@@ -117,6 +121,47 @@ theorem neutralActualZetaDivisorHeightWindow_card_le_log_moment :
     _ ≤ Real.log (neutralActualZetaFactorialMajorant p C n) / Real.log 2 := hf T n hn
     _ ≤ (K * ((n : ℝ) + 1) * Real.log ((n : ℝ) + 2)) / Real.log 2 :=
       div_le_div_of_nonneg_right (hlog n) hL.le
+    _ = _ := by ring
+
+/-- Uniform cumulative growth of the actual completed-zeta divisor,
+with multiplicity. This is a global count estimate, not local density. -/
+theorem neutralActualZetaDivisorHeightWindow_card_le_log_growth :
+    ∃ K : ℝ, 0 < K ∧ ∀ T : ℝ,
+      (Fintype.card (neutralActualZetaDivisorHeightWindow T) : ℝ) ≤
+        K * (|T| + 1) * Real.log (|T| + 2) := by
+  obtain ⟨K, hK, hcount⟩ := neutralActualZetaDivisorHeightWindow_card_le_log_moment
+  let D : ℝ := Real.log 7 / Real.log 2 + 1
+  have hL : 0 < Real.log 2 := Real.log_pos (by norm_num)
+  have h7 : 0 ≤ Real.log 7 := Real.log_nonneg (by norm_num)
+  have hD : 0 < D := by dsimp [D]; positivity
+  refine ⟨6 * K * D, by positivity, fun T => ?_⟩
+  let n : ℕ := ⌈2 * (|T| + 2)⌉₊
+  have hnlo : 2 * (|T| + 2) ≤ (n : ℝ) := Nat.le_ceil _
+  have hnhi : (n : ℝ) < 2 * (|T| + 2) + 1 :=
+    Nat.ceil_lt_add_one (by positivity)
+  have hT : 0 ≤ |T| := abs_nonneg T
+  have hn1 : (n : ℝ) + 1 ≤ 6 * (|T| + 1) := by linarith
+  have hn2 : (n : ℝ) + 2 ≤ 7 * (|T| + 2) := by linarith
+  have hly : Real.log 2 ≤ Real.log (|T| + 2) :=
+    Real.log_le_log (by norm_num) (by linarith)
+  have hly0 : 0 ≤ Real.log (|T| + 2) := hL.le.trans hly
+  have hlog7 : Real.log 7 ≤ (Real.log 7 / Real.log 2) * Real.log (|T| + 2) := by
+    have h := mul_le_mul_of_nonneg_left hly (div_nonneg h7 hL.le)
+    rw [div_mul_cancel₀ _ hL.ne'] at h
+    exact h
+  have hnlog : Real.log ((n : ℝ) + 2) ≤ D * Real.log (|T| + 2) := by
+    have h := Real.log_le_log (by positivity : 0 < (n : ℝ) + 2) hn2
+    rw [Real.log_mul (by norm_num : (7 : ℝ) ≠ 0) (by positivity)] at h
+    dsimp [D]
+    nlinarith only [h, hlog7]
+  have hmul : ((n : ℝ) + 1) * Real.log ((n : ℝ) + 2) ≤
+      (6 * (|T| + 1)) * (D * Real.log (|T| + 2)) :=
+    mul_le_mul hn1 hnlog (Real.log_nonneg (by have := Nat.cast_nonneg (R := ℝ) n; linarith)) (by positivity)
+  calc
+    _ ≤ K * ((n : ℝ) + 1) * Real.log ((n : ℝ) + 2) := hcount T n hnlo
+    _ = K * (((n : ℝ) + 1) * Real.log ((n : ℝ) + 2)) := by ring
+    _ ≤ K * ((6 * (|T| + 1)) * (D * Real.log (|T| + 2))) :=
+      mul_le_mul_of_nonneg_left hmul hK.le
     _ = _ := by ring
 
 end
