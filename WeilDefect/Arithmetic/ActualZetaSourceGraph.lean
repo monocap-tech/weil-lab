@@ -72,7 +72,7 @@ theorem neutralActualZetaSourceGraph_isClosed (a : ℝ) :
     hcp.inner (𝕜 := ℂ) hfst
   have hsn : Continuous (fun x : NeutralActualZetaSourceAmbient a =>
       inner ℂ (neutralLogNegativePairSource a (neutralActualZetaDivisorOrdinate q)) x.1) :=
-    continuous_const.inner (𝕜 := ℂ) continuous_fst
+    hcn.inner (𝕜 := ℂ) hfst
   exact (isClosed_eq hp hsp).inter (isClosed_eq hn hsn)
 
 /-- A concrete complete source domain with the graph norm. -/
