@@ -99,7 +99,8 @@ theorem neutralActualZetaGreenZeroForm_arithmetic
   simpa only [Zeta23.EF.literatureRHS, neutralActualZetaGreenPrimeForm,
     neutralActualZetaGreenArchimedeanForm, neutralRawTransform_eq_paperFT,
     Complex.ofReal_div, Complex.ofReal_one, Complex.ofReal_ofNat,
-    Complex.ofReal_neg, mul_div_assoc, mul_one, mul_neg, neg_div] using
+    Complex.ofReal_neg, mul_div_assoc, mul_one, mul_neg, neg_div,
+    div_eq_mul_inv, one_mul] using
       neutralActualZetaGreenZeroForm_literature a ha v w
 
 end
