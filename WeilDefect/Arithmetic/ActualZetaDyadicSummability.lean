@@ -123,7 +123,9 @@ theorem neutralActualZetaDivisorQuadraticWeight_summable :
         rw [← one_div_pow]
         have hp : (2 : ℝ) ^ n ≠ 0 := by positivity
         field_simp
-        <;> first | ring | (rw [← mul_pow]; norm_num)
+        ring
+        rw [← mul_pow]
+        norm_num
   have hs : Summable (fun n : ℕ => ∑' q : neutralActualZetaDivisorDyadicBand n,
       neutralActualZetaDivisorQuadraticWeight q.val) :=
     Summable.of_nonneg_of_le (fun n => tsum_nonneg (fun q => by
