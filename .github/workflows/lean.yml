@@ -36,8 +36,9 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-ef-closure-port-verified-v1
+          key: rpb108-actual-literal-formula-verified-v1
           restore-keys: |
+            rpb108-ef-closure-port-verified-v1
             rpb108-actual-correlation-inverse-attachment-verified-v1
             rpb108-actual-correlation-fourier-agreement-verified-v1
             rpb108-actual-correlation-regularity-verified-v1
@@ -46,7 +47,6 @@ jobs:
             rpb108-actual-source-decomposition-verified-v1
             rpb108-actual-weil-zero-verified-v1
             rpb108-actual-raw-green-verified-v1
-            rpb108-actual-green-canonical-verified-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
@@ -57,20 +57,25 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile recovered explicit formula closure
+      - name: Compile actual-divisor literal explicit formula
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.External.Zeta23.Theorems.Thm_Zeta23_WeilEF_EF_lit_zeta
+          lake build WeilDefect.Arithmetic.ActualZetaLiteralFormula
           lake build WeilDefect
-      - name: Audit recovered literal explicit formula
+      - name: Audit actual-divisor literal explicit formula
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.External.Zeta23.Theorems.Thm_Zeta23_WeilEF_EF_lit_zeta
-          #print axioms Zeta23.WeilEF.EF_lit_zeta
-          #check Zeta23.WeilEF.EF_lit_zeta
+          import WeilDefect.Arithmetic.ActualZetaLiteralFormula
+          #print axioms WeilDefect.neutralActualZetaLiteraturePointEquiv
+          #print axioms WeilDefect.neutralActualZetaLiterature_multiplicity
+          #print axioms WeilDefect.neutralActualZetaLiterature_ordinate
+          #print axioms WeilDefect.neutralRawTransform_eq_paperFT
+          #print axioms WeilDefect.neutralActualZetaDivisor_tsum_literature
+          #print axioms WeilDefect.neutralActualZetaGreenZeroForm_literature
+          #print axioms WeilDefect.neutralActualZetaGreenZeroForm_arithmetic
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -89,4 +94,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-ef-closure-port-verified-v1
+          key: rpb108-actual-literal-formula-verified-v1
