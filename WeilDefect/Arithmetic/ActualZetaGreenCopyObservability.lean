@@ -3,7 +3,7 @@ import WeilDefect.Arithmetic.ActualZetaGreenGraphAnalysis
 namespace WeilDefect
 noncomputable section
 open ContinuousLinearMap InnerProductSpace
-open scoped InnerProduct
+open scoped InnerProduct ComplexConjugate
 set_option maxHeartbeats 800000
 set_option backward.isDefEq.respectTransparency false
 local instance : DecidableEq NeutralActualZetaDivisorCoordinate := Classical.decEq _
@@ -42,7 +42,9 @@ theorem neutralActualZetaGreenHilbertSource_collision
     (h : neutralActualZetaDivisorOrdinate q = neutralActualZetaDivisorOrdinate r) :
     neutralActualZetaGreenHilbertSourceContinuous a ha
       (lp.single 2 q 1 - lp.single 2 r 1) = 0 := by
-  rw [map_sub]
+  change (neutralActualZetaGreenHilbertSourceLinear a ha)
+    (lp.single 2 q 1 - lp.single 2 r 1) = 0
+  rw [(neutralActualZetaGreenHilbertSourceLinear a ha).map_sub]
   change neutralActualZetaGreenPacketColumn a ha q -
     neutralActualZetaGreenPacketColumn a ha r = 0
   rw [neutralActualZetaGreenPacketColumn_eq_of_ordinate a ha q r h, sub_self]
@@ -63,10 +65,10 @@ theorem neutralActualZetaGreenGraphAnalysis_coordinate
     (q : NeutralActualZetaDivisorCoordinate) :
     neutralActualZetaGreenGraphAnalysis a ha f q =
       inner ℂ (neutralActualZetaGreenPacketColumn a ha q) f := by
-  have h := (neutralActualZetaGreenHilbertSourceContinuous a ha).adjoint_inner_right
-    (lp.single 2 q 1) f
-  simpa [neutralActualZetaGreenGraphAnalysis, lp.inner_single_left,
-    RCLike.inner_apply', neutralActualZetaGreenPacketColumn] using h
+  have h := neutralActualZetaGreenGraphAnalysis_duality a ha f (lp.single 2 q 1)
+  rw [lp.inner_single_right] at h
+  simpa [RCLike.inner_apply', inner_conj_symm, neutralActualZetaGreenPacketColumn] using
+    congrArg (starRingEnd ℂ) h
 
 /-- Actual analysis observations are constant across copies at the same
 ordinate, although every copy remains in the coefficient-energy sums. -/
