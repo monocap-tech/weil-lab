@@ -209,3 +209,4 @@ import WeilDefect.Arithmetic.ActualZetaGreenClosedSubspace
 import WeilDefect.Arithmetic.ActualZetaGreenGraphPackets
 
 import WeilDefect.Arithmetic.ActualZetaGreenPacketDensity
+import WeilDefect.Arithmetic.ActualZetaGreenGraphAnalysis
