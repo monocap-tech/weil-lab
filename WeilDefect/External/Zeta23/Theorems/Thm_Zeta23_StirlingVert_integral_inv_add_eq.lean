@@ -64,12 +64,12 @@ theorem intervalIntegral_mul_const_C (c : ℂ) (f : ℝ → ℂ) (a b : ℝ) :
 /-! ### Elementary bounds for points in the right half-plane -/
 
 
-theorem re_add_pos {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : 0 < ((x : ℂ) + w).re := by
+theorem re_add_pos_Zeta23_StirlingVert_integral_inv_add_eq {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : 0 < ((x : ℂ) + w).re := by
   simp; linarith
 
 
-theorem add_ne_zero {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : (x : ℂ) + w ≠ 0 :=
-  fun h => by have := re_add_pos hw hx; rw [h] at this; simp at this
+theorem add_ne_zero_Zeta23_StirlingVert_integral_inv_add_eq {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : (x : ℂ) + w ≠ 0 :=
+  fun h => by have := re_add_pos_Zeta23_StirlingVert_integral_inv_add_eq hw hx; rw [h] at this; simp at this
 
 /-! ### The antiderivative `F(x) = log(x + w)` on `[0, ∞)` -/
 
@@ -151,14 +151,14 @@ open Complex Filter Topology MeasureTheory intervalIntegral Set
 theorem Zeta23.StirlingVert.integral_inv_add_eq {w : ℂ} (hw : 0 < w.re) {m : ℝ} (hm : 0 ≤ m) :
     ∫ x in m..(m + 1), ((x : ℂ) + w)⁻¹
       = ((m : ℂ) + w)⁻¹ - (1 / 2 : ℂ) / ((m : ℂ) + w) ^ 2 + eps w m := by
-  have hmw := add_ne_zero hw hm
+  have hmw := add_ne_zero_Zeta23_StirlingVert_integral_inv_add_eq hw hm
   have hcongr : ∫ x in m..(m + 1), ((x : ℂ) + w)⁻¹ = ∫ x in m..(m + 1),
       (((m : ℂ) + w)⁻¹ - ((x - m : ℝ) : ℂ) / ((m : ℂ) + w) ^ 2
         + ((x - m : ℝ) : ℂ) ^ 2 / (((m : ℂ) + w) ^ 2 * ((x : ℂ) + w))) := by
     apply integral_congr
     intro x hx
     rw [uIcc_of_le (by linarith)] at hx
-    exact inv_add_expand (add_ne_zero hw (by linarith [hx.1])) hmw
+    exact inv_add_expand (add_ne_zero_Zeta23_StirlingVert_integral_inv_add_eq hw (by linarith [hx.1])) hmw
   rw [hcongr]
   have hI : ∀ {f : ℝ → ℂ}, Continuous f → IntervalIntegrable f volume m (m + 1) :=
     fun hf => hf.intervalIntegrable _ _
@@ -168,7 +168,7 @@ theorem Zeta23.StirlingVert.integral_inv_add_eq {w : ℂ} (hw : 0 < w.re) {m : �
     apply ContinuousOn.div (by fun_prop) (by fun_prop)
     intro x hx
     rw [uIcc_of_le (by linarith)] at hx
-    exact mul_ne_zero (pow_ne_zero _ hmw) (add_ne_zero hw (by linarith [hx.1]))
+    exact mul_ne_zero (pow_ne_zero _ hmw) (add_ne_zero_Zeta23_StirlingVert_integral_inv_add_eq hw (by linarith [hx.1]))
   have hmid : ∫ x in m..(m + 1), ((x - m : ℝ) : ℂ) / ((m : ℂ) + w) ^ 2
       = ((1 / 2 : ℝ) : ℂ) * ((((m : ℂ) + w) ^ 2)⁻¹) := by
     have e : (fun x : ℝ => ((x - m : ℝ) : ℂ) / ((m : ℂ) + w) ^ 2)

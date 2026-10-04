@@ -99,7 +99,7 @@ by parts (`h_f(z) = (iz)⁻² ∫ f''(u) e^{izu} du` and `|e^{izu}| = e^{−yu} 
 
 
 /-- [eq:hfbound] in the paper's form for `z ≠ 0`: `‖h_f(z)‖ ≤ e^{|Im z|Λ} ‖f''‖₁ / ‖z‖²`. -/
-theorem norm_paperFT_le_div {f : ℝ → ℂ} {Λ : ℝ} (hf : ContDiff ℝ 2 f)
+theorem norm_paperFT_le_div_Zeta23_WeilEF_norm_paperFT_le_uniform {f : ℝ → ℂ} {Λ : ℝ} (hf : ContDiff ℝ 2 f)
     (hsupp : ∀ u, f u ≠ 0 → |u| ≤ Λ) {z : ℂ} (hz : z ≠ 0) :
     ‖paperFT f z‖ ≤ Real.exp (|z.im| * Λ) * (∫ u, ‖deriv (deriv f) u‖) / ‖z‖ ^ 2 := by
   rw [le_div_iff₀ (by positivity)]
@@ -183,7 +183,7 @@ theorem Zeta23.WeilEF.norm_paperFT_le_uniform {k : ℝ → ℂ} (hk : ContDiff �
           nlinarith [mul_nonneg this.le hN₂0, mul_nonneg this.le hN₀0]
   · push Not at hre
     have hz0 : z ≠ 0 := fun h => by rw [h] at hre; simp at hre; linarith
-    have b2 := norm_paperFT_le_div hk hsupp hz0
+    have b2 := norm_paperFT_le_div_Zeta23_WeilEF_norm_paperFT_le_uniform hk hsupp hz0
     have hzn : z.re ^ 2 ≤ ‖z‖ ^ 2 := by
       rw [← Complex.normSq_eq_norm_sq, Complex.normSq_apply]; nlinarith [sq_nonneg z.im]
     have hzpos : 0 < ‖z‖ ^ 2 := by linarith

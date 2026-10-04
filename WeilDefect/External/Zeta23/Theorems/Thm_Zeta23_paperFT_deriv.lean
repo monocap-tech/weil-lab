@@ -41,7 +41,7 @@ namespace Zeta23
 sign `+i`, no `2π`, complex argument.  This file supplies the dictionary to Mathlib's `𝓕`
 (`∫ f(v) e^{-2πi v w} dv`) and the decay bound [eq:hfbound]. -/
 
-theorem paperFT_def (f : ℝ → ℂ) (z : ℂ) : paperFT f z = ∫ u : ℝ, f u * cexp (I * z * u) := rfl
+theorem paperFT_def_Zeta23_paperFT_deriv (f : ℝ → ℂ) (z : ℂ) : paperFT f z = ∫ u : ℝ, f u * cexp (I * z * u) := rfl
 
 /-! Mathlib's `integral_const_mul` / `integral_mul_const` are stated for a general `RCLike L`,
 and their instance path (RCLike-derived `NormedAddCommGroup ℂ`) does not match the
@@ -94,5 +94,5 @@ theorem Zeta23.paperFT_deriv {f : ℝ → ℂ} (hf : ContDiff ℝ 1 f) (hsupp : 
     funext u; ring
   rw [this, integral_const_mul] at key
   have key' : I * z * paperFT f z = -paperFT (deriv f) z := by
-    rw [paperFT_def, paperFT_def]; exact key
+    rw [paperFT_def_Zeta23_paperFT_deriv, paperFT_def_Zeta23_paperFT_deriv]; exact key
   linear_combination key'

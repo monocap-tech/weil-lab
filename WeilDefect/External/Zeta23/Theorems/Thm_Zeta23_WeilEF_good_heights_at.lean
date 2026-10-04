@@ -131,7 +131,7 @@ namespace Tail
 
 
 
-lemma LocalCount.A₀_pos {ι : Type*} {γ : ι → ℝ} {m : ι → ℕ} {A₀ : ℝ}
+lemma LocalCount.A₀_pos_Zeta23_WeilEF_good_heights_at {ι : Type*} {γ : ι → ℝ} {m : ι → ℕ} {A₀ : ℝ}
     (h : LocalCount γ m A₀) : 0 < A₀ := lt_of_lt_of_le one_pos h.one_le
 
 end Tail
@@ -184,25 +184,25 @@ namespace Zeta23
 section seam_rfl
 variable (hs : ZetaSeam) (T₁ T₂ : ℝ)
 
-@[simp] lemma zetaZeros_carrier : (zetaZeros hs).carrier = {ρ | IsNontrivialZero ρ} := rfl
-@[simp] lemma zetaZeros_mult : (zetaZeros hs).mult = zeroMult := rfl
-@[simp] lemma zetaZeros_simple : (zetaZeros hs).simple = {ρ | zeroMult ρ = 1} := rfl
+@[simp] lemma zetaZeros_carrier_Zeta23_WeilEF_good_heights_at : (zetaZeros hs).carrier = {ρ | IsNontrivialZero ρ} := rfl
+@[simp] lemma zetaZeros_mult_Zeta23_WeilEF_good_heights_at : (zetaZeros hs).mult = zeroMult := rfl
+@[simp] lemma zetaZeros_simple_Zeta23_WeilEF_good_heights_at : (zetaZeros hs).simple = {ρ | zeroMult ρ = 1} := rfl
 
-lemma zetaZeros_window : (zetaZeros hs).window T₁ T₂ = zerosIn T₁ T₂ := by
+lemma zetaZeros_window_Zeta23_WeilEF_good_heights_at : (zetaZeros hs).window T₁ T₂ = zerosIn T₁ T₂ := by
   ext ρ; simp [ZeroConfig.window, zerosIn]
 
-@[simp] lemma zetaZeros_N : (zetaZeros hs).N T₁ T₂ = Ncount T₁ T₂ := by
-  simp [ZeroConfig.N, Ncount, zetaZeros_window]
-@[simp] lemma zetaZeros_Nd : (zetaZeros hs).Nd T₁ T₂ = Ndist T₁ T₂ := by
-  simp [ZeroConfig.Nd, Ndist, zetaZeros_window]
-@[simp] lemma zetaZeros_N0 : (zetaZeros hs).N0 T₁ T₂ = N0 T₁ T₂ := by
-  simp [ZeroConfig.N0, N0, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_N0star : (zetaZeros hs).N0star T₁ T₂ = N0star T₁ T₂ := by
-  simp [ZeroConfig.N0star, N0star, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_N0s : (zetaZeros hs).N0s T₁ T₂ = N0simple T₁ T₂ := by
-  simp [ZeroConfig.N0s, N0simple, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_Ns : (zetaZeros hs).Ns T₁ T₂ = Nsimple T₁ T₂ := by
-  simp [ZeroConfig.Ns, Nsimple, zetaZeros_window]
+@[simp] lemma zetaZeros_N_Zeta23_WeilEF_good_heights_at : (zetaZeros hs).N T₁ T₂ = Ncount T₁ T₂ := by
+  simp [ZeroConfig.N, Ncount, zetaZeros_window_Zeta23_WeilEF_good_heights_at]
+@[simp] lemma zetaZeros_Nd_Zeta23_WeilEF_good_heights_at : (zetaZeros hs).Nd T₁ T₂ = Ndist T₁ T₂ := by
+  simp [ZeroConfig.Nd, Ndist, zetaZeros_window_Zeta23_WeilEF_good_heights_at]
+@[simp] lemma zetaZeros_N0_Zeta23_WeilEF_good_heights_at : (zetaZeros hs).N0 T₁ T₂ = N0 T₁ T₂ := by
+  simp [ZeroConfig.N0, N0, zetaZeros_window_Zeta23_WeilEF_good_heights_at, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_N0star_Zeta23_WeilEF_good_heights_at : (zetaZeros hs).N0star T₁ T₂ = N0star T₁ T₂ := by
+  simp [ZeroConfig.N0star, N0star, zetaZeros_window_Zeta23_WeilEF_good_heights_at, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_N0s_Zeta23_WeilEF_good_heights_at : (zetaZeros hs).N0s T₁ T₂ = N0simple T₁ T₂ := by
+  simp [ZeroConfig.N0s, N0simple, zetaZeros_window_Zeta23_WeilEF_good_heights_at, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_Ns_Zeta23_WeilEF_good_heights_at : (zetaZeros hs).Ns T₁ T₂ = Nsimple T₁ T₂ := by
+  simp [ZeroConfig.Ns, Nsimple, zetaZeros_window_Zeta23_WeilEF_good_heights_at]
 
 end seam_rfl
 
@@ -257,17 +257,17 @@ namespace Zeta23
 
 
 
-@[simp] lemma zetaZeroConfig_carrier : zetaZeroConfig.carrier = {ρ | IsNontrivialZero ρ} := rfl
-@[simp] lemma zetaZeroConfig_mult : zetaZeroConfig.mult = zeroMult := rfl
+@[simp] lemma zetaZeroConfig_carrier_Zeta23_WeilEF_good_heights_at : zetaZeroConfig.carrier = {ρ | IsNontrivialZero ρ} := rfl
+@[simp] lemma zetaZeroConfig_mult_Zeta23_WeilEF_good_heights_at : zetaZeroConfig.mult = zeroMult := rfl
 
-@[simp] lemma zetaZeroConfig_N (T₁ T₂ : ℝ) : zetaZeroConfig.N T₁ T₂ = Ncount T₁ T₂ :=
-  zetaZeros_N _ _ _
-@[simp] lemma zetaZeroConfig_N0star (T₁ T₂ : ℝ) : zetaZeroConfig.N0star T₁ T₂ = N0star T₁ T₂ :=
-  zetaZeros_N0star _ _ _
-@[simp] lemma zetaZeroConfig_N0s (T₁ T₂ : ℝ) : zetaZeroConfig.N0s T₁ T₂ = N0simple T₁ T₂ :=
-  zetaZeros_N0s _ _ _
-@[simp] lemma zetaZeroConfig_Nd (T₁ T₂ : ℝ) : zetaZeroConfig.Nd T₁ T₂ = Ndist T₁ T₂ :=
-  zetaZeros_Nd _ _ _
+@[simp] lemma zetaZeroConfig_N_Zeta23_WeilEF_good_heights_at (T₁ T₂ : ℝ) : zetaZeroConfig.N T₁ T₂ = Ncount T₁ T₂ :=
+  zetaZeros_N_Zeta23_WeilEF_good_heights_at _ _ _
+@[simp] lemma zetaZeroConfig_N0star_Zeta23_WeilEF_good_heights_at (T₁ T₂ : ℝ) : zetaZeroConfig.N0star T₁ T₂ = N0star T₁ T₂ :=
+  zetaZeros_N0star_Zeta23_WeilEF_good_heights_at _ _ _
+@[simp] lemma zetaZeroConfig_N0s_Zeta23_WeilEF_good_heights_at (T₁ T₂ : ℝ) : zetaZeroConfig.N0s T₁ T₂ = N0simple T₁ T₂ :=
+  zetaZeros_N0s_Zeta23_WeilEF_good_heights_at _ _ _
+@[simp] lemma zetaZeroConfig_Nd_Zeta23_WeilEF_good_heights_at (T₁ T₂ : ℝ) : zetaZeroConfig.Nd T₁ T₂ = Ndist T₁ T₂ :=
+  zetaZeros_Nd_Zeta23_WeilEF_good_heights_at _ _ _
 
 
 
@@ -322,7 +322,7 @@ namespace Zeta23.RvM
 /-- The same, in H-RvM's vocabulary (Z.N at Z := zetaZeroConfig). -/
 theorem zetaZeroConfig_local_count : ∃ A₀ : ℝ, 1 ≤ A₀ ∧ ∀ t : ℝ,
     (zetaZeroConfig.N t (t + 1) : ℝ) ≤ A₀ * Real.log (|t| + 3) := by
-  simpa only [zetaZeroConfig_N] using zeta_local_zero_count
+  simpa only [zetaZeroConfig_N_Zeta23_WeilEF_good_heights_at] using zeta_local_zero_count
 
 end Zeta23.RvM
 end
@@ -432,7 +432,7 @@ theorem Zeta23.WeilEF.good_heights_at : ∃ C : ℝ, 0 < C ∧ ∀ j : ℕ, 7 �
   have hcountp : ∑ ρ ∈ Fp, (zetaZeroConfig.mult ρ : ℝ) ≤ 6 * (A₀ * (2 * Lg)) := by
     have h := sum_mult_six_windows hLC (a := (j : ℤ) - 3) Fp (fun ρ hρ => by
       have := ((hFp_mem ρ).mp hρ).2; push_cast; constructor <;> linarith [this.1, this.2])
-    refine h.trans (mul_le_mul_of_nonneg_left (mul_le_mul_of_nonneg_left ?_ hLC.A₀_pos.le)
+    refine h.trans (mul_le_mul_of_nonneg_left (mul_le_mul_of_nonneg_left ?_ hLC.A₀_pos_Zeta23_WeilEF_good_heights_at.le)
       (by norm_num))
     · have : |((j : ℤ) - 3 : ℤ)| = (j : ℤ) - 3 := abs_of_nonneg (by omega)
       have habs : |(((j:ℤ) - 3 : ℤ) : ℝ)| = (j : ℝ) - 3 := by
@@ -445,7 +445,7 @@ theorem Zeta23.WeilEF.good_heights_at : ∃ C : ℝ, 0 < C ∧ ∀ j : ℕ, 7 �
   have hcountm : ∑ ρ ∈ Fm, (zetaZeroConfig.mult ρ : ℝ) ≤ 6 * (A₀ * (2 * Lg)) := by
     have h := sum_mult_six_windows hLC (a := -(j : ℤ) - 4) Fm (fun ρ hρ => by
       have := ((hFm_mem ρ).mp hρ).2; push_cast; constructor <;> linarith [this.1, this.2])
-    refine h.trans (mul_le_mul_of_nonneg_left (mul_le_mul_of_nonneg_left ?_ hLC.A₀_pos.le)
+    refine h.trans (mul_le_mul_of_nonneg_left (mul_le_mul_of_nonneg_left ?_ hLC.A₀_pos_Zeta23_WeilEF_good_heights_at.le)
       (by norm_num))
     · have : |(-(j : ℤ) - 4 : ℤ)| = (j : ℤ) + 4 := by
         rw [abs_of_nonpos (by omega)]; ring
@@ -487,7 +487,7 @@ theorem Zeta23.WeilEF.good_heights_at : ∃ C : ℝ, 0 < C ∧ ∀ j : ℕ, 7 �
     have hnt := isNontrivialZero_of_mem_closedBall (by norm_num) hρ hz
     have him := im_mem_of_mem_closedBall hρ
     rw [abs_le] at him
-    have hρc : ρ ∈ zetaZeroConfig.carrier := by rw [zetaZeroConfig_carrier]; exact hnt
+    have hρc : ρ ∈ zetaZeroConfig.carrier := by rw [zetaZeroConfig_carrier_Zeta23_WeilEF_good_heights_at]; exact hnt
     refine le_trans ?_ (abs_im_sub_le_norm_sub s ρ)
     rcases hs with hsR | hsR
     · -- Im ρ ∈ S via Fp
@@ -554,7 +554,7 @@ theorem Zeta23.WeilEF.good_heights_at : ∃ C : ℝ, 0 < C ∧ ∀ j : ℕ, 7 �
   refine hmain.trans ?_
   rw [hδinv]
   have hc := hcard
-  have hA := hLC.A₀_pos.le
+  have hA := hLC.A₀_pos_Zeta23_WeilEF_good_heights_at.le
   -- C·2Lg·(1 + 2(n+1)) ≤ 2C(48A₀+3) Lg²
   have : C * (2 * Lg) + C * (2 * Lg) * (2 * ((S.card : ℝ) + 1))
       = 2 * C * Lg * (2 * (S.card : ℝ) + 3) := by ring

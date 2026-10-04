@@ -154,7 +154,7 @@ open Complex Filter Topology
 
 
 /-- ζ is analytic at every s ≠ 1. -/
-lemma analyticAt_riemannZeta {s : ℂ} (hs : s ≠ 1) : AnalyticAt ℂ riemannZeta s :=
+lemma analyticAt_riemannZeta_Zeta23_WeilEF_continuous_logDeriv_zeta_line {s : ℂ} (hs : s ≠ 1) : AnalyticAt ℂ riemannZeta s :=
   DifferentiableOn.analyticAt (s := ({1}ᶜ : Set ℂ))
     (fun _ hu => (differentiableAt_riemannZeta hu).differentiableWithinAt)
     (isOpen_compl_singleton.mem_nhds hs)
@@ -246,7 +246,7 @@ theorem Zeta23.WeilEF.continuous_logDeriv_zeta_line {c : ℝ} (hc1 : 1 < c) :
     intro h; have := congrArg Complex.re h; simp at this; linarith
   have hre1 : 1 < ((c : ℂ) + t * I).re := by simp; linarith
   have hζ : riemannZeta ((c : ℂ) + t * I) ≠ 0 := riemannZeta_ne_zero_of_one_lt_re hre1
-  have han := analyticAt_riemannZeta hs1
+  have han := analyticAt_riemannZeta_Zeta23_WeilEF_continuous_logDeriv_zeta_line hs1
   have hd : ContinuousAt (deriv riemannZeta) ((c : ℂ) + t * I) := han.deriv.continuousAt
   have hc : ContinuousAt riemannZeta ((c : ℂ) + t * I) := han.continuousAt
   have : ContinuousAt (fun s => deriv riemannZeta s / riemannZeta s) ((c : ℂ) + t * I) :=

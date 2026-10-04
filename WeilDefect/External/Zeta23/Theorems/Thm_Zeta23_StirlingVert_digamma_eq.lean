@@ -90,7 +90,7 @@ theorem natp1_ne_zero_rpb108Local (hw : 0 < w.re) (n : ℕ) : (n : ℂ) + 1 + w 
   have := natp1_re_pos_rpb108Local hw n; rw [h] at this; simp at this
 
 
-theorem natp1_le_norm (hw : 0 < w.re) (n : ℕ) : (n : ℝ) + 1 ≤ ‖(n : ℂ) + 1 + w‖ := by
+theorem natp1_le_norm_Zeta23_StirlingVert_digamma_eq (hw : 0 < w.re) (n : ℕ) : (n : ℝ) + 1 ≤ ‖(n : ℂ) + 1 + w‖ := by
   have h := Complex.re_le_norm ((n : ℂ) + 1 + w)
   simp at h; linarith
 
@@ -98,7 +98,7 @@ theorem natp1_le_norm (hw : 0 < w.re) (n : ℕ) : (n : ℝ) + 1 ≤ ‖(n : ℂ)
 
 
 
-theorem norm_rho_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
+theorem norm_rho_le_Zeta23_StirlingVert_digamma_eq (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
     ‖rho w n‖ ≤ 1 / (‖(n : ℂ) + 1 + w‖ ^ 2 * |w.im|) := by
   have h1 := natp1_ne_zero_rpb108Local hw n
   have hn2 : |w.im| ≤ ‖(n : ℂ) + 2 + w‖ := by
@@ -109,7 +109,7 @@ theorem norm_rho_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
   apply div_le_div_of_nonneg_left zero_le_one (by positivity)
   exact mul_le_mul_of_nonneg_left hn2 (by positivity)
 
-theorem norm_eps_natp1_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
+theorem norm_eps_natp1_le_Zeta23_StirlingVert_digamma_eq (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
     ‖eps w ((n : ℝ) + 1)‖ ≤ 1 / (3 * ‖(n : ℂ) + 1 + w‖ ^ 2 * |w.im|) := by
   have := norm_eps_le hw ht (m := (n : ℝ) + 1) (by positivity)
   rw [show ((((n : ℝ) + 1 : ℝ)) : ℂ) + w = (n : ℂ) + 1 + w by push_cast; ring] at this
@@ -123,25 +123,25 @@ theorem norm_eps_natp1_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
 
 /-! ### Summability of the remainders and tsum bounds -/
 
-theorem summable_inv_norm_sq (hw : 0 < w.re) :
+theorem summable_inv_norm_sq_Zeta23_StirlingVert_digamma_eq (hw : 0 < w.re) :
     Summable (fun n : ℕ => 1 / ‖(n : ℂ) + 1 + w‖ ^ 2) := by
   have hs : Summable (fun n : ℕ => 1 / ((n : ℝ) + 1) ^ 2) := by
     have := (Real.summable_one_div_nat_pow.mpr one_lt_two)
     exact_mod_cast (summable_nat_add_iff 1).mpr this
   refine Summable.of_nonneg_of_le (fun n => by positivity) (fun n => ?_) hs
   exact div_le_div_of_nonneg_left zero_le_one (by positivity)
-    (pow_le_pow_left₀ (by positivity) (natp1_le_norm hw n) 2)
+    (pow_le_pow_left₀ (by positivity) (natp1_le_norm_Zeta23_StirlingVert_digamma_eq hw n) 2)
 
 theorem summable_rho (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) : Summable (rho w) := by
-  refine Summable.of_norm_bounded ((summable_inv_norm_sq hw).mul_left (1 / |w.im|)) fun n => ?_
-  refine le_trans (norm_rho_le hw ht n) (le_of_eq ?_)
+  refine Summable.of_norm_bounded ((summable_inv_norm_sq_Zeta23_StirlingVert_digamma_eq hw).mul_left (1 / |w.im|)) fun n => ?_
+  refine le_trans (norm_rho_le_Zeta23_StirlingVert_digamma_eq hw ht n) (le_of_eq ?_)
   field_simp
 
 theorem summable_eps (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) :
     Summable (fun n : ℕ => eps w ((n : ℝ) + 1)) := by
-  refine Summable.of_norm_bounded ((summable_inv_norm_sq hw).mul_left (1 / (3 * |w.im|)))
+  refine Summable.of_norm_bounded ((summable_inv_norm_sq_Zeta23_StirlingVert_digamma_eq hw).mul_left (1 / (3 * |w.im|)))
     fun n => ?_
-  refine le_trans (norm_eps_natp1_le hw ht n) (le_of_eq ?_)
+  refine le_trans (norm_eps_natp1_le_Zeta23_StirlingVert_digamma_eq hw ht n) (le_of_eq ?_)
   field_simp
 
 
@@ -158,7 +158,7 @@ theorem tendsto_inv_natp1 (hw : 0 < w.re) :
   refine tendsto_of_tendsto_of_tendsto_of_le_of_le tendsto_const_nhds
     tendsto_one_div_add_atTop_nhds_zero_nat (fun N => norm_nonneg _) (fun N => ?_)
   rw [norm_inv]
-  have h := natp1_le_norm hw N
+  have h := natp1_le_norm_Zeta23_StirlingVert_digamma_eq hw N
   have hpos : (0 : ℝ) < (N : ℝ) + 1 := by positivity
   rw [inv_eq_one_div]
   exact one_div_le_one_div_of_le hpos h

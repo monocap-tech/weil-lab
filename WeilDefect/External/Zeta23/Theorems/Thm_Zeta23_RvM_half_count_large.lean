@@ -102,7 +102,7 @@ namespace Zeta23.ZeroConfig
 
 variable (Z : ZeroConfig) (T₁ T₂ : ℝ)
 
-lemma window_finite : (Z.window T₁ T₂).Finite := Z.finite_window T₁ T₂
+lemma window_finite_Zeta23_RvM_half_count_large : (Z.window T₁ T₂).Finite := Z.finite_window T₁ T₂
 
 
 
@@ -175,7 +175,7 @@ theorem zeta_growth_right :
 
 
 /-- Lower bound at the Jensen disc centre: 0 < 2 − π²/6 ≤ ‖ζ(s)‖ for Re s ≥ 2. -/
-theorem norm_riemannZeta_ge_of_two_le_re {s : ℂ} (hs : 2 ≤ s.re) :
+theorem norm_riemannZeta_ge_of_two_le_re_Zeta23_RvM_half_count_large {s : ℂ} (hs : 2 ≤ s.re) :
     2 - Real.pi ^ 2 / 6 ≤ ‖riemannZeta s‖ := by
   have h := norm_riemannZeta_sub_one_le hs
   have h' : ‖(1 : ℂ)‖ - ‖1 - riemannZeta s‖ ≤ ‖riemannZeta s‖ := by
@@ -186,15 +186,15 @@ theorem norm_riemannZeta_ge_of_two_le_re {s : ℂ} (hs : 2 ≤ s.re) :
 
 
 /-- 1/3 < 2 − π²/6 (π < 3.15 ⇒ π²/6 < 1.654). -/
-lemma one_third_lt_two_sub_pi_sq_div_six : (1 / 3 : ℝ) < 2 - Real.pi ^ 2 / 6 := by
+lemma one_third_lt_two_sub_pi_sq_div_six_Zeta23_RvM_half_count_large : (1 / 3 : ℝ) < 2 - Real.pi ^ 2 / 6 := by
   have := Real.pi_lt_d2
   nlinarith [Real.pi_pos]
 
 /-- **Consumer interface.** ‖ζ(2 + it)‖ ≥ 1/3 for all real t. -/
-theorem zeta_lower_bound_two : ∀ t : ℝ, (1 / 3 : ℝ) ≤ ‖riemannZeta (2 + t * I)‖ := by
+theorem zeta_lower_bound_two_Zeta23_RvM_half_count_large : ∀ t : ℝ, (1 / 3 : ℝ) ≤ ‖riemannZeta (2 + t * I)‖ := by
   intro t
-  have h := norm_riemannZeta_ge_of_two_le_re (s := 2 + t * I) (by simp)
-  linarith [one_third_lt_two_sub_pi_sq_div_six]
+  have h := norm_riemannZeta_ge_of_two_le_re_Zeta23_RvM_half_count_large (s := 2 + t * I) (by simp)
+  linarith [one_third_lt_two_sub_pi_sq_div_six_Zeta23_RvM_half_count_large]
 
 
 
@@ -223,7 +223,7 @@ Route (never evaluating ζ left of σ = 0.19, so no Stirling is needed):
    the β ≥ 1/2 part of the window lies in ‖w‖ ≤ 0.84 (1.5² + 0.5² ≤ (1.9·0.84)²), the big disc stays in
    σ ≥ 0.195 and at distance ≥ 1 from the pole for |t| ≥ 4;
  * ζ-growth ‖ζ(s)‖ ≤ C(|Im s|+3)^A on σ ≥ 0.15, ‖s−1‖ ≥ 1 and ‖ζ(2+it)‖ ≥ 1/3
-   (Zeta23.RvM.zeta_growth_right / zeta_lower_bound_two, Zeta23/RvM/ZetaGrowth.lean);
+   (Zeta23.RvM.zeta_growth_right / zeta_lower_bound_two_Zeta23_RvM_half_count_large, Zeta23/RvM/ZetaGrowth.lean);
  * |t| < 4 by the finite constant N(−4, 5].
 -/
 
@@ -275,7 +275,7 @@ open Zeta23.RvM
 theorem Zeta23.RvM.half_count_large :
     ∃ A₁ : ℝ, ∀ t : ℝ, 4 ≤ |t| → NhalfR t ≤ A₁ * Real.log (|t| + 3) := by
   obtain ⟨A, C, hC, hgrowth⟩ := zeta_growth_right
-  have hL := zeta_lower_bound_two
+  have hL := zeta_lower_bound_two_Zeta23_RvM_half_count_large
   set A' : ℝ := max A 0 with hA'
   have hA'0 : 0 ≤ A' := le_max_right _ _
   -- constants
@@ -366,7 +366,7 @@ theorem Zeta23.RvM.half_count_large :
     (by norm_num [hr, hR]) (by norm_num [hR]) hfAnalytic hg0 hfin hfz
   -- the window's β ≥ 1/2 part maps injectively into the zero finset of g
   set W : Set ℂ := zetaZeroConfig.window t (t + 1) ∩ {ρ | 1/2 ≤ ρ.re} with hW
-  have hWfin : W.Finite := (zetaZeroConfig.window_finite t (t + 1)).subset inter_subset_left
+  have hWfin : W.Finite := (zetaZeroConfig.window_finite_Zeta23_RvM_half_count_large t (t + 1)).subset inter_subset_left
   set φ : ℂ → ℂ := fun ρ => (ρ - c₀) / κ with hφ
   have hφinj : Function.Injective φ := by
     intro a b h; simp only [hφ] at h

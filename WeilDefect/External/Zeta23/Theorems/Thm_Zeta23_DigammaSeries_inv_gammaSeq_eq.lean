@@ -56,7 +56,7 @@ namespace DigammaSeries
 open Complex Filter Topology
 
 
-lemma one_add_wTerm (n : ℕ) (z : ℂ) :
+lemma one_add_wTerm_Zeta23_DigammaSeries_inv_gammaSeq_eq (n : ℕ) (z : ℂ) :
     1 + wTerm n z = (1 + z / (n + 1)) * Complex.exp (-(z / (n + 1))) := by
   unfold wTerm
   ring
@@ -95,7 +95,7 @@ theorem Zeta23.DigammaSeries.inv_gammaSeq_eq {z : ℂ} (_hz : z ∈ Complex.inte
     calc ∏ n ∈ Finset.range N, (1 + wTerm n z)
         = ∏ n ∈ Finset.range N, (1 + z / ((n : ℂ) + 1))
             * Complex.exp (-(z / ((n : ℂ) + 1))) :=
-          Finset.prod_congr rfl fun n _ => one_add_wTerm n z
+          Finset.prod_congr rfl fun n _ => one_add_wTerm_Zeta23_DigammaSeries_inv_gammaSeq_eq n z
       _ = (∏ n ∈ Finset.range N, (1 + z / ((n : ℂ) + 1)))
             * ∏ n ∈ Finset.range N, Complex.exp (-(z / ((n : ℂ) + 1))) :=
           Finset.prod_mul_distrib

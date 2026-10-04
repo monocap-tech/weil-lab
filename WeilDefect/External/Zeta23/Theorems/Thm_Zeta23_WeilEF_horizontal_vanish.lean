@@ -144,7 +144,7 @@ for logDeriv, zeros in the strip = nontrivial zeros of ζ with equal analytic or
 
 Mathlib normalization (verified): for s ≠ 0, riemannZeta s = completedRiemannZeta s / Gammaℝ s
 (riemannZeta_def_of_ne_zero) and Gammaℝ s ≠ 0 for 0 < Re s (Gammaℝ_ne_zero_of_re_pos); hence on the
-open right half-plane Λ = Γℝ · ζ on the nose (completedZeta_eventuallyEq_mul) — no pole bookkeeping is
+open right half-plane Λ = Γℝ · ζ on the nose (completedZeta_eventuallyEq_mul_Zeta23_WeilEF_horizontal_vanish) — no pole bookkeeping is
 needed for the three statements below (Λ's poles at 0, 1 are excluded by hypothesis).
 -/
 
@@ -158,7 +158,7 @@ open Complex Filter Topology
 
 
 /-- On the right half-plane, Λ = Γℝ · ζ (as germs). -/
-lemma completedZeta_eventuallyEq_mul {s : ℂ} (hs : 0 < s.re) :
+lemma completedZeta_eventuallyEq_mul_Zeta23_WeilEF_horizontal_vanish {s : ℂ} (hs : 0 < s.re) :
     completedRiemannZeta =ᶠ[𝓝 s] fun u => Gammaℝ u * riemannZeta u := by
   have hopen : IsOpen {u : ℂ | 0 < u.re} := isOpen_lt continuous_const Complex.continuous_re
   filter_upwards [hopen.mem_nhds hs] with u hu
@@ -169,10 +169,10 @@ lemma completedZeta_eventuallyEq_mul {s : ℂ} (hs : 0 < s.re) :
 
 
 /-- On the right half-plane away from 1 and from the zeros of ζ:  Λ'/Λ = Γℝ'/Γℝ + ζ'/ζ. -/
-theorem logDeriv_completedZeta (s : ℂ) (hs1 : s ≠ 1)
+theorem logDeriv_completedZeta_Zeta23_WeilEF_horizontal_vanish (s : ℂ) (hs1 : s ≠ 1)
     (hζ : riemannZeta s ≠ 0) (hstrip : 0 < s.re) :
     logDeriv completedRiemannZeta s = logDeriv Complex.Gammaℝ s + logDeriv riemannZeta s := by
-  have hev := completedZeta_eventuallyEq_mul hstrip
+  have hev := completedZeta_eventuallyEq_mul_Zeta23_WeilEF_horizontal_vanish hstrip
   have heq : logDeriv completedRiemannZeta s = logDeriv (fun u => Gammaℝ u * riemannZeta u) s := by
     rw [logDeriv_apply, logDeriv_apply, hev.deriv_eq, hev.eq_of_nhds]
   rw [heq]
@@ -197,7 +197,7 @@ Zeta23/WeilEF/Horizontal.lean — the horizontal sides of the explicit-formula r
 good heights (a sub-piece of `full_line_identity`).
 
 For `s = x ± iR_j`, `x ∈ [1−c, c] ⊂ [−1/2, 3/2]`:  `‖H(s)‖ ≤ C_H/(1+R_j²)` (`norm_Hfn_le`), and
-`‖Λ'/Λ(s)‖ ≤ K·log²(j+10)`: for `re s ≥ 1/2` split `Λ'/Λ = Γℝ'/Γℝ + ζ'/ζ` (`logDeriv_completedZeta`),
+`‖Λ'/Λ(s)‖ ≤ K·log²(j+10)`: for `re s ≥ 1/2` split `Λ'/Λ = Γℝ'/Γℝ + ζ'/ζ` (`logDeriv_completedZeta_Zeta23_WeilEF_horizontal_vanish`),
 bound `ζ'/ζ` by the good-height hypothesis and `Γℝ'/Γℝ = −log π/2 + ψ(s/2)/2` by
 `digamma_growth_strip`; for `re s < 1/2` reflect with `Λ'/Λ(s) = −Λ'/Λ(1−s)`
 (`logDeriv_completedZeta_one_sub`), `1−s` lying on the opposite good horizontal.  Hence
@@ -256,7 +256,7 @@ theorem Zeta23.WeilEF.horizontal_vanish {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k
     have hs1 : s ≠ 1 := fun h => by rw [h] at him7; norm_num at him7
     obtain ⟨hζ, hLζ⟩ := hRs s hsim hre1 hre2
     have hre0 : 0 < s.re := by linarith
-    rw [logDeriv_completedZeta s hs1 hζ hre0, logDeriv_GammaR hre0]
+    rw [logDeriv_completedZeta_Zeta23_WeilEF_horizontal_vanish s hs1 hζ hre0, logDeriv_GammaR hre0]
     have hψs : ‖Complex.digamma (s / 2)‖ ≤ Cψ * Real.log (2 + |(s / 2).im|) :=
       hψ (s / 2) (by simp; linarith) (by simp; linarith)
     have hlog2 : Real.log (2 + |(s / 2).im|) ≤ Lg j := by

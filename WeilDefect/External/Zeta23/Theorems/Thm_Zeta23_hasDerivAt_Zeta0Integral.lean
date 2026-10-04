@@ -109,7 +109,7 @@ local notation (name := riemannzeta0) "ζ₀" => riemannZeta0
 
 
 
-lemma ZetaSum_aux1_3 (x : ℝ) : ‖(⌊x⌋ + 1/2 - x)‖ ≤ 1/2 :=
+lemma ZetaSum_aux1_3_Zeta23_hasDerivAt_Zeta0Integral (x : ℝ) : ‖(⌊x⌋ + 1/2 - x)‖ ≤ 1/2 :=
   abs_le.mpr ⟨(by linarith [Int.lt_floor_add_one x]), (by linarith [Int.floor_le x])⟩
 
 
@@ -127,14 +127,14 @@ lemma ZetaSum_aux1_3 (x : ℝ) : ‖(⌊x⌋ + 1/2 - x)‖ ≤ 1/2 :=
 
 
 
-lemma ZetaSum_aux2a : ∃ C, ∀ (x : ℝ), ‖⌊x⌋ + 1 / 2 - x‖ ≤ C := by
-  use 1 / 2; exact ZetaSum_aux1_3
+lemma ZetaSum_aux2a_Zeta23_hasDerivAt_Zeta0Integral : ∃ C, ∀ (x : ℝ), ‖⌊x⌋ + 1 / 2 - x‖ ≤ C := by
+  use 1 / 2; exact ZetaSum_aux1_3_Zeta23_hasDerivAt_Zeta0Integral
 
 
-lemma integrableOn_of_Zeta0_fun {N : ℕ} (N_pos : 0 < N) {s : ℂ} (s_re_gt : 0 < s.re) :
+lemma integrableOn_of_Zeta0_fun_Zeta23_hasDerivAt_Zeta0Integral {N : ℕ} (N_pos : 0 < N) {s : ℂ} (s_re_gt : 0 < s.re) :
     MeasureTheory.IntegrableOn (fun (x : ℝ) ↦ (⌊x⌋ + 1 / 2 - x) * (x : ℂ) ^ (-(s + 1))) (Ioi N)
     MeasureTheory.volume := by
-  obtain ⟨c, hc⟩ := ZetaSum_aux2a
+  obtain ⟨c, hc⟩ := ZetaSum_aux2a_Zeta23_hasDerivAt_Zeta0Integral
   apply MeasureTheory.Integrable.bdd_mul (c := c) ?_ ?_
   · apply MeasureTheory.ae_of_all
     convert hc; simp only [← Complex.norm_real]; simp
@@ -188,7 +188,7 @@ lemma integrableOn_of_Zeta0_fun_log {N : ℕ} (Npos : 0 < N) {s : ℂ} (s_re_gt 
     IntegrableOn (fun (x : ℝ) ↦ (⌊x⌋ + 1 / 2 - x) * (x : ℂ) ^ (-(s + 1)) * (-Real.log x)) (Ioi N)
     volume := by
   simp_rw [mul_assoc]
-  obtain ⟨c, hc⟩ := ZetaSum_aux2a
+  obtain ⟨c, hc⟩ := ZetaSum_aux2a_Zeta23_hasDerivAt_Zeta0Integral
   apply Integrable.bdd_mul (c := c) ?_ ?_ ?_
   · simp only [neg_add_rev, mul_neg, add_comm, ← sub_eq_add_neg]
     apply integrable_norm_iff ?_ |>.mp ?_ |>.neg
@@ -353,10 +353,10 @@ theorem Zeta23_hasDerivAt_Zeta0Integral {N : ℕ} (Npos : 0 < N) {s : ℂ} (hs :
       rw [mem_nhds_iff]
       refine ⟨{z | 0 < z.re}, fun ⦃a⦄ a ↦ a, isOpen_lt continuous_const Complex.continuous_re, hs⟩
     filter_upwards [this] with z hz
-    convert! integrableOn_of_Zeta0_fun Npos hz |>.aestronglyMeasurable using 1
+    convert! integrableOn_of_Zeta0_fun_Zeta23_hasDerivAt_Zeta0Integral Npos hz |>.aestronglyMeasurable using 1
     simp only [F, f]; ext x; ring_nf
   have hF_int : Integrable (F s) μ := by
-    convert! integrableOn_of_Zeta0_fun Npos hs |>.integrable using 1
+    convert! integrableOn_of_Zeta0_fun_Zeta23_hasDerivAt_Zeta0Integral Npos hs |>.integrable using 1
     simp only [F, f]; ext x; ring_nf
   have hF'_meas : AEStronglyMeasurable (F' s) μ := by
     convert! integrableOn_of_Zeta0_fun_log Npos hs |>.aestronglyMeasurable using 1
@@ -385,7 +385,7 @@ theorem Zeta23_hasDerivAt_Zeta0Integral {N : ℕ} (Npos : 0 < N) {s : ℂ} (hs :
       apply mul_le_mul_of_nonneg_right ?_ <| abs_nonneg _
       simp only [Metric.mem_ball, ε, Complex.dist_eq] at hz
       apply le_trans (b := 1 * |x ^ (-z.re - 1)|)
-      · apply mul_le_mul_of_nonneg_right (le_trans (ZetaSum_aux1_3 _) (by norm_num)) <| abs_nonneg _
+      · apply mul_le_mul_of_nonneg_right (le_trans (ZetaSum_aux1_3_Zeta23_hasDerivAt_Zeta0Integral _) (by norm_num)) <| abs_nonneg _
       · simp_rw [one_mul, Real.abs_rpow_of_nonneg (by linarith : 0 ≤ x)]
         apply Real.rpow_le_rpow_of_exponent_le <| le_abs.mpr (by left; exact hx.le)
         have := abs_le.mp <| le_trans (abs_re_le_norm (z-s)) hz.le

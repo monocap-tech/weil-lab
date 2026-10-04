@@ -64,39 +64,39 @@ not match ℂ's default instance path under `rw`; cf. Zeta23.integral_const_mul_
 /-! ### Elementary bounds for points in the right half-plane -/
 
 
-theorem re_add_pos {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : 0 < ((x : ℂ) + w).re := by
+theorem re_add_pos_Zeta23_StirlingVert_digamma_stirling {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : 0 < ((x : ℂ) + w).re := by
   simp; linarith
 
-theorem add_mem_slitPlane {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) :
+theorem add_mem_slitPlane_Zeta23_StirlingVert_digamma_stirling {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) :
     (x : ℂ) + w ∈ Complex.slitPlane :=
-  Complex.mem_slitPlane_iff.mpr (Or.inl (re_add_pos hw hx))
+  Complex.mem_slitPlane_iff.mpr (Or.inl (re_add_pos_Zeta23_StirlingVert_digamma_stirling hw hx))
 
-theorem add_ne_zero {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : (x : ℂ) + w ≠ 0 :=
-  fun h => by have := re_add_pos hw hx; rw [h] at this; simp at this
+theorem add_ne_zero_Zeta23_StirlingVert_digamma_stirling {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : (x : ℂ) + w ≠ 0 :=
+  fun h => by have := re_add_pos_Zeta23_StirlingVert_digamma_stirling hw hx; rw [h] at this; simp at this
 
 /-! ### The antiderivative `F(x) = log(x + w)` on `[0, ∞)` -/
 
-theorem hasDerivAt_log_add {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) :
+theorem hasDerivAt_log_add_Zeta23_StirlingVert_digamma_stirling {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) :
     HasDerivAt (fun y : ℝ => Complex.log ((y : ℂ) + w)) (((x : ℂ) + w)⁻¹) x := by
   have h1 : HasDerivAt (fun z : ℂ => Complex.log (z + w)) (((x : ℂ) + w)⁻¹) (x : ℂ) := by
-    have := (Complex.hasDerivAt_log (add_mem_slitPlane hw hx)).comp (x : ℂ)
+    have := (Complex.hasDerivAt_log (add_mem_slitPlane_Zeta23_StirlingVert_digamma_stirling hw hx)).comp (x : ℂ)
       ((hasDerivAt_id (x : ℂ)).add_const w)
     simpa [Function.comp_def] using this
   exact h1.comp_ofReal
 
 /-- FTC: `∫_m^{m+1} dx/(x+w) = log(m+1+w) − log(m+w)` for `m ≥ 0`. -/
-theorem integral_inv_add_eq_log_sub {w : ℂ} (hw : 0 < w.re) {m : ℝ} (hm : 0 ≤ m) :
+theorem integral_inv_add_eq_log_sub_Zeta23_StirlingVert_digamma_stirling {w : ℂ} (hw : 0 < w.re) {m : ℝ} (hm : 0 ≤ m) :
     ∫ x in m..(m + 1), ((x : ℂ) + w)⁻¹
       = Complex.log (((m + 1 : ℝ) : ℂ) + w) - Complex.log ((m : ℂ) + w) := by
   have hcont : ContinuousOn (fun x : ℝ => ((x : ℂ) + w)⁻¹) (uIcc m (m + 1)) := by
     apply ContinuousOn.inv₀ (by fun_prop)
     intro x hx
     rw [uIcc_of_le (by linarith)] at hx
-    exact add_ne_zero hw (by linarith [hx.1])
+    exact add_ne_zero_Zeta23_StirlingVert_digamma_stirling hw (by linarith [hx.1])
   rw [integral_eq_sub_of_hasDerivAt (f := fun y : ℝ => Complex.log ((y : ℂ) + w))
     (fun x hx => by
       rw [uIcc_of_le (by linarith)] at hx
-      exact hasDerivAt_log_add hw (by linarith [hx.1]))
+      exact hasDerivAt_log_add_Zeta23_StirlingVert_digamma_stirling hw (by linarith [hx.1]))
     (hcont.intervalIntegrable)]
 
 /-! ### The per-interval expansion -/
@@ -110,14 +110,14 @@ theorem integral_inv_add_eq_log_sub {w : ℂ} (hw : 0 < w.re) {m : ℝ} (hm : 0 
 section Seq
 variable {w : ℂ}
 
-theorem natp1_re_pos (hw : 0 < w.re) (n : ℕ) : 0 < ((n : ℂ) + 1 + w).re := by
+theorem natp1_re_pos_Zeta23_StirlingVert_digamma_stirling (hw : 0 < w.re) (n : ℕ) : 0 < ((n : ℂ) + 1 + w).re := by
   simp; positivity
 
-theorem natp1_ne_zero (hw : 0 < w.re) (n : ℕ) : (n : ℂ) + 1 + w ≠ 0 := fun h => by
-  have := natp1_re_pos hw n; rw [h] at this; simp at this
+theorem natp1_ne_zero_Zeta23_StirlingVert_digamma_stirling (hw : 0 < w.re) (n : ℕ) : (n : ℂ) + 1 + w ≠ 0 := fun h => by
+  have := natp1_re_pos_Zeta23_StirlingVert_digamma_stirling hw n; rw [h] at this; simp at this
 
 
-theorem natp1_le_norm (hw : 0 < w.re) (n : ℕ) : (n : ℝ) + 1 ≤ ‖(n : ℂ) + 1 + w‖ := by
+theorem natp1_le_norm_Zeta23_StirlingVert_digamma_stirling (hw : 0 < w.re) (n : ℕ) : (n : ℝ) + 1 ≤ ‖(n : ℂ) + 1 + w‖ := by
   have h := Complex.re_le_norm ((n : ℂ) + 1 + w)
   simp at h; linarith
 
@@ -125,9 +125,9 @@ theorem natp1_le_norm (hw : 0 < w.re) (n : ℕ) : (n : ℝ) + 1 ≤ ‖(n : ℂ)
 
 
 
-theorem norm_rho_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
+theorem norm_rho_le_Zeta23_StirlingVert_digamma_stirling (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
     ‖rho w n‖ ≤ 1 / (‖(n : ℂ) + 1 + w‖ ^ 2 * |w.im|) := by
-  have h1 := natp1_ne_zero hw n
+  have h1 := natp1_ne_zero_Zeta23_StirlingVert_digamma_stirling hw n
   have hn2 : |w.im| ≤ ‖(n : ℂ) + 2 + w‖ := by
     have := Complex.abs_im_le_norm ((n : ℂ) + 2 + w); simpa using this
   have ht0 : 0 < |w.im| := by linarith
@@ -136,7 +136,7 @@ theorem norm_rho_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
   apply div_le_div_of_nonneg_left zero_le_one (by positivity)
   exact mul_le_mul_of_nonneg_left hn2 (by positivity)
 
-theorem norm_eps_natp1_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
+theorem norm_eps_natp1_le_Zeta23_StirlingVert_digamma_stirling (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (n : ℕ) :
     ‖eps w ((n : ℝ) + 1)‖ ≤ 1 / (3 * ‖(n : ℂ) + 1 + w‖ ^ 2 * |w.im|) := by
   have := norm_eps_le hw ht (m := (n : ℝ) + 1) (by positivity)
   rw [show ((((n : ℝ) + 1 : ℝ)) : ℂ) + w = (n : ℂ) + 1 + w by push_cast; ring] at this
@@ -188,28 +188,28 @@ theorem sum_inv_norm_sq_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) (N : ℕ) :
 
 /-! ### Summability of the remainders and tsum bounds -/
 
-theorem summable_inv_norm_sq (hw : 0 < w.re) :
+theorem summable_inv_norm_sq_Zeta23_StirlingVert_digamma_stirling (hw : 0 < w.re) :
     Summable (fun n : ℕ => 1 / ‖(n : ℂ) + 1 + w‖ ^ 2) := by
   have hs : Summable (fun n : ℕ => 1 / ((n : ℝ) + 1) ^ 2) := by
     have := (Real.summable_one_div_nat_pow.mpr one_lt_two)
     exact_mod_cast (summable_nat_add_iff 1).mpr this
   refine Summable.of_nonneg_of_le (fun n => by positivity) (fun n => ?_) hs
   exact div_le_div_of_nonneg_left zero_le_one (by positivity)
-    (pow_le_pow_left₀ (by positivity) (natp1_le_norm hw n) 2)
+    (pow_le_pow_left₀ (by positivity) (natp1_le_norm_Zeta23_StirlingVert_digamma_stirling hw n) 2)
 
 
 
 theorem summable_norm_rho (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) : Summable (fun n => ‖rho w n‖) := by
   refine Summable.of_nonneg_of_le (fun n => norm_nonneg _) (fun n => ?_)
-    ((summable_inv_norm_sq hw).mul_left (1 / |w.im|))
-  refine le_trans (norm_rho_le hw ht n) (le_of_eq ?_)
+    ((summable_inv_norm_sq_Zeta23_StirlingVert_digamma_stirling hw).mul_left (1 / |w.im|))
+  refine le_trans (norm_rho_le_Zeta23_StirlingVert_digamma_stirling hw ht n) (le_of_eq ?_)
   field_simp
 
 theorem summable_norm_eps (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) :
     Summable (fun n : ℕ => ‖eps w ((n : ℝ) + 1)‖) := by
   refine Summable.of_nonneg_of_le (fun n => norm_nonneg _) (fun n => ?_)
-    ((summable_inv_norm_sq hw).mul_left (1 / (3 * |w.im|)))
-  refine le_trans (norm_eps_natp1_le hw ht n) (le_of_eq ?_)
+    ((summable_inv_norm_sq_Zeta23_StirlingVert_digamma_stirling hw).mul_left (1 / (3 * |w.im|)))
+  refine le_trans (norm_eps_natp1_le_Zeta23_StirlingVert_digamma_stirling hw ht n) (le_of_eq ?_)
   field_simp
 
 theorem tsum_inv_norm_sq_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) :
@@ -223,8 +223,8 @@ theorem norm_tsum_rho_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) :
   calc ‖∑' n, rho w n‖ ≤ ∑' n, ‖rho w n‖ := norm_tsum_le_tsum_norm (summable_norm_rho hw ht)
     _ ≤ ∑' n : ℕ, (1 / |w.im|) * (1 / ‖(n : ℂ) + 1 + w‖ ^ 2) := by
         refine Summable.tsum_le_tsum (fun n => ?_) (summable_norm_rho hw ht)
-          ((summable_inv_norm_sq hw).mul_left _)
-        refine le_trans (norm_rho_le hw ht n) (le_of_eq ?_)
+          ((summable_inv_norm_sq_Zeta23_StirlingVert_digamma_stirling hw).mul_left _)
+        refine le_trans (norm_rho_le_Zeta23_StirlingVert_digamma_stirling hw ht n) (le_of_eq ?_)
         field_simp
     _ = (1 / |w.im|) * ∑' n : ℕ, 1 / ‖(n : ℂ) + 1 + w‖ ^ 2 := tsum_mul_left
     _ ≤ (1 / |w.im|) * (2 / |w.im|) := by gcongr
@@ -238,8 +238,8 @@ theorem norm_tsum_eps_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) :
         norm_tsum_le_tsum_norm (summable_norm_eps hw ht)
     _ ≤ ∑' n : ℕ, (1 / (3 * |w.im|)) * (1 / ‖(n : ℂ) + 1 + w‖ ^ 2) := by
         refine Summable.tsum_le_tsum (fun n => ?_) (summable_norm_eps hw ht)
-          ((summable_inv_norm_sq hw).mul_left _)
-        refine le_trans (norm_eps_natp1_le hw ht n) (le_of_eq ?_)
+          ((summable_inv_norm_sq_Zeta23_StirlingVert_digamma_stirling hw).mul_left _)
+        refine le_trans (norm_eps_natp1_le_Zeta23_StirlingVert_digamma_stirling hw ht n) (le_of_eq ?_)
         field_simp
     _ = (1 / (3 * |w.im|)) * ∑' n : ℕ, 1 / ‖(n : ℂ) + 1 + w‖ ^ 2 := tsum_mul_left
     _ ≤ (1 / (3 * |w.im|)) * (2 / |w.im|) := by gcongr
@@ -256,7 +256,7 @@ theorem norm_tsum_eps_le (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) :
 theorem log_one_add_sub_log (hw : 0 < w.re) :
     Complex.log (1 + w) - Complex.log w = w⁻¹ - (1 / 2 : ℂ) / w ^ 2 + eps w 0 := by
   have h1 := integral_inv_add_eq hw (m := 0) le_rfl
-  have h2 := integral_inv_add_eq_log_sub hw (m := 0) le_rfl
+  have h2 := integral_inv_add_eq_log_sub_Zeta23_StirlingVert_digamma_stirling hw (m := 0) le_rfl
   rw [h2] at h1
   simpa [add_comm] using h1
 

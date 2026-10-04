@@ -79,7 +79,7 @@ namespace Zeta23
 namespace EF
 
 /-- A compactly supported function on ℝ is supported in some `[−Λ, Λ]`. -/
-theorem exists_abs_le_of_hasCompactSupport {k : ℝ → ℂ} (hkc : HasCompactSupport k) :
+theorem exists_abs_le_of_hasCompactSupport_Zeta23_WeilEF_differentiable_paperFT {k : ℝ → ℂ} (hkc : HasCompactSupport k) :
     ∃ Λ : ℝ, ∀ u, k u ≠ 0 → |u| ≤ Λ := by
   obtain ⟨R, hR⟩ := hkc.isCompact.isBounded.subset_closedBall 0
   refine ⟨R, fun u hu => ?_⟩
@@ -158,7 +158,7 @@ open scoped ArithmeticFunction
 theorem Zeta23.WeilEF.differentiable_paperFT {k : ℝ → ℂ} (hk : Continuous k) (hkc : HasCompactSupport k) :
     Differentiable ℂ (paperFT k) := by
   intro z₀
-  obtain ⟨Λ₁, hΛ₁⟩ := Zeta23.EF.exists_abs_le_of_hasCompactSupport hkc
+  obtain ⟨Λ₁, hΛ₁⟩ := Zeta23.EF.exists_abs_le_of_hasCompactSupport_Zeta23_WeilEF_differentiable_paperFT hkc
   have hΛ₀ : ∀ u : ℝ, k u ≠ 0 → |u| ≤ max Λ₁ 0 := fun u hu => (hΛ₁ u hu).trans (le_max_left _ _)
   have hΛ₀0 : (0:ℝ) ≤ max Λ₁ 0 := le_max_right _ _
   have hbound_int : Integrable (fun u : ℝ => ‖k u‖

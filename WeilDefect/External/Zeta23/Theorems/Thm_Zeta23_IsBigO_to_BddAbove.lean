@@ -102,7 +102,7 @@ variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E] {f g : ℂ → E
 
 /-! ## Residue calculus: residues, simple poles, and the rectangle residue theorem
 
-The simple-pole `residue`, `sumResiduesIn`, the `HasSimplePolesOn` scaffold, and the rectangle
+The_Zeta23_IsBigO_to_BddAbove simple-pole `residue`, `sumResiduesIn`, the `HasSimplePolesOn` scaffold, and the rectangle
 residue theorem `RectangleIntegral'_eq_sumResiduesIn`. Extracted from `CH2.lean` as general,
 reusable contour-integration lemmas (see issue #1537). -/
 
@@ -122,7 +122,7 @@ reusable contour-integration lemmas (see issue #1537). -/
 -- so the only integer fitting both is -1.
 
 -- At a simple pole `p` of `f` inside `U`, the residue of the meromorphic normal form
--- `toMeromorphicNFOn f U` equals the residue of `f`. The two functions agree on a punctured
+-- `toMeromorphicNFOn f U` equals the residue of `f`. The_Zeta23_IsBigO_to_BddAbove two functions agree on a punctured
 -- neighborhood of `p` (by definition of the normal form), so their `(z - p) * ·` limits coincide.
 
 -- Non-constancy of horizontal paths `x ↦ x + h * I`.
@@ -145,7 +145,7 @@ reusable contour-integration lemmas (see issue #1537). -/
 
 
 
--- The integral of a sum of simple pole terms `c p / (s - p)` along the boundary of the rectangle
+-- The_Zeta23_IsBigO_to_BddAbove integral of a sum of simple pole terms `c p / (s - p)` along the boundary of the rectangle
 -- equals the sum of the coefficients `c p` for all points `p` in the interior.
 
 -- Splits the integral of `fNF` into the integral of its holomorphic part and its principal part.

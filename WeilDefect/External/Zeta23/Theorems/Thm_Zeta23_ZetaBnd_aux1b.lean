@@ -108,10 +108,10 @@ local notation (name := riemannzeta0) "ζ₀" => riemannZeta0
 
 
 
-lemma ZetaSum_aux1_1' {a b x : ℝ} (apos : 0 < a) (hx : x ∈ Icc a b) : 0 < x :=
+lemma ZetaSum_aux1_1_Zeta23_ZetaBnd_aux1b' {a b x : ℝ} (apos : 0 < a) (hx : x ∈ Icc a b) : 0 < x :=
   lt_of_lt_of_le apos hx.1
 
-lemma ZetaSum_aux1_1 {a b x : ℝ} (apos : 0 < a) (a_lt_b : a < b) (hx : x ∈ [[a, b]]) : 0 < x :=
+lemma ZetaSum_aux1_1_Zeta23_ZetaBnd_aux1b {a b x : ℝ} (apos : 0 < a) (a_lt_b : a < b) (hx : x ∈ [[a, b]]) : 0 < x :=
   lt_of_lt_of_le apos (uIcc_of_le a_lt_b.le ▸ hx).1
 
 lemma ZetaSum_aux1_2 {a b : ℝ} {c : ℝ} (apos : 0 < a) (a_lt_b : a < b)
@@ -123,35 +123,35 @@ lemma ZetaSum_aux1_2 {a b : ℝ} {c : ℝ} (apos : 0 < a) (a_lt_b : a < b)
   rw [← this]
   apply intervalIntegral.integral_congr
   intro x hx
-  have : 0 ≤ x := (ZetaSum_aux1_1 apos a_lt_b hx).le
+  have : 0 ≤ x := (ZetaSum_aux1_1_Zeta23_ZetaBnd_aux1b apos a_lt_b hx).le
   simp [div_rpow_eq_rpow_neg _ _ _ this, sub_eq_add_neg, add_comm]
 
-lemma ZetaSum_aux1_3 (x : ℝ) : ‖(⌊x⌋ + 1/2 - x)‖ ≤ 1/2 :=
+lemma ZetaSum_aux1_3_Zeta23_ZetaBnd_aux1b (x : ℝ) : ‖(⌊x⌋ + 1/2 - x)‖ ≤ 1/2 :=
   abs_le.mpr ⟨(by linarith [Int.lt_floor_add_one x]), (by linarith [Int.floor_le x])⟩
 
-lemma ZetaSum_aux1_4' (x : ℝ) (hx : 0 < x) (s : ℂ) :
+lemma ZetaSum_aux1_4_Zeta23_ZetaBnd_aux1b' (x : ℝ) (hx : 0 < x) (s : ℂ) :
       ‖(⌊x⌋ + 1 / 2 - (x : ℝ)) / (x : ℂ) ^ (s + 1)‖ =
       ‖⌊x⌋ + 1 / 2 - x‖ / x ^ ((s + 1).re) := by
   simp_rw [norm_div, Complex.norm_cpow_eq_rpow_re_of_pos hx, ← norm_real]
   simp
 
-lemma ZetaSum_aux1_4 {a b : ℝ} (apos : 0 < a) (a_lt_b : a < b) {s : ℂ} :
+lemma ZetaSum_aux1_4_Zeta23_ZetaBnd_aux1b {a b : ℝ} (apos : 0 < a) (a_lt_b : a < b) {s : ℂ} :
   ∫ (x : ℝ) in a..b, ‖(↑⌊x⌋ + (1 : ℝ) / 2 - ↑x) / (x : ℂ) ^ (s + 1)‖ =
     ∫ (x : ℝ) in a..b, |⌊x⌋ + 1 / 2 - x| / x ^ (s + 1).re := by
   apply intervalIntegral.integral_congr
-  exact fun x hx ↦ ZetaSum_aux1_4' x (ZetaSum_aux1_1 apos a_lt_b hx) s
+  exact fun x hx ↦ ZetaSum_aux1_4_Zeta23_ZetaBnd_aux1b' x (ZetaSum_aux1_1_Zeta23_ZetaBnd_aux1b apos a_lt_b hx) s
 
 lemma ZetaSum_aux1_5a {a b : ℝ} (apos : 0 < a) {s : ℂ} (x : ℝ)
   (h : x ∈ Icc a b) : |↑⌊x⌋ + 1 / 2 - x| / x ^ (s.re + 1) ≤ 1 / x ^ (s.re + 1) := by
   apply div_le_div_of_nonneg_right _ _
-  · exact le_trans (ZetaSum_aux1_3 x) (by norm_num)
-  · apply Real.rpow_nonneg <| le_of_lt (ZetaSum_aux1_1' apos h)
+  · exact le_trans (ZetaSum_aux1_3_Zeta23_ZetaBnd_aux1b x) (by norm_num)
+  · apply Real.rpow_nonneg <| le_of_lt (ZetaSum_aux1_1_Zeta23_ZetaBnd_aux1b' apos h)
 
 lemma ZetaSum_aux1_5b {a b : ℝ} (apos : 0 < a) (a_lt_b : a < b) {s : ℂ} (σpos : 0 < s.re) :
   IntervalIntegrable (fun u ↦ 1 / u ^ (s.re + 1)) MeasureTheory.volume a b := by
   refine continuousOn_const.div ?_ ?_ |>.intervalIntegrable_of_Icc (le_of_lt a_lt_b)
-  · exact continuousOn_id.rpow_const fun x hx ↦ Or.inl (ne_of_gt <| ZetaSum_aux1_1' apos hx)
-  · exact fun x hx h ↦ by rw [Real.rpow_eq_zero] at h <;> linarith [ZetaSum_aux1_1' apos hx]
+  · exact continuousOn_id.rpow_const fun x hx ↦ Or.inl (ne_of_gt <| ZetaSum_aux1_1_Zeta23_ZetaBnd_aux1b' apos hx)
+  · exact fun x hx h ↦ by rw [Real.rpow_eq_zero] at h <;> linarith [ZetaSum_aux1_1_Zeta23_ZetaBnd_aux1b' apos hx]
 
 open MeasureTheory in
 lemma measurable_floor_add_half_sub : Measurable fun (u : ℝ) ↦ ↑⌊u⌋ + 1 / 2 - u := by
@@ -175,7 +175,7 @@ lemma ZetaSum_aux1_5d {a b : ℝ} (apos : 0 < a) (a_lt_b : a < b) {s : ℂ} (σp
   simp only [Real.norm_eq_abs, one_div, norm_inv, abs_div, _root_.abs_abs]
   conv => rw [div_eq_mul_inv, ← one_div]; rhs; rw [← one_mul |x ^ (s.re + 1)|⁻¹]
   refine mul_le_mul ?_ (le_refl _) (by simp) <| by norm_num
-  exact le_trans (ZetaSum_aux1_3 x) <| by norm_num
+  exact le_trans (ZetaSum_aux1_3_Zeta23_ZetaBnd_aux1b x) <| by norm_num
 
 lemma ZetaSum_aux1_5 {a b : ℝ} (apos : 0 < a) (a_lt_b : a < b) {s : ℂ} (σpos : 0 < s.re) :
   ∫ (x : ℝ) in a..b, |⌊x⌋ + 1 / 2 - x| / x ^ (s.re + 1) ≤
@@ -189,11 +189,11 @@ lemma ZetaBnd_aux1a {a b : ℝ} (apos : 0 < a) (a_lt_b : a < b) {s : ℂ} (σpos
     ∫ x in a..b, ‖(⌊x⌋ + 1 / 2 - x) / (x : ℂ) ^ (s + 1)‖ ≤
       (a ^ (-s.re) - b ^ (-s.re)) / s.re := by
   calc
-    _ = ∫ x in a..b, |(⌊x⌋ + 1 / 2 - x)| / x ^ (s+1).re := ZetaSum_aux1_4 apos a_lt_b
+    _ = ∫ x in a..b, |(⌊x⌋ + 1 / 2 - x)| / x ^ (s+1).re := ZetaSum_aux1_4_Zeta23_ZetaBnd_aux1b apos a_lt_b
     _ ≤ ∫ x in a..b, 1 / x ^ (s.re + 1) := ZetaSum_aux1_5 apos a_lt_b σpos
     _ = (a ^ (-s.re) - b ^ (-s.re)) / s.re := ?_
   refine ZetaSum_aux1_2 (c := s.re) apos a_lt_b ⟨ne_of_gt σpos, ?_⟩
-  exact fun h ↦ (lt_self_iff_false 0).mp <| ZetaSum_aux1_1 apos a_lt_b h
+  exact fun h ↦ (lt_self_iff_false 0).mp <| ZetaSum_aux1_1_Zeta23_ZetaBnd_aux1b apos a_lt_b h
 
 
 
@@ -201,14 +201,14 @@ lemma ZetaBnd_aux1a {a b : ℝ} (apos : 0 < a) (a_lt_b : a < b) {s : ℂ} (σpos
 
 
 
-lemma ZetaSum_aux2a : ∃ C, ∀ (x : ℝ), ‖⌊x⌋ + 1 / 2 - x‖ ≤ C := by
-  use 1 / 2; exact ZetaSum_aux1_3
+lemma ZetaSum_aux2a_Zeta23_ZetaBnd_aux1b : ∃ C, ∀ (x : ℝ), ‖⌊x⌋ + 1 / 2 - x‖ ≤ C := by
+  use 1 / 2; exact ZetaSum_aux1_3_Zeta23_ZetaBnd_aux1b
 
 
-lemma integrableOn_of_Zeta0_fun {N : ℕ} (N_pos : 0 < N) {s : ℂ} (s_re_gt : 0 < s.re) :
+lemma integrableOn_of_Zeta0_fun_Zeta23_ZetaBnd_aux1b {N : ℕ} (N_pos : 0 < N) {s : ℂ} (s_re_gt : 0 < s.re) :
     MeasureTheory.IntegrableOn (fun (x : ℝ) ↦ (⌊x⌋ + 1 / 2 - x) * (x : ℂ) ^ (-(s + 1))) (Ioi N)
     MeasureTheory.volume := by
-  obtain ⟨c, hc⟩ := ZetaSum_aux2a
+  obtain ⟨c, hc⟩ := ZetaSum_aux2a_Zeta23_ZetaBnd_aux1b
   apply MeasureTheory.Integrable.bdd_mul (c := c) ?_ ?_
   · apply MeasureTheory.ae_of_all
     convert hc; simp only [← Complex.norm_real]; simp
@@ -362,7 +362,7 @@ theorem Zeta23_ZetaBnd_aux1b (N : ℕ) (Npos : 1 ≤ N) {σ t : ℝ} (σpos : 0 
       iterate 2 (rw [norm_cpow_eq_rpow_re_of_pos (by linarith [hx.1])])
       simp
     · apply IntegrableOn.integrable ?_ |>.norm
-      convert! integrableOn_of_Zeta0_fun (s := σ + t * I) Npos (by simp [σpos]) using 1
+      convert! integrableOn_of_Zeta0_fun_Zeta23_ZetaBnd_aux1b (s := σ + t * I) Npos (by simp [σpos]) using 1
       simp_rw [div_eq_mul_inv, cpow_neg]
     · exact fun ⦃_⦄ a ↦ a
   · filter_upwards [mem_atTop (N + 1 : ℝ)] with t ht

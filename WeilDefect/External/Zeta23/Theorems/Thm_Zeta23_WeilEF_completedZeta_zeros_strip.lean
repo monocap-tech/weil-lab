@@ -38,7 +38,7 @@ for logDeriv, zeros in the strip = nontrivial zeros of ζ with equal analytic or
 
 Mathlib normalization (verified): for s ≠ 0, riemannZeta s = completedRiemannZeta s / Gammaℝ s
 (riemannZeta_def_of_ne_zero) and Gammaℝ s ≠ 0 for 0 < Re s (Gammaℝ_ne_zero_of_re_pos); hence on the
-open right half-plane Λ = Γℝ · ζ on the nose (completedZeta_eventuallyEq_mul) — no pole bookkeeping is
+open right half-plane Λ = Γℝ · ζ on the nose (completedZeta_eventuallyEq_mul_Zeta23_WeilEF_completedZeta_zeros_strip) — no pole bookkeeping is
 needed for the three statements below (Λ's poles at 0, 1 are excluded by hypothesis).
 -/
 
@@ -57,7 +57,7 @@ lemma analyticAt_Gammaℝ {s : ℂ} (hs : 0 < s.re) : AnalyticAt ℂ Gammaℝ s 
     (hopen.mem_nhds hs)
 
 /-- On the right half-plane, Λ = Γℝ · ζ (as germs). -/
-lemma completedZeta_eventuallyEq_mul {s : ℂ} (hs : 0 < s.re) :
+lemma completedZeta_eventuallyEq_mul_Zeta23_WeilEF_completedZeta_zeros_strip {s : ℂ} (hs : 0 < s.re) :
     completedRiemannZeta =ᶠ[𝓝 s] fun u => Gammaℝ u * riemannZeta u := by
   have hopen : IsOpen {u : ℂ | 0 < u.re} := isOpen_lt continuous_const Complex.continuous_re
   filter_upwards [hopen.mem_nhds hs] with u hu
@@ -67,7 +67,7 @@ lemma completedZeta_eventuallyEq_mul {s : ℂ} (hs : 0 < s.re) :
   field_simp
 
 /-- ζ is analytic at every s ≠ 1. -/
-lemma analyticAt_riemannZeta {s : ℂ} (hs : s ≠ 1) : AnalyticAt ℂ riemannZeta s :=
+lemma analyticAt_riemannZeta_Zeta23_WeilEF_completedZeta_zeros_strip {s : ℂ} (hs : s ≠ 1) : AnalyticAt ℂ riemannZeta s :=
   DifferentiableOn.analyticAt (s := ({1}ᶜ : Set ℂ))
     (fun _ hu => (differentiableAt_riemannZeta hu).differentiableWithinAt)
     (isOpen_compl_singleton.mem_nhds hs)
@@ -87,10 +87,10 @@ theorem Zeta23.WeilEF.completedZeta_zeros_strip {ρ : ℂ} (h : 0 < ρ.re) (h' :
     analyticOrderAt completedRiemannZeta ρ = analyticOrderAt riemannZeta ρ := by
   have hρ1 : ρ ≠ 1 := fun e => by simp [e] at h'
   have hΓ : Gammaℝ ρ ≠ 0 := Gammaℝ_ne_zero_of_re_pos h
-  have hev := completedZeta_eventuallyEq_mul h
+  have hev := completedZeta_eventuallyEq_mul_Zeta23_WeilEF_completedZeta_zeros_strip h
   have hval : completedRiemannZeta ρ = Gammaℝ ρ * riemannZeta ρ := hev.eq_of_nhds
   have hΓan := analyticAt_Gammaℝ h
-  have hζan := analyticAt_riemannZeta hρ1
+  have hζan := analyticAt_riemannZeta_Zeta23_WeilEF_completedZeta_zeros_strip hρ1
   refine ⟨?_, ?_⟩
   · rw [hval, mul_eq_zero, IsNontrivialZero]
     constructor

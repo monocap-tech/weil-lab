@@ -126,7 +126,7 @@ namespace Tail
 
 
 
-lemma LocalCount.A₀_pos {ι : Type*} {γ : ι → ℝ} {m : ι → ℕ} {A₀ : ℝ}
+lemma LocalCount.A₀_pos_Zeta23_WeilEF_sum_mult_six_windows {ι : Type*} {γ : ι → ℝ} {m : ι → ℕ} {A₀ : ℝ}
     (h : LocalCount γ m A₀) : 0 < A₀ := lt_of_lt_of_le one_pos h.one_le
 
 end Tail
@@ -262,7 +262,7 @@ theorem Zeta23.WeilEF.sum_mult_six_windows {A₀ : ℝ}
     (hF : ∀ ρ ∈ F, (a : ℝ) < (ρ : ℂ).im ∧ (ρ : ℂ).im ≤ (a : ℝ) + 6) :
     ∑ ρ ∈ F, (zetaZeroConfig.mult ρ : ℝ) ≤ 6 * (A₀ * Real.log (|(a : ℝ)| + 9)) := by
   classical
-  have hA₀ := hLC.A₀_pos.le
+  have hA₀ := hLC.A₀_pos_Zeta23_WeilEF_sum_mult_six_windows.le
   -- key k : ℕ with a + k < Im ≤ a + k + 1
   set key : zetaZeroConfig.carrier → ℕ := fun ρ => (⌈(ρ : ℂ).im⌉ - a - 1).toNat with hkey
   have hkey_spec : ∀ ρ ∈ F, ((a : ℝ) + key ρ < (ρ : ℂ).im ∧ (ρ : ℂ).im ≤ (a : ℝ) + key ρ + 1)

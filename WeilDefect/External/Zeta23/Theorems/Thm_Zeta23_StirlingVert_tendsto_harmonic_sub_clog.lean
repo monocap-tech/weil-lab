@@ -69,7 +69,7 @@ open Complex Filter Topology
 
 /-! ### The finite identity and the Weierstrass product -/
 
-lemma harmonic_cast_eq (N : ℕ) :
+lemma harmonic_cast_eq_Zeta23_StirlingVert_tendsto_harmonic_sub_clog (N : ℕ) :
     ((harmonic N : ℚ) : ℝ) = ∑ m ∈ Finset.range N, (1 : ℝ) / ((m : ℝ) + 1) := by
   rw [harmonic]
   push_cast
@@ -137,11 +137,11 @@ not match ℂ's default instance path under `rw`; cf. Zeta23.integral_const_mul_
 section Seq
 variable {w : ℂ}
 
-theorem natp1_re_pos (hw : 0 < w.re) (n : ℕ) : 0 < ((n : ℂ) + 1 + w).re := by
+theorem natp1_re_pos_Zeta23_StirlingVert_tendsto_harmonic_sub_clog (hw : 0 < w.re) (n : ℕ) : 0 < ((n : ℂ) + 1 + w).re := by
   simp; positivity
 
-theorem natp1_ne_zero (hw : 0 < w.re) (n : ℕ) : (n : ℂ) + 1 + w ≠ 0 := fun h => by
-  have := natp1_re_pos hw n; rw [h] at this; simp at this
+theorem natp1_ne_zero_Zeta23_StirlingVert_tendsto_harmonic_sub_clog (hw : 0 < w.re) (n : ℕ) : (n : ℂ) + 1 + w ≠ 0 := fun h => by
+  have := natp1_re_pos_Zeta23_StirlingVert_tendsto_harmonic_sub_clog hw n; rw [h] at this; simp at this
 
 
 
@@ -210,14 +210,14 @@ theorem Zeta23.StirlingVert.tendsto_harmonic_sub_clog (hw : 0 < w.re) :
     have hq' : 1 + w / ((N : ℂ) + 1) = ((N : ℂ) + 1 + w) / ((N : ℂ) + 1) := by
       field_simp
     have hq : 1 + w / ((N : ℂ) + 1) ≠ 0 := by
-      rw [hq']; exact div_ne_zero (natp1_ne_zero hw N) hN1
+      rw [hq']; exact div_ne_zero (natp1_ne_zero_Zeta23_StirlingVert_tendsto_harmonic_sub_clog hw N) hN1
     have hlog : Complex.log ((N : ℂ) + 1 + w)
         = Real.log ((N : ℝ) + 1) + Complex.log (1 + w / ((N : ℂ) + 1)) := by
       rw [← Complex.log_ofReal_mul hN hq, hq']
       congr 1
       push_cast
       field_simp
-    rw [hlog, Zeta23.DigammaSeries.harmonic_cast_eq]
+    rw [hlog, Zeta23.DigammaSeries.harmonic_cast_eq_Zeta23_StirlingVert_tendsto_harmonic_sub_clog]
     push_cast
     ring
   simp_rw [hdecomp]

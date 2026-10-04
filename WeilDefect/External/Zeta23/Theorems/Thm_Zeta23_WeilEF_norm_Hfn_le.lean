@@ -175,7 +175,7 @@ by parts (`h_f(z) = (iz)⁻² ∫ f''(u) e^{izu} du` and `|e^{izu}| = e^{−yu} 
 
 
 /-- [eq:hfbound] in the paper's form for `z ≠ 0`: `‖h_f(z)‖ ≤ e^{|Im z|Λ} ‖f''‖₁ / ‖z‖²`. -/
-theorem norm_paperFT_le_div {f : ℝ → ℂ} {Λ : ℝ} (hf : ContDiff ℝ 2 f)
+theorem norm_paperFT_le_div_Zeta23_WeilEF_norm_Hfn_le {f : ℝ → ℂ} {Λ : ℝ} (hf : ContDiff ℝ 2 f)
     (hsupp : ∀ u, f u ≠ 0 → |u| ≤ Λ) {z : ℂ} (hz : z ≠ 0) :
     ‖paperFT f z‖ ≤ Real.exp (|z.im| * Λ) * (∫ u, ‖deriv (deriv f) u‖) / ‖z‖ ^ 2 := by
   rw [le_div_iff₀ (by positivity)]
@@ -214,7 +214,7 @@ namespace Zeta23
 namespace EF
 
 /-- A compactly supported function on ℝ is supported in some `[−Λ, Λ]`. -/
-theorem exists_abs_le_of_hasCompactSupport {k : ℝ → ℂ} (hkc : HasCompactSupport k) :
+theorem exists_abs_le_of_hasCompactSupport_Zeta23_WeilEF_norm_Hfn_le {k : ℝ → ℂ} (hkc : HasCompactSupport k) :
     ∃ Λ : ℝ, ∀ u, k u ≠ 0 → |u| ≤ Λ := by
   obtain ⟨R, hR⟩ := hkc.isCompact.isBounded.subset_closedBall 0
   refine ⟨R, fun u hu => ?_⟩
@@ -312,7 +312,7 @@ open scoped ArithmeticFunction
 
 theorem Zeta23.WeilEF.norm_Hfn_le {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) :
     ∃ C : ℝ, 0 ≤ C ∧ ∀ σ t : ℝ, -1 ≤ σ → σ ≤ 2 → ‖Hfn k ((σ : ℂ) + t * I)‖ ≤ C / (1 + t ^ 2) := by
-  obtain ⟨Λ₁, hΛ₁⟩ := Zeta23.EF.exists_abs_le_of_hasCompactSupport hkc
+  obtain ⟨Λ₁, hΛ₁⟩ := Zeta23.EF.exists_abs_le_of_hasCompactSupport_Zeta23_WeilEF_norm_Hfn_le hkc
   set B : ℝ := max Λ₁ 0 with hB
   have hsupp : ∀ u, k u ≠ 0 → |u| ≤ B := fun u hu => (hΛ₁ u hu).trans (le_max_left _ _)
   have hB0 : 0 ≤ B := le_max_right _ _
@@ -345,7 +345,7 @@ theorem Zeta23.WeilEF.norm_Hfn_le {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc
     push Not at ht
     have hz0 : z ≠ 0 := by
       intro h; rw [h] at hzn; simp at hzn; rw [hzn] at ht; simp at ht; linarith
-    have h2 := Zeta23.norm_paperFT_le_div hk hsupp hz0
+    have h2 := Zeta23.norm_paperFT_le_div_Zeta23_WeilEF_norm_Hfn_le hk hsupp hz0
     have hzsq : t ^ 2 ≤ ‖z‖ ^ 2 := by rw [← sq_abs]; exact pow_le_pow_left₀ (abs_nonneg _) hzn 2
     have ht1 : 1 ≤ t ^ 2 := by rw [← sq_abs]; nlinarith
     calc ‖paperFT k z‖ ≤ Real.exp (|z.im| * B) * (∫ u, ‖deriv (deriv k) u‖) / ‖z‖ ^ 2 := h2

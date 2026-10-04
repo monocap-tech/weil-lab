@@ -78,7 +78,7 @@ lemma multipliable_one_add_wTerm (z : ℂ) : Multipliable fun n => 1 + wTerm n z
 
 /-! ### The finite identity and the Weierstrass product -/
 
-lemma harmonic_cast_eq (N : ℕ) :
+lemma harmonic_cast_eq_Zeta23_DigammaSeries_inv_gamma_eq_prod (N : ℕ) :
     ((harmonic N : ℚ) : ℝ) = ∑ m ∈ Finset.range N, (1 : ℝ) / ((m : ℝ) + 1) := by
   rw [harmonic]
   push_cast
@@ -111,7 +111,7 @@ theorem Zeta23.DigammaSeries.inv_gamma_eq_prod {z : ℂ} (hz : z ∈ Complex.int
       ((∑ m ∈ Finset.range N, (1 : ℝ) / ((m : ℝ) + 1)) - Real.log N : ℝ))
       atTop (𝓝 Real.eulerMascheroniConstant) := by
     refine Real.tendsto_harmonic_sub_log.congr fun n => ?_
-    rw [harmonic_cast_eq]
+    rw [harmonic_cast_eq_Zeta23_DigammaSeries_inv_gamma_eq_prod]
   have hexp : Tendsto (fun N : ℕ => Complex.exp
       ((((∑ m ∈ Finset.range N, (1 : ℝ) / ((m : ℝ) + 1)) - Real.log N : ℝ) : ℂ) * z))
       atTop (𝓝 (Complex.exp ((Real.eulerMascheroniConstant : ℂ) * z))) := by

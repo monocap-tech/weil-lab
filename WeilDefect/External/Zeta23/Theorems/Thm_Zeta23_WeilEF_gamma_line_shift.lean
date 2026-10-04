@@ -85,7 +85,7 @@ namespace Zeta23
 namespace EF
 
 /-- A compactly supported function on ℝ is supported in some `[−Λ, Λ]`. -/
-theorem exists_abs_le_of_hasCompactSupport {k : ℝ → ℂ} (hkc : HasCompactSupport k) :
+theorem exists_abs_le_of_hasCompactSupport_Zeta23_WeilEF_gamma_line_shift {k : ℝ → ℂ} (hkc : HasCompactSupport k) :
     ∃ Λ : ℝ, ∀ u, k u ≠ 0 → |u| ≤ Λ := by
   obtain ⟨R, hR⟩ := hkc.isCompact.isBounded.subset_closedBall 0
   refine ⟨R, fun u hu => ?_⟩
@@ -188,7 +188,7 @@ open scoped ArithmeticFunction
 
 
 /-- continuity ⇒ integrability on vertical lines under a majorant (used by vertical_line_shift). -/
-lemma integrable_line {f : ℂ → ℂ} {σ : ℝ} (hf : ∀ t : ℝ, DifferentiableAt ℂ f (σ + t * I))
+lemma integrable_line_Zeta23_WeilEF_gamma_line_shift {f : ℂ → ℂ} {σ : ℝ} (hf : ∀ t : ℝ, DifferentiableAt ℂ f (σ + t * I))
     {φ : ℝ → ℝ} (hφ : Integrable φ) (hb : ∀ t : ℝ, ‖f (σ + t * I)‖ ≤ φ t) :
     Integrable (fun t : ℝ => f (σ + t * I)) := by
   have hc : Continuous (fun t : ℝ => f (σ + t * I)) := by
@@ -237,7 +237,7 @@ theorem Zeta23.WeilEF.gamma_line_shift {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k)
   have hf₂d : ∀ s : ℂ, 1 / 2 ≤ s.re → s.re ≤ c → DifferentiableAt ℂ f₂ s := fun s h1 _ =>
     ((hHd (1 - s)).comp s ((differentiableAt_const _).sub differentiableAt_id)).mul (hGd s (by linarith))
   -- the majorant
-  obtain ⟨Lam₁, hLam₁⟩ := Zeta23.EF.exists_abs_le_of_hasCompactSupport hkc
+  obtain ⟨Lam₁, hLam₁⟩ := Zeta23.EF.exists_abs_le_of_hasCompactSupport_Zeta23_WeilEF_gamma_line_shift hkc
   set Lam : ℝ := max Lam₁ 0 with hLam
   have hLam0 : 0 ≤ Lam := le_max_right _ _
   have hsupp : ∀ u, k u ≠ 0 → |u| ≤ Lam := fun u hu => (hLam₁ u hu).trans (le_max_left _ _)
@@ -309,13 +309,13 @@ theorem Zeta23.WeilEF.gamma_line_shift {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k)
   have hs₂ := vertical_line_shift hab hf₂d hφi hb₂ hφtop hφbot
   -- integrability on the lines
   have hi₁c : Integrable (fun t : ℝ => f₁ (c + t * I)) :=
-    integrable_line (fun t => hf₁d _ (by simp; linarith) (by simp)) hφi (fun t => hb₁ c t hab le_rfl)
+    integrable_line_Zeta23_WeilEF_gamma_line_shift (fun t => hf₁d _ (by simp; linarith) (by simp)) hφi (fun t => hb₁ c t hab le_rfl)
   have hi₂c : Integrable (fun t : ℝ => f₂ (c + t * I)) :=
-    integrable_line (fun t => hf₂d _ (by simp; linarith) (by simp)) hφi (fun t => hb₂ c t hab le_rfl)
+    integrable_line_Zeta23_WeilEF_gamma_line_shift (fun t => hf₂d _ (by simp; linarith) (by simp)) hφi (fun t => hb₂ c t hab le_rfl)
   have hi₁h : Integrable (fun t : ℝ => f₁ ((1/2 : ℝ) + t * I)) :=
-    integrable_line (fun t => hf₁d _ (by simp) (by simp; linarith)) hφi (fun t => hb₁ (1/2) t le_rfl hab)
+    integrable_line_Zeta23_WeilEF_gamma_line_shift (fun t => hf₁d _ (by simp) (by simp; linarith)) hφi (fun t => hb₁ (1/2) t le_rfl hab)
   have hi₂h : Integrable (fun t : ℝ => f₂ ((1/2 : ℝ) + t * I)) :=
-    integrable_line (fun t => hf₂d _ (by simp) (by simp; linarith)) hφi (fun t => hb₂ (1/2) t le_rfl hab)
+    integrable_line_Zeta23_WeilEF_gamma_line_shift (fun t => hf₂d _ (by simp) (by simp; linarith)) hφi (fun t => hb₂ (1/2) t le_rfl hab)
   -- LHS = ∫ f₁(c+it) + ∫ f₂(c+it)
   have hL : ∫ t : ℝ, (Hfn k (c + t * I) + Hfn k (1 - c - t * I)) * G (c + t * I)
       = (∫ t : ℝ, f₁ (c + t * I)) + ∫ t : ℝ, f₂ (c + t * I) := by

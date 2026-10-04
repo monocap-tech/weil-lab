@@ -184,25 +184,25 @@ namespace Zeta23
 section seam_rfl
 variable (hs : ZetaSeam) (T₁ T₂ : ℝ)
 
-@[simp] lemma zetaZeros_carrier : (zetaZeros hs).carrier = {ρ | IsNontrivialZero ρ} := rfl
-@[simp] lemma zetaZeros_mult : (zetaZeros hs).mult = zeroMult := rfl
-@[simp] lemma zetaZeros_simple : (zetaZeros hs).simple = {ρ | zeroMult ρ = 1} := rfl
+@[simp] lemma zetaZeros_carrier_Zeta23_WeilEF_EF_lit_zeta : (zetaZeros hs).carrier = {ρ | IsNontrivialZero ρ} := rfl
+@[simp] lemma zetaZeros_mult_Zeta23_WeilEF_EF_lit_zeta : (zetaZeros hs).mult = zeroMult := rfl
+@[simp] lemma zetaZeros_simple_Zeta23_WeilEF_EF_lit_zeta : (zetaZeros hs).simple = {ρ | zeroMult ρ = 1} := rfl
 
-lemma zetaZeros_window : (zetaZeros hs).window T₁ T₂ = zerosIn T₁ T₂ := by
+lemma zetaZeros_window_Zeta23_WeilEF_EF_lit_zeta : (zetaZeros hs).window T₁ T₂ = zerosIn T₁ T₂ := by
   ext ρ; simp [ZeroConfig.window, zerosIn]
 
-@[simp] lemma zetaZeros_N : (zetaZeros hs).N T₁ T₂ = Ncount T₁ T₂ := by
-  simp [ZeroConfig.N, Ncount, zetaZeros_window]
-@[simp] lemma zetaZeros_Nd : (zetaZeros hs).Nd T₁ T₂ = Ndist T₁ T₂ := by
-  simp [ZeroConfig.Nd, Ndist, zetaZeros_window]
-@[simp] lemma zetaZeros_N0 : (zetaZeros hs).N0 T₁ T₂ = N0 T₁ T₂ := by
-  simp [ZeroConfig.N0, N0, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_N0star : (zetaZeros hs).N0star T₁ T₂ = N0star T₁ T₂ := by
-  simp [ZeroConfig.N0star, N0star, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_N0s : (zetaZeros hs).N0s T₁ T₂ = N0simple T₁ T₂ := by
-  simp [ZeroConfig.N0s, N0simple, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_Ns : (zetaZeros hs).Ns T₁ T₂ = Nsimple T₁ T₂ := by
-  simp [ZeroConfig.Ns, Nsimple, zetaZeros_window]
+@[simp] lemma zetaZeros_N_Zeta23_WeilEF_EF_lit_zeta : (zetaZeros hs).N T₁ T₂ = Ncount T₁ T₂ := by
+  simp [ZeroConfig.N, Ncount, zetaZeros_window_Zeta23_WeilEF_EF_lit_zeta]
+@[simp] lemma zetaZeros_Nd_Zeta23_WeilEF_EF_lit_zeta : (zetaZeros hs).Nd T₁ T₂ = Ndist T₁ T₂ := by
+  simp [ZeroConfig.Nd, Ndist, zetaZeros_window_Zeta23_WeilEF_EF_lit_zeta]
+@[simp] lemma zetaZeros_N0_Zeta23_WeilEF_EF_lit_zeta : (zetaZeros hs).N0 T₁ T₂ = N0 T₁ T₂ := by
+  simp [ZeroConfig.N0, N0, zetaZeros_window_Zeta23_WeilEF_EF_lit_zeta, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_N0star_Zeta23_WeilEF_EF_lit_zeta : (zetaZeros hs).N0star T₁ T₂ = N0star T₁ T₂ := by
+  simp [ZeroConfig.N0star, N0star, zetaZeros_window_Zeta23_WeilEF_EF_lit_zeta, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_N0s_Zeta23_WeilEF_EF_lit_zeta : (zetaZeros hs).N0s T₁ T₂ = N0simple T₁ T₂ := by
+  simp [ZeroConfig.N0s, N0simple, zetaZeros_window_Zeta23_WeilEF_EF_lit_zeta, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_Ns_Zeta23_WeilEF_EF_lit_zeta : (zetaZeros hs).Ns T₁ T₂ = Nsimple T₁ T₂ := by
+  simp [ZeroConfig.Ns, Nsimple, zetaZeros_window_Zeta23_WeilEF_EF_lit_zeta]
 
 end seam_rfl
 
@@ -265,7 +265,7 @@ namespace Zeta23
 namespace EF
 
 /-- A compactly supported function on ℝ is supported in some `[−Λ, Λ]`. -/
-theorem exists_abs_le_of_hasCompactSupport {k : ℝ → ℂ} (hkc : HasCompactSupport k) :
+theorem exists_abs_le_of_hasCompactSupport_Zeta23_WeilEF_EF_lit_zeta {k : ℝ → ℂ} (hkc : HasCompactSupport k) :
     ∃ Λ : ℝ, ∀ u, k u ≠ 0 → |u| ≤ Λ := by
   obtain ⟨R, hR⟩ := hkc.isCompact.isBounded.subset_closedBall 0
   refine ⟨R, fun u hu => ?_⟩
@@ -298,7 +298,7 @@ for logDeriv, zeros in the strip = nontrivial zeros of ζ with equal analytic or
 
 Mathlib normalization (verified): for s ≠ 0, riemannZeta s = completedRiemannZeta s / Gammaℝ s
 (riemannZeta_def_of_ne_zero) and Gammaℝ s ≠ 0 for 0 < Re s (Gammaℝ_ne_zero_of_re_pos); hence on the
-open right half-plane Λ = Γℝ · ζ on the nose (completedZeta_eventuallyEq_mul) — no pole bookkeeping is
+open right half-plane Λ = Γℝ · ζ on the nose (completedZeta_eventuallyEq_mul_Zeta23_WeilEF_EF_lit_zeta) — no pole bookkeeping is
 needed for the three statements below (Λ's poles at 0, 1 are excluded by hypothesis).
 -/
 
@@ -312,7 +312,7 @@ open Complex Filter Topology
 
 
 /-- On the right half-plane, Λ = Γℝ · ζ (as germs). -/
-lemma completedZeta_eventuallyEq_mul {s : ℂ} (hs : 0 < s.re) :
+lemma completedZeta_eventuallyEq_mul_Zeta23_WeilEF_EF_lit_zeta {s : ℂ} (hs : 0 < s.re) :
     completedRiemannZeta =ᶠ[𝓝 s] fun u => Gammaℝ u * riemannZeta u := by
   have hopen : IsOpen {u : ℂ | 0 < u.re} := isOpen_lt continuous_const Complex.continuous_re
   filter_upwards [hopen.mem_nhds hs] with u hu
@@ -323,10 +323,10 @@ lemma completedZeta_eventuallyEq_mul {s : ℂ} (hs : 0 < s.re) :
 
 
 /-- On the right half-plane away from 1 and from the zeros of ζ:  Λ'/Λ = Γℝ'/Γℝ + ζ'/ζ. -/
-theorem logDeriv_completedZeta (s : ℂ) (hs1 : s ≠ 1)
+theorem logDeriv_completedZeta_Zeta23_WeilEF_EF_lit_zeta (s : ℂ) (hs1 : s ≠ 1)
     (hζ : riemannZeta s ≠ 0) (hstrip : 0 < s.re) :
     logDeriv completedRiemannZeta s = logDeriv Complex.Gammaℝ s + logDeriv riemannZeta s := by
-  have hev := completedZeta_eventuallyEq_mul hstrip
+  have hev := completedZeta_eventuallyEq_mul_Zeta23_WeilEF_EF_lit_zeta hstrip
   have heq : logDeriv completedRiemannZeta s = logDeriv (fun u => Gammaℝ u * riemannZeta u) s := by
     rw [logDeriv_apply, logDeriv_apply, hev.deriv_eq, hev.eq_of_nhds]
   rw [heq]
@@ -381,16 +381,16 @@ open Complex Set Filter MeasureTheory
 /-! ### The ζ instances -/
 
 
-/-! ### EF_zero_sum_summable -/
+/-! ### EF_zero_sum_summable_Zeta23_WeilEF_EF_lit_zeta -/
 
 /-- The EF zero-side sum converges absolutely for every k ∈ C_c²(ℝ)
 (via [eq:hfbound]: ‖h(γ_ρ)‖ ≤ e^{Λ/2}‖k''‖₁/‖γ_ρ‖², |Im γ_ρ| < 1/2) — EF_lit's Summable clause. -/
-theorem EF_zero_sum_summable (hs : ZetaSeam) {k : ℝ → ℂ}
+theorem EF_zero_sum_summable_Zeta23_WeilEF_EF_lit_zeta (hs : ZetaSeam) {k : ℝ → ℂ}
     (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) :
     Summable (fun ρ : (zetaZeros hs).carrier =>
       ((zetaZeros hs).mult ρ : ℂ) * paperFT k (gammaOf ρ)) := by
   obtain ⟨A₀, hA₀, hloc⟩ := Zeta23.RvM.zeta_local_zero_count
-  exact EF_zero_sum_summable_gen (zetaZeros hs) hA₀ (fun t => by rw [zetaZeros_N]; exact hloc t) hk hkc
+  exact EF_zero_sum_summable_gen (zetaZeros hs) hA₀ (fun t => by rw [zetaZeros_N_Zeta23_WeilEF_EF_lit_zeta]; exact hloc t) hk hkc
 
 end WeilEF
 end Zeta23
@@ -410,7 +410,7 @@ Zeta23/WeilEF/FullLine.lean — the R → ∞ limit of the rectangle identity
 sides vanish (‖H‖ ≪_k 1/R², ‖Λ'/Λ‖ ≪ log²j on them, reflecting Λ'/Λ(1−s) = −Λ'/Λ(s) for
 re s < 1/2), the vertical sides converge to the full-line integral (dominated convergence; the
 left side is folded onto the right by the functional equation and t ↦ −t), and the zero sums
-over |γ| < R_j converge to the absolutely convergent tsum (EF_zero_sum_summable).  The
+over |γ| < R_j converge to the absolutely convergent tsum (EF_zero_sum_summable_Zeta23_WeilEF_EF_lit_zeta).  The
 resulting statement is consumed by Zeta23/WeilEF/Main.lean.
 -/
 
@@ -429,7 +429,7 @@ section Majorants
 
 
 /-- `H` is continuous along vertical lines (indeed paperFT k is entire). -/
-theorem continuous_Hfn_line {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) (σ : ℝ) :
+theorem continuous_Hfn_line_Zeta23_WeilEF_EF_lit_zeta {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) (σ : ℝ) :
     Continuous (fun t : ℝ => Hfn k ((σ : ℂ) + t * I)) := by
   have h := (differentiable_paperFT hk.continuous hkc).continuous
   unfold Hfn
@@ -438,7 +438,7 @@ theorem continuous_Hfn_line {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : Has
 
 
 /-- generic: a continuous `φ` with `‖φ(t)‖ ≤ C/(1+t²)` times `ζ'/ζ(c+it)` is integrable. -/
-theorem integrable_mul_logDeriv_zeta_of_decay {φ : ℝ → ℂ} (hφc : Continuous φ) {C : ℝ}
+theorem integrable_mul_logDeriv_zeta_of_decay_Zeta23_WeilEF_EF_lit_zeta {φ : ℝ → ℂ} (hφc : Continuous φ) {C : ℝ}
     (hφ : ∀ t, ‖φ t‖ ≤ C / (1 + t ^ 2)) {c : ℝ} (hc1 : 1 < c) :
     Integrable (fun t : ℝ => φ t * logDeriv riemannZeta ((c : ℂ) + t * I)) := by
   obtain ⟨M, hM0, hM⟩ := norm_logDeriv_zeta_le_of_one_lt_re hc1
@@ -457,7 +457,7 @@ theorem integrable_Hfn_mul_logDeriv_zeta {k : ℝ → ℂ} (hk : ContDiff ℝ 2 
     (hkc : HasCompactSupport k) {c : ℝ} (hc1 : 1 < c) (hc2 : c ≤ 3 / 2) :
     Integrable (fun t : ℝ => Hfn k ((c : ℂ) + t * I) * logDeriv riemannZeta ((c : ℂ) + t * I)) := by
   obtain ⟨C, hC0, hC⟩ := norm_Hfn_le hk hkc
-  exact integrable_mul_logDeriv_zeta_of_decay (continuous_Hfn_line hk hkc c)
+  exact integrable_mul_logDeriv_zeta_of_decay_Zeta23_WeilEF_EF_lit_zeta (continuous_Hfn_line_Zeta23_WeilEF_EF_lit_zeta hk hkc c)
     (fun t => hC c t (by linarith) (by linarith)) hc1
 
 
@@ -468,7 +468,7 @@ theorem integrable_Hfn_mul_logDeriv_Gammaℝ {k : ℝ → ℂ} (hk : ContDiff �
     (hkc : HasCompactSupport k) {σ : ℝ} (hσ1 : 1 / 2 ≤ σ) (hσ2 : σ ≤ 3 / 2) :
     Integrable (fun t : ℝ => Hfn k ((σ : ℂ) + t * I) * logDeriv Complex.Gammaℝ ((σ : ℂ) + t * I)) := by
   obtain ⟨C, hC0, hC⟩ := norm_Hfn_le hk hkc
-  exact integrable_mul_logDeriv_GammaR_of_decay (continuous_Hfn_line hk hkc σ) hC0
+  exact integrable_mul_logDeriv_GammaR_of_decay (continuous_Hfn_line_Zeta23_WeilEF_EF_lit_zeta hk hkc σ) hC0
     (fun t => hC σ t (by linarith) (by linarith)) hσ1 hσ2
 
 end Majorants
@@ -532,7 +532,7 @@ open scoped ArithmeticFunction
 
 theorem Zeta23.WeilEF.EF_lit_zeta (hs : ZetaSeam) : Zeta23.EF.EF_lit (zetaZeros hs) := by
   intro k hk hkc
-  refine ⟨EF_zero_sum_summable hs hk hkc, ?_⟩
+  refine ⟨EF_zero_sum_summable_Zeta23_WeilEF_EF_lit_zeta hs hk hkc, ?_⟩
   -- Fix c := 5/4; split LΛ = LΓℝ + Lζ on the line; evaluate the three parts; rearrange.
   have h54a : (1:ℝ) < 5/4 := by norm_num
   have h54b : (5/4:ℝ) ≤ 3/2 := by norm_num
@@ -559,7 +559,7 @@ theorem Zeta23.WeilEF.EF_lit_zeta (hs : ZetaSeam) : Zeta23.EF.EF_lit (zetaZeros 
         + logDeriv riemannZeta (((5/4:ℝ):ℂ) + t * I) := by
     intro t
     obtain ⟨h0, h1, hζ, hpos⟩ := hsne t
-    exact logDeriv_completedZeta _ h1 hζ hpos
+    exact logDeriv_completedZeta_Zeta23_WeilEF_EF_lit_zeta _ h1 hζ hpos
   -- notation
   have hH2eq : ∀ t : ℝ, Hfn k (1 - (5/4:ℝ) - t * I)
       = Hfn (fun u => k (-u)) (((5/4:ℝ):ℂ) + t * I) := fun t => Hfn_mirror k (5/4) t
@@ -674,7 +674,7 @@ theorem Zeta23.WeilEF.EF_lit_zeta (hs : ZetaSeam) : Zeta23.EF.EF_lit (zetaZeros 
     rw [show (-I / 2) * I = -(I * I) / 2 by ring, Complex.I_mul_I]
     norm_num
   -- summability of the two prime sums (finite support)
-  obtain ⟨B₁, hB₁⟩ := Zeta23.EF.exists_abs_le_of_hasCompactSupport hkc
+  obtain ⟨B₁, hB₁⟩ := Zeta23.EF.exists_abs_le_of_hasCompactSupport_Zeta23_WeilEF_EF_lit_zeta hkc
   have hsummable_gen : ∀ (g : ℝ → ℂ), (∀ u, g u ≠ 0 → |u| ≤ max B₁ 0) →
       Summable (fun n : ℕ => ((Λ n / Real.sqrt n : ℝ) : ℂ) * g (Real.log n)) := by
     intro g hg

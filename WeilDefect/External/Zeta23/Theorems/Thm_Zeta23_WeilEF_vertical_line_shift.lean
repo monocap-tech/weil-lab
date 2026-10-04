@@ -91,7 +91,7 @@ open scoped ArithmeticFunction
 
 
 /-- continuity ⇒ integrability on vertical lines under a majorant (used by vertical_line_shift). -/
-lemma integrable_line {f : ℂ → ℂ} {σ : ℝ} (hf : ∀ t : ℝ, DifferentiableAt ℂ f (σ + t * I))
+lemma integrable_line_Zeta23_WeilEF_vertical_line_shift {f : ℂ → ℂ} {σ : ℝ} (hf : ∀ t : ℝ, DifferentiableAt ℂ f (σ + t * I))
     {φ : ℝ → ℝ} (hφ : Integrable φ) (hb : ∀ t : ℝ, ‖f (σ + t * I)‖ ≤ φ t) :
     Integrable (fun t : ℝ => f (σ + t * I)) := by
   have hc : Continuous (fun t : ℝ => f (σ + t * I)) := by
@@ -125,7 +125,7 @@ theorem Zeta23.WeilEF.vertical_line_shift {f : ℂ → ℂ} {a b : ℝ} (hab : a
     ∫ t : ℝ, f (b + t * I) = ∫ t : ℝ, f (a + t * I) := by
   -- integrability on the vertical lines
   have hint : ∀ σ : ℝ, a ≤ σ → σ ≤ b → Integrable (fun t : ℝ => f (σ + t * I)) := fun σ h1 h2 =>
-    integrable_line (fun t => hf _ (by simp [h1]) (by simp [h2])) hφ (fun t => hbound σ t h1 h2)
+    integrable_line_Zeta23_WeilEF_vertical_line_shift (fun t => hf _ (by simp [h1]) (by simp [h2])) hφ (fun t => hbound σ t h1 h2)
   have hφnn : ∀ t, 0 ≤ φ t := fun t => (norm_nonneg _).trans (hbound a t le_rfl hab)
   -- Cauchy on the rectangles [a,b] × [−R, R]
   have hrect : ∀ R : ℝ, (∫ y in (-R)..R, f (b + y * I)) - (∫ y in (-R)..R, f (a + y * I))

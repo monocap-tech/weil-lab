@@ -57,7 +57,7 @@ open Complex Filter Topology
 
 
 
-lemma norm_natCast_add_one (n : ℕ) : ‖((n : ℂ) + 1)‖ = (n : ℝ) + 1 := by
+lemma norm_natCast_add_one_Zeta23_DigammaSeries_norm_wTerm_le (n : ℕ) : ‖((n : ℂ) + 1)‖ = (n : ℝ) + 1 := by
   rw [show ((n : ℂ) + 1) = (((n : ℝ) + 1 : ℝ) : ℂ) by push_cast; ring, Complex.norm_real]
   rw [Real.norm_eq_abs, abs_of_pos (by positivity)]
 
@@ -86,7 +86,7 @@ theorem Zeta23.DigammaSeries.norm_wTerm_le {z : ℂ} {n : ℕ} (h : ‖z‖ ≤ 
   set w : ℂ := z / ((n : ℂ) + 1) with hwdef
   have hn1 : (0 : ℝ) < (n : ℝ) + 1 := by positivity
   have hwnorm : ‖w‖ = ‖z‖ / ((n : ℝ) + 1) := by
-    rw [hwdef, norm_div, norm_natCast_add_one]
+    rw [hwdef, norm_div, norm_natCast_add_one_Zeta23_DigammaSeries_norm_wTerm_le]
   have hwn : ‖w‖ ≤ 1 := by
     rw [hwnorm, div_le_one hn1]
     exact h

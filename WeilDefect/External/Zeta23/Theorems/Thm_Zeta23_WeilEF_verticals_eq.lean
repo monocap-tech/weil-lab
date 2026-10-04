@@ -144,7 +144,7 @@ for logDeriv, zeros in the strip = nontrivial zeros of ζ with equal analytic or
 
 Mathlib normalization (verified): for s ≠ 0, riemannZeta s = completedRiemannZeta s / Gammaℝ s
 (riemannZeta_def_of_ne_zero) and Gammaℝ s ≠ 0 for 0 < Re s (Gammaℝ_ne_zero_of_re_pos); hence on the
-open right half-plane Λ = Γℝ · ζ on the nose (completedZeta_eventuallyEq_mul) — no pole bookkeeping is
+open right half-plane Λ = Γℝ · ζ on the nose (completedZeta_eventuallyEq_mul_Zeta23_WeilEF_verticals_eq) — no pole bookkeeping is
 needed for the three statements below (Λ's poles at 0, 1 are excluded by hypothesis).
 -/
 
@@ -158,7 +158,7 @@ open Complex Filter Topology
 
 
 /-- On the right half-plane, Λ = Γℝ · ζ (as germs). -/
-lemma completedZeta_eventuallyEq_mul {s : ℂ} (hs : 0 < s.re) :
+lemma completedZeta_eventuallyEq_mul_Zeta23_WeilEF_verticals_eq {s : ℂ} (hs : 0 < s.re) :
     completedRiemannZeta =ᶠ[𝓝 s] fun u => Gammaℝ u * riemannZeta u := by
   have hopen : IsOpen {u : ℂ | 0 < u.re} := isOpen_lt continuous_const Complex.continuous_re
   filter_upwards [hopen.mem_nhds hs] with u hu
@@ -169,10 +169,10 @@ lemma completedZeta_eventuallyEq_mul {s : ℂ} (hs : 0 < s.re) :
 
 
 /-- On the right half-plane away from 1 and from the zeros of ζ:  Λ'/Λ = Γℝ'/Γℝ + ζ'/ζ. -/
-theorem logDeriv_completedZeta (s : ℂ) (hs1 : s ≠ 1)
+theorem logDeriv_completedZeta_Zeta23_WeilEF_verticals_eq (s : ℂ) (hs1 : s ≠ 1)
     (hζ : riemannZeta s ≠ 0) (hstrip : 0 < s.re) :
     logDeriv completedRiemannZeta s = logDeriv Complex.Gammaℝ s + logDeriv riemannZeta s := by
-  have hev := completedZeta_eventuallyEq_mul hstrip
+  have hev := completedZeta_eventuallyEq_mul_Zeta23_WeilEF_verticals_eq hstrip
   have heq : logDeriv completedRiemannZeta s = logDeriv (fun u => Gammaℝ u * riemannZeta u) s := by
     rw [logDeriv_apply, logDeriv_apply, hev.deriv_eq, hev.eq_of_nhds]
   rw [heq]
@@ -217,7 +217,7 @@ section Majorants
 
 
 /-- `H` is continuous along vertical lines (indeed paperFT k is entire). -/
-theorem continuous_Hfn_line {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) (σ : ℝ) :
+theorem continuous_Hfn_line_Zeta23_WeilEF_verticals_eq {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) (σ : ℝ) :
     Continuous (fun t : ℝ => Hfn k ((σ : ℂ) + t * I)) := by
   have h := (differentiable_paperFT hk.continuous hkc).continuous
   unfold Hfn
@@ -247,23 +247,23 @@ section Verticals
 variable {k : ℝ → ℂ}
 
 
-theorem one_sub_cast (c t : ℝ) : (1 : ℂ) - c - t * I = ((1 - c : ℝ) : ℂ) + ((-t : ℝ) : ℂ) * I := by
+theorem one_sub_cast_Zeta23_WeilEF_verticals_eq (c t : ℝ) : (1 : ℂ) - c - t * I = ((1 - c : ℝ) : ℂ) + ((-t : ℝ) : ℂ) * I := by
   push_cast; ring
 
 /-- continuity of the reflected weight `t ↦ H(1 − c − it)` (= `H((1−c) + i(−t))`). -/
-theorem continuous_Hfn_reflect {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) (c : ℝ) :
+theorem continuous_Hfn_reflect_Zeta23_WeilEF_verticals_eq {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) (c : ℝ) :
     Continuous (fun t : ℝ => Hfn k (1 - c - t * I)) := by
   have : (fun t : ℝ => Hfn k (1 - c - t * I))
       = (fun t : ℝ => Hfn k (((1 - c : ℝ) : ℂ) + t * I)) ∘ fun t : ℝ => -t := by
-    funext t; simp only [Function.comp_apply, one_sub_cast]
-  rw [this]; exact (continuous_Hfn_line hk hkc (1 - c)).comp continuous_neg
+    funext t; simp only [Function.comp_apply, one_sub_cast_Zeta23_WeilEF_verticals_eq]
+  rw [this]; exact (continuous_Hfn_line_Zeta23_WeilEF_verticals_eq hk hkc (1 - c)).comp continuous_neg
 
 /-- on `re = c > 1`: `Λ'/Λ = Γℝ'/Γℝ + ζ'/ζ`. -/
-theorem logDeriv_completedZeta_line {c : ℝ} (hc1 : 1 < c) (t : ℝ) :
+theorem logDeriv_completedZeta_line_Zeta23_WeilEF_verticals_eq {c : ℝ} (hc1 : 1 < c) (t : ℝ) :
     logDeriv completedRiemannZeta ((c : ℂ) + t * I)
       = logDeriv Complex.Gammaℝ ((c : ℂ) + t * I) + logDeriv riemannZeta ((c : ℂ) + t * I) := by
   have hre : ((c : ℂ) + t * I).re = c := by simp
-  refine logDeriv_completedZeta _ ?_ ?_ (by rw [hre]; linarith)
+  refine logDeriv_completedZeta_Zeta23_WeilEF_verticals_eq _ ?_ ?_ (by rw [hre]; linarith)
   · intro h; have := congrArg Complex.re h; simp at this; linarith
   · exact riemannZeta_ne_zero_of_one_lt_re (by rw [hre]; exact hc1)
 
@@ -290,11 +290,11 @@ theorem Zeta23.WeilEF.verticals_eq (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupp
   set L := logDeriv completedRiemannZeta with hL
   have hLc : Continuous (fun t : ℝ => L ((c : ℂ) + t * I)) := by
     have : (fun t : ℝ => L ((c:ℂ) + t * I)) = fun t : ℝ => logDeriv Complex.Gammaℝ ((c : ℂ) + t * I)
-        + logDeriv riemannZeta ((c : ℂ) + t * I) := funext (logDeriv_completedZeta_line hc1)
+        + logDeriv riemannZeta ((c : ℂ) + t * I) := funext (logDeriv_completedZeta_line_Zeta23_WeilEF_verticals_eq hc1)
     rw [this]
     exact (continuous_logDeriv_GammaR_line (by linarith) hc2).add (continuous_logDeriv_zeta_line hc1)
-  have hHc := continuous_Hfn_line hk hkc c
-  have hH2 : Continuous (fun t : ℝ => Hfn k (1 - c - t * I)) := continuous_Hfn_reflect hk hkc c
+  have hHc := continuous_Hfn_line_Zeta23_WeilEF_verticals_eq hk hkc c
+  have hH2 : Continuous (fun t : ℝ => Hfn k (1 - c - t * I)) := continuous_Hfn_reflect_Zeta23_WeilEF_verticals_eq hk hkc c
   -- the left-line integrand, pointwise
   have hleft : ∀ y : ℝ, Hfn k (((1 - c : ℝ) : ℂ) + y * I) * L (((1 - c : ℝ) : ℂ) + y * I)
       = -(Hfn k (1 - c - ((-y : ℝ) : ℂ) * I) * L ((c : ℂ) + ((-y : ℝ) : ℂ) * I)) := by

@@ -35,14 +35,14 @@ namespace Zeta23.ZeroConfig
 
 variable (Z : ZeroConfig) (T₁ T₂ : ℝ)
 
-lemma window_finite : (Z.window T₁ T₂).Finite := Z.finite_window T₁ T₂
+lemma window_finite_Zeta23_ZeroConfig_N_le_two_mul_half : (Z.window T₁ T₂).Finite := Z.finite_window T₁ T₂
 
 
 
 /-- Monotonicity of Σ m_ρ over finite subsets of a window. -/
-lemma finsum_mult_mono {s t : Set ℂ} (hst : s ⊆ t) (ht : t ⊆ Z.window T₁ T₂) :
+lemma finsum_mult_mono_Zeta23_ZeroConfig_N_le_two_mul_half {s t : Set ℂ} (hst : s ⊆ t) (ht : t ⊆ Z.window T₁ T₂) :
     ∑ᶠ ρ ∈ s, Z.mult ρ ≤ ∑ᶠ ρ ∈ t, Z.mult ρ := by
-  have htf : t.Finite := (Z.window_finite T₁ T₂).subset ht
+  have htf : t.Finite := (Z.window_finite_Zeta23_ZeroConfig_N_le_two_mul_half T₁ T₂).subset ht
   have hsf : s.Finite := htf.subset hst
   rw [finsum_mem_eq_finite_toFinset_sum _ hsf, finsum_mem_eq_finite_toFinset_sum _ htf]
   apply Finset.sum_le_sum_of_subset
@@ -108,7 +108,7 @@ variable (Z : ZeroConfig) (T₁ T₂ : ℝ)
 
 theorem Zeta23.ZeroConfig.N_le_two_mul_half :
     (Z.N T₁ T₂ : ℝ) ≤ 2 * ∑ᶠ ρ ∈ Z.window T₁ T₂ ∩ {ρ | 1 / 2 ≤ ρ.re}, (Z.mult ρ : ℝ) := by
-  have hW : (Z.window T₁ T₂).Finite := Z.window_finite T₁ T₂
+  have hW : (Z.window T₁ T₂).Finite := Z.window_finite_Zeta23_ZeroConfig_N_le_two_mul_half T₁ T₂
   set A := Z.window T₁ T₂ ∩ {ρ | ρ.re < 1 / 2} with hAdef
   set B := Z.window T₁ T₂ ∩ {ρ | 1 / 2 ≤ ρ.re} with hBdef
   have hA : A.Finite := hW.subset inter_subset_left
@@ -139,7 +139,7 @@ theorem Zeta23.ZeroConfig.N_le_two_mul_half :
     calc ∑ᶠ ρ ∈ A, Z.mult ρ = ∑ᶠ ρ ∈ A, Z.mult (reflect ρ) :=
           finsum_mem_congr rfl (fun ρ hρ => (Z.mult_reflect ρ hρ.1.1).symm)
       _ = ∑ᶠ σ ∈ reflect '' A, Z.mult σ := (finsum_mem_image reflect_injective.injOn).symm
-      _ ≤ ∑ᶠ σ ∈ B, Z.mult σ := Z.finsum_mult_mono T₁ T₂ himage inter_subset_left
+      _ ≤ ∑ᶠ σ ∈ B, Z.mult σ := Z.finsum_mult_mono_Zeta23_ZeroConfig_N_le_two_mul_half T₁ T₂ himage inter_subset_left
   have hcast : (∑ᶠ ρ ∈ B, (Z.mult ρ : ℝ)) = ((∑ᶠ ρ ∈ B, Z.mult ρ : ℕ) : ℝ) := by
     rw [finsum_mem_eq_finite_toFinset_sum _ hB, finsum_mem_eq_finite_toFinset_sum _ hB,
       Nat.cast_sum]

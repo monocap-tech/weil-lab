@@ -109,7 +109,7 @@ namespace EF
 /-! ## ℂ-specialised integral helpers
 
 (In this toolchain `rw [← integral_const_mul]` fails to key-match on ℂ-valued integrals because the
-RCLike-generic lemma elaborates `Mul ℂ`/`NormedAddCommGroup ℂ` through a different instance path than
+RCLike-generic lemma elaborates_Zeta23_WeilEF_per_n_line_integral `Mul ℂ`/`NormedAddCommGroup ℂ` through a different instance path than
 a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `rw` usable.) -/
 
 theorem cintegral_const_mul (c : ℂ) (f : ℝ → ℂ) : ∫ x, c * f x = c * ∫ x, f x :=
@@ -187,7 +187,7 @@ SPDX-License-Identifier: Apache-2.0
 Zeta23/ExplicitFormula/Bridge.lean
 
 The two "all integrals absolutely convergent" side-facts of App. A [app:EF]:
-  * `integrable_fourier_of_contDiff_two` : k ∈ C_c²(ℝ) ⇒ 𝓕 k ∈ L¹(ℝ)   (from [eq:hfbound], Zeta23/Poisson/PaperFT.lean);
+  * `integrable_fourier_of_contDiff_two_Zeta23_WeilEF_per_n_line_integral` : k ∈ C_c²(ℝ) ⇒ 𝓕 k ∈ L¹(ℝ)   (from [eq:hfbound], Zeta23/Poisson/PaperFT.lean);
   * `integrable_paperFT_mul_mu`          : k ∈ C_c²(ℝ) ⇒ h_k · μ ∈ L¹(ℝ)  (from [eq:hfbound] + H-Γ [eq:mufacts]);
 and the clean bridge
   * `explicitFormulaPaper_of_lit` : EF_lit Z → GammaFacts → ExplicitFormulaPaper Z,
@@ -206,7 +206,7 @@ namespace Zeta23
 namespace EF
 
 /-- A compactly supported function on ℝ is supported in some `[−Λ, Λ]`. -/
-theorem exists_abs_le_of_hasCompactSupport {k : ℝ → ℂ} (hkc : HasCompactSupport k) :
+theorem exists_abs_le_of_hasCompactSupport_Zeta23_WeilEF_per_n_line_integral {k : ℝ → ℂ} (hkc : HasCompactSupport k) :
     ∃ Λ : ℝ, ∀ u, k u ≠ 0 → |u| ≤ Λ := by
   obtain ⟨R, hR⟩ := hkc.isCompact.isBounded.subset_closedBall 0
   refine ⟨R, fun u hu => ?_⟩
@@ -214,17 +214,17 @@ theorem exists_abs_le_of_hasCompactSupport {k : ℝ → ℂ} (hkc : HasCompactSu
   simpa [Real.norm_eq_abs] using this
 
 
-theorem continuous_fourier_of_integrable {k : ℝ → ℂ} (hki : Integrable k) : Continuous (𝓕 k) :=
+theorem continuous_fourier_of_integrable_Zeta23_WeilEF_per_n_line_integral {k : ℝ → ℂ} (hki : Integrable k) : Continuous (𝓕 k) :=
   VectorFourier.fourierIntegral_continuous Real.continuous_fourierChar (by exact continuous_inner) hki
 
 /-- `k ∈ C_c²(ℝ)` ⇒ `𝓕 k` integrable (App. A: "h(r) ≪_k (1+|r|)^{-2}"). -/
-theorem integrable_fourier_of_contDiff_two {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k)
+theorem integrable_fourier_of_contDiff_two_Zeta23_WeilEF_per_n_line_integral {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k)
     (hkc : HasCompactSupport k) : Integrable (𝓕 k) := by
-  obtain ⟨Λ, hΛ⟩ := exists_abs_le_of_hasCompactSupport hkc
+  obtain ⟨Λ, hΛ⟩ := exists_abs_le_of_hasCompactSupport_Zeta23_WeilEF_per_n_line_integral hkc
   have hki : Integrable k := hk.continuous.integrable_of_hasCompactSupport hkc
   set K : ℝ := (∫ u, ‖k u‖) + (∫ u, ‖deriv (deriv k) u‖) / (4 * π ^ 2)
   refine ((integrable_inv_one_add_sq.const_mul K).mono'
-    (continuous_fourier_of_integrable hki).aestronglyMeasurable (Eventually.of_forall fun w => ?_))
+    (continuous_fourier_of_integrable_Zeta23_WeilEF_per_n_line_integral hki).aestronglyMeasurable (Eventually.of_forall fun w => ?_))
   rw [← div_eq_mul_inv, le_div_iff₀ (by positivity)]
   exact norm_fourier_mul_one_add_sq_le hk hΛ w
 
@@ -251,7 +251,7 @@ H(s) := h((s−1/2)/i) = paperFT k (t − i·b) with b := c − 1/2, and
   paperFT k (t − i·b) = paperFT k_b t,  where k_b(u) := k(u)·e^{b·u}  (the TILTED test function,
 still C_c²).  Hence the line integral (1/2π)∫ H(c+it)·n^{−c−it} dt is, by Fourier inversion of
 k_b (Zeta23.EF.paper_inversion, proved in Zeta23/ExplicitFormula.lean, with integrability from
-Zeta23/ExplicitFormula/Bridge.lean's integrable_fourier_of_contDiff_two),
+Zeta23/ExplicitFormula/Bridge.lean's integrable_fourier_of_contDiff_two_Zeta23_WeilEF_per_n_line_integral),
   n^{−c}·k_b(log n) = n^{−c}·k(log n)·n^{b} = n^{−1/2}·k(log n).
 Summing against −ζ'/ζ(c+it) = Σ Λ(n)n^{−c−it} (Mathlib LSeries, 1 < c) with a dominated
 tsum/integral swap (domination: ‖paperFT k_b t‖(1+t²) ≤ ‖k_b‖₁+‖k_b''‖₁ from
@@ -268,13 +268,13 @@ open scoped ArithmeticFunction
 
 
 
-theorem tilt_contDiff {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (b : ℝ) : ContDiff ℝ 2 (tilt k b) := by
+theorem tilt_contDiff_Zeta23_WeilEF_per_n_line_integral {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (b : ℝ) : ContDiff ℝ 2 (tilt k b) := by
   refine hk.mul ?_
   have : ContDiff ℝ 2 (fun u : ℝ => Real.exp (b * u)) := (Real.contDiff_exp.comp
     (contDiff_const.mul contDiff_id)).of_le le_top
   exact Complex.ofRealCLM.contDiff.comp this
 
-theorem tilt_hasCompactSupport {k : ℝ → ℂ} (hk : HasCompactSupport k) (b : ℝ) :
+theorem tilt_hasCompactSupport_Zeta23_WeilEF_per_n_line_integral {k : ℝ → ℂ} (hk : HasCompactSupport k) (b : ℝ) :
     HasCompactSupport (tilt k b) := by
   refine hk.mul_right
 
@@ -284,11 +284,11 @@ theorem tilted_inversion {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCom
     (b y : ℝ) :
     (1 / (2 * Real.pi) : ℂ) * ∫ t : ℝ, paperFT (tilt k b) t * cexp (-I * t * y)
       = k y * (Real.exp (b * y) : ℂ) := by
-  have hcont := (tilt_contDiff hk b).continuous
+  have hcont := (tilt_contDiff_Zeta23_WeilEF_per_n_line_integral hk b).continuous
   have hint : Integrable (tilt k b) (volume : Measure ℝ) :=
-    hcont.integrable_of_hasCompactSupport (tilt_hasCompactSupport hkc b)
-  have hF := Zeta23.EF.integrable_fourier_of_contDiff_two (tilt_contDiff hk b)
-    (tilt_hasCompactSupport hkc b)
+    hcont.integrable_of_hasCompactSupport (tilt_hasCompactSupport_Zeta23_WeilEF_per_n_line_integral hkc b)
+  have hF := Zeta23.EF.integrable_fourier_of_contDiff_two_Zeta23_WeilEF_per_n_line_integral (tilt_contDiff_Zeta23_WeilEF_per_n_line_integral hk b)
+    (tilt_hasCompactSupport_Zeta23_WeilEF_per_n_line_integral hkc b)
   have h1 := Zeta23.EF.paper_inversion hcont hint hF y
   rw [← h1]
   rfl

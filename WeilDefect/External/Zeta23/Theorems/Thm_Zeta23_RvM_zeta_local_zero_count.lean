@@ -100,14 +100,14 @@ namespace Zeta23.ZeroConfig
 
 variable (Z : ZeroConfig) (T₁ T₂ : ℝ)
 
-lemma window_finite : (Z.window T₁ T₂).Finite := Z.finite_window T₁ T₂
+lemma window_finite_Zeta23_RvM_zeta_local_zero_count : (Z.window T₁ T₂).Finite := Z.finite_window T₁ T₂
 
 
 
 /-- Monotonicity of Σ m_ρ over finite subsets of a window. -/
-lemma finsum_mult_mono {s t : Set ℂ} (hst : s ⊆ t) (ht : t ⊆ Z.window T₁ T₂) :
+lemma finsum_mult_mono_Zeta23_RvM_zeta_local_zero_count {s t : Set ℂ} (hst : s ⊆ t) (ht : t ⊆ Z.window T₁ T₂) :
     ∑ᶠ ρ ∈ s, Z.mult ρ ≤ ∑ᶠ ρ ∈ t, Z.mult ρ := by
-  have htf : t.Finite := (Z.window_finite T₁ T₂).subset ht
+  have htf : t.Finite := (Z.window_finite_Zeta23_RvM_zeta_local_zero_count T₁ T₂).subset ht
   have hsf : s.Finite := htf.subset hst
   rw [finsum_mem_eq_finite_toFinset_sum _ hsf, finsum_mem_eq_finite_toFinset_sum _ htf]
   apply Finset.sum_le_sum_of_subset
@@ -166,25 +166,25 @@ namespace Zeta23
 section seam_rfl
 variable (hs : ZetaSeam) (T₁ T₂ : ℝ)
 
-@[simp] lemma zetaZeros_carrier : (zetaZeros hs).carrier = {ρ | IsNontrivialZero ρ} := rfl
-@[simp] lemma zetaZeros_mult : (zetaZeros hs).mult = zeroMult := rfl
-@[simp] lemma zetaZeros_simple : (zetaZeros hs).simple = {ρ | zeroMult ρ = 1} := rfl
+@[simp] lemma zetaZeros_carrier_Zeta23_RvM_zeta_local_zero_count : (zetaZeros hs).carrier = {ρ | IsNontrivialZero ρ} := rfl
+@[simp] lemma zetaZeros_mult_Zeta23_RvM_zeta_local_zero_count : (zetaZeros hs).mult = zeroMult := rfl
+@[simp] lemma zetaZeros_simple_Zeta23_RvM_zeta_local_zero_count : (zetaZeros hs).simple = {ρ | zeroMult ρ = 1} := rfl
 
-lemma zetaZeros_window : (zetaZeros hs).window T₁ T₂ = zerosIn T₁ T₂ := by
+lemma zetaZeros_window_Zeta23_RvM_zeta_local_zero_count : (zetaZeros hs).window T₁ T₂ = zerosIn T₁ T₂ := by
   ext ρ; simp [ZeroConfig.window, zerosIn]
 
-@[simp] lemma zetaZeros_N : (zetaZeros hs).N T₁ T₂ = Ncount T₁ T₂ := by
-  simp [ZeroConfig.N, Ncount, zetaZeros_window]
-@[simp] lemma zetaZeros_Nd : (zetaZeros hs).Nd T₁ T₂ = Ndist T₁ T₂ := by
-  simp [ZeroConfig.Nd, Ndist, zetaZeros_window]
-@[simp] lemma zetaZeros_N0 : (zetaZeros hs).N0 T₁ T₂ = N0 T₁ T₂ := by
-  simp [ZeroConfig.N0, N0, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_N0star : (zetaZeros hs).N0star T₁ T₂ = N0star T₁ T₂ := by
-  simp [ZeroConfig.N0star, N0star, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_N0s : (zetaZeros hs).N0s T₁ T₂ = N0simple T₁ T₂ := by
-  simp [ZeroConfig.N0s, N0simple, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_Ns : (zetaZeros hs).Ns T₁ T₂ = Nsimple T₁ T₂ := by
-  simp [ZeroConfig.Ns, Nsimple, zetaZeros_window]
+@[simp] lemma zetaZeros_N_Zeta23_RvM_zeta_local_zero_count : (zetaZeros hs).N T₁ T₂ = Ncount T₁ T₂ := by
+  simp [ZeroConfig.N, Ncount, zetaZeros_window_Zeta23_RvM_zeta_local_zero_count]
+@[simp] lemma zetaZeros_Nd_Zeta23_RvM_zeta_local_zero_count : (zetaZeros hs).Nd T₁ T₂ = Ndist T₁ T₂ := by
+  simp [ZeroConfig.Nd, Ndist, zetaZeros_window_Zeta23_RvM_zeta_local_zero_count]
+@[simp] lemma zetaZeros_N0_Zeta23_RvM_zeta_local_zero_count : (zetaZeros hs).N0 T₁ T₂ = N0 T₁ T₂ := by
+  simp [ZeroConfig.N0, N0, zetaZeros_window_Zeta23_RvM_zeta_local_zero_count, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_N0star_Zeta23_RvM_zeta_local_zero_count : (zetaZeros hs).N0star T₁ T₂ = N0star T₁ T₂ := by
+  simp [ZeroConfig.N0star, N0star, zetaZeros_window_Zeta23_RvM_zeta_local_zero_count, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_N0s_Zeta23_RvM_zeta_local_zero_count : (zetaZeros hs).N0s T₁ T₂ = N0simple T₁ T₂ := by
+  simp [ZeroConfig.N0s, N0simple, zetaZeros_window_Zeta23_RvM_zeta_local_zero_count, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_Ns_Zeta23_RvM_zeta_local_zero_count : (zetaZeros hs).Ns T₁ T₂ = Nsimple T₁ T₂ := by
+  simp [ZeroConfig.Ns, Nsimple, zetaZeros_window_Zeta23_RvM_zeta_local_zero_count]
 
 end seam_rfl
 
@@ -239,17 +239,17 @@ namespace Zeta23
 
 
 
-@[simp] lemma zetaZeroConfig_carrier : zetaZeroConfig.carrier = {ρ | IsNontrivialZero ρ} := rfl
-@[simp] lemma zetaZeroConfig_mult : zetaZeroConfig.mult = zeroMult := rfl
+@[simp] lemma zetaZeroConfig_carrier_Zeta23_RvM_zeta_local_zero_count : zetaZeroConfig.carrier = {ρ | IsNontrivialZero ρ} := rfl
+@[simp] lemma zetaZeroConfig_mult_Zeta23_RvM_zeta_local_zero_count : zetaZeroConfig.mult = zeroMult := rfl
 
-@[simp] lemma zetaZeroConfig_N (T₁ T₂ : ℝ) : zetaZeroConfig.N T₁ T₂ = Ncount T₁ T₂ :=
-  zetaZeros_N _ _ _
-@[simp] lemma zetaZeroConfig_N0star (T₁ T₂ : ℝ) : zetaZeroConfig.N0star T₁ T₂ = N0star T₁ T₂ :=
-  zetaZeros_N0star _ _ _
-@[simp] lemma zetaZeroConfig_N0s (T₁ T₂ : ℝ) : zetaZeroConfig.N0s T₁ T₂ = N0simple T₁ T₂ :=
-  zetaZeros_N0s _ _ _
-@[simp] lemma zetaZeroConfig_Nd (T₁ T₂ : ℝ) : zetaZeroConfig.Nd T₁ T₂ = Ndist T₁ T₂ :=
-  zetaZeros_Nd _ _ _
+@[simp] lemma zetaZeroConfig_N_Zeta23_RvM_zeta_local_zero_count (T₁ T₂ : ℝ) : zetaZeroConfig.N T₁ T₂ = Ncount T₁ T₂ :=
+  zetaZeros_N_Zeta23_RvM_zeta_local_zero_count _ _ _
+@[simp] lemma zetaZeroConfig_N0star_Zeta23_RvM_zeta_local_zero_count (T₁ T₂ : ℝ) : zetaZeroConfig.N0star T₁ T₂ = N0star T₁ T₂ :=
+  zetaZeros_N0star_Zeta23_RvM_zeta_local_zero_count _ _ _
+@[simp] lemma zetaZeroConfig_N0s_Zeta23_RvM_zeta_local_zero_count (T₁ T₂ : ℝ) : zetaZeroConfig.N0s T₁ T₂ = N0simple T₁ T₂ :=
+  zetaZeros_N0s_Zeta23_RvM_zeta_local_zero_count _ _ _
+@[simp] lemma zetaZeroConfig_Nd_Zeta23_RvM_zeta_local_zero_count (T₁ T₂ : ℝ) : zetaZeroConfig.Nd T₁ T₂ = Ndist T₁ T₂ :=
+  zetaZeros_Nd_Zeta23_RvM_zeta_local_zero_count _ _ _
 
 
 
@@ -304,8 +304,8 @@ theorem count_small (t : ℝ) (ht : |t| ≤ 4) : (Ncount t (t + 1) : ℝ) ≤ Nc
   have hsub : zetaZeroConfig.window t (t + 1) ⊆ zetaZeroConfig.window (-4) 5 := by
     rintro ρ ⟨hρ, ha, hb⟩; exact ⟨hρ, by linarith, by linarith⟩
   have h' : zetaZeroConfig.N t (t + 1) ≤ zetaZeroConfig.N (-4) 5 :=
-    zetaZeroConfig.finsum_mult_mono (-4) 5 hsub subset_rfl
-  rw [zetaZeroConfig_N, zetaZeroConfig_N] at h'
+    zetaZeroConfig.finsum_mult_mono_Zeta23_RvM_zeta_local_zero_count (-4) 5 hsub subset_rfl
+  rw [zetaZeroConfig_N_Zeta23_RvM_zeta_local_zero_count, zetaZeroConfig_N_Zeta23_RvM_zeta_local_zero_count] at h'
   exact_mod_cast h'
 
 
@@ -328,7 +328,7 @@ theorem Zeta23.RvM.zeta_local_zero_count : ∃ A₀ : ℝ, 1 ≤ A₀ ∧ ∀ t 
     have := Real.exp_one_lt_d9; linarith [abs_nonneg t]
   have hhalf : (Ncount t (t + 1) : ℝ) ≤ 2 * NhalfR t := by
     have := zetaZeroConfig.N_le_two_mul_half t (t + 1)
-    simpa [NhalfR, zetaZeroConfig_N] using this
+    simpa [NhalfR, zetaZeroConfig_N_Zeta23_RvM_zeta_local_zero_count] using this
   rcases le_or_gt 4 |t| with ht | ht
   · calc (Ncount t (t + 1) : ℝ) ≤ 2 * NhalfR t := hhalf
       _ ≤ 2 * (A₁ * Real.log (|t| + 3)) := by

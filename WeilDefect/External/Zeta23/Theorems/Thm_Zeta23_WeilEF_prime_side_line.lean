@@ -85,7 +85,7 @@ open scoped ArithmeticFunction
 
 
 /-- On the line Re s = c: H(c+it) = paperFT (tilt k (c − 1/2)) t. -/
-theorem Hfn_line (k : ℝ → ℂ) (c t : ℝ) :
+theorem Hfn_line_Zeta23_WeilEF_prime_side_line (k : ℝ → ℂ) (c t : ℝ) :
     Hfn k (c + t * I) = paperFT (tilt k (c - 1/2)) t := by
   unfold Hfn tilt paperFT
   refine integral_congr_ae (Filter.Eventually.of_forall fun u => ?_)
@@ -113,7 +113,7 @@ theorem integrand_eq_tsum {k : ℝ → ℂ} {c : ℝ} (hc1 : 1 < c) (t : ℝ) :
     have h2 := ArithmeticFunction.LSeries_vonMangoldt_eq_deriv_riemannZeta_div hre
     rw [logDeriv, Pi.div_apply, h2]
     ring
-  rw [Hfn_line, h1, LSeries, ← tsum_mul_left]
+  rw [Hfn_line_Zeta23_WeilEF_prime_side_line, h1, LSeries, ← tsum_mul_left]
 
 
 

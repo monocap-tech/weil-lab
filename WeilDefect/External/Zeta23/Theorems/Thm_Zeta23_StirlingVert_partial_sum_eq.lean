@@ -65,7 +65,7 @@ not match ℂ's default instance path under `rw`; cf. Zeta23.integral_const_mul_
 private theorem re_add_pos_rpb108Local {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : 0 < ((x : ℂ) + w).re := by
   simp; linarith
 
-theorem add_mem_slitPlane {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) :
+theorem add_mem_slitPlane_Zeta23_StirlingVert_partial_sum_eq {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) :
     (x : ℂ) + w ∈ Complex.slitPlane :=
   Complex.mem_slitPlane_iff.mpr (Or.inl (re_add_pos_rpb108Local hw hx))
 
@@ -74,16 +74,16 @@ private theorem add_ne_zero_rpb108Local {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx 
 
 /-! ### The antiderivative `F(x) = log(x + w)` on `[0, ∞)` -/
 
-theorem hasDerivAt_log_add {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) :
+theorem hasDerivAt_log_add_Zeta23_StirlingVert_partial_sum_eq {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) :
     HasDerivAt (fun y : ℝ => Complex.log ((y : ℂ) + w)) (((x : ℂ) + w)⁻¹) x := by
   have h1 : HasDerivAt (fun z : ℂ => Complex.log (z + w)) (((x : ℂ) + w)⁻¹) (x : ℂ) := by
-    have := (Complex.hasDerivAt_log (add_mem_slitPlane hw hx)).comp (x : ℂ)
+    have := (Complex.hasDerivAt_log (add_mem_slitPlane_Zeta23_StirlingVert_partial_sum_eq hw hx)).comp (x : ℂ)
       ((hasDerivAt_id (x : ℂ)).add_const w)
     simpa [Function.comp_def] using this
   exact h1.comp_ofReal
 
 /-- FTC: `∫_m^{m+1} dx/(x+w) = log(m+1+w) − log(m+w)` for `m ≥ 0`. -/
-theorem integral_inv_add_eq_log_sub {w : ℂ} (hw : 0 < w.re) {m : ℝ} (hm : 0 ≤ m) :
+theorem integral_inv_add_eq_log_sub_Zeta23_StirlingVert_partial_sum_eq {w : ℂ} (hw : 0 < w.re) {m : ℝ} (hm : 0 ≤ m) :
     ∫ x in m..(m + 1), ((x : ℂ) + w)⁻¹
       = Complex.log (((m + 1 : ℝ) : ℂ) + w) - Complex.log ((m : ℂ) + w) := by
   have hcont : ContinuousOn (fun x : ℝ => ((x : ℂ) + w)⁻¹) (uIcc m (m + 1)) := by
@@ -94,7 +94,7 @@ theorem integral_inv_add_eq_log_sub {w : ℂ} (hw : 0 < w.re) {m : ℝ} (hm : 0 
   rw [integral_eq_sub_of_hasDerivAt (f := fun y : ℝ => Complex.log ((y : ℂ) + w))
     (fun x hx => by
       rw [uIcc_of_le (by linarith)] at hx
-      exact hasDerivAt_log_add hw (by linarith [hx.1]))
+      exact hasDerivAt_log_add_Zeta23_StirlingVert_partial_sum_eq hw (by linarith [hx.1]))
     (hcont.intervalIntegrable)]
 
 /-! ### The per-interval expansion -/
@@ -108,11 +108,11 @@ theorem integral_inv_add_eq_log_sub {w : ℂ} (hw : 0 < w.re) {m : ℝ} (hm : 0 
 section Seq
 variable {w : ℂ}
 
-theorem natp1_re_pos (hw : 0 < w.re) (n : ℕ) : 0 < ((n : ℂ) + 1 + w).re := by
+theorem natp1_re_pos_Zeta23_StirlingVert_partial_sum_eq (hw : 0 < w.re) (n : ℕ) : 0 < ((n : ℂ) + 1 + w).re := by
   simp; positivity
 
-theorem natp1_ne_zero (hw : 0 < w.re) (n : ℕ) : (n : ℂ) + 1 + w ≠ 0 := fun h => by
-  have := natp1_re_pos hw n; rw [h] at this; simp at this
+theorem natp1_ne_zero_Zeta23_StirlingVert_partial_sum_eq (hw : 0 < w.re) (n : ℕ) : (n : ℂ) + 1 + w ≠ 0 := fun h => by
+  have := natp1_re_pos_Zeta23_StirlingVert_partial_sum_eq hw n; rw [h] at this; simp at this
 
 
 
@@ -124,7 +124,7 @@ theorem inv_natp1_eq (hw : 0 < w.re) (n : ℕ) :
         + (1 / 2 : ℂ) / ((n : ℂ) + 1 + w) ^ 2 - eps w ((n : ℝ) + 1) := by
   have hm : (0 : ℝ) ≤ (n : ℝ) + 1 := by positivity
   have h1 := integral_inv_add_eq hw hm
-  have h2 := integral_inv_add_eq_log_sub hw hm
+  have h2 := integral_inv_add_eq_log_sub_Zeta23_StirlingVert_partial_sum_eq hw hm
   rw [h2] at h1
   have e1 : ((((n : ℝ) + 1 : ℝ)) : ℂ) + w = (n : ℂ) + 1 + w := by push_cast; ring
   have e2 : ((((n : ℝ) + 1 + 1 : ℝ)) : ℂ) + w = ((n + 1 : ℕ) : ℂ) + 1 + w := by push_cast; ring
@@ -136,8 +136,8 @@ theorem inv_natp1_eq (hw : 0 < w.re) (n : ℕ) :
 theorem inv_natp1_sq_eq (hw : 0 < w.re) (n : ℕ) :
     1 / ((n : ℂ) + 1 + w) ^ 2
       = (((n : ℂ) + 1 + w)⁻¹ - (((n + 1 : ℕ) : ℂ) + 1 + w)⁻¹) + rho w n := by
-  have h1 := natp1_ne_zero hw n
-  have h2 := natp1_ne_zero hw (n + 1)
+  have h1 := natp1_ne_zero_Zeta23_StirlingVert_partial_sum_eq hw n
+  have h2 := natp1_ne_zero_Zeta23_StirlingVert_partial_sum_eq hw (n + 1)
   have e : ((n + 1 : ℕ) : ℂ) + 1 + w = (n : ℂ) + 2 + w := by push_cast; ring
   rw [e] at h2 ⊢
   unfold rho

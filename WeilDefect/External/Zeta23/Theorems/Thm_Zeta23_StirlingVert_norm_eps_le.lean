@@ -65,12 +65,12 @@ theorem abs_im_le_norm_add {w : ℂ} (x : ℝ) : |w.im| ≤ ‖(x : ℂ) + w‖ 
   have := Complex.abs_im_le_norm ((x : ℂ) + w)
   simpa using this
 
-theorem re_add_pos {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : 0 < ((x : ℂ) + w).re := by
+theorem re_add_pos_Zeta23_StirlingVert_norm_eps_le {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : 0 < ((x : ℂ) + w).re := by
   simp; linarith
 
 
-theorem add_ne_zero {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : (x : ℂ) + w ≠ 0 :=
-  fun h => by have := re_add_pos hw hx; rw [h] at this; simp at this
+theorem add_ne_zero_Zeta23_StirlingVert_norm_eps_le {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : (x : ℂ) + w ≠ 0 :=
+  fun h => by have := re_add_pos_Zeta23_StirlingVert_norm_eps_le hw hx; rw [h] at this; simp at this
 
 /-! ### The antiderivative `F(x) = log(x + w)` on `[0, ∞)` -/
 
@@ -143,7 +143,7 @@ open Complex Filter Topology MeasureTheory intervalIntegral Set
 
 theorem Zeta23.StirlingVert.norm_eps_le {w : ℂ} (hw : 0 < w.re) (ht : 1 / 2 ≤ |w.im|) {m : ℝ} (hm : 0 ≤ m) :
     ‖eps w m‖ ≤ 1 / (3 * ‖(m : ℂ) + w‖ ^ 2 * |w.im|) := by
-  have hmw := add_ne_zero hw hm
+  have hmw := add_ne_zero_Zeta23_StirlingVert_norm_eps_le hw hm
   have hM : 0 < ‖(m : ℂ) + w‖ := norm_pos_iff.mpr hmw
   have ht0 : 0 < |w.im| := by linarith
   unfold eps
@@ -156,7 +156,7 @@ theorem Zeta23.StirlingVert.norm_eps_le {w : ℂ} (hw : 0 < w.re) (ht : 1 / 2 �
           apply ContinuousOn.div (by fun_prop) (by fun_prop)
           intro x hx
           rw [uIcc_of_le (by linarith)] at hx
-          exact mul_ne_zero (pow_ne_zero _ hmw) (add_ne_zero hw (by linarith [hx.1]))
+          exact mul_ne_zero (pow_ne_zero _ hmw) (add_ne_zero_Zeta23_StirlingVert_norm_eps_le hw (by linarith [hx.1]))
         · exact (by fun_prop : Continuous fun x : ℝ => (x - m) ^ 2 / (‖(m : ℂ) + w‖ ^ 2 * |w.im|))
             |>.intervalIntegrable _ _
         · intro x hx

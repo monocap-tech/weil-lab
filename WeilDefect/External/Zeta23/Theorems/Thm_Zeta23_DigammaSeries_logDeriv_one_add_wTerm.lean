@@ -56,7 +56,7 @@ namespace DigammaSeries
 open Complex Filter Topology
 
 
-lemma one_add_wTerm (n : ℕ) (z : ℂ) :
+lemma one_add_wTerm_Zeta23_DigammaSeries_logDeriv_one_add_wTerm (n : ℕ) (z : ℂ) :
     1 + wTerm n z = (1 + z / (n + 1)) * Complex.exp (-(z / (n + 1))) := by
   unfold wTerm
   ring
@@ -95,7 +95,7 @@ theorem Zeta23.DigammaSeries.logDeriv_one_add_wTerm {z : ℂ} (hz : z ∈ Comple
   have hfun : (fun s => 1 + wTerm n s)
       = fun s : ℂ => (1 + s / ((n : ℂ) + 1)) * Complex.exp (-(s / ((n : ℂ) + 1))) := by
     funext s
-    exact one_add_wTerm n s
+    exact one_add_wTerm_Zeta23_DigammaSeries_logDeriv_one_add_wTerm n s
   rw [hfun]
   have h1z : (1 + z / ((n : ℂ) + 1)) ≠ 0 := by
     intro h

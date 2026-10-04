@@ -256,15 +256,15 @@ theorem ContinuousOn.rectangleBorder_integrable (hf : ContinuousOn f (RectangleB
 
 
 
-theorem RectangleIntegral.translate (f : ℂ → E) (z w p : ℂ) :
+theorem RectangleIntegral.translate_Zeta23_Analytic_residueTheorem_finset (f : ℂ → E) (z w p : ℂ) :
     RectangleIntegral (fun s => f (s - p)) z w = RectangleIntegral f (z - p) (w - p) := by
   simp_rw [RectangleIntegral, HIntegral, VIntegral, sub_re, sub_im,
     ← intervalIntegral.integral_comp_sub_right]
   congr <;> ext <;> congr 1 <;> simp [Complex.ext_iff]
 
-theorem RectangleIntegral.translate' (f : ℂ → E) (z w p : ℂ) :
+theorem RectangleIntegral.translate_Zeta23_Analytic_residueTheorem_finset' (f : ℂ → E) (z w p : ℂ) :
     RectangleIntegral' (fun s => f (s - p)) z w = RectangleIntegral' f (z - p) (w - p) := by
-  simp_rw [RectangleIntegral', RectangleIntegral.translate]
+  simp_rw [RectangleIntegral', RectangleIntegral.translate_Zeta23_Analytic_residueTheorem_finset]
 
 lemma Complex.inv_re_add_im : (x + y * I)⁻¹ = (x - I * y) / (x ^ 2 + y ^ 2) := by
   rw [Complex.inv_def, div_eq_mul_inv]
@@ -369,7 +369,7 @@ theorem ResidueTheoremInRectangle
     RectangleIntegral' (fun s => c / (s - p)) z w = c := by
   simp only [rectangle_mem_nhds_iff, uIoo_of_le zRe_le_wRe, uIoo_of_le zIm_le_wIm,
     mem_reProdIm, mem_Ioo] at pInRectInterior
-  rw [RectangleIntegral.translate', RectangleIntegral']
+  rw [RectangleIntegral.translate_Zeta23_Analytic_residueTheorem_finset', RectangleIntegral']
   have : 1 / (2 * ↑π * I) * (2 * I * ↑π * c) = c := by
     field_simp
   rwa [ResidueTheoremAtOrigin']
@@ -382,7 +382,7 @@ theorem ResidueTheoremInRectangle
 
 /-! ## Residue calculus: residues, simple poles, and the rectangle residue theorem
 
-The simple-pole `residue`, `sumResiduesIn`, the `HasSimplePolesOn` scaffold, and the rectangle
+The_Zeta23_Analytic_residueTheorem_finset simple-pole `residue`, `sumResiduesIn`, the `HasSimplePolesOn` scaffold, and the rectangle
 residue theorem `RectangleIntegral'_eq_sumResiduesIn`. Extracted from `CH2.lean` as general,
 reusable contour-integration lemmas (see issue #1537). -/
 
@@ -402,7 +402,7 @@ reusable contour-integration lemmas (see issue #1537). -/
 -- so the only integer fitting both is -1.
 
 -- At a simple pole `p` of `f` inside `U`, the residue of the meromorphic normal form
--- `toMeromorphicNFOn f U` equals the residue of `f`. The two functions agree on a punctured
+-- `toMeromorphicNFOn f U` equals the residue of `f`. The_Zeta23_Analytic_residueTheorem_finset two functions agree on a punctured
 -- neighborhood of `p` (by definition of the normal form), so their `(z - p) * ·` limits coincide.
 
 -- Non-constancy of horizontal paths `x ↦ x + h * I`.
@@ -425,7 +425,7 @@ reusable contour-integration lemmas (see issue #1537). -/
 
 
 
--- The integral of a sum of simple pole terms `c p / (s - p)` along the boundary of the rectangle
+-- The_Zeta23_Analytic_residueTheorem_finset integral of a sum of simple pole terms `c p / (s - p)` along the boundary of the rectangle
 -- equals the sum of the coefficients `c p` for all points `p` in the interior.
 
 -- Splits the integral of `fNF` into the integral of its holomorphic part and its principal part.

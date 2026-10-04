@@ -163,16 +163,16 @@ lemma completedRiemannZeta_eq_Gammaℝ_mul {s : ℂ} (hs : s ≠ 0) (hG : Gamma�
   rw [riemannZeta_def_of_ne_zero hs]
   field_simp
 
-lemma completedRiemannZeta_eq_zero_iff_of_re_pos {s : ℂ} (hs : 0 < s.re) :
+lemma completedRiemannZeta_eq_zero_iff_of_re_pos_Zeta23_WeilEF_completedZeta_ne_zero_on_horizontals {s : ℂ} (hs : 0 < s.re) :
     completedRiemannZeta s = 0 ↔ riemannZeta s = 0 := by
   have h0 : s ≠ 0 := fun h => by simp [h] at hs
   have hG := Gammaℝ_ne_zero_of_re_pos hs
   rw [completedRiemannZeta_eq_Gammaℝ_mul h0 hG, mul_eq_zero]
   simp [hG]
 
-lemma completedRiemannZeta_ne_zero_of_one_le_re {s : ℂ} (hs : 1 ≤ s.re) :
+lemma completedRiemannZeta_ne_zero_of_one_le_re_Zeta23_WeilEF_completedZeta_ne_zero_on_horizontals {s : ℂ} (hs : 1 ≤ s.re) :
     completedRiemannZeta s ≠ 0 := by
-  rw [Ne, completedRiemannZeta_eq_zero_iff_of_re_pos (by linarith)]
+  rw [Ne, completedRiemannZeta_eq_zero_iff_of_re_pos_Zeta23_WeilEF_completedZeta_ne_zero_on_horizontals (by linarith)]
   exact riemannZeta_ne_zero_of_one_le_re hs
 
 
@@ -267,7 +267,7 @@ theorem Zeta23.WeilEF.completedZeta_ne_zero_on_horizontals {c : ℝ} (hc1 : 1 < 
     rcases lt_or_ge s.re 1 with hlt | hge
     · have hnt := ((completedZeta_zeros_strip (by linarith) hlt).1).mp h0
       exact hζ s him h1 h2 hnt.1
-    · exact Zeta23.RvM.completedRiemannZeta_ne_zero_of_one_le_re hge h0
+    · exact Zeta23.RvM.completedRiemannZeta_ne_zero_of_one_le_re_Zeta23_WeilEF_completedZeta_ne_zero_on_horizontals hge h0
   intro s him h1 h2
   rcases le_or_gt (1 / 2 : ℝ) s.re with hre | hre
   · exact aux s him hre (by linarith)

@@ -57,7 +57,7 @@ open Complex Filter Topology
 
 
 
-lemma norm_natCast_add_one (n : ℕ) : ‖((n : ℂ) + 1)‖ = (n : ℝ) + 1 := by
+lemma norm_natCast_add_one_Zeta23_DigammaSeries_summable_digamma_series (n : ℕ) : ‖((n : ℂ) + 1)‖ = (n : ℝ) + 1 := by
   rw [show ((n : ℂ) + 1) = (((n : ℝ) + 1 : ℝ) : ℂ) by push_cast; ring, Complex.norm_real]
   rw [Real.norm_eq_abs, abs_of_pos (by positivity)]
 
@@ -119,10 +119,10 @@ theorem Zeta23.DigammaSeries.summable_digamma_series {z : ℂ} (hz : z ∈ Compl
         have h3 : (z + (n : ℂ) + 1) - z = ((n : ℂ) + 1) := by ring
         rw [h3] at h2
         linarith
-      rw [norm_natCast_add_one] at h1
+      rw [norm_natCast_add_one_Zeta23_DigammaSeries_summable_digamma_series] at h1
       linarith [norm_nonneg z]
     rw [Real.norm_eq_abs, abs_of_nonneg (norm_nonneg _), hident, norm_div, norm_mul,
-      norm_natCast_add_one]
+      norm_natCast_add_one_Zeta23_DigammaSeries_summable_digamma_series]
     calc ‖z‖ / (((n : ℝ) + 1) * ‖z + (n : ℂ) + 1‖)
         ≤ ‖z‖ / (((n : ℝ) + 1) * (((n : ℝ) + 1) / 2)) := by
           gcongr

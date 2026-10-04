@@ -172,25 +172,25 @@ namespace Zeta23
 section seam_rfl
 variable (hs : ZetaSeam) (T₁ T₂ : ℝ)
 
-@[simp] lemma zetaZeros_carrier : (zetaZeros hs).carrier = {ρ | IsNontrivialZero ρ} := rfl
-@[simp] lemma zetaZeros_mult : (zetaZeros hs).mult = zeroMult := rfl
-@[simp] lemma zetaZeros_simple : (zetaZeros hs).simple = {ρ | zeroMult ρ = 1} := rfl
+@[simp] lemma zetaZeros_carrier_Zeta23_WeilEF_zero_sum_limit : (zetaZeros hs).carrier = {ρ | IsNontrivialZero ρ} := rfl
+@[simp] lemma zetaZeros_mult_Zeta23_WeilEF_zero_sum_limit : (zetaZeros hs).mult = zeroMult := rfl
+@[simp] lemma zetaZeros_simple_Zeta23_WeilEF_zero_sum_limit : (zetaZeros hs).simple = {ρ | zeroMult ρ = 1} := rfl
 
-lemma zetaZeros_window : (zetaZeros hs).window T₁ T₂ = zerosIn T₁ T₂ := by
+lemma zetaZeros_window_Zeta23_WeilEF_zero_sum_limit : (zetaZeros hs).window T₁ T₂ = zerosIn T₁ T₂ := by
   ext ρ; simp [ZeroConfig.window, zerosIn]
 
-@[simp] lemma zetaZeros_N : (zetaZeros hs).N T₁ T₂ = Ncount T₁ T₂ := by
-  simp [ZeroConfig.N, Ncount, zetaZeros_window]
-@[simp] lemma zetaZeros_Nd : (zetaZeros hs).Nd T₁ T₂ = Ndist T₁ T₂ := by
-  simp [ZeroConfig.Nd, Ndist, zetaZeros_window]
-@[simp] lemma zetaZeros_N0 : (zetaZeros hs).N0 T₁ T₂ = N0 T₁ T₂ := by
-  simp [ZeroConfig.N0, N0, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_N0star : (zetaZeros hs).N0star T₁ T₂ = N0star T₁ T₂ := by
-  simp [ZeroConfig.N0star, N0star, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_N0s : (zetaZeros hs).N0s T₁ T₂ = N0simple T₁ T₂ := by
-  simp [ZeroConfig.N0s, N0simple, zetaZeros_window, ZeroConfig.onLine]
-@[simp] lemma zetaZeros_Ns : (zetaZeros hs).Ns T₁ T₂ = Nsimple T₁ T₂ := by
-  simp [ZeroConfig.Ns, Nsimple, zetaZeros_window]
+@[simp] lemma zetaZeros_N_Zeta23_WeilEF_zero_sum_limit : (zetaZeros hs).N T₁ T₂ = Ncount T₁ T₂ := by
+  simp [ZeroConfig.N, Ncount, zetaZeros_window_Zeta23_WeilEF_zero_sum_limit]
+@[simp] lemma zetaZeros_Nd_Zeta23_WeilEF_zero_sum_limit : (zetaZeros hs).Nd T₁ T₂ = Ndist T₁ T₂ := by
+  simp [ZeroConfig.Nd, Ndist, zetaZeros_window_Zeta23_WeilEF_zero_sum_limit]
+@[simp] lemma zetaZeros_N0_Zeta23_WeilEF_zero_sum_limit : (zetaZeros hs).N0 T₁ T₂ = N0 T₁ T₂ := by
+  simp [ZeroConfig.N0, N0, zetaZeros_window_Zeta23_WeilEF_zero_sum_limit, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_N0star_Zeta23_WeilEF_zero_sum_limit : (zetaZeros hs).N0star T₁ T₂ = N0star T₁ T₂ := by
+  simp [ZeroConfig.N0star, N0star, zetaZeros_window_Zeta23_WeilEF_zero_sum_limit, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_N0s_Zeta23_WeilEF_zero_sum_limit : (zetaZeros hs).N0s T₁ T₂ = N0simple T₁ T₂ := by
+  simp [ZeroConfig.N0s, N0simple, zetaZeros_window_Zeta23_WeilEF_zero_sum_limit, ZeroConfig.onLine]
+@[simp] lemma zetaZeros_Ns_Zeta23_WeilEF_zero_sum_limit : (zetaZeros hs).Ns T₁ T₂ = Nsimple T₁ T₂ := by
+  simp [ZeroConfig.Ns, Nsimple, zetaZeros_window_Zeta23_WeilEF_zero_sum_limit]
 
 end seam_rfl
 
@@ -264,16 +264,16 @@ open Complex Set Filter MeasureTheory
 /-! ### The ζ instances -/
 
 
-/-! ### EF_zero_sum_summable -/
+/-! ### EF_zero_sum_summable_Zeta23_WeilEF_zero_sum_limit -/
 
 /-- The EF zero-side sum converges absolutely for every k ∈ C_c²(ℝ)
 (via [eq:hfbound]: ‖h(γ_ρ)‖ ≤ e^{Λ/2}‖k''‖₁/‖γ_ρ‖², |Im γ_ρ| < 1/2) — EF_lit's Summable clause. -/
-theorem EF_zero_sum_summable (hs : ZetaSeam) {k : ℝ → ℂ}
+theorem EF_zero_sum_summable_Zeta23_WeilEF_zero_sum_limit (hs : ZetaSeam) {k : ℝ → ℂ}
     (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) :
     Summable (fun ρ : (zetaZeros hs).carrier =>
       ((zetaZeros hs).mult ρ : ℂ) * paperFT k (gammaOf ρ)) := by
   obtain ⟨A₀, hA₀, hloc⟩ := Zeta23.RvM.zeta_local_zero_count
-  exact EF_zero_sum_summable_gen (zetaZeros hs) hA₀ (fun t => by rw [zetaZeros_N]; exact hloc t) hk hkc
+  exact EF_zero_sum_summable_gen (zetaZeros hs) hA₀ (fun t => by rw [zetaZeros_N_Zeta23_WeilEF_zero_sum_limit]; exact hloc t) hk hkc
 
 end WeilEF
 end Zeta23
@@ -291,7 +291,7 @@ Zeta23/WeilEF/ZeroSumLimit.lean — consumed by Zeta23/WeilEF/FullLine.lean (ful
 
 The zero-side limit: along heights R_j ∈ [j+7, j+8] the finite sums Σ_{|γ_ρ| < R_j} m_ρ H(ρ)
 (the zero term of rectangle_identity, Zeta23/WeilEF/Contour.lean) converge to the absolutely
-convergent tsum over all nontrivial zeros (EF_zero_sum_summable,
+convergent tsum over all nontrivial zeros (EF_zero_sum_summable_Zeta23_WeilEF_zero_sum_limit,
 Zeta23/WeilEF/ZeroSummability.lean), since the windows {|Im ρ| < R_j} increase and exhaust the carrier.
 -/
 
@@ -319,7 +319,7 @@ theorem Zeta23.WeilEF.zero_sum_limit (hs : ZetaSeam) {k : ℝ → ℂ} (hk : Con
   classical
   set g : (zetaZeros hs).carrier → ℂ := fun ρ => ((zetaZeros hs).mult ρ : ℂ) * Hfn k ρ with hg
   -- absolute convergence : Hfn k ρ = paperFT k (gammaOf ρ) definitionally
-  have hsum : Summable g := EF_zero_sum_summable hs hk hkc
+  have hsum : Summable g := EF_zero_sum_summable_Zeta23_WeilEF_zero_sum_limit hs hk hkc
   have hmemZ : ∀ j ρ, ρ ∈ Z j ↔ IsNontrivialZero ρ ∧ -R j < ρ.im ∧ ρ.im < R j := by
     intro j ρ
     rw [← Finset.mem_coe, hZ j]

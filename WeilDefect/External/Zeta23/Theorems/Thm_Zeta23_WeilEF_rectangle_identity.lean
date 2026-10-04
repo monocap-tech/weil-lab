@@ -158,12 +158,12 @@ end Rectangle
 
 
 @[simp]
-theorem preimage_equivRealProdCLM_reProdIm_rpb108Local (s t : Set ℝ) :
+theorem preimage_equivRealProdCLM_reProdIm_rpb108Local_Zeta23_WeilEF_rectangle_identity (s t : Set ℝ) :
     equivRealProdCLM.symm ⁻¹' (s ×ℂ t) = s ×ˢ t :=
   rfl
 
 @[simp]
-theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm_rpb108Local {R : Type*} {S : Type*} [Semiring R]
+theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm_rpb108Local_Zeta23_WeilEF_rectangle_identity {R : Type*} {S : Type*} [Semiring R]
     [Semiring S] {σ : R →+* S} {σ' : S →+* R} [RingHomInvPair σ σ'] [RingHomInvPair σ' σ]
     (M : Type*) [TopologicalSpace M]
     [AddCommMonoid M] {M₂ : Type*} [TopologicalSpace M₂] [AddCommMonoid M₂] [Module R M]
@@ -196,7 +196,7 @@ lemma rectangleBorder_subset_rectangle_rpb108Local (z w : ℂ) : RectangleBorder
 
 
 
-lemma rectangle_mem_nhds_iff_rpb108Local {z w p : ℂ} :
+lemma rectangle_mem_nhds_iff_rpb108Local_Zeta23_WeilEF_rectangle_identity {z w p : ℂ} :
     Rectangle z w ∈ 𝓝 p ↔ p ∈ (Set.uIoo z.re w.re) ×ℂ (Set.uIoo z.im w.im) := by
   simp_rw [← mem_interior_iff_mem_nhds, Rectangle, Complex.interior_reProdIm, uIoo, uIcc,
     interior_Icc]
@@ -264,22 +264,22 @@ lemma completedRiemannZeta_eq_Gammaℝ_mul {s : ℂ} (hs : s ≠ 0) (hG : Gamma�
   rw [riemannZeta_def_of_ne_zero hs]
   field_simp
 
-lemma completedRiemannZeta_eq_zero_iff_of_re_pos {s : ℂ} (hs : 0 < s.re) :
+lemma completedRiemannZeta_eq_zero_iff_of_re_pos_Zeta23_WeilEF_rectangle_identity {s : ℂ} (hs : 0 < s.re) :
     completedRiemannZeta s = 0 ↔ riemannZeta s = 0 := by
   have h0 : s ≠ 0 := fun h => by simp [h] at hs
   have hG := Gammaℝ_ne_zero_of_re_pos hs
   rw [completedRiemannZeta_eq_Gammaℝ_mul h0 hG, mul_eq_zero]
   simp [hG]
 
-lemma completedRiemannZeta_ne_zero_of_one_le_re {s : ℂ} (hs : 1 ≤ s.re) :
+lemma completedRiemannZeta_ne_zero_of_one_le_re_Zeta23_WeilEF_rectangle_identity {s : ℂ} (hs : 1 ≤ s.re) :
     completedRiemannZeta s ≠ 0 := by
-  rw [Ne, completedRiemannZeta_eq_zero_iff_of_re_pos (by linarith)]
+  rw [Ne, completedRiemannZeta_eq_zero_iff_of_re_pos_Zeta23_WeilEF_rectangle_identity (by linarith)]
   exact riemannZeta_ne_zero_of_one_le_re hs
 
 lemma completedRiemannZeta_ne_zero_of_re_nonpos {s : ℂ} (hs : s.re ≤ 0) :
     completedRiemannZeta s ≠ 0 := by
   rw [← completedRiemannZeta_one_sub]
-  exact completedRiemannZeta_ne_zero_of_one_le_re (by simp; linarith)
+  exact completedRiemannZeta_ne_zero_of_one_le_re_Zeta23_WeilEF_rectangle_identity (by simp; linarith)
 
 
 /-- On the open right half-plane (away from 1) the analytic order of Λ equals zeroMult = the
@@ -382,7 +382,7 @@ theorem Zeta23.WeilEF.rectangle_identity {k : ℝ → ℂ} (hk : ContDiff ℝ 2 
       refine ⟨h1, h2, lt_of_le_of_ne h3 ?_⟩
       intro h
       exact hgood ρ (Or.inl h) (by linarith [h1.2.1]) (by linarith [h1.2.2])
-        ((Zeta23.RvM.completedRiemannZeta_eq_zero_iff_of_re_pos h1.2.1).mpr h1.1)
+        ((Zeta23.RvM.completedRiemannZeta_eq_zero_iff_of_re_pos_Zeta23_WeilEF_rectangle_identity h1.2.1).mpr h1.1)
     · rintro ⟨h1, h2, h3⟩
       exact ⟨h1, h2, h3.le⟩
   refine ⟨Z, hZcoe, ?_⟩
@@ -401,7 +401,7 @@ theorem Zeta23.WeilEF.rectangle_identity {k : ℝ → ℂ} (hk : ContDiff ℝ 2 
       exact lt_irrefl _ h2
   have hPint : ∀ p ∈ P, Rectangle z w ∈ 𝓝 p := by
     intro p hp
-    rw [rectangle_mem_nhds_iff_rpb108Local, Complex.mem_reProdIm, Set.uIoo_of_le hre, Set.uIoo_of_le him,
+    rw [rectangle_mem_nhds_iff_rpb108Local_Zeta23_WeilEF_rectangle_identity, Complex.mem_reProdIm, Set.uIoo_of_le hre, Set.uIoo_of_le him,
       hzre, hzim, hwre, hwim]
     rw [hPdef] at hp
     simp only [Finset.mem_insert, Finset.mem_singleton] at hp
@@ -439,7 +439,7 @@ theorem Zeta23.WeilEF.rectangle_identity {k : ℝ → ℂ} (hk : ContDiff ℝ 2 
     · exact hgood s (Or.inr h') hr1 hr2 h0
     · exact Zeta23.RvM.completedRiemannZeta_ne_zero_of_re_nonpos (by rw [h']; linarith) h0
     · exact hgood s (Or.inl h') hr1 hr2 h0
-    · exact Zeta23.RvM.completedRiemannZeta_ne_zero_of_one_le_re (by rw [h']; linarith) h0
+    · exact Zeta23.RvM.completedRiemannZeta_ne_zero_of_one_le_re_Zeta23_WeilEF_rectangle_identity (by rw [h']; linarith) h0
   have hZchar : ∀ s ∈ Rectangle z w \ (P : Set ℂ), (completedRiemannZeta s = 0 ↔ s ∈ Z) := by
     rintro s ⟨hsrect, hsP⟩
     rw [hPdef] at hsP
@@ -454,15 +454,15 @@ theorem Zeta23.WeilEF.rectangle_identity {k : ℝ → ℂ} (hk : ContDiff ℝ 2 
         exact Zeta23.RvM.completedRiemannZeta_ne_zero_of_re_nonpos (by linarith) h0
       have hrelt : s.re < 1 := by
         by_contra hge
-        exact Zeta23.RvM.completedRiemannZeta_ne_zero_of_one_le_re (by linarith) h0
+        exact Zeta23.RvM.completedRiemannZeta_ne_zero_of_one_le_re_Zeta23_WeilEF_rectangle_identity (by linarith) h0
       have hnz : IsNontrivialZero s :=
-        ⟨(Zeta23.RvM.completedRiemannZeta_eq_zero_iff_of_re_pos hrepos).mp h0, hrepos, hrelt⟩
+        ⟨(Zeta23.RvM.completedRiemannZeta_eq_zero_iff_of_re_pos_Zeta23_WeilEF_rectangle_identity hrepos).mp h0, hrepos, hrelt⟩
       refine ⟨hnz, ?_, hi2⟩
       rcases lt_or_eq_of_le hi1 with h | h
       · exact h
       · exact absurd h0 (hgood s (Or.inr h.symm) hr1 hr2)
     · rintro ⟨h1, _, _⟩
-      exact (Zeta23.RvM.completedRiemannZeta_eq_zero_iff_of_re_pos h1.2.1).mpr h1.1
+      exact (Zeta23.RvM.completedRiemannZeta_eq_zero_iff_of_re_pos_Zeta23_WeilEF_rectangle_identity h1.2.1).mpr h1.1
   have hZsub : (Z : Set ℂ) ⊆ Rectangle z w := by
     intro ρ hρ
     rw [Finset.mem_coe, hZmemiff] at hρ

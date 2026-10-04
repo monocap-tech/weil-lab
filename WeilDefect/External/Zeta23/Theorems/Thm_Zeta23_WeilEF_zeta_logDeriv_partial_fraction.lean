@@ -146,7 +146,7 @@ theorem zeta_growth_quarter :
 
 
 /-- Lower bound at the Jensen disc centre: 0 < 2 − π²/6 ≤ ‖ζ(s)‖ for Re s ≥ 2. -/
-theorem norm_riemannZeta_ge_of_two_le_re {s : ℂ} (hs : 2 ≤ s.re) :
+theorem norm_riemannZeta_ge_of_two_le_re_Zeta23_WeilEF_zeta_logDeriv_partial_fraction {s : ℂ} (hs : 2 ≤ s.re) :
     2 - Real.pi ^ 2 / 6 ≤ ‖riemannZeta s‖ := by
   have h := norm_riemannZeta_sub_one_le hs
   have h' : ‖(1 : ℂ)‖ - ‖1 - riemannZeta s‖ ≤ ‖riemannZeta s‖ := by
@@ -157,15 +157,15 @@ theorem norm_riemannZeta_ge_of_two_le_re {s : ℂ} (hs : 2 ≤ s.re) :
 
 
 /-- 1/3 < 2 − π²/6 (π < 3.15 ⇒ π²/6 < 1.654). -/
-lemma one_third_lt_two_sub_pi_sq_div_six : (1 / 3 : ℝ) < 2 - Real.pi ^ 2 / 6 := by
+lemma one_third_lt_two_sub_pi_sq_div_six_Zeta23_WeilEF_zeta_logDeriv_partial_fraction : (1 / 3 : ℝ) < 2 - Real.pi ^ 2 / 6 := by
   have := Real.pi_lt_d2
   nlinarith [Real.pi_pos]
 
 /-- **Consumer interface.** ‖ζ(2 + it)‖ ≥ 1/3 for all real t. -/
-theorem zeta_lower_bound_two : ∀ t : ℝ, (1 / 3 : ℝ) ≤ ‖riemannZeta (2 + t * I)‖ := by
+theorem zeta_lower_bound_two_Zeta23_WeilEF_zeta_logDeriv_partial_fraction : ∀ t : ℝ, (1 / 3 : ℝ) ≤ ‖riemannZeta (2 + t * I)‖ := by
   intro t
-  have h := norm_riemannZeta_ge_of_two_le_re (s := 2 + t * I) (by simp)
-  linarith [one_third_lt_two_sub_pi_sq_div_six]
+  have h := norm_riemannZeta_ge_of_two_le_re_Zeta23_WeilEF_zeta_logDeriv_partial_fraction (s := 2 + t * I) (by simp)
+  linarith [one_third_lt_two_sub_pi_sq_div_six_Zeta23_WeilEF_zeta_logDeriv_partial_fraction]
 
 
 /-- Upper bound on Re s ≥ 2: ‖ζ(s)‖ ≤ π²/6. -/
@@ -249,7 +249,7 @@ theorem Zeta23.WeilEF.zeta_logDeriv_partial_fraction : ∃ C : ℝ, 0 < C ∧ �
   have hs₀im : s₀.im = t := by simp [hs₀]
   have hζs₀ : riemannZeta s₀ ≠ 0 :=
     riemannZeta_ne_zero_of_one_lt_re (by rw [hs₀re]; norm_num)
-  have hlow : (1/3 : ℝ) ≤ ‖riemannZeta s₀‖ := Zeta23.RvM.zeta_lower_bound_two t
+  have hlow : (1/3 : ℝ) ≤ ‖riemannZeta s₀‖ := Zeta23.RvM.zeta_lower_bound_two_Zeta23_WeilEF_zeta_logDeriv_partial_fraction t
   -- analyticity on the closed ball of radius 91/50
   have hone : (1 : ℂ) ∉ Metric.closedBall s₀ (91/50) := by
     intro h

@@ -161,7 +161,7 @@ open scoped ArithmeticFunction
 
 
 /-- On the line Re s = c: H(c+it) = paperFT (tilt k (c − 1/2)) t. -/
-theorem Hfn_line (k : ℝ → ℂ) (c t : ℝ) :
+theorem Hfn_line_Zeta23_WeilEF_Hfn_mirror (k : ℝ → ℂ) (c t : ℝ) :
     Hfn k (c + t * I) = paperFT (tilt k (c - 1/2)) t := by
   unfold Hfn tilt paperFT
   refine integral_congr_ae (Filter.Eventually.of_forall fun u => ?_)
@@ -226,7 +226,7 @@ open scoped ArithmeticFunction
 
 theorem Zeta23.WeilEF.Hfn_mirror (k : ℝ → ℂ) (c t : ℝ) :
     Hfn k (1 - c - t * I) = Hfn (fun u => k (-u)) ((c:ℂ) + t * I) := by
-  rw [Hfn_line]
+  rw [Hfn_line_Zeta23_WeilEF_Hfn_mirror]
   unfold Hfn tilt paperFT
   conv_rhs => rw [← integral_neg_eq_self]
   refine integral_congr_ae (Filter.Eventually.of_forall fun u => ?_)

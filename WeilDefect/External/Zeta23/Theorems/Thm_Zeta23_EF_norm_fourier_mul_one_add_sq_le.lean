@@ -57,7 +57,7 @@ abstractly.
 
 CONVENTIONS (paper [Notation]).  Paper Fourier transform:
     f̂(τ) = h_f(τ) := ∫_ℝ f(u) e^{iτu} du,   inversion  f(u) = (1/2π) ∫_ℝ h_f(r) e^{-iru} dr.
-Mathlib: 𝓕 f w = ∫ v, exp(-2πi v w) • f v.  Dictionary (proved below, `paperFT_ofReal_eq_fourier`):
+Mathlib: 𝓕 f w = ∫ v, exp(-2πi v w) • f v.  Dictionary (proved below, `paperFT_ofReal_eq_fourier_Zeta23_EF_norm_fourier_mul_one_add_sq_le`):
     h_f(τ) = 𝓕 f (-τ/(2π)).
 -/
 
@@ -89,7 +89,7 @@ namespace EF
 /-! ## ℂ-specialised integral helpers
 
 (In this toolchain `rw [← integral_const_mul]` fails to key-match on ℂ-valued integrals because the
-RCLike-generic lemma elaborates `Mul ℂ`/`NormedAddCommGroup ℂ` through a different instance path than
+RCLike-generic lemma elaborates_Zeta23_EF_norm_fourier_mul_one_add_sq_le `Mul ℂ`/`NormedAddCommGroup ℂ` through a different instance path than
 a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `rw` usable.) -/
 
 
@@ -98,7 +98,7 @@ a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `
 /-! ## Dictionary with Mathlib's Fourier transform -/
 
 /-- `h_k(τ) = 𝓕 k (−τ/(2π))` for real τ. -/
-theorem paperFT_ofReal_eq_fourier (k : ℝ → ℂ) (τ : ℝ) :
+theorem paperFT_ofReal_eq_fourier_Zeta23_EF_norm_fourier_mul_one_add_sq_le (k : ℝ → ℂ) (τ : ℝ) :
     paperFT k τ = 𝓕 k (-τ / (2 * π)) := by
   rw [Real.fourier_real_eq_integral_exp_smul]
   unfold paperFT
@@ -275,7 +275,7 @@ theorem Zeta23.EF.norm_fourier_mul_one_add_sq_le {k : ℝ → ℂ} (hk : ContDif
   have hkc : HasCompactSupport k := Zeta23.hasCompactSupport_of_support_subset_abs_rpb108Local hΛ
   have hki : Integrable k := hk.continuous.integrable_of_hasCompactSupport hkc
   have hdict : 𝓕 k w = paperFT k ((-(2 * π * w) : ℝ) : ℂ) := by
-    rw [paperFT_ofReal_eq_fourier]; field_simp
+    rw [paperFT_ofReal_eq_fourier_Zeta23_EF_norm_fourier_mul_one_add_sq_le]; field_simp
   have h1 := Zeta23.norm_paperFT_le hki hΛ ((-(2 * π * w) : ℝ) : ℂ)
   have h2 := Zeta23.norm_paperFT_mul_sq_le hk hΛ ((-(2 * π * w) : ℝ) : ℂ)
   simp only [Complex.ofReal_im, abs_zero, zero_mul, Real.exp_zero, one_mul, Complex.norm_real,

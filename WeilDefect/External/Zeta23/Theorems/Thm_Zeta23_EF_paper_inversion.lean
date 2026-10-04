@@ -46,7 +46,7 @@ abstractly.
 
 CONVENTIONS (paper [Notation]).  Paper Fourier transform:
     f̂(τ) = h_f(τ) := ∫_ℝ f(u) e^{iτu} du,   inversion  f(u) = (1/2π) ∫_ℝ h_f(r) e^{-iru} dr.
-Mathlib: 𝓕 f w = ∫ v, exp(-2πi v w) • f v.  Dictionary (proved below, `paperFT_ofReal_eq_fourier`):
+Mathlib: 𝓕 f w = ∫ v, exp(-2πi v w) • f v.  Dictionary (proved below, `paperFT_ofReal_eq_fourier_Zeta23_EF_paper_inversion`):
     h_f(τ) = 𝓕 f (-τ/(2π)).
 -/
 
@@ -78,7 +78,7 @@ namespace EF
 /-! ## ℂ-specialised integral helpers
 
 (In this toolchain `rw [← integral_const_mul]` fails to key-match on ℂ-valued integrals because the
-RCLike-generic lemma elaborates `Mul ℂ`/`NormedAddCommGroup ℂ` through a different instance path than
+RCLike-generic lemma elaborates_Zeta23_EF_paper_inversion `Mul ℂ`/`NormedAddCommGroup ℂ` through a different instance path than
 a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `rw` usable.) -/
 
 
@@ -87,7 +87,7 @@ a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `
 /-! ## Dictionary with Mathlib's Fourier transform -/
 
 /-- `h_k(τ) = 𝓕 k (−τ/(2π))` for real τ. -/
-theorem paperFT_ofReal_eq_fourier (k : ℝ → ℂ) (τ : ℝ) :
+theorem paperFT_ofReal_eq_fourier_Zeta23_EF_paper_inversion (k : ℝ → ℂ) (τ : ℝ) :
     paperFT k τ = 𝓕 k (-τ / (2 * π)) := by
   rw [Real.fourier_real_eq_integral_exp_smul]
   unfold paperFT
@@ -168,7 +168,7 @@ theorem Zeta23.EF.paper_inversion {k : ℝ → ℂ} (hk : Continuous k) (hki : I
   have key : (fun r : ℝ => paperFT k r * cexp (-I * r * u))
       = fun r => (fun v : ℝ => 𝓕 k v * cexp (2 * π * I * v * u)) ((-(1 / (2 * π))) * r) := by
     ext r
-    rw [paperFT_ofReal_eq_fourier, show -(1 / (2 * π)) * r = -r / (2 * π) by ring]
+    rw [paperFT_ofReal_eq_fourier_Zeta23_EF_paper_inversion, show -(1 / (2 * π)) * r = -r / (2 * π) by ring]
     congr 1
     push_cast
     field_simp

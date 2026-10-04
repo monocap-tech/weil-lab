@@ -145,7 +145,7 @@ for logDeriv, zeros in the strip = nontrivial zeros of ζ with equal analytic or
 
 Mathlib normalization (verified): for s ≠ 0, riemannZeta s = completedRiemannZeta s / Gammaℝ s
 (riemannZeta_def_of_ne_zero) and Gammaℝ s ≠ 0 for 0 < Re s (Gammaℝ_ne_zero_of_re_pos); hence on the
-open right half-plane Λ = Γℝ · ζ on the nose (completedZeta_eventuallyEq_mul) — no pole bookkeeping is
+open right half-plane Λ = Γℝ · ζ on the nose (completedZeta_eventuallyEq_mul_Zeta23_WeilEF_integrable_Fline) — no pole bookkeeping is
 needed for the three statements below (Λ's poles at 0, 1 are excluded by hypothesis).
 -/
 
@@ -159,7 +159,7 @@ open Complex Filter Topology
 
 
 /-- On the right half-plane, Λ = Γℝ · ζ (as germs). -/
-lemma completedZeta_eventuallyEq_mul {s : ℂ} (hs : 0 < s.re) :
+lemma completedZeta_eventuallyEq_mul_Zeta23_WeilEF_integrable_Fline {s : ℂ} (hs : 0 < s.re) :
     completedRiemannZeta =ᶠ[𝓝 s] fun u => Gammaℝ u * riemannZeta u := by
   have hopen : IsOpen {u : ℂ | 0 < u.re} := isOpen_lt continuous_const Complex.continuous_re
   filter_upwards [hopen.mem_nhds hs] with u hu
@@ -170,10 +170,10 @@ lemma completedZeta_eventuallyEq_mul {s : ℂ} (hs : 0 < s.re) :
 
 
 /-- On the right half-plane away from 1 and from the zeros of ζ:  Λ'/Λ = Γℝ'/Γℝ + ζ'/ζ. -/
-theorem logDeriv_completedZeta (s : ℂ) (hs1 : s ≠ 1)
+theorem logDeriv_completedZeta_Zeta23_WeilEF_integrable_Fline (s : ℂ) (hs1 : s ≠ 1)
     (hζ : riemannZeta s ≠ 0) (hstrip : 0 < s.re) :
     logDeriv completedRiemannZeta s = logDeriv Complex.Gammaℝ s + logDeriv riemannZeta s := by
-  have hev := completedZeta_eventuallyEq_mul hstrip
+  have hev := completedZeta_eventuallyEq_mul_Zeta23_WeilEF_integrable_Fline hstrip
   have heq : logDeriv completedRiemannZeta s = logDeriv (fun u => Gammaℝ u * riemannZeta u) s := by
     rw [logDeriv_apply, logDeriv_apply, hev.deriv_eq, hev.eq_of_nhds]
   rw [heq]
@@ -218,7 +218,7 @@ section Majorants
 
 
 /-- `H` is continuous along vertical lines (indeed paperFT k is entire). -/
-theorem continuous_Hfn_line {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) (σ : ℝ) :
+theorem continuous_Hfn_line_Zeta23_WeilEF_integrable_Fline {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) (σ : ℝ) :
     Continuous (fun t : ℝ => Hfn k ((σ : ℂ) + t * I)) := by
   have h := (differentiable_paperFT hk.continuous hkc).continuous
   unfold Hfn
@@ -227,7 +227,7 @@ theorem continuous_Hfn_line {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : Has
 
 
 /-- generic: a continuous `φ` with `‖φ(t)‖ ≤ C/(1+t²)` times `ζ'/ζ(c+it)` is integrable. -/
-theorem integrable_mul_logDeriv_zeta_of_decay {φ : ℝ → ℂ} (hφc : Continuous φ) {C : ℝ}
+theorem integrable_mul_logDeriv_zeta_of_decay_Zeta23_WeilEF_integrable_Fline {φ : ℝ → ℂ} (hφc : Continuous φ) {C : ℝ}
     (hφ : ∀ t, ‖φ t‖ ≤ C / (1 + t ^ 2)) {c : ℝ} (hc1 : 1 < c) :
     Integrable (fun t : ℝ => φ t * logDeriv riemannZeta ((c : ℂ) + t * I)) := by
   obtain ⟨M, hM0, hM⟩ := norm_logDeriv_zeta_le_of_one_lt_re hc1
@@ -262,23 +262,23 @@ section Verticals
 variable {k : ℝ → ℂ}
 
 
-theorem one_sub_cast (c t : ℝ) : (1 : ℂ) - c - t * I = ((1 - c : ℝ) : ℂ) + ((-t : ℝ) : ℂ) * I := by
+theorem one_sub_cast_Zeta23_WeilEF_integrable_Fline (c t : ℝ) : (1 : ℂ) - c - t * I = ((1 - c : ℝ) : ℂ) + ((-t : ℝ) : ℂ) * I := by
   push_cast; ring
 
 /-- continuity of the reflected weight `t ↦ H(1 − c − it)` (= `H((1−c) + i(−t))`). -/
-theorem continuous_Hfn_reflect {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) (c : ℝ) :
+theorem continuous_Hfn_reflect_Zeta23_WeilEF_integrable_Fline {k : ℝ → ℂ} (hk : ContDiff ℝ 2 k) (hkc : HasCompactSupport k) (c : ℝ) :
     Continuous (fun t : ℝ => Hfn k (1 - c - t * I)) := by
   have : (fun t : ℝ => Hfn k (1 - c - t * I))
       = (fun t : ℝ => Hfn k (((1 - c : ℝ) : ℂ) + t * I)) ∘ fun t : ℝ => -t := by
-    funext t; simp only [Function.comp_apply, one_sub_cast]
-  rw [this]; exact (continuous_Hfn_line hk hkc (1 - c)).comp continuous_neg
+    funext t; simp only [Function.comp_apply, one_sub_cast_Zeta23_WeilEF_integrable_Fline]
+  rw [this]; exact (continuous_Hfn_line_Zeta23_WeilEF_integrable_Fline hk hkc (1 - c)).comp continuous_neg
 
 /-- on `re = c > 1`: `Λ'/Λ = Γℝ'/Γℝ + ζ'/ζ`. -/
-theorem logDeriv_completedZeta_line {c : ℝ} (hc1 : 1 < c) (t : ℝ) :
+theorem logDeriv_completedZeta_line_Zeta23_WeilEF_integrable_Fline {c : ℝ} (hc1 : 1 < c) (t : ℝ) :
     logDeriv completedRiemannZeta ((c : ℂ) + t * I)
       = logDeriv Complex.Gammaℝ ((c : ℂ) + t * I) + logDeriv riemannZeta ((c : ℂ) + t * I) := by
   have hre : ((c : ℂ) + t * I).re = c := by simp
-  refine logDeriv_completedZeta _ ?_ ?_ (by rw [hre]; linarith)
+  refine logDeriv_completedZeta_Zeta23_WeilEF_integrable_Fline _ ?_ ?_ (by rw [hre]; linarith)
   · intro h; have := congrArg Complex.re h; simp at this; linarith
   · exact riemannZeta_ne_zero_of_one_lt_re (by rw [hre]; exact hc1)
 
@@ -300,19 +300,19 @@ theorem Zeta23.WeilEF.integrable_Fline (hk : ContDiff ℝ 2 k) (hkc : HasCompact
     (hc1 : 1 < c) (hc2 : c ≤ 3 / 2) : Integrable (Fline k c) := by
   obtain ⟨C, hC0, hC⟩ := norm_Hfn_le hk hkc
   set φ : ℝ → ℂ := fun t => Hfn k ((c : ℂ) + t * I) + Hfn k (1 - c - t * I) with hφ
-  have hφc : Continuous φ := (continuous_Hfn_line hk hkc c).add (continuous_Hfn_reflect hk hkc c)
+  have hφc : Continuous φ := (continuous_Hfn_line_Zeta23_WeilEF_integrable_Fline hk hkc c).add (continuous_Hfn_reflect_Zeta23_WeilEF_integrable_Fline hk hkc c)
   have hφb : ∀ t, ‖φ t‖ ≤ (2 * C) / (1 + t ^ 2) := by
     intro t
     have h1 := hC c t (by linarith) (by linarith)
     have h2 := hC (1 - c) (-t) (by linarith) (by linarith)
-    rw [← one_sub_cast] at h2
+    rw [← one_sub_cast_Zeta23_WeilEF_integrable_Fline] at h2
     rw [neg_sq] at h2
     calc ‖φ t‖ ≤ ‖Hfn k ((c : ℂ) + t * I)‖ + ‖Hfn k (1 - c - t * I)‖ := norm_add_le _ _
       _ ≤ C / (1 + t ^ 2) + C / (1 + t ^ 2) := add_le_add h1 h2
       _ = (2 * C) / (1 + t ^ 2) := by ring
   have hΓ := integrable_mul_logDeriv_GammaR_of_decay hφc (by positivity) hφb
     (by linarith : (1:ℝ) / 2 ≤ c) hc2
-  have hζ := integrable_mul_logDeriv_zeta_of_decay hφc hφb hc1
+  have hζ := integrable_mul_logDeriv_zeta_of_decay_Zeta23_WeilEF_integrable_Fline hφc hφb hc1
   refine (hΓ.add hζ).congr (Eventually.of_forall fun t => ?_)
-  simp only [Fline, hφ, logDeriv_completedZeta_line hc1 t, Pi.add_apply]
+  simp only [Fline, hφ, logDeriv_completedZeta_line_Zeta23_WeilEF_integrable_Fline hc1 t, Pi.add_apply]
   ring

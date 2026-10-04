@@ -158,7 +158,7 @@ by parts (`h_f(z) = (iz)⁻² ∫ f''(u) e^{izu} du` and `|e^{izu}| = e^{−yu} 
 
 
 /-- [eq:hfbound] in the paper's form for `z ≠ 0`: `‖h_f(z)‖ ≤ e^{|Im z|Λ} ‖f''‖₁ / ‖z‖²`. -/
-theorem norm_paperFT_le_div {f : ℝ → ℂ} {Λ : ℝ} (hf : ContDiff ℝ 2 f)
+theorem norm_paperFT_le_div_Zeta23_WeilEF_EF_zero_sum_summable_gen {f : ℝ → ℂ} {Λ : ℝ} (hf : ContDiff ℝ 2 f)
     (hsupp : ∀ u, f u ≠ 0 → |u| ≤ Λ) {z : ℂ} (hz : z ≠ 0) :
     ‖paperFT f z‖ ≤ Real.exp (|z.im| * Λ) * (∫ u, ‖deriv (deriv f) u‖) / ‖z‖ ^ 2 := by
   rw [le_div_iff₀ (by positivity)]
@@ -263,7 +263,7 @@ theorem Zeta23.WeilEF.EF_zero_sum_summable_gen (Z : ZeroConfig) {A₀ : ℝ} (hA
   have hz0 : gammaOf (ρ : ℂ) ≠ 0 := fun h => by rw [h, norm_zero] at hz1; linarith
   have hstrip := Z.strip _ hρmem
   have himγ : |(gammaOf (ρ : ℂ)).im| ≤ 1 / 2 := abs_gammaOf_im_le hstrip
-  have hFT := norm_paperFT_le_div hk hsupp hz0
+  have hFT := norm_paperFT_le_div_Zeta23_WeilEF_EF_zero_sum_summable_gen hk hsupp hz0
   have hΛ0 : 0 ≤ Λ := le_max_right _ _
   -- assemble
   rw [norm_mul, Complex.norm_natCast]
