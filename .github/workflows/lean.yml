@@ -36,14 +36,14 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-distinct-observation-rigidity-verified-v1
+          key: rpb108-actual-offline-background-verified-v1
           restore-keys: |
+            rpb108-actual-distinct-observation-rigidity-verified-v1
             rpb108-actual-supported-absorption-verified-v1
             rpb108-actual-native-envelope-obstruction-verified-v1
             rpb108-actual-native-symbol-sign-verified-v1
             rpb108-actual-background-gram-tests-verified-v1
             rpb108-actual-background-finite-tests-verified-v1
-            rpb108-actual-carrier-factorization-verified-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
@@ -54,23 +54,23 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual distinct observation rigidity
+      - name: Compile actual off-line background reduction
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaDistinctObservationRigidity
+          lake build WeilDefect.Arithmetic.ActualZetaOfflineBackground
           lake build WeilDefect
-      - name: Audit actual distinct observation rigidity
+      - name: Audit actual off-line background reduction
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaDistinctObservationRigidity
-          #print axioms WeilDefect.neutralActualZetaOrdinate_injective
-          #print axioms WeilDefect.neutralActualZetaSourceFrequency_injective
-          #print axioms WeilDefect.neutralActualZetaDivisorOrdinate_eq_iff_point
-          #print axioms WeilDefect.neutralActualZetaValueObservations_zero_iff_points
-          #print axioms WeilDefect.neutralActualZetaFiniteSourceModes_independent
+          import WeilDefect.Arithmetic.ActualZetaOfflineBackground
+          #print axioms WeilDefect.neutralActualZetaOrdinate_conj_eq_of_critical
+          #print axioms WeilDefect.neutralActualZetaNegativeSource_zero_of_critical
+          #print axioms WeilDefect.neutralActualZetaNegativeAnalysis_zero_of_critical
+          #print axioms WeilDefect.neutralActualZetaBackgroundNegative_coordinate
+          #print axioms WeilDefect.neutralActualZetaBackgroundNegative_zero_iff_offline
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -89,4 +89,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-distinct-observation-rigidity-verified-v1
+          key: rpb108-actual-offline-background-verified-v1
