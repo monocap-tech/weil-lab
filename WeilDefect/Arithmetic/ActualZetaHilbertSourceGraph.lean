@@ -155,6 +155,7 @@ theorem neutralActualZetaHilbertSourceOperator_diagonal (a : ℝ)
   simp only [inner_self_eq_norm_sq_to_K, neutralActualZetaSourceQuadratic,
     neutralActualZetaHilbertPositiveAnalysis, neutralActualZetaHilbertNegativeAnalysis,
     comp_apply, Complex.ofReal_sub, Complex.ofReal_pow]
+  rfl
 
 theorem neutralActualZetaHilbertBackgroundOperator_diagonal (a : ℝ)
     (s : Finset NeutralActualZetaDivisorCoordinate)
@@ -166,6 +167,7 @@ theorem neutralActualZetaHilbertBackgroundOperator_diagonal (a : ℝ)
   simp only [inner_self_eq_norm_sq_to_K, neutralActualZetaEffectiveBackgroundQuadratic,
     neutralActualZetaHilbertPositiveAnalysis, neutralActualZetaHilbertBackgroundAnalysis,
     comp_apply, Complex.ofReal_sub, Complex.ofReal_pow]
+  rfl
 
 /-- Every certified Green source lift enters the equivalent Hilbert graph
 without changing any source or physical coordinate. -/
