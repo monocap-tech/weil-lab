@@ -36,8 +36,9 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-source-graph-verified-v1
+          key: rpb108-actual-selected-background-verified-v1
           restore-keys: |
+            rpb108-actual-source-graph-verified-v1
             rpb108-retained-unit-gain-custody-verified-v1
             rpb108-actual-native-source-attachment-verified-v1
             rpb108-actual-native-weil-form-verified-v1
@@ -51,24 +52,30 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual source graph
+      - name: Compile actual selected background
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaSourceGraph
+          lake build WeilDefect.Arithmetic.ActualZetaSelectedBackground
           lake build WeilDefect
-      - name: Audit actual source graph
+      - name: Audit actual selected background
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaSourceGraph
-          #print axioms WeilDefect.neutralActualZetaSourceGraph_isClosed
-          #print axioms WeilDefect.neutralActualZetaSourceDomain_complete
-          #print axioms WeilDefect.neutralActualZetaSourceAnalysis_sampling
-          #print axioms WeilDefect.neutralActualZetaSourceAnalysis_norm_le
-          #print axioms WeilDefect.neutralActualZetaGreenSourceLift_physical
-          #print axioms WeilDefect.neutralActualZetaGreenSourceLift_energy
+          import WeilDefect.Arithmetic.ActualZetaSelectedBackground
+          #print axioms WeilDefect.neutralActualZetaSelectedProjection_apply
+          #print axioms WeilDefect.neutralActualZetaSelectedProjection_coordinate
+          #print axioms WeilDefect.neutralActualZetaSelectedProjection_norm_sq
+          #print axioms WeilDefect.neutralActualZetaCoefficient_selected_background_energy
+          #print axioms WeilDefect.neutralActualZetaCoefficient_projections_norm_le
+          #print axioms WeilDefect.neutralActualZetaSourceNormalization_norm_sq
+          #print axioms WeilDefect.neutralActualZetaNegativeAnalysis_selected_background
+          #print axioms WeilDefect.neutralActualZetaNegativeAnalysis_selected_background_energy
+          #print axioms WeilDefect.neutralActualZetaSelectedNegativeAnalysis_energy
+          #print axioms WeilDefect.neutralActualZetaEffectiveBackgroundQuadratic_add_selected
+          #print axioms WeilDefect.neutralActualZetaGreenSourceQuadratic_eq_zeroForm
+          #print axioms WeilDefect.neutralActualZetaGreenEffectiveBackground_native
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -87,4 +94,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-source-graph-verified-v1
+          key: rpb108-actual-selected-background-verified-v1
