@@ -20,8 +20,7 @@ private theorem actualWindow_compactColumn (a : ℝ) (z : ℂ) (g : ℝ → ℂ)
   rw [← integral_indicator measurableSet_Icc, ← integral_indicator measurableSet_Icc]
   apply integral_congr_ae
   filter_upwards [hg.coeFn_toLp] with x hx
-  rw [hx]
-  by_cases hmem : x ∈ Set.Icc (-a) a <;> simp [hmem]
+  by_cases hmem : x ∈ Set.Icc (-a) a <;> simp [hmem, hx]
 
 /-- Dirichlet endpoint cancellation gives the exact raw-evaluation derivative relation. -/
 theorem neutralActualZetaGreenColumn_windowDerivative (a : ℝ) (ha : 0 < a)
@@ -33,7 +32,7 @@ theorem neutralActualZetaGreenColumn_windowDerivative (a : ℝ) (ha : 0 < a)
   have hg : ContDiff ℝ 2 g := contDiff_dirichletProblemOneColumn a w
   have he (x : ℝ) : HasDerivAt e (Complex.I * z * e x) x := by
     simpa [e, mul_comm] using
-      (((Complex.hasDerivAt_ofReal x).const_mul (Complex.I * z)).cexp)
+      (((Complex.ofRealCLM.hasDerivAt (x := x)).const_mul (Complex.I * z)).cexp)
   have hc : Continuous e := by unfold e; fun_prop
   have hd : Continuous (deriv g) := hg.continuous_deriv (by norm_num)
   have h1 : IntervalIntegrable (fun x => (Complex.I * z * e x) * g x)
@@ -60,15 +59,13 @@ theorem neutralActualZetaGreenColumn_windowDerivative (a : ℝ) (ha : 0 < a)
   have heq' : (fun x => e x * deriv g x) = (fun x => deriv g x * e x) := by
     funext x; ring
   rw [heq'] at hs
-  change Complex.I * z *
-      neutralWindowEvaluation a z
-        ((neutralDirichletGreenColumn_memLp a w).toLp
-          ((Set.Icc (-a) a).indicator (dirichletProblemOneColumn a w))) = _
-  rw [actualWindow_compactColumn]
-  change _ = -neutralWindowEvaluation a z
-    ((neutralDirichletGradientColumn_memLp a w).toLp
-      ((Set.Icc (-a) a).indicator (deriv (dirichletProblemOneColumn a w))))
-  rw [actualWindow_compactColumn]
+  have hG : neutralWindowEvaluation a z (neutralDirichletGreenColumnL2 a w) =
+      ∫ x in Set.Icc (-a) a, g x * e x :=
+    actualWindow_compactColumn a z g (neutralDirichletGreenColumn_memLp a w)
+  have hD : neutralWindowEvaluation a z (neutralDirichletGradientColumnL2 a w) =
+      ∫ x in Set.Icc (-a) a, deriv g x * e x :=
+    actualWindow_compactColumn a z (deriv g) (neutralDirichletGradientColumn_memLp a w)
+  rw [hG, hD]
   linear_combination hs
 
 /-- Raw evaluation of the convergent actual synthesis obeys the same derivative identity. -/
@@ -85,7 +82,9 @@ theorem neutralActualZetaGreenSynthesis_windowDerivative (a : ℝ) (ha : 0 < a)
     (neutralActualZetaDivisorOrdinate q) z
   rw [neutralWindowEvaluation_eq_inner, neutralWindowEvaluation_eq_inner] at h
   change Complex.I * z * (v q * inner ℂ (neutralExponentialColumnL2 a (conj z))
-      (neutralDirichletGreenColumnL2 a (neutralActualZetaDivisorOrdinate q))) = _
+      (neutralDirichletGreenColumnL2 a (neutralActualZetaDivisorOrdinate q))) =
+    -(v q * inner ℂ (neutralExponentialColumnL2 a (conj z))
+      (neutralDirichletGradientColumnL2 a (neutralActualZetaDivisorOrdinate q)))
   linear_combination v q * h
 
 /-- Uniform raw-column norm bound on the closed zeta ordinate strip. -/
@@ -113,7 +112,7 @@ theorem neutralExponentialColumnL2_sq_bound (a : ℝ) (ha : 0 < a) (z : ℂ)
       ((neutralExponentialColumn_memLp a z).toLp (neutralExponentialColumn a z) x) = _
     rw [hx]
     by_cases hmem : x ∈ Set.Icc (-a) a <;>
-      simp [neutralExponentialColumn, g, hmem, RCLike.inner_apply', mul_comm]
+      simp [neutralExponentialColumn, g, hmem, RCLike.inner_apply', mul_comm, Complex.mul_conj]
   have he : ‖neutralExponentialColumnL2 a z‖ ^ 2 =
       ‖∫ x in -a..a, conj (g x) * g x‖ := by
     rw [intervalIntegral.integral_of_le (by linarith : -a ≤ a),
