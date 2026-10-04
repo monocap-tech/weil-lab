@@ -2414,3 +2414,21 @@ RPB-106 / WD-T40 F-4 ACTUAL EXT-4 POLE EXPONENTIAL-GROWTH INSTANTIATION
 ~~~
 
 The RPB-100 Gaussian-admissibility source layer is now build-certified. RPB-102 closes the carrier-side regularity burden: compact support alone makes every polynomial moment integrable, and the Fourier transform of the carrier is smooth and temperate. The actual moving filtered mode is build-certified as a SchwartzMap and pointwise identified with the existing physical convolution. An explicit compactly supported Schwartz cutoff sequence now converges to it in the full Schwartz topology. Residual cutoff convergence is closed, and pole cutoff convergence is closed conditional on the explicit pole-growth carrier. The only remaining RPB-100 Gaussian-admissibility burden is actual EXT-4 pole-growth instantiation. The logarithmic coercivity inequality and F-5 strip holomorphy remain closed.
+
+
+### RPB-108: actual cumulative logarithmic divisor growth (2026-10-04 UTC)
+
+The actual theta/Mellin factorial majorant now yields
+`N_div(T) ≤ K (|T|+1) log(|T|+2)` with multiplicity, for one fixed positive
+constant and every real T. The natural moment order is
+`ceil(2(|T|+2))`. No supplied zero-count, RH, or spectral-domain premise.
+
+Exact candidate `e4cb8257202cfa97b016cd40686d78cffda6d8e7` passed [run 37165989953](https://github.com/monocap-tech/weil-lab/actions/runs/37165989953), job `111328860324`. The isolated logarithmic-growth module and full `lake build WeilDefect` passed (9,008 and 9,052 jobs). All three theorem audits report only `[propext, Classical.choice, Quot.sound]`; the unfinished/project-axiom gate passed. Source is promoted separately from validation workflow/dependency-manifest changes. The workflow cache fallback list was repaired to respect GitHub's maximum of ten keys, and PR/push concurrency was unified.
+
+Next cursor: local unit-height multiplicity and bounded logarithmic-domain
+sampling, then infinite full-divisor sampling and Weil-form transport.
+WD-T38 source/null attachment, enlarged central cancellation, background
+completion and F-4 remain open. SOURCE traversal stays off the critical path;
+threshold stays closed; spectral L2 remains unproved/unassumed; RH remains open.
+
+See [logarithmic growth and recovered residue](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LOG_GROWTH_20261004.md).

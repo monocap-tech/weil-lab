@@ -48,8 +48,7 @@ spectral L2 membership remains unproved and unassumed. RH remains open.
 
 ## Validation
 
-Pending exact-candidate Lean build, full-project build, and axiom audit.
-No new theorem is certified until those checks pass.
+Exact candidate `e4cb8257202cfa97b016cd40686d78cffda6d8e7` passed [run 37165989953](https://github.com/monocap-tech/weil-lab/actions/runs/37165989953), job `111328860324`. The isolated logarithmic-growth module and full `lake build WeilDefect` passed (9,008 and 9,052 jobs). All three theorem audits report only `[propext, Classical.choice, Quot.sound]`; the unfinished/project-axiom gate passed. Source is promoted separately from validation workflow/dependency-manifest changes. The workflow cache fallback list was repaired to respect GitHub's maximum of ten keys, and PR/push concurrency was unified.
 
 ## Next cursor
 

@@ -1673,3 +1673,21 @@ gate passed. Source and root import are promoted without the validation workflow
 
 The validation runner retained compiled dependencies under
 `rpb108-theta-growth-verified-compiled-v1` for the next bounded proof chunk.
+
+
+### RPB-108: actual cumulative logarithmic divisor growth (2026-10-04 UTC)
+
+The actual theta/Mellin factorial majorant now yields
+`N_div(T) ≤ K (|T|+1) log(|T|+2)` with multiplicity, for one fixed positive
+constant and every real T. The natural moment order is
+`ceil(2(|T|+2))`. No supplied zero-count, RH, or spectral-domain premise.
+
+Exact candidate `e4cb8257202cfa97b016cd40686d78cffda6d8e7` passed [run 37165989953](https://github.com/monocap-tech/weil-lab/actions/runs/37165989953), job `111328860324`. The isolated logarithmic-growth module and full `lake build WeilDefect` passed (9,008 and 9,052 jobs). All three theorem audits report only `[propext, Classical.choice, Quot.sound]`; the unfinished/project-axiom gate passed. Source is promoted separately from validation workflow/dependency-manifest changes. The workflow cache fallback list was repaired to respect GitHub's maximum of ten keys, and PR/push concurrency was unified.
+
+Next cursor: local unit-height multiplicity and bounded logarithmic-domain
+sampling, then infinite full-divisor sampling and Weil-form transport.
+WD-T38 source/null attachment, enlarged central cancellation, background
+completion and F-4 remain open. SOURCE traversal stays off the critical path;
+threshold stays closed; spectral L2 remains unproved/unassumed; RH remains open.
+
+See [logarithmic growth and recovered residue](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LOG_GROWTH_20261004.md).

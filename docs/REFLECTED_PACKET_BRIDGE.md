@@ -1085,3 +1085,21 @@ See [actual Mellin representation and envelope](../notes/REFLECTED_PACKET_BRIDGE
 Exact candidate `4fc7534156b635a6c2c1ff5841398d0642e496a7` passed [run 37162369635](https://github.com/monocap-tech/weil-lab/actions/runs/37162369635), job `111318270964`. The isolated representation, factorial envelope and full `lake build WeilDefect` passed (3,206, 9,007 and 9,051 jobs). All eleven new theorem audits report only `[propext, Classical.choice, Quot.sound]`. The unfinished/project-axiom gate passed.
 
 The theorem source, root imports, terminology and proof notes are promoted separately from the validation workflow and validation dependency manifest. The runner saved the full compiled project/dependency tree and its root manifest under `rpb108-mellin-manifest-final-v1`. Reuse draft PR #35 and the existing validation branch for the next bounded scalar-growth chunk, synchronizing the promoted head before further import changes.
+
+
+### RPB-108: actual cumulative logarithmic divisor growth (2026-10-04 UTC)
+
+The actual theta/Mellin factorial majorant now yields
+`N_div(T) ≤ K (|T|+1) log(|T|+2)` with multiplicity, for one fixed positive
+constant and every real T. The natural moment order is
+`ceil(2(|T|+2))`. No supplied zero-count, RH, or spectral-domain premise.
+
+Exact candidate `e4cb8257202cfa97b016cd40686d78cffda6d8e7` passed [run 37165989953](https://github.com/monocap-tech/weil-lab/actions/runs/37165989953), job `111328860324`. The isolated logarithmic-growth module and full `lake build WeilDefect` passed (9,008 and 9,052 jobs). All three theorem audits report only `[propext, Classical.choice, Quot.sound]`; the unfinished/project-axiom gate passed. Source is promoted separately from validation workflow/dependency-manifest changes. The workflow cache fallback list was repaired to respect GitHub's maximum of ten keys, and PR/push concurrency was unified.
+
+Next cursor: local unit-height multiplicity and bounded logarithmic-domain
+sampling, then infinite full-divisor sampling and Weil-form transport.
+WD-T38 source/null attachment, enlarged central cancellation, background
+completion and F-4 remain open. SOURCE traversal stays off the critical path;
+threshold stays closed; spectral L2 remains unproved/unassumed; RH remains open.
+
+See [logarithmic growth and recovered residue](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LOG_GROWTH_20261004.md).
