@@ -18,12 +18,12 @@ theorem neutralActualZetaSourcePhysical_injective (a : ℝ) :
   · exact h
   · apply Prod.ext
     · apply lp.ext
-      intro q
+      funext q
       exact (f.property q).1.trans ((congrArg
         (fun x => inner ℂ (neutralLogPositivePairSource a
           (neutralActualZetaDivisorOrdinate q)) x) h).trans (g.property q).1.symm)
     · apply lp.ext
-      intro q
+      funext q
       exact (f.property q).2.trans ((congrArg
         (fun x => inner ℂ (neutralLogNegativePairSource a
           (neutralActualZetaDivisorOrdinate q)) x) h).trans (g.property q).2.symm)
@@ -55,7 +55,7 @@ theorem neutralActualZetaGreenSynthesis_smul (a : ℝ) (ha : 0 < a)
     (c : ℂ) (v : NeutralActualZetaGreenCoefficients) :
     neutralActualZetaGreenSynthesis a (c • v) = c • neutralActualZetaGreenSynthesis a v := by
   unfold neutralActualZetaGreenSynthesis
-  simp only [lp.coeFn_smul, Pi.smul_apply, smul_smul]
+  simp only [lp.coeFn_smul, Pi.smul_apply, smul_eq_mul, ← smul_smul]
   exact Summable.tsum_const_smul c (neutralActualZetaGreenSeries_summable a ha v)
 
 /-- Actual canonical Green attachment is linear on the full coefficient
