@@ -36,8 +36,9 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-native-form-operator-verified-v1
+          key: rpb108-actual-green-graph-closure-verified-v1
           restore-keys: |
+            rpb108-actual-native-form-operator-verified-v1
             rpb108-actual-canonical-native-energy-verified-v1
             rpb108-actual-native-log-bounds-verified-v1
             rpb108-actual-hilbert-source-graph-verified-v1
@@ -56,31 +57,25 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual native form operator
+      - name: Compile actual Green graph closure
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaNativeFormOperator
+          lake build WeilDefect.Arithmetic.ActualZetaGreenGraphClosure
           lake build WeilDefect
-      - name: Audit actual native form operator
+      - name: Audit actual Green graph closure
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaNativeFormOperator
-          #print axioms WeilDefect.neutralActualZetaLogSymbolRatio_measurable
-          #print axioms WeilDefect.neutralActualZetaLogSymbolRatio_bound
-          #print axioms WeilDefect.neutralActualZetaLogSymbolMultiplication_coe
-          #print axioms WeilDefect.neutralActualZetaLogSymbolMultiplication_norm_le
-          #print axioms WeilDefect.neutralActualZetaLogMultiplierOperator_mixed
-          #print axioms WeilDefect.neutralActualZetaLogMultiplierOperator_diagonal
-          #print axioms WeilDefect.neutralActualZetaLogWeilFormOperator_mixed
-          #print axioms WeilDefect.neutralActualZetaLogWeilFormOperator_diagonal
-          #print axioms WeilDefect.neutralActualZetaLogWeilFormOperator_mixed_bound
-          #print axioms WeilDefect.neutralActualZetaLogWeilFormOperator_garding
-          #print axioms WeilDefect.neutralActualZetaGreenZeroForm_native_operator
-          #print axioms WeilDefect.neutralActualZetaGreenSourceForms_native_operator
-          #print axioms WeilDefect.neutralActualZetaGreenHilbertSource_native_operator_diagonal
+          import WeilDefect.Arithmetic.ActualZetaGreenGraphClosure
+          #print axioms WeilDefect.neutralActualZetaGreenHilbertSourcePhysical
+          #print axioms WeilDefect.neutralActualZetaGreenGraphClosure_isClosed
+          #print axioms WeilDefect.neutralActualZetaGreenHilbertSourceLift_mem_closure
+          #print axioms WeilDefect.neutralActualZetaGreenGraphClosure_diagonal
+          #print axioms WeilDefect.neutralActualZetaGreenGraphClosure_source_quadratic
+          #print axioms WeilDefect.neutralActualZetaGreenGraphClosure_garding
+          #print axioms WeilDefect.neutralActualZetaGreenGraphClosure_source_abs_le
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -99,4 +94,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-native-form-operator-verified-v1
+          key: rpb108-actual-green-graph-closure-verified-v1
