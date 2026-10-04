@@ -36,8 +36,9 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-prime-transport-verified-v1
+          key: rpb108-actual-archimedean-coordinates-verified-v1
           restore-keys: |
+            rpb108-actual-prime-transport-verified-v1
             rpb108-actual-literal-formula-verified-v1
             rpb108-ef-closure-port-verified-v1
             rpb108-actual-correlation-inverse-attachment-verified-v1
@@ -46,7 +47,6 @@ jobs:
             rpb108-actual-correlation-poles-verified-v1
             rpb108-actual-correlation-transform-verified-v1
             rpb108-actual-source-decomposition-verified-v1
-            rpb108-actual-weil-zero-verified-v1
       - name: Resolve pinned dependencies
         env:
           MATHLIB_NO_CACHE_ON_UPDATE: "1"
@@ -57,25 +57,24 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual prime transport
+      - name: Compile actual archimedean coordinates
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaPrimeTransport
+          lake build WeilDefect.Arithmetic.ActualZetaArchimedeanCoordinates
           lake build WeilDefect
-      - name: Audit actual prime transport
+      - name: Audit actual archimedean coordinates
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaPrimeTransport
-          #print axioms WeilDefect.neutralActualZetaGreenPrimeSummand_zero
-          #print axioms WeilDefect.neutralActualZetaGreenPrimeSummand_summable
-          #print axioms WeilDefect.neutralActualZetaGreenPrimeForm_finite
-          #print axioms WeilDefect.neutralActualZetaGreenCorrelationInverse_spectral
-          #print axioms WeilDefect.neutralActualZetaGreenCorrelationInverse_pair_spectral
-          #print axioms WeilDefect.neutralActualZetaGreenPrimeSummand_spectral
-          #print axioms WeilDefect.neutralActualZetaGreenPrimeForm_spectral
+          import WeilDefect.Arithmetic.ActualZetaArchimedeanCoordinates
+          #print axioms WeilDefect.neutralActualZetaGreenCorrelationInverse_fourier_ae
+          #print axioms WeilDefect.neutralActualZetaGreenCorrelationInverse_fourier_integrable
+          #print axioms WeilDefect.neutralActualZetaGreenCorrelationInverse_raw_spectrum_ae
+          #print axioms WeilDefect.neutralActualZetaGammaBracket_even
+          #print axioms WeilDefect.neutralActualZetaGammaBracket_native
+          #print axioms WeilDefect.neutralActualZetaGammaBracket_mathlib
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -94,4 +93,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-prime-transport-verified-v1
+          key: rpb108-actual-archimedean-coordinates-verified-v1
