@@ -191,3 +191,5 @@ import WeilDefect.Arithmetic.ActualZetaNativeSourceAttachment
 import WeilDefect.Arithmetic.ActualZetaSourceGraph
 
 import WeilDefect.Arithmetic.ActualZetaSelectedBackground
+
+import WeilDefect.Arithmetic.ActualZetaHilbertSourceGraph
