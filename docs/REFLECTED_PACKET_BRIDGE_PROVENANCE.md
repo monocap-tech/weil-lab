@@ -1745,3 +1745,38 @@ WD-T38 source/null attachment, central cancellation, background completion
 and F-4 remain open. Earlier residue is preserved. SOURCE stays off the
 critical path; threshold remains closed; retained-mode spectral L²/operator
 domain membership is unproved and unassumed. RH remains open.
+
+
+## RPB-108 actual inverse-square divisor tails and Green energy — 2026-10-04 UTC
+
+The dyadic divisor band n is defined by Nat.log 2 (floor(abs(Im rho))+1)=n,
+including every analytic multiplicity copy. Its heights obey 2^n<=1+h
+and h<2^(n+1). The quadratic weight is 1/(1+h)^2.
+Actual cumulative logarithmic growth yields band cardinality <=A(n+2)2^n;
+the weighted band totals are bounded by A(n+2)2^(-n).
+The actual full-divisor quadratic weight is therefore unconditionally summable.
+
+Reciprocal Green coefficients are absolutely summable using this weight
+outside a finite low-height window. Actual open-strip nonresonance identifies
+the concrete Green energy with gradient norm² plus one quarter value norm².
+These energies and the gradient norm squares are summable over the actual
+multiplicity divisor. Every actual lp² coefficient family has convergent
+physical gradient synthesis, with HasSum and an inner-product identity.
+This removes the external shell-count premise for this convergence result.
+
+Definitions:
+[actual dyadic and Green energy terminology](TERMINOLOGY_RPB108_ACTUAL_GREEN_ENERGY.md).
+Proof and validation:
+[actual Green energy note](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_GREEN_ENERGY_20261004.md).
+
+Exact candidate `754179202aeaf6b5964d94cec2f3bbec439c0c1c` passed [run 37169148911](https://github.com/monocap-tech/weil-lab/actions/runs/37169148911), job `111338364233`: isolated module 9,016 jobs; full `lake build WeilDefect` 9,056 jobs. All fourteen theorem audits report only `[propext, Classical.choice, Quot.sound]`. The unfinished/project-axiom gate passed. Certified source and imports are promoted separately from the validation workflow and dependency manifest.
+
+Next cursor: attach the convergent value/gradient pair by its weak derivative
+identity and support to the canonical supported logarithmic form domain,
+then return to the retained WD-T38 source/null witness.
+Separate component convergence alone does not prove that attachment.
+Raw exponential sampling and sharp unit-band logarithmic density remain open.
+WD-T38 source/null attachment, central cancellation, background completion
+and F-4 remain open. Earlier residue is preserved. SOURCE remains off the
+critical path; threshold remains closed. Retained-mode spectral L²/operator
+domain membership is unproved and unassumed. RH remains open.
