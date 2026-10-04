@@ -63,8 +63,9 @@ theorem observationMap_dense (A : D →L[ℂ] E) : DenseRange (observationMap A)
       exact ⟨f, rfl⟩
     · rintro ⟨f, rfl⟩
       exact ⟨observationMap A f, Set.mem_range_self f, rfl⟩
-  rw [hi]
-  exact y.property
+  change (y : E) ∈ closure (((↑) : ObservationCarrier A → E) ''
+    Set.range (observationMap A))
+  exact (congrArg (fun t : Set E => (y : E) ∈ closure t) hi).mpr y.property
 
 /-- Quotienting positive observational redundancy preserves the original
 covariance on every same-domain vector. The physical domain is not changed. -/
@@ -234,7 +235,7 @@ theorem domination_gives_wdt10_factor (A : D →L[ℂ] E) (B : D →L[ℂ] F)
     simpa only [comp_neg, neg_neg] using hadj
   refine ⟨-T†, hx, hfac, ?_⟩
   simpa only [adjoint_adjoint] using
-    WDT10.wd_t10_background_covariance_elimination ((observationMap A)†) B† (-T†) hx hfac
+    WDT10.wd_t10_background_covariance_elimination ((observationMap A)†) (B†) (-T†) hx hfac
 
 /-- Kernel inclusion alone cannot buy a unit background budget. -/
 theorem kernel_inclusion_not_domination :
