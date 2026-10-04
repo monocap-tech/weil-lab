@@ -36,8 +36,9 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-green-graph-mixed-verified-v1
+          key: rpb108-actual-green-closed-subspace-verified-v1
           restore-keys: |
+            rpb108-actual-green-graph-mixed-verified-v1
             rpb108-actual-green-graph-closure-verified-v1
             rpb108-actual-native-form-operator-verified-v1
             rpb108-actual-canonical-native-energy-verified-v1
@@ -58,22 +59,27 @@ jobs:
           if [ ! -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/NumberTheory/LSeries/RiemannZeta.olean ]; then
             lake exe cache get
           fi
-      - name: Compile actual Green graph mixed form
+      - name: Compile actual Green closed subspace
         shell: bash
         run: |
           git rev-parse HEAD
           lean --version
-          lake build WeilDefect.Arithmetic.ActualZetaGreenGraphMixed
+          lake build WeilDefect.Arithmetic.ActualZetaGreenClosedSubspace
           lake build WeilDefect
-      - name: Audit actual Green graph mixed form
+      - name: Audit actual Green closed subspace
         shell: bash
         run: |
           cat > /tmp/rpb108-ef-audit.lean <<'LEAN'
-          import WeilDefect.Arithmetic.ActualZetaGreenGraphMixed
-          #print axioms WeilDefect.neutralActualZetaGreenSourceLift_mixed_coordinates
-          #print axioms WeilDefect.neutralActualZetaGreenHilbertSource_native_operator_mixed
-          #print axioms WeilDefect.neutralActualZetaGreenGraphClosure_mixed
-          #print axioms WeilDefect.neutralActualZetaGreenGraphClosure_mixed_bound
+          import WeilDefect.Arithmetic.ActualZetaGreenClosedSubspace
+          #print axioms WeilDefect.neutralActualZetaSourcePhysical_injective
+          #print axioms WeilDefect.neutralActualZetaHilbertSourcePhysical_injective
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_add
+          #print axioms WeilDefect.neutralActualZetaGreenSynthesis_smul
+          #print axioms WeilDefect.neutralActualZetaGreenClosedSubmodule_coe
+          #print axioms WeilDefect.neutralActualZetaGreenGraphClosure_add_mem
+          #print axioms WeilDefect.neutralActualZetaGreenGraphClosure_smul_mem
+          #print axioms WeilDefect.neutralActualZetaGreenGraphDomain_completeSpace
+          #print axioms WeilDefect.neutralActualZetaGreenGraphDomain_mixed
           LEAN
           lake env lean /tmp/rpb108-ef-audit.lean | tee /tmp/rpb108-ef-axioms.txt
           if grep -q 'sorryAx' /tmp/rpb108-ef-axioms.txt; then exit 1; fi
@@ -92,4 +98,4 @@ jobs:
           path: |
             .lake
             lake-manifest.json
-          key: rpb108-actual-green-graph-mixed-verified-v1
+          key: rpb108-actual-green-closed-subspace-verified-v1
