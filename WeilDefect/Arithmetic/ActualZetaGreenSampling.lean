@@ -79,8 +79,7 @@ theorem neutralActualZetaGreenColumn_sq_bound (a : ℝ) (ha : 0 < a)
         dirichletProblemOneColumn a z x‖ := by
     rw [intervalIntegral.integral_of_le (by linarith : -a ≤ a),
       ← integral_Icc_eq_integral_Ioc, ← neutralDirichletGreenColumnL2_mixed]
-    rw [inner_self_eq_norm_sq_to_K, norm_pow, Complex.norm_real, Real.norm_eq_abs,
-      abs_of_nonneg (norm_nonneg _)]
+    rw [inner_self_eq_norm_sq_to_K (𝕜 := ℂ), norm_pow, RCLike.norm_ofReal, abs_norm]
     rfl
   rw [he]
   convert hi using 1 <;> ring
