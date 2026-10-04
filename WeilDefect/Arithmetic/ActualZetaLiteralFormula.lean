@@ -97,7 +97,9 @@ theorem neutralActualZetaGreenZeroForm_arithmetic
       neutralActualZetaGreenPrimeForm a v w + neutralActualZetaGreenArchimedeanForm a v w := by
   rw [← neutralActualZetaGreenCorrelationInverse_poleOperator a ha v w]
   simpa only [Zeta23.EF.literatureRHS, neutralActualZetaGreenPrimeForm,
-    neutralActualZetaGreenArchimedeanForm, neutralRawTransform_eq_paperFT] using
+    neutralActualZetaGreenArchimedeanForm, neutralRawTransform_eq_paperFT,
+    Complex.ofReal_div, Complex.ofReal_one, Complex.ofReal_ofNat,
+    Complex.ofReal_neg, mul_div_assoc, mul_one, mul_neg, neg_div] using
       neutralActualZetaGreenZeroForm_literature a ha v w
 
 end
