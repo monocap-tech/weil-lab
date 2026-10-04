@@ -62,15 +62,15 @@ not match ℂ's default instance path under `rw`; cf. Zeta23.integral_const_mul_
 /-! ### Elementary bounds for points in the right half-plane -/
 
 
-private theorem re_add_pos {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : 0 < ((x : ℂ) + w).re := by
+private theorem re_add_pos_rpb108Local {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : 0 < ((x : ℂ) + w).re := by
   simp; linarith
 
 theorem add_mem_slitPlane {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) :
     (x : ℂ) + w ∈ Complex.slitPlane :=
-  Complex.mem_slitPlane_iff.mpr (Or.inl (re_add_pos hw hx))
+  Complex.mem_slitPlane_iff.mpr (Or.inl (re_add_pos_rpb108Local hw hx))
 
-private theorem add_ne_zero {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : (x : ℂ) + w ≠ 0 :=
-  fun h => by have := re_add_pos hw hx; rw [h] at this; simp at this
+private theorem add_ne_zero_rpb108Local {w : ℂ} (hw : 0 < w.re) {x : ℝ} (hx : 0 ≤ x) : (x : ℂ) + w ≠ 0 :=
+  fun h => by have := re_add_pos_rpb108Local hw hx; rw [h] at this; simp at this
 
 /-! ### The antiderivative `F(x) = log(x + w)` on `[0, ∞)` -/
 
@@ -90,7 +90,7 @@ theorem integral_inv_add_eq_log_sub {w : ℂ} (hw : 0 < w.re) {m : ℝ} (hm : 0 
     apply ContinuousOn.inv₀ (by fun_prop)
     intro x hx
     rw [uIcc_of_le (by linarith)] at hx
-    exact add_ne_zero hw (by linarith [hx.1])
+    exact add_ne_zero_rpb108Local hw (by linarith [hx.1])
   rw [integral_eq_sub_of_hasDerivAt (f := fun y : ℝ => Complex.log ((y : ℂ) + w))
     (fun x hx => by
       rw [uIcc_of_le (by linarith)] at hx

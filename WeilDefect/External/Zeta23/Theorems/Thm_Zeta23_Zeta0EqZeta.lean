@@ -348,7 +348,7 @@ lemma ZetaSum_aux1 {a b : ℕ} {s : ℂ} (s_ne_one : s ≠ 1) (s_ne_zero : s ≠
 
 
 
-private lemma ZetaSum_aux1_3 (x : ℝ) : ‖(⌊x⌋ + 1/2 - x)‖ ≤ 1/2 :=
+private lemma ZetaSum_aux1_3_rpb108Local (x : ℝ) : ‖(⌊x⌋ + 1/2 - x)‖ ≤ 1/2 :=
   abs_le.mpr ⟨(by linarith [Int.lt_floor_add_one x]), (by linarith [Int.floor_le x])⟩
 
 
@@ -392,8 +392,8 @@ lemma Complex.cpow_inv_tendsto {s : ℂ} (hs : 0 < s.re) :
   apply Filter.Tendsto.inv_tendsto_atTop
   exact (tendsto_rpow_atTop hs).comp tendsto_natCast_atTop_atTop
 
-private lemma ZetaSum_aux2a : ∃ C, ∀ (x : ℝ), ‖⌊x⌋ + 1 / 2 - x‖ ≤ C := by
-  use 1 / 2; exact ZetaSum_aux1_3
+private lemma ZetaSum_aux2a_rpb108Local : ∃ C, ∀ (x : ℝ), ‖⌊x⌋ + 1 / 2 - x‖ ≤ C := by
+  use 1 / 2; exact ZetaSum_aux1_3_rpb108Local
 
 lemma ZetaSum_aux3 {N : ℕ} {s : ℂ} (s_re_gt : 1 < s.re) :
     Tendsto (fun k ↦ ∑ n ∈ Finset.Ioc N k, 1 / (n : ℂ) ^ s) atTop
@@ -407,10 +407,10 @@ lemma ZetaSum_aux3 {N : ℕ} {s : ℂ} (s_re_gt : 1 < s.re) :
   · congr; ext n; simp only [one_div, Nat.cast_add, Nat.cast_one, f]
   · rwa [summable_nat_add_iff (k := 1)]
 
-private lemma integrableOn_of_Zeta0_fun {N : ℕ} (N_pos : 0 < N) {s : ℂ} (s_re_gt : 0 < s.re) :
+private lemma integrableOn_of_Zeta0_fun_rpb108Local {N : ℕ} (N_pos : 0 < N) {s : ℂ} (s_re_gt : 0 < s.re) :
     MeasureTheory.IntegrableOn (fun (x : ℝ) ↦ (⌊x⌋ + 1 / 2 - x) * (x : ℂ) ^ (-(s + 1))) (Ioi N)
     MeasureTheory.volume := by
-  obtain ⟨c, hc⟩ := ZetaSum_aux2a
+  obtain ⟨c, hc⟩ := ZetaSum_aux2a_rpb108Local
   apply MeasureTheory.Integrable.bdd_mul (c := c) ?_ ?_
   · apply MeasureTheory.ae_of_all
     convert hc; simp only [← Complex.norm_real]; simp
@@ -445,7 +445,7 @@ lemma ZetaSum_aux2 {N : ℕ} (N_pos : 0 < N) {s : ℂ} (s_re_gt : 1 < s.re) :
     · simp_rw [mul_comm_div, one_mul, one_div, cpow_neg]; exact tendsto_const_nhds
     · exact MeasureTheory.intervalIntegral_tendsto_integral_Ioi (a := N)
         (b := (fun (n : ℕ) ↦ (n : ℝ)))
-        (integrableOn_of_Zeta0_fun N_pos <| by positivity) tendsto_natCast_atTop_atTop
+        (integrableOn_of_Zeta0_fun_rpb108Local N_pos <| by positivity) tendsto_natCast_atTop_atTop
 
 
 

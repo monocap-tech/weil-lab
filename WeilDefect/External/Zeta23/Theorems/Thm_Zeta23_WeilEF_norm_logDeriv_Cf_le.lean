@@ -270,7 +270,7 @@ theorem Zeta23.WeilEF.norm_logDeriv_Cf_le {f : ℂ → ℂ} {B : ℝ}
         _ ≤ ‖w - ρ‖ := norm_sub_norm_le w ρ
     have hprod_lb : ((2/25 : ℝ)) ^ K ≤ ‖∏ ρ ∈ hfinr34.toFinset, (w - ρ) ^ analyticOrderNatAt f ρ‖ := by
       rw [norm_prod, hK, ← Finset.prod_pow_eq_pow_sum]
-      refine Finset.prod_le_prod (fun ρ _ => by positivity) (fun ρ hρ => ?_)
+      refine Finset.prod_le_prod₀ (fun ρ _ => by positivity) (fun ρ hρ => ?_)
       rw [norm_pow]
       exact pow_le_pow_left₀ (by norm_num) (hdist ρ hρ) _
     unfold Cf
@@ -305,7 +305,7 @@ theorem Zeta23.WeilEF.norm_logDeriv_Cf_le {f : ℂ → ℂ} {B : ℝ}
     rw [dif_pos hfinr34, dif_neg h0mem, norm_div, hf0, norm_one]
     rw [le_div_iff₀]
     · rw [one_mul, norm_prod]
-      refine Finset.prod_le_one (fun ρ _ => by positivity) (fun ρ hρ => ?_)
+      refine Finset.prod_le_one₀ (fun ρ _ => by positivity) (fun ρ hρ => ?_)
       have hρ' := hfinr34.mem_toFinset.mp hρ
       rw [norm_pow]
       refine pow_le_one₀ (norm_nonneg _) ?_

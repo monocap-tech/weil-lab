@@ -211,7 +211,7 @@ by parts (`h_f(z) = (iz)⁻² ∫ f''(u) e^{izu} du` and `|e^{izu}| = e^{−yu} 
 
 
 
-private theorem hasCompactSupport_of_support_subset_abs {E : Type*} [Zero E] {f : ℝ → E} {Λ : ℝ}
+private theorem hasCompactSupport_of_support_subset_abs_rpb108Local {E : Type*} [Zero E] {f : ℝ → E} {Λ : ℝ}
     (hsupp : ∀ u, f u ≠ 0 → |u| ≤ Λ) : HasCompactSupport f := by
   refine HasCompactSupport.of_support_subset_isCompact (isCompact_Icc (a := -Λ) (b := Λ)) ?_
   intro u hu
@@ -272,7 +272,7 @@ theorem Zeta23.EF.norm_fourier_mul_one_add_sq_le {k : ℝ → ℂ} (hk : ContDif
     (hΛ : ∀ u, k u ≠ 0 → |u| ≤ Λ) (w : ℝ) :
     ‖𝓕 k w‖ * (1 + w ^ 2)
       ≤ (∫ u, ‖k u‖) + (∫ u, ‖deriv (deriv k) u‖) / (4 * π ^ 2) := by
-  have hkc : HasCompactSupport k := Zeta23.hasCompactSupport_of_support_subset_abs hΛ
+  have hkc : HasCompactSupport k := Zeta23.hasCompactSupport_of_support_subset_abs_rpb108Local hΛ
   have hki : Integrable k := hk.continuous.integrable_of_hasCompactSupport hkc
   have hdict : 𝓕 k w = paperFT k ((-(2 * π * w) : ℝ) : ℂ) := by
     rw [paperFT_ofReal_eq_fourier]; field_simp

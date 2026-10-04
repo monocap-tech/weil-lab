@@ -54,12 +54,12 @@ end Rectangle
 
 
 @[simp]
-private theorem preimage_equivRealProdCLM_reProdIm (s t : Set ℝ) :
+private theorem preimage_equivRealProdCLM_reProdIm_rpb108Local (s t : Set ℝ) :
     equivRealProdCLM.symm ⁻¹' (s ×ℂ t) = s ×ˢ t :=
   rfl
 
 @[simp]
-private theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm {R : Type*} {S : Type*} [Semiring R]
+private theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm_rpb108Local {R : Type*} {S : Type*} [Semiring R]
     [Semiring S] {σ : R →+* S} {σ' : S →+* R} [RingHomInvPair σ σ'] [RingHomInvPair σ' σ]
     (M : Type*) [TopologicalSpace M]
     [AddCommMonoid M] {M₂ : Type*} [TopologicalSpace M₂] [AddCommMonoid M₂] [Module R M]
@@ -85,7 +85,7 @@ private theorem ContinuousLinearEquiv.coe_toLinearEquiv_symm {R : Type*} {S : Ty
 
 
 
-private lemma rectangle_mem_nhds_iff {z w p : ℂ} :
+private lemma rectangle_mem_nhds_iff_rpb108Local {z w p : ℂ} :
     Rectangle z w ∈ 𝓝 p ↔ p ∈ (Set.uIoo z.re w.re) ×ℂ (Set.uIoo z.im w.im) := by
   simp_rw [← mem_interior_iff_mem_nhds, Rectangle, Complex.interior_reProdIm, uIoo, uIcc,
     interior_Icc]
@@ -180,7 +180,7 @@ theorem Zeta23.Analytic.rectangleIntegralPrime_mul_logDeriv_of_poles {f g : ℂ 
     have h2' : z.im ≤ ρ.im ∧ ρ.im ≤ w.im := by simpa [uIcc_of_le him] using h2
     simp only [RectangleBorder, mem_union, mem_reProdIm, mem_singleton_iff, not_or] at hρB
     obtain ⟨⟨⟨hb1, hb2⟩, hb3⟩, hb4⟩ := hρB
-    rw [rectangle_mem_nhds_iff, mem_reProdIm, uIoo_of_le hre, uIoo_of_le him]
+    rw [rectangle_mem_nhds_iff_rpb108Local, mem_reProdIm, uIoo_of_le hre, uIoo_of_le him]
     refine ⟨⟨lt_of_le_of_ne h1'.1 (fun h => hb2 ⟨h.symm, h2⟩),
       lt_of_le_of_ne h1'.2 (fun h => hb4 ⟨h, h2⟩)⟩,
       ⟨lt_of_le_of_ne h2'.1 (fun h => hb1 ⟨h1, h.symm⟩),

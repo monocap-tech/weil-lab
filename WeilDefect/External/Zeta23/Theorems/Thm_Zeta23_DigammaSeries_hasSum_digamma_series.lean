@@ -61,7 +61,7 @@ namespace DigammaSeries
 open Complex Filter Topology
 
 
-private lemma one_add_wTerm (n : ℕ) (z : ℂ) :
+private lemma one_add_wTerm_rpb108Local (n : ℕ) (z : ℂ) :
     1 + wTerm n z = (1 + z / (n + 1)) * Complex.exp (-(z / (n + 1))) := by
   unfold wTerm
   ring
@@ -129,7 +129,7 @@ theorem Zeta23.DigammaSeries.hasSum_digamma_series {z : ℂ} (hz : z ∈ Complex
       have := Complex.integerComplement_add_ne_zero hz ((n : ℤ) + 1)
       push_cast at this ⊢
       convert this using 2
-    simp only [one_add_wTerm]
+    simp only [one_add_wTerm_rpb108Local]
     apply mul_ne_zero _ (Complex.exp_ne_zero _)
     intro h
     apply hzn

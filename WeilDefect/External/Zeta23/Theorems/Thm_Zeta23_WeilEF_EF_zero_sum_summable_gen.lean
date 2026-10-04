@@ -183,14 +183,14 @@ open Complex Set Filter MeasureTheory
 
 /-! ### γ_ρ bookkeeping -/
 
-private lemma gammaOf_re (ρ : ℂ) : (gammaOf ρ).re = ρ.im := by
+private lemma gammaOf_re_rpb108Local (ρ : ℂ) : (gammaOf ρ).re = ρ.im := by
   simp [gammaOf, Complex.div_I]
 
 lemma gammaOf_im (ρ : ℂ) : (gammaOf ρ).im = 1 / 2 - ρ.re := by
   simp [gammaOf, Complex.div_I]
 
 lemma abs_im_le_norm_gammaOf (ρ : ℂ) : |ρ.im| ≤ ‖gammaOf ρ‖ := by
-  rw [← gammaOf_re]; exact Complex.abs_re_le_norm _
+  rw [← gammaOf_re_rpb108Local]; exact Complex.abs_re_le_norm _
 
 
 /-- For a point of the closed strip, |Im γ_ρ| ≤ 1/2. -/
