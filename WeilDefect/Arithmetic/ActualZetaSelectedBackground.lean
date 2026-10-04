@@ -5,6 +5,7 @@ noncomputable section
 open InnerProductSpace MeasureTheory FourierTransform
 open scoped FourierTransform ComplexConjugate ENNReal BigOperators
 set_option maxHeartbeats 800000
+local instance : DecidableEq NeutralActualZetaDivisorCoordinate := Classical.decEq _
 
 /-- Finite selection of actual multiplicity coordinates, without an orbit
 quotient or repeated-channel convention. -/
@@ -13,8 +14,8 @@ def neutralActualZetaSelectedProjection
     NeutralActualZetaGreenCoefficients →L[ℂ] NeutralActualZetaGreenCoefficients := by
   classical
   exact ∑ q ∈ s,
-    (lp.singleContinuousLinearMap ℂ 2
-      (fun _ : NeutralActualZetaDivisorCoordinate => ℂ) q).comp
+    (lp.singleContinuousLinearMap ℂ
+      (fun _ : NeutralActualZetaDivisorCoordinate => ℂ) 2 q).comp
       (lp.evalCLM ℂ (fun _ : NeutralActualZetaDivisorCoordinate => ℂ) 2 q)
 
 theorem neutralActualZetaSelectedProjection_apply
