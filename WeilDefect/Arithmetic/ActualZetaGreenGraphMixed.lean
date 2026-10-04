@@ -67,18 +67,28 @@ theorem neutralActualZetaGreenGraphClosure_mixed
         inner ℂ (neutralActualZetaHilbertSourcePhysical a
             (neutralActualZetaGreenHilbertSourceLift a ha v))
           (neutralActualZetaLogWeilFormOperator a (neutralActualZetaHilbertSourcePhysical a g)) := by
-    have hs := continuous_const.inner (𝕜 := ℂ)
-      (neutralActualZetaHilbertSourceOperator a).continuous
-    have hn := continuous_const.inner (𝕜 := ℂ)
-      ((neutralActualZetaLogWeilFormOperator a).continuous.comp
-        (neutralActualZetaHilbertSourcePhysical a).continuous)
+    have hs : Continuous (fun x : NeutralActualZetaHilbertSourceDomain a =>
+        inner ℂ (neutralActualZetaGreenHilbertSourceLift a ha v)
+          (neutralActualZetaHilbertSourceOperator a x)) :=
+      continuous_const.inner (𝕜 := ℂ) (neutralActualZetaHilbertSourceOperator a).continuous
+    have hn : Continuous (fun x : NeutralActualZetaHilbertSourceDomain a =>
+        inner ℂ (neutralActualZetaHilbertSourcePhysical a
+            (neutralActualZetaGreenHilbertSourceLift a ha v))
+          (neutralActualZetaLogWeilFormOperator a (neutralActualZetaHilbertSourcePhysical a x))) :=
+      continuous_const.inner (𝕜 := ℂ)
+        ((neutralActualZetaLogWeilFormOperator a).continuous.comp
+          (neutralActualZetaHilbertSourcePhysical a).continuous)
     have hc := isClosed_eq hs hn
     apply closure_minimal (s := Set.range (neutralActualZetaGreenHilbertSourceLift a ha)) ?_ hc hg
     rintro x ⟨w, rfl⟩
     exact neutralActualZetaGreenHilbertSource_native_operator_mixed a ha v w
-  have hs := continuous_id.inner (𝕜 := ℂ) continuous_const
-  have hn := (neutralActualZetaHilbertSourcePhysical a).continuous.inner (𝕜 := ℂ)
-    continuous_const
+  have hs : Continuous (fun x : NeutralActualZetaHilbertSourceDomain a =>
+      inner ℂ x (neutralActualZetaHilbertSourceOperator a g)) :=
+    continuous_id.inner (𝕜 := ℂ) continuous_const
+  have hn : Continuous (fun x : NeutralActualZetaHilbertSourceDomain a =>
+      inner ℂ (neutralActualZetaHilbertSourcePhysical a x)
+        (neutralActualZetaLogWeilFormOperator a (neutralActualZetaHilbertSourcePhysical a g))) :=
+    (neutralActualZetaHilbertSourcePhysical a).continuous.inner (𝕜 := ℂ) continuous_const
   have hc := isClosed_eq hs hn
   apply closure_minimal (s := Set.range (neutralActualZetaGreenHilbertSourceLift a ha)) ?_ hc hf
   rintro x ⟨v, rfl⟩
