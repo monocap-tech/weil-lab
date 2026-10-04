@@ -20,8 +20,11 @@ theorem neutralActualZetaGreenSynthesis_partner_sq_summable (a : ℝ) (ha : 0 < 
         (neutralActualZetaGreenSynthesis a v)‖ ^ 2) := by
   have h := neutralActualZetaDivisorPairEquiv.summable_iff.mpr
     (neutralActualZetaGreenSynthesis_window_sq_summable a ha v)
-  simpa only [Function.comp_apply, neutralActualZetaDivisorPairEquiv,
-    Equiv.coe_fn_mk, neutralActualZetaDivisorOrdinate_pair] using h
+  change Summable (fun q : NeutralActualZetaDivisorCoordinate =>
+    ‖neutralWindowEvaluation a
+      (neutralActualZetaDivisorOrdinate (neutralActualZetaDivisorPair q))
+      (neutralActualZetaGreenSynthesis a v)‖ ^ 2) at h
+  simpa only [neutralActualZetaDivisorOrdinate_pair] using h
 
 /-- The Weil zero-side pairing, with the partner in the first slot, converges
 absolutely for the constructed Green vectors. No critical-line assumption occurs. -/
@@ -68,9 +71,19 @@ theorem neutralActualZetaGreenZeroForm_hermitian (a : ℝ)
         (neutralActualZetaGreenSynthesis a v))]
   apply tsum_congr
   intro q
-  simp only [neutralActualZetaDivisorPairEquiv, Equiv.coe_fn_mk,
-    neutralActualZetaDivisorOrdinate_pair, map_mul, starRingEnd_apply, star_star]
-  ring
+  change conj (conj (neutralWindowEvaluation a
+      (conj (neutralActualZetaDivisorOrdinate q)) (neutralActualZetaGreenSynthesis a v)) *
+    neutralWindowEvaluation a (neutralActualZetaDivisorOrdinate q)
+      (neutralActualZetaGreenSynthesis a w)) =
+    conj (neutralWindowEvaluation a
+      (conj (neutralActualZetaDivisorOrdinate (neutralActualZetaDivisorPair q)))
+      (neutralActualZetaGreenSynthesis a w)) *
+    neutralWindowEvaluation a
+      (neutralActualZetaDivisorOrdinate (neutralActualZetaDivisorPair q))
+      (neutralActualZetaGreenSynthesis a v)
+  rw [neutralActualZetaDivisorOrdinate_pair]
+  simp only [map_mul, starRingEnd_apply, star_star]
+  exact mul_comm _ _
 
 /-- The diagonal zero-side value is real; it need not be nonnegative. -/
 theorem neutralActualZetaGreenZeroForm_diagonal_im (a : ℝ)
