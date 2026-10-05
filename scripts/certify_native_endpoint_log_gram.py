@@ -15,26 +15,29 @@ def shifted_legendre(degree):
     return out
 
 
-def exact_log_data():
-    p=shifted_legendre(63)
+def exact_log_data(source_degree=7,projection_dimension=64):
+    if source_degree not in (7,19) or projection_dimension not in (20,64):
+        raise ValueError('Unsupported finite source/projection dimensions')
+    p=shifted_legendre(max(projection_dimension-1,source_degree))
+    maximum_degree=max(projection_dimension-1+source_degree,2*source_degree)
     harmonic=[F(0)]
     harmonic2=[F(0)]
-    for n in range(1,72):
+    for n in range(1,maximum_degree+2):
         harmonic.append(harmonic[-1]+F(1,n))
         harmonic2.append(harmonic2[-1]+F(1,n*n))
-    moments=[(F(1,(k+1)**2)+harmonic[k+1]/(k+1))/2 for k in range(71)]
+    moments=[(F(1,(k+1)**2)+harmonic[k+1]/(k+1))/2 for k in range(maximum_degree+1)]
     projections=[]
-    for n in range(64):
+    for n in range(projection_dimension):
         row=[]
-        for i in range(8):
+        for i in range(source_degree+1):
             product=mul(p[n],p[i])
             row.append(sum((c*moments[k] for k,c in enumerate(product)),F(0)))
         projections.append(row)
     pi=16*atan(F(1,5))-4*atan(F(1,239))
     zeta2=pi*pi/I(6)
-    gram=[[I(0) for _ in range(8)] for _ in range(8)]
-    for i in range(8):
-        for j in range(i,8):
+    gram=[[I(0) for _ in range(source_degree+1)] for _ in range(source_degree+1)]
+    for i in range(source_degree+1):
+        for j in range(i,source_degree+1):
             if (i+j)%2:
                 continue
             product=mul(p[i],p[j])
@@ -47,7 +50,7 @@ def exact_log_data():
                 zeta_coefficient-=c/F(2*n)
             full=I(rational)+zeta_coefficient*zeta2
             projected=sum(((2*n+1)*projections[n][i]*projections[n][j]
-                           for n in range(64)),F(0))
+                           for n in range(projection_dimension)),F(0))
             normalized=(full-projected)*sqrt_rational(F((2*i+1)*(2*j+1)))
             gram[i][j]=gram[j][i]=normalized
     assert max(x.hi-x.lo for row in gram for x in row)<F(1,10**35)
