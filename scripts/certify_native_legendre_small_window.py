@@ -42,10 +42,11 @@ def correlation(p, q):
 
 
 class I:
+    grid = 10**50
     def __init__(self, lo, hi=None):
         lo, hi = F(lo), F(lo if hi is None else hi)
         assert lo <= hi
-        grid = 10**50
+        grid = self.grid
         self.lo = F((lo*grid).__floor__(),grid)
         self.hi = F((hi*grid).__ceil__(),grid)
 
@@ -131,7 +132,7 @@ def sqrt_rational(x):
     return I(F(lower,grid),F(lower+1,grid))
 
 
-def certificate(a=F(1,4)):
+def certificate(a=F(1,4), return_matrix=False):
     if a not in (F(1,4), F(1,2)):
         raise ValueError('Only the two audited apertures are supported')
     degree, N, K = 7, 60, (24 if a == F(1,4) else 40)
@@ -199,6 +200,8 @@ def certificate(a=F(1,4)):
             matrix[i][j] = matrix[j][i] = arch+pole-prime
     width_bound = F(9,10**30) if a == F(1,4) else F(2,10**29)
     assert max(x.hi-x.lo for row in matrix for x in row) < width_bound
+    if return_matrix:
+        return matrix
     pivots = positive_pivots(matrix)
     broken = [row[:] for row in matrix]
     broken[0][0] = I(-1)
