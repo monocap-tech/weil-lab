@@ -3262,3 +3262,10 @@ Coupled actual eight-source residual pilot remains exploratory. Exact rational a
 ## RPB108 exact endpoint-log Gram — 2026-10-05
 
 Analytic moment identities plus exact rational interval execution enclose the eight-source endpoint-log residual Gram, entry widths<1e-35. Projection through degree63 is exact; normalization and parity checks reproduce. Log-separated regularized pilot improves repeat precision, without an actual regular/mixed error bound or Schur sign certificate. No Lean code/proof/CI change; FULL TRANSPORT CLOSED remains open.
+
+
+## RPB108 actual smooth-source enclosure — 2026-10-05
+
+The eight actual degree-0..7 sources at a=1/2, after removing the exact endpoint logarithm, now have explicit rational polynomial approximations on the three exact prime panels. The combined L2 source-map error is certified below 1.30e-30 by Bernoulli/Taylor remainders and outward rational coefficient enclosures. All native pole moments and prime translates use the same trial vectors. Constructor, complete coefficients and proof: `scripts/certify_native_smooth_source.py`, `notes/data/RPB108_SMOOTH_SOURCE_CERTIFICATE_20261005.json`, `notes/REFLECTED_PACKET_BRIDGE_108_SMOOTH_SOURCE_ENCLOSURE_20261005.md`; terminology: `docs/TERMINOLOGY_RPB108_SMOOTH_SOURCE_ENCLOSURE.md`.
+
+Projection contracts the source error; residual Gram error is bounded by eta(2M+eta) once the surrogate residual norm M and its Gram are enclosed. Remaining work is rigorous polynomial/mixed-log integration at the exact prime cutoffs and projection subtraction. The existing floating pilot is not automatically certified. The eight-source Schur sign, other 56 coordinates, global endpoint input, F4 and FULL TRANSPORT CLOSED remain open. Lean checkpoint and CI claims remain unchanged.
