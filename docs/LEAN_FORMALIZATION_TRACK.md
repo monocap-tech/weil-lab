@@ -3237,3 +3237,8 @@ Exact rational shifted-pivot certificate at a=1/2 proves Q(f)>(1/200000)||f||_L2
 ## RPB108 actual Legendre complement — 2026-10-05
 
 Analytic actual-zeta complement theorem at a=1/2: annihilating physical moments through degree 63 gives logarithmic coercivity 9/100 and physical coercivity 1/5. Exact rational script checks constants. Sign, negative index and weak nullity reduce to a 64-dimensional exact Schur form whose coupling/sign remains missing. No new Lean code/proof/CI claim; FULL TRANSPORT CLOSED remains open.
+
+
+## RPB108 actual Schur residual — 2026-10-05
+
+Analytic actual polynomial interior source constructor and residual-to-Schur matrix enclosure S_Z-5R<=S<=S_Z, using proved physical complement coercivity 1/5. Source L2 membership is derived from polynomial Fourier decay and endpoint-log integrability. New constant-source quadrature remains exploratory. No new Lean code/proof/CI claim; corrected full matrix and FULL TRANSPORT CLOSED remain open.
