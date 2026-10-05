@@ -1,0 +1,105 @@
+{
+  "aperture": "3/4",
+  "certificates": [
+    {
+      "path": "notes/data/RPB108_PRIME4_MATRIX48_075_CERTIFICATE_20261005.json",
+      "sha256": "daf3bf08129245e3b9ef3feebd71cb33e2ef739bde206509e16d76113b49bf29",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_SOURCE48_075_CERTIFICATE_20261005.json",
+      "sha256": "0931e27bbffe9cd6e845018568c119abe6ea8f2e1ded04b082884881530309f9",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_COMPLEMENT48_075_CERTIFICATE_20261005.json",
+      "sha256": "ddf6bbc3487ed4f2cb1b49672af62c736a724ec4ab5d27248f0a6bcf774d89ff",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_GRAM48_075_CERTIFICATE_20261005.json",
+      "sha256": "87bd19a59d6d62e72016af8f845a9822ee51b73a7804e1732172c96afc5bea88",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_ACTIVATION_CONTROLS_075_20261005.json",
+      "sha256": "57de524fd940e77338003a3149023d5b3b4b01e8ceed7858d57fcc939616dbf4",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_COMPLEMENT48_075_TIGHT_CERTIFICATE_20261005.json",
+      "sha256": "a24618831c516c0253ea873fd269a7d326f30501f1f8dc9e18c12de721b7ec0b",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_CORRECTED48_075_TIGHT_CERTIFICATE_20261005.json",
+      "sha256": "61db05691c4e9753c82a591a6bb4cff140a21f6ce4e35adac8a1c8a9304f810d",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_COMPLEMENT48_075_SHARP_CERTIFICATE_20261005.json",
+      "sha256": "1a3963ab085a414571a8dc49d80c9c802bb5556844c15c55323ac097122271b3",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_CORRECTED48_075_SHARP_CERTIFICATE_20261005.json",
+      "sha256": "c890a737deed7838647f145038cb8f50be6711003e6412edc7cac60ced34c595",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_COMPLEMENT48_075_FLOOR_CERTIFICATE_20261005.json",
+      "sha256": "7308589939defb82c0ca75ecba239bb693f5a8f35095a71afa5df0dfc3d4e6f4",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_CORRECTED48_075_FLOOR_CERTIFICATE_20261005.json",
+      "sha256": "5c54c2aa171591c59b115b98547d119ab284753ad9d8173585796b69f80c1489",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_COMPLEMENT48_075_LIMIT_CERTIFICATE_20261005.json",
+      "sha256": "f628cf40e43405adb44d4e40db5d95b436f6c78b85d63ea1d7fab9e9fcf7c705",
+      "byte_reproduction_verified": true
+    }
+  ],
+  "physical_dimension": 48,
+  "actual_prime_powers": [
+    2,
+    3,
+    4
+  ],
+  "source_panel_count": 7,
+  "new_exponential_bound": 21,
+  "kernel_bound": 4,
+  "source_exponential_remainder_coefficient": "2",
+  "source_bernoulli_pairs": 48,
+  "regular_source_factors_compared": 7536,
+  "native_source_pairings_passed": 2304,
+  "previous_070_matrix_byte_regression": true,
+  "previous_070_source_byte_regression": true,
+  "quarter_line_euler_maclaurin_order": 2,
+  "archimedean_high_lower": "log(abs(t))-7/(216t^2), abs(t)>=1",
+  "refined_archimedean_low_floor": "-27/5",
+  "earlier_floor10_family_upper": "4763/10000",
+  "earlier_family_is_actual_coercivity_upper": false,
+  "earlier_three_estimator_directions_negative": true,
+  "earlier_negative_estimators_are_actual_negative_witnesses": false,
+  "successful_physical_complement_lower": "12/25",
+  "successful_inverse_factor": "25/12",
+  "corrected_margin": "1/20000000000000000",
+  "lift_norm_upper": 8,
+  "whole_domain_margin": "1/2600000000000000000",
+  "successful_corrected_certificate": "notes/data/RPB108_PRIME4_CORRECTED48_075_FLOOR_CERTIFICATE_20261005.json",
+  "native_negative_control_rejected": true,
+  "corrected_negative_control_rejected": true,
+  "prime4_omission_control_rejected": true,
+  "prime4_double_coefficient_control_rejected": true,
+  "constructor_controls_rejected": true,
+  "whole_domain_positivity": true,
+  "fixed_aperture_unit_domination": true,
+  "actual_negative_witness": false,
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

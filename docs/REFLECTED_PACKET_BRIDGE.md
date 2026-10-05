@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual full-domain sign certified at 7/10 after prime-4 activation, with 48-vector matrix, seven-panel sources, Gram and joint prime-2/prime-4 complement; larger apertures/global endpoint exclusion and retained witness/null transport open; F-4 pending
+**Current cursor:** RPB-108 / actual full-domain sign certified at 3/4 with matching 48-vector matrix, seven-panel sources, full Gram and refined quarter-line complement; earlier floor-10 scalar-family obstruction preserved; larger apertures/global endpoint exclusion and retained witness/null transport open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2181,3 +2181,24 @@ All five certificates reproduce byte-for-byte. The previous a=69/100 matrix and 
 Next: larger apertures with actual prime terms, source panels and a matching lawful complement, or independent global endpoint exclusion. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source, axioms and prior CI standing are unchanged; these analytic/rational certificates are not Lean formalized.
 
 See [prime-4 whole-domain sign](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME4_48_WHOLE_070_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME4_48_WHOLE_070.md).
+
+
+## RPB-108 — actual 48-coordinate whole-domain sign at aperture 3/4 (2026-10-05)
+
+The full native 48-vector restriction, all seven-panel sources and complete actual residual Gram are certified at a=3/4. Prime powers 2, 3, 4 remain active with Lambda(4)=log(2). Rational bounds at L=3 provide exponential remainder multiplier 21 and kernel multiplier 4. Source Bernoulli pairs increase to 48, with exponential remainder coefficient 2. All 2304 native/source pairings pass; actual Gram operator error is below 1.484e-25.
+
+The coarse inverse factor 5/2, tighter factor 1000/409 and sharper-high-estimate factor 100/47 each have certified negative lower-estimator directions with positive native controls. The sharp quarter-line high bound m_0(t)>=log|t|-7/(216t^2), |t|>=1, follows from the absolutely convergent B2 Euler--Maclaurin remainder. With low floor still -10, strict concavity and rational derivative/tangent checks bound its entire scalar cutoff proof family below 0.4763. The corresponding countervector requires coercivity above 0.476649. This is a ceiling of that specified sufficient-estimate family, not actual complement coercivity or a negative native-form witness.
+
+Retaining the independently proved quarter-line low floor m_0>-27/5 changes that family and resolves the obstruction. At cutoff 15/2 the refined physical bracket exceeds 0.4808725435, certifying physical coercivity 12/25 and inverse factor 25/12. The independent logarithmic cutoff 7 retains 9/100. Reusing the complete actual residual Gram with all input hashes and its inverse-independent operator error verified, all 48 rational interval pivots of Q_48-(25/12)Rhat_48-[(25/12)delta+1/20000000000000000]I are positive.
+
+The lawful lift norm is at most 8. Same-domain square completion gives
+
+Q(h) >= (1/2600000000000000000) ||h||_2^2 at a=3/4.
+
+Thus 48 coordinates still suffice after the stronger analytic complement estimate. This excludes fixed-aperture weak null modes and establishes corresponding full-source WD-T10 unit domination. Both poles, actual prime terms, endpoint logarithms and all mixed/projection terms are retained. No physical spectral operator-domain membership is assumed.
+
+All 12 certificates reproduce byte-for-byte, including the preserved estimator obstructions and limited-family ceiling. The previous a=7/10 matrix and sources reproduce unchanged. All 7536 regular-factor identities, source panels, 2304 pairings, constructor guards, input hashes, native/refined-correction negative diagonal controls, positive-native controls and prime-4 omission/doubled-coefficient controls pass. No floating value enters a sign decision.
+
+Next: larger apertures with actual prime terms, source panels and matching complement bounds, or independent global endpoint exclusion. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source, axioms and prior CI standing are unchanged; these analytic/rational certificates are not Lean formalized.
+
+See [aperture 3/4 whole-domain sign](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME4_48_WHOLE_075_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME4_48_WHOLE_075.md).
