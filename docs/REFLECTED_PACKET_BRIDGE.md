@@ -1942,3 +1942,10 @@ See `../notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_PARITY_SCHUR_BLOCK_20261005.
 RPB108 coupled eight-source no-lift residual pilot has positive displayed Q8-5R minima (~4.94e-6 even,3.82e-4 odd), uncertified. Exact recorded-matrix discrepancy audit proves at least one Gram approximation error>2e-5 to any common target; repeat eigenvalue stability cannot supply isotropic sign budget. Next: rigorous correlated endpoint/source Gram enclosure; other56 Schur coordinates remain. FULL TRANSPORT CLOSED/F4/global endpoint exclusion open; Lean unchanged.
 
 See `../notes/REFLECTED_PACKET_BRIDGE_108_COUPLED_RESIDUAL_PRECISION_20261005.md` and `TERMINOLOGY_RPB108_COUPLED_RESIDUAL_PRECISION.md`. Actual coupled source pilot and exact arithmetic audit of stored approximation disagreement have distinct scopes. No corrected sign is promoted from quadrature.
+
+
+## RPB108 exact endpoint-log Gram — 2026-10-05
+
+RPB108 exact eight-source endpoint-log residual Gram enclosed at widths<1e-35. Log-separated coupled pilot reduces Gram repeat display from1.14e-4 to2.50e-8, source-pairing error<5e-14 and lower-pilot minimum~4.9392e-6; regular/mixed quadrature remains uncertified. Next rigorous smooth/mixed source enclosures; other56 Schur coordinates remain. FULL TRANSPORT CLOSED/F4/global endpoint exclusion open; Lean unchanged.
+
+See `../notes/REFLECTED_PACKET_BRIDGE_108_EXACT_ENDPOINT_LOG_GRAM_20261005.md` and `TERMINOLOGY_RPB108_EXACT_ENDPOINT_LOG_GRAM.md`. Exact beta/harmonic log moments preserve mixed entries. Only the endpoint-log component is certified; reconstructed full-source pilot signs remain exploratory.

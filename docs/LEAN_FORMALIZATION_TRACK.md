@@ -3257,3 +3257,8 @@ Analytic parity theorem plus rational execution certifies the exact constant-lin
 ## RPB108 coupled residual precision — 2026-10-05
 
 Coupled actual eight-source residual pilot remains exploratory. Exact rational audit proves both stored Gram approximations cannot meet operator error 1e-6 to the same target; at least one error exceeds 2e-5. Source-map norm error controls Gram error by eta(2M+eta), but no actual eta enclosure is computed here. Previous corrected parity certificate reproduces. No Lean code/proof/CI change or FULL TRANSPORT CLOSED claim.
+
+
+## RPB108 exact endpoint-log Gram — 2026-10-05
+
+Analytic moment identities plus exact rational interval execution enclose the eight-source endpoint-log residual Gram, entry widths<1e-35. Projection through degree63 is exact; normalization and parity checks reproduce. Log-separated regularized pilot improves repeat precision, without an actual regular/mixed error bound or Schur sign certificate. No Lean code/proof/CI change; FULL TRANSPORT CLOSED remains open.
