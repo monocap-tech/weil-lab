@@ -1,0 +1,17 @@
+{
+  "certificate_reproduced_byte_for_byte": true,
+  "certificate_sha256": "e85a8660a7600fdc2c906a1d420aaae5e253334ca91de5041dbfe3e08d9aea69",
+  "physical_seed_sha256_verified": true,
+  "exact_logarithmic_gap_verified": true,
+  "exact_blending_and_perturbation_radius_verified": true,
+  "prime_and_pole_ceilings_verified": true,
+  "doubled_gap_control_rejected": true,
+  "control_is_actual_negative_witness": false,
+  "pinned_source_commit": "00f264b900b5c7854991c98b9e693b49c546586e",
+  "numeric_aperture_frontier": "81/100",
+  "finite_first_endpoint_strictly_above": "81/100",
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

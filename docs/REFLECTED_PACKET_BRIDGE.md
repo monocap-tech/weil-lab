@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / complete actual 84-source Gram and corrected Schur sign certified at 81/100; whole-domain physical bound 1/20200000000000000000000000000000; all 7056 pairings and reproduction verified; next global endpoint-exclusion bridge audit; global endpoint exclusion and retained witness/null transport open; F-4 pending
+**Current cursor:** RPB-108 / 81/100 Schur certificate revalidated; quantified native logarithmic seed gap and endpoint bridge audit complete; next actual near-boundary archimedean/prime collar action and independent signed Gaussian upper estimate; numerical aperture frontier remains 81/100; global endpoint exclusion and retained witness/null transport open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2252,3 +2252,14 @@ Two fresh complete arithmetic runs produce byte-identical certificates, includin
 Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI are unchanged.
 
 See [the proof and validation note](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_84_SCHUR_081_20261005.md) and [validation manifest](../notes/data/RPB108_PRIME5_84_SCHUR_081_VALIDATION_20261005.json).
+
+
+### RPB-108: quantified logarithmic seed and endpoint bridge audit (2026-10-05)
+
+Definitions are recorded in [the endpoint bridge registry](TERMINOLOGY_RPB108_ENDPOINT_BRIDGE_AUDIT.md). The promoted complete 84-source Schur certificate revalidates unchanged. At a0=81/100 its physical margin mu=1/(202*10^29), combined with the actual bound Q>=(1/10)Elog-23 physical mass, yields the explicit logarithmic gap kappa=mu/[10(mu+23)]=1/[10+46460*10^29]. The mass-loss ceilings are 6 for the archimedean term, 5 for the actual absolute prime sum and 12 for the exact complex pole cross terms. The rational certificate reproduces byte for byte and its doubled-gap arithmetic control is rejected.
+
+On the fixed dilated logarithmic carrier, an operator perturbation of norm at most kappa/2 preserves gap kappa/2. Actual norm continuity therefore places every finite first positivity endpoint strictly above 81/100; no numerical aperture increment or continuity modulus is supplied. The numerical certified frontier remains 81/100.
+
+The global bridge audit confirms that endpoint-interior cancellation and separated Gaussian far-field control are available. The genuine boundary-collar action still requires an independent signed exponential upper estimate from actual arithmetic structure. Same-vector enlarged full weak-nullity is obstructed, exterior observability does not annihilate the observation, and the fixed seed does not recover an abstract selected WD-T38 witness. Next: inspect the actual near-boundary archimedean/prime collar interaction. Global endpoint exclusion, all-window unit domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI are unchanged.
+
+See [the proof and bridge audit](../notes/REFLECTED_PACKET_BRIDGE_108_ENDPOINT_BRIDGE_AUDIT_20261005.md) and [validation manifest](../notes/data/RPB108_ENDPOINT_BRIDGE_AUDIT_VALIDATION_20261005.json).
