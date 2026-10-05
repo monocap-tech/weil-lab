@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / full-domain sign certified through aperture 27/50; prime-3 activation and global endpoint exclusion open; F-4 pending
+**Current cursor:** RPB-108 / full-domain sign through 27/50; prime-3 activation at 11/20 has actual 36-moment complement; full 36-coordinate sign and global endpoint exclusion open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2018,3 +2018,12 @@ The actual native twenty-vector matrix, scaled sources, full residual Gram and a
 The larger raw and corrected shifts were rejected before smaller certified margins were obtained. Exact matrix/source regression at 51/100 passes; all source/native pairings satisfy their error budgets, the full Gram certificate reproduces byte-for-byte, and negative diagonal controls are rejected. Proof: notes/REFLECTED_PACKET_BRIDGE_108_PREPRIME_SCHUR_20261005.md. Terminology: docs/TERMINOLOGY_RPB108_PREPRIME_SCHUR.md. Scripts and rational data: certify_native_preprime_{complement,matrix,source,gram}.py and RPB108_PREPRIME_{COMPLEMENT,MATRIX,SOURCE,GRAM}_CERTIFICATE_20261005.json.
 
 Next: actual prime-3 activation at log(3)/2 and subsequent apertures, or independent global endpoint exclusion. No larger aperture or all-window theorem is inferred. Global endpoint exclusion, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source, axioms and prior CI claims are unchanged; these new certificates are not Lean formalized.
+
+
+## RPB108 prime-3 activation and 36-moment complement — 2026-10-05
+
+At a=11/20, the actual primes 2 and 3 are included in the recomputed twenty-vector native matrix and five-panel sources. Raw physical coercivity is 1/32000000; all 400 source/native pairings satisfy their errors and omission of prime 3 is rejected. The old twenty-moment sufficient complement bracket fails after the compressed prime-3 penalty; this does not establish actual negativity. The prime-3 adjacency has physical L2 norm one even for a narrow nonzero overlap.
+
+Actual moment vanishing through degree 35 restores physical complement coercivity 1/4 and logarithmic coercivity 9/100 uniformly through 11/20. This supplies a lawful 36-coordinate Schur reduction and inverse factor 4. Next: degrees 20..35 and the complete 36-source matrix/Gram, or independent endpoint exclusion. Whole-domain positivity at 11/20 is not certified; the certified whole-domain bound through 27/50 remains intact. F4, full transport and global endpoint exclusion remain open. Lean unchanged.
+
+Proof: notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_ACTIVATION_20261005.md. Definitions: docs/TERMINOLOGY_RPB108_PRIME3_ACTIVATION.md. Matrix, source, pairing, complement-limit and complement36 arithmetic certificates reproduce exactly; matrix negative diagonal and prime-3 omission controls are rejected. No new Lean/CI standing is claimed.
