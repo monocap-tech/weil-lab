@@ -1928,3 +1928,10 @@ See `../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SCHUR_RESIDUAL_20261005.md` and
 RPB108 first certified actual Schur diagonal at a=1/2: S(1,1)>194/3125>3/50, including all infinite-complement correction. Endpoint-log separation, smooth derivative tail and exact prime-step projection give physical residual norm<9/125. Full 64-dimensional mixed sign still uncomputed; FULL TRANSPORT CLOSED/F4/global endpoint exclusion open; Lean unchanged.
 
 See `../notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_CONSTANT_SCHUR_20261005.md` and `TERMINOLOGY_RPB108_CERTIFIED_CONSTANT_SCHUR.md`. The exact corrected direction is certified by rational tail bounds, not by the earlier quadrature pilot. Positive diagonal does not decide the full Schur matrix.
+
+
+## RPB108 certified parity Schur block — 2026-10-05
+
+RPB108 exact corrected constant-linear block at a=1/2 certified S(e,e)>(3/50)||e||_physical^2 for span{1,2x}. Linear Schur diagonal>59/2000, constant>194/3125; actual reflection gives exact cross-entry zero and splits full Schur into two 32-dimensional parity blocks. Full parity-block signs remain uncomputed; FULL TRANSPORT CLOSED/F4/global endpoint exclusion open; Lean unchanged.
+
+See `../notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_PARITY_SCHUR_BLOCK_20261005.md` and `TERMINOLOGY_RPB108_CERTIFIED_PARITY_SCHUR_BLOCK.md`. This handles arbitrary complex coefficients on the named corrected two-dimensional block and includes the whole complement correction, without certifying either full parity block.
