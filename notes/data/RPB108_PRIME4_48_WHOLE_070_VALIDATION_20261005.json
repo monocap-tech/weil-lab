@@ -1,0 +1,63 @@
+{
+  "aperture": "7/10",
+  "certificates": [
+    {
+      "path": "notes/data/RPB108_PRIME4_MATRIX48_070_CERTIFICATE_20261005.json",
+      "sha256": "266f5c13e74ba73860471a570c47c8140b10c9a76fa9fd0bafafc3960d55e771",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_SOURCE48_070_CERTIFICATE_20261005.json",
+      "sha256": "44626d9fa9f19ce0a13e551c0fa2ba3631dfd5a379293a1ba2b479b9d91098d5",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_COMPLEMENT48_070_CERTIFICATE_20261005.json",
+      "sha256": "357fef1a51c765095cd154021cb2fc78370db177e8c934e0a62c3aea863d4f89",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_GRAM48_070_CERTIFICATE_20261005.json",
+      "sha256": "c7a67bbfebe9278af6bca1744f6c31b9be91695f1f859194b4ca1c1ffe936221",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_ACTIVATION_CONTROLS_20261005.json",
+      "sha256": "a89f8a8536c381b5cf3adefe607521ca84a1bbf7a202bdf46b33a63de212dd13",
+      "byte_reproduction_verified": true
+    }
+  ],
+  "physical_dimension": 48,
+  "actual_prime_powers": [
+    2,
+    3,
+    4
+  ],
+  "actual_prime4_coefficient": "log(2)/2",
+  "source_panel_count": 7,
+  "joint_prime24_norm_formula": "(A4+sqrt(A4^2+8A2^2))/2",
+  "native_source_pairings_passed": 2304,
+  "regular_source_factors_compared": 7152,
+  "new_exponential_bound": 17,
+  "kernel_bound": 3,
+  "source_bernoulli_pairs": 44,
+  "source_pole_remainder_guard": "d/4<log(2)",
+  "physical_complement_lower": "12/25",
+  "complement_inverse_factor": "25/12",
+  "previous_069_matrix_byte_regression": true,
+  "previous_069_source_byte_regression": true,
+  "unsupported_constructor_controls_rejected": true,
+  "prime4_omission_control_rejected": true,
+  "prime4_double_coefficient_control_rejected": true,
+  "native_negative_control_rejected": true,
+  "corrected_negative_control_rejected": true,
+  "corrected_margin": "1/5242880000000",
+  "lift_norm_upper": 7,
+  "whole_domain_margin": "1/524288000000000",
+  "whole_domain_positivity": true,
+  "fixed_aperture_unit_domination": true,
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

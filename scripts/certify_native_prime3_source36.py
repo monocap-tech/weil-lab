@@ -66,11 +66,17 @@ def quantize(result):
 
 
 def compute(degree=35, a=F(11,20)):
-    if a not in (F(11,20),F(14,25),F(3,5),F(16,25),F(69,100)):
+    if a not in (F(11,20),F(14,25),F(3,5),F(16,25),F(69,100),F(7,10)):
         raise ValueError("Unsupported source aperture")
     d=2*a
-    assert log_rational(F(3)).hi<d<log_rational(F(4)).lo
-    if a==F(69,100):
+    if a==F(7,10):
+        assert log_rational(F(4)).hi<d<log_rational(F(5)).lo
+    else:
+        assert log_rational(F(3)).hi<d<log_rational(F(4)).lo
+    if a==F(7,10):
+        assert log_rational(F(16)).hi<2*d<log_rational(F(17)).lo
+        assert 2*d<=F(14,5)
+    elif a==F(69,100):
         assert 2*d<log_rational(F(16)).lo
         assert 2*d>log_rational(F(15)).hi and 2*d<F(14,5)
     elif a==F(16,25):
@@ -83,10 +89,10 @@ def compute(degree=35, a=F(11,20)):
         assert 2*d<log_rational(F(10)).lo
         assert 2*d>log_rational(F(4)).hi
         assert 2*d<F(9,4)
-    assert d/2<log_rational(F(2)).lo
-    if degree not in (35,47) or (degree==47 and a not in (F(14,25),F(3,5),F(16,25),F(69,100))) or (a in (F(3,5),F(16,25),F(69,100)) and degree!=47):
+    assert (d/4 if a==F(7,10) else d/2)<log_rational(F(2)).lo
+    if degree not in (35,47) or (degree==47 and a not in (F(14,25),F(3,5),F(16,25),F(69,100),F(7,10))) or (a in (F(3,5),F(16,25),F(69,100),F(7,10)) and degree!=47):
         raise ValueError('Unsupported prime-3 source dimension/aperture')
-    N,K=(60,40) if a in (F(3,5),F(16,25),F(69,100)) else (60,32)
+    N,K=(60,44) if a==F(7,10) else ((60,40) if a in (F(3,5),F(16,25),F(69,100)) else (60,32))
     B=bernoulli(2*K+2)
     bp=[F(0)]*(2*K+1)
     bp[0],bp[1]=F(1),d
@@ -104,7 +110,12 @@ def compute(degree=35, a=F(11,20)):
     logtwo=log_rational(F(2))
     ell=logtwo/d
     ell3=log_rational(F(3))/d
-    assert (I(1)-ell3).hi<(I(1)-ell).lo<ell.hi<ell3.lo
+    if a==F(7,10):
+        ell4=log_rational(F(4))/d
+        assert (I(1)-ell4).hi<(I(1)-ell3).lo<ell.lo
+        assert ell.hi<(I(1)-ell).lo<ell3.lo<ell4.lo<1
+    else:
+        assert (I(1)-ell3).hi<(I(1)-ell).lo<ell.hi<ell3.lo
     # Higher-order Euler--Maclaurin gamma enclosure.
     n,order=100,20
     gamma=I(sum((F(1,k) for k in range(1,n+1)),F(0))-F(1,2*n))-log_rational(F(n))
@@ -147,9 +158,13 @@ def compute(degree=35, a=F(11,20)):
         core=add(core,[mm*ep[k]+mp*em[k] for k in range(N+1)])
         primes=[(logtwo/sqrt_rational(F(2)),ell),
                 (log_rational(F(3))/sqrt_rational(F(3)),ell3)]
+        if a==F(7,10):primes.append((logtwo/2,ell4))
         panels=[]
         # Exact order: 0, 1-ell3, 1-ell2, ell2, ell3, 1.
         active=[[(0,1),(1,1)],[(0,1)],[],[(0,-1)],[(0,-1),(1,-1)]]
+        if a==F(7,10):
+            active=[[(0,1),(1,1),(2,1)],[(0,1),(1,1)],[(0,1)],
+                    [(0,1),(0,-1)],[(0,-1)],[(0,-1),(1,-1)],[(0,-1),(1,-1),(2,-1)]]
         for translations in active:
             row=core[:]
             for index,sign in translations:
@@ -173,6 +188,12 @@ def compute(degree=35, a=F(11,20)):
                 normalization='physical source coefficients multiply by sqrt((2*degree+1)/(2a)); error fields are L2 bounds',
                 source_map_error_upper=str(eta),source_map_error_display=float(eta),
                 rows=rows,full_residual_gram_certified=False,actual_schur_sign_certified=False)
+    if a==F(7,10):
+        result['status']=f'certified full {source_degree+1}-source prime-4 piecewise polynomial approximation'
+        result['prime_terms']=[2,3,4]
+        result['panel_endpoints']=['0','1-log(4)/(2a)','1-log(3)/(2a)','log(2)/(2a)',
+                                   '1-log(2)/(2a)','log(3)/(2a)','log(4)/(2a)','1']
+        result['prime4_amplitude']='log(2)/2'
     return result
 
 
