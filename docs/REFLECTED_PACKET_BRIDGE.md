@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual full-domain sign certified at 4/5 with matching 52-vector matrix, seven-panel sources, full Gram and quarter-line complement; prime-5 activation, larger apertures/global endpoint exclusion and retained witness/null transport open; F-4 pending
+**Current cursor:** RPB-108 / prime-5 activation and uniform 84-moment complement certified through 81/100; next matching 84-vector matrix, nine-panel actual sources and full Gram/corrected sign; whole-domain positivity frontier remains 4/5; global endpoint exclusion and retained witness/null transport open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2217,3 +2217,14 @@ The active prime powers remain 2, 3 and 4, with Lambda(4)=log(2); prime 5 activa
 This excludes fixed-aperture weak null modes and establishes corresponding full-source WD-T10 unit domination. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI are unchanged; this certificate is not Lean formalized.
 
 See [the proof and validation note](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME4_52_WHOLE_080_20261005.md) and [validation manifest](../notes/data/RPB108_PRIME4_52_WHOLE_080_VALIDATION_20261005.json).
+
+
+### RPB-108: prime-5 activation and actual 84-moment complement (2026-10-05)
+
+Definitions are recorded in [the prime-5 terminology registry](TERMINOLOGY_RPB108_PRIME5_84_081.md). At aperture a=81/100, prime powers 2, 3, 4 and 5 are active. Prime 5 adds two edge panels, yielding nine actual source panels; their ordering, translations and coefficients are certified.
+
+The joint prime-3/prime-5 translation operator decomposes into four-point chains and remaining single prime-3 edges. Its norm is bounded by (A5+sqrt(A5^2+4A3^2))/2, rounded outward to 1.089148588713, with independent exact rational four-by-four norm checks and a rejected too-small norm control. Combining this with the existing joint prime-2/4 norm certifies uniform actual 84-moment complement coercivity 51/100 physically and 9/100 logarithmically through a=81/100. The inverse energy factor is 100/51. Both certificates reproduce byte for byte.
+
+The matching 84-coordinate native matrix, actual nine-panel source enclosures, complete residual Gram and corrected sign remain to be certified. This complement cannot be combined with the old 52-coordinate finite restriction to infer whole-domain positivity. The whole-domain positivity frontier remains a=4/5. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI are unchanged.
+
+See [the proof and validation note](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_84_081_20261005.md) and [validation manifest](../notes/data/RPB108_PRIME5_84_081_VALIDATION_20261005.json).
