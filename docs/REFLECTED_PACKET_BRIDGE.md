@@ -1900,3 +1900,10 @@ At cf54bf9, actual supported Legendre matrix entries have a tail-free exact phys
 RPB108 rational finite certificate: a=1/4, n=0..7 actual physical restriction strictly positive by exact interval Schur pivots. No whole-domain positivity, endpoint exclusion, negative witness or FULL TRANSPORT CLOSED; Lean unchanged.
 
 See `../notes/REFLECTED_PACKET_BRIDGE_108_RATIONAL_FINITE_CERTIFICATE_20261005.md` and `TERMINOLOGY_RPB108_RATIONAL_FINITE_CERTIFICATE.md`. The reproducible standard-library script and exact rational pivot output certify a finite trial span only. Independent global positivity/endpoint input is still missing.
+
+
+## RPB108 rational first-prime coercivity — 2026-10-05
+
+RPB108: a=1/2 actual eight-vector native restriction certified Q(f)>(1/200000)||f||_L2^2 by rational shifted pivots, including prime 2. Finite-range WD-T10 strict contraction lawful; global inequality/endpoint exclusion and FULL TRANSPORT CLOSED open; Lean unchanged.
+
+See `../notes/REFLECTED_PACKET_BRIDGE_108_RATIONAL_PRIME_COERCIVITY_20261005.md` and `TERMINOLOGY_RPB108_RATIONAL_PRIME_COERCIVITY.md`. The certificate includes interval custody of log 2, sqrt 2, correlations and pole moments. It proves a quantitative finite theorem, not full-carrier positivity.

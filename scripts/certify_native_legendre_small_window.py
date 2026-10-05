@@ -1,4 +1,4 @@
-"""Exact rational enclosure of the actual a=1/4, degree-seven restriction.
+"""Exact rational enclosure of actual a=1/4 or a=1/2 degree-seven restrictions.
 
 No floating values enter the certificate. Floats in JSON are display only.
 """
@@ -124,8 +124,20 @@ def positive_pivots(matrix):
     return pivots
 
 
-def certificate():
-    a, degree, N, K = F(1,4), 7, 60, 24
+def sqrt_rational(x):
+    from math import isqrt
+    grid = 10**50
+    lower = isqrt((x*grid*grid).__floor__())
+    return I(F(lower,grid),F(lower+1,grid))
+
+
+def certificate(a=F(1,4)):
+    if a not in (F(1,4), F(1,2)):
+        raise ValueError('Only the two audited apertures are supported')
+    degree, N, K = 7, 60, (24 if a == F(1,4) else 40)
+    L = 4*a
+    exponential_bound = 3 if L == 1 else 9
+    kernel_bound = 2 if L == 1 else 3
     assert log_rational(F(2)).lo > F(1,2)
     polys = legendre(degree)
     B = bernoulli(2*K+2)
@@ -137,22 +149,25 @@ def certificate():
     gamma = gamma+sum((B[2*k]/F(2*k*n**(2*k)) for k in range(1,order+1)),F(0))
     ge = abs(B[2*order+2])/F((2*order+2)*n**(2*order+2))
     gamma = gamma+I(-ge,ge)
-    e1 = sum((F((-1)**k,factorial(k)) for k in range(N+1)),F(0))
-    ee = F(3,factorial(N+1))
+    e1 = sum(((-L)**k/factorial(k) for k in range(N+1)),F(0))
+    ee = exponential_bound*L**(N+1)/factorial(N+1)
     constant = -gamma-log_interval(pi)-log_interval(I(1-e1-ee,1-e1+ee))
     kernel = [F(0)]*(2*K+1)
-    kernel[0], kernel[1] = F(1), F(1,2)
+    kernel[0], kernel[1] = F(1), L/2
     for k in range(1,K+1):
-        kernel[2*k] = B[2*k]/factorial(2*k)
-    kernel_error = F(4,6**(2*K+2))/F(35,36)
-    exp1 = [F((-1)**k,factorial(k)) for k in range(N+1)]
-    expquarter = [F((-1)**k,4**k*factorial(k)) for k in range(N+1)]
+        kernel[2*k] = B[2*k]*L**(2*k)/factorial(2*k)
+    kernel_error = 4*(L/6)**(2*K+2)/(1-(L/6)**2)
+    exp1 = [(-L)**k/factorial(k) for k in range(N+1)]
+    expquarter = [(-L/4)**k/factorial(k) for k in range(N+1)]
+    logtwo = log_rational(F(2))
+    assert logtwo.hi < 1 and log_rational(F(3)).lo > 1
+    prime_coefficient = 2*logtwo/sqrt_rational(F(2))
     moments = []
     for p in polys:
-        ep = [F(1,8**k*factorial(k)) for k in range(N+1)]
+        ep = [(a/2)**k/factorial(k) for k in range(N+1)]
         product = mul(p,ep)
         v = a*sum((2*c/F(k+1) for k,c in enumerate(product) if k%2 == 0),F(0))
-        err = 4*a*sum(map(abs,p))*F(1,8**(N+1)*factorial(N+1))
+        err = 4*a*sum(map(abs,p))*(a/2)**(N+1)/factorial(N+1)
         moments.append(I(v-err,v+err))
     matrix = [[I(0) for _ in polys] for _ in polys]
     for i,p in enumerate(polys):
@@ -168,13 +183,22 @@ def certificate():
             integrand = mul(numerator[1:],kernel)
             integral = sum((x/F(k+1) for k,x in enumerate(integrand)),F(0))
             csum = sum(map(abs,c))
-            exp_error = F(3,factorial(N+1))*(delta+csum/F(4**(N+1)))
-            abound = F(3,4)*delta+sum(map(abs,c[1:]))
-            err = 2*exp_error+abound*kernel_error
+            exp_error = exponential_bound*L**(N+1)/factorial(N+1)*(delta+csum/F(4**(N+1)))
+            abound = F(3,4)*L*delta+sum(map(abs,c[1:]))
+            err = kernel_bound*exp_error+abound*kernel_error
             arch = delta*constant+I(integral-err,integral+err)
             pole = (int((-1)**i)+int((-1)**j))*moments[i]*moments[j]
-            matrix[i][j] = matrix[j][i] = arch+pole
-    assert max(x.hi-x.lo for row in matrix for x in row) < F(9,10**30)
+            prime = I(0)
+            if a == F(1,2):
+                # c is the polynomial in y=t/L; shift t/2=log 2 means y=log 2/(2a).
+                y = logtwo/I(2*a)
+                value = I(0)
+                for coefficient in reversed(c):
+                    value = value*y+coefficient
+                prime = prime_coefficient*value
+            matrix[i][j] = matrix[j][i] = arch+pole-prime
+    width_bound = F(9,10**30) if a == F(1,4) else F(2,10**29)
+    assert max(x.hi-x.lo for row in matrix for x in row) < width_bound
     pivots = positive_pivots(matrix)
     broken = [row[:] for row in matrix]
     broken[0][0] = I(-1)
@@ -184,7 +208,7 @@ def certificate():
         pass
     else:
         raise AssertionError('Negative control was incorrectly certified')
-    return dict(status='certified strictly positive finite restriction only',a='1/4',degree=degree,
+    result = dict(status='certified strictly positive finite restriction only',a=str(a),degree=degree,
                 basis='P_n(x/a) on [-a,a], unnormalized physical basis',
                 arithmetic='Fraction; outward 10^-50 grid; rational interval Schur elimination',
                 exponential_order=N,bernoulli_pairs=K,
@@ -192,7 +216,22 @@ def certificate():
                 pivot_lower_display=[float(x.lo) for x in pivots],
                 largest_entry_width_display=float(max(x.hi-x.lo for row in matrix for x in row)),
                 negative_control_rejected=True,whole_domain_positivity=False)
+    if a == F(1,2):
+        tau = F(1,200000)
+        shifted = [row[:] for row in matrix]
+        for i in range(degree+1):
+            shifted[i][i] = shifted[i][i]-tau*F(2*a,2*i+1)
+        shifted_pivots = positive_pivots(shifted)
+        result.update(physical_coercivity_lower_bound=str(tau),
+                      shifted_pivot_lower_bounds=[str(x.lo) for x in shifted_pivots],
+                      shifted_pivot_lower_display=[float(x.lo) for x in shifted_pivots],
+                      prime_terms=[2])
+    return result
 
 
 if __name__ == '__main__':
-    print(json.dumps(certificate(),indent=2))
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--half',action='store_true',help='Certify a=1/2 including the prime 2')
+    args = parser.parse_args()
+    print(json.dumps(certificate(F(1,2) if args.half else F(1,4)),indent=2))
