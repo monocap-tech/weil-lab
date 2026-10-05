@@ -1,0 +1,38 @@
+{
+  "aperture": "14/25",
+  "certificates": [
+    {
+      "path": "notes/data/RPB108_PRIME3_MATRIX48_056_CERTIFICATE_20261005.json",
+      "sha256": "cfbffd6e549133c28d2e5e10da15cfa27eaaf421bd1edcfa81848d299681144f",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_SOURCE48_056_CERTIFICATE_20261005.json",
+      "sha256": "bd68423f02483ee58df5afeffab04a8170ce7a65a2625f3dc051a01844ca9707",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_GRAM48_056_CERTIFICATE_20261005.json",
+      "sha256": "bcecce65f5f011a770519882a99da2f5776e71b61db52a9d8bd080dac5842a7e",
+      "byte_reproduction_verified": true
+    }
+  ],
+  "physical_dimension": 48,
+  "native_source_pairings_passed": 2304,
+  "shared_36_matrix_entries_contained": 1296,
+  "shared_36_source_rows_identical": true,
+  "previous_36_source_certificate_regression_passed": true,
+  "exact_correlation_comparisons_through_degree": 47,
+  "exact_regular_factors_compared": 6000,
+  "cached_power_composition_comparisons_passed": true,
+  "native_negative_control_rejected": true,
+  "corrected_negative_control_rejected": true,
+  "corrected_margin": "1/40000000",
+  "whole_domain_margin": "1/2080000000",
+  "whole_domain_positivity": true,
+  "fixed_aperture_unit_domination": true,
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

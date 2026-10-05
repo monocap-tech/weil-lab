@@ -1,15 +1,25 @@
 """Uniform actual smooth-source enclosure; no numerical quadrature or Gram claim."""
 import json
 from math import comb, factorial, isqrt
+from functools import lru_cache
 from certify_native_legendre_small_window import F, I, add, mul, bernoulli, atan, log_rational, log_interval, sqrt_rational
 from certify_native_endpoint_log_gram import shifted_legendre
 
 
+@lru_cache(maxsize=None)
+def regular_difference_factor(j,k):
+    """Exact beta-integral evaluation of the existing binomial sum."""
+    if k==0:return -sum((F(1,r) for r in range(1,j+1)),F(0))
+    return F(factorial(j)*factorial(k-1),factorial(k+j))-F(1,k)
+
+
 def compose(p, shift, scale=F(1)):
     out=[shift*0 for _ in p]
+    powers=[shift*0+1]
+    for _ in range(len(p)-1):powers.append(powers[-1]*shift)
     for n,c in enumerate(p):
         for k in range(n+1):
-            out[k]+=c*comb(n,k)*scale**k*power(shift,n-k)
+            out[k]+=c*comb(n,k)*scale**k*powers[n-k]
     return out
 
 
@@ -64,8 +74,8 @@ def compute(degree=35, a=F(11,20)):
     assert 2*d>log_rational(F(4)).hi
     assert 2*d<F(9,4)
     assert d/2<log_rational(F(2)).lo
-    if degree != 35:
-        raise ValueError('Only the 36-source prime-3 constructor is audited')
+    if degree not in (35,47) or (degree==47 and a!=F(14,25)):
+        raise ValueError('Unsupported prime-3 source dimension/aperture')
     N,K=60,32
     B=bernoulli(2*K+2)
     bp=[F(0)]*(2*K+1)
@@ -102,11 +112,12 @@ def compute(degree=35, a=F(11,20)):
     source_degree=degree
     for degree,p in enumerate(shifted_legendre(source_degree)):
         smooth=mul(p,hsum)
-        if source_degree==35:
+        if source_degree in (35,47):
             left=[F(0)]*(len(p)+len(A)-1)
             for j,c in enumerate(p):
                 for k,kernel_coefficient in enumerate(A):
-                    factor=sum((F(comb(j,r)*(-1)**r,k+r) for r in range(1,j+1)),F(0))
+                    factor=(regular_difference_factor(j,k) if source_degree==47 else
+                            sum((F(comb(j,r)*(-1)**r,k+r) for r in range(1,j+1)),F(0)))
                     left[j+k]+=c*kernel_coefficient*factor
             right=[(-1)**degree*c for c in compose(left,F(1),F(-1))]
             smooth=add(smooth,[-c for c in add(left,right)])
@@ -146,7 +157,7 @@ def compute(degree=35, a=F(11,20)):
     eta2=sum((F(r['normalized_uniform_error'])**2 for r in rows),F(0))
     eta=sqrt_rational(eta2).hi
     assert eta<F(1,10**23)
-    result=dict(status='certified full 36-source prime-3 piecewise polynomial approximation',
+    result=dict(status=f'certified full {source_degree+1}-source prime-3 piecewise polynomial approximation',
                 exponential_order=N,bernoulli_pairs=K,gamma_order=20,interval_grid_digits=200,aperture=str(a),coordinate='t=(x+a)/(2a)',
                 prime_terms=[2,3],panel_endpoints=['0','1-log(3)/(2a)','1-log(2)/(2a)','log(2)/(2a)','log(3)/(2a)','1'],
                 normalization='physical source coefficients multiply by sqrt((2*degree+1)/(2a)); error fields are L2 bounds',
