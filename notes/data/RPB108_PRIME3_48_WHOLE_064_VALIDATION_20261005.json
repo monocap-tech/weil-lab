@@ -1,0 +1,47 @@
+{
+  "aperture": "16/25",
+  "certificates": [
+    {
+      "path": "notes/data/RPB108_PRIME3_MATRIX48_064_CERTIFICATE_20261005.json",
+      "sha256": "62959232347bf4feb354486869555fd785f7db2aa7ee2cfb885b1611c4b68993",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_SOURCE48_064_CERTIFICATE_20261005.json",
+      "sha256": "a25670bda988963950b875acddcde7fbcb094ddf0fcd98f3ea094c6278ac002c",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_COMPLEMENT48_064_CERTIFICATE_20261005.json",
+      "sha256": "00189614ce902910635802046ace847cfabe7c1eb61db63a0dc79b10e98730e4",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_GRAM48_064_CERTIFICATE_20261005.json",
+      "sha256": "0cec5619e10cd275b604013261700de7c9868443ce4b31432e20fe9ac449492a",
+      "byte_reproduction_verified": true
+    }
+  ],
+  "physical_dimension": 48,
+  "native_source_pairings_passed": 2304,
+  "regular_source_factors_compared": 6768,
+  "new_exponential_bound": 13,
+  "kernel_bound": 3,
+  "source_bernoulli_pairs": 40,
+  "compressed_prime2_norm_upper": "1",
+  "compressed_prime3_norm_upper": "1",
+  "physical_complement_lower": "24/25",
+  "complement_inverse_factor": "25/24",
+  "previous_060_matrix_byte_regression": true,
+  "previous_060_source_byte_regression": true,
+  "native_negative_control_rejected": true,
+  "corrected_negative_control_rejected": true,
+  "corrected_margin": "1/20480000000",
+  "whole_domain_margin": "1/696320000000",
+  "whole_domain_positivity": true,
+  "fixed_aperture_unit_domination": true,
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

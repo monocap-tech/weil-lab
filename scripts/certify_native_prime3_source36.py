@@ -66,11 +66,14 @@ def quantize(result):
 
 
 def compute(degree=35, a=F(11,20)):
-    if a not in (F(11,20),F(14,25),F(3,5)):
+    if a not in (F(11,20),F(14,25),F(3,5),F(16,25)):
         raise ValueError("Unsupported source aperture")
     d=2*a
     assert log_rational(F(3)).hi<d<log_rational(F(4)).lo
-    if a==F(3,5):
+    if a==F(16,25):
+        assert 2*d<log_rational(F(13)).lo
+        assert 2*d>log_rational(F(8)).hi and 2*d<F(21,8)
+    elif a==F(3,5):
         assert 2*d<log_rational(F(12)).lo
         assert 2*d>log_rational(F(5)).hi and 2*d<=F(12,5)
     else:
@@ -78,9 +81,9 @@ def compute(degree=35, a=F(11,20)):
         assert 2*d>log_rational(F(4)).hi
         assert 2*d<F(9,4)
     assert d/2<log_rational(F(2)).lo
-    if degree not in (35,47) or (degree==47 and a not in (F(14,25),F(3,5))) or (a==F(3,5) and degree!=47):
+    if degree not in (35,47) or (degree==47 and a not in (F(14,25),F(3,5),F(16,25))) or (a in (F(3,5),F(16,25)) and degree!=47):
         raise ValueError('Unsupported prime-3 source dimension/aperture')
-    N,K=(60,40) if a==F(3,5) else (60,32)
+    N,K=(60,40) if a in (F(3,5),F(16,25)) else (60,32)
     B=bernoulli(2*K+2)
     bp=[F(0)]*(2*K+1)
     bp[0],bp[1]=F(1),d
