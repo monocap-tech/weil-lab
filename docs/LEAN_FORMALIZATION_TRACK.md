@@ -3227,3 +3227,8 @@ At cf54bf9, actual supported Legendre matrix entries have a tail-free exact phys
 ## RPB108 rational finite certificate — 2026-10-05
 
 Analytic finite theorem plus exact rational Python execution: eight actual native Legendre vectors at a=1/4 have positive interval Schur pivots. No new Lean code or CI claim. Certified Lean head remains cb92c1b4dfca298cbc79d5b7d25598ea370236bf. Global WD-T10 contraction and FULL TRANSPORT CLOSED remain open.
+
+
+## RPB108 rational first-prime coercivity — 2026-10-05
+
+Exact rational shifted-pivot certificate at a=1/2 proves Q(f)>(1/200000)||f||_L2^2 on eight actual trial vectors, including prime 2. Same-vector finite-range contraction follows analytically. No Lean code change, new Lean proof or new CI claim. Global WD-T10/F4/FULL TRANSPORT CLOSED remain open.

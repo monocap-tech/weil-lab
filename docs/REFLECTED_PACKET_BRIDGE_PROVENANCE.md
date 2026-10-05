@@ -2486,3 +2486,8 @@ At cf54bf9, actual supported Legendre matrix entries have a tail-free exact phys
 ## RPB108 rational finite certificate — 2026-10-05
 
 From exact physical matrix identity to rational exponential/Bernoulli enclosures and positive interval Schur pivots. Artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_RATIONAL_FINITE_CERTIFICATE_20261005.md`, `docs/TERMINOLOGY_RPB108_RATIONAL_FINITE_CERTIFICATE.md`, `scripts/certify_native_legendre_small_window.py`, `notes/data/RPB108_RATIONAL_FINITE_CERTIFICATE_20261005.json`. Exact arithmetic certifies the eight-dimensional a=1/4 restriction; floating pilot agreement is diagnostic only. Same-vector source custody is preserved. No global positivity or endpoint exclusion promoted.
+
+
+## RPB108 rational first-prime coercivity — 2026-10-05
+
+Scaled tail-free arch formula, rigorous exponential/Bernoulli remainders, interval prime-2 polynomial evaluation, and exact physical-Gram shift produce the a=1/2 finite coercivity certificate. New note `notes/REFLECTED_PACKET_BRIDGE_108_RATIONAL_PRIME_COERCIVITY_20261005.md`; terminology `docs/TERMINOLOGY_RPB108_RATIONAL_PRIME_COERCIVITY.md`; output `notes/data/RPB108_RATIONAL_PRIME_CERTIFICATE_20261005.json`; extended standard-library script `scripts/certify_native_legendre_small_window.py`. Original a=1/4 JSON reproduces unchanged. Same-vector finite-range factorization only; independent full-carrier norm inequality and endpoint exclusion remain missing.
