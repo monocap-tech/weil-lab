@@ -1,0 +1,61 @@
+{
+  "aperture": "81/100",
+  "physical_dimension": 84,
+  "prime_terms": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "native_raw_physical_margin": "1/10000000000000000000000000000",
+  "native_shifted_pivots": 84,
+  "native_negative_control_rejected": true,
+  "native_exponential_order": 260,
+  "native_bernoulli_pairs": 230,
+  "native_gamma_order": 20,
+  "interval_grid_digits": 400,
+  "log_series_terms": 220,
+  "source_exponential_order": 90,
+  "source_bernoulli_pairs": 100,
+  "source_gamma_order": 50,
+  "source_coefficient_grid_digits": 60,
+  "source_map_error_upper": "22149184038237927827291251327205328667364051433972090167645541501332145318747943924402370232287898330839465447860078835462232821600813595343799270716107664138822219792018578280890292194275839174830652789475204677022448553104757897511653809218776327530922946046258316579134891382326102052778248579023796885443089398304197901768259724259750890173421793/1250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "source_panel_count": 9,
+  "adjacent_panel_jump_checks": 672,
+  "source_prime5_omission_control_rejected": true,
+  "lossless_source_encoding_roundtrip_verified": true,
+  "regular_source_factors_compared": 24444,
+  "new_degree_correlation_checks": 3,
+  "constructor_controls_rejected": true,
+  "exact_kernel_integral_checks": 3,
+  "precomputed_exponential_moment_checks": 3,
+  "exact_source_reflection_checks": 3,
+  "exact_logarithm_endpoint_comparisons": 36,
+  "previous_080_matrix_byte_regression": true,
+  "previous_080_source_byte_regression": true,
+  "full_residual_gram_certified": false,
+  "corrected_schur_sign_certified": false,
+  "whole_domain_positivity": false,
+  "whole_domain_frontier": "4/5",
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false,
+  "certificates": [
+    {
+      "path": "notes/data/RPB108_PRIME5_MATRIX84_081_CERTIFICATE_20261005.json",
+      "sha256": "2c8b44b04a530f377fdf5e2cd5fa5c2d26d56e0d2005bad6bbfaabb0a697c7c0",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME5_SOURCE84_081_CERTIFICATE_20261005.json",
+      "sha256": "ab8f7c7c9eb1b4d35ea3a1775c3293c7943d462816a6c7cdaa9729e2517bfe1e",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME5_SOURCE84_081_CONTROLS_20261005.json",
+      "sha256": "500dd9217386d48825b3c41edce2726e323e57327f20383002c73ac33bce3c49",
+      "byte_reproduction_verified": true
+    }
+  ]
+}

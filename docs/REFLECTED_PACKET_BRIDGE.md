@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / prime-5 activation and uniform 84-moment complement certified through 81/100; next matching 84-vector matrix, nine-panel actual sources and full Gram/corrected sign; whole-domain positivity frontier remains 4/5; global endpoint exclusion and retained witness/null transport open; F-4 pending
+**Current cursor:** RPB-108 / matching actual 84-coordinate native restriction and nine-panel sources certified at 81/100; next full residual Gram, all 7056 pairings and corrected Schur sign with factor 100/51; whole-domain positivity frontier remains 4/5; global endpoint exclusion and retained witness/null transport open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2228,3 +2228,14 @@ The joint prime-3/prime-5 translation operator decomposes into four-point chains
 The matching 84-coordinate native matrix, actual nine-panel source enclosures, complete residual Gram and corrected sign remain to be certified. This complement cannot be combined with the old 52-coordinate finite restriction to infer whole-domain positivity. The whole-domain positivity frontier remains a=4/5. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI are unchanged.
 
 See [the proof and validation note](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_84_081_20261005.md) and [validation manifest](../notes/data/RPB108_PRIME5_84_081_VALIDATION_20261005.json).
+
+
+### RPB-108: actual 84-coordinate prime-5 finite restriction and sources (2026-10-05)
+
+Definitions are recorded in [the finite prime-5 terminology registry](TERMINOLOGY_RPB108_PRIME5_84_FINITE_081.md). The matching actual native restriction at a=81/100 certifies Q84>=10^-28 I in the physical Legendre basis of degrees 0..83. All 84 native and shifted pivots pass, exact reflection parity is retained and the native negative diagonal control is rejected.
+
+All 84 actual nine-panel sources are enclosed with aggregate physical L2 map error below 1.772e-50. All 672 adjacent-panel translation checks pass, including both prime-5 edge panels. The matrix, source and source-control certificates reproduce byte for byte. All 24444 regular-source factor identities, three high-degree correlation identities, three exact kernel/exponential integral comparisons, three exact source-reflection comparisons and 36 exact logarithm endpoint comparisons pass. The previous a=4/5 matrix and source certificates reproduce unchanged. Exact arithmetic accelerations and lossless common-denominator/common-tail source encoding preserve the enclosures and their complete error budgets.
+
+The uniform 84-moment complement remains 51/100 physically and 9/100 logarithmically, with inverse factor 100/51. The next task is the complete actual residual Gram, all 7056 native/source pairings and corrected Schur sign. Whole-domain positivity at a=81/100 is not established by these finite/source results; its certified frontier remains a=4/5. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI are unchanged.
+
+See [the finite/source proof and validation note](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_84_FINITE_081_20261005.md) and [validation manifest](../notes/data/RPB108_PRIME5_84_FINITE_081_VALIDATION_20261005.json).
