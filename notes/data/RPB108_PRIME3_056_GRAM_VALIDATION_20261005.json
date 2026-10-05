@@ -1,0 +1,36 @@
+{
+  "aperture": "14/25",
+  "certificates": [
+    {
+      "path": "notes/data/RPB108_PRIME3_GRAM36_056_CERTIFICATE_20261005.json",
+      "sha256": "84ab97e352f337cd1bc0042f454a5574d24e574da5143523335dab1fa0f5af8f",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_GRAM36_056_OBSTRUCTION_CERTIFICATE_20261005.json",
+      "sha256": "ec21c7b3721f615c8d5e3e4ec990d52824776240732e2388a99cd91d38f9ea1f",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_CUTOFF_FAMILY_056_CERTIFICATE_20261005.json",
+      "sha256": "5c7f515df18e9acdff74325266da8f6f549a8376c01ccffc201a2d42e5e314ba",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_COMPLEMENT48_056_CERTIFICATE_20261005.json",
+      "sha256": "9b479391d2f78a46f47da164fa8d6ce63f03235bd176acfb18521369e65cb62c",
+      "byte_reproduction_verified": true
+    }
+  ],
+  "native_pairings_passed": 1296,
+  "interval_dot_comparisons_passed": 12,
+  "raw_positive_controls_passed": true,
+  "cutoff_only_repair_excluded_for_current_scalar_family": true,
+  "matching_48_moment_complement_certified": true,
+  "matching_48_matrix_sources_and_gram_certified": false,
+  "whole_domain_positivity_at_new_aperture": false,
+  "previous_sign_aperture": "11/20",
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

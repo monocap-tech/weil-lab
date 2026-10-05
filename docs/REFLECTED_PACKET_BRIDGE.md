@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual full-domain sign certified at 11/20; actual 36-vector matrix, all source enclosures and lawful complement certified at 14/25; full residual Gram/corrected sign there and global endpoint exclusion open; F-4 pending
+**Current cursor:** RPB-108 / full-domain sign certified at 11/20; full 36-source Gram at 14/25 certified; scalar cutoff-only repair excluded for current 36-moment family; actual 48-moment complement certified, matching matrix/sources/Gram next; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2075,3 +2075,18 @@ Next: the full actual residual Gram at this new aperture, all 1296 source/native
 Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source and axioms are unchanged; these analytic/rational inputs are not Lean formalized.
 
 See [aperture 14/25 inputs](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_056_INPUTS_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_056_INPUTS.md).
+
+
+## RPB-108 — full Gram at 14/25, scalar-family obstruction and 48-moment complement (2026-10-05)
+
+The complete actual 36-source residual Gram at a=14/25 is certified, with all 1296 native pairings passing, maximum pairing difference below 3.148e-33 and actual Gram operator error below 1.019e-24. Every actual prime panel, exact endpoint product, smooth/log mixed term and 36-vector projection product is retained. Exact fixed-grid dot accumulation now rounds once; independent comparisons agree with the original interval dot enclosures. The certificate reproduces byte-for-byte.
+
+Both the inverse factor 100/31 and the previous unrounded complement inverse approximately 3.144264665 have certified negative estimator directions with positive raw native energy. The unrounded-factor vector requires a uniform inverse factor below 2.825486, or scalar coercivity above 0.35392148. These are obstructions to lower estimators, not negative actual corrected/full-form witnesses.
+
+A derivative argument and rational boundary checks prove that adjusting only the cutoff in the existing 36-moment scalar majorant family cannot remove this obstruction: every lawful positive bound from that family is below 353/1000. This is a ceiling of that proof family, not of the actual complement coercivity.
+
+The actual 48-moment complement at the same aperture is already certified with physical cutoff 10, physical coercivity 3/5, logarithmic coercivity 9/100 and inverse factor 5/3. Next: construct its matching full 48-vector native matrix and all 48 sources, then the corresponding residual Gram/corrected sign. The factor 5/3 cannot be applied to the existing 36-source Gram.
+
+The Gram, unrounded-factor obstruction, family ceiling and 48-moment complement certificates reproduce exactly; raw-positive controls and input checks pass. Whole-domain sign remains certified at 11/20 with margin 1/4000000000. Corrected sign at 14/25, global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean code and axioms are unchanged; these analytic/rational certificates are not Lean formalized.
+
+See [aperture 14/25 full Gram and obstruction](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_056_GRAM_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_056_GRAM.md).
