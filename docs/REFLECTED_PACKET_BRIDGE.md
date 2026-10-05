@@ -1921,3 +1921,10 @@ See `../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LEGENDRE_COMPLEMENT_20261005.md
 RPB108 actual polynomial source constructor + physical residual enclosure: S_Z-5R <= exact 64-dimensional Schur S <= S_Z. Concrete interior action has endpoint log terms, finite prime jumps and same-vector pole moments; physical L2 source membership proved, not assumed. Missing input: rigorous full residual Gram/corrected matrix arithmetic. Constant-source pilot uncertified. FULL TRANSPORT CLOSED/F4 and global endpoint exclusion open; Lean unchanged.
 
 See `../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SCHUR_RESIDUAL_20261005.md` and `TERMINOLOGY_RPB108_ACTUAL_SCHUR_RESIDUAL.md`. An explicit actual supported-polynomial source formula yields physical residuals and bounds the uncomputed complement correction. No corrected sign is certified.
+
+
+## RPB108 certified constant Schur correction — 2026-10-05
+
+RPB108 first certified actual Schur diagonal at a=1/2: S(1,1)>194/3125>3/50, including all infinite-complement correction. Endpoint-log separation, smooth derivative tail and exact prime-step projection give physical residual norm<9/125. Full 64-dimensional mixed sign still uncomputed; FULL TRANSPORT CLOSED/F4/global endpoint exclusion open; Lean unchanged.
+
+See `../notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_CONSTANT_SCHUR_20261005.md` and `TERMINOLOGY_RPB108_CERTIFIED_CONSTANT_SCHUR.md`. The exact corrected direction is certified by rational tail bounds, not by the earlier quadrature pilot. Positive diagonal does not decide the full Schur matrix.

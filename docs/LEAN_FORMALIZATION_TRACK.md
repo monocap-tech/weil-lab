@@ -3242,3 +3242,8 @@ Analytic actual-zeta complement theorem at a=1/2: annihilating physical moments 
 ## RPB108 actual Schur residual — 2026-10-05
 
 Analytic actual polynomial interior source constructor and residual-to-Schur matrix enclosure S_Z-5R<=S<=S_Z, using proved physical complement coercivity 1/5. Source L2 membership is derived from polynomial Fourier decay and endpoint-log integrability. New constant-source quadrature remains exploratory. No new Lean code/proof/CI claim; corrected full matrix and FULL TRANSPORT CLOSED remain open.
+
+
+## RPB108 certified constant Schur correction — 2026-10-05
+
+Analytic theorem plus rational execution: S(1,1)>194/3125 at a=1/2 after the entire complement correction. Endpoint-log Legendre tail, smooth derivative energy, and exact prime-step projection prove residual norm<9/125; prior raw Q00 lower bound is recomputed. Full Schur mixed sign remains open. No Lean source/proof/CI change or FULL TRANSPORT CLOSED claim.
