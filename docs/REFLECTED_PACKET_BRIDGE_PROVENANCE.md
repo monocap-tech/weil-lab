@@ -2491,3 +2491,8 @@ From exact physical matrix identity to rational exponential/Bernoulli enclosures
 ## RPB108 rational first-prime coercivity — 2026-10-05
 
 Scaled tail-free arch formula, rigorous exponential/Bernoulli remainders, interval prime-2 polynomial evaluation, and exact physical-Gram shift produce the a=1/2 finite coercivity certificate. New note `notes/REFLECTED_PACKET_BRIDGE_108_RATIONAL_PRIME_COERCIVITY_20261005.md`; terminology `docs/TERMINOLOGY_RPB108_RATIONAL_PRIME_COERCIVITY.md`; output `notes/data/RPB108_RATIONAL_PRIME_CERTIFICATE_20261005.json`; extended standard-library script `scripts/certify_native_legendre_small_window.py`. Original a=1/4 JSON reproduces unchanged. Same-vector finite-range factorization only; independent full-carrier norm inequality and endpoint exclusion remain missing.
+
+
+## RPB108 actual Legendre complement — 2026-10-05
+
+Actual Euler symbol lower bounds, prime-2 amplitude S<1, physical polynomial annihilation, exact pole moments and rational Taylor/factorial remainders give a coercive actual complement. The initial 96-moment sufficient bound sharpens to 64. Artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LEGENDRE_COMPLEMENT_20261005.md`, `docs/TERMINOLOGY_RPB108_ACTUAL_LEGENDRE_COMPLEMENT.md`, `scripts/certify_native_legendre_complement.py`, `notes/data/RPB108_LEGENDRE_COMPLEMENT_CERTIFICATE_20261005.json`. Same-vector exact Schur reduction preserves supported source custody. Its 64-dimensional corrected sign is uncomputed; raw eight-vector positivity does not control the coupling correction. Prior certificates reproduce unchanged; Lean unchanged.

@@ -3232,3 +3232,8 @@ Analytic finite theorem plus exact rational Python execution: eight actual nativ
 ## RPB108 rational first-prime coercivity — 2026-10-05
 
 Exact rational shifted-pivot certificate at a=1/2 proves Q(f)>(1/200000)||f||_L2^2 on eight actual trial vectors, including prime 2. Same-vector finite-range contraction follows analytically. No Lean code change, new Lean proof or new CI claim. Global WD-T10/F4/FULL TRANSPORT CLOSED remain open.
+
+
+## RPB108 actual Legendre complement — 2026-10-05
+
+Analytic actual-zeta complement theorem at a=1/2: annihilating physical moments through degree 63 gives logarithmic coercivity 9/100 and physical coercivity 1/5. Exact rational script checks constants. Sign, negative index and weak nullity reduce to a 64-dimensional exact Schur form whose coupling/sign remains missing. No new Lean code/proof/CI claim; FULL TRANSPORT CLOSED remains open.

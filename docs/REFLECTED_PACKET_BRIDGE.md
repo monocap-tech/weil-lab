@@ -1907,3 +1907,10 @@ See `../notes/REFLECTED_PACKET_BRIDGE_108_RATIONAL_FINITE_CERTIFICATE_20261005.m
 RPB108: a=1/2 actual eight-vector native restriction certified Q(f)>(1/200000)||f||_L2^2 by rational shifted pivots, including prime 2. Finite-range WD-T10 strict contraction lawful; global inequality/endpoint exclusion and FULL TRANSPORT CLOSED open; Lean unchanged.
 
 See `../notes/REFLECTED_PACKET_BRIDGE_108_RATIONAL_PRIME_COERCIVITY_20261005.md` and `TERMINOLOGY_RPB108_RATIONAL_PRIME_COERCIVITY.md`. The certificate includes interval custody of log 2, sqrt 2, correlations and pole moments. It proves a quantitative finite theorem, not full-carrier positivity.
+
+
+## RPB108 actual Legendre complement — 2026-10-05
+
+RPB108 actual a=1/2 complement: physical moments 0..63 vanish => Q>1/5 physical L2 and Q>9/100 logarithmic energy. Actual sign/index/nullity reduce to 64-dimensional exact Schur form; missing input is its coupling correction/sign, not raw finite restriction positivity. FULL TRANSPORT CLOSED/F4/global endpoint exclusion open; Lean unchanged.
+
+See `../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LEGENDRE_COMPLEMENT_20261005.md` and `TERMINOLOGY_RPB108_ACTUAL_LEGENDRE_COMPLEMENT.md`. Exact rational factorial constants certify the analytic complement estimates. The Schur form subtracts an actual nonnegative coupling correction; its sign has not been computed.
