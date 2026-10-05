@@ -1,0 +1,10 @@
+{
+  "status": "exact audit of recorded approximations only",
+  "largest_diagonal_discrepancy_index": 7,
+  "largest_diagonal_discrepancy": "2382896934431/50000000000000000",
+  "tested_operator_error_budget": "1/1000000",
+  "both_approximations_within_budget_impossible": true,
+  "at_least_one_operator_error_lower_bound": "2382896934431/100000000000000000",
+  "actual_residual_gram_enclosed": false,
+  "actual_schur_sign_certified": false
+}
