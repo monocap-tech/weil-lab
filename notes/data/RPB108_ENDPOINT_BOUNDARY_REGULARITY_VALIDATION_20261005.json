@@ -1,0 +1,19 @@
+{
+  "certificate_sha256": "132542e049dfb1a64e9b3645c42417e8bd6b4fc1be650f67b6d221802b223fd7",
+  "certificate_reproduced_byte_for_byte": true,
+  "pi_and_schur_constants_verified": true,
+  "joint_boundary_budget_verified": true,
+  "kernel_interval_displacements_verified": 7,
+  "singular_term_omission_control_rejected": true,
+  "analytic_proof_not_mechanically_verified": true,
+  "pinned_source_commit": "787af35c12cbb98b713e6fe29cd9ae360ddfbcdd",
+  "hypothesis": "actual full mixed weak-nullity on D_a",
+  "conditional_boundary_L2_and_multiplier_domain_derived": true,
+  "actual_nonzero_endpoint_asserted": false,
+  "numerical_aperture_frontier": "81/100",
+  "gaussian_upper_decay_class": "inverse squared logarithm",
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

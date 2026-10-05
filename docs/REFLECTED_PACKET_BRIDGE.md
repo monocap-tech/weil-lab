@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / 81/100 Schur certificate revalidated; quantified native logarithmic seed gap and endpoint bridge audit complete; next actual near-boundary archimedean/prime collar action and independent signed Gaussian upper estimate; numerical aperture frontier remains 81/100; global endpoint exclusion and retained witness/null transport open; F-4 pending
+**Current cursor:** RPB-108 / actual full weak-null boundary residual realization and frozen-multiplier domain derived; genuine Gaussian upper bound gives inverse squared logarithmic mass suppression; next stronger signed boundary interaction estimate beyond this rate; numerical aperture frontier 81/100; global endpoint exclusion and retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2263,3 +2263,16 @@ On the fixed dilated logarithmic carrier, an operator perturbation of norm at mo
 The global bridge audit confirms that endpoint-interior cancellation and separated Gaussian far-field control are available. The genuine boundary-collar action still requires an independent signed exponential upper estimate from actual arithmetic structure. Same-vector enlarged full weak-nullity is obstructed, exterior observability does not annihilate the observation, and the fixed seed does not recover an abstract selected WD-T38 witness. Next: inspect the actual near-boundary archimedean/prime collar interaction. Global endpoint exclusion, all-window unit domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI are unchanged.
 
 See [the proof and bridge audit](../notes/REFLECTED_PACKET_BRIDGE_108_ENDPOINT_BRIDGE_AUDIT_20261005.md) and [validation manifest](../notes/data/RPB108_ENDPOINT_BRIDGE_AUDIT_VALIDATION_20261005.json).
+
+
+### RPB-108: actual weak-null boundary regularity and Gaussian upper budget (2026-10-05)
+
+Definitions are recorded in [the endpoint boundary regularity registry](TERMINOLOGY_RPB108_ENDPOINT_BOUNDARY_REGULARITY.md). The exact exterior archimedean kernel k(s)=exp(-s/2)/(1-exp(-2s)) is bounded by 1/(2s)+exp(-s/2). Weighted Schur gives the Carleman norm pi/2 and the exponential rank-one part norm one at each boundary. Both exterior boundaries together have operator norm below 4, without a positive support separation.
+
+For every actual full mixed weak-null h in D_a, the frozen multiplier distribution is in the logarithmic dual space. Adding a compact cutoff of the physical pole and comparing with the exterior L2 function leaves only a possible distribution on the two support endpoints. No nonzero finite sum of delta derivatives belongs to that dual space, since its exponential-polynomial Fourier transform has divergent squared mass divided by log(exp(1)+abs(xi)). Hence the boundary defect is zero. The full residual is locally L2 across the edges, has its unchanged exact exterior formula and finite exponentially weighted L1 mass for every sigma>1/2. Its frozen multiplier action is globally L2, with norm at most (4+S_a+4a exp(a))||h||_2. Squared logarithmic Fourier energy follows; H1 and the unrestricted whole-line pole operator domain are not asserted.
+
+The actual whole-line Gaussian action is bounded above in absolute value by B_a||h||_2 sqrt(M_R)+4a exp(a)exp(-R+1/(4R))||h||_2^2. Combined with the existing logarithmic Gaussian lower estimate, this gives M_R=O((log R)^(-2)), with exponentially small additive errors. Whole-line prime action separately satisfies the sharper S_a M_R bound. These estimates do not prove the required exponential signed collar upper theorem. The old residual interface still lacks its strict support gap; own-window nullity is not enlarged nullity.
+
+The constants/control certificate reproduces byte for byte; pi and Schur budgets and seven interval kernel checks pass, and dropping the singular term is rejected. The universal boundary argument is analytic, not mechanically or Lean certified. No nonzero endpoint is asserted, and diagonal/selected nullity is not substituted for actual full mixed nullity. The numerical aperture frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
+
+See [the analytic proof and upper estimate](../notes/REFLECTED_PACKET_BRIDGE_108_ENDPOINT_BOUNDARY_REGULARITY_20261005.md) and [validation manifest](../notes/data/RPB108_ENDPOINT_BOUNDARY_REGULARITY_VALIDATION_20261005.json).

@@ -1,0 +1,12 @@
+# RPB108 actual endpoint boundary regularity
+
+- Hypothesis throughout: h belongs to the actual supported logarithmic form domain D_a and satisfies the full native mixed weak-null equation Q_a(g,h)=0 for every g in D_a. A diagonal zero at an indefinite window or an unattached selected null record does not meet this hypothesis.
+- Exterior archimedean kernel: k(s)=exp(-s/2)/(1-exp(-2s)), s>0, in the unchanged physical/Fourier normalization. The exact off-support native dictionary gives minus convolution with this kernel, both frozen prime translation orientations, and the two physical pole moments.
+- Carleman comparison: k(x+y)<=1/[2(x+y)]+exp(-(x+y)/2), x,y>0. The first operator has L2 norm at most pi/2 by weighted Schur; the second has norm one. Each boundary has norm at most pi/2+1<18/7; both exterior boundaries together have norm less than 4.
+- Logarithmic dual space: tempered distributions t whose Fourier transform satisfies integral |Fourier(t)|^2/w<infinity, where w(xi)=log(exp(1)+abs(xi)). No nonzero distribution supported on finitely many points belongs to this space.
+- Frozen multiplier operator domain: the whole-line condition m_a Fourier(h) in L2. This condition is derived from the full weak-null hypothesis below. It is not a full whole-line operator-domain assertion including the exponentially growing pole, and does not imply H1.
+- Squared logarithmic energy: integral w(xi)^2 |Fourier(h)|^2. It is finite for every actual full weak-null vector at a fixed window, by the derived multiplier-domain condition and the existing symbol envelope.
+- Endpoint residual representative: zero on (-a,a) and equal to the unchanged exact prime/pole/archimedean exterior formula outside. It is locally L2 up to both boundaries; there is no extra boundary delta or derivative term. Its exponential weighted L1 mass is finite for every weight exp(-sigma abs(x)) with sigma>1/2.
+- Gaussian upper budget: with S_a=2 sum Lambda(n)/sqrt(n) over the frozen finite prime set, B_a=4+S_a+4a exp(a), and H=||h||_2, the full genuine Gaussian action has absolute value at most B_a H sqrt(M_R)+4a exp(a)exp(-R+1/(4R))H^2. This gives inverse squared logarithmic Gaussian-mass suppression, not an exponential upper theorem.
+
+These are analytic deductions on actual full weak-null vectors, without asserting any nonzero such vector exists. The certified numerical aperture frontier is still 81/100. Global endpoint exclusion, strict enlarged null transport, F4 entry and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
