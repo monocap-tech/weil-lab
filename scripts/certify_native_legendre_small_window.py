@@ -1,4 +1,6 @@
-"""Exact rational enclosure of actual a=1/4 or a=1/2 degree-seven restrictions.
+"""Exact rational native restrictions at a=1/4, a=1/2, or a=51/100.
+
+The larger aperture is enabled only for the twenty-vector matrix constructor.
 
 No floating values enter the certificate. Floats in JSON are display only.
 """
@@ -133,14 +135,22 @@ def sqrt_rational(x):
 
 
 def certificate(a=F(1,4), return_matrix=False, degree=7):
-    if a not in (F(1,4), F(1,2)):
-        raise ValueError('Only the two audited apertures are supported')
-    if degree not in (7,19) or (degree==19 and (a!=F(1,2) or not return_matrix)):
-        raise ValueError('Degree 19 is supported only by the half-aperture matrix constructor')
+    if a not in (F(1,4), F(1,2), F(51,100)):
+        raise ValueError('Only the three audited apertures are supported')
+    if degree not in (7,19) or (degree==19 and (a not in (F(1,2), F(51,100)) or not return_matrix)):
+        raise ValueError('Degree 19 requires a supported matrix constructor')
+    if a == F(51,100) and (degree != 19 or not return_matrix):
+        raise ValueError('The larger aperture is supported only for the twenty-vector matrix')
     N,K=(80,60) if degree==19 else (60,24 if a==F(1,4) else 40)
     L = 4*a
     exponential_bound = 3 if L == 1 else 9
     kernel_bound = 2 if L == 1 else 3
+    if a == F(51,100):
+        # exp(L)<9 and L/(1-exp(-L))<3 retain the audited error constants.
+        assert L < log_rational(F(9)).lo
+        assert L > log_rational(F(4)).hi
+        assert L < F(9,4)
+        assert log_rational(F(2)).hi < 2*a < log_rational(F(3)).lo
     assert log_rational(F(2)).lo > F(1,2)
     polys = legendre(degree)
     B = bernoulli(2*K+2)
@@ -196,7 +206,7 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
             arch = delta*constant+I(integral-err,integral+err)
             pole = (int((-1)**i)+int((-1)**j))*moments[i]*moments[j]
             prime = I(0)
-            if a == F(1,2):
+            if a in (F(1,2), F(51,100)):
                 # c is the polynomial in y=t/L; shift t/2=log 2 means y=log 2/(2a).
                 y = logtwo/I(2*a)
                 value = I(0)
