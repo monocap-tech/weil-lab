@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / full-domain sign through 27/50; full prime-3 36-source residual Gram certified at 11/20; uniform inverse estimator has a certified negative direction; actual lift/corrected sign and global endpoint exclusion open; F-4 pending
+**Current cursor:** RPB-108 / actual full-domain sign certified at 11/20 including prime 3; optimized 36-moment complement and corrected 36-source sign closed; larger apertures/global endpoint exclusion and retained witness/null transport open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2047,3 +2047,18 @@ The sufficient estimator Q_36-4R_36 has a certified rational negative direction 
 Next: a direction-sensitive lawful lift estimate, a stronger complement bound, or a larger projection. Whole-domain sign remains certified through 27/50; corrected sign at 11/20, global endpoint exclusion, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source and axioms are unchanged; the new analytic/rational certificates are not Lean formalized.
 
 See [full prime-3 residual Gram](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_GRAM36_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_GRAM36.md).
+
+
+## RPB-108 — actual whole-domain sign at the prime-3 aperture 11/20 (2026-10-05)
+
+The stronger 36-moment complement theorem uses physical cutoff 763/100 and retains logarithmic cutoff 7 independently. Its unrounded physical lower bound exceeds 0.3372633707, so physical coercivity is 1/3, logarithmic coercivity remains 9/100, and the lawful complement inverse factor is 3. The previous factor-4 negative-direction certificate remains valid historical work; the stronger bound resolves that sufficient-estimator obstruction.
+
+Using the unchanged full 36-source residual Gram and its actual operator error, all 36 rational interval pivots of Q_36-3Rhat_36-(3delta+1/40000000)I are positive. The lawful lift has physical operator norm at most 7. Square completion on the same canonical supported logarithmic form domain therefore proves
+
+Q(h) >= (1/4000000000) ||h||_2^2 at a=11/20.
+
+This includes actual prime powers 2 and 3, excludes fixed-aperture weak null modes and establishes corresponding full-source WD-T10 unit domination. The stronger complement and whole-domain certificates reproduce byte-for-byte; input hashes and the negative diagonal control pass. No spectral operator-domain membership is introduced.
+
+Next: larger apertures with their actual prime panels/complement, or global endpoint exclusion. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean code and axioms are unchanged; these new analytic/rational certificates are not Lean formalized.
+
+See [prime-3 whole-domain sign](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_WHOLE_DOMAIN36_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_WHOLE_DOMAIN36.md).
