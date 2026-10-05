@@ -1,0 +1,56 @@
+{
+  "aperture": "69/100",
+  "certificates": [
+    {
+      "path": "notes/data/RPB108_PRIME3_MATRIX48_069_CERTIFICATE_20261005.json",
+      "sha256": "25506e1a60261cbdb0c1d8ca03048c39cddb5f717b1c94692b8548a0f035b547",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_SOURCE48_069_CERTIFICATE_20261005.json",
+      "sha256": "689b2b539f389ee21a7ade4ab5b64f93e31a6f02049c7d49d1af8199aa1a1f81",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_COMPLEMENT48_069_CERTIFICATE_20261005.json",
+      "sha256": "fac4735260eab36a356f73eed75b25157f3fc3b6e03a92c7d71c3a26268e2a07",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_GRAM48_069_CERTIFICATE_20261005.json",
+      "sha256": "63b71c004fc507fadf8c6290ab948d4b036611db34d2c7b6b95abd4d83df9ac8",
+      "byte_reproduction_verified": true
+    }
+  ],
+  "physical_dimension": 48,
+  "native_source_pairings_passed": 2304,
+  "regular_source_factors_compared": 6768,
+  "new_exponential_bound": 16,
+  "kernel_bound": 3,
+  "source_bernoulli_pairs": 40,
+  "compressed_prime2_norm_upper": "1",
+  "compressed_prime3_norm_upper": "1",
+  "physical_complement_lower": "89/100",
+  "complement_inverse_factor": "100/89",
+  "previous_064_matrix_byte_regression": true,
+  "previous_064_source_byte_regression": true,
+  "unsupported_constructor_controls_rejected": true,
+  "native_negative_control_rejected": true,
+  "corrected_negative_control_rejected": true,
+  "corrected_margin": "1/1310720000000",
+  "whole_domain_margin": "1/44564480000000",
+  "whole_domain_positivity": true,
+  "fixed_aperture_unit_domination": true,
+  "next_prime_power": 4,
+  "next_aperture_threshold": "log(2)",
+  "next_prime_power_coefficient": "log(2)/2",
+  "next_prime2_adjacency_norm": "sqrt(2)",
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false,
+  "next_prime2_adjacency_support_width_interval": [
+    "2log(2)",
+    "3log(2)"
+  ]
+}

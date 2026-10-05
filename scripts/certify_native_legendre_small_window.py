@@ -135,15 +135,15 @@ def sqrt_rational(x):
 
 
 def certificate(a=F(1,4), return_matrix=False, degree=7):
-    if a not in (F(1,4), F(1,2), F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25)):
+    if a not in (F(1,4), F(1,2), F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100)):
         raise ValueError('Unsupported audited aperture')
     if degree not in (7,19,35,47) or (degree==19 and (a not in (F(1,2), F(51,100), F(27,50), F(11,20)) or not return_matrix)):
         raise ValueError('Degree 19 requires a supported matrix constructor')
     if degree==35 and (a not in (F(11,20), F(14,25)) or not return_matrix):
         raise ValueError('Degree 35 requires the prime-3 aperture matrix constructor')
-    if degree==47 and (a not in (F(14,25),F(3,5),F(16,25)) or not return_matrix):
+    if degree==47 and (a not in (F(14,25),F(3,5),F(16,25),F(69,100)) or not return_matrix):
         raise ValueError("Degree 47 requires an audited prime-3 matrix constructor")
-    if a in (F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25)) and (degree not in (19,35,47) or not return_matrix):
+    if a in (F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100)) and (degree not in (19,35,47) or not return_matrix):
         raise ValueError('The larger aperture requires a supported matrix constructor')
     N,K=(160,120) if degree==47 else ((120,100) if degree==35 else ((80,60) if degree==19 else (60,24 if a==F(1,4) else 40)))
     L = 4*a
@@ -163,6 +163,11 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
         exponential_bound=13
         assert L<log_rational(F(13)).lo
         assert L>log_rational(F(8)).hi and L<F(21,8)
+        assert log_rational(F(3)).hi<2*a<log_rational(F(4)).lo
+    if a==F(69,100):
+        exponential_bound=16
+        assert L<log_rational(F(16)).lo
+        assert L>log_rational(F(15)).hi and L<F(14,5)
         assert log_rational(F(3)).hi<2*a<log_rational(F(4)).lo
     if a in (F(51,100), F(27,50)):
         # exp(L)<9 and L/(1-exp(-L))<3 retain the audited error constants.
@@ -232,7 +237,7 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
                 for coefficient in reversed(c):
                     value = value*y+coefficient
                 prime = prime_coefficient*value
-            if a in (F(11,20), F(14,25), F(3,5),F(16,25)):
+            if a in (F(11,20), F(14,25), F(3,5),F(16,25),F(69,100)):
                 for prime_power in (2,3):
                     ell=log_rational(F(prime_power))
                     y=ell/I(2*a)

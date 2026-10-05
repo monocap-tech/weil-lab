@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual full-domain sign certified at 16/25 with matching 48-vector matrix, sources, Gram and compressed-prime complement; larger apertures/global endpoint exclusion and retained witness/null transport open; F-4 pending
+**Current cursor:** RPB-108 / actual full-domain sign certified at 69/100 with matching 48-vector matrix, sources, Gram and compressed-prime complement; next aperture crosses prime-4 activation and prime-2 chain change at log(2); global endpoint exclusion and retained witness/null transport open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2143,3 +2143,22 @@ All four certificates reproduce byte-for-byte. The previous a=3/5 matrix and sou
 Next: larger apertures with actual prime panels and a matching lawful complement, or global endpoint exclusion. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source, axioms and prior CI standing are unchanged; these analytic/rational certificates are not Lean formalized.
 
 See [aperture 16/25 whole-domain sign](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_48_WHOLE_064_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_48_WHOLE_064.md).
+
+
+## RPB-108 — actual 48-coordinate whole-domain sign at aperture 69/100 (2026-10-05)
+
+The full native matrix, all 48 actual five-panel sources, matching complement and complete residual Gram are certified at a=69/100. Rational bounds at L=69/25 provide exponential remainder multiplier 16 and kernel multiplier 3; source Bernoulli pairs remain 40. Active prime powers are still exactly 2 and 3, with both compressed adjacencies of norm one.
+
+The uniform 48-moment complement has physical coercivity 89/100 at cutoff 81/10 and logarithmic coercivity 9/100 at independent cutoff 7. Its lawful inverse factor is 100/89. All 2304 source/native pairings pass, and actual Gram operator error is below 1.120e-23. All 48 rational interval pivots of Q_48-(100/89)Rhat_48-[(100/89)delta+1/1310720000000]I are positive. The lawful physical lift norm is at most 4. Same-domain square completion proves
+
+Q(h) >= (1/44564480000000) ||h||_2^2 at a=69/100.
+
+This excludes fixed-aperture weak null modes and establishes corresponding full-source WD-T10 unit domination. Both poles, actual prime shifts, exact endpoint logarithms and all mixed/projection terms are retained. No physical spectral operator-domain membership is assumed.
+
+All four certificates reproduce byte-for-byte. The previous a=16/25 matrix and sources reproduce unchanged. All 6768 regular-factor identities, input hashes, pairings, constructor guards and native/corrected negative diagonal controls pass. No floating value enters a sign decision.
+
+The next activation is a=log(2)=log(4)/2. Above that threshold prime power 4 must be included with coefficient Lambda(4)/sqrt(4)=log(2)/2. Prime 2 simultaneously acquires three-point fibres; its compressed adjacency norm is sqrt(2) for 2log(2)<2a<3log(2). The current norm-one argument and five-panel prime set cannot be extended past that threshold unchanged.
+
+Next: cross that threshold with the actual new prime term, chain bound and matching source/complement/Gram custody, or pursue independent global endpoint exclusion. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source, axioms and prior CI standing are unchanged; these analytic/rational certificates are not Lean formalized.
+
+See [aperture 69/100 whole-domain sign](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_48_WHOLE_069_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_48_WHOLE_069.md).
