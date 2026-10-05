@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual full-domain sign certified at 3/4 with matching 48-vector matrix, seven-panel sources, full Gram and refined quarter-line complement; earlier floor-10 scalar-family obstruction preserved; larger apertures/global endpoint exclusion and retained witness/null transport open; F-4 pending
+**Current cursor:** RPB-108 / actual full-domain sign certified at 4/5 with matching 52-vector matrix, seven-panel sources, full Gram and quarter-line complement; prime-5 activation, larger apertures/global endpoint exclusion and retained witness/null transport open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2202,3 +2202,18 @@ All 12 certificates reproduce byte-for-byte, including the preserved estimator o
 Next: larger apertures with actual prime terms, source panels and matching complement bounds, or independent global endpoint exclusion. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source, axioms and prior CI standing are unchanged; these analytic/rational certificates are not Lean formalized.
 
 See [aperture 3/4 whole-domain sign](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME4_48_WHOLE_075_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME4_48_WHOLE_075.md).
+
+
+### RPB-108: actual 52-coordinate whole-domain sign at aperture 4/5 (2026-10-05)
+
+Definitions are recorded in [the 52-coordinate terminology registry](TERMINOLOGY_RPB108_PRIME4_52_080.md). The freshly evaluated matching 52-vector native restriction, actual seven-panel sources, complete residual Gram and uniform 52-moment complement certify on the entire actual canonical supported logarithmic form domain at a=4/5:
+
+\[
+Q(h)\ge\frac{1}{357341279027200000000}\|h\|_2^2.
+\]
+
+The active prime powers remain 2, 3 and 4, with Lambda(4)=log(2); prime 5 activates above this aperture. The physical complement lower bound is 49/100, inverse energy factor 100/49, corrected margin 1/2748779069440000000 and lift norm at most 8. All 52 corrected pivots, 2704 native/source pairings and negative controls pass. All five certificates reproduce byte for byte; all 8580 regular-source factors and three new high-degree correlation identities pass independent exact checks. The previous a=3/4 matrix and source certificates reproduce unchanged.
+
+This excludes fixed-aperture weak null modes and establishes corresponding full-source WD-T10 unit domination. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI are unchanged; this certificate is not Lean formalized.
+
+See [the proof and validation note](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME4_52_WHOLE_080_20261005.md) and [validation manifest](../notes/data/RPB108_PRIME4_52_WHOLE_080_VALIDATION_20261005.json).

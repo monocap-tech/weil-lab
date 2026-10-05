@@ -135,17 +135,21 @@ def sqrt_rational(x):
 
 
 def certificate(a=F(1,4), return_matrix=False, degree=7):
-    if a not in (F(1,4), F(1,2), F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4)):
+    if a not in (F(1,4), F(1,2), F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5)):
         raise ValueError('Unsupported audited aperture')
-    if degree not in (7,19,35,47) or (degree==19 and (a not in (F(1,2), F(51,100), F(27,50), F(11,20)) or not return_matrix)):
+    if degree not in (7,19,35,47,51) or (degree==19 and (a not in (F(1,2), F(51,100), F(27,50), F(11,20)) or not return_matrix)):
         raise ValueError('Degree 19 requires a supported matrix constructor')
     if degree==35 and (a not in (F(11,20), F(14,25)) or not return_matrix):
         raise ValueError('Degree 35 requires the prime-3 aperture matrix constructor')
+    if degree==51 and (a!=F(4,5) or not return_matrix):
+        raise ValueError("Degree 51 requires aperture 4/5 matrix")
+    if a==F(4,5) and degree!=51:
+        raise ValueError("Aperture 4/5 requires degree 51")
     if degree==47 and (a not in (F(14,25),F(3,5),F(16,25),F(69,100),F(7,10),F(3,4)) or not return_matrix):
         raise ValueError("Degree 47 requires an audited prime-3 matrix constructor")
-    if a in (F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4)) and (degree not in (19,35,47) or not return_matrix):
+    if a in (F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5)) and (degree not in (19,35,47,51) or not return_matrix):
         raise ValueError('The larger aperture requires a supported matrix constructor')
-    N,K=(160,120) if degree==47 else ((120,100) if degree==35 else ((80,60) if degree==19 else (60,24 if a==F(1,4) else 40)))
+    N,K=(180,140) if degree==51 else (160,120) if degree==47 else ((120,100) if degree==35 else ((80,60) if degree==19 else (60,24 if a==F(1,4) else 40)))
     L = 4*a
     exponential_bound = 3 if L == 1 else 9
     kernel_bound = 2 if L == 1 else 3
@@ -179,6 +183,11 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
         assert L<log_rational(F(21)).lo
         assert L>log_rational(F(4)).hi and L<=3
         assert log_rational(F(4)).hi<2*a<log_rational(F(5)).lo
+    if a==F(4,5):
+        exponential_bound=25;kernel_bound=4
+        assert L<log_rational(F(25)).lo
+        assert L>log_rational(F(5)).hi and L<=F(16,5)
+        assert log_rational(F(4)).hi<2*a<log_rational(F(5)).lo
     if a in (F(51,100), F(27,50)):
         # exp(L)<9 and L/(1-exp(-L))<3 retain the audited error constants.
         assert L < log_rational(F(9)).lo
@@ -190,7 +199,7 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
     B = bernoulli(2*K+2)
     pi = 16*atan(F(1,5))-4*atan(F(1,239))
     # Euler--Maclaurin for gamma: alternating, next-term bounded remainder.
-    n, order = 100, 12 if degree in (19,35,47) else 6
+    n, order = 100, 12 if degree in (19,35,47,51) else 6
     gamma = I(sum((F(1,k) for k in range(1,n+1)),F(0))-F(1,2*n))
     gamma = gamma-log_rational(F(n))
     gamma = gamma+sum((B[2*k]/F(2*k*n**(2*k)) for k in range(1,order+1)),F(0))
@@ -221,7 +230,7 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
         for j in range(i,len(polys)):
             if (i+j)%2:
                 continue
-            if degree in (19,35,47):
+            if degree in (19,35,47,51):
                 # Reflection makes the two correlations equal for even i+j.
                 c=[a*x*2**k for k,x in enumerate(correlation(p,polys[j]))]
             else:
@@ -255,7 +264,7 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
                     for coefficient in reversed(c):
                         value=value*y+coefficient
                     prime+=2*ell/sqrt_rational(F(prime_power))*value
-            if a in (F(7,10),F(3,4)):
+            if a in (F(7,10),F(3,4),F(4,5)):
                 for prime_power,lambda_n in ((2,logtwo),(3,log_rational(F(3))),(4,logtwo)):
                     ell=log_rational(F(prime_power));y=ell/I(2*a);value=I(0)
                     for coefficient in reversed(c):value=value*y+coefficient

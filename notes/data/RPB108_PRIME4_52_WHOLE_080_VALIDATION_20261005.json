@@ -1,0 +1,67 @@
+{
+  "aperture": "4/5",
+  "certificates": [
+    {
+      "path": "notes/data/RPB108_PRIME4_MATRIX52_080_CERTIFICATE_20261005.json",
+      "sha256": "1b9d88773460a2da329c568279b3d3df5359a59da39a2cd514c96a3270d3b297",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_SOURCE52_080_CERTIFICATE_20261005.json",
+      "sha256": "28e561253972b24806395719990f89b543532f969125da02b0c9bf3e86700522",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_COMPLEMENT52_080_CERTIFICATE_20261005.json",
+      "sha256": "9a8cf6f1526684f6047b3727eda2d15cb69de7065075c5d963393b357fbcccb0",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_GRAM52_080_CERTIFICATE_20261005.json",
+      "sha256": "35d1bcd8befec35d9ced3e27d83c376333286c74dd62bb64be00c8f725ce0507",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME4_ACTIVATION_CONTROLS_080_20261005.json",
+      "sha256": "f235277f9408555d1cf3f5c6e9921d984eae6c3681718c360eeb52fabebedd4a",
+      "byte_reproduction_verified": true
+    }
+  ],
+  "physical_dimension": 52,
+  "actual_prime_powers": [
+    2,
+    3,
+    4
+  ],
+  "source_panel_count": 7,
+  "native_exponential_order": 180,
+  "native_bernoulli_pairs": 140,
+  "new_exponential_bound": 25,
+  "kernel_bound": 4,
+  "source_exponential_order": 60,
+  "source_exponential_remainder_coefficient": "2",
+  "source_bernoulli_pairs": 52,
+  "regular_source_factors_compared": 8580,
+  "new_degree_correlation_checks": 3,
+  "constructor_controls_rejected": true,
+  "native_source_pairings_passed": 2704,
+  "previous_075_matrix_byte_regression": true,
+  "previous_075_source_byte_regression": true,
+  "physical_complement_lower": "49/100",
+  "logarithmic_complement_lower": "9/100",
+  "inverse_factor": "100/49",
+  "corrected_margin": "1/2748779069440000000",
+  "lift_norm_upper": 8,
+  "whole_domain_margin": "1/357341279027200000000",
+  "native_negative_control_rejected": true,
+  "corrected_negative_control_rejected": true,
+  "prime4_omission_control_rejected": true,
+  "prime4_double_coefficient_control_rejected": true,
+  "whole_domain_positivity": true,
+  "fixed_aperture_unit_domination": true,
+  "actual_negative_witness": false,
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}
