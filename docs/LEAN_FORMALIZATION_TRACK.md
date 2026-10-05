@@ -3247,3 +3247,8 @@ Analytic actual polynomial interior source constructor and residual-to-Schur mat
 ## RPB108 certified constant Schur correction — 2026-10-05
 
 Analytic theorem plus rational execution: S(1,1)>194/3125 at a=1/2 after the entire complement correction. Endpoint-log Legendre tail, smooth derivative energy, and exact prime-step projection prove residual norm<9/125; prior raw Q00 lower bound is recomputed. Full Schur mixed sign remains open. No Lean source/proof/CI change or FULL TRANSPORT CLOSED claim.
+
+
+## RPB108 certified parity Schur block — 2026-10-05
+
+Analytic parity theorem plus rational execution certifies the exact constant-linear corrected block with physical coercivity 3/50. Reflection commutes with the actual form and coercive complement inverse; cross-parity Schur entries vanish. Full Schur reduces to 32 even plus 32 odd coordinates, each sign still unresolved. No Lean source/proof/CI change; FULL TRANSPORT CLOSED remains open.

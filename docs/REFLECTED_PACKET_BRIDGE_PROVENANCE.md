@@ -2506,3 +2506,8 @@ Actual Euler action gives c(x)p(x) minus regular polynomial-difference integrals
 ## RPB108 certified constant Schur correction — 2026-10-05
 
 Actual constant source splits into endpoint logs, smooth remainder and prime steps. Analytic Legendre log/derivative tails plus rational prime-step projection enclose the physical residual, giving full complement correction<81/3125 and S(1,1)>194/3125. Artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_CONSTANT_SCHUR_20261005.md`, `docs/TERMINOLOGY_RPB108_CERTIFIED_CONSTANT_SCHUR.md`, `scripts/certify_native_constant_schur.py`, `notes/data/RPB108_CONSTANT_SCHUR_CERTIFICATE_20261005.json`. The prior raw finite certificate is recomputed; the exploratory quadrature is not an input. Only one corrected diagonal is certified, with same-vector custody. No full Schur sign/negative witness/null/endpoint or new Lean/CI result.
+
+
+## RPB108 certified parity Schur block — 2026-10-05
+
+Actual linear source separates weighted endpoint logs, a derivative-controlled smooth remainder and exact shifted-linear prime pieces. Rational projection bounds give residual norm<11/100 and full correction<121/2000; raw Q11>9/100 yields S11>59/2000. Actual parity makes S01=0; combined with the constant certificate this proves corrected block coercivity 3/50. Artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_PARITY_SCHUR_BLOCK_20261005.md`, `docs/TERMINOLOGY_RPB108_CERTIFIED_PARITY_SCHUR_BLOCK.md`, `scripts/certify_native_parity_schur.py`, `notes/data/RPB108_PARITY_SCHUR_CERTIFICATE_20261005.json`. Prior certificates are recomputed, no exploratory quadrature used. Only the named corrected two-dimensional block is closed; both 32-dimensional parity signs and global endpoint input remain open. Lean unchanged.
