@@ -3252,3 +3252,8 @@ Analytic theorem plus rational execution: S(1,1)>194/3125 at a=1/2 after the ent
 ## RPB108 certified parity Schur block — 2026-10-05
 
 Analytic parity theorem plus rational execution certifies the exact constant-linear corrected block with physical coercivity 3/50. Reflection commutes with the actual form and coercive complement inverse; cross-parity Schur entries vanish. Full Schur reduces to 32 even plus 32 odd coordinates, each sign still unresolved. No Lean source/proof/CI change; FULL TRANSPORT CLOSED remains open.
+
+
+## RPB108 coupled residual precision — 2026-10-05
+
+Coupled actual eight-source residual pilot remains exploratory. Exact rational audit proves both stored Gram approximations cannot meet operator error 1e-6 to the same target; at least one error exceeds 2e-5. Source-map norm error controls Gram error by eta(2M+eta), but no actual eta enclosure is computed here. Previous corrected parity certificate reproduces. No Lean code/proof/CI change or FULL TRANSPORT CLOSED claim.

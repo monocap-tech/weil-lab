@@ -1935,3 +1935,10 @@ See `../notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_CONSTANT_SCHUR_20261005.md` 
 RPB108 exact corrected constant-linear block at a=1/2 certified S(e,e)>(3/50)||e||_physical^2 for span{1,2x}. Linear Schur diagonal>59/2000, constant>194/3125; actual reflection gives exact cross-entry zero and splits full Schur into two 32-dimensional parity blocks. Full parity-block signs remain uncomputed; FULL TRANSPORT CLOSED/F4/global endpoint exclusion open; Lean unchanged.
 
 See `../notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_PARITY_SCHUR_BLOCK_20261005.md` and `TERMINOLOGY_RPB108_CERTIFIED_PARITY_SCHUR_BLOCK.md`. This handles arbitrary complex coefficients on the named corrected two-dimensional block and includes the whole complement correction, without certifying either full parity block.
+
+
+## RPB108 coupled residual precision — 2026-10-05
+
+RPB108 coupled eight-source no-lift residual pilot has positive displayed Q8-5R minima (~4.94e-6 even,3.82e-4 odd), uncertified. Exact recorded-matrix discrepancy audit proves at least one Gram approximation error>2e-5 to any common target; repeat eigenvalue stability cannot supply isotropic sign budget. Next: rigorous correlated endpoint/source Gram enclosure; other56 Schur coordinates remain. FULL TRANSPORT CLOSED/F4/global endpoint exclusion open; Lean unchanged.
+
+See `../notes/REFLECTED_PACKET_BRIDGE_108_COUPLED_RESIDUAL_PRECISION_20261005.md` and `TERMINOLOGY_RPB108_COUPLED_RESIDUAL_PRECISION.md`. Actual coupled source pilot and exact arithmetic audit of stored approximation disagreement have distinct scopes. No corrected sign is promoted from quadrature.
