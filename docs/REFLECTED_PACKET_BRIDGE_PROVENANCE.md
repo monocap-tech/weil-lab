@@ -2521,3 +2521,10 @@ Simultaneous actual polynomial source constructor retains within-parity residual
 ## RPB108 exact endpoint-log Gram — 2026-10-05
 
 Rational shifted Legendre products, harmonic beta log moments and Machin pi enclosure yield exact endpoint-log residual Gram. Remaining smooth and mixed terms use an exploratory panel endpoint subtraction pilot, retaining all mixed projection terms. Artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_EXACT_ENDPOINT_LOG_GRAM_20261005.md`, `docs/TERMINOLOGY_RPB108_EXACT_ENDPOINT_LOG_GRAM.md`, `scripts/certify_native_endpoint_log_gram.py`, `scripts/explore_native_log_separated_residual.py`, `notes/data/RPB108_ENDPOINT_LOG_GRAM_CERTIFICATE_20261005.json`, `notes/data/RPB108_LOG_SEPARATED_RESIDUAL_PILOT_20261005.json`. Certificate and pilot reproduce; only the log component is certified. No full Gram/Schur sign/negative witness/null/endpoint result or new Lean/CI claim.
+
+
+## RPB108 actual smooth-source enclosure — 2026-10-05
+
+The eight actual degree-0..7 sources at a=1/2, after removing the exact endpoint logarithm, now have explicit rational polynomial approximations on the three exact prime panels. The combined L2 source-map error is certified below 1.30e-30 by Bernoulli/Taylor remainders and outward rational coefficient enclosures. All native pole moments and prime translates use the same trial vectors. Constructor, complete coefficients and proof: `scripts/certify_native_smooth_source.py`, `notes/data/RPB108_SMOOTH_SOURCE_CERTIFICATE_20261005.json`, `notes/REFLECTED_PACKET_BRIDGE_108_SMOOTH_SOURCE_ENCLOSURE_20261005.md`; terminology: `docs/TERMINOLOGY_RPB108_SMOOTH_SOURCE_ENCLOSURE.md`.
+
+Projection contracts the source error; residual Gram error is bounded by eta(2M+eta) once the surrogate residual norm M and its Gram are enclosed. Remaining work is rigorous polynomial/mixed-log integration at the exact prime cutoffs and projection subtraction. The existing floating pilot is not automatically certified. The eight-source Schur sign, other 56 coordinates, global endpoint input, F4 and FULL TRANSPORT CLOSED remain open. Lean checkpoint and CI claims remain unchanged.
