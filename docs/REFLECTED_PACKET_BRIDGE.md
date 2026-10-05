@@ -1914,3 +1914,10 @@ See `../notes/REFLECTED_PACKET_BRIDGE_108_RATIONAL_PRIME_COERCIVITY_20261005.md`
 RPB108 actual a=1/2 complement: physical moments 0..63 vanish => Q>1/5 physical L2 and Q>9/100 logarithmic energy. Actual sign/index/nullity reduce to 64-dimensional exact Schur form; missing input is its coupling correction/sign, not raw finite restriction positivity. FULL TRANSPORT CLOSED/F4/global endpoint exclusion open; Lean unchanged.
 
 See `../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LEGENDRE_COMPLEMENT_20261005.md` and `TERMINOLOGY_RPB108_ACTUAL_LEGENDRE_COMPLEMENT.md`. Exact rational factorial constants certify the analytic complement estimates. The Schur form subtracts an actual nonnegative coupling correction; its sign has not been computed.
+
+
+## RPB108 actual Schur residual — 2026-10-05
+
+RPB108 actual polynomial source constructor + physical residual enclosure: S_Z-5R <= exact 64-dimensional Schur S <= S_Z. Concrete interior action has endpoint log terms, finite prime jumps and same-vector pole moments; physical L2 source membership proved, not assumed. Missing input: rigorous full residual Gram/corrected matrix arithmetic. Constant-source pilot uncertified. FULL TRANSPORT CLOSED/F4 and global endpoint exclusion open; Lean unchanged.
+
+See `../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SCHUR_RESIDUAL_20261005.md` and `TERMINOLOGY_RPB108_ACTUAL_SCHUR_RESIDUAL.md`. An explicit actual supported-polynomial source formula yields physical residuals and bounds the uncomputed complement correction. No corrected sign is certified.

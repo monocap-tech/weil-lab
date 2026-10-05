@@ -2496,3 +2496,8 @@ Scaled tail-free arch formula, rigorous exponential/Bernoulli remainders, interv
 ## RPB108 actual Legendre complement — 2026-10-05
 
 Actual Euler symbol lower bounds, prime-2 amplitude S<1, physical polynomial annihilation, exact pole moments and rational Taylor/factorial remainders give a coercive actual complement. The initial 96-moment sufficient bound sharpens to 64. Artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LEGENDRE_COMPLEMENT_20261005.md`, `docs/TERMINOLOGY_RPB108_ACTUAL_LEGENDRE_COMPLEMENT.md`, `scripts/certify_native_legendre_complement.py`, `notes/data/RPB108_LEGENDRE_COMPLEMENT_CERTIFICATE_20261005.json`. Same-vector exact Schur reduction preserves supported source custody. Its 64-dimensional corrected sign is uncomputed; raw eight-vector positivity does not control the coupling correction. Prior certificates reproduce unchanged; Lean unchanged.
+
+
+## RPB108 actual Schur residual — 2026-10-05
+
+Actual Euler action gives c(x)p(x) minus regular polynomial-difference integrals, with c expressed using atanh/atan endpoint tails. Native prime translations and pole moments retain the same p. The proved complement yields exact enclosure S_Z-5R<=S<=S_Z from projected physical residuals. Artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SCHUR_RESIDUAL_20261005.md`, `docs/TERMINOLOGY_RPB108_ACTUAL_SCHUR_RESIDUAL.md`, `scripts/explore_native_constant_coupling.py`, `notes/data/RPB108_CONSTANT_COUPLING_PILOT_20261005.json`. Pilot reproduces but remains uncertified; complement certificate unchanged. No Schur sign/negative witness/null/endpoint result or new Lean/CI claim.
