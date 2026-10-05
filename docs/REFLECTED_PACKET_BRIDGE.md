@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / full-domain sign through 27/50; full prime-3 36-vector matrix and source enclosures certified; full 36-source residual Gram, corrected sign and global endpoint exclusion open; F-4 pending
+**Current cursor:** RPB-108 / full-domain sign through 27/50; full prime-3 36-source residual Gram certified at 11/20; uniform inverse estimator has a certified negative direction; actual lift/corrected sign and global endpoint exclusion open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2036,3 +2036,14 @@ At a=11/20 the actual native matrix on degrees 0..35 is certified with raw physi
 All 36 five-panel actual sources are enclosed with physical source-map error below 6.49e-26, including an explicit coefficient rounding budget at grid 10^-40. The first twenty source-panel coefficient differences remain inside their combined error budgets. Matrix and rounded source certificates reproduce exactly. Proof: notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_MATRIX36_20261005.md. Definitions: docs/TERMINOLOGY_RPB108_PRIME3_MATRIX36.md. Scripts/data: certify_native_prime3_{matrix36,source36}.py and RPB108_PRIME3_{MATRIX36,SOURCE36}_CERTIFICATE_20261005.json.
 
 Next: full 36-source residual Gram with projection degrees 0..35, all 1296 mixed source/native pairings and operator error, then the corrected Q36-4R36 sign or sharper actual lifts. Raw finite positivity does not settle coupling. Whole-domain positivity at 11/20, global endpoint exclusion, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Full-domain positivity through 27/50 remains certified. Lean source, axioms and prior CI claims unchanged; no new Lean formalization.
+
+
+## RPB-108 — full prime-3 36-source residual Gram and uniform inverse obstruction (2026-10-05)
+
+The full residual Gram at a=11/20 is now certified on all physical degrees 0..35, with the same 36-vector projection, actual prime-2 and prime-3 panels, exact endpoint logarithm, both poles, every smooth/log mixed term and all projection products. All 1296 source/native pairings pass. The largest Gram entry width is below 3.042e-114 and the actual Gram operator error is below 2.84e-25. The complete certificate reproduces byte-for-byte.
+
+The sufficient estimator Q_36-4R_36 has a certified rational negative direction with Rayleigh upper bound below -1.5114e-5. The same vector has positive raw native energy above 2.15299e-4. Even the existing unrounded complement inverse, approximately 3.847444, fails on that vector; a uniform inverse factor would need to be below 3.571570 just to remove this obstruction. This is a negative direction of a lower estimator, not of the actual corrected form or full native form.
+
+Next: a direction-sensitive lawful lift estimate, a stronger complement bound, or a larger projection. Whole-domain sign remains certified through 27/50; corrected sign at 11/20, global endpoint exclusion, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source and axioms are unchanged; the new analytic/rational certificates are not Lean formalized.
+
+See [full prime-3 residual Gram](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_GRAM36_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_GRAM36.md).

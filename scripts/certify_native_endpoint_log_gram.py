@@ -16,7 +16,7 @@ def shifted_legendre(degree):
 
 
 def exact_log_data(source_degree=7,projection_dimension=64):
-    if source_degree not in (7,19) or projection_dimension not in (20,64):
+    if (source_degree,projection_dimension)!=(35,36) and (source_degree not in (7,19) or projection_dimension not in (20,64)):
         raise ValueError('Unsupported finite source/projection dimensions')
     p=shifted_legendre(max(projection_dimension-1,source_degree))
     maximum_degree=max(projection_dimension-1+source_degree,2*source_degree)
@@ -71,3 +71,4 @@ def certificate():
 
 if __name__=='__main__':
     print(json.dumps(certificate(),indent=2))
+
