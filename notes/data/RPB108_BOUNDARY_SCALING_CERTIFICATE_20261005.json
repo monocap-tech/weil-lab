@@ -1,0 +1,23 @@
+{
+  "F4": false,
+  "FULL_TRANSPORT_CLOSED": false,
+  "Lean_changed": false,
+  "actual_weak_null_sequence_asserted": false,
+  "base_commit": "b3dc9e56d29c2ace138a04fa9b71c6ca50dbdb65",
+  "checks": {
+    "arch_scaled_lower": true,
+    "exp_lower_8_over_3": true,
+    "exponential_lower": true,
+    "kernel_scale_range": true,
+    "log_energy_bound": true,
+    "near_remainder_area": true,
+    "pole_scaled_upper": true,
+    "residual_mass_lower": true,
+    "residual_scaled_lower": true,
+    "tail_hs_coefficient": true
+  },
+  "global_endpoint_exclusion": false,
+  "negative_control_drop_singular_term_rejected": true,
+  "scope": "exact rational constants; universal kernel/operator/Fourier arguments are analytic proofs",
+  "signed_gaussian_counterexample_asserted": false
+}

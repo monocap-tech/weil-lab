@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual full weak-null boundary residual realization and frozen-multiplier domain derived; genuine Gaussian upper bound gives inverse squared logarithmic mass suppression; next stronger signed boundary interaction estimate beyond this rate; numerical aperture frontier 81/100; global endpoint exclusion and retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / exact boundary kernel split into half-Carleman plus Hilbert-Schmidt remainder; actual exterior residual noncompact in physical L2 and no norm-only positive-power shrinking-collar bound on unit logarithmic carriers; weak-null-specific signed Gaussian estimate still needed; numerical aperture frontier 81/100; global endpoint exclusion and retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2276,3 +2276,16 @@ The actual whole-line Gaussian action is bounded above in absolute value by B_a|
 The constants/control certificate reproduces byte for byte; pi and Schur budgets and seven interval kernel checks pass, and dropping the singular term is rejected. The universal boundary argument is analytic, not mechanically or Lean certified. No nonzero endpoint is asserted, and diagonal/selected nullity is not substituted for actual full mixed nullity. The numerical aperture frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
 
 See [the analytic proof and upper estimate](../notes/REFLECTED_PACKET_BRIDGE_108_ENDPOINT_BOUNDARY_REGULARITY_20261005.md) and [validation manifest](../notes/data/RPB108_ENDPOINT_BOUNDARY_REGULARITY_VALIDATION_20261005.json).
+
+
+### RPB-108 — exact boundary scaling and norm-only collar obstruction (2026-10-05)
+
+Definitions: [boundary scaling registry](TERMINOLOGY_RPB108_BOUNDARY_SCALING.md). Proof: [actual boundary scaling](../notes/REFLECTED_PACKET_BRIDGE_108_BOUNDARY_SCALING_20261005.md). Base: b3dc9e56d29c2ace138a04fa9b71c6ca50dbdb65.
+
+The exact exterior archimedean kernel satisfies H_k=(1/2)C_L+H_r, with H_r Hilbert-Schmidt and squared Hilbert-Schmidt norm bounded by 1/2+5L/4, L=2a. The actual exterior residual on physical-L2-normalized step vectors supported in [a-2epsilon,a-epsilon] retains squared mass at least 1/256 on [a+epsilon,a+2epsilon] for sufficiently small epsilon. The prime shifts miss this interval and the scaled pole term tends to zero. Thus the residual map into any fixed right collar is noncompact in physical L2.
+
+After logarithmic-carrier normalization the same actual residual has squared mass at least 1/[256(5+log(1/epsilon))]. This excludes a uniform positive-power shrinking-collar bound for arbitrary unit-carrier vectors. These vectors are not asserted weak-null. The result does not contradict compactness of the logarithmic-carrier embedding, and does not transfer to an oscillatory signed Gaussian pairing.
+
+The preceding weak-null boundary regularity and M_R=O((log R)^(-2)) result remain valid. A stronger signed estimate must use additional mixed-null information or cancellation in the signed pairing. The exact rational constant certificate reproduced byte for byte; ten checks passed and the dropped-singularity control was rejected. The operator and Fourier proofs are analytic, not mechanically checked or Lean formalized.
+
+Artifacts: scripts/certify_native_boundary_scaling.py; notes/data/RPB108_BOUNDARY_SCALING_CERTIFICATE_20261005.json; notes/data/RPB108_BOUNDARY_SCALING_VALIDATION_20261005.json. Frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
