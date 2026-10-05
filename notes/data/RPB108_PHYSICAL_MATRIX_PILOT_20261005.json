@@ -1,0 +1,81 @@
+{
+  "status": "tail-free identity; numerical integration remains exploratory",
+  "results": [
+    {
+      "a": 0.25,
+      "degree": 7,
+      "physical_nodes": 128,
+      "physical_pilot_eigenvalues": [
+        0.033427822268055754,
+        0.40922614411343006,
+        0.948041233505744,
+        1.2550062214327626,
+        1.5451569722159886,
+        1.7635532198223638,
+        2.631344783144662,
+        2.8626493522267444
+      ],
+      "repeat_difference": 1.0687571144874127e-13,
+      "physical_minus_truncated_norm": 0.013372215936173347,
+      "physical_minus_truncated_min_eigenvalue": -1.7845598351909207e-14,
+      "certified_sign": false
+    },
+    {
+      "a": 0.5,
+      "degree": 7,
+      "physical_nodes": 128,
+      "physical_pilot_eigenvalues": [
+        5.019351129402505e-06,
+        0.00040503764599626393,
+        0.023942132883980435,
+        0.4026221237885502,
+        1.0451929553330355,
+        1.2562065789776606,
+        1.8163880222986901,
+        2.181236167913841
+      ],
+      "repeat_difference": 1.0586911718908669e-13,
+      "physical_minus_truncated_norm": 0.012402748501553188,
+      "physical_minus_truncated_min_eigenvalue": -1.7556075704696903e-14,
+      "certified_sign": false
+    },
+    {
+      "a": 0.75,
+      "degree": 7,
+      "physical_nodes": 128,
+      "physical_pilot_eigenvalues": [
+        1.0827079442493121e-06,
+        4.072978884616027e-05,
+        0.006199356201885113,
+        0.04021406197402186,
+        0.27438013118594623,
+        0.3240676409463058,
+        1.4627416192413123,
+        1.861432065171697
+      ],
+      "repeat_difference": 1.0494624665599029e-13,
+      "physical_minus_truncated_norm": 0.011834607706031706,
+      "physical_minus_truncated_min_eigenvalue": -1.8036528595432506e-14,
+      "certified_sign": false
+    },
+    {
+      "a": 1.0,
+      "degree": 7,
+      "physical_nodes": 128,
+      "physical_pilot_eigenvalues": [
+        8.443401726064851e-08,
+        7.28939253276377e-06,
+        0.0008758649152123874,
+        0.005088697775292425,
+        0.07389278975835918,
+        0.12654175532948903,
+        0.8998610337275317,
+        1.9919906981973279
+      ],
+      "repeat_difference": 1.0359055373095546e-13,
+      "physical_minus_truncated_norm": 0.011433192936554802,
+      "physical_minus_truncated_min_eigenvalue": -2.0446788900257593e-14,
+      "certified_sign": false
+    }
+  ]
+}
