@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual full-domain sign certified at 14/25 with matching 48-vector matrix, sources, Gram and lawful complement; larger apertures/global endpoint exclusion and retained witness/null transport open; F-4 pending
+**Current cursor:** RPB-108 / actual full-domain sign certified at 3/5 with matching 48-vector matrix, sources, Gram and lawful complement; larger apertures/global endpoint exclusion and retained witness/null transport open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2107,3 +2107,20 @@ The native restriction, rounded sources and full Gram/whole-domain certificate r
 Next: larger apertures with actual prime panels and a lawful matching complement, or global endpoint exclusion. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source and axioms are unchanged; these analytic/rational certificates are not Lean formalized.
 
 See [48-coordinate whole-domain sign](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_48_WHOLE_056_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_48_WHOLE_056.md).
+
+
+## RPB-108 — actual 48-coordinate whole-domain sign at aperture 3/5 (2026-10-05)
+
+The actual 48-vector native matrix, all 48 five-panel source enclosures, full residual Gram and lawful complement at a=3/5 are certified. Prime powers 2 and 3 remain active. Rational bounds at L=12/5 give exponential multiplier 12 and kernel multiplier 3; source Bernoulli pairs are increased to 40 at this new aperture. Earlier supported aperture arithmetic is retained.
+
+The 48-moment complement has physical coercivity 11/20 and logarithmic coercivity 9/100, with inverse factor 20/11. All 2304 native source pairings pass; actual Gram operator error is below 1.002e-28. All 48 rational interval pivots of Q_48-(20/11)Rhat_48-[(20/11)delta+1/1280000000]I are positive, and the physical lawful lift norm is at most 6. Same-domain square completion proves
+
+Q(h) >= (1/94720000000) ||h||_2^2 at a=3/5.
+
+This excludes fixed-aperture weak null modes and establishes corresponding full-source WD-T10 unit domination. Both poles, actual prime shifts, the exact endpoint logarithm and every mixed/projection term are retained. No spectral operator-domain membership is assumed.
+
+The native matrix, rounded sources, complement and full Gram/whole-domain certificates reproduce byte-for-byte. All 6768 regular-source factor comparisons, input hashes, pairings and both native/corrected negative diagonal controls pass. No floating value enters a sign decision.
+
+Next: larger apertures with actual prime panels and a lawful matching complement, or global endpoint exclusion. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source and axioms are unchanged; these analytic/rational certificates are not Lean formalized.
+
+See [aperture 3/5 whole-domain sign](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_48_WHOLE_060_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_48_WHOLE_060.md).
