@@ -1,0 +1,29 @@
+{
+  "certificate_reproduced_byte_for_byte": true,
+  "certificate_sha256": "32f664f3e4a686dd220755c18f8aa38b790955b9c6b1a08e99fb8c5ac3a1615c",
+  "source_and_native_hashes_verified": true,
+  "residual_dimension": 84,
+  "native_source_pairing_count": 7056,
+  "symmetry_and_all_entry_widths_verified": true,
+  "exact_decimal_grid_endpoint_count": 14112,
+  "source_error_correction_verified": true,
+  "sign_and_lift_margin_fields_verified": true,
+  "whole_domain_positivity": true,
+  "independent_hankel_audit": {
+    "actual_source_pair_checks": 9,
+    "actual_endpoint_log_pair_checks": 9,
+    "tested_panels": [
+      0,
+      4,
+      8
+    ],
+    "independent_direct_double_sum_agreement": true,
+    "original_convolution_interval_containment": true,
+    "large_integer_carry_controls_passed": true,
+    "mismatched_projection_controls_rejected": true
+  },
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

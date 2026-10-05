@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / matching actual 84-coordinate native restriction and nine-panel sources certified at 81/100; next full residual Gram, all 7056 pairings and corrected Schur sign with factor 100/51; whole-domain positivity frontier remains 4/5; global endpoint exclusion and retained witness/null transport open; F-4 pending
+**Current cursor:** RPB-108 / complete actual 84-source Gram and corrected Schur sign certified at 81/100; whole-domain physical bound 1/20200000000000000000000000000000; all 7056 pairings and reproduction verified; next global endpoint-exclusion bridge audit; global endpoint exclusion and retained witness/null transport open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2239,3 +2239,16 @@ All 84 actual nine-panel sources are enclosed with aggregate physical L2 map err
 The uniform 84-moment complement remains 51/100 physically and 9/100 logarithmically, with inverse factor 100/51. The next task is the complete actual residual Gram, all 7056 native/source pairings and corrected Schur sign. Whole-domain positivity at a=81/100 is not established by these finite/source results; its certified frontier remains a=4/5. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI are unchanged.
 
 See [the finite/source proof and validation note](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_84_FINITE_081_20261005.md) and [validation manifest](../notes/data/RPB108_PRIME5_84_FINITE_081_VALIDATION_20261005.json).
+
+
+### RPB-108: complete actual prime-5 84-source Gram and corrected sign (2026-10-05)
+
+Definitions are recorded in [the corrected-form terminology registry](TERMINOLOGY_RPB108_PRIME5_84_SCHUR_081.md). The complete actual corrected form at a=81/100 is positive with physical margin 1/100000000000000000000000000000. The full-domain physical quadratic form satisfies Q(h)>=1/20200000000000000000000000000000 ||h||_2^2. This closes the matching 84-coordinate sign problem, excludes fixed-aperture weak null modes and establishes fixed-aperture full-source unit domination.
+
+All 84 interval pivots of Q84-(100/51)Rhat84-((100/51)delta+tau)I are strictly positive. The certified lift norm is strictly below the integer 10, yielding the whole-domain coefficient 1/20200000000000000000000000000000. The negative diagonal control is rejected. The maximum full-Gram interval width is approximately 3.041950e-114. The aggregate surrogate residual-source norm bound is approximately 4.78362661477; the actual Gram operator correction delta is approximately 1.695255e-49. These decimal values are displays; every load-bearing bound is stored as an exact rational in the certificate.
+
+Two fresh complete arithmetic runs produce byte-identical certificates, including after lossless finite-decimal endpoint encoding; all 14,112 endpoint conversions per run equal their original exact rational values. The independent custody/sign validator passes source/native SHA-256 checks, every stored entry width, symmetry, the source correction, sign fields and (when positive) the lift and whole-domain bound. All 18 sampled Hankel contractions pass direct double-sum equality and convolution-interval containment; large integer carry and mismatched projection controls pass. The integration uses exact integer Hankel moments, outward grid 10^-600 and 500-term rational logarithm enclosures. An initial lower-precision run failed the unchanged width gate and made no sign claim.
+
+Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI are unchanged.
+
+See [the proof and validation note](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_84_SCHUR_081_20261005.md) and [validation manifest](../notes/data/RPB108_PRIME5_84_SCHUR_081_VALIDATION_20261005.json).
