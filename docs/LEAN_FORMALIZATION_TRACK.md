@@ -3289,3 +3289,16 @@ The eight actual corrected sources were freshly instantiated against this larger
 Proof and artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_BESSEL_COMPLEMENT_REDUCTION_20261005.md`, `scripts/certify_native_legendre_bessel_complement.py`, parameterized `scripts/certify_native_coupled_schur.py`, `notes/data/RPB108_BESSEL_COMPLEMENT_CERTIFICATE_20261005.json`, `notes/data/RPB108_REDUCED_COUPLED_SCHUR_CERTIFICATE_20261005.json`; terminology: `docs/TERMINOLOGY_RPB108_BESSEL_COMPLEMENT_REDUCTION.md`.
 
 The current exact obstruction is now the twelve-coordinate Schur form on physical degrees 8..19 after eliminating the positive eight-source block in S_20, including its corrected mixed coupling. It splits into two six-coordinate parity sectors. Positivity on E_8+F_20 gives negative index and weak nullity at most 12 (six per parity). Its remaining entries and sign are not certified. The prior 56-coordinate reduction remains historical; changing complements required the fresh corrected block above. Global endpoint input, F4 and FULL TRANSPORT CLOSED remain open. Lean source/axioms/CI claims are unchanged.
+
+
+## RPB108 actual twenty-source constructor — 2026-10-05
+
+The actual native matrix on physical degrees 0..19 is now fully enclosed and certified above (1/2000000)I; entry widths are below 3.65e-44. This supplies all raw native mixed and remaining entries, including actual arch correlations, prime 2 and poles. The corrected Schur sign is not inferred from raw finite positivity.
+
+All twenty actual interior sources now have concrete exact-endpoint-log plus rational smooth polynomial constructors on the exact prime panels. The combined source error is below 2.02e-29; the first-eight coefficient/error rows are preserved exactly. Reflection accelerates the polynomial arch integrals without changing their source vectors. The actual finite interior-source map J_20 is injective with (1/2000000)||e||_2 <= ||J_20 e||_2 <= 23489||e||_2. This finite custody result is not identified with the global actual-divisor graph observation carrier.
+
+Projection off degrees 0..19 contracts the source error. A global certified norm bound gives the source-induced full residual Gram error below 9.47e-25, before integration error. Next: enclose that twenty-source projected Gram with all log/smooth mixed terms and exact prime cutoffs, then the corrected mixed/remaining sign (or use approximate coercive lifts if the no-lift bound is too coarse).
+
+Proof/artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_TWENTY_SOURCE_CONSTRUCTOR_20261005.md`, `scripts/certify_native_twenty_matrix.py`, parameterized `scripts/certify_native_smooth_source.py`, `notes/data/RPB108_NATIVE_TWENTY_MATRIX_CERTIFICATE_20261005.json`, `notes/data/RPB108_TWENTY_SMOOTH_SOURCE_CERTIFICATE_20261005.json`; terminology: `docs/TERMINOLOGY_RPB108_TWENTY_SOURCE_CONSTRUCTOR.md`. Prior default source and half-window certificates are unchanged; prefix source rows and native interval containment checks pass; extended numerical source data reproduce and negative controls reject.
+
+The exact remaining sign obstruction is still twelve coordinates (six per parity) at a=1/2. Its corrected entries/sign, global endpoint input, F4 and FULL TRANSPORT CLOSED remain open. Lean source, axioms and prior CI claims are unchanged.
