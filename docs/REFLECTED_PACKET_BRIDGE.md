@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual full-domain sign certified at 11/20 including prime 3; optimized 36-moment complement and corrected 36-source sign closed; larger apertures/global endpoint exclusion and retained witness/null transport open; F-4 pending
+**Current cursor:** RPB-108 / actual full-domain sign certified at 11/20; actual 36-vector matrix, all source enclosures and lawful complement certified at 14/25; full residual Gram/corrected sign there and global endpoint exclusion open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2062,3 +2062,16 @@ This includes actual prime powers 2 and 3, excludes fixed-aperture weak null mod
 Next: larger apertures with their actual prime panels/complement, or global endpoint exclusion. Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean code and axioms are unchanged; these new analytic/rational certificates are not Lean formalized.
 
 See [prime-3 whole-domain sign](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_WHOLE_DOMAIN36_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_WHOLE_DOMAIN36.md).
+
+
+## RPB-108 — actual 36-vector inputs at aperture 14/25 (2026-10-05)
+
+The actual prime-3 native matrix at a=14/25 is certified on all 36 physical Legendre coordinates, with raw physical margin 1/64000000. All 36 actual five-panel source enclosures are certified with physical source-map error below 2.144e-25, including coefficient rounding. The same actual prime powers 2 and 3, both poles and aperture-specific physical normalization are retained.
+
+The uniform 36-moment complement theorem through 14/25 uses physical cutoff 15/2, giving unrounded physical lower bound above 0.3180393848 and certified physical coercivity 31/100. The independent logarithmic cutoff 7 retains coercivity 9/100. The lawful complement inverse factor is therefore 100/31. All three certificates reproduce byte-for-byte; all 36 shifted native pivots, exact parity, source rounding/error checks and negative diagonal control pass.
+
+Next: the full actual residual Gram at this new aperture, all 1296 source/native pairings, actual Gram operator error and the corrected estimator Q_36-(100/31)R_36. No corrected or whole-domain sign at 14/25 is claimed by these inputs. Whole-domain positivity remains certified at 11/20 with margin 1/4000000000.
+
+Global endpoint exclusion, all-window domination, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Lean source and axioms are unchanged; these analytic/rational inputs are not Lean formalized.
+
+See [aperture 14/25 inputs](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_056_INPUTS_20261005.md) and [terminology](TERMINOLOGY_RPB108_PRIME3_056_INPUTS.md).

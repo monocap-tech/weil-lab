@@ -56,7 +56,7 @@ def quantize(result):
 
 
 def compute(degree=35, a=F(11,20)):
-    if a != F(11,20):
+    if a not in (F(11,20),F(14,25)):
         raise ValueError("Unsupported source aperture")
     d=2*a
     assert log_rational(F(3)).hi<d<log_rational(F(4)).lo

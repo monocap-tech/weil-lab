@@ -1,0 +1,37 @@
+{
+  "aperture": "14/25",
+  "certificates": [
+    {
+      "path": "notes/data/RPB108_PRIME3_MATRIX36_056_CERTIFICATE_20261005.json",
+      "sha256": "2dd9b77c60032a12be5e0e3e5d5a7a4b3b782fe23b1848511400f81838f60621",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_SOURCE36_056_CERTIFICATE_20261005.json",
+      "sha256": "36fae1a71982156633b933f6372d345473d0a33192b3d23440aa0538d45acda5",
+      "byte_reproduction_verified": true
+    },
+    {
+      "path": "notes/data/RPB108_PRIME3_COMPLEMENT36_056_CERTIFICATE_20261005.json",
+      "sha256": "01f3e149fca37a5d05d98dab672423bfdea1af898b572dc7f68a46f2e2ce4057",
+      "byte_reproduction_verified": true
+    }
+  ],
+  "physical_dimension": 36,
+  "source_panel_count": 5,
+  "raw_margin": "1/64000000",
+  "physical_complement_lower": "31/100",
+  "logarithmic_complement_lower": "9/100",
+  "source_map_error_upper": "21434404414116682456375165897305208116991301999507441982464782796571603104770430001104795652974774996236905572573745657048995147009036206455404404753488689617667137711434485793/100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "all_shifted_pivots_positive": true,
+  "negative_control_rejected": true,
+  "native_source_pairings_checked": false,
+  "full_residual_gram_certified": false,
+  "corrected_sign_certified": false,
+  "whole_domain_positivity_at_new_aperture": false,
+  "previous_whole_domain_sign_aperture": "11/20",
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}
