@@ -55,27 +55,32 @@ def mixed_integral(p,a,b):
              +log_primitive(reverse,I(1)-a)-log_primitive(reverse,I(1)-b))/I(2)
 
 
-def certificate():
+def certificate(projection_dimension=64):
+    if projection_dimension not in (20,64):
+        raise ValueError('Only independently certified complements are supported')
     previous=I.grid
     I.grid=10**120
     try:
-        return compute()
+        return compute(projection_dimension)
     finally:
         I.grid=previous
 
 
-def compute():
+def compute(projection_dimension=64):
+    if projection_dimension==20:
+        from certify_native_legendre_bessel_complement import certificate as complement_certificate
+        complement_certificate()
     source=json.loads((Path(__file__).resolve().parents[1]/'notes/data/RPB108_SMOOTH_SOURCE_CERTIFICATE_20261005.json').read_text())
     p,CL,RL=exact_log_data()
     ell=log_rational(F(2),220)
     cuts=[I(0),I(1)-ell,ell,I(1)]
     polys=[[[F(v) for v in panel['coefficients']] for panel in row['panels']] for row in source['rows']]
-    CS=[[I(0) for _ in range(8)] for _ in range(64)]
+    CS=[[I(0) for _ in range(8)] for _ in range(projection_dimension)]
     smooth=[[I(0) for _ in range(8)] for _ in range(8)]
     cross=[[I(0) for _ in range(8)] for _ in range(8)]
     for panel,(a,b) in enumerate(zip(cuts,cuts[1:])):
         for i in range(8):
-            for n in range(64):
+            for n in range(projection_dimension):
                 CS[n][i]+=integral(mul(p[n],polys[i][panel]),a,b)
             for j in range(8):
                 cross[i][j]+=mixed_integral(mul(p[i],polys[j][panel]),a,b)
@@ -85,7 +90,8 @@ def compute():
     for i in range(8):
         for j in range(i,8):
             correction=smooth[i][j]+cross[i][j]+cross[j][i]
-            correction-=sum(((2*n+1)*(CS[n][i]*CS[n][j]+CL[n][i]*CS[n][j]+CL[n][j]*CS[n][i]) for n in range(64)),I(0))
+            correction-=sum(((2*n+1)*(CS[n][i]*CS[n][j]+CL[n][i]*CS[n][j]+CL[n][j]*CS[n][i]) for n in range(projection_dimension)),I(0))
+            correction+=sum(((2*n+1)*CL[n][i]*CL[n][j] for n in range(projection_dimension,64)),F(0))
             R[i][j]=R[j][i]=RL[i][j]+sqrt_rational(F((2*i+1)*(2*j+1)))*correction
     # Trace is its Hilbert--Schmidt norm squared; hence ||rtilde|| <= sqrt(trace).
     trace=sum((R[i][i].hi for i in range(8)),F(0))
@@ -96,10 +102,19 @@ def compute():
     raw=raw_certificate(F(1,2),return_matrix=True)
     Q=[[sqrt_rational(F((2*i+1)*(2*j+1)))*raw[i][j] for j in range(8)] for i in range(8)]
     lower=[[Q[i][j]-5*R[i][j] for j in range(8)] for i in range(8)]
+    unshifted=[row[:] for row in lower]
     tau=F(1,250000)
-    for i in range(8):
-        lower[i][i]-=5*delta+tau
-    pivots=positive_pivots(lower)
+    while True:
+        lower=[row[:] for row in unshifted]
+        for i in range(8):
+            lower[i][i]-=5*delta+tau
+        try:
+            pivots=positive_pivots(lower)
+            break
+        except ArithmeticError:
+            if projection_dimension!=20 or tau<=F(1,10**12):
+                raise
+            tau/=2
     broken=[row[:] for row in lower]
     broken[0][0]=I(-1)
     try:
@@ -111,7 +126,7 @@ def compute():
     width=max(x.hi-x.lo for row in R for x in row)
     assert width<F(1,10**25)
     return dict(status='certified corrected actual eight-source Schur restriction',
-                physical_degrees=list(range(8)),complement_projection_degrees=list(range(64)),
+                physical_degrees=list(range(8)),complement_projection_degrees=list(range(projection_dimension)),
                 interval_grid_digits=120,log_series_terms=220,
                 residual_gram_surrogate=[[[str(x.lo),str(x.hi)] for x in row] for row in R],
                 maximum_gram_entry_width=str(width),maximum_gram_entry_width_display=float(width),
@@ -125,4 +140,8 @@ def compute():
 
 
 if __name__=='__main__':
-    print(json.dumps(certificate(),indent=2))
+    import argparse
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--projection-dimension',type=int,choices=[20,64],default=64)
+    args=parser.parse_args()
+    print(json.dumps(certificate(args.projection_dimension),indent=2))
