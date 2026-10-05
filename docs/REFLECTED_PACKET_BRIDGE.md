@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / full-domain sign through 27/50; prime-3 activation at 11/20 has actual 36-moment complement; full 36-coordinate sign and global endpoint exclusion open; F-4 pending
+**Current cursor:** RPB-108 / full-domain sign through 27/50; full prime-3 36-vector matrix and source enclosures certified; full 36-source residual Gram, corrected sign and global endpoint exclusion open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2027,3 +2027,12 @@ At a=11/20, the actual primes 2 and 3 are included in the recomputed twenty-vect
 Actual moment vanishing through degree 35 restores physical complement coercivity 1/4 and logarithmic coercivity 9/100 uniformly through 11/20. This supplies a lawful 36-coordinate Schur reduction and inverse factor 4. Next: degrees 20..35 and the complete 36-source matrix/Gram, or independent endpoint exclusion. Whole-domain positivity at 11/20 is not certified; the certified whole-domain bound through 27/50 remains intact. F4, full transport and global endpoint exclusion remain open. Lean unchanged.
 
 Proof: notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_ACTIVATION_20261005.md. Definitions: docs/TERMINOLOGY_RPB108_PRIME3_ACTIVATION.md. Matrix, source, pairing, complement-limit and complement36 arithmetic certificates reproduce exactly; matrix negative diagonal and prime-3 omission controls are rejected. No new Lean/CI standing is claimed.
+
+
+## RPB108 full 36-vector native matrix and source enclosures — 2026-10-05
+
+At a=11/20 the actual native matrix on degrees 0..35 is certified with raw physical margin 1/32000000, including both primes, poles and archimedean terms. Integer-denominator correlation arithmetic preserves the exact identity; exponential order 120, Bernoulli pairs 100 and grid 10^-200 control all 1296 entries. All 36 shifted pivots pass; the negative diagonal control is rejected. The first twenty refined entry intervals lie inside the earlier intervals.
+
+All 36 five-panel actual sources are enclosed with physical source-map error below 6.49e-26, including an explicit coefficient rounding budget at grid 10^-40. The first twenty source-panel coefficient differences remain inside their combined error budgets. Matrix and rounded source certificates reproduce exactly. Proof: notes/REFLECTED_PACKET_BRIDGE_108_PRIME3_MATRIX36_20261005.md. Definitions: docs/TERMINOLOGY_RPB108_PRIME3_MATRIX36.md. Scripts/data: certify_native_prime3_{matrix36,source36}.py and RPB108_PRIME3_{MATRIX36,SOURCE36}_CERTIFICATE_20261005.json.
+
+Next: full 36-source residual Gram with projection degrees 0..35, all 1296 mixed source/native pairings and operator error, then the corrected Q36-4R36 sign or sharper actual lifts. Raw finite positivity does not settle coupling. Whole-domain positivity at 11/20, global endpoint exclusion, retained witness/null transport, F4 and FULL TRANSPORT CLOSED remain open. Full-domain positivity through 27/50 remains certified. Lean source, axioms and prior CI claims unchanged; no new Lean formalization.

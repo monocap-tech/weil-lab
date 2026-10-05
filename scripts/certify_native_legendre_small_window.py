@@ -137,11 +137,13 @@ def sqrt_rational(x):
 def certificate(a=F(1,4), return_matrix=False, degree=7):
     if a not in (F(1,4), F(1,2), F(51,100), F(27,50), F(11,20)):
         raise ValueError('Only the five audited apertures are supported')
-    if degree not in (7,19) or (degree==19 and (a not in (F(1,2), F(51,100), F(27,50), F(11,20)) or not return_matrix)):
+    if degree not in (7,19,35) or (degree==19 and (a not in (F(1,2), F(51,100), F(27,50), F(11,20)) or not return_matrix)):
         raise ValueError('Degree 19 requires a supported matrix constructor')
-    if a in (F(51,100), F(27,50), F(11,20)) and (degree != 19 or not return_matrix):
-        raise ValueError('The larger aperture is supported only for the twenty-vector matrix')
-    N,K=(80,60) if degree==19 else (60,24 if a==F(1,4) else 40)
+    if degree==35 and (a!=F(11,20) or not return_matrix):
+        raise ValueError('Degree 35 requires the prime-3 aperture matrix constructor')
+    if a in (F(51,100), F(27,50), F(11,20)) and (degree not in (19,35) or not return_matrix):
+        raise ValueError('The larger aperture requires a supported matrix constructor')
+    N,K=(120,100) if degree==35 else ((80,60) if degree==19 else (60,24 if a==F(1,4) else 40))
     L = 4*a
     exponential_bound = 3 if L == 1 else 9
     kernel_bound = 2 if L == 1 else 3
@@ -161,7 +163,7 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
     B = bernoulli(2*K+2)
     pi = 16*atan(F(1,5))-4*atan(F(1,239))
     # Euler--Maclaurin for gamma: alternating, next-term bounded remainder.
-    n, order = 100, 12 if degree==19 else 6
+    n, order = 100, 12 if degree in (19,35) else 6
     gamma = I(sum((F(1,k) for k in range(1,n+1)),F(0))-F(1,2*n))
     gamma = gamma-log_rational(F(n))
     gamma = gamma+sum((B[2*k]/F(2*k*n**(2*k)) for k in range(1,order+1)),F(0))
@@ -192,7 +194,7 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
         for j in range(i,len(polys)):
             if (i+j)%2:
                 continue
-            if degree==19:
+            if degree in (19,35):
                 # Reflection makes the two correlations equal for even i+j.
                 c=[a*x*2**k for k,x in enumerate(correlation(p,polys[j]))]
             else:
