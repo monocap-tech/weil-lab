@@ -1,6 +1,6 @@
 """Uniform actual smooth-source enclosure; no numerical quadrature or Gram claim."""
 import json
-from math import comb, factorial
+from math import comb, factorial, isqrt
 from certify_native_legendre_small_window import F, I, add, mul, bernoulli, atan, log_rational, log_interval, sqrt_rational
 from certify_native_endpoint_log_gram import shifted_legendre
 
@@ -20,7 +20,9 @@ def power(x,n):
     return out
 
 
-def certificate():
+def certificate(degree=7):
+    if degree not in (7,19):
+        raise ValueError('Only eight or twenty actual sources are audited')
     N,K=60,32
     B=bernoulli(2*K+2)
     bp=[F(0)]*(2*K+1)
@@ -51,15 +53,25 @@ def certificate():
     em=compose(pole_exp,F(1,2),F(-1))
     exp_error=F(2,4**(N+1)*factorial(N+1))
     rows=[]
-    for degree,p in enumerate(shifted_legendre(7)):
+    source_degree=degree
+    for degree,p in enumerate(shifted_legendre(source_degree)):
         smooth=mul(p,hsum)
-        for sign,d in [(-1,[F(0),F(1)]),(1,[F(1),F(-1)])]:
+        if source_degree==19:
+            left=[F(0)]*(len(p)+len(A)-1)
             for j,c in enumerate(p):
-                for r in range(1,j+1):
-                    for k,a in enumerate(A):
-                        power_d=[F(comb(k+r,v))*d[0]**(k+r-v)*d[1]**v for v in range(k+r+1)]
-                        term=[F(0)]*(j-r)+[c*comb(j,r)*sign**r*a/(k+r)*v for v in power_d]
-                        smooth=add(smooth,[-v for v in term])
+                for k,a in enumerate(A):
+                    factor=sum((F(comb(j,r)*(-1)**r,k+r) for r in range(1,j+1)),F(0))
+                    left[j+k]+=c*a*factor
+            right=[(-1)**degree*c for c in compose(left,F(1),F(-1))]
+            smooth=add(smooth,[-c for c in add(left,right)])
+        else:
+            for sign,d in [(-1,[F(0),F(1)]),(1,[F(1),F(-1)])]:
+                for j,c in enumerate(p):
+                    for r in range(1,j+1):
+                        for k,a in enumerate(A):
+                            power_d=[F(comb(k+r,v))*d[0]**(k+r-v)*d[1]**v for v in range(k+r+1)]
+                            term=[F(0)]*(j-r)+[c*comb(j,r)*sign**r*a/(k+r)*v for v in power_d]
+                            smooth=add(smooth,[-v for v in term])
         # M_+= integral_0^1 p(t) exp((t-1/2)/2)dt.
         mp=sum((c/F(k+1) for k,c in enumerate(mul(p,ep))),F(0))
         mm=(-1)**degree*mp
@@ -83,13 +95,27 @@ def certificate():
     eta2=sum((F(r['normalized_uniform_error'])**2 for r in rows),F(0))
     eta=sqrt_rational(eta2).hi
     assert eta<F(1,10**25)
-    return dict(status='certified actual smooth-source piecewise polynomial approximation',
+    result=dict(status='certified actual smooth-source piecewise polynomial approximation',
                 exponential_order=N,bernoulli_pairs=K,coordinate='t=x+1/2',
                 panel_endpoints=['0','1-log(2)','log(2)','1'],
                 normalization='multiply coefficients by sqrt(2*degree+1)',
                 source_map_error_upper=str(eta),source_map_error_display=float(eta),
                 rows=rows,full_residual_gram_certified=False,actual_schur_sign_certified=False)
+    if source_degree==19:
+        # Established actual source bound: ||q_p||2 <= 26 max|p|+5 max|p'|.
+        norm2=sum((2*i+1)*(26+5*i*(i+1))**2 for i in range(20))
+        norm_upper=isqrt(norm2)+1
+        assert norm_upper**2>norm2
+        delta=eta*(2*norm_upper+3*eta)
+        result.update(actual_source_map_norm_integer_upper=norm_upper,
+                      source_induced_residual_gram_operator_error_upper=str(delta),
+                      source_induced_residual_gram_operator_error_display=float(delta))
+    return result
 
 
 if __name__=='__main__':
-    print(json.dumps(certificate(),indent=2))
+    import argparse
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--degree',type=int,choices=[7,19],default=7)
+    args=parser.parse_args()
+    print(json.dumps(certificate(args.degree),indent=2))

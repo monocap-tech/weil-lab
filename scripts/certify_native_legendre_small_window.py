@@ -132,10 +132,12 @@ def sqrt_rational(x):
     return I(F(lower,grid),F(lower+1,grid))
 
 
-def certificate(a=F(1,4), return_matrix=False):
+def certificate(a=F(1,4), return_matrix=False, degree=7):
     if a not in (F(1,4), F(1,2)):
         raise ValueError('Only the two audited apertures are supported')
-    degree, N, K = 7, 60, (24 if a == F(1,4) else 40)
+    if degree not in (7,19) or (degree==19 and (a!=F(1,2) or not return_matrix)):
+        raise ValueError('Degree 19 is supported only by the half-aperture matrix constructor')
+    N,K=(80,60) if degree==19 else (60,24 if a==F(1,4) else 40)
     L = 4*a
     exponential_bound = 3 if L == 1 else 9
     kernel_bound = 2 if L == 1 else 3
@@ -144,7 +146,7 @@ def certificate(a=F(1,4), return_matrix=False):
     B = bernoulli(2*K+2)
     pi = 16*atan(F(1,5))-4*atan(F(1,239))
     # Euler--Maclaurin for gamma: alternating, next-term bounded remainder.
-    n, order = 100, 6
+    n, order = 100, 12 if degree==19 else 6
     gamma = I(sum((F(1,k) for k in range(1,n+1)),F(0))-F(1,2*n))
     gamma = gamma-log_rational(F(n))
     gamma = gamma+sum((B[2*k]/F(2*k*n**(2*k)) for k in range(1,order+1)),F(0))
@@ -175,8 +177,12 @@ def certificate(a=F(1,4), return_matrix=False):
         for j in range(i,len(polys)):
             if (i+j)%2:
                 continue
-            c = [a*(x+y)/2*2**k for k,(x,y) in
-                 enumerate(zip(correlation(p,polys[j]),correlation(polys[j],p)))]
+            if degree==19:
+                # Reflection makes the two correlations equal for even i+j.
+                c=[a*x*2**k for k,x in enumerate(correlation(p,polys[j]))]
+            else:
+                c = [a*(x+y)/2*2**k for k,(x,y) in
+                     enumerate(zip(correlation(p,polys[j]),correlation(polys[j],p)))]
             delta = F(2*a,2*i+1) if i == j else F(0)
             assert c[0] == delta
             numerator = add([delta*x for x in exp1],[-x for x in mul(expquarter,c)])
