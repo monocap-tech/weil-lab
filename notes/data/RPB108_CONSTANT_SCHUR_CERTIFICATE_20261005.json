@@ -1,0 +1,19 @@
+{
+  "status": "certified one actual Schur diagonal only",
+  "aperture": "1/2",
+  "source": "constant 1 on [-1/2,1/2]",
+  "complement_moment_count": 64,
+  "prime_tail_squared_enclosure": [
+    "111236381460166880378330595679096115097126952531/100000000000000000000000000000000000000000000000000",
+    "22247276292033376075666119135819223019429892153/20000000000000000000000000000000000000000000000000"
+  ],
+  "endpoint_log_tail_squared_bound": "1/4096",
+  "smooth_tail_squared_bound": "3/8320",
+  "residual_norm_upper_bound": "9/125",
+  "coupling_upper_bound": "81/3125",
+  "raw_q00_lower_bound": "11/125",
+  "schur_diagonal_lower_bound": "194/3125",
+  "scalar_schur_sign_certified": true,
+  "full_schur_sign_certified": false,
+  "whole_domain_positivity": false
+}

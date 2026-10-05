@@ -2501,3 +2501,8 @@ Actual Euler symbol lower bounds, prime-2 amplitude S<1, physical polynomial ann
 ## RPB108 actual Schur residual — 2026-10-05
 
 Actual Euler action gives c(x)p(x) minus regular polynomial-difference integrals, with c expressed using atanh/atan endpoint tails. Native prime translations and pole moments retain the same p. The proved complement yields exact enclosure S_Z-5R<=S<=S_Z from projected physical residuals. Artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SCHUR_RESIDUAL_20261005.md`, `docs/TERMINOLOGY_RPB108_ACTUAL_SCHUR_RESIDUAL.md`, `scripts/explore_native_constant_coupling.py`, `notes/data/RPB108_CONSTANT_COUPLING_PILOT_20261005.json`. Pilot reproduces but remains uncertified; complement certificate unchanged. No Schur sign/negative witness/null/endpoint result or new Lean/CI claim.
+
+
+## RPB108 certified constant Schur correction — 2026-10-05
+
+Actual constant source splits into endpoint logs, smooth remainder and prime steps. Analytic Legendre log/derivative tails plus rational prime-step projection enclose the physical residual, giving full complement correction<81/3125 and S(1,1)>194/3125. Artifacts: `notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_CONSTANT_SCHUR_20261005.md`, `docs/TERMINOLOGY_RPB108_CERTIFIED_CONSTANT_SCHUR.md`, `scripts/certify_native_constant_schur.py`, `notes/data/RPB108_CONSTANT_SCHUR_CERTIFICATE_20261005.json`. The prior raw finite certificate is recomputed; the exploratory quadrature is not an input. Only one corrected diagonal is certified, with same-vector custody. No full Schur sign/negative witness/null/endpoint or new Lean/CI result.
