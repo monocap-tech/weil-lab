@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / inverse-moment observability audit: nonzero real-even edge-saturated H1 profiles have zero averaged leading moment, with an infinite independent comparison family; scalar average cannot exclude endpoint modes without actual-kernel-specific injectivity and moment existence; next use full interior mixed equation and independent arithmetic/source constraints or independent endpoint exclusion; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / actual derivative-chain regularity ceiling: with r=dim K_a, no nonzero full mixed-null vector has global derivatives through r in the supported logarithmic domain; H^{r+epsilon} zero-extension regularity would exclude that vector, and derivative invariance would exclude the kernel; recovered Green H1 and actual subcritical regularity do not reach the required derivative domain; independent actual-null regularity/arithmetic exclusion remains open; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2399,3 +2399,10 @@ Thus the one averaged leading Carleman observation has no positive physical-mass
 The rational certificate reproduced byte for byte on 24 polynomial profiles (orders one through eight at three scales), checking exact zero inverse moments, positive masses, reflection parity and endpoint zeros. The zero-moment-implies-zero-mass control is rejected. Two source hashes are pinned; no actual mode or universal analytic proof is mechanically certified by these controls.
 
 Artifacts: scripts/certify_native_inverse_moment_observability.py; notes/data/RPB108_INVERSE_MOMENT_OBSERVABILITY_CERTIFICATE_20261005.json; notes/data/RPB108_INVERSE_MOMENT_OBSERVABILITY_VALIDATION_20261005.json. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Numerical frontier remains 81/100. Lean, axioms and CI unchanged.
+
+
+### RPB-108: derivative chains constrain actual null regularity (2026-10-06)
+
+For the full actual mixed kernel K_a of dimension r, global differentiation preserves weak-nullity whenever the derivative remains in D_a: the frozen multiplier commutes with differentiation, and integration by parts gives M_-(h')=M_-(h)/2 and M_+(h')=-M_+(h)/2 with no boundary term. Therefore derivatives through order r in D_a would produce r+1 independent kernel vectors, an impossibility. No nonzero null vector has zero extension in H^{r+epsilon}. This is a regularity ceiling, not a proved bootstrap. Recovered Green H1 membership and the existing actual H^s, s<1/2, bounds do not provide the required logarithmic derivatives. Exterior injectivity was already proved and interior nullity does not annihilate the exterior tail. No endpoint exclusion, retained attachment or Lean/CI advance; F4 and FULL TRANSPORT CLOSED remain open.
+
+See [derivative-chain regularity ceiling](../notes/REFLECTED_PACKET_BRIDGE_108_DERIVATIVE_CHAIN_REGULARITY_CEILING_20261006.md).
