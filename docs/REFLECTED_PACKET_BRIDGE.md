@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / finite-source residual enclosure: exact completion gives V<=L_s<=V+beta^{-1}K with the full residual Gram; an attached physical source Gram supplies the same correction under certified physical coercivity; a negative direction of I-V gives the explicit actual trial vector Yu with negative native energy without evaluating the inverse; actual selected rows/trials/Gram and inverse bounds remain uncomputed; numerical aperture frontier 81/100; historical packet attachment open; F-4 pending
+**Current cursor:** RPB-108 / native finite margin: the unchanged 84-vector interval matrix at 81/100 certifies physical coercivity 10^(-18), improving the recorded finite bound by 10^10; exact source hash and all 7,056 outward interval inclusions checked; full-domain physical bound 1/(202*10^29) and aperture frontier 81/100 unchanged pending corrected Schur recheck; actual selected packet attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2441,3 +2441,10 @@ See [finite-source Loewner order](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SO
 For a specified trial map Y, E=R*-GY and V=RY+Y*R*-Y*GY give the exact identity L_s-V=E*G^{-1}E. Certified coercivity and the complete Hilbert or attached physical residual Gram enclose the actual response on both sides with quadratic residual error. The exact trial identity Q(Yu)=||u||^2-u*Vu-||RYu-u||^2 turns any certified negative direction of I-V into a concrete actual negative vector, without the inverse. Twenty-eight rational comparison controls reproduce byte for byte; three invalid simplifications are rejected. They are algebraic controls, not actual zeta matrix data or a universal mechanical proof. Actual finite selection, trial/source/Gram enclosures and conditioning remain missing; no positivity frontier advance or endpoint exclusion. F4 and FULL TRANSPORT CLOSED remain open.
 
 See [finite-source residual enclosure](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_RESIDUAL_ENCLOSURE_20261006.md) and [definitions](TERMINOLOGY_RPB108_FINITE_SOURCE_RESIDUAL_ENCLOSURE.md).
+
+
+### RPB-108: stronger native finite margin at 81/100 (2026-10-06)
+
+The archived native 84-vector matrix certifies Q_84 >= 10^(-18) I in its physical orthonormal Legendre basis, improving the recorded finite margin by 10^10. Exact Git blob verification, 7,056 outward interval inclusions, symmetry and parity checks, and all 84 shifted positive pivot bounds are reproducible; two runs agree byte for byte. Larger attempted shifts were uncertified, with no negativity or optimality conclusion. The full-domain physical bound remains 1/(202*10^29), and the frontier remains 81/100: the corrected full Gram/Schur matrix still needs rechecking. No selected off-line packet is instantiated; historical attachment, F4 and FULL TRANSPORT CLOSED remain open.
+
+See [native finite margin](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FINITE_MARGIN_20261006.md) and [definitions](TERMINOLOGY_RPB108_NATIVE_FINITE_MARGIN.md).
