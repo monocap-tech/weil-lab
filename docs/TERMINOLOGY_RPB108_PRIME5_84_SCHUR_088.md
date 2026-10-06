@@ -17,3 +17,5 @@ Introduced with this aperture extension. Historical definitions and 17/20 certif
 No global endpoint exclusion, retained historical packet attachment, F4 closure, FULL TRANSPORT CLOSED or Lean formalization is inferred from these definitions.
 
 - **Independent integrated exponential control:** the even Taylor polynomial for exp(-z*s^2), integrated term by term on [0,1], gives the rational upper sum of (-z)^m/[m!(2n+2m+1)] through even order 180. Adding the next odd term gives a lower bound. This checks the application of the integrated power majorant independently; it is not a substitute for the analytic Bessel proof.
+
+- **Refined rational complement at the same cutoff:** c=619/1000, beta=1000/619 at T=27/2. The integrated mass and all geometric estimates remain unchanged; the already-certified unrounded lower bound exceeds this rational constant. The original complete Gram at c=3/5 is preserved, including its negative sufficient-estimator direction with positive native energy. This does not assert an actual negative full-form witness.

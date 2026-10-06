@@ -35,19 +35,24 @@ def integrated_exponential_control(n,z,K=180):
     attenuation_upper=1/sum((z**m/factorial(m) for m in range(61)),F(0))
     majorant=attenuation_upper/rate
     assert upper<majorant
-    return dict(degree=n,integrated_taylor_pairs=K//2,positive_integral_lower=str(lower),
-        independent_integral_upper=str(upper),power_majorant_upper=str(majorant),
-        integrated_power_majorant_verified=True)
+    old=I.grid;I.grid=10**80
+    try:
+        reported_lower=I(lower).lo;reported_upper=I(upper).hi;reported_majorant=I(majorant).lo
+        assert 0<reported_lower<=reported_upper<reported_majorant
+        return dict(degree=n,integrated_taylor_pairs=K//2,positive_integral_lower=str(reported_lower),
+            independent_integral_upper=str(reported_upper),power_majorant_lower=str(reported_majorant),
+            report_interval_grid_digits=80,integrated_power_majorant_verified=True)
+    finally:I.grid=old
 
 
 def certificate(repeat_path):
     root=Path(__file__).resolve().parents[1]/'notes/data'
     path=root/'RPB108_PRIME5_INTEGRATED_SCHUR84_088_CERTIFICATE_20261006.json'
     raw=path.read_bytes();assert raw==Path(repeat_path).read_bytes();c=json.loads(raw)
-    cp=root/'RPB108_PRIME5_INTEGRATED_COMPLEMENT84_088_CERTIFICATE_20261006.json'
+    cp=root/'RPB108_PRIME5_REFINED_COMPLEMENT84_088_CERTIFICATE_20261006.json'
     complement=json.loads(cp.read_bytes())
     assert c['complement_certificate_sha256']==hashlib.sha256(cp.read_bytes()).hexdigest()
-    assert F(complement['physical_unrounded_lower'])>F(complement['physical_lower'])==F(3,5)
+    assert F(complement['physical_unrounded_lower'])>F(complement['physical_lower'])==F(619,1000)
     detail=complement['integrated_damping_details']
     assert detail['degrees']==list(range(84,132))
     assert sum(map(F,detail['individual_integrated_term_upper']),F(0))+F(detail['infinite_undamped_tail_upper'])==F(complement['physical_low_frequency_mass_upper'])
@@ -71,7 +76,7 @@ def certificate(repeat_path):
         for j in range(i+1):
             Q[i][j]=Q[j][i]=tuple(F(int(x),10**80) for x in triangle[index]);index+=1
     beta=F(c['complement_inverse_factor']);tau=F(c['corrected_coercivity_lower_bound'])
-    assert beta==F(5,3) and tau>0 and len(c['shifted_pivot_lower_bounds'])==84
+    assert beta==F(1000,619) and tau>0 and len(c['shifted_pivot_lower_bounds'])==84
     assert min(map(F,c['shifted_pivot_lower_bounds']))>0
     old=I.grid;I.grid=10**80
     try:
@@ -85,9 +90,9 @@ def certificate(repeat_path):
     finally:I.grid=old
     L=c['lift_operator_norm_integer_upper'];lift2=beta*beta*(trace+delta)
     assert lift2==F(c['lift_norm_squared_upper']) and L*L>lift2
-    mu=tau*F(3,5)/(tau+F(3,5)*(1+L*L));kappa=mu/(10*(mu+23))
+    mu=tau*F(619,1000)/(tau+F(619,1000)*(1+L*L));kappa=mu/(10*(mu+23))
     assert mu==F(c['whole_domain_physical_coercivity_lower']) and kappa==F(c['logarithmic_coercivity_lower'])
-    determinant=(tau-mu*(1+L*L))*(F(3,5)-mu)-(mu*L)**2
+    determinant=(tau-mu*(1+L*L))*(F(619,1000)-mu)-(mu*L)**2
     assert determinant==F(c['exact_conversion_determinant'])==mu*mu>0
     checks=[series_control(n,F(x)) for n in (84,131) for x in (60,75)]
     from certify_native_legendre_small_window import atan
