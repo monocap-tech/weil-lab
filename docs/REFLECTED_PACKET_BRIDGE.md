@@ -4,10 +4,13 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / aperture lane: whole-domain positivity retained through 91/100; matching 23/25 native 84-vector finite restriction and outward compact certificate exactly repeated, all 7056 raw-to-physical and compact inclusions audited, 84 shifted parity pivots positive; source and depth-six complement repeated; fresh complete nine-panel Gram runs underway and corrected sign pending. Separate global/F4 lane preserved; global endpoint exclusion, historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / aperture lane: whole-domain positivity retained through 91/100; matching 23/25 native finite restriction, source and depth-six complement repeated and audited; all nine actual Gram panels complete with byte-identical input-bound checkpoints and repeated 7056-pair independent enclosure audit; residual Gram export underway, corrected sign pending. Separate global/F4 lane preserved; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
+
+**Aperture-lane complete panels (2026-10-06):** [All nine support panels and repeated pairing audit at 23/25](../notes/REFLECTED_PACKET_BRIDGE_108_COMPLETE_PANELS_092_20261006.md). The complete compressed checkpoint is in custody. Exported residual Gram and corrected sign remain pending; no whole-domain positivity at 23/25 is claimed.
+
 
 **Global/F4 arithmetic obstruction (2026-10-06):** [Actual parity modulus defects](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_PARITY_MODULUS_20261006.md). Exact prescribed prime/pole controls show that half-modulus can increase the full native energy in both parity sectors. The odd control is inside the certified a=1/2 window; neither control is a null or negative-energy witness. Thus comparison-groundstate simplicity cannot be transferred by universal modulus ordering. A contact-kernel-specific arithmetic theorem remains necessary, along with the regularity/exclusion input and separate retained attachment. Rational controls repeated; no Lean certification or aperture advance. F4 and FULL TRANSPORT CLOSED remain open.
 

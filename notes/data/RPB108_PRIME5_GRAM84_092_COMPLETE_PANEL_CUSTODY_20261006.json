@@ -1,0 +1,21 @@
+{
+  "aperture": "23/25",
+  "completed_panels": 9,
+  "checkpoint_sha256": "41bd7028d9952a1113fc9e75c5067faa72467ef277b0d4f1129727e6281e3a1e",
+  "checkpoint_reproduced_byte_for_byte": true,
+  "checkpoint_bindings": {
+    "source": "abc0c3c7af3e710b712f2e4502cede787e8a6e8e412dc5a2284e25611ce161fe",
+    "native": "05469e303ac3edcf2950e4f1b8912e6252596076fd77fe0054f41889fd3f8e97",
+    "constructor": "55dbff396a59b35f87753994a65220b9975ddc2b8bb219980a037701f410bbde",
+    "geometry": "d30b267b87750752cbc84630623336afc3a55bcdcc53051bba093e8d7e6f4d2c",
+    "hankel": "c09c1f425b0b3db868714238d1ecf10cbdd331529ca8d124c75d3a345a9bde1c",
+    "checkpoint_codec": "7e557f325217cc3344ea65791898b901ea389b4a8f7278889ee35873269173e0",
+    "aperture": "23/25",
+    "log_series_terms": 500
+  },
+  "compressed_checkpoint_sha256": "18d6bcede9659dba6ca5dc4057bbff14b7e0f43e55d10f0478e04d3e4d080a3f",
+  "all_nine_panel_contractions_preserved": true,
+  "corrected_sign_pending": true,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false
+}

@@ -1,0 +1,68 @@
+"""Independent native/source enclosure audit from complete saved contractions."""
+import hashlib,json,sys
+from pathlib import Path
+from certify_native_legendre_small_window import F,I
+from certify_native_endpoint_log_gram import shifted_legendre
+from certify_native_prime3_matrix36 import precise_sqrt
+from certify_native_exact_hankel import moment_apply,bilinear_bounds
+
+def certificate(checkpoint):
+    root=Path(__file__).resolve().parents[1]/'notes/data'
+    sp=root/'RPB108_PRIME5_SOURCE84_092_CERTIFICATE_20261006.json'
+    np=root/'RPB108_PRIME5_MATRIX84_092_COMPACT80_20261006.json'
+    source=json.loads(sp.read_bytes());native=json.loads(np.read_bytes())
+    raw=Path(checkpoint).read_bytes();state=json.loads(raw)
+    assert state['completed_panels']==9 and state['bindings']['aperture']=='23/25'
+    assert state['bindings']['source']==hashlib.sha256(sp.read_bytes()).hexdigest()
+    assert state['bindings']['native']==hashlib.sha256(np.read_bytes()).hexdigest()
+    assert source['aperture']==native['aperture']=='23/25'
+    old=I.grid;I.grid=10**300
+    try:
+        assert state['grid']==str(I.grid)
+        p=shifted_legendre(83)
+        harmonic=F(0);moments=[]
+        for k in range(167):
+            harmonic+=F(1,k+1)
+            moments.append((F(1,(k+1)**2)+harmonic/F(k+1))/2)
+        # Independent exact integer Hankel action for rational logarithmic moments.
+        from math import lcm
+        denominator=lcm(*(x.denominator for x in moments))
+        fixed=[(int(x*denominator),int(x*denominator)) for x in moments]
+        polynomials=[[int(x) for x in row] for row in p]
+        applied=[moment_apply(row,fixed,84) for row in polynomials]
+        cl=[[F(bilinear_bounds(row,applied[i])[0],2*denominator)
+             for i in range(84)] for row in polynomials]
+        cs=[[I(*(F(int(x),I.grid) for x in pair)) for pair in row]
+            for row in state['matrices']['CS']]
+        triangle=native['lower_triangle_row_major'];q=[[None]*84 for _ in range(84)];index=0
+        for i in range(84):
+            for j in range(i+1):
+                q[i][j]=q[j][i]=I(*(F(int(x),10**80) for x in triangle[index]));index+=1
+        old_failures=[];max_gap=F(0);max_excess=F(0);checks=0
+        for i in range(84):
+            eta=F(source['rows'][i]['normalized_uniform_error'])
+            for j in range(84):
+                pair=precise_sqrt(F((2*i+1)*(2*j+1)))*(cl[j][i]+cs[j][i])
+                native_entry=q[i][j];difference=pair-native_entry
+                error=max(abs(difference.lo),abs(difference.hi))
+                gap=max(F(0),pair.lo-native_entry.hi,native_entry.lo-pair.hi)
+                budget=eta+(pair.hi-pair.lo)+(native_entry.hi-native_entry.lo)
+                assert gap<eta and error<budget
+                if error>=eta:old_failures.append([i,j])
+                max_gap=max(max_gap,gap);max_excess=max(max_excess,error-eta)
+                displaced=pair+I(2*budget+1)
+                broken=displaced-native_entry
+                assert max(abs(broken.lo),abs(broken.hi))>budget
+                checks+=1
+        assert checks==7056
+        return dict(aperture='23/25',checkpoint_sha256=hashlib.sha256(raw).hexdigest(),
+            source_sha256=hashlib.sha256(sp.read_bytes()).hexdigest(),native_sha256=hashlib.sha256(np.read_bytes()).hexdigest(),
+            independently_recomputed_rational_endpoint_projections=True,pairing_checks=checks,
+            enclosure_widths_accounted_for=True,strict_interval_gap_below_source_allowance=True,
+            original_source_only_gate_failures=old_failures,maximum_interval_gap=str(max_gap),
+            maximum_source_only_allowance_excess=str(max_excess),displaced_pair_controls_rejected=checks,
+            actual_source_map_error_unchanged=True,complete_residual_gram_accepted=False,
+            corrected_sign_accepted=False,whole_domain_positivity=False,f4_entry_closed=False)
+    finally:I.grid=old
+
+if __name__=='__main__':print(json.dumps(certificate(sys.argv[1]),indent=2))
