@@ -197,7 +197,7 @@ def compute(checkpoint=None):
                 source_certificate_sha256=hashlib.sha256(source_path.read_bytes()).hexdigest(),
                 native_certificate_sha256=hashlib.sha256(native_path.read_bytes()).hexdigest(),
                 native_source_pairing_count=7056,physical_complement_lower="317/500",
-                logarithmic_complement_lower="91/1000",whole_domain_positivity=False,
+                logarithmic_complement_lower="9/100",whole_domain_positivity=False,
                 global_endpoint_excluded=False,f4_entry_closed=False,full_transport_closed=False,lean_formalized=False)
     try:
         positive_pivots(G);v=None

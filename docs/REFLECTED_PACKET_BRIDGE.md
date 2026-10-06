@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual whole-domain positivity certified through 9/10; finite logarithmic-derivative iteration now certifies fresh complement c=317/500 at 91/100 and c=623/1000 at 23/25, with complete tails, support geometry and prospective constructor ceilings independently checked and repeated; next fresh matching 91/100 native/source/complete Gram and corrected sign with beta=500/317; global endpoint exclusion, historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / actual whole-domain positivity certified through 9/10; matching 91/100 native/source/compact matrix, c=317/500 complement and independent Hankel audit recovered, independently repeated and in Git custody; fresh complete Gram runs use distinct lossless input-bound panel checkpoints; logarithmic complement result label corrected to proved 9/100; next complete matching Gram, actual correction and corrected sign with beta=500/317; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2548,3 +2548,7 @@ The actual prime chains, support order and prospective exponential/kernel ceilin
 Next matched target is 91/100, requiring fresh actual native/source inputs and a complete residual Gram with corrected sign at beta=500/317. Whole-domain positivity remains certified through 9/10. Global endpoint exclusion, historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean and workflows are unchanged.
 
 See [preflight and custody](../notes/REFLECTED_PACKET_BRIDGE_108_ITERATED_PREFLIGHT_20261006.md), [analytic finite-iteration proof](../notes/REFLECTED_PACKET_BRIDGE_108_ITERATED_DAMPING_20261006.md) and [definitions](TERMINOLOGY_RPB108_ITERATED_DAMPING.md).
+
+## RPB-108: recovered repeated matched 91/100 inputs (2026-10-06)
+
+The separately produced native, source, compact, complement and direct Hankel audit outputs agree byte for byte. Matching canonical inputs are now preserved in Git; incomplete Gram runs do not advance the whole-domain frontier. The prospective Gram result label is corrected from 91/1000 to the proved logarithmic complement 9/100. Complete matching Gram, actual correction and corrected sign remain pending. See [recovered input custody](../notes/REFLECTED_PACKET_BRIDGE_108_MATCHED_091_INPUT_RECOVERY_20261006.md).
