@@ -1,0 +1,12 @@
+{
+  "aperture": "22/25",
+  "quarter_window_golden_unchanged": true,
+  "invalid_native_controls_rejected": 3,
+  "invalid_source_controls_rejected": 2,
+  "native_ceilings_verified": true,
+  "source_ceilings_verified": true,
+  "nine_panel_order_verified": true,
+  "integrated_complement_reproduced_byte_for_byte": true,
+  "whole_domain_positivity_certified": false,
+  "certified_frontier": "17/20"
+}

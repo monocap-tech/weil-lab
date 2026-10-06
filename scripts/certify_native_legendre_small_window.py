@@ -135,15 +135,15 @@ def sqrt_rational(x):
 
 
 def certificate(a=F(1,4), return_matrix=False, degree=7):
-    if a not in (F(1,4), F(1,2), F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20)):
+    if a not in (F(1,4), F(1,2), F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25)):
         raise ValueError('Unsupported audited aperture')
     if degree not in (7,19,35,47,51,83) or (degree==19 and (a not in (F(1,2), F(51,100), F(27,50), F(11,20)) or not return_matrix)):
         raise ValueError('Degree 19 requires a supported matrix constructor')
     if degree==35 and (a not in (F(11,20), F(14,25)) or not return_matrix):
         raise ValueError('Degree 35 requires the prime-3 aperture matrix constructor')
-    if degree==83 and (a not in (F(81,100),F(41,50),F(17,20)) or not return_matrix):
+    if degree==83 and (a not in (F(81,100),F(41,50),F(17,20),F(22,25)) or not return_matrix):
         raise ValueError("Degree 83 requires aperture 81/100 or 41/50 matrix")
-    if a in (F(81,100),F(41,50),F(17,20)) and degree!=83:
+    if a in (F(81,100),F(41,50),F(17,20),F(22,25)) and degree!=83:
         raise ValueError("Aperture 81/100 or 41/50 requires degree 83")
     if degree==51 and (a!=F(4,5) or not return_matrix):
         raise ValueError("Degree 51 requires aperture 4/5 matrix")
@@ -151,7 +151,7 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
         raise ValueError("Aperture 4/5 requires degree 51")
     if degree==47 and (a not in (F(14,25),F(3,5),F(16,25),F(69,100),F(7,10),F(3,4)) or not return_matrix):
         raise ValueError("Degree 47 requires an audited prime-3 matrix constructor")
-    if a in (F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20)) and (degree not in (19,35,47,51,83) or not return_matrix):
+    if a in (F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25)) and (degree not in (19,35,47,51,83) or not return_matrix):
         raise ValueError('The larger aperture requires a supported matrix constructor')
     N,K=(260,230) if degree==83 else (180,140) if degree==51 else (160,120) if degree==47 else ((120,100) if degree==35 else ((80,60) if degree==19 else (60,24 if a==F(1,4) else 40)))
     L = 4*a
@@ -207,6 +207,11 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
         assert log_rational(F(5)).hi<L<log_rational(F(30)).lo
         assert L<=F(17,5) and L<6
         assert log_rational(F(5)).hi<2*a<log_rational(F(7)).lo
+    if a==F(22,25):
+        exponential_bound=34;kernel_bound=F(22,5)
+        assert log_rational(F(5)).hi<L<log_rational(F(34)).lo
+        assert L<=F(88,25) and L<6
+        assert log_rational(F(5)).hi<2*a<log_rational(F(6)).lo
     if a in (F(51,100), F(27,50)):
         # exp(L)<9 and L/(1-exp(-L))<3 retain the audited error constants.
         assert L < log_rational(F(9)).lo
@@ -290,12 +295,12 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
                     for coefficient in reversed(c):
                         value=value*y+coefficient
                     prime+=2*ell/sqrt_rational(F(prime_power))*value
-            if a in (F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20)):
+            if a in (F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25)):
                 for prime_power,lambda_n in ((2,logtwo),(3,log_rational(F(3))),(4,logtwo)):
                     ell=log_rational(F(prime_power));y=ell/I(2*a);value=I(0)
                     for coefficient in reversed(c):value=value*y+coefficient
                     prime+=2*lambda_n/sqrt_rational(F(prime_power))*value
-                if a in (F(81,100),F(41,50),F(17,20)):
+                if a in (F(81,100),F(41,50),F(17,20),F(22,25)):
                     ell=log_rational(F(5));y=ell/I(2*a);value=I(0)
                     for coefficient in reversed(c):value=value*y+coefficient
                     prime+=2*ell/sqrt_rational(F(5))*value
