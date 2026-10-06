@@ -38,11 +38,11 @@ It is not a new RPB theorem and must not be presented as one.
 
 Proposition 6.16 states:
 
-> For an **isometry** (i), an orthogonal complement of (i) is the same as an isometric kernel of (i^{\dagger}).
+> For an **isometry** $i$, an orthogonal complement of $i$ is the same as an isometric kernel of $i^{\dagger}$.
 
 This is the closest external result to the current RPB observability language, but its hypotheses matter.
 
-It does **not** say that for an arbitrary bounded observation or synthesis map (G), the quotient by (ker G), the closure of (operatorname{Ran}G^{\dagger}), and every desired positive-energy completion follow categorically without further analysis.
+It does **not** say that for an arbitrary bounded observation or synthesis map $G$, the quotient by $\ker G$, the closure of $\operatorname{Ran}G^{\dagger}$, and every desired positive-energy completion follow categorically without further analysis.
 
 The RPB Hilbert-space identities and closure statements therefore retain their own proofs and custody.
 
