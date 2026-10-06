@@ -9,6 +9,9 @@
 
 ## Current standing
 
+**Aperture-lane recovery (2026-10-06):** [Hash-bound native row checkpoints and actual recovery audit](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_ROW_RECOVERY_092_20261006.md). Matching 25-row snapshots preserve 1,800 lower-triangle entries; the actual first-two-row resume audit repeats exactly. Repaired native computations are running with recoverable rows. No full native or whole-domain certificate at 23/25 is yet accepted.
+
+
 **Global/F4 lane continuation (2026-10-06):** [One-sided Gaussian logarithmic mass budget](../notes/REFLECTED_PACKET_BRIDGE_108_ONE_SIDED_GAUSSIAN_BUDGET_20261006.md). New analytic theorem: every nonzero compactly supported L2 vector has finite sum log(||h||²/M_n)/(1+n²) on the existing positive-frequency integer Gaussian windows. Thus a genuine endpoint real-action upper bound C exp(-n/log(e+n))||h||² would force zero directly, without a second frequency tail or strip holomorphy. That actual bound is unproved; the existing R^(-1+o(1)) signed estimate is compatible with the budget. L2 derivative promotion means whole-kernel global H1 is another sufficient exclusion target. Exact comparison controls repeated; no Lean certification. F4 and FULL TRANSPORT CLOSED remain open.
 
 **Global/F4 lane cursor (2026-10-06):** [Exact entry audit and contact dichotomy](../notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_F4_ENTRY_AUDIT_20261006.md). Global domination reduces to exclusion of a nonzero kernel at any actual nonnegative window. The fresh finite packet supplies endpoint equations, not historical right-limit carrier custody; prescribed-selection compatibility remains independent. Same-vector enlarged full cancellation is obstructed, even for merely supported L2 input once its full equation promotes the domain. The standalone analytic Gaussian lower bound is retained; an independent genuine-residual upper bound is still missing. F4 and FULL TRANSPORT CLOSED remain open. No aperture computations in this lane.

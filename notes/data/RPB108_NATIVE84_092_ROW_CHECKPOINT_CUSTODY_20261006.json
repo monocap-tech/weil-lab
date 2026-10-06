@@ -1,0 +1,29 @@
+{
+  "primary_completed_rows": 25,
+  "repeat_completed_rows": 25,
+  "common_completed_rows": 25,
+  "matching_common_lower_triangle_entries": 1800,
+  "primary_checkpoint_sha256": "40a9db81d0c01e0a551f6e1fed15a8b657b07bc28e44dec28f9e1f012289f4ba",
+  "repeat_checkpoint_sha256": "40a9db81d0c01e0a551f6e1fed15a8b657b07bc28e44dec28f9e1f012289f4ba",
+  "constructor_bindings": {
+    "aperture": "23/25",
+    "bernoulli_pairs": 240,
+    "degree": 83,
+    "exponential_order": 260,
+    "gamma_order": 20,
+    "grid_digits": 400,
+    "log_series_terms": 220,
+    "scripts": {
+      "certify_native_exact_kernel_integral.py": "d26746a5864c56f8d73df201a23321ac93faa4292d68c64c967abf25922e4332",
+      "certify_native_exact_logarithm.py": "a2d2c6c844c8de24ab6a816b3a02d54e998c75bcba4db0e52ccec55f7fbc9093",
+      "certify_native_exact_polynomial.py": "9ae0e506ad4e7516afcd3dcb3942ec482557ec597585cedf907b42404d26f02a",
+      "certify_native_legendre_small_window.py": "1ee7a319af8e6d0f9493df66718262343380564a52af4cd7c0fd77be583b21fc",
+      "certify_native_matrix_checkpoint.py": "ed8f48718a3a7d6d237fb7a3fbed19f799224589a62ea64d92561607b4d1125f",
+      "certify_native_prime5_matrix84_092.py": "219aacfad25ddd58a7e3151df868040632bc8e7bec26cc1acadc486ac54f2dab"
+    }
+  },
+  "incomplete_checkpoint_only": true,
+  "finite_sign_certified": false,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false
+}

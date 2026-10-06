@@ -1,5 +1,6 @@
 """Certified full native 84-vector restriction at aperture 23/25; finite only."""
-import json
+import json,hashlib
+from pathlib import Path
 from functools import lru_cache
 from certify_native_exact_logarithm import log_rational as fast_log
 from math import comb,lcm,isqrt
@@ -33,13 +34,27 @@ def precise_sqrt(x):
     return I(F(n,g),F(n+1,g))
 
 
-def certificate():
+def certificate(checkpoint=None):
     previous=I.grid;old_correlation=native.correlation;old_sqrt=native.sqrt_rational;old_mul=native.mul;old_log=native.log_rational
     I.grid=10**400;native.correlation=fast_correlation;native.sqrt_rational=precise_sqrt;native.mul=fast_mul
     native.log_rational=lru_cache(maxsize=None)(lambda x,terms=220:fast_log(x,terms))
     try:
         a=F(23,25);size=84
-        raw=native.certificate(a,return_matrix=True,degree=83)
+        resume=None;observer=None
+        if checkpoint is not None:
+            from certify_native_matrix_checkpoint import load,save
+            root=Path(__file__).resolve().parent
+            names=['certify_native_prime5_matrix84_092.py','certify_native_legendre_small_window.py',
+                   'certify_native_exact_polynomial.py','certify_native_exact_kernel_integral.py',
+                   'certify_native_exact_logarithm.py','certify_native_matrix_checkpoint.py']
+            bindings=dict(aperture='23/25',degree=83,exponential_order=260,bernoulli_pairs=240,
+                          gamma_order=20,grid_digits=400,log_series_terms=220,
+                          scripts={name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names})
+            if Path(checkpoint).exists():resume=load(checkpoint,bindings)
+            def observer(done,matrix):
+                save(checkpoint,bindings,done,matrix)
+                print('native checkpoint completed rows',done,file=__import__('sys').stderr,flush=True)
+        raw=native.certificate(a,return_matrix=True,degree=83,matrix_resume=resume,matrix_observer=observer)
         Q=[[precise_sqrt(F((2*i+1)*(2*j+1)))*raw[i][j]/(2*a)
             for j in range(size)] for i in range(size)]
         pivots=positive_pivots(Q)
@@ -78,4 +93,7 @@ def certificate():
 
 
 if __name__=='__main__':
-    print(json.dumps(certificate(),indent=2))
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--checkpoint')
+    args=parser.parse_args()
+    print(json.dumps(certificate(args.checkpoint),indent=2))

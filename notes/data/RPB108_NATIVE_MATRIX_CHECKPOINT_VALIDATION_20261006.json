@@ -1,0 +1,8 @@
+{
+  "exact_fixed_grid_endpoints_preserved": 7056,
+  "codec_controls_rejected": 8,
+  "synthetic_fixture_only": true,
+  "actual_native_checkpoint_certified": false,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false
+}

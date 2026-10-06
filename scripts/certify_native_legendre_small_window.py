@@ -134,7 +134,9 @@ def sqrt_rational(x):
     return I(F(lower,grid),F(lower+1,grid))
 
 
-def certificate(a=F(1,4), return_matrix=False, degree=7):
+def certificate(a=F(1,4), return_matrix=False, degree=7, matrix_resume=None, matrix_observer=None):
+    if (matrix_resume is not None or matrix_observer is not None) and not (a==F(23,25) and degree==83 and return_matrix):
+        raise ValueError("Native row recovery requires the 23/25 degree-83 matrix constructor")
     if a not in (F(1,4), F(1,2), F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25)):
         raise ValueError('Unsupported audited aperture')
     if degree not in (7,19,35,47,51,83) or (degree==19 and (a not in (F(1,2), F(51,100), F(27,50), F(11,20)) or not return_matrix)):
@@ -269,7 +271,18 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
         err = 4*a*sum(map(abs,p))*(a/2)**(N+1)/factorial(N+1)
         moments.append(I(v-err,v+err))
     matrix = [[I(0) for _ in polys] for _ in polys]
-    for i,p in enumerate(polys):
+    start=0
+    if matrix_resume is not None:
+        start,matrix=matrix_resume
+        assert type(start) is int and 0<=start<=84
+        assert len(matrix)==84 and all(len(row)==84 for row in matrix)
+        for i in range(84):
+            for j in range(84):
+                x=matrix[i][j];y=matrix[j][i]
+                assert isinstance(x,I) and x.lo<=x.hi and (x.lo,x.hi)==(y.lo,y.hi)
+                if (i+j)%2 or min(i,j)>=start:assert x.lo==x.hi==0
+    for i in range(start,len(polys)):
+        p=polys[i]
         for j in range(i,len(polys)):
             if (i+j)%2:
                 continue
@@ -320,6 +333,7 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
                     for coefficient in reversed(c):value=value*y+coefficient
                     prime+=2*ell/sqrt_rational(F(5))*value
             matrix[i][j] = matrix[j][i] = arch+pole-prime
+        if matrix_observer is not None:matrix_observer(i+1,matrix)
     width_bound = F(9,10**30) if a == F(1,4) else F(2,10**29)
     assert max(x.hi-x.lo for row in matrix for x in row) < width_bound
     if return_matrix:
