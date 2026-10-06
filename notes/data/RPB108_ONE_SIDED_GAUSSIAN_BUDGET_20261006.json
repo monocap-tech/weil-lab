@@ -1,0 +1,64 @@
+{
+  "source_commit": "4d65dd0898806f31f0389fd6542cbbc525d01334",
+  "primary_source_blobs": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_F4_ENTRY_AUDIT_20261006.md",
+      "git_blob_sha": "a6891f7eeac57999879bd4aded6867badaa0340b"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MOVING_GAUSSIAN_COERCIVITY_20261004.md",
+      "git_blob_sha": "d51c96a08e99f4680cf3552bd544b0601177de1e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_GAUSSIAN_FRACTIONAL_PAIRING_20261005.md",
+      "git_blob_sha": "347b00545797a10e85ae30c32b11ae0388792b55"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_NULL_REGULARITY_20261005.md",
+      "git_blob_sha": "f5dd2cfe71a99cd41fcfd21b01a62c2b17ce89ff"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md",
+      "git_blob_sha": "432ffd64d6460c65cee106f0b46afdb50d1ec28a"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_INVERSE_MOMENT_OBSERVABILITY_AUDIT_20261005.md",
+      "git_blob_sha": "1c8b222f6365eaf88c065ad66e28b71be8b7fe15"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md",
+      "git_blob_sha": "b8ef9607e6823444a887ac71d8ec08bc21242510"
+    }
+  ],
+  "controls": {
+    "divergent_profile_block_lower_bounds": [
+      "1/16",
+      "1/20",
+      "1/24",
+      "1/28",
+      "1/32",
+      "1/36",
+      "1/40",
+      "1/44",
+      "1/48",
+      "1/52",
+      "1/56",
+      "1/60"
+    ],
+    "dyadic_blocks_checked": 12,
+    "f4_closed": false,
+    "full_transport_closed": false,
+    "gaussian_exponent_controls": 2112,
+    "invalid_comparisons_rejected": [
+      "gaussian_exponent_at_least_one_throughout_window",
+      "polynomial_log_budget_has_harmonic_block_floor"
+    ],
+    "polynomial_block_sum_upper_bound": "4",
+    "repeated_byte_for_byte": true,
+    "scope": "rational comparisons only; no actual zeta vector or analytic certification"
+  },
+  "analytic_proof_lean_certified": false,
+  "actual_endpoint_action_bound_proved": false,
+  "lean_source_changed": false,
+  "workflow_changed": false
+}
