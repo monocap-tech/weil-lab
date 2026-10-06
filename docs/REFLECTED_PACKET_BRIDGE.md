@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual weak-null logarithmic hierarchy quantitatively optimized to exp(-t^2/[16 log(t+2)]) Gaussian mass bound, t=log log(R/(4pi)), above stated aperture-dependent threshold; current bound remains below power decay in R and does not exclude endpoints; seek stronger mixed-null information or an independent endpoint route; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / actual full mixed weak-nullity yields H^s for every 0<s<1/2 by capped-weight absorption, Gaussian mass power decay of every exponent below one, and actual shrinking-collar squared mass O(delta^(2s)); half-derivative endpoint and exponential signed boundary estimate still open; numerical aperture frontier 81/100; global endpoint exclusion and retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2317,3 +2317,18 @@ This turns the separate all-order estimates into an explicit asymptotic rate. It
 The integer/rational certificate checks factorial ceilings through order 64, independent recurrence/product envelopes, and four floor/exponent samples using outward rational logarithm intervals. The stated test budget is illustrative and is not an actual aperture budget. A control ignoring the budget threshold is rejected. Certificate reproduced byte for byte. Universal proof remains analytic, not mechanically checked or Lean formalized.
 
 Artifacts: scripts/certify_native_logarithmic_optimization.py; notes/data/RPB108_LOGARITHMIC_OPTIMIZATION_CERTIFICATE_20261005.json; notes/data/RPB108_LOGARITHMIC_OPTIMIZATION_VALIDATION_20261005.json. Frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
+
+
+### RPB-108 — fractional weak-null regularity and power collar suppression (2026-10-05)
+
+Definitions: [fractional null registry](TERMINOLOGY_RPB108_FRACTIONAL_NULL_REGULARITY.md). Proof: [capped-weight fractional regularity](../notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_NULL_REGULARITY_20261005.md). Base: 6002bba61cb9abf21e341d72556589f02a5447d4.
+
+The actual mixed null equation, initial derived multiplier L2 domain, and uniformly capped power weights rho_M=min((1+|xi|)^s,M) yield fractional regularity for every 0<s<1/2. Explicit two-sign Schur bounds control P_a and [m0(D),P_a] uniformly in M; all finite prime shifts preserve the capped norms and the cut-off pole belongs to H^s. High-frequency logarithmic coercivity absorbs the remaining capped norm term, so monotone convergence derives H^s membership without assuming it.
+
+Consequently the actual weak-null Gaussian mass satisfies M_R=O_(a,alpha)(R^(-alpha))||h||_2^2 for every 0<alpha<1. The frozen multiplier core also belongs to H^s, yielding actual exterior squared collar mass O_(a,s)(delta^(2s))||h||_2^2 on both sides. These are new consequences of mixed nullity, not implications of all logarithmic moments alone. The earlier arbitrary-carrier boundary concentration obstruction remains valid.
+
+No H^(1/2), trace, H1, exponential Gaussian/signed pairing estimate, enlarged residual vanishing interval or endpoint exclusion follows. No nonzero null vector exists by assertion. Selected-only retained witness attachment remains separate. The logarithmic bounds stay valid and are superseded as Gaussian upper estimates by the new power result; historical notes remain unchanged.
+
+The rational certificate reproduced byte for byte at six fractional orders, with 288 capped-weight Lipschitz cases, 54 pole budget cases, 24 absorption cases and rejection of the half-derivative control. Universal operator/domain proofs remain analytic, not mechanically checked or Lean formalized.
+
+Artifacts: scripts/certify_native_fractional_null_regularity.py; notes/data/RPB108_FRACTIONAL_NULL_REGULARITY_CERTIFICATE_20261005.json; notes/data/RPB108_FRACTIONAL_NULL_REGULARITY_VALIDATION_20261005.json. Frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.

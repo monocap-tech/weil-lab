@@ -1,0 +1,170 @@
+{
+  "F4": false,
+  "FULL_TRANSPORT_CLOSED": false,
+  "Lean_changed": false,
+  "base_commit": "6002bba61cb9abf21e341d72556589f02a5447d4",
+  "exponential_gaussian_decay": false,
+  "global_endpoint_exclusion": false,
+  "initial_multiplier_domain_assumed": false,
+  "negative_control_include_half_derivative_rejected": true,
+  "new_fractional_domain_assumed": false,
+  "rational_s_checks": [
+    {
+      "A": [
+        501,
+        196
+      ],
+      "D": [
+        117120,
+        49
+      ],
+      "U": [
+        1220,
+        49
+      ],
+      "collar_coefficient": [
+        78,
+        7
+      ],
+      "pole_tail_denominator": [
+        7,
+        8
+      ],
+      "s": [
+        1,
+        16
+      ]
+    },
+    {
+      "A": [
+        91,
+        18
+      ],
+      "D": [
+        9344,
+        3
+      ],
+      "U": [
+        292,
+        9
+      ],
+      "collar_coefficient": [
+        38,
+        3
+      ],
+      "pole_tail_denominator": [
+        3,
+        4
+      ],
+      "s": [
+        1,
+        8
+      ]
+    },
+    {
+      "A": [
+        18,
+        1
+      ],
+      "D": [
+        6528,
+        1
+      ],
+      "U": [
+        68,
+        1
+      ],
+      "collar_coefficient": [
+        18,
+        1
+      ],
+      "pole_tail_denominator": [
+        1,
+        2
+      ],
+      "s": [
+        1,
+        4
+      ]
+    },
+    {
+      "A": [
+        151,
+        3
+      ],
+      "D": [
+        14208,
+        1
+      ],
+      "U": [
+        148,
+        1
+      ],
+      "collar_coefficient": [
+        26,
+        1
+      ],
+      "pole_tail_denominator": [
+        1,
+        3
+      ],
+      "s": [
+        1,
+        3
+      ]
+    },
+    {
+      "A": [
+        813,
+        5
+      ],
+      "D": [
+        38784,
+        1
+      ],
+      "U": [
+        404,
+        1
+      ],
+      "collar_coefficient": [
+        42,
+        1
+      ],
+      "pole_tail_denominator": [
+        1,
+        5
+      ],
+      "s": [
+        2,
+        5
+      ]
+    },
+    {
+      "A": [
+        1803,
+        4
+      ],
+      "D": [
+        98688,
+        1
+      ],
+      "U": [
+        1028,
+        1
+      ],
+      "collar_coefficient": [
+        66,
+        1
+      ],
+      "pole_tail_denominator": [
+        1,
+        8
+      ],
+      "s": [
+        7,
+        16
+      ]
+    }
+  ],
+  "universal_operator_proofs_mechanically_checked": false
+}
