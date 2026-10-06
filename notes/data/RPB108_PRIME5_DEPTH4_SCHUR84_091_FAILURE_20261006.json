@@ -1,0 +1,16 @@
+{
+  "aperture": "91/100",
+  "tested_physical_complement": "636719/1000000",
+  "tested_inverse": "1000000/636719",
+  "interval_grid_digits": 160,
+  "independent_executions": 2,
+  "positive_pivot_gate_passed": false,
+  "first_failed_gate": "positive_pivots(Q84-beta*R84)",
+  "complete_corrected_sign_certificate_produced": false,
+  "actual_negative_full_form_witness": false,
+  "whole_domain_positivity": false,
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "primary_failure_log_sha256": "d38051082047f66d6906ef4248f576b51cf915247a290e1e3f31d9a0b91905f2",
+  "repeat_failure_log_sha256": "d38051082047f66d6906ef4248f576b51cf915247a290e1e3f31d9a0b91905f2"
+}

@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual whole-domain positivity certified through 9/10; matching 91/100 complete 84-source Gram and enclosure audit independently repeated; near-unrounded sufficient estimator has a rigorous negative direction requiring approximately 0.6356568624594 while the present proof supplies approximately 0.6348847300514; next stronger lawful complement or lift and fresh corrected sign on the saved complete Gram; global endpoint exclusion, historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / actual whole-domain positivity certified through 9/10; matching 91/100 complete Gram and audits in Git custody; fourth finite Bessel iteration independently repeated and validated gives c=636719/1000000, unrounded approximately 0.6367191271276; two fresh full matrix positive-pivot gates still fail at that inverse; next inspect the complete sign obstruction and strengthen lawful complement, cutoff or lift on the saved Gram; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2556,3 +2556,7 @@ The separately produced native, source, compact, complement and direct Hankel au
 ## RPB-108: complete 91/100 Gram and refined estimator obstruction (2026-10-06)
 
 Both complete outputs and both independent direction audits reproduce exactly. Every mixed coordinate and all 7,056 comparisons remain retained. A near-unrounded estimator direction has positive native energy but requires approximately 0.6356568624594, above the present proof's approximately 0.6348847300514. Tighter rounding alone does not resolve this direction; no actual full-form negative witness is claimed. The saved complete Gram supports a stronger complement or lift. Whole-domain positivity remains through 9/10; F4 remains open. See [complete residual and audits](../notes/REFLECTED_PACKET_BRIDGE_108_COMPLETE_091_ESTIMATOR_20261006.md).
+
+## RPB-108: fourth finite damping and stronger 91/100 complement (2026-10-06)
+
+The fourth finite polynomial induction at T=277/20 independently certifies c=636719/1000000, with all 48 damped degrees, the entire infinite tail and a fresh high/low archimedean balance. Both complement outputs and independent audits reproduce exactly. Two fresh full matrix tests still fail the positive-pivot gate at that inverse, so actual whole-domain positivity remains through 9/10. Complete Gram custody is retained; F4 remains open. See [stronger complement and sign attempts](../notes/REFLECTED_PACKET_BRIDGE_108_DEPTH4_COMPLEMENT_091_20261006.md).
