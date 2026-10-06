@@ -4,10 +4,13 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / whole-domain positivity retained through 91/100; 23/25 depth-six complement c=626973/1000000 repeated and independently audited; fresh complete 84-source certificate in custody with eta<1487/10^39 and independently repeated sampled exact Hankel audit; source repeat and both native matrix runs underway, complete corrected Gram sign pending; global endpoint exclusion, historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / whole-domain positivity retained through 91/100; 23/25 depth-six complement and complete 84-source certificate exactly repeated and audited; native order-230 width guard failed, exact degree-83 diagnostic identifies truncation excess and order-240 repair reduces it below 10^-38; primary/repeat repaired native runs underway, complete Gram and corrected sign pending; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
+
+Fresh 23/25 recovery: [source repetition and native truncation repair](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_REPEAT_NATIVE_REPAIR_092_20261006.md). No native or whole-domain certificate at 23/25 is yet accepted.
+
 
 Fresh 23/25 source checkpoint: [84-source certificate and independent exact integration audit](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE84_092_20261006.md).
 

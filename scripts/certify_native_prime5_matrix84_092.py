@@ -58,6 +58,7 @@ def certificate():
         else:raise AssertionError('Negative control accepted')
         assert all(Q[i][j].lo==Q[i][j].hi==0 for i in range(size) for j in range(size) if (i+j)%2)
         width=max(x.hi-x.lo for row in Q for x in row)
+        print("maximum native entry width",float(width),file=__import__("sys").stderr,flush=True)
         assert width<F(1,10**35)
         return dict(status='certified full native 84-vector finite restriction only',aperture='23/25',
                     physical_degrees=list(range(size)),prime_terms=[2,3,4,5],
@@ -67,7 +68,7 @@ def certificate():
                     raw_physical_coercivity_lower_bound=str(tau),
                     shifted_pivot_lower_bounds=[str(x.lo) for x in shifted_pivots],
                     maximum_entry_width=str(width),exact_reflection_parity=True,
-                    negative_control_rejected=True,exponential_order=260,bernoulli_pairs=230,
+                    negative_control_rejected=True,exponential_order=260,bernoulli_pairs=240,
                     gamma_order=20,interval_grid_digits=400,log_series_terms=220,
                     full_source_gram_certified=False,corrected_schur_sign_certified=False,
                     whole_domain_positivity=False,f4_entry_closed=False,full_transport_closed=False,

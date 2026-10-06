@@ -153,7 +153,7 @@ def certificate(a=F(1,4), return_matrix=False, degree=7):
         raise ValueError("Degree 47 requires an audited prime-3 matrix constructor")
     if a in (F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25)) and (degree not in (19,35,47,51,83) or not return_matrix):
         raise ValueError('The larger aperture requires a supported matrix constructor')
-    N,K=(260,230) if degree==83 else (180,140) if degree==51 else (160,120) if degree==47 else ((120,100) if degree==35 else ((80,60) if degree==19 else (60,24 if a==F(1,4) else 40)))
+    N,K=(260,240 if a==F(23,25) else 230) if degree==83 else (180,140) if degree==51 else (160,120) if degree==47 else ((120,100) if degree==35 else ((80,60) if degree==19 else (60,24 if a==F(1,4) else 40)))
     L = 4*a
     exponential_bound = 3 if L == 1 else 9
     kernel_bound = 2 if L == 1 else 3
