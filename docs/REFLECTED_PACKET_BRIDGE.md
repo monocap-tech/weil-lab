@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual whole-domain positivity certified through 9/10; matching 91/100 complete Gram and audits in Git custody; fourth finite Bessel iteration independently repeated and validated gives c=636719/1000000, unrounded approximately 0.6367191271276; two fresh full matrix positive-pivot gates still fail at that inverse; next inspect the complete sign obstruction and strengthen lawful complement, cutoff or lift on the saved Gram; global endpoint exclusion, historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / actual whole-domain positivity certified through 91/100; sixth finite Bessel iteration gives c=637887/1000000 and pinned complete 84-source Gram has positive corrected sign, all outputs and independent audits repeated; physical coercivity above 10^-26 and logarithmic coercivity above 5*10^-29 on the complete actual fixed-aperture domain; next lawful larger-aperture extension or global endpoint exclusion; historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2560,3 +2560,7 @@ Both complete outputs and both independent direction audits reproduce exactly. E
 ## RPB-108: fourth finite damping and stronger 91/100 complement (2026-10-06)
 
 The fourth finite polynomial induction at T=277/20 independently certifies c=636719/1000000, with all 48 damped degrees, the entire infinite tail and a fresh high/low archimedean balance. Both complement outputs and independent audits reproduce exactly. Two fresh full matrix tests still fail the positive-pivot gate at that inverse, so actual whole-domain positivity remains through 9/10. Complete Gram custody is retained; F4 remains open. See [stronger complement and sign attempts](../notes/REFLECTED_PACKET_BRIDGE_108_DEPTH4_COMPLEMENT_091_20261006.md).
+
+## RPB-108: sixth finite damping and actual whole-domain positivity at 91/100 (2026-10-06)
+
+The sixth finite polynomial induction at T=277/20 certifies c=637887/1000000 with every retained degree and the full infinite tail. Both complement, corrected-sign and independent audit outputs reproduce exactly. The pinned complete Gram retains all 7,056 comparisons and mixed coordinates. All 84 corrected pivots pass at tau=1/1048576000000000000000000; lift J=9 and exact same-domain norm conversions give Q>=10^-26 physical L2 mass and Q>=5*10^-29 logarithmic energy on the complete actual domain D_(91/100). Weak null modes are excluded and existing full-source WD-T10 unit domination applies. All historical sufficient-estimator failures remain preserved. The fixed-aperture frontier advances from 9/10 to 91/100; global endpoint exclusion, historical attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean and workflows are unchanged. See [whole-domain proof and independent custody](../notes/REFLECTED_PACKET_BRIDGE_108_DEPTH6_WHOLE_091_20261006.md).
