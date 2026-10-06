@@ -4,10 +4,13 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / whole-domain positivity retained through 91/100; 23/25 depth-six complement and complete 84-source certificate exactly repeated and audited; native order-230 width guard failed, exact degree-83 diagnostic identifies truncation excess and order-240 repair reduces it below 10^-38; primary/repeat repaired native runs underway, complete Gram and corrected sign pending; global endpoint exclusion, historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / aperture lane: whole-domain positivity retained through 91/100; matching 23/25 native 84-vector finite restriction and outward compact certificate exactly repeated, all 7056 raw-to-physical and compact inclusions audited, 84 shifted parity pivots positive; source and depth-six complement repeated; fresh complete nine-panel Gram runs underway and corrected sign pending. Separate global/F4 lane preserved; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
+
+**Aperture-lane finite closure (2026-10-06):** [Matching native 84-vector restriction at 23/25](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE84_092_FINITE_20261006.md). Physical finite coercivity is 1/524288000000000000000000; maximum entry width is below 10^-35. Full native, compact and independent audit outputs repeat exactly. Both full Gram calculations are underway; no whole-domain positivity at 23/25 is claimed.
+
 
 **Aperture-lane recovery (2026-10-06):** [Hash-bound native row checkpoints and actual recovery audit](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_ROW_RECOVERY_092_20261006.md). Matching 25-row snapshots preserve 1,800 lower-triangle entries; the actual first-two-row resume audit repeats exactly. Repaired native computations are running with recoverable rows. No full native or whole-domain certificate at 23/25 is yet accepted.
 
