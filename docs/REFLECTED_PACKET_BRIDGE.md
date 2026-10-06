@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / strict actual finite-source Loewner order: physical inclusion gives L_s(b)-L_s(a) equal to the effective energy of the change in forced solutions; finite exponential forcing rigidity makes this difference positive definite after removing selected-row redundancy, so D_s=I-L_s decreases strictly wherever G_s remains coercive; independent matrix sign/inverse estimates and historical packet attachment remain open; numerical aperture frontier 81/100; F-4 pending
+**Current cursor:** RPB-108 / finite-source residual enclosure: exact completion gives V<=L_s<=V+beta^{-1}K with the full residual Gram; an attached physical source Gram supplies the same correction under certified physical coercivity; a negative direction of I-V gives the explicit actual trial vector Yu with negative native energy without evaluating the inverse; actual selected rows/trials/Gram and inverse bounds remain uncomputed; numerical aperture frontier 81/100; historical packet attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2434,3 +2434,10 @@ See [local finite source matrix](../notes/REFLECTED_PACKET_BRIDGE_108_LOCAL_FINI
 On physical nested domains with a fixed actual finite selection, L_s=R G_s^{-1}R* increases in Loewner order. Its exact quadratic gap is G_b(h_b-h_a,h_b-h_a) for the actual effective forced solutions. Equality outside the common analytic selected-row redundancy would make a nonzero smaller-supported vector solve a finite exponential native forcing equation on a larger window; the existing strict-margin forcing theorem rules this out. Hence D_s=I-L_s decreases strictly on the observable quotient. Each fixed selection supplies a local contact-count budget equal to its actual independent row rank, wherever G_s stays coercive. Strict monotonicity permits contact and supplies neither its numerical sign nor a crossing slope. No endpoint exclusion or historical retained attachment; F4 and FULL TRANSPORT CLOSED remain open.
 
 See [finite-source Loewner order](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_LOEWNER_20261006.md) and [definitions](TERMINOLOGY_RPB108_FINITE_SOURCE_LOEWNER.md).
+
+
+### RPB-108: finite-source residual enclosure and explicit negative trials (2026-10-06)
+
+For a specified trial map Y, E=R*-GY and V=RY+Y*R*-Y*GY give the exact identity L_s-V=E*G^{-1}E. Certified coercivity and the complete Hilbert or attached physical residual Gram enclose the actual response on both sides with quadratic residual error. The exact trial identity Q(Yu)=||u||^2-u*Vu-||RYu-u||^2 turns any certified negative direction of I-V into a concrete actual negative vector, without the inverse. Twenty-eight rational comparison controls reproduce byte for byte; three invalid simplifications are rejected. They are algebraic controls, not actual zeta matrix data or a universal mechanical proof. Actual finite selection, trial/source/Gram enclosures and conditioning remain missing; no positivity frontier advance or endpoint exclusion. F4 and FULL TRANSPORT CLOSED remain open.
+
+See [finite-source residual enclosure](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_RESIDUAL_ENCLOSURE_20261006.md) and [definitions](TERMINOLOGY_RPB108_FINITE_SOURCE_RESIDUAL_ENCLOSURE.md).
