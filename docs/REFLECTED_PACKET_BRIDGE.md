@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual full mixed weak-nullity yields H^s for every 0<s<1/2 by capped-weight absorption, Gaussian mass power decay of every exponent below one, and actual shrinking-collar squared mass O(delta^(2s)); half-derivative endpoint and exponential signed boundary estimate still open; numerical aperture frontier 81/100; global endpoint exclusion and retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / actual weak-null fractional estimates optimized with critical cost accounted for: Gaussian mass R^(-1+o(1)) and exterior squared collar mass delta^(1-o(1)), with explicit exp(O((log scale)^(2/3))) correction and thresholds; exact exponent one, half derivative and exponential signed boundary estimate unproved; next stronger mixed-null/boundary information or independent endpoint exclusion; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2332,3 +2332,16 @@ No H^(1/2), trace, H1, exponential Gaussian/signed pairing estimate, enlarged re
 The rational certificate reproduced byte for byte at six fractional orders, with 288 capped-weight Lipschitz cases, 54 pole budget cases, 24 absorption cases and rejection of the half-derivative control. Universal operator/domain proofs remain analytic, not mechanically checked or Lean formalized.
 
 Artifacts: scripts/certify_native_fractional_null_regularity.py; notes/data/RPB108_FRACTIONAL_NULL_REGULARITY_CERTIFICATE_20261005.json; notes/data/RPB108_FRACTIONAL_NULL_REGULARITY_VALIDATION_20261005.json. Frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
+
+
+### RPB-108 — explicit fractional approach to exponent one (2026-10-05)
+
+Definitions: [fractional optimization registry](TERMINOLOGY_RPB108_FRACTIONAL_OPTIMIZATION.md). Proof: [fractional rate optimization](../notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_OPTIMIZATION_20261005.md). Base: 4ddee22f868164432dee3816e36c371d5108dd90.
+
+With d=1-2s, the actual fractional null norm and residual-core constants admit exponential ceilings in 1/d^2. All finite primes remain in K_a=C0+22 S_a+3847; the actual pole remains in explicit prefactors. The lawful balanced choice d=(K_a/log x)^(1/3), for log x>=8K_a, yields Gaussian mass at most [c_a^2 x_R^(-1) exp(2 K_a^(1/3)(log x_R)^(2/3))+exp(-R/4)]||h||_2^2, x_R=1+R/(4*pi). The squared actual residual mass on either exterior collar is at most k_a delta exp(2 K_a^(1/3)(log(1/delta))^(2/3))||h||_2^2 at the corresponding scale threshold.
+
+This gives explicit R^(-1+o(1)) and delta^(1-o(1)) bounds for actual full mixed weak-null vectors. The thresholds are enormous and do not improve the numerical aperture. The growing correction factor prevents an exact exponent-one conclusion from this estimate. No H^(1/2), traces, exponential signed Gaussian estimate, larger vanishing interval or endpoint exclusion follows. No nonzero weak-null existence is asserted.
+
+The exact rational certificate reproduced byte for byte, with six distance parameters, 54 source-budget cases and four exact-cube scale choices. A control ignoring the scale threshold is rejected. Test budgets are illustrative, not certified actual aperture budgets. Universal proof remains analytic, not mechanically checked or Lean formalized.
+
+Artifacts: scripts/certify_native_fractional_optimization.py; notes/data/RPB108_FRACTIONAL_OPTIMIZATION_CERTIFICATE_20261005.json; notes/data/RPB108_FRACTIONAL_OPTIMIZATION_VALIDATION_20261005.json. Frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms, CI and historical notes unchanged.

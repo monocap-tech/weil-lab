@@ -1,0 +1,229 @@
+{
+  "F4": false,
+  "FULL_TRANSPORT_CLOSED": false,
+  "Lean_changed": false,
+  "base_commit": "4ddee22f868164432dee3816e36c371d5108dd90",
+  "distance_checks": [
+    {
+      "A": [
+        18,
+        1
+      ],
+      "D": [
+        6528,
+        1
+      ],
+      "U": [
+        68,
+        1
+      ],
+      "d": [
+        1,
+        2
+      ],
+      "s": [
+        1,
+        4
+      ]
+    },
+    {
+      "A": [
+        197,
+        2
+      ],
+      "D": [
+        24960,
+        1
+      ],
+      "U": [
+        260,
+        1
+      ],
+      "d": [
+        1,
+        4
+      ],
+      "s": [
+        3,
+        8
+      ]
+    },
+    {
+      "A": [
+        1803,
+        4
+      ],
+      "D": [
+        98688,
+        1
+      ],
+      "U": [
+        1028,
+        1
+      ],
+      "d": [
+        1,
+        8
+      ],
+      "s": [
+        7,
+        16
+      ]
+    },
+    {
+      "A": [
+        15383,
+        8
+      ],
+      "D": [
+        393600,
+        1
+      ],
+      "U": [
+        4100,
+        1
+      ],
+      "d": [
+        1,
+        16
+      ],
+      "s": [
+        15,
+        32
+      ]
+    },
+    {
+      "A": [
+        127023,
+        16
+      ],
+      "D": [
+        1573248,
+        1
+      ],
+      "U": [
+        16388,
+        1
+      ],
+      "d": [
+        1,
+        32
+      ],
+      "s": [
+        31,
+        64
+      ]
+    },
+    {
+      "A": [
+        91,
+        18
+      ],
+      "D": [
+        9344,
+        3
+      ],
+      "U": [
+        292,
+        9
+      ],
+      "d": [
+        3,
+        4
+      ],
+      "s": [
+        1,
+        8
+      ]
+    }
+  ],
+  "exact_cube_scale_checks": [
+    {
+      "L": [
+        32768,
+        1
+      ],
+      "cube_ratio_m": 2,
+      "d": [
+        1,
+        2
+      ],
+      "loss": [
+        32768,
+        1
+      ],
+      "s": [
+        1,
+        4
+      ]
+    },
+    {
+      "L": [
+        262144,
+        1
+      ],
+      "cube_ratio_m": 4,
+      "d": [
+        1,
+        4
+      ],
+      "loss": [
+        131072,
+        1
+      ],
+      "s": [
+        3,
+        8
+      ]
+    },
+    {
+      "L": [
+        2097152,
+        1
+      ],
+      "cube_ratio_m": 8,
+      "d": [
+        1,
+        8
+      ],
+      "loss": [
+        524288,
+        1
+      ],
+      "s": [
+        7,
+        16
+      ]
+    },
+    {
+      "L": [
+        16777216,
+        1
+      ],
+      "cube_ratio_m": 16,
+      "d": [
+        1,
+        16
+      ],
+      "loss": [
+        2097152,
+        1
+      ],
+      "s": [
+        15,
+        32
+      ]
+    }
+  ],
+  "exact_exponent_one_established": false,
+  "exponential_gaussian_decay": false,
+  "global_endpoint_exclusion": false,
+  "half_derivative_established": false,
+  "negative_control_ignore_scale_threshold_rejected": true,
+  "test_budget_K": [
+    4096,
+    1
+  ],
+  "test_budget_is_actual_aperture_budget": false,
+  "universal_proofs_mechanically_checked": false
+}
