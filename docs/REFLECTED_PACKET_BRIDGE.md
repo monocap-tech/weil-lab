@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / L2 full-null domain promotion: supported L2 plus the exact full interior distribution equation derives D_a membership and global L2 multiplier action; any global L2 derivative of a full null vector is automatically promoted into K_a; with r=dim K_a, K_a intersects global H^r only at zero; recovered WD-T38 full identity and actual H1 regularity remain unattached/unproved; numerical aperture frontier 81/100; F-4 pending
+**Current cursor:** RPB-108 / actual finite-selection effective positive realization: at a nonnegative actual window a finite actual negative selection separates K_a, making A_a+R*R coercive; the actual WD-T10 square-root synthesis is invertible and C=-S^{-1}R* realizes unitGain/physicalAdjoint/full native nullity on the same kernel vector; historical fixed-packet P/C/k identification, endpoint existence and enlarged cancellation remain open; numerical aperture frontier 81/100; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2413,3 +2413,10 @@ See [derivative-chain regularity ceiling](../notes/REFLECTED_PACKET_BRIDGE_108_D
 The earlier H^{-1/4} boundary-removal proof only needs supported L2 input and the exact full interior distribution equation. It therefore derives global L2 multiplier action, D_a membership and full mixed-nullity without a prior logarithmic-domain premise. A global L2 derivative of a full null vector satisfies that equation with both pole signs preserved and is automatically promoted into K_a. The derivative-chain exclusion sharpens from H^{r+epsilon} to global H^r for r=dim K_a; if the entire kernel is H1 it is zero. No actual H1 regularity, kernel-dimension bound or retained full identity is supplied. The numerical frontier remains 81/100; F4 and FULL TRANSPORT CLOSED remain open.
 
 See [L2 null domain promotion](../notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md) and [definitions](TERMINOLOGY_RPB108_L2_NULL_DOMAIN_PROMOTION.md).
+
+
+### RPB-108: actual finite-selection effective positive realization (2026-10-06)
+
+At a nonnegative actual window, full negative analysis is injective on the finite native kernel because its norm equals the bounded-below positive analysis there. Finite actual coordinates therefore separate that kernel. For such a selection, G_s=A+R*R is coercive; the actual WD-T10 residual-budget synthesis S=P_0*(I-T_B*T_B)^(1/2) is invertible and C=-S^{-1}R* is contractive. On a full native null vector h, u=-Rh gives Cu=S*h, C*Cu=u and (SS*-R*R)h=0. This constructs actual endpoint coefficient custody without assuming a Green H1 preimage. It does not identify the historical fixed packet or retained witness, construct an actual endpoint, or supply enlarged nullity. The effective-background vector has positive selected energy, so it is not a selected-background null vector. F4 and FULL TRANSPORT CLOSED remain open.
+
+See [finite-selection realization](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SELECTION_EFFECTIVE_POSITIVE_REALIZATION_20261006.md) and [definitions](TERMINOLOGY_RPB108_FINITE_SELECTION_REALIZATION.md).
