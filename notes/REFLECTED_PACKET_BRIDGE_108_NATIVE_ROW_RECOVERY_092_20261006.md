@@ -59,3 +59,18 @@ The whole-domain positivity frontier remains 91/100. The separate global/F4
 lane's entry audit and contact dichotomy are preserved. F4, full transport,
 global endpoint exclusion and historical attachment remain open. Lean and
 workflows are unchanged.
+
+## Later raw recovery snapshot
+
+A later primary snapshot has 83 completed rows and the repeat snapshot has
+84. They agree on all 3,569 lower-triangle entries whose smaller degree is
+below 83. The final degree-83 diagonal remains unverified by comparison;
+both final constructor certificates are still pending. The later snapshots
+are stored separately, preserving the earlier 25-row custody record:
+
+- `notes/data/RPB108_NATIVE84_092_LATEST_ROW_CHECKPOINT_20261006.json.gz`
+- `notes/data/RPB108_NATIVE84_092_LATEST_REPEAT_ROW_CHECKPOINT_20261006.json.gz`
+- `notes/data/RPB108_NATIVE84_092_LATEST_ROW_CHECKPOINT_CUSTODY_20261006.json`
+
+The additive definition registry is
+`docs/TERMINOLOGY_RPB108_NATIVE_ROW_RECOVERY_092.md`.
