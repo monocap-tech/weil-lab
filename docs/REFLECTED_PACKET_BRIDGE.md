@@ -9,6 +9,8 @@
 
 ## Current standing
 
+**Global/F4 fresh packet closure (2026-10-06):** [Fixed actual support filtration and attained right packet](../notes/REFLECTED_PACKET_BRIDGE_108_FRESH_FIXED_RIGHT_PACKET_20261006.md). Conditional on an actual nonnegative null window, one nearby coercive selected background supplies a fixed effective coefficient carrier and a monotone closed support filtration with exact right limit. The unchanged endpoint null vector gives an actual constant normalized critical sequence from the right; endpoint compressed synthesis realizes its unit-gain, physical-adjoint and full-native null equations with explicit reduced-carrier unitary custody. This closes the fresh right-carrier/sequence gap recorded by the entry audit; it does not identify a prescribed historical packet or instantiate the remaining arithmetic/extended-action fields. Enlarged full mixed nullity stays obstructed despite neutral coefficient membership. Exact compression controls repeated; no Lean certification, endpoint exclusion or F4 closure.
+
 **Aperture-lane complete Gram and obstruction (2026-10-06):** [Repeated complete residual Gram and exact depth-six scalar-estimator obstruction at 23/25](../notes/REFLECTED_PACKET_BRIDGE_108_COMPLETE_GRAM_DEPTH6_OBSTRUCTION_092_20261006.md). The negative sufficient estimator is independently verified by exact rational sums; the same vector has positive native energy. No actual full-form negative witness or whole-domain positivity at 23/25 is claimed.
 
 

@@ -1,0 +1,27 @@
+{
+  "actual_contact_constructed": false,
+  "byte_identical_repeat": true,
+  "f4_closed": false,
+  "full_transport_closed": false,
+  "lean_certified": false,
+  "nonzero_enlarged_residual_controls": 63,
+  "normalized_negative_squared_norm": "1/2",
+  "normalized_positive_squared_norm": "1/2",
+  "operator_controls": 81,
+  "prescribed_historical_packet_identified": false,
+  "right_sequence_strictly_decreasing": true,
+  "scope": "rational endpoint/ambient operator controls and right-approach orientation; analytic filtration proved in note",
+  "script_sha256": "8d69a55616e5123b1af3695e7349ce6b1376d387bc333f3a824d6388a9f1bdd7",
+  "source_base": "9f182bb2aea35ffbc721cca6486fb7e5aebfa84d",
+  "source_blob_custody": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOCAL_FINITE_SOURCE_MATRIX_20261006.md": "36d645fe7a634f6e7d2197b507c547c4dae6f1f1",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SELECTION_EFFECTIVE_POSITIVE_REALIZATION_20261006.md": "8bfd91f93ce80eeea5d95f2ee7ff2c34fdfaeb6d",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_NULL_EXTENSION_OBSTRUCTION_20261004.md": "41e9b6b02c79afff807ceef4c61f9320c6874409",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_F4_ENTRY_AUDIT_20261006.md": "a6891f7eeac57999879bd4aded6867badaa0340b",
+    "WeilDefect/Morphology/Neutral.lean": "9c446407e5f9ecfada57d2dee5e1d85b7d8a5753",
+    "WeilDefect/Filtration/FiniteNegativeSector.lean": "f7f2a50f8183ba1a617ce1cf97855461bbbbda5f",
+    "WeilDefect/Filtration/RightLimit.lean": "2df4a12993a7fdad3695deb5e68e7ae526b8ebee",
+    "WeilDefect/Filtration/CriticalDichotomy.lean": "7102a25b28f7a8cf72e805f845bad23daf535aa2",
+    "WeilDefect/Screening/ResidualBudget.lean": "1ffb6b2a80620b266798d40e68fe3329dc2cfb78"
+  }
+}
