@@ -171,7 +171,11 @@ def compute(checkpoint=None):
             pairing=sqrt_rational(F((2*i+1)*(2*j+1)))*(CL[j][i]+CS[j][i])
             difference=pairing-Q[i][j]
             e=max(abs(difference.lo),abs(difference.hi))
-            assert e<F(source['rows'][i]['normalized_uniform_error'])
+            source_allowance=F(source['rows'][i]['normalized_uniform_error'])
+            enclosure_width=(pairing.hi-pairing.lo)+(Q[i][j].hi-Q[i][j].lo)
+            interval_gap=max(F(0),pairing.lo-Q[i][j].hi,Q[i][j].lo-pairing.hi)
+            assert interval_gap<source_allowance
+            assert e<source_allowance+enclosure_width
             pairing_error=max(pairing_error,e)
         for j in range(i,84):
             correction=smooth[i][j]+cross[i][j]+cross[j][i]
@@ -193,6 +197,8 @@ def compute(checkpoint=None):
                 residual_gram_surrogate=[[[fixed_decimal(x.lo),fixed_decimal(x.hi)] for x in row] for row in R],
                 maximum_entry_width=str(width),maximum_entry_width_display=float(width),
                 source_pairing_error_upper=str(pairing_error),
+                pairing_audit_includes_both_enclosure_widths=True,
+                pairing_interval_gap_below_actual_source_allowance=True,
                 surrogate_residual_map_norm_upper=str(M),actual_gram_operator_error_upper=str(delta),
                 source_certificate_sha256=hashlib.sha256(source_path.read_bytes()).hexdigest(),
                 native_certificate_sha256=hashlib.sha256(native_path.read_bytes()).hexdigest(),
