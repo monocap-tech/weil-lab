@@ -15,3 +15,5 @@ Introduced with this aperture extension. Historical definitions and 17/20 certif
 - **Whole-domain conversion:** for a certified lift bound J, mu=tau*c/[tau+c(1+J^2)], kappa=mu/[10(mu+23)] on D_(22/25). These are conclusions only after the full matching sign check passes.
 
 No global endpoint exclusion, retained historical packet attachment, F4 closure, FULL TRANSPORT CLOSED or Lean formalization is inferred from these definitions.
+
+- **Independent integrated exponential control:** the even Taylor polynomial for exp(-z*s^2), integrated term by term on [0,1], gives the rational upper sum of (-z)^m/[m!(2n+2m+1)] through even order 180. Adding the next odd term gives a lower bound. This checks the application of the integrated power majorant independently; it is not a substitute for the analytic Bessel proof.
