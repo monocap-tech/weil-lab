@@ -1,0 +1,7 @@
+{
+  "exact_fixed_grid_endpoint_roundtrip": true,
+  "changed_input_control_rejected": true,
+  "incomplete_matrix_control_rejected": true,
+  "interval_grid_digits": 300,
+  "mathematical_certificate_claim": false
+}

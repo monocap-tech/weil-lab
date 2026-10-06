@@ -77,15 +77,15 @@ def negative_candidate(matrix):
     return None
 
 
-def certificate():
+def certificate(checkpoint=None):
     previous=I.grid;I.grid=10**300;log_point.cache_clear()
     try:
-        return compute()
+        return compute(checkpoint)
     finally:
         I.grid=previous;log_point.cache_clear()
 
 
-def compute():
+def compute(checkpoint=None):
     complement=complement_certificate()
     assert complement["physical_lower"]=="149/250" and complement["complement_inverse_factor"]=="250/149"
     root=Path(__file__).resolve().parents[1]/'notes/data'
@@ -126,7 +126,20 @@ def compute():
     CS=[[I(0) for _ in range(84)] for _ in range(84)]
     smooth=[[I(0) for _ in range(84)] for _ in range(84)]
     cross=[[I(0) for _ in range(84)] for _ in range(84)]
-    for panel in range(9):
+    bindings=dict(source=hashlib.sha256(source_path.read_bytes()).hexdigest(),
+        native=hashlib.sha256(native_path.read_bytes()).hexdigest(),
+        constructor=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        geometry=hashlib.sha256((Path(__file__).parent/'certify_native_translation_panel_order.py').read_bytes()).hexdigest(),
+        hankel=hashlib.sha256((Path(__file__).parent/'certify_native_exact_hankel.py').read_bytes()).hexdigest(),
+        checkpoint_codec=hashlib.sha256((Path(__file__).parent/'certify_native_gram_checkpoint.py').read_bytes()).hexdigest(),
+        aperture='9/10',log_series_terms=500)
+    start=0
+    if checkpoint is not None and Path(checkpoint).exists():
+        from certify_native_gram_checkpoint import load
+        start,matrices=load(checkpoint,bindings)
+        CS,smooth,cross=[matrices[key] for key in ('CS','smooth','cross')]
+        print('resumed after panel',start-1,file=__import__('sys').stderr,flush=True)
+    for panel in range(start,9):
         print("panel",panel,file=__import__("sys").stderr,flush=True)
         a,b=primitives[panel:panel+2]
         moments=[(b[0][k+1]-a[0][k+1])/I(k+1) for k in range(degree+1)]
@@ -146,6 +159,10 @@ def compute():
                 cross[i][j]+=enclosed(legendre_integers[i],logapplied[j],coefficient_denominator)
             for j in range(i,84):
                 smooth[i][j]+=enclosed(polys[i][panel],applied[j],coefficient_denominator**2)
+        if checkpoint is not None:
+            from certify_native_gram_checkpoint import save
+            save(checkpoint,bindings,panel+1,dict(CS=CS,smooth=smooth,cross=cross))
+            print('checkpointed panel',panel,file=__import__('sys').stderr,flush=True)
     R=[[I(0) for _ in range(84)] for _ in range(84)]
     pairing_error=F(0)
     Q=[[I(*x) for x in row] for row in native['matrix_intervals']]
@@ -231,5 +248,8 @@ def compute():
 
 
 if __name__=='__main__':
-    print(json.dumps(certificate(),indent=2))
-
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--checkpoint')
+    args=parser.parse_args()
+    print(json.dumps(certificate(args.checkpoint),indent=2))
