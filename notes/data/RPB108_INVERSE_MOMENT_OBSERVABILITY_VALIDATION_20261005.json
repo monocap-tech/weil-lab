@@ -1,0 +1,15 @@
+{
+  "F4": false,
+  "FULL_TRANSPORT_CLOSED": false,
+  "Lean_changed": false,
+  "actual_kernel_moment_injectivity_established": false,
+  "aperture_frontier": "81/100",
+  "base_commit": "ef46f5691790d06d40cc521ca4434962f2f1643e",
+  "byte_exact_repeat": true,
+  "certificate_sha256": "40cbdcacde8599a55180c69f27f696851c83e75927fcfbbe382879a6bac97320",
+  "controls_are_actual_modes": false,
+  "global_endpoint_exclusion": false,
+  "negative_control_zero_moment_implies_zero_mass_rejected": true,
+  "profile_cases": 24,
+  "universal_proofs_mechanically_checked": false
+}

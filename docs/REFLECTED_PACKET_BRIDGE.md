@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / averaged leading Carleman flux equals a squared inverse boundary moment for edge-truncated/absolutely integrable profiles; bounded nonnegative sector with divergent inverse moment cannot satisfy critical integrated flux cancellation; actual sector hypotheses and finite inverse moment unproved; next actual signed boundary relation or independent endpoint exclusion; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / inverse-moment observability audit: nonzero real-even edge-saturated H1 profiles have zero averaged leading moment, with an infinite independent comparison family; scalar average cannot exclude endpoint modes without actual-kernel-specific injectivity and moment existence; next use full interior mixed equation and independent arithmetic/source constraints or independent endpoint exclusion; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2386,3 +2386,16 @@ For an actual bounded nonnegative weak-null profile, retaining every prime/pole/
 The exact certificate reproduced byte for byte: 27 rational symmetrization cases, nine quadratic-versus-linear comparisons and a rejected singular-sign control, with three source hashes. Controls do not mechanically certify the universal operator arguments or actual sector membership.
 
 Artifacts: scripts/certify_native_averaged_carleman.py; notes/data/RPB108_AVERAGED_CARLEMAN_CERTIFICATE_20261005.json; notes/data/RPB108_AVERAGED_CARLEMAN_VALIDATION_20261005.json. Critical flux integrability, half derivative, exponential Gaussian cancellation, global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Numerical frontier remains 81/100. Lean, axioms and CI unchanged.
+
+
+### RPB-108 — inverse-moment observability audit (2026-10-05)
+
+Base: ef46f5691790d06d40cc521ca4434962f2f1643e. Definitions: [moment observability registry](TERMINOLOGY_RPB108_MOMENT_OBSERVABILITY_AUDIT.md). Proof: [inverse-moment observability audit](../notes/REFLECTED_PACKET_BRIDGE_108_INVERSE_MOMENT_OBSERVABILITY_AUDIT_20261005.md).
+
+The real-even profile f(v)=v(L-v)[v(L-v)-L^2/6] reaches both support edges, has zero extension in H1, inverse boundary moment zero and physical squared mass L^9/7560>0. More generally f_p=[v(L-v)]^p[v(L-v)-L^2 p/(2(2p+1))], p>=1, gives an infinite independent family with those properties and zero moment. These comparison profiles are not asserted to solve the actual null equation.
+
+Thus the one averaged leading Carleman observation has no positive physical-mass lower bound even after imposing real even parity, edge saturation and H1. The prior nonnegative-sector obstruction remains valid but is not exhaustive. Actual-kernel moment existence and injectivity would be separate obligations requiring the full mixed equation and independent arithmetic/source information; neither is obtained here. Critical regularity alone is not endpoint exclusion.
+
+The rational certificate reproduced byte for byte on 24 polynomial profiles (orders one through eight at three scales), checking exact zero inverse moments, positive masses, reflection parity and endpoint zeros. The zero-moment-implies-zero-mass control is rejected. Two source hashes are pinned; no actual mode or universal analytic proof is mechanically certified by these controls.
+
+Artifacts: scripts/certify_native_inverse_moment_observability.py; notes/data/RPB108_INVERSE_MOMENT_OBSERVABILITY_CERTIFICATE_20261005.json; notes/data/RPB108_INVERSE_MOMENT_OBSERVABILITY_VALIDATION_20261005.json. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Numerical frontier remains 81/100. Lean, axioms and CI unchanged.
