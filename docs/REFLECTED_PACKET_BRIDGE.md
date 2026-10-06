@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual full mixed weak-nullity bootstrapped to every finite logarithmic Fourier order; moving Gaussian mass decays faster than every inverse logarithmic power, with order-dependent constants; exponential signed boundary estimate and endpoint exclusion still open; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / actual weak-null logarithmic hierarchy quantitatively optimized to exp(-t^2/[16 log(t+2)]) Gaussian mass bound, t=log log(R/(4pi)), above stated aperture-dependent threshold; current bound remains below power decay in R and does not exclude endpoints; seek stronger mixed-null information or an independent endpoint route; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2304,3 +2304,16 @@ The constants grow with order; no exponential Fourier/Gaussian decay, positive S
 Integer/rational constant audits through order 12 reproduced byte for byte, with independent moment recurrences, seven budget checks and a rejected dropped-Schur-tail control. The universal operator proof and infinite induction are analytic, not mechanically checked or Lean formalized. Trigamma input was verified against NIST DLMF 5.15.1.
 
 Artifacts: scripts/certify_native_logarithmic_bootstrap.py; notes/data/RPB108_LOGARITHMIC_BOOTSTRAP_CERTIFICATE_20261005.json; notes/data/RPB108_LOGARITHMIC_BOOTSTRAP_VALIDATION_20261005.json. Frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
+
+
+### RPB-108 — quantitative optimization of the logarithmic hierarchy (2026-10-05)
+
+Definitions: [logarithmic optimization registry](TERMINOLOGY_RPB108_LOGARITHMIC_OPTIMIZATION.md). Proof: [explicit order optimization](../notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_OPTIMIZATION_20261005.md). Base: cc9302665923e060a5d5b56c032dd5990727eabf.
+
+The actual full weak-null norm constants are bounded by B_k=Z_a^k 2^(k(k-1)/2) product_(j=1)^k j!, with Z_a=3266+C0+35 S_a+2b_a+v_a. This envelope pays for all finite primes and the inhomogeneous pole term. With t=log log(R/(4*pi))>=max(128,4 log Z_a), the lawful choice k=floor(t/[8 log(t+2)]) yields M_R<= [exp(-t^2/[16 log(t+2)])+exp(-R/4)]||h||_2^2.
+
+This turns the separate all-order estimates into an explicit asymptotic rate. Its threshold is enormous; it does not improve the positivity aperture. The established envelope is faster than every inverse logarithmic power but weaker than every inverse power of R. It supplies no actual mass lower bound and does not rule out better decay from additional information. Optimizing these published bounds therefore does not reach the exponential signed boundary estimate or endpoint exclusion.
+
+The integer/rational certificate checks factorial ceilings through order 64, independent recurrence/product envelopes, and four floor/exponent samples using outward rational logarithm intervals. The stated test budget is illustrative and is not an actual aperture budget. A control ignoring the budget threshold is rejected. Certificate reproduced byte for byte. Universal proof remains analytic, not mechanically checked or Lean formalized.
+
+Artifacts: scripts/certify_native_logarithmic_optimization.py; notes/data/RPB108_LOGARITHMIC_OPTIMIZATION_CERTIFICATE_20261005.json; notes/data/RPB108_LOGARITHMIC_OPTIMIZATION_VALIDATION_20261005.json. Frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.

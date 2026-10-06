@@ -1,0 +1,16 @@
+{
+  "F4": false,
+  "FULL_TRANSPORT_CLOSED": false,
+  "Lean_changed": false,
+  "aperture_frontier": "81/100",
+  "base_commit": "cc9302665923e060a5d5b56c032dd5990727eabf",
+  "byte_exact_repeat": true,
+  "certificate_sha256": "c1e1b05fc6dcd5cd4d3ba1c5c397df554baec7efe3c23217193a12285a2cc1dd",
+  "global_endpoint_exclusion": false,
+  "integer_orders_checked": 65,
+  "negative_control_rejected": true,
+  "rational_log_floor_and_exponent_samples": 4,
+  "test_budget_Z": 4096,
+  "test_budget_is_actual_aperture_budget": false,
+  "universal_proofs_mechanically_checked": false
+}
