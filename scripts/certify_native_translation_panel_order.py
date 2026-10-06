@@ -2,10 +2,10 @@
 from certify_native_legendre_small_window import F,I,log_rational
 
 
-def translation_panels(a):
+def translation_panels(a,logarithm=log_rational):
     if not a>0:raise ValueError('Positive aperture required')
     d=2*a
-    logs={n:log_rational(F(n)) for n in (2,3,4,5,7)}
+    logs={n:logarithm(F(n)) for n in (2,3,4,5,7)}
     if not logs[5].hi<d<logs[7].lo:
         raise ValueError('This interface requires log(5)<2a<log(7)')
     powers=(2,3,4,5)

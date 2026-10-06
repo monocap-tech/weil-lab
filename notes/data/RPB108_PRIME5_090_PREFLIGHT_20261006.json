@@ -1,0 +1,11 @@
+{
+  "aperture": "9/10",
+  "quarter_window_golden_unchanged": true,
+  "invalid_native_controls_rejected": 3,
+  "invalid_source_controls_rejected": 2,
+  "source_and_gram_panel_order_identical": true,
+  "new_nine_panel_order_verified": true,
+  "native_and_source_ceilings_verified": true,
+  "whole_domain_positivity_certified": false,
+  "certified_frontier": "22/25"
+}
