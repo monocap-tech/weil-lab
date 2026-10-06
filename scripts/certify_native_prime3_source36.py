@@ -77,10 +77,10 @@ def quantize(result,digits=40):
 
 
 def compute(degree=35, a=F(11,20)):
-    if a not in (F(11,20),F(14,25),F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100)):
+    if a not in (F(11,20),F(14,25),F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50)):
         raise ValueError("Unsupported source aperture")
     d=2*a
-    if a==F(81,100):
+    if a in (F(81,100),F(41,50)):
         assert log_rational(F(5)).hi<d<log_rational(F(7)).lo
     elif a in (F(7,10),F(3,4),F(4,5)):
         assert log_rational(F(4)).hi<d<log_rational(F(5)).lo
@@ -89,6 +89,9 @@ def compute(degree=35, a=F(11,20)):
     if a==F(81,100):
         assert log_rational(F(5)).hi<2*d<log_rational(F(26)).lo
         assert 2*d<=F(81,25)
+    elif a==F(41,50):
+        assert log_rational(F(5)).hi<2*d<log_rational(F(27)).lo
+        assert 2*d<=F(82,25)
     elif a==F(4,5):
         assert 2*d<log_rational(F(25)).lo
         assert 2*d>log_rational(F(5)).hi and 2*d<=F(16,5)
@@ -111,12 +114,12 @@ def compute(degree=35, a=F(11,20)):
         assert 2*d<log_rational(F(10)).lo
         assert 2*d>log_rational(F(4)).hi
         assert 2*d<F(9,4)
-    assert (d/4 if a in (F(7,10),F(3,4),F(4,5),F(81,100)) else d/2)<log_rational(F(2)).lo
+    assert (d/4 if a in (F(7,10),F(3,4),F(4,5),F(81,100),F(41,50)) else d/2)<log_rational(F(2)).lo
     if degree==83:
-        if a!=F(81,100):raise ValueError('Degree 83 requires aperture 81/100')
+        if a not in (F(81,100),F(41,50)):raise ValueError('Degree 83 requires aperture 81/100 or 41/50')
     elif degree==51:
         if a!=F(4,5):raise ValueError('Degree 51 requires aperture 4/5')
-    elif degree not in (35,47) or (degree==47 and a not in (F(14,25),F(3,5),F(16,25),F(69,100),F(7,10),F(3,4))) or (a in (F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100)) and degree!=47) or a in (F(4,5),F(81,100)):
+    elif degree not in (35,47) or (degree==47 and a not in (F(14,25),F(3,5),F(16,25),F(69,100),F(7,10),F(3,4))) or (a in (F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50)) and degree!=47) or a in (F(4,5),F(81,100),F(41,50)):
         raise ValueError('Unsupported source dimension/aperture')
     N,K=(90,100) if degree==83 else (60,52) if a==F(4,5) else ((60,48) if a==F(3,4) else ((60,44) if a==F(7,10) else ((60,40) if a in (F(3,5),F(16,25),F(69,100)) else (60,32))))
     B=bernoulli(2*K+2)
@@ -127,7 +130,7 @@ def compute(degree=35, a=F(11,20)):
     A=[c/2 for c in mul(bp,[(-d/2)**k/factorial(k) for k in range(N+1)])]
     assert A[0]==F(1,2)
     # |A-Atilde| <= ce*s^(N+1)+cb*s^(2K+2), 0<=s<=1.
-    ce=(F(81,40) if a==F(81,100) else (F(2) if a in (F(3,4),F(4,5)) else F(3,2)))*(d/2)**(N+1)/factorial(N+1)
+    ce=(F(41,20) if a==F(41,50) else F(81,40) if a==F(81,100) else (F(2) if a in (F(3,4),F(4,5)) else F(3,2)))*(d/2)**(N+1)/factorial(N+1)
     cb=4*(d/3)**(2*K+2)/(1-(d/3)**2)
     he=ce/(N+1)+cb/(2*K+2)
     ae=ce/(N+2)+cb/(2*K+3)
@@ -136,7 +139,7 @@ def compute(degree=35, a=F(11,20)):
     logtwo=log_rational(F(2))
     ell=logtwo/d
     ell3=log_rational(F(3))/d
-    if a in (F(7,10),F(3,4),F(4,5),F(81,100)):
+    if a in (F(7,10),F(3,4),F(4,5),F(81,100),F(41,50)):
         ell4=log_rational(F(4))/d
         assert (I(1)-ell4).hi<(I(1)-ell3).lo<ell.lo
         assert ell.hi<(I(1)-ell).lo<ell3.lo<ell4.lo<1
@@ -185,15 +188,15 @@ def compute(degree=35, a=F(11,20)):
         core=add(core,[mm*ep[k]+mp*em[k] for k in range(N+1)])
         primes=[(logtwo/sqrt_rational(F(2)),ell),
                 (log_rational(F(3))/sqrt_rational(F(3)),ell3)]
-        if a in (F(7,10),F(3,4),F(4,5),F(81,100)):primes.append((logtwo/2,ell4))
-        if a==F(81,100):primes.append((log_rational(F(5))/sqrt_rational(F(5)),log_rational(F(5))/d))
+        if a in (F(7,10),F(3,4),F(4,5),F(81,100),F(41,50)):primes.append((logtwo/2,ell4))
+        if a in (F(81,100),F(41,50)):primes.append((log_rational(F(5))/sqrt_rational(F(5)),log_rational(F(5))/d))
         panels=[]
         # Exact order: 0, 1-ell3, 1-ell2, ell2, ell3, 1.
         active=[[(0,1),(1,1)],[(0,1)],[],[(0,-1)],[(0,-1),(1,-1)]]
-        if a in (F(7,10),F(3,4),F(4,5),F(81,100)):
+        if a in (F(7,10),F(3,4),F(4,5),F(81,100),F(41,50)):
             active=[[(0,1),(1,1),(2,1)],[(0,1),(1,1)],[(0,1)],
                     [(0,1),(0,-1)],[(0,-1)],[(0,-1),(1,-1)],[(0,-1),(1,-1),(2,-1)]]
-        if a==F(81,100):
+        if a in (F(81,100),F(41,50)):
             active=[[(0,1),(1,1),(2,1),(3,1)],[(0,1),(1,1),(2,1)],[(0,1),(1,1)],[(0,1)],
                     [(0,1),(0,-1)],[(0,-1)],[(0,-1),(1,-1)],[(0,-1),(1,-1),(2,-1)],
                     [(0,-1),(1,-1),(2,-1),(3,-1)]]
@@ -224,13 +227,13 @@ def compute(degree=35, a=F(11,20)):
                 normalization='physical source coefficients multiply by sqrt((2*degree+1)/(2a)); error fields are L2 bounds',
                 source_map_error_upper=str(eta),source_map_error_display=float(eta),
                 rows=rows,full_residual_gram_certified=False,actual_schur_sign_certified=False)
-    if a in (F(7,10),F(3,4),F(4,5),F(81,100)):
+    if a in (F(7,10),F(3,4),F(4,5),F(81,100),F(41,50)):
         result['status']=f'certified full {source_degree+1}-source prime-4 piecewise polynomial approximation'
         result['prime_terms']=[2,3,4]
         result['panel_endpoints']=['0','1-log(4)/(2a)','1-log(3)/(2a)','log(2)/(2a)',
                                    '1-log(2)/(2a)','log(3)/(2a)','log(4)/(2a)','1']
         result['prime4_amplitude']='log(2)/2'
-    if a==F(81,100):
+    if a in (F(81,100),F(41,50)):
         result['status']=f'certified full {source_degree+1}-source prime-5 piecewise polynomial approximation'
         result['prime_terms']=[2,3,4,5]
         result['panel_endpoints']=['0','1-log(5)/(2a)','1-log(4)/(2a)','1-log(3)/(2a)','log(2)/(2a)',

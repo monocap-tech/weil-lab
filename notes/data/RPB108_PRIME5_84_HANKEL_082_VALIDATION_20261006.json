@@ -1,0 +1,13 @@
+{
+  "actual_source_pair_checks": 9,
+  "actual_endpoint_log_pair_checks": 9,
+  "tested_panels": [
+    0,
+    4,
+    8
+  ],
+  "independent_direct_double_sum_agreement": true,
+  "original_convolution_interval_containment": true,
+  "large_integer_carry_controls_passed": true,
+  "mismatched_projection_controls_rejected": true
+}

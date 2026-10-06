@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / larger-aperture complement and panels: actual matching 84-moment complements certify physical 17/50 and logarithmic 9/100 uniformly through 19/20; prime-5 graph controls pass; source panel order changes at log(6)/2, with corrected post-crossing nine-panel patterns verified; whole-domain frontier remains 81/100; next matching finite/source/Gram target 41/50, with constructors and truncation bounds still to extend; historical packet attachment open; F-4 pending
+**Current cursor:** RPB-108 / complete actual Gram at 41/50: lawful degree-83 native/source constructors and all 84 residual sources certified; all 7,056 native/source pairings and nine panels pass; Q84 >= 10^(-18) I, but the actual Q84-2R84 lower estimator has a certified negative direction with positive native energy; complete Gram and exact inverse-slack obstruction retained; whole-domain frontier remains 81/100; next sign target is a sharper actual inverse-complement or energy-lift estimate; historical packet attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2469,3 +2469,10 @@ See [recovery and corrected-margin proof](../notes/REFLECTED_PACKET_BRIDGE_108_R
 The actual 84-moment complements now certify physical lower bound 17/50 and logarithmic lower bound 9/100 uniformly for 1/2<=a<=19/20. Endpoint prime-5 fibre inequalities, signed 4x4 bounds, moment/pole estimates and both cutoffs are rechecked; the complement certificate reproduces byte for byte. The actual source panel order crosses at log(6)/2: at 19/20, the fourth panel carries +2,+3,-2 and the sixth +2,-2,-3. Ordered rational boundaries and all interior translation checks reproduce; old-panel reuse is rejected. This is complement and activation geometry only. The whole-domain positivity frontier remains 81/100; matching finite/source/Gram certification at a larger aperture is still required. The next 41/50 target preserves the old nine-panel order, but the degree-83 constructors still need lawful extension. No Lean or workflow edits; historical attachment, F4 and FULL TRANSPORT CLOSED remain open.
 
 See [the larger complement and panels](../notes/REFLECTED_PACKET_BRIDGE_108_COMPLEMENT_095_PANELS_20261006.md) and [definitions](TERMINOLOGY_RPB108_COMPLEMENT_095_PANELS.md).
+
+
+### RPB-108: complete actual Gram at 41/50 and no-lift obstruction (2026-10-06)
+
+The degree-83 constructors are lawfully extended to 41/50 with checked exponential and kernel ceilings. The actual native 84-vector matrix has margin 10^(-18), and all 84 actual sources, nine panels, 7,056 pairings and the complete residual Gram are certified. Native, source, complement and full Gram outputs each reproduce byte for byte. The target complement gives physical c=1/2 and logarithmic 9/100. The actual Q84-2R84 lower estimator has an exact negative direction with quadratic upper bound below -2*10^(-14), while the same vector has native energy above 3*10^(-12). This is an estimator obstruction, not an actual negative witness or a whole-domain positivity certificate. Exact directional rechecks, input hashes, endpoint grids/widths and independent Hankel controls pass; changed-source custody rejects. The complete source and Gram remain reusable for refined inverse or energy-lift estimates. Frontier remains 81/100; historical packet attachment, global endpoint exclusion, F4 and FULL TRANSPORT CLOSED remain open. No Lean or workflow edits.
+
+See [the complete Gram and obstruction](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_84_SCHUR_082_20261006.md) and [definitions](TERMINOLOGY_RPB108_PRIME5_84_SCHUR_082.md).
