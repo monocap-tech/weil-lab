@@ -4,10 +4,13 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / aperture lane: whole-domain positivity retained through 91/100; matching 23/25 native finite restriction, source and depth-six complement repeated and audited; all nine actual Gram panels complete with byte-identical input-bound checkpoints and repeated 7056-pair independent enclosure audit; residual Gram export underway, corrected sign pending. Separate global/F4 lane preserved; global endpoint exclusion, historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / aperture lane: whole-domain positivity retained through 91/100; matching 23/25 native, source, depth-six complement and complete nine-panel residual Gram repeated and audited; depth-six scalar Schur estimator has independently verified rational negative direction with positive native energy, requiring a scalar complement bound above 0.6381788 versus supplied 0.626973; stronger complement or retained-space/coupling refinement next. Separate global/F4 lane preserved; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
+
+**Aperture-lane complete Gram and obstruction (2026-10-06):** [Repeated complete residual Gram and exact depth-six scalar-estimator obstruction at 23/25](../notes/REFLECTED_PACKET_BRIDGE_108_COMPLETE_GRAM_DEPTH6_OBSTRUCTION_092_20261006.md). The negative sufficient estimator is independently verified by exact rational sums; the same vector has positive native energy. No actual full-form negative witness or whole-domain positivity at 23/25 is claimed.
+
 
 **Global/F4 source regularity constraint (2026-10-06):** [Finite source reconstruction and strict regularity flag](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_REGULARITY_20261006.md). For an r-dimensional actual kernel, the globally H^j reconstructed null coefficient subspace has dimension at most max(r-j,0). All reconstructed null modes being globally H1 would exclude contact; one H1 attached mode alone need not suffice when r>1. A rank-one shifted archimedean control has coercive effective covariance and analytic constant interior forcing whose inverse image is non-H1. Thus bounded effective inversion does not supply the missing regularity. Exact response and spline controls repeated; no actual endpoint or Lean certification. Retained attachment and F4 remain open.
 
