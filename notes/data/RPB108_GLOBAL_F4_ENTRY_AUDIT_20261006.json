@@ -1,0 +1,94 @@
+{
+  "control_repeated_byte_for_byte": true,
+  "controls": {
+    "blind_prescribed_covariance": [
+      "0",
+      "2"
+    ],
+    "endpoint_equations": "PASS",
+    "fresh_separating_covariance": [
+      "1",
+      "1"
+    ],
+    "rejected_invalid_implications": [
+      "strict_monotonicity_excludes_contact",
+      "existential_selection_certifies_prescribed_selection"
+    ],
+    "response_crossing": [
+      {
+        "native": "3/4",
+        "response": "3/4",
+        "t": "1/2"
+      },
+      {
+        "native": "7/16",
+        "response": "7/16",
+        "t": "3/4"
+      },
+      {
+        "native": "0",
+        "response": "0",
+        "t": "1"
+      },
+      {
+        "native": "-9/16",
+        "response": "-9/16",
+        "t": "5/4"
+      },
+      {
+        "native": "-5/4",
+        "response": "-5/4",
+        "t": "3/2"
+      }
+    ],
+    "scope": "algebraic controls only; not actual zeta or nested support models"
+  },
+  "f4_closed": false,
+  "full_transport_closed": false,
+  "lean_source_changed": false,
+  "new_lean_build": false,
+  "publication_parent": "0f6add60ad0a58e5c3e1ec09da44d766b390940b",
+  "source_commit": "d7ce2da16b3162edd31216587a42e63a53897733",
+  "sources": [
+    {
+      "git_blob_sha": "9c446407e5f9ecfada57d2dee5e1d85b7d8a5753",
+      "path": "WeilDefect/Morphology/Neutral.lean"
+    },
+    {
+      "git_blob_sha": "68166c337aa9845133eddbc6374bdd9223f57ff0",
+      "path": "WeilDefect/Morphology/NeutralInnerCollarRegularity.lean"
+    },
+    {
+      "git_blob_sha": "1d7d4721405b03050508008f7a903d2697ac550e",
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_FIRST_CONTACT_CONSTRUCTOR_20261004.md"
+    },
+    {
+      "git_blob_sha": "8bfd91f93ce80eeea5d95f2ee7ff2c34fdfaeb6d",
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SELECTION_EFFECTIVE_POSITIVE_REALIZATION_20261006.md"
+    },
+    {
+      "git_blob_sha": "36d645fe7a634f6e7d2197b507c547c4dae6f1f1",
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOCAL_FINITE_SOURCE_MATRIX_20261006.md"
+    },
+    {
+      "git_blob_sha": "b40e8324d7fdcd83c609782aede65167b26a2b19",
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_LOEWNER_20261006.md"
+    },
+    {
+      "git_blob_sha": "2e0863b0a50724fcaefcb01cef2eb0e8a4fc6994",
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DERIVATIVE_CHAIN_REGULARITY_CEILING_20261006.md"
+    },
+    {
+      "git_blob_sha": "b8ef9607e6823444a887ac71d8ec08bc21242510",
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md"
+    },
+    {
+      "git_blob_sha": "41e9b6b02c79afff807ceef4c61f9320c6874409",
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_NULL_EXTENSION_OBSTRUCTION_20261004.md"
+    },
+    {
+      "git_blob_sha": "d51c96a08e99f4680cf3552bd544b0601177de1e",
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MOVING_GAUSSIAN_COERCIVITY_20261004.md"
+    }
+  ]
+}

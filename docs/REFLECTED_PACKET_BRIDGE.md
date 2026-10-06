@@ -9,6 +9,8 @@
 
 ## Current standing
 
+**Global/F4 lane cursor (2026-10-06):** [Exact entry audit and contact dichotomy](../notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_F4_ENTRY_AUDIT_20261006.md). Global domination reduces to exclusion of a nonzero kernel at any actual nonnegative window. The fresh finite packet supplies endpoint equations, not historical right-limit carrier custody; prescribed-selection compatibility remains independent. Same-vector enlarged full cancellation is obstructed, even for merely supported L2 input once its full equation promotes the domain. The standalone analytic Gaussian lower bound is retained; an independent genuine-residual upper bound is still missing. F4 and FULL TRANSPORT CLOSED remain open. No aperture computations in this lane.
+
 Fresh 23/25 recovery: [source repetition and native truncation repair](../notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_REPEAT_NATIVE_REPAIR_092_20261006.md). No native or whole-domain certificate at 23/25 is yet accepted.
 
 
