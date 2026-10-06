@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / matched actual 22/25 window resolved: complete native/source/Gram reproduce; original c=3/5 estimator negative with positive native energy, preserved and independently audited; same exact integrated bound certifies c=619/1000, beta=1000/619; corrected margin 1/(16384*10^18), lift J=9, all 84 pivots independently rechecked at 80 digits; whole-domain Q>=7*10^(-25) physical mass and Q>=3*10^(-27) Elog; positivity frontier now 22/25; next larger window requires matching constructors/source/Gram and lawful geometry at log(6)/2; historical packet attachment, global endpoint exclusion and F-4 pending
+**Current cursor:** RPB-108 / actual whole-domain positivity certified through 22/25 with c=619/1000 and matched complete inputs; translation-panel support reorder across log(6)/2 now certified at target 9/10, historical active tables preserved below the boundary, two stale-table source failures audited; next lawful 9/10 native/source constructors and matching complete Gram/sign; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2505,3 +2505,14 @@ The same exact integrated Bessel estimate already proves physical complement c=6
 The actual fixed-aperture whole-domain positivity frontier advances from 17/20 to 22/25. Weak null modes are excluded at this aperture and existing WD-T10 full-source unit domination applies. The current nine-panel order reaches a genuine boundary at a=log(6)/2; extending across it requires new lawful panel geometry. Global endpoint exclusion, retained historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. No Lean, axiom or workflow change is made.
 
 See [the complete proof and reproduction note](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_84_SCHUR_088_20261006.md) and [the definition registry](TERMINOLOGY_RPB108_PRIME5_84_SCHUR_088.md).
+
+
+## RPB-108: actual translation-panel reorder across log(6)/2 (2026-10-06)
+
+The support-order interface now certifies the actual prime-power translation panels at target a=9/10, beyond the log(6)/2 collision. The active prime powers remain 2,3,4,5; no prime-6 term is added. Two reflected cutoff pairs reorder. Panels 3 and 5 acquire mixed prime-2/3 shifts that the old table omits, while the total number of panels remains nine. A degree-zero actual-source calculation proves both stale-table errors have strictly negative upper bounds.
+
+Both audit runs reproduce exactly. Generated active sets agree with all historical table entries at 81/100, 41/50, 17/20 and 22/25. Independent rational witnesses pass all 360 support checks across five apertures, exact reflection passes, three invalid domains reject and an unresolved-cutoff-order control rejects. The analytic endpoint-order argument establishes support on each entire open panel, beyond the implementation witness checks.
+
+This closes the geometry obligation for the next 9/10 source/Gram construction. Native/source constructors are unchanged in this pass. Fresh matched full inputs and corrected sign remain necessary. The certified whole-domain frontier stays 22/25; global endpoint exclusion, retained historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean and workflows are unchanged.
+
+See [the panel-order proof and audit](../notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_PANEL_ORDER_20261006.md) and [the geometry registry](TERMINOLOGY_RPB108_TRANSLATION_PANEL_ORDER.md).
