@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual whole-domain positivity certified through 9/10; proved quartic Bessel damping gives c=627/1000, matching pinned complete 84-source Gram has positive corrected sign and independent repeated validation; physical coercivity above 10^-27 and logarithmic coercivity above 6*10^-30 on the complete actual fixed-aperture domain; next lawful larger-aperture extension or global endpoint exclusion; historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / actual whole-domain positivity certified through 9/10; finite logarithmic-derivative iteration now certifies fresh complement c=317/500 at 91/100 and c=623/1000 at 23/25, with complete tails, support geometry and prospective constructor ceilings independently checked and repeated; next fresh matching 91/100 native/source/complete Gram and corrected sign with beta=500/317; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2538,3 +2538,13 @@ Both independent validation reports reproduce exactly. They recheck all 84 shift
 The actual whole-domain fixed-aperture frontier advances from 22/25 to 9/10. Weak null modes are excluded at this aperture and existing WD-T10 full-source unit domination applies. Global endpoint exclusion, retained historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and workflows are unchanged.
 
 See [actual whole-domain sign and custody](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_QUARTIC_WHOLE_090_20261006.md), [analytic damping argument](../notes/REFLECTED_PACKET_BRIDGE_108_QUARTIC_DAMPING_20261006.md) and [definitions](TERMINOLOGY_RPB108_QUARTIC_DAMPING.md).
+
+## RPB-108: finite damping iteration and fresh larger-aperture preflight (2026-10-06)
+
+The exact positive-region logarithmic-derivative integral equation admits a finite polynomial lower-bound iteration. Depth three gives proved squared damping through x^16. Fresh actual complements certify c=317/500 at 91/100 with T=69/5 and c=623/1000 at 23/25 with T=137/10; the independent logarithmic complements remain 9/100. Every degree 84–131 and each complete undamped tail from 132 are retained.
+
+The actual prime chains, support order and prospective exponential/kernel ceilings are freshly checked. Both preflight reports and both independent audits reproduce exactly. A separate polynomial recurrence, all 96 individual degree bounds, both infinite tails, four Bessel-series controls and invalid-domain/excessive-exponent controls pass. These are complement and construction-prerequisite certificates only.
+
+Next matched target is 91/100, requiring fresh actual native/source inputs and a complete residual Gram with corrected sign at beta=500/317. Whole-domain positivity remains certified through 9/10. Global endpoint exclusion, historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean and workflows are unchanged.
+
+See [preflight and custody](../notes/REFLECTED_PACKET_BRIDGE_108_ITERATED_PREFLIGHT_20261006.md), [analytic finite-iteration proof](../notes/REFLECTED_PACKET_BRIDGE_108_ITERATED_DAMPING_20261006.md) and [definitions](TERMINOLOGY_RPB108_ITERATED_DAMPING.md).
