@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual derivative-chain regularity ceiling: with r=dim K_a, no nonzero full mixed-null vector has global derivatives through r in the supported logarithmic domain; H^{r+epsilon} zero-extension regularity would exclude that vector, and derivative invariance would exclude the kernel; recovered Green H1 and actual subcritical regularity do not reach the required derivative domain; independent actual-null regularity/arithmetic exclusion remains open; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / L2 full-null domain promotion: supported L2 plus the exact full interior distribution equation derives D_a membership and global L2 multiplier action; any global L2 derivative of a full null vector is automatically promoted into K_a; with r=dim K_a, K_a intersects global H^r only at zero; recovered WD-T38 full identity and actual H1 regularity remain unattached/unproved; numerical aperture frontier 81/100; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2406,3 +2406,10 @@ Artifacts: scripts/certify_native_inverse_moment_observability.py; notes/data/RP
 For the full actual mixed kernel K_a of dimension r, global differentiation preserves weak-nullity whenever the derivative remains in D_a: the frozen multiplier commutes with differentiation, and integration by parts gives M_-(h')=M_-(h)/2 and M_+(h')=-M_+(h)/2 with no boundary term. Therefore derivatives through order r in D_a would produce r+1 independent kernel vectors, an impossibility. No nonzero null vector has zero extension in H^{r+epsilon}. This is a regularity ceiling, not a proved bootstrap. Recovered Green H1 membership and the existing actual H^s, s<1/2, bounds do not provide the required logarithmic derivatives. Exterior injectivity was already proved and interior nullity does not annihilate the exterior tail. No endpoint exclusion, retained attachment or Lean/CI advance; F4 and FULL TRANSPORT CLOSED remain open.
 
 See [derivative-chain regularity ceiling](../notes/REFLECTED_PACKET_BRIDGE_108_DERIVATIVE_CHAIN_REGULARITY_CEILING_20261006.md).
+
+
+### RPB-108: supported L2 null equations derive their own domain (2026-10-06)
+
+The earlier H^{-1/4} boundary-removal proof only needs supported L2 input and the exact full interior distribution equation. It therefore derives global L2 multiplier action, D_a membership and full mixed-nullity without a prior logarithmic-domain premise. A global L2 derivative of a full null vector satisfies that equation with both pole signs preserved and is automatically promoted into K_a. The derivative-chain exclusion sharpens from H^{r+epsilon} to global H^r for r=dim K_a; if the entire kernel is H1 it is zero. No actual H1 regularity, kernel-dimension bound or retained full identity is supplied. The numerical frontier remains 81/100; F4 and FULL TRANSPORT CLOSED remain open.
+
+See [L2 null domain promotion](../notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md) and [definitions](TERMINOLOGY_RPB108_L2_NULL_DOMAIN_PROMOTION.md).
