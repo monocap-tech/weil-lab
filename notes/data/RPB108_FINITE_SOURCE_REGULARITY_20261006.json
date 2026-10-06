@@ -1,0 +1,173 @@
+{
+  "actual_H1_mapping_proved": false,
+  "actual_null_vector_constructed": false,
+  "byte_identical_repeat": true,
+  "f4_closed": false,
+  "full_transport_closed": false,
+  "lean_certified": false,
+  "scalar_response_checks": 27,
+  "scope": "rational inverse-response algebra and compact-spline delta coefficients only",
+  "script_sha256": "2904343faf08cf1cd6f57717615a03f60a32e941362b794a373ab5e1e8ecb2eb",
+  "source_base": "b0ab19f34a9e2f6cb006e4db0ab6399e1fd2e54e",
+  "spline_controls": [
+    {
+      "delta_coefficients": [
+        1,
+        -1
+      ],
+      "flag_dimensions": [
+        1,
+        0,
+        0
+      ],
+      "r": 1
+    },
+    {
+      "delta_coefficients": [
+        1,
+        -2,
+        1
+      ],
+      "flag_dimensions": [
+        2,
+        1,
+        0,
+        0
+      ],
+      "r": 2
+    },
+    {
+      "delta_coefficients": [
+        1,
+        -3,
+        3,
+        -1
+      ],
+      "flag_dimensions": [
+        3,
+        2,
+        1,
+        0,
+        0
+      ],
+      "r": 3
+    },
+    {
+      "delta_coefficients": [
+        1,
+        -4,
+        6,
+        -4,
+        1
+      ],
+      "flag_dimensions": [
+        4,
+        3,
+        2,
+        1,
+        0,
+        0
+      ],
+      "r": 4
+    },
+    {
+      "delta_coefficients": [
+        1,
+        -5,
+        10,
+        -10,
+        5,
+        -1
+      ],
+      "flag_dimensions": [
+        5,
+        4,
+        3,
+        2,
+        1,
+        0,
+        0
+      ],
+      "r": 5
+    },
+    {
+      "delta_coefficients": [
+        1,
+        -6,
+        15,
+        -20,
+        15,
+        -6,
+        1
+      ],
+      "flag_dimensions": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0,
+        0
+      ],
+      "r": 6
+    },
+    {
+      "delta_coefficients": [
+        1,
+        -7,
+        21,
+        -35,
+        35,
+        -21,
+        7,
+        -1
+      ],
+      "flag_dimensions": [
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0,
+        0
+      ],
+      "r": 7
+    },
+    {
+      "delta_coefficients": [
+        1,
+        -8,
+        28,
+        -56,
+        70,
+        -56,
+        28,
+        -8,
+        1
+      ],
+      "flag_dimensions": [
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0,
+        0
+      ],
+      "r": 8
+    }
+  ],
+  "source_blob_custody": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md": "b8ef9607e6823444a887ac71d8ec08bc21242510",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SELECTION_EFFECTIVE_POSITIVE_REALIZATION_20261006.md": "8bfd91f93ce80eeea5d95f2ee7ff2c34fdfaeb6d",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOCAL_FINITE_SOURCE_MATRIX_20261006.md": "36d645fe7a634f6e7d2197b507c547c4dae6f1f1",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_CONTACT_CONTROL_20261006.md": "cef50e5e46a7ddc6218f33042e720a0c12da58b4",
+    "notes/REFLECTED_PACKET_BRIDGE_108_DERIVATIVE_CHAIN_REGULARITY_CEILING_20261006.md": "2e0863b0a50724fcaefcb01cef2eb0e8a4fc6994"
+  }
+}

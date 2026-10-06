@@ -9,6 +9,8 @@
 
 ## Current standing
 
+**Global/F4 source regularity constraint (2026-10-06):** [Finite source reconstruction and strict regularity flag](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_REGULARITY_20261006.md). For an r-dimensional actual kernel, the globally H^j reconstructed null coefficient subspace has dimension at most max(r-j,0). All reconstructed null modes being globally H1 would exclude contact; one H1 attached mode alone need not suffice when r>1. A rank-one shifted archimedean control has coercive effective covariance and analytic constant interior forcing whose inverse image is non-H1. Thus bounded effective inversion does not supply the missing regularity. Exact response and spline controls repeated; no actual endpoint or Lean certification. Retained attachment and F4 remain open.
+
 **Aperture-lane complete panels (2026-10-06):** [All nine support panels and repeated pairing audit at 23/25](../notes/REFLECTED_PACKET_BRIDGE_108_COMPLETE_PANELS_092_20261006.md). The complete compressed checkpoint is in custody. Exported residual Gram and corrected sign remain pending; no whole-domain positivity at 23/25 is claimed.
 
 
