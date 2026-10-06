@@ -9,6 +9,8 @@
 
 ## Current standing
 
+**Global/F4 lane obstruction (2026-10-06):** [Shifted actual-archimedean contact control](../notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_CONTACT_CONTROL_20261006.md). The exact quarter-line archimedean symbol, tuned by a comparison scalar mass, has a nonnegative contact form with one-dimensional kernel on the same logarithmic domain. Its groundstate has all finite-log/subcritical regularity but is not global H1 and fails the nearly exponential Gaussian action target. The actual half-Carleman boundary kernel is retained. This is a primeless/poleless comparison, not an actual-zeta endpoint. It obstructs boundary-only smoothing/decay arguments and isolates the prescribed prime/pole/source arithmetic as the remaining independent input. Exact sign-defect controls repeated; no Lean certification. F4 and FULL TRANSPORT CLOSED remain open.
+
 **Aperture-lane finite closure (2026-10-06):** [Matching native 84-vector restriction at 23/25](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE84_092_FINITE_20261006.md). Physical finite coercivity is 1/524288000000000000000000; maximum entry width is below 10^-35. Full native, compact and independent audit outputs repeat exactly. Both full Gram calculations are underway; no whole-domain positivity at 23/25 is claimed.
 
 

@@ -1,0 +1,60 @@
+{
+  "source_commit": "42b2abf9985a4eeede2ab2e781d77c5114f98b0e",
+  "publication_parent": "5dafade2a1845af75ea3b64dc4821527b45ebb6a",
+  "primary_source_blobs": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_BOUNDARY_SCALING_20261005.md",
+      "git_blob_sha": "e52a5d00f40e89359613663bf3d54ce575c2451b"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ENDPOINT_BOUNDARY_REGULARITY_20261005.md",
+      "git_blob_sha": "cfa1c29f68ade0e7c519ce2d2acaaffe50eb47dc"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md",
+      "git_blob_sha": "c2d087875d8dd85dfcdbd64893923ef51fcf1028"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_NULL_REGULARITY_20261005.md",
+      "git_blob_sha": "f5dd2cfe71a99cd41fcfd21b01a62c2b17ce89ff"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md",
+      "git_blob_sha": "b8ef9607e6823444a887ac71d8ec08bc21242510"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MOVING_GAUSSIAN_COERCIVITY_20261004.md",
+      "git_blob_sha": "d51c96a08e99f4680cf3552bd544b0601177de1e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ONE_SIDED_GAUSSIAN_BUDGET_20261006.md",
+      "git_blob_sha": "1c62cadf0caa797f51b7aadd002b46279db5c763"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_F4_ENTRY_AUDIT_20261006.md",
+      "git_blob_sha": "a6891f7eeac57999879bd4aded6867badaa0340b"
+    }
+  ],
+  "controls": {
+    "actual_arithmetic_terms_present": false,
+    "equal_physical_masses": "2",
+    "exp_one_rational_upper": "31967/11760",
+    "exp_three_halves_upper": "5",
+    "f4_closed": false,
+    "full_transport_closed": false,
+    "invalid_implications_rejected": [
+      "opposite_sign_energy_defect_is_zero",
+      "ordered_pair_factor_is_eight"
+    ],
+    "lean_certified": false,
+    "modulus_identity_checks": 49,
+    "repeated_byte_for_byte": true,
+    "scope": "comparison constants only; no actual zeta null vector or computed eigenvalue",
+    "sign_energy_difference_lower": "4/5"
+  },
+  "universal_analytic_proof_lean_certified": false,
+  "groundstate_computed": false,
+  "actual_zeta_endpoint_constructed": false,
+  "lean_source_changed": false,
+  "workflow_changed": false
+}
