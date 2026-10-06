@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual whole-domain positivity certified through 22/25 with c=619/1000 and matched complete inputs; translation-panel support reorder across log(6)/2 now certified at target 9/10, historical active tables preserved below the boundary, two stale-table source failures audited; next lawful 9/10 native/source constructors and matching complete Gram/sign; global endpoint exclusion, historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / actual whole-domain positivity certified through 22/25; matched 9/10 native/source inputs and complete 84-source residual Gram now certified and independently repeated beyond the translation-panel reorder; c=149/250 sufficient estimator has an independently audited negative direction with positive native energy, requiring directional complement above approximately 0.602997 while the present proof supplies approximately 0.596903; next stronger lawful complement or lift and fresh corrected sign using the complete saved Gram; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2516,3 +2516,13 @@ Both audit runs reproduce exactly. Generated active sets agree with all historic
 This closes the geometry obligation for the next 9/10 source/Gram construction. Native/source constructors are unchanged in this pass. Fresh matched full inputs and corrected sign remain necessary. The certified whole-domain frontier stays 22/25; global endpoint exclusion, retained historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean and workflows are unchanged.
 
 See [the panel-order proof and audit](../notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_PANEL_ORDER_20261006.md) and [the geometry registry](TERMINOLOGY_RPB108_TRANSLATION_PANEL_ORDER.md).
+
+## RPB-108: matched actual 9/10 residual and audited estimator obstruction (2026-10-06)
+
+The native 84-vector matrix, all 84 actual sources, the complement and the complete nine-panel residual Gram are certified at a=9/10 with the reordered supported translations. Native, source, compact matrix, reordered Hankel, complete Gram and independent obstruction audit outputs reproduce byte for byte. All 7,056 actual source/native comparisons pass; all mixed terms and all 84 projected coordinates are retained. Verified lossless input-bound panel checkpoints allow interrupted contractions to resume without treating incomplete logs as certificates.
+
+At physical complement c=149/250, the actual corrected sufficient estimator has a negative direction with Rayleigh upper bound approximately -4.88632e-24 and positive native Rayleigh lower bound approximately 4.16193e-22. The independent audit verifies the actual source correction, residual trace and input custody. Its directional complement requirement is approximately 0.602997352253, above the present proof's unrounded lower bound approximately 0.596903250743. This is a sufficient-estimator obstruction; it is not an actual negative full-form witness or an upper bound on actual complement coercivity.
+
+The complete matching Gram is saved for stronger complement or lift estimates and a fresh corrected sign. Whole-domain positivity remains certified through 22/25. Global endpoint exclusion, retained historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and workflows are unchanged.
+
+See [complete residual and independent audit](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_090_ESTIMATOR_20261006.md), [estimator definitions](TERMINOLOGY_RPB108_PRIME5_090_ESTIMATOR.md) and [recovery definitions](TERMINOLOGY_RPB108_GRAM_CHECKPOINT.md).
