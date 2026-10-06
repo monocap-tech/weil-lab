@@ -1,0 +1,30 @@
+{
+  "actual_prime_and_cross_pole_terms_used": true,
+  "byte_identical_repeat": true,
+  "equal_physical_masses": "4",
+  "even_defect_strict_upper_per_eta": "-1904/209",
+  "exp_one_upper": "31967/11760",
+  "exp_seven_tenths_lower": "482921/240000",
+  "exp_two_thirds_upper": "4919947/2525985",
+  "f4_closed": false,
+  "full_transport_closed": false,
+  "lean_certified": false,
+  "log_two_bounds": [
+    "2/3",
+    "7/10"
+  ],
+  "negative_native_energy_claimed": false,
+  "null_vector_constructed": false,
+  "odd_defect_strict_upper": "-23/9",
+  "odd_eta": "1/64",
+  "scope": "exact rational constants and two-point identities; analytic integrals proved in note",
+  "script_sha256": "54b5c800d1ccc28bc736124eeab7f737b4a6a644c78e76df2f5fa0791a852cc8",
+  "source_base": "56cb7ede95e8b2741b0e4cd31b010e7d859e8196",
+  "source_blob_custody": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_CORRELATION_POLES_20261004.md": "53cc5035348be043c22a3ed3c101ccd3bfff44fd",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_CONTACT_CONTROL_20261006.md": "cef50e5e46a7ddc6218f33042e720a0c12da58b4",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_PARITY_SCHUR_BLOCK_20261005.md": "bfdbc5494b36909f318dd4765ca8a180e0614845",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_F4_ENTRY_AUDIT_20261006.md": "a6891f7eeac57999879bd4aded6867badaa0340b"
+  },
+  "two_point_identity_checks": 75
+}
