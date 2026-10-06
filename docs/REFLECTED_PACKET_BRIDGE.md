@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual whole-domain positivity certified through 9/10; matching 91/100 native/source/compact matrix, c=317/500 complement and independent Hankel audit recovered, independently repeated and in Git custody; fresh complete Gram runs use distinct lossless input-bound panel checkpoints; logarithmic complement result label corrected to proved 9/100; next complete matching Gram, actual correction and corrected sign with beta=500/317; global endpoint exclusion, historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / actual whole-domain positivity certified through 9/10; matching 91/100 complete 84-source Gram and enclosure audit independently repeated; near-unrounded sufficient estimator has a rigorous negative direction requiring approximately 0.6356568624594 while the present proof supplies approximately 0.6348847300514; next stronger lawful complement or lift and fresh corrected sign on the saved complete Gram; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2552,3 +2552,7 @@ See [preflight and custody](../notes/REFLECTED_PACKET_BRIDGE_108_ITERATED_PREFLI
 ## RPB-108: recovered repeated matched 91/100 inputs (2026-10-06)
 
 The separately produced native, source, compact, complement and direct Hankel audit outputs agree byte for byte. Matching canonical inputs are now preserved in Git; incomplete Gram runs do not advance the whole-domain frontier. The prospective Gram result label is corrected from 91/1000 to the proved logarithmic complement 9/100. Complete matching Gram, actual correction and corrected sign remain pending. See [recovered input custody](../notes/REFLECTED_PACKET_BRIDGE_108_MATCHED_091_INPUT_RECOVERY_20261006.md).
+
+## RPB-108: complete 91/100 Gram and refined estimator obstruction (2026-10-06)
+
+Both complete outputs and both independent direction audits reproduce exactly. Every mixed coordinate and all 7,056 comparisons remain retained. A near-unrounded estimator direction has positive native energy but requires approximately 0.6356568624594, above the present proof's approximately 0.6348847300514. Tighter rounding alone does not resolve this direction; no actual full-form negative witness is claimed. The saved complete Gram supports a stronger complement or lift. Whole-domain positivity remains through 9/10; F4 remains open. See [complete residual and audits](../notes/REFLECTED_PACKET_BRIDGE_108_COMPLETE_091_ESTIMATOR_20261006.md).
