@@ -4,10 +4,13 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual whole-domain positivity certified through 91/100; sixth finite Bessel iteration gives c=637887/1000000 and pinned complete 84-source Gram has positive corrected sign, all outputs and independent audits repeated; physical coercivity above 10^-26 and logarithmic coercivity above 5*10^-29 on the complete actual fixed-aperture domain; next lawful larger-aperture extension or global endpoint exclusion; historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / whole-domain positivity retained through 91/100; fresh 23/25 depth-six complete complement c=626973/1000000 independently audited and exactly repeated; matching 23/25 native/source/Gram constructors in custody, native/source runs underway and complete corrected sign pending; global endpoint exclusion, historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
+
+Fresh 23/25 checkpoint: [depth-six complement and matching constructors](../notes/REFLECTED_PACKET_BRIDGE_108_DEPTH6_COMPLEMENT_092_20261006.md). The whole-domain frontier remains 91/100.
+
 
 ### RPB-108: actual bounded divisor windows and count custody (2026-10-03)
 
