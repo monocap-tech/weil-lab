@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / recovered complete Gram and stronger corrected margin: original 8.89 MB Gram reproduced with matching SHA256 and Git blob; complete 480 KB outward enclosure saved; actual corrected Schur margin 10^(-18), up by 10^11; physical Q>=10^(-20) mass and logarithmic Q>=4*10^(-23) Elog with exact stronger coefficients recorded; aperture frontier 81/100 unchanged; historical packet attachment open; F-4 pending
+**Current cursor:** RPB-108 / larger-aperture complement and panels: actual matching 84-moment complements certify physical 17/50 and logarithmic 9/100 uniformly through 19/20; prime-5 graph controls pass; source panel order changes at log(6)/2, with corrected post-crossing nine-panel patterns verified; whole-domain frontier remains 81/100; next matching finite/source/Gram target 41/50, with constructors and truncation bounds still to extend; historical packet attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2462,3 +2462,10 @@ See [the full-domain conversion proof](../notes/REFLECTED_PACKET_BRIDGE_108_SCHU
 The original complete 84-source Gram has been reconstructed from the pinned source and native inputs; its entire file matches the archived SHA256 and Git blob. A 479,912-byte outward 80-digit lower-triangle enclosure preserves all mixed terms and resolves retrieval for ordinary sign checks. The complete corrected matrix, including the actual source error correction, certifies tau=10^(-18), improving the recorded 10^(-29) margin by 10^11. The widened trace verifies lift norm L=47/5. Exact full-domain coefficients are mu=51/4557360000000000000100 and kappa=51/1048192800000000000023510, yielding simple bounds Q>=10^(-20) physical mass and Q>=4*10^(-23) Elog. The export and two sign checks reproduce byte for byte; negative and changed-input controls reject. Aperture frontier 81/100, global endpoint exclusion, historical attachment, F4 and FULL TRANSPORT CLOSED remain unchanged. No Lean or workflow edits.
 
 See [recovery and corrected-margin proof](../notes/REFLECTED_PACKET_BRIDGE_108_RECOVERED_CORRECTED_MARGIN_20261006.md) and [definitions](TERMINOLOGY_RPB108_RECOVERED_CORRECTED_MARGIN.md).
+
+
+### RPB-108: uniform 84-moment complement through 19/20 and panel reordering (2026-10-06)
+
+The actual 84-moment complements now certify physical lower bound 17/50 and logarithmic lower bound 9/100 uniformly for 1/2<=a<=19/20. Endpoint prime-5 fibre inequalities, signed 4x4 bounds, moment/pole estimates and both cutoffs are rechecked; the complement certificate reproduces byte for byte. The actual source panel order crosses at log(6)/2: at 19/20, the fourth panel carries +2,+3,-2 and the sixth +2,-2,-3. Ordered rational boundaries and all interior translation checks reproduce; old-panel reuse is rejected. This is complement and activation geometry only. The whole-domain positivity frontier remains 81/100; matching finite/source/Gram certification at a larger aperture is still required. The next 41/50 target preserves the old nine-panel order, but the degree-83 constructors still need lawful extension. No Lean or workflow edits; historical attachment, F4 and FULL TRANSPORT CLOSED remain open.
+
+See [the larger complement and panels](../notes/REFLECTED_PACKET_BRIDGE_108_COMPLEMENT_095_PANELS_20261006.md) and [definitions](TERMINOLOGY_RPB108_COMPLEMENT_095_PANELS.md).
