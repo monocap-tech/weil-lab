@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual finite-selection effective positive realization: at a nonnegative actual window a finite actual negative selection separates K_a, making A_a+R*R coercive; the actual WD-T10 square-root synthesis is invertible and C=-S^{-1}R* realizes unitGain/physicalAdjoint/full native nullity on the same kernel vector; historical fixed-packet P/C/k identification, endpoint existence and enlarged cancellation remain open; numerical aperture frontier 81/100; F-4 pending
+**Current cursor:** RPB-108 / local finite actual-source matrix: one finite selection persists near a nonnegative null window; G_s(t) stays coercive, and D_s(t)=I-R_s(t)G_s(t)^{-1}R_s(t)* has exactly the full native positivity, negative index and nullity; r independent actual rows give an r-dimensional matrix vanishing at contact and crossing from positive to negative; matrix entries/inverse bounds, actual endpoint existence and historical packet/critical-carrier identification remain open; numerical aperture frontier 81/100; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2420,3 +2420,10 @@ See [L2 null domain promotion](../notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMA
 At a nonnegative actual window, full negative analysis is injective on the finite native kernel because its norm equals the bounded-below positive analysis there. Finite actual coordinates therefore separate that kernel. For such a selection, G_s=A+R*R is coercive; the actual WD-T10 residual-budget synthesis S=P_0*(I-T_B*T_B)^(1/2) is invertible and C=-S^{-1}R* is contractive. On a full native null vector h, u=-Rh gives Cu=S*h, C*Cu=u and (SS*-R*R)h=0. This constructs actual endpoint coefficient custody without assuming a Green H1 preimage. It does not identify the historical fixed packet or retained witness, construct an actual endpoint, or supply enlarged nullity. The effective-background vector has positive selected energy, so it is not a selected-background null vector. F4 and FULL TRANSPORT CLOSED remain open.
 
 See [finite-selection realization](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SELECTION_EFFECTIVE_POSITIVE_REALIZATION_20261006.md) and [definitions](TERMINOLOGY_RPB108_FINITE_SELECTION_REALIZATION.md).
+
+
+### RPB-108: one finite actual selection reduces the local aperture family (2026-10-06)
+
+Physical dilation puts the actual native forms on D_1. Finite selected exponential rows and the native form vary continuously in operator norm. A selection separating the nonnegative contact kernel therefore keeps G_s=A+R*R coercive nearby. The fixed finite matrix D_s=I-R G_s^{-1}R* has exactly the full native positivity, negative index and nullity, by two bounded block completions. The null reconstruction is h=-G_s^{-1}R*u. Choosing r independent actual rows, r=dim K, gives D_s(c)=0 and a positive-to-negative definite transition locally. The inverse remains an infinite-carrier operation; no matrix values, first-jet slope, endpoint existence or numerical certificate are obtained. A fresh normalized attained sequence is recorded without claiming the historical monotone coefficient-carrier membership or right-approach convention. F4 and FULL TRANSPORT CLOSED remain open.
+
+See [local finite source matrix](../notes/REFLECTED_PACKET_BRIDGE_108_LOCAL_FINITE_SOURCE_MATRIX_20261006.md) and [definitions](TERMINOLOGY_RPB108_LOCAL_FINITE_SOURCE_MATRIX.md).
