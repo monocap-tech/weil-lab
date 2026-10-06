@@ -1,0 +1,19 @@
+{
+  "F4": false,
+  "FULL_TRANSPORT_CLOSED": false,
+  "Lean_changed": false,
+  "aperture_frontier": "81/100",
+  "base_commit": "d17a74065324575654cd53ea394957dfa4961ebb",
+  "byte_exact_repeat": true,
+  "certificate_sha256": "08adcc797e7537f4d443cf48140efb1ed5307a3e8ff6e503c26f4296d13af6f3",
+  "complex_pole_cases": 8,
+  "controls_are_actual_modes": false,
+  "critical_flux_integrability_established": false,
+  "exponential_gaussian_decay": false,
+  "global_endpoint_exclusion": false,
+  "half_derivative_established": false,
+  "negative_control_reversed_increment_sign_rejected": true,
+  "translation_identity_cases": 16,
+  "two_factor_ceiling_cases": 12,
+  "universal_proofs_mechanically_checked": false
+}

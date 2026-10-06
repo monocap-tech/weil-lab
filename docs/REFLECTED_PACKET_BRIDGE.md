@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual weak-null fractional estimates optimized with critical cost accounted for: Gaussian mass R^(-1+o(1)) and exterior squared collar mass delta^(1-o(1)), with explicit exp(O((log scale)^(2/3))) correction and thresholds; exact exponent one, half derivative and exponential signed boundary estimate unproved; next stronger mixed-null/boundary information or independent endpoint exclusion; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / repository custody repaired for two-factor signed Gaussian and fixed-collar R^(-1+o(1)) upper bounds, critical-boundary transfer audit, and exact translation boundary flux; critical flux integrability, half derivative and exponential signed Gaussian cancellation unproved; next actual exterior-strip kernel/prime/pole estimate or independent endpoint exclusion; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2345,3 +2345,18 @@ This gives explicit R^(-1+o(1)) and delta^(1-o(1)) bounds for actual full mixed 
 The exact rational certificate reproduced byte for byte, with six distance parameters, 54 source-budget cases and four exact-cube scale choices. A control ignoring the scale threshold is rejected. Test budgets are illustrative, not certified actual aperture budgets. Universal proof remains analytic, not mechanically checked or Lean formalized.
 
 Artifacts: scripts/certify_native_fractional_optimization.py; notes/data/RPB108_FRACTIONAL_OPTIMIZATION_CERTIFICATE_20261005.json; notes/data/RPB108_FRACTIONAL_OPTIMIZATION_VALIDATION_20261005.json. Frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms, CI and historical notes unchanged.
+
+
+### RPB-108 — recovered boundary continuation and custody repair (2026-10-05)
+
+Base: d17a74065324575654cd53ea394957dfa4961ebb. Definitions: [boundary continuation registry](TERMINOLOGY_RPB108_BOUNDARY_CONTINUATION.md).
+
+The two-factor fractional pairing bounds the genuine moving-Gaussian action by G_s C_s x_R^(-2s) plus explicit exponential off-band and pole errors. The pinned optimization gives R^(-1+o(1)) and transfers to the fixed collar after adding its proved separated-far-field error. This improves the earlier square-root loss; it is not exponential cancellation. Proof: [signed Gaussian fractional pairing](../notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_GAUSSIAN_FRACTIONAL_PAIRING_20261005.md).
+
+The critical-boundary audit derives the necessary exterior Hardy condition for zero-extension H^(1/2) and checks primary logarithmic-Laplacian comparison evidence. No bounded-forcing, comparison-principle or boundary-profile transfer to the actual quarter-line prime-and-pole equation is asserted. Audit: [critical boundary transfer](../notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_BOUNDARY_TRANSFER_AUDIT_20261005.md).
+
+For the same actual full mixed weak-null h, translation and projection give F_h(t)=Re integral_a^(a+t) r_h(x) conjugate(h(x-t))dx=-D_m(t)+(cosh(t/2)-1)P0. The integrated condition integral_0^t0 |F_h(t)|dt/t^2<infinity is equivalent to finite integral |xi|w(xi)|Fourier(h)(xi)|^2dxi; neither condition is proved. An upper bound on this translation flux permits large negative flux, so the missing critical cancellation has the opposite orientation from the Gaussian collar target. Proof: [exact translation boundary flux](../notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md).
+
+The continuation was initially local. This entry repairs repository custody while retaining that history through additive note addenda. The exact certificate checks 12 two-factor ceilings, eight complex-pole cases and 16 translation identities, rejects a reversed-increment sign control, pins six source hashes and reproduces byte for byte. These are algebra controls, not actual modes or mechanical certification of the universal analytic arguments.
+
+Artifacts: scripts/certify_native_boundary_continuation.py; notes/data/RPB108_BOUNDARY_CONTINUATION_CERTIFICATE_20261005.json; notes/data/RPB108_BOUNDARY_CONTINUATION_VALIDATION_20261005.json. Numerical frontier remains 81/100. Critical flux integrability, H^(1/2), exponential Gaussian cancellation, global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
