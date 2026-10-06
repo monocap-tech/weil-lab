@@ -29,7 +29,7 @@ def certificate():
             try:exact_log_data(*pair)
             except ValueError:pass
             else:raise AssertionError("Mismatched source/projection accepted")
-        panels=[0,4,8];checks=0;logchecks=0
+        panels=[0,3,4,5,8];checks=0;logchecks=0
         for panel in panels:
             a,b=[endpoint_primitives(t,746) for t in cuts[panel:panel+2]]
             moments=fixed_moments([(b[0][k+1]-a[0][k+1])/I(k+1) for k in range(747)])
