@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / repository custody repaired for two-factor signed Gaussian and fixed-collar R^(-1+o(1)) upper bounds, critical-boundary transfer audit, and exact translation boundary flux; critical flux integrability, half derivative and exponential signed Gaussian cancellation unproved; next actual exterior-strip kernel/prime/pole estimate or independent endpoint exclusion; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / exact actual right-edge translation flux split into pole, half-Carleman singular, bounded remainder and frozen prime echoes; strict interior and opposite-edge threshold echoes retained; nonzero-null investigation reduces to real even/odd sectors; critical collective flux integrability and exponential Gaussian cancellation unproved; next quantitative boundary relation from actual interior nullity or independent endpoint exclusion; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2360,3 +2360,16 @@ For the same actual full mixed weak-null h, translation and projection give F_h(
 The continuation was initially local. This entry repairs repository custody while retaining that history through additive note addenda. The exact certificate checks 12 two-factor ceilings, eight complex-pole cases and 16 translation identities, rejects a reversed-increment sign control, pins six source hashes and reproduces byte for byte. These are algebra controls, not actual modes or mechanical certification of the universal analytic arguments.
 
 Artifacts: scripts/certify_native_boundary_continuation.py; notes/data/RPB108_BOUNDARY_CONTINUATION_CERTIFICATE_20261005.json; notes/data/RPB108_BOUNDARY_CONTINUATION_VALIDATION_20261005.json. Numerical frontier remains 81/100. Critical flux integrability, H^(1/2), exponential Gaussian cancellation, global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
+
+
+### RPB-108 — actual edge-flux channels and reflection parity (2026-10-05)
+
+Base: 1ef926fcd11525c80395beac0560ddfc8920b245. Definitions: [edge-flux channel registry](TERMINOLOGY_RPB108_EDGE_FLUX_CHANNELS.md). Proof: [exact edge-flux channels](../notes/REFLECTED_PACKET_BRIDGE_108_EXACT_EDGE_FLUX_CHANNELS_20261005.md).
+
+With f(v)=h(a-v), the actual exterior residual yields F_h(t)=Pole(t)-Singular(t)/2-Remainder(t)-Prime(t), using the exact singular kernel and unchanged frozen right-limit prime set. Strict prime terms sample interior intervals even as the exterior collar shrinks. An equality log(n)=2a reads the opposite edge and must not be discarded. The boundary-concentration construction's missing-shift feature does not apply to a general full mixed-null vector.
+
+Reality and reflection invariance of the actual multiplier, symmetric prime shifts and Hermitian pole kernel reduce any hypothetical nonzero complex null vector to a nonzero real even or odd representative. Its threshold prime echo is alpha_threshold sigma integral_0^t f(u)f(t-u)du. Parity does not prove sign-definite edge profiles or cancellation.
+
+The deterministic exact geometry certificate reproduced byte for byte with 27 coordinate cases, 18 reflection-parity cases and rejection of a dropped-threshold-echo control. It pins the three actual source notes; controls are representative profiles, not actual null modes. Universal mixed-form and kernel arguments remain analytic, not mechanically or Lean certified.
+
+Artifacts: scripts/certify_native_edge_flux_channels.py; notes/data/RPB108_EDGE_FLUX_CHANNELS_CERTIFICATE_20261005.json; notes/data/RPB108_EDGE_FLUX_CHANNELS_VALIDATION_20261005.json. Critical collective flux integrability, half derivative, exponential Gaussian cancellation, global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Numerical frontier remains 81/100. Lean, axioms and CI unchanged.

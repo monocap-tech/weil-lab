@@ -1,0 +1,16 @@
+{
+  "F4": false,
+  "FULL_TRANSPORT_CLOSED": false,
+  "Lean_changed": false,
+  "aperture_frontier": "81/100",
+  "base_commit": "1ef926fcd11525c80395beac0560ddfc8920b245",
+  "byte_exact_repeat": true,
+  "certificate_sha256": "9138c2c3f75f6eb2f1519baba7970dd32884a2d54e7866aeeae5cae204acb082",
+  "controls_are_actual_modes": false,
+  "coordinate_cases": 27,
+  "critical_flux_integrability_established": false,
+  "global_endpoint_exclusion": false,
+  "negative_control_drop_threshold_echo_rejected": true,
+  "reflection_parity_cases": 18,
+  "universal_proofs_mechanically_checked": false
+}
