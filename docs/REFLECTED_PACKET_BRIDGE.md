@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / exact actual right-edge translation flux split into pole, half-Carleman singular, bounded remainder and frozen prime echoes; strict interior and opposite-edge threshold echoes retained; nonzero-null investigation reduces to real even/odd sectors; critical collective flux integrability and exponential Gaussian cancellation unproved; next quantitative boundary relation from actual interior nullity or independent endpoint exclusion; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / averaged leading Carleman flux equals a squared inverse boundary moment for edge-truncated/absolutely integrable profiles; bounded nonnegative sector with divergent inverse moment cannot satisfy critical integrated flux cancellation; actual sector hypotheses and finite inverse moment unproved; next actual signed boundary relation or independent endpoint exclusion; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2373,3 +2373,16 @@ Reality and reflection invariance of the actual multiplier, symmetric prime shif
 The deterministic exact geometry certificate reproduced byte for byte with 27 coordinate cases, 18 reflection-parity cases and rejection of a dropped-threshold-echo control. It pins the three actual source notes; controls are representative profiles, not actual null modes. Universal mixed-form and kernel arguments remain analytic, not mechanically or Lean certified.
 
 Artifacts: scripts/certify_native_edge_flux_channels.py; notes/data/RPB108_EDGE_FLUX_CHANNELS_CERTIFICATE_20261005.json; notes/data/RPB108_EDGE_FLUX_CHANNELS_VALIDATION_20261005.json. Critical collective flux integrability, half derivative, exponential Gaussian cancellation, global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Numerical frontier remains 81/100. Lean, axioms and CI unchanged.
+
+
+### RPB-108 — averaged Carleman moment and conditional critical obstruction (2026-10-05)
+
+Base: 4078bf1ad97435e754b22d067b5c68a8ac5826be. Definitions: [averaged Carleman registry](TERMINOLOGY_RPB108_AVERAGED_CARLEMAN.md). Proof: [averaged singular channel](../notes/REFLECTED_PACKET_BRIDGE_108_AVERAGED_CARLEMAN_MOMENT_20261005.md).
+
+For a profile with an edge gap, or absolute inverse-moment integrability, the averaged leading Carleman pairing is exactly one half of the squared inverse moment. Symmetrization follows by integrating the derivative of 1/[(u+v)(u+w)]. The actual singular flux coefficient makes its full average negative one quarter of that squared moment. A uniform Carleman tail bound localizes the result without assuming actual edge integrability.
+
+For an actual bounded nonnegative weak-null profile, retaining every prime/pole/remainder term yields integral_epsilon^t0 F_h(t)dt/t^2 <=-M_epsilon^2/4+constant+B(U+M_epsilon). A divergent inverse moment forces failure of critical integrated flux cancellation in this extra sector. Boundedness, nonnegativity and divergent inverse moment are not established for actual endpoint modes; reflection parity does not supply them. This does not exclude an endpoint or prove critical regularity is compulsory.
+
+The exact certificate reproduced byte for byte: 27 rational symmetrization cases, nine quadratic-versus-linear comparisons and a rejected singular-sign control, with three source hashes. Controls do not mechanically certify the universal operator arguments or actual sector membership.
+
+Artifacts: scripts/certify_native_averaged_carleman.py; notes/data/RPB108_AVERAGED_CARLEMAN_CERTIFICATE_20261005.json; notes/data/RPB108_AVERAGED_CARLEMAN_VALIDATION_20261005.json. Critical flux integrability, half derivative, exponential Gaussian cancellation, global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Numerical frontier remains 81/100. Lean, axioms and CI unchanged.

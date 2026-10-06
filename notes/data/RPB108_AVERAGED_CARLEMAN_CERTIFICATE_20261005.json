@@ -1,0 +1,66 @@
+{
+  "F4": false,
+  "FULL_TRANSPORT_CLOSED": false,
+  "Lean_changed": false,
+  "aperture_frontier": "81/100",
+  "base_commit": "4078bf1ad97435e754b22d067b5c68a8ac5826be",
+  "bounded_nonnegative_actual_sector_established": false,
+  "controls_are_actual_modes": false,
+  "critical_flux_integrability_established": false,
+  "global_endpoint_exclusion": false,
+  "negative_control_singular_flux_sign_rejected": true,
+  "quadratic_linear_cases": [
+    [
+      0,
+      0,
+      8
+    ],
+    [
+      0,
+      2,
+      24
+    ],
+    [
+      0,
+      5,
+      48
+    ],
+    [
+      1,
+      0,
+      16
+    ],
+    [
+      1,
+      2,
+      32
+    ],
+    [
+      1,
+      5,
+      56
+    ],
+    [
+      3,
+      0,
+      32
+    ],
+    [
+      3,
+      2,
+      48
+    ],
+    [
+      3,
+      5,
+      72
+    ]
+  ],
+  "source_sha256": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_BOUNDARY_SCALING_20261005.md": "cb880668fd24ed3217dc2d901271111c13f7fa783b58639cf147996adfc7baa4",
+    "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_EDGE_FLUX_CHANNELS_20261005.md": "f47627ef5c8881d6b27fc4be89ec291a8f184766cd9d805d0f3112267ac787b7",
+    "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md": "6ba4548a517a89c5245ae6dc1b15ee079a87ec5da7ee3ac4887ab0fb111361fb"
+  },
+  "symmetrization_cases": 27,
+  "universal_proofs_mechanically_checked": false
+}
