@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / actual whole-domain positivity certified through 22/25; matched 9/10 native/source inputs and complete 84-source residual Gram now certified and independently repeated beyond the translation-panel reorder; c=149/250 sufficient estimator has an independently audited negative direction with positive native energy, requiring directional complement above approximately 0.602997 while the present proof supplies approximately 0.596903; next stronger lawful complement or lift and fresh corrected sign using the complete saved Gram; global endpoint exclusion, historical packet attachment and F-4 pending
+**Current cursor:** RPB-108 / actual whole-domain positivity certified through 9/10; proved quartic Bessel damping gives c=627/1000, matching pinned complete 84-source Gram has positive corrected sign and independent repeated validation; physical coercivity above 10^-27 and logarithmic coercivity above 6*10^-30 on the complete actual fixed-aperture domain; next lawful larger-aperture extension or global endpoint exclusion; historical packet attachment and F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2526,3 +2526,15 @@ At physical complement c=149/250, the actual corrected sufficient estimator has 
 The complete matching Gram is saved for stronger complement or lift estimates and a fresh corrected sign. Whole-domain positivity remains certified through 22/25. Global endpoint exclusion, retained historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and workflows are unchanged.
 
 See [complete residual and independent audit](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_090_ESTIMATOR_20261006.md), [estimator definitions](TERMINOLOGY_RPB108_PRIME5_090_ESTIMATOR.md) and [recovery definitions](TERMINOLOGY_RPB108_GRAM_CHECKPOINT.md).
+
+## RPB-108: quartic damping and actual whole-domain positivity at 9/10 (2026-10-06)
+
+An additive differential-equation argument strengthens the squared spherical-Bessel damping by a proved quartic exponent. At a=9/10 and T=69/5, all degrees 84–131 are integrated individually and the complete undamped tail from degree 132 remains included. Fresh actual prime-chain, pole and archimedean checks give unrounded physical complement above 0.628038880269, certifying c=627/1000 and beta=1000/627; logarithmic complement remains 9/100.
+
+The pinned matching native/source/complete Gram inputs are unchanged. Both fresh corrected-sign runs reproduce exactly and certify all 84 pivots with tau=1/8388608000000000000000000 and lawful lift J=9. Same-domain square completion gives mu=627/431291891712000000000000001000 and kappa=627/99197135093760000000000000236270. Hence Q>=10^-27 times physical L2 mass and Q>=6*10^-30 Elog on the complete actual domain D_(9/10).
+
+Both independent validation reports reproduce exactly. They recheck all 84 shifted pivots at 80 digits, all input hashes, the lift and norm conversions, all 48 quartic degree bounds, the complete infinite tail, four independent Bessel-series controls and two quartic integrated Taylor controls. Negative diagonal and excessive-exponent controls reject. The earlier c=149/250 negative sufficient estimator remains preserved; the stronger complement resolves its obstruction without claiming it was a negative full-form witness.
+
+The actual whole-domain fixed-aperture frontier advances from 22/25 to 9/10. Weak null modes are excluded at this aperture and existing WD-T10 full-source unit domination applies. Global endpoint exclusion, retained historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and workflows are unchanged.
+
+See [actual whole-domain sign and custody](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_QUARTIC_WHOLE_090_20261006.md), [analytic damping argument](../notes/REFLECTED_PACKET_BRIDGE_108_QUARTIC_DAMPING_20261006.md) and [definitions](TERMINOLOGY_RPB108_QUARTIC_DAMPING.md).
