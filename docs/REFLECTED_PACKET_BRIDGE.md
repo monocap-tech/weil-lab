@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / local finite actual-source matrix: one finite selection persists near a nonnegative null window; G_s(t) stays coercive, and D_s(t)=I-R_s(t)G_s(t)^{-1}R_s(t)* has exactly the full native positivity, negative index and nullity; r independent actual rows give an r-dimensional matrix vanishing at contact and crossing from positive to negative; matrix entries/inverse bounds, actual endpoint existence and historical packet/critical-carrier identification remain open; numerical aperture frontier 81/100; F-4 pending
+**Current cursor:** RPB-108 / strict actual finite-source Loewner order: physical inclusion gives L_s(b)-L_s(a) equal to the effective energy of the change in forced solutions; finite exponential forcing rigidity makes this difference positive definite after removing selected-row redundancy, so D_s=I-L_s decreases strictly wherever G_s remains coercive; independent matrix sign/inverse estimates and historical packet attachment remain open; numerical aperture frontier 81/100; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2427,3 +2427,10 @@ See [finite-selection realization](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_S
 Physical dilation puts the actual native forms on D_1. Finite selected exponential rows and the native form vary continuously in operator norm. A selection separating the nonnegative contact kernel therefore keeps G_s=A+R*R coercive nearby. The fixed finite matrix D_s=I-R G_s^{-1}R* has exactly the full native positivity, negative index and nullity, by two bounded block completions. The null reconstruction is h=-G_s^{-1}R*u. Choosing r independent actual rows, r=dim K, gives D_s(c)=0 and a positive-to-negative definite transition locally. The inverse remains an infinite-carrier operation; no matrix values, first-jet slope, endpoint existence or numerical certificate are obtained. A fresh normalized attained sequence is recorded without claiming the historical monotone coefficient-carrier membership or right-approach convention. F4 and FULL TRANSPORT CLOSED remain open.
 
 See [local finite source matrix](../notes/REFLECTED_PACKET_BRIDGE_108_LOCAL_FINITE_SOURCE_MATRIX_20261006.md) and [definitions](TERMINOLOGY_RPB108_LOCAL_FINITE_SOURCE_MATRIX.md).
+
+
+### RPB-108: strict actual finite-source Loewner order (2026-10-06)
+
+On physical nested domains with a fixed actual finite selection, L_s=R G_s^{-1}R* increases in Loewner order. Its exact quadratic gap is G_b(h_b-h_a,h_b-h_a) for the actual effective forced solutions. Equality outside the common analytic selected-row redundancy would make a nonzero smaller-supported vector solve a finite exponential native forcing equation on a larger window; the existing strict-margin forcing theorem rules this out. Hence D_s=I-L_s decreases strictly on the observable quotient. Each fixed selection supplies a local contact-count budget equal to its actual independent row rank, wherever G_s stays coercive. Strict monotonicity permits contact and supplies neither its numerical sign nor a crossing slope. No endpoint exclusion or historical retained attachment; F4 and FULL TRANSPORT CLOSED remain open.
+
+See [finite-source Loewner order](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_LOEWNER_20261006.md) and [definitions](TERMINOLOGY_RPB108_FINITE_SOURCE_LOEWNER.md).
