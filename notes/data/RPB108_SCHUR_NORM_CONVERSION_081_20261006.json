@@ -1,0 +1,47 @@
+{
+  "status": "stronger whole-domain norm conversion from inherited certified Schur inputs",
+  "aperture": "81/100",
+  "inherited_input_custody": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_84_SCHUR_081_20261005.md": {
+      "git_blob_sha": "6669733a39388821f3d5c26eeec933f454c6ea24",
+      "sha256": "eafb7b85d3ef7ec1eaa7a5cd6f1605d06997e6e42f31a089f13277f8f66e8a45"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_ENDPOINT_BRIDGE_AUDIT_20261005.md": {
+      "git_blob_sha": "5202104f002a673ced842b655a4d222353e7d574",
+      "sha256": "7e5db6a61f22a798afb6f1bb849006821af8724108d68e53d7cda7f91cf48494"
+    },
+    "notes/data/RPB108_PRIME5_84_SCHUR_081_VALIDATION_20261005.json": {
+      "git_blob_sha": "95a36b76f5aa017cf3a8726658e9848d90eb56e2",
+      "sha256": "f9a162a0f9c360292e67d919e614a130748b2273df24f7b374dfb3adf7663bc3"
+    }
+  },
+  "inherited_full_gram_sha256": "32f664f3e4a686dd220755c18f8aa38b790955b9c6b1a08e99fb8c5ac3a1615c",
+  "full_gram_retrieved_or_recomputed_this_pass": false,
+  "corrected_schur_margin": "1/100000000000000000000000000000",
+  "physical_complement_lower": "51/100",
+  "lift_operator_norm_upper": "10",
+  "whole_domain_physical_coercivity_lower": "51/515100000000000000000000000000100",
+  "previous_whole_domain_physical_coercivity_lower": "1/20200000000000000000000000000000",
+  "physical_improvement_factor": "10302000000000000000000000000000/5151000000000000000000000000001",
+  "two_by_two_psd_entries": [
+    "1/515100000000000000000000000000100000000000000000000000000000",
+    "-51/51510000000000000000000000000010",
+    "2627010000000000000000000000000/5151000000000000000000000000001"
+  ],
+  "two_by_two_determinant": "2601/265328010000000000000000000000103020000000000000000000000000010000",
+  "logarithmic_coercivity_lower": "51/118473000000000000000000000000023510",
+  "previous_logarithmic_coercivity_lower": "1/4646000000000000000000000000000010",
+  "logarithmic_mass_loss_ceiling": 23,
+  "logarithmic_blend_weight": "51/11847300000000000000000000000002351",
+  "generic_rational_conversion_controls": 36,
+  "doubled_conversion_control_rejected": true,
+  "doubled_conversion_control_determinant": "-1353172851000000000000000000000514998000000000000000000000000051/265328010000000000000000000000103020000000000000000000000000010000000000000000000000000000000",
+  "script_sha256": "6a6d456a6ebcafaf7dfcee2f629c581ff20306bcc6fca74548d0cebcd0b666e7",
+  "corrected_schur_matrix_margin_updated": false,
+  "finite_restriction_margin_used": false,
+  "numerical_aperture_frontier": "81/100",
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / native finite margin: the unchanged 84-vector interval matrix at 81/100 certifies physical coercivity 10^(-18), improving the recorded finite bound by 10^10; exact source hash and all 7,056 outward interval inclusions checked; full-domain physical bound 1/(202*10^29) and aperture frontier 81/100 unchanged pending corrected Schur recheck; actual selected packet attachment open; F-4 pending
+**Current cursor:** RPB-108 / tighter whole-domain norm conversion: inherited Schur inputs tau=10^(-29), c=51/100, L=10 yield physical mu=51/(5151*10^29+100) and logarithmic kappa=51/[10(118473*10^29+2351)], almost twice the previous bounds; pinned input custody and exact rational checks pass; corrected matrix margin and aperture frontier 81/100 unchanged; historical packet attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2448,3 +2448,10 @@ See [finite-source residual enclosure](../notes/REFLECTED_PACKET_BRIDGE_108_FINI
 The archived native 84-vector matrix certifies Q_84 >= 10^(-18) I in its physical orthonormal Legendre basis, improving the recorded finite margin by 10^10. Exact Git blob verification, 7,056 outward interval inclusions, symmetry and parity checks, and all 84 shifted positive pivot bounds are reproducible; two runs agree byte for byte. Larger attempted shifts were uncertified, with no negativity or optimality conclusion. The full-domain physical bound remains 1/(202*10^29), and the frontier remains 81/100: the corrected full Gram/Schur matrix still needs rechecking. No selected off-line packet is instantiated; historical attachment, F4 and FULL TRANSPORT CLOSED remain open.
 
 See [native finite margin](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FINITE_MARGIN_20261006.md) and [definitions](TERMINOLOGY_RPB108_NATIVE_FINITE_MARGIN.md).
+
+
+### RPB-108: tighter whole-domain Schur norm conversion (2026-10-06)
+
+The inherited actual Schur inputs tau=10^(-29), c=51/100 and lift norm L=10 give mu=tau*c/[tau+c(1+L^2)]=51/(5151*10^29+100), almost twice the previous whole-domain physical bound. The scalar 2x2 conversion matrix has nonnegative diagonals and determinant mu^2>0. The inherited actual Garding inequality then gives kappa=51/[10(118473*10^29+2351)]. Three archived inputs are pinned by Git blob hash; 36 rational controls pass, an oversized conversion and a changed input are rejected, and two runs agree byte for byte. This pass does not retrieve or rerun the full Gram, increase the corrected matrix margin, or use the stronger raw finite margin. Historical constants remain preserved in their original notes. Aperture frontier 81/100, historical attachment, F4 and FULL TRANSPORT CLOSED are unchanged.
+
+See [the full-domain conversion proof](../notes/REFLECTED_PACKET_BRIDGE_108_SCHUR_NORM_CONVERSION_20261006.md) and [definitions](TERMINOLOGY_RPB108_SCHUR_NORM_CONVERSION.md).
