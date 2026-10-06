@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / damped actual complement resolves 41/50: proved spherical-Bessel tail damping certifies physical complement 3/5; pinned complete Gram certifies corrected margin 10^(-18) with beta=5/3; full-domain bounds Q>=10^(-20) physical mass and Q>=5*10^(-23) Elog; all 84 pivots rechecked independently at 80 digits, exact Bessel series controls pass; whole-domain positivity frontier now 41/50; next larger-window target requires lawful matching constructors/source/Gram or an actual endpoint-exclusion argument; historical packet attachment open; F-4 pending
+**Current cursor:** RPB-108 / matched actual 17/20 window: fresh native/source/complete Gram; integrated spherical-Bessel complement 13/20 with beta=20/13; corrected margin 1/(32*10^18), all 84 pivots independently rechecked at 80 digits; full-domain bounds Q>=4*10^(-22) physical mass and Q>=2*10^(-24) Elog; whole-domain positivity frontier now 17/20; next larger window requires lawful matching constructors/source/Gram and checked panel geometry; historical packet attachment and global endpoint exclusion open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2483,3 +2483,14 @@ See [the complete Gram and obstruction](../notes/REFLECTED_PACKET_BRIDGE_108_PRI
 A new analytic spherical-Bessel differential inequality suppresses the low-frequency Legendre tail before its proved positive-region boundary. A rational frequency/degree split certifies actual physical complement c=3/5 at 41/50, with the unrounded lower bound approximately 0.602967. Reusing the pinned complete actual Gram, beta=5/3 gives all 84 corrected positive pivots at margin 10^(-18). The lift bound J=9 and exact scalar conversion yield mu=3/246000000000000000005 and kappa=3/56580000000000000001180, hence Q>=10^(-20) physical mass and Q>=5*10^(-23) Elog on the full native domain. Complement and sign constructors reproduce byte for byte; an independent 80-digit sign check, four exact Bessel-series controls, 644 ODE coefficient identities and invalid/overstrong controls pass. The prior beta=2 negative estimator certificate remains valid and preserved; it supplied no actual native negative witness. The whole-domain positivity frontier advances from 81/100 to 41/50, excluding fixed-aperture weak null modes and giving the existing WD-T10 full-source unit-domination consequence. Global endpoint exclusion, historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. No Lean or workflow edits.
 
 See [the damping proof and full-domain certificate](../notes/REFLECTED_PACKET_BRIDGE_108_DAMPED_COMPLEMENT_082_20261006.md) and [definitions](TERMINOLOGY_RPB108_DAMPED_COMPLEMENT_082.md).
+
+
+## RPB-108: matched actual 17/20 full-domain positivity (2026-10-06)
+
+The fresh 84-dimensional native form, actual source enclosure and complete residual Gram at a=17/20 reproduce byte for byte. All 7,056 native/source comparisons pass, and independent direct Hankel sums retain every endpoint-log and mixed term. The baseline complement 23/40 already certifies positivity. A proved degree-by-degree integral of spherical-Bessel damping, with degrees 84–131 and the complete infinite tail, improves the physical complement to 13/20 at T=14.
+
+The full corrected matrix with beta=20/13 certifies tau=1/(32*10^18). Its lift bound J=8 yields mu=13/27040000000000000000020 and kappa=13/6219200000000000000004730. Thus Q>=4*10^(-22) times physical L2 mass and Q>=2*10^(-24) Elog on the complete actual native domain D_(17/20). All 84 shifted pivots are independently rechecked on an 80-digit outward grid; exact input hashes, scalar conversions, Bessel series and negative controls pass. Both refined validation reports reproduce byte for byte.
+
+The fixed-aperture whole-domain positivity frontier advances from 41/50 to 17/20. Fixed-aperture weak null modes are excluded and existing WD-T10 full-source unit domination applies. Global endpoint exclusion, retained historical packet attachment, F4 and FULL TRANSPORT CLOSED remain open. No Lean, axiom or workflow change is made.
+
+See [the complete proof and reproduction note](../notes/REFLECTED_PACKET_BRIDGE_108_PRIME5_84_SCHUR_085_20261006.md) and [the definition registry](TERMINOLOGY_RPB108_PRIME5_84_SCHUR_085.md).
