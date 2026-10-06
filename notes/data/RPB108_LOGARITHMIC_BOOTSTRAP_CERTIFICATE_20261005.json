@@ -1,0 +1,112 @@
+{
+  "F4": false,
+  "FULL_TRANSPORT_CLOSED": false,
+  "Lean_changed": false,
+  "base_commit": "a7d14ef13f2b83ddfbd21dcc32939a84202318f4",
+  "checks": {
+    "commutator_pi_budget": true,
+    "exp_one_exceeds_two": true,
+    "global_small_derivative_budget": true,
+    "large_derivative_budget": true,
+    "pole_fourier_tail_budget": true,
+    "small_derivative_budget": true,
+    "two_sign_schur_budget": true
+  },
+  "exponential_gaussian_decay": false,
+  "global_endpoint_exclusion": false,
+  "negative_control_drop_schur_tail_rejected": true,
+  "orders": [
+    {
+      "A": 1,
+      "D": 1728,
+      "U": 18,
+      "k": 0,
+      "pole_tail_moment": 1
+    },
+    {
+      "A": 19,
+      "D": 8064,
+      "U": 84,
+      "k": 1,
+      "pole_tail_moment": 10
+    },
+    {
+      "A": 169,
+      "D": 51456,
+      "U": 536,
+      "k": 2,
+      "pole_tail_moment": 168
+    },
+    {
+      "A": 1609,
+      "D": 427008,
+      "U": 4448,
+      "k": 3,
+      "pole_tail_moment": 5296
+    },
+    {
+      "A": 17793,
+      "D": 4379136,
+      "U": 45616,
+      "k": 4,
+      "pole_tail_moment": 297856
+    },
+    {
+      "A": 228081,
+      "D": 53491200,
+      "U": 557200,
+      "k": 5,
+      "pole_tail_moment": 26813184
+    },
+    {
+      "A": 3343201,
+      "D": 758527488,
+      "U": 7901328,
+      "k": 6,
+      "pole_tail_moment": 3539368960
+    },
+    {
+      "A": 55309297,
+      "D": 12252962304,
+      "U": 127635024,
+      "k": 7,
+      "pole_tail_moment": 644165281792
+    },
+    {
+      "A": 1021080193,
+      "D": 222186653184,
+      "U": 2314444304,
+      "k": 8,
+      "pole_tail_moment": 154599668219904
+    },
+    {
+      "A": 20829998737,
+      "D": 4469871779328,
+      "U": 46561164368,
+      "k": 9,
+      "pole_tail_moment": 47307498477912064
+    },
+    {
+      "A": 465611643681,
+      "D": 98807689987584,
+      "U": 1029246770704,
+      "k": 10,
+      "pole_tail_moment": 17976849421618118656
+    },
+    {
+      "A": 11321714477745,
+      "D": 2380794811547136,
+      "U": 24799945953616,
+      "k": 11,
+      "pole_tail_moment": 8305304432787621150720
+    },
+    {
+      "A": 297599351443393,
+      "D": 62107690726540800,
+      "U": 646955111734800,
+      "k": 12,
+      "pole_tail_moment": 4584528046898767093301248
+    }
+  ],
+  "universal_operator_proofs_mechanically_checked": false
+}

@@ -1,0 +1,33 @@
+{
+  "F4": false,
+  "FULL_TRANSPORT_CLOSED": false,
+  "Lean_changed": false,
+  "aperture_frontier": "81/100",
+  "base_commit": "a7d14ef13f2b83ddfbd21dcc32939a84202318f4",
+  "budget_checks": 7,
+  "byte_exact_repeat": true,
+  "certificate_sha256": "1d6b4142324b74ef84b76cd7a82276b89622dda0c19f1c96ea93622f9fe7ecee",
+  "exponential_gaussian_decay": false,
+  "global_endpoint_exclusion": false,
+  "independent_moment_audits": [
+    "integration_by_parts_Horner",
+    "pole_binomial_vs_recurrence"
+  ],
+  "negative_control_rejected": true,
+  "orders_audited": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "universal_operator_proofs_mechanically_checked": false
+}

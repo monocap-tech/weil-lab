@@ -4,7 +4,7 @@
 
 **Branch:** `research/rpb108-larger-aperture-complement`
 
-**Current cursor:** RPB-108 / exact boundary kernel split into half-Carleman plus Hilbert-Schmidt remainder; actual exterior residual noncompact in physical L2 and no norm-only positive-power shrinking-collar bound on unit logarithmic carriers; weak-null-specific signed Gaussian estimate still needed; numerical aperture frontier 81/100; global endpoint exclusion and retained selected-witness attachment open; F-4 pending
+**Current cursor:** RPB-108 / actual full mixed weak-nullity bootstrapped to every finite logarithmic Fourier order; moving Gaussian mass decays faster than every inverse logarithmic power, with order-dependent constants; exponential signed boundary estimate and endpoint exclusion still open; numerical aperture frontier 81/100; retained selected-witness attachment open; F-4 pending
 **Research standing:** experimental; WD-T40 mathematical standing unchanged, with final Lean assembly still blocked.
 
 ## Current standing
@@ -2289,3 +2289,18 @@ After logarithmic-carrier normalization the same actual residual has squared mas
 The preceding weak-null boundary regularity and M_R=O((log R)^(-2)) result remain valid. A stronger signed estimate must use additional mixed-null information or cancellation in the signed pairing. The exact rational constant certificate reproduced byte for byte; ten checks passed and the dropped-singularity control was rejected. The operator and Fourier proofs are analytic, not mechanically checked or Lean formalized.
 
 Artifacts: scripts/certify_native_boundary_scaling.py; notes/data/RPB108_BOUNDARY_SCALING_CERTIFICATE_20261005.json; notes/data/RPB108_BOUNDARY_SCALING_VALIDATION_20261005.json. Frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
+
+
+### RPB-108 — all finite logarithmic orders from actual mixed nullity (2026-10-05)
+
+Definitions: [logarithmic bootstrap registry](TERMINOLOGY_RPB108_LOGARITHMIC_BOOTSTRAP.md). Proof: [actual logarithmic bootstrap](../notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md). Base: a7d14ef13f2b83ddfbd21dcc32939a84202318f4.
+
+For the actual quarter-line archimedean multiplier, the derivative bound |m0'(xi)|<=144/(1+|xi|) and an explicit two-sign weighted Schur argument show that the support indicator P_a and [m0(D),P_a] are bounded on each X_k, with squared Fourier weight w^(2k). Prime translations preserve each X_k; the cut-off pole profile belongs to each X_k with explicit factorial moment bounds. The previously derived initial multiplier L2 domain and the full mixed equation give m0(D)h=P_a T_a h-P_a p_h+[m0(D),P_a]h. This derives membership in X_(k+1) from X_k, with a quantitative order-dependent recurrence.
+
+Thus every actual full weak-null vector has every finite logarithmic Fourier moment. Its unchanged moving Gaussian mass obeys M_R=O_a,N((log R)^(-N))||h||_2^2 for every fixed N>0. No positivity or trace premise is used. No nonzero null vector is asserted. Selected-only retained nullity is not sufficient.
+
+The constants grow with order; no exponential Fourier/Gaussian decay, positive Sobolev exponent, enlarged vanishing interval or endpoint exclusion follows. The boundary concentration obstruction for arbitrary carrier vectors remains valid. The next issue is stronger control using the mixed null equation beyond this hierarchy, or a different endpoint exclusion route.
+
+Integer/rational constant audits through order 12 reproduced byte for byte, with independent moment recurrences, seven budget checks and a rejected dropped-Schur-tail control. The universal operator proof and infinite induction are analytic, not mechanically checked or Lean formalized. Trigamma input was verified against NIST DLMF 5.15.1.
+
+Artifacts: scripts/certify_native_logarithmic_bootstrap.py; notes/data/RPB108_LOGARITHMIC_BOOTSTRAP_CERTIFICATE_20261005.json; notes/data/RPB108_LOGARITHMIC_BOOTSTRAP_VALIDATION_20261005.json. Frontier remains 81/100. Global endpoint exclusion, retained selected-witness attachment, F4 and FULL TRANSPORT CLOSED remain open. Lean, axioms and CI unchanged.
