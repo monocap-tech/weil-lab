@@ -1,0 +1,11 @@
+{
+  "actual_completed_rows": 2,
+  "resumed_from_row_count": 1,
+  "independent_fresh_vs_resumed_raw_rows_equal": true,
+  "checkpoint_sha256": "dff9fc2dfbe001b80903a50ff30fe8fd40185c08dcd12d8246242d87950a0e3e",
+  "raw_even_entries_checked": 112,
+  "whole_native_matrix_pending": true,
+  "finite_sign_certified": false,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false
+}

@@ -1,0 +1,14 @@
+{
+  "aperture": "1",
+  "independent_akiyama_vs_defining_recurrence_checks": 723,
+  "all_native_360_pair_and_source_114_pair_constants_verified": true,
+  "source_alternating_decreasing_pairs_verified": 114,
+  "native_nonzero_even_signs_verified": 361,
+  "exact_source_kernel_ceiling": "13/6",
+  "source_kernel_ceiling_below": "9/4",
+  "native_kernel_guard": 5,
+  "exponential_guard": 55,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "auditor_sha256": "99f663c58bc4accf30141026db7a5fa330bd66cf5204bee090ce00fc049fed85"
+}
