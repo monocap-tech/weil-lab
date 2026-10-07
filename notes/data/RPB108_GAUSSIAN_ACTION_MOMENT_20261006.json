@@ -1,0 +1,29 @@
+{
+  "source_commit": "565bc84b6502545d672d5977946030a8f7941397",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MOVING_GAUSSIAN_COERCIVITY_20261004.md": "d51c96a08e99f4680cf3552bd544b0601177de1e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ONE_SIDED_GAUSSIAN_BUDGET_20261006.md": "1c62cadf0caa797f51b7aadd002b46279db5c763",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_GAUSSIAN_FRACTIONAL_PAIRING_20261005.md": "347b00545797a10e85ae30c32b11ae0388792b55",
+    "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md": "b8ef9607e6823444a887ac71d8ec08bc21242510",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_REGULARITY_20261006.md": "03b6f5a9d6cb9caa6044d3fd247156606703e91b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_F4_ENTRY_AUDIT_20261006.md": "a6891f7eeac57999879bd4aded6867badaa0340b"
+  },
+  "script_sha256": "e14841d92d2a4383ee6114cb24fa8a4f6c628a61e57da3205d1a07ccb104b7df",
+  "repeat_identical": true,
+  "controls": {
+    "cone_controls": 305,
+    "rate_controls": 40,
+    "scope": "Gaussian overlap inequalities and polynomial rate algebra",
+    "split_controls": 610,
+    "status": "exact_controls_pass"
+  },
+  "new_actual_action_result": "weighted positive action sum with n^(3/2)/log(e+n) is finite iff positive Fourier derivative energy is finite; two reflected sums iff global H1",
+  "endpoint_target": "finite signed weighted partial-sum liminf for each vector of a real basis of the full nonnegative kernel",
+  "polynomial_sufficient_bound": "positive real action <= C n^(-5/2) log(e+n)^(-delta), delta>0; not proved",
+  "failed_implication": "actual endpoint mixed nullity or the existing n^(-1+o(1)) estimate implies the weighted action moment",
+  "scope": "endpoint exclusion criterion; not historical F4 exponential Fourier weight or same-vector null transport",
+  "aperture_frontier": "93/100 preserved; no aperture calculation",
+  "F4": "open",
+  "FULL_TRANSPORT_CLOSED": false,
+  "lean_certified": false
+}
