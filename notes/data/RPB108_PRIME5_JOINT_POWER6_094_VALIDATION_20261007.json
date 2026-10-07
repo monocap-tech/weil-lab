@@ -1,0 +1,17 @@
+{
+  "certificate_sha256": "44fe42a4d2a09d8ab5726aec62a8416e7a4508d4ad87ec82701e222c3610be1b",
+  "byte_identical_repeat": true,
+  "exhaustive_words": 262144,
+  "panels_checked": 163,
+  "path_region_tests": 42729472,
+  "all_reachable_levels_and_boundary_cuts_verified": true,
+  "all_amplitudes_enclosed": true,
+  "all_exact_row_sums_equal": true,
+  "maximum_row_mass": "37963231922371407056444277874170581640500838990049909351062521227056995754286067620302602850628975920283986074484519272189575618660250424435288455673312017556687274557868855707274219/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "joint_prime_norm_upper": "917/500",
+  "smaller_row_mass_ceiling_rejected": true,
+  "actual_operator_norm_lower_claimed": false,
+  "whole_domain_positivity": false,
+  "f4_closed": false,
+  "lean_formalized": false
+}

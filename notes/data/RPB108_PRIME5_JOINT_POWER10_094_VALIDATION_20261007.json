@@ -1,0 +1,31 @@
+{
+  "certificate_sha256": "64d52110e6415df332e13b54f42700cf98db74595e2b041f65846df8c2ac9819",
+  "byte_identical_repeat": true,
+  "multinomial_oriented_word_counts": [
+    1,
+    8,
+    64,
+    512,
+    4096,
+    32768,
+    262144,
+    2097152,
+    16777216,
+    134217728,
+    1073741824
+  ],
+  "words_per_panel": 1073741824,
+  "panels_checked": 435,
+  "all_reachable_states_and_cuts_independently_verified": true,
+  "all_amplitudes_enclosed": true,
+  "exact_integer_forward_row_sums_equal": true,
+  "sixth_power_exhaustive_word_cross_checks": 435,
+  "sixth_power_certificate_sha256": "44fe42a4d2a09d8ab5726aec62a8416e7a4508d4ad87ec82701e222c3610be1b",
+  "surviving_oriented_words_across_panels": 38752874,
+  "joint_prime_norm_upper": "449/250",
+  "smaller_row_mass_ceiling_rejected": true,
+  "actual_operator_norm_lower_claimed": false,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}

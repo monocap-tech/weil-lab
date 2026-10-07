@@ -1,0 +1,150 @@
+{
+  "certificate_sha256": "6f18d0ca6500bc442295382e6fed48b86723b45b1e747fa8e3325e5cee22d7db",
+  "byte_identical_repeat": true,
+  "parent_complete_mass_and_endpoint_audit": {
+    "certificate_sha256": "f1b40e6d1d486faacd14825fa0c97a140bb92df06a808c733053548e1e8b5cae",
+    "byte_identical_repeat": true,
+    "inner_complete_mass_audit": {
+      "preflight_sha256": "306be49256830a56ebb3835c42d8f6faa6dbb332c46e03ade6438fd4c37d0043",
+      "preflight_reproduced_byte_for_byte": true,
+      "independent_polynomial_recurrence_checks": 21,
+      "quartic_specialization_checks": 3,
+      "aperture_checks": [
+        {
+          "aperture": "47/50",
+          "all_48_degree_bounds_verified": true,
+          "complete_infinite_tail_verified": true,
+          "all_positive_region_and_rate_checks_passed": true,
+          "complement_only_scope_verified": true
+        }
+      ],
+      "independent_bessel_series_controls": [
+        {
+          "degree": 84,
+          "argument": "75",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 84,
+          "argument": "80",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 131,
+          "argument": "75",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 131,
+          "argument": "80",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        }
+      ],
+      "invalid_iteration_domain_controls_rejected": 4,
+      "whole_domain_positivity_frontier": "93/100",
+      "new_aperture_whole_domain_positivity": false,
+      "global_endpoint_excluded": false,
+      "f4_entry_closed": false,
+      "full_transport_closed": false,
+      "lean_formalized": false
+    },
+    "outer_complete_mass_audit": {
+      "preflight_sha256": "6eb9b230b8ca24633842091ad20cd0deb9830d767babbc8dca4b43251f8404ea",
+      "preflight_reproduced_byte_for_byte": true,
+      "independent_polynomial_recurrence_checks": 21,
+      "quartic_specialization_checks": 3,
+      "aperture_checks": [
+        {
+          "aperture": "47/50",
+          "all_48_degree_bounds_verified": true,
+          "complete_infinite_tail_verified": true,
+          "all_positive_region_and_rate_checks_passed": true,
+          "complement_only_scope_verified": true
+        }
+      ],
+      "independent_bessel_series_controls": [
+        {
+          "degree": 84,
+          "argument": "75",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 84,
+          "argument": "80",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 131,
+          "argument": "75",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 131,
+          "argument": "80",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        }
+      ],
+      "invalid_iteration_domain_controls_rejected": 4,
+      "whole_domain_positivity_frontier": "93/100",
+      "new_aperture_whole_domain_positivity": false,
+      "global_endpoint_excluded": false,
+      "f4_entry_closed": false,
+      "full_transport_closed": false,
+      "lean_formalized": false
+    },
+    "exact_two_band_endpoint_sum_verified": true,
+    "pointwise_region_controls": 3,
+    "unchanged_prime_pole_logarithmic_bounds": true,
+    "complement_lower": "2/3",
+    "whole_domain_positivity": false,
+    "f4_closed": false,
+    "lean_formalized": false
+  },
+  "joint_exhaustive_path_audit": {
+    "certificate_sha256": "44fe42a4d2a09d8ab5726aec62a8416e7a4508d4ad87ec82701e222c3610be1b",
+    "byte_identical_repeat": true,
+    "exhaustive_words": 262144,
+    "panels_checked": 163,
+    "path_region_tests": 42729472,
+    "all_reachable_levels_and_boundary_cuts_verified": true,
+    "all_amplitudes_enclosed": true,
+    "all_exact_row_sums_equal": true,
+    "maximum_row_mass": "37963231922371407056444277874170581640500838990049909351062521227056995754286067620302602850628975920283986074484519272189575618660250424435288455673312017556687274557868855707274219/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "joint_prime_norm_upper": "917/500",
+    "smaller_row_mass_ceiling_rejected": true,
+    "actual_operator_norm_lower_claimed": false,
+    "whole_domain_positivity": false,
+    "f4_closed": false,
+    "lean_formalized": false
+  },
+  "independent_direct_lower_sum_verified": true,
+  "physical_lower": "81/100",
+  "physical_unrounded_display": 0.8116681744086194,
+  "whole_domain_positivity": false,
+  "f4_closed": false,
+  "lean_formalized": false
+}
