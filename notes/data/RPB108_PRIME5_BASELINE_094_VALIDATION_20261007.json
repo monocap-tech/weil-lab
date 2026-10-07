@@ -1,0 +1,14 @@
+{
+  "certificate_sha256": "f626fd8cf2bb0bfc3519410014d24a23ff369edefde9e83778b136bcbdd8b9eb",
+  "byte_identical_repeat": true,
+  "aperture": "47/50",
+  "actual_prime_support_geometry_verified": true,
+  "chain_psd_pivots_checked": 8,
+  "pole_and_global_floor_verified": true,
+  "independent_complete_logarithmic_mass_formula_verified": true,
+  "high_frequency_symbol_comparison_coefficient": "9/10",
+  "logarithmic_lower": "9/100",
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}
