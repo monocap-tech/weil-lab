@@ -1,0 +1,11 @@
+{
+  "passed_assertions": 517,
+  "scope": "finite singular-coupling/Schur algebra and two-point positive-jump control; not actual continuum nullity",
+  "source_head": "2e379972f2130b9be9c400bf107f0ee3b4da82eb",
+  "source_blobs": {
+    "POLE_STRIPPED_CHAIN": "87a296ab96c1888b77c864136279d31b420d6e74",
+    "NATIVE_ORDER_OBSTRUCTION": "738289b9df5d11436c79ea72dfbe8e85841904f1",
+    "KERNEL_DERIVATIVE_CHAIN": "e124b8a31a00df61908ce71cedd4ab7f83a14c76",
+    "CRITICAL_EIGENMODE_TARGET": "3354b89638b643d5b21c4c428f069f738ccf59f5"
+  }
+}
