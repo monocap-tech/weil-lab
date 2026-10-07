@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-07",
+  "recovered_head": "5d2f3b839cf200700720f6eca0b1c443826ef06d",
+  "category": "endpoint exclusion / arithmetic target reduction",
+  "results": {
+    "positive_Abel_sharp_head_identity": true,
+    "uniform_one_sided_actual_sharp_bound_sufficient": true,
+    "bounded_sharp_subsequence_sufficient": false,
+    "actual_rough_positive_eigenmode_Abel_diverges": true
+  },
+  "new_actual_critical_bound": false,
+  "actual_contact_excluded": false,
+  "F4": false,
+  "Lean_certified": false,
+  "additional_mass_carrier": false,
+  "aperture_marching": false,
+  "control": {
+    "kind": "abstract coefficients only",
+    "positive_norm_squared": "1",
+    "negative_norm_squared": "1",
+    "sharp_returns_checked": 64,
+    "Abel_lower_coefficient": "9/640",
+    "validation": "rational script passed once; infinite identities analytic"
+  },
+  "sources": [
+    "CRITICAL_EIGENMODE_TARGET_20261007:3354b89638b643d5b21c4c428f069f738ccf59f5",
+    "EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX_20261007:c369d3760606d9e5b9ae0f4862156fd712e5be29",
+    "FRACTIONAL_POSITIVE_SOURCE_MOMENTS_20261006:955ff7b4bd0d7f58221c300a962a803824232fd6"
+  ]
+}
