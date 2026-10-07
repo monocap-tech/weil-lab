@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-07",
+  "recovered_head": "6cc48df565bb30f3859256932ccf1292ccb737a2",
+  "result": "On every fixed actual window A_a=L_a/2+B_a with common physical form and operator domains; B_a explicit bounded self-adjoint complete actual prime/pole correction",
+  "global_arithmetic_gate_closed": false,
+  "lean_certified": false,
+  "remaining_gate": "actual unshifted full-null source range implies nonpositive signed sharp/log liminf",
+  "internal_sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md",
+      "blob_sha": "c2d087875d8dd85dfcdbd64893923ef51fcf1028"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ROUGH_FORCED_INVERSE_20261007.md",
+      "blob_sha": "525ced5f03a8fc5dee543ada83d74a5fed8d74b0"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXTERNAL_TERMINAL_DEFECT_20261007.md",
+      "blob_sha": "3a1ee0a1b5b67399b081dca6bf1474ef1c3ba9ae"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_COMBINED_RIGHT_EDGE_DRIVE_20261007.md",
+      "blob_sha": "81851d107b65549dca965f656b92353df7ac0fe7"
+    }
+  ],
+  "external_sources": [
+    {
+      "url": "https://arxiv.org/pdf/1710.03416",
+      "authors": "Chen-Weth",
+      "locations": "Theorem 1.1; exterior supported form preceding Theorem 1.4",
+      "custody": "primary integral normalization and form inspected; angular symbol 2 log|eta|; bounded correction/domain proof is repository analysis"
+    }
+  ],
+  "controls": {
+    "actual_positive_eigenmode": "same operator domain and exact forcing 2(mu h-B_a h), mass residual retained",
+    "artificial_compact_good_rows": "not the actual bounded correction or source range",
+    "finite_actual_restoration": "complete actual form retained; normalized bounded sharp change does not erase trace coefficient",
+    "two_row_comparison_contact": "auxiliary rows alter correction operator; no actual identification"
+  },
+  "research_interface_closed": "closest external operator now attached to full actual supported operator at all finite windows",
+  "failed_candidate": "shared logarithmic operator domain alone selects zero energy and excludes its terminal trace",
+  "qualification": "no sign of B_a or positive full-native semigroup is inferred"
+}
