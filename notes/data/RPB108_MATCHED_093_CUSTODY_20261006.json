@@ -1,0 +1,33 @@
+{
+  "source_base": "f0d6ef5967a2b32adc1c2acdb9b47a0e43282aab",
+  "all_preflight_repeats_byte_identical": true,
+  "whole_domain_positivity_frontier": "23/25",
+  "new_whole_domain_positivity": false,
+  "f4_closed": false,
+  "lean_changed": false,
+  "sha256": {
+    "scripts/certify_native_legendre_small_window.py": "fb63b092df33bc91400d220544833ce8be96daf00ef865ddd4d57e14ef2576c0",
+    "scripts/certify_native_prime3_source36.py": "1cab45cce1535b5d3ad8eb982caf5c9ff1d00a2893efff4e8a655c030a80daaa",
+    "scripts/certify_native_prime5_complement84_093.py": "b025ee6c38735b99523fbb91e68111c7147ae510d9c28ef643349cad4c2b918a",
+    "scripts/certify_native_prime5_matrix84_093.py": "f38203b366fee1c5fc2bc73f1fa09d1af7563ab25454761227dfb3749eff888e",
+    "scripts/certify_native_prime5_source84_093.py": "111338e1f84ae789334bcd8438d22bcf868094901626d0023a9152b25f587014",
+    "scripts/certify_native_prime5_twoband_complement84_093.py": "817ad8e9fc8219ccef68f90748b6161d7069732a842dbe1d847b8d9ad1f3faec",
+    "scripts/compact_native_prime5_matrix84_093.py": "7dc36d495eac7354d5f70ce89b101b88be9041eea134bb1b34ac89c65b06ff72",
+    "scripts/validate_native_matrix_row_recovery_093.py": "2a8d6044221c2bae788044990c59a8ea1e10984006f8124214fa0c0a7cc05f42",
+    "scripts/validate_native_prime5_depth6_complement_093.py": "c7da4d0d25562d3b84703f44b12b364f3755164abb1384e11dcc5264c4bcd65b",
+    "scripts/validate_native_prime5_matrix84_093.py": "b78e4418b9790dcd91aa0231e2a149e9b560f8062a57f51ac8741bcbf08afc78",
+    "scripts/validate_native_prime5_source84_093.py": "c580556b479644b3e4d793d7c6cc28c65c9fea9aa5a960c16e7cfa0f750e21c0",
+    "scripts/validate_native_prime5_truncation84_093.py": "8cc694f7f2f0ef65cb71ca0fe0cb2d41b502122225822b506994834126b13769",
+    "scripts/validate_native_prime5_twoband_complement_093.py": "06d66c2fb5d273d28a65408c0ad59185e39e41f10fedb77122cd32bfbb04b24c",
+    "docs/TERMINOLOGY_RPB108_MATCHED_093.md": "529672ee3804510c96fc723a475692a43cf2667e98f76b354cbc64915ca06377",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TWOBAND_PREFLIGHT_093_20261006.md": "56c7851db97d068ae8bb2577ee0f68736dff491ac696115af1c8e99ea1314e09",
+    "notes/data/RPB108_MATCHED_093_CONSTANTS_VALIDATION_20261006.json": "61d8115c10304b24eb393e98166c320dbecbec002d50f4390f5fcc4ccb0ccc54",
+    "notes/data/RPB108_MATCHED_093_GUARDS_VALIDATION_20261006.json": "26d2d806d38f6f2eb805984c5589f50a7e23acb3fd43e1502f0921492900b7d5",
+    "notes/data/RPB108_NATIVE84_093_MATCHED_ROW_CUSTODY_20261006.json": "f1c4c0bd97f44b4e93cbfbff51b7543b33d546ba51d8d4b5c3967dac149fcc0f",
+    "notes/data/RPB108_NATIVE84_093_TRUNCATION_VALIDATION_20261006.json": "3ea4e481476fc781e4cabcd284403ecd6e25d9a829585761040b5f1706e437e9",
+    "notes/data/RPB108_NATIVE_ROW_RECOVERY_093_VALIDATION_20261006.json": "a0b529b757f3494357d9a6e8abfa3054c85b96bc837e27e08ac7088a9273b0bc",
+    "notes/data/RPB108_PRIME5_BASELINE_COMPLEMENT84_093_CERTIFICATE_20261006.json": "9372ac0a656c52520c9700ad9ab0878c9a9e9e967d9d152fca04e5a736a5c22c",
+    "notes/data/RPB108_PRIME5_TWOBAND_COMPLEMENT84_093_CERTIFICATE_20261006.json": "9ca1a93e46183bf96ef20ec7ef321af7e8f05788418ddeec9b8cbe659c3912b0",
+    "notes/data/RPB108_PRIME5_TWOBAND_COMPLEMENT_093_VALIDATION_20261006.json": "cec2431c6414900db0e62ddac9fe95ba550a66f327c8fc23dbebcc3dff74d4a0"
+  }
+}

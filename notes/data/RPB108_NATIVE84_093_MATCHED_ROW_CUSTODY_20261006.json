@@ -1,0 +1,10 @@
+{
+  "aperture": "93/100",
+  "completed_rows": 25,
+  "matched_even_entries": 906,
+  "bindings_equal": true,
+  "raw_sha256": "5db8224badf62f28252ebf253cd5b346fa715e40ffb8f2770d7e6b6c9d874504",
+  "gzip_sha256": "77e2ec3f5d63b0e911f5fdf6b3a0416f0012312af62b78e0974fe121acdc30b2",
+  "kind": "recovery checkpoint only; no accepted native certificate",
+  "file": "notes/data/RPB108_NATIVE84_093_MATCHED_25_ROWS_20261006.json.gz"
+}
