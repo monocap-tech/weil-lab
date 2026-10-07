@@ -1,0 +1,23 @@
+{
+  "source_commit": "98113d6a145a04e0ff9b9a60adcdc745478a80fd",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_QUADRATIC_GAIN_REGULARITY_20261006.md": "e1a089f88ad1c9699c1fce1089fe8971be716b98",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COLLAR_GAIN_20261006.md": "8766475f25345c496e71ee8d099be18aae8dcd61",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_REGULARITY_20261006.md": "03b6f5a9d6cb9caa6044d3fd247156606703e91b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COMPENSATOR_RESIDUAL_20261006.md": "c36a4691ba4730a4fc7803efde378e4ed671f075"
+  },
+  "script_sha256": "05469f9a73afb79fab808c6524c16732b0fc831f2a4b1557300d7ca6d6b89489",
+  "repeat_identical": true,
+  "controls": {
+    "cosine_floor": "11/24 > 1/4",
+    "matrix_rate_cases": 30,
+    "scope": "algebra/rate controls only; sequencewise actual arithmetic bound unproved",
+    "status": "rational_controls_pass"
+  },
+  "analytic_result": "normalized contact response eigenvalues split: d=dim H1 modes tend to zero, r-d tend to infinity; rough fixed modes have gain/s^2 and collar mass/(s^2 log(1/s)) limits infinity",
+  "unproved": "sequencewise arithmetic upper bound on full normalized contact gain trace, or basiswise sequencewise collar mass ratio",
+  "F4": "open",
+  "FULL_TRANSPORT_CLOSED": false,
+  "lean_certified": false
+}
+
