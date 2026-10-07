@@ -1,0 +1,26 @@
+{
+  "recovered_head": "617480dc67ee6840abed3c33a1f262d0ab8f226b",
+  "publication_parent": "617480dc67ee6840abed3c33a1f262d0ab8f226b",
+  "category": "endpoint exclusion",
+  "result": "exact Carleman plus combined edge drive; global pole budget cannot replace local pole flux",
+  "kernel_remainder_at_zero": "1/4",
+  "physical_control_exponent": "1/4",
+  "local_pole_flux_order": "5/4",
+  "target_order": "3/2",
+  "actual_null_control": false,
+  "arithmetic_estimate_proved": false,
+  "source_blobs": [
+    "b8ef9607e6823444a887ac71d8ec08bc21242510",
+    "432ffd64d6460c65cee106f0b46afdb50d1ec28a",
+    "f5dd2cfe71a99cd41fcfd21b01a62c2b17ce89ff",
+    "26627f85c34572a8197b32a1216382e8d02e07f5"
+  ],
+  "regression_scripts": [
+    "scripts/validate_critical_derivative_promotion.py",
+    "scripts/validate_signed_cutoff_source_moment.py"
+  ],
+  "regression_pass": true,
+  "lean_certified": false,
+  "frontier_preserved": "24/25",
+  "F4": false
+}
