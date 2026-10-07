@@ -1,0 +1,21 @@
+{
+  "certificate_sha256": "aa448997dbfac0ab5d99da5d031b2912b2ca7aee44565140c51cc376e2ea8386",
+  "byte_identical_repeat": true,
+  "aperture": "199/200",
+  "coarse_weight_cells": 2373,
+  "refined_cells_checked": 3147,
+  "actual_translated_cut_events_checked": 2962,
+  "every_source_support_and_target_event_covered": true,
+  "independent_linear_logarithm_enclosures": true,
+  "transitions_checked": 31470,
+  "all_exact_weighted_pointwise_inequalities_verified": true,
+  "weight_lower": "14843064027/500000000000",
+  "norm_upper": "1931357/1000000",
+  "omitted_essential_translated_cut_rejected": true,
+  "smaller_pointwise_majorant_for_same_weight_rejected": true,
+  "actual_operator_norm_lower_claimed": false,
+  "finite_boundary_null_set_scope": true,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}

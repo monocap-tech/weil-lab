@@ -1,0 +1,328 @@
+{
+  "aperture": "199/200",
+  "seed_commit": "83278548b6090c43a05debf154c67e828876c0f2",
+  "files": {
+    "scripts/certify_native_prime7_112_preflight_0995.py": {
+      "bytes": 3880,
+      "sha256": "581d89d4d3f41bfe22ca223157196beefac4bb1b74ab675bf829bf03bcf07258",
+      "git_blob_sha": "31d8090e295a253411cff169d29ac9b0a6d801bb"
+    },
+    "scripts/certify_native_prime7_source112_constant_budget_0995.py": {
+      "bytes": 2331,
+      "sha256": "54ce52db31f5d9d5f6ecf55691c99907adcb04c0c056dee9c3c65447a237eb30",
+      "git_blob_sha": "07ba93c49bdf7e851833dc6672d09bda582f1738"
+    },
+    "scripts/certify_native_prime7_garding_0995.py": {
+      "bytes": 1570,
+      "sha256": "6b0a42cd3be63c02d08325f65acf6be73ec016fb79973728b440da823cea24a0",
+      "git_blob_sha": "fd06c72b1ca71845a2fe3ee13aa4b5745c9aa6c6"
+    },
+    "scripts/validate_native_prime7_112_preflight_0995.py": {
+      "bytes": 6424,
+      "sha256": "85b065c2cc3db0446c69f16909a144e28b433077f92e909dee688a9d383e2550",
+      "git_blob_sha": "a11b82943b9d039dabf43983d6957db3a6702f96"
+    },
+    "scripts/certify_native_prime7_geometry_0995.py": {
+      "bytes": 1305,
+      "sha256": "5d7011940a55e3fb90df6c1446ffd4a514daea0efec1626fdcbfd36b2df0f61e",
+      "git_blob_sha": "21c0724ef785545a98022f30e60549cd89a30579"
+    },
+    "scripts/certify_native_prime7_translation_panels_0995.py": {
+      "bytes": 2224,
+      "sha256": "36f98cc0e7add362d512102f7c4e07cdbd22f84b4b75799d4da853ebf8ab1c43",
+      "git_blob_sha": "ea70fc3c9e564c98a11c6a9695c34cddfe684d8c"
+    },
+    "scripts/validate_native_prime7_weighted_schur_depth10_0995.py": {
+      "bytes": 5574,
+      "sha256": "22013cba19db5e9ceed2911ec59c2230bdf0e77d6bad4027803d5b5668599a40",
+      "git_blob_sha": "0f2cc526e71eb284360e9809c550b5af6e8d40e8"
+    },
+    "scripts/certify_native_prime7_weighted_schur_depth10_0995.py": {
+      "bytes": 4787,
+      "sha256": "4e87f919fe40778eff6788bd17c569f9f9187821508b90c797cc21d50123c6fb",
+      "git_blob_sha": "4126081e1e76fc7ab62917f1325ee48c0ef0ee91"
+    },
+    "scripts/restore_native_prime7_preflight_0995_archives.py": {
+      "bytes": 1002,
+      "sha256": "f0a28188338c60d04cc6a5840cf5342c8c1d9c778c07208299382d8b9cbdd97b",
+      "git_blob_sha": "75cb196753a169a80d6dc50e9e41d0cdd071751a"
+    },
+    "scripts/validate_native_prime7_source112_budget_0995.py": {
+      "bytes": 1494,
+      "sha256": "26f23978d3fefe0830ee0816fa1e11155fda1f5be7cd4642430132d727b56595",
+      "git_blob_sha": "b719383365eb2eedae7f9de81257a2b5f3a67a1f"
+    },
+    "scripts/certify_native_prime7_source112_budget_0995.py": {
+      "bytes": 1656,
+      "sha256": "74722aaac732917d61d5cd51698bc2c932af552f232f40b68a0b575940f60a7c",
+      "git_blob_sha": "d5cefec90372b259c3b16c48bebf8829db575447"
+    },
+    "scripts/validate_native_prime7_geometry_0995.py": {
+      "bytes": 2576,
+      "sha256": "1f59afefb8b54281bfe9cc14b234cec6bedec608875e5ca93211bd939a887508",
+      "git_blob_sha": "fbeeb261b764d03ee75dcf09818883038ffefb23"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME7_PREFLIGHT_0995_20261007.md": {
+      "bytes": 3591,
+      "sha256": "1415e9f4016b97e8947e097594c9a03441f08aadc322047c5601c14033c3ae60",
+      "git_blob_sha": "2fd86481aeaadb616aafc90c5a0d91968fec4749"
+    },
+    "docs/TERMINOLOGY_RPB108_PRIME7_0995_PREFLIGHT.md": {
+      "bytes": 1427,
+      "sha256": "777024eb98e1abc100d3876b697313e7ca30ab32015896488ebbad09b9d39fb2",
+      "git_blob_sha": "c647145958ee8e17da9f27917b7549c06057dd23"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part07": {
+      "bytes": 60001,
+      "sha256": "9320bd60d176fb844abf63967f137250724eee590724d2eb4ec96ed6293bc76c",
+      "git_blob_sha": "239e517e37b93f29f4ed0205592be66dc7ce2ef6"
+    },
+    "notes/data/RPB108_PRIME7_SOURCE112_CONSTANT_BUDGET_0995_20261007.json": {
+      "bytes": 4089,
+      "sha256": "75475c4a742ebe49f18430fc876e737cc0a3e8b327e9bd940d58db9eb07ea627",
+      "git_blob_sha": "de8cd0be1c4e65533b660c4454cb0c658f4bbba0"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part05": {
+      "bytes": 60001,
+      "sha256": "59b5a602c4b4319017f1ec88ea157f5a440cdb53ae7329f627f5ce105635503a",
+      "git_blob_sha": "88d8ff38e3e1ab397d51e1b330f927c45aac11bf"
+    },
+    "notes/data/RPB108_PRIME7_SOURCE112_BUDGET_0995_VALIDATION_20261007.json": {
+      "bytes": 499,
+      "sha256": "4226a7d7b269cdfad019d8d3d02bc3a494fcd80346b289177dd27fa8da2ca0f1",
+      "git_blob_sha": "3f6277e6fce2550883eaef58736b034016a998df"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part01": {
+      "bytes": 60001,
+      "sha256": "5dd3e365140b28dd500b56074f44cdc5be6d1b60fbca2f32e63ecfc47e7c3156",
+      "git_blob_sha": "437fa0377faee3e49598653a52916d85a2802666"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part02": {
+      "bytes": 60001,
+      "sha256": "79e998643663f2b963d5958d60865f472aaa0cc17dfaaaec3167a2ae65f55f30",
+      "git_blob_sha": "0e4d2f0d9559f1f6488d720ca8e3085ea1089d60"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part11": {
+      "bytes": 60001,
+      "sha256": "2e809f7c1b5f3c616588e5e2247ce1957a1e5d0f1d44c851bd4d14f2a4000bab",
+      "git_blob_sha": "c9540566802931f04e7673e20582ca5f2efb96d9"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part18": {
+      "bytes": 60001,
+      "sha256": "8e7a00f410c52824da0d4260edfb0f0c2d486bc857d243ac0adcba810f02a254",
+      "git_blob_sha": "b87f11bd7b3050563cd5678b43e41298ca62c9fc"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_VALIDATION_20261007.json": {
+      "bytes": 845,
+      "sha256": "20c4cc8730d2bc50640f98710d46df47dd306a608822ac911e65d1d157417e6c",
+      "git_blob_sha": "0b6b4838c03f13bc5457341f883d0543a917a6fb"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part20": {
+      "bytes": 60001,
+      "sha256": "a562bb0fe83b582af1527dc8a85fe7c4c0882d392b7d5dfa16f5abdf374b26e0",
+      "git_blob_sha": "4d880d3b9f41576334bfca5070f0d3845b136c7d"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part17": {
+      "bytes": 60001,
+      "sha256": "6ef75d442cef14105406f0e757f7509f6176db26a0e88612dddc4cfc46cfee83",
+      "git_blob_sha": "7f55064981c8d09f1b7883867073f0acaa1fa047"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part03": {
+      "bytes": 60001,
+      "sha256": "76ec83ef5dacd46742081a4643fa0fc6b3fb9b55895b441139fe8043fb84770d",
+      "git_blob_sha": "60bdb50f1415ab1168192c734d3bee358b3efd5c"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part15": {
+      "bytes": 60001,
+      "sha256": "14c79e3bc9470ff808aa5c07e007e05ae6424a0cd6f0a6447371350066cf7f47",
+      "git_blob_sha": "f82ac03979991f85edcbe6a8753c8bed25cb57d2"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part08": {
+      "bytes": 60001,
+      "sha256": "c0c675970309e5cdb253529ee916300b32ebe62aeada9a86e327b773a727e18f",
+      "git_blob_sha": "2ab9e11ba3524d9497932482e6c3d981d8890f5a"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part09": {
+      "bytes": 60001,
+      "sha256": "a12c2f0c4d347ed301f6f1ce96af54c25d7b5b1926b12b0b1e077e7672decfdb",
+      "git_blob_sha": "f448a11a60d4801bc4d0d8202039417a0a60369a"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part19": {
+      "bytes": 60001,
+      "sha256": "06d0ad5f5ee629f248dfa7eca3698822b2dbd908d14b2988178bec0e7264aeea",
+      "git_blob_sha": "675e5af78f1c9069e4c8d62305332944e604f088"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part10": {
+      "bytes": 60001,
+      "sha256": "d11d2f9ba9177fe4eec1af62053c25f305325c1c7c475ed7e1979eb76cce4319",
+      "git_blob_sha": "66277967c35968417a9b0f030906ec7d4bedc4c0"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part04": {
+      "bytes": 60001,
+      "sha256": "3054af25291adb9f051afbae3b4ddc38c6f5011a4637f428e40d22ad5b1d1c46",
+      "git_blob_sha": "2da6c287d090ce53f06caa3626305df88074d01d"
+    },
+    "notes/data/RPB108_PRIME7_GARDING_0995_CERTIFICATE_20261007.json": {
+      "bytes": 653,
+      "sha256": "264b75da17beb79ce5ba7a17ba333aac4b2d4118ef819142d6aef01ca29edbbf",
+      "git_blob_sha": "90e3364fb4ef7b19ae1bcbb01eb827d1026a050f"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part12": {
+      "bytes": 60001,
+      "sha256": "ea25e33e3031a67ebdc184fa9c693e15cc6b26b58bc52b13545eb7619967301a",
+      "git_blob_sha": "01ae537456d3ab28458aae5906577fa3d9b416e7"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part21": {
+      "bytes": 121,
+      "sha256": "de98212e91e5ddc2d9654d293361ea20abe18982c462ac84102d36dcc07bc360",
+      "git_blob_sha": "f3a9c7231a4160a8e37c7f2d5049c28a26ecae97"
+    },
+    "notes/data/RPB108_PRIME7_GEOMETRY_0995_VALIDATION_20261007.json": {
+      "bytes": 415,
+      "sha256": "1f7ae30877316587fb5f90cf6224efa31c113da92ffb91794fa4309fe20071ef",
+      "git_blob_sha": "9616b03d14c7d88b279933e26fcc46a5edeb4f10"
+    },
+    "notes/data/RPB108_PRIME7_GEOMETRY_0995_CERTIFICATE_20261007.json": {
+      "bytes": 11299,
+      "sha256": "a6a47399b0537f680ba699fbd893e97ce3e942ea6b7c700191eb728316939c2d",
+      "git_blob_sha": "f721049beb1e591f550079f824af4c887bf6bdf7"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part14": {
+      "bytes": 60001,
+      "sha256": "50cb5c65edcc54b47f666e26aa4f311cb17548b3aeebbc797276addc6858d0d4",
+      "git_blob_sha": "9f4a739d8e8b33f18da884d5d5ee79cbbd8f5892"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part13": {
+      "bytes": 60001,
+      "sha256": "6eef20fb19103e83b1f8b8ed61c94d7b1430f6a6e7c15585fd8a5afc227d0cc6",
+      "git_blob_sha": "6c8156c661f05c8663ea7846355de5d202c889b1"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part16": {
+      "bytes": 60001,
+      "sha256": "97fdf811398bf6f748b0eaba2919a2623cf5d45219df028ee0100acbc7b1a2d6",
+      "git_blob_sha": "7cabe39f0bd16ba385b857ef02d75ca9b8abc93a"
+    },
+    "notes/data/RPB108_PRIME7_SOURCE112_BUDGET_0995_20261007.json": {
+      "bytes": 8412,
+      "sha256": "2aef100a953e6c6a655ca53a980edb5b490403c1903223e210968580e5c580da",
+      "git_blob_sha": "999b54243ef2689e350add9069fb28555d6adf12"
+    },
+    "notes/data/RPB108_PRIME7_112_PREFLIGHT_0995_CERTIFICATE_20261007.json": {
+      "bytes": 93519,
+      "sha256": "8e951ae9600ea053cbf91243f8593c8b0030d6e4f434dde5de489f1bb4610d6a",
+      "git_blob_sha": "70279bee264149eec38512e5803812538f6db9af"
+    },
+    "notes/data/RPB108_PRIME7_112_PREFLIGHT_0995_VALIDATION_20261007.json": {
+      "bytes": 714,
+      "sha256": "9e4e54611fc9f989c8b5488c0a1d0dfb9db7c561f66d37d53ac5545747eb2704",
+      "git_blob_sha": "163ca3ff999356b406ec183673656a01afc77a34"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part06": {
+      "bytes": 60001,
+      "sha256": "9cb9010befd5608dd07d3556784d7482f553c7b926689227e206d05f46185485",
+      "git_blob_sha": "d9980c5be935c1ee31b982d830a05c7cf10fe1aa"
+    }
+  },
+  "unchanged_dependencies": {
+    "scripts/certify_native_exact_kernel_integral.py": {
+      "bytes": 2016,
+      "sha256": "d26746a5864c56f8d73df201a23321ac93faa4292d68c64c967abf25922e4332",
+      "git_blob_sha": "dab542667c3e0d1fb7f47e7db9d5f9265933b0d0"
+    },
+    "scripts/certify_native_exact_logarithm.py": {
+      "bytes": 837,
+      "sha256": "a2d2c6c844c8de24ab6a816b3a02d54e998c75bcba4db0e52ccec55f7fbc9093",
+      "git_blob_sha": "c7ee7742c1a0d2dd9b178f2f48aa889babf59768"
+    },
+    "scripts/certify_native_exact_polynomial.py": {
+      "bytes": 1449,
+      "sha256": "9ae0e506ad4e7516afcd3dcb3942ec482557ec597585cedf907b42404d26f02a",
+      "git_blob_sha": "987db90b1a89140a86548b00a8cd3ee4c5d789e0"
+    },
+    "scripts/certify_native_iterated_damped_mass_depth6.py": {
+      "bytes": 2254,
+      "sha256": "18134a51e19f2e47b6fbdf9b7aa8b96321a141eb31fde71c74eaa1724c49a458",
+      "git_blob_sha": "282baa24f20b79198eedeec6d08994e6d6f31779"
+    },
+    "scripts/certify_native_larger_aperture_complement.py": {
+      "bytes": 2623,
+      "sha256": "b825422bbdead10ea3e776e79d283428a324d50ace08308e80071a5c41884868",
+      "git_blob_sha": "b83a6fdab87ce1d75fea2e2eb381f48bd081247c"
+    },
+    "scripts/certify_native_legendre_small_window.py": {
+      "bytes": 17969,
+      "sha256": "5ea3f0f3e556e66b1912fe1c49d78a2dff13107f602e6ae82c7bcb95d571fa15",
+      "git_blob_sha": "bb12496ea82d118e2da36ee74318ea7285eeede9"
+    },
+    "scripts/certify_native_prime7_112_preflight_099.py": {
+      "bytes": 3865,
+      "sha256": "6c507952ebee385df7f00c2af330868f41486162495ab17ec7679ceb044f8cc7",
+      "git_blob_sha": "8a715f97b46c60b6ed740c33efde9463d1348f88"
+    },
+    "scripts/certify_native_prime7_geometry_099.py": {
+      "bytes": 1298,
+      "sha256": "9b17b11647dd75af6cf58b7e729ee54659624a8c4e91a67ff22c509c8da9a384",
+      "git_blob_sha": "865d49375ae1abd06375d607d40c1ec9f6178dd9"
+    },
+    "scripts/certify_native_prime7_source112_budget_099.py": {
+      "bytes": 1647,
+      "sha256": "e7f154a976fdcb6902838be6323034bd4f9c9e710362305e905e134644cc9096",
+      "git_blob_sha": "657ea7f7f0d7061e75c91f86ca401379c0182c55"
+    },
+    "scripts/certify_native_prime7_source112_constant_budget_099.py": {
+      "bytes": 2328,
+      "sha256": "13c54b25785df3798f2af087a003a6f64dc9c0a750b003823e7e50adb2ddc452",
+      "git_blob_sha": "3606de99e8a8f18c8ecb638898f77ac04820d5c1"
+    },
+    "scripts/certify_native_prime7_translation_panels_099.py": {
+      "bytes": 2221,
+      "sha256": "4179919daf495ae0680a0189c434489ec745b2898398393fa164fb1d4e03a330",
+      "git_blob_sha": "68e4884ed3896925066a9f7b20522f4ae4bbb7b2"
+    },
+    "scripts/certify_native_prime7_weighted_schur_depth10_099.py": {
+      "bytes": 4783,
+      "sha256": "30a78835042a388f827c841c268455c48d647d336650dea95a897ee79c00076f",
+      "git_blob_sha": "71b37692aa5227b19599eefe121922727acf43d9"
+    },
+    "scripts/validate_native_prime5_depth6_complement_097.py": {
+      "bytes": 5207,
+      "sha256": "e8c884a14cc6a8c2f0f0d74cc5f2d2522a08646ea67aacb04930e8ea66ced1a7",
+      "git_blob_sha": "ae28ded622d2329ca1ef231a48bb588d162de553"
+    }
+  },
+  "archive": {
+    "parts": [
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part01",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part02",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part03",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part04",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part05",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part06",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part07",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part08",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part09",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part10",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part11",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part12",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part13",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part14",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part15",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part16",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part17",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part18",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part19",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part20",
+      "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz.b64.part21"
+    ],
+    "compressed_name": "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json.gz",
+    "decoded_name": "RPB108_PRIME7_WEIGHTED_DEPTH10_0995_CERTIFICATE_20261007.json",
+    "compressed_sha256": "09eda2d5361a0e87ba4b2de0130d53c8e5ba5eb6fe234a6b651b11a6bc0e65b0",
+    "decoded_sha256": "aa448997dbfac0ab5d99da5d031b2912b2ca7aee44565140c51cc376e2ea8386"
+  },
+  "prime_repeat_byte_identical": true,
+  "complement_repeat_byte_identical": true,
+  "complement_certificate_sha256": "8e951ae9600ea053cbf91243f8593c8b0030d6e4f434dde5de489f1bb4610d6a",
+  "whole_domain_frontier": "99/100",
+  "whole_domain_positivity_at_0995": false,
+  "f4_closed": false
+}
