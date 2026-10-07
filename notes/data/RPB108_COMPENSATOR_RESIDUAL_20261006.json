@@ -1,0 +1,22 @@
+{
+  "actual_contact_constructed": false,
+  "byte_identical_repeat": true,
+  "contact_exclusion_proved": false,
+  "f4_closed": false,
+  "full_transport_closed": false,
+  "lean_certified": false,
+  "nonreduced_factor_controls": 243,
+  "operator_controls": 81,
+  "scope": "rational factor/projection/residual controls only; actual identities proved analytically in note",
+  "script_sha256": "609555c446160acb8ec492985f4502a1907e2a32850eb4e93c6dfd26c0830811",
+  "source_base": "97ca123760cc1d3510234a00b74348c129a1fa14",
+  "strict_gain_and_negative_trial_controls": 63,
+  "source_blob_custody": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_FRESH_FIXED_RIGHT_PACKET_20261006.md": "7501654d0f289604b14707bf2bf08a915069591c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FRESH_ARITHMETIC_STOP_20261006.md": "555f29517c9e0e486b8d4dac2524d05b8eafc91d",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_LOEWNER_20261006.md": "b40e8324d7fdcd83c609782aede65167b26a2b19",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SELECTION_EFFECTIVE_POSITIVE_REALIZATION_20261006.md": "8bfd91f93ce80eeea5d95f2ee7ff2c34fdfaeb6d",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_NULL_EXTENSION_OBSTRUCTION_20261004.md": "41e9b6b02c79afff807ceef4c61f9320c6874409",
+    "WeilDefect/Screening/Douglas.lean": "319a5981f41c1469cfb64c00036d396abb0aa541"
+  }
+}
