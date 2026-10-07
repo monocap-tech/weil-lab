@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "0eecdec00fb819d24466c26f4957fb6a2df90b50",
+  "publication_parent": "0eecdec00fb819d24466c26f4957fb6a2df90b50",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRESCRIBED_REDUCTION_20261006.md": "ed79ac3298d667103429b0d506302087f8ef9c3c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_NONNEGATIVE_ONE_VECTOR_ATTACHMENT_20261006.md": "34e3f30379e8ecfbe4d357b95dd0022d201640e9",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SELECTION_AUGMENTATION_20261006.md": "6ea30274cde8ec3172068418c75f3cd762971e66",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_NATIVE_FORM_OPERATOR_20261004.md": "0ec3fc5d33e6f9613d81d4d4d133c3cf4af0163f",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SELECTION_EFFECTIVE_POSITIVE_REALIZATION_20261006.md": "8bfd91f93ce80eeea5d95f2ee7ff2c34fdfaeb6d",
+    "WeilDefect/Morphology/Neutral.lean": "9c446407e5f9ecfada57d2dee5e1d85b7d8a5753"
+  },
+  "standing": "analytic conditional actual compatibility; no Lean certification",
+  "closure": "Named covariance/row identities suffice for same-vector full-nullity and singular positive-quotient neutral morphology without prescribed whole-kernel separation",
+  "still_unproved": "named actual physical carrier, prescribed rows and covariance/signed-row gates",
+  "physical_vector": "original retained k preserved; pseudoinverse recovers only k_vis",
+  "minimal_inverse_gate": "Pi_(ker G) k=0 for unchanged k=-G^+R*u; full invertible synthesis requires ker G=0",
+  "script": "scripts/validate_singular_prescribed_reduction.py",
+  "script_sha256": "517077721c386468cf883af9c85785167725de74221cc090bcb09bae60405c14",
+  "controls": {
+    "singular_covariance_cases": 243,
+    "physical_projection_rejections": 162,
+    "repeat": true
+  },
+  "frontier": "47/50 certified; complete 19/20 Gram/scalar obstruction preserved",
+  "actual_retained_attachment_closed": false,
+  "endpoint_exclusion_closed": false,
+  "F4_closed": false
+}
