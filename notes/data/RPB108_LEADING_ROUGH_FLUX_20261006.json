@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "29dddc23d7f562668cff7167b9bdd264116c6c83",
+  "publication_parent": "29dddc23d7f562668cff7167b9bdd264116c6c83",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_QUADRATIC_TRANSLATION_FLUX_20261006.md": "92adb386854d2ff4a61aac1080f022ea5e024782",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_EIGENMODE_EDGE_CONTROL_20261006.md": "7d21ef49cf5bd18308ff012f0e6638fddc2a64b7",
+    "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md": "432ffd64d6460c65cee106f0b46afdb50d1ec28a"
+  },
+  "standing": "analytic relative flux asymptotic; not Lean certified",
+  "closure": "For a fixed non-H1 actual eigenmode, exterior flux / (-D_w) tends to one; full nonzero hypothetical contact-kernel trace has the same relative asymptotic",
+  "failed_implication": "bounded finite prime/pole/mass corrections can cancel the leading rough logarithmic flux or supply a quadratic lower bound",
+  "actual_control": "existing rough positive native eigenmode at certified aperture; mu>0, not an actual null counterexample",
+  "uniformity": "bounded mu for comparison functional on fixed h only; no moving-eigenvector or aperture uniformity",
+  "remaining_theorem": "use the exact zero interior equation to exclude rough contact modes; full-kernel quadratic lower-flux subsequence still unproved",
+  "script": "scripts/validate_leading_rough_flux.py",
+  "script_sha256": "62f9e9bf531f73086824968f2ddc4548437406fb88d944a7bb9fa9bb0ccdba56",
+  "controls": {
+    "cutoff_budgets": 288,
+    "signed_remainders": 2304,
+    "vanishing_budget_cases": 128,
+    "repeat": true
+  },
+  "frontier": "19/20 certified; reused",
+  "actual_retained_attachment_closed": false,
+  "endpoint_exclusion_closed": false,
+  "F4_closed": false
+}
