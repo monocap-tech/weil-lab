@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-07",
+  "recovered_head": "6e1ed1631e54388120ffe65b3e7b90f71ea8a3da",
+  "category": "endpoint exclusion / arithmetic input scope",
+  "external": {
+    "url": "https://arxiv.org/html/2507.15184v2",
+    "authors": "Shashi Chourasiya and Aleksander Simonic",
+    "version_date": "2025-09-30",
+    "locator": "Corollary 1 and following uniform [1/2,5/8] estimate",
+    "minimum_T": "3e12",
+    "constants": [
+      "8.185",
+      "9.461",
+      "167.8"
+    ],
+    "proof_rebuilt": false,
+    "Lean_audit": false
+  },
+  "results": {
+    "actual_transverse_second_count": "O(T (log log T)^2/log T)",
+    "actual_inverse_height_log_saved_negative_operator": "Hilbert-Schmidt for every fixed a and eta>0",
+    "unweighted_negative_compactness_proved": false,
+    "actual_borderline_eta_zero_failure_proved": false,
+    "critical_positive_moment_bound": false
+  },
+  "F4": false,
+  "aperture_marching": false,
+  "validation": {
+    "exponent_checks": 64,
+    "artificial_location_blocks": 62,
+    "analytic_counts_and_sampling": true
+  },
+  "sources": [
+    "EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX_20261007:c369d3760606d9e5b9ae0f4862156fd712e5be29",
+    "POSITIVE_SOURCE_HEIGHT_MOMENT_20261006:7997a0a3ccb0666d117f696dd208b743255b7ac5",
+    "SOURCE_HEIGHT_GRAPH_ERROR_20261007:b968aa0a3c5eb5ba680ee0251692e24853dadd74"
+  ]
+}
