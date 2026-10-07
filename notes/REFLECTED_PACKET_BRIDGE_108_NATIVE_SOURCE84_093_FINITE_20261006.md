@@ -81,3 +81,23 @@ scripts/certificates. Historical records and the independent global lane
 are preserved. Whole-domain positivity remains certified through 23/25;
 no 93/100 full-form negative witness, global endpoint exclusion, historical
 packet identification, F4, full transport or new Lean proof is claimed.
+
+## Repeated panel recovery checkpoint
+
+The two Gram runs agree byte for byte through 7 of nine panels.
+The accepted lossless recovery snapshot is
+`notes/data/RPB108_PRIME5_GRAM84_093_RECOVERY_PANEL_CHECKPOINT_20261006.json.gz`.
+The existing codec accepts its original source/native/constructor/geometry/Hankel
+bindings at the exact 300-digit grid. Its custody JSON records both hashes
+and all input bindings. This is an incomplete contraction checkpoint;
+complete Gram acceptance and corrected sign remain pending.
+
+Decompress it to a plain JSON checkpoint before resuming the constructor:
+
+```
+gzip -dc notes/data/RPB108_PRIME5_GRAM84_093_RECOVERY_PANEL_CHECKPOINT_20261006.json.gz > gram84_093_checkpoint.json
+python scripts/certify_native_prime5_gram84_093.py --checkpoint gram84_093_checkpoint.json > gram84_093.json
+```
+
+The compressed source fallback and committed native compact enclosure are
+sufficient to resume; none of the completed support panels is recomputed.

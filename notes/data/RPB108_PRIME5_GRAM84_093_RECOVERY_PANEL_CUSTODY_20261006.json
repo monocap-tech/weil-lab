@@ -1,0 +1,23 @@
+{
+  "aperture": "93/100",
+  "completed_panels": 7,
+  "byte_identical_repeat": true,
+  "codec_round_trip_accepted": true,
+  "bindings": {
+    "source": "b81e9a4fa0e21a168ad9974da13aa67cffb9c0d72499fc37079f9097927486cb",
+    "native": "186d274000156edb0ba5e69e35aa9c992c90c99fbd784337a7a1538d97715981",
+    "constructor": "fd1f963d933d2d5b598266bf45695a9fb8e3eaaa176b4385a6c2c7df6380b174",
+    "geometry": "d30b267b87750752cbc84630623336afc3a55bcdcc53051bba093e8d7e6f4d2c",
+    "hankel": "c09c1f425b0b3db868714238d1ecf10cbdd331529ca8d124c75d3a345a9bde1c",
+    "checkpoint_codec": "7e557f325217cc3344ea65791898b901ea389b4a8f7278889ee35873269173e0",
+    "aperture": "93/100",
+    "log_series_terms": 500
+  },
+  "uncompressed_sha256": "866711d815e3a41950e4fe8951cab6753b482275f2f9830255bb9964991e4403",
+  "gzip_sha256": "8e281c27adc4ed64dda0a024f4f8dc89021f83d8b44f7647399be778b90bf411",
+  "git_blob_sha": "b2e074e80677d87851bc8c12ee26d83d45475567",
+  "complete_gram_accepted": false,
+  "corrected_sign_accepted": false,
+  "whole_domain_positivity": false,
+  "f4_closed": false
+}
