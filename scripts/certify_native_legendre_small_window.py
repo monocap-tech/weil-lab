@@ -135,17 +135,17 @@ def sqrt_rational(x):
 
 
 def certificate(a=F(1,4), return_matrix=False, degree=7, matrix_resume=None, matrix_observer=None):
-    if (matrix_resume is not None or matrix_observer is not None) and not (a in (F(23,25),F(93,100),F(47,50),F(19,20),F(24,25)) and degree==83 and return_matrix):
+    if (matrix_resume is not None or matrix_observer is not None) and not (a in (F(23,25),F(93,100),F(47,50),F(19,20),F(24,25),F(97,100)) and degree==83 and return_matrix):
         raise ValueError("Native row recovery requires the 23/25 degree-83 matrix constructor")
-    if a not in (F(1,4), F(1,2), F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25)):
+    if a not in (F(1,4), F(1,2), F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25),F(97,100)):
         raise ValueError('Unsupported audited aperture')
     if degree not in (7,19,35,47,51,83) or (degree==19 and (a not in (F(1,2), F(51,100), F(27,50), F(11,20)) or not return_matrix)):
         raise ValueError('Degree 19 requires a supported matrix constructor')
     if degree==35 and (a not in (F(11,20), F(14,25)) or not return_matrix):
         raise ValueError('Degree 35 requires the prime-3 aperture matrix constructor')
-    if degree==83 and (a not in (F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25)) or not return_matrix):
+    if degree==83 and (a not in (F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25),F(97,100)) or not return_matrix):
         raise ValueError("Degree 83 requires aperture 81/100 or 41/50 matrix")
-    if a in (F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25)) and degree!=83:
+    if a in (F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25),F(97,100)) and degree!=83:
         raise ValueError("Aperture 81/100 or 41/50 requires degree 83")
     if degree==51 and (a!=F(4,5) or not return_matrix):
         raise ValueError("Degree 51 requires aperture 4/5 matrix")
@@ -153,9 +153,9 @@ def certificate(a=F(1,4), return_matrix=False, degree=7, matrix_resume=None, mat
         raise ValueError("Aperture 4/5 requires degree 51")
     if degree==47 and (a not in (F(14,25),F(3,5),F(16,25),F(69,100),F(7,10),F(3,4)) or not return_matrix):
         raise ValueError("Degree 47 requires an audited prime-3 matrix constructor")
-    if a in (F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25)) and (degree not in (19,35,47,51,83) or not return_matrix):
+    if a in (F(51,100), F(27,50), F(11,20), F(14,25), F(3,5),F(16,25),F(69,100),F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25),F(97,100)) and (degree not in (19,35,47,51,83) or not return_matrix):
         raise ValueError('The larger aperture requires a supported matrix constructor')
-    N,K=(260,260 if a==F(24,25) else 250 if a in (F(47,50),F(19,20)) else 240 if a in (F(23,25),F(93,100)) else 230) if degree==83 else (180,140) if degree==51 else (160,120) if degree==47 else ((120,100) if degree==35 else ((80,60) if degree==19 else (60,24 if a==F(1,4) else 40)))
+    N,K=(260,260 if a in (F(24,25),F(97,100)) else 250 if a in (F(47,50),F(19,20)) else 240 if a in (F(23,25),F(93,100)) else 230) if degree==83 else (180,140) if degree==51 else (160,120) if degree==47 else ((120,100) if degree==35 else ((80,60) if degree==19 else (60,24 if a==F(1,4) else 40)))
     L = 4*a
     exponential_bound = 3 if L == 1 else 9
     kernel_bound = 2 if L == 1 else 3
@@ -260,6 +260,11 @@ def certificate(a=F(1,4), return_matrix=False, degree=7, matrix_resume=None, mat
     B = bernoulli(2*K+2)
     pi = 16*atan(F(1,5))-4*atan(F(1,239))
     # Euler--Maclaurin for gamma: alternating, next-term bounded remainder.
+    if a==F(97,100):
+        exponential_bound=49;kernel_bound=F(97,20)
+        assert log_rational(F(5)).hi<L<log_rational(F(49)).lo
+        assert L<=F(97,25) and L<6
+        assert log_rational(F(5)).hi<2*a<log_rational(F(7)).lo
     n, order = 100, 20 if degree==83 else (12 if degree in (19,35,47,51) else 6)
     gamma = I(sum((F(1,k) for k in range(1,n+1)),F(0))-F(1,2*n))
     gamma = gamma-log_rational(F(n))
@@ -343,12 +348,12 @@ def certificate(a=F(1,4), return_matrix=False, degree=7, matrix_resume=None, mat
                     for coefficient in reversed(c):
                         value=value*y+coefficient
                     prime+=2*ell/sqrt_rational(F(prime_power))*value
-            if a in (F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25)):
+            if a in (F(7,10),F(3,4),F(4,5),F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25),F(97,100)):
                 for prime_power,lambda_n in ((2,logtwo),(3,log_rational(F(3))),(4,logtwo)):
                     ell=log_rational(F(prime_power));y=ell/I(2*a);value=I(0)
                     for coefficient in reversed(c):value=value*y+coefficient
                     prime+=2*lambda_n/sqrt_rational(F(prime_power))*value
-                if a in (F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25)):
+                if a in (F(81,100),F(41,50),F(17,20),F(22,25),F(9,10),F(91,100),F(23,25),F(93,100),F(47,50),F(19,20),F(24,25),F(97,100)):
                     ell=log_rational(F(5));y=ell/I(2*a);value=I(0)
                     for coefficient in reversed(c):value=value*y+coefficient
                     prime+=2*ell/sqrt_rational(F(5))*value

@@ -1,0 +1,17 @@
+{
+  "aperture": "97/100",
+  "certificate_sha256": "9c62cba1a81abc80f9b6feefb3ab1901ec0702fcea594397ede1b297147bcb36",
+  "byte_identical_repeat": true,
+  "finer_log_and_machin_cap_verified": true,
+  "current_cutoff_69_over_5_inside_positive_region": true,
+  "every_admissible_outer_cutoff_below_cap": true,
+  "arbitrary_finite_step_refinement_with_fixed_prime_loss_insufficient": true,
+  "exact_gap_positive": true,
+  "scalar_ceiling_display": 0.8508202343267403,
+  "required_scalar_display": 0.8520780819681415,
+  "actual_form_ceiling_claimed": false,
+  "actual_full_form_negative_witness": false,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}
