@@ -1,0 +1,41 @@
+{
+  "actual_arithmetic_sign_or_lean_certificate": false,
+  "analytic_actual_result": "complete unsigned actual-kernel source tail O(1/T), bounded Abel-minus-sharp error, sharp/log limit (2/pi) Lambda_K",
+  "cosine_lower_margins": 64,
+  "finite_signed_abel_error_brackets": 64,
+  "independent_atomic_layercake_agreements": 64,
+  "neutral_weak_tail_positive_slope_controls": 64,
+  "old_paired_control_tail_rejections": 64,
+  "publication_base": "1abf19e7abe8e85c7b899503bac6eaaa43239231",
+  "recovered_head": "87b5e7574e3d6519cb6b94ec4da2ddc0c15fb999",
+  "scope": "rational unsigned-tail and signed Abel/sharp controls; infinite actual-source theorem is analytic",
+  "source_pins": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_NULL_ABEL_LOG_SLOPE_20261007.md",
+      "blob": "1a63fe344931b95170dcb06b8b67f6818b968e18"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ABEL_SHARP_HEIGHT_20261007.md",
+      "blob": "a51b2becce5c0ffaa394f4b7d29f6aa136473687"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_SOURCE_HEIGHT_MOMENT_20261006.md",
+      "blob": "7997a0a3ccb0666d117f696dd208b743255b7ac5"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ENDPOINT_TRACE_20261007.md",
+      "blob": "1996d3fb3358965c5468481c31252f3dda440e69"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md",
+      "blob": "3354b89638b643d5b21c4c428f069f738ccf59f5"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_COMPACT_ROW_LOG_SLOPE_20261007.md",
+      "blob": "28fc6855859f45391e41dc96540b48ab216bd9d2"
+    }
+  ],
+  "status": "PASS",
+  "weak_tail_and_second_moment_budgets": 64,
+  "whole_actual_contact_trace_exclusion": "UNPROVED"
+}
