@@ -1,0 +1,43 @@
+{
+  "recovered_head": "811b0826abf45d688d1e2da7900cda852103ddee",
+  "publication_base": "811b0826abf45d688d1e2da7900cda852103ddee",
+  "inputs": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_PICK_CYCLIC_COMPLETION_20261007.md",
+      "sha": "89998de3ad47af17860adae5ed3c0bb5e4a09cc9"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_REAL_ZERO_DIVISION_AUDIT_20261007.md",
+      "sha": "a47323325317142f9594e92bad44ac3d37ac09b1"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LOG_OPERATOR_ATTACHMENT_20261007.md",
+      "sha": "5b9fedd77956f6ba3e2efc0a71be14f673596fd1"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md",
+      "sha": "3354b89638b643d5b21c4c428f069f738ccf59f5"
+    },
+    {
+      "path": "scripts/certify_native_kernel_de_branges_attachment.py",
+      "sha": "038f8bab37e54af5a61181bd7ae9250b1b39e967"
+    }
+  ],
+  "reused_framework": "NF46 one-variable Herglotz theorem; no new external theorem",
+  "results": [
+    "moving-jump residue phases exp(it xi)",
+    "every interior jump lies in real-zero division carrier",
+    "all smooth compact tests synthesized by jump integration",
+    "H_Q=H_jump=H_div",
+    "Q(f,g)=sum c_t F_f(t) conjugate(F_g(t)) on complete canonical domain",
+    "onto real-node l2 sampling of energy quotient",
+    "actual-source lift retains Gamma(P_K f)"
+  ],
+  "sampling_nodes": "real generator zeros; not identified with zeta divisor",
+  "exact_checks": 92,
+  "analytic_not_lean": true,
+  "positive_eigenmode": "same theorem for Q_mu; original Q retains mu physical mass",
+  "bounded_sharp_subsequence": "unproved",
+  "F4": "open",
+  "preserved_aperture": "a=1 whole-domain positivity at 811b0826abf45d688d1e2da7900cda852103ddee"
+}

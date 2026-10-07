@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "exact_checks": 92,
+  "scope": "finite rational phase, Fourier, coefficient and gauge algebra only",
+  "analytic_result": "H_Q=H_jump=H_div and whole-domain real-node sampling",
+  "sampling_nodes": "generator zeros; not identified with zeta divisor",
+  "actual_source_lift": "retains Gamma(P_K f)",
+  "positive_eigenmode": "Q=mu mass+real sampling of Q_mu",
+  "bounded_sharp_subsequence": "unproved",
+  "F4": "open",
+  "lean_certified": false
+}
