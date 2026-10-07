@@ -23,7 +23,7 @@
     "scripts/certify_native_legendre_small_window.py": "4f562d55f289ef2f9790376c2e4603560008e871e9d13249b232172ee30b3751",
     "scripts/certify_native_prime3_source36.py": "927d06d3e0c9a0ce9f10bdb04b7d21a79384cd2f34cbc4c9d07eb714cec6bbef",
     "docs/TERMINOLOGY_RPB108_MATCHED_094.md": "1b035215d462391817457cc1251a7468b72eb237902133c9b40aec93e36f8ff6",
-    "notes/REFLECTED_PACKET_BRIDGE_108_MATCHED_094_FINITE_20261007.md": "53fccf71db9801bd9383263e5427ecb4bd05d5b6e68b56e56b26d067d57d8091",
+    "notes/REFLECTED_PACKET_BRIDGE_108_MATCHED_094_FINITE_20261007.md": "c591c21d6cf6be639cf74c4f7de85b8a00270d97b278a5187cc10d739f9dd42b",
     "scripts/certify_native_prime5_complement84_094.py": "0d4693453722ee5b48acbd1c4f25fa4311fd07157639c41d62c98d17a974e7a1",
     "scripts/certify_native_prime5_gram84_094.py": "651ad16117433d5ec998283ad789104c453f993425f063f785bd957441afd4a4",
     "scripts/certify_native_prime5_joint_power4_094.py": "cbae231817f7d265dd8b0a3fa5f4d5535e08abc54b2e7f9ed68711fa34eb6dc8",
@@ -61,6 +61,12 @@
     "notes/data/RPB108_PRIME5_SOURCE84_094_VALIDATION_20261007.json": "8dc983b338f490ca6fe6ee8eb7cb1a87a92f6008a9955eb560ed6b58f75f1d16",
     "notes/data/RPB108_PRIME5_TWOBAND_COMPLEMENT84_094_CERTIFICATE_20261007.json": "f1b40e6d1d486faacd14825fa0c97a140bb92df06a808c733053548e1e8b5cae",
     "notes/data/RPB108_PRIME5_SOURCE84_094_CERTIFICATE_20261007.json.gz": "048d1a9f3ace73a961a6ef4f216ab5626f3be5cc91d0d895ee4f05d07a864190",
-    "notes/data/RPB108_NATIVE84_094_COMPLETE_RAW_ROWS_20261007.json.gz": "bb2bfd028fad8cfce0d4006436ca76c671f3102b649983ec6b94c601c9ec00f8"
-  }
+    "notes/data/RPB108_NATIVE84_094_COMPLETE_RAW_ROWS_20261007.json.gz": "bb2bfd028fad8cfce0d4006436ca76c671f3102b649983ec6b94c601c9ec00f8",
+    "notes/data/RPB108_PRIME5_GRAM84_094_PANEL_SNAPSHOT_20261007.json": "e74c7ace7c0abdd29699cfbe965f4a68014e9a79c2ff5cceadaa5954c5cb5376",
+    "notes/data/RPB108_PRIME5_PAIRING_094_VALIDATION_20261007.json": "ee313fc0ae14b6cf019fe786d603c6c1e968784a3a1ce7d65d6576b73be2201a",
+    "notes/data/RPB108_PRIME5_GRAM84_094_COMPLETE_PANEL_CHECKPOINT_20261007.json.gz": "87767d351cf9dee71b26d1ea715fafc3cdfe0f3fb3822ad33f158b672b6a8168"
+  },
+  "complete_panel_contractions_repeated_byte_identically": true,
+  "native_source_pairing_audit_repeated": true,
+  "completed_gram_panels": 9
 }

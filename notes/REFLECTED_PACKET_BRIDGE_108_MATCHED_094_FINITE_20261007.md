@@ -87,3 +87,17 @@ new c=77/100 and the new actual source-error budget. No 93/100 matrix, source,
 residual Gram or corrected margin is substituted. No whole-domain positivity
 at 47/50, actual negative witness, global endpoint exclusion, historical packet
 attachment, full transport or F4 closure is claimed here.
+
+## Complete panel checkpoint and pairing update
+
+Both fresh runs have now completed all nine support-panel contractions,
+and their entire lossless panel checkpoints repeat byte for byte. A complete
+panel checkpoint is archived as gzip, with constructor/input binding hashes.
+The independent endpoint-projection and source/native pairing audit also
+repeats exactly: all 7056 comparisons include both enclosure widths, and
+all 7056 displaced-pair controls are rejected.
+
+The final residual-Gram certificate assembly and its repeat are still running.
+No corrected 47/50 sign is inferred from these panel and pairing results.
+Resume the complete snapshot with the matched 094 Gram constructor after
+lossless decompression; no support-panel convolution needs to be repeated.

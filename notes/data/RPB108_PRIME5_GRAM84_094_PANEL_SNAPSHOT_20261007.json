@@ -1,0 +1,28 @@
+{
+  "aperture": "47/50",
+  "completed_panels": 9,
+  "matching_repeat_panels_at_snapshot": 9,
+  "bindings": {
+    "source": "ae35d812c8ebbed864fce851024f5ce83664305c038ca769e470ffd1c7533ba8",
+    "native": "74239d04daedd0c8919cd9c3710404f30d813f1c47c7e5506b75e0da15a2d00c",
+    "constructor": "651ad16117433d5ec998283ad789104c453f993425f063f785bd957441afd4a4",
+    "geometry": "d30b267b87750752cbc84630623336afc3a55bcdcc53051bba093e8d7e6f4d2c",
+    "hankel": "c09c1f425b0b3db868714238d1ecf10cbdd331529ca8d124c75d3a345a9bde1c",
+    "checkpoint_codec": "7e557f325217cc3344ea65791898b901ea389b4a8f7278889ee35873269173e0",
+    "aperture": "47/50",
+    "log_series_terms": 500
+  },
+  "compressed_checkpoint_sha256": "87767d351cf9dee71b26d1ea715fafc3cdfe0f3fb3822ad33f158b672b6a8168",
+  "uncompressed_checkpoint_sha256": "22b2bb5ea9a2094adc1618d7252da95a9a209c298a28ec3991b85362082d53ad",
+  "all_source_panels_retained": true,
+  "all_mixed_terms_retained": true,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false,
+  "complete_panel_checkpoint_reproduced_byte_for_byte": true,
+  "native_source_pairings_verified": 7056,
+  "pairing_audit_sha256": "ee313fc0ae14b6cf019fe786d603c6c1e968784a3a1ce7d65d6576b73be2201a",
+  "complete_residual_gram_certificate_pending": true,
+  "corrected_sign_pending": true,
+  "whole_domain_positivity_frontier": "93/100"
+}
