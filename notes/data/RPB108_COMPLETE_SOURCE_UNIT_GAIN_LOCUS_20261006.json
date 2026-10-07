@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "abcfc270813eb3cd2f44085f084aa6c2f5a3ffa2",
+  "publication_parent": "abcfc270813eb3cd2f44085f084aa6c2f5a3ffa2",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_SEED_GLOBAL_INTERFACE_EQUIVALENCE_20261004.md": "69327050106adc5650034a129cc55e636fd4f053",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_KERNEL_SOURCE_COMPRESSION_20261006.md": "32fd6b8d4eecdc0c0d52284cb7b974ad1d89595a",
+    "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_CARRIER_EQUIVALENCE_20261004.md": "9124a5cadfb2f294d34df1475ad618d0843f1bc1"
+  },
+  "standing": "analytic fixed-window source spectral theorem; not Lean certified",
+  "closure": "Complete compensator unit-gain locus is exactly N0(K), with fixed-window strict complement gap; selected gain loss controlled by distance to this locus",
+  "actual_compensator": "C_all=-P0(P0*P0)^(-1)N0*, raw-positive, not effective finite C_s",
+  "prescribed_gate": "i_s u in W plus named actual raw-positive synthesis/rows/physical-adjoint custody",
+  "failed_implications": [
+    "strictness of every finite raw compensator implies strict complete compensator",
+    "unit gain and signed factor without physical adjoint imply native nullity"
+  ],
+  "minimal_endpoint_theorem": "Exclude W at every actual nonnegative candidate, equivalently prove strict complete-source gain; not derived",
+  "script": "scripts/validate_complete_source_unit_gain_locus.py",
+  "script_sha256": "20a13b91b6b214eb23d99dcf3cef82383ea5cd98e39855219aeb4f4cf7fe39f4",
+  "controls": {
+    "complement_gap_cases": 243,
+    "selected_angle_cases": 729,
+    "padded_unit_gain_rejections": 9,
+    "infinite_prefix_cases": 128,
+    "repeat": true
+  },
+  "frontier": "19/20 certified; newer 24/25 finite/source/complement and Gram checkpoint preserved",
+  "actual_prescribed_attachment_closed": false,
+  "endpoint_exclusion_closed": false,
+  "F4_closed": false
+}
