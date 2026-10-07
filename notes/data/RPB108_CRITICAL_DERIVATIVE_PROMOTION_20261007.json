@@ -1,0 +1,33 @@
+{
+  "recovered_head": "b78b4813c416ab17197cbfae994247c8a5ed51a8",
+  "publication_parent": "b78b4813c416ab17197cbfae994247c8a5ed51a8",
+  "category": "endpoint exclusion",
+  "result": "critical regularity-only derivative promotion rejected; actual-zero promotion remains unproved",
+  "sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_POSITIVE_SOURCE_MOMENTS_20261006.md",
+      "ref": "b78b4813c416ab17197cbfae994247c8a5ed51a8"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_NULL_REGULARITY_20261005.md",
+      "blob": "f5dd2cfe71a99cd41fcfd21b01a62c2b17ce89ff"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md",
+      "blob": "b8ef9607e6823444a887ac71d8ec08bc21242510"
+    }
+  ],
+  "control": {
+    "script": "scripts/validate_critical_derivative_promotion.py",
+    "sha256": "62d257abd1d862d45478f8e2ccf7188943b29fe20947c723945c031c6fe971e9",
+    "repeat": true,
+    "cases": 388,
+    "scope": "rational exponent/growth controls, not analytic or actual-null certification"
+  },
+  "smallest_gate": "h in actual K_a intersect Xcrit implies global derivative h' in L2",
+  "required_quantifier": "whole contact kernel for critical-moment route",
+  "preserved_frontier": "24/25",
+  "lean_certified": false,
+  "actual_arithmetic_closure": false,
+  "F4": false
+}
