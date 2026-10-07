@@ -1,0 +1,52 @@
+{
+  "recovered_head": "0da9145912cfd3f008cac490b35d0456fe1f0a27",
+  "publication_parent": "0da9145912cfd3f008cac490b35d0456fe1f0a27",
+  "category": "critical derivative promotion / endpoint exclusion",
+  "result": "actual coercive small-window smooth-forcing inverse is not H^(1/2); universal critical inverse-test premise refuted",
+  "actual_full_native_control": true,
+  "actual_null_control": false,
+  "artificial_mass_shift": false,
+  "kernel": "zero",
+  "forcing": "nonzero nonnegative compact smooth interior",
+  "critical_gate_refuted": false,
+  "contact_only_inverse_premise_refuted": false,
+  "source_custody": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_INVERSE_TESTS_20261007.md",
+      "blob": "0a5acc72749e39a54e92cbdc8c16337e81e36702"
+    },
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CRITICAL_INVERSE_TESTS.md",
+      "blob": "c3f80846c112325c2407215f0f9761c3dedd7ba6"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_CONTACT_CONTROL_20261006.md",
+      "blob": "cef50e5e46a7ddc6218f33042e720a0c12da58b4"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md",
+      "blob": "c2d087875d8dd85dfcdbd64893923ef51fcf1028"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_POSITIVE_SOURCE_MOMENTS_20261006.md",
+      "blob": "955ff7b4bd0d7f58221c300a962a803824232fd6"
+    }
+  ],
+  "external": {
+    "url": "https://arxiv.org/pdf/2401.18033v2",
+    "version": "v2, 2024-07-03",
+    "doi": "10.3934/dcds.2024084",
+    "theorems": [
+      "1.1",
+      "1.2",
+      "5.2"
+    ],
+    "read_date": "2026-10-07",
+    "local_hash": null,
+    "lean_certified": false
+  },
+  "validation": "analytic proof and applicability audit; no numerical inverse",
+  "frontier_preserved": "24/25",
+  "newer_aperture_preflight_preserved": "97/100, 96 moments",
+  "F4": false
+}
