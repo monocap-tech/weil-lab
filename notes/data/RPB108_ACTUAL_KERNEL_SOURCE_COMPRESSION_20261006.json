@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "4dd48a72b817ce28dd9e9a12448bb1aa93cbfea5",
+  "publication_parent": "9eb4cfbc87abb5d5602a9835080741b13649d492",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_ENERGY_TAIL_TEST_20261004.md": "39128a9e03d6c855797b0563586e7655cbdfdec1",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SELECTED_BACKGROUND_20261004.md": "6ad9dca44f5630808a904fe4590d7440b650414a",
+    "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_CARRIER_EQUIVALENCE_20261004.md": "9124a5cadfb2f294d34df1475ad618d0843f1bc1",
+    "notes/REFLECTED_PACKET_BRIDGE_108_NONNEGATIVE_ONE_VECTOR_ATTACHMENT_20261006.md": "34e3f30379e8ecfbe4d357b95dd0022d201640e9"
+  },
+  "standing": "analytic actual source compression conditional on hypothetical nonnegative contact; no Lean certification",
+  "closure": "Uniform coordinate tails on finite K; exact fresh raw-positive unit-gain/adjoint packet via finite-dimensional W=N0(K)",
+  "source_class": "orthogonal projection of full actual negative analysis; finite rank, not necessarily finite actual coordinate support",
+  "operator_custody": "raw compressed defect is A+B_W*B_W, has kernel K, but is not generally A off K",
+  "failed_implication": "uniform small tails and finite-dimensional source image imply exact finite-coordinate raw attachment",
+  "smallest_prescribed_raw_gate": "N0 k in range Pi_s on unchanged retained k; whole-kernel version W subset range Pi_s",
+  "normalization_gap": "2||(I-Pi_s)N0 k||^2; rescaling changes physical k",
+  "tail_warning": "Green derivative-energy bound cannot be applied to rough K without H1; this proof uses extended bounded analyses",
+  "script": "scripts/validate_actual_kernel_source_compression.py",
+  "script_sha256": "c1068597c8d505efe4378c900f4a96235014ff43d1eedc31452ab0e405aaa8a4",
+  "controls": {
+    "compressed_packet_cases": 81,
+    "off_kernel_operator_differences": 81,
+    "infinite_support_prefix_cases": 128,
+    "repeat": true
+  },
+  "frontier": "19/20 certified; reused",
+  "actual_prescribed_attachment_closed": false,
+  "endpoint_exclusion_closed": false,
+  "F4_closed": false,
+  "preserved_aperture_advance": "24/25 finite/source and weighted complement; full Gram/sign pending, frontier 19/20"
+}
