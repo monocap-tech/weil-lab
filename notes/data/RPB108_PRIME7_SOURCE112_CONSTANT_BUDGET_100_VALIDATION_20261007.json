@@ -1,0 +1,13 @@
+{
+  "aperture": "1",
+  "certificate_sha256": "f0c30003d8da32e26d00ad00e9d18ab80edf5058119100adc5f468f11805e513",
+  "independent_binomial_amplification_checks": 112,
+  "independent_akiyama_bernoulli_remainders": 2,
+  "independent_one_sided_machin_checks": 2,
+  "finer_machin_terms": 240,
+  "log_terms": 300,
+  "all_propagated_constant_allowances_verified": true,
+  "exponential_one_strictly_below_three": true,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false
+}

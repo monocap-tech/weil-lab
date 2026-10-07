@@ -1,0 +1,11 @@
+{
+  "aperture": "1",
+  "certificate_sha256": "43f3e52934a6ae320e171bedf1abedbe50996fe823a5035bab6f6e430bccc7cd",
+  "independent_prime_amplitude_inclusions": 5,
+  "prime_loss_strictly_below_six": true,
+  "pole_loss_strictly_below_twelve_from_exp_one_below_three": true,
+  "exact_aperture_one_equality_case_verified": true,
+  "garding_24_verified": true,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false
+}

@@ -1,0 +1,12 @@
+{
+  "certificate_sha256": "ec1d9af5577570347139f0fe53e06d52654a578af641f901f4450f8dccc21108",
+  "aperture": "1",
+  "source_columns": 112,
+  "independent_closed_weighted_moment_sums_checked": 3,
+  "analytic_114_pair_allowance": "39885213034961/25000000000000000000000000000000000000000000000000",
+  "excludes_interval_and_quantization_errors": true,
+  "complete_source_map_certified": false,
+  "whole_domain_positivity": false,
+  "whole_domain_frontier": "399/400",
+  "f4_entry_closed": false
+}
