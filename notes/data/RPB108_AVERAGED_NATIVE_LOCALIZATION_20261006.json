@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "e003124e6bcb086c5ffb2f11d6e55c26916dea49",
+  "publication_parent": "e003124e6bcb086c5ffb2f11d6e55c26916dea49",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_CONTACT_CONTROL_20261006.md": "cef50e5e46a7ddc6218f33042e720a0c12da58b4",
+    "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_PARITY_MODULUS_20261006.md": "0a8eda427afd008ff95b76ad98dc93ee62c76db5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_POWER10_POSITIVITY_094_20261007.md": "d1bfe5bb0c4560c83692c91fad93d987bf29d5f7",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_F4_ENTRY_AUDIT_20261006.md": "a6891f7eeac57999879bd4aded6867badaa0340b"
+  },
+  "standing": "analytic actual localization identity and termwise obstruction; no Lean certification",
+  "result": "Average local energies multiply correlations by chi autocorrelation; full defect retains all lost long-prime and pole correlations",
+  "controls_actual_scope": "physical logarithmic carrier vectors, not null/negative witnesses",
+  "missing_global_theorem": "Combined signed localization defect <= certified local physical margin times mass on every finite supported actual carrier",
+  "obstructions": [
+    "sharp standalone archimedean defect norm >=4 exp(-a)>4/3 at a=47/50",
+    "actual pole defect has unbounded positive values on separated opposite bumps"
+  ],
+  "script": "scripts/validate_averaged_native_localization.py",
+  "script_sha256": "4fba33f219f126d9eb74fa23945d8e9ef3c700070f6996e6d82e2aad436d5257",
+  "controls": {
+    "correlation_pairs": 100,
+    "pole_budget": 72,
+    "tail_budget": 1,
+    "total": 173,
+    "repeat": true
+  },
+  "frontier": "47/50 certified; 19/20 finite/source custody preserved",
+  "global_closed": false,
+  "retained_attachment_closed": false,
+  "F4_closed": false
+}
