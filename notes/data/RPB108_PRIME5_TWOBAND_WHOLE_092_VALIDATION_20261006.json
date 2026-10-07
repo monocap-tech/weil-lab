@@ -1,0 +1,19 @@
+{
+  "aperture": "23/25",
+  "certificate_reproduced_byte_for_byte": true,
+  "certificate_sha256": "0aebe764bb8dac61c2e8540bfaab12639258878dbc651b94c0002ce1dd5fddbb",
+  "all_four_input_hashes_verified": true,
+  "all_84_corrected_pivots_rechecked_at_80_digits": true,
+  "actual_source_correction_recomputed": true,
+  "refined_complement_exactly_below_proved_unrounded_bound": true,
+  "negative_diagonal_control_rejected": true,
+  "excessive_conversion_control_rejected": true,
+  "full_domain_and_logarithmic_conversions_verified": true,
+  "physical_coercivity_display": 1.1630174590320121e-26,
+  "logarithmic_coercivity_display": 5.056597647965271e-29,
+  "whole_domain_positivity": true,
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

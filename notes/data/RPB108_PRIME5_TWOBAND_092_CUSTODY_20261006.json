@@ -1,0 +1,19 @@
+{
+  "base": "6deba5182e4e52a47cb0ac9d1f47eb061538a3b7",
+  "whole_domain_positivity_frontier": "23/25",
+  "f4_closed": false,
+  "lean_changed": false,
+  "all_four_repeats_byte_identical": true,
+  "files_sha256": {
+    "scripts/certify_native_prime5_twoband_complement84_092.py": "bbaaeab5bb1fa5badb322c0145264eaed89311bfdbeb99d07ffe12b469534f27",
+    "scripts/validate_native_prime5_twoband_complement_092.py": "80d34943bdaf24609178c8b2903c975b0d1a98259bc88e69934f299df978161e",
+    "scripts/certify_native_prime5_twoband_schur84_092.py": "b2460e70dff4852e27a4fce65756677fdf98224a3286fede6806d372726069b6",
+    "scripts/validate_native_prime5_twoband_whole_092.py": "dc9de4a6b3f7ec5f40ff172358b5a32ee0def4cb8ada2e0007dce0f2c3fabac1",
+    "docs/TERMINOLOGY_RPB108_TWOBAND_COMPLEMENT_092.md": "c1b4a423055e6ab1b365a21a2f035d665d548b45bf5120973f2cad78a1b505d4",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TWOBAND_COMPLEMENT_092_20261006.md": "8930a1f25d97fd08f48fffdc7f72990a5b63aa9e7b761d068d41bbb7e2f4dde3",
+    "notes/data/RPB108_PRIME5_TWOBAND_COMPLEMENT84_092_CERTIFICATE_20261006.json": "ce76e0a98959d20998b2e14b7469591b57424f2835d2fb497f1d0bf9236d3f20",
+    "notes/data/RPB108_PRIME5_TWOBAND_COMPLEMENT_092_VALIDATION_20261006.json": "941352d7cc6dec3a6d8c30aca39e3309c2c89efaa8bce7464ebfcfd49d35842d",
+    "notes/data/RPB108_PRIME5_TWOBAND_SCHUR84_092_CERTIFICATE_20261006.json": "0aebe764bb8dac61c2e8540bfaab12639258878dbc651b94c0002ce1dd5fddbb",
+    "notes/data/RPB108_PRIME5_TWOBAND_WHOLE_092_VALIDATION_20261006.json": "f7eae49b84af0291cb1bdbc8a2d754d806607d2c9c5952f88595b2712534ca2a"
+  }
+}
