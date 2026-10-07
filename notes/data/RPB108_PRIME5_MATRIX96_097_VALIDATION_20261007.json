@@ -1,0 +1,20 @@
+{
+  "aperture": "97/100",
+  "native_reproduced_byte_for_byte": true,
+  "compact_reproduced_byte_for_byte": true,
+  "old_84_block_overlap_entries_verified": 7056,
+  "native_sha256": "da591b080a6e961629a1209c343b047f9eed78552c504ad8f5dc3f8c32f7a139",
+  "compact_sha256": "d39ccddfaa236abac5dedac8b966d534bc967843e80dda89d25b8a7cdca55b6c",
+  "raw_checkpoint_constructor_bindings_verified": true,
+  "independent_raw_to_physical_entries_checked": 9216,
+  "compact_outward_inclusions_checked": 9216,
+  "shifted_parity_block_pivots": 96,
+  "maximum_native_width_display": 6.533867777813516e-42,
+  "finite_physical_margin": "1/1073741824000000000000000000",
+  "finite_restriction_only": true,
+  "complete_residual_gram_pending": true,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

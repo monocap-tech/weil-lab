@@ -1,0 +1,15 @@
+# RPB108: fresh 96-vector native/source milestone at 97/100
+
+Definitions: [96-moment space and corrected-sign boundary](../docs/TERMINOLOGY_RPB108_96_PREFLIGHT_097.md). Continuation of published 0da9145912cfd3f008cac490b35d0456fe1f0a27.
+
+The complete native restriction on physical Legendre degrees 0 through 95 is constructed with fresh exponential/Bernoulli orders 300/300, gamma order 20, 400-digit outward arithmetic and hash-bound exact row checkpoints. All 96 native pivots and shifted pivots pass at 160 digits. A separate outward 80-digit compact enclosure also passes both parity blocks with the same shift, giving finite physical margin 1/1073741824000000000000000000. The largest native entry width is approximately 6.533867777813516e-42, below 1e-35.
+
+Native finalization and compact sign outputs each repeat byte for byte from the completed checkpoint. This is not a second complete 96-row construction. An actual fresh versus resumed first-two-row audit verifies checkpoint recovery exactly. Independent signed endpoint normalization checks all 9216 raw-to-physical entries and all 9216 compact inclusions. All 7056 old 84-vector entries overlap their archived physical enclosures, checking the unchanged form across the new truncation and engine. Negative sign controls are rejected.
+
+The fresh actual 96-source approximation uses exponential order 90, Bernoulli pairs 100, gamma order 50, 400-digit arithmetic and 40-digit quantized coefficients with explicit rounding radii. All 96 physical normalization/error bounds and 864 panel encodings pass aggregation audit; source-map error is approximately 1.9949486708501066e-34, strictly below 2e-34. The source constructor ran once; no byte-identical second source construction is claimed. The existing support geometry retains the same nine panels and actual prime powers 2,3,4,5, including Lambda(4)=log(2).
+
+Separate 96-vector engine/codec modules preserve the old 84-vector script and checkpoint hashes. The new engine permits only the new aperture/dimension matrix route; no other new parameter pair is certified. The checkpoint still uses the original outward interval primitive, whose script hash is included in its bindings.
+
+The already audited 96-moment complement lower 477/500 remains separate. A positive finite restriction plus a positive complement does not control their cross coupling. Next: build the full matched nine-panel 96-source residual Gram, audit all 9216 source/native pairings including enclosure widths, retain actual source correction eta(2M+eta), then prove the corrected Schur sign. That new sign has not been computed.
+
+[Custody and file hashes](data/RPB108_MATCHED_96_097_CUSTODY_20261007.json) retain complete raw rows, native and actual-source certificates, compact native enclosure and independent audit outputs. Whole-domain positivity remains certified through 24/25 with Q>=3e-29 physical mass and Q>=1.6e-31 Elog. No whole-domain positivity at 97/100, Lean certification, global endpoint exclusion, historical attachment, F4 closure or RH claim. Concurrent global/F4 work is preserved.
