@@ -1,0 +1,29 @@
+{
+  "passed_assertions": 158,
+  "models": [
+    {
+      "dimension": 2,
+      "base_nullity": 0,
+      "native_comparison_nullity": 2
+    },
+    {
+      "dimension": 4,
+      "base_nullity": 2,
+      "native_comparison_nullity": 4
+    }
+  ],
+  "scope": "exact isoweyl positive-jump controls; no actual continuum/source-range proof",
+  "source_head": "6e9070c744b5845c1af209bc838e458eb9b61ca6",
+  "source_blobs": {
+    "POLE_RESONANCE_COMPATIBILITY": "dd12a329fb0ecf518814adfcb2313029af803169",
+    "POLE_STRIPPED_CHAIN": "87a296ab96c1888b77c864136279d31b420d6e74",
+    "SOURCE_HEIGHT_GRAPH_ERROR": "b968aa0a3c5eb5ba680ee0251692e24853dadd74"
+  },
+  "external_audit": {
+    "primary_uri": "https://arxiv.org/pdf/1506.06324",
+    "theorem": "5.6",
+    "remark": "5.7 and 5.5",
+    "hypothesis": "observing subspace generates the entire Hilbert carrier",
+    "status": "not imported; fails conditionally when actual Z is nonzero"
+  }
+}
