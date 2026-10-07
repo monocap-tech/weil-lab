@@ -1,0 +1,35 @@
+{
+  "actual_divisor_row_realization": false,
+  "actual_null_or_lean_certificate": false,
+  "analytic_claim": "two-row comparison aperture first contact with a two-vector derivative chain",
+  "auxiliary_negative_rows": 2,
+  "comparison_kernel_dimension": 2,
+  "comparison_regular_kernel_dimension": 1,
+  "diagonal_only_negative_controls": 12,
+  "independent_schur_entry_agreements": 192,
+  "nonorthogonal_backgrounds": 12,
+  "positive_background_and_schur_pivots": 72,
+  "recovered_head": "3b8cd0e3b958cecdc62dd16322e266bfdab07ad9",
+  "residual_energy_agreements": 300,
+  "scope": "rational finite projection controls; analytic inverse/barrier/contact argument is in the note",
+  "source_pins": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ROUGH_FORCED_INVERSE_20261007.md",
+      "blob": "525ced5f03a8fc5dee543ada83d74a5fed8d74b0"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DERIVATIVE_CHAIN_20261007.md",
+      "blob": "e124b8a31a00df61908ce71cedd4ab7f83a14c76"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ENDPOINT_TRACE_20261007.md",
+      "blob": "1996d3fb3358965c5468481c31252f3dda440e69"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX_20261007.md",
+      "blob": "c369d3760606d9e5b9ae0f4862156fd712e5be29"
+    }
+  ],
+  "status": "PASS",
+  "whole_actual_contact_trace_exclusion": "UNPROVED"
+}
