@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "c2fa3f9adf0eb6cf954e99d831d9a6376ed161a8",
+  "publication_parent": "c2fa3f9adf0eb6cf954e99d831d9a6376ed161a8",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_SINGULAR_PRESCRIBED_REDUCTION_20261006.md": "f3cd8b2377035e824bb7f06e5c85aa782881392f",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SELECTION_AUGMENTATION_20261006.md": "6ea30274cde8ec3172068418c75f3cd762971e66",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SELECTION_EFFECTIVE_POSITIVE_REALIZATION_20261006.md": "8bfd91f93ce80eeea5d95f2ee7ff2c34fdfaeb6d",
+    "WeilDefect/Morphology/Neutral.lean": "9c446407e5f9ecfada57d2dee5e1d85b7d8a5753"
+  },
+  "standing": "analytic selection transport and exact conditional repair criterion; no Lean certification",
+  "closure": "canonical physical-vector transport for arbitrary coercive selections; normalized disjoint repair iff eligible actual source blocks separate prescribed blind kernel",
+  "failed_implication": "complete negative analysis injective on K does not imply eligible rows vanishing on retained k separate N",
+  "minimal_repair_gate": "N intersect ker Z_k={0}; not proved for actual prescribed packet",
+  "script": "scripts/validate_normalization_compatible_selection.py",
+  "script_sha256": "9e34436141f23cd4d1aca5e811791199f0575d038ddb8017d36547a1fa87af71",
+  "controls": {
+    "transport_cases": 2916,
+    "metric_mismatch_cases": 1944,
+    "repair_cases": 27,
+    "repair_passes": 9,
+    "repair_obstructions": 18,
+    "repeat": true
+  },
+  "frontier": "19/20; Q>=7e-29 physical mass and Q>=3e-31 Elog, reused",
+  "actual_retained_attachment_closed": false,
+  "endpoint_exclusion_closed": false,
+  "F4_closed": false
+}
