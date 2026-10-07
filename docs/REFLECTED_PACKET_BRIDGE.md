@@ -3086,3 +3086,14 @@ For a hypothetical actual nonnegative contact kernel of dimension r, choose r di
 The highest polynomial coefficient reads the terminal trace from these actual rows, but need not vanish. At unshifted contact the selected positive rows are canceled by the rest of the complete signed source graph; the shifted positive-eigenmode Gram retains mu times physical mass. Auxiliary nodes remain distinct from the actual zeta divisor. This closes the explicit reconstruction interface, not endpoint exclusion. No computed actual nodes or effective row-conditioning estimate is asserted.
 
 Finite checker: 268 exact rational algebra checks passed; no analytic or Lean certification. Whole-domain aperture-one positivity at 811b0826abf45d688d1e2da7900cda852103ddee remains preserved. Signed sharp-head arithmetic, bounded-return/sublogarithmic sharp subsequence, F4 and full transport remain open.
+
+
+## NF49 — unavoidable mixed sharp-height compensation (2026-10-07)
+
+Recovered head c665b9d4bc55fed84ed4c2a2b38daf5fe9072d90. See [mixed compensation proof](../notes/REFLECTED_PACKET_BRIDGE_108_MIXED_HEIGHT_COMPENSATION_20261007.md), [definitions](TERMINOLOGY_RPB108_MIXED_HEIGHT_COMPENSATION.md), and [custody](../notes/data/RPB108_MIXED_HEIGHT_COMPENSATION_CUSTODY_20261007.json).
+
+For a smooth compact v, split k=C_X v and e=R_X v. Polarizing the established actual kernel sharp/log limit and using the exact actual derivative-source identities on v gives the diagonal limits eta|kappa_R(k)|^2 for BOTH k and e, and mixed limit -eta|kappa_R(k)|^2, eta=2/pi. These order-log terms cancel in the original smooth vector. Native Q-orthogonality does not imply height-weighted source orthogonality. Smooth actual-row cardinal tests yield the complete rank-one block eta[[A,-A],[-A,A]], A_ij=kappa_R(H_i)overline(kappa_R(H_j)). No finite-head sign is inferred.
+
+No bounded projection onto a nonzero actual K can preserve global H1 on the entire smooth core: density would force its range into the proper regular kernel flag. Thus rough energy representatives occur even for smooth input in every continuous kernel gauge, including physical orthogonal projection. A finite-dimensional physical correction has infinitely many original source rows and is not the fixed finite source deletion whose sharp effect is O(1). The actual positive-eigenmode control has the same compensation and retains mu physical mass in its original full source Gram.
+
+900 exact finite rational block checks pass; analytic asymptotics/regularity are documented separately, with no Lean certification or computed actual zeros. No nonpositive sharp/log subsequence or arithmetic exclusion is obtained. Aperture-one positivity, historical certificates and concurrent work are preserved. Endpoint exclusion, F4 and full transport remain open.

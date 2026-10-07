@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "exact_checks": 900,
+  "scope": "finite Gaussian-rational rank-one and shifted Gram algebra only",
+  "analytic_certification": false,
+  "actual_zeta_nodes_computed": false,
+  "lean_certification": false,
+  "F4_closed": false
+}
