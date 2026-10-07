@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "exact_checks": 138,
+  "scope": "finite rational algebra only; analytic form/domain proof is in the note",
+  "scalar_pick_attachment": "analytic proof via jump-cancelled differences in companion note",
+  "bounded_return": "unproved",
+  "F4": "open"
+}

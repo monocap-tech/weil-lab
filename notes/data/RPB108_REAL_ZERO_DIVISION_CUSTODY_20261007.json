@@ -1,0 +1,39 @@
+{
+  "recovered_head": "1de1dd269bb1fdca75cbb51f84541499d86180e2",
+  "publication_base": "0bfa79da8d39eb382db54587a195c551d483ddb1",
+  "inputs": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DE_BRANGES_ATTACHMENT_20261007.md",
+      "sha": "95a4b2753e0dacdf6236656e43b7110f1124c7da"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DERIVATIVE_CHAIN_20261007.md",
+      "sha": "e124b8a31a00df61908ce71cedd4ab7f83a14c76"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SHARP_LOG_LIMIT_20261007.md",
+      "sha": "310fbfd874f2fb6a0cda70f38d50fb656c26029e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md",
+      "sha": "3354b89638b643d5b21c4c428f069f738ccf59f5"
+    },
+    {
+      "path": "scripts/certify_native_kernel_de_branges_attachment.py",
+      "sha": "038f8bab37e54af5a61181bd7ae9250b1b39e967"
+    }
+  ],
+  "analytic_results": [
+    "simple real top-generator zeros",
+    "positive Q-orthogonal real-zero division tests",
+    "scalar Pick attachment by jump-cancelled differences",
+    "real pole residue -Q(u_t,u_t)/abs(Phi'(t))^2",
+    "actual nonreal source poles removable after correction"
+  ],
+  "exact_checks": 138,
+  "scope": "analytic proof in note; finite algebra validation separate",
+  "positive_eigenmode": "same Pick model with Q-mu; actual source pairing retains mass",
+  "bounded_sublogarithmic_sharp_subsequence": "unproved",
+  "F4": "open",
+  "lean_certified": false
+}
