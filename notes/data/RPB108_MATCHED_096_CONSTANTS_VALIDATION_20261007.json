@@ -1,0 +1,29 @@
+{
+  "aperture": "24/25",
+  "prime_powers": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "native_exp_ceiling": 47,
+  "native_kernel_ceiling": "24/5",
+  "source_kernel_ceiling": "9/4",
+  "decreasing_alternating_bernoulli_pairs": 100,
+  "panel_endpoints": [
+    "0",
+    "1-log(5)/(2a)",
+    "1-log(4)/(2a)",
+    "log(2)/(2a)",
+    "1-log(3)/(2a)",
+    "log(3)/(2a)",
+    "1-log(2)/(2a)",
+    "log(4)/(2a)",
+    "log(5)/(2a)",
+    "1"
+  ],
+  "strict_panel_order": true,
+  "obsolete_exp_ceiling_46_rejected": true,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false
+}

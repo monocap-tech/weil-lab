@@ -1,0 +1,6 @@
+{
+  "quarter_native_golden_unchanged": true,
+  "quarter_golden_sha256": "4045a32f5e57a0685cf5eb2d46dfde97906ff315b800fbb8757350d186094b37",
+  "invalid_constructor_controls_rejected": 6,
+  "new_aperture_whole_domain_positivity": false
+}
