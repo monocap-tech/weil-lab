@@ -1,0 +1,39 @@
+{
+  "recovered_head": "99b8346b238abde76730d4fcdc5b86012fdb3e01",
+  "publication_parent": "200ba143265914d8fc6d03b81f14bc95a9232a20",
+  "category": "critical derivative promotion / endpoint exclusion",
+  "result": "absolute critical full-residual collar product under critical membership; native-sign audit and refined comparison obstruction",
+  "critical_membership_assumed": true,
+  "critical_moment_proved": false,
+  "absolute_collar_product_proved": true,
+  "absolute_inverse_integrability_proved": false,
+  "derivative_promotion_proved": false,
+  "arithmetic_progress_claimed": false,
+  "schur_constant": "1+2 log 2",
+  "comparison_actual_native_drive": false,
+  "comparison_actual_null": false,
+  "comparison_satisfies_necessary_flux_upper_sign": true,
+  "comparison_satisfies_full_native_identity": false,
+  "source_custody": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_JOINT_MATCHING_20261007.md",
+      "blob": "299cea4f1fe5b45b844c52a7912842f93d21dd9a"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md",
+      "blob": "432ffd64d6460c65cee106f0b46afdb50d1ec28a"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_CUTOFF_SOURCE_MOMENT_20261007.md",
+      "blob": "52f34cc5c348c7ad5b00058c1208599f531bf4c7"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX_20261007.md",
+      "blob": "c369d3760606d9e5b9ae0f4862156fd712e5be29"
+    }
+  ],
+  "validation": "analytic Schur/Tonelli and scaling proof; documentation and exact exponent checks only",
+  "frontier_preserved": "97/100",
+  "F4": false,
+  "original_pass_frontier": "24/25"
+}
