@@ -1,0 +1,41 @@
+{
+  "actual_arithmetic_sublog_bound": false,
+  "actual_null_or_lean_certificate": false,
+  "analytic_result": "actual whole-kernel Abel/log limit equals (2/pi) times the right boundary trace squared norm",
+  "critical_translation_cutoff_log_coefficient": "right boundary trace squared norm, without 2/pi",
+  "concurrent_aperture_input": {
+    "head": "8b2d7c69d3c7a5ea55009a3a118d8a0a873c126b",
+    "path": "notes/REFLECTED_PACKET_BRIDGE_108_PRIME7_GRAM112_098_20261007.md",
+    "blob": "8874d390525a85d863bbe7563839b21b886304c9",
+    "certified_frontier": "49/50",
+    "scope": "read and reused published aperture-lane certificate; not recomputed here"
+  },
+  "independent_abel_coefficient_brackets": 33,
+  "neutral_infinite_norm_checks": 2,
+  "normalized_abel_lower_controls": 64,
+  "positive_local_remainder_budgets": 32,
+  "recovered_head": "ceb1c43f24a22d66d8bf7c409f6c08b79e2fd99e",
+  "scope": "rational signed sharp/Abel controls; actual infinite-dimensional slope proof is analytic",
+  "sharp_peaks": 64,
+  "sharp_returns": 64,
+  "source_pins": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ENDPOINT_TRACE_20261007.md",
+      "blob": "1996d3fb3358965c5468481c31252f3dda440e69"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ABEL_SHARP_HEIGHT_20261007.md",
+      "blob": "a51b2becce5c0ffaa394f4b7d29f6aa136473687"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_CUTOFF_SOURCE_MOMENT_20261007.md",
+      "blob": "52f34cc5c348c7ad5b00058c1208599f531bf4c7"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md",
+      "blob": "3354b89638b643d5b21c4c428f069f738ccf59f5"
+    }
+  ],
+  "status": "PASS",
+  "whole_actual_contact_trace_exclusion": "UNPROVED"
+}
