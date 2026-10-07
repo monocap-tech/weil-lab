@@ -1,0 +1,14 @@
+{
+  "cosh_upper": "16384/16303",
+  "harmonic_block_lower": "1/2",
+  "harmonic_blocks": 64,
+  "local_mass_checks": 64,
+  "negative_observation_lower": "3/4096 times c_j",
+  "relative_cross_error_upper": "25/2199023255552",
+  "scope": "rational artificial-profile margins; no actual-null or Lean certificate",
+  "signed_difference_lower": "3/4096 times c_j^2",
+  "sinh_upper": "1152/16303",
+  "status": "PASS",
+  "tv_minus_upper": "79369/8192",
+  "tv_plus_upper": "591441/8192"
+}
