@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "exact_checks": 4078,
+  "scope": "finite exact source-coupling/tail algebra and explicitly synthetic limit controls",
+  "analytic_certification": false,
+  "actual_zeta_nodes_computed": false,
+  "lean_certification": false,
+  "F4_closed": false
+}

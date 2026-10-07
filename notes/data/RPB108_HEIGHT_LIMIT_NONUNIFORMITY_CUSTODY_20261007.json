@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-07",
+  "lane": "NF50 signed height operator growth and nonuniform smoothing",
+  "recovered_head": "97a3f8348b4bb68bb67b9ad3ab3bd6ced7ab7a71",
+  "dependencies": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md": "c2d087875d8dd85dfcdbd64893923ef51fcf1028",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md": "3354b89638b643d5b21c4c428f069f738ccf59f5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DERIVATIVE_CHAIN_20261007.md": "e124b8a31a00df61908ce71cedd4ab7f83a14c76",
+    "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_SOURCE_HEIGHT_MOMENT_20261006.md": "7997a0a3ccb0666d117f696dd208b743255b7ac5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SHARP_LOG_LIMIT_20261007.md": "310fbfd874f2fb6a0cda70f38d50fb656c26029e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_MIXED_HEIGHT_COMPENSATION_20261007.md": "ce3c618d8239181b26ed0d39bc1adad9b0c3d483",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ROW_INTERPOLATION_20261007.md": "ac2af485ad77fa4d078efa668804174bc4c75d6c",
+    "scripts/certify_native_kernel_de_branges_attachment.py": "038f8bab37e54af5a61181bd7ae9250b1b39e967",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "a7950ebee5e470af2d1331954b76c734c41e8385"
+  },
+  "unconditional_result": "For each fixed actual window, canonical signed first-height form norm N_a(T) is Theta(T), using smooth modulated actual source packets.",
+  "conditional_results": [
+    "opposite iterated smoothing/height limits at any rough actual contact vector",
+    "actual-row terminal readout unbounded in the native energy norm on the smooth core"
+  ],
+  "normalization": "Registered logarithmic canonical Fourier norm; all original actual source pairs/copies and weights retained.",
+  "analytic_audit": [
+    "Fourier modulation sign places samples at +N",
+    "centered moments use actual derivative-source identities",
+    "bounded complete sampling on f_N and g_N",
+    "all frozen primes and both poles included as bounded physical corrections",
+    "O(N) remainder retained after N times Q",
+    "finite-height continuity distinguished from height-uniform approximation",
+    "positive-eigenmode control retains original mu mass"
+  ],
+  "validation": {
+    "exact_checks": 4078,
+    "finite_algebra_only": true,
+    "limit_controls_are_synthetic": true,
+    "actual_zeta_nodes_computed": false,
+    "analytic_certification": false,
+    "lean_certification": false
+  },
+  "preserved_aperture_one_commit": "811b0826abf45d688d1e2da7900cda852103ddee",
+  "open": [
+    "actual null-range arithmetic height bound",
+    "nonpositive normalized sharp subsequence",
+    "global endpoint exclusion",
+    "F4",
+    "full transport",
+    "Lean closure"
+  ]
+}
