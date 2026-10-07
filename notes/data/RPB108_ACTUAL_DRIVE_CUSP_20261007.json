@@ -1,0 +1,75 @@
+{
+  "recovered_head": "d712291a8c118e420ec51ee6ce4edafd8824fbe3",
+  "publication_parent": "d712291a8c118e420ec51ee6ce4edafd8824fbe3",
+  "category": "endpoint exclusion / critical derivative promotion",
+  "result": "actual-native-drive positive-energy cusp with both endpoint matches and explicit nonzero interior residual",
+  "actual_drive": true,
+  "actual_source_coordinates": true,
+  "actual_positive_form_control": true,
+  "positive_eigenvector_claimed": false,
+  "actual_null_claimed": false,
+  "critical_moment_finite_for_control": true,
+  "whole_kernel_critical_moment_proved": false,
+  "control_derivative_L2": false,
+  "homogeneous_derivative_gate_disproved": false,
+  "homogeneous_derivative_gate_proved": false,
+  "both_endpoint_matches": true,
+  "interior_defect": "q_h(a-v)=v^(1/4)log(1/v)+O(v^(1/4))",
+  "reused_energy_lower": "9e-30 physical mass",
+  "compatibility_matrix_eigenvalue_lower_strict": "230",
+  "source_custody": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_MATCHED_96_097_WHOLE_DOMAIN_20261007.md",
+      "blob": "8604e8d6429c91b9ccea4a5c8a7e75dee4f078c6"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_COMBINED_RIGHT_EDGE_DRIVE_20261007.md",
+      "blob": "81851d107b65549dca965f656b92353df7ac0fe7"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md",
+      "blob": "c2d087875d8dd85dfcdbd64893923ef51fcf1028"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md",
+      "blob": "b8ef9607e6823444a887ac71d8ec08bc21242510"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_POSITIVE_SOURCE_MOMENTS_20261006.md",
+      "blob": "955ff7b4bd0d7f58221c300a962a803824232fd6"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_DERIVATIVE_PROMOTION_20261007.md",
+      "blob": "26627f85c34572a8197b32a1216382e8d02e07f5"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_ABSOLUTE_COLLAR_20261007.md",
+      "blob": "498a8ad4530bd2ed5c613746f4b1afc2780103a7"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_MATCHED_CARLEMAN_QUADRATIC_20261007.md",
+      "blob": "a0e9e076f9033aecee2bedb3e485809c8c20781a"
+    }
+  ],
+  "geometry_validation": {
+    "active_prime_powers": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "actual_null_claimed": false,
+    "aperture_reused": "97/100",
+    "compatibility_matrix_eigenvalue_lower_strict": "230",
+    "correlated_prime2_inside_outside": "exact x0-v versus x0+u",
+    "derivative_L2": false,
+    "lean_certified": false,
+    "new_aperture_certificate": false,
+    "omitted_prime2_control_rejected": true,
+    "scope": "rational support/matrix/exponent checks only; analytic theorem not certified",
+    "support_interval_checks": 31
+  },
+  "validation": "analytic actual-source construction plus repeated rational geometry/matrix/exponent checks; not a numerical null or Lean certificate",
+  "frontier_preserved": "97/100",
+  "F4": false
+}
