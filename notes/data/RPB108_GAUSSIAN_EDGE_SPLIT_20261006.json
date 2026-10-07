@@ -1,0 +1,31 @@
+{
+  "source_commit": "fb0cfa4f087debb34b9b35029051748861d70a29",
+  "publication_parent": "93f21f808ba1777adb17fd783e394e64fd20b0cc",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_GAUSSIAN_ACTION_MOMENT_20261006.md": "a4c6a4b42450d19fcc2f59e385223ea40bb035cb",
+    "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md": "b8ef9607e6823444a887ac71d8ec08bc21242510",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_NULL_REGULARITY_20261005.md": "f5dd2cfe71a99cd41fcfd21b01a62c2b17ce89ff",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GAUSSIAN_FAR_FIELD_BOUNDARY_COLLAR_20261004.md": "7e6ef9fae6a104b9eb7226fb1aa411917df1489b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_BOUNDARY_SCALING_20261005.md": "e52a5d00f40e89359613663bf3d54ce575c2451b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MOVING_GAUSSIAN_COERCIVITY_20261004.md": "d51c96a08e99f4680cf3552bd544b0601177de1e"
+  },
+  "script_sha256": "6cbb3e85556d55649d680ed0afbdaffa9402def40531603b3ea5fa2b4ed791de",
+  "repeat_identical": true,
+  "controls": {
+    "fourth_derivative_L1_ceiling": "43/2",
+    "overlap_controls": 65,
+    "rate_controls": 33,
+    "relative_error_at_64": "29/64",
+    "scope": "adjacent-step carrier control; not actual native residual",
+    "sign_controls": 193,
+    "status": "exact_controls_pass"
+  },
+  "actual_closure": "hard-truncated Gaussian lies in the canonical endpoint logarithmic domain; full actual nullity leaves exactly the exterior residual pairing",
+  "obstruction": "interior residual vanishing plus all finite-log/subcritical regularity and collar power bounds do not imply weighted Gaussian-action summability",
+  "fixed_control": "adjacent steps with assigned q, not actual q_h; positive real exterior pairing asymptotic R^(-3/2)/(2 sqrt(pi)), >=R^(-3/2)/(4 sqrt(pi)) for R>=64",
+  "remaining_theorem": "finite liminf of signed weighted actual exterior pairing partial sums, basiswise on the full real nonnegative kernel, using the exact combined native residual dictionary",
+  "aperture_frontier": "47/50 certified by concurrent aperture lane; tenth-power norm and complete residual Gram audited; no aperture calculation",
+  "F4": "open",
+  "FULL_TRANSPORT_CLOSED": false,
+  "lean_certified": false
+}
