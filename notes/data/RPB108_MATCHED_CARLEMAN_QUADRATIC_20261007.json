@@ -1,0 +1,43 @@
+{
+  "recovered_head": "99b8346b238abde76730d4fcdc5b86012fdb3e01",
+  "publication_status": "repository custody after GitHub write recovery",
+  "category": "critical derivative promotion / endpoint exclusion",
+  "result": "lawful matched Carleman quadratic identity retaining actual drive variation",
+  "critical_membership_assumed": true,
+  "kinematic_after_matching": true,
+  "arithmetic_bound_proved": false,
+  "absolute_joint_products_proved": true,
+  "absolute_inverse_integrability_proved": false,
+  "rectangular_native_sign_proved": false,
+  "derivative_promotion_proved": false,
+  "F4": false,
+  "source_custody": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_JOINT_MATCHING_20261007.md",
+      "blob": "299cea4f1fe5b45b844c52a7912842f93d21dd9a"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md",
+      "blob": "432ffd64d6460c65cee106f0b46afdb50d1ec28a"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_CUTOFF_SOURCE_MOMENT_20261007.md",
+      "blob": "52f34cc5c348c7ad5b00058c1208599f531bf4c7"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_ABSOLUTE_COLLAR_20261007.md",
+      "local_sha256": "e2be5e76ceeb2bfa412cfbef35ccf3fa93647f15c57e18f7cd2179c8cbfc1c33",
+      "published": true,
+      "blob": "498a8ad4530bd2ed5c613746f4b1afc2780103a7",
+      "local_sha256_scope": "original pre-publication draft; published blob contains aperture recovery addendum"
+    }
+  ],
+  "external_scope_check": {
+    "url": "https://arxiv.org/html/2401.18033v2",
+    "theorem": "1.1",
+    "new_derivative_theorem_imported": false
+  },
+  "validation": "analytic absolute convergence and cutoff integration by parts; exact finite scalar algebra and documentation checks",
+  "frontier_preserved": "97/100",
+  "publication_parent": "5efd53af7e3318d05f39218a6ff4dd9963d1e6b8"
+}
