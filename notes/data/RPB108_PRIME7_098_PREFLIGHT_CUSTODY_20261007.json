@@ -1,0 +1,134 @@
+{
+  "aperture": "49/50",
+  "archive_file": "RPB108_PRIME7_WEIGHTED_POINTWISE_098_CERTIFICATE_20261007.json.gz",
+  "archive_gzip_sha256": "95db13e0571a5b531eaad785af6259402a358eda84d3d98f023749f490917d7d",
+  "archive_decoded_sha256": "6cbb053f11674d628ebb83e2425ebb1a5d30fba40f1cfb0368a8b57a759a09a4",
+  "files": {
+    "docs/TERMINOLOGY_RPB108_PRIME7_098_PREFLIGHT.md": {
+      "bytes": 870,
+      "sha256": "75049c471439ac743959029780706fe53b9ef221e66a4bb7d59a8f1c66cfc944"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME7_098_PREFLIGHT_20261007.md": {
+      "bytes": 3776,
+      "sha256": "7413eb6499e3174100dcb1eef863ddaaa9e9bed8aaad61597ccbb579c7e61bfb"
+    },
+    "notes/data/RPB108_PRIME7_098_REPEAT_VALIDATION_20261007.json": {
+      "bytes": 277,
+      "sha256": "02bed32d1347b53769def9d1eabf452984d763e771d6123b7879af6fa0a12268"
+    },
+    "notes/data/RPB108_PRIME7_96_PREFLIGHT_098_CERTIFICATE_20261007.json": {
+      "bytes": 89964,
+      "sha256": "bb4f1d38307bfc13811f845bcea0ab29a936a04ee28750057f40d50077c0e57f"
+    },
+    "notes/data/RPB108_PRIME7_96_PREFLIGHT_098_VALIDATION_20261007.json": {
+      "bytes": 711,
+      "sha256": "485d369383e724f2a683ed5e1eb0924e0ec6d9ee173f0e83d4385cbdf806b240"
+    },
+    "notes/data/RPB108_PRIME7_GEOMETRY_098_CERTIFICATE_20261007.json": {
+      "bytes": 10593,
+      "sha256": "e75afe6b42be005f98578a00ed7b9ea08ba795c14c16a847f00b263aeda829ee"
+    },
+    "notes/data/RPB108_PRIME7_GEOMETRY_098_VALIDATION_20261007.json": {
+      "bytes": 642,
+      "sha256": "f263e134045ae24d4b80fb3604dcf32749951e09801e4d3c55dd8d41aa01cb10"
+    },
+    "notes/data/RPB108_PRIME7_SOURCE_BUDGET_098_20261007.json": {
+      "bytes": 4860,
+      "sha256": "5fd62b6e3e976f80ce644ee4a87fab0abe1aa0e4712802e159a4ab59a3c765b8"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_POINTWISE_098_CERTIFICATE_20261007.json.gz.base64": {
+      "bytes": 640109,
+      "sha256": "994b678abd36b01f32f6bf70e06f3cd09450bcea18d8a2b266d5b4dfc6d92156"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_POINTWISE_098_VALIDATION_20261007.json": {
+      "bytes": 839,
+      "sha256": "e42d8afffe49da7be5fbf24a476694259e571558d26a8d0783887f67b9c15002"
+    },
+    "scripts/certify_native_prime7_96_preflight_098.py": {
+      "bytes": 3897,
+      "sha256": "e650ab331eefed2b6e2e9e7843cb7ed5b99aecb386a1567b36f57134c029e75a"
+    },
+    "scripts/certify_native_prime7_geometry_098.py": {
+      "bytes": 2763,
+      "sha256": "b2668c083bb07efa03ec75a6efa484b9f634fa68e20aa5c14143d713e6ba7aba"
+    },
+    "scripts/certify_native_prime7_source_budget_098.py": {
+      "bytes": 1642,
+      "sha256": "0b86c8bd10d6a2252ce094a7f93c4d91bb69eed2065c4f05a21388103a396835"
+    },
+    "scripts/certify_native_prime7_weighted_schur_098.py": {
+      "bytes": 4764,
+      "sha256": "c401c00acbefa9153d528a4512446aa93c653240f13c7b3d75c73d959784d1b7"
+    },
+    "scripts/restore_native_prime7_098_preflight_archive.py": {
+      "bytes": 711,
+      "sha256": "e4dd8c8c8b519fdfb9963bc7c516fe2aa5635d53ba51d2eeb5b4bdd2d4364550"
+    },
+    "scripts/validate_native_prime7_96_preflight_098.py": {
+      "bytes": 6437,
+      "sha256": "f7b7d8b2a6527a9c6cb520aee371ea94d1bc9594f51f02c9cccaca3642574f83"
+    },
+    "scripts/validate_native_prime7_geometry_098.py": {
+      "bytes": 3220,
+      "sha256": "e6e3c4e29164d920ae8655c4dd719fc0cc176b691a2f6c8078d973173bc9db69"
+    },
+    "scripts/validate_native_prime7_weighted_schur_098.py": {
+      "bytes": 5565,
+      "sha256": "0f8e85e9c7c63c04a86eafdefc8f39194c08ca0a0626ad9bf4ae5f2c71b12634"
+    }
+  },
+  "unchanged_dependencies": {
+    "scripts/certify_native_exact_kernel_integral.py": {
+      "bytes": 2017,
+      "sha256": "1216ef4ce06f8e82e3a4e0d4d44ade6ec0e859f7631de50868810f9733a5a086"
+    },
+    "scripts/certify_native_exact_logarithm.py": {
+      "bytes": 838,
+      "sha256": "f2de5ba1cab97732c3114f7575c811437ed822e6e3656c469d30b7ac640207be"
+    },
+    "scripts/certify_native_exact_polynomial.py": {
+      "bytes": 1450,
+      "sha256": "16f1d02c00d81cd1a6f5e1aadac231b52e77161702e6a9a97276bdbd6764347a"
+    },
+    "scripts/certify_native_iterated_damped_mass_depth6.py": {
+      "bytes": 2255,
+      "sha256": "79242334ce5c8245266e12c35a0e0cacbc172c4968acff1f15a4a197b915dc1f"
+    },
+    "scripts/certify_native_larger_aperture_complement.py": {
+      "bytes": 2624,
+      "sha256": "0966ccd59053b737b73b5df9091fa78af69bb4426fb54775c46a8ffac98f7780"
+    },
+    "scripts/certify_native_legendre_small_window.py": {
+      "bytes": 17970,
+      "sha256": "da36f10ce0185e9711bf7472146874d808e11425848f20d503548555259874b5"
+    },
+    "scripts/certify_native_prime7_96_preflight_0973.py": {
+      "bytes": 3811,
+      "sha256": "16771ff2ffff525b4e7dab601966d1577da12bd628ab1a63b86fd88a1306a353"
+    },
+    "scripts/certify_native_prime7_geometry_0973.py": {
+      "bytes": 2764,
+      "sha256": "247c331c1415665137e28ea5c724656d5b0b6533f9cb86f0ea82ee82ac62ce99"
+    },
+    "scripts/certify_native_prime7_weighted_schur_0973.py": {
+      "bytes": 4773,
+      "sha256": "55d54e8956ef8ff57673aca48c3caaf80281a289bfdaf08fb5f21ead26e250f9"
+    },
+    "scripts/validate_native_prime5_depth6_complement_097.py": {
+      "bytes": 5208,
+      "sha256": "592a2d1060780b0bee25e3e712bb1a95a67ade26a095e241cdceecbfedcfdf45"
+    },
+    "scripts/validate_native_prime7_96_preflight_0973.py": {
+      "bytes": 6273,
+      "sha256": "32f723b744747280c6be2feacc3dad3144459a7c51911bc2e2c653173eb8f649"
+    },
+    "scripts/validate_native_prime7_weighted_schur_0973.py": {
+      "bytes": 5574,
+      "sha256": "4b8676b44458802d3d648c891f3b46efddd36aca4d613b001d85a2c6469c23ca"
+    }
+  },
+  "whole_domain_frontier": "973/1000",
+  "whole_domain_positivity_at_target": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}

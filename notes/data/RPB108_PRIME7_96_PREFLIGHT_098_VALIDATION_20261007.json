@@ -1,0 +1,18 @@
+{
+  "certificate_sha256": "bb4f1d38307bfc13811f845bcea0ab29a936a04ee28750057f40d50077c0e57f",
+  "aperture": "49/50",
+  "retained_vectors": 96,
+  "independent_degree_mass_bounds_verified": 144,
+  "complete_infinite_tails_verified": 3,
+  "finer_machin_and_logarithm_enclosures_verified": true,
+  "pointwise_step_regions_verified": 4,
+  "complement_lower": "104/125",
+  "complement_unrounded_display": 0.8327174306316002,
+  "diagonal_width_thresholds_checked": true,
+  "independent_binomial_diagonal_budget_verified": true,
+  "invalid_positive_regions_rejected": 2,
+  "all_native_entry_widths_pending": true,
+  "whole_domain_positivity_at_098": false,
+  "whole_domain_frontier": "973/1000",
+  "f4_closed": false
+}

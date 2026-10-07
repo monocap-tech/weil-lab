@@ -1,0 +1,8 @@
+{
+  "complement_constructor_byte_identical": true,
+  "geometry_constructor_byte_identical": true,
+  "prime_constructor_byte_identical": true,
+  "analytic_source_budget_byte_identical": true,
+  "whole_domain_frontier": "973/1000",
+  "whole_domain_positivity_at_target": false
+}

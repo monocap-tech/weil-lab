@@ -1,0 +1,17 @@
+{
+  "certificate_sha256": "e75afe6b42be005f98578a00ed7b9ea08ba795c14c16a847f00b263aeda829ee",
+  "byte_identical_repeat": true,
+  "aperture": "49/50",
+  "independent_140_digit_logarithm_enclosures": true,
+  "actual_prime_power_membership_verified": true,
+  "source_panels_verified": 11,
+  "signed_translation_tests": 110,
+  "prime7_only_on_two_edge_panels": true,
+  "prime7_exchange_block_norm_verified": true,
+  "small_width_norm_control_rejected": true,
+  "nine_panel_reuse_control_rejected": true,
+  "whole_domain_frontier": "973/1000",
+  "whole_domain_positivity_at_target": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}
