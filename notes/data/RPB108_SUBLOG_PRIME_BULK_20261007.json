@@ -1,0 +1,27 @@
+{
+  "date":"2026-10-07",
+  "recovered_head":"a293e9c3fa7745af5001b6ff7e8511b49c45de4b",
+  "result":"On the actual weak logarithmic translation class the complete prime-series vertical bulk is O(1+log log T); the leading sharp/log coefficient on good heights is the gamma bulk",
+  "actual_bounded_return_found":false,
+  "global_graph_shortened":false,
+  "remaining_gate":"actual source-range full unshifted mixed-nullity implies nonpositive sharp/log liminf",
+  "lean_certified":false,
+  "internal_sources":[
+    {"path":"notes/REFLECTED_PACKET_BRIDGE_108_GOOD_HEIGHT_CONTOUR_20261007.md","blob_sha":"ce2169095d2849bea593e8a8d48a70fc74531a2c"},
+    {"path":"notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SHARP_LOG_LIMIT_20261007.md","blob_sha":"310fbfd874f2fb6a0cda70f38d50fb656c26029e"},
+    {"path":"notes/REFLECTED_PACKET_BRIDGE_108_NULL_ABEL_LOG_SLOPE_20261007.md","blob_sha":"1a63fe344931b95170dcb06b8b67f6818b968e18"},
+    {"path":"notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_HEIGHT_GRAPH_ERROR_20261007.md","blob_sha":"b968aa0a3c5eb5ba680ee0251692e24853dadd74"}
+  ],
+  "external_sources":[
+    {"author":"Kiran S. Kedlaya","title":"Notes on analytic number theory","url":"https://kskedlaya.org/ant/chap-von-mangoldt.html","location":"Chapter 9, equation (9.1.1)","custody":"author-hosted primary text inspected; Euler logarithmic-derivative expansion; absolute convergence checked at c=3/2"},
+    {"author":"NIST Digital Library of Mathematical Functions","url":"https://dlmf.nist.gov/5.11","location":"Equation 5.11.2","custody":"primary asymptotic inspected; fixed c/2 +/- it/2 rays remain away from the negative real axis"}
+  ],
+  "controls":{
+    "actual_positive_eigenmode":"same weak translation bound and sublog prime bulk; positive gamma logarithmic coefficient survives",
+    "artificial_compact_good_rows":"no actual Euler/xi contour identification",
+    "finite_actual_restoration":"bounded coefficient correction, prime series itself is complete",
+    "two_row_comparison_contact":"auxiliary source terms not identified with actual xi residues"
+  },
+  "failed_candidate":"bounded Euler-series oscillation on the right contour line cannot cancel a strictly positive leading logarithmic sharp-head term",
+  "qualification":"primes still determine null-profile existence through the exact native equation; no exclusion theorem follows merely from subleading prime bulk"
+}
