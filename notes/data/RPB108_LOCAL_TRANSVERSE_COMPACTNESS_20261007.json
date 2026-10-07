@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-07",
+  "recovered_head": "b7012455b4d31bf7b4f267950e8bfc63f4c1d778",
+  "category": "endpoint exclusion / actual negative operator scope",
+  "results": {
+    "unweighted_negative_compactness_iff": "unit-bin beta-squared mass / log(e+|k|) tends uniformly to zero",
+    "actual_good_row_operator_compact": true,
+    "exceptional_bin_count": "O(T(log log T)^3/(log T)^2)",
+    "full_actual_negative_compactness_proved": false,
+    "exceptional_rows_removed": false,
+    "critical_positive_moment_bound": false
+  },
+  "domain_metric": "supported canonical logarithmic Hilbert norm",
+  "F4": false,
+  "Lean_certified": false,
+  "aperture_marching": false,
+  "validation": {
+    "cluster_blocks": 32,
+    "local_cluster_mass_lower": "1/8",
+    "analytic_sampling_and_operator_series": true
+  },
+  "sources": [
+    "TRANSVERSE_DENSITY_SAMPLING_20261007:c9950fafef341ee66f62a5b1ab21013ebfd3a716",
+    "POSITIVE_SOURCE_HEIGHT_MOMENT_20261006:7997a0a3ccb0666d117f696dd208b743255b7ac5",
+    "SOURCE_HEIGHT_GRAPH_ERROR_20261007:b968aa0a3c5eb5ba680ee0251692e24853dadd74"
+  ]
+}
