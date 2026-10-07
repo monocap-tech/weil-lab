@@ -1,0 +1,48 @@
+{
+  "recovered_head": "bd7a46764b5da37cb5b174ddf83961d27ad4e459",
+  "publication_parent": "bd7a46764b5da37cb5b174ddf83961d27ad4e459",
+  "category": "endpoint exclusion",
+  "result": "finite liminf signed cutoff trace at any fixed source order 1<r<2 excludes actual contact",
+  "concrete_target_order": "3/2",
+  "cross_remainder_choice_s": "3/8",
+  "cross_integrability_margin": "1/4",
+  "arithmetic_bound_proved": false,
+  "critical_r1_promotion_proved": false,
+  "external_transverse_input": "3/8 (accepted pinned OpenAI theorem plus symmetry)",
+  "sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md",
+      "blob": "432ffd64d6460c65cee106f0b46afdb50d1ec28a"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_SOURCE_HEIGHT_MOMENT_20261006.md",
+      "blob": "7997a0a3ccb0666d117f696dd208b743255b7ac5"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_POSITIVE_SOURCE_MOMENTS_20261006.md",
+      "blob": "955ff7b4bd0d7f58221c300a962a803824232fd6"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SUBCRITICAL_DISTRIBUTIONAL_PROMOTION_20261007.md",
+      "blob": "665a473edee975b2d346d0511a292e4a64cb56e8"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX_20261007.md",
+      "blob": "c369d3760606d9e5b9ae0f4862156fd712e5be29"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_DIAGONAL_TAIL_CERTIFICATE_20261005.md",
+      "blob": "5e7301ff5cbd264a4b848523a2bd56bd53a87b39"
+    }
+  ],
+  "control": {
+    "script": "scripts/validate_signed_cutoff_source_moment.py",
+    "sha256": "28c952656333f59266469fcdd8f061ae46ec1c7326a0a5a8ad9da012a725d479",
+    "repeat": true,
+    "cases": 422,
+    "scope": "rational budget controls; not analytic theorem or actual source bound"
+  },
+  "lean_certified": false,
+  "frontier_preserved": "24/25",
+  "F4": false
+}
