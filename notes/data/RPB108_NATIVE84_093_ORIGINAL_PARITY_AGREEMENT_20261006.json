@@ -1,0 +1,10 @@
+{
+  "aperture": "93/100",
+  "original_400_digit_outputs_repeat_identically": true,
+  "original_400_digit_native_sha256": "34dfff05bc36fceb2476fb92acffbb2efcbb9bd80753d94f78ad042d3a3cbccc",
+  "parity_finalized_native_sha256": "1d05f8c18d57c0a296ce124efa543f88ae489bfa3643df1eede6fcc152bbc240",
+  "all_7056_physical_intervals_identical": true,
+  "finite_margin_identical": "1/2097152000000000000000000",
+  "all_original_84_shifted_pivots_positive": true,
+  "whole_domain_positivity": false
+}

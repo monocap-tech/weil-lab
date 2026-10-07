@@ -8,6 +8,10 @@ def certificate(primary,repeat,checkpoint,compact,compact_repeat):
     raw=Path(primary).read_bytes();assert raw==Path(repeat).read_bytes()
     r=json.loads(raw);s=json.loads(gzip.decompress(Path(checkpoint).read_bytes()))
     assert r['aperture']==s['bindings']['aperture']=='93/100'
+    assert r['complete_raw_checkpoint_sha256']==hashlib.sha256(Path(checkpoint).read_bytes()).hexdigest()
+    assert r['finalization_script_sha256']==hashlib.sha256((Path(__file__).parent/'finalize_native_prime5_matrix84_093.py').read_bytes()).hexdigest()
+    assert r['raw_constructor_bindings']==s['bindings']
+    assert r['finite_sign_grid_digits']==80 and r['pivot_order']=='even degrees, then odd degrees; exact parity decomposition'
     assert s['completed_rows']==84 and s['grid_digits']==400
     assert r['bernoulli_pairs']==s['bindings']['bernoulli_pairs']==240
     root=Path(__file__).resolve().parent

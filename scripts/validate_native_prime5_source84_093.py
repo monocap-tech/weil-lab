@@ -4,7 +4,10 @@ from pathlib import Path
 from fractions import Fraction as F
 
 def certificate(path,repeat):
-    raw=Path(path).read_bytes();assert raw==Path(repeat).read_bytes()
+    def read(p):
+        b=Path(p).read_bytes()
+        return __import__('gzip').decompress(b) if str(p).endswith('.gz') else b
+    raw=read(path);assert raw==read(repeat)
     r=json.loads(raw);assert r['aperture']=='93/100'
     assert r['prime_terms']==[2,3,4,5] and r['prime4_amplitude']=='log(2)/2'
     assert r['coefficient_encoding']=='integer numerators with common decimal denominator and row tail'

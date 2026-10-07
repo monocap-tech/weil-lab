@@ -1,0 +1,17 @@
+{
+  "source_sha256": "b81e9a4fa0e21a168ad9974da13aa67cffb9c0d72499fc37079f9097927486cb",
+  "source_git_blob_sha": "b8d0607eb4885fdcfb180e91aaec0335ba53cec5",
+  "aperture": "93/100",
+  "source_reproduced_byte_for_byte": true,
+  "physical_normalization_bounds_checked": 84,
+  "coefficient_panels_checked": 756,
+  "complete_source_map_error_aggregation_verified": true,
+  "source_map_error_upper_display": 1.513122707744907e-36,
+  "source_map_error_upper_below": "2/10^36",
+  "underreported_map_error_rejected": true,
+  "full_residual_gram_certified": false,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}
