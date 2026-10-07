@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "36258194fa49539ae6d73e2af2a83ae08e4eb5a7",
+  "publication_parent": "36258194fa49539ae6d73e2af2a83ae08e4eb5a7",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_SOURCE_HEIGHT_MOMENT_20261006.md": "7997a0a3ccb0666d117f696dd208b743255b7ac5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_EIGENMODE_EDGE_CONTROL_20261006.md": "7d21ef49cf5bd18308ff012f0e6638fddc2a64b7",
+    "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_MASS_CONTACT_20261006.md": "65b45b856fdb33014f9dee0468d0cf75ff413539",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_NULL_REGULARITY_20261005.md": "f5dd2cfe71a99cd41fcfd21b01a62c2b17ce89ff",
+    "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md": "432ffd64d6460c65cee106f0b46afdb50d1ec28a",
+    "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_CARRIER_EQUIVALENCE_20261004.md": "9124a5cadfb2f294d34df1475ad618d0843f1bc1",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SAMPLING_GRAPH_DENSITY_20261004.md": "d34171e33327913b6742553b4f869c5de98f0589"
+  },
+  "standing": "analytic actual fractional-source equivalence; not Lean certified",
+  "closure": "For 0<s<1 positive actual height moment of order 2s finite iff logarithmic Fourier H^s energy finite; current actual null bootstrap supplies every source order below one",
+  "critical_order_one": "equivalent to integrated genuine boundary flux; not proved finite",
+  "derivative_order_two": "full-kernel finiteness excludes contact; not proved",
+  "actual_control": "rough real positive native eigenmode has infinite actual positive source squared-height moment, despite actual arithmetic custody and subcritical moments",
+  "failed_implication": "subcritical source moments, full arithmetic kernels and ordinary localization imply order-two moment for all lowest eigenmodes",
+  "remaining_theorem": "independent actual zero-eigenvalue weighted-tail bound on whole K; critical order one alone still below H1",
+  "script": "scripts/validate_fractional_positive_source_moments.py",
+  "script_sha256": "22b41d3946f5bb324e2ced44f2127710d349b0ae1ab7d59279d752923b41a9e0",
+  "controls": {
+    "perturbation_cases": 25,
+    "integrable_error_cases": 3,
+    "fractional_moment_cases": 384,
+    "logarithmic_tail_ratio_cases": 384,
+    "repeat": true
+  },
+  "frontier": "24/25 whole-domain positivity certified; reused",
+  "critical_or_order_two_arithmetic_bound_proved": false,
+  "actual_prescribed_attachment_closed": false,
+  "endpoint_exclusion_closed": false,
+  "F4_closed": false
+}
