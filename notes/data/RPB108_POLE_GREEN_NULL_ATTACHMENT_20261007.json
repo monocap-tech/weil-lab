@@ -1,0 +1,470 @@
+{
+  "kind": "exact rational controls; analytic proof in companion note",
+  "assertions": 1424,
+  "chain_cases": [
+    {
+      "r": 1,
+      "generator_parity": 0,
+      "active_moment_rank": 1,
+      "dim_Z": 0,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 1,
+      "generator_parity": 1,
+      "active_moment_rank": 1,
+      "dim_Z": 0,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 2,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 0,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 2,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 0,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 3,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 1,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 3,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 1,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 4,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 2,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 4,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 2,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 5,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 3,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 5,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 3,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 6,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 4,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 6,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 4,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 7,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 5,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 7,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 5,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 8,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 6,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 8,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 6,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 9,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 7,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 9,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 7,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 10,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 8,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 10,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 8,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 11,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 9,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 11,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 9,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 12,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 10,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 12,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 10,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 13,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 11,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 13,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 11,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 14,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 12,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 14,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 12,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 15,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 13,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 15,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 13,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 16,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 14,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 16,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 14,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 17,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 15,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 17,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 15,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 18,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 16,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 18,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 16,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 19,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 17,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 19,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 17,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 20,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 18,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 20,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 18,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 21,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 19,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 21,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 19,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 22,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 20,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 22,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 20,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 23,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 21,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 23,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 21,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 24,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 22,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 24,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 22,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 25,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 23,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 25,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 23,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 26,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 24,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 26,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 24,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 27,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 25,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 27,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 25,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 28,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 26,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 28,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 26,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 29,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 27,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 29,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 27,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 30,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 28,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 30,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 28,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 31,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 29,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 31,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 29,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 32,
+      "generator_parity": 0,
+      "active_moment_rank": 2,
+      "dim_Z": 30,
+      "inactive_branch": "excluded by analytic inverse"
+    },
+    {
+      "r": 32,
+      "generator_parity": 1,
+      "active_moment_rank": 2,
+      "dim_Z": 30,
+      "inactive_branch": "excluded by analytic inverse"
+    }
+  ],
+  "source_margin": "7/64",
+  "source_inverse_bound": "64/7",
+  "analytic_gate_closed": "nonzero nonnegative actual contact is pole-active",
+  "global_signed_sharp_subsequence": "unproved",
+  "positive_lowest_eigenmode": "same inverse theorem with Q-mu; not excluded",
+  "lean_certified": false,
+  "recovered_head": "4a2952ae9a25e6c1bf2d972b03f15bec322678fd",
+  "input_blobs": {
+    "KERNEL_DERIVATIVE_CHAIN": "e124b8a31a00df61908ce71cedd4ab7f83a14c76",
+    "POLE_STRIPPED_CHAIN": "87a296ab96c1888b77c864136279d31b420d6e74",
+    "POLE_RESONANCE_COMPATIBILITY": "dd12a329fb0ecf518814adfcb2313029af803169",
+    "POLE_WEYL_INVISIBILITY": "50cb4bd709953cd799d88d11a57e5b87fc0f49f6",
+    "SOURCE_HEIGHT_GRAPH_ERROR": "b968aa0a3c5eb5ba680ee0251692e24853dadd74",
+    "EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX": "c369d3760606d9e5b9ae0f4862156fd712e5be29",
+    "ACTUAL_LOG_OPERATOR_ATTACHMENT": "5b9fedd77956f6ba3e2efc0a71be14f673596fd1"
+  }
+}
