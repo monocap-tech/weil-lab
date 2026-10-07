@@ -1,0 +1,33 @@
+{
+  "source_commit": "467d4722c441acb6aa6577676c5567d9352e5c41",
+  "publication_parent": "467d4722c441acb6aa6577676c5567d9352e5c41",
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_MASS_CONTACT_20261006.md": "65b45b856fdb33014f9dee0468d0cf75ff413539",
+    "notes/REFLECTED_PACKET_BRIDGE_108_QUADRATIC_TRANSLATION_FLUX_20261006.md": "92adb386854d2ff4a61aac1080f022ea5e024782",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GAUSSIAN_ACTION_MOMENT_20261006.md": "a4c6a4b42450d19fcc2f59e385223ea40bb035cb",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GAUSSIAN_EDGE_SPLIT_20261006.md": "1f6b273481675538319dd082e3fd3384e62758e5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_POWER10_POSITIVITY_094_20261007.md": "d1bfe5bb0c4560c83692c91fad93d987bf29d5f7"
+  },
+  "standing": "analytic actual native eigenmode existence/application; not Lean certified",
+  "control": "actual real non-H1 lowest physical eigenmode at c=47/50; mu=lambda_ph(c)>=3e-29; not computed",
+  "residual": "genuine native exterior residual; interior right side is nonzero mu h",
+  "conclusions": [
+    "signed exterior translation flux/t^2 tends to negative infinity",
+    "signed exterior Gaussian weighted partial sums tend to positive infinity"
+  ],
+  "missing_theorem": "zero-eigenvalue actual full-kernel lower flux subsequence or Gaussian moment bound",
+  "script": "scripts/validate_actual_eigenmode_edge_control.py",
+  "script_sha256": "dd0122d278e424e8c6c59f80fabdb84cd8f9d738eeb702d55bb2ae783f9e303d",
+  "controls": {
+    "flux_subtraction": 75,
+    "shifted_derivative": 65,
+    "gaussian_subtraction": 135,
+    "total": 275,
+    "repeat": true
+  },
+  "frontier": "47/50 preserved",
+  "F4_closed": false,
+  "actual_contact_excluded": false,
+  "retained_attachment_closed": false
+}
