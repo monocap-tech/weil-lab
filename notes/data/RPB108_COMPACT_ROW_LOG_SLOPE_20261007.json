@@ -1,0 +1,38 @@
+{
+  "actual_arithmetic_or_lean_certificate": false,
+  "all_occupied_bins_good_margin": "153/512 < 1",
+  "analytic_actual_result": "every fixed finite actual row deletion/restoration has zero logarithmically normalized height contribution",
+  "artificial_divisor_locations": true,
+  "finite_geometric_agreements": 36,
+  "independent_abel_block_brackets": 36,
+  "negative_artificial_log_slope_lower": "9/33554432",
+  "physical_fourier_lower_margins": 64,
+  "recovered_head": "77f7c144cd0385e10e19e0f1356296da2d353a5d",
+  "scope": "supported physical control on artificial symmetric sinh/cosh rows; not actual full-native nullity",
+  "signed_artificial_log_slope_lower": "63/131072",
+  "source_pins": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_NULL_ABEL_LOG_SLOPE_20261007.md",
+      "blob": "1a63fe344931b95170dcb06b8b67f6818b968e18"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_TRANSVERSE_DENSITY_SAMPLING_20261007.md",
+      "blob": "c9950fafef341ee66f62a5b1ab21013ebfd3a716"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOCAL_TRANSVERSE_COMPACTNESS_20261007.md",
+      "blob": "e3dfe9f4c356f7d5ed2364f0f7c8dc99ec39ef61"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_COMPACT_ROWS_CRITICAL_CONTROL_20261007.md",
+      "blob": "839662b70eddc5d4a57cb68d396e812dd90e91fc"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md",
+      "blob": "3354b89638b643d5b21c4c428f069f738ccf59f5"
+    }
+  ],
+  "squared_interference_budgets": 192,
+  "status": "PASS",
+  "whole_actual_contact_trace_exclusion": "UNPROVED"
+}
