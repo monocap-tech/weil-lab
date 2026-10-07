@@ -1,0 +1,45 @@
+{
+  "recovered_head": "41c6f32cd24b17fbc89c992d965988e047df21f8",
+  "category": "critical source moment / endpoint target audit",
+  "shifted_critical_promotion": "analytic, every fixed real physical eigenvalue",
+  "positive_actual_control": {
+    "aperture": "24/25",
+    "eigenvalue_lower": "3e-29",
+    "critical_positive_moment": "infinite",
+    "critical_signed_cutoff": "tends to positive infinity",
+    "computed_eigenvector": false
+  },
+  "minimal_contact_target": "finite liminf whole-kernel I_(epsilon,1)",
+  "actual_contact_bound_proved": false,
+  "endpoint_exclusion": false,
+  "F4": false,
+  "lean_certified": false,
+  "new_aperture_certificate": false,
+  "sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_RECIPROCAL_PROMOTION_20261007.md",
+      "blob": "9983be22ab58e926b5e15127f8feaf53d43329e0"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SUPERCRITICAL_SOURCE_CONTROL_20261007.md",
+      "blob": "1d1157c7257ada74d1a42c02245243b4d2edd364"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_CUTOFF_SOURCE_MOMENT_20261007.md",
+      "blob": "52f34cc5c348c7ad5b00058c1208599f531bf4c7"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_POSITIVE_SOURCE_MOMENTS_20261006.md",
+      "blob": "955ff7b4bd0d7f58221c300a962a803824232fd6"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LEADING_ROUGH_FLUX_20261006.md",
+      "blob": "9982daabb0e22a666c13ef83b74bc21e235c0ef8"
+    }
+  ],
+  "validation": {
+    "rational_remainder_check_repeated_byte_identically": true,
+    "actual_divergence_argument": "analytic consequence of exact shifted critical promotion and pinned rough positive native eigenmode",
+    "analytic_or_Lean_machine_certificate": false
+  }
+}
