@@ -1,0 +1,43 @@
+{
+  "recovered_head": "3d40b852e2e2a71cbf7600c65574c811f2570a2d",
+  "category": "endpoint exclusion / critical derivative promotion obstruction audit",
+  "dense_admissible_graph_threshold": "2a>log6",
+  "actual_singular_propagation_claimed": false,
+  "full_line_high_frequency_inversion": "valid; native support inversion not inferred",
+  "general_derivative_gate_closed": false,
+  "whole_kernel_critical_membership_closed": false,
+  "new_aperture_certificate": false,
+  "lean_certified": false,
+  "sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_LOG_CUSP_EXCLUSION_20261007.md",
+      "blob": "fb787de667a06527a4cfb08d4127afed7e20aeed"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_INTERIOR_GAIN_20261007.md",
+      "blob": "05f53463842cb5aafbb5116c7f3a4bf65207400e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_DERIVATIVE_PROMOTION_20261007.md",
+      "blob": "26627f85c34572a8197b32a1216382e8d02e07f5"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_MATCHED_96_097_WHOLE_DOMAIN_20261007.md",
+      "blob": "8604e8d6429c91b9ccea4a5c8a7e75dee4f078c6"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md",
+      "blob": "c2d087875d8dd85dfcdbd64893923ef51fcf1028"
+    },
+    {
+      "path": "scripts/certify_native_drive_cusp_geometry.py",
+      "blob": "0c86fb92fc627219767138a2fa1098b668dfb173"
+    }
+  ],
+  "validation": {
+    "finite_walk_check_repeated_byte_identically": true,
+    "steps": 1024,
+    "density_proof": "analytic circle rotation argument",
+    "regularity_or_Lean_certificate": false
+  }
+}
