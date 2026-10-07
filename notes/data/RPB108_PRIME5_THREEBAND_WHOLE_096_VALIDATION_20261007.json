@@ -1,0 +1,22 @@
+{
+  "published_physical_lower": "3/10^29",
+  "published_logarithmic_lower": "16/10^32",
+  "aperture": "24/25",
+  "fresh_garding_constant_23_verified": true,
+  "certificate_reproduced_byte_for_byte": true,
+  "certificate_sha256": "046a30f550259935ca27c458f05d8f916e00f77e598107f1b14fd889629be5d6",
+  "all_four_input_hashes_verified": true,
+  "all_84_corrected_pivots_rechecked_at_80_digits": true,
+  "actual_source_correction_recomputed": true,
+  "refined_complement_exactly_below_proved_unrounded_bound": true,
+  "negative_diagonal_control_rejected": true,
+  "excessive_conversion_control_rejected": true,
+  "full_domain_and_logarithmic_conversions_verified": true,
+  "physical_coercivity_display": 3.725290298461914e-29,
+  "logarithmic_coercivity_display": 1.6196914341138756e-31,
+  "whole_domain_positivity": true,
+  "global_endpoint_excluded": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}

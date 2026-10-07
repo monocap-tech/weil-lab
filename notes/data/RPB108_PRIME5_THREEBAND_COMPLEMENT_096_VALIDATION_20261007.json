@@ -1,0 +1,219 @@
+{
+  "aperture": "24/25",
+  "certificate_sha256": "773ab3dc298086f4eac7e7b9dc13c04d3ea123c941a622914b064f9ee504f8d6",
+  "byte_identical_repeat": true,
+  "all_three_complete_mass_audits": [
+    {
+      "preflight_sha256": "eee76e3506d919cd3097ce3a05ca19c7ad1c069f4599595e0d0e56f2a9f7e19f",
+      "preflight_reproduced_byte_for_byte": true,
+      "independent_polynomial_recurrence_checks": 21,
+      "quartic_specialization_checks": 3,
+      "aperture_checks": [
+        {
+          "aperture": "24/25",
+          "all_48_degree_bounds_verified": true,
+          "complete_infinite_tail_verified": true,
+          "all_positive_region_and_rate_checks_passed": true,
+          "complement_only_scope_verified": true
+        }
+      ],
+      "independent_bessel_series_controls": [
+        {
+          "degree": 84,
+          "argument": "75",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 84,
+          "argument": "80",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 131,
+          "argument": "75",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 131,
+          "argument": "80",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        }
+      ],
+      "invalid_iteration_domain_controls_rejected": 4,
+      "whole_domain_positivity_frontier": "19/20",
+      "new_aperture_whole_domain_positivity": false,
+      "global_endpoint_excluded": false,
+      "f4_entry_closed": false,
+      "full_transport_closed": false,
+      "lean_formalized": false
+    },
+    {
+      "preflight_sha256": "bcfaeb6fd440057fa58e7fac1ba3c89dbc1e97c88157ad851e1419a37fb19705",
+      "preflight_reproduced_byte_for_byte": true,
+      "independent_polynomial_recurrence_checks": 21,
+      "quartic_specialization_checks": 3,
+      "aperture_checks": [
+        {
+          "aperture": "24/25",
+          "all_48_degree_bounds_verified": true,
+          "complete_infinite_tail_verified": true,
+          "all_positive_region_and_rate_checks_passed": true,
+          "complement_only_scope_verified": true
+        }
+      ],
+      "independent_bessel_series_controls": [
+        {
+          "degree": 84,
+          "argument": "75",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 84,
+          "argument": "80",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 131,
+          "argument": "75",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 131,
+          "argument": "80",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        }
+      ],
+      "invalid_iteration_domain_controls_rejected": 4,
+      "whole_domain_positivity_frontier": "19/20",
+      "new_aperture_whole_domain_positivity": false,
+      "global_endpoint_excluded": false,
+      "f4_entry_closed": false,
+      "full_transport_closed": false,
+      "lean_formalized": false
+    },
+    {
+      "preflight_sha256": "81e80f7f4af7cdb15f93952d53f34681268dafba579cd16eed261e7b43f36ecd",
+      "preflight_reproduced_byte_for_byte": true,
+      "independent_polynomial_recurrence_checks": 21,
+      "quartic_specialization_checks": 3,
+      "aperture_checks": [
+        {
+          "aperture": "24/25",
+          "all_48_degree_bounds_verified": true,
+          "complete_infinite_tail_verified": true,
+          "all_positive_region_and_rate_checks_passed": true,
+          "complement_only_scope_verified": true
+        }
+      ],
+      "independent_bessel_series_controls": [
+        {
+          "degree": 84,
+          "argument": "75",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 84,
+          "argument": "80",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 131,
+          "argument": "75",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        },
+        {
+          "degree": 131,
+          "argument": "80",
+          "iteration_depth": 6,
+          "independent_series_damping_verified": true,
+          "excessive_exponent_rejected": true,
+          "differential_equation_coefficient_identities": 161
+        }
+      ],
+      "invalid_iteration_domain_controls_rejected": 4,
+      "whole_domain_positivity_frontier": "19/20",
+      "new_aperture_whole_domain_positivity": false,
+      "global_endpoint_excluded": false,
+      "f4_entry_closed": false,
+      "full_transport_closed": false,
+      "lean_formalized": false
+    }
+  ],
+  "independent_logarithmic_baseline_audit": {
+    "certificate_sha256": "846cc20fc54b2ce330bd8c63e4c320824512dc9aeccaf5686a6c3f62cbfc4153",
+    "byte_identical_repeat": true,
+    "aperture": "24/25",
+    "actual_prime_support_geometry_verified": true,
+    "chain_psd_pivots_checked": 8,
+    "pole_and_global_floor_verified": true,
+    "independent_complete_logarithmic_mass_formula_verified": true,
+    "high_frequency_symbol_comparison_coefficient": "9/10",
+    "logarithmic_lower": "9/100",
+    "whole_domain_positivity": false,
+    "f4_entry_closed": false,
+    "lean_formalized": false
+  },
+  "independent_weighted_prime_audit": {
+    "certificate_sha256": "fb6897a38884f488fc2e154ad21e9ab33328c12e246a7ec95d92647c57a0efa6",
+    "byte_identical_repeat": true,
+    "aperture": "24/25",
+    "coarse_weight_cells": 443,
+    "refined_cells_checked": 535,
+    "actual_translated_cut_events_checked": 518,
+    "every_source_support_and_target_event_covered": true,
+    "independent_linear_logarithm_enclosures": true,
+    "transitions_checked": 4280,
+    "all_exact_weighted_pointwise_inequalities_verified": true,
+    "weight_lower": "9851162117/500000000000",
+    "norm_upper": "882017/500000",
+    "omitted_essential_translated_cut_rejected": true,
+    "smaller_pointwise_majorant_for_same_weight_rejected": true,
+    "actual_operator_norm_lower_claimed": false,
+    "finite_boundary_null_set_scope": true,
+    "whole_domain_positivity": false,
+    "f4_entry_closed": false,
+    "lean_formalized": false
+  },
+  "exact_three_band_endpoint_sum_verified": true,
+  "pointwise_region_controls": 4,
+  "single_band_intermediates_not_used_as_positive_lower_claims": true,
+  "physical_lower": "433/500",
+  "physical_lower_display": 0.8681069319623311,
+  "logarithmic_lower": "9/100",
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}
