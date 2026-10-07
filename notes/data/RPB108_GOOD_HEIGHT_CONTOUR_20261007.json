@@ -1,0 +1,25 @@
+{
+  "date":"2026-10-07",
+  "recovered_head":"569005007b2bb267a44794ee60f33d15b6a9e11c",
+  "result":"For every finite canonical supported logarithmic-domain family, a simultaneous actual good-height sequence has outer horizontal first-height contour integrals tending to zero; sharp head minus vertical bulk converges to a constant",
+  "actual_bounded_return_found":false,
+  "global_graph_shortened":false,
+  "candidate_contour_substep_closed":"horizontal edges and transverse correction",
+  "remaining_gate":"actual unshifted full mixed-null source-range membership implies nonpositive sharp/log liminf",
+  "lean_certified":false,
+  "internal_sources":[
+    {"path":"notes/REFLECTED_PACKET_BRIDGE_108_SHARP_ARITHMETIC_FRAMEWORK_AUDIT_20261007.md","blob_sha":"a2607dee10e2aa834456ea363ea56ec4e9b5d76f"},
+    {"path":"notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SHARP_LOG_LIMIT_20261007.md","blob_sha":"310fbfd874f2fb6a0cda70f38d50fb656c26029e"},
+    {"path":"notes/REFLECTED_PACKET_BRIDGE_108_NULL_ABEL_LOG_SLOPE_20261007.md","blob_sha":"1a63fe344931b95170dcb06b8b67f6818b968e18"},
+    {"path":"notes/REFLECTED_PACKET_BRIDGE_108_COMPACT_ROW_LOG_SLOPE_20261007.md","blob_sha":"28fc6855859f45391e41dc96540b48ab216bd9d2"},
+    {"path":"notes/REFLECTED_PACKET_BRIDGE_108_TWO_ROW_CHAIN_CONTACT_20261007.md","blob_sha":"4a5e20cdfd025042165ad24146669a82b81602a4"},
+    {"path":"notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_HEIGHT_GRAPH_ERROR_20261007.md","blob_sha":"b968aa0a3c5eb5ba680ee0251692e24853dadd74"}
+  ],
+  "external_source":{"author":"Kiran S. Kedlaya","title":"Notes on analytic number theory","url":"https://kskedlaya.org/ant/chap-von-mangoldt.html","locations":"Chapter 9, Lemmas 9.4 and 9.6","custody":"author-hosted primary text inspected; unconditional local count and local zeta logarithmic-derivative expansion; own proof upgrades good points to positive-measure set and simultaneous cap selection"},
+  "controls":{
+    "actual_positive_eigenmode":"same actual cap theorem but positive vertical/log bulk; mu h residual retained",
+    "artificial_compact_good_rows":"no actual xi residue identity",
+    "finite_actual_restoration":"bounded normalized-negligible correction",
+    "two_row_comparison_contact":"auxiliary terms kept outside actual xi residues"
+  }
+}
