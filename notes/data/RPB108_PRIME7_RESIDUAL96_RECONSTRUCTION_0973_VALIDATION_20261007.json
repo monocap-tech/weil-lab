@@ -1,0 +1,16 @@
+{
+  "aperture": "973/1000",
+  "gram_sha256": "0f83c73059a45bdf62552b11868ecde09a91bffb74985c6958e3296a2131374c",
+  "checkpoint_sha256": "460b3891c607b22a0657a651f1c093cd256ca045d16390a12406018330d8e3f5",
+  "independent_closed_binomial_legendre_coefficients": true,
+  "independent_endpoint_log_squared_hankel_moments": true,
+  "endpoint_pi_alternating_terms": 320,
+  "interval_grid_digits": 400,
+  "residual_entries_reconstructed": 9216,
+  "all_finer_reconstructed_intervals_inside_saved_enclosures": true,
+  "all_endpoint_smooth_mixed_projection_terms_retained": true,
+  "displaced_residual_controls_rejected": 9216,
+  "maximum_interval_gap": "0",
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false
+}
