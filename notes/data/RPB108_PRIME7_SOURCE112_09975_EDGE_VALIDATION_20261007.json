@@ -1,0 +1,15 @@
+{
+  "source_sha256": "604475377b56016c9cc650947b5093712fe999e946245e28c895a8d923079e0c",
+  "aperture": "399/400",
+  "independent_500_digit_logarithm_and_sqrt_enclosures": true,
+  "actual_support_events_and_all_11_panels_verified": true,
+  "signed_support_tests": 110,
+  "independent_prime7_edge_profiles_checked": 224,
+  "coefficient_jump_checks": 12656,
+  "analytic_and_quantization_radii_retained": true,
+  "omitted_prime7_profile_controls_rejected": 224,
+  "whole_domain_positivity": false,
+  "complete_gram_pending": true,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}

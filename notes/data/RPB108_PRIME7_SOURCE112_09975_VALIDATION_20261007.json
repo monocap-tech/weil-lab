@@ -1,0 +1,20 @@
+{
+  "source_sha256": "604475377b56016c9cc650947b5093712fe999e946245e28c895a8d923079e0c",
+  "source_git_blob_sha": "d3729b58787c9033eda474a88bbe5335f8d30045",
+  "aperture": "399/400",
+  "fresh_source_aggregation_audited": true,
+  "physical_normalization_bounds_checked": 112,
+  "coefficient_panels_checked": 1232,
+  "complete_source_map_error_aggregation_verified": true,
+  "analytic_truncation_recomputed_for_all_112_rows": true,
+  "alternating_114_pair_kernel_budget_verified": true,
+  "obsolete_110_pair_budget_exceeds_1e_minus35": true,
+  "source_map_error_upper_display": 3.082803488138023e-36,
+  "source_map_error_upper_below": "309/10^38",
+  "underreported_map_error_rejected": true,
+  "full_residual_gram_certified": false,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "full_transport_closed": false,
+  "lean_formalized": false
+}
