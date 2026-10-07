@@ -1,0 +1,26 @@
+{
+  "source_commit": "874ebbe767021d5e26f1d32ce034bec70d6115e8",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_NULL_REGULARITY_20261005.md": "f5dd2cfe71a99cd41fcfd21b01a62c2b17ce89ff",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COLLAR_GAIN_20261006.md": "8766475f25345c496e71ee8d099be18aae8dcd61",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GAIN_SPECTRAL_SPLIT_20261006.md": "e89f91e37e3e36f8342f04d954dc39e3ec0bfa8e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COMPENSATOR_RESIDUAL_20261006.md": "c36a4691ba4730a4fc7803efde378e4ed671f075",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_LOEWNER_20261006.md": "b40e8324d7fdcd83c609782aede65167b26a2b19"
+  },
+  "script_sha256": "6da77d1f9d834322ba1c473415490305e1bb121ec4a2118e0c672179afb0acce",
+  "repeat_identical": true,
+  "controls": {
+    "log_base": 4,
+    "rate_cases": 92,
+    "scope": "first-derivative/rate controls only; no actual arithmetic endpoint bound",
+    "status": "rational_controls_pass"
+  },
+  "new_actual_gain_result": "gain o(s^(1-epsilon)/log(1/s)) for every fixed epsilon>0, by recovered actual fractional collar bounds",
+  "obstruction": "continuity, finite Loewner variation and even C1 response with zero first derivative do not imply a finite quadratic trace liminf",
+  "unproved": "actual sequencewise quadratic gain or full-residual collar bound; right Lipschitz compensator is sufficient but not established",
+  "F4": "open",
+  "FULL_TRANSPORT_CLOSED": false,
+  "lean_certified": false,
+  "publication_parent": "d8d086c7882ea80026ecccf6d86eaff14eb78442",
+  "aperture_frontier": "93/100 certified by concurrent aperture lane"
+}
