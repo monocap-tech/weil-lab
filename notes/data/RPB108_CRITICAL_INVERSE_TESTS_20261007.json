@@ -1,0 +1,47 @@
+{
+  "recovered_head": "f0c609147d67201476eb1cc82c74e3c97585e336",
+  "publication_parent": "f0c609147d67201476eb1cc82c74e3c97585e336",
+  "category": "critical derivative promotion / endpoint exclusion",
+  "result": "critical inverse-test regularity implies exact supported Zcrit null promotion",
+  "premise_proved": false,
+  "critical_promotion_unconditional": false,
+  "critical_source_trace_proved": false,
+  "source_custody": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CRITICAL_DERIVATIVE_PROMOTION.md",
+      "blob": "8db486559673d4f3b94448800e9d08fe41ea3633"
+    },
+    {
+      "path": "docs/TERMINOLOGY_RPB108_SUBCRITICAL_DISTRIBUTIONAL_PROMOTION.md",
+      "blob": "9774bce09e97c8b627371591cb971572f1a64aec"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_DERIVATIVE_PROMOTION_20261007.md",
+      "blob": "26627f85c34572a8197b32a1216382e8d02e07f5"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SUBCRITICAL_DISTRIBUTIONAL_PROMOTION_20261007.md",
+      "blob": "665a473edee975b2d346d0511a292e4a64cb56e8"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md",
+      "blob": "c2d087875d8dd85dfcdbd64893923ef51fcf1028"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_NULL_REGULARITY_20261005.md",
+      "blob": "f5dd2cfe71a99cd41fcfd21b01a62c2b17ce89ff"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX_20261007.md",
+      "blob": "c369d3760606d9e5b9ae0f4862156fd712e5be29"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_TARGET_GLOBAL_STRENGTH_20261007.md",
+      "blob": "05366bb0939a5bec0962f1e53b0a81b623ecfc4e"
+    }
+  ],
+  "validation": "analytic conditional proof; no numerical or Lean certificate",
+  "frontier_preserved": "24/25",
+  "newer_aperture_obstruction_preserved": "97/100",
+  "F4": false
+}
