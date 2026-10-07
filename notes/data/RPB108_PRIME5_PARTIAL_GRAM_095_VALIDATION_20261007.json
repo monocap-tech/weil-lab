@@ -1,0 +1,24 @@
+{
+  "aperture": "19/20",
+  "completed_panels": 2,
+  "required_panels": 9,
+  "checkpoint_sha256": "32984d2119b964dc5314626526d3e85d6877c01a920b83cc68feade19c1d8f0b",
+  "bindings": {
+    "source": "bf4cb64eb0328add621d22a85f76c9d32bcf852d44a2d3b351ed238f9584b76e",
+    "native": "ff15a6c33d09e1439b51a53fcec686f51090fb1aba59d59dbbd49f29cff0410f",
+    "aperture": "19/20",
+    "log_series_terms": 500,
+    "constructor": "9acd567947741aa93f1f565a9dca1383021ebfa86e8b36e0d3b8a8495e824c96",
+    "geometry": "d30b267b87750752cbc84630623336afc3a55bcdcc53051bba093e8d7e6f4d2c",
+    "hankel": "c09c1f425b0b3db868714238d1ecf10cbdd331529ca8d124c75d3a345a9bde1c",
+    "checkpoint_codec": "7e557f325217cc3344ea65791898b901ea389b4a8f7278889ee35873269173e0"
+  },
+  "decoded_matrix_entries": 21168,
+  "mismatched_source_control_rejected": true,
+  "complete_residual_gram_certified": false,
+  "corrected_schur_sign_certified": false,
+  "whole_domain_positivity": false,
+  "whole_domain_positivity_frontier": "47/50",
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}
