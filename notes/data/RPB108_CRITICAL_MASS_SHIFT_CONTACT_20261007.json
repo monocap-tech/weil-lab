@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-07",
+  "recovered_head": "ecf53f64e894cb39d1aa0fa635b863beaebfcfd7",
+  "category": "endpoint exclusion / source-custody obstruction",
+  "comparison": {
+    "c": "24/25",
+    "mu": "lambda_ph(c)>=3e-29",
+    "exact_aperture_first_contact": true,
+    "actual_prime_pole_coefficients": true,
+    "actual_zeta_zero_kernel": false,
+    "added_negative_carrier": "sqrt(mu) times Fourier physical L2"
+  },
+  "results": {
+    "comparison_critical_signed_trace": "positive infinity",
+    "comparison_critical_positive_trace": "positive infinity",
+    "bounded_global_L2_equivariant_recoding": "zero map only"
+  },
+  "actual_critical_bound": false,
+  "F4": false,
+  "Lean_certified": false,
+  "aperture_marching": false,
+  "validation": "analytic audit; source pins in accompanying note",
+  "sources": [
+    "CRITICAL_EIGENMODE_TARGET_20261007:3354b89638b643d5b21c4c428f069f738ccf59f5",
+    "NATIVE_MASS_CONTACT_20261006:65b45b856fdb33014f9dee0468d0cf75ff413539",
+    "LEADING_ROUGH_FLUX_20261006:9982daabb0e22a666c13ef83b74bc21e235c0ef8"
+  ]
+}
