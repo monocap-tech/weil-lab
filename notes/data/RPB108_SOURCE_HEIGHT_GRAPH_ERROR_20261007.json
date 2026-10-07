@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-07",
+  "recovered_head": "f396010281602b9e11c15dad1a9516393b071a3c",
+  "category": "endpoint exclusion / source-test obstruction",
+  "results": {
+    "nonzero_compact_joint_source_packet_has_infinite_support": true,
+    "sharp_height_trace_equals_signed_off_graph_error": true,
+    "neutral_signed_tail_layer_cake_identity": true,
+    "Abel_defect_equals_signed_tail_Laplace_transform": true
+  },
+  "scope": {
+    "negative_finite_selection_invalidated": false,
+    "historical_attachment_reopened": false,
+    "physical_full_source_finite_cutoff_realizable": false,
+    "new_critical_arithmetic_bound": false,
+    "F4": false,
+    "Lean_certified": false
+  },
+  "validation": {
+    "analytic": true,
+    "rational_control": "both projection error signs and six atom cutoffs passed"
+  },
+  "sources": [
+    "ACTUAL_KERNEL_SOURCE_COMPRESSION_20261006:32fd6b8d4eecdc0c0d52284cb7b974ad1d89595a",
+    "FINITE_SOURCE_REGULARITY_20261006:03b6f5a9d6cb9caa6044d3fd247156606703e91b",
+    "POSITIVE_SOURCE_HEIGHT_MOMENT_20261006:7997a0a3ccb0666d117f696dd208b743255b7ac5",
+    "ABEL_SHARP_HEIGHT_20261007:a51b2becce5c0ffaa394f4b7d29f6aa136473687"
+  ]
+}
