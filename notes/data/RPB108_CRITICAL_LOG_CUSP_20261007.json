@@ -1,0 +1,62 @@
+{
+  "recovered_head": "50c9f97e17ecb9f90d6c348d2f9778afe165f054",
+  "publication_parent": "50c9f97e17ecb9f90d6c348d2f9778afe165f054",
+  "category": "critical derivative promotion / endpoint exclusion",
+  "result": "actual native-drive inverse-log control in Xcrit and r*w^3 but in no H^s for s>1/2",
+  "actual_drive": true,
+  "actual_source_coordinates": true,
+  "both_endpoint_matches": true,
+  "actual_positive_energy_control": true,
+  "positive_eigenvector_claimed": false,
+  "actual_null_claimed": false,
+  "critical_moment_finite_for_control": true,
+  "global_half_order_log3_finite_for_control": true,
+  "supercritical_Sobolev_finite_for_control": false,
+  "interior_defect": "(7/6)log^(-3)(1/v)+O(log^(-4)(1/v))",
+  "critical_derivative_gate_proved": false,
+  "critical_derivative_gate_disproved": false,
+  "whole_kernel_critical_moment_proved": false,
+  "source_custody": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_DRIVE_CUSP_20261007.md",
+      "blob": "b0fc27ece02f8f5cbdce6d86eda4c28d60d12c81"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_INTERIOR_GAIN_20261007.md",
+      "blob": "05f53463842cb5aafbb5116c7f3a4bf65207400e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_POSITIVE_SOURCE_MOMENTS_20261006.md",
+      "blob": "955ff7b4bd0d7f58221c300a962a803824232fd6"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_MATCHED_96_097_WHOLE_DOMAIN_20261007.md",
+      "blob": "8604e8d6429c91b9ccea4a5c8a7e75dee4f078c6"
+    }
+  ],
+  "validation": {
+    "actual_null_claimed": false,
+    "aperture_reused": "97/100",
+    "borderline_q1_control_rejected": true,
+    "carleman_tail_coefficient": "1/3",
+    "cusp_exponent_checks": {
+      "3": {
+        "critical_log_integral_exponent": -5,
+        "log3_half_order_integral_exponent": -3
+      },
+      "4": {
+        "critical_log_integral_exponent": -7,
+        "log3_half_order_integral_exponent": -5
+      }
+    },
+    "exterior_flux_log_exponent": -7,
+    "interior_defect_coefficient": "7/6",
+    "new_aperture_certificate": false,
+    "scope": "exact exponent/coefficient and reused geometry checks; no analytic or Lean certification",
+    "supercritical_Sobolev_membership_claimed": false,
+    "support_interval_checks": 31
+  },
+  "frontier_preserved": "97/100",
+  "concurrent_preflight_preserved": "973/1000",
+  "F4": false
+}
