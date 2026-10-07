@@ -1,0 +1,30 @@
+{
+  "recovered_head": "a03073b422d8975a415565175e4b7b225c0e6925",
+  "publication_parent": "a03073b422d8975a415565175e4b7b225c0e6925",
+  "category": "endpoint exclusion",
+  "actual_control_aperture": "24/25",
+  "actual_eigenvalue_lower_bound": "3e-29",
+  "positive_eigenvalue": true,
+  "result": "actual rough positive native eigenmode has infinite actual positive source moments for every r>1 and signed cutoff divergence for 1<r<2",
+  "shifted_negative_promotion": "H^-sigma exact eigen-solutions promote to K^mu for sigma<1/2",
+  "external_transverse_bound": "3/8 accepted pinned input",
+  "source_carrier": "original actual complete divisor observations; no mass observation added",
+  "source_blobs": [
+    "119a2a3198ea0df81486e9f0ba98795f72685c98",
+    "65b45b856fdb33014f9dee0468d0cf75ff413539",
+    "665a473edee975b2d346d0511a292e4a64cb56e8",
+    "52f34cc5c348c7ad5b00058c1208599f531bf4c7",
+    "9982daabb0e22a666c13ef83b74bc21e235c0ef8"
+  ],
+  "regression_scripts": [
+    "scripts/validate_signed_cutoff_source_moment.py",
+    "scripts/validate_external_seven_eighths_critical_flux.py"
+  ],
+  "regression_pass": true,
+  "numerical_eigenmode_computed": false,
+  "critical_order_one_decided": false,
+  "actual_zero_arithmetic_estimate_proved": false,
+  "lean_certified": false,
+  "frontier_preserved": "24/25",
+  "F4": false
+}
