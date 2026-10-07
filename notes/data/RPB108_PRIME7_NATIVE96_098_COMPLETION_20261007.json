@@ -1,8 +1,8 @@
 {
   "aperture": "49/50",
-  "initial_completed_rows": 0,
+  "initial_completed_rows": 96,
   "actual_completed_rows": 96,
-  "complete_checkpoint_sha256": "9806398d962339a5fd4189d0646241d7e831589d32d66c6f6d02ebb087319298",
+  "complete_checkpoint_sha256": "91b27eed2839ad9d8fa0e471e19b1eff7cef80fd995327d6c3d2d74ce704de39",
   "finite_sign_certified": false,
   "whole_domain_positivity": false,
   "f4_entry_closed": false

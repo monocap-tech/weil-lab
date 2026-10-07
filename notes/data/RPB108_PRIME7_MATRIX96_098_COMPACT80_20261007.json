@@ -117,7 +117,7 @@
   "interval_grid_digits": 80,
   "finite_sign_grid_digits": 160,
   "log_series_terms": 220,
-  "complete_raw_checkpoint_sha256": "9806398d962339a5fd4189d0646241d7e831589d32d66c6f6d02ebb087319298",
+  "complete_raw_checkpoint_sha256": "91b27eed2839ad9d8fa0e471e19b1eff7cef80fd995327d6c3d2d74ce704de39",
   "finalization_script_sha256": "35387275921a9dc0030a206061eb469a7820cf6b4039f2ed15240c16d710987a",
   "raw_constructor_bindings": {
     "aperture": "49/50",
@@ -128,12 +128,12 @@
     "grid_digits": 400,
     "log_series_terms": 220,
     "scripts": {
-      "certify_native_exact_kernel_integral.py": "1216ef4ce06f8e82e3a4e0d4d44ade6ec0e859f7631de50868810f9733a5a086",
-      "certify_native_exact_logarithm.py": "f2de5ba1cab97732c3114f7575c811437ed822e6e3656c469d30b7ac640207be",
-      "certify_native_exact_polynomial.py": "16f1d02c00d81cd1a6f5e1aadac231b52e77161702e6a9a97276bdbd6764347a",
+      "certify_native_exact_kernel_integral.py": "d26746a5864c56f8d73df201a23321ac93faa4292d68c64c967abf25922e4332",
+      "certify_native_exact_logarithm.py": "a2d2c6c844c8de24ab6a816b3a02d54e998c75bcba4db0e52ccec55f7fbc9093",
+      "certify_native_exact_polynomial.py": "9ae0e506ad4e7516afcd3dcb3942ec482557ec597585cedf907b42404d26f02a",
       "certify_native_legendre96_098.py": "089f663d6ec87cb63594d4d2e28a323fc80ad94776c651576669a69d8ed590e5",
-      "certify_native_legendre_small_window.py": "da36f10ce0185e9711bf7472146874d808e11425848f20d503548555259874b5",
-      "certify_native_matrix96_checkpoint.py": "ee7cde75d6f7c5ea5f6bb3cb07bcc56f4b03b7e7e0cfe40e805af261b128f97a",
+      "certify_native_legendre_small_window.py": "5ea3f0f3e556e66b1912fe1c49d78a2dff13107f602e6ae82c7bcb95d571fa15",
+      "certify_native_matrix96_checkpoint.py": "753083e19526153c2a999082800087a5d31b509ba466d747fcb908124b7ba8ac",
       "certify_native_prime7_matrix96_098.py": "6eb1cdd042fa4a6c3083ec53575c3876d3b697e131d1304a70cb8fcf484e8657"
     }
   },
@@ -143,8 +143,8 @@
   "f4_entry_closed": false,
   "full_transport_closed": false,
   "lean_formalized": false,
-  "original_matrix_sha256": "8be5e9dadea853f3887825fc2bce6afebef612df2deed81df4cb75e78ac3f3e4",
-  "original_matrix_git_blob_sha": "7766439e53d05a851392287858625930c73171b3",
+  "original_matrix_sha256": "85f040cbe291eb2f11fe38b7e2ea2bd78f47e961e60e23f281f44365a5db74cc",
+  "original_matrix_git_blob_sha": "b0eb44fe3c5f15cd1f5b706518f5d151c13de85d",
   "original_interval_grid_digits": 400,
   "matrix_encoding": "row-major lower triangle integer endpoints on grid 10^-80",
   "lower_triangle_row_major": [

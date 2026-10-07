@@ -79,56 +79,58 @@
   },
   "unchanged_dependencies": {
     "scripts/certify_native_exact_kernel_integral.py": {
-      "bytes": 2017,
-      "sha256": "1216ef4ce06f8e82e3a4e0d4d44ade6ec0e859f7631de50868810f9733a5a086"
+      "bytes": 2016,
+      "sha256": "d26746a5864c56f8d73df201a23321ac93faa4292d68c64c967abf25922e4332"
     },
     "scripts/certify_native_exact_logarithm.py": {
-      "bytes": 838,
-      "sha256": "f2de5ba1cab97732c3114f7575c811437ed822e6e3656c469d30b7ac640207be"
+      "bytes": 837,
+      "sha256": "a2d2c6c844c8de24ab6a816b3a02d54e998c75bcba4db0e52ccec55f7fbc9093"
     },
     "scripts/certify_native_exact_polynomial.py": {
-      "bytes": 1450,
-      "sha256": "16f1d02c00d81cd1a6f5e1aadac231b52e77161702e6a9a97276bdbd6764347a"
+      "bytes": 1449,
+      "sha256": "9ae0e506ad4e7516afcd3dcb3942ec482557ec597585cedf907b42404d26f02a"
     },
     "scripts/certify_native_iterated_damped_mass_depth6.py": {
-      "bytes": 2255,
-      "sha256": "79242334ce5c8245266e12c35a0e0cacbc172c4968acff1f15a4a197b915dc1f"
+      "bytes": 2254,
+      "sha256": "18134a51e19f2e47b6fbdf9b7aa8b96321a141eb31fde71c74eaa1724c49a458"
     },
     "scripts/certify_native_larger_aperture_complement.py": {
-      "bytes": 2624,
-      "sha256": "0966ccd59053b737b73b5df9091fa78af69bb4426fb54775c46a8ffac98f7780"
+      "bytes": 2623,
+      "sha256": "b825422bbdead10ea3e776e79d283428a324d50ace08308e80071a5c41884868"
     },
     "scripts/certify_native_legendre_small_window.py": {
-      "bytes": 17970,
-      "sha256": "da36f10ce0185e9711bf7472146874d808e11425848f20d503548555259874b5"
+      "bytes": 17969,
+      "sha256": "5ea3f0f3e556e66b1912fe1c49d78a2dff13107f602e6ae82c7bcb95d571fa15"
     },
     "scripts/certify_native_prime7_96_preflight_0973.py": {
-      "bytes": 3811,
-      "sha256": "16771ff2ffff525b4e7dab601966d1577da12bd628ab1a63b86fd88a1306a353"
+      "bytes": 3810,
+      "sha256": "3636bf4f4c685f11b6d7d0a907930366c939df93b5e9f59ebecc52643d775126"
     },
     "scripts/certify_native_prime7_geometry_0973.py": {
-      "bytes": 2764,
-      "sha256": "247c331c1415665137e28ea5c724656d5b0b6533f9cb86f0ea82ee82ac62ce99"
+      "bytes": 2763,
+      "sha256": "b6ed9472237a0672fa02b9394350f53a93f842475d2072b5352426f59d9061af"
     },
     "scripts/certify_native_prime7_weighted_schur_0973.py": {
-      "bytes": 4773,
-      "sha256": "55d54e8956ef8ff57673aca48c3caaf80281a289bfdaf08fb5f21ead26e250f9"
+      "bytes": 4772,
+      "sha256": "f3ec275fab5e50a22b316877ff442b0fed58e27c83bcbd5e67502426ab90300a"
     },
     "scripts/validate_native_prime5_depth6_complement_097.py": {
-      "bytes": 5208,
-      "sha256": "592a2d1060780b0bee25e3e712bb1a95a67ade26a095e241cdceecbfedcfdf45"
+      "bytes": 5207,
+      "sha256": "e8c884a14cc6a8c2f0f0d74cc5f2d2522a08646ea67aacb04930e8ea66ced1a7"
     },
     "scripts/validate_native_prime7_96_preflight_0973.py": {
-      "bytes": 6273,
-      "sha256": "32f723b744747280c6be2feacc3dad3144459a7c51911bc2e2c653173eb8f649"
+      "bytes": 6272,
+      "sha256": "e27e7f36d5c0124f907f3f5ab0df664b6593e7184f0882e4103e4aa1d31a879d"
     },
     "scripts/validate_native_prime7_weighted_schur_0973.py": {
-      "bytes": 5574,
-      "sha256": "4b8676b44458802d3d648c891f3b46efddd36aca4d613b001d85a2c6469c23ca"
+      "bytes": 5573,
+      "sha256": "35f8a23400af69fa1b0e8f55c254fa2bb5460bff4b80e0ba85e9e6682f0c9df5"
     }
   },
   "whole_domain_frontier": "973/1000",
   "whole_domain_positivity_at_target": false,
   "f4_entry_closed": false,
-  "lean_formalized": false
+  "lean_formalized": false,
+  "dependency_byte_normalization_audit": "RPB108_PRIME7_098_DEPENDENCY_BYTE_NORMALIZATION_20261007.json",
+  "arithmetic_outputs_unchanged": true
 }
