@@ -1,0 +1,15 @@
+{
+  "aperture": "49/50",
+  "witness_sha256": "def3086dcbeca9500b1b46415008912bd6c28d2c755307cb8fee0d5937304b6b",
+  "triangular_terms_independently_checked": 4656,
+  "rational_quadratic_enclosures_match": true,
+  "source_error_perturbation_included": true,
+  "actual_schur_upper_display": -6.486668327610122e-29,
+  "necessary_complement_lower_display": 0.8552423921751768,
+  "unrounded_complement_insufficient": true,
+  "positive_shift_control_rejected": true,
+  "actual_negative_weil_form_claimed": false,
+  "whole_domain_positivity_at_098": false,
+  "whole_domain_frontier": "973/1000",
+  "f4_entry_closed": false
+}
