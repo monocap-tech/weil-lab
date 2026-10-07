@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "d898db2aabc6e3dc57450a72e7dff72ba57f94ae",
+  "publication_parent": "d898db2aabc6e3dc57450a72e7dff72ba57f94ae",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_AVERAGED_NATIVE_LOCALIZATION_20261006.md": "75487699732f0949f8cf03ea78ee0199fca66c9c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LITERAL_FORMULA_20261004.md": "3793f19aa15894854678581207e649501a54b847",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SAMPLING_GRAPH_DENSITY_20261004.md": "d34171e33327913b6742553b4f869c5de98f0589",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_DIVISOR_SUMMABILITY_20261004.md": "bf4a46d5bcc67549f6b223efcfadd98ebc59ff2c"
+  },
+  "primary_external": {
+    "authors": "Alain Connes and Caterina Consani",
+    "title": "Weil positivity and Trace formula, the archimedean place",
+    "date": "2021-07-04",
+    "url": "https://alainconnes.org/wp-content/uploads/Selecta.pdf",
+    "locations": [
+      "introductory equation (4)",
+      "Appendix B equation (149)",
+      "Appendix C Proposition C.1"
+    ],
+    "retrieved": "2026-10-07 UTC",
+    "scope": "classical smooth compact positivity criterion and normalization; no new Lean import"
+  },
+  "standing": "analytic actual source audit; no Lean certification",
+  "retired_target": "AVERAGED_NATIVE_LOCALIZATION equation (6): fixed mass-only full localization defect upper ceiling",
+  "reason": "Ceiling implies full positivity then RH; under RH long smooth unit-mass packets centered between zero ordinates have Q->0 and averaged local Q->fixed positive local energy exceeding ceiling",
+  "surviving_result": "exact localization defect identity and termwise controls unchanged",
+  "active_priority": "actual zero-eigenvalue endpoint exclusion; named retained one-vector energy attachment remains independent",
+  "script": "scripts/validate_localization_ceiling_audit.py",
+  "script_sha256": "13101045558dd2a28d4a54ab463f1159e6722baa2682534c30676125307b015a",
+  "controls": {
+    "scaling": 160,
+    "ceiling_rejections": 128,
+    "shifted_tail": 152,
+    "total": 440,
+    "repeat": true
+  },
+  "frontier": "47/50; complete 19/20 Gram/scalar obstruction custody preserved",
+  "global_closed": false,
+  "F4_closed": false
+}
