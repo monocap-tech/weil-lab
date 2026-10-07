@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "b86bc264772d731f6fb2baecd3a531cd0b7e520e",
+  "publication_parent": "b86bc264772d731f6fb2baecd3a531cd0b7e520e",
+  "source_blobs": {
+    "WeilDefect/Morphology/Neutral.lean": "9c446407e5f9ecfada57d2dee5e1d85b7d8a5753",
+    "WeilDefect/Morphology/NeutralSelectedBackground.lean": "be63417e922d7050e9c11d550b5e2b2f1265f64f",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SELECTED_BACKGROUND_20261004.md": "6ad9dca44f5630808a904fe4590d7440b650414a",
+    "notes/REFLECTED_PACKET_BRIDGE_108_RETAINED_UNIT_GAIN_CUSTODY_20261004.md": "3f580d2ca4c917d1b0663f43e3e27e6388d951b3",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SELECTED_FULL_NEUTRAL_20261002.md": "545cc4b590187e971d515e6a2a8c99733cafc697",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRESCRIBED_REDUCTION_20261006.md": "ed79ac3298d667103429b0d506302087f8ef9c3c"
+  },
+  "standing": "analytic conditional actual endpoint attachment; no Lean certification",
+  "result": "At actual Q>=0, one-vector raw selected energy <=0 implies background samples zero and same-vector full mixed nullity; effective diagonal <=selected energy implies full nullity only",
+  "unproved": "actual domain/row custody and named historical one-vector energy comparisons",
+  "scope": "endpoint attachment only; no full prescribed covariance or enlarged transport",
+  "script": "scripts/validate_nonnegative_one_vector_attachment.py",
+  "script_sha256": "5d080a870647a3354079e5fe940ad938956c6f808cc8d4282c0ec11c2fb69b45",
+  "controls": {
+    "nonnegative": 108,
+    "missing_positivity_rejected": 108,
+    "separating_not_raw_neutral": 108,
+    "total": 324,
+    "repeat": true
+  },
+  "frontier": "47/50 whole-domain; 19/20 finite/source milestone preserved",
+  "actual_retained_attachment_closed": false,
+  "endpoint_exclusion_closed": false,
+  "F4_closed": false
+}
