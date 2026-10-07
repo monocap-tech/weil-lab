@@ -1,0 +1,31 @@
+{
+  "source_commit": "bdbd90805773ce4341f7ff0bdfae50b50ce3cfd9",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_CERTIFIED_PARITY_SCHUR_BLOCK_20261005.md": "bfdbc5494b36909f318dd4765ca8a180e0614845",
+    "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_PARITY_MODULUS_20261006.md": "0a8eda427afd008ff95b76ad98dc93ee62c76db5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md": "b8ef9607e6823444a887ac71d8ec08bc21242510",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_REGULARITY_20261006.md": "03b6f5a9d6cb9caa6044d3fd247156606703e91b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GAIN_SPECTRAL_SPLIT_20261006.md": "e89f91e37e3e36f8342f04d954dc39e3ec0bfa8e"
+  },
+  "script_sha256": "1e678b6ad43dd0be502426dc42d443a0a6b35ececfaca67c8aa09ea60a518e4c",
+  "repeat_identical": true,
+  "controls": {
+    "ceiling_controls": 62,
+    "flag_controls": 736,
+    "gain_controls": 494,
+    "scope": "spline parity counts and abstract gain rates only",
+    "status": "exact_controls_pass"
+  },
+  "actual_conditional_results": [
+    "parity null sector H^min(2*r_p,2*r_opposite+1) exclusion",
+    "parity H1 rank <= min(r_p,r_opposite)",
+    "dominant parity normalized gain trace diverges when parity dimensions differ"
+  ],
+  "failed_implication": "one H1 null direction plus reflection and partial derivative invariance excludes every finite kernel",
+  "control": "even triangle and its odd step derivative; abstract spline spaces, not actual native kernels",
+  "remaining_theorem": "actual dominant-parity sequencewise finite quadratic trace bound, plus balanced-contact exclusion; or lawful parity/regularity attachment with opposite-kernel exclusion",
+  "aperture_frontier": "93/100 preserved; no aperture computation",
+  "F4": "open",
+  "FULL_TRANSPORT_CLOSED": false,
+  "lean_certified": false
+}
