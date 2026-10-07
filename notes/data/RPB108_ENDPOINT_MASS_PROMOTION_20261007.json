@@ -1,0 +1,14 @@
+{
+  "cauchy_normalizations": 24,
+  "h1_rate_upper": "2/L from L exp(-L), tending to zero",
+  "log_profile_brackets": 64,
+  "log_profile_normalized_lower": "1/4",
+  "log_profile_normalized_upper": "1",
+  "retained_pairings": [
+    "interior mollified null residual",
+    "exterior inverse residual"
+  ],
+  "scope": "elementary endpoint mass/reciprocal budgets; no actual-null or Lean certificate",
+  "sqrt_log_integral_relative_upper": "9/8 for L>=4",
+  "status": "PASS"
+}
