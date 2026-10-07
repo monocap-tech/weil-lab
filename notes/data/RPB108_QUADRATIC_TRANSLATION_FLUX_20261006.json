@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "b7f42bb504ca41032f8215f3f5ea966ede44cf12",
+  "publication_parent": "b7f42bb504ca41032f8215f3f5ea966ede44cf12",
+  "standing": "analytic conditional actual; no Lean certification",
+  "sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md",
+      "blob_sha": "432ffd64d6460c65cee106f0b46afdb50d1ec28a"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md",
+      "blob_sha": "b8ef9607e6823444a887ac71d8ec08bc21242510"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_GAIN_SPECTRAL_SPLIT_20261006.md",
+      "blob_sha": "e89f91e37e3e36f8342f04d954dc39e3ec0bfa8e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_GAUSSIAN_ACTION_MOMENT_20261006.md",
+      "blob_sha": "a4c6a4b42450d19fcc2f59e385223ea40bb035cb"
+    }
+  ],
+  "script": "scripts/validate_quadratic_translation_flux.py",
+  "script_sha256": "f7a348428e9055d6e2d972fc65690270713cde4f972bf5ac6328248c908f3ba3",
+  "controls": {
+    "pole": 65,
+    "cosine_coefficient": 128,
+    "signed_rate": 128,
+    "total": 321,
+    "repeat": true
+  },
+  "conclusion": "Actual full-null flux/t^2 tends to zero for global H1, negative infinity otherwise; nonzero full-kernel flux trace/t^2 tends to negative infinity",
+  "missing_theorem": "Actual arithmetic lower quadratic subsequence for entire contact-kernel flux trace",
+  "frontier": "47/50; physical 3e-29; Elog 1.6e-31",
+  "endpoint_excluded": false,
+  "retained_attachment_closed": false,
+  "F4_closed": false
+}
