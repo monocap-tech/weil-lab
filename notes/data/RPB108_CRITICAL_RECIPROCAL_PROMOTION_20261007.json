@@ -1,0 +1,63 @@
+{
+  "recovered_head": "80f60b52b18c6362baaa81769ed4f207d320f19f",
+  "category": "critical derivative promotion",
+  "analytic_result": "K_a intersect Xcrit = K_a intersect H1; derivative belongs to the same actual kernel",
+  "gate_analytically_closed": true,
+  "lean_certified": false,
+  "whole_contact_critical_membership_proved": false,
+  "endpoint_excluded": false,
+  "F4_closed": false,
+  "new_aperture_certificate": false,
+  "inverse_critical_regularity_assumed": false,
+  "external_boundary_input": {
+    "url": "https://arxiv.org/html/2401.18033v2",
+    "theorem": "1.1",
+    "scope": "bounded solution boundary upper decay only"
+  },
+  "sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_JOINT_MATCHING_20261007.md",
+      "blob": "299cea4f1fe5b45b844c52a7912842f93d21dd9a"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_INTERIOR_GAIN_20261007.md",
+      "blob": "05f53463842cb5aafbb5116c7f3a4bf65207400e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SUBCRITICAL_DISTRIBUTIONAL_PROMOTION_20261007.md",
+      "blob": "665a473edee975b2d346d0511a292e4a64cb56e8"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md",
+      "blob": "c2d087875d8dd85dfcdbd64893923ef51fcf1028"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_INVERSE_TESTS_20261007.md",
+      "blob": "0a5acc72749e39a54e92cbdc8c16337e81e36702"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md",
+      "blob": "b8ef9607e6823444a887ac71d8ec08bc21242510"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_POSITIVE_SOURCE_MOMENTS_20261006.md",
+      "blob": "955ff7b4bd0d7f58221c300a962a803824232fd6"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_SOURCE_HEIGHT_MOMENT_20261006.md",
+      "blob": "7997a0a3ccb0666d117f696dd208b743255b7ac5"
+    }
+  ],
+  "validation": {
+    "rational_budget_check_repeated_byte_identically": true,
+    "analytic_audit": "both reciprocal boundary limits, forced inverse boundedness, critical Hardy tail, global endpoint removal",
+    "mechanical_analytic_certificate": false
+  },
+  "publication_base_head": "e8746a5cf6ed92bac69cda54a5a76ac773db66f8",
+  "concurrent_aperture_certificate": {
+    "path": "notes/REFLECTED_PACKET_BRIDGE_108_PRIME7_GRAM96_0973_WHOLE_DOMAIN_20261007.md",
+    "blob": "6b79a6119e3b01cfbe7aa049b64f154f123cde2d",
+    "frontier": "973/1000",
+    "recomputed": false
+  }
+}
