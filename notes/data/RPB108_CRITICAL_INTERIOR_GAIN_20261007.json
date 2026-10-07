@@ -1,0 +1,48 @@
+{
+  "recovered_head": "df420dc554e141c848a0b6f3ed0cfe4a43d29e2a",
+  "publication_parent": "7593adb73042479f707be8d531244a57fd29c627",
+  "category": "critical derivative promotion / endpoint exclusion",
+  "result": "actual K intersect Xcrit implies interior log^3 gain, global continuous zero extension, and continuous combined edge drive",
+  "critical_moment_assumed": true,
+  "critical_moment_proved": false,
+  "derivative_promotion_proved": false,
+  "source_custody": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md",
+      "blob": "c2d087875d8dd85dfcdbd64893923ef51fcf1028"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_DERIVATIVE_PROMOTION_20261007.md",
+      "blob": "26627f85c34572a8197b32a1216382e8d02e07f5"
+    },
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CRITICAL_DERIVATIVE_PROMOTION.md",
+      "blob": "8db486559673d4f3b94448800e9d08fe41ea3633"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ROUGH_FORCED_INVERSE_20261007.md",
+      "blob": "525ced5f03a8fc5dee543ada83d74a5fed8d74b0"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_COMBINED_RIGHT_EDGE_DRIVE_20261007.md",
+      "blob": "81851d107b65549dca965f656b92353df7ac0fe7"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX_20261007.md",
+      "blob": "c369d3760606d9e5b9ae0f4862156fd712e5be29"
+    }
+  ],
+  "external": {
+    "url": "https://arxiv.org/pdf/2401.18033",
+    "version": "v2, 2024-07-03",
+    "theorem": "1.1",
+    "doi": "10.3934/dcds.2024084",
+    "read_date": "2026-10-07",
+    "lean_certified": false
+  },
+  "validation": "analytic implication; no numerical or Lean certificate",
+  "frontier_preserved": "24/25",
+  "F4": false,
+  "preserved_cursor_blob": "16995b8d141dbb684cdaf206c71f3d7bf0ce69a3",
+  "newer_aperture_stage_preserved": "97/100 fresh 96-vector native/source blocks; whole-domain sign pending"
+}
