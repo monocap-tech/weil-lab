@@ -1,0 +1,10 @@
+{
+  "certificate_sha256": "b3f4cc23dc13326577c51065e257109453e50a86ba89d21ad85d6f70e870b305",
+  "finer_pi_and_logarithm_enclosures_verified": true,
+  "positive_region_cutoff_cap_verified": true,
+  "method_ceiling_below_witness_requirement": true,
+  "actual_complement_upper_claimed": false,
+  "whole_domain_positivity_at_098": false,
+  "whole_domain_frontier": "973/1000",
+  "f4_entry_closed": false
+}
