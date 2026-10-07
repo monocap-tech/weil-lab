@@ -1,0 +1,52 @@
+{
+  "F4": "open",
+  "FULL_TRANSPORT_CLOSED": false,
+  "analytic_status": "conditional analytic theorem; not Lean certified",
+  "aperture_frontier": "23/25",
+  "controls": {
+    "collar_cases": 36,
+    "rate_cases": 5,
+    "rate_table": [
+      {
+        "cubic_over_s2": "1/4",
+        "linear_over_s2": "4",
+        "n": 2
+      },
+      {
+        "cubic_over_s2": "1/16",
+        "linear_over_s2": "16",
+        "n": 4
+      },
+      {
+        "cubic_over_s2": "1/64",
+        "linear_over_s2": "64",
+        "n": 8
+      },
+      {
+        "cubic_over_s2": "1/256",
+        "linear_over_s2": "256",
+        "n": 16
+      },
+      {
+        "cubic_over_s2": "1/1024",
+        "linear_over_s2": "1024",
+        "n": 32
+      }
+    ],
+    "scalar_premise_cases": 2751,
+    "scope": "scalar and collar controls; no analytic or Lean certification",
+    "status": "rational_controls_pass"
+  },
+  "repeat_identical": true,
+  "script_sha256": "18ca4e3a2a970d1021c29aafcd2be3e3dc0cb921ce2db93d4c887dab357ee527",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_COMPENSATOR_RESIDUAL_20261006.md": "c36a4691ba4730a4fc7803efde378e4ed671f075",
+    "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md": "432ffd64d6460c65cee106f0b46afdb50d1ec28a",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_LOEWNER_20261006.md": "b40e8324d7fdcd83c609782aede65167b26a2b19",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_REGULARITY_20261006.md": "03b6f5a9d6cb9caa6044d3fd247156606703e91b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FRESH_FIXED_RIGHT_PACKET_20261006.md": "7501654d0f289604b14707bf2bf08a915069591c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md": "b8ef9607e6823444a887ac71d8ec08bc21242510"
+  },
+  "source_commit": "f176ca18a0adc15e1bb2441e2cb17b855147d45e",
+  "unproved": "uniform quadratic arithmetic gain bound on the full contact eigenspace"
+}
