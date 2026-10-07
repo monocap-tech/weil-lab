@@ -1,0 +1,27 @@
+{
+  "source_commit": "974e20325cc7a980b827c84f44668fd2c4378ca5",
+  "source_blobs": {
+    "WeilDefect/Morphology/Neutral.lean": "9c446407e5f9ecfada57d2dee5e1d85b7d8a5753",
+    "WeilDefect/Filtration/CriticalDichotomy.lean": "7102a25b28f7a8cf72e805f845bad23daf535aa2",
+    "WeilDefect/Filtration/RightLimit.lean": "2df4a12993a7fdad3695deb5e68e7ae526b8ebee",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FRESH_FIXED_RIGHT_PACKET_20261006.md": "7501654d0f289604b14707bf2bf08a915069591c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_F4_ENTRY_AUDIT_20261006.md": "a6891f7eeac57999879bd4aded6867badaa0340b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_RETAINED_UNIT_GAIN_CUSTODY_20261004.md": "3f580d2ca4c917d1b0663f43e3e27e6388d951b3",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COMPENSATOR_RESIDUAL_20261006.md": "c36a4691ba4730a4fc7803efde378e4ed671f075",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FRESH_ARITHMETIC_STOP_20261006.md": "555f29517c9e0e486b8d4dac2524d05b8eafc91d"
+  },
+  "script_sha256": "1ce7470b0fb75ad01a701fa0948695d95156d535515234e96e32f2a3c3f2493d",
+  "repeat_identical": true,
+  "controls": {
+    "filtration_controls": 3,
+    "padded_factor_cases": 243,
+    "scope": "analytic reduction controls only; actual prescribed attachment unproved",
+    "status": "rational_controls_pass"
+  },
+  "closure": "explicit reduced unitary and analytic attained morphology replacement, conditional on exact prescribed actual covariance/row/separation gates",
+  "actual_prescribed_attachment": "unproved",
+  "actual_support_filtration_identity": "not inferred from reduced historical right-limit geometry",
+  "F4": "open",
+  "FULL_TRANSPORT_CLOSED": false,
+  "lean_certified": false
+}
