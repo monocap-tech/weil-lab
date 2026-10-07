@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-06 America/Los_Angeles",
+  "source_commit": "47cf7b611ce74cc2eb1e1603336606f111041d97",
+  "publication_parent": "47cf7b611ce74cc2eb1e1603336606f111041d97",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_COEFFICIENT_DICTIONARY_20261003.md": "1073d401bf51cc6e91fd3b6eb12d9c5982324cc7",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SAMPLING_GRAPH_DENSITY_20261004.md": "d34171e33327913b6742553b4f869c5de98f0589",
+    "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_CARRIER_EQUIVALENCE_20261004.md": "9124a5cadfb2f294d34df1475ad618d0843f1bc1",
+    "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md": "b8ef9607e6823444a887ac71d8ec08bc21242510",
+    "notes/REFLECTED_PACKET_BRIDGE_108_DERIVATIVE_CHAIN_REGULARITY_CEILING_20261006.md": "2e0863b0a50724fcaefcb01cef2eb0e8a4fc6994",
+    "WeilDefect/Arithmetic/ActualZetaRawGreenSampling.lean": "5b3c614d1efd22e263a7cd9b07261371fbc80ed4",
+    "WeilDefect/Arithmetic/ActualZetaSelectedBackground.lean": "76e24c6810241c153134c525f5ab75177015a53b",
+    "WeilDefect/Arithmetic/ActualZetaSourceGraph.lean": "5a19c9649315241b9e8cdf0dd3f10821cdd8db27"
+  },
+  "standing": "analytic actual positive-source moment equivalence; not Lean certified",
+  "closure": "For canonical h, positive squared-height source moment finite iff global derivative lies in canonical log domain; on actual full-null h iff global H1",
+  "critical_proof_input": "fixed enlarged-support positive-observability lower bound applied to translated difference tests; no enlarged null equation",
+  "minimal_endpoint_theorem": "finite complete positive squared-height trace on whole actual nonnegative contact kernel",
+  "tail_form": "integral_0^infinity 2T E_plus,K(T) dT finite; sufficient O(T^-2-epsilon) or O(T^-2 log(T)^-1-epsilon)",
+  "failed_implication": "ordinary uniform coefficient tail decay and finite negative source dimension imply finite positive height moment",
+  "source_convention": "F_h(z)=integral h exp(i z x); derivative -iz; p=(Fbar+Fz)/2, n=(Fbar-Fz)/2",
+  "dependencies": "existing critical-zero-density and local-count dependencies retained; no new external input",
+  "script": "scripts/validate_positive_source_height_moment.py",
+  "script_sha256": "95bdaa7cb782aa35eb769838b115c4a528df87d1835622b641ff111e759ed266",
+  "controls": {
+    "derivative_pair_cases": 81,
+    "translation_pair_cases": 81,
+    "square_budgets": 27,
+    "height_moment_tail_cases": 128,
+    "borderline_rate_cases": 128,
+    "repeat": true
+  },
+  "frontier": "19/20 certified; newer 24/25 finite/source inputs preserved",
+  "actual_prescribed_attachment_closed": false,
+  "arithmetic_height_moment_bound_proved": false,
+  "endpoint_exclusion_closed": false,
+  "F4_closed": false
+}
