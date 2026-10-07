@@ -1,0 +1,10 @@
+{
+  "actual_null_or_lean_certificate": false,
+  "dimension_one_negative_controls": 8,
+  "expansion_beta_entry_agreements": 204,
+  "moment_systems": 8,
+  "positive_full_pivots": 36,
+  "positive_parity_blocks": 15,
+  "scope": "independent rational interior-moment Gram controls; not actual zeta/null certification",
+  "status": "PASS"
+}
