@@ -1,0 +1,25 @@
+{
+  "aperture": "97/100",
+  "old_gram_sha256": "b6b52930c9229163f4bbcccd399cbcbe60bfa92e766b104d5b14eafad19bb2e5",
+  "new_gram_sha256": "9d86c98ab7e9f10be43b25d33a1dc3b41709c220a8ec2cb310eb7023fae01793",
+  "unchanged_original_source_rows": 84,
+  "added_projection_degrees": [
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95
+  ],
+  "residual_projection_identity_entries_verified": 7056,
+  "identity": "old residual Gram equals new restricted residual Gram plus the 12-coordinate projection Gram",
+  "surrogate_identity_only": true,
+  "whole_domain_positivity": false,
+  "f4_closed": false
+}
