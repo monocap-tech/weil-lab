@@ -1,0 +1,120 @@
+{
+  "aperture": "973/1000",
+  "prime_powers": [
+    2,
+    3,
+    4,
+    5,
+    7
+  ],
+  "source_panels": 11,
+  "files": {
+    "scripts/certify_native_prime7_geometry_0973.py": {
+      "bytes": 2763,
+      "sha256": "b6ed9472237a0672fa02b9394350f53a93f842475d2072b5352426f59d9061af",
+      "git_blob_sha": "359230f5a6fd17924c3d5b23f578ee854337d946"
+    },
+    "scripts/validate_native_prime7_geometry_0973.py": {
+      "bytes": 3220,
+      "sha256": "9a3f788835ccde8e6676806458f50beb5356332f1800139731bebab496f49aae",
+      "git_blob_sha": "3cb2c58933d4a2f32ba2965af55b4a1ba3a7fd34"
+    },
+    "scripts/certify_native_prime7_weighted_schur_0973.py": {
+      "bytes": 4772,
+      "sha256": "f3ec275fab5e50a22b316877ff442b0fed58e27c83bcbd5e67502426ab90300a",
+      "git_blob_sha": "6ea0a9d441eebc67b960a45464c2b091804c3c46"
+    },
+    "scripts/validate_native_prime7_weighted_schur_0973.py": {
+      "bytes": 5573,
+      "sha256": "35f8a23400af69fa1b0e8f55c254fa2bb5460bff4b80e0ba85e9e6682f0c9df5",
+      "git_blob_sha": "d5718dd3ba892e0e48a72e4e01771e5ea9f1e967"
+    },
+    "scripts/certify_native_prime7_96_preflight_0973.py": {
+      "bytes": 3810,
+      "sha256": "3636bf4f4c685f11b6d7d0a907930366c939df93b5e9f59ebecc52643d775126",
+      "git_blob_sha": "d7cfaae759fb8699e8530591be83bfd99e522806"
+    },
+    "scripts/validate_native_prime7_96_preflight_0973.py": {
+      "bytes": 6272,
+      "sha256": "e27e7f36d5c0124f907f3f5ab0df664b6593e7184f0882e4103e4aa1d31a879d",
+      "git_blob_sha": "9ecda6cf11694c793292470e0b320cee55b80918"
+    },
+    "scripts/restore_native_prime7_0973_archive.py": {
+      "bytes": 834,
+      "sha256": "a3da7b576cab58780a6e8685381b08ee6dc9f887de92dd42d5c9c682dac10265",
+      "git_blob_sha": "20d129f6d773319f25ac8452dc241f29cbefe4b0"
+    },
+    "docs/TERMINOLOGY_RPB108_PRIME7_0973_PREFLIGHT.md": {
+      "bytes": 1673,
+      "sha256": "fcbf84801ec6b4cf72e35a49974ad0919fdf094f6009edf4bab7d65e020ac7d6",
+      "git_blob_sha": "9109f041ab5184d450612de56d78ea365dfbb6a2"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME7_0973_PREFLIGHT_20261007.md": {
+      "bytes": 5406,
+      "sha256": "966173f2fc0de0cdff8c9e751dce33578371a9af327b4705883e34428fe59b0f",
+      "git_blob_sha": "ded6b9d5e91e1e53b15cd3e9c4360d4219718f06"
+    },
+    "notes/data/RPB108_PRIME7_0973_REPEAT_VALIDATION_20261007.json": {
+      "bytes": 439,
+      "sha256": "d3105988ec138af57f4a890276ba2a78212f3297930b0d134c65814fe0a2f901",
+      "git_blob_sha": "598b6cd5464ae0f83bf9a481c4ac443d0b7ca4ab"
+    },
+    "notes/data/RPB108_PRIME7_96_PREFLIGHT_0973_CERTIFICATE_20261007.json": {
+      "bytes": 93139,
+      "sha256": "a349f8fd75e0c1c59d2461d98866788046cfad4002c20c21124e96e3223eaf3f",
+      "git_blob_sha": "56fe9ec02186276e26df61e4baf1f1cdb6f2e0ff"
+    },
+    "notes/data/RPB108_PRIME7_96_PREFLIGHT_0973_VALIDATION_20261007.json": {
+      "bytes": 713,
+      "sha256": "aa98847cc8731bd31ea638506032a5995cdb2ddb7748c949a20ba094a35df2b1",
+      "git_blob_sha": "96b238bbf2ea914c45e20d88829c56b6128de153"
+    },
+    "notes/data/RPB108_PRIME7_GEOMETRY_0973_CERTIFICATE_20261007.json": {
+      "bytes": 10601,
+      "sha256": "a2997ca6f77baa3745d13862006a61e1c4e8f81e9b6b0d7744656798854b569c",
+      "git_blob_sha": "df8044d60d2e4b00a71249a43dd3bee86e746ac5"
+    },
+    "notes/data/RPB108_PRIME7_GEOMETRY_0973_VALIDATION_20261007.json": {
+      "bytes": 643,
+      "sha256": "b9033c82fc8294cb232e051b9a6cae75933512ea94402fc6d5a084a30e2dffea",
+      "git_blob_sha": "536f963f9984591382f2a3eea826aeca6aa5d9c2"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_POINTWISE_0973_CERTIFICATE_20261007.json.gz.base64": {
+      "bytes": 632401,
+      "sha256": "94d47fd4f06cdfe9c08ef359ab11da661a33a5cdd39932eb29a389bfe70a91b3",
+      "git_blob_sha": "14d6bd107dcb74b5de5f076270202462eb97fcab"
+    },
+    "notes/data/RPB108_PRIME7_WEIGHTED_POINTWISE_0973_VALIDATION_20261007.json": {
+      "bytes": 844,
+      "sha256": "0693b59c0c0f09f23feca4f9d1e7795c3593e0f9ea3790ead6337ee3c41782b1",
+      "git_blob_sha": "5b36a8e115eb6c6d7669552044ec004f47964ed6"
+    }
+  },
+  "weighted_gzip_sha256": "1ceac3bda8d8b07ebeb9b2012629f80ce6357f86a47fac43a2dde5fed4d0a0c8",
+  "weighted_decoded_sha256": "499a77d6da81719c193d5b3846ff978cb08371b4c27d0f0e00dc09053a8ec6f5",
+  "weighted_prime_norm_upper": "1887171/1000000",
+  "physical_complement_lower": "423/500",
+  "constructor_repeats_byte_identical": {
+    "geometry7_0973": {
+      "byte_identical_repeat": true,
+      "sha256": "a2997ca6f77baa3745d13862006a61e1c4e8f81e9b6b0d7744656798854b569c"
+    },
+    "weighted7_0973": {
+      "byte_identical_repeat": true,
+      "sha256": "499a77d6da81719c193d5b3846ff978cb08371b4c27d0f0e00dc09053a8ec6f5"
+    },
+    "preflight7_0973_final": {
+      "byte_identical_repeat": true,
+      "sha256": "a349f8fd75e0c1c59d2461d98866788046cfad4002c20c21124e96e3223eaf3f"
+    }
+  },
+  "new_exponential_bound": 50,
+  "new_kernel_bound": "973/200",
+  "whole_domain_frontier": "97/100",
+  "whole_domain_positivity_at_target": false,
+  "new_native_sign": false,
+  "new_source": false,
+  "new_gram": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}

@@ -1,0 +1,14 @@
+{
+  "geometry7_0973": {
+    "byte_identical_repeat": true,
+    "sha256": "a2997ca6f77baa3745d13862006a61e1c4e8f81e9b6b0d7744656798854b569c"
+  },
+  "weighted7_0973": {
+    "byte_identical_repeat": true,
+    "sha256": "499a77d6da81719c193d5b3846ff978cb08371b4c27d0f0e00dc09053a8ec6f5"
+  },
+  "preflight7_0973_final": {
+    "byte_identical_repeat": true,
+    "sha256": "a349f8fd75e0c1c59d2461d98866788046cfad4002c20c21124e96e3223eaf3f"
+  }
+}
