@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-07",
+  "recovered_head": "1b42e0a5f400225f607e2412a2b66e48bf7491de",
+  "status": "candidate-specific obstructions; no actual bounded-return theorem",
+  "remaining_gate": "actual unshifted full mixed-null source-range membership implies liminf S_K(T)/log T <= 0",
+  "graph_shortened": false,
+  "lean_certified": false,
+  "internal_sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SHARP_LOG_LIMIT_20261007.md",
+      "blob_sha": "310fbfd874f2fb6a0cda70f38d50fb656c26029e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_NULL_ABEL_LOG_SLOPE_20261007.md",
+      "blob_sha": "1a63fe344931b95170dcb06b8b67f6818b968e18"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_COMPACT_ROW_LOG_SLOPE_20261007.md",
+      "blob_sha": "28fc6855859f45391e41dc96540b48ab216bd9d2"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_TWO_ROW_CHAIN_CONTACT_20261007.md",
+      "blob_sha": "4a5e20cdfd025042165ad24146669a82b81602a4"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_HEIGHT_GRAPH_ERROR_20261007.md",
+      "blob_sha": "b968aa0a3c5eb5ba680ee0251692e24853dadd74"
+    }
+  ],
+  "external_sources": [
+    {
+      "author": "Farzad Aryan",
+      "title": "On an extension of the Landau-Gonek formula",
+      "version": "arXiv:1902.05473v1",
+      "url": "https://arxiv.org/pdf/1902.05473",
+      "locations": "Introduction; Theorem 1.1",
+      "custody": "primary PDF inspected; finite rational/Dirichlet-polynomial or Gaussian-weighted hypotheses do not supply the rough critical pairing bound"
+    },
+    {
+      "author": "Jean-Francois Burnol",
+      "title": "Two complete and minimal systems associated with the zeros of the Riemann zeta function",
+      "version": "arXiv:math/0203120v7",
+      "url": "https://arxiv.org/pdf/math/0203120",
+      "locations": "Sections 2-3; Theorems 3.1-3.3",
+      "custody": "primary PDF inspected; gap carrier, linear evaluators, multiplicities and bilinear convention checked"
+    },
+    {
+      "author": "Masatoshi Suzuki",
+      "title": "A canonical system of differential equations arising from the Riemann zeta-function",
+      "url": "https://arxiv.org/pdf/1204.1827",
+      "locations": "Proposition 1.2; Sections 1.2-1.5",
+      "custody": "primary PDF inspected; innerness family equivalent to specified zero-free half-plane"
+    },
+    {
+      "author": "Alain Connes and Caterina Consani",
+      "title": "Weil positivity and Trace formula, the archimedean place",
+      "url": "https://arxiv.org/pdf/2006.13771",
+      "locations": "Theorem 1; Corollary 2",
+      "custody": "primary PDF inspected; smooth small support, transform vanishing and extra correction retained"
+    }
+  ],
+  "controls": {
+    "actual_positive_eigenmode": "same actual range/arithmetic and positive sharp/log slope; residual mu h distinguishes it",
+    "artificial_compact_good_rows": "positive logarithmic slope; not actual divisor or actual null",
+    "finite_actual_restoration": "bounded head correction; normalized coefficient unchanged",
+    "two_row_comparison_contact": "auxiliary rows; no actual source-range attachment"
+  },
+  "obstructions": [
+    "pointwise off-diagonal remainder can conceal either-sign logarithmic rough pairing",
+    "nonzero compact unitary logarithmic lift cannot lie in any Burnol constant-gap cosine space",
+    "linear evaluator completeness does not imply mixed Gram radical is trivial",
+    "seven-eighths input supplies Suzuki inner models only beyond omega=3/8, not down to zero"
+  ],
+  "publication_parent": "83278548b6090c43a05debf154c67e828876c0f2",
+  "recovered_aperture_standing": "99/100, as published by concurrent aperture lane; not recomputed in this audit"
+}
