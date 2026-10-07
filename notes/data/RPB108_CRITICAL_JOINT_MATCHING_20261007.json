@@ -1,0 +1,42 @@
+{
+  "recovered_head": "89e4f194063f93a073954a813e1dfed39720b0fb",
+  "publication_parent": "89e4f194063f93a073954a813e1dfed39720b0fb",
+  "category": "critical derivative promotion / endpoint exclusion",
+  "result": "critical joint full-profile estimate and convergence of actual signed inverse boundary moment",
+  "critical_membership_assumed": true,
+  "critical_moment_proved": false,
+  "joint_weight": "1/[u log(1/u)]",
+  "signed_inverse_moment_exists": true,
+  "absolute_inverse_integrability_proved": false,
+  "scalar_injectivity_claimed": false,
+  "derivative_promotion_proved": false,
+  "source_custody": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_INTERIOR_GAIN_20261007.md",
+      "blob": "05f53463842cb5aafbb5116c7f3a4bf65207400e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_COMBINED_RIGHT_EDGE_DRIVE_20261007.md",
+      "blob": "81851d107b65549dca965f656b92353df7ac0fe7"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md",
+      "blob": "c2d087875d8dd85dfcdbd64893923ef51fcf1028"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_INVERSE_MOMENT_OBSERVABILITY_AUDIT_20261005.md",
+      "blob": "1c8b222f6365eaf88c065ad66e28b71be8b7fe15"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_DERIVATIVE_PROMOTION_20261007.md",
+      "blob": "26627f85c34572a8197b32a1216382e8d02e07f5"
+    },
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CRITICAL_INVERSE_TESTS.md",
+      "blob": "c3f80846c112325c2407215f0f9761c3dedd7ba6"
+    }
+  ],
+  "validation": "analytic weighted difference/convolution proof; no numerical or Lean certificate",
+  "frontier_preserved": "24/25",
+  "F4": false
+}
