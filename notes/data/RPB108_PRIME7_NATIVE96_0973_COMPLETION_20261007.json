@@ -1,0 +1,9 @@
+{
+  "aperture": "973/1000",
+  "initial_completed_rows": 0,
+  "actual_completed_rows": 96,
+  "complete_checkpoint_sha256": "97519e942aaf972386289d01b503efc80191884a7be89a01bb530e217071d1bc",
+  "finite_sign_certified": false,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false
+}

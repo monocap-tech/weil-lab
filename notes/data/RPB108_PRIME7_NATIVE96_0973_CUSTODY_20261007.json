@@ -1,0 +1,265 @@
+{
+  "aperture": "973/1000",
+  "prime_terms": [
+    2,
+    3,
+    4,
+    5,
+    7
+  ],
+  "physical_degrees": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95
+  ],
+  "files": {
+    "scripts/certify_native_legendre96_0973.py": {
+      "bytes": 17180,
+      "sha256": "9467c707138dac384514f8eec36263f4d0a11fd5959b05c2cae36636774bb75c",
+      "git_blob_sha": "5778605fc7842972f8c49831a93eb9f4f89c1ae4"
+    },
+    "scripts/certify_native_prime7_matrix96_0973.py": {
+      "bytes": 5314,
+      "sha256": "e64e0c7d1df7e6d6ab61e4744d753c53f5acde14b9d3dec01e4c7663641d6531",
+      "git_blob_sha": "4e4cacb5d952c8ed30830431700a9beead144aed"
+    },
+    "scripts/complete_native_prime7_raw96_0973.py": {
+      "bytes": 1644,
+      "sha256": "d232873c0732a3c5327e165e7a09084b9a41331a0be62530a09d559813c7d4d8",
+      "git_blob_sha": "63f69dd212e3e9527453b7d8c83107c821871103"
+    },
+    "scripts/finalize_native_prime7_matrix96_0973.py": {
+      "bytes": 3721,
+      "sha256": "08179fa6931df9d491829dc4d06f7e26dd0fb4c520cbfa42750a63e87d29b66d",
+      "git_blob_sha": "44c33bb5afa622a4cf906ba709f6d30a432bfbbe"
+    },
+    "scripts/compact_native_prime7_matrix96_0973.py": {
+      "bytes": 3838,
+      "sha256": "247f30d6c252d95b0c6074d84fc21e922936f59be0122d38d2ad35a6f8a70636",
+      "git_blob_sha": "d24da3272d9af8e5646b02a343d9633699499b69"
+    },
+    "scripts/validate_native_prime7_matrix96_0973.py": {
+      "bytes": 4595,
+      "sha256": "21ef880bb0bb5860a9b1274acc671386afd3fc111fd83551ad45c96161e9470c",
+      "git_blob_sha": "1be6a5dcb1c97f8e5292b201c1e71f1769005fda"
+    },
+    "scripts/validate_native_matrix96_row_recovery_0973.py": {
+      "bytes": 1718,
+      "sha256": "894334b5ee2277a08376d847698a89f65cc69e78d3aad9c101f32285e3465e00",
+      "git_blob_sha": "1fef7d2748518aebcd1a3026547da4af3dbacb00"
+    },
+    "scripts/validate_native_prime7_correlation96_0973.py": {
+      "bytes": 3043,
+      "sha256": "110558eae7c41040dcd3af106ce50f637da597762f6c087a52f531e73ae80085",
+      "git_blob_sha": "955a96d62814b1977dbf87f55399f436abad091f"
+    },
+    "scripts/restore_native_prime7_96_0973_archives.py": {
+      "bytes": 993,
+      "sha256": "f3ddcb389afe75c0f7617036f0b7b15683f6696b3009387816315cf536d74892",
+      "git_blob_sha": "b44ff7563955ce8c2d53e75b55c4892194fc2bc4"
+    },
+    "docs/TERMINOLOGY_RPB108_PRIME7_NATIVE96_0973.md": {
+      "bytes": 1142,
+      "sha256": "6dd00416e753ee02acefb4a221981852f383803904c8b90833425533006ed993",
+      "git_blob_sha": "9655761cbc165ae84537ae8517b0be4acac6b258"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME7_NATIVE96_0973_20261007.md": {
+      "bytes": 4612,
+      "sha256": "570e1b71cfd6ae68aca311ced6effb13f4bba8ee3f0dc31b9804ea3db20e37aa",
+      "git_blob_sha": "4b30e1c79098cec4f3217734709b6d74d8dc6a48"
+    },
+    "notes/data/RPB108_PRIME7_NATIVE96_0973_CERTIFICATE_20261007.json.gz.base64": {
+      "bytes": 2511617,
+      "sha256": "4c635442c7308ba3bd66b47f0148aeb5ca6b7c42d38b7c1cda87af09e663e836",
+      "git_blob_sha": "895d12d6a551ec36cca221c1b2f6ed80c12a9bed"
+    },
+    "notes/data/RPB108_PRIME7_NATIVE96_0973_COMPLETE_RAW_ROWS_20261007.json.gz.base64": {
+      "bytes": 1110585,
+      "sha256": "eb3621c0d574e31914bd60659df7e87eec0953f36dda3f715b20d1defbda7554",
+      "git_blob_sha": "f4d65b78d0463e50ba7739788d147050bf93f214"
+    },
+    "notes/data/RPB108_PRIME7_MATRIX96_0973_COMPACT80_20261007.json": {
+      "bytes": 550924,
+      "sha256": "c773be2a97c524b533ced21c8805ec06746dcefb8c990269d09a74699f479b06",
+      "git_blob_sha": "b8ed7749f5c2e8fdcd376ad38ae6eff4e36fbf16"
+    },
+    "notes/data/RPB108_PRIME7_NATIVE96_0973_VALIDATION_20261007.json": {
+      "bytes": 886,
+      "sha256": "91d4661a9dfd71c51515a924701945d8fa8b4f39f53453f4342eb856202719d4",
+      "git_blob_sha": "9dc110344da073f5dfd490e2f92926ef2bb089d5"
+    },
+    "notes/data/RPB108_PRIME7_NATIVE96_0973_COMPLETION_20261007.json": {
+      "bytes": 289,
+      "sha256": "922916f24eed318a015b60872d423f7f94077edd8c2e42abf183e8747d11501b",
+      "git_blob_sha": "6d57c9d2916111caaed43c5f1c9eacddc2dd8085"
+    },
+    "notes/data/RPB108_PRIME7_NATIVE96_0973_ROW_RECOVERY_VALIDATION_20261007.json": {
+      "bytes": 381,
+      "sha256": "0c14b55eea8d345ac34af8b766148fed1357da347467ba7e92eec5e4dbd75549",
+      "git_blob_sha": "e3985b2488957efd5455c574834ab5dabe8958f7"
+    },
+    "notes/data/RPB108_PRIME7_CORRELATION96_0973_VALIDATION_20261007.json": {
+      "bytes": 2280,
+      "sha256": "a5e5f9179cf39f45cb7ff709220a9c47b5d5d4bbcb6ab4d398e2d0d912490c0e",
+      "git_blob_sha": "e5316b42501d0c008a02cf674e8b2123229ef007"
+    }
+  },
+  "archives": {
+    "RPB108_PRIME7_NATIVE96_0973_COMPLETE_RAW_ROWS_20261007.json.gz": {
+      "transport_file": "RPB108_PRIME7_NATIVE96_0973_COMPLETE_RAW_ROWS_20261007.json.gz.base64",
+      "gzip_sha256": "97519e942aaf972386289d01b503efc80191884a7be89a01bb530e217071d1bc",
+      "decoded_sha256": "f4c38997912384ab37078d53f4625d990a544408666c14cf47b6631fa8348f09"
+    },
+    "RPB108_PRIME7_NATIVE96_0973_CERTIFICATE_20261007.json.gz": {
+      "transport_file": "RPB108_PRIME7_NATIVE96_0973_CERTIFICATE_20261007.json.gz.base64",
+      "gzip_sha256": "7a17eb7148750f37ae5eb0759034ab0fec684c3ec2a678018bf02e3348fa8113",
+      "decoded_sha256": "839ec1898f271b9e185b0068dc8afc4d0fc5ad82050874149a62ca44ba3e150e",
+      "write_decoded_file": "RPB108_PRIME7_NATIVE96_0973_CERTIFICATE_20261007.json"
+    }
+  },
+  "unchanged_dependencies": {
+    "scripts/certify_native_legendre_small_window.py": {
+      "bytes": 17969,
+      "sha256": "5ea3f0f3e556e66b1912fe1c49d78a2dff13107f602e6ae82c7bcb95d571fa15",
+      "git_blob_sha": "bb12496ea82d118e2da36ee74318ea7285eeede9"
+    },
+    "scripts/certify_native_legendre96_097.py": {
+      "bytes": 16893,
+      "sha256": "3dd9f3913b636c2d8085f6f0f89e44cfa01ac7d9bf5bba3ee08a4a1411bf3b03",
+      "git_blob_sha": "a37546c97bcc5224bcb386b7426d98c1b3f12f01"
+    },
+    "scripts/certify_native_matrix96_checkpoint.py": {
+      "bytes": 1895,
+      "sha256": "753083e19526153c2a999082800087a5d31b509ba466d747fcb908124b7ba8ac",
+      "git_blob_sha": "76194e9e6b15feb4e58798f4e72da9c7d4368a1e"
+    },
+    "scripts/certify_native_exact_polynomial.py": {
+      "bytes": 1449,
+      "sha256": "9ae0e506ad4e7516afcd3dcb3942ec482557ec597585cedf907b42404d26f02a",
+      "git_blob_sha": "987db90b1a89140a86548b00a8cd3ee4c5d789e0"
+    },
+    "scripts/certify_native_exact_kernel_integral.py": {
+      "bytes": 2016,
+      "sha256": "d26746a5864c56f8d73df201a23321ac93faa4292d68c64c967abf25922e4332",
+      "git_blob_sha": "dab542667c3e0d1fb7f47e7db9d5f9265933b0d0"
+    },
+    "scripts/certify_native_exact_logarithm.py": {
+      "bytes": 837,
+      "sha256": "a2d2c6c844c8de24ab6a816b3a02d54e998c75bcba4db0e52ccec55f7fbc9093",
+      "git_blob_sha": "c7ee7742c1a0d2dd9b178f2f48aa889babf59768"
+    },
+    "notes/data/RPB108_PRIME7_96_PREFLIGHT_0973_CERTIFICATE_20261007.json": {
+      "bytes": 93139,
+      "sha256": "a349f8fd75e0c1c59d2461d98866788046cfad4002c20c21124e96e3223eaf3f",
+      "git_blob_sha": "56fe9ec02186276e26df61e4baf1f1cdb6f2e0ff"
+    }
+  },
+  "complete_raw_native_constructions": 1,
+  "finalization_repeat_byte_identical": true,
+  "compact_repeat_byte_identical": true,
+  "actual_fresh_vs_resumed_rows_checked": 2,
+  "finite_sign_digits": 160,
+  "independent_compact_sign_digits": 80,
+  "finite_physical_margin": "1/2147483648000000000000000000",
+  "source_panels_required": 11,
+  "source_complete": false,
+  "gram_complete": false,
+  "corrected_schur_sign": false,
+  "whole_domain_frontier": "97/100",
+  "whole_domain_positivity_at_target": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}
