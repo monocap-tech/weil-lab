@@ -1,0 +1,12 @@
+{
+  "passed_assertions": 2068,
+  "cases": 64,
+  "scope": "exact chain algebra; no actual spectrum or source-range assertion",
+  "source_head": "33fbef69e59461016b28250f2eb886d3a5ca1fcc",
+  "source_blobs": {
+    "KERNEL_DERIVATIVE_CHAIN": "e124b8a31a00df61908ce71cedd4ab7f83a14c76",
+    "NATIVE_ORDER_OBSTRUCTION": "738289b9df5d11436c79ea72dfbe8e85841904f1",
+    "CRITICAL_RECIPROCAL_PROMOTION": "9983be22ab58e926b5e15127f8feaf53d43329e0",
+    "CRITICAL_EIGENMODE_TARGET": "3354b89638b643d5b21c4c428f069f738ccf59f5"
+  }
+}
