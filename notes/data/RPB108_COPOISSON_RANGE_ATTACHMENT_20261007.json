@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-07",
+  "recovered_head": "5923ded080bf30a51c8a9a9c5fe9a4c294223a61",
+  "result": "Injective rough co-Poisson attachment into L_exp(-a) with all actual zero jets vanishing; every nonzero image lies outside L_1, including the actual positive eigenmode",
+  "actual_bounded_return_found": false,
+  "global_graph_shortened": false,
+  "remaining_gate": "actual unshifted source-range nullity implies nonpositive signed sharp/log liminf",
+  "lean_certified": false,
+  "internal_sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SUBLOG_PRIME_BULK_20261007.md",
+      "blob_sha": "b6cd806b1a5ee4bdce9d2eda72050c520b637597"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SHARP_LOG_LIMIT_20261007.md",
+      "blob_sha": "310fbfd874f2fb6a0cda70f38d50fb656c26029e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_NULL_ABEL_LOG_SLOPE_20261007.md",
+      "blob_sha": "1a63fe344931b95170dcb06b8b67f6818b968e18"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SHARP_ARITHMETIC_FRAMEWORK_AUDIT_20261007.md",
+      "blob_sha": "a2607dee10e2aa834456ea363ea56ec4e9b5d76f"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DERIVATIVE_CHAIN_20261007.md",
+      "blob_sha": "e124b8a31a00df61908ce71cedd4ab7f83a14c76"
+    }
+  ],
+  "external_sources": [
+    {
+      "url": "https://arxiv.org/pdf/math/0203120",
+      "author": "Jean-Francois Burnol",
+      "locations": "equations (6)-(9), Proposition 2.2, Theorem 3.1",
+      "custody": "primary text inspected; normalizations, closed L_lambda carrier and full multiplicity jets checked"
+    },
+    {
+      "url": "https://arxiv.org/pdf/1106.4751",
+      "author": "Jean-Francois Burnol",
+      "locations": "Theorems 1 and 2; proof with G(0)=0",
+      "custody": "primary text inspected; codimension at most one is not completeness"
+    },
+    {
+      "url": "https://www.bourbaki.fr/TEXTES/Exp1159-Harper.pdf",
+      "author": "Adam J Harper",
+      "locations": "section 2, page 8, convexity comparison following Theorem 2.2",
+      "custody": "primary exposition inspected; unconditional exponent 1/4+epsilon suffices"
+    }
+  ],
+  "controls": {
+    "actual_positive_eigenmode": "lawful injective attachment and all-zero-jet vanishing; nonzero image outside L_1",
+    "artificial_compact_good_rows": "smooth physical attachment does not identify artificial rows with actual divisor",
+    "finite_actual_restoration": "native normalized correction o(1); full jet system retained in completeness argument",
+    "two_row_comparison_contact": "auxiliary nullity gives no actual L_1 compatibility"
+  },
+  "failed_candidate": "zeta multiplication plus zero-sampling completeness excludes actual full-null profiles; image instead lies in incomplete carrier and also attaches actual positive eigenmode",
+  "candidate_specific_missing_compatibility": "unshifted actual full-null h implies T_a h belongs to L_1; unproved and would itself exclude h"
+}
