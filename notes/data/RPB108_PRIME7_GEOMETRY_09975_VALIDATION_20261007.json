@@ -1,0 +1,12 @@
+{
+  "aperture": "399/400",
+  "geometry_sha256": "ddaf0187a83278129898d6f2aa45cd508e440b8290121495b747a802b6525c77",
+  "finer_endpoint_inclusions": 12,
+  "independent_support_checks": 110,
+  "complete_support_event_set_verified": true,
+  "reflection_verified": true,
+  "displaced_endpoint_control_rejected": true,
+  "whole_domain_positivity": false,
+  "whole_domain_frontier": "199/200",
+  "f4_entry_closed": false
+}

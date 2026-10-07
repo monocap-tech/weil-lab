@@ -1,0 +1,16 @@
+{
+  "aperture": "399/400",
+  "weighted_prime_input_sha256": "44d30c608467765d7614c4ad868fe716d232232ec48609bfce6ea1a87b015a20",
+  "crude_prime_loss_upper": "731558545544102253817254435987/125000000000000000000000000000",
+  "prime_loss_below": 6,
+  "pole_loss_below": 12,
+  "archimedean_multiplier_loss": 6,
+  "garding_constant": 24,
+  "multiplier_weight_factor": "1/10",
+  "published_multiplier_bound_reused": "m0 >= w/10 - 6",
+  "garding_24_verified": true,
+  "constructor_sha256": "ef6cb8331348cace842cdff31cd9122498dd2fef271cd5c38a63673f45d35516",
+  "whole_domain_positivity": false,
+  "whole_domain_frontier": "199/200",
+  "f4_entry_closed": false
+}
