@@ -1,0 +1,10 @@
+{
+  "actual_null_or_lean_certificate": false,
+  "balanced_rank_one_controls": 16,
+  "exact_ode_profiles": 24,
+  "layer_cake_error_checks": 64,
+  "mixed_gram_negative_control": "rejected despite matching basis diagonal norms",
+  "quotient_scope": "trace kernel may contain nonzero regular coordinates",
+  "scope": "integrating-factor, mass-budget and boundary-Gram controls only",
+  "status": "PASS"
+}
