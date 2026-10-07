@@ -1,0 +1,26 @@
+{
+  "source_commit": "f0d6ef5967a2b32adc1c2acdb9b47a0e43282aab",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_CONTACT_CONTROL_20261006.md": "cef50e5e46a7ddc6218f33042e720a0c12da58b4",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_FIRST_CONTACT_CONSTRUCTOR_20261004.md": "1d7d4721405b03050508008f7a903d2697ac550e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_NULL_EXTENSION_OBSTRUCTION_20261004.md": "41e9b6b02c79afff807ceef4c61f9320c6874409",
+    "notes/REFLECTED_PACKET_BRIDGE_108_QUADRATIC_GAIN_REGULARITY_20261006.md": "e1a089f88ad1c9699c1fce1089fe8971be716b98",
+    "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md": "b8ef9607e6823444a887ac71d8ec08bc21242510",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_SOURCE_REGULARITY_20261006.md": "03b6f5a9d6cb9caa6044d3fd247156606703e91b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TWOBAND_COMPLEMENT_092_20261006.md": "b4594cb62be2c88f57770bf1846a4de1e94488aa"
+  },
+  "actual_result": "lowest physical eigenvalue attained, continuous and strictly decreasing; eigenspace has strict regularity flag",
+  "comparison_status": "full prescribed native primes and pole retained; additional tuned nonzero mass subtraction and artificial mass source",
+  "comparison_contact": "c=23/25; mu=lambda_ph(c)>=10^-26; eigenvalue not computed",
+  "F4": "open",
+  "FULL_TRANSPORT_CLOSED": false,
+  "lean_certified": false,
+  "repeat_identical": true,
+  "script_sha256": "61d3479d71519311dad484c2d8522765000721dea9b226f6fd154e36c97772e0",
+  "controls": {
+    "cases": 81,
+    "scope": "scalar-shift and residual algebra only; no actual zeta contact or Lean certification",
+    "status": "rational_controls_pass"
+  }
+}
+
