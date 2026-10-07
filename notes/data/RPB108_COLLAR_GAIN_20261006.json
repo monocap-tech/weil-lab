@@ -1,0 +1,75 @@
+{
+  "source_commit": "99301c708c5660792150bd8d9c5b94b67f85aa69",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_QUADRATIC_GAIN_REGULARITY_20261006.md": "e1a089f88ad1c9699c1fce1089fe8971be716b98",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md": "c2d087875d8dd85dfcdbd64893923ef51fcf1028",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ENDPOINT_BOUNDARY_REGULARITY_20261005.md": "cfa1c29f68ade0e7c519ce2d2acaaffe50eb47dc",
+    "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md": "b8ef9607e6823444a887ac71d8ec08bc21242510",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COMPENSATOR_RESIDUAL_20261006.md": "c36a4691ba4730a4fc7803efde378e4ed671f075"
+  },
+  "script_sha256": "4d2e92b04942f33e3ab02de6d0b13a982043ea3d0626a46d6d8c5dd679c4bd91",
+  "repeat_identical": true,
+  "controls": {
+    "e_lower": "65/24",
+    "finite_p_budgets": [
+      {
+        "C_p": 20,
+        "p": 1
+      },
+      {
+        "C_p": 136,
+        "p": 2
+      },
+      {
+        "C_p": 1744,
+        "p": 3
+      },
+      {
+        "C_p": 32800,
+        "p": 4
+      },
+      {
+        "C_p": 800064,
+        "p": 5
+      },
+      {
+        "C_p": 23888000,
+        "p": 6
+      },
+      {
+        "C_p": 843308288,
+        "p": 7
+      },
+      {
+        "C_p": 34359738880,
+        "p": 8
+      },
+      {
+        "C_p": 1586874323968,
+        "p": 9
+      },
+      {
+        "C_p": 81920000002048,
+        "p": 10
+      },
+      {
+        "C_p": 4674546411294720,
+        "p": 11
+      },
+      {
+        "C_p": 292162779488460800,
+        "p": 12
+      }
+    ],
+    "one_log_constant": 10,
+    "rough_superlog_rate_cases": 132,
+    "scope": "constant and scalar rate controls; no actual null or Lean certification",
+    "status": "rational_controls_pass"
+  },
+  "analytic_result": "gain bounded by 10 collar residual mass/(beta log(1/s)); H1 iff residual mass O(s^2 log(1/s)); actual residual and gain have all fixed inverse-log rates",
+  "unproved": "combined actual Euler/prime/pole residual collar bound O(s^2 log(1/s)) on whole nonnegative contact kernel",
+  "F4": "open",
+  "FULL_TRANSPORT_CLOSED": false,
+  "lean_certified": false
+}
+
