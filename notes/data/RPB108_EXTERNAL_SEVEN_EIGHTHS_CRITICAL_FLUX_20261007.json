@@ -1,0 +1,50 @@
+{
+  "recovered_head": "966bbb59f0156c97be3448f7436db833b4f5f991",
+  "requested_checkpoint": "0f092bd6a21685dfdf95ff2108ebb784822e5e2c",
+  "publication_parent": "966bbb59f0156c97be3448f7436db833b4f5f991",
+  "external_repository": "openai/math",
+  "external_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "external_input": "OAI.riemannZeta_ne_zero_of_seven_eighths_lt_re",
+  "external_solution_blob": "46c67f4000906b1391a471d6e6396ac0da3c16a5",
+  "external_assembly_blob": "e7c20910424837fb954796e1216f5aa453bbd5da",
+  "external_comparator_blob": "acf552468fc23c1a27d685d33983c58c50040542",
+  "external_scope_blob": "cf794e93da2e1a494434153f5b91f2990fe9fd60",
+  "functional_symmetry": "https://dlmf.nist.gov/25.4#E3",
+  "transverse_bound": "3/8",
+  "external_input_accepted": true,
+  "external_rebuild": false,
+  "external_actual_axiom_audit": false,
+  "native_sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXACT_TRANSLATION_BOUNDARY_FLUX_20261005.md",
+      "blob": "432ffd64d6460c65cee106f0b46afdb50d1ec28a"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_SOURCE_HEIGHT_MOMENT_20261006.md",
+      "blob": "7997a0a3ccb0666d117f696dd208b743255b7ac5"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_FRACTIONAL_POSITIVE_SOURCE_MOMENTS_20261006.md",
+      "blob": "955ff7b4bd0d7f58221c300a962a803824232fd6"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SUBCRITICAL_DISTRIBUTIONAL_PROMOTION_20261007.md",
+      "blob": "665a473edee975b2d346d0511a292e4a64cb56e8"
+    }
+  ],
+  "result": "exact transverse flux remainder critically integrable; signed ordinate defect still unbounded by current inputs",
+  "critical_promotion_proved": false,
+  "actual_critical_moment_proved": false,
+  "control": {
+    "script": "scripts/validate_external_seven_eighths_critical_flux.py",
+    "sha256": "e0b75fa2b72958a63c0a16516e6fb2e422612bfe986fec7f04a959305c90ebde",
+    "flux_cases": 2025,
+    "strip_cases": 129,
+    "neutral_tail_cases": 128,
+    "repeat": true,
+    "scope": "rational algebra and abstract controls, not actual null data"
+  },
+  "frontier_preserved": "24/25",
+  "Lean_certified": false,
+  "F4": false
+}
