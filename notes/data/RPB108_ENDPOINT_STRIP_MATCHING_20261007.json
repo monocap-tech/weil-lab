@@ -1,0 +1,14 @@
+{
+  "actual_null_or_lean_certificate": false,
+  "atanh_terms": 24,
+  "indicator_edge_log_integral": "2",
+  "log2_interval": [
+    "9443662622785393135066238615529291327296/13624325233720948163518982443619506174725",
+    "29380283715332334197983861603998305670257/42386789616020727619836834269038463654700"
+  ],
+  "log_remainder_enclosures": 128,
+  "near_strip_kernel_integrals": "log 2 <1",
+  "rough_profile_brackets": 64,
+  "scope": "rational strip-kernel and rough-profile controls; analytic theorem not mechanically certified",
+  "status": "PASS"
+}
