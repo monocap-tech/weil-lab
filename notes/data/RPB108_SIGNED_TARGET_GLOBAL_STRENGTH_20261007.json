@@ -1,0 +1,50 @@
+{
+  "recovered_head": "6e3411729403c5610912e745dc4c08b77f3d8ede",
+  "publication_parent": "6e3411729403c5610912e745dc4c08b77f3d8ede",
+  "category": "endpoint exclusion",
+  "result": "signed cutoff contact criterion has global unit-domination strength",
+  "order": "3/2",
+  "equivalent_assertions": [
+    "all nonnegative-window traces finite liminf",
+    "hypothetical attained first-contact trace finite liminf",
+    "all nonnegative-window kernels zero",
+    "all-window native positivity",
+    "strict coercivity at each window"
+  ],
+  "arithmetic_estimate_proved": false,
+  "critical_promotion_proved": false,
+  "source_custody": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_CUTOFF_SOURCE_MOMENT_20261007.md",
+      "blob": "52f34cc5c348c7ad5b00058c1208599f531bf4c7"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SUBCRITICAL_DISTRIBUTIONAL_PROMOTION_20261007.md",
+      "blob": "665a473edee975b2d346d0511a292e4a64cb56e8"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX_20261007.md",
+      "blob": "c369d3760606d9e5b9ae0f4862156fd712e5be29"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SUPERCRITICAL_SOURCE_CONTROL_20261007.md",
+      "blob": "1d1157c7257ada74d1a42c02245243b4d2edd364"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_SEED_GLOBAL_INTERFACE_EQUIVALENCE_20261004.md",
+      "blob": "69327050106adc5650034a129cc55e636fd4f053"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_F4_ENTRY_AUDIT_20261006.md",
+      "blob": "a6891f7eeac57999879bd4aded6867badaa0340b"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_THREEBAND_POSITIVITY_096_20261007.md",
+      "blob": "119a2a3198ea0df81486e9f0ba98795f72685c98"
+    }
+  ],
+  "validation": "analytic dependency audit; no new numerical or Lean validation",
+  "lean_certified": false,
+  "frontier_preserved": "24/25",
+  "F4": false
+}
