@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "exact_checks": 88,
+  "scope": "finite atom/resolvent/gauge algebra only; analytic proofs in note",
+  "actual_infinity_coefficient": "zero by analytic norm estimate",
+  "completeness": "jump-generated Q quotient only",
+  "whole_native_generation": "unproved",
+  "original_source_lift": "retains Gamma(P_K k_w)",
+  "bounded_sharp_subsequence": "unproved",
+  "F4": "open",
+  "lean_certified": false
+}

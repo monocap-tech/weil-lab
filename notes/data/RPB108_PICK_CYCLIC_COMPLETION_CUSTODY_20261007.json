@@ -1,0 +1,52 @@
+{
+  "recovered_head": "43e88c0cc3c0042bbecafaafad277fe230e64aa7",
+  "publication_base": "43e88c0cc3c0042bbecafaafad277fe230e64aa7",
+  "input_blobs": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_REAL_ZERO_DIVISION_AUDIT_20261007.md",
+      "sha": "a47323325317142f9594e92bad44ac3d37ac09b1"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DERIVATIVE_CHAIN_20261007.md",
+      "sha": "e124b8a31a00df61908ce71cedd4ab7f83a14c76"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ENDPOINT_TRACE_20261007.md",
+      "sha": "1996d3fb3358965c5468481c31252f3dda440e69"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_MASS_CONTACT_20261006.md",
+      "sha": "65b45b856fdb33014f9dee0468d0cf75ff413539"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md",
+      "sha": "3354b89638b643d5b21c4c428f069f738ccf59f5"
+    },
+    {
+      "path": "scripts/certify_native_kernel_de_branges_attachment.py",
+      "sha": "038f8bab37e54af5a61181bd7ae9250b1b39e967"
+    }
+  ],
+  "external_framework": {
+    "author": "Mitja Nedic",
+    "doi": "10.1007/s11785-021-01155-x",
+    "url": "https://link.springer.com/article/10.1007/s11785-021-01155-x",
+    "used": "Theorem 2.1 at n=1; following infinity coefficient formula; elementary inversion consequence",
+    "hypotheses": "actual NF45 holomorphy and nonnegative imaginary part; real-symmetric meromorphic continuation",
+    "normalization": "pi absorbed into nu"
+  },
+  "results": {
+    "laplace": "Phi(iy)~c_L exp(ay)/(y^r sqrt(log y))",
+    "normalized_jump": "D norm squared O(log y/y)",
+    "infinity_linear_coefficient": 0,
+    "measure": "generator-zero atoms only",
+    "completeness": "H_jump=H_div in completed Q quotient",
+    "physical_source_lift": "Pi expansion plus Gamma(P_K k_w)",
+    "whole_native_generation": "unproved",
+    "arithmetic_bounded_subsequence": "unproved"
+  },
+  "exact_checks": 88,
+  "analytic_not_lean": true,
+  "F4": "open",
+  "positive_eigenmode": "same theorem for Q-mu; unshifted actual pairings keep mass residual"
+}
