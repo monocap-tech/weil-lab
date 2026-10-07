@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-07",
+  "lane": "NF48 actual-row interpolation",
+  "recovered_head": "1722a74ad3f4b44580641156a4c2ad8d92eb3180",
+  "dependencies": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_MOVING_JUMP_SAMPLING_20261007.md": "baf0136123ab337adfd506c79f1d7ae0a7f10f5b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PICK_CYCLIC_COMPLETION_20261007.md": "89998de3ad47af17860adae5ed3c0bb5e4a09cc9",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_POSITIVE_KERNEL_20261004.md": "5d34556f913a7b536be9fd6a6c26d2d9920ce970",
+    "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DERIVATIVE_CHAIN_20261007.md": "e124b8a31a00df61908ce71cedd4ab7f83a14c76",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md": "3354b89638b643d5b21c4c428f069f738ccf59f5",
+    "scripts/certify_native_kernel_de_branges_attachment.py": "038f8bab37e54af5a61181bd7ae9250b1b39e967",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "a96111440daf042a887326b346b0e0083d64dca2"
+  },
+  "conditional_scope": "hypothetical actual nonnegative contact kernel; shifted Q_mu counterpart retains physical mass",
+  "results": [
+    "bounded actual-row kernel projection C_X",
+    "corrected Cauchy identity P_X(z)/(P_X(t)(z-t))",
+    "canonical-domain entire interpolation and complete actual-source lift",
+    "terminal trace readout from r distinct original critical rows"
+  ],
+  "row_existence": "Reuses pinned GLOBAL_POSITIVE_KERNEL distinct-critical sampling and Jensen bounds; non-effective, no actual nodes computed or conditioning floor asserted.",
+  "normalization": "Raw row equals p_i/alpha_i; all original weights retained; equal-ordinate copies are not independent.",
+  "node_identity": "Auxiliary generator zeros are not identified with the actual zeta divisor.",
+  "validation": {
+    "exact_checks": 268,
+    "finite_algebra_only": true,
+    "analytic_certification": false,
+    "lean_certification": false
+  },
+  "preserved_aperture_one_commit": "811b0826abf45d688d1e2da7900cda852103ddee",
+  "open": [
+    "unshifted signed sharp-head arithmetic exclusion",
+    "bounded/sublogarithmic sharp subsequence implication",
+    "F4",
+    "full transport",
+    "Lean closure"
+  ]
+}
