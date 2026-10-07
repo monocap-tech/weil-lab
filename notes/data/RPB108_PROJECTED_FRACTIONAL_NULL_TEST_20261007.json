@@ -1,0 +1,24 @@
+{
+  "recovered_head": "d00cd66c764cbe9bf25bb27ccce3be6b93772b56",
+  "publication_parent": "d00cd66c764cbe9bf25bb27ccce3be6b93772b56",
+  "category": "endpoint exclusion",
+  "result": "direct projected fractional test leaves entire weighted exterior flux",
+  "failed_implication": "fixed-cutoff projected full-null pairing implies uniform signed cutoff trace bound",
+  "exact_identity": "I_epsilon,r = -B_epsilon,r + integrated transverse remainder",
+  "smallest_theorem": "limsup B_epsilon,3/2 on entire actual contact kernel > -infinity",
+  "arithmetic_estimate_proved": false,
+  "source_blobs": [
+    "52f34cc5c348c7ad5b00058c1208599f531bf4c7",
+    "432ffd64d6460c65cee106f0b46afdb50d1ec28a",
+    "c2d087875d8dd85dfcdbd64893923ef51fcf1028",
+    "f5dd2cfe71a99cd41fcfd21b01a62c2b17ce89ff"
+  ],
+  "regression_scripts": [
+    "scripts/validate_signed_cutoff_source_moment.py",
+    "scripts/validate_external_seven_eighths_critical_flux.py"
+  ],
+  "regression_scope": "existing algebra controls only, not boundary estimate",
+  "frontier_preserved": "24/25",
+  "lean_certified": false,
+  "F4": false
+}
