@@ -1,0 +1,27 @@
+{
+  "recovered_head": "0f092bd6a21685dfdf95ff2108ebb784822e5e2c",
+  "publication_parent": "0f092bd6a21685dfdf95ff2108ebb784822e5e2c",
+  "category": "endpoint exclusion",
+  "analytic_result": "supported H^-sigma exact native null solutions promote to K for 0<sigma<1/2",
+  "consequence": "K intersect H^alpha equals K intersect H1 for 1/2<alpha<1",
+  "lowered_target": "whole actual positive trace moment at any fixed order r>1",
+  "arithmetic_bound_proved": false,
+  "critical_order_one_closed": false,
+  "regression_scripts": [
+    "scripts/validate_fractional_positive_source_moments.py",
+    "scripts/validate_critical_derivative_promotion.py"
+  ],
+  "regression_repeat": true,
+  "regression_scope": "previous algebra controls do not certify the new analytic theorem",
+  "sources": [
+    "f5dd2cfe71a99cd41fcfd21b01a62c2b17ce89ff",
+    "c2d087875d8dd85dfcdbd64893923ef51fcf1028",
+    "65b45b856fdb33014f9dee0468d0cf75ff413539",
+    "b8ef9607e6823444a887ac71d8ec08bc21242510"
+  ],
+  "lean_available": false,
+  "lean_certified": false,
+  "frontier_preserved": "24/25",
+  "retained_attachment_closed": false,
+  "F4": false
+}
