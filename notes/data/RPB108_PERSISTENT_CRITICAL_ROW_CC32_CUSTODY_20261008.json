@@ -1,0 +1,109 @@
+{
+  "stage": "CC32 persistent individual critical row",
+  "date_utc": "2026-10-08",
+  "repository": "monocap-tech/weil-lab",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "parent": "5b52813afb77923fdab97410798cced607f6d47d",
+  "prior_thematic_CC31": "00dfd25de49cb62c05caba8b365d7efaa7ea91ee",
+  "paused_global_head": "60af21664204303fe9d90c89b18930d213da33a4",
+  "paused_global_research_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "concurrent_metadata": {
+    "coupled_handoff_path": "notes/RPB108_PHASE_GEOMETRY_IP1_CROSS_FRONT_HANDOFF_20261008.md",
+    "coupled_handoff_git_blob": "248fe531ec715f57f74c265b6c4af650ab744147",
+    "preserved": true,
+    "independent_IP1_read_only_report_commit": "48d83c40c6fb4b3739de6e95f2e3b6659dfd0fb7"
+  },
+  "inputs": {
+    "scripts/validate_native_uniform_critical_rank_cc31.py": {
+      "bytes": 3898,
+      "sha256": "4d0ef1ef37dd4a3becc70c7c6195863749ef2801a2fda120740e1af099bc7110",
+      "git_blob": "380431b7ddcae1606859e9e01ba6155f3575237b"
+    },
+    "notes/data/RPB108_UNIFORM_CRITICAL_RANK_CC31_VALIDATION_20261008.json": {
+      "bytes": 1599,
+      "sha256": "a6a9cbbed49d616c4dcf47451a6d68376e4cffbab446e5bd96b0848a41758a57",
+      "git_blob": "09c4320dc2562817bc5bcd3a4312e2c24dabee82"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": {
+      "bytes": 13662,
+      "sha256": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+      "git_blob": "da2dab5958dd65381bca285c7ff9082d571e6dd8"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_FLUX_LIMIT_CC29_20261008.md": {
+      "bytes": 12066,
+      "sha256": "5d7675c2868864e072124e7dc5e43eefdd53f47f1609bfe5c9f3b7d67595bd40",
+      "git_blob": "1d139126c805a96fa6bc92c0311fa89111e5f42f"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_UNIFORM_CRITICAL_RANK_CC31_20261008.md": {
+      "bytes": 8872,
+      "sha256": "dca5ad8c2d507a4b3b451df3aca7a4c628a5fad0b6cae240f52593bf6824db43",
+      "git_blob": "87b4d82a2e970b5e16ccdc89376122b0a95fd350"
+    }
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_PERSISTENT_CRITICAL_ROW.md": {
+      "bytes": 1166,
+      "sha256": "bd8a5d16ba850fb35b7789f6d9a4913c7f3be3c76e066dc4b620d9e5e998fb42",
+      "git_blob": "5c2204f2f84746ec617fa1629c5baa9d147aefcb"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_PERSISTENT_CRITICAL_ROW_CC32_20261008.md": {
+      "bytes": 7881,
+      "sha256": "f2dccdc7564dde948a42fccc5f9ea1c19fa3cad1613858373aade1f7a7f73079",
+      "git_blob": "a8668375d018ae48a1867df95fb412d214e7de38"
+    },
+    "scripts/validate_native_persistent_critical_row_cc32.py": {
+      "bytes": 4179,
+      "sha256": "7547c1f85b621f77cd78797687bfac32e916a2ff6c7860675a32f58d773efc55",
+      "git_blob": "e49efeed4a14109556c7f20dc190aa36b6a3695f"
+    },
+    "notes/data/RPB108_PERSISTENT_CRITICAL_ROW_CC32_VALIDATION_20261008.json": {
+      "bytes": 1487,
+      "sha256": "8a6d80958332344a40b3cda4978fbf72cfc882f652bcff996d4527d778a3a316",
+      "git_blob": "7ee79c9bfef91d9874e4532f9e36f87974fee713"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 690071,
+      "sha256": "579bfd732749ffedc5566b7f2a501e972bb5bde92ce5c95d45946ccae7e24955",
+      "git_blob": "cbb84836a31fa108019549b838cc273af197e29f"
+    }
+  },
+  "bridge_prefix": {
+    "bytes": 687726,
+    "sha256": "62acf2ee2017cde04ec0f0d770b71b72afb61425fc0ee61031b9a4e8b30f79c8",
+    "git_blob": "54ab4d546110d9db0dab0c7aa8e946ec1b1c12f6",
+    "preserved_byte_for_byte": true
+  },
+  "conditional_result": {
+    "assumption": "hypothetical attained original nonnegative contact A_a y=y",
+    "target": "fixed strict t>a inside finite cap",
+    "constants": "gamma=<y,(A_t-A_a)y>>0, M>=||A_t||, C=16M^2/gamma^2",
+    "row_selection": "delta_i<=C d_s and ||K_st* y_i||^2>=gamma/(2d_B)",
+    "forced_residual": "||M_t^-1/2 J_i*||^2>=(1-eta_B)gamma/(2d_B)",
+    "modulus_violation": "normalized scalar cost >=gamma/[2d_B sup_(0<u<=C d_s)omega(u)]"
+  },
+  "validation": {
+    "all_passed": true,
+    "total_exact_checks": 25477,
+    "new_exact_checks": 102,
+    "inherited_cc31_checks": 25375,
+    "scope": "finite rational conditional controls and inherited complete crossing/full-mass controls, not actual zeta critical-vector data"
+  },
+  "claims": {
+    "actual_contact_exists_claimed": false,
+    "actual_scalar_upper_bound_proved": false,
+    "actual_covariance_evaluated": false,
+    "continuous_eigenvector_branch_assumed": false,
+    "fixed_critical_target_band_preserved": true,
+    "fixed_target_enlargement_preserved": true,
+    "RH_proved": false,
+    "new_aperture": false,
+    "lean_certified": false
+  },
+  "standing": {
+    "original_aperture": "21/20",
+    "physical_margin": "1/(3*10^63)",
+    "Global": "paused NF71 with additive IP1 handoff",
+    "Aperture": "paused",
+    "PreContactShadow": "paused"
+  }
+}

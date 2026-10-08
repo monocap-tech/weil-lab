@@ -3679,3 +3679,19 @@ For strict linear continuation one still needs d_B b_B+ell_B<1; for the endpoint
 Original anchor remains21/20 even0/odd0, physical margin1/(3*10^63). RH/F4, retained attachment, reusable continuation and Lean closure stay open. Global NF71, Aperture and Pre-Contact Shadow remain paused.
 
 
+## CC32 — an individual persistent critical row at hypothetical contact (2026-10-08)
+
+Coupled parent:5b52813afb77923fdab97410798cced607f6d47d, preserving the concurrent IP1 handoff. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_PERSISTENT_CRITICAL_ROW_CC32_20261008.md); [definitions](TERMINOLOGY_RPB108_PERSISTENT_CRITICAL_ROW.md).
+
+Conditional actual-source lower bound: suppose original contact occurs at a, let y be its unit source output, and fix t>a. CC29 gives gamma=<y,(A_t-A_a)y>>0 and d_s=<y,(I-A_s)y>->0. With M>=||A_t|| and C=16M^2/gamma^2, the diagnostic subprojection F_s=1_[1-Cd_s,1)(A_s) lies inside CC31's fixed critical band near contact. Its projected contact vector has error at most1/sqrt(C), so its incoming covariance pairing is at least gamma/2. The rank bound d_B and positive trace then select an actual old eigenvector with delta_i<=Cd_s and leakage ||K_st* y_i||^2>=gamma/(2d_B).
+
+The exact scalar forced residual obeys ||M_t^-1/2 J_i*||^2=lambda_i||K_st* y_i||^2>=(1-eta_B)gamma/(2d_B). Thus a single complete critical row retains positive residual while its defect vanishes. For any bounded vanishing modulus omega, its normalized scalar cost is at least gamma/[2d_B sup_(0<u<=Cd_s)omega(u)], whenever the denominator is positive, and diverges. No monotone modulus, simple contact or continuous eigenvector branch is assumed. The selected row may change with s.
+
+The shrinking filter is solely diagnostic; the cap-only target band and a fixed strict target enlargement remain unchanged. This does not establish contact existence or an arithmetic upper estimate. Genuine single-mode differential crossing and full positive-level controls remain in force. IP1 fixed-test phase geometry is not substituted for the complete positive inverse.
+
+25,477 exact checks pass (102 new diagnostic-filter/rotating-row/coherent-trace-selection/power/genuine-crossing checks, 25,375 CC31 replayed). Infinite source and trace arguments are analytic, not actual zeta covariance data or new Lean certification.
+
+Original positivity remains certified through21/20 even0/odd0, physical margin1/(3*10^63). RH/F4, retained attachment, reusable continuation and Lean closure remain open. Global's research standing remains paused NF71, with its concurrent IP1 metadata update preserved; Aperture and Pre-Contact Shadow remain paused.
+
+
+

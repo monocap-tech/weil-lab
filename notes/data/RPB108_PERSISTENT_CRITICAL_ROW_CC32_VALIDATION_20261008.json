@@ -1,0 +1,31 @@
+{
+  "stage": "CC32 individual persistent row at hypothetical contact",
+  "all_passed": true,
+  "new_counts": {
+    "filter_constants": 22,
+    "rotating_row": 24,
+    "coherent_trace_selection": 28,
+    "power_cost": 18,
+    "genuine_crossing": 10
+  },
+  "new_exact_checks": 102,
+  "inherited_cc31_checks": 25375,
+  "total_exact_checks": 25477,
+  "conditional_actual_result": "some eigenrow has delta_i<=16 M^2 d_s/gamma^2 and leakage >=gamma/(2 d_B)",
+  "actual_contact_exists_claimed": false,
+  "actual_scalar_upper_bound_proved": false,
+  "actual_critical_covariance_evaluated": false,
+  "continuous_eigenvector_branch_assumed": false,
+  "fixed_target_enlargement_preserved": true,
+  "fixed_critical_target_band_preserved": true,
+  "new_aperture": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "input_sha256": {
+    "scripts/validate_native_uniform_critical_rank_cc31.py": "4d0ef1ef37dd4a3becc70c7c6195863749ef2801a2fda120740e1af099bc7110",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_FLUX_LIMIT_CC29_20261008.md": "5d7675c2868864e072124e7dc5e43eefdd53f47f1609bfe5c9f3b7d67595bd40",
+    "notes/REFLECTED_PACKET_BRIDGE_108_UNIFORM_CRITICAL_RANK_CC31_20261008.md": "dca5ad8c2d507a4b3b451df3aca7a4c628a5fad0b6cae240f52593bf6824db43"
+  },
+  "constructor_sha256": "7547c1f85b621f77cd78797687bfac32e916a2ff6c7860675a32f58d773efc55"
+}
