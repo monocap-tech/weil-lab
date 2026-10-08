@@ -1,0 +1,55 @@
+{
+  "stage": "CC22",
+  "base_commit": "625d506c479d03e466cde975bf1f77d8b6d97941",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "inherited_input_git_blobs": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "54b7bc2358cbdd470bed8aec3aa5543acf52fa1c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "da2dab5958dd65381bca285c7ff9082d571e6dd8",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_CANDIDATE_CC21_20261008.md": "6bd5e45114dd0c2498785e4b1eea40b5f1fdde8d",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSVERSE_DENSITY_SAMPLING_20261007.md": "c9950fafef341ee66f62a5b1ab21013ebfd3a716",
+    "notes/data/RPB108_TRANSLATION_CANDIDATE_CC21_VALIDATION_20261008.json": "0972841dad4c6fd1dcf9a05cbe5ac1e43c5eab77",
+    "scripts/validate_native_translation_candidate_cc21.py": "91c2d6051b2a870ec667cdbcceb82c244b28bab2"
+  },
+  "input_sha256": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_CANDIDATE_CC21_20261008.md": "dc90c4bd8a6a216f35a83dbc8b75bcc97fc5f5bbb207d63a3a23476bea528c7e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSVERSE_DENSITY_SAMPLING_20261007.md": "c390b8d7204ec65b36128d9b21de9a5de54ac02836cfce0ed2710c94e44ea8e4",
+    "notes/data/RPB108_TRANSLATION_CANDIDATE_CC21_VALIDATION_20261008.json": "9a1c96aefae2ec59a1634d1d616d37b4d92da23aad6cda12015fe92a43a526dc",
+    "scripts/validate_native_translation_candidate_cc21.py": "c76fe38e498756f8bb17f9c6213b7965f4a6060113283db854b0dda2e77f19c5"
+  },
+  "bridge_prefix": {
+    "bytes": 665525,
+    "sha256": "a7f4042379e34abb130b3a44f731a09a0d02a73955b5fb401ff9c38b008d2d7f",
+    "git_blob_sha": "54b7bc2358cbdd470bed8aec3aa5543acf52fa1c"
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_DENSITY_PHASE.md": {
+      "bytes": 1466,
+      "sha256": "43c13df740aa8786c24618c5c55481e8a1f0a262c96e0f2122905b2d2142003e",
+      "git_blob_sha": "b3ccc93893f7656e15eb618a5a1686bfed081533"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_DENSITY_PHASE_CC22_20261008.md": {
+      "bytes": 10596,
+      "sha256": "21dc744a5ae011cc72d6e3b86f143be302c09c5b98043f29bad2ce7bb8143b1e",
+      "git_blob_sha": "d544e23f4d731ef9d545b940c618f832508bdcb7"
+    },
+    "scripts/validate_native_density_phase_cc22.py": {
+      "bytes": 4086,
+      "sha256": "d328892d904bb6fddb997dd1b6810b2bfb58579bbeb48ecbd078564599f2e273",
+      "git_blob_sha": "1c1ebb521c12e75dc3a61d4b546ebcc8f12c63fe"
+    },
+    "notes/data/RPB108_DENSITY_PHASE_CC22_VALIDATION_20261008.json": {
+      "bytes": 2651,
+      "sha256": "ae2e20c95ba005296333be903047b42c907b23cc484bdcda275357462016dfca",
+      "git_blob_sha": "07c74bc9025fba1b61eb977de98d61af8c71b098"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 667317,
+      "sha256": "2ed1a32789179b4203bdb2f69b988752a4fd121e505a641a5266dd104c1757fe",
+      "git_blob_sha": "6d8560842e6a150f994527f0086cfc5689824bd8"
+    }
+  },
+  "external_primary": "https://arxiv.org/html/2507.15184v2; Chourasiya and Simonic; v2 2025-09-30; Corollary 1, sigma [1/2,5/8], T>=3*10^12",
+  "scope": "analytic actual weighted theorem and finite estimator controls; no actual critical covariance evaluation or Lean certification"
+}

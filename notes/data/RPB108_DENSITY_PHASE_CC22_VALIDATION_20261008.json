@@ -1,0 +1,63 @@
+{
+  "stage": "CC22 actual density phase modulus and weight-transfer audit",
+  "all_passed": true,
+  "new_counts": {
+    "dyadic_split": 3552,
+    "weight_transfer": 480,
+    "genuine_crossing": 320,
+    "positive_level": 4
+  },
+  "new_exact_checks": 4356,
+  "inherited_cc21_checks": 13996,
+  "total_exact_checks": 18352,
+  "classification": "A: actual weighted negative phase modulus; C: separated weight-transfer closure rejected",
+  "finite_controls": [
+    {
+      "m": 3,
+      "delta": "1/8",
+      "height_weight_proxy": "512",
+      "weighted_phase_squared_at_k_1_2": "1/2048",
+      "original_relative_cost_at_k_1_2": "2",
+      "scope": "rank-one weight-transfer control, not actual zeta"
+    },
+    {
+      "m": 12,
+      "delta": "1/4096",
+      "height_weight_proxy": "68719476736",
+      "weighted_phase_squared_at_k_1_2": "1/274877906944",
+      "original_relative_cost_at_k_1_2": "1024",
+      "scope": "rank-one weight-transfer control, not actual zeta"
+    },
+    {
+      "m": 24,
+      "delta": "1/16777216",
+      "height_weight_proxy": "4722366482869645213696",
+      "weighted_phase_squared_at_k_1_2": "1/18889465931478580854784",
+      "original_relative_cost_at_k_1_2": "4194304",
+      "scope": "rank-one weight-transfer control, not actual zeta"
+    },
+    {
+      "m": 34,
+      "delta": "1/17179869184",
+      "height_weight_proxy": "5070602400912917605986812821504",
+      "weighted_phase_squared_at_k_1_2": "1/20282409603651670423947251286016",
+      "original_relative_cost_at_k_1_2": "4294967296",
+      "scope": "rank-one weight-transfer control, not actual zeta"
+    }
+  ],
+  "actual_weighted_phase_rate": "squared HS O_B,eta((log log(1/|r|))^2/(log(1/|r|))^eta), eta>0",
+  "proof_scope": "analytic rate proved in note; exact rational controls do not validate actual zero data",
+  "unweighted_relative_covariance_certified": false,
+  "actual_zeta_desired_bound_disproved": false,
+  "complete_Weil_logical_independence_proved": false,
+  "new_aperture": false,
+  "global_nonstalling": false,
+  "lean_certified": false,
+  "whole_domain_anchor": "21/20 inherited CC18, even0/odd0",
+  "input_sha256": {
+    "scripts/validate_native_translation_candidate_cc21.py": "c76fe38e498756f8bb17f9c6213b7965f4a6060113283db854b0dda2e77f19c5",
+    "notes/data/RPB108_TRANSLATION_CANDIDATE_CC21_VALIDATION_20261008.json": "9a1c96aefae2ec59a1634d1d616d37b4d92da23aad6cda12015fe92a43a526dc",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSVERSE_DENSITY_SAMPLING_20261007.md": "c390b8d7204ec65b36128d9b21de9a5de54ac02836cfce0ed2710c94e44ea8e4"
+  },
+  "constructor_sha256": "d328892d904bb6fddb997dd1b6810b2bfb58579bbeb48ecbd078564599f2e273"
+}
