@@ -1,0 +1,24 @@
+{
+  "global_base": "2f7a867881ae49e99f25d454e253c7d1a43496d4",
+  "coupled_read_only_head": "191b3c04dbddf9789c19cbb4ad7562deac2e9ec1",
+  "sources": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_POSITIVE_CARRIER_EQUIVALENCE_20261004.md",
+      "blob": "9124a5cadfb2f294d34df1475ad618d0843f1bc1"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_OUTPUT_REACTION_20261008.md",
+      "commit": "2f7a867881ae49e99f25d454e253c7d1a43496d4"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_TWO_TRIAL_SOLVE_CC8_20261008.md",
+      "blob": "d88ab7e584bb63bc16cefc7a10194a5cfa431bfe",
+      "commit": "191b3c04dbddf9789c19cbb4ad7562deac2e9ec1"
+    },
+    {
+      "path": "scripts/validate_native_critical_output_reaction.py",
+      "commit": "2f7a867881ae49e99f25d454e253c7d1a43496d4"
+    }
+  ],
+  "scope": "Analytic construction and exact gate equivalence; no actual source or whole physical matrix enclosure; only Global ref authorized for this step."
+}

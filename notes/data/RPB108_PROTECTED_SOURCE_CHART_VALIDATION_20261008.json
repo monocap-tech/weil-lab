@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "exact_checks": 591,
+  "coupled_cases": 72,
+  "output_ranks": {
+    "0": 24,
+    "1": 24,
+    "2": 24
+  },
+  "sign_cases": {
+    "positive": 44,
+    "negative": 28,
+    "unit": 0
+  },
+  "source_eigenvectors_required": false,
+  "positive_covariance_solve_uses_whole_Q_gap": false,
+  "whole_source_and_physical_schur_inertia_agree": true,
+  "actual_zeta_source_coordinates_enclosed": false,
+  "new_aperture": false,
+  "arithmetic_nondivergence": false,
+  "lean_certified": false
+}
