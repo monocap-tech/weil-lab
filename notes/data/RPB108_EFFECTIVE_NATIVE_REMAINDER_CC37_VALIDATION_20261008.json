@@ -1,0 +1,17 @@
+{
+  "stage": "CC37 effective native remainder",
+  "all_passed": true,
+  "new_exact_checks": 13,
+  "inherited_cc36_checks": 25972,
+  "total_exact_checks": 25985,
+  "global_archimedean_bound": 8,
+  "cap": "21/20",
+  "full_remainder_bound": 20,
+  "rational_upper_bound": "111079/5610",
+  "actual_native_finite_matrix_evaluated": false,
+  "defect_suppression_proved": false,
+  "new_aperture": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "701b06d117a67c86b558a6f2a7ce0f331b67993b318f20f8eaad41439b16843e"
+}

@@ -3741,3 +3741,15 @@ For Q_mu=Q-mu||h||_2^2 the complete negative source adds sqrt(mu)i_t, while P an
 Testing the shifted old equation by its normalized lift yields original Rayleigh defect Q(h)=delta_mu+mu||h||_2^2, not an original source eigenvalue. In the full positive-level control P=I,N=(9/25,12/25),mu=16/25, the mass outward term is zero and the forced numerator is unchanged. Nonetheless original whole incoming budget9/34 becomes shifted budget1 including the positive low complement; the shifted null is an original positive physical eigenmode. Thus even identical forced numerators cannot identify original and shifted reaction.
 
 99 new checks plus25,873 inherited pass, total25,972. This validates the retained full-mass control, not the missing mu=0 arithmetic suppression. IP7's finite native Schur matrix remains unevaluated; no new aperture is certified. Positivity stays21/20 even0/odd0, physical margin1/(3*10^63). RH/F4, retained attachment, original outward suppression, reusable continuation and Lean closure remain open.
+
+## CC37 — effective complete native remainder constant (2026-10-08)
+
+Coupled parent:76adf52044de54a6991080b4bb40f9e53935a9ce. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_EFFECTIVE_NATIVE_REMAINDER_CC37_20261008.md); [definitions](TERMINOLOGY_RPB108_EFFECTIVE_NATIVE_REMAINDER.md). Concurrent handoffs preserved.
+
+NIST DLMF5.9.13 and 0<=1/(1-exp(-u))-1/u<=1 imply |psi(1/4+i*pi*xi)-log(1/4+i*pi*xi)|<=4. The real logarithmic comparison is log(sqrt(x^2+(1/(4pi))^2)/(e+x)), whose absolute value is <4 by Cauchy-Schwarz, pi<22/7 and 8/3<e<3. Therefore the actual archimedean remainder obeys |r_arch(xi)|<8 globally, without a sampled tail cutoff.
+
+At B<=21/20, rational exponential enclosures prove exp B<3 and exp(2B)<9. Every possible active prime power lies in2,3,4,5,7,8; bounding all six gives coefficient sum<12093/3740. Retaining both translations and both pole terms yields ||R_B||<8+2(12093/3740)+16/3=111079/5610<20. This supplies an actual effective native constant, not a bounded physical representation of full logarithmic Q.
+
+IP7's sufficient Schur gate can now use eta<1/20 and finite native eigenvalue>400eta/(1-20eta), but no projection, tail or finite matrix is evaluated and no gate is certified. CC34's physical mass lower bound can use denominator20. The absolute constant does not produce an old-defect factor or either CC35 correlation estimate.
+
+13 new rational enclosures and25,972 inherited checks pass, total25,985. The digamma inequality is analytic from its primary integral, not an actual critical covariance or Lean certificate. Positivity stays21/20 even0/odd0, margin1/(3*10^63); original outward suppression, RH/F4 and Lean closure remain open.
