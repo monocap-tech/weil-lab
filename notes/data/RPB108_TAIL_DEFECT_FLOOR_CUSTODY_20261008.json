@@ -1,0 +1,30 @@
+{
+  "global_base": "08b2cd74a850ff46ae79c3f40ed47fc0c56665cf",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_TAIL_REPAIR_20261008.md": "f2cc0351405774cec9536fca82b088d5e59631d3",
+    "scripts/validate_native_archimedean_tail_repair.py": "eb89ad98dfa8e88bee1877b72f834fbb4a3a2e91",
+    "notes/data/RPB108_ARCH_CUTOFF32_WITNESSES_20261008.json": "41d0c413727bd5d27f11a95bf4cc3e25f789c7db",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CONTINUOUS_KERNEL_20261008.md": "8262fc3227cbd9f31c153333c810403eaf023fd2"
+  },
+  "coupled_read_only_commit": "26b361958d137da6e3178f99d47d0cbc2898e9c5",
+  "coupled_read_only_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_TAIL_RETENTION_CC6_20261008.md": "47a25d4a457e28377792b15bba362edc0e664479",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARITHMETIC_RELATIVE_LOSS_CC4_20261008.md": "1356cdb9301a0cbe029cfc7e81759975a110f439"
+  },
+  "artifact_blobs": {
+    "docs/TERMINOLOGY_RPB108_TAIL_DEFECT_FLOOR.md": "cfcbffc3d01bac541ef572abb0efe898867c756a",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TAIL_DEFECT_FLOOR_20261008.md": "c3e0ac2bcbc9c692f605ecacb5d06452747553dd",
+    "scripts/validate_native_tail_defect_floor.py": "3134deed6b9e871cb77e697c4af5deab7d713e0f",
+    "notes/data/RPB108_TAIL_DEFECT_FLOOR_VALIDATION_20261008.json": "290329dfe7157e4b31e19cbda3faea6bf38f465c"
+  },
+  "exact_checks": 620,
+  "proof": "nonnegative finite partial-fraction remainder, supported translation telescoping, and canonical dilation continuity",
+  "comparison_scope": "NF65 even finite lower repair; auxiliary defect channel explicitly not an actual divisor",
+  "supported_physical_floor_cap_21_20": ">2/10^50",
+  "new_original_negative_vector": false,
+  "original_contact_hypothesis": "conditional only; no existence asserted",
+  "relative_loss_nondivergence_proved": false,
+  "new_original_aperture_certificate": false,
+  "lean_certified": false,
+  "other_branch_writes": false
+}

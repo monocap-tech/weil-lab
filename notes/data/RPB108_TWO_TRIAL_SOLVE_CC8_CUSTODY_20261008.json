@@ -1,0 +1,60 @@
+{
+  "stage": "CC8 actual three-source two-trial complement solve",
+  "base_coupled": "2386b78360d55d44b74c2998f1e321323e3ff1da",
+  "shared_reconciled": "48fef33ca0cede19d81a91f8f357153372498436",
+  "registry_before_load_bearing_use": true,
+  "dependency_git_blobs": {
+    "scripts/certify_native_coupled_trial_cc3.py": "9b0860dd7faf44ebd23cae709705f54bb22fc4f8",
+    "scripts/certify_native_prime8_schur112_105.py": "f2e00a3b410fc336944fca60151228a18d47001b",
+    "scripts/certify_native_legendre_small_window.py": "bb12496ea82d118e2da36ee74318ea7285eeede9",
+    "scripts/certify_native_endpoint_log_gram.py": "1765f1c0dee348b93c65fa5cc75ca5738a7c2f68",
+    "scripts/certify_native_prime8_translation_panels_105.py": "dfb3cd5721684e62b7889163bc75437114f226b4",
+    "scripts/certify_native_prime8_source112_engine_105.py": "3ba23e0a584c2a419c2408a4c81399fc5240d13b",
+    "notes/data/RPB108_PRIME8_SCHUR112_105_CERTIFICATE_20261008.json": "bdc1199c54bb1286a108cf0eb407371d707ec244",
+    "notes/data/RPB108_COUPLED_TRIAL_CC3_CERTIFICATE_20261008.json": "97d5a56983ebd58e474698f5dc1c3d624d86ba0b"
+  },
+  "actual_sources_reconstructed": [
+    "saved witness even part with bounded normalization substitution",
+    "rational physical Legendre degree 112",
+    "rational physical Legendre degree 114"
+  ],
+  "original_prime_powers": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "both_signed_pole_slots_retained": true,
+  "translation_panels": 13,
+  "integration_degree": 1228,
+  "all_retained_projection_degrees_removed": "0..111",
+  "native_pairing_audits": 56,
+  "new_source_symmetry_audits": 3,
+  "independent_cc3_pairing_overlap_audits": 4,
+  "exact_genuine_complement_control_cases": 12,
+  "actual_inverse_credit_more_than_doubled": true,
+  "original_completed_direction_strict_lower": "135/10^34",
+  "actual_first_shifted_head_plus_whole_original_inverse_tail_strict_lower": "5/10^33",
+  "actual_shifted_solve_head_error_retained": true,
+  "head_precision_equal_to_cc7_series_tail_claimed": false,
+  "full_112_column_inverse_action_map": false,
+  "whole_target_schur_sign": false,
+  "new_aperture_certificate": false,
+  "original_relative_loss_nondivergence_bound": false,
+  "original_native_archive_decoded_and_hash_checked": true,
+  "full_source_gram_archives_replayed": false,
+  "paused_refs_moved": false,
+  "paused_work_launched": false,
+  "lean_certified": false,
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_TWO_TRIAL_SOLVE.md": "1086a537eb6e6acec89cbd3914df0342436e4e4d7449be9d0750756660a49785",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TWO_TRIAL_SOLVE_CC8_20261008.md": "4316939d9f0156f938c63dc728fdb26f0a14cf8e8de3164e206f037079a368bf",
+    "scripts/certify_native_two_trial_solve_cc8.py": "790cdbd6f3600733ac1e82eb5dc78520d1b9030964985cae27dc9a3413b3129f",
+    "scripts/validate_native_two_trial_solve_cc8.py": "6107aada036f3de63775d492684c3930ddcc4cdf4dbb8533d11e26aef6dba1fe",
+    "notes/data/RPB108_TWO_TRIAL_SOLVE_CC8_CERTIFICATE_20261008.json": "2debc89c2043889f5dce8ac0cc66cf71fcfc7be471f2ff726d9f74d605d25f08",
+    "notes/data/RPB108_TWO_TRIAL_SOLVE_CC8_VALIDATION_20261008.json": "f72d690003c1142959a57e3d0ab34d50ad441d1f3436a608bb7efc137c7b0d88"
+  },
+  "next_actual_input": "Extend actual trial action/mixed pairing certification toward a whole retained-source map; the remaining shifted-head residual must be paid before using the small infinite-series tail budget."
+}
