@@ -1,0 +1,317 @@
+{
+  "date": "2026-10-08",
+  "front": "PS2 localized Schur interface",
+  "shadow_base": "ea6431655705351b37e14a51945e5d630b7d94dc",
+  "shared_initial": "1b5db1dc92717e7e0dcd85341ac1494de97c0b70",
+  "shared_prepublication": "fba75ed4eda84f0c71286f314f85b0d29db0202a",
+  "dependencies": {
+    "scripts/certify_native_legendre_small_window.py": "bb12496ea82d118e2da36ee74318ea7285eeede9",
+    "scripts/certify_native_prime7_schur112_100.py": "56ac88f7ccbb7ecee6424cc292c7438bfcc4615f",
+    "scripts/validate_native_prime7_whole112_100.py": "aad7ddd54759b643cdc0db19c2c57b62fcc316fb",
+    "notes/data/RPB108_PRIME7_SCHUR112_100_CERTIFICATE_20261007.json": "c9288f4b6ec2468f301a795a5387e5aadd0720e6",
+    "notes/data/RPB108_PRIME7_WHOLE112_100_VALIDATION_20261007.json": "9f7a99ccce08775c6797ab9f7ef8e3fe224d3c08",
+    "notes/data/RPB108_PRIME7_112_PREFLIGHT_100_CERTIFICATE_20261007.json": "253fe9ef6b2b235deb3f1f8f0ca129d1c44c04d5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRECONTACT_SHADOW_PS1_20261008.md": "daf10212886a18e790671daa50ae4a80807b5153"
+  },
+  "decoded_input_hashes": {
+    "gram": "92d8c18811ef4fbfc749c376c3a756a08be29df235f89f10ba27834d1bc8a580",
+    "native": "c0898e2625a8ced3b17844e13238e001b3adeb3c12d6f6e5949fb79b401e5cd4",
+    "source": "e56e68bab1898d0277e03ddb68d1e913f397113e899e46647fea19e57d8b37c7"
+  },
+  "archive_parts": [
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part001",
+      "blob": "fb3563b26a02c47e4202ba4da0228d31e7805190"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part002",
+      "blob": "8c3f0191dafd095c3e7d712c262a7deb581d2709"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part003",
+      "blob": "3f8eaff1e59be0cf9ac70c091717e6537dde4deb"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part004",
+      "blob": "70f35432f28a07f8e8b206a862e9f88712e054ee"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part005",
+      "blob": "7a5eb9d63948f09c996302816a8c1c7e27dfd58b"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part006",
+      "blob": "e2c24fd1585d011a995f2e3c9e1370c766174cc8"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part007",
+      "blob": "fe3f9f28a9edc4eb05d1032de5c62314f58c30d2"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part008",
+      "blob": "c711ad14add872d8479872a34eea01173a66f521"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part009",
+      "blob": "62bb3de1239320f9eaaa7df5c1e01827b043babe"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part010",
+      "blob": "2bff581b262653e529d281e76188ec89515ce331"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part011",
+      "blob": "cdb5d495a34049a4db2f9bef505d5ed18abbce30"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part012",
+      "blob": "3f5af50044f05e582a1b3d3e273fff90e79a5a69"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part013",
+      "blob": "9ff2c2c6cca1d0fa86cc98428edb29f18b544a03"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part014",
+      "blob": "c4b865fc311a71a6047569447a58ad9400f3a61f"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part015",
+      "blob": "c987f36d50bbfa716d438b27acc750cb0a783e8c"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part016",
+      "blob": "2f83912596d9a5189194848f86efe4fc94102434"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part017",
+      "blob": "64ac73a1af7a7d6ac3a1b1f376e92a761685999a"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part018",
+      "blob": "239770a7d29dc97fe38e4302a3d525e30cecff7d"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part019",
+      "blob": "ce4167a62506dbbc3565583cac542130ec963be4"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part020",
+      "blob": "49574620db08017e242a949b22f6715701c23c8e"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part021",
+      "blob": "956152f163a1ae7234f2179900e53f769e8044ca"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part022",
+      "blob": "5dc42fee42c385acb2e04395dbfb8482627243e7"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part023",
+      "blob": "f8b3a22b867b61d6576f6fbfab48a03a5eadcc09"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part024",
+      "blob": "dc70d40b5238c7663f5fdff021756858fd87affa"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part025",
+      "blob": "3f0c36f06e5cde1e0f162edb60fbccc55a82c6f8"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part026",
+      "blob": "dcee9c1a90348c8e7798ca98701ac20f848c7f83"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part027",
+      "blob": "70a9e47a11d50eb32ff124a241e9cf80eed5316d"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part028",
+      "blob": "655ceae0db0e358705d19b1fd4c4b24b66a3f6d8"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part029",
+      "blob": "6a0f5a897ee3d0e0309245a2c1bf235bc5cabb7d"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part030",
+      "blob": "a96da51e3c46e359d2bcf1e3e8f7b78101e86a58"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part031",
+      "blob": "4c4d16466aedbe299da26eb1a352f657375154ac"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part032",
+      "blob": "3d63a87a2fdf1446e90d29bf88cad4b807ec1118"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part033",
+      "blob": "3ed2255e58a155bbd088560e1061f886ecff58a7"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part034",
+      "blob": "2fa0a9094387ba07614f58367efdb703ff43739a"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part035",
+      "blob": "ef684683b002d021a77620a9cc8d9ad47af2afe9"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part036",
+      "blob": "2a683f02c189e42f329cb6113a8494259c93dfe4"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part037",
+      "blob": "9ab5d59dbf4bade0786f7d321476fb571d35a661"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part038",
+      "blob": "d878547d6a5ed9b9be4b48e07d697da687da9778"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part039",
+      "blob": "ae0d9fe42dbe0c65a440c62b0e796b625eb34336"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part040",
+      "blob": "3548e29e8bdd62136b39f9ddb55ed5c9d06b9dff"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part041",
+      "blob": "d2b984dd0b1885685c6f6482e39b35eee8b9313a"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part042",
+      "blob": "33876cde9f09f9bc60d79b01d0f24229998b11f7"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part043",
+      "blob": "96d3ab8f3d78623fa4b8980b5252b66f43e1bd6d"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part044",
+      "blob": "f0522d94a5d697c270aaee24eb129e01cb50f1c9"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part045",
+      "blob": "68ed65fee564cd26fa065679d2284786656e6314"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part046",
+      "blob": "4e12c31883446c14615550c1474e96c98fe88b95"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part047",
+      "blob": "21d20f06ea92b9700a195f816cece59213a66f1a"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part048",
+      "blob": "6678695b68a02665d37ddc48c41caad50e0388b5"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part049",
+      "blob": "c4526d10d0640d116cb81812958e41fb1c21e621"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part050",
+      "blob": "2b5d2b8d88cf50c8f2f42039456e54a99a82aa32"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part051",
+      "blob": "cdcf992572fe75c719157d8714eb3780164943a1"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part052",
+      "blob": "e84b2780ec85798331c4f25e351dee8107c165ec"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part053",
+      "blob": "e27619dbab299e6cdf6d4a709098c01655b9a8d9"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part054",
+      "blob": "e4391b1d65c3dad548d508e25b110e592c8df45d"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part055",
+      "blob": "40a810940f7e6331cf6cf70e3a3cd954df79d065"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part056",
+      "blob": "f37ea7c755f3011a3235ca330b284457176b7f34"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part057",
+      "blob": "dfaa7b73cd118d697e324057a4b51ba26e0a779a"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part058",
+      "blob": "93e00ee68e77d9e8c376cb1d1f813b35fc8d85f3"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part059",
+      "blob": "099d1e4a9eaa66ea12253e003d48ad49af1ae1a5"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part060",
+      "blob": "7cfbd1db1a8a93b30886583e91ffbe266aaa0d4c"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part061",
+      "blob": "28fd4527b929cc4c61071250557d0d98d33af932"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_GRAM112_100_CERTIFICATE_20261007.json.gz.b64.part062",
+      "blob": "9ce31fc3d1db1fa87ac0fd7913f53dfa5cd0bcc6"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_MATRIX112_100_COMPACT80_20261007.json.transport.b64.part001",
+      "blob": "cb1301453a723920f15c42802907390a2a11ad3b"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_MATRIX112_100_COMPACT80_20261007.json.transport.b64.part002",
+      "blob": "92733235edc5cefe47d24880490fa0c4f0cea489"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_MATRIX112_100_COMPACT80_20261007.json.transport.b64.part003",
+      "blob": "3a85ea0c0d3cff0ab0eda6ebb75013694bdf3f28"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_MATRIX112_100_COMPACT80_20261007.json.transport.b64.part004",
+      "blob": "812072802d1927480fe2492acfded05f614d2f5f"
+    },
+    {
+      "path": "notes/data/RPB108_PRIME7_MATRIX112_100_COMPACT80_20261007.json.transport.b64.part005",
+      "blob": "748b08f7c4c527f81bcd7cfd57232dbb92ff5fbc"
+    }
+  ],
+  "concurrent_notes": {
+    "NF57": {
+      "commit": "1b5db1dc92717e7e0dcd85341ac1494de97c0b70",
+      "blob": "8c978a2d69f6a6b7a4953ac910afb9d830549e73"
+    },
+    "NF58": {
+      "commit": "fba75ed4eda84f0c71286f314f85b0d29db0202a",
+      "blob": "b75b7449c306c36e8d95eea6cb0e882c68daf6fa"
+    }
+  },
+  "all_matched_gram_entries_restored": true,
+  "new_matched_gram": false,
+  "interval_grid_digits": 100,
+  "original_tau": "1/320000000000000000000000000000",
+  "original_tau_rechecked": true,
+  "negative_upper_pivot_controls": [
+    "1e-28",
+    "1e-29"
+  ],
+  "margin_barrier_scope": "conservative corrected finite comparison matrix only; not actual physical eigenvalues",
+  "finite_block_control_checks": 83,
+  "new_useful_aperture": false,
+  "new_actual_gain_bound": false,
+  "analytic_proofs_written": true,
+  "lean_certified": false,
+  "stop": "Absolute block perturbation reimports the tiny complement budget; require original coupled inverse-complement control or an independently proved complete smeared lower bound."
+}
