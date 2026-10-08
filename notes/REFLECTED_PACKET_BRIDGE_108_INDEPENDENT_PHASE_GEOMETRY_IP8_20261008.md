@@ -97,3 +97,30 @@ No target-specific source, complement or retained native matrix has been numeric
 ## 5. Reproduction
 
 The committed `scripts/validate_native_prime8_ip8_feasibility.py` is self-contained Python 3 standard-library `fractions.Fraction`, `math.isqrt`, `math.factorial`. Its exact tests and outputs were executed independently and cover the logarithm thresholds, six-prime lower remainder sum, `r_B>57/5`, and the R>3e9 necessary budget. These controls validate the stated arithmetic gates; they do not reconstruct or certify a numerical original Weil operator at the target.
+
+## 6. Concurrent CC37 effective remainder update (supersedes previous "r_* unevaluated" context)
+
+Coupled advanced concurrently to CC37, commit `6637fd08c6cb7b97a2f69e019810c5699a29090e`, proving `|r_arch(\xi)|<8` for all real frequencies using the actual digamma integral. Its stated full remainder estimate `r_B<20` is explicitly proved there for B<=21/20. **The proof extends to the new fixed B=53/50** without modifying any source: the only two cap facts it needs are `e^B<3` and `e^{2B}<9`, which follow from the exact IP8 bounds `B<log3` and `2B<log9`. Thus the same six original prime powers, the same coefficient rational uppers and both pole moments yield
+\[
+ r_B<8+2(12093/3740)+16/3
+    =111079/5610<20.
+ \tag{IP8.4}
+\]
+This is a new justified EXTENSION in scope of CC37's effective bound to a=53/50, not a new evaluation of the true `||R_B||` or the signed target matrix.
+
+For an immediately usable conservative IP7 implementation take `r_{\rm eff}=20`. Its own sufficient Schur gate is
+\[
+ \lambda_{\min}(A_F)>400\eta/(1-20\eta),\quad20\eta<1.
+\]
+Since `||Q_B||<=1+r_{\rm eff}=21`, this gate can be nonvacuous only if
+\[
+ \eta<\frac{21}{820},\qquad
+ \log(e+R)>\frac{820}{21}>39
+\]
+for the generic IP7 `eta=\tau+1/\log(e+R)`. An exact 100-term rational exponential lower sum proves `e^{39}>8\times10^{16}+3`. Since `e<3`, the **specific CC37-effective-r=20 generic certificate** necessarily requires
+\[
+ \boxed{R>8\times10^{16}.} \tag{IP8.5}
+\]
+This much stronger floor is a statement about the *chosen conservative effective budget 20*, not a universal lower bound for better adapted bases or sharper proven norm bounds. It supersedes the practical cutoff of 3e9 when one elects this explicit 20-envelope; the earlier 3e9 remains a general necessary condition for the exact CC33 symbolic unsigned budget. Neither cutoff proves that any particular retained native matrix would pass.
+
+The revised self-contained IP8 exact-rational validator checks (IP8.4)-(IP8.5) as well as the original chamber and cutoff claims. All are standalone arithmetic/inequality tests; no new native Weil aperture sign is claimed.
