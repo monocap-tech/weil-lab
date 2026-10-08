@@ -1,0 +1,17 @@
+# RPB108 — NF12 exact complete signed native low16 at aperture 53/50 (read-only handoff)
+
+2026-10-08. Live Coupled branch recovered at `be361775252c10596843df57dc99e18f9e68da92`, including new boundary-contact/dilation hypothesis and the earlier CC39 analytic research. This publication is an **additive cross-front note only**; it does not alter ongoing Coupled contact work or its source reports.
+
+Independent complete native finite result: [NF12 low16 report](https://github.com/monocap-tech/weil-lab/blob/research/rpb108-phase-geometry-localization/notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_LOW16_NF12_20261008.md), [exact complete signed native producer](https://github.com/monocap-tech/weil-lab/blob/research/rpb108-phase-geometry-localization/scripts/certify_native_low4_nf12_106.py), [16-mode full interval/shifted LDL certificate](https://github.com/monocap-tech/weil-lab/blob/research/rpb108-phase-geometry-localization/scripts/certify_native_low16_nf12_106.py), [manifest](https://github.com/monocap-tech/weil-lab/blob/research/rpb108-phase-geometry-localization/notes/data/RPB108_NF12_FULL_NATIVE_LOW16_CERTIFICATE_106_20261008.json).
+
+**Actual source arithmetic and result:** Independently reconstructed ORIGINAL complete native Weil form at a=53/50 on the first SIXTEEN normalized physical Legendre modes (eight even, eight odd). Archimedean logarithmic/digamma original kernel, every active prime power 2,3,4,5,7,8 in both shift orientations, and BOTH signed Hermitian pole terms are included. 72 distinct same-parity intervals; all even-odd crosses vanish exactly. Exact rational kernel/endpoint moments (130 exponential terms, 100 Bernoulli pairs, 20 gamma terms) yield individual original native entry interval widths at most ~3.553e-19. Independent Fourier truncated-check and pre-existing NF11 exact prime-only low8 overlap agree as appropriate.
+
+Exact rational midpoint matrix rounded at 1e-32, with full symmetric whole-16 error <=2.843e-18, passes all 16 shifted rational LDL pivots when diagonal shift is 6e-13. Thus the ACTUAL original signed finite low16 restriction satisfies
+
+    Q_53/50(h) >= (1/2000000000000) ||h||_physical^2 for h in E16.
+
+This is a genuine finite trial-space positivity certificate **only**. It does not imply original native E112 positivity, the physical F112 complement coupling, or any full-aperture sign. The bound c_F112>=17/100 established by NF10 remains intact but cannot simply be combined with E16, because the remaining 96 retained directions and the complete mixed source Schur reaction are outstanding.
+
+**Next independent gate NF13:** Build complete native batches through at least 24 or 32, audit interval widths and exact rational LDL pivots (which become very small), then finish all 112 retained native modes. Reconstruct target-specific source and action Gram with all original errors and complete corrected even56/odd56 infinite-complement Schur under NF10's independently valid c=17/100 (or sharpen it). A failed sufficient Schur bound is inconclusive and not an actual negative Weil vector.
+
+**Status/custody:** Highest internally certified whole-domain original aperture stays a=21/20 (CC18). Original 1.06 F112 complement is positive (NF10) and E16 trial is positive (NF12), but whole-domain target sign unproved. No RH/F4, global non-stalling, full transport or Lean result follows. Coupled remains sole active integration frontier; Global NF71 and Pre-Contact Shadow PS3 remain paused; no force update or overwritten historical source.
