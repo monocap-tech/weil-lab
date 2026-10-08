@@ -112,3 +112,7 @@ CC29's endpoint criterion only requires a cap-uniform vanishing modulus of the f
 The metric localization problem is strictly weaker than RH and might have standalone results, but by itself it has no way to discriminate original negative-source contact. We do not claim that actual zeta's M commutator is small for these packet projections, that critical rows are packet localized, or that new cap-effective constants exist. The fixed-test phase decay in IP1 does not verify a whole-column operator norm.
 
 No new aperture, RH/F4, full transport, Lean theorem, actual critical covariance, or global non-stalling follows. Coupled remains sole active integration; Global NF71, Aperture and Shadow PS3 remain paused. Continue only if a new ACTUAL arithmetic estimate for j_i and its complete residual is available; otherwise classify packet localization as a structural tool, not an RH breakthrough.
+
+## 6. Exact finite control validation
+
+The reproducible script [`scripts/validate_native_phase_packet_ip2.py`](../scripts/validate_native_phase_packet_ip2.py) exercises 10 exact rational assertions: the signed crossing budget, old/source gap, full negative direction, full-inverse-mediated coupling, rank-two operator-variance identity, complete positive-inverse trial residual, and two-dimensional packet Schur bound. The assertions have been independently executed with Python `fractions.Fraction` and pass. This validates those finite algebra controls only; it does not prove the infinite-dimensional analytic assertions, actual arithmetic covariance, or Lean attachment.
