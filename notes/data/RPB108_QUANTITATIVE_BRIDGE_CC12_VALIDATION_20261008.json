@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "complete_mixed_covariance_bridge_cases": 16,
+  "positive_cases": 8,
+  "negative_cases": 8,
+  "protected_source_crossing_checks": 36,
+  "critical_graph_and_entire_incoming_shell_controls": 12,
+  "unchanged_physical_form_source_conditioning_controls": 4,
+  "original_positive_eigenmode_shift_control": true,
+  "cc4_replayed_exact_controls": 4489,
+  "cc4_control_counts": {
+    "shell_completion": 729,
+    "determinant_accumulation": 216,
+    "crossing_source": 3475,
+    "positive_level": 36,
+    "complement_gate": 5,
+    "source_prefix": 2,
+    "prime_dictionary": 26
+  },
+  "independent_actual_trial_row_overlap_audits": 64,
+  "three_plane_metric_recomputed": true,
+  "entire_109_quotient_uniform_residual_template_obstructed": true,
+  "classification": "C",
+  "nonpositive_dimension_upper_preserved": 107,
+  "certified_whole_aperture_preserved": "1",
+  "global_or_paused_refs_modified": false
+}

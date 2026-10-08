@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-08",
+  "global_parent": "4bee7981306b8fa1d0bd1c1f5648b82bcf9087f7",
+  "coupled_read_only_head": "ec25e9c817ba229c0266fdcbc7b71e6e0f8803fb",
+  "cc9_source_head": "faa030e98bd0bcf4826a3044b241d25e64d739b2",
+  "input_sha256": {
+    "native": "0499d604127a76afcea90f314e09824e2f327c43a01b8aa2471e2d797c51b7f8",
+    "cc9": "0cf8e112392400e31d47c522f515ece0f1ca292f2153c2f14a6463975336d5a8",
+    "old_schur": "acc49e34698a82ddf1c15ccb97dfe5289cae835cab6c6e9a2972c1ddbf0f9009",
+    "cc3": "ddb1c0edb3765a48a32595878f541786b9cd1e13d95c9adaf1dc0eee68decdd1",
+    "nf70": "4941d5e8d6e40a34c211df94f29eadd0c4862cce5c2c571157006873bf0997b3",
+    "fresh_degree114": "2888882bf8f81ee6222378f06e17f5d29ea9dafaf36a502ab06fb1146283239a"
+  },
+  "published_sha256": {
+    "scripts/certify_native_degree114_row_nf71.py": "4c4dde3ed05f95a3ae0f77eb1d89bf2692abfedcdec290a096183e15e5002c6e",
+    "scripts/certify_native_correlated_weak_row_two_trial_nf71.py": "5d492844fedd1daa83e6b32ec82d4316ac4be537222d218c3f78aa793def38a1",
+    "scripts/validate_native_correlated_weak_row_nf71.py": "c667d6d1c9b74f488b58cbc6412c33330c2fdf7f687af7e40c863dbdddda9fb9",
+    "notes/data/RPB108_DEGREE114_NATIVE_ROW_NF71_CERTIFICATE_20261008.json": "2888882bf8f81ee6222378f06e17f5d29ea9dafaf36a502ab06fb1146283239a",
+    "notes/data/RPB108_CORRELATED_WEAK_ROW_NF71_CERTIFICATE_20261008.json": "3558fa6f74d6ff044e265c23d0e8a11839dae330ba12bf90afc4fc0b9c0c9cde"
+  },
+  "imported_cc3_certificate_blob": "97d5a56983ebd58e474698f5dc1c3d624d86ba0b",
+  "imported_cc3_helper_blob": "9b0860dd7faf44ebd23cae709705f54bb22fc4f8",
+  "source_degree114_actually_computed": true,
+  "source_panels": 13,
+  "source_primitive_degree": 728,
+  "original_source_slots_preserved": true,
+  "compact_native_actually_decoded_and_hash_checked": true,
+  "full_binary_gram_and_source_archives_replayed": false,
+  "fresh_degree114_independent_overlaps": 4,
+  "consumer_compatibility_audits": 6,
+  "consumer_audits_shared_with_producer": 2,
+  "whole_remaining_matrix_sign": false,
+  "whole_odd_form_positive": false,
+  "new_whole_aperture": false,
+  "arithmetic_nondivergence": false,
+  "lean_certified": false,
+  "other_refs_written": false
+}

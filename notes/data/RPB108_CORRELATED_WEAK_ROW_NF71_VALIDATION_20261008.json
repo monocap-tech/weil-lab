@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "exact_checks": 76,
+  "genuine_mixed_operator_cases": 18,
+  "complete_residual_retained": true,
+  "odd_positivity_not_inferred": true,
+  "lean_certified": false,
+  "new_zeta_bound_from_controls": false
+}
