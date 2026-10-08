@@ -1,0 +1,16 @@
+{
+  "checks": 1297,
+  "passed": true,
+  "scope": "finite rational algebra and scalar budget controls only",
+  "budget_numerator": 48000000000000000000000000000000000121,
+  "budget_denominator": 1000000000000000000000000000000000000000000000000000000000000000000000000,
+  "radius_representation": "2^(-10^36); not instantiated",
+  "illustrative_decimal_values_not_interval_certificates": {
+    "prime8_threshold": "1.03972077083991796412584818218726485211325020154038288118102",
+    "arch_budget_at_threshold": "0.194760937632500274827869786158398335588634878126944672801683",
+    "arch_budget_to_delta_ratio": "973804688162501374139348930791991.677943174390634723364008415"
+  },
+  "actual_spectral_computation": false,
+  "analytic_certification": false,
+  "lean_certification": false
+}

@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "checks": 1605,
+  "outcome": "B: conditional joint theorem",
+  "actual_graph_computed": false,
+  "new_actual_aperture": false,
+  "new_actual_gain_constant": false,
+  "interval_archives_replayed": false,
+  "analytic_proof_written": true,
+  "lean_certified": false,
+  "scope": "finite rational graph, Schur, mass, gain, residual, crossing and threshold controls"
+}
