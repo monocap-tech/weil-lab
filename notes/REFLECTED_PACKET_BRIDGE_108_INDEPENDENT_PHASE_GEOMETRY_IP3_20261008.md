@@ -1,6 +1,6 @@
 # RPB108 — Independent phase geometry IP3: old-packet annihilation and outgoing-shell Gram certificate
 
-Date 2026-10-08. Independent continuation of IP2 (latest initial head \`4e225b006c75486e8c9743dc709bf31ea6b3155c\`), read-only actual Coupled CC20 and CC31. **Result A:** exact quotient/shell operator identities and finite packet Gram + full-dual residual certificate. **Result C:** a packet trial confined to the old support has exactly zero CC20 forced pairing and cannot approximate the full inverse representer in the positive-source metric. No new actual arithmetic suppression, aperture, RH/F4, or Lean proof is claimed. Most of the quotient identities were ALREADY present in CC20; the explicit packet certificate and stopping rule clarify their proper use rather than claiming a new source-shell theorem.
+Date 2026-10-08. Independent continuation of IP2 (latest initial head `4e225b006c75486e8c9743dc709bf31ea6b3155c`), read-only actual Coupled CC20 and CC31. **Result A:** exact quotient/shell operator identities and finite packet Gram + full-dual residual certificate. **Result C:** a packet trial confined to the old support has exactly zero CC20 forced pairing and cannot approximate the full inverse representer in the positive-source metric. No new actual arithmetic suppression, aperture, RH/F4, or Lean proof is claimed. Most of the quotient identities were ALREADY present in CC20; the explicit packet certificate and stopping rule clarify their proper use rather than claiming a new source-shell theorem.
 
 ## 1. Setup and completely forced quotient orthogonality
 
@@ -28,7 +28,7 @@ For ANY old-support trial z=iv in iD_s, the positive-metric orthogonality is exa
 \[
 \|P_t(u_i-z)\|^2=\|P_tu_i\|^2+\|P_s v\|^2.
 \]
-Equivalently, \`||j_i-M_t z||_{M_t^{-1}}^2 = ||j_i||_{M_t^{-1}}^2+||P_t z||^2\`. A trial confined to the old domain makes the exact inverse residual WORSE; no amount of modulating its frequency changes \`J_i(z)=0\`. The finite packet variational lower test restricted to D_s has optimum 0 at z=0. This is NOT a proof that the coarse upper estimate from IP2 never happens to improve numerically; it is a precise orthogonality obstruction to approximating the actual Riesz solution.
+Equivalently, `||j_i-M_t z||_{M_t^{-1}}^2 = ||j_i||_{M_t^{-1}}^2+||P_t z||^2`. A trial confined to the old domain makes the exact inverse residual WORSE; no amount of modulating its frequency changes `J_i(z)=0`. The finite packet variational lower test restricted to D_s has optimum 0 at z=0. This is NOT a proof that the coarse upper estimate from IP2 never happens to improve numerically; it is a precise orthogonality obstruction to approximating the actual Riesz solution.
 
 ## 2. Exact quotient Schur and support-aware shell lift
 
@@ -46,18 +46,18 @@ and the exact full dual norm is
 \boxed{\langle j_i,M_t^{-1}j_i\rangle
    =\langle\xi_i,S^{-1}\xi_i\rangle.}
 \]
-The minimizer over old corrections for an incoming canonical vector w in W_0 is \`(-A^{-1}Bw,w)\`; this identifies the quotient metric with the physical source shell \`V_t\ominus V_s\`.
+The minimizer over old corrections for an incoming canonical vector w in W_0 is `(-A^{-1}Bw,w)`; this identifies the quotient metric with the physical source shell `V_t\ominus V_s`.
 
 In original CC20 notation, the positive-metric projection is
 \[
 R_s=i M_s^{-1}i^*M_t,\quad M_s=i^*M_t i.
 \]
-For ANY supported test f in D_t, define \`z_f=(I-R_s)f\`. Then \`z_f\in Z_{st}\`,
+For ANY supported test f in D_t, define `z_f=(I-R_s)f`. Then `z_f\in Z_{st}`,
 \[
  J_i(z_f)=J_i(f),\qquad
  \|P_tz_f\|=\inf_{v\in D_s}\|P_t(f-iv)\|.
 \]
-It is FALSE to replace \`z_f\` with a physical indicator of the exterior strip: the positive projection can have old-window corrections, and the canonical logarithmic Hilbert metric is nonlocal. The exact projection above was inherited from CC20, not newly discovered by IP3.
+It is FALSE to replace `z_f` with a physical indicator of the exterior strip: the positive projection can have old-window corrections, and the canonical logarithmic Hilbert metric is nonlocal. The exact projection above was inherited from CC20, not newly discovered by IP3.
 
 ## 3. Finite outward packet Gram: a rigorous lower AND conditional upper certificate
 
@@ -66,7 +66,7 @@ Choose finitely many smooth f_a in C_c^infinity(-t,t) with support not necessari
 \Gamma_{ab}=\langle P_tz_a,P_tz_b\rangle,\quad
 v_a=J_i(z_a)=J_i(f_a).
 \]
-Then, with complex inner-product convention consistently adopted, the finite-shell restricted dual norm is \`L_E=v^*\Gamma^\dagger v\`. The finite optimal positive-metric packet trial \`u_E\in E\` satisfies \`J_i(e)=\langle P_tu_E,P_te\rangle\` for all e in E, and \`||P_tu_E||^2=L_E\`. The FULL forced-row norm has an exact orthogonal energy split:
+Then, with complex inner-product convention consistently adopted, the finite-shell restricted dual norm is `L_E=v^*\Gamma^\dagger v`. The finite optimal positive-metric packet trial `u_E\in E` satisfies `J_i(e)=\langle P_tu_E,P_te\rangle` for all e in E, and `||P_tu_E||^2=L_E`. The FULL forced-row norm has an exact orthogonal energy split:
 \[
 \boxed{
 \|J_i\|_{P_t^*}^2
@@ -90,16 +90,16 @@ uniformly over old strictly source-positive s and nearby t in each finite cap. N
 
 ## 4. Exact source controls
 
-**Positive-metric nontrivial model.** On H_t=C^2, let old H_s=span(e1), M=[[2,1],[1,2]], j=e2. Then \`u=M^-1j=(-1/3,2/3)\` lies in outgoing positive-orthogonal shell span((-1/2,1)), even though it has a nonzero OLD CANONICAL coordinate. The quotient Schur is 3/2, and the exact norm is 2/3. For old trial z=a e1, \`||P(u-z)||^2=2/3+2|a|^2\`. The finite new packet f=e2 orthogonalizes to (-1/2,1), and the one-packet Gram already captures the full 2/3 norm.
+**Positive-metric nontrivial model.** On H_t=C^2, let old H_s=span(e1), M=[[2,1],[1,2]], j=e2. Then `u=M^-1j=(-1/3,2/3)` lies in outgoing positive-orthogonal shell span((-1/2,1)), even though it has a nonzero OLD CANONICAL coordinate. The quotient Schur is 3/2, and the exact norm is 2/3. For old trial z=a e1, `||P(u-z)||^2=2/3+2|a|^2`. The finite new packet f=e2 orthogonalizes to (-1/2,1), and the one-packet Gram already captures the full 2/3 norm.
 
-**Genuine signed reaction in a complete finite source control.** On H_t=C^2 with P=I, N=(3/4,3/4), old H_s=span(e1), the old source eigenvalue is lambda=9/16, defect delta=7/16. The actual forced functional formed from its old lift is \`J(f)=-(9/16) f_2\`. Its full dual norm is \`81/256\`, and division by lambda gives incoming critical covariance 9/16, old-defect-relative shell cost 9/7>1. The forced solution is entirely outgoing and the enlarged original-style Q has a negative direction. Thus outgoing-shell identification alone does NOT supply defect-relative decay.
+**Genuine signed reaction in a complete finite source control.** On H_t=C^2 with P=I, N=(3/4,3/4), old H_s=span(e1), the old source eigenvalue is lambda=9/16, defect delta=7/16. The actual forced functional formed from its old lift is `J(f)=-(9/16) f_2`. Its full dual norm is `81/256`, and division by lambda gives incoming critical covariance 9/16, old-defect-relative shell cost 9/7>1. The forced solution is entirely outgoing and the enlarged original-style Q has a negative direction. Thus outgoing-shell identification alone does NOT supply defect-relative decay.
 
 **Omitted-shell tail model.** On C^3 with
 \[
 M=\begin{pmatrix}1&0&1/2\\0&1&1/2\\1/2&1/2&1\end{pmatrix},
 \quad j=(0,1,1),\quad H_s={\rm span}(e1),
 \]
-the packet E=span(e2) is already outgoing. Its restricted Gram norm is 1; the full inverse norm is 3/2; the exact complementary tail is 1/2. With \`m_B=1/4\`, the conservative bound is \`1<=3/2<=2\`. An incomplete packet certificate can therefore underestimate the true covariance despite correct normalization and exact full positive metric.
+the packet E=span(e2) is already outgoing. Its restricted Gram norm is 1; the full inverse norm is 3/2; the exact complementary tail is 1/2. With `m_B=1/4`, the conservative bound is `1<=3/2<=2`. An incomplete packet certificate can therefore underestimate the true covariance despite correct normalization and exact full positive metric.
 
 All models are finite exact controls, NOT modifications of the actual zeta divisor or alternative assignments satisfying the same native explicit formula. No evidence for actual contact is claimed.
 
@@ -107,6 +107,10 @@ All models are finite exact controls, NOT modifications of the actual zeta divis
 
 **Positive advance:** a mathematically sound finite outward-shell packet certificate and a clear whole-residual upper-bound procedure, with exact quotient geometry. **Negative decision:** the old-window smooth modulations considered in IP1/IP2 are invisible to the CC20 forced row, even though they provide perfectly valid ordinary Fourier localization estimates. Sampling ever more old packets is not progress on the defect-relative residual.
 
-This checkpoint does not derive an arithmetic upper bound on any actual critical row. The next feasible independent experiment is to construct smooth OUTWARD test packets crossing the old support boundary, source-orthogonalize using \`R_s\`, and compute their *native mixed* forced pairings with the actual old generalized lift. Such a computation still requires actual critical h_i data and a complete dual tail bound before it becomes a certificate.
+This checkpoint does not derive an arithmetic upper bound on any actual critical row. The next feasible independent experiment is to construct smooth OUTWARD test packets crossing the old support boundary, source-orthogonalize using `R_s`, and compute their *native mixed* forced pairings with the actual old generalized lift. Such a computation still requires actual critical h_i data and a complete dual tail bound before it becomes a certificate.
 
 Source custody: CC20's forced-row kernel/quotient identities, CC27's native exterior forcing, CC29's vanishing-modulus endpoint test, CC31's finite cap-uniform critical rank. Coupled remains the sole active integration frontier; Global NF71, Aperture and Shadow PS3 remain paused. No new aperture beyond 21/20, RH/F4, transport or Lean closure.
+
+## 6. Reproducible finite control validation
+
+The reproducible [IP3 exact rational validator](../scripts/validate_native_phase_packet_ip3.py) has been executed and passes **24 exact rational assertions**. It checks a nontrivial positive metric, forced-row/old-support orthogonality, exact outgoing quotient Gram, exact original-style 9/7 crossing cost, omitted-shell tail and a conservative whole-dual residual enclosure. These checks do not certify the actual zeta forced row or any infinite-dimensional theorem in Lean.
