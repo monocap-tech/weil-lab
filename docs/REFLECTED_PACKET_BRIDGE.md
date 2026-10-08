@@ -3455,3 +3455,64 @@ remain open. Global, Aperture and Pre-Contact Shadow remain paused.
 [source archive](../notes/data/RPB108_TERMINAL_ODD_CC17_SOURCE_20261008.json.gz),
 [validation](../notes/data/RPB108_TERMINAL_ODD_CC17_VALIDATION_20261008.json),
 [custody](../notes/data/RPB108_TERMINAL_ODD_CC17_CUSTODY_20261008.json).
+
+
+## RPB108 CC18: original odd closure; whole-domain aperture21/20 (2026-10-08)
+
+[Definitions](TERMINOLOGY_RPB108_ODD_CLOSURE.md) and
+[report](../notes/REFLECTED_PACKET_BRIDGE_108_ODD_CLOSURE_CC18_20261008.md).
+Coupled base `8bf67e1bb474d2b9e836b100d5fbaf2b8e93d892`.
+
+**B: the whole original odd block closes, and the remaining retained sign
+obligation is even0 / odd0. Whole-domain original Weil positivity is now
+internally certified through a=21/20=1.05.** CC16's whole even closure is
+inherited; its historical theorem and CC17's former zero-crossing bracket
+remain immutable snapshots.
+
+CC18 constructs71 original odd sources:55 ordinary retained coordinates,
+and the fixed16 complementary actions of degrees113,115,...,143. With
+CC17's precise weak source, this is one complete72-source frame. The weak
+vector's degree-one coefficient is nonzero and its actual physical mass
+is retained. All2628 distinct Gram pairs, all896 action/retained crosses,
+all13 panels, powers2,3,4,5,7,8, both signed poles, every112-coordinate
+projection and every physical source error are retained.
+
+The entire original correlated inverse matrix envelope passes all56
+retained odd pivots. Its consumer-format assembly pays all compact input
+endpoints before the credit products and the entire weighted interval
+matrix error. Independent validation reintegrates every72-source Gram
+entry at interval grid600, passes44,375 exact checks and replays2906 CC13
+inverse/covariance and original positive-eigenmode full-mass controls.
+The71 source constructors run freshly once; the second consumer reuses
+their byte-bound source polynomials and freshly replays ALL Gram entries.
+
+The ACTUAL original terminal odd scalar has conservative displayed bounds
+1.8614 <= sigma <= 2.4358. The complete scaled odd55 plus infinite-complement
+inverse reaction is enclosed near2.6579*10^-29 to8.4004*10^-29, below the
+native budget near2.70149193515*10^-28. Its exact inverse value is not
+assumed or evaluated. These are complete original Schur bounds, not native
+diagonal positivity or a shifted-null inference.
+
+Infinite complementary-square attachment certifies the entire odd physical
+margin1/6608000000000000000000000000000000. Joined with the inherited whole
+even margin, the entire original domain has physical lower1/(3*10^63) and
+canonical lower mu/[10*(mu+26)]. The positive slice has codimension0 and the
+original nonpositive spectral dimension upper is0 at this aperture.
+Historical codimension107 and codimension1 theorems remain valid weaker
+results.
+
+This exits the fixed-aperture terminal-remainder gate. The single next
+Coupled obligation is reusable original reaction/continuation control,
+accumulated RELATIVE Schur loss and non-stalling. A fixed aperture is not
+RH/F4/full transport or Lean closure. Global, Aperture and Pre-Contact
+Shadow remain paused dependencies; no whole-even/odd restart, indefinite
+degree growth or old endpoint/Abel/spectral/prime/cutoff investigation occurs.
+
+[Complete matrix manifest](../notes/data/RPB108_ODD_FRAME_CC18_CERTIFICATE_20261008.json),
+[validation](../notes/data/RPB108_ODD_FRAME_CC18_VALIDATION_20261008.json),
+[joined summary](../notes/data/RPB108_JOINED_CC18_SUMMARY_20261008.json),
+[custody](../notes/data/RPB108_JOINED_CC18_CUSTODY_20261008.json).
+All complete matrix data are in12 hashed, individually recoverable gzip
+parts. Source caches are recreated by the committed fixed source precache
+tool. CC16's large even archive and the old full SOURCE112/GRAM112 archives
+are not freshly replayed in this milestone.
