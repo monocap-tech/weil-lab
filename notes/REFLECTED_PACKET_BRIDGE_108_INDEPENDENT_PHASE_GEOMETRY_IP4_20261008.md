@@ -1,6 +1,6 @@
 # RPB108 — Independent phase geometry IP4: exterior-shell test completeness and native forcing
 
-Date: 2026-10-08. Parent independent IP3 (`cda12d48` is the previous IP1-era branch, and the live IP3 note is at `cda12d48`'s successors; do not use those older cursors as a branch reset). Coupled analytic dependency: CC20, CC27, CC29, CC31; active Coupled last observed research head CC31 `00dfd25de49cb62c05caba8b365d7efaa7ea91ee`. This is an independent analytic checkpoint, not a new CC theorem, new aperture, new RH claim, or Lean certification.
+Date: 2026-10-08. Parent independent IP3: `cda12d48a595475d3fe0f2492fd8f2b0a6167cbc` (the prior independent branch head). Coupled analytic dependency: CC20, CC27, CC29, CC31; active Coupled last observed research head CC31 `00dfd25de49cb62c05caba8b365d7efaa7ea91ee`. This is an independent analytic checkpoint, not a new CC theorem, new aperture, new RH claim, or Lean certification.
 
 ## 1. The complete exterior quotient is accessible in the genuine logarithmic norm
 
@@ -96,3 +96,7 @@ uniform with cap-only fixed critical band and positive step as in CC29–CC31.
 **Next meaningful experiment:** On an aperture with independently available ACTUAL critical lifts h_i and the complete normalized source dictionary, evaluate the right- and left-exterior kernel integrals (5), subtract the full positive-source correlation (6), source-orthogonalize both-sided outward smooth packets, and certify a WHOLE omitted-packet dual tail. In absence of such h_i or such a global dual-tail enclosure, stop and do not claim arithmetic progress.
 
 No change to the internally certified original aperture 21/20, to RH/F4 or Lean standing. Coupled is sole active integration. Paused Global NF71 and Pre-Contact Shadow PS3 are untouched.
+
+## 5. Exact finite-control validation
+
+The committed [IP4 exact rational validator](../scripts/validate_native_exterior_packet_ip4.py) was independently executed: **21 exact rational assertions passed**. It validates full positive-metric inversion, source-normalized old generalized lift, two one-sided shell packet energies and their complete sum, and an actual negative direction of the generic finite-source control. This is not a machine proof of the logarithmic density theorem, CC27's analytic native kernel, or any actual zeta critical source estimate.
