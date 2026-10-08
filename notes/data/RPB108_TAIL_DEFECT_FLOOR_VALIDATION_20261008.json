@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "exact_checks": 620,
+  "N": 32,
+  "even_corrections": 16,
+  "uniform_supported_floor_at_cap_21_20_strict_lower": "2/10^50",
+  "floor_budgets": [
+    {
+      "aperture_cap": "1",
+      "translation_steps": 4,
+      "kappa_numerator": "43",
+      "kappa_denominator": "953727568345960426301385208510033398107222864560128"
+    },
+    {
+      "aperture_cap": "21/20",
+      "translation_steps": 5,
+      "kappa_numerator": "43",
+      "kappa_denominator": "1490199325540563166095914388296927184542535725875200"
+    },
+    {
+      "aperture_cap": "2",
+      "translation_steps": 8,
+      "kappa_numerator": "43",
+      "kappa_denominator": "3814910273383841705205540834040133592428891458240512"
+    },
+    {
+      "aperture_cap": "10",
+      "translation_steps": 40,
+      "kappa_numerator": "43",
+      "kappa_denominator": "95372756834596042630138520851003339810722286456012800"
+    }
+  ],
+  "original_witnesses_reused": 2,
+  "new_original_negative_vector": false,
+  "hypothetical_contact_only": true,
+  "new_aperture_certificate": false,
+  "arithmetic_relative_loss_nondivergence_proved": false,
+  "lean_certified": false
+}
