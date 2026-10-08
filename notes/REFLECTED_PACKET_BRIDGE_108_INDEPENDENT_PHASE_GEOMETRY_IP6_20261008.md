@@ -113,3 +113,7 @@ No unweighted zero-frequency lower Riesz frame, per-height transverse density pr
 The next genuinely discriminatory arithmetic problem is to establish that, for every possible P-normalized contact-mode limit h and fixed exterior packet f, the complete Weil native mixed form enforces Q_t(h,f)=0 — while CC29 proves it would have to be nonzero. That would close RH, and currently no such arithmetic cancellation is proved. Alternatively, a concrete **new restricted theorem** might bound selected actual native exterior pairings without universalizing to RH. Do not present the finite-dimensional witness or compactness as that missing estimate.
 
 Coupled remains active. Global NF71, Aperture and Shadow PS3 remain paused. CC35 remains the live Coupled mathematical parent. No new a>21/20 certificate, RH/F4, transport or Lean closure.
+
+## 6. Exact finite-control validation
+
+The reproducible [IP6 rational validator](../scripts/validate_native_critical_witness_ip6.py) was independently executed. **200/200 exact Fraction assertions passed**, testing the rank-one compact contact model, first-contact normalization, fixed exterior test, near-critical old lifts, omitted-shell energy and relative-gain divergence. These computations validate only the finite model formulas. The actual-zeta finite-rank approximation theorem and conditional finite-witness theorem are analytic deductions from inherited infinite-dimensional results, not proved by these tests or formalized in Lean.
