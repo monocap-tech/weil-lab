@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "finite_checks": 42,
+  "scope": "finite moment/sign/error algebra only; PNT limit is analytic"
+}
