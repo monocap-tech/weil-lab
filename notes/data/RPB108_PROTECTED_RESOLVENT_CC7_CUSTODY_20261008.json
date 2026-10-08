@@ -1,0 +1,40 @@
+{
+  "stage": "CC7 whole protected complement inverse budgets and actual completed-Schur transfer",
+  "base_coupled": "26b361958d137da6e3178f99d47d0cbc2898e9c5",
+  "shared_reconciled": "08b2cd74a850ff46ae79c3f40ed47fc0c56665cf",
+  "registry_before_load_bearing_use": true,
+  "source_auditor_definition_read": true,
+  "complete_source_error_retained": true,
+  "dependency_git_blobs": {
+    "scripts/certify_native_prime8_schur112_105.py": "f2e00a3b410fc336944fca60151228a18d47001b",
+    "notes/data/RPB108_PRIME8_SCHUR112_105_CERTIFICATE_20261008.json": "bdc1199c54bb1286a108cf0eb407371d707ec244",
+    "notes/data/RPB108_COUPLED_TRIAL_CC3_CERTIFICATE_20261008.json": "97d5a56983ebd58e474698f5dc1c3d624d86ba0b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_TAIL_RETENTION_CC6_20261008.md": "47a25d4a457e28377792b15bba362edc0e664479"
+  },
+  "signed_tail_error_strict_upper": "2/10^61",
+  "whole_original_graph_mass_upper": "133",
+  "whole_exact_schur_error_strict_upper": "3/10^59",
+  "actual_completed_comparison_direction_strict_lower": "624/10^35",
+  "whole_inverse_head_terms": 129,
+  "whole_schur_inverse_tail_strict_upper": "2/10^37",
+  "whole_shifted_inverse_head_evaluated": false,
+  "whole_schur_sign_certified": false,
+  "scalar_inverse_controls": 96,
+  "mixed_complement_controls": 81,
+  "positive_head_wrong_sign_control_rejected": true,
+  "original_source_and_prime_threshold_identity_preserved": true,
+  "positive_eigenlevel_shift_preserved": true,
+  "native_source_gram_constructor_replayed": false,
+  "new_aperture_certificate": false,
+  "original_relative_loss_nondivergence_bound": false,
+  "lean_certified": false,
+  "paused_refs_moved": false,
+  "paused_work_launched": false,
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_PROTECTED_RESOLVENT.md": "fc816a0c120ecb40a7eea7afb4741a4641b5a043fab809ad955483c36219d153",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PROTECTED_RESOLVENT_CC7_20261008.md": "2aeb3c7dcbe00991ccc23a5e5f124a4757a7a9205b7ed5a274fdb710e672cf3f",
+    "scripts/certify_native_protected_resolvent_cc7.py": "7d76532ff3b4417f68c9a59d00e9aaf4a649794df0fd134f6097a832aa4b01b2",
+    "notes/data/RPB108_PROTECTED_RESOLVENT_CC7_CERTIFICATE_20261008.json": "a9f9ce8e011bdb8f811dbb3277db92b5fa98e49a86b9b4a5652340cf040b3268"
+  },
+  "next_required_actual_input": "Certified whole shifted-complement inverse actions on all retained source columns with full mixed pairing matrix and head-action errors; subtract the evaluated inverse tail before any full sign inference."
+}
