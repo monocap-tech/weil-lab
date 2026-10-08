@@ -1,0 +1,31 @@
+{
+  "stage": "NF12 exact rational full native low16 at 53/50",
+  "aperture": "53/50",
+  "basis": "normalized L2 Legendre degrees 0..15",
+  "retained_dimension": 16,
+  "parity_even": 8,
+  "parity_odd": 8,
+  "mixed_even_odd": "identically zero by original reflection symmetry",
+  "nonzero_same_parity_interval_entries": 72,
+  "original_components": [
+    "archimedean digamma-log native contribution",
+    "all prime powers 2 3 4 5 7 8 with both translation directions",
+    "Hermitian signed poles"
+  ],
+  "original_native_interval_max_width": "3552936773459795881688745972555442325709/10000000000000000000000000000000000000000000000000000000000",
+  "middle_matrix_rounding_denominator": "100000000000000000000000000000000",
+  "max_midpoint_entrywise_error": "1776468386729955483420347120511010700077/10000000000000000000000000000000000000000000000000000000000",
+  "whole16_operator_error_upper": "1776468386729955483420347120511010700077/625000000000000000000000000000000000000000000000000000000",
+  "midpoint_shift": "3/5000000000000",
+  "certified_exact_shifted_LDL_positive_pivots": 16,
+  "certified_full_native_low16_lower": "1/2000000000000",
+  "interval_parts_sha256": "7ea8e19ee74a56bd89c28c4d24f5313cb22f93c04dfaa851c6031718482532a5",
+  "source_producer": "scripts/certify_native_low4_nf12_106.py",
+  "source_validator": "scripts/certify_native_low16_nf12_106.py",
+  "whole_native112_rebuilt": false,
+  "source_action_gram": false,
+  "corrected_schur_on_whole_aperture": false,
+  "whole_original_weil_positive_at106": false,
+  "RH_F4": false,
+  "lean": false
+}
