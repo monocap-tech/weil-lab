@@ -116,3 +116,7 @@ No new aperture, RH/F4, full transport, Lean theorem, actual critical covariance
 ## 6. Exact finite control validation
 
 The reproducible script [`scripts/validate_native_phase_packet_ip2.py`](../scripts/validate_native_phase_packet_ip2.py) exercises 10 exact rational assertions: the signed crossing budget, old/source gap, full negative direction, full-inverse-mediated coupling, rank-two operator-variance identity, complete positive-inverse trial residual, and two-dimensional packet Schur bound. The assertions have been independently executed with Python `fractions.Fraction` and pass. This validates those finite algebra controls only; it does not prove the infinite-dimensional analytic assertions, actual arithmetic covariance, or Lean attachment.
+
+## Subsequent checkpoint
+
+[IP3 — old-packet annihilation and outgoing-shell Gram certificate](REFLECTED_PACKET_BRIDGE_108_INDEPENDENT_PHASE_GEOMETRY_IP3_20261008.md) shows that old-aperture packets have **exactly zero** CC20 forced pairing, even when they localize ordinary source correlations well. The valid next trial space is the positive-source-orthogonal incoming quotient; its finite Gram supplies only a lower bound until the entire omitted canonical dual residual is enclosed. These statements reuse CC20's exact source-shell projection and do not claim new actual-zeta arithmetic suppression.
