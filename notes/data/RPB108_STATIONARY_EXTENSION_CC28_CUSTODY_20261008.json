@@ -1,0 +1,103 @@
+{
+  "stage": "CC28",
+  "base_commit": "8ab98d8e1086ba8809460cfbdca3851ee2893336",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "inputs": {
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": {
+      "bytes": 6096,
+      "sha256": "3ae164cb108777099c6582686866e5fbd85fc501eab9e15bea60ef8215690a81",
+      "git_blob_sha": "961b6742782fa3f808ac9b70cfadfc0790c8fc32"
+    },
+    "WeilDefect/Morphology/NeutralWeilMultiplier.lean": {
+      "bytes": 5227,
+      "sha256": "502bdaf2cc31302d10f471b411f0105a3a9fed942aa8621c037ff1d4678d4f3c",
+      "git_blob_sha": "4c24084c8a058cbb6685d54bc8226b746cabc413"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md": {
+      "bytes": 10794,
+      "sha256": "8a97099032b77dcdf1cdd8bf38c9d1eae0bedc6eaa3e41c4ac968d17e007e854",
+      "git_blob_sha": "09f8a679e7df15e6f5f160ce3c94950df826aa8d"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_CANDIDATE_CC21_20261008.md": {
+      "bytes": 14392,
+      "sha256": "dc90c4bd8a6a216f35a83dbc8b75bcc97fc5f5bbb207d63a3a23476bea528c7e",
+      "git_blob_sha": "6bd5e45114dd0c2498785e4b1eea40b5f1fdde8d"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": {
+      "bytes": 13662,
+      "sha256": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+      "git_blob_sha": "da2dab5958dd65381bca285c7ff9082d571e6dd8"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md": {
+      "bytes": 14203,
+      "sha256": "994b3f98faaf287ecb175bd8364728957ba12abd6426dba3cd5392d72408dab5",
+      "git_blob_sha": "25c6e2736cc4e0fdfec8d8832c3f6e24827d4d06"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FLUX_CC27_20261008.md": {
+      "bytes": 12270,
+      "sha256": "ba6e7c65e83ab32e38c3cea603f1719844a98064ee5d4de39c763260bfde3cb2",
+      "git_blob_sha": "e9a44661f94ee6750fc5ad1fbf7dc719fa3ba482"
+    },
+    "scripts/validate_native_flux_cc27.py": {
+      "bytes": 5334,
+      "sha256": "51561aecfc0e1f5f0a6599eef77982805cb07e70d56c750f74068291effbc3a7",
+      "git_blob_sha": "3b7eee67e02302d30de526d467633dba88a76781"
+    },
+    "notes/data/RPB108_NATIVE_FLUX_CC27_VALIDATION_20261008.json": {
+      "bytes": 1597,
+      "sha256": "bb401eb8bb4cb031366c094a0e7dfb2d96f43158f0d971c31750b25d8190cf63",
+      "git_blob_sha": "ad663dce5c9d92586fd728c0f9319013077372a2"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 677511,
+      "sha256": "f83f74daa66896d3b5ec733f909d41de724b908419128a57d3d4c273290634a9",
+      "git_blob_sha": "f8766f66a49196111ab89d79a116f66408925a1f"
+    }
+  },
+  "bridge_prefix": {
+    "bytes": 677511,
+    "sha256": "f83f74daa66896d3b5ec733f909d41de724b908419128a57d3d4c273290634a9",
+    "git_blob_sha": "f8766f66a49196111ab89d79a116f66408925a1f"
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_STATIONARY_EXTENSION.md": {
+      "bytes": 1767,
+      "sha256": "a41f436ee6f8789c1b3a84b3f49812a61f57add610bb36c4bcba1f243c20671f",
+      "git_blob_sha": "5a6a735891aa6498a4837528425103bf81ebb33f"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_STATIONARY_EXTENSION_CC28_20261008.md": {
+      "bytes": 14161,
+      "sha256": "c5d7a528a6e86f97c636d10a2176827be58d68215a589c58fe45f4c5cbd8360b",
+      "git_blob_sha": "e965dc92a562704bb4e6154e230a9d1864a40fae"
+    },
+    "scripts/validate_native_stationary_extension_cc28.py": {
+      "bytes": 4066,
+      "sha256": "60c73188bef01f8d5a2ce396288c2440c9219e1293a68470301888d3ed39483b",
+      "git_blob_sha": "b809a6559eafef62ab98ca99f0db24be89c845e8"
+    },
+    "notes/data/RPB108_STATIONARY_EXTENSION_CC28_VALIDATION_20261008.json": {
+      "bytes": 3484,
+      "sha256": "75bccfb363b1c41074c9df03428123d33f928a59790d14463c44db98410d90df",
+      "git_blob_sha": "f3d95105ee8dd6f7fb3cd5381ade13c61ec65c75"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 680525,
+      "sha256": "7559ff8da66cc3c2a00c02d65cf69d6f8d16cd7382b16bb4423f716519eaa5ce",
+      "git_blob_sha": "b668f09603f8719c05ea7071a813aa79c0364bf0"
+    }
+  },
+  "external_sources": [
+    {
+      "uri": "https://arxiv.org/pdf/1212.3047",
+      "pin": "arXiv:1212.3047v3, 2013-12-31, Corollary 7.9 / Theorem 7.11",
+      "scope": "scalar continuous local PD extension; no prescribed native identification or matrix/distribution transfer"
+    },
+    {
+      "uri": "https://dlmf.nist.gov/5.11.E2",
+      "pin": "NIST DLMF 5.11.2, checked 2026-10-08",
+      "scope": "digamma vertical-ray asymptotic; no evaluated high-tail cutoff"
+    }
+  ],
+  "scope": "new native nonanalyticity theorem is analytic, not Lean-certified; no actual critical covariance bound, RH proof or full-identity independence"
+}

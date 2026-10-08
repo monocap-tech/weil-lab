@@ -1,0 +1,81 @@
+{
+  "stage": "CC28 stationary translation / analytic extension",
+  "all_passed": true,
+  "new_counts": {
+    "finite_difference": 80,
+    "correlation_derivative": 9,
+    "outward_crossing": 49,
+    "full_shift": 6
+  },
+  "new_exact_checks": 144,
+  "inherited_cc27_checks": 24604,
+  "total_exact_checks": 24748,
+  "analytic_theorem": "nonzero compact canonical-domain vector has native stationary correlation nonanalytic at0",
+  "analytic_theorem_lean_certified": false,
+  "positive_extension_identified_with_native": false,
+  "genuine_crossing_translation_examples": [
+    {
+      "u": "255/256",
+      "old_defect": "511/65536",
+      "shift": "255/4096",
+      "mixed_entry_upper": "-1126594553/35433480192",
+      "scope": "genuine differential ground translation; not zeta"
+    },
+    {
+      "u": "4095/4096",
+      "old_defect": "8191/16777216",
+      "shift": "4095/65536",
+      "mixed_entry_upper": "-356025715193/9070970929152",
+      "scope": "genuine differential ground translation; not zeta"
+    },
+    {
+      "u": "65535/65536",
+      "old_defect": "131071/4294967296",
+      "shift": "65535/1048576",
+      "mixed_entry_upper": "-92226572413433/2322168557862912",
+      "scope": "genuine differential ground translation; not zeta"
+    },
+    {
+      "u": "16777215/16777216",
+      "old_defect": "33554431/281474976710656",
+      "shift": "16777215/268435456",
+      "mixed_entry_upper": "-6048878747028318713/152185638608103800832",
+      "scope": "genuine differential ground translation; not zeta"
+    },
+    {
+      "u": "4294967295/4294967296",
+      "old_defect": "8589934591/18446744073709551616",
+      "shift": "4294967295/68719476736",
+      "mixed_entry_upper": "-396420525407382301862393/9973638011820690691325952",
+      "scope": "genuine differential ground translation; not zeta"
+    },
+    {
+      "u": "281474976710655/281474976710656",
+      "old_defect": "562949953421311/79228162514264337593543950336",
+      "shift": "281474976710655/4503599627370496",
+      "mixed_entry_upper": "-1702613212431230194710793773672953/42836449082912327935376594716065792",
+      "scope": "genuine differential ground translation; not zeta"
+    },
+    {
+      "u": "18446744073709551615/18446744073709551616",
+      "old_defect": "36893488147419103231/340282366920938463463374607431768211456",
+      "shift": "18446744073709551615/295147905179352825856",
+      "mixed_entry_upper": "-7312668065130967559484223759923299217861113/183981147887877640917669675749348982424338432",
+      "scope": "genuine differential ground translation; not zeta"
+    }
+  ],
+  "actual_critical_covariance_evaluated": false,
+  "defect_relative_bound_proved": false,
+  "actual_zeta_bound_disproved": false,
+  "full_identity_independence_proved": false,
+  "RH_proved": false,
+  "new_aperture": false,
+  "negative_source_height_moment_theorem_claimed": false,
+  "input_sha256": {
+    "scripts/validate_native_flux_cc27.py": "51561aecfc0e1f5f0a6599eef77982805cb07e70d56c750f74068291effbc3a7",
+    "notes/data/RPB108_NATIVE_FLUX_CC27_VALIDATION_20261008.json": "bb401eb8bb4cb031366c094a0e7dfb2d96f43158f0d971c31750b25d8190cf63",
+    "WeilDefect/Morphology/NeutralWeilMultiplier.lean": "502bdaf2cc31302d10f471b411f0105a3a9fed942aa8621c037ff1d4678d4f3c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md": "8a97099032b77dcdf1cdd8bf38c9d1eae0bedc6eaa3e41c4ac968d17e007e854"
+  },
+  "constructor_sha256": "60c73188bef01f8d5a2ce396288c2440c9219e1293a68470301888d3ed39483b"
+}
