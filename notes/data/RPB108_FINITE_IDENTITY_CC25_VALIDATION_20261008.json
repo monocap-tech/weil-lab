@@ -1,0 +1,56 @@
+{
+  "stage": "CC25 exact local identity rigidity versus quantitative stability",
+  "all_passed": true,
+  "new_counts": {
+    "vandermonde": 72,
+    "paired_normalization": 258,
+    "conditioning": 160,
+    "full_mass": 348
+  },
+  "new_exact_checks": 838,
+  "inherited_cc24_checks": 22492,
+  "total_exact_checks": 23330,
+  "finite_vandermonde_cases": 18,
+  "conditioning_examples": [
+    {
+      "j": 2,
+      "location_separation": "1/4",
+      "moment_error_sup": "9/8",
+      "required_inverse_norm_lower": "2/3"
+    },
+    {
+      "j": 12,
+      "location_separation": "1/4096",
+      "moment_error_sup": "8193/8388608",
+      "required_inverse_norm_lower": "2048/3"
+    },
+    {
+      "j": 24,
+      "location_separation": "1/16777216",
+      "moment_error_sup": "33554433/140737488355328",
+      "required_inverse_norm_lower": "8388608/3"
+    },
+    {
+      "j": 41,
+      "location_separation": "1/2199023255552",
+      "moment_error_sup": "4398046511105/2417851639229258349412352",
+      "required_inverse_norm_lower": "1099511627776/3"
+    }
+  ],
+  "classification": "A: exact mixed-form identity excludes every nonzero finite reflected divisor alteration; C: this qualitative rigidity does not yield uniform relative leakage",
+  "finite_perturbation_full_identity_counterexample_possible": false,
+  "uniform_arithmetic_relative_bound_certified": false,
+  "actual_zeta_bound_disproved": false,
+  "complete_Weil_logical_independence_proved": false,
+  "new_aperture": false,
+  "global_nonstalling": false,
+  "lean_certified": false,
+  "whole_domain_anchor": "21/20 even0/odd0 inherited",
+  "input_sha256": {
+    "scripts/validate_native_pair_correlation_cc24.py": "3f575aac626b0b0d74e2e43f3015e59df65b903db250fad136aa2cd882d39e25",
+    "notes/data/RPB108_PAIR_CORRELATION_CC24_VALIDATION_20261008.json": "53a721b6d1e77999530e24f47425746bc0cbf828df3f6812e2cf921ce9513e0d",
+    "WeilDefect/Arithmetic/ActualZetaSourceDecomposition.lean": "a4db93f352f15d84e03bb2ca81c5b1f50e2839e8e57bf2e579e3763ceb9cb9f8",
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "3ae164cb108777099c6582686866e5fbd85fc501eab9e15bea60ef8215690a81"
+  },
+  "constructor_sha256": "8110d67e6cb66f4b2c14f52f7d2933ba927f79faeef873b82ea0440458120afc"
+}

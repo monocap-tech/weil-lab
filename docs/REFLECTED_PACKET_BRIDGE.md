@@ -3578,3 +3578,16 @@ A complete physical hyperbolic dictionary pulse control keeps the infinite criti
 22,492 exact checks pass: 1,656 new kernel/pulse/strip/relative/full mass checks and 20,836 inherited CC23 checks including genuine crossings. No actual critical covariance evaluation or new Lean theorem. Stop the scalar averaged-correlation shortcut absent a new actual adaptive weighted theorem.
 
 Original whole-domain anchor remains 21/20 even0/odd0, joined physical margin 1/(3*10^63). RH/F4, retained attachment, reusable continuation, accumulated finite-cap loss and Lean remain open. Global paused at NF71; Aperture and Pre-Contact Shadow paused. No new aperture.
+
+
+## CC25 — exact local native identity rigidity (2026-10-08)
+
+Coupled parent: 4c6b0e8caf1b67d666eaa61c2fdc223a0bbd3b8b. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_FINITE_IDENTITY_CC25_20261008.md); [definitions](TERMINOLOGY_RPB108_FINITE_IDENTITY.md).
+
+New analytic theorem: two complete reflection-symmetric divisor dictionaries with only finite difference cannot share the SAME native mixed form on every compact smooth test in any open aperture unless that difference is zero. Lawful mixed-series subtraction leaves a finite entire difference kernel. Local vanishing and an exact complex Vandermonde system force every changed multiplicity to vanish. Thus the CC24 location perturbations are excluded as full-native-identity counterexamples, even on a small aperture; their averaged-statistic limitation remains valid.
+
+The theorem is qualitative. Coalescing finite locations make approximate coefficient recovery arbitrarily unstable. No critical-line reference dictionary with the same actual native form is established, and uniqueness supplies no old-defect factor for J M_t^(-1)J*. The actual all-cap relative covariance implication remains unresolved; no logical independence from the complete Weil identities or actual zeta counterexample is claimed. The full positive-level physical mass channel cannot be represented by a finite exponential-kernel alteration.
+
+23,330 exact checks pass: 838 new complex determinant/recovery, partner normalization, stability and full-mass rank checks, plus 22,492 inherited CC24 checks including genuine crossings. Analytic theorem, not new Lean certification or actual critical-covariance evaluation. Stop finite-alteration/qualitative-uniqueness shortcuts absent a new actual quantitative correlation estimate.
+
+Original anchor remains 21/20 even0/odd0, joined physical margin 1/(3*10^63). RH/F4, retained attachment, reusable continuation, accumulated finite-cap relative loss and Lean remain open. Global paused at NF71; Aperture and Pre-Contact Shadow paused. No new aperture.

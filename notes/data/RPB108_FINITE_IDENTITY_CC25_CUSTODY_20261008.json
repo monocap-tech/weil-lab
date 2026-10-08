@@ -1,0 +1,56 @@
+{
+  "stage": "CC25",
+  "base_commit": "4c6b0e8caf1b67d666eaa61c2fdc223a0bbd3b8b",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "inherited_input_git_blobs": {
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "961b6742782fa3f808ac9b70cfadfc0790c8fc32",
+    "WeilDefect/Arithmetic/ActualZetaSourceDecomposition.lean": "3031098da4785b0b0f22202a34af9a067f5a8a6e",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "033303f7135350915e2f70b7b6dc94c1c2c530a9",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "da2dab5958dd65381bca285c7ff9082d571e6dd8",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PAIR_CORRELATION_CC24_20261008.md": "924845cd6e8cd271f8ec505cea3c8e01b1df08a4",
+    "notes/data/RPB108_PAIR_CORRELATION_CC24_VALIDATION_20261008.json": "10071c03f782dfd1331627260d6511c666b53610",
+    "scripts/validate_native_pair_correlation_cc24.py": "e29cc95abefbc6913017abdfc6cc0d0470e657c6"
+  },
+  "input_sha256": {
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "3ae164cb108777099c6582686866e5fbd85fc501eab9e15bea60ef8215690a81",
+    "WeilDefect/Arithmetic/ActualZetaSourceDecomposition.lean": "a4db93f352f15d84e03bb2ca81c5b1f50e2839e8e57bf2e579e3763ceb9cb9f8",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PAIR_CORRELATION_CC24_20261008.md": "fbc6f41626bf50d99a3f9c6bc0723170ced4d0ab97d357c17bbece8ccc26e530",
+    "notes/data/RPB108_PAIR_CORRELATION_CC24_VALIDATION_20261008.json": "53a721b6d1e77999530e24f47425746bc0cbf828df3f6812e2cf921ce9513e0d",
+    "scripts/validate_native_pair_correlation_cc24.py": "3f575aac626b0b0d74e2e43f3015e59df65b903db250fad136aa2cd882d39e25"
+  },
+  "bridge_prefix": {
+    "bytes": 671109,
+    "sha256": "ef0f639be9840ad7b9e792c05e9c0665190e29866c84f659ce760d7bbf130fd9",
+    "git_blob_sha": "033303f7135350915e2f70b7b6dc94c1c2c530a9"
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_FINITE_IDENTITY.md": {
+      "bytes": 1589,
+      "sha256": "bc13b32f8447e6105fc82a7ae50631145c6f40deff927962c1669f28ae5bddd6",
+      "git_blob_sha": "de5eecc3fb7f8e21a8aeea86ea6bbef2bb05711e"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_IDENTITY_CC25_20261008.md": {
+      "bytes": 10839,
+      "sha256": "a5908e996915807b03f417da3dec00fe78171b8b2199c77df7a0ecedd92d340b",
+      "git_blob_sha": "47081f8f18b67e3432057b4a9d941e16cbb59c92"
+    },
+    "scripts/validate_native_finite_identity_cc25.py": {
+      "bytes": 5766,
+      "sha256": "8110d67e6cb66f4b2c14f52f7d2933ba927f79faeef873b82ea0440458120afc",
+      "git_blob_sha": "ce55a787dbd7c7db2d8178b631e2e9306086902d"
+    },
+    "notes/data/RPB108_FINITE_IDENTITY_CC25_VALIDATION_20261008.json": {
+      "bytes": 2234,
+      "sha256": "f718fa1c7ef24d08db72c70894ab027b19d7e18a2bd4dba498abb226728a4186",
+      "git_blob_sha": "8db4dba7f63907c63766bfafa79921251597b8a3"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 673141,
+      "sha256": "c83780c5eaa6bb5941c559b01d7be38031ca71999967c2edbdb25c0ef1d9fa4d",
+      "git_blob_sha": "c46b22706a7513b1a06932808a8c89f7928c7291"
+    }
+  },
+  "scope": "analytic exact finite-native-identity rigidity and finite rational controls; no actual uniform relative covariance or formal logical independence"
+}
