@@ -1,0 +1,16 @@
+{
+  "actual_inverse_on_source_certificate_produced": false,
+  "branch": "research/rpb108-precontact-shadow",
+  "earlier_inverse_obligation": "notes/REFLECTED_PACKET_BRIDGE_108_TWENTY_GRAM_INVERSE_OBSTRUCTION_20261005.md",
+  "existing_fronts_modified": false,
+  "existing_residual_theorem": "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_SCHUR_RESIDUAL_20261005.md",
+  "global_weil_positivity": false,
+  "initial_shared_head": "fba75ed4eda84f0c71286f314f85b0d29db0202a",
+  "lean_certified": false,
+  "new_aperture_certified": false,
+  "outcome": "C: sharp information limitation of complete residual Gram plus scalar complement bound",
+  "prepublication_shared_head": "c862cf867ea30d6e8a192d424ffa259038b25884",
+  "publication": "additive fast-forward with expected-head lease",
+  "shadow_parent": "345d4f7b6f1ad0e91be7771031a875391d633ca8",
+  "stop": "reuse-only route closed; requires independently certified actual complement inverse information"
+}
