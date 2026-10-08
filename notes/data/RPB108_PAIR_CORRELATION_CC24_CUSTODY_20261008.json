@@ -1,0 +1,68 @@
+{
+  "stage": "CC24",
+  "base_commit": "4aaedf7b809660b971b40e4b8b5a05110f3a1d3a",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "inherited_input_git_blobs": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "9b9322b3c6eb35d99896f485b1bb4170c689b256",
+    "notes/REFLECTED_PACKET_BRIDGE_108_DENSITY_PHASE_CC22_20261008.md": "d544e23f4d731ef9d545b940c618f832508bdcb7",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "da2dab5958dd65381bca285c7ff9082d571e6dd8",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_BUDGET_CC23_20261008.md": "fa6696ffe96b299248e3e39daaba5ef9d94f625d",
+    "notes/data/RPB108_SIGNED_BUDGET_CC23_VALIDATION_20261008.json": "3b194a9fce41fe5a0e8d024fa8d5cf47f74d64a6",
+    "scripts/validate_native_signed_budget_cc23.py": "bc430b3a4bdd5d13507cf70fcda370d7d67e01ba"
+  },
+  "input_sha256": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_DENSITY_PHASE_CC22_20261008.md": "21dc744a5ae011cc72d6e3b86f143be302c09c5b98043f29bad2ce7bb8143b1e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_BUDGET_CC23_20261008.md": "afe0cc3d477236a209a303067e55745e5be27116a4ec03e21b87d4ef7dfc0cbb",
+    "notes/data/RPB108_SIGNED_BUDGET_CC23_VALIDATION_20261008.json": "725a529c41e81808815c8dc0520559a10b3d073bad2ec5881f0f9a26e5bfa48b",
+    "scripts/validate_native_signed_budget_cc23.py": "3e2fe3820c452e8c7478fda73559418630e6e664b1bb415ab8485d1867985d70"
+  },
+  "bridge_prefix": {
+    "bytes": 669031,
+    "sha256": "0692a19fd86915bd725d11ecdef07defdd8bf9ba3baa5f0caefa3295943aa0b9",
+    "git_blob_sha": "9b9322b3c6eb35d99896f485b1bb4170c689b256"
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_PAIR_CORRELATION.md": {
+      "bytes": 1446,
+      "sha256": "fb853ccb4ced59f3f73237d2dc4b7dbb9808aeeda37ac34d22f62e65806e3137",
+      "git_blob_sha": "e3bcb503054eff15ce7071aa67182c992dabc478"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_PAIR_CORRELATION_CC24_20261008.md": {
+      "bytes": 12722,
+      "sha256": "fbc6f41626bf50d99a3f9c6bc0723170ced4d0ab97d357c17bbece8ccc26e530",
+      "git_blob_sha": "924845cd6e8cd271f8ec505cea3c8e01b1df08a4"
+    },
+    "scripts/validate_native_pair_correlation_cc24.py": {
+      "bytes": 4359,
+      "sha256": "3f575aac626b0b0d74e2e43f3015e59df65b903db250fad136aa2cd882d39e25",
+      "git_blob_sha": "e29cc95abefbc6913017abdfc6cc0d0470e657c6"
+    },
+    "notes/data/RPB108_PAIR_CORRELATION_CC24_VALIDATION_20261008.json": {
+      "bytes": 1688,
+      "sha256": "53a721b6d1e77999530e24f47425746bc0cbf828df3f6812e2cf921ce9513e0d",
+      "git_blob_sha": "10071c03f782dfd1331627260d6511c666b53610"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 671109,
+      "sha256": "ef0f639be9840ad7b9e792c05e9c0665190e29866c84f659ce760d7bbf130fd9",
+      "git_blob_sha": "033303f7135350915e2f70b7b6dc94c1c2c530a9"
+    }
+  },
+  "external_primary": [
+    {
+      "uri": "https://arxiv.org/html/2306.04799v1",
+      "version_date": "2023-06-07",
+      "statement": "Theorem 1, (2.1), Lemma 3",
+      "scope": "unconditional normalized F, alpha [0,1]"
+    },
+    {
+      "uri": "https://arxiv.org/html/2503.15449v4",
+      "version_date": "2026-03-30",
+      "statement": "Theorem 1 and Section 4 PCC",
+      "scope": "conjectural vertical PCC gives asymptotically 100% simple critical zeros"
+    }
+  ],
+  "scope": "actual external scalar theorem, new analytic finite-perturbation and physical pulse controls; no actual adaptive covariance or full-Weil logical independence"
+}

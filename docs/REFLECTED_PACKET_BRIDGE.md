@@ -3565,3 +3565,16 @@ Exact whole-source completion yields Schur complement I-K*D_s^(-1)K. The unit wh
 20,836 exact checks pass (2,484 new, 18,352 CC22 replayed), including noncommuting whole-source completion, mixed correlation, genuine crossing and complete shifted physical mass controls. This stops the automatic signed-Gram/Cauchy-Schwarz shortcut. It does not prove formal logical independence from the complete Weil identities or disprove the actual zeta bound. Current source identities specify the required actual correlation but current proved bounds do not certify it.
 
 Whole-domain original anchor stays 21/20 even0/odd0, joined physical margin 1/(3*10^63). RH/F4, retained attachment, reusable continuation, accumulated finite-cap relative loss and Lean remain open. Global paused at NF71; Aperture and Pre-Contact Shadow paused. No new aperture or actual divisor covariance evaluation.
+
+
+## CC24 — unconditional pair correlation / finite-exception audit (2026-10-08)
+
+Coupled parent: 4aaedf7b809660b971b40e4b8b5a05110f3a1d3a. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_PAIR_CORRELATION_CC24_20261008.md); [definitions](TERMINOLOGY_RPB108_PAIR_CORRELATION.md).
+
+New actual external input inspected: Baluyot-Goldston-Suriajaya-Turnage-Butterbaugh, arXiv:2306.04799v1 Theorem 1, unconditional scalar pair correlation retaining real parts, uniform 0<=alpha<=1. Its nonnegative statistic is an unsigned Gram, not the original signed form. Our derivation proves its normalized asymptotic error tolerates a fixed reflected off-line perturbation with O(T^(-1/8)) change under |beta|<=3/8. The separately conjectural vertical PCC is also insensitive to finite modifications at its shrinking gap scale; the Goldston-Lee-Schettler-Suriajaya density-one consequence is not all-zero exclusion.
+
+A complete physical hyperbolic dictionary pulse control keeps the infinite critical-line background and all added quartet copies: background positive energy is bounded while quartet negative energy is 8A^2 sinh^2(kappa a). This is a location/dictionary transfer control, NOT an altered actual zeta divisor satisfying the native Weil explicit formula. Neither actual RH nor full-identity logical independence is inferred. The minimal adaptive original estimate remains J M_t^(-1)J*<=q Lambda G plus compatible low budget; the published scalar statements do not provide its uniformity or old-defect factor.
+
+22,492 exact checks pass: 1,656 new kernel/pulse/strip/relative/full mass checks and 20,836 inherited CC23 checks including genuine crossings. No actual critical covariance evaluation or new Lean theorem. Stop the scalar averaged-correlation shortcut absent a new actual adaptive weighted theorem.
+
+Original whole-domain anchor remains 21/20 even0/odd0, joined physical margin 1/(3*10^63). RH/F4, retained attachment, reusable continuation, accumulated finite-cap loss and Lean remain open. Global paused at NF71; Aperture and Pre-Contact Shadow paused. No new aperture.

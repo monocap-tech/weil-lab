@@ -1,0 +1,30 @@
+{
+  "stage": "CC24 unconditional pair correlation and finite-exception audit",
+  "all_passed": true,
+  "new_counts": {
+    "gram_kernel": 33,
+    "pulse_dictionary": 1143,
+    "perturbation_rate": 300,
+    "relative_loss": 180
+  },
+  "new_exact_checks": 1656,
+  "inherited_cc23_checks": 20836,
+  "total_exact_checks": 22492,
+  "classification": "A: finite perturbation stability and complete physical dictionary control; C: published averaged statistic does not supply adaptive relative covariance",
+  "external_actual_input": "Baluyot-Goldston-Suriajaya-Turnage-Butterbaugh arXiv:2306.04799v1 Theorem 1; no RH assumption",
+  "external_conjectural_comparison": "Goldston-Lee-Schettler-Suriajaya arXiv:2503.15449v4 Theorem 1 conditional on vertical PCC",
+  "finite_perturbation_uniform_normalized_error": "O(T^-1/8) on 0<=alpha<=1 for fixed added reflected copies with |beta|<=3/8",
+  "pulse_scope": "arbitrary complete critical-line background with polynomial counting; not actual modified zeta divisor or native explicit formula",
+  "actual_relative_covariance_certified": false,
+  "actual_zeta_bound_disproved": false,
+  "complete_Weil_logical_independence_proved": false,
+  "new_aperture": false,
+  "global_nonstalling": false,
+  "lean_certified": false,
+  "whole_domain_anchor": "21/20 even0/odd0 inherited",
+  "input_sha256": {
+    "scripts/validate_native_signed_budget_cc23.py": "3e2fe3820c452e8c7478fda73559418630e6e664b1bb415ab8485d1867985d70",
+    "notes/data/RPB108_SIGNED_BUDGET_CC23_VALIDATION_20261008.json": "725a529c41e81808815c8dc0520559a10b3d073bad2ec5881f0f9a26e5bfa48b"
+  },
+  "constructor_sha256": "3f575aac626b0b0d74e2e43f3015e59df65b903db250fad136aa2cd882d39e25"
+}
