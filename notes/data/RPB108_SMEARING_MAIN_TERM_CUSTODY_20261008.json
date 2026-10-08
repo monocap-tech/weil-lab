@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-08",
+  "base": "fba75ed4eda84f0c71286f314f85b0d29db0202a",
+  "source_blob_pins": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "82cb6dd34e511d8cb66bfb2eb5205d7a0c4213b5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME_POLE_DISCREPANCY_20261008.md": "76a5eed629c999a4e874b8bd3d52de2135c57ffb",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME_SMEARING_20261008.md": "8c978a2d69f6a6b7a4953ac910afb9d830549e73",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SMEARED_SIGN_TRANSFER_20261008.md": "b75b7449c306c36e8d95eea6cb0e882c68daf6fa",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LOG_OPERATOR_ATTACHMENT_20261007.md": "5b9fedd77956f6ba3e2efc0a71be14f673596fd1"
+  },
+  "external_input": {
+    "theorem": "classical psi(x)/x ->1 only",
+    "primary_urls": [
+      "https://kskedlaya.org/ant/chap-pnt.html",
+      "https://kskedlaya.org/ant/chapter-8.html"
+    ],
+    "checked": "Definition 8.1 and Theorem 8.7; main PNT chapter"
+  },
+  "analytic_result": "fixed-width prime-only comparison is negative in large windows; original form sign unassigned",
+  "finite_checks": 42,
+  "original_negative_vector": false,
+  "new_original_gain_bound": false,
+  "lean_certified": false
+}

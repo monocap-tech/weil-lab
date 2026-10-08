@@ -1,0 +1,12 @@
+{
+  "aperture": "21/20",
+  "source_sha256": "9a0c9151d4dfc58f3c6154ad80afd865e3729ac8347d8cee0fe5afa05fa62975",
+  "independent_all_prime_power_profiles_checked": 1344,
+  "coefficient_jump_checks": 75936,
+  "all_twelve_arithmetic_support_events_verified": true,
+  "all_thirteen_panels_verified": true,
+  "both_orientations_and_von_mangoldt_multiplicities_verified": true,
+  "omitted_profile_controls_rejected": 1344,
+  "whole_domain_positivity": false,
+  "lean_formalized": false
+}

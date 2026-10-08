@@ -1,0 +1,14 @@
+{
+  "aperture": "21/20",
+  "retained_vectors": 113,
+  "preflight_sha256": "291c6e4516a4c49ebd923b54d204379568514c1eaf218ee734a60e108a4802af",
+  "independent_damped_degree_checks": 144,
+  "independent_infinite_tails_checked": 3,
+  "physical_complement_lower": "70867/100000",
+  "comparison_with_original112_witness_only": true,
+  "native113_complete": false,
+  "source113_complete": false,
+  "residual113_complete": false,
+  "whole_domain_positivity": false,
+  "lean_formalized": false
+}

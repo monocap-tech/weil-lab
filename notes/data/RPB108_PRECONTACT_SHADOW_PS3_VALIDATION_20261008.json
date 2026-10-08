@@ -1,0 +1,17 @@
+{
+  "bad_inverse_correction": "4900/93",
+  "checks": 721,
+  "complement_lower": "93/100",
+  "contact_parameter": "1/2",
+  "coupling_gram": "49",
+  "finite_margin": "1/320000000000000000000000000000",
+  "good_inverse_correction": "2450/93",
+  "physical_mass_cases": [
+    "1",
+    "2",
+    "5/3"
+  ],
+  "result": "passed",
+  "scope": "exact rational finite controls, not actual Weil or Lean certification",
+  "validator_sha256": "6059e3add36e8380ddb2069cbdf59079cf80d38fe7f3ff8c34130fd043e8bcb2"
+}

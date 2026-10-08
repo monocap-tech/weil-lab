@@ -1,0 +1,16 @@
+{
+  "aperture": "21/20",
+  "native_sha256": "2d325e565099ba8f6d287713d35486bf1102e8132bc3bc5acc07ef28998db86a",
+  "native_finalization_repeated_byte_for_byte": true,
+  "independent_raw_to_physical_entries_checked": 12544,
+  "independent_compact_outward_entries_checked": 12544,
+  "widened_grid_digits": 80,
+  "shifted_pivots_checked": 112,
+  "finite_native_physical_margin": "1/2621440000000000000000000000000000",
+  "descending_parity_ordering_verified": true,
+  "negative_diagonal_control_rejected": true,
+  "finite_sign_certified": true,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}
