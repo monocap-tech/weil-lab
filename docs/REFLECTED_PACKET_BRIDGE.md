@@ -3721,3 +3721,13 @@ For every exact source-normalized old critical lift, <C_t h,h>_D=delta-||h||_D^2
 This proves a precise estimator obstruction: vanishing of the full unsigned remainder or its interior component cannot replace vanishing of the outward forcing q=(I-Pi)C_t h. It does not bound q below, disprove implications of the complete Weil identities, or rule out a direct estimate after projection. Exact rank-one source controls with the same old envelope u^2 have q=0 for v=0 and persistent crossing leakage for v=1/4. They are not native arithmetic countermodels.
 
 25,729 exact checks pass (72 new, 25,657 inherited). The native inequalities are analytic deductions; no actual critical covariance is evaluated. The full-positive-inverse outward arithmetic estimate remains unproved. Original positivity stays21/20, even0/odd0, physical margin1/(3*10^63); RH/F4 and Lean closure remain open. Other fronts remain paused.
+
+## CC35 — parity pole correlation and transverse forcing (2026-10-08)
+
+Coupled parent:40cab3ca85b3d709d130a1fc397f3949aee1dce3. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_PARITY_POLE_CORRELATION_CC35_20261008.md); [definitions](TERMINOLOGY_RPB108_PARITY_POLE_CORRELATION.md). IP1-IP5 preserved.
+
+The actual normalized pole operator is 2|cosh(x/2)><cosh(x/2)|-2|sinh(x/2)><sinh(x/2)|. For a definite-parity lift it supplies one exact outward direction v=(I-Pi)i_t* g, with sign sigma=+1 even and -1 odd, amplitude a=2 int gh. The complete outward remainder is q=q_0+sigma a v, where q_0 retains archimedean remainder and all prime-power shifts.
+
+Project q_0=zv+q_perp using the complete positive-inverse metric, not canonical or physical strip geometry. Then ||M_t^-1/2 q||^2=||q_perp||_*^2+||v||_*^2|z+sigma a|^2. The arithmetic task requires both transverse suppression and longitudinal pole cancellation. A matching pole phase alone leaves transverse leakage; componentwise norms alone do not determine cancellation. The v=0 case retains the full q_0 norm without division.
+
+144 new exact dual metric/phase/transverse checks and 25,729 inherited checks pass, total25,873. This is a native rank/sign identity and a concrete correlation test, not certification of either defect-dependent term or actual zeta covariance. IP5's absolute small-step modulus is not converted into a fixed-step defect estimate. Positivity remains21/20 even0/odd0, margin1/(3*10^63); RH/F4, outward arithmetic suppression and Lean closure remain open.

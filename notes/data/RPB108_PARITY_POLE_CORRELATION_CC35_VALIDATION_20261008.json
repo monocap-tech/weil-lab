@@ -1,0 +1,13 @@
+{
+  "stage": "CC35 parity pole correlation",
+  "all_passed": true,
+  "new_exact_checks": 144,
+  "inherited_cc34_checks": 25729,
+  "total_exact_checks": 25873,
+  "actual_defect_relative_correlation_estimate_proved": false,
+  "actual_zeta_covariance_evaluated": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "d00811288baaff4e07496b32047af0f7bb6f465d5b8900e14650c4dedc95e0ee",
+  "input_sha256": "4163e19a3197a18063ca7f92bc73046b2a02a8dba699ec944109d21d8fae0119"
+}
