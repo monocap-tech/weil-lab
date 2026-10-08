@@ -1,0 +1,141 @@
+{
+  "stage": "IP9 / NF9",
+  "aperture": "53/50",
+  "baseline": "21/20",
+  "method": "Exact rational arctanh logarithm enclosures, rational square root bounds, full six-prime translation geometry",
+  "active_prime_powers": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "panels": 13,
+  "interval_parity_checks_local": 182,
+  "cut_labels": [
+    "0",
+    "1-log(8)/(2a)",
+    "1-log(7)/(2a)",
+    "1-log(5)/(2a)",
+    "log(2)/(2a)",
+    "1-log(4)/(2a)",
+    "1-log(3)/(2a)",
+    "log(3)/(2a)",
+    "log(4)/(2a)",
+    "1-log(2)/(2a)",
+    "log(5)/(2a)",
+    "log(7)/(2a)",
+    "log(8)/(2a)",
+    "1"
+  ],
+  "panel_active_shifts": [
+    [
+      "2:+1",
+      "3:+1",
+      "4:+1",
+      "5:+1",
+      "7:+1",
+      "8:+1"
+    ],
+    [
+      "2:+1",
+      "3:+1",
+      "4:+1",
+      "5:+1",
+      "7:+1"
+    ],
+    [
+      "2:+1",
+      "3:+1",
+      "4:+1",
+      "5:+1"
+    ],
+    [
+      "2:+1",
+      "3:+1",
+      "4:+1"
+    ],
+    [
+      "2:-1",
+      "2:+1",
+      "3:+1",
+      "4:+1"
+    ],
+    [
+      "2:-1",
+      "2:+1",
+      "3:+1"
+    ],
+    [
+      "2:-1",
+      "2:+1"
+    ],
+    [
+      "2:-1",
+      "2:+1",
+      "3:-1"
+    ],
+    [
+      "2:-1",
+      "2:+1",
+      "3:-1",
+      "4:-1"
+    ],
+    [
+      "2:-1",
+      "3:-1",
+      "4:-1"
+    ],
+    [
+      "2:-1",
+      "3:-1",
+      "4:-1",
+      "5:-1"
+    ],
+    [
+      "2:-1",
+      "3:-1",
+      "4:-1",
+      "5:-1",
+      "7:-1"
+    ],
+    [
+      "2:-1",
+      "3:-1",
+      "4:-1",
+      "5:-1",
+      "7:-1",
+      "8:-1"
+    ]
+  ],
+  "native_prime_orthonormal_legendre_0": {
+    "target": [
+      "-19876777177172331407676724870/10000000000000000000000000000",
+      "-19876777177172331407676724869/10000000000000000000000000000"
+    ],
+    "baseline": [
+      "-19462022918279963932855075931/10000000000000000000000000000",
+      "-19462022918279963932855075930/10000000000000000000000000000"
+    ],
+    "comparison": "target strictly smaller / more negative"
+  },
+  "native_prime_orthonormal_legendre_1": {
+    "target": [
+      "14531067120911515804754440737/10000000000000000000000000000",
+      "14531067120911515804754440738/10000000000000000000000000000"
+    ],
+    "baseline": [
+      "14255502529171003585788791556/10000000000000000000000000000",
+      "14255502529171003585788791557/10000000000000000000000000000"
+    ],
+    "comparison": "target strictly larger / more positive"
+  },
+  "native_prime_orthonormal_legendre_0_1": "zero exactly by reflection symmetry (only prime shift part)",
+  "whole_original_matrix_112_evaluated": false,
+  "whole_positive_complement_lower_at_106": false,
+  "full_prime_arch_pole_source": false,
+  "actual_weil_aperture_sign_proved": false,
+  "lean_certified": false,
+  "scope": "Primes-only subform of first two physical normalized Legendre modes; source panel geometry certified, no full original Weil form or operator sign"
+}
