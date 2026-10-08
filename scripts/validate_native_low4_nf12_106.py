@@ -24,6 +24,14 @@ for key in ("0,0","0,2","1,1","1,3","2,2","3,3"):
     assert whole[0]<=sum(q[1] for q in parts);checks+=1
     assert whole[1]>=sum(q[0] for q in parts);checks+=1
     assert whole[0]<=whole[1];checks+=1
+# Independently reconstruct every analytic part from the published Fraction producer.
+from certify_native_low4_nf12_106 import construct
+rebuilt,_,_=construct()
+for key in D:
+    for part in ("arch","poles","prime","full"):
+        lo,hi=map(F,rebuilt[key][part]);publo,pubhi=p(key,part)
+        assert publo<=lo<=hi<=pubhi
+        checks+=1
 even=det(0,2);odd=det(1,3);checks+=4
 assert even[1]>F(1,2000) and odd[1]>F(1,1000);checks+=2
 assert data["full_native_112"] is False and data["whole_aperture_sign"] is False;checks+=1
