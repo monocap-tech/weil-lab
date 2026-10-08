@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "genuine_mixed_parity_operator_cases": 18,
+  "mixed_term_deletion_countercontrol_rejected": true,
+  "actual_odd_native_overlaps": 57,
+  "historical_cc9_block_preserved": true,
+  "three_retained_plane_positive": true,
+  "protected_slice_codimension": 109,
+  "whole_aperture_positive_claimed": false
+}
