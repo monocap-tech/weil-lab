@@ -1,0 +1,108 @@
+{
+  "version": 2,
+  "aperture": "21/20",
+  "records": [
+    {
+      "local_path": "notes/data/RPB108_PRIME8_WEIGHTED_DEPTH10_105_CERTIFICATE_20261008.json",
+      "archive_path": "notes/data/RPB108_PRIME8_WEIGHTED_DEPTH10_105_CERTIFICATE_20261008.json.gz",
+      "transport": "gzip",
+      "restored_size": 6838179,
+      "restored_sha256": "9af1d675540018eb525e7cb45606906bfcb40ccf4836644eed4cf157112880e1",
+      "compressed_sha256": "3f2aebf59623129363f02f9bcf77fc6e0bb2b9d3ca2191335ed165b11dbc6347"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_WEIGHTED_DEPTH10_105_CERTIFICATE_20261008.json.gz",
+      "archive_path": "notes/data/RPB108_PRIME8_WEIGHTED_DEPTH10_105_CERTIFICATE_20261008.json.gz",
+      "transport": "existing-gzip",
+      "restored_size": 1245015,
+      "restored_sha256": "3f2aebf59623129363f02f9bcf77fc6e0bb2b9d3ca2191335ed165b11dbc6347",
+      "compressed_sha256": "3f2aebf59623129363f02f9bcf77fc6e0bb2b9d3ca2191335ed165b11dbc6347"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_SOURCE112_105_CERTIFICATE_20261008.json",
+      "archive_path": "notes/data/RPB108_PRIME8_SOURCE112_105_CERTIFICATE_20261008.json.gz",
+      "transport": "gzip",
+      "restored_size": 11842691,
+      "restored_sha256": "9a0c9151d4dfc58f3c6154ad80afd865e3729ac8347d8cee0fe5afa05fa62975",
+      "compressed_sha256": "7beca718f8686958fe1212812f51904cdabd5f4f5450541df25e8abe0854ef85"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_SOURCE112_105_REPEAT_20261008.json",
+      "archive_path": "notes/data/RPB108_PRIME8_SOURCE112_105_REPEAT_20261008.json.gz",
+      "transport": "gzip",
+      "restored_size": 11842691,
+      "restored_sha256": "6e47e6d94549052edea9e6d3b4956845a0f850c8aed549005a2427c571250314",
+      "compressed_sha256": "fe64e0446dda1e077593ce7a0b500105abbcfe198c9e51b8a23ae72cc6b6b7a3"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_RAW112_105_CHECKPOINT_20261008.json.gz",
+      "archive_path": "notes/data/RPB108_PRIME8_RAW112_105_CHECKPOINT_20261008.json.gz",
+      "transport": "existing-gzip",
+      "restored_size": 1124692,
+      "restored_sha256": "e615d153e84801a80056f4be3693136da9e87dde980a04cca7bebbbe295e7ae9",
+      "compressed_sha256": "e615d153e84801a80056f4be3693136da9e87dde980a04cca7bebbbe295e7ae9"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_RAW112_105_ORDERS420_CHECKPOINT_20261008.json.gz",
+      "archive_path": "notes/data/RPB108_PRIME8_RAW112_105_ORDERS420_CHECKPOINT_20261008.json.gz",
+      "transport": "existing-gzip",
+      "restored_size": 1116189,
+      "restored_sha256": "ce75b314358748dbefc8e0693c58fa3b29d1173d46b5f7e704ce287985c7a465",
+      "compressed_sha256": "ce75b314358748dbefc8e0693c58fa3b29d1173d46b5f7e704ce287985c7a465"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_MATRIX112_105_UNDECIDED_20261008.json",
+      "archive_path": "notes/data/RPB108_PRIME8_MATRIX112_105_UNDECIDED_20261008.json.gz",
+      "transport": "gzip",
+      "restored_size": 10559073,
+      "restored_sha256": "727d0095f2b3bbbe429873f00270d18b8df8493a9e94b3b8b806c788a435b498",
+      "compressed_sha256": "487a1d50bb73229152d45aa6e574ed174c34543015c4e530e79876c2ac6d6558"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_MATRIX112_105_ORDERS420_UNDECIDED_20261008.json",
+      "archive_path": "notes/data/RPB108_PRIME8_MATRIX112_105_ORDERS420_UNDECIDED_20261008.json.gz",
+      "transport": "gzip",
+      "restored_size": 10558983,
+      "restored_sha256": "fc4cf1653512427d204a2ed29b8a879db509a8406cdeeb7c60e9c96cbeee101b",
+      "compressed_sha256": "23f67d120dc573e13ada4371f915e1d2f717f1815087ec9a49238bdcbde99158"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_MATRIX112_105_DESCENDING_CERTIFICATE_20261008.json",
+      "archive_path": "notes/data/RPB108_PRIME8_MATRIX112_105_DESCENDING_CERTIFICATE_20261008.json.gz",
+      "transport": "gzip",
+      "restored_size": 10634344,
+      "restored_sha256": "2d325e565099ba8f6d287713d35486bf1102e8132bc3bc5acc07ef28998db86a",
+      "compressed_sha256": "9841dce32ea3510513bffc674833a6dc31a44e02a7cabce6b71d70520c6790ad"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_MATRIX112_105_COMPACT80_20261008.json",
+      "archive_path": "notes/data/RPB108_PRIME8_MATRIX112_105_COMPACT80_20261008.json.gz",
+      "transport": "gzip",
+      "restored_size": 721077,
+      "restored_sha256": "0499d604127a76afcea90f314e09824e2f327c43a01b8aa2471e2d797c51b7f8",
+      "compressed_sha256": "2b909b5837c027f32fdd8b22e2d9ef0911b9bee1c7f0feda201261fe2f11f620"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_GRAM112_105_CERTIFICATE_20261008.json",
+      "archive_path": "notes/data/RPB108_PRIME8_GRAM112_105_CERTIFICATE_20261008.json.gz",
+      "transport": "gzip",
+      "restored_size": 8094546,
+      "restored_sha256": "860fa01000f25b840350c46b0592a6bfc52ea64533480647c1b19aa59d38bdb8",
+      "compressed_sha256": "ce1c3c6b7c34e90592c81b754ac4dc4cd22155357f8e176d63538e0f86057919"
+    },
+    {
+      "local_path": "notes/data/RPB108_PRIME8_GRAM112_105_PRIMARY_CHECKPOINT_20261008.json",
+      "archive_path": "notes/data/RPB108_PRIME8_GRAM112_105_PRIMARY_CHECKPOINT_20261008.json.gz",
+      "transport": "gzip",
+      "restored_size": 17834363,
+      "restored_sha256": "2020bb5c997bd3adc7f0bf8df34b21854512074dea7dd3449e7e125cc8d6533c",
+      "compressed_sha256": "5e04822756872c21697a5c1662400108a3022372ac0e46c828fdaade76bdf577"
+    }
+  ],
+  "repeat_aliases": {
+    "notes/data/RPB108_PRIME8_WEIGHTED_DEPTH10_105_REPEAT_20261008.json": "notes/data/RPB108_PRIME8_WEIGHTED_DEPTH10_105_CERTIFICATE_20261008.json",
+    "notes/data/RPB108_PRIME8_MATRIX112_105_DESCENDING_REPEAT_20261008.json": "notes/data/RPB108_PRIME8_MATRIX112_105_DESCENDING_CERTIFICATE_20261008.json",
+    "notes/data/RPB108_PRIME8_GRAM112_105_REPEAT_20261008.json": "notes/data/RPB108_PRIME8_GRAM112_105_CERTIFICATE_20261008.json",
+    "notes/data/RPB108_PRIME8_GRAM112_105_REPEAT_CHECKPOINT_20261008.json": "notes/data/RPB108_PRIME8_GRAM112_105_PRIMARY_CHECKPOINT_20261008.json"
+  }
+}

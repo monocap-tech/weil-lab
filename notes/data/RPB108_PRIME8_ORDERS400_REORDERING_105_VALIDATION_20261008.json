@@ -1,0 +1,19 @@
+{
+  "aperture": "21/20",
+  "orders": [
+    400,
+    400
+  ],
+  "original_undecided_matrix_sha256": "727d0095f2b3bbbe429873f00270d18b8df8493a9e94b3b8b806c788a435b498",
+  "widened_grid_digits": 80,
+  "descending_parity_shifted_pivots_checked": 56,
+  "finite_physical_margin": "1/2621440000000000000000000000000000",
+  "same_original_intervals_reordering_alone_certifies_selected_margin": false,
+  "failed_parity_blocks": [
+    0
+  ],
+  "native_sign_certified": false,
+  "whole_domain_positivity": false,
+  "f4_entry_closed": false,
+  "lean_formalized": false
+}

@@ -1,0 +1,12 @@
+{
+  "aperture": "21/20",
+  "weighted_prime_sha256": "9af1d675540018eb525e7cb45606906bfcb40ccf4836644eed4cf157112880e1",
+  "crude_prime_loss_upper": "3171298718043545813197493174857/500000000000000000000000000000",
+  "prime_loss_strict_upper": 7,
+  "pole_loss_strict_upper": 13,
+  "archimedean_loss": 6,
+  "garding_constant": 26,
+  "multiplier_weight_factor": "1/10",
+  "strict_losses_verified": true,
+  "whole_domain_positivity": false
+}

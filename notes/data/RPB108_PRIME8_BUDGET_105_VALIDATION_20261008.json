@@ -1,0 +1,14 @@
+{
+  "aperture": "21/20",
+  "truncation_sha256": "a5346d4940d600dc0cbbdcfdb66c5fddc06310db7885ed645cb3213dcba4fca0",
+  "closed_weighted_moment_sums_checked": 4,
+  "independent_akiyama_bernoulli_checks": 843,
+  "source_alternating_pairs_checked": 130,
+  "native_even_signs_checked": 421,
+  "independent_prime_amplitude_inclusions": 6,
+  "garding26_verified": true,
+  "exponential67_guard_verified": true,
+  "source_kernel_ceiling_guard_verified": true,
+  "actual_source_error_complete": false,
+  "whole_domain_positivity": false
+}
