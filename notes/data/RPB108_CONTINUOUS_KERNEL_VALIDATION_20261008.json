@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "finite_checks": 206,
+  "controls": [
+    {
+      "n": 1,
+      "relative_level_after_error": "-1",
+      "absolute_error": "5/2"
+    },
+    {
+      "n": 2,
+      "relative_level_after_error": "-1",
+      "absolute_error": "3/4"
+    },
+    {
+      "n": 4,
+      "relative_level_after_error": "-1",
+      "absolute_error": "43/192"
+    },
+    {
+      "n": 8,
+      "relative_level_after_error": "-1",
+      "absolute_error": "1181/17920"
+    },
+    {
+      "n": 16,
+      "relative_level_after_error": "-1",
+      "absolute_error": "3517639/184504320"
+    },
+    {
+      "n": 32,
+      "relative_level_after_error": "-1",
+      "absolute_error": "802666454963039/147869238163046400"
+    },
+    {
+      "n": 64,
+      "relative_level_after_error": "-1",
+      "absolute_error": "820216160378019402223586939/538062795253906667525170790400"
+    },
+    {
+      "n": 128,
+      "relative_level_after_error": "-1",
+      "absolute_error": "92583555217443655686552529440475488228381297220650216701/218787939794901591316951026965548835512956890120995995648000"
+    }
+  ],
+  "scope": "exact H0^1 polynomial identities and synthetic finite controls only",
+  "actual_source_gain_established": false,
+  "lean_certified": false
+}

@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "finite_checks": 10,
+  "scope": "finite support/sign/error controls only; no actual spectral certificate"
+}

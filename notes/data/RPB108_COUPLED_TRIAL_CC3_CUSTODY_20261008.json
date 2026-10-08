@@ -1,0 +1,38 @@
+{
+  "stage": "CC3 actual degree-112 complement witness trial",
+  "base_coupled": "4f7a69ec030838d73a433aae26840f78bb387e7f",
+  "shared_reconciled": "60c50736eeff742784dae81ecd29cb25d4b317a9",
+  "shared_notes_read": ["NF60", "NF61"],
+  "paused_refs_moved": false,
+  "paused_work_launched": false,
+  "actual_trial_source_reconstructed": true,
+  "actual_witness_even_source_reconstructed": true,
+  "native_compact_archive_replayed": true,
+  "canonical_archive_path_replay_passed": true,
+  "full_target_source_archive_replayed": false,
+  "old_corrected_baseline_imported": true,
+  "native_pairing_audits": 56,
+  "cross_pairing_symmetry_audited": true,
+  "exact_finite_controls": 938,
+  "saved_witness_direction_positive": true,
+  "full_target_schur_certified": false,
+  "new_continuation_interval": false,
+  "checkpoint_A": false,
+  "original_negative_weil_vector": false,
+  "independent_global_gain_bound": false,
+  "lean_formalized": false,
+  "unchanged_dependency_git_blobs": {
+    "scripts/certify_native_legendre_small_window.py": "bb12496ea82d118e2da36ee74318ea7285eeede9",
+    "scripts/certify_native_endpoint_log_gram.py": "1765f1c0dee348b93c65fa5cc75ca5738a7c2f68",
+    "scripts/certify_native_prime8_source112_engine_105.py": "3ba23e0a584c2a419c2408a4c81399fc5240d13b",
+    "scripts/certify_native_prime8_translation_panels_105.py": "dfb3cd5721684e62b7889163bc75437114f226b4",
+    "notes/data/RPB108_PRIME8_MATRIX112_105_COMPACT80_20261008.json.gz": "f974b51d27fd77ff49db6fb13bc4ebb041a8bcb9"
+  },
+  "sha256": {
+    "scripts/certify_native_coupled_trial_cc3.py": "c4f8c0a4ff9a945d88e4ae5b20bc0c80a1139f5b23f4b60911d31449dac20537",
+    "scripts/validate_native_coupled_trial_cc3.py": "db831c60fcf457443da734c39e1153d5e07775134ca20d3c2ba4dbe39ff3fb88",
+    "notes/data/RPB108_COUPLED_TRIAL_CC3_CERTIFICATE_20261008.json": "ddb1c0edb3765a48a32595878f541786b9cd1e13d95c9adaf1dc0eee68decdd1",
+    "notes/data/RPB108_PRIME8_SCHUR112_105_CERTIFICATE_20261008.json": "acc49e34698a82ddf1c15ccb97dfe5289cae835cab6c6e9a2972c1ddbf0f9009"
+  },
+  "next_actual_task": "low-rank trial lift map with complete mixed source pairings and corrected whole-space Schur sign"
+}
