@@ -3775,3 +3775,13 @@ Canonical energy grows as log frequency times physical mass. Taking R_j=xi_j/2 t
 These test functions are eventually original-positive with Q(h_j)/||h_j||_D^2 tending to1. They are not critical eigenvectors or a defect-bound countermodel. The missing critical signed correlation and full positive inverse remain unestimated. No executable replay was possible because the execution environment was unavailable;25,993 is CC38's last recorded check total, not a new validation count.
 
 NF10's reported target53/50 complement17/100 is preserved and not promoted to whole-domain positivity. Whole-domain anchor stays21/20 even0/odd0, physical margin1/(3*10^63). RH/F4, critical outward suppression and Lean closure remain open.
+
+## CC41 — supported logarithmic operator domain and critical localization (2026-10-08)
+
+Coupled parent:2fe4cdeec21bbf559daeec1f139209bcb2c7f879, preserving concurrent actual-contact parity thresholds and NF13. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_DIRICHLET_LOG_LOCALIZATION_CC41_20261008.md); [definitions](TERMINOLOGY_RPB108_DIRICHLET_LOG_LOCALIZATION.md).
+
+Let A_s>=I be the physical selfadjoint operator of the CLOSED supported logarithmic form and R_s the complete bounded native physical remainder. The physical realization of Q is A_s+R_s on Dom A_s; full Q remains unbounded. An actual mixed null belongs to Dom A_s and obeys A_s h=-R_s h, with ||A_s h||_2<=r_B||h||_2. This is a SUPPORTED Dirichlet realization, not an unrestricted Fourier-multiplier domain, H1 regularity, boundary trace or source-attachment claim.
+
+For a P-normalized genuine critical lift, v=h-delta M_s h belongs to Dom A_s with A_s v=-R_s h. Its canonical distance from h is <=delta U_B and ||A_s v||_2<=r_B/c_B. Therefore the A_s spectral tail above Lambda has canonical norm <=r_B/(c_B sqrt(Lambda))+delta U_B. Actual nulls satisfy the stronger mass-relative tail bounds r_B^2||h||_2^2/Lambda in canonical energy and r_B^2||h||_2^2/Lambda^2 in physical mass. No null can be wholly above Lambda>r_B, but low-spectrum nulls are not excluded.
+
+Sixteen new exact source-model domain/tail/positive-level checks pass in the restored workspace. Earlier check chains are not replayed or added. The analytic domain result does not eliminate the contact parity thresholds or zero-moment null channel, and does not supply defect-dependent outward suppression. Concurrent native E32 positivity and F112 complement at53/50 remain separate from its unproved whole-domain sign. Anchor stays21/20 even0/odd0, margin1/(3*10^63); RH/F4, retained attachment and Lean closure remain open.
