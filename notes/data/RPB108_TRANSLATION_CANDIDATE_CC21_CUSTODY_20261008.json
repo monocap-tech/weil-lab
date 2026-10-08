@@ -1,0 +1,43 @@
+{
+  "stage": "CC21 translation candidate / whole-shell coverage / phase obstruction",
+  "parent_commit": "41ec534960cc1dd5336739193899a352af83097f",
+  "paused_global_sha": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "artifact_sha256": {
+    "docs/TERMINOLOGY_RPB108_TRANSLATION_CANDIDATE.md": "9ce8a8aa980f128a90e6ff4475406ba2edba482ec66bb3833bd8e3b929ff0b97",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_CANDIDATE_CC21_20261008.md": "dc90c4bd8a6a216f35a83dbc8b75bcc97fc5f5bbb207d63a3a23476bea528c7e",
+    "scripts/validate_native_translation_candidate_cc21.py": "c76fe38e498756f8bb17f9c6213b7965f4a6060113283db854b0dda2e77f19c5",
+    "notes/data/RPB108_TRANSLATION_CANDIDATE_CC21_VALIDATION_20261008.json": "9a1c96aefae2ec59a1634d1d616d37b4d92da23aad6cda12015fe92a43a526dc",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "a7f4042379e34abb130b3a44f731a09a0d02a73955b5fb401ff9c38b008d2d7f"
+  },
+  "inherited_input_sha256": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX_20261007.md": "43bdc43edef1260113dc74b7e9b6ec3500ab125ea4f5e4773687c638da823cef",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_HEIGHT_GRAPH_ERROR_20261007.md": "e348d87b174d1299af1907bf6e4f8a8949344412ca5c54211380209cd400a783",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md": "8a97099032b77dcdf1cdd8bf38c9d1eae0bedc6eaa3e41c4ac968d17e007e854",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md": "994b3f98faaf287ecb175bd8364728957ba12abd6426dba3cd5392d72408dab5",
+    "scripts/validate_native_forced_source_cc20.py": "b03d6ea1cd979b519585c3c0c9c38f8f81361abc8b89446c4c91619bd2688997",
+    "notes/data/RPB108_FORCED_SOURCE_CC20_VALIDATION_20261008.json": "6e93cf958e9ed96ea4ea32dcf9ca782c292319037ac1d4752e978434b47282de",
+    "notes/data/RPB108_JOINED_CC18_SUMMARY_20261008.json": "9d70eec1a06761c0f8c7b3025feffac2813f86302f300ae2719a6550ff0805c1"
+  },
+  "inherited_git_blob_sha": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_EXTERNAL_SEVEN_EIGHTHS_CRITICAL_FLUX_20261007.md": "c369d3760606d9e5b9ae0f4862156fd712e5be29",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_HEIGHT_GRAPH_ERROR_20261007.md": "b968aa0a3c5eb5ba680ee0251692e24853dadd74",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md": "09f8a679e7df15e6f5f160ce3c94950df826aa8d",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "da2dab5958dd65381bca285c7ff9082d571e6dd8",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md": "25c6e2736cc4e0fdfec8d8832c3f6e24827d4d06",
+    "scripts/validate_native_forced_source_cc20.py": "66d7269916bdb7891ccd405646aa138d817b66b9",
+    "notes/data/RPB108_FORCED_SOURCE_CC20_VALIDATION_20261008.json": "61219db4829e6c73e250fad9f6a8cf6bf57d1eda",
+    "notes/data/RPB108_JOINED_CC18_SUMMARY_20261008.json": "e104ad72ca7c39fca28ab6f5a27a12289613a8bd"
+  },
+  "bridge_prefix": {
+    "bytes": 663511,
+    "git_blob_sha": "e901a2e45a92de6e5aaffe94d4c24f5f538caa12",
+    "sha256": "a5ef753e3d33c8e8002b83f914a88fd61cf240edfc432fd466f345527cab207f"
+  },
+  "exact_checks": 13996,
+  "actual_relative_arithmetic_bound_certified": false,
+  "actual_zeta_bound_disproved": false,
+  "actual_zeta_phase_commutator_evaluated": false,
+  "scope": "Actual analytic compensated boost bound and cap-uniform whole-shell partition; finite pair controls refute only the specified boost-only source-algebra inference.",
+  "publication_scope": "Additive Coupled-only; historical prefix and paused refs preserved."
+}
