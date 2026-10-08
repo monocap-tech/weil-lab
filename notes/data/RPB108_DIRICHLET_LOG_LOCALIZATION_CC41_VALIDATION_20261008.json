@@ -1,0 +1,12 @@
+{
+  "stage": "CC41 supported logarithmic localization",
+  "all_passed": true,
+  "new_exact_checks": 16,
+  "inherited_checks_replayed": false,
+  "actual_zeta_null_evaluated": false,
+  "null_exclusion_proved": false,
+  "unrestricted_multiplier_domain_claimed": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "7382029db3872dfd8dd9da9b19dad83500774c243e592969b9f36404c099fd43"
+}
