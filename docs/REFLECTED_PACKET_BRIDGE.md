@@ -3753,3 +3753,13 @@ At B<=21/20, rational exponential enclosures prove exp B<3 and exp(2B)<9. Every 
 IP7's sufficient Schur gate can now use eta<1/20 and finite native eigenvalue>400eta/(1-20eta), but no projection, tail or finite matrix is evaluated and no gate is certified. CC34's physical mass lower bound can use denominator20. The absolute constant does not produce an old-defect factor or either CC35 correlation estimate.
 
 13 new rational enclosures and25,972 inherited checks pass, total25,985. The digamma inequality is analytic from its primary integral, not an actual critical covariance or Lean certificate. Positivity stays21/20 even0/odd0, margin1/(3*10^63); original outward suppression, RH/F4 and Lean closure remain open.
+
+## CC38 — effective archimedean remainder tail (2026-10-08)
+
+Coupled parent:87d8327117ab372d6c57e57024608452daee9415, preserving IP1-IP8. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_TAIL_CC38_20261008.md); [definitions](TERMINOLOGY_RPB108_ARCHIMEDEAN_TAIL.md).
+
+For k(u)=1/(1-exp(-u))-1/u, k'>=0 and int k'=1/2. Hence g(u)=exp(-u/4)k(u) has int|g'|<=3/2. Integration by parts in the REAL cosine digamma integral yields |Re psi(1/4+iy)-log|1/4+iy||<=3/(2|y|). Combining the remaining logarithmic comparison gives |r_arch(xi)|<4/|xi| for |xi|>=1, supplementing CC37's global bound8.
+
+Weighted Cauchy-Schwarz proves the whole canonical archimedean tail operator bound ||C_arch,>R||<=4/[R log(e+R)] for R>=1. Its complete-positive-inverse outward critical-row contribution is bounded by4/[c_B^2 R log(e+R)]. This is a certified actual component error with effective rate, not a defect-dependent estimate; a growing R still requires control of the retained signed band. Prime translations receive no such tail decay, and the low-frequency band is not declared finite rank.
+
+Eight new rational tail-budget checks plus25,985 inherited pass, total25,993. The analytic integral argument is not numerically evaluated critical covariance or Lean. IP8's generic full-remainder feasibility stopping rule stays valid. No aperture extension or renewed paused front is claimed. Positivity remains21/20 even0/odd0, physical margin1/(3*10^63); arithmetic outward suppression, RH/F4 and Lean closure remain open.

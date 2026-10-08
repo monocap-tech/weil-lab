@@ -1,0 +1,14 @@
+{
+  "stage": "CC38 archimedean tail",
+  "all_passed": true,
+  "new_exact_checks": 8,
+  "inherited_cc37_checks": 25985,
+  "total_exact_checks": 25993,
+  "analytic_tail_bound": "4/[R log(e+R)] for R>=1",
+  "actual_critical_covariance_evaluated": false,
+  "defect_suppression_proved": false,
+  "new_aperture": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "4cee74b5157b40b2eb35e6380759e570143b71eed8d844d174e50b30c1580385"
+}

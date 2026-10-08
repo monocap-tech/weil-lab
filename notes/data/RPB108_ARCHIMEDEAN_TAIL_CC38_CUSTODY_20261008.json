@@ -1,0 +1,15 @@
+{
+  "stage": "CC38",
+  "parent": "87d8327117ab372d6c57e57024608452daee9415",
+  "repository": "monocap-tech/weil-lab",
+  "branch": "research/rpb108-coupled-continuation",
+  "bridge_prefix": {
+    "bytes": 699149,
+    "sha256": "4237b4e6aecffde491299f1af8c5e17e7f91001e55bf9c8045baf2b42b43561f",
+    "git_sha": "cf329fed88fc3e7bbf70af78b27f0eb4f7f5da88"
+  },
+  "historical_prefix_preserved": true,
+  "IP1_IP8_preserved": true,
+  "total_exact_checks": 25993,
+  "defect_suppression_proved": false
+}
