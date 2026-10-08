@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "exact_checks": 688,
+  "dimensions_checked": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "scope": "finite exact polynomial Gram and Schur algebra only; mass model is synthetic leading algebra",
+  "analytic_certification": false,
+  "actual_kernel_computed": false,
+  "lean_certification": false,
+  "F4_closed": false
+}

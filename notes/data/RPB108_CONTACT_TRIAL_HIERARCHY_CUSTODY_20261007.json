@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-07",
+  "lane": "NF53 physical contact trial hierarchy",
+  "recovered_head": "e23adbbc8ceebac5b67d359dcf6dd88cd0d477c9",
+  "dependencies": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md": "3354b89638b643d5b21c4c428f069f738ccf59f5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATED_KERNEL_INDEX_20261007.md": "7fe9985819a905ca77482c36f2ea4278fa252dcd",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PHYSICAL_TRANSLATION_SCALE_20261007.md": "9ac9c5f07608975acc62146390e961ba2020f293",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_NULL_EXTENSION_OBSTRUCTION_20261004.md": "41e9b6b02c79afff807ceef4c61f9320c6874409",
+    "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DERIVATIVE_CHAIN_20261007.md": "e124b8a31a00df61908ce71cedd4ab7f83a14c76",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ENDPOINT_TRACE_20261007.md": "1996d3fb3358965c5468481c31252f3dda440e69",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "e2573fa384dd556238214193f587d1b8a7ff017b"
+  },
+  "conditional_scope": "hypothetical nonzero actual nonnegative contact kernel, with shifted lowest-eigenspace control",
+  "results": [
+    "finite Taylor remainders have positive polynomial energy Gram",
+    "physical remainder mass asymptotic gives all positive trial Ritz values log(1/t)[1+o(1)]",
+    "exact Schur graph converges in physical mass to original K",
+    "reflection polynomial identity A H^-1 A^T=U",
+    "negative graph Ritz values of orders -t,-t^3,...,-t^(2r-1)",
+    "min-max upper bounds for first r enlarged full spectral values"
+  ],
+  "limits": [
+    "no matching lower bounds or exact full spectral branch asymptotics",
+    "no numerical kernel or mode constants computed",
+    "no actual contact existence or exclusion"
+  ],
+  "normalization": "All Ritz statements use physical mass; coefficient scaling separated. Original source pairs/copies and weights retained.",
+  "shifted_control": "All original source trial Grams equal Q_mu trial Gram plus mu physical mass; trial hierarchy is relative to mu.",
+  "validation": {
+    "exact_checks": 688,
+    "dimensions_checked": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "finite_algebra_only": true,
+    "leading_mass_model_is_synthetic": true,
+    "analytic_certification": false,
+    "lean_certification": false
+  },
+  "preserved_aperture_one_commit": "811b0826abf45d688d1e2da7900cda852103ddee",
+  "open": [
+    "initial actual arithmetic contact exclusion",
+    "signed sharp-head arithmetic",
+    "F4",
+    "full transport",
+    "Lean closure"
+  ]
+}

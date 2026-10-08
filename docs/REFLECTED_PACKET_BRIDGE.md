@@ -3130,3 +3130,14 @@ For an actual contact vector with nonzero trace c, the established D_mass=o(t), 
 For the real terminal vector of physical mass m, the exact two-vector compression has sum branch C/(2m-D_mass)~-|c|^2t/(2m) and difference branch -C/D_mass~log(1/t). These are physically normalized compression values, not full enlarged spectral eigenvalues. The coefficient Gram's order-t powers alone miss the large positive branch. Simultaneous centering preserves the support radius a+t/2. The actual positive-eigenmode control has identical mass scale and compression levels shifted by mu, retaining its original source mass residual.
 
 781 exact finite mass/layer-cake/compression checks pass, with synthetic tail controls labeled separately. Analytic limits are not Lean-certified, no actual Fourier/source nodes or contact are computed. Whole-domain aperture-one positivity and historical work remain preserved. Initial actual contact exclusion, signed sharp arithmetic, F4 and full transport remain open.
+
+
+## NF53 — physically normalized contact trial hierarchy (2026-10-07)
+
+Recovered head e23adbbc8ceebac5b67d359dcf6dd88cd0d477c9. See [trial hierarchy proof](../notes/REFLECTED_PACKET_BRIDGE_108_CONTACT_TRIAL_HIERARCHY_20261007.md), [definitions](TERMINOLOGY_RPB108_CONTACT_TRIAL_HIERARCHY.md), and [custody](../notes/data/RPB108_CONTACT_TRIAL_HIERARCHY_CUSTODY_20261007.json).
+
+Subtract the finite lawful derivative-chain Taylor polynomial from each translated chain vector. The r physical remainders have positive energy Gram 2|c|^2 t D_t[H+o(1)]D_t. NF52's overlap mass cancellation and integrated primitive traces give physical mass (2|c|^2t/log(1/t))D_t[H+o(1)]D_t, so every remainder-space physical Ritz value is log(1/t)[1+o(1)]. No rough derivative beyond the chain is taken.
+
+Eliminating this positive remainder block produces an r-dimensional negative graph converging in physical mass to K. Its effective energy is -(|c|^2t/2)D_t[U+o(1)]D_t; the exact finite polynomial reflection identity A H^-1 A^T=U supplies the positive coefficient Gram. Its ordered negative physical Ritz values have orders -t,-t^3,...,-t^(2r-1). Centering fits aperture a+t/2 and gives min-max upper bounds for the first r enlarged full eigenvalues, not matching full spectral asymptotics or lower bounds. The shifted actual positive-eigenmode control retains mu physical mass and has the same trial hierarchy relative to mu.
+
+688 exact finite polynomial/Gram/Schur checks pass through dimension eight; the synthetic leading-mass algebra is distinguished from the separately documented analytic limits. No computed kernel, numerical mode constants, Lean certification, initial contact exclusion or arithmetic sign estimate. Whole-domain aperture-one positivity and historical work remain preserved. Signed sharp-head arithmetic, global endpoint exclusion, F4 and full transport remain open.
