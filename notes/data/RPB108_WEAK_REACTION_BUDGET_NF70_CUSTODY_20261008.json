@@ -1,0 +1,15 @@
+{
+  "global_base": "1f775b9102814625192e3cbe4bae329738c8f4c7",
+  "coupled_read_only_head": "faa030e98bd0bcf4826a3044b241d25e64d739b2",
+  "imported_cc9_certificate_blob": "49ca3c54438f439d65f8c1c12da27de1204fefcf",
+  "native_archive_blob": "f974b51d27fd77ff49db6fb13bc4ebb041a8bcb9",
+  "native_uncompressed_sha256": "0499d604127a76afcea90f314e09824e2f327c43a01b8aa2471e2d797c51b7f8",
+  "original_schur_blob": "bdc1199c54bb1286a108cf0eb407371d707ec244",
+  "whole_gram_uncompressed_sha256": "860fa01000f25b840350c46b0592a6bfc52ea64533480647c1b19aa59d38bdb8",
+  "whole_gram_archive_replayed": false,
+  "whole_source_operator_bound_imported": true,
+  "actual_compact_native_decoded_and_hash_checked": true,
+  "complete112_weak_native_row_evaluated": true,
+  "actual_completed110_mixed_row_evaluated": false,
+  "other_refs_written": false
+}
