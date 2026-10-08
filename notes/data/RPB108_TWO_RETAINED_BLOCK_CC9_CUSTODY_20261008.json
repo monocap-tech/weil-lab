@@ -1,0 +1,59 @@
+{
+  "milestone": "CC9",
+  "coupled_base": "191b3c04dbddf9789c19cbb4ad7562deac2e9ec1",
+  "shared_merge_parent": "2f7a867881ae49e99f25d454e253c7d1a43496d4",
+  "shared_nf67_read": true,
+  "shared_nf68_read": true,
+  "dependency_blob_pins": {
+    "scripts/certify_native_coupled_trial_cc3.py": "9b0860dd7faf44ebd23cae709705f54bb22fc4f8",
+    "scripts/certify_native_two_trial_solve_cc8.py": "308aa74304299b6077efb6377f1d55a9ef2c654c",
+    "scripts/certify_native_prime8_source112_engine_105.py": "3ba23e0a584c2a419c2408a4c81399fc5240d13b",
+    "notes/data/RPB108_PRIME8_SCHUR112_105_CERTIFICATE_20261008.json": "bdc1199c54bb1286a108cf0eb407371d707ec244",
+    "notes/data/RPB108_TWO_TRIAL_SOLVE_CC8_CERTIFICATE_20261008.json": "e8c903e024cb0fd01342a191f517ce0c7cae3fc6"
+  },
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_TWO_RETAINED_BLOCK.md": "22a76a03171b627fd2e083057c45b9b8255f11def26c346f402ef212649c48fe",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TWO_RETAINED_BLOCK_CC9_20261008.md": "2d7726d784a3bdb665fed3aee1057f91b5f337afd3c746bec69a6c896c4f24bd",
+    "scripts/certify_native_two_retained_block_cc9.py": "af644e78abc9124b3f233cc8bdc40f80263aa43383ee5ed7c390288e04805289",
+    "scripts/validate_native_two_retained_block_cc9.py": "47b3683873b33699183b0b1c7ed7f7c520bc7e474b2196618df5c55d85061bdc",
+    "notes/data/RPB108_TWO_RETAINED_BLOCK_CC9_CERTIFICATE_20261008.json": "0cf8e112392400e31d47c522f515ece0f1ca292f2153c2f14a6463975336d5a8",
+    "notes/data/RPB108_TWO_RETAINED_BLOCK_CC9_VALIDATION_20261008.json": "8a2e394590a55bb09a3d10f4624058697a25fc4e966d740e1bf0e5be7a732f51"
+  },
+  "actual_original_sources_reconstructed": 4,
+  "original_arithmetic": {
+    "aperture": "21/20",
+    "prime_powers": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8
+    ],
+    "translation_panels": 13,
+    "integration_degree": 1228,
+    "both_prime_orientations": true,
+    "both_signed_pole_slots": true,
+    "threshold_zero_overlap_at_equality": true
+  },
+  "audits": {
+    "retained_native_overlaps": 112,
+    "symmetry": 6,
+    "independent_cc8_overlaps": 12,
+    "genuine_mixed_matrix_credit_cases": 12
+  },
+  "actual_mixed_two_retained_block_positive": true,
+  "determinant_strict_lower": "5/10^34",
+  "protected_infinite_slice_codimension": 110,
+  "physical_slice_strict_lower": "13/10^36",
+  "canonical_slice_strict_lower": "5/10^38",
+  "compact_native_matrix_decoded_and_hash_checked": true,
+  "full_source_and_gram_archives_replayed": false,
+  "full_112_retained_sign_claimed": false,
+  "whole_aperture_positive_claimed": false,
+  "arithmetic_relative_loss_nondivergence_proved": false,
+  "nf68_critical_reaction_gate_passed": false,
+  "lean_certified": false,
+  "historical_blobs_preserved": true,
+  "paused_refs_modified": false
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "genuine_mixed_matrix_credit_cases": 12,
+  "positive_diagonals_insufficient_control_rejected": true,
+  "independent_actual_cc8_pairing_overlap_audits": 12,
+  "actual_two_retained_plane_positive": true,
+  "whole_infinite_slice_physical_strict_lower": "13/10^36",
+  "whole_infinite_slice_canonical_strict_lower": "5/10^38",
+  "protected_slice_codimension": 110,
+  "full_112_retained_sign_claimed": false
+}
