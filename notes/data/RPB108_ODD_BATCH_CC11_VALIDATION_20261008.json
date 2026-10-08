@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "genuine_five_column_mixed_parity_cases": 18,
+  "whole_row_radius_congruence_cases": 12,
+  "independent_cc10_overlap_audits": 3,
+  "actual_odd_native_overlaps": 174,
+  "historical_cc9_block_preserved": true,
+  "independently_recomputed_entire_odd_native_row_entries": 56,
+  "five_retained_plane_positive": true,
+  "protected_slice_codimension": 107,
+  "entire_56_odd_plane_inverse_reaction_strict_upper": "3/10^17",
+  "whole_aperture_positive_claimed": false
+}
