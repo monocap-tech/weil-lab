@@ -117,3 +117,7 @@ Coupled remains active. Global NF71, Aperture and Shadow PS3 remain paused. CC35
 ## 6. Exact finite-control validation
 
 The reproducible [IP6 rational validator](../scripts/validate_native_critical_witness_ip6.py) was independently executed. **200/200 exact Fraction assertions passed**, testing the rank-one compact contact model, first-contact normalization, fixed exterior test, near-critical old lifts, omitted-shell energy and relative-gain divergence. These computations validate only the finite model formulas. The actual-zeta finite-rank approximation theorem and conditional finite-witness theorem are analytic deductions from inherited infinite-dimensional results, not proved by these tests or formalized in Lean.
+
+## Subsequent checkpoint
+
+[IP7 — full target-aperture native Schur sign criterion](REFLECTED_PACKET_BRIDGE_108_INDEPENDENT_PHASE_GEOMETRY_IP7_20261008.md) turns compactness of the original native remainder into a sufficient **whole-aperture** positive-sign test, with an explicit finite low-frequency rank bound and a rigorous infinite-dimensional complement error. Unlike IP6's conditional contact-mode witnesses, IP7 does not require a hypothetical contact or an old positive gap. It remains UNEXECUTED for any new original zeta aperture: the low-frequency basis, full native finite matrix and necessary numerical enclosures have not been evaluated.
