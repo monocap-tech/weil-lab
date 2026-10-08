@@ -1,0 +1,99 @@
+# RPB108 — IP8: prime-8 chamber invariance and generic finite-Schur feasibility at 53/50
+
+Date 2026-10-08. Independent phase-geometry branch; analytic parent IP7 (finite-cap native Schur criterion), original certificate CC18 (a=21/20); Coupled was independently recovered through CC36 at `76adf52044de54a6991080b4bb40f9e53935a9ce`. This note contains a **new exact arithmetic feasibility bound and chamber-stability theorem**, not an evaluated new aperture sign. The original whole-domain positive anchor remains a=21/20=1.05, not a=53/50=1.06.
+
+## 1. Prime-8 chamber theorem for the specific new target
+
+Set B=53/50=1.06. With exact rational atanh/log enclosures, certify
+\[
+ \log8<2B=53/25<\log9.
+\]
+The complete active prime powers for the original right-limit cutoff are again
+\[
+ {\cal P}_B=\{2,3,4,5,7,8\}.
+\]
+Their normalized translation cuts are `log n/(2B)` and `1-log n/(2B)`, together with 0 and 1. Two cuts of the same orientation preserve order because log is increasing. Opposite-orientation cuts can meet only if `2B=log(nm)`, equivalently `e^{2B}=nm`. Since nm is an integer and `8<e^{2B}<9`, no such collision occurs throughout this chamber. An internal cutoff cannot hit 0 or 1 here because n<=8<e^{2B}. Therefore **all 13 open panels retain their combinatorial order** throughout the prime-8 chamber, including from 21/20 to 53/50.
+
+This says panel TOPOLOGY is reusable; it does not say any numeric source entry, Schur pivot, source operator bound or complement lower bound is unchanged. Original prime orientations, signed poles and source errors must all be recomputed on the new intervals.
+
+## 2. Rigorous necessary Fourier-cutoff lower bound for the SPECIFIC generic IP7 scheme
+
+IP7 represents the whole original form on D_B as `Q_B=I+C_B`, `C_B=i_B^*R_Bi_B`, and uses the conservative CC33 cap-dependent unsigned physical remainder norm budget
+\[
+ r_B=r_*+2\sum_{n\in{\cal P}_B}\frac{\Lambda(n)}{\sqrt n}
+                +4\sinh(B),\quad r_*\ge0.
+\]
+The independent exact-rational validator derives a lower bound on THIS CHOSEN UPPER BUDGET, not on the actual norm `||R_B||`:
+\[
+ \boxed{r_B>57/5=11.4.}                                    \tag{IP8.1}
+\]
+Proof and custody: `scripts/validate_native_prime8_ip8_feasibility.py` bounds log 2,3,5,7 below by positive finite atanh series, sqrt n above by exact rational upper endpoints, and sinh B below by four positive Taylor terms. The resulting rational lower bound on the explicit six-prime-plus-pole sum exceeds 57/5; no numerical estimate of r_* is assumed.
+
+For ANY nonzero retained finite projection E, the exact complete native matrix `A_F=E Q_B E|ran E` obeys
+\[
+ \lambda_{\min}(A_F)\le\|Q_B\|\le1+r_B
+\]
+because `||i_B||<=1`. IP7's SUFFICIENT positive Schur gate is
+\[
+ r_B\eta<1,\qquad
+ \lambda_{\min}(A_F)>
+ \frac{r_B^2\eta}{1-r_B\eta}.
+\]
+A NECESSARY condition for this gate to be satisfiable, even if the retained finite matrix were maximally favorable under the crude norm envelope, is therefore
+\[
+ \eta< g(r_B):=\frac{1+r_B}{r_B(1+2r_B)}.
+\tag{IP8.2}
+\]
+The function g strictly decreases for positive r. From (IP8.1),
+\[
+ \eta<g(57/5)=310/6783,\qquad
+ 1/\eta>6783/310>547/25=21.88.
+\]
+The SPECIFIC IP7 low-frequency projection `E_{R,\tau}=1_{[\tau,\infty)}(Z_R)` uses
+\[
+ \eta_{R,\tau}=\tau+\frac1{\log(e+R)},\quad \tau>0.
+\]
+For it to satisfy (IP8.2) one necessarily has
+\[
+ \log(e+R)>6783/310>547/25.
+\]
+The validator proves with an exact finite exponential positive series that `exp(547/25)>3,000,000,003`. Since e<3, this gives the verified numerical necessary condition
+\[
+ \boxed{R>3,000,000,000.}                                \tag{IP8.3}
+\]
+This is a **NONVACUITY FLOOR** for the particular generic low-frequency + crude CC33 remainder + IP7 Schur-budget combination. It is NOT a lower bound for every conceivable choice of finite test functions, for an operator-adapted Schur certificate, or for the actual smallest positive eigenvalue. It is also not a sufficient cutoff: at R just above this bound the strict Schur test could still fail badly. The rank *upper allowance* `dim F<=4BR/tau` does not imply a matching rank lower bound or RAM estimate.
+
+This quantitative obstruction gives a rational stopping reason not to attempt the brute-force generic low-frequency basis as the FIRST numerical certificate for a=53/50.
+
+## 3. The actual CC18 producer must be reparameterized, not merely relabeled
+
+Audited extant producer components on the active Coupled branch:
+
+- `scripts/certify_native_prime8_translation_panels_105.py` explicitly raises `ValueError('Only aperture 21/20 is supported')` for a!=21/20. Its 13-panel geometry algorithm is nonetheless mathematically reusable after parameterizing the chamber and proving the new cuts.
+- `scripts/certify_native_prime8_source112_engine_105.py` explicitly requires degree111 and a=21/20, and uses an enumerated list of aperture thresholds. New `53/50` prime support and intervals cannot be generated by changing just an output label.
+- `scripts/certify_native_prime8_gram112_105.py`, `scripts/certify_native_prime8_schur112_105.py` and the CC18 complete odd/even producers pin `21/20` data, hashes, and the complement lower `c=699/1000`.
+- The old physical complement bound c=699/1000 was certified for a=21/20. It is not an established bound for a=53/50. The retained normalized Legendre basis and source errors change with a; their old Gram entries and 56-pivot closure cannot be moved to B without a fresh audit.
+
+A valid adaptive native proof attempt at 53/50 should, in order:
+
+1. Create a NEW target-specific geometry source with rational 13-panel endpoints and explicit original six-prime cutoff; preserve the 21/20 archived scripts unchanged.
+2. Rebuild the complete target native retained matrix and a **new** independently certified physical complement lower bound `c_{53/50}>0`, or find a lawful target-specific operator comparison with fully paid error.
+3. Reconstruct all required original source columns, interval Gram pairings, original normalization, BOTH pole orientations, BOTH prime shifts and error budgets; keep even and odd parity blocks separate.
+4. Optimize a target-specific weak chart and any true source-action lifts; carry all true source errors and the corrected full infinite complement Schur reaction.
+5. Issue a whole-domain sign claim ONLY after rigorous independent validation of both full even and odd blocks. If the consumer cannot establish a strict sign, report a **failed certificate**, not negativity of Q_B.
+
+No target-specific source, complement or retained native matrix has been numerically built in IP8. No evidence of a negative original vector at a=1.06 is asserted.
+
+## 4. Distinct checkpoint paths
+
+**Proven here (A):** Exact prime-8 chamber combinatorial stability; exact conservative nonvacuity floor `R>3e9` for the IP7 generic low-frequency certificate at B=53/50, independently of r_*; precise audit of target-hardcoded CC18 source scripts.
+
+**Not proved here:** A usable whole-aperture positivity or negativity certificate at B=53/50, a target complement lower bound, a defect-relative fixed-step source estimate, or a target-specific arithmetic eigenvector.
+
+**Decision:** Prefer a NEW, target-audited native/source Schur pipeline based on the CC18 architecture. Keep IP7 as a mathematical fallback and complement error framework, NOT as a proposal to allocate enormous generic spectral matrices. Neither path is promoted to a theorem of positivity at 53/50 without actual interval evaluations.
+
+**Global custody:** Coupled latest observed CC36; Global NF71 and Shadow PS3 remain paused. Certified whole-domain original anchor a=21/20 remains unchanged. RH/F4, whole transport and Lean formalization still open. This independent branch is not a resumed Global/F4 frontier.
+
+## 5. Reproduction
+
+The committed `scripts/validate_native_prime8_ip8_feasibility.py` is self-contained Python 3 standard-library `fractions.Fraction`, `math.isqrt`, `math.factorial`. Its exact tests and outputs were executed independently and cover the logarithm thresholds, six-prime lower remainder sum, `r_B>57/5`, and the R>3e9 necessary budget. These controls validate the stated arithmetic gates; they do not reconstruct or certify a numerical original Weil operator at the target.
