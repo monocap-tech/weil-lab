@@ -3591,3 +3591,16 @@ The theorem is qualitative. Coalescing finite locations make approximate coeffic
 23,330 exact checks pass: 838 new complex determinant/recovery, partner normalization, stability and full-mass rank checks, plus 22,492 inherited CC24 checks including genuine crossings. Analytic theorem, not new Lean certification or actual critical-covariance evaluation. Stop finite-alteration/qualitative-uniqueness shortcuts absent a new actual quantitative correlation estimate.
 
 Original anchor remains 21/20 even0/odd0, joined physical margin 1/(3*10^63). RH/F4, retained attachment, reusable continuation, accumulated finite-cap relative loss and Lean remain open. Global paused at NF71; Aperture and Pre-Contact Shadow paused. No new aperture.
+
+
+## CC26 — uniform continuation quantifiers and RH strength (2026-10-08)
+
+Coupled parent: 5c3277d99db375b0af6dc8b0fe7d8f0e6ae6ec62. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_UNIFORM_EXIT_CC26_20261008.md); [definitions](TERMINOLOGY_RPB108_UNIFORM_EXIT.md).
+
+Analytic reduction: under the inherited actual source/domain identification, positive observability and strict source anchor, a strict whole relative shell budget rho_B<1 with a positive cap-only step h_B for EVERY old-positive shell on EVERY finite cap is RH-equivalent. Finite partition and D_t>=(1-rho_B)D_s give product defect delta_0(1-rho_B)^n>0 and all-cap original positivity; the classical compact-test Weil criterion gives RH. Conversely RH makes every ORIGINAL negative source profile zero, so all original shell budgets are zero. The property is NOT proved here. A critical bound without low output or non-stalling steps is not given this equivalence.
+
+Primary criterion pin: Connes-Consani arXiv:2006.13771v1 introduction (2)/Appendix C Proposition C.1, checked alongside Bombieri's Clay description Section V. Imported analytic criterion, no new Lean proof. Full poles are retained; the classical pole-vanishing compact tests are a subspace of the original positivity conclusion.
+
+24,554 exact checks pass (1,224 new product/partition/genuine crossing/physical-source/full-mass checks, 23,330 CC25 replayed). Fixed positive steps fail near genuine contact; gap-dependent critical-safe steps collapse. Tiny physical margins can coexist with source defect one. The joined physical margin is not assigned as a numeric source-defect constant. No actual uniform correlation bound, RH proof, full-identity countermodel or independence theorem is claimed.
+
+Original whole-domain anchor remains 21/20 even0/odd0, joined physical margin 1/(3*10^63). RH/F4, retained attachment, reusable continuation, accumulated finite-cap loss and Lean remain open. Global paused at NF71; Aperture and Pre-Contact Shadow paused. No new aperture. Further equivalence reformulations alone are not arithmetic progress; a new actual joint estimate with all exit quantifiers is required.

@@ -1,0 +1,70 @@
+{
+  "stage": "CC26",
+  "base_commit": "5c3277d99db375b0af6dc8b0fe7d8f0e6ae6ec62",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "inherited_input_git_blobs": {
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "961b6742782fa3f808ac9b70cfadfc0790c8fc32",
+    "WeilDefect/Arithmetic/ActualZetaSourceDecomposition.lean": "3031098da4785b0b0f22202a34af9a067f5a8a6e",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "c46b22706a7513b1a06932808a8c89f7928c7291",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_IDENTITY_CC25_20261008.md": "47081f8f18b67e3432057b4a9d941e16cbb59c92",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "da2dab5958dd65381bca285c7ff9082d571e6dd8",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md": "25c6e2736cc4e0fdfec8d8832c3f6e24827d4d06",
+    "notes/data/RPB108_FINITE_IDENTITY_CC25_VALIDATION_20261008.json": "8db4dba7f63907c63766bfafa79921251597b8a3",
+    "scripts/validate_native_finite_identity_cc25.py": "ce55a787dbd7c7db2d8178b631e2e9306086902d"
+  },
+  "input_sha256": {
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "3ae164cb108777099c6582686866e5fbd85fc501eab9e15bea60ef8215690a81",
+    "WeilDefect/Arithmetic/ActualZetaSourceDecomposition.lean": "a4db93f352f15d84e03bb2ca81c5b1f50e2839e8e57bf2e579e3763ceb9cb9f8",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FINITE_IDENTITY_CC25_20261008.md": "a5908e996915807b03f417da3dec00fe78171b8b2199c77df7a0ecedd92d340b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md": "994b3f98faaf287ecb175bd8364728957ba12abd6426dba3cd5392d72408dab5",
+    "notes/data/RPB108_FINITE_IDENTITY_CC25_VALIDATION_20261008.json": "f718fa1c7ef24d08db72c70894ab027b19d7e18a2bd4dba498abb226728a4186",
+    "scripts/validate_native_finite_identity_cc25.py": "8110d67e6cb66f4b2c14f52f7d2933ba927f79faeef873b82ea0440458120afc"
+  },
+  "bridge_prefix": {
+    "bytes": 673141,
+    "sha256": "c83780c5eaa6bb5941c559b01d7be38031ca71999967c2edbdb25c0ef1d9fa4d",
+    "git_blob_sha": "c46b22706a7513b1a06932808a8c89f7928c7291"
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_UNIFORM_EXIT.md": {
+      "bytes": 1605,
+      "sha256": "3328c354685c18400b95389763a0cc56b27c8e52550cd7195a98a897fbd9e9ba",
+      "git_blob_sha": "11fe8868424b6b785f4088d1a9fe2c6d54cd9726"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_UNIFORM_EXIT_CC26_20261008.md": {
+      "bytes": 10947,
+      "sha256": "15a22b7fc627328934a3a1e4b7bf4545e0ff72a77a725559de40778ab26f127a",
+      "git_blob_sha": "2c484e9a37cc73d30e7de34eab06be3af2cfcd45"
+    },
+    "scripts/validate_native_uniform_exit_cc26.py": {
+      "bytes": 4687,
+      "sha256": "bb3e4cf49ff5704d54f2d44aaf852300de4bdc2f9f7d297d459481f910e8d620",
+      "git_blob_sha": "e06dfe2da2edd3e3113c2e46004c291237b26bac"
+    },
+    "notes/data/RPB108_UNIFORM_EXIT_CC26_VALIDATION_20261008.json": {
+      "bytes": 3019,
+      "sha256": "2652ec0d05d41951c5504e258bcec0fd737af9f2a8e8337fd2c60817bac50100",
+      "git_blob_sha": "b8654e990ecbf80e0251e02db677dda4dc810d0b"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 675279,
+      "sha256": "9f40b23a1ea33ded48ec5708b8ea3ecd0357af74c4d1941667a44e67c7a7b414",
+      "git_blob_sha": "9839eb75d39d087e843db96e52ea88ddca7a168b"
+    }
+  },
+  "external_criterion": [
+    {
+      "uri": "https://arxiv.org/pdf/2006.13771",
+      "pin": "arXiv:2006.13771v1, 2020-06-24; introduction (2), Appendix C Proposition C.1",
+      "scope": "compact smooth multiplicative Weil positivity criterion with pole conditions"
+    },
+    {
+      "uri": "https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf",
+      "pin": "Bombieri, Section V, printed page 9",
+      "scope": "classical signed explicit-formula criterion; screenshot checked"
+    }
+  ],
+  "scope": "analytic RH-strength reduction conditional on inherited framework and imported classical criterion; no actual uniform exit theorem or RH proof"
+}

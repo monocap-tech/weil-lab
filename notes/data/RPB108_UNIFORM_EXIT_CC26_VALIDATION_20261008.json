@@ -1,0 +1,66 @@
+{
+  "stage": "CC26 quantifier and RH-strength audit of uniform continuation",
+  "all_passed": true,
+  "new_counts": {
+    "product_budget": 720,
+    "cap_partition": 45,
+    "crossing_nonstalling": 285,
+    "physical_vs_source": 171,
+    "full_positive_level": 3
+  },
+  "new_exact_checks": 1224,
+  "inherited_cc25_checks": 23330,
+  "total_exact_checks": 24554,
+  "finite_chain_examples": [
+    {
+      "anchor_source_defect_lower": "1/4",
+      "steps": 24,
+      "relative_budget": "9/25",
+      "product_defect_lower": "19807040628566084398385987584/3552713678800500929355621337890625",
+      "scope": "noncommuting finite source-chart control, not actual zeta"
+    },
+    {
+      "anchor_source_defect_lower": "1/256",
+      "steps": 24,
+      "relative_budget": "9/25",
+      "product_defect_lower": "309485009821345068724781056/3552713678800500929355621337890625",
+      "scope": "noncommuting finite source-chart control, not actual zeta"
+    },
+    {
+      "anchor_source_defect_lower": "1/4294967296",
+      "steps": 24,
+      "relative_budget": "9/25",
+      "product_defect_lower": "18446744073709551616/3552713678800500929355621337890625",
+      "scope": "noncommuting finite source-chart control, not actual zeta"
+    },
+    {
+      "anchor_source_defect_lower": "1/18446744073709551616",
+      "steps": 24,
+      "relative_budget": "9/25",
+      "product_defect_lower": "4294967296/3552713678800500929355621337890625",
+      "scope": "noncommuting finite source-chart control, not actual zeta"
+    },
+    {
+      "anchor_source_defect_lower": "1/340282366920938463463374607431768211456",
+      "steps": 24,
+      "relative_budget": "9/25",
+      "product_defect_lower": "1/15258789062500000000000000000000000000000000",
+      "scope": "noncommuting finite source-chart control, not actual zeta"
+    }
+  ],
+  "proved_reduction": "uniform whole strict budgets with positive cap-only steps imply all-cap original Weil positivity; RH gives N=0 and zero budgets",
+  "reduction_dependencies": "inherited complete actual canonical identity, strict source anchor and positive observability; classical compact-test Weil criterion",
+  "uniform_exit_property_proved_for_actual_zeta": false,
+  "RH_proved": false,
+  "critical_bound_without_low_or_nonstalling_equated_to_RH": false,
+  "actual_zeta_bound_disproved": false,
+  "new_aperture": false,
+  "lean_certified": false,
+  "whole_domain_anchor": "21/20 even0/odd0 inherited; source defect constant not numerically inferred from physical margin",
+  "input_sha256": {
+    "scripts/validate_native_finite_identity_cc25.py": "8110d67e6cb66f4b2c14f52f7d2933ba927f79faeef873b82ea0440458120afc",
+    "notes/data/RPB108_FINITE_IDENTITY_CC25_VALIDATION_20261008.json": "f718fa1c7ef24d08db72c70894ab027b19d7e18a2bd4dba498abb226728a4186",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md": "994b3f98faaf287ecb175bd8364728957ba12abd6426dba3cd5392d72408dab5"
+  },
+  "constructor_sha256": "bb3e4cf49ff5704d54f2d44aaf852300de4bdc2f9f7d297d459481f910e8d620"
+}
