@@ -1,0 +1,15 @@
+{
+  "stage": "CC39",
+  "parent": "716dd411df44eb7b9712742bae720e6f85186d22",
+  "repository": "monocap-tech/weil-lab",
+  "branch": "research/rpb108-coupled-continuation",
+  "bridge_prefix_git_blob": "f3d97b5a23d7c7672f50a166fe977e56ede2d37a",
+  "historical_prefix_preserved": true,
+  "changes": "definitions, analytic report, additive bridge, custody",
+  "execution_environment_available": false,
+  "executable_checks_replayed": false,
+  "last_recorded_cc38_checks": 25993,
+  "actual_critical_covariance_evaluated": false,
+  "defect_suppression_proved": false,
+  "RH_proved": false
+}

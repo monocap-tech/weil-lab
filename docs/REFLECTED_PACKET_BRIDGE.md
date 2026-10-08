@@ -3763,3 +3763,15 @@ For k(u)=1/(1-exp(-u))-1/u, k'>=0 and int k'=1/2. Hence g(u)=exp(-u/4)k(u) has i
 Weighted Cauchy-Schwarz proves the whole canonical archimedean tail operator bound ||C_arch,>R||<=4/[R log(e+R)] for R>=1. Its complete-positive-inverse outward critical-row contribution is bounded by4/[c_B^2 R log(e+R)]. This is a certified actual component error with effective rate, not a defect-dependent estimate; a growing R still requires control of the retained signed band. Prime translations receive no such tail decay, and the low-frequency band is not declared finite rank.
 
 Eight new rational tail-budget checks plus25,985 inherited pass, total25,993. The analytic integral argument is not numerically evaluated critical covariance or Lean. IP8's generic full-remainder feasibility stopping rule stays valid. No aperture extension or renewed paused front is claimed. Positivity remains21/20 even0/odd0, physical margin1/(3*10^63); arithmetic outward suppression, RH/F4 and Lean closure remain open.
+
+## CC39 — actual prime recurrence and sharp logarithmic remainder tail (2026-10-08)
+
+Coupled parent:716dd411df44eb7b9712742bae720e6f85186d22, preserving IP handoffs and NF9/NF10. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_PRIME_TAIL_CC39_20261008.md); [definitions](TERMINOLOGY_RPB108_NATIVE_PRIME_TAIL.md).
+
+The actual complete prime multiplier is p_B(xi)=-2 sum_(log n<=2B) Lambda(n)/sqrt(n) cos(2*pi*xi*log n), with both shift orientations. Its canonical high-frequency tail has norm<=2S_B/log(e+R). Finite-dimensional torus pigeonhole recurrence supplies unbounded integer frequencies where every active prime phase tends to1. For a nonnegative supported smooth bump with prime2 overlap, these modulations have complete native physical remainder diagonal tending to a strictly negative constant: the prime overlaps persist while archimedean remainder and pole moments vanish.
+
+Canonical energy grows as log frequency times physical mass. Taking R_j=xi_j/2 therefore gives an actual prime tail lower bound A_phi/[4||phi||_2^2 log xi_j] along a sequence. The logarithmic upper rate is sharp in this sense; CC38's faster archimedean tail cannot be transferred to complete prime terms. The physical remainder is noncompact; its canonical representative remains compact without contradiction.
+
+These test functions are eventually original-positive with Q(h_j)/||h_j||_D^2 tending to1. They are not critical eigenvectors or a defect-bound countermodel. The missing critical signed correlation and full positive inverse remain unestimated. No executable replay was possible because the execution environment was unavailable;25,993 is CC38's last recorded check total, not a new validation count.
+
+NF10's reported target53/50 complement17/100 is preserved and not promoted to whole-domain positivity. Whole-domain anchor stays21/20 even0/odd0, physical margin1/(3*10^63). RH/F4, critical outward suppression and Lean closure remain open.
