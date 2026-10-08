@@ -56,6 +56,22 @@ for n in powers:
     for m in powers:
         assert n*m<=8 or n*m>=9
 
+
+# CC37's globally valid |r_arch|<8 bound combines with the SAME
+# six-prime coefficient rational upper sum for B=53/50, since B<log3.
+assert log3lo>B
+r_upper=F(8)+2*F(12093,3740)+F(16,3)
+assert r_upper==F(111079,5610) and r_upper<F(20)
+# When one USES the convenient rigorously admissible bound r=20,
+# the IP7 sufficient-gate nonvacuity threshold is much more expensive.
+r_eff=F(20)
+g_eff=(1+r_eff)/(r_eff*(1+2*r_eff))
+assert g_eff==F(21,820)
+assert 1/g_eff==F(820,21)>F(39)
+exp_39_lower=sum((F(39)**k/factorial(k) for k in range(100)),F(0))
+assert exp_39_lower>F(80000000000000003)
+# Hence the chosen effective-r=20 generic gate NECESSARILY has R>8e16.
+
 print("PASS: log8 < 2*(53/50) < log9 by exact log intervals")
 print("PASS: the 13 original prime-8 panel ordering is stable")
 print("Certified lower bound on CC33 unsigned budget r_B:", float(r_lower))
@@ -64,3 +80,6 @@ print("Necessary eta ceiling (weaker rational bound):",float(g))
 print("Necessary 1/eta greater than:",float(inv))
 print("PASS: IP7 generic low-frequency spectral test requires R>3e9")
 print("SCOPE: no actual finite Weil matrix, complement certificate, or new sign")
+
+print("PASS: CC37 inherited global remainder bound extends to B=53/50, r_B<20")
+print("PASS: with effective Schur budget 20, generic construction requires R>8e16")
