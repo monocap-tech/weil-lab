@@ -145,3 +145,7 @@ The physical complement constant from NF10 is smaller than CC18's old c=699/1000
 **NF11 gate:** Rebuild the complete target-specific native retained 112-vector matrix at 53/50 and independently evaluate signed finite trials. Then reconstruct corrected source/action Grams for the even and odd weak charts, with all true source errors and c>=17/100 paid. If the conservative Schur signs fail, treat this as an inconclusive certificate, not actual Weil negativity. A fresh stronger complement estimate may be essential for numerical closure.
 
 **Standing:** This is new certified source-level positivity only on F112 at a=53/50. The highest whole-domain certified aperture remains a=21/20 (CC18). CC38 remains active Coupled analytic source, Global NF71 and Pre-Contact Shadow PS3 paused; non-stalling, RH/F4/full transport and Lean closure remain open.
+
+## Subsequent native reconstruction NF11
+
+[NF11 — exact native six-prime 8x8 low retained matrix and staged full112 port](REFLECTED_PACKET_BRIDGE_108_NATIVE112_IP11_20261008.md) has been evaluated at aperture 53/50, independently checking NF9's degree0/degree1 formulas. The newly adapted complete 112-native matrix engine is prepared with resume capability but has NOT been run; no full signed native matrix, source/action Gram or corrected even/odd Schur signs are certified. NF10's genuine physical F112 complement bound 17/100 remains unchanged and remains a conditional ingredient for a future full whole-domain Schur audit, not whole positivity at 53/50.
