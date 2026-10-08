@@ -3604,3 +3604,16 @@ Primary criterion pin: Connes-Consani arXiv:2006.13771v1 introduction (2)/Append
 24,554 exact checks pass (1,224 new product/partition/genuine crossing/physical-source/full-mass checks, 23,330 CC25 replayed). Fixed positive steps fail near genuine contact; gap-dependent critical-safe steps collapse. Tiny physical margins can coexist with source defect one. The joined physical margin is not assigned as a numeric source-defect constant. No actual uniform correlation bound, RH proof, full-identity countermodel or independence theorem is claimed.
 
 Original whole-domain anchor remains 21/20 even0/odd0, joined physical margin 1/(3*10^63). RH/F4, retained attachment, reusable continuation, accumulated finite-cap loss and Lean remain open. Global paused at NF71; Aperture and Pre-Contact Shadow paused. No new aperture. Further equivalence reformulations alone are not arithmetic progress; a new actual joint estimate with all exit quantifiers is required.
+
+
+## CC27 — native exterior forcing and sign mechanism (2026-10-08)
+
+Coupled parent: d2a5b46dd5454fe2f214caa31f98ba6ba881f564. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FLUX_CC27_20261008.md); [definitions](TERMINOLOGY_RPB108_NATIVE_FLUX.md).
+
+Actual native coefficients reject two specific mechanisms. On separated smooth supports, the archimedean-plus-pole kernel is 2cosh(d/2)-exp(-d/2)/(1-exp(-2d)); its sign changes. Negative prime atoms at +/-log n become positive reflected image atoms in the odd chart. Smooth parity tests give both signs in each chart. These are native arithmetic tests, not altered divisor dictionaries or evaluations of actual critical vectors. No fixed-sign cancellation premise is available on these natural parity cones.
+
+At s=21/20, t=53/50 the right-limit prime set is unchanged, yet an old-supported pulse and its +log2 translate in the new strip have a nonzero old n=2 coupling. Thus old-to-new native forcing cannot be reduced to newly admitted prime powers. The positive-source shell still has its interior correction. The generalized old critical equation annihilates the combined residual on the old domain; it supplies no estimate of its exterior covariance. All sixteen blocks of the prime/archimedean/pole/defect-source covariance are retained. Cap-only form boundedness loses the defect after normalization; no actual covariance divergence is inferred.
+
+24,604 exact checks pass (50 new rational kernel/parity/prime-support/mixed-covariance/crossing/full-mass checks, 24,554 CC26 replayed). Separated-support digamma and smooth-bump arguments are analytic, not new Lean certification. Source input: NIST DLMF5.9.16 plus pinned native Lean arithmetic identities. No actual critical J covariance bound, full-identity independence theorem, RH proof or new aperture. The specific sign and new-prime-shell shortcuts stop here; a mode-dependent joint arithmetic theorem is still required.
+
+Original whole-domain anchor remains21/20 even0/odd0, joined physical margin1/(3*10^63); this is not a numerical source defect. RH/F4, retained attachment, reusable continuation, accumulated finite-cap loss and Lean remain open. Global paused at NF71; Aperture and Pre-Contact Shadow paused.

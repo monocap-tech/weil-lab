@@ -1,0 +1,101 @@
+{
+  "stage": "CC27",
+  "base_commit": "d2a5b46dd5454fe2f214caa31f98ba6ba881f564",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "inputs": {
+    "WeilDefect/Morphology/NeutralWeilMultiplier.lean": {
+      "bytes": 5227,
+      "sha256": "502bdaf2cc31302d10f471b411f0105a3a9fed942aa8621c037ff1d4678d4f3c",
+      "git_blob_sha": "4c24084c8a058cbb6685d54bc8226b746cabc413"
+    },
+    "WeilDefect/Morphology/NeutralWeilPrimeShellTranslation.lean": {
+      "bytes": 10486,
+      "sha256": "f56418820e6d8b32f08d48fff59bc4a177f6924825cc478f6564faa9749456b8",
+      "git_blob_sha": "628f979cb0e7b33d22c1a1144ae9e5c25560d257"
+    },
+    "WeilDefect/Morphology/NeutralArchimedeanExterior.lean": {
+      "bytes": 10101,
+      "sha256": "1291c03352663884cd095e0e63411f583ea004c2e8b09da5c5ee58a87b5e805d",
+      "git_blob_sha": "dc3e8c0e1b72769c8cdd6970c8b1131d395c24bc"
+    },
+    "WeilDefect/Arithmetic/ActualZetaPrimeTransport.lean": {
+      "bytes": 7883,
+      "sha256": "aa63ac6f25a47e54d1a13643b55c71ff6fa7fbb5bcbf59308b16c6efbcd2aa5d",
+      "git_blob_sha": "f27b56c4ec5eca8739e2ccf1e44057b037ad1724"
+    },
+    "WeilDefect/Arithmetic/ActualZetaCorrelationPoles.lean": {
+      "bytes": 4621,
+      "sha256": "bc52582ce1bc214aa18a115a1ca5a17a1824df837b71dde2563d1f8e1e9b277c",
+      "git_blob_sha": "cdc88bdc00072ec91cc5252bc57d9aa1c88ccbe2"
+    },
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": {
+      "bytes": 6096,
+      "sha256": "3ae164cb108777099c6582686866e5fbd85fc501eab9e15bea60ef8215690a81",
+      "git_blob_sha": "961b6742782fa3f808ac9b70cfadfc0790c8fc32"
+    },
+    "scripts/validate_native_uniform_exit_cc26.py": {
+      "bytes": 4687,
+      "sha256": "bb3e4cf49ff5704d54f2d44aaf852300de4bdc2f9f7d297d459481f910e8d620",
+      "git_blob_sha": "e06dfe2da2edd3e3113c2e46004c291237b26bac"
+    },
+    "notes/data/RPB108_UNIFORM_EXIT_CC26_VALIDATION_20261008.json": {
+      "bytes": 3019,
+      "sha256": "2652ec0d05d41951c5504e258bcec0fd737af9f2a8e8337fd2c60817bac50100",
+      "git_blob_sha": "b8654e990ecbf80e0251e02db677dda4dc810d0b"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": {
+      "bytes": 13662,
+      "sha256": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+      "git_blob_sha": "da2dab5958dd65381bca285c7ff9082d571e6dd8"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_UNIFORM_EXIT_CC26_20261008.md": {
+      "bytes": 10947,
+      "sha256": "15a22b7fc627328934a3a1e4b7bf4545e0ff72a77a725559de40778ab26f127a",
+      "git_blob_sha": "2c484e9a37cc73d30e7de34eab06be3af2cfcd45"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 675279,
+      "sha256": "9f40b23a1ea33ded48ec5708b8ea3ecd0357af74c4d1941667a44e67c7a7b414",
+      "git_blob_sha": "9839eb75d39d087e843db96e52ea88ddca7a168b"
+    }
+  },
+  "bridge_prefix": {
+    "bytes": 675279,
+    "sha256": "9f40b23a1ea33ded48ec5708b8ea3ecd0357af74c4d1941667a44e67c7a7b414",
+    "git_blob_sha": "9839eb75d39d087e843db96e52ea88ddca7a168b"
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_NATIVE_FLUX.md": {
+      "bytes": 1740,
+      "sha256": "b576b114543e14ff8bf044091cfcb041c27e48688104e97cb72ef0f249b9b178",
+      "git_blob_sha": "fdfa229b005d0f4be6e7f315fa05a29fc74a97f6"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FLUX_CC27_20261008.md": {
+      "bytes": 12270,
+      "sha256": "ba6e7c65e83ab32e38c3cea603f1719844a98064ee5d4de39c763260bfde3cb2",
+      "git_blob_sha": "e9a44661f94ee6750fc5ad1fbf7dc719fa3ba482"
+    },
+    "scripts/validate_native_flux_cc27.py": {
+      "bytes": 5334,
+      "sha256": "51561aecfc0e1f5f0a6599eef77982805cb07e70d56c750f74068291effbc3a7",
+      "git_blob_sha": "3b7eee67e02302d30de526d467633dba88a76781"
+    },
+    "notes/data/RPB108_NATIVE_FLUX_CC27_VALIDATION_20261008.json": {
+      "bytes": 1597,
+      "sha256": "bb401eb8bb4cb031366c094a0e7dfb2d96f43158f0d971c31750b25d8190cf63",
+      "git_blob_sha": "ad663dce5c9d92586fd728c0f9319013077372a2"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 677511,
+      "sha256": "f83f74daa66896d3b5ec733f909d41de724b908419128a57d3d4c273290634a9",
+      "git_blob_sha": "f8766f66a49196111ab89d79a116f66408925a1f"
+    }
+  },
+  "external_formula": {
+    "uri": "https://dlmf.nist.gov/5.9.E16",
+    "pin": "NIST DLMF 5.9.16, checked 2026-10-08, Re z>0",
+    "scope": "digamma integral; off-diagonal kernel is our separated-support derivation"
+  },
+  "scope": "actual native coefficient sign/support controls; no actual critical covariance or defect-relative bound; analytic arguments not Lean certified"
+}

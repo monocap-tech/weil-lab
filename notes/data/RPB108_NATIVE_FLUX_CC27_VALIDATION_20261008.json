@@ -1,0 +1,44 @@
+{
+  "stage": "CC27 native exterior forcing / sign mechanism",
+  "all_passed": true,
+  "new_counts": {
+    "native_kernel": 13,
+    "parity_sign": 9,
+    "prime_support": 9,
+    "mixed_covariance": 10,
+    "crossing": 6,
+    "full_mass": 3
+  },
+  "new_exact_checks": 50,
+  "inherited_cc26_checks": 24554,
+  "total_exact_checks": 24604,
+  "actual_coefficient_sign_mechanism_rejected": true,
+  "only_new_prime_powers_force_exterior_rejected": true,
+  "new_prime_support_control": {
+    "s": "21/20",
+    "t": "53/50",
+    "same_support": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8
+    ]
+  },
+  "actual_critical_covariance_evaluated": false,
+  "defect_relative_bound_proved": false,
+  "actual_zeta_bound_disproved": false,
+  "full_identity_independence_proved": false,
+  "RH_proved": false,
+  "new_aperture": false,
+  "lean_certified": false,
+  "scope": "native coefficient controls and analytic separated-support tests; no actual critical eigenvector evaluation",
+  "input_sha256": {
+    "scripts/validate_native_uniform_exit_cc26.py": "bb3e4cf49ff5704d54f2d44aaf852300de4bdc2f9f7d297d459481f910e8d620",
+    "notes/data/RPB108_UNIFORM_EXIT_CC26_VALIDATION_20261008.json": "2652ec0d05d41951c5504e258bcec0fd737af9f2a8e8337fd2c60817bac50100",
+    "WeilDefect/Morphology/NeutralWeilMultiplier.lean": "502bdaf2cc31302d10f471b411f0105a3a9fed942aa8621c037ff1d4678d4f3c",
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "3ae164cb108777099c6582686866e5fbd85fc501eab9e15bea60ef8215690a81"
+  },
+  "constructor_sha256": "51561aecfc0e1f5f0a6599eef77982805cb07e70d56c750f74068291effbc3a7"
+}
