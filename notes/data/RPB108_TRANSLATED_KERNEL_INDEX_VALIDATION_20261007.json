@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "exact_checks": 823,
+  "scope": "finite rational determinant, support-factor and inertia-congruence algebra only",
+  "analytic_certification": false,
+  "actual_contact_computed": false,
+  "lean_certification": false,
+  "F4_closed": false
+}

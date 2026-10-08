@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-07",
+  "lane": "NF51 translated kernel multiplicity and one-sided opening",
+  "recovered_head": "2ae3bc383d38bf245ab137cbcb6799cd59ee0dba",
+  "dependencies": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md": "3354b89638b643d5b21c4c428f069f738ccf59f5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_NULL_ABEL_LOG_SLOPE_20261007.md": "1a63fe344931b95170dcb06b8b67f6818b968e18",
+    "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DERIVATIVE_CHAIN_20261007.md": "e124b8a31a00df61908ce71cedd4ab7f83a14c76",
+    "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DE_BRANGES_ATTACHMENT_20261007.md": "95a4b2753e0dacdf6236656e43b7110f1124c7da",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATION_NULL_EXTENSION_OBSTRUCTION_20261004.md": "41e9b6b02c79afff807ceef4c61f9320c6874409",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "a57677d1804f6b45e3f4ad0df8edc1f00726975e"
+  },
+  "conditional_scope": "hypothetical actual nonnegative contact kernel; shifted nonnegative lowest-eigenspace counterpart",
+  "new_results": [
+    "cross determinant (-1)^r |c|^(2r) product_j j!/(r+j)! times t^(r^2) plus lower-order remainder",
+    "complete translated 2r-vector Gram has inertia (r positive,r negative)",
+    "negative index at least r in every strictly larger aperture",
+    "one-sided physical Rayleigh opening lambda_min(a+epsilon)<=-Lambda_K epsilon+o(epsilon)"
+  ],
+  "already_recorded_result_not_reclaimed": "Single translated negative trial was proved in NULL_ABEL_LOG_SLOPE section5; NF51 adds full multiplicity/determinant and maximized centered Rayleigh bound.",
+  "normalization": "Physical mass used only for Rayleigh normalization and Lambda_K; coefficient Gram eigenvalues are not physical operator eigenvalues.",
+  "shifted_control": "Q_mu Gram opens r directions below mu, not necessarily below zero; original source Gram retains mu times full physical mass Gram.",
+  "limitations": [
+    "no actual contact or negative witness at a certified aperture computed",
+    "no exact domain derivative or matching lower spectral bound",
+    "no effective numerical Lambda_K floor",
+    "no unshifted arithmetic exclusion"
+  ],
+  "validation": {
+    "exact_checks": 823,
+    "dimensions_checked": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "finite_algebra_only": true,
+    "analytic_certification": false,
+    "lean_certification": false
+  },
+  "preserved_aperture_one_commit": "811b0826abf45d688d1e2da7900cda852103ddee",
+  "open": [
+    "initial actual contact exclusion",
+    "signed sharp-head arithmetic",
+    "F4",
+    "full transport",
+    "Lean closure"
+  ]
+}
