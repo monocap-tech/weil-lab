@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-08",
+  "base": "9be5c1d0227422c2ae22b0538f832c5d46092c92",
+  "source_blob_pins": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "d01675c068f93cb81e290f3419f14e273712aa25",
+    "notes/REFLECTED_PACKET_BRIDGE_108_REVERSE_GAIN_TARGET_20261008.md": "5875daa8e2b9c82c9dcad45acd1c4bed3e848f7c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LOG_OPERATOR_ATTACHMENT_20261007.md": "5b9fedd77956f6ba3e2efc0a71be14f673596fd1",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md": "c2d087875d8dd85dfcdbd64893923ef51fcf1028",
+    "scripts/certify_native_drive_cusp_geometry.py": "0c86fb92fc627219767138a2fa1098b668dfb173"
+  },
+  "actual_prime_power_jumps_checked": 6,
+  "actual_scalar_discrepancy_bound": "V(log n)<-1/4 for n=2,3,4,5,7,8",
+  "new_gain_bound": false,
+  "new_positivity_interval": false,
+  "lean_certified": false
+}
