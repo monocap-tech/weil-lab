@@ -3647,3 +3647,19 @@ With the inherited attained first-contact constructor and classical compact-test
 24,872 exact checks pass (124 new rotating critical projection/order/power/genuine crossing/full-mass checks, 24,748 CC28 replayed). Genuine crossing has nonzero fixed-target leakage and divergent positive-power normalization; restriction to contact targets permits bounded critical cost only with shrinking steps. The shifted positive-level control keeps the complete mass channel and is not original nullity. Infinite strong-limit and native arguments remain analytic, not new Lean certification.
 
 Original anchor stays21/20 even0/odd0, joined physical margin1/(3*10^63), not a numerical source defect. No new aperture. RH/F4, retained attachment, reusable continuation, accumulated finite-cap loss and Lean remain open. Global NF71, Aperture and Pre-Contact Shadow stay paused.
+
+
+## CC30 — local transverse density premise contains Lindelof (2026-10-08)
+
+Coupled parent:3fe64929ae5030f3fe8fbdc2f181c3c15b3db408. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_LOCAL_TRANSVERSE_GATE_CC30_20261008.md); [definitions](TERMINOLOGY_RPB108_LOCAL_TRANSVERSE_GATE.md).
+
+The every-height premise sum_(T<=theta<T+1) beta^2=o(log T) is equivalent to Lindelof: one direction bounds each fixed far-right count by the transverse mass/epsilon^2 and uses Backlund; the reverse splits near/far transverse distances using the unconditional O(log T) total local count and reflected multiplicities, then sends epsilon to0 after the limsup. This does not require the accepted narrower strip, supply an effective rate, or make the premise equivalent to the CC29 shell target.
+
+Sparse reflected artificial clusters at T_j=2^(2^j), with 2^j copies at each beta=+/-1/8, obey O(log T) cumulative transverse mass and O(log T) total local counts while their normalized local transverse mass stays positive. They can begin above any finite verification height. These controls do not satisfy the actual native Weil identity; no full-identity countermodel or independence theorem is claimed.
+
+This particular local-density shortcut has an unproved Lindelof premise and a further finite-correlation gap. Even finite negative sources have a vanishing local tail without a defect-relative covariance guarantee. Genuine differential crossing and the full positive-level mass controls are retained. No new generic compactness front is opened.
+
+24,987 exact checks pass (115 new local-split/sparse-cluster/finite-prefix/genuine-crossing/full-mass checks, 24,872 CC29 replayed). The imported Backlund criterion and analytic split proof are not proved by these rational checks. No actual critical zeta covariance, local transverse vanishing, or new shell upper bound is certified.
+
+Original anchor remains21/20 even0/odd0, physical margin1/(3*10^63). RH/F4, retained attachment, reusable continuation and Lean closure stay open. Global NF71, Aperture and Pre-Contact Shadow remain paused.
+

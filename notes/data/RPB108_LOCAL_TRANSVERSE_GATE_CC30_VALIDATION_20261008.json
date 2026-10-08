@@ -1,0 +1,28 @@
+{
+  "stage": "CC30 local transverse premise / Lindelof gate",
+  "all_passed": true,
+  "new_counts": {
+    "near_far_split": 20,
+    "sparse_cluster": 63,
+    "finite_prefix": 9,
+    "genuine_crossing": 20,
+    "full_mass": 3
+  },
+  "new_exact_checks": 115,
+  "inherited_cc29_checks": 24872,
+  "total_exact_checks": 24987,
+  "analytic_result": "complete local second transverse mass o(log T) iff Lindelof, via imported Backlund criterion",
+  "scope": "location premise audit; artificial cluster controls do not satisfy actual Weil EF",
+  "local_transverse_vanishing_proved_unconditionally": false,
+  "actual_critical_covariance_evaluated": false,
+  "RH_proved": false,
+  "new_aperture": false,
+  "lean_certified": false,
+  "input_sha256": {
+    "scripts/validate_native_critical_flux_limit_cc29.py": "78da6469fae478280449de44bec2c1e137ffab1a4cc7b1b8767d674cea3a794c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSVERSE_DENSITY_SAMPLING_20261007.md": "c390b8d7204ec65b36128d9b21de9a5de54ac02836cfce0ed2710c94e44ea8e4",
+    "notes/REFLECTED_PACKET_BRIDGE_108_DENSITY_PHASE_CC22_20261008.md": "21dc744a5ae011cc72d6e3b86f143be302c09c5b98043f29bad2ce7bb8143b1e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_FLUX_LIMIT_CC29_20261008.md": "5d7675c2868864e072124e7dc5e43eefdd53f47f1609bfe5c9f3b7d67595bd40"
+  },
+  "constructor_sha256": "b1bc068e9e94cad8eed13f39d64e69ed90805adf59a21b6abe6ad961fb6ae6a9"
+}

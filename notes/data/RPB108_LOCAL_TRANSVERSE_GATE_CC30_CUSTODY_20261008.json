@@ -1,0 +1,122 @@
+{
+  "stage": "CC30 local transverse premise / Lindelof gate",
+  "date_utc": "2026-10-08",
+  "repository": "monocap-tech/weil-lab",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "parent": "3fe64929ae5030f3fe8fbdc2f181c3c15b3db408",
+  "paused_global_branch": "research/rpb108-larger-aperture-complement",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "inputs": {
+    "scripts/validate_native_critical_flux_limit_cc29.py": {
+      "bytes": 4909,
+      "sha256": "78da6469fae478280449de44bec2c1e137ffab1a4cc7b1b8767d674cea3a794c",
+      "git_blob": "674c0e34145be94d89185fa07d31fade1b6cb618"
+    },
+    "notes/data/RPB108_CRITICAL_FLUX_LIMIT_CC29_VALIDATION_20261008.json": {
+      "bytes": 3630,
+      "sha256": "3bd655da97dab3a0228fade0d44cf3845f609d54c5f53cffc33c19a5b7663db0",
+      "git_blob": "faa3b23f40c5d1a261ce5b4a24d151a4deb798d8"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSVERSE_DENSITY_SAMPLING_20261007.md": {
+      "bytes": 9480,
+      "sha256": "c390b8d7204ec65b36128d9b21de9a5de54ac02836cfce0ed2710c94e44ea8e4",
+      "git_blob": "c9950fafef341ee66f62a5b1ab21013ebfd3a716"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_DENSITY_PHASE_CC22_20261008.md": {
+      "bytes": 10596,
+      "sha256": "21dc744a5ae011cc72d6e3b86f143be302c09c5b98043f29bad2ce7bb8143b1e",
+      "git_blob": "d544e23f4d731ef9d545b940c618f832508bdcb7"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_FLUX_LIMIT_CC29_20261008.md": {
+      "bytes": 12066,
+      "sha256": "5d7675c2868864e072124e7dc5e43eefdd53f47f1609bfe5c9f3b7d67595bd40",
+      "git_blob": "1d139126c805a96fa6bc92c0311fa89111e5f42f"
+    }
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_LOCAL_TRANSVERSE_GATE.md": {
+      "bytes": 1397,
+      "sha256": "03e5ff54dd3e705e3ab299f9e76b4b20fed79dfc0cd76e91381cfa35d988dbda",
+      "git_blob": "7d7918b468a87809ab4ab81de88d71097076b2df"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOCAL_TRANSVERSE_GATE_CC30_20261008.md": {
+      "bytes": 8460,
+      "sha256": "6313a8faaea706cc873a670dbd3a35ec0dbdeaf37306502ab1600f73169f1c5d",
+      "git_blob": "5932036003609d2936de6e7815db7cf57fd76624"
+    },
+    "scripts/validate_native_local_transverse_gate_cc30.py": {
+      "bytes": 3835,
+      "sha256": "b1bc068e9e94cad8eed13f39d64e69ed90805adf59a21b6abe6ad961fb6ae6a9",
+      "git_blob": "7014e2d87c01a068c066d054d16de024d539a251"
+    },
+    "notes/data/RPB108_LOCAL_TRANSVERSE_GATE_CC30_VALIDATION_20261008.json": {
+      "bytes": 1399,
+      "sha256": "e1eb652b11970ed19e9cae8a1d0d50c42c2b9154dbda0b5ccfadf64d10b33e9f",
+      "git_blob": "18d4843ccde1e90282387946cc1886af55a4c6b0"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 685351,
+      "sha256": "5b1acb1cb0eba0c794f2ac2c38447a720c06e090d009b95fb149d50b9abb07dd",
+      "git_blob": "e4f572d9929c246503d3465f0fa84fd27507e7ea"
+    }
+  },
+  "bridge_prefix": {
+    "bytes": 683278,
+    "sha256": "e40511b8dd3f4f8409e62981763c0c74fda835f76c5ebef9066130558e5af732",
+    "git_blob": "55e15b930328058a75b60ae1e1a534ba755e87ed",
+    "preserved_byte_for_byte": true
+  },
+  "external_inputs": [
+    {
+      "url": "https://terrytao.wordpress.com/2015/03/01/254a-supplement-7-normalised-limit-profiles-of-the-log-magnitude-of-the-riemann-zeta-function-optional/",
+      "author": "Terence Tao",
+      "date": "2015-03-01",
+      "scope": "Theorem 2 Backlund criterion and proof exposition"
+    },
+    {
+      "url": "https://www.kurims.kyoto-u.ac.jp/~kenkyubu/bessatsu/open/B34/pdf/B34_021.pdf",
+      "author": "Jorn Steuding",
+      "scope": "section 5, printed page 372; Backlund attribution, 1918/19"
+    },
+    {
+      "url": "https://teorth.github.io/expdb/blueprint/zeta-growth-chapter.html",
+      "scope": "Lemma 6.15, growth exponent and local zero criterion",
+      "read_date": "2026-10-08"
+    },
+    {
+      "url": "https://arxiv.org/pdf/1208.5846",
+      "version": "1208.5846v2",
+      "date": "2012-09-05",
+      "scope": "Corollary 1 gives unconditional O(log T) unit-height count by subtraction and endpoint enclosure"
+    },
+    {
+      "url": "https://arxiv.org/html/2507.15184v2",
+      "version": "2507.15184v2",
+      "scope": "Corollary 1; cumulative upper bounds are not local increments"
+    }
+  ],
+  "validation": {
+    "total_exact_checks": 24987,
+    "new_exact_checks": 115,
+    "inherited_cc29_checks": 24872,
+    "scope": "rational location controls and genuine crossing/full-mass replays; not actual arithmetic critical-vector data"
+  },
+  "claims": {
+    "local_second_transverse_vanishing_equivalent_to_Lindelof": true,
+    "Backlund_proof_formalized_here": false,
+    "local_vanishing_proved_unconditionally": false,
+    "actual_shell_modulus_proved": false,
+    "full_identity_independence_proved": false,
+    "source_tail_operator_theorem_proved_here": false,
+    "new_aperture": false,
+    "RH_proved": false,
+    "lean_certified": false
+  },
+  "standing": {
+    "original_aperture": "21/20",
+    "physical_margin": "1/(3*10^63)",
+    "Global": "paused NF71",
+    "Aperture": "paused",
+    "PreContactShadow": "paused"
+  }
+}
