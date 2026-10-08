@@ -118,3 +118,7 @@ CC34 rejects unsigned smallness as the source-defect estimator; IP7 does not dem
 **Next independent concrete task**: construct at one fixed new aperture B>21/20 a fully enclosed low-frequency spectral basis and evaluate the complete native A_F matrix and r_* with sufficiently tight intervals to decide (4), (5), or a negative trial. Before that numerical/symbolic audit, no positivity frontier is advanced.
 
 Coupled is sole active integration frontier; IP7 is an independent finite-certification procedure and read-only dependency. Paused Global NF71 / Aperture and Pre-Contact Shadow PS3 are untouched. No RH/F4, retained transport or Lean closure is claimed.
+
+## 6. Reproducible finite checks
+
+The [IP7 exact-rational validator](../scripts/validate_native_low_frequency_schur_ip7.py) was executed separately with Python Fraction arithmetic and passed **71/71** assertions. These exercise a strict Schur-positive case, shifted positive margin, finite null contact, negative whole form despite nonnegative retained block, and generic source crossing. They do NOT instantiate the infinite-dimensional low-frequency spectral projection Z_R, prove r_* numerical enclosures, or establish an actual new Weil aperture sign. The infinite-dimensional proof above is analytic and depends on the existing CC33 native identity.
