@@ -1,0 +1,41 @@
+{
+  "stage": "NF11 new target prime-only native interval low8",
+  "aperture": "53/50",
+  "source": "all six active original prime powers (2,3,4,5,7,8), both shifts",
+  "normalized_physical_legendre_degrees": "0..7",
+  "dimensions": 8,
+  "certified_nonzero_entries_in_upper_triangle": 20,
+  "parity_zero_exact": true,
+  "rational_grid_denominator": "10000000000000000000000000000000000000000",
+  "samples": {
+    "q_00": [
+      "-19876777177172331407676724869358827027456",
+      "-19876777177172331407676724869358827027455"
+    ],
+    "q_02": [
+      "-4988686474204542810553077996333247713560",
+      "-4988686474204542810553077996333247713559"
+    ],
+    "q_11": [
+      "14531067120911515804754440737629005832747",
+      "14531067120911515804754440737629005832748"
+    ],
+    "q_13": [
+      "-2308701653078361856617831462204569844754",
+      "-2308701653078361856617831462204569844753"
+    ],
+    "q_22": [
+      "4887425057913731368979577981258494369352",
+      "4887425057913731368979577981258494369353"
+    ]
+  },
+  "independent_numerical_gauss_check_max_absolute_difference": "4.310787837802366e-15",
+  "max_interval_width_strict_upper": "1/10000000000000000000000000000000000000000000000000000000000",
+  "full_lower_triangle_is_reproducible_by": "scripts/certify_native_prime8_lowblock_nf11_106.py",
+  "full_112_native_uncomputed": true,
+  "archimedean_uncomputed": true,
+  "pole_uncomputed": true,
+  "original_source_gram_uncomputed": true,
+  "whole_1_06_positive": false,
+  "scope": "rigorous prime-only 8x8; no full original Weil sign"
+}
