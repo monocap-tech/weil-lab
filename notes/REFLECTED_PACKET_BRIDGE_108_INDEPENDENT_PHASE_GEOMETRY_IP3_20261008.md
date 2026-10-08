@@ -114,3 +114,7 @@ Source custody: CC20's forced-row kernel/quotient identities, CC27's native exte
 ## 6. Reproducible finite control validation
 
 The reproducible [IP3 exact rational validator](../scripts/validate_native_phase_packet_ip3.py) has been executed and passes **24 exact rational assertions**. It checks a nontrivial positive metric, forced-row/old-support orthogonality, exact outgoing quotient Gram, exact original-style 9/7 crossing cost, omitted-shell tail and a conservative whole-dual residual enclosure. These checks do not certify the actual zeta forced row or any infinite-dimensional theorem in Lean.
+
+## Subsequent checkpoint
+
+[IP4 — exterior-packet completeness and separated native forcing](REFLECTED_PACKET_BRIDGE_108_INDEPENDENT_PHASE_GEOMETRY_IP4_20261008.md) proves that the linear span of smooth tests supported outside the old aperture, together with the old domain, is dense in the complete canonical logarithmic domain. After CC20 positive-source orthogonalization these exterior tests are dense in the entire incoming shell. Their complete normalized supremum equals the forced inverse-dual norm; this is a *test-space equivalence*, not a new smallness estimate. The native exterior forcing is explicitly given by CC27's archimedean–pole exterior density and active prime translations, with the entire positive-source correlation retained.
