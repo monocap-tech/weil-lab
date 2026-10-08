@@ -1,0 +1,48 @@
+{
+  "stage": "CC20 forced arithmetic numerator / positive inverse covariance",
+  "parent_commit": "f3ef1c262fb2bcd015a042438c069fe7ce56945f",
+  "paused_global_sha": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "artifact_sha256": {
+    "docs/TERMINOLOGY_RPB108_FORCED_SOURCE.md": "d99b63005e43c575d22d7536bb17c8d0400bf2a7fef052dd74e2e5fe5b06a3cc",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+    "scripts/validate_native_forced_source_cc20.py": "b03d6ea1cd979b519585c3c0c9c38f8f81361abc8b89446c4c91619bd2688997",
+    "notes/data/RPB108_FORCED_SOURCE_CC20_VALIDATION_20261008.json": "6e93cf958e9ed96ea4ea32dcf9ca782c292319037ac1d4752e978434b47282de",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "a5ef753e3d33c8e8002b83f914a88fd61cf240edfc432fd466f345527cab207f"
+  },
+  "inherited_input_sha256": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md": "8a97099032b77dcdf1cdd8bf38c9d1eae0bedc6eaa3e41c4ac968d17e007e854",
+    "notes/REFLECTED_PACKET_BRIDGE_108_REVERSE_GAIN_TARGET_20261008.md": "07df1bed183035ab15df4435dabae2aecdd03327c1970e2325d87b704f53d9b3",
+    "WeilDefect/Arithmetic/ActualZetaSourceDecomposition.lean": "a4db93f352f15d84e03bb2ca81c5b1f50e2839e8e57bf2e579e3763ceb9cb9f8",
+    "WeilDefect/Morphology/NeutralLogSelectedSourceAttachment.lean": "3e3f6cb9eaa1eef74e2bf2e36b0d02ea2815ee44ebaf26d87e2c91aed6880b2d",
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "3ae164cb108777099c6582686866e5fbd85fc501eab9e15bea60ef8215690a81",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_SHELL_GAIN_20261008.md": "ae173553c9b18f6eb3ab6ca7b293344eed67b3ce94296495055ed244b0a0128c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md": "994b3f98faaf287ecb175bd8364728957ba12abd6426dba3cd5392d72408dab5",
+    "scripts/validate_native_shell_leakage_cc19.py": "18f3f5cd7f89b38c2a37ff7c4b1624857681a06487e67106404955ceb5f0d394",
+    "notes/data/RPB108_SHELL_LEAKAGE_CC19_VALIDATION_20261008.json": "1e810f02923f8512a7dee1bb065fdcf4f41ef3786d2866edb3be0ca8a1afe841",
+    "notes/data/RPB108_JOINED_CC18_SUMMARY_20261008.json": "9d70eec1a06761c0f8c7b3025feffac2813f86302f300ae2719a6550ff0805c1"
+  },
+  "inherited_git_blob_sha": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md": "09f8a679e7df15e6f5f160ce3c94950df826aa8d",
+    "notes/REFLECTED_PACKET_BRIDGE_108_REVERSE_GAIN_TARGET_20261008.md": "5875daa8e2b9c82c9dcad45acd1c4bed3e848f7c",
+    "WeilDefect/Arithmetic/ActualZetaSourceDecomposition.lean": "3031098da4785b0b0f22202a34af9a067f5a8a6e",
+    "WeilDefect/Morphology/NeutralLogSelectedSourceAttachment.lean": "edef77b3479b2908a1bfd46b3b8df035786979b6",
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "961b6742782fa3f808ac9b70cfadfc0790c8fc32",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_SHELL_GAIN_20261008.md": "17a9592070d1cfdf7b73c83249660f7d063825bb",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md": "25c6e2736cc4e0fdfec8d8832c3f6e24827d4d06",
+    "scripts/validate_native_shell_leakage_cc19.py": "972a460ab783d998184dac0cdfc0ed4829772809",
+    "notes/data/RPB108_SHELL_LEAKAGE_CC19_VALIDATION_20261008.json": "9b3d3c38e17b8d6c6c94e1bf0f1e84c15fb08b9c",
+    "notes/data/RPB108_JOINED_CC18_SUMMARY_20261008.json": "e104ad72ca7c39fca28ab6f5a27a12289613a8bd"
+  },
+  "bridge_prefix": {
+    "bytes": 661548,
+    "git_blob_sha": "0cfce0e3ace792141dd7d60b098a3c9d391414f9",
+    "sha256": "7a752d3d2bcda2f2127a2284792a565899563c9923e01e22816af78d92076123"
+  },
+  "exact_checks": 11308,
+  "staged_nf_checkpoint": "Stage one complete; actual forced numerator and independently conditioned inverse interface specified.",
+  "arithmetic_bound_certified": false,
+  "actual_zeta_bound_disproved": false,
+  "actual_zeta_matrix_evaluated": false,
+  "scope": "New analytic identities; finite controls are not actual divisor observations; no new Lean theorem or aperture.",
+  "publication_scope": "Coupled only; historical prefix preserved."
+}

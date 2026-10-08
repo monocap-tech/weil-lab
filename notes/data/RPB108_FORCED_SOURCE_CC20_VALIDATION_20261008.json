@@ -1,0 +1,35 @@
+{
+  "stage": "CC20 forced arithmetic residual / positive-source inverse",
+  "classification": "A: exact analytic interface; C: automatic defect-factor candidate rejected",
+  "all_passed": true,
+  "new_counts": {
+    "source_covariance": 3456,
+    "quotient_projection": 384,
+    "hyperbolic_dictionary": 117,
+    "partner_normalization": 72,
+    "positive_level": 7,
+    "genuine_crossing_scaling": 240
+  },
+  "new_exact_checks": 4276,
+  "inherited_cc19_checks": 7032,
+  "total_exact_checks": 11308,
+  "complete_source_cases": 384,
+  "positive_cases": 208,
+  "negative_cases": 176,
+  "exact_covariance": "L L*=Lambda^-1/2 J M_t^-1 J* Lambda^-1/2",
+  "independent_arithmetic_target": "J M_t^-1 J* <= q Lambda G, low+q<1",
+  "automatic_small_factor_from_source_orthogonality": false,
+  "actual_zeta_covariance_evaluated": false,
+  "arithmetic_estimate_certified": false,
+  "arithmetic_estimate_disproved_for_zeta": false,
+  "new_aperture": false,
+  "whole_domain_anchor": "21/20 inherited CC18, even0/odd0",
+  "global_nonstalling": false,
+  "lean_certified": false,
+  "scope": "Actual arithmetic identities are analytic. Finite matrices and pair values are controls, not actual divisor data.",
+  "input_sha256": {
+    "cc19_validator": "18f3f5cd7f89b38c2a37ff7c4b1624857681a06487e67106404955ceb5f0d394",
+    "cc19_validation": "1e810f02923f8512a7dee1bb065fdcf4f41ef3786d2866edb3be0ca8a1afe841"
+  },
+  "constructor_sha256": "b03d6ea1cd979b519585c3c0c9c38f8f81361abc8b89446c4c91619bd2688997"
+}
