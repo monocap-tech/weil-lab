@@ -98,3 +98,7 @@ The **next arithmetic gate is still** a fixed-cap, fixed-positive-step, actual-o
 Merely shrinking t-s with delta, proving smooth-packet density, bounding high-frequency averages, or invoking compactness again does not meet that gate.
 
 No new certified aperture beyond a=21/20; no global non-stalling, RH/F4, transport or Lean closure. Coupled sole active integration, Global NF71 and Shadow PS3 paused.
+
+## 5. Local exact test outcome
+
+The [reproducible IP5 source-control validator](../scripts/validate_native_small_step_ip5.py) was independently executed using Python Fraction arithmetic: **74 of 74 exact rational assertions passed**. These check the compact rank-one old gain, fixed-step divergence, squared forcing envelope and explicit negative-target sample. The native zeta uniform small-step theorem remains an analytic deduction from CC33 and the supported-domain projection facts, not a numerical zero computation or Lean certification.
