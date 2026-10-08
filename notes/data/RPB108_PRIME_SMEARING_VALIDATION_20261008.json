@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "aperture_one_prime_budget_upper": "6",
+  "prime_8_threshold_budget_upper": "13/2",
+  "dyadic_error_upper_bounds": [
+    "36/k",
+    "39/k"
+  ],
+  "half_margin_sufficient_k": "360000000000000000000000000000000001",
+  "scope": "exact finite budgets; analytic norm bound and lower limit not mechanically certified"
+}

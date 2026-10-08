@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-08",
+  "base": "bbb04c0d9811184f651095bcae360ba548f0e269",
+  "source_blob_pins": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "abb77a370c7f91e56c06cb761d55d474fd413229",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME_POLE_DISCREPANCY_20261008.md": "76a5eed629c999a4e874b8bd3d52de2135c57ffb",
+    "docs/TERMINOLOGY_RPB108_PRIME_POLE_DISCREPANCY.md": "0b892a717fc3f3e9c2f5180429cd40b1dd4614b0",
+    "notes/REFLECTED_PACKET_BRIDGE_108_HEIGHT_LIMIT_NONUNIFORMITY_20261007.md": "6d619a36aad3a8fb711072a1935f4c433ffae32a",
+    "scripts/certify_native_drive_cusp_geometry.py": "0c86fb92fc627219767138a2fa1098b668dfb173"
+  },
+  "analytic_result": "uniform canonical prime smearing error <=4 S_a/log(1/delta); sharp logarithmic rate at actual a=1/2",
+  "new_original_source_gain_bound": false,
+  "new_positivity_interval": false,
+  "lean_certified": false
+}
