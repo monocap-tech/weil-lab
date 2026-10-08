@@ -1,0 +1,79 @@
+{
+  "milestone": "NF13",
+  "aperture": "53/50",
+  "date": "2026-10-08",
+  "status": "PASS: complete original signed native finite E24 and E32 restrictions; 112 original retained and full source Schur open",
+  "basis": "physical orthonormal Legendre degrees 0..N-1",
+  "original_contributions": [
+    "archimedean kernel including poles removed as separate signed Hermitian term",
+    "original prime powers 2,3,4,5,7,8 both translation directions",
+    "both signed Hermitian poles"
+  ],
+  "interval_method": "Exact rational directed native construction; exponential order 190, Bernoulli pairs 160; Gamma order 20; fixed rational enclosure grid 10^-58",
+  "midpoint_grid": "10^36",
+  "even_odd_mixed_exact_zero": true,
+  "certificates": [
+    {
+      "dimension": 24,
+      "interval_entries": 156,
+      "source_sha256": "72fb55052885f8d2f037163db10b82c02f227dace498919c6477adca6c7f0a09",
+      "orders": {
+        "exponential": 190,
+        "Bernoulli_pairs": 160
+      },
+      "max_native_interval_width_display": 3.070201706107715e-31,
+      "whole_operator_error_display": 3.6842579025833294e-30,
+      "shifted_midpoint_test": "1/1000000000000000000",
+      "actual_finite_lower_strict": "9/10000000000000000000",
+      "positive_parity_pivots": {
+        "even": 12,
+        "odd": 12
+      },
+      "certified_positive": true
+    },
+    {
+      "dimension": 32,
+      "interval_entries": 272,
+      "source_sha256": "29af189621051bd7cdba2079121a06bd785c7af90c4fc76c681086d43d0a4549",
+      "orders": {
+        "exponential": 190,
+        "Bernoulli_pairs": 160
+      },
+      "max_native_interval_width_display": 3.518989729968483e-25,
+      "whole_operator_error_display": 5.6303835679572556e-24,
+      "shifted_midpoint_test": "1/5000000000000000000000",
+      "actual_finite_lower_strict": "1/10000000000000000000000",
+      "positive_parity_pivots": {
+        "even": 16,
+        "odd": 16
+      },
+      "certified_positive": true
+    },
+    {
+      "dimension": 32,
+      "source_sha256": "827fbeec96136a4f44f5da6d31e96416c70e7448a614761381b0dff4bb813632",
+      "orders": {
+        "exponential": 210,
+        "Bernoulli_pairs": 180
+      },
+      "max_native_interval_width_display": 3.273503336617782e-31,
+      "role": "independent truncation-order consistency source",
+      "signed_component_overlap_assertions": 1088,
+      "nonoverlaps": 0
+    }
+  ],
+  "previous_orders": {
+    "exponential": 130,
+    "Bernoulli_pairs": 100
+  },
+  "previous_24_max_native_interval_width": 3.814293989700889e-13,
+  "previous_32_max_native_interval_width": 4.371850015675851e-7,
+  "full_112_native": false,
+  "full_original_source_gram": false,
+  "whole_even56_odd56_corrected_schur": false,
+  "whole_aperture_positive": false,
+  "global_RH": false,
+  "Lean": false,
+  "producer": "scripts/certify_native_low32_nf13_106.py",
+  "validator": "scripts/validate_native_low32_nf13_106.py"
+}
