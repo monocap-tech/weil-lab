@@ -1,0 +1,43 @@
+{
+  "milestone": "CC13",
+  "classification": "C",
+  "coupled_base": "ea695acb26303cd648a89ff818354bf271003893",
+  "global_read_only_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "recovered_custody_pin_and_sha256_checks": 38,
+  "input_git_blob_checks": 9,
+  "input_blob_pins": {
+    "notes/data/RPB108_QUANTITATIVE_BRIDGE_CC12_CUSTODY_20261008.json": "96523d6efc37b63ae66e16b13a1d85fbcb27168b",
+    "notes/data/RPB108_ODD_BATCH_CC11_CUSTODY_20261008.json": "643fbb6576a1e94394377a70e93a426ac745e3ff",
+    "notes/data/RPB108_CORRELATED_WEAK_ROW_NF71_CUSTODY_20261008.json": "d8ec252d11fcff648840ea37d2128ec428b295bd",
+    "notes/data/RPB108_QUANTITATIVE_BRIDGE_CC12_CERTIFICATE_20261008.json": "06c68505396bd879f38746849dc88f831affec61",
+    "notes/data/RPB108_ODD_BATCH_CC11_CERTIFICATE_20261008.json": "797eaf94cfe858e60dc2e0e837a066b777c131ec",
+    "notes/data/RPB108_TWO_RETAINED_BLOCK_CC9_CERTIFICATE_20261008.json": "49ca3c54438f439d65f8c1c12da27de1204fefcf",
+    "notes/data/RPB108_CORRELATED_WEAK_ROW_NF71_CERTIFICATE_20261008.json": "f975d1b8ce8d7eb9d49059a04df795464a1de6d7",
+    "notes/data/RPB108_PRIME8_SCHUR112_105_CERTIFICATE_20261008.json": "bdc1199c54bb1286a108cf0eb407371d707ec244",
+    "notes/data/RPB108_PRIME8_MATRIX112_105_COMPACT80_20261008.json.gz": "f974b51d27fd77ff49db6fb13bc4ebb041a8bcb9"
+  },
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_INVERSE_CORRELATION.md": "41ade542a2668421faa0e770c489d631dd7fedda8fd10aaeeae797af0d779cbb",
+    "notes/REFLECTED_PACKET_BRIDGE_108_INVERSE_CORRELATION_CC13_20261008.md": "249adaef9535ecc0e0f7ff258382c0cb65b524198ae69943e6fb1e3495f2af0c",
+    "scripts/certify_native_inverse_correlation_cc13.py": "9a680270100ed50110570102c9356527b985eab0f043b93ae8cbab1e8fe5f848",
+    "scripts/validate_native_inverse_correlation_cc13.py": "5d1a97537e542731edd7c7b91eef4083d2db3b51ea70a6f98b0b24075b72b5fc",
+    "notes/data/RPB108_INVERSE_CORRELATION_CC13_CERTIFICATE_20261008.json": "cfa7bb04982832f6c4f2a417c973f924a6602e1f1654a5aad71a62a04182a845",
+    "notes/data/RPB108_INVERSE_CORRELATION_CC13_VALIDATION_20261008.json": "2616053db9d6d0499d9549742b29036c829805552cc75cde2ae9084a86971371"
+  },
+  "actual_even_quotient_dimension": 54,
+  "protected_codimension_preserved": 107,
+  "certified_whole_domain_aperture_preserved": "1",
+  "cc11_five_ldl_recomputed": true,
+  "exact_even_residual_lower_recomputed": true,
+  "complete_source_and_mixed_action_allowances_paid": true,
+  "full_binary_source_gram_replayed": false,
+  "actual_inverse_correlation_evaluated": false,
+  "new_arithmetic_suppression": false,
+  "summary_controls_match_all_original_arithmetic_records": false,
+  "method_stopped": "ordinary correlations plus scalar inverse interval",
+  "cc12_obstruction_overcome": false,
+  "whole_parity_sign_proved": false,
+  "global_nonstalling_proved": false,
+  "lean_certified": false,
+  "paused_refs_written": false
+}

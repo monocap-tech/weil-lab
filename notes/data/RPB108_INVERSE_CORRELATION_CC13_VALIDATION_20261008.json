@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "exact_checks": 2906,
+  "sharp_interval_vector_cases": 2880,
+  "coupled_inverse_controls": 5,
+  "entire_even_quotient_embedding": 54,
+  "same_ordinary_gram_different_completed_sign": true,
+  "compatible_positive_remainder_in_both_controls": true,
+  "positive_eigenmode_full_mass_source_shift": true,
+  "synthetic_controls_are_original_arithmetic": false,
+  "lean_certified": false
+}
