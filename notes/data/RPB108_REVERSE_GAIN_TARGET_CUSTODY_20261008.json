@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-08",
+  "base": "10c56d50c94024e53360242c8cc410c5787cb011",
+  "source_blob_pins": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "4d8310c1eb7d7d5d10f8cd6d76154a9f3c11f77c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_GLOBAL_POSITIVE_KERNEL_20261004.md": "5d34556f913a7b536be9fd6a6c26d2d9920ce970",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_HEIGHT_GRAPH_ERROR_20261007.md": "b968aa0a3c5eb5ba680ee0251692e24853dadd74",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SUBLOG_PRIME_BULK_20261007.md": "b6cd806b1a5ee4bdce9d2eda72050c520b637597",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LOG_OPERATOR_ATTACHMENT_20261007.md": "5b9fedd77956f6ba3e2efc0a71be14f673596fd1"
+  },
+  "kind": "research reset and failed shortcut audit",
+  "checks": 8,
+  "actual_gain_computed": false,
+  "new_arithmetic_inequality": false,
+  "lean_certified": false
+}
