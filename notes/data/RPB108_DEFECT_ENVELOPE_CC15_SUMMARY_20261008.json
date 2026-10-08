@@ -1,0 +1,18 @@
+{
+  "milestone": "CC15",
+  "classification": "B: original pair bridge; full even block conditional/open",
+  "certificate_file": "RPB108_DEFECT_ENVELOPE_CC15_CERTIFICATE_20261008.json.gz",
+  "restored_size": 380905,
+  "restored_sha256": "d23a43094ae8ce3baea953c1c5d78a71b0d16046f27b80da1043c6d718db93da",
+  "gzip_size": 127792,
+  "gzip_sha256": "4bbfab956a810198d3bcbdd1f73830c3e9a42d45ae214eba3a3ef2f0a4e5c0c3",
+  "pair_lower_passed": true,
+  "relative_pair_loss_strict_upper": "7343/1000000",
+  "completed_weak_margin_strict_lower": "31441/10^36",
+  "protected_codimension": 107,
+  "whole_domain_certified_aperture": "1",
+  "full_even54_block_closed": false,
+  "full_odd53_block_closed": false,
+  "actual_inverse_evaluated": false,
+  "lean_certified": false
+}
