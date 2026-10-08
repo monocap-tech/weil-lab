@@ -1,0 +1,18 @@
+{
+  "recovered_head": "60c50736eeff742784dae81ecd29cb25d4b317a9",
+  "source_blob_pins": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "7c419d3e5f5ff237027b49221e5160b7c119d63f",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CONTINUOUS_KERNEL_20261008.md": "8262fc3227cbd9f31c153333c810403eaf023fd2",
+    "notes/REFLECTED_PACKET_BRIDGE_108_APERTURE_SCALABILITY_20261008.md": "4e716fd7f7bd4121cdff7a1faa4ca71c7b252391",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME8_105_DECISION_20261008.md": "3b967aa1ee2c6932600573c8e41afdb0bc3e1be9",
+    "notes/REFLECTED_PACKET_BRIDGE_108_REVERSE_GAIN_TARGET_20261008.md": "5875daa8e2b9c82c9dcad45acd1c4bed3e848f7c",
+    "scripts/certify_native_drive_cusp_geometry.py": "0c86fb92fc627219767138a2fa1098b668dfb173"
+  },
+  "finite_checks": 57,
+  "actual_original_arithmetic_bound": "B_chain relative to physical/primitive mass, plus exact negative pole loss",
+  "candidate_improves_joint_bound_at_105": false,
+  "actual_new_aperture": false,
+  "actual_gain_bound": false,
+  "analytic_only": true,
+  "lean_certified": false
+}

@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "finite_checks": 57,
+  "rows": [
+    {
+      "a": "1",
+      "chain_lengths": [
+        3,
+        2,
+        2,
+        2
+      ],
+      "prime_budget_strict_upper": "3",
+      "negative_pole_strict_upper": "351/1000"
+    },
+    {
+      "a": "21/20",
+      "chain_lengths": [
+        4,
+        2,
+        2,
+        2
+      ],
+      "prime_budget_strict_upper": "10/3",
+      "negative_pole_strict_upper": "51/125"
+    }
+  ],
+  "scope": "exact arithmetic/weighted-matrix controls; analytic chain decomposition separate",
+  "candidate_improves_existing_joint_bound_at_105": false,
+  "new_whole_domain_certificate": false,
+  "lean_certified": false
+}
