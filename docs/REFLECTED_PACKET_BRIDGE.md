@@ -3632,3 +3632,18 @@ A genuine differential ground-mode translation has signed diagonal delta but mix
 24,748 exact checks pass (144 new finite-difference/overlap-derivative/rational-crossing/full-shift checks, 24,604 CC27 replayed). The infinite analytic proofs are not Lean-certified by these checks. External scope: Jorgensen--Niedzialomski arXiv1212.3047v3 Corollary7.9/Theorem7.11 for scalar continuous local correlations; NIST DLMF5.11.2 for digamma asymptotics. No actual critical covariance or new defect-relative bound is evaluated. The analytic positive-extension identification shortcut stops here.
 
 Original anchor stays21/20 even0/odd0, joined physical margin1/(3*10^63), not a numerical source defect. No new aperture. RH/F4, retained attachment, reusable continuation, accumulated finite-cap loss and Lean closure remain open. Global NF71, Aperture and Pre-Contact Shadow stay paused.
+
+
+## CC29 — critical flux limit and weaker sufficient target (2026-10-08)
+
+Coupled parent:2683f62ce7351007e2a2ed1cbc35f86f69ed5cd1. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_FLUX_LIMIT_CC29_20261008.md); [definitions](TERMINOLOGY_RPB108_CRITICAL_FLUX_LIMIT.md).
+
+Sufficiency refinement, not a new arithmetic upper bound. Under the inherited actual framework, any bounded vanishing modulus L_st L_st*<=C_B omega_B(G_s), omega_B(x)->0 at0, excludes first contact if its critical band and positive admissible aperture step are cap-only. A strict reserve below1 and a low-output estimate are not needed for this endpoint contradiction; they remain inputs to CC26's separate finite-step product proof. Even G^alpha with any alpha>0 suffices. No such modulus is proved for actual zeta.
+
+Exact support exhaustion gives A_s=T_B Pi_s T_B* ->A_a strongly from below. For an actual unit contact output y, fixed-band y_s=E_s y converges to y and expected source defect d_s=<y,(I-A_s)y> tends to0. CC28 native nonanalyticity, or inherited strict-enlargement rigidity, forces gamma_t=<y,(A_t-A_a)y>>0 for every fixed t>a. Thus critical covariance in y_s tends to gamma_t, and its exact defect-relative norm is at least gamma_t/(2d_s) near contact. Positive-power variants also diverge. This is a conditional actual-source lower bound, not an assertion that contact exists or a numerical evaluation of gamma_t.
+
+With the inherited attained first-contact constructor and classical compact-test Weil criterion, the fully specified all-cap vanishing-modulus property is RH-equivalent. It is NOT established. The new audit weakens the sufficient arithmetic target to critical vanishing, while preserving all collective correlations and non-stalling quantifiers. It does not supply the missing estimate or claim logical independence from the full identities. No source Gram compactness, spectral-projection norm continuity or negative-source height-moment theorem is assumed.
+
+24,872 exact checks pass (124 new rotating critical projection/order/power/genuine crossing/full-mass checks, 24,748 CC28 replayed). Genuine crossing has nonzero fixed-target leakage and divergent positive-power normalization; restriction to contact targets permits bounded critical cost only with shrinking steps. The shifted positive-level control keeps the complete mass channel and is not original nullity. Infinite strong-limit and native arguments remain analytic, not new Lean certification.
+
+Original anchor stays21/20 even0/odd0, joined physical margin1/(3*10^63), not a numerical source defect. No new aperture. RH/F4, retained attachment, reusable continuation, accumulated finite-cap loss and Lean remain open. Global NF71, Aperture and Pre-Contact Shadow stay paused.

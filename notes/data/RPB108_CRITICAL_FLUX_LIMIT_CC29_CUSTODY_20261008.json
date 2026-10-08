@@ -1,0 +1,91 @@
+{
+  "stage": "CC29",
+  "base_commit": "2683f62ce7351007e2a2ed1cbc35f86f69ed5cd1",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "inputs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_FIRST_CONTACT_CONSTRUCTOR_20261004.md": {
+      "bytes": 11297,
+      "sha256": "b6a83482f99385eb3906c5c3667a79f83e8ceba3bd30b4558cc6bf1fca498ec3",
+      "git_blob_sha": "1d7d4721405b03050508008f7a903d2697ac550e"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_SHELL_GAIN_20261008.md": {
+      "bytes": 12964,
+      "sha256": "ae173553c9b18f6eb3ab6ca7b293344eed67b3ce94296495055ed244b0a0128c",
+      "git_blob_sha": "17a9592070d1cfdf7b73c83249660f7d063825bb"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md": {
+      "bytes": 10794,
+      "sha256": "8a97099032b77dcdf1cdd8bf38c9d1eae0bedc6eaa3e41c4ac968d17e007e854",
+      "git_blob_sha": "09f8a679e7df15e6f5f160ce3c94950df826aa8d"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": {
+      "bytes": 13662,
+      "sha256": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+      "git_blob_sha": "da2dab5958dd65381bca285c7ff9082d571e6dd8"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_UNIFORM_EXIT_CC26_20261008.md": {
+      "bytes": 10947,
+      "sha256": "15a22b7fc627328934a3a1e4b7bf4545e0ff72a77a725559de40778ab26f127a",
+      "git_blob_sha": "2c484e9a37cc73d30e7de34eab06be3af2cfcd45"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_STATIONARY_EXTENSION_CC28_20261008.md": {
+      "bytes": 14161,
+      "sha256": "c5d7a528a6e86f97c636d10a2176827be58d68215a589c58fe45f4c5cbd8360b",
+      "git_blob_sha": "e965dc92a562704bb4e6154e230a9d1864a40fae"
+    },
+    "scripts/validate_native_stationary_extension_cc28.py": {
+      "bytes": 4066,
+      "sha256": "60c73188bef01f8d5a2ce396288c2440c9219e1293a68470301888d3ed39483b",
+      "git_blob_sha": "b809a6559eafef62ab98ca99f0db24be89c845e8"
+    },
+    "notes/data/RPB108_STATIONARY_EXTENSION_CC28_VALIDATION_20261008.json": {
+      "bytes": 3484,
+      "sha256": "75bccfb363b1c41074c9df03428123d33f928a59790d14463c44db98410d90df",
+      "git_blob_sha": "f3d95105ee8dd6f7fb3cd5381ade13c61ec65c75"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 680525,
+      "sha256": "7559ff8da66cc3c2a00c02d65cf69d6f8d16cd7382b16bb4423f716519eaa5ce",
+      "git_blob_sha": "b668f09603f8719c05ea7071a813aa79c0364bf0"
+    }
+  },
+  "bridge_prefix": {
+    "bytes": 680525,
+    "sha256": "7559ff8da66cc3c2a00c02d65cf69d6f8d16cd7382b16bb4423f716519eaa5ce",
+    "git_blob_sha": "b668f09603f8719c05ea7071a813aa79c0364bf0"
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_CRITICAL_FLUX_LIMIT.md": {
+      "bytes": 1685,
+      "sha256": "bb5f1fbb66742f945b29e7eb6ccc6a7c183516c56dd91d90b74f0d4b220cd263",
+      "git_blob_sha": "f11aa429b4f643058eab65e1af299628ebebc27e"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_FLUX_LIMIT_CC29_20261008.md": {
+      "bytes": 12066,
+      "sha256": "5d7675c2868864e072124e7dc5e43eefdd53f47f1609bfe5c9f3b7d67595bd40",
+      "git_blob_sha": "1d139126c805a96fa6bc92c0311fa89111e5f42f"
+    },
+    "scripts/validate_native_critical_flux_limit_cc29.py": {
+      "bytes": 4909,
+      "sha256": "78da6469fae478280449de44bec2c1e137ffab1a4cc7b1b8767d674cea3a794c",
+      "git_blob_sha": "674c0e34145be94d89185fa07d31fade1b6cb618"
+    },
+    "notes/data/RPB108_CRITICAL_FLUX_LIMIT_CC29_VALIDATION_20261008.json": {
+      "bytes": 3630,
+      "sha256": "3bd655da97dab3a0228fade0d44cf3845f609d54c5f53cffc33c19a5b7663db0",
+      "git_blob_sha": "faa3b23f40c5d1a261ce5b4a24d151a4deb798d8"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 683278,
+      "sha256": "e40511b8dd3f4f8409e62981763c0c74fda835f76c5ebef9066130558e5af732",
+      "git_blob_sha": "55e15b930328058a75b60ae1e1a534ba755e87ed"
+    }
+  },
+  "external_criterion": {
+    "uri": "https://arxiv.org/pdf/2006.13771",
+    "pin": "arXiv:2006.13771v1, 2020-06-24, introduction (2) / Appendix C Proposition C.1; rechecked 2026-10-08",
+    "scope": "inherited compact-test Weil positivity criterion only"
+  },
+  "scope": "conditional actual critical-flux divergence and weaker sufficient target; no actual arithmetic modulus, contact existence, RH proof or Lean certification"
+}

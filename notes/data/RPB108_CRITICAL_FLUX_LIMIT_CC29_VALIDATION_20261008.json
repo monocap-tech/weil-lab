@@ -1,0 +1,75 @@
+{
+  "stage": "CC29 critical flux limit / weaker sufficient target",
+  "all_passed": true,
+  "new_counts": {
+    "critical_limit": 60,
+    "noncommuting_order": 12,
+    "power_divergence": 24,
+    "genuine_crossing": 25,
+    "full_mass": 3
+  },
+  "new_exact_checks": 124,
+  "inherited_cc28_checks": 24748,
+  "total_exact_checks": 24872,
+  "conditional_actual_lower_bound": "critical defect-relative reaction >= gamma_t/(2 d_s) near hypothetical first contact at fixed t>a",
+  "sufficiency": "cap-only fixed band and positive steps with any bounded vanishing modulus imply no first contact",
+  "no_low_budget_required_for_endpoint_argument": true,
+  "low_budget_still_required_for_finite_step_product_argument": true,
+  "finite_operator_examples": [
+    {
+      "old_defect_eigenvalue": "1/16",
+      "expected_contact_vector_defect": "265/4112",
+      "contact_flux": "1/8",
+      "critical_cost": "827/257",
+      "scope": "finite monotone rotating critical chart, not actual zeta"
+    },
+    {
+      "old_defect_eigenvalue": "1/256",
+      "expected_contact_vector_defect": "65665/16777472",
+      "contact_flux": "1/8",
+      "critical_cost": "2178977/65537",
+      "scope": "finite monotone rotating critical chart, not actual zeta"
+    },
+    {
+      "old_defect_eigenvalue": "1/65536",
+      "expected_contact_vector_defect": "4295000065/281474976776192",
+      "contact_flux": "1/8",
+      "critical_cost": "35189740773377/4294967297",
+      "scope": "finite monotone rotating critical chart, not actual zeta"
+    },
+    {
+      "old_defect_eigenvalue": "1/4294967296",
+      "expected_contact_vector_defect": "18446744075857035265/79228162514264337597838917632",
+      "contact_flux": "1/8",
+      "critical_cost": "9903520337341472289719320577/18446744073709551617",
+      "scope": "finite monotone rotating critical chart, not actual zeta"
+    },
+    {
+      "old_defect_eigenvalue": "1/281474976710656",
+      "expected_contact_vector_defect": "79228162514264478331032305665/22300745198530623141535718272929836482691072",
+      "contact_flux": "1/8",
+      "critical_cost": "2787593149816426927895107614397484001918977/79228162514264337593543950337",
+      "scope": "finite monotone rotating critical chart, not actual zeta"
+    },
+    {
+      "old_defect_eigenvalue": "1/1208925819614629174706176",
+      "expected_contact_vector_defect": "1461501637330902918203685437179192826970519896065/1766847064778384329583297500742918515827483896876827883941220830467325952",
+      "contact_flux": "1/8",
+      "critical_cost": "220855883097298041197914014469911478107083241715039917936619859136741377/1461501637330902918203684832716283019655932542977",
+      "scope": "finite monotone rotating critical chart, not actual zeta"
+    }
+  ],
+  "actual_contact_exists_claimed": false,
+  "actual_arithmetic_modulus_established": false,
+  "RH_proved": false,
+  "actual_critical_covariance_evaluated": false,
+  "new_aperture": false,
+  "lean_certified": false,
+  "input_sha256": {
+    "scripts/validate_native_stationary_extension_cc28.py": "60c73188bef01f8d5a2ce396288c2440c9219e1293a68470301888d3ed39483b",
+    "notes/data/RPB108_STATIONARY_EXTENSION_CC28_VALIDATION_20261008.json": "75bccfb363b1c41074c9df03428123d33f928a59790d14463c44db98410d90df",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_SHELL_GAIN_20261008.md": "ae173553c9b18f6eb3ab6ca7b293344eed67b3ce94296495055ed244b0a0128c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_STATIONARY_EXTENSION_CC28_20261008.md": "c5d7a528a6e86f97c636d10a2176827be58d68215a589c58fe45f4c5cbd8360b"
+  },
+  "constructor_sha256": "78da6469fae478280449de44bec2c1e137ffab1a4cc7b1b8767d674cea3a794c"
+}
