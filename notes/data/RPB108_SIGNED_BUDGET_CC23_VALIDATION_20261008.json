@@ -1,0 +1,66 @@
+{
+  "stage": "CC23 signed covariance and circularity audit",
+  "all_passed": true,
+  "new_counts": {
+    "whole_schur": 180,
+    "completion_square": 1080,
+    "same_diagonal": 427,
+    "crossing_budget": 793,
+    "positive_level": 4
+  },
+  "new_exact_checks": 2484,
+  "inherited_cc22_checks": 18352,
+  "total_exact_checks": 20836,
+  "whole_source_cases": 54,
+  "strict_positive_cases": 32,
+  "indefinite_cases": 22,
+  "same_diagonal_controls": [
+    {
+      "j": 4,
+      "old_defect": "31/256",
+      "incoming_negative_norm_squared": "1/4",
+      "safe_budget": "1/4",
+      "unsafe_budget": "64/31",
+      "scope": "same diagonal/full positive Gram control, not actual zeta"
+    },
+    {
+      "j": 16,
+      "old_defect": "131071/4294967296",
+      "incoming_negative_norm_squared": "1/4",
+      "safe_budget": "1/4",
+      "unsafe_budget": "1073741824/131071",
+      "scope": "same diagonal/full positive Gram control, not actual zeta"
+    },
+    {
+      "j": 32,
+      "old_defect": "8589934591/18446744073709551616",
+      "incoming_negative_norm_squared": "1/4",
+      "safe_budget": "1/4",
+      "unsafe_budget": "4611686018427387904/8589934591",
+      "scope": "same diagonal/full positive Gram control, not actual zeta"
+    },
+    {
+      "j": 64,
+      "old_defect": "36893488147419103231/340282366920938463463374607431768211456",
+      "incoming_negative_norm_squared": "1/4",
+      "safe_budget": "1/4",
+      "unsafe_budget": "85070591730234615865843651857942052864/36893488147419103231",
+      "scope": "same diagonal/full positive Gram control, not actual zeta"
+    }
+  ],
+  "exact_equivalence": "Q_t >= 0 iff K*D_s^-1 K <= I iff K K* <= D_s",
+  "classification": "A: exact signed completion; C: enlarged signed Cauchy-Schwarz would assume target positivity",
+  "actual_arithmetic_strict_budget_certified": false,
+  "actual_zeta_bound_disproved": false,
+  "complete_Weil_logical_independence_proved": false,
+  "new_aperture": false,
+  "global_nonstalling": false,
+  "lean_certified": false,
+  "whole_domain_anchor": "21/20 even0/odd0 inherited",
+  "input_sha256": {
+    "scripts/validate_native_density_phase_cc22.py": "d328892d904bb6fddb997dd1b6810b2bfb58579bbeb48ecbd078564599f2e273",
+    "notes/data/RPB108_DENSITY_PHASE_CC22_VALIDATION_20261008.json": "ae2e20c95ba005296333be903047b42c907b23cc484bdcda275357462016dfca",
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "3ae164cb108777099c6582686866e5fbd85fc501eab9e15bea60ef8215690a81"
+  },
+  "constructor_sha256": "3e2fe3820c452e8c7478fda73559418630e6e664b1bb415ab8485d1867985d70"
+}

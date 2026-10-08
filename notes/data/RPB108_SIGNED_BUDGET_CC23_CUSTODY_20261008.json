@@ -1,0 +1,56 @@
+{
+  "stage": "CC23",
+  "base_commit": "96e24d75abc37060bd0c41d65ffa44176eb9db92",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "inherited_input_git_blobs": {
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "961b6742782fa3f808ac9b70cfadfc0790c8fc32",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "6d8560842e6a150f994527f0086cfc5689824bd8",
+    "notes/REFLECTED_PACKET_BRIDGE_108_DENSITY_PHASE_CC22_20261008.md": "d544e23f4d731ef9d545b940c618f832508bdcb7",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "da2dab5958dd65381bca285c7ff9082d571e6dd8",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md": "25c6e2736cc4e0fdfec8d8832c3f6e24827d4d06",
+    "notes/data/RPB108_DENSITY_PHASE_CC22_VALIDATION_20261008.json": "07c74bc9025fba1b61eb977de98d61af8c71b098",
+    "scripts/validate_native_density_phase_cc22.py": "1c1ebb521c12e75dc3a61d4b546ebcc8f12c63fe"
+  },
+  "input_sha256": {
+    "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean": "3ae164cb108777099c6582686866e5fbd85fc501eab9e15bea60ef8215690a81",
+    "notes/REFLECTED_PACKET_BRIDGE_108_DENSITY_PHASE_CC22_20261008.md": "21dc744a5ae011cc72d6e3b86f143be302c09c5b98043f29bad2ce7bb8143b1e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md": "994b3f98faaf287ecb175bd8364728957ba12abd6426dba3cd5392d72408dab5",
+    "notes/data/RPB108_DENSITY_PHASE_CC22_VALIDATION_20261008.json": "ae2e20c95ba005296333be903047b42c907b23cc484bdcda275357462016dfca",
+    "scripts/validate_native_density_phase_cc22.py": "d328892d904bb6fddb997dd1b6810b2bfb58579bbeb48ecbd078564599f2e273"
+  },
+  "bridge_prefix": {
+    "bytes": 667317,
+    "sha256": "2ed1a32789179b4203bdb2f69b988752a4fd121e505a641a5266dd104c1757fe",
+    "git_blob_sha": "6d8560842e6a150f994527f0086cfc5689824bd8"
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_SIGNED_BUDGET.md": {
+      "bytes": 1354,
+      "sha256": "c445181467734b74b52f6cb7cb805670f2f161726a65ef9c205d8bddfd8dcc87",
+      "git_blob_sha": "2e6ea1dac3b89dadf57817ae58e2c204ff4bd4a3"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_BUDGET_CC23_20261008.md": {
+      "bytes": 10641,
+      "sha256": "afe0cc3d477236a209a303067e55745e5be27116a4ec03e21b87d4ef7dfc0cbb",
+      "git_blob_sha": "fa6696ffe96b299248e3e39daaba5ef9d94f625d"
+    },
+    "scripts/validate_native_signed_budget_cc23.py": {
+      "bytes": 5376,
+      "sha256": "3e2fe3820c452e8c7478fda73559418630e6e664b1bb415ab8485d1867985d70",
+      "git_blob_sha": "bc430b3a4bdd5d13507cf70fcda370d7d67e01ba"
+    },
+    "notes/data/RPB108_SIGNED_BUDGET_CC23_VALIDATION_20261008.json": {
+      "bytes": 2566,
+      "sha256": "725a529c41e81808815c8dc0520559a10b3d073bad2ec5881f0f9a26e5bfa48b",
+      "git_blob_sha": "3b194a9fce41fe5a0e8d024fa8d5cf47f74d64a6"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 669031,
+      "sha256": "0692a19fd86915bd725d11ecdef07defdd8bf9ba3baa5f0caefa3295943aa0b9",
+      "git_blob_sha": "9b9322b3c6eb35d99896f485b1bb4170c689b256"
+    }
+  },
+  "scope": "complete analytic signed completion, finite algebra/crossing/positive-level controls; no actual arithmetic strict budget or formal logical independence"
+}

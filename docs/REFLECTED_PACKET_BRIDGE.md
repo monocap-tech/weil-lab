@@ -3554,3 +3554,14 @@ The actual second transverse count proves a cap-dependent, old-gap-independent s
 18,352 exact checks pass, including 4,356 new weight/split/crossing/positive-level checks and 13,996 replayed CC21 checks. Analytic logarithmic decay is proved in the note, not certified by the rational proxies. All mixed incoming branches and the full positive-level physical mass channel remain mandatory. Minimal critical target remains L L*<=q G with a low-output budget ell and q+ell<1 (equivalently the CC20 forced physical covariance).
 
 Original whole-domain anchor remains 21/20 even0/odd0, joined margin 1/(3*10^63). No new aperture, RH/F4, retained attachment, reusable continuation, accumulated finite-cap relative loss or Lean closure. Global remains paused at NF71; Aperture and Pre-Contact Shadow remain paused. Stop the separated weight-transfer shortcut; a joint unweighted defect-cancelling arithmetic correlation is still required.
+
+
+## CC23 — original signed budget and circularity audit (2026-10-08)
+
+Coupled parent: 96e24d75abc37060bd0c41d65ffa44176eb9db92. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_BUDGET_CC23_20261008.md); [definitions](TERMINOLOGY_RPB108_SIGNED_BUDGET.md).
+
+Exact whole-source completion yields Schur complement I-K*D_s^(-1)K. The unit whole relative budget is equivalent to ORIGINAL nonnegativity at the enlarged aperture; signed Cauchy-Schwarz on that domain would assume the target sign. A strict target requires a strict whole budget; reusable continuation additionally requires independently established cap-dependent reserves and admissible steps. The genuine crossing test makes a fixed critical reserve force steps to collapse near contact. Identical diagonal source data with protected positive Gram can have opposite mixed Schur signs; those finite controls do not match the full actual Weil formula.
+
+20,836 exact checks pass (2,484 new, 18,352 CC22 replayed), including noncommuting whole-source completion, mixed correlation, genuine crossing and complete shifted physical mass controls. This stops the automatic signed-Gram/Cauchy-Schwarz shortcut. It does not prove formal logical independence from the complete Weil identities or disprove the actual zeta bound. Current source identities specify the required actual correlation but current proved bounds do not certify it.
+
+Whole-domain original anchor stays 21/20 even0/odd0, joined physical margin 1/(3*10^63). RH/F4, retained attachment, reusable continuation, accumulated finite-cap relative loss and Lean remain open. Global paused at NF71; Aperture and Pre-Contact Shadow paused. No new aperture or actual divisor covariance evaluation.
