@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-08",
+  "base": "c862cf867ea30d6e8a192d424ffa259038b25884",
+  "source_blob_pins": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "ae84450ffed917a47c2705e8af292e51898e75b0",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SMEARING_MAIN_TERM_20261008.md": "fc94c27457daf8cd737070f50b457a08376e4dda",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME_SMEARING_20261008.md": "8c978a2d69f6a6b7a4953ac910afb9d830549e73",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOCALIZATION_CEILING_AUDIT_20261006.md": "9aa9a84e982ef87798495836d49a3107e8712078",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SIGNED_TARGET_GLOBAL_STRENGTH_20261007.md": "05366bb0939a5bec0962f1e53b0a81b623ecfc4e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SMEARED_SIGN_TRANSFER_20261008.md": "b75b7449c306c36e8d95eea6cb0e882c68daf6fa"
+  },
+  "result": "stop fixed-width prime-only and both pole-matched smearing variants as global closure candidates",
+  "finite_checks": 10,
+  "original_negative_vector": false,
+  "new_original_gain_bound": false,
+  "adaptive_widths_excluded": false,
+  "lean_certified": false,
+  "concurrent_commit_preserved": "c862cf867ea30d6e8a192d424ffa259038b25884"
+}
