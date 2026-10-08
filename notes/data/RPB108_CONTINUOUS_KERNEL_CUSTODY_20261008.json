@@ -1,0 +1,27 @@
+{
+  "recovered_head": "c077a9d0f27bd1b1acb51f7b47d31327d5c33455",
+  "source_blob_pins": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "7e38318804a9a041e5ff04e6538209376ad6c1d6",
+    "notes/REFLECTED_PACKET_BRIDGE_108_REVERSE_GAIN_TARGET_20261008.md": "5875daa8e2b9c82c9dcad45acd1c4bed3e848f7c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME_POLE_DISCREPANCY_20261008.md": "76a5eed629c999a4e874b8bd3d52de2135c57ffb",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LOG_OPERATOR_ATTACHMENT_20261007.md": "5b9fedd77956f6ba3e2efc0a71be14f673596fd1",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SMEARING_EDGE_20261008.md": "6ee37135f21717f0b34b4de43ebd096825deaad7"
+  },
+  "primary_external_source": {
+    "url": "https://arxiv.org/html/2606.09096v3",
+    "version": "v3, 2026-09-23",
+    "checked_sections": [
+      "1.2",
+      "8.1",
+      "8.2",
+      "8.3",
+      "8.5"
+    ],
+    "scope": "operator representation; no global arithmetic margin adopted"
+  },
+  "finite_checks": 206,
+  "actual_new_aperture": false,
+  "actual_gain_bound": false,
+  "analytic_only": true,
+  "lean_certified": false
+}
