@@ -37,5 +37,6 @@
   "pole_uncomputed": true,
   "original_source_gram_uncomputed": true,
   "whole_1_06_positive": false,
-  "scope": "rigorous prime-only 8x8; no full original Weil sign"
+  "scope": "rigorous prime-only 8x8; no full original Weil sign",
+  "checks": "Exact rational parity (32 ordered cross entries), symmetry (64 ordered entries), independent 2 closed-form diagonal overlaps, plus separate 28-node numerical sanity check; no complete 112/native sign"
 }
