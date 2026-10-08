@@ -1,0 +1,31 @@
+{
+  "stage": "CC33 actual native remainder forcing after principal cancellation",
+  "all_passed": true,
+  "new_counts": {
+    "principal_cancellation": 48,
+    "noncommuting_metric": 48,
+    "squared_correction": 48,
+    "compact_crossing": 24,
+    "power_absorption": 12
+  },
+  "new_exact_checks": 180,
+  "inherited_cc32_checks": 25477,
+  "total_exact_checks": 25657,
+  "analytic_identity": "j_i=(I-Pi_D)(C_t-delta_i M_t)h_i",
+  "analytic_correction": "positive-inverse norm difference <=(U_B/c_B)delta_i",
+  "actual_native_remainder_suppression_proved": false,
+  "actual_critical_covariance_evaluated": false,
+  "negative_source_compactness_claimed": false,
+  "full_Q_bounded_physical_L2_operator_claimed": false,
+  "new_aperture": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "input_sha256": {
+    "scripts/validate_native_persistent_critical_row_cc32.py": "7547c1f85b621f77cd78797687bfac32e916a2ff6c7860675a32f58d773efc55",
+    "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FLUX_CC27_20261008.md": "ba6e7c65e83ab32e38c3cea603f1719844a98064ee5d4de39c763260bfde3cb2",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md": "8a97099032b77dcdf1cdd8bf38c9d1eae0bedc6eaa3e41c4ac968d17e007e854",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PERSISTENT_CRITICAL_ROW_CC32_20261008.md": "f2dccdc7564dde948a42fccc5f9ea1c19fa3cad1613858373aade1f7a7f73079"
+  },
+  "constructor_sha256": "7811ff6f59eb2f4fa7f7dfcc1d35f5cbf5d527d5e343ef86ae2ec4fad13e1f6b"
+}
