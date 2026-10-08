@@ -3119,3 +3119,14 @@ The previously proved terminal null correlation integrates through the full deri
 Choosing a physical mass-one trace maximizer gives lambda_min(a+epsilon)<=-Lambda_K epsilon+o(epsilon), with conditionally positive Lambda_K. No exact derivative, matching lower bound or numerical floor is obtained. The shifted actual lowest eigenspace gives r directions below mu and retains mu times the complete physical mass Gram in original source pairings. Coefficient Gram eigenvalues are not mass-normalized operator eigenvalues.
 
 823 exact rational determinant/power/congruence checks pass through dimension eight; analytic translation/trace/variational arguments are separately documented, not Lean-certified. The changed translated vectors do not provide same-vector enlarged null transport or exclusion of initial contact. Aperture-one positivity and historical custody remain preserved. Initial arithmetic contact exclusion, F4 and full transport remain open.
+
+
+## NF52 — exact physical translation mass and normalized branches (2026-10-07)
+
+Recovered head 401f6b3970280a79da974661cbb806b78b4ea1ca. See [physical translation proof](../notes/REFLECTED_PACKET_BRIDGE_108_PHYSICAL_TRANSLATION_SCALE_20261007.md), [definitions](TERMINOLOGY_RPB108_PHYSICAL_TRANSLATION_SCALE.md), and [custody](../notes/data/RPB108_PHYSICAL_TRANSLATION_SCALE_CUSTODY_20261007.json).
+
+For an actual contact vector with nonzero trace c, the established D_mass=o(t), actual correlation and symbol envelope give D_w(t)=|c|^2t+o(t). Positive Fourier averaging yields weighted tail O(1/R), hence PHYSICAL Fourier tail O(1/[R log R]). Layer-cake improves the truncated physical second moment to O(R/log R), allowing the low/high split at t^(-alpha) for every alpha<1. Sending alpha upward to one after limsup and using the balanced strong endpoint traces proves D_mass(t)~|c|^2 t/log(1/t). The two nonoverlap strips exhaust the leading physical translation-difference mass; overlap mass is lower order.
+
+For the real terminal vector of physical mass m, the exact two-vector compression has sum branch C/(2m-D_mass)~-|c|^2t/(2m) and difference branch -C/D_mass~log(1/t). These are physically normalized compression values, not full enlarged spectral eigenvalues. The coefficient Gram's order-t powers alone miss the large positive branch. Simultaneous centering preserves the support radius a+t/2. The actual positive-eigenmode control has identical mass scale and compression levels shifted by mu, retaining its original source mass residual.
+
+781 exact finite mass/layer-cake/compression checks pass, with synthetic tail controls labeled separately. Analytic limits are not Lean-certified, no actual Fourier/source nodes or contact are computed. Whole-domain aperture-one positivity and historical work remain preserved. Initial actual contact exclusion, signed sharp arithmetic, F4 and full transport remain open.

@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-07",
+  "lane": "NF52 exact physical translation scale",
+  "recovered_head": "401f6b3970280a79da974661cbb806b78b4ea1ca",
+  "dependencies": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_NULL_ABEL_LOG_SLOPE_20261007.md": "1a63fe344931b95170dcb06b8b67f6818b968e18",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TRANSLATED_KERNEL_INDEX_20261007.md": "7fe9985819a905ca77482c36f2ea4278fa252dcd",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md": "c2d087875d8dd85dfcdbd64893923ef51fcf1028",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_EIGENMODE_TARGET_20261007.md": "3354b89638b643d5b21c4c428f069f738ccf59f5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_ENDPOINT_TRACE_20261007.md": "1996d3fb3358965c5468481c31252f3dda440e69",
+    "notes/REFLECTED_PACKET_BRIDGE_108_KERNEL_DERIVATIVE_CHAIN_20261007.md": "e124b8a31a00df61908ce71cedd4ab7f83a14c76",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "b6da6dcee8f0285e87dd99ac035f05f84e72e6d9"
+  },
+  "conditional_scope": "actual contact vector with nonzero terminal trace; shifted lowest-eigenspace control retained",
+  "results": [
+    "same-vector physical Fourier tail O(1/(R log R))",
+    "D_mass(t) asymptotic |kappa_R(h)|^2 t/log(1/t)",
+    "nonoverlap endpoint strips exhaust leading translation-difference mass",
+    "real terminal two-vector physical compression has negative linear and positive logarithmic branches"
+  ],
+  "normalization": "Canonical unitary Fourier frequency xi and physical L2 mass; original actual divisor/source dictionary unchanged.",
+  "limitations": [
+    "physical Fourier tail is not the actual divisor-copy source tail",
+    "two-vector compression values are not full enlarged-operator eigenvalues",
+    "no endpoint contact or arithmetic exclusion computed",
+    "no numerical trace/transversality floor"
+  ],
+  "shifted_control": "Original compression equals Q_mu compression plus mu physical mass; eigenvalues shift by mu.",
+  "validation": {
+    "exact_checks": 781,
+    "finite_algebra_only": true,
+    "synthetic_tail_controls": true,
+    "actual_fourier_nodes_computed": false,
+    "analytic_certification": false,
+    "lean_certification": false
+  },
+  "preserved_aperture_one_commit": "811b0826abf45d688d1e2da7900cda852103ddee",
+  "open": [
+    "initial actual contact exclusion",
+    "signed sharp-head arithmetic",
+    "F4",
+    "full transport",
+    "Lean closure"
+  ]
+}

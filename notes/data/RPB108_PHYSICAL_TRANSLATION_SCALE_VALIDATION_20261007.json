@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "exact_checks": 781,
+  "scope": "finite rational mass/compression algebra and explicitly synthetic tail controls",
+  "analytic_certification": false,
+  "actual_fourier_nodes_computed": false,
+  "lean_certification": false,
+  "F4_closed": false
+}
