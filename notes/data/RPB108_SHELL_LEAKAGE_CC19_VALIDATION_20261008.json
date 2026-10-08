@@ -1,0 +1,94 @@
+{
+  "stage": "CC19 complete-source shell leakage information limit",
+  "classification": "C: structural implication refuted; actual arithmetic estimate open",
+  "all_passed": true,
+  "new_exact_checks": 5460,
+  "counts": {
+    "differential_crossing": 1120,
+    "positive_level": 402,
+    "critical_power_multishell": 3400,
+    "finite_rank": 456,
+    "weighted_covariance": 72,
+    "dini_budget": 10
+  },
+  "inherited_nf67_exact_checks": 1572,
+  "total_exact_checks": 7032,
+  "differential_controls": [
+    {
+      "j": 1,
+      "old_defect": "3/4",
+      "contact_leakage": "1/2",
+      "weighted_lower": "2/3",
+      "beyond_contact_weighted_lower": "5/6"
+    },
+    {
+      "j": 4,
+      "old_defect": "31/256",
+      "contact_leakage": "15/128",
+      "weighted_lower": "30/31",
+      "beyond_contact_weighted_lower": "90/31"
+    },
+    {
+      "j": 16,
+      "old_defect": "131071/4294967296",
+      "contact_leakage": "65535/2147483648",
+      "weighted_lower": "131070/131071",
+      "beyond_contact_weighted_lower": "1073856510/131071"
+    },
+    {
+      "j": 40,
+      "old_defect": "2199023255551/1208925819614629174706176",
+      "contact_leakage": "1099511627775/604462909807314587353088",
+      "weighted_lower": "2199023255550/2199023255551",
+      "beyond_contact_weighted_lower": "302231454905581439025150/2199023255551"
+    },
+    {
+      "j": 80,
+      "old_defect": "2417851639229258349412351/1461501637330902918203684832716283019655932542976",
+      "contact_leakage": "1208925819614629174706175/730750818665451459101842416358141509827966271488",
+      "weighted_lower": "2417851639229258349412350/2417851639229258349412351",
+      "beyond_contact_weighted_lower": "365375409332725729550923323799255080515038871550/2417851639229258349412351"
+    }
+  ],
+  "multishell_controls": [
+    {
+      "rank": 1,
+      "raw_norm_squared": "1/8",
+      "weighted_cost": "1/4",
+      "linear_constant": "1/2"
+    },
+    {
+      "rank": 4,
+      "raw_norm_squared": "15/64",
+      "weighted_cost": "1",
+      "linear_constant": "1/2"
+    },
+    {
+      "rank": 16,
+      "raw_norm_squared": "65535/262144",
+      "weighted_cost": "4",
+      "linear_constant": "1/2"
+    },
+    {
+      "rank": 80,
+      "raw_norm_squared": "1208925819614629174706175/4835703278458516698824704",
+      "weighted_cost": "20",
+      "linear_constant": "1/2"
+    }
+  ],
+  "minimal_critical_arithmetic_target": "L L* <= q G, with independently bounded low cost ell and q+ell<1",
+  "finite_rank_linear_target": "rank d and per-mode weight <=C*defect imply critical cost <=d*C",
+  "actual_zeta_correlation_estimate_certified": false,
+  "actual_zeta_estimate_disproved": false,
+  "actual_zeta_contact_exists": false,
+  "new_aperture_certified": false,
+  "whole_domain_anchor": "21/20 inherited CC18",
+  "global_nonstalling": false,
+  "lean_certified": false,
+  "scope": "Exact rational controls plus analytic differential/logarithmic crossing proofs; no replacement of zeta arithmetic.",
+  "input_sha256": {
+    "nf67_validator": "0088ef233a99c257ed4f2904610dd6e4dd60be1157a7ea4b58127d5801ebcc69",
+    "cc18_summary": "9d70eec1a06761c0f8c7b3025feffac2813f86302f300ae2719a6550ff0805c1"
+  },
+  "constructor_sha256": "18f3f5cd7f89b38c2a37ff7c4b1624857681a06487e67106404955ceb5f0d394"
+}

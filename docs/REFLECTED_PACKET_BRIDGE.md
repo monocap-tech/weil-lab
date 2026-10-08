@@ -3516,3 +3516,12 @@ All complete matrix data are in12 hashed, individually recoverable gzip
 parts. Source caches are recreated by the committed fixed source precache
 tool. CC16's large even archive and the old full SOURCE112/GRAM112 archives
 are not freshly replayed in this milestone.
+
+
+## CC19: minimal critical shell correlation and structural information limit (2026-10-08)
+
+CC18 is preserved at `b384e566150c72b7b3f28c9e77129478d9178dae`: whole-domain ORIGINAL positivity through21/20, even0 / odd0. The reusable continuation task isolates the minimal critical arithmetic target `L L*<=q G`, with an independently protected low-output cost `ell` and strict budget `ell+q<1`. It is a WHOLE incoming covariance, retaining the exact source-orthogonal shell and all complete source correlations. Dini leakage is sufficient; in independently protected critical rank d, linear suppression suffices if `ell+d C<1`. No actual cap-uniform constants or non-stalling step are established.
+
+A genuine differential Green solve computes incoming old-ground leakage exactly as `8s(t-s)/pi^2`. Its defect-weighted cost approaches one at contact and diverges for a fixed target beyond contact despite bounded complete sources. The genuine canonical logarithmic crossing likewise defeats a structural strict-reserve theorem. Shifted positive-level controls retain the entire physical mass channel and remain ORIGINAL-positive. Thus inference from the identities and currently established structural estimates is refuted; the actual zeta-specific inequality is neither proved nor disproved. No model claims to match the individual zeta divisor rows.
+
+[CC19 proof](../notes/REFLECTED_PACKET_BRIDGE_108_SHELL_LEAKAGE_CC19_20261008.md), [definitions](TERMINOLOGY_RPB108_SHELL_LEAKAGE.md), [7,032 exact checks](../notes/data/RPB108_SHELL_LEAKAGE_CC19_VALIDATION_20261008.json) and custody preserve the inherited scope. No new aperture, actual zeta crossing, RH/F4, finite-cap loss theorem or Lean closure. Next: independently bound the actual whole critical covariance relative to its defect, with low-output protection and cap-uniform strict/step budgets. Paused branches and historical bytes remain unchanged.
