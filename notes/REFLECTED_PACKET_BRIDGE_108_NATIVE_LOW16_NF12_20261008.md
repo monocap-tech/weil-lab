@@ -70,3 +70,7 @@ A 12-mode brute prime-only path in NF11 previously exceeded the local time windo
 **NF13:** Increase complete native matrix batches via the exact moment integrator (e.g., 24 and 32 modes), assess actual interval widths and pivot stability, and prepare hash-bound 112 source checkpoints. After numerical feasibility is established, commit to the full 112 rather than repeating old-only phase or compactness investigations.
 
 Standing: genuine F112 complement positivity at 1.06 (NF10) and complete native E16 positivity (NF12), separately; their union is NOT automatically a positive direct sum due to remaining modes and mixed coupling. Highest certified whole-domain positive aperture remains 1.05 (CC18). Coupled active CC39 and paused Global NF71 / Shadow PS3 unaffected. No RH/F4/non-stalling/full transport/Lean closure.
+
+## Subsequent finite-native sign checkpoint NF13
+
+[NF13 complete original signed E24/E32 positivity](REFLECTED_PACKET_BRIDGE_108_NATIVE_LOW32_NF13_20261008.md) extends this finite result at a=53/50. The original exponential/Bernoulli truncation orders 130/100 proved too imprecise at those degrees; increasing to 190/160 yields rigorously signed interval matrices and exact-rational parity LDL with full uncertainty paid, certifying E24 with physical lower >9e-19 and E32 with >1e-22. A second E32 reconstruction at 210/180 has 1088/1088 signed component interval intersections. Neither E112 native sign nor corrected infinite-complement Schur nor whole original aperture a=53/50 positivity has been established.
