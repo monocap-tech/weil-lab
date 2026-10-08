@@ -3712,3 +3712,12 @@ Original positivity stays certified through21/20 even0/odd0, physical margin1/(3
 
 
 
+## CC34 — unsigned native remainder barrier (2026-10-08)
+
+Coupled parent:80644d007765195afccbed606d1128965f165d06, preserving IP1-IP4. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_UNSIGNED_REMAINDER_BARRIER_CC34_20261008.md); [definitions](TERMINOLOGY_RPB108_UNSIGNED_REMAINDER_BARRIER.md).
+
+For every exact source-normalized old critical lift, <C_t h,h>_D=delta-||h||_D^2. Hence the unsigned complete native remainder envelope obeys V_B(h)>=1/U_B^2-delta, and its physical norm bound implies ||h||_2^2>=(1/U_B^2-delta)/r_B when r_B>0. The old projection also satisfies Pi C_t h=-h+delta Pi M_t h and ||Pi C_t h||_D>=1/U_B-delta U_B. Any hypothetical near-zero-defect sequence therefore retains physical mass and order-one interior remainder cancellation.
+
+This proves a precise estimator obstruction: vanishing of the full unsigned remainder or its interior component cannot replace vanishing of the outward forcing q=(I-Pi)C_t h. It does not bound q below, disprove implications of the complete Weil identities, or rule out a direct estimate after projection. Exact rank-one source controls with the same old envelope u^2 have q=0 for v=0 and persistent crossing leakage for v=1/4. They are not native arithmetic countermodels.
+
+25,729 exact checks pass (72 new, 25,657 inherited). The native inequalities are analytic deductions; no actual critical covariance is evaluated. The full-positive-inverse outward arithmetic estimate remains unproved. Original positivity stays21/20, even0/odd0, physical margin1/(3*10^63); RH/F4 and Lean closure remain open. Other fronts remain paused.
