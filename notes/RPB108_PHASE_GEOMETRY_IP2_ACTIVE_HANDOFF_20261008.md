@@ -1,0 +1,11 @@
+# RPB108 — IP2 independent packet inverse checkpoint (read-only handoff)
+
+2026-10-08. Coupled standing: CC31 `00dfd25de49cb62c05caba8b365d7efaa7ea91ee` remains the active mathematical research head before additive IP metadata. New independent branch note: [IP2 positive-metric packet variance and source-shell information limit](https://github.com/monocap-tech/weil-lab/blob/research/rpb108-phase-geometry-localization/notes/REFLECTED_PACKET_BRIDGE_108_INDEPENDENT_PHASE_GEOMETRY_IP2_20261008.md).
+
+**Result to reuse, in its precise scope:** On the supported canonical carrier, a legitimate finite span of smooth modulated packets has canonical projection `Pi`. Its complete leakage obeys `|| (I-Pi) M Pi ||^2 = ||Pi M^2 Pi-(Pi M Pi)^2||`, and the packet block of `M^{-1}` has an exact Schur representation with an error payment using the WHOLE omitted complement. For any actual CC20 critical forced-row Riesz representer `j` and packet trial `z`, the positive inverse norm is at most `2 Re<j,z>-<z,Mz>+m_B^{-1}||j-Mz||^2`, provided `M>=m_B I`. The residual is on all of `D_t`, not selected packet samples.
+
+**Important negative control:** Even when `M=I` and `(I-Pi)M Pi=0` identically, an original-style signed form can have a strictly positive old window and a negative enlarged direction; exact example `P=I, N=(3/4,3/4)` has old gap `7/16`, incoming relative budget `9/7>1`, and enlarged determinant `-1/8`. This is a generic source control, not a zeta divisor and not a native Weil counterexample.
+
+**CC31 attachment and stopping rule:** CC31 proves cap-uniform critical output rank and reduces the CC29 vanishing-modulus target to scalar forced-row residuals. IP2 does not establish those residuals' defect-dependent decay. A future genuine advance must produce the actual arithmetic whole-dual source row `J_i`, a packet trial `z_i`, and a complete error small relative to `lambda_i omega_B(delta_i)`. Neither frequency separation, finite Gram entries, nor positive-metric localization alone satisfies the test.
+
+**Custody:** Coupled remains sole active integration frontier. No CC theorem is claimed for IP2, no aperture beyond `21/20` is certified, and no RH/F4/Lean closure follows. Paused Global NF71 and Shadow PS3 retain their existing IP1 crosslinks; the IP1 page links to IP2 without rewriting either paused head.
