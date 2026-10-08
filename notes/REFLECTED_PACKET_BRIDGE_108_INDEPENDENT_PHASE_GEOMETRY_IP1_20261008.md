@@ -133,3 +133,7 @@ This branch is an independent analytic investigation only, not a new active RPB1
 **Certified standing unaffected:** whole-domain original positivity through `21/20`, no new aperture; no actual whole critical source covariance `J M_t^-1 J^*` or CC29 vanishing-modulus bound evaluated; no RH/F4, transport or Lean closure. Results in Sections 2–6 are conditional elementary analytic derivations and finite illustrative models; prior assistant explanations were not independently sourced, built or formally checked.
 
 **Stopping rule:** If packet localization remains only a fixed-test bound or its transfer requires an uncontrolled `1/min(delta_i)`, classify the transfer as insufficient and stop. Do not replace the RH-equivalent global shell gate with yet another notation for the same missing correlation.
+
+## Subsequent checkpoint
+
+[IP2 — whole-column packet variance and positive-inverse countercontrol](REFLECTED_PACKET_BRIDGE_108_INDEPENDENT_PHASE_GEOMETRY_IP2_20261008.md) makes the canonical packet projection explicit, gives the exact positive-inverse Schur/residual comparison, and proves that even **perfect** positive-metric localization cannot alone exclude negative original-style shell reaction. IP1's fixed-test estimates remain exploratory, with no new original zeta bound or RH conclusion.
