@@ -100,3 +100,7 @@ No change to the internally certified original aperture 21/20, to RH/F4 or Lean 
 ## 5. Exact finite-control validation
 
 The committed [IP4 exact rational validator](../scripts/validate_native_exterior_packet_ip4.py) was independently executed: **21 exact rational assertions passed**. It validates full positive-metric inversion, source-normalized old generalized lift, two one-sided shell packet energies and their complete sum, and an actual negative direction of the generic finite-source control. This is not a machine proof of the logarithmic density theorem, CC27's analytic native kernel, or any actual zeta critical source estimate.
+
+## Subsequent checkpoint
+
+[IP5 — cap-uniform small-step native remainder forcing](REFLECTED_PACKET_BRIDGE_108_INDEPENDENT_PHASE_GEOMETRY_IP5_20261008.md) derives a whole-operator absolute shrinking-aperture modulus from CC33's compact native remainder and the canonical support-projection continuity. A rank-one source contact demonstrates that this absolute modulus cannot supply CC29's defect-relative fixed-positive-step suppression. This links IP4's complete exterior test-space result to a genuine, but insufficient, whole-dual small-step bound.
