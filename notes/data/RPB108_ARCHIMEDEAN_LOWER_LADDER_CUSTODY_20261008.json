@@ -1,0 +1,28 @@
+{
+  "recovered_head": "b546c15d45b61c79ff8c63fc81d5376176395aa2",
+  "source_blob_pins": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "7daeca19b97aa12f84b8a5023b806c898fb935d5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_CONTACT_CONTROL_20261006.md": "cef50e5e46a7ddc6218f33042e720a0c12da58b4",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME8_105_DECISION_20261008.md": "3b967aa1ee2c6932600573c8e41afdb0bc3e1be9",
+    "notes/REFLECTED_PACKET_BRIDGE_108_APERTURE_SCALABILITY_20261008.md": "4e716fd7f7bd4121cdff7a1faa4ca71c7b252391",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CONTINUOUS_KERNEL_20261008.md": "8262fc3227cbd9f31c153333c810403eaf023fd2",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME_POWER_CHAINS_20261008.md": "57153b47a141b5c181bde552d8239b99e815bfce"
+  },
+  "finite_checks": 228,
+  "new_analytic_results": [
+    "global uniform integrated-arch kernel series with one-sided physical form order",
+    "whole cutoff lowest levels increase to original lowest physical level",
+    "strict positivity iff some finite arch cutoff has whole-space positive margin",
+    "bounded prime background plus compact gain criterion; all prime paths and pole slots retained"
+  ],
+  "target_background": {
+    "a": "21/20",
+    "N": 32,
+    "strict_lower": "157/1000",
+    "full_gain_bound": false
+  },
+  "actual_new_aperture": false,
+  "original_gain_bound": false,
+  "analytic_only": true,
+  "lean_certified": false
+}
