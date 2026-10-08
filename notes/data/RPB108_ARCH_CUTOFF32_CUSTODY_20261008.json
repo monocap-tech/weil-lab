@@ -1,0 +1,21 @@
+{
+  "recovered_head": "76a2ef43f9495d2a076fd1e0e472c7645e681f49",
+  "source_blob_pins": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "f93a7c85517e5350c791871c0062d88d23e5b966",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_LOWER_LADDER_20261008.md": "e295f7f8e05af9befc22dd7327da20e4ece73c83",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME8_105_DECISION_20261008.md": "3b967aa1ee2c6932600573c8e41afdb0bc3e1be9",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PREFLIGHT_100_20261007.md": "76c51dd492e9afd12d2cb52d31d34eb43cd75592",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME7_GRAM112_100_20261007.md": "e53d1d782c498f7b8d1cdf59de8fa9c539a01c4d"
+  },
+  "witness_blob_sha": "41d0c413727bd5d27f11a95bf4cc3e25f789c7db",
+  "exact_negative_cutoff_witnesses": 2,
+  "cutoff_gain_strict_lower": {
+    "1": "10049/10000",
+    "21/20": "10059/10000"
+  },
+  "original_anchor_control": "whole original form strictly positive at a=1 by reused internal certificate",
+  "original_negative_claim": false,
+  "new_aperture_certificate": false,
+  "floating_resolution_probe": "discovery only; not an exact finite-head sign claim",
+  "lean_certified": false
+}

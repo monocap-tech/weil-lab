@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "scope": "exact rational physical-vector cutoff sign certificates",
+  "certified_negative_cutoff_vectors": 2,
+  "results": [
+    {
+      "a": "1",
+      "N": 32,
+      "cells": 128,
+      "parity": "odd",
+      "physical_mass": "31999998475473/32000000000000",
+      "Q_N_interval": [
+        "-127534636242512733681713601921963080263/2500000000000000000000000000000000000000",
+        "-253848569418181557146142047593926103111/5000000000000000000000000000000000000000"
+      ],
+      "strict_rayleigh_upper": "-49/1000",
+      "original_form_declared_negative": false,
+      "original_control": "certified positive aperture-one anchor applies",
+      "complete_active_prime_powers": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "cutoff_compact_gain_strict_lower": "10049/10000"
+    },
+    {
+      "a": "21/20",
+      "N": 32,
+      "cells": 128,
+      "parity": "even",
+      "physical_mass": "128000018228103/128000000000000",
+      "Q_N_interval": [
+        "-302432643767836769213725806741383549103/5000000000000000000000000000000000000000",
+        "-602423880938000065069297316607766991107/10000000000000000000000000000000000000000"
+      ],
+      "strict_rayleigh_upper": "-59/1000",
+      "original_form_declared_negative": false,
+      "original_control": "original sign not certified here",
+      "complete_active_prime_powers": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "cutoff_compact_gain_strict_lower": "10059/10000"
+    }
+  ],
+  "whole_original_positivity_extended": false,
+  "lean_certified": false
+}
