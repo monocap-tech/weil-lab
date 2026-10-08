@@ -1,0 +1,41 @@
+{
+  "milestone": "CC17",
+  "base_commit": "ee6e56cf63c4a6918f4c9e2f46c2e9f814ffce37",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "paused_other_fronts": [
+    "Aperture",
+    "Pre-Contact Shadow"
+  ],
+  "inherited_source_gram_full_archives_replayed": false,
+  "current_connector_large_gzip_recovery": "contents returned empty content; binary fetch unsupported; direct Git transport blocked",
+  "new_original_odd_source_archive_bytes": 926711,
+  "source_metadata_constructor_pins_attached_after_initial_generation": true,
+  "consumer_exact_checks": 564,
+  "additional_exact_native_binding_checks": 1,
+  "total_exact_checks": 565,
+  "original_source_constructor_replayed": true,
+  "all13_source_panel_integrals_replayed": true,
+  "all112_source_projections_replayed": true,
+  "source_algebra_controls": 36,
+  "inherited_lower_endpoint_origin": "CC16 published last interval Schur pivot, attached by infimum monotonicity; no fresh full Gram replay",
+  "native_upper_trial_freshly_certified": true,
+  "actual_inverse_evaluated": false,
+  "actual_terminal_scalar_sign_evaluated": false,
+  "whole_domain_certified_aperture": "1",
+  "positive_slice_codimension": 1,
+  "bridge_prefix_bytes": 653537,
+  "bridge_prefix_sha256": "f7e0918b430a1fcb6d3f03c141e0aaaf7ad01f8d74ee609b6bef0f6efb1189cd",
+  "artifact_sha256": {
+    "docs/TERMINOLOGY_RPB108_TERMINAL_ODD.md": "1d178990492a5565c2119c10a493d778449088106032e1f107894d8b3aaabe18",
+    "notes/REFLECTED_PACKET_BRIDGE_108_TERMINAL_ODD_CC17_20261008.md": "d190202d6be9452dc4a99f0c581c2377029d45aaf40b2812f57567713c1c233d",
+    "scripts/certify_native_terminal_odd_cc17.py": "cf255850626cf5de6882371e1dd837a0a3a005abb054b3a1351ea83118bdaf72",
+    "scripts/native_terminal_odd_source_cc17.py": "cae3985270b2c10afcce61da37bf54b5099943b75446cd6d1ef230ef8d1a517e",
+    "scripts/validate_native_terminal_odd_cc17.py": "969a94ac182b7e239071980541b10fbe4ade7a6c90bc14814a2b34d2c6e470cb",
+    "notes/data/RPB108_TERMINAL_ODD_CC17_CERTIFICATE_20261008.json": "415a81a9c3dc4cba32fe2edf447e4962dd2939e71e82bcb5032298e01f10ecfe",
+    "notes/data/RPB108_TERMINAL_ODD_CC17_SOURCE_20261008.json.gz": "d5b21fc03a9d9df8ee5cae292e65e2e61a94826edd7dfbbf66a0f1c4f62aee20",
+    "notes/data/RPB108_TERMINAL_ODD_CC17_VALIDATION_20261008.json": "20dbc5b90a960aa843391ae4a4603eb57fa1573f56ea5dd918344c0bc46ff044",
+    "docs/REFLECTED_PACKET_BRIDGE.md": "ce22198d6e7223cd07c9085a02d0ab58f4290cf31dc016b81eb699b7a0ec0f20"
+  },
+  "next_gate": "Enclose the complete original inverse-weighted reaction of the newly pinned odd residual source on the positive e111-perpendicular compression"
+}

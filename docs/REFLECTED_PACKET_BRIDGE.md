@@ -3411,3 +3411,47 @@ Conservative physical coercivity: whole even/joined codimension1 slice >=1/(3*10
 Single next gate: the ORIGINAL terminal odd Schur scalar after eliminating the positive odd55 and positive infinite complement. It is not the native degree111 diagonal. Its complete inverse-weighted mixed reaction remains unevaluated; the failed scalar no-lift bound does not settle its sign. Do not restart the closed even matrix or stopped uniform estimates, and do not begin indefinite action-degree growth.
 
 Whole-domain internally certified aperture remains1; whole-domain21/20, accumulated relative-loss control, reusable non-stalling, RH/F4/full transport and Lean closure remain open. Coupled remains the sole active frontier. See [CC16 note](../notes/REFLECTED_PACKET_BRIDGE_108_EVEN_BLOCK_CC16_20261008.md), [definitions](TERMINOLOGY_RPB108_EVEN_BLOCK.md), [even archive](../notes/data/RPB108_EVEN_BLOCK_CC16_CERTIFICATE_20261008.json.gz), [odd archive](../notes/data/RPB108_ODD_BLOCK_CC16_CERTIFICATE_20261008.json.gz), [independent validation](../notes/data/RPB108_EVEN_BLOCK_CC16_VALIDATION_20261008.json), [joined summary](../notes/data/RPB108_JOINED_CC16_SUMMARY_20261008.json) and [custody](../notes/data/RPB108_JOINED_CC16_CUSTODY_20261008.json).
+
+
+## RPB108 CC17: terminal scalar enclosure and one original odd residual source (2026-10-08)
+
+[Definitions](TERMINOLOGY_RPB108_TERMINAL_ODD.md) and
+[report](../notes/REFLECTED_PACKET_BRIDGE_108_TERMINAL_ODD_CC17_20261008.md).
+Coupled base `ee6e56cf63c4a6918f4c9e2f46c2e9f814ffce37`.
+
+**B: the actual original terminal odd Schur scalar is enclosed, and its
+original finite-completion residual source is constructed. Its sign stays
+open.** The actual scalar is the infimum over the positive original odd
+compression orthogonal to degree111, including odd55 and the infinite
+complement. Its approximate bracket is -108.55555403 to2.701491936: the lower
+endpoint is inherited from CC16's sufficient complete no-lift lower; the
+upper is a freshly verified exact rational finite native trial. The trial
+mass is approximately3.88799691*10^28. This bracket is not a negative-mode
+certificate or a minimum-eigenvalue estimate.
+
+One fresh original odd source uses the original SOURCE112 odd reflection
+and signed-pole rules, retaining all13 panels, all powers2,3,4,5,7,8 and every
+source, physical-normalization and integration allowance. The independent
+consumer replays its constructor, every panel and all112 projections;
+all56 odd native pairings overlap. Validation passes565 exact checks
+(564 in the complete consumer run plus one native-input binding check).
+The inherited full CC16 Gram endpoint and whole-even archive are not
+freshly replayed in this recovery session.
+
+The source is scaled by10^-14. Its original degree111-perpendicular
+residual norm squared is enclosed near1.39029684618*10^-28. The remaining
+gate is its COMPLETE original inverse-weighted reaction, compared with
+squared-scale times the native trial value near2.70149193515*10^-28.
+An ordinary source norm does not settle that reaction. No degree expansion,
+whole-even restart or reusable inverse is asserted.
+
+CC16's whole-even closure, positive odd55 plus infinite complement,
+positive codimension1 and original nonpositive spectral dimension upper1
+are preserved. Whole-domain certified aperture remains1; actual odd sign,
+non-stalling, accumulated relative Schur loss, RH/F4/full transport and Lean
+remain open. Global, Aperture and Pre-Contact Shadow remain paused.
+
+[Certificate](../notes/data/RPB108_TERMINAL_ODD_CC17_CERTIFICATE_20261008.json),
+[source archive](../notes/data/RPB108_TERMINAL_ODD_CC17_SOURCE_20261008.json.gz),
+[validation](../notes/data/RPB108_TERMINAL_ODD_CC17_VALIDATION_20261008.json),
+[custody](../notes/data/RPB108_TERMINAL_ODD_CC17_CUSTODY_20261008.json).
