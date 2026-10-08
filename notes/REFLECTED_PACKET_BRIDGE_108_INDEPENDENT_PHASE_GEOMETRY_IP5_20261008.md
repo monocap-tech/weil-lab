@@ -102,3 +102,7 @@ No new certified aperture beyond a=21/20; no global non-stalling, RH/F4, transpo
 ## 5. Local exact test outcome
 
 The [reproducible IP5 source-control validator](../scripts/validate_native_small_step_ip5.py) was independently executed using Python Fraction arithmetic: **74 of 74 exact rational assertions passed**. These check the compact rank-one old gain, fixed-step divergence, squared forcing envelope and explicit negative-target sample. The native zeta uniform small-step theorem remains an analytic deduction from CC33 and the supported-domain projection facts, not a numerical zero computation or Lean certification.
+
+## Subsequent checkpoint
+
+[IP6 — uniform finite-rank critical-mode charts and conditional fixed exterior witnesses](REFLECTED_PACKET_BRIDGE_108_INDEPENDENT_PHASE_GEOMETRY_IP6_20261008.md) uses CC33's compact remainder to prove that actual old critical lifts with vanishing source defect form a precompact family on every finite cap, up to varying canonical support projections. At a hypothetical first contact, finite-dimensional nullity and IP4 exterior density allow a fixed finite list of exterior packets to detect every contact direction; CC29 guarantees nonzero outward forcing. These are genuine structural refinements but **do not** furnish the missing arithmetic upper suppression, a new aperture, or RH.
