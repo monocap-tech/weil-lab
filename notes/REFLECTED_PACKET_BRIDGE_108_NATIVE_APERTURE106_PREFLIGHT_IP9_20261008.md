@@ -80,3 +80,7 @@ Certified standing unchanged: whole-domain original Weil positivity through 21/2
 ## 5. Concurrent CC38 archimedean-tail attachment (read-only)
 
 Coupled advanced concurrently to CC38 `d679b712df8485411a760519a5b563d1dd4f2d47`, which independently proves `|r_arch(xi)|<4/|xi|` when `|xi|>=1`, and a complete canonical spectral tail bound `4/[R log(e+R)]` for `R>=1`. This is useful for a future full source native archive at 53/50: the archimedean high-frequency truncation can now carry an explicit effective error. However, CC38 expressly leaves the prime translation multipliers unattenuated; its bound is NOT a replacement for the fresh 112-vector weighted prime/source operator norm and positive infinite-complement floor required by NF10. No positive complement constant is inferred from the new tail estimate.
+
+## Subsequent checkpoint — NF10 complement closed
+
+[NF10 complete physical F112 complement certificate](REFLECTED_PACKET_BRIDGE_108_COMPLEMENT106_NF10_20261008.md) now independently certifies the original native physical complement at a=53/50 with c=17/100. The proof rebuilds the full six-prime weighted Schur bound with rational polynomial weight and uses new degree112 Bessel cutoff triplet 14,15,16. This **discharges IP9's missing positive-complement prerequisite only**, not its full 112-vector retained matrix, original source/action Gram or corrected even/odd Schur signs. The historical NF9 low-mode prime entries and CC18 certificates are unchanged.
