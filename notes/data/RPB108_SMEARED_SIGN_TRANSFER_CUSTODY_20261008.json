@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-08",
+  "base": "1b5db1dc92717e7e0dcd85341ac1494de97c0b70",
+  "source_blob_pins": {
+    "docs/REFLECTED_PACKET_BRIDGE.md": "b60a5339ac5b44c6365f62563d0589bb4b47dbc0",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME_SMEARING_20261008.md": "8c978a2d69f6a6b7a4953ac910afb9d830549e73",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOGARITHMIC_BOOTSTRAP_20261005.md": "c2d087875d8dd85dfcdbd64893923ef51fcf1028",
+    "notes/REFLECTED_PACKET_BRIDGE_108_L2_NULL_DOMAIN_PROMOTION_20261006.md": "b8ef9607e6823444a887ac71d8ec08bc21242510",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_LOG_OPERATOR_ATTACHMENT_20261007.md": "5b9fedd77956f6ba3e2efc0a71be14f673596fd1"
+  },
+  "analytic_result": "uniform bounded-original-eigenvalue smearing budget and whole-form sign transfer",
+  "finite_checks": 15,
+  "independent_smeared_lower_bound": false,
+  "new_original_gain_bound": false,
+  "lean_certified": false
+}

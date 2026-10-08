@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "finite_checks": 15,
+  "scope": "rational transfer and split-budget algebra only; no actual lower bound"
+}
