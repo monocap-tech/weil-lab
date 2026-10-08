@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "exact_checks": 486,
+  "coupled_cases": 48,
+  "inertia_cases": {
+    "positive": 16,
+    "negative": 30,
+    "unit": 2
+  },
+  "criterion": "Gcrit-L (I-B_low)^(-1) L* > 0",
+  "whole_incoming_range_retained": true,
+  "actual_arithmetic_overlap_bound": false,
+  "new_aperture_certificate": false,
+  "arithmetic_nondivergence": false,
+  "lean_certified": false
+}

@@ -1,0 +1,19 @@
+{
+  "global_base": "d6d5d5dcbb999924db59d9bdc66c6ce800280ab2",
+  "coupled_read_only_head": "191b3c04dbddf9789c19cbb4ad7562deac2e9ec1",
+  "source_pins": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_SOURCE_SHELL_GAIN.md",
+      "blob": "60003ba715c14bab3d2067e613d50d4c83d68bad"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_SHELL_GAIN_20261008.md",
+      "blob": "17a9592070d1cfdf7b73c83249660f7d063825bb"
+    },
+    {
+      "path": "scripts/validate_native_source_shell_gain.py",
+      "blob": "84a1ab6235e0eaad2a350735770f0e5924641cf5"
+    }
+  ],
+  "scope": "analytic exact reduction; no actual arithmetic matrix evaluated; no other ref written"
+}
