@@ -1,0 +1,26 @@
+{
+  "recovered_head": "22ced3cbb32c08167f74b4ed776c26ba552af6d6",
+  "source_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_LOWER_LADDER_20261008.md": "e295f7f8e05af9befc22dd7327da20e4ece73c83",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCH_CUTOFF32_TEST_20261008.md": "34103747de8f12c644f62b38fb279ff8c57aa028",
+    "notes/REFLECTED_PACKET_BRIDGE_108_PRIME7_GRAM112_100_20261007.md": "e53d1d782c498f7b8d1cdf59de8fa9c539a01c4d",
+    "notes/REFLECTED_PACKET_BRIDGE_108_APERTURE_SCALABILITY_20261008.md": "4e716fd7f7bd4121cdff7a1faa4ca71c7b252391",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CONTINUOUS_KERNEL_20261008.md": "8262fc3227cbd9f31c153333c810403eaf023fd2",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_CONTACT_CONTROL_20261006.md": "cef50e5e46a7ddc6218f33042e720a0c12da58b4"
+  },
+  "artifact_blobs": {
+    "docs/TERMINOLOGY_RPB108_ARCHIMEDEAN_TAIL_REPAIR.md": "652effa4b1f5b9fb01b70e27c2844033e92faaba",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARCHIMEDEAN_TAIL_REPAIR_20261008.md": "f2cc0351405774cec9536fca82b088d5e59631d3",
+    "scripts/validate_native_archimedean_tail_repair.py": "eb89ad98dfa8e88bee1877b72f834fbb4a3a2e91",
+    "notes/data/RPB108_ARCHIMEDEAN_TAIL_REPAIR_VALIDATION_20261008.json": "7590638c403fe07a74c9dfbec6bbffe8310e0cc1"
+  },
+  "primary_identity": "https://dlmf.nist.gov/4.36.E3",
+  "proof": "finite rational partial-fraction remainder integrated against nonnegative Laplace weight",
+  "exact_checks": 389,
+  "original_primes_and_signed_pole": "unchanged",
+  "uniform_physical_mass_budget": "1/10^40",
+  "scope": "every frequency and every finite aperture; anchor positivity transferred at a=1",
+  "new_original_aperture_certificate": false,
+  "all_window_original_gain_certified": false,
+  "lean_certified": false
+}

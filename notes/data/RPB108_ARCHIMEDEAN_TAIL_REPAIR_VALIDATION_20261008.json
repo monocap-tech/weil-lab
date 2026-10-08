@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "exact_checks": 389,
+  "archimedean_head_terms": 32,
+  "bernoulli_corrections": 16,
+  "q": "129/4",
+  "uniform_physical_mass_budget_strict_upper": "1/10^40",
+  "epsilon_numerator": "22376446223625658020818298339328",
+  "epsilon_denominator": "1726519170378188127122886560394063941690249941230343148642833916481565443",
+  "candidate_budgets": [
+    {
+      "bernoulli_corrections": 8,
+      "epsilon_numerator": "1507258642989056",
+      "epsilon_denominator": "351423006986820381551520067827357142617351"
+    },
+    {
+      "bernoulli_corrections": 10,
+      "epsilon_numerator": "683306894244184064",
+      "epsilon_denominator": "1869918667938921360937027822537631130024284501829"
+    },
+    {
+      "bernoulli_corrections": 12,
+      "epsilon_numerator": "1481528903217748901888",
+      "epsilon_denominator": "22514054989622975447961852356272936671374368009136367363"
+    },
+    {
+      "bernoulli_corrections": 14,
+      "epsilon_numerator": "993338868738546093555961561088",
+      "epsilon_denominator": "44646378567317466187732571867118094464876955505711668828952179202283"
+    },
+    {
+      "bernoulli_corrections": 16,
+      "epsilon_numerator": "22376446223625658020818298339328",
+      "epsilon_denominator": "1726519170378188127122886560394063941690249941230343148642833916481565443"
+    }
+  ],
+  "anchor_aperture": "1",
+  "repaired_anchor_physical_lower": "3/10^32",
+  "repaired_anchor_logarithmic_lower": "1/10^34",
+  "analytic_global_bound": "finite partial-fraction remainder and nonnegative Laplace weight; see note",
+  "whole_repaired_anchor_positive": true,
+  "larger_aperture_original_sign_certified": false,
+  "new_original_aperture_certificate": false,
+  "new_actual_divisor_gain_bound": false,
+  "lean_certified": false
+}
