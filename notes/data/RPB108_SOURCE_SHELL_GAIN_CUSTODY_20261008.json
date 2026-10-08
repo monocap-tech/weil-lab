@@ -1,0 +1,43 @@
+{
+  "global_base": "48fef33ca0cede19d81a91f8f357153372498436",
+  "coupled_read_only_head": "2386b78360d55d44b74c2998f1e321323e3ff1da",
+  "source_pins": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_REVERSE_GAIN_TARGET_20261008.md": {
+      "commit": "48fef33ca0cede19d81a91f8f357153372498436",
+      "blob": "5875daa8e2b9c82c9dcad45acd1c4bed3e848f7c"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_TAIL_DEFECT_FLOOR_20261008.md": {
+      "commit": "48fef33ca0cede19d81a91f8f357153372498436",
+      "blob": "c3e0ac2bcbc9c692f605ecacb5d06452747553dd"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_FULL_CONTACT_CLUSTER_20261007.md": {
+      "commit": "48fef33ca0cede19d81a91f8f357153372498436",
+      "blob": "387af46f2bf69bcc86eb82fab627c70e856e9936"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARITHMETIC_RELATIVE_LOSS_CC4_20261008.md": {
+      "commit": "2386b78360d55d44b74c2998f1e321323e3ff1da",
+      "blob": "1356cdb9301a0cbe029cfc7e81759975a110f439"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_PROTECTED_RESOLVENT_CC7_20261008.md": {
+      "commit": "2386b78360d55d44b74c2998f1e321323e3ff1da",
+      "blob": "fefc619c0b81ae6defd2fdb762d2300d5ef38eca"
+    }
+  },
+  "artifact_blobs": {
+    "docs/TERMINOLOGY_RPB108_SOURCE_SHELL_GAIN.md": "60003ba715c14bab3d2067e613d50d4c83d68bad",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_SHELL_GAIN_20261008.md": "17a9592070d1cfdf7b73c83249660f7d063825bb",
+    "scripts/validate_native_source_shell_gain.py": "84a1ab6235e0eaad2a350735770f0e5924641cf5",
+    "notes/data/RPB108_SOURCE_SHELL_GAIN_VALIDATION_20261008.json": "047d0d84c26309ff9b103c1c47ed68dc33d36074"
+  },
+  "exact_checks": 1572,
+  "coupled_source_cases": 288,
+  "exact_original_identity": "A_t=A_s+K K* and original gain continuation iff ||K* (I-A_s)^(-1) K||<1",
+  "spectral_leakage_estimate_status": "explicit sufficient target; not established for actual zeta",
+  "finite_critical_output_gate": "protected codimension-d complement; complete-source combinations, not zero prefixes",
+  "original_sources": "all original normalized rows and multiplicities; no auxiliary channel or approximation",
+  "new_original_gain_bound": false,
+  "new_aperture_certificate": false,
+  "arithmetic_nondivergence_proved": false,
+  "lean_certified": false,
+  "other_branch_writes": false
+}

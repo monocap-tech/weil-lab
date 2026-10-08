@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "exact_checks": 1572,
+  "coupled_source_cases": 288,
+  "positive_cases": 204,
+  "negative_cases": 81,
+  "complete_negative_source_gram_update": "A_t=A_s+K K*",
+  "exact_continuation_cost": "K* (I-A_s)^(-1) K",
+  "directional_leakage_requirement": "incoming near-unit output weight must vanish relative to old defect",
+  "new_zeta_source_gain_bound": false,
+  "arithmetic_relative_loss_nondivergence_proved": false,
+  "new_aperture_certificate": false,
+  "lean_certified": false
+}
