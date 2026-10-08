@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "finite_checks": 228,
+  "target_aperture": "21/20",
+  "archimedean_terms": 32,
+  "bounded_background_floor_strict_lower": "157/1000",
+  "background_scope": "scalar arch plateau minus complete prime operator; compact terms retained separately",
+  "full_compact_gain_certified": false,
+  "new_aperture_certificate": false,
+  "lean_certified": false
+}

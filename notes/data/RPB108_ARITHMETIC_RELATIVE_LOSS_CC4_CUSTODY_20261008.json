@@ -1,0 +1,48 @@
+{
+  "stage": "CC4 exact original arithmetic relative-loss identity",
+  "base_coupled": "f414e2464775300d93b4e31890ec715f2282f1bb",
+  "shared_reconciled": "76a2ef43f9495d2a076fd1e0e472c7645e681f49",
+  "registry_before_load_bearing_use": true,
+  "exact_original_schur_identity_analytic": true,
+  "nested_fixed_coordinate_monotonicity": true,
+  "independent_arithmetic_nondivergence_bound": false,
+  "conditional_finite_contact_loss_diverges": true,
+  "actual_zeta_contact_asserted": false,
+  "genuine_crossing_controls": [
+    "Dirichlet differential form",
+    "canonical logarithmic form",
+    "exact coupled source-Gram matrix"
+  ],
+  "complete_source_identity_preserved": true,
+  "positive_physical_mass_shift_preserved": true,
+  "prime_thresholds_preserved": true,
+  "exact_finite_checks": 4489,
+  "anchor_certificate_imported": true,
+  "anchor_certificate_replayed": false,
+  "full_target_archives_replayed": false,
+  "new_aperture_certified": false,
+  "checkpoint_A": false,
+  "lean_formalized": false,
+  "paused_refs_moved": false,
+  "paused_work_launched": false,
+  "shared_notes_read": [
+    "NF62",
+    "NF63"
+  ],
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_ARITHMETIC_RELATIVE_LOSS.md": "2187e80828778cf01d76d99a48ae8700464ac0f0026c1589618c0736ec5d84d9",
+    "notes/REFLECTED_PACKET_BRIDGE_108_ARITHMETIC_RELATIVE_LOSS_CC4_20261008.md": "b7ebeccf2e80dc54271e7ab6cd0bb2622e41a785a558b4edb833c152324ed931",
+    "scripts/validate_native_arithmetic_relative_loss_cc4.py": "288834129f20fd810ee1b1af71b1897159108d256d0de88d9dc4186af2efda06",
+    "notes/data/RPB108_ARITHMETIC_RELATIVE_LOSS_CC4_VALIDATION_20261008.json": "980ed548af345df565ac1ee06eea28e2612a57a11ca7ab72e7a78576ebc0ed7e"
+  },
+  "dependency_git_blobs": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_FIRST_CONTACT_CONSTRUCTOR_20261004.md": "1d7d4721405b03050508008f7a903d2697ac550e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FULL_CONTACT_CLUSTER_20261007.md": "387af46f2bf69bcc86eb82fab627c70e856e9936",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CONTACT_TRIAL_HIERARCHY_20261007.md": "33e78cfd347e9e0529a75e6fabde142a0ce9098d",
+    "notes/REFLECTED_PACKET_BRIDGE_108_REVERSE_GAIN_TARGET_20261008.md": "5875daa8e2b9c82c9dcad45acd1c4bed3e848f7c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COUPLED_CONTINUATION_CC1_20261008.md": "aeea68684ce41c2778173da810bce793846cc833",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COUPLED_GRAPH_STEP_CC2_20261008.md": "8cef3e3841a3f2e649e7c7cb762fd3c1c1acf605",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COUPLED_TRIAL_CC3_20261008.md": "e9ed573b1c88a973ac4efe2b5964108c76e71b3c"
+  },
+  "next_actual_arithmetic_obligation": "Bound the exact shell reaction cumulatively relative to the shrinking original Schur margin on every finite aperture, with complement protection; absolute source/prime bounds are insufficient."
+}

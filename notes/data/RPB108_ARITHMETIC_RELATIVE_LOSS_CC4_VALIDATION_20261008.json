@@ -1,0 +1,21 @@
+{
+  "stage": "CC4 exact original relative-loss controls",
+  "counts": {
+    "shell_completion": 729,
+    "determinant_accumulation": 216,
+    "crossing_source": 3475,
+    "positive_level": 36,
+    "complement_gate": 5,
+    "source_prefix": 2,
+    "prime_dictionary": 26
+  },
+  "exact_checks": 4489,
+  "all_passed": true,
+  "actual_arithmetic_nondivergence_bound": false,
+  "analytic_theorem_lean_certified": false,
+  "actual_contact_exists": false,
+  "anchor_certificate_replayed": false,
+  "full_target_archives_replayed": false,
+  "new_aperture_certified": false,
+  "constructor_sha256": "288834129f20fd810ee1b1af71b1897159108d256d0de88d9dc4186af2efda06"
+}
