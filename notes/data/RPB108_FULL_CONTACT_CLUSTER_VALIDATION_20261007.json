@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "exact_checks": 216,
+  "scope": "finite exact mass-resolvent identities and explicitly synthetic isolated-cluster controls",
+  "analytic_certification": false,
+  "actual_native_eigenvalues_computed": false,
+  "lean_certification": false,
+  "F4_closed": false
+}
