@@ -1,0 +1,16 @@
+{
+  "stage": "CC34 unsigned native remainder barrier",
+  "all_passed": true,
+  "new_exact_checks": 72,
+  "inherited_cc33_checks": 25657,
+  "total_exact_checks": 25729,
+  "native_analytic_lower_bound": "V_B(h)>=1/U_B^2-delta",
+  "actual_arithmetic_outward_suppression_proved": false,
+  "full_source_identity_nonimplication_proved": false,
+  "actual_critical_covariance_evaluated": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "new_aperture": false,
+  "constructor_sha256": "4163e19a3197a18063ca7f92bc73046b2a02a8dba699ec944109d21d8fae0119",
+  "input_sha256": "7811ff6f59eb2f4fa7f7dfcc1d35f5cbf5d527d5e343ef86ae2ec4fad13e1f6b"
+}
