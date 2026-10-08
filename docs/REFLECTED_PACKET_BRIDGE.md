@@ -3663,3 +3663,19 @@ This particular local-density shortcut has an unproved Lindelof premise and a fu
 
 Original anchor remains21/20 even0/odd0, physical margin1/(3*10^63). RH/F4, retained attachment, reusable continuation and Lean closure stay open. Global NF71, Aperture and Pre-Contact Shadow remain paused.
 
+
+## CC31 — cap-uniform critical rank and scalar residual reduction (2026-10-08)
+
+Coupled parent:3d67de4ba4c44c6b4e164ee064663cc531a04527. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_UNIFORM_CRITICAL_RANK_CC31_20261008.md); [definitions](TERMINOLOGY_RPB108_UNIFORM_CRITICAL_RANK.md).
+
+New actual structural reduction from existing native/source bounds. On each fixed cap, Q>=alpha||h||_D^2-kappa||h||_2^2 and ||Ph||<=U_B||h||_D supply a common finite protected complement. The low-frequency Gram has trace at most4BR; choosing log(e+R)>=4kappa/alpha and its spectral threshold alpha/(4kappa) gives dimension d_B<=floor(16kappa BR/alpha) and Q>=alpha||h||_D^2/2 on the complement. The same complement intersects every old D_s with codimension at most d_B. Consequently the fixed band eta_B=min(1/2,alpha/(4U_B^2)) has rank E_s<=d_B uniformly in s. No source-Gram compactness, Lindelof, or extension of the numerical aperture-one complement is assumed.
+
+Thus the CC29 collective modulus follows from scalar COMPLETE forced residual bounds ||M_t^-1/2 J_i*||^2<=b_B lambda_i omega(delta_i): positivity of the full covariance and weighted Cauchy--Schwarz give L_st L_st*<=d_B b_B omega(G_s). Mixed terms remain; coherent phase geometry costs at most the cap rank, and that factor is sharp. A row is an entire adaptive critical eigenvector residual, not an individual zero-source coordinate or finite trial norm. No actual scalar suppression estimate is proved.
+
+For strict linear continuation one still needs d_B b_B+ell_B<1; for the endpoint argument any finite cap constant with a vanishing modulus suffices. Genuine rank-one crossing and full positive-level controls show why finite rank alone is not suppression. Without uniform rank, vanishing row norms can coexist with Gram norm one.
+
+25,375 exact checks pass (388 new protected-complement/critical-rank/coherent-Gram/scalar-to-matrix/unbounded-rank checks, 24,987 CC30 replayed). Infinite actual rank and scalar-reduction arguments are analytic, not new Lean certification or evaluated actual critical covariance. The arithmetic task has narrowed to individual critical residual norms with defect dependence.
+
+Original anchor remains21/20 even0/odd0, physical margin1/(3*10^63). RH/F4, retained attachment, reusable continuation and Lean closure stay open. Global NF71, Aperture and Pre-Contact Shadow remain paused.
+
+

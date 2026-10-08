@@ -1,0 +1,115 @@
+{
+  "stage": "CC31 cap-uniform critical rank and scalar residual reduction",
+  "date_utc": "2026-10-08",
+  "repository": "monocap-tech/weil-lab",
+  "active_branch": "research/rpb108-coupled-continuation",
+  "parent": "3d67de4ba4c44c6b4e164ee064663cc531a04527",
+  "paused_global_head": "6ed350cb6736993fa9801bce9ab15f096c10c200",
+  "inputs": {
+    "scripts/validate_native_local_transverse_gate_cc30.py": {
+      "bytes": 3835,
+      "sha256": "b1bc068e9e94cad8eed13f39d64e69ed90805adf59a21b6abe6ad961fb6ae6a9",
+      "git_blob": "7014e2d87c01a068c066d054d16de024d539a251"
+    },
+    "notes/data/RPB108_LOCAL_TRANSVERSE_GATE_CC30_VALIDATION_20261008.json": {
+      "bytes": 1399,
+      "sha256": "e1eb652b11970ed19e9cae8a1d0d50c42c2b9154dbda0b5ccfadf64d10b33e9f",
+      "git_blob": "18d4843ccde1e90282387946cc1886af55a4c6b0"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md": {
+      "bytes": 10794,
+      "sha256": "8a97099032b77dcdf1cdd8bf38c9d1eae0bedc6eaa3e41c4ac968d17e007e854",
+      "git_blob": "09f8a679e7df15e6f5f160ce3c94950df826aa8d"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_SHELL_GAIN_20261008.md": {
+      "bytes": 12964,
+      "sha256": "ae173553c9b18f6eb3ab6ca7b293344eed67b3ce94296495055ed244b0a0128c",
+      "git_blob": "17a9592070d1cfdf7b73c83249660f7d063825bb"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": {
+      "bytes": 13662,
+      "sha256": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+      "git_blob": "da2dab5958dd65381bca285c7ff9082d571e6dd8"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FLUX_CC27_20261008.md": {
+      "bytes": 12270,
+      "sha256": "ba6e7c65e83ab32e38c3cea603f1719844a98064ee5d4de39c763260bfde3cb2",
+      "git_blob": "e9a44661f94ee6750fc5ad1fbf7dc719fa3ba482"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_FLUX_LIMIT_CC29_20261008.md": {
+      "bytes": 12066,
+      "sha256": "5d7675c2868864e072124e7dc5e43eefdd53f47f1609bfe5c9f3b7d67595bd40",
+      "git_blob": "1d139126c805a96fa6bc92c0311fa89111e5f42f"
+    }
+  },
+  "artifacts": {
+    "docs/TERMINOLOGY_RPB108_UNIFORM_CRITICAL_RANK.md": {
+      "bytes": 1512,
+      "sha256": "59f086823772b7ffa78b106aa7ac8501b5bc208176e46cf7c707354852e01fd7",
+      "git_blob": "3a09bffe51ed3358253f1da167dfe99b28312526"
+    },
+    "notes/REFLECTED_PACKET_BRIDGE_108_UNIFORM_CRITICAL_RANK_CC31_20261008.md": {
+      "bytes": 8872,
+      "sha256": "dca5ad8c2d507a4b3b451df3aca7a4c628a5fad0b6cae240f52593bf6824db43",
+      "git_blob": "87b4d82a2e970b5e16ccdc89376122b0a95fd350"
+    },
+    "scripts/validate_native_uniform_critical_rank_cc31.py": {
+      "bytes": 3898,
+      "sha256": "4d0ef1ef37dd4a3becc70c7c6195863749ef2801a2fda120740e1af099bc7110",
+      "git_blob": "380431b7ddcae1606859e9e01ba6155f3575237b"
+    },
+    "notes/data/RPB108_UNIFORM_CRITICAL_RANK_CC31_VALIDATION_20261008.json": {
+      "bytes": 1599,
+      "sha256": "a6a9cbbed49d616c4dcf47451a6d68376e4cffbab446e5bd96b0848a41758a57",
+      "git_blob": "09c4320dc2562817bc5bcd3a4312e2c24dabee82"
+    },
+    "docs/REFLECTED_PACKET_BRIDGE.md": {
+      "bytes": 687726,
+      "sha256": "62acf2ee2017cde04ec0f0d770b71b72afb61425fc0ee61031b9a4e8b30f79c8",
+      "git_blob": "54ab4d546110d9db0dab0c7aa8e946ec1b1c12f6"
+    }
+  },
+  "bridge_prefix": {
+    "bytes": 685351,
+    "sha256": "5b1acb1cb0eba0c794f2ac2c38447a720c06e090d009b95fb149d50b9abb07dd",
+    "git_blob": "e4f572d9929c246503d3465f0fa84fd27507e7ea",
+    "preserved_byte_for_byte": true
+  },
+  "analytic_inputs": {
+    "canonical_weight": "log(e+|xi|), Fourier exp(-2pi i xi x)",
+    "native_Garding": "Q >= alpha_B ||h||_D^2 - kappa_B ||h||_2^2",
+    "positive_observability": "c_B ||h||_D <= ||Ph|| <= U_B ||h||_D",
+    "source_covariance": "CC20 complete positive-inverse forced residual identity"
+  },
+  "new_results": {
+    "cap_rank_bound": "d_B <= floor(16 kappa_B B R / alpha_B), with log(e+R)>=4 kappa_B/alpha_B; d_B=0 when kappa_B=0",
+    "fixed_band": "eta_B=min(1/2, alpha_B/(4 U_B^2))",
+    "scalar_sufficiency": "||M_t^-1/2 J_i*||^2 <= b_B lambda_i omega(delta_i) implies L L* <= d_B b_B omega(G)",
+    "rank_factor_sharp": true
+  },
+  "validation": {
+    "all_passed": true,
+    "total_exact_checks": 25375,
+    "new_exact_checks": 388,
+    "inherited_cc30_checks": 24987,
+    "scope": "finite rational algebra controls and inherited genuine crossing/full-mass controls; not actual critical zeta data"
+  },
+  "claims": {
+    "actual_uniform_critical_rank_derived_analytically": true,
+    "actual_scalar_residual_bound_proved": false,
+    "actual_critical_covariance_evaluated": false,
+    "native_negative_source_compactness_assumed": false,
+    "Lindelof_assumed": false,
+    "cap_constants_numerically_evaluated": false,
+    "RH_proved": false,
+    "new_aperture": false,
+    "lean_certified": false
+  },
+  "standing": {
+    "original_aperture": "21/20",
+    "physical_margin": "1/(3*10^63)",
+    "Global": "paused NF71",
+    "Aperture": "paused",
+    "PreContactShadow": "paused"
+  }
+}

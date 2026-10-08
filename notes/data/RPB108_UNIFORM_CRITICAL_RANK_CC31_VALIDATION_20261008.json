@@ -1,0 +1,30 @@
+{
+  "stage": "CC31 cap-uniform critical rank and scalar residual reduction",
+  "all_passed": true,
+  "new_counts": {
+    "protected_complement": 108,
+    "critical_rank": 72,
+    "coherent_gram": 80,
+    "scalar_to_matrix": 96,
+    "unbounded_rank": 32
+  },
+  "new_exact_checks": 388,
+  "inherited_cc30_checks": 24987,
+  "total_exact_checks": 25375,
+  "analytic_result": "native Garding and positive source upper bound imply cap-uniform finite critical rank; scalar complete residual estimate implies collective modulus with rank factor",
+  "actual_scalar_residual_bound_proved": false,
+  "actual_critical_covariance_evaluated": false,
+  "negative_source_compactness_assumed": false,
+  "Lindelof_assumed": false,
+  "new_aperture": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "input_sha256": {
+    "scripts/validate_native_local_transverse_gate_cc30.py": "b1bc068e9e94cad8eed13f39d64e69ed90805adf59a21b6abe6ad961fb6ae6a9",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOG_SOURCE_ANALYSIS_20261003.md": "8a97099032b77dcdf1cdd8bf38c9d1eae0bedc6eaa3e41c4ac968d17e007e854",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SOURCE_SHELL_GAIN_20261008.md": "ae173553c9b18f6eb3ab6ca7b293344eed67b3ce94296495055ed244b0a0128c",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FORCED_SOURCE_CC20_20261008.md": "3774e215a03c78d76ae9c0e4ad434d0de301faff82568ab4ddf8541f2a01e695",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CRITICAL_FLUX_LIMIT_CC29_20261008.md": "5d7675c2868864e072124e7dc5e43eefdd53f47f1609bfe5c9f3b7d67595bd40"
+  },
+  "constructor_sha256": "4d0ef1ef37dd4a3becc70c7c6195863749ef2801a2fda120740e1af099bc7110"
+}
