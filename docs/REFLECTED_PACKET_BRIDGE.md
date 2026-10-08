@@ -3731,3 +3731,13 @@ The actual normalized pole operator is 2|cosh(x/2)><cosh(x/2)|-2|sinh(x/2)><sinh
 Project q_0=zv+q_perp using the complete positive-inverse metric, not canonical or physical strip geometry. Then ||M_t^-1/2 q||^2=||q_perp||_*^2+||v||_*^2|z+sigma a|^2. The arithmetic task requires both transverse suppression and longitudinal pole cancellation. A matching pole phase alone leaves transverse leakage; componentwise norms alone do not determine cancellation. The v=0 case retains the full q_0 norm without division.
 
 144 new exact dual metric/phase/transverse checks and 25,729 inherited checks pass, total25,873. This is a native rank/sign identity and a concrete correlation test, not certification of either defect-dependent term or actual zeta covariance. IP5's absolute small-step modulus is not converted into a fixed-step defect estimate. Positivity remains21/20 even0/odd0, margin1/(3*10^63); RH/F4, outward arithmetic suppression and Lean closure remain open.
+
+## CC36 — full positive-level test of parity pole correlation (2026-10-08)
+
+Coupled parent:eed85147c6ebf4cec20ebaa8ff06190470859f5a, preserving IP1-IP7. [Report](../notes/REFLECTED_PACKET_BRIDGE_108_SHIFTED_POLE_TEST_CC36_20261008.md); [definitions](TERMINOLOGY_RPB108_SHIFTED_POLE_TEST.md).
+
+For Q_mu=Q-mu||h||_2^2 the complete negative source adds sqrt(mu)i_t, while P and M_t remain fixed. The exact shifted remainder forcing is q_mu=q_0+sigma a v-mu w with w=(I-Pi)i_t*i_t h. The principal correction is still O_B(delta_mu), but the mass correction has only an absolute mu/c_B^2 norm bound. In the full positive inverse, both transverse forcing and longitudinal pole mismatch acquire the mass term. No projected mass rank claim or scalar mass replacement is made.
+
+Testing the shifted old equation by its normalized lift yields original Rayleigh defect Q(h)=delta_mu+mu||h||_2^2, not an original source eigenvalue. In the full positive-level control P=I,N=(9/25,12/25),mu=16/25, the mass outward term is zero and the forced numerator is unchanged. Nonetheless original whole incoming budget9/34 becomes shifted budget1 including the positive low complement; the shifted null is an original positive physical eigenmode. Thus even identical forced numerators cannot identify original and shifted reaction.
+
+99 new checks plus25,873 inherited pass, total25,972. This validates the retained full-mass control, not the missing mu=0 arithmetic suppression. IP7's finite native Schur matrix remains unevaluated; no new aperture is certified. Positivity stays21/20 even0/odd0, physical margin1/(3*10^63). RH/F4, retained attachment, original outward suppression, reusable continuation and Lean closure remain open.
