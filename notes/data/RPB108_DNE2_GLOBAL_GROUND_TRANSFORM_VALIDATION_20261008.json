@@ -1,0 +1,33 @@
+{
+  "stage": "DNE2",
+  "date": "2026-10-08 America/Los_Angeles",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "classification": "Analytic supported ground-state positivity-improving semigroup and full-domain Doob transform; model controls only",
+  "analytic_claims": [
+    "native pole-free symmetric form positivity preserving",
+    "strictly positive continuous off-diagonal jump implies semigroup irreducibility",
+    "ground eigenfunction positive almost everywhere",
+    "unitary weighted ground-state transform defined on full form domain",
+    "weighted semigroup conservative positivity improving Markov"
+  ],
+  "model_checks": {
+    "independent_integer_scaled_replay_passed": true,
+    "rational_assertions": 140,
+    "graph_site_weights": [
+      1,
+      4,
+      1
+    ],
+    "ground_eigenvalue": "-3/2",
+    "higher_even_zero": true,
+    "higher_odd_zero": true
+  },
+  "scope_exclusions": [
+    "full explicit weighted integral formula on every rough transformed eigenfunction not established",
+    "no quantitative original odd/even spectral gap certified",
+    "no actual zeta null excluded",
+    "no whole 53/50 sign",
+    "no RH proof",
+    "no Lean proof"
+  ]
+}
