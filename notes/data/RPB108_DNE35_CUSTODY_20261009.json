@@ -1,0 +1,91 @@
+{
+  "stage": "DNE35",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "parent": "75f212e021c28be1094bdcd5b13e084b7f9cb320",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE35_JOINT_SIGNED_SOURCE.md",
+      "bytes": 3012,
+      "stored_sha256": "8a6e0aba169fe38e448f3ad1b6914d1f27914d74d75099d0a09f13b9b498301a"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE35_JOINT_SIGNED_SOURCE_20261009.md",
+      "bytes": 9607,
+      "stored_sha256": "d5952f70041c7f67fb60eb251c0960d11433c5bf0ce6803514461e15ae23cc6e"
+    },
+    {
+      "path": "notes/data/RPB108_DNE35_EVEN_JOINT_SOURCE_20261009.json.gz.b64",
+      "bytes": 246829,
+      "stored_sha256": "2e159f895ba7de13be89116d90542cc396a59fc4d09214d459c929e18ee34250",
+      "decoded_sha256": "e302ee06312b93276369416cfa97a5fcf174330d16641cf5e14417b7f5fd11d5"
+    },
+    {
+      "path": "notes/data/RPB108_DNE35_EVEN_JOINT_SOURCE_REPLAY_20261009.json.gz.b64",
+      "bytes": 248145,
+      "stored_sha256": "47d75383edaf2c15e5270ae06e7ef5257e3120451dbd6e944ec280eb7c6c001b",
+      "decoded_sha256": "138b01a55aaee357e61e7be8c1b32762fec4afcab586f2067db7e0c567e121cf"
+    },
+    {
+      "path": "notes/data/RPB108_DNE35_EVEN_SIGNED_COMPARISON_20261009.json",
+      "bytes": 314826,
+      "stored_sha256": "19e0db6d3a466575ddb3833bad19ea04c9e361a3742a1aa98cd4276221a436d6"
+    },
+    {
+      "path": "notes/data/RPB108_DNE35_ODD_JOINT_SOURCE_20261009.json.gz.b64",
+      "bytes": 246441,
+      "stored_sha256": "dbfdb0034004266b4e90d6dc17142888820e36870fb4309d434d16c949eefed6",
+      "decoded_sha256": "0e619f452a13a48130ea565ee76cb9187451234febcdd71aa036f670ccd77029"
+    },
+    {
+      "path": "notes/data/RPB108_DNE35_ODD_JOINT_SOURCE_REPLAY_20261009.json.gz.b64",
+      "bytes": 247001,
+      "stored_sha256": "b4f130690fa6bbf340c5890c94055c0ab500a88476c07c3287fea41d6bb32f9e",
+      "decoded_sha256": "9fd56c0b3fb1af52234554574a9cf26aabf74701c43bd32dab2e87a08c89ad23"
+    },
+    {
+      "path": "notes/data/RPB108_DNE35_ODD_SIGNED_COMPARISON_20261009.json",
+      "bytes": 312407,
+      "stored_sha256": "c7e178929d0ca2675674e627a6c7a58a509732b9702a543feff387db54c3b136"
+    },
+    {
+      "path": "notes/data/RPB108_DNE35_SIGNED_SOURCE_VALIDATION_20261009.json",
+      "bytes": 12091,
+      "stored_sha256": "569e4b3340b8f4a217d4d0c31b5dffeff779cc85d3a1678f25f96d9d5983af4a"
+    },
+    {
+      "path": "scripts/certify_dne35_joint_source_Gram.py",
+      "bytes": 9001,
+      "stored_sha256": "fbc6c097fc658c64729043597186168d0c1ecb5b417924d2e0fb121ca2fb34e5"
+    },
+    {
+      "path": "scripts/certify_dne35_signed_comparison.py",
+      "bytes": 3180,
+      "stored_sha256": "d59e430c2765e85f6ec79b5409802542675042f536412784f0aced209e966f80"
+    },
+    {
+      "path": "scripts/materialize_dne35_joint_sources.py",
+      "bytes": 2589,
+      "stored_sha256": "ec8cf2b8751e7531771b18bea66112216108cb37169d808b014df9544c2116d1"
+    },
+    {
+      "path": "scripts/validate_dne35_signed_source.py",
+      "bytes": 9652,
+      "stored_sha256": "87e9cd7fa80646c14f9e974c744579b98746cc024e5167bbf97f236b5b3f0bb3"
+    }
+  ],
+  "joint_source_dimensions": [
+    12,
+    12
+  ],
+  "complete_joint_source_entries": 288,
+  "all_high_positive_retained_dimension": 24,
+  "remaining_uncovered_retained_dimension": 88,
+  "all_high_physical_gap_guard": "1/10000000000000000000000000000000000000",
+  "joint_signed_uniform_floor_comparisons_passed": true,
+  "true_high_inverse_evaluated": false,
+  "next_target": "expand the complete joint signed source comparison beyond eight remainder columns per parity",
+  "complete_remaining_source_Gram_certified": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
