@@ -1,0 +1,87 @@
+{
+  "milestone": "NF19",
+  "date": "2026-10-08 Pacific / 2026-10-09 UTC",
+  "aperture": "53/50",
+  "status": "PASS: complete actual native second exterior columns and exact collective two-mode response; full F112 inverse open",
+  "original_E112_raw_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+  "NF18_first_boundary_raw_sha256": "da5fe692dc0d3a0820ccaf68217628776f08718661696dddad54012f4f3841ee",
+  "NF19_second_boundary_raw_sha256": "0a8f4ebd0778fa5c90209b3021d22791bdb0d9b73e0f19df608e04ed9ba2bcad",
+  "NF19_second_boundary_gzip_sha256": "e36e603372f2d0c0bb9f8f4e1375678545b20e2c6ea3fce1f6b40e312ae4bf03",
+  "NF19_second_boundary_gzip_bytes": 99850,
+  "NF19_second_boundary_raw_bytes": 437393,
+  "new_second_boundary_modes": [
+    114,
+    115
+  ],
+  "new_complete_signed_entries": 116,
+  "complete_union_original_signed_entries": 3422,
+  "complete_signed_component_checks": 13688,
+  "matrix_center_grid_power": 75,
+  "full_58_by_58_operator_error_upper": "1175749527/10^75",
+  "strict_certified_even_collective_second_response": [
+    "302/1000",
+    "303/1000"
+  ],
+  "strict_certified_odd_collective_second_response": [
+    "275/1000",
+    "276/1000"
+  ],
+  "original_first_mode_CC53_even_upper": "204/1000",
+  "original_first_mode_CC53_odd_upper": "206/1000",
+  "strict_lower_on_new_second_mode_residual_collective_supremum": {
+    "even": "98/1000",
+    "odd": "69/1000"
+  },
+  "strict_all_low_direction_remaining_native_energy_fraction": {
+    "even": "697/1000",
+    "odd": "724/1000"
+  },
+  "exact_fraction_free_Bareiss_tests": {
+    "even_lower": {
+      "r": "302/1000",
+      "positive_leading_minors": 57,
+      "last_sign": -1
+    },
+    "even_upper": {
+      "r": "303/1000",
+      "positive_leading_minors": 58,
+      "last_sign": 1
+    },
+    "odd_lower": {
+      "r": "275/1000",
+      "positive_leading_minors": 57,
+      "last_sign": -1
+    },
+    "odd_upper": {
+      "r": "276/1000",
+      "positive_leading_minors": 58,
+      "last_sign": 1
+    }
+  },
+  "high_two_by_two_original_signed_diagonals_approx": {
+    "even_112": 3.4512117870899917,
+    "even_114": 3.5456784463729516,
+    "odd_113": 3.392897576041271,
+    "odd_115": 3.5169292688970204
+  },
+  "high_two_by_two_offdiag_approx": {
+    "even_112_114": 0.6368555341169805,
+    "odd_113_115": 0.4940064531796811
+  },
+  "high_precision_numerical_diagnostics_only": {
+    "even_R1": 0.20375480525709588,
+    "even_R2": 0.30296992833953584,
+    "even_residual_rank1": 0.13625423609723628,
+    "odd_R1": 0.20563526615665614,
+    "odd_R2": 0.2750443098915579,
+    "odd_residual_rank1": 0.11293322365669112
+  },
+  "producer": "scripts/certify_native_second_boundary_nf19_106.py",
+  "validator": "scripts/certify_native_second_collective_nf19_106.py",
+  "whole_F112_Riesz_response_certified": false,
+  "corrected_whole_even56_odd56_Schur": false,
+  "whole_original_aperture_1_06_positive": false,
+  "RH": false,
+  "F4": false,
+  "Lean": false
+}
