@@ -3944,3 +3944,14 @@ NF23 original COMPLETE e0/e1 source squares are recovered through612dd2696f8f9b4
 On the original canonical infinite restriction E2+F112, with E2=span(e0,e1), Young domination and A_low>1/25 imply Q(h)>=1/100||h||² at53/50. This includes EVERY high direction but excludes110 retained modes e2..e111; it is NOT whole-domain positivity. A complete null cannot lie entirely in this restriction. Three genuine crossing and three positive-level controls fail the newly certified leakage hypothesis and therefore do not contradict the restricted gap.
 
 Native full58-source and near-critical compensated correlations remain pending. Separate positive restrictions do not settle their mixed couplings. Whole-domain anchor21/20 unchanged; full target53/50 sign, cap-uniform old-gap-independent leakage, defect-relative critical frame, actual whole contact exclusion, RH/F4 and Lean open. Historical wording and paused fronts preserved.
+
+
+## CC63 — fixed rational near-critical trials and paid source projections (2026-10-09 UTC)
+
+[Definitions](TERMINOLOGY_RPB108_FIXED_TRIALS_CC63.md), [report](../notes/REFLECTED_PACKET_BRIDGE_108_FIXED_TRIALS_CC63_20261009.md), [exact certifier](../scripts/certify_native_fixed_trials_cc63.py), [trial vectors and certificate](../notes/data/RPB108_FIXED_TRIALS_CC63_CERTIFICATE_20261009.json), [custody](../notes/data/RPB108_FIXED_TRIALS_CC63_CUSTODY_20261009.json).
+
+Original NF18 retained seeds are extended by exact rational two-high corrections on denominator10^75. Their ORIGINAL signed trial energies lie in(8e-35,1e-34) even /(3e-31,4e-31) odd, with physical mass>4/5 and strict energy reduction. Every measured high-source coefficient has absolute value<1e-60, but exact Galerkin annihilation is NOT asserted. All56 retained source projection intervals per parity are enclosed on the10^-60 grid, giving midpoint projection L2 error<8e-60. All3 source archives are authenticated and13688 signed component checks pass.
+
+The complete residual remains r=P_F112 Lp, retaining both measured errors and all unmeasured high source coordinates. Its next directional gate ||r||²<kappa Q(p) suffices for positivity on the retained seed line+ALL F112, since the exact corrected energy is Q(p)-<r,C_full^-1 r>. This is a concrete original source input and error ledger, NOT an evaluated full residual or a collective56-dimensional certificate. Initial two-source lower estimates on the seeds are only.078/.361 ofkappa Q and do not settle the missing upper source norm.
+
+CC62 E2+F112 gap1/100 remains. The actual near-critical full source is now the load-bearing computation; no new source producer is duplicated. Whole positivity21/20, full target53/50 sign, cap-uniform leakage/defect-relative frame, actual contact exclusion, RH/F4 and Lean remain open. Historical wording and paused fronts preserved.

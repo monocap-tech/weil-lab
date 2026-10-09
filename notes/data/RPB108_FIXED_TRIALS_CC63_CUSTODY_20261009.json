@@ -1,0 +1,18 @@
+{
+  "milestone": "CC63",
+  "parent": "b0f1a9bf1f7d147b0e99dd4f36ee24c5add4e5ef",
+  "read_only_source_head": "612dd2696f8f9b423d1c898aaeda2b046fd93af0",
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_FIXED_TRIALS_CC63.md": "7e1ba7c33ef0e1522be878553cfc79b60058aca244dc4e62feceedf80de1c7f4",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FIXED_TRIALS_CC63_20261009.md": "e0d5bf4ccf6b80bad0fb6d10444cda1d21963c39352ae63844d7f8b40eb988ce",
+    "scripts/certify_native_fixed_trials_cc63.py": "b78828afd69be0e20641c395c18a4277b70490a92bb5d86dc3dae12cc4003d3e",
+    "notes/data/RPB108_FIXED_TRIALS_CC63_CERTIFICATE_20261009.json": "99e981134db82d55951c87ef007210224ea8e0ab93ec15e0d83f3b4f32e514bc"
+  },
+  "signed_component_checks": 13688,
+  "fixed_rational_trials": 2,
+  "retained_source_projection_intervals": 112,
+  "measured_annihilation_exact": false,
+  "full_residual_source_evaluated": false,
+  "whole_aperture_certified": false,
+  "history": "additive only"
+}
