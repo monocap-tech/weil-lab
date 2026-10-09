@@ -1,0 +1,16 @@
+{
+  "milestone": "CC57",
+  "parent": "39376d680a7bf1359fa41bf14c8bfda11bbf2fb1",
+  "read_only_source_head": "44b22630d0211b5204284407fe16e45a24151843",
+  "classification": "abstract inference control, not original Weil countermodel",
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_RESIDUAL_GRAPH_GAP_CC57.md": "5af8956c61b15d41b47a5da513d7da6aa60b282e1885f24991dba98f51cf437e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_RESIDUAL_GRAPH_GAP_CC57_20261009.md": "4f81bab9b6f9eb6ff75fca5a0fee73a55ad8862f649495bf9d8ef631c798d691",
+    "scripts/validate_native_residual_graph_gap_cc57.py": "0f01ee5ff53ab30c093411b5b23a4783ccd0e799310bb853e52ff5f68168ad6e",
+    "notes/data/RPB108_RESIDUAL_GRAPH_GAP_CC57_VALIDATION_20261009.json": "f493385ab5b0439e6430526c58914e41800541b62239b56a0bd973fa2e03cc5d"
+  },
+  "validation": "PASS",
+  "native_residual_Gram_evaluated": false,
+  "native_graph_instability_proved": false,
+  "historical_text_policy": "additive only"
+}
