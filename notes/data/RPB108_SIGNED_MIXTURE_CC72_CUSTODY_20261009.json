@@ -1,0 +1,28 @@
+{
+  "milestone": "CC72",
+  "status": "PASS",
+  "integration_parent": "ae03e419ef9b975ee219806873c755b4d3149982",
+  "read_only_source_head": "1b227864aa6398e59922fde470f371fb9b72dc11",
+  "unmodified_full_original_mixed_source_producer_replayed": true,
+  "complete_source_certificate_byte_identical": true,
+  "source_replay_sha256": "27819654bc8aa7f9e98f1ef8638c99f9afbcac07dabd2d6c079bfbfbde70e8c1",
+  "independent_unsquared_projection_replay_object_identical": true,
+  "independent_original_native_checks": 2,
+  "source_script_hashes_authenticated": true,
+  "exact_finite_response_mixture_gates": 2,
+  "exact_signed_selected_mixture_gates": 2,
+  "strict_score_improvement_checks": 2,
+  "retained_direction_modified": true,
+  "actual_critical_eigenvector_claimed": false,
+  "joint_actual_Schur_positive_certified": false,
+  "genuine_crossings": 3,
+  "near_critical_crossings": 3,
+  "positive_whole_mass_levels": 3,
+  "full_Weil_nonimplication_claimed": false,
+  "whole_aperture_positive": false,
+  "file_sha256": {
+    "scripts/certify_signed_mixture_cc72.py": "990e1ea98f5017c6fda36dd363090b16f825528de548ff8f1409cad2235a01de",
+    "notes/data/RPB108_NF28_SOURCE_INPUT_CC72_20261009.json": "27819654bc8aa7f9e98f1ef8638c99f9afbcac07dabd2d6c079bfbfbde70e8c1",
+    "notes/data/RPB108_SIGNED_MIXTURE_CC72_CERTIFICATE_20261009.json": "d2651a0cdaa7a424771fdc5a4c4d95e3e490a10d45d122000175233ca297af09"
+  }
+}
