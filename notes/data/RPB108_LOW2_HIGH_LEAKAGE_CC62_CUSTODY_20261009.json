@@ -1,0 +1,19 @@
+{
+  "milestone": "CC62",
+  "parent": "80d5aa898e4c962d0c23b14047bbdd12b2fb5c02",
+  "read_only_NF23_source_head": "612dd2696f8f9b423d1c898aaeda2b046fd93af0",
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_LOW2_HIGH_LEAKAGE_CC62.md": "439ae61f129b6a315de5c7b435791001ba36762ba63a42d47f2aae048e88a538",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LOW2_HIGH_LEAKAGE_CC62_20261009.md": "89f9d6aeed19dd070b1eb6b122d5a41a29db3e6b88858a00be5d661dc78e0203",
+    "scripts/certify_native_low2_high_leakage_cc62.py": "ac41d308755cf06d15363f6195e16feedfe947694116c49793d020602ab0c842",
+    "notes/data/RPB108_LOW2_HIGH_LEAKAGE_CC62_CERTIFICATE_20261009.json": "ebca74e6237cf401b7480afe08b91caba2c3412dc08e55ac2ac55f1970d8f788",
+    "notes/data/RPB108_NF23_SOURCE_INPUT_CC62_20261009.json": "134deb5db09b2bd720284c7f4e2a2fca5918982a307eb67267ecf3586e6810de",
+    "notes/data/RPB108_NF23_REPLAY_CC62_20261009.json": "b51543bc42d38b1b115d916b21092917d6ec0f7ad3763536192a4ee4234f87d9"
+  },
+  "original_native_E112_raw_SHA256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+  "unmodified_upstream_NF23_and_NF22_replayed": true,
+  "native_infinite_restriction_gap": "1/100 on E2+F112 at53/50",
+  "whole_target_aperture_certified": false,
+  "all_cap_frame": false,
+  "history": "additive only"
+}
