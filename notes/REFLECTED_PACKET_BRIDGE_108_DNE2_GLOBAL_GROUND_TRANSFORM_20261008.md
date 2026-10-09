@@ -20,7 +20,7 @@ If this semigroup were reducible, there would be a measurable E subset (-a,a) wi
 
     H_a(1_E f, 1_Ec f)=0.                           (1)
 
-Choose f=eta in C_c^infty(-a,a), eta(x)>0 on (-a,a) (a smooth positive interior bump vanishing rapidly at endpoints). Both projections are nonzero and disjoint. For these disjoint nonnegative supported form vectors, the local diagonal part contributes zero; the full native off-diagonal terms give a nonpositive mixed pairing, and the continuous term is strictly negative:
+Choose f=eta in D_a, with eta(x)>0 for every |x|<a: for example eta(x)=exp(-1/(a²-x²)) on |x|<a and zero elsewhere. This globally smooth, compactly supported function vanishes to infinite order at the endpoints and belongs to the supported form domain by interior-cutoff approximation. It is NOT an element of C_c^infty(-a,a) in the usual support-away-from-boundary sense. Both projections are nonzero and disjoint. For these disjoint nonnegative supported form vectors, the local diagonal part contributes zero; the full native off-diagonal terms give a nonpositive mixed pairing, and the continuous term is strictly negative:
 
     H_a(eta 1_E, eta 1_Ec)
       = - int_E int_Ec j(x-y)eta(x)eta(y)dxdy
