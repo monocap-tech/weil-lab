@@ -72,7 +72,7 @@ def run():
     check(weighted(G)==F(3))
     check(mass(odd)==F(2))
     check(weighted(G)/mass(odd)==F(3,2))
-    assert checks==1754
+    assert checks==1758
     return {
         "stage":"DNE4 global weighted jump domain algebra",
         "all_passed":True,
