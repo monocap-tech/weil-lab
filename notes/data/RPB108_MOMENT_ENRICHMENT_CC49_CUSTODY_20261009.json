@@ -1,0 +1,18 @@
+{
+  "stage": "CC49 exact moment-enriched split",
+  "publication_base": "b420910c5edcdccbe637edbfde83f487447d2254",
+  "integration_base": "88611389e831d808c2b7df11d6581d0beefb7303",
+  "dependencies": ["CC47", "CC48", "NF10", "NF16"],
+  "new_exact_control_checks": 19,
+  "historical_chain_replayed": false,
+  "aperture": "53/50",
+  "high_bound": "207/1000",
+  "high_bound_preserved_by_subspace": true,
+  "retained_dimensions_each_parity": 57,
+  "constrained_dimensions_each_parity": 56,
+  "native_enriched_gate_evaluated": false,
+  "whole_positive_anchor": "21/20",
+  "RH_proved": false,
+  "lean_certified": false,
+  "other_branches_modified": false
+}
