@@ -1,0 +1,18 @@
+{
+  "milestone": "CC79",
+  "integration_parent": "14dcfae9c91304f2fc8677586605f795f0d06c6e",
+  "read_only_source": "f353936b780a4d988ec242a647ab985404f5b69e",
+  "consumer_replay_byte_exact": true,
+  "all_four_inputs_hash_authenticated": true,
+  "PSD_reduced_packet_completions_verified": true,
+  "genuine_crossing_controls": 6,
+  "positive_physical_level_controls": 3,
+  "actual_arithmetic_join_rejected": false,
+  "whole_aperture_positive": false,
+  "file_sha256": {
+    "notes/data/RPB108_JOIN_CORRELATION_BUDGET_CC79_CERTIFICATE_20261009.json": "15c4ea4e9c1787bcbdf3b78b5efa2c6490566db5669655859c02bbf05d7b7329",
+    "scripts/certify_join_correlation_budget_cc79.py": "f1bf6ba165db75c2cdb9c39c14363897295b28cba75e699417afc86b665c1f5a",
+    "docs/TERMINOLOGY_RPB108_JOIN_CORRELATION_BUDGET_CC79.md": "9a5caa13431950f399afabc6228766c022747ad56a5515df911776d5d1b94c72",
+    "notes/REFLECTED_PACKET_BRIDGE_108_JOIN_CORRELATION_BUDGET_CC79_20261009.md": "a3704e605fdca1d59c56d1c24d26492eab751a8f0c8568c9fb7c533a7bd53789"
+  }
+}

@@ -4093,3 +4093,12 @@ Definitions: [CC78 physical probe restriction](TERMINOLOGY_RPB108_NEW_PROBE_FULL
 The new consumer pays exact retained and high-lift masses and the complete high response. It certifies an original physical gap >1.6476e-22 on U2=span(u32_even,u32_odd) plus the entire F112, independently of the old whole-domain gap. This excludes original null vectors with retained component in U2. The new restriction is separate from CC74's Z4+F112; same-parity crosses must be certified before reporting a six-direction restriction.
 
 [CC78 note](../notes/REFLECTED_PACKET_BRIDGE_108_NEW_PROBE_FULL_HIGH_CC78_20261009.md) records source replay, custody and the next border test c-b*A^-1b>0 for the complete three-by-three sufficient matrix per parity. A successful join would still leave the remaining 106 retained directions and collective coupling. Whole 53/50, full retained infinite-high sign, uniform all-cap leakage/frame, RH/F4/full transport/Lean remain open; the whole-domain 21/20 anchor and paused fronts remain unchanged.
+
+
+## CC79 — signed covariance budgets for the six-direction join (2026-10-09)
+
+Definitions: [CC79 join budgets](TERMINOLOGY_RPB108_JOIN_CORRELATION_BUDGET_CC79.md). The prior pair A and new diagonal c pass separately; the exact collective border condition is b*A^-1b<c, with b_i=n_i-g_i/kappa. Necessary source-covariance windows about kappa n_i have radius <4.888e-30 even seed, <1.287e-30 even response, <1.957e-26 odd seed and <6.807e-28 odd response. Their relative Cauchy-envelope widths are <.136, .860, .398 and .150.
+
+Exact PSD source-Gram completions preserve the reduced prior-block/new-diagonal packet while violating a necessary join window. This proves that named norm-and-diagonal summary cannot certify the join uniformly over its admissible completions; it does not reject the actual signed arithmetic join or imply nonimplication from complete Weil identities. Six genuine border crossings, including a near-critical scale, and three positive whole-mass levels pass exact checks.
+
+[CC79 note](../notes/REFLECTED_PACKET_BRIDGE_108_JOIN_CORRELATION_BUDGET_CC79_20261009.md) supplies the concrete signed-correlation acceptance target for NF35. The separate CC74 and CC78 full-high restrictions remain preserved; the simultaneous six-direction certificate, whole 53/50, full retained infinite-high sign, uniform all-cap leakage/frame and RH/F4/full transport/Lean remain open. The whole-domain 21/20 anchor and paused fronts are unchanged.
