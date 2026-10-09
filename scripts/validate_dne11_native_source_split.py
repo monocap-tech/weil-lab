@@ -73,12 +73,21 @@ def run():
     ck(550*106**600*10**41<19*125**600)
     ck(550*106**1000*10**68<19*125**1000)
     ck(2*a<F(3))
+    # Uniform pole-exponential polynomialization: degree 64 remainder.
+    epsilon_exp=F(2*2**65,3**65*factorial(65))
+    ck(epsilon_exp<F(1,10**100))
+    ck(4*a*(4*epsilon_exp+epsilon_exp**2)<F(3,10**99))
+    # Both analytic errors combined for the complete signed native source.
+    eps_arch=F(1,10**41)
+    eps_pole=F(1,10**100)
+    ck(2*a*eps_arch+4*a*(4*eps_pole+eps_pole**2)<F(3,10**41))
     # A0+2 CJ=-gamma_E-log(2pi), checked by formal coefficient arrays
     # basis order (gamma_E, pi, log2, logpi).
     a0=[F(-1),F(-1,2),F(-3),F(-1)]
     CJ=[F(0),F(1,4),F(1),F(0)]
     ck([a0[k]+2*CJ[k] for k in range(4)]==
        [F(-1),F(0),F(-1),F(-1)])
+    assert checks==111, checks
     return dict(stage="DNE11 native source polynomial-log action",
                 all_passed=True,exact_rational_assertions=checks,
                 q0_to_q3=[str(z) for z in q[:4]],
@@ -86,8 +95,9 @@ def run():
                 cap="53/50",
                 tail_N="600",
                 error_bound="delta_600 < 10^-41 (exact rational)",
-                full_source_operator_error="<3*10^-41 relative physical L2",
-                exact_prime_and_pole_rows_retained=True,
+                full_source_operator_error="<3*10^-41 relative physical L2 (with pole Taylor64)",
+                exact_prime_rows_retained=True,
+                signed_pole_rows_approximated_degree64_with_paid_error=True,
                 full_56_source_gram_interval_evaluated=False,
                 original_null_excluded=False,RH_proved=False,
                 lean_certified=False)
