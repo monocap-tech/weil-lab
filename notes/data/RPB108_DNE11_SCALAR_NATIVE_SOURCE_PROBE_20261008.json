@@ -21,7 +21,13 @@
     "polefree_source_squared_norm": "21.3558232586984912438802161921313499843487",
     "original_source_squared_norm": "0.0836618343819153569292728970478431281913861",
     "original_source_squared_residual_after_subtracting_only_E0": "0.0820496445102548671013803770691132486432394",
-    "polefree_source_squared_residual_after_subtracting_only_E0": "0.0850531042383815918662731056638579469704591"
+    "polefree_source_squared_residual_after_subtracting_only_E0": "0.0850531042383815918662731056638579469704591",
+    "arch_source_squared_norm": "7.08214407559017004438828870139529087832",
+    "prime_source_squared_norm": "4.249293916309067559603113709091163287",
+    "pole_source_squared_norm": "21.6787483639555729935136629249301962",
+    "prime_plus_pole_source_squared_norm": "7.244565981074304011645988500801099304",
+    "doubled_arch_source_times_prime_plus_pole_source_covariance": "-14.2430482222825586991050043051485470542",
+    "doubled_prime_source_times_pole_source_covariance": "-18.68347629919033654147078813322026018"
   },
   "independent_existing_source_comparison": "H00 and Q00 observations fall in the pinned CC40/NF12 rational intervals (sanity check, not rigorous quadrature certification)",
   "not_claimed": [
@@ -29,6 +35,19 @@
     "A certified physical high residual source norm on F112",
     "Rigorously enclosed quadrature or source-Gram eigenvalues",
     "DNE9 56-mode reflected-sign LMI",
-    "New original Weil positivity, RH, Lean"
+    "New original Weil positivity, RH, Lean",
+    "The full archimedean-versus-prime/pole source covariance is rigorously interval-enclosed"
+  ],
+  "read_only_nf21_comparison": {
+    "report": "https://github.com/monocap-tech/weil-lab/blob/research/rpb108-phase-geometry-localization/notes/REFLECTED_PACKET_BRIDGE_108_PHYSICAL_SOURCE_SQUARE_NF21_20261009.md",
+    "NF21_certified_prime_pole_e0_center_approx": "7.244565981074",
+    "numerical_probe_prime_pole_e0_approx": "7.244565981074304011645988500801099304",
+    "agreement": "matches NF21 independently interval-certified source-sector display to 12 decimals; probe itself NOT certified",
+    "NF21_exact_arch_cross_terms_computed": false,
+    "DNE11_arch_cross_term_rigorously_enclosed": false
+  },
+  "additional_probe_precision_digits": [
+    50,
+    55
   ]
 }
