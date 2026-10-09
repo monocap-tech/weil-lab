@@ -1,0 +1,51 @@
+{
+  "stage": "DNE26",
+  "parent": "103e2bb998790f0e2f30c591c9451996858561f0",
+  "write_branch": "research/rpb108-direct-null-exclusion",
+  "phase_read_only_head": "d84bc1079b44bb6d8d724945354c7334c29e6eaf",
+  "coupled_read_only_head": "dd93e5cc7d003d44cdc240c5710f4c253dc1346f",
+  "producer_sha256": "9f08f91cda53290950d9162da01a98615dfe6e22930ae35c55beb5e75427988a",
+  "validator_sha256": "ac6ace68a3a31b2bf66c8300e35fe20896c0e4452649a39db30d218dc8741eaa",
+  "certificate_sha256": "4317560e2e465841beec0dc44d314dad2c9e847a096a565059f0c593fef026b0",
+  "replay_certificate_sha256": "15a15f78a7586e4140e22c844fb402d146a52259d5a26515da7a0956ed4768e7",
+  "validation_sha256": "4025c1f551a60cfaa06fdaa6f1117a97898f38d2576776ac1f986b834a6968ac",
+  "imported_encoding_metadata": [
+    {
+      "file": "NF38_EVEN_INPUT.json",
+      "length": 184069,
+      "raw_sha256": "b6f7134f131dc2698868d676494d171e40340e81c453fb67d0e80520e082ce37",
+      "encoded_sha256": "c2e184dcdb1517fb112a464e17036554eba4fdaa84d9f9d28c58291ee969a3a6"
+    },
+    {
+      "file": "NF38_ODD_INPUT.json",
+      "length": 180465,
+      "raw_sha256": "d0dee22dd8803b9f9b2545650a3f0ada382e55d10a36c834bf3350288161aa8c",
+      "encoded_sha256": "19915ba8116f5affbd9f4407c834ce0d5c14320ae01f786d000e3760e8b259c2"
+    },
+    {
+      "file": "NF38_EVEN_TRIAL.json",
+      "length": 111333,
+      "raw_sha256": "05f3bcbc81e8d5f133fc5e49b61d80f8d1d4d6e65f1953d7dc65089b699ab5fd",
+      "encoded_sha256": "b57fde03a8e5cd7c44cad7923e6fda8f95c6a3b5419c2ee7c64d59f38b46613f"
+    },
+    {
+      "file": "NF38_ODD_TRIAL.json",
+      "length": 107917,
+      "raw_sha256": "3580ada8f259f02beeddedef5ab28e08cc96a2928c98cdc99390d337c54bad91",
+      "encoded_sha256": "e7f398aca494215bdb87f644eb6e91e033c504484a8f6f0861a3ad9aa48959d6"
+    }
+  ],
+  "primary_outer_assertions": 39,
+  "replay_outer_assertions": 39,
+  "independent_rational_checks": 432,
+  "source_packet_unchanged": true,
+  "selected_rational_map_unchanged": true,
+  "complete_source_producers_replayed": false,
+  "old_floor": "207/1000",
+  "available_original_high_floor": "11/25",
+  "new_positive_retained_directions": 0,
+  "uncovered_retained_dimension": 104,
+  "low_union_with_new_frame_certified": false,
+  "whole_aperture_positive": false,
+  "other_branches_written": false
+}

@@ -1,0 +1,31 @@
+{
+  "stage": "DNE26",
+  "status": "PASS",
+  "independent_rational_checks": 432,
+  "certificate_sha256": "4317560e2e465841beec0dc44d314dad2c9e847a096a565059f0c593fef026b0",
+  "higher_precision_gap_replay_not_weaker": true,
+  "flat_complete_mixed_energy_tests_passed": true,
+  "nonorthogonal_physical_high_completion_tests_passed": true,
+  "same_positive_original_matrix_old_floor_rejected_new_floor_passed": true,
+  "genuine_original_crossings": [
+    {
+      "original_high_diagonal": "1/5",
+      "retained_Schur_eigenvalue": "-1/4",
+      "actual_null": false
+    },
+    {
+      "original_high_diagonal": "1/4",
+      "retained_Schur_eigenvalue": "0",
+      "actual_null": true
+    },
+    {
+      "original_high_diagonal": "1/2",
+      "retained_Schur_eigenvalue": "1/2",
+      "actual_null": false
+    }
+  ],
+  "whole_mass_positive_level_controls_passed": true,
+  "controls_are_abstract_not_Weil_countermodels": true,
+  "complete_source_producers_replayed": false,
+  "whole_aperture_positive": false
+}
