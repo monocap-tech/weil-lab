@@ -143,3 +143,20 @@ A separate earlier e0 mpmath point quadrature returned ~0.0836618343819 for the 
 **DNE13:** Extend the source enclosure from the original constant-mode e0 to the first compensated NF19 pair `w=e0-C2^-1B*e0`, retaining the TRUE signed arch/prime/pole source before squaring. Build the 58-column compensated residual matrix P2 from the 56 source vectors and pay the errors in the low near-critical basis. The first checkpoint should evaluate a single actual near-critical EVEN witness direction and compare the physical-source upper bound to its retained `S2` energy. If the scalar physical criterion is inadequate, move to the genuine C-form-dual residual rather than falsely inferring a negative original Weil vector.
 
 No other branch was changed. Whole supported positivity remains internally certified to a=21/20; a=53/50 full sign, all-cap first-contact exclusion, F4, RH and Lean remain OPEN.
+
+
+## 7. Concurrent NF22 independent arch-source cross-check
+
+During DNE12 publication, Aperture independently advanced to [NF22 exact arch source-square certificate](https://github.com/monocap-tech/weil-lab/blob/research/rpb108-phase-geometry-localization/notes/data/RPB108_NF22_ARCH_SOURCE_LOW2_CERTIFICATE_20261009.json), reporting for the original normalized even e0
+
+    7.082144075590 < ||L_arch e0||² < 7.082144075591.
+
+This lies strictly inside DNE12's independent monotone-panel bound (7). NF22 explicitly classifies its complete original source-square diagnostic as NONCERTIFYING because its arch/prime and arch/pole cross terms are not rigorously enclosed. DNE12's full-source enclosure (6) is therefore complementary, not a duplicate of a certified NF22 whole-source result.
+
+Combining the sharper read-only NF22 arch interval, NF21/CC58's native prime-plus-pole interval (8), and DNE12's complete source-square interval (6), gives the tighter derived covariance
+
+    -14.244 < 2<L_arch e0,(L_prime+L_pole)e0> < -14.2415. (24)
+
+The new strict rational endpoints here follow by direct interval subtraction; no NF22 numerical *complete* source diagnostic is imported as evidence. The complete source (6) remains the direct DNE12 computational proof with its original 60,000 panels and analytically paid endpoint square.
+
+Contemporaneous Coupled CC59's correlated-high response analysis addresses a DIFFERENT full high Schur reaction and is not evidence for a DNE9 reflected-null LMI. All of NF22/CC59 remain read-only; only the DNE branch is modified.
