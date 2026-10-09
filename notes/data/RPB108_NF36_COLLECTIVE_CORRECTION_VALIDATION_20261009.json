@@ -1,0 +1,129 @@
+{
+  "milestone": "NF36",
+  "status": "PASS",
+  "parity_checks": [
+    {
+      "parity": "even",
+      "status": "JOINED_FLOOR_REJECTED",
+      "selected_tau": "51414523436942184533469544349826985720064577744639/100000000000000000000000000000000000000000000000000",
+      "fixed_trial_sha256": "2c02d0a5f89275c02d217df1b59a268a386f7ddd95d5ab6c3f590ebe5b2851a3",
+      "merged_mixed_target_and_rational_selection_checked": true,
+      "all_native_and_complete_source_response_payments_checked": true,
+      "full_candidate_matrices_replayed": true,
+      "independent_quadratic_and_LDL_checks": true,
+      "all_real_tau_floor_family_rejected": true,
+      "certificate_sha256": "af7409645c5d28e56799ab56dbd862d0ae8e3b126ce56713e61f69277bcb5b18"
+    },
+    {
+      "parity": "odd",
+      "status": "JOINED_FLOOR_REJECTED",
+      "selected_tau": "2624224031836856286173627345167870977302805708899/50000000000000000000000000000000000000000000000000",
+      "fixed_trial_sha256": "f8fc52d72276f43fd318ec929795bb88b55cb0a3c88c0ca572702362ce37f578",
+      "merged_mixed_target_and_rational_selection_checked": true,
+      "all_native_and_complete_source_response_payments_checked": true,
+      "full_candidate_matrices_replayed": true,
+      "independent_quadratic_and_LDL_checks": true,
+      "all_real_tau_floor_family_rejected": true,
+      "certificate_sha256": "50e2cfa384d599daf3ea82d6602b0c1a84e3a86bbe738fb2e80b93177f25573f"
+    }
+  ],
+  "exact_joined_crossing_controls": [
+    {
+      "scale": "1",
+      "positive_floor_diagonals": true,
+      "condensed_floor_margin": "-1/100",
+      "floor_determinant": "-3/400",
+      "exact_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    },
+    {
+      "scale": "1",
+      "positive_floor_diagonals": true,
+      "condensed_floor_margin": "0",
+      "floor_determinant": "0",
+      "exact_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    },
+    {
+      "scale": "1",
+      "positive_floor_diagonals": true,
+      "condensed_floor_margin": "1/100",
+      "floor_determinant": "3/400",
+      "exact_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "positive_floor_diagonals": true,
+      "condensed_floor_margin": "-1/100000000000000000000",
+      "floor_determinant": "-3/400000000000000000000000000000000000000000000000000000000",
+      "exact_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "positive_floor_diagonals": true,
+      "condensed_floor_margin": "0",
+      "floor_determinant": "0",
+      "exact_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "positive_floor_diagonals": true,
+      "condensed_floor_margin": "1/100000000000000000000",
+      "floor_determinant": "3/400000000000000000000000000000000000000000000000000000000",
+      "exact_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    }
+  ],
+  "positive_full_mass_shift_controls": [
+    {
+      "full_physical_mass_shift": "1/1000",
+      "exact_ground_level": "1/1000",
+      "null_vector": [
+        "-1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "full_physical_mass_shift": "1/10",
+      "exact_ground_level": "1/10",
+      "null_vector": [
+        "-1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "full_physical_mass_shift": "2",
+      "exact_ground_level": "2",
+      "null_vector": [
+        "-1/2",
+        "1/2",
+        "1"
+      ]
+    }
+  ],
+  "exact_concave_peak_crossing_controls": [
+    {
+      "peak": "1",
+      "exact_all_real_margin_maximum": "-1/100",
+      "positive_diagonals": true
+    },
+    {
+      "peak": "1",
+      "exact_all_real_margin_maximum": "0",
+      "positive_diagonals": true
+    },
+    {
+      "peak": "1",
+      "exact_all_real_margin_maximum": "1/100",
+      "positive_diagonals": true
+    }
+  ],
+  "joined_retained_dimension_certified": 4,
+  "six_retained_direction_plus_all_F_certified": false,
+  "whole_aperture_positive": false
+}
