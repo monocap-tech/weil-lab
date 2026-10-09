@@ -1,0 +1,45 @@
+{
+  "milestone": "CC75",
+  "integration_parent": "9ed50ac8b568cb9c5a986abd6d6a3a28aac3c9ed",
+  "source_NF32": "a2e155a631a3a719c2f53ab629c501d0fe105747",
+  "unmodified_full_source_replays": [
+    {
+      "replay": "nf32_even_replay_cc75.json",
+      "source_input": "RPB108_NF32_SOURCE_CC75_EVEN_REMAINING_SOURCE_CERTIFICATE_20261009.json",
+      "byte_equal": true,
+      "sha256": "316ea81720e0992699ee8a37c5cc48b1170d811ef6d88bbdf19d46d03860c7a9"
+    },
+    {
+      "replay": "nf32_odd_replay_cc75.json",
+      "source_input": "RPB108_NF32_SOURCE_CC75_ODD_REMAINING_SOURCE_CERTIFICATE_20261009.json",
+      "byte_equal": true,
+      "sha256": "96a4f1448b0aa0d347ce79345e222d260c70af22cc86e7cd998626883e6fdb90"
+    },
+    {
+      "replay": "nf32_validation_replay_cc75.json",
+      "source_input": "RPB108_NF32_SOURCE_CC75_REMAINING_SOURCE_VALIDATION_20261009.json",
+      "byte_equal": true,
+      "sha256": "0d2f746705d1e8789b93ff812ff31ac15f0c086282f7c4d6273e42f7845756a4"
+    }
+  ],
+  "original_imports_unchanged": true,
+  "syntax_compilation_passed": true,
+  "exact_credit_crossing_and_positive_level_controls_passed": true,
+  "source_branch_modified": false,
+  "whole_aperture_positive": false,
+  "full_Weil_nonimplication_claimed": false,
+  "file_sha256": {
+    "docs/TERMINOLOGY_RPB108_REMAINING_SOURCE_PROBE_NF32.md": "1ba13bf1486191c52ab76d284ea3ff14188c3e413e194163f143fe7fa81e118d",
+    "notes/REFLECTED_PACKET_BRIDGE_108_REMAINING_SOURCE_PROBES_NF32_20261009.md": "3f559c020560ed2c9e16d9311b29acd240cb59df5e1f12560eeb98a0fc080402",
+    "notes/data/RPB108_NF32_SOURCE_CC75_EVEN_REMAINING_SOURCE_CERTIFICATE_20261009.json": "316ea81720e0992699ee8a37c5cc48b1170d811ef6d88bbdf19d46d03860c7a9",
+    "notes/data/RPB108_NF32_SOURCE_CC75_FIXED_REMAINING_SOURCE_PROBES_20261009.json": "7e94e46f1f14d8991d44bf1d54b6886f4b7da50a52a0e9ddf6e3c786fb0c3ccc",
+    "notes/data/RPB108_NF32_SOURCE_CC75_ODD_REMAINING_SOURCE_CERTIFICATE_20261009.json": "96a4f1448b0aa0d347ce79345e222d260c70af22cc86e7cd998626883e6fdb90",
+    "notes/data/RPB108_NF32_SOURCE_CC75_REMAINING_SOURCE_VALIDATION_20261009.json": "0d2f746705d1e8789b93ff812ff31ac15f0c086282f7c4d6273e42f7845756a4",
+    "scripts/certify_native_remaining_source_probe_nf32_106.py": "4c9d3e291aedd4ffbe3b871fbff99600a33a0ac515225901afd9d2468f2b35c2",
+    "scripts/validate_native_remaining_source_probe_nf32_106.py": "61669c80f8933a1fc43cb7f3e8405c832047e05d40dd64cc591bb46dc991b1fe",
+    "scripts/certify_collective_credit_cc75.py": "de68cc85a11c74ec20310d876106f3f3675dd10dce66e5550cc5663246d32d81",
+    "docs/TERMINOLOGY_RPB108_COLLECTIVE_CREDIT_CC75.md": "da78b9fa66d412cac71dd2c5275272d8b20748ece1389789e6a0562adb1f8a17",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COLLECTIVE_CREDIT_CC75_20261009.md": "d988d82eb9a7bd10b7fbb8c80d3253de2caac84e13b68ce6a28662ac20b49cb0",
+    "notes/data/RPB108_COLLECTIVE_CREDIT_CC75_CERTIFICATE_20261009.json": "e943adaf2bc1b7b75df578e65f882b92e507ef88bc8ddaac009ec5a2968984c3"
+  }
+}
