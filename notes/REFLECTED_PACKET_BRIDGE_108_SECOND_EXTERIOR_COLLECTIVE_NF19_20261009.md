@@ -142,3 +142,62 @@ CC53 already certified the first full collective high column, so NF19 deliberate
 **NF20 should cease merely adding two Legendre modes once a source-aligned infinite residual majorant is available.** The useful next task is to construct the ACTUAL original mixed source/action operator or quantitative tail majorant of its form-dual residual after these two high modes, including all prime translation-panel cuts, endpoint archimedean kernel and signed poles. Bound the residual Gram in the A-energy norm relative to the remaining .697/.724 fractions, or show rigorously that the chosen estimator cannot accomplish this. Adding further finite high modes is mathematically useful only as a controlled partial-sum convergence test toward the full inverse—not as a replacement for the limit and error bound.
 
 **Standing:** At a=53/50 finite E112 and infinite physical F112 both positive, first TWO exterior corrected native gates positive with actual collective response ~30.3% even/~27.5% odd. Complete F112 inverse residual remains OPEN. The highest internally certified WHOLE original supported aperture remains a=21/20 (CC18). Global/F4, RH, old-gap-independent arithmetic frame, non-stalling and Lean closure remain open.
+
+
+## 6. Independent exact three-dimensional low-energy invisibility result
+
+As a new direct test against the lower-frame extrapolation exposed by CC54, NF19 reconstructed the first **three** low native eigendirections in each E112 parity block as numerical CANDIDATES, rounded the candidates to exact rational 56-vectors (denominator 10^60), and then independently certified their three-dimensional source Rayleigh bound using ONLY the full signed original NF17 E112 archive.
+
+Write V3,p for the resulting three-dimensional rational span, M3,p for its EXACT physical mass Gram, and Q3,p for its rigorously outward-enclosed full original native signed Gram. The [pure Fraction three-space validator](../scripts/certify_native_two_mode_invisible_nf19_106.py) proves positive exact pivots for
+
+\[
+\varepsilon_p M_{3,p}-Q_{3,p}-(\varepsilon_p/10)I>0,
+\]
+
+after paying all source interval errors. Here eps_e=10^-20 and eps_o=10^-17. The paid whole three-by-three symmetric native-interval error is <6.013e-68 in both parity computations, negligible compared with the separate rational shifts 10^-21 and 10^-18. **All three exact positive pivots pass in each parity**.
+
+Therefore
+
+\[
+\boxed{
+0<Q_a(z_e,z_e)<10^{-20}\|z_e\|_2^2
+\quad (0\ne z_e\in V_{3,e}),}
+\]
+\[
+\boxed{
+0<Q_a(z_o,z_o)<10^{-17}\|z_o\|_2^2
+\quad (0\ne z_o\in V_{3,o}).}
+\tag{NF19.6}
+\]
+
+Strict lower positivity is inherited from the ORIGINAL full E112 native NF17 certificate, not a fabricated zero-level equation. The positive inequality in (NF19.6) also proves the rational trial triples really are linearly independent.
+
+Now the two COMPLETE original source pairings with the measured exterior high modes define exactly TWO linear functionals on EACH three-dimensional V3,p:
+
+\[
+x\mapsto (Q_a(x,e_{112}),Q_a(x,e_{114}))
+\quad\text{or}\quad
+x\mapsto (Q_a(x,e_{113}),Q_a(x,e_{115})).
+\]
+
+Their common kernel on V3,p has dimension at least one by rank-nullity, independent of the numerical values of those pairings. Hence actual nonzero original retained directions z_e,z_o exist such that
+
+\[
+\boxed{
+Q_a(z_e,e_{112})=Q_a(z_e,e_{114})=0,\qquad
+0<Q_a(z_e,z_e)<10^{-20}\|z_e\|_2^2,
+}
+\]
+\[
+\boxed{
+Q_a(z_o,e_{113})=Q_a(z_o,e_{115})=0,\qquad
+0<Q_a(z_o,z_o)<10^{-17}\|z_o\|_2^2.
+}
+\tag{NF19.7}
+\]
+
+This strengthens CC54's first-mode-invisible source observation by proving that **the first TWO measured actual high modes still have a common kernel intersecting a genuinely low-energy original retained subspace**. The individual corrected kernel-vector coefficients are not produced or claimed certified; their exact existence is a consequence of the rigorously positive three-dimensional Ritz source Gram and finite rank. This is not a genuine Weil null, and the vectors can still couple to ALL OTHER unmeasured F112 modes.
+
+The three-space [reproducible candidate generator](../scripts/build_native_low3_seeds_nf19_106.py) uses mpmath only to propose exact rational vectors. Its output source seeds (SHA256 \`2dca6436bf41d27f906ec02d0f2728b5da63919757136ec6fe5a0aef6b59ee48\`) are attached to the conversation, and the exact validator consumes them without any floating eigensign. The complete native original source archive E112 SHA is unchanged. The [updated NF19 manifest](data/RPB108_NF19_COLLECTIVE_SECOND_EXTERIOR_106_CERTIFICATE_20261009.json) records both strict source Gram certificates and the rank conclusion.
+
+**Implication for NF20:** The first two collective upper reaction bounds supply genuine positive two-mode corrected gates, but do NOT constitute a *source lower frame* even on these actual low-energy spaces. What remains is a collective estimate for the original full F112 residual source response, potentially requiring substantially more than any fixed finite number of exterior coordinates. A source-aligned form-dual tail estimate, or a structural completeness proof with a quantitative convergence rate strong enough to preserve the remaining native Schur margin, is the relevant next objective. The result neither solves nor disproves RH.
