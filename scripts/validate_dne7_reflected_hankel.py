@@ -57,6 +57,7 @@ def run():
                 ck(C<=-F(2,9)*norm)
             else:
                 ck(C>=F(4,9)*norm)
+    assert checks==262, checks
     return dict(stage="DNE7 reflected arithmetic Hankel controls",
                 all_passed=True,exact_fraction_checks=checks,
                 cap="53/50",interval_halfwidth="1/100",
