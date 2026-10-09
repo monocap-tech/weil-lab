@@ -100,6 +100,27 @@ def certify(e112,first,second):
           second_mode_residual_operator_supremum_strict_lower=str(lower-previous_upper),
           all_direction_remaining_fraction_strict_lower=str(1-upper),
           verified_Bareiss_signs=tests))
+
+    # Exact abstract hidden-response controls. They preserve response
+    # brackets and high positivity, but are NOT original zeta sources.
+    controls=[]
+    for name,b1,b2,lo,hi in [
+            ('even',F(4514,10000),F(3150,10000),F(302,1000),F(303,1000)),
+            ('odd',F(4535,10000),F(2634,10000),F(275,1000),F(276,1000))]:
+        r2=b1*b1+b2*b2
+        assert lo<r2<hi
+        remainder=1-r2;checks=[]
+        for f in (F(1,2),F(1),F(2)):
+            high3=remainder/f
+            assert high3>F(207,1000)
+            schur=1-r2-remainder*remainder/high3
+            assert (schur>0 if f<1 else schur==0 if f==1 else schur<0)
+            checks.append(dict(hidden_response_factor=str(f),
+                               high_diagonal=str(high3),
+                               final_signed_sign='positive' if schur>0 else
+                                   'zero' if schur==0 else 'negative'))
+        controls.append(dict(parity=name,first_two_model_reaction=str(r2),
+                             crossing_cases=checks))
     return dict(status='PASS',milestone='NF19',aperture='53/50',
        original_E112_sha256=OLD_SHA,first_boundary_sha256=FIRST_SHA,
        second_boundary_sha256=SECOND_SHA,complete_signed_native_entries=3422,
@@ -107,6 +128,7 @@ def certify(e112,first,second):
        maximum_source_entry_error=str(error),
        paid_58_by_58_operator_error=str(F(eps_units,GRID)),
        exact_large_integer_sign_tests=4,
+       abstract_genuine_crossing_controls=controls,
        parity_collective_certificates=results,
        true_infinite_F112_inverse_evaluated=False,
        corrected_whole_domain_Schur=False,whole_original_aperture_positive=False,
