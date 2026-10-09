@@ -1,0 +1,18 @@
+{
+  "milestone": "CC61",
+  "parent": "387b1f49fb04f75a69b9000d6e5f5944a5eafe96",
+  "read_only_source_head": "1261995ecc9ce80351ab3cfbaf802929444fe92e",
+  "classification": "exact same-source partial-data insufficiency control, not original Weil countermodel",
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_SAME_SOURCE_COMPLETION_CC61.md": "7ed20b8a905a65260157bce8e8bde8f15608d3ae11249258f5a034159c09f564",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SAME_SOURCE_COMPLETION_CC61_20261009.md": "09d084379a124ddc2c044e01a2299800a23c88dd77b2836b8038704e3640bc64",
+    "scripts/validate_same_source_completion_cc61.py": "b086ce71e896b1c5048eb15037933883b49ab5f5f9cac06b7f77691e79fc5cd2",
+    "notes/data/RPB108_SAME_SOURCE_COMPLETION_CC61_VALIDATION_20261009.json": "3b7a669eab2e75c123dd60956c62f5804e560da3d13b81aeddc938441cb6dc33"
+  },
+  "dependency": "scripts/validate_correlated_high_floor_cc59.py at parent revision",
+  "validation": "PASS",
+  "native_source_residual_computed": false,
+  "complete_Weil_identity_nonimplication_proved": false,
+  "all_cap_frame": false,
+  "history": "additive only"
+}

@@ -1,0 +1,140 @@
+{
+  "status": "PASS",
+  "milestone": "CC61",
+  "classification": "abstract partial-data insufficiency control, not Weil countermodel",
+  "observed_carrier_dimensions": [
+    3,
+    2
+  ],
+  "unmeasured_dimension": 3,
+  "same_source_completion_cases": [
+    {
+      "unmeasured_blind_high_diagonal": "207/1000",
+      "complete_Schur_blind": "-172/207",
+      "sign": "negative",
+      "same_physical_source_columns": true,
+      "same_complete_finite_source_Gram": true,
+      "same_exact_high_floor": true,
+      "correlated_majorant_blind": "1000/207",
+      "correlated_gate_cannot_certify": true
+    },
+    {
+      "unmeasured_blind_high_diagonal": "1/4",
+      "complete_Schur_blind": "0",
+      "sign": "null",
+      "same_physical_source_columns": true,
+      "same_complete_finite_source_Gram": true,
+      "same_exact_high_floor": true,
+      "correlated_majorant_blind": "1000/207",
+      "correlated_gate_cannot_certify": true
+    },
+    {
+      "unmeasured_blind_high_diagonal": "1",
+      "complete_Schur_blind": "3",
+      "sign": "positive",
+      "same_physical_source_columns": true,
+      "same_complete_finite_source_Gram": true,
+      "same_exact_high_floor": true,
+      "correlated_majorant_blind": "1000/207",
+      "correlated_gate_cannot_certify": true
+    }
+  ],
+  "fixed_complete_source_Gram": [
+    [
+      "17",
+      "0",
+      "0",
+      "3",
+      "0"
+    ],
+    [
+      "0",
+      "17",
+      "0",
+      "0",
+      "3"
+    ],
+    [
+      "0",
+      "0",
+      "17",
+      "0",
+      "0"
+    ],
+    [
+      "3",
+      "0",
+      "0",
+      "18",
+      "0"
+    ],
+    [
+      "0",
+      "3",
+      "0",
+      "0",
+      "18"
+    ]
+  ],
+  "fixed_native_form": [
+    [
+      "4",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "4",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "4",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "0",
+      "3",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "0",
+      "0",
+      "3"
+    ]
+  ],
+  "full_observed_source_frame_lower": "9 I",
+  "compensated_source_Gram": "I_3",
+  "positive_ground_levels": [
+    {
+      "positive_ground_level": "1/10000000000000000000000000000000000000000",
+      "whole_physical_shift_exact_null": true,
+      "retained_only_shift_not_null": true
+    },
+    {
+      "positive_ground_level": "1/100",
+      "whole_physical_shift_exact_null": true,
+      "retained_only_shift_not_null": true
+    },
+    {
+      "positive_ground_level": "1/20",
+      "whole_physical_shift_exact_null": true,
+      "retained_only_shift_not_null": true
+    }
+  ],
+  "native_Weil_Gram_evaluated": false,
+  "complete_Weil_identity_nonimplication_proved": false,
+  "all_cap_frame": false,
+  "RH": false,
+  "Lean": false
+}
