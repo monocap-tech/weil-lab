@@ -1,0 +1,62 @@
+{
+  "milestone": "NF18",
+  "date": "2026-10-08 Pacific / 2026-10-09 UTC",
+  "classification": "actual complete native E112-to-first-two-F112 finite mixed columns and strict directional one-mode Schur reaction; full F112 inverse open",
+  "aperture": "53/50",
+  "original_E112_source_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+  "boundary_source_uncompressed_sha256": "da5fe692dc0d3a0820ccaf68217628776f08718661696dddad54012f4f3841ee",
+  "boundary_source_gzip_sha256": "179cd1523facfbb635d2ad4eac88ab4c1a0594362da20697405d2bfd8e1d407f",
+  "boundary_source_gzip_size": 97994,
+  "rational_witness_sha256": "b3e23133db4562c1b28816e922f9c085899818399dcfcee74a323b4f6da10d5c",
+  "rational_witness_denominator": "10^55",
+  "mixed_columns": [
+    112,
+    113
+  ],
+  "new_full_original_native_entries": 114,
+  "contributions": [
+    "full original archimedean",
+    "all 2,3,4,5,7,8 prime powers both translations",
+    "both signed Hermitian poles"
+  ],
+  "direct_mixed_lower_examples": {
+    "Q(e110,e112)": ">2/5",
+    "display": 0.5678842672220543,
+    "Q(e111,e113)": ">1/2"
+  },
+  "actual_F112_physical_lower": "207/1000",
+  "full_mixed_operator_physical_norm_lower": ">1/2",
+  "crude_absolute_source_norm_sufficient_gate": "||B||²< (207/1000)*(9/10^39) is incompatible with the observed mixed entry >1/2; this rejects this sufficient criterion only",
+  "nearcritical_rational_trial_results": [
+    {
+      "parity": "even",
+      "old_E112_Rayleigh_display": 9.306557317794064e-35,
+      "mixed_with_e112_display": -1.1177269019416123e-18,
+      "e112_diagonal_display": 3.4512117870899917,
+      "one_mode_reaction_display": 3.619926867418926e-37,
+      "certified_reaction_ratio_strict": "3/1000 < r < 4/1000",
+      "two_plane_remainder_positive": true
+    },
+    {
+      "parity": "odd",
+      "old_E112_Rayleigh_display": 3.3919779513871397e-31,
+      "mixed_with_e113_display": 1.3580652227014836e-16,
+      "e113_diagonal_display": 3.392897576041271,
+      "one_mode_reaction_display": 5.4358880802501296e-33,
+      "certified_reaction_ratio_strict": "16/1000 < r < 17/1000",
+      "two_plane_remainder_positive": true
+    }
+  ],
+  "full_E112_native_positive": true,
+  "complete_E112_to_F112_mixed_source_Gram": false,
+  "complete_F112_inverse_response": false,
+  "corrected_original_even56_odd56_Schur": false,
+  "whole_aperture_1_06_positive": false,
+  "global_RH_F4": false,
+  "Lean_certified": false,
+  "producer": "scripts/certify_native_boundary_columns_nf18_106.py",
+  "witness_generator": "scripts/build_native_critical_witness_nf18_106.py",
+  "validator": "scripts/validate_native_boundary_reaction_nf18_106.py",
+  "source_archive_attachment": "/mnt/data/nf18/native_boundary_columns_112_113.json.gz",
+  "witness_attachment": "/mnt/data/nf18/critical_rational_witnesses.json"
+}
