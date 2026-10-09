@@ -4165,3 +4165,14 @@ The even matrix remains indefinite, with condensed margin [-8.67466e-23,-8.15099
 - [CC87 note](../notes/REFLECTED_PACKET_BRIDGE_108_ODD_PACKET_PASS_CC87_20261009.md)
 - [Validator](../scripts/certify_cc87_seven_source_consumer.py)
 - [Consumer results](../notes/data/RPB108_CC87_SEVEN_SOURCE_CONSUMER_20261009.json)
+
+
+## CC88 — correlated seventh response recovered (2026-10-09)
+
+Definitions: [CC88 correlated response](TERMINOLOGY_RPB108_CORRELATED_RESPONSE_CC88.md). From immutable NF45 paid moments, direct block-Woodbury evaluation certifies a positive even seventh-source response at the exact NF44 witness: [1.76505e-25,2.06746e-25]. This refines NF45's historical sign-straddling subtraction interval without changing any original polynomial or source integration. Exact cancellation N=GH/kappa-QH and the correlated outer-product update preserve the common six-column inverse. A rational midpoint inverse with verified Neumann residual supplies a new independent inverse enclosure. Response interval widths shrink by >324 times even and >76 times odd.
+
+Intersected full-matrix intervals keep the even condensed margin negative, [-8.67104e-23,-8.15441e-23], and the odd positive, [4.44738e-22,4.60934e-22]. Selection remains on NF45's updated even witness. The inherited floor, background transport, simultaneous six-direction sign and collective remainder remain open; whole-domain positivity anchor is 21/20. Native source integration, new sources, whole 53/50, all-cap, RH/F4 and Lean closure are not claimed.
+
+- [CC88 note](../notes/REFLECTED_PACKET_BRIDGE_108_CORRELATED_RESPONSE_CC88_20261009.md)
+- [Validator](../scripts/certify_cc88_correlated_seventh_response.py)
+- [Direct interval results](../notes/data/RPB108_CC88_CORRELATED_SEVENTH_RESPONSE_20261009.json)
