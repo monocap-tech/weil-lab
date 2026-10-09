@@ -1,0 +1,48 @@
+{
+  "milestone": "CC77",
+  "integration_parent": "938913512b851edfe14eb41fec23b5a7c472351c",
+  "read_only_NF33": "6aea8f9a887db70fc56bfa6de6af691d9a8997f6",
+  "original_full_source_and_validator_replays": [
+    {
+      "replay": "nf33_even_replay_cc77.json",
+      "published_source": "RPB108_NF33_SOURCE_CC77_EVEN_LIFTED_PROBE_CERTIFICATE_20261009.json",
+      "byte_equal": true,
+      "sha256": "9bdf992dda4aca110f2c776183ce9e6f614623fdc373389485cf25e06711a9dd"
+    },
+    {
+      "replay": "nf33_odd_replay_cc77.json",
+      "published_source": "RPB108_NF33_SOURCE_CC77_ODD_LIFTED_PROBE_CERTIFICATE_20261009.json",
+      "byte_equal": true,
+      "sha256": "ce8c97c61db0ade92d2b10d2bed56775eb07d0bb66ae956654c94716a4febac5"
+    },
+    {
+      "replay": "nf33_validation_replay_cc77.json",
+      "published_source": "RPB108_NF33_SOURCE_CC77_SHARED_REMAINING_LIFT_VALIDATION_20261009.json",
+      "byte_equal": true,
+      "sha256": "e4b687464c42c4d498c78c8b9d640b5b8767cd607cf2de05e1af6d8e86278fdd"
+    }
+  ],
+  "original_imports_unchanged": true,
+  "CC76_frozen_floor_estimator_rejected_both_parities": true,
+  "outside_selected_shell_fraction_strict_lower": "1-10^-113",
+  "arbitrary_H2_retuning_rejected": false,
+  "actual_negative_vector_claimed": false,
+  "whole_aperture_positive": false,
+  "file_sha256": {
+    "docs/TERMINOLOGY_RPB108_SHARED_REMAINING_LIFT_NF33.md": "9e0c9eb1d22bb6641d51baa95287db93cd56ecc3d42b40a5db735f35953fb925",
+    "notes/REFLECTED_PACKET_BRIDGE_108_SHARED_REMAINING_LIFT_NF33_20261009.md": "bef7b9e7bdcaa9a5ac37b462948bb4a36c40698d6fc2a76c4a59d30de1b0cc2d",
+    "scripts/certify_native_shared_remaining_lift_nf33_106.py": "14fd78cff632ed3fe514b008a3af0f0da367ed283595fb7e8b890fc0d3edda92",
+    "scripts/validate_native_shared_remaining_lift_nf33_106.py": "b8bfa5139ec0e33a35b90b28c0672a46d619eeda97ce5eca5bdb3d25fb354624",
+    "scripts/certify_lift_rejection_transfer_cc77.py": "8ef38ad5ef934c3b10bf01235d878fefaaa270405ec6edd4efa7ec8f89922085",
+    "docs/TERMINOLOGY_RPB108_LIFT_REJECTION_TRANSFER_CC77.md": "a3b1ba91327cd209d8669d7f11b824a039a2ffa0d8d818fd3fc0584ce6ce02cb",
+    "notes/REFLECTED_PACKET_BRIDGE_108_LIFT_REJECTION_TRANSFER_CC77_20261009.md": "5c8e897dc97d78d688a76e7ac966a3cb2771afede366f7b85b1261077cdc39b0",
+    "notes/data/RPB108_LIFT_REJECTION_TRANSFER_CC77_CERTIFICATE_20261009.json": "79b0ca84e6b47688116e516940231ef416515a02dc3b902ee555d12efd79609f",
+    "notes/data/RPB108_NF33_SOURCE_CC77_FIXED_SHARED_REMAINING_LIFT_20261009.json": "89683af32013c4bfc3ed3bd66d90ff889131a4ccdd03dd769523a7dfbbcd9cff",
+    "notes/data/RPB108_NF33_SOURCE_CC77_ODD_LIFTED_PROBE_CERTIFICATE_20261009.json": "ce8c97c61db0ade92d2b10d2bed56775eb07d0bb66ae956654c94716a4febac5",
+    "notes/data/RPB108_NF33_SOURCE_CC77_EVEN_LIFTED_PROBE_CERTIFICATE_20261009.json": "9bdf992dda4aca110f2c776183ce9e6f614623fdc373389485cf25e06711a9dd",
+    "notes/data/RPB108_NF33_SOURCE_CC77_SHARED_REMAINING_FRAME_CERTIFICATE_20261009.json": "1f2887cbdb0c3c237ff279d7715ee4a29ac7cec89d4caecf6c56f7474b1b6d37",
+    "notes/data/RPB108_NF33_SOURCE_CC77_SHARED_REMAINING_LIFT_VALIDATION_20261009.json": "e4b687464c42c4d498c78c8b9d640b5b8767cd607cf2de05e1af6d8e86278fdd"
+  },
+  "new_consumer_replay_byte_exact": true,
+  "syntax_compilation_passed": true
+}
