@@ -1,0 +1,195 @@
+{
+  "NF43_input_sha256": [
+    "8e3bdd803c3c3a9423ed702bebf52618be2b58f41263f549622d1a3dcbdf94ce",
+    "0707a00966313144f38482564573ee978d12bd17d2cd8326f58cb0c021d0d66d",
+    "d46a4f1d52dc208b409a2de057283934b4a1d1808209a3068c59c38cad5502fe",
+    "6f649ec13a3795ba24b28ab7aa0a89f7d4c7eafae15d7433bcd6906d1fa76ac7",
+    "19d4d98fdc7a076450828380705fc3e7e618013bbc053c55e6496a6a895eb206"
+  ],
+  "background_floor_newly_proved": false,
+  "defect_response_controls": [
+    {
+      "boundary_inverse_coupling": "3/10",
+      "coupled_inverse_improvement": "1/4002",
+      "defect_source_Woodbury_lower_bound": "1863/20767726",
+      "positive_boundary_defect": "2/3125",
+      "positive_defect_remainder_checked": true,
+      "uncoupled_inverse_improvement": "0"
+    },
+    {
+      "boundary_inverse_coupling": "3/10",
+      "coupled_inverse_improvement": "1/6",
+      "defect_source_Woodbury_lower_bound": "1863/88426",
+      "positive_boundary_defect": "16/25",
+      "positive_defect_remainder_checked": true,
+      "uncoupled_inverse_improvement": "0"
+    },
+    {
+      "boundary_inverse_coupling": "3/10",
+      "coupled_inverse_improvement": "25/51",
+      "defect_source_Woodbury_lower_bound": "1863/67933",
+      "positive_boundary_defect": "64",
+      "positive_defect_remainder_checked": true,
+      "uncoupled_inverse_improvement": "0"
+    }
+  ],
+  "exact_packing_controls": {
+    "all_interval_coefficient_endpoint_vertices_checked": 48,
+    "exact_integer_controls": [
+      {
+        "exact_signed_integer_coefficients_checked": true,
+        "lengths": [
+          1,
+          1
+        ]
+      },
+      {
+        "exact_signed_integer_coefficients_checked": true,
+        "lengths": [
+          3,
+          4
+        ]
+      },
+      {
+        "exact_signed_integer_coefficients_checked": true,
+        "lengths": [
+          20,
+          17
+        ]
+      },
+      {
+        "exact_signed_integer_coefficients_checked": true,
+        "lengths": [
+          80,
+          90
+        ]
+      }
+    ]
+  },
+  "full_block_crossing_controls": [
+    {
+      "exact_condensed_witness_value": "-1/100",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1"
+    },
+    {
+      "exact_condensed_witness_value": "0",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1"
+    },
+    {
+      "exact_condensed_witness_value": "1/100",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1"
+    },
+    {
+      "exact_condensed_witness_value": "-1/100000000000000000000",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1/1000000000000000000"
+    },
+    {
+      "exact_condensed_witness_value": "0",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1/1000000000000000000"
+    },
+    {
+      "exact_condensed_witness_value": "1/100000000000000000000",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1/1000000000000000000"
+    }
+  ],
+  "milestone": "NF44",
+  "parity_checks": [
+    {
+      "all_physical_source_payments_replayed": true,
+      "all_sixth_source_coordinates_and_reverse_covariances_replayed": true,
+      "certificate_sha256": "9a6d58d0b11aa435d32866823beb0f68477b87232bdb99351a91b0cb16521643",
+      "conditional_joined_sign_certified": false,
+      "exact_Woodbury_algebra": {
+        "exact_rational_delta_inside_paid_original_intervals": true,
+        "exact_scalar_defect_and_denominator_positive": true,
+        "exact_six_vs_five_Woodbury_equals_scalar_defect_update": true
+      },
+      "five_source_baseline_matches_NF43_entrywise": true,
+      "independent_inverse_witness_source_coordinate_controls_passed": true,
+      "parity": "even",
+      "selection": {
+        "exact_downround_projection_and_normalization_replayed": true,
+        "nonorthogonal_mutation_rejected": true,
+        "physical_orthogonality_to_five_high_columns": true
+      },
+      "status": "PASS",
+      "trial_sha256": "d8eb42d7071f6a2c3bc30fe583146fe575035e9fd7a5163789ea3ac59d630d21"
+    },
+    {
+      "all_physical_source_payments_replayed": true,
+      "all_sixth_source_coordinates_and_reverse_covariances_replayed": true,
+      "certificate_sha256": "94669181d3d09b682235e4f87b9f623de6a8b55702beedf1cd6330b116d8b5f4",
+      "conditional_joined_sign_certified": false,
+      "exact_Woodbury_algebra": {
+        "exact_rational_delta_inside_paid_original_intervals": true,
+        "exact_scalar_defect_and_denominator_positive": true,
+        "exact_six_vs_five_Woodbury_equals_scalar_defect_update": true
+      },
+      "five_source_baseline_matches_NF43_entrywise": true,
+      "independent_inverse_witness_source_coordinate_controls_passed": true,
+      "parity": "odd",
+      "selection": {
+        "exact_downround_projection_and_normalization_replayed": true,
+        "nonorthogonal_mutation_rejected": true,
+        "physical_orthogonality_to_five_high_columns": true
+      },
+      "status": "PASS",
+      "trial_sha256": "0e684bf3e9edd987cfa5658c13135db92c038df23945e07cb139bfc251aa2e3e"
+    }
+  ],
+  "positive_whole_physical_mass_controls": [
+    {
+      "exact_five_coordinate_null_vector": [
+        "-1/2",
+        "1/2",
+        "1",
+        "-1/4",
+        "-500/69"
+      ],
+      "exact_ground_level": "1/1000",
+      "full_physical_mass_shift": "1/1000"
+    },
+    {
+      "exact_five_coordinate_null_vector": [
+        "-1/2",
+        "1/2",
+        "1",
+        "-1/4",
+        "-500/69"
+      ],
+      "exact_ground_level": "1/10",
+      "full_physical_mass_shift": "1/10"
+    },
+    {
+      "exact_five_coordinate_null_vector": [
+        "-1/2",
+        "1/2",
+        "1",
+        "-1/4",
+        "-500/69"
+      ],
+      "exact_ground_level": "2",
+      "full_physical_mass_shift": "2"
+    }
+  ],
+  "status": "PASS",
+  "whole_aperture_positive": false
+}
