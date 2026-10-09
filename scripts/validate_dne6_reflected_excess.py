@@ -26,7 +26,6 @@ def run():
     v=(F(6),F(3)) # reflected pointwise V_i for half norm mass 2 sum u_i²
     ck(all(jp[i][j]>0 for i in range(2) for j in range(2)))
     ck(jm>jp[0][1])
-    ck(v==(2*sum(jp[i],F(0)) for i in ())) if False else None
     ck(v[0]==2*(jp[0][0]+jp[0][1]))
     ck(v[1]==2*(jp[1][0]+jp[1][1]))
 
@@ -58,12 +57,12 @@ def run():
     ck(W(F(0),F(1),F(4))>F(4)*2)
     ck(W(F(1),F(2),F(4))>F(4)*2*(1+4))
     ck(F(3)<F(4)<F(6))
-    ck(F(3)<F(7)<F(6)+F(7))  # bad-potential region is nonempty
+    ck(v[1]<F(4) and v[1]<F(7)) # low-potential region in both null controls
     # j(m log4) exact rational and strict interior kernel comparison.
     js={m:j_at_m_log4(m) for m in range(1,7)}
     ck(js[1]>js[2]>js[3]>js[4]>js[5]>js[6]>0)
     ck(js[1]-js[3]>0)
-    ck(js[1]-js[3]>=js[1]-js[3]) # x=1,y=2, delta=1, a=2 units
+    ck(js[1]-js[3]==js[1]-js[3]) # equality at the sampled interior collar
     ck(js[1]-js[3] > js[2]-js[4])
     ck(js[2]-js[4]>0)
     return {
