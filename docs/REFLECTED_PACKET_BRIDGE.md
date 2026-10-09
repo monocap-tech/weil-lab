@@ -4209,3 +4209,14 @@ The actual signed response escapes CC90's rejection neighborhood. Source selecti
 - [CC91 note](../notes/REFLECTED_PACKET_BRIDGE_108_BOTH_JOINED_PASS_CC91_20261009.md)
 - [Validator](../scripts/certify_cc91_both_joined_pass.py)
 - [Consumer results](../notes/data/RPB108_CC91_BOTH_JOINED_PASS_20261009.json)
+
+
+## CC92 — conditional physical six-direction plus all-F restriction (2026-10-09)
+
+Definitions: [CC92 conditional restriction](TERMINOLOGY_RPB108_CONDITIONAL_RESTRICTION_CC92.md). The NF46 even/NF45 odd packet signs, exact original parity, authenticated physical mass bounds and complete source coupling yield Q_original(h) >= g ||h||_L2^2 on E6+F, with g >1.1503e-52. This is conditional on A >= (207/1000) I and the inherited original form/domain attachments. E6 comprises original retained x,w,u32 in both parities; F is the entire high complement. NF37's actual high lift changes are paid in the mass chain and its selected native/source Grams reconstruct both passing inverse packets.
+
+The simultaneous conditional six-direction restriction is now certified with a conservative physical gap; it is not the full retained matrix or an unconditional aperture certificate. Other 106 retained directions, collective coupling, the floor proof and complete remaining-background transport remain open. Whole-domain certified aperture stays 21/20; no whole 53/50, all-cap, RH/F4 or Lean closure is claimed.
+
+- [CC92 note](../notes/REFLECTED_PACKET_BRIDGE_108_CONDITIONAL_RESTRICTION_CC92_20261009.md)
+- [Validator](../scripts/certify_cc92_conditional_physical_restriction.py)
+- [Physical restriction bounds and controls](../notes/data/RPB108_CC92_CONDITIONAL_PHYSICAL_RESTRICTION_20261009.json)
