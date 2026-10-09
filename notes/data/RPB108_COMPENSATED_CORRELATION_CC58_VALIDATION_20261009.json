@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "milestone": "CC58",
+  "NF21_identity_replayed_without_sympy": true,
+  "native_prime_pole_sector_bounds": [
+    {
+      "native_field": "prime_plus_pole_source_square_gram_00",
+      "strict_lower": "1811/250",
+      "strict_upper": "1449/200",
+      "interval_width": "757283/100000000000000000000000000000000000000000000"
+    },
+    {
+      "native_field": "prime_plus_pole_source_square_gram_11",
+      "strict_lower": "32/25",
+      "strict_upper": "1281/1000",
+      "interval_width": "23821/25000000000000000000000000000000000000000000"
+    }
+  ],
+  "native_full_Gram": false,
+  "native_P2_evaluated": false,
+  "exact_Parseval_split": true,
+  "Young_majorants": [
+    {
+      "t": "1/10",
+      "eta_squared_Hilbert_Schmidt": "5369/3600000000",
+      "Young_majorant_valid": true
+    },
+    {
+      "t": "1/2",
+      "eta_squared_Hilbert_Schmidt": "5369/3600000000",
+      "Young_majorant_valid": true
+    },
+    {
+      "t": "1",
+      "eta_squared_Hilbert_Schmidt": "5369/3600000000",
+      "Young_majorant_valid": true
+    },
+    {
+      "t": "2",
+      "eta_squared_Hilbert_Schmidt": "5369/3600000000",
+      "Young_majorant_valid": true
+    },
+    {
+      "t": "10",
+      "eta_squared_Hilbert_Schmidt": "5369/3600000000",
+      "Young_majorant_valid": true
+    }
+  ],
+  "abstract_sector_completions": [
+    {
+      "included_source_square": "4",
+      "omitted_source": "-2",
+      "full_source_square": "0"
+    },
+    {
+      "included_source_square": "4",
+      "omitted_source": "-1",
+      "full_source_square": "1"
+    },
+    {
+      "included_source_square": "4",
+      "omitted_source": "0",
+      "full_source_square": "4"
+    },
+    {
+      "included_source_square": "4",
+      "omitted_source": "2",
+      "full_source_square": "16"
+    }
+  ],
+  "near_critical_enclosure_control": {
+    "retained_S": "1/1000000000000000000000000000000000000000",
+    "direct_source_error_radius": "1/10000000000000000000000000",
+    "independent_square_error": "1/100000000000000000000000000000000000000",
+    "direct_gate_passes": true,
+    "independent_square_gate_inconclusive": true
+  },
+  "genuine_crossings": [
+    {
+      "epsilon": "1/100",
+      "complete_Schur": "1/100",
+      "physical_source_square": "1"
+    },
+    {
+      "epsilon": "0",
+      "complete_Schur": "0",
+      "physical_source_square": "1"
+    },
+    {
+      "epsilon": "-1/100",
+      "complete_Schur": "-1/100",
+      "physical_source_square": "1"
+    }
+  ],
+  "positive_eigenlevel_controls": [
+    {
+      "original_positive_ground_level": "1/10000000000000000000000000000000000000000",
+      "whole_mass_shift_null": true,
+      "low_only_shift_misses_null": true
+    },
+    {
+      "original_positive_ground_level": "1/100",
+      "whole_mass_shift_null": true,
+      "low_only_shift_misses_null": true
+    },
+    {
+      "original_positive_ground_level": "1/20",
+      "whole_mass_shift_null": true,
+      "low_only_shift_misses_null": true
+    }
+  ],
+  "all_cap_defect_relative_frame": false,
+  "actual_Weil_crossing_proved": false,
+  "RH": false,
+  "Lean": false
+}

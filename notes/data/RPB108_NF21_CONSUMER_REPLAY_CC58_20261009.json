@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "exact_rational_checks": 18,
+  "original_E112_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+  "complete_prime_pole_rounded_outward_1e12": {
+    "prime_only_source_square_gram_00": [
+      "4249293916309/1000000000000",
+      "424929391631/100000000000"
+    ],
+    "prime_only_source_square_gram_11": [
+      "2322359221687/1000000000000",
+      "290294902711/125000000000"
+    ],
+    "pole_only_source_square_gram_00": [
+      "4335749672791/200000000000",
+      "5419687090989/250000000000"
+    ],
+    "pole_only_source_square_gram_11": [
+      "22037863567/125000000000",
+      "176302908537/1000000000000"
+    ],
+    "prime_pole_source_cross_00": [
+      "-18683476299191/1000000000000",
+      "-1868347629919/100000000000"
+    ],
+    "prime_pole_source_cross_11": [
+      "-304459771309/250000000000",
+      "-243567817047/200000000000"
+    ],
+    "prime_plus_pole_source_square_gram_00": [
+      "3622282990537/500000000000",
+      "289782639243/40000000000"
+    ],
+    "prime_plus_pole_source_square_gram_11": [
+      "320205761247/250000000000",
+      "1280823044989/1000000000000"
+    ]
+  },
+  "archimedean_source_included": false,
+  "full_P2_built": false,
+  "whole_aperture_positive": false
+}

@@ -1,0 +1,26 @@
+{
+  "milestone": "CC58",
+  "parent": "229af6df72ba124c216158baf39159c8043703f5",
+  "NF21_source_revision": "7fbb9fa82eef68d55018d858446f174b7ba8aca0",
+  "NF21_complete_report_revision": "de3f69bd4121aa586b480222405a480f1edf0f17",
+  "source_scripts_sha256": {
+    "certify_native_source_square_prime_pole_nf21_106.py": "04da3f5b79c0053c63f46e523a91cf3d44e5e3d95eff326ba9a93fdd98168ece",
+    "validate_native_source_square_gram_identity_nf21.py": "cb076259635b46d462b19dd7d30f558c26b510f66ab5b67681e749072c36129e",
+    "validate_native_source_square_low2_nf21_106.py": "689b905b4dda1a000ffa4d949804ba8be10a0f78b254d04b842312376af98e06"
+  },
+  "artifact_sha256": {
+    "docs/TERMINOLOGY_RPB108_COMPENSATED_CORRELATION_CC58.md": "2294089a73901e05ac10c5b922c5620d712e8178f6336a6d4edd744199e567db",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COMPENSATED_CORRELATION_CC58_20261009.md": "3cfc75f0ff5a1bf1eee032892ae894efae41fa688e1f53d3e951b9370c3be2db",
+    "scripts/validate_compensated_correlation_cc58.py": "5bf39d2504eaad089c3df76ac9f66ad8479bb5d7e98b718669e0f38ad85dd57f",
+    "notes/data/RPB108_COMPENSATED_CORRELATION_CC58_VALIDATION_20261009.json": "3c3728e45b7d34f39672c86398e238ff805d8ffc4dfbc044a233728439788454",
+    "notes/data/RPB108_NATIVE_PRIME_POLE_SOURCE_SECTOR_CC58_20261009.json": "9ea91c5d0bf9bac4cf32d8a2bb3644c6fb7d9dd004ad3ebc5f5aac0ee1b01648",
+    "notes/data/RPB108_NF21_CONSUMER_REPLAY_CC58_20261009.json": "cb20431b99e481570b9e2d75c7c323998ca26b47f4f53e154c08375624eab841"
+  },
+  "native_sector_raw_SHA_matches_NF21": true,
+  "upstream_native_consumer_checks": 18,
+  "symbolic_algebra_replayed_using_Fraction_due_to_missing_sympy": true,
+  "native_P2_evaluated": false,
+  "all_cap_frame_certified": false,
+  "history": "additive only",
+  "concurrent_NF21_handoff_preserved": true
+}
