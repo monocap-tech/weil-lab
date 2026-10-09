@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "milestone": "CC59",
+  "exact_Woodbury_identity": true,
+  "least_completion_attains_majorant": true,
+  "unknown_high_completions": [
+    {
+      "unknown_high_increment": "0",
+      "response_below_majorant": true,
+      "equality_at_zero": true
+    },
+    {
+      "unknown_high_increment": "1/100",
+      "response_below_majorant": true,
+      "equality_at_zero": false
+    },
+    {
+      "unknown_high_increment": "1",
+      "response_below_majorant": true,
+      "equality_at_zero": false
+    },
+    {
+      "unknown_high_increment": "100",
+      "response_below_majorant": true,
+      "equality_at_zero": false
+    }
+  ],
+  "native_source_Gram_H_Z_recovery_identity": true,
+  "aligned_control": {
+    "P": "1",
+    "S2": "4",
+    "coarse_response_upper": "1000/207",
+    "correlated_response_upper": "931000/399717",
+    "coarse_gate_fails": true,
+    "correlated_gate_passes": true
+  },
+  "same_norm_orthogonal_control_has_no_improvement": true,
+  "genuine_crossings": [
+    {
+      "epsilon": "1/100",
+      "full_Schur": "1/100",
+      "correlated_gate_margin": "1/100",
+      "coarse_gate_fails": true
+    },
+    {
+      "epsilon": "0",
+      "full_Schur": "0",
+      "correlated_gate_margin": "0",
+      "coarse_gate_fails": true
+    },
+    {
+      "epsilon": "-1/100",
+      "full_Schur": "-1/100",
+      "correlated_gate_margin": "-1/100",
+      "coarse_gate_fails": true
+    }
+  ],
+  "positive_ground_levels": [
+    {
+      "original_positive_ground_level": "1/10000000000000000000000000000000000000000",
+      "whole_shift_null": true,
+      "shifted_correlated_gate_exact_contact": true,
+      "retained_only_shift_misses_null": true
+    },
+    {
+      "original_positive_ground_level": "1/100",
+      "whole_shift_null": true,
+      "shifted_correlated_gate_exact_contact": true,
+      "retained_only_shift_misses_null": true
+    },
+    {
+      "original_positive_ground_level": "1/20",
+      "whole_shift_null": true,
+      "shifted_correlated_gate_exact_contact": true,
+      "retained_only_shift_misses_null": true
+    }
+  ],
+  "native_D_or_P_evaluated": false,
+  "original_Weil_counterexample": false,
+  "all_cap_frame": false,
+  "RH": false,
+  "Lean": false
+}

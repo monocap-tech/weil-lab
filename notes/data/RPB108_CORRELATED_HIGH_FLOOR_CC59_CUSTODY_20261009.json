@@ -1,0 +1,16 @@
+{
+  "milestone": "CC59",
+  "parent": "ff5a90f8ea83d9a7891d1755bb42074d91922c77",
+  "read_only_source_head": "de3f69bd4121aa586b480222405a480f1edf0f17",
+  "classification": "conditional original-carrier operator theorem, exact abstract sharpness controls",
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_CORRELATED_HIGH_FLOOR_CC59.md": "9d619f0f5f6b34bd027d4bc71e0b8606e106448dc40b4946859c282b0f0c5940",
+    "notes/REFLECTED_PACKET_BRIDGE_108_CORRELATED_HIGH_FLOOR_CC59_20261009.md": "faff212948b3b73842dd8c6abc8ba72b9b02b7d5e53f87c481d2c88bdfaebe11",
+    "scripts/validate_correlated_high_floor_cc59.py": "fc17e4cda7d8bff3ea2d30474f8e44ecef41de5195116e7c44e4f4befce8a369",
+    "notes/data/RPB108_CORRELATED_HIGH_FLOOR_CC59_VALIDATION_20261009.json": "499dde8d4cc843a90d3ace9de46ad6b6642156016ad23e3562ebf9f610a1179e"
+  },
+  "validation": "PASS",
+  "native_joint_source_Gram_evaluated": false,
+  "all_cap_defect_relative_frame": false,
+  "history": "additive only"
+}
