@@ -1,0 +1,29 @@
+{
+  "stage": "DNE20",
+  "parent": "2986f3d75697bfc7f6da14bd351deb1b54b6adec",
+  "write_branch": "research/rpb108-direct-null-exclusion",
+  "phase_read_only_head": "2c64055c00350a7b91ead62453b085cd3408da66",
+  "coupled_read_only_head": "433c32598895a6c23a4be303496939011c59017b",
+  "source_input_sha256": {
+    "NF27": "2110e07c7a7e39d2b454cff364c0863f6f3e3ff151cf72309999130f5e17fe42",
+    "NF29": "069d4acc267a0ac48154427a033cccca96243743dd31e36449f7189de03e895a",
+    "NF30": "d0625cefe819f3704dec1d75bf0ad0bcd4ea8a3cd6806ebe6d76056733ac321b",
+    "NF30_fixed_trial": "7460d5ed3b159d34fa002a56382b40f91cde1d7712fe5e2b1b0ff2b4df7cb65b",
+    "NF24_targets": "6eee61fb4e58ac5be0e95f492f461b289da37ee13aeaa74bbf4acc06f6650c00",
+    "NF26": "f2010510bacac64c45ef1825cd5e2c41e395519417815a43530e44e6cfdbf930"
+  },
+  "producer_sha256": "8be0fbfcaf1fcbd95affc95b764d588afb13a752ad4c30f1b00ac584b6d5b174",
+  "certificate_sha256": "5d669562c49ef8bacb74fe9817a3952160cd5868954dbef8160112eca1a748ab",
+  "old_floor_control_sha256": "33d5a8c94729c70718dfc7d2b7a09c64c959b5dc8f29247d7c57ed151df85fb5",
+  "validation_sha256": "2a5569ebd39295612aa6518009c62ad555ff6630e97afd7227a5ac9d631118e0",
+  "new_floor_assertions": 52,
+  "old_floor_assertions": 49,
+  "independent_physical_control_assertions": 290,
+  "complete_original_source_producers_replayed_here": false,
+  "source_certificates_copied_byte_exact": true,
+  "new_response_plane_dimension": 4,
+  "six_direction_union_certified": false,
+  "other_branches_written": false,
+  "whole_aperture_positive": false,
+  "RH": false
+}
