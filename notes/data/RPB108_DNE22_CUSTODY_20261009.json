@@ -1,0 +1,27 @@
+{
+  "stage": "DNE22",
+  "parent": "7542382bcf8cfada44722c9bb832031664ff7c4a",
+  "write_branch": "research/rpb108-direct-null-exclusion",
+  "phase_read_only_head": "a2e155a631a3a719c2f53ab629c501d0fe105747",
+  "coupled_read_only_head": "9ed50ac8b568cb9c5a986abd6d6a3a28aac3c9ed",
+  "source_blobs": {
+    "NF32_even": "a43ac9126182cd23b4e0d6def31a3d6f3c4a03dd",
+    "NF32_odd": "9ce63351e7e7cda7c57ff050e3ba9924483b95f9",
+    "NF32_trial": "cdf0c9b4da980f9cf2e32c7c0617e64e37e844c2",
+    "CC74_loading": "ef21031a08c0ae9ff2a18d6808cbf544ae5660cd"
+  },
+  "producer_sha256": "e5326b2eac2fb92d85a79791f11c953b4f07f1b816d793ce8fae6aabaacc5099",
+  "primary_certificate_sha256": "6f1adeb39792345e857806ce4128c72b9b08dabd4d21f6f3bde8a8463bd94671",
+  "replay_certificate_sha256": "93bf21cf91cd90a7ef3fc22c7d5e5662f01f652bad55f8a8443069ca5de7837f",
+  "validation_sha256": "987c18b4ced1760db65ac9021861d3487c9b0ce24ad61efc7753a5ad0ac69c3f",
+  "complete_source_producers_replayed_here": false,
+  "primary_assertions": 34,
+  "replay_assertions": 34,
+  "validator_assertions": 405,
+  "retained_probe_plane_dimension": 6,
+  "eight_direction_union_certified": false,
+  "full_unlifted_remaining_floor_estimator_rejected": true,
+  "other_branches_written": false,
+  "whole_aperture_positive": false,
+  "RH": false
+}

@@ -1,0 +1,53 @@
+{
+  "stage": "DNE22",
+  "status": "PASS",
+  "exact_rational_assertions": 405,
+  "all_64_interval_vertices_each_parity_positive": true,
+  "controls": [
+    {
+      "kind": "genuine_joint_crossing",
+      "mixed": "99/100",
+      "determinant": "199/10000"
+    },
+    {
+      "kind": "genuine_joint_crossing",
+      "mixed": "1",
+      "determinant": "0"
+    },
+    {
+      "kind": "genuine_joint_crossing",
+      "mixed": "101/100",
+      "determinant": "-201/10000"
+    },
+    {
+      "kind": "positive_whole_mass_ground_level",
+      "mu": "1/10000000000000000000000000000000000000000"
+    },
+    {
+      "kind": "positive_whole_mass_ground_level",
+      "mu": "1/100"
+    },
+    {
+      "kind": "positive_whole_mass_ground_level",
+      "mu": "1/20"
+    },
+    {
+      "kind": "passing_probe_failing_collective_floor_positive_actual_form",
+      "actual_Schur_diagonal": [
+        "3/4",
+        "9/25"
+      ],
+      "coarse_diagonal": [
+        "19/44",
+        "-5/11"
+      ]
+    }
+  ],
+  "primary_consumer_assertions": 34,
+  "replay_consumer_assertions": 34,
+  "new_probe_plane_positive": true,
+  "full_unlifted_remaining_floor_estimator_rejected": true,
+  "eight_direction_union_certified": false,
+  "whole_aperture_positive": false,
+  "RH": false
+}
