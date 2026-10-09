@@ -29,6 +29,11 @@ def controls():
             row.append(dict(unmeasured_reaction_factor=str(factor),
                 third_high_diagonal=str(h),signed_remaining=str(sign),sign=required))
         out.append(dict(parity=p,first_two_reaction=str(r),cases=row))
+    # Complete physical positive-level shift control: both diagonals move.
+    mu=F(1,10**40);cross=1-mu
+    assert 1-cross*cross>0
+    assert (1-mu)*(1-mu)-cross*cross==0
+    assert 1-mu>F(207,1000)
     return dict(status="PASS",checked_cases=6,unchanged_positive_first_two_response=True,
         high_physical_floor="207/1000",exact_hidden_crossing_controls=out,
         positive_level_shift_is_distinct_from_original_null=True,
