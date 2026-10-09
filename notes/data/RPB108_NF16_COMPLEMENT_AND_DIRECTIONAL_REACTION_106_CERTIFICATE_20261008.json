@@ -1,0 +1,40 @@
+{
+  "milestone": "NF16",
+  "date": "2026-10-08",
+  "aperture": "53/50",
+  "classification": "new derived stronger physical F112 complement and certified directional native E64-to-E80 Schur reaction; NO whole sign",
+  "derived_F112_complement": {
+    "old_certified_physical_lower": "17/100",
+    "new_certified_physical_lower": "207/1000",
+    "old_raw_complement_lower": "172351243732/1000000000000",
+    "old_conservative_prime_upper": "13/5",
+    "already_enclosed_weighted_prime_upper_6000": "2565346230069/1000000000000",
+    "new_derived_unrounded_lower": "207005013663/1000000000000",
+    "conservative_inverse_upper": "1000/207",
+    "method": "algebraic recombination of NF10's same-target exact interval prime bound and original raw arch-minus-prime-minus-pole bound",
+    "source": "notes/data/RPB108_NF10_COMPLEMENT106_CERTIFICATE_20261008.json",
+    "reconstruction_of_prime_norm_replayed": false
+  },
+  "native_E64_to_E80_directional_reaction": {
+    "original_native_e80_source_sha256": "9188d9b48525c1e1af41292e3bfe8d3004470e03b00520428d9d5b0cc76a8513",
+    "witness": "explicit rational 32 even coefficients (degree 0..62) hardcoded in validator",
+    "old_E64_Rayleigh_approx": 3.852653539158419e-30,
+    "full_e80_incoming_eight_even_modes_reaction_approx": 2.575909752617642e-30,
+    "certified_relative_reaction_strict_lower": "2/3",
+    "certified_relative_reaction_strict_upper": "67/100",
+    "shell_lower_bound": "9/5",
+    "method": "exact Fraction Gauss inverse on eight-mode shell and conservative full symmetric original source interval perturbation",
+    "physical_positive_E80_certified_existing": true,
+    "full_infinite_F112_inverse_reaction_evaluated": false
+  },
+  "E96_full_native_sign_certified": false,
+  "whole_E112_sign": false,
+  "corrected_even56_odd56_full_Schur": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false,
+  "validators": [
+    "scripts/validate_native_complement_refinement_nf16_106.py",
+    "scripts/validate_native_e64_to_e80_reaction_nf16.py"
+  ]
+}
