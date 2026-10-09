@@ -100,6 +100,7 @@ def run():
     check(schur==0)
     check(Alow-highK[0]**2>0) # first measured high mode passes
     check(highK[1]!=0) # genuine missing high response
+    assert count==1930, count
     return dict(stage="DNE9 native pole-free Feshbach controls",
                 all_passed=True,exact_fraction_checks=count,
                 native_high_form_floor="1/101 (analytic inherited NF10/CC40)",
