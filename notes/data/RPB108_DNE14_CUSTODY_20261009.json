@@ -1,0 +1,22 @@
+{
+  "stage": "DNE14",
+  "parent": "0dd390a467a887828d83dff030c17d5d6745cf28",
+  "scope": "scalar constant low line after complete original-Q high response",
+  "primary_precision": 280,
+  "primary_regular_order": 128,
+  "replay_precision": 320,
+  "replay_regular_order": 160,
+  "exact_fraction_assertions": 796,
+  "moment_consistency_checks_per_run": 116,
+  "both_scripts_executed_locally": true,
+  "both_scalar_gates_passed": true,
+  "displayed_bounds_rationally_checked": true,
+  "preliminary_inconclusive_runs_published": false,
+  "source_archives_recovered": false,
+  "high_coercivity_dependency": "DNE10 equation2, NF16/NF20 original high floor207/1000",
+  "other_branches_modified": false,
+  "full_matrix": false,
+  "near_critical_vector": false,
+  "RH": false,
+  "Lean": false
+}
