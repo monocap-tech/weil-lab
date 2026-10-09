@@ -4,7 +4,7 @@
   "repository": "monocap-tech/weil-lab",
   "branch": "research/rpb108-direct-null-exclusion",
   "parent": "6f9ecef8714f1b7517a8a0d55108d164718a16f0",
-  "theorem": "Actual native reflected archimedean-plus-prime Hankel parity difference is infinitely sign-indefinite when prime2 can cross positive half; survives finite moment constraints",
+  "theorem": "Actual native reflected archimedean-plus-prime Hankel parity difference is infinitely sign-indefinite when prime2 can cross positive half; survives finite moment constraints; local reflected operator has essential spectrum {-c2,+c2} by compact archimedean Hankel plus prime-two reflection",
   "exact_arithmetic": {
     "complete_native_pole_free": true,
     "j": "exp(-t/2)/(1-exp(-2t))",
@@ -16,7 +16,11 @@
     "intervals": "J centered at 3 log(2)/8, reflected J' centered at 5 log(2)/8, halfwidth 1/100",
     "strict_negative": "C(f)<- (log2)/(2 sqrt2) * ||f||² on infinite dimensional antisymmetric reflected subspace",
     "strict_positive": "C(f)>= (log2)/(sqrt2) * ||f||² on infinite dimensional symmetric reflected subspace",
-    "finite_moment_constraints_survive": true
+    "finite_moment_constraints_survive": true,
+    "localized_operator_essential_spectrum": [
+      "-log(2)/sqrt(2)",
+      "+log(2)/sqrt(2)"
+    ]
   },
   "independent_controls": {
     "result": "PASS",
@@ -31,7 +35,8 @@
     "all_aperture_contact_exclusion": false,
     "actual_odd_spectral_surplus": false,
     "rh_proved": false,
-    "lean_proved": false
+    "lean_proved": false,
+    "full_Weil_operator_essential_spectrum_claimed": false
   },
   "next": "DNE8: restrict reflected correlation tests to actual low-energy spectral subspace of J_a, retaining the full homogeneous null equation"
 }
