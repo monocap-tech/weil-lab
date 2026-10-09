@@ -68,3 +68,7 @@ The first 112 native degrees are NOT proved positive as a whole. Even if a futur
 ## 5. Exact custody
 
 This investigation locally executed exact Fraction native integration for E24 and E32 at 190/160, and for E32 at 210/180; exact rational LDL and the 1088 exact component intersection assertions passed. The existing GitHub producer/validator implement these choices, but no claim is made that a GitHub Actions runner independently executed this new commit. The finite signed original Weil calculation is not a new global RH result.
+
+## Subsequent result: NF14 finite positivity through E64
+
+[NF14 — complete original signed E48/E64 interval certificates](REFLECTED_PACKET_BRIDGE_108_NATIVE_LOW64_NF14_20261008.md) increase this native *finite* positivity frontier at a=53/50 to the first 64 Legendre modes. New source-log precision (not merely more archimedean Bernoulli pairs) resolves the previous high-degree interval bottleneck. Full E64 exact rational 32+32 shifted LDL passes after paying complete intervals, yielding physical lower >9e-31; E48 lower >9e-27. Neither E112 nor corrected source/infinite Schur nor whole original positivity at 1.06 is claimed. NF10 complement and CC18 whole positivity at 1.05 unchanged.
