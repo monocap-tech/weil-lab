@@ -4220,3 +4220,14 @@ The simultaneous conditional six-direction restriction is now certified with a c
 - [CC92 note](../notes/REFLECTED_PACKET_BRIDGE_108_CONDITIONAL_RESTRICTION_CC92_20261009.md)
 - [Validator](../scripts/certify_cc92_conditional_physical_restriction.py)
 - [Physical restriction bounds and controls](../notes/data/RPB108_CC92_CONDITIONAL_PHYSICAL_RESTRICTION_20261009.json)
+
+
+## CC93 — sharper conditional physical gap (2026-10-09)
+
+Definitions: [CC93 sharper physical gap](TERMINOLOGY_RPB108_SHARPER_PHYSICAL_GAP_CC93.md). On the unchanged original six-retained-direction-plus-all-F restriction, inverse-trace coordinate coercivity and authenticated actual lifted-vector masses sharpen the conditional physical gap to g >2.7863e-38, over 2.4e14 times CC92's conservative value. Exact rational controls, original packet custody and physical completion checks pass. No new polynomial or native integration is used.
+
+The same A >= (207/1000) I and original form/domain attachments remain hypotheses. This is not an enlarged retained restriction or whole-aperture certification. Next assembly requires the complete signed cross block to the remaining retained frame and its native/source data. Other 106 retained dimensions, collective coupling, floor and transport remain open. Whole-domain aperture anchor stays 21/20; no whole 53/50, all-cap, RH/F4 or Lean closure is claimed.
+
+- [CC93 note](../notes/REFLECTED_PACKET_BRIDGE_108_SHARPER_PHYSICAL_GAP_CC93_20261009.md)
+- [Validator](../scripts/certify_cc93_sharpen_physical_gap.py)
+- [Sharper bounds and controls](../notes/data/RPB108_CC93_SHARPER_PHYSICAL_GAP_20261009.json)
