@@ -4144,3 +4144,13 @@ Definitions: [CC84 source-span compression](TERMINOLOGY_RPB108_SOURCE_SPAN_COMPR
 Definitions: [CC85 six-source handoff](TERMINOLOGY_RPB108_SIX_SOURCE_HANDOFF_CC85.md). Read-only NF44 7bd6fbda5e156fbd009b6de0aeee6f41b1823c5c adds a sixth original high polynomial in each parity under the explicit remaining-high floor. The additional response is positive on NF43's updated witness, but both complete six-source joined lower matrices remain indefinite. Six high-source columns are not a six-retained-direction certificate.
 
 [CC85 note](../notes/REFLECTED_PACKET_BRIDGE_108_SIX_SOURCE_HANDOFF_CC85_20261009.md) records independent authenticated matrix update, physical-column orthogonality/mass, witness custody, signs and refreshed rank-one/span coefficients. Relative to NF42's four-source baseline, condensed deficit fractions remaining are (0.82997,0.92481) even and (0.12562,0.13695) odd. Next necessary credits use NF44's new witness: >8.175718291095e-23 even and >1.850751993489e-22 odd. Native source integrations and inverse-proof reconstruction are not replayed here. No simultaneous six-direction sign or new physical gap is claimed. CC74/CC78 restrictions, whole-domain 21/20 anchor and explicit hypotheses remain preserved; whole 53/50, background transport, all-cap continuation, RH/F4/full transport and Lean remain open. Other branches are unchanged.
+
+
+## CC86 — response innovation and finite-span stop rule (2026-10-09)
+
+CC86 refines CC84's source-span compression theorem into an exact conditional innovation identity. Signed response conditioning prevents double counting and supports a strict passing/exhaustion test for a fully paid finite candidate span. Exact rational controls cover all elimination orders, zero raw response with positive conditional credit, equality, and arbitrary delays. NF44 certificate hashes and negative parity condensed margins are independently checked. No new candidate span, shell exhaustion, native source, floor proof or whole-aperture certificate is claimed. Highest certified whole aperture remains 21/20.
+
+- [CC86 note](../notes/REFLECTED_PACKET_BRIDGE_108_RESPONSE_INNOVATION_CC86_20261009.md)
+- [Terminology](TERMINOLOGY_RPB108_RESPONSE_INNOVATION_CC86.md)
+- [Validator](../scripts/certify_cc86_response_innovation.py)
+- [Exact controls and NF44 attachment](../notes/data/RPB108_CC86_RESPONSE_INNOVATION_20261009.json)

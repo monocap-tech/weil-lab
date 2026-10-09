@@ -1,0 +1,133 @@
+{
+  "milestone": "CC86",
+  "integration_parent": "e00358705a56882ae3d223139da822969ecced33",
+  "read_only_source": "7bd6fbda5e156fbd009b6de0aeee6f41b1823c5c",
+  "parity_checks": [
+    {
+      "parity": "even",
+      "starting_condensed_deficit": [
+        "817467533853361740030472876985513308656690257844182324962866224350049895420156859/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "86887772439228460164602705586572027021005968983268101510106392736753839556229537/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "background_floor_hypothesis": "A >= (207/1000) I on the original remaining high space"
+    },
+    {
+      "parity": "odd",
+      "starting_condensed_deficit": [
+        "184906111046365412736672407156317491688402427526018291498043302903041285178399653/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "24976584622584320312186629833544321299613743411308652946057506921608250233614833/125000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "background_floor_hypothesis": "A >= (207/1000) I on the original remaining high space"
+    }
+  ],
+  "exact_controls": {
+    "permutation_traces": [
+      {
+        "order": [
+          0,
+          1,
+          2
+        ],
+        "increments": [
+          "1/2",
+          "1/6",
+          "6889/5961"
+        ],
+        "total": "3621/1987"
+      },
+      {
+        "order": [
+          0,
+          2,
+          1
+        ],
+        "increments": [
+          "1/2",
+          "121/106",
+          "19044/105311"
+        ],
+        "total": "3621/1987"
+      },
+      {
+        "order": [
+          1,
+          0,
+          2
+        ],
+        "increments": [
+          "0",
+          "2/3",
+          "6889/5961"
+        ],
+        "total": "3621/1987"
+      },
+      {
+        "order": [
+          1,
+          2,
+          0
+        ],
+        "increments": [
+          "0",
+          "200/149",
+          "142129/296063"
+        ],
+        "total": "3621/1987"
+      },
+      {
+        "order": [
+          2,
+          0,
+          1
+        ],
+        "increments": [
+          "4/3",
+          "49/159",
+          "19044/105311"
+        ],
+        "total": "3621/1987"
+      },
+      {
+        "order": [
+          2,
+          1,
+          0
+        ],
+        "increments": [
+          "4/3",
+          "4/447",
+          "142129/296063"
+        ],
+        "total": "3621/1987"
+      }
+    ],
+    "zero_raw_response_positive_innovation": true,
+    "signed_correlations_change_credit": true,
+    "strict_crossings": [
+      {
+        "deficit": "360113/198700",
+        "passes": true
+      },
+      {
+        "deficit": "3621/1987",
+        "passes": false
+      },
+      {
+        "deficit": "364087/198700",
+        "passes": false
+      }
+    ],
+    "arbitrary_delay_controls": [
+      1,
+      4,
+      12
+    ],
+    "native_source_replayed": false
+  },
+  "actual_candidate_span_available": false,
+  "shell_exhaustion_certified": false,
+  "new_source_column_certified": false,
+  "simultaneous_six_direction_certificate": false,
+  "whole_aperture_positive": false,
+  "background_floor_newly_proved": false
+}
