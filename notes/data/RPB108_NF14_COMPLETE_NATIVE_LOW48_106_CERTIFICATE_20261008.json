@@ -1,0 +1,45 @@
+{
+  "milestone": "NF14",
+  "aperture": "53/50",
+  "date": "2026-10-08",
+  "status": "PASS E48 complete signed native finite; full E112 and full corrected Schur OPEN",
+  "physical_orthonormal_legendre_dimension": 48,
+  "even_parity": 24,
+  "odd_parity": 24,
+  "native_original_terms": [
+    "archimedean",
+    "primes 2,3,4,5,7,8 both orientations",
+    "both signed Hermitian poles"
+  ],
+  "distinct_same_parity_entries": 600,
+  "signed_component_intervals_checked": 2400,
+  "source_exponential_order": 280,
+  "Bernoulli_pairs": 240,
+  "prime_atanh_log_terms": 300,
+  "rational_interval_grid_power": 95,
+  "rational_midpoint_grid_power": 50,
+  "native_source_sha256": "a52d08ab523ca21934c0985f0c9418e31d9ef73d7961c075ffde2953f37513d2",
+  "max_signed_interval_width_approx": 3.7921846897181914e-37,
+  "full_symmetric_operator_error_approx": 9.101243255323764e-36,
+  "shifted_midpoint": "1/100000000000000000000000000",
+  "exact_rational_parity_positive_pivots": {
+    "even": 24,
+    "odd": 24
+  },
+  "physical_finite_coercivity_lower": "9/1000000000000000000000000000",
+  "alternate_order_reconstruction": {
+    "exponential_order": 330,
+    "Bernoulli_pairs": 290,
+    "log_terms": 125,
+    "source_sha256": "ee43c8b0f58c5ee16e4ba417dcaa1f2bd90a15ba21f513b741e496e57b7b4aed",
+    "intersection_checks": 2400,
+    "failed_intersections": 0
+  },
+  "higher_64_status": "separate evaluation in progress at time of E48 certificate; no sign inferred",
+  "full_signed_native_112": false,
+  "full_source_action_gram": false,
+  "corrected_whole_aperture_schur": false,
+  "whole_domain_positive_at106": false,
+  "RH": false,
+  "lean": false
+}
