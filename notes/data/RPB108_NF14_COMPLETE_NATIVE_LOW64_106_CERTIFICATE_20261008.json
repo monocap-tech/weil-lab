@@ -1,0 +1,76 @@
+{
+  "milestone": "NF14",
+  "aperture": "53/50",
+  "classification": "complete native finite E48 and E64 positive; full E112 and corrected Schur open",
+  "date": "2026-10-08",
+  "original_signed_terms": [
+    "complete archimedean native Weil kernel",
+    "all prime powers 2,3,4,5,7,8 in both translation orientations",
+    "both Hermitian signed poles"
+  ],
+  "parity_exact": true,
+  "physical_basis": "normalized Legendre on [-53/50,53/50]",
+  "certificates": [
+    {
+      "dim": 48,
+      "even_pivots": 24,
+      "odd_pivots": 24,
+      "distinct_entries": 600,
+      "component_enclosure_checks": 2400,
+      "exponential_order": 280,
+      "Bernoulli_pairs": 240,
+      "prime_log_atanh_terms": 300,
+      "interval_grid_power": 95,
+      "source_sha256": "a52d08ab523ca21934c0985f0c9418e31d9ef73d7961c075ffde2953f37513d2",
+      "max_interval_width_display": 3.7921846897181914e-37,
+      "max_symmetric_error_display": 9.101243255323764e-36,
+      "shift": "1/100000000000000000000000000",
+      "certified_physical_lower": "9/1000000000000000000000000000",
+      "source_alternative": {
+        "exponential_order": 330,
+        "Bernoulli_pairs": 290,
+        "prime_log_atanh_terms": 125,
+        "source_sha256": "ee43c8b0f58c5ee16e4ba417dcaa1f2bd90a15ba21f513b741e496e57b7b4aed",
+        "exact_component_intersections": 2400,
+        "conflicts": 0
+      }
+    },
+    {
+      "dim": 64,
+      "even_pivots": 32,
+      "odd_pivots": 32,
+      "distinct_entries": 1056,
+      "component_enclosure_checks": 4224,
+      "exponential_order": 390,
+      "Bernoulli_pairs": 340,
+      "prime_log_atanh_terms": 380,
+      "interval_grid_power": 140,
+      "source_sha256": "133d707391f5785b2237cee631246b4d08f30a222d88f8359b4a65035bdf4f07",
+      "max_interval_width_display": 4.044453455396809e-55,
+      "max_symmetric_error_display": 1.2942251057269792e-53,
+      "shift": "1/1000000000000000000000000000000",
+      "certified_physical_lower": "9/1000000000000000000000000000000",
+      "cross_source_exact_overlap": {
+        "E32_N210K180": 1088,
+        "E48_N280K240": 2400,
+        "total": 3488,
+        "conflicts": 0
+      }
+    }
+  ],
+  "separate_infinite_F112_complement_lower": "17/100",
+  "whole_E112_native_matrix": false,
+  "original_positive_source_Gram": false,
+  "corrected_even56_odd56_Schur": false,
+  "whole_aperture_positive_at_53_50": false,
+  "RH_F4": false,
+  "lean": false,
+  "source_producer": [
+    "scripts/certify_native_low48_nf14_106.py",
+    "scripts/certify_native_low64_nf14_106.py"
+  ],
+  "source_validators": [
+    "scripts/validate_native_low48_nf14_106.py",
+    "scripts/validate_native_low64_nf14_106.py"
+  ]
+}
