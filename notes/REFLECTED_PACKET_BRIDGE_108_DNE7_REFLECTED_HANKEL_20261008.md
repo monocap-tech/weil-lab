@@ -126,3 +126,21 @@ This is a necessary inequality; it does NOT exclude negative C, so Theorem A is 
 **DNE8 target:** restrict the exact reflected Hankel comparison to the genuine FINITE-RANK low-energy spectral space of the ACTUAL supported positive J_a (where a potential H-null must live at arithmetic level kappa_a), and test whether CC41's localization bounds and DNE4's weighted response supply an original-arithmetic estimate unavailable on arbitrary high-frequency packets. Do not relabel the bounded-negative C subspace as a crossing. The missing information is spectral ADAPTATION, not another generic reflection or fixed finite-moment estimate.
 
 Concurrent Coupled CC53 and Aperture NF18 are read-only; DNE only adds files on its own branch.
+
+## 7. Sharper local essential-spectrum statement
+
+The same construction proves more than indefinite finite test values. Let S=J union (ell-J) be the concrete pair of positive-half support intervals in Section 4, and let P_S denote physical multiplication by 1_S. On the FULL physical Hilbert space L2(S) consider ONLY the bounded REFLECTED-COMPARISON operator
+
+    B_S=P_S K_arch,ref P_S + c_2 R_ell|L2(S),
+
+where K_arch,ref is the continuous Hankel integral operator with kernel j(x+y) on SxS. All other original prime reflections have zero compression by the support-separation check. The compression of R_ell is the selfadjoint reflection involution f(x)->f(ell-x) on S. It has +1 and -1 eigenspaces of infinite dimension (symmetric and antisymmetric combinations of arbitrary L2(J) profiles).
+
+Because S is bounded away from x=0, j(x+y) is bounded and continuous on SxS, so K_arch,ref is Hilbert-Schmidt, hence compact. Weyl invariance under compact selfadjoint perturbations gives the EXACT local essential spectrum
+
+    sigma_ess(B_S)={-c_2,+c_2}.                       (17)
+
+Any additional finite-rank pole-moment operator on L2(S) is compact and cannot change (17). Hence no finite number of moment corrections can make this REFLECTED comparison positive semidefinite. Smooth profiles are dense in the two infinite reflection eigenspaces, so the existing native smooth witnesses are compatible with this operator conclusion.
+
+**Critical scope distinction:** B_S is the BOUNDED folded parity-difference/Hankel operator on a positive-half support subspace. It is NOT the full original physical Weil operator L_a, NOT the positive J_a, and NOT the DNE2 ground-state generator G_phi. Their supported logarithmic form and compact-resolvent properties remain intact. Negative essential spectrum of B_S proves no off-line zeta zero and no negative full Weil test. It only blocks a proposed universal reflected-Hankel positivity transfer.
+
+This local essential-spectrum statement sharpens Section 5's finite-moment no-go without supplying the still-missing estimate on TRUE low-energy/null-adapted spectral states.
