@@ -1,0 +1,18 @@
+{
+  "stage": "CC51 paid moment-tail geometric gate error",
+  "publication_base": "46df0b2a9f37e11b75ea6b15b9c5dce59e95226b",
+  "dependencies": ["CC37", "CC49", "CC50", "NF16"],
+  "new_exact_control_checks": 41,
+  "historical_chain_replayed": false,
+  "aperture": "53/50",
+  "high_bound": "207/1000",
+  "fixed_exact_high_carrier": true,
+  "tail_geometric_gate_operator_error_upper": "2e-50",
+  "native_response_evaluated": false,
+  "other_gate_error_evaluated": false,
+  "native_gate_certified": false,
+  "whole_positive_anchor": "21/20",
+  "RH_proved": false,
+  "lean_certified": false,
+  "other_branches_modified": false
+}

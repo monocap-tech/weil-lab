@@ -1,0 +1,12 @@
+{
+  "stage": "CC51 moment-tail signed gate error",
+  "all_passed": true,
+  "new_exact_checks": 41,
+  "geometric_gate_operator_error_upper": "2e-50",
+  "native_response_evaluated": false,
+  "other_gate_error_evaluated": false,
+  "native_gate_certified": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "d5047fc3da0c02818a804e0712c466dfeb14ff11ede750742294320ec0f9d3fb"
+}
