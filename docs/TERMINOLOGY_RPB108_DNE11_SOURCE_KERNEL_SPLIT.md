@@ -52,3 +52,12 @@ Every original native low pairing in the subtraction must be paid; one may NOT r
     ||S*S-S_N*S_N|| <=eps*(2||S_N||+eps).
 
 The finite remaining integral and its rigorous quadrature/interval evaluation have NOT been executed yet. DNE11 supplies the effective analytic-tail budget and finite elementary-integral reduction, not a positive DNE9 Schur or reflected gate.
+
+
+**Double-truncated original source:** `s_Q^[600,64](p)` uses the degree599 rational Taylor polynomial for the analytic kernel r AND degree64 Maclaurin polynomials for both original exponential-pole profiles and their corresponding moments. All prime translations are exact. At a=53/50, the physical L2 source-operator error is <3*10^-41 on every finite supported polynomial p, with no degree dependence. The two pole approximations together cost <3*10^-99.
+
+**Native source moment cells:** After splitting I at every original prime-panel endpoint ±a±log n, `s_Q^[600,64](p)(x)=U_p(x)-(1/2)p(x)log(a²-x²)`, where U_p is a piecewise polynomial with certifiably enclosable original arithmetic coefficients. Complete source Grams require only polynomial-panel moments, polynomial*single-log moments on panels, and WHOLE-interval polynomial*log² moments.
+
+**Complete even logarithmic moments:** `M_(m,k)(a)=int_-a^a x^(2m)[log(a²-x²)]^k dx=a^(2m+1)[(2log a+∂_beta)^k B(m+1/2,beta)]_(beta=1)` for k=0,1,2. In particular M_(0,1)=4a(log(2a)-1) and M_(0,2)=2a[4(log(2a)-1)²+4-pi²/3]. Odd monomial moments vanish by symmetry.
+
+**Proof classification:** This is a constructive finite-moment representation and fully paid analytic-truncation error, NOT an evaluated full56 original source Gram, not a total transcendental-interval ledger, and not an original Weil null-exclusion certificate.
