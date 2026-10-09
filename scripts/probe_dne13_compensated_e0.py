@@ -26,7 +26,7 @@ def regular(t):
     out[~small]=np.exp(-z/2)/(-np.expm1(-2*z))-1/(2*z)
     return out
 
-def run(order):
+def run(order,frozen=False):
     z,g=roots_legendre(order)
     cuts=sorted(set([-A,0.,A]+[x for n in ACTIVE for x in (A-math.log(n),-A+math.log(n)) if -A<x<A]))
     xs=[];ws=[]
@@ -64,6 +64,7 @@ def run(order):
     asym=np.max(np.abs(gram-gram.T))
     gram=(gram+gram.T)/2
     coeff=np.linalg.solve(gram[1:,1:],gram[1:,0])
+    if frozen:coeff=np.array([-7094302/10**9,5131477/10**9])
     w=p[0]-coeff@p[1:]
     s=source[0]-coeff@source[1:]
     retained=np.array([np.dot(weight*s,basis(n,x)) for n in range(0,112,2)])
@@ -76,7 +77,7 @@ def run(order):
     assert abs(direct_square-projected)<1e-9
     energy=gram[0,0]-np.dot(gram[0,1:],coeff)
     high=np.array([np.dot(weight*s,p[i]) for i in (1,2)])
-    return dict(order=order,native_block=gram.tolist(),symmetry_error=float(asym),
+    return dict(order=order,frozen_rational_trial=frozen,native_block=gram.tolist(),symmetry_error=float(asym),
         correction_coefficients=coeff.tolist(),compensated_source_square=float(full),
         retained_projection_square=float(np.dot(retained,retained)),
         full_F112_source_residual_square=float(projected),
@@ -91,6 +92,6 @@ def run(order):
 if __name__=='__main__':
     out=dict(stage='DNE13 compensated e0 diagnostic',aperture='53/50',
         method='native complete source + split Gauss rules + endpoint square substitution',
-        runs=[run(n) for n in (160,240,360)],
+        runs=[run(n) for n in (160,240,360)]+[run(360,True)],
         interval_certificate=False,actual_null_exclusion=False,RH=False)
     print(json.dumps(out,indent=2))
