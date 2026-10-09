@@ -42,8 +42,6 @@ def run():
         ck(all(sum(L[i][j]*mode[j] for j in range(n)) ==
                F(3,2)*mode[i] for i in range(n)))
         ck(sum(phi[i]*mode[i] for i in range(n))==0)
-        ck(all(sum((L[i][j]-(lam if i==j else F(0)))*mode[j]
-                    for j in range(n))==0 for i in range(n))) if False else None
         # H=L+lambda*I, so both modes are exact H-null.
         ck(all(sum((L[i][j]+(lam if i==j else 0))*mode[j]
                     for j in range(n))==0 for i in range(n)))
