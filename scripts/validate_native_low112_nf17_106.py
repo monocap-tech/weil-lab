@@ -11,6 +11,8 @@ def load(path):
     return raw,json.loads(raw)
 def validate(e112,e96):
     t=time.monotonic();raw,d=load(e112);oldraw,old=load(e96)
+    newsha=hashlib.sha256(raw).hexdigest()
+    assert newsha=='f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81'
     oldsha=hashlib.sha256(oldraw).hexdigest()
     assert oldsha=='aff17c786d41287f077680f412e4b2c14d59fdebacbaf11272d23033aee6e3ac'
     assert d['aperture']=='53/50' and d['dim']==112 and d['N']==720 and d['K']==620
@@ -55,6 +57,8 @@ def validate(e112,e96):
             if not ok:break
         if ok:
             selected=shift;counts=passes;break
+    if selected is not None:
+        assert selected-op_error>F(9,10**39)
     status='PASS finite E112 sign' if selected is not None else 'INCONCLUSIVE finite E112 sign'
     return dict(status=status,aperture='53/50',dimension=n,
         E112_source_sha256=hashlib.sha256(raw).hexdigest(),
@@ -65,6 +69,7 @@ def validate(e112,e96):
         tested_positive_shift=str(selected) if selected else None,
         exact_positive_parity_pivots=counts,
         certified_finite_L2_lower=str(selected-op_error) if selected else None,
+        conservative_finite_L2_lower='9/10^39' if selected else None,
         whole_original_aperture_positive=False,corrected_infinite_F112_Schur=False,
         original_positive_source_action_Gram=False,Lean_certified=False,
         validation_seconds=round(time.monotonic()-t,3))
