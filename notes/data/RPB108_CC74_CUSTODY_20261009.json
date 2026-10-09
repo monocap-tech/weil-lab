@@ -1,0 +1,49 @@
+{
+  "milestone": "CC74",
+  "integration_parent": "433c32598895a6c23a4be303496939011c59017b",
+  "NF30_source": "2c64055c00350a7b91ead62453b085cd3408da66",
+  "NF31_source": "24aa3d5ff6e193f5865a3c9cdb9eeb61a6d29f1d",
+  "replays": [
+    {
+      "replay": "nf30_replay_cc74.json",
+      "published_input": "RPB108_NF30_SOURCE_INPUT_CC74_20261009.json",
+      "byte_equal": true,
+      "sha256": "d0625cefe819f3704dec1d75bf0ad0bcd4ea8a3cd6806ebe6d76056733ac321b"
+    },
+    {
+      "replay": "nf30_validation_replay_cc74.json",
+      "published_input": "RPB108_NF30_VALIDATION_INPUT_CC74_20261009.json",
+      "byte_equal": true,
+      "sha256": "518af43655b814885dee69f8ddb76df77d09346e091f27dd1d4ad9429cc908a0"
+    },
+    {
+      "replay": "nf31_validation_replay_cc74.json",
+      "published_input": "RPB108_NF31_VALIDATION_INPUT_CC74_20261009.json",
+      "byte_equal": true,
+      "sha256": "190a1d18000d7af616de5b1775bcf828c10f236bdbc039f1f92fdd697708edf6"
+    }
+  ],
+  "NF31_decompressed_sha256": "ee5c3ebab7fe2d015ff92145b5c69b72630d90cb6306530e8bd8769469e21557",
+  "remaining_inverse_proofs_identical": true,
+  "physical_gap_strict": "3.1004e-36",
+  "remaining_scalar_floor_rejected_both_parities": true,
+  "source_branch_modified": false,
+  "full_Weil_nonimplication_claimed": false,
+  "file_sha256": {
+    "docs/TERMINOLOGY_RPB108_FOUR_DIRECTION_REMAINDER_CC74.md": "18062b58eff795734986ed6268007c16d84f7df3e9e273cbf9d023f0641bc8ee",
+    "notes/REFLECTED_PACKET_BRIDGE_108_FOUR_DIRECTION_REMAINDER_CC74_20261009.md": "2e2da7a1b79b20a6e136c76b976154694ea5f22255b9e9296fc43a879e43f6b2",
+    "notes/data/RPB108_FOUR_DIRECTION_FULL_HIGH_CC74_CERTIFICATE_20261009.json": "695a6b762c33004255264c3d6406364b719a26bd5a7c29cdd4a4fb5c7ae91ca9",
+    "notes/data/RPB108_NF30_FIXED_TRIAL_CC74_20261009.json": "7460d5ed3b159d34fa002a56382b40f91cde1d7712fe5e2b1b0ff2b4df7cb65b",
+    "notes/data/RPB108_NF30_SOURCE_INPUT_CC74_20261009.json": "d0625cefe819f3704dec1d75bf0ad0bcd4ea8a3cd6806ebe6d76056733ac321b",
+    "notes/data/RPB108_NF30_VALIDATION_INPUT_CC74_20261009.json": "518af43655b814885dee69f8ddb76df77d09346e091f27dd1d4ad9429cc908a0",
+    "notes/data/RPB108_NF31_SOURCE_INPUT_CC74_20261009.json.gz.b64": "0f4efea1781dda47eca438b6dc681968e40b487d94b62a9a41f3db951ab59835",
+    "notes/data/RPB108_NF31_VALIDATION_INPUT_CC74_20261009.json": "190a1d18000d7af616de5b1775bcf828c10f236bdbc039f1f92fdd697708edf6",
+    "notes/data/RPB108_REMAINING_LOADING_CC74_CERTIFICATE_20261009.json": "eaf18cdbe6b5da0994b4ca884afc42fa53e8ccb5dc1d0d4815c8434021a70f24",
+    "scripts/certify_four_direction_full_high_cc74.py": "ee01f84ddeab67f8b3451077476303c19bed781e699a538ca1645b56919d7e28",
+    "scripts/certify_native_expanded_response_nf30_106.py": "04dd2212ed3cf7717b1fb979eb59fa3b0911048fe1b112acb18fa7b6c2dd962e",
+    "scripts/certify_native_remaining_background_nf31_106.py": "7371dfc116e0445ea1a26a412a07964e91507f3642924a90fa91647181964dca",
+    "scripts/certify_remaining_loading_cc74.py": "1f1ec6f0621eedb6f5b08470fa2027187c76de688f722ea774c14e85b47658e5",
+    "scripts/validate_native_expanded_response_nf30_106.py": "990a0232b77fc6d735185e10e0506df8ea845f0cbdf36135ba027ae3661b956f",
+    "scripts/validate_native_remaining_background_nf31_106.py": "64b82179836058207f3be42f35f6c8a221a31ddcbe548271c63508bd532693a5"
+  }
+}
