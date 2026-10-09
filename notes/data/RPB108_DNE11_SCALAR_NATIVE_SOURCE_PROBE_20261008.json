@@ -1,0 +1,34 @@
+{
+  "stage": "RPB108 DNE11 exploratory scalar native source Gram",
+  "category": "NUMERICAL_ONLY_NOT_INTERVAL_CERTIFIED",
+  "aperture": "53/50",
+  "normalized_mode": "physical E112 degree-0 Legendre mode e0=1/sqrt(2a)",
+  "true_native_source_terms": [
+    "a0+J(a-x)+J(a+x)",
+    "prime shifts n=2,3,4,5,7,8 with correct von Mangoldt weights in both directions",
+    "8*sinh(a/2)*cosh(x/2) positive even pole source"
+  ],
+  "quadrature": "mpmath quadrature split at all ±(a-log n), x=0 and support endpoints; endpoint logs retained",
+  "independent_precision_runs": [
+    45,
+    65
+  ],
+  "displayed_digits_agreed_at_both_precisions": true,
+  "evaluated_intervals": 14,
+  "observed": {
+    "polefree_normalized_H00": "-4.61202451798124222114267511708399722485908",
+    "original_normalized_Q00": "0.0401520842754207446870744414505014905417144",
+    "polefree_source_squared_norm": "21.3558232586984912438802161921313499843487",
+    "original_source_squared_norm": "0.0836618343819153569292728970478431281913861",
+    "original_source_squared_residual_after_subtracting_only_E0": "0.0820496445102548671013803770691132486432394",
+    "polefree_source_squared_residual_after_subtracting_only_E0": "0.0850531042383815918662731056638579469704591"
+  },
+  "independent_existing_source_comparison": "H00 and Q00 observations fall in the pinned CC40/NF12 rational intervals (sanity check, not rigorous quadrature certification)",
+  "not_claimed": [
+    "Full original E112 retained-source projection subtracted",
+    "A certified physical high residual source norm on F112",
+    "Rigorously enclosed quadrature or source-Gram eigenvalues",
+    "DNE9 56-mode reflected-sign LMI",
+    "New original Weil positivity, RH, Lean"
+  ]
+}
