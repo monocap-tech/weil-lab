@@ -1,0 +1,18 @@
+{
+  "milestone": "CC76",
+  "integration_parent": "81b493c1680cfdf90f24c7364cc0383b479c843a",
+  "read_only_source": "a2e155a631a3a719c2f53ab629c501d0fe105747",
+  "prior_CC71_published_bytes_authenticated": true,
+  "exact_consumer_replay_byte_identical": true,
+  "shared_lift_remaining_directions": 108,
+  "original_native_boundary_coordinates_recertified": 216,
+  "complete_residual_Gram_certified": false,
+  "whole_aperture_positive": false,
+  "full_Weil_nonimplication_claimed": false,
+  "file_sha256": {
+    "notes/data/RPB108_REMAINING_LIFT_TRANSFER_CC76_CERTIFICATE_20261009.json": "7fdc6cd93c62e4964efd3d6b7b7a9cf058b8605cf2fbf44bab420ca7dc0dba98",
+    "scripts/certify_remaining_lift_transfer_cc76.py": "b9da1bd6c6696955a9be4b81424794ac88ba2cc6d3fc72dcf8ef21b1fe5a5897",
+    "docs/TERMINOLOGY_RPB108_REMAINING_LIFT_TRANSFER_CC76.md": "2919e21a94b58cad9751057046bd9383bdd987bdade7a1374d86cd6abba3ddcc",
+    "notes/REFLECTED_PACKET_BRIDGE_108_REMAINING_LIFT_TRANSFER_CC76_20261009.md": "ebed0c612c4161b9f0f8e02dd13e89806f834855cce41dc7927b45876c8355d8"
+  }
+}

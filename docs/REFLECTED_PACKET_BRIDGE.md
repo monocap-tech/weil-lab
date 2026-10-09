@@ -4066,3 +4066,12 @@ Definitions: [CC75 collective credit](TERMINOLOGY_RPB108_COLLECTIVE_CREDIT_CC75.
 For a fixed family, write S=D-Gamma/kappa and Delta=Gamma/kappa-R*C^-1R. The exact quantitative collective obligation is S+Delta >= epsilon M. The actual inverse-weighted response and most remaining source entries remain uncertified. Exact positive/null/negative crossings satisfy the high floor and every strict scalar credit target, proving that those targets alone do not settle the collective matrix. Native energy preconditioning is a congruence and cannot repair the unchanged negative direction.
 
 [CC75 note](../notes/REFLECTED_PACKET_BRIDGE_108_COLLECTIVE_CREDIT_CC75_20261009.md) records source replay, controls, custody and the next acceptance test for shared remaining high lifts or a sharper collective response estimate. CC74's original four-direction plus entire-high gap >3.1004e-36 is preserved. Whole 53/50 positivity, uniform all-cap leakage/frame, RH/F4/full transport/Lean remain open; whole-domain 21/20 anchor and paused fronts remain unchanged. No nonimplication from the full original Weil identities is asserted.
+
+
+## CC76 — exact shared remaining-background lift transfer (2026-10-09)
+
+Definitions: [CC76 transfer](TERMINOLOGY_RPB108_REMAINING_LIFT_TRANSFER_CC76.md). The certified CC71 rational two-high-mode lift is restricted exactly to NF31's remaining 54-dimensional background in each parity. All 108 remaining directions now have explicit shared rational lifts with inherited positive original finite graph gaps (>5.4369e-28 even, >5.8217e-25 odd).
+
+All 216 measured boundary source coordinates are recertified from authenticated original native archives. Their operator norm is <7.494e-69 even and <7.411e-69 odd, and measured floor loading is <4.990e-109 and <4.557e-112. This removes the specific measured-coordinate obstruction on the changed lifted family. It does not control the other high modes or certify the complete residual Gram.
+
+[CC76 note](../notes/REFLECTED_PACKET_BRIDGE_108_REMAINING_LIFT_TRANSFER_CC76_20261009.md) records exact transfer, replay and the concrete next task: complete source certification for this shared family, followed by signed mixed correlation with the successful pair. CC74's four-direction plus entire-high gap remains valid. Whole 53/50, full retained infinite-high sign, uniform all-cap leakage/frame, RH/F4/full transport/Lean remain open; the whole-domain 21/20 anchor and paused fronts are unchanged.
