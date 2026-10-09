@@ -75,7 +75,7 @@ def run(order,frozen=False):
         direct-=value*basis(n,x)
     direct_square=np.dot(weight,direct*direct)
     assert abs(direct_square-projected)<1e-9
-    energy=gram[0,0]-np.dot(gram[0,1:],coeff)
+    energy=gram[0,0]-2*np.dot(gram[0,1:],coeff)+coeff@gram[1:,1:]@coeff
     high=np.array([np.dot(weight*s,p[i]) for i in (1,2)])
     return dict(order=order,frozen_rational_trial=frozen,native_block=gram.tolist(),symmetry_error=float(asym),
         correction_coefficients=coeff.tolist(),compensated_source_square=float(full),
