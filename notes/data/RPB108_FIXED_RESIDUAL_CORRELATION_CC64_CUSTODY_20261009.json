@@ -1,0 +1,23 @@
+{
+  "milestone": "CC64",
+  "integration_parent": "de08033d192b85da27f11e52d3b74c7404ff6ea1",
+  "readonly_NF24_head": "b7fa4461ab4cca2ebc9383ae4b9407c03a580826",
+  "source_files_SHA256": {
+    "build_native_residual_projection_nf24_106.py": "60e1e4fb74e00c482451b4a8450bbbfd808d9bddb76cec4a553823c92a9d9499",
+    "target_replay.json": "6eee61fb4e58ac5be0e95f492f461b289da37ee13aeaa74bbf4acc06f6650c00",
+    "certify_native_source_square_prime_pole_nf21_106.py": "04da3f5b79c0053c63f46e523a91cf3d44e5e3d95eff326ba9a93fdd98168ece",
+    "RPB108_NF24_NATIVE_RESIDUAL_PROJECTIONS_117_118_20261009.json.gz.b64": "0d4282e6250dea8fa1384eceedee39784fc342d1f9e54430eff4041ec158fc99",
+    "certify_native_compensated_witness_nf24_106.py": "63ea190322c223719eb37bf8eb9e634cd01c7cb309ea02ec4e91c43fc031cc07",
+    "validate_native_residual_projection_nf24_106.py": "cbb21a7f98c512f65e071e7ccd271478cf1254b60177325954f03ebdad10fb1c",
+    "projection_replay.json": "b20434881bcc57efaa92f6a4ff4b9d9df73a0fc99e1852fd85b79f37e85eb3fc",
+    "RPB108_NF24_COMPENSATED_SOURCE_TARGETS_20261009.json": "6eee61fb4e58ac5be0e95f492f461b289da37ee13aeaa74bbf4acc06f6650c00",
+    "RPB108_NF24_COMPENSATED_SOURCE_CERTIFICATE_20261009.json": "2483ad7fb07bfdacc846faf4b6926e27178203f8ca58d51c1d89232209d0bae2"
+  },
+  "native_source_builder_rerun": false,
+  "target_producer_rerun": true,
+  "projection_validator_rerun": true,
+  "CC63_direct_projection_consumer_passed": true,
+  "script_SHA256": "dccf4d55cc2278dd6f97fc20acd60c2f62c6075c7304fc33185b76737c7f9d23",
+  "certificate_SHA256": "07ef12385322e88eb63e75d194d12b3bf0bf44dc2198cd695620a228cbc055dc",
+  "original_sources_unchanged": true
+}
