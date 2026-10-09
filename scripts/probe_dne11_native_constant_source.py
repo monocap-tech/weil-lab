@@ -34,15 +34,22 @@ def probe(dps=65):
                     [s for _,ell in terms for s in (ell-a,a-ell)
                      if -a<s<a]))
     arch=prm=pole=norm_h=norm_q=mp.mpf(0)
+    norm_arch=norm_prime=norm_pole=norm_prime_pole=mp.mpf(0)
     for lo,hi in zip(cuts,cuts[1:]):
         arch+=mp.quad(lambda x:parts(x)[0],[lo,hi])
         prm +=mp.quad(lambda x:parts(x)[1],[lo,hi])
         pole+=mp.quad(lambda x:parts(x)[2],[lo,hi])
         norm_h+=mp.quad(lambda x:(parts(x)[0]+parts(x)[1])**2,[lo,hi])
         norm_q+=mp.quad(lambda x:sum(parts(x))**2,[lo,hi])
+        norm_arch+=mp.quad(lambda x:parts(x)[0]**2,[lo,hi])
+        norm_prime+=mp.quad(lambda x:parts(x)[1]**2,[lo,hi])
+        norm_pole+=mp.quad(lambda x:parts(x)[2]**2,[lo,hi])
+        norm_prime_pole+=mp.quad(lambda x:(parts(x)[1]+parts(x)[2])**2,[lo,hi])
     h00=(arch+prm)/(2*a)
     q00=(arch+prm+pole)/(2*a)
     norm_h/=2*a;norm_q/=2*a
+    norm_arch/=2*a;norm_prime/=2*a;norm_pole/=2*a
+    norm_prime_pole/=2*a
     comparisons=None
     if PINNED.is_file():
         pinned=json.loads(PINNED.read_text())
@@ -63,6 +70,11 @@ def probe(dps=65):
                 h00=strv(h00),q00=strv(q00),
                 physical_source_H_e0_squared=strv(norm_h),
                 physical_source_Q_e0_squared=strv(norm_q),
+                physical_arch_source_e0_squared=strv(norm_arch),
+                physical_prime_source_e0_squared=strv(norm_prime),
+                physical_pole_source_e0_squared=strv(norm_pole),
+                physical_prime_plus_pole_source_e0_squared=strv(norm_prime_pole),
+                doubled_arch_vs_prime_pole_cross=strv(norm_q-norm_arch-norm_prime_pole),
                 residual_Q_excluding_E0_ONLY=strv(norm_q-q00*q00),
                 residual_H_excluding_E0_ONLY=strv(norm_h-h00*h00),
                 compared_against_pinned_NF12=comparisons,
