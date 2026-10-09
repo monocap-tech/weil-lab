@@ -1,0 +1,64 @@
+{
+  "stage": "DNE33",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "parent": "c392b8eb26f54734d6bfcab77e3f6e85397fff9b",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE33_SOURCE_DIAGONAL.md",
+      "bytes": 3571,
+      "stored_sha256": "f022d0f23a733db9633d4f1ae268e7994ae6ace1d62ed5cbc78c03b3dc15ce0e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE33_SOURCE_DIAGONAL_20261009.md",
+      "bytes": 8550,
+      "stored_sha256": "1e1b226d4285dd708fa9d4a0001ef7eae6d11757ab572370882876a0e9fc37e3"
+    },
+    {
+      "path": "notes/data/RPB108_DNE33_EVEN_SOURCE_DIAGONAL_20261009.json.gz.b64",
+      "bytes": 33197,
+      "stored_sha256": "a7020ddb6e88dfd901b26c01f2f9b1582fc7686decaf48703b86620a0a26ae7c",
+      "decoded_sha256": "8197922548dc69c2d07f14ee9683fbbca7686c385bbb2833b1cb62bbdab7122b"
+    },
+    {
+      "path": "notes/data/RPB108_DNE33_EVEN_SOURCE_DIAGONAL_REPLAY_20261009.json.gz.b64",
+      "bytes": 33381,
+      "stored_sha256": "a02e392f511d71621cdc4ccf6c5b11346befd3346c6d1995d9858fbe2b4bdce8",
+      "decoded_sha256": "e565abdbc577933e03fc3b963a415bac471ac87981005250c19d7bfeb21e5096"
+    },
+    {
+      "path": "notes/data/RPB108_DNE33_ODD_SOURCE_DIAGONAL_20261009.json.gz.b64",
+      "bytes": 33121,
+      "stored_sha256": "6c77eab5de16a4d16bf59f0f48394f3ae046a3e6157eb0b32c33b40b1acf3043",
+      "decoded_sha256": "26bfcb6165f01e2bcfac887054a85510e4ca79990f0471dd44217399640128e1"
+    },
+    {
+      "path": "notes/data/RPB108_DNE33_ODD_SOURCE_DIAGONAL_REPLAY_20261009.json.gz.b64",
+      "bytes": 32545,
+      "stored_sha256": "04c7e64753b3e715fc89f09f6a36d75e3613042fb3b94f5f84b421b0be2cbe4c",
+      "decoded_sha256": "70a24570f75980cd3c28ad0f7cd9935a9b2bd4d72c1d85d1dd7a980ce43b68ca"
+    },
+    {
+      "path": "notes/data/RPB108_DNE33_SOURCE_DIAGONAL_VALIDATION_20261009.json",
+      "bytes": 12938,
+      "stored_sha256": "97565a26c00c6ec34efb5d084fdd39fbd0c7d1e5948e7dc9d6f2805fee8062ff"
+    },
+    {
+      "path": "scripts/certify_dne33_source_diagonal.py",
+      "bytes": 9877,
+      "stored_sha256": "1031417f5a109a95cc73fcc681327ceb24d815be3cfd823233f676de2f35bbf8"
+    },
+    {
+      "path": "scripts/validate_dne33_source_diagonal.py",
+      "bytes": 7586,
+      "stored_sha256": "3619222d7a26612a5c0b288c1d62fc810a12d8923972af37813f7b82383d8386"
+    }
+  ],
+  "complete_source_diagonals": 2,
+  "all_high_positive_retained_dimension": 10,
+  "remaining_uncovered_retained_dimension": 102,
+  "all_high_physical_gap_guard": "3/100000000000000000000000000000000000000",
+  "complete_remaining_source_Gram_certified": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
