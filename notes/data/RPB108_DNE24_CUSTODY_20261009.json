@@ -1,0 +1,22 @@
+{
+  "stage": "DNE24",
+  "parent": "7c413f783061dc790a14b8b49628df0710aecb1e",
+  "write_branch": "research/rpb108-direct-null-exclusion",
+  "phase_read_only_head": "f353936b780a4d988ec242a647ab985404f5b69e",
+  "coupled_read_only_head": "2671eda30be8b08f36ae3a07c23f5391ab292798",
+  "producer_sha256": "0796a24639092e79bc0aef22a732163030d16fc476ce66451c41071ae20d2c91",
+  "validator_sha256": "b687435f92031468c0ce499fcaa8fe19234ad1c4c41a65ac7a389d65bbac99e3",
+  "certificate_sha256": "c73aff9e17a5e659449a3d6e232ffa4c97603f3300afedbae8188500cfbf81ce",
+  "replay_certificate_sha256": "c73aff9e17a5e659449a3d6e232ffa4c97603f3300afedbae8188500cfbf81ce",
+  "validation_sha256": "c132f5b12d236bc46b838ffe856ff2ad34a58984469b7a0df88306b2d97e53ea",
+  "primary_rational_assertions": 11664,
+  "replay_rational_assertions": 11664,
+  "independent_rational_checks": 1138,
+  "actual_reduced_response_evaluated": false,
+  "new_certified_positive_retained_directions": 0,
+  "remaining_dimension": 104,
+  "complete_source_producers_replayed_here": false,
+  "other_branches_written": false,
+  "whole_aperture_positive": false,
+  "Lean": false
+}

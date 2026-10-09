@@ -1,0 +1,34 @@
+{
+  "stage": "DNE24",
+  "status": "PASS",
+  "independent_rational_checks": 1138,
+  "certificate_sha256": "c73aff9e17a5e659449a3d6e232ffa4c97603f3300afedbae8188500cfbf81ce",
+  "fresh_replay_byte_identical": true,
+  "independent_cofactor_inverse_and_Cramer_complement_checked": true,
+  "genuine_crossing_controls": [
+    {
+      "native_remainder": "1",
+      "reduced_sign": "-1",
+      "normalized_response": "2",
+      "whole_original_null": false
+    },
+    {
+      "native_remainder": "2",
+      "reduced_sign": "0",
+      "normalized_response": "1",
+      "whole_original_null": true
+    },
+    {
+      "native_remainder": "3",
+      "reduced_sign": "1",
+      "normalized_response": "2/3",
+      "whole_original_null": false
+    }
+  ],
+  "nonorthogonal_coordinate_mass_control_passed": true,
+  "positive_ground_level_whole_mass_shift_passed": true,
+  "retained_only_shift_misses_positive_level_null": true,
+  "large_true_response_without_unit_eigenvalue_control_passed": true,
+  "actual_Weil_response_evaluated": false,
+  "whole_aperture_positive": false
+}
