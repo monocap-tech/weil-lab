@@ -5,8 +5,10 @@ Certified inputs: NF17 complete original signed E112, NF18 first exterior
 and NF19 second exterior; NF19's independently exact 58x58 Bareiss strict
 R2 lower bounds are used as declared dependencies, NOT recomputed here.
 
-For the finite polynomial E112 source, the physical L2 representative\ns_x exists: Fourier decay O(1/|xi|) dominates logarithmic-symbol growth.
-Its norm satisfies ||s_x||² >= ||(Q(x,e_first),Q(x,e_second))||².\nThe standard bound
+For the finite polynomial E112 source, the physical L2 representative
+s_x exists: Fourier decay O(1/|xi|) dominates logarithmic-symbol growth.
+Its norm satisfies ||s_x||² >= ||(Q(x,e_first),Q(x,e_second))||².
+The standard bound
 G(x) <= ||s_x||²/kappa therefore cannot prove A-G>0 on every x;
 the first two measured columns ALREADY make its upper estimate >4 A
 in one even direction and >19/5 A in one odd direction.
