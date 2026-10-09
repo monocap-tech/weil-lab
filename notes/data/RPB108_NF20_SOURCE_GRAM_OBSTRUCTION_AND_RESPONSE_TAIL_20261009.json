@@ -1,0 +1,53 @@
+{
+  "milestone": "NF20",
+  "date": "2026-10-09 UTC / 2026-10-08 Pacific",
+  "aperture": "53/50",
+  "status": "PASS exact native source-Gram estimator obstruction; qualitative convergent response theorem; true infinite residual remains unevaluated",
+  "inputs": {
+    "E112_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+    "NF18_first_exterior_sha256": "da5fe692dc0d3a0820ccaf68217628776f08718661696dddad54012f4f3841ee",
+    "NF19_second_exterior_sha256": "0a8f4ebd0778fa5c90209b3021d22791bdb0d9b73e0f19df608e04ed9ba2bcad"
+  },
+  "original_global_F112_physical_floor": "207/1000",
+  "exact_native_C2_strict_Gershgorin_lowers": {
+    "even": "14/5",
+    "odd": "289/100"
+  },
+  "independently_certified_actual_two_mode_collective_R2_strict_lowers": {
+    "even": "302/1000",
+    "odd": "275/1000"
+  },
+  "strict_actual_energy_relative_physical_source_Gram_over_global_kappa_lowers": {
+    "even": "4228/1035",
+    "odd": "3179/828"
+  },
+  "conclusions": {
+    "even_exceeds_four_times_old_energy": true,
+    "odd_exceeds_19_over_5_times_old_energy": true,
+    "global_physical_L2_source_norm_sufficient_certificate_fails": true,
+    "actual_C_inverse_could_still_preserve_positivity": true,
+    "finite_polynomial_E112_physically_L2_source_representable": true,
+    "high_Legendre_Galerkin_responses_monotone_and_uniformly_convergent_in_A_metric": true,
+    "effective_infinite_residual_rate_proved": false,
+    "full_infinite_F112_inverse_reaction_evaluated": false,
+    "whole_aperture_positive": false
+  },
+  "future_source_Gram_gate": "P_m < (207/1000)*(A-G_m), with P_m=Gram(P_F T(x-Y_m x)) and complete native source error payment; sufficient, not currently certified",
+  "new_abstract_controls": {
+    "two_parities": 2,
+    "hidden_response_factors": [
+      "1/2",
+      "1",
+      "2"
+    ],
+    "exact_cases_passed": 6,
+    "original_native_Weil_counterexample": false,
+    "shift_entire_physical_mass_test_passed": true
+  },
+  "scripts": {
+    "source_audit": "scripts/certify_native_source_gram_obstruction_nf20_106.py",
+    "crossing_controls": "scripts/validate_native_hidden_tail_controls_nf20.py"
+  },
+  "full_original_Weil_RH": false,
+  "Lean": false
+}
