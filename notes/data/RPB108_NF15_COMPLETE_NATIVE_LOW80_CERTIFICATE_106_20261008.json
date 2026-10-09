@@ -29,7 +29,7 @@
     "even": 40,
     "odd": 40
   },
-  "certified_physical_finite_lower": "9/1000000000000000000000000000000000",
+  "certified_physical_finite_lower": "9/10000000000000000000000000000000000",
   "old_E64_full_original_source_component_interval_intersections": 4224,
   "conflicts": 0,
   "original_F112_infinite_physical_complement_lower": "17/100",
