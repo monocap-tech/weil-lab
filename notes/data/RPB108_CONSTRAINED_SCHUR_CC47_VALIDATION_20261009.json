@@ -1,0 +1,10 @@
+{
+  "stage": "CC47 constrained Schur",
+  "all_passed": true,
+  "new_exact_checks": 54,
+  "native_gate_evaluated": false,
+  "arithmetic_floor_certified": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "a4c27cbcdbcd0c1d88f9bd0dce494d8576c55651ea37e81d298092d72168d3c5"
+}

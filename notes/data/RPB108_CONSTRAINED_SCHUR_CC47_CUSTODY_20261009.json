@@ -1,0 +1,13 @@
+{
+  "stage": "CC47 moment-constrained Schur gate",
+  "publication_base": "b57e217cf6f01381bf8a33d5335a84aeef7081f0",
+  "dependencies": ["CC33", "CC41", "CC44", "NF10", "NF15"],
+  "new_exact_control_checks": 54,
+  "historical_chain_replayed": false,
+  "native_gate_evaluated": false,
+  "arithmetic_floor_certified": false,
+  "whole_positive_anchor": "21/20",
+  "RH_proved": false,
+  "lean_certified": false,
+  "other_branches_modified": false
+}
