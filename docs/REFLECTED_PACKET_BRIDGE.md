@@ -4231,3 +4231,8 @@ The same A >= (207/1000) I and original form/domain attachments remain hypothese
 - [CC93 note](../notes/REFLECTED_PACKET_BRIDGE_108_SHARPER_PHYSICAL_GAP_CC93_20261009.md)
 - [Validator](../scripts/certify_cc93_sharpen_physical_gap.py)
 - [Sharper bounds and controls](../notes/data/RPB108_CC93_SHARPER_PHYSICAL_GAP_20261009.json)
+
+
+## CC94 — exact remaining retained complement (2026-10-09)
+
+[Definitions](TERMINOLOGY_RPB108_REMAINING_COMPLEMENT_CC94.md) and [consumer certificate](../notes/REFLECTED_PACKET_BRIDGE_108_REMAINING_COMPLEMENT_CC94_20261009.md) recover the exact 53+53 remaining retained directions. A deterministic rational restriction of NF33's shared lifted frame proves retained orthogonality, rank and the full 6+106=112 retained decomposition. Its inherited finite physical gap exceeds 5.4721e-22; this does not certify the complement with all F or its collective join to the six-direction packet. The complete remaining source Gram and signed mixed inverse-high response remain required. CC93's conditional physical bound is preserved; whole aperture remains 21/20.

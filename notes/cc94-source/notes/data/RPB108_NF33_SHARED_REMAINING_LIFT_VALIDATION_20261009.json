@@ -1,0 +1,30 @@
+{
+  "milestone": "NF33",
+  "status": "PASS",
+  "fixed_trial_sha256": "89683af32013c4bfc3ed3bd66d90ff889131a4ccdd03dd769523a7dfbbcd9cff",
+  "frame_certificate_sha256": "1f2887cbdb0c3c237ff279d7715ee4a29ac7cec89d4caecf6c56f7474b1b6d37",
+  "shared_frame_fresh_replay_identical": true,
+  "selection_fresh_replay_identical": true,
+  "parity_checks": [
+    {
+      "parity": "even",
+      "status": "SHARED_LIFT_FLOOR_REJECTED",
+      "certificate_sha256": "9bdf992dda4aca110f2c776183ce9e6f614623fdc373389485cf25e06711a9dd",
+      "exact_membership_and_mass": true,
+      "three_way_native_energy_overlap": true,
+      "error_payment_checked": true,
+      "independent_native_projection_overlap_checked": true
+    },
+    {
+      "parity": "odd",
+      "status": "SHARED_LIFT_FLOOR_REJECTED",
+      "certificate_sha256": "ce8c97c61db0ade92d2b10d2bed56775eb07d0bb66ae956654c94716a4febac5",
+      "exact_membership_and_mass": true,
+      "three_way_native_energy_overlap": true,
+      "error_payment_checked": true,
+      "independent_native_projection_overlap_checked": true
+    }
+  ],
+  "complete_collective_high_Gram_certified": false,
+  "whole_aperture_positive": false
+}
