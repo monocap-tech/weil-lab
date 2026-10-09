@@ -1,0 +1,16 @@
+{
+  "stage": "CC46 nodal energy balance",
+  "publication_base": "9c95fc2fb3c1027ea8734ca433306c9456ed4fc2",
+  "integration_base": "4cd98892a146e86b9bf58e2207d902c065f120d2",
+  "nf15_handoff_preserved": true,
+  "dependencies": ["CC33", "CC37", "CC43", "CC44", "CC45"],
+  "new_exact_control_checks": 40,
+  "historical_chain_replayed": false,
+  "actual_null_vectors_evaluated": false,
+  "arithmetic_floor_certified": false,
+  "nodal_measure_lower_bound_analytic": true,
+  "whole_positive_anchor": "21/20",
+  "RH_proved": false,
+  "lean_certified": false,
+  "other_branches_modified": false
+}

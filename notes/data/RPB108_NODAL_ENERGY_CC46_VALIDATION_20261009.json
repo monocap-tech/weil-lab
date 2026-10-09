@@ -1,0 +1,10 @@
+{
+  "stage": "CC46 nodal energy balance",
+  "all_passed": true,
+  "new_exact_checks": 40,
+  "actual_null_vectors_evaluated": false,
+  "arithmetic_floor_certified": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "e7f54a9e7692016ea2084f8067b704024b8f7288a5b4d3942c7502e3cf369480"
+}
