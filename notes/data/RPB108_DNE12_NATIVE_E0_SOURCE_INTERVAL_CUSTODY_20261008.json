@@ -75,5 +75,19 @@
     "This does not certify an F112 inverse response or DNE9 finite null LMI",
     "This does not prove whole a=53/50 native positivity, a global contact exclusion, RH/F4 or Lean"
   ],
-  "next": "DNE13: rigorous interval source-square for first NF19 compensated e0 direction and a near-critical Ritz vector, with full original cross terms and full residual/Schur error budget."
+  "next": "DNE13: rigorous interval source-square for first NF19 compensated e0 direction and a near-critical Ritz vector, with full original cross terms and full residual/Schur error budget.",
+  "read_only_NF22_reconciliation": {
+    "source": "https://github.com/monocap-tech/weil-lab/blob/research/rpb108-phase-geometry-localization/notes/data/RPB108_NF22_ARCH_SOURCE_LOW2_CERTIFICATE_20261009.json",
+    "NF22_rigorous_arch_e0_source_square": [
+      "7.082144075590",
+      "7.082144075591"
+    ],
+    "agrees_with_independent_DNE12_arch_interval": true,
+    "NF22_complete_original_source_diagnostics_certified": false,
+    "DNE12_derived_tighter_signed_double_covariance": [
+      "-14.244",
+      "-14.2415"
+    ],
+    "CC59_high_response_still_distinct": true
+  }
 }
