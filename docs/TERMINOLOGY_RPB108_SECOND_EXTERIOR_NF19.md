@@ -47,3 +47,16 @@ two-mode result. Full original whole-domain positivity requires
 
 All inequalities are scoped to the original source and the fixed target
 cap; no old-gap-independent arithmetic frame bound is presumed.
+
+**Rational low-energy three-space and twice-invisible existence.**
+Let V3,p be the span of three explicitly specified rational E112 parity
+vectors. A strict certificate \(\varepsilon_p M(V3,p)-Q(V3,p)>0\)
+proves both their linear independence and that EVERY nonzero vector in
+V3,p has positive original native physical Rayleigh below epsilon_p,
+using the established original E112 positivity. The two measured native
+pairings \(Q(x,e_{112+p})\) and \(Q(x,e_{114+p})\) define a linear
+map V3,p -> C^2 of rank at most two. Its kernel therefore contains a
+nonzero vector with BOTH measured pairings EXACTLY zero. This is an
+existence theorem for an original positive low-energy retained vector,
+NOT an explicit coefficient calculation for that corrected kernel
+vector, not an original Q-null and not invisibility to all F112 sources.
