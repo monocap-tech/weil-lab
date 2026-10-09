@@ -1,0 +1,37 @@
+{
+  "stage": "DNE7",
+  "date": "2026-10-08 America/Los_Angeles",
+  "repository": "monocap-tech/weil-lab",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "parent": "6f9ecef8714f1b7517a8a0d55108d164718a16f0",
+  "theorem": "Actual native reflected archimedean-plus-prime Hankel parity difference is infinitely sign-indefinite when prime2 can cross positive half; survives finite moment constraints",
+  "exact_arithmetic": {
+    "complete_native_pole_free": true,
+    "j": "exp(-t/2)/(1-exp(-2t))",
+    "prime_weights": "Lambda(n)/sqrt(n)",
+    "prime_orientations": "both retained in parity difference",
+    "reflect_difference": "H_a(O f)-H_a(E f)=4 C_a(f)",
+    "arch_laplace_moment_gram": "sum_{k>=0} |int exp(-(2k+1/2)x) f(x)dx|^2",
+    "cap": "53/50",
+    "intervals": "J centered at 3 log(2)/8, reflected J' centered at 5 log(2)/8, halfwidth 1/100",
+    "strict_negative": "C(f)<- (log2)/(2 sqrt2) * ||f||² on infinite dimensional antisymmetric reflected subspace",
+    "strict_positive": "C(f)>= (log2)/(sqrt2) * ||f||² on infinite dimensional symmetric reflected subspace",
+    "finite_moment_constraints_survive": true
+  },
+  "independent_controls": {
+    "result": "PASS",
+    "checked_exact_bigint_rational_guards_and_models": 262,
+    "source": "scripts/validate_dne7_reflected_hankel.py",
+    "committed_python_validator_executed": false,
+    "actual_zeta_null_eigenvector_evaluated": false
+  },
+  "scope": {
+    "counterexample_to_universal_reflection_positivity": true,
+    "counterexample_to_full_original_Weil_positivity": false,
+    "all_aperture_contact_exclusion": false,
+    "actual_odd_spectral_surplus": false,
+    "rh_proved": false,
+    "lean_proved": false
+  },
+  "next": "DNE8: restrict reflected correlation tests to actual low-energy spectral subspace of J_a, retaining the full homogeneous null equation"
+}
