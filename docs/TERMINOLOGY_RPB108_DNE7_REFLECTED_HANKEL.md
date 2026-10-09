@@ -34,3 +34,6 @@ J=(3ell/8-eps,3ell/8+eps), R_2J=(5ell/8-eps,5ell/8+eps). Use 2/3<ell<7/10 and 1<
 so `C_a(f)<=2 (int f cosh)²`. This is a NECESSARY condition for an actual null, not a contradiction. It must be combined with the FULL homogeneous eigenfunction equation, which arbitrary packets do not satisfy.
 
 **Scope:** Infinite negative/positive index of the reflected comparison DOES NOT imply negative original Q, does not disprove the RH criterion, and cannot evaluate the actual pole-free ground state. The new obstruction is to UNCONDITIONAL reflected positivity or finite-moment repairs, not to a null-adapted arithmetic estimate.
+
+
+**Localized reflected Hankel operator:** On S=J union (log2-J) chosen with all pairwise sums below log3, set B_S(f)=int_S j(x+y)f(y)dy + c_2 f(log2-x), acting on L2(S). Its continuous archimedean part is Hilbert-Schmidt, while reflection is a selfadjoint involution with infinitely dimensional +/- eigenspaces. Thus sigma_ess(B_S)={-c_2,+c_2}. This is the essential spectrum of the FOLDED PARITY COMPARISON, not of the full Weil operator, J_a or the Doob generator. Finite-rank pole-moment corrections do not change it.
