@@ -1,0 +1,31 @@
+{
+  "stage": "DNE3",
+  "date": "2026-10-08",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "predecessor": "80dde77302d72808daa0fa3e0373a39cc79e341c",
+  "source": "notes/REFLECTED_PACKET_BRIDGE_108_DNE3_NATIVE_JUMP_SPECTRAL_20261008.md",
+  "proof_type": "analytic digamma-increment/Plancherel closed-form extension and explicit arithmetic shift identity",
+  "primary_reference": "https://dlmf.nist.gov/5.9.E16",
+  "analytic_claims": [
+    "pole-free original native form equals positive jump energy minus scalar kappa on entire supported canonical domain",
+    "zero extension supplies logarithmic exterior killing penalty",
+    "original moment-zero equation is a positive jump eigen-equation at level kappa",
+    "conditional odd full-domain floor by reflection, exterior mass and exact shift telescoping",
+    "coarse odd floor provably below kappa at a=53/50"
+  ],
+  "rational_controls": {
+    "checks": 779,
+    "passed": true,
+    "independently_replayed": true,
+    "weights": "j(m log 4)=2^-m/(1-16^-m)",
+    "native_zeta_integral_executed": false
+  },
+  "conditions_not_proved": [
+    "weighted phi(x)phi(y) integral identity for arbitrary rough transformed eigenfunctions",
+    "strict arithmetic surplus above kappa on any unproved cap",
+    "full native E112 mixed Schur",
+    "original null exclusion",
+    "RH",
+    "Lean theorem"
+  ]
+}
