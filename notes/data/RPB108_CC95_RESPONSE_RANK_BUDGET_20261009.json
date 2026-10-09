@@ -1,0 +1,139 @@
+{
+  "milestone": "CC95",
+  "integration_parent": "779aec35c365e36fbc98b24499a3e6bbe4ec4855",
+  "read_only_source": "6658ff2837838ab00b9b9c605fdd200d473c3293",
+  "parity_checks": [
+    {
+      "parity": "even",
+      "paid_high_columns": 8,
+      "packet_response_rank": 3,
+      "response_rank_witness_column_indices": [
+        1,
+        2,
+        3
+      ],
+      "response_rank_witness_determinant": [
+        "125722450002498701980503911580750877224338946735931959030171979572556942885771593/2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "161115993044062519513003768128570024117468086183397077753601869598251547233012739/2500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "certified_nonzero_three_column_minor_count": 35,
+      "high_response_inverse_residual_upper": "118852008855727647781849850540746664581230288674932948540957832809194295112236631/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "actual_packet_scalar_floor_inertia": {
+        "positive": 2,
+        "negative": 1,
+        "zero": 0
+      },
+      "actual_packet_scalar_floor_determinant": [
+        "-49892365621387831422915293333246803764137548794892732952761167865768875835548781/250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "-194513213422230008343871319463759435151754277015521625695852100472316612680357607/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "full_retained_dimension": 56,
+      "full_response_rank_upper": 8,
+      "full_retained_correction_kernel_dimension_lower": 48,
+      "remaining_dimension": 53,
+      "additional_response_profile_rank_upper": 5,
+      "remaining_profile_kernel_dimension_lower": 48,
+      "maximum_full_scalar_floor_negative_index_repairable": 8,
+      "whole_scalar_floor_negative_index_already_at_least": 1,
+      "additional_negative_index_budget_upper": 7
+    },
+    {
+      "parity": "odd",
+      "paid_high_columns": 7,
+      "packet_response_rank": 3,
+      "response_rank_witness_column_indices": [
+        1,
+        2,
+        3
+      ],
+      "response_rank_witness_determinant": [
+        "-12293945684833877344036199849930321191403311153552878604281897753889648821310163/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "-61459202833295486395858883447550029290377140850125995401102495579296948476963529/5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "certified_nonzero_three_column_minor_count": 20,
+      "high_response_inverse_residual_upper": "116827202206853628894335025132487244466494761229448800591912940914593005942337291/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "actual_packet_scalar_floor_inertia": {
+        "positive": 2,
+        "negative": 1,
+        "zero": 0
+      },
+      "actual_packet_scalar_floor_determinant": [
+        "-836485587226665596238392842538177720264456626058390836662002109487801113975256597/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "-835298405652319592939000866729118375739141287328938132026277025526849555638764649/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "full_retained_dimension": 56,
+      "full_response_rank_upper": 7,
+      "full_retained_correction_kernel_dimension_lower": 49,
+      "remaining_dimension": 53,
+      "additional_response_profile_rank_upper": 4,
+      "remaining_profile_kernel_dimension_lower": 49,
+      "maximum_full_scalar_floor_negative_index_repairable": 7,
+      "whole_scalar_floor_negative_index_already_at_least": 1,
+      "additional_negative_index_budget_upper": 6
+    }
+  ],
+  "combined_full_response_rank_upper": 15,
+  "combined_full_correction_kernel_dimension_lower": 97,
+  "exact_controls": {
+    "exact_crossings": [
+      {
+        "scale": "1",
+        "theta": "-1/100",
+        "finite_native_positive": true,
+        "both_separate_high_Schur_diagonals_positive": true,
+        "kernel_value": "41607/50000",
+        "joint_determinant": "-8612649/10000000000"
+      },
+      {
+        "scale": "1",
+        "theta": "0",
+        "finite_native_positive": true,
+        "both_separate_high_Schur_diagonals_positive": true,
+        "kernel_value": "207/250",
+        "joint_determinant": "0"
+      },
+      {
+        "scale": "1",
+        "theta": "1/100",
+        "finite_native_positive": true,
+        "both_separate_high_Schur_diagonals_positive": true,
+        "kernel_value": "41193/50000",
+        "joint_determinant": "8526951/10000000000"
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "theta": "-1/100",
+        "finite_native_positive": true,
+        "both_separate_high_Schur_diagonals_positive": true,
+        "kernel_value": "41607/50000000000000000000000000000000000000000",
+        "joint_determinant": "-8612649/10000000000000000000000000000000000000000000000"
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "theta": "0",
+        "finite_native_positive": true,
+        "both_separate_high_Schur_diagonals_positive": true,
+        "kernel_value": "207/250000000000000000000000000000000000000",
+        "joint_determinant": "0"
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "theta": "1/100",
+        "finite_native_positive": true,
+        "both_separate_high_Schur_diagonals_positive": true,
+        "kernel_value": "41193/50000000000000000000000000000000000000000",
+        "joint_determinant": "8526951/10000000000000000000000000000000000000000000000"
+      }
+    ],
+    "kernel_positivity_not_sufficient": true,
+    "noncoordinate_blind_negative_control": true,
+    "nine_negative_rank_eight_rejection": true
+  },
+  "full_remaining_response_entries_available": false,
+  "actual_full_scalar_floor_negative_index_known": false,
+  "existing_high_columns_proved_insufficient": false,
+  "background_floor_newly_proved": false,
+  "original_form_domain_attachment_inherited": true,
+  "whole_aperture_positive": false,
+  "highest_certified_whole_aperture": "21/20"
+}

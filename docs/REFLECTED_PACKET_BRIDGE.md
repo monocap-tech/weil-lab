@@ -4236,3 +4236,8 @@ The same A >= (207/1000) I and original form/domain attachments remain hypothese
 ## CC94 — exact remaining retained complement (2026-10-09)
 
 [Definitions](TERMINOLOGY_RPB108_REMAINING_COMPLEMENT_CC94.md) and [consumer certificate](../notes/REFLECTED_PACKET_BRIDGE_108_REMAINING_COMPLEMENT_CC94_20261009.md) recover the exact 53+53 remaining retained directions. A deterministic rational restriction of NF33's shared lifted frame proves retained orthogonality, rank and the full 6+106=112 retained decomposition. Its inherited finite physical gap exceeds 5.4721e-22; this does not certify the complement with all F or its collective join to the six-direction packet. The complete remaining source Gram and signed mixed inverse-high response remain required. CC93's conditional physical bound is preserved; whole aperture remains 21/20.
+
+
+## CC95 — current inverse-response rank budget (2026-10-09)
+
+[Definitions](TERMINOLOGY_RPB108_RESPONSE_RANK_BUDGET_CC95.md) and [certificate](../notes/REFLECTED_PACKET_BRIDGE_108_RESPONSE_RANK_BUDGET_CC95_20261009.md) prove packet response rank three in each parity. The current eight/seven high columns can correct rank at most eight/seven on the eventual full retained family, leaving a correction kernel of dimension at least 48/49 (97 combined). The scalar-floor form must already be positive on that kernel. Additional response profiles modulo the packet span have rank at most five/four. Full scalar-floor negative index above eight/seven would reject the present construction; the actual full index remains unknown. Exact crossing and rank controls pass. Existing columns are not proved insufficient, no new native source is claimed, and whole aperture remains 21/20.
