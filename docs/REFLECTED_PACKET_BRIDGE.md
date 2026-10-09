@@ -4187,3 +4187,14 @@ Next even selection must add response outside this scalar ray or improve the bas
 - [CC89 note](../notes/REFLECTED_PACKET_BRIDGE_108_EVEN_RESPONSE_RAY_CC89_20261009.md)
 - [Validator](../scripts/certify_cc89_even_response_ray.py)
 - [Exact ray bounds and controls](../notes/data/RPB108_CC89_EVEN_RESPONSE_RAY_20261009.json)
+
+
+## CC90 — current even response rejection neighborhood (2026-10-09)
+
+Definitions: [CC90 response neighborhood](TERMINOLOGY_RPB108_RESPONSE_NEIGHBORHOOD_CC90.md). Working after the seventh credit, independent NF45 moment replay at certificate level bounds the reference normalized response slope below 61/100. A proposed single response satisfying both specified 19-percent drift constraints has slope at most 80/81 and fails the current seven-source even certificate at every nonnegative strength. This is a quantitative orientation screen in the inverse-response metric, not physical polynomial distance or an evaluation of a new source.
+
+Joint candidate packets require CC84/CC86's full signed span test; individual ray rejection does not imply joint rejection. The odd conditional pass, whole-domain 21/20 anchor and all explicit floor/transport/collective obligations are preserved. No new native source, whole 53/50, all-cap, RH/F4 or Lean closure is claimed.
+
+- [CC90 note](../notes/REFLECTED_PACKET_BRIDGE_108_RESPONSE_NEIGHBORHOOD_CC90_20261009.md)
+- [Validator](../scripts/certify_cc90_even_response_neighborhood.py)
+- [Exact neighborhood bound and controls](../notes/data/RPB108_CC90_EVEN_RESPONSE_NEIGHBORHOOD_20261009.json)
