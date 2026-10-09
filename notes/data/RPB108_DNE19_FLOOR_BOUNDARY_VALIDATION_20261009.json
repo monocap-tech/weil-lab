@@ -1,0 +1,12 @@
+{
+  "stage": "DNE19",
+  "status": "PASS",
+  "replay_comparisons": 21,
+  "primary_exact_rational_assertions": 623,
+  "replay_exact_rational_assertions": 623,
+  "both_raw_response_directions_rejected_at_DNE17_floor": true,
+  "fixed_arch_global_prime_norm_strategy_barrier_verified": true,
+  "new_positive_subspace_certified": false,
+  "whole_aperture_positive": false,
+  "RH": false
+}
