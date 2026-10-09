@@ -1,0 +1,30 @@
+{
+  "stage": "DNE27",
+  "status": "PASS",
+  "independent_rational_checks": 861,
+  "certificate_sha256": "4004a41e1ff792ea667719ba889d5908b3098581fd0dfbf437e96fe0c6cf9f93",
+  "primary_and_replay_source_credits_identical": true,
+  "higher_precision_physical_gap_not_weaker": true,
+  "paid_source_domination_and_native_comparison_passed": true,
+  "coherent_Young_and_nonorthogonal_mass_controls_passed": true,
+  "genuine_crossing_controls": [
+    {
+      "border": "99/100",
+      "determinant": "199/10000",
+      "actual_null": false
+    },
+    {
+      "border": "1",
+      "determinant": "0",
+      "actual_null": true
+    },
+    {
+      "border": "101/100",
+      "determinant": "-201/10000",
+      "actual_null": false
+    }
+  ],
+  "whole_mass_positive_level_controls_passed": true,
+  "complete_remaining_Gram_certified": false,
+  "whole_aperture_positive": false
+}

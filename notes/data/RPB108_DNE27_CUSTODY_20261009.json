@@ -1,0 +1,27 @@
+{
+  "stage": "DNE27",
+  "parent": "d82a8197a4dc7cef144ff8a6c4b04d6a06166663",
+  "write_branch": "research/rpb108-direct-null-exclusion",
+  "phase_read_only_head": "090e389c030c9b488de00d1e44a6b1b6bd43f96c",
+  "coupled_read_only_head": "dd93e5cc7d003d44cdc240c5710f4c253dc1346f",
+  "producer_sha256": "2247bed5757bc34d4f00ae6adc49467a3544d43f88b70ec9e06f02b303dafd35",
+  "validator_sha256": "5ed16e33ae78840df3826b6f8e4c1bc3e5a9ac6d1cab1357d4389b566c49931a",
+  "certificate_sha256": "4004a41e1ff792ea667719ba889d5908b3098581fd0dfbf437e96fe0c6cf9f93",
+  "replay_certificate_sha256": "246dde4fdba7775a039f9f9deaa3f039c5f6874edf46469cbfb6db668d4190cf",
+  "validation_sha256": "ecd805aa9638f39fc2ac547d8af33e840bf3cd0a5c7afed41bf7159ac0104a66",
+  "primary_outer_assertions": 10,
+  "replay_outer_assertions": 10,
+  "independent_rational_checks": 861,
+  "new_credits": {
+    "even": "79/25000",
+    "odd": "481/50000"
+  },
+  "new_common_physical_gap_guard": "4/1000000000000000000000000000000000000",
+  "tested_frame_unchanged": true,
+  "new_positive_retained_directions": 0,
+  "uncovered_retained_dimension": 104,
+  "source_integrations_replayed": false,
+  "remaining_Gram_certified": false,
+  "whole_aperture_positive": false,
+  "other_branches_written": false
+}
