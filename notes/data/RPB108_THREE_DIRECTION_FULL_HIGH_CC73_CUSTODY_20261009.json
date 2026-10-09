@@ -1,0 +1,31 @@
+{
+  "milestone": "CC73",
+  "status": "PASS",
+  "integration_parent": "fd8ca0ab3800140bb192a512ec953f625c3bb53c",
+  "read_only_source_head": "50723e823db4d102a7b419deec433942d8376423",
+  "unmodified_NF29_producer_replayed": true,
+  "complete_source_replay_byte_identical": true,
+  "complete_source_sha256": "069d4acc267a0ac48154427a033cccca96243743dd31e36449f7189de03e895a",
+  "independent_checker_replay_object_identical": true,
+  "independent_checker_replay_byte_identical": true,
+  "original_unsquared_projection_checks": 2,
+  "independent_expanded_native_energy_checks": 2,
+  "independent_mixed_energy_decomposition_checks": 2,
+  "retained_dimension": 3,
+  "included_high_space": "ALL F112",
+  "excluded_retained_dimension": 109,
+  "strict_original_physical_gap": "3.32e-36",
+  "old_whole_domain_gap_used": false,
+  "new_restricted_null_exclusion": true,
+  "whole_domain_null_exclusion": false,
+  "genuine_crossings": 3,
+  "positive_whole_mass_ground_levels": 3,
+  "whole_aperture_positive": false,
+  "full_Weil_nonimplication_claimed": false,
+  "file_sha256": {
+    "scripts/certify_native_lifted_response_nf29_106.py": "0e386ee3ae356c45888868f054372f47d4b0cc0db2eecb7a24721989bba359d1",
+    "scripts/check_native_lifted_response_nf29_106.py": "040aea12641d21032c9fb5e412a39c84bb365e1393c15fc5f6e6035cbbf5a6cf",
+    "scripts/certify_three_direction_full_high_cc73.py": "13f163432d4b5681f2b3afcd1d9762dfae37d3a7c721acdf4d79af4fd3d972cf",
+    "notes/data/RPB108_THREE_DIRECTION_FULL_HIGH_CC73_CERTIFICATE_20261009.json": "5462c60bcd7221d53cfa8db070efa9d917ee179be394770f4703f80065c1436f"
+  }
+}
