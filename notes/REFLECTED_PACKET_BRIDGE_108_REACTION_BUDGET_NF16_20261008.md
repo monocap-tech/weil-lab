@@ -1,6 +1,6 @@
 # RPB108 NF16 — Improved original F112 complement and exact E64→E80 native Schur reaction
 
-Date: 2026-10-08. Branch research/rpb108-phase-geometry-localization. Historical whole-domain positivity anchor CC18 a=21/20; a=53/50 separate NF10 F112 and NF15 E80 finite native results. The primary Coupled integration front is not modified by this independent analysis. This document proves TWO finite-cap facts and neither is a new whole-aperture sign.
+Date: 2026-10-08. Branch research/rpb108-phase-geometry-localization. Historical whole-domain positivity anchor CC18 a=21/20; a=53/50 separate NF10 F112 and NF15 E80 finite native results. The primary Coupled integration front is not modified by this independent analysis. This document proves THREE finite-cap facts (a sharpened infinite F112 lower, one evaluated retained finite directional reaction, and a new complete signed E96 finite positive restriction). None is a whole-aperture sign.
 
 **A — Improved infinite physical complement bound:** original Q at a=53/50 is >207/1000 times physical L2 mass on the physical complement F112 of the first112 Legendre modes. This strengthens NF10's previous conservative 17/100 by recombining *existing NF10 exact source bounds*. No new prime Schur optimization or E112 matrix is required.
 
@@ -112,3 +112,36 @@ Committed [exact complement bound validator](../scripts/validate_native_compleme
 The E80 archive was independently mounted, decompressed and SHA-verified. Both the literal rational witness and the 8x8 inverse calculation were locally executed with Python Fraction; the global part of the theorem is simply source-independent block positivity. No GitHub Actions or Lean replay is claimed. Existing NF10, NF15, CC45 and subsequent Coupled mathematical branches are preserved without history edits.
 
 **Current standing:** new physical F112 positive lower 0.207, certified original finite E80 native sign and exact finite relative reaction. The whole original domain on a=53/50 still lacks its E112 finite matrix, complete source Gram and corrected even/odd Schur sign. Whole-domain positive aperture remains 21/20. No RH/F4, global non-stalling, full transport or Lean closure.
+
+## 5. NF16 full native E96 result — 96/112 finite retained modes now certified
+
+The target-specific [NF16 E96 source generator](../scripts/certify_native_low96_nf16_106.py) reuses the previously authenticated E80 original signed native source interval archive (SHA256 `9188d9b48525c1e1af41292e3bfe8d3004470e03b00520428d9d5b0cc76a8513`) **without modifying any of its 1640 existing entries**. It independently reconstructs every original E80-to-E96 mixed term and the new high-degree E96 entries: **712 NEW complete signed same-parity entries**, for **2352** total. Each new entry retains the original archimedean kernel, all prime powers 2,3,4,5,7,8 in both orientations, and the two signed poles. Thus the complete E96 source carries 9408 individual arch/prime/pole/total-form interval assertions.
+
+The new rows use exponent order600, Bernoulli520, prime logarithm arctanh640, and 230-digit directed Fraction grid. High-order logarithms of enormous rational Taylor endpoints are evaluated after an outward rational endpoint compression at grid 10^-180; this is a rigorously encompassing interval expansion, NOT a dropped source error or a floating approximation. Its source runtime was roughly 144 seconds after this denominator-control optimization, compared with an earlier stalled precomputation. The complete source archive is hash-bound:
+
+\[
+\mathrm{SHA256}_{\mathrm{uncompressed}}=
+\texttt{aff17c786d41287f077680f412e4b2c14d59fdebacbaf11272d23033aee6e3ac}.
+\]
+
+The largest true signed interval width across the ENTIRE original E96 source is about \(4.054309\times10^{-68}\), dominated by the inherited E80 block; the largest newly reconstructed entry interval width is about \(4.008062\times10^{-68}\). Round rational interval midpoints to 10^-43. The full symmetric 96-by-96 operator error is strictly less than \(9.597\times10^{-42}\) in the physical orthonormal basis.
+
+The separate [NF16 exact rational E96 validator](../scripts/validate_native_low96_nf16_106.py) proves that the midpoint matrix minus \(10^{-35}I\) has **48 positive EVEN and 48 positive ODD exact-rational LDL pivots**. After paying the COMPLETE original signed source interval error,
+
+\[
+\boxed{
+Q_{53/50}(h)\ \ge9\times10^{-36}\,\|h\|_{L^2}^2
+\qquad\forall h\in E_{96}.
+}
+\tag{NF16.3}
+\]
+
+This strengthens the actual finite signed native restriction of NF15 from E80 to E96. It does **NOT** establish the full native E112 positivity, the source-corrected E112/F112 Schur sign, or the whole-domain positive aperture at 1.06.
+
+For a conditioning diagnostic only, high-precision numerical midpoint eigenvalues of E96 are about \(1.1404\times10^{-34}\) (lowest even) and \(3.6051\times10^{-31}\) (lowest odd). No numerical eigenvalue decides the certified sign. The source's [NF16 custody manifest](data/RPB108_NF16_COMPLEMENT_AND_DIRECTIONAL_REACTION_106_CERTIFICATE_20261008.json) records both the uncompressed and deterministic gzip source hashes; the full complete E96 interval source archive is attached as a conversation artifact, rather than copied into the GitHub notes tree.
+
+## 6. Updated NF17 gate
+
+The source-level full native finite positive frontier is now E96, and the actual infinite F112 positive complement has a sharpened bound 207/1000 at a=53/50. These are separate subspaces with **16 physical retained Legendre degrees 96..111 and the complete mixed source/infinite Schur correction still unpaid**. Continuing to E112 is a well-specified finite computational job, but a full 112-mode trial sign is not a substitute for the original source/action Gram. The exact NF16 E64→E80 reaction (NF16.2) confirms that near-critical retained directions can lose a large relative fraction of their positive margin under a modest enlargement.
+
+A substantive NF17 must therefore either (i) complete E112 native intervals AND build a viable source/action Gram and corrected signed Schur, or (ii) independently deliver a sharper on-source inverse estimate whose compatibility with the critical directions is explicitly certified. The old whole-aperture certified anchor remains CC18 at a=21/20. CC46's separate global null/nodal investigation remains untouched; no RH/F4, non-stalling, full transport or Lean theorem is inferred.
