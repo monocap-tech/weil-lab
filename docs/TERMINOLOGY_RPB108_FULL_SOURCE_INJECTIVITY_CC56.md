@@ -1,0 +1,10 @@
+# CC56 terminology — finite-carrier full-source injectivity
+
+* **Finite polynomial carrier E(a,N):** supported polynomials of degree at most N on [-a,a], a>0, with physical L2 norm. Even/odd restrictions are allowed. E112 at53/50 corresponds to N111, with56 coordinates per parity.
+* **Supported native action L_a p:** the original signed Weil action of a supported polynomial p, restricted to [-a,a]. It has an actual physical L2 representative. This is a statement about finite polynomial inputs, not boundedness of full Q on physical L2 or regularity of general critical vectors.
+* **Complete high source B(a,N):** Pi_(E(a,N)^perp) L_a p in physical L2. It records ALL high tests; it is not the first two columns, not an aperture-exterior source, and not CC52's constrained carrier.
+* **Endpoint-log coefficient:** in a right-endpoint collar, L_a p(x)=-(1/2)p(x)log(a-x)+R_p(x), with R_p real analytic across x=a. The coefficient function is the whole polynomial p, not merely p(a).
+* **Endpoint jet matrix:** coefficients of P_n(1-s/a) for selected parity degrees. The first56 rows at E112 form a nonsingular Vandermonde-type matrix in n(n+1). It certifies independence of the singular coefficient functions, not a numerical physical source Gram.
+* **Qualitative finite full-source frame:** injectivity of B(a,N), together with continuity and finite dimension, gives gamma(a,N)>0 such that ||Bp||_2^2>=gamma(a,N)||p||_2^2. No value of gamma or bound uniform in N is evaluated here.
+* **Norm recovery gap:** extraction of an endpoint-log coefficient is not a bounded functional on unrestricted L2 source functions, even when the rest is analytic. A logarithm minus its finite Legendre projection retains its log coefficient and has arbitrarily small L2 norm. These are mechanism controls, not original Weil arithmetic realizations.
+* **Scope:** exact native source injectivity for fixed finite polynomial carriers. General critical eigenvectors, full inverse response, quantitative defect-relative constants, all-cap leakage, and whole sign remain open.
