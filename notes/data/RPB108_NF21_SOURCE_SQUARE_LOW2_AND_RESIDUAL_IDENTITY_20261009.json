@@ -1,0 +1,83 @@
+{
+  "milestone": "NF21",
+  "date": "2026-10-09 UTC",
+  "aperture": "53/50",
+  "classification": "PASS exact prime+signed-pole physical source-square E2 sector; full archimedean residual Gram not yet built",
+  "source": "complete original prime powers 2,3,4,5,7,8 both signed translations and both Hermitian pole-source actions",
+  "source_producer": "scripts/certify_native_source_square_prime_pole_nf21_106.py",
+  "source_producer_git_blob_sha": "f8f5886bb7baed60cfc2fd74488d056183c82a22",
+  "source_producer_sha256": "04da3f5b79c0053c63f46e523a91cf3d44e5e3d95eff326ba9a93fdd98168ece",
+  "raw_interval_JSON_sha256": "9ea91c5d0bf9bac4cf32d8a2bb3644c6fb7d9dd004ad3ebc5f5aac0ee1b01648",
+  "input_original_native_E112_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+  "certified_disjoint_prime_support_cells": 13,
+  "original_oriented_prime_shifts": 12,
+  "overlapping_ordered_prime_source_shift_pairs": 82,
+  "interval_grid_digits": 44,
+  "rational_log_terms": 125,
+  "exponential_taylor_terms": 145,
+  "exact_checks_with_original_signed_pole_native_entries": 2,
+  "outward_1e12_intervals": {
+    "prime_00": [
+      "4.249293916309",
+      "4.249293916310"
+    ],
+    "prime_11": [
+      "2.322359221687",
+      "2.322359221688"
+    ],
+    "pole_00": [
+      "21.678748363955",
+      "21.678748363956"
+    ],
+    "pole_11": [
+      "0.176302908536",
+      "0.176302908537"
+    ],
+    "twice_prime_pole_cross_00": [
+      "-18.683476299191",
+      "-18.683476299190"
+    ],
+    "twice_prime_pole_cross_11": [
+      "-1.217839085236",
+      "-1.217839085235"
+    ],
+    "combined_prime_plus_pole_00": [
+      "7.244565981074",
+      "7.244565981075"
+    ],
+    "combined_prime_plus_pole_11": [
+      "1.280823044988",
+      "1.280823044989"
+    ],
+    "even_odd_source_cross": [
+      "0",
+      "0"
+    ]
+  },
+  "independent_numerical_13_cell_quadrature": {
+    "prime_00": 4.249293916309068,
+    "prime_11": 2.322359221687507,
+    "prime_plus_pole_00": 7.244565981074306,
+    "prime_plus_pole_11": 1.280823044988065,
+    "not_used_as_certification": true
+  },
+  "source_residual_gram_identity": {
+    "parity_low_dimension": 56,
+    "measured_exterior_dimension": 2,
+    "required_source_square_gram_dimension": 58,
+    "T": "[I_56;-C2^-1 B*]",
+    "S2": "A-B C2^-1 B*",
+    "P2": "T* D T - S2* S2",
+    "high_two_mode_source_projection": "exactly zero by true signed form orthogonality",
+    "direct_numerically_stable_method": "integrate sigma_i(x) sigma_j(x) with sigma_i=L(T e_i)-sum_k S2[k,i] e_k, not by subtracting poorly conditioned Grams",
+    "verified_symbolically_in_exact_rational_model": true,
+    "model_not_original_Weil": true
+  },
+  "archimedean_physical_source_square_computed": false,
+  "arch_prime_and_arch_pole_source_cross_computed": false,
+  "true_P2_full_source_residual_gram_computed": false,
+  "corrected_all_high_Schur_certified": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
