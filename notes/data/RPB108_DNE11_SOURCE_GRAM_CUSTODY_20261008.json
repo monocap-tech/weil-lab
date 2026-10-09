@@ -61,7 +61,13 @@
     "full_original_residual_gram_computed": false,
     "all_high_Feshbach_inverse_certified": false,
     "RH_proved": false,
-    "lean_certified": false
+    "lean_certified": false,
+    "scalar_source_nf21_consistency": {
+      "e0_prime_plus_pole_numerical": "7.244565981074304011645988500801099304",
+      "matches_independent_NF21_interval_display": true,
+      "unproved_arch_interval": true,
+      "full_e112_low_projection_subtracted": false
+    }
   },
   "missing_next_stage": [
     "Build the actual finite source moment bank with rigorous outward enclosures for gamma, pi, all prime log/sqrt coefficients, prime cut endpoints",
@@ -74,5 +80,11 @@
     "aperture_nf20_read_only": true,
     "paused_fronts_untouched": true,
     "historical_reports_preserved": true
+  },
+  "concurrent_read_only_reconciliation": {
+    "NF21": "Certifies prime-plus-pole full source-square interval on e0/e1, and P2=T*D*T-S2^2 exact 58-mode residual identity; complete arch source and cross terms OPEN",
+    "CC57": "Exact abstract graph-gap countercontrol: native form-Galerkin convergence alone cannot force physical source residual norm to decay, even under compact resolvent",
+    "DNE11_distinction": "Fully controlled smooth analytic-kernel/pole Taylor approximation error on each fixed polynomial source is NOT a bound on physical high residual convergence or full inverse response",
+    "new_appropriate_next_gate": "Outward interval enclosure of actual original compensated finite physical source P2 using polynomial-log moment bank; test physical upper residual gate only after signed cancellation and all errors paid"
   }
 }
