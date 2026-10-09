@@ -1,0 +1,94 @@
+{
+  "milestone": "CC84",
+  "integration_parent": "f867b20e04d6783125a8a2ae0870b15ac16a40aa",
+  "read_only_source": "b21b3df8e026db1b8b253325442b6dfaa63f05ef",
+  "parity_checks": [
+    {
+      "parity": "even",
+      "certified_inertia": "two positive, one negative",
+      "current_condensed_deficit": [
+        "435414751034276162269064159691136771963353547860187122708790493271391721369354169/5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "460619151664773588834415029656966903499963892963280527124461020103902849159366231/5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "source_floor_hypothesis": "A >= (207/1000) I on the original remaining high space"
+    },
+    {
+      "parity": "odd",
+      "certified_inertia": "two positive, one negative",
+      "current_condensed_deficit": [
+        "230370397710037683146048384313107388976248812451508889534693241358754358515173229/500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "474469919120191250554615883917340266929211307087988082170872110055041402607177763/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "source_floor_hypothesis": "A >= (207/1000) I on the original remaining high space"
+    }
+  ],
+  "exact_controls": {
+    "two_column_crossings": [
+      {
+        "scale": "1",
+        "denominator_multiplier": "99/100",
+        "exact_batch_and_combination_margin": "1/99",
+        "each_individual_column_fails": true,
+        "optimal_rational_combination": [
+          "50/99",
+          "50/99"
+        ]
+      },
+      {
+        "scale": "1",
+        "denominator_multiplier": "1",
+        "exact_batch_and_combination_margin": "0",
+        "each_individual_column_fails": true,
+        "optimal_rational_combination": [
+          "1/2",
+          "1/2"
+        ]
+      },
+      {
+        "scale": "1",
+        "denominator_multiplier": "101/100",
+        "exact_batch_and_combination_margin": "-1/101",
+        "each_individual_column_fails": true,
+        "optimal_rational_combination": [
+          "50/101",
+          "50/101"
+        ]
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "denominator_multiplier": "99/100",
+        "exact_batch_and_combination_margin": "1/99000000000000000000000000000000000000",
+        "each_individual_column_fails": true,
+        "optimal_rational_combination": [
+          "1/1980000000000000000",
+          "1/1980000000000000000"
+        ]
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "denominator_multiplier": "1",
+        "exact_batch_and_combination_margin": "0",
+        "each_individual_column_fails": true,
+        "optimal_rational_combination": [
+          "1/2000000000000000000",
+          "1/2000000000000000000"
+        ]
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "denominator_multiplier": "101/100",
+        "exact_batch_and_combination_margin": "-1/101000000000000000000000000000000000000",
+        "each_individual_column_fails": true,
+        "optimal_rational_combination": [
+          "1/2020000000000000000",
+          "1/2020000000000000000"
+        ]
+      }
+    ],
+    "three_column_signed_metric_control": true,
+    "combined_column_reproduces_batch_condensed_margin": true
+  },
+  "actual_new_source_span_certified": false,
+  "simultaneous_six_direction_certificate": false,
+  "whole_aperture_positive": false
+}
