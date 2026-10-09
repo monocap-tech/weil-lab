@@ -1,0 +1,47 @@
+{
+  "stage": "DNE21",
+  "status": "PASS",
+  "exact_rational_assertions": 805,
+  "primary_consumer_assertions": 28,
+  "replay_consumer_assertions": 28,
+  "six_direction_joint_union_verified": true,
+  "controls": [
+    {
+      "kind": "three_direction_union_crossing",
+      "mixed": "-49/100",
+      "exact_ground_level": "1/50",
+      "all_two_coordinate_restrictions_positive": true
+    },
+    {
+      "kind": "nonorthogonal_six_union_model_with_full_high_completion",
+      "vectors": 256,
+      "gap": "8712/1146817"
+    },
+    {
+      "kind": "three_direction_union_crossing",
+      "mixed": "-1/2",
+      "exact_ground_level": "0",
+      "all_two_coordinate_restrictions_positive": true
+    },
+    {
+      "kind": "three_direction_union_crossing",
+      "mixed": "-51/100",
+      "exact_ground_level": "-1/50",
+      "all_two_coordinate_restrictions_positive": true
+    },
+    {
+      "kind": "positive_whole_mass_ground_level",
+      "mu": "1/10000000000000000000000000000000000000000"
+    },
+    {
+      "kind": "positive_whole_mass_ground_level",
+      "mu": "1/100"
+    },
+    {
+      "kind": "positive_whole_mass_ground_level",
+      "mu": "1/20"
+    }
+  ],
+  "whole_aperture_positive": false,
+  "RH": false
+}
