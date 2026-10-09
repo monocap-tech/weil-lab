@@ -1,0 +1,52 @@
+{
+  "milestone": "CC78",
+  "integration_parent": "2671eda30be8b08f36ae3a07c23f5391ab292798",
+  "read_only_NF34": "f353936b780a4d988ec242a647ab985404f5b69e",
+  "original_full_source_validator_and_consumer_replays": [
+    {
+      "replay": "nf34_even_replay_cc78.json",
+      "published_input": "RPB108_NF34_SOURCE_CC78_EVEN_EXPANDED_SHARED_LIFT_CERTIFICATE_20261009.json",
+      "byte_equal": true,
+      "sha256": "7327c2f3d89327ed1cef95404646c059c3ded4d4881486b1b3beb15651337d4f"
+    },
+    {
+      "replay": "nf34_odd_replay_cc78.json",
+      "published_input": "RPB108_NF34_SOURCE_CC78_ODD_EXPANDED_SHARED_LIFT_CERTIFICATE_20261009.json",
+      "byte_equal": true,
+      "sha256": "17ae9ec6757cd29443fc77af28b86fb3d4b7f9449317886c5aec75bf92a9fb89"
+    },
+    {
+      "replay": "nf34_validation_replay_cc78.json",
+      "published_input": "RPB108_NF34_SOURCE_CC78_EXPANDED_SHARED_LIFT_VALIDATION_20261009.json",
+      "byte_equal": true,
+      "sha256": "077d1916d44c88396aae4b993f745afd0b5c46b7ba7d6b8591b2895ed008268a"
+    },
+    {
+      "replay": "cc78_consumer_replay.json",
+      "published_input": "RPB108_NEW_PROBE_FULL_HIGH_CC78_CERTIFICATE_20261009.json",
+      "byte_equal": true,
+      "sha256": "8964b2f6a8499de1380f80a4e9eac733b9d4494a5f7ffe58243f7053da905677"
+    }
+  ],
+  "original_imports_unchanged": true,
+  "syntax_compilation_passed": true,
+  "original_two_probe_plus_all_high_gap_strict": "1.6476e-22",
+  "simultaneous_six_retained_direction_certificate": false,
+  "whole_aperture_positive": false,
+  "full_Weil_nonimplication_claimed": false,
+  "file_sha256": {
+    "docs/TERMINOLOGY_RPB108_EXPANDED_SHARED_LIFT_NF34.md": "f888b3fa2be775cf3334ea6560c4d4e406b6f9b08140f62194118dc9f398c35b",
+    "notes/REFLECTED_PACKET_BRIDGE_108_EXPANDED_SHARED_LIFT_NF34_20261009.md": "dc15bfd03e357eb67e34e18c5a61c0d8fe640c4d6b701baccb5ec73025d4388f",
+    "notes/data/RPB108_NF34_SOURCE_CC78_EVEN_EXPANDED_SHARED_LIFT_CERTIFICATE_20261009.json": "7327c2f3d89327ed1cef95404646c059c3ded4d4881486b1b3beb15651337d4f",
+    "notes/data/RPB108_NF34_SOURCE_CC78_EVEN_FIXED_EXPANDED_SHARED_LIFT_20261009.json": "4fa44e021ffd3b408703911c2b4d222c30bde1ac70581eafae81d5d3fbc589a2",
+    "notes/data/RPB108_NF34_SOURCE_CC78_EXPANDED_SHARED_LIFT_VALIDATION_20261009.json": "077d1916d44c88396aae4b993f745afd0b5c46b7ba7d6b8591b2895ed008268a",
+    "notes/data/RPB108_NF34_SOURCE_CC78_ODD_EXPANDED_SHARED_LIFT_CERTIFICATE_20261009.json": "17ae9ec6757cd29443fc77af28b86fb3d4b7f9449317886c5aec75bf92a9fb89",
+    "notes/data/RPB108_NF34_SOURCE_CC78_ODD_FIXED_EXPANDED_SHARED_LIFT_20261009.json": "5080c348c39f870fe554609ded27748326078f6bd944794ec5f80862e6aaa73c",
+    "scripts/certify_native_expanded_shared_lift_nf34_106.py": "1674ec96571e0596836c37254aeeeff4e4bafe3f4c5f46c0455a75269ae55a0a",
+    "scripts/validate_native_expanded_shared_lift_nf34_106.py": "b3d743a3b8c504dbd6177390df4466636ced452efa578b2c3e6ce69ec88101bd",
+    "scripts/certify_new_probe_full_high_cc78.py": "39239fc85b7cabf756ba38b095340a98846276039605ac414acd1b3465052227",
+    "docs/TERMINOLOGY_RPB108_NEW_PROBE_FULL_HIGH_CC78.md": "039fc1e558eb09d1c2370314baeb6b2015d45264ed179b6bc4db01dade45dda1",
+    "notes/REFLECTED_PACKET_BRIDGE_108_NEW_PROBE_FULL_HIGH_CC78_20261009.md": "543037dcb2f2c23bdc29092d3e508baa61c7696cea3bad4e35b69fcb26902556",
+    "notes/data/RPB108_NEW_PROBE_FULL_HIGH_CC78_CERTIFICATE_20261009.json": "8964b2f6a8499de1380f80a4e9eac733b9d4494a5f7ffe58243f7053da905677"
+  }
+}
