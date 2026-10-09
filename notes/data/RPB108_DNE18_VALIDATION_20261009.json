@@ -1,0 +1,48 @@
+{
+  "stage": "DNE18",
+  "exact_fraction_assertions": 806,
+  "status": "PASS",
+  "finite_nonorthogonal_lift_and_physical_mass_controls": 256,
+  "primary_and_stronger_root_replay_passed": true,
+  "genuine_mixed_crossing_controls": [
+    {
+      "mixed": "99/100",
+      "positive_individual_diagonals": true,
+      "complete_mixed_determinant": "199/10000",
+      "ground_level": "1/100"
+    },
+    {
+      "mixed": "1",
+      "positive_individual_diagonals": true,
+      "complete_mixed_determinant": "0",
+      "ground_level": "0"
+    },
+    {
+      "mixed": "101/100",
+      "positive_individual_diagonals": true,
+      "complete_mixed_determinant": "-201/10000",
+      "ground_level": "-1/100"
+    }
+  ],
+  "positive_whole_mass_controls": [
+    {
+      "mu": "1/10000000000000000000000000000000000000000",
+      "positive_original_ground_level": true,
+      "whole_mass_shift_null": true
+    },
+    {
+      "mu": "1/100",
+      "positive_original_ground_level": true,
+      "whole_mass_shift_null": true
+    },
+    {
+      "mu": "1/20",
+      "positive_original_ground_level": true,
+      "whole_mass_shift_null": true
+    }
+  ],
+  "controls_are_abstract": true,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
