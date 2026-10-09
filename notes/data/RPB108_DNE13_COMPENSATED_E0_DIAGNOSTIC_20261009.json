@@ -1,0 +1,130 @@
+{
+  "stage": "DNE13 compensated e0 diagnostic",
+  "aperture": "53/50",
+  "method": "native complete source + split Gauss rules + endpoint square substitution",
+  "runs": [
+    {
+      "order": 160,
+      "native_block": [
+        [
+          0.04015208430439275,
+          -0.02121592840519835,
+          0.013676520875375325
+        ],
+        [
+          -0.02121592840519835,
+          3.451211793606385,
+          0.6368555406911028
+        ],
+        [
+          0.013676520875375325,
+          0.6368555406911028,
+          3.5456784530052725
+        ]
+      ],
+      "symmetry_error": 7.20951076615961e-14,
+      "correction_coefficients": [
+        -0.00709430171578967,
+        0.005131476661395759
+      ],
+      "compensated_source_square": 0.0825065733938094,
+      "retained_projection_square": 0.07855528876205245,
+      "full_F112_source_residual_square": 0.003951284631756952,
+      "direct_projected_source_square": 0.003951284631756126,
+      "two_high_pairings": [
+        -3.604690330949456e-14,
+        -1.9831792458235853e-14
+      ],
+      "corrected_energy": 0.039931391359424605,
+      "physical_gate_budget": 0.008265798011400892,
+      "physical_gate_ratio": 0.4780282105015152,
+      "constant_pairing_error": 2.8972005350347274e-11,
+      "source_norm_uncompensated": 0.08366183499956886,
+      "corrected_vector_mass": 1.000076661169561,
+      "certified": false
+    },
+    {
+      "order": 240,
+      "native_block": [
+        [
+          0.040152084281159774,
+          -0.021215928753583996,
+          0.013676520523942543
+        ],
+        [
+          -0.021215928753583996,
+          3.4512117883824462,
+          0.636855535420846
+        ],
+        [
+          0.013676520523942543,
+          0.636855535420846,
+          3.545678447688341
+        ]
+      ],
+      "symmetry_error": 1.583039255237395e-13,
+      "correction_coefficients": [
+        -0.0070943018037368435,
+        0.005131476575226575
+      ],
+      "compensated_source_square": 0.08250657287869467,
+      "retained_projection_square": 0.07855528857950546,
+      "full_F112_source_residual_square": 0.003951284299189214,
+      "direct_projected_source_square": 0.003951284299189597,
+      "two_high_pairings": [
+        7.916172058142212e-14,
+        6.20126779787844e-14
+      ],
+      "corrected_energy": 0.03993139133483605,
+      "physical_gate_budget": 0.008265798006311062,
+      "physical_gate_ratio": 0.4780281705616746,
+      "constant_pairing_error": 5.739027308937494e-12,
+      "source_norm_uncompensated": 0.08366183451371095,
+      "corrected_vector_mass": 1.000076661169924,
+      "certified": false
+    },
+    {
+      "order": 360,
+      "native_block": [
+        [
+          0.040152084276577536,
+          -0.02121592882134509,
+          0.01367652045551502
+        ],
+        [
+          -0.02121592882134509,
+          3.4512117873459696,
+          0.636855534375338
+        ],
+        [
+          0.01367652045551502,
+          0.636855534375338,
+          3.545678446633647
+        ]
+      ],
+      "symmetry_error": 2.4914792451369294e-12,
+      "correction_coefficients": [
+        -0.007094301820848466,
+        0.005131476558435739
+      ],
+      "compensated_source_square": 0.08250657276860077,
+      "retained_projection_square": 0.07855528854327352,
+      "full_F112_source_residual_square": 0.003951284225327242,
+      "direct_projected_source_square": 0.003951284225325537,
+      "two_high_pairings": [
+        -1.2457275066091872e-12,
+        -1.210631231764528e-12
+      ],
+      "corrected_energy": 0.03993139132999084,
+      "physical_gate_budget": 0.008265798005308102,
+      "physical_gate_ratio": 0.4780281616838229,
+      "constant_pairing_error": 1.156789941614278e-12,
+      "source_norm_uncompensated": 0.0836618344098706,
+      "corrected_vector_mass": 1.0000766611699947,
+      "certified": false
+    }
+  ],
+  "interval_certificate": false,
+  "actual_null_exclusion": false,
+  "RH": false
+}
