@@ -1,0 +1,57 @@
+{
+  "milestone": "NF17",
+  "date": "2026-10-08",
+  "target_aperture": "53/50",
+  "scope": "whole finite E112 native restriction only; corrected infinite F112 Schur not yet certified",
+  "classification": "PASS exact original native signed E112 finite positivity",
+  "orthonormal_physical_legendre_modes": 112,
+  "even_modes": 56,
+  "odd_modes": 56,
+  "original_components": [
+    "complete archimedean",
+    "six original prime powers 2,3,4,5,7,8, both translations",
+    "both Hermitian signed poles"
+  ],
+  "total_same_parity_native_entries": 3192,
+  "prior_E96_entries_preserved_byte_identically": 2352,
+  "new_signed_native_entries": 840,
+  "total_component_checks": 12768,
+  "original_E96_archive_sha256": "aff17c786d41287f077680f412e4b2c14d59fdebacbaf11272d23033aee6e3ac",
+  "source_interval_uncompressed_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+  "source_interval_gzip_sha256": "191acc36e10668a90e5f3673734cdb1fadc12f9c9b24161c89518fd5ca0262c8",
+  "source_interval_uncompressed_bytes": 9789880,
+  "source_interval_gzip_bytes": 2208927,
+  "new_rows_parameters": {
+    "exp_terms": 720,
+    "Bernoulli_pairs": 620,
+    "prime_atanh_terms": 800,
+    "interval_grid_digits": 280,
+    "pi_atan_terms": 195,
+    "log_endpoint_outward_rounding_digits": 210
+  },
+  "directed_interval_max_entry_width_display": 4.054308670224971e-68,
+  "whole_symmetric_operator_error_upper_display": 2.2704128553259838e-66,
+  "rational_midpoint_rounding_grid_power": 100,
+  "exact_positive_shifted_pivots": {
+    "even": 56,
+    "odd": 56
+  },
+  "certified_rational_midpoint_shift": "1/10^38",
+  "strict_true_finite_L2_lower": "9/10^39",
+  "high_precision_midpoint_eigenvalues_diagnostic": {
+    "even_smallest": "9.306557317794063211223019e-35",
+    "odd_smallest": "3.391977951387139545802736e-31",
+    "not_proof": true
+  },
+  "independently_certified_F112_original_physical_complement_lower": "207/1000",
+  "complete_target_source_action_Gram": false,
+  "corrected_even56_odd56_F112_Schur": false,
+  "whole_original_weil_aperture_positive": false,
+  "all_apertures": false,
+  "RH": false,
+  "F4": false,
+  "Lean": false,
+  "reproducible_producer": "scripts/certify_native_low112_nf17_106.py",
+  "reproducible_validator": "scripts/validate_native_low112_nf17_106.py",
+  "archived_full_interval_source_available_at": "sandbox:/mnt/data/nf17/native112_N720_K620.json.gz"
+}
