@@ -248,3 +248,27 @@ where B denotes Euler's beta function. Its first two beta derivatives are elemen
 The prime-panel endpoints are exact expressions ±a±log n, with standard outward log enclosures available; no intervals for them have yet been generated in this work. In combination, (17)--(21) turn each finite polynomial native source Gram into a FINITE algebraic/logarithmic/beta-moment expression plus a dimension-independent analytic error below3e-41. A machine-checkable outward interval evaluation of these finite expressions is the remaining calculation.
 
 **Updated stopping decision:** We no longer require a general endpoint improper-integral quadrature engine to evaluate the approximated source Gram. The source-norm calculation is reduced to reusable finite exact MOMENT TABLES and outward rational enclosures for transcendental coefficients and panel endpoints. Those tables have not yet been assembled for all56 corrected columns; no numerical source-Gram or Schur sign is certified by (17) alone.
+
+
+## 8. Concurrency reconciliation: NF21 completes prime/pole source-square; DNE11 resolves arch source polynomialization
+
+NF21 independently published a [rigorously interval-enclosed original prime-plus-pole SOURCE-SQUARE sector](https://github.com/monocap-tech/weil-lab/blob/research/rpb108-phase-geometry-localization/notes/REFLECTED_PACKET_BRIDGE_108_PHYSICAL_SOURCE_SQUARE_NF21_20261009.md) on normalized e0/e1. It includes prime-prime, pole-pole and SIGNED prime/pole correlations in the true physical L² source, but explicitly excludes the archimedean source and every archimedean cross term. NF21 also gives the exact finite original 58-mode compensated physical residual identity
+
+    P_2=T*D T -S_2^2,                                (22)
+
+where D is the complete original 58x58 source-square Gram, `T=(I,-C_2^-1 B*)` and S_2 is the already certified original signed two-high-mode Schur form. The more stable equivalent is to integrate the COMPENSATED full source, not to subtract two large nearly equal Gram matrices after numerical rounding. DNE11's polynomial-log moment bank is a direct source-side means to calculate every missing archimedean and cross entry of that D, with its own <3e-41 truncation error bound. This is a handoff interface, NOT a duplicated NF21 source-square certificate or an assertion that its full D was computed here.
+
+For the independent ORIGINAL normalized e0 numerical pilot, separate physical source energies are
+
+    ||L_arch e0||²             ≈ 7.08214407559017004439
+    ||(L_prime+L_pole)e0||²   ≈ 7.24456598107430401165
+    2<L_arch e0,(L_prime+L_pole)e0>
+                               ≈ -14.24304822228255869911
+    -------------------------------------------------------
+    ||L_Q e0||²                ≈ 0.08366183438191535693. (23)
+
+The prime-plus-pole value agrees with NF21's independent exact 1e-12 outward source-sector certificate to its displayed precision, and H/Q low native pairings agree with the older exact NF12 source. This is a useful cross-validation of the sign and physical source normalization. Nevertheless (23) is computed by mpmath quadrature, so its arch/cross terms are NOT INTERVAL CERTIFIED by DNE11. The high F112 projection of e0 has likewise not been computed. The large destructive covariance illustrates why dropping original archimedean/prime/pole correlations makes NF20's crude source estimator ineffective.
+
+CC57 separately proves by an [exact infinite block control](https://github.com/monocap-tech/weil-lab/blob/research/rpb108-coupled-continuation/notes/REFLECTED_PACKET_BRIDGE_108_RESIDUAL_GRAPH_GAP_CC57_20261009.md) that qualitative C-form Galerkin convergence does NOT guarantee decay of the physical source residual, even under compact resolvent, physical source existence and positive complete Schur. DNE11's strong uniform bound (17) is a bound on TRUNCATING the SMOOTH ORIGINAL ACTION KERNEL at a fixed polynomial input, **not** a bound on the native high Galerkin residual as the number of high trial directions tends to infinity. It therefore neither conflicts with CC57 nor cures its graph-norm obstruction. A single chosen source-aligned P_2 interval gate may still work; failure of the scalar physical gate is inconclusive for the true C-form-dual Schur.
+
+**Updated next research decision:** DNE12 can use NF21's actual 58-mode compensated residual identity (22), DNE11's finite moment bank and NF17/NF19's authenticated original native signed matrices. The first stringent checkpoint is to enclose the arch-only squared and arch/(prime+pole) cross terms in (23) by outward rational/interval moments, reproducing NF21's prime-pole e0 sector, BEFORE attempting all58 original source columns. The final sign requires an accurate compensated source, not merely a precise estimate of large unsubtracted source squares. CC57's graph-gap falsifier must be preserved.
