@@ -1,0 +1,19 @@
+{
+  "stage": "DNE16",
+  "exact_fraction_checks": 206,
+  "primary_replay_overlap": true,
+  "DNE15_exact_target_overlap": true,
+  "results": [
+    {
+      "parity": "even",
+      "fixed_gate_passed": false,
+      "optimized_gate_failure_proved": true
+    },
+    {
+      "parity": "odd",
+      "fixed_gate_passed": false,
+      "optimized_gate_failure_proved": true
+    }
+  ],
+  "all_passed": true
+}

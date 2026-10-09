@@ -1,0 +1,57 @@
+{
+  "stage": "DNE16",
+  "parent": "eb5419b6b471ff4f95b08a3612519b2b9735775c",
+  "write_branch": "research/rpb108-direct-null-exclusion",
+  "read_only_CC60_head": "795aa8849d07d99c7da880ca201dfda8aa011623",
+  "CC60_original_git_blob": "6d856f01aeeddff4196cb374fdeb21fde1527cb6",
+  "CC60_copy_byte_exact": true,
+  "NF24_target_sha256": "6eee61fb4e58ac5be0e95f492f461b289da37ee13aeaa74bbf4acc06f6650c00",
+  "raw_native_matrix_archives_replayed": false,
+  "primary": {
+    "precision": 600,
+    "regular_order": 360,
+    "parities": [
+      "even",
+      "odd"
+    ]
+  },
+  "replay": {
+    "precision": 650,
+    "regular_order": 400,
+    "parities": [
+      "even",
+      "odd"
+    ]
+  },
+  "all_four_native_runs_executed": true,
+  "all_58_source_projections_paid": true,
+  "exact_H2_transfer_paid": true,
+  "native_finite_pairing_overlap_checks": 240,
+  "exact_algebra_assertions": 640,
+  "exact_certificate_checks": 206,
+  "all_joint_Gram_primary_replay_overlaps": true,
+  "DNE15_exact_target_overlap": true,
+  "optimized_gate_failures_proved_both_parities": true,
+  "fixed_rational_trial_gates_passed": false,
+  "full_56_matrix_gate_failure_witnesses": true,
+  "native_negativity_proved": false,
+  "true_inverse_response_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false,
+  "other_branches_modified": false,
+  "artifact_sha256": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_DNE16_CORRELATED_SOURCE_GATE_20261009.md": "5f8da689f535fdd8e4ac9c2569046dd6944de13ae4fbf17de9142c5af38b9beb",
+    "docs/TERMINOLOGY_RPB108_DNE16_CORRELATED_SOURCE_GATE.md": "85f4693c45d23dcf1970bc723b70126b383dadd0d6c2c2bebb4f433a4a01d9d1",
+    "scripts/certify_dne16_correlated_source.py": "e4539b941f3768f177a469c68f58d34b11d3ea863247c14c1a6a59d81b2f91d8",
+    "scripts/validate_dne16_joint_algebra.py": "ea153f9ca2657dd5e4bc695ce2a8091a111f70023036f6878a99e051666bc5e7",
+    "scripts/validate_dne16_certificates.py": "6e753ba1ac15609420410c18dd0969d4bd47eb4229aa7fc467288baf50c14e0d",
+    "notes/data/RPB108_DNE16_CC60_NATIVE_INPUT_20261009.json": "179a7ef42c950d4c1cb7eb0013b36c8cf32736dd01e71b6414166281e1fa5e2d",
+    "notes/data/RPB108_DNE16_ALGEBRA_VALIDATION_20261009.json": "77dabe9fc9a5f123493cdf7b2aa99566e147e5ae78d6dc6a9977a4e6c9f951c4",
+    "notes/data/RPB108_DNE16_CERTIFICATE_VALIDATION_20261009.json": "a5ca1619286fdb86eeccc49c3c920fe05091000350a97a660dca8c37ac413537",
+    "notes/data/RPB108_DNE16_EVEN_CERTIFICATE_20261009.json": "efd966c2c1aa5b2889fe6c6aafa00b83aa6d523c2cafd1bf60bc1502ef0016ba",
+    "notes/data/RPB108_DNE16_EVEN_REPLAY_CERTIFICATE_20261009.json": "a6c223569d77daa8b114b2ff42c3ea1e3ae50e92662c01ba92ba38c8e64ce794",
+    "notes/data/RPB108_DNE16_ODD_CERTIFICATE_20261009.json": "d2a5f77b7bdfb816e46111df5f16dcb27250b91fb7536858da7bae3cc923e4c9",
+    "notes/data/RPB108_DNE16_ODD_REPLAY_CERTIFICATE_20261009.json": "75af29a407adcba0de80a0af4f08cb6aacfe108bb15d28107a4a2158f80457a7"
+  }
+}
