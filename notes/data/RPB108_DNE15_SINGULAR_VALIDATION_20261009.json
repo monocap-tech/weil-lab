@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "exact_polynomial_identities": 116,
+  "maximum_degree": 115,
+  "source_quadrature_certified": false
+}

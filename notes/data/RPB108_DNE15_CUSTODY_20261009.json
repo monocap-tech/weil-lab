@@ -1,0 +1,38 @@
+{
+  "stage": "DNE15",
+  "parent": "70554a248d88b0ee6f1ed13ce95538c0fefa0500",
+  "read_only_NF24_head": "b7fa4461ab4cca2ebc9383ae4b9407c03a580826",
+  "NF24_target_sha256": "6eee61fb4e58ac5be0e95f492f461b289da37ee13aeaa74bbf4acc06f6650c00",
+  "raw_native_matrix_archives_replayed": false,
+  "primary_runs": {
+    "precision": 600,
+    "regular_order": 360,
+    "parities": [
+      "even",
+      "odd"
+    ]
+  },
+  "replay_runs": {
+    "precision": 650,
+    "regular_order": 400,
+    "parities": [
+      "even",
+      "odd"
+    ]
+  },
+  "exact_moment_assertions": 1462,
+  "singular_action_identities": 116,
+  "all_four_native_source_runs_executed": true,
+  "all_scalar_floor_failures_proved": true,
+  "primary_replay_intervals_overlap": true,
+  "exact_H2_transfer_paid": true,
+  "source_column_norm_upper": 200,
+  "source_square_transfer_error_upper": "1e-72",
+  "energy_transfer_error_upper": "1e-118",
+  "source_correlation_gain_evaluated": false,
+  "true_inverse_evaluated": false,
+  "other_branches_modified": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
