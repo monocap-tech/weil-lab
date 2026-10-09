@@ -1,0 +1,13 @@
+{
+  "milestone": "CC66",
+  "integration_parent": "b0406fddfa42e6a75da9a40efe2a0ddbe007a6ed",
+  "readonly_source_head": "b7fa4461ab4cca2ebc9383ae4b9407c03a580826",
+  "file_SHA256": {
+    "scripts/validate_source_norm_limits_cc66.py": "6603f7c98bcb14ae42cf13b3866455eb88c355e3ce25d921499b93ccc7bd6f5a",
+    "notes/data/RPB108_SOURCE_NORM_LIMITS_CC66_VALIDATION_20261009.json": "0e86b1595b1a2a5aed5b37dac5529ff5f43df73dce0694d6f37e4e71d70e7e23"
+  },
+  "new_native_source_producer_run": false,
+  "exact_Fraction_validator_passed": true,
+  "actual_Weil_countermodel": false,
+  "full_Weil_nonimplication_claimed": false
+}

@@ -1,0 +1,135 @@
+{
+  "milestone": "CC66",
+  "status": "PASS",
+  "floor": "207/1000",
+  "complete_trial_source_square": "250001/200000",
+  "exact_partial_data_coarse_majorant_attained": true,
+  "fixed_complete_trial_source_crossings": [
+    {
+      "unseen_high_source_scale": "-1",
+      "complete_trial_source_square": "250001/200000",
+      "retained_energy": "179336452588138969/30075136915500000",
+      "correlation_credit": "2277419489443531/38600048614443531",
+      "true_high_reaction": "9194566855770790993531/1598042012637962183400",
+      "full_Schur": "242978950900415454022373087252039/1160901747024345265668268630500000",
+      "actual_null": false,
+      "complete_retained_source_unchanged": true,
+      "measured_native_block_unchanged": true,
+      "complete_native_block_on_retained_H2_and_observed_J_unchanged": true,
+      "scalar_high_floor_unchanged": true
+    },
+    {
+      "unseen_high_source_scale": "0",
+      "complete_trial_source_square": "250001/200000",
+      "retained_energy": "179336452588138969/30075136915500000",
+      "correlation_credit": "2277419489443531/145290516500000000",
+      "true_high_reaction": "179336452588138969/30075136915500000",
+      "full_Schur": "0",
+      "actual_null": true,
+      "complete_retained_source_unchanged": true,
+      "measured_native_block_unchanged": true,
+      "complete_native_block_on_retained_H2_and_observed_J_unchanged": true,
+      "scalar_high_floor_unchanged": true
+    },
+    {
+      "unseen_high_source_scale": "1",
+      "complete_trial_source_square": "250001/200000",
+      "retained_energy": "179336452588138969/30075136915500000",
+      "correlation_credit": "0",
+      "true_high_reaction": "250001/41400",
+      "full_Schur": "-2277419489443531/30075136915500000",
+      "actual_null": false,
+      "complete_retained_source_unchanged": true,
+      "measured_native_block_unchanged": true,
+      "complete_native_block_on_retained_H2_and_observed_J_unchanged": true,
+      "scalar_high_floor_unchanged": true
+    }
+  ],
+  "positive_ground_level_controls": [
+    {
+      "original_positive_ground_level": "1/10000000000000000000000000000000000000000",
+      "original_null": false,
+      "whole_mass_shift_has_null": true,
+      "retained_only_shift_does_not_create_this_null": true
+    },
+    {
+      "original_positive_ground_level": "1/100",
+      "original_null": false,
+      "whole_mass_shift_has_null": true,
+      "retained_only_shift_does_not_create_this_null": true
+    },
+    {
+      "original_positive_ground_level": "1/20",
+      "original_null": false,
+      "whole_mass_shift_has_null": true,
+      "retained_only_shift_does_not_create_this_null": true
+    }
+  ],
+  "near_critical_scaled_crossings": [
+    {
+      "source_scale": "1/1000000000000000000",
+      "retained_original_energy": "179336452588138969/30075136915500000000000000000000000000000000000000000",
+      "unseen_scale": "-1",
+      "full_Schur": "242978950900415454022373087252039/1160901747024345265668268630500000000000000000000000000000000000000000",
+      "complete_trial_source_square": "250001/200000000000000000000000000000000000000000",
+      "defect_relative_source_ratio": "75188143040119155/358672905176277938",
+      "same_source_and_observed_native_block": true
+    },
+    {
+      "source_scale": "1/1000000000000000000",
+      "retained_original_energy": "179336452588138969/30075136915500000000000000000000000000000000000000000",
+      "unseen_scale": "0",
+      "full_Schur": "0",
+      "complete_trial_source_square": "250001/200000000000000000000000000000000000000000",
+      "defect_relative_source_ratio": "75188143040119155/358672905176277938",
+      "same_source_and_observed_native_block": true
+    },
+    {
+      "source_scale": "1/1000000000000000000",
+      "retained_original_energy": "179336452588138969/30075136915500000000000000000000000000000000000000000",
+      "unseen_scale": "1",
+      "full_Schur": "-2277419489443531/30075136915500000000000000000000000000000000000000000",
+      "complete_trial_source_square": "250001/200000000000000000000000000000000000000000",
+      "defect_relative_source_ratio": "75188143040119155/358672905176277938",
+      "same_source_and_observed_native_block": true
+    },
+    {
+      "source_scale": "1/10000000000000000",
+      "retained_original_energy": "179336452588138969/3007513691550000000000000000000000000000000000000",
+      "unseen_scale": "-1",
+      "full_Schur": "242978950900415454022373087252039/116090174702434526566826863050000000000000000000000000000000000000",
+      "complete_trial_source_square": "250001/20000000000000000000000000000000000000",
+      "defect_relative_source_ratio": "75188143040119155/358672905176277938",
+      "same_source_and_observed_native_block": true
+    },
+    {
+      "source_scale": "1/10000000000000000",
+      "retained_original_energy": "179336452588138969/3007513691550000000000000000000000000000000000000",
+      "unseen_scale": "0",
+      "full_Schur": "0",
+      "complete_trial_source_square": "250001/20000000000000000000000000000000000000",
+      "defect_relative_source_ratio": "75188143040119155/358672905176277938",
+      "same_source_and_observed_native_block": true
+    },
+    {
+      "source_scale": "1/10000000000000000",
+      "retained_original_energy": "179336452588138969/3007513691550000000000000000000000000000000000000",
+      "unseen_scale": "1",
+      "full_Schur": "-2277419489443531/3007513691550000000000000000000000000000000000000",
+      "complete_trial_source_square": "250001/20000000000000000000000000000000000000",
+      "defect_relative_source_ratio": "75188143040119155/358672905176277938",
+      "same_source_and_observed_native_block": true
+    }
+  ],
+  "missing_fields": [
+    "complete_measured_high_source_Gram",
+    "complete_corrected_source_correlation"
+  ],
+  "actual_Weil_countermodel": false,
+  "logical_nonimplication_from_all_Weil_identities": false,
+  "new_native_source_arithmetic": false,
+  "whole_aperture_positive": false,
+  "all_cap_frame": false,
+  "RH": false,
+  "Lean": false
+}
