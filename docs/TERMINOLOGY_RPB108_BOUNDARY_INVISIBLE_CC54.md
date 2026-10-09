@@ -1,0 +1,10 @@
+# CC54 terminology — actual first-boundary invisibility
+
+* **Original retained matrix A:** the complete original signed Q at aperture 53/50 restricted to physical E112, 56 coordinates per parity. All signed archimedean, prime and pole terms remain. Its eigenvalues are retained eigenlevels, not eigenlevels of the whole infinite supported operator.
+* **Measured source functional b:** b(x)=Q(x,phi), phi=e112 even or e113 odd. First-mode reaction is |b(x)|^2/Q(phi,phi). Source invisibility here means b(x)=0 exactly; it does not mean that the source on all F112 vanishes.
+* **Rational seed s:** a proposed 56-coordinate vector with denominator 10^80. Decimal matrix inversion only proposes it; exact Fraction intervals on authenticated source archives verify every assertion.
+* **True-native correction:** choose p=e110 even or e111 odd and define z=s-[Q(s,phi)/Q(p,phi)]p. The denominator is strictly positive by actual NF18 arithmetic. The coefficient uses true original Q, not an interval midpoint. Its magnitude is certified below 10^-63, and Q(z,phi)=0 is an exact identity.
+* **Near-critical trial:** a nonzero original vector with a certified small positive physical Rayleigh quotient. A small Rayleigh quotient alone does not make it an exact eigenvector or a null.
+* **Retained spectral subspace:** the physical spectral subspace of the finite selfadjoint matrix A below a specified energy ceiling. A two-plane min-max certificate proves its dimension is at least two. The measured rank-one functional must have a nonzero kernel there.
+* **First-mode lower frame bound:** |b(x)|^2/d>=c Q(x,x) for c>0 on the specified retained subspace, d=Q(phi,phi). CC54 disproves this for the measured single mode on its certified retained spectral bands. It does not disprove the full-source defect-relative frame bound.
+* **Scope:** exact zero of one original native source coordinate, positive original energy, and finite retained spectral geometry. Full-high invisibility, actual full-operator nulls, moment-zero carrier transfer, and all-cap quantitative leakage remain open.

@@ -1,0 +1,39 @@
+{
+  "milestone": "CC54",
+  "starting_coupled_head": "1351ddeafef708e3f0caa4f6071098bf516456c1",
+  "source_head_read_only": "27adced74c6d676ad8153adba279bf971484a1e5",
+  "date": "2026-10-09 UTC / 2026-10-08 Pacific",
+  "hashes": {
+    "docs/TERMINOLOGY_RPB108_BOUNDARY_INVISIBLE_CC54.md": "cd12434efd17587cf80e0473899b85a1bdfd5816e143124936d69df0dfa84b23",
+    "notes/REFLECTED_PACKET_BRIDGE_108_BOUNDARY_INVISIBLE_CC54_20261009.md": "83d7339138b74e2b0f9fd92be4eababb785e13afd20e5ed2e214cce0acd0ff8d",
+    "scripts/certify_native_boundary_invisible_cc54.py": "179b5dc3dc1d2da4edd82ee609ac5669f360796af2c2856535ed3ec722057df9",
+    "notes/data/RPB108_BOUNDARY_INVISIBLE_CC54_SEEDS_20261009.json": "6fc0f3d5226244b069adabdf4c7cf509ed7d20f1994255a1b1c1aa4c24a1694c",
+    "notes/data/RPB108_BOUNDARY_INVISIBLE_CC54_CERTIFICATE_20261009.json": "2488cac8c1d556ec022184d65e468d80516fa7999f1d8eba87d1a0274beb15c5"
+  },
+  "source_sha256": {
+    "E112": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+    "boundary": "da5fe692dc0d3a0820ccaf68217628776f08718661696dddad54012f4f3841ee",
+    "NF18_witness": "b3e23133db4562c1b28816e922f9c085899818399dcfcee74a323b4f6da10d5c"
+  },
+  "actual_first_boundary_source_zero": true,
+  "positive_original_energy": true,
+  "true_correction_absolute_upper": "1/10^63",
+  "corrected_Rayleigh_upper": {
+    "even": "1/10^34",
+    "odd": "4/10^31"
+  },
+  "retained_spectral_dimension_lower": 2,
+  "retained_spectral_ceiling": {
+    "even": "1/10^26",
+    "odd": "1/10^23"
+  },
+  "checks": "exact interval correction/energy/mass per parity, two positive min-max determinant certificates; replay on saved rational seeds",
+  "complete_high_source_zero": false,
+  "full_operator_null": false,
+  "CC52_carrier_transfer": false,
+  "full_residual_response": false,
+  "whole_supported_positivity": "21/20",
+  "RH": false,
+  "Lean": false,
+  "publication": "additive seven-path commit; historical bridge prefix and all other paths preserved"
+}
