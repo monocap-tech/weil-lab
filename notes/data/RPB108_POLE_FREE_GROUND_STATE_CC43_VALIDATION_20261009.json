@@ -1,0 +1,13 @@
+{
+  "stage": "CC43 pole-free ground state",
+  "all_passed": true,
+  "new_exact_checks": 27,
+  "cc41_checks_replayed": 16,
+  "local_chain_checks": 43,
+  "older_large_chain_replayed": false,
+  "actual_zeta_eigenvectors_evaluated": false,
+  "higher_zero_moment_channel_excluded": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "1d6570009297f3004c69c10f5235927457d3c2b42cebaddd4ca043435a99b35e"
+}
