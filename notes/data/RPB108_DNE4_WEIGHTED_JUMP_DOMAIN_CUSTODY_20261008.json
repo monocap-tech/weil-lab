@@ -1,0 +1,50 @@
+{
+  "stage": "DNE4",
+  "date": "2026-10-08 America/Los_Angeles",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "inherited_parent": "be834f237121d8625be4551d83f82cd80345b066",
+  "theorem": "Complete full-domain equality between the DNE2 Doob form and explicit original archimedean/prime-weighted jump integrals",
+  "assumptions": [
+    "DNE3 unweighted pure-jump representation J_a on the supported canonical logarithmic form domain",
+    "CC41 supported closed form and CC43 simple ground eigenfunction",
+    "DNE2 strictly positive almost-everywhere ground state",
+    "Original prime powers, both shift orientations, and zero-extension killing retained"
+  ],
+  "proof_methods": [
+    "1_I finite logarithmic jump energy",
+    "epsilon Picone identity with exterior killing residual",
+    "Fatou yields transformed-domain contained in weighted-energy domain",
+    "bounded weighted jump functions give reverse inclusion via edge product estimate",
+    "symmetric Markov truncation and closed-form completion"
+  ],
+  "full_domain_statement": true,
+  "weighted_jump_equality_for_actual_eigenvector_quotients": true,
+  "requires_phi_bounded_or_pointwise_positive": false,
+  "core_density_of_smooth_ground_state_multipliers_assumed": false,
+  "tests": {
+    "source": "scripts/validate_dne4_full_weighted_form.py",
+    "independent_bigint_rational_replay": "PASS",
+    "exact_fraction_checks": 1758,
+    "graph_edge_weights": [
+      "1/2",
+      "1/2",
+      "1/4"
+    ],
+    "graph_exterior_killing": [
+      "3/2",
+      "1/2",
+      "3/2"
+    ],
+    "ground_mu": "1",
+    "higher_odd_zero_gap": "3/2",
+    "committed_python_validator_executed": false,
+    "actual_zeta_ground_eigenfunction_evaluated": false
+  },
+  "not_proved": [
+    "Strict actual arithmetic odd/even spectral gap beyond negative ground-state depth",
+    "Exclusion of higher zero-moment nulls",
+    "Exclusion of moment-carrying contact nulls",
+    "Full a=53/50 whole-domain original positivity",
+    "RH/F4 or Lean formalization"
+  ]
+}
