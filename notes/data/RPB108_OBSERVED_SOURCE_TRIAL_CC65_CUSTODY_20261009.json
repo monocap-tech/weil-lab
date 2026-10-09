@@ -1,0 +1,13 @@
+{
+  "milestone": "CC65",
+  "integration_parent": "0d3def3c12acdb97d027cc75b1a400919b202f74",
+  "readonly_NF24_head": "b7fa4461ab4cca2ebc9383ae4b9407c03a580826",
+  "file_SHA256": {
+    "scripts/certify_observed_source_trial_cc65.py": "9ae0bfa79fb6389c5cf28e2a0327eec90eb206790a7ec7f86cfff222a1e42dcc",
+    "notes/data/RPB108_OBSERVED_SOURCE_TRIAL_CC65_CERTIFICATE_20261009.json": "13235efccf1b0b94a94c425f4720c0edaf6849abb9339ea95e25f3e436b373fc",
+    "notes/data/RPB108_FIXED_TRIALS_CC63_CERTIFICATE_20261009.json": "99e981134db82d55951c87ef007210224ea8e0ab93ec15e0d83f3b4f32e514bc"
+  },
+  "new_native_source_producer_run": false,
+  "original_full_signed_consumer_passed": true,
+  "whole_aperture_positive": false
+}
