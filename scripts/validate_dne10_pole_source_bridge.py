@@ -93,6 +93,7 @@ def run():
         ck(true_schur==low-t*t)
         if t==F(1,4):
             ck(true_schur==0)
+    assert checks==1022, checks
     return {
        "stage":"DNE10 full-high signed Q/pole-free H bridge",
        "all_passed":True,
