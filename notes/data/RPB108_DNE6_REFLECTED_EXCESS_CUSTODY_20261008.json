@@ -1,0 +1,40 @@
+{
+  "stage": "DNE6",
+  "date": "2026-10-08 America/Los_Angeles",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "parent": "a771c93c69fbdfc65858d0497aa525f86201b44d",
+  "theorem": "Complete-domain odd reflected potential-plus-excess identity and non-strict floor exclusion at prime-2-active aperture",
+  "data_sources": {
+    "DNE4": "Full original arithmetic pole-free ground weighted jump domain",
+    "DNE5": "Ground boundedness, exact odd reflection and cut diagnostic",
+    "native_kernel": "j(t)=exp(-t/2)/(1-exp(-2t)), all original prime powers with c_n=Lambda(n)/sqrt(n)",
+    "concurrent": "CC52, NF18 read-only; no imported sign certificate"
+  },
+  "actual_results": [
+    "Odd W_phi equals pointwise reflected potential plus nonnegative same-side and prime-bridge excess",
+    "An odd H-null requires positive-measure reflected low-potential region {V_phi< -lambda0} whenever 2a>log2",
+    "A non-strict pointwise V_phi>= -lambda0 a.e. suffices to exclude odd H-null by prime2 bridge",
+    "Interior oscillation of hypothetical null bounded by low-potential deficit using alpha=j(a-delta)-j(a+delta)>0",
+    "A positive prime bridge alone does not prevent a higher null: exact two-site p=4 d=7 control"
+  ],
+  "finite_checks": {
+    "independent_replay": true,
+    "language": "JavaScript BigInt rational for actual j(m log4); exact integer graph coefficients",
+    "all_passed": true,
+    "checks": 815,
+    "expected": 815,
+    "committed_python_validator_executed": false,
+    "actual_zeta_ground_state_evaluated": false,
+    "exact_kernel_values": {
+      "j(log4)": "8/15",
+      "j(2log4)": "64/255",
+      "j(3log4)": "512/4095"
+    }
+  },
+  "not_proved": [
+    "V_a>=-lambda0 at any unproved aperture",
+    "Actual odd spectral surplus gamma_odd>-lambda0",
+    "Exclusion of moment-zero even or moment-carrying contact",
+    "RH, F4, Lean and whole a=53/50 original sign"
+  ]
+}
