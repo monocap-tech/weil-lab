@@ -1,0 +1,45 @@
+{
+  "milestone": "NF15",
+  "date": "2026-10-08",
+  "aperture": "53/50",
+  "classification": "Complete original native signed finite E80 positivity; E112 and infinite source-corrected Schur open",
+  "original_source_components": [
+    "complete archimedean",
+    "prime powers 2,3,4,5,7,8 with both physical shifts",
+    "both signed Hermitian poles"
+  ],
+  "normalized_physical_legendre_degrees": "0..79",
+  "even_dimension": 40,
+  "odd_dimension": 40,
+  "source_parameters": {
+    "exponential_order": 490,
+    "Bernoulli_pairs": 430,
+    "atanh_log_terms": 500,
+    "rational_grid_digits": 180
+  },
+  "entry_count": 1640,
+  "component_interval_checks": 6560,
+  "source_json_sha256": "9188d9b48525c1e1af41292e3bfe8d3004470e03b00520428d9d5b0cc76a8513",
+  "compressed_source_sha256": "f5ec122a209ad7b98a54286765ed55d726204e768f51b1cfbd781f0f4a8de09c",
+  "max_native_entry_interval_width_display": 4.054308670224971e-68,
+  "whole_matrix_interval_error_display": 1.6217234680899884e-66,
+  "midpoint_rational_grid_power": 85,
+  "shifted_rational_LDL_test": "1/1000000000000000000000000000000000",
+  "exact_shifted_positive_pivots": {
+    "even": 40,
+    "odd": 40
+  },
+  "certified_physical_finite_lower": "9/1000000000000000000000000000000000",
+  "old_E64_full_original_source_component_interval_intersections": 4224,
+  "conflicts": 0,
+  "original_F112_infinite_physical_complement_lower": "17/100",
+  "full_E112_native_sign": false,
+  "source_action_Gram": false,
+  "corrected_Schur": false,
+  "whole_aperture_sign": false,
+  "RH_F4": false,
+  "Lean": false,
+  "producer": "scripts/certify_native_low80_nf15_106.py",
+  "validator": "scripts/validate_native_low80_nf15_106.py",
+  "scope": "The E80 source was generated and exact rational validation executed in local container; GitHub Actions CI independent replay not claimed. Complete E80 archive supplied as conversation attachment and digest, not committed to repository."
+}
