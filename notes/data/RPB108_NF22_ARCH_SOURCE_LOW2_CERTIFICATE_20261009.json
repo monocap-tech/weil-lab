@@ -1,0 +1,71 @@
+{
+  "milestone": "NF22",
+  "date": "2026-10-09 UTC / 2026-10-08 Pacific",
+  "aperture": "53/50",
+  "status": "PASS: rigorous original archimedean source-square on e0/e1, with separately marked non-certifying full-source cross diagnostics",
+  "original_arch_kernel": "j(t)=e^(-t/2)/(1-e^(-2t))",
+  "regular_kernel_generating_function": "h(z)=z*e^(z/2)/(2*sinh(z)); j(t)=1/(2t)+sum_{k>=1}h_k*t^(k-1)",
+  "rational_kernel_degree": 320,
+  "complex_Cauchy_radius": "5/2",
+  "max_modulus_on_radius": "<10",
+  "relative_radius": "106/125",
+  "rigorous_regular_kernel_sup_error_approx": 3.212840202579092e-22,
+  "rigorous_regular_kernel_sup_error": "<1/10^20",
+  "rigorous_arch_e0_source_L2_error": "<1/10^19",
+  "rigorous_arch_e1_source_L2_error": "<1/10^19",
+  "closed_original_digamma_constant": "psi(1/4)-log(pi)=-EulerGamma-pi/2-3log2-logpi",
+  "analytic_endpoint_constant": "-EulerGamma-log(2*pi)",
+  "arch_source_even_formula": "e0(x)*[-EulerGamma-log(2*pi)-log(a^2-x^2)/2-sum(h_k/k)*((a-x)^k+(a+x)^k)]",
+  "arch_source_odd_formula": "sqrt(3/(2*a))/a*[x*U(x)+F(a+x)-F(a-x)] where F(t)=t/2+sum h_k*t^(k+1)/(k+1)",
+  "arch_square_method": "exact polynomial dot products, rational support moments, integrals of log(a²-x²) and its square using odd harmonic numbers and pi²; outward rational enclosures of pi, logarithms and Euler gamma; paid L2 Taylor error",
+  "arch_source_squared_strict_1e12": {
+    "even": [
+      "7.082144075590",
+      "7.082144075591"
+    ],
+    "odd": [
+      "1.083143528165",
+      "1.083143528166"
+    ]
+  },
+  "numerical_full_source_diagnostics_NOT_CERTIFICATES": {
+    "even": {
+      "arch_sq": 7.082144075590266,
+      "prime_sq": 4.24929391630907,
+      "pole_sq": 21.678748363955577,
+      "two_arch_prime": 10.02438526679926,
+      "two_arch_pole": -24.26743348908181,
+      "two_prime_pole": -18.683476299190342,
+      "combined_complete_source_square": 0.08366183438219787,
+      "native_diagonal_via_source": 0.04015208427542006,
+      "native_diagonal_NF17_reference": 0.040152084275420746
+    },
+    "odd": {
+      "arch_sq": 1.0831435281658797,
+      "prime_sq": 2.3223592216875066,
+      "pole_sq": 0.17630290853639397,
+      "two_arch_prime": -2.7678193910252276,
+      "two_arch_pole": 0.7419939994048222,
+      "two_prime_pole": -1.2178390852358356,
+      "combined_complete_source_square": 0.3381411815356949,
+      "native_diagonal_via_source": 0.14401167285633568,
+      "native_diagonal_NF17_reference": 0.14401167285633373
+    }
+  },
+  "original_NF17_native_source_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+  "original_NF21_prime_pole_low2_source_sector_sha256": "9ea91c5d0bf9bac4cf32d8a2bb3644c6fb7d9dd004ad3ebc5f5aac0ee1b01648",
+  "local_exact_certificate_code_sha256": "e30565df04de8b07e5a37c76bfbf387366bad18abeb96028aa9cc7ffc54bb1e8",
+  "github_producers": [
+    "scripts/certify_native_arch_source_uniform_nf22_106.py",
+    "scripts/certify_native_arch_source_square_nf22_106.py"
+  ],
+  "github_numerical_sanity": "scripts/diagnose_native_complete_source_low2_nf22_106.py",
+  "complete_arch_prime_cross_rigorously_bounded": false,
+  "complete_arch_pole_cross_rigorously_bounded": false,
+  "whole_low2_original_source_square_certified": false,
+  "full_E112_source_square_D_certified": false,
+  "full_residual_P2_certified": false,
+  "whole_original_weil_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
