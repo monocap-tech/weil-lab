@@ -75,3 +75,7 @@ The earlier IP7 generic Fourier-tail cutoff bottleneck is no longer used; the op
 ## 5. Verified standing
 
 NF14 strengthens FINITE original signed Weil positivity on the new a=53/50 target through E64 (and E48). The ORIGINAL whole supported domain remains internally certified through a=21/20 only (CC18), even0/odd0. No RH/F4, all-cap non-stalling, full transport, corrected full source Schur or Lean closure is asserted. Coupled remains the sole integration frontier; independent Phase Geometry owns these computational aperture preflights.
+
+## Subsequent native finite checkpoint — NF15 E80
+
+[NF15 complete original signed native E80](REFLECTED_PACKET_BRIDGE_108_NATIVE_LOW80_NF15_20261008.md) raises the finite signed positivity frontier at a=53/50 from E64 to E80, with physical lower >9e-34 after 40+40 exact-rational shifted LDL pivots and all native interval errors. Its 1640 same-parity complete original entries are enclosed at exponential/Bernoulli/log orders 490/430/500 and 10^-180 grid; all 4224 nested original E64 signed component interval intersections pass. This does NOT certify the missing original E112 finite matrix, source/action Gram, corrected infinite-complement Schur or whole-aperture a=53/50 positivity. CC18 whole positivity through 21/20 remains the standing anchor.
