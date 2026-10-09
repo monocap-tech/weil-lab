@@ -1,0 +1,40 @@
+{
+  "stage": "DNE5",
+  "date": "2026-10-08 America/Los_Angeles",
+  "repository": "monocap-tech/weil-lab",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "parent": "fc5aafef1fce971fde89a75634681dab07cea83e",
+  "sources_read_only": {
+    "CC37": "effective native remainder global archimedean envelope |r_arch|<8",
+    "CC40_NF12": "notes/data/RPB108_CC40_NATIVE_PARITY_LOW2_INPUT_20261008.json",
+    "DNE3": "whole-canonical-domain native pure-jump identity",
+    "DNE4": "complete weighted ground-state jump domain",
+    "concurrent": "CC51 and NF17 not merged; finite E112 cannot infer whole sign"
+  },
+  "mathematical_claims": [
+    "Free native Levy heat kernel at time 1 belongs to L2 by log-symbol lower bound",
+    "Killed positive jump semigroup is pointwise dominated by free semigroup",
+    "Every finite-cap normalized positive pole-free ground state belongs to L-infinity, with M_a <= exp(mu_a+3)*sqrt(2/e)",
+    "Full transformed odd spectral gap >= j(2a)*int phi/M >= j(2a)/M^2",
+    "At a=53/50, using pinned NF12 degree0 and CC37 source, gamma_odd>3^-30",
+    "At a=53/50, diameter-only certificate Gamma_diam<9/10 while -lambda0>4",
+    "Exact sign-cut Rayleigh upper bound retains archimedean reflection and all prime bridges"
+  ],
+  "independent_controls": {
+    "checked": true,
+    "method": "exact BigInt rational source-endpoint comparisons and finite reflected-cut algebra",
+    "checks": 16,
+    "passed": 16,
+    "committed_python_validator_executed": false,
+    "native_zeta_ground_eigenfunction_evaluated": false,
+    "source_degree0_H00_upper_approx": -4.612024517981242,
+    "cut_model_weighted_energy": 50
+  },
+  "exclusions": [
+    "Does not prove gamma_odd > -lambda0",
+    "Does not exclude odd zero-moment H-null",
+    "Does not exclude even or moment-carrying original Q-null",
+    "Does not prove full a=53/50 positivity, RH, F4, Lean",
+    "Does not evaluate the actual reflected-cut profile of phi"
+  ]
+}
