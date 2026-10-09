@@ -1,0 +1,79 @@
+{
+  "milestone": "NF26",
+  "status": "PASS",
+  "phase_parent": "493650e71100c62862b682d0579b2240e8c1d002",
+  "read_only_coupled_CC66_head": "795aa8849d07d99c7da880ca201dfda8aa011623",
+  "full_first_run_and_strengthened_replay_completed": true,
+  "all_common_energy_and_source_square_intervals_identical": true,
+  "independent_original_native_pairing_checks": 6,
+  "paid_bilinear_symmetry_checks": 2,
+  "explicit_final_pole_error_assertion_checked": true,
+  "parity_checks": [
+    {
+      "parity": "even",
+      "strict_decimal_brackets": {
+        "coarse_response_over_corrected_energy": [
+          "0.9612",
+          "0.9619"
+        ],
+        "corrected_native_energy": [
+          "8.7267e-35",
+          "8.7271e-35"
+        ],
+        "complete_original_corrected_residual_square": [
+          "1.7364e-35",
+          "1.7377e-35"
+        ]
+      },
+      "strict_directional_Schur_lower": "3.32e-36",
+      "complete_replay_common_intervals_identical": true,
+      "native_pairing_checks": 3,
+      "bilinear_symmetry_passed": true,
+      "correction_energy_above_original_high_floor": true,
+      "directional_sufficient_gate_passed": true
+    },
+    {
+      "parity": "odd",
+      "strict_decimal_brackets": {
+        "coarse_response_over_corrected_energy": [
+          "0.7612",
+          "0.7613"
+        ],
+        "corrected_native_energy": [
+          "3.16796e-31",
+          "3.16798e-31"
+        ],
+        "complete_original_corrected_residual_square": [
+          "4.9918e-32",
+          "4.9920e-32"
+        ]
+      },
+      "strict_directional_Schur_lower": "7.56e-32",
+      "complete_replay_common_intervals_identical": true,
+      "native_pairing_checks": 3,
+      "bilinear_symmetry_passed": true,
+      "correction_energy_above_original_high_floor": true,
+      "directional_sufficient_gate_passed": true
+    }
+  ],
+  "original_Schur_restriction_on_two_fixed_retained_seeds_positive": true,
+  "opposite_parity_Schur_mixed_term_exactly_zero": true,
+  "collective_retained_Schur_certified": false,
+  "whole_aperture_positive": false,
+  "highest_whole_domain_certified_aperture": "21/20",
+  "RH": false,
+  "F4": false,
+  "Lean": false,
+  "file_sha256": {
+    "scripts/certify_native_high_correction_nf26_106.py": "8f8882c6a6f5e965537d35493ad28725be9f9e87309e626aa85912879fff308f",
+    "docs/TERMINOLOGY_RPB108_HIGH_CORRECTION_NF26.md": "df81cbd0fcd4d531c08ba13181a293df62ea852bfbbed3942597e9ed893b4aa7",
+    "notes/REFLECTED_PACKET_BRIDGE_108_HIGH_CORRECTION_NF26_20261009.md": "6a34ec54c9edbe00d46ff30f57cbc3b1688cc3e5d6b68fb6f64722d29a6f391f",
+    "notes/data/RPB108_NF26_FIXED_HIGH_CORRECTIONS_20261009.json": "814fe0fcc3aff4eecbe4e6c6eead5ce28927043877c0df9cfa03e3a5c71c2336",
+    "notes/data/RPB108_NF26_HIGH_CORRECTION_CERTIFICATE_20261009.json": "f2010510bacac64c45ef1825cd5e2c41e395519417815a43530e44e6cfdbf930",
+    "scripts/certify_native_correlated_sources_nf25_106.py": "05024ce59c5ae99c0047db8b9e9bfb567c33cafb69cefe7a7dc0339c90836de7",
+    "scripts/certify_native_arch_source_uniform_nf22_106.py": "9333f299b88774c851fdef3a8e3bfd1dc4a19595dec776a4d91da356a8ea184f",
+    "scripts/certify_native_low112_nf17_106.py": "eb9c1d2dce22033c8792cf5377f37a14254ae4bb6a826158213f5e5ab9b649e5"
+  },
+  "diagnostic_trial_selection_sha256": "b739237013cf898f4c787184efadc02657f24561dedad4710d109908adcc588a",
+  "retained_coordinate_output_label_explicitly_marks_approximant": true
+}
