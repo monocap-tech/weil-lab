@@ -1,0 +1,62 @@
+{
+  "stage": "DNE9",
+  "date": "2026-10-08 America/Los_Angeles",
+  "repository": "monocap-tech/weil-lab",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "starting_head": "2f23fd3a2ad504e9c228d61395a48726c382558d",
+  "mathematical_scope": "Exact finite spectral Feshbach reduction of the ACTUAL original pole-free native J at a=53/50, no evaluated all-high response",
+  "inherited_certificates": {
+    "NF10": "Full original Weil Q on F112 >=17/100 physical mass at a=53/50",
+    "CC40": "Pole-free H even F112 >=4/25; H odd F112 >=17/100",
+    "CC37": "Full archimedean remainder operator bound <8 and six active prime coefficient sum <4",
+    "DNE3": "J=H+kappa I full unweighted jump operator",
+    "DNE7-DNE8": "Reflected Hankel B bounded with ||B||<13; odd null comparison",
+    "CC47": "General constrained full-original-Q form Schur already established; not rebranded as DNE theorem"
+  },
+  "established_analytic_results": [
+    "Pole-free canonical high coercivity on physical F112: H>=1/101 ||.||_D^2",
+    "Even parity J eigenvalue #57 >=kappa+4/25; odd #57 >=kappa+17/100",
+    "At most 56 eigenvalues per parity at any energy below respective threshold, multiplicity counted",
+    "For lambda below high threshold, exact 56-dimensional Feshbach pencil S(lambda) with ker in one-to-one correspondence with true supported eigenmodes",
+    "Feshbach pencil form derivative is -||v+T(lambda)v||_physical^2 for each nonzero low v",
+    "At lambda=0 finite approximate high response has certified-form-dual residual error at most 101||r||_Ddual^2",
+    "Odd moment-zero first contact must lie in finite joint kernel of S(0) and corrected sinh moment and satisfy reflected comparison nonpositivity",
+    "Positive finite LMI M_eff+t(S^2+ell*ell) for some t>0 would exclude this odd contact",
+    "Reflected matrix approximation error <=16 eta[2(1+||T_hat||)+eta]"
+  ],
+  "quantitative_constants": {
+    "aperture": "53/50",
+    "per_parity_trial_dimension": 56,
+    "total_trial_dimension": 112,
+    "even_high_physical_floor": "4/25",
+    "odd_high_physical_floor": "17/100",
+    "global_pole_free_remainder_operator_upper": "16",
+    "common_high_canonical_form_floor": "1/101",
+    "reflected_Hankel_operator_bound": "13",
+    "reflected_with_even_moment_penalty_operator_bound": "16"
+  },
+  "exact_controls": {
+    "independent_replay": "PASS",
+    "method": "fresh exact JS BigInt reduced rational arithmetic",
+    "assertions": 1930,
+    "committed_validator": "scripts/validate_dne9_feshbach_low56.py",
+    "committed_python_executed": false,
+    "toy_positive_blocks_yet_null": true,
+    "toy_positive_blocks_yet_indefinite": true,
+    "toy_signed_reflection_penalty_positive_and_negative": true,
+    "toy_unmeasured_high_source_can_create_hidden_null": true
+  },
+  "unproved": [
+    "The true H high response T(0) or its complete residual dual norm",
+    "A numerically certified 56-by-56 Feshbach or reflected LMI at aperture 53/50",
+    "An actual zeta eigenvalue of J at kappa or its absence",
+    "First-contact exclusion globally or at target cap",
+    "Whole-a=53/50 original Weil positivity",
+    "RH, F4, complete transport, or Lean theorem"
+  ],
+  "successor": "DNE10 evaluate whole pole-free source/action high dual residual with honest tail payment, then test finite reflected null LMI",
+  "read_only_branches": [
+    "research/rpb108-coupled-continuation",
+    "research/rpb108-phase-geometry-localization"
+  ]
+}
