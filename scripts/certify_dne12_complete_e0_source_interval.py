@@ -58,11 +58,14 @@ def run(N=60000, digits=35):
 
     end=a-delta
     interior=I(0)
+    interior_arch=I(0)
     for i in range(N):
         l=end*i/N
         r=end*(i+1)/N
         interior+=(r-l)*source_range(l,r)**2
+        interior_arch+=(r-l)*I([arch(l).a,arch(r).b])**2
     interior/=a
+    interior_arch/=a
 
     # Endpoint t=a-x in (0,delta), retaining EVERY prime source term.
     for ell,_ in logs:
@@ -83,6 +86,17 @@ def run(N=60000, digits=35):
     L=-iv.log(delta)
     endpoint=(delta/a)*(I(1)/4*(L*L+2*L+2)+10*(L+1)+100)
     whole=I([interior.a,interior.b+endpoint.b])
+    arch_regular=a0+CJ+I([J(2*a).a,J(2*a-delta).b])
+    arch_regular+=I([-5,5])*delta
+    assert arch_regular.a>I(-10).b and arch_regular.b<I(10).a
+    arch_whole=I([interior_arch.a,interior_arch.b+endpoint.b])
+    assert arch_whole.a>I('7.0819').b
+    assert arch_whole.b<I('7.0828').a
+    # Read-only NF21/CC58 proves the complete prime-plus-pole SOURCE-square
+    # strictly in (7.244,7.245). This is an imported separate certificate.
+    cross=whole-arch_whole-I(['7.244','7.245'])
+    assert cross.a>I('-14.245').b
+    assert cross.b<I('-14.241').a
     assert whole.a>I('0.0834').b,(whole,interior,endpoint)
     assert whole.b<I('0.0846').a,(whole,interior,endpoint)
 
@@ -103,6 +117,10 @@ def run(N=60000, digits=35):
         "endpoint_width":"1/100000000",
         "complete_source_square_strict_interval":["0.0834","0.0846"],
         "interior_interval":str(interior),
+        "arch_source_square_interval":["7.0819","7.0828"],
+        "arch_interior_interval":str(interior_arch),
+        "NF21_CC58_prime_pole_sector":["7.244","7.245"],
+        "doubled_arch_prime_pole_cross_interval":["-14.245","-14.241"],
         "endpoint_normalized_upper":str(endpoint.b),
         "original_Q00_source":"CC40/NF12 authenticated rational interval",
         "after_E0_only_source_residual_strict_interval":["0.0817","0.0831"],
