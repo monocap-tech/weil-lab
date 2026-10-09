@@ -1,0 +1,10 @@
+{
+  "stage": "CC44 invisible kernel",
+  "all_passed": true,
+  "new_exact_checks": 57,
+  "actual_zeta_eigenvectors_evaluated": false,
+  "arithmetic_floor_certified": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "0e92edb41ad0091a112521fad1f93dc35053a6d8403d3c320e23c99b9264e292"
+}

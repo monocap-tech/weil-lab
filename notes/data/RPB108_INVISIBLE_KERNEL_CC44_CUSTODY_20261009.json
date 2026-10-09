@@ -1,0 +1,14 @@
+{
+  "stage": "CC44 invisible kernel",
+  "publication_base": "c8cb8ec3e0cc2b8eae83afc328595ff84f2c1793",
+  "dependencies": ["CC40", "CC41", "CC43"],
+  "nf14_handoff_preserved": true,
+  "new_exact_control_checks": 57,
+  "historical_chain_replayed": false,
+  "actual_zeta_eigenvectors_evaluated": false,
+  "arithmetic_floor_certified": false,
+  "whole_positive_anchor": "21/20",
+  "RH_proved": false,
+  "lean_certified": false,
+  "other_branches_modified": false
+}
