@@ -1,0 +1,184 @@
+{
+  "milestone": "NF38",
+  "status": "PASS",
+  "parity_checks": [
+    {
+      "parity": "even",
+      "status": "JOINED_FLOOR_REJECTED",
+      "physical_high_directions_exactly_independent": true,
+      "all_original_response_payments_checked": true,
+      "independent_ceiling_and_selected_LDL_checked": true,
+      "all_real_second_functionals_rejected_with_old_functional_frozen": true,
+      "all_real_joint_two_direction_functionals_rejected": true,
+      "old_second_signed_source_cross_checked": true,
+      "fixed_trial_sha256": "05f3bcbc81e8d5f133fc5e49b61d80f8d1d4d6e65f1953d7dc65089b699ab5fd",
+      "certificate_sha256": "b6f7134f131dc2698868d676494d171e40340e81c453fb67d0e80520e082ce37"
+    },
+    {
+      "parity": "odd",
+      "status": "JOINED_FLOOR_REJECTED",
+      "physical_high_directions_exactly_independent": true,
+      "all_original_response_payments_checked": true,
+      "independent_ceiling_and_selected_LDL_checked": true,
+      "all_real_second_functionals_rejected_with_old_functional_frozen": true,
+      "all_real_joint_two_direction_functionals_rejected": true,
+      "old_second_signed_source_cross_checked": true,
+      "fixed_trial_sha256": "3580ada8f259f02beeddedef5ab28e08cc96a2928c98cdc99390d337c54bad91",
+      "certificate_sha256": "d0dee22dd8803b9f9b2545650a3f0ada382e55d10a36c834bf3350288161aa8c"
+    }
+  ],
+  "inherited_NF37_free_functional_replay": [
+    {
+      "parity": "even",
+      "status": "ALL_REAL_FUNCTIONALS_FLOOR_REJECTED",
+      "universal_witness_upper": "-39547258847442607851405141758397978620034861242830565014832937929941581740899404820631101867907087992870933107228379048663785586138742663872100977342747658248993402578025783929495009055480341531409469423408535753070550704180282739855449468258189258096591943520990165027040210504082342903001052855134860008769121524389917598042507903590852469968956952113839314862119367169450137444099712472837017413929077907939162479104101630019177094972369520952461232975140288430621212304993571304291282829057541999536835127742570631850785702111071209082459335690235160027476035638737348959675790031858477107278127456116570597753227620085203904716748759944476727200404699440944751324118032257659035240644978715907883684517038451688934544540672605391059346794249813145646643478841841900291323454618305701646484994974181061731947691015440991898298785631492009484224690467610571647676731936975938347523285738511450007168860689849357880321292852813579982197156862030736979267/361456689215780224966022627394637421561424292209820658771619883659833970323124831214336034666238667040925721962918844509662037308042111992085982983156302271378300241032280901896694679483239193521437514096742305020997489267571525804334580177758502958537014092859296355322580432800702516855489951388752266405893274881266446203449729582407077929443604341159603110347077284850068707713822878851556392568046683856851844327445282891956353410570253150313542774741597569199399808397502337500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "authenticated_complete_source_responses": true,
+      "independent_LDL_and_scalar_envelope_checked": true,
+      "selected_native_energy_positive": true,
+      "original_mixed_witness_positive_but_universal_witness_negative": true
+    },
+    {
+      "parity": "odd",
+      "status": "ALL_REAL_FUNCTIONALS_FLOOR_REJECTED",
+      "universal_witness_upper": "-939116902169992501571422339964684671517567662305166402359168318052247492049994440387011282132908129212519544249098103899776027529479590871731308695062819053001409821941823473723055046189756953735132362503231184720979652057058216119862867897424010804575305356320776100728322174603896471722050331593108095947882153777758022424341764211370857113118206670683354988191700232704031588053784373454310285992676166465131341006045027091085912949247019202135188371824845862631348262607533463297194255910246107507134213216420596931674347961392110293033973643546347412391065282673236106785257028469651310177498586407836654780816462730192795821633376815705939847657891541879965090594434802069547092877299384673715709946589200142909697240646431122486119329245203650115376279187329469790997348066529913559173912833292152056109768183977025380402799452089829363973429836237563211868918850452926867858943942838623544930067274209997378973873417254166749481776376567452832970416133/124072231595160498611599530066295132963696308284519937422294557998130959274188161380438240124230999930821451374631938200782650937739953335549301570192437427587093448386325171413366408322389742895637663299587686541345358584047992059569592153230571173498271876259254384013277697078720678523252944613707198492248019934213902192771871126921412862434029413663219082654376951445689456977697679862973448472100897352509592152975018420799201084304557306600023204437337177399710981699053959725000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "authenticated_complete_source_responses": true,
+      "independent_LDL_and_scalar_envelope_checked": true,
+      "selected_native_energy_positive": true,
+      "original_mixed_witness_positive_but_universal_witness_negative": true
+    }
+  ],
+  "exact_free_functional_crossing_controls": [
+    {
+      "scale": "1",
+      "exact_best_witness_value": "-1/100",
+      "positive_original_and_ceiling_diagonals": true,
+      "completion_square_identity_checked": true,
+      "exact_positive_null_negative_crossing": true
+    },
+    {
+      "scale": "1",
+      "exact_best_witness_value": "0",
+      "positive_original_and_ceiling_diagonals": true,
+      "completion_square_identity_checked": true,
+      "exact_positive_null_negative_crossing": true
+    },
+    {
+      "scale": "1",
+      "exact_best_witness_value": "1/100",
+      "positive_original_and_ceiling_diagonals": true,
+      "completion_square_identity_checked": true,
+      "exact_positive_null_negative_crossing": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "exact_best_witness_value": "-1/100000000000000000000",
+      "positive_original_and_ceiling_diagonals": true,
+      "completion_square_identity_checked": true,
+      "exact_positive_null_negative_crossing": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "exact_best_witness_value": "0",
+      "positive_original_and_ceiling_diagonals": true,
+      "completion_square_identity_checked": true,
+      "exact_positive_null_negative_crossing": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "exact_best_witness_value": "1/100000000000000000000",
+      "positive_original_and_ceiling_diagonals": true,
+      "completion_square_identity_checked": true,
+      "exact_positive_null_negative_crossing": true
+    }
+  ],
+  "exact_joint_two_direction_crossing_controls": [
+    {
+      "scale": "1",
+      "exact_joint_ceiling_witness_value": "-1/100",
+      "negative_definite_high_block": true,
+      "nonzero_signed_high_cross": true,
+      "positive_original_and_ceiling_diagonals": true,
+      "exact_completion_and_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    },
+    {
+      "scale": "1",
+      "exact_joint_ceiling_witness_value": "0",
+      "negative_definite_high_block": true,
+      "nonzero_signed_high_cross": true,
+      "positive_original_and_ceiling_diagonals": true,
+      "exact_completion_and_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    },
+    {
+      "scale": "1",
+      "exact_joint_ceiling_witness_value": "1/100",
+      "negative_definite_high_block": true,
+      "nonzero_signed_high_cross": true,
+      "positive_original_and_ceiling_diagonals": true,
+      "exact_completion_and_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "exact_joint_ceiling_witness_value": "-1/100000000000000000000",
+      "negative_definite_high_block": true,
+      "nonzero_signed_high_cross": true,
+      "positive_original_and_ceiling_diagonals": true,
+      "exact_completion_and_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "exact_joint_ceiling_witness_value": "0",
+      "negative_definite_high_block": true,
+      "nonzero_signed_high_cross": true,
+      "positive_original_and_ceiling_diagonals": true,
+      "exact_completion_and_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "exact_joint_ceiling_witness_value": "1/100000000000000000000",
+      "negative_definite_high_block": true,
+      "nonzero_signed_high_cross": true,
+      "positive_original_and_ceiling_diagonals": true,
+      "exact_completion_and_positive_null_negative_crossing": true,
+      "native_control_positive": true
+    }
+  ],
+  "positive_full_mass_shift_controls": [
+    {
+      "full_physical_mass_shift": "1/1000",
+      "exact_ground_level": "1/1000",
+      "null_vector": [
+        "-1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "full_physical_mass_shift": "1/10",
+      "exact_ground_level": "1/10",
+      "null_vector": [
+        "-1/2",
+        "1/2",
+        "1"
+      ]
+    },
+    {
+      "full_physical_mass_shift": "2",
+      "exact_ground_level": "2",
+      "null_vector": [
+        "-1/2",
+        "1/2",
+        "1"
+      ]
+    }
+  ],
+  "joined_retained_dimension_certified": 4,
+  "six_retained_direction_plus_all_F_certified": false,
+  "both_high_functionals_varied_jointly": true,
+  "actual_negative_original_form_claimed": false,
+  "whole_aperture_positive": false
+}
