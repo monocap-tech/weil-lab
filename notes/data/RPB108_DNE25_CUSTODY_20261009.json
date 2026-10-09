@@ -1,0 +1,29 @@
+{
+  "stage": "DNE25",
+  "parent": "2566cf2c805e8821f79d7aba1ae3d625e92cd37d",
+  "write_branch": "research/rpb108-direct-null-exclusion",
+  "phase_read_only_head": "f353936b780a4d988ec242a647ab985404f5b69e",
+  "coupled_read_only_head": "14dcfae9c91304f2fc8677586605f795f0d06c6e",
+  "producer_sha256": "4a82683e359f843172bbd5ee53a6e330f657a397b7130c987eb235f431cda4d7",
+  "validator_sha256": "a37992988f8eeb106f2b38cd623f8264294cb08e99673d535603767b9b4d3464",
+  "certificate_sha256": "3afa34f88c82d55c6463e08fe316f40f8f3b4a8795ede09ceda5648d2ad6ea53",
+  "replay_certificate_sha256": "3afa34f88c82d55c6463e08fe316f40f8f3b4a8795ede09ceda5648d2ad6ea53",
+  "validation_sha256": "a47599e33af735e275747d32f6e5a2d84a89b151049147aee70c0f129ba08d2c",
+  "primary_rational_assertions": 54,
+  "replay_rational_assertions": 54,
+  "independent_rational_checks": 624,
+  "paid_native_energy_source_credit": {
+    "even": "29/20000",
+    "odd": "1/160"
+  },
+  "complete_remaining_source_Gram_computed": false,
+  "native_orthogonalization_computed": false,
+  "source_credits_certified": true,
+  "whole_domain_sign_only_conditional": true,
+  "new_positive_retained_directions": 0,
+  "remaining_dimension": 104,
+  "complete_original_source_producers_replayed": false,
+  "other_branches_written": false,
+  "whole_aperture_positive": false,
+  "Lean": false
+}

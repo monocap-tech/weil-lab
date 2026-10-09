@@ -1,0 +1,37 @@
+{
+  "stage": "DNE25",
+  "status": "PASS",
+  "independent_rational_checks": 624,
+  "fresh_replay_byte_identical": true,
+  "certificate_sha256": "3afa34f88c82d55c6463e08fe316f40f8f3b4a8795ede09ceda5648d2ad6ea53",
+  "independent_interval_native_comparison_passed": true,
+  "genuine_coherent_crossing_controls": [
+    {
+      "tested_source_ratio": "9/25",
+      "remainder_source_ratio": "9/25",
+      "coherent_total_loading": "18/25",
+      "original_determinant": "7/25",
+      "actual_null": false
+    },
+    {
+      "tested_source_ratio": "9/25",
+      "remainder_source_ratio": "16/25",
+      "coherent_total_loading": "1",
+      "original_determinant": "0",
+      "actual_null": true
+    },
+    {
+      "tested_source_ratio": "9/25",
+      "remainder_source_ratio": "1",
+      "coherent_total_loading": "34/25",
+      "original_determinant": "-9/25",
+      "actual_null": false
+    }
+  ],
+  "equality_budget_admits_actual_null": true,
+  "same_marginals_different_source_cross_changes_sign": true,
+  "nonorthogonal_coordinate_mass_control_passed": true,
+  "whole_mass_positive_ground_controls_passed": true,
+  "controls_are_abstract_not_Weil_countermodels": true,
+  "remaining_original_Gram_certified": false
+}
