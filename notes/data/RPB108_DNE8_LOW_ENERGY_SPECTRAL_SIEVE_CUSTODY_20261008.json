@@ -1,0 +1,44 @@
+{
+  "stage": "DNE8",
+  "date": "2026-10-08 America/Los_Angeles",
+  "repo": "monocap-tech/weil-lab",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "inherited_dne7_head": "43c34826d5a2a187fd2ad40cf38e43b81d6e20ba",
+  "classification": "Analytic native jump low-energy spectral localization, explicit rank, bounded reflected compression and a scoped structural countercontrol",
+  "analytic_results": [
+    "For E_[0,Lambda](J_a), ||h||_infty < exp(Lambda+3) sqrt(2/e) ||h||_2",
+    "For measurable E, ||1_E E_[0,Lambda]||² <= |E|*(2/e)*exp(2Lambda+6)",
+    "rank E_[0,Lambda] < 4a exp(2Lambda+5) from dominated killed heat kernel Hilbert-Schmidt trace",
+    "Original reflected Hankel B_a extends boundedly to L²(0,a), norm <=pi(1/2+2a)+sum c_n",
+    "At a=53/50 with exact kappa_a<15, rank E_[0,kappa] <5*3^35 and ||B_a||<13",
+    "At eps=10^-22 on the two DNE7 reflected support packets and negatives, every low-J mode has less than 1/1000 of total physical L² mass there",
+    "Spectrally adapted reflected B compression is finite rank but sign remains uncomputed",
+    "An original odd moment-zero contact obeys a finite-dimensional necessary reflected sign inequality against the even pole moment"
+  ],
+  "numerical_and_rational_controls": {
+    "source_validator": "scripts/validate_dne8_spectral_sieve.py",
+    "independent_replay": "PASS",
+    "engine": "fresh V8 BigInt reduced rational implementation; no floating assertions",
+    "exact_assertions_passed": 3232,
+    "exact_assertions_expected": 3232,
+    "key_inequality": "8*3^36/10^22 < 1/1000",
+    "rank_integer_guard": "4*(53/50)*e^35 < 5*3^35",
+    "carleman_guard": "(22/7)*(131/50)+4 <13",
+    "model": "two-site connected positive jump J=p[[1,-1],[-1,1]] with H=J-2p I, rank-one even correction and odd null",
+    "committed_python_validator_separately_executed": false,
+    "actual_zeta_J_eigenspace_evaluated": false
+  },
+  "explicitly_not_proved": [
+    "B_a positivity on actual low-J spectral space",
+    "Actual constrained sign of B_a-2 cosh-moment rank-one form",
+    "Nonexistence of odd or even zero-moment nulls",
+    "Whole aperture original Weil positivity at a=53/50",
+    "RH/F4/Lean or global first-contact exclusion"
+  ],
+  "read_only_concurrency": {
+    "Coupled": "CC54 at start; independently moving",
+    "Aperture": "NF19 at start; independently moving",
+    "no_other_branch_modified": true
+  },
+  "next_frontier": "DNE9: rigorous actual low-J spectral projector/resolvent enclosures for the finite-dimensional reflected sign on the moment-constrained eigenspace"
+}
