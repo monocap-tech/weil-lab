@@ -158,7 +158,7 @@ if __name__=='__main__':
  assert len(records)==(args.dimension//2)*(args.dimension//2+1)
  payload=dict(aperture='53/50',dim=args.dimension,N=N,K=K,complete_form=records,width=str(width))
  output=pathlib.Path(args.output)
- output.write_text(json.dumps(payload,sort_keys=True))
+ output.write_text(json.dumps(payload,sort_keys=True,separators=(',',':')))
  digest=hashlib.sha256(output.read_bytes()).hexdigest()
  print(json.dumps(dict(status='matrix generated; finite sign requires separate validator',
     dimension=args.dimension,entries=len(records),N=N,K=K,
