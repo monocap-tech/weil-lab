@@ -68,9 +68,8 @@ def build(old112):
     assert len(out)==116
     payload=dict(aperture='53/50',parent_E112_SHA256=PARENT_SHA,
                  parent_first_boundary_SHA256='da5fe692dc0d3a0820ccaf68217628776f08718661696dddad54012f4f3841ee',
-                 basis='physical-normalized Legendre',new_columns=[114,115],
-                 original_full_source=out,
-                 truncation={'N':N,'K':K,'grid_digits':280})
+                 new_columns=[114,115],original_full_source=out,
+                 N=N,K=K,grid_digits=280)
     raw=json.dumps(payload,sort_keys=True,separators=(',',':')).encode()
     return raw,round(time.monotonic()-t,2)
 
