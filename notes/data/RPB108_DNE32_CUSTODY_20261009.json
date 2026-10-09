@@ -1,0 +1,64 @@
+{
+  "stage": "DNE32",
+  "parent": "cb92d7361a067506ee2a87d4cec9467beaff553d",
+  "write_branch": "research/rpb108-direct-null-exclusion",
+  "artifact_sha256": {
+    "docs/TERMINOLOGY_RPB108_DNE32_NATIVE_REMAINDER.md": "8ab518a76aac999f70da64923d2d83faca60f3a4273e8a821ff533e71e1e04f5",
+    "notes/REFLECTED_PACKET_BRIDGE_108_DNE32_NATIVE_REMAINDER_20261009.md": "a0cd13ad32ad51b9055d15738a4d9b98acfd50d5af9ff90c49013093cd930846",
+    "notes/data/RPB108_DNE32_EVEN_NATIVE_INPUT_20261009.json.gz.b64": "1260cce32a6f6e79fce711eda752654d2a6c8aa44e91ffff1eeece55f74850cc",
+    "notes/data/RPB108_DNE32_EVEN_NATIVE_INPUT_REPLAY_20261009.json.gz.b64": "a4aa5dc569902e7b1eb6c1736171cd23932435793bf82e5f1a7074d73150ff65",
+    "notes/data/RPB108_DNE32_EVEN_NATIVE_REMAINDER_CERTIFICATE_20261009.json.gz.b64": "7fb781c9fd864227a8844bb2cbc6008465fc61c4202987a81679e2c505e692bd",
+    "notes/data/RPB108_DNE32_NATIVE_REMAINDER_VALIDATION_20261009.json": "26ab9f049a31a60cfa88254c75e79c03aaf54ddc7523cb90054b7d1da8dfc174",
+    "notes/data/RPB108_DNE32_ODD_NATIVE_INPUT_20261009.json.gz.b64": "a7cb3ffe61fef6d9b778bf240c0dfb289b60688c5db467881614480222d0efd3",
+    "notes/data/RPB108_DNE32_ODD_NATIVE_INPUT_REPLAY_20261009.json.gz.b64": "a044a7b2a57057003c69666bd22bc420f94921554b80f88dd9bd705fecb52ed7",
+    "notes/data/RPB108_DNE32_ODD_NATIVE_REMAINDER_CERTIFICATE_20261009.json.gz.b64": "940740657cb457849a3f92e994544a499a63c489f4d54c6da145e699bef5a437",
+    "notes/data/RPB108_DNE32_RETAINED_NATIVE_INPUT_20261009.json.gz.b64": "0a446c9ca6ce723194ec792d0fb5d94d14697f17af4504028e663ec0e73fb9d0",
+    "scripts/certify_dne32_native_remainder.py": "b7e59ba341e1b9824cad2617df671daad3bbe9f4a5ce7f6f7bdbc2230d2507ae",
+    "scripts/materialize_dne32_normalized_sources.py": "a39209c8ea77bc209e98636de9d52cc0197e75e3216a2b3aec08b3ad409d0abe",
+    "scripts/validate_dne32_native_remainder.py": "343e73cb0a4b35e644c3216e1d21ffc6dfdb85845e654cb7a6f1a0d292901425"
+  },
+  "decoded_artifact_sha256": {
+    "notes/data/RPB108_DNE32_EVEN_NATIVE_INPUT_20261009.json.gz.b64": "3dc9de58a08481b31a5814868baead0120f8f239bbc3d402b5778f2d59d24c63",
+    "notes/data/RPB108_DNE32_EVEN_NATIVE_INPUT_REPLAY_20261009.json.gz.b64": "9d0a689a9b66ec15b321196ab5bfd45d40fd5b3371da51e57532cb01b0064528",
+    "notes/data/RPB108_DNE32_EVEN_NATIVE_REMAINDER_CERTIFICATE_20261009.json.gz.b64": "ca8a51f6d9da897b43b7b66122600ae12537ed0699ef49663a6fc199d306aaef",
+    "notes/data/RPB108_DNE32_ODD_NATIVE_INPUT_20261009.json.gz.b64": "43bce3e3cf277918a10a540e47d7a7b8a985aa20555663fc77d3f173563c6cda",
+    "notes/data/RPB108_DNE32_ODD_NATIVE_INPUT_REPLAY_20261009.json.gz.b64": "0b3364a9a8c19d410a46bf27038aa45d60e986163b7b55a48b6df0b7c7abe0de",
+    "notes/data/RPB108_DNE32_ODD_NATIVE_REMAINDER_CERTIFICATE_20261009.json.gz.b64": "52323b057455d84eb74b16b01fe5ed489dd3eed2f3b3f52182ef16c1aa4433c6",
+    "notes/data/RPB108_DNE32_RETAINED_NATIVE_INPUT_20261009.json.gz.b64": "b6b718d52ec5900faf0a0d938f1355f37278f6b41ed67868e11269a651a743d3"
+  },
+  "original_decoded_native_archive_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+  "independent_rational_checks": 28472,
+  "original_archive_export_entries_checked": 3192,
+  "original_source_orders": [
+    900,
+    940
+  ],
+  "original_source_precisions": [
+    1000,
+    1020
+  ],
+  "native_energy_certified": true,
+  "native_border_allocation_discharged": true,
+  "complete_remaining_source_Gram_certified": false,
+  "whole_aperture_positive": false,
+  "inherited_input_decoded_sha256": {
+    "notes/data/RPB108_DNE31_EVEN_NATIVE_BORDER_20261009.json.gz.b64": "cc11b7b0bb4c51610fab0a130ca1b215d8df6ee359b1df65052f343e5177b687",
+    "notes/data/RPB108_DNE31_EVEN_REMAINDER_FRAME_20261009.json.gz.b64": "c6b08b805155d0be24bfaee09eb6265898e6842f1f5a3f707901619a7a4f1afd",
+    "notes/data/RPB108_DNE31_ODD_NATIVE_BORDER_20261009.json.gz.b64": "b6b1c351712556f6019a68587180e3b25e62409f4dbf7a04b91adcf41c7fd306",
+    "notes/data/RPB108_DNE31_ODD_REMAINDER_FRAME_20261009.json.gz.b64": "3e668acf83d8d2993b6bf34f9ed7ee8e5899d2ef3ec3f47d216b22b53c8fca6e"
+  },
+  "materialized_normalized_packets": {
+    "even": {
+      "decoded_sha256": "57548e5aaf244a7f272850adccb63b24a694eb30b6e44bb5bc9c70ec1aee9eae",
+      "column_count": 52,
+      "degree_max": 180,
+      "reproducible_by": "scripts/materialize_dne32_normalized_sources.py"
+    },
+    "odd": {
+      "decoded_sha256": "63f25b730fe01fab0421bde53aa59d251e7d9bfeb0181c5b539aca4db9dad1bc",
+      "column_count": 52,
+      "degree_max": 179,
+      "reproducible_by": "scripts/materialize_dne32_normalized_sources.py"
+    }
+  }
+}

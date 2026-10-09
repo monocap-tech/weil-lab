@@ -1,0 +1,35 @@
+{
+  "stage": "DNE32",
+  "status": "PASS",
+  "independent_rational_checks": 28472,
+  "rows": [
+    {
+      "parity": "even",
+      "certificate_sha256": "ca8a51f6d9da897b43b7b66122600ae12537ed0699ef49663a6fc199d306aaef",
+      "native_floor_guard": "1/10000000000000000",
+      "congruence_margin": "199999999999999999998844875161279782842492998052223836162403573829188216201793849150960579533586408880272362818898916763/200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "native_border_allocation_discharged": true
+    },
+    {
+      "parity": "odd",
+      "certificate_sha256": "52323b057455d84eb74b16b01fe5ed489dd3eed2f3b3f52182ef16c1aa4433c6",
+      "native_floor_guard": "1/100000000000000",
+      "congruence_margin": "999999999999999999999999999709804713168534184225569241474277360802208282984132773219888234804183629468219397101061443941/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "native_border_allocation_discharged": true
+    }
+  ],
+  "original_native_archive_export_checked": true,
+  "complete_native_matrices_verified": true,
+  "complete_52_by_52_congruences_verified": true,
+  "native_vs_full_source_crossing_determinants": [
+    "7/25",
+    "0",
+    "-9/25"
+  ],
+  "whole_physical_mass_positive_level_controls": 3,
+  "remaining_native_energy_certified": true,
+  "complete_remaining_source_Gram_certified": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
