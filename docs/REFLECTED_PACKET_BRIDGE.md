@@ -4198,3 +4198,14 @@ Joint candidate packets require CC84/CC86's full signed span test; individual ra
 - [CC90 note](../notes/REFLECTED_PACKET_BRIDGE_108_RESPONSE_NEIGHBORHOOD_CC90_20261009.md)
 - [Validator](../scripts/certify_cc90_even_response_neighborhood.py)
 - [Exact neighborhood bound and controls](../notes/data/RPB108_CC90_EVEN_RESPONSE_NEIGHBORHOOD_20261009.json)
+
+
+## CC91 — both fixed joined packets pass conditionally (2026-10-09)
+
+Definitions: [CC91 both joined packets](TERMINOLOGY_RPB108_BOTH_JOINED_PASS_CC91.md). Immutable NF46 6658ff2837838ab00b9b9c605fdd200d473c3293 adds an eighth even original high polynomial on degrees 182..212. Independent authenticated complete matrix checks certify the even condensed margin [7.48933e-23,7.60924e-23], while the original NF45 odd pass [4.44738e-22,4.60934e-22] is preserved. Both fixed three-coordinate joined packet signs are now positive under the inherited A >= (207/1000) I hypothesis. All prior entries and physical orthogonality pass; direct verified block inverse arithmetic confirms the new response and full finite-strength cone surplus.
+
+The actual signed response escapes CC90's rejection neighborhood. Source selection for these fixed packet deficits is conditionally complete. The next checkpoint is physical/full-retained and remaining-background integration, with the standing floor and transport still open. No full retained matrix or physical whole-domain gap is claimed. Other 106 retained directions and collective coupling remain open. Whole-domain certified aperture stays 21/20; whole 53/50, all-cap, RH/F4 and Lean closure are not claimed.
+
+- [CC91 note](../notes/REFLECTED_PACKET_BRIDGE_108_BOTH_JOINED_PASS_CC91_20261009.md)
+- [Validator](../scripts/certify_cc91_both_joined_pass.py)
+- [Consumer results](../notes/data/RPB108_CC91_BOTH_JOINED_PASS_20261009.json)

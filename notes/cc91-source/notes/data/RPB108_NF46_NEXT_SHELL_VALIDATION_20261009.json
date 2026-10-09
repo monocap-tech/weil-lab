@@ -1,0 +1,178 @@
+{
+  "NF45_input_sha256": [
+    "bff2b54764aab1dcd4a1943a3dcd9fb2fd492762abeecb3afaf01f3dce00715b",
+    "4f59c09a453314eae49fcbdf8553f0ce61b1386138d59111c88ab8f752826e4e",
+    "90d03525ee54da02f6e6662460cc18bea2d5740f39f28449de66dea76fa3b5b5",
+    "694204c23b11cfb0af07d26be4a8a0bfe6ab68f8d2e431e2de23390470e28c1c",
+    "d555f03e507f4b410588bdaa28f851e99ba6aaaf3b85811504e88dccaba12391"
+  ],
+  "background_floor_newly_proved": false,
+  "defect_response_controls": [
+    {
+      "boundary_inverse_coupling": "3/10",
+      "coupled_inverse_improvement": "1/4002",
+      "defect_source_Woodbury_lower_bound": "1863/20767726",
+      "positive_boundary_defect": "2/3125",
+      "positive_defect_remainder_checked": true,
+      "uncoupled_inverse_improvement": "0"
+    },
+    {
+      "boundary_inverse_coupling": "3/10",
+      "coupled_inverse_improvement": "1/6",
+      "defect_source_Woodbury_lower_bound": "1863/88426",
+      "positive_boundary_defect": "16/25",
+      "positive_defect_remainder_checked": true,
+      "uncoupled_inverse_improvement": "0"
+    },
+    {
+      "boundary_inverse_coupling": "3/10",
+      "coupled_inverse_improvement": "25/51",
+      "defect_source_Woodbury_lower_bound": "1863/67933",
+      "positive_boundary_defect": "64",
+      "positive_defect_remainder_checked": true,
+      "uncoupled_inverse_improvement": "0"
+    }
+  ],
+  "even_check": {
+    "all_eighth_source_coordinates_and_reverse_covariances_replayed": true,
+    "all_physical_source_payments_replayed": true,
+    "certificate_sha256": "4556f7f990a5ba9e7ec139e5f809b8b26b51203ca790f224b6f63f22299c69e7",
+    "conditional_joined_sign_certified": true,
+    "exact_Woodbury_algebra": {
+      "exact_eight_vs_seven_Woodbury_equals_scalar_defect_update": true,
+      "exact_rational_delta_inside_paid_original_intervals": true,
+      "exact_scalar_defect_and_denominator_positive": true
+    },
+    "independent_inverse_witness_source_coordinate_controls_passed": true,
+    "parity": "even",
+    "selection": {
+      "disjoint_shell_orthogonality_to_seven_high_columns": true,
+      "exact_downround_and_normalization_replayed": true,
+      "old_direction_mutation_rejected": true
+    },
+    "seven_source_baseline_matches_NF45_entrywise": true,
+    "status": "PASS",
+    "trial_sha256": "5734f0e7bab528d439c68faf2160d9fc2d545e426cb8523367258e47e4d702e4"
+  },
+  "exact_packing_controls": {
+    "all_interval_coefficient_endpoint_vertices_checked": 48,
+    "exact_integer_controls": [
+      {
+        "exact_signed_integer_coefficients_checked": true,
+        "lengths": [
+          1,
+          1
+        ]
+      },
+      {
+        "exact_signed_integer_coefficients_checked": true,
+        "lengths": [
+          3,
+          4
+        ]
+      },
+      {
+        "exact_signed_integer_coefficients_checked": true,
+        "lengths": [
+          20,
+          17
+        ]
+      },
+      {
+        "exact_signed_integer_coefficients_checked": true,
+        "lengths": [
+          80,
+          90
+        ]
+      }
+    ]
+  },
+  "full_block_crossing_controls": [
+    {
+      "exact_condensed_witness_value": "-1/100",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1"
+    },
+    {
+      "exact_condensed_witness_value": "0",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1"
+    },
+    {
+      "exact_condensed_witness_value": "1/100",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1"
+    },
+    {
+      "exact_condensed_witness_value": "-1/100000000000000000000",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1/1000000000000000000"
+    },
+    {
+      "exact_condensed_witness_value": "0",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1/1000000000000000000"
+    },
+    {
+      "exact_condensed_witness_value": "1/100000000000000000000",
+      "exact_positive_null_negative_full_block_crossing": true,
+      "positive_high_background": true,
+      "positive_native_retained_matrix": true,
+      "scale": "1/1000000000000000000"
+    }
+  ],
+  "milestone": "NF46",
+  "positive_whole_physical_mass_controls": [
+    {
+      "exact_five_coordinate_null_vector": [
+        "-1/2",
+        "1/2",
+        "1",
+        "-1/4",
+        "-500/69"
+      ],
+      "exact_ground_level": "1/1000",
+      "full_physical_mass_shift": "1/1000"
+    },
+    {
+      "exact_five_coordinate_null_vector": [
+        "-1/2",
+        "1/2",
+        "1",
+        "-1/4",
+        "-500/69"
+      ],
+      "exact_ground_level": "1/10",
+      "full_physical_mass_shift": "1/10"
+    },
+    {
+      "exact_five_coordinate_null_vector": [
+        "-1/2",
+        "1/2",
+        "1",
+        "-1/4",
+        "-500/69"
+      ],
+      "exact_ground_level": "2",
+      "full_physical_mass_shift": "2"
+    }
+  ],
+  "preserved_odd_NF45_certificate": {
+    "conditional_joined_sign_certified": true,
+    "full_source_replay_inherited_from_authenticated_NF45": true,
+    "positive_leading_minor_and_determinant_rechecked": true,
+    "sha256": "694204c23b11cfb0af07d26be4a8a0bfe6ab68f8d2e431e2de23390470e28c1c"
+  },
+  "status": "PASS",
+  "whole_aperture_positive": false
+}
