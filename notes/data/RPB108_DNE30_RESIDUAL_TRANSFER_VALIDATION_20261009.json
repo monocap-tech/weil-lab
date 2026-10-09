@@ -1,0 +1,55 @@
+{
+  "stage": "DNE30",
+  "status": "PASS",
+  "independent_rational_checks": 2760,
+  "matrix_envelope_vertices": 128,
+  "all_principal_minors_of_envelope_differences_nonnegative": true,
+  "full_signed_acceptance_positive": true,
+  "exact_high_lift_frame_reconstruction_passed": true,
+  "primary_and_replay_rows_identical": true,
+  "high_shift_full_block_crossings": [
+    {
+      "scale": "1",
+      "condensed_determinant": "-1/100",
+      "full_determinant": "-1/20",
+      "high_lift_invariance": true
+    },
+    {
+      "scale": "1",
+      "condensed_determinant": "0",
+      "full_determinant": "0",
+      "high_lift_invariance": true
+    },
+    {
+      "scale": "1",
+      "condensed_determinant": "1/100",
+      "full_determinant": "1/20",
+      "high_lift_invariance": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "condensed_determinant": "-1/100000000000000000000000000000000000000",
+      "full_determinant": "-1/20000000000000000000000000000000000000",
+      "high_lift_invariance": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "condensed_determinant": "0",
+      "full_determinant": "0",
+      "high_lift_invariance": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "condensed_determinant": "1/100000000000000000000000000000000000000",
+      "full_determinant": "1/20000000000000000000000000000000000000",
+      "high_lift_invariance": true
+    }
+  ],
+  "whole_physical_mass_positive_level_controls": 3,
+  "finite_compression_is_not_uniform_floor_controls": 3,
+  "response_bound_inherited_not_inverse_evaluated": true,
+  "certificate_sha256": "69bdf18110c661fdb15a0983f8505c0d46ea3d7db1a9c4056cfb559225407e00",
+  "replay_sha256": "236d6ebe2c5cadcc886452c882a58424aef37d6df0b3fe7bc77f05801c120b62",
+  "complete_remaining_Gram_certified": false,
+  "whole_aperture_positive": false
+}

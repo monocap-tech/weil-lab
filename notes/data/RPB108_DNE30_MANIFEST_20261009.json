@@ -1,0 +1,22 @@
+{
+  "inputs": [
+    "notes/data/RPB108_DNE17_PRIME_SCHUR_CERTIFICATE_20261009.json",
+    "notes/data/RPB108_DNE17_VALIDATION_20261009.json",
+    "notes/data/RPB108_DNE29_OPTIMIZED_LOW_UNION_CERTIFICATE_20261009.json",
+    "notes/data/RPB108_DNE29_OPTIMIZED_LOW_UNION_REPLAY_20261009.json",
+    "notes/data/RPB108_DNE30_NF42_EVEN_INPUT_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE30_NF42_ODD_INPUT_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE30_NF42_VALIDATION_INPUT_20261009.json",
+    "notes/data/RPB108_DNE29_CUSTODY_20261009.json"
+  ],
+  "frame_inputs": [
+    "notes/data/RPB108_DNE29_NF41_EVEN_COLUMNS_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE29_NF41_ODD_COLUMNS_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE29_EVEN_SELECTED_COLUMNS_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE29_ODD_SELECTED_COLUMNS_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE26_NF38_EVEN_TRIAL_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE26_NF38_ODD_TRIAL_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE26_NF38_EVEN_INPUT_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE26_NF38_ODD_INPUT_20261009.json.gz.b64"
+  ]
+}
