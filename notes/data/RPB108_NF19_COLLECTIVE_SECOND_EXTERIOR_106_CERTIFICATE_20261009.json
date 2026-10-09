@@ -83,5 +83,37 @@
   "whole_original_aperture_1_06_positive": false,
   "RH": false,
   "F4": false,
-  "Lean": false
+  "Lean": false,
+  "low_energy_three_space": {
+    "status": "PASS exact rational 3x3 shifted full-source Gram in both parities",
+    "original_source_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+    "rational_seed_sha256": "2dca6436bf41d27f906ec02d0f2728b5da63919757136ec6fe5a0aef6b59ee48",
+    "seed_denominator": "10^60",
+    "dimensions_per_parity": 3,
+    "even_original_Rayleigh_strict_upper": "1/10^20",
+    "odd_original_Rayleigh_strict_upper": "1/10^17",
+    "even_full_3x3_operator_error_display": 6.012093196958754e-68,
+    "odd_full_3x3_operator_error_display": 6.012093196979871e-68,
+    "certified_exact_shifted_positive_pivots": {
+      "even": 3,
+      "odd": 3
+    },
+    "two_exterior_linear_functionals_per_parity": 2,
+    "certified_common_kernel_dimension_at_least": 1,
+    "simultaneous_invisible_pairs": {
+      "even": [
+        112,
+        114
+      ],
+      "odd": [
+        113,
+        115
+      ]
+    },
+    "original_Q_energy_strictly_positive_from_NF17": true,
+    "complete_F112_invisibility": false,
+    "whole_original_null": false,
+    "generator": "scripts/build_native_low3_seeds_nf19_106.py",
+    "validator": "scripts/certify_native_two_mode_invisible_nf19_106.py"
+  }
 }
