@@ -1,0 +1,162 @@
+{
+  "milestone": "NF39",
+  "status": "PASS",
+  "NF38_input_sha256": [
+    "05f3bcbc81e8d5f133fc5e49b61d80f8d1d4d6e65f1953d7dc65089b699ab5fd",
+    "3580ada8f259f02beeddedef5ab28e08cc96a2928c98cdc99390d337c54bad91",
+    "b6f7134f131dc2698868d676494d171e40340e81c453fb67d0e80520e082ce37",
+    "d0dee22dd8803b9f9b2545650a3f0ada382e55d10a36c834bf3350288161aa8c",
+    "f64f6d2d7f062b7e4306c8c74dc50c8370c266db9e424e79df8e40526b3cda96"
+  ],
+  "parity_checks": [
+    {
+      "parity": "even",
+      "status": "PASS",
+      "exact_packet_models": [
+        {
+          "delta": "0",
+          "all_named_moments_match_exactly": true,
+          "positive_high_background_floor": true,
+          "Schur_sign": "negative"
+        },
+        {
+          "delta": "1",
+          "all_named_moments_match_exactly": true,
+          "positive_high_background_floor": true,
+          "Schur_sign": "positive"
+        }
+      ],
+      "sharp_inverse_identity_checked": true,
+      "necessary_actual_witness_improvement": "2394280064376301377714230542285265979759191883604795155559159005831355955839562440262677794703343732857562319604992587733975044947499373442885534626087490975487383948091720353015904622337669846827582251703366617755331845944504782417882498500216884609743696316261538353583654980489677785172377785604184360202245215716142994700489350171229399029506725553631589737823814227090194059191804119867039440956022583286653882474636525847446800580283740221469260747160380835110661058807159/25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "certificate_sha256": "ed9f383aa7231936e150b70c4232b736b957c291b1ef74d451dab55e4fd68d46"
+    },
+    {
+      "parity": "odd",
+      "status": "PASS",
+      "exact_packet_models": [
+        {
+          "delta": "0",
+          "all_named_moments_match_exactly": true,
+          "positive_high_background_floor": true,
+          "Schur_sign": "negative"
+        },
+        {
+          "delta": "1",
+          "all_named_moments_match_exactly": true,
+          "positive_high_background_floor": true,
+          "Schur_sign": "positive"
+        }
+      ],
+      "sharp_inverse_identity_checked": true,
+      "necessary_actual_witness_improvement": "165642310174367461647252026749879558370853186901331621914169426228028378261453692808651366047634349772834614349010045920659381977193645490991237670502234295548683830138098983724385568337076358211908154850770365597330037406435611770313733235115282399677366801935077780512142982836013774010525944687199696562526800281727434091484763611947023158845685443679292516104824553853177909933857575469748528047359593967861038972144298681024616442174780661787744001722167292041083763879269129/100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "certificate_sha256": "9aeb95f78a36fd1e45f08e8a92d677e7f60654fbe322d9c2a386c73d923804a2"
+    }
+  ],
+  "inherited_NF38_response_replay": [
+    {
+      "parity": "even",
+      "status": "JOINED_FLOOR_REJECTED",
+      "physical_high_directions_exactly_independent": true,
+      "all_original_response_payments_checked": true,
+      "independent_ceiling_and_selected_LDL_checked": true,
+      "all_real_second_functionals_rejected_with_old_functional_frozen": true,
+      "all_real_joint_two_direction_functionals_rejected": true,
+      "old_second_signed_source_cross_checked": true,
+      "fixed_trial_sha256": "05f3bcbc81e8d5f133fc5e49b61d80f8d1d4d6e65f1953d7dc65089b699ab5fd"
+    },
+    {
+      "parity": "odd",
+      "status": "JOINED_FLOOR_REJECTED",
+      "physical_high_directions_exactly_independent": true,
+      "all_original_response_payments_checked": true,
+      "independent_ceiling_and_selected_LDL_checked": true,
+      "all_real_second_functionals_rejected_with_old_functional_frozen": true,
+      "all_real_joint_two_direction_functionals_rejected": true,
+      "old_second_signed_source_cross_checked": true,
+      "fixed_trial_sha256": "3580ada8f259f02beeddedef5ab28e08cc96a2928c98cdc99390d337c54bad91"
+    }
+  ],
+  "exact_full_block_crossing_controls": [
+    {
+      "scale": "1",
+      "exact_condensed_witness_value": "-1/100",
+      "positive_native_retained_matrix": true,
+      "positive_high_background": true,
+      "exact_positive_null_negative_full_block_crossing": true
+    },
+    {
+      "scale": "1",
+      "exact_condensed_witness_value": "0",
+      "positive_native_retained_matrix": true,
+      "positive_high_background": true,
+      "exact_positive_null_negative_full_block_crossing": true
+    },
+    {
+      "scale": "1",
+      "exact_condensed_witness_value": "1/100",
+      "positive_native_retained_matrix": true,
+      "positive_high_background": true,
+      "exact_positive_null_negative_full_block_crossing": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "exact_condensed_witness_value": "-1/100000000000000000000",
+      "positive_native_retained_matrix": true,
+      "positive_high_background": true,
+      "exact_positive_null_negative_full_block_crossing": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "exact_condensed_witness_value": "0",
+      "positive_native_retained_matrix": true,
+      "positive_high_background": true,
+      "exact_positive_null_negative_full_block_crossing": true
+    },
+    {
+      "scale": "1/1000000000000000000",
+      "exact_condensed_witness_value": "1/100000000000000000000",
+      "positive_native_retained_matrix": true,
+      "positive_high_background": true,
+      "exact_positive_null_negative_full_block_crossing": true
+    }
+  ],
+  "positive_whole_physical_mass_controls": [
+    {
+      "full_physical_mass_shift": "1/1000",
+      "exact_ground_level": "1/1000",
+      "exact_five_coordinate_null_vector": [
+        "-1/2",
+        "1/2",
+        "1",
+        "-1/4",
+        "-500/69"
+      ]
+    },
+    {
+      "full_physical_mass_shift": "1/10",
+      "exact_ground_level": "1/10",
+      "exact_five_coordinate_null_vector": [
+        "-1/2",
+        "1/2",
+        "1",
+        "-1/4",
+        "-500/69"
+      ]
+    },
+    {
+      "full_physical_mass_shift": "2",
+      "exact_ground_level": "2",
+      "exact_five_coordinate_null_vector": [
+        "-1/2",
+        "1/2",
+        "1",
+        "-1/4",
+        "-500/69"
+      ]
+    }
+  ],
+  "actual_original_inverse_certified": false,
+  "actual_negative_original_form_claimed": false,
+  "joined_retained_dimension_certified": 4,
+  "whole_aperture_positive": false
+}

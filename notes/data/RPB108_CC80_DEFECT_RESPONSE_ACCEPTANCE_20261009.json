@@ -1,0 +1,192 @@
+{
+  "milestone": "CC80",
+  "integration_parent": "dd93e5cc7d003d44cdc240c5710f4c253dc1346f",
+  "read_only_source": "4d2a5d7d3857854677a223ca38d03b13358f40e9",
+  "source_manifest_audit": [
+    {
+      "milestone": "NF35",
+      "path": "notes/data/RPB108_NF35_JOINED_WITNESSES_VALIDATION_20261009.json",
+      "sha256": "ab9e4ebd605063b6c3a929b96be9f0fc20c380c658f51d6055475e4b3ed1e3c9",
+      "published_status": "PASS",
+      "parity_status": [
+        "JOINED_FLOOR_REJECTED",
+        "JOINED_FLOOR_REJECTED"
+      ]
+    },
+    {
+      "milestone": "NF36",
+      "path": "notes/data/RPB108_NF36_COLLECTIVE_CORRECTION_VALIDATION_20261009.json",
+      "sha256": "51720dd0aa541f4d91c1dcbbc7ccc80d4b8b8d426bb998a0113377f0c8bd396d",
+      "published_status": "PASS",
+      "parity_status": [
+        "JOINED_FLOOR_REJECTED",
+        "JOINED_FLOOR_REJECTED"
+      ]
+    },
+    {
+      "milestone": "NF37",
+      "path": "notes/data/RPB108_NF37_FREE_CORRECTION_FUNCTIONAL_VALIDATION_20261009.json",
+      "sha256": "45de7cb79e330d3e3bc534c2bd179de118924063de7a5987f405cf7b44a0dd78",
+      "published_status": "PASS",
+      "parity_status": [
+        "ALL_REAL_FUNCTIONALS_FLOOR_REJECTED",
+        "ALL_REAL_FUNCTIONALS_FLOOR_REJECTED"
+      ]
+    },
+    {
+      "milestone": "NF38",
+      "path": "notes/data/RPB108_NF38_SECOND_HIGH_DIRECTION_VALIDATION_20261009.json",
+      "sha256": "f64f6d2d7f062b7e4306c8c74dc50c8370c266db9e424e79df8e40526b3cda96",
+      "published_status": "PASS",
+      "parity_status": [
+        "JOINED_FLOOR_REJECTED",
+        "JOINED_FLOOR_REJECTED"
+      ]
+    },
+    {
+      "milestone": "NF39",
+      "path": "notes/data/RPB108_NF39_SHARP_INVERSE_PACKET_VALIDATION_20261009.json",
+      "sha256": "4397d18a78fe8bf56d6928e7c4e438874ce4607e6d81c4418b4d989d67ee476c",
+      "published_status": "PASS",
+      "parity_status": [
+        "PASS",
+        "PASS"
+      ]
+    },
+    {
+      "milestone": "NF40",
+      "path": "notes/data/RPB108_NF40_BOUNDARY_DEFECT_VALIDATION_20261009.json",
+      "sha256": "cdb914cdd7e8b8d0575d9f1f997ad0b5d3a22696a77fe0d5f2ce42e542ae949c",
+      "published_status": "PASS",
+      "parity_status": [
+        "PASS",
+        "PASS"
+      ]
+    },
+    {
+      "milestone": "NF41",
+      "path": "notes/data/RPB108_NF41_BOUNDARY_SOURCE_CROSS_VALIDATION_20261009.json",
+      "sha256": "21fe1825a090bb37135fe2d34ae68502f242b3567467ea8289e2ea736fbb3450",
+      "published_status": "PASS",
+      "parity_status": [
+        "PASS",
+        "PASS"
+      ]
+    }
+  ],
+  "verification_scope": "published validation manifests audited; original arithmetic producers not replayed",
+  "controls": {
+    "Woodbury_exact_control": [
+      [
+        "2/3",
+        "2/3",
+        "0"
+      ],
+      [
+        "2/3",
+        "7/6",
+        "1/2"
+      ],
+      [
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    ],
+    "genuine_full_block_crossings": [
+      {
+        "scale": "1",
+        "parameter": "-1/100",
+        "last_pivot": "-1/100",
+        "native_positive": true,
+        "high_positive": true
+      },
+      {
+        "scale": "1",
+        "parameter": "0",
+        "last_pivot": "0",
+        "native_positive": true,
+        "high_positive": true
+      },
+      {
+        "scale": "1",
+        "parameter": "1/100",
+        "last_pivot": "1/100",
+        "native_positive": true,
+        "high_positive": true
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "parameter": "-1/100",
+        "last_pivot": "-1/100000000000000000000000000000000000000",
+        "native_positive": true,
+        "high_positive": true
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "parameter": "0",
+        "last_pivot": "0",
+        "native_positive": true,
+        "high_positive": true
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "parameter": "1/100",
+        "last_pivot": "1/100000000000000000000000000000000000000",
+        "native_positive": true,
+        "high_positive": true
+      }
+    ],
+    "positive_whole_physical_mass_controls": [
+      {
+        "scale": "1",
+        "whole_mass_shift": "1/1000",
+        "exact_ground_level": "1/1000"
+      },
+      {
+        "scale": "1",
+        "whole_mass_shift": "1/10",
+        "exact_ground_level": "1/10"
+      },
+      {
+        "scale": "1",
+        "whole_mass_shift": "2",
+        "exact_ground_level": "2"
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "whole_mass_shift": "1/1000",
+        "exact_ground_level": "1/1000"
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "whole_mass_shift": "1/10",
+        "exact_ground_level": "1/10"
+      },
+      {
+        "scale": "1/1000000000000000000",
+        "whole_mass_shift": "2",
+        "exact_ground_level": "2"
+      }
+    ],
+    "witness_only_pass_full_matrix_fail": true,
+    "mass_relative_error_crossings": [
+      {
+        "error_budget": "9/100",
+        "mass_relative_margin": "1/100"
+      },
+      {
+        "error_budget": "1/10",
+        "mass_relative_margin": "0"
+      },
+      {
+        "error_budget": "11/100",
+        "mass_relative_margin": "-1/100"
+      }
+    ]
+  },
+  "conditional_full_matrix_acceptance": "V38 + C* B^-1 C - epsilon M > 0",
+  "actual_defect_source_credit_certified": false,
+  "simultaneous_six_direction_certificate": false,
+  "whole_aperture_positive": false
+}
