@@ -1,0 +1,21 @@
+{
+  "milestone": "CC60",
+  "parent": "b67b87731ca7bb1fd7daa318642217c35adb0527",
+  "read_only_source_head": "1261995ecc9ce80351ab3cfbaf802929444fe92e",
+  "source_archive_raw_SHA256": [
+    "da5fe692dc0d3a0820ccaf68217628776f08718661696dddad54012f4f3841ee",
+    "0a8f4ebd0778fa5c90209b3021d22791bdb0d9b73e0f19df608e04ed9ba2bcad"
+  ],
+  "sha256": {
+    "docs/TERMINOLOGY_RPB108_VARIATIONAL_SOURCE_GATE_CC60.md": "b6002549afb1c19fdb5b1bab6c18b4e6631ab97eddc945012f6cd9858e979036",
+    "notes/REFLECTED_PACKET_BRIDGE_108_VARIATIONAL_SOURCE_GATE_CC60_20261009.md": "ef3a02ded4f64cc04d8d62cd446598e3e3891a280ac7a0170f75f05cc7e50faf",
+    "scripts/validate_variational_source_gate_cc60.py": "a7f398f25ff25e6f462c7199d559a75a14c633cc9c06c7f16a0f1a4fe69ae6a0",
+    "notes/data/RPB108_VARIATIONAL_SOURCE_GATE_CC60_VALIDATION_20261009.json": "179a7ef42c950d4c1cb7eb0013b36c8cf32736dd01e71b6414166281e1fa5e2d"
+  },
+  "dependency": "scripts/validate_correlated_high_floor_cc59.py at parent revision",
+  "native_penalty_bounds_certified": true,
+  "native_residual_source_radius_certified": false,
+  "all_cap_frame": false,
+  "history": "additive only",
+  "concurrent_NF22_handoff_preserved": true
+}
