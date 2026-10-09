@@ -1,0 +1,79 @@
+{
+  "stage": "DNE12",
+  "date": "2026-10-08 America/Los_Angeles",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "parent": "06e3ac1ef4e7f24d8ba99d0eabbcbf606f6d44af",
+  "theorem": "Directed-interval original Weil complete physical source-square enclosure on normalized constant Legendre mode at aperture 53/50",
+  "method": "Exact original CC56 physical source formula, monotone native prime panels, interval Darboux sums, analytic logarithmic endpoint-square majorant",
+  "confirmed_by_local_replay": {
+    "directed_interval_engine": "mpmath.iv",
+    "decimal_working_precision": 35,
+    "positive_half_panels": 60000,
+    "endpoint_interval_length": "1/100000000",
+    "complete_source_interior_interval": [
+      "0.08342746333974804719255249035956491392816",
+      "0.08450130374049883519343769235065359813817"
+    ],
+    "normalized_endpoint_square_upper": "0.000003667429411124096279495263626518781866017",
+    "complete_source_square_strict_enclosure": [
+      "0.0834",
+      "0.0846"
+    ],
+    "arch_source_square_enclosed": [
+      "7.0819",
+      "7.0828"
+    ],
+    "arch_source_raw_interval": [
+      "7.081984904958364467862710716871904297995",
+      "7.082736643402113887979481634606025870356"
+    ],
+    "imported_nf21_CC58_prime_pole_source_square_enclosure": [
+      "7.244",
+      "7.245"
+    ],
+    "arch_prime_pole_twice_covariance_interval": [
+      "-14.245",
+      "-14.241"
+    ],
+    "raw_covariance_interval": [
+      "-14.24430918006236584078692914424646096612",
+      "-14.24147993378845450857299352925762417406"
+    ],
+    "original_NF12_CC40_Q00_squared_enclosure": [
+      "0.0015",
+      "0.0017"
+    ],
+    "physical_source_residual_excluding_ONLY_e0": [
+      "0.0817",
+      "0.0831"
+    ],
+    "local_runtime_two_source_checks": "PASS",
+    "GitHub_reproducer": "scripts/certify_dne12_complete_e0_source_interval.py",
+    "published_script_separately_executed": false,
+    "original_prime_dictionary": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8
+    ],
+    "both_prime_orientations_retained": true,
+    "both_signed_even_poles_retained": true
+  },
+  "read_only_dependencies": {
+    "CC56": "Full original physical native source action and polynomial domain",
+    "NF21": "Rigorous prime-plus-pole physical source-square interval on e0",
+    "CC58": "Replay of NF21 signed source sector; 7.244<K_00<7.245",
+    "CC40_NF12": "Authenticated original Q(e0,e0) rational interval on grid 10^25",
+    "DNE11": "Holomorphic Cauchy bound |r(t)|<11/(5/2-delta), enabling endpoint remainder payment"
+  },
+  "exclusions": [
+    "This does not subtract 55 other retained even physical Legendre source coefficients",
+    "This does not calculate the 56-column or 58-column source Gram",
+    "This is not the two-high-mode compensated F112 residual",
+    "This does not certify an F112 inverse response or DNE9 finite null LMI",
+    "This does not prove whole a=53/50 native positivity, a global contact exclusion, RH/F4 or Lean"
+  ],
+  "next": "DNE13: rigorous interval source-square for first NF19 compensated e0 direction and a near-critical Ritz vector, with full original cross terms and full residual/Schur error budget."
+}
