@@ -1,0 +1,17 @@
+{
+  "stage": "CC50 positive moment-tail construction",
+  "publication_base": "dba345728e137f6b76ef972a81f74882459c919c",
+  "dependencies": ["CC48", "CC49", "NF16"],
+  "new_exact_control_checks": 58,
+  "historical_chain_replayed": false,
+  "aperture": "53/50",
+  "positive_relative_coefficient_intervals": 24,
+  "exact_normalized_D_truncation_12_terms": "1e-59",
+  "coefficient_rounding_paid_in_native_gate": false,
+  "native_response_evaluated": false,
+  "native_gate_certified": false,
+  "whole_positive_anchor": "21/20",
+  "RH_proved": false,
+  "lean_certified": false,
+  "other_branches_modified": false
+}
