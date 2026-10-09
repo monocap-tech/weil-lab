@@ -163,6 +163,6 @@ def main():
  pathlib.Path(args.output).write_bytes(gzip.compress(raw,mtime=0))
  print(json.dumps(dict(status='FULL SOURCE COMPLETED; sign requires separate validator',
      dimensions=112,new_entries=840,all_entries=len(records),
-     original_E80_sha256=old_sha,source_sha256=hashlib.sha256(raw).hexdigest(),
+     original_E96_sha256=old_sha,source_sha256=hashlib.sha256(raw).hexdigest(),
      elapsed_seconds=seconds,whole_aperture_positive=False),indent=2))
 if __name__=='__main__':main()
