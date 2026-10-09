@@ -1,0 +1,50 @@
+{
+  "stage": "DNE10",
+  "date": "2026-10-08 America/Los_Angeles",
+  "repository": "monocap-tech/weil-lab",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "parent": "761929c8ece7e915d0ed6806f9039796dd145620",
+  "classification": "Exact full infinite-high rank-one signed-Q to pole-free-H response transfer; actual full residual source norm identity and qualitative insufficiency of sampled high modes",
+  "certified_inputs": {
+    "NF16_NF20_full_Q_high_physical_floor": "207/1000",
+    "NF10_CC40_full_H_high_physical_floor_even": "4/25",
+    "NF10_CC40_full_H_high_physical_floor_odd": "17/100",
+    "NF20_finite_Legendre_physical_source": "Each finite polynomial supported vector has physical L2 native operator-source representative",
+    "NF20_source_gram_no_go": "Crude full Q scalar high floor source Gram loses >4x even and >3.8x odd from measured first-two source columns",
+    "CC55": "Measured two-high phase response and residual norm are read-only; full C inverse open"
+  },
+  "actual_results": [
+    "For E parity dim56/F whole complement, pole tail v=(I-P_E)cosh/sinh has L2 norm < 10^-150 at 53/50",
+    "Original Q_F form inverse beta=<v,C_Q^-1 v> <5*10^-300; even/odd Sherman-Morrison denominators positive and >1-10^-299",
+    "Full original Q-high response T_Q transfers EXACTLY to pole-free H response T_H=T_Q+sigma2 alpha_Q/(1-sigma2beta) C_Q^-1 v",
+    "Exact low Feshbach gate S_H=S_Q-sigma2/(1-sigma2beta)|alpha_Q|², sign correct even sigma+ and odd sigma-",
+    "High response correction ||T_H-T_Q||2 <11*10^-150 |alpha_Q|, not uniform until alpha_Q is bounded",
+    "For finite Legendre x+yhat, original full residual source norm equals ||s_Q||² minus all physically retained low source matrix coefficients squared",
+    "Exact physical and full canonical-dual source transfer r_H=r_Q-sigma2 m(x+yhat) v, so ||r_H||D*<=||r_Q||D*+2|moment|10^-150"
+  ],
+  "controls": {
+    "independent_bigint_rational_full_response_replay": {
+      "passed": 1022,
+      "expected": 1022,
+      "all": true
+    },
+    "independent_bigint_integer_factorial_guards": {
+      "passed": 7,
+      "expected": 7,
+      "all": true
+    },
+    "committed_validator": "scripts/validate_dne10_pole_source_bridge.py",
+    "committed_python_validator_executed": false,
+    "native_actual_source_integral_computed": false,
+    "actual_true_56_dim_S_H_or_Meff_evaluated": false,
+    "two_pole_signs_and_null_positive_negative_model_controls": true
+  },
+  "limits": [
+    "Full original physical source norm integral and cross terms not computed",
+    "No cap-wise original/full polefree positivity beyond anchor",
+    "No first-contact null excluded",
+    "No RH/F4/Lean certificate",
+    "No rewriting or merging of Coupled or Aperture research"
+  ],
+  "next": "DNE11: rigorously evaluate signed original source Gram after a chosen high Galerkin response with full Fourier-log/prime/pole cross terms and analytic tail error; then transfer via DNE10 to DNE9 reflected null LMI"
+}
