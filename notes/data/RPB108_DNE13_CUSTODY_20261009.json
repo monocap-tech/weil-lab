@@ -1,0 +1,27 @@
+{
+  "stage": "DNE13",
+  "parent": "546594aa31c64fa64bd7daf487ca998fac049ac7",
+  "aperture_dependency": "1261995ecc9ce80351ab3cfbaf802929444fe92e",
+  "local_probe_executed": true,
+  "local_exact_action_validator_executed": true,
+  "exact_polynomial_checks": 115,
+  "quadrature_orders": [
+    160,
+    240,
+    360
+  ],
+  "frozen_trial_coefficients": [
+    "1",
+    "7094302/1000000000",
+    "-5131477/1000000000"
+  ],
+  "full_retained_even_projection_modes": 56,
+  "attached_native_archives_recovered": false,
+  "compensated_interval_certificate": false,
+  "near_critical_direction_evaluated": false,
+  "whole_56_matrix_certified": false,
+  "other_branches_modified": false,
+  "RH": false,
+  "Lean": false,
+  "next": "Outward enclosure for the frozen rational scalar trial, followed by a near-critical source direction."
+}
