@@ -4154,3 +4154,14 @@ CC86 refines CC84's source-span compression theorem into an exact conditional in
 - [Terminology](TERMINOLOGY_RPB108_RESPONSE_INNOVATION_CC86.md)
 - [Validator](../scripts/certify_cc86_response_innovation.py)
 - [Exact controls and NF44 attachment](../notes/data/RPB108_CC86_RESPONSE_INNOVATION_20261009.json)
+
+
+## CC87 — NF45 odd joined packet passes conditionally (2026-10-09)
+
+Definitions: [CC87 odd-packet pass](TERMINOLOGY_RPB108_ODD_PACKET_PASS_CC87.md). Read-only NF45 5f8a6c1e54a39236df253a5aae5f7be55fee74ed adds a seventh original high polynomial per parity. Independent authenticated interval checks confirm the complete odd three-direction joined lower matrix is positive definite under A >= (207/1000) I: condensed margin [4.44738e-22,4.60934e-22]. Exact prior packet entries, physical orthogonality, signed updates and NF44 witness custody pass. A conservative retained-coordinate coercivity lower bound exceeds 1.6072e-46; this is not a physical whole-domain gap.
+
+The even matrix remains indefinite, with condensed margin [-8.67466e-23,-8.15099e-23]; its gain interval straddles zero. The next unresolved selection uses NF45's updated even witness. The background floor and transport, full simultaneous six-direction sign, other 106 retained directions and collective coupling remain open. Native integrations and inverse-proof reconstruction are not replayed by CC. Whole-aperture certified anchor remains 21/20; no 53/50, all-cap, RH/F4 or Lean closure is claimed.
+
+- [CC87 note](../notes/REFLECTED_PACKET_BRIDGE_108_ODD_PACKET_PASS_CC87_20261009.md)
+- [Validator](../scripts/certify_cc87_seven_source_consumer.py)
+- [Consumer results](../notes/data/RPB108_CC87_SEVEN_SOURCE_CONSUMER_20261009.json)
