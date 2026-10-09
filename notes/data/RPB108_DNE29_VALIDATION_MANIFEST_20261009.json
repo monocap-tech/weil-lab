@@ -1,0 +1,27 @@
+{
+  "consumer_inputs": [
+    "notes/data/RPB108_DNE18_CC62_INPUT_20261009.json",
+    "notes/data/RPB108_DNE22_PROBE_PLANE_CERTIFICATE_20261009.json",
+    "notes/data/RPB108_DNE26_NF38_EVEN_INPUT_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE26_NF38_ODD_INPUT_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE26_FLOOR_TRANSFER_CERTIFICATE_20261009.json",
+    "notes/data/RPB108_DNE28_SIGNED_BUDGET_CERTIFICATE_20261009.json",
+    "notes/data/RPB108_DNE29_EVEN_SELECTED_COLUMNS_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE29_ODD_SELECTED_COLUMNS_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE29_EVEN_PAIRINGS_20261009.json",
+    "notes/data/RPB108_DNE29_ODD_PAIRINGS_20261009.json"
+  ],
+  "extra_inputs": [
+    "notes/data/RPB108_DNE29_NF41_EVEN_COLUMNS_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE29_NF41_ODD_COLUMNS_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE26_NF38_EVEN_TRIAL_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE26_NF38_ODD_TRIAL_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE29_EVEN_REVERSE_PAIRINGS_20261009.json",
+    "notes/data/RPB108_DNE29_ODD_REVERSE_PAIRINGS_20261009.json",
+    "notes/data/RPB108_DNE29_EVEN_PAIRINGS_REPLAY_20261009.json",
+    "notes/data/RPB108_DNE29_ODD_PAIRINGS_REPLAY_20261009.json",
+    "notes/data/RPB108_DNE15_NF24_TARGETS_20261009.json.gz.b64",
+    "notes/data/RPB108_DNE20_NF27_INPUT_20261009.json",
+    "notes/data/RPB108_DNE22_NF32_TRIAL_20261009.json"
+  ]
+}
