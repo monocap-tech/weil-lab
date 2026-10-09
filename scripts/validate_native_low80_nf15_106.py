@@ -65,7 +65,7 @@ def validate(source,old64=None):
         complete_operator_error_upper=str(op_error),midpoint_shift=str(shift),
         all_exact_shifted_parity_pivots=counts,
         strict_finite_physical_lower=str(lower),
-        conservative_physical_lower="9/1000000000000000000000000000000000",
+        conservative_physical_lower="9/10000000000000000000000000000000000",
         full_native112=False,source_action_Gram=False,
         corrected_whole_domain_Schur=False,whole_aperture_positive=False,
         RH=False,Lean=False)
