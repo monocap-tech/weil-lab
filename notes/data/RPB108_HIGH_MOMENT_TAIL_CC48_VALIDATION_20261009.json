@@ -1,0 +1,12 @@
+{
+  "stage": "CC48 high moment tail",
+  "all_passed": true,
+  "new_exact_checks": 29,
+  "native_response_evaluated": false,
+  "native_gate_certified": false,
+  "beta_even_upper": "1e-424",
+  "beta_odd_upper": "1e-429",
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "2ff955162ad77e686baf25be0668e5f016115556ee6061097e183e3c822801f3"
+}
