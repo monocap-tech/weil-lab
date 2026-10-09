@@ -27,7 +27,7 @@
     "physical_positive_E80_certified_existing": true,
     "full_infinite_F112_inverse_reaction_evaluated": false
   },
-  "E96_full_native_sign_certified": false,
+  "E96_full_native_sign_certified": true,
   "whole_E112_sign": false,
   "corrected_even56_odd56_full_Schur": false,
   "whole_aperture_positive": false,
@@ -36,5 +36,34 @@
   "validators": [
     "scripts/validate_native_complement_refinement_nf16_106.py",
     "scripts/validate_native_e64_to_e80_reaction_nf16.py"
-  ]
+  ],
+  "E96_original_native": {
+    "status": "PASS exact finite original signed native restriction",
+    "dimension": 96,
+    "even_pivots": 48,
+    "odd_pivots": 48,
+    "distinct_original_signed_entries": 2352,
+    "previous_E80_intervals_copied_with_SHA_attestation": 1640,
+    "new_complete_original_signed_entries": 712,
+    "arch_prime_pole_and_full_interval_assertions": 9408,
+    "new_degree_exponential_order": 600,
+    "Bernoulli_pairs": 520,
+    "prime_log_terms": 640,
+    "outward_log_endpoint_rational_grid_power": 180,
+    "new_source_rational_interval_grid_power": 230,
+    "midpoint_grid_power": 43,
+    "complete_symmetric_matrix_operator_error_display": 9.596132165871422e-42,
+    "worst_all_entry_interval_width_display": 4.054308670224971e-68,
+    "worst_new_entry_interval_width_display": 4.008062131303251e-68,
+    "exact_rational_shifted_pivot_test": "1/10^35",
+    "strict_certified_finite_L2_lower": "9/10^36",
+    "source_uncompressed_json_sha256": "aff17c786d41287f077680f412e4b2c14d59fdebacbaf11272d23033aee6e3ac",
+    "source_compressed_gzip_sha256": "a4f092b7e9c77d81087e5df0c02953ef90fd77eb7226d25e0e1a6338d20063cc",
+    "source_archive_location": "sandbox:/mnt/data/nf16/native96_N600_K520.json.gz",
+    "source_producer": "scripts/certify_native_low96_nf16_106.py",
+    "source_validator": "scripts/validate_native_low96_nf16_106.py",
+    "full_E112_certified": false,
+    "corrected_infinite_Schur_certified": false,
+    "whole_aperture_positive": false
+  }
 }
