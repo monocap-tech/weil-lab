@@ -1,0 +1,15 @@
+{
+  "stage": "CC45 native nodal correlation",
+  "publication_base": "368dbee08f9223dcbcc602eb685bdd16586196bd",
+  "dependencies": ["CC27", "CC33", "CC43", "CC44"],
+  "new_exact_control_checks": 25,
+  "historical_chain_replayed": false,
+  "actual_null_vectors_evaluated": false,
+  "null_adapted_arithmetic_estimate_certified": false,
+  "universal_trial_nodal_exclusion_disproved": true,
+  "complete_weil_identities_insufficiency_proved": false,
+  "whole_positive_anchor": "21/20",
+  "RH_proved": false,
+  "lean_certified": false,
+  "other_branches_modified": false
+}

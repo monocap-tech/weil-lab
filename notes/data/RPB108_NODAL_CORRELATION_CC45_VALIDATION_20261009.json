@@ -1,0 +1,9 @@
+{
+  "stage": "CC45 native nodal correlation",
+  "all_passed": true,
+  "new_exact_checks": 25,
+  "actual_null_vectors_evaluated": false,
+  "null_adapted_arithmetic_estimate_certified": false,
+  "RH_proved": false,
+  "constructor_sha256": "44f4b4f0f5c2436e54b5429a2906475f98b016c0259213f193f65672e8dce804"
+}
