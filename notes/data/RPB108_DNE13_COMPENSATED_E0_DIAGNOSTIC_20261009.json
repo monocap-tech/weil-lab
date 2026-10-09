@@ -5,6 +5,7 @@
   "runs": [
     {
       "order": 160,
+      "frozen_rational_trial": false,
       "native_block": [
         [
           0.04015208430439275,
@@ -35,7 +36,7 @@
         -3.604690330949456e-14,
         -1.9831792458235853e-14
       ],
-      "corrected_energy": 0.039931391359424605,
+      "corrected_energy": 0.0399313913594246,
       "physical_gate_budget": 0.008265798011400892,
       "physical_gate_ratio": 0.4780282105015152,
       "constant_pairing_error": 2.8972005350347274e-11,
@@ -45,6 +46,7 @@
     },
     {
       "order": 240,
+      "frozen_rational_trial": false,
       "native_block": [
         [
           0.040152084281159774,
@@ -75,9 +77,9 @@
         7.916172058142212e-14,
         6.20126779787844e-14
       ],
-      "corrected_energy": 0.03993139133483605,
-      "physical_gate_budget": 0.008265798006311062,
-      "physical_gate_ratio": 0.4780281705616746,
+      "corrected_energy": 0.03993139133483606,
+      "physical_gate_budget": 0.008265798006311064,
+      "physical_gate_ratio": 0.4780281705616745,
       "constant_pairing_error": 5.739027308937494e-12,
       "source_norm_uncompensated": 0.08366183451371095,
       "corrected_vector_mass": 1.000076661169924,
@@ -85,6 +87,7 @@
     },
     {
       "order": 360,
+      "frozen_rational_trial": false,
       "native_block": [
         [
           0.040152084276577536,
@@ -115,12 +118,53 @@
         -1.2457275066091872e-12,
         -1.210631231764528e-12
       ],
-      "corrected_energy": 0.03993139132999084,
-      "physical_gate_budget": 0.008265798005308102,
-      "physical_gate_ratio": 0.4780281616838229,
+      "corrected_energy": 0.03993139132999083,
+      "physical_gate_budget": 0.0082657980053081,
+      "physical_gate_ratio": 0.478028161683823,
       "constant_pairing_error": 1.156789941614278e-12,
       "source_norm_uncompensated": 0.0836618344098706,
       "corrected_vector_mass": 1.0000766611699947,
+      "certified": false
+    },
+    {
+      "order": 360,
+      "frozen_rational_trial": true,
+      "native_block": [
+        [
+          0.040152084276577536,
+          -0.02121592882134509,
+          0.01367652045551502
+        ],
+        [
+          -0.02121592882134509,
+          3.4512117873459696,
+          0.636855534375338
+        ],
+        [
+          0.01367652045551502,
+          0.636855534375338,
+          3.545678446633647
+        ]
+      ],
+      "symmetry_error": 2.4914792451369294e-12,
+      "correction_coefficients": [
+        -0.007094302,
+        0.005131477
+      ],
+      "compensated_source_square": 0.08250657273792142,
+      "retained_projection_square": 0.07855528850807238,
+      "full_F112_source_residual_square": 0.003951284229849042,
+      "direct_projected_source_square": 0.003951284229847347,
+      "two_high_pairings": [
+        3.35831514642693e-10,
+        -1.4527618671440106e-09
+      ],
+      "corrected_energy": 0.03993139132999084,
+      "physical_gate_budget": 0.008265798005308102,
+      "physical_gate_ratio": 0.47802816223087224,
+      "constant_pairing_error": 1.156789941614278e-12,
+      "source_norm_uncompensated": 0.0836618344098706,
+      "corrected_vector_mass": 1.0000766611770684,
       "certified": false
     }
   ],
