@@ -1,0 +1,32 @@
+{
+  "stage": "DNE28",
+  "parent": "3b5c5cb3a6db62c0fc7745820dc42a0d3d195c16",
+  "write_branch": "research/rpb108-direct-null-exclusion",
+  "phase_read_only_head": "4d2a5d7d3857854677a223ca38d03b13358f40e9",
+  "coupled_read_only_head": "dd93e5cc7d003d44cdc240c5710f4c253dc1346f",
+  "output_sha256": {
+    "certify_dne28_signed_budget.py": "067d8a4b04ed0f9830f5c5e1070ffb7221f0cceb518ef27933d80fb1bcffc2c9",
+    "validate_dne28_signed_budget.py": "d866758351e03deb9cf49e37bc7240432baa3115ccbb466e27f99d5f8c9bd7dc",
+    "certificate.json": "533686e6040631b9faa182d686873d8952368cdb493c46758d665c66484dd90b",
+    "replay_certificate.json": "c8f1ca7b2a2d09ada583d0e3dc33483d704eff327996573ba2dee63768250b02",
+    "validation.json": "0443eab23d30b467c8ace8af9f7a7cd1955927ad676a2051722a233060039382"
+  },
+  "primary_counted_assertions": 30,
+  "replay_counted_assertions": 30,
+  "independent_rational_checks": 25532,
+  "positive_matrix_box_vertices": 6144,
+  "positive_vertex_leading_minors": 24576,
+  "four_column_source_credits": {
+    "even": "4/125",
+    "odd": "41/500"
+  },
+  "common_physical_gap_guard": "19/1000000000000000000000000000000000000",
+  "frame_unchanged": true,
+  "new_positive_retained_directions": 0,
+  "uncovered_retained_dimension": 104,
+  "all_five_inputs_verified_byte_exact_at_parent": true,
+  "new_source_integrations": false,
+  "complete_remaining_Gram_certified": false,
+  "whole_aperture_positive": false,
+  "other_branches_written": false
+}
