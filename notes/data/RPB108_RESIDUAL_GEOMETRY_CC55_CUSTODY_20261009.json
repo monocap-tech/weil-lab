@@ -1,0 +1,53 @@
+{
+  "milestone": "CC55",
+  "starting_coupled_head": "ec1d0caf1be0d817ba27d418bf1fedeb769f99d3",
+  "source_head_read_only": "38bf4791bd2a4ec4ecdc114e297c281d1b15c44c",
+  "date": "2026-10-09 UTC / 2026-10-08 Pacific",
+  "file_sha256": {
+    "docs/TERMINOLOGY_RPB108_RESIDUAL_GEOMETRY_CC55.md": "265b327c60a296350f4d64462b337f5acd1c5ec4643ba787bd29651f3bf61aca",
+    "notes/REFLECTED_PACKET_BRIDGE_108_RESIDUAL_GEOMETRY_CC55_20261009.md": "effe75d7e0f65b31fb608b5ca73e281ba301a02c24da9c3af7e7cb64a937d769",
+    "scripts/certify_native_residual_geometry_cc55.py": "28e910ae8aeb34681f5dd8017e2f4c875121124bde043c88afbaf4cc816c4588",
+    "notes/data/RPB108_RESIDUAL_GEOMETRY_CC55_CERTIFICATE_20261009.json": "287ea728f157e8824f729e533cb6f7823bd53ee585521613474d506da8d7b0d7"
+  },
+  "NF19_replay_sha256": {
+    "certify_native_low112_nf17_106.py": "fa169f70443b40b67f67c4ca3acd99dcd291043b4587f8a57c5c24e2657b9931",
+    "certify_native_second_boundary_nf19_106.py": "0fe0382dafba740456671538ac16998bc7bb4ebb344ea196ca734455e1d41bf2",
+    "certify_native_second_collective_nf19_106.py": "5d20892c05bf4be5b0db030df97d29dddad5eebe0deb13164c6994d51c1fd236",
+    "second_boundary.json.gz": "3b03fb5755331de5958c4fb1b5653d1f9738727ca97021822a6c2e2eaaddb72c",
+    "replay_validation.json": "9738b50ec3dbd84044b7ac49608312f895bb3973e1f1b30e82def9ad2df7c43e"
+  },
+  "NF19_raw_sha256": "0a8f4ebd0778fa5c90209b3021d22791bdb0d9b73e0f19df608e04ed9ba2bcad",
+  "deterministic_producer_replayed": true,
+  "upstream_NF19_large_exact_tests_replayed": 4,
+  "new_CC55_large_exact_tests": 4,
+  "residual_norm_strict": {
+    "even": [
+      "136/1000",
+      "137/1000"
+    ],
+    "odd": [
+      "112/1000",
+      "113/1000"
+    ]
+  },
+  "source_active_plane_frame_eigenvalue_strict": {
+    "even": [
+      "36/1000",
+      "39/1000"
+    ],
+    "odd": [
+      "41/1000",
+      "44/1000"
+    ]
+  },
+  "measured_source_active_plane_dimension": 2,
+  "measured_retained_kernel_dimension": 54,
+  "upstream_metadata_note": "NF19 validator internally asserts 13688 component checks; its returned interval_component_checks field is shadowed by a later control list. CC55 uses the actual determinant results and hashes, not that return field as a numeric count.",
+  "critical_alignment_certified": false,
+  "full_F112_response": false,
+  "CC52_carrier_transfer": false,
+  "whole_supported_positivity": "21/20",
+  "RH": false,
+  "Lean": false,
+  "publication": "additive six-path change; bridge prefix and all other paths preserved"
+}
