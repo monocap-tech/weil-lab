@@ -1,0 +1,30 @@
+{
+  "milestone": "CC70",
+  "status": "PASS",
+  "integration_parent": "43661c39489f33f7fb0ad45c1573ff12a0973eeb",
+  "source_head": "a446275d4ba9a6c71599c310c35e81d2e439de95",
+  "unmodified_NF27_producer_replayed": true,
+  "complete_NF27_certificate_byte_identical": true,
+  "replayed_source_sha256": "2110e07c7a7e39d2b454cff364c0863f6f3e3ff151cf72309999130f5e17fe42",
+  "constrained_inverse_proofs_reconstructed_identically": 2,
+  "original_observed_high_columns_used": [
+    112,
+    113
+  ],
+  "original_native_loading_lower_bounds_checked": 2,
+  "native_true_response_loading_lower_bounds_checked": 2,
+  "hypothetical_sufficient_collective_bounds_certified": false,
+  "robust_unchanged_estimator_rejections": 2,
+  "genuine_three_block_crossings": 3,
+  "positive_whole_mass_levels": 3,
+  "finite_lifted_restriction_dimension": 112,
+  "full_collective_Schur_certified": false,
+  "full_Weil_nonimplication_claimed": false,
+  "whole_aperture_positive": false,
+  "file_sha256": {
+    "scripts/certify_native_retained_coupling_nf27_106.py": "f46c3efe8b812b91e8f1c72488c0842413e959c6d61c9d5d7e69f0fadd91f6a1",
+    "scripts/certify_retained_high_loading_cc70.py": "b4c51424cd10335d8950d687174f2ff2412d4c14c7fcfed399d4d0cb7ce4bbc2",
+    "notes/data/RPB108_NF27_SOURCE_INPUT_CC70_20261009.json": "2110e07c7a7e39d2b454cff364c0863f6f3e3ff151cf72309999130f5e17fe42",
+    "notes/data/RPB108_RETAINED_HIGH_LOADING_CC70_CERTIFICATE_20261009.json": "a57468079f2c691f4119c28a9ca3e256d5986e38bfc37c56e258faf2aef237b6"
+  }
+}

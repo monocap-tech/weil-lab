@@ -1,0 +1,70 @@
+{
+  "milestone": "NF27",
+  "status": "PASS: original finite retained coupling and lifted restriction",
+  "phase_parent": "14ba1d21bd15656be6a1c1ce60f217cb703d93cc",
+  "readonly_coupled_CC68_head": "07f837876b47fcfb5fdad2ea041876af1f497cea",
+  "parity_checks": [
+    {
+      "parity": "even",
+      "strict_decimal_brackets": {
+        "retained_reaction_over_corrected_energy": [
+          "0.0053911",
+          "0.0053913"
+        ],
+        "original_finite_retained_complement_reaction": [
+          "4.70486e-37",
+          "4.70487e-37"
+        ],
+        "corrected_energy_after_finite_retained_elimination": [
+          "8.6797e-35",
+          "8.6801e-35"
+        ]
+      },
+      "strict_physical_native_complement_gap": "5.80e-28",
+      "common_replay_intervals_identical": true,
+      "congruence_positive": true,
+      "Neumann_inverse_verified": true,
+      "physical_ball_error_paid": true,
+      "exact_response_gain_checked": true,
+      "native_finite_lifted_restriction_positive": true
+    },
+    {
+      "parity": "odd",
+      "strict_decimal_brackets": {
+        "retained_reaction_over_corrected_energy": [
+          "0.0085503",
+          "0.0085504"
+        ],
+        "original_finite_retained_complement_reaction": [
+          "2.70872e-33",
+          "2.70873e-33"
+        ],
+        "corrected_energy_after_finite_retained_elimination": [
+          "3.14088e-31",
+          "3.14089e-31"
+        ]
+      },
+      "strict_physical_native_complement_gap": "6.16e-25",
+      "common_replay_intervals_identical": true,
+      "congruence_positive": true,
+      "Neumann_inverse_verified": true,
+      "physical_ball_error_paid": true,
+      "exact_response_gain_checked": true,
+      "native_finite_lifted_restriction_positive": true
+    }
+  ],
+  "finite_lifted_restriction_dimension": 112,
+  "full_collective_Schur_certified": false,
+  "arithmetic_margin_comparison_is_NOT_collective_bound": true,
+  "whole_aperture_positive": false,
+  "highest_whole_domain_certified_aperture": "21/20",
+  "RH": false,
+  "F4": false,
+  "Lean": false,
+  "file_sha256": {
+    "scripts/certify_native_retained_coupling_nf27_106.py": "f46c3efe8b812b91e8f1c72488c0842413e959c6d61c9d5d7e69f0fadd91f6a1",
+    "docs/TERMINOLOGY_RPB108_RETAINED_COUPLING_NF27.md": "906027276d5e7d45738659118cbd0e41321fc5b8eb69baee3be41cbe6bd7cbdb",
+    "notes/REFLECTED_PACKET_BRIDGE_108_RETAINED_COUPLING_NF27_20261009.md": "7eea46c7ebab47ebd76bb66ddb08f570ac8442705ea3a377ac48c44a7f923ddf",
+    "notes/data/RPB108_NF27_RETAINED_COUPLING_CERTIFICATE_20261009.json": "2110e07c7a7e39d2b454cff364c0863f6f3e3ff151cf72309999130f5e17fe42"
+  }
+}
