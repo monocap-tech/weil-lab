@@ -5,8 +5,8 @@ Certified inputs: NF17 complete original signed E112, NF18 first exterior
 and NF19 second exterior; NF19's independently exact 58x58 Bareiss strict
 R2 lower bounds are used as declared dependencies, NOT recomputed here.
 
-If the mixed source has a physical L2 representative s_x on F112,
-||s_x||² >= ||(Q(x,e_first),Q(x,e_second))||². The standard bound
+For the finite polynomial E112 source, the physical L2 representative\ns_x exists: Fourier decay O(1/|xi|) dominates logarithmic-symbol growth.
+Its norm satisfies ||s_x||² >= ||(Q(x,e_first),Q(x,e_second))||².\nThe standard bound
 G(x) <= ||s_x||²/kappa therefore cannot prove A-G>0 on every x;
 the first two measured columns ALREADY make its upper estimate >4 A
 in one even direction and >19/5 A in one odd direction.
@@ -57,7 +57,7 @@ def certify(e112,first,second):
        strict_lower_on_physical_source_Gram_over_kappa_relative_to_A={k:str(v) for k,v in ratio.items()},
        even_crude_relative_source_upper_bound_exceeds_retained_energy_by_more_than_factor=4,
        odd_crude_relative_source_upper_bound_exceeds_retained_energy_by_more_than_factor="19/5",
-       conditional_on_physical_source_representation_for_full_B=True,
+       physical_source_representation_for_finite_E112_proved_by_BV_log_multiplier=True,
        valid_unconditionally_as_two_column_native_bilinear_test=True,
        actual_infinite_inverse_sign_evaluated=False,whole_aperture_positive=False,
        arithmetic_nonimplication_from_full_Weil_identities_proved=False)
