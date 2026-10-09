@@ -1,0 +1,25 @@
+{
+  "milestone": "CC67",
+  "integration_parent": "795aa8849d07d99c7da880ca201dfda8aa011623",
+  "readonly_source_head": "b7fa4461ab4cca2ebc9383ae4b9407c03a580826",
+  "file_SHA256": {
+    "scripts/validate_finite_source_transfer_cc67.py": "07b5ad94ab6e05eafbb02bafd0949f40b6a7ae6cd6e2740a023b0fabb318cb78",
+    "notes/data/RPB108_FINITE_SOURCE_TRANSFER_CC67_VALIDATION_20261009.json": "45bab04a6abc207396c49a364f5b722460c40e3f3d0ff57b02f835bb15ef028a",
+    "notes/data/RPB108_CC65_DIAGNOSTIC_INPUT_CC67_20261009.json": "a1cd140ebbe8ac51a1294e8389a4e25bdc2456da6aa804ad368a7850a2590789",
+    "notes/data/RPB108_CC65_SOURCE_DIAGNOSTICS_CC67_20261009.json": "2422d9b54586fa006f5937e857e6ee446d17ad8b242a3cfd4c66b353d4d181dc"
+  },
+  "unmodified_NF24_diagnostic_SHA256": "a65c37288c823a71c56c4ec6c82f4af6bf1288d554d585665ba2575f538e323c",
+  "diagnostic_orders": [
+    [
+      96,
+      64
+    ],
+    [
+      128,
+      96
+    ]
+  ],
+  "rigorous_quadrature_remainder": false,
+  "native_coarse_gate_failure_certified": false,
+  "no_bounded_global_L_assumption": true
+}
