@@ -1,0 +1,49 @@
+{
+  "stage": "DNE23",
+  "status": "PASS",
+  "exact_rational_assertions": 2628,
+  "controls": [
+    {
+      "kind": "coherent_source_Gram_and_joint_condensation",
+      "source_rows": 8,
+      "retained_vectors_per_row": 81,
+      "joint_low_lower": "11/360",
+      "nonorthogonal_physical_completion_tests": 1296,
+      "physical_gap": "1497375/129019414"
+    },
+    {
+      "kind": "genuine_joint_crossing",
+      "mixed": "99/100",
+      "determinant": "199/10000"
+    },
+    {
+      "kind": "genuine_joint_crossing",
+      "mixed": "1",
+      "determinant": "0"
+    },
+    {
+      "kind": "genuine_joint_crossing",
+      "mixed": "101/100",
+      "determinant": "-201/10000"
+    },
+    {
+      "kind": "positive_whole_mass_ground_level",
+      "mu": "1/10000000000000000000000000000000000000000"
+    },
+    {
+      "kind": "positive_whole_mass_ground_level",
+      "mu": "1/100"
+    },
+    {
+      "kind": "positive_whole_mass_ground_level",
+      "mu": "1/20"
+    }
+  ],
+  "fresh_native_pairing_replay_nested": true,
+  "source_Gram_coherent_bound_verified": true,
+  "primary_consumer_assertions": 19,
+  "replay_consumer_assertions": 19,
+  "eight_direction_mixed_union_certified": true,
+  "whole_aperture_positive": false,
+  "RH": false
+}
