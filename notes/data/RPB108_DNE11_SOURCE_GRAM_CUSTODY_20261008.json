@@ -1,0 +1,78 @@
+{
+  "milestone": "DNE11",
+  "date": "2026-10-08 America/Los_Angeles",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "inherited_parent": "67d14b6e5b74fbed4b2506ecacf846083c0cb237",
+  "status": "ANALYTIC CONSTRUCTIVE SOURCE SPLIT CLOSED; FULL56 GRAM INTERVAL OPEN",
+  "new_analytic_theorems": [
+    "Exact CC56 physical archimedean action for supported polynomials simplifies to -(gamma+log2pi+0.5log(a²-x²))p + D[p] -∫r(|x-y|)p(y)dy",
+    "D[p] is a finite rational polynomial divided-difference action with an explicit derivative formula",
+    "r(t)=exp(t/2)/(2sinh t)-1/(2t) analytic to radius pi; q=t*j Taylor coefficients rational recurrence",
+    "Cauchy R=5/2 uniform regular kernel approximation with delta_N<=(550/19)*(106/125)^N at a=53/50",
+    "After 600 Taylor coefficients analytic kernel error <1e-41 and physical source operator norm error <3e-41",
+    "After degree64 Taylor approximations for both ORIGINAL pole profiles and moments, pole operator error <3e-99",
+    "Combined complete original signed source polynomial-log approximation error <3e-41 in physical L2 operator norm, independent of finite polynomial degree",
+    "Double-truncated source on original prime-panel cells is a piecewise polynomial U_p -0.5p log(a²-x²)",
+    "Whole source Gram reduces to polynomial-panel moments, elementary single-log panel moments, whole-interval polynomial-log² beta derivative moments",
+    "Physical high source Gram equals raw physical source squared Gram minus full retained low original matrix pairings, with a rigorous analytic-tail operator error ledger"
+  ],
+  "exact_constants": {
+    "aperture": "53/50",
+    "maximum_difference": "53/25",
+    "analyticity_radius": "5/2",
+    "max_ratio": "106/125",
+    "q_first": [
+      "1/2",
+      "1/4",
+      "-1/48",
+      "-1/32",
+      "7/11520",
+      "5/1536"
+    ],
+    "delta_600_lt": "1e-41",
+    "exponential_degree64_error_lt": "1e-100",
+    "original_source_operator_error_lt": "3e-41",
+    "original_prime_power_dictionary": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "7",
+      "8"
+    ],
+    "signed_original_poles": "two Hermitian directions, approximated with paid polynomial Taylor error"
+  },
+  "proof_checks": {
+    "independent_JS_BigInt_exact_rational_replay": {
+      "original_kernel_and_D_checks": 108,
+      "additional_exponential_and_combined_guards": 3,
+      "total": 111,
+      "all_passed": true
+    },
+    "mpmath_moment_sanity": {
+      "working_digits": 55,
+      "beta_first_log_moment_difference_approx": "2.0392e-56",
+      "beta_second_log_moment_difference_approx": "5.3018e-55",
+      "purely_numerical": true
+    },
+    "scalar_actual_source_pilot": "notes/data/RPB108_DNE11_SCALAR_NATIVE_SOURCE_PROBE_20261008.json",
+    "committed_python_validator_separately_executed": false,
+    "complete_original_56_source_gram_evaluated": false,
+    "full_original_residual_gram_computed": false,
+    "all_high_Feshbach_inverse_certified": false,
+    "RH_proved": false,
+    "lean_certified": false
+  },
+  "missing_next_stage": [
+    "Build the actual finite source moment bank with rigorous outward enclosures for gamma, pi, all prime log/sqrt coefficients, prime cut endpoints",
+    "Combine every original signed source cross term to enclose 56x56 Gram after a precisely defined finite Galerkin correction",
+    "Pay the full projected physical residual and compare against actual signed Schur budget, accounting for NF20 crude estimator no-go",
+    "If crude Gram bound fails, evaluate source-aligned C-form dual response, not fabricated source positivity"
+  ],
+  "branch_custody": {
+    "coupled_cc56_read_only": true,
+    "aperture_nf20_read_only": true,
+    "paused_fronts_untouched": true,
+    "historical_reports_preserved": true
+  }
+}
