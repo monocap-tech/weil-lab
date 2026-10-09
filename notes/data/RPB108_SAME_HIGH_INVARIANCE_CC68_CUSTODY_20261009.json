@@ -1,0 +1,17 @@
+{
+  "milestone": "CC68",
+  "integration_parent": "429aef4d69abac84b72522f74636c7b76b93228f",
+  "readonly_NF25_head": "493650e71100c62862b682d0579b2240e8c1d002",
+  "file_SHA256": {
+    "scripts/certify_same_high_invariance_cc68.py": "7c9108721aff258a0db54273793d86f35ecb41c10b8f3990a5cceb53e2e5c2b8",
+    "notes/data/RPB108_SAME_HIGH_INVARIANCE_CC68_CERTIFICATE_20261009.json": "b8b65d390ac8615e8585046194f2db2b6a84f29814ea0d6b44a7a5b210664afe",
+    "notes/data/RPB108_NF25_SOURCE_INPUT_CC68_20261009.json": "7f0fa640a873ba4746d326a0898a5869887e6c23ddafb1ee8ff2a10e5c9c80da",
+    "notes/data/RPB108_NF25_MOMENT_INPUT_CC68_20261009.json": "6bdd2953715693229102dcd1d91c67a5dc4b693e5a27ab24069e408ae8dd2a4e",
+    "notes/data/RPB108_NF25_REPLAY_CC68_20261009.json": "6a08c0e7975e1576b3d835fa4d9c6bb50c6006274553f44f00a45040dc59d97b"
+  },
+  "unmodified_moment_producer_replayed_byte_exact": true,
+  "unmodified_response_validator_replayed": true,
+  "all_native_source_transport_and_invariance_checks_passed": true,
+  "actual_negative_Weil_vector": false,
+  "whole_aperture_positive": false
+}

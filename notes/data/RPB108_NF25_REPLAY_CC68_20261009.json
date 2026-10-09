@@ -1,0 +1,21 @@
+{
+  "milestone": "CC68",
+  "NF25_full_moment_replay_byte_exact": true,
+  "NF25_fresh_validator_replay_byte_exact": true,
+  "NF25_all_core_response_fields_match_upstream": true,
+  "added_upstream_display_and_custody_fields_checked": true,
+  "independent_original_native_pairings_checked": 12,
+  "readonly_source_commit": "493650e71100c62862b682d0579b2240e8c1d002",
+  "upstream_and_replay_SHA256": {
+    "RPB108_NF25_DIRECTIONAL_SOURCE_CORRELATION_CERTIFICATE_20261009.json": "7f0fa640a873ba4746d326a0898a5869887e6c23ddafb1ee8ff2a10e5c9c80da",
+    "validate_native_correlated_response_nf25_106.py": "49800c2c96ae2b5d62cac78556ca309fe1ff2cba03eb0f6298a6598dec8a143b",
+    "certificate_replay.json": "828bd62f6a76b93c38a31e107ba85d05ed4c040fe2ff9ca9dd3cc02c08437c90",
+    "certify_native_correlated_sources_nf25_106.py": "05024ce59c5ae99c0047db8b9e9bfb567c33cafb69cefe7a7dc0339c90836de7",
+    "RPB108_NF25_DIRECTIONAL_SOURCE_MOMENTS_20261009.json": "6bdd2953715693229102dcd1d91c67a5dc4b693e5a27ab24069e408ae8dd2a4e",
+    "RPB108_NF24_COMPENSATED_SOURCE_TARGETS_20261009.json": "6eee61fb4e58ac5be0e95f492f461b289da37ee13aeaa74bbf4acc06f6650c00",
+    "certify_native_low112_nf17_106.py": "fa169f70443b40b67f67c4ca3acd99dcd291043b4587f8a57c5c24e2657b9931",
+    "fresh_certificate_replay.json": "828bd62f6a76b93c38a31e107ba85d05ed4c040fe2ff9ca9dd3cc02c08437c90",
+    "certify_native_arch_source_uniform_nf22_106.py": "9333f299b88774c851fdef3a8e3bfd1dc4a19595dec776a4d91da356a8ea184f",
+    "moments_replay.json": "6bdd2953715693229102dcd1d91c67a5dc4b693e5a27ab24069e408ae8dd2a4e"
+  }
+}
