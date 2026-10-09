@@ -1,0 +1,31 @@
+{
+  "milestone": "CC71",
+  "status": "PASS",
+  "integration_parent": "602bccebddb4768d141d4a4f1efa925925629ba0",
+  "read_only_source_head": "a446275d4ba9a6c71599c310c35e81d2e439de95",
+  "all_common_native_inverse_and_gap_fields_replayed_identically": true,
+  "measured_residual_bounds_independently_recomputed": true,
+  "native_entry_interval_errors_paid": true,
+  "source_selection_floor_removed_from_actual_finite_sign": true,
+  "original_joint_finite_dimension": 116,
+  "certified_common_finite_physical_gap": "9/10^35",
+  "frozen_background_lift_dimension": 110,
+  "measured_coordinate_bound": "1/10^68",
+  "genuine_crossing_controls": 3,
+  "near_critical_crossing_controls": 3,
+  "positive_whole_mass_ground_levels": 3,
+  "whole_aperture_positive": false,
+  "full_infinite_high_collective_Schur": false,
+  "uniform_defect_relative_frame": false,
+  "full_Weil_nonimplication_claimed": false,
+  "input_sha256": [
+    "6eee61fb4e58ac5be0e95f492f461b289da37ee13aeaa74bbf4acc06f6650c00",
+    "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+    "da5fe692dc0d3a0820ccaf68217628776f08718661696dddad54012f4f3841ee",
+    "0a8f4ebd0778fa5c90209b3021d22791bdb0d9b73e0f19df608e04ed9ba2bcad"
+  ],
+  "file_sha256": {
+    "scripts/certify_collective_two_high_lift_cc71.py": "ada7e215dbf2875db66ad1fe6ff4de6394c907f3dd1ff8071b2a90d28b6fb2c7",
+    "notes/data/RPB108_COLLECTIVE_TWO_HIGH_LIFT_CC71_CERTIFICATE_20261009.json": "732fe27f7061bbe702f108363cd22848ce61daa93d381cd73c54d9dfa297b7b0"
+  }
+}
