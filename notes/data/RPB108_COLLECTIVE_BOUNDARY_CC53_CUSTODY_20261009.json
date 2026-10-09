@@ -1,0 +1,45 @@
+{
+  "milestone": "CC53",
+  "starting_coupled_head": "6128e29f922e2adc6f713332361cde61644fb109",
+  "date": "2026-10-09 UTC / 2026-10-08 Pacific",
+  "source_branch": "research/rpb108-phase-geometry-localization",
+  "source_branch_read_only": true,
+  "original_source_hashes": {
+    "E112": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+    "boundary": "da5fe692dc0d3a0820ccaf68217628776f08718661696dddad54012f4f3841ee",
+    "NF18_witness": "b3e23133db4562c1b28816e922f9c085899818399dcfcee74a323b4f6da10d5c"
+  },
+  "authenticated_archives_recovered": true,
+  "NF18_exact_witness_validator_replayed": true,
+  "file_sha256": {
+    "docs/TERMINOLOGY_RPB108_COLLECTIVE_BOUNDARY_CC53.md": "6c448e4065fed60b0d2f1e00ddc22a4d331845948f51f706a691f3f07f0db36e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_COLLECTIVE_BOUNDARY_CC53_20261009.md": "9f99e6be4f8078d8c7cd5c6d14f938af74ccf63dc3eb8d6c4ce91e43c4741893",
+    "scripts/certify_native_collective_boundary_cc53.py": "dff32da88ff3124d12d823a81f817f606186eb84c5a694e9e80f201d16688050",
+    "notes/data/RPB108_COLLECTIVE_BOUNDARY_CC53_CERTIFICATE_20261009.json": "c9bafbbcd7ad89bc02d6a0c5b7170530881e13dbfd7aeabc1885bc35ee65d4d1"
+  },
+  "actual_collective_first_mode_brackets": {
+    "even": [
+      "203/1000",
+      "204/1000"
+    ],
+    "odd": [
+      "205/1000",
+      "206/1000"
+    ]
+  },
+  "checks": {
+    "signed_entries": 3306,
+    "component_intervals": 13224,
+    "large_exact_determinant_certifications": 6,
+    "abstract_crossing_controls": 6,
+    "positive_eigenlevel_controls": 2
+  },
+  "scope": "original unconstrained physical E112/F112 split at 53/50; first high mode only",
+  "complete_high_residual_Gram": false,
+  "CC52_carrier_transfer": false,
+  "whole_supported_positivity_anchor": "21/20",
+  "RH": false,
+  "Lean": false,
+  "publication": "additive six-path change; historical bridge prefix and all other paths preserved"
+}
+

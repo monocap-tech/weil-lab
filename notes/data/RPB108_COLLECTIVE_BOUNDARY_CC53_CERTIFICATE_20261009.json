@@ -1,0 +1,108 @@
+{
+  "status": "PASS",
+  "milestone": "CC53",
+  "aperture": "53/50",
+  "original_E112_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81",
+  "boundary_source_sha256": "da5fe692dc0d3a0820ccaf68217628776f08718661696dddad54012f4f3841ee",
+  "original_signed_entries": 3306,
+  "component_interval_checks": 13224,
+  "rounded_matrix_grid": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "maximum_entry_error": "506788583778121369958676661640030997757400861409482523182175873969039703656536556584129385540121564944946181031/25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "paid_57_by_57_operator_error": "11554779710141167235057827885392707/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "parities": [
+    {
+      "parity": "even",
+      "high_degree": 112,
+      "collective_response_strict_bracket": [
+        "203/1000",
+        "51/250"
+      ],
+      "original_A_positive_minors": 56,
+      "paid_block_gates": [
+        {
+          "r": "203/1000",
+          "error_direction": 1,
+          "positive_leading_minors": 56,
+          "final_sign": -1
+        },
+        {
+          "r": "51/250",
+          "error_direction": -1,
+          "positive_leading_minors": 57,
+          "final_sign": 1
+        }
+      ],
+      "all_direction_remaining_fraction_lower": "199/250",
+      "hidden_completion_controls": [
+        {
+          "hidden_cost_factor": "1/2",
+          "high_floor": "1593/1000",
+          "corrected_sign": "positive"
+        },
+        {
+          "hidden_cost_factor": "1",
+          "high_floor": "1593/2000",
+          "corrected_sign": "null"
+        },
+        {
+          "hidden_cost_factor": "2",
+          "high_floor": "1593/4000",
+          "corrected_sign": "negative"
+        }
+      ],
+      "whole_mass_positive_level_control": true
+    },
+    {
+      "parity": "odd",
+      "high_degree": 113,
+      "collective_response_strict_bracket": [
+        "41/200",
+        "103/500"
+      ],
+      "original_A_positive_minors": 56,
+      "paid_block_gates": [
+        {
+          "r": "41/200",
+          "error_direction": 1,
+          "positive_leading_minors": 56,
+          "final_sign": -1
+        },
+        {
+          "r": "103/500",
+          "error_direction": -1,
+          "positive_leading_minors": 57,
+          "final_sign": 1
+        }
+      ],
+      "all_direction_remaining_fraction_lower": "397/500",
+      "hidden_completion_controls": [
+        {
+          "hidden_cost_factor": "1/2",
+          "high_floor": "1589/1000",
+          "corrected_sign": "positive"
+        },
+        {
+          "hidden_cost_factor": "1",
+          "high_floor": "1589/2000",
+          "corrected_sign": "null"
+        },
+        {
+          "hidden_cost_factor": "2",
+          "high_floor": "1589/4000",
+          "corrected_sign": "negative"
+        }
+      ],
+      "whole_mass_positive_level_control": true
+    }
+  ],
+  "exact_bareiss_certifications": 6,
+  "abstract_hidden_completion_controls": 6,
+  "positive_level_controls": 2,
+  "actual_collective_first_mode_response_certified": true,
+  "first_mode_corrected_even56_odd56_positive": true,
+  "complete_F112_inverse_response_certified": false,
+  "CC52_constrained_carrier_transfer_certified": false,
+  "whole_original_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
