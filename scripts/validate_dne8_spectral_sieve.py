@@ -64,7 +64,7 @@ def run():
             ck(pole_free==x*(H[0][0]*x+H[0][1]*y)+
                  y*(H[1][0]*x+H[1][1]*y))
             ck(original>=0)
-            ck(reflected==x*(delta*x+y)+y*(x+delta*y))
+            ck(reflected==x*(delta*x+(1+delta)*y)+y*((1+delta)*x+delta*y))
     return {
         "stage":"DNE8 exact native low-energy sieve model preflight",
         "all_passed":True,
