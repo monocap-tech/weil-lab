@@ -65,6 +65,7 @@ def run():
                  y*(H[1][0]*x+H[1][1]*y))
             ck(original>=0)
             ck(reflected==x*(delta*x+(1+delta)*y)+y*((1+delta)*x+delta*y))
+    assert checks==3232, checks
     return {
         "stage":"DNE8 exact native low-energy sieve model preflight",
         "all_passed":True,
