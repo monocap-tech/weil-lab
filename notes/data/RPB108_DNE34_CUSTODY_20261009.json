@@ -1,0 +1,86 @@
+{
+  "stage": "DNE34",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "parent": "f1c9f51985a11e4d5d34b92ff83a2b9240a98f9b",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE34_SOURCE_BLOCK.md",
+      "bytes": 4249,
+      "stored_sha256": "4c04e6cbdbe4e969547647c7e3d64023eabd5d3014055f3403d87442d5641724"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE34_SOURCE_BLOCK_20261009.md",
+      "bytes": 11485,
+      "stored_sha256": "9297ed356750668e826f86d9b4299494b2a8dbd5c237b6bc5320f080fde1f8f8"
+    },
+    {
+      "path": "notes/data/RPB108_DNE34_EVEN_SOURCE_BLOCK_20261009.json.gz.b64",
+      "bytes": 143833,
+      "stored_sha256": "1504c683b4ec50b466e54c6a79521e53f1f9c80a313075d481e32e4c38c9fe8d",
+      "decoded_sha256": "ad00f12f1781db006b04e43a026aa10564d9ebb8433dd5a0a3e1d39773d23767"
+    },
+    {
+      "path": "notes/data/RPB108_DNE34_EVEN_SOURCE_BLOCK_REPLAY_20261009.json.gz.b64",
+      "bytes": 145289,
+      "stored_sha256": "9d7302842963e1868a1229e216ab847905d226bbc062a3fdfd91c46e3a1ce6c2",
+      "decoded_sha256": "bb50b5da5f400ca8d9131f3c1df0621e13a4a4b0309a1ac8b4df3d105194cd5a"
+    },
+    {
+      "path": "notes/data/RPB108_DNE34_EVEN_SOURCE_COMPARISON_20261009.json",
+      "bytes": 93913,
+      "stored_sha256": "fa4ee6d44305aa9f9b923957838b313e2cb020eaf1f6be8636f567da99a845ec"
+    },
+    {
+      "path": "notes/data/RPB108_DNE34_ODD_SOURCE_BLOCK_20261009.json.gz.b64",
+      "bytes": 143809,
+      "stored_sha256": "2a26d033dbb50448ec06ef16f69a9578747aa8b05a936c3e015b40ca6add991d",
+      "decoded_sha256": "fed12d8885cf4d5357cc4b4ec326d6bf83b4845e186552f50a6492f75520ce2b"
+    },
+    {
+      "path": "notes/data/RPB108_DNE34_ODD_SOURCE_BLOCK_REPLAY_20261009.json.gz.b64",
+      "bytes": 143985,
+      "stored_sha256": "ec589b92510d1aab1b9cbd038b0dfb0af68517d04706cb32d66355f3c17864ca",
+      "decoded_sha256": "31a03f5090cd454fb7ad9245f050a42978b9f97ca589b9262f943a98dffd097b"
+    },
+    {
+      "path": "notes/data/RPB108_DNE34_ODD_SOURCE_COMPARISON_20261009.json",
+      "bytes": 87558,
+      "stored_sha256": "ed0047f738ca9a449d497dde0f298c60bc6c7eb318feb064d7ef160f7691b927"
+    },
+    {
+      "path": "notes/data/RPB108_DNE34_SOURCE_BLOCK_VALIDATION_20261009.json",
+      "bytes": 10947,
+      "stored_sha256": "b2e3802ecf4587b53318e866af78e4dff6b8f7de0979b06cecd5876a979ba298"
+    },
+    {
+      "path": "scripts/certify_dne34_source_block.py",
+      "bytes": 8940,
+      "stored_sha256": "34343d823db158ecaa89b4227a324ba7adbc432dae50a2a0b9f94c9318407269"
+    },
+    {
+      "path": "scripts/certify_dne34_source_comparison.py",
+      "bytes": 4255,
+      "stored_sha256": "fcc0ab7ca52ae51b3199c6e364bb3e9a49c33de76b41e9090cecdf3a8a6ec9b8"
+    },
+    {
+      "path": "scripts/validate_dne34_source_block.py",
+      "bytes": 10824,
+      "stored_sha256": "0c5f2e7ec84b4cd5d1af0d6c1264d69da4c6feb794cff565a35ee5353a82bf98"
+    }
+  ],
+  "coherent_source_block_dimensions": [
+    8,
+    8
+  ],
+  "certified_source_block_entries": 128,
+  "all_high_positive_retained_dimension": 13,
+  "remaining_uncovered_retained_dimension": 99,
+  "all_high_physical_gap_guard": "1/100000000000000000000000000000000000000",
+  "frozen_scalar_credit_route_obstructed": true,
+  "standalone_remainder_uniform_floor_budget_passed": true,
+  "next_target": "complete joint signed tested/remainder source comparison; sharper high response if needed",
+  "complete_remaining_source_Gram_certified": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
