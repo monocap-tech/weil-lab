@@ -1,0 +1,13 @@
+# DNE1 read-only reconciliation with concurrent Coupled CC44–CC45
+
+Date: 2026-10-08 America/Los_Angeles. Read-only Coupled heads at audit: CC44 `368dbee08f9223dcbcc602eb685bdd16586196bd`, CC45 `9c95fc2fb3c1027ea8734ca433306c9456ed4fc2`. This note does NOT cherry-pick, rewrite, or modify Coupled. DNE1 remains on `research/rpb108-direct-null-exclusion`.
+
+CC44's strict scalar susceptibility does not see moment-zero higher nulls. Its exact favorable-kernel three-dimensional control has a higher zero-moment null despite strict source-pole reserve. This is compatible with DNE1: nonnegative weighted jump energy and simple positive ground only force the higher eigenvalue to exceed the ground eigenvalue, not to exceed ZERO. A DNE1 claim that prime conductances alone give a universally positive higher eigenvalue would contradict that control; no such claim is made.
+
+CC45 derives a native nodal-sign necessary inequality for an even moment-zero null, then constructs original-prime-compatible narrow positive/negative packets whose normalized sign cross-cost lies BELOW the sought universal exclusion threshold. The packets are not nulls and retain positive original energy. DNE1's *ground-state-weighted* identity differs: it assumes the CC43 actual pole-free ground eigenfunction phi and tests the constrained eigenmode equation. Thus CC45 rejects any attempt to substitute an ARBITRARY balanced test shape for a ground-adapted arithmetic spectral inequality, but does not disprove a hypothetical actual ground-depth surplus.
+
+The exact target remains: after rigorously extending the product-core ground-state transform to true supported eigenvectors, establish a strict constrained weighted-jump lower bound > -lambda_0 on ALL potential moment-zero eigenfunctions, or find a different actual-number-theoretic obstruction. The attractive kernel gives nonnegative jump weights; it does not supply a strict SURPLUS over -lambda_0. The two-site p=0 contact control saturates this precisely. A new theorem must rule out that saturation for the ACTUAL Weil coefficients without assuming the desired sign.
+
+For odd modes, DNE1's reflected kernel inequality is stronger than the generic zero-moment absolute-value inequality because it uses odd parity and the true ground `phi`; it is still conditional on eigenfunction domain transfer and evaluation of the phi-weighted ratio. For even modes, the necessary orthogonality and cosh-moment constraints remain separate and need their own conductance lower bound.
+
+The latest whole positive original aperture is still a=21/20; the independent NF14 E64 and NF10 F112 results at 53/50 do not close the complete mixed Schur form. No DNE1 or CC45 RH/F4/Lean proof is claimed.
