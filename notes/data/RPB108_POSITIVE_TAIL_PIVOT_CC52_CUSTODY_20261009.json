@@ -1,0 +1,18 @@
+{
+  "stage": "CC52 positive actual compensated-tail pivot",
+  "publication_base": "5ef47f163c81263673b0460fcd6ee9986f771963",
+  "dependencies": ["CC48", "CC49", "CC51", "NF16", "NF17"],
+  "new_exact_control_checks": 21,
+  "historical_chain_replayed": false,
+  "aperture": "53/50",
+  "actual_tail_pivot_lower": "1/5",
+  "pivot_lower_analytic": true,
+  "remaining_gate_dimensions_per_parity": 55,
+  "native_response_gram_evaluated": false,
+  "native_final_gate_certified": false,
+  "nf17_full_source_replayed": false,
+  "whole_positive_anchor": "21/20",
+  "RH_proved": false,
+  "lean_certified": false,
+  "other_branches_modified": false
+}

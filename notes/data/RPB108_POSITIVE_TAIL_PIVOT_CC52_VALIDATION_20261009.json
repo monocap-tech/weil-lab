@@ -1,0 +1,13 @@
+{
+  "stage": "CC52 positive compensated-tail pivot",
+  "all_passed": true,
+  "new_exact_checks": 21,
+  "actual_tail_pivot_lower": "1/5",
+  "pivot_lower_analytic": true,
+  "native_response_gram_evaluated": false,
+  "native_final_gate_certified": false,
+  "nf17_full_source_replayed": false,
+  "RH_proved": false,
+  "lean_certified": false,
+  "constructor_sha256": "8137fef67025fe90920ac36f6312868060e5b4cc66e8a12d9cc41ece7169a2da"
+}
