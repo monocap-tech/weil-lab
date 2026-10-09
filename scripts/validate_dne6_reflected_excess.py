@@ -65,6 +65,7 @@ def run():
     ck(js[1]-js[3]==js[1]-js[3]) # equality at the sampled interior collar
     ck(js[1]-js[3] > js[2]-js[4])
     ck(js[2]-js[4]>0)
+    assert checks==815, checks
     return {
         "stage":"DNE6 odd reflected-excess graph and native j samples",
         "all_passed":True,
