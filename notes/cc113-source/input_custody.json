@@ -1,0 +1,53 @@
+{
+  "read_only_DNE": "61b896309a4c426a9259290b92dbd039a26f96ef",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE46_REFINED_ARCH_SHELL.md",
+      "stored_sha256": "bb723c2a2a6d78b631b5b7cb5eb913b3a0025a40478f4caaf54550865d22430e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE46_REFINED_ARCH_SHELL_20261010.md",
+      "stored_sha256": "714e5a2ed0406aaab5cf6b053130f32268bd930c1285e6422c8a5ef2daa2f7b3"
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_CUSTODY_20261010.json",
+      "stored_sha256": "bf06d0ef8dfecd267404ec40eba8424bea9d73c552bd6ded7aa57721e4414df4"
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_EVEN_POSITIVE_SUBSPACE_20261010.json.gz.b64",
+      "stored_sha256": "337990c94bbd6db3cbb325716bf296cf2a597fde678891093df7c6265c10360d"
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_HIGH_FLOOR_VALIDATION_20261010.json",
+      "stored_sha256": "f555f71564358600b7364ae7ebfdefe8c759bc45ccb7345689e735d8c83343c3"
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_ODD_POSITIVE_SUBSPACE_20261010.json.gz.b64",
+      "stored_sha256": "9c6614283e41b90ae79f95aec681a86ceac6b928d9d99b90f5ce9843b6b24fe8"
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_POSITIVE_SUBSPACE_VALIDATION_20261010.json",
+      "stored_sha256": "110783b18f6fd07020c7b91927403dc3065b796af067791dfaeb85f1ffca3b85"
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_REFINED_ARCH_SHELL_20261010.json",
+      "stored_sha256": "e6aab94e3582eb158524103c72902d8d199f6fdd4313a5c1f1bde4c6cee1addc"
+    },
+    {
+      "path": "scripts/certify_dne46_positive_subspace.py",
+      "stored_sha256": "6070c60f02fe0db91b1fa7e9ada15982273cf0ab8e3b797dd8cf695bbb429a31"
+    },
+    {
+      "path": "scripts/certify_dne46_refined_arch_shell.py",
+      "stored_sha256": "09162e3a5c152d9ff5a36552ff3483f37877302139ad927d3f325bea1e3c1b2b"
+    },
+    {
+      "path": "scripts/validate_dne46_positive_subspace.py",
+      "stored_sha256": "06208982dba030f5f858dd3dfd8fe2854122bbd66a1d0b561242f1fb615aa34b"
+    },
+    {
+      "path": "scripts/validate_dne46_refined_arch_shell.py",
+      "stored_sha256": "56411a9ea1c11e1f49724baa0e2b8eba031e614e26629f9ce262295f17d666ee"
+    }
+  ]
+}

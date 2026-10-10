@@ -1,0 +1,76 @@
+{
+  "milestone": "CC113",
+  "producer_sha256": "4a9e8bd230b01bddc0d59a964e2cad930177e31bf5f279d9b4bb9e667ec248c6",
+  "runs": [
+    {
+      "path": "notes/data/RPB108_CC113_EVEN_SOURCE_PRIMARY_20261010.json",
+      "sha256": "f982472029270a0ea095416fdd3824cb6af7657e3ad7d96b1e341948bdf09207",
+      "regular_order": 360,
+      "precision": 760,
+      "producer_elapsed_seconds_rounded": 402.6,
+      "completed_all_seven_panels": true,
+      "checkpoint_identity": {
+        "parity": "even",
+        "count": 12,
+        "order": 360,
+        "precision": 760,
+        "packet_sha256": "a9e2033e67fae0e1ee7d5030ace35fad5bbd349bbbea6d9526c2c2732c8028a6",
+        "producer_sha256": "4a9e8bd230b01bddc0d59a964e2cad930177e31bf5f279d9b4bb9e667ec248c6"
+      }
+    },
+    {
+      "path": "notes/data/RPB108_CC113_EVEN_SOURCE_REPLAY_20261010.json",
+      "sha256": "06cabb5f8a871999ab5d752a146669751ebc6639835acaa1e0cf91d61339e0f8",
+      "regular_order": 400,
+      "precision": 800,
+      "producer_elapsed_seconds_rounded": 476.6,
+      "completed_all_seven_panels": true,
+      "checkpoint_identity": {
+        "parity": "even",
+        "count": 12,
+        "order": 400,
+        "precision": 800,
+        "packet_sha256": "a9e2033e67fae0e1ee7d5030ace35fad5bbd349bbbea6d9526c2c2732c8028a6",
+        "producer_sha256": "4a9e8bd230b01bddc0d59a964e2cad930177e31bf5f279d9b4bb9e667ec248c6"
+      }
+    },
+    {
+      "path": "notes/data/RPB108_CC113_ODD_SOURCE_PRIMARY_20261010.json",
+      "sha256": "432abc89992346cd12586ffd3e0efe3bd8199722c62a562835bd42054fcb31d8",
+      "regular_order": 360,
+      "precision": 760,
+      "producer_elapsed_seconds_rounded": 367.7,
+      "completed_all_seven_panels": true,
+      "checkpoint_identity": {
+        "parity": "odd",
+        "count": 11,
+        "order": 360,
+        "precision": 760,
+        "packet_sha256": "d7ee500d678bef889d528b74d7c1c1931b2aa7e9236153e5348588a5ba0c4621",
+        "producer_sha256": "4a9e8bd230b01bddc0d59a964e2cad930177e31bf5f279d9b4bb9e667ec248c6"
+      }
+    },
+    {
+      "path": "notes/data/RPB108_CC113_ODD_SOURCE_REPLAY_20261010.json",
+      "sha256": "10ab22f2babc6fdcef12f25aece7657fc786b6a9724784e5b8a6e423c362c76f",
+      "regular_order": 400,
+      "precision": 800,
+      "producer_elapsed_seconds_rounded": 434.4,
+      "completed_all_seven_panels": true,
+      "checkpoint_identity": {
+        "parity": "odd",
+        "count": 11,
+        "order": 400,
+        "precision": 800,
+        "packet_sha256": "d7ee500d678bef889d528b74d7c1c1931b2aa7e9236153e5348588a5ba0c4621",
+        "producer_sha256": "4a9e8bd230b01bddc0d59a964e2cad930177e31bf5f279d9b4bb9e667ec248c6"
+      }
+    }
+  ],
+  "new_mixed_source_correlations": 21,
+  "new_residual_source_diagonals": 2,
+  "recomputed_high_source_diagonals": 21,
+  "analytic_source_runs_completed": 4,
+  "integration_method": "closed polynomial, logarithmic and log-squared moments with outward interval bounds",
+  "sampled_quadrature": false
+}

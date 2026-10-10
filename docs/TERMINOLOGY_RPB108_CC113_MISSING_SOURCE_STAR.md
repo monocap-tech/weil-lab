@@ -1,0 +1,9 @@
+# CC113 complete missing source star
+
+The physical vector v, paid high family Y and original Z44 transport are exactly those frozen in CC112. The new packet (v,Y) has 12 even and 11 odd columns. A source star consists of all v/Y correlations plus every diagonal; high/high off-diagonal correlations remain the authenticated NF52 data. Every source is the original archimedean, pole and six-prime action with exact endpoint logarithms. Whole-source integrals minus all 56 retained coordinates give the complete infinite-high source Gram.
+
+Primary and replay use regular orders 360/400 and precision 760/800 with coefficient grid 250. Exact signed integer convolution and sign-aware outward moment dots enclose the polynomial/logarithmic integrals. Source L2 errors include the inherited analytic operator remainder and coefficient rounding. The usual bilinear error payment is e_i n_j+e_j n_i+e_i e_j.
+
+The response comparison remains at k=603/1000 for an explicit same-floor comparison with CC110/111. DNE46's later 0.647 floor is a separate recovered result, not substituted silently into this comparison. A negative sufficient response bound is not original form negativity.
+
+CC113 separately evaluates k=647/1000 after fresh independent replay of its original high-floor certificate. For the complete response matrix S_Y=Q-G/k+W N^-1 W^t/k^2, a positive coefficient floor d transfers to the physical all-high gap min(d/(4(M+T/k^2)),k/2), where M is the exact original packet mass sum and T the complete high-source trace upper. Strict full-packet separation means S_Y is certified positive and an exact trial rejects the same-floor plain matrix Q-G/k in this same original packet. A full positive congruence also proves positivity of every exact Schur gate in an invertible packet frame, even if separately forming an interval inverse weakens its displayed gate enclosure.
