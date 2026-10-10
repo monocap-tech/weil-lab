@@ -1,0 +1,134 @@
+{
+  "stage": "DNE48",
+  "mathematical_parent": "da5b09e3b72b8e05e3daab5e37e6b3398a5558f8",
+  "preparation_commit": "98bcb73cfc11a7126b57d720b71ce4e4b0bedd4c",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE48_TRIAL_SOURCE_RESPONSE.md",
+      "bytes": 1077,
+      "sha256": "8f0e0753c70530161030b75c78206fba0c29865668288a17cfebc7e370789e5e"
+    },
+    {
+      "path": "scripts/materialize_dne48_trial_sources.py",
+      "bytes": 1230,
+      "sha256": "7212d75d41df88a71d0e59457da94058e5094327ee5065a14e9533de6efb8fc6"
+    },
+    {
+      "path": "scripts/certify_dne48_trial_source_Gram.py",
+      "bytes": 11766,
+      "sha256": "5b1baf3c7f3344fe7809d42d50a6e04488e88d06b315ba1279c7384aa9165975"
+    },
+    {
+      "path": "scripts/pack_dne48_source_archives.py",
+      "bytes": 795,
+      "sha256": "05fe1ede302b7ab8bb960c54b89cb0959c2d9910f79257d69d1fdd155ca85e76"
+    },
+    {
+      "path": "scripts/validate_dne48_trial_source.py",
+      "bytes": 6702,
+      "sha256": "e6ad55ebdb1b6490b8af621137adddc8c5950bdfa740f80f3dfe362fb16bca42"
+    },
+    {
+      "path": "scripts/certify_dne48_residual_response.py",
+      "bytes": 4794,
+      "sha256": "4f6d4c34f0976b20162bfeebf7ed418595fa54aa1afb9ad79d21a2843f3210b3"
+    },
+    {
+      "path": "scripts/validate_dne48_residual_response.py",
+      "bytes": 6835,
+      "sha256": "50d76015291427dc053a48349fdc583f7b2b7cc88874f5d4a5c2636f7139445d"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE48_PREPARATION_20261010.md",
+      "bytes": 1773,
+      "sha256": "a775ff008c33c75eb3de2ef680dd9b28afe306b8d285a3d2c1d5a40a6f7268ea"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE48_TRIAL_SOURCE_RESPONSE_20261010.md",
+      "bytes": 8719,
+      "sha256": "acc4bbc2c3cc8837d101e5f7251c9de53527155fd7a5c33052387805a562b501"
+    },
+    {
+      "path": "notes/data/RPB108_DNE48_TRIAL_SOURCE_20261010.json.gz.b64",
+      "bytes": 2467897,
+      "sha256": "d83281107e03252527751e99690a93f81822d437bb55be4d859ae6dfe9b30cfa"
+    },
+    {
+      "path": "notes/data/RPB108_DNE48_TRIAL_SOURCE_REPLAY_20261010.json.gz.b64",
+      "bytes": 2470265,
+      "sha256": "1d8b11b95d217faa49f4f16e5118b5aee08ee9d531dc917bd5f6438f1f52d60e"
+    },
+    {
+      "path": "notes/data/RPB108_DNE48_TRIAL_SOURCE_VALIDATION_20261010.json",
+      "bytes": 978,
+      "sha256": "6cc20390dd083a34845590a29ca2ba1f79b8933a7e857323824d9ef83b9e54ed"
+    },
+    {
+      "path": "notes/data/RPB108_DNE48_RESIDUAL_RESPONSE_20261010.json.gz.b64",
+      "bytes": 1666949,
+      "sha256": "2908237615f5b4656b6656ab18d5de1d0cca5010e1cca4e438556ddd72ce132a"
+    },
+    {
+      "path": "notes/data/RPB108_DNE48_RESIDUAL_RESPONSE_VALIDATION_20261010.json",
+      "bytes": 5551,
+      "sha256": "d726e5468894be87ae3a0830a0fc34793f4a23d144bd5b9b9cc6335cbe7c0e72"
+    }
+  ],
+  "inherited_script_dependencies": [
+    {
+      "path": "scripts/dne23_dne16_source_input.py",
+      "bytes": 13640,
+      "sha256": "e4539b941f3768f177a469c68f58d34b11d3ea863247c14c1a6a59d81b2f91d8"
+    },
+    {
+      "path": "scripts/dne44_integer_moment_dot.py",
+      "bytes": 566,
+      "sha256": "0088bbf8d97810ad8be4e509f934b2888ef295082eadc7de8041aaade170b115"
+    },
+    {
+      "path": "scripts/certify_dne39_signed_comparison.py",
+      "bytes": 4379,
+      "sha256": "beab6765ba1331edfbaa34d0814c8bca25aa296d245e07dde1fce5544cc7b487"
+    },
+    {
+      "path": "scripts/certify_dne32_native_remainder.py",
+      "bytes": 9520,
+      "sha256": "b7e59ba341e1b9824cad2617df671daad3bbe9f4a5ce7f6f7bdbc2230d2507ae"
+    },
+    {
+      "path": "scripts/validate_dne34_source_block.py",
+      "bytes": 10824,
+      "sha256": "0c5f2e7ec84b4cd5d1af0d6c1264d69da4c6feb794cff565a35ee5353a82bf98"
+    },
+    {
+      "path": "scripts/materialize_dne44_joint_sources.py",
+      "bytes": 2599,
+      "sha256": "ccfde879a58703986504a4dfef6d487102e2ba6cabf3edf97bc1e03fee768d0e"
+    }
+  ],
+  "new_source_checks": 25973,
+  "new_response_checks": 10264,
+  "new_exact_rational_checks": 36237,
+  "status": "PASS",
+  "source_dimension": 47,
+  "retained_even_rank": 44,
+  "retained_odd_rank": 44,
+  "actual_certified_retained_dimension": 88,
+  "uncovered_retained_dimension": 24,
+  "uncovered_inside_packet_dimension": 0,
+  "uncovered_outside_packet_dimension": 24,
+  "original_infinite_F112_floor": "647/1000",
+  "physical_guard": "1e-37",
+  "prior_87_direction_span_contained": true,
+  "new_source_upper_triangle_correlations": 138,
+  "source_integrals_recomputed": true,
+  "prior_source_entries_reintegrated": false,
+  "response_upper_established": true,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false,
+  "jobs_finished": true,
+  "certificate_hash_encoding": "decoded JSON bytes for certificate references; stored bytes for custody"
+}
