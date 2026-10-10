@@ -3,7 +3,6 @@ import WeilDefect.Screening.CanonicalCertificateTransport
 
 namespace WeilDefect.CanonicalCertificate
 
-open scoped InnerProduct
 
 /-- A physical representation of the *whole* weak residual controls its
 Riesz error. The identity is required for every canonical test vector.
@@ -30,7 +29,6 @@ theorem riesz_error_le_physical_residual
   · rw [he]
     exact mul_nonneg hk (norm_nonneg f)
   · have hp : 0 < ‖e‖ := lt_of_le_of_ne (norm_nonneg e) (Ne.symm he)
-    apply (mul_le_mul_right hp).mp
     nlinarith [hbound]
 
 /-- Squared form of the whole weak-residual theorem, with an exact

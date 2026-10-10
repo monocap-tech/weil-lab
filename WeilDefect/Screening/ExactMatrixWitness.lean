@@ -1,4 +1,4 @@
-import Mathlib.LinearAlgebra.Matrix.PosDef
+import Mathlib
 
 /-! # Exact finite matrix witnesses
 

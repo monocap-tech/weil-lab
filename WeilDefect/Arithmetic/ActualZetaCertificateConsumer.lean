@@ -5,7 +5,6 @@ import WeilDefect.Screening.PhysicalResidualTransport
 namespace WeilDefect
 
 noncomputable section
-open scoped InnerProduct
 
 /-- The supported logarithmic carrier's actual physical inclusion is a
 contraction. This uses the existing energy comparison, not an extra premise. -/
