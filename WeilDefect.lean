@@ -224,4 +224,7 @@ import WeilDefect.Arithmetic.ActualZetaDistinctObservationRigidity
 import WeilDefect.Arithmetic.ActualZetaOfflineBackground
 
 import WeilDefect.Screening.CanonicalCertificateTransport
+import WeilDefect.Screening.ExactMatrixWitness
+import WeilDefect.Screening.PhysicalResidualTransport
+import WeilDefect.Arithmetic.ActualZetaCertificateConsumer
 
