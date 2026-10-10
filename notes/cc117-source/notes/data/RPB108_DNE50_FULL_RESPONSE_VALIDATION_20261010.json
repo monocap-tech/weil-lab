@@ -1,0 +1,39 @@
+{
+  "stage": "DNE50",
+  "status": "PASS",
+  "exact_rational_checks": 22376,
+  "certificate_path": "notes/data/RPB108_DNE50_FULL_RESPONSE_20261010.json.gz.b64",
+  "certificate_sha256": "9eb471fa4e5b0cef4c5f25a430794533ff7f6e461018c5136f315daa6e2dfdc7",
+  "input_sha256": [
+    "755dc205891ba2a0a45c69b91c624eeb3f88ac58d3b32764c101ad942865ad55",
+    "28919e1d40e0d76ae45f3a6e9ac6fd1009f55a5565ae4c4db4928501a8dfd3e6",
+    "eb073a72d76e77f06e73bc8c1f84788a6117474e8993592359f45f9c2a08338a",
+    "f555f71564358600b7364ae7ebfdefe8c759bc45ccb7345689e735d8c83343c3",
+    "94c4e6441f41de9ca24a8d396fb3f3492e38f8fe89edce60b6f60064ae80fb53",
+    "d726e5468894be87ae3a0830a0fc34793f4a23d144bd5b9b9cc6335cbe7c0e72"
+  ],
+  "rows": [
+    {
+      "parity": "even",
+      "full_response_budget_passed": false,
+      "positive_retained_rank": 44,
+      "all_high_physical_gap_lower": null
+    },
+    {
+      "parity": "odd",
+      "full_response_budget_passed": false,
+      "positive_retained_rank": 44,
+      "all_high_physical_gap_lower": null
+    }
+  ],
+  "actual_certified_all_high_retained_dimension": 88,
+  "uncovered_retained_dimension": 24,
+  "original_aperture": "53/50",
+  "original_infinite_F112_floor": "647/1000",
+  "all_high_physical_gap_lower": null,
+  "response_upper_established": true,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}

@@ -1,0 +1,23 @@
+{
+  "stage": "DNE50",
+  "status": "PASS",
+  "exact_rational_checks": 39282,
+  "primary_path": "notes/data/RPB108_DNE50_EVEN_COMPLETE_SOURCE_20261010.json.gz.b64",
+  "replay_path": "notes/data/RPB108_DNE50_EVEN_COMPLETE_SOURCE_REPLAY_20261010.json.gz.b64",
+  "primary_sha256": "729986bb71f1ac0ca38032743c4caa62a94878047a24a1c3adb5b7bcd278a080",
+  "replay_sha256": "c106415cc3f083fad75b0e61d803fbab805da5ac3c257f74af1d6d32b9325d3b",
+  "packet_sha256": "faa2c126924b65a3f98aa6202a6b0fb6729e9c9d2f162c37005596da84ed2053",
+  "prior_source_validation_sha256": "6cc20390dd083a34845590a29ca2ba1f79b8933a7e857323824d9ef83b9e54ed",
+  "parity": "even",
+  "source_dimension": 59,
+  "reused_source_dimension": 47,
+  "new_native_dimension": 12,
+  "new_upper_triangle_correlations": 642,
+  "complete_remaining_source_Gram_certified": true,
+  "source_integrals_recomputed": true,
+  "prior_source_entries_reintegrated": false,
+  "response_upper_established": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
