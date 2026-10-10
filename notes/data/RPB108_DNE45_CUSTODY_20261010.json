@@ -1,0 +1,77 @@
+{
+  "stage": "DNE45",
+  "parent": "bb7220c07aa66c2fea00bbc36452a59130ee3fb1",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE45_SCALAR_ROUTE_LIMIT.md",
+      "sha256": "d610b9cfc6401998b9f1308f321fd757ce051a8f935f8f2d1f8e51ac97ef7cd5",
+      "bytes": 1652
+    },
+    {
+      "path": "scripts/certify_dne45_scalar_route_limit.py",
+      "sha256": "74c4404d7f4bcd42bb75e025b5a8338b5826a030996670269577926516a5ecfa",
+      "bytes": 4202
+    },
+    {
+      "path": "scripts/validate_dne45_scalar_route_limit.py",
+      "sha256": "6b4413eb4e64d59aac3a9164c42e5f30ff9d37de4214cf6d24eb5536685ac60b",
+      "bytes": 5916
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE45_SCALAR_ROUTE_LIMIT_20261010.md",
+      "sha256": "882f026cf21c5498cee0445879a0bcaa36e27dc50ceb67677bef645fd5707f3a",
+      "bytes": 5553
+    },
+    {
+      "path": "notes/data/RPB108_DNE45_SCALAR_ROUTE_LIMIT_20261010.json.gz.b64",
+      "sha256": "831e4abdf136eb583cdc950dab7cd70a066aeb64dd93f280768c3b0a0fd7c29a",
+      "bytes": 1336037
+    },
+    {
+      "path": "notes/data/RPB108_DNE45_SCALAR_ROUTE_VALIDATION_20261010.json",
+      "sha256": "38a6515710505b4cf5304f1511a25fd24afc421218c633e76dd9defc2678d634",
+      "bytes": 1895
+    }
+  ],
+  "inherited_script_dependencies": [
+    {
+      "path": "scripts/certify_dne39_signed_comparison.py",
+      "sha256": "beab6765ba1331edfbaa34d0814c8bca25aa296d245e07dde1fce5544cc7b487",
+      "bytes": 4379
+    },
+    {
+      "path": "scripts/certify_dne32_native_remainder.py",
+      "sha256": "b7e59ba341e1b9824cad2617df671daad3bbe9f4a5ce7f6f7bdbc2230d2507ae",
+      "bytes": 9520
+    },
+    {
+      "path": "scripts/validate_dne34_source_block.py",
+      "sha256": "0c5f2e7ec84b4cd5d1af0d6c1264d69da4c6feb794cff565a35ee5353a82bf98",
+      "bytes": 10824
+    },
+    {
+      "path": "scripts/validate_dne43_high_floor.py",
+      "sha256": "0b1d915c8fe8ffb2ea95c8d0ef5c53b54a31af9b939f6be0161db5107aca29d1",
+      "bytes": 6053
+    },
+    {
+      "path": "scripts/dne17_nf10_complement_input.py",
+      "sha256": "207037efc8a824f40a8585f18b63c4e1e92270cd6a41d9414d577ae2510f24b1",
+      "bytes": 6249
+    }
+  ],
+  "new_exact_rational_checks": 50340,
+  "status": "PASS",
+  "certificate_hash_encoding": "decoded JSON bytes for certificate references; stored bytes for custody",
+  "actual_certified_retained_dimension": 85,
+  "uncovered_retained_dimension": 27,
+  "original_high_floor": "603/1000",
+  "physical_guard": "1e-38",
+  "fixed_input_global_norm_route_cannot_close_full_packet": true,
+  "source_integrals_recomputed": false,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
