@@ -1,0 +1,190 @@
+{
+  "stage": "DNE50",
+  "mathematical_parent": "bb68642b1384d50d6b9fea517db9691e924fe5a5",
+  "preparation_commits": [
+    "e8b30ec42d7402362224bbb80f816f01768a7392",
+    "fd0434979302083c01f9f20cc30fae42f62211d7"
+  ],
+  "branch": "research/rpb108-direct-null-exclusion",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE50_COMPLETE_SOURCE.md",
+      "bytes": 1187,
+      "sha256": "1982e95864825410f547f8b5d2db546e810d3cd63b955a90cbffaaf5c8910c26"
+    },
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE50_FULL_RESPONSE.md",
+      "bytes": 1023,
+      "sha256": "54885bd779ba00c3f3f77ae3e5d06e3e88be1567ca624402e7f7c112ce704c98"
+    },
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE50_POSITIVE_SUBSPACE.md",
+      "bytes": 1179,
+      "sha256": "e617b041b25ebeb7160611468213ae40ac4b4007fb3e063da8588ea765207344"
+    },
+    {
+      "path": "scripts/certify_dne50_positive_subspaces.py",
+      "bytes": 3569,
+      "sha256": "8a0d48ec2f47eab6c6b4f3aa7e8291fe934952cbb7e7a02f0f8c959a082e8efb"
+    },
+    {
+      "path": "scripts/validate_dne50_positive_subspaces.py",
+      "bytes": 4795,
+      "sha256": "462f6dd1fa11665f85a13b0d5458df3e184af6224be6a1eda92a087b1a226888"
+    },
+    {
+      "path": "scripts/combine_dne50_source_validations.py",
+      "bytes": 1549,
+      "sha256": "51f66cb75537566ad98d2e349c7b879e3e86595b73153a6e9d19b97b19c16c8e"
+    },
+    {
+      "path": "scripts/materialize_dne50_complete_sources.py",
+      "bytes": 1158,
+      "sha256": "9f936e98820c4fdcc42a8f2bb9e1652b71f281b45e0d8925f244f2e474762607"
+    },
+    {
+      "path": "scripts/certify_dne50_complete_source_Gram.py",
+      "bytes": 12119,
+      "sha256": "caa80c5c49e477428c70c354c9e0da3d6a19827bd368db189a8dc394fcbc893d"
+    },
+    {
+      "path": "scripts/pack_dne50_complete_sources.py",
+      "bytes": 816,
+      "sha256": "fd61a70a190704c3e730593c082953f4de37ef21814b1b0d686297327e9ca117"
+    },
+    {
+      "path": "scripts/validate_dne50_complete_source.py",
+      "bytes": 7248,
+      "sha256": "e9753fa7b7e086f05ffb2ea72bfea35ef3b7d800f4786d60ea93b6109181262b"
+    },
+    {
+      "path": "scripts/certify_dne50_full_response.py",
+      "bytes": 4585,
+      "sha256": "6dad2b972f7ec716917c9b60da356d0148f9014cbe45e442e0ada9fa52fb7d77"
+    },
+    {
+      "path": "scripts/validate_dne50_full_response.py",
+      "bytes": 6673,
+      "sha256": "9ba202eb7e4e510a5ffc6f848a88cf79aa46cf4c7207c072108d4649426df04e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE50_PREPARATION_20261010.md",
+      "bytes": 3473,
+      "sha256": "b797cb27d7726d7d9fda895dc9a0880a61d63b4f82ef17b485bfedd425cee15f"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_EVEN_COMPLETE_SOURCE_20261010.json.gz.b64",
+      "bytes": 3695833,
+      "sha256": "e5dec30c9ed5743e4250ca62f244bcd8ced480024019a31a96b2cf5d1a473e0a"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_EVEN_COMPLETE_SOURCE_REPLAY_20261010.json.gz.b64",
+      "bytes": 3696365,
+      "sha256": "83439d472bc5a82c15ac5f2124c1ecd7825486c25ced3fac8811d957024a9923"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_ODD_COMPLETE_SOURCE_20261010.json.gz.b64",
+      "bytes": 3354529,
+      "sha256": "4b6285d888e8cf247fb96407389f65eb0244962a71b61829fd322ee084f05d24"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_ODD_COMPLETE_SOURCE_REPLAY_20261010.json.gz.b64",
+      "bytes": 3346025,
+      "sha256": "03173385bf7d220c3a3a40fd4c94eaf40c705a649a48fa8e5a72e4c7db29892e"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_EVEN_SOURCE_VALIDATION_20261010.json",
+      "bytes": 1018,
+      "sha256": "2b7c5c486ef9d3191a391053a7defc2262c1ce551c7db0e19d021823f5f0fa71"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_ODD_SOURCE_VALIDATION_20261010.json",
+      "bytes": 1015,
+      "sha256": "e29016296417ff1cb5a921dbbbb40dd1d092f5f47979b666f5062427094ec598"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_COMPLETE_SOURCE_VALIDATION_20261010.json",
+      "bytes": 2611,
+      "sha256": "755dc205891ba2a0a45c69b91c624eeb3f88ac58d3b32764c101ad942865ad55"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_FULL_RESPONSE_20261010.json.gz.b64",
+      "bytes": 3446365,
+      "sha256": "fd31441d8766cc2075b5051154f2396171c078a6db57024792e6552548f0ad79"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_FULL_RESPONSE_VALIDATION_20261010.json",
+      "bytes": 1397,
+      "sha256": "385cdcd6cee2d1c6d73d97da98cc2ee64170806e11aefeef36592bd25f03f1a0"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_POSITIVE_SUBSPACES_20261010.json.gz.b64",
+      "bytes": 2094313,
+      "sha256": "6456d4e5be61a13205921a8a6d6c4008bb489e8839399ceb07622490161a8873"
+    },
+    {
+      "path": "notes/data/RPB108_DNE50_POSITIVE_SUBSPACE_VALIDATION_20261010.json",
+      "bytes": 15088,
+      "sha256": "bb1ed988ffa40d27e893bca51f51aecd65da8fb825c9b985fa05f0ecfe65c0f0"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE50_COMPLETE_SOURCE_RESPONSE_20261010.md",
+      "bytes": 8054,
+      "sha256": "f3eb6ab2913de6fc3e6b52d7b0ce812f72e9ea532628150e5dd85406ef59daa1"
+    }
+  ],
+  "inherited_script_dependencies": [
+    {
+      "path": "scripts/certify_dne44_positive_subspace.py",
+      "bytes": 4388,
+      "sha256": "7c7c6beb8cbfb3f593295666f8a4e79514f46fc2b102dc7c96ba830ba3dfd1ef"
+    },
+    {
+      "path": "scripts/dne23_dne16_source_input.py",
+      "bytes": 13640,
+      "sha256": "e4539b941f3768f177a469c68f58d34b11d3ea863247c14c1a6a59d81b2f91d8"
+    },
+    {
+      "path": "scripts/dne44_integer_moment_dot.py",
+      "bytes": 566,
+      "sha256": "0088bbf8d97810ad8be4e509f934b2888ef295082eadc7de8041aaade170b115"
+    },
+    {
+      "path": "scripts/certify_dne39_signed_comparison.py",
+      "bytes": 4379,
+      "sha256": "beab6765ba1331edfbaa34d0814c8bca25aa296d245e07dde1fce5544cc7b487"
+    },
+    {
+      "path": "scripts/certify_dne32_native_remainder.py",
+      "bytes": 9520,
+      "sha256": "b7e59ba341e1b9824cad2617df671daad3bbe9f4a5ce7f6f7bdbc2230d2507ae"
+    },
+    {
+      "path": "scripts/validate_dne34_source_block.py",
+      "bytes": 10824,
+      "sha256": "0c5f2e7ec84b4cd5d1af0d6c1264d69da4c6feb794cff565a35ee5353a82bf98"
+    }
+  ],
+  "source_checks": 75093,
+  "response_checks": 22376,
+  "positive_subspace_checks": 23961,
+  "new_exact_rational_checks": 121430,
+  "status": "PASS",
+  "new_source_upper_triangle_correlations": 1248,
+  "missing_source_correlations": 0,
+  "actual_certified_all_high_retained_dimension": 109,
+  "uncovered_retained_dimension": 3,
+  "original_aperture": "53/50",
+  "original_infinite_F112_floor": "647/1000",
+  "whole_domain_physical_guard": null,
+  "all_high_positive_packet_physical_guard": "1/1000000000000000000000000000000000000000",
+  "prior_88_direction_span_contained": true,
+  "uncovered_inside_packet_dimension": 3,
+  "uncovered_outside_packet_dimension": 0,
+  "response_upper_established": true,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false,
+  "jobs_finished": true
+}
