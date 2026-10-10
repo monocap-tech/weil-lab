@@ -1,0 +1,29 @@
+{
+  "read_only_Native_Source": "19c11a4f9f8f03b039fcb30a8addf4d96029c53c",
+  "files": [
+    {
+      "path": "notes/data/RPB108_NF45_ODD_FIXED_INVERSE_WITNESS_20261009.json",
+      "stored_sha256": "4f59c09a453314eae49fcbdf8553f0ce61b1386138d59111c88ab8f752826e4e"
+    },
+    {
+      "path": "notes/data/RPB108_NF46_EVEN_FIXED_NEXT_SHELL_20261009.json",
+      "stored_sha256": "5734f0e7bab528d439c68faf2160d9fc2d545e426cb8523367258e47e4d702e4"
+    },
+    {
+      "path": "notes/data/RPB108_NF50_EVEN_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "65e05d5d4e498a4e26d25e3bf29a29943d01961367c335e8f278e5883c190b0c"
+    },
+    {
+      "path": "notes/data/RPB108_NF50_ODD_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "03bda794b0bd53d91988eeb84fb4fdad72c162d3bc444493754d1bcf7b9f8c5a"
+    },
+    {
+      "path": "notes/data/RPB108_NF51_EVEN_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "3587c008a40dfbe427730d309bf6ed9e255cb12c68a52c7ec5155a6842b11684"
+    },
+    {
+      "path": "notes/data/RPB108_NF51_ODD_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "eb3121f7db8ff1122e4aafc01def6f6ade7ec01053fbcd32d35f9e15fd3e950f"
+    }
+  ]
+}
