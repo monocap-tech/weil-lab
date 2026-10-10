@@ -75,5 +75,19 @@ theorem neutralActualZetaGreenZeroForm_nonnegative_of_canonical
   rw [neutralActualZetaGreenZeroForm_canonical_quadratic a ha v]
   exact hpositive (neutralActualZetaGreenCanonical a ha v)
 
+/-- Attach the actual source and trial action before consuming a physical
+residual. The two identities range over the complete canonical carrier. -/
+theorem neutralActualZetaLogRiesz_error_of_source_and_action
+    (a : ℝ) (r v : NeutralLogHilbertCarrier a) (p action : RealComplexL2)
+    (hsource : ∀ h : NeutralLogHilbertCarrier a,
+      inner ℂ r h = inner ℂ p (neutralLogPhysical h.val))
+    (haction : ∀ h : NeutralLogHilbertCarrier a,
+      inner ℂ v h = inner ℂ action (neutralLogPhysical h.val)) :
+    ‖r - v‖ ^ 2 ≤ ‖p - action‖ ^ 2 := by
+  apply neutralActualZetaLogRiesz_error_sq_le_physical a (r - v) (p - action)
+  exact CanonicalCertificate.weak_residual_of_source_and_action
+    (fun h : NeutralLogHilbertCarrier a => neutralLogPhysical h.val)
+    r v p action hsource haction
+
 end
 end WeilDefect
