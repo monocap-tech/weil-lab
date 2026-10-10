@@ -230,3 +230,5 @@ import WeilDefect.Arithmetic.ActualZetaCertificateConsumer
 
 
 import WeilDefect.Morphology.NeutralLogMetricPhysicalSource
+
+import WeilDefect.Morphology.NeutralLogMetricEndpointSource

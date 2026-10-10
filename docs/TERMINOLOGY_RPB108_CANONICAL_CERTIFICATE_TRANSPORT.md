@@ -31,3 +31,16 @@ identified by this namespace.
 - **Spectral log-metric physical source:** inverse Fourier transform of that
   L2 product. It represents the metric pairing on the whole supported carrier.
   Equality with RC24's compressed jump-density formula is a separate obligation.
+
+## LF05 additive definitions
+
+- **Metric jump density:** RC24's exponentially damped Poisson-mixture
+  density, intended for strictly positive jump distance.
+- **Endpoint tail:** its integral beyond the positive distance to one endpoint.
+- **Two-tail exterior source:** the sum of the left and right endpoint tails.
+- **Endpoint source candidate:** the constant, internal-difference and two-tail
+  terms in RC24's physical formula. It is a function definition, not yet a
+  proved L2 representative or identified spectral source.
+- **Whole weak limit attachment:** convergence of physical sources in L2
+  together with convergence of their whole test pairings to the canonical
+  metric. The limit then represents every test pairing.
