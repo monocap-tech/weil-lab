@@ -1,0 +1,29 @@
+{
+  "read_only_Native_Source": "8f8be75830329df947e261fdc965dda3bf366bc7",
+  "files": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_JOINT_INVERSE_REFINEMENT_NF53_20261010.md",
+      "sha256": "d3e7dbc6567f40acc2c81faa749ee4cd9a9019c7b9af30d5f1130c332bb6376a"
+    },
+    {
+      "path": "notes/data/RPB108_NF53_EVEN_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "sha256": "520b5702de525804962908a79d1e999311e8cc7f6471ef8317b2d6b9e2d73cd3"
+    },
+    {
+      "path": "notes/data/RPB108_NF53_EVEN_JOINT_REFINEMENT_VALIDATION_20261010.json",
+      "sha256": "5d63118c54fe873e3db6d91ae1193393e55c84f27d594add3a1283f2122a7d4c"
+    },
+    {
+      "path": "notes/data/RPB108_NF53_ODD_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "sha256": "6fc697af215b187e111c9e5856e0214afae54ab06aaab13838ad51308ebdf542"
+    },
+    {
+      "path": "notes/data/RPB108_NF53_ODD_JOINT_REFINEMENT_VALIDATION_20261010.json",
+      "sha256": "2f610bb1d143f4d5afd26f5d7464778b2a90dbb99886559720028c60f8e23dd0"
+    },
+    {
+      "path": "scripts/validate_native_joint_refinement_nf53_106.py",
+      "sha256": "2c7e75f95fd0d4fb53a3c0baa470eb550757a6401b86a45ec39351a94e3698eb"
+    }
+  ]
+}

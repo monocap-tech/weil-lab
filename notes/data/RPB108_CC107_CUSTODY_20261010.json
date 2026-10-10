@@ -1,0 +1,31 @@
+{
+  "milestone": "CC107",
+  "parent": "1742db941887e45ebff52046d8d10a8db707fdfc",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC107_COMPLETE_RESPONSE_REBASE.md",
+      "bytes": 1006,
+      "sha256": "c1052e846aaa85b272c8b6135bb631765587f076123f6b33cf7bac976b9db435"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC107_COMPLETE_RESPONSE_REBASE_20261010.md",
+      "bytes": 7528,
+      "sha256": "d5078b87fcc083876eb81efc72d93cd322df1bf546545c454f18b603ad61acc5"
+    },
+    {
+      "path": "scripts/certify_cc107_complete_response.py",
+      "bytes": 9168,
+      "sha256": "948cb04076ae0d5ae25d13a968c1ada803307882975914985a4e09103e146802"
+    },
+    {
+      "path": "notes/data/RPB108_CC107_COMPLETE_RESPONSE_20261010.json",
+      "bytes": 231535,
+      "sha256": "4abefa81bed1cbe7c8c17a4b1460e154edfcb69c843eca3c1d314c3875a4691e"
+    },
+    {
+      "path": "notes/cc107-source/input_custody.json",
+      "bytes": 1194,
+      "sha256": "19d1b6805ecbf6308ad65e6317317ccd61a245bba5bc397915c8313274ff13a8"
+    }
+  ]
+}
