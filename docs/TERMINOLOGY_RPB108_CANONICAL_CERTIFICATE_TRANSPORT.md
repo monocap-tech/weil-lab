@@ -22,3 +22,12 @@ The scalar algebraic consumer does not authenticate analytic attachment,
 matrix enclosures, support, or the infinite complementary estimate. Those
 are explicitly supplied hypotheses; no physical or canonical domain is
 identified by this namespace.
+
+## LF04 additive definitions
+
+- **Log-metric spectral product:** the exact product of `log(exp 1 + |ξ|)`
+  with the physical vector's Fourier transform. Its physical L2 membership
+  is stronger than the existing one-logarithm form energy condition.
+- **Spectral log-metric physical source:** inverse Fourier transform of that
+  L2 product. It represents the metric pairing on the whole supported carrier.
+  Equality with RC24's compressed jump-density formula is a separate obligation.

@@ -228,3 +228,5 @@ import WeilDefect.Screening.ExactMatrixWitness
 import WeilDefect.Screening.PhysicalResidualTransport
 import WeilDefect.Arithmetic.ActualZetaCertificateConsumer
 
+
+import WeilDefect.Morphology.NeutralLogMetricPhysicalSource
