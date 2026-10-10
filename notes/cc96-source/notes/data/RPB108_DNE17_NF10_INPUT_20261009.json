@@ -1,0 +1,56 @@
+{
+  "stage": "NF10 fresh physical infinite-complement bound at aperture 53/50",
+  "status": "passed exact-rational interval validation; entire Weil sign not evaluated",
+  "aperture": "53/50",
+  "retained_physical_legendre_degrees": "0..111",
+  "physical_complement_definition": "L2(-a,a)-orthogonal complement of 112 normalized Legendre modes",
+  "active_prime_powers": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "prime_operator_method": "positive symmetric absolute-translation kernel, weighted Schur w(x)=5/8+3*x^2/(8*a^2)",
+  "prime_cell_covers": [
+    6000,
+    6133
+  ],
+  "prime_operator_enclosure_6000": {
+    "upper": "2565346230069/1000000000000",
+    "approximate": 2.565346230069
+  },
+  "prime_operator_enclosure_6133": {
+    "upper": "2565401883261/1000000000000",
+    "approximate": 2.565401883261
+  },
+  "certified_prime_operator_norm_upper": "13/5",
+  "bessel_method": "source depth-6 derivative-coefficient recursion, 12-term lower damping exponent, 155-term lower exponential, all 48 degrees 112..159 with rate >=75, undamped geometric tail starting at 160",
+  "bessel_coefficients_monotonicity": "all 64 coefficients for n=113..159 bounded above by corresponding n=112 coefficients",
+  "bessel_global_rate_lower": "80",
+  "cutoffs": [
+    "14",
+    "15",
+    "16"
+  ],
+  "integrated_low_frequency_mass_uppers": {
+    "14": "41244667/50000000000000000",
+    "15": "637183700063/200000000000000000",
+    "16": "857090207881011/500000000000000000"
+  },
+  "archimedean_strict_lower": "277/100",
+  "archimedean_approx_lower": 2.7723512437329556,
+  "pole_exact_bound": "16*a*(a/2)^(224)/(112!)^2",
+  "pole_bound_strict_upper": "1/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "physical_complement_raw_lower_rounded": "172351243732/1000000000000",
+  "physical_complement_certified_lower": "17/100",
+  "original_native_retained_112_sign": false,
+  "complete_original_source_gram": false,
+  "full_original_even_odd_schur_sign": false,
+  "new_whole_domain_positive_aperture": false,
+  "old_certificate_at_21_20_unchanged": true,
+  "lean_certified": false,
+  "producer": "scripts/certify_native_prime8_complement_nf10_106.py",
+  "independent_validator": "scripts/validate_native_prime8_complement_nf10_106.py"
+}

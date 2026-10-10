@@ -1,0 +1,54 @@
+{
+  "stage": "DNE17",
+  "parent": "b788896e08619c0b42c7404fefd63e7d4a24637a",
+  "write_branch": "research/rpb108-direct-null-exclusion",
+  "read_only_NF10_head": "b7fa4461ab4cca2ebc9383ae4b9407c03a580826",
+  "NF10_certificate_git_blob": "e9a48da78b58947b20550168f49bba56586af07d",
+  "NF10_helper_git_blob": "0f6ce9f2d42e6714a3a04894290603ee1b436532",
+  "NF10_both_copies_byte_exact": true,
+  "primary": {
+    "grid_digits": 60,
+    "log_terms": 220
+  },
+  "replay": {
+    "grid_digits": 80,
+    "log_terms": 320
+  },
+  "prime_norm_allowance": "233/100",
+  "original_infinite_F112_floor": "11/25",
+  "weight": "P^2 1",
+  "exact_symbolic_union_bands": 81,
+  "independent_surviving_words": {
+    "depth2": 82,
+    "depth3": 464
+  },
+  "all_row_bounds_independently_verified": true,
+  "fresh_NF10_arch_and_pole_arithmetic_executed": true,
+  "NF10_analytic_Bessel_and_symbol_theorems_inherited": true,
+  "exact_rational_assertions": 81197,
+  "abstract_crossing_controls": 3,
+  "abstract_positive_ground_controls": 3,
+  "DNE16_input_sha256": {
+    "notes/data/RPB108_DNE16_EVEN_REPLAY_CERTIFICATE_20261009.json": "a6c223569d77daa8b114b2ff42c3ea1e3ae50e92662c01ba92ba38c8e64ce794",
+    "notes/data/RPB108_DNE16_ODD_REPLAY_CERTIFICATE_20261009.json": "75af29a407adcba0de80a0af4f08cb6aacfe108bb15d28107a4a2158f80457a7"
+  },
+  "exact_H2_source_and_energy_errors_inherited_paid": true,
+  "both_complete_high_directional_gates_passed": true,
+  "raw_native_matrix_archives_replayed": false,
+  "full_56_matrix_certified": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false,
+  "other_branches_modified": false,
+  "artifact_sha256": {
+    "notes/REFLECTED_PACKET_BRIDGE_108_DNE17_ITERATED_PRIME_FLOOR_20261009.md": "7ea2599b8f5482cc04befb946eb713d0f1e85a6752b3eb0c22e1fc21f61dc61f",
+    "docs/TERMINOLOGY_RPB108_DNE17_ITERATED_PRIME_FLOOR.md": "2c265d304482d294a5292b3a7798a89b40e93fa0904f5c75feef9d0af83706bb",
+    "scripts/certify_dne17_prime_schur.py": "8695e20210d8e832947d2126855210451083dee3759c3dd2af1c60823ada60a9",
+    "scripts/validate_dne17_words_and_gates.py": "628fa1fd8f9cf0a5941c51880d060371bf83526ceb1964653288347719de5c87",
+    "scripts/dne17_nf10_complement_input.py": "207037efc8a824f40a8585f18b63c4e1e92270cd6a41d9414d577ae2510f24b1",
+    "notes/data/RPB108_DNE17_NF10_INPUT_20261009.json": "0864d99e5a1d6061e354f202722a83bf9c44cdadb1af92b42504b49396186c40",
+    "notes/data/RPB108_DNE17_PRIME_SCHUR_CERTIFICATE_20261009.json": "4d11eed40d2660e603a36ade6e3dc4dcfb6a88937788aaf51b37665daf500321",
+    "notes/data/RPB108_DNE17_PRIME_SCHUR_REPLAY_CERTIFICATE_20261009.json": "05c7ecff70e744b682215fc741d62792692bdf0a0489598b4435250923295407",
+    "notes/data/RPB108_DNE17_VALIDATION_20261009.json": "c5a9f3af12264fd0602a6916c756de83d3e0092c99b168d2121fe3a89ab45c83"
+  }
+}
