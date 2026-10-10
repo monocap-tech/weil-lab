@@ -1,0 +1,65 @@
+{
+  "read_only_Native_Source": "19c11a4f9f8f03b039fcb30a8addf4d96029c53c",
+  "files": [
+    {
+      "path": "notes/data/RPB108_NF37_EVEN_FREE_CORRECTION_FUNCTIONAL_CERTIFICATE_20261009.json",
+      "stored_sha256": "ed0827518c5a76c3fc0c56e795518b9e2be9f1edb9860ff78dd1577551cc757d"
+    },
+    {
+      "path": "notes/data/RPB108_NF37_ODD_FREE_CORRECTION_FUNCTIONAL_CERTIFICATE_20261009.json",
+      "stored_sha256": "30c4e46afc86c022d8b867b2cbfaa698b4d5a9441fc7d79200045a0325d3d3af"
+    },
+    {
+      "path": "notes/data/RPB108_NF47_FLOOR_TRANSPORT_CERTIFICATE_20261009.json",
+      "stored_sha256": "fd1b2e50aae2a390fd543ccdc8463466976f98523ea06cb413eee25c020bfba7"
+    },
+    {
+      "path": "notes/data/RPB108_NF48_REMAINING_NATIVE_CERTIFICATE_20261009.json.gz.b64",
+      "stored_sha256": "c1ffd596a2417f17cc78c605ab9f7a6c14c123364545367efc057767f5a1beff"
+    },
+    {
+      "path": "notes/data/RPB108_NF48_REMAINING_NATIVE_VALIDATION_20261009.json",
+      "stored_sha256": "4e7af1bcb9566d8a1da97d2ab3b0a451c1864350066b91e758aaa1e1ccd0cc20"
+    },
+    {
+      "path": "notes/data/RPB108_NF49_EVEN_COMPLETE_TRANSPORT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "62f0139fdf984fef5c0a44ad9784763b5cc8141b2bc3b2d13089b9b90780dac0"
+    },
+    {
+      "path": "notes/data/RPB108_NF49_EVEN_COMPLETE_TRANSPORT_VALIDATION_20261010.json",
+      "stored_sha256": "a51c2c5bb7d613010bd7d0b2233f3c9967aaee7f9034fb0f9e31502d3351db07"
+    },
+    {
+      "path": "notes/data/RPB108_NF49_ODD_COMPLETE_TRANSPORT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "f5abe298f9518d534178883754dc175fb5755eaa3f40c51090fd5601fca741b8"
+    },
+    {
+      "path": "notes/data/RPB108_NF49_ODD_COMPLETE_TRANSPORT_VALIDATION_20261010.json",
+      "stored_sha256": "f833006da42e1396470c3c769a223f5f6e2aee51445a55965f8a6f4ef63232d3"
+    },
+    {
+      "path": "notes/data/RPB108_NF52_EVEN_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "cb53049cbba5dd0066ee281120ab8791ce178bef4e6ae7f27c4138f45be596aa"
+    },
+    {
+      "path": "notes/data/RPB108_NF52_EVEN_JOINT_REFINEMENT_VALIDATION_20261010.json",
+      "stored_sha256": "928cc387354d44d7207253d29f91c9026034bca7f5c9b374320123a7f3983a5d"
+    },
+    {
+      "path": "notes/data/RPB108_NF52_JOINT_INVERSE_REFINEMENT_CHECKPOINT_20261010.json",
+      "stored_sha256": "cc5c6ebed307541d70299d7fa0bd4270571e22001041715af5f30b35ca8deaeb"
+    },
+    {
+      "path": "notes/data/RPB108_NF52_ODD_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "66fb233f0fb3a0547d56f7e4da59b367ccd65c12960733040ae8bdefbcbd9c6d"
+    },
+    {
+      "path": "notes/data/RPB108_NF52_ODD_JOINT_REFINEMENT_VALIDATION_20261010.json",
+      "stored_sha256": "f3493ab134fd85748e9df183bd907aefb5e200f76d9959344c0fe28e445b73ae"
+    },
+    {
+      "path": "scripts/certify_native_remaining_native_nf48_106.py",
+      "stored_sha256": "61600156988c7358b6cad550e6871caef5e4a286a81a61013d94b448d9368646"
+    }
+  ]
+}

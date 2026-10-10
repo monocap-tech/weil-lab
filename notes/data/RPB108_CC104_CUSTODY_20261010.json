@@ -1,0 +1,31 @@
+{
+  "milestone": "CC104",
+  "parent": "d96eee9a638ec5923886a832f0b7af57a459bb7e",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC104_COMMON_FLOOR_RESPONSE.md",
+      "bytes": 1637,
+      "sha256": "7a9c6a9a7ca00b0c9530cda80bcf3e46f9ea0b5f7e47e077d986a62316a92a0c"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC104_COMMON_FLOOR_RESPONSE_20261010.md",
+      "bytes": 7165,
+      "sha256": "079387b56f01f7f48c17b70ae2a3c7246506787b77599b4cee046b3182d204f7"
+    },
+    {
+      "path": "scripts/certify_cc104_joint_response_rebase.py",
+      "bytes": 9754,
+      "sha256": "4494cb981860b0695838852ddc883412584c99e20ad3f5a5c55fd2054e0e0be5"
+    },
+    {
+      "path": "notes/data/RPB108_CC104_JOINT_RESPONSE_REBASE_20261010.json",
+      "bytes": 155709,
+      "sha256": "4910573e05984df746b449dfa8e3c6cb8ff181790d7c0fde1c00035f00462902"
+    },
+    {
+      "path": "notes/cc104-source/input_custody.json",
+      "bytes": 2978,
+      "sha256": "2a97e251f3df87c36e4e1d7e95051254ee20766a559d27996d0dcf13c50bc7bb"
+    }
+  ]
+}
