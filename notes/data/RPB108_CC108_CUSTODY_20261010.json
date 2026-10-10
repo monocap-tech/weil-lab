@@ -1,0 +1,31 @@
+{
+  "milestone": "CC108",
+  "parent": "ed28f6d022338b718774625519f090c7119bacda",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC108_DNE41_INTEGRATION.md",
+      "bytes": 1016,
+      "sha256": "cedf9bacfba61336107b5ac724b51648648bd05159dcb524c7941dc49419f7bd"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC108_DNE41_INTEGRATION_20261010.md",
+      "bytes": 6975,
+      "sha256": "2f7ac6409d904efdfaa1479ae663bec3d1bf581fef32a353a76427c8f8663569"
+    },
+    {
+      "path": "scripts/certify_cc108_dne41_integration.py",
+      "bytes": 6844,
+      "sha256": "45ab8fbb76062b08fdc45e4bca58a5fff6c10a4b052588dc9439949c88d8ccc5"
+    },
+    {
+      "path": "notes/data/RPB108_CC108_DNE41_INTEGRATION_20261010.json",
+      "bytes": 260981,
+      "sha256": "035eb9a3ed5c5dd9df150afe88f1294eecd84b676a79a18451f225d645f4d6bd"
+    },
+    {
+      "path": "notes/cc108-source/input_custody.json",
+      "bytes": 3151,
+      "sha256": "3589d76e8be7434c9e0f951bbbb1a359ec89f0290e4bca66346a487d6af1d465"
+    }
+  ]
+}

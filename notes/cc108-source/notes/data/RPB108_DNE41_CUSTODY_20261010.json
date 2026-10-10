@@ -1,0 +1,134 @@
+{
+  "stage": "DNE41",
+  "parent": "4cc32239ede79980bceac75226add04e167c659e",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "status": "VALIDATED",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE41_POSITIVE_SUBSPACE.md",
+      "bytes": 1265,
+      "stored_sha256": "3b8910dda838ecfa1bd1340ae0bf9e971ce864d25bf3549f7cfca3be228e85e0"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE41_POSITIVE_SUBSPACE_20261010.md",
+      "bytes": 5655,
+      "stored_sha256": "89814ede0f37139ae7ede06bbce2a846a9e230ff140369fa5c9a9a656d169a65"
+    },
+    {
+      "path": "scripts/certify_dne41_positive_subspace.py",
+      "bytes": 4154,
+      "stored_sha256": "39e5f5f55fad295909fe605e6c01cbad836302a519f8032e11c55efbb6d7c8ae"
+    },
+    {
+      "path": "scripts/validate_dne41_positive_subspace.py",
+      "bytes": 5367,
+      "stored_sha256": "1ebb1cfe38b96ecdb71ad897ad09c61f99164d0a275778d21b676fc84bed2bf7"
+    },
+    {
+      "path": "notes/data/RPB108_DNE41_EVEN_POSITIVE_SUBSPACE_20261010.json",
+      "bytes": 3963663,
+      "stored_sha256": "0b7b631d52cd7f1ac44961aeff18b71cb615065659c3c259122beeb3751641b1"
+    },
+    {
+      "path": "notes/data/RPB108_DNE41_ODD_POSITIVE_SUBSPACE_20261010.json",
+      "bytes": 4073028,
+      "stored_sha256": "e60181c4c0746d88342d6373c1cb78716c9a8639d4fe1fe439165426ceeefeb5"
+    },
+    {
+      "path": "notes/data/RPB108_DNE41_POSITIVE_SUBSPACE_VALIDATION_20261010.json",
+      "bytes": 11710,
+      "stored_sha256": "b8c8a2eb51508c5c15b74318ad56d4cfca720e1d4b93d6ab6674e6c03b999585"
+    }
+  ],
+  "reused_inputs": [
+    {
+      "path": "notes/data/RPB108_DNE40_SIGNED_SOURCE_VALIDATION_20261010.json",
+      "bytes": 12339,
+      "stored_sha256": "bd7cc047284ac73eda62d0113a986c5f7a260a628999ffc1aa83fced125ec0c2"
+    },
+    {
+      "path": "notes/data/RPB108_DNE39_HIGH_FLOOR_VALIDATION_20261010.json",
+      "bytes": 1344,
+      "stored_sha256": "320f05c200e77461ef0ea32e5fdc87198a5cf8e0ac041d76b27434d492dd4374"
+    },
+    {
+      "path": "scripts/materialize_dne40_joint_sources.py",
+      "bytes": 2604,
+      "stored_sha256": "f7bd14ce07b1308d08b94a92f7831a0aeb39e027ed5cbef7455378ed08da08f0"
+    },
+    {
+      "path": "scripts/certify_dne39_signed_comparison.py",
+      "bytes": 4379,
+      "stored_sha256": "beab6765ba1331edfbaa34d0814c8bca25aa296d245e07dde1fce5544cc7b487"
+    },
+    {
+      "path": "scripts/certify_dne32_native_remainder.py",
+      "bytes": 9520,
+      "stored_sha256": "b7e59ba341e1b9824cad2617df671daad3bbe9f4a5ce7f6f7bdbc2230d2507ae"
+    },
+    {
+      "path": "scripts/validate_dne34_source_block.py",
+      "bytes": 10824,
+      "stored_sha256": "0c5f2e7ec84b4cd5d1af0d6c1264d69da4c6feb794cff565a35ee5353a82bf98"
+    },
+    {
+      "path": "notes/data/RPB108_DNE40_EVEN_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "bytes": 1528245,
+      "stored_sha256": "8ac8a958ca5f463ca1c36f28a97e0bfce01f6fc1969a69a470a53fde8e479d09",
+      "decoded_sha256": "474c5e82cf26630b538fb65674834b77aa9db038a3df8ff3ecc4984fef766a56"
+    },
+    {
+      "path": "notes/data/RPB108_DNE40_EVEN_SIGNED_COMPARISON_20261010.json",
+      "bytes": 2251552,
+      "stored_sha256": "565349de5f16d1462ad766aa8ed06e5c5643d86fbea4a67905f883e51125cac4"
+    },
+    {
+      "path": "notes/data/RPB108_DNE40_ODD_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "bytes": 1518481,
+      "stored_sha256": "44cf8934bf2cd833fdf20860dbcd19264b1f477c5ac9eae12c24266c7a0200cf",
+      "decoded_sha256": "f779f98fe6179aa85630ba3ccd4b937356ea1f0a000b5984b8d0a101853ad494"
+    },
+    {
+      "path": "notes/data/RPB108_DNE40_ODD_SIGNED_COMPARISON_20261010.json",
+      "bytes": 2502370,
+      "stored_sha256": "57be36756a48e7a59909afca359e1eb3ac2081807c6f32aa93fe05e1119fc8c3"
+    }
+  ],
+  "new_exact_rational_checks": 9871,
+  "positive_retained_ranks": [
+    34,
+    35
+  ],
+  "negative_uniform_comparison_ranks": [
+    2,
+    1
+  ],
+  "uniform_comparison_inertia": [
+    [
+      34,
+      2,
+      0
+    ],
+    [
+      35,
+      1,
+      0
+    ]
+  ],
+  "prior_positive_retained_ranks": [
+    29,
+    33
+  ],
+  "prior_positive_spans_contained": true,
+  "all_high_positive_retained_dimension": 69,
+  "uncovered_retained_dimension": 43,
+  "all_high_physical_gap_guard": "1/1000000000000000000000000000000000000000",
+  "uniform_comparison_positive_dimensions_maximal": true,
+  "source_integrals_recomputed": false,
+  "high_floor_audit_rerun": false,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false,
+  "next_target": "strengthen original high response on the three unresolved comparison directions; forty additional retained dimensions remain outside the computed packet"
+}
