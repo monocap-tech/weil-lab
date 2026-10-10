@@ -1,0 +1,72 @@
+{
+  "stage": "DNE52",
+  "parent": "3e022ead0c400a5098946dc57da789592183bd5e",
+  "CC117_head": "8d3b66127af94d0dba06389b14579f5b79e9a6d6",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE52_CC117_UNION.md",
+      "bytes": 1559,
+      "sha256": "4a2799d58606b26a795724dee0269e0a6ad389f86394e5f14a781ec67c0d9b0b"
+    },
+    {
+      "path": "scripts/certify_dne52_cc117_ingestion.py",
+      "bytes": 5779,
+      "sha256": "cfc7e321d7a625cc7bca10f387234f7e6b09544ec3eb78841f08c0ba69d27edd"
+    },
+    {
+      "path": "scripts/validate_dne52_cc117_ingestion.py",
+      "bytes": 7476,
+      "sha256": "00380ccc65e74bfa1271c016d116310efc8e46c56a528a04c68c160f99aa541a"
+    },
+    {
+      "path": "notes/data/RPB108_DNE52_CC117_INGESTION_20261010.json",
+      "bytes": 275425,
+      "sha256": "fa118a93a72b784a52f414ae23e1551fa93bbe32f14847b348d143bb1aee51be"
+    },
+    {
+      "path": "notes/data/RPB108_DNE52_CC117_INGESTION_VALIDATION_20261010.json",
+      "bytes": 1915,
+      "sha256": "edae64432248c0f8f33af3e226f141e820decee6f95686b043f8fc88907dea3b"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE52_CC117_INGESTION_20261010.md",
+      "bytes": 7770,
+      "sha256": "2d40e6217806e44ee5b495dd457dc23211c64655405aef4f505702d7180ccdc5"
+    },
+    {
+      "path": "notes/dne52-cc117/notes/data/RPB108_CC117_COMPLETE_RESPONSE_GATE_20261010.json.gz.b64",
+      "bytes": 2386733,
+      "sha256": "20f34702f70371a9d4b5ec3402629cc3bc18a61296e83f093ff2032b63b2c0b5"
+    },
+    {
+      "path": "notes/dne52-cc117/notes/data/RPB108_CC117_COMPLETE_RESPONSE_VALIDATION_20261010.json",
+      "bytes": 10194,
+      "sha256": "033903870af041c7505ebcb21a3f4efa901d8fa99ff427c7b4a0b33d4b296c48"
+    },
+    {
+      "path": "notes/dne52-cc117/notes/data/RPB108_CC117_POSITIVE_PACKET_20261010.json",
+      "bytes": 783322,
+      "sha256": "f1a144c02c8bae8b5d4d2d84c016fbcd71372f9e013aae72ae665e6dea0f5f88"
+    },
+    {
+      "path": "notes/dne52-cc117/notes/data/RPB108_CC116_COMPLETE_RESPONSE_TRANSPORT_20261010.json.gz.b64",
+      "bytes": 4880753,
+      "sha256": "06277e84218d0ebec9e3cb9f81b7df9fdc709e14b94713de17c48b58c299d812"
+    },
+    {
+      "path": "notes/dne52-cc117/notes/data/RPB108_CC116_COMPLETE_RESPONSE_VALIDATION_20261010.json",
+      "bytes": 2937,
+      "sha256": "3c06b070c0b6549e222b5977bc6b18868bf5a854232c84f4a46cea742da966d2"
+    },
+    {
+      "path": "notes/dne52-cc117/notes/cc104-source/notes/data/RPB108_NF52_EVEN_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "bytes": 3484897,
+      "sha256": "cb53049cbba5dd0066ee281120ab8791ce178bef4e6ae7f27c4138f45be596aa"
+    },
+    {
+      "path": "notes/dne52-cc117/notes/data/RPB108_CC105_EVEN_PHYSICAL_PACKET_20261010.json.gz.b64",
+      "bytes": 288193,
+      "sha256": "3042940c778566a994c467fa437e04daae88cafb137ca3470d17baf3cc4c22a3"
+    }
+  ]
+}
