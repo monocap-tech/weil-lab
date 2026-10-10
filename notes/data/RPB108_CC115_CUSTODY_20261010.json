@@ -1,0 +1,154 @@
+{
+  "milestone": "CC115",
+  "parent": "5d625ef958501d7b8f84a295d279d86feef03f25",
+  "read_only_DNE48": "514386d14dcb1dc1bb2d469bc82a728d8de4b12d",
+  "read_only_Native_NF58": "3a0233c71ba16eb2ca59947f32789ac5752485da",
+  "completed_corrected_floor": "647/1000",
+  "completed_retained_rank": 88,
+  "uncovered_retained_dimension": 24,
+  "completed_new_exterior_source_integrations": 0,
+  "exterior_packet_dimension_per_parity": 45,
+  "exterior_source_and_response_status": "PREPARATION_ONLY",
+  "interrupted_runs": [
+    {
+      "name": "cc115-even-primary.log",
+      "partial_log_sha256": "c49d7f98a2c7213389a958216093b8168d2fee9c76b3a9224da26a40785646d9",
+      "last_line": "block source even 37 444.5",
+      "complete_source_certificate": false
+    },
+    {
+      "name": "cc115-even-replay.log",
+      "partial_log_sha256": "ccc17880a91dd7fe3cafecf94bd56dc7dbd07a5a8eb642726f27341246cce83c",
+      "last_line": "block source even 28 433.1",
+      "complete_source_certificate": false
+    },
+    {
+      "name": "cc115-odd-primary.log",
+      "partial_log_sha256": "f144f36fcf086346635b539595a31cc8dd9158c3922aeb0c7566795d240a0f8b",
+      "last_line": "block source odd 37 440.0",
+      "complete_source_certificate": false
+    },
+    {
+      "name": "cc115-odd-replay.log",
+      "partial_log_sha256": "795b999e2d02435d141498428ffffb0cc32cc1bd47bf3c0eb1804fea6974455f",
+      "last_line": "block source odd 29 443.1",
+      "complete_source_certificate": false
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC115_EXTERIOR_COLUMN.md",
+      "stored_sha256": "5f1ca8cf83ed0d4d07d3f74d2177fa67e23feccd83c545cc808b3bbee20d23e8",
+      "bytes": 1093
+    },
+    {
+      "path": "scripts/materialize_cc115_exterior_packet.py",
+      "stored_sha256": "3477f7aa693c71dcfeff55cd126450005bae0c838c24af503811f2615f8c7e18",
+      "bytes": 2721
+    },
+    {
+      "path": "scripts/certify_cc115_exterior_source_star.py",
+      "stored_sha256": "0de26884cd1a7e4d59b430c9c015c040c31e8e0b654529da557ea61e7051a3c0",
+      "bytes": 11562
+    },
+    {
+      "path": "scripts/validate_cc115_exterior_source_star.py",
+      "stored_sha256": "6630a4cd35679c178b35c1780dee52780b46461aea7623c9a4e85069e01ee3bd",
+      "bytes": 5064
+    },
+    {
+      "path": "scripts/cc115_response_transport.py",
+      "stored_sha256": "1462ab0bfe85fdcdfdd842e8eaf68c68e09d72cd688ca941eb50d5b6907c9d2e",
+      "bytes": 4161
+    },
+    {
+      "path": "scripts/certify_cc115_corrected_floor_response.py",
+      "stored_sha256": "f4f1c4c451134903479b7cbf57cef2cd813fc6fdd4c8b104d04cbc71229f2148",
+      "bytes": 6621
+    },
+    {
+      "path": "scripts/certify_cc115_exterior_response.py",
+      "stored_sha256": "b2143be5ee6d9063933567af3bdcf4062bfa09fc015227eb40805a7b219a3abb",
+      "bytes": 6474
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC115_FLOOR_BINDING_CORRECTION_20261010.md",
+      "stored_sha256": "53d49ceba2ae1ce5b9797bd6e6986843524d94f1a4632f99f62acc9332c7524b",
+      "bytes": 8523
+    },
+    {
+      "path": "notes/data/RPB108_CC115_EVEN_PHYSICAL_PACKET_20261010.json.gz.b64",
+      "stored_sha256": "9f06ef4882b4c8d6c396c1af61a597d69169792907d02b867fbdeffda1512646",
+      "bytes": 1590805,
+      "decoded_sha256": "e37fd7fe96410bcf9619c5e9dac32fc4912556522de050082063e25bf64af9ad"
+    },
+    {
+      "path": "notes/data/RPB108_CC115_ODD_PHYSICAL_PACKET_20261010.json.gz.b64",
+      "stored_sha256": "001278c902d52a3e579a2fc0a431f7831818a8759f8e3a38ced0f91c707147f5",
+      "bytes": 1555081,
+      "decoded_sha256": "6e749da5433dce0714283a1a00d794080d3fb08cc0b693f9aa8326065194bfc4"
+    },
+    {
+      "path": "notes/data/RPB108_CC115_CORRECTED_647_RESPONSE_20261010.json",
+      "stored_sha256": "cf9fe6676d151e5dcf30f52150329d57f37223fd6dbd52d93443a1ef365ecfed",
+      "bytes": 975038
+    },
+    {
+      "path": "notes/data/RPB108_CC115_CORRECTED_647_REPLAY_20261010.json",
+      "stored_sha256": "0612b5bdd71694975c6d6651a30c91d1f36939d101d4a52a7171b30a5c94546d",
+      "bytes": 975245
+    },
+    {
+      "path": "notes/data/RPB108_CC113_RESPONSE_AT_603_20261010.json",
+      "stored_sha256": "9df8638fbb34ddbf85857a8aa0eb7dcb11576703074ce10d375b50243ce33ee4",
+      "bytes": 855648
+    },
+    {
+      "path": "notes/data/RPB108_CC113_RESPONSE_AT_647_20261010.json",
+      "stored_sha256": "e1c01c8291f6f0e4d5a2713437aa7e509b7e85f497aa1c9267c06ea5fb131d35",
+      "bytes": 855556
+    },
+    {
+      "path": "notes/data/RPB108_CC113_FRESH_HIGH_FLOOR_AUDIT_20261010.json",
+      "stored_sha256": "74de4b698baea432f1de363ef2fd8f71ae0f34324756ef120526bb24f7ad34eb",
+      "bytes": 2369
+    },
+    {
+      "path": "notes/data/RPB108_CC112_PHYSICAL_RESPONSE_TRANSPORT_20261010.json.gz.b64",
+      "stored_sha256": "e1fa3c6b0e2f03fd1560a1534cfefb6444949f0d9963c4577bebf28b73841cb5",
+      "bytes": 3663305
+    },
+    {
+      "path": "notes/data/RPB108_CC113_EVEN_SOURCE_REPLAY_20261010.json",
+      "stored_sha256": "06cabb5f8a871999ab5d752a146669751ebc6639835acaa1e0cf91d61339e0f8",
+      "bytes": 502512
+    },
+    {
+      "path": "notes/cc104-source/notes/data/RPB108_NF52_EVEN_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "cb53049cbba5dd0066ee281120ab8791ce178bef4e6ae7f27c4138f45be596aa",
+      "bytes": 3484897
+    },
+    {
+      "path": "notes/cc110-source/notes/data/RPB108_DNE44_EVEN_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "stored_sha256": "548c25af6eff87c3ab5a02eabb6432a33acdf535f1be08e376bed8d6febb8f3d",
+      "bytes": 2198077
+    },
+    {
+      "path": "notes/data/RPB108_CC113_ODD_SOURCE_REPLAY_20261010.json",
+      "stored_sha256": "10ab22f2babc6fdcef12f25aece7657fc786b6a9724784e5b8a6e423c362c76f",
+      "bytes": 459908
+    },
+    {
+      "path": "notes/cc104-source/notes/data/RPB108_NF52_ODD_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "66fb233f0fb3a0547d56f7e4da59b367ccd65c12960733040ae8bdefbcbd9c6d",
+      "bytes": 3369345
+    },
+    {
+      "path": "notes/cc110-source/notes/data/RPB108_DNE44_ODD_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "stored_sha256": "df1ce9a1d1ae1774d7181fba2870d3d6f75ac8750f30c94946d2ae4e30121460",
+      "bytes": 2182297
+    }
+  ],
+  "historical_records_edited": false,
+  "status": "PASS"
+}
