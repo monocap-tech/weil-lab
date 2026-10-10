@@ -1,0 +1,105 @@
+{
+  "milestone": "CC116",
+  "parent": "31d3052d312b2c017d452df99d07376cb7d4f47d",
+  "read_only_DNE49": "bb68642b1384d50d6b9fea517db9691e924fe5a5",
+  "latest_recovered_DNE50_preparation": "fd0434979302083c01f9f20cc30fae42f62211d7",
+  "read_only_Native_NF59": "a8f814c8c1a40dc6e6aba7166b47793198f94ad8",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC116_COMPLETE_RESPONSE_TRANSPORT.md",
+      "stored_sha256": "18117a395536968381a871d1aec5d0de853982bccd24d306e35f481fa7101f64",
+      "bytes": 1397
+    },
+    {
+      "path": "scripts/materialize_cc116_complete_packet.py",
+      "stored_sha256": "914b6e45d662a2acb9b74fe69d51e03103a91a1f8c6a7a6e66f8aa24173f4556",
+      "bytes": 2721
+    },
+    {
+      "path": "scripts/cc116_response_transport.py",
+      "stored_sha256": "7f5612d895d6dcaaac1812abb4bc19591cb060ef4a2ac8a1733a5a277455d00a",
+      "bytes": 4201
+    },
+    {
+      "path": "scripts/certify_cc116_complete_response_transport.py",
+      "stored_sha256": "bce4da4300cf7dbe804bbabb326e9eb9ad02c59bd4915a5e6215bb5de7a0dccd",
+      "bytes": 5757
+    },
+    {
+      "path": "scripts/validate_cc116_complete_response_transport.py",
+      "stored_sha256": "2eee9686662db156d8bd84366fb2eda319e094c895a969e5c2da3f320c2efcac",
+      "bytes": 5222
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC116_COMPLETE_RESPONSE_TRANSPORT_20261010.md",
+      "stored_sha256": "3847c73c76abd36775137b16164d88826accbfcc3831359fd7671c0f9c89e227",
+      "bytes": 8851
+    },
+    {
+      "path": "notes/data/RPB108_CC116_COMPLETE_RESPONSE_TRANSPORT_20261010.json.gz.b64",
+      "stored_sha256": "06277e84218d0ebec9e3cb9f81b7df9fdc709e14b94713de17c48b58c299d812",
+      "bytes": 4880753
+    },
+    {
+      "path": "notes/data/RPB108_CC116_COMPLETE_RESPONSE_VALIDATION_20261010.json",
+      "stored_sha256": "3c06b070c0b6549e222b5977bc6b18868bf5a854232c84f4a46cea742da966d2",
+      "bytes": 2937
+    },
+    {
+      "path": "notes/cc116-source/notes/data/RPB108_DNE49_COMPLETE_PACKET_GATE_20261010.json.gz.b64",
+      "stored_sha256": "015915c825688b41806eefc4163e5c70a16286d65e97bc2100438e92be8571bd",
+      "bytes": 5355405
+    },
+    {
+      "path": "notes/cc116-source/notes/data/RPB108_DNE49_COMPLETE_PACKET_VALIDATION_20261010.json",
+      "stored_sha256": "eb073a72d76e77f06e73bc8c1f84788a6117474e8993592359f45f9c2a08338a",
+      "bytes": 1970
+    },
+    {
+      "path": "notes/data/RPB108_CC115_CORRECTED_647_RESPONSE_20261010.json",
+      "stored_sha256": "cf9fe6676d151e5dcf30f52150329d57f37223fd6dbd52d93443a1ef365ecfed",
+      "bytes": 975038
+    },
+    {
+      "path": "notes/data/RPB108_CC113_FRESH_HIGH_FLOOR_AUDIT_20261010.json",
+      "stored_sha256": "74de4b698baea432f1de363ef2fd8f71ae0f34324756ef120526bb24f7ad34eb",
+      "bytes": 2369
+    },
+    {
+      "path": "notes/cc104-source/notes/data/RPB108_NF47_FLOOR_TRANSPORT_CERTIFICATE_20261009.json",
+      "stored_sha256": "fd1b2e50aae2a390fd543ccdc8463466976f98523ea06cb413eee25c020bfba7",
+      "bytes": 304906
+    },
+    {
+      "path": "notes/cc104-source/notes/data/RPB108_NF52_EVEN_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "cb53049cbba5dd0066ee281120ab8791ce178bef4e6ae7f27c4138f45be596aa",
+      "bytes": 3484897
+    },
+    {
+      "path": "notes/data/RPB108_CC113_EVEN_SOURCE_REPLAY_20261010.json",
+      "stored_sha256": "06cabb5f8a871999ab5d752a146669751ebc6639835acaa1e0cf91d61339e0f8",
+      "bytes": 502512
+    },
+    {
+      "path": "notes/cc104-source/notes/data/RPB108_NF52_ODD_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "66fb233f0fb3a0547d56f7e4da59b367ccd65c12960733040ae8bdefbcbd9c6d",
+      "bytes": 3369345
+    },
+    {
+      "path": "notes/data/RPB108_CC113_ODD_SOURCE_REPLAY_20261010.json",
+      "stored_sha256": "10ab22f2babc6fdcef12f25aece7657fc786b6a9724784e5b8a6e423c362c76f",
+      "bytes": 459908
+    }
+  ],
+  "full_chart_rank": 112,
+  "complete_response_entries_paid": 1176,
+  "new_response_entries": 252,
+  "new_source_integrations": 0,
+  "certified_finite_inverse_evaluations": 0,
+  "positive_all_high_retained_rank": 88,
+  "uncovered_retained_dimension": 24,
+  "complete_original_G56_certified": false,
+  "whole_response_gate_evaluated": false,
+  "historical_files_edited": false,
+  "status": "PASS"
+}
