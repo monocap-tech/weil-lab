@@ -1,0 +1,26 @@
+{
+  "stage": "DNE53",
+  "status": "PASS",
+  "exact_rational_checks": 19825,
+  "certificate_path": "notes/data/RPB108_DNE53_EVEN_RESPONSE_20261010.json.gz.b64",
+  "certificate_sha256": "f5607cec3cd39543feff7739fe3e983ff0275df8378cb48990cb16fed3732870",
+  "input_sha256": [
+    "3295a027945fb59d8bc191dff74405d450a65f940dd0e77f9823441c07631c3d",
+    "892925737afa22f9856ad6d5d20903c052368695cec50cf32802cdd89a2e63be",
+    "9eb471fa4e5b0cef4c5f25a430794533ff7f6e461018c5136f315daa6e2dfdc7",
+    "fa118a93a72b784a52f414ae23e1551fa93bbe32f14847b348d143bb1aee51be",
+    "edae64432248c0f8f33af3e226f141e820decee6f95686b043f8fc88907dea3b",
+    "f555f71564358600b7364ae7ebfdefe8c759bc45ccb7345689e735d8c83343c3",
+    "eb073a72d76e77f06e73bc8c1f84788a6117474e8993592359f45f9c2a08338a"
+  ],
+  "trial_dimension": 6,
+  "source_dimension": 62,
+  "full_even_response_budget_passed": true,
+  "actual_certified_all_high_retained_dimension": 112,
+  "uncovered_retained_dimension": 0,
+  "combined_physical_gap_lower": "1/1000000000000000000000000000000000000000",
+  "no_coefficient_matrix_J_closes_full_even_budget": false,
+  "whole_aperture_positive": true,
+  "RH": false,
+  "Lean": false
+}
