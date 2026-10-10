@@ -1,0 +1,57 @@
+{
+  "milestone": "CC106",
+  "parent": "6d5109fcd50d9d280701d03d4ff16d6c9763ac02",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC106_EIGHTH_PRIME_FLOOR.md",
+      "bytes": 1069,
+      "stored_sha256": "5959d1da8b5c9a800c7436a13788e3480ec86552d3e424710394d8fd920f6fbe"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC106_EIGHTH_PRIME_FLOOR_20261010.md",
+      "bytes": 6479,
+      "stored_sha256": "622d7fac06d409790238a489495940a9717d35b465f8a6ba39ce8a21ce80c2e5"
+    },
+    {
+      "path": "scripts/certify_cc106_activated_response.py",
+      "bytes": 3304,
+      "stored_sha256": "da439a166495411c11ceb3f6ae2de379375aff222e8e7f90aae250bb80ea7600"
+    },
+    {
+      "path": "scripts/certify_cc106_prime_schur.py",
+      "bytes": 4961,
+      "stored_sha256": "5dccdb8022d5600f1a16124a26932c5b6a50e5c5213b92e5026fad9b459ff628"
+    },
+    {
+      "path": "scripts/validate_cc106_high_floor.py",
+      "bytes": 5895,
+      "stored_sha256": "5989c317317226f54ce148dd0b97e52bc74d7bd36db6271ddb03ad1dd73644a5"
+    },
+    {
+      "path": "notes/data/RPB108_CC106_PRIME_SCHUR_PRIMARY_20261010.json.gz.b64",
+      "bytes": 579925,
+      "stored_sha256": "70e8f42cac47c324144266c6efbdc91bcb02c7852a5b6f4c9aa58ef800565864",
+      "decoded_sha256": "840c0cc00fd62bea6ef21510d7b026466461933d25743f063ccc907a5f29823d"
+    },
+    {
+      "path": "notes/data/RPB108_CC106_PRIME_SCHUR_REPLAY_20261010.json.gz.b64",
+      "bytes": 736145,
+      "stored_sha256": "742035545832de6b8cad1d9716c288ff651099db753ee1586725bc2dc76697db",
+      "decoded_sha256": "69c41113e68eb4a28a8a0c88b6bc79aff865f4a31891e8cf35104e8d69e72143"
+    },
+    {
+      "path": "notes/data/RPB108_CC106_HIGH_FLOOR_VALIDATION_20261010.json",
+      "bytes": 1368,
+      "stored_sha256": "7c2473e5079d25f65855a58544b1a3312a10ab0ad5ed0c3bb5175f9423d22deb"
+    },
+    {
+      "path": "notes/data/RPB108_CC106_ACTIVATED_RESPONSE_20261010.json",
+      "bytes": 105391,
+      "stored_sha256": "86582f0fae2a5cc1e2132f8ae7cbeb9dc40e5fbdb019b824762bbec7abf07e19"
+    }
+  ],
+  "inherited_helper": {
+    "path": "notes/cc103-source/scripts/dne17_nf10_complement_input.py",
+    "sha256": "207037efc8a824f40a8585f18b63c4e1e92270cd6a41d9414d577ae2510f24b1"
+  }
+}
