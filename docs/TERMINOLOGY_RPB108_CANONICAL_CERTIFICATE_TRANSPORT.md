@@ -44,3 +44,10 @@ identified by this namespace.
 - **Whole weak limit attachment:** convergence of physical sources in L2
   together with convergence of their whole test pairings to the canonical
   metric. The limit then represents every test pairing.
+
+## LF06 additive definition
+
+- **Damped logarithm integrand:** `exp(-b*t) * (1-exp(-s*t))/t` for
+  positive damping b and nonnegative frequency s. Its improper integral
+  over positive t is intended to equal `log((b+s)/b)`. LF06 proves an
+  exponential domination bound and submits the Frullani specialization.
