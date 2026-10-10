@@ -19,6 +19,9 @@ def run(paths,output):
   nonlocal checks
   assert v;checks+=1
  def encloses(a,b):check(a[0]<=b[0]<=b[1]<=a[1])
+ import ast
+ def function_ast(path,name):return ast.dump(next(n for n in ast.parse(Path(path).read_text()).body if isinstance(n,ast.FunctionDef) and n.name==name),include_attributes=False)
+ check(function_ast('scripts/certify_dne44_joint_source_Gram.py','packed_conv')==function_ast('scripts/certify_dne40_joint_source_Gram.py','packed_conv'))
  for ap,bp in zip(paths[::2],paths[1::2]):
   a,ah=read(ap);b,bh=read(bp);par=b['parity'];cert,ch=read(b['certificate_path']);pp=output+'.packet';materialize(b['certificate_path'],pp);packet,ph=read(pp);Path(pp).unlink();cols=packet['columns'];count=44;check(len(cols)==44);check(a['columns']==b['columns']==list(range(count)));check(a['regular_order']==360 and b['regular_order']==400);check(a['precision']==600 and b['precision']==620);check(b['column_labels']==[f'TS{i}' for i in range(4)]+[f'X{i}' for i in range(40)])
   # Independent native border reconstruction from original As, Ps and frozen J.

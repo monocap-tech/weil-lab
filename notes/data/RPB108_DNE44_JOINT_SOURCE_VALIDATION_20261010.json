@@ -1,0 +1,33 @@
+{
+  "stage": "DNE44",
+  "status": "PASS",
+  "exact_rational_checks": 83180,
+  "high_floor_validation_sha256": "c2d4db3680774de7cd31064c118836b5158cd43f237ae01a96bebc9d6b4ecb78",
+  "prior_source_validation_sha256": "bd7cc047284ac73eda62d0113a986c5f7a260a628999ffc1aa83fced125ec0c2",
+  "rows": [
+    {
+      "parity": "even",
+      "primary_sha256": "dbbba3f946384fe8b35dc2fdf2fe27c7b0a4fb6d94a2f7544d6a44be1f713538",
+      "replay_sha256": "04518e3f40670ab9d8071a020edb4b30cf9357f2ed8ef96a4f21365c4a07e417",
+      "complete_joint_source_entries": 1936,
+      "reused_joint_dimension": 36,
+      "fresh_joint_dimension": 8,
+      "packet_sha256": "b26bf0d20653cbe6d428620bc08d940ece2c94fbed3bce9dbbf85136efc641ac"
+    },
+    {
+      "parity": "odd",
+      "primary_sha256": "a21a0c9172b49681346a1d8427519cebe8b662c7e4a8ed73125c68c4b6e9a48a",
+      "replay_sha256": "991d2480c5a59c19f964260bdf2e29e77a165091d408de2fb397195bbb294162",
+      "complete_joint_source_entries": 1936,
+      "reused_joint_dimension": 36,
+      "fresh_joint_dimension": 8,
+      "packet_sha256": "2f1e0ad3c28aadfb66bd7b8ff90cd56d5effac002fab2e03feeddf6689525be0"
+    }
+  ],
+  "complete_joint_source_Grams_certified": true,
+  "complete_remaining_source_Gram_certified": false,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
