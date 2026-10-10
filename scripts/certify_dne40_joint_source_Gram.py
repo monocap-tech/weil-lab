@@ -79,7 +79,17 @@ def run(parity,count,output):
    if j<28:continue
    pp=packed_conv(rps[i],rps[j]);gram[i][j]=sum((I(F(pp[k],gridpoly**2))*L2[k//2]/4 for k in range(0,len(pp),2)),Z)
  shifts=[{(n,s):d['shift'](p,s*ells[n]) for n in active for s in (-1,1)} for p in ps]
+ checkpoint_path=Path(output+'.checkpoint.json');checkpoint_identity=dict(parity=parity,count=count,order=d['N'],precision=d['P'],packet_sha256=ph,reuse_sha256=rh,producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest());completed=-1
+ if checkpoint_path.exists():
+  saved=json.loads(checkpoint_path.read_text());assert saved['identity']==checkpoint_identity;completed=saved['completed_panel'];assert 0<=completed<7
+  gram=[[I(*x) for x in row] for row in saved['gram']];moments=[[I(*x) for x in row] for row in saved['moments']];panel_errors=saved['panel_errors'];assert len(gram)==count and all(len(row)==count for row in gram);assert len(moments)==count and all(len(row)==maxn+1 for row in moments);assert len(panel_errors)==count and all(len(row)==completed+1 for row in panel_errors)
+  print('resumed completed panel',parity,completed,flush=True)
+ def save_checkpoint(panel):
+  def pairs(rows):return [[[str(x.lo),str(x.hi)] for x in row] for row in rows]
+  payload=dict(identity=checkpoint_identity,completed_panel=panel,gram=pairs(gram),moments=pairs(moments),panel_errors=panel_errors)
+  temp=checkpoint_path.with_suffix('.tmp');temp.write_text(json.dumps(payload));temp.replace(checkpoint_path)
  for panel,(l,h) in enumerate(zip(cuts,cuts[1:])):
+  if panel<=completed:continue
   mid=(l+h)/2;pm=[(h**(k+1)-l**(k+1))/(k+1) for k in range(max(map(len,us))+maxn)];rus=[]
   for i,(p,u) in enumerate(zip(ps,us)):
    uj=list(u)
@@ -95,7 +105,8 @@ def run(parity,count,output):
     if j<28:continue
     uu=packed_conv(rus[i],rus[j]);up=packed_conv(rus[i],rps[j]);pu=packed_conv(rus[j],rps[i]);assert len(up)==len(pu);mixed=[x+y for x,y in zip(up,pu)]
     gram[i][j]=gram[i][j]+d['polyint']([I(F(x,gridpoly**2)) for x in uu],l,h)-sum((I(F(x,2*gridpoly**2))*(logs[k,panel+1]-logs[k,panel]) for k,x in enumerate(mixed)),Z)
-  print('block panel',parity,panel,round(time.time()-start,1),flush=True)
+  save_checkpoint(panel)
+  print('block panel',parity,panel,round(time.time()-start,1),'checkpoint saved',flush=True)
  coords=[[2*sum((x*moments[i][k] for k,x in enumerate(bases[n])),Z) for n in range(low,112,2)] for i in range(count)]
  grid=10**100
  def floor(x):return F((F(x)*grid).__floor__(),grid)
