@@ -1,0 +1,55 @@
+{
+  "read_only_DNE": "5ec8aeeb73fa67eff670e0716a1a752f5d3e64b3",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE43_HIGH_TARGET.md",
+      "stored_sha256": "9bacf8e2a4896c5963f6466088efac2ce2e7d22a8af071a29d914dbe2ff8d3dd"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE43_HIGH_TARGET_20261010.md",
+      "stored_sha256": "2e88d6a0b35a5fbe8822c20e283988d9f2beb8af12b9a2596b2e840f50561dc4"
+    },
+    {
+      "path": "notes/data/RPB108_DNE43_CUSTODY_20261010.json",
+      "stored_sha256": "c8fcf28ff4ecc09110f998ea9fd8f7a9653ac16b787681d092386356e2577451"
+    },
+    {
+      "path": "notes/data/RPB108_DNE43_FULL_PACKET_VALIDATION_20261010.json",
+      "stored_sha256": "e1670fd331e094110b2d15dc22f2687e4da7f1225592e73050d034b134f042c2"
+    },
+    {
+      "path": "notes/data/RPB108_DNE43_HIGH_FLOOR_VALIDATION_20261010.json",
+      "stored_sha256": "c2d4db3680774de7cd31064c118836b5158cd43f237ae01a96bebc9d6b4ecb78"
+    },
+    {
+      "path": "notes/data/RPB108_DNE43_PRIME_SCHUR_20261010.json.gz.b64",
+      "stored_sha256": "db6769f5ffc130ccc6d7da91a102bda2c89e589a16f23992aa20a9c2572949a8",
+      "decoded_sha256": "6561bf9bc95c8f207cc7d01cef4c0bf02c40f75bd87c287975eb58e48e7b5287"
+    },
+    {
+      "path": "notes/data/RPB108_DNE43_PRIME_SCHUR_REPLAY_20261010.json.gz.b64",
+      "stored_sha256": "75c611b14dbbc9618e7bf1b3a1048253b5d2152030736947938e985be6d19501",
+      "decoded_sha256": "b4768fe993e887244c4405ff644b042fc88f9fbc51537a33fcd07f95711d2a93"
+    },
+    {
+      "path": "scripts/__pycache__/dne17_nf10_complement_input.cpython-312.pyc",
+      "stored_sha256": "c5ca865b39c34175cb58e3f8f019e718faa4804c53b8de90546beefd011b4747"
+    },
+    {
+      "path": "scripts/certify_dne43_prime_schur.py",
+      "stored_sha256": "c91af0f60061f6e37c5925ed9bbab6d99565711f10e4fec82599b00207a14b87"
+    },
+    {
+      "path": "scripts/dne17_nf10_complement_input.py",
+      "stored_sha256": "207037efc8a824f40a8585f18b63c4e1e92270cd6a41d9414d577ae2510f24b1"
+    },
+    {
+      "path": "scripts/validate_dne43_full_packet_transfer.py",
+      "stored_sha256": "2a225feb4ae1f8c6cc1e0657ca30f60ccbdd854a75b08a18d61643e477b2e1d3"
+    },
+    {
+      "path": "scripts/validate_dne43_high_floor.py",
+      "stored_sha256": "0b1d915c8fe8ffb2ea95c8d0ef5c53b54a31af9b939f6be0161db5107aca29d1"
+    }
+  ]
+}
