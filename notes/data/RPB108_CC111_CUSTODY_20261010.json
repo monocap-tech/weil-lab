@@ -1,0 +1,26 @@
+{
+  "milestone": "CC111",
+  "parent": "9c66aec88a55cee9dfa6a9e1c699dc280e9ed799",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC111_RESPONSE_DEFICIT_GATE.md",
+      "bytes": 1258,
+      "sha256": "3c351d9066a1448da8d15f15698561c33c1ba5751a7323875fa102054da64d18"
+    },
+    {
+      "path": "scripts/certify_cc111_response_deficit_gate.py",
+      "bytes": 5356,
+      "sha256": "077ff15e8cadc79ea3d83f29d8398e8f9066f5858d89f0c64a43e67a6b3fb13d"
+    },
+    {
+      "path": "notes/data/RPB108_CC111_RESPONSE_DEFICIT_GATE_20261010.json",
+      "bytes": 420247,
+      "sha256": "fd2dd52a37c8cdcedccca92b899ddee8261437dbe5b31998b4d8430dac2acb74"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC111_RESPONSE_DEFICIT_GATE_20261010.md",
+      "bytes": 6556,
+      "sha256": "37d1dae7072f2bf0af9ae8fca2d588df641481710991bbb194ee8a44563cc7cd"
+    }
+  ]
+}
