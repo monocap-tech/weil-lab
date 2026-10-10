@@ -1,0 +1,51 @@
+{
+  "stage": "DNE42",
+  "parent": "bae3aa15f5db9beb87feeddf36c33b6d03f9534a",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE42_UNIFORM_FLOOR_TARGET.md",
+      "sha256": "05eb5afdf1b7984506cef5f1827b1b7298f56a5ab1c8c5f4dce6e3aafa282f45",
+      "bytes": 977
+    },
+    {
+      "path": "scripts/certify_dne42_uniform_floor_target.py",
+      "sha256": "fb9eb51a4ef6607eee498a61b47e7a3d05ff317406d6fcfe9492f871eacfa4d4",
+      "bytes": 2806
+    },
+    {
+      "path": "scripts/validate_dne42_uniform_floor_target.py",
+      "sha256": "8a5510c1c87ca16c01b2724803d186a8aebf443b2b655609e437fdbdd8474530",
+      "bytes": 4927
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE42_UNIFORM_FLOOR_TARGET_20261010.md",
+      "sha256": "77d8a9aed37b0bc8b89995e57a7a7d6d1baa8d4270c67a36de1a17a81b85baaa",
+      "bytes": 5604
+    },
+    {
+      "path": "notes/data/RPB108_DNE42_EVEN_UNIFORM_FLOOR_TARGET_20261010.json",
+      "sha256": "2e0eb6f5a7319972854a26aaeb527e5462a1486357c0975870929231d17d9d08",
+      "bytes": 1495506
+    },
+    {
+      "path": "notes/data/RPB108_DNE42_ODD_UNIFORM_FLOOR_TARGET_20261010.json",
+      "sha256": "88967d4600422301b021bc1e94bb8dd2485910096a6ace6169bfadfc40dc6ecb",
+      "bytes": 1490337
+    },
+    {
+      "path": "notes/data/RPB108_DNE42_UNIFORM_FLOOR_TARGET_VALIDATION_20261010.json",
+      "sha256": "d8054e6346d6f37204d45a9a5ee68b2c9f9b904ecf805724d69fc5e0b43447bb",
+      "bytes": 11782
+    }
+  ],
+  "validation_status": "PASS",
+  "new_exact_rational_checks": 15907,
+  "actual_certified_retained_dimension": 69,
+  "conditional_retained_dimension_if_target_established": 72,
+  "target_high_floor_established": false,
+  "source_integrals_recomputed": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
