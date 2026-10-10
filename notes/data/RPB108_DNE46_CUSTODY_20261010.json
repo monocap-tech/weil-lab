@@ -1,0 +1,116 @@
+{
+  "stage": "DNE46",
+  "parent": "a9eda40b874163be980da517d3dda87942f83533",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE46_REFINED_ARCH_SHELL.md",
+      "sha256": "bb723c2a2a6d78b631b5b7cb5eb913b3a0025a40478f4caaf54550865d22430e",
+      "bytes": 1213
+    },
+    {
+      "path": "scripts/certify_dne46_refined_arch_shell.py",
+      "sha256": "09162e3a5c152d9ff5a36552ff3483f37877302139ad927d3f325bea1e3c1b2b",
+      "bytes": 2180
+    },
+    {
+      "path": "scripts/validate_dne46_refined_arch_shell.py",
+      "sha256": "56411a9ea1c11e1f49724baa0e2b8eba031e614e26629f9ce262295f17d666ee",
+      "bytes": 4766
+    },
+    {
+      "path": "scripts/certify_dne46_positive_subspace.py",
+      "sha256": "6070c60f02fe0db91b1fa7e9ada15982273cf0ab8e3b797dd8cf695bbb429a31",
+      "bytes": 4647
+    },
+    {
+      "path": "scripts/validate_dne46_positive_subspace.py",
+      "sha256": "06208982dba030f5f858dd3dfd8fe2854122bbd66a1d0b561242f1fb615aa34b",
+      "bytes": 6138
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE46_REFINED_ARCH_SHELL_20261010.md",
+      "sha256": "714e5a2ed0406aaab5cf6b053130f32268bd930c1285e6422c8a5ef2daa2f7b3",
+      "bytes": 7568
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_REFINED_ARCH_SHELL_20261010.json",
+      "sha256": "e6aab94e3582eb158524103c72902d8d199f6fdd4313a5c1f1bde4c6cee1addc",
+      "bytes": 13768
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_HIGH_FLOOR_VALIDATION_20261010.json",
+      "sha256": "f555f71564358600b7364ae7ebfdefe8c759bc45ccb7345689e735d8c83343c3",
+      "bytes": 2353
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_EVEN_POSITIVE_SUBSPACE_20261010.json.gz.b64",
+      "sha256": "337990c94bbd6db3cbb325716bf296cf2a597fde678891093df7c6265c10360d",
+      "bytes": 2406953
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_ODD_POSITIVE_SUBSPACE_20261010.json.gz.b64",
+      "sha256": "9c6614283e41b90ae79f95aec681a86ceac6b928d9d99b90f5ce9843b6b24fe8",
+      "bytes": 2414105
+    },
+    {
+      "path": "notes/data/RPB108_DNE46_POSITIVE_SUBSPACE_VALIDATION_20261010.json",
+      "sha256": "110783b18f6fd07020c7b91927403dc3065b796af067791dfaeb85f1ffca3b85",
+      "bytes": 12239
+    }
+  ],
+  "inherited_script_dependencies": [
+    {
+      "path": "scripts/dne17_nf10_complement_input.py",
+      "sha256": "207037efc8a824f40a8585f18b63c4e1e92270cd6a41d9414d577ae2510f24b1",
+      "bytes": 6249
+    },
+    {
+      "path": "scripts/validate_dne43_high_floor.py",
+      "sha256": "0b1d915c8fe8ffb2ea95c8d0ef5c53b54a31af9b939f6be0161db5107aca29d1",
+      "bytes": 6053
+    },
+    {
+      "path": "scripts/certify_dne39_signed_comparison.py",
+      "sha256": "beab6765ba1331edfbaa34d0814c8bca25aa296d245e07dde1fce5544cc7b487",
+      "bytes": 4379
+    },
+    {
+      "path": "scripts/certify_dne32_native_remainder.py",
+      "sha256": "b7e59ba341e1b9824cad2617df671daad3bbe9f4a5ce7f6f7bdbc2230d2507ae",
+      "bytes": 9520
+    },
+    {
+      "path": "scripts/certify_dne44_positive_subspace.py",
+      "sha256": "7c7c6beb8cbfb3f593295666f8a4e79514f46fc2b102dc7c96ba830ba3dfd1ef",
+      "bytes": 4388
+    },
+    {
+      "path": "scripts/materialize_dne44_joint_sources.py",
+      "sha256": "ccfde879a58703986504a4dfef6d487102e2ba6cabf3edf97bc1e03fee768d0e",
+      "bytes": 2599
+    },
+    {
+      "path": "scripts/validate_dne34_source_block.py",
+      "sha256": "0c5f2e7ec84b4cd5d1af0d6c1264d69da4c6feb794cff565a35ee5353a82bf98",
+      "bytes": 10824
+    }
+  ],
+  "new_high_floor_checks": 3975,
+  "new_positive_subspace_checks": 27488,
+  "new_exact_rational_checks": 31463,
+  "status": "PASS",
+  "certificate_hash_encoding": "decoded JSON bytes for certificate references; stored bytes for custody",
+  "actual_certified_retained_dimension": 87,
+  "uncovered_retained_dimension": 25,
+  "uncovered_outside_packet_dimension": 24,
+  "uncovered_inside_packet_dimension": 1,
+  "original_high_floor": "647/1000",
+  "physical_guard": "1e-37",
+  "prior_85_direction_span_contained": true,
+  "source_integrals_recomputed": false,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
