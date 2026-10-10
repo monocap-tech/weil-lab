@@ -1,0 +1,73 @@
+{
+  "read_only_DNE": "bb7220c07aa66c2fea00bbc36452a59130ee3fb1",
+  "files": [
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE44_JOINT_SOURCE_EXTENSION_20261010.md",
+      "stored_sha256": "ce0f1a65f7b9918498923ba64dc85ecab310b2e4ef642f8dbfe23a20c96cef60"
+    },
+    {
+      "path": "scripts/validate_dne44_positive_subspace.py",
+      "stored_sha256": "e4ca25fa205ad980046c470693a459701a07c7d27265547bd6a2f3586628a2b3"
+    },
+    {
+      "path": "scripts/validate_dne44_joint_source.py",
+      "stored_sha256": "fdc20816b8c865f625293c34554b2a02dae63a0973f433b095919d1fae54fb60"
+    },
+    {
+      "path": "notes/data/RPB108_DNE44_JOINT_SOURCE_VALIDATION_20261010.json",
+      "stored_sha256": "7958467c7bd2919a5e60917a1eb50cf7e17799cfd131b8962370429e6d239c04"
+    },
+    {
+      "path": "notes/data/RPB108_DNE44_POSITIVE_SUBSPACE_VALIDATION_20261010.json",
+      "stored_sha256": "49c5e6abfcac52f4e784e2979c63733edf040a84c12553b47534edbc2af68c0d"
+    },
+    {
+      "path": "notes/data/RPB108_DNE44_CUSTODY_20261010.json",
+      "stored_sha256": "3ac44b59f9b39b6f59ddd0163181a69b64f9f61ee4b08e300106128df4102b49"
+    },
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE44_JOINT_SOURCE_EXTENSION.md",
+      "stored_sha256": "424bb9111a073059d99fd80e8e5d023625a742894f2c95866a16d578d928491c"
+    },
+    {
+      "path": "notes/data/RPB108_DNE44_EVEN_JOINT_SOURCE_20261010.json.gz.b64",
+      "stored_sha256": "aa9e3d181bfd87328b6bfa7ed30708eb7010c75e889b0a3a7b25154bc25f3d8d"
+    },
+    {
+      "path": "notes/data/RPB108_DNE44_EVEN_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "stored_sha256": "548c25af6eff87c3ab5a02eabb6432a33acdf535f1be08e376bed8d6febb8f3d"
+    },
+    {
+      "path": "notes/data/RPB108_DNE44_EVEN_POSITIVE_SUBSPACE_20261010.json.gz.b64",
+      "stored_sha256": "10227d7d7dd6a2a4d3e8282e2fd656eccde2ad3bcd2af664bc4e72f4b6c96cb5"
+    },
+    {
+      "path": "notes/data/RPB108_DNE44_ODD_JOINT_SOURCE_20261010.json.gz.b64",
+      "stored_sha256": "2bb5d7745e361724fd9b1479d67d1f853c8f4200299f4a6736c91ef8a4f155c4"
+    },
+    {
+      "path": "notes/data/RPB108_DNE44_ODD_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "stored_sha256": "df1ce9a1d1ae1774d7181fba2870d3d6f75ac8750f30c94946d2ae4e30121460"
+    },
+    {
+      "path": "notes/data/RPB108_DNE44_ODD_POSITIVE_SUBSPACE_20261010.json.gz.b64",
+      "stored_sha256": "4718a7beeca286075e95d8336e1613dfde289aab40a747ad66af24ba62294fcf"
+    },
+    {
+      "path": "scripts/certify_dne44_joint_source_Gram.py",
+      "stored_sha256": "8fcbb27a1d396189e7aa2fa77c809e429d7adf71fbe4c38ea6960928f7e8ea1f"
+    },
+    {
+      "path": "scripts/certify_dne44_positive_subspace.py",
+      "stored_sha256": "7c7c6beb8cbfb3f593295666f8a4e79514f46fc2b102dc7c96ba830ba3dfd1ef"
+    },
+    {
+      "path": "scripts/dne44_integer_moment_dot.py",
+      "stored_sha256": "0088bbf8d97810ad8be4e509f934b2888ef295082eadc7de8041aaade170b115"
+    },
+    {
+      "path": "scripts/materialize_dne44_joint_sources.py",
+      "stored_sha256": "ccfde879a58703986504a4dfef6d487102e2ba6cabf3edf97bc1e03fee768d0e"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "milestone": "CC110",
+  "parent": "eaa176a0fe27b3cf71cc6537ab7f05f3ef7d8555",
+  "read_only_DNE": "bb7220c07aa66c2fea00bbc36452a59130ee3fb1",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC110_EXTENDED_PACKET_INTEGRATION.md",
+      "bytes": 1545,
+      "sha256": "9b157335797a0f3c69c28609bf7d6cedaae58e2a2ace48899a87543ae495bdcf"
+    },
+    {
+      "path": "scripts/certify_cc110_extended_packet_integration.py",
+      "bytes": 9069,
+      "sha256": "eb2df502e655443f8735ec8523868823e5801848b4cea8fd15e8e2b6f74c8037"
+    },
+    {
+      "path": "notes/data/RPB108_CC110_EXTENDED_PACKET_INTEGRATION_20261010.json",
+      "bytes": 516461,
+      "sha256": "44ce8544eb2c2ee49d29cbb18d813ea2e18b4fa43a3c988c6fa7aa7d4027af3f"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC110_EXTENDED_PACKET_INTEGRATION_20261010.md",
+      "bytes": 6789,
+      "sha256": "71c81157b25c2f1182749a158de38ac12339e95398b38ab68d171717552508e0"
+    },
+    {
+      "path": "notes/cc110-source/input_custody.json",
+      "bytes": 3076,
+      "sha256": "2949b2dd435a4c74602cc06f11961300a6377dea2b6e78ff5a3d6de6d6cfe4ea"
+    }
+  ],
+  "imported_original_DNE44_custody_hashes_verified": true
+}
