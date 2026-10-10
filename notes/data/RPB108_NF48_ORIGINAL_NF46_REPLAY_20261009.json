@@ -1,0 +1,66 @@
+{
+  "F4": false,
+  "Lean": false,
+  "NF47_checkpoint_commit": "4b1cba2a490545758c4c9d4cadd7af1d9c5d5926",
+  "NF47_historical_missing_input_record_superseded": true,
+  "NF48_encoded_native_certificate_sha256": "c1ffd596a2417f17cc78c605ab9f7a6c14c123364545367efc057767f5a1beff",
+  "NF48_independent_native_validation_sha256": "4e7af1bcb9566d8a1da97d2ab3b0a451c1864350066b91e758aaa1e1ccd0cc20",
+  "RH": false,
+  "aperture": "53/50",
+  "complete_remaining_high_transport_certified": false,
+  "finite_full_retained_graph_positive_both_parities": true,
+  "highest_certified_whole_aperture": "21/20",
+  "milestone": "NF48",
+  "original_NF46_commit": "6658ff2837838ab00b9b9c605fdd200d473c3293",
+  "original_archives_regenerated_or_substituted": false,
+  "original_frozen_vectors_changed": false,
+  "original_unshifted_F112_floor": "207/1000",
+  "remaining_native_block_and_signed_joined_couplings_certified": true,
+  "status": "PASS",
+  "unchanged_historical_runner_report": {
+    "fresh_NF46_replay": [
+      {
+        "output_sha256": "5734f0e7bab528d439c68faf2160d9fc2d545e426cb8523367258e47e4d702e4",
+        "stage": "selection",
+        "status": "PASS_BYTE_IDENTICAL"
+      },
+      {
+        "output_sha256": "4556f7f990a5ba9e7ec139e5f809b8b26b51203ca790f224b6f63f22299c69e7",
+        "stage": "certification",
+        "status": "PASS_BYTE_IDENTICAL"
+      },
+      {
+        "output_sha256": "22984c0fc5a716c61e649e7334b97e0bcf9b30eeb3af4979f7e546563ac93a37",
+        "stage": "independent_validation",
+        "status": "PASS_BYTE_IDENTICAL"
+      }
+    ],
+    "milestone": "NF47",
+    "original_archive_hashes": [
+      {
+        "compressed_sha256": "191acc36e10668a90e5f3673734cdb1fadc12f9c9b24161c89518fd5ca0262c8",
+        "name": "native112_N720_K620.json.gz",
+        "uncompressed_sha256": "f69019a895cd675e304989cbb8209c90f033264e0aef589d4b1aa3be09cf4c81"
+      },
+      {
+        "compressed_sha256": "179cd1523facfbb635d2ad4eac88ab4c1a0594362da20697405d2bfd8e1d407f",
+        "name": "native_boundary_columns_112_113.json.gz",
+        "uncompressed_sha256": "da5fe692dc0d3a0820ccaf68217628776f08718661696dddad54012f4f3841ee"
+      },
+      {
+        "compressed_sha256": "e36e603372f2d0c0bb9f8f4e1375678545b20e2c6ea3fce1f6b40e312ae4bf03",
+        "name": "native_boundary_114_115.json.gz",
+        "uncompressed_sha256": "0a8f4ebd0778fa5c90209b3021d22791bdb0d9b73e0f19df608e04ed9ba2bcad"
+      }
+    ],
+    "original_archives_regenerated_or_substituted": false,
+    "status": "PASS",
+    "whole_aperture_positive": false
+  },
+  "unchanged_historical_script_sha256": {
+    "scripts/certify_native_next_shell_nf46_106.py": "158b6104adac38045c7cde48fc93ab2ab580c04e6a57018148ce43422116f1d9",
+    "scripts/replay_native_frozen_nf46_nf47_106.py": "d88afbe111b91ac2bd88190869fc536ab4fa2259300fd1f86fedd8acefafe78f",
+    "scripts/validate_native_next_shell_nf46_106.py": "888996dac052f0d0d9dc0e868d5592bd2950a2d7eedfad6a5496a672c31453cd"
+  },
+  "whole_aperture_positive": false
+}
