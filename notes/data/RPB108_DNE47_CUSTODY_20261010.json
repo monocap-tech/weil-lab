@@ -1,0 +1,78 @@
+{
+  "stage": "DNE47",
+  "parent": "61b896309a4c426a9259290b92dbd039a26f96ef",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE47_RESPONSE_TRIAL_GATE.md",
+      "sha256": "7f5fb771c99cbf38e8a5f8d846c4245e99c785b35ebbc4bf8da52c3b05b1f059",
+      "bytes": 1279
+    },
+    {
+      "path": "scripts/certify_dne47_response_trial_gate.py",
+      "sha256": "55a8334f082617d9e836b20623e7cecfc5fd5ce4bd9416edafa476aa7062cda2",
+      "bytes": 3438
+    },
+    {
+      "path": "scripts/validate_dne47_response_trial_gate.py",
+      "sha256": "107925bed0c3171d3809494ff6a4c41edf4e3b9742ade95e66eab42682d21727",
+      "bytes": 6902
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE47_RESPONSE_TRIAL_GATE_20261010.md",
+      "sha256": "44d8c9789520805e0367d95a43bb52313d56d103b2df15ef6e9840f59ccf3088",
+      "bytes": 8562
+    },
+    {
+      "path": "notes/data/RPB108_DNE47_RESPONSE_TRIAL_GATE_20261010.json",
+      "sha256": "8f758f204c453efdabadebdd408b4934a2b061d644aef041210dfd5a0088074f",
+      "bytes": 118927
+    },
+    {
+      "path": "notes/data/RPB108_DNE47_RESPONSE_TRIAL_VALIDATION_20261010.json",
+      "sha256": "cbbe07910019d951bff62df416804f68e8afb8118c6aa5ca3891ffc92950117b",
+      "bytes": 1600
+    }
+  ],
+  "inherited_script_dependencies": [
+    {
+      "path": "scripts/certify_dne39_signed_comparison.py",
+      "sha256": "beab6765ba1331edfbaa34d0814c8bca25aa296d245e07dde1fce5544cc7b487",
+      "bytes": 4379
+    },
+    {
+      "path": "scripts/validate_dne43_high_floor.py",
+      "sha256": "0b1d915c8fe8ffb2ea95c8d0ef5c53b54a31af9b939f6be0161db5107aca29d1",
+      "bytes": 6053
+    },
+    {
+      "path": "scripts/materialize_dne44_joint_sources.py",
+      "sha256": "ccfde879a58703986504a4dfef6d487102e2ba6cabf3edf97bc1e03fee768d0e",
+      "bytes": 2599
+    },
+    {
+      "path": "scripts/certify_dne44_joint_source_Gram.py",
+      "sha256": "8fcbb27a1d396189e7aa2fa77c809e429d7adf71fbe4c38ea6960928f7e8ea1f",
+      "bytes": 11611
+    },
+    {
+      "path": "scripts/validate_dne34_source_block.py",
+      "sha256": "0c5f2e7ec84b4cd5d1af0d6c1264d69da4c6feb794cff565a35ee5353a82bf98",
+      "bytes": 10824
+    }
+  ],
+  "new_exact_rational_checks": 87,
+  "status": "PASS",
+  "physical_high_trial_dimension": 3,
+  "required_new_projected_source_correlations": 138,
+  "actual_certified_retained_dimension": 87,
+  "uncovered_retained_dimension": 25,
+  "original_high_floor": "647/1000",
+  "physical_guard": "1e-37",
+  "source_integrals_recomputed": false,
+  "response_upper_established": false,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}

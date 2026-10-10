@@ -1,0 +1,28 @@
+{
+  "stage": "DNE47",
+  "status": "PASS",
+  "exact_rational_checks": 87,
+  "certificate_path": "notes/data/RPB108_DNE47_RESPONSE_TRIAL_GATE_20261010.json",
+  "certificate_sha256": "8f758f204c453efdabadebdd408b4934a2b061d644aef041210dfd5a0088074f",
+  "input_sha256": [
+    "11a8297d8f0f4c017cb43de621c38f9f7466ac48b9a975d0ada2bc60a055ad67",
+    "38a6515710505b4cf5304f1511a25fd24afc421218c633e76dd9defc2678d634",
+    "110783b18f6fd07020c7b91927403dc3065b796af067791dfaeb85f1ffca3b85",
+    "04518e3f40670ab9d8071a020edb4b30cf9357f2ed8ef96a4f21365c4a07e417"
+  ],
+  "positive_region_shell_route_ceiling_upper": "1336837203858055576177966856892546004018868801783282513609526240718713449942935757126304243582761359/2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "full_even_packet_threshold_lower": "746362405588162139396811542340196933189606806611156095937259788626553147988511553125115606343590443069398507048810828341/1000000000000000599783264858028939642016218510171114279661374275718491090409194047356951821989994311305843857108120439992",
+  "physical_high_trial_dimension": 3,
+  "trial_geometry_certified": true,
+  "residual_identity_controls_passed": true,
+  "positive_crossing_and_mixed_controls_passed": true,
+  "required_new_projected_source_correlations": 138,
+  "original_infinite_F112_floor": "647/1000",
+  "actual_certified_retained_dimension": 87,
+  "uncovered_retained_dimension": 25,
+  "response_upper_established": false,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
