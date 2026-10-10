@@ -1,0 +1,62 @@
+{
+  "milestone": "CC114",
+  "parent": "e6f57ad08a59000c79046b7cd48694b825d328ec",
+  "read_only_DNE48": "514386d14dcb1dc1bb2d469bc82a728d8de4b12d",
+  "read_only_Native_NF58": "3a0233c71ba16eb2ca59947f32789ac5752485da",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC114_FIXED_TRIAL_RESPONSE.md",
+      "stored_sha256": "f4f61908a7cad0618451e8ad9a4c52a4480734432096f8c8cec16402afee3ed6",
+      "bytes": 1406
+    },
+    {
+      "path": "scripts/certify_cc114_fixed_trial_response.py",
+      "stored_sha256": "627300ef11ac1a9783a5d4b9605c9bc7e7114824d6f42b9e27552c4bcfa1a30d",
+      "bytes": 5803
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC114_FIXED_TRIAL_EQUIVALENCE_20261010.md",
+      "stored_sha256": "5e8e64227d6f681341cfce87a7c866af46be9f725a59dabef574221820b25c0e",
+      "bytes": 7915
+    },
+    {
+      "path": "notes/data/RPB108_CC114_FIXED_TRIAL_RESPONSE_20261010.json",
+      "stored_sha256": "1503a3324b2b814b408bbe0950afebfd850a21523dfb6ac3945880700677b5b9",
+      "bytes": 618299
+    },
+    {
+      "path": "notes/data/RPB108_CC114_FIXED_TRIAL_REPLAY_20261010.json",
+      "stored_sha256": "9bcfef6a60c3068c6dc6a5ef1ef516c1691120ca3f5ed57c6526fcc2e6d9c59e",
+      "bytes": 618507
+    },
+    {
+      "path": "notes/data/RPB108_CC113_RESPONSE_AT_647_20261010.json",
+      "stored_sha256": "e1c01c8291f6f0e4d5a2713437aa7e509b7e85f497aa1c9267c06ea5fb131d35",
+      "bytes": 855556
+    },
+    {
+      "path": "notes/cc104-source/notes/data/RPB108_NF52_EVEN_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "cb53049cbba5dd0066ee281120ab8791ce178bef4e6ae7f27c4138f45be596aa",
+      "bytes": 3484897
+    },
+    {
+      "path": "notes/cc110-source/notes/data/RPB108_DNE44_EVEN_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "stored_sha256": "548c25af6eff87c3ab5a02eabb6432a33acdf535f1be08e376bed8d6febb8f3d",
+      "bytes": 2198077
+    },
+    {
+      "path": "notes/cc104-source/notes/data/RPB108_NF52_ODD_JOINT_REFINEMENT_CERTIFICATE_20261010.json.gz.b64",
+      "stored_sha256": "66fb233f0fb3a0547d56f7e4da59b367ccd65c12960733040ae8bdefbcbd9c6d",
+      "bytes": 3369345
+    },
+    {
+      "path": "notes/cc110-source/notes/data/RPB108_DNE44_ODD_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "stored_sha256": "df1ce9a1d1ae1774d7181fba2870d3d6f75ac8750f30c94946d2ae4e30121460",
+      "bytes": 2182297
+    }
+  ],
+  "status": "PASS",
+  "new_source_integrations": 0,
+  "certified_finite_inverse_evaluations": 0,
+  "historical_files_edited": false
+}
