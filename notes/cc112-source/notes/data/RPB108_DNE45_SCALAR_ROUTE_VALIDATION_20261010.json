@@ -1,0 +1,39 @@
+{
+  "stage": "DNE45",
+  "status": "PASS",
+  "exact_rational_checks": 50340,
+  "certificate_path": "notes/data/RPB108_DNE45_SCALAR_ROUTE_LIMIT_20261010.json.gz.b64",
+  "certificate_sha256": "11a8297d8f0f4c017cb43de621c38f9f7466ac48b9a975d0ada2bc60a055ad67",
+  "input_sha256": [
+    "b4768fe993e887244c4405ff644b042fc88f9fbc51537a33fcd07f95711d2a93",
+    "c2d4db3680774de7cd31064c118836b5158cd43f237ae01a96bebc9d6b4ecb78",
+    "49c5e6abfcac52f4e784e2979c63733edf040a84c12553b47534edbc2af68c0d"
+  ],
+  "prime_norm_lower": "107944751/50000000",
+  "fixed_arch_input": "693087810933/250000000000",
+  "scalar_route_ceiling": "153364055933/250000000000",
+  "rows": [
+    {
+      "parity": "even",
+      "critical_uniform_floor_lower": "746362405588162139396811542340196933189606806611156095937259788626553147988511553125115606343590443069398507048810828341/1000000000000000599783264858028939642016218510171114279661374275718491090409194047356951821989994311305843857108120439992",
+      "critical_uniform_floor_upper": "74636241/100000000",
+      "route_ceiling_strictly_below_threshold": true,
+      "ceiling_trial_strictly_negative": true
+    },
+    {
+      "parity": "odd",
+      "critical_uniform_floor_lower": "619937693998842768085869584448164755466400522251182450433694366973616082788638725387552569909560239607196759843717958156/999999999999999992211341371628709420596327801634402733427181481676352026561171106271839681043021181430371206989332744263",
+      "critical_uniform_floor_upper": "6199377/10000000",
+      "route_ceiling_strictly_below_threshold": true,
+      "ceiling_trial_strictly_negative": true
+    }
+  ],
+  "actual_certified_retained_dimension": 85,
+  "uncovered_retained_dimension": 27,
+  "source_integrals_recomputed": false,
+  "target_high_floor_established": false,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}

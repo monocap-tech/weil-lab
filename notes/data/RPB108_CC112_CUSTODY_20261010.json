@@ -1,0 +1,45 @@
+{
+  "milestone": "CC112",
+  "parent": "052f9f57dad673c19b58364c04fef86530fec487",
+  "read_only_DNE": "a9eda40b874163be980da517d3dda87942f83533",
+  "read_only_Native": "b7bb22586ea8dc398813c5f80e84dbe8ebee9b15",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC112_SINGLE_HIGH_RESIDUAL.md",
+      "bytes": 1772,
+      "sha256": "b47673e6e5ad6c90a1bf24bae49f640443952e62462eba37117df7f11ea78cc8"
+    },
+    {
+      "path": "scripts/certify_cc112_physical_response_transport.py",
+      "bytes": 9096,
+      "sha256": "26a84f6dd10814c74ddb0ec66361a148fd5cdb0b2f63556069947a3b3804a434"
+    },
+    {
+      "path": "scripts/certify_cc112_scalar_route_consumer.py",
+      "bytes": 3365,
+      "sha256": "13df29ac8bc1af10451ba5a9c6be2c701672f1005177f010e936161b548a562d"
+    },
+    {
+      "path": "notes/data/RPB108_CC112_PHYSICAL_RESPONSE_TRANSPORT_20261010.json.gz.b64",
+      "bytes": 3663305,
+      "sha256": "e1fa3c6b0e2f03fd1560a1534cfefb6444949f0d9963c4577bebf28b73841cb5"
+    },
+    {
+      "path": "notes/data/RPB108_CC112_SCALAR_ROUTE_CONSUMER_20261010.json",
+      "bytes": 389668,
+      "sha256": "0910b6f8df39c0ed0a4a21b8db0d9277623534272a63805ef3dcd795a0b9309e"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC112_SINGLE_HIGH_RESIDUAL_20261010.md",
+      "bytes": 8772,
+      "sha256": "cbb5f97c2bdd3f73a18a733c7d5440950b8a3efc83f5c844a285306efddc5973"
+    },
+    {
+      "path": "notes/cc112-source/input_custody.json",
+      "bytes": 1307,
+      "sha256": "c2c4cb83db06763a06110eb673860966254e7734f324387f6a8e666101d5e647"
+    }
+  ],
+  "transport_decoded_sha256": "23b55fab22d397bdd84892d23f2b5fe7dae887215b2554144b5befa68c8de0a7",
+  "actual_response_credit_computed": false
+}

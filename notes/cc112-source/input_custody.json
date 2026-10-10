@@ -1,0 +1,33 @@
+{
+  "read_only_DNE": "a9eda40b874163be980da517d3dda87942f83533",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE45_SCALAR_ROUTE_LIMIT.md",
+      "stored_sha256": "d610b9cfc6401998b9f1308f321fd757ce051a8f935f8f2d1f8e51ac97ef7cd5"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE45_SCALAR_ROUTE_LIMIT_20261010.md",
+      "stored_sha256": "882f026cf21c5498cee0445879a0bcaa36e27dc50ceb67677bef645fd5707f3a"
+    },
+    {
+      "path": "notes/data/RPB108_DNE45_CUSTODY_20261010.json",
+      "stored_sha256": "71e955410f0d77f30d0e55385487635ab73aa90702e521931eaf8882dfa3d12f"
+    },
+    {
+      "path": "notes/data/RPB108_DNE45_SCALAR_ROUTE_LIMIT_20261010.json.gz.b64",
+      "stored_sha256": "831e4abdf136eb583cdc950dab7cd70a066aeb64dd93f280768c3b0a0fd7c29a"
+    },
+    {
+      "path": "notes/data/RPB108_DNE45_SCALAR_ROUTE_VALIDATION_20261010.json",
+      "stored_sha256": "38a6515710505b4cf5304f1511a25fd24afc421218c633e76dd9defc2678d634"
+    },
+    {
+      "path": "scripts/certify_dne45_scalar_route_limit.py",
+      "stored_sha256": "74c4404d7f4bcd42bb75e025b5a8338b5826a030996670269577926516a5ecfa"
+    },
+    {
+      "path": "scripts/validate_dne45_scalar_route_limit.py",
+      "stored_sha256": "6b4413eb4e64d59aac3a9164c42e5f30ff9d37de4214cf6d24eb5536685ac60b"
+    }
+  ]
+}
