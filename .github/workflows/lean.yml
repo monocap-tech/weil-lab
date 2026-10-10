@@ -43,9 +43,17 @@ jobs:
         shell: bash
         run: lake exe cache get
 
-      - name: Check current theorem target
+      - name: Check canonical certificate transport
         shell: bash
-        run: lake build WeilDefect.Examples.WeakCriticalFallthrough
+        run: |
+          set -o pipefail
+          lake build WeilDefect.Screening.CanonicalCertificateTransport 2>&1 | tee certificate-build.log
+
+      - name: Check complete root library
+        shell: bash
+        run: |
+          set -o pipefail
+          lake build WeilDefect 2>&1 | tee root-build.log
 
       - name: Reject unfinished trusted declarations
         shell: bash
@@ -54,3 +62,14 @@ jobs:
             echo "Unfinished or project-axiom declaration found."
             exit 1
           fi
+
+      - name: Preserve build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean-build-diagnostics
+          path: |
+            certificate-build.log
+            root-build.log
+          if-no-files-found: ignore
+
