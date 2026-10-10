@@ -1,0 +1,142 @@
+{
+  "stage": "DNE38",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "parent": "f11f94dcd72c2d1a8438bdfbc7e7890b47902088",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE38_INCREMENTAL_JOINT_SOURCE.md",
+      "bytes": 4327,
+      "stored_sha256": "1f4759320096deeffb18955d446ff17c5ee106c0beeb3e8a8089c48c3273b9eb"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE38_INCREMENTAL_JOINT_SOURCE_20261010.md",
+      "bytes": 13587,
+      "stored_sha256": "2667c50989a39a6929cc3cf557d428a39366be340e80a79f447b4b39ffaa4251"
+    },
+    {
+      "path": "notes/data/RPB108_DNE38_EVEN_JOINT_SOURCE_20261010.json.gz.b64",
+      "bytes": 993937,
+      "stored_sha256": "9f25e4c58943d3865d09d4b30964f56d4583fcbe295b9089f6f497d55b5f291a",
+      "decoded_sha256": "a217d6ab5dfd3decf7c2450c6d0b2a415ada255ae54ee0f72afe8561e0b21e03"
+    },
+    {
+      "path": "notes/data/RPB108_DNE38_EVEN_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "bytes": 996321,
+      "stored_sha256": "8ae23d56fc6e78aa65e257890ff527487f9b4f70130d9800b63e16f5d9571127",
+      "decoded_sha256": "cdcc527627ec5ec0d9ee81a6f85ececcdd9c3fbe297edb46457f4a9203c54851"
+    },
+    {
+      "path": "notes/data/RPB108_DNE38_EVEN_SIGNED_COMPARISON_20261010.json",
+      "bytes": 1616512,
+      "stored_sha256": "b81a471c3baef6215e9f12e91fbf0f14fa46a478cbcaea20c9f25b6e4f448dc7"
+    },
+    {
+      "path": "notes/data/RPB108_DNE38_ODD_JOINT_SOURCE_20261010.json.gz.b64",
+      "bytes": 988097,
+      "stored_sha256": "79f1688ea206f850a2a8ef468f50210641231baae8f0e3e8f9aa2066e1eb8954",
+      "decoded_sha256": "3a7f05ced4eec048218a8acd149367536fc2d73b56335af09389e967858ccf24"
+    },
+    {
+      "path": "notes/data/RPB108_DNE38_ODD_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "bytes": 989377,
+      "stored_sha256": "e2108d660eca835fa48115fe32db1ca96dd5055e3dd6648ef820c86855036b97",
+      "decoded_sha256": "5e58b939aa5a9d9628c16292534367f0d21d41fa626285fba2cc64343b27c617"
+    },
+    {
+      "path": "notes/data/RPB108_DNE38_ODD_SIGNED_COMPARISON_20261010.json",
+      "bytes": 1657408,
+      "stored_sha256": "b5ead0a2b3c4949817d95d774d0aaa9dd19d8285658623406958d08c44a35549"
+    },
+    {
+      "path": "notes/data/RPB108_DNE38_SIGNED_SOURCE_VALIDATION_20261010.json",
+      "bytes": 12315,
+      "stored_sha256": "7cd59650b5fef42a8f86de1e7d10c964250573bfff890ccee2d23ff00eea2979"
+    },
+    {
+      "path": "scripts/certify_dne38_joint_source_Gram.py",
+      "bytes": 9972,
+      "stored_sha256": "77d892f92c8825791246e2db0b449ec7254cfa4331497e9b3add6b4681e04e1d"
+    },
+    {
+      "path": "scripts/certify_dne38_signed_comparison.py",
+      "bytes": 4377,
+      "stored_sha256": "6c85b4736bd5aa080547e0f30e1a5fb5ae91cc1ce95de945661817ff7e3eb5a5"
+    },
+    {
+      "path": "scripts/materialize_dne38_joint_sources.py",
+      "bytes": 2605,
+      "stored_sha256": "106eed300699f5536c1e2b98820927039bd3643910f9704661bf2645a333109c"
+    },
+    {
+      "path": "scripts/validate_dne38_signed_source.py",
+      "bytes": 13051,
+      "stored_sha256": "0ddc0156cd2c6c93bf5d75082e43bf44ad71065ea4a8ddf8ef2121ff74fd2392"
+    }
+  ],
+  "reused_inputs": [
+    {
+      "path": "notes/data/RPB108_DNE37_HIGH_FLOOR_VALIDATION_20261010.json",
+      "stored_sha256": "39b0e25e4a78625fc4ac997a4f8ca06b818d5f740c76f8a1bf6546095e0dd12f"
+    },
+    {
+      "path": "notes/data/RPB108_DNE37_PRIME_SCHUR_REPLAY_20261010.json",
+      "stored_sha256": "d0d6ed5fd83b5f540c448f63cf47039a207327194052324348423628f87f4054"
+    },
+    {
+      "path": "scripts/dne23_dne16_source_input.py",
+      "stored_sha256": "e4539b941f3768f177a469c68f58d34b11d3ea863247c14c1a6a59d81b2f91d8"
+    },
+    {
+      "path": "scripts/materialize_dne36_joint_sources.py",
+      "stored_sha256": "6fdff935c3b8a1848c13e0a63b7d0163ca178442e30215c96fd0bce081124e9c"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_EVEN_JOINT_SOURCE_20261010.json.gz.b64",
+      "stored_sha256": "fe0588d8a58ae8fe4ac863c1ad71d27d8e2c17b49cf55a6a04712233a5d20ce8",
+      "decoded_sha256": "6e7a7332233f79c1034858abafb4eb97441ff8bb6d2408272f4a07bdf82a3c2f"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_EVEN_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "stored_sha256": "2ab0783d68af98a4f685f9023ef1900e49396da0da49a5217241f952f2e857f7",
+      "decoded_sha256": "490f65448eb319990e35ba56d2a33e53eee22b2dd1639a95c1c18f7967e7591c"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_ODD_JOINT_SOURCE_20261010.json.gz.b64",
+      "stored_sha256": "e3a01fc600c25c0a5ee9f4c1c4f81b2fe0c30ff1e0d27e7710567dbd20667256",
+      "decoded_sha256": "944fe341de72118dfde6ae76f5fa11c11c0a6d9aa586f61f5f3148137c4d7c8f"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_ODD_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "stored_sha256": "a4e53a0828bbd715cd727870ee911a2308026c1a9d61df15cf99fab235592839",
+      "decoded_sha256": "04d2beb2122afb00cd2f73ab7b63586c98f9425f6b2053cfe455bc603cb69321"
+    }
+  ],
+  "joint_source_dimensions": [
+    28,
+    28
+  ],
+  "complete_joint_source_entries": 1568,
+  "reused_joint_dimension_per_parity": 20,
+  "new_joint_dimension_per_parity": 8,
+  "fresh_upper_triangular_source_entries_per_parity_per_order": 196,
+  "exact_rational_checks": 39700,
+  "certified_original_infinite_F112_floor": "57/100",
+  "positive_joint_prefix_dimensions": [
+    27,
+    28
+  ],
+  "first_failing_even_joint_prefix_dimension": 28,
+  "odd_complete_signed_comparison_passed": true,
+  "even_uniform_floor_failure_proved": true,
+  "even_unrounded_sixth_weight_floor_failure_proved": true,
+  "all_high_positive_retained_dimension": 55,
+  "remaining_uncovered_retained_dimension": 57,
+  "all_high_physical_gap_guard": "1/100000000000000000000000000000000000000",
+  "original_high_floor_sharpened_this_stage": false,
+  "true_high_inverse_evaluated": false,
+  "next_target": "further original positive prime-weight iteration and complete even twenty-eight-column source replay; sharper directional high response if needed",
+  "complete_remaining_source_Gram_certified": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
