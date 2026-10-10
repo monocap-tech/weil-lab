@@ -1,0 +1,65 @@
+{
+  "stage": "DNE43",
+  "parent": "b6b5cbe5a9f59dbf9f03ae931083289dbf11bf13",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE43_HIGH_TARGET.md",
+      "bytes": 958,
+      "sha256": "9bacf8e2a4896c5963f6466088efac2ce2e7d22a8af071a29d914dbe2ff8d3dd"
+    },
+    {
+      "path": "scripts/certify_dne43_prime_schur.py",
+      "bytes": 5171,
+      "sha256": "c91af0f60061f6e37c5925ed9bbab6d99565711f10e4fec82599b00207a14b87"
+    },
+    {
+      "path": "scripts/validate_dne43_high_floor.py",
+      "bytes": 6053,
+      "sha256": "0b1d915c8fe8ffb2ea95c8d0ef5c53b54a31af9b939f6be0161db5107aca29d1"
+    },
+    {
+      "path": "scripts/validate_dne43_full_packet_transfer.py",
+      "bytes": 4288,
+      "sha256": "2a225feb4ae1f8c6cc1e0657ca30f60ccbdd854a75b08a18d61643e477b2e1d3"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE43_HIGH_TARGET_20261010.md",
+      "bytes": 6461,
+      "sha256": "2e88d6a0b35a5fbe8822c20e283988d9f2beb8af12b9a2596b2e840f50561dc4"
+    },
+    {
+      "path": "notes/data/RPB108_DNE43_PRIME_SCHUR_20261010.json.gz.b64",
+      "bytes": 6598149,
+      "sha256": "db6769f5ffc130ccc6d7da91a102bda2c89e589a16f23992aa20a9c2572949a8"
+    },
+    {
+      "path": "notes/data/RPB108_DNE43_PRIME_SCHUR_REPLAY_20261010.json.gz.b64",
+      "bytes": 8190753,
+      "sha256": "75c611b14dbbc9618e7bf1b3a1048253b5d2152030736947938e985be6d19501"
+    },
+    {
+      "path": "notes/data/RPB108_DNE43_HIGH_FLOOR_VALIDATION_20261010.json",
+      "bytes": 1460,
+      "sha256": "c2d4db3680774de7cd31064c118836b5158cd43f237ae01a96bebc9d6b4ecb78"
+    },
+    {
+      "path": "notes/data/RPB108_DNE43_FULL_PACKET_VALIDATION_20261010.json",
+      "bytes": 15193,
+      "sha256": "e1670fd331e094110b2d15dc22f2687e4da7f1225592e73050d034b134f042c2"
+    }
+  ],
+  "validation_status": "PASS",
+  "new_high_rational_checks": 1729240,
+  "new_transfer_rational_checks": 36,
+  "total_new_rational_checks": 1729276,
+  "original_infinite_F112_floor": "603/1000",
+  "all_high_positive_retained_dimension": 72,
+  "uncovered_retained_dimension": 40,
+  "all_high_physical_gap_guard": "1/10000000000000000000000000000000000000000",
+  "source_integrals_recomputed": false,
+  "true_high_inverse_evaluated": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}

@@ -1,0 +1,29 @@
+{
+  "stage": "DNE43",
+  "status": "PASS",
+  "exact_rational_checks": 1729240,
+  "rows": [
+    {
+      "path": "notes/data/RPB108_DNE43_PRIME_SCHUR_20261010.json.gz.b64",
+      "sha256": "6561bf9bc95c8f207cc7d01cef4c0bf02c40f75bd87c287975eb58e48e7b5287",
+      "independent_max_row_ratio_upper": "2909432323812905668714840265124524787653137742514320341246749724053714882982084632873472343329956355516177/1341601907479498002061641578953041240115920832177169508771869190625118433195456244390850269209570663771013",
+      "all_rows_verified": true,
+      "band_count": 8899
+    },
+    {
+      "path": "notes/data/RPB108_DNE43_PRIME_SCHUR_REPLAY_20261010.json.gz.b64",
+      "sha256": "b4768fe993e887244c4405ff644b042fc88f9fbc51537a33fcd07f95711d2a93",
+      "independent_max_row_ratio_upper": "2909432323812905668714840265124524787653137742514320341246749724053714882982084632873472343329956355516177/1341601907479498002061641578953041240115920832177169508771869190625118433195456244390850269209570663771013",
+      "all_rows_verified": true,
+      "band_count": 8899
+    }
+  ],
+  "arch_pole_replay_passed": true,
+  "arch_minus_pole_strict_lower": "693087810933/250000000000",
+  "original_infinite_F112_floor": "603/1000",
+  "helper_sha256": "207037efc8a824f40a8585f18b63c4e1e92270cd6a41d9414d577ae2510f24b1",
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false,
+  "certificate_hash_encoding": "decoded JSON bytes; gzip base64 roundtrip verified"
+}
