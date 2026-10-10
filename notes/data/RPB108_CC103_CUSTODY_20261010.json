@@ -1,0 +1,32 @@
+{
+  "milestone": "CC103",
+  "parent": "de026740e0186cd2f21d9dc40c99af04069fc1c1",
+  "read_only_DNE": "f15eea0a2d0a4b527bf62d73c17efd940b6eb12f",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC103_ACTUAL_COLLECTIVE_FLOOR.md",
+      "bytes": 1582,
+      "sha256": "2db6d1446b1edfcac40f29c020a095000a74825e8ff24397012a25b7bf340fa0"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC103_ACTUAL_COLLECTIVE_FLOOR_20261010.md",
+      "bytes": 5584,
+      "sha256": "b26d9562919fab40913e8cabd129afd1a8864efab6810863d5d7bc5afb2a34b1"
+    },
+    {
+      "path": "scripts/certify_cc103_dne39_collective_consumer.py",
+      "bytes": 5100,
+      "sha256": "cbc621ccc1c0d5d398fd4b49814ad79a633638dbb2280d19eca30f2c0099e428"
+    },
+    {
+      "path": "notes/data/RPB108_CC103_FRESH_HIGH_FLOOR_AUDIT_20261010.json",
+      "bytes": 1344,
+      "sha256": "320f05c200e77461ef0ea32e5fdc87198a5cf8e0ac041d76b27434d492dd4374"
+    },
+    {
+      "path": "notes/data/RPB108_CC103_DNE39_COLLECTIVE_20261010.json",
+      "bytes": 4103,
+      "sha256": "aa0bf248e7664a03395da760436355c6e456c8c0f7a65635bb9799f5508e10d4"
+    }
+  ]
+}

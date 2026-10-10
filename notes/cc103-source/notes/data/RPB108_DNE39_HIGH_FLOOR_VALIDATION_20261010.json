@@ -1,0 +1,28 @@
+{
+  "stage": "DNE39",
+  "status": "PASS",
+  "exact_rational_checks": 96416,
+  "rows": [
+    {
+      "path": "notes/data/RPB108_DNE39_PRIME_SCHUR_20261010.json",
+      "sha256": "f5f28979b81acad324a1db08f8030e5e2193c5edb4e761884c33adc1dfd5acc0",
+      "independent_max_row_ratio_upper": "6030210722442222835910359232183605493730305418787492542438557472093496030353000656163433946228863150797/2748385833385296945824788347559704131522204011649544088882359613684259387069956922259422790665911857368",
+      "all_rows_verified": true,
+      "band_count": 863
+    },
+    {
+      "path": "notes/data/RPB108_DNE39_PRIME_SCHUR_REPLAY_20261010.json",
+      "sha256": "0b7b2f31e9f126536fdb175458da11b1ebfcb89d96a5c26b1f3f8f348dcdef7c",
+      "independent_max_row_ratio_upper": "6030210722442222835910359232183605493730305418787492542438557472093496030353000656163433946228863150797/2748385833385296945824788347559704131522204011649544088882359613684259387069956922259422790665911857368",
+      "all_rows_verified": true,
+      "band_count": 863
+    }
+  ],
+  "arch_pole_replay_passed": true,
+  "arch_minus_pole_strict_lower": "693087810933/250000000000",
+  "original_infinite_F112_floor": "289/500",
+  "helper_sha256": "207037efc8a824f40a8585f18b63c4e1e92270cd6a41d9414d577ae2510f24b1",
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
