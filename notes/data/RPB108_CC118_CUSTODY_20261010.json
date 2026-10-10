@@ -1,0 +1,54 @@
+{
+  "milestone": "CC118",
+  "parent": "8d3b66127af94d0dba06389b14579f5b79e9a6d6",
+  "read_only_DNE51": "3e022ead0c400a5098946dc57da789592183bd5e",
+  "read_only_Native_NF60": "db69f427046cc6eff5a615ca1d1c32dbae963042",
+  "certificate_sha256": "d24fe16f4ce69c74205b9e5a1c61a640f33131a49bce23902bc3132e9bdfeda4",
+  "validation_sha256": "5d3b879dc5b650a226705d1de0bde1bcf8a8922820ab4b535d44a619ed1f0fe0",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_CC118_JOINT_RESPONSE_INTERFACE.md",
+      "stored_sha256": "de41065a5e235a11ef80a88378dc9d5a5f842bb14a10254bbdbeb05cae4d960f"
+    },
+    {
+      "path": "scripts/certify_cc118_joint_response_interface.py",
+      "stored_sha256": "3084a12850800e3ad4ab6b19c59891dbd8b2081e71931e0aa612b17310769ddd"
+    },
+    {
+      "path": "scripts/validate_cc118_joint_response_interface.py",
+      "stored_sha256": "2c55073a2678fc3b10780648459ac6c8ffc6d6d9711f415102206285165288f8"
+    },
+    {
+      "path": "notes/data/RPB108_CC118_JOINT_RESPONSE_INTERFACE_20261010.json",
+      "stored_sha256": "d24fe16f4ce69c74205b9e5a1c61a640f33131a49bce23902bc3132e9bdfeda4"
+    },
+    {
+      "path": "notes/data/RPB108_CC118_JOINT_RESPONSE_VALIDATION_20261010.json",
+      "stored_sha256": "5d3b879dc5b650a226705d1de0bde1bcf8a8922820ab4b535d44a619ed1f0fe0"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_CC118_JOINT_EVEN_RESPONSE_INTERFACE_20261010.md",
+      "stored_sha256": "1ffe226c4138be56bde9741e07633a881c29cb96560c82f2c2a383c942284150"
+    },
+    {
+      "path": "notes/cc118-source/notes/REFLECTED_PACKET_BRIDGE_108_DNE51_RESPONSE_EXTENSION_20261010.md",
+      "stored_sha256": "ac5d3d59f34309fb1699edf03faaa8edfa5a37b219adea2d9dae3ebe90810e25"
+    },
+    {
+      "path": "notes/cc118-source/docs/TERMINOLOGY_RPB108_DNE51_RESPONSE_EXTENSION.md",
+      "stored_sha256": "a5146960854419bc1017602caf0b9bb2de7aa70a24e7ecdeac59963593a96f38"
+    },
+    {
+      "path": "notes/cc118-source/notes/data/RPB108_DNE51_CUSTODY_20261010.json",
+      "stored_sha256": "644d604f6da94fd285a59a3f62bf6e3ad91b46b75ee1437d376380899a1dba69"
+    },
+    {
+      "path": "notes/cc118-source/notes/data/RPB108_DNE51_RESPONSE_EXTENSION_VALIDATION_20261010.json",
+      "stored_sha256": "60d46cc8419a6702d82892e36a11a83e54b8c5bcdfb165ec1b033b26b7d397bb"
+    },
+    {
+      "path": "notes/cc118-source/notes/data/RPB108_DNE51_RESPONSE_EXTENSION_20261010.json.gz.b64",
+      "stored_sha256": "e21313acff6893be8583aaf46944057ca33e5a92aa737097fe10091def74f484"
+    }
+  ]
+}

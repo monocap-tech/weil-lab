@@ -1,0 +1,37 @@
+{
+  "stage": "DNE51",
+  "parent": "3c61708f807b42ddffcff7d0a8516ea6a9e45cf1",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE51_RESPONSE_EXTENSION.md",
+      "bytes": 1048,
+      "sha256": "a5146960854419bc1017602caf0b9bb2de7aa70a24e7ecdeac59963593a96f38"
+    },
+    {
+      "path": "scripts/certify_dne51_response_extension.py",
+      "bytes": 7817,
+      "sha256": "5fa07764f61aec5fa280d7ea0df19d8cba4634884ddb0e3270a408ca39b16b7a"
+    },
+    {
+      "path": "scripts/validate_dne51_response_extension.py",
+      "bytes": 10737,
+      "sha256": "a56f81cb5bdb18c6e7ecc9a48965ee220e741feb14828e0d200aeea647e2f707"
+    },
+    {
+      "path": "notes/data/RPB108_DNE51_RESPONSE_EXTENSION_20261010.json.gz.b64",
+      "bytes": 1241229,
+      "sha256": "e21313acff6893be8583aaf46944057ca33e5a92aa737097fe10091def74f484"
+    },
+    {
+      "path": "notes/data/RPB108_DNE51_RESPONSE_EXTENSION_VALIDATION_20261010.json",
+      "bytes": 11020,
+      "sha256": "60d46cc8419a6702d82892e36a11a83e54b8c5bcdfb165ec1b033b26b7d397bb"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE51_RESPONSE_EXTENSION_20261010.md",
+      "bytes": 7235,
+      "sha256": "ac5d3d59f34309fb1699edf03faaa8edfa5a37b219adea2d9dae3ebe90810e25"
+    }
+  ]
+}
