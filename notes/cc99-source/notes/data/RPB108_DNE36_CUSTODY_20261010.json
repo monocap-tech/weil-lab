@@ -1,0 +1,96 @@
+{
+  "stage": "DNE36",
+  "branch": "research/rpb108-direct-null-exclusion",
+  "parent": "2154898d5d346883cfb201d3a846f19758ac72da",
+  "files": [
+    {
+      "path": "docs/TERMINOLOGY_RPB108_DNE36_JOINT_SIGNED_EXPANSION.md",
+      "bytes": 3336,
+      "stored_sha256": "eb9eec97a8af96acfdc8449730e328a0db59bb2f950287c27b1b0c3a93a703f8"
+    },
+    {
+      "path": "notes/REFLECTED_PACKET_BRIDGE_108_DNE36_JOINT_SIGNED_EXPANSION_20261010.md",
+      "bytes": 10908,
+      "stored_sha256": "899f90d1634d02f9b2b6aef59b9a2a6d9d6ab3eb8e361cc0338ff808a08eb07d"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_EVEN_JOINT_SOURCE_20261010.json.gz.b64",
+      "bytes": 559725,
+      "stored_sha256": "fe0588d8a58ae8fe4ac863c1ad71d27d8e2c17b49cf55a6a04712233a5d20ce8",
+      "decoded_sha256": "6e7a7332233f79c1034858abafb4eb97441ff8bb6d2408272f4a07bdf82a3c2f"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_EVEN_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "bytes": 563233,
+      "stored_sha256": "2ab0783d68af98a4f685f9023ef1900e49396da0da49a5217241f952f2e857f7",
+      "decoded_sha256": "490f65448eb319990e35ba56d2a33e53eee22b2dd1639a95c1c18f7967e7591c"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_EVEN_SIGNED_COMPARISON_20261010.json",
+      "bytes": 774400,
+      "stored_sha256": "e1260bd4b4a1200612baba7bbe7701dbffda699c4ec1ac33c1434e4497786fe2"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_ODD_JOINT_SOURCE_20261010.json.gz.b64",
+      "bytes": 557633,
+      "stored_sha256": "e3a01fc600c25c0a5ee9f4c1c4f81b2fe0c30ff1e0d27e7710567dbd20667256",
+      "decoded_sha256": "944fe341de72118dfde6ae76f5fa11c11c0a6d9aa586f61f5f3148137c4d7c8f"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_ODD_JOINT_SOURCE_REPLAY_20261010.json.gz.b64",
+      "bytes": 557425,
+      "stored_sha256": "a4e53a0828bbd715cd727870ee911a2308026c1a9d61df15cf99fab235592839",
+      "decoded_sha256": "04d2beb2122afb00cd2f73ab7b63586c98f9425f6b2053cfe455bc603cb69321"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_ODD_SIGNED_COMPARISON_20261010.json",
+      "bytes": 726456,
+      "stored_sha256": "262880cfcdf6b19eb0e4200305e9ded96f7b84c36ba2b02331afbb9b1db5f546"
+    },
+    {
+      "path": "notes/data/RPB108_DNE36_SIGNED_SOURCE_VALIDATION_20261010.json",
+      "bytes": 12182,
+      "stored_sha256": "d838cf2e19b035093271dc60c28d3807c39661dd05a7ab7df46d895e715b8a1a"
+    },
+    {
+      "path": "scripts/certify_dne36_joint_source_Gram.py",
+      "bytes": 9001,
+      "stored_sha256": "e6ed879de5b121b59a631a9174d451341d3e7dcd2f5edc722f0211c712923520"
+    },
+    {
+      "path": "scripts/certify_dne36_signed_comparison.py",
+      "bytes": 3800,
+      "stored_sha256": "3d390b3bbf995700c78301ac86e083fe30daac5bc715cb7ec285fef96dcbf386"
+    },
+    {
+      "path": "scripts/materialize_dne36_joint_sources.py",
+      "bytes": 2601,
+      "stored_sha256": "6fdff935c3b8a1848c13e0a63b7d0163ca178442e30215c96fd0bce081124e9c"
+    },
+    {
+      "path": "scripts/validate_dne36_signed_source.py",
+      "bytes": 10475,
+      "stored_sha256": "aa004940092e8e99e5659a9fa82ac2098e74fb8c8dbeabc4c1f93011e5ec39e5"
+    }
+  ],
+  "joint_source_dimensions": [
+    20,
+    20
+  ],
+  "complete_joint_source_entries": 800,
+  "all_high_positive_retained_dimension": 35,
+  "remaining_uncovered_retained_dimension": 77,
+  "all_high_physical_gap_guard": "1/100000000000000000000000000000000000000",
+  "joint_signed_uniform_floor_comparisons_passed": false,
+  "first_failing_joint_prefix_dimensions": [
+    19,
+    18
+  ],
+  "uniform_floor_failure_proved_both_parities": true,
+  "true_high_inverse_evaluated": false,
+  "next_target": "sharper paid high response on the first failing nineteen-column even and eighteen-column odd frozen packets",
+  "complete_remaining_source_Gram_certified": false,
+  "whole_aperture_positive": false,
+  "RH": false,
+  "Lean": false
+}
