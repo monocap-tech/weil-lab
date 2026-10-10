@@ -1,0 +1,338 @@
+{
+  "milestone": "RC42",
+  "status": "PASS",
+  "source_certificate_sha256": "8568d324f3c27d51aeba79dc12a06afe06866ae2086c895f101c4a162a6676f0",
+  "original_form_source_blob": "e9a44661f94ee6750fc5ad1fbf7dc719fa3ba482",
+  "native_features_certified": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "exponential_degree": 80,
+  "exponential_uniform_remainder_upper": "115626851945005895824350724793934920977843826201410687257519861520453973754841/359636364151641385823714024681956106487851747771297495450955760712952768781880625523458072020839854642470817333384314880000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "cosh_physical_norm_squared_upper": "19485179761/8000000000",
+  "sinh_physical_norm_squared_upper": "1885179761/8000000000",
+  "actual_native_pole_moment_enclosures": [
+    {
+      "j": 0,
+      "trial_m_plus_lower": "534707147911/250000000000",
+      "trial_m_plus_upper": "427765718329/200000000000",
+      "actual_m_plus_lower": "513108025309/250000000000",
+      "actual_m_plus_upper": "556306270513/250000000000",
+      "m_minus_parity_multiplier": "1"
+    },
+    {
+      "j": 1,
+      "trial_m_plus_lower": "348949409381/1000000000000",
+      "trial_m_plus_upper": "174474704691/500000000000",
+      "actual_m_plus_lower": "4167926603/12500000000",
+      "actual_m_plus_upper": "364464690523/1000000000000",
+      "m_minus_parity_multiplier": "-1"
+    },
+    {
+      "j": 2,
+      "trial_m_plus_lower": "-23116246413/31250000000",
+      "trial_m_plus_upper": "-147943977043/200000000000",
+      "actual_m_plus_lower": "-19968498103/25000000000",
+      "actual_m_plus_upper": "-680699846311/1000000000000",
+      "m_minus_parity_multiplier": "1"
+    },
+    {
+      "j": 3,
+      "trial_m_plus_lower": "-238286433351/1000000000000",
+      "trial_m_plus_upper": "-4765728667/20000000000",
+      "actual_m_plus_lower": "-128507633137/500000000000",
+      "actual_m_plus_upper": "-109778800213/500000000000",
+      "m_minus_parity_multiplier": "-1"
+    },
+    {
+      "j": 4,
+      "trial_m_plus_lower": "-11000431519/62500000000",
+      "trial_m_plus_upper": "-176006904303/1000000000000",
+      "actual_m_plus_lower": "-236611655571/1000000000000",
+      "actual_m_plus_upper": "-28850538259/250000000000",
+      "m_minus_parity_multiplier": "1"
+    },
+    {
+      "j": 5,
+      "trial_m_plus_lower": "-6568802877/125000000000",
+      "trial_m_plus_upper": "-10510084603/200000000000",
+      "actual_m_plus_lower": "-4466029339/62500000000",
+      "actual_m_plus_upper": "-33644376607/1000000000000",
+      "m_minus_parity_multiplier": "-1"
+    },
+    {
+      "j": 6,
+      "trial_m_plus_lower": "-29624165429/500000000000",
+      "trial_m_plus_upper": "-59248330857/1000000000000",
+      "actual_m_plus_lower": "-30031473387/250000000000",
+      "actual_m_plus_upper": "814615917/500000000000",
+      "m_minus_parity_multiplier": "1"
+    },
+    {
+      "j": 7,
+      "trial_m_plus_lower": "-10016458293/500000000000",
+      "trial_m_plus_upper": "-4006583317/200000000000",
+      "actual_m_plus_lower": "-19493195609/500000000000",
+      "actual_m_plus_upper": "-33732561/31250000000",
+      "m_minus_parity_multiplier": "-1"
+    }
+  ],
+  "actual_native_signed_pole_head_entry_enclosures": [
+    {
+      "i": 0,
+      "j": 0,
+      "lower": "263279845636501384545481/31250000000000000000000",
+      "upper": "309476666612083133283169/31250000000000000000000"
+    },
+    {
+      "i": 0,
+      "j": 1,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 0,
+      "j": 2,
+      "lower": "-3554752226377/1000000000000",
+      "upper": "-11176721727/4000000000"
+    },
+    {
+      "i": 0,
+      "j": 3,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 0,
+      "j": 4,
+      "lower": "-210605676273/200000000000",
+      "upper": "-94742033377/200000000000"
+    },
+    {
+      "i": 0,
+      "j": 5,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 0,
+      "j": 6,
+      "lower": "-267307151327/500000000000",
+      "upper": "7250815083/1000000000000"
+    },
+    {
+      "i": 0,
+      "j": 7,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 1,
+      "j": 1,
+      "lower": "-132834510638026166013529/500000000000000000000000",
+      "upper": "-17371612167995119609/78125000000000000000"
+    },
+    {
+      "i": 1,
+      "j": 2,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 1,
+      "j": 3,
+      "lower": "146415994193/1000000000000",
+      "upper": "37469195793/200000000000"
+    },
+    {
+      "i": 1,
+      "j": 4,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 1,
+      "j": 5,
+      "lower": "1402272923/62500000000",
+      "upper": "52086720029/1000000000000"
+    },
+    {
+      "i": 1,
+      "j": 6,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 1,
+      "j": 7,
+      "lower": "179961393/250000000000",
+      "upper": "1420916301/50000000000"
+    },
+    {
+      "i": 2,
+      "j": 2,
+      "lower": "463352280767819020308721/500000000000000000000000",
+      "upper": "398740916489514598609/312500000000000000000"
+    },
+    {
+      "i": 2,
+      "j": 3,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 2,
+      "j": 4,
+      "lower": "157108455671/1000000000000",
+      "upper": "188991175817/500000000000"
+    },
+    {
+      "i": 2,
+      "j": 5,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 2,
+      "j": 6,
+      "lower": "-2602665023/1000000000000",
+      "upper": "38379738839/200000000000"
+    },
+    {
+      "i": 2,
+      "j": 7,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 3,
+      "j": 3,
+      "lower": "-16514211774473780460769/125000000000000000000000",
+      "upper": "-12051384976205768845369/125000000000000000000000"
+    },
+    {
+      "i": 3,
+      "j": 4,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 3,
+      "j": 5,
+      "lower": "-36730807033/1000000000000",
+      "upper": "-14773757191/1000000000000"
+    },
+    {
+      "i": 3,
+      "j": 6,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 3,
+      "j": 7,
+      "lower": "-250502443/12500000000",
+      "upper": "-473999369/1000000000000"
+    },
+    {
+      "i": 4,
+      "j": 4,
+      "lower": "832353557834022751081/31250000000000000000000",
+      "upper": "55985075552049535336041/500000000000000000000000"
+    },
+    {
+      "i": 4,
+      "j": 5,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 4,
+      "j": 6,
+      "lower": "-192747621/250000000000",
+      "upper": "56846373099/1000000000000"
+    },
+    {
+      "i": 4,
+      "j": 7,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 5,
+      "j": 5,
+      "lower": "-19945418056808776921/1953125000000000000000",
+      "upper": "-1131944077273648832449/500000000000000000000000"
+    },
+    {
+      "i": 5,
+      "j": 6,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 5,
+      "j": 7,
+      "lower": "-1114331949/200000000000",
+      "upper": "-72634303/1000000000000"
+    },
+    {
+      "i": 6,
+      "j": 6,
+      "lower": "0",
+      "upper": "901889393794089251769/31250000000000000000000"
+    },
+    {
+      "i": 6,
+      "j": 7,
+      "lower": "0",
+      "upper": "0",
+      "reason": "exact parity"
+    },
+    {
+      "i": 7,
+      "j": 7,
+      "lower": "-379984675050736880881/125000000000000000000000",
+      "upper": "-1137885671618721/488281250000000000000"
+    }
+  ],
+  "actual_native_signed_pole_head_rank": 2,
+  "actual_native_signed_pole_head_inertia": [
+    1,
+    1,
+    6
+  ],
+  "physical_signed_pole_operator_norm_upper": "19485179761/4000000000",
+  "canonical_signed_pole_operator_norm_upper": "1227566324943/257000000000",
+  "canonical_negative_pole_part_norm_upper": "118766324943/257000000000",
+  "whole_actual_pole_source_Gram_relative_native_metric_upper": "1506919082134063063953249/66049000000000000000000",
+  "whole_actual_odd_pole_source_Gram_relative_native_metric_upper": "14105439940466263953249/66049000000000000000000",
+  "actual_signed_pole_head_enclosed": true,
+  "actual_signed_pole_source_norm_enclosed": true,
+  "exact_actual_pole_source_Gram_evaluated": false,
+  "complete_native_Gram_certified": false,
+  "full_native_remainder_sources_certified": false,
+  "original_Weil_head_floor_certified": false,
+  "aperture_extended": false
+}
