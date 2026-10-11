@@ -78,3 +78,11 @@ identified by this namespace.
   `norm(v(x)-v(y)) <= L*abs(x-y)`, including the zero difference on the
   diagonal. Measurability and integral convergence in the spatial variable
   remain separate obligations.
+
+## LF10 additive definition
+
+- **Finite-cap internal jump budget:** for a measurable trial with modulus
+  `norm(v(x)-v(y)) <= L*abs(x-y)` on y in [-B,B], the actual cancelled
+  spatial integrand is integrable there. For B>=0 its integral has norm
+  at most `2*B*L`. This budget controls the internal-difference term only;
+  both exterior tails are retained in the endpoint candidate.
