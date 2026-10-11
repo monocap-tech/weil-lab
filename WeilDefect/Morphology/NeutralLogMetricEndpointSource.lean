@@ -81,7 +81,7 @@ theorem neutralLogMetric_weak_of_physical_limit
   have hlimit : Tendsto (fun n => forms n h) atTop
       (𝓝 (inner ℂ source (i h))) := by
     simpa only [hattach] using ht
-  exact (hforms h).unique hlimit
+  exact tendsto_nhds_unique (hforms h) hlimit
 
 end
 end WeilDefect

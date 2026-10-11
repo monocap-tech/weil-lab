@@ -1,5 +1,5 @@
 import WeilDefect.Morphology.NeutralLogMetricEndpointSource
-import WeilDefect.Morphology.NeutralLogMetricPoissonMass
+import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
 
 namespace WeilDefect
 noncomputable section

@@ -48,7 +48,7 @@ theorem neutralLogMetricPoisson_integral (t w : ℝ) (ht : 0 < t) :
     simpa using neg_neg_of_pos ht
   have hl := setIntegral_congr_fun (μ := volume) measurableSet_Iic (poisson_left t w)
   have hr := setIntegral_congr_fun (μ := volume) measurableSet_Ioi (poisson_right t w)
-  have hsplit := integral_add_compl measurableSet_Iic
+  have hsplit := integral_add_compl (s := Iic (0 : ℝ)) measurableSet_Iic
     (neutralLogMetricPoissonIntegrand_integrable t w ht)
   rw [compl_Iic] at hsplit
   rw [← hsplit, hl, hr, integral_exp_mul_complex_Iic hp,
