@@ -1,7 +1,8 @@
 import WeilDefect.Morphology.NeutralLogMetricTruncatedBounds
-import WeilDefect.Morphology.NeutralLogMetricCapL2
+import WeilDefect.Morphology.NeutralLogMetricCapExtension
 import Mathlib.MeasureTheory.Integral.Bochner.Set
 import Mathlib.MeasureTheory.Function.UniformIntegrable
+import Mathlib.MeasureTheory.Function.LpSpace.Complete
 
 namespace WeilDefect
 noncomputable section
@@ -407,6 +408,79 @@ theorem neutralLogMetricPoissonTrialAction_tendsto_L2
     rw [ha]
   simp_rw [he]
   exact neutralLogMetricTruncatedTrialAction_tendsto_L2 B L M hB hL hM v hv hbound hmod
+
+/-- The cutoff spatial action, extended by zero from the closed cap,
+ belongs to the full physical L2 space. Endpoint values have zero volume. -/
+theorem neutralLogMetricTruncatedTrialAction_zeroExtension_memLp_two
+    (ε R B L M : ℝ) (hε : 0 < ε) (hB : 0 ≤ B)
+    (hL : 0 ≤ L) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) :
+    MemLp ((Icc (-B) B).indicator (fun x : ℝ => v x + ∫ y : ℝ,
+      (v x - neutralLogMetricTrialZeroExtension B v y) *
+        (neutralLogMetricTruncatedJumpDensity ε R (x - y) : ℂ))) 2 volume := by
+  apply (memLp_indicator_iff_restrict measurableSet_Icc).mpr
+  have he : volume.restrict (Ioo (-B) B) = volume.restrict (Icc (-B) B) :=
+    Measure.restrict_congr_set (Ioo_ae_eq_Icc' (by simp) (by simp))
+  rw [← he]
+  exact neutralLogMetricTruncatedTrialAction_memLp_two ε R B L M hε hB hL hM
+    v hv hbound hmod
+
+/-- Zero extension transports cap L2 convergence to the whole physical
+ line, with the already constructed endpoint zero extension as limit. -/
+theorem neutralLogMetricTruncatedTrialAction_zeroExtension_tendsto_L2
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) :
+    Tendsto (fun n : ℕ => eLpNorm
+      ((Icc (-B) B).indicator (fun x : ℝ => v x + ∫ y : ℝ,
+        (v x - neutralLogMetricTrialZeroExtension B v y) *
+          (neutralLogMetricTruncatedJumpDensity
+            (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ)) -
+        neutralLogMetricEndpointZeroExtension B v) 2 volume) atTop (𝓝 0) := by
+  let A : ℕ → ℝ → ℂ := fun n x => v x + ∫ y : ℝ,
+    (v x - neutralLogMetricTrialZeroExtension B v y) *
+      (neutralLogMetricTruncatedJumpDensity
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ)
+  have hind (n : ℕ) :
+      (Icc (-B) B).indicator (A n) - neutralLogMetricEndpointZeroExtension B v =
+      (Icc (-B) B).indicator (fun x => A n x - neutralLogMetricEndpointCandidate B v x) := by
+    funext x
+    by_cases hx : x ∈ Icc (-B) B <;>
+      simp [neutralLogMetricEndpointZeroExtension, hx]
+  have he : volume.restrict (Ioo (-B) B) = volume.restrict (Icc (-B) B) :=
+    Measure.restrict_congr_set (Ioo_ae_eq_Icc' (by simp) (by simp))
+  change Tendsto (fun n => eLpNorm
+    ((Icc (-B) B).indicator (A n) - neutralLogMetricEndpointZeroExtension B v)
+    2 volume) atTop (𝓝 0)
+  simp_rw [hind, eLpNorm_indicator_eq_eLpNorm_restrict measurableSet_Icc, ← he]
+  exact neutralLogMetricTruncatedTrialAction_tendsto_L2 B L M hB hL hM v hv hbound hmod
+
+/-- The actual full-line L2 vectors of the zero-extended cutoff actions
+ converge to the existing physical endpoint-candidate representative. -/
+theorem neutralLogMetricTruncatedTrialAction_toLp_tendsto
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) :
+    Tendsto (fun n : ℕ =>
+      (neutralLogMetricTruncatedTrialAction_zeroExtension_memLp_two
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) B L M (by positivity) hB hL hM
+        v hv hbound hmod).toLp
+      ((Icc (-B) B).indicator (fun x : ℝ => v x + ∫ y : ℝ,
+        (v x - neutralLogMetricTrialZeroExtension B v y) *
+          (neutralLogMetricTruncatedJumpDensity
+            (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ))))
+      atTop (𝓝 (neutralLogMetricEndpointCandidateL2 B M L hB hL v hv hbound hmod)) := by
+  letI : Fact ((1 : ℝ≥0∞) ≤ 2) := ⟨by norm_num⟩
+  unfold neutralLogMetricEndpointCandidateL2
+  apply (Lp.tendsto_Lp_iff_tendsto_eLpNorm'' _ _ _ _).mpr
+  exact neutralLogMetricTruncatedTrialAction_zeroExtension_tendsto_L2
+    B L M hB hL hM v hv hbound hmod
 
 end
 end WeilDefect
