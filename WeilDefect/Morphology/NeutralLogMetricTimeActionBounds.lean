@@ -63,5 +63,63 @@ theorem neutralLogMetricTimeAction_norm_le
     (add_le_add (hbound x) hn)
   simpa only [w, Complex.norm_real, Real.norm_eq_abs] using hsum
 
+
+/-- Every actual full-line finite action is in physical L2. Squared
+ norms are dominated by the uniform bound times the proved integrable norm. -/
+theorem neutralLogMetricTimeAction_memLp_two
+    (ε R M : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v) (hvi : Integrable v)
+    (hbound : ∀ y, ‖v y‖ ≤ M) :
+    MemLp (fun x : ℝ => v x + ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))) 2 volume := by
+  let A : ℝ → ℂ := fun x => v x + ∫ t in Icc ε R,
+    ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+      (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))
+  let C : ℝ := M + (∫ t in Icc ε R, |Real.exp (-(Real.exp 1) * t) / t|) * (2 * M)
+  have hA : Integrable A := neutralLogMetricTimeAction_integrable ε R M hε hM v hv hvi hbound
+  have hb (x : ℝ) : ‖A x‖ ≤ C := neutralLogMetricTimeAction_norm_le ε R x M hε hM v hv hbound
+  apply (memLp_two_iff_integrable_sq_norm hA.aestronglyMeasurable).mpr
+  simp_rw [pow_two]
+  apply (hA.norm.const_mul C).mono'
+    (hA.aestronglyMeasurable.norm.mul hA.aestronglyMeasurable.norm)
+  filter_upwards [] with x
+  rw [Real.norm_eq_abs, abs_of_nonneg (mul_nonneg (norm_nonneg _) (norm_nonneg _))]
+  exact mul_le_mul_of_nonneg_right (hb x) (norm_nonneg _)
+
+/-- Cap-bounded measurable trials give full-line finite actions in L2,
+ including their exterior component, without any spectral-domain premise. -/
+theorem neutralLogMetricTimeAction_zeroExtension_memLp_two
+    (B M ε R : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ y ∈ Icc (-B) B, ‖v y‖ ≤ M) :
+    MemLp (fun x : ℝ => neutralLogMetricTrialZeroExtension B v x +
+      ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (neutralLogMetricTrialZeroExtension B v x - ∫ y : ℝ,
+          neutralLogMetricTrialZeroExtension B v y *
+            (neutralLogMetricPoissonDensity t (x - y) : ℂ))) 2 volume := by
+  exact neutralLogMetricTimeAction_memLp_two ε R M hε hM _
+    (neutralLogMetricTrialZeroExtension_measurable B v hv)
+    (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound)
+    (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
+
+/-- The actual full-line finite action has integrable pairings against
+ every physical L2 test, with no spectral-domain assumption. -/
+theorem neutralLogMetricTimeAction_integrable_inner
+    (ε R M : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v) (hvi : Integrable v)
+    (hbound : ∀ y, ‖v y‖ ≤ M) (φ : RealComplexL2) :
+    Integrable (fun x : ℝ => inner ℂ
+      (v x + ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))) (φ x)) := by
+  let A : ℝ → ℂ := fun x => v x + ∫ t in Icc ε R,
+    ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+      (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))
+  have hA : MemLp A 2 volume := neutralLogMetricTimeAction_memLp_two ε R M hε hM
+    v hv hvi hbound
+  apply (L2.integrable_inner (𝕜 := ℂ) (hA.toLp A) φ).congr
+  filter_upwards [hA.coeFn_toLp] with x hx
+  rw [hx]
+
 end
 end WeilDefect
