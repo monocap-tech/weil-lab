@@ -147,5 +147,40 @@ theorem neutralLogMetricTruncatedTrialJump_integral_tendsto
   · exact Eventually.of_forall (fun y =>
       neutralLogMetricTruncatedTrialJump_natural_tendsto B x y hxcap v)
 
+/-- The positive-time physical action, with concrete cutoffs removed,
+ recovers the endpoint candidate for measurable cap-bounded Lipschitz trials. -/
+theorem neutralLogMetricPoissonTrialAction_tendsto_endpointCandidate
+    (B x L M : ℝ) (hB : 0 ≤ B) (hx : x ∈ Ioo (-B) B)
+    (hL : 0 ≤ L) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ y ∈ Icc (-B) B, ‖v y‖ ≤ M)
+    (hmod : ∀ y ∈ Icc (-B) B, ‖v x - v y‖ ≤ L * |x - y|) :
+    Tendsto (fun n : ℕ => v x +
+      ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+        ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+          (v x - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+            (neutralLogMetricPoissonDensity t (x - y) : ℂ)))
+      atTop (𝓝 (neutralLogMetricEndpointCandidate B v x)) := by
+  have hxcap : x ∈ Icc (-B) B := ⟨hx.1.le, hx.2.le⟩
+  have hxv : neutralLogMetricTrialZeroExtension B v x = v x := by
+    simp [neutralLogMetricTrialZeroExtension, hxcap]
+  have he (n : ℕ) :
+      (∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+        ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+          (v x - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+            (neutralLogMetricPoissonDensity t (x - y) : ℂ))) =
+      ∫ y : ℝ, (v x - neutralLogMetricTrialZeroExtension B v y) *
+        (neutralLogMetricTruncatedJumpDensity
+          (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ) := by
+    simpa only [hxv] using neutralLogMetricTruncatedJump_action
+      (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) x M (by positivity) hM
+      (neutralLogMetricTrialZeroExtension B v)
+      (neutralLogMetricTrialZeroExtension_measurable B v hv)
+      (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
+  rw [neutralLogMetricEndpointCandidate_eq_trial_jump B x L hB hx v hv hL hmod]
+  simp_rw [he]
+  exact tendsto_const_nhds.add
+    (neutralLogMetricTruncatedTrialJump_integral_tendsto
+      B x L M hB hx hL hM v hv hbound hmod)
+
 end
 end WeilDefect
