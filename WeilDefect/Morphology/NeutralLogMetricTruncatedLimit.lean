@@ -39,5 +39,44 @@ theorem neutralLogMetricTruncatedJumpDensity_tendsto_abs
     neutralLogMetricTruncatedJumpDensity_tendsto ε R hmono hcover |r|
       (abs_pos.mpr hr)
 
+/-- The reciprocal/natural cutoff intervals increase with the index. -/
+theorem neutralLogMetricTimeCutoff_monotone :
+    Monotone (fun n : ℕ => Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1)) := by
+  intro i j hij
+  have hij' : (i : ℝ) + 1 ≤ (j : ℝ) + 1 := by
+    exact_mod_cast Nat.add_le_add_right hij 1
+  exact Icc_subset_Icc (one_div_le_one_div_of_le (by positivity) hij') hij'
+
+/-- The concrete cutoffs cover all positive time and include no nonpositive time. -/
+theorem neutralLogMetricTimeCutoff_iUnion :
+    (⋃ n : ℕ, Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1)) = Ioi (0 : ℝ) := by
+  ext t
+  simp only [mem_iUnion, mem_Icc, mem_Ioi]
+  constructor
+  · rintro ⟨n, hn⟩
+    exact lt_of_lt_of_le (by positivity : 0 < 1 / ((n : ℝ) + 1)) hn.1
+  · intro ht
+    obtain ⟨n, hn⟩ := exists_nat_gt (max t (1 / t))
+    have hrec : 1 / t ≤ (n : ℝ) + 1 := by
+      have hm := le_max_right t (1 / t)
+      linarith
+    refine ⟨n, ?_, ?_⟩
+    · apply (div_le_iff₀ (by positivity : 0 < (n : ℝ) + 1)).mpr
+      have hm := (div_le_iff₀ ht).mp hrec
+      nlinarith
+    · have hm := le_max_left t (1 / t)
+      linarith
+
+/-- The actual reciprocal/natural cutoffs recover the full density at
+ every nonzero signed spatial displacement without exhaustion premises. -/
+theorem neutralLogMetricTruncatedJumpDensity_natural_tendsto
+    (r : ℝ) (hr : r ≠ 0) :
+    Tendsto (fun n : ℕ => neutralLogMetricTruncatedJumpDensity
+      (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) r)
+      atTop (𝓝 (neutralLogMetricJumpDensity |r|)) := by
+  exact neutralLogMetricTruncatedJumpDensity_tendsto_abs
+    (fun n => 1 / ((n : ℝ) + 1)) (fun n => (n : ℝ) + 1)
+    neutralLogMetricTimeCutoff_monotone neutralLogMetricTimeCutoff_iUnion r hr
+
 end
 end WeilDefect
