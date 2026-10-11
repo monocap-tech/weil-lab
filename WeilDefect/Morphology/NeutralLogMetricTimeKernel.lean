@@ -25,7 +25,8 @@ theorem neutralLogMetricTimeKernel_joint_integrable
   constructor
   · filter_upwards [ae_restrict_mem measurableSet_Icc] with t ht
     exact (neutralLogMetricPoissonDensity_integrable t
-      (lt_of_lt_of_le hε ht.1)).ofReal.const_mul _
+      (lt_of_lt_of_le hε ht.1)).ofReal.const_mul
+        ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ)
   · have hc : IntegrableOn (fun _ : ℝ => 1 / ε) (Icc ε R) :=
       integrableOn_const (by simp : volume (Icc ε R) ≠ ⊤)
     apply hc.mono' hm.stronglyMeasurable.norm.integral_prod_right'.aestronglyMeasurable
@@ -46,7 +47,7 @@ theorem neutralLogMetricTimeKernel_integrable (ε R : ℝ) (hε : 0 < ε) :
     Integrable (fun x : ℝ => ∫ t in Icc ε R,
       ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
         (neutralLogMetricPoissonDensity t x : ℂ)) :=
-  (neutralLogMetricTimeKernel_joint_integrable ε R hε).integral_prod_left
+  (neutralLogMetricTimeKernel_joint_integrable ε R hε).integral_prod_right
 
 /-- Fourier transformation commutes with the finite time kernel mixture,
  by the proved joint integrability and unit modulus of the Fourier character. -/
@@ -94,7 +95,10 @@ theorem neutralLogMetricTimeKernel_fourier
         apply integral_congr_ae
         filter_upwards [] with x
         ring
-      rw [he, neutralLogMetricPoissonDensity_fourier t ξ htpos]
+      dsimp only
+      exact he.trans (congrArg
+        (fun z : ℂ => ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) * z)
+        (neutralLogMetricPoissonDensity_fourier t ξ htpos))
 
 
 /-- Joint convergence of the finite weighted convolution at every
@@ -160,6 +164,7 @@ theorem neutralLogMetricTimeConvolution_eq_kernel
           (neutralLogMetricPoissonDensity t (x - y) : ℂ) := by
       apply setIntegral_congr_fun measurableSet_Icc
       intro t ht
+      dsimp only
       rw [← integral_const_mul]
       apply integral_congr_ae
       filter_upwards [] with y
