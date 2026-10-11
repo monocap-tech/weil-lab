@@ -76,5 +76,47 @@ theorem neutralLogMetricTimeAction_zeroExtension_fourier_tendsto_L2
     (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound)
     (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound) hp
 
+
+/-- Every actual finite-action Fourier transform belongs to spectral
+ L2 under the full weighted-product domain condition. -/
+theorem neutralLogMetricTimeAction_fourier_memLp_two
+    (ε R M : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v) (hvi : Integrable v)
+    (hbound : ∀ y, ‖v y‖ ≤ M)
+    (hp : MemLp (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume) :
+    MemLp (𝓕 (fun x : ℝ => v x + ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)))) 2 volume := by
+  have hc : Continuous (𝓕 (fun x : ℝ => v x + ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)))) :=
+    VectorFourier.fourierIntegral_continuous Real.continuous_fourierChar
+      (innerSL ℝ).continuous₂
+      (neutralLogMetricTimeAction_integrable ε R M hε hM v hv hvi hbound)
+  apply hp.norm.mono' hc.aestronglyMeasurable
+  filter_upwards [] with ξ
+  have hw : 0 ≤ logarithmicFourierWeight ξ := by
+    linarith [one_le_logarithmicFourierWeight ξ]
+  rw [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg hw]
+  exact neutralLogMetricTimeAction_fourier_norm_le ε R M ξ hε hM v hv hvi hbound
+
+/-- The actual spectral L2 vectors of the finite-action Fourier
+ transforms converge to the full weighted-product representative. -/
+theorem neutralLogMetricTimeAction_fourier_toLp_tendsto
+    (M : ℝ) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hvi : Integrable v) (hbound : ∀ y, ‖v y‖ ≤ M)
+    (hp : MemLp (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume) :
+    Tendsto (fun n : ℕ =>
+      (neutralLogMetricTimeAction_fourier_memLp_two
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) M (by positivity) hM v hv hvi hbound hp).toLp
+      (𝓕 (fun x : ℝ => v x +
+        ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+          ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+            (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)))))
+      atTop (𝓝 (hp.toLp (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ)))) := by
+  let : Fact ((1 : ℝ≥0∞) ≤ 2) := ⟨by norm_num⟩
+  apply (Lp.tendsto_Lp_iff_tendsto_eLpNorm'' _ _ _ _).mpr
+  exact neutralLogMetricTimeAction_fourier_tendsto_L2 M hM v hv hvi hbound hp
+
 end
 end WeilDefect
