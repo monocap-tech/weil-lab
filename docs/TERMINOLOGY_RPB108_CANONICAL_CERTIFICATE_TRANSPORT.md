@@ -96,3 +96,12 @@ identified by this namespace.
   tail beyond d>0, with `tail(d) <= C/d`. Both exterior contributions
   are therefore bounded at interior points. This coarse reciprocal-distance
   bound does not establish endpoint L2 integrability.
+
+## LF13 additive definition
+
+- **Logarithmic endpoint budget:** with `C=1/(2*pi^2*exp(1))`,
+  `tail(d) <= C + abs(log(d))` for every d>0. Split at distance one,
+  integrate the near-diagonal reciprocal majorant, and use the damped
+  far-tail budget beyond one. Both endpoint contributions are bounded
+  by the corresponding sum of absolute logarithms at interior points.
+  Square integrability and spectral source identification are separate.
