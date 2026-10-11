@@ -404,7 +404,6 @@ theorem neutralLogMetricPoissonTrialAction_tendsto_L2
       (neutralLogMetricTrialZeroExtension_measurable B v hv)
       (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
     simp only [hxv] at ha
-    dsimp only
     rw [ha]
   simp_rw [he]
   exact neutralLogMetricTruncatedTrialAction_tendsto_L2 B L M hB hL hM v hv hbound hmod
@@ -481,6 +480,30 @@ theorem neutralLogMetricTruncatedTrialAction_toLp_tendsto
   apply (Lp.tendsto_Lp_iff_tendsto_eLpNorm'' _ _ _ _).mpr
   exact neutralLogMetricTruncatedTrialAction_zeroExtension_tendsto_L2
     B L M hB hL hM v hv hbound hmod
+
+/-- Physical pairings against every fixed L2 test vector converge to
+ those of the existing endpoint-candidate representative. -/
+theorem neutralLogMetricTruncatedTrialAction_inner_tendsto
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) (φ : RealComplexL2) :
+    Tendsto (fun n : ℕ => inner ℂ
+      ((neutralLogMetricTruncatedTrialAction_zeroExtension_memLp_two
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) B L M (by positivity) hB hL hM
+        v hv hbound hmod).toLp
+      ((Icc (-B) B).indicator (fun x : ℝ => v x + ∫ y : ℝ,
+        (v x - neutralLogMetricTrialZeroExtension B v y) *
+          (neutralLogMetricTruncatedJumpDensity
+            (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ)))) φ)
+      atTop (𝓝 (inner ℂ
+        (neutralLogMetricEndpointCandidateL2 B M L hB hL v hv hbound hmod) φ)) := by
+  have hc : Continuous (fun u : RealComplexL2 => inner ℂ u φ) :=
+    continuous_id.inner (𝕜 := ℂ) continuous_const
+  exact (hc.tendsto _).comp
+    (neutralLogMetricTruncatedTrialAction_toLp_tendsto
+      B L M hB hL hM v hv hbound hmod)
 
 end
 end WeilDefect
