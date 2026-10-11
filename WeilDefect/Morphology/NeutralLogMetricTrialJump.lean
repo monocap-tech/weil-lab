@@ -59,10 +59,16 @@ theorem neutralLogMetricTrialJump_integrable
     (hmod : ∀ y ∈ Icc (-B) B, ‖v x - v y‖ ≤ L * |x - y|) :
     Integrable (neutralLogMetricTrialJump B v x) := by
   have hi := (neutralLogMetricJumpDifference_integrableOn B x L v hv hL hmod).integrable_indicator measurableSet_Icc
-  have hl := ((Complex.ofRealCLM.integrable_comp
-    (neutralLogMetricJump_left_exterior_integrable B x hx.1)).const_mul (v x)).integrable_indicator measurableSet_Iio
-  have hr := ((Complex.ofRealCLM.integrable_comp
-    (neutralLogMetricJump_right_exterior_integrable B x hx.2)).const_mul (v x)).integrable_indicator measurableSet_Ioi
+  have hl0 : IntegrableOn (fun y : ℝ =>
+      v x * (neutralLogMetricJumpDensity |x - y| : ℂ)) (Iio (-B)) :=
+    (Complex.ofRealCLM.integrable_comp
+      (neutralLogMetricJump_left_exterior_integrable B x hx.1)).const_mul (v x)
+  have hl := hl0.integrable_indicator measurableSet_Iio
+  have hr0 : IntegrableOn (fun y : ℝ =>
+      v x * (neutralLogMetricJumpDensity |x - y| : ℂ)) (Ioi B) :=
+    (Complex.ofRealCLM.integrable_comp
+      (neutralLogMetricJump_right_exterior_integrable B x hx.2)).const_mul (v x)
+  have hr := hr0.integrable_indicator measurableSet_Ioi
   rw [neutralLogMetricTrialJump_partition B hB v x]
   exact (hi.add hl).add hr
 
@@ -77,10 +83,16 @@ theorem neutralLogMetricTrialJump_integral
         (v x - v y) * (neutralLogMetricJumpDensity |x - y| : ℂ)) +
         v x * (neutralLogMetricExteriorSource B x : ℂ) := by
   have hi := (neutralLogMetricJumpDifference_integrableOn B x L v hv hL hmod).integrable_indicator measurableSet_Icc
-  have hl := ((Complex.ofRealCLM.integrable_comp
-    (neutralLogMetricJump_left_exterior_integrable B x hx.1)).const_mul (v x)).integrable_indicator measurableSet_Iio
-  have hr := ((Complex.ofRealCLM.integrable_comp
-    (neutralLogMetricJump_right_exterior_integrable B x hx.2)).const_mul (v x)).integrable_indicator measurableSet_Ioi
+  have hl0 : IntegrableOn (fun y : ℝ =>
+      v x * (neutralLogMetricJumpDensity |x - y| : ℂ)) (Iio (-B)) :=
+    (Complex.ofRealCLM.integrable_comp
+      (neutralLogMetricJump_left_exterior_integrable B x hx.1)).const_mul (v x)
+  have hl := hl0.integrable_indicator measurableSet_Iio
+  have hr0 : IntegrableOn (fun y : ℝ =>
+      v x * (neutralLogMetricJumpDensity |x - y| : ℂ)) (Ioi B) :=
+    (Complex.ofRealCLM.integrable_comp
+      (neutralLogMetricJump_right_exterior_integrable B x hx.2)).const_mul (v x)
+  have hr := hr0.integrable_indicator measurableSet_Ioi
   rw [neutralLogMetricTrialJump_partition B hB v x,
     integral_add (hi.add hl) hr, integral_add hi hl,
     integral_indicator measurableSet_Icc, integral_indicator measurableSet_Iio,
