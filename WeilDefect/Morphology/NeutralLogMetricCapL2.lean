@@ -12,7 +12,7 @@ theorem neutralLogMetricEndpointTail_left_memLp_two (B : ℝ) (hB : 0 ≤ B) :
   have hr : MeasurePreserving (fun x : ℝ => B - x) volume volume := by
     simpa [Function.comp_def, sub_eq_add_neg] using
       (measurePreserving_add_left (volume : Measure ℝ) B).comp
-        (measurePreserving_neg (volume : Measure ℝ))
+        (Measure.measurePreserving_neg (volume : Measure ℝ))
   have hp := hr.restrict_preimage
     (measurableSet_Ioc : MeasurableSet (Ioc (0 : ℝ) (2 * B)))
   have ht := (neutralLogMetricEndpointTail_memLp_two (2 * B) (by positivity)).comp_measurePreserving hp

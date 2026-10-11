@@ -38,7 +38,7 @@ theorem neutralLogMetricJump_left_exterior_integrable
   have hr : MeasurePreserving (fun y : ℝ => x - y) volume volume := by
     simpa [Function.comp_def, sub_eq_add_neg] using
       (measurePreserving_add_left (volume : Measure ℝ) x).comp
-        (measurePreserving_neg (volume : Measure ℝ))
+        (Measure.measurePreserving_neg (volume : Measure ℝ))
   have hp := hr.restrict_preimage
     (measurableSet_Ioi : MeasurableSet (Ioi (B + x)))
   rw [hs] at hp
@@ -92,7 +92,7 @@ theorem neutralLogMetricJump_left_exterior_integral
   have hr : MeasurePreserving (fun y : ℝ => x - y) volume volume := by
     simpa [Function.comp_def, sub_eq_add_neg] using
       (measurePreserving_add_left (volume : Measure ℝ) x).comp
-        (measurePreserving_neg (volume : Measure ℝ))
+        (Measure.measurePreserving_neg (volume : Measure ℝ))
   have he := hr.setIntegral_preimage_emb
     hm neutralLogMetricJumpDensity (Ioi (B + x))
   rw [hs] at he
