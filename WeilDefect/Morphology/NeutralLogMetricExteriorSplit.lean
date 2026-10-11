@@ -16,10 +16,12 @@ theorem neutralLogMetricJump_right_exterior_integrable
   have hp := (measurePreserving_add_right (volume : Measure ℝ) (-x)).restrict_preimage
     (measurableSet_Ioi : MeasurableSet (Ioi (B - x)))
   rw [hs] at hp
-  have hi := hp.integrable_comp_of_integrable
+  have hi : IntegrableOn (fun y : ℝ => neutralLogMetricJumpDensity (y + (-x)))
+      (Ioi B) := hp.integrable_comp_of_integrable
     (neutralLogMetricEndpointTail_integrable (B - x) (by linarith))
   apply hi.congr_fun _ measurableSet_Ioi
   intro y hy
+  change B < y at hy
   change neutralLogMetricJumpDensity (y + (-x)) = neutralLogMetricJumpDensity |x - y|
   congr 1
   rw [abs_of_neg (by linarith [hy] : x - y < 0)]
@@ -33,13 +35,19 @@ theorem neutralLogMetricJump_left_exterior_integrable
     ext y
     simp only [mem_preimage, mem_Ioi, mem_Iio]
     constructor <;> intro h <;> linarith
-  have hp := (measurePreserving_sub_left (volume : Measure ℝ) x).restrict_preimage
+  have hr : MeasurePreserving (fun y : ℝ => x - y) volume volume := by
+    simpa [Function.comp_def, sub_eq_add_neg] using
+      (measurePreserving_add_left (volume : Measure ℝ) x).comp
+        (measurePreserving_neg (volume : Measure ℝ))
+  have hp := hr.restrict_preimage
     (measurableSet_Ioi : MeasurableSet (Ioi (B + x)))
   rw [hs] at hp
-  have hi := hp.integrable_comp_of_integrable
+  have hi : IntegrableOn (fun y : ℝ => neutralLogMetricJumpDensity (x - y))
+      (Iio (-B)) := hp.integrable_comp_of_integrable
     (neutralLogMetricEndpointTail_integrable (B + x) (by linarith))
   apply hi.congr_fun _ measurableSet_Iio
   intro y hy
+  change y < -B at hy
   change neutralLogMetricJumpDensity (x - y) = neutralLogMetricJumpDensity |x - y|
   rw [abs_of_pos (by linarith [hy] : 0 < x - y)]
 
@@ -61,6 +69,7 @@ theorem neutralLogMetricJump_right_exterior_integral
         ∫ y in Ioi B, neutralLogMetricJumpDensity (y + (-x)) := by
       apply setIntegral_congr_fun measurableSet_Ioi
       intro y hy
+      change B < y at hy
       change neutralLogMetricJumpDensity |x - y| = neutralLogMetricJumpDensity (y + (-x))
       congr 1
       rw [abs_of_neg (by linarith [hy] : x - y < 0)]
@@ -77,10 +86,14 @@ theorem neutralLogMetricJump_left_exterior_integral
     simp only [mem_preimage, mem_Ioi, mem_Iio]
     constructor <;> intro h <;> linarith
   have hm : MeasurableEmbedding (fun y : ℝ => x - y) := by
-    simpa only [sub_eq_add_neg, Function.comp_def] using
+    simpa [sub_eq_add_neg, Function.comp_def] using
       (MeasurableEquiv.addLeft x).measurableEmbedding.comp
         (MeasurableEquiv.neg ℝ).measurableEmbedding
-  have he := (measurePreserving_sub_left (volume : Measure ℝ) x).setIntegral_preimage_emb
+  have hr : MeasurePreserving (fun y : ℝ => x - y) volume volume := by
+    simpa [Function.comp_def, sub_eq_add_neg] using
+      (measurePreserving_add_left (volume : Measure ℝ) x).comp
+        (measurePreserving_neg (volume : Measure ℝ))
+  have he := hr.setIntegral_preimage_emb
     hm neutralLogMetricJumpDensity (Ioi (B + x))
   rw [hs] at he
   calc
@@ -88,6 +101,7 @@ theorem neutralLogMetricJump_left_exterior_integral
         ∫ y in Iio (-B), neutralLogMetricJumpDensity (x - y) := by
       apply setIntegral_congr_fun measurableSet_Iio
       intro y hy
+      change y < -B at hy
       change neutralLogMetricJumpDensity |x - y| = neutralLogMetricJumpDensity (x - y)
       rw [abs_of_pos (by linarith [hy] : 0 < x - y)]
     _ = neutralLogMetricEndpointTail (B + x) := he
