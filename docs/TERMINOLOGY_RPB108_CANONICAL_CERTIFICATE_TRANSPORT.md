@@ -123,3 +123,13 @@ identified by this namespace.
   the logarithmic bound. Transferring this to the two physical cap endpoints,
   constructing the complete candidate in L2 and identifying its source
   action are separate obligations.
+
+## LF22 additive definition
+
+- **Physical cap candidate L2 membership:** actual L2 membership on the
+  interior (-B,B) of both endpoint tails, their bounded-trial product and
+  the complete endpoint candidate, for B>=0 and a measurable trial with
+  a pointwise bound and Lipschitz modulus on [-B,B]. This is a function
+  membership result; weak attachment, spectral identity and domain
+  identification remain separate. Closed-cap null-endpoint transport
+  and full-line zero extension are not yet invoked.

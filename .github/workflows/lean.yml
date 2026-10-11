@@ -58,7 +58,8 @@ jobs:
             WeilDefect.Morphology.NeutralLogMetricEndpointBounds \
             WeilDefect.Morphology.NeutralLogMetricEndpointLog \
             WeilDefect.Morphology.NeutralLogMetricEndpointMeasurable \
-            WeilDefect.Morphology.NeutralLogMetricEndpointL2 2>&1 | tee certificate-build.log
+            WeilDefect.Morphology.NeutralLogMetricEndpointL2 \
+            WeilDefect.Morphology.NeutralLogMetricCapL2 2>&1 | tee certificate-build.log
 
       - name: Check complete root library
         shell: bash
