@@ -53,7 +53,13 @@ theorem neutralLogMetricPoissonDifference_integrable
       (v x - v y) * (neutralLogMetricPoissonDensity t (x - y) : ℂ)) := by
   have hc := (neutralLogMetricPoissonDensity_shift_integrable t x ht).ofReal.const_mul (v x)
   have hvp := neutralLogMetricPoissonProduct_integrable t x M ht v hv hbound
-  simpa only [Pi.sub_apply, sub_mul] using hc.sub hvp
+  apply (hc.sub hvp).congr
+  filter_upwards [] with y
+  change v x * (neutralLogMetricPoissonDensity t (x - y) : ℂ) -
+      v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ) =
+    (v x - v y) * (neutralLogMetricPoissonDensity t (x - y) : ℂ)
+  exact (sub_mul (v x) (v y)
+    (neutralLogMetricPoissonDensity t (x - y) : ℂ)).symm
 
 /-- Exact positive-time action: the cancelled integral is identity minus
 Poisson convolution, with genuine convergence proved above. -/
@@ -66,7 +72,6 @@ theorem neutralLogMetricPoissonDifference_integral
   have hvp := neutralLogMetricPoissonProduct_integrable t x M ht v hv hbound
   simp_rw [sub_mul]
   have hsub := integral_sub hc hvp
-  simp only [Pi.sub_apply] at hsub
   dsimp only at hsub ⊢
   rw [hsub, integral_const_mul, integral_complex_ofReal,
     neutralLogMetricPoissonDensity_shift_integral t x ht]
