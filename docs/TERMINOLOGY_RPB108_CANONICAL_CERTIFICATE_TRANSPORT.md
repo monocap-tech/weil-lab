@@ -144,3 +144,11 @@ identified by this namespace.
   everywhere with that formula. This is not yet the spectral source or
   a weak representative of the logarithmic metric. Endpoint null-set
   transport does not prove convergence of the endpoint improper integrals.
+
+## LF24 additive definition
+
+- **Exterior half-line tail identification:** the actual spatial kernel
+  integral over y>B equals tail(B-x) when x<B; the integral over y<-B
+  equals tail(B+x) when -B<x. Translation and reflection preserve volume.
+  These are the two geometric exterior pieces of the jump operator; its
+  complete zero-extension split and source attachment remain separate.
