@@ -182,5 +182,66 @@ theorem neutralLogMetricPoissonTrialAction_tendsto_endpointCandidate
     (neutralLogMetricTruncatedTrialJump_integral_tendsto
       B x L M hB hx hL hM v hv hbound hmod)
 
+/-- A cutoff-independent spatial norm budget for every truncated trial
+ action, with the genuine endpoint tails retained in the envelope. -/
+theorem neutralLogMetricTruncatedTrialJump_integral_norm_le
+    (ε R B x L M : ℝ) (hε : 0 < ε) (hB : 0 ≤ B)
+    (hx : x ∈ Ioo (-B) B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ y ∈ Icc (-B) B, ‖v y‖ ≤ M)
+    (hmod : ∀ y ∈ Icc (-B) B, ‖v x - v y‖ ≤ L * |x - y|) :
+    ‖∫ y : ℝ, (v x - neutralLogMetricTrialZeroExtension B v y) *
+      (neutralLogMetricTruncatedJumpDensity ε R (x - y) : ℂ)‖ ≤
+      2 * B * L + M * neutralLogMetricExteriorSource B x := by
+  have hxcap : x ∈ Icc (-B) B := ⟨hx.1.le, hx.2.le⟩
+  have hxv : neutralLogMetricTrialZeroExtension B v x = v x := by
+    simp [neutralLogMetricTrialZeroExtension, hxcap]
+  have ht0 := neutralLogMetricTruncatedJump_integrable ε R x M hε hM
+    (neutralLogMetricTrialZeroExtension B v)
+    (neutralLogMetricTrialZeroExtension_measurable B v hv)
+    (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
+  have ht : Integrable (fun y : ℝ =>
+      (v x - neutralLogMetricTrialZeroExtension B v y) *
+        (neutralLogMetricTruncatedJumpDensity ε R (x - y) : ℂ)) := by
+    simpa only [hxv] using ht0
+  calc
+    _ ≤ ∫ y : ℝ, ‖(v x - neutralLogMetricTrialZeroExtension B v y) *
+        (neutralLogMetricTruncatedJumpDensity ε R (x - y) : ℂ)‖ :=
+      norm_integral_le_integral_norm _
+    _ ≤ ∫ y : ℝ, ‖neutralLogMetricTrialJump B v x y‖ := by
+      apply integral_mono_ae ht.norm
+        (neutralLogMetricTrialJump_integrable B x L hB hx v hv hL hmod).norm
+      exact Eventually.of_forall (fun y =>
+        neutralLogMetricTruncatedTrialJump_norm_le ε R B x y hε hxcap v)
+    _ ≤ _ := neutralLogMetricTrialJump_integral_norm_le
+      B x L M hB hx hL v hv (hbound x hxcap) hmod
+
+/-- Every finite positive-time trial action obeys the same endpoint-aware
+ budget, independently of the lower and upper time cutoffs. -/
+theorem neutralLogMetricPoissonTrialAction_norm_le
+    (ε R B x L M : ℝ) (hε : 0 < ε) (hB : 0 ≤ B)
+    (hx : x ∈ Ioo (-B) B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ y ∈ Icc (-B) B, ‖v y‖ ≤ M)
+    (hmod : ∀ y ∈ Icc (-B) B, ‖v x - v y‖ ≤ L * |x - y|) :
+    ‖v x + ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+          (neutralLogMetricPoissonDensity t (x - y) : ℂ))‖ ≤
+      M + 2 * B * L + M * neutralLogMetricExteriorSource B x := by
+  have hxcap : x ∈ Icc (-B) B := ⟨hx.1.le, hx.2.le⟩
+  have hxv : neutralLogMetricTrialZeroExtension B v x = v x := by
+    simp [neutralLogMetricTrialZeroExtension, hxcap]
+  have he := neutralLogMetricTruncatedJump_action ε R x M hε hM
+    (neutralLogMetricTrialZeroExtension B v)
+    (neutralLogMetricTrialZeroExtension_measurable B v hv)
+    (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
+  simp only [hxv] at he
+  rw [he]
+  have hj := neutralLogMetricTruncatedTrialJump_integral_norm_le
+    ε R B x L M hε hB hx hL hM v hv hbound hmod
+  have hvx := hbound x hxcap
+  exact (norm_add_le _ _).trans (by linarith)
+
 end
 end WeilDefect
