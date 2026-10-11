@@ -58,3 +58,10 @@ identified by this namespace.
   decay `-t*|ξ|` and phase `w*ξ`, where t>0 and w is angular frequency.
 - **Normalized Poisson density:** `2*t/(t^2 + 4*pi^2*x^2)`, obtained when
   the angular frequency is `2*pi*x` in the project's inverse transform.
+
+## LF08 additive definition
+
+- **Poisson mass budget:** actual integrability, positivity and exact unit
+  integral of the normalized physical Poisson density. Its absolute integral
+  is also one. This concerns the full real line; finite-cap compression still
+  loses exterior mass and retains both endpoint contributions.
