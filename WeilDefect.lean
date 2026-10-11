@@ -275,3 +275,4 @@ import WeilDefect.Morphology.NeutralLogMetricLaplaceCutoff
 import WeilDefect.Morphology.NeutralLogMetricTimeActionLimit
 import WeilDefect.Morphology.NeutralLogMetricTimeActionBounds
 import WeilDefect.Morphology.NeutralLogMetricSpectralL2
+import WeilDefect.Morphology.NeutralLogMetricFourierAttachment

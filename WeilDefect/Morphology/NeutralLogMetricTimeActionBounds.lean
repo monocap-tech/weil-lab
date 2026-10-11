@@ -44,7 +44,7 @@ theorem neutralLogMetricTimeAction_norm_le
     simp_rw [mul_assoc]
     exact integral_const_mul _ _
   have hi : IntegrableOn (fun t => w t * (v x - C t)) (Icc ε R) := by
-    simpa only [mul_sub] using (hw.mul_const (v x)).sub hc
+    simpa only [mul_sub, Pi.sub_apply] using (hw.mul_const (v x)).sub hc
   have hb : ∀ᵐ t ∂(volume.restrict (Icc ε R)),
       ‖w t * (v x - C t)‖ ≤ ‖w t‖ * (2 * M) := by
     filter_upwards [ae_restrict_mem measurableSet_Icc] with t ht
@@ -84,6 +84,7 @@ theorem neutralLogMetricTimeAction_memLp_two
   apply (hA.norm.const_mul C).mono'
     (hA.aestronglyMeasurable.norm.mul hA.aestronglyMeasurable.norm)
   filter_upwards [] with x
+  change ‖‖A x‖ * ‖A x‖‖ ≤ C * ‖A x‖
   rw [Real.norm_eq_abs, abs_of_nonneg (mul_nonneg (norm_nonneg _) (norm_nonneg _))]
   exact mul_le_mul_of_nonneg_right (hb x) (norm_nonneg _)
 
