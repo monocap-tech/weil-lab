@@ -95,8 +95,10 @@ theorem neutralLogMetricTrialJump_integral
   have hr := hr0.integrable_indicator measurableSet_Ioi
   rw [neutralLogMetricTrialJump_partition B hB v x]
   dsimp only
-  rw [integral_add (hi.add hl) hr, integral_add hi hl,
-    integral_indicator measurableSet_Icc, integral_indicator measurableSet_Iio,
+  have hsum := integral_add (hi.add hl) hr
+  have hpair := integral_add hi hl
+  simp only [Pi.add_apply] at hsum hpair
+  rw [hsum, hpair, integral_indicator measurableSet_Icc, integral_indicator measurableSet_Iio,
     integral_indicator measurableSet_Ioi, integral_const_mul, integral_const_mul,
     integral_complex_ofReal, integral_complex_ofReal,
     neutralLogMetricJump_left_exterior_integral B x hx.1,
