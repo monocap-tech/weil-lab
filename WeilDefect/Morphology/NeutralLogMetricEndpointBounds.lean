@@ -39,12 +39,14 @@ private theorem metricEndpoint_inverse_square_integrable (d : ℝ) (hd : 0 < d) 
   have h := integrableOn_Ioi_rpow_of_lt (a := (-2 : ℝ)) (by norm_num) hd
   apply h.congr_fun _ measurableSet_Ioi
   intro r hr
+  change r ^ (-(2 : ℝ)) = 1 / r ^ 2
   rw [Real.rpow_neg (le_of_lt (hd.trans hr)), Real.rpow_two, one_div]
 
 private theorem metricEndpoint_inverse_square_integral (d : ℝ) (hd : 0 < d) :
     (∫ r in Ioi d, 1 / r ^ 2) = 1 / d := by
   have heq : EqOn (fun r : ℝ => 1 / r ^ 2) (fun r : ℝ => r ^ (-2 : ℝ)) (Ioi d) := by
     intro r hr
+    change 1 / r ^ 2 = r ^ (-(2 : ℝ))
     rw [Real.rpow_neg (le_of_lt (hd.trans hr)), Real.rpow_two, one_div]
   rw [setIntegral_congr_fun measurableSet_Ioi heq,
     integral_Ioi_rpow_of_lt (by norm_num : (-2 : ℝ) < -1) hd]
