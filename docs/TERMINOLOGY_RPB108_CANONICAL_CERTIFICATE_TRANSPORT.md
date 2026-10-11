@@ -163,3 +163,13 @@ identified by this namespace.
   its full-line integral is genuinely convergent at interior `x` under the
   measurable cap Lipschitz hypotheses. The endpoint candidate is `v(x)` plus
   this integral. Spectral/Fourier source identity remains separate.
+
+
+## LF32 additive term — truncated metric jump density
+
+`neutralLogMetricTruncatedJumpDensity epsilon R r` is twice the defining
+metric-kernel time integral restricted to `[epsilon,R]`. For `epsilon > 0`
+it equals the actual Poisson density mixed against `exp(-exp(1)*t)/t` on
+that interval. The associated cancelled spatial integral is a convergent
+truncated physical action. This term does not denote the untruncated source
+or assert a Fourier identity.

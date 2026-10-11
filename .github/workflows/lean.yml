@@ -64,7 +64,8 @@ jobs:
             WeilDefect.Morphology.NeutralLogMetricExteriorSplit \
             WeilDefect.Morphology.NeutralLogMetricTrialJump \
             WeilDefect.Morphology.NeutralLogMetricPoissonAction \
-            WeilDefect.Morphology.NeutralLogMetricPoissonMixture 2>&1 | tee certificate-build.log
+            WeilDefect.Morphology.NeutralLogMetricPoissonMixture \
+            WeilDefect.Morphology.NeutralLogMetricTruncatedJump 2>&1 | tee certificate-build.log
 
       - name: Check complete root library
         shell: bash
