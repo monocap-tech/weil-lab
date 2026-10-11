@@ -332,5 +332,78 @@ theorem neutralLogMetricTimeAction_zeroExtension_integrable
     (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound)
     (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
 
+
+/-- The actual full-line finite cancelled action has the exact Fourier
+ coefficient given by the scalar identity term minus the time-kernel multiplier. -/
+theorem neutralLogMetricTimeAction_fourier
+    (ε R M ξ : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v) (hvi : Integrable v)
+    (hbound : ∀ y, ‖v y‖ ≤ M) :
+    (𝓕 (fun x : ℝ => v x + ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)))) ξ =
+      (𝓕 v) ξ * ((1 + ∫ t in Icc ε R,
+        ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ)) -
+        ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+          (Real.exp (-t * |ξ|) : ℂ)) := by
+  let w : ℝ → ℂ := fun t => ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ)
+  let c : ℂ := 1 + ∫ t in Icc ε R, w t
+  let C : ℝ → ℂ := fun x => ∫ t in Icc ε R, w t *
+    ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)
+  have hC : Integrable C := neutralLogMetricTimeConvolution_integrable ε R M hε hM
+    v hv hvi hbound
+  have he : (fun x : ℝ => v x + ∫ t in Icc ε R, w t *
+      (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))) =
+      (fun x : ℝ => c * v x - C x) := by
+    funext x
+    exact neutralLogMetricTimeAction_decomposition ε R x M hε hM v hv hbound
+  have hs : (𝓕 (fun x : ℝ => c * v x - C x)) ξ =
+      (𝓕 (fun x : ℝ => c * v x)) ξ - (𝓕 C) ξ := by
+    rw [Real.fourier_eq, Real.fourier_eq, Real.fourier_eq]
+    simp_rw [smul_sub]
+    exact integral_sub ((Real.fourierIntegral_convergent_iff ξ).2 (hvi.const_mul c))
+      ((Real.fourierIntegral_convergent_iff ξ).2 hC)
+  have hscalar : (𝓕 (fun x : ℝ => c * v x)) ξ = c * (𝓕 v) ξ := by
+    rw [Real.fourier_eq, Real.fourier_eq]
+    simp only [Circle.smul_def, smul_eq_mul]
+    rw [← integral_const_mul]
+    apply integral_congr_ae
+    filter_upwards [] with x
+    ring
+  have hconv : (𝓕 C) ξ = (𝓕 v) ξ *
+      ∫ t in Icc ε R, w t * (Real.exp (-t * |ξ|) : ℂ) :=
+    neutralLogMetricTimeConvolution_fourier ε R M ξ hε hM v hv hvi hbound
+  change (𝓕 (fun x : ℝ => v x + ∫ t in Icc ε R, w t *
+    (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)))) ξ =
+    (𝓕 v) ξ * (c - ∫ t in Icc ε R, w t * (Real.exp (-t * |ξ|) : ℂ))
+  calc
+    _ = (𝓕 (fun x : ℝ => c * v x - C x)) ξ :=
+      congrArg (fun f : ℝ → ℂ => (𝓕 f) ξ) he
+    _ = (𝓕 (fun x : ℝ => c * v x)) ξ - (𝓕 C) ξ := hs
+    _ = c * (𝓕 v) ξ - (𝓕 v) ξ *
+        ∫ t in Icc ε R, w t * (Real.exp (-t * |ξ|) : ℂ) :=
+      congrArg₂ (fun a b : ℂ => a - b) hscalar hconv
+    _ = _ := by ring
+
+/-- The finite-action Fourier identity applies to actual cap-bounded
+ zero extensions without assumptions on the trial outside the cap. -/
+theorem neutralLogMetricTimeAction_zeroExtension_fourier
+    (B M ε R ξ : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ y ∈ Icc (-B) B, ‖v y‖ ≤ M) :
+    (𝓕 (fun x : ℝ => neutralLogMetricTrialZeroExtension B v x +
+      ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (neutralLogMetricTrialZeroExtension B v x - ∫ y : ℝ,
+          neutralLogMetricTrialZeroExtension B v y *
+            (neutralLogMetricPoissonDensity t (x - y) : ℂ)))) ξ =
+      (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+        ((1 + ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ)) -
+          ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+            (Real.exp (-t * |ξ|) : ℂ)) := by
+  exact neutralLogMetricTimeAction_fourier ε R M ξ hε hM _
+    (neutralLogMetricTrialZeroExtension_measurable B v hv)
+    (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound)
+    (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
+
 end
 end WeilDefect
