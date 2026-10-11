@@ -46,7 +46,8 @@ theorem neutralLogMetricJumpDifference_integral_norm_le
     ‖∫ y in Icc (-B) B,
       (v x - v y) * (neutralLogMetricJumpDensity |x - y| : ℂ)‖ ≤ 2 * B * L := by
   have hint := neutralLogMetricJumpDifference_integrableOn B x L v hv hL hmod
-  have hc : IntegrableOn (fun _ : ℝ => L) (Icc (-B) B) := integrableOn_const
+  have hc : IntegrableOn (fun _ : ℝ => L) (Icc (-B) B) :=
+    integrableOn_const (by simp : volume (Icc (-B) B) ≠ ⊤)
   have hbound : (∫ y in Icc (-B) B,
       ‖(v x - v y) * (neutralLogMetricJumpDensity |x - y| : ℂ)‖) ≤
       ∫ _ in Icc (-B) B, L := by
