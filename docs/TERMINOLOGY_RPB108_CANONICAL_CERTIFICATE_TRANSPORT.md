@@ -113,3 +113,13 @@ identified by this namespace.
   integral and the complete candidate for a measurable trial. This includes
   totalized integral values and does not establish convergence, square
   integrability, weak attachment or spectral source identity.
+
+## LF21 additive definitions
+
+- **Squared-log distance majorant:** `log(d)^2 <= 16*(d^(-1/2)+d^(1/2))`
+  for d>0. Both powers are integrable on each finite distance interval.
+- **Endpoint-tail distance L2 membership:** `MemLp tail 2` under volume
+  restricted to (0,D], D>=0, obtained from actual tail measurability and
+  the logarithmic bound. Transferring this to the two physical cap endpoints,
+  constructing the complete candidate in L2 and identifying its source
+  action are separate obligations.

@@ -248,3 +248,5 @@ import WeilDefect.Morphology.NeutralLogMetricEndpointBounds
 import WeilDefect.Morphology.NeutralLogMetricEndpointLog
 
 import WeilDefect.Morphology.NeutralLogMetricEndpointMeasurable
+
+import WeilDefect.Morphology.NeutralLogMetricEndpointL2
