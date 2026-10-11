@@ -250,5 +250,87 @@ theorem neutralLogMetricTimeConvolution_zeroExtension_fourier
     (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound)
     (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
 
+
+/-- The complex Laplace weight is integrable on every finite interval
+ whose lower endpoint is positive. -/
+theorem neutralLogMetricLaplaceWeight_integrableOn
+    (ε R : ℝ) (hε : 0 < ε) :
+    IntegrableOn (fun t : ℝ =>
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ)) (Icc ε R) := by
+  apply Measure.integrableOn_of_bounded
+    (by simp : volume (Icc ε R) ≠ ⊤)
+    (by fun_prop : Measurable (fun t : ℝ =>
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ))).aestronglyMeasurable
+  filter_upwards [ae_restrict_mem measurableSet_Icc] with t ht
+  simpa only [Complex.norm_real, Real.norm_eq_abs] using
+    neutralLogMetricLaplaceWeight_truncated_bound ε R t hε ht
+
+/-- The actual finite cancelled action splits into its scalar identity
+ term and integrated convolution; subtraction is justified by time integrability. -/
+theorem neutralLogMetricTimeAction_decomposition
+    (ε R x M : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v) (hbound : ∀ y, ‖v y‖ ≤ M) :
+    v x + (∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))) =
+    (1 + ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ)) * v x -
+      ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ) := by
+  let w : ℝ → ℂ := fun t => ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ)
+  let C : ℝ → ℂ := fun t => ∫ y : ℝ,
+    v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)
+  have hw : IntegrableOn w (Icc ε R) := neutralLogMetricLaplaceWeight_integrableOn ε R hε
+  have hc : IntegrableOn (fun t => w t * C t) (Icc ε R) := by
+    apply (neutralLogMetricTimeConvolution_joint_integrable ε R x M hε hM
+      v hv hbound).integral_prod_left.congr
+    filter_upwards [] with t
+    change (∫ y : ℝ, w t * v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)) =
+      w t * ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)
+    simp_rw [mul_assoc]
+    exact integral_const_mul _ _
+  change v x + (∫ t in Icc ε R, w t * (v x - C t)) =
+    (1 + ∫ t in Icc ε R, w t) * v x - ∫ t in Icc ε R, w t * C t
+  simp_rw [mul_sub]
+  rw [integral_sub (hw.mul_const (v x)) hc, integral_mul_const]
+  ring
+
+/-- The finite cancelled action is integrable over the full physical
+ line, retaining the exterior convolution of the trial. -/
+theorem neutralLogMetricTimeAction_integrable
+    (ε R M : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v) (hvi : Integrable v)
+    (hbound : ∀ y, ‖v y‖ ≤ M) :
+    Integrable (fun x : ℝ => v x + ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))) := by
+  have he : (fun x : ℝ => v x + ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))) =
+      (fun x : ℝ =>
+        (1 + ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ)) * v x -
+          ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+            ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)) := by
+    funext x
+    exact neutralLogMetricTimeAction_decomposition ε R x M hε hM v hv hbound
+  rw [he]
+  exact (hvi.const_mul _).sub
+    (neutralLogMetricTimeConvolution_integrable ε R M hε hM v hv hvi hbound)
+
+/-- Cap-bounded measurable trials give genuinely integrable full-line
+ finite cancelled actions through their actual zero extensions. -/
+theorem neutralLogMetricTimeAction_zeroExtension_integrable
+    (B M ε R : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ y ∈ Icc (-B) B, ‖v y‖ ≤ M) :
+    Integrable (fun x : ℝ => neutralLogMetricTrialZeroExtension B v x +
+      ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (neutralLogMetricTrialZeroExtension B v x - ∫ y : ℝ,
+          neutralLogMetricTrialZeroExtension B v y *
+            (neutralLogMetricPoissonDensity t (x - y) : ℂ))) := by
+  exact neutralLogMetricTimeAction_integrable ε R M hε hM _
+    (neutralLogMetricTrialZeroExtension_measurable B v hv)
+    (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound)
+    (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
+
 end
 end WeilDefect
