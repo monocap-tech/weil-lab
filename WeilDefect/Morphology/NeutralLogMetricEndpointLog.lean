@@ -20,9 +20,19 @@ theorem neutralLogMetricEndpointTail_le_log (d : ℝ) (hd : 0 < d) (hd1 : d ≤ 
       Real.log (1 / d) + 1 / (2 * Real.pi ^ 2 * Real.exp 1) := by
   have hc : ContinuousOn (fun r : ℝ => r⁻¹) (Icc d 1) :=
     continuousOn_inv₀.mono (fun r hr => ne_of_gt (hd.trans_le hr.1))
+  have hinv : (∫ r in d..1, r⁻¹) = Real.log (1 / d) := by
+    have hc' : ContinuousOn (fun r : ℝ => r⁻¹) (uIcc d 1) := by
+      simpa only [uIcc_of_le hd1] using hc
+    have he := intervalIntegral.integral_eq_sub_of_hasDerivAt
+      (f := Real.log) (f' := fun r : ℝ => r⁻¹)
+      (fun r hr => Real.hasDerivAt_log (by
+        rw [uIcc_of_le hd1] at hr
+        exact ne_of_gt (hd.trans_le hr.1))) hc'.intervalIntegrable
+    simpa only [Real.log_one, Real.log_div one_ne_zero (ne_of_gt hd), zero_sub]
+      using he
   have hi : (∫ r in d..1, neutralLogMetricJumpDensity r) ≤ Real.log (1 / d) := by
     rw [intervalIntegral.integral_of_le hd1,
-      ← intervalIntegral.integral_inv_of_pos hd zero_lt_one,
+      ← hinv,
       intervalIntegral.integral_of_le hd1]
     apply integral_mono_ae
       ((neutralLogMetricEndpointTail_integrable d hd).mono_set Ioc_subset_Ioi_self)
