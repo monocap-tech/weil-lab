@@ -6,6 +6,7 @@ import Mathlib.MeasureTheory.Function.UniformIntegrable
 namespace WeilDefect
 noncomputable section
 open MeasureTheory Set Filter Topology
+open scoped ENNReal
 
 /-- Any increasing sequence of finite time intervals exhausting positive
  time recovers the genuinely convergent full jump density off the diagonal. -/
@@ -360,6 +361,52 @@ theorem neutralLogMetricTruncatedTrialAction_tendsto_L2
   exact tendsto_Lp_finite_of_tendsto_ae (by norm_num) (by norm_num) hAmeas
     (neutralLogMetricEndpointCandidate_memLp_two B M L hB hL v hv hbound hmod)
     hui hpoint
+
+/-- The concrete Poisson time actions converge in the physical cap L2
+ seminorm, by their exact interior equality with the spatial actions. -/
+theorem neutralLogMetricPoissonTrialAction_tendsto_L2
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) :
+    Tendsto (fun n : ℕ => eLpNorm
+      (fun x : ℝ => (v x +
+        ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+          ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+            (v x - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+              (neutralLogMetricPoissonDensity t (x - y) : ℂ))) -
+        neutralLogMetricEndpointCandidate B v x)
+      2 (volume.restrict (Ioo (-B) B))) atTop (𝓝 0) := by
+  have he (n : ℕ) :
+      eLpNorm (fun x : ℝ => (v x +
+        ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+          ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+            (v x - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+              (neutralLogMetricPoissonDensity t (x - y) : ℂ))) -
+        neutralLogMetricEndpointCandidate B v x)
+        2 (volume.restrict (Ioo (-B) B)) =
+      eLpNorm (fun x : ℝ => (v x + ∫ y : ℝ,
+        (v x - neutralLogMetricTrialZeroExtension B v y) *
+          (neutralLogMetricTruncatedJumpDensity
+            (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ)) -
+        neutralLogMetricEndpointCandidate B v x)
+        2 (volume.restrict (Ioo (-B) B)) := by
+    apply eLpNorm_congr_ae
+    filter_upwards [ae_restrict_mem measurableSet_Ioo] with x hx
+    have hxcap : x ∈ Icc (-B) B := ⟨hx.1.le, hx.2.le⟩
+    have hxv : neutralLogMetricTrialZeroExtension B v x = v x := by
+      simp [neutralLogMetricTrialZeroExtension, hxcap]
+    have ha := neutralLogMetricTruncatedJump_action
+      (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) x M (by positivity) hM
+      (neutralLogMetricTrialZeroExtension B v)
+      (neutralLogMetricTrialZeroExtension_measurable B v hv)
+      (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
+    simp only [hxv] at ha
+    dsimp only
+    rw [ha]
+  simp_rw [he]
+  exact neutralLogMetricTruncatedTrialAction_tendsto_L2 B L M hB hL hM v hv hbound hmod
 
 end
 end WeilDefect
