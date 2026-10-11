@@ -3,7 +3,7 @@ import Mathlib.MeasureTheory.Function.UniformIntegrable
 
 namespace WeilDefect
 noncomputable section
-open MeasureTheory Set Filter Topology
+open MeasureTheory Set Filter Topology FourierTransform
 open scoped FourierTransform ENNReal
 
 /-- Under the full weighted-product L2 domain condition, the Fourier
@@ -117,6 +117,51 @@ theorem neutralLogMetricTimeAction_fourier_toLp_tendsto
   let : Fact ((1 : ℝ≥0∞) ≤ 2) := ⟨by norm_num⟩
   apply (Lp.tendsto_Lp_iff_tendsto_eLpNorm'' _ _ _ _).mpr
   exact neutralLogMetricTimeAction_fourier_tendsto_L2 M hM v hv hvi hbound hp
+
+
+/-- Inverse Fourier transformation transports the actual spectral-vector
+ limit into physical L2. Identification with the original time-action
+ functions is a separate obligation. -/
+theorem neutralLogMetricTimeAction_fourierInv_toLp_tendsto
+    (M : ℝ) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hvi : Integrable v) (hbound : ∀ y, ‖v y‖ ≤ M)
+    (hp : MemLp (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume) :
+    Tendsto (fun n : ℕ => (𝓕⁻
+      ((neutralLogMetricTimeAction_fourier_memLp_two
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) M (by positivity) hM v hv hvi hbound hp).toLp
+      (𝓕 (fun x : ℝ => v x +
+        ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+          ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+            (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))))) :
+        RealComplexL2))
+      atTop (𝓝 (𝓕⁻ (hp.toLp
+        (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ))) : RealComplexL2)) := by
+  have hc : Continuous (fun u : RealComplexL2 => (𝓕⁻ u : RealComplexL2)) :=
+    continuous_fourierInv
+  exact (hc.tendsto _).comp
+    (neutralLogMetricTimeAction_fourier_toLp_tendsto M hM v hv hvi hbound hp)
+
+/-- Pairings of the inverse-transformed spectral representatives
+ converge against every physical L2 test vector. The full weighted-product
+ domain condition remains explicit. -/
+theorem neutralLogMetricTimeAction_fourierInv_inner_tendsto
+    (M : ℝ) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hvi : Integrable v) (hbound : ∀ y, ‖v y‖ ≤ M)
+    (hp : MemLp (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume)
+    (φ : RealComplexL2) :
+    Tendsto (fun n : ℕ => inner ℂ (𝓕⁻
+      ((neutralLogMetricTimeAction_fourier_memLp_two
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) M (by positivity) hM v hv hvi hbound hp).toLp
+      (𝓕 (fun x : ℝ => v x +
+        ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+          ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+            (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)))))) φ)
+      atTop (𝓝 (inner ℂ (𝓕⁻ (hp.toLp
+        (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ)))) φ)) := by
+  have hc : Continuous (fun u : RealComplexL2 => inner ℂ u φ) :=
+    continuous_id.inner (𝕜 := ℂ) continuous_const
+  exact (hc.tendsto _).comp
+    (neutralLogMetricTimeAction_fourierInv_toLp_tendsto M hM v hv hvi hbound hp)
 
 end
 end WeilDefect
