@@ -1,0 +1,212 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# Metadata snapshot for Weil-Lab Horizon 1. Audit ledgers remain authoritative.
+version: "v0.4"
+project:
+  name: "Weil Defect — Horizon 1"
+  description: "Formalized independent Weil-defect calculus, spectral screening, zeta-Weil residue and finite-window reductions, and conditional negative/neutral/noncompact defect morphologies. The completed Horizon-1 package does not prove the Riemann Hypothesis or discharge its open actual-zeta interfaces."
+  authors: ["monocap-tech"]
+  responsible_maintainers: ["monocap-tech"]
+  license: "NOASSERTION"
+  license_note: "No explicit repository LICENSE file exists. NOASSERTION does not imply a grant of permission or adoption of the upstream metadata standard license."
+sources:
+  -
+    title: "Weil Defect: Independent Weil-Defect Theory (Horizon 1)"
+    authors: ["monocap-tech"]
+    id: "https://github.com/monocap-tech/weil-lab/blob/main/docs/WEIL_DEFECT_MANUSCRIPT.md"
+    type: "original-proof"
+    location: "Horizon-1 manuscript and theorem inventory WD-T01–WD-T39"
+    relationship: "other"
+    note: "Original project development, not a transcription of a single previously published proof. The formalization contains original structural reductions and conditional theorems; separate externally imported premises are enumerated below."
+  -
+    title: "On majorization, factorization, and range inclusion of operators on Hilbert space"
+    authors: ["R. G. Douglas"]
+    id: "doi:10.1090/S0002-9939-1966-0203464-1"
+    type: "article"
+    location: "Theorem 1"
+    relationship: "adapts"
+    note: "EXT-1; explicit input to WD-T02 and downstream screening results. Source theorem is not claimed as independently reconstructed in Lean."
+  -
+    title: "Remarks on Weil's quadratic functional in the theory of prime numbers, I"
+    authors: ["Enrico Bombieri"]
+    id: "https://www.bdim.eu/item?id=RLIN_2000_9_11_3_183_0"
+    type: "article"
+    location: "Theorem 8 and Lemma 10"
+    relationship: "adapts"
+    note: "EXT-2A and EXT-2B: finite negative index and multiplicity/nullity; imported mathematical premises, distinct from the project's proved specializations."
+  -
+    title: "The Theory of the Riemann Zeta-function, second edition"
+    authors: ["E. C. Titchmarsh","D. R. Heath-Brown (revision)"]
+    id: "Titchmarsh–Heath-Brown, The Theory of the Riemann Zeta-function, 2nd ed. (1986)"
+    type: "book"
+    location: "Chapter IX, Theorem 9.2"
+    relationship: "adapts"
+    note: "EXT-3; unit-height zero-count estimate used in the Hilbert–Schmidt and far-tail statements."
+  -
+    title: "Weil positivity in compact windows: a finite reduction, certified two-sided bounds, and a Landau–Widom decay law"
+    authors: ["Xuefeng Zhu"]
+    id: "arXiv:2608.24827v2"
+    type: "article"
+    location: "Equations (2)–(3)"
+    relationship: "adapts"
+    note: "EXT-4; compact-window explicit formula and finite prime-power translation convention. No endorsement by source author is asserted."
+  -
+    title: "NIST Digital Library of Mathematical Functions"
+    id: "https://dlmf.nist.gov/5.11.E2"
+    type: "web post"
+    location: "§5.11(i), equation 5.11.2"
+    relationship: "adapts"
+    note: "EXT-5; digamma asymptotic used in the logarithmic-order compact-window analysis."
+classification:
+  arxiv: ["math.NT","math.FA"]
+  msc2020: ["11M26","47A10"]
+status:
+  scope: "Horizon 1 only: 39 stable theorem/reduction IDs (WD-T01–WD-T39), seven sharpness examples (WD-X01–WD-X07), and five scope guards. All IDs and formal statuses are defined in docs/PUBLIC_VERIFICATION_MATRIX.md and docs/LEAN_STATUS.md. Many results are conditional or are formal deductions from explicit imported premises. AZ-NEXTJET-LOC, C-ACTUAL-KPH-FLOOR, AZ-FIN-WEIL-NULL-EXTENSION, and RH remain outside the completed scope."
+  sorry_count: 0
+  sorry_in_definitions: 0
+  main_results:
+    -
+      declaration: "WeilDefect.wd_t27_universal_inverse_square_isBigO"
+      file: "WeilDefect/RationalResponse.lean"
+      sorry_count: 0
+      lean_certification: "LEAN-CERTIFIED"
+      note: "Direct asymptotic inverse-square response theorem assuming a zero-moment finite source; cubic remainder is separately proved."
+    -
+      declaration: "WeilDefect.wd_t34_active_prime_translation_shifts_finite"
+      file: "WeilDefect/Arithmetic/PrimeSupport.lean"
+      sorry_count: 0
+      lean_certification: "LEAN-CERTIFIED"
+      note: "Finite physical translation shifts using the prime-power finiteness result."
+    -
+      declaration: "WeilDefect.wd_t37_fixed_packet_persistent_negative_morphology"
+      file: "WeilDefect/Morphology/Negative.lean"
+      sorry_count: 0
+      lean_certification: "LEAN-CERTIFIED-FROM-IMPORTED-PREMISE"
+      mathematical_standing: "CONDITIONAL COMPOSITE"
+      note: "Conditional noncomputable construction of the full fixed-packet negative morphology under explicit structural and source assumptions. Neither AZ-NEXTJET-LOC nor RH is established."
+    -
+      declaration: "WeilDefect.wd_t38_attained_unit_gain_neutral_morphology"
+      file: "WeilDefect/Morphology/Neutral.lean"
+      sorry_count: 0
+      lean_certification: "LEAN-CERTIFIED-FROM-IMPORTED-PREMISE"
+      mathematical_standing: "CONDITIONAL COMPOSITE"
+      note: "Conditional noncomputable construction of the full attained-neutral morphology. It exposes, rather than proves, the null-extension persistence interface."
+    -
+      declaration: "WeilDefect.wd_t39_noncompact_background_morphology"
+      file: "WeilDefect/Morphology/Noncompact.lean"
+      sorry_count: 0
+      lean_certification: "LEAN-CERTIFIED"
+      note: "Internal structural noncompact morphology theorem under stated hypotheses, without actual-zeta exclusion."
+automation:
+  methods:
+    -
+      method: "copilot"
+      tool_setup: "Human-directed conversational AI assistance for research planning, theorem decomposition, proof audits, and documentation, with results transferred to the GitHub/Lean workflow."
+      prompting_notes: "The project uses small auditable phases, theorem IDs, named imported premises, and separate mathematical/Lean standing. Exact per-phase model identities and token usage are not yet consolidated into this metadata."
+    -
+      method: "agent"
+      tool_setup: "AI-assisted Lean proof authoring and repository editing with pinned Lean/mathlib toolchain and GitHub Actions verification; see docs/LEAN_FORMALIZATION_TRACK.md and docs/LEAN_STATUS.md."
+      prompting_notes: "The current file is a retrospective project-level disclosure; it does not attribute individual statements to individual model runs."
+  notes: "Human research direction and AI assistance are jointly recorded at a project level. No per-run model inventory, spending estimate, or wall-time estimate is asserted without consolidated evidence. CI/build history and exact source pins remain in the repository."
+fidelity:
+  divergences: "The Lean development proves typed structural deductions and conditional aggregate morphology constructions, not complete reconstructions of every analytic source or the actual-zeta instantiations needed for RH. Literature-level source ancestry is distinguished from direct Lean assumptions in alignment.source_dependencies. Precise theorem standing, imports, conventions, and remaining interfaces are recorded in docs/PUBLIC_VERIFICATION_MATRIX.md, docs/IMPORTED_SOURCE_PINS.md, docs/COMPOSITE_MORPHOLOGY_AUDIT.md, and docs/RH_INTERFACE_APPENDIX.md."
+review:
+  status: "self-assessed"
+  notes: "Repository records internal proof, composite, sharpness, and public-package audits plus CI certificates for the stated Horizon-1 Lean inventory. This is not a claim of independent peer review, author verification of the imported literature, or unconditional proof of the Riemann Hypothesis."
+alignment:
+  namespace: "WeilDefect"
+  authoritative_records: ["docs/THEOREM_LEDGER.md","docs/PUBLIC_VERIFICATION_MATRIX.md","docs/LEAN_STATUS.md","docs/IMPORTED_SOURCE_PINS.md"]
+  statements:
+    -
+      source: "WD-T27 — inverse-square asymptotic"
+      lean: "WeilDefect.wd_t27_universal_inverse_square_isBigO"
+      module: "WeilDefect/RationalResponse.lean"
+      status: "proved"
+      lean_certification: "LEAN-CERTIFIED"
+      note: "Exact asymptotic big-O statement; finite zero-moment hypothesis is explicit."
+    -
+      source: "WD-T27 — quantitative remainder estimate"
+      lean: "WeilDefect.wd_t27_universal_inverse_square_far_decay"
+      module: "WeilDefect/RationalResponse.lean"
+      status: "proved"
+      lean_certification: "LEAN-CERTIFIED"
+      note: "Distinct first-moment inverse-square approximation with cubic remainder."
+    -
+      source: "WD-T34 — active prime powers finite"
+      lean: "WeilDefect.wd_t34_active_prime_powers_finite"
+      module: "WeilDefect/Arithmetic/PrimeSupport.lean"
+      status: "proved"
+      lean_certification: "LEAN-CERTIFIED"
+      note: "Proves finiteness of the index set."
+    -
+      source: "WD-T34 — physical prime shifts finite"
+      lean: "WeilDefect.wd_t34_active_prime_translation_shifts_finite"
+      module: "WeilDefect/Arithmetic/PrimeSupport.lean"
+      status: "proved"
+      lean_certification: "LEAN-CERTIFIED"
+      note: "Proves finiteness of the associated physical logarithmic shifts."
+    -
+      source: "WD-T37 — negative morphology"
+      lean: "WeilDefect.wd_t37_fixed_packet_persistent_negative_morphology"
+      module: "WeilDefect/Morphology/Negative.lean"
+      status: "proved"
+      lean_certification: "LEAN-CERTIFIED-FROM-IMPORTED-PREMISE"
+      mathematical_standing: "CONDITIONAL COMPOSITE"
+      note: "Aggregate conditional noncomputable construction; actual-zeta weighted next-jet exclusion remains open."
+    -
+      source: "WD-T37 — intermediate next-jet identity"
+      lean: "WeilDefect.wd_t37_p3_n6_weighted_next_jet_morphology"
+      module: "WeilDefect/Morphology/Negative.lean"
+      status: "proved"
+      lean_certification: "LEAN-CERTIFIED-FROM-IMPORTED-PREMISE"
+      note: "Intermediate identity under local analytic factorization assumptions; not itself a proof of zero-counting theorems."
+    -
+      source: "WD-T38 — neutral morphology"
+      lean: "WeilDefect.wd_t38_attained_unit_gain_neutral_morphology"
+      module: "WeilDefect/Morphology/Neutral.lean"
+      status: "proved"
+      lean_certification: "LEAN-CERTIFIED-FROM-IMPORTED-PREMISE"
+      mathematical_standing: "CONDITIONAL COMPOSITE"
+      note: "Aggregate conditional noncomputable construction; null-extension persistence remains open."
+    -
+      source: "WD-T38 — intermediate arithmetic morphology"
+      lean: "WeilDefect.wd_t38_neutral_arithmetic_morphology"
+      module: "WeilDefect/Morphology/Neutral.lean"
+      status: "proved"
+      lean_certification: "LEAN-CERTIFIED-FROM-IMPORTED-PREMISE"
+      note: "Intermediate deduction from explicit symbol, form, and integrability assumptions."
+    -
+      source: "WD-T39 — noncompact background morphology"
+      lean: "WeilDefect.wd_t39_noncompact_background_morphology"
+      module: "WeilDefect/Morphology/Noncompact.lean"
+      status: "proved"
+      lean_certification: "LEAN-CERTIFIED"
+      note: "Structural proposition under formal hypotheses."
+    -
+      source: "AZ-NEXTJET-LOC — actual-zeta weighted next-jet localization"
+      status: "not-formalized"
+      note: "Open downstream arithmetic interface, not a Horizon-1 result."
+    -
+      source: "C-ACTUAL-KPH-FLOOR — special-packet transversality floor"
+      status: "not-formalized"
+      note: "Open stronger packetwise refinement of the negative interface."
+    -
+      source: "AZ-FIN-WEIL-NULL-EXTENSION — actual-zeta null-extension rigidity"
+      status: "not-formalized"
+      note: "Open downstream neutral-branch interface."
+  source_dependencies:
+    -
+      pin: "EXT-3"
+      source: "Titchmarsh–Heath-Brown, The Theory of the Riemann Zeta-function, 2nd ed. (1986)"
+      project_use: "WD-T31 far-tail and downstream WD-T37 negative morphology"
+      lean_boundary: "ZetaLogShellCountData and related numerical bound assumptions appear in Lean; no Lean proof of Titchmarsh zero counting is claimed."
+    -
+      pin: "EXT-4"
+      source: "arXiv:2608.24827v2"
+      project_use: "Compact-window explicit formula context and downstream WD-T38 neutral morphology"
+      lean_boundary: "Finite prime-support lemmas and conditional symbol/operator deductions are formalized, but not the complete source formula."
+    -
+      pin: "EXT-5"
+      source: "https://dlmf.nist.gov/5.11.E2"
+      project_use: "Logarithmic-order symbol context underlying WD-T35 and WD-T38"
+      lean_boundary: "Logarithmic bounds are explicit formal hypotheses; no formal proof of the full DLMF asymptotic is claimed."
+acknowledgements: "See docs/REFERENCES.md and docs/IMPORTED_SOURCE_PINS.md for mathematical source attribution; see docs/LEAN_STATUS.md for formal certificate history."

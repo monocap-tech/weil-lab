@@ -9,6 +9,15 @@ negative directions, and compact-window neutral modes.
 > **Scope:** This repository packages an independent Weil-defect theory to its
 > stated stop boundary. It does not claim a proof of the Riemann Hypothesis.
 
+## Formalization metadata
+
+The repository's [formalization.yaml](formalization.yaml) follows the
+[mathlib-initiative v0.4 self-reporting format](https://github.com/mathlib-initiative/formalization.yaml).
+It summarizes authorship, sources, AI assistance, representative Lean declarations,
+formalization fidelity, review standing, and unresolved RH-facing interfaces.
+The detailed ledgers in `docs/` remain authoritative for theorem-by-theorem
+claims and certificate evidence.
+
 ## Scope and separation
 
 The project separates two mathematical layers that must not be conflated:
