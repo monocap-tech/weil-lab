@@ -4,7 +4,7 @@ import WeilDefect.Morphology.NeutralLogMetricPoissonMixture
 namespace WeilDefect
 noncomputable section
 open MeasureTheory Set
-open scoped FourierTransform
+open scoped FourierTransform Convolution
 
 /-- The finite Laplace mixture kernel is jointly integrable in time
  and the whole physical line, before taking its Fourier transform. -/
@@ -181,6 +181,74 @@ theorem neutralLogMetricTimeConvolution_eq_kernel
       apply integral_congr_ae
       filter_upwards [] with t
       ring
+
+
+/-- The actual finite time-integrated convolution is integrable over
+ the whole line when the bounded trial is itself integrable. -/
+theorem neutralLogMetricTimeConvolution_integrable
+    (ε R M : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v) (hvi : Integrable v)
+    (hbound : ∀ y, ‖v y‖ ≤ M) :
+    Integrable (fun x : ℝ => ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)) := by
+  let K : ℝ → ℂ := fun x => ∫ t in Icc ε R,
+    ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+      (neutralLogMetricPoissonDensity t x : ℂ)
+  have he : (fun x : ℝ => ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)) =
+      v ⋆[ContinuousLinearMap.mul ℂ ℂ] K := by
+    funext x
+    exact neutralLogMetricTimeConvolution_eq_kernel ε R x M hε hM v hv hbound
+  rw [he]
+  exact hvi.integrable_convolution (ContinuousLinearMap.mul ℂ ℂ)
+    (neutralLogMetricTimeKernel_integrable ε R hε)
+
+/-- Fourier transport of the actual finite integrated convolution,
+ obtained from its proved kernel attachment and the kernel Fourier identity. -/
+theorem neutralLogMetricTimeConvolution_fourier
+    (ε R M ξ : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v) (hvi : Integrable v)
+    (hbound : ∀ y, ‖v y‖ ≤ M) :
+    (𝓕 (fun x : ℝ => ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))) ξ =
+      (𝓕 v) ξ * ∫ t in Icc ε R,
+        ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+          (Real.exp (-t * |ξ|) : ℂ) := by
+  let K : ℝ → ℂ := fun x => ∫ t in Icc ε R,
+    ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+      (neutralLogMetricPoissonDensity t x : ℂ)
+  have he : (fun x : ℝ => ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)) =
+      v ⋆[ContinuousLinearMap.mul ℂ ℂ] K := by
+    funext x
+    exact neutralLogMetricTimeConvolution_eq_kernel ε R x M hε hM v hv hbound
+  have hconv := Real.fourier_mul_convolution_eq hvi
+    (neutralLogMetricTimeKernel_integrable ε R hε) ξ
+  have hkernel := neutralLogMetricTimeKernel_fourier ε R ξ hε
+  exact (congrArg (fun f : ℝ → ℂ => (𝓕 f) ξ) he).trans
+    (hconv.trans (congrArg (fun z : ℂ => (𝓕 v) ξ * z) hkernel))
+
+/-- Actual cap-bounded zero extensions satisfy the integrated Fourier
+ identity without global integrability of the unextended trial. -/
+theorem neutralLogMetricTimeConvolution_zeroExtension_fourier
+    (B M ε R ξ : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ y ∈ Icc (-B) B, ‖v y‖ ≤ M) :
+    (𝓕 (fun x : ℝ => ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+          (neutralLogMetricPoissonDensity t (x - y) : ℂ))) ξ =
+      (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ * ∫ t in Icc ε R,
+        ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+          (Real.exp (-t * |ξ|) : ℂ) := by
+  exact neutralLogMetricTimeConvolution_fourier ε R M ξ hε hM _
+    (neutralLogMetricTrialZeroExtension_measurable B v hv)
+    (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound)
+    (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
 
 end
 end WeilDefect
