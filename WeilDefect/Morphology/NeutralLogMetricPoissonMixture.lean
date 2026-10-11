@@ -33,8 +33,7 @@ theorem neutralLogMetricPoissonMixture_integrable
     filter_upwards [ae_restrict_mem measurableSet_Icc] with t ht
     rw [Real.norm_eq_abs, abs_of_nonneg (integral_nonneg (fun y => norm_nonneg (f (t, y))))]
     have htpos : 0 < t := lt_of_lt_of_le hε ht.1
-    have hd := (neutralLogMetricPoissonDifference_integrable t x M htpos v hv hbound).
-      const_mul (w t : ℂ)
+    have hd := (neutralLogMetricPoissonDifference_integrable t x M htpos v hv hbound).const_mul (w t : ℂ)
     have hk := neutralLogMetricPoissonDensity_shift_integrable t x htpos
     have hb : ∀ y : ℝ, ‖f (t, y)‖ ≤
         (W * (2 * M)) * neutralLogMetricPoissonDensity t (x - y) := by
