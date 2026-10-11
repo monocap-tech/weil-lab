@@ -105,3 +105,11 @@ identified by this namespace.
   far-tail budget beyond one. Both endpoint contributions are bounded
   by the corresponding sum of absolute logarithms at interior points.
   Square integrability and spectral source identification are separate.
+
+## LF19 additive definition
+
+- **Endpoint candidate parameter measurability:** measurability of the moving
+  positive-distance tail, both exterior contributions, the internal jump
+  integral and the complete candidate for a measurable trial. This includes
+  totalized integral values and does not establish convergence, square
+  integrability, weak attachment or spectral source identity.
