@@ -10,6 +10,19 @@ open MeasureTheory Set
 def neutralLogMetricTrialZeroExtension (B : ℝ) (v : ℝ → ℂ) : ℝ → ℂ :=
   (Icc (-B) B).indicator v
 
+theorem neutralLogMetricTrialZeroExtension_measurable
+    (B : ℝ) (v : ℝ → ℂ) (hv : Measurable v) :
+    Measurable (neutralLogMetricTrialZeroExtension B v) :=
+  hv.indicator measurableSet_Icc
+
+theorem neutralLogMetricTrialZeroExtension_norm_le
+    (B M : ℝ) (hM : 0 ≤ M) (v : ℝ → ℂ)
+    (hbound : ∀ y ∈ Icc (-B) B, ‖v y‖ ≤ M) (y : ℝ) :
+    ‖neutralLogMetricTrialZeroExtension B v y‖ ≤ M := by
+  by_cases hy : y ∈ Icc (-B) B
+  · simpa [neutralLogMetricTrialZeroExtension, hy] using hbound y hy
+  · simpa [neutralLogMetricTrialZeroExtension, hy] using hM
+
 /-- The actual full-line jump difference of a zero-extended trial. -/
 def neutralLogMetricTrialJump (B : ℝ) (v : ℝ → ℂ) (x y : ℝ) : ℂ :=
   (v x - neutralLogMetricTrialZeroExtension B v y) *
