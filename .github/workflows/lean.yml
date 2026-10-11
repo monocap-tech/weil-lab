@@ -50,7 +50,8 @@ jobs:
           lake build WeilDefect.Screening.CanonicalCertificateTransport \
             WeilDefect.Screening.ExactMatrixWitness \
             WeilDefect.Screening.PhysicalResidualTransport \
-            WeilDefect.Morphology.NeutralLogMetricLaplace 2>&1 | tee certificate-build.log
+            WeilDefect.Morphology.NeutralLogMetricLaplace \
+            WeilDefect.Morphology.NeutralLogMetricPoisson 2>&1 | tee certificate-build.log
 
       - name: Check complete root library
         shell: bash

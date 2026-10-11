@@ -51,3 +51,10 @@ identified by this namespace.
   positive damping b and nonnegative frequency s. Its improper integral
   over positive t is intended to equal `log((b+s)/b)`. LF06 proves an
   exponential domination bound and submits the Frullani specialization.
+
+## LF07 additive definitions
+
+- **Damped inverse-transform integrand:** the complex exponential with real
+  decay `-t*|ξ|` and phase `w*ξ`, where t>0 and w is angular frequency.
+- **Normalized Poisson density:** `2*t/(t^2 + 4*pi^2*x^2)`, obtained when
+  the angular frequency is `2*pi*x` in the project's inverse transform.

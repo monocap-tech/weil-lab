@@ -234,3 +234,5 @@ import WeilDefect.Morphology.NeutralLogMetricPhysicalSource
 import WeilDefect.Morphology.NeutralLogMetricEndpointSource
 
 import WeilDefect.Morphology.NeutralLogMetricLaplace
+
+import WeilDefect.Morphology.NeutralLogMetricPoisson
