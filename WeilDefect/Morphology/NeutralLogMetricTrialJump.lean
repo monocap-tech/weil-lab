@@ -130,8 +130,12 @@ theorem neutralLogMetricTrialJump_integral_norm_le
   have hc0 : IntegrableOn (fun _ : ℝ => L) (Icc (-B) B) :=
     integrableOn_const (by simp : volume (Icc (-B) B) ≠ ⊤)
   have hc := hc0.integrable_indicator measurableSet_Icc
-  have hl0 := (neutralLogMetricJump_left_exterior_integrable B x hx.1).const_mul M
-  have hr0 := (neutralLogMetricJump_right_exterior_integrable B x hx.2).const_mul M
+  have hl0 : IntegrableOn (fun y : ℝ =>
+      M * neutralLogMetricJumpDensity |x - y|) (Iio (-B)) :=
+    (neutralLogMetricJump_left_exterior_integrable B x hx.1).const_mul M
+  have hr0 : IntegrableOn (fun y : ℝ =>
+      M * neutralLogMetricJumpDensity |x - y|) (Ioi B) :=
+    (neutralLogMetricJump_right_exterior_integrable B x hx.2).const_mul M
   have hl := hl0.integrable_indicator measurableSet_Iio
   have hr := hr0.integrable_indicator measurableSet_Ioi
   have hext (y : ℝ) :

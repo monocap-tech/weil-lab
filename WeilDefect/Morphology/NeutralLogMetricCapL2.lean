@@ -82,5 +82,18 @@ theorem neutralLogMetricEndpointCandidate_memLp_two
       (hmod x ⟨hx.1.le, hx.2.le⟩)
   exact (hv2.add hj2).add (neutralLogMetricExteriorProduct_memLp_two B M hB v hv hbound)
 
+/-- The endpoint-aware uniform action budget is itself in physical L2
+ on the cap interior, including both genuine exterior tails. -/
+theorem neutralLogMetricPhysicalActionBudget_memLp_two
+    (B M L : ℝ) (hB : 0 ≤ B) :
+    MemLp (fun x : ℝ => M + 2 * B * L +
+      M * neutralLogMetricExteriorSource B x) 2
+      (volume.restrict (Ioo (-B) B)) := by
+  have hc : MemLp (fun _ : ℝ => M + 2 * B * L) 2
+      (volume.restrict (Ioo (-B) B)) := by
+    apply MemLp.of_bound measurable_const.aestronglyMeasurable |M + 2 * B * L|
+    exact Filter.Eventually.of_forall (fun _ => by rw [Real.norm_eq_abs])
+  exact hc.add ((neutralLogMetricExteriorSource_memLp_two B hB).const_mul M)
+
 end
 end WeilDefect
