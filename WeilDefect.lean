@@ -252,3 +252,5 @@ import WeilDefect.Morphology.NeutralLogMetricEndpointMeasurable
 import WeilDefect.Morphology.NeutralLogMetricEndpointL2
 
 import WeilDefect.Morphology.NeutralLogMetricCapL2
+
+import WeilDefect.Morphology.NeutralLogMetricCapExtension

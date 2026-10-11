@@ -133,3 +133,14 @@ identified by this namespace.
   membership result; weak attachment, spectral identity and domain
   identification remain separate. Closed-cap null-endpoint transport
   and full-line zero extension are not yet invoked.
+
+## LF23 additive definitions
+
+- **Endpoint candidate zero extension:** the indicator of [-B,B] times
+  the actual endpoint candidate; zero outside the cap.
+- **Endpoint candidate physical L2 representative:** the full-line L2
+  equivalence class constructed from the proved zero-extension membership
+  for bounded measurable Lipschitz trials. The class agrees almost
+  everywhere with that formula. This is not yet the spectral source or
+  a weak representative of the logarithmic metric. Endpoint null-set
+  transport does not prove convergence of the endpoint improper integrals.
