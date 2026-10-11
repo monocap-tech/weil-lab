@@ -115,5 +115,37 @@ theorem neutralLogMetricTruncatedTrialJump_natural_tendsto
     (fun n => 1 / ((n : ℝ) + 1)) (fun n => (n : ℝ) + 1)
     neutralLogMetricTimeCutoff_monotone neutralLogMetricTimeCutoff_iUnion B x y hx v
 
+/-- Spatial cutoff removal for measurable cap-bounded Lipschitz trials.
+ The genuinely integrable full jump dominates every truncated jump. -/
+theorem neutralLogMetricTruncatedTrialJump_integral_tendsto
+    (B x L M : ℝ) (hB : 0 ≤ B) (hx : x ∈ Ioo (-B) B)
+    (hL : 0 ≤ L) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ y ∈ Icc (-B) B, ‖v y‖ ≤ M)
+    (hmod : ∀ y ∈ Icc (-B) B, ‖v x - v y‖ ≤ L * |x - y|) :
+    Tendsto (fun n : ℕ => ∫ y : ℝ,
+      (v x - neutralLogMetricTrialZeroExtension B v y) *
+        (neutralLogMetricTruncatedJumpDensity
+          (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ))
+      atTop (𝓝 (∫ y : ℝ, neutralLogMetricTrialJump B v x y)) := by
+  have hxcap : x ∈ Icc (-B) B := ⟨hx.1.le, hx.2.le⟩
+  have hxv : neutralLogMetricTrialZeroExtension B v x = v x := by
+    simp [neutralLogMetricTrialZeroExtension, hxcap]
+  have hfull := neutralLogMetricTrialJump_integrable B x L hB hx v hv hL hmod
+  apply tendsto_integral_of_dominated_convergence
+    (fun y : ℝ => ‖neutralLogMetricTrialJump B v x y‖)
+  · intro n
+    have hn := neutralLogMetricTruncatedJump_integrable
+      (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) x M (by positivity) hM
+      (neutralLogMetricTrialZeroExtension B v)
+      (neutralLogMetricTrialZeroExtension_measurable B v hv)
+      (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
+    simpa only [hxv] using hn.aestronglyMeasurable
+  · exact hfull.norm
+  · intro n
+    exact Eventually.of_forall (fun y => neutralLogMetricTruncatedTrialJump_norm_le
+      (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) B x y (by positivity) hxcap v)
+  · exact Eventually.of_forall (fun y =>
+      neutralLogMetricTruncatedTrialJump_natural_tendsto B x y hxcap v)
+
 end
 end WeilDefect
