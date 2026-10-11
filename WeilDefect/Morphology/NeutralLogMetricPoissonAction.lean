@@ -72,7 +72,6 @@ theorem neutralLogMetricPoissonDifference_integral
   have hvp := neutralLogMetricPoissonProduct_integrable t x M ht v hv hbound
   simp_rw [sub_mul]
   have hsub := integral_sub hc hvp
-  dsimp only at hsub ⊢
   rw [hsub, integral_const_mul, integral_complex_ofReal,
     neutralLogMetricPoissonDensity_shift_integral t x ht]
   simp
