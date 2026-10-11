@@ -78,5 +78,42 @@ theorem neutralLogMetricTruncatedJumpDensity_natural_tendsto
     (fun n => 1 / ((n : ℝ) + 1)) (fun n => (n : ℝ) + 1)
     neutralLogMetricTimeCutoff_monotone neutralLogMetricTimeCutoff_iUnion r hr
 
+/-- Cancellation extends the cutoff limit through the spatial diagonal
+ at cap points, without asserting density convergence at zero radius. -/
+theorem neutralLogMetricTruncatedTrialJump_tendsto
+    (ε R : ℕ → ℝ)
+    (hmono : Monotone (fun n => Icc (ε n) (R n)))
+    (hcover : (⋃ n, Icc (ε n) (R n)) = Ioi (0 : ℝ))
+    (B x y : ℝ) (hx : x ∈ Icc (-B) B) (v : ℝ → ℂ) :
+    Tendsto (fun n => (v x - neutralLogMetricTrialZeroExtension B v y) *
+      (neutralLogMetricTruncatedJumpDensity (ε n) (R n) (x - y) : ℂ))
+      atTop (𝓝 (neutralLogMetricTrialJump B v x y)) := by
+  by_cases hxy : x = y
+  · subst y
+    simpa [neutralLogMetricTrialJump, neutralLogMetricTrialZeroExtension, hx] using
+      (tendsto_const_nhds : Tendsto (fun _ : ℕ => (0 : ℂ)) atTop (𝓝 (0 : ℂ)))
+  · have hd := neutralLogMetricTruncatedJumpDensity_tendsto_abs
+      ε R hmono hcover (x - y) (sub_ne_zero.mpr hxy)
+    have hc : Tendsto (fun n =>
+        (neutralLogMetricTruncatedJumpDensity (ε n) (R n) (x - y) : ℂ))
+        atTop (𝓝 (neutralLogMetricJumpDensity |x - y| : ℂ)) :=
+      (Complex.continuous_ofReal.tendsto (neutralLogMetricJumpDensity |x - y|)).comp hd
+    have hvx : Tendsto (fun _ : ℕ => v x - neutralLogMetricTrialZeroExtension B v y)
+        atTop (𝓝 (v x - neutralLogMetricTrialZeroExtension B v y)) :=
+      tendsto_const_nhds
+    simpa only [neutralLogMetricTrialJump] using hvx.mul hc
+
+/-- Pointwise convergence of the actual cancelled jump for the concrete
+ time exhaustion, at every spatial point including the diagonal. -/
+theorem neutralLogMetricTruncatedTrialJump_natural_tendsto
+    (B x y : ℝ) (hx : x ∈ Icc (-B) B) (v : ℝ → ℂ) :
+    Tendsto (fun n : ℕ => (v x - neutralLogMetricTrialZeroExtension B v y) *
+      (neutralLogMetricTruncatedJumpDensity
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ))
+      atTop (𝓝 (neutralLogMetricTrialJump B v x y)) := by
+  exact neutralLogMetricTruncatedTrialJump_tendsto
+    (fun n => 1 / ((n : ℝ) + 1)) (fun n => (n : ℝ) + 1)
+    neutralLogMetricTimeCutoff_monotone neutralLogMetricTimeCutoff_iUnion B x y hx v
+
 end
 end WeilDefect
