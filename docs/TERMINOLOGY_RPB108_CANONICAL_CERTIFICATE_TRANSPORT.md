@@ -152,3 +152,14 @@ identified by this namespace.
   equals tail(B+x) when -B<x. Translation and reflection preserve volume.
   These are the two geometric exterior pieces of the jump operator; its
   complete zero-extension split and source attachment remain separate.
+
+
+## LF29 additive terms — actual trial jump
+
+- `neutralLogMetricTrialZeroExtension B v`: the trial `v` on the closed cap
+  `[-B,B]` and zero elsewhere. This differs from LF23's zero extension of the
+  endpoint source candidate.
+- `neutralLogMetricTrialJump B v x y`: `(v(x)-v_zero(y))*ell(|x-y|)`;
+  its full-line integral is genuinely convergent at interior `x` under the
+  measurable cap Lipschitz hypotheses. The endpoint candidate is `v(x)` plus
+  this integral. Spectral/Fourier source identity remains separate.
