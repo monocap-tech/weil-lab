@@ -5,6 +5,7 @@ namespace WeilDefect
 
 noncomputable section
 open MeasureTheory Filter Set Real
+open scoped Topology
 
 /-- RC24's nonnegative Laplace integrand, with arbitrary positive damping. -/
 def neutralLogMetricLaplaceIntegrand (b s t : ℝ) : ℝ :=

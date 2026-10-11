@@ -5,6 +5,7 @@ namespace WeilDefect
 noncomputable section
 
 open MeasureTheory Filter
+open scoped Topology
 
 /-- RC24's metric jump density. Analytic use is restricted to r > 0;
 convergence of this improper integral is a separate obligation. -/
@@ -49,7 +50,7 @@ theorem neutralLogMetricExteriorSource_nonnegative (B x : ℝ) :
 /-- Reflection exchanges the two endpoint contributions. -/
 theorem neutralLogMetricExteriorSource_reflection (B x : ℝ) :
     neutralLogMetricExteriorSource B (-x) = neutralLogMetricExteriorSource B x := by
-  simp only [neutralLogMetricExteriorSource, sub_neg_eq_add, add_neg_eq_sub]
+  simp only [neutralLogMetricExteriorSource, sub_neg_eq_add, ← sub_eq_add_neg]
   exact add_comm _ _
 
 /-- The constant trial retains both exterior terms; compression does not

@@ -8,7 +8,7 @@ open scoped FourierTransform
 
 /-- Damped inverse-transform integrand at angular frequency w. -/
 def neutralLogMetricPoissonIntegrand (t w ξ : ℝ) : ℂ :=
-  Complex.exp (-(t : ℂ) * (|ξ| : ℂ) + (w : ℂ) * Complex.I * (ξ : ℂ))
+  Complex.exp (-(t : ℂ) * ((|ξ| : ℝ) : ℂ) + (w : ℂ) * Complex.I * (ξ : ℂ))
 
 private theorem poisson_left (t w : ℝ) :
     EqOn (neutralLogMetricPoissonIntegrand t w)
@@ -46,8 +46,8 @@ theorem neutralLogMetricPoisson_integral (t w : ℝ) (ht : 0 < t) :
   have hp : 0 < ((t : ℂ) + (w : ℂ) * Complex.I).re := by simpa using ht
   have hn : (-(t : ℂ) + (w : ℂ) * Complex.I).re < 0 := by
     simpa using neg_neg_of_pos ht
-  have hl := setIntegral_congr_fun measurableSet_Iic (poisson_left t w)
-  have hr := setIntegral_congr_fun measurableSet_Ioi (poisson_right t w)
+  have hl := setIntegral_congr_fun (μ := volume) measurableSet_Iic (poisson_left t w)
+  have hr := setIntegral_congr_fun (μ := volume) measurableSet_Ioi (poisson_right t w)
   have hsplit := integral_add_compl measurableSet_Iic
     (neutralLogMetricPoissonIntegrand_integrable t w ht)
   rw [compl_Iic] at hsplit
@@ -96,7 +96,8 @@ theorem neutralLogMetricPoisson_fourierInv (t x : ℝ) (ht : 0 < t) :
     _ = ∫ ξ : ℝ, neutralLogMetricPoissonIntegrand t (2 * Real.pi * x) ξ := by
       apply integral_congr_ae
       filter_upwards [] with ξ
-      simp only [smul_eq_mul, RCLike.inner_apply', star_trivial, Complex.ofReal_exp]
+      simp only [smul_eq_mul, RCLike.inner_apply', starRingEnd_apply, star_trivial,
+        Complex.ofReal_exp]
       rw [← Complex.exp_add]
       unfold neutralLogMetricPoissonIntegrand
       congr 1
