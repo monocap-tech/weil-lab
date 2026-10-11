@@ -52,7 +52,9 @@ theorem neutralLogMetricTruncatedJump_inner
     funext t
     push_cast
     ring
-  rw [he, integral_const_mul, integral_complex_ofReal,
+  rw [he]
+  dsimp only
+  rw [integral_const_mul, integral_complex_ofReal,
     neutralLogMetricTruncatedJumpDensity_eq_mixture ε R (x - y) hε]
 
 /-- The identified spatial jump integral genuinely converges, by joint
