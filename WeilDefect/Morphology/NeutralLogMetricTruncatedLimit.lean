@@ -505,5 +505,71 @@ theorem neutralLogMetricTruncatedTrialAction_inner_tendsto
     (neutralLogMetricTruncatedTrialAction_toLp_tendsto
       B L M hB hL hM v hv hbound hmod)
 
+
+/-- Pairings of the actual cap-supported Poisson cutoff action converge,
+ as whole-line integrals, against every physical L2 test vector. -/
+theorem neutralLogMetricPoissonTrialAction_integral_inner_tendsto
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) (φ : RealComplexL2) :
+    Tendsto (fun n : ℕ => ∫ x : ℝ, inner ℂ
+      ((Icc (-B) B).indicator (fun z : ℝ => v z +
+        ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+          ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+            (v z - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+              (neutralLogMetricPoissonDensity t (z - y) : ℂ))) x) (φ x))
+      atTop (𝓝 (∫ x : ℝ, inner ℂ
+        (neutralLogMetricEndpointZeroExtension B v x) (φ x))) := by
+  let A : ℕ → ℝ → ℂ := fun n => (Icc (-B) B).indicator (fun x : ℝ =>
+    v x + ∫ y : ℝ, (v x - neutralLogMetricTrialZeroExtension B v y) *
+      (neutralLogMetricTruncatedJumpDensity
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ))
+  let T : ℕ → ℝ → ℂ := fun n => (Icc (-B) B).indicator (fun z : ℝ =>
+    v z + ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v z - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+          (neutralLogMetricPoissonDensity t (z - y) : ℂ)))
+  have hAT (n : ℕ) : A n = T n := by
+    funext x
+    by_cases hx : x ∈ Icc (-B) B
+    · have hxv : neutralLogMetricTrialZeroExtension B v x = v x := by
+        simp [neutralLogMetricTrialZeroExtension, hx]
+      have ha := neutralLogMetricTruncatedJump_action
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) x M (by positivity) hM
+        (neutralLogMetricTrialZeroExtension B v)
+        (neutralLogMetricTrialZeroExtension_measurable B v hv)
+        (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
+      simp only [hxv] at ha
+      simp only [A, T, indicator_of_mem hx]
+      rw [ha]
+    · simp [A, T, hx]
+  have hmem (n : ℕ) : MemLp (A n) 2 volume :=
+    neutralLogMetricTruncatedTrialAction_zeroExtension_memLp_two
+      (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) B L M (by positivity) hB hL hM
+      v hv hbound hmod
+  have he (n : ℕ) : inner ℂ ((hmem n).toLp (A n)) φ =
+      ∫ x : ℝ, inner ℂ (T n x) (φ x) := by
+    rw [L2.inner_def]
+    apply integral_congr_ae
+    filter_upwards [(hmem n).coeFn_toLp] with x hx
+    rw [hx, hAT n]
+  have hc : inner ℂ
+      (neutralLogMetricEndpointCandidateL2 B M L hB hL v hv hbound hmod) φ =
+      ∫ x : ℝ, inner ℂ (neutralLogMetricEndpointZeroExtension B v x) (φ x) := by
+    rw [L2.inner_def]
+    apply integral_congr_ae
+    filter_upwards [neutralLogMetricEndpointCandidateL2_coe
+      B M L hB hL v hv hbound hmod] with x hx
+    rw [hx]
+  have h := neutralLogMetricTruncatedTrialAction_inner_tendsto
+    B L M hB hL hM v hv hbound hmod φ
+  change Tendsto (fun n => inner ℂ ((hmem n).toLp (A n)) φ) atTop
+    (𝓝 (inner ℂ (neutralLogMetricEndpointCandidateL2 B M L hB hL
+      v hv hbound hmod) φ)) at h
+  simp_rw [he, hc] at h
+  exact h
+
 end
 end WeilDefect
