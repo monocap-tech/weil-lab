@@ -39,9 +39,10 @@ theorem neutralLogMetricPoissonConvolution_fourier
       (𝓕 v) ξ * (Real.exp (-t * |ξ|) : ℂ) := by
   change (𝓕 (v ⋆[ContinuousLinearMap.mul ℂ ℂ]
     (fun x : ℝ => (neutralLogMetricPoissonDensity t x : ℂ)))) ξ = _
-  rw [Real.fourier_mul_convolution_eq hv
-    (neutralLogMetricPoissonDensity_integrable t ht).ofReal,
-    neutralLogMetricPoissonDensity_fourier t ξ ht]
+  have h := Real.fourier_mul_convolution_eq hv
+    (neutralLogMetricPoissonDensity_integrable t ht).ofReal ξ
+  rw [neutralLogMetricPoissonDensity_fourier t ξ ht] at h
+  exact h
 
 /-- The Fourier convolution identity applies to the actual zero
  extension using only measurability and boundedness on the finite cap. -/
