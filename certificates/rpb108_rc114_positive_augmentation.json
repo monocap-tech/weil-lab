@@ -1,0 +1,188 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "abstract_response_controls": [
+    {
+      "canonical_dual_metric_residual_sandwich_verified": true,
+      "label": "positive",
+      "nonidentity_canonical_metric_used": true,
+      "positive_equivalence_verified": true,
+      "response_plus_residual_identity_verified": true,
+      "scope": "abstract noncommuting rational forms, not original Weil responses",
+      "threshold_inertia_with_actual_metric_verified": true
+    },
+    {
+      "canonical_dual_metric_residual_sandwich_verified": true,
+      "label": "negative",
+      "nonidentity_canonical_metric_used": true,
+      "positive_equivalence_verified": true,
+      "response_plus_residual_identity_verified": true,
+      "scope": "abstract noncommuting rational forms, not original Weil responses",
+      "threshold_inertia_with_actual_metric_verified": true
+    }
+  ],
+  "actual_Fourier_adjoint_source_actions_certified": false,
+  "actual_auxiliary_metric_conditioning_certified": false,
+  "actual_auxiliary_response_operator_evaluated": false,
+  "aperture": "11/10",
+  "arithmetic": "exact fractions; Chebyshev recurrence/binomial and inverse-form replay",
+  "auxiliary_response_norm_below_one_certified": false,
+  "canonical_W_projection_required_by_this_route": false,
+  "canonical_head_Gram_inverse_required_by_this_route": false,
+  "exact_null_mapping_control_verified": true,
+  "finite_auxiliary_response_inertia_equivalence_proved_in_note": true,
+  "finite_auxiliary_response_rank_upper": 639,
+  "input_sha256": [
+    "f24cc8db7dc175f4660fb5776842f00e20248300270515483484e65f95ae37d3",
+    "0a7d44bbfce5ec2a133423255da4ce32d357154fff7a1e9ebdbf3167a4a64604",
+    "68ca3a11bde5bd51a1bac89c520f070f8db092c6c77973e2668c1d76ac018311",
+    "b58d96c593fa6df579e30b133dd6a07541fd521c433e29ef768dcc137b12693c",
+    "722c639e82a17e3e12a34b3626a0f3b779433ce04bb8ae2f75566cff63b30823",
+    "8265caabb54d903aa5e935000cc706fcd2e639323cfb43c3d9d44cb8d9e2cc38"
+  ],
+  "milestone": "RC114",
+  "original_spectral_count_below_one_hundredth_lower": 10,
+  "original_spectral_count_below_one_hundredth_upper": 639,
+  "parity_positive_augmentation_certificates": [
+    {
+      "Fourier_approximation_squared_error_upper": "1125128560000562117590994161367496378911998220389072043203887888988461904088629885575307520058413086952086029305475045359798848601894617640765242461713079102413707567814350128173828125000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/294970229793844809466193875675189499205941099839436973741057653177127842628591526515832410372363782144683366246120270418396627759090092784146363320251522697980792926862768160139204160560044356710446493826651379176218897780819244309198055607219880075667093641660282341334356838814496012387687446246531126508105309867909668274365456263203798536280111329569975517717812981248542959340655065248882814321279090878057775562533210485277670998121953309839378694244922141862769223824988044169631552096176377069481618918634231024801520681017039649458226072160572544107288860389120561802932217340029818981263862973102332154409533120669733938660342829960687430468056074030992700629061754129683858671839474614854252847441929987655617473307841193933966459928984355049942689213453409822808860724732123979141940899008855643195824985578574814964946841310405954906923412858848876789028958520641698759093",
+      "augmentation_rank_upper": 248,
+      "finite_Fourier_approximation_squared_norm_upper": "984416465457/1000000000000",
+      "low_band_penalty": "25887437695845556478326502701707972960468895677636501/2500000000000000000000000000000000000000000000000000",
+      "parity": "even",
+      "positive_augmentation_certificates": [
+        {
+          "Young_parameter": "1/4",
+          "augmentation_squared_factor_norm_upper": "6371004979071/500000000000",
+          "finite_augmentation_coefficient": "25887437695845556478326502701707972960468895677636501/2000000000000000000000000000000000000000000000000000",
+          "generic_auxiliary_response_norm_bound_is_below_one": false,
+          "generic_auxiliary_response_norm_upper": "6371004979071/4922255000",
+          "positive_augmented_operator_lower": "984451/100000000",
+          "positive_augmented_operator_upper": "7211689/250000",
+          "purpose": "positivity",
+          "threshold_one_hundredth_counting_allowed": false,
+          "uniform_inverse_budgets": [
+            {
+              "actual_arithmetic_action_contract_verified": false,
+              "auxiliary_response_residual_correction_allowance": "1/1000000",
+              "conservative_recurrence_amplification_upper": "52003",
+              "correlated_response_form_enclosure_error_not_included": true,
+              "inexact_response_correction_operator_norm_upper": "115149348851508434771813616635065011154079504330598162932288944399648256591880879/120172241210937500000000000000000000000000000000000000000000000000000000000000000000000",
+              "inverse_polynomial_degree": 321,
+              "relative_residual_upper": "4251349123581212410743812651975607/312500000000000000000000000000000000000",
+              "residual_degree": 322,
+              "total_local_error_norm_factor_relative_source_Gram": "4251349123581212410743812651975607/468786828833750000000000000000000000000000000"
+            },
+            {
+              "actual_arithmetic_action_contract_verified": false,
+              "auxiliary_response_residual_correction_allowance": "1/1000000000000",
+              "conservative_recurrence_amplification_upper": "129795",
+              "correlated_response_form_enclosure_error_not_included": true,
+              "inexact_response_correction_operator_norm_upper": "1834631375958042381825690056767535144414999467821097829256182546118548992479/1922755859375000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "inverse_polynomial_degree": 508,
+              "relative_residual_upper": "16969554306830534923560214502993/1250000000000000000000000000000000000000",
+              "residual_degree": 509,
+              "total_local_error_norm_factor_relative_source_Gram": "16969554306830534923560214502993/4680205868775000000000000000000000000000000000"
+            },
+            {
+              "actual_arithmetic_action_contract_verified": false,
+              "auxiliary_response_residual_correction_allowance": "1/1000000000000000000000000",
+              "conservative_recurrence_amplification_upper": "390286",
+              "correlated_response_form_enclosure_error_not_included": true,
+              "inexact_response_correction_operator_norm_upper": "1819212834908588507299800238037614629037930233236611515245273991/1922755859375000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "inverse_polynomial_degree": 882,
+              "relative_residual_upper": "16898096404241195815867211/1250000000000000000000000000000000000000",
+              "residual_degree": 883,
+              "total_local_error_norm_factor_relative_source_Gram": "16898096404241195815867211/14073106265270000000000000000000000000000000000"
+            }
+          ]
+        },
+        {
+          "Young_parameter": "32",
+          "augmentation_squared_factor_norm_upper": "336389062894931/1000000000000",
+          "finite_augmentation_coefficient": "854285443962903363784774589156363107695473557362004533/2500000000000000000000000000000000000000000000000000",
+          "generic_auxiliary_response_norm_bound_is_below_one": false,
+          "generic_auxiliary_response_norm_upper": "336389062894931/10001267000",
+          "positive_augmented_operator_lower": "10001267/1000000000",
+          "positive_augmented_operator_upper": "352493809/1000000",
+          "purpose": "threshold_count",
+          "threshold_one_hundredth_counting_allowed": true,
+          "uniform_inverse_budgets": []
+        }
+      ],
+      "reference_floor": "5021/500000"
+    },
+    {
+      "Fourier_approximation_squared_error_upper": "2329791939506273607469810592834176212578084853681486696850045251186801271695245200343304683208888022322082773710851202383682121522210359398595147735582569307222790911745880835767970698677124542807684938235211820236995883259822903710301034152507781982421875000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/140326002509931487056367580237915140583312991273864032316833062031660814657924135784363102257111895999140571664158977559287230478042027928264870052024689650850766293366093604337321181358892727366496002671099286865428639224496112464544849130604400356186004838801948045719633658966948143314899658052374663363885731503016685176119302730093416013206854208576595249191700451521766371045927210546492010597694727339292297825694781525552816522967522437074501170900938023644330930885270174186967118334629758207414096975232708388893715274007634866042972193303632734122620595837065842020240790229826772389276692447449840390434666417779455422265321029956458876861727728546134965948195377370152108154792662018504694890918174023137474615157846048513127472589773682960351803319586815147085145323224476208003840905576135850358647044741942947767178929185094738439410900669421",
+      "augmentation_rank_upper": 391,
+      "finite_Fourier_approximation_squared_norm_upper": "61789435743/62500000000",
+      "low_band_penalty": "27080540781470556478326502701707972960468895677636501/2500000000000000000000000000000000000000000000000000",
+      "parity": "odd",
+      "positive_augmentation_certificates": [
+        {
+          "Young_parameter": "1/4",
+          "augmentation_squared_factor_norm_upper": "13386330676019/1000000000000",
+          "finite_augmentation_coefficient": "27080540781470556478326502701707972960468895677636501/2000000000000000000000000000000000000000000000000000",
+          "generic_auxiliary_response_norm_bound_is_below_one": false,
+          "generic_auxiliary_response_norm_upper": "13386330676019/9358779000",
+          "positive_augmented_operator_lower": "9358779/1000000000",
+          "positive_augmented_operator_upper": "629417/25000",
+          "purpose": "positivity",
+          "threshold_one_hundredth_counting_allowed": false,
+          "uniform_inverse_budgets": [
+            {
+              "actual_arithmetic_action_contract_verified": false,
+              "auxiliary_response_residual_correction_allowance": "1/1000000",
+              "conservative_recurrence_amplification_upper": "48205",
+              "correlated_response_form_enclosure_error_not_included": true,
+              "inexact_response_correction_operator_norm_upper": "221100606341485049851541039335862519316006254908844556673899988858232477155061381459/233969475000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "inverse_polynomial_degree": 309,
+              "relative_residual_upper": "128518069209370141948167005602746319/10000000000000000000000000000000000000000",
+              "residual_degree": 310,
+              "total_local_error_norm_factor_relative_source_Gram": "128518069209370141948167005602746319/12136418594000000000000000000000000000000000000"
+            },
+            {
+              "actual_arithmetic_action_contract_verified": false,
+              "auxiliary_response_residual_correction_allowance": "1/1000000000000",
+              "conservative_recurrence_amplification_upper": "119805",
+              "correlated_response_form_enclosure_error_not_included": true,
+              "inexact_response_correction_operator_norm_upper": "223147158352702501342433263383722059465220243267291126381879965375720866324491/233969475000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "inverse_polynomial_degree": 488,
+              "relative_residual_upper": "129111493802194521921331675832483/10000000000000000000000000000000000000000",
+              "residual_degree": 489,
+              "total_local_error_norm_factor_relative_source_Gram": "129111493802194521921331675832483/30162921474000000000000000000000000000000000000"
+            },
+            {
+              "actual_arithmetic_action_contract_verified": false,
+              "auxiliary_response_residual_correction_allowance": "1/1000000000000000000000000",
+              "conservative_recurrence_amplification_upper": "359128",
+              "correlated_response_form_enclosure_error_not_included": true,
+              "inexact_response_correction_operator_norm_upper": "3551519805951093490853454239454802139157546937327397746246356731/3655773046875000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "inverse_polynomial_degree": 846,
+              "relative_residual_upper": "16288321992294310301543557/1250000000000000000000000000000000000000",
+              "residual_degree": 847,
+              "total_local_error_norm_factor_relative_source_Gram": "2326903141756330043077651/1614580488400000000000000000000000000000000000"
+            }
+          ]
+        },
+        {
+          "Young_parameter": "4",
+          "augmentation_squared_factor_norm_upper": "13386330676019/250000000000",
+          "finite_augmentation_coefficient": "27080540781470556478326502701707972960468895677636501/500000000000000000000000000000000000000000000000000",
+          "generic_auxiliary_response_norm_bound_is_below_one": false,
+          "generic_auxiliary_response_norm_upper": "13386330676019/2508298500",
+          "positive_augmented_operator_lower": "5016597/500000000",
+          "positive_augmented_operator_upper": "8166959/125000",
+          "purpose": "threshold_count",
+          "threshold_one_hundredth_counting_allowed": true,
+          "uniform_inverse_budgets": []
+        }
+      ],
+      "reference_floor": "5129/500000"
+    }
+  ],
+  "positive_augmentation_of_full_original_operator_certified": true,
+  "status": "PASS: certified projection-free positive augmentation and finite response equivalence; arithmetic response operator open",
+  "whole_aperture_positivity_extended": false
+}
