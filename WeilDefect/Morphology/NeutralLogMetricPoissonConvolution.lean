@@ -41,8 +41,8 @@ theorem neutralLogMetricPoissonConvolution_fourier
     (fun x : ℝ => (neutralLogMetricPoissonDensity t x : ℂ)))) ξ = _
   have h := Real.fourier_mul_convolution_eq hv
     (neutralLogMetricPoissonDensity_integrable t ht).ofReal ξ
-  rw [neutralLogMetricPoissonDensity_fourier t ξ ht] at h
-  exact h
+  exact h.trans (congrArg (fun z : ℂ => (𝓕 v) ξ * z)
+    (neutralLogMetricPoissonDensity_fourier t ξ ht))
 
 /-- The Fourier convolution identity applies to the actual zero
  extension using only measurability and boundedness on the finite cap. -/

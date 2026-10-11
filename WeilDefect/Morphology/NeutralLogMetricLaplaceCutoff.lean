@@ -58,7 +58,7 @@ theorem neutralLogMetricPoissonLaplaceCoefficient_tendsto (ξ : ℝ) :
   simp_rw [he, integral_complex_ofReal]
   have hc := (Complex.continuous_ofReal.tendsto (logarithmicFourierWeight ξ)).comp
     (neutralLogMetricLaplaceCutoff_natural_tendsto ξ)
-  simpa only [Complex.ofReal_add, Complex.ofReal_one] using hc
+  simpa only [Function.comp_def, Complex.ofReal_add, Complex.ofReal_one] using hc
 
 end
 end WeilDefect

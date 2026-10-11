@@ -96,5 +96,86 @@ theorem neutralLogMetricTimeKernel_fourier
         ring
       rw [he, neutralLogMetricPoissonDensity_fourier t ξ htpos]
 
+
+/-- Joint convergence of the finite weighted convolution at every
+ spatial point, for a bounded measurable trial. -/
+theorem neutralLogMetricTimeConvolution_joint_integrable
+    (ε R x M : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v) (hbound : ∀ y, ‖v y‖ ≤ M) :
+    Integrable (fun p : ℝ × ℝ =>
+      ((Real.exp (-(Real.exp 1) * p.1) / p.1 : ℝ) : ℂ) * v p.2 *
+        (neutralLogMetricPoissonDensity p.1 (x - p.2) : ℂ))
+      ((volume.restrict (Icc ε R)).prod volume) := by
+  let F : ℝ × ℝ → ℂ := fun p =>
+    ((Real.exp (-(Real.exp 1) * p.1) / p.1 : ℝ) : ℂ) * v p.2 *
+      (neutralLogMetricPoissonDensity p.1 (x - p.2) : ℂ)
+  have hm : Measurable F := by
+    dsimp [F]
+    unfold neutralLogMetricPoissonDensity
+    fun_prop
+  apply (integrable_prod_iff hm.aestronglyMeasurable).mpr
+  constructor
+  · filter_upwards [ae_restrict_mem measurableSet_Icc] with t ht
+    have hi := (neutralLogMetricPoissonProduct_integrable t x M
+      (lt_of_lt_of_le hε ht.1) v hv hbound).const_mul
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ)
+    simpa only [F, mul_assoc] using hi
+  · have hc : IntegrableOn (fun _ : ℝ => (1 / ε) * M) (Icc ε R) :=
+      integrableOn_const (by simp : volume (Icc ε R) ≠ ⊤)
+    apply hc.mono' hm.stronglyMeasurable.norm.integral_prod_right'.aestronglyMeasurable
+    filter_upwards [ae_restrict_mem measurableSet_Icc] with t ht
+    have htpos : 0 < t := lt_of_lt_of_le hε ht.1
+    have hi := (neutralLogMetricPoissonProduct_integrable t x M htpos v hv hbound).const_mul
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ)
+    have hk := neutralLogMetricPoissonDensity_shift_integrable t x htpos
+    have hb (y : ℝ) : ‖F (t, y)‖ ≤
+        ((1 / ε) * M) * neutralLogMetricPoissonDensity t (x - y) := by
+      dsimp [F]
+      rw [norm_mul, norm_mul, Complex.norm_real, Complex.norm_real,
+        Real.norm_eq_abs, Real.norm_eq_abs,
+        abs_of_pos (neutralLogMetricPoissonDensity_positive t (x - y) htpos)]
+      exact mul_le_mul_of_nonneg_right
+        (mul_le_mul (neutralLogMetricLaplaceWeight_truncated_bound ε R t hε ht)
+          (hbound y) (norm_nonneg _) (by positivity))
+        (neutralLogMetricPoissonDensity_positive t (x - y) htpos).le
+    rw [Real.norm_eq_abs, abs_of_nonneg (integral_nonneg (fun y => norm_nonneg (F (t, y))))]
+    have hle := integral_mono (by simpa only [F, mul_assoc] using hi.norm)
+      (hk.const_mul ((1 / ε) * M)) hb
+    simpa only [integral_const_mul,
+      neutralLogMetricPoissonDensity_shift_integral t x htpos, mul_one] using hle
+
+/-- The actual time-integrated Poisson convolution is convolution by
+ the finite mixture kernel, with the exchange derived from joint convergence. -/
+theorem neutralLogMetricTimeConvolution_eq_kernel
+    (ε R x M : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v) (hbound : ∀ y, ‖v y‖ ≤ M) :
+    (∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+      ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)) =
+    ∫ y : ℝ, v y * ∫ t in Icc ε R,
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (neutralLogMetricPoissonDensity t (x - y) : ℂ) := by
+  calc
+    _ = ∫ t in Icc ε R, ∫ y : ℝ,
+        ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) * v y *
+          (neutralLogMetricPoissonDensity t (x - y) : ℂ) := by
+      apply setIntegral_congr_fun measurableSet_Icc
+      intro t ht
+      rw [← integral_const_mul]
+      apply integral_congr_ae
+      filter_upwards [] with y
+      ring
+    _ = ∫ y : ℝ, ∫ t in Icc ε R,
+        ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) * v y *
+          (neutralLogMetricPoissonDensity t (x - y) : ℂ) :=
+      integral_integral_swap
+        (neutralLogMetricTimeConvolution_joint_integrable ε R x M hε hM v hv hbound)
+    _ = _ := by
+      apply integral_congr_ae
+      filter_upwards [] with y
+      rw [← integral_const_mul]
+      apply integral_congr_ae
+      filter_upwards [] with t
+      ring
+
 end
 end WeilDefect
