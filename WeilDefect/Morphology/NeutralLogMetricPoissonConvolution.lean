@@ -56,5 +56,59 @@ theorem neutralLogMetricPoissonConvolution_zeroExtension_fourier
   exact neutralLogMetricPoissonConvolution_fourier t ξ ht _
     (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound)
 
+
+/-- Identity minus the whole-line Poisson convolution is integrable
+ for every integrable trial at positive time. -/
+theorem neutralLogMetricPoissonAction_integrable
+    (t : ℝ) (ht : 0 < t) (v : ℝ → ℂ) (hv : Integrable v) :
+    Integrable (fun x : ℝ => v x - ∫ y : ℝ,
+      v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)) :=
+  hv.sub (neutralLogMetricPoissonConvolution_integrable t ht v hv)
+
+/-- The cancelled whole-line action has multiplier 1-exp(-t*|ξ|).
+ Fourier subtraction is justified by genuine integrability of both terms. -/
+theorem neutralLogMetricPoissonAction_fourier
+    (t ξ : ℝ) (ht : 0 < t) (v : ℝ → ℂ) (hv : Integrable v) :
+    (𝓕 (fun x : ℝ => v x - ∫ y : ℝ,
+      v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))) ξ =
+      (𝓕 v) ξ * (1 - (Real.exp (-t * |ξ|) : ℂ)) := by
+  let C : ℝ → ℂ := fun x => ∫ y : ℝ,
+    v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)
+  have hC : Integrable C := neutralLogMetricPoissonConvolution_integrable t ht v hv
+  have hs : (𝓕 (fun x => v x - C x)) ξ = (𝓕 v) ξ - (𝓕 C) ξ := by
+    rw [Real.fourier_eq, Real.fourier_eq, Real.fourier_eq]
+    simp_rw [smul_sub]
+    exact integral_sub ((Real.fourierIntegral_convergent_iff ξ).2 hv)
+      ((Real.fourierIntegral_convergent_iff ξ).2 hC)
+  have he : (𝓕 C) ξ = (𝓕 v) ξ * (Real.exp (-t * |ξ|) : ℂ) :=
+    neutralLogMetricPoissonConvolution_fourier t ξ ht v hv
+  change (𝓕 (fun x => v x - C x)) ξ = _
+  rw [hs, he]
+  ring
+
+/-- The actual cancelled action of a cap-bounded zero-extended trial
+ is integrable over the entire physical line. -/
+theorem neutralLogMetricPoissonAction_zeroExtension_integrable
+    (B M t : ℝ) (ht : 0 < t) (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M) :
+    Integrable (fun x : ℝ => neutralLogMetricTrialZeroExtension B v x -
+      ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+        (neutralLogMetricPoissonDensity t (x - y) : ℂ)) := by
+  exact neutralLogMetricPoissonAction_integrable t ht _
+    (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound)
+
+/-- Whole-line Fourier cancellation for the actual zero extension,
+ without assuming global integrability of the original trial. -/
+theorem neutralLogMetricPoissonAction_zeroExtension_fourier
+    (B M t ξ : ℝ) (ht : 0 < t) (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M) :
+    (𝓕 (fun x : ℝ => neutralLogMetricTrialZeroExtension B v x -
+      ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+        (neutralLogMetricPoissonDensity t (x - y) : ℂ))) ξ =
+      (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+        (1 - (Real.exp (-t * |ξ|) : ℂ)) := by
+  exact neutralLogMetricPoissonAction_fourier t ξ ht _
+    (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound)
+
 end
 end WeilDefect
