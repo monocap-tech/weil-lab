@@ -12,6 +12,7 @@ theorem neutralLogMetric_log_sq_le (d : ℝ) (hd : 0 < d) :
     Real.log d ^ 2 ≤ 16 * (d ^ (-(1 / 2 : ℝ)) + d ^ (1 / 2 : ℝ)) := by
   have hpow (a : ℝ) : (d ^ a) ^ 2 = d ^ (a * 2) := by
     rw [← Real.rpow_natCast (d ^ a) 2, ← Real.rpow_mul hd.le]
+    norm_num
   by_cases hd1 : d ≤ 1
   · have hl : Real.log d ≤ 0 := Real.log_nonpos hd.le hd1
     have hb := Real.log_le_sub_one_of_pos (Real.rpow_pos_of_pos hd (-(1 / 4 : ℝ)))
