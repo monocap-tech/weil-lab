@@ -571,5 +571,82 @@ theorem neutralLogMetricPoissonTrialAction_integral_inner_tendsto
   simp_rw [he, hc] at h
   exact h
 
+
+/-- Every finite Poisson time cutoff with positive lower endpoint gives
+ a cap-supported physical L2 source. -/
+theorem neutralLogMetricPoissonTrialAction_zeroExtension_memLp_two
+    (ε R B L M : ℝ) (hε : 0 < ε) (hB : 0 ≤ B)
+    (hL : 0 ≤ L) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) :
+    MemLp ((Icc (-B) B).indicator (fun x : ℝ => v x +
+      ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+          (neutralLogMetricPoissonDensity t (x - y) : ℂ)))) 2 volume := by
+  have he :
+      (Icc (-B) B).indicator (fun x : ℝ => v x +
+        ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+          (v x - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+            (neutralLogMetricPoissonDensity t (x - y) : ℂ))) =
+      (Icc (-B) B).indicator (fun x : ℝ => v x + ∫ y : ℝ,
+        (v x - neutralLogMetricTrialZeroExtension B v y) *
+          (neutralLogMetricTruncatedJumpDensity ε R (x - y) : ℂ)) := by
+    funext x
+    by_cases hx : x ∈ Icc (-B) B
+    · have hxv : neutralLogMetricTrialZeroExtension B v x = v x := by
+        simp [neutralLogMetricTrialZeroExtension, hx]
+      have ha := neutralLogMetricTruncatedJump_action ε R x M hε hM
+        (neutralLogMetricTrialZeroExtension B v)
+        (neutralLogMetricTrialZeroExtension_measurable B v hv)
+        (neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound)
+      simp only [hxv] at ha
+      simp only [indicator_of_mem hx]
+      rw [ha]
+    · simp [hx]
+  rw [he]
+  exact neutralLogMetricTruncatedTrialAction_zeroExtension_memLp_two
+    ε R B L M hε hB hL hM v hv hbound hmod
+
+/-- The pairing integrand of every finite time cutoff is integrable
+ against every physical L2 test vector. -/
+theorem neutralLogMetricPoissonTrialAction_integrable_inner
+    (ε R B L M : ℝ) (hε : 0 < ε) (hB : 0 ≤ B)
+    (hL : 0 ≤ L) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) (φ : RealComplexL2) :
+    Integrable (fun x : ℝ => inner ℂ
+      ((Icc (-B) B).indicator (fun z : ℝ => v z +
+        ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+          (v z - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+            (neutralLogMetricPoissonDensity t (z - y) : ℂ))) x) (φ x)) volume := by
+  let F : ℝ → ℂ := (Icc (-B) B).indicator (fun z : ℝ => v z +
+    ∫ t in Icc ε R, ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+      (v z - ∫ y : ℝ, neutralLogMetricTrialZeroExtension B v y *
+        (neutralLogMetricPoissonDensity t (z - y) : ℂ)))
+  have hf : MemLp F 2 volume :=
+    neutralLogMetricPoissonTrialAction_zeroExtension_memLp_two
+      ε R B L M hε hB hL hM v hv hbound hmod
+  apply (L2.integrable_inner (𝕜 := ℂ) (hf.toLp F) φ).congr
+  filter_upwards [hf.coeFn_toLp] with x hx
+  rw [hx]
+
+/-- The endpoint pairing integrand is integrable against every physical
+ L2 test vector, with the same source-first inner-product convention. -/
+theorem neutralLogMetricEndpointZeroExtension_integrable_inner
+    (B M L : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) (φ : RealComplexL2) :
+    Integrable (fun x : ℝ => inner ℂ
+      (neutralLogMetricEndpointZeroExtension B v x) (φ x)) volume := by
+  apply (L2.integrable_inner (𝕜 := ℂ)
+    (neutralLogMetricEndpointCandidateL2 B M L hB hL v hv hbound hmod) φ).congr
+  filter_upwards [neutralLogMetricEndpointCandidateL2_coe
+    B M L hB hL v hv hbound hmod] with x hx
+  rw [hx]
+
 end
 end WeilDefect
