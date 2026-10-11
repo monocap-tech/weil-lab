@@ -264,3 +264,5 @@ import WeilDefect.Morphology.NeutralLogMetricPoissonAction
 import WeilDefect.Morphology.NeutralLogMetricPoissonMixture
 
 import WeilDefect.Morphology.NeutralLogMetricTruncatedJump
+
+import WeilDefect.Morphology.NeutralLogMetricTruncatedBounds
