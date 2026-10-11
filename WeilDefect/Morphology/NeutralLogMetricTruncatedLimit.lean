@@ -1,4 +1,5 @@
 import WeilDefect.Morphology.NeutralLogMetricTruncatedBounds
+import WeilDefect.Morphology.NeutralLogMetricCapL2
 import Mathlib.MeasureTheory.Integral.Bochner.Set
 
 namespace WeilDefect
@@ -240,6 +241,57 @@ theorem neutralLogMetricPoissonTrialAction_norm_le
   rw [he]
   have hj := neutralLogMetricTruncatedTrialJump_integral_norm_le
     ε R B x L M hε hB hx hL hM v hv hbound hmod
+  have hvx := hbound x hxcap
+  exact (norm_add_le _ _).trans (by linarith)
+
+/-- Parameter measurability of the truncated density, including its
+ totalized values and without any cutoff positivity premise. -/
+theorem neutralLogMetricTruncatedJumpDensity_measurable (ε R : ℝ) :
+    Measurable (neutralLogMetricTruncatedJumpDensity ε R) := by
+  have hm : Measurable (fun p : ℝ × ℝ =>
+      Real.exp (-(Real.exp 1) * p.2) /
+        (p.2 ^ 2 + 4 * Real.pi ^ 2 * p.1 ^ 2)) := by fun_prop
+  have hi : StronglyMeasurable (fun r : ℝ => ∫ t in Icc ε R,
+      Real.exp (-(Real.exp 1) * t) / (t ^ 2 + 4 * Real.pi ^ 2 * r ^ 2)) :=
+    hm.stronglyMeasurable.integral_prod_right'
+  exact measurable_const.mul hi.measurable
+
+/-- The actual truncated spatial action is measurable in the observation
+ variable for any measurable trial. -/
+theorem neutralLogMetricTruncatedTrialAction_measurable
+    (ε R B : ℝ) (v : ℝ → ℂ) (hv : Measurable v) :
+    Measurable (fun x : ℝ => v x + ∫ y : ℝ,
+      (v x - neutralLogMetricTrialZeroExtension B v y) *
+        (neutralLogMetricTruncatedJumpDensity ε R (x - y) : ℂ)) := by
+  have hd : Measurable (fun p : ℝ × ℝ =>
+      neutralLogMetricTruncatedJumpDensity ε R (p.1 - p.2)) :=
+    (neutralLogMetricTruncatedJumpDensity_measurable ε R).comp (by fun_prop)
+  have hm : Measurable (fun p : ℝ × ℝ =>
+      (v p.1 - neutralLogMetricTrialZeroExtension B v p.2) *
+        (neutralLogMetricTruncatedJumpDensity ε R (p.1 - p.2) : ℂ)) :=
+    ((hv.comp measurable_fst).sub
+      ((neutralLogMetricTrialZeroExtension_measurable B v hv).comp measurable_snd)).mul
+      (Complex.continuous_ofReal.measurable.comp hd)
+  exact hv.add hm.stronglyMeasurable.integral_prod_right'.measurable
+
+/-- Every actual truncated spatial action is in physical L2 on the cap,
+ with membership derived from the common endpoint-aware budget. -/
+theorem neutralLogMetricTruncatedTrialAction_memLp_two
+    (ε R B L M : ℝ) (hε : 0 < ε) (hB : 0 ≤ B)
+    (hL : 0 ≤ L) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) :
+    MemLp (fun x : ℝ => v x + ∫ y : ℝ,
+      (v x - neutralLogMetricTrialZeroExtension B v y) *
+        (neutralLogMetricTruncatedJumpDensity ε R (x - y) : ℂ)) 2
+      (volume.restrict (Ioo (-B) B)) := by
+  apply (neutralLogMetricPhysicalActionBudget_memLp_two B M L hB).mono'
+    (neutralLogMetricTruncatedTrialAction_measurable ε R B v hv).aestronglyMeasurable
+  filter_upwards [ae_restrict_mem measurableSet_Ioo] with x hx
+  have hxcap : x ∈ Icc (-B) B := ⟨hx.1.le, hx.2.le⟩
+  have hj := neutralLogMetricTruncatedTrialJump_integral_norm_le
+    ε R B x L M hε hB hx hL hM v hv hbound (hmod x hxcap)
   have hvx := hbound x hxcap
   exact (norm_add_le _ _).trans (by linarith)
 
