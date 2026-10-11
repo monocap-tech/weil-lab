@@ -45,7 +45,8 @@ theorem neutralLogMetricJumpDensity_integrable (r : ℝ) (hr : 0 < r) :
     have he : Real.exp (-(Real.exp 1) * t) ≤ 1 := by
       rw [← Real.exp_zero]
       apply Real.exp_le_exp.mpr
-      nlinarith [Real.exp_pos (1 : ℝ)]
+      exact mul_nonpos_of_nonpos_of_nonneg
+        (neg_nonpos.mpr (Real.exp_pos (1 : ℝ)).le) (le_of_lt ht)
     have hn : 0 ≤ Real.exp (-(Real.exp 1) * t) /
         (t ^ 2 + 4 * Real.pi ^ 2 * r ^ 2) := by positivity
     rw [Real.norm_eq_abs, abs_of_nonneg hn]
@@ -68,7 +69,8 @@ theorem neutralLogMetricJumpDensity_le_inv (r : ℝ) (hr : 0 < r) :
     have he : Real.exp (-(Real.exp 1) * t) ≤ 1 := by
       rw [← Real.exp_zero]
       apply Real.exp_le_exp.mpr
-      nlinarith [Real.exp_pos (1 : ℝ)]
+      exact mul_nonpos_of_nonpos_of_nonneg
+        (neg_nonpos.mpr (Real.exp_pos (1 : ℝ)).le) (le_of_lt ht)
     have h := div_le_div_of_nonneg_right he
       (by positivity : 0 ≤ t ^ 2 + 4 * Real.pi ^ 2 * r ^ 2)
     dsimp [q]
