@@ -1,0 +1,97 @@
+{
+  "F4": false,
+  "RH": false,
+  "absolute_envelope_obstructions": [
+    {
+      "absolute_K_envelope_cannot_certify_positive_floor": true,
+      "absolute_K_strong_floor_lower": "-834009865834788190517236182212405083704935203718051553904948999480559740374071434526663592757116811906031701/390625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "absolute_K_tail_squared_sufficient_for_threshold": "2475000000000000000000000000000000000000000000000000/38511108141470556478326502701707972960468895677636501",
+      "effective_strong_floor_sufficient_for_original_threshold_using_generic_B": "990586454775930096405383268205257251839484540450213670886586297024404503962051575983524091381461860519329989096199933653249923458658905268772322217096010875082221/18349398437500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "generic_B_squared_norm_upper": "2971208882374665289216149804615771755518453621350641012659758891073213511886154727950572274144385581557989967288599800959749770375976715806316966651288032625246663/62744140625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "inherited_tail_squared": "31799522915209086894028372786550680578713961657483595201/156250000000000000000000000000000000000000000000000000000",
+      "parity": "even",
+      "physical_K_norm_upper": "38511108141470556478326502701707972960468895677636501/2500000000000000000000000000000000000000000000000000",
+      "tail_norm_upper": "5639106570655416057653863649/12500000000000000000000000000",
+      "this_is_a_sufficient_budget_not_a_necessary_floor": true
+    },
+    {
+      "absolute_K_envelope_cannot_certify_positive_floor": true,
+      "absolute_K_strong_floor_lower": "-484215113767488234682924081560347597339081625485732006693948999480559740374071434526663592757116811906031701/390625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "absolute_K_tail_squared_sufficient_for_threshold": "825000000000000000000000000000000000000000000000000/9170369380490185492775500900569324320156298559212167",
+      "effective_strong_floor_sufficient_for_original_threshold_using_generic_B": "505607734487804242184146247273751382518316652904139668388240859264385903909230573232205511527673893418743343234199933653249923458658905268772322217096010875082221/18349398437500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "generic_B_squared_norm_upper": "1516272721510287726552438741821254147554949958712419005164722577793157711727691719696616534583021680256230029702599800959749770375976715806316966651288032625246663/62744140625000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "inherited_tail_squared": "31799522915209086894028372786550680578713961657483595201/156250000000000000000000000000000000000000000000000000000",
+      "parity": "odd",
+      "physical_K_norm_upper": "27511108141470556478326502701707972960468895677636501/2500000000000000000000000000000000000000000000000000",
+      "tail_norm_upper": "5639106570655416057653863649/12500000000000000000000000000",
+      "this_is_a_sufficient_budget_not_a_necessary_floor": true
+    }
+  ],
+  "actual_canonical_nonidentity_metric_used_in_controls": true,
+  "actual_shifted_arithmetic_lifts_computed": false,
+  "aperture": "11/10",
+  "arithmetic": "exact fractions; LDL and independent determinant-ratio inertia controls",
+  "compact_negative_part_counting_reduction_proved_in_note": true,
+  "effective_strong_floor_outside_ten_candidates_certified": false,
+  "exact_two_stage_completion_control_verified": true,
+  "full_original_exceptional_count_certified": false,
+  "inherited_complement_floor": "247/2500",
+  "inherited_corrected_positive_dimension": 12,
+  "inherited_nonpositive_count_upper": 1238,
+  "input_sha256": [
+    "da53a5482de8f68ccf2463883934ca4dcd2a7676e6499792f4bf6b95e9d9f80a",
+    "3e9316ce6fb62295657400d784967fbf67921dfc591972b715fbe87c38ae7e49",
+    "b58d96c593fa6df579e30b133dd6a07541fd521c433e29ef768dcc137b12693c",
+    "722c639e82a17e3e12a34b3626a0f3b779433ce04bb8ae2f75566cff63b30823",
+    "4a2ff5f2be781962624ba03b6af97ebae25cafa5d032f631c321d76599d1ab56",
+    "9765976f9c2d796c568695d49e7450d02065232dc7f043d0addcdfa3a9482f4d",
+    "8265caabb54d903aa5e935000cc706fcd2e639323cfb43c3d9d44cb8d9e2cc38"
+  ],
+  "invisible_omitted_mode_controls": [
+    {
+      "abstract_not_original_Weil_arithmetic": true,
+      "additional_invisible_modes": 0,
+      "infinite_complement_floor_preserved": true,
+      "native_compression_and_native_action_unchanged": true,
+      "nonpositive_count": 0,
+      "total_below_threshold": 10
+    },
+    {
+      "abstract_not_original_Weil_arithmetic": true,
+      "additional_invisible_modes": 1,
+      "infinite_complement_floor_preserved": true,
+      "native_compression_and_native_action_unchanged": true,
+      "nonpositive_count": 1,
+      "total_below_threshold": 11
+    },
+    {
+      "abstract_not_original_Weil_arithmetic": true,
+      "additional_invisible_modes": 12,
+      "infinite_complement_floor_preserved": true,
+      "native_compression_and_native_action_unchanged": true,
+      "nonpositive_count": 12,
+      "total_below_threshold": 22
+    },
+    {
+      "abstract_not_original_Weil_arithmetic": true,
+      "additional_invisible_modes": 1228,
+      "infinite_complement_floor_preserved": true,
+      "native_compression_and_native_action_unchanged": true,
+      "nonpositive_count": 1228,
+      "total_below_threshold": 1238
+    }
+  ],
+  "milestone": "RC111",
+  "new_native_directions_added": 0,
+  "new_source_integrals_evaluated": false,
+  "original_below_threshold_count_lower": 10,
+  "original_below_threshold_count_upper": 1250,
+  "original_strong_floor_outside_ten_candidates_certified": false,
+  "shifted_correlated_lift_sandwich_control_verified": true,
+  "status": "structural stopping theorem and enclosure obstruction; arithmetic strong estimate open",
+  "structural_threshold_coverage_theorem_proved_in_note": true,
+  "threshold": "1/100",
+  "threshold_Feshbach_identity_control_verified": true,
+  "unshifted_effective_head_is_not_original_threshold_operator_control_verified": true,
+  "whole_aperture_positivity_extended": false
+}
