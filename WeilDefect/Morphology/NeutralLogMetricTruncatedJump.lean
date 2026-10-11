@@ -53,7 +53,6 @@ theorem neutralLogMetricTruncatedJump_inner
     push_cast
     ring
   rw [he]
-  dsimp only
   rw [integral_const_mul, integral_complex_ofReal,
     neutralLogMetricTruncatedJumpDensity_eq_mixture ε R (x - y) hε]
 
@@ -86,6 +85,7 @@ theorem neutralLogMetricTruncatedJump_action
           (neutralLogMetricPoissonDensity t (x - y) : ℂ) := by
       apply setIntegral_congr_fun measurableSet_Icc
       intro t ht
+      dsimp only
       rw [← neutralLogMetricPoissonDifference_integral t x M
         (lt_of_lt_of_le hε ht.1) v hv hbound]
       rw [← integral_const_mul]
