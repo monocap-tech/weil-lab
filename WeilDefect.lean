@@ -242,3 +242,5 @@ import WeilDefect.Morphology.NeutralLogMetricPoissonMass
 import WeilDefect.Morphology.NeutralLogMetricJumpBounds
 
 import WeilDefect.Morphology.NeutralLogMetricJumpCap
+
+import WeilDefect.Morphology.NeutralLogMetricEndpointBounds

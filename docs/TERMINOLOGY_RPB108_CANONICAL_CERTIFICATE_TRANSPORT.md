@@ -86,3 +86,13 @@ identified by this namespace.
   spatial integrand is integrable there. For B>=0 its integral has norm
   at most `2*B*L`. This budget controls the internal-difference term only;
   both exterior tails are retained in the endpoint candidate.
+
+## LF12 additive definitions
+
+- **Damped spatial far-tail budget:** `ell(r) <= C/r^2`, where
+  `C = 1/(2*pi^2*exp(1))` and r>0. It comes from integrating the actual
+  time damping against the spatial denominator lower bound.
+- **Positive-distance endpoint budget:** genuine convergence of each
+  tail beyond d>0, with `tail(d) <= C/d`. Both exterior contributions
+  are therefore bounded at interior points. This coarse reciprocal-distance
+  bound does not establish endpoint L2 integrability.
