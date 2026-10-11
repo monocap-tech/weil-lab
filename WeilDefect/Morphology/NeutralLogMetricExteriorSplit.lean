@@ -5,6 +5,44 @@ namespace WeilDefect
 noncomputable section
 open MeasureTheory Set
 
+/-- Genuine convergence of the right exterior spatial kernel integral. -/
+theorem neutralLogMetricJump_right_exterior_integrable
+    (B x : ℝ) (hx : x < B) :
+    IntegrableOn (fun y : ℝ => neutralLogMetricJumpDensity |x - y|) (Ioi B) := by
+  have hs : (fun y : ℝ => y + (-x)) ⁻¹' Ioi (B - x) = Ioi B := by
+    ext y
+    simp only [mem_preimage, mem_Ioi]
+    constructor <;> intro h <;> linarith
+  have hp := (measurePreserving_add_right (volume : Measure ℝ) (-x)).restrict_preimage
+    (measurableSet_Ioi : MeasurableSet (Ioi (B - x)))
+  rw [hs] at hp
+  have hi := hp.integrable_comp_of_integrable
+    (neutralLogMetricEndpointTail_integrable (B - x) (by linarith))
+  apply hi.congr_fun _ measurableSet_Ioi
+  intro y hy
+  change neutralLogMetricJumpDensity (y + (-x)) = neutralLogMetricJumpDensity |x - y|
+  congr 1
+  rw [abs_of_neg (by linarith [hy] : x - y < 0)]
+  ring
+
+/-- Genuine convergence of the left exterior spatial kernel integral. -/
+theorem neutralLogMetricJump_left_exterior_integrable
+    (B x : ℝ) (hx : -B < x) :
+    IntegrableOn (fun y : ℝ => neutralLogMetricJumpDensity |x - y|) (Iio (-B)) := by
+  have hs : (fun y : ℝ => x - y) ⁻¹' Ioi (B + x) = Iio (-B) := by
+    ext y
+    simp only [mem_preimage, mem_Ioi, mem_Iio]
+    constructor <;> intro h <;> linarith
+  have hp := (measurePreserving_sub_left (volume : Measure ℝ) x).restrict_preimage
+    (measurableSet_Ioi : MeasurableSet (Ioi (B + x)))
+  rw [hs] at hp
+  have hi := hp.integrable_comp_of_integrable
+    (neutralLogMetricEndpointTail_integrable (B + x) (by linarith))
+  apply hi.congr_fun _ measurableSet_Iio
+  intro y hy
+  change neutralLogMetricJumpDensity (x - y) = neutralLogMetricJumpDensity |x - y|
+  rw [abs_of_pos (by linarith [hy] : 0 < x - y)]
+
 /-- The actual right exterior kernel integral is the distance-to-right tail. -/
 theorem neutralLogMetricJump_right_exterior_integral
     (B x : ℝ) (hx : x < B) :
