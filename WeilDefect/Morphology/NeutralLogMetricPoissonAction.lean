@@ -71,10 +71,14 @@ theorem neutralLogMetricPoissonDifference_integral
   have hc := (neutralLogMetricPoissonDensity_shift_integrable t x ht).ofReal.const_mul (v x)
   have hvp := neutralLogMetricPoissonProduct_integrable t x M ht v hv hbound
   simp_rw [sub_mul]
-  have hsub := integral_sub hc hvp
-  rw [hsub, integral_const_mul, integral_complex_ofReal,
-    neutralLogMetricPoissonDensity_shift_integral t x ht]
-  simp
+  calc
+    _ = (∫ y : ℝ, v x * (neutralLogMetricPoissonDensity t (x - y) : ℂ)) -
+        ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ) :=
+      integral_sub hc hvp
+    _ = _ := by
+      rw [integral_const_mul, integral_complex_ofReal,
+        neutralLogMetricPoissonDensity_shift_integral t x ht]
+      simp
 
 /-- The positive-time action applies to cap-bounded trials through their
 actual zero extension; no global bound on the original trial is required. -/
