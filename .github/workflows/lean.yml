@@ -54,6 +54,7 @@ jobs:
             WeilDefect.Morphology.NeutralLogMetricPoisson \
             WeilDefect.Morphology.NeutralLogMetricPoissonMass \
             WeilDefect.Morphology.NeutralLogMetricPoissonFourier \
+            WeilDefect.Morphology.NeutralLogMetricPoissonConvolution \
             WeilDefect.Morphology.NeutralLogMetricJumpBounds \
             WeilDefect.Morphology.NeutralLogMetricJumpCap \
             WeilDefect.Morphology.NeutralLogMetricEndpointBounds \
