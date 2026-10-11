@@ -41,19 +41,48 @@ theorem neutralLogMetricTimeAction_fourier_tendsto_L2
     rw [hGnorm]
     exact neutralLogMetricTimeAction_fourier_norm_le
       (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) M ξ (by positivity) hM v hv hvi hbound
-  have hui : UnifIntegrable A 2 volume := by
-    apply (unifIntegrable_const (ι := ℕ) (by norm_num : (1 : ℝ≥0∞) ≤ 2)
-      (by norm_num : (2 : ℝ≥0∞) ≠ ∞) hp).ae_mono hAmeas
-    intro n
+  let D : ℕ → ℝ → ℝ := fun n ξ => ‖A n ξ - G ξ‖ ^ 2
+  have hDmeas (n : ℕ) : AEStronglyMeasurable (D n) volume := by
+    have hm := ((hAmeas n).sub hp.aestronglyMeasurable).norm
+    simpa only [D, pow_two] using hm.mul hm
+  have hdom : Integrable (fun ξ : ℝ => 4 * ‖G ξ‖ ^ 2) volume :=
+    hp.norm.integrable_sq.const_mul 4
+  have hDdom (n : ℕ) : ∀ᵐ ξ ∂volume, ‖D n ξ‖ ≤ 4 * ‖G ξ‖ ^ 2 := by
     filter_upwards [] with ξ
-    change ‖A n ξ‖ₑ ≤ ‖G ξ‖ₑ
-    simp only [← ofReal_norm]
-    exact ENNReal.ofReal_le_ofReal (hAbound n ξ)
-  have hpoint : ∀ᵐ ξ ∂volume, Tendsto (fun n => A n ξ) atTop (𝓝 (G ξ)) :=
-    Filter.Eventually.of_forall (fun ξ =>
-      neutralLogMetricTimeAction_fourier_natural_tendsto M ξ hM v hv hvi hbound)
-  exact tendsto_Lp_finite_of_tendsto_ae (by norm_num) (by norm_num)
-    hAmeas hp hui hpoint
+    have hd : ‖A n ξ - G ξ‖ ≤ 2 * ‖G ξ‖ :=
+      (norm_sub_le _ _).trans (by linarith [hAbound n ξ])
+    dsimp only [D]
+    rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)]
+    nlinarith [norm_nonneg (A n ξ - G ξ), norm_nonneg (G ξ)]
+  have hDpoint : ∀ᵐ ξ ∂volume, Tendsto (fun n => D n ξ) atTop (𝓝 (0 : ℝ)) := by
+    filter_upwards [] with ξ
+    have h := neutralLogMetricTimeAction_fourier_natural_tendsto M ξ hM v hv hvi hbound
+    have hd := (h.sub (tendsto_const_nhds :
+      Tendsto (fun _ : ℕ => G ξ) atTop (𝓝 (G ξ)))).norm
+    simpa only [D, sub_self, norm_zero, zero_pow (by norm_num : (2 : ℕ) ≠ 0)]
+      using hd.pow 2
+  have ht := tendsto_lintegral_norm_of_dominated_convergence
+    hDmeas hdom.2 hDdom hDpoint
+  have ht' : Tendsto (fun n : ℕ => ∫⁻ ξ : ℝ,
+      ENNReal.ofReal (‖A n ξ - G ξ‖ ^ 2)) atTop (𝓝 (0 : ℝ≥0∞)) := by
+    simpa only [D, sub_zero, Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)] using ht
+  have he (n : ℕ) : eLpNorm (fun ξ : ℝ => A n ξ - G ξ) 2 volume =
+      (∫⁻ ξ : ℝ, ENNReal.ofReal (‖A n ξ - G ξ‖ ^ 2)) ^ (1 / (2 : ℝ)) := by
+    rw [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num)
+      ((hAmeas n).sub hp.aestronglyMeasurable)]
+    simp only [ENNReal.toReal_ofNat]
+    congr 1
+    apply lintegral_congr_ae
+    filter_upwards [] with ξ
+    rw [← ofReal_norm, ← ENNReal.ofReal_rpow_of_nonneg
+      (norm_nonneg _) (by norm_num : 0 ≤ (2 : ℝ)), Real.rpow_two]
+  have hc : Continuous (fun z : ℝ≥0∞ => z ^ (1 / (2 : ℝ))) :=
+    ENNReal.continuous_rpow_const
+  change Tendsto (fun n : ℕ => eLpNorm (fun ξ : ℝ => A n ξ - G ξ) 2 volume)
+    atTop (𝓝 (0 : ℝ≥0∞))
+  simp_rw [he]
+  simpa only [ENNReal.zero_rpow_of_pos (by norm_num : 0 < 1 / (2 : ℝ))] using
+    (hc.tendsto 0).comp ht'
 
 /-- Spectral L2 convergence for actual cap-bounded zero extensions,
  conditional on their full weighted-product L2 membership. -/
@@ -102,6 +131,7 @@ theorem neutralLogMetricTimeAction_fourier_memLp_two
 
 /-- The actual spectral L2 vectors of the finite-action Fourier
  transforms converge to the full weighted-product representative. -/
+set_option maxHeartbeats 1000000 in
 theorem neutralLogMetricTimeAction_fourier_toLp_tendsto
     (M : ℝ) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
     (hvi : Integrable v) (hbound : ∀ y, ‖v y‖ ≤ M)
@@ -122,6 +152,7 @@ theorem neutralLogMetricTimeAction_fourier_toLp_tendsto
 /-- Inverse Fourier transformation transports the actual spectral-vector
  limit into physical L2. Identification with the original time-action
  functions is a separate obligation. -/
+set_option maxHeartbeats 1000000 in
 theorem neutralLogMetricTimeAction_fourierInv_toLp_tendsto
     (M : ℝ) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
     (hvi : Integrable v) (hbound : ∀ y, ‖v y‖ ≤ M)
@@ -144,6 +175,7 @@ theorem neutralLogMetricTimeAction_fourierInv_toLp_tendsto
 /-- Pairings of the inverse-transformed spectral representatives
  converge against every physical L2 test vector. The full weighted-product
  domain condition remains explicit. -/
+set_option maxHeartbeats 1000000 in
 theorem neutralLogMetricTimeAction_fourierInv_inner_tendsto
     (M : ℝ) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
     (hvi : Integrable v) (hbound : ∀ y, ‖v y‖ ≤ M)
