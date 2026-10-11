@@ -1,6 +1,7 @@
 import WeilDefect.Morphology.NeutralLogMetricTruncatedBounds
 import WeilDefect.Morphology.NeutralLogMetricCapL2
 import Mathlib.MeasureTheory.Integral.Bochner.Set
+import Mathlib.MeasureTheory.Function.UniformIntegrable
 
 namespace WeilDefect
 noncomputable section
@@ -294,6 +295,71 @@ theorem neutralLogMetricTruncatedTrialAction_memLp_two
     ε R B x L M hε hB hx hL hM v hv hbound (hmod x hxcap)
   have hvx := hbound x hxcap
   exact (norm_add_le _ _).trans (by linarith)
+
+/-- Concrete cutoff actions converge to the endpoint candidate in the
+ physical cap L2 seminorm, not merely at individual interior points. -/
+theorem neutralLogMetricTruncatedTrialAction_tendsto_L2
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|) :
+    Tendsto (fun n : ℕ => eLpNorm
+      (fun x : ℝ => (v x + ∫ y : ℝ,
+        (v x - neutralLogMetricTrialZeroExtension B v y) *
+          (neutralLogMetricTruncatedJumpDensity
+            (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ)) -
+        neutralLogMetricEndpointCandidate B v x)
+      2 (volume.restrict (Ioo (-B) B))) atTop (𝓝 0) := by
+  let A : ℕ → ℝ → ℂ := fun n x => v x + ∫ y : ℝ,
+    (v x - neutralLogMetricTrialZeroExtension B v y) *
+      (neutralLogMetricTruncatedJumpDensity
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) (x - y) : ℂ)
+  let G : ℝ → ℝ := fun x => M + 2 * B * L + M * neutralLogMetricExteriorSource B x
+  have hGpos (x : ℝ) : 0 ≤ G x := by
+    have hE := neutralLogMetricExteriorSource_nonnegative B x
+    dsimp only [G]
+    positivity
+  have hGmeas : Measurable G :=
+    measurable_const.add (measurable_const.mul (neutralLogMetricExteriorSource_measurable B))
+  have hGC : MemLp (fun x : ℝ => (G x : ℂ)) 2
+      (volume.restrict (Ioo (-B) B)) := by
+    apply (neutralLogMetricPhysicalActionBudget_memLp_two B M L hB).mono'
+      (Complex.continuous_ofReal.measurable.comp hGmeas).aestronglyMeasurable
+    exact Eventually.of_forall (fun x => by
+      change ‖(G x : ℂ)‖ ≤ G x
+      rw [Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg (hGpos x)])
+  have hAmeas (n : ℕ) : AEStronglyMeasurable (A n)
+      (volume.restrict (Ioo (-B) B)) :=
+    (neutralLogMetricTruncatedTrialAction_measurable
+      (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) B v hv).aestronglyMeasurable
+  have hAbound (n : ℕ) (x : ℝ) (hx : x ∈ Ioo (-B) B) : ‖A n x‖ ≤ G x := by
+    have hxcap : x ∈ Icc (-B) B := ⟨hx.1.le, hx.2.le⟩
+    have hj := neutralLogMetricTruncatedTrialJump_integral_norm_le
+      (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) B x L M
+      (by positivity) hB hx hL hM v hv hbound (hmod x hxcap)
+    have hvx := hbound x hxcap
+    exact (norm_add_le _ _).trans (by dsimp only [G]; linarith)
+  have hui : UnifIntegrable A 2 (volume.restrict (Ioo (-B) B)) := by
+    apply (unifIntegrable_const (ι := ℕ) (by norm_num : (1 : ℝ≥0∞) ≤ 2)
+      (by norm_num : (2 : ℝ≥0∞) ≠ ∞) hGC).ae_mono hAmeas
+    intro n
+    filter_upwards [ae_restrict_mem measurableSet_Ioo] with x hx
+    change ‖A n x‖ₑ ≤ ‖(G x : ℂ)‖ₑ
+    simp only [← ofReal_norm, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_nonneg (hGpos x)]
+    exact ENNReal.ofReal_le_ofReal (hAbound n x hx)
+  have hpoint : ∀ᵐ x ∂(volume.restrict (Ioo (-B) B)),
+      Tendsto (fun n => A n x) atTop (𝓝 (neutralLogMetricEndpointCandidate B v x)) := by
+    filter_upwards [ae_restrict_mem measurableSet_Ioo] with x hx
+    have hxcap : x ∈ Icc (-B) B := ⟨hx.1.le, hx.2.le⟩
+    rw [neutralLogMetricEndpointCandidate_eq_trial_jump B x L hB hx v hv hL
+      (hmod x hxcap)]
+    exact tendsto_const_nhds.add (neutralLogMetricTruncatedTrialJump_integral_tendsto
+      B x L M hB hx hL hM v hv hbound (hmod x hxcap))
+  exact tendsto_Lp_finite_of_tendsto_ae (by norm_num) (by norm_num) hAmeas
+    (neutralLogMetricEndpointCandidate_memLp_two B M L hB hL v hv hbound hmod)
+    hui hpoint
 
 end
 end WeilDefect
