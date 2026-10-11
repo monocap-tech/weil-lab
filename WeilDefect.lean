@@ -238,3 +238,5 @@ import WeilDefect.Morphology.NeutralLogMetricLaplace
 import WeilDefect.Morphology.NeutralLogMetricPoisson
 
 import WeilDefect.Morphology.NeutralLogMetricPoissonMass
+
+import WeilDefect.Morphology.NeutralLogMetricJumpBounds

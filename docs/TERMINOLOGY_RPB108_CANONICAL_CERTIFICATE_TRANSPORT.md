@@ -65,3 +65,16 @@ identified by this namespace.
   integral of the normalized physical Poisson density. Its absolute integral
   is also one. This concerns the full real line; finite-cap compression still
   loses exterior mass and retains both endpoint contributions.
+
+## LF09 additive definitions
+
+- **Off-diagonal jump convergence:** integrability of the actual defining
+  time integral at every strictly positive jump distance. Cauchy domination
+  supplies this convergence, independently of totalized integral conventions.
+- **Conservative jump majorant:** `ell(r) <= 1/r` for r>0, using the full
+  undamped Cauchy integral. This deliberately loses the half-line factor.
+- **Pointwise Lipschitz cancellation:** the bound
+  `norm((v(x)-v(y))*ell(abs(x-y))) <= L` under the explicit modulus
+  `norm(v(x)-v(y)) <= L*abs(x-y)`, including the zero difference on the
+  diagonal. Measurability and integral convergence in the spatial variable
+  remain separate obligations.
