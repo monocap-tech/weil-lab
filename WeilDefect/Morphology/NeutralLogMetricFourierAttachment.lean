@@ -645,5 +645,48 @@ theorem neutralLogMetricFourierPhase_interval_integrationByParts
   rw [he] at h
   exact h
 
+
+/-- Reciprocal decay of the finite-interval Fourier phase integral, with
+ both endpoint jumps and the derivative L1 mass retained explicitly. -/
+theorem neutralLogMetricFourierPhase_interval_norm_le
+    (a b ξ : ℝ) (hab : a ≤ b) (hξ : ξ ≠ 0) (v v' : ℝ → ℂ)
+    (hv : ∀ x ∈ uIcc a b, HasDerivAt v (v' x) x)
+    (hv' : IntervalIntegrable v' volume a b) :
+    (let c : ℂ := -(2 * (Real.pi : ℂ) * Complex.I * (ξ : ℂ))
+     ‖∫ x in a..b, v x * Complex.exp (c * (x : ℂ))‖ ≤
+       (‖v b‖ + ‖v a‖ + ∫ x in a..b, ‖v' x‖) / (2 * Real.pi * |ξ|)) := by
+  let c : ℂ := -(2 * (Real.pi : ℂ) * Complex.I * (ξ : ℂ))
+  let E : ℝ → ℂ := fun x => Complex.exp (c * (x : ℂ))
+  have hEnorm (x : ℝ) : ‖E x‖ = 1 := by
+    simp [E, c, Complex.norm_exp, Complex.mul_re, Complex.mul_im]
+  have hc : ‖c‖ = 2 * Real.pi * |ξ| := by
+    simp [c, norm_mul, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_pos Real.pi_pos]
+  have hi : ‖∫ x in a..b, v' x * E x‖ ≤ ∫ x in a..b, ‖v' x‖ := by
+    calc
+      ‖∫ x in a..b, v' x * E x‖ ≤ ∫ x in a..b, ‖v' x * E x‖ :=
+        intervalIntegral.norm_integral_le_integral_norm hab
+      _ = ∫ x in a..b, ‖v' x‖ := by
+        simp only [norm_mul, hEnorm, mul_one]
+  have h := neutralLogMetricFourierPhase_interval_integrationByParts a b ξ v v' hv hv'
+  change c * (∫ x in a..b, v x * E x) =
+    v b * E b - v a * E a - ∫ x in a..b, v' x * E x at h
+  have hb : (2 * Real.pi * |ξ|) * ‖∫ x in a..b, v x * E x‖ ≤
+      ‖v b‖ + ‖v a‖ + ∫ x in a..b, ‖v' x‖ := by
+    calc
+      (2 * Real.pi * |ξ|) * ‖∫ x in a..b, v x * E x‖ =
+          ‖c * (∫ x in a..b, v x * E x)‖ := by rw [norm_mul, hc]
+      _ = ‖v b * E b - v a * E a - ∫ x in a..b, v' x * E x‖ := congrArg norm h
+      _ ≤ ‖v b * E b - v a * E a‖ + ‖∫ x in a..b, v' x * E x‖ :=
+        norm_sub_le _ _
+      _ ≤ (‖v b * E b‖ + ‖v a * E a‖) + ∫ x in a..b, ‖v' x‖ :=
+        add_le_add (norm_sub_le _ _) hi
+      _ = ‖v b‖ + ‖v a‖ + ∫ x in a..b, ‖v' x‖ := by
+        simp only [norm_mul, hEnorm, mul_one]
+  have hd : 0 < 2 * Real.pi * |ξ| :=
+    mul_pos (mul_pos (by norm_num) Real.pi_pos) (abs_pos.mpr hξ)
+  apply (le_div_iff₀ hd).mpr
+  simpa only [mul_comm] using hb
+
 end
 end WeilDefect
