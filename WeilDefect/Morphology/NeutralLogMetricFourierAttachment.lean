@@ -729,5 +729,35 @@ theorem neutralLogMetricTrialZeroExtension_fourier_norm_le
   exact neutralLogMetricFourierPhase_interval_norm_le (-B) B ξ
     (by linarith) hξ v v' hv hv'
 
+
+/-- A cap-bounded measurable trial with an integrable classical derivative
+ lies in the full logarithmic Fourier multiplier domain after zero extension,
+ even when its endpoint values do not vanish. -/
+theorem neutralLogMetricTrialZeroExtension_weighted_memLp_of_derivative
+    (B M : ℝ) (hB : 0 ≤ B) (v v' : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hderiv : ∀ x ∈ uIcc (-B) B, HasDerivAt v (v' x) x)
+    (hv' : IntervalIntegrable v' volume (-B) B) :
+    MemLp (fun ξ : ℝ => (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+      (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
+  let C : ℝ := (‖v B‖ + ‖v (-B)‖ + ∫ x in (-B)..B, ‖v' x‖) /
+    (2 * Real.pi)
+  have hm : 0 ≤ ∫ x in (-B)..B, ‖v' x‖ := by
+    rw [intervalIntegral.integral_of_le (by linarith : -B ≤ B)]
+    exact integral_nonneg (fun x => norm_nonneg (v' x))
+  have hC : 0 ≤ C := by
+    dsimp only [C]
+    exact div_nonneg (add_nonneg (add_nonneg (norm_nonneg _) (norm_nonneg _)) hm)
+      (le_of_lt (mul_pos (by norm_num) Real.pi_pos))
+  apply neutralLogMetricTrialZeroExtension_weighted_memLp_of_reciprocalDecay
+    B M C v hv hC hbound
+  intro ξ hξ
+  have hn : ξ ≠ 0 := by
+    intro hz
+    simp [hz] at hξ
+  have h := neutralLogMetricTrialZeroExtension_fourier_norm_le
+    B ξ hB hn v v' hderiv hv'
+  simpa only [C, div_mul_eq_div_div] using h
+
 end
 end WeilDefect
