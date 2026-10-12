@@ -1,6 +1,7 @@
 import WeilDefect.Morphology.NeutralLogMetricTimeActionBounds
 import WeilDefect.Morphology.NeutralLogMetricSpectralL2
 import WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement
+import WeilDefect.Morphology.NeutralLogMetricTruncatedLimit
 
 namespace WeilDefect
 noncomputable section
@@ -93,6 +94,69 @@ theorem neutralLogMetricTimeAction_physical_inner_tendsto
     continuous_id.inner (𝕜 := ℂ) continuous_const
   exact (hc.tendsto _).comp
     (neutralLogMetricTimeAction_physical_toLp_tendsto M hM v hv hvi hbound hp)
+
+
+set_option maxHeartbeats 1000000 in
+/-- The full-line spectral source and endpoint source agree weakly on
+ cap-supported tests. Exterior action is retained outside this comparison. -/
+theorem neutralLogMetricEndpointSource_spectral_inner_eq
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|)
+    (hp : MemLp (fun ξ : ℝ => (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+      (logarithmicFourierWeight ξ : ℂ)) 2 volume)
+    (φ : RealComplexL2) (hφ : ∀ᵐ x ∂volume, x ∉ Icc (-B) B → φ x = 0) :
+    inner ℂ (𝓕⁻ (hp.toLp (fun ξ : ℝ =>
+      (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+        (logarithmicFourierWeight ξ : ℂ))) : RealComplexL2) φ =
+      inner ℂ (neutralLogMetricEndpointCandidateL2 B M L hB hL
+        v hv hbound hmod) φ := by
+  let u := neutralLogMetricTrialZeroExtension B v
+  have hu : Measurable u := neutralLogMetricTrialZeroExtension_measurable B v hv
+  have hui : Integrable u := neutralLogMetricTrialZeroExtension_integrable B M v hv hbound
+  have hub : ∀ x, ‖u x‖ ≤ M := neutralLogMetricTrialZeroExtension_norm_le B M hM v hbound
+  let A : ℕ → ℝ → ℂ := fun n x => u x +
+    ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (u x - ∫ y : ℝ, u y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))
+  let T : ℕ → ℝ → ℂ := fun n => (Icc (-B) B).indicator (fun x : ℝ => v x +
+    ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+      ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+        (v x - ∫ y : ℝ, u y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)))
+  have hmem (n : ℕ) : MemLp (A n) 2 volume :=
+    neutralLogMetricTimeAction_memLp_two _ _ M (by positivity) hM u hu hui hub
+  have he (n : ℕ) : inner ℂ ((hmem n).toLp (A n)) φ =
+      ∫ x : ℝ, inner ℂ (T n x) (φ x) := by
+    rw [L2.inner_def]
+    apply integral_congr_ae
+    filter_upwards [(hmem n).coeFn_toLp, hφ] with x hx hφx
+    rw [hx]
+    by_cases hxc : x ∈ Icc (-B) B
+    · have hux : u x = v x := by
+        simp [u, neutralLogMetricTrialZeroExtension, hxc]
+      simp only [A, T, indicator_of_mem hxc, hux]
+    · simp only [T, indicator_of_notMem hxc, hφx hxc, inner_zero_right]
+  have hc : inner ℂ (neutralLogMetricEndpointCandidateL2 B M L hB hL
+      v hv hbound hmod) φ =
+      ∫ x : ℝ, inner ℂ (neutralLogMetricEndpointZeroExtension B v x) (φ x) := by
+    rw [L2.inner_def]
+    apply integral_congr_ae
+    filter_upwards [neutralLogMetricEndpointCandidateL2_coe
+      B M L hB hL v hv hbound hmod] with x hx
+    rw [hx]
+  have hs := neutralLogMetricTimeAction_physical_inner_tendsto M hM u hu hui hub hp φ
+  change Tendsto (fun n => inner ℂ ((hmem n).toLp (A n)) φ) atTop
+    (𝓝 (inner ℂ (𝓕⁻ (hp.toLp (fun ξ : ℝ =>
+      (𝓕 u) ξ * (logarithmicFourierWeight ξ : ℂ)))) φ)) at hs
+  simp_rw [he] at hs
+  have ht := neutralLogMetricPoissonTrialAction_integral_inner_tendsto
+    B L M hB hL hM v hv hbound hmod φ
+  change Tendsto (fun n => ∫ x : ℝ, inner ℂ (T n x) (φ x)) atTop
+    (𝓝 (∫ x : ℝ, inner ℂ (neutralLogMetricEndpointZeroExtension B v x) (φ x))) at ht
+  rw [← hc] at ht
+  exact tendsto_nhds_unique hs ht
 
 end
 end WeilDefect

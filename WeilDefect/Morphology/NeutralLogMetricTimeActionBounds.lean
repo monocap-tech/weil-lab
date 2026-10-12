@@ -44,7 +44,9 @@ theorem neutralLogMetricTimeAction_norm_le
     simp_rw [mul_assoc]
     exact integral_const_mul _ _
   have hi : IntegrableOn (fun t => w t * (v x - C t)) (Icc ε R) := by
-    simpa only [mul_sub, Pi.sub_apply] using (hw.mul_const (v x)).sub hc
+    have hi' := (hw.mul_const (v x)).sub hc
+    change IntegrableOn (fun t => w t * v x - w t * C t) (Icc ε R) at hi'
+    simpa only [mul_sub] using hi' 
   have hb : ∀ᵐ t ∂(volume.restrict (Icc ε R)),
       ‖w t * (v x - C t)‖ ≤ ‖w t‖ * (2 * M) := by
     filter_upwards [ae_restrict_mem measurableSet_Icc] with t ht
