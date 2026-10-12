@@ -32,7 +32,7 @@ theorem rc35_trial_coefficients_parity :
      ∀ i j, (i.val + j.val) % 2 = 1 → C i j = 0) := by
   dsimp only
   intro i j hij
-  fin_cases i <;> fin_cases j <;> norm_num at hij ⊢
+  fin_cases i <;> fin_cases j <;> norm_num at hij <;> norm_num
 
 
 set_option maxHeartbeats 1000000 in
