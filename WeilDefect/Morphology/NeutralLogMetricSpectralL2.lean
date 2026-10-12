@@ -81,7 +81,8 @@ theorem neutralLogMetricTimeAction_fourier_tendsto_L2
     congr 1
     apply lintegral_congr_ae
     filter_upwards [] with ξ
-    rw [← ofReal_norm, pow_two, pow_two]
+    rw [← ofReal_norm]
+    simp only [pow_two]
     exact (ENNReal.ofReal_mul (norm_nonneg _)).symm
   have hc : Continuous (fun z : ℝ≥0∞ => z ^ (1 / (2 : ℝ))) :=
     ENNReal.continuous_rpow_const

@@ -3,11 +3,12 @@ import WeilDefect.Morphology.NeutralLogMetricSpectralL2
 import WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement
 import WeilDefect.Morphology.NeutralLogMetricTruncatedLimit
 import WeilDefect.Morphology.NeutralCanonicalFormDomain
+import Mathlib.Analysis.Distribution.SchwartzSpace.Fourier
 
 namespace WeilDefect
 noncomputable section
 open MeasureTheory Set Filter Topology FourierTransform
-open scoped FourierTransform
+open scoped FourierTransform SchwartzMap
 
 /-- Ordinary Fourier integrals and L2 Fourier vectors agree for an
  integrable L2 function, using the existing repo's L1/L2 agreement theorem. -/
@@ -266,6 +267,49 @@ theorem neutralLogMetricEndpointSource_compression_eq_of_frequencyMoment
   exact neutralLogMetricEndpointSource_spectral_compression_eq
     B L M hB hL hM v hv hbound hmod
     (neutralLogMetricWeighted_memLp_of_frequencyMoment _ hF hξF)
+
+
+/-- Schwartz spectral functions have an actual L2 first frequency moment. -/
+theorem neutralLogMetricSchwartz_frequencyMoment_memLp (G : 𝓢(ℝ, ℂ)) :
+    MemLp (fun ξ : ℝ => (ξ : ℂ) * G ξ) 2 volume := by
+  have hg : (fun ξ : ℝ => (ξ : ℂ)).HasTemperateGrowth := by fun_prop
+  have hm := (SchwartzMap.smulLeftCLM ℂ (fun ξ : ℝ => (ξ : ℂ)) G).memLp 2 volume
+  have he : (SchwartzMap.smulLeftCLM ℂ (fun ξ : ℝ => (ξ : ℂ)) G : ℝ → ℂ) =
+      (fun ξ : ℝ => (ξ : ℂ) * G ξ) := by
+    funext ξ
+    rw [SchwartzMap.smulLeftCLM_apply_apply hg]
+    rfl
+  rw [he] at hm
+  exact hm
+
+/-- Schwartz spectral functions belong to the full logarithmic domain. -/
+theorem neutralLogMetricSchwartz_weighted_memLp (G : 𝓢(ℝ, ℂ)) :
+    MemLp (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
+  exact neutralLogMetricWeighted_memLp_of_frequencyMoment G (G.memLp 2 volume)
+    (neutralLogMetricSchwartz_frequencyMoment_memLp G)
+
+/-- Every physical Schwartz trial supplies the weighted Fourier domain
+ condition, with no weighted-domain hypothesis. -/
+theorem neutralLogMetricSchwartz_fourier_weighted_memLp (f : 𝓢(ℝ, ℂ)) :
+    MemLp (fun ξ : ℝ => (𝓕 (f : ℝ → ℂ)) ξ *
+      (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
+  have h := neutralLogMetricSchwartz_weighted_memLp (𝓕 f)
+  simpa only [SchwartzMap.fourier_coe] using h
+
+/-- A cap-supported physical Schwartz trial is unchanged by zero extension,
+ so the actual zero extension supplies the full weighted Fourier domain. -/
+theorem neutralLogMetricTrialZeroExtension_weighted_memLp_of_schwartz
+    (B : ℝ) (f : 𝓢(ℝ, ℂ))
+    (hs : ∀ x, x ∉ Icc (-B) B → f x = 0) :
+    MemLp (fun ξ : ℝ => (𝓕 (neutralLogMetricTrialZeroExtension B f)) ξ *
+      (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
+  have he : neutralLogMetricTrialZeroExtension B f = (f : ℝ → ℂ) := by
+    funext x
+    by_cases hx : x ∈ Icc (-B) B
+    · simp [neutralLogMetricTrialZeroExtension, hx]
+    · simp [neutralLogMetricTrialZeroExtension, hx, hs x hx]
+  rw [he]
+  exact neutralLogMetricSchwartz_fourier_weighted_memLp f
 
 end
 end WeilDefect
