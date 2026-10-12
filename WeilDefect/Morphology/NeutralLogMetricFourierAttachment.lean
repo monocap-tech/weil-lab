@@ -2,6 +2,7 @@ import WeilDefect.Morphology.NeutralLogMetricTimeActionBounds
 import WeilDefect.Morphology.NeutralLogMetricSpectralL2
 import WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement
 import WeilDefect.Morphology.NeutralLogMetricTruncatedLimit
+import WeilDefect.Morphology.NeutralCanonicalFormDomain
 
 namespace WeilDefect
 noncomputable section
@@ -214,6 +215,57 @@ theorem neutralLogMetricEndpointSource_spectral_compression_eq
   · intro φ hφ
     exact neutralLogMetricEndpointSource_spectral_inner_eq
       B L M hB hL hM v hv hbound hmod hp φ hφ
+
+
+/-- An L2 spectral function with an L2 first frequency moment belongs
+ to the full logarithmic multiplier domain. This is stronger than form energy. -/
+theorem neutralLogMetricWeighted_memLp_of_frequencyMoment
+    (G : ℝ → ℂ) (hG : MemLp G 2 volume)
+    (hξG : MemLp (fun ξ : ℝ => (ξ : ℂ) * G ξ) 2 volume) :
+    MemLp (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
+  have hm : AEStronglyMeasurable
+      (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) volume :=
+    hG.aestronglyMeasurable.mul
+      (Complex.continuous_ofReal.comp logarithmicFourierWeight_continuous).aestronglyMeasurable
+  apply ((hG.norm.const_mul (Real.exp 1)).add hξG.norm).mono' hm
+  filter_upwards [] with ξ
+  change ‖G ξ * (logarithmicFourierWeight ξ : ℂ)‖ ≤
+    Real.exp 1 * ‖G ξ‖ + ‖(ξ : ℂ) * G ξ‖
+  have hw : 0 ≤ logarithmicFourierWeight ξ :=
+    le_trans (by norm_num) (one_le_logarithmicFourierWeight ξ)
+  have hb : logarithmicFourierWeight ξ ≤ Real.exp 1 + |ξ| := by
+    have h := Real.log_le_sub_one_of_pos
+      (show 0 < Real.exp 1 + |ξ| from by positivity)
+    dsimp only [logarithmicFourierWeight]
+    linarith
+  simp only [norm_mul, Complex.norm_real, Real.norm_eq_abs, abs_of_nonneg hw]
+  calc
+    ‖G ξ‖ * logarithmicFourierWeight ξ ≤ ‖G ξ‖ * (Real.exp 1 + |ξ|) :=
+      mul_le_mul_of_nonneg_left hb (norm_nonneg _)
+    _ = Real.exp 1 * ‖G ξ‖ + |ξ| * ‖G ξ‖ := by ring
+
+set_option maxHeartbeats 1000000 in
+/-- First-frequency-moment regularity supplies the domain premise in
+ the spectral/endpoint compression identity. -/
+theorem neutralLogMetricEndpointSource_compression_eq_of_frequencyMoment
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|)
+    (hF : MemLp (𝓕 (neutralLogMetricTrialZeroExtension B v)) 2 volume)
+    (hξF : MemLp (fun ξ : ℝ => (ξ : ℂ) *
+      (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ) 2 volume) :
+    (let hp := neutralLogMetricWeighted_memLp_of_frequencyMoment _ hF hξF
+     let S : RealComplexL2 := 𝓕⁻ (hp.toLp (fun ξ : ℝ =>
+      (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+        (logarithmicFourierWeight ξ : ℂ)))
+     ((Lp.memLp S).indicator measurableSet_Icc).toLp
+       ((Icc (-B) B).indicator (S : ℝ → ℂ))) =
+      neutralLogMetricEndpointCandidateL2 B M L hB hL v hv hbound hmod := by
+  exact neutralLogMetricEndpointSource_spectral_compression_eq
+    B L M hB hL hM v hv hbound hmod
+    (neutralLogMetricWeighted_memLp_of_frequencyMoment _ hF hξF)
 
 end
 end WeilDefect
