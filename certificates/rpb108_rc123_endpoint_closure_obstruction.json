@@ -1,0 +1,155 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "abstract_noncommuting_controls": {
+    "moment_monotonicity_and_second_difference_checks": 8,
+    "operator_selfadjoint_in_D_not_Euclidean": true,
+    "physical_coordinate_metric_nonidentity": true,
+    "positive_moment_response_remainder_sandwich_checks": 17,
+    "response_from_Gram_only_not_determined_control_verified": true,
+    "reversed_exact_moment_sum_verified": true,
+    "scope": "abstract rational contractions, not the original endpoint action or Weil operator"
+  },
+  "actual_endpoint_response_moments_evaluated": false,
+  "actual_infinite_tail_endpoint_action_evaluated": false,
+  "actual_nonclosure_of_any_fixed_finite_existing_tail_basis_proved": true,
+  "aperture": "11/10",
+  "arithmetic": "exact dyadic harmonic-growth and noncommuting positive response controls",
+  "auxiliary_response_norm_below_one_certified": false,
+  "canonical_Riesz_iteration_performed": false,
+  "conditional_positive_moment_certificates": [
+    {
+      "actual_endpoint_moments_evaluated": false,
+      "complete_sandwich_width_factor_upper": "1898101/2097152000000",
+      "highest_required_positive_moment_degree": 21,
+      "minimal_degree_for_one_third_tail_allocation": true,
+      "number_of_moments": 22,
+      "per_moment_center_error_relative_initial_Gram_allowance": "1/3000000",
+      "positive_series_remainder_factor": "1/4194304",
+      "relative_response_Loewner_width_target": "1/1000000",
+      "weighted_center_error_factor_upper": "1398101/4194304000000"
+    },
+    {
+      "actual_endpoint_moments_evaluated": false,
+      "complete_sandwich_width_factor_upper": "1966015503701/2199023255552000000000000",
+      "highest_required_positive_moment_degree": 41,
+      "minimal_degree_for_one_third_tail_allocation": true,
+      "number_of_moments": 42,
+      "per_moment_center_error_relative_initial_Gram_allowance": "1/3000000000000",
+      "positive_series_remainder_factor": "1/4398046511104",
+      "relative_response_Loewner_width_target": "1/1000000000000",
+      "weighted_center_error_factor_upper": "1466015503701/4398046511104000000000000"
+    },
+    {
+      "actual_endpoint_moments_evaluated": false,
+      "complete_sandwich_width_factor_upper": "2111901092819505566274901/2417851639229258349412352000000000000000000000000",
+      "highest_required_positive_moment_degree": 81,
+      "minimal_degree_for_one_third_tail_allocation": true,
+      "number_of_moments": 82,
+      "per_moment_center_error_relative_initial_Gram_allowance": "1/3000000000000000000000000",
+      "positive_series_remainder_factor": "1/4835703278458516698824704",
+      "relative_response_Loewner_width_target": "1/1000000000000000000000000",
+      "weighted_center_error_factor_upper": "1611901092819505566274901/4835703278458516698824704000000000000000000000000"
+    }
+  ],
+  "endpoint_operator": "C=D^(-1) h, positive contraction in actual D energy",
+  "initial_Gram_alone_identifies_exact_response_claimed": false,
+  "input_sha256": [
+    "e45e403ce5db1864017e911ef396e720ab91c0ce531aecfa80c898dceb67cd68",
+    "ba0536ed306c7f2d1580d3d8806a2873ca7ff04889183a180e7ad433e68accdc",
+    "c403a718afc310b49ac7a05b7150544b2da2d60480f0d22b2177e2eead9a0998"
+  ],
+  "milestone": "RC123",
+  "minimal_next_endpoint_correlation": "V^* h V, equivalently Gamma_1=Gamma_0-V^*hV, including signed cross pairings",
+  "new_positive_native_directions_certified": 0,
+  "original_Weil_or_augmented_actions_performed": false,
+  "original_count_below_one_hundredth_lower": 10,
+  "original_count_below_one_hundredth_upper": 639,
+  "parity_analytic_tail_nonclosure_certificates": [
+    {
+      "C_psi0_coefficient_ratio_diverges": true,
+      "all_positive_input_tail_coefficients_retained_in_proof": true,
+      "analytic_tail_start_after_degree": 989,
+      "any_fixed_polynomial_plus_finite_existing_psi_span_exact_closure_impossible": true,
+      "arbitrary_accuracy_approximation_impossibility_claimed": false,
+      "first_positive_dyadic_block_exponent": 10,
+      "parity": "even",
+      "quantitative_ratio_growth_certificates": [
+        {
+          "actual_C_psi0_to_psi0_coefficient_ratio_lower": "100730186385326191099/100000000000000000000",
+          "coefficient_ratio_growth_threshold": "1",
+          "complete_dyadic_input_blocks_from": 10,
+          "complete_dyadic_input_blocks_through": 62,
+          "huge_output_degree_not_numerically_evaluated": true,
+          "output_degree_at_least_power_of_two_exponent": 64,
+          "output_degree_parity": "even"
+        },
+        {
+          "actual_C_psi0_to_psi0_coefficient_ratio_lower": "200142979607950009993/100000000000000000000",
+          "coefficient_ratio_growth_threshold": "2",
+          "complete_dyadic_input_blocks_from": 10,
+          "complete_dyadic_input_blocks_through": 271,
+          "huge_output_degree_not_numerically_evaluated": true,
+          "output_degree_at_least_power_of_two_exponent": 273,
+          "output_degree_parity": "even"
+        },
+        {
+          "actual_C_psi0_to_psi0_coefficient_ratio_lower": "75015044074055188873/25000000000000000000",
+          "coefficient_ratio_growth_threshold": "3",
+          "complete_dyadic_input_blocks_from": 10,
+          "complete_dyadic_input_blocks_through": 1108,
+          "huge_output_degree_not_numerically_evaluated": true,
+          "output_degree_at_least_power_of_two_exponent": 1110,
+          "output_degree_parity": "even"
+        }
+      ]
+    },
+    {
+      "C_psi0_coefficient_ratio_diverges": true,
+      "all_positive_input_tail_coefficients_retained_in_proof": true,
+      "analytic_tail_start_after_degree": 1563,
+      "any_fixed_polynomial_plus_finite_existing_psi_span_exact_closure_impossible": true,
+      "arbitrary_accuracy_approximation_impossibility_claimed": false,
+      "first_positive_dyadic_block_exponent": 11,
+      "parity": "odd",
+      "quantitative_ratio_growth_certificates": [
+        {
+          "actual_C_psi0_to_psi0_coefficient_ratio_lower": "100691231521415332493/100000000000000000000",
+          "coefficient_ratio_growth_threshold": "1",
+          "complete_dyadic_input_blocks_from": 11,
+          "complete_dyadic_input_blocks_through": 66,
+          "huge_output_degree_not_numerically_evaluated": true,
+          "output_degree_at_least_power_of_two_exponent": 68,
+          "output_degree_parity": "odd"
+        },
+        {
+          "actual_C_psi0_to_psi0_coefficient_ratio_lower": "8005429355134315013/4000000000000000000",
+          "coefficient_ratio_growth_threshold": "2",
+          "complete_dyadic_input_blocks_from": 11,
+          "complete_dyadic_input_blocks_through": 287,
+          "huge_output_degree_not_numerically_evaluated": true,
+          "output_degree_at_least_power_of_two_exponent": 289,
+          "output_degree_parity": "odd"
+        },
+        {
+          "actual_C_psi0_to_psi0_coefficient_ratio_lower": "300057419380169651977/100000000000000000000",
+          "coefficient_ratio_growth_threshold": "3",
+          "complete_dyadic_input_blocks_from": 11,
+          "complete_dyadic_input_blocks_through": 1172,
+          "huge_output_degree_not_numerically_evaluated": true,
+          "output_degree_at_least_power_of_two_exponent": 1174,
+          "output_degree_parity": "odd"
+        }
+      ]
+    }
+  ],
+  "positive_moment_conditional_stopping_rule_proved": true,
+  "positive_response_moments": "Gamma_j=V^* D (I-C)^j V for a specified joint source/analytic-tail family V",
+  "positive_response_operator": "(I+C)^(-1) = (1/2) sum_j ((I-C)/2)^j",
+  "regular_multiplier_action_evaluated": false,
+  "response_remainder_Loewner_bound": "0 <= Sigma-S_n <= 2^(-n-1) Gamma_0",
+  "sharper_correlated_response_remainder_bound": "2^(-n-2) Gamma_(n+1) <= Sigma-S_n <= 2^(-n-1) Gamma_(n+1)",
+  "status": "PASS: actual finite analytic-tail nonclosure obstruction and finite positive-moment response stopping rule",
+  "whole_aperture_positivity_extended": false
+}
