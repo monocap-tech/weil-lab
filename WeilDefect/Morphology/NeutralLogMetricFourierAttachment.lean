@@ -158,5 +158,62 @@ theorem neutralLogMetricEndpointSource_spectral_inner_eq
   rw [← hc] at ht
   exact tendsto_nhds_unique hs ht
 
+
+/-- Supported-test agreement determines the cap compression as an L2 vector. -/
+theorem neutralLogMetricSupported_inner_eq_indicator_toLp_eq
+    (B : ℝ) (S E : RealComplexL2)
+    (hE : ∀ᵐ x ∂volume, x ∉ Icc (-B) B → E x = 0)
+    (hweak : ∀ φ : RealComplexL2,
+      (∀ᵐ x ∂volume, x ∉ Icc (-B) B → φ x = 0) →
+        inner ℂ S φ = inner ℂ E φ) :
+    ((Lp.memLp S).indicator measurableSet_Icc).toLp
+      ((Icc (-B) B).indicator (S : ℝ → ℂ)) = E := by
+  let C : RealComplexL2 := ((Lp.memLp S).indicator measurableSet_Icc).toLp
+    ((Icc (-B) B).indicator (S : ℝ → ℂ))
+  have hC : (C : ℝ → ℂ) =ᵐ[volume] (Icc (-B) B).indicator (S : ℝ → ℂ) :=
+    ((Lp.memLp S).indicator measurableSet_Icc).coeFn_toLp
+  have hD : ∀ᵐ x ∂volume, x ∉ Icc (-B) B → (C - E) x = 0 := by
+    filter_upwards [Lp.coeFn_sub C E, hC, hE] with x hx hc he
+    intro hxc
+    rw [hx, hc, indicator_of_notMem hxc, he hxc, sub_self]
+  have hpair : inner ℂ C (C - E) = inner ℂ S (C - E) := by
+    rw [L2.inner_def, L2.inner_def]
+    apply integral_congr_ae
+    filter_upwards [hC, hD] with x hc hd
+    rw [hc]
+    by_cases hx : x ∈ Icc (-B) B
+    · rw [indicator_of_mem hx]
+    · simp only [indicator_of_notMem hx, hd hx, inner_zero_right]
+  have hz : inner ℂ (C - E) (C - E) = 0 := by
+    rw [inner_sub_left, hpair, hweak (C - E) hD, sub_self]
+  exact sub_eq_zero.mp ((inner_self_eq_zero (𝕜 := ℂ)).mp hz)
+
+set_option maxHeartbeats 1000000 in
+/-- The cap compression of the actual spectral source is exactly the
+ constructed endpoint L2 vector, conditional on the full spectral domain. -/
+theorem neutralLogMetricEndpointSource_spectral_compression_eq
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|)
+    (hp : MemLp (fun ξ : ℝ => (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+      (logarithmicFourierWeight ξ : ℂ)) 2 volume) :
+    (let S : RealComplexL2 := 𝓕⁻ (hp.toLp (fun ξ : ℝ =>
+      (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+        (logarithmicFourierWeight ξ : ℂ)))
+     ((Lp.memLp S).indicator measurableSet_Icc).toLp
+       ((Icc (-B) B).indicator (S : ℝ → ℂ))) =
+      neutralLogMetricEndpointCandidateL2 B M L hB hL v hv hbound hmod := by
+  apply neutralLogMetricSupported_inner_eq_indicator_toLp_eq
+  · filter_upwards [neutralLogMetricEndpointCandidateL2_coe
+      B M L hB hL v hv hbound hmod] with x hx
+    intro hxc
+    rw [hx]
+    exact neutralLogMetricEndpointZeroExtension_eq_zero B v x hxc
+  · intro φ hφ
+    exact neutralLogMetricEndpointSource_spectral_inner_eq
+      B L M hB hL hM v hv hbound hmod hp φ hφ
+
 end
 end WeilDefect

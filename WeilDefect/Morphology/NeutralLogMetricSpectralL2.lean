@@ -44,7 +44,10 @@ theorem neutralLogMetricTimeAction_fourier_tendsto_L2
   let D : ℕ → ℝ → ℝ := fun n ξ => ‖A n ξ - G ξ‖ ^ 2
   have hDmeas (n : ℕ) : AEStronglyMeasurable (D n) volume := by
     have hm := ((hAmeas n).sub hp.aestronglyMeasurable).norm
-    simpa only [D, G, pow_two, Pi.mul_apply, Pi.sub_apply] using hm.mul hm
+    have hm2 := hm.mul hm
+    change AEStronglyMeasurable (fun ξ : ℝ =>
+      ‖A n ξ - G ξ‖ * ‖A n ξ - G ξ‖) volume at hm2
+    simpa only [D, pow_two] using hm2
   have hdom : Integrable (fun ξ : ℝ => 4 * ‖G ξ‖ ^ 2) volume :=
     hp.norm.integrable_sq.const_mul 4
   have hDdom (n : ℕ) : ∀ᵐ ξ ∂volume, ‖D n ξ‖ ≤ 4 * ‖G ξ‖ ^ 2 := by
@@ -73,13 +76,13 @@ theorem neutralLogMetricTimeAction_fourier_tendsto_L2
       (∫⁻ ξ : ℝ, ENNReal.ofReal (‖A n ξ - G ξ‖ ^ 2)) ^ (1 / (2 : ℝ)) := by
     rw [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num)
       (show AEStronglyMeasurable (fun ξ : ℝ => A n ξ - G ξ) volume from by
-        simpa only [G, Pi.sub_apply] using (hAmeas n).sub hp.aestronglyMeasurable)]
+        exact (hAmeas n).sub hp.aestronglyMeasurable)]
     simp only [ENNReal.toReal_ofNat]
     congr 1
     apply lintegral_congr_ae
     filter_upwards [] with ξ
-    rw [← ofReal_norm, ← ENNReal.ofReal_rpow_of_nonneg
-      (norm_nonneg _) (by norm_num : 0 ≤ (2 : ℝ)), Real.rpow_two]
+    rw [← ofReal_norm, pow_two, pow_two]
+    exact (ENNReal.ofReal_mul (norm_nonneg _)).symm
   have hc : Continuous (fun z : ℝ≥0∞ => z ^ (1 / (2 : ℝ))) :=
     ENNReal.continuous_rpow_const
   change Tendsto (fun n : ℕ => eLpNorm (fun ξ : ℝ => A n ξ - G ξ) 2 volume)
