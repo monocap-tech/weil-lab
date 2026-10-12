@@ -688,5 +688,39 @@ theorem neutralLogMetricFourierPhase_interval_norm_le
   apply (le_div_iff₀ hd).mpr
   simpa only [mul_comm] using hb
 
+
+/-- The actual cap zero extension has exactly the finite-interval Fourier
+ phase integral, with Mathlib's negative-exponent 2π normalization. -/
+theorem neutralLogMetricTrialZeroExtension_fourier_eq_interval
+    (B : ℝ) (hB : 0 ≤ B) (v : ℝ → ℂ) (ξ : ℝ) :
+    (let c : ℂ := -(2 * (Real.pi : ℂ) * Complex.I * (ξ : ℂ))
+     (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ =
+       ∫ x in (-B)..B, v x * Complex.exp (c * (x : ℂ))) := by
+  let c : ℂ := -(2 * (Real.pi : ℂ) * Complex.I * (ξ : ℂ))
+  rw [Real.fourier_real_eq_integral_exp_smul,
+    intervalIntegral.integral_of_le (by linarith : -B ≤ B),
+    ← integral_Icc_eq_integral_Ioc, ← integral_indicator measurableSet_Icc]
+  apply integral_congr_ae
+  filter_upwards [] with x
+  have he : ((-2 * Real.pi * x * ξ : ℝ) : ℂ) * Complex.I = c * (x : ℂ) := by
+    dsimp only [c]
+    push_cast
+    ring
+  by_cases hx : x ∈ Icc (-B) B <;>
+    simp [neutralLogMetricTrialZeroExtension, hx, smul_eq_mul, he, mul_comm]
+
+/-- Reciprocal Fourier decay for the actual zero extension of a
+ differentiable cap trial, retaining its endpoint jumps. -/
+theorem neutralLogMetricTrialZeroExtension_fourier_norm_le
+    (B ξ : ℝ) (hB : 0 ≤ B) (hξ : ξ ≠ 0) (v v' : ℝ → ℂ)
+    (hv : ∀ x ∈ uIcc (-B) B, HasDerivAt v (v' x) x)
+    (hv' : IntervalIntegrable v' volume (-B) B) :
+    ‖(𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ‖ ≤
+      (‖v B‖ + ‖v (-B)‖ + ∫ x in (-B)..B, ‖v' x‖) /
+        (2 * Real.pi * |ξ|) := by
+  rw [neutralLogMetricTrialZeroExtension_fourier_eq_interval B hB v ξ]
+  exact neutralLogMetricFourierPhase_interval_norm_le (-B) B ξ
+    (by linarith) hξ v v' hv hv'
+
 end
 end WeilDefect
