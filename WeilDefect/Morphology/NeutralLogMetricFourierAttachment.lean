@@ -759,5 +759,30 @@ theorem neutralLogMetricTrialZeroExtension_weighted_memLp_of_derivative
     B ξ hB hn v v' hderiv hv'
   simpa only [C, div_mul_eq_div_div] using h
 
+
+/-- Endpoint compression for differentiable cap trials with an integrable
+ derivative; the full spectral-domain witness is derived and endpoint jumps
+ are allowed. The whole-line source is compressed only in the conclusion. -/
+theorem neutralLogMetricEndpointSource_compression_eq_of_derivative
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v v' : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|)
+    (hderiv : ∀ x ∈ uIcc (-B) B, HasDerivAt v (v' x) x)
+    (hv' : IntervalIntegrable v' volume (-B) B) :
+    (let hp := neutralLogMetricTrialZeroExtension_weighted_memLp_of_derivative
+       B M hB v v' hv hbound hderiv hv'
+     let S : RealComplexL2 := 𝓕⁻ (hp.toLp (fun ξ : ℝ =>
+       (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+         (logarithmicFourierWeight ξ : ℂ)))
+     ((Lp.memLp S).indicator measurableSet_Icc).toLp
+       ((Icc (-B) B).indicator (S : ℝ → ℂ))) =
+      neutralLogMetricEndpointCandidateL2 B M L hB hL v hv hbound hmod := by
+  exact neutralLogMetricEndpointSource_spectral_compression_eq
+    B L M hB hL hM v hv hbound hmod
+    (neutralLogMetricTrialZeroExtension_weighted_memLp_of_derivative
+      B M hB v v' hv hbound hderiv hv')
+
 end
 end WeilDefect
