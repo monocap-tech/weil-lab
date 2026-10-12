@@ -4,6 +4,7 @@ import WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement
 import WeilDefect.Morphology.NeutralLogMetricTruncatedLimit
 import WeilDefect.Morphology.NeutralCanonicalFormDomain
 import Mathlib.Analysis.Distribution.SchwartzSpace.Fourier
+import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
 
 namespace WeilDefect
 noncomputable section
@@ -407,6 +408,28 @@ theorem neutralLogMetricWeighted_memLp_of_quarterMoment
     MemLp (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
   exact neutralLogMetricWeighted_memLp_of_fractionalMoment
     (1 / 4) (by norm_num) G hG hfrac
+
+
+/-- A reciprocal Fourier tail has an integrable squared fractional moment
+ on the positive tail whenever the exponent is below one half. -/
+theorem neutralLogMetricFractionalReciprocalTail_integrableOn
+    (σ : ℝ) (hσ : σ < 1 / 2) :
+    IntegrableOn (fun ξ : ℝ => (ξ ^ σ / ξ) ^ 2) (Ioi 1) := by
+  have hi := integrableOn_Ioi_rpow_of_lt
+    (a := (σ - 1) * 2) (by linarith) (by norm_num : (0 : ℝ) < 1)
+  apply hi.congr_fun _ measurableSet_Ioi
+  intro ξ hξ
+  have hx : 0 < ξ := lt_trans (by norm_num : (0 : ℝ) < 1) hξ
+  have he : ξ ^ σ / ξ = ξ ^ (σ - 1) := by
+    calc
+      ξ ^ σ / ξ = ξ ^ σ / ξ ^ (1 : ℝ) := by rw [Real.rpow_one]
+      _ = ξ ^ (σ - 1) := (Real.rpow_sub hx σ 1).symm
+  rw [he, ← Real.rpow_natCast (ξ ^ (σ - 1)) 2, ← Real.rpow_mul hx.le]
+
+/-- The quarter-frequency squared reciprocal tail is integrable. -/
+theorem neutralLogMetricQuarterReciprocalTail_integrableOn :
+    IntegrableOn (fun ξ : ℝ => (ξ ^ (1 / 4 : ℝ) / ξ) ^ 2) (Ioi 1) := by
+  exact neutralLogMetricFractionalReciprocalTail_integrableOn (1 / 4) (by norm_num)
 
 end
 end WeilDefect
