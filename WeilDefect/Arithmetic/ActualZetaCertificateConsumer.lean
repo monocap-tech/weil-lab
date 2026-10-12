@@ -127,5 +127,28 @@ theorem neutralActualZetaLogRiesz_error_of_cap_derivative
     (neutralLogMetricSpectralProduct_memLp_of_cap_derivative
       a B M hB V v v' hv hbound hderiv hv' hphysical) hsource
 
+
+set_option maxHeartbeats 1000000 in
+/-- The zeroth physical moment target has a proved whole-carrier source
+ attachment. For a cap derivative trial only its physical identification
+ remains, while both source and metric-action identities are derived. -/
+theorem neutralActualZetaLogRiesz_zerothMoment_error_of_cap_derivative
+    (a B M : ℝ) (hB : 0 ≤ B) (V : NeutralLogHilbertCarrier a)
+    (v v' : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Set.Icc (-B) B, ‖v x‖ ≤ M)
+    (hderiv : ∀ x ∈ Set.uIcc (-B) B, HasDerivAt v (v' x) x)
+    (hv' : IntervalIntegrable v' MeasureTheory.volume (-B) B)
+    (hphysical : (neutralLogPhysical V.val : ℝ → ℂ) =ᵐ[MeasureTheory.volume]
+      neutralLogMetricTrialZeroExtension B v) :
+    (let hp := neutralLogMetricSpectralProduct_memLp_of_cap_derivative
+       a B M hB V v v' hv hbound hderiv hv' hphysical
+     ‖neutralLogMomentSource a 0 - V‖ ^ 2 ≤
+       ‖neutralMomentColumnL2 a 0 - neutralLogMetricPhysicalSource V hp‖ ^ 2) := by
+  apply neutralActualZetaLogRiesz_error_of_cap_derivative
+    a B M hB (neutralLogMomentSource a 0) V (neutralMomentColumnL2 a 0)
+    v v' hv hbound hderiv hv' hphysical
+  intro h
+  rw [neutralLogMomentSource_inner, neutralMomentColumnL2_inner]
+
 end
 end WeilDefect
