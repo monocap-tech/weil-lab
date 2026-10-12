@@ -154,4 +154,30 @@ theorem rc35_physical_trials_differentiable :
   apply Differentiable.mul differentiable_const
   exact rationalPolynomial_normalized_differentiable _ _
 
+
+/-- The complex-valued normalized polynomial has the explicitly cast
+ classical derivative required by the cap source attachment interface. -/
+theorem rationalPolynomial_normalized_complex_hasDerivAt
+    (P : Polynomial ℚ) (B x : ℝ) :
+    HasDerivAt (fun y : ℝ => Complex.ofReal
+      (P.eval₂ (Rat.castHom ℝ) (y / B)))
+      (Complex.ofReal (((P.map (Rat.castHom ℝ)).derivative.eval (x / B)) / B)) x := by
+  have h := (Complex.ofRealCLM.hasFDerivAt).comp_hasDerivAt x
+    (rationalPolynomial_normalized_hasDerivAt P B x)
+  simpa only [Function.comp_def, Complex.ofRealCLM_apply] using h
+
+/-- The explicit complex derivative is interval-integrable on every finite
+ interval, including cap endpoints; no vanishing endpoint value is required. -/
+theorem rationalPolynomial_normalized_complex_derivative_intervalIntegrable
+    (P : Polynomial ℚ) (B a b : ℝ) :
+    IntervalIntegrable (fun x : ℝ => Complex.ofReal
+      (((P.map (Rat.castHom ℝ)).derivative.eval (x / B)) / B))
+      MeasureTheory.volume a b := by
+  have hc : Continuous (fun x : ℝ => Complex.ofReal
+      (((P.map (Rat.castHom ℝ)).derivative.eval (x / B)) / B)) :=
+    Complex.continuous_ofReal.comp
+      ((((P.map (Rat.castHom ℝ)).derivative.continuous).comp
+        (continuous_id.div_const B)).div_const B)
+  exact hc.intervalIntegrable a b
+
 end WeilDefect.CanonicalCertificate
