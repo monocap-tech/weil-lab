@@ -5,6 +5,7 @@ import WeilDefect.Morphology.NeutralLogMetricTruncatedLimit
 import WeilDefect.Morphology.NeutralCanonicalFormDomain
 import Mathlib.Analysis.Distribution.SchwartzSpace.Fourier
 import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+import Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts
 
 namespace WeilDefect
 noncomputable section
@@ -605,6 +606,37 @@ theorem neutralLogMetricTrialZeroExtension_weighted_memLp_of_reciprocalDecay
       (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
   exact neutralLogMetricFourier_weighted_memLp_of_reciprocalDecay _
     (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound) C hC htail
+
+
+/-- Exact finite-interval Fourier-phase integration by parts, retaining
+ both endpoint values rather than imposing zero-boundary conditions. -/
+theorem neutralLogMetricFourierPhase_interval_integrationByParts
+    (a b ξ : ℝ) (v v' : ℝ → ℂ)
+    (hv : ∀ x ∈ uIcc a b, HasDerivAt v (v' x) x)
+    (hv' : IntervalIntegrable v' volume a b) :
+    (let c : ℂ := -(2 * (Real.pi : ℂ) * Complex.I * (ξ : ℂ))
+     c * (∫ x in a..b, v x * Complex.exp (c * (x : ℂ))) =
+       v b * Complex.exp (c * (b : ℂ)) - v a * Complex.exp (c * (a : ℂ)) -
+         ∫ x in a..b, v' x * Complex.exp (c * (x : ℂ))) := by
+  let c : ℂ := -(2 * (Real.pi : ℂ) * Complex.I * (ξ : ℂ))
+  let E : ℝ → ℂ := fun x => Complex.exp (c * (x : ℂ))
+  have hE (x : ℝ) : HasDerivAt E (c * E x) x := by
+    simpa only [E, mul_one, mul_comm] using
+      ((Complex.ofRealCLM.hasDerivAt (x := x)).const_mul c).cexp
+  have hiE : IntervalIntegrable (fun x : ℝ => c * E x) volume a b :=
+    (by fun_prop : Continuous (fun x : ℝ => c * E x)).intervalIntegrable a b
+  have h := intervalIntegral.integral_mul_deriv_eq_deriv_mul
+    hv (fun x _ => hE x) hv' hiE
+  have he : (∫ x in a..b, v x * (c * E x)) =
+      c * (∫ x in a..b, v x * E x) := by
+    have hfun : (fun x : ℝ => v x * (c * E x)) =
+        (fun x : ℝ => c * (v x * E x)) := by
+      funext x
+      ring
+    rw [hfun]
+    exact intervalIntegral.integral_const_mul _ _
+  rw [he] at h
+  exact h
 
 end
 end WeilDefect
