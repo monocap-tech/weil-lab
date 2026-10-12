@@ -81,9 +81,8 @@ theorem neutralLogMetricTimeAction_fourier_tendsto_L2
     congr 1
     apply lintegral_congr_ae
     filter_upwards [] with ξ
-    rw [← ofReal_norm]
-    simp only [pow_two]
-    exact (ENNReal.ofReal_mul (norm_nonneg (A n ξ - G ξ))).symm
+    rw [← ofReal_norm, ENNReal.ofReal_rpow_of_nonneg
+      (norm_nonneg (A n ξ - G ξ)) (by norm_num : 0 ≤ (2 : ℝ)), Real.rpow_two]
   have hc : Continuous (fun z : ℝ≥0∞ => z ^ (1 / (2 : ℝ))) :=
     ENNReal.continuous_rpow_const
   change Tendsto (fun n : ℕ => eLpNorm (fun ξ : ℝ => A n ξ - G ξ) 2 volume)
