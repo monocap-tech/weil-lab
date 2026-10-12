@@ -431,5 +431,37 @@ theorem neutralLogMetricQuarterReciprocalTail_integrableOn :
     IntegrableOn (fun ξ : ℝ => (ξ ^ (1 / 4 : ℝ) / ξ) ^ 2) (Ioi 1) := by
   exact neutralLogMetricFractionalReciprocalTail_integrableOn (1 / 4) (by norm_num)
 
+
+/-- The logarithmic criterion's shifted quarter-frequency reciprocal tail
+ has an integrable square on the positive tail. -/
+theorem neutralLogMetricShiftedQuarterReciprocalTail_integrableOn :
+    IntegrableOn (fun ξ : ℝ =>
+      ((Real.exp 1 + ξ) ^ (1 / 4 : ℝ) / ξ) ^ 2) (Ioi 1) := by
+  let c : ℝ := (Real.exp 1 + 1) ^ (1 / 4 : ℝ)
+  have hc : 0 ≤ c := Real.rpow_nonneg (by positivity) _
+  apply (neutralLogMetricQuarterReciprocalTail_integrableOn.const_mul (c ^ 2)).mono'
+    (by fun_prop)
+  filter_upwards [ae_restrict_mem measurableSet_Ioi] with ξ hξ
+  have hx : 0 < ξ := lt_trans (by norm_num : (0 : ℝ) < 1) hξ
+  have hshift : Real.exp 1 + ξ ≤ (Real.exp 1 + 1) * ξ := by
+    nlinarith [Real.exp_pos (1 : ℝ)]
+  have hp : (Real.exp 1 + ξ) ^ (1 / 4 : ℝ) ≤ c * ξ ^ (1 / 4 : ℝ) := by
+    have h := Real.rpow_le_rpow
+      (by positivity : 0 ≤ Real.exp 1 + ξ) hshift (by norm_num : 0 ≤ (1 / 4 : ℝ))
+    rw [Real.mul_rpow (by positivity : 0 ≤ Real.exp 1 + 1) hx.le] at h
+    exact h
+  have hq : (Real.exp 1 + ξ) ^ (1 / 4 : ℝ) / ξ ≤
+      c * (ξ ^ (1 / 4 : ℝ) / ξ) := by
+    have h := (div_le_div_iff_of_pos_right hx).mpr hp
+    simpa only [mul_div_assoc] using h
+  change ‖((Real.exp 1 + ξ) ^ (1 / 4 : ℝ) / ξ) ^ 2‖ ≤
+    c ^ 2 * (ξ ^ (1 / 4 : ℝ) / ξ) ^ 2
+  rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)]
+  calc
+    ((Real.exp 1 + ξ) ^ (1 / 4 : ℝ) / ξ) ^ 2 ≤
+        (c * (ξ ^ (1 / 4 : ℝ) / ξ)) ^ 2 :=
+      (sq_le_sq₀ (by positivity) (by positivity)).mpr hq
+    _ = c ^ 2 * (ξ ^ (1 / 4 : ℝ) / ξ) ^ 2 := by ring
+
 end
 end WeilDefect
