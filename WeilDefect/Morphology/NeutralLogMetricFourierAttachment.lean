@@ -804,7 +804,7 @@ theorem neutralLogMetricSpectralProduct_memLp_of_cap_derivative
   have hF := neutralIntegrableL2_fourier_ae (neutralLogPhysical V.val) hi
   have hp := neutralLogMetricTrialZeroExtension_weighted_memLp_of_derivative
     B M hB v v' hv hbound hderiv hv'
-  apply hp.congr
+  refine MemLp.ae_eq ?_ hp
   filter_upwards [hF] with ξ hξ
   dsimp only [neutralLogMetricSpectralProduct]
   rw [hξ, Real.fourier_congr_ae hphysical ξ]
