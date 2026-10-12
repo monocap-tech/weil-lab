@@ -500,5 +500,79 @@ theorem neutralLogMetricShiftedQuarterReciprocalTail_integrableOn_both :
     simpa only [f, abs_of_neg hx] using (rfl : f (-ξ) = f (-ξ))
   exact (integrableOn_union).mpr ⟨hna, hpa⟩
 
+
+/-- Central boundedness and a reciprocal two-sided tail imply the full
+ logarithmic multiplier domain, with fractional integrability derived. -/
+theorem neutralLogMetricWeighted_memLp_of_reciprocalDecay
+    (G : ℝ → ℂ) (hG : AEStronglyMeasurable G volume)
+    (M C : ℝ) (hM : 0 ≤ M) (hC : 0 ≤ C)
+    (hcenter : ∀ ξ ∈ Icc (-1) 1, ‖G ξ‖ ≤ M)
+    (htail : ∀ ξ, 1 < |ξ| → ‖G ξ‖ ≤ C / |ξ|) :
+    MemLp (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
+  let F : ℝ → ℂ := fun ξ => ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) : ℂ) * G ξ
+  let k : ℝ := (Real.exp 1 + 1) ^ (1 / 4 : ℝ) * M
+  have hk : 0 ≤ k := by positivity
+  have hF : AEStronglyMeasurable F volume := by
+    exact (by fun_prop : AEStronglyMeasurable
+      (fun ξ : ℝ => ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) : ℂ)) volume).mul hG
+  have hs : AEStronglyMeasurable (fun ξ : ℝ => ‖F ξ‖ ^ 2) volume := by
+    have h := hF.norm.mul hF.norm
+    change AEStronglyMeasurable (fun ξ : ℝ => ‖F ξ‖ * ‖F ξ‖) volume at h
+    simpa only [pow_two] using h
+  have hnorm (ξ : ℝ) : ‖F ξ‖ = (Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) * ‖G ξ‖ := by
+    dsimp only [F]
+    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_nonneg (Real.rpow_nonneg (by positivity) _)]
+  have hcentral : IntegrableOn (fun ξ : ℝ => ‖F ξ‖ ^ 2) (Icc (-1) 1) := by
+    have hi : IntegrableOn (fun _ : ℝ => k ^ 2) (Icc (-1) 1) :=
+      integrableOn_const (by simp : volume (Icc (-1 : ℝ) 1) ≠ ⊤)
+    apply hi.mono' (hs.mono_measure Measure.restrict_le_self)
+    filter_upwards [ae_restrict_mem measurableSet_Icc] with ξ hx
+    have habs : |ξ| ≤ 1 := abs_le.mpr hx
+    have hp := Real.rpow_le_rpow (by positivity : 0 ≤ Real.exp 1 + |ξ|)
+      (add_le_add_left habs (Real.exp 1)) (by norm_num : 0 ≤ (1 / 4 : ℝ))
+    have hb : ‖F ξ‖ ≤ k := by
+      rw [hnorm]
+      exact mul_le_mul hp (hcenter ξ hx) (norm_nonneg _)
+        (Real.rpow_nonneg (by positivity) _)
+    rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)]
+    exact (sq_le_sq₀ (norm_nonneg _) hk).mpr hb
+  have htails : IntegrableOn (fun ξ : ℝ => ‖F ξ‖ ^ 2) (Iio (-1) ∪ Ioi 1) := by
+    apply (neutralLogMetricShiftedQuarterReciprocalTail_integrableOn_both.const_mul
+      (C ^ 2)).mono' (hs.mono_measure Measure.restrict_le_self)
+    filter_upwards [ae_restrict_mem (measurableSet_Iio.union measurableSet_Ioi)] with ξ hx
+    have ha : 1 < |ξ| := by
+      rcases hx with hx | hx
+      · rw [abs_of_neg (by linarith : ξ < 0)]
+        linarith
+      · rw [abs_of_pos (by linarith : 0 < ξ)]
+        exact hx
+    have hb : ‖F ξ‖ ≤ C * ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) / |ξ|) := by
+      rw [hnorm]
+      calc
+        (Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) * ‖G ξ‖ ≤
+            (Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) * (C / |ξ|) :=
+          mul_le_mul_of_nonneg_left (htail ξ ha) (Real.rpow_nonneg (by positivity) _)
+        _ = C * ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) / |ξ|) := by ring
+    rw [Real.norm_eq_abs, abs_of_nonneg (sq_nonneg _)]
+    calc
+      ‖F ξ‖ ^ 2 ≤ (C * ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) / |ξ|)) ^ 2 :=
+        (sq_le_sq₀ (norm_nonneg _) (by positivity)).mpr hb
+      _ = C ^ 2 * ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) / |ξ|) ^ 2 := by ring
+  have hcover : Icc (-1 : ℝ) 1 ∪ (Iio (-1) ∪ Ioi 1) = univ := by
+    ext x
+    simp only [mem_union, mem_Icc, mem_Iio, mem_Ioi, mem_univ, iff_true]
+    by_cases hx : x < -1
+    · exact Or.inr (Or.inl hx)
+    · by_cases hy : 1 < x
+      · exact Or.inr (Or.inr hy)
+      · exact Or.inl ⟨le_of_not_gt hx, le_of_not_gt hy⟩
+  have hi : Integrable (fun ξ : ℝ => ‖F ξ‖ ^ 2) := by
+    have h := (integrableOn_union).mpr ⟨hcentral, htails⟩
+    rw [hcover] at h
+    exact integrableOn_univ.mp h
+  have hf : MemLp F 2 volume := (memLp_two_iff_integrable_sq_norm hF).mpr hi
+  exact neutralLogMetricWeighted_memLp_of_quarterMoment G hG hf
+
 end
 end WeilDefect
