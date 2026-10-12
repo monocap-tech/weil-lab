@@ -1,6 +1,7 @@
 import WeilDefect.Arithmetic.ActualZetaNativeFormOperator
 import WeilDefect.Screening.CanonicalCertificateTransport
 import WeilDefect.Screening.PhysicalResidualTransport
+import WeilDefect.Morphology.NeutralLogMetricPhysicalSource
 
 namespace WeilDefect
 
@@ -88,6 +89,20 @@ theorem neutralActualZetaLogRiesz_error_of_source_and_action
   exact CanonicalCertificate.weak_residual_of_source_and_action
     (fun h : NeutralLogHilbertCarrier a => neutralLogPhysical h.val)
     r v p action hsource haction
+
+
+/-- Consume the constructed logarithmic metric action in the actual
+ whole-carrier residual bound. Only the moment-source attachment and the
+ trial's full multiplier-domain membership remain inputs. -/
+theorem neutralActualZetaLogRiesz_error_of_constructed_metric_action
+    (a : ℝ) (r v : NeutralLogHilbertCarrier a) (p : RealComplexL2)
+    (hp : MeasureTheory.MemLp (neutralLogMetricSpectralProduct v) 2 MeasureTheory.volume)
+    (hsource : ∀ h : NeutralLogHilbertCarrier a,
+      inner ℂ r h = inner ℂ p (neutralLogPhysical h.val)) :
+    ‖r - v‖ ^ 2 ≤ ‖p - neutralLogMetricPhysicalSource v hp‖ ^ 2 := by
+  exact neutralActualZetaLogRiesz_error_of_source_and_action
+    a r v p (neutralLogMetricPhysicalSource v hp) hsource
+    (neutralLogMetricPhysicalSource_weak v hp)
 
 end
 end WeilDefect
