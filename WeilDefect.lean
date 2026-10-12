@@ -276,3 +276,5 @@ import WeilDefect.Morphology.NeutralLogMetricTimeActionLimit
 import WeilDefect.Morphology.NeutralLogMetricTimeActionBounds
 import WeilDefect.Morphology.NeutralLogMetricSpectralL2
 import WeilDefect.Morphology.NeutralLogMetricFourierAttachment
+
+import WeilDefect.Screening.RC35TrialCoefficients
