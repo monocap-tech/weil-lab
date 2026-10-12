@@ -1,0 +1,70 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RC140_normalized_upper": "931329517596497/1000000000000000",
+  "RH": false,
+  "aperture": "11/10",
+  "carrier_family_dimension": 7,
+  "common_analytic_moment_coefficient_count": 11,
+  "common_analytic_moment_coefficients_positive": true,
+  "common_endpoint_lower_improvement": "112419883337094590820292650234199/20000000000000000000000000000000000000000",
+  "common_endpoint_upper_inherited": "21989408270412844720944839960491334631645750549524885600480986765902283983861/50000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "common_finite_source_positive_inherited_from_RC135": true,
+  "common_source_D_energy_upper": "4912605282888594264681081340146269059/5000000000000000000000000000000000000000",
+  "common_source_t_D_Gram_lower": "548726637916118426202006345910249653/1250000000000000000000000000000000000000",
+  "common_source_t_D_Gram_upper": "175592581471832020812113854428927293/400000000000000000000000000000000000000",
+  "finite_action_rounding_and_omitted_output_paid": true,
+  "finite_common_action_D_norm_error_upper": "135682418982545814622693351/10000000000000000000000000000000000000000",
+  "full_analytic_tail_input_paid_by_positive_cross_kernel_and_C_positivity": true,
+  "high_accuracy_reference_inverse_completed": false,
+  "input_sha256": [
+    "f2fca36d5c0b8faa125090a5d000bfd5b276673ef0bd798a3f49ebe2cb4b6fa1",
+    "adc8d4c124d89c11416631d0f421f1fc69a7934b96682f597887079519ef428b",
+    "618dce3a460a10f1f71fb571fb4e1b53f6258b643c81283e6ce1234a61325b51",
+    "782a628eadead021b2274f5372c36fb405d9d7b5d7b7ba718518bb6980ce01d5",
+    "d28d8435415054e43a93eec7c340a3497b4541aa756be2f25c4dbe1daf0897a6",
+    "335f27a4d54799d4379fb6b3dd246fbc8ad5ad345541e7d8a06dea2b152cfcd3",
+    "0c611de1d56b9bc73b593e872807b4c67184c9f6219299d57cbac3e2e3b986f4",
+    "88f29c8c6fe2b5606401d5b5d8c8eb1587931bdf66c9a69b6e28c0407aa6357d",
+    "d1658b8a072b5d1c29393a323132cea260a778740819a2c4a4f956d5a66f2eed"
+  ],
+  "milestone": "RC141",
+  "new_common_endpoint_energy_lower": "2194906551662347209076354171816577107/5000000000000000000000000000000000000000",
+  "new_family_vectors_added": 0,
+  "next_cursor": "sharpen common endpoint upper and t endpoint rows with explicit tail kernel bounds; identify matrix response tolerance and original-source transport requirements",
+  "normalized_P0_reference_response_interval_width": "2153629/62500000000000",
+  "normalized_P0_reference_response_lower": "116416185379/125000000000",
+  "normalized_P0_reference_response_upper": "58208094843129/62500000000000",
+  "old_common_endpoint_energy_lower": "8779513786766051741714596394616074229/20000000000000000000000000000000000000000",
+  "original_Weil_or_augmented_actions_performed": false,
+  "paid_finite_action_common_pairing_error_upper": "425299146334242364884301/1000000000000000000000000000000000000000",
+  "positive_finite_analytic_cross_kernel_controls": [
+    {
+      "analytic_even_degree": 8192,
+      "finite_even_degree": 0,
+      "positive_cross_kernel": "11/335585280"
+    },
+    {
+      "analytic_even_degree": 8192,
+      "finite_even_degree": 2,
+      "positive_cross_kernel": "1/30507750"
+    },
+    {
+      "analytic_even_degree": 8192,
+      "finite_even_degree": 8190,
+      "positive_cross_kernel": "11/163830"
+    },
+    {
+      "analytic_even_degree": 16384,
+      "finite_even_degree": 8190,
+      "positive_cross_kernel": "11/1006837750"
+    }
+  ],
+  "positive_tail_common_endpoint_energy_lower": "2194906551662347209076354171816577107/5000000000000000000000000000000000000000",
+  "selected_reference_trial": "RC139 upper_optimized with RC140 endpoint residual correction",
+  "starting_commit": "4b849bc814baeda48aa67db1f925a2a7e643a396",
+  "status": "PASS: positive common analytic source tail tightens actual endpoint energy and P0 reference response",
+  "trial_common_coefficient": "-397946627540913/1000000000000000",
+  "upper_endpoint_improvement": "106433/1000000000000000",
+  "whole_aperture_positivity_extended": false
+}
