@@ -311,5 +311,26 @@ theorem neutralLogMetricTrialZeroExtension_weighted_memLp_of_schwartz
   rw [he]
   exact neutralLogMetricSchwartz_fourier_weighted_memLp f
 
+
+set_option maxHeartbeats 1000000 in
+/-- A cap-supported Schwartz trial has the endpoint compression identity
+ with its spectral-domain witness derived from smooth rapid decay. -/
+theorem neutralLogMetricEndpointSource_compression_eq_of_schwartz
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (f : 𝓢(ℝ, ℂ)) (hs : ∀ x, x ∉ Icc (-B) B → f x = 0)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖f x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖f x - f y‖ ≤ L * |x - y|) :
+    (let hp := neutralLogMetricTrialZeroExtension_weighted_memLp_of_schwartz B f hs
+     let S : RealComplexL2 := 𝓕⁻ (hp.toLp (fun ξ : ℝ =>
+      (𝓕 (neutralLogMetricTrialZeroExtension B f)) ξ *
+        (logarithmicFourierWeight ξ : ℂ)))
+     ((Lp.memLp S).indicator measurableSet_Icc).toLp
+       ((Icc (-B) B).indicator (S : ℝ → ℂ))) =
+      neutralLogMetricEndpointCandidateL2 B M L hB hL f f.measurable hbound hmod := by
+  exact neutralLogMetricEndpointSource_spectral_compression_eq
+    B L M hB hL hM f f.measurable hbound hmod
+    (neutralLogMetricTrialZeroExtension_weighted_memLp_of_schwartz B f hs)
+
 end
 end WeilDefect

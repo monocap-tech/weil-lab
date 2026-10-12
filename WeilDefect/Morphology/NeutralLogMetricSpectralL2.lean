@@ -83,7 +83,7 @@ theorem neutralLogMetricTimeAction_fourier_tendsto_L2
     filter_upwards [] with ξ
     rw [← ofReal_norm]
     simp only [pow_two]
-    exact (ENNReal.ofReal_mul (norm_nonneg _)).symm
+    exact (ENNReal.ofReal_mul (norm_nonneg (A n ξ - G ξ))).symm
   have hc : Continuous (fun z : ℝ≥0∞ => z ^ (1 / (2 : ℝ))) :=
     ENNReal.continuous_rpow_const
   change Tendsto (fun n : ℕ => eLpNorm (fun ξ : ℝ => A n ξ - G ξ) 2 volume)
