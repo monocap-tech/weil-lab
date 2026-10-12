@@ -463,5 +463,42 @@ theorem neutralLogMetricShiftedQuarterReciprocalTail_integrableOn :
       (sq_le_sq₀ (by positivity) (by positivity)).mpr hq
     _ = c ^ 2 * (ξ ^ (1 / 4 : ℝ) / ξ) ^ 2 := by ring
 
+
+/-- Both absolute-frequency shifted quarter reciprocal tails have
+ integrable squares, by reflection of the positive tail. -/
+theorem neutralLogMetricShiftedQuarterReciprocalTail_integrableOn_both :
+    IntegrableOn (fun ξ : ℝ =>
+      ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) / |ξ|) ^ 2)
+      (Iio (-1) ∪ Ioi 1) := by
+  let f : ℝ → ℝ := fun ξ => ((Real.exp 1 + ξ) ^ (1 / 4 : ℝ) / ξ) ^ 2
+  have hp : IntegrableOn f (Ioi 1) :=
+    neutralLogMetricShiftedQuarterReciprocalTail_integrableOn
+  have hi : Integrable ((Ioi (1 : ℝ)).indicator f) :=
+    (integrable_indicator_iff measurableSet_Ioi).mpr hp
+  have hn : IntegrableOn (fun ξ : ℝ => f (-ξ)) (Iio (-1)) := by
+    apply (integrable_indicator_iff measurableSet_Iio).mp
+    apply hi.comp_neg.congr
+    filter_upwards [] with ξ
+    change (Ioi (1 : ℝ)).indicator f (-ξ) =
+      (Iio (-1 : ℝ)).indicator (fun z => f (-z)) ξ
+    by_cases hx : ξ < -1
+    · have hy : 1 < -ξ := by linarith
+      simp only [indicator_of_mem hy, indicator_of_mem hx]
+    · have hy : ¬ 1 < -ξ := by linarith
+      simp only [indicator_of_notMem hy, indicator_of_notMem hx]
+  have hpa : IntegrableOn (fun ξ : ℝ =>
+      ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) / |ξ|) ^ 2) (Ioi 1) := by
+    apply hp.congr_fun _ measurableSet_Ioi
+    intro ξ hξ
+    have hx : 0 < ξ := lt_trans (by norm_num : (0 : ℝ) < 1) hξ
+    simpa only [f, abs_of_pos hx] using (rfl : f ξ = f ξ)
+  have hna : IntegrableOn (fun ξ : ℝ =>
+      ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) / |ξ|) ^ 2) (Iio (-1)) := by
+    apply hn.congr_fun _ measurableSet_Iio
+    intro ξ hξ
+    have hx : ξ < 0 := lt_trans hξ (by norm_num : (-1 : ℝ) < 0)
+    simpa only [f, abs_of_neg hx] using (rfl : f (-ξ) = f (-ξ))
+  exact (integrableOn_union).mpr ⟨hna, hpa⟩
+
 end
 end WeilDefect
