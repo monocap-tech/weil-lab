@@ -368,5 +368,45 @@ theorem neutralLogMetricEndpointSource_spectral_ae_on_cap
     ((congrArg (fun u : RealComplexL2 => u x) he).trans hex)
   simpa only [neutralLogMetricEndpointZeroExtension, indicator_of_mem hx] using h
 
+
+/-- Any positive shifted fractional-frequency moment in L2 supplies the
+ full logarithmic domain; no first-frequency-moment premise is needed. -/
+theorem neutralLogMetricWeighted_memLp_of_fractionalMoment
+    (σ : ℝ) (hσ : 0 < σ) (G : ℝ → ℂ)
+    (hG : AEStronglyMeasurable G volume)
+    (hfrac : MemLp (fun ξ : ℝ =>
+      ((Real.exp 1 + |ξ|) ^ σ : ℂ) * G ξ) 2 volume) :
+    MemLp (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
+  have hm : AEStronglyMeasurable
+      (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) volume :=
+    hG.mul (Complex.continuous_ofReal.comp
+      logarithmicFourierWeight_continuous).aestronglyMeasurable
+  apply (hfrac.norm.const_mul (1 / σ)).mono' hm
+  filter_upwards [] with ξ
+  change ‖G ξ * (logarithmicFourierWeight ξ : ℂ)‖ ≤
+    (1 / σ) * ‖((Real.exp 1 + |ξ|) ^ σ : ℂ) * G ξ‖
+  have hw : 0 ≤ logarithmicFourierWeight ξ :=
+    le_trans (by norm_num) (one_le_logarithmicFourierWeight ξ)
+  have hx : 0 ≤ Real.exp 1 + |ξ| := by positivity
+  have hp : 0 ≤ (Real.exp 1 + |ξ|) ^ σ := Real.rpow_nonneg hx σ
+  have hb : logarithmicFourierWeight ξ ≤ (Real.exp 1 + |ξ|) ^ σ / σ :=
+    Real.log_le_rpow_div hx hσ
+  simp only [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+    abs_of_nonneg hw, abs_of_nonneg hp]
+  calc
+    ‖G ξ‖ * logarithmicFourierWeight ξ ≤
+        ‖G ξ‖ * ((Real.exp 1 + |ξ|) ^ σ / σ) :=
+      mul_le_mul_of_nonneg_left hb (norm_nonneg _)
+    _ = (1 / σ) * ((Real.exp 1 + |ξ|) ^ σ * ‖G ξ‖) := by ring
+
+/-- Quarter-frequency regularity is a concrete fractional-domain criterion. -/
+theorem neutralLogMetricWeighted_memLp_of_quarterMoment
+    (G : ℝ → ℂ) (hG : AEStronglyMeasurable G volume)
+    (hfrac : MemLp (fun ξ : ℝ =>
+      ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) : ℂ) * G ξ) 2 volume) :
+    MemLp (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
+  exact neutralLogMetricWeighted_memLp_of_fractionalMoment
+    (1 / 4) (by norm_num) G hG hfrac
+
 end
 end WeilDefect
