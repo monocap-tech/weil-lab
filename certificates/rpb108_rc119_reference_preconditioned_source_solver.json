@@ -1,0 +1,147 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "aperture": "11/10",
+  "arithmetic": "exact rational endpoint/constant, Hilbert-Schmidt, polynomial and noncommuting Gram checks",
+  "augmented_inverse_responses_computed": false,
+  "auxiliary_response_norm_below_one_certified": false,
+  "canonical_Riesz_source_stopping_rule": "G_P <= G_error_c <= a^(-1) G_P; G_P = residual^* P^(-1) residual",
+  "canonical_embedding_squared_norm_upper": "252/257",
+  "canonical_full_range_source_realization_completed": false,
+  "conditional_degree_and_action_budgets": [
+    {
+      "actual_reference_inverse_or_action_contract_verified": false,
+      "inverse_polynomial_degree": 19,
+      "minimal_degree_for_one_third_allocation": true,
+      "normalized_local_fault_P_norm_allowance_per_initial_error_norm": "1/630000000",
+      "preconditioned_source_error_P_norm_allowance_per_initial_error_norm": "13979568403090384409186928833854218185101346760917751155404411675605408160546095179073808810831141334639/301505768213655279452043413960734127707187135325506907709356717923687050209992703624789930780163196377798488000",
+      "previous_degree_relative_residual_lower": "13652459/20000000000000",
+      "recurrence_fault_amplification_upper": "210",
+      "relative_canonical_error_norm_target": "1/1000000",
+      "residual_degree": 20,
+      "uniform_relative_residual_upper": "15588001/50000000000000"
+    },
+    {
+      "actual_reference_inverse_or_action_contract_verified": false,
+      "inverse_polynomial_degree": 37,
+      "minimal_degree_for_one_third_allocation": true,
+      "normalized_local_fault_P_norm_allowance_per_initial_error_norm": "1/2223000000000000",
+      "preconditioned_source_error_P_norm_allowance_per_initial_error_norm": "64194576719004720909026771983446521067852601848303177979722856161033023091610530069399384540914116543055685888526500689671530197612043904416402046998060477605552514507582169118748555817284572711/1384522653103914542362578249136248628955985691769931223602475776751734456692294834644802763242982136585265149299007160318080714906090906610836366199164777614953283010891809618687438378236561836178712000000000",
+      "previous_degree_relative_residual_lower": "25507169/50000000000000000000",
+      "recurrence_fault_amplification_upper": "741",
+      "relative_canonical_error_norm_target": "1/1000000000000",
+      "residual_degree": 38,
+      "uniform_relative_residual_upper": "4659741/20000000000000000000"
+    },
+    {
+      "actual_reference_inverse_or_action_contract_verified": false,
+      "inverse_polynomial_degree": 72,
+      "minimal_degree_for_one_third_allocation": true,
+      "normalized_local_fault_P_norm_allowance_per_initial_error_norm": "1/8103000000000000000000000000",
+      "preconditioned_source_error_P_norm_allowance_per_initial_error_norm": "12437395930482862347851644284039514140648454026877607201143398706254709121812691125070534434621463508579764543847532390067984367471150492351639966769626721623617336668521922848117691634955403825483593718891953119325645959616712699834525949923263591488530983509043687743991859108015302073463080006026754000309326587379189460613016872335401785165694548380402074971275580723/268244722396838148590510345905344374091583671498562318817752786879262266795687859779097301443479564312266731154796967770006308189662239322852129165185939581683044655745779413103091176716816510923073765607046418922155466719922000055447674702131804631108483172230306724101391807740676086168571874512951993051803807189182296157612003092548338103067977050205709927328135742731416000000000000000000000",
+      "previous_degree_relative_residual_lower": "2495373/4000000000000000000000000000000",
+      "recurrence_fault_amplification_upper": "2701",
+      "relative_canonical_error_norm_target": "1/1000000000000000000000000",
+      "residual_degree": 73,
+      "uniform_relative_residual_upper": "712287/2500000000000000000000000000000"
+    }
+  ],
+  "efficient_reference_inverse_implementation_proved": false,
+  "exact_noncommuting_control": {
+    "canonical_error_correlated_posterior_sandwich_verified": true,
+    "correlated_local_fault_and_total_Gram_bound_verified": true,
+    "dimension": 2,
+    "inexact_second_kind_propagation_identity_verified": true,
+    "normalized_Chebyshev_quotient_recurrence_verified": true,
+    "physical_metric_nonidentity": true,
+    "preconditioned_metric_selfadjoint_identity_verified": true,
+    "reference_inverse_plus_residual_Gram_identity_verified": true,
+    "scope": "abstract noncommuting rational forms, not original arithmetic actions"
+  },
+  "input_sha256": [
+    "eaad8676ab03b994d7ca7f958d34d74c394f75650d1c9dbe7d0731e5571138bc",
+    "1bb493e5a8ff41b3b65635398fb8f6b7764c1f4a0567d0dad8b36a3011658425",
+    "c403a718afc310b49ac7a05b7150544b2da2d60480f0d22b2177e2eead9a0998"
+  ],
+  "milestone": "RC119",
+  "new_positive_native_directions_certified": 0,
+  "original_Weil_or_augmented_actions_performed": false,
+  "original_count_below_one_hundredth_lower": 10,
+  "original_count_below_one_hundredth_upper": 639,
+  "parity_source_solver_certificates": [
+    {
+      "RC118_center_source_trial_error_squared_upper": "11613941601667/500000000000",
+      "conditional_warm_start_targets": [
+        {
+          "computed_correction": false,
+          "conditional_final_exact_model_adjoint_error_squared_upper": "23227883203334000000000000000000000000000000000001/1000000000000000000000000000000000000000000000000000000000000",
+          "relative_error_norm_target": "1/1000000",
+          "source_rounding_and_model_error_paid": true
+        },
+        {
+          "computed_correction": false,
+          "conditional_final_exact_model_adjoint_error_squared_upper": "23227883203334000000000000000000000001/1000000000000000000000000000000000000000000000000000000000000",
+          "relative_error_norm_target": "1/1000000000000",
+          "source_rounding_and_model_error_paid": true
+        },
+        {
+          "computed_correction": false,
+          "conditional_final_exact_model_adjoint_error_squared_upper": "4645576640667/200000000000000000000000000000000000000000000000000000000000",
+          "relative_error_norm_target": "1/1000000000000000000000000",
+          "source_rounding_and_model_error_paid": true
+        }
+      ],
+      "dyadic_harmonic_lower_block_count": 20,
+      "metric_Rayleigh_lower_for_normalized_Legendre_test": "374479854444239839789/50000000000000000000",
+      "noncontraction_is_actual_metric_obstruction_not_negative_Weil_direction": true,
+      "parity": "even",
+      "physical_scalar_residual_norm_ratio_lower": "26490979986082977971/25000000000000000000",
+      "scalar_unpreconditioned_noncontraction_polynomial_degree": 1048576
+    },
+    {
+      "RC118_center_source_trial_error_squared_upper": "113492271071/125000000000",
+      "conditional_warm_start_targets": [
+        {
+          "computed_correction": false,
+          "conditional_final_exact_model_adjoint_error_squared_upper": "907938168568000000000000000000000000000000000001/1000000000000000000000000000000000000000000000000000000000000",
+          "relative_error_norm_target": "1/1000000",
+          "source_rounding_and_model_error_paid": true
+        },
+        {
+          "computed_correction": false,
+          "conditional_final_exact_model_adjoint_error_squared_upper": "907938168568000000000000000000000001/1000000000000000000000000000000000000000000000000000000000000",
+          "relative_error_norm_target": "1/1000000000000",
+          "source_rounding_and_model_error_paid": true
+        },
+        {
+          "computed_correction": false,
+          "conditional_final_exact_model_adjoint_error_squared_upper": "907938168569/1000000000000000000000000000000000000000000000000000000000000",
+          "relative_error_norm_target": "1/1000000000000000000000000",
+          "source_rounding_and_model_error_paid": true
+        }
+      ],
+      "dyadic_harmonic_lower_block_count": 23,
+      "metric_Rayleigh_lower_for_normalized_Legendre_test": "449479854444239839789/50000000000000000000",
+      "noncontraction_is_actual_metric_obstruction_not_negative_Weil_direction": true,
+      "parity": "odd",
+      "physical_scalar_residual_norm_ratio_lower": "53829846376619402991/50000000000000000000",
+      "scalar_unpreconditioned_noncontraction_polynomial_degree": 8388609
+    }
+  ],
+  "positive_principal_reference_shift": "789/125",
+  "preconditioned_condition_number_upper": "230953/32125",
+  "preconditioned_spectral_lower": "32125/230953",
+  "preconditioned_spectral_upper": "1",
+  "preconditioned_spectrum_uniform_over_full_physical_source_space": true,
+  "reference_form_floor_lower": "190079854444239839789/50000000000000000000",
+  "reference_harmonic_plus_endpoint_constant_lower": "190079854444239839789/50000000000000000000",
+  "reference_harmonic_plus_endpoint_constant_upper": "380159708888479679579/100000000000000000000",
+  "reference_inverse_action_evaluated": false,
+  "reference_inverse_posterior_rule": "G_P = C_W + t^* P^(-1) t <= C_W + s_lower^(-1) Gram_physical(t)",
+  "reference_metric_dense_matrix_required_by_theorem": false,
+  "status": "PASS: universal positive principal-reference source solver and correlated residual stopping theorem; actions open",
+  "supported_regular_multiplier_squared_norm_upper": "248996598639455782313/6250000000000000000",
+  "unpreconditioned_fixed_scalar_metric_correction_uniform_contraction_impossible": true,
+  "whole_aperture_positivity_extended": false
+}
