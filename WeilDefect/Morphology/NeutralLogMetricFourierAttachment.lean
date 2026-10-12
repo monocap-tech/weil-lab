@@ -1,3 +1,4 @@
+import WeilDefect.Morphology.NeutralLogMetricPhysicalSource
 import WeilDefect.Morphology.NeutralLogMetricTimeActionBounds
 import WeilDefect.Morphology.NeutralLogMetricSpectralL2
 import WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement
@@ -785,6 +786,29 @@ theorem neutralLogMetricEndpointSource_compression_eq_of_derivative
     B L M hB hL hM v hv hbound hmod
     (neutralLogMetricTrialZeroExtension_weighted_memLp_of_derivative
       B M hB v v' hv hbound hderiv hv')
+
+
+/-- Transfer the derived ordinary Fourier domain of a cap trial to the
+ actual carrier spectral product, using its physical representative identity. -/
+theorem neutralLogMetricSpectralProduct_memLp_of_cap_derivative
+    (a B M : ℝ) (hB : 0 ≤ B) (V : NeutralLogHilbertCarrier a)
+    (v v' : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hderiv : ∀ x ∈ uIcc (-B) B, HasDerivAt v (v' x) x)
+    (hv' : IntervalIntegrable v' volume (-B) B)
+    (hphysical : (neutralLogPhysical V.val : ℝ → ℂ) =ᵐ[volume]
+      neutralLogMetricTrialZeroExtension B v) :
+    MemLp (neutralLogMetricSpectralProduct V) 2 volume := by
+  have hi : Integrable (neutralLogPhysical V.val : ℝ → ℂ) :=
+    (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound).congr hphysical.symm
+  have hF := neutralIntegrableL2_fourier_ae (neutralLogPhysical V.val) hi
+  have hp := neutralLogMetricTrialZeroExtension_weighted_memLp_of_derivative
+    B M hB v v' hv hbound hderiv hv'
+  apply hp.congr
+  filter_upwards [hF] with ξ hξ
+  dsimp only [neutralLogMetricSpectralProduct]
+  rw [hξ, Real.fourier_congr_ae hphysical ξ]
+  exact mul_comm _ _
 
 end
 end WeilDefect
