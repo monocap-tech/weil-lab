@@ -377,7 +377,7 @@ theorem neutralLogMetricWeighted_memLp_of_fractionalMoment
     (σ : ℝ) (hσ : 0 < σ) (G : ℝ → ℂ)
     (hG : AEStronglyMeasurable G volume)
     (hfrac : MemLp (fun ξ : ℝ =>
-      ((Real.exp 1 + |ξ|) ^ σ : ℂ) * G ξ) 2 volume) :
+      (((Real.exp 1 + |ξ|) ^ σ : ℝ) : ℂ) * G ξ) 2 volume) :
     MemLp (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
   have hm : AEStronglyMeasurable
       (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) volume :=
@@ -386,7 +386,7 @@ theorem neutralLogMetricWeighted_memLp_of_fractionalMoment
   apply (hfrac.norm.const_mul (1 / σ)).mono' hm
   filter_upwards [] with ξ
   change ‖G ξ * (logarithmicFourierWeight ξ : ℂ)‖ ≤
-    (1 / σ) * ‖((Real.exp 1 + |ξ|) ^ σ : ℂ) * G ξ‖
+    (1 / σ) * ‖(((Real.exp 1 + |ξ|) ^ σ : ℝ) : ℂ) * G ξ‖
   have hw : 0 ≤ logarithmicFourierWeight ξ :=
     le_trans (by norm_num) (one_le_logarithmicFourierWeight ξ)
   have hx : 0 ≤ Real.exp 1 + |ξ| := by positivity
@@ -405,7 +405,7 @@ theorem neutralLogMetricWeighted_memLp_of_fractionalMoment
 theorem neutralLogMetricWeighted_memLp_of_quarterMoment
     (G : ℝ → ℂ) (hG : AEStronglyMeasurable G volume)
     (hfrac : MemLp (fun ξ : ℝ =>
-      ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) : ℂ) * G ξ) 2 volume) :
+      (((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) : ℝ) : ℂ) * G ξ) 2 volume) :
     MemLp (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
   exact neutralLogMetricWeighted_memLp_of_fractionalMoment
     (1 / 4) (by norm_num) G hG hfrac
@@ -425,6 +425,7 @@ theorem neutralLogMetricFractionalReciprocalTail_integrableOn
     calc
       ξ ^ σ / ξ = ξ ^ σ / ξ ^ (1 : ℝ) := by rw [Real.rpow_one]
       _ = ξ ^ (σ - 1) := (Real.rpow_sub hx σ 1).symm
+  change ξ ^ ((σ - 1) * 2) = (ξ ^ σ / ξ) ^ 2
   rw [he, ← Real.rpow_natCast (ξ ^ (σ - 1)) 2, ← Real.rpow_mul hx.le]
 
 /-- The quarter-frequency squared reciprocal tail is integrable. -/
@@ -441,8 +442,11 @@ theorem neutralLogMetricShiftedQuarterReciprocalTail_integrableOn :
   let c : ℝ := (Real.exp 1 + 1) ^ (1 / 4 : ℝ)
   have hc : 0 ≤ c := Real.rpow_nonneg (by positivity) _
   apply (neutralLogMetricQuarterReciprocalTail_integrableOn.const_mul (c ^ 2)).mono'
-    (by fun_prop)
+    (by
+      exact (by fun_prop : Measurable (fun ξ : ℝ =>
+        ((Real.exp 1 + ξ) ^ (1 / 4 : ℝ) / ξ) ^ 2)).aestronglyMeasurable)
   filter_upwards [ae_restrict_mem measurableSet_Ioi] with ξ hξ
+  change 1 < ξ at hξ
   have hx : 0 < ξ := lt_trans (by norm_num : (0 : ℝ) < 1) hξ
   have hshift : Real.exp 1 + ξ ≤ (Real.exp 1 + 1) * ξ := by
     nlinarith [Real.exp_pos (1 : ℝ)]
@@ -484,9 +488,9 @@ theorem neutralLogMetricShiftedQuarterReciprocalTail_integrableOn_both :
       (Iio (-1 : ℝ)).indicator (fun z => f (-z)) ξ
     by_cases hx : ξ < -1
     · have hy : 1 < -ξ := by linarith
-      simp only [indicator_of_mem hy, indicator_of_mem hx]
+      simp [Set.indicator, hx, hy]
     · have hy : ¬ 1 < -ξ := by linarith
-      simp only [indicator_of_notMem hy, indicator_of_notMem hx]
+      simp [Set.indicator, hx, hy]
   have hpa : IntegrableOn (fun ξ : ℝ =>
       ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) / |ξ|) ^ 2) (Ioi 1) := by
     apply hp.congr_fun _ measurableSet_Ioi
@@ -510,12 +514,12 @@ theorem neutralLogMetricWeighted_memLp_of_reciprocalDecay
     (hcenter : ∀ ξ ∈ Icc (-1) 1, ‖G ξ‖ ≤ M)
     (htail : ∀ ξ, 1 < |ξ| → ‖G ξ‖ ≤ C / |ξ|) :
     MemLp (fun ξ : ℝ => G ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
-  let F : ℝ → ℂ := fun ξ => ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) : ℂ) * G ξ
+  let F : ℝ → ℂ := fun ξ => (((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) : ℝ) : ℂ) * G ξ
   let k : ℝ := (Real.exp 1 + 1) ^ (1 / 4 : ℝ) * M
   have hk : 0 ≤ k := by positivity
   have hF : AEStronglyMeasurable F volume := by
     exact (by fun_prop : AEStronglyMeasurable
-      (fun ξ : ℝ => ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) : ℂ)) volume).mul hG
+      (fun ξ : ℝ => (((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) : ℝ) : ℂ)) volume).mul hG
   have hs : AEStronglyMeasurable (fun ξ : ℝ => ‖F ξ‖ ^ 2) volume := by
     have h := hF.norm.mul hF.norm
     change AEStronglyMeasurable (fun ξ : ℝ => ‖F ξ‖ * ‖F ξ‖) volume at h
