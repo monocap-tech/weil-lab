@@ -73,8 +73,10 @@ theorem neutralLogMetricTimeAction_physical_toLp_tendsto
       atTop (𝓝 (𝓕⁻ (hp.toLp
         (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ))) : RealComplexL2)) := by
   have h := neutralLogMetricTimeAction_fourierInv_toLp_tendsto M hM v hv hvi hbound hp
-  simp_rw [neutralLogMetricTimeAction_fourierInv_eq_physical] at h
-  exact h
+  apply h.congr'
+  filter_upwards [] with n
+  exact neutralLogMetricTimeAction_fourierInv_eq_physical
+    (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) M (by positivity) hM v hv hvi hbound hp
 
 set_option maxHeartbeats 1000000 in
 /-- Actual physical-vector pairings converge against every physical L2 test. -/
@@ -177,7 +179,9 @@ theorem neutralLogMetricSupported_inner_eq_indicator_toLp_eq
   have hD : ∀ᵐ x ∂volume, x ∉ Icc (-B) B → (C - E) x = 0 := by
     filter_upwards [Lp.coeFn_sub C E, hC, hE] with x hx hc he
     intro hxc
-    rw [hx, hc, indicator_of_notMem hxc, he hxc, sub_self]
+    rw [hx]
+    change C x - E x = 0
+    rw [hc, indicator_of_notMem hxc, he hxc, sub_self]
   have hpair : inner ℂ C (C - E) = inner ℂ S (C - E) := by
     rw [L2.inner_def, L2.inner_def]
     apply integral_congr_ae
@@ -327,9 +331,9 @@ theorem neutralLogMetricEndpointSource_compression_eq_of_schwartz
         (logarithmicFourierWeight ξ : ℂ)))
      ((Lp.memLp S).indicator measurableSet_Icc).toLp
        ((Icc (-B) B).indicator (S : ℝ → ℂ))) =
-      neutralLogMetricEndpointCandidateL2 B M L hB hL f f.measurable hbound hmod := by
+      neutralLogMetricEndpointCandidateL2 B M L hB hL f f.continuous.measurable hbound hmod := by
   exact neutralLogMetricEndpointSource_spectral_compression_eq
-    B L M hB hL hM f f.measurable hbound hmod
+    B L M hB hL hM f f.continuous.measurable hbound hmod
     (neutralLogMetricTrialZeroExtension_weighted_memLp_of_schwartz B f hs)
 
 
