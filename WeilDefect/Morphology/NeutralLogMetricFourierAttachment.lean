@@ -427,6 +427,7 @@ theorem neutralLogMetricFractionalReciprocalTail_integrableOn
       _ = ξ ^ (σ - 1) := (Real.rpow_sub hx σ 1).symm
   change ξ ^ ((σ - 1) * 2) = (ξ ^ σ / ξ) ^ 2
   rw [he, ← Real.rpow_natCast (ξ ^ (σ - 1)) 2, ← Real.rpow_mul hx.le]
+  norm_num
 
 /-- The quarter-frequency squared reciprocal tail is integrable. -/
 theorem neutralLogMetricQuarterReciprocalTail_integrableOn :
@@ -518,8 +519,10 @@ theorem neutralLogMetricWeighted_memLp_of_reciprocalDecay
   let k : ℝ := (Real.exp 1 + 1) ^ (1 / 4 : ℝ) * M
   have hk : 0 ≤ k := by positivity
   have hF : AEStronglyMeasurable F volume := by
-    exact (by fun_prop : AEStronglyMeasurable
-      (fun ξ : ℝ => (((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) : ℝ) : ℂ)) volume).mul hG
+    have hp : Continuous (fun ξ : ℝ => (Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ)) :=
+      (Real.continuous_rpow_const (by norm_num : 0 ≤ (1 / 4 : ℝ))).comp
+        (continuous_const.add continuous_abs)
+    exact (Complex.continuous_ofReal.comp hp).aestronglyMeasurable.mul hG
   have hs : AEStronglyMeasurable (fun ξ : ℝ => ‖F ξ‖ ^ 2) volume := by
     have h := hF.norm.mul hF.norm
     change AEStronglyMeasurable (fun ξ : ℝ => ‖F ξ‖ * ‖F ξ‖) volume at h
