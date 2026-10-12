@@ -4,7 +4,7 @@ import WeilDefect.Arithmetic.ActualZetaCorrelationFourierAgreement
 
 namespace WeilDefect
 noncomputable section
-open MeasureTheory FourierTransform
+open MeasureTheory Set Filter Topology FourierTransform
 open scoped FourierTransform
 
 /-- Ordinary Fourier integrals and L2 Fourier vectors agree for an
@@ -29,9 +29,9 @@ theorem neutralLogMetricIntegrableL2_fourierInv_toLp_eq
     (neutralLogMetricIntegrableL2_fourier_toLp_eq f hfi hf hF)
   simpa only [fourierInv_fourier_eq] using h.symm
 
+set_option maxHeartbeats 1000000 in
 /-- The constructed inverse-transformed finite-action spectral vector
  equals the actual full-line physical action vector, retaining exterior action. -/
-set_option maxHeartbeats 1000000 in
 theorem neutralLogMetricTimeAction_fourierInv_eq_physical
     (ε R M : ℝ) (hε : 0 < ε) (hM : 0 ≤ M)
     (v : ℝ → ℂ) (hv : Measurable v) (hvi : Integrable v)
@@ -51,6 +51,48 @@ theorem neutralLogMetricTimeAction_fourierInv_eq_physical
     (neutralLogMetricTimeAction_integrable ε R M hε hM v hv hvi hbound)
     (neutralLogMetricTimeAction_memLp_two ε R M hε hM v hv hvi hbound)
     (neutralLogMetricTimeAction_fourier_memLp_two ε R M hε hM v hv hvi hbound hp)
+
+
+set_option maxHeartbeats 1000000 in
+/-- The actual full-line physical action vectors converge to the inverse
+ Fourier transform of the weighted product, under its explicit L2 domain premise. -/
+theorem neutralLogMetricTimeAction_physical_toLp_tendsto
+    (M : ℝ) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hvi : Integrable v) (hbound : ∀ y, ‖v y‖ ≤ M)
+    (hp : MemLp (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume) :
+    Tendsto (fun n : ℕ =>
+      (neutralLogMetricTimeAction_memLp_two
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) M (by positivity) hM v hv hvi hbound).toLp
+        (fun x : ℝ => v x +
+          ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+            ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+              (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ))))
+      atTop (𝓝 (𝓕⁻ (hp.toLp
+        (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ))) : RealComplexL2)) := by
+  have h := neutralLogMetricTimeAction_fourierInv_toLp_tendsto M hM v hv hvi hbound hp
+  simp_rw [neutralLogMetricTimeAction_fourierInv_eq_physical] at h
+  exact h
+
+set_option maxHeartbeats 1000000 in
+/-- Actual physical-vector pairings converge against every physical L2 test. -/
+theorem neutralLogMetricTimeAction_physical_inner_tendsto
+    (M : ℝ) (hM : 0 ≤ M) (v : ℝ → ℂ) (hv : Measurable v)
+    (hvi : Integrable v) (hbound : ∀ y, ‖v y‖ ≤ M)
+    (hp : MemLp (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume)
+    (φ : RealComplexL2) :
+    Tendsto (fun n : ℕ => inner ℂ
+      ((neutralLogMetricTimeAction_memLp_two
+        (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1) M (by positivity) hM v hv hvi hbound).toLp
+        (fun x : ℝ => v x +
+          ∫ t in Icc (1 / ((n : ℝ) + 1)) ((n : ℝ) + 1),
+            ((Real.exp (-(Real.exp 1) * t) / t : ℝ) : ℂ) *
+              (v x - ∫ y : ℝ, v y * (neutralLogMetricPoissonDensity t (x - y) : ℂ)))) φ)
+      atTop (𝓝 (inner ℂ (𝓕⁻ (hp.toLp
+        (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ)))) φ)) := by
+  have hc : Continuous (fun u : RealComplexL2 => inner ℂ u φ) :=
+    continuous_id.inner (𝕜 := ℂ) continuous_const
+  exact (hc.tendsto _).comp
+    (neutralLogMetricTimeAction_physical_toLp_tendsto M hM v hv hvi hbound hp)
 
 end
 end WeilDefect
