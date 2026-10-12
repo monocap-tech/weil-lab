@@ -574,5 +574,37 @@ theorem neutralLogMetricWeighted_memLp_of_reciprocalDecay
   have hf : MemLp F 2 volume := (memLp_two_iff_integrable_sq_norm hF).mpr hi
   exact neutralLogMetricWeighted_memLp_of_quarterMoment G hG hf
 
+
+/-- The ordinary Fourier integral is uniformly controlled by physical L1 mass. -/
+theorem neutralLogMetricFourier_norm_le_L1 (v : ℝ → ℂ) (ξ : ℝ) :
+    ‖(𝓕 v) ξ‖ ≤ ∫ x : ℝ, ‖v x‖ := by
+  exact VectorFourier.norm_fourierIntegral_le_integral_norm
+    Real.fourierChar volume (innerₗ ℝ) v ξ
+
+/-- For an integrable physical trial, reciprocal Fourier decay alone
+ supplies the remaining input for full logarithmic-domain membership. -/
+theorem neutralLogMetricFourier_weighted_memLp_of_reciprocalDecay
+    (v : ℝ → ℂ) (hvi : Integrable v) (C : ℝ) (hC : 0 ≤ C)
+    (htail : ∀ ξ : ℝ, 1 < |ξ| → ‖(𝓕 v) ξ‖ ≤ C / |ξ|) :
+    MemLp (fun ξ : ℝ => (𝓕 v) ξ * (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
+  have hm : AEStronglyMeasurable (𝓕 v) volume :=
+    (VectorFourier.fourierIntegral_continuous Real.continuous_fourierChar
+      (innerSL ℝ).continuous₂ hvi).aestronglyMeasurable
+  exact neutralLogMetricWeighted_memLp_of_reciprocalDecay (𝓕 v) hm
+    (∫ x : ℝ, ‖v x‖) C (integral_nonneg (fun x => norm_nonneg (v x))) hC
+    (fun ξ _ => neutralLogMetricFourier_norm_le_L1 v ξ) htail
+
+/-- Actual cap-bounded measurable trial zero extensions have derived
+ central Fourier control; only their reciprocal tail estimate remains an input. -/
+theorem neutralLogMetricTrialZeroExtension_weighted_memLp_of_reciprocalDecay
+    (B M C : ℝ) (v : ℝ → ℂ) (hv : Measurable v) (hC : 0 ≤ C)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (htail : ∀ ξ : ℝ, 1 < |ξ| →
+      ‖(𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ‖ ≤ C / |ξ|) :
+    MemLp (fun ξ : ℝ => (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+      (logarithmicFourierWeight ξ : ℂ)) 2 volume := by
+  exact neutralLogMetricFourier_weighted_memLp_of_reciprocalDecay _
+    (neutralLogMetricTrialZeroExtension_integrable B M v hv hbound) C hC htail
+
 end
 end WeilDefect
