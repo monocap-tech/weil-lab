@@ -332,5 +332,37 @@ theorem neutralLogMetricEndpointSource_compression_eq_of_schwartz
     B L M hB hL hM f f.measurable hbound hmod
     (neutralLogMetricTrialZeroExtension_weighted_memLp_of_schwartz B f hs)
 
+
+set_option maxHeartbeats 1000000 in
+/-- The spectral source agrees almost everywhere inside the cap with the
+ endpoint candidate, retaining its independent exterior action. -/
+theorem neutralLogMetricEndpointSource_spectral_ae_on_cap
+    (B L M : ℝ) (hB : 0 ≤ B) (hL : 0 ≤ L) (hM : 0 ≤ M)
+    (v : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Icc (-B) B, ‖v x‖ ≤ M)
+    (hmod : ∀ x ∈ Icc (-B) B, ∀ y ∈ Icc (-B) B,
+      ‖v x - v y‖ ≤ L * |x - y|)
+    (hp : MemLp (fun ξ : ℝ => (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+      (logarithmicFourierWeight ξ : ℂ)) 2 volume) :
+    (let S : RealComplexL2 := 𝓕⁻ (hp.toLp (fun ξ : ℝ =>
+      (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ *
+        (logarithmicFourierWeight ξ : ℂ)))
+     ∀ᵐ x ∂volume, x ∈ Icc (-B) B → S x = neutralLogMetricEndpointCandidate B v x) := by
+  let S : RealComplexL2 := 𝓕⁻ (hp.toLp (fun ξ : ℝ =>
+    (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ * (logarithmicFourierWeight ξ : ℂ)))
+  let C : RealComplexL2 := ((Lp.memLp S).indicator measurableSet_Icc).toLp
+    ((Icc (-B) B).indicator (S : ℝ → ℂ))
+  have he : C = neutralLogMetricEndpointCandidateL2 B M L hB hL v hv hbound hmod :=
+    neutralLogMetricEndpointSource_spectral_compression_eq
+      B L M hB hL hM v hv hbound hmod hp
+  have hc : (C : ℝ → ℂ) =ᵐ[volume] (Icc (-B) B).indicator (S : ℝ → ℂ) :=
+    ((Lp.memLp S).indicator measurableSet_Icc).coeFn_toLp
+  filter_upwards [hc, neutralLogMetricEndpointCandidateL2_coe
+    B M L hB hL v hv hbound hmod] with x hcx hex
+  intro hx
+  have h := hcx.symm.trans
+    ((congrArg (fun u : RealComplexL2 => u x) he).trans hex)
+  simpa only [neutralLogMetricEndpointZeroExtension, indicator_of_mem hx] using h
+
 end
 end WeilDefect
