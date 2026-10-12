@@ -2,6 +2,7 @@ import WeilDefect.Arithmetic.ActualZetaNativeFormOperator
 import WeilDefect.Screening.CanonicalCertificateTransport
 import WeilDefect.Screening.PhysicalResidualTransport
 import WeilDefect.Morphology.NeutralLogMetricPhysicalSource
+import WeilDefect.Morphology.NeutralLogMetricFourierAttachment
 
 namespace WeilDefect
 
@@ -103,6 +104,28 @@ theorem neutralActualZetaLogRiesz_error_of_constructed_metric_action
   exact neutralActualZetaLogRiesz_error_of_source_and_action
     a r v p (neutralLogMetricPhysicalSource v hp) hsource
     (neutralLogMetricPhysicalSource_weak v hp)
+
+
+set_option maxHeartbeats 1000000 in
+/-- A differentiable cap representative supplies the domain and metric
+ action identity for the whole-carrier residual bound. The physical trial
+ identification and whole moment-source attachment remain explicit. -/
+theorem neutralActualZetaLogRiesz_error_of_cap_derivative
+    (a B M : ℝ) (hB : 0 ≤ B) (r V : NeutralLogHilbertCarrier a)
+    (p : RealComplexL2) (v v' : ℝ → ℂ) (hv : Measurable v)
+    (hbound : ∀ x ∈ Set.Icc (-B) B, ‖v x‖ ≤ M)
+    (hderiv : ∀ x ∈ Set.uIcc (-B) B, HasDerivAt v (v' x) x)
+    (hv' : IntervalIntegrable v' MeasureTheory.volume (-B) B)
+    (hphysical : (neutralLogPhysical V.val : ℝ → ℂ) =ᵐ[MeasureTheory.volume]
+      neutralLogMetricTrialZeroExtension B v)
+    (hsource : ∀ h : NeutralLogHilbertCarrier a,
+      inner ℂ r h = inner ℂ p (neutralLogPhysical h.val)) :
+    (let hp := neutralLogMetricSpectralProduct_memLp_of_cap_derivative
+       a B M hB V v v' hv hbound hderiv hv' hphysical
+     ‖r - V‖ ^ 2 ≤ ‖p - neutralLogMetricPhysicalSource V hp‖ ^ 2) := by
+  exact neutralActualZetaLogRiesz_error_of_constructed_metric_action a r V p
+    (neutralLogMetricSpectralProduct_memLp_of_cap_derivative
+      a B M hB V v v' hv hbound hderiv hv' hphysical) hsource
 
 end
 end WeilDefect
