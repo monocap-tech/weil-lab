@@ -631,7 +631,7 @@ theorem neutralLogMetricFourierPhase_interval_integrationByParts
   let c : ℂ := -(2 * (Real.pi : ℂ) * Complex.I * (ξ : ℂ))
   let E : ℝ → ℂ := fun x => Complex.exp (c * (x : ℂ))
   have hE (x : ℝ) : HasDerivAt E (c * E x) x := by
-    simpa only [E, Complex.ofRealCLM_apply, Complex.ofReal_one, mul_one, mul_comm] using
+    simpa only [E, Complex.ofRealCLM_apply, Complex.ofReal_one, mul_one, one_mul, mul_comm] using
       ((Complex.ofRealCLM.hasDerivAt (x := x)).const_mul c).cexp
   have hiE : IntervalIntegrable (fun x : ℝ => c * E x) volume a b :=
     (by fun_prop : Continuous (fun x : ℝ => c * E x)).intervalIntegrable a b
@@ -688,6 +688,8 @@ theorem neutralLogMetricFourierPhase_interval_norm_le
         simp only [norm_mul, hEnorm, mul_one]
   have hd : 0 < 2 * Real.pi * |ξ| :=
     mul_pos (mul_pos (by norm_num) Real.pi_pos) (abs_pos.mpr hξ)
+  change ‖∫ x in a..b, v x * E x‖ ≤
+    (‖v b‖ + ‖v a‖ + ∫ x in a..b, ‖v' x‖) / (2 * Real.pi * |ξ|)
   apply (le_div_iff₀ hd).mpr
   simpa only [mul_comm] using hb
 
@@ -700,6 +702,8 @@ theorem neutralLogMetricTrialZeroExtension_fourier_eq_interval
      (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ =
        ∫ x in (-B)..B, v x * Complex.exp (c * (x : ℂ))) := by
   let c : ℂ := -(2 * (Real.pi : ℂ) * Complex.I * (ξ : ℂ))
+  change (𝓕 (neutralLogMetricTrialZeroExtension B v)) ξ =
+    ∫ x in (-B)..B, v x * Complex.exp (c * (x : ℂ))
   rw [Real.fourier_real_eq_integral_exp_smul,
     intervalIntegral.integral_of_le (by linarith : -B ≤ B),
     ← integral_Icc_eq_integral_Ioc, ← integral_indicator measurableSet_Icc]
