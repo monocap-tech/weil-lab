@@ -713,8 +713,9 @@ theorem neutralLogMetricTrialZeroExtension_fourier_eq_interval
     dsimp only [c]
     push_cast
     ring
+  simp only [smul_eq_mul, he]
   by_cases hx : x ∈ Icc (-B) B <;>
-    simp [neutralLogMetricTrialZeroExtension, hx, smul_eq_mul, he, mul_comm]
+    simp [neutralLogMetricTrialZeroExtension, hx, mul_comm]
 
 /-- Reciprocal Fourier decay for the actual zero extension of a
  differentiable cap trial, retaining its endpoint jumps. -/
@@ -754,12 +755,13 @@ theorem neutralLogMetricTrialZeroExtension_weighted_memLp_of_derivative
   intro ξ hξ
   have hn : ξ ≠ 0 := by
     intro hz
-    simp [hz] at hξ
+    norm_num [hz] at hξ
   have h := neutralLogMetricTrialZeroExtension_fourier_norm_le
     B ξ hB hn v v' hderiv hv'
   simpa only [C, div_mul_eq_div_div] using h
 
 
+set_option maxHeartbeats 1000000 in
 /-- Endpoint compression for differentiable cap trials with an integrable
  derivative; the full spectral-domain witness is derived and endpoint jumps
  are allowed. The whole-line source is compressed only in the conclusion. -/
