@@ -1,0 +1,193 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "actual_canonical_diagonal_metric_lower": "32125/230953",
+  "actual_canonical_diagonal_metric_upper": "2",
+  "actual_canonical_spectral_equivalence": "a D <= L <= 2 D",
+  "aperture": "11/10",
+  "arithmetic": "exact polynomial-log controls, positive infinite row sums, rational all-range action tails",
+  "auxiliary_response_norm_below_one_certified": false,
+  "canonical_Riesz_iteration_performed": false,
+  "conditional_solver_certificates": [
+    {
+      "condition_upper": "2",
+      "conditional_budgets": [
+        {
+          "actual_regular_or_endpoint_iteration_contract_executed": false,
+          "initial_preconditioned_source_error_energy_norm_per_initial_error_norm": "1293633000000000000000000000/5488421414213744574894473769786589",
+          "inverse_degree": 8,
+          "minimal_degree_for_one_third_residual_allocation": true,
+          "normalized_local_action_fault_energy_norm_per_initial_error_norm": "20000000000000000000000/3818376618407356631764559555367",
+          "recurrence_amplification_upper": "45",
+          "relative_energy_error_norm_target": "1/1000000",
+          "residual_degree": 9,
+          "uniform_residual_upper": "12883613/50000000000000"
+        },
+        {
+          "actual_regular_or_endpoint_iteration_contract_executed": false,
+          "initial_preconditioned_source_error_energy_norm_per_initial_error_norm": "43068729424025000000000000000/182725143796935355339059330796696913337541",
+          "inverse_degree": 16,
+          "minimal_degree_for_one_third_residual_allocation": true,
+          "normalized_local_action_fault_energy_norm_per_initial_error_norm": "100000000000000000/64912402512925062739997512441239",
+          "recurrence_amplification_upper": "153",
+          "relative_energy_error_norm_target": "1/1000000000000",
+          "residual_degree": 17,
+          "uniform_residual_upper": "19348919/100000000000000000000"
+        },
+        {
+          "actual_regular_or_endpoint_iteration_contract_executed": false,
+          "initial_preconditioned_source_error_energy_norm_per_initial_error_norm": "3055230507166076150604033000/12962245258230883361041541414216329691789165911640941",
+          "inverse_degree": 32,
+          "minimal_degree_for_one_third_residual_allocation": true,
+          "normalized_local_action_fault_energy_norm_per_initial_error_norm": "100000/238012142547391896713324212284543",
+          "recurrence_amplification_upper": "561",
+          "relative_energy_error_norm_target": "1/1000000000000000000000000",
+          "residual_degree": 33,
+          "uniform_residual_upper": "2727563/25000000000000000000000000000000"
+        }
+      ],
+      "operator": "D^(-1) P in actual D energy",
+      "spectral_lower": "1",
+      "spectral_upper": "2"
+    },
+    {
+      "condition_upper": "461906/32125",
+      "conditional_budgets": [
+        {
+          "actual_regular_or_endpoint_iteration_contract_executed": false,
+          "initial_preconditioned_source_error_energy_norm_per_initial_error_norm": "19699571458166680585658070649147797530608881759422909485039075457858663936752937664847155262101953986263668347159535700521429540701625318012954730227794685661276360974657965625000000000000000000000/600860478572062226809660714586403017220374841995617104182274288719173708823654926644002607968352844868546082239075602253076138582256290526876011348843588365480678398556319224700774861935410925370013567549",
+          "inverse_degree": 28,
+          "minimal_degree_for_one_third_residual_allocation": true,
+          "normalized_local_action_fault_energy_norm_per_initial_error_norm": "20000000000000000000000/36910973977937780773724075701881",
+          "recurrence_amplification_upper": "435",
+          "relative_energy_error_norm_target": "1/1000000",
+          "residual_degree": 29,
+          "uniform_residual_upper": "31432163/100000000000000"
+        },
+        {
+          "actual_regular_or_endpoint_iteration_contract_executed": false,
+          "initial_preconditioned_source_error_energy_norm_per_initial_error_norm": "17156609855598758730036466655191310634410424753228293597971571929957088593122966842039260834273652199103423365105288798214205691758197401743634451479570019414812303208056253235149910568834491140087851782435406434050409263201774798648339564141458264618479177759704441275116853190576804873359638394554174099195504572490984028125000000000000000/523296945324302173611597458050055994645809380247159172690148832798837127798955560256000135823460274820476368336897768907862344437193840842131524075700606858209429830176018317097855616681503453198661880222294755081920998581737902399436919076241478004363394934188088109162426215995372153440226388862642894548425601438409262713182719857337707691991464502889",
+          "inverse_degree": 54,
+          "minimal_degree_for_one_third_residual_allocation": true,
+          "normalized_local_action_fault_energy_norm_per_initial_error_norm": "5000000000000000/32668333290818495627319009529251",
+          "recurrence_amplification_upper": "1540",
+          "relative_energy_error_norm_target": "1/1000000000000",
+          "residual_degree": 55,
+          "uniform_residual_upper": "24977271/100000000000000000000"
+        },
+        {
+          "actual_regular_or_endpoint_iteration_contract_executed": false,
+          "initial_preconditioned_source_error_energy_norm_per_initial_error_norm": "7898095421122389543168464793253845276061415701297579123247391624922453250869907884772754440985324309299842357070103149596022260041537073124164770284595986135510565842634291432226932903318857460657550496238295221009295851422134217384027504758034752458424905511964141439739781643024416016474511180037535043451595712068965651661243527648486147112468876631758967722337949097181397435544313914232459807781336677082321164351926455434088226056974976687470326015278365702627122997604837930826130215641302999764364385310474665587454634096930907706793660270682249475056587453340910889483570838477377876302340575430205188135059443343856250000/240901276099335206714688095119581184967685216050707902526397691084024232413047960638342717071796132074282995055280744225550607712584202051023000456494534861088899882276418366048229524785554225619279318257924794180989636499276784560074285362532195403059500392083875378684824285971974579974141318288105988652457755280960557609996189535303457476870840882736614744446710185251071293702208190991014982188542725799048331051297168085658259450481424801424151908030079190936240474027694192151692982840760292150702911972665477775609131189224815392423214656024936175186530524984550929746422276163922176973384411727843619818258837232835851782018963854617715233420785159",
+          "inverse_degree": 105,
+          "minimal_degree_for_one_third_residual_allocation": true,
+          "normalized_local_action_fault_energy_norm_per_initial_error_norm": "100000/2406001533665346606526313026498473",
+          "recurrence_amplification_upper": "5671",
+          "relative_energy_error_norm_target": "1/1000000000000000000000000",
+          "residual_degree": 106,
+          "uniform_residual_upper": "6767609/25000000000000000000000000000000"
+        }
+      ],
+      "operator": "D^(-1) L in actual D energy; canonical energy error acceptance",
+      "spectral_lower": "32125/230953",
+      "spectral_upper": "2"
+    }
+  ],
+  "diagonal_reference_floor_lower": "190079854444239839789/50000000000000000000",
+  "diagonal_reference_inverse_norm_squared_for_physical_to_D_source": "50000000000000000000/190079854444239839789",
+  "diagonal_source_action_pair_certified": true,
+  "endpoint_form_bound": "0 <= h <= J + 2 log(2) I <= D",
+  "endpoint_matrix_and_weighted_row_controls": 270,
+  "finite_compression_is_not_coverage_proof": true,
+  "full_auxiliary_range_diagonal_action_coefficient_realization_completed": false,
+  "full_endpoint_action_iteration_executed": false,
+  "input_sha256": [
+    "ff095a83fd375a5dcb5891209813fe9ab8029a3bdfa950d27d5c04e0cbe82601",
+    "b24de6bc76c43c23814b0798cab59ebfca92a1c49b3d62da782507358879a110",
+    "1bb493e5a8ff41b3b65635398fb8f6b7764c1f4a0567d0dad8b36a3011658425",
+    "c403a718afc310b49ac7a05b7150544b2da2d60480f0d22b2177e2eead9a0998"
+  ],
+  "milestone": "RC121",
+  "new_positive_native_directions_certified": 0,
+  "original_Weil_or_augmented_actions_performed": false,
+  "original_count_below_one_hundredth_lower": 10,
+  "original_count_below_one_hundredth_upper": 639,
+  "parity_diagonal_source_and_endpoint_action_certificates": [
+    {
+      "diagonal_source_action_is_canonical_Riesz_image_claimed": false,
+      "exact_rational_model_diagonal_source_action_D_error_squared_upper": "4953752767171417293750703031521667645609654986187111277443927214567382005510217/50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "finite_cutoff_endpoint_action_contracts": [
+        {
+          "all_input_linear_combinations_covered": true,
+          "finite_endpoint_action_executed": false,
+          "input_coefficient_metric": "actual D energy",
+          "input_polynomial_degree": 494,
+          "omitted_endpoint_preconditioned_action_D_energy_squared_factor_upper": "3276240187/250000000000",
+          "output_degree_cutoff": 989
+        },
+        {
+          "all_input_linear_combinations_covered": true,
+          "finite_endpoint_action_executed": false,
+          "input_coefficient_metric": "actual D energy",
+          "input_polynomial_degree": 494,
+          "omitted_endpoint_preconditioned_action_D_energy_squared_factor_upper": "1460036861/1000000000000",
+          "output_degree_cutoff": 1977
+        },
+        {
+          "all_input_linear_combinations_covered": true,
+          "finite_endpoint_action_executed": false,
+          "input_coefficient_metric": "actual D energy",
+          "input_polynomial_degree": 494,
+          "omitted_endpoint_preconditioned_action_D_energy_squared_factor_upper": "11692907/200000000000",
+          "output_degree_cutoff": 7905
+        }
+      ],
+      "global_exact_kernel_to_rational_model_diagonal_source_map_D_error_squared_upper": "1078261637621/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "input_source_degree": 494,
+      "parity": "even",
+      "physical_kernel_Hilbert_Schmidt_error_used": true,
+      "source_trial_reused_from_RC120": true
+    },
+    {
+      "diagonal_source_action_is_canonical_Riesz_image_claimed": false,
+      "exact_rational_model_diagonal_source_action_D_error_squared_upper": "4008586819019104230905339029257854885602814694070340922173381406517107942898823/100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "finite_cutoff_endpoint_action_contracts": [
+        {
+          "all_input_linear_combinations_covered": true,
+          "finite_endpoint_action_executed": false,
+          "input_coefficient_metric": "actual D energy",
+          "input_polynomial_degree": 781,
+          "omitted_endpoint_preconditioned_action_D_energy_squared_factor_upper": "12524461309/1000000000000",
+          "output_degree_cutoff": 1563
+        },
+        {
+          "all_input_linear_combinations_covered": true,
+          "finite_endpoint_action_executed": false,
+          "input_coefficient_metric": "actual D energy",
+          "input_polynomial_degree": 781,
+          "omitted_endpoint_preconditioned_action_D_energy_squared_factor_upper": "1393982581/1000000000000",
+          "output_degree_cutoff": 3125
+        },
+        {
+          "all_input_linear_combinations_covered": true,
+          "finite_endpoint_action_executed": false,
+          "input_coefficient_metric": "actual D energy",
+          "input_polynomial_degree": 781,
+          "omitted_endpoint_preconditioned_action_D_energy_squared_factor_upper": "6974673/125000000000",
+          "output_degree_cutoff": 12497
+        }
+      ],
+      "global_exact_kernel_to_rational_model_diagonal_source_map_D_error_squared_upper": "110839708263/100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "input_source_degree": 781,
+      "parity": "odd",
+      "physical_kernel_Hilbert_Schmidt_error_used": true,
+      "source_trial_reused_from_RC120": true
+    }
+  ],
+  "positive_diagonal_reference": "D P_n = (H_n+c_R+log(2)+789/125) P_n",
+  "reference_spectral_equivalence": "D <= P <= 2 D",
+  "regular_multiplier_action_evaluated": false,
+  "status": "PASS: global endpoint Schur domination and actual canonical diagonal metric equivalence",
+  "whole_aperture_positivity_extended": false,
+  "whole_supported_canonical_form_domain_covered": true
+}
