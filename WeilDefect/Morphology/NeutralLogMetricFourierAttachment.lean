@@ -535,7 +535,8 @@ theorem neutralLogMetricWeighted_memLp_of_reciprocalDecay
     filter_upwards [ae_restrict_mem measurableSet_Icc] with ξ hx
     have habs : |ξ| ≤ 1 := abs_le.mpr hx
     have hp := Real.rpow_le_rpow (by positivity : 0 ≤ Real.exp 1 + |ξ|)
-      (add_le_add_left habs (Real.exp 1)) (by norm_num : 0 ≤ (1 / 4 : ℝ))
+      (by linarith : Real.exp 1 + |ξ| ≤ Real.exp 1 + 1)
+      (by norm_num : 0 ≤ (1 / 4 : ℝ))
     have hb : ‖F ξ‖ ≤ k := by
       rw [hnorm]
       exact mul_le_mul hp (hcenter ξ hx) (norm_nonneg _)
@@ -548,9 +549,11 @@ theorem neutralLogMetricWeighted_memLp_of_reciprocalDecay
     filter_upwards [ae_restrict_mem (measurableSet_Iio.union measurableSet_Ioi)] with ξ hx
     have ha : 1 < |ξ| := by
       rcases hx with hx | hx
-      · rw [abs_of_neg (by linarith : ξ < 0)]
+      · change ξ < -1 at hx
+        rw [abs_of_neg (by linarith : ξ < 0)]
         linarith
-      · rw [abs_of_pos (by linarith : 0 < ξ)]
+      · change 1 < ξ at hx
+        rw [abs_of_pos (by linarith : 0 < ξ)]
         exact hx
     have hb : ‖F ξ‖ ≤ C * ((Real.exp 1 + |ξ|) ^ (1 / 4 : ℝ) / |ξ|) := by
       rw [hnorm]
@@ -625,7 +628,7 @@ theorem neutralLogMetricFourierPhase_interval_integrationByParts
   let c : ℂ := -(2 * (Real.pi : ℂ) * Complex.I * (ξ : ℂ))
   let E : ℝ → ℂ := fun x => Complex.exp (c * (x : ℂ))
   have hE (x : ℝ) : HasDerivAt E (c * E x) x := by
-    simpa only [E, mul_one, mul_comm] using
+    simpa only [E, Complex.ofRealCLM_apply, Complex.ofReal_one, mul_one, mul_comm] using
       ((Complex.ofRealCLM.hasDerivAt (x := x)).const_mul c).cexp
   have hiE : IntervalIntegrable (fun x : ℝ => c * E x) volume a b :=
     (by fun_prop : Continuous (fun x : ℝ => c * E x)).intervalIntegrable a b
