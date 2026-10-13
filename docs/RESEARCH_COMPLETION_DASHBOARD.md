@@ -1,6 +1,6 @@
-# Certified completion dashboard — RC196
+# Certified completion dashboard — RC197
 
-Current research checkpoint: RC196. Latest evaluated inverse checkpoint: RC196. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
+Current research checkpoint: RC197. Latest evaluated inverse checkpoint: RC196. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
 
 Progress has two independent requirements: sufficient certified precision and sufficient mathematical coverage. Completion means the specified theorem contract passes on its required space. It does not require zero error.
 
@@ -20,6 +20,7 @@ Progress has two independent requirements: sufficient certified precision and su
 | RC196 canonical inverse on unchanged five sources | 0.307029 G_lower | 0.5 G_lower | 0.614058 | >=0.192971 G_lower | Closed |
 | RC183 regular component D^-1 Rw14 | <0.000753268 relative D norm | 0.001 relative D norm | <0.753268 | >0.000246732 relative norm budget | Local component contract closed |
 | Complete canonical action on psi0, RC188 | <0.022225398 relative D norm | Unselected | Undefined | Undefined | Improved full carrier attached |
+| Expanded canonical inverse including v10 | Not evaluated | Half-Gram threshold for the expanded family | Undefined | Undefined | Open |
 | Stage I original augmented Weil floor | Not evaluated | A proved positive floor is required | Undefined | Undefined | Open |
 | Stage I original auxiliary response | Not evaluated | Strictly below one in the actual auxiliary metric | Undefined | Undefined | Open |
 
@@ -45,6 +46,8 @@ The psi regular threshold is a local construction budget selected in RC181. It i
 | RC195 refined-action inverse width | Same P0/P2/f0/psi0/w14 | 0.571911 G_lower | All refined actions attached; signed q185 tail included; gate remains open |
 | RC196 adapted-error inverse width | Same P0/P2/f0/psi0/w14 | 0.307029 G_lower | Action carriers and nominal residuals unchanged; sharper triangle weights close the gate |
 | RC196 adapted action-error Gram | Same five-source mixtures through the selected enriched trial | 0.000493 G_lower | Squared actual action-error envelope; all full column errors paid |
+| RC197 complete canonical v10 action error | Unchanged native v10 | <0.000434962504 D norm | First full carrier; input512/output1536; all source/action tails paid |
+| RC197 relative canonical v10 action error | Individual native v10 | <0.013875852 | Relative norm upper; no action acceptance threshold selected |
 | RC186 nominal residual relative Gram upper | Same five-source family | 0.029903 G_lower | Down from 0.162203 for the reproduced RC184 trial; squared represented-residual factor |
 | RC186 actual residual relative Gram upper | Same five-source family | 0.138955 G_lower | Down from 0.340031 in the independently paid baseline; squared actual-residual factor |
 | RC184 inverse-vector norm error upper | P0/P2/f0/psi0/w14 | <1.442941 | Not a contraction certificate |
@@ -73,7 +76,7 @@ These action estimates bound (M S-V) on the named source maps. They are not esti
 | psi0 | RC154 finite/analytic endpoint generator | RC188 extended finite/analytic carrier materialized | RC182, as part of the named four-source family |
 | f0 | Certified | RC193 refined regular carrier; retained RC176 corrections | RC180 (three-source) and RC182 (four-source) |
 | w14 | RC190 extended centered endpoint trial | RC190 endpoint/regular carrier; inherited exact native tail and correction | RC196 same-family canonical half-Gram gate closed |
-| v10 | Certified in reference interface | Explicit full canonical carrier open | Open |
+| v10 | RC131 finite/analytic source, full prefix reproduced | RC197 complete canonical carrier, centered native input tail and exact negative-r tail | Open; expanded inverse not evaluated |
 | z_b6 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | t10 | Certified in reference interface | Explicit full canonical carrier open | Open |
 
@@ -122,4 +125,6 @@ RC195 rebuilds complete mixed rows through65534 with RC192–194. Signed q185 ta
 
 RC196 retains RC195's source/trial/action carriers and nominal residual matrices. Response-adapted positive triangle weights reduce the same-family inverse width from0.571911 to0.307029, with ratio0.614058 and exact guaranteed margin0.192971 G_lower. The five-source canonical half-Gram contract is closed. Stage I remains open, with ratio undefined.
 
-Next: extend full canonical action coverage to native v10, then evaluate the expanded inverse family with all mixed couplings. Native z_b6 and t10 remain subsequent coverage obligations. Native v10, z_b6, and t10 coverage remains open.
+RC197 completes the first canonical action carrier for unchanged native v10. The entire finite source center/radius digest through8190 is reproduced, and both native analytic input and infinite action output tails are paid. Its absolute D error is below0.000434962504 and relative norm error below0.013875852. This expands action coverage; it does not establish a new inverse gate.
+
+Next: attach v10 to full correlated mixed rows and evaluate the expanded inverse family. Native z_b6 and t10 complete canonical action coverage remain subsequent obligations. Native v10, z_b6, and t10 coverage remains open.
