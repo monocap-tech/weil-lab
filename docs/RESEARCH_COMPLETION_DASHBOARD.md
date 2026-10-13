@@ -1,6 +1,6 @@
-# Certified completion dashboard — RC181
+# Certified completion dashboard — RC182
 
-Current research checkpoint: RC181. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged.
+Current research checkpoint: RC182. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
 
 Progress has two independent requirements: sufficient certified precision and sufficient mathematical coverage. Completion means the specified theorem contract passes on its required space. It does not require zero error.
 
@@ -10,6 +10,7 @@ Progress has two independent requirements: sufficient certified precision and su
 |---|---:|---:|---:|---:|---|
 | RC178 canonical inverse on P0/P2/f0 | 0.997665 G_lower | 0.5 G_lower | 1.995330 | no positive guarantee | Historical enclosure failed |
 | RC180 canonical inverse on the same P0/P2/f0 sources | 0.300941 G_lower | 0.5 G_lower | 0.601882 | >=0.199059 G_lower | Closed |
+| RC182 canonical inverse on P0/P2/f0/psi0 | 0.450753 G_lower | 0.5 G_lower | 0.901506 | >=0.049247 G_lower | Closed |
 | RC181 regular component D^-1 R psi0 | 0.008733378 relative D norm | 0.01 relative D norm | <0.873338 | >0.001266622 relative norm budget | Local component contract closed |
 | Complete canonical action on psi0 | 0.065432142 relative D norm | Unselected | Undefined | Undefined | Source-form bound attached |
 | Stage I original augmented Weil floor | Not evaluated | A proved positive floor is required | Undefined | Undefined | Open |
@@ -27,6 +28,8 @@ The psi regular threshold is a local construction budget selected in RC181. It i
 | RC177 corresponding action norm error | P0/P2/f0 | <0.001732051 | Square root of the squared factor |
 | RC180 inverse width | P0/P2/f0 | 0.300941 G_lower | Actual canonical inverse response enclosure |
 | RC180 inverse warm-start norm error | P0/P2/f0 | <0.223665 | Relative to true image canonical energy |
+| RC182 inverse width | P0/P2/f0/psi0 | 0.450753 G_lower | New four-source actual canonical response |
+| RC182 inverse warm-start norm error | P0/P2/f0/psi0 | <0.547610 | No warm-start threshold selected |
 | RC181 full action-error Gram | P0/P2/f0/psi0 | 0.004333 G_lower | Squared correlated source-map error factor |
 | RC181 corresponding full action norm error | P0/P2/f0/psi0 | <0.065825527 | Four-source envelope; no required threshold selected |
 
@@ -38,9 +41,9 @@ These action estimates bound (M S-V) on the named source maps. They are not esti
 
 | Native direction | Endpoint/reference layer | Complete canonical action | Actual canonical inverse |
 |---|---|---|---|
-| P0 | Certified | RC171 full carrier | RC180, as part of the named three-source family |
-| psi0 | RC154 finite/analytic endpoint generator | RC181 source form attached; coefficients not rematerialized here | Open |
-| f0 | Certified | RC176 full carrier | RC180, as part of the named three-source family |
+| P0 | Certified | RC171 full carrier | RC180 (three-source) and RC182 (four-source) |
+| psi0 | RC154 finite/analytic endpoint generator | RC182 finite/analytic carrier materialized | RC182, as part of the named four-source family |
+| f0 | Certified | RC176 full carrier | RC180 (three-source) and RC182 (four-source) |
 | w14 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | v10 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | z_b6 | Certified in reference interface | Explicit full canonical carrier open | Open |
@@ -61,4 +64,6 @@ The evaluated inverse/source families here are in the even sector. This dashboar
 
 A finite sequence of shrinking bounds records improving certified precision; convergence all the way to zero requires its own proof. No aggregate completion percentage or turn-count estimate is assigned.
 
-Next: rematerialize the inherited Cpsi carrier for mixed four-source inverse calculations as needed, then certify the actual P0/P2/f0/psi0 inverse response. Continue updating this dashboard with the exact acceptance margin and coverage of each result.
+The RC180 three-source width and RC182 four-source width belong to different response families and are not a decreasing precision history. Both named contracts pass.
+
+Next: extend actual canonical action and inverse coverage toward w14, v10, z_b6, and t10. Continue recording each family’s acceptance margin and coverage separately.
