@@ -1,6 +1,6 @@
-# Certified completion dashboard — RC197
+# Certified completion dashboard — RC198
 
-Current research checkpoint: RC197. Latest evaluated inverse checkpoint: RC196. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
+Current research checkpoint: RC198. Latest evaluated inverse checkpoint: RC196. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
 
 Progress has two independent requirements: sufficient certified precision and sufficient mathematical coverage. Completion means the specified theorem contract passes on its required space. It does not require zero error.
 
@@ -48,6 +48,7 @@ The psi regular threshold is a local construction budget selected in RC181. It i
 | RC196 adapted action-error Gram | Same five-source mixtures through the selected enriched trial | 0.000493 G_lower | Squared actual action-error envelope; all full column errors paid |
 | RC197 complete canonical v10 action error | Unchanged native v10 | <0.000434962504 D norm | First full carrier; input512/output1536; all source/action tails paid |
 | RC197 relative canonical v10 action error | Individual native v10 | <0.013875852 | Relative norm upper; no action acceptance threshold selected |
+| RC198 native v10 mixed rows | Expanded six-response/seven-trial family | Complete entry enclosures | Source/canonical/action pairings, full tails and errors paid; source independence certified |
 | RC186 nominal residual relative Gram upper | Same five-source family | 0.029903 G_lower | Down from 0.162203 for the reproduced RC184 trial; squared represented-residual factor |
 | RC186 actual residual relative Gram upper | Same five-source family | 0.138955 G_lower | Down from 0.340031 in the independently paid baseline; squared actual-residual factor |
 | RC184 inverse-vector norm error upper | P0/P2/f0/psi0/w14 | <1.442941 | Not a contraction certificate |
@@ -76,7 +77,7 @@ These action estimates bound (M S-V) on the named source maps. They are not esti
 | psi0 | RC154 finite/analytic endpoint generator | RC188 extended finite/analytic carrier materialized | RC182, as part of the named four-source family |
 | f0 | Certified | RC193 refined regular carrier; retained RC176 corrections | RC180 (three-source) and RC182 (four-source) |
 | w14 | RC190 extended centered endpoint trial | RC190 endpoint/regular carrier; inherited exact native tail and correction | RC196 same-family canonical half-Gram gate closed |
-| v10 | RC131 finite/analytic source, full prefix reproduced | RC197 complete canonical carrier, centered native input tail and exact negative-r tail | Open; expanded inverse not evaluated |
+| v10 | RC131 finite/analytic source, full prefix reproduced | RC197 complete carrier; RC198 full mixed rows | Open; expanded inverse not evaluated |
 | z_b6 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | t10 | Certified in reference interface | Explicit full canonical carrier open | Open |
 
@@ -127,4 +128,6 @@ RC196 retains RC195's source/trial/action carriers and nominal residual matrices
 
 RC197 completes the first canonical action carrier for unchanged native v10. The entire finite source center/radius digest through8190 is reproduced, and both native analytic input and infinite action output tails are paid. Its absolute D error is below0.000434962504 and relative norm error below0.013875852. This expands action coverage; it does not establish a new inverse gate.
 
-Next: attach v10 to full correlated mixed rows and evaluate the expanded inverse family. Native z_b6 and t10 complete canonical action coverage remain subsequent obligations. Native v10, z_b6, and t10 coverage remains open.
+RC198 certifies complete native v10 mixed source, canonical and action-energy rows through65534 with infinite tails paid. All seven raw trial vectors and the six response sources have a positive definite certified source-Gram lower. No expanded inverse response is evaluated; the accepted five-source result remains intact.
+
+Next: select and certify the six-source inverse using the expanded paid mixed data and the required variational residual calculation. Native z_b6 and t10 complete canonical action coverage remain subsequent obligations. Native v10, z_b6, and t10 coverage remains open.
