@@ -105,4 +105,6 @@ RC190 extends the w14 endpoint input/output to32766/65534 and the regular input/
 
 RC191 rebuilds complete mixed rows and residuals with both refined action carriers, including the new w14 endpoint-output moments. The same-family inverse width decreases from1.654087 to1.254303 and the acceptance ratio from3.308174 to2.508606. The gate still fails. For RC184's recorded witness direction, f0 and P2 account for about74% of the direct triangle error payment; this is bound accounting on one vector, not a share of true error or of the full inverse width.
 
-Next: tighten the inherited f0/P2 regular-action payments and evaluate analytic retention for q185's endpoint output tail, then rebuild the same five-source inverse. Native v10, z_b6, and t10 coverage remains open.
+RC192 replaces the regular carriers for the unchanged exact polynomial sources P0 and P2 using the analytic kernel/Beta/log-moment construction. Complete canonical action error uppers decrease from 0.00017934886534629448 to 0.000000009677069110802506 for P0 and from 0.0005125425305773098 to 0.000000009677223111160453 for P2. All regular output tails and inherited endpoint corrections are paid. No new inverse width is evaluated; RC191's inverse gate remains open.
+
+Next: tighten the inherited f0 regular-action payment and evaluate analytic retention for q185's endpoint output tail, then rebuild the same five-source inverse with all refined carriers. Native v10, z_b6, and t10 coverage remains open.
