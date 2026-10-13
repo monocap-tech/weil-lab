@@ -14,7 +14,7 @@
   "previous_uniform_squared_error_factor": "313/125000",
   "selected_uniform_squared_error_factor": "473/200000",
   "six_source_inverse_width_upper_unchanged": "743003/1000000",
-  "source_D_Gram_lower_floor_scale": "100000000000000000000",
+  "source_D_Gram_lower_floor_scale": 100000000000000000000,
   "source_family": [
     "P0",
     "P2",
