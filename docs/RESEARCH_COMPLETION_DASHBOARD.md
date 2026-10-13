@@ -1,6 +1,6 @@
-# Certified completion dashboard — RC182
+# Certified completion dashboard — RC183
 
-Current research checkpoint: RC182. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
+Current research checkpoint: RC183. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
 
 Progress has two independent requirements: sufficient certified precision and sufficient mathematical coverage. Completion means the specified theorem contract passes on its required space. It does not require zero error.
 
@@ -12,6 +12,7 @@ Progress has two independent requirements: sufficient certified precision and su
 | RC180 canonical inverse on the same P0/P2/f0 sources | 0.300941 G_lower | 0.5 G_lower | 0.601882 | >=0.199059 G_lower | Closed |
 | RC182 canonical inverse on P0/P2/f0/psi0 | 0.450753 G_lower | 0.5 G_lower | 0.901506 | >=0.049247 G_lower | Closed |
 | RC181 regular component D^-1 R psi0 | 0.008733378 relative D norm | 0.01 relative D norm | <0.873338 | >0.001266622 relative norm budget | Local component contract closed |
+| RC183 regular component D^-1 Rw14 | <0.000753268 relative D norm | 0.001 relative D norm | <0.753268 | >0.000246732 relative norm budget | Local component contract closed |
 | Complete canonical action on psi0 | 0.065432142 relative D norm | Unselected | Undefined | Undefined | Source-form bound attached |
 | Stage I original augmented Weil floor | Not evaluated | A proved positive floor is required | Undefined | Undefined | Open |
 | Stage I original auxiliary response | Not evaluated | Strictly below one in the actual auxiliary metric | Undefined | Undefined | Open |
@@ -30,6 +31,7 @@ The psi regular threshold is a local construction budget selected in RC181. It i
 | RC180 inverse warm-start norm error | P0/P2/f0 | <0.223665 | Relative to true image canonical energy |
 | RC182 inverse width | P0/P2/f0/psi0 | 0.450753 G_lower | New four-source actual canonical response |
 | RC182 inverse warm-start norm error | P0/P2/f0/psi0 | <0.547610 | No warm-start threshold selected |
+| RC183 complete canonical action error | Individual native w14 | <0.001619393 relative D norm | No full-action threshold selected |
 | RC181 full action-error Gram | P0/P2/f0/psi0 | 0.004333 G_lower | Squared correlated source-map error factor |
 | RC181 corresponding full action norm error | P0/P2/f0/psi0 | <0.065825527 | Four-source envelope; no required threshold selected |
 
@@ -44,7 +46,7 @@ These action estimates bound (M S-V) on the named source maps. They are not esti
 | P0 | Certified | RC171 full carrier | RC180 (three-source) and RC182 (four-source) |
 | psi0 | RC154 finite/analytic endpoint generator | RC182 finite/analytic carrier materialized | RC182, as part of the named four-source family |
 | f0 | Certified | RC176 full carrier | RC180 (three-source) and RC182 (four-source) |
-| w14 | Certified in reference interface | Explicit full canonical carrier open | Open |
+| w14 | RC183 centered endpoint trial | RC183 full finite/analytic carrier | Open |
 | v10 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | z_b6 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | t10 | Certified in reference interface | Explicit full canonical carrier open | Open |
@@ -66,4 +68,6 @@ A finite sequence of shrinking bounds records improving certified precision; con
 
 The RC180 three-source width and RC182 four-source width belong to different response families and are not a decreasing precision history. Both named contracts pass.
 
-Next: extend actual canonical action and inverse coverage toward w14, v10, z_b6, and t10. Continue recording each family’s acceptance margin and coverage separately.
+RC183 also records a same-source endpoint precision improvement: the Cw14 error upper decreases from 0.000097733461 to 0.000067061959. The source, endpoint operator, and D norm are unchanged.
+
+Next: certify the mixed rows and inverse response after adding native w14. The remaining native v10, z_b6, and t10 action/inverse coverage follows. Continue recording acceptance margin and coverage separately.
