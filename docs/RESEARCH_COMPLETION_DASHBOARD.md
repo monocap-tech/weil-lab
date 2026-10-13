@@ -1,6 +1,6 @@
-# Certified completion dashboard — RC191
+# Certified completion dashboard — RC193
 
-Current research checkpoint: RC191. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
+Current research checkpoint: RC193. Latest evaluated inverse checkpoint: RC191. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
 
 Progress has two independent requirements: sufficient certified precision and sufficient mathematical coverage. Completion means the specified theorem contract passes on its required space. It does not require zero error.
 
@@ -44,6 +44,7 @@ The psi regular threshold is a local construction budget selected in RC181. It i
 | RC186 actual residual relative Gram upper | Same five-source family | 0.138955 G_lower | Down from 0.340031 in the independently paid baseline; squared actual-residual factor |
 | RC184 inverse-vector norm error upper | P0/P2/f0/psi0/w14 | <1.442941 | Not a contraction certificate |
 | RC185 finite residual approximation | RC184 selected actual focus residual | <0.333875 relative D norm | Single-vector input approximation; no threshold selected |
+| RC193 complete canonical f0 action error | Unchanged native f0 | <0.000009048438 D norm | Down from 0.000099881089; input512/output1536, all tails paid; inverse not rebuilt |
 | RC185 complete canonical action error | Exact finite q185 | <0.000008962008 D norm | Full output tails paid |
 | RC183 complete canonical action error | Individual native w14 | <0.001619393 relative D norm | No full-action threshold selected |
 | RC190 complete Cw14 endpoint error | Unchanged native w14 | <0.000003543481 D norm | Down from 0.000067061959; complete centered carrier |
@@ -62,9 +63,9 @@ These action estimates bound (M S-V) on the named source maps. They are not esti
 
 | Native direction | Endpoint/reference layer | Complete canonical action | Actual canonical inverse |
 |---|---|---|---|
-| P0 | Certified | RC171 full carrier | RC180 (three-source) and RC182 (four-source) |
+| P0 | Certified | RC192 refined regular carrier; retained exact endpoint tail | RC180 (three-source) and RC182 (four-source) |
 | psi0 | RC154 finite/analytic endpoint generator | RC188 extended finite/analytic carrier materialized | RC182, as part of the named four-source family |
-| f0 | Certified | RC176 full carrier | RC180 (three-source) and RC182 (four-source) |
+| f0 | Certified | RC193 refined regular carrier; retained RC176 corrections | RC180 (three-source) and RC182 (four-source) |
 | w14 | RC190 extended centered endpoint trial | RC190 endpoint/regular carrier; inherited exact native tail and correction | RC191 narrower enclosure with new action certified; acceptance open |
 | v10 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | z_b6 | Certified in reference interface | Explicit full canonical carrier open | Open |
@@ -107,4 +108,6 @@ RC191 rebuilds complete mixed rows and residuals with both refined action carrie
 
 RC192 replaces the regular carriers for the unchanged exact polynomial sources P0 and P2 using the analytic kernel/Beta/log-moment construction. Complete canonical action error uppers decrease from 0.00017934886534629448 to 0.000000009677069110802506 for P0 and from 0.0005125425305773098 to 0.000000009677223111160453 for P2. All regular output tails and inherited endpoint corrections are paid. No new inverse width is evaluated; RC191's inverse gate remains open.
 
-Next: tighten the inherited f0 regular-action payment and evaluate analytic retention for q185's endpoint output tail, then rebuild the same five-source inverse with all refined carriers. Native v10, z_b6, and t10 coverage remains open.
+RC193 extends the unchanged finite native f0 regular input/output to512/1536. Its complete canonical action error decreases from0.00009988108808718048 to0.000009048437853031544, more than11.038 times tighter. Every omitted input degree514..988 and the infinite regular output tail are paid. This is action precision only; the latest inverse ratio remains2.508606.
+
+Next: evaluate analytic retention for q185's endpoint output tail, then rebuild the same five-source inverse with RC192 and RC193 and all refined carriers. Native v10, z_b6, and t10 coverage remains open.
