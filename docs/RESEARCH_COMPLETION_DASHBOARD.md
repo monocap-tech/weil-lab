@@ -1,6 +1,6 @@
-# Certified completion dashboard — RC189
+# Certified completion dashboard — RC190
 
-Current research checkpoint: RC189. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
+Current research checkpoint: RC190. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
 
 Progress has two independent requirements: sufficient certified precision and sufficient mathematical coverage. Completion means the specified theorem contract passes on its required space. It does not require zero error.
 
@@ -44,6 +44,9 @@ The psi regular threshold is a local construction budget selected in RC181. It i
 | RC185 finite residual approximation | RC184 selected actual focus residual | <0.333875 relative D norm | Single-vector input approximation; no threshold selected |
 | RC185 complete canonical action error | Exact finite q185 | <0.000008962008 D norm | Full output tails paid |
 | RC183 complete canonical action error | Individual native w14 | <0.001619393 relative D norm | No full-action threshold selected |
+| RC190 complete Cw14 endpoint error | Unchanged native w14 | <0.000003543481 D norm | Down from 0.000067061959; complete centered carrier |
+| RC190 complete D^-1 Rw14 regular error | Unchanged native w14 | <0.000013407284 D norm | Down from 0.000058323696; input512/output1536, all tails paid |
+| RC190 complete canonical w14 action error | Unchanged native w14 | <0.000218925 relative D norm | Down from 0.001619393; no full-action threshold selected |
 | RC188 complete Cpsi endpoint error | Unchanged native psi0 | <0.000004164180 D norm | Down from 0.000017499518; larger paid centered carrier |
 | RC188 complete canonical psi action error | Unchanged native psi0 | <0.022225398 relative D norm | Down from 0.065432142; no full-action threshold selected |
 | RC181 full action-error Gram | P0/P2/f0/psi0 | 0.004333 G_lower | Squared correlated source-map error factor |
@@ -60,7 +63,7 @@ These action estimates bound (M S-V) on the named source maps. They are not esti
 | P0 | Certified | RC171 full carrier | RC180 (three-source) and RC182 (four-source) |
 | psi0 | RC154 finite/analytic endpoint generator | RC188 extended finite/analytic carrier materialized | RC182, as part of the named four-source family |
 | f0 | Certified | RC176 full carrier | RC180 (three-source) and RC182 (four-source) |
-| w14 | RC183 centered endpoint trial | RC183 full finite/analytic carrier | RC189 narrower enclosure certified; five-source acceptance open |
+| w14 | RC190 extended centered endpoint trial | RC190 endpoint/regular carrier; inherited exact native tail and correction | RC189 narrower enclosure certified; new action not yet propagated, acceptance open |
 | v10 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | z_b6 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | t10 | Certified in reference interface | Explicit full canonical carrier open | Open |
@@ -96,4 +99,6 @@ RC188 extends the psi0 endpoint input/output prefixes to 32766/65534. Its comple
 
 RC189 rebuilds complete mixed rows and residuals through 65534 with RC188's revised analytic psi tail. The same-family inverse width decreases from 2.576643 to 1.654087 and the acceptance ratio from 5.153286 to 3.308174. The half-Gram gate still fails.
 
-Next: tighten w14 endpoint and regular action precision, then re-evaluate the same five-source target with the refined psi carrier and correlated variational method. Native v10, z_b6, and t10 coverage remains open.
+RC190 extends the w14 endpoint input/output to32766/65534 and the regular input/output to512/1536. Its complete endpoint norm error decreases by a factor greater than18.925, and its complete canonical action norm error decreases by a factor greater than7.397. This compares the unchanged native source, operator and D norm. No new inverse width has yet been evaluated with this carrier.
+
+Next: rebuild complete mixed rows and residuals with the refined w14 carrier, retain the refined psi carrier and correlated variational method, and re-evaluate the same five-source inverse target. Native v10, z_b6, and t10 coverage remains open.
