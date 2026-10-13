@@ -1,6 +1,6 @@
-# Certified completion dashboard — RC190
+# Certified completion dashboard — RC191
 
-Current research checkpoint: RC190. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
+Current research checkpoint: RC191. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
 
 Progress has two independent requirements: sufficient certified precision and sufficient mathematical coverage. Completion means the specified theorem contract passes on its required space. It does not require zero error.
 
@@ -15,6 +15,7 @@ Progress has two independent requirements: sufficient certified precision and su
 | RC184 canonical inverse on P0/P2/f0/psi0/w14 | 5.513393 G_lower | 0.5 G_lower | 11.026786 | No positive guarantee; exact witness fails | Selected enclosure failed |
 | RC187 correlated canonical inverse on the same five sources | 2.576643 G_lower | 0.5 G_lower | 5.153286 | No positive guarantee; exact witness fails | Improved enclosure; gate open |
 | RC189 canonical inverse with refined psi carrier, same five sources | 1.654087 G_lower | 0.5 G_lower | 3.308174 | No positive guarantee; exact witness fails | Further improved enclosure; gate open |
+| RC191 canonical inverse with both refined actions, same five sources | 1.254303 G_lower | 0.5 G_lower | 2.508606 | No positive guarantee; exact witness fails | Further improved enclosure; gate open |
 | RC183 regular component D^-1 Rw14 | <0.000753268 relative D norm | 0.001 relative D norm | <0.753268 | >0.000246732 relative norm budget | Local component contract closed |
 | Complete canonical action on psi0, RC188 | <0.022225398 relative D norm | Unselected | Undefined | Undefined | Improved full carrier attached |
 | Stage I original augmented Weil floor | Not evaluated | A proved positive floor is required | Undefined | Undefined | Open |
@@ -38,6 +39,7 @@ The psi regular threshold is a local construction budget selected in RC181. It i
 | RC186 enriched inverse width | Same P0/P2/f0/psi0/w14 | 5.513393 G_lower, retained | No inverse-width improvement; gate remains open |
 | RC187 correlated inverse width | Same P0/P2/f0/psi0/w14 | 2.576643 G_lower | Same-family width improvement; gate remains open |
 | RC189 refined-psi inverse width | Same P0/P2/f0/psi0/w14 | 1.654087 G_lower | Full mixed rows and tails rebuilt; gate remains open |
+| RC191 two-refined-action inverse width | Same P0/P2/f0/psi0/w14 | 1.254303 G_lower | Both complete carriers attached; gate remains open |
 | RC186 nominal residual relative Gram upper | Same five-source family | 0.029903 G_lower | Down from 0.162203 for the reproduced RC184 trial; squared represented-residual factor |
 | RC186 actual residual relative Gram upper | Same five-source family | 0.138955 G_lower | Down from 0.340031 in the independently paid baseline; squared actual-residual factor |
 | RC184 inverse-vector norm error upper | P0/P2/f0/psi0/w14 | <1.442941 | Not a contraction certificate |
@@ -63,7 +65,7 @@ These action estimates bound (M S-V) on the named source maps. They are not esti
 | P0 | Certified | RC171 full carrier | RC180 (three-source) and RC182 (four-source) |
 | psi0 | RC154 finite/analytic endpoint generator | RC188 extended finite/analytic carrier materialized | RC182, as part of the named four-source family |
 | f0 | Certified | RC176 full carrier | RC180 (three-source) and RC182 (four-source) |
-| w14 | RC190 extended centered endpoint trial | RC190 endpoint/regular carrier; inherited exact native tail and correction | RC189 narrower enclosure certified; new action not yet propagated, acceptance open |
+| w14 | RC190 extended centered endpoint trial | RC190 endpoint/regular carrier; inherited exact native tail and correction | RC191 narrower enclosure with new action certified; acceptance open |
 | v10 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | z_b6 | Certified in reference interface | Explicit full canonical carrier open | Open |
 | t10 | Certified in reference interface | Explicit full canonical carrier open | Open |
@@ -99,6 +101,8 @@ RC188 extends the psi0 endpoint input/output prefixes to 32766/65534. Its comple
 
 RC189 rebuilds complete mixed rows and residuals through 65534 with RC188's revised analytic psi tail. The same-family inverse width decreases from 2.576643 to 1.654087 and the acceptance ratio from 5.153286 to 3.308174. The half-Gram gate still fails.
 
-RC190 extends the w14 endpoint input/output to32766/65534 and the regular input/output to512/1536. Its complete endpoint norm error decreases by a factor greater than18.925, and its complete canonical action norm error decreases by a factor greater than7.397. This compares the unchanged native source, operator and D norm. No new inverse width has yet been evaluated with this carrier.
+RC190 extends the w14 endpoint input/output to32766/65534 and the regular input/output to512/1536. Its complete endpoint norm error decreases by a factor greater than18.925, and its complete canonical action norm error decreases by a factor greater than7.397. This compares the unchanged native source, operator and D norm. RC191 subsequently evaluates the inverse with this carrier.
 
-Next: rebuild complete mixed rows and residuals with the refined w14 carrier, retain the refined psi carrier and correlated variational method, and re-evaluate the same five-source inverse target. Native v10, z_b6, and t10 coverage remains open.
+RC191 rebuilds complete mixed rows and residuals with both refined action carriers, including the new w14 endpoint-output moments. The same-family inverse width decreases from1.654087 to1.254303 and the acceptance ratio from3.308174 to2.508606. The gate still fails. For RC184's recorded witness direction, f0 and P2 account for about74% of the direct triangle error payment; this is bound accounting on one vector, not a share of true error or of the full inverse width.
+
+Next: tighten the inherited f0/P2 regular-action payments and evaluate analytic retention for q185's endpoint output tail, then rebuild the same five-source inverse. Native v10, z_b6, and t10 coverage remains open.
