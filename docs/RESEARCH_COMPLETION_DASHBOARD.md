@@ -1,6 +1,6 @@
-# Certified completion dashboard — RC187
+# Certified completion dashboard — RC188
 
-Current research checkpoint: RC187. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
+Current research checkpoint: RC188. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
 
 Progress has two independent requirements: sufficient certified precision and sufficient mathematical coverage. Completion means the specified theorem contract passes on its required space. It does not require zero error.
 
@@ -15,7 +15,7 @@ Progress has two independent requirements: sufficient certified precision and su
 | RC184 canonical inverse on P0/P2/f0/psi0/w14 | 5.513393 G_lower | 0.5 G_lower | 11.026786 | No positive guarantee; exact witness fails | Selected enclosure failed |
 | RC187 correlated canonical inverse on the same five sources | 2.576643 G_lower | 0.5 G_lower | 5.153286 | No positive guarantee; exact witness fails | Improved enclosure; gate open |
 | RC183 regular component D^-1 Rw14 | <0.000753268 relative D norm | 0.001 relative D norm | <0.753268 | >0.000246732 relative norm budget | Local component contract closed |
-| Complete canonical action on psi0 | 0.065432142 relative D norm | Unselected | Undefined | Undefined | Source-form bound attached |
+| Complete canonical action on psi0, RC188 | <0.022225398 relative D norm | Unselected | Undefined | Undefined | Improved full carrier attached |
 | Stage I original augmented Weil floor | Not evaluated | A proved positive floor is required | Undefined | Undefined | Open |
 | Stage I original auxiliary response | Not evaluated | Strictly below one in the actual auxiliary metric | Undefined | Undefined | Open |
 
@@ -42,6 +42,8 @@ The psi regular threshold is a local construction budget selected in RC181. It i
 | RC185 finite residual approximation | RC184 selected actual focus residual | <0.333875 relative D norm | Single-vector input approximation; no threshold selected |
 | RC185 complete canonical action error | Exact finite q185 | <0.000008962008 D norm | Full output tails paid |
 | RC183 complete canonical action error | Individual native w14 | <0.001619393 relative D norm | No full-action threshold selected |
+| RC188 complete Cpsi endpoint error | Unchanged native psi0 | <0.000004164180 D norm | Down from 0.000017499518; larger paid centered carrier |
+| RC188 complete canonical psi action error | Unchanged native psi0 | <0.022225398 relative D norm | Down from 0.065432142; no full-action threshold selected |
 | RC181 full action-error Gram | P0/P2/f0/psi0 | 0.004333 G_lower | Squared correlated source-map error factor |
 | RC181 corresponding full action norm error | P0/P2/f0/psi0 | <0.065825527 | Four-source envelope; no required threshold selected |
 
@@ -54,7 +56,7 @@ These action estimates bound (M S-V) on the named source maps. They are not esti
 | Native direction | Endpoint/reference layer | Complete canonical action | Actual canonical inverse |
 |---|---|---|---|
 | P0 | Certified | RC171 full carrier | RC180 (three-source) and RC182 (four-source) |
-| psi0 | RC154 finite/analytic endpoint generator | RC182 finite/analytic carrier materialized | RC182, as part of the named four-source family |
+| psi0 | RC154 finite/analytic endpoint generator | RC188 extended finite/analytic carrier materialized | RC182, as part of the named four-source family |
 | f0 | Certified | RC176 full carrier | RC180 (three-source) and RC182 (four-source) |
 | w14 | RC183 centered endpoint trial | RC183 full finite/analytic carrier | RC187 narrower enclosure certified; five-source acceptance open |
 | v10 | Certified in reference interface | Explicit full canonical carrier open | Open |
@@ -88,4 +90,6 @@ RC186 certifies the paid six-direction trial coordinate change and evaluates the
 
 RC187 refines the variational proof using full correlated source and error Grams. With the same five response sources and unchanged action carriers, the certified inverse width decreases from 5.513393 to 2.576643 and the acceptance ratio from 11.026786 to 5.153286. This is a directly comparable inverse-precision improvement. The half-Gram gate still fails.
 
-Next: tighten the actual psi0 and w14 endpoint-action bounds, retain the correlated variational method, and re-evaluate the same five-source target. Native v10, z_b6, and t10 remain subsequent coverage work.
+RC188 extends the psi0 endpoint input/output prefixes to 32766/65534. Its complete Cpsi error decreases by a factor greater than 4.2023, and its complete canonical action norm error decreases from 0.065432142 to 0.022225398 relative to the unchanged native source D norm. No new inverse width has been evaluated with that carrier.
+
+Next: recompute full mixed rows and residuals for the refined psi0 carrier, retain RC187's correlated variational method, and re-evaluate the same five-source inverse target. Further w14 precision and native v10, z_b6, and t10 coverage remain open.
