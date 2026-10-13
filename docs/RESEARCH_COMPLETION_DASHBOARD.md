@@ -1,6 +1,6 @@
-# Certified completion dashboard — RC203
+# Certified completion dashboard — RC204
 
-Current research checkpoint: RC203. Latest evaluated inverse checkpoint: RC203 (six sources). Latest accepted inverse family: RC196 (five sources). Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in the named certificates. Historical checkpoints remain unchanged.
+Current research checkpoint: RC204. Latest evaluated inverse checkpoint: RC203 (six sources). Latest accepted inverse family: RC196 (five sources). Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in the named certificates. Historical checkpoints remain unchanged.
 
 Progress has two independent requirements: sufficient certified precision and sufficient mathematical coverage. Completion means the specified theorem contract passes on its required space. It does not require zero error.
 
@@ -158,3 +158,7 @@ RC202 supplies exact degree512 q202 approximating RC201's P0-coordinate actual r
 RC203 attaches q202 through complete mixed rows, verifies independence of all eight trial directions and preserves the six response-Gram endpoints exactly. The same-family selected width decreases from1.823489 to0.743003 and its ratio from3.646978 to1.486006. The nominal residual squared upper decreases to0.036914, while the new trial's action-error and variational payments increase to0.002504 and0.452039. The gate remains open, with certified width deficit0.243003 G_lower.
 
 Next: tighten the variational/action-error payments for the enriched trial and retest the unchanged six-source family. Native z_b6 and t10 complete action coverage remain subsequent obligations.
+
+RC204 exact signed-error audit (same six-source response family, same RC203 eight-trial map): the certified squared trial-action-error factor tightens from0.002504 to0.002365 G_lower. All128 signed rank-one controls and768 exact integer leading principal minors pass; the preceding millionth0.002364 fails the selected conservative test. This is a 139/2504 reduction in the error-envelope upper factor, **not** a new inverse enclosure. RC203's selected six-source inverse width remains0.743003 and fails the half-Gram gate. The latest accepted five-source canonical inverse remains RC196. No Stage I acceptance ratio is defined.
+
+Next RC205: transport RC204's smaller error Gram through RC203's full variational and residual inequality, recompute exact inverse Loewner endpoints, and test the half-Gram gate without changing the six response sources. Native z_b6 and t10 canonical coverage, odd parity and original augmented Weil attachment remain open.
