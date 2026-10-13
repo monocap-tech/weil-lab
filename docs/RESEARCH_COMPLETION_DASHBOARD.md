@@ -1,6 +1,6 @@
-# Certified completion dashboard — RC185
+# Certified completion dashboard — RC186
 
-Current research checkpoint: RC185. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
+Current research checkpoint: RC186. Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in `certificates/rpb108_rc181_psi_action_completion_dashboard.json`. Historical checkpoints remain unchanged. The new four-source inverse data is in `certificates/rpb108_rc182_four_source_canonical_inverse.json`.
 
 Progress has two independent requirements: sufficient certified precision and sufficient mathematical coverage. Completion means the specified theorem contract passes on its required space. It does not require zero error.
 
@@ -33,6 +33,9 @@ The psi regular threshold is a local construction budget selected in RC181. It i
 | RC182 inverse width | P0/P2/f0/psi0 | 0.450753 G_lower | New four-source actual canonical response |
 | RC182 inverse warm-start norm error | P0/P2/f0/psi0 | <0.547610 | No warm-start threshold selected |
 | RC184 inverse width | P0/P2/f0/psi0/w14 | 5.513393 G_lower | New family; selected gate fails |
+| RC186 enriched inverse width | Same P0/P2/f0/psi0/w14 | 5.513393 G_lower, retained | No inverse-width improvement; gate remains open |
+| RC186 nominal residual relative Gram upper | Same five-source family | 0.029903 G_lower | Down from 0.162203 for the reproduced RC184 trial; squared represented-residual factor |
+| RC186 actual residual relative Gram upper | Same five-source family | 0.138955 G_lower | Down from 0.340031 in the independently paid baseline; squared actual-residual factor |
 | RC184 inverse-vector norm error upper | P0/P2/f0/psi0/w14 | <1.442941 | Not a contraction certificate |
 | RC185 finite residual approximation | RC184 selected actual focus residual | <0.333875 relative D norm | Single-vector input approximation; no threshold selected |
 | RC185 complete canonical action error | Exact finite q185 | <0.000008962008 D norm | Full output tails paid |
@@ -79,4 +82,6 @@ RC184 expands inverse coverage to w14, but its selected five-source width does n
 
 RC185 supplies an exact finite q185 approximating the actual five-source focus residual within 0.333875 relative D norm, and a complete actual canonical action error below 0.000008962008. A direct single-vector triangle bound reduces the nominal-to-actual focus error from 0.002844380568 to 0.000561940375. This same-residual improvement does not replace the whole five-source error Gram or evaluate a new inverse width.
 
-Next: orthogonalize q185 against the five-source trial family, certify mixed rows and errors, and evaluate the enriched inverse on the unchanged five response sources. Native v10, z_b6, and t10 remain subsequent coverage work.
+RC186 certifies the paid six-direction trial coordinate change and evaluates the enriched inverse on the unchanged five response sources. Its nominal residual factor decreases from 0.162203 to 0.029903, but the selected inverse enclosure retains RC184's 5.513393 width. The nominal-residual improvement and the open inverse acceptance contract are separate measurements.
+
+Next: tighten inherited actual canonical endpoint-action and variational bounds on the same five-source family, then re-evaluate the retained enrichment. Native v10, z_b6, and t10 remain subsequent coverage work.
