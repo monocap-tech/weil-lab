@@ -1,0 +1,19 @@
+{
+  "status": "uncertified constant-source residual pilot only",
+  "results": [
+    {
+      "nodes_per_panel": 512,
+      "Q00_display": 0.0880138728496329,
+      "residual_squared_display": 0.0012334904659659085,
+      "coupling_majorant_display": 0.0061674523298295425,
+      "certified_sign": false
+    },
+    {
+      "nodes_per_panel": 1024,
+      "Q00_display": 0.08801442588775285,
+      "residual_squared_display": 0.0012366240266829254,
+      "coupling_majorant_display": 0.006183120133414627,
+      "certified_sign": false
+    }
+  ]
+}

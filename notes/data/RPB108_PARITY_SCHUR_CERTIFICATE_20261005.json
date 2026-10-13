@@ -1,0 +1,30 @@
+{
+  "status": "certified actual corrected constant-linear block only",
+  "aperture": "1/2",
+  "low_sources": [
+    "1",
+    "2x"
+  ],
+  "physical_gram_diagonal": [
+    "1",
+    "1/3"
+  ],
+  "complement_moment_count": 64,
+  "linear_prime_tail_squared_enclosure": [
+    "21517441573330476016406235932758918013761983543/20000000000000000000000000000000000000000000000000",
+    "107587207866652380082031179663794590068914449451/100000000000000000000000000000000000000000000000000"
+  ],
+  "linear_log_tail_norm_bound": "1/64",
+  "linear_smooth_tail_squared_bound": "27/8320",
+  "linear_residual_norm_bound": "11/100",
+  "linear_coupling_upper_bound": "121/2000",
+  "corrected_diagonal_lower_bounds": [
+    "194/3125",
+    "59/2000"
+  ],
+  "corrected_mixed_entry": "0 (exact reflection parity)",
+  "physical_coercivity": "3/50",
+  "corrected_block_sign_certified": true,
+  "full_schur_sign_certified": false,
+  "whole_domain_positivity": false
+}

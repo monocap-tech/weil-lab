@@ -1,5 +1,80 @@
 # Lean Status
 
+### RPB-108: actual reflected Mellin identity and factorial envelope (2026-10-03)
+
+Mathlib's actual modified zero-parameter theta kernel is identified with
+the large-t tail plus its t^(-1/2)-weighted inverse. Both pieces are
+Mellin-convergent, and completedRiemannZeta₀(z) is exactly half the sum
+of the two actual tail integrals at z/2 and (1-z)/2.
+
+The actual completed term is bounded by the existing factorial moment
+bound on every natural-radius disk. Pole clearing gives the actual
+entire-function majorant
+A_n = n(n+1) C n!/(p/2)^n exp(-p/2)/(p/2) + 1.
+For 2(|T|+2) ≤ n, the actual circle envelope is at most A_n and the
+actual height-window multiplicity count is at most log(A_n)/log 2.
+Positive p and C come from the actual theta kernel; no divisor-count
+or spectral-domain premise is supplied.
+
+Next: choose a natural moment order proportional to |T|+1 and convert
+log(A_n) into a uniform O((|T|+1) log(|T|+2)) cumulative count bound.
+The logarithmic rate, local unit-height counts, bounded logarithmic-domain
+sampling and full Weil-form extension are not certified by this chunk.
+
+WD-T38 source/null attachment and enlarged central cancellation remain
+open. Spectral L2 unproved and unassumed; threshold closed; F-4 pending.
+RH standing unchanged.
+
+See [actual Mellin representation and envelope](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MELLIN_REPRESENTATION_20261003.md).
+
+### RPB-108: actual complex Mellin tail comparison (2026-10-03)
+
+Actual theta moments now control complex Mellin tail integrals on (1,∞).
+For s.re - 1 ≤ n, the norm of t^(s-1) K(t) is bounded by
+t^n |K(t)|. The complex tail is integrable and its integral norm is
+bounded by C n!/(p/2)^n exp(-p/2)/(p/2), with the same positive
+actual kernel constants p and C for all n and s.
+
+If ‖z‖ ≤ n, both completed-zeta exponents z/2 and (1-z)/2 satisfy
+that moment condition. No divisor-count or spectral-domain premise enters.
+
+Next: identify completedRiemannZeta₀ with half the sum of these two
+tail integrals, including the reflected small-t part and its Jacobian.
+Then derive the pole-cleared disk/circle bound and its logarithmic rate.
+These identification and envelope results remain open; cumulative
+counts do not certify local unit-height counts or bounded sampling.
+
+WD-T38 source/null attachment and enlarged central cancellation remain
+open. Spectral L2 unproved and unassumed; threshold closed; F-4 pending.
+RH standing unchanged.
+
+See [actual Mellin comparison](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_MELLIN_GROWTH_20261003.md).
+
+### RPB-108: actual theta exponential and factorial moment bounds (2026-10-03)
+
+The actual zero-parameter even theta remainder is now bounded by
+C exp(-p t) for all t ≥ 1, with positive p and C obtained from the
+actual kernel. Pinned exponential decay supplies the tail; continuity
+and compactness supply the finite initial interval.
+
+For every natural n, its polynomially weighted absolute value is bounded
+by C n!/(p/2)^n exp(-(p/2)t). All moments on (1,∞) are integrable,
+with the same actual constants and the explicit bound
+C n!/(p/2)^n exp(-p/2)/(p/2). No divisor-count, shell-growth, or
+spectral-domain premise is supplied.
+
+Next: connect these actual moments to the completed-zeta complex Mellin
+weights and prove an explicit rate for the existing actual circle
+envelope. This chunk does not prove that envelope rate, local unit-height
+logarithmic counts, infinite sampling boundedness or full Weil-form extension.
+
+WD-T38 coefficient/source-null attachment and enlarged central cancellation
+remain open. Background completion remains retained; spectral L2 unproved
+and unassumed. Threshold closed; F-4 pending; RH standing unchanged.
+
+See [actual theta growth](../notes/REFLECTED_PACKET_BRIDGE_108_ACTUAL_THETA_GROWTH_20261003.md).
+
+
 ### RPB-108: actual entire-zeta Jensen count bridge (2026-10-03)
 
 The actual entire pole-cleared completed-zeta function

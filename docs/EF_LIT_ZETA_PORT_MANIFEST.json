@@ -1,0 +1,825 @@
+{
+  "source_manifest": "EF_LIT_ZETA_DEPENDENCY_MANIFEST.json",
+  "lean": "4.34.0",
+  "validation": {
+    "candidate": "652f9e9fd3eab0374173d349e35dc09fe86ff9e5",
+    "run": 37177275511,
+    "job": 111362416280,
+    "conclusion": "success",
+    "isolated_jobs": 3857,
+    "full_jobs": 9179,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "edits": [
+    "repository-local imports",
+    "recorded main export names",
+    "module-specific copied helper names",
+    "nonnegative product inequality APIs",
+    "explicit pointwise function products",
+    "comment gate false-positive repair"
+  ],
+  "nodes": [
+    {
+      "module": "Definitions.Def_Extra_Zeta23_Analytic_RectangleLogDeriv",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Extra_Zeta23_Analytic_RectangleLogDeriv.lean",
+      "source_sha256": "889f887f3be677a836d988a91267c9041857175574ef59c5b1889fa1de2ac6bf",
+      "ported_sha256": "67bcbcd2368d4a53028016ad4da161ce3c2116318289f5c8145ed85e4cb10f69",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_Analytic_RectangleLogDeriv",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_Analytic_RectangleLogDeriv.lean",
+      "source_sha256": "e372a6b5639f92bab56880fe2666d0c54c08ea9a92399df6b43c42a967c8753a",
+      "ported_sha256": "2fffa4915c6d8c3c74d777083b0bae2da87eddc1d4243942edf6e2b1592dcb35",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_Assembly_Inputs",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_Assembly_Inputs.lean",
+      "source_sha256": "d44eb76543eaa880f3064fdf2b2d1f8ebe75463a46c6fc74b0095e04ce6e857a",
+      "ported_sha256": "1e8b4f583c6af89dd7f2135473fdde7d72ed2e671514d93a6dafe8212350588f",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_Defs",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_Defs.lean",
+      "source_sha256": "c984da7cdf66b00738124b78a0334ddebebbea3ae3061ed19f681f75fa06b142",
+      "ported_sha256": "e0b8cef0ec8b8ebe33268b39e42a9dadd09288fedfb9815878c248f516c323fa",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_ExplicitFormula",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ExplicitFormula.lean",
+      "source_sha256": "d1dd10a133337d5080e337c90e51dfad8df5e17dfdf5dd3839e361cfe241d57f",
+      "ported_sha256": "933627b6e21a3b1320bdf057b41b98f280a6a68d3b8111b29b0154477cab3319",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_FromPNTPlus_EulerMaclaurin",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_FromPNTPlus_EulerMaclaurin.lean",
+      "source_sha256": "f9062d56091a8bd23b9b31462855c074311ef5bddaa894be149e3064e66061f1",
+      "ported_sha256": "0c1d4422c1958af4d6d027727f8cb8b0ea400bc995aed84deb7a329fd5be72db",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_FromPNTPlus_Fourier",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_FromPNTPlus_Fourier.lean",
+      "source_sha256": "f5375304cfb708853fd043043931f902cbead1f998130fb765c94c47476158bf",
+      "ported_sha256": "61d721231a34f1fb6529264fbd31edc9625d7284bc3d76cdbaaed4e82504d45b",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_FromPNTPlus_Rectangle",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_FromPNTPlus_Rectangle.lean",
+      "source_sha256": "ddb27f7427c52e8efc2b57e722d22905dc811701b48eef1805b14e035cc9cb61",
+      "ported_sha256": "be8c909251a11026c8a3b27406a604c99ba8af38887fdf88e3cf0e219972bcd3",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_FromPNTPlus_ResidueCalcOnRectangles",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_FromPNTPlus_ResidueCalcOnRectangles.lean",
+      "source_sha256": "4e84dc42bf22a9e128f0b617107176de9fca04c620085d56011dbf62cf855122",
+      "ported_sha256": "54210a3c26212c75952de4f647bf95410e4cfb3f127426275c7aa3c33eb44ff0",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_FromPNTPlus_Sobolev",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_FromPNTPlus_Sobolev.lean",
+      "source_sha256": "e091c192871a8b4c527ed3743becf499975fdb1fbf62447483c836d42767ec78",
+      "ported_sha256": "a9d2f894ad78b28c8124c1b19fcd98eb817ffaf509abb57863970ce636676130",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_FromPNTPlus_StrongPNTPrefix",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_FromPNTPlus_StrongPNTPrefix.lean",
+      "source_sha256": "f876562587a6b75040912c57b8f7a28521fa4162b9034cb86398b4d829581f58",
+      "ported_sha256": "271c703ea887db60e06ef740ebf8f44b793b82fcaa8c8cdfcbed592650340be0",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_FromPNTPlus_ZetaBounds",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_FromPNTPlus_ZetaBounds.lean",
+      "source_sha256": "416d4d45e865f4163a678607caf882418e2a4fae1ae873de6b81946e58fc4820",
+      "ported_sha256": "88c929e9a4dad0d1735c96b938291da31b0f9b4b2b924447caa5e8cd063c634a",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_GammaFacts_Series",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_GammaFacts_Series.lean",
+      "source_sha256": "cc3a68d62c827918190850ff7b80531c392b5d7545526f37410a3745827baf81",
+      "ported_sha256": "dee9953824e5d3b3f9d8d9d421612491fb12a1d680704a8af6f1f6e1731dbdb0",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_GammaFacts_StirlingVert",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_GammaFacts_StirlingVert.lean",
+      "source_sha256": "62bb81583dec2a89151ea5d5986e0a5e68fbe8c2e9f0bf0a03eb6a660f609c79",
+      "ported_sha256": "dd6423232528824fab9f632f7e27b18f1de0e23af8de1f22bf8bc21361e04853",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_Hypotheses",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_Hypotheses.lean",
+      "source_sha256": "09fb0259e235be7a7c08f2e3d03ac9d018f01eefbc7d55d565d20834b3918c9e",
+      "ported_sha256": "62daff3b1df341ec39f3465ba9fea521309b7d19f1ab0705b3573bb4b2ccc4fa",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_LinAlg_HermitianPosPart",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_LinAlg_HermitianPosPart.lean",
+      "source_sha256": "2890f31c59f05154865279f2ce85fa9acc9140ec7a63d915c13cfa8a56893d8b",
+      "ported_sha256": "fdd0afe045ba59510029791385221abef545fc09d9d6c842b4fdab30a0884a84",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_LinAlg_PosIndex",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_LinAlg_PosIndex.lean",
+      "source_sha256": "c02b1e2358166ac918b4ba751c602cfa057cbc6a4c87aa2f5f03f5fe4d8d7342",
+      "ported_sha256": "025a6ea16527fcfee67ec5576bd0ac004ba6ef58e6a529e5e335ce981fa079a4",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_LinAlg_Sylvester",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_LinAlg_Sylvester.lean",
+      "source_sha256": "fbf1eede14ca281290e39d3f1b785f5b65835f947ecd441399978e05e431ccc6",
+      "ported_sha256": "92b21018f7f6b591023b770714e83b767d70a5e800928c47422b6cbf02e1798c",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_LinAlg_VonNeumann",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_LinAlg_VonNeumann.lean",
+      "source_sha256": "efda66a04b46cd3c6d9d27e3b42ae47a267704304972f1e487b0112fce0436cc",
+      "ported_sha256": "a62b09704498e0a9f06c4acebac5f909aa3658a2fe2a4d513bbdfa9331ae94a5",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_RvM_LocalCount",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_RvM_LocalCount.lean",
+      "source_sha256": "24f3da7774de0b92add606d4223d013efdce8c1a55c6c970b20c929774f44db2",
+      "ported_sha256": "657f9849f8fbed7db77b0122609040fda23e773d5df3eac2d5b27cb2b70e5fdb",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_Statement",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_Statement.lean",
+      "source_sha256": "d113637f476648709ecb6a3466eda9eae06ca3c72cd64e506d2a7626ba941565",
+      "ported_sha256": "ef527ebed78a5cca45890f3575c31199596704ed330fd5418b97fd73e983ece5",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_Statement_Seam",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_Statement_Seam.lean",
+      "source_sha256": "44f34fa55d8add0b74b49bdca1f6605a2b2f20a33083b26e48d99e79aa40bb3c",
+      "ported_sha256": "f597d1de8c248244e3f7c3f57cfef3eca2f6c23972854a9f5c4072b40a8b7592",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_Statement_SeamClosed",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_Statement_SeamClosed.lean",
+      "source_sha256": "9b4ab00ef39cc0c90e52481648f6c1ed69f3aa18c261da01c2f63657a634c879",
+      "ported_sha256": "8769bcd5c5b837f9bf14dfae57e4eaa049204305801448e82a8d03cfaa5e220f",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_Tail",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_Tail.lean",
+      "source_sha256": "7127b74eda3d32a912f1eaaee1f7c560a295f6cf8f81f8a10e1f7ef98ac3ce21",
+      "ported_sha256": "553f61acc78bf801b99931ebdaad92337702ced831abd7050b929f5f834ed179",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_Tail_Basic",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_Tail_Basic.lean",
+      "source_sha256": "e3ceb2804f4f759187915ab54a2c4cb3f8ee683a0e4da5360cef9a18886379aa",
+      "ported_sha256": "f82f91bd49f02d189844bb8dc0b2115503b70fd8600fdcbd0df2ebbc598fa3b0",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_Tail_RankOne",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_Tail_RankOne.lean",
+      "source_sha256": "079cb36d5623343998d301ac0fc62be9755cf6ed8f1cbfa5caeff64994420ee6",
+      "ported_sha256": "59ffe04e2a2790451c9eaf460f2ff13a81b1c3f585ae113e6556e06dea9a58de",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_WeilEF_FullLine",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_WeilEF_FullLine.lean",
+      "source_sha256": "991a1b0954c76b6dd956c27b4e10d08d344982880bbddbd406f04fbb720dae1f",
+      "ported_sha256": "64797cd4c3ff9ef0bd715588cc67def89ba5beb463c45b7323477ba6a3f06e99",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_WeilEF_VerticalLine",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_WeilEF_VerticalLine.lean",
+      "source_sha256": "30e3ae1ed8bdf4abdfdddf21a8b60036d1406cb7f96d7b337a70d0aa253d0513",
+      "ported_sha256": "03bad369897a6c93ba90dac384b51b2d4744251d07d557dfa7825b23a4667f36",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_WeilEF_ZeroSummability",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_WeilEF_ZeroSummability.lean",
+      "source_sha256": "cf3e774b75e21800852d392fbafc6615ba10914c9bbe0962205be2e8a464472b",
+      "ported_sha256": "aef1e866efcc419a478936887da26a45b8395858dc7f72221deb6456ba165241",
+      "export": null
+    },
+    {
+      "module": "Definitions.Def_Zeta23_ZetaReflect",
+      "path": "WeilDefect/External/Zeta23/Definitions/Def_Zeta23_ZetaReflect.lean",
+      "source_sha256": "dc5046ca39522d1f71b154b4a65ae40e71e903ae13c31fe4619c17250e28174e",
+      "ported_sha256": "212dc89ba4c5805d7709c6290cbb9ee8985caf93b993da1663c0be5085ab6876",
+      "export": null
+    },
+    {
+      "module": "Theorems.Thm_AnalyticOn_norm_le_of_norm_le_on_sphere",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_AnalyticOn_norm_le_of_norm_le_on_sphere.lean",
+      "source_sha256": "eb60ca3bce7f9f9331fa4c727d8d8dbe180875cef5b5bfe82d33f5577b22ebb1",
+      "ported_sha256": "352334eda40291f231f0d94f9b7e2f196b4fd4c3afe1b3a89ef3f493b4a9c4df",
+      "export": "AnalyticOn.norm_le_of_norm_le_on_sphere"
+    },
+    {
+      "module": "Theorems.Thm_CfAnalytic",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_CfAnalytic.lean",
+      "source_sha256": "5470688d49def1ce8130321d1dd4ace8e37d3a95b2d4a3773152f74c627fd12a",
+      "ported_sha256": "d569f6b99203fdacde4a0730b73266fc4a5fe8bddc52ac75a3e577d88d4f82f4",
+      "export": "CfAnalytic"
+    },
+    {
+      "module": "Theorems.Thm_LogOfAnalyticFunction",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_LogOfAnalyticFunction.lean",
+      "source_sha256": "49a88f72b9b6cc7180c4a815843ec5e7dd8cdd54d56d9ab11dc34b46168c7bb2",
+      "ported_sha256": "133ab92a9d97877c638eb648ec518326f5c53392db2b081b41a2c36e31970a8a",
+      "export": "LogOfAnalyticFunction"
+    },
+    {
+      "module": "Theorems.Thm_ZeroFactorization",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_ZeroFactorization.lean",
+      "source_sha256": "bbd7f5a5bba01186585d3fea065833fcc7819f13ee221532761527614c1011b8",
+      "ported_sha256": "fb516a2ef97cdf8a701d1ad7d6bb707c1e4f52a8ea7200284efccc12822e463c",
+      "export": "ZeroFactorization"
+    },
+    {
+      "module": "Theorems.Thm_ZerosBound",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_ZerosBound.lean",
+      "source_sha256": "d11d1d51d08198f7113d11bbd893ec0c2e0f8e43a48569b6397b92c0aaefb6a4",
+      "ported_sha256": "7f39170884f876d2a860ec6cdaf2500ce6af3bf6ac4e9f5e1271934fd7ae9505",
+      "export": "ZerosBound"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_Analytic_rectangleIntegralPrime_mul_logDeriv_of_poles",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_Analytic_rectangleIntegralPrime_mul_logDeriv_of_poles.lean",
+      "source_sha256": "2069296120eb77940d1cc74dc7cc1dbd2bbe879937e03eb118d8f35db2c5d236",
+      "ported_sha256": "b319cab5245d49116109288d5bab4e72736c4a8c40ace0fd1943d74f91264728",
+      "export": "Zeta23.Analytic.rectangleIntegralPrime_mul_logDeriv_of_poles"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_Analytic_residueTheorem_finset",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_Analytic_residueTheorem_finset.lean",
+      "source_sha256": "9dcf9a1162d43e09436fb91ea7891d63abcddb20ed627a4d5d8d443eb4f976c9",
+      "ported_sha256": "2d307b3d24bc4d1283904ff546ec390b66059e9e058830d2b1cfbe91572e7fe0",
+      "export": "Zeta23.Analytic.residueTheorem_finset"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_DigammaSeries_hasSum_digamma_series",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_DigammaSeries_hasSum_digamma_series.lean",
+      "source_sha256": "bb33f6d4d3e13327e33f7f03d01e9d4fdc915ed52a683de0dffff55e6a01302e",
+      "ported_sha256": "0d2f48c1c323dff9a0595a69f76ed021232fa72036510c0358324592d296da39",
+      "export": "Zeta23.DigammaSeries.hasSum_digamma_series"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_DigammaSeries_inv_gammaSeq_eq",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_DigammaSeries_inv_gammaSeq_eq.lean",
+      "source_sha256": "add44a5b40f23188845ac13a0f3c930f24e80cffda6b17433312861b3ae7783e",
+      "ported_sha256": "0eaffb2e9229bf8567161e4d6ec3533584fe0048816dad32929ac58ef4f875d4",
+      "export": "Zeta23.DigammaSeries.inv_gammaSeq_eq"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_DigammaSeries_inv_gamma_eq_prod",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_DigammaSeries_inv_gamma_eq_prod.lean",
+      "source_sha256": "e0f252e133e96de1cec37129425f9249e1dc7e6982db3d77ed81cbffe891442d",
+      "ported_sha256": "ea845face133e1606393cf082dfe8d07026d1f5a3a92d86890a228ab23ac9ee9",
+      "export": "Zeta23.DigammaSeries.inv_gamma_eq_prod"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_DigammaSeries_logDeriv_one_add_wTerm",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_DigammaSeries_logDeriv_one_add_wTerm.lean",
+      "source_sha256": "0509a5b92230351f891fc6e4e1c4f7d86671b244f28ada95c65826f3fa0b4713",
+      "ported_sha256": "ca601af6e7dc1f8440e56beb60d9b848fc4275b209a48681bfbcf4608daf9fa2",
+      "export": "Zeta23.DigammaSeries.logDeriv_one_add_wTerm"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_DigammaSeries_norm_wTerm_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_DigammaSeries_norm_wTerm_le.lean",
+      "source_sha256": "1b45f720137794cbfbab4f4ba5369868f040ebb64265a24a0e3d8364b5b84020",
+      "ported_sha256": "5845469c4d54e1607dfdcea66464bc12ef4c0bc93d8afa31a167d453a85642a1",
+      "export": "Zeta23.DigammaSeries.norm_wTerm_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_DigammaSeries_summable_digamma_series",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_DigammaSeries_summable_digamma_series.lean",
+      "source_sha256": "c2d320b73ccd4691f946125bc4df456b25c9496cd8592ce74a59b1bd5b251b44",
+      "ported_sha256": "5448fbff19e9b56a401da4450d724a5a6462a75b56761c26eabab56b0876898a",
+      "export": "Zeta23.DigammaSeries.summable_digamma_series"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_DigammaSeries_summable_wBound",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_DigammaSeries_summable_wBound.lean",
+      "source_sha256": "d48c328de01aca935abfdb585f00a85cd87362720ee6daae69a643208e8b525f",
+      "ported_sha256": "cc041b55bbbfdf66f329ea9e90e493ebfadff237aa23a7e3e03109fe5add0acb",
+      "export": "Zeta23.DigammaSeries.summable_wBound"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_EF_norm_fourier_mul_one_add_sq_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_EF_norm_fourier_mul_one_add_sq_le.lean",
+      "source_sha256": "71d138bafeea7d44ae27b993c25636df46a5c145e2ef7e3a718b9bf0e7d8b1e0",
+      "ported_sha256": "7ded1db470e96eab750e4d4afd915eb1e9c00e902077ddfc22c41d23631a2d3b",
+      "export": "Zeta23.EF.norm_fourier_mul_one_add_sq_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_EF_paper_inversion",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_EF_paper_inversion.lean",
+      "source_sha256": "a46f6bf0a5ecf2d5d980949d85c8d553b92eff50561bcda196599ac718c1b28b",
+      "ported_sha256": "ddf892fdb868bc87b63d1960e7b14c376cf3b1baa8ccf0150cb1cfa4dac08731",
+      "export": "Zeta23.EF.paper_inversion"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_IsBigO_to_BddAbove",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_IsBigO_to_BddAbove.lean",
+      "source_sha256": "beabda9de95bc4f48e39b79b5c18a764cbf9137407c9c75586bd13cfc89090e9",
+      "ported_sha256": "65ca8b8bd5f66c1591ff09419c646e6844989abe8bc93d1c47851250d515a681",
+      "export": "Zeta23_IsBigO_to_BddAbove"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_RvM_analyticOrderNatAt_gfun",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_RvM_analyticOrderNatAt_gfun.lean",
+      "source_sha256": "97fda04958ca05b7f75b9a95912987763ee8268b76596c6cc156ef757fb89e73",
+      "ported_sha256": "ff0f98f182ec4f14b3fa2c63c23018b72e39766044013730b9a76edd2218b407",
+      "export": "Zeta23.RvM.analyticOrderNatAt_gfun"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_RvM_half_count_large",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_RvM_half_count_large.lean",
+      "source_sha256": "e77cc5fc8ed14e8feb2f835652923c3157011df70832f44a26415e53738a3538",
+      "ported_sha256": "fee748ef4ea7cd932e07fd9c46f74015ef7112502e29ee1792c600a93235dc45",
+      "export": "Zeta23.RvM.half_count_large"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_RvM_norm_riemannZeta_le_of_re_pos",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_RvM_norm_riemannZeta_le_of_re_pos.lean",
+      "source_sha256": "4173a24f3d54664c4564d8430ae6963678540b6529b94891b19ea639d9300e54",
+      "ported_sha256": "6e0abbf8a228a690fe85133565ae1094cddfb8db696e0955983841a923ee9338",
+      "export": "Zeta23.RvM.norm_riemannZeta_le_of_re_pos"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_RvM_norm_riemannZeta_sub_one_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_RvM_norm_riemannZeta_sub_one_le.lean",
+      "source_sha256": "5cdd901a55c050348bc8c1d3058f65820deaeb25e5a0b9bf793fad53a0289db9",
+      "ported_sha256": "0117d42309a58d710332a2184aecd554136a2c3c8f43e220f8950c1abc20db77",
+      "export": "Zeta23.RvM.norm_riemannZeta_sub_one_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_RvM_riemannZeta_linear_growth",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_RvM_riemannZeta_linear_growth.lean",
+      "source_sha256": "aad1d78a4ffdd62cc112332f4df69417aa8e3f62d43c62710846dfe4e7e57378",
+      "ported_sha256": "9ece4e47a211c832361364d87926e9045c43bd6643f5e02b68c08992abf3c405",
+      "export": "Zeta23.RvM.riemannZeta_linear_growth"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_RvM_zeta_growth_right_at",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_RvM_zeta_growth_right_at.lean",
+      "source_sha256": "9485e2f5548f23f65fda88a1888879b35c6095d982e58837f3c37ea24fb64077",
+      "ported_sha256": "5248ba65568e9dba3e0de2d10b9024dcf35397e057f70630c07217ee22494493",
+      "export": "Zeta23.RvM.zeta_growth_right_at"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_RvM_zeta_local_zero_count",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_RvM_zeta_local_zero_count.lean",
+      "source_sha256": "aef04c0ab1979906e9986489adf128e3041a3e0d238f9caadf2cba21112a1761",
+      "ported_sha256": "0864120e809c114a4e04ad0f2873e7482dabea2be382f8e20c1d442adb19f97c",
+      "export": "Zeta23.RvM.zeta_local_zero_count"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_StirlingVert_digamma_eq",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_StirlingVert_digamma_eq.lean",
+      "source_sha256": "2d210294258fce660517e4c3c22f1d49f9ee186f1f9c4b26bfce72708cf0f5d1",
+      "ported_sha256": "55397323399e682dd71995661274cc6c4d9cbfd52b474b5a576165ef09a6c4ac",
+      "export": "Zeta23.StirlingVert.digamma_eq"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_StirlingVert_digamma_stirling",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_StirlingVert_digamma_stirling.lean",
+      "source_sha256": "5f58c8a640bfb7eaeba156ca1ce9f0b9ca13fa77148a643740dac1576de95f33",
+      "ported_sha256": "9ea6ee79a6051fffffba8ab9cbb33f11d603885ba6fafc606b43fa6ee328067b",
+      "export": "Zeta23.StirlingVert.digamma_stirling"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_StirlingVert_integral_inv_add_eq",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_StirlingVert_integral_inv_add_eq.lean",
+      "source_sha256": "e9fa7026db59e57544291e7f87cf779c0627c6461ebebbd0553fcab3868d0ba2",
+      "ported_sha256": "bb2bf7c47b1f8c3fe7f3cc3fbf0507f34ef921ba2f4a7f6c9d7639e0b21b2f12",
+      "export": "Zeta23.StirlingVert.integral_inv_add_eq"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_StirlingVert_norm_eps_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_StirlingVert_norm_eps_le.lean",
+      "source_sha256": "bbc3feb837137f3ce7652e74e44a278b9e31bf3cbbfbc4f8d8ba505b4d4274de",
+      "ported_sha256": "21b282c502a17adf1bbdd36aa2110958b1d2e36dc838f2b79ca22509ef2a7528",
+      "export": "Zeta23.StirlingVert.norm_eps_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_StirlingVert_partial_sum_eq",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_StirlingVert_partial_sum_eq.lean",
+      "source_sha256": "88b15349829274735a098792f0f85b650c7f61f2434a36645a9cf49bdc4586f9",
+      "ported_sha256": "5975bc6342f908fea322984de060ce9aa1695505d000aa2d4b7c89280f10c445",
+      "export": "Zeta23.StirlingVert.partial_sum_eq"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_StirlingVert_tendsto_harmonic_sub_clog",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_StirlingVert_tendsto_harmonic_sub_clog.lean",
+      "source_sha256": "44f93c305801bc3449bae5557823001b206e0ee4ccac8041b0bab01e348b7949",
+      "ported_sha256": "2750953c3d0aaaf893b1b33aacafc9fb9715514784eac6507c71aaef63b5023f",
+      "export": "Zeta23.StirlingVert.tendsto_harmonic_sub_clog"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_Stirling_differentiableAt_digamma",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_Stirling_differentiableAt_digamma.lean",
+      "source_sha256": "ca658f18642930852bacdf461e5e70b52c1c0edb76cfa91a2b2fcba7bf23396f",
+      "ported_sha256": "5f1f8970fe08b81e226939d437974add5d67cbe50f90c6367669a4c23a9c1221",
+      "export": "Zeta23.Stirling.differentiableAt_digamma"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_Tail_LocalCount_ofWindowCount",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_Tail_LocalCount_ofWindowCount.lean",
+      "source_sha256": "fdd4680850092b9d9d53a0374ba1ec15578b67f28000f01487f846b3a124df0d",
+      "ported_sha256": "b55fa436cb2cd56e45b5fb757d4c70f395864693219abf06420066e268b431c9",
+      "export": "Zeta23.Tail.LocalCount.ofWindowCount"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_Cf_ne_zero",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_Cf_ne_zero.lean",
+      "source_sha256": "c4f71103d0c1263088279a5fd29752b2162554436b2728eedca420bb449feada",
+      "ported_sha256": "4dcd64d63f82001280561c0edf3f74315e3a9f76c3b661e37830dbf6e90605f3",
+      "export": "Zeta23.WeilEF.Cf_ne_zero"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_EF_lit_zeta",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_EF_lit_zeta.lean",
+      "source_sha256": "d11f792a27d47985d56800a375afae64b40bb4aaf7661ad24bdebdd16ef2f384",
+      "ported_sha256": "e6b78d1be06f4ce477552fdeaddd7c3432c453ad4349e02459edab587b38867f",
+      "export": "Zeta23.WeilEF.EF_lit_zeta"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_EF_zero_sum_summable_gen",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_EF_zero_sum_summable_gen.lean",
+      "source_sha256": "f3f9dbafc12b9caa03208d4f53811e9198dfc3e22c2ff57cad15d4041969c20d",
+      "ported_sha256": "5bbc3101dadb67f30be70c1779055277b2e611d789b6ac337954d67be6cac854",
+      "export": "Zeta23.WeilEF.EF_zero_sum_summable_gen"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_Hfn_mirror",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_Hfn_mirror.lean",
+      "source_sha256": "13fab794477d93a319c13867711f12358baf7b53bdbdc22bed0dde99ab4d92ab",
+      "ported_sha256": "559f41ca3b33ee0750a723df6e2076c500f4fc7ddb6c4ba614ce279d6bae7be3",
+      "export": "Zeta23.WeilEF.Hfn_mirror"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_completedZeta_ne_zero_on_horizontals",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_completedZeta_ne_zero_on_horizontals.lean",
+      "source_sha256": "0cff97180bc199e243fecdd3b58c48bc39a71dd58706c95463c82767fefb2f94",
+      "ported_sha256": "f5e797c0970228278cc2d0ea7bd75f142ce06a62b03b7fb5f67c4373b34c2fc7",
+      "export": "Zeta23.WeilEF.completedZeta_ne_zero_on_horizontals"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_completedZeta_zeros_strip",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_completedZeta_zeros_strip.lean",
+      "source_sha256": "0a286337ad3c5f6ee0277da24f6ae8f335838a4dd07f1a80808f4b0d4ea570ed",
+      "ported_sha256": "fc5635b8f65b8287060c2834cc8cc49a8e96ff8f2c49138973d995ec1bdd1598",
+      "export": "Zeta23.WeilEF.completedZeta_zeros_strip"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_continuous_logDeriv_GammaR_line",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_continuous_logDeriv_GammaR_line.lean",
+      "source_sha256": "eb333f0cebad0033c055ba7072a3274e76b3a1ee10dc602a3d59eb4ee1534e70",
+      "ported_sha256": "5dd4c7db80fdc512481fec3217401ad2e8dc8024c603afc446c0a091bc347315",
+      "export": "Zeta23.WeilEF.continuous_logDeriv_GammaR_line"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_continuous_logDeriv_zeta_line",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_continuous_logDeriv_zeta_line.lean",
+      "source_sha256": "1202706ef94ce8b935b6e8508de5cf1cdad58da076e1f45dd2527a02f50b13c0",
+      "ported_sha256": "f898add64f99fc8f47ac95ccc9f2157173d40af4e54369993a90c0298098aac5",
+      "export": "Zeta23.WeilEF.continuous_logDeriv_zeta_line"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_differentiableAt_GammaR",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_differentiableAt_GammaR.lean",
+      "source_sha256": "5148d918c349299ed9a00afed44e080d02276a6572e878a69104cee37a04ad7b",
+      "ported_sha256": "42b7fd2369f2d7d896990e452394e5f3983e3ea45e10e1d241d0427fa0739ff9",
+      "export": "Zeta23.WeilEF.differentiableAt_GammaR"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_differentiable_paperFT",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_differentiable_paperFT.lean",
+      "source_sha256": "bf6fcbd7082f1471ece5e62927ebdb6cbcb07b95ecc7e8df4b87e69832a1d6ce",
+      "ported_sha256": "4678bafb2be9445b677b94ce484b3b1009565e0fc3256e151c44c3f00ffbcdb3",
+      "export": "Zeta23.WeilEF.differentiable_paperFT"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_digamma_conj",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_digamma_conj.lean",
+      "source_sha256": "2dae894fa665c4b5217a3f3567dd50e4bb6b9b312adbdc57d7dc5bf430fa5f1b",
+      "ported_sha256": "d487024b4ab849665aae0c0c918ee373cb8777c8ec586942501ae546099869c0",
+      "export": "Zeta23.WeilEF.digamma_conj"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_digamma_growth_strip",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_digamma_growth_strip.lean",
+      "source_sha256": "bdf085bac71e92690aefefafc11067939595dedeaca2b3b43d9d83db14d52db4",
+      "ported_sha256": "3cee797b7afbcddbb32db86d452a1a51f5480f4286c41842dd114f9e3f7aff4d",
+      "export": "Zeta23.WeilEF.digamma_growth_strip"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_exists_far_point",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_exists_far_point.lean",
+      "source_sha256": "bc252c18725831edc931ec4a145573471c121a7dacfdd64d97e537995338bcc9",
+      "ported_sha256": "e391ebeee6a9018064b17718925f1842646d983df9259f3fe36a9f4a5157f8a3",
+      "export": "Zeta23.WeilEF.exists_far_point"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_finite_SetOfZeros",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_finite_SetOfZeros.lean",
+      "source_sha256": "dc55da99b43cd5ab116f16d4c98ebb29d10d9cff2591c7bbef2d7cf1b26e3494",
+      "ported_sha256": "4e908000aef56453d482fce4cd1e3332062a41a17fc0a8334bf21e1d0adc611c",
+      "export": "Zeta23.WeilEF.finite_SetOfZeros"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_full_line_identity",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_full_line_identity.lean",
+      "source_sha256": "63ef9c7e1172ec06cf405554d9f4b330b7a83cfa002393299bfcba6d30a6c8e6",
+      "ported_sha256": "e9c2459cc763484b46d853b7853bdcaac8dd136b181b56b31de75156868a4d47",
+      "export": "Zeta23.WeilEF.full_line_identity"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_gammaR_bracket",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_gammaR_bracket.lean",
+      "source_sha256": "682b35fdb9c96b02ba7016ac19edaefb8db52b9d76156f996fc757c57d9902ad",
+      "ported_sha256": "06173be7ddc7647753fd0b1637fb25b1767ecee302f299e52a1ae785be73a4fd",
+      "export": "Zeta23.WeilEF.gammaR_bracket"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_gamma_line_shift",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_gamma_line_shift.lean",
+      "source_sha256": "316b56815d434066557a16a31682ac68dc10342c4f9cede6e10a98d1edc6899e",
+      "ported_sha256": "52418c017961f2879b7f2defb908880b84ec5609d327576cab577f7095dc3d3e",
+      "export": "Zeta23.WeilEF.gamma_line_shift"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_good_heights",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_good_heights.lean",
+      "source_sha256": "6c5202854138d51cd18c10089ed3167a32486d8077c2757147bc554f75501266",
+      "ported_sha256": "77f7b0be9058dbf93d8309d618d2d2662f662a3f52b95e8abab172b177de5975",
+      "export": "Zeta23.WeilEF.good_heights"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_good_heights_at",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_good_heights_at.lean",
+      "source_sha256": "8ba9d8291fdd89f141b3657319f45cb4883f6468c0a98306279a603a89e4f9da",
+      "ported_sha256": "060e2e67cce2ac20870a8ba8f27560120eb413ce7459e00c7ced3428fdcb6e4c",
+      "export": "Zeta23.WeilEF.good_heights_at"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_horizontal_vanish",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_horizontal_vanish.lean",
+      "source_sha256": "5a081bc7276dc93b5534016a1977d0d08c3e94d48866d7bad380c60c9cf29362",
+      "ported_sha256": "61d649a3e9e4f0455639a783ad9e3163e930e2ccf00747a5df0d7fcecc311c1e",
+      "export": "Zeta23.WeilEF.horizontal_vanish"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_integrable_Fline",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_integrable_Fline.lean",
+      "source_sha256": "7f6adc7d634b11f0c4250b7370961ef40bafa14951e435553b6f846dd55f2dbb",
+      "ported_sha256": "ad5f11129c2ee27dcd8b0f692ed651c3c515411d996ea6cd9a17ddcf2267a19a",
+      "export": "Zeta23.WeilEF.integrable_Fline"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_integrable_mul_logDeriv_GammaR_of_decay",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_integrable_mul_logDeriv_GammaR_of_decay.lean",
+      "source_sha256": "2db7cb5afc7f2695c935ddaac095b3898a8a0005c51ed213fe9cf303640b3671",
+      "ported_sha256": "1790c8f5f690d539a69e29bac06a47ee26ff9a02c74e65d420e06e32fa625b99",
+      "export": "Zeta23.WeilEF.integrable_mul_logDeriv_GammaR_of_decay"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_line_integral_swap",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_line_integral_swap.lean",
+      "source_sha256": "8134b47d7126444231a76c48841e0ab9ba50213ad604c246a002fcf93e136131",
+      "ported_sha256": "901945748bba00fddf53cf402ca9ae1813decebc526b0b5b66f1e73cb01d114f",
+      "export": "Zeta23.WeilEF.line_integral_swap"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_logDeriv_GammaR",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_logDeriv_GammaR.lean",
+      "source_sha256": "13c81926f2125675b7029ab760ea53c2ffea5190d0dc24da51a18b12b885b4ad",
+      "ported_sha256": "1fbeef9539479c0bea2672a3e8c04362ef035cd0bc8b7d7c9d2b476ce2494fdd",
+      "export": "Zeta23.WeilEF.logDeriv_GammaR"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_logDeriv_completedZeta_one_sub",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_logDeriv_completedZeta_one_sub.lean",
+      "source_sha256": "c349f9c6a94c10bc79fc1e0ccde230c7cca52e03e8b8c2c49107e379f6d660ec",
+      "ported_sha256": "c749f17434657c17dfc4021f765140ce4ced052133b0b9defe73727e9c0b70fd",
+      "export": "Zeta23.WeilEF.logDeriv_completedZeta_one_sub"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_logDeriv_partial_fraction_disk",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_logDeriv_partial_fraction_disk.lean",
+      "source_sha256": "f4f05f9fea2a44b0d2f153670e77507495cf8a61bf75f76f31c52dc231464d96",
+      "ported_sha256": "1b6bbdd0d045ecdaf27b005d11c976b6b291ba97b28c2c7edfa50e152a852778",
+      "export": "Zeta23.WeilEF.logDeriv_partial_fraction_disk"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_logDeriv_split",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_logDeriv_split.lean",
+      "source_sha256": "adeed1e1dae0de197693fc154ee993d022ad07db5dc304756cb19f3a75b05bc4",
+      "ported_sha256": "b6b25b0f86256b70323620a8fe8f7328b4514ab4737797c8803343942e42a2ce",
+      "export": "Zeta23.WeilEF.logDeriv_split"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_log_two_add_div_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_log_two_add_div_le.lean",
+      "source_sha256": "64e64ca71929443627b61bbb4cfc18a04c78738010baec1d10466a98a6b5cab8",
+      "ported_sha256": "b42ecaf50641b0debd502daf59e2be254649ab4c9629da31084c0196c495802c",
+      "export": "Zeta23.WeilEF.log_two_add_div_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_log_two_add_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_log_two_add_le.lean",
+      "source_sha256": "e8588d1714378255bb9f14b5299dd1f4b1f7b98481b4b183bec99861a7d1d68d",
+      "ported_sha256": "ca018b41a2837e6acd9120c9fa2866a004c1fab0f1800dfc5f8e28a1fa5426af",
+      "export": "Zeta23.WeilEF.log_two_add_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_norm_Hfn_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_norm_Hfn_le.lean",
+      "source_sha256": "04630944e65ff436c91e705032f85524d52a70e6bada0774cb58dbeae89a704e",
+      "ported_sha256": "9c193cf081a9ee68c7f85546c0a0d099b153cb30345e45c4aae8d4ca08b68d5d",
+      "export": "Zeta23.WeilEF.norm_Hfn_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_norm_logDeriv_Cf_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_norm_logDeriv_Cf_le.lean",
+      "source_sha256": "a9cb92dc8805fe9d73a7caa56507883e6b5f05a3bfc4483403a4d5b57eaa9680",
+      "ported_sha256": "e28a391cfc462f03253267d102ce284eeca3df9ae2c6ac2694654c43d5789ab6",
+      "export": "Zeta23.WeilEF.norm_logDeriv_Cf_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_norm_logDeriv_GammaR_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_norm_logDeriv_GammaR_le.lean",
+      "source_sha256": "c9fa0e395e8c2426a00b9ca86e2c491b40796b5ed48088e3ae97e78cdd035a61",
+      "ported_sha256": "33015d04a22b3cfc83a5fcc74a268e1471ad7836fe050d5ef8a0ac6fae1aaca2",
+      "export": "Zeta23.WeilEF.norm_logDeriv_GammaR_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_norm_logDeriv_zeta_le_of_one_lt_re",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_norm_logDeriv_zeta_le_of_one_lt_re.lean",
+      "source_sha256": "58bb12f35c238c0863dfee0b396e0253fdd4feef7cec8e54eacb728009bb67ea",
+      "ported_sha256": "09a97ada24f1fced3ca535e669a43bb0b3f8e52e98a6eac96f04fc10dbc8a5aa",
+      "export": "Zeta23.WeilEF.norm_logDeriv_zeta_le_of_one_lt_re"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_norm_paperFT_le_uniform",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_norm_paperFT_le_uniform.lean",
+      "source_sha256": "ec04aa03cf3779ed6902c721edb24db8b9159f979f0bad713bc9da136cf52f79",
+      "ported_sha256": "66a4145841d56f21537013623d3c280b3cbcc83978193132742c316c43374387",
+      "export": "Zeta23.WeilEF.norm_paperFT_le_uniform"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_per_n_line_integral",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_per_n_line_integral.lean",
+      "source_sha256": "71078543b618b65387aa00df26c43463616ed65915f13fcd1af062e553be8caa",
+      "ported_sha256": "6d0b34ab4e15cc6b6d36b2ae2a61ba09dcc28b593ac83572f9e8127163ee733e",
+      "export": "Zeta23.WeilEF.per_n_line_integral"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_prime_side_line",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_prime_side_line.lean",
+      "source_sha256": "fae512df3100765a33f73a5a617f82a7a515396085002b23c0de27060ccbb67e",
+      "ported_sha256": "bbb47f439b4101ec325e67fc7db014d6d688afe5bfff3794550be0ae043bdb70",
+      "export": "Zeta23.WeilEF.prime_side_line"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_rectangle_identity",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_rectangle_identity.lean",
+      "source_sha256": "bb17ad72653a4a2abedfd7508462f2b857985d1a13925fd0897c3340cb03624e",
+      "ported_sha256": "130fe8b033b515753728fab966d3befdf91482753c7c7ab24b818a8c3bf94b63",
+      "export": "Zeta23.WeilEF.rectangle_identity"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_sum_mult_six_windows",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_sum_mult_six_windows.lean",
+      "source_sha256": "765531d44f245ae1fabbf5801db013e0a8792ce67114bd2f7f43e9505a2f6ae3",
+      "ported_sha256": "34d2f7b64bd2342d871fa17b4e25e679a51b1d45151ce25084fcce1b2e0667aa",
+      "export": "Zeta23.WeilEF.sum_mult_six_windows"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_vertical_line_shift",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_vertical_line_shift.lean",
+      "source_sha256": "eaa4e6dbceb5f338e00d48975f9508bc00a951bf93a5dcae224965b2238e510f",
+      "ported_sha256": "e9fd5e5c7ef6ecba28275885fb5eae175cf1a8d028246cf8be38c408e942bd40",
+      "export": "Zeta23.WeilEF.vertical_line_shift"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_verticals_eq",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_verticals_eq.lean",
+      "source_sha256": "7f3d3e86f8c6896fa48e1cddb7f3d51424af996f142d3673fcd79eb64857688a",
+      "ported_sha256": "4646c2b83e80ff3a326405b5cb8ff46e91a12f5a9c85b1813050134513c20300",
+      "export": "Zeta23.WeilEF.verticals_eq"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_weight_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_weight_le.lean",
+      "source_sha256": "32c9ebdb9efb654f7e28ec6d71264b57f76a7fdf55a14ba8bd9fbb84f7ecd0f5",
+      "ported_sha256": "518eb2c85247033475c197b365783bae81dad9faefc8bc7d7b42e34d5f7273e7",
+      "export": "Zeta23.WeilEF.weight_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_zero_sum_inv_sq_gen",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_zero_sum_inv_sq_gen.lean",
+      "source_sha256": "8463049e2499c30f7f77ee38a71b26e4508df0e41223f8301d4e4493ef067969",
+      "ported_sha256": "1b3fd55844164d70d8d57c80b9badb80246a38f30634ac828c1e27bb6f47840d",
+      "export": "Zeta23.WeilEF.zero_sum_inv_sq_gen"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_zero_sum_limit",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_zero_sum_limit.lean",
+      "source_sha256": "3fe3b4e03cf48f2d4f762a5f2186fe0f87ba2cd845143399b08826455d1d17f9",
+      "ported_sha256": "23803f9d11bd803e294c1b7d9cbfe394dab1793797d8a5cf45940aba1731f33e",
+      "export": "Zeta23.WeilEF.zero_sum_limit"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_WeilEF_zeta_logDeriv_partial_fraction",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_WeilEF_zeta_logDeriv_partial_fraction.lean",
+      "source_sha256": "8e873542cf0f7eaec6cd97befc9cb3cc7d49e50e76345374d861cc6c1efadee6",
+      "ported_sha256": "9c5a2baa7491a9f32d796b1bfc6358bbbbe241880cb94c1e4d23e1cef5bdae50",
+      "export": "Zeta23.WeilEF.zeta_logDeriv_partial_fraction"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_ZeroConfig_N_le_two_mul_half",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_ZeroConfig_N_le_two_mul_half.lean",
+      "source_sha256": "4d60514a95727b33a2934720bbae8147c6711d6b7560276d4012867ec6229e87",
+      "ported_sha256": "6354d3db32d8d03a9e20ecbb1f5dac6e6e7b5c0487f6c2bbe0d4f38c03193cea",
+      "export": "Zeta23.ZeroConfig.N_le_two_mul_half"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_Zeta0EqZeta",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_Zeta0EqZeta.lean",
+      "source_sha256": "bb6e6635a2a9d183ebc94a2e913a9e7882a688011417cd623812263e926ec0b9",
+      "ported_sha256": "b1db7ab03bf0cf94dca78392995f688b15cdb38f2658c42bfba89b2e54c7bc06",
+      "export": "Zeta23_Zeta0EqZeta"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_ZetaBnd_aux1b",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_ZetaBnd_aux1b.lean",
+      "source_sha256": "a0b6af430213d961bfb1727f0b936e9adf4260545e77dc2f90b1390ec973a908",
+      "ported_sha256": "712ce66003a3aaf2c1e15275e8f8834e3469241bb27fc2416c6f6b51ca5584b7",
+      "export": "Zeta23_ZetaBnd_aux1b"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_hasDerivAt_Zeta0Integral",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_hasDerivAt_Zeta0Integral.lean",
+      "source_sha256": "1683aa30db31f7f86164a2de2eb71a46933a1e151d238818f37b64cc70c78884",
+      "ported_sha256": "93bb5e1f05eda246352ff6c3c8a88e734f91af7c7d8af2e61b25b0f924d6001a",
+      "export": "Zeta23_hasDerivAt_Zeta0Integral"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_isPathConnected_aux",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_isPathConnected_aux.lean",
+      "source_sha256": "4e8ae559d20d5f212d4bc9c71346a4452dcb46401acf3e8b2b53927e7eaadec9",
+      "ported_sha256": "ba49861bef6d948aee64f15818491dd3e00ffb19d83a197bbea7050c293d4cf7",
+      "export": "Zeta23_isPathConnected_aux"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_norm_paperFT_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_norm_paperFT_le.lean",
+      "source_sha256": "1df291ca994cdfffb96b6bbe9589185d6526c4df491df627bd70e626778ce062",
+      "ported_sha256": "563375a41ecf7c823701db914093d23f66869184fcacf9aa1c7be6babe95d22d",
+      "export": "Zeta23.norm_paperFT_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_norm_paperFT_mul_sq_le",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_norm_paperFT_mul_sq_le.lean",
+      "source_sha256": "3af91de8a87160d9925d1a55bb9f4a6b1f2ebb5a7c8b93eaf27ef98e1073507c",
+      "ported_sha256": "666252de3c886be61d769006b7da4e653ccae22c0b9b02d31dca68761e1e8b17",
+      "export": "Zeta23.norm_paperFT_mul_sq_le"
+    },
+    {
+      "module": "Theorems.Thm_Zeta23_paperFT_deriv",
+      "path": "WeilDefect/External/Zeta23/Theorems/Thm_Zeta23_paperFT_deriv.lean",
+      "source_sha256": "6421aef31925eff81e3bda50ef4d93776e1094f63602606d0f5fd72d9ae129ca",
+      "ported_sha256": "85ec05b3d2384b133a69ee63ff3b3ab90b207eb85b0329c183c26a584c13aec4",
+      "export": "Zeta23.paperFT_deriv"
+    }
+  ]
+}

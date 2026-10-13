@@ -108,6 +108,27 @@ https://doi.org/10.1137/0128007
 
 Currently contextual for the general shorted-operator extension. The stable WD-T13 statement is restricted to the strictly positive/invertible-block Schur-complement setting and does not require the general theorem.
 
+
+## Dagger geometry / formal adjoints
+
+### Jón Hákon Garðarsson and Paolo Perrone
+
+*Dagger Categories in Riemannian Geometry.*
+
+arXiv:2610.02257v1 (2026).
+
+https://arxiv.org/abs/2610.02257
+
+Relevant results:
+
+- Theorem 5.8 — classification of daggers on finite-dimensional vector spaces by scalar involution and unimodular Hermitian forms;
+- Proposition 6.16 — for an isometry, the orthogonal complement is the isometric kernel of its dagger;
+- Theorem 7.8 — extension to finitely generated projective modules;
+- Theorem 13.3 — classification of daggers on differential operators by metric-divergence structures, acting as formal adjoints;
+- Propositions 13.7 and 11.12 — metric and divergence are independent data.
+
+**Status:** contextual/non-load-bearing for the current RPB theorem DAG. In particular, the paper explicitly allows indefinite forms and does not supply the positive-energy/coercivity step required by WD-T10/F-4. See the [RPB-108 dagger-geometry interface audit](../notes/REFLECTED_PACKET_BRIDGE_108_DAGGER_GEOMETRY_INTERFACE_AUDIT_20261005.md).
+
 ## Citation policy
 
 The public project distinguishes:

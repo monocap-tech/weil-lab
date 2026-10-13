@@ -6351,3 +6351,15 @@ identity is interpreted as the Fourier energy used in logarithmic coercivity.
 ## RPB-108: actual zeta Jensen growth (2026-10-03)
 
 See [actual Jensen growth definitions](TERMINOLOGY_RPB108_ACTUAL_JENSEN_GROWTH.md) for the actual pole-cleared entire function, analytic Jensen mass, actual circle growth envelope, and count-to-growth bridge. These definitions accompany the first load-bearing source use. An explicit growth rate and local logarithmic sampling bound remain open.
+
+## RPB-108: actual theta growth (2026-10-03)
+
+See [actual theta growth definitions](TERMINOLOGY_RPB108_ACTUAL_THETA_GROWTH.md) for the actual theta remainder, its global exponential majorant, and factorial moment bound. The completed-zeta circle-envelope rate remains the next analytic obligation.
+
+## RPB-108: actual complex Mellin tail comparison (2026-10-03)
+
+See [actual Mellin tail definitions](TERMINOLOGY_RPB108_ACTUAL_MELLIN_GROWTH.md) for the actual tail integrand, integer moment domination and natural-radius disk comparison. The full completed-zeta identification and circle-envelope rate remain open.
+
+## RPB-108: actual reflected Mellin identity and factorial envelope (2026-10-03)
+
+See [actual reflected Mellin definitions](TERMINOLOGY_RPB108_ACTUAL_MELLIN_REPRESENTATION.md) for the zero-extended tail kernel, reflected kernel, actual completed-zeta half-sum identity, and actual factorial majorant. The scalar O(T log T) conversion and sampling estimates remain open.

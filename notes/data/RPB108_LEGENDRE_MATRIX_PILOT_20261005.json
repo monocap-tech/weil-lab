@@ -1,0 +1,97 @@
+{
+  "status": "exploratory; no interval quadrature enclosure",
+  "results": [
+    {
+      "a": 0.25,
+      "degree": 7,
+      "zmax": 8192,
+      "nodes": 64,
+      "prime_powers": [],
+      "eigenvalues": [
+        0.03340822921354036,
+        0.40912350454224006,
+        0.9479212761631644,
+        1.254863167463061,
+        1.5451154477134572,
+        1.7635218496791887,
+        2.6211258811817393,
+        2.8495541940283267
+      ],
+      "quadrature_repeat_difference": 1.1543850929321181e-08,
+      "analytic_tail_bound_evaluated_in_float": 0.389130886125983,
+      "certified_sign": false
+    },
+    {
+      "a": 0.5,
+      "degree": 7,
+      "zmax": 8192,
+      "nodes": 64,
+      "prime_powers": [
+        2
+      ],
+      "eigenvalues": [
+        5.01805014595786e-06,
+        0.00040380512833437793,
+        0.023908667043305604,
+        0.4024383382082018,
+        1.0448992134103552,
+        1.2561991876516823,
+        1.8067830629527548,
+        2.1693121739502734
+      ],
+      "quadrature_repeat_difference": 6.687437998954081e-12,
+      "analytic_tail_bound_evaluated_in_float": 0.39485313856796844,
+      "certified_sign": false
+    },
+    {
+      "a": 0.75,
+      "degree": 7,
+      "zmax": 8192,
+      "nodes": 64,
+      "prime_powers": [
+        2,
+        3,
+        4
+      ],
+      "eigenvalues": [
+        1.0825228049689273e-06,
+        4.06602789987013e-05,
+        0.006175851678180577,
+        0.04006886704728672,
+        0.2743695110479425,
+        0.3240347253807718,
+        1.453570682237992,
+        1.8497756322555337
+      ],
+      "quadrature_repeat_difference": 2.9324437100191234e-14,
+      "analytic_tail_bound_evaluated_in_float": 0.42582410996344233,
+      "certified_sign": false
+    },
+    {
+      "a": 1.0,
+      "degree": 7,
+      "zmax": 8192,
+      "nodes": 64,
+      "prime_powers": [
+        2,
+        3,
+        4,
+        5,
+        7
+      ],
+      "eigenvalues": [
+        8.430808161839776e-08,
+        7.260206348088876e-06,
+        0.0008740528161478628,
+        0.0050694286491377175,
+        0.07378533674677967,
+        0.12629328441529597,
+        0.8912195647487047,
+        1.9806842515654381
+      ],
+      "quadrature_repeat_difference": 1.8663138903354614e-14,
+      "analytic_tail_bound_evaluated_in_float": 0.47801366258126426,
+      "certified_sign": false
+    }
+  ]
+}

@@ -1,0 +1,1848 @@
+{
+  "research_head": "dbda720299b7c1d474aa25d8826263764fd5c1fa",
+  "scope": "All 152 non-external Lean files in pinned weil-lab research tree; external Zeta23 formula closure excluded because it contains no WD-T38 adapter.",
+  "read_errors": [],
+  "files": [
+    {
+      "path": "WeilDefect.lean",
+      "sha": "1d0add2c0010a41ea9211d166b485a992c77edf8",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaArchimedeanCoordinates.lean",
+      "sha": "cc5041cda1d1cf91ef30c6319dbe0a9c264b4871",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaArchimedeanTransport.lean",
+      "sha": "9abe6465ad2b07eb66b72342ea97292865f78f2a",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaCorrelationFourierAgreement.lean",
+      "sha": "60453bd214c43feedb0fa64d74a15bd452e48998",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaCorrelationInverseAttachment.lean",
+      "sha": "d407c2f594e026b0f2aaa6eb9c34b949f669d488",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaCorrelationPoles.lean",
+      "sha": "cdc88bdc00072ec91cc5252bc57d9aa1c88ccbe2",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaCorrelationRegularity.lean",
+      "sha": "aec50edc352dc87e2399ad31379cf5aff2b5c9d7",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaCorrelationTransform.lean",
+      "sha": "d5aa1095b2fe64933ad8db64732d232631d3d3b7",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaDivisorSummability.lean",
+      "sha": "a3381aabc2f76ff5d67890c09359d4648c9f303f",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaDivisorWindows.lean",
+      "sha": "be8a5dd0a99d8d32ebd37237edc12787f8f6ba59",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaDyadicSummability.lean",
+      "sha": "726331a228771923867633f73d8013b0a0f07dfc",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaFactorialEnvelope.lean",
+      "sha": "c7d7033204e6496ef2cc1213ac62e8b50e198dcc",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaGreenCanonical.lean",
+      "sha": "db60a9a6796e6b83cc066e92d41ff13d9f28e33e",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaGreenEnergy.lean",
+      "sha": "874c9b8b103fddaded5887935d910d6e6d4f8d06",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaGreenSampling.lean",
+      "sha": "3795b6fd172708c9b3a0549598429df1fcfdca58",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaJensenGrowth.lean",
+      "sha": "ac9af75b33f9851b345944aabf2c74be90cceee2",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaLiteralFormula.lean",
+      "sha": "b52b130605be6b564e31bb91afb0f47d24009451",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaLogGrowth.lean",
+      "sha": "e4df6860c360fccc7610785a43d9370f9a028563",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaMellinGrowth.lean",
+      "sha": "1dbeb122b88dfa8c44825b54454ecde2e7ea80bf",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaMellinRepresentation.lean",
+      "sha": "fc674626a6253a7e6b507be03b3c702b6e8acd47",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaMultiplicity.lean",
+      "sha": "58b65e72c5d215171326eb465343e3cae9833ad2",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaMultiplicitySymmetry.lean",
+      "sha": "85971f8cb856232225a804a969e9f7f42239bc1f",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaNativeSourceAttachment.lean",
+      "sha": "925c1842765d02dae1b39f6f1be06eb3339c8c9b",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaNativeWeilForm.lean",
+      "sha": "961b6742782fa3f808ac9b70cfadfc0790c8fc32",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaPairSourceAttachment.lean",
+      "sha": "e2490fc34eb60c884e3b8d3abbac0f01ea950089",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaPrimeTransport.lean",
+      "sha": "f27b56c4ec5eca8739e2ccf1e44057b037ad1724",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaRawGreenSampling.lean",
+      "sha": "5b3c614d1efd22e263a7cd9b07261371fbc80ed4",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaSourceDecomposition.lean",
+      "sha": "3031098da4785b0b0f22202a34af9a067f5a8a6e",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaThetaGrowth.lean",
+      "sha": "edf7fae971058270fdd1f202d261c48b88db64e2",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaWeightedSampling.lean",
+      "sha": "d8f5b11bb34c01b2d8f7be0d6111a4c592a78c2b",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaWeilZeroForm.lean",
+      "sha": "517093a848646ae92f9307ab5083c04110515e5f",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/ActualZetaZeroCoordinates.lean",
+      "sha": "b902f7916d1e1fe76562e2ce9d0314b3522dc9d2",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/Coadaptation.lean",
+      "sha": "d01f92d725b9ad412130424b74bea9efadcda1e1",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/FarTail.lean",
+      "sha": "d0461bbf09d2928f43807abc8e347c36883f231b",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/LogarithmicForm.lean",
+      "sha": "ae932d4f3f7e4d6d06dbd778a5708927172238dc",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/NextJet.lean",
+      "sha": "df0d86d7c86f7b6ae8ae142f6a5018bacb65a0b6",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/NoSobolevBootstrap.lean",
+      "sha": "57153cd26db57d683b5603913e9c1ace42ca8035",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/PrimeSupport.lean",
+      "sha": "ed91ac08a670ae1405cb994b05d06065f5452b5b",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Arithmetic/Scalarization.lean",
+      "sha": "3330f6fc2471a151c8f16a46abdbb4e0abab8ada",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/DirichletEnergy.lean",
+      "sha": "68c53704d15038b6365a9835d79b7c6d4a3d548b",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/DirichletGreenMixed.lean",
+      "sha": "06ac241b1fa392e96773150751cb8c2339d8d69f",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/DirichletResolvent.lean",
+      "sha": "2564a66892ed3c623249d621d54a556bcec8857b",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Examples/Algebraic.lean",
+      "sha": "83196783b21e40eee21ca74c12b3b8094c2af391",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Examples/CriticalNonattainment.lean",
+      "sha": "eb98e663282551b1dfede47f148132d93051d079",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Examples/MovingSectors.lean",
+      "sha": "e51c450d99e35d59e56ffc5803dc48ad9654302b",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Examples/SpectralScreening.lean",
+      "sha": "b061459481814e5fdc9d58c75ee3b01c1890ffce",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Examples/WeakCriticalFallthrough.lean",
+      "sha": "746b1d4716e72a0f607c38c8412d61771d9acae2",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Filtration/CriticalDichotomy.lean",
+      "sha": "7102a25b28f7a8cf72e805f845bad23daf535aa2",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Filtration/EndpointJump.lean",
+      "sha": "d7743465cac328c8aa6236fb12942117b8e67a7e",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Filtration/FiniteNegativeSector.lean",
+      "sha": "f7f2a50f8183ba1a617ce1cf97855461bbbbda5f",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Filtration/RepresentativeBlowup.lean",
+      "sha": "6645820485d46afe8566e1812de0e301fb290ba2",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Filtration/RightLimit.lean",
+      "sha": "2df4a12993a7fdad3695deb5e68e7ae526b8ebee",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/FiniteExponentialIndependence.lean",
+      "sha": "7244cb18dd652c02619f6b56061443e00097df5f",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/FiniteHeadApproximation.lean",
+      "sha": "1f0222e44d03a9b23d0ae3900c3f884893f2eaa1",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/Negative.lean",
+      "sha": "ff0bae40f6aba4c04a8d3fd75a8fe309f8ea79ae",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/Neutral.lean",
+      "sha": "4dc461eb06a2839d6e181958f623ede3e21818be",
+      "hits": [
+        {
+          "line": 478,
+          "text": "structure NeutralDefectMorphology"
+        },
+        {
+          "line": 504,
+          "text": "coefficientCarrier :"
+        },
+        {
+          "line": 528,
+          "text": "noncomputable def wd_t38_attained_unit_gain_neutral_morphology"
+        },
+        {
+          "line": 597,
+          "text": "NeutralDefectMorphology"
+        },
+        {
+          "line": 629,
+          "text": "coefficientCarrier := haCarrier"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralArchimedeanExterior.lean",
+      "sha": "dc3e8c0e1b72769c8cdd6970c8b1131d395c24bc",
+      "hits": [
+        {
+          "line": 84,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (δ : ℝ) : ℝ → ℂ :="
+        },
+        {
+          "line": 88,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 100,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 113,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 124,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 148,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 162,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 197,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralCanonicalFormDomain.lean",
+      "sha": "2bf19165fce3a0cfa6e4d782d68caab268aaf82b",
+      "hits": [
+        {
+          "line": 94,
+          "text": "{carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs} {a : ℝ}"
+        },
+        {
+          "line": 106,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralDigammaCancellation.lean",
+      "sha": "6f1ffdfdd94ab79ce0f08ed1afa6195150e4b81d",
+      "hits": [
+        {
+          "line": 69,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 76,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralDigammaCentering.lean",
+      "sha": "0e2c679ae105a1fc0e7cead1cb33a6e190ea3183",
+      "hits": [
+        {
+          "line": 51,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 68,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 82,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 96,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralDigammaEulerHolomorphic.lean",
+      "sha": "e3ae2c1ecd5d0bca73ba5b2eb9fa1d328c0a69e1",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralDigammaEulerIdentity.lean",
+      "sha": "5e236a85ccd8335f116e917e8c77cd94198ef626",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralDigammaLimit.lean",
+      "sha": "68e9451c4e899c659f0d61e17b49384dc260aeb4",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralDigammaPairingLimit.lean",
+      "sha": "23afba0e8b87f3255ebd9023f9d70161c22c3a7a",
+      "hits": [
+        {
+          "line": 22,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 30,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 41,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 73,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 78,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 103,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 135,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 147,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralDigammaRealAnchor.lean",
+      "sha": "ab7c5f233a4a2976bc3f6cca96dd529145fedff4",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralDigammaRealBounds.lean",
+      "sha": "82d0918374ac39fb1e1799a5ebf67e27e46ab87f",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralDigammaRealComplexAnchor.lean",
+      "sha": "ec5ef4a4c4eaf1c21b96b3f5a979fd4764a0531f",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralDigammaStepDecay.lean",
+      "sha": "ebdc030a45724aa77a9e96a9f4f847744824bded",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralExteriorAttachment.lean",
+      "sha": "10b8eee12415382b27e69bd25e210973e20f8120",
+      "hits": [
+        {
+          "line": 17,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 29,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 40,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 57,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralExteriorResidual.lean",
+      "sha": "016129d75f5368032392af46db03df752149f217",
+      "hits": [
+        {
+          "line": 37,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 44,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 53,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 79,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 84,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 90,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 97,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 104,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 121,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralExteriorSourceAttachment.lean",
+      "sha": "49daf738913f8f6e4587adfe8a509dcfb90895b3",
+      "hits": [
+        {
+          "line": 17,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 27,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 41,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 60,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralFiniteGauss.lean",
+      "sha": "b5ba95325f037c893d1da96866bb3fd064764978",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralFiniteGaussConvolution.lean",
+      "sha": "38c6bf719c8cb5aecc4ffcb5673d14af57d0fad9",
+      "hits": [
+        {
+          "line": 54,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (N : ℕ) : ℝ → ℂ :="
+        },
+        {
+          "line": 58,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (N : ℕ) :"
+        },
+        {
+          "line": 65,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (N : ℕ) (ξ : ℝ) :"
+        },
+        {
+          "line": 74,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (N : ℕ)"
+        },
+        {
+          "line": 87,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (N : ℕ)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralFourierCarrier.lean",
+      "sha": "03fe8ab1b6a3190e40a91b7a467c975e0d87841d",
+      "hits": [
+        {
+          "line": 28,
+          "text": "structure NeutralPhysicalFourierCarrier"
+        },
+        {
+          "line": 42,
+          "text": "namespace NeutralPhysicalFourierCarrier"
+        },
+        {
+          "line": 52,
+          "text": "(d : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 58,
+          "text": "(d : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 64,
+          "text": "(d : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 71,
+          "text": "(d : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 78,
+          "text": "(d : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 86,
+          "text": "(d : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 95,
+          "text": "(d : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 103,
+          "text": "end NeutralPhysicalFourierCarrier"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussExteriorLimit.lean",
+      "sha": "9ec7fdf7e472a0b602482c1089a22ab7d7005eb8",
+      "hits": [
+        {
+          "line": 39,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (N : ℕ) (x : ℝ) :"
+        },
+        {
+          "line": 51,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (N : ℕ) (x : ℝ) :"
+        },
+        {
+          "line": 63,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 97,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussExteriorWeak.lean",
+      "sha": "079b87d17502e6159dffee61b3fb993ab31fa735",
+      "hits": [
+        {
+          "line": 16,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 31,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 70,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 96,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 117,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussMultiplier.lean",
+      "sha": "fd9a0350a97f5f02ce1d3eadc242cf74a83b11b7",
+      "hits": [
+        {
+          "line": 96,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (N : ℕ)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianAdmissibility.lean",
+      "sha": "dfcfb49e443a00a6bea91c6bed15daed88ff0282",
+      "hits": [
+        {
+          "line": 43,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 85,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 155,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 273,
+          "text": "{carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs}"
+        },
+        {
+          "line": 355,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 402,
+          "text": "{carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs}"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianAssembly.lean",
+      "sha": "01ce40bffd08cf73eb7d70e70f544ff479bfb4ce",
+      "hits": [
+        {
+          "line": 17,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 45,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 61,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianCutoff.lean",
+      "sha": "1cbe03541d4521026205de8475f78a733e62abe0",
+      "hits": [
+        {
+          "line": 272,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 283,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 297,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianCutoffPairing.lean",
+      "sha": "1accc07c182e5348212734f0b00cdf676a02b164",
+      "hits": [
+        {
+          "line": 17,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 98,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 131,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianDualityAudit.lean",
+      "sha": "e9d4fde62ea2bbd8e7c586b134e81e58103b9085",
+      "hits": [
+        {
+          "line": 31,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 43,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 56,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 72,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 92,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianFilteredSchwartz.lean",
+      "sha": "c639b2f5df08d2365cf9dc0c6933a60ed72dbebe",
+      "hits": [
+        {
+          "line": 25,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 38,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 63,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 77,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 135,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianHermitianBridge.lean",
+      "sha": "b32fc8623b6c3e69efd3c0e82019997bf76a1e92",
+      "hits": [
+        {
+          "line": 66,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 100,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 135,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (s : ℝ) :"
+        },
+        {
+          "line": 146,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianPairing.lean",
+      "sha": "54732470ab2cf2a3a99be646372fdc186225363a",
+      "hits": [
+        {
+          "line": 18,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 74,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 98,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 117,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 187,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 382,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 401,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianSchwartz.lean",
+      "sha": "4bb1fec7270d25fc8a9b899b8d3f204e12b342b1",
+      "hits": [
+        {
+          "line": 22,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 61,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 85,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 102,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianSchwartzSeed.lean",
+      "sha": "5874ebc61f915e4612fa6ee02bec033a418b0d6a",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianSupportGap.lean",
+      "sha": "d29c784bfdb15681c103e906f42a3ff946a0db76",
+      "hits": [
+        {
+          "line": 230,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 242,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) : ℝ :="
+        },
+        {
+          "line": 250,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 265,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 333,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralGaussianTail.lean",
+      "sha": "7ee6dacf94e4e6b4c694209a7be9ee4ba72846e6",
+      "hits": [
+        {
+          "line": 66,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralInnerCollarRegularity.lean",
+      "sha": "68166c337aa9845133eddbc6374bdd9223f57ff0",
+      "hits": [
+        {
+          "line": 34,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 41,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 52,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 83,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 106,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 122,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 141,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 226,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 241,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralIntegralGrowthGaussian.lean",
+      "sha": "a6c45e4a13c704a522164d0a420435bdc7858636",
+      "hits": [
+        {
+          "line": 72,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 102,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 135,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 153,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralIntegralGrowthWeilIdentity.lean",
+      "sha": "733587e649dadbc4fdbc8d2b97a2774813889753",
+      "hits": [
+        {
+          "line": 16,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 86,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 205,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 226,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 237,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLaplaceFourier.lean",
+      "sha": "63ed6b78651ff2ad5c9e4f78ede851d84b4ba70d",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLogBackgroundEnergy.lean",
+      "sha": "77112d87bad6633ce59690df69a212399bf45e63",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLogBackgroundSourceAttachment.lean",
+      "sha": "c6b675d53cdd8e8d8bb7f1f032a01430151663a9",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLogDirichletSourceAttachment.lean",
+      "sha": "952bf3a367c1fbe682c00dd49dd454e5fcc0f73c",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLogFormEnergy.lean",
+      "sha": "8b91dba883fc31e1e77645dd2ffe67546c6e8bb4",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLogFormGraph.lean",
+      "sha": "6a25651c2c54d7ff9e4d20d4b410b56b7d5047a3",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLogHilbertCarrier.lean",
+      "sha": "679d58b8f0cfa6b4f7d28c48ce844a41cdce2844",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLogMultiplierSourceAttachment.lean",
+      "sha": "170c31cc3c09cd63c0aeb372f800043ad8a3cc4a",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLogPoleSourceAttachment.lean",
+      "sha": "331ad94a02336a124eb6c17e3ee94480694a8c5c",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLogSelectedSourceAttachment.lean",
+      "sha": "edef77b3479b2908a1bfd46b3b8df035786979b6",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralLogSourceDomainRealization.lean",
+      "sha": "e36c1e9c4cbc08ca4092701afaea3329873b738e",
+      "hits": [
+        {
+          "line": 28,
+          "text": "{carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs} {a : ℝ}"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralNativeDirichletCoordinates.lean",
+      "sha": "999c6e5eb73154f72135d5e91220afad5a905e81",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralNativeDirichletSummability.lean",
+      "sha": "5c9ce6e218ae9117acd49e411d6c99a21fddcbd6",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralNativeDirichletSynthesis.lean",
+      "sha": "c0425eb43b0ea9b63cd970086aad0af505a59c8e",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralNativeFourierDerivative.lean",
+      "sha": "0d5d8d6b222294f0abbc9503155e374e46aec948",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralNativeFourierRepresentative.lean",
+      "sha": "5c4c333b2430d83b688d6fa9dccfea27d7e7736b",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralNativeLogFormAttachment.lean",
+      "sha": "4fe12b05f5c8a241ff39ced777878ac57f2da91f",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralNativeSourceCustodyAudit.lean",
+      "sha": "aed4cf549f3bfcd7d6338dd23c80c897a0597bdf",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralNativeSupport.lean",
+      "sha": "335c66770dad216b2353a204d85b5b74525629d3",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralNativeWeakDerivative.lean",
+      "sha": "d2c3baa50fbc60df4dd56d03085d33fccee973b7",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralOperatorFormEnergy.lean",
+      "sha": "862434360f90cbdd9bd4024a9fd6dd1f5afd79b3",
+      "hits": [
+        {
+          "line": 58,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (a : ℝ)"
+        },
+        {
+          "line": 71,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralOperatorQuadraticBridge.lean",
+      "sha": "89e41c3a3bf68c4685d461a1d989a0532a020f32",
+      "hits": [
+        {
+          "line": 22,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (a : ℝ)"
+        },
+        {
+          "line": 47,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (a : ℝ)"
+        },
+        {
+          "line": 56,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (a : ℝ)"
+        },
+        {
+          "line": 69,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralSelectedBackground.lean",
+      "sha": "be63417e922d7050e9c11d550b5e2b2f1265f64f",
+      "hits": [
+        {
+          "line": 62,
+          "text": "(hreal : C u = ((WDT10.effectivePositive Spos X_B)†) k)"
+        },
+        {
+          "line": 65,
+          "text": "(neutralNegativeSynthesis (WDT10.effectivePositive Spos X_B) C) S_B k = 0 := by"
+        },
+        {
+          "line": 67,
+          "text": "(neutralNegativeSynthesis (WDT10.effectivePositive Spos X_B) C)"
+        },
+        {
+          "line": 70,
+          "text": "(WDT10.effectivePositive Spos X_B) C u k hunit hreal hk).2"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralShiftedDigammaAction.lean",
+      "sha": "3a769eee13cff80100c34b154e153d1bfe2d2d7f",
+      "hits": [
+        {
+          "line": 50,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 74,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralSourceBoundaryRemoval.lean",
+      "sha": "5cb7d738eed3876a2acf3ca03252954be1dbbbda",
+      "hits": [
+        {
+          "line": 41,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 60,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 77,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 105,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralSourceDefectLocalization.lean",
+      "sha": "b2d5fd9bad40f5d01cd82f1b2d1b6b5aab06277b",
+      "hits": [
+        {
+          "line": 17,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 25,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 33,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 49,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 62,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 78,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralSourceOperatorDomain.lean",
+      "sha": "2d7f07fe842550a4b2e5958e7d3a0d8c2de81250",
+      "hits": [
+        {
+          "line": 33,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 40,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 46,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 61,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 74,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 80,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 90,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 112,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralSourceWitnessAudit.lean",
+      "sha": "cef6b6e6802491f18263132356d0a57ebbccea21",
+      "hits": [
+        {
+          "line": 61,
+          "text": "def NeutralDefectMorphology.zeroDensityReindex"
+        },
+        {
+          "line": 62,
+          "text": "(d : NeutralDefectMorphology (EndpointObs := EndpointObs) (RightObs := RightObs) A c aSeq uSeq phi aLim uLim"
+        },
+        {
+          "line": 64,
+          "text": "NeutralDefectMorphology (EndpointObs := EndpointObs) (RightObs := RightObs) A c aSeq uSeq phi aLim uLim"
+        },
+        {
+          "line": 71,
+          "text": "coefficientCarrier := d.coefficientCarrier"
+        },
+        {
+          "line": 78,
+          "text": "theorem NeutralDefectMorphology.zeroDensityReindex_nullExtension"
+        },
+        {
+          "line": 79,
+          "text": "(d : NeutralDefectMorphology (EndpointObs := EndpointObs) (RightObs := RightObs) A c aSeq uSeq phi aLim uLim"
+        },
+        {
+          "line": 92,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilCoreSplit.lean",
+      "sha": "19705b44e1d3795be15b7b00646530f6e4ffd601",
+      "hits": [
+        {
+          "line": 26,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 82,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 117,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilFrozenExtension.lean",
+      "sha": "9499aed94305708e559f2e8acbd63ee086f62c04",
+      "hits": [
+        {
+          "line": 32,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 39,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 47,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 64,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 139,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 157,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 166,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 194,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilMultiplier.lean",
+      "sha": "4c24084c8a058cbb6685d54bc8226b746cabc413",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilPoleGrowth.lean",
+      "sha": "2c1b440bb7b8c32dcde58ac5addc0fbbeab607a2",
+      "hits": [
+        {
+          "line": 57,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (s : ℝ) : ℂ :="
+        },
+        {
+          "line": 61,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (s : ℝ) :"
+        },
+        {
+          "line": 71,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) : ℝ → ℂ :="
+        },
+        {
+          "line": 77,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) :"
+        },
+        {
+          "line": 84,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilPrimeRegularity.lean",
+      "sha": "7e6d285d64357e775816dfcedbc2486e44b5049f",
+      "hits": [
+        {
+          "line": 16,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 23,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 36,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 43,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 68,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 84,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 123,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs) (a b : ℝ) :"
+        },
+        {
+          "line": 130,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilPrimeShellTranslation.lean",
+      "sha": "628f979cb0e7b33d22c1a1144ae9e5c25560d257",
+      "hits": [
+        {
+          "line": 69,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 81,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 90,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 99,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 118,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 133,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 188,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 198,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilResidualCarrier.lean",
+      "sha": "d11e51ea0199f134b3c8f17f76c341a27d6d2881",
+      "hits": [
+        {
+          "line": 103,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 129,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilSourceDiagonal.lean",
+      "sha": "e1949dd4a3996e2e9445c3117aaa3459d3da36b9",
+      "hits": [
+        {
+          "line": 29,
+          "text": "{carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs} {a : ℝ}"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilSourceFormDomain.lean",
+      "sha": "f094847751d2f3fb346eb766b8a1a9e541241b57",
+      "hits": [
+        {
+          "line": 47,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 63,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 80,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 125,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilSourceMixedForm.lean",
+      "sha": "f2ce89e5e020f09de54d1864da928bd99a841cbd",
+      "hits": [
+        {
+          "line": 35,
+          "text": "variable {carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs}"
+        },
+        {
+          "line": 195,
+          "text": "rw [NeutralPhysicalFourierCarrier.l2Mode, hx]]"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilSourceThreshold.lean",
+      "sha": "2e1a1d755da1414651fe088cf42a787a3df213fa",
+      "hits": [
+        {
+          "line": 168,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 176,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 184,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 198,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 276,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 319,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 342,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/NeutralWeilSourceWindowAttachment.lean",
+      "sha": "5be297c758f1f169be2f4eadf00996beeae3a6e4",
+      "hits": [
+        {
+          "line": 45,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 73,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 97,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        },
+        {
+          "line": 132,
+          "text": "(carrier : NeutralPhysicalFourierCarrier c EndpointObs RightObs)"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Morphology/Noncompact.lean",
+      "sha": "f5b029598b0b80c5fc8ef292a858bb63d9c3a076",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/NativeHilbertSchmidt.lean",
+      "sha": "d94c9020fdd9c3acadf0e143735b21bb12bd8598",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/PairGeometry.lean",
+      "sha": "5361e8384880fcd799fbd62151b65be7a11f3cf8",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/ProblemOneIndependence.lean",
+      "sha": "a799e0931c557a977b8163fc21940defa366fdee",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/RationalResponse.lean",
+      "sha": "aed1edaa7734adb0a1ede11aac2683053a1345da",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Residues.lean",
+      "sha": "5627b23894a055c07ebd148df347aa58a8595447",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/BackgroundCustody.lean",
+      "sha": "eec7e8db876cf2504bc3cca349b68bb60d93a626",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/DefectIndex.lean",
+      "sha": "a98868b021e0e5dfa88a1b2c86a5ece424072056",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/Douglas.lean",
+      "sha": "319a5981f41c1469cfb64c00036d396abb0aa541",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/FiniteIndexCap.lean",
+      "sha": "9c61af90ab1374f65df446c558790a8b7f4dff27",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/FinitePositiveShadows.lean",
+      "sha": "ed287dfd0dbe7e47cdbb074c0fda64bcd0bc6e41",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/FiniteSectorInertia.lean",
+      "sha": "5404514d874c1cdc710045cab7819601d0a6994f",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/GraphNormalForm.lean",
+      "sha": "d1fdbc0570f84fa5235f2004922fb2b1bfee3b7d",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/MonotoneScreening.lean",
+      "sha": "b4424d28e14466275f593e58683170d9e952b134",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/Quadratic.lean",
+      "sha": "293ad2e94fdb004d3de4a7493baa4b9dae767e79",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/RankOne.lean",
+      "sha": "2c37aaf3546b49cbab8be2c58ee954fd6989a965",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/ResidualBudget.lean",
+      "sha": "1ffb6b2a80620b266798d40e68fe3329dc2cfb78",
+      "hits": [
+        {
+          "line": 86,
+          "text": "noncomputable def effectivePositive"
+        },
+        {
+          "line": 99,
+          "text": "effectivePositive Spos X_B ∘L (effectivePositive Spos X_B)†"
+        },
+        {
+          "line": 102,
+          "text": "unfold effectivePositive"
+        },
+        {
+          "line": 129,
+          "text": "effectivePositive Spos X_B ∘L (effectivePositive Spos X_B)† := by"
+        },
+        {
+          "line": 154,
+          "text": "physicalDefect (effectivePositive Spos X_B) S_M := by"
+        },
+        {
+          "line": 164,
+          "text": "effectivePositive Spos X_B ∘L"
+        },
+        {
+          "line": 165,
+          "text": "(effectivePositive Spos X_B)† - S_M ∘L S_M† := by"
+        },
+        {
+          "line": 200,
+          "text": "↔ PhysicalNonnegative (effectivePositive Spos X_B) S_M := by"
+        },
+        {
+          "line": 205,
+          "text": "= physicalQ (effectivePositive Spos X_B) S_M h := by"
+        },
+        {
+          "line": 212,
+          "text": "(effectivePositive Spos X_B) S_M h"
+        },
+        {
+          "line": 235,
+          "text": "DouglasUnitData S_M (effectivePositive Spos X_B)) :"
+        },
+        {
+          "line": 240,
+          "text": "∧ S_M = -(effectivePositive Spos X_B ∘L Y) := by"
+        },
+        {
+          "line": 245,
+          "text": "(effectivePositive Spos X_B) S_M hDouglas"
+        },
+        {
+          "line": 258,
+          "text": "DouglasUnitData S_M (effectivePositive Spos X_B)) :"
+        },
+        {
+          "line": 262,
+          "text": "= physicalDefect (effectivePositive Spos X_B) S_M"
+        },
+        {
+          "line": 268,
+          "text": "∧ S_M = -(effectivePositive Spos X_B ∘L Y)) := by"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Screening/SequentialElimination.lean",
+      "sha": "482eee655471c74e6e87733b3441b2bd26990ab9",
+      "hits": [
+        {
+          "line": 38,
+          "text": "effectivePositive Spos X1 ∘L residualBudget Y2 ∘L"
+        },
+        {
+          "line": 39,
+          "text": "(effectivePositive Spos X1)†"
+        },
+        {
+          "line": 52,
+          "text": "rw [effectivePositive, ContinuousLinearMap.adjoint_comp]"
+        },
+        {
+          "line": 71,
+          "text": "(hB2 : S_B2 = -(effectivePositive Spos X1 ∘L Y2)) :"
+        },
+        {
+          "line": 78,
+          "text": "effectivePositive Spos X1 ∘L (effectivePositive Spos X1)† -"
+        },
+        {
+          "line": 83,
+          "text": "effectivePositive (effectivePositive Spos X1) Y2 ∘L"
+        },
+        {
+          "line": 84,
+          "text": "(effectivePositive (effectivePositive Spos X1) Y2)† := by"
+        },
+        {
+          "line": 86,
+          "text": "(effectivePositive Spos X1) S_B2 Y2 hY2 hB2"
+        },
+        {
+          "line": 88,
+          "text": "effectivePositive Spos X1 ∘L residualBudget Y2 ∘L"
+        },
+        {
+          "line": 89,
+          "text": "(effectivePositive Spos X1)† := by"
+        },
+        {
+          "line": 91,
+          "text": "(effectivePositive Spos X1) Y2 hY2"
+        },
+        {
+          "line": 110,
+          "text": "(hB2 : S_B2 = -(effectivePositive Spos X1 ∘L Y2)) :"
+        },
+        {
+          "line": 117,
+          "text": "effectivePositive Spos X1 ∘L residualBudget Y2 ∘L"
+        },
+        {
+          "line": 118,
+          "text": "(effectivePositive Spos X1)†) := by"
+        }
+      ]
+    },
+    {
+      "path": "WeilDefect/Screening/ShortedCovariance.lean",
+      "sha": "a0c3ee14272f34dff041601b5abdfaeca7841e8b",
+      "hits": []
+    },
+    {
+      "path": "WeilDefect/Screening/Taxonomy.lean",
+      "sha": "f86f72692fb4465827e4ec9f374a5a3c64f3d22a",
+      "hits": []
+    }
+  ],
+  "canonical_main": {
+    "repository": "monocap-tech/weil",
+    "head": "b019d40205680f9761a4b0a80cbcad56ee1b606b",
+    "lean_files": 44,
+    "matching_nonroot_modules": 42,
+    "differing": [
+      "WeilDefect.lean",
+      "WeilDefect/Morphology/Neutral.lean"
+    ]
+  },
+  "determination": "The attained-neutral constructor appears only at its definition. NeutralDefectMorphology usages occur in that definition and its zero-density audit reindexing. No concrete actual-zeta application recovered in these pinned trees. Unit-gain and physical-adjoint constructor hypotheses were omitted from its output and are preserved by this repair."
+}
