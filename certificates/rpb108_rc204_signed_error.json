@@ -1,0 +1,39 @@
+{
+  "canonical_half_Gram_inverse_gate_passed": false,
+  "certified_relative_bound_reduction": "139/2504",
+  "common_exact_weighted_row_denominator": "10000000000000000000000000000000000000000000000000000000000000000000000",
+  "diagonal_floor_allowance_grid_units": 6,
+  "distinct_signed_rank_one_controls_verified": 128,
+  "failed_previous_grid_factor": "591/250000",
+  "failed_previous_grid_witness_leading_minor_size": 6,
+  "failed_previous_grid_witness_mask": 12,
+  "input_rc203_git_blob_sha": "5d321b659367ba459682b557b12ef63451f63e49",
+  "milestone": "RC204",
+  "next_cursor": "transport this error envelope through the full RC203 variational and residual inverse bounds",
+  "positive_integer_leading_principal_minor_tests": 768,
+  "previous_uniform_squared_error_factor": "313/125000",
+  "selected_uniform_squared_error_factor": "473/200000",
+  "six_source_inverse_width_upper_unchanged": "743003/1000000",
+  "source_D_Gram_lower_floor_scale": "100000000000000000000",
+  "source_family": [
+    "P0",
+    "P2",
+    "f0",
+    "psi0",
+    "w14",
+    "v10"
+  ],
+  "stage_I_closed": false,
+  "starting_commit": "a390010cf32cb2f0d773c7f5b7c8d5ec37540880",
+  "status": "PASS: sharper six-source trial-action-error envelope; inverse gate remains open",
+  "trial_family": [
+    "P0",
+    "P2",
+    "f0",
+    "psi0",
+    "w14",
+    "q185",
+    "v10",
+    "q202"
+  ]
+}
