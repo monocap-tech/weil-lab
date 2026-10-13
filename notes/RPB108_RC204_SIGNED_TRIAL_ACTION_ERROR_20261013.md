@@ -56,13 +56,13 @@ The RC203 source file is checked against immutable Git blob 5d321b659367ba459682
 
 ## Reproduction
 
-\`\`\`bash
+```bash
 python scripts/validate_rpb108_rc204_signed_error.py \
   --output certificates/rpb108_rc204_signed_error.json \
   certificates/rpb108_rc203_residual_enriched_six_source_inverse.json
 python scripts/validate_rpb108_rc204_signed_error.py \
   --replay --output certificates/rpb108_rc204_signed_error.json \
   certificates/rpb108_rc203_residual_enriched_six_source_inverse.json
-\`\`\`
+```
 
 The proof uses exact integer arithmetic and rebuilds all 128 signed rank-one tests. No historical files or original Weil/Lean branches are changed.
