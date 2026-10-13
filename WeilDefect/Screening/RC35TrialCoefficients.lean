@@ -88,11 +88,12 @@ theorem rc35_physical_trials_continuous :
   exact (Polynomial.continuous_eval₂ _ _).comp (continuous_id.div_const _)
 
 
+set_option backward.isDefEq.respectTransparency false in
 /-- Rational polynomial evaluation at x/B is differentiable over the reals. -/
 theorem rationalPolynomial_normalized_differentiable
     (P : Polynomial ℚ) (B : ℝ) :
     Differentiable ℝ (fun x : ℝ => P.eval₂ (Rat.castHom ℝ) (x / B)) := by
-  simpa only [Polynomial.eval_map] using
+  simpa only [Polynomial.eval_map, Function.comp_def, id_eq] using
     ((P.map (Rat.castHom ℝ)).differentiable.comp (differentiable_id.div_const B))
 
 /-- Explicit real derivative of the normalized polynomial, including 1/B. -/
@@ -100,9 +101,24 @@ theorem rationalPolynomial_normalized_hasDerivAt
     (P : Polynomial ℚ) (B x : ℝ) :
     HasDerivAt (fun y : ℝ => P.eval₂ (Rat.castHom ℝ) (y / B))
       (((P.map (Rat.castHom ℝ)).derivative.eval (x / B)) / B) x := by
-  simpa only [Polynomial.eval_map, one_div, div_eq_mul_inv] using
+  simpa only [Polynomial.eval_map, Function.comp_def, id_eq, one_div,
+    div_eq_mul_inv, one_mul] using
     ((P.map (Rat.castHom ℝ)).hasDerivAt (x / B)).comp x
       ((hasDerivAt_id x).div_const B)
+
+
+set_option backward.isDefEq.respectTransparency false in
+/-- Assemble differentiability before inserting concrete coefficient literals. -/
+theorem rationalPolynomial_finite_sum_complex_differentiable
+    {ι : Type*} [Fintype ι] (c : ι → ℝ) (P : ι → Polynomial ℚ) (B : ℝ) :
+    Differentiable ℝ (fun x : ℝ => Complex.ofReal
+      (∑ i : ι, c i * (P i).eval₂ (Rat.castHom ℝ) (x / B))) := by
+  have hs : Differentiable ℝ (fun x : ℝ =>
+      ∑ i : ι, c i * (P i).eval₂ (Rat.castHom ℝ) (x / B)) :=
+    Differentiable.fun_sum (fun i _ => differentiable_const.mul
+      (rationalPolynomial_normalized_differentiable (P i) B))
+  simpa only [Function.comp_def, Complex.ofRealCLM_apply] using
+    Complex.ofRealCLM.differentiable.comp hs
 
 set_option maxHeartbeats 1000000 in
 /-- Every exact assembled RC35 physical trial is differentiable over ℝ. -/
@@ -148,11 +164,7 @@ theorem rc35_physical_trials_differentiable :
          (P i).eval₂ (Rat.castHom ℝ) (x / (11 / 10 : ℝ))))) := by
   dsimp only
   intro j
-  apply Complex.ofRealCLM.differentiable.comp
-  apply Differentiable.fun_sum
-  intro i hi
-  apply Differentiable.mul differentiable_const
-  exact rationalPolynomial_normalized_differentiable _ _
+  exact rationalPolynomial_finite_sum_complex_differentiable _ _ _
 
 
 /-- The complex-valued normalized polynomial has the explicitly cast
