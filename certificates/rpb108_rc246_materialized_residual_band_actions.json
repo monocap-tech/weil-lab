@@ -1,0 +1,4139 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "actual_response_source_count": 2,
+  "complete_omitted_output_paid": true,
+  "enriched_inverse_response_recomputed": false,
+  "finite_eight_canonical_inverse_width_preserved": "485647/1000000",
+  "full_639_signed_response_matrix_evaluated": false,
+  "full_signed_gap_positive_certified": false,
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc112_parity_spectral_coverage.json": "d0155c1a15d5a98f17df42d25168c10b4bd7aef4",
+    "certificates/rpb108_rc114_positive_augmentation.json": "609d7770e2a5a16e407a0a41903ac1e349b5c144",
+    "certificates/rpb108_rc115_rational_fourier_adjoint.json": "92189b6472cdb9ae82bf4812e70fdd0072b06bc8",
+    "certificates/rpb108_rc121_diagonal_metric_equivalence.json": "089664ca7eb9139fec1ba0f58b4cfbf25902f51a",
+    "certificates/rpb108_rc127_enriched_even_endpoint_action.json": "b98167d6e34f983cfa4e3e5b3f496931f468da04",
+    "certificates/rpb108_rc128_collective_second_response.json": "9f5671fce28949322d02f98a9d2a83f2efb53f8c",
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc132_balanced_action_shared_covariance.json": "035eac34848eb3f8f0a2d65424340050936e980c",
+    "certificates/rpb108_rc133_six_vector_joint_matrices.json": "d86fb5a684dc8d0f37517c34fae03f5f1455b78c",
+    "certificates/rpb108_rc134_correlated_six_input_covariance.json": "451dd35ea6af09b6d307b39f6cd7156ce92307c3",
+    "certificates/rpb108_rc135_common_response_capture.json": "2de31504cf1bc7645d3dc850f147ad6bb0582cfb",
+    "certificates/rpb108_rc136_seven_vector_joint_matrices.json": "84ed91819c32053ae78caf340758e7d0c07a9568",
+    "certificates/rpb108_rc154_centered_analytic_tail_action.json": "28c2027b223be6d5d137a76d15bbcad3be04d54f",
+    "certificates/rpb108_rc170_poisson_regular_action.json": "690b571c35d3f49302223b306488008c9b907272",
+    "certificates/rpb108_rc171_regular_legendre_projection.json": "b905565d7c15e557ce41207774dd0e338070650f",
+    "certificates/rpb108_rc172_quadratic_regular_action.json": "895448d42fc03b9875dcd3ecf8dd2923ef51a44b",
+    "certificates/rpb108_rc174_regular_source_tail_compression.json": "f0e3837e3dc0a6dc03cfa0d9195fa632348313bd",
+    "certificates/rpb108_rc175_f0_regular_physical_source.json": "659754cd0766a38413019dbe0141295d8e815877",
+    "certificates/rpb108_rc176_f0_regular_output_carrier.json": "f81ba3a2b18abf516fee9837bf59ff3342c4001c",
+    "certificates/rpb108_rc177_three_source_canonical_action_gram.json": "0d1dfd962b1eb3e199d6df9f093e32dfd5a0e232",
+    "certificates/rpb108_rc178_three_source_canonical_inverse.json": "5e41c31af560052d1949e5c61174109f663dcce2",
+    "certificates/rpb108_rc179_focus_residual_canonical_action.json": "1f6a9930e0182635ddebd373fc0b300f136fe069",
+    "certificates/rpb108_rc180_residual_enriched_canonical_inverse.json": "8b48993a4d01c58b5c2b2e6ebd3b01f14198fd0a",
+    "certificates/rpb108_rc181_psi_action_completion_dashboard.json": "ceed57e11d269b11b1aee30cfe215efab5c37ff0",
+    "certificates/rpb108_rc182_four_source_canonical_inverse.json": "6071904d1a7602622028f86e7a52205753c2488e",
+    "certificates/rpb108_rc182_materialized_Cpsi_carrier.json": "0eb05b44e2bad1e4c3d2a366c758a563d639a7df",
+    "certificates/rpb108_rc183_materialized_w14_canonical_carrier.json": "4469fa1b92e6e1e9f08598ce707cfb43b240784a",
+    "certificates/rpb108_rc183_w14_canonical_action.json": "cc4e2d8b95144282eaeeebc980ecf204ed173c66",
+    "certificates/rpb108_rc184_five_source_canonical_inverse.json": "4ceedcd939c7eed8bcccab5ab915ca6642ef8e24",
+    "certificates/rpb108_rc185_five_source_focus_action.json": "e68b983718244e40b61ae01392156c20a2a76a2a",
+    "certificates/rpb108_rc186_residual_enriched_five_source_inverse.json": "11719b721921073aebe5d2356747d6a40aff01d0",
+    "certificates/rpb108_rc187_correlated_variational_refinement.json": "38a50d04e1bd99fb7e40329087c2a43795197702",
+    "certificates/rpb108_rc188_extended_psi_endpoint_action.json": "91a4bf81150ecf6be696b1004b79a67c2bdbec50",
+    "certificates/rpb108_rc188_materialized_Cpsi_carrier.json": "ce137b872381e32291a416ec1a2c247ac97e1a7a",
+    "certificates/rpb108_rc189_refined_psi_five_source_inverse.json": "9e1d13385e55c6576bce0806575320f2052546f0",
+    "certificates/rpb108_rc190_extended_w14_endpoint_action.json": "aa139a1ddbb285b4c8fc20f5b8b90b910eeae529",
+    "certificates/rpb108_rc190_materialized_Cw14_carrier.json": "76627bff4e17f78a6e0ffd4acdac5e459aa7d023",
+    "certificates/rpb108_rc191_two_refined_actions_five_source_inverse.json": "efa7dfd9f5e763db340820341f214562a19f47ef",
+    "certificates/rpb108_rc192_low_polynomial_regular_actions.json": "1ddada7c8f1e3829ed56bc9725c09f7cfa9e5977",
+    "certificates/rpb108_rc193_extended_f0_regular_action.json": "299fc1207f0e90478e0bebd0e082e2981a8c514e",
+    "certificates/rpb108_rc194_q185_analytic_endpoint_tail.json": "d98da5ef1042ef2c28f974b11b59ce0b40db6879",
+    "certificates/rpb108_rc195_refined_five_source_inverse.json": "a61cc3f75829b151ea2ea77d3574556aac62d8ca",
+    "certificates/rpb108_rc196_adaptive_action_error_inverse.json": "9285682f3de512714c7f280148aad9e6959bdff8",
+    "certificates/rpb108_rc197_native_v10_canonical_action.json": "6e759211fbc8de8e4b6c4ed5fd4c62a5e5241455",
+    "certificates/rpb108_rc198_v10_mixed_action_rows.json": "9f9dfabab81640c79a1b3b21ab54b50dbd7cbb81",
+    "certificates/rpb108_rc199_six_source_canonical_inverse.json": "32c08337c0d300a98d74ca0c437df6e66a2fe79d",
+    "certificates/rpb108_rc200_extended_v10_endpoint_action.json": "3e0a948321e87b840dae6a83319a2d06dfc8eede",
+    "certificates/rpb108_rc200_materialized_Cv10_carrier.json": "4a470657c7dd0b3264174de321f0f8fca0dfa36b",
+    "certificates/rpb108_rc201_refined_v10_six_source_inverse.json": "cf224ee3495e23376bff696ee0bac9c81ff9cca7",
+    "certificates/rpb108_rc202_six_source_residual_action.json": "695d477b22e41eec7f3b82e7a793794e05ac17bb",
+    "certificates/rpb108_rc203_residual_enriched_six_source_inverse.json": "5d321b659367ba459682b557b12ef63451f63e49",
+    "certificates/rpb108_rc212_native_t10_canonical_action.json": "442f9963189a32fa8185daf5558e0673753ed0f1",
+    "certificates/rpb108_rc213_eight_source_error_interface.json": "23aaa6e712fca038e87603471f59c08066d6a0a9",
+    "certificates/rpb108_rc214_correlated_difference_canonical_action.json": "c2599b388cd75d0528635496d9418e061e9385db",
+    "certificates/rpb108_rc215_correlated_common_error_preflight.json": "31338be9ef05d8677f2325a6f2fbb708f94fb812",
+    "certificates/rpb108_rc216_refined_t10_canonical_action.json": "5073f4155d7f45f5d28bcd5330a107a42bc952e8",
+    "certificates/rpb108_rc217_expanded_mixed_inverse.json": "5f0f64ccb9af714b86a90e76d3be9dccbca5b69f",
+    "certificates/rpb108_rc218_coupled_expanded_inverse.json": "e04d82e18dd81acfca3ecea79270eb562906e1e4",
+    "certificates/rpb108_rc218_materialized_native_carriers.json": "1bc627d0cee338c78dfdcb14e2cbaa041141d175",
+    "certificates/rpb108_rc218_materialized_prefix_interface.json": "b627378083c4c958fbda320eed56602e1e2ccd25",
+    "certificates/rpb108_rc219_nominal_trial_span_barrier.json": "fa3a97ddb1b2450cab857b0568ed419ebfa9d5da",
+    "certificates/rpb108_rc220_barrier_residual_action.json": "a4c558b7866daae6b195142a674914a58dfe1d30",
+    "certificates/rpb108_rc221_eleven_trial_inverse.json": "efb1c115a14d53df182f9af1f4f07f3e00551699",
+    "certificates/rpb108_rc221_materialized_prefix_interface.json": "574faed53b7538fb5965bbe22d8343632007d1cb",
+    "certificates/rpb108_rc222_shared_tail_error_inverse.json": "dc3ad1a6d25707d123f212b1fca0410809450975",
+    "certificates/rpb108_rc223_extended_delta_t10_endpoints.json": "8fe624740732d6d15ce9181a1a039bd5be0cd561",
+    "certificates/rpb108_rc223_materialized_delta_t10_endpoint_carriers.json": "8333512e1b499e6adffbbd2ae3943be3f1bbe180",
+    "certificates/rpb108_rc224_compatible_extended_inverse.json": "33b20d4a9004ad814c0b99081ae9a55265cee78e",
+    "certificates/rpb108_rc224_materialized_prefix_interface.json": "75c1232800eb1545af894940dfc098931ff5545a",
+    "certificates/rpb108_rc225_paid_trial_optimization.json": "750b43592f692c04680ce6a455640f400ec096a4",
+    "certificates/rpb108_rc226_coherent_residual_tail_inverse.json": "73a359805df467779a50e654621885ae7bf10a8d",
+    "certificates/rpb108_rc227_new_residual_trial_action.json": "ae8fbdc426ad988debac9f819379dcb787768877",
+    "certificates/rpb108_rc228_materialized_prefix_interface.json": "ccdd43ff98a7b4f1e588af9fda647d8fd6695b7c",
+    "certificates/rpb108_rc228_twelve_trial_inverse.json": "ff3525870ad34c37b5836f19fdd52debc346760a",
+    "certificates/rpb108_rc229_stage_I_interface_audit.json": "8812dd8abf986b1e972931cf27402e0d2e2786f8",
+    "certificates/rpb108_rc230_augmentation_range_bridge.json": "0c86b55b46e0608e4244945e8a8c6503c88176e8",
+    "certificates/rpb108_rc231_original_polynomial_action.json": "e00d0b8544f74efc8dce3d0ea073894d083a5b5d",
+    "certificates/rpb108_rc232_augmented_polynomial_action.json": "32226a00d6cb6cfb6077106e96890ec9f739c2a3",
+    "certificates/rpb108_rc233_augmented_inverse_response.json": "868fcfb1536e377a9eacb06e6976af46920ac589",
+    "certificates/rpb108_rc234_materialized_band_action.json": "a90747a23f48bb0583acdd2d814856d605b41469",
+    "certificates/rpb108_rc235_frequency_metric_response.json": "f166ee1808c3e6b528720fd6a8ff60f8915848c4",
+    "certificates/rpb108_rc236_full_range_signed_response.json": "5f7ddc20d11c114ad1f124b64cf14fe668ff7a87",
+    "certificates/rpb108_rc237_two_trial_signed_response.json": "04bf1539dda4cfd79b4ecdc2d3e310daa2d3b657",
+    "certificates/rpb108_rc238_weighted_action_tails.json": "d429659619b4226d2275472aa714302566ab5fe6",
+    "certificates/rpb108_rc239_exterior_band_leakage.json": "dfcd2ef1bc834a071c895bfcfa49370c83aa0e86",
+    "certificates/rpb108_rc240_three_trial_signed_response.json": "6c41b7f196052fea179b956099fb69cc5d07813c",
+    "certificates/rpb108_rc241_three_trial_tuning_obstruction.json": "01e4fb43f72782488712e2718a06ed71460853c6",
+    "certificates/rpb108_rc242_residual_original_actions.json": "c40d6123e247c7eee98e8f6950cf78a85abb100a",
+    "certificates/rpb108_rc243_residual_augmented_actions.json": "12067c055c270f277f9c070e84dbbe79890ecfe6",
+    "certificates/rpb108_rc244_four_trial_signed_response.json": "c184e3cdad510fcd10fe1d8a15cae677a4321a92",
+    "certificates/rpb108_rc245_source_refined_response.json": "1ff5b37eacbc359e22aade45cf109a4de5e79bea",
+    "certificates/rpb108_rc42_native_signed_pole_head.json": "478c53d7d309d6921d7ba65274eef0feed5bc100",
+    "certificates/rpb108_rc43_native_prime_head.json": "b4893953109e6fdc55d52b505c2bcfbf0d38281e",
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9",
+    "certificates/rpb108_rc66_arch_multiplier_transport.json": "7cbccc7e2cba8a8714c43333e8a1d16866907cea",
+    "notes/RPB108_RC112_PARITY_SPECTRAL_COVERAGE_AND_CERTIFIED_STRONG_FLOOR_20261011.md": "ea61a1237c5953c564e9ba9855d596ba37ff9e73",
+    "notes/RPB108_RC114_PROJECTION_FREE_POSITIVE_AUGMENTATION_AND_FINITE_RESPONSE_20261011.md": "a62b95e03ce6c02fa5c6f1d79e535ad1d35dc925",
+    "notes/RPB108_RC115_RATIONAL_FOURIER_ADJOINT_SOURCE_CONSTRUCTION_20261012.md": "bf0a21926acdf51d515a0cab0676cc02aa3f85fd",
+    "notes/RPB108_RC118_CANONICAL_METRIC_RESIDUAL_SOURCES_20261012.md": "71795de30804478d4b01e4b18bb0a322a5f6674b",
+    "notes/RPB108_RC121_GLOBAL_DIAGONAL_METRIC_EQUIVALENCE_20261012.md": "9b33ea3bb19240dc20bcd1a83a0f623e692ca772",
+    "notes/RPB108_RC136_SEVEN_VECTOR_JOINT_MATRICES_20261012.md": "95cdec39bc144f2fb41411e7c2e98d3094862c2e",
+    "notes/RPB108_RC230_EXACT_AUGMENTATION_RANGE_AND_D_ENERGY_BRIDGE_20261014.md": "2b178b64330ec20dbd9a5e8028188705a5fa3d92",
+    "notes/RPB108_RC231_DIRECT_ORIGINAL_POLYNOMIAL_ACTIONS_20261014.md": "83173dae9bf6a0072ba65560ce421bdc05618881",
+    "notes/RPB108_RC232_COMPLETE_AUGMENTED_POLYNOMIAL_ACTIONS_20261014.md": "69f8818efac81447b437ceb636dd9fd2879b89d6",
+    "notes/RPB108_RC233_ACTUAL_AUGMENTED_INVERSE_RESPONSE_ENCLOSURES_20261014.md": "5ee0c7dc1c5303b26ee5c55dac37f0bb11aa5b48",
+    "notes/RPB108_RC234_MATERIALIZED_BAND_ACTION_AND_TIGHTER_INVERSE_RESPONSES_20261014.md": "1af7293c8e9f69086de5f22d478d7f9905fa2b74",
+    "notes/RPB108_RC235_ACTUAL_FREQUENCY_METRIC_AND_COUPLED_RESPONSE_20261014.md": "385a7323d6ff4877edfa3ccd0b969a7c402220ca",
+    "notes/RPB108_RC236_EXHAUSTIVE_PHYSICAL_PARAMETERIZATION_AND_SIGNED_RESPONSE_20261014.md": "1151f0f7fa0aa56acf8b21869a9bc0e1baf272e6",
+    "notes/RPB108_RC237_TWO_TRIAL_SIGNED_RESPONSE_20261014.md": "a0b6740d463623f9b2bd1c91028dfa75b86289ae",
+    "notes/RPB108_RC238_WEIGHTED_ACTION_TAILS_20261014.md": "a383818734d303cd5033d97ee94a0cd17b5be4e4",
+    "notes/RPB108_RC239_EXTERIOR_BAND_LEAKAGE_20261014.md": "da724f5c0a6751da5c7f80e25b7d3048c268010f",
+    "notes/RPB108_RC240_THREE_TRIAL_SIGNED_RESPONSE_20261014.md": "c61d6f1ce20ffac15e7abcef3cde10726e2b5e36",
+    "notes/RPB108_RC241_THREE_TRIAL_TUNING_OBSTRUCTION_20261014.md": "1a7a41215678f6ba1b9ca3f570500f85569f1e52",
+    "notes/RPB108_RC242_RESIDUAL_ORIGINAL_ACTIONS_20261014.md": "3152505f644c82d05c13d40c80aa75025f1cd22b",
+    "notes/RPB108_RC243_RESIDUAL_AUGMENTED_ACTIONS_20261014.md": "50ea735a4a5c109c2b5efcefe9f9d15719f639fb",
+    "notes/RPB108_RC244_FOUR_TRIAL_SIGNED_RESPONSE_20261014.md": "904513e14d7747aa3820a0c6b47a06921c478e7a",
+    "notes/RPB108_RC245_SOURCE_REFINED_RESPONSE_20261014.md": "46ec2d8c28bf10132ec0cc9d8dda44f41890c744",
+    "notes/RPB108_RC46_ACTUAL_ARCHIMEDEAN_AND_COMPLETE_LOW_HEAD_20261010.md": "7a1b58255c29f6396622bbbc154afcc371722cab"
+  },
+  "milestone": "RC246",
+  "next_cursor": "RC247: reevaluate the four-trial original-action inverse responses with the materialized residual augmentation columns and refined source errors; full signed positivity remains required",
+  "opposite_parity_action_error_pairing_zero": true,
+  "original_full_auxiliary_norm_below_one_certified": false,
+  "parity_materialized_residual_action_certificates": [
+    {
+      "actual_band_Gram_column": [
+        {
+          "degree": 0,
+          "lower": "-49701989585130919083/40000000000000000000000",
+          "upper": "-621274869814136488537/500000000000000000000000"
+        },
+        {
+          "degree": 1,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 2,
+          "lower": "-322085855551781861379/250000000000000000000000",
+          "upper": "-257668684441425489103/200000000000000000000000"
+        },
+        {
+          "degree": 3,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 4,
+          "lower": "-1361104771371489767457/1000000000000000000000000",
+          "upper": "-42534524105359055233/31250000000000000000000"
+        },
+        {
+          "degree": 5,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 6,
+          "lower": "322833012855330092459/31250000000000000000000",
+          "upper": "10330656411370562958689/1000000000000000000000000"
+        },
+        {
+          "degree": 7,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 8,
+          "lower": "6991474287634436228967/1000000000000000000000000",
+          "upper": "873934285954304528621/125000000000000000000000"
+        },
+        {
+          "degree": 9,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 10,
+          "lower": "223496448024892802971/62500000000000000000000",
+          "upper": "3575943168398284847537/1000000000000000000000000"
+        },
+        {
+          "degree": 11,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 12,
+          "lower": "3277458690451882377/10000000000000000000000",
+          "upper": "327745869045188237701/1000000000000000000000000"
+        },
+        {
+          "degree": 13,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 14,
+          "lower": "-22855513040804310843/12500000000000000000000",
+          "upper": "-1828441043264344867439/1000000000000000000000000"
+        },
+        {
+          "degree": 15,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 16,
+          "lower": "3418738736180935999967/1000000000000000000000000",
+          "upper": "106835585505654249999/31250000000000000000000"
+        },
+        {
+          "degree": 17,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 18,
+          "lower": "78239474488868041967/50000000000000000000000",
+          "upper": "1564789489777360839341/1000000000000000000000000"
+        },
+        {
+          "degree": 19,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 20,
+          "lower": "-3678294098147573068237/1000000000000000000000000",
+          "upper": "-919573524536893267059/250000000000000000000000"
+        },
+        {
+          "degree": 21,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 22,
+          "lower": "1697806556383326582357/1000000000000000000000000",
+          "upper": "848903278191663291179/500000000000000000000000"
+        },
+        {
+          "degree": 23,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 24,
+          "lower": "-131814295334684349041/1000000000000000000000000",
+          "upper": "-1647678691683554363/12500000000000000000000"
+        },
+        {
+          "degree": 25,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 26,
+          "lower": "159076706562113457/12500000000000000000000",
+          "upper": "12726136524969076561/1000000000000000000000000"
+        },
+        {
+          "degree": 27,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 28,
+          "lower": "168854911009426087501/100000000000000000000000",
+          "upper": "1688549110094260875011/1000000000000000000000000"
+        },
+        {
+          "degree": 29,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 30,
+          "lower": "-346390297131216140277/125000000000000000000000",
+          "upper": "-554224475409945824443/200000000000000000000000"
+        },
+        {
+          "degree": 31,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 32,
+          "lower": "-14463036164953631751/250000000000000000000000",
+          "upper": "-57852144659814527003/1000000000000000000000000"
+        },
+        {
+          "degree": 33,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 34,
+          "lower": "1024176274045676543693/1000000000000000000000000",
+          "upper": "512088137022838271847/500000000000000000000000"
+        },
+        {
+          "degree": 35,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 36,
+          "lower": "-456255798992036713799/500000000000000000000000",
+          "upper": "-912511597984073427597/1000000000000000000000000"
+        },
+        {
+          "degree": 37,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 38,
+          "lower": "344467497618235328311/1000000000000000000000000",
+          "upper": "43058437202279416039/125000000000000000000000"
+        },
+        {
+          "degree": 39,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 40,
+          "lower": "-76874951249582481201/125000000000000000000000",
+          "upper": "-614999609996659849607/1000000000000000000000000"
+        },
+        {
+          "degree": 41,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 42,
+          "lower": "-42611427559543802889/100000000000000000000000",
+          "upper": "-426114275595438028889/1000000000000000000000000"
+        },
+        {
+          "degree": 43,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 44,
+          "lower": "29049115137153524159/62500000000000000000000",
+          "upper": "92957168438891277309/200000000000000000000000"
+        },
+        {
+          "degree": 45,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 46,
+          "lower": "-26724650128836883289/100000000000000000000000",
+          "upper": "-267246501288368832889/1000000000000000000000000"
+        },
+        {
+          "degree": 47,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 48,
+          "lower": "-349591704857081790309/500000000000000000000000",
+          "upper": "-699183409714163580617/1000000000000000000000000"
+        },
+        {
+          "degree": 49,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 50,
+          "lower": "129540167832289158651/1000000000000000000000000",
+          "upper": "32385041958072289663/250000000000000000000000"
+        },
+        {
+          "degree": 51,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 52,
+          "lower": "138919275143897515239/500000000000000000000000",
+          "upper": "277838550287795030479/1000000000000000000000000"
+        },
+        {
+          "degree": 53,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 54,
+          "lower": "-6792905922737046309/125000000000000000000000",
+          "upper": "-54343247381896370471/1000000000000000000000000"
+        },
+        {
+          "degree": 55,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 56,
+          "lower": "7490292586880093477/500000000000000000000000",
+          "upper": "2996117034752037391/200000000000000000000000"
+        },
+        {
+          "degree": 57,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 58,
+          "lower": "-18334776128876373741/50000000000000000000000",
+          "upper": "-366695522577527474819/1000000000000000000000000"
+        },
+        {
+          "degree": 59,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 60,
+          "lower": "-9943566379102313749/1000000000000000000000000",
+          "upper": "-2485891594775578437/250000000000000000000000"
+        },
+        {
+          "degree": 61,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 62,
+          "lower": "103321922319509225461/200000000000000000000000",
+          "upper": "258304805798773063653/500000000000000000000000"
+        },
+        {
+          "degree": 63,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 64,
+          "lower": "3825664736171707831/100000000000000000000000",
+          "upper": "38256647361717078311/1000000000000000000000000"
+        },
+        {
+          "degree": 65,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 66,
+          "lower": "6787023835909697083/200000000000000000000000",
+          "upper": "4241889897443560677/125000000000000000000000"
+        },
+        {
+          "degree": 67,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 68,
+          "lower": "18567543268306829149/500000000000000000000000",
+          "upper": "37135086536613658299/1000000000000000000000000"
+        },
+        {
+          "degree": 69,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 70,
+          "lower": "33996644258233315141/1000000000000000000000000",
+          "upper": "16998322129116657571/500000000000000000000000"
+        },
+        {
+          "degree": 71,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 72,
+          "lower": "25506811103222226463/1000000000000000000000000",
+          "upper": "797087846975694577/31250000000000000000000"
+        },
+        {
+          "degree": 73,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 74,
+          "lower": "13135092251739597039/1000000000000000000000000",
+          "upper": "164188653146744963/12500000000000000000000"
+        },
+        {
+          "degree": 75,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 76,
+          "lower": "-3972104854027421/3125000000000000000000",
+          "upper": "-1271073553288774719/1000000000000000000000000"
+        },
+        {
+          "degree": 77,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 78,
+          "lower": "-3913520011568843079/250000000000000000000000",
+          "upper": "-3130816009255074463/200000000000000000000000"
+        },
+        {
+          "degree": 79,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 80,
+          "lower": "-1747928342081464099/62500000000000000000000",
+          "upper": "-27966853473303425583/1000000000000000000000000"
+        },
+        {
+          "degree": 81,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 82,
+          "lower": "-4553140918660027289/125000000000000000000000",
+          "upper": "-36425127349280218311/1000000000000000000000000"
+        },
+        {
+          "degree": 83,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 84,
+          "lower": "-1590374971348846087/40000000000000000000000",
+          "upper": "-19879687141860576087/500000000000000000000000"
+        },
+        {
+          "degree": 85,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 86,
+          "lower": "-37426701215328548527/1000000000000000000000000",
+          "upper": "-18713350607664274263/500000000000000000000000"
+        },
+        {
+          "degree": 87,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 88,
+          "lower": "-14870257644077361687/500000000000000000000000",
+          "upper": "-29740515288154723373/1000000000000000000000000"
+        },
+        {
+          "degree": 89,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 90,
+          "lower": "-558774323109904569/31250000000000000000000",
+          "upper": "-17880778339516946207/1000000000000000000000000"
+        },
+        {
+          "degree": 91,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 92,
+          "lower": "-1880757563824032237/500000000000000000000000",
+          "upper": "-3761515127648064473/1000000000000000000000000"
+        },
+        {
+          "degree": 93,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 94,
+          "lower": "409813667981611291/40000000000000000000000",
+          "upper": "2561335424885070569/250000000000000000000000"
+        },
+        {
+          "degree": 95,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 96,
+          "lower": "2712763610575963013/125000000000000000000000",
+          "upper": "4340421776921540821/200000000000000000000000"
+        },
+        {
+          "degree": 97,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 98,
+          "lower": "28555867458581544477/1000000000000000000000000",
+          "upper": "14277933729290772239/500000000000000000000000"
+        },
+        {
+          "degree": 99,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 100,
+          "lower": "5913005318700019939/200000000000000000000000",
+          "upper": "1847814162093756231/62500000000000000000000"
+        },
+        {
+          "degree": 101,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 102,
+          "lower": "12303944478143879051/500000000000000000000000",
+          "upper": "24607888956287758103/1000000000000000000000000"
+        },
+        {
+          "degree": 103,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 104,
+          "lower": "14787051607332962963/1000000000000000000000000",
+          "upper": "3696762901833240741/250000000000000000000000"
+        },
+        {
+          "degree": 105,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 106,
+          "lower": "284315489515721573/125000000000000000000000",
+          "upper": "454904783225154517/200000000000000000000000"
+        },
+        {
+          "degree": 107,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 108,
+          "lower": "-1010511172312047387/100000000000000000000000",
+          "upper": "-10105111723120473869/1000000000000000000000000"
+        },
+        {
+          "degree": 109,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 110,
+          "lower": "-19490767041044804839/1000000000000000000000000",
+          "upper": "-9745383520522402419/500000000000000000000000"
+        },
+        {
+          "degree": 111,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 112,
+          "lower": "-295923812273637181/12500000000000000000000",
+          "upper": "-23673904981890974479/1000000000000000000000000"
+        },
+        {
+          "degree": 113,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 114,
+          "lower": "-10845781132832279097/500000000000000000000000",
+          "upper": "-21691562265664558193/1000000000000000000000000"
+        },
+        {
+          "degree": 115,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 116,
+          "lower": "-7075178637776755527/500000000000000000000000",
+          "upper": "-14150357275553511053/1000000000000000000000000"
+        },
+        {
+          "degree": 117,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 118,
+          "lower": "-1577289437779073023/500000000000000000000000",
+          "upper": "-630915775111629209/200000000000000000000000"
+        },
+        {
+          "degree": 119,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 120,
+          "lower": "1638839218158588237/200000000000000000000000",
+          "upper": "4097098045396470593/500000000000000000000000"
+        },
+        {
+          "degree": 121,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 122,
+          "lower": "3326839623067810419/200000000000000000000000",
+          "upper": "259909345552172689/15625000000000000000000"
+        },
+        {
+          "degree": 123,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 124,
+          "lower": "19704967938117198681/1000000000000000000000000",
+          "upper": "9852483969058599341/500000000000000000000000"
+        },
+        {
+          "degree": 125,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 126,
+          "lower": "16545982355307477119/1000000000000000000000000",
+          "upper": "25853097430167933/1562500000000000000000"
+        },
+        {
+          "degree": 127,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 128,
+          "lower": "8252630124385141583/1000000000000000000000000",
+          "upper": "515789382774071349/62500000000000000000000"
+        }
+      ],
+      "augmentation_D_finite_rounding_energy_upper": "18329539726236047/1000000000000000000000000000000000000000000000000000000000000",
+      "augmentation_D_omitted_output_energy_upper": "787088605092571746851140721518889771071544187923715403777/1000000000000000000000000000000000000000000000000000000000000",
+      "band_output_beyond_128_physical_energy_upper": "43456631810805941840076258221095539742182489870291853221/1000000000000000000000000000000000000000000000000000000000000",
+      "captured_band_output_physical_energy_lower": "2149961275270106273183408135821473675219231408636363636363/1000000000000000000000000000000000000000000000000000000000000",
+      "complete_augmented_action_D_error_squared_upper": "1500175729424448234423732932773944052657203058131708068227/1000000000000000000000000000000000000000000000000000000000000",
+      "complete_rational_augmentation_action_D_error_squared_upper": "6870958370598560158848015920394929345999122554490270311/8000000000000000000000000000000000000000000000000000000000",
+      "finite_augmentation_D_action": [
+        {
+          "coefficient": "-240377657974874503419911543316734935657796376246772474031/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 0,
+          "radius": "15476412759161129950299308120251133/20000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 1,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-7148769922550209395015478488176400207842206326167703854609/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 2,
+          "radius": "1387201929443724967729434357210040501/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 3,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-306174580999906434279465236474907370178115623525937111237/25000000000000000000000000000000000000000000000000000000000",
+          "degree": 4,
+          "radius": "899782551675900249910021711084119943/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 5,
+          "radius": "0"
+        },
+        {
+          "coefficient": "25278230835579427617005249923891251407653238010694205942939/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 6,
+          "radius": "305864287209383849001349793585243191/50000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 7,
+          "radius": "0"
+        },
+        {
+          "coefficient": "107261245483853448845943686729007405023809516424216924034273/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 8,
+          "radius": "958857541933158720220578142124200871/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 9,
+          "radius": "0"
+        },
+        {
+          "coefficient": "6564395635515278395251130012039478207757276739771025981803/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 10,
+          "radius": "1147318925712824723806426579903735613/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 11,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1745428415104929737150724902194053624594323337741626653551/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 12,
+          "radius": "10651108557204279525913380969593825291/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 13,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-4423149816464607547577448583816938000669530267082300787623/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 14,
+          "radius": "6047706369731414284891268190413118593/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 15,
+          "radius": "0"
+        },
+        {
+          "coefficient": "4620842103559042242400251744363717127724878268101537965603/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 16,
+          "radius": "6758109440852538484607139504103108273/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 17,
+          "radius": "0"
+        },
+        {
+          "coefficient": "46683911416735996672398372572962190896472013424009286666121/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 18,
+          "radius": "119335953447360248841727162782742177/8000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 19,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-59957554228515822901684223491766767494638626549329547044829/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 20,
+          "radius": "8150184930633557318159733635666553993/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 21,
+          "radius": "0"
+        },
+        {
+          "coefficient": "59995068817010282337098841254335509295810630988356363184227/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 22,
+          "radius": "3533681066611444823027827585106652681/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 23,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-2507470742293444705869225839356068718445188699932644794393/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 24,
+          "radius": "19022752698942443655167306611993092387/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 25,
+          "radius": "0"
+        },
+        {
+          "coefficient": "259164769648796800517050925377498623523007145124716641337/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 26,
+          "radius": "5091191052774308954873899291421699909/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 27,
+          "radius": "0"
+        },
+        {
+          "coefficient": "73268055205271250464292018095599516848068566856462190168959/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 28,
+          "radius": "21695565377185998584658575477645222193/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 29,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-498284744089250462859865224023990174447034579060223551313/3906250000000000000000000000000000000000000000000000000000",
+          "degree": 30,
+          "radius": "11508053161837830530906649905219441113/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 31,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-140738063038856124177285208216151486824624458733495202817/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 32,
+          "radius": "24327198908090262935917792623297391719/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 33,
+          "radius": "0"
+        },
+        {
+          "coefficient": "13124585540475691270599525861525774795173025847521922729827/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 34,
+          "radius": "512590884001970400554920879382135981/20000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 35,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-9827294794310901435851321134124010225528663525855588402743/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 36,
+          "radius": "13461876562919468840979183892776103011/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 37,
+          "radius": "0"
+        },
+        {
+          "coefficient": "485877647732897704481374093521489512770713773660160584379/25000000000000000000000000000000000000000000000000000000000",
+          "degree": 38,
+          "radius": "28210362435542639405949629490804311653/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 39,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-9068122234853692251454796166396784699676257757336192317847/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 40,
+          "radius": "14744923554655814993098083984943380417/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 41,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-6554197935287748697887352936182633615017069241965512337917/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 42,
+          "radius": "30762630172259407854387903578626820169/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 43,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1860833480097031830825717037528378652921884758152758396647/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 44,
+          "radius": "32029090583603530113265703153712620483/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 45,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-17793042011179843080206486874266723090912182556151806376413/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 46,
+          "radius": "33289569603306233614644462977774208783/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 47,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-48305709221468011098994478339963461644457206064966905468789/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 48,
+          "radius": "34544376020953376217696413322388795051/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 49,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2318366811115146050290024769432951235139061615479456384381/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 50,
+          "radius": "35793790450431239778146908804136879419/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 51,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2572650845112781973379587756393426946974938345185713915859/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 52,
+          "radius": "18519034471880506450898186661481780753/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 53,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-4160241431754102258391490590876063128653900982972500722379/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 54,
+          "radius": "38277445977280811867607330258559179151/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 55,
+          "radius": "0"
+        },
+        {
+          "coefficient": "118382986793807438901963578509946926502477006401635108183/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 56,
+          "radius": "19756068508154216372380717411178085549/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 57,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-29880067806048407225048689014533075744293388270145265343853/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 58,
+          "radius": "40742340671787325163535318148753736749/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 59,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-41731398570405768848751015724693913717473266056803365197/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 60,
+          "radius": "10492060137034587149873009038191823497/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 61,
+          "radius": "0"
+        },
+        {
+          "coefficient": "44624745331848706506318808263814089824155515460908472088231/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 62,
+          "radius": "1727600274279078103437147198589866631/40000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 63,
+          "radius": "0"
+        },
+        {
+          "coefficient": "679557383697873766444285842528056332110008773710968630293/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 64,
+          "radius": "8881559553241721373276615870435415053/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 65,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3096359768469421751766968356102979181341039372486804255263/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 66,
+          "radius": "45621760632385552045752196169377125959/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 67,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1739111598908222741700088086965638343835012665492587526759/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 68,
+          "radius": "23416016510437309659050148152735294411/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 69,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1633156077986423067188064562653199795219661357213078138697/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 70,
+          "radius": "48038743635626190714689148802816022769/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 71,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2512013454230057657921422099299662992528195803852296524693/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 72,
+          "radius": "6155251640610114694726354957012811943/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 73,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1325119459179488281953424743259240536190516277852371341347/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 74,
+          "radius": "25220977397513023962008159126888572109/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 75,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-32818277214578012995004266148124399794908733817729606411/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 76,
+          "radius": "645483440546552440871481052274328819/12500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 77,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-827040660675502838332521309233937311398274180147614381193/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 78,
+          "radius": "13208068730838072579263594959877147627/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 79,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3021698184429367570901521696500650506756526712383645400419/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 80,
+          "radius": "54022848643367348148403647618288893949/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 81,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-4022097968639832838069933804358867611424895014344383877469/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 82,
+          "radius": "1380262150523399628695535659532456583/25000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 83,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-2242240722695399160098396596869957185277628353507760734071/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 84,
+          "radius": "56395271884939145235060230988962144681/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 85,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-430985580769679337664116289993151979933051819759054778277/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 86,
+          "radius": "28788643319905322544464819153609859119/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 87,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-109215734792545930177021226001161188617347739800208948313/31250000000000000000000000000000000000000000000000000000000",
+          "degree": 88,
+          "radius": "11751321318784194960007562898136938941/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 89,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-2143308257132963951305355991290843466449964131140474225651/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 90,
+          "radius": "59933304256686504916282185909882300381/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 91,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-459713184701815932670368415625730242281299962943704788007/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 92,
+          "radius": "6110744860800967375071974318851666123/100000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 93,
+          "radius": "0"
+        },
+        {
+          "coefficient": "63807071498318366939988259017866403358635600945735695583/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 94,
+          "radius": "62279105343313902837516046621266021021/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 95,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1376962720205482737158336554805613232129170551665330000839/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 96,
+          "radius": "63448337096190583108338596201633032969/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 97,
+          "radius": "0"
+        },
+        {
+          "coefficient": "230642898876534963807994102853676862620101704582340709417/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 98,
+          "radius": "1292304072845565888291006746426238621/20000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 99,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3889560830728075288921489320650960819409248583114360799427/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 100,
+          "radius": "13155952417089967951566509039291089189/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 101,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1647302951932874622160766672759697657046232595610412056547/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 102,
+          "radius": "33471033514162108373732721739263285583/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 103,
+          "radius": "0"
+        },
+        {
+          "coefficient": "80562425050934342756614490703694388205753383205928705239/40000000000000000000000000000000000000000000000000000000000",
+          "degree": 104,
+          "radius": "68102170728811010109587705403537781399/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 105,
+          "radius": "0"
+        },
+        {
+          "coefficient": "6301352270093384831738484313362705221000208889901242441/20000000000000000000000000000000000000000000000000000000000",
+          "degree": 106,
+          "radius": "34630061622017080197811559603102380269/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 107,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-14231225396815744546593703675771336501128692541232488129/10000000000000000000000000000000000000000000000000000000000",
+          "degree": 108,
+          "radius": "4400998285189228347646328070694113909/62500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 109,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-2789899223005399152496884608287251874877966233065819175249/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 110,
+          "radius": "3578488236425292116405779315308113389/50000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 111,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3443205843218181592881160347958281201110752358467137778007/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 112,
+          "radius": "18180385987551325175797568096340677829/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 113,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-400596261734828270277278710299860660927859127764277207813/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 114,
+          "radius": "7387135270932191351775737032628549131/100000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 115,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-132693616661012412641643733506880580151080157071297799407/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 116,
+          "radius": "750192318552762044868789814348468549/10000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 117,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-240269196258210061019346837407074794595457879508659276319/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 118,
+          "radius": "1523304413910281741821675466422616407/20000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 119,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1266976063116788880362428148094013545158921212252424360033/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 120,
+          "radius": "7730935707906139638153536976343982179/100000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 121,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2609961491151747613279792591211850560773884360275465013777/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 122,
+          "radius": "39225838736850870093571116202812035939/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 123,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3136724169729035215151367267753609910423704385740892125517/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 124,
+          "radius": "79592217038528812088768872488804125319/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 125,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2671547723753889874838742208248142839119107933773421268723/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 126,
+          "radius": "80731009691356545063457228960957195781/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 127,
+          "radius": "0"
+        },
+        {
+          "coefficient": "337813525334915154122369124879671623741875393761364548031/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 128,
+          "radius": "40934044085779947970574950721375532747/500000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "finite_complete_augmented_D_action": [
+        {
+          "coefficient": "-35996762380381613905415074506008563267021/25000000000000000000000000000000000000000000000000000000000",
+          "degree": 0,
+          "radius": "7738206382597292492638941424480417/10000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 1,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5188383659002421839664876039317377452145071/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 2,
+          "radius": "1387201929873076285978041004670918019/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 3,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-4543237111228855644408432832832783114716507/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 4,
+          "radius": "281182047484006449871083272884065499/62500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 5,
+          "radius": "0"
+        },
+        {
+          "coefficient": "35747532267439615633464105327590174869496203666429617171121/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 6,
+          "radius": "382330359246617516384714429816776917/62500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 7,
+          "radius": "0"
+        },
+        {
+          "coefficient": "15507524685021754648228206864080850842361426982522708600141/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 8,
+          "radius": "7670860338576710952162556796551259959/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 9,
+          "radius": "0"
+        },
+        {
+          "coefficient": "74687317088469548495882248820479227209438534489792987524379/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 10,
+          "radius": "573659462992202646078300583410394781/62500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 11,
+          "radius": "0"
+        },
+        {
+          "coefficient": "7058401976942919146705738265851878205960673751031166418117/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 12,
+          "radius": "5325554278914515614500572016620525011/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 13,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-7090674121077133986588812310748507215455637492401956528509/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 14,
+          "radius": "6047706370690728633277904468955429411/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 15,
+          "radius": "0"
+        },
+        {
+          "coefficient": "6833731366621176552794823932796488728487974208825114071953/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 16,
+          "radius": "3379054721140137487052526887606830017/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 17,
+          "radius": "0"
+        },
+        {
+          "coefficient": "7344764856811388828080892528370562031189374335286125130839/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 18,
+          "radius": "14916994182410430547469212398274471107/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 19,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-27129728306902085575713328478193189553736235097667116179971/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 20,
+          "radius": "3260073972854361444835537691793589099/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 21,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2030259743781332228197003127160025579707369050116126466371/25000000000000000000000000000000000000000000000000000000000",
+          "degree": 22,
+          "radius": "17668405334571638720008879208170858419/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 23,
+          "radius": "0"
+        },
+        {
+          "coefficient": "700761401868759289474507576713381371756890571253456982721/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 24,
+          "radius": "2377844087374161405141758165183929319/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 25,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2747339496029999654765202483834830050075979480336190382467/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 26,
+          "radius": "5091191052783749588141155575457043207/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 27,
+          "radius": "0"
+        },
+        {
+          "coefficient": "81078131893578747380691121758312458898374172377880670763573/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 28,
+          "radius": "5423891345062770361689626864562393559/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 29,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-13444861419690924007008237445674406677042296473304400230947/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 30,
+          "radius": "11508053163694240634156739532244094791/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 31,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3435905326337308643836702228562061450923027380324804389823/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 32,
+          "radius": "973087956335312304897470384763422541/40000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 33,
+          "radius": "0"
+        },
+        {
+          "coefficient": "6636365639905699990263685686475316739629539853225382037581/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 34,
+          "radius": "25629544202067468032352773999210170929/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 35,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-47031631148696985731280249393282577215689584491357826121783/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 36,
+          "radius": "13461876563522527142627291277383241169/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 37,
+          "radius": "0"
+        },
+        {
+          "coefficient": "14873090463905254612017533918539470147609543274692708841543/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 38,
+          "radius": "14105181218235744688868237449594046503/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 39,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-37163924593625607199743857377725486890411960374068826672357/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 40,
+          "radius": "29489847109853697592822777958894404207/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 41,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5053954226583063127193449866270889722411566531733225736979/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 42,
+          "radius": "3076263017255609228811861042977321487/100000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 43,
+          "radius": "0"
+        },
+        {
+          "coefficient": "42712884768910103233360065364721126208819822289701486259829/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 44,
+          "radius": "32029090584692937790744004923798089191/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 45,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3137249793329379863085357135612265780237414798863798772041/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 46,
+          "radius": "1040299050113723070678975844685255261/31250000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 47,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-59188477392250748888054638306594721097272690754400617463119/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 48,
+          "radius": "34544376021557502604754244096314913931/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 49,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3228237687355441760142599355027426455708129199659819928167/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 50,
+          "radius": "3579379045054872979418934501225868807/100000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 51,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2712951779880672783974992893710303775079520157347404596833/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 52,
+          "radius": "2314879309037117452950509839136540653/62500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 53,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1135736394356046017475066557434009349911435524338081720957/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 54,
+          "radius": "1913872298874584397668605082019308021/50000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 55,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2511933156955872784399855604028435400043356528198324650343/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 56,
+          "radius": "617377140882975024036124928678208343/15625000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 57,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-4505309192745133880878466455741756436004650980887951865053/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 58,
+          "radius": "40742340672437413753455302167672671311/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 59,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2243001339254071964863758640196287425788609237008962346101/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 60,
+          "radius": "10492060137108214023451256858253464291/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 61,
+          "radius": "0"
+        },
+        {
+          "coefficient": "15528680070447800464106795379950928085681781630468667977351/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 62,
+          "radius": "21595003428824841991128267868876038851/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 63,
+          "radius": "0"
+        },
+        {
+          "coefficient": "737409905071105651673300146912482722989899630855371042273/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 64,
+          "radius": "44407797766283969748112448087370731827/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 65,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1269098329987548531325899571391698375535670968618510069339/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 66,
+          "radius": "45621760632574983175773536038010315887/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 67,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3674640234151468461076967779342156789505615859566837478161/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 68,
+          "radius": "23416016510443015704310313395114327189/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 69,
+          "radius": "0"
+        },
+        {
+          "coefficient": "9238963094656129368781280188238571399572392372291946466761/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 70,
+          "radius": "24019371817986026525874185084276476287/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 71,
+          "radius": "0"
+        },
+        {
+          "coefficient": "534019926277509833512401885911435646690352593776085514893/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 72,
+          "radius": "6155251640611255299848672452887365913/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 73,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1330200180823833662172390005314202915471631226747716753461/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 74,
+          "radius": "50441954795102879879660049569600408667/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 75,
+          "radius": "0"
+        },
+        {
+          "coefficient": "26563989286516605759182906431854834822807325676656582447/31250000000000000000000000000000000000000000000000000000000",
+          "degree": 76,
+          "radius": "322741720273628054818021855123328917/6250000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 77,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1377218043716510357183644685730529188997679101026909054709/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 78,
+          "radius": "26416137461802219245992649668005209689/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 79,
+          "radius": "0"
+        },
+        {
+          "coefficient": "192022778369958274439721884580701871958830962715925458919/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 80,
+          "radius": "54022848643561583010647247630764378511/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 81,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5715727116271047682670839893000394746356327103054247696427/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 82,
+          "radius": "55210486021032305831213032918717789229/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 83,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3866261082487623446447052906519151428613130307173942790109/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 84,
+          "radius": "56395271884974209351971812494531272769/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 85,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1010965997053394081351495770371907859268065500334446363707/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 86,
+          "radius": "57577286639940067730581155912444778117/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 87,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-2790928717976344691971657068956745558841389711753642852703/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 88,
+          "radius": "14689151648490173583849493558801997003/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 89,
+          "radius": "0"
+        },
+        {
+          "coefficient": "625212637877334017778180678402972723223215109065600081489/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 90,
+          "radius": "2996665212849153228663371489599307511/50000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 91,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1005142474337370012837918931032288240210556347964201466283/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 92,
+          "radius": "12221489721619345116084084443220346959/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 93,
+          "radius": "0"
+        },
+        {
+          "coefficient": "42446077485412687537313885125060333676319076741875279359/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 94,
+          "radius": "62279105343373489558527910675206781287/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 95,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2057799400949646276829089402047885585074057579946478581923/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 96,
+          "radius": "31724168548133334092844239079390582017/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 97,
+          "radius": "0"
+        },
+        {
+          "coefficient": "8538253755679869234381921756436200709037940078315086580789/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 98,
+          "radius": "8076900455318570081022803458706974317/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 99,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-380622631898427834323715689700646973192091688714771289769/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 100,
+          "radius": "65779762085708534786915687918716372641/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 101,
+          "radius": "0"
+        },
+        {
+          "coefficient": "888737197427575796897304876444139121615657490014491592219/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 102,
+          "radius": "66942067028535973180128537333853306647/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 103,
+          "radius": "0"
+        },
+        {
+          "coefficient": "36300835422681795562202874415802046566718665594996737079/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 104,
+          "radius": "212819283527857854568712413155770507/3125000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 105,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2921857246023615952914471296945807499329253157496931539633/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 106,
+          "radius": "3463006162208911514727339978186274713/50000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 107,
+          "radius": "0"
+        },
+        {
+          "coefficient": "138817403489345272878345108481920033213722081553625577449/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 108,
+          "radius": "70415972563136769311535441579080800637/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 109,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5311611182942744428538576936368266373146137692122301244969/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 110,
+          "radius": "7156976472864464454543927662659266503/100000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 111,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5812024427803377218615565110034179222660744670577327183117/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 112,
+          "radius": "14544308790067086054006638187748518873/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 113,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1117410442767767906645704625562652049363847417940357218863/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 114,
+          "radius": "36935676354779445500418733611755488683/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 115,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3431918333118643008982180863226515549926890494382917315673/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 116,
+          "radius": "75019231855347828785036089390372113577/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 117,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2420339924289854557471879204666450524416391749650031078499/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 118,
+          "radius": "1190081573369883444705704355216995689/15625000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 119,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-162338094499376025501826488121581508244055362034412660473/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 120,
+          "radius": "38654678539587365613039398340925103571/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 121,
+          "radius": "0"
+        },
+        {
+          "coefficient": "481313873896838881592412627202738078086385248172150127619/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 122,
+          "radius": "39225838736895698299515041581886487337/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 123,
+          "radius": "0"
+        },
+        {
+          "coefficient": "5518462988447933683236823891347430359796980731912501403949/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 124,
+          "radius": "621814195614517269661278850775235691/7812500000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 125,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3619202074570579745799983963014016827650595298479858799209/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 126,
+          "radius": "20182752422851985387558434160783100351/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 127,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-7398403549860547601342835524672442200384104280834515367/15625000000000000000000000000000000000000000000000000000000",
+          "degree": 128,
+          "radius": "81868088171658694126171172097208875717/1000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "ideal_band_operator_not_substituted_for_rational_augmentation": true,
+      "independent_P4_P5_band_transpose_intersection": true,
+      "independent_band_input_energy_partition_intersection": true,
+      "input": "R0",
+      "intersected_physical_band_input_form_lower": "2193417907080912215022709954843926557769701276694152965031/1000000000000000000000000000000000000000000000000000000000000",
+      "intersected_physical_band_input_form_upper": "438683581416182443004696878808513842992282779701331097917/200000000000000000000000000000000000000000000000000000000000",
+      "materialization_controls": {
+        "all_input_modes_combined_before_output_pairing": true,
+        "generation_integration_by_parts_terms": 96,
+        "phase_error_upper": "1/1000000000000000000000000000000000000000000000000000000000000",
+        "pi_lower_limit_prefactor_error_upper": "1/1000000000000000000000000000000000000000000000000000000000000",
+        "replay_integration_by_parts_terms": 112,
+        "spherical_polynomial_boundary_derivative_controls_through_degree": 128,
+        "stored_band_Gram_grid": "1/10^24"
+      },
+      "parity": "even",
+      "previous_complete_augmented_action_D_error_squared_upper": "7504729755584063224631546380763935734005177488015250410141/1000000000000000000000000000000000000000000000000000000000000",
+      "previous_rational_augmentation_action_D_error_squared_upper": "1192098370516644425522481683210306563042337164163081595111/200000000000000000000000000000000000000000000000000000000000",
+      "relative_complete_augmented_action_D_error_squared_upper": "5829741509727935047058887884252559916812329354464248285999/62500000000000000000000000000000000000000000000000000000000",
+      "unchanged_rational_to_band_D_error_squared_upper": "1565954407927065707745411388788712737354928926300239337/1000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "actual_band_Gram_column": [
+        {
+          "degree": 0,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 1,
+          "lower": "-1252437338349549010799/1000000000000000000000000",
+          "upper": "-626218669174774505399/500000000000000000000000"
+        },
+        {
+          "degree": 2,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 3,
+          "lower": "-1273721909702387919199/1000000000000000000000000",
+          "upper": "-636860954851193959599/500000000000000000000000"
+        },
+        {
+          "degree": 4,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 5,
+          "lower": "-569886211311712948407/500000000000000000000000",
+          "upper": "-1139772422623425896813/1000000000000000000000000"
+        },
+        {
+          "degree": 6,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 7,
+          "lower": "6296811929829101416381/1000000000000000000000000",
+          "upper": "3148405964914550708191/500000000000000000000000"
+        },
+        {
+          "degree": 8,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 9,
+          "lower": "-900488763633665012821/1000000000000000000000000",
+          "upper": "-45024438181683250641/50000000000000000000000"
+        },
+        {
+          "degree": 10,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 11,
+          "lower": "230198227212325067171/500000000000000000000000",
+          "upper": "460396454424650134343/1000000000000000000000000"
+        },
+        {
+          "degree": 12,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 13,
+          "lower": "8896080538100992319509/1000000000000000000000000",
+          "upper": "889608053810099231951/100000000000000000000000"
+        },
+        {
+          "degree": 14,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 15,
+          "lower": "-4221772860393489453721/1000000000000000000000000",
+          "upper": "-105544321509837236343/25000000000000000000000"
+        },
+        {
+          "degree": 16,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 17,
+          "lower": "74827183462972001403/40000000000000000000000",
+          "upper": "467669896643575008769/250000000000000000000000"
+        },
+        {
+          "degree": 18,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 19,
+          "lower": "601361912286548042711/1000000000000000000000000",
+          "upper": "75170239035818505339/125000000000000000000000"
+        },
+        {
+          "degree": 20,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 21,
+          "lower": "131611307232606334251/50000000000000000000000",
+          "upper": "2632226144652126685021/1000000000000000000000000"
+        },
+        {
+          "degree": 22,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 23,
+          "lower": "-547464768774813719067/500000000000000000000000",
+          "upper": "-1094929537549627438133/1000000000000000000000000"
+        },
+        {
+          "degree": 24,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 25,
+          "lower": "131784997601175748127/125000000000000000000000",
+          "upper": "1054279980809405985017/1000000000000000000000000"
+        },
+        {
+          "degree": 26,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 27,
+          "lower": "-965095413355271449623/500000000000000000000000",
+          "upper": "-386038165342108579849/200000000000000000000000"
+        },
+        {
+          "degree": 28,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 29,
+          "lower": "1869126320955840578537/1000000000000000000000000",
+          "upper": "934563160477920289269/500000000000000000000000"
+        },
+        {
+          "degree": 30,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 31,
+          "lower": "105320752730607116763/200000000000000000000000",
+          "upper": "65825470456629447977/125000000000000000000000"
+        },
+        {
+          "degree": 32,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 33,
+          "lower": "3926895505810142813/31250000000000000000000",
+          "upper": "125660656185924570017/1000000000000000000000000"
+        },
+        {
+          "degree": 34,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 35,
+          "lower": "-497705364866447993841/500000000000000000000000",
+          "upper": "-995410729732895987681/1000000000000000000000000"
+        },
+        {
+          "degree": 36,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 37,
+          "lower": "153238958356133607233/250000000000000000000000",
+          "upper": "612955833424534428933/1000000000000000000000000"
+        },
+        {
+          "degree": 38,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 39,
+          "lower": "-262993409964636294533/1000000000000000000000000",
+          "upper": "-65748352491159073633/250000000000000000000000"
+        },
+        {
+          "degree": 40,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 41,
+          "lower": "406015187268536706267/1000000000000000000000000",
+          "upper": "101503796817134176567/250000000000000000000000"
+        },
+        {
+          "degree": 42,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 43,
+          "lower": "-41336805918873532201/100000000000000000000000",
+          "upper": "-413368059188735322009/1000000000000000000000000"
+        },
+        {
+          "degree": 44,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 45,
+          "lower": "-10004171493789666159/200000000000000000000000",
+          "upper": "-25010428734474165397/500000000000000000000000"
+        },
+        {
+          "degree": 46,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 47,
+          "lower": "-81444495781333297741/250000000000000000000000",
+          "upper": "-325777983125333190963/1000000000000000000000000"
+        },
+        {
+          "degree": 48,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 49,
+          "lower": "51846611085003255569/50000000000000000000000",
+          "upper": "1036932221700065111381/1000000000000000000000000"
+        },
+        {
+          "degree": 50,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 51,
+          "lower": "-1286226194417093950743/1000000000000000000000000",
+          "upper": "-643113097208546975371/500000000000000000000000"
+        },
+        {
+          "degree": 52,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 53,
+          "lower": "12628172134745403533/62500000000000000000000",
+          "upper": "202050754155926456529/1000000000000000000000000"
+        },
+        {
+          "degree": 54,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 55,
+          "lower": "-82694765959359151293/500000000000000000000000",
+          "upper": "-33077906383743660517/200000000000000000000000"
+        },
+        {
+          "degree": 56,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 57,
+          "lower": "-34238834767626345761/500000000000000000000000",
+          "upper": "-68477669535252691521/1000000000000000000000000"
+        },
+        {
+          "degree": 58,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 59,
+          "lower": "183451402580032049343/500000000000000000000000",
+          "upper": "366902805160064098687/1000000000000000000000000"
+        },
+        {
+          "degree": 60,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 61,
+          "lower": "-264391823039977926247/1000000000000000000000000",
+          "upper": "-132195911519988963123/500000000000000000000000"
+        },
+        {
+          "degree": 62,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 63,
+          "lower": "-347382768858503930477/500000000000000000000000",
+          "upper": "-694765537717007860953/1000000000000000000000000"
+        },
+        {
+          "degree": 64,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 65,
+          "lower": "-44142886587053999271/500000000000000000000000",
+          "upper": "-88285773174107998541/1000000000000000000000000"
+        },
+        {
+          "degree": 66,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 67,
+          "lower": "-15494288419431397063/250000000000000000000000",
+          "upper": "-61977153677725588251/1000000000000000000000000"
+        },
+        {
+          "degree": 68,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 69,
+          "lower": "-18221818840580696199/500000000000000000000000",
+          "upper": "-36443637681161392397/1000000000000000000000000"
+        },
+        {
+          "degree": 70,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 71,
+          "lower": "-12280040210318395619/1000000000000000000000000",
+          "upper": "-6140020105159197809/500000000000000000000000"
+        },
+        {
+          "degree": 72,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 73,
+          "lower": "4953864356282170233/500000000000000000000000",
+          "upper": "9907728712564340467/1000000000000000000000000"
+        },
+        {
+          "degree": 74,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 75,
+          "lower": "7382074249852281067/250000000000000000000000",
+          "upper": "29528296999409124269/1000000000000000000000000"
+        },
+        {
+          "degree": 76,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 77,
+          "lower": "1150852458113346467/25000000000000000000000",
+          "upper": "46034098324533858681/1000000000000000000000000"
+        },
+        {
+          "degree": 78,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 79,
+          "lower": "471624978491460967/8000000000000000000000",
+          "upper": "14738280577858155219/250000000000000000000000"
+        },
+        {
+          "degree": 80,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 81,
+          "lower": "33960767482963623253/500000000000000000000000",
+          "upper": "67921534965927246507/1000000000000000000000000"
+        },
+        {
+          "degree": 82,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 83,
+          "lower": "2908604557678250179/40000000000000000000000",
+          "upper": "18178778485489063619/250000000000000000000000"
+        },
+        {
+          "degree": 84,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 85,
+          "lower": "73277063462633616453/1000000000000000000000000",
+          "upper": "36638531731316808227/500000000000000000000000"
+        },
+        {
+          "degree": 86,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 87,
+          "lower": "69739512960210078043/1000000000000000000000000",
+          "upper": "17434878240052519511/250000000000000000000000"
+        },
+        {
+          "degree": 88,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 89,
+          "lower": "15608980430678748839/250000000000000000000000",
+          "upper": "62435921722714995357/1000000000000000000000000"
+        },
+        {
+          "degree": 90,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 91,
+          "lower": "10380353585545371163/200000000000000000000000",
+          "upper": "6487720990965856977/125000000000000000000000"
+        },
+        {
+          "degree": 92,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 93,
+          "lower": "38861344709685443931/1000000000000000000000000",
+          "upper": "9715336177421360983/250000000000000000000000"
+        },
+        {
+          "degree": 94,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 95,
+          "lower": "6049812757146198519/250000000000000000000000",
+          "upper": "24199251028584794077/1000000000000000000000000"
+        },
+        {
+          "degree": 96,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 97,
+          "lower": "8916256243673009689/1000000000000000000000000",
+          "upper": "891625624367300969/100000000000000000000000"
+        },
+        {
+          "degree": 98,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 99,
+          "lower": "-1482349392492947743/250000000000000000000000",
+          "upper": "-5929397569971790971/1000000000000000000000000"
+        },
+        {
+          "degree": 100,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 101,
+          "lower": "-19292589472149313837/1000000000000000000000000",
+          "upper": "-4823147368037328459/250000000000000000000000"
+        },
+        {
+          "degree": 102,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 103,
+          "lower": "-15109725527339247723/500000000000000000000000",
+          "upper": "-6043890210935699089/200000000000000000000000"
+        },
+        {
+          "degree": 104,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 105,
+          "lower": "-18963534131875111311/500000000000000000000000",
+          "upper": "-37927068263750222621/1000000000000000000000000"
+        },
+        {
+          "degree": 106,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 107,
+          "lower": "-10469368979455704123/250000000000000000000000",
+          "upper": "-41877475917822816491/1000000000000000000000000"
+        },
+        {
+          "degree": 108,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 109,
+          "lower": "-3347031215301203/80000000000000000000",
+          "upper": "-41837890191265037499/1000000000000000000000000"
+        },
+        {
+          "degree": 110,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 111,
+          "lower": "-3791911184905038483/100000000000000000000000",
+          "upper": "-37919111849050384829/1000000000000000000000000"
+        },
+        {
+          "degree": 112,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 113,
+          "lower": "-6116995267020547361/200000000000000000000000",
+          "upper": "-7646244083775684201/250000000000000000000000"
+        },
+        {
+          "degree": 114,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 115,
+          "lower": "-206277374696247359/10000000000000000000000",
+          "upper": "-20627737469624735899/1000000000000000000000000"
+        },
+        {
+          "degree": 116,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 117,
+          "lower": "-1821468129575910671/200000000000000000000000",
+          "upper": "-4553670323939776677/500000000000000000000000"
+        },
+        {
+          "degree": 118,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 119,
+          "lower": "2743494580365170263/1000000000000000000000000",
+          "upper": "342936822545646283/125000000000000000000000"
+        },
+        {
+          "degree": 120,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 121,
+          "lower": "3410485579523194801/250000000000000000000000",
+          "upper": "2728388463618555841/200000000000000000000000"
+        },
+        {
+          "degree": 122,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 123,
+          "lower": "22394482163647487023/1000000000000000000000000",
+          "upper": "1399655135227967939/62500000000000000000000"
+        },
+        {
+          "degree": 124,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 125,
+          "lower": "14019043377718460733/500000000000000000000000",
+          "upper": "28038086755436921467/1000000000000000000000000"
+        },
+        {
+          "degree": 126,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 127,
+          "lower": "29965580910324978077/1000000000000000000000000",
+          "upper": "14982790455162489039/500000000000000000000000"
+        },
+        {
+          "degree": 128,
+          "lower": "0",
+          "upper": "0"
+        }
+      ],
+      "augmentation_D_finite_rounding_energy_upper": "9883210790826841/500000000000000000000000000000000000000000000000000000000000",
+      "augmentation_D_omitted_output_energy_upper": "843933777771281294465703990903037621366092657969905837739/1000000000000000000000000000000000000000000000000000000000000",
+      "band_output_beyond_128_physical_energy_upper": "42544455755637272385208602098488290626649975212200598173/1000000000000000000000000000000000000000000000000000000000000",
+      "captured_band_output_physical_energy_lower": "2198058718747689623738994839715633577439664407272727272727/1000000000000000000000000000000000000000000000000000000000000",
+      "complete_augmented_action_D_error_squared_upper": "841828506394256377554212334875692062859183176975792361463/500000000000000000000000000000000000000000000000000000000000",
+      "complete_rational_augmentation_action_D_error_squared_upper": "3161522058433351056172229933305443529047752677763766441/3125000000000000000000000000000000000000000000000000000000",
+      "finite_augmentation_D_action": [
+        {
+          "coefficient": "0",
+          "degree": 0,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1204026959542263021878239385065923277646919961711975201147/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 1,
+          "radius": "1922694130858434497063595226793182407/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 2,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-9738425755550278643582190643225114278181816320052529046373/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 3,
+          "radius": "3822822581432627092638519376408164391/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 4,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-6340592954799508431815434205723710461861285486965300539367/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 5,
+          "radius": "1112606838019990204138109618122034989/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 6,
+          "radius": "0"
+        },
+        {
+          "coefficient": "18182062649252470249032496707610050028074760159631695431343/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 7,
+          "radius": "1443751446746033420131644332453654151/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 8,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-62036320436926107550060997723737006245351136159849667847/3906250000000000000000000000000000000000000000000000000000",
+          "degree": 9,
+          "radius": "8818154470870610280820666710824084671/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 10,
+          "radius": "0"
+        },
+        {
+          "coefficient": "9554021336901979207331256387555871754300120982125189844091/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 11,
+          "radius": "5187931643330260012054066697622830823/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 12,
+          "radius": "0"
+        },
+        {
+          "coefficient": "26467567984175200924925258423441259756361983007322397238711/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 13,
+          "radius": "1487597144862963313163162195705907013/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 14,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-113133657745430259306598873445709045566377285433731542669747/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 15,
+          "radius": "1674854106817837640958876472705515963/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 16,
+          "radius": "0"
+        },
+        {
+          "coefficient": "27824962733299970404335228046585978728421485924823395565017/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 17,
+          "radius": "3718563422109475926153097985449768201/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 18,
+          "radius": "0"
+        },
+        {
+          "coefficient": "19640703265968358805182032863198017566162674305371610886881/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 19,
+          "radius": "2041273198623433563998181360312963629/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 20,
+          "radius": "0"
+        },
+        {
+          "coefficient": "93544344145287565892032050834392722387993096854153479433143/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 21,
+          "radius": "3553811072365700025244573773348305581/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 22,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-42029499279933085115290534111192973928572786295433941794451/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 23,
+          "radius": "3838557445449753246025916358759194253/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 24,
+          "radius": "0"
+        },
+        {
+          "coefficient": "21721268441748544432683329427975465059342081858140227669767/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 25,
+          "radius": "10301470596111790691627372736661863153/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 26,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-84931505211323458901476346310131242191134026394637219853101/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 27,
+          "radius": "22000805323837908837316953743875981397/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 28,
+          "radius": "0"
+        },
+        {
+          "coefficient": "87428232700391351208742479566303814510273996503144602295721/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 29,
+          "radius": "23387459622507408998245512562085093753/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 30,
+          "radius": "0"
+        },
+        {
+          "coefficient": "13040721634016232148251237941519431461450831059095965709519/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 31,
+          "radius": "24763821558035000411524831611668430267/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 32,
+          "radius": "0"
+        },
+        {
+          "coefficient": "6567196631536363665899203870398676527441852554677825389121/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 33,
+          "radius": "26130679366834917315949889323780365927/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 34,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-27362563766613105167589878150067699365451956403863124381467/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 35,
+          "radius": "13744358460643772192147879709867954767/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 36,
+          "radius": "0"
+        },
+        {
+          "coefficient": "35353493662766686156409375559394750892965377777971920115641/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 37,
+          "radius": "28838532678575941536506185395841811869/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 38,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1587462642183418130921681510650973050497713300900265682333/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 39,
+          "radius": "6036130876620472649340597975305549737/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 40,
+          "radius": "0"
+        },
+        {
+          "coefficient": "25591584347125058464451125583620380010757428305923931754629/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 41,
+          "radius": "6303110117770290141722252767705414077/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 42,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-13576511658943121349265789648290183555805634627628959571959/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 43,
+          "radius": "32843639845508315823874316414702529309/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 44,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3417955013949477517874153558034742334748914411435329306323/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 45,
+          "radius": "6833059621363178868366970763421944363/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 46,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-23117769123039557409205473362366046025170345943039591486913/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 47,
+          "radius": "4435108095353495313608077429735893261/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 48,
+          "radius": "0"
+        },
+        {
+          "coefficient": "9537351983613333672859913731252940403230765159306741120417/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 49,
+          "radius": "36790647586091937513124192199910939433/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 50,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3919895421865307486954486794041000173752152391549680772753/40000000000000000000000000000000000000000000000000000000000",
+          "degree": 51,
+          "radius": "4761865855474264143743204882793438939/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 52,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1989894767964697203195842899769085328179445841609817584361/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 53,
+          "radius": "39393958737261806087836994494143623919/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 54,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-6729365687583049422644056739924133270427881265814356343387/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 55,
+          "radius": "20343989155924357417433117745150659639/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 56,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5749001916592622740343987852092511298329806474835993656807/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 57,
+          "radius": "20988600939754894609441623995432462751/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 58,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3174577293135576370311488319842194416519142056068674659691/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 59,
+          "radius": "21630914568016479120227441061742019993/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 60,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-11776552464320240177010487198211332891322486845777940321763/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 61,
+          "radius": "44542044944052382898280268861391125453/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 62,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-63665563848079281574187121957747564545291860243303039125183/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 63,
+          "radius": "45818020898438101871117871460278202479/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 64,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-8314739399918077018804236482701388945469578792119017565233/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 65,
+          "radius": "47089916648327710819282579644125639967/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 66,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1498541914177475197575634212269271648846690559626795418483/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 67,
+          "radius": "188897973041372112611579402856573427/3906250000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 68,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3616816270600868392124624949131461765778171177527575020417/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 69,
+          "radius": "12405513351394186189338592296807019233/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 70,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-78104991325172841006637649422252063224123556671424039081/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 71,
+          "radius": "25441281946179765543268891377234101749/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 72,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1033168732784059296505491330103509756976736265569503618337/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 73,
+          "radius": "52139534839858977691923700343157633181/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 74,
+          "radius": "0"
+        },
+        {
+          "coefficient": "19707584488433150008378244974400489086996475749108803837/6250000000000000000000000000000000000000000000000000000000",
+          "degree": 75,
+          "radius": "13348270297399389088317886025625159/250000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 76,
+          "radius": "0"
+        },
+        {
+          "coefficient": "5030911118156857274671297542328709733925324837757968547791/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 77,
+          "radius": "10928662233625559967006620292173973551/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 78,
+          "radius": "0"
+        },
+        {
+          "coefficient": "658981854885999015709788385385764799904302892519458202109/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 79,
+          "radius": "55890326843862687266307204713938529589/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 80,
+          "radius": "0"
+        },
+        {
+          "coefficient": "7761288471099409475157864633610000713615519673442078712577/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 81,
+          "radius": "11426844924887070024007442511483807207/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 82,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1061187933840551307142078000496514320009784528723123815617/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 83,
+          "radius": "58375095702738973266077592137099815023/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 84,
+          "radius": "0"
+        },
+        {
+          "coefficient": "8736535045842996986601257138986413020805545155323625575481/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 85,
+          "radius": "7451628307241875495846535792573257673/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 86,
+          "radius": "0"
+        },
+        {
+          "coefficient": "8487033552027464069792524073784024452812451413419540988197/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 87,
+          "radius": "3042404940846311221755004132665079787/50000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 88,
+          "radius": "0"
+        },
+        {
+          "coefficient": "242252900425263902293754612358980523890014867239363396637/31250000000000000000000000000000000000000000000000000000000",
+          "degree": 89,
+          "radius": "1940012205656553928442506252439767557/31250000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 90,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1642949833701063103689730489853910342950591869660245696949/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 91,
+          "radius": "63309975721769437450443009136493329159/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 92,
+          "radius": "0"
+        },
+        {
+          "coefficient": "501598335060935303173652788725883830726059429901690194799/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 93,
+          "radius": "32268462324857973161042940854114082987/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 94,
+          "radius": "0"
+        },
+        {
+          "coefficient": "795687157279660161343069237324615093162010627178971272921/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 95,
+          "radius": "32880652229357337987988634237706522631/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 96,
+          "radius": "0"
+        },
+        {
+          "coefficient": "597239189306384162398931405251326669255079527454521075899/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 97,
+          "radius": "16745794787211855298120544793601401671/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 98,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-808800777984182253041465564714686350343531124650381189521/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 99,
+          "radius": "8525326228763112514926680146981592957/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 100,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-167410612930869736062084718478563402748461080797098712307/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 101,
+          "radius": "69419654908596598137754339835418883693/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 102,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-266816486845287796819650380518832278220195848115300643811/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 103,
+          "radius": "8829296282166384417760341230895034511/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 104,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1362469421815223159020740344872258717161769178549675664989/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 105,
+          "radius": "1122606396461142657701993407071822837/15625000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 106,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-6118887486384728199297342198435435212441470916599894102509/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 107,
+          "radius": "36528511761431512391009021660667917233/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 108,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3107093503665334540764780379367675169051027999013522819773/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 109,
+          "radius": "4641566367046936311439786315560050773/62500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 110,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5723584428034453367266788989154592472738149402202804174791/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 111,
+          "radius": "75470971615091489954019690934813274227/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 112,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-2345096884766335094510576744782028434663378462542613655753/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 113,
+          "radius": "19168699519988777056077784294319640123/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 114,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3212835494244657226005850904943487043589293865020692269217/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 115,
+          "radius": "1216821638136726582247166452070604713/15625000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 116,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-72017547350183994040512028454529627815081038938742991369/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 117,
+          "radius": "1581527476234754350242382765615714071/20000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 118,
+          "radius": "0"
+        },
+        {
+          "coefficient": "440463694579014853595218179403130678043076754299779240439/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 119,
+          "radius": "80274205338601259406882589967037825823/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 120,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1111410654257750681491999088260303223183596436529319591569/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 121,
+          "radius": "81470118282598340882626284367705634567/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 122,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3702441669900950655949705304109165827964129918030686281533/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 123,
+          "radius": "16532830019709350990984409898848410991/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 124,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2351171249219212527163467228807934622625007066846296705457/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 125,
+          "radius": "5241021056764975747056032332783630133/62500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 126,
+          "radius": "0"
+        },
+        {
+          "coefficient": "5096948353164005331391430598723798065283108439839977088913/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 127,
+          "radius": "42523356784185913977170029180241022673/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 128,
+          "radius": "0"
+        }
+      ],
+      "finite_complete_augmented_D_action": [
+        {
+          "coefficient": "0",
+          "degree": 0,
+          "radius": "0"
+        },
+        {
+          "coefficient": "382697769148424091429282283087656168491253/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 1,
+          "radius": "384538826298149500933673044375832931/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 2,
+          "radius": "0"
+        },
+        {
+          "coefficient": "181827667394678199207976280305229465641533/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 3,
+          "radius": "3822822582562702307273326729796876433/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 4,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3279834581600257304979399531662770733651591/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 5,
+          "radius": "5563034191473670611555917138087830541/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 6,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2508909751526142682781363743215722496412290853494894987703/25000000000000000000000000000000000000000000000000000000000",
+          "degree": 7,
+          "radius": "1443751447305269501467761442942376287/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 8,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-15353638044753474364688972622656437616859534891243670770089/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 9,
+          "radius": "70545235770230993636818848204334517/8000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 10,
+          "radius": "0"
+        },
+        {
+          "coefficient": "15014039521789178249037945040908486700501046668781992510613/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 11,
+          "radius": "2593965821717682032484467729017370319/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 12,
+          "radius": "0"
+        },
+        {
+          "coefficient": "240957458213463112375242139148006443563784382141901433130327/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 13,
+          "radius": "11900777164927166497882048420961130527/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 14,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-60032620954839313518819271719831770922259140234227211686519/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 15,
+          "radius": "1674854107237195981260702567541084969/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 16,
+          "radius": "0"
+        },
+        {
+          "coefficient": "69642442861372984230447779124059179008474060389185899382189/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 17,
+          "radius": "1859281711237708282828464870293842177/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 18,
+          "radius": "0"
+        },
+        {
+          "coefficient": "15450461649075252798309568515712033198927651937841244667723/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 19,
+          "radius": "4082546397340094817881336166024446903/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 20,
+          "radius": "0"
+        },
+        {
+          "coefficient": "112026910084376134536718883765756883615184436522605009827601/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 21,
+          "radius": "17769055364494020415491235185157645627/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 22,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-33452145222200703463115129515843678155968394385341861435467/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 23,
+          "radius": "95963936144398610524960177284719629/5000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 24,
+          "radius": "0"
+        },
+        {
+          "coefficient": "14044949449529114850944418639947427960498483559500732833433/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 25,
+          "radius": "5150735298379798020945252963324771643/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 26,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1022944907822524228844772262431689224641802447749364985441/12500000000000000000000000000000000000000000000000000000000",
+          "degree": 27,
+          "radius": "4400161065322327159454152117545085371/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 28,
+          "radius": "0"
+        },
+        {
+          "coefficient": "55745171435771273352931623218691116991384662461645896393461/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 29,
+          "radius": "2923432453098092984934743046956858587/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 30,
+          "radius": "0"
+        },
+        {
+          "coefficient": "36581727866948036518163224140566134579277940695883513898907/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 31,
+          "radius": "24763821558959138002126529632006415743/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 32,
+          "radius": "0"
+        },
+        {
+          "coefficient": "6443408577240830738813410433085274267286597798531402016963/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 33,
+          "radius": "261306793673392254638238685421526001/10000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 34,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-953615435987648361456419340597710805291845327475611380501/20000000000000000000000000000000000000000000000000000000000",
+          "degree": 35,
+          "radius": "5497743384612325986465568342642595257/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 36,
+          "radius": "0"
+        },
+        {
+          "coefficient": "48572387119880629575388644744419059172078050110817836836959/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 37,
+          "radius": "5767706535953877565771432593642046171/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 38,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-8754751517184169593336745049708934497435418014928594423021/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 39,
+          "radius": "30180654383397181035401296965983845117/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 40,
+          "radius": "0"
+        },
+        {
+          "coefficient": "19282184313460074814880049120748625067138010392286842351669/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 41,
+          "radius": "15757775294871905452433964408409094223/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 42,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1552301326328820810151363100860852802032933921356297329647/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 43,
+          "radius": "16421819922948488333880976331699221029/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 44,
+          "radius": "0"
+        },
+        {
+          "coefficient": "116227532015264960206379768113494393114915671084213185671/40000000000000000000000000000000000000000000000000000000000",
+          "degree": 45,
+          "radius": "17082649053530841792826301042599205427/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 46,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-10978295146639163236637043324621966114311156245686822309027/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 47,
+          "radius": "8870216190916586557882654853695728889/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 48,
+          "radius": "0"
+        },
+        {
+          "coefficient": "90408031359479588860360280145013845238434078363809058241647/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 49,
+          "radius": "18395323794397730153384379049770630793/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 50,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-6645044393344493537255994987796598854533635747176470790627/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 51,
+          "radius": "19047463423098705981158558195224211839/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 52,
+          "radius": "0"
+        },
+        {
+          "coefficient": "24513284396788938789013595359513763862315906763299225058199/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 53,
+          "radius": "4924244842252370562209464566518776321/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 54,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1721239113144108264712138033915095011234089675176182765883/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 55,
+          "radius": "40687978311992533762886450658415833281/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 56,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-2617637549027545390943836094025139205916878229352978071/31250000000000000000000000000000000000000000000000000000000",
+          "degree": 57,
+          "radius": "41977201879553094342945135074381861059/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 58,
+          "radius": "0"
+        },
+        {
+          "coefficient": "19900387373229216675701149839885322608259287119229862592777/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 59,
+          "radius": "21630914568630697934938182252688144579/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 60,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-23748354747356496612844312090253703929965678669057140541433/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 61,
+          "radius": "44542044944446713504869197184903261123/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 62,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-73725762582069486503578248854988437894750692248194736305867/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 63,
+          "radius": "45818020899810880219331785099105751429/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 64,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-6095611609553362048238558941164770925102414951585174193101/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 65,
+          "radius": "23544958324228659778657872565832082577/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 66,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-7979792342164306496848735609000207582404187921093927318823/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 67,
+          "radius": "48357881098706825742915097929285124483/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 68,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-313964387155461329948028076547089918903010451630750119771/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 69,
+          "radius": "49622053405640844651950401787139741619/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 70,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-51570014280033691656995173855354510897765186349452391131/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 71,
+          "radius": "3180160243275122808018088038765484203/62500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 72,
+          "radius": "0"
+        },
+        {
+          "coefficient": "448120092331620448349074774474744281116232836749740315113/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 73,
+          "radius": "26069767419946346888298006054602714089/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 74,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1058455321326868198502763588813820286224116647378958853861/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 75,
+          "radius": "13348270297430112326129282623905007677/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 76,
+          "radius": "0"
+        },
+        {
+          "coefficient": "6828070960981718763689930207055355938380365662693383718719/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 77,
+          "radius": "54643311168230740592462183804070626607/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 78,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2458244281482836943344355153142383203028977234407184480807/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 79,
+          "radius": "27945163422049326905381345232612307047/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 80,
+          "radius": "0"
+        },
+        {
+          "coefficient": "9699967774104132505263379680956139546456173879853113573367/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 81,
+          "radius": "14283556156136440134324554302507948901/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 82,
+          "radius": "0"
+        },
+        {
+          "coefficient": "13004699919444897389534693350772500544794851866963977524083/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 83,
+          "radius": "29187547851497705853763408369814326893/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 84,
+          "radius": "0"
+        },
+        {
+          "coefficient": "430478342513156264839424491763423665555531554084807903581/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 85,
+          "radius": "59613026458039728756381756937909254883/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 86,
+          "radius": "0"
+        },
+        {
+          "coefficient": "10693574222989744303583158870929680087965866402173902107061/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 87,
+          "radius": "30424049408525440656455915739585423031/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 88,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2677294205198109687165366879774359332779033355916163991511/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 89,
+          "radius": "62080390581144825964589328625775943649/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 90,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3936944395745370512340581665403415776789305984536590648577/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 91,
+          "radius": "989218370653791068333363097252992789/15625000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 92,
+          "radius": "0"
+        },
+        {
+          "coefficient": "4582289576528591189177009549072990979844799624052637975047/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 93,
+          "radius": "12907384929989714986573878341773282839/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 94,
+          "radius": "0"
+        },
+        {
+          "coefficient": "24983282535320942933256987302560310651063428283457143267/40000000000000000000000000000000000000000000000000000000000",
+          "degree": 95,
+          "radius": "32880652229428891543506338855904475683/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 96,
+          "radius": "0"
+        },
+        {
+          "coefficient": "3773085667227576922324089752225202935568248430980268398227/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 97,
+          "radius": "16745794787247834514738000246823573621/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 98,
+          "radius": "0"
+        },
+        {
+          "coefficient": "542801432425453107601351541966290540578779388928884406619/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 99,
+          "radius": "17050652457545041240356777868541400163/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 100,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-317282599715371793110070203400604473068861217728784440633/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 101,
+          "radius": "13883930981731456219468272155918147359/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 102,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1748962284526535188914779417380886060292846710298217563209/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 103,
+          "radius": "68978877204466629939529433708362669/976562500000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 104,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-4232934819112279430400768513605734820367636193481144412883/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 105,
+          "radius": "35923404686790228647345087363885956771/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 106,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-7302685779400777069295263213535037724207669509603235194729/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 107,
+          "radius": "73057023522928382452974721297018404939/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 108,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-2967090019116308996742975889700217012162036287280259737619/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 109,
+          "radius": "928313273411623618859756527595765901/12500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 110,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-709046608171383943736194399146700020912519981272587547869/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 111,
+          "radius": "2358467862979007552077178434285333421/31250000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 112,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-6181538160481563083481930566401106397160774937482222162627/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 113,
+          "radius": "76674798080036954716826117878934326143/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 114,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3190548306211375490263465945503371548563055364981916108717/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 115,
+          "radius": "15575316968150344413336268311281791189/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 116,
+          "radius": "0"
+        },
+        {
+          "coefficient": "67220632257330386012456333878639958884994492382445764507/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 117,
+          "radius": "79076373811823816388836383547915463951/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 118,
+          "radius": "0"
+        },
+        {
+          "coefficient": "76364443286051656490137025905298279003906661830358013971/31250000000000000000000000000000000000000000000000000000000",
+          "degree": 119,
+          "radius": "4013710266935528942896134771319502729/50000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 120,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2195655621930491403419970434716579625468851630029857606611/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 121,
+          "radius": "20367529570679116675081238623515532633/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 122,
+          "radius": "0"
+        },
+        {
+          "coefficient": "4528355195153322654854152059608972428963939497294830518377/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 123,
+          "radius": "2066603752464791642276551839192074561/25000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 124,
+          "radius": "0"
+        },
+        {
+          "coefficient": "4253551929712919176092995950032589484368827997217827261581/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 125,
+          "radius": "4192816845413198664807980006086397933/50000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 126,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1538589032768042210420181640863207795360356378957609047111/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 127,
+          "radius": "42523356784214564015297851494904410609/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 128,
+          "radius": "0"
+        }
+      ],
+      "ideal_band_operator_not_substituted_for_rational_augmentation": true,
+      "independent_P4_P5_band_transpose_intersection": true,
+      "independent_band_input_energy_partition_intersection": true,
+      "input": "R1",
+      "intersected_physical_band_input_form_lower": "1120301587251663448061885878979117039029160251189241505961/500000000000000000000000000000000000000000000000000000000000",
+      "intersected_physical_band_input_form_upper": "22406031745033268961242034418141218680663143824849278709/10000000000000000000000000000000000000000000000000000000000",
+      "materialization_controls": {
+        "all_input_modes_combined_before_output_pairing": true,
+        "generation_integration_by_parts_terms": 96,
+        "phase_error_upper": "1/1000000000000000000000000000000000000000000000000000000000000",
+        "pi_lower_limit_prefactor_error_upper": "1/1000000000000000000000000000000000000000000000000000000000000",
+        "replay_integration_by_parts_terms": 112,
+        "spherical_polynomial_boundary_derivative_controls_through_degree": 128,
+        "stored_band_Gram_grid": "1/10^24"
+      },
+      "parity": "odd",
+      "previous_complete_augmented_action_D_error_squared_upper": "3936742141592083929312702764447732696199611376270048493329/500000000000000000000000000000000000000000000000000000000000",
+      "previous_rational_augmentation_action_D_error_squared_upper": "1580352485013105164348031980985402824211618461615509273877/250000000000000000000000000000000000000000000000000000000000",
+      "relative_complete_augmented_action_D_error_squared_upper": "99281945760481555479421296859198274284082179221441304454483/1000000000000000000000000000000000000000000000000000000000000",
+      "unchanged_rational_to_band_D_error_squared_upper": "1899559430743085052934148295061234640531980241976861189/250000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "previous_response_bounds_preserved": true,
+  "rational_model_error_paid": true,
+  "response_trials_per_parity": 4,
+  "retained_residual_augmented_action_degree": 128,
+  "same_parity_action_errors_assumed_orthogonal": false,
+  "starting_commit": "4ed17b420821251fcc95a2b5240f290b042b9315",
+  "validator_git_blob_pins": {
+    "scripts/validate_rpb108_rc127_enriched_even_endpoint_action.py": "d5d82bf70c1a178f0fe1da61f27b8623e42ed361",
+    "scripts/validate_rpb108_rc129_four_vector_joint_moment.py": "1229dc4a9db7509b9f6afea7116349891b618f4c",
+    "scripts/validate_rpb108_rc132_balanced_action_shared_covariance.py": "0a083ba5df42b81db924340972b51ac7e4762920",
+    "scripts/validate_rpb108_rc133_six_vector_joint_matrices.py": "f675827ba027147ebc384f2596d994afff9de685",
+    "scripts/validate_rpb108_rc134_correlated_six_input_covariance.py": "ac0d5ba0acb48182f0eed3ef452ddca1fbef2f0e",
+    "scripts/validate_rpb108_rc170_poisson_regular_action.py": "2224bbdeca1f1e041d37031e5d1ddfc9ad0e986a",
+    "scripts/validate_rpb108_rc171_regular_legendre_projection.py": "29a8ab157b16d262a78abe9bf9348a271a34fff5",
+    "scripts/validate_rpb108_rc176_f0_regular_output_carrier.py": "38fa42607e423de666ffbb4ebc0f703c7c0fe1d7",
+    "scripts/validate_rpb108_rc177_three_source_canonical_action_gram.py": "d9d0575e6dda8e0b6f66ffaf83d0474b2715ba5b",
+    "scripts/validate_rpb108_rc179_focus_residual_canonical_action.py": "012cc045537e82d78a51299ffb9c5356a488ac6a",
+    "scripts/validate_rpb108_rc184_five_source_canonical_inverse.py": "bb5339138ff3dbc90521fa131f6221e23c49e4f2",
+    "scripts/validate_rpb108_rc185_five_source_focus_action.py": "15c017543efd99248b958e0ce48fcc7bb6ac75c1",
+    "scripts/validate_rpb108_rc186_residual_enriched_five_source_inverse.py": "afce718195cb46a78224f137dec6de9382ef43f2",
+    "scripts/validate_rpb108_rc189_refined_psi_five_source_inverse.py": "544740ee9274417e0ed2d5c0fe385bf476941557",
+    "scripts/validate_rpb108_rc191_two_refined_actions_five_source_inverse.py": "b5eab21b3e3098c36f3a0a515d9c1eaed7da8bb9",
+    "scripts/validate_rpb108_rc195_refined_five_source_inverse.py": "31fa6e809a06da59f3dea2615d38840be86d8cdc",
+    "scripts/validate_rpb108_rc198_v10_mixed_action_rows.py": "46de46eb61fa91894c8315c155c68cfc07735f0b",
+    "scripts/validate_rpb108_rc199_six_source_canonical_inverse.py": "85b30e8997b9c8c7eb4166a77c28811e37081834",
+    "scripts/validate_rpb108_rc201_refined_v10_six_source_inverse.py": "a3cd26942d90662ad6a351febe5e812c4a9a04d9",
+    "scripts/validate_rpb108_rc202_six_source_residual_action.py": "9a072690851db23fb14bd54596ab6af72e9f3f44",
+    "scripts/validate_rpb108_rc203_residual_enriched_six_source_inverse.py": "a0e6b3982e757dfb485a3f2b92b06c60a6bacc8e",
+    "scripts/validate_rpb108_rc204_signed_error.py": "5362ddfbfaf443875fa7914aa90bb00b58b00281",
+    "scripts/validate_rpb108_rc205_signed_error_inverse.py": "2953a3b86fc7560b31ec02c6761483d4f6c39fc1",
+    "scripts/validate_rpb108_rc206_directional_error_inverse.py": "7ada815599b8d2b607aed030e38b8daa01801496",
+    "scripts/validate_rpb108_rc210_collective_regular_input_tail.py": "03dae85f568ea15d8a0a64482eda41bf0b42bccc",
+    "scripts/validate_rpb108_rc216_refined_t10_canonical_action.py": "39a99e7163894018641813f8b8036de295900f28",
+    "scripts/validate_rpb108_rc217_expanded_mixed_inverse.py": "00ec74eb1f550858ba59416581350e7f315f7632",
+    "scripts/validate_rpb108_rc218_coupled_expanded_inverse.py": "b8d3ac315b5b561b5c919f2fb4aff73343b0f834",
+    "scripts/validate_rpb108_rc219_nominal_trial_span_barrier.py": "a7e9ebb0803ce10fe1850a511667562f52ed2b69",
+    "scripts/validate_rpb108_rc220_barrier_residual_action.py": "ad5e7214d4abf84f671ec66330c323f4fe42293b",
+    "scripts/validate_rpb108_rc221_eleven_trial_inverse.py": "0e1ced2dcadd1c167bd52a6deae837f6a6becf4e",
+    "scripts/validate_rpb108_rc222_shared_tail_error_inverse.py": "e32e9a6735e95e33f68acced5019d0462b5488ca",
+    "scripts/validate_rpb108_rc223_extended_delta_t10_endpoints.py": "b8404d58431747694b68e8bf4debbcb67a0c7499",
+    "scripts/validate_rpb108_rc224_compatible_extended_inverse.py": "e759a266d6d232b0bf7a3c9b0446931734394f8d",
+    "scripts/validate_rpb108_rc225_paid_trial_optimization.py": "4200a50e0fee6893db0ce5d757010ac0890a59fd",
+    "scripts/validate_rpb108_rc226_coherent_residual_tail_inverse.py": "a8544ea4b527a523dec13d3db3a3f23ad03a1d79",
+    "scripts/validate_rpb108_rc227_new_residual_trial_action.py": "a3667c676e087db848c7b457b8b23bff78a52bf2",
+    "scripts/validate_rpb108_rc228_twelve_trial_inverse.py": "2125d6dc0d7ede94220f2ce4d0daf443cd225f45",
+    "scripts/validate_rpb108_rc229_stage_I_interface_audit.py": "ceda4aefa76126b4bf50b7236432c4c247c6a75e",
+    "scripts/validate_rpb108_rc230_augmentation_range_bridge.py": "db5cdc3c6df5b89b8cd59bf796a85979b22c721c",
+    "scripts/validate_rpb108_rc231_original_polynomial_action.py": "590de78c2725f9462e451490ab52a332999cb98d",
+    "scripts/validate_rpb108_rc232_augmented_polynomial_action.py": "0517cd8d8ed1688090c3085d8dd0a9171aa80a6e",
+    "scripts/validate_rpb108_rc233_augmented_inverse_response.py": "679e0e9029aadc7af548f4c6a2335bbecf4aa93d",
+    "scripts/validate_rpb108_rc234_materialized_band_action.py": "f1f68e92d521337cea8303867821c363fe59a1ad",
+    "scripts/validate_rpb108_rc235_frequency_metric_response.py": "d429d0c29ddb4b3d3f36867762500a0dc766e3d7",
+    "scripts/validate_rpb108_rc236_full_range_signed_response.py": "60711dbb1937730d9260343828332555b5569d6d",
+    "scripts/validate_rpb108_rc237_two_trial_signed_response.py": "d13e909c8aa8b91d5b55ec5e5e5179cdaf9325d2",
+    "scripts/validate_rpb108_rc238_weighted_action_tails.py": "a3922068c7ff8ae3d00435d8ee7f7733d5825748",
+    "scripts/validate_rpb108_rc239_exterior_band_leakage.py": "5b0c21280154029a4eb5ca493e7734e288131d23",
+    "scripts/validate_rpb108_rc240_three_trial_signed_response.py": "9e1f46907a3c96d2f916d709163d0dea0db5190a",
+    "scripts/validate_rpb108_rc241_three_trial_tuning_obstruction.py": "d539efd9e1f4e5a9533aed2b64706229deb66cf3",
+    "scripts/validate_rpb108_rc242_residual_original_actions.py": "1ad445e68070055b995c16efe65c3a31979b0134",
+    "scripts/validate_rpb108_rc243_residual_augmented_actions.py": "0a092cbb7efee3784855fff29bd65f94a3a715be",
+    "scripts/validate_rpb108_rc244_four_trial_signed_response.py": "7512b8363151af8512f2553b39e7f5c88973ac8a",
+    "scripts/validate_rpb108_rc245_source_refined_response.py": "445d82c5f46e3dc3374118108c9509553598814a"
+  }
+}
