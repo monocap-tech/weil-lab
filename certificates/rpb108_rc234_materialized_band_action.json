@@ -1,0 +1,1607 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "actual_augmented_inverse_response_lower": [
+    [
+      "168902307485268585625275927726099709204181008402257071912637/1000000000000000000000000000000000000000000000000000000000000",
+      "0"
+    ],
+    [
+      "0",
+      "53275175148710997393357246910609787100655585262193991625293/1000000000000000000000000000000000000000000000000000000000000"
+    ]
+  ],
+  "actual_augmented_inverse_response_upper": [
+    [
+      "818552393435410577470854766281621302360860717781441339203843/1000000000000000000000000000000000000000000000000000000000000",
+      "0"
+    ],
+    [
+      "0",
+      "168460085341183093837169874684055468253638279562694926174793/250000000000000000000000000000000000000000000000000000000000"
+    ]
+  ],
+  "actual_band_action_columns_materialized": true,
+  "actual_rational_augmentation_difference_paid": true,
+  "all_complex_combinations_of_r0_r1_covered": true,
+  "both_parity_complete_action_and_inverse_uppers_improved": true,
+  "canonical_inverse_half_width_gate_transferred": false,
+  "chosen_rational_operator_unchanged": true,
+  "finite_eight_canonical_inverse_width_preserved": "485647/1000000",
+  "frequency_auxiliary_metric_evaluated": false,
+  "full_639_auxiliary_range_enclosed": false,
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc112_parity_spectral_coverage.json": "d0155c1a15d5a98f17df42d25168c10b4bd7aef4",
+    "certificates/rpb108_rc114_positive_augmentation.json": "609d7770e2a5a16e407a0a41903ac1e349b5c144",
+    "certificates/rpb108_rc115_rational_fourier_adjoint.json": "92189b6472cdb9ae82bf4812e70fdd0072b06bc8",
+    "certificates/rpb108_rc121_diagonal_metric_equivalence.json": "089664ca7eb9139fec1ba0f58b4cfbf25902f51a",
+    "certificates/rpb108_rc127_enriched_even_endpoint_action.json": "b98167d6e34f983cfa4e3e5b3f496931f468da04",
+    "certificates/rpb108_rc128_collective_second_response.json": "9f5671fce28949322d02f98a9d2a83f2efb53f8c",
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc132_balanced_action_shared_covariance.json": "035eac34848eb3f8f0a2d65424340050936e980c",
+    "certificates/rpb108_rc133_six_vector_joint_matrices.json": "d86fb5a684dc8d0f37517c34fae03f5f1455b78c",
+    "certificates/rpb108_rc134_correlated_six_input_covariance.json": "451dd35ea6af09b6d307b39f6cd7156ce92307c3",
+    "certificates/rpb108_rc135_common_response_capture.json": "2de31504cf1bc7645d3dc850f147ad6bb0582cfb",
+    "certificates/rpb108_rc136_seven_vector_joint_matrices.json": "84ed91819c32053ae78caf340758e7d0c07a9568",
+    "certificates/rpb108_rc154_centered_analytic_tail_action.json": "28c2027b223be6d5d137a76d15bbcad3be04d54f",
+    "certificates/rpb108_rc170_poisson_regular_action.json": "690b571c35d3f49302223b306488008c9b907272",
+    "certificates/rpb108_rc171_regular_legendre_projection.json": "b905565d7c15e557ce41207774dd0e338070650f",
+    "certificates/rpb108_rc172_quadratic_regular_action.json": "895448d42fc03b9875dcd3ecf8dd2923ef51a44b",
+    "certificates/rpb108_rc174_regular_source_tail_compression.json": "f0e3837e3dc0a6dc03cfa0d9195fa632348313bd",
+    "certificates/rpb108_rc175_f0_regular_physical_source.json": "659754cd0766a38413019dbe0141295d8e815877",
+    "certificates/rpb108_rc176_f0_regular_output_carrier.json": "f81ba3a2b18abf516fee9837bf59ff3342c4001c",
+    "certificates/rpb108_rc177_three_source_canonical_action_gram.json": "0d1dfd962b1eb3e199d6df9f093e32dfd5a0e232",
+    "certificates/rpb108_rc178_three_source_canonical_inverse.json": "5e41c31af560052d1949e5c61174109f663dcce2",
+    "certificates/rpb108_rc179_focus_residual_canonical_action.json": "1f6a9930e0182635ddebd373fc0b300f136fe069",
+    "certificates/rpb108_rc180_residual_enriched_canonical_inverse.json": "8b48993a4d01c58b5c2b2e6ebd3b01f14198fd0a",
+    "certificates/rpb108_rc181_psi_action_completion_dashboard.json": "ceed57e11d269b11b1aee30cfe215efab5c37ff0",
+    "certificates/rpb108_rc182_four_source_canonical_inverse.json": "6071904d1a7602622028f86e7a52205753c2488e",
+    "certificates/rpb108_rc182_materialized_Cpsi_carrier.json": "0eb05b44e2bad1e4c3d2a366c758a563d639a7df",
+    "certificates/rpb108_rc183_materialized_w14_canonical_carrier.json": "4469fa1b92e6e1e9f08598ce707cfb43b240784a",
+    "certificates/rpb108_rc183_w14_canonical_action.json": "cc4e2d8b95144282eaeeebc980ecf204ed173c66",
+    "certificates/rpb108_rc184_five_source_canonical_inverse.json": "4ceedcd939c7eed8bcccab5ab915ca6642ef8e24",
+    "certificates/rpb108_rc185_five_source_focus_action.json": "e68b983718244e40b61ae01392156c20a2a76a2a",
+    "certificates/rpb108_rc186_residual_enriched_five_source_inverse.json": "11719b721921073aebe5d2356747d6a40aff01d0",
+    "certificates/rpb108_rc187_correlated_variational_refinement.json": "38a50d04e1bd99fb7e40329087c2a43795197702",
+    "certificates/rpb108_rc188_extended_psi_endpoint_action.json": "91a4bf81150ecf6be696b1004b79a67c2bdbec50",
+    "certificates/rpb108_rc188_materialized_Cpsi_carrier.json": "ce137b872381e32291a416ec1a2c247ac97e1a7a",
+    "certificates/rpb108_rc189_refined_psi_five_source_inverse.json": "9e1d13385e55c6576bce0806575320f2052546f0",
+    "certificates/rpb108_rc190_extended_w14_endpoint_action.json": "aa139a1ddbb285b4c8fc20f5b8b90b910eeae529",
+    "certificates/rpb108_rc190_materialized_Cw14_carrier.json": "76627bff4e17f78a6e0ffd4acdac5e459aa7d023",
+    "certificates/rpb108_rc191_two_refined_actions_five_source_inverse.json": "efa7dfd9f5e763db340820341f214562a19f47ef",
+    "certificates/rpb108_rc192_low_polynomial_regular_actions.json": "1ddada7c8f1e3829ed56bc9725c09f7cfa9e5977",
+    "certificates/rpb108_rc193_extended_f0_regular_action.json": "299fc1207f0e90478e0bebd0e082e2981a8c514e",
+    "certificates/rpb108_rc194_q185_analytic_endpoint_tail.json": "d98da5ef1042ef2c28f974b11b59ce0b40db6879",
+    "certificates/rpb108_rc195_refined_five_source_inverse.json": "a61cc3f75829b151ea2ea77d3574556aac62d8ca",
+    "certificates/rpb108_rc196_adaptive_action_error_inverse.json": "9285682f3de512714c7f280148aad9e6959bdff8",
+    "certificates/rpb108_rc197_native_v10_canonical_action.json": "6e759211fbc8de8e4b6c4ed5fd4c62a5e5241455",
+    "certificates/rpb108_rc198_v10_mixed_action_rows.json": "9f9dfabab81640c79a1b3b21ab54b50dbd7cbb81",
+    "certificates/rpb108_rc199_six_source_canonical_inverse.json": "32c08337c0d300a98d74ca0c437df6e66a2fe79d",
+    "certificates/rpb108_rc200_extended_v10_endpoint_action.json": "3e0a948321e87b840dae6a83319a2d06dfc8eede",
+    "certificates/rpb108_rc200_materialized_Cv10_carrier.json": "4a470657c7dd0b3264174de321f0f8fca0dfa36b",
+    "certificates/rpb108_rc201_refined_v10_six_source_inverse.json": "cf224ee3495e23376bff696ee0bac9c81ff9cca7",
+    "certificates/rpb108_rc202_six_source_residual_action.json": "695d477b22e41eec7f3b82e7a793794e05ac17bb",
+    "certificates/rpb108_rc203_residual_enriched_six_source_inverse.json": "5d321b659367ba459682b557b12ef63451f63e49",
+    "certificates/rpb108_rc212_native_t10_canonical_action.json": "442f9963189a32fa8185daf5558e0673753ed0f1",
+    "certificates/rpb108_rc213_eight_source_error_interface.json": "23aaa6e712fca038e87603471f59c08066d6a0a9",
+    "certificates/rpb108_rc214_correlated_difference_canonical_action.json": "c2599b388cd75d0528635496d9418e061e9385db",
+    "certificates/rpb108_rc215_correlated_common_error_preflight.json": "31338be9ef05d8677f2325a6f2fbb708f94fb812",
+    "certificates/rpb108_rc216_refined_t10_canonical_action.json": "5073f4155d7f45f5d28bcd5330a107a42bc952e8",
+    "certificates/rpb108_rc217_expanded_mixed_inverse.json": "5f0f64ccb9af714b86a90e76d3be9dccbca5b69f",
+    "certificates/rpb108_rc218_coupled_expanded_inverse.json": "e04d82e18dd81acfca3ecea79270eb562906e1e4",
+    "certificates/rpb108_rc218_materialized_native_carriers.json": "1bc627d0cee338c78dfdcb14e2cbaa041141d175",
+    "certificates/rpb108_rc218_materialized_prefix_interface.json": "b627378083c4c958fbda320eed56602e1e2ccd25",
+    "certificates/rpb108_rc219_nominal_trial_span_barrier.json": "fa3a97ddb1b2450cab857b0568ed419ebfa9d5da",
+    "certificates/rpb108_rc220_barrier_residual_action.json": "a4c558b7866daae6b195142a674914a58dfe1d30",
+    "certificates/rpb108_rc221_eleven_trial_inverse.json": "efb1c115a14d53df182f9af1f4f07f3e00551699",
+    "certificates/rpb108_rc221_materialized_prefix_interface.json": "574faed53b7538fb5965bbe22d8343632007d1cb",
+    "certificates/rpb108_rc222_shared_tail_error_inverse.json": "dc3ad1a6d25707d123f212b1fca0410809450975",
+    "certificates/rpb108_rc223_extended_delta_t10_endpoints.json": "8fe624740732d6d15ce9181a1a039bd5be0cd561",
+    "certificates/rpb108_rc223_materialized_delta_t10_endpoint_carriers.json": "8333512e1b499e6adffbbd2ae3943be3f1bbe180",
+    "certificates/rpb108_rc224_compatible_extended_inverse.json": "33b20d4a9004ad814c0b99081ae9a55265cee78e",
+    "certificates/rpb108_rc224_materialized_prefix_interface.json": "75c1232800eb1545af894940dfc098931ff5545a",
+    "certificates/rpb108_rc225_paid_trial_optimization.json": "750b43592f692c04680ce6a455640f400ec096a4",
+    "certificates/rpb108_rc226_coherent_residual_tail_inverse.json": "73a359805df467779a50e654621885ae7bf10a8d",
+    "certificates/rpb108_rc227_new_residual_trial_action.json": "ae8fbdc426ad988debac9f819379dcb787768877",
+    "certificates/rpb108_rc228_materialized_prefix_interface.json": "ccdd43ff98a7b4f1e588af9fda647d8fd6695b7c",
+    "certificates/rpb108_rc228_twelve_trial_inverse.json": "ff3525870ad34c37b5836f19fdd52debc346760a",
+    "certificates/rpb108_rc229_stage_I_interface_audit.json": "8812dd8abf986b1e972931cf27402e0d2e2786f8",
+    "certificates/rpb108_rc230_augmentation_range_bridge.json": "0c86b55b46e0608e4244945e8a8c6503c88176e8",
+    "certificates/rpb108_rc231_original_polynomial_action.json": "e00d0b8544f74efc8dce3d0ea073894d083a5b5d",
+    "certificates/rpb108_rc232_augmented_polynomial_action.json": "32226a00d6cb6cfb6077106e96890ec9f739c2a3",
+    "certificates/rpb108_rc233_augmented_inverse_response.json": "868fcfb1536e377a9eacb06e6976af46920ac589",
+    "certificates/rpb108_rc42_native_signed_pole_head.json": "478c53d7d309d6921d7ba65274eef0feed5bc100",
+    "certificates/rpb108_rc43_native_prime_head.json": "b4893953109e6fdc55d52b505c2bcfbf0d38281e",
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9",
+    "certificates/rpb108_rc66_arch_multiplier_transport.json": "7cbccc7e2cba8a8714c43333e8a1d16866907cea",
+    "notes/RPB108_RC112_PARITY_SPECTRAL_COVERAGE_AND_CERTIFIED_STRONG_FLOOR_20261011.md": "ea61a1237c5953c564e9ba9855d596ba37ff9e73",
+    "notes/RPB108_RC114_PROJECTION_FREE_POSITIVE_AUGMENTATION_AND_FINITE_RESPONSE_20261011.md": "a62b95e03ce6c02fa5c6f1d79e535ad1d35dc925",
+    "notes/RPB108_RC115_RATIONAL_FOURIER_ADJOINT_SOURCE_CONSTRUCTION_20261012.md": "bf0a21926acdf51d515a0cab0676cc02aa3f85fd",
+    "notes/RPB108_RC118_CANONICAL_METRIC_RESIDUAL_SOURCES_20261012.md": "71795de30804478d4b01e4b18bb0a322a5f6674b",
+    "notes/RPB108_RC121_GLOBAL_DIAGONAL_METRIC_EQUIVALENCE_20261012.md": "9b33ea3bb19240dc20bcd1a83a0f623e692ca772",
+    "notes/RPB108_RC136_SEVEN_VECTOR_JOINT_MATRICES_20261012.md": "95cdec39bc144f2fb41411e7c2e98d3094862c2e",
+    "notes/RPB108_RC230_EXACT_AUGMENTATION_RANGE_AND_D_ENERGY_BRIDGE_20261014.md": "2b178b64330ec20dbd9a5e8028188705a5fa3d92",
+    "notes/RPB108_RC231_DIRECT_ORIGINAL_POLYNOMIAL_ACTIONS_20261014.md": "83173dae9bf6a0072ba65560ce421bdc05618881",
+    "notes/RPB108_RC232_COMPLETE_AUGMENTED_POLYNOMIAL_ACTIONS_20261014.md": "69f8818efac81447b437ceb636dd9fd2879b89d6",
+    "notes/RPB108_RC233_ACTUAL_AUGMENTED_INVERSE_RESPONSE_ENCLOSURES_20261014.md": "5ee0c7dc1c5303b26ee5c55dac37f0bb11aa5b48",
+    "notes/RPB108_RC46_ACTUAL_ARCHIMEDEAN_AND_COMPLETE_LOW_HEAD_20261010.md": "7a1b58255c29f6396622bbbc154afcc371722cab"
+  },
+  "milestone": "RC234",
+  "next_cursor": "RC235: use the materialized band-action interface for richer actual response/source trials and full-range residual/auxiliary metric contracts; tighter r0/r1 enclosures are not the full frequency norm gate",
+  "opposite_parity_pairings_zero": true,
+  "original_augmented_response_norm_below_one_certified": false,
+  "output_degree_cutoff": 64,
+  "parity_materialized_augmented_action_certificates": [
+    {
+      "actual_augmentation_action_D_error_squared_upper": "27762995478664302003380316865911123375121205365985676031247/1000000000000000000000000000000000000000000000000000000000000",
+      "actual_band_Gram_column": [
+        {
+          "degree": 0,
+          "lower": "549604793742314057174811/250000000000000000000000",
+          "upper": "439683834993851245739849/200000000000000000000000"
+        },
+        {
+          "degree": 1,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 2,
+          "lower": "-197603353375002734057/125000000000000000000000",
+          "upper": "-316165365400004374491/200000000000000000000000"
+        },
+        {
+          "degree": 3,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 4,
+          "lower": "-316147406873051683259/200000000000000000000000",
+          "upper": "-790368517182629208147/500000000000000000000000"
+        },
+        {
+          "degree": 5,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 6,
+          "lower": "-316066022803730775221/200000000000000000000000",
+          "upper": "-197541264252331734513/125000000000000000000000"
+        },
+        {
+          "degree": 7,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 8,
+          "lower": "-1579251870692289103423/1000000000000000000000000",
+          "upper": "-789625935346144551711/500000000000000000000000"
+        },
+        {
+          "degree": 9,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 10,
+          "lower": "-1577020242659166082159/1000000000000000000000000",
+          "upper": "-788510121329583041079/500000000000000000000000"
+        },
+        {
+          "degree": 11,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 12,
+          "lower": "-786513636643471094647/500000000000000000000000",
+          "upper": "-1573027273286942189293/1000000000000000000000000"
+        },
+        {
+          "degree": 13,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 14,
+          "lower": "-783271541431192834127/500000000000000000000000",
+          "upper": "-1566543082862385668253/1000000000000000000000000"
+        },
+        {
+          "degree": 15,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 16,
+          "lower": "-1556722861302947982693/1000000000000000000000000",
+          "upper": "-389180715325736995673/250000000000000000000000"
+        },
+        {
+          "degree": 17,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 18,
+          "lower": "-308523616142932623477/200000000000000000000000",
+          "upper": "-192827260089332889673/125000000000000000000000"
+        },
+        {
+          "degree": 19,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 20,
+          "lower": "-304638652853198203947/200000000000000000000000",
+          "upper": "-761596632132995509867/500000000000000000000000"
+        },
+        {
+          "degree": 21,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 22,
+          "lower": "-149734972087158249001/100000000000000000000000",
+          "upper": "-1497349720871582490009/1000000000000000000000000"
+        },
+        {
+          "degree": 23,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 24,
+          "lower": "-292791526691509010841/200000000000000000000000",
+          "upper": "-365989408364386263551/250000000000000000000000"
+        },
+        {
+          "degree": 25,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 26,
+          "lower": "-1421897735811013810457/1000000000000000000000000",
+          "upper": "-177737216976376726307/125000000000000000000000"
+        },
+        {
+          "degree": 27,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 28,
+          "lower": "-137011348855687884099/100000000000000000000000",
+          "upper": "-1370113488556878840989/1000000000000000000000000"
+        },
+        {
+          "degree": 29,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 30,
+          "lower": "-65383706343044331607/50000000000000000000000",
+          "upper": "-1307674126860886632139/1000000000000000000000000"
+        },
+        {
+          "degree": 31,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 32,
+          "lower": "-1233848163161681835809/1000000000000000000000000",
+          "upper": "-38557755098802557369/31250000000000000000000"
+        },
+        {
+          "degree": 33,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 34,
+          "lower": "-1121275254754449763/976562500000000000000",
+          "upper": "-1148185860868556557311/1000000000000000000000000"
+        },
+        {
+          "degree": 35,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 36,
+          "lower": "-262651960861587744939/250000000000000000000000",
+          "upper": "-210121568689270195951/200000000000000000000000"
+        },
+        {
+          "degree": 37,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 38,
+          "lower": "-11768692421173894721/12500000000000000000000",
+          "upper": "-941495393693911577679/1000000000000000000000000"
+        },
+        {
+          "degree": 39,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 40,
+          "lower": "-821776201252315504691/1000000000000000000000000",
+          "upper": "-82177620125231550469/100000000000000000000000"
+        },
+        {
+          "degree": 41,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 42,
+          "lower": "-138599492182219109267/200000000000000000000000",
+          "upper": "-346498730455547773167/500000000000000000000000"
+        },
+        {
+          "degree": 43,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 44,
+          "lower": "-139344126579773772841/250000000000000000000000",
+          "upper": "-557376506319095091363/1000000000000000000000000"
+        },
+        {
+          "degree": 45,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 46,
+          "lower": "-6528403936350984149/15625000000000000000000",
+          "upper": "-83563570385292597107/200000000000000000000000"
+        },
+        {
+          "degree": 47,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 48,
+          "lower": "-138942473407557693329/500000000000000000000000",
+          "upper": "-277884946815115386657/1000000000000000000000000"
+        },
+        {
+          "degree": 49,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 50,
+          "lower": "-35428875780105339749/250000000000000000000000",
+          "upper": "-28343100624084271799/200000000000000000000000"
+        },
+        {
+          "degree": 51,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 52,
+          "lower": "-6935673527881110117/500000000000000000000000",
+          "upper": "-13871347055762220233/1000000000000000000000000"
+        },
+        {
+          "degree": 53,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 54,
+          "lower": "50441147701745670691/500000000000000000000000",
+          "upper": "100882295403491341383/1000000000000000000000000"
+        },
+        {
+          "degree": 55,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 56,
+          "lower": "197867096370192815347/1000000000000000000000000",
+          "upper": "49466774092548203837/250000000000000000000000"
+        },
+        {
+          "degree": 57,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 58,
+          "lower": "136421173468129730321/500000000000000000000000",
+          "upper": "272842346936259460643/1000000000000000000000000"
+        },
+        {
+          "degree": 59,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 60,
+          "lower": "80599245116620080937/250000000000000000000000",
+          "upper": "322396980466480323749/1000000000000000000000000"
+        },
+        {
+          "degree": 61,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 62,
+          "lower": "1721763965180297741/5000000000000000000000",
+          "upper": "344352793036059548201/1000000000000000000000000"
+        },
+        {
+          "degree": 63,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 64,
+          "lower": "169068999476286642157/500000000000000000000000",
+          "upper": "67627599790514656863/200000000000000000000000"
+        }
+      ],
+      "augmentation_finite_rounding_D_error_squared_upper": "2544727793695963/500000000000000000000000000000000000000000000000000000000000",
+      "augmentation_omitted_output_D_error_squared_upper": "3283099505585423981765031808932729022295781638568968647433/200000000000000000000000000000000000000000000000000000000000",
+      "band_materialization_controls": {
+        "generation_integration_by_parts_terms": 48,
+        "phase_reduction_turns": 141,
+        "pi_lower_limit_prefactor_error_upper": "1/1000000000000000000000000000000000000000000000000000000000000",
+        "replay_integration_by_parts_terms": 56,
+        "sin_cos_phase_error_upper": "1/1000000000000000000000000000000000000000000000000000000000000",
+        "stored_band_Gram_grid": "1/10^24"
+      },
+      "complete_augmented_action_D_error_squared_upper": "48863880926202960004888636430277316424857871777909250678281/1000000000000000000000000000000000000000000000000000000000000",
+      "finite_complete_augmented_D_action": [
+        {
+          "coefficient": "3412953010791132478119566506822414066572213700457517044390749/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 0,
+          "radius": "386910607663782115220752728995965257/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 1,
+          "radius": "0"
+        },
+        {
+          "coefficient": "28638280668286379401214018679903092565604218649798123769089/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 2,
+          "radius": "2774403862568691482421678285565867669/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 3,
+          "radius": "0"
+        },
+        {
+          "coefficient": "5375206960010846580008186214896827348143955680695180729621/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 4,
+          "radius": "2249456381704693888003675119714268627/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 5,
+          "radius": "0"
+        },
+        {
+          "coefficient": "47230069867210306971280387540959359611612535612136466335387/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 6,
+          "radius": "3058642870474581830935392170277822607/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 7,
+          "radius": "0"
+        },
+        {
+          "coefficient": "17902938250189632349780979858564110384673486837723541182057/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 8,
+          "radius": "3835430166850717235650097679590932313/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 9,
+          "radius": "0"
+        },
+        {
+          "coefficient": "9607555634445145552559875459811247841449984235190519917067/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 10,
+          "radius": "9178551405840969874665073195724626093/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 11,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-27230497353603982859651757363806335635188666785652581670883/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 12,
+          "radius": "10651108559579850801338190808155706493/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 13,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-56743607095372476275211879989547935313084931988195468604323/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 14,
+          "radius": "2419082548069962936870874317720895387/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 15,
+          "radius": "0"
+        },
+        {
+          "coefficient": "15575774561502265904759156725334750034929529997481220387919/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 16,
+          "radius": "84476368013842920363044452260360183/6250000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 17,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-12649404024017676272767818451093267280118797707219180016039/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 18,
+          "radius": "1864624272895195285536857458913293343/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 19,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5763321892379734821701373981513735748179168294331451943057/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 20,
+          "radius": "8150184930476493557954061227216175903/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 21,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-8948969532564852521166755837440276514901013259437810172041/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 22,
+          "radius": "17668405335518320553542537215478219923/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 23,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-51286529501097084540740911986958341955989088446047896980271/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 24,
+          "radius": "19022752702577689005795220963111086757/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 25,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-4862420813119543364774178691955592434388795173359564650823/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 26,
+          "radius": "318199440866441189215708011806408461/15625000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 27,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5137467280204411365462094158386390901551348202616311661467/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 28,
+          "radius": "2169556537980582259019559656629455937/100000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 29,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-32667595890678268284234662221155213966264898566077177998519/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 30,
+          "radius": "2877013290484384326489282498089097161/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 31,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-25747171134545046042110059683922695761203454768824248837991/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 32,
+          "radius": "12163599456136556506023538924670619337/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 33,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-14328174514707619234351582306097569671685025435074632222091/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 34,
+          "radius": "25629544203310934413773366549230343539/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 35,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-968406869023995274752725881973615976786604550114049880853/12500000000000000000000000000000000000000000000000000000000",
+          "degree": 36,
+          "radius": "26923753127615236599347958044847840659/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 37,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-14562815542540598729673605629249976756005660500597478971007/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 38,
+          "radius": "1763147652445895684742865561060614573/62500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 39,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-61013923160019499532939124779692274545863662952056234724147/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 40,
+          "radius": "7372461777710658195008715730244539903/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 41,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-12155957660765457574261971352563872023317571489009579190531/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 42,
+          "radius": "961332192926179249215093452226853683/31250000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 43,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5289816984885836615076941883589727788921112553373415134859/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 44,
+          "radius": "1281163623433068196646921233249509141/40000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 45,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-7341838322319302855931342084776304948179099632129446159453/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 46,
+          "radius": "16644784802005207061397116377032323511/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 47,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-844202180224340920650109966346351167212407833347602817133/20000000000000000000000000000000000000000000000000000000000",
+          "degree": 48,
+          "radius": "34544376020584410765474951310137531109/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 49,
+          "radius": "0"
+        },
+        {
+          "coefficient": "500542455073142022805063669451534962356248409909207339537/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 50,
+          "radius": "35793790451396333064941981419207497781/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 51,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1254469437744259979007211951106543133608718624490568309771/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 52,
+          "radius": "37038068943853665323524076364344067551/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 53,
+          "radius": "0"
+        },
+        {
+          "coefficient": "5582615163153887703812994672140472871767550981810383808591/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 54,
+          "radius": "38277445977698918941332437021499392211/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 55,
+          "radius": "0"
+        },
+        {
+          "coefficient": "1064854250338374992251307014933591568524601994026056130801/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 56,
+          "radius": "9878034254375947724566514279841649351/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 57,
+          "radius": "0"
+        },
+        {
+          "coefficient": "5250783095641281435566015455102889846253968158193333447607/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 58,
+          "radius": "20371170336169889391888021297917088109/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 59,
+          "radius": "0"
+        },
+        {
+          "coefficient": "28785422838159555943425873372463382602147261496787840154703/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 60,
+          "radius": "41968240549786105597953629918442211531/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 61,
+          "radius": "0"
+        },
+        {
+          "coefficient": "61550034505615943053220784939447312168792487531934754725371/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 62,
+          "radius": "8638001371594184375530076511564204837/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 63,
+          "radius": "0"
+        },
+        {
+          "coefficient": "32135958873007966700445215837424386880894104231333684780129/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 64,
+          "radius": "44407797767890089069589979957572220873/1000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "input": "P0",
+      "parity": "even",
+      "physical_band_action_tail_squared_upper": "168055177791682442410287917671010097972355356818181818183/200000000000000000000000000000000000000000000000000000000000",
+      "previous_augmentation_action_D_error_squared_upper": "91602212102391760408656261499606358470492857815493096071421/1000000000000000000000000000000000000000000000000000000000000",
+      "previous_complete_augmented_action_D_error_squared_upper": "127511854280663206213646766680570561205033918472593896343709/1000000000000000000000000000000000000000000000000000000000000",
+      "rational_band": "64135627/1000000",
+      "rational_to_band_augmentation_D_error_squared_upper": "1482198851343444155110356316320888581564623035889074603779/1000000000000000000000000000000000000000000000000000000000000",
+      "relative_augmented_D_action_error_squared_upper": "5842506306466967719850784173574819784328371786638280891497/1000000000000000000000000000000000000000000000000000000000000",
+      "sharper_augmented_test_form_lower": "14216469914458475157646976192600219250599916614063751961363371/500000000000000000000000000000000000000000000000000000000000",
+      "sharper_augmented_test_form_upper": "28655617984509405134643311481181129967703425025636808781082591/1000000000000000000000000000000000000000000000000000000000000",
+      "sharper_original_test_form_lower": "88559196028771856656276699086369717413242872172868241189381/1000000000000000000000000000000000000000000000000000000000000",
+      "sharper_original_test_form_upper": "44279598014385928433082212420600234261597922837561013680863/500000000000000000000000000000000000000000000000000000000000",
+      "updated_actual_augmented_inverse_response": {
+        "actual_inverse_response_lower": "168902307485268585625275927726099709204181008402257071912637/1000000000000000000000000000000000000000000000000000000000000",
+        "actual_inverse_response_upper": "818552393435410577470854766281621302360860717781441339203843/1000000000000000000000000000000000000000000000000000000000000",
+        "actual_inverse_response_width_upper": "324825042975070995922789419277760796578339854689592133645603/500000000000000000000000000000000000000000000000000000000000",
+        "old_enclosure_intersected": true,
+        "previous_inverse_response_lower": "81763910322344626908028157650072006382894628200320466164937/500000000000000000000000000000000000000000000000000000000000",
+        "previous_inverse_response_upper": "1327400818904780565849593791251311314403107707785451011607561/1000000000000000000000000000000000000000000000000000000000000",
+        "selected_lower_trial": {
+          "added_residual_correction_lower": "0",
+          "added_residual_correction_upper": "658410254508242278782816727298027956004856141693509319734379/1000000000000000000000000000000000000000000000000000000000000",
+          "residual_D_Gram_lower": "0",
+          "residual_D_Gram_upper": "901592352120613610965411991137561680647429968550979281681/1000000000000000000000000000000000000000000000000000000000000",
+          "response_lower": "168902307485268585625275927726099709204181008402257071912637/1000000000000000000000000000000000000000000000000000000000000",
+          "response_upper": "207156268601621387922680750653746756015816331427949130553661/250000000000000000000000000000000000000000000000000000000000",
+          "signed_variational_center_lower": "168902307485268585625275927726099709204181008402257071912637/1000000000000000000000000000000000000000000000000000000000000",
+          "signed_variational_center_upper": "34042963979648654581581255063391813611681836803657440496053/200000000000000000000000000000000000000000000000000000000000",
+          "trial_coefficient": "2200000000000000000000000000000000000000000000000000000000000/28655617984509405134643311481181129967703425025636808781082591"
+        },
+        "selected_upper_trial": {
+          "added_residual_correction_lower": "0",
+          "added_residual_correction_upper": "129666266623525837531974873692045732436427340955615687352019/200000000000000000000000000000000000000000000000000000000000",
+          "residual_D_Gram_lower": "0",
+          "residual_D_Gram_upper": "44389540379773881226695583719846523330900586893480332701/50000000000000000000000000000000000000000000000000000000000",
+          "response_lower": "168900864787623475327501805781409074210826526427047293530989/1000000000000000000000000000000000000000000000000000000000000",
+          "response_upper": "818552393435410577470854766281621302360860717781441339203843/1000000000000000000000000000000000000000000000000000000000000",
+          "signed_variational_center_lower": "168900864787623475327501805781409074210826526427047293530989/1000000000000000000000000000000000000000000000000000000000000",
+          "signed_variational_center_upper": "42555265079445347452745099455348160044681003250840725610937/250000000000000000000000000000000000000000000000000000000000",
+          "trial_coefficient": "4118771669201629360936964832470022871555322088398762837662146522359945656951098442645190952808572863062642707452055470560254466973689758665765809665054559450588059577926258893232605663637306111323062937871907651648153052336153161967456790859134735805438167887785401707376237129041848152768207187752754303731728849040464500/53491822585643024943095943579442047576056858186866067438378021763039827199847487972930041381755045237319526656907380328958267770701752143999264461008247592013707417402743979191270361662834430619900850039420232798062143844402652302577103894770105718559190577790241556295454511963831572945224971074726686115072308573055132851"
+        },
+        "source": "r0=i* P0"
+      }
+    },
+    {
+      "actual_augmentation_action_D_error_squared_upper": "6101755349309731129395341027577299265373141229577231201199/250000000000000000000000000000000000000000000000000000000000",
+      "actual_band_Gram_column": [
+        {
+          "degree": 0,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 1,
+          "lower": "366173434124239711687273/500000000000000000000000",
+          "upper": "732346868248479423374547/1000000000000000000000000"
+        },
+        {
+          "degree": 2,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 3,
+          "lower": "-493226848302188137437/500000000000000000000000",
+          "upper": "-986453696604376274873/1000000000000000000000000"
+        },
+        {
+          "degree": 4,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 5,
+          "lower": "-98639209147550239203/100000000000000000000000",
+          "upper": "-986392091475502392029/1000000000000000000000000"
+        },
+        {
+          "degree": 6,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 7,
+          "lower": "-986209813040706774599/1000000000000000000000000",
+          "upper": "-493104906520353387299/500000000000000000000000"
+        },
+        {
+          "degree": 8,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 9,
+          "lower": "-49290257237179735739/50000000000000000000000",
+          "upper": "-985805144743594714779/1000000000000000000000000"
+        },
+        {
+          "degree": 10,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 11,
+          "lower": "-985045240690853903311/1000000000000000000000000",
+          "upper": "-98504524069085390331/100000000000000000000000"
+        },
+        {
+          "degree": 12,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 13,
+          "lower": "-983766407393171771719/1000000000000000000000000",
+          "upper": "-491883203696585885859/500000000000000000000000"
+        },
+        {
+          "degree": 14,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 15,
+          "lower": "-19635492490638080487/20000000000000000000000",
+          "upper": "-981774624531904024349/1000000000000000000000000"
+        },
+        {
+          "degree": 16,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 17,
+          "lower": "-244711603145924824069/250000000000000000000000",
+          "upper": "-39153856503347971851/40000000000000000000000"
+        },
+        {
+          "degree": 18,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 19,
+          "lower": "-974730173693207042641/1000000000000000000000000",
+          "upper": "-12184127171165088033/12500000000000000000000"
+        },
+        {
+          "degree": 20,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 21,
+          "lower": "-969148148768982015523/1000000000000000000000000",
+          "upper": "-484574074384491007761/500000000000000000000000"
+        },
+        {
+          "degree": 22,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 23,
+          "lower": "-961799147341345745277/1000000000000000000000000",
+          "upper": "-240449786835336436319/250000000000000000000000"
+        },
+        {
+          "degree": 24,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 25,
+          "lower": "-23809055397929289181/25000000000000000000000",
+          "upper": "-952362215917171567239/1000000000000000000000000"
+        },
+        {
+          "degree": 26,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 27,
+          "lower": "-940501413740356258069/1000000000000000000000000",
+          "upper": "-235125353435089064517/250000000000000000000000"
+        },
+        {
+          "degree": 28,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 29,
+          "lower": "-925871860063831889507/1000000000000000000000000",
+          "upper": "-462935930031915944753/500000000000000000000000"
+        },
+        {
+          "degree": 30,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 31,
+          "lower": "-181625440408674057189/200000000000000000000000",
+          "upper": "-113515900255421285743/125000000000000000000000"
+        },
+        {
+          "degree": 32,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 33,
+          "lower": "-886928624771540819171/1000000000000000000000000",
+          "upper": "-88692862477154081917/100000000000000000000000"
+        },
+        {
+          "degree": 34,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 35,
+          "lower": "-215488870577529989303/250000000000000000000000",
+          "upper": "-861955482310119957211/1000000000000000000000000"
+        },
+        {
+          "degree": 36,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 37,
+          "lower": "-166583513696796701071/200000000000000000000000",
+          "upper": "-416458784241991752677/500000000000000000000000"
+        },
+        {
+          "degree": 38,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 39,
+          "lower": "-799568966640950757857/1000000000000000000000000",
+          "upper": "-24986530207529711183/31250000000000000000000"
+        },
+        {
+          "degree": 40,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 41,
+          "lower": "-761723317170468433601/1000000000000000000000000",
+          "upper": "-476077073231542771/625000000000000000000"
+        },
+        {
+          "degree": 42,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 43,
+          "lower": "-359635109961229863973/500000000000000000000000",
+          "upper": "-143854043984491945589/200000000000000000000000"
+        },
+        {
+          "degree": 44,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 45,
+          "lower": "-168048086703519740109/250000000000000000000000",
+          "upper": "-134438469362815792087/200000000000000000000000"
+        },
+        {
+          "degree": 46,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 47,
+          "lower": "-31029134039136288953/50000000000000000000000",
+          "upper": "-620582680782725779059/1000000000000000000000000"
+        },
+        {
+          "degree": 48,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 49,
+          "lower": "-112932225225810731139/200000000000000000000000",
+          "upper": "-282330563064526827847/500000000000000000000000"
+        },
+        {
+          "degree": 50,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 51,
+          "lower": "-504789560295012319069/1000000000000000000000000",
+          "upper": "-126197390073753079767/250000000000000000000000"
+        },
+        {
+          "degree": 52,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 53,
+          "lower": "-441484229508960589699/1000000000000000000000000",
+          "upper": "-220742114754480294849/500000000000000000000000"
+        },
+        {
+          "degree": 54,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 55,
+          "lower": "-75084849027241138373/200000000000000000000000",
+          "upper": "-46928030642025711483/125000000000000000000000"
+        },
+        {
+          "degree": 56,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 57,
+          "lower": "-61490966387937768539/200000000000000000000000",
+          "upper": "-153727415969844421347/500000000000000000000000"
+        },
+        {
+          "degree": 58,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 59,
+          "lower": "-23858393462113815099/100000000000000000000000",
+          "upper": "-238583934621138150989/1000000000000000000000000"
+        },
+        {
+          "degree": 60,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 61,
+          "lower": "-84985413926102357743/500000000000000000000000",
+          "upper": "-33994165570440943097/200000000000000000000000"
+        },
+        {
+          "degree": 62,
+          "lower": "0",
+          "upper": "0"
+        },
+        {
+          "degree": 63,
+          "lower": "-823244168121094081/8000000000000000000000",
+          "upper": "-25726380253784190031/250000000000000000000000"
+        },
+        {
+          "degree": 64,
+          "lower": "0",
+          "upper": "0"
+        }
+      ],
+      "augmentation_finite_rounding_D_error_squared_upper": "2705186218689277/500000000000000000000000000000000000000000000000000000000000",
+      "augmentation_omitted_output_D_error_squared_upper": "11591808746898086438528178437955017266459436330223823149499/1000000000000000000000000000000000000000000000000000000000000",
+      "band_materialization_controls": {
+        "generation_integration_by_parts_terms": 48,
+        "phase_reduction_turns": 226,
+        "pi_lower_limit_prefactor_error_upper": "1/1000000000000000000000000000000000000000000000000000000000000",
+        "replay_integration_by_parts_terms": 56,
+        "sin_cos_phase_error_upper": "1/1000000000000000000000000000000000000000000000000000000000000",
+        "stored_band_Gram_grid": "1/10^24"
+      },
+      "complete_augmented_action_D_error_squared_upper": "24205743200673151875155355305322136368010990326332347852647/500000000000000000000000000000000000000000000000000000000000",
+      "finite_complete_augmented_D_action": [
+        {
+          "coefficient": "0",
+          "degree": 0,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2843729221648783590668151737635408028279858628696987574067979/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 1,
+          "radius": "12016840780438280058078614927327227/6250000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 2,
+          "radius": "0"
+        },
+        {
+          "coefficient": "46892682092737709505431039863191566828345197860780180427977/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 3,
+          "radius": "955705646516964475457804591987559177/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 4,
+          "radius": "0"
+        },
+        {
+          "coefficient": "57596720772268547159765554079691541848508573518696261671707/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 5,
+          "radius": "695379274449281379022876786497236989/125000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 6,
+          "radius": "0"
+        },
+        {
+          "coefficient": "16944325337471955702437566829247673663720881771241970826103/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 7,
+          "radius": "7218757231498168506453621705749110077/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 8,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5501329129995472387493166032267283809121405044621615080251/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 9,
+          "radius": "88181544713324124177025359827904309/10000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 10,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-230646707985585544174091805044585917836738846741434645169/20000000000000000000000000000000000000000000000000000000000",
+          "degree": 11,
+          "radius": "10375863288111556925852928681244739859/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 12,
+          "radius": "0"
+        },
+        {
+          "coefficient": "23772849148537532547697291264574547942358799812347449960337/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 13,
+          "radius": "5950388576951799550513281783618037329/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 14,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-216743640120975651168055145421391002226605179732691497371/2500000000000000000000000000000000000000000000000000000000",
+          "degree": 15,
+          "radius": "167485410658577261759885878025342459/12500000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 16,
+          "radius": "0"
+        },
+        {
+          "coefficient": "163957588323791973482769338967780152672652038556397522331/25000000000000000000000000000000000000000000000000000000000",
+          "degree": 17,
+          "radius": "7437126844534744854562938840116803581/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 18,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-7278705380040613296076197116993717189035584254357232734757/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 19,
+          "radius": "16330185590992546352992753570837311503/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 20,
+          "radius": "0"
+        },
+        {
+          "coefficient": "2957587113174659335923603874827419001673818376076335161553/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 21,
+          "radius": "4442263840440335304739883330939045479/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 22,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-55793021199619726318996941871886440285148128137295546653987/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 23,
+          "radius": "9596393614080982285059768108209337977/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 24,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-7461204189361897837138050307808262131175378053222379434583/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 25,
+          "radius": "20602941194034011952103088802382943639/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 26,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-3466798209260300692076842243326955279398373332457853831833/40000000000000000000000000000000000000000000000000000000000",
+          "degree": 27,
+          "radius": "11000402661975448564411822260872792111/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 28,
+          "radius": "0"
+        },
+        {
+          "coefficient": "18244100281550201762029115137292750911340584259749376901549/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 29,
+          "radius": "23387459623630072093039651128230163873/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 30,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-5519382437081501867444167336968338952064452417419043569787/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 31,
+          "radius": "24763821560704349556218485332851201921/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 32,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-17287682983124068493612671041934227366271016642808087449477/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 33,
+          "radius": "13065339685051141933826307533659689693/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 34,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-72592544780289584961285287271076087162200746371719190408373/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 35,
+          "radius": "27488716922411510563642967258255717471/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 36,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-8600836429873612388044463247103903974901146696999747196833/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 37,
+          "radius": "28838532681295191729748964765803810867/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 38,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-24355449001670895634841917765421195052076666407875499873917/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 39,
+          "radius": "15090327192570290883415647972898792199/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 40,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-689609912410645398647117601281903597864617219600749810863/31250000000000000000000000000000000000000000000000000000000",
+          "degree": 41,
+          "radius": "15757775295917650709032023827697835651/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 42,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-54972085324442346037629161354147506733859880764748184401193/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 43,
+          "radius": "6568727969442934530504900312285691013/200000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 44,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-18907305820140047476845673680694884098941694238260607535727/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 45,
+          "radius": "8541324527476098299873462597194919307/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 46,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-48672489149302226116000287909911983187845509675226784782803/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 47,
+          "radius": "17740432382189347813447289315836603171/500000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 48,
+          "radius": "0"
+        },
+        {
+          "coefficient": "9095239292216825369310573813188313073799597540978938418021/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 49,
+          "radius": "36790647587600768143530097232524430839/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 50,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-23159944175921529953030939145058589041386828017344762645763/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 51,
+          "radius": "38094926843472157340744883905631173637/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 52,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-14410460125841451358016147899751554825968705749648989997533/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 53,
+          "radius": "39393958739608972788198723454029889183/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 54,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-1201910195788569317183518770565705833048123894027893420163/40000000000000000000000000000000000000000000000000000000000",
+          "degree": 55,
+          "radius": "40687978312896605797072083222848472001/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 56,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-4128369745094585047313208742442713585057740866331388436761/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 57,
+          "radius": "419772018810063311444564722360352443/10000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 58,
+          "radius": "0"
+        },
+        {
+          "coefficient": "107824230690773321898504713737335768661770902845578257453/12500000000000000000000000000000000000000000000000000000000",
+          "degree": 59,
+          "radius": "4326182913710601805205531400918314679/100000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 60,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-2369692337009468862686532337679185997044679894911669227707/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 61,
+          "radius": "44542044944060844936103326931110458251/1000000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 62,
+          "radius": "0"
+        },
+        {
+          "coefficient": "-4567844205207605060264648899127492788665531554991766754959/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 63,
+          "radius": "11454505224345935041244661879691207719/250000000000000000000000000000000000000000000000000000000000"
+        },
+        {
+          "coefficient": "0",
+          "degree": 64,
+          "radius": "0"
+        }
+      ],
+      "input": "P1",
+      "parity": "odd",
+      "physical_band_action_tail_squared_upper": "54127076104769363060756267780942507829629866909090909091/100000000000000000000000000000000000000000000000000000000000",
+      "previous_augmentation_action_D_error_squared_upper": "35597184621198661147397053966299562927914291445208493073239/500000000000000000000000000000000000000000000000000000000000",
+      "previous_complete_augmented_action_D_error_squared_upper": "21862097671102903935092386064355035265038364189368455489903/200000000000000000000000000000000000000000000000000000000000",
+      "rational_band": "51359649/500000",
+      "rational_to_band_augmentation_D_error_squared_upper": "2358287692015765745911923852965443343682725292726628702307/1000000000000000000000000000000000000000000000000000000000000",
+      "relative_augmented_D_action_error_squared_upper": "13748688624329311038725554001847130217143210091925582335823/1000000000000000000000000000000000000000000000000000000000000",
+      "sharper_augmented_test_form_lower": "1986434798967485639302916492282875390331288337985320789675131/200000000000000000000000000000000000000000000000000000000000",
+      "sharper_augmented_test_form_upper": "5047170434227933359216350337539754575487952357275330790736173/500000000000000000000000000000000000000000000000000000000000",
+      "sharper_original_test_form_lower": "97082815754051642820439797500199561803918466751221910039503/1000000000000000000000000000000000000000000000000000000000000",
+      "sharper_original_test_form_upper": "19416563150810328591324894194754222732497739381607233623011/200000000000000000000000000000000000000000000000000000000000",
+      "updated_actual_augmented_inverse_response": {
+        "actual_inverse_response_lower": "53275175148710997393357246910609787100655585262193991625293/1000000000000000000000000000000000000000000000000000000000000",
+        "actual_inverse_response_upper": "168460085341183093837169874684055468253638279562694926174793/250000000000000000000000000000000000000000000000000000000000",
+        "actual_inverse_response_width_upper": "620565166216021377955322251825612085913897532988585713073879/1000000000000000000000000000000000000000000000000000000000000",
+        "old_enclosure_intersected": true,
+        "previous_inverse_response_lower": "50509873608289509327829238417234845447706332126603907210629/1000000000000000000000000000000000000000000000000000000000000",
+        "previous_inverse_response_upper": "273194836761563526907040995116703280178966522073545474374041/250000000000000000000000000000000000000000000000000000000000",
+        "selected_lower_trial": {
+          "added_residual_correction_lower": "0",
+          "added_residual_correction_upper": "157123914811478060972283835950021633790796233270780021874067/250000000000000000000000000000000000000000000000000000000000",
+          "residual_D_Gram_lower": "0",
+          "residual_D_Gram_upper": "12783831238938854978371860741945683739556096930839117133/15625000000000000000000000000000000000000000000000000000000",
+          "response_lower": "53275175148710997393357246910609787100655585262193991625293/1000000000000000000000000000000000000000000000000000000000000",
+          "response_upper": "341313353439406384288231416431251201205252784655813897358903/500000000000000000000000000000000000000000000000000000000000",
+          "signed_variational_center_lower": "53275175148710997393357246910609787100655585262193991625293/1000000000000000000000000000000000000000000000000000000000000",
+          "signed_variational_center_upper": "27065523816450262343663744531207933623660318114253853610769/500000000000000000000000000000000000000000000000000000000000",
+          "trial_coefficient": "1100000000000000000000000000000000000000000000000000000000000/15141511302683800077649051012619263726463857071825992372208519"
+        },
+        "selected_upper_trial": {
+          "added_residual_correction_lower": "0",
+          "added_residual_correction_upper": "619701224312800426728479838945192857142210192071866535546607/1000000000000000000000000000000000000000000000000000000000000",
+          "residual_D_Gram_lower": "0",
+          "residual_D_Gram_upper": "6453734000960550409253773301890076496212375708915124779/8000000000000000000000000000000000000000000000000000000000",
+          "response_lower": "26636717865887337883319479969459787579964893185401769891327/500000000000000000000000000000000000000000000000000000000000",
+          "response_upper": "168460085341183093837169874684055468253638279562694926174793/250000000000000000000000000000000000000000000000000000000000",
+          "signed_variational_center_lower": "26636717865887337883319479969459787579964893185401769891327/500000000000000000000000000000000000000000000000000000000000",
+          "signed_variational_center_upper": "10827823410386389724039931958205803174468585235782633830513/200000000000000000000000000000000000000000000000000000000000",
+          "trial_coefficient": "67947331295561389716689681642497745058771046389908308337513608054819354013435883392775425984237379538191514582568351630161469580550685862593781698988046814126649030829846679796492456468775556975632104218451596165935303468162896076870232253760302254327226998352523007008696715266254333680940054964918922553077062954407840/929981807584498901094535342087639652134562320933327195645736525139194981282979677402998754782953171326455582226000243722517309434184857882066190230656557873760891619525921163362083130498032556564737588625897944614046962285884848855564938986710348532873333252554207521799962622059498395556880850576560651562787147094239093"
+        },
+        "source": "r1=i* P1"
+      }
+    }
+  ],
+  "spherical_polynomial_independent_boundary_controls": 65,
+  "starting_commit": "a4da25ca2ed083616007e77d34c14d8d894c6cae",
+  "validator_git_blob_pins": {
+    "scripts/validate_rpb108_rc127_enriched_even_endpoint_action.py": "d5d82bf70c1a178f0fe1da61f27b8623e42ed361",
+    "scripts/validate_rpb108_rc129_four_vector_joint_moment.py": "1229dc4a9db7509b9f6afea7116349891b618f4c",
+    "scripts/validate_rpb108_rc132_balanced_action_shared_covariance.py": "0a083ba5df42b81db924340972b51ac7e4762920",
+    "scripts/validate_rpb108_rc133_six_vector_joint_matrices.py": "f675827ba027147ebc384f2596d994afff9de685",
+    "scripts/validate_rpb108_rc134_correlated_six_input_covariance.py": "ac0d5ba0acb48182f0eed3ef452ddca1fbef2f0e",
+    "scripts/validate_rpb108_rc170_poisson_regular_action.py": "2224bbdeca1f1e041d37031e5d1ddfc9ad0e986a",
+    "scripts/validate_rpb108_rc171_regular_legendre_projection.py": "29a8ab157b16d262a78abe9bf9348a271a34fff5",
+    "scripts/validate_rpb108_rc176_f0_regular_output_carrier.py": "38fa42607e423de666ffbb4ebc0f703c7c0fe1d7",
+    "scripts/validate_rpb108_rc177_three_source_canonical_action_gram.py": "d9d0575e6dda8e0b6f66ffaf83d0474b2715ba5b",
+    "scripts/validate_rpb108_rc179_focus_residual_canonical_action.py": "012cc045537e82d78a51299ffb9c5356a488ac6a",
+    "scripts/validate_rpb108_rc184_five_source_canonical_inverse.py": "bb5339138ff3dbc90521fa131f6221e23c49e4f2",
+    "scripts/validate_rpb108_rc185_five_source_focus_action.py": "15c017543efd99248b958e0ce48fcc7bb6ac75c1",
+    "scripts/validate_rpb108_rc186_residual_enriched_five_source_inverse.py": "afce718195cb46a78224f137dec6de9382ef43f2",
+    "scripts/validate_rpb108_rc189_refined_psi_five_source_inverse.py": "544740ee9274417e0ed2d5c0fe385bf476941557",
+    "scripts/validate_rpb108_rc191_two_refined_actions_five_source_inverse.py": "b5eab21b3e3098c36f3a0a515d9c1eaed7da8bb9",
+    "scripts/validate_rpb108_rc195_refined_five_source_inverse.py": "31fa6e809a06da59f3dea2615d38840be86d8cdc",
+    "scripts/validate_rpb108_rc198_v10_mixed_action_rows.py": "46de46eb61fa91894c8315c155c68cfc07735f0b",
+    "scripts/validate_rpb108_rc199_six_source_canonical_inverse.py": "85b30e8997b9c8c7eb4166a77c28811e37081834",
+    "scripts/validate_rpb108_rc201_refined_v10_six_source_inverse.py": "a3cd26942d90662ad6a351febe5e812c4a9a04d9",
+    "scripts/validate_rpb108_rc202_six_source_residual_action.py": "9a072690851db23fb14bd54596ab6af72e9f3f44",
+    "scripts/validate_rpb108_rc203_residual_enriched_six_source_inverse.py": "a0e6b3982e757dfb485a3f2b92b06c60a6bacc8e",
+    "scripts/validate_rpb108_rc204_signed_error.py": "5362ddfbfaf443875fa7914aa90bb00b58b00281",
+    "scripts/validate_rpb108_rc205_signed_error_inverse.py": "2953a3b86fc7560b31ec02c6761483d4f6c39fc1",
+    "scripts/validate_rpb108_rc206_directional_error_inverse.py": "7ada815599b8d2b607aed030e38b8daa01801496",
+    "scripts/validate_rpb108_rc210_collective_regular_input_tail.py": "03dae85f568ea15d8a0a64482eda41bf0b42bccc",
+    "scripts/validate_rpb108_rc216_refined_t10_canonical_action.py": "39a99e7163894018641813f8b8036de295900f28",
+    "scripts/validate_rpb108_rc217_expanded_mixed_inverse.py": "00ec74eb1f550858ba59416581350e7f315f7632",
+    "scripts/validate_rpb108_rc218_coupled_expanded_inverse.py": "b8d3ac315b5b561b5c919f2fb4aff73343b0f834",
+    "scripts/validate_rpb108_rc219_nominal_trial_span_barrier.py": "a7e9ebb0803ce10fe1850a511667562f52ed2b69",
+    "scripts/validate_rpb108_rc220_barrier_residual_action.py": "ad5e7214d4abf84f671ec66330c323f4fe42293b",
+    "scripts/validate_rpb108_rc221_eleven_trial_inverse.py": "0e1ced2dcadd1c167bd52a6deae837f6a6becf4e",
+    "scripts/validate_rpb108_rc222_shared_tail_error_inverse.py": "e32e9a6735e95e33f68acced5019d0462b5488ca",
+    "scripts/validate_rpb108_rc223_extended_delta_t10_endpoints.py": "b8404d58431747694b68e8bf4debbcb67a0c7499",
+    "scripts/validate_rpb108_rc224_compatible_extended_inverse.py": "e759a266d6d232b0bf7a3c9b0446931734394f8d",
+    "scripts/validate_rpb108_rc225_paid_trial_optimization.py": "4200a50e0fee6893db0ce5d757010ac0890a59fd",
+    "scripts/validate_rpb108_rc226_coherent_residual_tail_inverse.py": "a8544ea4b527a523dec13d3db3a3f23ad03a1d79",
+    "scripts/validate_rpb108_rc227_new_residual_trial_action.py": "a3667c676e087db848c7b457b8b23bff78a52bf2",
+    "scripts/validate_rpb108_rc228_twelve_trial_inverse.py": "2125d6dc0d7ede94220f2ce4d0daf443cd225f45",
+    "scripts/validate_rpb108_rc229_stage_I_interface_audit.py": "ceda4aefa76126b4bf50b7236432c4c247c6a75e",
+    "scripts/validate_rpb108_rc230_augmentation_range_bridge.py": "db5cdc3c6df5b89b8cd59bf796a85979b22c721c",
+    "scripts/validate_rpb108_rc231_original_polynomial_action.py": "590de78c2725f9462e451490ab52a332999cb98d",
+    "scripts/validate_rpb108_rc232_augmented_polynomial_action.py": "0517cd8d8ed1688090c3085d8dd0a9171aa80a6e",
+    "scripts/validate_rpb108_rc233_augmented_inverse_response.py": "679e0e9029aadc7af548f4c6a2335bbecf4aa93d"
+  }
+}
