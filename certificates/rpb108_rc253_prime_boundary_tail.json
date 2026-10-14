@@ -1,0 +1,1390 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "actual_response_source_count": 2,
+  "all_original_and_rational_augmentation_model_faults_preserved": true,
+  "exact_controls": {
+    "exact_Legendre_sturm_liouville_identity": true,
+    "exact_polynomial_resolvent_Green_boundary_control": true
+  },
+  "finite_eight_canonical_inverse_width_preserved": "485647/1000000",
+  "full_639_signed_response_matrix_evaluated": false,
+  "full_signed_gap_positive_certified": false,
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc112_parity_spectral_coverage.json": "d0155c1a15d5a98f17df42d25168c10b4bd7aef4",
+    "certificates/rpb108_rc114_positive_augmentation.json": "609d7770e2a5a16e407a0a41903ac1e349b5c144",
+    "certificates/rpb108_rc115_rational_fourier_adjoint.json": "92189b6472cdb9ae82bf4812e70fdd0072b06bc8",
+    "certificates/rpb108_rc121_diagonal_metric_equivalence.json": "089664ca7eb9139fec1ba0f58b4cfbf25902f51a",
+    "certificates/rpb108_rc127_enriched_even_endpoint_action.json": "b98167d6e34f983cfa4e3e5b3f496931f468da04",
+    "certificates/rpb108_rc128_collective_second_response.json": "9f5671fce28949322d02f98a9d2a83f2efb53f8c",
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc132_balanced_action_shared_covariance.json": "035eac34848eb3f8f0a2d65424340050936e980c",
+    "certificates/rpb108_rc133_six_vector_joint_matrices.json": "d86fb5a684dc8d0f37517c34fae03f5f1455b78c",
+    "certificates/rpb108_rc134_correlated_six_input_covariance.json": "451dd35ea6af09b6d307b39f6cd7156ce92307c3",
+    "certificates/rpb108_rc135_common_response_capture.json": "2de31504cf1bc7645d3dc850f147ad6bb0582cfb",
+    "certificates/rpb108_rc136_seven_vector_joint_matrices.json": "84ed91819c32053ae78caf340758e7d0c07a9568",
+    "certificates/rpb108_rc154_centered_analytic_tail_action.json": "28c2027b223be6d5d137a76d15bbcad3be04d54f",
+    "certificates/rpb108_rc170_poisson_regular_action.json": "690b571c35d3f49302223b306488008c9b907272",
+    "certificates/rpb108_rc171_regular_legendre_projection.json": "b905565d7c15e557ce41207774dd0e338070650f",
+    "certificates/rpb108_rc172_quadratic_regular_action.json": "895448d42fc03b9875dcd3ecf8dd2923ef51a44b",
+    "certificates/rpb108_rc174_regular_source_tail_compression.json": "f0e3837e3dc0a6dc03cfa0d9195fa632348313bd",
+    "certificates/rpb108_rc175_f0_regular_physical_source.json": "659754cd0766a38413019dbe0141295d8e815877",
+    "certificates/rpb108_rc176_f0_regular_output_carrier.json": "f81ba3a2b18abf516fee9837bf59ff3342c4001c",
+    "certificates/rpb108_rc177_three_source_canonical_action_gram.json": "0d1dfd962b1eb3e199d6df9f093e32dfd5a0e232",
+    "certificates/rpb108_rc178_three_source_canonical_inverse.json": "5e41c31af560052d1949e5c61174109f663dcce2",
+    "certificates/rpb108_rc179_focus_residual_canonical_action.json": "1f6a9930e0182635ddebd373fc0b300f136fe069",
+    "certificates/rpb108_rc180_residual_enriched_canonical_inverse.json": "8b48993a4d01c58b5c2b2e6ebd3b01f14198fd0a",
+    "certificates/rpb108_rc181_psi_action_completion_dashboard.json": "ceed57e11d269b11b1aee30cfe215efab5c37ff0",
+    "certificates/rpb108_rc182_four_source_canonical_inverse.json": "6071904d1a7602622028f86e7a52205753c2488e",
+    "certificates/rpb108_rc182_materialized_Cpsi_carrier.json": "0eb05b44e2bad1e4c3d2a366c758a563d639a7df",
+    "certificates/rpb108_rc183_materialized_w14_canonical_carrier.json": "4469fa1b92e6e1e9f08598ce707cfb43b240784a",
+    "certificates/rpb108_rc183_w14_canonical_action.json": "cc4e2d8b95144282eaeeebc980ecf204ed173c66",
+    "certificates/rpb108_rc184_five_source_canonical_inverse.json": "4ceedcd939c7eed8bcccab5ab915ca6642ef8e24",
+    "certificates/rpb108_rc185_five_source_focus_action.json": "e68b983718244e40b61ae01392156c20a2a76a2a",
+    "certificates/rpb108_rc186_residual_enriched_five_source_inverse.json": "11719b721921073aebe5d2356747d6a40aff01d0",
+    "certificates/rpb108_rc187_correlated_variational_refinement.json": "38a50d04e1bd99fb7e40329087c2a43795197702",
+    "certificates/rpb108_rc188_extended_psi_endpoint_action.json": "91a4bf81150ecf6be696b1004b79a67c2bdbec50",
+    "certificates/rpb108_rc188_materialized_Cpsi_carrier.json": "ce137b872381e32291a416ec1a2c247ac97e1a7a",
+    "certificates/rpb108_rc189_refined_psi_five_source_inverse.json": "9e1d13385e55c6576bce0806575320f2052546f0",
+    "certificates/rpb108_rc190_extended_w14_endpoint_action.json": "aa139a1ddbb285b4c8fc20f5b8b90b910eeae529",
+    "certificates/rpb108_rc190_materialized_Cw14_carrier.json": "76627bff4e17f78a6e0ffd4acdac5e459aa7d023",
+    "certificates/rpb108_rc191_two_refined_actions_five_source_inverse.json": "efa7dfd9f5e763db340820341f214562a19f47ef",
+    "certificates/rpb108_rc192_low_polynomial_regular_actions.json": "1ddada7c8f1e3829ed56bc9725c09f7cfa9e5977",
+    "certificates/rpb108_rc193_extended_f0_regular_action.json": "299fc1207f0e90478e0bebd0e082e2981a8c514e",
+    "certificates/rpb108_rc194_q185_analytic_endpoint_tail.json": "d98da5ef1042ef2c28f974b11b59ce0b40db6879",
+    "certificates/rpb108_rc195_refined_five_source_inverse.json": "a61cc3f75829b151ea2ea77d3574556aac62d8ca",
+    "certificates/rpb108_rc196_adaptive_action_error_inverse.json": "9285682f3de512714c7f280148aad9e6959bdff8",
+    "certificates/rpb108_rc197_native_v10_canonical_action.json": "6e759211fbc8de8e4b6c4ed5fd4c62a5e5241455",
+    "certificates/rpb108_rc198_v10_mixed_action_rows.json": "9f9dfabab81640c79a1b3b21ab54b50dbd7cbb81",
+    "certificates/rpb108_rc199_six_source_canonical_inverse.json": "32c08337c0d300a98d74ca0c437df6e66a2fe79d",
+    "certificates/rpb108_rc200_extended_v10_endpoint_action.json": "3e0a948321e87b840dae6a83319a2d06dfc8eede",
+    "certificates/rpb108_rc200_materialized_Cv10_carrier.json": "4a470657c7dd0b3264174de321f0f8fca0dfa36b",
+    "certificates/rpb108_rc201_refined_v10_six_source_inverse.json": "cf224ee3495e23376bff696ee0bac9c81ff9cca7",
+    "certificates/rpb108_rc202_six_source_residual_action.json": "695d477b22e41eec7f3b82e7a793794e05ac17bb",
+    "certificates/rpb108_rc203_residual_enriched_six_source_inverse.json": "5d321b659367ba459682b557b12ef63451f63e49",
+    "certificates/rpb108_rc212_native_t10_canonical_action.json": "442f9963189a32fa8185daf5558e0673753ed0f1",
+    "certificates/rpb108_rc213_eight_source_error_interface.json": "23aaa6e712fca038e87603471f59c08066d6a0a9",
+    "certificates/rpb108_rc214_correlated_difference_canonical_action.json": "c2599b388cd75d0528635496d9418e061e9385db",
+    "certificates/rpb108_rc215_correlated_common_error_preflight.json": "31338be9ef05d8677f2325a6f2fbb708f94fb812",
+    "certificates/rpb108_rc216_refined_t10_canonical_action.json": "5073f4155d7f45f5d28bcd5330a107a42bc952e8",
+    "certificates/rpb108_rc217_expanded_mixed_inverse.json": "5f0f64ccb9af714b86a90e76d3be9dccbca5b69f",
+    "certificates/rpb108_rc218_coupled_expanded_inverse.json": "e04d82e18dd81acfca3ecea79270eb562906e1e4",
+    "certificates/rpb108_rc218_materialized_native_carriers.json": "1bc627d0cee338c78dfdcb14e2cbaa041141d175",
+    "certificates/rpb108_rc218_materialized_prefix_interface.json": "b627378083c4c958fbda320eed56602e1e2ccd25",
+    "certificates/rpb108_rc219_nominal_trial_span_barrier.json": "fa3a97ddb1b2450cab857b0568ed419ebfa9d5da",
+    "certificates/rpb108_rc220_barrier_residual_action.json": "a4c558b7866daae6b195142a674914a58dfe1d30",
+    "certificates/rpb108_rc221_eleven_trial_inverse.json": "efb1c115a14d53df182f9af1f4f07f3e00551699",
+    "certificates/rpb108_rc221_materialized_prefix_interface.json": "574faed53b7538fb5965bbe22d8343632007d1cb",
+    "certificates/rpb108_rc222_shared_tail_error_inverse.json": "dc3ad1a6d25707d123f212b1fca0410809450975",
+    "certificates/rpb108_rc223_extended_delta_t10_endpoints.json": "8fe624740732d6d15ce9181a1a039bd5be0cd561",
+    "certificates/rpb108_rc223_materialized_delta_t10_endpoint_carriers.json": "8333512e1b499e6adffbbd2ae3943be3f1bbe180",
+    "certificates/rpb108_rc224_compatible_extended_inverse.json": "33b20d4a9004ad814c0b99081ae9a55265cee78e",
+    "certificates/rpb108_rc224_materialized_prefix_interface.json": "75c1232800eb1545af894940dfc098931ff5545a",
+    "certificates/rpb108_rc225_paid_trial_optimization.json": "750b43592f692c04680ce6a455640f400ec096a4",
+    "certificates/rpb108_rc226_coherent_residual_tail_inverse.json": "73a359805df467779a50e654621885ae7bf10a8d",
+    "certificates/rpb108_rc227_new_residual_trial_action.json": "ae8fbdc426ad988debac9f819379dcb787768877",
+    "certificates/rpb108_rc228_materialized_prefix_interface.json": "ccdd43ff98a7b4f1e588af9fda647d8fd6695b7c",
+    "certificates/rpb108_rc228_twelve_trial_inverse.json": "ff3525870ad34c37b5836f19fdd52debc346760a",
+    "certificates/rpb108_rc229_stage_I_interface_audit.json": "8812dd8abf986b1e972931cf27402e0d2e2786f8",
+    "certificates/rpb108_rc230_augmentation_range_bridge.json": "0c86b55b46e0608e4244945e8a8c6503c88176e8",
+    "certificates/rpb108_rc231_original_polynomial_action.json": "e00d0b8544f74efc8dce3d0ea073894d083a5b5d",
+    "certificates/rpb108_rc232_augmented_polynomial_action.json": "32226a00d6cb6cfb6077106e96890ec9f739c2a3",
+    "certificates/rpb108_rc233_augmented_inverse_response.json": "868fcfb1536e377a9eacb06e6976af46920ac589",
+    "certificates/rpb108_rc234_materialized_band_action.json": "a90747a23f48bb0583acdd2d814856d605b41469",
+    "certificates/rpb108_rc235_frequency_metric_response.json": "f166ee1808c3e6b528720fd6a8ff60f8915848c4",
+    "certificates/rpb108_rc236_full_range_signed_response.json": "5f7ddc20d11c114ad1f124b64cf14fe668ff7a87",
+    "certificates/rpb108_rc237_two_trial_signed_response.json": "04bf1539dda4cfd79b4ecdc2d3e310daa2d3b657",
+    "certificates/rpb108_rc238_weighted_action_tails.json": "d429659619b4226d2275472aa714302566ab5fe6",
+    "certificates/rpb108_rc239_exterior_band_leakage.json": "dfcd2ef1bc834a071c895bfcfa49370c83aa0e86",
+    "certificates/rpb108_rc240_three_trial_signed_response.json": "6c41b7f196052fea179b956099fb69cc5d07813c",
+    "certificates/rpb108_rc241_three_trial_tuning_obstruction.json": "01e4fb43f72782488712e2718a06ed71460853c6",
+    "certificates/rpb108_rc242_residual_original_actions.json": "c40d6123e247c7eee98e8f6950cf78a85abb100a",
+    "certificates/rpb108_rc243_residual_augmented_actions.json": "12067c055c270f277f9c070e84dbbe79890ecfe6",
+    "certificates/rpb108_rc244_four_trial_signed_response.json": "c184e3cdad510fcd10fe1d8a15cae677a4321a92",
+    "certificates/rpb108_rc245_source_refined_response.json": "1ff5b37eacbc359e22aade45cf109a4de5e79bea",
+    "certificates/rpb108_rc246_materialized_residual_band_actions.json": "b59a1ae3e401b2cf670c64cc55fbc05c7286bf62",
+    "certificates/rpb108_rc247_materialized_four_trial_response.json": "b139c6998aaaedd96a8b072b5c54ad2b89cbf504",
+    "certificates/rpb108_rc248_direct_coupled_residual.json": "8e1afdf8e6728a078dab80f6547af6b3d790e2af",
+    "certificates/rpb108_rc249_scalar_residual_tuning.json": "c53546dd136e0f42b693598dc2501e468ea72c94",
+    "certificates/rpb108_rc250_coupled_original_output_tail.json": "a050c85fbfdd68071ad5d265165c6ade1d2cdcf5",
+    "certificates/rpb108_rc251_extended_coupled_residual.json": "1cf487bc35ff7aeef0cdf9cc63f324fdad0ccc65",
+    "certificates/rpb108_rc252_signed_endpoint_tail.json": "c226751e6c785f4ee29fade7a01b18b53504d84d",
+    "certificates/rpb108_rc42_native_signed_pole_head.json": "478c53d7d309d6921d7ba65274eef0feed5bc100",
+    "certificates/rpb108_rc43_native_prime_head.json": "b4893953109e6fdc55d52b505c2bcfbf0d38281e",
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9",
+    "certificates/rpb108_rc66_arch_multiplier_transport.json": "7cbccc7e2cba8a8714c43333e8a1d16866907cea",
+    "notes/RPB108_RC112_PARITY_SPECTRAL_COVERAGE_AND_CERTIFIED_STRONG_FLOOR_20261011.md": "ea61a1237c5953c564e9ba9855d596ba37ff9e73",
+    "notes/RPB108_RC114_PROJECTION_FREE_POSITIVE_AUGMENTATION_AND_FINITE_RESPONSE_20261011.md": "a62b95e03ce6c02fa5c6f1d79e535ad1d35dc925",
+    "notes/RPB108_RC115_RATIONAL_FOURIER_ADJOINT_SOURCE_CONSTRUCTION_20261012.md": "bf0a21926acdf51d515a0cab0676cc02aa3f85fd",
+    "notes/RPB108_RC118_CANONICAL_METRIC_RESIDUAL_SOURCES_20261012.md": "71795de30804478d4b01e4b18bb0a322a5f6674b",
+    "notes/RPB108_RC121_GLOBAL_DIAGONAL_METRIC_EQUIVALENCE_20261012.md": "9b33ea3bb19240dc20bcd1a83a0f623e692ca772",
+    "notes/RPB108_RC136_SEVEN_VECTOR_JOINT_MATRICES_20261012.md": "95cdec39bc144f2fb41411e7c2e98d3094862c2e",
+    "notes/RPB108_RC230_EXACT_AUGMENTATION_RANGE_AND_D_ENERGY_BRIDGE_20261014.md": "2b178b64330ec20dbd9a5e8028188705a5fa3d92",
+    "notes/RPB108_RC231_DIRECT_ORIGINAL_POLYNOMIAL_ACTIONS_20261014.md": "83173dae9bf6a0072ba65560ce421bdc05618881",
+    "notes/RPB108_RC232_COMPLETE_AUGMENTED_POLYNOMIAL_ACTIONS_20261014.md": "69f8818efac81447b437ceb636dd9fd2879b89d6",
+    "notes/RPB108_RC233_ACTUAL_AUGMENTED_INVERSE_RESPONSE_ENCLOSURES_20261014.md": "5ee0c7dc1c5303b26ee5c55dac37f0bb11aa5b48",
+    "notes/RPB108_RC234_MATERIALIZED_BAND_ACTION_AND_TIGHTER_INVERSE_RESPONSES_20261014.md": "1af7293c8e9f69086de5f22d478d7f9905fa2b74",
+    "notes/RPB108_RC235_ACTUAL_FREQUENCY_METRIC_AND_COUPLED_RESPONSE_20261014.md": "385a7323d6ff4877edfa3ccd0b969a7c402220ca",
+    "notes/RPB108_RC236_EXHAUSTIVE_PHYSICAL_PARAMETERIZATION_AND_SIGNED_RESPONSE_20261014.md": "1151f0f7fa0aa56acf8b21869a9bc0e1baf272e6",
+    "notes/RPB108_RC237_TWO_TRIAL_SIGNED_RESPONSE_20261014.md": "a0b6740d463623f9b2bd1c91028dfa75b86289ae",
+    "notes/RPB108_RC238_WEIGHTED_ACTION_TAILS_20261014.md": "a383818734d303cd5033d97ee94a0cd17b5be4e4",
+    "notes/RPB108_RC239_EXTERIOR_BAND_LEAKAGE_20261014.md": "da724f5c0a6751da5c7f80e25b7d3048c268010f",
+    "notes/RPB108_RC240_THREE_TRIAL_SIGNED_RESPONSE_20261014.md": "c61d6f1ce20ffac15e7abcef3cde10726e2b5e36",
+    "notes/RPB108_RC241_THREE_TRIAL_TUNING_OBSTRUCTION_20261014.md": "1a7a41215678f6ba1b9ca3f570500f85569f1e52",
+    "notes/RPB108_RC242_RESIDUAL_ORIGINAL_ACTIONS_20261014.md": "3152505f644c82d05c13d40c80aa75025f1cd22b",
+    "notes/RPB108_RC243_RESIDUAL_AUGMENTED_ACTIONS_20261014.md": "50ea735a4a5c109c2b5efcefe9f9d15719f639fb",
+    "notes/RPB108_RC244_FOUR_TRIAL_SIGNED_RESPONSE_20261014.md": "904513e14d7747aa3820a0c6b47a06921c478e7a",
+    "notes/RPB108_RC245_SOURCE_REFINED_RESPONSE_20261014.md": "46ec2d8c28bf10132ec0cc9d8dda44f41890c744",
+    "notes/RPB108_RC246_MATERIALIZED_RESIDUAL_BAND_ACTIONS_20261014.md": "75a76bfc6e4f884da5ae03480fc2be9643b97c3e",
+    "notes/RPB108_RC247_MATERIALIZED_FOUR_TRIAL_RESPONSE_20261014.md": "3fa8a80824c5bcd21eb513e02ca5876db2b52c41",
+    "notes/RPB108_RC248_DIRECT_COUPLED_RESIDUAL_20261014.md": "4d906ca38e92b255eab89f3e03ac8f2bef811230",
+    "notes/RPB108_RC249_SCALAR_RESIDUAL_TUNING_20261014.md": "76403aef2a71adc63fe56990bb035152382f7582",
+    "notes/RPB108_RC250_COUPLED_ORIGINAL_OUTPUT_TAIL_20261014.md": "1a6a8ddbd65dcf4d0ba1aeb273989e547fe99e43",
+    "notes/RPB108_RC251_EXTENDED_COUPLED_RESIDUAL_20261014.md": "6ea17fd15ee2e28157337ea3a9a013df67a987e5",
+    "notes/RPB108_RC252_SIGNED_ENDPOINT_TAIL_20261014.md": "2abc7d3ab1c5f81f7890bebdef33194d0cf8395e",
+    "notes/RPB108_RC46_ACTUAL_ARCHIMEDEAN_AND_COMPLETE_LOW_HEAD_20261010.md": "7a1b58255c29f6396622bbbc154afcc371722cab"
+  },
+  "milestone": "RC253",
+  "new_response_enclosures_intersected_with_RC252": true,
+  "next_cursor": "RC254: exploit the boundary projection interface for further prime tails or improve band remainder and residual inverse estimates; full signed positivity remains required",
+  "original_full_auxiliary_norm_below_one_certified": false,
+  "prime_boundary_tail_response_certificates": [
+    {
+      "accepted_endpoint_D_energy_beyond_512_upper": "24064176711482416265090266946049307064825091023244157/100000000000000000000000000000000000000000000000000000000000",
+      "accepted_original_D_energy_beyond_256_upper": "282313904283380375142436149089464118238474318324432884693/1000000000000000000000000000000000000000000000000000000000000",
+      "actual_negative_gap_proved": false,
+      "actual_original_action_inverse_response_lower": "1429803603642395715273015738508368066432271472989435809747/125000000000000000000000000000000000000000000000000000000000",
+      "actual_original_action_inverse_response_upper": "3653532573170168976193250763618864688449739494629890671467703/1000000000000000000000000000000000000000000000000000000000000",
+      "actual_signed_gap_lower": "-3564973377141397119535742437196380184544113942736465864763281/1000000000000000000000000000000000000000000000000000000000000",
+      "actual_signed_gap_upper": "77120767199632691142711281049795783233094699066554103869961/1000000000000000000000000000000000000000000000000000000000000",
+      "complete_direct_residual_D_error_squared_upper": "152696612954037965073372331271874308132942484563430809491/125000000000000000000000000000000000000000000000000000000000",
+      "complete_direct_residual_actual_D_energy_lower": "102679152800014209806482926232737299282188414048306713/200000000000000000000000000000000000000000000000000000000000",
+      "complete_direct_residual_actual_D_energy_upper": "4986976890909850417283112712258312976037706587289634587767/1000000000000000000000000000000000000000000000000000000000000",
+      "coupled_original_D_energy_beyond_512_upper": "157374848539036298362284053854202881127666713769567209179/1000000000000000000000000000000000000000000000000000000000000",
+      "coupled_original_output_energy_257_through_512": [
+        {
+          "combined_original_D_energy_upper": "821878887704882998288436695041242085088406287589069411/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 258
+        },
+        {
+          "combined_original_D_energy_upper": "836658520101709121452066165830756971290351888292923397/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 260
+        },
+        {
+          "combined_original_D_energy_upper": "82678823861396264567168968373940974755628648372521/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 262
+        },
+        {
+          "combined_original_D_energy_upper": "1304979301746526910871824473269521439968983644740028001/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 264
+        },
+        {
+          "combined_original_D_energy_upper": "208847881300227967355370274409562730810038975814785287/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 266
+        },
+        {
+          "combined_original_D_energy_upper": "848046658320670782720354902882187108853274188592324091/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 268
+        },
+        {
+          "combined_original_D_energy_upper": "684885712556419339299596830286547429830785448016126853/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 270
+        },
+        {
+          "combined_original_D_energy_upper": "369281784014115381535292161220425223934716880101916091/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 272
+        },
+        {
+          "combined_original_D_energy_upper": "187307074506499671379645787788627608680010901340555893/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 274
+        },
+        {
+          "combined_original_D_energy_upper": "66369322900338027414776277280532765506401372609926563/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 276
+        },
+        {
+          "combined_original_D_energy_upper": "2433286165060817618016724560950090480305110663258309/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 278
+        },
+        {
+          "combined_original_D_energy_upper": "134081115251295464338896757354302019797365876259619647/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 280
+        },
+        {
+          "combined_original_D_energy_upper": "239966009711622584605324425367812737795497189375546361/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 282
+        },
+        {
+          "combined_original_D_energy_upper": "10982022883868723921989603210715527763672768760662122191/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 284
+        },
+        {
+          "combined_original_D_energy_upper": "573503823416659970481143808387564576494711806206272741/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 286
+        },
+        {
+          "combined_original_D_energy_upper": "192197192022131117842158478009540133875138202859947769/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 288
+        },
+        {
+          "combined_original_D_energy_upper": "21223659915823721230929667170209561466300681137029229/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 290
+        },
+        {
+          "combined_original_D_energy_upper": "217588681236214541648328722862957753092672867345926723/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 292
+        },
+        {
+          "combined_original_D_energy_upper": "17899742750228842838718639686826490614105349216183651/15625000000000000000000000000000000000000000000000000000000",
+          "degree": 294
+        },
+        {
+          "combined_original_D_energy_upper": "12125376730865638590287252425669085483835280874823631/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 296
+        },
+        {
+          "combined_original_D_energy_upper": "2476970455855325395705170526516080875089789370291674319/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 298
+        },
+        {
+          "combined_original_D_energy_upper": "1258309180638655260946873974058027322962821084470200269/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 300
+        },
+        {
+          "combined_original_D_energy_upper": "44318454805179055626550315409445548026964346455478453/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 302
+        },
+        {
+          "combined_original_D_energy_upper": "197233826755248481331276971237708225086972596764374979/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 304
+        },
+        {
+          "combined_original_D_energy_upper": "299936588906224953982318907446095645902051486486669961/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 306
+        },
+        {
+          "combined_original_D_energy_upper": "362364379029734693031655703804185124066168690191827047/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 308
+        },
+        {
+          "combined_original_D_energy_upper": "13574991997717334173577271616887577418778488066728409/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 310
+        },
+        {
+          "combined_original_D_energy_upper": "250412737198479875829659430549640631428265544266504741/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 312
+        },
+        {
+          "combined_original_D_energy_upper": "43675714626062017653051685707451454394046617637449057/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 314
+        },
+        {
+          "combined_original_D_energy_upper": "3549255328784336937887464635037413574217941682775994417/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 316
+        },
+        {
+          "combined_original_D_energy_upper": "11963853186484724533591636557897475967554296724533347/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 318
+        },
+        {
+          "combined_original_D_energy_upper": "3368898014924159226605886255817106232027347748045056477/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 320
+        },
+        {
+          "combined_original_D_energy_upper": "438012300859318761133217275850328786434434549890524729/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 322
+        },
+        {
+          "combined_original_D_energy_upper": "146301552317813203512520461371144420775304635520291359/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 324
+        },
+        {
+          "combined_original_D_energy_upper": "117318969015099454689574274836337109457365192979699259/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 326
+        },
+        {
+          "combined_original_D_energy_upper": "68863685775283432578516677194549740955094295615263139/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 328
+        },
+        {
+          "combined_original_D_energy_upper": "493232198298860817647374690739372595254510416153373887/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 330
+        },
+        {
+          "combined_original_D_energy_upper": "302177820117211280187478128266898860049777753428801/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 332
+        },
+        {
+          "combined_original_D_energy_upper": "1468250577260899509754610505858641615852778097958843281/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 334
+        },
+        {
+          "combined_original_D_energy_upper": "607377439708813942352601456539753562167030935681326783/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 336
+        },
+        {
+          "combined_original_D_energy_upper": "1682390311928679520893408921388585786493554429821913/31250000000000000000000000000000000000000000000000000000000",
+          "degree": 338
+        },
+        {
+          "combined_original_D_energy_upper": "473775185275272184627690107946882283086974392546551141/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 340
+        },
+        {
+          "combined_original_D_energy_upper": "14918258531527949888433642184515648461268593112319961/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 342
+        },
+        {
+          "combined_original_D_energy_upper": "3364763679753228862975002508471192551055451340970608339/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 344
+        },
+        {
+          "combined_original_D_energy_upper": "6600082079229355720819165096739089825879349200000269/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 346
+        },
+        {
+          "combined_original_D_energy_upper": "2098032668220797171570213381327302267612151627734183473/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 348
+        },
+        {
+          "combined_original_D_energy_upper": "164118962894186416615311719080355847986798971853454423/40000000000000000000000000000000000000000000000000000000000",
+          "degree": 350
+        },
+        {
+          "combined_original_D_energy_upper": "2187498397446108663104236331950883946117145115027033/10000000000000000000000000000000000000000000000000000000000",
+          "degree": 352
+        },
+        {
+          "combined_original_D_energy_upper": "143439810336590042055379397883843122412476871681339343/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 354
+        },
+        {
+          "combined_original_D_energy_upper": "4806319409361069621537499128323528582883789664828783/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 356
+        },
+        {
+          "combined_original_D_energy_upper": "25998054453395785049265558750876038298206136438633219/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 358
+        },
+        {
+          "combined_original_D_energy_upper": "436217627323171166437410300911494626313699922580306139/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 360
+        },
+        {
+          "combined_original_D_energy_upper": "510242037024444566960073118144753152413699158224443723/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 362
+        },
+        {
+          "combined_original_D_energy_upper": "203845986983783023392297072499901956399631461195399529/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 364
+        },
+        {
+          "combined_original_D_energy_upper": "669183563494819482121919336166519640606398300560957009/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 366
+        },
+        {
+          "combined_original_D_energy_upper": "31637651615087635144423624104644128710059016822777677/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 368
+        },
+        {
+          "combined_original_D_energy_upper": "72669941742523300984724770366832389895916990927355937/40000000000000000000000000000000000000000000000000000000000",
+          "degree": 370
+        },
+        {
+          "combined_original_D_energy_upper": "317164913401277161344500852823506071089339498462145801/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 372
+        },
+        {
+          "combined_original_D_energy_upper": "279671952441895977623434386947836685885343251115313377/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 374
+        },
+        {
+          "combined_original_D_energy_upper": "1724351766205610042111406154227437684063587100842728403/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 376
+        },
+        {
+          "combined_original_D_energy_upper": "3768896999392596116420781556851858855051421281639769/25000000000000000000000000000000000000000000000000000000000",
+          "degree": 378
+        },
+        {
+          "combined_original_D_energy_upper": "452557281991779996043778667365322158308166753954142717/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 380
+        },
+        {
+          "combined_original_D_energy_upper": "143947147527064415112786270961126777821766958277465781/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 382
+        },
+        {
+          "combined_original_D_energy_upper": "813108762486039307955899568880611103866835098773423489/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 384
+        },
+        {
+          "combined_original_D_energy_upper": "1375027910324460380792358290845565498721813731280047597/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 386
+        },
+        {
+          "combined_original_D_energy_upper": "182519638466784251102703940305805879499546463085291641/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 388
+        },
+        {
+          "combined_original_D_energy_upper": "179456758625358747109090422653673826713636269649667/10000000000000000000000000000000000000000000000000000000000",
+          "degree": 390
+        },
+        {
+          "combined_original_D_energy_upper": "1592902252173695079884125815608411425296729669072653/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 392
+        },
+        {
+          "combined_original_D_energy_upper": "1501761523752815661009633729797030545301932253723844873/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 394
+        },
+        {
+          "combined_original_D_energy_upper": "348806466316543700000877201087390095285185137890455317/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 396
+        },
+        {
+          "combined_original_D_energy_upper": "2738744937966084924587373911148860777950141570929344167/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 398
+        },
+        {
+          "combined_original_D_energy_upper": "1080331028244014994021874920869755225197802808689379109/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 400
+        },
+        {
+          "combined_original_D_energy_upper": "937836643996316241334284922074373813090495758769829667/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 402
+        },
+        {
+          "combined_original_D_energy_upper": "168478694799314814921918145373521843589999974640717657/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 404
+        },
+        {
+          "combined_original_D_energy_upper": "36737665473537787401302740687581220310764826038564533/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 406
+        },
+        {
+          "combined_original_D_energy_upper": "888511245697601507829445507346537339099816763827380659/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 408
+        },
+        {
+          "combined_original_D_energy_upper": "1061699659542492509524245943860339308311936302202641411/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 410
+        },
+        {
+          "combined_original_D_energy_upper": "71251753939472841950080045519835045008518404803102363/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 412
+        },
+        {
+          "combined_original_D_energy_upper": "1463265245081786922722058354276343852498090280158856669/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 414
+        },
+        {
+          "combined_original_D_energy_upper": "146664402757790578681095654900813829675761607068127777/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 416
+        },
+        {
+          "combined_original_D_energy_upper": "3303388404558654665886070567425715305757374907905447/31250000000000000000000000000000000000000000000000000000000",
+          "degree": 418
+        },
+        {
+          "combined_original_D_energy_upper": "570281445439195595790865383650176803078667262232910179/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 420
+        },
+        {
+          "combined_original_D_energy_upper": "157473131118889590218425592491152216304658630512188367/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 422
+        },
+        {
+          "combined_original_D_energy_upper": "27973778838916102473094083159224310988321465133636797/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 424
+        },
+        {
+          "combined_original_D_energy_upper": "1370138927603492793336060397855798680531788956689110713/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 426
+        },
+        {
+          "combined_original_D_energy_upper": "995750601998909987617038211439368163519279654701713407/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 428
+        },
+        {
+          "combined_original_D_energy_upper": "127168655168204102578938831219742231566053467868822039/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 430
+        },
+        {
+          "combined_original_D_energy_upper": "512506422610770842197976541933994424926490352862434479/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 432
+        },
+        {
+          "combined_original_D_energy_upper": "9917508983252424645858868794949910390771600876158249/40000000000000000000000000000000000000000000000000000000000",
+          "degree": 434
+        },
+        {
+          "combined_original_D_energy_upper": "14662828541416684395419995385201320633534711770349671/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 436
+        },
+        {
+          "combined_original_D_energy_upper": "166924144253203958262612786265413888096537969190942329/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 438
+        },
+        {
+          "combined_original_D_energy_upper": "9427776043518125245578992145201413592723239990574369/20000000000000000000000000000000000000000000000000000000000",
+          "degree": 440
+        },
+        {
+          "combined_original_D_energy_upper": "154759656350018899964928946786459571000947234584456701/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 442
+        },
+        {
+          "combined_original_D_energy_upper": "157145548397318015015701038820611847223462244060258869/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 444
+        },
+        {
+          "combined_original_D_energy_upper": "229827135999171141550147800770273680236926526312466491/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 446
+        },
+        {
+          "combined_original_D_energy_upper": "67933476751160694307969508113015068611099099998315601/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 448
+        },
+        {
+          "combined_original_D_energy_upper": "316498533732300509643121989702606037511168049136583383/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 450
+        },
+        {
+          "combined_original_D_energy_upper": "589271989027657830005354144596562658529869991461657609/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 452
+        },
+        {
+          "combined_original_D_energy_upper": "53811932768208717007438017873038406734371898441090561/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 454
+        },
+        {
+          "combined_original_D_energy_upper": "512371648054804884764961374758735599319387581939034197/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 456
+        },
+        {
+          "combined_original_D_energy_upper": "23525667599126884626884845046612086988601024402244783/20000000000000000000000000000000000000000000000000000000000",
+          "degree": 458
+        },
+        {
+          "combined_original_D_energy_upper": "2585459815713959843779089159667534920415708964809479281/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 460
+        },
+        {
+          "combined_original_D_energy_upper": "21590894894015964300626811810319619419919435774369/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 462
+        },
+        {
+          "combined_original_D_energy_upper": "438518570194638820981179614511623793301130224193539347/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 464
+        },
+        {
+          "combined_original_D_energy_upper": "470840102484898767338430740935032371438874741946401747/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 466
+        },
+        {
+          "combined_original_D_energy_upper": "364296211802936424013361265936192960462156125405775667/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 468
+        },
+        {
+          "combined_original_D_energy_upper": "1108827654707200579897409585536262608374864396744265301/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 470
+        },
+        {
+          "combined_original_D_energy_upper": "22609300110265140284322783045830598406011970215609537/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 472
+        },
+        {
+          "combined_original_D_energy_upper": "269671405618849430385488028887576260030791267010889457/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 474
+        },
+        {
+          "combined_original_D_energy_upper": "2825981956804742251243681325196086046882399725353993/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 476
+        },
+        {
+          "combined_original_D_energy_upper": "463895538484915226060034217555910969683814845682548133/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 478
+        },
+        {
+          "combined_original_D_energy_upper": "11045607585219050226620593915572616195475659208304051/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 480
+        },
+        {
+          "combined_original_D_energy_upper": "26831610110282104215057715691796232864836780210744109/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 482
+        },
+        {
+          "combined_original_D_energy_upper": "77707472229836970235215555459064869707095154708441957/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 484
+        },
+        {
+          "combined_original_D_energy_upper": "3528835526427345898297064230095599997614217357784777/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 486
+        },
+        {
+          "combined_original_D_energy_upper": "15874597623660265765395835503546816922840883250265913/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 488
+        },
+        {
+          "combined_original_D_energy_upper": "274736405748583476135047500700289591718422526293005933/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 490
+        },
+        {
+          "combined_original_D_energy_upper": "1394754083376669069107527648241682523794063249724019083/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 492
+        },
+        {
+          "combined_original_D_energy_upper": "8301033788254910911608201672855860556680586822057303/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 494
+        },
+        {
+          "combined_original_D_energy_upper": "12299074880474467808804069797165608840047236262142841/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 496
+        },
+        {
+          "combined_original_D_energy_upper": "97095873290624087245721714416953176450899680128752631/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 498
+        },
+        {
+          "combined_original_D_energy_upper": "258483097943194529702382495002215017987544751801548923/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 500
+        },
+        {
+          "combined_original_D_energy_upper": "40674335146888222198837839294460140347877931342779279/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 502
+        },
+        {
+          "combined_original_D_energy_upper": "47990231539817061936084669451227581709064527237317409/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 504
+        },
+        {
+          "combined_original_D_energy_upper": "1158373377462700165615592875411455025105665027966323607/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 506
+        },
+        {
+          "combined_original_D_energy_upper": "16582513575909310778046201060472056179686729429084953/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 508
+        },
+        {
+          "combined_original_D_energy_upper": "731793447543719103279980555569903329461297105700449773/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 510
+        },
+        {
+          "combined_original_D_energy_upper": "7143737513712441199664538850000041250886785020655599/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 512
+        }
+      ],
+      "direct_inverse_response_lower": "5714251595922367417389626302452221530114575831899185619523/500000000000000000000000000000000000000000000000000000000000",
+      "direct_inverse_response_upper": "3653532573170168976193250763618864688449739494629890671467703/1000000000000000000000000000000000000000000000000000000000000",
+      "direct_signed_gap_lower": "-3564973377141397119535742437196380184544113942736465864763281/1000000000000000000000000000000000000000000000000000000000000",
+      "direct_signed_gap_upper": "77130692836927122030153544900181238970584014290767090607637/1000000000000000000000000000000000000000000000000000000000000",
+      "endpoint_remaining_beyond_512_control": {
+        "absolute_order_four_moment": "19907701614913179397676966638835834997582514010032767933422630543199896481594222693790628910073271728785410009532951815351384975439/3125000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "endpoint_D_omitted_energy_upper": "15595893253185593011707616841186648840808072000583241/62500000000000000000000000000000000000000000000000000000000",
+        "first_omitted_degree": 514,
+        "geometric_expansion_order": 4,
+        "harmonic_weight_lower": "1082411672222475889773801975441448797623811777934704841466856387661153079210095070764417827328707784323230071272960528962347924209827108615548065624138066746699478231854351672643801963583894172389771263243436840118026831004144223868324543437141650522542004096980345659408950119557186962150010818928173766793342103354724311/101902731073861379188664346028753644728838285272770378820778105463163519933335854475540101817695693579229638906327730880746948778270414421618279295629546861732485083552905433420647547785540049423290824996455249037369439131524159438074984626044189992432702525764249837047026850179392500068633000000000000000000000000000000",
+        "maximum_input_d_times_d_plus_one": "4160",
+        "parity_telescoping_weight_sum_upper": "1899876842878004460596918621449065967572345984243231183/1000000000000000000000000000000000000000000000000000000000000",
+        "positive_bracket_certified": true,
+        "signed_input_moments": [
+          "19908309456926882317340487194345305792370363361579087986838232813974088460848370087266017745691469971809944580127296151/25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "-3243442737338225184141197930339074890199116418752879150206175823994319024617834115932632668405411611192204681094373812651/25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "-954892405480781549113979164552016563328540639449849001954498653499588055157283223899768283304643118063464750931217697829609/3125000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "-5987880676936562433305491301711631442392612888797136866941822752762902546982372720912577910693595382478768348814843570784932231/6250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "uniform_combined_endpoint_bracket_lower": "795837851920200151456269958159945767504578858766119786705243/1000000000000000000000000000000000000000000000000000000000000",
+        "uniform_combined_endpoint_bracket_upper": "796332379595237874852180958974405694024360710572587025249653/1000000000000000000000000000000000000000000000000000000000000",
+        "uniform_geometric_remainder_upper": "1318162582158561471200593462329546176109423505776123/1000000000000000000000000000000000000000000000000000000000000"
+      },
+      "explicit_coupled_original_D_energy_257_through_512_upper": "62469527872172038390076047617630618555403802277432837757/500000000000000000000000000000000000000000000000000000000000",
+      "new_original_D_energy_beyond_256_upper": "282313904283380375142436149089464118238474318324432884693/1000000000000000000000000000000000000000000000000000000000000",
+      "original_action_inverse_upper_improved": true,
+      "parity": "even",
+      "previous_direct_residual_D_error_squared_upper": "647314576613759923446763570458277081121518177403391493303/500000000000000000000000000000000000000000000000000000000000",
+      "previous_original_D_energy_beyond_256_upper": "158992744402817789925144621650276423632255020411756894437/500000000000000000000000000000000000000000000000000000000000",
+      "previous_original_action_inverse_response_upper": "3760538040427680673233482985698379301315790639794439661530161/1000000000000000000000000000000000000000000000000000000000000",
+      "prime_boundary_projection_certificate": {
+        "all_boundary_jump_polynomials_reconstructed": true,
+        "all_input_and_cross_prime_terms_retained": true,
+        "all_prime_coefficients_through_256_match_pinned_digest": true,
+        "boundary_low_Legendre_values_and_derivatives_replayed": true,
+        "complete_prime_pairs": 7,
+        "full_prime_model_norm_replayed": true,
+        "opposite_boundaries_paid_by_exact_parity": true,
+        "positive_interior_boundaries": 7,
+        "prime_coefficients_through_512_sha256": "dfdc5c0ee5a6da3e73c4d0aed2cb310d66adf7f52cd9655c2e2791b6d6aba7f7",
+        "prime_projection_cutoff": 512,
+        "segment_polynomial_digest_replayed": true,
+        "support_segments": 15
+      },
+      "prime_physical_energy_beyond_512_upper": "1543458694309172435425032952378607915202227271359123612629/1000000000000000000000000000000000000000000000000000000000000",
+      "prime_weighted_D_energy_beyond_256_upper": "269244561161901328407970218040686187787134755463624047153/1000000000000000000000000000000000000000000000000000000000000",
+      "prime_weighted_D_energy_beyond_512_upper": "145307612885269567690494229308345067814558102592188484401/1000000000000000000000000000000000000000000000000000000000000",
+      "selected_trial_coefficients": [
+        "2938331574032144540561881521035736697340433499513303994741/1000000000000000000000000000000000000000000000000000000000000",
+        "3606683847673450353110113123799630989360801180414502172489/250000000000000000000000000000000000000000000000000000000000",
+        "24320162905437276677549210641570671957869420442695250563853/1000000000000000000000000000000000000000000000000000000000000",
+        "94379595606446268774855044269441528008193975501623182355309/200000000000000000000000000000000000000000000000000000000000"
+      ],
+      "signed_gap_positive_certified": false,
+      "source": "N0 P0",
+      "unchanged_retained_residual_center_origin": "RC251 degree 256"
+    },
+    {
+      "accepted_endpoint_D_energy_beyond_512_upper": "226081855318907817258882535241791786465737785744839383/1000000000000000000000000000000000000000000000000000000000000",
+      "accepted_original_D_energy_beyond_256_upper": "64857318864222306598733712529965548971094543442013229227/200000000000000000000000000000000000000000000000000000000000",
+      "actual_negative_gap_proved": false,
+      "actual_original_action_inverse_response_lower": "167594682416042454406091858201658398749289491349692479017/12500000000000000000000000000000000000000000000000000000000",
+      "actual_original_action_inverse_response_upper": "5085598108535732246647523909725701661684687797345942609880949/1000000000000000000000000000000000000000000000000000000000000",
+      "actual_signed_gap_lower": "-2494257646390840301912299816642898967979512177668353608683117/500000000000000000000000000000000000000000000000000000000000",
+      "actual_signed_gap_upper": "20918810290192061650413160844483569460200140585511821829619/250000000000000000000000000000000000000000000000000000000000",
+      "complete_direct_residual_D_error_squared_upper": "293474028311308953786204814515090092279760034607198992723/200000000000000000000000000000000000000000000000000000000000",
+      "complete_direct_residual_actual_D_energy_lower": "10765602574585289320469219496847121839035920503774375469/500000000000000000000000000000000000000000000000000000000000",
+      "complete_direct_residual_actual_D_energy_upper": "3301001300834601511750644232481313656792051321290914267763/500000000000000000000000000000000000000000000000000000000000",
+      "coupled_original_D_energy_beyond_512_upper": "3312691137373649862064436141080074101309784805807661301/25000000000000000000000000000000000000000000000000000000000",
+      "coupled_original_output_energy_257_through_512": [
+        {
+          "combined_original_D_energy_upper": "2835747351982072703325544048416633598447907306118630643/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 257
+        },
+        {
+          "combined_original_D_energy_upper": "3316868540190714993431311090225596250275873488425953513/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 259
+        },
+        {
+          "combined_original_D_energy_upper": "3294574195017122036917909802905381976840991301341095181/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 261
+        },
+        {
+          "combined_original_D_energy_upper": "5235600869126561654739601643529830498118705497917737713/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 263
+        },
+        {
+          "combined_original_D_energy_upper": "4892200231130527468173489258908700939664073891725500041/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 265
+        },
+        {
+          "combined_original_D_energy_upper": "2759302947568931314356538098137286867675746038116621/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 267
+        },
+        {
+          "combined_original_D_energy_upper": "3398479322608971896674445301652638288347928531657569/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 269
+        },
+        {
+          "combined_original_D_energy_upper": "249455287310822531952494798718240679654376220449070063/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 271
+        },
+        {
+          "combined_original_D_energy_upper": "831146900526851602667717037890292430513466463344106421/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 273
+        },
+        {
+          "combined_original_D_energy_upper": "81806620337264148189599707626152191200029308165925693/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 275
+        },
+        {
+          "combined_original_D_energy_upper": "34160451188021626838828281496438757336545491461784907/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 277
+        },
+        {
+          "combined_original_D_energy_upper": "83141212485437533691654551789484061563119924813241937/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 279
+        },
+        {
+          "combined_original_D_energy_upper": "61956060512045173105047789649794568400838720069808707/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 281
+        },
+        {
+          "combined_original_D_energy_upper": "361567200943939254938844374666880199385169872627417611/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 283
+        },
+        {
+          "combined_original_D_energy_upper": "13871862974149905880908532558310871980968712559305751611/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 285
+        },
+        {
+          "combined_original_D_energy_upper": "3120325328739841765267464799193217739006200354053536961/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 287
+        },
+        {
+          "combined_original_D_energy_upper": "3673986818548653292569359311865413002593536469418183/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 289
+        },
+        {
+          "combined_original_D_energy_upper": "51997177069821752892829367420040328173501270624228889/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 291
+        },
+        {
+          "combined_original_D_energy_upper": "91565491464325719642715931654279504416946982262215739/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 293
+        },
+        {
+          "combined_original_D_energy_upper": "42852805539671296553629716228191915108048566749134881/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 295
+        },
+        {
+          "combined_original_D_energy_upper": "314310448549899146667904976618879029146178551768367227/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 297
+        },
+        {
+          "combined_original_D_energy_upper": "637329859696426169323952366299874044928459352723230059/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 299
+        },
+        {
+          "combined_original_D_energy_upper": "6705652223748396885519985867444676025566741460642425871/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 301
+        },
+        {
+          "combined_original_D_energy_upper": "10687999789304102806710761215616078612195611129263691/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 303
+        },
+        {
+          "combined_original_D_energy_upper": "26193672333597048126296855860686456510173009105509261/40000000000000000000000000000000000000000000000000000000000",
+          "degree": 305
+        },
+        {
+          "combined_original_D_energy_upper": "15837722919472642449657426092368992200536687793557989/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 307
+        },
+        {
+          "combined_original_D_energy_upper": "1810062203568862081893287750804681420033103165802248927/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 309
+        },
+        {
+          "combined_original_D_energy_upper": "998180181194314364683620329633709759469806255198779817/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 311
+        },
+        {
+          "combined_original_D_energy_upper": "10101184285129710179059857969392712698957796062342030289/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 313
+        },
+        {
+          "combined_original_D_energy_upper": "7549514232041754154733762381976824452620792109810382437/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 315
+        },
+        {
+          "combined_original_D_energy_upper": "21028395869513507967923052002390695448364359712507/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 317
+        },
+        {
+          "combined_original_D_energy_upper": "558657140811673343284122801025784730736462644885433617/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 319
+        },
+        {
+          "combined_original_D_energy_upper": "2632147387241255622583424488928775456597386847092853/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 321
+        },
+        {
+          "combined_original_D_energy_upper": "14781320272713415744998669227927118259478240329744259/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 323
+        },
+        {
+          "combined_original_D_energy_upper": "198708787388241844542213319720996972512343067493620963/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 325
+        },
+        {
+          "combined_original_D_energy_upper": "62476669255942938698995450005134314778796497038739229/31250000000000000000000000000000000000000000000000000000000",
+          "degree": 327
+        },
+        {
+          "combined_original_D_energy_upper": "2004609406052625713640168305087052216658985162339348931/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 329
+        },
+        {
+          "combined_original_D_energy_upper": "128117334866064411963022169534821230914538320342084019/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 331
+        },
+        {
+          "combined_original_D_energy_upper": "1217389992882448900457893450794217629604383451082043/20000000000000000000000000000000000000000000000000000000000",
+          "degree": 333
+        },
+        {
+          "combined_original_D_energy_upper": "2749696599978211615508506169240515709154026799029391543/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 335
+        },
+        {
+          "combined_original_D_energy_upper": "218630461392543493514129315564826822094170211227166369/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 337
+        },
+        {
+          "combined_original_D_energy_upper": "66771716080597350676359033106860212468755884319561049/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 339
+        },
+        {
+          "combined_original_D_energy_upper": "2287495911742181699642048484907575532281190090445689/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 341
+        },
+        {
+          "combined_original_D_energy_upper": "498062908655755538495536131587202286929519398021347691/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 343
+        },
+        {
+          "combined_original_D_energy_upper": "281336015267299662400184098291494769111954954690814221/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 345
+        },
+        {
+          "combined_original_D_energy_upper": "66901435972693709914595670931563925586328355581480563/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 347
+        },
+        {
+          "combined_original_D_energy_upper": "3381950159675704503101844695128646670516021105311559861/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 349
+        },
+        {
+          "combined_original_D_energy_upper": "2668728811461048429434744972189414160443963935669972391/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 351
+        },
+        {
+          "combined_original_D_energy_upper": "1066468606511634371105839696575036691440122324445794407/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 353
+        },
+        {
+          "combined_original_D_energy_upper": "64701387119425013998772236149023075211070276109760209/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 355
+        },
+        {
+          "combined_original_D_energy_upper": "3246442193455815550273791823879130264603084570150599/25000000000000000000000000000000000000000000000000000000000",
+          "degree": 357
+        },
+        {
+          "combined_original_D_energy_upper": "41670716648117006631778724342008245213922378243628069/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 359
+        },
+        {
+          "combined_original_D_energy_upper": "59609770129487850803398302302642957645609173076735717/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 361
+        },
+        {
+          "combined_original_D_energy_upper": "1441088318632779897838781248179811897199734314084203259/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 363
+        },
+        {
+          "combined_original_D_energy_upper": "8170362523859987350444188770497973968478416273788643929/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 365
+        },
+        {
+          "combined_original_D_energy_upper": "11453435906170380407914701848335701419491741108856981/25000000000000000000000000000000000000000000000000000000000",
+          "degree": 367
+        },
+        {
+          "combined_original_D_energy_upper": "548245481264169584771491879136495068129602743695544543/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 369
+        },
+        {
+          "combined_original_D_energy_upper": "10230371529951909670474169640356363484376608264364781/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 371
+        },
+        {
+          "combined_original_D_energy_upper": "29787083690555946185413879372562896829106339762531437/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 373
+        },
+        {
+          "combined_original_D_energy_upper": "123251454079638909584186497173035643433531662943151769/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 375
+        },
+        {
+          "combined_original_D_energy_upper": "3670783291043432100079685549397818199621388299108954303/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 377
+        },
+        {
+          "combined_original_D_energy_upper": "198388321501462810616793629618942211775857788322637911/31250000000000000000000000000000000000000000000000000000000",
+          "degree": 379
+        },
+        {
+          "combined_original_D_energy_upper": "52969300734225663530360286620595614420373906782557029/20000000000000000000000000000000000000000000000000000000000",
+          "degree": 381
+        },
+        {
+          "combined_original_D_energy_upper": "48611180699523228281885812276052175919194038628907311/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 383
+        },
+        {
+          "combined_original_D_energy_upper": "75876841088196643783484661855289904351573199423106513/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 385
+        },
+        {
+          "combined_original_D_energy_upper": "226960313211594933947149867412838839404542741774655219/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 387
+        },
+        {
+          "combined_original_D_energy_upper": "15279164657605356055104017137775541349174010038560153/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 389
+        },
+        {
+          "combined_original_D_energy_upper": "2440924972526399421390856246399034079936755139024643/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 391
+        },
+        {
+          "combined_original_D_energy_upper": "1775592724969127389208904562772821872754752813604070189/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 393
+        },
+        {
+          "combined_original_D_energy_upper": "68783280917884492239032827202328563577113473520631713/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 395
+        },
+        {
+          "combined_original_D_energy_upper": "177870981726236039667707737980748407500962257830090387/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 397
+        },
+        {
+          "combined_original_D_energy_upper": "65052908455774948001366408076471035051707788367083053/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 399
+        },
+        {
+          "combined_original_D_energy_upper": "1919303943824961836318983105954165884362406356802643137/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 401
+        },
+        {
+          "combined_original_D_energy_upper": "719548563653863148119402876478825561323526622132887749/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 403
+        },
+        {
+          "combined_original_D_energy_upper": "96252887811238111454925578666552553162407491543747251/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 405
+        },
+        {
+          "combined_original_D_energy_upper": "458351374606005346038007098939185412406050046188739787/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 407
+        },
+        {
+          "combined_original_D_energy_upper": "11947942812322041388859641643103185200248636336333177/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 409
+        },
+        {
+          "combined_original_D_energy_upper": "222104942898288550542716684394279713147446596001273/1250000000000000000000000000000000000000000000000000000000",
+          "degree": 411
+        },
+        {
+          "combined_original_D_energy_upper": "225011066808199491822733259540963961500093463012835263/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 413
+        },
+        {
+          "combined_original_D_energy_upper": "2973034688494600523942172629911203656287988318951562997/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 415
+        },
+        {
+          "combined_original_D_energy_upper": "1461203470979264248164686166643513302033894083639088621/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 417
+        },
+        {
+          "combined_original_D_energy_upper": "10334684869787236538164658505676600460359897129849/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 419
+        },
+        {
+          "combined_original_D_energy_upper": "669787285980385918046806163298910924592928348462819/100000000000000000000000000000000000000000000000000000000000",
+          "degree": 421
+        },
+        {
+          "combined_original_D_energy_upper": "315610513383395927872169058720667372946977823646789/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 423
+        },
+        {
+          "combined_original_D_energy_upper": "1732168838170780806707027564797680897015971138709853/3906250000000000000000000000000000000000000000000000000000",
+          "degree": 425
+        },
+        {
+          "combined_original_D_energy_upper": "451368736783346769014386838662220064919607573087613383/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 427
+        },
+        {
+          "combined_original_D_energy_upper": "6927772981494545940870215146078841106671547174665411947/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 429
+        },
+        {
+          "combined_original_D_energy_upper": "1637584855798452136421172188324507400163607954078833/500000000000000000000000000000000000000000000000000000000",
+          "degree": 431
+        },
+        {
+          "combined_original_D_energy_upper": "21318018309540802051792677422534544238621876901536557/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 433
+        },
+        {
+          "combined_original_D_energy_upper": "183030540769164875522305785157695168439355879003346143/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 435
+        },
+        {
+          "combined_original_D_energy_upper": "48344223282739484037722020099566103228646145166352681/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 437
+        },
+        {
+          "combined_original_D_energy_upper": "547845954927427790342811109245768952771109080426184799/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 439
+        },
+        {
+          "combined_original_D_energy_upper": "427461267987704467382141017780917412789381885776267/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 441
+        },
+        {
+          "combined_original_D_energy_upper": "805863134303226822166009130898892417626310889670687891/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 443
+        },
+        {
+          "combined_original_D_energy_upper": "1669779198299725000285140124109047635511484295035674917/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 445
+        },
+        {
+          "combined_original_D_energy_upper": "69605009070778849762129879868963700632608472498464709/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 447
+        },
+        {
+          "combined_original_D_energy_upper": "32921172419273585002644181873089431428457983487461463/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 449
+        },
+        {
+          "combined_original_D_energy_upper": "78030999803833904922435178594630353252040909798526587/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 451
+        },
+        {
+          "combined_original_D_energy_upper": "262487485870908968675253239059388551605130305351519723/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 453
+        },
+        {
+          "combined_original_D_energy_upper": "151977972842913295955886658705834567684063209545263021/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 455
+        },
+        {
+          "combined_original_D_energy_upper": "435563376362723145944178679660432626156158591994426431/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 457
+        },
+        {
+          "combined_original_D_energy_upper": "123859365144985666422090939305124609272375612149857641/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 459
+        },
+        {
+          "combined_original_D_energy_upper": "10185211658262630421746633663522114868244320229661849/50000000000000000000000000000000000000000000000000000000000",
+          "degree": 461
+        },
+        {
+          "combined_original_D_energy_upper": "442190801622305995565485959974252471720599880101/125000000000000000000000000000000000000000000000000000000000",
+          "degree": 463
+        },
+        {
+          "combined_original_D_energy_upper": "180665445329688360932613487174338372785697510334205999/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 465
+        },
+        {
+          "combined_original_D_energy_upper": "20658786816787213590889002989844187468772981124170379/62500000000000000000000000000000000000000000000000000000000",
+          "degree": 467
+        },
+        {
+          "combined_original_D_energy_upper": "125156924496130065511756585766470424928113020424929967/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 469
+        },
+        {
+          "combined_original_D_energy_upper": "375766756017632296225410239817324236142956319880757913/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 471
+        },
+        {
+          "combined_original_D_energy_upper": "357837172707391283582790330117806521996019265668149149/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 473
+        },
+        {
+          "combined_original_D_energy_upper": "234949144196779143257659112092561394101942048308123043/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 475
+        },
+        {
+          "combined_original_D_energy_upper": "44515373748396116126773279105980147819925369343842273/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 477
+        },
+        {
+          "combined_original_D_energy_upper": "1251464055281902672770525236369486793910856590715532653/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 479
+        },
+        {
+          "combined_original_D_energy_upper": "3143987382952692714561812703505020699694773480873448221/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 481
+        },
+        {
+          "combined_original_D_energy_upper": "276740861033686991034663471205067108427736027028964181/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 483
+        },
+        {
+          "combined_original_D_energy_upper": "111818014187183575704563800877013349107801173572395077/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 485
+        },
+        {
+          "combined_original_D_energy_upper": "25149062541203626714741068375937608888939504209755119/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 487
+        },
+        {
+          "combined_original_D_energy_upper": "337175009872466029997301636330184217156601047371293361/250000000000000000000000000000000000000000000000000000000000",
+          "degree": 489
+        },
+        {
+          "combined_original_D_energy_upper": "303738412049236145410244500473022609683218679759102741/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 491
+        },
+        {
+          "combined_original_D_energy_upper": "268309309248201597425848677642257678064935117759699189/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 493
+        },
+        {
+          "combined_original_D_energy_upper": "390801698913094911658100757696315908996524803532730151/200000000000000000000000000000000000000000000000000000000000",
+          "degree": 495
+        },
+        {
+          "combined_original_D_energy_upper": "1311682806691915021909114781513157178229982639918233859/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 497
+        },
+        {
+          "combined_original_D_energy_upper": "735332256218823950631727204726771223034062264311814979/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 499
+        },
+        {
+          "combined_original_D_energy_upper": "511822024846388165921653069803704423623840219429905709/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 501
+        },
+        {
+          "combined_original_D_energy_upper": "3609243904880517643909255589949209797124691664040351/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 503
+        },
+        {
+          "combined_original_D_energy_upper": "82652977241040519727782622319120015273665031479534609/1000000000000000000000000000000000000000000000000000000000000",
+          "degree": 505
+        },
+        {
+          "combined_original_D_energy_upper": "367993563451517475739076094077951229242341344601479417/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 507
+        },
+        {
+          "combined_original_D_energy_upper": "560709197109377334387991333439521313407504275140808701/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 509
+        },
+        {
+          "combined_original_D_energy_upper": "655959199764088016079114390287158877391302748713797/500000000000000000000000000000000000000000000000000000000000",
+          "degree": 511
+        }
+      ],
+      "direct_inverse_response_lower": "167594682416042454406091858201658398749289491349692479017/12500000000000000000000000000000000000000000000000000000000",
+      "direct_inverse_response_upper": "5085598108535732246647523909725701661684687797345942609880949/1000000000000000000000000000000000000000000000000000000000000",
+      "direct_signed_gap_lower": "-2494257646390840301912299816642898967979512177668353608683117/500000000000000000000000000000000000000000000000000000000000",
+      "direct_signed_gap_upper": "20918810290192061650413160844483569460200140585511821829619/250000000000000000000000000000000000000000000000000000000000",
+      "endpoint_remaining_beyond_512_control": {
+        "absolute_order_four_moment": "668763593757329555494091820891409042405084318296863577697359929141226653390025185294904772704776317488252382046303651518050754998613/62500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "endpoint_D_omitted_energy_upper": "117219070587514350969051834463922541513742460415218377/500000000000000000000000000000000000000000000000000000000000",
+        "first_omitted_degree": 513,
+        "geometric_expansion_order": 4,
+        "harmonic_weight_lower": "1082213417881865264522462161538669121272199252087870657850473550880096340844466012681780589776533279082803554465749774622113007967067827653638302434846958678875095965154832401372555567576529308480387428953560468038187590850191842235176537630476194899988633080393255679181232168486799038998126318928173766793342103354724311/101902731073861379188664346028753644728838285272770378820778105463163519933335854475540101817695693579229638906327730880746948778270414421618279295629546861732485083552905433420647547785540049423290824996455249037369439131524159438074984626044189992432702525764249837047026850179392500068633000000000000000000000000000000",
+        "maximum_input_d_times_d_plus_one": "4160",
+        "parity_telescoping_weight_sum_upper": "953652658097074923371919302062183584945964231845396987/500000000000000000000000000000000000000000000000000000000000",
+        "positive_bracket_certified": true,
+        "signed_input_moments": [
+          "192573371705746174443301405711373028109750053016167703477637124093696504600532441117160026306078191654355195514091413591/250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "-60298928291574682504865794604208764369595285659876880416006603864413318273361068330457041398052207640928093902710258787411/500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "-27421764542416970458550714580364157718327951641328889357192852482899962734739787142090937110583992092541157691769171486527261/250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "11873087057715693763592198016071641860983561277479967430908888770082954930590693529916590142231206125609713754389372710646039759/125000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "uniform_combined_endpoint_bracket_lower": "153966909201629790130454568985354108452875243579598719198819/200000000000000000000000000000000000000000000000000000000000",
+        "uniform_combined_endpoint_bracket_upper": "770293494252903296438722584547182314082526790321229269765567/1000000000000000000000000000000000000000000000000000000000000",
+        "uniform_geometric_remainder_upper": "281116920578085237469665107243864653255451746906449/125000000000000000000000000000000000000000000000000000000000"
+      },
+      "explicit_coupled_original_D_energy_257_through_512_upper": "38355789765233107702218223401324956160616264995551938819/200000000000000000000000000000000000000000000000000000000000",
+      "new_original_D_energy_beyond_256_upper": "64857318864222306598733712529965548971094543442013229227/200000000000000000000000000000000000000000000000000000000000",
+      "original_action_inverse_upper_improved": true,
+      "parity": "odd",
+      "previous_direct_residual_D_error_squared_upper": "61938170673749971482478122862213659427885971946100328301/40000000000000000000000000000000000000000000000000000000000",
+      "previous_original_D_energy_beyond_256_upper": "181491165425048536751277243392493981820156967067863079983/500000000000000000000000000000000000000000000000000000000000",
+      "previous_original_action_inverse_response_upper": "5216778132272601234633919310552899973774433472115902031302709/1000000000000000000000000000000000000000000000000000000000000",
+      "prime_boundary_projection_certificate": {
+        "all_boundary_jump_polynomials_reconstructed": true,
+        "all_input_and_cross_prime_terms_retained": true,
+        "all_prime_coefficients_through_256_match_pinned_digest": true,
+        "boundary_low_Legendre_values_and_derivatives_replayed": true,
+        "complete_prime_pairs": 7,
+        "full_prime_model_norm_replayed": true,
+        "opposite_boundaries_paid_by_exact_parity": true,
+        "positive_interior_boundaries": 7,
+        "prime_coefficients_through_512_sha256": "4a2dcb027056ab096a2d590dddc022a610c4fb67c95f95f1eb6a4c934c1e0be8",
+        "prime_projection_cutoff": 512,
+        "segment_polynomial_digest_replayed": true,
+        "support_segments": 15
+      },
+      "prime_physical_energy_beyond_512_upper": "1293385868490684312117906147795221447762128691424142927307/1000000000000000000000000000000000000000000000000000000000000",
+      "prime_weighted_D_energy_beyond_256_upper": "31269104485410971555005358030637952403348856292132580019/100000000000000000000000000000000000000000000000000000000000",
+      "prime_weighted_D_energy_beyond_512_upper": "121787024771417241372153404030565901839757845535039940259/1000000000000000000000000000000000000000000000000000000000000",
+      "selected_trial_coefficients": [
+        "9163714246787652917768333508036170752846539173478851509509/1000000000000000000000000000000000000000000000000000000000000",
+        "10595329909858434507845488520507375777919010303935239563133/500000000000000000000000000000000000000000000000000000000000",
+        "14350004331326863996179862648332514493048047565625741135899/500000000000000000000000000000000000000000000000000000000000",
+        "474812100467373281302611597468040695743864681418851350095621/1000000000000000000000000000000000000000000000000000000000000"
+      ],
+      "signed_gap_positive_certified": false,
+      "source": "N0 P1",
+      "unchanged_retained_residual_center_origin": "RC251 degree 256"
+    }
+  ],
+  "prime_tail_explicit_degree": 512,
+  "response_trials_per_parity": 4,
+  "retained_direct_residual_output_degree_unchanged": 256,
+  "source_and_trial_spaces_unchanged": true,
+  "starting_commit": "a69d9769095b75a0ede918ecbf9266c8ba3cf741",
+  "validator_git_blob_pins": {
+    "scripts/validate_rpb108_rc127_enriched_even_endpoint_action.py": "d5d82bf70c1a178f0fe1da61f27b8623e42ed361",
+    "scripts/validate_rpb108_rc129_four_vector_joint_moment.py": "1229dc4a9db7509b9f6afea7116349891b618f4c",
+    "scripts/validate_rpb108_rc132_balanced_action_shared_covariance.py": "0a083ba5df42b81db924340972b51ac7e4762920",
+    "scripts/validate_rpb108_rc133_six_vector_joint_matrices.py": "f675827ba027147ebc384f2596d994afff9de685",
+    "scripts/validate_rpb108_rc134_correlated_six_input_covariance.py": "ac0d5ba0acb48182f0eed3ef452ddca1fbef2f0e",
+    "scripts/validate_rpb108_rc170_poisson_regular_action.py": "2224bbdeca1f1e041d37031e5d1ddfc9ad0e986a",
+    "scripts/validate_rpb108_rc171_regular_legendre_projection.py": "29a8ab157b16d262a78abe9bf9348a271a34fff5",
+    "scripts/validate_rpb108_rc176_f0_regular_output_carrier.py": "38fa42607e423de666ffbb4ebc0f703c7c0fe1d7",
+    "scripts/validate_rpb108_rc177_three_source_canonical_action_gram.py": "d9d0575e6dda8e0b6f66ffaf83d0474b2715ba5b",
+    "scripts/validate_rpb108_rc179_focus_residual_canonical_action.py": "012cc045537e82d78a51299ffb9c5356a488ac6a",
+    "scripts/validate_rpb108_rc184_five_source_canonical_inverse.py": "bb5339138ff3dbc90521fa131f6221e23c49e4f2",
+    "scripts/validate_rpb108_rc185_five_source_focus_action.py": "15c017543efd99248b958e0ce48fcc7bb6ac75c1",
+    "scripts/validate_rpb108_rc186_residual_enriched_five_source_inverse.py": "afce718195cb46a78224f137dec6de9382ef43f2",
+    "scripts/validate_rpb108_rc189_refined_psi_five_source_inverse.py": "544740ee9274417e0ed2d5c0fe385bf476941557",
+    "scripts/validate_rpb108_rc191_two_refined_actions_five_source_inverse.py": "b5eab21b3e3098c36f3a0a515d9c1eaed7da8bb9",
+    "scripts/validate_rpb108_rc195_refined_five_source_inverse.py": "31fa6e809a06da59f3dea2615d38840be86d8cdc",
+    "scripts/validate_rpb108_rc198_v10_mixed_action_rows.py": "46de46eb61fa91894c8315c155c68cfc07735f0b",
+    "scripts/validate_rpb108_rc199_six_source_canonical_inverse.py": "85b30e8997b9c8c7eb4166a77c28811e37081834",
+    "scripts/validate_rpb108_rc201_refined_v10_six_source_inverse.py": "a3cd26942d90662ad6a351febe5e812c4a9a04d9",
+    "scripts/validate_rpb108_rc202_six_source_residual_action.py": "9a072690851db23fb14bd54596ab6af72e9f3f44",
+    "scripts/validate_rpb108_rc203_residual_enriched_six_source_inverse.py": "a0e6b3982e757dfb485a3f2b92b06c60a6bacc8e",
+    "scripts/validate_rpb108_rc204_signed_error.py": "5362ddfbfaf443875fa7914aa90bb00b58b00281",
+    "scripts/validate_rpb108_rc205_signed_error_inverse.py": "2953a3b86fc7560b31ec02c6761483d4f6c39fc1",
+    "scripts/validate_rpb108_rc206_directional_error_inverse.py": "7ada815599b8d2b607aed030e38b8daa01801496",
+    "scripts/validate_rpb108_rc210_collective_regular_input_tail.py": "03dae85f568ea15d8a0a64482eda41bf0b42bccc",
+    "scripts/validate_rpb108_rc216_refined_t10_canonical_action.py": "39a99e7163894018641813f8b8036de295900f28",
+    "scripts/validate_rpb108_rc217_expanded_mixed_inverse.py": "00ec74eb1f550858ba59416581350e7f315f7632",
+    "scripts/validate_rpb108_rc218_coupled_expanded_inverse.py": "b8d3ac315b5b561b5c919f2fb4aff73343b0f834",
+    "scripts/validate_rpb108_rc219_nominal_trial_span_barrier.py": "a7e9ebb0803ce10fe1850a511667562f52ed2b69",
+    "scripts/validate_rpb108_rc220_barrier_residual_action.py": "ad5e7214d4abf84f671ec66330c323f4fe42293b",
+    "scripts/validate_rpb108_rc221_eleven_trial_inverse.py": "0e1ced2dcadd1c167bd52a6deae837f6a6becf4e",
+    "scripts/validate_rpb108_rc222_shared_tail_error_inverse.py": "e32e9a6735e95e33f68acced5019d0462b5488ca",
+    "scripts/validate_rpb108_rc223_extended_delta_t10_endpoints.py": "b8404d58431747694b68e8bf4debbcb67a0c7499",
+    "scripts/validate_rpb108_rc224_compatible_extended_inverse.py": "e759a266d6d232b0bf7a3c9b0446931734394f8d",
+    "scripts/validate_rpb108_rc225_paid_trial_optimization.py": "4200a50e0fee6893db0ce5d757010ac0890a59fd",
+    "scripts/validate_rpb108_rc226_coherent_residual_tail_inverse.py": "a8544ea4b527a523dec13d3db3a3f23ad03a1d79",
+    "scripts/validate_rpb108_rc227_new_residual_trial_action.py": "a3667c676e087db848c7b457b8b23bff78a52bf2",
+    "scripts/validate_rpb108_rc228_twelve_trial_inverse.py": "2125d6dc0d7ede94220f2ce4d0daf443cd225f45",
+    "scripts/validate_rpb108_rc229_stage_I_interface_audit.py": "ceda4aefa76126b4bf50b7236432c4c247c6a75e",
+    "scripts/validate_rpb108_rc230_augmentation_range_bridge.py": "db5cdc3c6df5b89b8cd59bf796a85979b22c721c",
+    "scripts/validate_rpb108_rc231_original_polynomial_action.py": "590de78c2725f9462e451490ab52a332999cb98d",
+    "scripts/validate_rpb108_rc232_augmented_polynomial_action.py": "0517cd8d8ed1688090c3085d8dd0a9171aa80a6e",
+    "scripts/validate_rpb108_rc233_augmented_inverse_response.py": "679e0e9029aadc7af548f4c6a2335bbecf4aa93d",
+    "scripts/validate_rpb108_rc234_materialized_band_action.py": "f1f68e92d521337cea8303867821c363fe59a1ad",
+    "scripts/validate_rpb108_rc235_frequency_metric_response.py": "d429d0c29ddb4b3d3f36867762500a0dc766e3d7",
+    "scripts/validate_rpb108_rc236_full_range_signed_response.py": "60711dbb1937730d9260343828332555b5569d6d",
+    "scripts/validate_rpb108_rc237_two_trial_signed_response.py": "d13e909c8aa8b91d5b55ec5e5e5179cdaf9325d2",
+    "scripts/validate_rpb108_rc238_weighted_action_tails.py": "a3922068c7ff8ae3d00435d8ee7f7733d5825748",
+    "scripts/validate_rpb108_rc239_exterior_band_leakage.py": "5b0c21280154029a4eb5ca493e7734e288131d23",
+    "scripts/validate_rpb108_rc240_three_trial_signed_response.py": "9e1f46907a3c96d2f916d709163d0dea0db5190a",
+    "scripts/validate_rpb108_rc241_three_trial_tuning_obstruction.py": "d539efd9e1f4e5a9533aed2b64706229deb66cf3",
+    "scripts/validate_rpb108_rc242_residual_original_actions.py": "1ad445e68070055b995c16efe65c3a31979b0134",
+    "scripts/validate_rpb108_rc243_residual_augmented_actions.py": "0a092cbb7efee3784855fff29bd65f94a3a715be",
+    "scripts/validate_rpb108_rc244_four_trial_signed_response.py": "7512b8363151af8512f2553b39e7f5c88973ac8a",
+    "scripts/validate_rpb108_rc245_source_refined_response.py": "445d82c5f46e3dc3374118108c9509553598814a",
+    "scripts/validate_rpb108_rc246_materialized_residual_band_actions.py": "96cd2b2d6a5ec3c8c69e7758c40d91fd79800066",
+    "scripts/validate_rpb108_rc247_materialized_four_trial_response.py": "e5c6eb566e3b84c00d5a39716f02fa220725fc43",
+    "scripts/validate_rpb108_rc248_direct_coupled_residual.py": "4837487293d9451148b84793ef994b9b20eb683c",
+    "scripts/validate_rpb108_rc249_scalar_residual_tuning.py": "c3d69f66e8ea5440483242f7b1b2d1211835be93",
+    "scripts/validate_rpb108_rc250_coupled_original_output_tail.py": "69b12b6eb2259e886c3ce1e6134221918fd00727",
+    "scripts/validate_rpb108_rc251_extended_coupled_residual.py": "8bf302a2f818633c5812833042507f947584ff23",
+    "scripts/validate_rpb108_rc252_signed_endpoint_tail.py": "e3b89120820dc08b049c87bcc2867a5bc94b8ad9"
+  }
+}
