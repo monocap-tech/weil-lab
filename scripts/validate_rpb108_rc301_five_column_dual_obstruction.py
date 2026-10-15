@@ -248,7 +248,7 @@ def run(reverse=False):
         signed_true_inverse_response_certified=False,
         no_original_operator_negative_direction_claim=True,
         remaining_314_principal_Schur_positive=False,
-        original_Weil_form_positive=False,
+        original_Weil_form_positivity_certified=False,
         Stage_I_closed=False, RH=False, F4=False, Lean=False,
         next_cursor=(
             "RC302: do not further optimize P0/P2/P4/P6/P8 seeds. "
