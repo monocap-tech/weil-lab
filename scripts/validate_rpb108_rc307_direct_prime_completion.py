@@ -51,6 +51,10 @@ def sqrt_up(z):
  if not z:return F(0)
  return F(isqrt(z.numerator*SCALE*SCALE//z.denominator)+1,SCALE)
 
+def ceiling(x):
+ assert x>=0
+ return F((x.numerator*SCALE+x.denominator-1)//x.denominator,SCALE)
+
 def mass(n):
  return 2*B/F(2*n+1)
 
@@ -233,7 +237,7 @@ def run(reverse=False):
   chosen_coarse_prime_model_D_parameter_error_per_input_L2_upper=str(sqrt_up(true_fault*true_fault/sl)),
   compared_coarse_and_midpoint_model_L2_error_per_input_L2_upper=str(two_model_fault),
   distinct_admissible_low_prime_parameter_models_paid=True,
-  low_prime_model_difference_physical_L2_squared_exact=str(model_low_discrepancy),
+  low_prime_model_difference_physical_L2_squared_outward_upper=str(ceiling(model_low_discrepancy)),
   low_prime_model_difference_physical_L2_squared_upper=str(cross_model_bound),
   prior_midpoint_low_prime_model_source_is_distinct=True,
   direct_prime_model_L2_energy_after_output64_upper=str(tail64),
