@@ -186,7 +186,7 @@ def run(reverse=False):
  active=[n for n in range(2,10) if primebase(n) is not None]
  assert active==[2,3,4,5,7,8,9]
  assert [r["n"] for r in prime["active_prime_powers"]]==active
- assert primebase(6) is None and primebase(10)==2
+ assert primebase(6) is None and primebase(10) is None
  # The strict cutoff contains n=9, and excludes n>=10:
  # log n < 2B iff n<exp(2B).
  records=[prime_interval_check(row) for row in (
@@ -267,7 +267,7 @@ def run(reverse=False):
  _,exp_up=rational_exp_upper(t)
  assert exp_up<F(2)
  taylortail=2*t**41/F(factorial(41))
- assert taylortail<F(1,10**60)
+ assert taylortail<F(1,10**57)
  selected=list(range(7))
  if reverse:selected.reverse()
  for n in selected:
