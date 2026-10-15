@@ -153,6 +153,8 @@ def run(reverse=False):
             "candidate_signed_rest_projection_threshold_pass":True,
             "certified_actual_inverse_signed_response":False,
         })
+    assert all(x["residual_budget_failed"] for x in rows)
+    assert all(x["actual_native_action_inputs_covered_by_RC279"] for x in rows)
     return {
       "milestone":"RC293",
       "starting_commit":"1d2047d294698b24f65ea3c3b3e248c3b038922c",
@@ -176,7 +178,6 @@ if __name__=="__main__":
     ap.add_argument("--replay",action="store_true")
     args=ap.parse_args()
     obj=run(args.replay)
-    print("RC293_CANDIDATE_JSON="+json.dumps(obj,sort_keys=True),flush=True)
     if args.replay:assert obj==json.loads(args.output.read_text(encoding="utf-8"))
     else:args.output.write_text(json.dumps(obj,sort_keys=True,indent=2)+"\n",encoding="utf-8")
     print("RC293 VALIDATED: paid original-action seed, signed inverse NOT certified",flush=True)
