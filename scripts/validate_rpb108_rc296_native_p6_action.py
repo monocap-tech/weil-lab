@@ -79,6 +79,8 @@ def run(reverse=False):
     print("RC296: constructing new native original P6",flush=True)
     fresh=run_action(6,reg,prime,eps,sl,sh,reverse)
     assert all(v["coefficient"]=="0" and v["radius"]=="0" for v in fresh["finite_original_D_action"] if v["degree"]%2)
+    assert F(0)<F(fresh["complete_original_action_D_error_squared_upper"])<F(1,100)
+    assert fresh["finite_original_D_action"][6]["coefficient"]!="0"
     return dict(milestone="RC296",starting_commit="4a7c3afd67f46c28efbbf94a83539ead4766a04a",
         input_git_blob_pins=PINS,regression_original_P4_action_reproduced=True,
         new_native_P6_original_action=fresh,
@@ -93,6 +95,5 @@ if __name__=="__main__":
     ap=argparse.ArgumentParser();ap.add_argument("--output",type=Path,required=True)
     ap.add_argument("--replay",action="store_true");args=ap.parse_args()
     r=run(args.replay)
-    print("RC296_CANDIDATE="+json.dumps(r,sort_keys=True),flush=True)
     if args.replay:assert r==json.loads(args.output.read_text())
     else:args.output.write_text(json.dumps(r,sort_keys=True,indent=2)+"\n")
