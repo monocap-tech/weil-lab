@@ -57,6 +57,10 @@ def ceil_grid(x):
  assert x>=0
  return F((x.numerator*GRID+x.denominator-1)//x.denominator,GRID)
 
+def floor_grid(x):
+ assert x>=0
+ return F(x.numerator*GRID//x.denominator,GRID)
+
 def harmonic_numbers(last):
  arr=[F(0)]
  for i in range(1,last+1):
@@ -124,7 +128,7 @@ def run(reverse=False):
   assert H[n]==native.orig.H(n)
   assert H[2*n]==native.orig.H(2*n)
   dmax=max(2*n+128,128)
-  assert dmax<=512
+  assert dmax<=1024
   if n==0:
    assert E(n,n,H)==1
   else:
@@ -151,7 +155,7 @@ def run(reverse=False):
      n=n,
      first_source_degree=n%2,
      highest_source_degree=dmax if dmax%2==n%2 else dmax-1,
-     exact_finite_weighted_Schur_row_lower=str(ceil_grid(subtotal)),
+     exact_finite_weighted_Schur_row_lower=str(floor_grid(subtotal)),
      universal_weighted_Schur_upper=str(C_end),
      entire_infinite_row_upper_certified_by_analytic_partition=True))
  checks.sort(key=lambda r:r["n"])
