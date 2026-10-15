@@ -1,0 +1,67 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "arithmetic": "outward rational intervals: atanh, Machin pi, harmonic Euler gamma, hyperbolic Taylor, RC46 analytic uniform remainder",
+  "even_odd_low_mixed_entry_zero_exactly_by_reflection": true,
+  "finite_rank301_or_317_Schur_matrix_computed": false,
+  "milestone": "RC315",
+  "next_cursor": "RC316: certify at least one nonzero cross-block original T=QN0P coefficient, then build rank317 high response Y and paid residual Gram with MINUS Schur correction. Full original positivity remains open.",
+  "normalized_P0_P1_original_principal_block_strictly_positive": true,
+  "original_cc27_operator_identification_imported_RC313": true,
+  "original_low_diagonals": [
+    {
+      "J": "0",
+      "W_B": "1",
+      "n": 0,
+      "physically_normalized_original_Weil_diagonal_interval": [
+        "20127089991/500000000000",
+        "20129633123/500000000000"
+      ],
+      "pole": [
+        "4861953118707/1000000000000",
+        "1215488279677/250000000000"
+      ],
+      "prime": [
+        "-53674060213/25000000000",
+        "-2146962408519/1000000000000"
+      ],
+      "regular": [
+        "471186438499/1000000000000",
+        "942372877/2000000000"
+      ]
+    },
+    {
+      "J": "1",
+      "W_B": "4/3",
+      "n": 1,
+      "physically_normalized_original_Weil_diagonal_interval": [
+        "26477131563/200000000000",
+        "132390744079/1000000000000"
+      ],
+      "pole": [
+        "-235607484907/500000000000",
+        "-471214969813/1000000000000"
+      ],
+      "prime": [
+        "306989362753/200000000000",
+        "767473406883/500000000000"
+      ],
+      "regular": [
+        "15282356941/250000000000",
+        "12225885553/200000000000"
+      ]
+    }
+  ],
+  "regular_uniform_error_upper": "974514343105327213540549556400011238463413822360299423722022789302645646291085114792014739642469630822035779602816696428098048114213495279535747463925885516539438995822665939368094506258818385935870731/1031909762930727037268554583631182535930255728684018407273251242910835746050961796969267174069833304802748328128760862967683573500479805544904655655028400372807999914777559474160040318274633719397570530418306589126586914062500",
+  "residual_Gram_computed": false,
+  "signed_full_positivity_proved": false,
+  "signed_high_response_Y_computed": false,
+  "source_blob_pins": {
+    "certificates/rpb108_rc313_prime_pole_distributions.json": "954b4892cf3b4e999e65476d7ce341021528d9e8",
+    "certificates/rpb108_rc314_fredholm_schur.json": "6496be8d20176f173c0ff8b6e393b0ccd7c6ff5b",
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9"
+  },
+  "standing": "Original signed low-sector necessary check, not a Schur witness"
+}
