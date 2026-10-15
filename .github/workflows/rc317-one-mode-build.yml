@@ -1,0 +1,36 @@
+name: RC317 original signed one-mode trial
+on:
+  push:
+    branches:
+      - research/rpb108-rc317-one-mode-response
+    paths:
+      - "scripts/validate_rpb108_rc317_one_mode_response.py"
+      - ".github/workflows/rc317-one-mode-build.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Certify pinned one-mode signed trial and reverse replay
+        run: |
+          python scripts/validate_rpb108_rc317_one_mode_response.py --output certificates/rpb108_rc317_one_mode_response.json
+          python scripts/validate_rpb108_rc317_one_mode_response.py --output certificates/rpb108_rc317_one_mode_response.json --replay
+      - name: Freeze certificate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc317_one_mode_response.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC317: freeze certified original signed one-mode response trial"
+            git fetch origin research/rpb108-rc317-one-mode-response
+            git rebase origin/research/rpb108-rc317-one-mode-response
+            git push origin HEAD:research/rpb108-rc317-one-mode-response
+          fi
