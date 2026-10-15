@@ -1,0 +1,34 @@
+name: RC315 native signed low-mode generation
+on:
+  push:
+    branches:
+      - research/rpb108-rc315-low-mode-sign
+    paths:
+      - "scripts/validate_rpb108_rc315_low_mode_sign.py"
+      - ".github/workflows/rc315-low-mode-build.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Generate pinned original low-mode certificate
+        run: |
+          python scripts/validate_rpb108_rc315_low_mode_sign.py --output certificates/rpb108_rc315_low_mode_sign.json
+          python scripts/validate_rpb108_rc315_low_mode_sign.py --output certificates/rpb108_rc315_low_mode_sign.json --replay
+      - name: Commit verified certificate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc315_low_mode_sign.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC315: freeze original signed low-sector rational certificate"
+            git push origin HEAD:research/rpb108-rc315-low-mode-sign
+          fi
