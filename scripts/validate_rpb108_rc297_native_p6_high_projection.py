@@ -138,7 +138,6 @@ if __name__=="__main__":
     p.add_argument("--replay",action="store_true")
     args=p.parse_args()
     result=run(args.replay)
-    print("RC297_CANDIDATE_JSON="+json.dumps(result,sort_keys=True),flush=True)
     if args.replay:assert result==json.loads(args.output.read_text())
     else:args.output.write_text(json.dumps(result,sort_keys=True,indent=2)+"\n")
     print("RC297 VALIDATED: new P6 original output and rank317 augmentation; Stage I OPEN",flush=True)
