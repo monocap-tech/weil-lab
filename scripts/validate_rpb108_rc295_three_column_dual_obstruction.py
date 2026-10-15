@@ -141,6 +141,7 @@ def run(reverse=False):
 if __name__=="__main__":
     ap=argparse.ArgumentParser();ap.add_argument("--output",required=True,type=Path);ap.add_argument("--replay",action="store_true")
     args=ap.parse_args();out=run(args.replay)
-    print("RC295_CANDIDATE_JSON="+json.dumps(out,sort_keys=True),flush=True)
+    assert out["three_column_universal_acceptance_exclusion_for_both"]
+    assert all(F(x["criterion_ratio_lower"])>100 for x in out["certified_three_column_finite_dual_tests"])
     if args.replay:assert out==json.loads(args.output.read_text())
     else:args.output.write_text(json.dumps(out,sort_keys=True,indent=2)+"\n")
