@@ -152,7 +152,6 @@ if __name__=="__main__":
     ap.add_argument("--replay",action="store_true")
     args=ap.parse_args()
     out=run(args.replay)
-    print("RC291_CANDIDATE="+json.dumps(out,sort_keys=True),flush=True)
     if args.replay:
         assert out==json.loads(args.output.read_text(encoding="utf-8"))
     else:
