@@ -1,0 +1,117 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "abstract_augmented_model_D_to_D_operator_norm_upper": "503465522600392226231687958671680204014705976687429158947705309276545763760438057603694905878030984588861347563382149314379249334394745933770251632827196401781050690910649145803002230119644289208150425048808479721626906704614896004824050811872131537202746559558911988797/37542403673350192976440244536566798792029594452382843238635403478497391160139499331967265208936129479097221597407107858474131806226842339439463250060579506857091552858175962970691820975399582965240573335846987000000000000000000000000000000000000000000000000000000000000",
+  "actual_signed_inverse_response_certified": false,
+  "all_five_source_terms_exactly_linear_for_finite_polynomial_inputs": true,
+  "all_seven_original_prime_power_pairs_retained": true,
+  "augmented_model_positivity_not_inferred_from_diagonal_positivity": true,
+  "bounded_abstract_native_model_D_operator_norm_upper": "401790849269571051418113666870399476717572124452494188512653704305416325042603970670749898295509446568767735030981428927757382796929943462346965215167856316564076036407073889910176233010164075308843076405790309494603355200454674795191877830872131537202746559558911988797/37542403673350192976440244536566798792029594452382843238635403478497391160139499331967265208936129479097221597407107858474131806226842339439463250060579506857091552858175962970691820975399582965240573335846987000000000000000000000000000000000000000000000000000000000000",
+  "bounded_extension_uniqueness_if_canonical_core_identity_proved": true,
+  "canonical_action_dense_polynomial_core_candidate": true,
+  "even_and_odd_original_archival_column_regressions": [
+    {
+      "checked_original_low_modes": 13,
+      "direct_regular_source_matches_native": true,
+      "direct_seven_prime_source_matches_independent_native": true,
+      "independent_regular_physical_integral_matches": true,
+      "input_degree": 2,
+      "model_matched_pinned_certified_original_action": true,
+      "original_complete_enclosure_containment_passed": true,
+      "parity": "even",
+      "signed_pole_sign_correct": true
+    },
+    {
+      "checked_original_low_modes": 13,
+      "direct_regular_source_matches_native": true,
+      "direct_seven_prime_source_matches_independent_native": true,
+      "independent_regular_physical_integral_matches": true,
+      "input_degree": 3,
+      "model_matched_pinned_certified_original_action": true,
+      "original_complete_enclosure_containment_passed": true,
+      "parity": "odd",
+      "signed_pole_sign_correct": true
+    },
+    {
+      "checked_original_low_modes": 13,
+      "direct_regular_source_matches_native": true,
+      "direct_seven_prime_source_matches_independent_native": true,
+      "independent_regular_physical_integral_matches": true,
+      "input_degree": 4,
+      "model_matched_pinned_certified_original_action": true,
+      "original_complete_enclosure_containment_passed": true,
+      "parity": "even",
+      "signed_pole_sign_correct": true
+    },
+    {
+      "checked_original_low_modes": 13,
+      "direct_regular_source_matches_native": true,
+      "direct_seven_prime_source_matches_independent_native": true,
+      "independent_regular_physical_integral_matches": true,
+      "input_degree": 5,
+      "model_matched_pinned_certified_original_action": true,
+      "original_complete_enclosure_containment_passed": true,
+      "parity": "odd",
+      "signed_pole_sign_correct": true
+    }
+  ],
+  "even_pole_rank_one_sign_positive_certified": true,
+  "full_original_Weil_form_positivity_certified": false,
+  "full_original_operator_equated_to_canonical_Weil_action": false,
+  "genuinely_direct_signed_source_superposition_regressions": [
+    {
+      "all_five_source_components_and_diagonal_superposition_exact": true,
+      "direct_signed_prime_translation_is_independent_of_basis_column_sum": true,
+      "direct_signed_regular_physical_integral_exact": true,
+      "exact_direct_odd_pole_sign_when_applicable": true,
+      "output_through_degree": 12,
+      "parity": "even",
+      "signed_coefficients": {
+        "2": "1",
+        "4": "-1/3"
+      },
+      "source": "signed_even_P2_minus_P4_over_3"
+    },
+    {
+      "all_five_source_components_and_diagonal_superposition_exact": true,
+      "direct_signed_prime_translation_is_independent_of_basis_column_sum": true,
+      "direct_signed_regular_physical_integral_exact": true,
+      "exact_direct_odd_pole_sign_when_applicable": true,
+      "output_through_degree": 12,
+      "parity": "odd",
+      "signed_coefficients": {
+        "3": "1",
+        "5": "-1/2"
+      },
+      "source": "signed_odd_P3_minus_P5_over_2"
+    }
+  ],
+  "milestone": "RC310",
+  "native_core_formula": "N_model=I+D_s^-1(E-(log2+789/125)I-R+P+Pole), with all original parity signs and finite metric interval paid",
+  "next_cursor": "RC311: prove from the original canonical explicit formula that its polynomial-core coefficients coincide with the full native even/odd model at EVERY input degree, not just P2-P5; test potential diagonal/distributional missing terms. Then address the 314-Schur spectral lower bound. Finite-degree archival regressions alone do not suffice.",
+  "odd_pole_rank_one_sign_negative_certified": true,
+  "original_even_and_odd_regular_integral_normalizations_checked": true,
+  "original_native_low_action_model_agrees_with_pinned_P2_P3_P4_P5": true,
+  "parent_merge_commit": "e0a04dd0beea2b6d0c2ab34db6919cb301e7a430",
+  "pinned_source_git_blobs": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc237_two_trial_signed_response.json": "04bf1539dda4cfd79b4ecdc2d3e310daa2d3b657",
+    "certificates/rpb108_rc240_three_trial_signed_response.json": "6c41b7f196052fea179b956099fb69cc5d07813c",
+    "certificates/rpb108_rc283_reduced_reference.json": "1dc4bba375af6bfd7a274fccc07638e0eead56e6",
+    "certificates/rpb108_rc308_bounded_arch_pole.json": "2461485678ec998ed7449e8a6141a3b71e083f35",
+    "certificates/rpb108_rc309_endpoint_schur.json": "d3f11a563486c7adb9128252092820ad7f1ef189",
+    "certificates/rpb108_rc43_native_prime_head.json": "b4893953109e6fdc55d52b505c2bcfbf0d38281e",
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9",
+    "scripts/validate_rpb108_rc237_two_trial_signed_response.py": "d13e909c8aa8b91d5b55ec5e5e5179cdaf9325d2",
+    "scripts/validate_rpb108_rc309_endpoint_schur.py": "c12ca56b934273603b6a63e657d1460c268ed84a"
+  },
+  "positive_spectral_lower_bound_established": false,
+  "rank317_augmentation_D_to_D_operator_norm_upper": "2917611628817218364974226083519776626099550223938722178066093207430374323521092513714934194266248534886756375024163454704894504084684502557358934929494432012753558403368203396993519200482956523988899/1077300274914314560098005047031662427334607023090110027623543204992179322892311617082351627352118600645422107084244916849339819658289059954790117176480037971879276743773000000000000000000000000000000",
+  "rank317_even_reference_rank": 122,
+  "rank317_odd_reference_rank": 195,
+  "rank317_positive_diagonal_augmentation_bounded_separately": true,
+  "remaining_314_principal_Schur_positive": false,
+  "source_identity_independently_derived_from_full_canonical_Weil_explicit_formula": false
+}
