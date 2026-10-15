@@ -1,0 +1,143 @@
+{
+  "D_Riesz_high_cross_is_nonzero_by_positive_metric_rescaling": true,
+  "F4": false,
+  "Lean": false,
+  "RC46_degree192_regular_part_vanishes_for_high_cross": true,
+  "RH": false,
+  "Stage_I_closed": false,
+  "exact_prime_zero_extended_boundary_evaluation_used": true,
+  "full_rank301_or_317_Schur_principal_positive": false,
+  "milestone": "RC316",
+  "next_cursor": "RC317: construct and certify actual original high response Y to first low sources; use signed high cross and complete D residual Gram in RC314 minus-sign Schur inequality, without extrapolating from these two entries.",
+  "original_CC27_signed_source": true,
+  "parent_route_head": "43e11169dbb14759331e7db0252d7633ba67d030",
+  "rank301_high_mode_first_even_cross_nonzero": true,
+  "rank317_high_mode_first_even_cross_nonzero": true,
+  "residual_Gram_computed": false,
+  "rigorous_high_crosses": [
+    {
+      "actual_signed_Weil_not_augmented_reference": true,
+      "first_omitted_even_degree": 232,
+      "nonzero_cross_sign_certified": "negative",
+      "original_scaled_cross_lower": "-28764219757874971/250000000000000000",
+      "original_scaled_cross_upper": "-115056879031499883/1000000000000000000",
+      "physical_L2_normalized_cross_scaled_by_sqrt_2n_plus_1": true,
+      "pole_source_physical_L2_fault_upper": "1/1000000000000000000",
+      "prime_center_rational": "-123659069352648323/1000000000000000000",
+      "prime_enclosure_fault_upper": "1/1000000000000000000",
+      "regular_source_physical_L2_fault_upper": "1/1000000000000000000",
+      "scaled_combined_source_fault_upper": "1/1000000000000000000",
+      "scaled_endpoint_exact": "465/54056",
+      "source_prime_power_components": [
+        {
+          "base_prime": 2,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 2,
+          "signed_prime_center": "-2980950119031081/500000000000000000"
+        },
+        {
+          "base_prime": 3,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 3,
+          "signed_prime_center": "-19192263241820827/1000000000000000000"
+        },
+        {
+          "base_prime": 2,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 4,
+          "signed_prime_center": "-8901289586767947/250000000000000000"
+        },
+        {
+          "base_prime": 5,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 5,
+          "signed_prime_center": "-64588212574568927/1000000000000000000"
+        },
+        {
+          "base_prime": 7,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 7,
+          "signed_prime_center": "448901483412629/31250000000000000"
+        },
+        {
+          "base_prime": 2,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 8,
+          "signed_prime_center": "-13174731764008017/1000000000000000000"
+        },
+        {
+          "base_prime": 3,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 9,
+          "signed_prime_center": "249174671839633/500000000000000000"
+        }
+      ]
+    },
+    {
+      "actual_signed_Weil_not_augmented_reference": true,
+      "first_omitted_even_degree": 244,
+      "nonzero_cross_sign_certified": "positive",
+      "original_scaled_cross_lower": "39266967013922929/1000000000000000000",
+      "original_scaled_cross_upper": "3926696701392293/100000000000000000",
+      "physical_L2_normalized_cross_scaled_by_sqrt_2n_plus_1": true,
+      "pole_source_physical_L2_fault_upper": "1/1000000000000000000",
+      "prime_center_rational": "31086973705123999/1000000000000000000",
+      "prime_enclosure_fault_upper": "1/1000000000000000000",
+      "regular_source_physical_L2_fault_upper": "1/1000000000000000000",
+      "scaled_combined_source_fault_upper": "1/1000000000000000000",
+      "scaled_endpoint_exact": "489/59780",
+      "source_prime_power_components": [
+        {
+          "base_prime": 2,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 2,
+          "signed_prime_center": "6020595911059259/125000000000000000"
+        },
+        {
+          "base_prime": 3,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 3,
+          "signed_prime_center": "-9825638579707877/500000000000000000"
+        },
+        {
+          "base_prime": 2,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 4,
+          "signed_prime_center": "34742555735284027/1000000000000000000"
+        },
+        {
+          "base_prime": 5,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 5,
+          "signed_prime_center": "-1723392361445773/25000000000000000"
+        },
+        {
+          "base_prime": 7,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 7,
+          "signed_prime_center": "45760715234586817/1000000000000000000"
+        },
+        {
+          "base_prime": 2,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 8,
+          "signed_prime_center": "-336018833080261/20000000000000000"
+        },
+        {
+          "base_prime": 3,
+          "local_total_abs_fault_upper": "1/1000000000000000000",
+          "prime_power": 9,
+          "signed_prime_center": "1951712179509701/250000000000000000"
+        }
+      ]
+    }
+  ],
+  "signed_even_pole_tail_paid": true,
+  "source_blob_pins": {
+    "certificates/rpb108_rc313_prime_pole_distributions.json": "954b4892cf3b4e999e65476d7ce341021528d9e8",
+    "certificates/rpb108_rc314_fredholm_schur.json": "6496be8d20176f173c0ff8b6e393b0ccd7c6ff5b",
+    "certificates/rpb108_rc315_low_mode_sign.json": "a8cd974c8218e18943dda0082f48cca36a3350a8",
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9"
+  },
+  "total_high_response_Y_computed": false
+}
