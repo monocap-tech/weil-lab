@@ -47,7 +47,7 @@ PINS={
  "certificates/rpb108_rc309_endpoint_schur.json":
   "d3f11a563486c7adb9128252092820ad7f1ef189",
  "certificates/rpb108_rc310_core_parity_contract.json":
-  "REPLACE_RC310_PIN",
+  "a40b6807309f71df128b98f820a45a12e145948a",
  "notes/RPB108_RC46_ACTUAL_ARCHIMEDEAN_AND_COMPLETE_LOW_HEAD_20261010.md":
   "7a1b58255c29f6396622bbbc154afcc371722cab",
  "notes/RPB108_RC231_DIRECT_ORIGINAL_POLYNOMIAL_ACTIONS_20261014.md":
