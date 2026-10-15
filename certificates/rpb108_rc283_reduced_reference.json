@@ -1,0 +1,85 @@
+{
+  "milestone": "RC283",
+  "parent": "92e0d7876a38a85deee5fa4282118ef9dd059563",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc278_smaller_positive_reference.json": "edc59d6cec516d597c2c7816bec2a38a2677e18d",
+    "certificates/rpb108_rc282_high_mode_auxiliary_complement.json": "e07256b79b9e5c4062f5d44eff552f800af6b8f7",
+    "notes/RPB108_RC282_HIGH_MODE_AUXILIARY_COMPLEMENT_20261014.md": "b22d562cb4d2d435628c246426a320f5fd76381d"
+  },
+  "old_reference_rank": 371,
+  "reduced_reference_options": [
+    {
+      "parity": "even",
+      "old_reference_rank": 142,
+      "upper_D_reference_bound_reused": "1282312557523562559865826463490300085305075101398603022584417/250000000000000000000000000000000000000000000000000000000000",
+      "parameter_lambda": "9824426812434191126348001381815352879391565433737138359403921/1000000000000000000000000000000000000000000000000000000000000",
+      "reduced_reference_options": [
+        {
+          "protected_high_mass_floor_target": "0",
+          "first_discarded_matching_degree": 232,
+          "discarded_high_rank": 26,
+          "new_low_reference_rank": 116,
+          "certified_D_reference_floor_lower": "333438742412503/1000000000000000000"
+        },
+        {
+          "protected_high_mass_floor_target": "1/200",
+          "first_discarded_matching_degree": 244,
+          "discarded_high_rank": 20,
+          "new_low_reference_rank": 122,
+          "certified_D_reference_floor_lower": "5426380967923901/1000000000000000000"
+        },
+        {
+          "protected_high_mass_floor_target": "1/100",
+          "first_discarded_matching_degree": 256,
+          "discarded_high_rank": 14,
+          "new_low_reference_rank": 128,
+          "certified_D_reference_floor_lower": "2556816238174553/250000000000000000"
+        }
+      ]
+    },
+    {
+      "parity": "odd",
+      "old_reference_rank": 229,
+      "upper_D_reference_bound_reused": "3971841936389262834361853798102988679621663242101045333212123/1000000000000000000000000000000000000000000000000000000000000",
+      "parameter_lambda": "10295721752684191126348001381815352879391565433737138359403921/1000000000000000000000000000000000000000000000000000000000000",
+      "reduced_reference_options": [
+        {
+          "protected_high_mass_floor_target": "0",
+          "first_discarded_matching_degree": 371,
+          "discarded_high_rank": 44,
+          "new_low_reference_rank": 185,
+          "certified_D_reference_floor_lower": "62174112576891/1000000000000000000"
+        },
+        {
+          "protected_high_mass_floor_target": "1/200",
+          "first_discarded_matching_degree": 391,
+          "discarded_high_rank": 34,
+          "new_low_reference_rank": 195,
+          "certified_D_reference_floor_lower": "5128787479000777/1000000000000000000"
+        },
+        {
+          "protected_high_mass_floor_target": "1/100",
+          "first_discarded_matching_degree": 413,
+          "discarded_high_rank": 23,
+          "new_low_reference_rank": 206,
+          "certified_D_reference_floor_lower": "10357001457541197/1000000000000000000"
+        }
+      ]
+    }
+  ],
+  "controls": {
+    "exact_Schur_identity_checked": true,
+    "old_positive_pivots_do_not_transfer": true
+  },
+  "proposed_buffered_reference_rank": 317,
+  "minimal_positive_reference_rank": 301,
+  "exact_schur_elimination_identity": true,
+  "old_five_pivot_margins_not_transferred": true,
+  "full_new_auxiliary_response_evaluated": false,
+  "Stage_I_closed": false,
+  "RH": false,
+  "F4": false,
+  "Lean": false,
+  "next_cursor": "RC284: compute fresh paid inverse responses for rank-317 reference"
+}
