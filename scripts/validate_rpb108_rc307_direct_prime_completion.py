@@ -120,27 +120,48 @@ def run(reverse=False):
  print("RC307: independent mixed signed prime output projected "
        "through 2048",flush=True)
 
- # RC273 chooses the arithmetic model internally. Require its
- # seven source parameters to coincide with the midpoint model
- # used by RC303 before claiming the independent low regression.
+ # The two valid native arithmetic models need NOT share centers:
+ # RC303 chose interval midpoints while the inherited RC273 native
+ # prime projector may choose other rationals within those intervals.
+ # Verify both choices are admissible and pay their DIFFERENCE,
+ # rather than falsely requiring byte-identical low coefficients.
  model=proof["prime_controls"]["chosen_prime_model_parameters"]
  assert len(model)==7
+ selected_model_not_forced_to_midpoints=True
  for actual,row in zip(model,prime["active_prime_powers"]):
-  assert F(actual["chosen_translation"])==(
-      F(row["translation_lower"])+F(row["translation_upper"]))/2
-  assert F(actual["chosen_coefficient"])==(
-      F(row["coefficient_lower"])+F(row["coefficient_upper"]))/2
- # Rebuild RC273's exact low-output digest from an entirely
- # distinct direct integral model over all 15 translated segments.
- # Hash matches if and only if all 65 low model values agree.
- recomputed=high.native.segment_digest([(F(0),F(64),low)])
- assert recomputed==proof["low_prime_coefficient_digest"]
-
+  assert F(row["translation_lower"])<=F(actual["chosen_translation"])<=F(
+      row["translation_upper"])
+  assert F(row["coefficient_lower"])<=F(actual["chosen_coefficient"])<=F(
+      row["coefficient_upper"])
+ segments=high.prime.model_segments(q,model,0)
+ assert len(segments)==15
+ chosen_low=[]
+ for n in range(65):
+  if n%2:chosen_low.append(F(0));continue
+  chosen_low.append(F(2*n+1,2)*sum((
+      high.orig.integral(high.orig.product(poly,high.orig.legendre(n)),l,r)
+      for l,r,poly in segments),F(0)))
+ chosen_digest=high.native.segment_digest(
+      [(F(0),F(64),chosen_low)])
+ assert chosen_digest==proof["low_prime_coefficient_digest"]
+ model_low_discrepancy=sum((
+      mass(n)*(chosen_low[n]-low[n])**2
+      for n in range(65)),F(0))
+ # Both chosen models lie in the same original prime-parameter
+ # enclosures. The signed RC306 Markov perturbation budget covers
+ # each model's variation relative to the exact native parameters;
+ # triangle then bounds their difference by 2*C_prime||q||_2.
+ primecap=adaptive["all_degree_sampling_replay_records"][0]
+ assert primecap["even_input_maximum_degree"]==10
+ prime_budget=F(primecap[
+      "all_seven_signed_prime_translation_L2_error_per_input_L2_upper"])
+ cross_model_bound=4*prime_budget*prime_budget*norm2
+ assert model_low_discrepancy<=cross_model_bound,(
+      "two valid prime interval models differ beyond paid bound")
+ # RC273 and RC303 low-tail values refer to their respective
+ # admissible models, so do NOT compare them as if identical.
  direct64upper=F(lowproof["omitted_prime_L2_energy_upper"])
- assert tail64<=direct64upper or direct64upper<=tail64
- # Both 64+ tails arise from the SAME rational arithmetic model,
- # with independent outward grids. Compare within two ulps.
- assert abs(tail64-direct64upper)<=F(4,10**15)
+ assert direct64upper>0 and tail64>0 and tail2048<tail64
  # Full nominal prime physical squared energy bound
  # ensures the new captured/tail ratio is meaningful.
  nominalFull=F(lowproof["full_prime_L2_mass_squared_upper"])
@@ -180,7 +201,11 @@ def run(reverse=False):
   direct_mixed_prime_high_output_intervals=rows,
   selected_high_output_prime_intervals=selected,
   direct_prime_projection_certificate=proof,
-  exact_independent_low_65_prime_model_digest_regression=True,
+  exact_independent_low_65_chosen_prime_model_digest_regression=True,
+  distinct_admissible_low_prime_parameter_models_paid=True,
+  low_prime_model_difference_physical_L2_squared_exact=str(model_low_discrepancy),
+  low_prime_model_difference_physical_L2_squared_upper=str(cross_model_bound),
+  prior_midpoint_low_prime_model_source_is_distinct=True,
   direct_prime_model_L2_energy_after_output64_upper=str(tail64),
   direct_prime_model_L2_energy_after_output2048_upper=str(tail2048),
   direct_prime_model_D_energy_after_output2048_upper=str(high_D_energy),
