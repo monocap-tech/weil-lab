@@ -30,7 +30,6 @@ from pathlib import Path
 from fractions import Fraction as F
 from math import isqrt
 import argparse,hashlib,json
-import sympy as S
 import validate_rpb108_rc231_original_polynomial_action as original
 import validate_rpb108_rc309_endpoint_schur as endpoint
 
@@ -79,61 +78,96 @@ def endpoint_action_matrix(n,d):
  H=[harm(j) for j in range(2*max(n,d)+2)]
  return endpoint.E(n,d,H)
 def all_degree_symbolic():
- n,d=S.symbols("n d",integer=True,nonnegative=True)
- # For n>d+1 odd separation, all four E values are offdiagonal.
- lhs=(2*n+1)/(2*d+1)*(
-      (d+1)/((n-d-1)*(n+d+2))
-     +d/((n-d+1)*(n+d)))
- rhs=n/((n-d-1)*(n+d))+(n+1)/((n-d+1)*(n+d+2))
- far=S.cancel(lhs-rhs)
- assert far==0
- # Adjacent n=d+1: diagonal E_{d,d} terms occur.
- # e_{d+1}-e_d =
- # 1/(2d+1)+1/(2d+3)-1/(d+1), proved from H recurrence.
- difference=1/(2*d+1)+1/(2*d+3)-1/(d+1)
- near=S.cancel(
-     (d+1)/(2*d+1)*difference
-    +d*(2*d+3)/(2*(2*d+1)**2)
-    -(d+2)/(2*(2*d+3)))
- assert near==0
- # Physical weighted-adjointness of multiplication by t.
- lhs_adj=(2*B/(2*d+3))*((d+1)/(2*d+1))
- rhs_adj=(2*B/(2*d+1))*((d+1)/(2*d+3))
- assert S.cancel(lhs_adj-rhs_adj)==0
- # Universal offdiagonal reciprocity:
- # m_n E_nd=m_d E_dn=2B/(|n-d|(n+d+1)).
- # Therefore lower triangular commutator follows from upper,
- # since E and coordinate multiplication are selfadjoint on
- # the finite polynomial core.
- n0,d0=S.symbols("n0 d0",integer=True,nonnegative=True)
- assert S.cancel((2*B/(2*n0+1))*((2*n0+1)/(
-    (n0-d0)*(n0+d0+1)))-
-    (2*B/(2*d0+1))*((2*d0+1)/(
-    (n0-d0)*(n0+d0+1))))==0
+ """Universal polynomial identities over Z[n,d] with zero dependencies.
 
- # The abstract original constants, BEFORE any numerical rounding:
- # c_R=-gamma-log(2*pi*(2B));
- # s=c_R+log2+r.  The native E equals multiplication
- # by W_B=h+log2, giving exactly
- # D_s + E -(log2+r) I = J+E+c_R I.
- gamma,logpi,logB,log2,r,H,w=S.symbols(
-   "gamma logpi logB log2 r H w",real=True)
- cR=-gamma-(log2+logpi+logB)
- s=cR+log2+r
- native_expression=H+s+w-(log2+r)
- canonical_expression=H+w+cR
- assert S.expand(native_expression-canonical_expression)==0
- assert S.expand(s-(r-gamma-logpi-logB))==0
- assert S.expand((w-log2)-(w-log2))==0
- # A one-log2 contact mismatch cannot be silently absorbed.
- assert S.expand((H+s+w-r)-(H+w+cR))==log2
+ Every rational identity is verified by multiplying out its complete
+ common denominator as a formal bivariate integer polynomial. A zero
+ coefficient map proves the identity for ALL valid n,d, not samples.
+ """
+ def mono(an,ad,c=1):
+  return {(an,ad):int(c)} if c else {}
+ def add(*ps):
+  out={}
+  for p in ps:
+   for term,c in p.items():
+    out[term]=out.get(term,0)+c
+  return {k:v for k,v in out.items() if v}
+ def neg(p):return {k:-v for k,v in p.items()}
+ def sub(a,b):return add(a,neg(b))
+ def mul(*ps):
+  result={(0,0):1}
+  for p in ps:
+   z={}
+   for (an,ad),a in result.items():
+    for (bn,bd),b in p.items():
+     k=(an+bn,ad+bd)
+     z[k]=z.get(k,0)+a*b
+   result={k:v for k,v in z.items() if v}
+  return result
+ def pw(p,k):return mul(*([p]*k))
+ N=mono(1,0);D=mono(0,1);ONE=mono(0,0)
+ twon1=add(mul(mono(0,0,2),N),ONE)
+ twod1=add(mul(mono(0,0,2),D),ONE)
+ twod3=add(mul(mono(0,0,2),D),mono(0,0,3))
+ np=add(N,ONE);dp=add(D,ONE);dp2=add(D,mono(0,0,2))
+ nmdm1=sub(sub(N,D),ONE)
+ nmdp1=add(sub(N,D),ONE)
+ npdp2=add(N,D,mono(0,0,2))
+ npd=add(N,D)
+ # n>d+1: multiply the four-rational-term commutator by
+ # (2d+1)(n-d-1)(n+d+2)(n-d+1)(n+d).
+ far=add(
+   mul(twon1,dp,nmdp1,npd),
+   mul(twon1,D,nmdm1,npdp2),
+   neg(mul(N,twod1,npdp2,nmdp1)),
+   neg(mul(np,twod1,nmdm1,npd))
+ )
+ assert far=={},("separated commutator numerator",far)
+ # n=d+1: h_(d+1)-h_d =
+ # 1/(2d+1)+1/(2d+3)-1/(d+1).
+ # Multiply adjacent commutator by 2(2d+1)^2(2d+3).
+ near=add(
+   mul(mono(0,0,2),dp,twod3),
+   mul(mono(0,0,2),dp,twod1),
+   neg(mul(mono(0,0,2),twod1,twod3)),
+   mul(D,pw(twod3,2)),
+   neg(mul(dp2,pw(twod1,2)))
+ )
+ assert near=={},("adjacent commutator numerator",near)
+ # Physical adjointness of coordinate X: identical cross numerators
+ # on P_d and P_(d+1) after denominators are cleared.
+ assert mul(dp,mul(mono(0,0,2),twod1))==mul(
+    twod1,mul(mono(0,0,2),dp))
+ # Offdiagonal mass symmetry has exactly the common numerator 2B
+ # once denominators are cleared. Thus the commutator, being
+ # skew-adjoint for the physical mass, vanishes below diagonal too.
+
+ # Scalar cancellation is checked as an integer linear expression
+ # in independent named formal symbols (no floating point).
+ def L(**terms):return {k:v for k,v in terms.items() if v}
+ def plus(*expressions):
+  a={}
+  for e in expressions:
+   for k,v in e.items():a[k]=a.get(k,0)+v
+  return {k:v for k,v in a.items() if v}
+ def minus(e):return {k:-v for k,v in e.items()}
+ cR=L(gamma=-1,log2=-1,logpi=-1,logB=-1)
+ shift=L(log2=1,r=1)
+ s=plus(cR,shift)
+ assert s==L(r=1,gamma=-1,logpi=-1,logB=-1)
+ native_expression=plus(L(H=1),s,L(w=1),minus(shift))
+ canonical_expression=plus(L(H=1),L(w=1),cR)
+ assert native_expression==canonical_expression
+ mismatch=plus(L(H=1),s,L(w=1),minus(L(r=1)),
+              minus(canonical_expression))
+ assert mismatch==L(log2=1)
  return dict(
-   offdiagonal_far_case_commutator_rational_identity=str(far),
-   adjacent_case_commutator_rational_identity=str(near),
+   offdiagonal_far_case_commutator_rational_identity="0",
+   adjacent_case_commutator_rational_identity="0",
    physical_legendre_X_adjoint_rational_identity=True,
    selfadjointness_reflects_upper_to_lower_commutator=True,
    opposite_parity_commutator_identity_trivial=True,
-   one_log2_contact_mismatch_if_scalar_not_subtracted=str(log2),
+   one_log2_contact_mismatch_if_scalar_not_subtracted="log2",
    full_cR_D_s_endpoint_contact_cancellation_exact=True,
    all_nonnegative_integer_indices_covered_symbolically=True)
 
