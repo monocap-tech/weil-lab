@@ -1,0 +1,55 @@
+{
+  "milestone": "RC281",
+  "starting_commit": "e0a6cfe6e639a112111804a29fb9ac8e1aabe427",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc278_smaller_positive_reference.json": "edc59d6cec516d597c2c7816bec2a38a2677e18d",
+    "certificates/rpb108_rc280_combined_jump_tail.json": "bb0dd3f6174761037ed0f20f17177ddad5749227",
+    "notes/RPB108_RC280_COMBINED_JUMP_TAIL_20261014.md": "a0700fd140f4ec1e13dee9fe99bdd36e5e3c11f8"
+  },
+  "reference_rank_unchanged": 371,
+  "certified_positive_block_dimension_unchanged": 5,
+  "full_remaining_Schur_dimension_unchanged": 366,
+  "cross_column_budget_certificates": [
+    {
+      "parity": "even",
+      "certified_positive_pivot_degrees": [
+        0,
+        4
+      ],
+      "remaining_auxiliary_coordinates": 140,
+      "first_remaining_degree": 2,
+      "retained_D_floor_used": "5",
+      "chosen_matrix_Young_parameter": "3",
+      "weighted_trial_center_trace_strict_upper": "1/550",
+      "weighted_residual_covariance_trace_over_D_strict_upper": "3/200",
+      "entire_true_cross_Schur_payment_native_mass_strict_upper": "3",
+      "remaining_cross_column_centers_supported_through_degree": 64,
+      "cross_covariance_preserves_full_selected_pivot_matrix": true
+    },
+    {
+      "parity": "odd",
+      "certified_positive_pivot_degrees": [
+        1,
+        3,
+        5
+      ],
+      "remaining_auxiliary_coordinates": 226,
+      "first_remaining_degree": 7,
+      "retained_D_floor_used": "6",
+      "chosen_matrix_Young_parameter": "13",
+      "weighted_trial_center_trace_strict_upper": "1/800",
+      "weighted_residual_covariance_trace_over_D_strict_upper": "41/200",
+      "entire_true_cross_Schur_payment_native_mass_strict_upper": "26",
+      "remaining_cross_column_centers_supported_through_degree": 64,
+      "cross_covariance_preserves_full_selected_pivot_matrix": true
+    }
+  ],
+  "original_full_principal_remaining_response_evaluated": false,
+  "full_Schur_positivity_certified": false,
+  "Stage_I_closed": false,
+  "RH": false,
+  "F4": false,
+  "Lean": false,
+  "next_cursor": "RC282: improve correlated cross-column payments or bound the full remaining principal Schur response; numerical mass bound here is not positivity evidence."
+}
