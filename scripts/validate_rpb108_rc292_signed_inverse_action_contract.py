@@ -131,6 +131,7 @@ def run(reverse=False):
     # Both sums <1 produces a collective Mass-subunit cross payment
     # only on successful *actual* signed inverse action outputs.
     assert len(result)==2
+    assert all(x['Chebyshev_inverse_action_plan']['certified_sufficient_polynomial_degree']>0 for x in result)
     return dict(
         milestone="RC292",
         starting_commit="c14663806869d60a988ecef2214b38bd161dfc7a",
@@ -158,7 +159,6 @@ if __name__=="__main__":
     p.add_argument("--replay",action="store_true")
     args=p.parse_args()
     result=run(args.replay)
-    print("RC292_CANDIDATE_JSON="+json.dumps(result,sort_keys=True),flush=True)
     if args.replay:
         assert result==json.loads(args.output.read_text(encoding="utf-8"))
     else:
