@@ -36,6 +36,43 @@ operator bound. The proof is the separate exact Fraction audit of
 that proposed seed against complete original arithmetic errors
 and omitted infinite modes.
 
+## Certified numerical outcome
+
+All values below are outward-rounded **upper bounds** on the actual
+full-domain D-residual squared; they are not measured residuals.
+
+| Input source | RC293 two-column upper | RC294 paid three-column upper | RC292 strict acceptance |
+| --- | ---: | ---: | ---: |
+| Hard P0 | 0.000228836839 | **0.000188932011** | 1.04753e-9 |
+| Soft P4-tP0 | 0.000091031447 | **0.000089765759** | 5.63541e-12 |
+
+The hard candidate reduces the proved upper envelope by ~17.4%;
+the soft candidate by ~1.4%. Neither residual bound is remotely
+strong enough for RC292's signed true inverse-response acceptance.
+A high *upper* bound cannot establish that a particular seed's
+true residual exceeds the requirement.
+
+The rational three-column seeds produced by the finite least-squares
+proposal are, in Legendre order P0,P2,P4:
+
+    hard: +0.1013646855, -0.0021435209, -0.0037012758
+    soft: -0.0838412245, -0.0002635181, +0.1004501834.
+
+The approximate seed signed-rest projections are paid exactly.
+For hard P0 the only nonzero rest coefficient is P2, with
+squared physical mass ~2.02166e-6 < RC292's ~6.71024e-6 budget.
+For the soft seed the P2 projection squared is
+~3.05544e-8 < RC292's ~3.60992e-8 budget. Both **seed**
+projection requirements pass, but the **residual requirements fail**
+in the available certificates. Therefore neither actual inverse
+signed response nor even cross Schur positivity is certified.
+
+The soft seed's proposed unconstrained 3-column fit exceeded the
+signed-rest projection allowance, so its P2 coefficient was
+constrained and the P0/P4 coefficients refitted. All displayed
+proof bounds concern the resulting exactly rational *constrained*
+seed, not the preliminary floating-point fit.
+
 ## Audit gates
 
 - Immutable RC129, RC279, RC283, RC290, RC292, RC293 blobs are pinned.
