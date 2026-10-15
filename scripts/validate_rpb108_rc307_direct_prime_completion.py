@@ -120,47 +120,72 @@ def run(reverse=False):
  print("RC307: independent mixed signed prime output projected "
        "through 2048",flush=True)
 
- # The two valid native arithmetic models need NOT share centers:
- # RC303 chose interval midpoints while the inherited RC273 native
- # prime projector may choose other rationals within those intervals.
- # Verify both choices are admissible and pay their DIFFERENCE,
- # rather than falsely requiring byte-identical low coefficients.
+ # RC273 intentionally rounds prime translations/coefficient models
+ # to a coarse rational grid (e.g. 16 significant digits). These
+ # choices need not fall in RC43's much narrower interval enclosures.
+ # They are APPROXIMATION CENTERS, not actual prime parameter values.
+ # Pay each discrepancy explicitly using physical Markov+support
+ # translation bounds, rather than falsely asserting interval membership.
  model=proof["prime_controls"]["chosen_prime_model_parameters"]
  assert len(model)==7
- selected_model_not_forced_to_midpoints=True
+ S=F((DEG//2+1)*(DEG+1),1)/(2*B)
+ Markov_squared=F(DEG**4,1)*S/(B*B)
+ def model_parameter_fault(dx_rows):
+  return 2*sum((
+       dc+cmax*sqrt_up(2*dl*S+2*B*dl*dl*Markov_squared)
+       for dl,dc,cmax in dx_rows),F(0))
+ true_discrepancy=[]
+ midpoint_discrepancy=[]
+ model_offsets=[]
  for actual,row in zip(model,prime["active_prime_powers"]):
-  print("RC307 PARAM DEBUG", "chosen",str(actual["chosen_translation"])[:100], "lower",str(row["translation_lower"])[:100],"upper",str(row["translation_upper"])[:100],flush=True)
-  assert F(row["translation_lower"])<=F(actual["chosen_translation"])<=F(
-      row["translation_upper"])
-  assert F(row["coefficient_lower"])<=F(actual["chosen_coefficient"])<=F(
-      row["coefficient_upper"])
+  tr=F(actual["chosen_translation"])
+  cr=F(actual["chosen_coefficient"])
+  tl,th=F(row["translation_lower"]),F(row["translation_upper"])
+  cl,ch=F(row["coefficient_lower"]),F(row["coefficient_upper"])
+  assert 0<tl<=th and 0<cl<=ch and tr>0 and cr>0
+  tm=(tl+th)/2
+  cm=(cl+ch)/2
+  dl=max(abs(tr-tl),abs(tr-th))
+  dc=max(abs(cr-cl),abs(cr-ch))
+  true_discrepancy.append((dl,dc,max(cr,ch)))
+  midpoint_discrepancy.append((abs(tr-tm),abs(cr-cm),
+                               max(cr,cm)))
+  model_offsets.append(dict(
+     native_prime_n=row["n"],
+     chosen_translation_model=str(tr),
+     original_translation_lower=str(tl),
+     original_translation_upper=str(th),
+     model_translation_absolute_error_upper=str(dl),
+     chosen_coefficient_model=str(cr),
+     original_coefficient_lower=str(cl),
+     original_coefficient_upper=str(ch),
+     model_coefficient_absolute_error_upper=str(dc)))
+ true_fault=model_parameter_fault(true_discrepancy)
+ two_model_fault=model_parameter_fault(midpoint_discrepancy)
+ assert true_fault>0 and two_model_fault>0
+ # Independent direct integral for the high project's chosen rational
+ # model at ALL 65 original low output degrees. Its exact source
+ # digest must equal the projector's own internally constructed low.
  segments=high.prime.model_segments(q,model,0)
  assert len(segments)==15
  chosen_low=[]
  for n in range(65):
   if n%2:chosen_low.append(F(0));continue
+  pn=high.orig.legendre(n)
   chosen_low.append(F(2*n+1,2)*sum((
-      high.orig.integral(high.orig.product(poly,high.orig.legendre(n)),l,r)
-      for l,r,poly in segments),F(0)))
+    high.orig.integral(high.orig.product(poly,pn),l,r)
+    for l,r,poly in segments),F(0)))
  chosen_digest=high.native.segment_digest(
-      [(F(0),F(64),chosen_low)])
+   [(F(0),F(64),chosen_low)])
  assert chosen_digest==proof["low_prime_coefficient_digest"]
  model_low_discrepancy=sum((
-      mass(n)*(chosen_low[n]-low[n])**2
-      for n in range(65)),F(0))
- # Both chosen models lie in the same original prime-parameter
- # enclosures. The signed RC306 Markov perturbation budget covers
- # each model's variation relative to the exact native parameters;
- # triangle then bounds their difference by 2*C_prime||q||_2.
- primecap=adaptive["all_degree_sampling_replay_records"][0]
- assert primecap["even_input_maximum_degree"]==10
- prime_budget=F(primecap[
-      "all_seven_signed_prime_translation_L2_error_per_input_L2_upper"])
- cross_model_bound=4*prime_budget*prime_budget*norm2
+   mass(n)*(chosen_low[n]-low[n])**2
+   for n in range(65)),F(0))
+ cross_model_bound=two_model_fault*two_model_fault*norm2
  assert model_low_discrepancy<=cross_model_bound,(
-      "two valid prime interval models differ beyond paid bound")
- # RC273 and RC303 low-tail values refer to their respective
- # admissible models, so do NOT compare them as if identical.
+    "RC273 coarse model vs RC303 midpoint model exceeds paid error")
+ # RC273 and RC303 low output-tail energies are separate rational
+ # approximation models: never equate their Parseval remainders.
  direct64upper=F(lowproof["omitted_prime_L2_energy_upper"])
  assert direct64upper>0 and tail64>0 and tail2048<tail64
  # Full nominal prime physical squared energy bound
@@ -203,6 +228,10 @@ def run(reverse=False):
   selected_high_output_prime_intervals=selected,
   direct_prime_projection_certificate=proof,
   exact_independent_low_65_chosen_prime_model_digest_regression=True,
+  native_coarse_prime_model_parameter_offsets=model_offsets,
+  chosen_coarse_prime_model_L2_parameter_error_per_input_L2_upper=str(true_fault),
+  chosen_coarse_prime_model_D_parameter_error_per_input_L2_upper=str(sqrt_up(true_fault*true_fault/sl)),
+  compared_coarse_and_midpoint_model_L2_error_per_input_L2_upper=str(two_model_fault),
   distinct_admissible_low_prime_parameter_models_paid=True,
   low_prime_model_difference_physical_L2_squared_exact=str(model_low_discrepancy),
   low_prime_model_difference_physical_L2_squared_upper=str(cross_model_bound),
