@@ -1,0 +1,211 @@
+{
+  "Euler_Laplace_identity_universal_rational_formula": true,
+  "F4": false,
+  "Lean": false,
+  "Leibniz_pi_over_four_limit_used_analytically": true,
+  "Poisson_formula": "R=chi*Fourier^-1[log(1+e/abs(xi)) Fourier(chi*q)]",
+  "RH": false,
+  "Stage_I_closed": false,
+  "all_193_native_regular_coefficients_reconstructed": true,
+  "canonical_Poisson_remainder_cancels_at_form_level": true,
+  "exact_Euler_digamma_vs_Laplace_summand_checks": 200,
+  "exact_analytic_symbolic_cancellations": {
+    "arch_minus_canonical_component_generators": {
+      "Kreg": -1,
+      "Rpoisson": -1
+    },
+    "no_leftover_J_endpoint_or_contact_generators": true,
+    "no_uncancelled_supported_Poisson_remainder": true,
+    "quarter_digamma_constant_generators": {
+      "gamma": -1,
+      "log2": -3,
+      "pi_over_2": -1
+    },
+    "renormalized_arch_constant_generators": {
+      "gamma": -1,
+      "log2": -1,
+      "logR": -1,
+      "logpi": -1
+    }
+  },
+  "exact_quarter_harmonic_decomposition_for_all_integer_N": true,
+  "extension_to_supported_completed_canonical_form_conditional_on_core_density": true,
+  "full_canonical_original_Weil_action_on_all_polynomial_inputs_newly_proved": false,
+  "geometric_arch_kernel": "j(r)=exp(-r/2)/(1-exp(-2r))",
+  "independent_full_archimedean_vs_canonical_log_form_identity_on_polynomials": true,
+  "j_integral_antiderivative": "2integral_epsilon^infty j=2atanh(exp(-epsilon/2))+2atan(exp(-epsilon/2))",
+  "milestone": "RC312",
+  "next_cursor": "RC313: separately audit original Weil prime and signed-pole distributional normalization on all supported polynomial inputs; only after source identification may the bounded full native action be transferred to the canonical Weil form. Then prove spectral positivity/314-Schur; boundedness alone does not imply a signed inverse.",
+  "original_Weil_form_positivity_certified": false,
+  "original_arch_minus_canonical_bounded_remainder": "K_arch=-K_reg-R_Poisson",
+  "original_arch_scalar": "c_R=-gamma-log(2*pi*(2B))",
+  "parent_merge_commit": "887c3c4bd26f4628faad75a3ba4bfc3ecf8ad9c8",
+  "pinned_source_git_blobs": {
+    "certificates/rpb108_rc231_original_polynomial_action.json": "e00d0b8544f74efc8dce3d0ea073894d083a5b5d",
+    "certificates/rpb108_rc308_bounded_arch_pole.json": "2461485678ec998ed7449e8a6141a3b71e083f35",
+    "certificates/rpb108_rc311_endpoint_core_identity.json": "f32be168d91a100c96710c484677648a54b3799d",
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9",
+    "notes/RPB108_RC118_CANONICAL_METRIC_RESIDUAL_SOURCES_20261012.md": "71795de30804478d4b01e4b18bb0a322a5f6674b",
+    "notes/RPB108_RC231_DIRECT_ORIGINAL_POLYNOMIAL_ACTIONS_20261014.md": "83173dae9bf6a0072ba65560ce421bdc05618881",
+    "notes/RPB108_RC46_ACTUAL_ARCHIMEDEAN_AND_COMPLETE_LOW_HEAD_20261010.md": "7a1b58255c29f6396622bbbc154afcc371722cab"
+  },
+  "positive_prime_source_distributional_identification_additionally_proved": false,
+  "positive_spectral_lower_bound_established": false,
+  "psi_quarter_constant": "psi(1/4)=-gamma-3log(2)-pi/2",
+  "rank314_Schur_principal_gate_positive": false,
+  "regular_kernel_two_independent_exact_Taylor_recurrences_agree": true,
+  "renormalized_j_constant": "lim_epsilon_to_0(2int_epsilon^infty j+log(epsilon))=log4+pi/2",
+  "signed_Chebyshev_inverse_response_certified": false,
+  "signed_mixed_even_and_odd_sources_checked": true,
+  "signed_pole_distributional_identification_additionally_proved": false,
+  "supported_Poisson_R_operator_norm_squared_rational_upper": "29282/735",
+  "supported_Poisson_analytic_L2_boundedness_by_Cauchy_and_Basel": true,
+  "termwise_positive_Euler_Laplace_series_continuation": true,
+  "uniform_regular_kernel_tail_bound_imported_from_RC46": true,
+  "whole_polynomial_degree_singular_integral_identity_analytic_argument": true,
+  "zero_extension_overlap_to_J_plus_boundary_W_samples": [
+    {
+      "exact_Legendre_harmonic_form": "0",
+      "exact_local_logarithmic_boundary_form": "11/5",
+      "exact_zero_extended_singular_overlap_form": "11/5",
+      "input": "P0",
+      "input_Legendre_coefficients": {
+        "0": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "11/15",
+      "exact_local_logarithmic_boundary_form": "44/45",
+      "exact_zero_extended_singular_overlap_form": "77/45",
+      "input": "P1",
+      "input_Legendre_coefficients": {
+        "1": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "81191/264600",
+      "exact_local_logarithmic_boundary_form": "161227687/1111055400",
+      "exact_zero_extended_singular_overlap_form": "8966941/19840275",
+      "input": "P10",
+      "input_Legendre_coefficients": {
+        "10": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "33/50",
+      "exact_local_logarithmic_boundary_form": "451/750",
+      "exact_zero_extended_singular_overlap_form": "473/375",
+      "input": "P2",
+      "input_Legendre_coefficients": {
+        "2": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "121/210",
+      "exact_local_logarithmic_boundary_form": "3179/7350",
+      "exact_zero_extended_singular_overlap_form": "3707/3675",
+      "input": "P3",
+      "input_Legendre_coefficients": {
+        "3": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "55/108",
+      "exact_local_logarithmic_boundary_form": "19129/56700",
+      "exact_zero_extended_singular_overlap_form": "12001/14175",
+      "input": "P4",
+      "input_Legendre_coefficients": {
+        "4": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "137/300",
+      "exact_local_logarithmic_boundary_form": "19157/69300",
+      "exact_zero_extended_singular_overlap_form": "12701/17325",
+      "input": "P5",
+      "input_Legendre_coefficients": {
+        "5": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "539/1300",
+      "exact_local_logarithmic_boundary_form": "249251/1064700",
+      "exact_zero_extended_singular_overlap_form": "172673/266175",
+      "input": "P6",
+      "input_Legendre_coefficients": {
+        "6": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "1331/3500",
+      "exact_local_logarithmic_boundary_form": "249383/1228500",
+      "exact_zero_extended_singular_overlap_form": "179141/307125",
+      "input": "P7",
+      "input_Legendre_coefficients": {
+        "7": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "8371/23800",
+      "exact_local_logarithmic_boundary_form": "339281/1893528",
+      "exact_zero_extended_singular_overlap_form": "3141493/5917275",
+      "input": "P8",
+      "input_Legendre_coefficients": {
+        "8": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "78419/239400",
+      "exact_local_logarithmic_boundary_form": "32239703/201048120",
+      "exact_zero_extended_singular_overlap_form": "61309987/125655075",
+      "input": "P9",
+      "input_Legendre_coefficients": {
+        "9": "1"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "11/325",
+      "exact_local_logarithmic_boundary_form": "23420407/65212875",
+      "exact_zero_extended_singular_overlap_form": "25627612/65212875",
+      "input": "even_signed_P0_P6",
+      "input_Legendre_coefficients": {
+        "0": "2/5",
+        "6": "-2/7"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "17413/24300",
+      "exact_local_logarithmic_boundary_form": "1362647/2551500",
+      "exact_zero_extended_singular_overlap_form": "797753/637875",
+      "input": "even_signed_P2_P4",
+      "input_Legendre_coefficients": {
+        "2": "1",
+        "4": "-1/3"
+      },
+      "original_singular_form_identity_holds": true
+    },
+    {
+      "exact_Legendre_harmonic_form": "1933/2800",
+      "exact_local_logarithmic_boundary_form": "147239/388080",
+      "exact_zero_extended_singular_overlap_form": "518941/485100",
+      "input": "odd_signed_P3_P5",
+      "input_Legendre_coefficients": {
+        "3": "1",
+        "5": "-1/2"
+      },
+      "original_singular_form_identity_holds": true
+    }
+  ]
+}
