@@ -108,6 +108,7 @@ def run(reverse=False):
             gate=down(source_mass-lam*responsehi)
             assert model<=F(coarse_row["new_complete_model_inverse_correction_upper"]),("no localization improvement",base,first)
             assert gate>=F(coarse_row["actual_native_source_gate_lower"]),("new gate worsened",base,first)
+            assert gate>0,("positive new source gate not established",parity,first)
             models.append(dict(
                 rank=o["new_low_reference_rank"],
                 first_omitted_degree=first,
@@ -151,9 +152,6 @@ if __name__=="__main__":
     ap.add_argument("--replay",action="store_true")
     args=ap.parse_args()
     result=run(args.replay)
-    # CANDIDATE is printed on purpose while constructing the initial
-    # certificate; remove print before the production checkpoint merge.
-    print("RC285_CANDIDATE_JSON="+json.dumps(result,sort_keys=True),flush=True)
     if args.replay:
         assert result==json.loads(args.output.read_text(encoding="utf-8"))
     else:
