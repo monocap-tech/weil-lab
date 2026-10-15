@@ -34,7 +34,7 @@ PINS={
  "certificates/rpb108_rc296_native_p6_action.json":
   "ff03088daa67d681e0371e92c40576d8c3219b4b",
  "certificates/rpb108_rc298_four_column_dual_obstruction.json":
-  "PLACEHOLDER_RC298_PIN",
+  "609eb6c0a411f0f171b4704d952309b5d906f85d",
  "scripts/validate_rpb108_rc237_two_trial_signed_response.py":
   "d13e909c8aa8b91d5b55ec5e5e5179cdaf9325d2",
  "scripts/validate_rpb108_rc240_three_trial_signed_response.py":
