@@ -1,0 +1,97 @@
+name: RPB108 checkpoint verification
+
+on:
+  push:
+    branches:
+      - research/rpb108-route-consolidation
+      - infra/rpb108-actions
+    paths:
+      - "scripts/validate_rpb108_rc*.py"
+      - "certificates/rpb108_rc*.json"
+      - "notes/RPB108_RC*.md"
+      - "scripts/rpb108_actions_verify.py"
+      - ".github/workflows/rpb108-certificates.yml"
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - "scripts/validate_rpb108_rc*.py"
+      - "certificates/rpb108_rc*.json"
+      - "notes/RPB108_RC*.md"
+      - "scripts/rpb108_actions_verify.py"
+      - ".github/workflows/rpb108-certificates.yml"
+  workflow_dispatch:
+    inputs:
+      checkpoint:
+        description: "RC checkpoint number, or latest"
+        required: true
+        default: latest
+        type: string
+      mode:
+        description: "Custody only, or full exact rational replay"
+        required: true
+        default: replay
+        type: choice
+        options:
+          - replay
+          - custody
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rpb108-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  custody:
+    name: Fast custody
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check checkpoint files, syntax, and Git blob hashes
+        env:
+          RC_CHECKPOINT: ${{ github.event.inputs.checkpoint || 'latest' }}
+        run: python scripts/rpb108_actions_verify.py --mode custody --checkpoint "$RC_CHECKPOINT" --report rpb108-custody.json
+      - name: Save custody report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpb108-custody
+          path: rpb108-custody.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  exact-replay:
+    name: Full exact certificate replay
+    needs: custody
+    if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.mode == 'replay' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install inherited validator dependencies
+        run: python -m pip install --disable-pip-version-check numpy==1.26.4
+      - name: Replay stored rational certificate and all inherited blob pins
+        env:
+          RC_CHECKPOINT: ${{ github.event.inputs.checkpoint || 'latest' }}
+        run: python scripts/rpb108_actions_verify.py --mode replay --checkpoint "$RC_CHECKPOINT" --report rpb108-replay.json
+      - name: Save replay report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpb108-replay
+          path: rpb108-replay.json
+          if-no-files-found: warn
+          retention-days: 30
