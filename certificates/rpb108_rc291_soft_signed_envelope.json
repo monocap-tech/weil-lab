@@ -1,4 +1,47 @@
 {
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "center_only_existing_Cauchy_cross_mass_lower": "54442532210319392289/25000000000000000000",
+  "even_retained_rank": 122,
+  "exact_soft_projected_physical_mass_squared": "54811882847866404439108317918390124171723406975677918040911403541359703041986142492981894109271003563106539664994562246123233039141857925419578142150055119493561195167129241664277277902315905149444372566862013894691382475023876779785806600767605673692470217710831462365385152255528159249617317714926457584672279108077982276759681769589368097609433948375580398749365700028632151434547575264511959758213689072014121784539550127148513016671899866776322712975445282645923818629169678924869028217121481360657760616039949266338766419589083233647/87154243358920824037159247143717061483434460145950293270573227031250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  "existing_positive_three_pivot_block_preserved": true,
+  "finite_center_D_energy_upper": "107645915692967/25000000000000000000",
+  "finite_center_physical_mass_upper": "62890664568279/100000000000000000000",
+  "full_reference_D_form_upper": "1282312557523562559865826463490300085305075101398603022584417/250000000000000000000000000000000000000000000000000000000000",
+  "hypothetical_projection_residual_coefficients": {
+    "amplifying": "X_R=+2Z_soft,R; resulting R-projected response=3Z_soft,R",
+    "canceling": "X_R=-Z_soft,R; resulting R-projected response=0",
+    "reversing": "X_R=-2Z_soft,R; resulting R-projected response=-Z_soft,R"
+  },
+  "hypothetical_residuals_are_not_solutions_of_native_equation": true,
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc278_smaller_positive_reference.json": "edc59d6cec516d597c2c7816bec2a38a2677e18d",
+    "certificates/rpb108_rc280_combined_jump_tail.json": "bb0dd3f6174761037ed0f20f17177ddad5749227",
+    "certificates/rpb108_rc288_new_six_mode_covariance.json": "8876f15e8647072daa3bbd9919c4c3cd3354d1b6",
+    "certificates/rpb108_rc289_joint_cross_bottleneck.json": "22f1551e676d23427f7891e652be9450f638ff82",
+    "certificates/rpb108_rc290_soft_source_decomposition.json": "c0d90be6ea686141f088f70eb4cf3821354671be"
+  },
   "milestone": "RC291",
-  "status": "candidate_pending_exact_rational_replay"
+  "next_cursor": "RC292: execute or certify original-reference operator applications to the soft residual (or a dual resolvent trial) and enclose signed projected P4-tP0 response on 120 retained even degrees. Upper energy Gram alone cannot select a sign; maintain all tail/fault covariance payments.",
+  "no_signed_actual_inverse_response_certified": true,
+  "parent": "a967d9095e353a49bf9b998e7fa62f7578c84d51",
+  "positive_even_pivot_degrees": [
+    0,
+    4
+  ],
+  "present_energy_bound_allows_both_signed_reversals": true,
+  "present_energy_bound_allows_exact_center_cancellation": true,
+  "reference_rank": 317,
+  "remaining_even_projection_rank": 120,
+  "remaining_rank317_Schur_principal_positive": false,
+  "residual_allowance_to_reversal_energy_ratio_lower": "104833973178286333993/50000000000000000000",
+  "signed_nonzero_center_projection_count": 31,
+  "soft_mixing_rational": "213274335694970714/259067350465998749",
+  "soft_original_source": "P4-t*P0",
+  "soft_trial_support_degree_upper": 64,
+  "source_soft_correlated_inverse_residual_D_energy_upper": "9261332392379519/50000000000000000000",
+  "worst_energy_required_for_projected_signed_reversal_bound": "2208571351347429/25000000000000000000"
 }
