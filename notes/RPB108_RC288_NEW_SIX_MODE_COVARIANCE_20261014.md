@@ -53,6 +53,37 @@ No new original Weil action is performed. A positive leading block
 is accepted only by exact rational Schur pivots on the **new**
 gate lower matrix.
 
+## New joint positivity certificate
+
+The complete rational 3x3 covariance replay has returned **a new
+positive two-direction even block** (P0,P4) and **one positive odd
+direction** (P1), under the *rank-317 reduced reference*. This does
+not import RC280's former old-reference positive pivots.
+
+| New reference | Native subblock certified strictly positive | Still unresolved among six |
+| --- | --- | --- |
+| Even, 122 channels | **P0,P4 jointly** | Coupling to P2 and rest |
+| Odd, 195 channels | **P1** | P3,P5 and rest |
+| Combined, 317 channels | **3-dimensional positive principal block** | **314-dimensional Schur complement** |
+
+The new full 3x3 **gate lower** has a negative Gershgorin floor in
+both parities (about -0.004653 even and -0.003979 odd), so this
+calculation does **not** certify full three-mode positivity.
+The checker certifies the even 2x2 principal block by exact
+Schur pivots of the **new** gate; odd P1 likewise passes.
+The negative full-gate lower envelopes are **not negative original
+operator witnesses**.
+
+The earlier RC285 P0/P1 positive pivots and RC286 whole-range
+cross-column payments remain independently valid. RC286's P0/P1
+cross-payment inequality **cannot automatically be promoted** to
+the new joint P0,P4 block. Before eliminating three pivots from the
+317-channel auxiliary form, its complete new joint cross-columns
+must be paid.
+
+The improved count is a certified positive principal subspace,
+**not a reduction of the original nonpositive-index upper bound**.
+
 ## Limits
 
 The RC285 P0/P1 individually positive source pivots and RC286
