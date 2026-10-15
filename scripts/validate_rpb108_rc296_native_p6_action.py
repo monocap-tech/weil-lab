@@ -38,9 +38,9 @@ def run_action(d,reg,prime,eps,sl,sh,reverse):
         hi=h-(ll if n==d else 0)-rc[n]+pc[n]+oc[n]-(F(789,125) if n==d else 0)
         vals=[q/(o.H(n)+s)+F(n==d) for q in (lo,hi) for s in (sl,sh)]
         c=down((min(vals)+max(vals))/2)
-        rad=up(max(c-min(vals),max(vals)-c))
-        rnd+=o.mass(n)*(o.H(n)+sh)*rad*rad
-        out.append(dict(degree=n,coefficient=str(c),radius=str(rad)))
+        r=max(c-min(vals),max(vals)-c)
+        rnd+=o.mass(n)*(o.H(n)+sh)*r*r
+        out.append(dict(degree=n,coefficient=str(c),radius=str(up(r))))
     first=65 if d%2 else 66
     comp=dict(finite_rounding=up(rnd),
         endpoint_omitted_output=up(3*B/((o.H(first)+sl)*(64-d)**2)),
