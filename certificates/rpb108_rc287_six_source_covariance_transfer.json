@@ -1,0 +1,210 @@
+{
+  "milestone": "RC287",
+  "starting_commit": "023801851ee560e09878e6af2d50faf615dcb439",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc280_combined_jump_tail.json": "bb0dd3f6174761037ed0f20f17177ddad5749227",
+    "certificates/rpb108_rc278_smaller_positive_reference.json": "edc59d6cec516d597c2c7816bec2a38a2677e18d",
+    "certificates/rpb108_rc283_reduced_reference.json": "1dc4bba375af6bfd7a274fccc07638e0eead56e6",
+    "certificates/rpb108_rc286_full_cross_payment.json": "bbcbe94608550c4fcb9df21dae8b2cf0d81a76c1"
+  },
+  "legacy_six_trial_center_invariance_certified": true,
+  "full_new_317_source_covariance_reconstructed": false,
+  "old_positive_pivots_not_transferred": true,
+  "global_spectral_comparison_insufficient_for_six_mode_joint_positivity": true,
+  "exact_covariance_transfer_obligation": "E_new <= S_old + Delta with 0 <= Delta < floor_old/lambda * I on the old certified positive source subset",
+  "parity_transfer_audits": [
+    {
+      "parity": "even",
+      "old_positive_source_modes": [
+        0,
+        4
+      ],
+      "original_old_gate_native_floor_lower": "11838532231652517/20000000000000000000",
+      "augmentation_coefficient": "9824426812434191126348001381815352879391565433737138359403921/1000000000000000000000000000000000000000000000000000000000000",
+      "strict_added_residual_covariance_identity_budget_native_Loewner": "753131229540867/12500000000000000000",
+      "old_complete_inverse_covariance_psd_pinned": true,
+      "all_trial_polynomials_supported_in_new_reference": true,
+      "old_variational_center_gram_invariant": true,
+      "old_actual_residual_vectors_invariant": true,
+      "new_inverse_covariance_not_invariant": true,
+      "reduced_reference_diagnostics": [
+        {
+          "new_reference_rank": 116,
+          "global_reference_D_lower": "333438742412503/1000000000000000000",
+          "global_reference_D_upper": "512925023009425023947/100000000000000000000",
+          "coarse_inverse_comparison_factor_upper": "1538288620267396381972221/100000000000000000000",
+          "selected_legacy_positive_pivot_diagonals": [
+            {
+              "mode": 0,
+              "old_gate_diagonal_lower": "320992617291350979/50000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "12201192836283389/100000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-3599961913920005687/195312500000000000"
+            },
+            {
+              "mode": 4,
+              "old_gate_diagonal_lower": "638094933295323721/100000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "16241158257991449/100000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-122684837718471369163/5000000000000000000"
+            }
+          ],
+          "all_coarse_new_pivot_diagonal_lowers_negative": true,
+          "entire_new_positive_block_established": false
+        },
+        {
+          "new_reference_rank": 122,
+          "global_reference_D_lower": "5426380967923901/1000000000000000000",
+          "global_reference_D_upper": "512925023009425023947/100000000000000000000",
+          "coarse_inverse_comparison_factor_upper": "47262164787304538447459/50000000000000000000",
+          "selected_legacy_positive_pivot_diagonals": [
+            {
+              "mode": 0,
+              "old_gate_diagonal_lower": "320992617291350979/50000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "12201192836283389/100000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-14068024993227697611/12500000000000000000"
+            },
+            {
+              "mode": 4,
+              "old_gate_diagonal_lower": "638094933295323721/100000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "16241158257991449/100000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-18753179006408799817/12500000000000000000"
+            }
+          ],
+          "all_coarse_new_pivot_diagonal_lowers_negative": true,
+          "entire_new_positive_block_established": false
+        },
+        {
+          "new_reference_rank": 128,
+          "global_reference_D_lower": "2556816238174553/250000000000000000",
+          "global_reference_D_upper": "512925023009425023947/100000000000000000000",
+          "coarse_inverse_comparison_factor_upper": "1253817676039825261333/2500000000000000000",
+          "selected_legacy_positive_pivot_diagonals": [
+            {
+              "mode": 0,
+              "old_gate_diagonal_lower": "320992617291350979/50000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "12201192836283389/100000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-29678028787006115093/50000000000000000000"
+            },
+            {
+              "mode": 4,
+              "old_gate_diagonal_lower": "638094933295323721/100000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "16241158257991449/100000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-39613019893454809943/50000000000000000000"
+            }
+          ],
+          "all_coarse_new_pivot_diagonal_lowers_negative": true,
+          "entire_new_positive_block_established": false
+        }
+      ]
+    },
+    {
+      "parity": "odd",
+      "old_positive_source_modes": [
+        1,
+        3,
+        5
+      ],
+      "original_old_gate_native_floor_lower": "98600777091657/100000000000000000000",
+      "augmentation_coefficient": "10295721752684191126348001381815352879391565433737138359403921/1000000000000000000000000000000000000000000000000000000000000",
+      "strict_added_residual_covariance_identity_budget_native_Loewner": "9576868864579/100000000000000000000",
+      "old_complete_inverse_covariance_psd_pinned": true,
+      "all_trial_polynomials_supported_in_new_reference": true,
+      "old_variational_center_gram_invariant": true,
+      "old_actual_residual_vectors_invariant": true,
+      "new_inverse_covariance_not_invariant": true,
+      "reduced_reference_diagnostics": [
+        {
+          "new_reference_rank": 185,
+          "global_reference_D_lower": "62174112576891/1000000000000000000",
+          "global_reference_D_upper": "397184193638926283437/100000000000000000000",
+          "coarse_inverse_comparison_factor_upper": "79853209233128746820597/1250000000000000000",
+          "selected_legacy_positive_pivot_diagonals": [
+            {
+              "mode": 1,
+              "old_gate_diagonal_lower": "704498903006294959/100000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "1538490123693123/20000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-5058672911815093353719/100000000000000000000"
+            },
+            {
+              "mode": 3,
+              "old_gate_diagonal_lower": "43510643598634537/6250000000000000000",
+              "old_inverse_covariance_diagonal_upper": "3995203774412463/50000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-328415597026142371659/6250000000000000000"
+            },
+            {
+              "mode": 5,
+              "old_gate_diagonal_lower": "537577877019655041/100000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "13834558096484687/100000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-9098545951187391087421/100000000000000000000"
+            }
+          ],
+          "all_coarse_new_pivot_diagonal_lowers_negative": true,
+          "entire_new_positive_block_established": false
+        },
+        {
+          "new_reference_rank": 195,
+          "global_reference_D_lower": "5128787479000777/1000000000000000000",
+          "global_reference_D_upper": "397184193638926283437/100000000000000000000",
+          "coarse_inverse_comparison_factor_upper": "77442123555548110654359/100000000000000000000",
+          "selected_legacy_positive_pivot_diagonals": [
+            {
+              "mode": 1,
+              "old_gate_diagonal_lower": "704498903006294959/100000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "1538490123693123/20000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-12109989132202201193/20000000000000000000"
+            },
+            {
+              "mode": 3,
+              "old_gate_diagonal_lower": "43510643598634537/6250000000000000000",
+              "old_inverse_covariance_diagonal_upper": "3995203774412463/50000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-31465442198951648947/50000000000000000000"
+            },
+            {
+              "mode": 5,
+              "old_gate_diagonal_lower": "537577877019655041/100000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "13834558096484687/100000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-13703254699678092377/12500000000000000000"
+            }
+          ],
+          "all_coarse_new_pivot_diagonal_lowers_negative": true,
+          "entire_new_positive_block_established": false
+        },
+        {
+          "new_reference_rank": 206,
+          "global_reference_D_lower": "10357001457541197/1000000000000000000",
+          "global_reference_D_upper": "397184193638926283437/100000000000000000000",
+          "coarse_inverse_comparison_factor_upper": "1917467112789321559209/5000000000000000000",
+          "selected_legacy_positive_pivot_diagonals": [
+            {
+              "mode": 1,
+              "old_gate_diagonal_lower": "704498903006294959/100000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "1538490123693123/20000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-2958872433820020087/10000000000000000000"
+            },
+            {
+              "mode": 3,
+              "old_gate_diagonal_lower": "43510643598634537/6250000000000000000",
+              "old_inverse_covariance_diagonal_upper": "3995203774412463/50000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-30770420996973042481/100000000000000000000"
+            },
+            {
+              "mode": 5,
+              "old_gate_diagonal_lower": "537577877019655041/100000000000000000000",
+              "old_inverse_covariance_diagonal_upper": "13834558096484687/100000000000000000000",
+              "coarse_new_gate_diagonal_lower": "-53943546233705730281/100000000000000000000"
+            }
+          ],
+          "all_coarse_new_pivot_diagonal_lowers_negative": true,
+          "entire_new_positive_block_established": false
+        }
+      ]
+    }
+  ],
+  "rank317_P0_P1_pivots_from_RC285_preserved": true,
+  "rank317_P0_P1_cross_payment_from_RC286_preserved": true,
+  "rank317_remaining_Schur_dimension": 315,
+  "Stage_I_closed": false,
+  "F4": false,
+  "RH": false,
+  "Lean": false,
+  "next_cursor": "RC288: recalculate degree-localized complete 3x3 residual covariance under rank-317 W, or optimize new mixed trials; old centers and original action inputs may be reused but old inverse covariance cannot."
+}
