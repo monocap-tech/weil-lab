@@ -178,6 +178,7 @@ def run(reverse=False):
             all_global_original_action_faults_paid=True,
             native_Chebyshev_inverse_recurrence_executed=False,
             signed_inverse_response_certified=False))
+    assert all(x["improvement_over_predecessor"] and x["chosen_signed_seed_projection_pass"] and not x["residual_acceptance_pass"] for x in results)
     return dict(
         milestone="RC294",starting_commit="b0857a567f8ef9c6e0a39b867b3feea5fd90c589",
         input_git_blob_pins=PINS,original_action_basis_degrees=[0,2,4],
@@ -195,7 +196,6 @@ if __name__=="__main__":
     ap.add_argument("--replay",action="store_true")
     args=ap.parse_args()
     out=run(args.replay)
-    print("RC294_CANDIDATE_JSON="+json.dumps(out,sort_keys=True),flush=True)
-    if args.replay:assert out==json.loads(args.output.read_text())
+    if args.replay:assert out==json.loads(args.output.read_text(encoding="utf-8"))
     else:args.output.write_text(json.dumps(out,sort_keys=True,indent=2)+"\n")
     print("RC294 VALIDATED: paid three-column original action; no inverse proof",flush=True)
