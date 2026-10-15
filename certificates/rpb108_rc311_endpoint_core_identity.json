@@ -1,0 +1,108 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "W_B_minus_log2_equals_actual_original_endpoint_h": true,
+  "all_degree_native_E_multiplication_by_W_B_identified": true,
+  "all_degree_proof_strategy": "P0 via Legendre Sturm-Liouville and exact boundary term; E commutes with multiplication t using universal rational far/adjacent identities and weighted-adjoint symmetry; Legendre polynomial cyclicity implies E(q)=W_B*q on every finite polynomial, both parities",
+  "complete_canonical_original_Weil_operator_identification_independently_established": false,
+  "independent_W_B_monomial_integral_formula": "integral_{-1}^1 t^(2j)W_B(t)dt =(2H_(2j+2)-H_(j+1))/(2j+1); odd powers vanish",
+  "independent_logarithmic_moment_crosschecks": 169,
+  "milestone": "RC311",
+  "native_matrix_matches_exact_independent_logarithmic_integrals": true,
+  "native_prime_distributional_and_signed_pole_identities_imported": true,
+  "next_cursor": "RC312: independently derive the original RC46 digamma/Plancherel archimedean form decomposition and RC231 canonical Poisson remainder cancellation on the complete supported polynomial core, explicitly including constants and distributional boundary terms; import of those identities remains the last source-identification debt before canonical transfer. Then separately prove a positive spectral lower bound and remaining rank314 Schur positivity for RC292.",
+  "no_missing_log2_endpoint_contact_term_within_inherited_decomposition": true,
+  "original_RC231_Poisson_remainder_cancellation_imported": true,
+  "original_RC46_boundary_multiplier": "W_B(t)=log2+h(t)",
+  "original_RC46_digamma_Plancherel_frequency_to_form_identity_imported": true,
+  "original_Weil_form_positivity_certified": false,
+  "original_cR_and_D_metric_scalar_shift_exactly_cancel": true,
+  "original_endpoint_D_inverse_D_to_D_norm_upper": "4705029290048723655276694941428701363063592102283802371148638873436819356644745613085757476339855787708589889816450234669672639027640557680580234352960075943758553487546/1077300274914314560098005047031662427334607023090110027623543204992179322892311617082351627352118600645422107084244916849339819658289059954790117176480037971879276743773",
+  "original_h_endpoint_D_inverse_Riesz_extension_unique_conditional_on_RC309": true,
+  "original_physical_log_endpoint_h": "h(t)=-1/2 log(1-t^2)",
+  "parent_merge_commit": "55cb95ab5b3673129897870bcfe41b9c3e6ef998",
+  "pinned_source_git_blobs": {
+    "certificates/rpb108_rc121_diagonal_metric_equivalence.json": "089664ca7eb9139fec1ba0f58b4cfbf25902f51a",
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc231_original_polynomial_action.json": "e00d0b8544f74efc8dce3d0ea073894d083a5b5d",
+    "certificates/rpb108_rc309_endpoint_schur.json": "d3f11a563486c7adb9128252092820ad7f1ef189",
+    "certificates/rpb108_rc310_core_parity_contract.json": "a40b6807309f71df128b98f820a45a12e145948a",
+    "notes/RPB108_RC231_DIRECT_ORIGINAL_POLYNOMIAL_ACTIONS_20261014.md": "83173dae9bf6a0072ba65560ce421bdc05618881",
+    "notes/RPB108_RC46_ACTUAL_ARCHIMEDEAN_AND_COMPLETE_LOW_HEAD_20261010.md": "7a1b58255c29f6396622bbbc154afcc371722cab",
+    "scripts/validate_rpb108_rc231_original_polynomial_action.py": "590de78c2725f9462e451490ab52a332999cb98d",
+    "scripts/validate_rpb108_rc309_endpoint_schur.py": "c12ca56b934273603b6a63e657d1460c268ed84a"
+  },
+  "positivity_spectral_lower_bound_established": false,
+  "rank314_Schur_principal_gate_positive": false,
+  "selected_physical_integral_regressions": [
+    {
+      "diagonal_multiplication_W_B": "1",
+      "first_column_multiplication_W_B": "1",
+      "first_column_physical_pairing": "11/5",
+      "output": 0,
+      "physical_diagonal_pairing": "11/5"
+    },
+    {
+      "diagonal_multiplication_W_B": "4/3",
+      "first_column_multiplication_W_B": "0",
+      "first_column_physical_pairing": "0",
+      "output": 1,
+      "physical_diagonal_pairing": "44/45"
+    },
+    {
+      "diagonal_multiplication_W_B": "41/30",
+      "first_column_multiplication_W_B": "5/6",
+      "first_column_physical_pairing": "11/30",
+      "output": 2,
+      "physical_diagonal_pairing": "451/750"
+    },
+    {
+      "diagonal_multiplication_W_B": "289/210",
+      "first_column_multiplication_W_B": "0",
+      "first_column_physical_pairing": "0",
+      "output": 3,
+      "physical_diagonal_pairing": "3179/7350"
+    },
+    {
+      "diagonal_multiplication_W_B": "1739/1260",
+      "first_column_multiplication_W_B": "9/20",
+      "first_column_physical_pairing": "11/100",
+      "output": 4,
+      "physical_diagonal_pairing": "19129/56700"
+    },
+    {
+      "diagonal_multiplication_W_B": "19157/13860",
+      "first_column_multiplication_W_B": "0",
+      "first_column_physical_pairing": "0",
+      "output": 5,
+      "physical_diagonal_pairing": "19157/69300"
+    },
+    {
+      "diagonal_multiplication_W_B": "1696405/1225224",
+      "first_column_multiplication_W_B": "17/72",
+      "first_column_physical_pairing": "11/360",
+      "output": 8,
+      "physical_diagonal_pairing": "339281/1893528"
+    },
+    {
+      "diagonal_multiplication_W_B": "18545643343/13385572200",
+      "first_column_multiplication_W_B": "25/156",
+      "first_column_physical_pairing": "11/780",
+      "output": 12,
+      "physical_diagonal_pairing": "18545643343/152108775000"
+    }
+  ],
+  "signed_Chebyshev_inverse_response_executed": false,
+  "universal_symbolic_identity_certificates": {
+    "adjacent_case_commutator_rational_identity": "0",
+    "all_nonnegative_integer_indices_covered_symbolically": true,
+    "full_cR_D_s_endpoint_contact_cancellation_exact": true,
+    "offdiagonal_far_case_commutator_rational_identity": "0",
+    "one_log2_contact_mismatch_if_scalar_not_subtracted": "log2",
+    "opposite_parity_commutator_identity_trivial": true,
+    "physical_legendre_X_adjoint_rational_identity": true,
+    "selfadjointness_reflects_upper_to_lower_commutator": true
+  }
+}
