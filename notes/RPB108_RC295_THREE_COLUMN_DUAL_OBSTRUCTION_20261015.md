@@ -65,9 +65,56 @@ does not prove the full infinite-dimensional inverse cannot attain
 RC292's test.
 
 The search considers 14 explicit choices of the fourth even output
-degree and keeps the exact-rational strongest normalized ratio. The
-result will be materialized from GitHub Actions generation; the
-provisional certificate does not authorize claims of exclusion.
+degree, selects the exact-rational largest normalized ratio, and
+stores both annihilator vectors and every paid error contribution.
+The final checked certificate requires strict ratios >100 for both
+original sources; these are sufficient obstructions on the stated
+three-column trial-input span.
+
+## Certified universal obstruction — both original sources
+
+RC295's rational candidate search has found explicit annihilators that
+**exclude the RC292 residual acceptance threshold for all seeds** in
+the existing three-column input span, not merely RC293/294's selected
+least-squares seeds. This is a *mathematical obstruction to a restricted
+inverse-approximation family*, not a zero or negative mode of the
+original Weil operator.
+
+| Original source | Four finite output rows | Exact lower for dual ratio versus accepted maximum | Universal three-column acceptance |
+| --- | --- | ---: | --- |
+| Hard `P0` | **0, 2, 4, 6** | **>199.63×** | **Impossible** under pinned estimates |
+| Soft `P4-tP0` | **0, 2, 4, 14** | **>1899.85×** | **Impossible** under pinned estimates |
+
+The ratio is the strict lower for
+`(|q·b_mid|-E_source-E_all_columns)/(Q sqrt(T))`.
+When it exceeds one, an assumed seed with actual D-residual norm
+squared smaller than RC292's T contradicts the exact dual inequality.
+The arbitrary signed `P2` seed coefficient is fully allowed;
+indeed the proof covers **all real** coefficients on P0/P2/P4,
+without needing RC292's additional projection restriction.
+
+The certificate is particularly strong for the soft source:
+the finite-output original action cannot meet RC292's residual
+tolerance in this restricted three-column input space, even when
+the old tested trial coefficients are replaced by the optimal
+unknown real coefficients.
+
+The dual support ends at degree 14, so the original model's
+infinite output tail has exactly zero pairing with the witness.
+All finite original-action uncertainty is nevertheless paid via
+the RC279 global D-fault norms, and the accepted-seed coefficient
+bound accounts for every possible signed combination. This
+obstruction does not depend on an assumed diagonalization of
+the full original Weil operator.
+
+**Operational consequence:** Running a more sophisticated optimizer
+on exactly the same three source-action columns cannot satisfy
+the specific RC292 residual acceptance criterion. The next viable
+route is a genuinely larger source-action span, with paid new
+original operator columns, or an operator-wide response evaluator.
+It does not follow that a three-column seed is useless for every
+weaker method or that the *true* inverse cannot satisfy the signed
+cross-payment objective.
 
 ## Important limitations
 
