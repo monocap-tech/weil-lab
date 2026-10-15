@@ -47,7 +47,7 @@ PINS={
  "certificates/rpb108_rc302_polynomial_action_interface.json":
   "c4d90de842526e9dfa11f1baf439e15ae3939b5b",
  "certificates/rpb108_rc303_direct_polynomial_prime.json":
-  "REPLACE_RC303_CERT_PIN",
+  "cc71c9a961230ecedeb65947afae15ba37f0abbe",
  "scripts/validate_rpb108_rc279_six_mode_gate.py":
   "02ff6e1b70e79ede5691aa55bc98c877939cce23",
  "scripts/validate_rpb108_rc273_projection_original_tail.py":
