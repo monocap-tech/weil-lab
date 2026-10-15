@@ -1,0 +1,60 @@
+name: RPB108 manual certificate replay
+
+on:
+  workflow_dispatch:
+    inputs:
+      checkpoint:
+        description: "RC number or latest on the research branch"
+        required: true
+        default: latest
+        type: string
+      mode:
+        description: "Run exact replay or just custody checks"
+        required: true
+        default: replay
+        type: choice
+        options:
+          - replay
+          - custody
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rpb108-manual-${{ github.event.inputs.checkpoint }}-${{ github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify RC checkpoint on research branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Checkout current RC research head
+        uses: actions/checkout@v4
+        with:
+          ref: research/rpb108-route-consolidation
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install inherited validator dependency
+        if: ${{ github.event.inputs.mode == 'replay' }}
+        run: python -m pip install --disable-pip-version-check numpy==1.26.4
+      - name: Verify selected certificate
+        env:
+          RC_CHECKPOINT: ${{ github.event.inputs.checkpoint }}
+          RC_MODE: ${{ github.event.inputs.mode }}
+        run: |
+          python scripts/rpb108_actions_verify.py \
+            --checkpoint "$RC_CHECKPOINT" \
+            --mode "$RC_MODE" \
+            --report rpb108-manual-report.json
+      - name: Save report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpb108-manual-${{ github.run_id }}
+          path: rpb108-manual-report.json
+          if-no-files-found: warn
+          retention-days: 30
