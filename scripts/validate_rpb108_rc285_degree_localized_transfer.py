@@ -22,7 +22,7 @@ YOUNG=F(1,100)
 def down(v):return F(v.numerator*SCALE//v.denominator,SCALE)
 def up(v):return -down(-v)
 def energy_normalized(n,bound,dl):
-    return up(F(2)*B*bound*bound/(2*n+1)/dl)
+    return F(2)*B*bound*bound/(2*n+1)/dl
 
 def run(reverse=False):
     data={}
@@ -60,7 +60,7 @@ def run(reverse=False):
         lo_terms=[]
         for c in centers:
             n=c["degree"];value=F(c["residual_center"])
-            lo_terms.append(up(F(2)*B*dhi[n]*value*value/(2*n+1)))
+            lo_terms.append(F(2)*B*dhi[n]*value*value/(2*n+1))
         numerator={}
         for v in r274["residual_physical_numerator_intervals_65_through_2048"]:
             n=v["degree"]
@@ -78,9 +78,9 @@ def run(reverse=False):
         for n in expected:
             w=F(1) if n<old_first else down(1-lam/dlo[n])
             assert w>=mu_old
-            old_terms.append(up(t*t*energy_normalized(n,numerator[n],dlo[n])/w))
+            old_terms.append(t*t*energy_normalized(n,numerator[n],dlo[n])/w)
         old_tailweight=down(1-lam/dlo[firsttail])
-        old_model=up(sum(old_terms,F(0))+up(t*t*tail/old_tailweight))
+        old_model=sum(old_terms,F(0))+t*t*tail/old_tailweight
         assert old_model<=F(r278["complete_model_weighted_inverse_energy_upper"]),("old model mismatch",base)
         source_mass=F(r278["native_auxiliary_source_mass"])
         centerhi=F(r278["variational_inverse_center_upper"])
