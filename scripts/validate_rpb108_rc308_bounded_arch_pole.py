@@ -184,7 +184,7 @@ def run(reverse=False):
  # source polynomial q (not merely preassembled input columns).
  q=weighted_legendre_poly(MIX)
  src=regular_source_from_mixed_poly(q,reg)
- parts=[native.trial.regular_poly(d,reg) for d in MIX]
+ parts=[native.regular_poly(d,reg) for d in MIX]
  check=[sum((MIX[d]*parts[j][n] if n<len(parts[j])
             else F(0) for j,d in enumerate(MIX)),F(0))
        for n in range(len(src))]
