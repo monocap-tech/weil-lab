@@ -1,0 +1,146 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "all_RH_and_Stage_I_targets_open": true,
+  "complete_source_beyond_degree_2048_tails_paid": true,
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc279_six_mode_gate.json": "bd729c0f5a41debac61a0f3c37276bb94e7834e5",
+    "certificates/rpb108_rc283_reduced_reference.json": "1dc4bba375af6bfd7a274fccc07638e0eead56e6",
+    "certificates/rpb108_rc290_soft_source_decomposition.json": "c0d90be6ea686141f088f70eb4cf3821354671be",
+    "certificates/rpb108_rc292_signed_inverse_action_contract.json": "a4e19528ab5b12d9651a29dbeb478d7844e05470",
+    "certificates/rpb108_rc293_native_seed_action.json": "a941584436ba113e9f2f48039130b8bc02136449"
+  },
+  "milestone": "RC294",
+  "native_action_arbitrary_recurrence_vectors_certified": false,
+  "native_action_linear_span_certified": true,
+  "next_cursor": "RC295: use exact residual Gram for the three-column Galerkin space and assess whether additional original-action columns can reduce the native residual to RC292 strict acceptance before an operator-wide Chebyshev recurrence.",
+  "original_action_basis_degrees": [
+    0,
+    2,
+    4
+  ],
+  "starting_commit": "b0857a567f8ef9c6e0a39b867b3feea5fd90c589",
+  "three_column_seed_certificates": [
+    {
+      "RC292_signed_seed_projection_cap": "647668376164996872500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/96519362192875841230640090770438950222832828331045229915443143344551359224313612159650202713782302857430290207374430174241",
+      "all_global_original_action_faults_paid": true,
+      "all_original_action_infinite_output_tails_paid": true,
+      "chosen_paid_seed_exact_certificate": {
+        "actual_native_D_residual_norm_squared_upper": "295206267169689/1562500000000000000",
+        "combined_action_fault_D_norm_upper": "653097155403/100000000000000000000",
+        "combined_action_tail_D_norm_upper": "71850128997291903/100000000000000000000",
+        "exact_rational_seed": {
+          "P0": "202729371/2000000000",
+          "P2": "-21435209/10000000000",
+          "P4": "-18506379/5000000000"
+        },
+        "model_finite_D_residual_norm_squared_upper": "16969611478394679/100000000000000000000",
+        "s_interval_rounding_D_norm_squared_upper": "3/100000000000000000000",
+        "signed_retained_rest_projection_physical_mass_squared": "10108300067221/5000000000000000000"
+      },
+      "chosen_signed_seed_projection_pass": true,
+      "exact_original_action_columns_reused": true,
+      "floating_fit_only_as_seed_proposal": true,
+      "improvement_over_predecessor": true,
+      "native_Chebyshev_inverse_recurrence_executed": false,
+      "original_action_basis_degrees": [
+        0,
+        2,
+        4
+      ],
+      "predecessor_two_column_actual_D_residual_squared_upper": "22883683882693921/100000000000000000000",
+      "proposed_three_column_seed_exact_certificate": {
+        "actual_native_D_residual_norm_squared_upper": "295206267169689/1562500000000000000",
+        "combined_action_fault_D_norm_upper": "653097155403/100000000000000000000",
+        "combined_action_tail_D_norm_upper": "71850128997291903/100000000000000000000",
+        "exact_rational_seed": {
+          "P0": "202729371/2000000000",
+          "P2": "-21435209/10000000000",
+          "P4": "-18506379/5000000000"
+        },
+        "model_finite_D_residual_norm_squared_upper": "16969611478394679/100000000000000000000",
+        "s_interval_rounding_D_norm_squared_upper": "3/100000000000000000000",
+        "signed_retained_rest_projection_physical_mass_squared": "10108300067221/5000000000000000000"
+      },
+      "recomputed_predecessor_exact_certificate": {
+        "actual_native_D_residual_norm_squared_upper": "22883683882693921/100000000000000000000",
+        "combined_action_fault_D_norm_upper": "323404387031/50000000000000000000",
+        "combined_action_tail_D_norm_upper": "17628517838596697/25000000000000000000",
+        "exact_rational_seed": {
+          "P0": "5067499/50000000",
+          "P2": "0",
+          "P4": "-193297/50000000"
+        },
+        "model_finite_D_residual_norm_squared_upper": "20800004522819179/100000000000000000000",
+        "s_interval_rounding_D_norm_squared_upper": "1/50000000000000000000",
+        "signed_retained_rest_projection_physical_mass_squared": "0"
+      },
+      "residual_acceptance_pass": false,
+      "residual_acceptance_target_strict": "427637571489473924837155472654847051553654912042789498326743900743344444291576432374784551627807386404615560605353412191337675748905681406797926744786023335760748849595397903938952352147540905833721461518273996313827500000000000000000000000000000000/408235083456755145728734153717849882063674303990784700699451734686504323827342574691872985512354724958130688832286706573325260678293163076415065141641643574856862648931439052824304223958418769200346514497701861008144673217187155306300402577135289928400911537",
+      "signed_inverse_response_certified": false,
+      "source": "hard_P0"
+    },
+    {
+      "RC292_signed_seed_projection_cap": "902661700220400559733192499186590000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/25005015431976435102800705845457979939282207313442179682733414224956938152329592435908108594090572420390851283657084674344089167134158024509",
+      "all_global_original_action_faults_paid": true,
+      "all_original_action_infinite_output_tails_paid": true,
+      "chosen_paid_seed_exact_certificate": {
+        "actual_native_D_residual_norm_squared_upper": "4488287947017387/50000000000000000000",
+        "combined_action_fault_D_norm_upper": "105051816381/12500000000000000000",
+        "combined_action_tail_D_norm_upper": "123686666896752251/100000000000000000000",
+        "exact_rational_seed": {
+          "P0": "-167682449/2000000000",
+          "P2": "-2635181/10000000000",
+          "P4": "502250917/5000000000"
+        },
+        "model_finite_D_residual_norm_squared_upper": "6785812135749823/100000000000000000000",
+        "s_interval_rounding_D_norm_squared_upper": "3/100000000000000000000",
+        "signed_retained_rest_projection_physical_mass_squared": "611087743443/20000000000000000000"
+      },
+      "chosen_signed_seed_projection_pass": true,
+      "exact_original_action_columns_reused": true,
+      "floating_fit_only_as_seed_proposal": true,
+      "improvement_over_predecessor": true,
+      "native_Chebyshev_inverse_recurrence_executed": false,
+      "original_action_basis_degrees": [
+        0,
+        2,
+        4
+      ],
+      "predecessor_two_column_actual_D_residual_squared_upper": "9103144704394177/100000000000000000000",
+      "proposed_three_column_seed_exact_certificate": {
+        "actual_native_D_residual_norm_squared_upper": "4488287947017387/50000000000000000000",
+        "combined_action_fault_D_norm_upper": "105051816381/12500000000000000000",
+        "combined_action_tail_D_norm_upper": "123686666896752251/100000000000000000000",
+        "exact_rational_seed": {
+          "P0": "-167682449/2000000000",
+          "P2": "-2635181/10000000000",
+          "P4": "502250917/5000000000"
+        },
+        "model_finite_D_residual_norm_squared_upper": "6785812135749823/100000000000000000000",
+        "s_interval_rounding_D_norm_squared_upper": "3/100000000000000000000",
+        "signed_retained_rest_projection_physical_mass_squared": "611087743443/20000000000000000000"
+      },
+      "recomputed_predecessor_exact_certificate": {
+        "actual_native_D_residual_norm_squared_upper": "9103144704394177/100000000000000000000",
+        "combined_action_fault_D_norm_upper": "419768655379/50000000000000000000",
+        "combined_action_tail_D_norm_upper": "61748851812157567/50000000000000000000",
+        "exact_rational_seed": {
+          "P0": "-8384303/100000000",
+          "P2": "0",
+          "P4": "5021497/50000000"
+        },
+        "model_finite_D_residual_norm_squared_upper": "6899054254844759/100000000000000000000",
+        "s_interval_rounding_D_norm_squared_upper": "1/50000000000000000000",
+        "signed_retained_rest_projection_physical_mass_squared": "0"
+      },
+      "residual_acceptance_pass": false,
+      "residual_acceptance_target_strict": "21976982056059026801642866800490657097991905498346462975423674770277438604432762894103661136406449751444267710737248176936004415969246242955986431024418172125223657699549233438347454717714150421668389517398446984435237703948680710000000000000000000000000000000000/3899804929209299965456734430926957246681015560282666106698623842945580177351635756980528283162598883998784641574170072866097824425121329302724083454808712030743488780026903909243155118766746271013375046172375541574288699663135096166282399103000958364916700600310108353886463",
+      "signed_inverse_response_certified": false,
+      "source": "soft_P4_minus_tP0"
+    }
+  ]
+}
