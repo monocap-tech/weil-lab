@@ -1,0 +1,37 @@
+name: RC310 even/odd canonical core audit generator
+on:
+  push:
+    branches:
+      - research/rpb108-rc310-core-parity-contract
+    paths:
+      - "scripts/validate_rpb108_rc310_core_parity_contract.py"
+      - ".github/workflows/rc310-core-build.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install inherited exact validator dependencies
+        run: python -m pip install --disable-pip-version-check numpy==1.26.4
+      - name: Generate and reverse replay exact native two-parity source contract
+        run: |
+          python scripts/validate_rpb108_rc310_core_parity_contract.py --output certificates/rpb108_rc310_core_parity_contract.json
+          python scripts/validate_rpb108_rc310_core_parity_contract.py --output certificates/rpb108_rc310_core_parity_contract.json --replay
+      - name: Commit verified exact certificate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc310_core_parity_contract.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC310: freeze verified native even/odd dense-core action contract"
+            git pull --rebase origin research/rpb108-rc310-core-parity-contract
+            git push origin HEAD:research/rpb108-rc310-core-parity-contract
+          fi
