@@ -89,7 +89,7 @@ def run(reverse=False):
     # Cross-check against RC290's *exact* projected center Gram.
     center_exact=F(rc290["orthogonalized_center_projection_Gram"][1][1])
     assert physical>=center_exact
-    assert physical-center_exact<F(100,S)
+    assert physical-center_exact<F(100,SCALE)
     assert Dcenter>=sum(terms,F(0))
     # S_soft was not recalculated: exact congruence of the old
     # certified NEW-rank-317 2x2 full inverse-residual covariance.
