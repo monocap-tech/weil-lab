@@ -1,0 +1,36 @@
+name: RC304 P10 high and mixed polynomial exact build
+on:
+  push:
+    branches:
+      - research/rpb108-rc304-p10-high-mixed
+    paths:
+      - "scripts/validate_rpb108_rc304_p10_high_mixed.py"
+      - ".github/workflows/rc304-p10-build.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install inherited validator dependencies
+        run: python -m pip install --disable-pip-version-check numpy==1.26.4
+      - name: Generate and replay P10 high-output and mixed polynomial certificate
+        run: |
+          python scripts/validate_rpb108_rc304_p10_high_mixed.py --output certificates/rpb108_rc304_p10_high_mixed.json
+          python scripts/validate_rpb108_rc304_p10_high_mixed.py --output certificates/rpb108_rc304_p10_high_mixed.json --replay
+      - name: Commit and push verified certificate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc304_p10_high_mixed.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC304: freeze complete P10 and mixed polynomial D-action certificate"
+            git push origin HEAD:research/rpb108-rc304-p10-high-mixed
+          fi
