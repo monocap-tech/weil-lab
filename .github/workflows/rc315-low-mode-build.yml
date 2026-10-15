@@ -30,5 +30,7 @@ jobs:
           git add certificates/rpb108_rc315_low_mode_sign.json
           if ! git diff --cached --quiet; then
             git commit -m "RC315: freeze original signed low-sector rational certificate"
+            git fetch origin research/rpb108-rc315-low-mode-sign
+            git rebase origin/research/rpb108-rc315-low-mode-sign
             git push origin HEAD:research/rpb108-rc315-low-mode-sign
           fi
