@@ -122,7 +122,7 @@ $$
 }
 $$
 
-The validator checks this strict inequality in rational arithmetic. It is a genuinely **positive lower** Schur certificate for this **single** low vector, unlike RC317's upper Schur contraction. The trial $Y=0$ in RC314's exact residual formula already suffices once the *original full native source tail* is paid sharply. The nonzero RC317 trial remains separately valid but is not needed for this lower-bound proof.
+The validator checks this strict inequality in rational arithmetic, with **certified normalized scalar margin at least 0.0009150876542712128** (rounded downward) and a rigorously upper-bounded full high-response squared norm of **0.00005249300408810548** (rounded upward). It is a genuinely **positive lower** Schur certificate for this **single** low vector, unlike RC317's upper Schur contraction. The trial $Y=0$ in RC314's exact residual formula already suffices once the *original full native source tail* is paid sharply. The nonzero RC317 trial remains separately valid but is not needed for this lower-bound proof.
 
 **Do not infer $S>0$ from $\langle v_0,Sv_0\rangle>0$**: the untested 121 remaining even low coordinates, 195 odd coordinates, and their cross-covariances may still obstruct positivity.
 
