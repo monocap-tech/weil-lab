@@ -115,8 +115,9 @@ theorem rationalPolynomial_finite_sum_complex_differentiable
       (∑ i : ι, c i * (P i).eval₂ (Rat.castHom ℝ) (x / B))) := by
   have hs : Differentiable ℝ (fun x : ℝ =>
       ∑ i : ι, c i * (P i).eval₂ (Rat.castHom ℝ) (x / B)) :=
-    Differentiable.fun_sum (fun i _ => differentiable_const.mul
-      (rationalPolynomial_normalized_differentiable (P i) B))
+    Differentiable.fun_sum (fun i _ =>
+      (differentiable_const (c i)).mul
+        (rationalPolynomial_normalized_differentiable (P i) B))
   simpa only [Function.comp_def, Complex.ofRealCLM_apply] using
     Complex.ofRealCLM.differentiable.comp hs
 
