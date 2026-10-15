@@ -146,7 +146,7 @@ def regular_diagonal(n,coef,err,reverse=False):
  return IV(val-2*R*err,val+2*R*err)
 
 def pin_sha(raw):
- return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\\0"+raw).hexdigest()
+ return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
 
 def run(reverse=False):
  source={}
