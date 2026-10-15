@@ -79,8 +79,23 @@ acceptance thresholds are:
 The two finite center residual D² estimates are approximately
 `0.000208000045` and `0.000068990543`; the combined tail,
 global action defects, and s-window uncertainty are added **on top**.
-Every displayed residual result is a **certified upper**, not a
-measured exact norm or a certified positive lower bound.
+The table gives **certified upper bounds**, not measured exact norms.
+Crucially, RC293 also establishes rigorous **positive lower bounds** on
+the residual squared norm for these two particular rational seeds,
+using the finite modeled energy from below and subtracting every full
+original-output tail, arithmetic fault and source s-window uncertainty
+in the norm via the reverse triangle inequality:
+
+
+| Candidate seed | Actual native D-residual squared lower | Rigorous ratio above RC292 threshold |
+| --- | ---: | ---: |
+| Hard P0 | **0.000188157717** | **>179,000×** |
+| Soft P4−tP0 | **0.000050000017** | **>8.87 million×** |
+
+Therefore the **two explicit fixed seeds do genuinely fail** RC292's
+residual requirement, rather than merely having inconclusive upper
+envelopes. This does not exclude other two-source coefficients, higher
+polynomial trials, or a successful signed inverse response.
 
 The signed *seed* projection onto the other 120 retained even directions
 is exactly zero for both trials, but the full native D-residual upper
