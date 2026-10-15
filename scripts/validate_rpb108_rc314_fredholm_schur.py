@@ -138,7 +138,7 @@ def standalone_bounds(sl,arch,prime):
   parity="even" if k%2==0 else "odd"
   lam=even_lambda if parity=="even" else odd_lambda
   if parity not in found and Hlo+sl>lam:
-   rank=(k+1)//2 if parity=="odd" else k//2
+   rank=k//2  # count retained matching-parity degrees strictly below k
    assert Hlo+sl>lam and Hhi>=Hlo
    found[parity]=dict(
     first_strict_high_degree=k,low_parity_dimension=rank,
@@ -151,6 +151,8 @@ def standalone_bounds(sl,arch,prime):
  assert len(found)==2
  assert found["even"]["first_strict_high_degree"]%2==0
  assert found["odd"]["first_strict_high_degree"]%2==1
+ assert found["even"]["low_parity_dimension"]==found["even"]["first_strict_high_degree"]//2
+ assert found["odd"]["low_parity_dimension"]==found["odd"]["first_strict_high_degree"]//2
  return found,dict(
   seven_prime_nominal_physical_L2_upper=str(Cp),
   regular_convolution_physical_L2_upper=str(Cr),
