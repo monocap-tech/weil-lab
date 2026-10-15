@@ -48,7 +48,7 @@ PINS={
  "certificates/rpb108_rc307_direct_prime_completion.json":
   "10eff4ea9bf4199cff580a92a379e6d04ae87eb1",
  "scripts/validate_rpb108_rc237_two_trial_signed_response.py":
-  "d13e909c8aa8b91d5b55ec5e5f5179cdaf9325d2",
+  "d13e909c8aa8b91d5b55ec5e5e5179cdaf9325d2",
 }
 
 def ceiling(x):
