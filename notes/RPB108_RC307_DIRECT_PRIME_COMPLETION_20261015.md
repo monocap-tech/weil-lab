@@ -43,13 +43,26 @@ subtraction, without declaring the original infinite source tail
 zero. The D-inverse energy tail is paid by the harmonic weight
 `1/(H_2050+s_lower)`.
 
-An independent 65-coefficient reconstruction at the **high
-projector's chosen admissible rational parameter values** must match
-RC273's low digest. RC303 used midpoint parameters instead, so the
-models need not agree coefficient by coefficient. RC307 pays the
-exact low-mode physical L2 discrepancy using twice RC306's certified
-signed-prime parameter uncertainty. This prevents falsely claiming
-that the mixed high model is a replay of the old column centers.
+An independent 65-coefficient reconstruction at the high
+projector's **chosen coarse rational approximation parameters** must
+match RC273's low digest. RC303 used the midpoints of the very tight
+RC43 intervals instead. Critically, RC273's coarse approximation
+parameters (e.g. 16 decimal digits of the log-2 translation) can
+lie **outside** those tight RC43 intervals. They are not therefore
+mistakenly accepted as another admissible physical parameter value.
+
+RC307 records exact deviations between each coarse approximation
+and the native RC43 intervals. Using the same physical sup-norm,
+Markov, translation-overlap and support-strip method as RC306,
+it bounds the full parameter error of the chosen coarse model
+from any true value in each tight interval. A separate bound on
+the distance between the two rational models pays their
+independently evaluated 65-mode L2 discrepancy. No error budget
+based only on the tight RC43 interval widths is used to cover the
+much coarser RC273 rational selection.
+
+This prevents falsely claiming that the mixed high model is
+an exact replay of the old column centers.
 
 ## 2. Dimension-free nominal prime action bound
 
