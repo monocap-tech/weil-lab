@@ -88,7 +88,7 @@ def run(reverse=False):
     # mass-subunit estimate of the present variance-sum type. This is
     # not a lower bound on the actual cross Schur operator.
     # Recover source coefficient from the parent native response.
-    lam_aug=F(section["variance_only_cost_strict_lower"])
+    lam_aug=F(section["variance_only_method_cost_strict_lower"])
     assert lam_aug>120
     return dict(
       milestone="RC290",
