@@ -137,6 +137,21 @@ def run(reverse=False):
         gram=[[math.fsum(v[j] for v in rows[i]) for j in range(3)] for i in range(3)]
         rhsvec=[math.fsum(q) for q in rhs]
         proposal=solve3(gram,rhsvec)
+        signed_cap=F(targets[ix]["required_approximate_signed_projection_mass_squared_strict"])
+        m2=2*B/F(5)
+        # Enforce the *actual* RC292 approximate signed-rest projection
+        # cap before residual evaluation; y2 is the only rest coordinate.
+        if m2*proposal[1]**2>=signed_cap:
+            clipped=math.copysign(0.92*math.sqrt(float(signed_cap/m2)),float(proposal[1]))
+            y2=F(f"{clipped:.10f}")
+            rhs0=float(rhsvec[0])-float(gram[0][1])*float(y2)
+            rhs4=float(rhsvec[2])-float(gram[2][1])*float(y2)
+            det=gram[0][0]*gram[2][2]-gram[0][2]*gram[2][0]
+            assert det>0
+            y0=(rhs0*gram[2][2]-rhs4*gram[0][2])/det
+            y4=(gram[0][0]*rhs4-gram[2][0]*rhs0)/det
+            proposal=[F(f"{y0:.10f}"),y2,F(f"{y4:.10f}")]
+        assert m2*proposal[1]**2<signed_cap
         proposed=certified_residual(proposal,source,profiles,sl,sh,H,lam,reverse)
         lower=F(targets[ix]["required_total_approximation_residual_D_norm_squared_strict"])
         baseline2=F(baseline["actual_native_D_residual_norm_squared_upper"])
@@ -156,6 +171,8 @@ def run(reverse=False):
             improvement_over_predecessor= c2<F(old["actual_native_D_residual_norm_squared_upper"]),
             residual_acceptance_target_strict=str(lower),
             residual_acceptance_pass=c2<lower,
+            RC292_signed_seed_projection_cap=str(signed_cap),
+            chosen_signed_seed_projection_pass=(F(chosen["signed_retained_rest_projection_physical_mass_squared"])<signed_cap),
             exact_original_action_columns_reused=True,
             all_original_action_infinite_output_tails_paid=True,
             all_global_original_action_faults_paid=True,
