@@ -32,5 +32,6 @@ jobs:
           git add certificates/rpb108_rc304_p10_high_mixed.json
           if ! git diff --cached --quiet; then
             git commit -m "RC304: freeze complete P10 and mixed polynomial D-action certificate"
+            git pull --rebase origin research/rpb108-rc304-p10-high-mixed
             git push origin HEAD:research/rpb108-rc304-p10-high-mixed
           fi
