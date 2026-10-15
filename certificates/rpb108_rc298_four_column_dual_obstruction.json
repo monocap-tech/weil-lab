@@ -1,0 +1,82 @@
+{
+  "actual_negative_Weil_direction_proved": false,
+  "all_seed_projection_caps_ignored_for_stronger_no_go": true,
+  "certified_original_input_basis": [
+    0,
+    2,
+    4,
+    6
+  ],
+  "complete_original_arbitrary_input_operator_evaluation": false,
+  "F4": false,
+  "finite_dual_witnesses": [
+    {
+      "certified_all_four_column_RC292_residual_accepted_seeds_excluded": true,
+      "every_original_column_global_D_fault_paid": true,
+      "finite_dual_row_degrees": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "infinite_output_tail_dual_pairing_zero_by_support": true,
+      "lower_dual_obstruction_ratio_strictly_greater_than": "100",
+      "nominal_nonannihilation_defect_paid_exactly": true,
+      "physical_rank317_augmentation_interval_paid": true,
+      "rational_dual_coefficients": [
+        "-0.019851856035",
+        "-0.032795050897",
+        "-0.049150869785",
+        "-0.067327811278",
+        "1"
+      ],
+      "source": "hard_P0",
+      "source_RHS_s_interval_paid": true
+    },
+    {
+      "certified_all_four_column_RC292_residual_accepted_seeds_excluded": true,
+      "every_original_column_global_D_fault_paid": true,
+      "finite_dual_row_degrees": [
+        0,
+        2,
+        4,
+        6,
+        14
+      ],
+      "infinite_output_tail_dual_pairing_zero_by_support": true,
+      "lower_dual_obstruction_ratio_strictly_greater_than": "1000",
+      "nominal_nonannihilation_defect_paid_exactly": true,
+      "physical_rank317_augmentation_interval_paid": true,
+      "rational_dual_coefficients": [
+        "0.009304431182",
+        "0.003073478179",
+        "-0.023149401078",
+        "-0.061391152055",
+        "1"
+      ],
+      "source": "soft_P4_minus_tP0",
+      "source_RHS_s_interval_paid": true
+    }
+  ],
+  "four_column_universal_RC292_acceptance_exclusion_for_both": true,
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc279_six_mode_gate.json": "bd729c0f5a41debac61a0f3c37276bb94e7834e5",
+    "certificates/rpb108_rc283_reduced_reference.json": "1dc4bba375af6bfd7a274fccc07638e0eead56e6",
+    "certificates/rpb108_rc290_soft_source_decomposition.json": "c0d90be6ea686141f088f70eb4cf3821354671be",
+    "certificates/rpb108_rc292_signed_inverse_action_contract.json": "a4e19528ab5b12d9651a29dbeb478d7844e05470",
+    "certificates/rpb108_rc295_three_column_dual_obstruction.json": "41994217d0d59553180cd82f60993f8f3a3e07d0",
+    "certificates/rpb108_rc297_native_p6_high_projection.json": "228a2cd9cb8f92324cce7f686f2539b8ddf8f412"
+  },
+  "Lean": false,
+  "milestone": "RC298",
+  "native_full_Chebyshev_inverse_executed": false,
+  "next_cursor": "RC299: enlarge native source-action span beyond P6, or build a certified operator-wide recurrence action. Do not optimize the already excluded four-column family.",
+  "reference_rank": 317,
+  "remaining_314_principal_Schur_positive": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "starting_commit": "57c81e17b994c5f349c64836d862fe79f1a96013",
+  "strict_RC292_residual_tolerance_used_without_relaxation": true
+}
