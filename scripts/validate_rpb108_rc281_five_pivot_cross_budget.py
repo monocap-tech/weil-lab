@@ -77,7 +77,7 @@ def certificate(reverse=False):
     data = {}
     for path, sha in sorted(PINS.items(), reverse=reverse):
         raw = (ROOT / path).read_bytes()
-        got = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\\0" + raw).hexdigest()
+        got = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
         assert got == sha, ("inherited immutable blob mismatch", path)
         if path.endswith(".json"):
             data[path] = json.loads(raw)
@@ -190,6 +190,6 @@ if __name__ == "__main__":
         assert outcome == json.loads(args.output.read_text(encoding="utf-8"))
     else:
         args.output.write_text(json.dumps(outcome, sort_keys=True, indent=2)
-                               + "\\n", encoding="utf-8")
+                               + "\n", encoding="utf-8")
     print("RC281 VALIDATED: full five-pivot cross columns paid in remaining "
           "Mass; remaining principal Schur gate OPEN", flush=True)
