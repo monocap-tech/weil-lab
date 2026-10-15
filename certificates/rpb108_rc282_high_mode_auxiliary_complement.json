@@ -1,0 +1,133 @@
+{
+  "milestone": "RC282",
+  "starting_commit": "558a136277e0ddd4a1d12f6bca58228f42ee43c4",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc278_smaller_positive_reference.json": "edc59d6cec516d597c2c7816bec2a38a2677e18d",
+    "certificates/rpb108_rc280_combined_jump_tail.json": "bb0dd3f6174761037ed0f20f17177ddad5749227",
+    "certificates/rpb108_rc281_five_pivot_cross_budget.json": "535b06a458ba9c9f491e3dd1a5bdb304d632cba6",
+    "notes/RPB108_RC281_FIVE_PIVOT_CROSS_BUDGET_20261014.md": "807bd052198ccdfbe4b0933bbb8e755ce6857c0f"
+  },
+  "reference_rank_unchanged": 371,
+  "threshold_adapted_auxiliary_complement_certificates": [
+    {
+      "parity": "even",
+      "reference_rank": 142,
+      "threshold_rows": [
+        {
+          "requested_native_mass_floor": "0",
+          "first_protected_Legendre_degree": 232,
+          "protected_positive_coordinates": 26,
+          "unresolved_low_coordinates": 116,
+          "certified_native_mass_floor_lower": "333438742412503/1000000000000000000"
+        },
+        {
+          "requested_native_mass_floor": "1/1000",
+          "first_protected_Legendre_degree": 234,
+          "protected_positive_coordinates": 25,
+          "unresolved_low_coordinates": 117,
+          "certified_native_mass_floor_lower": "601970463927539/500000000000000000"
+        },
+        {
+          "requested_native_mass_floor": "1/500",
+          "first_protected_Legendre_degree": 236,
+          "protected_positive_coordinates": 24,
+          "unresolved_low_coordinates": 118,
+          "certified_native_mass_floor_lower": "1032777371183243/500000000000000000"
+        },
+        {
+          "requested_native_mass_floor": "1/200",
+          "first_protected_Legendre_degree": 244,
+          "protected_positive_coordinates": 20,
+          "unresolved_low_coordinates": 122,
+          "certified_native_mass_floor_lower": "5426380967923901/1000000000000000000"
+        },
+        {
+          "requested_native_mass_floor": "1/100",
+          "first_protected_Legendre_degree": 256,
+          "protected_positive_coordinates": 14,
+          "unresolved_low_coordinates": 128,
+          "certified_native_mass_floor_lower": "2556816238174553/250000000000000000"
+        }
+      ]
+    },
+    {
+      "parity": "odd",
+      "reference_rank": 229,
+      "threshold_rows": [
+        {
+          "requested_native_mass_floor": "0",
+          "first_protected_Legendre_degree": 371,
+          "protected_positive_coordinates": 44,
+          "unresolved_low_coordinates": 185,
+          "certified_native_mass_floor_lower": "62174112576891/1000000000000000000"
+        },
+        {
+          "requested_native_mass_floor": "1/1000",
+          "first_protected_Legendre_degree": 375,
+          "protected_positive_coordinates": 42,
+          "unresolved_low_coordinates": 187,
+          "certified_native_mass_floor_lower": "550581597844739/500000000000000000"
+        },
+        {
+          "requested_native_mass_floor": "1/500",
+          "first_protected_Legendre_degree": 379,
+          "protected_positive_coordinates": 40,
+          "unresolved_low_coordinates": 189,
+          "certified_native_mass_floor_lower": "531755044223879/250000000000000000"
+        },
+        {
+          "requested_native_mass_floor": "1/200",
+          "first_protected_Legendre_degree": 391,
+          "protected_positive_coordinates": 34,
+          "unresolved_low_coordinates": 195,
+          "certified_native_mass_floor_lower": "5128787479000777/1000000000000000000"
+        },
+        {
+          "requested_native_mass_floor": "1/100",
+          "first_protected_Legendre_degree": 413,
+          "protected_positive_coordinates": 23,
+          "unresolved_low_coordinates": 206,
+          "certified_native_mass_floor_lower": "10357001457541197/1000000000000000000"
+        }
+      ]
+    }
+  ],
+  "threshold_totals": [
+    {
+      "requested_native_mass_floor": "0",
+      "protected_positive_coordinates": 70,
+      "unresolved_low_coordinates": 301
+    },
+    {
+      "requested_native_mass_floor": "1/1000",
+      "protected_positive_coordinates": 67,
+      "unresolved_low_coordinates": 304
+    },
+    {
+      "requested_native_mass_floor": "1/500",
+      "protected_positive_coordinates": 64,
+      "unresolved_low_coordinates": 307
+    },
+    {
+      "requested_native_mass_floor": "1/200",
+      "protected_positive_coordinates": 54,
+      "unresolved_low_coordinates": 317
+    },
+    {
+      "requested_native_mass_floor": "1/100",
+      "protected_positive_coordinates": 37,
+      "unresolved_low_coordinates": 334
+    }
+  ],
+  "five_pivots_remain_positive_as_original_principal_block_only": true,
+  "high_low_cross_inequality_evaluated": false,
+  "five_pivots_and_protected_high_joint_positive": false,
+  "original_index_bound_301_preserved_not_improved": true,
+  "full_remaining_Schur_positivity_certified": false,
+  "Stage_I_closed": false,
+  "RH": false,
+  "F4": false,
+  "Lean": false,
+  "next_cursor": "RC283: quantify high-to-low auxiliary gate cross blocks and obtain a lower bound on the low Schur principal form without transferring the five positive pivots through an unproved elimination."
+}
