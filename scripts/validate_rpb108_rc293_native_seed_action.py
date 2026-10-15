@@ -197,7 +197,6 @@ if __name__=="__main__":
     ap.add_argument("--replay",action="store_true")
     args=ap.parse_args()
     obj=run(args.replay)
-    print("RC293_CANDIDATE_JSON="+json.dumps(obj,sort_keys=True),flush=True)
     if args.replay:assert obj==json.loads(args.output.read_text(encoding="utf-8"))
     else:args.output.write_text(json.dumps(obj,sort_keys=True,indent=2)+"\n",encoding="utf-8")
     print("RC293 VALIDATED: both fixed native seeds rigorously fail residual threshold; signed inverse NOT certified",flush=True)
