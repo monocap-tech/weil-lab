@@ -17,6 +17,15 @@ def up(x):return -down(-x)
 def rt(x):return F(math.isqrt(x.numerator*S*S//x.denominator)+1,S) if x else F(0)
 def mass(n):return 2*B/(2*n+1)
 def ser(A):return [[str(v) for v in row] for row in A]
+def roundmat(A,kind):
+    # Gershgorin: each downward-rounded matrix entry errs by <1/S.
+    # Three extra diagonal units ensure a global Loewner envelope.
+    n=len(A)
+    assert n==3 and all(len(row)==n for row in A)
+    R=[[down(v) for v in row] for row in A]
+    assert all(R[i][j]==R[j][i] for i in range(n) for j in range(n))
+    for i in range(n):R[i][i]+=(F(3,S) if kind=="up" else -F(3,S))
+    return R
 def subspd(A,I):
     G=[[A[i][j] for j in I] for i in I];n=len(G)
     for k in range(n):
@@ -108,15 +117,16 @@ def run(reverse=False):
               for i,line in enumerate(intervals)]
         noise=[[5*sum((eps[k]**2*Y[i][k]*Y[j][k] for k in range(4)),F(0))
                +(15*rad[i] if i==j else 0) for j in range(3)] for i in range(3)]
+        Gram=roundmat(Gram,"up");noise=roundmat(noise,"up")
         CI=[[(F(l),F(u)) for l,u in line] for line in src["variational_response_center_intervals"]]
         center=[[(l+u)/2 for l,u in line] for line in CI]
-        centerRadius=F(src["center_interval_Loewner_radius"])
+        centerRadius=up(F(src["center_interval_Loewner_radius"]))
         check=[]
         for th in [F(1,100),F(1,10),F(1,3),F(1),F(3),F(10),F(100)]:
-            covariance=[[(1+th)*Gram[i][j]+(1+1/th)*noise[i][j] for j in range(3)] for i in range(3)]
-            gate=[[(mass(base+2*i) if i==j else 0)
+            covariance=roundmat([[(1+th)*Gram[i][j]+(1+1/th)*noise[i][j] for j in range(3)] for i in range(3)],"up")
+            gate=roundmat([[(mass(base+2*i) if i==j else 0)
                    -lam*(center[i][j]+covariance[i][j]+(centerRadius if i==j else 0))
-                   for j in range(3)] for i in range(3)]
+                   for j in range(3)] for i in range(3)],"down")
             candidates=[I for I in ([0],[0,1],[0,2],[0,1,2]) if subspd(gate,I)]
             subset=max(candidates,key=len,default=[])
             gersh=down(min(gate[i][i]-sum(abs(gate[i][j]) for j in range(3) if j!=i) for i in range(3)))
