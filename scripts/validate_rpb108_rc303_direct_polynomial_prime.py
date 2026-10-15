@@ -134,8 +134,8 @@ def native_prime_on_polynomial(q,prime,reverse=False):
         active_prime_powers=7,signed_translation_terms=14,
         exact_piecewise_segments=15,parity="even",
         direct_polynomial_mass_squared=str(mass),
-        full_prime_L2_mass_squared=str(norm),
-        signed_finite_prime_L2_mass_squared=str(finite),
+        full_prime_L2_mass_squared_upper=str(up(norm)),
+        signed_finite_prime_L2_mass_squared_lower=str(down(finite)),
         omitted_prime_L2_energy_upper=str(up(tail)),
         direct_prime_arithmetic_fault_upper=str(up(fault)))
 
