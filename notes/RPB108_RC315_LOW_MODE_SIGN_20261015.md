@@ -1,53 +1,54 @@
 # RC315 — Original signed Weil P0/P1 low-mode sign audit
 
-**Parent:** RC314 merge `f63b5a6e85edb6d2fedf111a5a9f133db3c05c3e`.  
-**Object:** the *original* CC27 signed Weil form at (B=11/10), identified with the completed native action at RC313.  
-**Standing:** positive on the particular (P_0)/(P_1) subspace only; full Schur positivity, Stage I, F4, RH, and Lean are OPEN.
+**Parent:** RC314 merge \`f63b5a6e85edb6d2fedf111a5a9f133db3c05c3e\`.  
+**Object:** the *original* CC27 signed Weil form at $B=11/10$, identified with the native operator at RC313.  
+**Standing:** positive on the particular $P_0/P_1$ subspace only; full Schur positivity, Stage I, F4, RH and Lean remain OPEN.
 
-## What is actually tested
+## Actual source and physical normalization
 
-Let (u_n(x)=\sqrt{(2n+1)/(2B)}P_n(x/B)). These are physically (L^2[-B,B])-orthonormal, not (D)-normalized. RC312/313 give the original operator quadratic form
+Write $u_n(x)=\sqrt{(2n+1)/(2B)}P_n(x/B)$; these are physically $L^2[-B,B]$-orthonormal, **not** $D$-normalized. RC312/313 identify the original quadratic form with
 
-[
-Q=J+W_B+c_RI-K_{\rm reg}+K_{\rm prime}+K_{\rm pole},
-\qquad c_R=-\gamma-\log(2\pi\cdot 2B),
-]
-where (JP_n=H_nP_n), (W_B=\log 2-\tfrac12\log(1-t^2)), the prime term is the correctly signed *two* zero-extended translations per prime power, and the pole term has positive even and negative odd rank-one parts.
+$$
+Q=J+W_B+c_R I-K_{\rm reg}+K_{\rm prime}+K_{\rm pole},
+\qquad c_R=-\gamma-\log(2\pi\cdot2B).
+$$
 
-For the first two physical Legendre modes, all original-form terms have *independent explicit formulas*:
+Here $JP_n=H_nP_n$, $W_B=\log2-\tfrac12\log(1-t^2)$, the prime term uses both zero-extended signed translations for each active prime power, and the pole is positive rank-one on even inputs but negative rank-one on odd inputs. There is **no additional** Poisson contact mass.
 
-| Component | (u_0) | (u_1) |
+The independent closed formulas for the first two modes are:
+
+| Term | $u_0$ | $u_1$ |
 |---|---|---|
-| (J) | (0) | (1) |
-| (\langle W_B\rangle) | (1) | (4/3) |
-| prime autocorrelation at (\ell>0), (d=\ell/B) | (1-d/2) | (1-3d/2+d^3/4) |
-| full prime term | (-2\sum_{n\in\{2,3,4,5,7,8,9\}}\frac{\Lambda(n)}{\sqrt n}C_{00}(\log n)) | same with (C_{11}) |
-| pole term | (16\sinh^2(B/2)/B) | (-3[4\cosh(B/2)-8\sinh(B/2)/B]^2/B) |
+| $J$ | $0$ | $1$ |
+| $\langle W_B\rangle$ | $1$ | $4/3$ |
+| normalized prime overlap at $\ell>0$, $d=\ell/B$ | $1-d/2$ | $1-3d/2+d^3/4$ |
+| full prime | $-2\sum\Lambda(n)C_{00}(\log n)/\sqrt n$ | same with $C_{11}$ |
+| pole | $16\sinh^2(B/2)/B$ | $-3(4\cosh(B/2)-8\sinh(B/2)/B)^2/B$ |
 
-For the regular convolution, each (r_k t^k) contributes (2r_k(2B)^{k+1}\int_0^1v^k C_{ii}(2Bv)dv). The RC46 degree-192 Taylor coefficients and its certified global uniform remainder are checked against their pinned Git blob. The remainder is paid using (|C_{ii}(t)|\le1).
+The sum runs over $n\in\{2,3,4,5,7,8,9\}$. Each degree-$k$ regular-kernel monomial contributes $2r_k(2B)^{k+1}\int_0^1v^kC_{ii}(2Bv)\,dv$. The independent rational recurrence for the 193 inherited RC46 coefficients is checked against the pinned Git blob; the RC46 analytic uniform remainder is fully paid using $|C_{ii}(t)|\le1$.
 
-Euler's constant is enclosed using (H_{128}-\log128-1/256<\gamma<H_{128}-\log128-1/256+1/(12\cdot128^2)). The code encloses logarithms with positive rational atanh series, pi with Machin's identity and alternating arctangent series, and hyperbolic moments with positive Taylor series. No floating-point quadrature or interpolation appears in the certificate.
+The validator encloses $\gamma$ using the harmonic-number bound $H_{128}-\log128-1/256<\gamma<H_{128}-\log128-1/256+1/(12\cdot128^2)$. Logarithms use positive rational atanh series with upper remainder, pi uses Machin's identity with alternating arctangent remainder, and hyperbolic moments use positive Taylor series. No floating-point sampling or quadrature is needed.
 
-## Result and limitation
+## Result
 
-The expected outward rational enclosures are approximately
+The rational outward enclosures are approximately:
 
-[
-\langle u_0,Qu_0\rangle\in(0.040254,0.040260),\qquad
-\langle u_1,Qu_1\rangle\in(0.132385,0.132391).
-]
+$$
+0.040254 <\langle u_0,Qu_0\rangle<0.040260,\qquad
+0.132385 <\langle u_1,Qu_1\rangle<0.132391.
+$$
 
-Parity makes (langle u_0,Qu_1\rangle=0) exactly, so the original (2\times2) principal form is positive. This replaces the much wider low-head enclosures in RC46 *for these two specific entries*, without altering the original operator.
+Reflection symmetry gives $\langle u_0,Qu_1\rangle=0$ **exactly**. Thus the *original* $2\times2$ principal quadratic form is positive. This sharpens RC46's much wider intervals for these two original-form entries, but it does not imply a positive Schur complement.
 
-**Not proved:** positivity of any Schur complement, the larger (301/317)-dimensional original principal blocks, positivity after minimizing over the high modes, or the absence of negative/null spectrum. Even a positive (2\times2) principal block can have a negative Schur complement.
+**Open:** no original $301/317$ principal block, high coupling $T$, signed inverse response $Y$, residual Gram, or strict full Schur lower bound has been certified. Even a positive principal block can have a negative Schur complement; RH, F4, Stage I and Lean remain open.
 
-## Next frontier
+## Next cursor — RC316
 
-RC316 should compute at least one nonzero **original signed** cross-block action (T=QN_0P) with rigorous finite and infinite tail payment. Then build an actual high response (Y), prove its signed action residual (R=T-CY) and Gram, and apply RC314's **minus-sign** correction. Avoid converting this preliminary low-sector test into a claim of Stage I closure.
+Compute an actual nonzero original signed cross-block entry $T=QN_0P$ with a rigorously bounded high tail, then construct $Y$ and pay the signed residual $R=T-CY$ in RC314's **minus-sign** Schur formula. No positivity transfer is allowed from the two low-mode diagonals alone.
 
 ## Reproduce
 
-```bash
+\`\`\`bash
 python scripts/validate_rpb108_rc315_low_mode_sign.py --output certificates/rpb108_rc315_low_mode_sign.json
 python scripts/validate_rpb108_rc315_low_mode_sign.py --output certificates/rpb108_rc315_low_mode_sign.json --replay
-```
+\`\`\`
