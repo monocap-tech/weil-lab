@@ -65,7 +65,7 @@ def run(reverse=False):
     for path, sha in sorted(PINS.items(), reverse=reverse):
         raw = (ROOT / path).read_bytes()
         got = hashlib.sha1(
-            b"blob " + str(len(raw)).encode() + b"\\0" + raw
+            b"blob " + str(len(raw)).encode() + b"\0" + raw
         ).hexdigest()
         assert got == sha, ("inherited blob SHA changed", path)
         if path.endswith(".json"):
@@ -174,6 +174,6 @@ if __name__ == "__main__":
         assert certificate == json.loads(args.output.read_text(encoding="utf-8"))
     else:
         args.output.write_text(json.dumps(certificate, sort_keys=True, indent=2)
-                               + "\\n", encoding="utf-8")
+                               + "\n", encoding="utf-8")
     print("RC282 VALIDATED: native high block positive, low/high coupling OPEN",
           flush=True)
