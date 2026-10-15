@@ -142,6 +142,8 @@ def run(reverse=False):
             already_certified_single_P0_or_P1_cross_Mass_upper=str(earlier),
             weaker_new_joint_cross_bound_does_not_invalidate_old_single_pivot_bound=True))
     assert sum(x["remaining_coordinates"] for x in sectors)==314
+    assert [F(x["whole_remaining_Schur_cross_Mass_upper"])<b for x,b in zip(sectors,[F(160),F(3)])]==[True,True]
+    assert F(sectors[0]["bound_method_center_only_Mass_lower"])>2
     return dict(milestone="RC289",starting_commit="b96d942b60a725646fe71e53c2fa7980ac33b3d2",
         input_git_blob_pins=PINS,new_joint_positive_pivot_dimension=3,
         native_reduced_reference_rank=317,remaining_new_Schur_dimension=314,
@@ -159,7 +161,6 @@ if __name__=="__main__":
     ap.add_argument("--replay",action="store_true")
     args=ap.parse_args()
     result=run(args.replay)
-    print("RC289_CANDIDATE_JSON="+json.dumps(result,sort_keys=True),flush=True)
     if args.replay:assert result==json.loads(args.output.read_text())
     else:args.output.write_text(json.dumps(result,sort_keys=True,indent=2)+"\n")
     print("RC289 VALIDATED: complete new 3-pivot cross payment; Schur positivity OPEN",flush=True)
