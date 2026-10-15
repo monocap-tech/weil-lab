@@ -1,0 +1,67 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "fredholm_source_pin": "6496be8d20176f173c0ff8b6e393b0ccd7c6ff5b",
+  "full_rank301_or_317_principal_block_evaluated": false,
+  "method": "exact rational outward bounds: Machin pi, Euler harmonic gamma, atanh log, hyperbolic Taylor, RC46 regular remainder",
+  "milestone": "RC315",
+  "next_cursor": "RC316: compute signed original high response and residual Gram for rank301 or better conditioned rank317; test minus-sign Schur lower witness.",
+  "normalized_low_block_positive_2_by_2": true,
+  "offdiagonal_P0_P1_exactly_zero_by_parity": true,
+  "original_CC27_native_source_from_RC313": true,
+  "original_low_diagonals": [
+    {
+      "E": "1",
+      "J": "0",
+      "n": 0,
+      "physically_normalized_original_Weil_diagonal_interval": [
+        "20127089991/500000000000",
+        "20129633123/500000000000"
+      ],
+      "pole": [
+        "4861953118707/1000000000000",
+        "1215488279677/250000000000"
+      ],
+      "prime": [
+        "-53674060213/25000000000",
+        "-2146962408519/1000000000000"
+      ],
+      "regular": [
+        "471186438499/1000000000000",
+        "942372877/2000000000"
+      ]
+    },
+    {
+      "E": "4/3",
+      "J": "1",
+      "n": 1,
+      "physically_normalized_original_Weil_diagonal_interval": [
+        "26477131563/200000000000",
+        "132390744079/1000000000000"
+      ],
+      "pole": [
+        "-235607484907/500000000000",
+        "-471214969813/1000000000000"
+      ],
+      "prime": [
+        "306989362753/200000000000",
+        "767473406883/500000000000"
+      ],
+      "regular": [
+        "15282356941/250000000000",
+        "12225885553/200000000000"
+      ]
+    }
+  ],
+  "original_source_pin": "954b4892cf3b4e999e65476d7ce341021528d9e8",
+  "reg_blob_pin": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9",
+  "reg_source": "certificates/rpb108_rc46_native_archimedean_head.json",
+  "reg_source_verified": true,
+  "signed_Schur_positive_certified": false,
+  "signed_high_response_Y_computed": false,
+  "signed_residual_Gram_computed": false,
+  "standing": "original low-sector necessary check, not full Schur test",
+  "tail_uniform": "974514343105327213540549556400011238463413822360299423722022789302645646291085114792014739642469630822035779602816696428098048114213495279535747463925885516539438995822665939368094506258818385935870731/1031909762930727037268554583631182535930255728684018407273251242910835746050961796969267174069833304802748328128760862967683573500479805544904655655028400372807999914777559474160040318274633719397570530418306589126586914062500"
+}
