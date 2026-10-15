@@ -66,6 +66,33 @@ oracle, not execution of RC292's full 1000+-step Chebyshev inverse
 polynomial. RC279's action profiles were computed previously: no new
 original Weil prime evaluation is claimed.
 
+## Exact paid outcome
+
+The computed full-domain D-residual upper bounds and RC292's strict
+acceptance thresholds are:
+
+| Candidate seed | RC293 paid `||b-NYhat||_D²` upper | RC292 required strict upper | Conservative factor above acceptance |
+| --- | ---: | ---: | ---: |
+| Hard P0 | **0.000228836839** | **1.04753 × 10⁻⁹** | **>218,000×** |
+| Soft P4−tP0 | **0.000091031447** | **5.63541 × 10⁻¹²** | **>16 million×** |
+
+The two finite center residual D² estimates are approximately
+`0.000208000045` and `0.000068990543`; the combined tail,
+global action defects, and s-window uncertainty are added **on top**.
+Every displayed residual result is a **certified upper**, not a
+measured exact norm or a certified positive lower bound.
+
+The signed *seed* projection onto the other 120 retained even directions
+is exactly zero for both trials, but the full native D-residual upper
+estimate is far above the needed RC292 threshold. Therefore the
+existing 2-mode seed certificates **do not pass** the sufficient
+signed-inverse acceptance test. The arithmetic does not prove that
+no better 2-mode seed could pass, and does not prove actual signed
+inverse projections are large.
+
+The decisive need is a much more effective, genuinely executed
+inverse action over substantially more original-source directions.
+
 ## New engineering boundary
 
 The remaining implementation task is an operator-action evaluator that
