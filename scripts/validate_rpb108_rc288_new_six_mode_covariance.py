@@ -132,6 +132,9 @@ def run(reverse=False):
             gersh=down(min(gate[i][i]-sum(abs(gate[i][j]) for j in range(3) if j!=i) for i in range(3)))
             check.append((len(subset),gersh,th,covariance,gate,subset))
         count,gfloor,theta,Snew,gate,subset=max(check,key=lambda a:(a[0],a[1],-a[2]))
+        # Proved in the *new* rank-317 inverse metric, not inherited from RC280.
+        assert subset==([0,4] if base==0 else [1]),(parity,subset)
+        assert subspd(gate,([0,2] if base==0 else [0]))
         output.append(dict(parity=parity,reference_rank=rank,first_omitted_degree=first,
             reference_D_floor_lower=str(mu),source_degrees=[base,base+2,base+4],
             original_source_amplitude_error_upper=list(map(str,eps)),
@@ -156,6 +159,5 @@ if __name__=="__main__":
     a.add_argument("--replay",action="store_true")
     x=a.parse_args()
     o=run(x.replay)
-    print("RC288_CANDIDATE_JSON="+json.dumps(o,sort_keys=True),flush=True)
     if x.replay:assert o==json.loads(x.output.read_text())
     else:x.output.write_text(json.dumps(o,sort_keys=True,indent=2)+"\n")
