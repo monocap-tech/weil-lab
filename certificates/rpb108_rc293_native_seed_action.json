@@ -1,4 +1,87 @@
 {
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "full_native_signed_inverse_action_acceptance": false,
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc279_six_mode_gate.json": "bd729c0f5a41debac61a0f3c37276bb94e7834e5",
+    "certificates/rpb108_rc283_reduced_reference.json": "1dc4bba375af6bfd7a274fccc07638e0eead56e6",
+    "certificates/rpb108_rc290_soft_source_decomposition.json": "c0d90be6ea686141f088f70eb4cf3821354671be",
+    "certificates/rpb108_rc292_signed_inverse_action_contract.json": "a4e19528ab5b12d9651a29dbeb478d7844e05470"
+  },
   "milestone": "RC293",
-  "status": "candidate_generation_pending"
+  "new_Chebyshev_recurrence_executed": false,
+  "new_arbitrary_degree_native_prime_action_performed": false,
+  "next_cursor": "RC294: extend the native action oracle beyond the P0,P4 seed to rigorously paid polynomial recurrence vectors; a two-mode seed has passed signed support but fails the RC292 residual tolerance by orders of magnitude.",
+  "rank317_even_reference_only": true,
+  "remaining_314_Schur_positive": false,
+  "remaining_even_signed_projections_certified": false,
+  "source_subspace_dimension": 2,
+  "starting_commit": "1d2047d294698b24f65ea3c3b3e248c3b038922c",
+  "two_original_native_action_profiles_recomposed_with_provenance": true,
+  "two_seed_residual_audits": [
+    {
+      "RC292_required_residual_D_norm_squared_strict": "427637571489473924837155472654847051553654912042789498326743900743344444291576432374784551627807386404615560605353412191337675748905681406797926744786023335760748849595397903938952352147540905833721461518273996313827500000000000000000000000000000000/408235083456755145728734153717849882063674303990784700699451734686504323827342574691872985512354724958130688832286706573325260678293163076415065141641643574856862648931439052824304223958418769200346514497701861008144673217187155306300402577135289928400911537",
+      "actual_native_D_residual_norm_squared_upper": "22883683882693921/100000000000000000000",
+      "actual_native_action_inputs_covered_by_RC279": true,
+      "candidate_signed_rest_projection_physical_mass_squared": "0",
+      "candidate_signed_rest_projection_threshold_pass": true,
+      "certified_actual_inverse_signed_response": false,
+      "combined_action_fault_D_norm_upper": "323404387031/50000000000000000000",
+      "combined_action_tail_D_norm_upper": "17628517838596697/25000000000000000000",
+      "complete_original_action_global_D_fault_paid": true,
+      "complete_original_action_infinite_output_tail_paid": true,
+      "complete_original_action_modes_recomposed_through_degree": 2048,
+      "model_finite_D_residual_norm_squared_upper": "20800004522819179/100000000000000000000",
+      "native_original_action_profiles_reused": [
+        "P0",
+        "P4"
+      ],
+      "residual_budget_failed": true,
+      "residual_upper_over_target_lower": "21845420567494505118659777/100000000000000000000",
+      "retained_projection_augmentation_paid_exactly": true,
+      "s_interval_rounding_D_norm_squared_upper": "1/50000000000000000000",
+      "seed_in_original_Legendre_coordinates": {
+        "P0": "5067499/50000000",
+        "P4": "-193297/50000000"
+      },
+      "source": "hard_P0",
+      "source_coefficients": {
+        "0": "1"
+      }
+    },
+    {
+      "RC292_required_residual_D_norm_squared_strict": "21976982056059026801642866800490657097991905498346462975423674770277438604432762894103661136406449751444267710737248176936004415969246242955986431024418172125223657699549233438347454717714150421668389517398446984435237703948680710000000000000000000000000000000000/3899804929209299965456734430926957246681015560282666106698623842945580177351635756980528283162598883998784641574170072866097824425121329302724083454808712030743488780026903909243155118766746271013375046172375541574288699663135096166282399103000958364916700600310108353886463",
+      "actual_native_D_residual_norm_squared_upper": "9103144704394177/100000000000000000000",
+      "actual_native_action_inputs_covered_by_RC279": true,
+      "candidate_signed_rest_projection_physical_mass_squared": "0",
+      "candidate_signed_rest_projection_threshold_pass": true,
+      "certified_actual_inverse_signed_response": false,
+      "combined_action_fault_D_norm_upper": "419768655379/50000000000000000000",
+      "combined_action_tail_D_norm_upper": "61748851812157567/50000000000000000000",
+      "complete_original_action_global_D_fault_paid": true,
+      "complete_original_action_infinite_output_tail_paid": true,
+      "complete_original_action_modes_recomposed_through_degree": 2048,
+      "model_finite_D_residual_norm_squared_upper": "6899054254844759/100000000000000000000",
+      "native_original_action_profiles_reused": [
+        "P0",
+        "P4"
+      ],
+      "residual_budget_failed": true,
+      "residual_upper_over_target_lower": "807674331692747286250458947/50000000000000000000",
+      "retained_projection_augmentation_paid_exactly": true,
+      "s_interval_rounding_D_norm_squared_upper": "1/50000000000000000000",
+      "seed_in_original_Legendre_coordinates": {
+        "P0": "-8384303/100000000",
+        "P4": "5021497/50000000"
+      },
+      "source": "soft_P4_minus_tP0",
+      "source_coefficients": {
+        "0": "-213274335694970714/259067350465998749",
+        "4": "1"
+      }
+    }
+  ]
 }
