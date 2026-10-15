@@ -1,0 +1,234 @@
+{
+  "milestone": "RC284",
+  "starting_commit": "3651ac3a8f82d8f9357416a61d206dcb8b286232",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc278_smaller_positive_reference.json": "edc59d6cec516d597c2c7816bec2a38a2677e18d",
+    "certificates/rpb108_rc283_reduced_reference.json": "1dc4bba375af6bfd7a274fccc07638e0eead56e6",
+    "notes/RPB108_RC283_REDUCED_REFERENCE_20261014.md": "b1fac0c448719c6afd49bebb84505bf86f430253"
+  },
+  "certified_source_response_transfer": [
+    {
+      "parity": "even",
+      "source": "P0",
+      "inherited_original_trial_support_max_degree": 64,
+      "same_trial_and_actual_residual_under_reduced_reference": true,
+      "variational_center_unchanged": true,
+      "low_center_old_model_energy_lower": "5885768444193969/100000000000000000000",
+      "low_center_old_model_energy_upper": "588576844419397/10000000000000000000",
+      "complete_inherited_old_model_upper": "28916907777289557024370689342355892460802482795181753561/250000000000000000000000000000000000000000000000000000000000",
+      "entire_high_model_energy_budget_old_weighted_upper": "14202486666804634524370689342355892460802482795181753561/250000000000000000000000000000000000000000000000000000000000",
+      "low_center_rounding_energy_upper": "33/1000000000000000000000000000000000000000000000000000000000000",
+      "new_reference_response_enclosures": [
+        {
+          "new_reference_rank": 116,
+          "first_omitted_degree": 232,
+          "global_reference_D_floor_lower": "333438742412503/1000000000000000000",
+          "global_reference_D_upper": "1282312557523562559865826463490300085305075101398603022584417/250000000000000000000000000000000000000000000000000000000000",
+          "new_complete_model_inverse_correction_upper": "1065217626038400177/6250000000000000000",
+          "new_global_fault_inverse_payment_upper": "8492911/20000000000000000000",
+          "new_total_inverse_correction_upper": "17213916845358386971/100000000000000000000",
+          "actual_source_inverse_response_upper": "7905289602969602197/20000000000000000000",
+          "actual_native_source_gate_lower": "-168324695677359006211/100000000000000000000",
+          "positive_native_source_certified": false,
+          "conditional_exact_action_budgets": [
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000",
+              "integer_upper_sqrt_condition": 125,
+              "rational_chebyshev_q_upper": "62/63",
+              "sufficient_inverse_polynomial_degree": 1407,
+              "certified_absolute_error_upper": "49316145312717/50000000000000000000",
+              "polynomial_actions_executed": false
+            },
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000000000",
+              "integer_upper_sqrt_condition": 125,
+              "rational_chebyshev_q_upper": "62/63",
+              "sufficient_inverse_polynomial_degree": 2270,
+              "certified_absolute_error_upper": "99346593/100000000000000000000",
+              "polynomial_actions_executed": false
+            }
+          ]
+        },
+        {
+          "new_reference_rank": 122,
+          "first_omitted_degree": 244,
+          "global_reference_D_floor_lower": "5426380967923901/1000000000000000000",
+          "global_reference_D_upper": "1282312557523562559865826463490300085305075101398603022584417/250000000000000000000000000000000000000000000000000000000000",
+          "new_complete_model_inverse_correction_upper": "1052807224991939161/100000000000000000000",
+          "new_global_fault_inverse_payment_upper": "2609351/100000000000000000000",
+          "new_total_inverse_correction_upper": "212667059553789491/20000000000000000000",
+          "actual_source_inverse_response_upper": "23375866467258571469/100000000000000000000",
+          "actual_native_source_gate_lower": "-2413622321204105867/25000000000000000000",
+          "positive_native_source_certified": false,
+          "conditional_exact_action_budgets": [
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000",
+              "integer_upper_sqrt_condition": 31,
+              "rational_chebyshev_q_upper": "15/16",
+              "sufficient_inverse_polynomial_degree": 305,
+              "certified_absolute_error_upper": "97663052257891/100000000000000000000",
+              "polynomial_actions_executed": false
+            },
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000000000",
+              "integer_upper_sqrt_condition": 31,
+              "rational_chebyshev_q_upper": "15/16",
+              "sufficient_inverse_polynomial_degree": 519,
+              "certified_absolute_error_upper": "3923227/4000000000000000000",
+              "polynomial_actions_executed": false
+            }
+          ]
+        },
+        {
+          "new_reference_rank": 128,
+          "first_omitted_degree": 256,
+          "global_reference_D_floor_lower": "2556816238174553/250000000000000000",
+          "global_reference_D_upper": "1282312557523562559865826463490300085305075101398603022584417/250000000000000000000000000000000000000000000000000000000000",
+          "new_complete_model_inverse_correction_upper": "17542538274541891/3125000000000000000",
+          "new_global_fault_inverse_payment_upper": "1384469/100000000000000000000",
+          "new_total_inverse_correction_upper": "35435927332053541/6250000000000000000",
+          "actual_source_inverse_response_upper": "2287950600680248067/10000000000000000000",
+          "actual_native_source_gate_lower": "-2389016134239711983/50000000000000000000",
+          "positive_native_source_certified": false,
+          "conditional_exact_action_budgets": [
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000",
+              "integer_upper_sqrt_condition": 23,
+              "rational_chebyshev_q_upper": "11/12",
+              "sufficient_inverse_polynomial_degree": 219,
+              "certified_absolute_error_upper": "475069443193/500000000000000000",
+              "polynomial_actions_executed": false
+            },
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000000000",
+              "integer_upper_sqrt_condition": 23,
+              "rational_chebyshev_q_upper": "11/12",
+              "sufficient_inverse_polynomial_degree": 378,
+              "certified_absolute_error_upper": "46598927/50000000000000000000",
+              "polynomial_actions_executed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parity": "odd",
+      "source": "P1",
+      "inherited_original_trial_support_max_degree": 64,
+      "same_trial_and_actual_residual_under_reduced_reference": true,
+      "variational_center_unchanged": true,
+      "low_center_old_model_energy_lower": "6202978017936109/100000000000000000000",
+      "low_center_old_model_energy_upper": "620297801793611/10000000000000000000",
+      "complete_inherited_old_model_upper": "105038692315368555252723198661094566102735322201734555313/1000000000000000000000000000000000000000000000000000000000000",
+      "entire_high_model_energy_budget_old_weighted_upper": "43008912136007465252723198661094566102735322201734555313/1000000000000000000000000000000000000000000000000000000000000",
+      "low_center_rounding_energy_upper": "1/31250000000000000000000000000000000000000000000000000000000",
+      "new_reference_response_enclosures": [
+        {
+          "new_reference_rank": 185,
+          "first_omitted_degree": 371,
+          "global_reference_D_floor_lower": "62174112576891/1000000000000000000",
+          "global_reference_D_upper": "3971841936389262834361853798102988679621663242101045333212123/1000000000000000000000000000000000000000000000000000000000000",
+          "new_complete_model_inverse_correction_upper": "4323822146370542811/6250000000000000000",
+          "new_global_fault_inverse_payment_upper": "52793807/25000000000000000000",
+          "new_total_inverse_correction_upper": "34936482964002683941/50000000000000000000",
+          "actual_source_inverse_response_upper": "76916352101357296281/100000000000000000000",
+          "actual_native_source_gate_lower": "-71857602613372737629/10000000000000000000",
+          "positive_native_source_certified": false,
+          "conditional_exact_action_budgets": [
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000",
+              "integer_upper_sqrt_condition": 253,
+              "rational_chebyshev_q_upper": "126/127",
+              "sufficient_inverse_polynomial_degree": 3060,
+              "certified_absolute_error_upper": "6228008210957/6250000000000000000",
+              "polynomial_actions_executed": false
+            },
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000000000",
+              "integer_upper_sqrt_condition": 253,
+              "rational_chebyshev_q_upper": "126/127",
+              "sufficient_inverse_polynomial_degree": 4808,
+              "certified_absolute_error_upper": "1987503/2000000000000000000",
+              "polynomial_actions_executed": false
+            }
+          ]
+        },
+        {
+          "new_reference_rank": 195,
+          "first_omitted_degree": 391,
+          "global_reference_D_floor_lower": "5128787479000777/1000000000000000000",
+          "global_reference_D_upper": "3971841936389262834361853798102988679621663242101045333212123/1000000000000000000000000000000000000000000000000000000000000",
+          "new_complete_model_inverse_correction_upper": "168956307405265287/20000000000000000000",
+          "new_global_fault_inverse_payment_upper": "639997/25000000000000000000",
+          "new_total_inverse_correction_upper": "213307338228426819/25000000000000000000",
+          "actual_source_inverse_response_upper": "315864621050625427/4000000000000000000",
+          "actual_native_source_gate_lower": "-498001432063968343/6250000000000000000",
+          "positive_native_source_certified": false,
+          "conditional_exact_action_budgets": [
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000",
+              "integer_upper_sqrt_condition": 28,
+              "rational_chebyshev_q_upper": "27/29",
+              "sufficient_inverse_polynomial_degree": 276,
+              "certified_absolute_error_upper": "19749792710673/20000000000000000000",
+              "polynomial_actions_executed": false
+            },
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000000000",
+              "integer_upper_sqrt_condition": 28,
+              "rational_chebyshev_q_upper": "27/29",
+              "sufficient_inverse_polynomial_degree": 470,
+              "certified_absolute_error_upper": "94165367/100000000000000000000",
+              "polynomial_actions_executed": false
+            }
+          ]
+        },
+        {
+          "new_reference_rank": 206,
+          "first_omitted_degree": 413,
+          "global_reference_D_floor_lower": "10357001457541197/1000000000000000000",
+          "global_reference_D_upper": "3971841936389262834361853798102988679621663242101045333212123/1000000000000000000000000000000000000000000000000000000000000",
+          "new_complete_model_inverse_correction_upper": "84293421872510027/20000000000000000000",
+          "new_global_fault_inverse_payment_upper": "633853/50000000000000000000",
+          "new_total_inverse_correction_upper": "425681780712252249/100000000000000000000",
+          "actual_source_inverse_response_upper": "933633494258022581/12500000000000000000",
+          "actual_native_source_gate_lower": "-713222414720331637/20000000000000000000",
+          "positive_native_source_certified": false,
+          "conditional_exact_action_budgets": [
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000",
+              "integer_upper_sqrt_condition": 20,
+              "rational_chebyshev_q_upper": "19/21",
+              "sufficient_inverse_polynomial_degree": 190,
+              "certified_absolute_error_upper": "48174636950407/50000000000000000000",
+              "polynomial_actions_executed": false
+            },
+            {
+              "requested_absolute_D_inverse_operator_error": "1/1000000000000",
+              "integer_upper_sqrt_condition": 20,
+              "rational_chebyshev_q_upper": "19/21",
+              "sufficient_inverse_polynomial_degree": 328,
+              "certified_absolute_error_upper": "96734793/100000000000000000000",
+              "polynomial_actions_executed": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "exact_controls": {
+    "unchanged_supported_trial_action_and_residual_checked": true,
+    "changed_inverse_not_identified_with_old_inverse": true
+  },
+  "full_global_prime_and_endpoint_tails_paid_via_RC278": true,
+  "all_new_augmentation_action_inherited_on_supported_trials": true,
+  "full_rank317_source_response_matrix_evaluated": false,
+  "new_original_Weil_actions_performed": false,
+  "positive_rank317_gate_certified": false,
+  "Stage_I_closed": false,
+  "RH": false,
+  "F4": false,
+  "Lean": false,
+  "next_cursor": "RC285: replace coarse (M-low)/mu payment by degree-localized RC274 residual shells under the rank-317 W weights; recompute source gates then extend correlated trials."
+}
