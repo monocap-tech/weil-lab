@@ -1,0 +1,35 @@
+name: RC315 signed original low diagonals
+on:
+  push:
+    branches:
+      - research/rpb108-rc315-low-signed-diagonals
+    paths:
+      - "scripts/validate_rpb108_rc315_low_mode_sign.py"
+      - "notes/RPB108_RC315_ORIGINAL_SIGNED_LOW_DIAGONALS_20261015.md"
+      - ".github/workflows/rc315-signed-low-modes.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Generate and reverse replay exact rational RC315
+        run: |
+          python scripts/validate_rpb108_rc315_low_mode_sign.py --output certificates/rpb108_rc315_low_mode_sign.json
+          python scripts/validate_rpb108_rc315_low_mode_sign.py --output certificates/rpb108_rc315_low_mode_sign.json --replay
+      - name: Commit certified result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc315_low_mode_sign.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC315: freeze native original signed P0/P1 diagonal bounds"
+            git push
+          fi
