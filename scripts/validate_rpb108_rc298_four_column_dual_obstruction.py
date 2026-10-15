@@ -200,11 +200,8 @@ def run(reverse=False):
             "lower_dual_obstruction_ratio_strictly_greater_than":
                 str(claim),
             "certified_all_four_column_RC292_residual_accepted_seeds_excluded":
-                True,
-            # A compact diagnostic, outward-truncated downward;
-            # mathematical acceptance uses the exact inequality above.
-            "witness_ratio_down_15_digits": str(down(
-                strict_gap/(inverse_dual_norm*sqrt_up(tol)))),
+                True
+
         })
 
     return {
