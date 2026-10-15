@@ -123,7 +123,6 @@ if __name__=="__main__":
     p.add_argument("--replay",action="store_true")
     args=p.parse_args()
     result=run(args.replay)
-    print("RC290_CANDIDATE="+json.dumps(result,sort_keys=True),flush=True)
-    if args.replay:assert result==json.loads(args.output.read_text())
+    if args.replay:assert result==json.loads(args.output.read_text(encoding="utf-8"))
     else:args.output.write_text(json.dumps(result,sort_keys=True,indent=2)+"\n")
     print("RC290 VALIDATED: exact soft-mode concentration; Stage I OPEN",flush=True)
