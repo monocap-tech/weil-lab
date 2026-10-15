@@ -29,6 +29,11 @@ SEEDS=[
 
 def down(x):return F(x.numerator*DIGITS//x.denominator,DIGITS)
 def up(x):return -down(-x)
+def rt_down(x):
+    if x==0:return F(0)
+    assert x>0
+    return F(math.isqrt(x.numerator*SQ*SQ//x.denominator),SQ)
+
 def rt_up(x):
     if x==0:return F(0)
     assert x>0
@@ -99,6 +104,7 @@ def run(reverse=False):
         # D-normalized finite Legendre coefficients of N_original Pj.
         y={0:y0,4:y4}
         model_terms=[]
+        model_lower_terms=[]
         for n in range(0,2049,2):
             c0=profiles[0][0][n]
             c4=profiles[4][0][n]
@@ -107,8 +113,11 @@ def run(reverse=False):
                 main+=(source.get(n,F(0))-lam*y[n])/(H[n]+sm)
             w=up(2*B/F(2*n+1)*up(H[n]+sh))
             model_terms.append(up(w*main*main))
+            wlo=down(2*B/F(2*n+1)*down(H[n]+sl))
+            model_lower_terms.append(down(wlo*main*main))
         if reverse:model_terms.reverse()
         model2=up(sum(model_terms,F(0)))
+        model2lo=down(sum(model_lower_terms,F(0)))
         assert model2>0
         # Since s is an interval and the scalar augmentation is
         # exact, only source-supported n=0,4 use the inverse-weight
@@ -124,13 +133,18 @@ def run(reverse=False):
         fault_amp=sum((abs(y[deg])*profiles[deg][1] for deg in (0,4)),F(0))
         total_amp=up(rt_up(model2)+rt_up(rhs_round2)+tail_amp+fault_amp)
         total_residual2=up(total_amp*total_amp)
+        error_amp=up(rt_up(rhs_round2)+tail_amp+fault_amp)
+        lower_amp=rt_down(model2lo)-error_amp
+        assert lower_amp>0,(label,"lower residual not certified")
+        actual_residual2_lower=down(lower_amp*lower_amp)
+        assert 0<actual_residual2_lower<=total_residual2
         needed=F(target["required_total_approximation_residual_D_norm_squared_strict"])
         signed_proj_budget=F(target["required_approximate_signed_projection_mass_squared_strict"])
         # The candidate is only in the already certified positive
         # source coordinates: P_R Yhat=0. Its paid true D-residual is
         # much too large to trigger the RC292 acceptance contract.
         assert signed_proj_budget>0 and needed>0
-        assert total_residual2>needed*1000,(label,"unexpectedly adequate seed")
+        assert actual_residual2_lower>needed*1000,(label,"seed unexpectedly meets gate")
         rows.append({
             "source":label,
             "seed_in_original_Legendre_coordinates":{"P0":str(y0),"P4":str(y4)},
@@ -142,18 +156,23 @@ def run(reverse=False):
             "complete_original_action_global_D_fault_paid":True,
             "retained_projection_augmentation_paid_exactly":True,
             "model_finite_D_residual_norm_squared_upper":str(model2),
+            "model_finite_D_residual_norm_squared_lower":str(model2lo),
             "s_interval_rounding_D_norm_squared_upper":str(rhs_round2),
             "combined_action_tail_D_norm_upper":str(up(tail_amp)),
             "combined_action_fault_D_norm_upper":str(up(fault_amp)),
             "actual_native_D_residual_norm_squared_upper":str(total_residual2),
+            "actual_native_D_residual_norm_squared_lower":str(actual_residual2_lower),
+            "certified_fixed_seed_residual_strictly_exceeds_RC292_budget":True,
             "RC292_required_residual_D_norm_squared_strict":str(needed),
             "residual_budget_failed":True,
             "residual_upper_over_target_lower":str(down(total_residual2/needed)),
+            "residual_lower_over_target_lower":str(down(actual_residual2_lower/needed)),
             "candidate_signed_rest_projection_physical_mass_squared":"0",
             "candidate_signed_rest_projection_threshold_pass":True,
             "certified_actual_inverse_signed_response":False,
         })
     assert all(x["residual_budget_failed"] for x in rows)
+    assert all(x["certified_fixed_seed_residual_strictly_exceeds_RC292_budget"] for x in rows)
     assert all(x["actual_native_action_inputs_covered_by_RC279"] for x in rows)
     return {
       "milestone":"RC293",
@@ -178,6 +197,7 @@ if __name__=="__main__":
     ap.add_argument("--replay",action="store_true")
     args=ap.parse_args()
     obj=run(args.replay)
+    print("RC293_CANDIDATE_JSON="+json.dumps(obj,sort_keys=True),flush=True)
     if args.replay:assert obj==json.loads(args.output.read_text(encoding="utf-8"))
     else:args.output.write_text(json.dumps(obj,sort_keys=True,indent=2)+"\n",encoding="utf-8")
-    print("RC293 VALIDATED: paid original-action seed, signed inverse NOT certified",flush=True)
+    print("RC293 VALIDATED: both fixed native seeds rigorously fail residual threshold; signed inverse NOT certified",flush=True)
