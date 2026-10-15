@@ -129,6 +129,7 @@ def run(reverse=False):
  assert len(model)==7
  selected_model_not_forced_to_midpoints=True
  for actual,row in zip(model,prime["active_prime_powers"]):
+  print("RC307 PARAM DEBUG", "chosen",str(actual["chosen_translation"])[:100], "lower",str(row["translation_lower"])[:100],"upper",str(row["translation_upper"])[:100],flush=True)
   assert F(row["translation_lower"])<=F(actual["chosen_translation"])<=F(
       row["translation_upper"])
   assert F(row["coefficient_lower"])<=F(actual["chosen_coefficient"])<=F(
