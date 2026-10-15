@@ -43,10 +43,13 @@ subtraction, without declaring the original infinite source tail
 zero. The D-inverse energy tail is paid by the harmonic weight
 `1/(H_2050+s_lower)`.
 
-An independently recomputed exact low 65-coefficient translated
-source must match RC273's model-parameter choices and low-coefficient
-digest. This prevents merely reusing RC304's superposed high center
-while labeling it "direct."
+An independent 65-coefficient reconstruction at the **high
+projector's chosen admissible rational parameter values** must match
+RC273's low digest. RC303 used midpoint parameters instead, so the
+models need not agree coefficient by coefficient. RC307 pays the
+exact low-mode physical L2 discrepancy using twice RC306's certified
+signed-prime parameter uncertainty. This prevents falsely claiming
+that the mixed high model is a replay of the old column centers.
 
 ## 2. Dimension-free nominal prime action bound
 
