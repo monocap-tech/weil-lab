@@ -1,0 +1,35 @@
+name: RC312 arch frequency form exact generator
+on:
+  push:
+    branches:
+      - research/rpb108-rc312-arch-frequency-form
+    paths:
+      - "scripts/validate_rpb108_rc312_arch_frequency_form.py"
+      - ".github/workflows/rc312-arch-form-build.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Generate and reverse-replay rational frequency/form certificate
+        run: |
+          python scripts/validate_rpb108_rc312_arch_frequency_form.py --output certificates/rpb108_rc312_arch_frequency_form.json
+          python scripts/validate_rpb108_rc312_arch_frequency_form.py --output certificates/rpb108_rc312_arch_frequency_form.json --replay
+      - name: Commit the verified exact certificate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc312_arch_frequency_form.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC312: freeze exact archimedean frequency form and Poisson cancellation"
+            git pull --rebase origin research/rpb108-rc312-arch-frequency-form
+            git push origin HEAD:research/rpb108-rc312-arch-frequency-form
+          fi
