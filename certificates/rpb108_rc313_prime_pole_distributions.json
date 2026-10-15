@@ -1,0 +1,280 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RC292_signed_inverse_response_certified": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "actual_zeta_zero_synthesis_on_all_completed_carriers_newly_established": false,
+  "all_degree_original_prime_Fourier_multiplier_to_translations": "-2 sum_{n prime power} Lambda(n)/sqrt(n)*cos(2pi xi log n) corresponds exactly to -sum c_n(T_ell+T_-ell)",
+  "all_prime_power_translation_and_Chebyshev_summands_reenclosed": [
+    {
+      "base_prime": 2,
+      "coefficient_Lambda_over_sqrt_n_lower": "490129071734273595856950861817/1000000000000000000000000000000",
+      "coefficient_Lambda_over_sqrt_n_upper": "245064535867136797928475430909/500000000000000000000000000000",
+      "log_n_lower": "346573590279972654708616060729/500000000000000000000000000000",
+      "log_n_upper": "693147180559945309417232121459/1000000000000000000000000000000",
+      "neither_prime_coefficient_nor_pair_of_directions_doubled": true,
+      "prime_power": 2,
+      "source_lambda_is_log_base_prime_not_log_n": true
+    },
+    {
+      "base_prime": 3,
+      "coefficient_Lambda_over_sqrt_n_lower": "4955344535918468571768654473/7812500000000000000000000000",
+      "coefficient_Lambda_over_sqrt_n_upper": "126856820119512795437277554509/200000000000000000000000000000",
+      "log_n_lower": "549306144334054845697622618461/500000000000000000000000000000",
+      "log_n_upper": "1098612288668109691395245236923/1000000000000000000000000000000",
+      "neither_prime_coefficient_nor_pair_of_directions_doubled": true,
+      "prime_power": 3,
+      "source_lambda_is_log_base_prime_not_log_n": true
+    },
+    {
+      "base_prime": 2,
+      "coefficient_Lambda_over_sqrt_n_lower": "346573590279972654708616060729/1000000000000000000000000000000",
+      "coefficient_Lambda_over_sqrt_n_upper": "34657359027997265470861606073/100000000000000000000000000000",
+      "log_n_lower": "346573590279972654708616060729/250000000000000000000000000000",
+      "log_n_upper": "1386294361119890618834464242917/1000000000000000000000000000000",
+      "neither_prime_coefficient_nor_pair_of_directions_doubled": true,
+      "prime_power": 4,
+      "source_lambda_is_log_base_prime_not_log_n": true
+    },
+    {
+      "base_prime": 5,
+      "coefficient_Lambda_over_sqrt_n_lower": "359881257776800245609331536639/500000000000000000000000000000",
+      "coefficient_Lambda_over_sqrt_n_upper": "719762515553600491218663073279/1000000000000000000000000000000",
+      "log_n_lower": "804718956217050187300379666613/500000000000000000000000000000",
+      "log_n_upper": "1609437912434100374600759333227/1000000000000000000000000000000",
+      "neither_prime_coefficient_nor_pair_of_directions_doubled": true,
+      "prime_power": 5,
+      "source_lambda_is_log_base_prime_not_log_n": true
+    },
+    {
+      "base_prime": 7,
+      "coefficient_Lambda_over_sqrt_n_lower": "29419396160439931851935999023/40000000000000000000000000000",
+      "coefficient_Lambda_over_sqrt_n_upper": "91935613001374787037299996947/125000000000000000000000000000",
+      "log_n_lower": "1945910149055313305105352743443/1000000000000000000000000000000",
+      "log_n_upper": "486477537263828326276338185861/250000000000000000000000000000",
+      "neither_prime_coefficient_nor_pair_of_directions_doubled": true,
+      "prime_power": 7,
+      "source_lambda_is_log_base_prime_not_log_n": true
+    },
+    {
+      "base_prime": 2,
+      "coefficient_Lambda_over_sqrt_n_lower": "61266133966784199482118857727/250000000000000000000000000000",
+      "coefficient_Lambda_over_sqrt_n_upper": "245064535867136797928475430909/1000000000000000000000000000000",
+      "log_n_lower": "1039720770839917964125848182187/500000000000000000000000000000",
+      "log_n_upper": "3327106466687737485202714183/1600000000000000000000000000",
+      "neither_prime_coefficient_nor_pair_of_directions_doubled": true,
+      "prime_power": 8,
+      "source_lambda_is_log_base_prime_not_log_n": true
+    },
+    {
+      "base_prime": 3,
+      "coefficient_Lambda_over_sqrt_n_lower": "9155102405567580761627043641/25000000000000000000000000000",
+      "coefficient_Lambda_over_sqrt_n_upper": "366204096222703230465081745641/1000000000000000000000000000000",
+      "log_n_lower": "439444915467243876558098094769/200000000000000000000000000000",
+      "log_n_upper": "1098612288668109691395245236923/500000000000000000000000000000",
+      "neither_prime_coefficient_nor_pair_of_directions_doubled": true,
+      "prime_power": 9,
+      "source_lambda_is_log_base_prime_not_log_n": true
+    }
+  ],
+  "all_supported_inputs_zero_extended_no_periodic_wraparound": true,
+  "complete_rank_two_pole_operator_identified": "2|cosh(x/2)><cosh(x/2)| - 2|sinh(x/2)><sinh(x/2)|",
+  "direct_prime_bilinear_regressions": [
+    {
+      "Hermitian_real_symmetric_prime_pairing": true,
+      "exact_direct_vs_affine_integral_two_way_regression": true,
+      "exactly_paired_two_support_truncated_translations": true,
+      "left": "even_P0",
+      "original_prime_rational_center_bilinear_pairing": "-4723317298743953165460385429301/1000000000000000000000000000000",
+      "right": "even_P0"
+    },
+    {
+      "Hermitian_real_symmetric_prime_pairing": true,
+      "exact_direct_vs_affine_integral_two_way_regression": true,
+      "exactly_paired_two_support_truncated_translations": true,
+      "left": "odd_P1",
+      "original_prime_rational_center_bilinear_pairing": "1125627663428362850134108740533/1000000000000000000000000000000",
+      "right": "odd_P1"
+    },
+    {
+      "Hermitian_real_symmetric_prime_pairing": true,
+      "exact_direct_vs_affine_integral_two_way_regression": true,
+      "exactly_paired_two_support_truncated_translations": true,
+      "left": "even_P2",
+      "original_prime_rational_center_bilinear_pairing": "-256750270418779066393877389113/500000000000000000000000000000",
+      "right": "even_P0"
+    },
+    {
+      "Hermitian_real_symmetric_prime_pairing": true,
+      "exact_direct_vs_affine_integral_two_way_regression": true,
+      "exactly_paired_two_support_truncated_translations": true,
+      "left": "odd_P3",
+      "original_prime_rational_center_bilinear_pairing": "-3071445696134822607696204087/25000000000000000000000000000",
+      "right": "odd_P1"
+    },
+    {
+      "Hermitian_real_symmetric_prime_pairing": true,
+      "exact_direct_vs_affine_integral_two_way_regression": true,
+      "exactly_paired_two_support_truncated_translations": true,
+      "left": "signed_even_P0_minus_P4",
+      "original_prime_rational_center_bilinear_pairing": "-489847394715195277463330249499/1000000000000000000000000000000",
+      "right": "even_P2"
+    },
+    {
+      "Hermitian_real_symmetric_prime_pairing": true,
+      "exact_direct_vs_affine_integral_two_way_regression": true,
+      "exactly_paired_two_support_truncated_translations": true,
+      "left": "signed_odd_P1_minus_P5",
+      "original_prime_rational_center_bilinear_pairing": "-105063842188701374269521893557/1000000000000000000000000000000",
+      "right": "odd_P3"
+    },
+    {
+      "Hermitian_real_symmetric_prime_pairing": true,
+      "exact_direct_vs_affine_integral_two_way_regression": true,
+      "exactly_paired_two_support_truncated_translations": true,
+      "left": "mixed_parity_P0_P1",
+      "original_prime_rational_center_bilinear_pairing": "-3597689635315590315326276688767/1000000000000000000000000000000",
+      "right": "mixed_parity_P0_P1"
+    },
+    {
+      "Hermitian_real_symmetric_prime_pairing": true,
+      "exact_direct_vs_affine_integral_two_way_regression": true,
+      "exactly_paired_two_support_truncated_translations": true,
+      "left": "even_P0",
+      "original_prime_rational_center_bilinear_pairing": "0",
+      "right": "odd_P1"
+    },
+    {
+      "Hermitian_real_symmetric_prime_pairing": true,
+      "exact_direct_vs_affine_integral_two_way_regression": true,
+      "exactly_paired_two_support_truncated_translations": true,
+      "left": "signed_even_P0_minus_P4",
+      "original_prime_rational_center_bilinear_pairing": "0",
+      "right": "signed_odd_P1_minus_P5"
+    }
+  ],
+  "every_prime_power_base_prime_coefficient_not_log_n": true,
+  "exact_source_blob_pins": {
+    "certificates/rpb108_rc121_diagonal_metric_equivalence.json": "089664ca7eb9139fec1ba0f58b4cfbf25902f51a",
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc308_bounded_arch_pole.json": "2461485678ec998ed7449e8a6141a3b71e083f35",
+    "certificates/rpb108_rc309_endpoint_schur.json": "d3f11a563486c7adb9128252092820ad7f1ef189",
+    "certificates/rpb108_rc310_core_parity_contract.json": "a40b6807309f71df128b98f820a45a12e145948a",
+    "certificates/rpb108_rc311_endpoint_core_identity.json": "f32be168d91a100c96710c484677648a54b3799d",
+    "certificates/rpb108_rc312_arch_frequency_form.json": "df120735342f66a3cf41559064b2785fcb266965",
+    "certificates/rpb108_rc42_native_signed_pole_head.json": "478c53d7d309d6921d7ba65274eef0feed5bc100",
+    "certificates/rpb108_rc43_native_prime_head.json": "b4893953109e6fdc55d52b505c2bcfbf0d38281e",
+    "notes/REFLECTED_PACKET_BRIDGE_108_NATIVE_FLUX_CC27_20261008.md": "e9a44661f94ee6750fc5ad1fbf7dc719fa3ba482",
+    "notes/RPB108_RC42_ACTUAL_NATIVE_SIGNED_POLE_HEAD_20261010.md": "9e358b68e647c6c62534c296b6d567d22d31eb10",
+    "notes/RPB108_RC43_ACTUAL_NATIVE_PRIME_HEAD_20261010.md": "0ebf5dba5370ce317944aa43c85b19865ab16936"
+  },
+  "exp_2B_lower_exact_rational": "4512506749717060463148222761621/500000000000000000000000000000",
+  "exp_2B_upper_exact_rational": "9025013499434120926471820617161/1000000000000000000000000000000",
+  "full_CC27_archimedean_source_identity_imported_RC312": true,
+  "full_CC27_prime_pole_distributional_source_identity_on_all_polynomials": true,
+  "full_Lean_formalization_newly_completed": false,
+  "improved_original_native_Weil_D_to_D_operator_norm_upper": "9920581682118470850967493002679/1000000000000000000000000000000",
+  "milestone": "RC313",
+  "next_cursor": "RC314: now that the original CC27 Weil polynomial core and completed D-Riesz representation are identified, investigate an actual positive spectral lower bound for the FULL signed operator and remaining rank314 Schur complement; a bounded upper operator norm does not supply a lower bound and no signed Chebyshev inverse is yet certified.",
+  "original_CC27_Weil_bounded_D_Riesz_extension_unique_under_RC121_equivalence": true,
+  "original_CC27_Weil_polynomial_form_matches_native_model_on_all_degrees": true,
+  "original_CC27_original_form_vs_complete_native_model_identification": true,
+  "original_Weil_form_positivity_certified": false,
+  "original_augmented_model_D_to_D_norm_upper": "6314421948586000423404608936377/500000000000000000000000000000",
+  "original_prime_finite_chain_L2_norm_upper": "1025787079084555647832650270171/250000000000000000000000000000",
+  "original_prime_has_no_extra_factor_two": true,
+  "original_prime_operator_Hermitian_on_physical_L2": true,
+  "parent_merge_commit": "96cb955efc0682b42e505197b63d120140b7a353",
+  "pole_Rodrigues_Taylor_parity_checks": [
+    {
+      "Rodrigues_series_matches_moment_Taylor_exactly": true,
+      "expected_quadratic_sign": "positive",
+      "input_degree": 0,
+      "m_minus_equals_parity_times_m_plus": true,
+      "m_plus_Taylor_center": "2312606414973817083005093604511/1000000000000000000000000000000",
+      "original_pole_moment_error_upper": "1/1000000000000000000000000000000",
+      "original_two_cross_pole_products_equal_rank_two_difference": true,
+      "reflection_parity": "even"
+    },
+    {
+      "Rodrigues_series_matches_moment_Taylor_exactly": true,
+      "expected_quadratic_sign": "negative",
+      "input_degree": 1,
+      "m_minus_equals_parity_times_m_plus": true,
+      "m_plus_Taylor_center": "16626668807189312170932494597/40000000000000000000000000000",
+      "original_pole_moment_error_upper": "1/1000000000000000000000000000000",
+      "original_two_cross_pole_products_equal_rank_two_difference": true,
+      "reflection_parity": "odd"
+    },
+    {
+      "Rodrigues_series_matches_moment_Taylor_exactly": true,
+      "expected_quadratic_sign": "positive",
+      "input_degree": 2,
+      "m_minus_equals_parity_times_m_plus": true,
+      "m_plus_Taylor_center": "22666697905819075302603988821/500000000000000000000000000000",
+      "original_pole_moment_error_upper": "1/1000000000000000000000000000000",
+      "original_two_cross_pole_products_equal_rank_two_difference": true,
+      "reflection_parity": "even"
+    },
+    {
+      "Rodrigues_series_matches_moment_Taylor_exactly": true,
+      "expected_quadratic_sign": "negative",
+      "input_degree": 3,
+      "m_minus_equals_parity_times_m_plus": true,
+      "m_plus_Taylor_center": "11077937731035734797056321/3125000000000000000000000000",
+      "original_pole_moment_error_upper": "1/1000000000000000000000000000000",
+      "original_two_cross_pole_products_equal_rank_two_difference": true,
+      "reflection_parity": "odd"
+    },
+    {
+      "Rodrigues_series_matches_moment_Taylor_exactly": true,
+      "expected_quadratic_sign": "positive",
+      "input_degree": 4,
+      "m_minus_equals_parity_times_m_plus": true,
+      "m_plus_Taylor_center": "6749271527325959514672083/31250000000000000000000000000",
+      "original_pole_moment_error_upper": "1/1000000000000000000000000000000",
+      "original_two_cross_pole_products_equal_rank_two_difference": true,
+      "reflection_parity": "even"
+    },
+    {
+      "Rodrigues_series_matches_moment_Taylor_exactly": true,
+      "expected_quadratic_sign": "negative",
+      "input_degree": 5,
+      "m_minus_equals_parity_times_m_plus": true,
+      "m_plus_Taylor_center": "1077607416802360737518653/100000000000000000000000000000",
+      "original_pole_moment_error_upper": "1/1000000000000000000000000000000",
+      "original_two_cross_pole_products_equal_rank_two_difference": true,
+      "reflection_parity": "odd"
+    },
+    {
+      "Rodrigues_series_matches_moment_Taylor_exactly": true,
+      "expected_quadratic_sign": "positive",
+      "input_degree": 6,
+      "m_minus_equals_parity_times_m_plus": true,
+      "m_plus_Taylor_center": "227602756979278482888023/500000000000000000000000000000",
+      "original_pole_moment_error_upper": "1/1000000000000000000000000000000",
+      "original_two_cross_pole_products_equal_rank_two_difference": true,
+      "reflection_parity": "even"
+    }
+  ],
+  "pole_m_minus_Fourier_analytic_argument": "xi=-i/(4pi)",
+  "pole_m_plus_Fourier_analytic_argument": "xi=+i/(4pi)",
+  "positive_spectral_lower_bound_proved": false,
+  "previous_conditional_abstract_D_to_D_norm_upper": "10702320841400622319387128727631/1000000000000000000000000000000",
+  "previous_nominal_prime_L2_norm_upper": "707500562853249808732514984099/100000000000000000000000000000",
+  "rank314_Schur_principal_gate_positive": false,
+  "signed_pole_even_positive_odd_negative": true,
+  "signed_pole_original_source_formula": "conj(m_-(h))*m_+(f)+conj(m_+(h))*m_-(f)",
+  "source_definition": "original CC27 Weil quadratic form, with actual Fourier convention exp(-2pi i xi x)",
+  "strict_cutoff_original_aperture_B": "11/10",
+  "strict_prime_power_support_n_less_than_exp_2B": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9
+  ]
+}
