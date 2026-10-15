@@ -1,0 +1,118 @@
+{
+  "milestone": "RC286",
+  "parent": "be65d328ef63d6ac8ddf990d30af7d07c6ad94c8",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc278_smaller_positive_reference.json": "edc59d6cec516d597c2c7816bec2a38a2677e18d",
+    "certificates/rpb108_rc283_reduced_reference.json": "1dc4bba375af6bfd7a274fccc07638e0eead56e6",
+    "certificates/rpb108_rc285_degree_localized_transfer.json": "d2bee8272c341e571dedb1aa436bdca88b675c46",
+    "notes/RPB108_RC285_DEGREE_LOCALIZED_TRANSFER_20261014.md": "cc17c9b3f9fecfdff0885d9ec30c57e0997c9d3f"
+  },
+  "new_rank317_positive_source_pivots": 2,
+  "new_rank317_remaining_coupled_Schur_dimension": 315,
+  "full_cross_column_Schur_payment_certificates": [
+    {
+      "parity": "even",
+      "source": "P0",
+      "first_remaining_Legendre_degree": 2,
+      "retained_D_native_weight_lower": "265079854444239839789/50000000000000000000",
+      "augmentation_coefficient": "9824426812434191126348001381815352879391565433737138359403921/1000000000000000000000000000000000000000000000000000000000000",
+      "Young_parameter": "3",
+      "all_remaining_cross_columns_treated_collectively": true,
+      "source_response_certificates": [
+        {
+          "new_reference_rank": 116,
+          "positive_source_gate_native_lower": "96853208476462857/25000000000000000000",
+          "complete_source_inverse_correction_upper": "10299778781353161/25000000000000000000",
+          "remaining_auxiliary_dimension": 115,
+          "complete_trial_center_projection_mass_squared_upper": "98873031993/31250000000000000",
+          "complete_inverse_residual_remainder_physical_mass_squared_upper": "7771076231309569/100000000000000000000",
+          "entire_cross_Schur_payment_native_mass_strict_upper": "289673307232681906529/100000000000000000000",
+          "certificate_less_than_one": false,
+          "rational_subunit_target": null,
+          "strict_target_pass": false
+        },
+        {
+          "new_reference_rank": 122,
+          "positive_source_gate_native_lower": "644764981482719779/100000000000000000000",
+          "complete_source_inverse_correction_upper": "15003984102485883/100000000000000000000",
+          "remaining_auxiliary_dimension": 121,
+          "complete_trial_center_projection_mass_squared_upper": "98873031993/31250000000000000",
+          "complete_inverse_residual_remainder_physical_mass_squared_upper": "566017517021159/20000000000000000000",
+          "entire_cross_Schur_payment_native_mass_strict_upper": "75432674789819132283/100000000000000000000",
+          "certificate_less_than_one": true,
+          "rational_subunit_target": "4/5",
+          "strict_target_pass": true
+        },
+        {
+          "new_reference_rank": 128,
+          "positive_source_gate_native_lower": "654019450784100723/100000000000000000000",
+          "complete_source_inverse_correction_upper": "7030999214812621/50000000000000000000",
+          "remaining_auxiliary_dimension": 127,
+          "complete_trial_center_projection_mass_squared_upper": "98873031993/31250000000000000",
+          "complete_inverse_residual_remainder_physical_mass_squared_upper": "2652407980815309/100000000000000000000",
+          "entire_cross_Schur_payment_native_mass_strict_upper": "17717265199213330293/25000000000000000000",
+          "certificate_less_than_one": true,
+          "rational_subunit_target": "3/4",
+          "strict_target_pass": true
+        }
+      ]
+    },
+    {
+      "parity": "odd",
+      "source": "P1",
+      "first_remaining_Legendre_degree": 3,
+      "retained_D_native_weight_lower": "35218315138863313307/6250000000000000000",
+      "augmentation_coefficient": "10295721752684191126348001381815352879391565433737138359403921/1000000000000000000000000000000000000000000000000000000000000",
+      "Young_parameter": "3",
+      "all_remaining_cross_columns_treated_collectively": true,
+      "source_response_certificates": [
+        {
+          "new_reference_rank": 185,
+          "positive_source_gate_native_lower": "290894283476386533/50000000000000000000",
+          "complete_source_inverse_correction_upper": "22805640487014063/100000000000000000000",
+          "remaining_auxiliary_dimension": 184,
+          "complete_trial_center_projection_mass_squared_upper": "62727590503019/20000000000000000000",
+          "complete_inverse_residual_remainder_physical_mass_squared_upper": "1011797785341459/25000000000000000000",
+          "entire_cross_Schur_payment_native_mass_strict_upper": "121177708311603609551/100000000000000000000",
+          "certificate_less_than_one": false,
+          "rational_subunit_target": null,
+          "strict_target_pass": false
+        },
+        {
+          "new_reference_rank": 195,
+          "positive_source_gate_native_lower": "4221078872998293/625000000000000000",
+          "complete_source_inverse_correction_upper": "1371603463179021/10000000000000000000",
+          "remaining_auxiliary_dimension": 194,
+          "complete_trial_center_projection_mass_squared_upper": "62727590503019/20000000000000000000",
+          "complete_inverse_residual_remainder_physical_mass_squared_upper": "2434108960371341/100000000000000000000",
+          "entire_cross_Schur_payment_native_mass_strict_upper": "35314706276880185951/50000000000000000000",
+          "certificate_less_than_one": true,
+          "rational_subunit_target": "3/4",
+          "strict_target_pass": true
+        },
+        {
+          "new_reference_rank": 206,
+          "positive_source_gate_native_lower": "688794793030228381/100000000000000000000",
+          "complete_source_inverse_correction_upper": "96971636798491/781250000000000000",
+          "remaining_auxiliary_dimension": 205,
+          "complete_trial_center_projection_mass_squared_upper": "62727590503019/20000000000000000000",
+          "complete_inverse_residual_remainder_physical_mass_squared_upper": "2202754706831119/100000000000000000000",
+          "entire_cross_Schur_payment_native_mass_strict_upper": "64505868596287286929/100000000000000000000",
+          "certificate_less_than_one": true,
+          "rational_subunit_target": "2/3",
+          "strict_target_pass": true
+        }
+      ]
+    }
+  ],
+  "opposite_parity_cross_exact_zero": true,
+  "all_same_parity_remaining_cross_columns_paid": true,
+  "remaining_315_principal_gate_certified_positive": false,
+  "new_original_Weil_actions_performed": false,
+  "Stage_I_closed": false,
+  "RH": false,
+  "F4": false,
+  "Lean": false,
+  "next_cursor": "RC287: establish the positive lower envelope for the remaining rank-317 principal gate or rebuild same-parity 3-source covariance; subunit cross payments alone do not close positivity."
+}
