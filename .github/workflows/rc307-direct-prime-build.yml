@@ -1,0 +1,37 @@
+name: RC307 direct mixed prime high certificate
+on:
+  push:
+    branches:
+      - research/rpb108-rc307-direct-prime-completion
+    paths:
+      - "scripts/validate_rpb108_rc307_direct_prime_completion.py"
+      - ".github/workflows/rc307-direct-prime-build.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install inherited validator dependencies
+        run: python -m pip install --disable-pip-version-check numpy==1.26.4
+      - name: Exact high prime projection, certificate, and reverse replay
+        run: |
+          python scripts/validate_rpb108_rc307_direct_prime_completion.py --output certificates/rpb108_rc307_direct_prime_completion.json
+          python scripts/validate_rpb108_rc307_direct_prime_completion.py --output certificates/rpb108_rc307_direct_prime_completion.json --replay
+      - name: Commit exact certificate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc307_direct_prime_completion.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC307: materialize independent high mixed prime and bounded component"
+            git pull --rebase origin research/rpb108-rc307-direct-prime-completion
+            git push origin HEAD:research/rpb108-rc307-direct-prime-completion
+          fi
