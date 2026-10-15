@@ -127,7 +127,7 @@ def run(reverse=False):
         records.append(dict(parity=parity,source="P"+str(base),
             rescaled_original_trial_factor=str(t),
             original_degree_intervals_count=len(expected),
-            old_reference_model_reconstruction_upper=str(old_model),
+            old_reference_model_reconstruction_upper=str(up(old_model)),
             source_rounding_energy_upper=str(radius),
             global_D_fault_norm_upper=str(faultnorm),
             parity_certificates=models))
