@@ -49,6 +49,31 @@ to the smallest reference weight. Every numerical gate estimate is an
 **upper response / lower gate enclosure**. A negative lower gate remains
 inconclusive and is never an original negative witness.
 
+## Certified source-gate results
+
+Degree localization is strong enough to certify **strictly positive
+actual native P0 and P1 gate directions** in *each* reduced reference.
+The following values are decimal views of exact rational **lower**
+bounds stored in the certificate:
+
+| New total reference rank | Even P0 lower | Odd P1 lower |
+| --- | ---: | ---: |
+| 301 | +0.0038741283 | +0.0058178857 |
+| **317** | **+0.0064476498** | **+0.0067537262** |
+| 334 | +0.0065401945 | +0.0068879479 |
+
+Compared with RC284's inconclusive negative lower enclosures, the
+localized actual-source payments now cross zero rigorously. The
+relative ease of the 317 reference makes it a practical next choice.
+Because opposite reflection parity pairs to zero, the two tested
+P0/P1 directions form a strictly positive two-direction restriction
+within each *single* reduced reference.
+
+**This is not full positivity.** The other 315 coordinates for rank
+317, including same-parity cross terms, are not resolved. Do not
+transfer RC280's additional old-reference pivots to these new
+references.
+
 ## Exact custody and validity checks
 
 - Pin the RC129 D moment, RC274 65--2048 interval/tail certificate,
@@ -65,8 +90,8 @@ inconclusive and is never an original negative witness.
 
 ## Next gate
 
-Only after the new-source test should the coupled same-parity P0/P2/P4
-and P1/P3/P5 families be rebuilt against the new 317-reference operator
+The new-source test has passed. The coupled same-parity P0/P2/P4
+and P1/P3/P5 families must now be rebuilt against the new 317-reference operator
 and their complete covariance treated together. Positivity of two
 separate source directions cannot replace the coupled gate.
 
