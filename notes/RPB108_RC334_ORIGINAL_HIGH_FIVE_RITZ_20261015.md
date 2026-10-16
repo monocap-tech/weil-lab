@@ -23,6 +23,32 @@ For the unchanged previous \(Y_4x\), bound the *best possible* four-mode gain us
 
 Then calculate \(\Delta_5(Y_5x)=2\langle b_5,Y_5x\rangle-\langle C_5Y_5x,Y_5x\rangle\) with interval-certified original signed entries. A strict excess beyond \(\Delta_{4,\max}\) is a **genuine finite-dimensional Ritz improvement** over *every* original four-mode trial. It is only an **upper** Schur witness for one low vector.
 
+## Exact replay result
+
+GitHub's initial exact-rational replay established an ORIGINAL signed five-mode Gershgorin floor
+(C_5 \succeq 0.26935368866 I_5), with
+(0.43457576695246<C_{254,254}<0.44026160101705).
+
+The new rational fifth Ritz coefficient is
+(y_{254}=146963997313/625000000000000>0).
+The original five-mode gain is rigorously
+(\Delta_5>2.93365510561\times10^{-8});
+the certified optimal four-mode bound is
+(\Delta_{4,\max}<6.20012098224\times10^{-9}).
+Therefore
+(\boxed{\Delta_5-\Delta_{4,\max}>2.313643007386\times10^{-8}}).
+All original signed matrix intervals, five-mode rational coefficients,
+gain endpoints and full error data are pinned in the RC334 JSON
+certificate and replayed without decimal floating-point arithmetic.
+
+**Important full-space limitation:** The changed five-mode trial has
+a conservative whole-infinite residual bound (<0.003754193) and
+a corrected-sign penalty bound (<0.002597304), *worse* than the
+separate RC333 four-mode bounds (<0.001150649) and (<0.000243992).
+The certified gain is a finite Ritz gain, not an improved full
+Schur lower estimate. Native outside-space coupling must be
+recomputed for Y5.
+
 ## Residual custody
 
 The RC333 complete infinite residual belongs to **Y4**, not the reoptimized **Y5**; it must not be carried across the change. RC334 therefore constructs an independent conservative complete \(Y_5\) residual from RC328's original signed whole \(Tx\) norm plus the native complete original high \(C\) operator norm. The exact newer five-input interface into the omitted degree 252 and 256 through infinity belongs to **RC335**, not this finite compression.
