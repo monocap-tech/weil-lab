@@ -194,8 +194,8 @@ def validate():
     S_up=F(235648,10**6)
     assert shi-B<S_up
     supported_response_ub=2*(S_up/KAPPA-correction/KAPPA**2)
-    assert F(0)<supported_response_ub<F(6)
-    assert supported_response_ub<F(10)
+    assert F(0)<supported_response_ub<F(5)  # stronger exact-rational SI20 gate
+    assert supported_response_ub<F(6)
 
     print("SI20 PASS: original signed Jensen rank-three supported inverse certificate")
     print("Three all-frequency signed-window strict minima:",
@@ -211,7 +211,7 @@ def validate():
     print("rational signed variational witness:",
           [float(x) for x in z])
     print("certified original odd inverse UPPER:",float(supported_response_ub))
-    print("SI19 UPPER <18; SI20 UPPER <6 at same original operator")
+    print("SI19 UPPER <18; SI20 UPPER <5 at same original operator")
     print("No full original A^-1 s, original residual Gram, complete BS, Stage I or RH")
 
 
