@@ -191,6 +191,9 @@ def run(reverse=False):
  assert mu>0
  penalty=up(chosen**2/mu)
  assert chosen<F(3,2500) and penalty<F(1,4000)
+ # Native signed n254 source is positive and the original Ritz action adverse.
+ assert original_source.l>0 and Cy.h<0 and covariance.h<0
+ assert Rsplit<prevR,("degree254 split did not improve the original residual")
  new_strict=Rsplit<prevR
  sign=("strict_positive" if covariance.l>0 else
        "strict_negative" if covariance.h<0 else "undetermined")
@@ -223,15 +226,27 @@ def run(reverse=False):
   native_original_endpoint_regular_pole_paid=True,
   independent_original_signed_source_254_rebuilt=True,
   original_signed_degree254_covariance_interval_evaluated=True,
+  exact_native_original_signed_C_254_high_intervals={str(m):C[m].out() for m in INPUT},
+  exact_original_signed_b254_interval=original_source.out(),
+  exact_original_four_mode_CY254_interval=Cy.out(),
+  exact_original_signed_covariance_254_interval=covariance.out(),
+  exact_original_signed_residual_254_interval=residual.out(),
+  original_degree254_covariance_strictly_negative=True,
+  inherited_RC332_complete_residual_norm_upper=str(prevR),
+  recomputed_RC332_split_residual_norm_upper=str(Rbase),
+  cumulative_252_254_split_residual_norm_upper=str(Rsplit),
+  selected_original_entire_high_residual_norm_upper=str(chosen),
+  selected_original_correct_sign_penalty_upper=str(penalty),
+  strict_cumulative_residual_improvement_over_RC332=True,
   original_high_infinite_residual_256plus_paid=True,
   original_full_high_residual_norm_less_than="3/2500",
   original_correct_sign_penalty_less_than="1/4000",
   previous_RC332_full_residual_bound_preserved=True,
-  current_degree254_covariance_sign_asserted=False,
+  current_degree254_covariance_sign_asserted=True,
   full_original_signed_C_inverse_computed=False,
   full_three_dimensional_low_Schur_positive=False,
   Stage_I_closed=False,F4=False,Lean=False,RH=False,
-  next_cursor="RC334: continue the genuine original signed outside-high covariance to degree 256 and beyond; consolidate finite signed-energy blocks before full 278-mode inverse, with the far-tail and low Schur still open."
+  next_cursor="RC334: certify original n254 diagonal and test a five-mode original signed Ritz extension targeting the adverse n254 response, while retaining the favorable n252 split and comparing against continued n256 signed covariance."
  )
 if __name__=="__main__":
  ap=argparse.ArgumentParser()

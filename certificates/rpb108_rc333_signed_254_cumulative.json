@@ -29,12 +29,53 @@
   "original_full_high_residual_norm_less_than": "3/2500",
   "original_correct_sign_penalty_less_than": "1/4000",
   "previous_RC332_full_residual_bound_preserved": true,
-  "current_degree254_covariance_sign_asserted": false,
+  "current_degree254_covariance_sign_asserted": true,
   "full_original_signed_C_inverse_computed": false,
   "full_three_dimensional_low_Schur_positive": false,
   "Stage_I_closed": false,
   "F4": false,
   "Lean": false,
   "RH": false,
-  "next_cursor": "RC334: continue the genuine original signed outside-high covariance to degree 256 and beyond; consolidate finite signed-energy blocks before full 278-mode inverse, with the far-tail and low Schur still open."
+  "next_cursor": "RC334: certify original n254 diagonal and test a five-mode original signed Ritz extension targeting the adverse n254 response, while retaining the favorable n252 split and comparing against continued n256 signed covariance.",
+  "exact_native_original_signed_C_254_high_intervals": {
+    "244": [
+      "-61072216075221033155481/10000000000000000000000000",
+      "-5229166224747524558173/10000000000000000000000000"
+    ],
+    "246": [
+      "20711052254762372029407/1000000000000000000000000",
+      "65789599209369096826983/2500000000000000000000000"
+    ],
+    "248": [
+      "8038477953063451368503/312500000000000000000000",
+      "156741549553948797925403/5000000000000000000000000"
+    ],
+    "250": [
+      "27520853334719490839657/2500000000000000000000000",
+      "41634566309325796222589/2500000000000000000000000"
+    ]
+  },
+  "exact_original_signed_b254_interval": [
+    "250854025952577984257/2500000000000000000000000",
+    "501708051905168767889/5000000000000000000000000"
+  ],
+  "exact_original_four_mode_CY254_interval": [
+    "-12087983255034146223/5000000000000000000000000",
+    "-2671885884231877757/2500000000000000000000000"
+  ],
+  "exact_original_signed_covariance_254_interval": [
+    "-2425855412138193/10000000000000000000000000",
+    "-67025333094543/625000000000000000000000"
+  ],
+  "exact_original_signed_residual_254_interval": [
+    "1014103647347239448057/10000000000000000000000000",
+    "8028063049378170533/78125000000000000000000"
+  ],
+  "original_degree254_covariance_strictly_negative": true,
+  "inherited_RC332_complete_residual_norm_upper": "115085855236380839896189/100000000000000000000000000",
+  "recomputed_RC332_split_residual_norm_upper": "11508585523638083989619/10000000000000000000000000",
+  "cumulative_252_254_split_residual_norm_upper": "11506487323037264996917/10000000000000000000000000",
+  "selected_original_entire_high_residual_norm_upper": "11506487323037264996917/10000000000000000000000000",
+  "selected_original_correct_sign_penalty_upper": "24399180834859886310251/100000000000000000000000000",
+  "strict_cumulative_residual_improvement_over_RC332": true
 }

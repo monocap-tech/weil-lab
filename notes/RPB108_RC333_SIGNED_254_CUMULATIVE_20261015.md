@@ -10,7 +10,15 @@ The target signed covariance is
 \[
 \langle P_{254}Tx,P_{254}CY_4x\rangle_D=b_{254}\sum_{m\in\{244,246,248,250\}}C_{254,m}y_m.
 \]
-It may be favorable, adverse or inconclusive. **No sign is assumed before exact Actions replay.** All resulting rational intervals and the sign classification are printed as deterministic diagnostics.
+The exact GitHub Actions replay establishes the **strictly negative original signed covariance** (an adverse sign for this unchanged four-mode trial):
+
+\[
+-2.425855412138193\times10^{-10}
+<b_{254}(CY_4x)_{254}
+<-1.072405329512688\times10^{-10}<0.
+\]
+
+The signed source itself is positive, \(b_{254}>1.0034161\times10^{-4}\), while the original four-mode action is negative, \((CY_4x)_{254}<-1.06875\times10^{-6}\). The full exact rational source, four cross entries, action, covariance and residual intervals are frozen in the certificate. This sign is not conjectured from RC329.
 
 ## Cumulative complete residual, not one isolated improvement
 
@@ -18,13 +26,20 @@ Unlike RC332, RC333 **preserves the already certified degree-252 split** as a fr
 
 The known degree-252 source and high-action energies are subtracted from independently certified whole-original source and cross-action norms before degree 254 is analyzed. Then \(b_{254}\) and the actual \(C_{254,*}Y_4\) are isolated, the remaining energy bound is conservatively charged through all \(n\ge256\), and the represented residual plus two signed residuals are summed in squares.
 
-If the new degree-254 split weakens the upper bound, the prior complete RC332 bound is preserved exactly. The validator must maintain \(\|Tx-CY_4x\|_D<0.0012\) and the correct-sign RC314 penalty \(<0.00025\). New strict improvement, if any, is reported only from the exact computed inequality.
+If the new degree-254 split weakens the upper bound, the prior complete RC332 bound is preserved exactly. The validator must maintain \(\|Tx-CY_4x\|_D<0.0012\) and the correct-sign RC314 penalty \(<0.00025\). The n254 covariance is adverse, so its isolated residual is larger than its uncorrected source coefficient. **Nevertheless the cumulative original high residual UPPER bound improves** through orthogonal Parseval accounting:
+
+| Complete original residual norm | Certified bound |
+|---|---:|
+| Inherited RC332 (signed n252 only) | \(<0.001150859\) |
+| RC333 (signed n252 and adverse n254) | \(<0.001150649\) |
+
+The corrected-sign RC314 penalty is \(<0.000243992\), versus RC332's \(<0.000244081\). The improvement comes from less wasteful whole-space norm accounting, **not** from beneficial signed cancellation at degree 254. This remains weaker than the distinct RC328 three-mode residual certificate.
 
 ## Scope
 
 This is original signed operator arithmetic conditional on the existing CC27/RC313 identification, not independent mathematical peer review. Even a favorable degree-254 covariance yields only a local improvement to a trial-dependent residual bound. The 278-mode high inverse, positive original low three-dimensional Schur **lower** bound, remaining 119 even and 195 odd low coordinates, Stage I, F4, Lean and RH are all **open**.
 
-**Next RC334:** signed degree-256 covariance and more efficient accumulation of the remaining native signed high-head interactions while retaining every infinite mode.
+**Next RC334:** certify the genuine original n254 diagonal and test whether a positive original signed five-mode Ritz extension can absorb this adverse direction, or whether continuing signed n256 covariance is more efficient. Keep the n252 signed split and infinite remainder.
 
 **Reproduce:**
 \`\`\`bash
