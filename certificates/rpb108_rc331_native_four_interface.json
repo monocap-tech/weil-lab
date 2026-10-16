@@ -1,0 +1,40 @@
+{
+  "milestone": "RC331",
+  "parent_route_head": "447774a91c3898d317dc1383f8500ae6354f1bae",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc313_prime_pole_distributions.json": "954b4892cf3b4e999e65476d7ce341021528d9e8",
+    "certificates/rpb108_rc323_coercivity_nogo.json": "3280e450654675c09292be902a8888e69c9a75ce",
+    "certificates/rpb108_rc324_high_tail_smoothing.json": "33f73683424d6408a35aeced0bb205bdb7215686",
+    "certificates/rpb108_rc328_signed_finite_tail_residual.json": "49d9daf11defd0f272865d3780f3a53d0af6e130",
+    "certificates/rpb108_rc330_original_high_four_ritz.json": "671d56538a0f70df1fab8ca840c1a47797bef56b"
+  },
+  "original_CC27_signed_Weil_D_operator": true,
+  "represented_even_high_degrees": [
+    244,
+    246,
+    248,
+    250
+  ],
+  "omitted_even_high_from": 252,
+  "infinite_far_tail_from": 800,
+  "four_mode_to_all_252plus_original_interface_norm_less_than": "3/5",
+  "original_four_mode_full_outside_CY_norm_less_than": "1/10000",
+  "original_four_mode_entire_infinite_R_norm_less_than": "3/2500",
+  "corrected_RC314_four_mode_penalty_less_than": "1/4000",
+  "strict_same_vector_full_residual_penalty_improvement_over_RC330": true,
+  "exact_original_endpoint_hilbert_schmidt_paid_through_infinity": true,
+  "original_signed_prime_regular_even_pole_cross_norms_paid": true,
+  "full_original_signed_Tx_all_278_plus_infinite_source_paid": true,
+  "original_four_source_coordinates_subtracted_by_Parseval": true,
+  "original_signed_covariance_252plus_computed": false,
+  "improves_prior_RC328_three_mode_best_global_bound_asserted": false,
+  "full_278_mode_high_head_positivity": false,
+  "full_original_C_inverse_computed": false,
+  "full_three_dimensional_low_Schur_positive": false,
+  "Stage_I_closed": false,
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "next_cursor": "RC332: calculate genuine signed native C_252,m for m=244,246,248,250 and original b252; then extend source-sensitive covariance over 252..798 and pay all n800+ without replacing the four-mode high Ritz witness by a positive full low Schur lower claim."
+}
