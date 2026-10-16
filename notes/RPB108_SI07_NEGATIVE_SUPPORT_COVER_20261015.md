@@ -25,14 +25,14 @@ Instead of assuming \(m_-\) occupies the entire interval \([-896,896]\), constru
 \]
 SI07's self-contained rational verifier provides, with strict exact outward checks,
 \[
-\boxed{|S_-|<40},\qquad
-\boxed{\operatorname{tr}K_-<100}.
+\boxed{|S_-|\le\frac{243}{8}=30.375},\qquad
+\boxed{\operatorname{tr}K_-<83}. 
 \]
 Here \(K_-=Z^*\mathcal F^{-1}m_-\mathcal FZ\) is the **physical supported negative-frequency operator**, which is positive trace-class by SI04. The full negative spectral mass is
 \[
 \operatorname{tr}K_-=2B\int_{\mathbb R}m_-(\xi)\,d\xi.
 \]
-This dramatically improves the SI04 worst-case trace upper
+The outward rational integration also reports the explicit bound \(\operatorname{tr}K_-\le82.71043570625\). This dramatically improves the SI04 worst-case trace upper
 \(2B\cdot(4096)\cdot13\), while **not claiming to have resolved every exact sign-changing endpoint**.
 
 ## 2. All-point, not sampled, interval enclosures
@@ -61,21 +61,21 @@ For each unresolved leaf \([l,r]\), every point obeys
 \]
 For inexpensive, reproducible, mathematically outward summation, its height is rounded **up** to integer multiples of \(10^{-6}\). Then exact rational summation gives both
 \[
-|U|=\sum_{\rm unresolved}(r-l)<20,
+|U|=\sum_{\rm unresolved}(r-l)=\frac{243}{16}=15.1875,
 \qquad
 \int_{\mathbb R}m_-\le2\sum_{\rm unresolved}(r-l)\,\lceil(-L_{l,r})_+10^6\rceil/10^6
-<\frac{100}{2B}.
+<\frac{83}{2B}.
 \]
 Using SI06's high-frequency positivity completes the proof for all real frequencies. No untested point outside \(U\cup(-U)\) is allowed to contribute negative multiplier.
 
 ## 3. Quantitative spectral consequence—and a precise limitation
 
-Since \(K_-\succeq0\) is trace-class and \(\operatorname{tr}K_-<100\), its eigenvalues arranged nonincreasingly obey
+Since \(K_-\succeq0\) is trace-class and \(\operatorname{tr}K_-<83\), its eigenvalues arranged nonincreasingly obey
 \[
-\boxed{\lambda_j(K_-)<100/j}\quad(j\ge1).
+\boxed{\lambda_j(K_-)<83/j}\quad(j\ge1).
 \]
-In particular, \(\lambda_{302}(K_-)<100/302<1/3\).
-Also, fewer than 100 eigenvalues can exceed or equal 1. **This is only a thresholded spectral count for \(K_-\)**, not a bound on the number of negative eigenvalues of the full Weil operator.
+In particular, \(\lambda_{302}(K_-)<83/302<0.275\).
+Also, at most 82 eigenvalues can exceed or equal 1. **This is only a thresholded spectral count for \(K_-\)**, not a bound on the number of negative eigenvalues of the full Weil operator.
 
 The signed negative odd pole \(2|\sinh(x/2)\rangle\langle\sinh(x/2)|\) remains an additional exact rank-one negative operator and is **not silently included** in the displayed \(K_-\) trace budget. SI03 provides its separate physical trace \(2(\sinh B-B)\).
 
@@ -83,7 +83,7 @@ The signed negative odd pole \(2|\sinh(x/2)\rangle\langle\sinh(x/2)|\) remains a
 
 ## 4. Strategic reading and SI08
 
-The frequency-only outer-bound estimate treated a band of total length \(1792\) as potentially negative. SI07 instead proves that the actual negative set is covered by dyadic intervals of *total length <40* (both signs), and certifies a strongly reduced trace budget.
+The frequency-only outer-bound estimate treated a band of total length \(1792\) as potentially negative. SI07 instead proves that the actual negative set is covered by dyadic intervals of *total length exactly \(243/8=30.375\) in the certified cover* (both signs). The validator checked 9,261 all-positive subintervals and retained 972 unresolved dyadic leaves in 107 positive-frequency clusters; they are **possible-negative regions, not 107 proven negative components**. Its exact outward mass calculation gave \(\int m_-\le37.59565259375\) and \(\operatorname{tr}K_-\le82.71043570625<83\), over 1,400 times smaller than SI04's conservative trace bound.
 
 This makes **multi-band time–frequency compression** worth investigating, in contrast to further shaving the outer frequency radius from 896 toward the genuinely negative witness at 882.91.
 
