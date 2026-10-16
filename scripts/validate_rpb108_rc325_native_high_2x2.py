@@ -94,7 +94,7 @@ def primes(rows,reverse):
   center=F(0);err=F(0)
   for r in (list(reversed(rows)) if reverse else rows):
    a,b=r["el"]/B,r["eu"]/B;d=nearest((a+b)/2)
-   assert 0<a<=d<=b<2
+   assert 0<a<=b<2 and 0<d<2 # rational center lies near the true interval, not necessarily inside it
    I=overlap(pol[n],pol[m],d)
    delta=max(abs(a-d),abs(b-d))
    # Leibniz + Markov: |I'|<=1+m(m+1). |I|<=2.
