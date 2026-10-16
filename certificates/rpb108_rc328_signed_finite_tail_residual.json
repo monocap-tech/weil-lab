@@ -1,0 +1,129 @@
+{
+  "F4": false,
+  "Lean": false,
+  "Legendre_fixed_grid_decimal_digits": 520,
+  "RC327_inherited_entire_residual_penalty_upper": "2011895052381068583888923/5000000000000000000000000000",
+  "RC327_paid_original_infinite_CYoutside_norm_upper": "2114498662286086429357/39062500000000000000000000",
+  "RH": false,
+  "Stage_I_closed": false,
+  "certified_RC314_correct_sign_entire_residual_penalty_upper": "4505049482699873314161451/20000000000000000000000000000",
+  "certified_original_entire_infinite_R_T_minus_CY_norm_upper": "11055793678537513311971699/10000000000000000000000000000",
+  "certified_represented_3mode_original_residual_norm_upper": "16452016067573111979198311/20000000000000000000000000000000",
+  "complete_signed_represented_three_mode_energy_lower": "164193890762552934671/100000000000000000000000000000",
+  "computed_joint_signed_even_coefficients": 278,
+  "exact_original_signed_even_finite_degrees": [
+    244,
+    798
+  ],
+  "full_278_native_high_head_inverse_computed": false,
+  "full_infinite_C_inverse_computed": false,
+  "full_original_3D_Schur_positive": false,
+  "inherited_old_Tx_whole_high_triangle_norm_upper": "2848198722275197749299/2000000000000000000000000",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc318_p0_signed_schur.json": "85dbc5bc373de9922bfe17a6d43ab2cef7178cd6",
+    "certificates/rpb108_rc320_boundary_cancelled_schur.json": "fe8821aaba62ba50c2a8eba1a2fa0020ba818003",
+    "certificates/rpb108_rc321_p4_boundary_native.json": "26eedd29ee80063c7b8ccc5f1d5de025e7050842",
+    "certificates/rpb108_rc323_coercivity_nogo.json": "3280e450654675c09292be902a8888e69c9a75ce",
+    "certificates/rpb108_rc324_high_tail_smoothing.json": "33f73683424d6408a35aeced0bb205bdb7215686",
+    "certificates/rpb108_rc325_native_high_2x2.json": "27f42ff30438613e335f39e232c8ac0329f1d854",
+    "certificates/rpb108_rc326_native_high_3x3_residual.json": "62a7c8fe549ed4b0d1aec799e1d4f1402ea02e06",
+    "certificates/rpb108_rc327_high_interface_residual.json": "dc6eadb88b8d148753d27318ed9a0cf5b52ad8f6",
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9"
+  },
+  "milestone": "RC328",
+  "next_cursor": "RC329: reconstruct the original signed finite OUTSIDE high covariance <P_{250..798}Tx,P_{250..798}CY> using native high-to-high seven-prime translation overlaps and endpoint action, then pay the infinity tail. RC328 only reduces the complete Tx magnitude by sign-preserving 278-mode projection; full inverse and three-dimensional Schur positivity still OPEN.",
+  "original_CC27_signed_D_operator": true,
+  "original_combined_actual_244to798_norm_lower": "67863896534829705643784333/100000000000000000000000000000",
+  "original_combined_actual_244to798_norm_upper": "16965974133707490407869289/25000000000000000000000000000",
+  "original_combined_center_244to798_energy_lower": "287844278305630543837/625000000000000000000000000",
+  "original_combined_center_244to798_energy_upper": "23027542264450443507099/50000000000000000000000000000",
+  "original_combined_energy_244to510_upper": "33279157419194653249773/100000000000000000000000000000",
+  "original_combined_energy_512to798_upper": "511037084388249350577/4000000000000000000000000000",
+  "original_combined_true_entire_high_Tx_norm_upper": "13152855067106245238941401/12500000000000000000000000000",
+  "original_entire_unrepresented_residual_norm_upper": "4422316247310802503476399/4000000000000000000000000000",
+  "parent_route_head": "dcb33c606b704ba2ec93000c88c56ae340bda8a4",
+  "proved_strict_sharpening_of_complete_original_signed_residual": true,
+  "rigorously_inherited_P0_512plus_tail_norm_upper": "13524141617977306891365019/2500000000000000000000000000",
+  "rigorously_inherited_P2minusP0_512plus_tail_norm_upper": "1327127718380156541139409/50000000000000000000000000000",
+  "rigorously_inherited_P4minusP2_512plus_tail_norm_upper": "3933338866718989568059409/50000000000000000000000000000",
+  "selected_joint_original_signed_high_mode_intervals": {
+    "244": {
+      "actual_D_even_mode_energy_lower": "55492467224308542209/50000000000000000000000000000",
+      "actual_D_even_mode_energy_upper": "110984934448617084419/100000000000000000000000000000",
+      "signed_combined_original_prime_plus_endpoint_amplitude": [
+        "1447110201010115272290261/625000000000000000000000000",
+        "23153763216161844356644177/10000000000000000000000000000"
+      ]
+    },
+    "246": {
+      "actual_D_even_mode_energy_lower": "40591424369388847783/100000000000000000000000000000",
+      "actual_D_even_mode_energy_upper": "5073928046173605973/12500000000000000000000000000",
+      "signed_combined_original_prime_plus_endpoint_amplitude": [
+        "-1406548661080819031450409/1000000000000000000000000000",
+        "-14065486610808190314504089/10000000000000000000000000000"
+      ]
+    },
+    "248": {
+      "actual_D_even_mode_energy_lower": "1261753194454700247/10000000000000000000000000000",
+      "actual_D_even_mode_energy_upper": "12617531944547002471/100000000000000000000000000000",
+      "signed_combined_original_prime_plus_endpoint_amplitude": [
+        "-7876929859972668798166593/10000000000000000000000000000",
+        "-123077029062072949971353/156250000000000000000000000"
+      ]
+    },
+    "250": {
+      "actual_D_even_mode_energy_lower": "63305150282606434763/100000000000000000000000000000",
+      "actual_D_even_mode_energy_upper": "15826287570651608691/25000000000000000000000000000",
+      "signed_combined_original_prime_plus_endpoint_amplitude": [
+        "1772171786528483075771607/1000000000000000000000000000",
+        "17721717865284830757716071/10000000000000000000000000000"
+      ]
+    },
+    "256": {
+      "actual_D_even_mode_energy_lower": "1071898396711443910873/50000000000000000000000000000",
+      "actual_D_even_mode_energy_upper": "2143796793422887821747/100000000000000000000000000000",
+      "signed_combined_original_prime_plus_endpoint_amplitude": [
+        "-20896153719493911386696797/2000000000000000000000000000",
+        "-6530048037341847308342749/625000000000000000000000000"
+      ]
+    },
+    "510": {
+      "actual_D_even_mode_energy_lower": "81353662964457776549/25000000000000000000000000000",
+      "actual_D_even_mode_energy_upper": "325414651857831106197/100000000000000000000000000000",
+      "signed_combined_original_prime_plus_endpoint_amplitude": [
+        "-11876955363739404804359207/2000000000000000000000000000",
+        "-29692388409348512010898017/5000000000000000000000000000"
+      ]
+    },
+    "512": {
+      "actual_D_even_mode_energy_lower": "18383337947078282719/50000000000000000000000000000",
+      "actual_D_even_mode_energy_upper": "36766675894156565439/100000000000000000000000000000",
+      "signed_combined_original_prime_plus_endpoint_amplitude": [
+        "500095341381989018383881/250000000000000000000000000",
+        "20003813655279560735355241/10000000000000000000000000000"
+      ]
+    },
+    "700": {
+      "actual_D_even_mode_energy_lower": "49424944787148201329/20000000000000000000000000000",
+      "actual_D_even_mode_energy_upper": "123562361967870503323/50000000000000000000000000000",
+      "signed_combined_original_prime_plus_endpoint_amplitude": [
+        "-153793973920601003113309/25000000000000000000000000",
+        "-61517589568240401245323599/10000000000000000000000000000"
+      ]
+    },
+    "798": {
+      "actual_D_even_mode_energy_lower": "465050980371135513/6250000000000000000000000000",
+      "actual_D_even_mode_energy_upper": "7440815685938168209/100000000000000000000000000000",
+      "signed_combined_original_prime_plus_endpoint_amplitude": [
+        "11464910834257674315693297/10000000000000000000000000000",
+        "11464910834257674315693299/10000000000000000000000000000"
+      ]
+    }
+  },
+  "signed_original_combination": "(3/25)v0-(23/8)w2+w4",
+  "true_entire_unrepresented_Tx_norm_upper": "21028957921463536265551211/20000000000000000000000000000",
+  "unrepresented_original_Tx_CY_signed_covariance_computed": false,
+  "whole_original_signed_source_perturbation_error_upper": "7999609/6250000000000000000000000",
+  "whole_signed_combined_true_800plus_tail_norm_upper": "80413541880414952326222509/100000000000000000000000000000"
+}
