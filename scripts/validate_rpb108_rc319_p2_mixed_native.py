@@ -218,9 +218,13 @@ def run(reverse=False):
  rc318_mass=F(get("318_p0_signed_schur")[
     "original_physical_prime_full_mass_upper"])
  assert norm0<=rc318_mass
- coeff_energy=sum((5*a*a/F(2*n+1) for n,a in a2.items()),F(0))
- assert 0<coeff_energy<=norm2,("Bessel exact nonnegative tail")
- physical_tailcenter=norm2-coeff_energy
+ # Projected energy is paid term-by-term DOWNWARD to avoid giant
+ # common denominators; the center total norm rounds UPWARD.
+ coeff_energy=sum((lo(5*a*a/F(2*n+1),BUD)
+         for n,a in a2.items()),F(0))
+ norm2_up=hi(norm2,BUD)
+ assert 0<coeff_energy<=norm2_up,("Bessel certified upper-tail check")
+ physical_tailcenter=norm2_up-coeff_energy
  # Complete centered and actual P2-source tail (n>=512).
  tailphysicalupper=(root_hi(physical_tailcenter)+eps2)**2
  assert tailphysicalupper>0
@@ -278,7 +282,7 @@ def run(reverse=False):
  for n in range(FIRST,CUT,2):
   endpoint=F(2*n+1,(n-2)*(n+3))
   amp=abs(a2[n]+endpoint)
-  fin+=F(5)*amp*amp/(F(2*n+1)*Dh2*(H[n]+smin))
+  fin+=hi(F(5)*amp*amp/(F(2*n+1)*Dh2*(H[n]+smin)),BUD)
  # Full actual prime error not propagated per coefficient: its
  # ENTIRE L2 correction is <=eps2, so pay it ONCE by
  # infinite-dimensional triangle/Minkowski, not 256x.
