@@ -1,0 +1,36 @@
+name: RC330 original signed four-mode high Ritz
+on:
+  push:
+    branches:
+      - research/rpb108-rc330-original-high-four-ritz
+    paths:
+      - "scripts/validate_rpb108_rc330_original_high_four_ritz.py"
+      - ".github/workflows/rc330-original-high-four-build.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Certify original high 4x4, 4-mode Ritz and infinite residual
+        run: |
+          python scripts/validate_rpb108_rc330_original_high_four_ritz.py --output certificates/rpb108_rc330_original_high_four_ritz.json
+          python scripts/validate_rpb108_rc330_original_high_four_ritz.py --output certificates/rpb108_rc330_original_high_four_ritz.json --replay
+      - name: Freeze exact rational certified result
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc330_original_high_four_ritz.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC330: freeze positive original high four-block and strict signed Ritz gain"
+            git fetch origin research/rpb108-rc330-original-high-four-ritz
+            git rebase origin/research/rpb108-rc330-original-high-four-ritz
+            git push origin HEAD:research/rpb108-rc330-original-high-four-ritz
+          fi
