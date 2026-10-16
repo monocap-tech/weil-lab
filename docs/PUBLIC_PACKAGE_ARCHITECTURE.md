@@ -18,10 +18,12 @@ The package has one governing separation:
 }
 ```
 
-The left side is the mathematical package established within Horizon 1. The
-right side records downstream actual-zeta obligations that remain open. No
-open actual-zeta statement may be presented as a theorem of the Horizon-1
-package.
+The left side is the mathematical package established within Horizon 1 plus
+the additive post-Horizon theorem WD-T40. The right side records downstream
+actual-zeta obligations that remain open. The neutral null-extension interface
+is no longer open: WD-T40 discharges it negatively under the WD-T38 carrier
+hypotheses. No remaining open actual-zeta statement may be presented as a
+theorem of the package.
 
 ---
 
@@ -55,7 +57,8 @@ Public prose is downstream from the following canonical sources.
 5. [Imported Source Pins](IMPORTED_SOURCE_PINS.md) — external load-bearing inputs.
 6. [Internal Proof Audit](INTERNAL_PROOF_AUDIT.md) — WD-T01 through WD-T36 corrections.
 7. [Composite Morphology Audit](COMPOSITE_MORPHOLOGY_AUDIT.md) — WD-T37 through WD-T39 corrections.
-8. [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md) — WD-X01 through WD-X07.
+8. RPB-65 / [Neutral Defect Morphology](NEUTRAL_DEFECT_MORPHOLOGY.md) — post-Horizon WD-T40 promotion audit and canonical theorem surface.
+9. [Examples and Sharpness Audit](EXAMPLES_SHARPNESS_AUDIT.md) — WD-X01 through WD-X07.
 
 If public prose conflicts with one of these surfaces, the audit/control
 surface wins until the public package is repaired.
@@ -123,17 +126,19 @@ All imported analytic inputs remain explicitly typed and separately cited.
 Primary theorem range:
 
 ```text
-WD-T37 — WD-T39
+WD-T37 — WD-T40
 ```
 
 The three morphology families remain separate:
 
 - persistent selected negative defect;
 - attained unit-gain neutral defect;
-- noncompact/moving/background morphology.
+- noncompact/moving/background morphology;
+- WD-T40 post-audit neutral support rigidity.
 
-No branch may silently consume an interface that is listed as open in the
-RH appendix.
+No branch may silently consume an interface that is listed as open in the RH
+appendix. WD-T40 is the explicit theorem resolving the formerly open neutral
+interface.
 
 ### Part IV — Sharpness and failure modes
 
@@ -166,8 +171,10 @@ Examples include:
 
 ### Formal verification standing
 
-Allowed labels are exactly:
+Allowed labels are:
 
+- `LEAN-NOT-ATTEMPTED`;
+- `LEAN-IN-PROGRESS`;
 - `LEAN-CERTIFIED`;
 - `LEAN-CERTIFIED-FROM-IMPORTED-PREMISE`;
 - `LEAN-BLOCKED`;
@@ -202,12 +209,12 @@ The manuscript keeps the Horizon-1 deductions and the downstream actual-zeta
 obligations visibly separate. The dedicated RH appendix records the latter in
 one place rather than extending the theorem chain past its stop line.
 
-The three tracked interfaces are:
+The tracked interface state is:
 
 ```text
-AZ-NEXTJET-LOC
-C-ACTUAL-KPH-FLOOR
-AZ-FIN-WEIL-NULL-EXTENSION
+AZ-NEXTJET-LOC                 OPEN
+C-ACTUAL-KPH-FLOOR             OPEN / stronger refinement
+AZ-FIN-WEIL-NULL-EXTENSION     DISCHARGED NEGATIVELY BY WD-T40
 ```
 
 The appendix records for each interface:
@@ -219,9 +226,9 @@ The appendix records for each interface:
 5. what would follow if the interface were discharged;
 6. what does **not** follow without it.
 
-The manuscript may say that the Horizon-1 deduction terminates at these
-interfaces. It may not present an interface as discharged, or describe the
-package as an RH proof.
+The manuscript may present AZ-FIN-WEIL-NULL-EXTENSION as discharged only by
+citing WD-T40 and its hypotheses. It must keep the two negative-side interfaces
+open and must not describe the package as an RH proof.
 
 ---
 
@@ -233,8 +240,8 @@ The public dependency map uses five layers.
 Layer A  Abstract operator/signature calculus
 Layer B  Finite-sector transfer and filtration
 Layer C  Zeta-Weil specialization and arithmetic
-Layer D  Morphology composites
-Layer E  Open actual-zeta interfaces
+Layer D  Morphology composites + WD-T40 neutral rigidity
+Layer E  Actual-zeta interface state
 ```
 
 Examples and scope rules attach laterally to the theorem boundary they
@@ -336,4 +343,90 @@ The final pass is recorded in [Public Package Audit](PUBLIC_PACKAGE_AUDIT.md).
 }
 ```
 
-No post-Horizon research cursor is selected here.
+The current post-Horizon research cursor is RPB-79 / WD-T40 actual Weil multiplier realization.
+
+
+---
+
+## WD-T40 formal status
+
+WD-T40 is mathematically promoted and P4-AUDIT-PASSED.
+
+RPB-67 determined that a faithful Lean certificate is blocked at the current
+project abstraction by the missing physical real-line Fourier/distribution
+carrier and downstream Gaussian-support analytic stack.
+
+Current formal status:
+
+~~~text
+WD-T40: LEAN-BLOCKED
+~~~
+
+The blocker is exact and project-local; mathlib v4.34 already supplies the
+base L2 Fourier, tempered-distribution, Gaussian-transform, Fourier-inversion,
+and complex-analytic infrastructure.
+
+
+---
+
+## GitHub Actions runner-allocation blocker
+
+RPB-69 attempted to build the post-Horizon WD-T40 carrier module through two temporary validation PRs.
+
+Both jobs failed before runner allocation:
+
+~~~text
+runner_id: 0
+runner_name: ""
+steps: []
+~~~
+
+Accordingly, the carrier source has no module-build certificate yet and no compiler error has been observed.
+
+This is recorded as an infrastructure blocker rather than as a Lean theorem or source failure.
+
+Current cursor:
+
+~~~text
+RPB-79 / WD-T40 ACTUAL WEIL MULTIPLIER REALIZATION
+~~~
+
+
+---
+
+## WD-T40 F-1 static freeze
+
+RPB-74 freezes the audited carrier source at Git blob `93f05eceb07ffda593181d0e9293caa0a05705ac`.
+
+The deterministic build handoff checks that exact blob before compiling, verifies the root import, and rejects top-level `axiom`, `sorry`, or `admit` declarations.
+
+F-1 is therefore statically exhausted but not Lean-certified. A real pinned build remains required before F-2 may begin.
+
+Current cursor: RPB-79 / WD-T40 actual Weil multiplier realization.
+
+
+---
+
+## WD-T40 F-1 build certificate
+
+RPB-78 closes the physical Fourier carrier build gate.
+
+Certified carrier blob:
+
+~~~text
+03fe8ab1b6a3190e40a91b7a467c975e0d87841d
+~~~
+
+Successful pinned CI evidence:
+
+~~~text
+run: 36649140221
+job: 109679039673
+runner_id: 1000001147
+~~~
+
+The exact carrier module build and repository-wide unfinished-proof/project-axiom rejection gate both passed.
+
+F-1 is BUILD-CERTIFIED. WD-T40 remains LEAN-BLOCKED only because F-2 through F-6 remain open.
+
+Current cursor: RPB-79 / WD-T40 actual Weil multiplier realization.
