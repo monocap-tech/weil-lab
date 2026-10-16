@@ -103,6 +103,11 @@ def validate():
         negative_loss=2*B*mass*eps2
         lower=KAPPA*(1-protect_loss)-negative_loss
         assert lower>F(1,2000), (bits,float(lower))
+        # Outward certified rational lower margins, not rounded float results.
+        thresholds={9:F(68,100000),10:F(92,100000),
+                    12:F(995,1000000),16:F(999,1000000),
+                    32:F(999,1000000)}
+        assert lower > thresholds[bits], (bits,float(lower))
         assert dimension%2==1 and dimension>=1
         print("local Taylor bits:",bits,
               "physical cofinite codimension <=",dimension,
