@@ -176,9 +176,10 @@ def run(reverse=False):
  assert a.l>0 and det2.l>0 and det.l>F(1,100)
  # An independent positive lower bound on the least eigenvalue
  # of the exact original 3x3 high matrix from Gershgorin.
- gmin=min(a.l-t.absmax()-u.absmax(),
-    d.l-t.absmax()-v.absmax(),
-    w.l-u.absmax()-v.absmax())
+ absmax=lambda z:max(abs(z.l),abs(z.h))
+ gmin=min(a.l-absmax(t)-absmax(u),
+    d.l-absmax(t)-absmax(v),
+    w.l-absmax(u)-absmax(v))
  assert gmin>F(1,4)
  old_response=cert("325_native_high_2x2")[
   "low_R323_witness_native_high_response"]
