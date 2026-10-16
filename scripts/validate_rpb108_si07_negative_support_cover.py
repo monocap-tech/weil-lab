@@ -85,15 +85,16 @@ def validate():
 
     # tr K_- = 2B int m_-; K_- is positive trace-class.
     trace_upper = 2*B*total_negative_multiplier_integral_upper
-    assert measure_upper < 20, f"unresolved half-band measure {float(measure_upper)}"
-    assert trace_upper < 100, f"trace upper {float(trace_upper)}"
+    assert measure_upper == F(243,16), f"unresolved half-band measure {float(measure_upper)}"
+    assert total_measure_upper == F(243,8)
+    assert trace_upper < 83, f"trace upper {float(trace_upper)}"
     assert accepted > 0 and leaves > 0
     assert maxdepth == DEPTH
     assert total_negative_multiplier_integral_upper > 0
 
     # For positive trace-class K_-, lambda_j <= tr(K_-)/j,
     # here j=302. The bound concerns K_- only, not the full Weil form.
-    assert trace_upper / 302 < F(1,3)
+    assert trace_upper / 302 < F(83,302)
 
     # Unresolved components can be grouped without changing coverage.
     unverified.sort(key=lambda z: z[0])
