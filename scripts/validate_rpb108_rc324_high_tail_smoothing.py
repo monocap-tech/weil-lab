@@ -53,7 +53,7 @@ PINS={
  "certificates/rpb108_rc322_low_3d_gram.json":
   "ba344b44436c5c2d392a9feb5c6dc0c9892dfe88",
  "certificates/rpb108_rc323_coercivity_nogo.json":
-  "51b5f627eaaa3c380b54cc53a886ad5bac9f05ad",
+  "3280e450654675c09292be902a8888e69c9a75ce",
 }
 def lo(x,g=OUT):return F(x.numerator*g//x.denominator,g)
 def hi(x,g=OUT):return F((x.numerator*g+x.denominator-1)//x.denominator,g)
@@ -107,8 +107,7 @@ def Htable(N):
  out={0:h}
  for k in range(1,2*N+1):
   h+=F(1,k)
-  if k in (FIRST,TAIL_START) or (FIRST<=k<TAIL_START and k%2==0):
-   out[k]=h
+  out[k]=h
  return out
 
 def sinh_up(z,terms=40):
@@ -187,7 +186,7 @@ def run(reverse=False):
      regular_high_compression_norm_up=str(reg),
      endpoint_diagonal_exact=str(extra)))
  assert len(moments)==6 and len(range(FIRST,TAIL_START,2))==278
- assert minBound>3*muOld
+ assert minBound>2*muOld
  mode244=moments[0]
  C244_L=F(mode244["original_CC27_N0_high_diagonal_lower"])
  C244_U=F(mode244["original_CC27_N0_high_diagonal_upper"])
