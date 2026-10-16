@@ -3,7 +3,7 @@ name: RPB108 structural SI verification
 on:
   push:
     branches:
-      - research/rpb108-structural-si02
+      - 'research/rpb108-structural-*'
     paths:
       - "scripts/validate_rpb108_si*.py"
       - "notes/RPB108_SI*.md"
@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   exact-rational-regression:
-    name: Exact boundary-adapted algebra
+    name: Exact structural identity regressions
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -31,7 +31,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Compile structural validator
-        run: python -m py_compile scripts/validate_rpb108_si02_boundary_structure.py
-      - name: Run exact rational SI02 regressions
-        run: python scripts/validate_rpb108_si02_boundary_structure.py
+      - name: Compile and run all structural validators
+        run: |
+          for f in scripts/validate_rpb108_si*.py; do
+            python -m py_compile "$f"
+            python "$f"
+          done
