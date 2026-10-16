@@ -110,7 +110,7 @@ def corr(i,j):
     o[b-k]-=z*(-1)**(a+k+1)
  while o and o[-1]==0:o.pop()
  return o
-def regular(coeff):
+def regular_exact(coeff):
  r={}
  for i in N:
   for j in N:
@@ -172,7 +172,7 @@ def run(reverse=False):
  epsreg=F(get("46_native_archimedean_head")[
     "regular_kernel_uniform_error_upper"])
  assert len(coef)==193
- reg=regular(coef);rows=rc318.source_info()
+ reg=regular_exact(coef);rows=rc318.source_info()
  prime=primes(rows,reverse);pm=pole()
  eps0=rc319.translation_error(rows,0)
  eps2=rc319.translation_error(rows,2)
