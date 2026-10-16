@@ -1,0 +1,36 @@
+name: RC320 original boundary-cancelled Schur certificate
+on:
+  push:
+    branches:
+      - research/rpb108-rc320-boundary-cancelled-schur
+    paths:
+      - "scripts/validate_rpb108_rc320_boundary_cancelled_schur.py"
+      - ".github/workflows/rc320-boundary-cancelled-build.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Generate original signed P0/P2 full Schur witness and reverse rational replay
+        run: |
+          python scripts/validate_rpb108_rc320_boundary_cancelled_schur.py --output certificates/rpb108_rc320_boundary_cancelled_schur.json
+          python scripts/validate_rpb108_rc320_boundary_cancelled_schur.py --output certificates/rpb108_rc320_boundary_cancelled_schur.json --replay
+      - name: Freeze verified RC320 certificate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc320_boundary_cancelled_schur.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC320: freeze boundary-cancelled original signed 2D Schur certificate"
+            git fetch origin research/rpb108-rc320-boundary-cancelled-schur
+            git rebase origin/research/rpb108-rc320-boundary-cancelled-schur
+            git push origin HEAD:research/rpb108-rc320-boundary-cancelled-schur
+          fi
