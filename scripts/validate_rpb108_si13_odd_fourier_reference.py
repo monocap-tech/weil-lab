@@ -50,7 +50,7 @@ def certify_window():
 
 def validate():
     m_min=certify_window()
-    assert m_min>F(101,100)  # certified m>1.01 on both +/- bands
+    assert m_min>F(7,5)  # exact rational all-frequency m>1.4 on both +/- bands
 
     # Original s(x)=sinh(x/2), odd and supported in [-B,B].
     # At xi_0=3/10, k=2*pi*xi_0=3*pi/5, kB=33*pi/50,
