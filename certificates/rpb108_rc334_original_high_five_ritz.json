@@ -1,0 +1,39 @@
+{
+  "milestone": "RC334",
+  "parent_route_head": "472088bcfd39fa374b9fed2d0c960d976ef5af48",
+  "pinned_original_upstream_git_blobs": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc322_low_3d_gram.json": "ba344b44436c5c2d392a9feb5c6dc0c9892dfe88",
+    "certificates/rpb108_rc323_coercivity_nogo.json": "3280e450654675c09292be902a8888e69c9a75ce",
+    "certificates/rpb108_rc324_high_tail_smoothing.json": "33f73683424d6408a35aeced0bb205bdb7215686",
+    "certificates/rpb108_rc326_native_high_3x3_residual.json": "62a7c8fe549ed4b0d1aec799e1d4f1402ea02e06",
+    "certificates/rpb108_rc328_signed_finite_tail_residual.json": "49d9daf11defd0f272865d3780f3a53d0af6e130",
+    "certificates/rpb108_rc330_original_high_four_ritz.json": "671d56538a0f70df1fab8ca840c1a47797bef56b",
+    "certificates/rpb108_rc332_signed_252_covariance.json": "b6d1931ff2b9e6675577ca8cda253b9b940f8875",
+    "certificates/rpb108_rc333_signed_254_cumulative.json": "b57a9d2e9f42cc642bfb5d52d6b6cb2bb46dbb19"
+  },
+  "original_CC27_signed_Weil_D_operator": true,
+  "original_native_high_degrees": [
+    244,
+    246,
+    248,
+    250,
+    254
+  ],
+  "new_original_prime_diagonal_exact_legendre_overlap_count": 7,
+  "original_prime_real_log_support_weight_errors_paid": true,
+  "original_endpoint_scalar_regular_even_pole_paid": true,
+  "original_high_five_mode_strictly_positive": true,
+  "original_high_5x5_Gershgorin_floor_strictly_above_one_fifth": true,
+  "five_mode_gain_strictly_above_optimal_four": true,
+  "new_five_mode_residual_includes_entire_infinite_high_space": true,
+  "original_RC333_four_mode_infinite_bound_not_transported": true,
+  "full_original_C_inverse_computed": false,
+  "full_three_dimensional_low_Schur_positive": false,
+  "full_278_high_head_positivity": false,
+  "Stage_I_closed": false,
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "next_cursor": "RC335: recover native 5-mode-to-omitted 252 and 256+ cross action with actual signed C252,254 and signed original b252, plus whole infinite residual on the NEW Y5; do not borrow RC333 Y4 residual or mistake finite high Ritz Schur upper for global low Schur lower."
+}
