@@ -50,6 +50,27 @@ using outward intervals of the original physical quantities, and assert the **st
 \]
 This is stronger than SI20's certified `<5` **only if the entire new validator and CI run pass**. The independently established SI20 certificate remains replayed by the same workflow.
 
+## Matrix-valued bridge toward the actual SI11 signed coupling
+
+The fourth-window Loewner comparison is **not restricted to the pole**. Let G:C^4→H_o synthesize the four true physical features, and let V:C^d→H_o be any finite physically supported odd input synthesis map. Define D=G*V and the true input Gram N=V*V. Because inversion reverses the Loewner order, the same original-reference comparison gives the exact **matrix-valued** inequality
+
+\[
+\boxed{ V^*A_o^{-1}V\ \preceq\ V^*C_{o,4}^{-1}V
+=\kappa^{-1}N-\kappa^{-2}D^*M^{-1}D.}
+\]
+
+Every off-diagonal entry in D matters. This gives a correct-sign supported upper bound for *all* finite odd input directions at once; it does not require independently solving the actual supported operator equation A_o y=v for each vector.
+
+For example, restrict SI11's original positive compact negative operator to the **odd** physical sector, take its exact projected finite block K_{o,b}=V Σ V* ≥0, and retain an independently certified operator-norm remainder η_b. An explicit sufficient **odd-sector** test is
+
+\[
+\lambda_{\max}\!\left(
+\Sigma^{1/2}[\kappa^{-1}N-\kappa^{-2}D^*M^{-1}D]
+\Sigma^{1/2}\right)+\eta_b/\kappa\le1.
+\]
+
+This is a conditional transfer theorem, **not** a numerical BS spectral certificate. For a complete original-form conclusion, the even parity block, the physical negative-frequency couplings and sufficient residual bounds must also be certified. A dense SI11 matrix at dimension about 1561 may remain less efficient than RC's native high-Schur method. The rank-four reference is a reusable upper comparison, not a demonstrated computational shortcut.
+
 ## What SI21 does not establish
 
 The SI11 full signed negative-frequency compact operator includes
