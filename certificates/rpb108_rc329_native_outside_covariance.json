@@ -12,6 +12,8 @@
     "-100786022696957/2000000000000000000000000",
     "-26320142117709/1000000000000000000000000"
   ],
+  "best_inherited_global_residual_bound_retained_when_split_is_worse": true,
+  "certified_strict_negative_original_degree250_covariance": true,
   "complete_one_omitted_mode_residual_norm_upper": "271633756614795742267/10000000000000000000000000",
   "complete_original_full_infinite_residual_norm_upper": "11055793678537513311971699/10000000000000000000000000000",
   "corrected_RC314_complete_full_residual_penalty_upper": "4505049482699873314161451/20000000000000000000000000000",
@@ -38,7 +40,7 @@
   "native_278_by_278_high_inverse_computed": false,
   "native_degree250_split_complete_residual_norm_upper": "176896306391995330941/160000000000000000000000",
   "native_degree250_split_penalty_upper": "11263083089508070585913/50000000000000000000000000",
-  "next_cursor": "RC330: extend first truly signed outside covariance to even modes 252,254,... with original prime overlap and endpoint action; preserve joint covariance before squaring and charge all remaining infinite high modes. The 278x278 native high head and low three-dimensional Schur positivity remain open.",
+  "next_cursor": "RC330: the original three-mode Ritz witness has a rigorously ADVERSE signed covariance at its first omitted high mode 250. Reoptimize native C on {244,246,248,250} including its genuine C250,250 diagonal, or solve a source-sensitive residual minimization. Then extend outside covariance to even 252+. Full inverse and 3D Schur positivity remain OPEN.",
   "original_CC27_signed_Weil_operator": true,
   "original_high_native_C_250_vs_244_246_248_intervals": {
     "244": [
@@ -63,6 +65,7 @@
     "-2615222936825997939/2500000000000000000000000"
   ],
   "original_prime_log_and_moving_support_error_fully_paid": true,
+  "original_signed_degree250_residual_strictly_larger_than_T_source": true,
   "parent_route_head": "c6a25abccb7ee8ec1b36c27016abbaebc571fbaf",
   "pinned_rational_three_mode_Ritz_y": [
     "223246960799/2500000000000000",
