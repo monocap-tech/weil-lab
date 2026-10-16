@@ -59,7 +59,7 @@ def original_clusters():
     groups = []
     for left, right, height in leaves:
         mass = 2*height*(right-left)
-        if groups and left == groups[-1][1]:
+        if groups and left == groups[-1].right:
             prior = groups[-1]
             groups[-1] = Group(prior.left, right, prior.mass+mass, 0)
         else:
