@@ -672,3 +672,14 @@ This handoff is historical provenance, not the live project cursor. See [Lean Fo
 \texttt{H1-P4.4 / EXAMPLES AND SHARPNESS AUDIT}
 }
 ```
+
+
+---
+
+## Post-audit WD-T40 note
+
+This audit remains the historical H1-P4.3 certification of WD-T37 through WD-T39.
+
+Its statement that WD-T38 terminated at AZ-FIN-WEIL-NULL-EXTENSION describes the original audited morphology package and is retained as provenance.
+
+Post-Horizon theorem WD-T40, audited in RPB-65, now discharges that interface negatively under the same WD-T38 carrier hypotheses. WD-T40 is additive and does not retroactively change the correctness of the original WD-T38 reduction.
