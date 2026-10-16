@@ -12,7 +12,8 @@ from validate_rpb108_si10_complement_positivity import (
 from validate_rpb108_si08_multiband_rank import B, taylor_order
 
 BITS = (9, 10, 12, 16, 20, 21, 24, 32)
-CODIM_SI10 = {9:939, 10:1003, 12:1121, 16:1367, 32:2151}
+CODIM_SI10 = {9:939, 10:1003, 12:1121, 16:1367,
+              20:1561, 21:1631, 24:1781, 32:2151}
 
 
 def validate():
