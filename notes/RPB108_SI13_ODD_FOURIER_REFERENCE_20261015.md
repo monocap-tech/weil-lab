@@ -36,13 +36,13 @@ J_+=[11/50,19/50]=[0.22,0.38],\qquad J_-=-J_+,\qquad J=J_+\cup J_-.
 \]
 SI13's exact rational verifier proves
 \[
-\boxed{m(\xi)>\kappa+1=1.001\quad(\xi\in J).}
+\boxed{m(\xi)>\frac75=1.4>\kappa+1\quad(\xi\in J).}
 \]
-In fact, it proves the stronger reported rational global lower margin (see CI replay).
+The first successful Actions replay showed a minimum outward rational bound of approximately **1.4000438497**; the CI validator now explicitly asserts the exact rational inequality \(m>7/5\) across the entire band.
 
 The proof is *continuous-frequency*, not a finite sampling extrapolation. Partition \(J_+\) into 128 rational equal-width intervals \([l_i,r_i]\). On each interval, the original quarter-digamma Euler series with the validated 128-term positive partial sum and monotone integral-tail lower bound gives a lower bound \(A(l_i)\) on the archimedean multiplier. SI06's full **original signed** seven-prime rational phase/cosine code bounds the prime multiplier at the midpoint \(x_i\). Using the certified \(|p'(\xi)|<69\) derivative, the all-point lower bound is
 \[
-\boxed{m(\xi)\ge A(l_i)+p_{\rm lower}(x_i)-\frac{69}{2}(r_i-l_i)>\kappa+1}
+\boxed{m(\xi)\ge A(l_i)+p_{\rm lower}(x_i)-\frac{69}{2}(r_i-l_i)>7/5}
 \]
 throughout each entire interval. Evenness covers \(J_-\). No negative odd-pole contribution is dropped; it is kept for the inverse-response comparison.
 
@@ -128,7 +128,7 @@ Insert the previous mass lower into the positive contraction comparison:
 \]
 The strict value \(414\) is certified by rational enclosures, and is genuinely better than SI12's \(\approx471.3\) upper.
 
-This is a *strict positive progress on the actual odd-sector supported inverse response*, not an extrapolation from an even positive pole. It does not by itself discharge the relevant pole's Birman–Schwinger threshold \(\le1\): the estimate is deliberately coarse, and a true inverse response may be much smaller. The \(414\) upper is **not** an actual eigenvalue, lower bound, or indication of a negative Weil direction.
+The initial successful CI replay returned a new odd-pole inverse upper bound of approximately **413.752482705896**, with a certified improvement greater than **57.54** over the scalar-only bound. This is *strict positive progress on the actual odd-sector supported inverse response*, not an extrapolation from an even positive pole. It does not by itself discharge the relevant pole's Birman–Schwinger threshold \(\le1\): the estimate is deliberately coarse, and a true inverse response may be much smaller. The \(414\) upper is **not** an actual eigenvalue, lower bound, or indication of a negative Weil direction.
 
 The same construction can incorporate *several disjoint certified positive windows*; then their physically supported contraction remains \(0\preceq T_J\preceq I\), so the inverse comparison rewards the **combined odd Fourier mass** without paying new signed prime uncertainty.
 
