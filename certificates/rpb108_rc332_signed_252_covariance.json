@@ -1,0 +1,76 @@
+{
+  "milestone": "RC332",
+  "parent_route_head": "c62d6d2f7d37cab17586062ab9e60e1a2b7d4dbf",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc313_prime_pole_distributions.json": "954b4892cf3b4e999e65476d7ce341021528d9e8",
+    "certificates/rpb108_rc323_coercivity_nogo.json": "3280e450654675c09292be902a8888e69c9a75ce",
+    "certificates/rpb108_rc324_high_tail_smoothing.json": "33f73683424d6408a35aeced0bb205bdb7215686",
+    "certificates/rpb108_rc328_signed_finite_tail_residual.json": "49d9daf11defd0f272865d3780f3a53d0af6e130",
+    "certificates/rpb108_rc330_original_high_four_ritz.json": "671d56538a0f70df1fab8ca840c1a47797bef56b",
+    "certificates/rpb108_rc331_native_four_interface.json": "f004126480c713639e1cdc930bd89759948d5714"
+  },
+  "original_CC27_signed_Weil_D_operator": true,
+  "represented_even_high_degrees": [
+    244,
+    246,
+    248,
+    250
+  ],
+  "first_omitted_degree": 252,
+  "original_signed_prime_integrals_28": true,
+  "original_prime_log_support_weight_errors_paid": true,
+  "native_original_endpoint_regular_pole_paid": true,
+  "independent_original_signed_source_252_rebuilt": true,
+  "original_signed_degree252_covariance_interval_evaluated": true,
+  "original_high_infinite_residual_254plus_paid": true,
+  "original_full_high_residual_norm_less_than": "3/2500",
+  "original_correct_sign_penalty_less_than": "1/4000",
+  "full_original_signed_C_inverse_computed": false,
+  "full_three_dimensional_low_Schur_positive": false,
+  "Stage_I_closed": false,
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "next_cursor": "RC333: certify and exploit the actual native signed covariance for omitted n254 onward, preserving the original infinite residual and strict distinction between Ritz Schur upper and full low Schur lower bounds.",
+  "exact_native_original_signed_C_252_high_intervals": {
+    "244": [
+      "9575385648982370615341/1000000000000000000000000",
+      "75699317221098574982017/5000000000000000000000000"
+    ],
+    "246": [
+      "8076631071929985652897/10000000000000000000000000",
+      "7990688278786747435591/1250000000000000000000000"
+    ],
+    "248": [
+      "63961111794130101631303/2000000000000000000000000",
+      "375857640390229589587081/10000000000000000000000000"
+    ],
+    "250": [
+      "602225263105369463828129/10000000000000000000000000",
+      "131695934177985716341137/2000000000000000000000000"
+    ]
+  },
+  "exact_original_signed_b252_interval": [
+    "5257190268774209943/100000000000000000000000",
+    "10514380537548931861/200000000000000000000000"
+  ],
+  "exact_original_four_mode_CY252_interval": [
+    "29542096262635862083/10000000000000000000000000",
+    "10745657078083193827/2500000000000000000000000"
+  ],
+  "exact_original_signed_covariance_252_interval": [
+    "776542104955601/5000000000000000000000000",
+    "1129839276449729/5000000000000000000000000"
+  ],
+  "exact_original_signed_residual_252_interval": [
+    "482736398565088218993/10000000000000000000000000",
+    "496176930614810730967/10000000000000000000000000"
+  ],
+  "degree252_original_covariance_strictly_positive": true,
+  "original_four_mode_unsplit_infinite_residual_norm_upper": "115114758561412988638177/100000000000000000000000000",
+  "original_four_mode_degree252_split_residual_norm_upper": "115085855236380839896189/100000000000000000000000000",
+  "strict_original_degree252_split_residual_improvement": true,
+  "selected_original_whole_residual_norm_upper": "115085855236380839896189/100000000000000000000000000",
+  "selected_original_correct_sign_full_penalty_upper": "24408079996190474317581/100000000000000000000000000"
+}
