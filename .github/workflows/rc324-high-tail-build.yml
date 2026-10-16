@@ -1,0 +1,36 @@
+name: RC324 original high operator smoothing
+on:
+  push:
+    branches:
+      - research/rpb108-rc324-high-tail-smoothing
+    paths:
+      - "scripts/validate_rpb108_rc324_high_tail_smoothing.py"
+      - ".github/workflows/rc324-high-tail-build.yml"
+permissions:
+  contents: write
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Certify native high diagonal/far complement and signed Ritz trial
+        run: |
+          python scripts/validate_rpb108_rc324_high_tail_smoothing.py --output certificates/rpb108_rc324_high_tail_smoothing.json
+          python scripts/validate_rpb108_rc324_high_tail_smoothing.py --output certificates/rpb108_rc324_high_tail_smoothing.json --replay
+      - name: Freeze exact rational certificate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc324_high_tail_smoothing.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC324: freeze stronger original even tail and high Ritz certificate"
+            git fetch origin research/rpb108-rc324-high-tail-smoothing
+            git rebase origin/research/rpb108-rc324-high-tail-smoothing
+            git push origin HEAD:research/rpb108-rc324-high-tail-smoothing
+          fi
