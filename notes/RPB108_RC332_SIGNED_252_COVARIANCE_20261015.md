@@ -10,13 +10,51 @@ For each \(m\in\{244,246,248,250\}\), compute the original signed seven-prime tr
 
 Independently reconstruct the original \(b_{252}=\langle v_{252},Tx\rangle_D\) from the signed RC323 Legendre interval moment recurrence, original boundary endpoint terms and the complete original physical-to-\(D\) source error. Contract the four exact original \(C_{252,m}\) intervals against **RC330's frozen rational four-mode \(Y_4x\)**. Determine the rigorous signed covariance \(b_{252}(CY_4x)_{252}\) and signed residual \(b_{252}-(CY_4x)_{252}\).
 
-This first pass uses GitHub Actions to compute and print all exact rational source/coupling/covariance intervals. Their exact values and any certified sign must be read from the replay output; no sign is assumed from RC329's adverse degree-250 result.
+GitHub Actions replayed these complete exact rational intervals. Unlike RC329's adverse degree-250 covariance for the *old three-mode* trial, the degree-252 covariance for the *new four-mode* trial is **strictly positive**.
+
+The original signed degree-252 source and four-mode high action satisfy
+
+\[
+ 5.25719026877420\times10^{-5}<b_{252}<5.25719026877447\times10^{-5},
+\]
+\[
+ 2.95420962626358\times10^{-6}
+ <(CY_4x)_{252}
+ <4.29826283123328\times10^{-6}.
+\]
+
+The resulting original signed covariance is
+
+\[
+\boxed{
+ 1.55308420991120\times10^{-10}
+ < b_{252}(CY_4x)_{252}
+ <2.25967855289946\times10^{-10}.
+}
+\]
+
+Consequently, the actual first omitted residual coefficient satisfies
+
+\[
+ 4.82736398565088\times10^{-5}
+ <(Tx-CY_4x)_{252}
+ <4.96176930614811\times10^{-5}.
+\]
+
+These signs are proved by outward rational intervals, not extrapolated from the degree-250 result. All four exact original \(C_{252,m}\) entry intervals are pinned in the JSON certificate.
 
 ## Infinite residual and explicit limitations
 
 The entire \(n\ge254\) complement remains rigorously accounted for using RC328's full original signed \(\|Tx\|\) and RC331's original four-input-to-infinite-high-action norm bound. Subtract only the known **squared minimum** source and high-action energies at the isolated \(n=252\), and combine it with the signed residual by orthogonal Parseval. Retain the prior unsplit bound if the local split is unfavorable.
 
-The validator enforces an original complete infinite residual norm \(<0.0012\) and a corrected RC314 residual penalty \(<0.00025\) for the unchanged original four-mode Ritz trial. These are the current coarse **caps**; reporting an improved cap or a covariance sign requires observing the actual signed interval output.
+The isolated positive covariance also gives a **strict but small full-space residual improvement** on this unchanged four-mode vector:
+
+| Complete original infinite high residual | Certified upper |
+|---|---:|
+| Before the degree-252 signed split | \(0.001151147585615\) |
+| After the degree-252 signed split | \(0.001150858552364\) |
+
+The rigorous corrected RC314 residual penalty is \(<0.0002440808000\). This is better than the unsplit bound on the **same four-mode trial**, but it is not claimed to beat RC328's independent three-mode bound. The remaining \(n\ge254\) complement is still paid by conservative whole-space norm estimates. The result establishes local signed information, not a full inverse.
 
 **No full original \(C^{-1}\)**, no positive original three-dimensional low Schur lower bound, no full 278-high finite positivity, Stage I, F4, Lean or RH result is asserted. The isolated signed covariance is a local calculation, not a global Schur certificate.
 
