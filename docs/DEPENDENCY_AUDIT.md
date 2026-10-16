@@ -276,7 +276,7 @@ followed by
 }
 ```
 
-The downstream interface is
+The historical downstream interface was
 
 ```math
 \boxed{
@@ -284,7 +284,23 @@ The downstream interface is
 }
 ```
 
-No later boundary-trace, Stieltjes, or UCP diagnostic is consumed by WD-T38.
+WD-T40 now discharges that interface negatively via Gaussian support-gap coercivity:
+
+```math
+\boxed{
+\text{WD-T38}
++
+\text{strict enlarged null equation}
++
+\text{WD-T34}
++
+\text{WD-T35}
+\longrightarrow
+\text{WD-T40}.
+}
+```
+
+No boundary-trace, Stieltjes, Mellin, or delay-wavefront theorem is consumed by WD-T40.
 
 ### Noncompact morphology
 
@@ -398,7 +414,9 @@ Consumed in
 
 ```math
 \boxed{
-\text{WD-T35}.
+\text{WD-T35},
+\qquad
+\text{WD-T40}.
 }
 ```
 
