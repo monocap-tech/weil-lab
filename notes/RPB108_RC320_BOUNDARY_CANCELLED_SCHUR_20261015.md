@@ -123,7 +123,7 @@ The exact-rational certificate gives the following conservative, outward-rounded
 | Full signed Schur $\lvert S_{0w}\rvert$ | < $4.238605\times10^{-4}$ |
 | **Full signed 2×2 Schur determinant** | **> $4.860433\times10^{-7}$** |
 
-These bounds establish strict positive definiteness on the **whole two-dimensional $P_0/P_2$ low subspace after the entire infinite high complement has been eliminated**, under the pinned CC27/RC313 operator identification. All seven exact-rational input certificate blobs are pinned or independently checked as applicable. The determinant margin is a certificate margin, not an approximation to the actual determinant.
+These bounds establish strict positive definiteness on the **whole two-dimensional $P_0/P_2$ low subspace after the entire infinite high complement has been eliminated**, under the pinned CC27/RC313 operator identification. Six inherited certificate Git blobs are pinned and independently checked against their recorded hashes. The determinant margin is a certificate margin, not an approximation to the actual determinant.
 
 ## Scope, reproducibility, and next cursor
 
