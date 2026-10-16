@@ -1,0 +1,40 @@
+{
+  "milestone": "RC333",
+  "parent_route_head": "c5f2550213e5c153f03d59e1b199f1fb09d4be5b",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc313_prime_pole_distributions.json": "954b4892cf3b4e999e65476d7ce341021528d9e8",
+    "certificates/rpb108_rc323_coercivity_nogo.json": "3280e450654675c09292be902a8888e69c9a75ce",
+    "certificates/rpb108_rc324_high_tail_smoothing.json": "33f73683424d6408a35aeced0bb205bdb7215686",
+    "certificates/rpb108_rc328_signed_finite_tail_residual.json": "49d9daf11defd0f272865d3780f3a53d0af6e130",
+    "certificates/rpb108_rc330_original_high_four_ritz.json": "671d56538a0f70df1fab8ca840c1a47797bef56b",
+    "certificates/rpb108_rc331_native_four_interface.json": "f004126480c713639e1cdc930bd89759948d5714",
+    "certificates/rpb108_rc332_signed_252_covariance.json": "b6d1931ff2b9e6675577ca8cda253b9b940f8875"
+  },
+  "original_CC27_signed_Weil_D_operator": true,
+  "represented_even_high_degrees": [
+    244,
+    246,
+    248,
+    250
+  ],
+  "original_first_signed_omitted_degree_252_pinned": true,
+  "additional_computed_degree": 254,
+  "original_signed_prime_integrals_28": true,
+  "original_prime_log_support_weight_errors_paid": true,
+  "native_original_endpoint_regular_pole_paid": true,
+  "independent_original_signed_source_254_rebuilt": true,
+  "original_signed_degree254_covariance_interval_evaluated": true,
+  "original_high_infinite_residual_256plus_paid": true,
+  "original_full_high_residual_norm_less_than": "3/2500",
+  "original_correct_sign_penalty_less_than": "1/4000",
+  "previous_RC332_full_residual_bound_preserved": true,
+  "current_degree254_covariance_sign_asserted": false,
+  "full_original_signed_C_inverse_computed": false,
+  "full_three_dimensional_low_Schur_positive": false,
+  "Stage_I_closed": false,
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "next_cursor": "RC334: continue the genuine original signed outside-high covariance to degree 256 and beyond; consolidate finite signed-energy blocks before full 278-mode inverse, with the far-tail and low Schur still open."
+}
