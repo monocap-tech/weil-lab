@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     # SI02–SI27 replay includes the signed full physical 9x9 interval Gram;
     # retain every original validator rather than accepting timeout cancellation.
-    timeout-minutes: 25
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
