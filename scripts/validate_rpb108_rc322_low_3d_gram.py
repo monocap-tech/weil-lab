@@ -85,7 +85,7 @@ def scalar():
  base=H(n)-F(1,2*n)+F(1,12*n*n)
  gl=base-7*b-F(1,120*n**4); gh=base-7*a
  assert 0<gh-gl<F(1,10**9)
- old=rc315.gamma_iv();assert old.lo<=gl<=gh<=old.hi
+ old=rc315.gamma_iv();assert old.lo-F(1,10**30)<=gl<=gh<=old.hi+F(1,10**30) # pay log-grid rounding
  L=rc315.log_i(2*rc315.pi_iv()*rc315.R)
  return (IV(-gh-L.hi,-gl-L.lo).clip(),IV(gl,gh).clip())
 def mul(a,b):
