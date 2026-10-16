@@ -1,7 +1,7 @@
 # RC320 — Endpoint-cancelled original signed P0/P2 high response and the first positive 2×2 Schur block
 
 **Source:** original CC27 Weil form, identified as the bounded completed D-Riesz representative by RC313.  
-**Parent:** merged RC319 at \`b9441943e1e289453290c9ce46d75fd4e62ca405\`.  
+**Parent:** merged RC319 at `b9441943e1e289453290c9ce46d75fd4e62ca405`.  
 **Rank:** buffered 317-reference, with 122 even low modes and 195 odd low modes. The high complement is positive by inherited RC283/314.  
 **Standing:** certificate establishes the **full high-eliminated Schur quadratic form on the two-dimensional span of P0 and P2**, *conditional on the inherited original-operator identification*. The other 120 even and 195 odd low coordinates and Stage I/F4/Lean/RH remain OPEN.
 
@@ -111,6 +111,20 @@ $$
 
 The result certifies a positive full high-eliminated 2×2 Schur block **in the original signed operator**, not just the original low principal block. The original operator's positive high complement already includes **all infinite high modes**.
 
+The exact-rational certificate gives the following conservative, outward-rounded numerical measurements for the transformed low basis:
+
+| Quantity | Certified bound |
+|---|---:|
+| Physical prime source tail beyond degree 510, squared | < $3.961883\times10^{-8}$ |
+| Complete high $D$ response norm $\|Tw\|_D$ | < $9.496304\times10^{-5}$ |
+| Complete high $D$ response energy $\|Tw\|_D^2$ | < $9.017978\times10^{-9}$ |
+| Full signed Schur $S_{00}$ | > $9.150876\times10^{-4}$ |
+| Full signed Schur $S_{ww}$ | > $7.274724\times10^{-4}$ |
+| Full signed Schur $\lvert S_{0w}\rvert$ | < $4.238605\times10^{-4}$ |
+| **Full signed 2×2 Schur determinant** | **> $4.860433\times10^{-7}$** |
+
+These bounds establish strict positive definiteness on the **whole two-dimensional $P_0/P_2$ low subspace after the entire infinite high complement has been eliminated**, under the pinned CC27/RC313 operator identification. All seven exact-rational input certificate blobs are pinned or independently checked as applicable. The determinant margin is a certificate margin, not an approximation to the actual determinant.
+
 ## Scope, reproducibility, and next cursor
 
 The two-dimensional Schur block is only a subspace of the buffered rank-317 low reference. **Positivity on a principal subspace does not establish full even or odd positivity**. No inverse for all 317 low sources, full operator lower spectral bound, Stage I, Lean, F4 or RH follows.
@@ -119,7 +133,7 @@ The two-dimensional Schur block is only a subspace of the buffered rank-317 low 
 
 Exact regeneration and reverse order replay:
 
-\`\`\`bash
+```bash
 python scripts/validate_rpb108_rc320_boundary_cancelled_schur.py --output certificates/rpb108_rc320_boundary_cancelled_schur.json
 python scripts/validate_rpb108_rc320_boundary_cancelled_schur.py --output certificates/rpb108_rc320_boundary_cancelled_schur.json --replay
-\`\`\`
+```
