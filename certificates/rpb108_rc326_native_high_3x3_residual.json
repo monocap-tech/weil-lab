@@ -1,0 +1,83 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RC314_correct_sign_full_high_residual_penalty_upper": "2887321643424872057511/2500000000000000000000000",
+  "RH": false,
+  "Stage_I_closed": false,
+  "actual_Ritz_trial_full_high_action_CY_norm_upper": "1079314884580075855781/1000000000000000000000000",
+  "additional_prime_rational_center_overlap_integrals": 21,
+  "all_original_prime_shift_edge_log_errors_paid": true,
+  "complete_infinite_high_residual_T_minus_CY_norm_upper": "5006828491435349460861/2000000000000000000000000",
+  "exact_native_high_inverse_computed": false,
+  "exact_native_three_mode_Ritz_reduction_lower": "8647929167532717/2000000000000000000000000",
+  "explicit_original_high_3mode_Ritz_trial": [
+    "223246960799/2500000000000000",
+    "-280406182547/5000000000000000",
+    "-267785010573/10000000000000000"
+  ],
+  "explicit_represented_3mode_residual_norm_upper": "16452016067573111979198311/20000000000000000000000000000000",
+  "full_head_278x278_positive": false,
+  "full_signed_3D_Schur_positive": false,
+  "high_block_degrees": [
+    244,
+    246,
+    248
+  ],
+  "independently_pinned_whole_original_high_source_Tx_norm_upper": "2848198722275197749299/2000000000000000000000000",
+  "infinite_even_far_tail_action_included_via_global_norm": true,
+  "low_witness_high_248_signed_source_interval": [
+    "-56163893972350861923/5000000000000000000000000",
+    "-14040973493084515637/1250000000000000000000000"
+  ],
+  "milestone": "RC326",
+  "native_original_high_3x3_Gershgorin_floor_lower": "399794033209340944050549/1250000000000000000000000",
+  "native_original_high_3x3_determinant_lower": "751671242772795636984519/10000000000000000000000000",
+  "native_original_high_3x3_leading_2x2_minor_lower": "1779981513666783828641171/10000000000000000000000000",
+  "native_original_high_3x3_strictly_positive": true,
+  "native_original_signed_CC27_operator": true,
+  "next_cursor": "RC327: improve the *whole-space* T-CY residual by deriving native source-resolved C*v244,v246,v248 Parseval and separating 278 finite-head coupling from the strongly coercive n>=800 far tail. RC326 proves three-mode positive high compression and a valid\u2014but very conservative\u2014full infinite residual. The true 3D Schur lower bound stays OPEN.",
+  "optimal_native_two_mode_Ritz_reduction_upper": "21031831067327027/5000000000000000000000000",
+  "original_full_D_to_D_N0_operator_norm_upper": "9920581682118470850967493002679/1000000000000000000000000000000",
+  "original_high_3x3_C_intervals": {
+    "244_244": [
+      "4188273406774877123162997/10000000000000000000000000",
+      "4243116612875660067924307/10000000000000000000000000"
+    ],
+    "244_246": [
+      "596328152195939469995781/10000000000000000000000000",
+      "162843261316024032207867/2500000000000000000000000"
+    ],
+    "244_248": [
+      "56660477138363040464091/2000000000000000000000000",
+      "338548095836053441927137/10000000000000000000000000"
+    ],
+    "246_246": [
+      "2175610354291278462658591/5000000000000000000000000",
+      "550808437324358172766759/1250000000000000000000000"
+    ],
+    "246_248": [
+      "405879032114055299830483/10000000000000000000000000",
+      "461327375739786691333737/10000000000000000000000000"
+    ],
+    "248_248": [
+      "4295644362273989120389361/10000000000000000000000000",
+      "4351294454857405180714431/10000000000000000000000000"
+    ]
+  },
+  "original_witness_Schur_three_mode_trial_upper": "399202187705412666783/5000000000000000000000000",
+  "parent_route_head": "477c757619a82d282219832ca448338045150db7",
+  "pinned_upstream_git_blobs": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc313_prime_pole_distributions.json": "954b4892cf3b4e999e65476d7ce341021528d9e8",
+    "certificates/rpb108_rc318_p0_signed_schur.json": "85dbc5bc373de9922bfe17a6d43ab2cef7178cd6",
+    "certificates/rpb108_rc320_boundary_cancelled_schur.json": "fe8821aaba62ba50c2a8eba1a2fa0020ba818003",
+    "certificates/rpb108_rc321_p4_boundary_native.json": "26eedd29ee80063c7b8ccc5f1d5de025e7050842",
+    "certificates/rpb108_rc322_low_3d_gram.json": "ba344b44436c5c2d392a9feb5c6dc0c9892dfe88",
+    "certificates/rpb108_rc323_coercivity_nogo.json": "3280e450654675c09292be902a8888e69c9a75ce",
+    "certificates/rpb108_rc324_high_tail_smoothing.json": "33f73683424d6408a35aeced0bb205bdb7215686",
+    "certificates/rpb108_rc325_native_high_2x2.json": "27f42ff30438613e335f39e232c8ac0329f1d854",
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9"
+  },
+  "sharp_head_to_far_tail_coupling_operator_norm_certified": false,
+  "strict_Ritz_improvement_over_optimal_2mode_lower": "1175983703009531/10000000000000000000000000"
+}
