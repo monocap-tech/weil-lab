@@ -273,7 +273,7 @@ def run(reverse=False):
   if n:h+=F(1,n)
   H[n]=h
  Dh2=smin+H[2];Dh244=smin+H[FIRST];Dh512=smin+H[CUT]
- assert Dh2>5 and Dh244>10
+ assert Dh2>5 and Dh244>9
  fin=F(0)
  for n in range(FIRST,CUT,2):
   endpoint=F(2*n+1,(n-2)*(n+3))
@@ -289,13 +289,13 @@ def run(reverse=False):
  # and sum_{n>=512} (2n+1)/(n²(n+1)²)=1/512².
  endpoint_tail=root_hi(F(6))/CUT
  infinite_norm=(root_hi(tailphysicalupper)+endpoint_tail)/root_hi(Dh2*Dh512) if False else (
-   root_hi(tailphysicalupper)+endpoint_tail)/F(10)
- # Using sqrt(Dh2*Dh512)>10 is guaranteed here; preserve
+   root_hi(tailphysicalupper)+endpoint_tail)/F(7)
+ # Using sqrt(Dh2*Dh512)>7 is guaranteed here; preserve
  # outward bound by checking the exact rational inequality.
- assert Dh2*Dh512>100
- regular_norm=regfault/F(10)
- pole_norm=32*B*Z**FIRST/F(10)
- assert Dh2*Dh244>100
+ assert Dh2*Dh512>49
+ regular_norm=regfault/F(7)
+ pole_norm=32*B*Z**FIRST/F(7)
+ assert Dh2*Dh244>49
  Tv2_bound=finite_norm+eps_weighted+infinite_norm+regular_norm+pole_norm
  Tv2_sq_up=hi(Tv2_bound**2,BUD)
  ref=get("314_fredholm_schur")
