@@ -99,7 +99,26 @@ The GitHub Actions standard-library \`Fraction\` validator:
 3. Computes outward rational \(W,M\) and all physically supported Taylor orders for \(b\in\{9,10,12,16,32\}\);
 4. Accepts a claim only if its exact positive coefficient exceeds \(1/2000\), including the complete negative pole and every unknown frequency leaf.
 
-The action transcript supplies actual sufficient codimension numbers; they must not be guessed in this note.
+The complete original signed certified Fourier audit on the first GitHub Actions replay gives:
+
+- Whole protected nonnegative-frequency cutoff: \(m(\xi)>1/1000\) outside the certified uncertain cover (including **all frequencies above 896**).
+- On \(0\le\xi<896\): 9,261 strictly protected-positive dyadic cells, 973 unresolved leaves in 107 grouped positive-frequency intervals, and both reflected intervals.
+- The full rational uncertain-band cover has **total width \(W=30.40625\)**; the genuine negative-frequency mass satisfies \(M\le37.59565259375\).
+- On \(896\le\xi\le1200\): 2,535 intervals positively certified above \(1/1000\); minimum rational lower certificate \(>0.0036925\). For all \(|\xi|\ge1200\), the monotone digamma bound also exceeds \(1/1000\).
+
+For compactly supported modulated-polynomial spans \(V_b\) including the exact signed odd pole vector, the resulting **entire original signed Weil form** obeys:
+
+| Local approximation bits | Sufficient physical codimension \(\dim V_b\le\) | Certified physical lower bound on \(V_b^\perp\) |
+|---:|---:|---:|
+| 9 | **939** | \(Q_{\rm Weil}(f)>(68/100000)\|f\|_2^2\) |
+| 10 | 1003 | \(Q_{\rm Weil}(f)>(92/100000)\|f\|_2^2\) |
+| 12 | 1121 | \(Q_{\rm Weil}(f)>(995/1000000)\|f\|_2^2\) |
+| 16 | 1367 | \(Q_{\rm Weil}(f)>(999/1000000)\|f\|_2^2\) |
+| 32 | 2151 | \(Q_{\rm Weil}(f)>(999/1000000)\|f\|_2^2\) |
+
+The first source replay also reports larger actual outward rational margins (approximately \(0.0006842295477,\,0.0009210573869,\,0.0009950660867,\,0.0009999807269,\,0.001\), respectively). The table uses deliberately weaker **rational inequalities**, now mandatory in the validator. The \(b=9\) case is the smallest certified codimension among these five constructions and yields the direct **whole-original-form** positive complement statement on an infinite-dimensional closed physical subspace of codimension at most **939**.
+
+The finite exceptional block of size ≤939 and its cross-couplings remain open. The RC314 argument already has a tighter **301-dimensional** possible-negative-sector localization in a different \(D\)-Riesz representation: SI10 is therefore a separate structural positivity construction, **not** a computational shortcut relative to the RC chain.
 
 **Comparison:** RC314 already certified possible nonpositive directions in a 301-dimensional low space through the actual \(D\)-Riesz model. This SI10 route may produce a larger codimension and is **not** a more efficient Stage I proof by itself. Its distinction from SI05–09 is that it establishes an actual **positive original Weil form** on the certified complement, not only a small negative-operator approximation residual.
 
