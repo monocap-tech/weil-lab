@@ -159,8 +159,19 @@ def run(reverse=False):
    "inherited_even_244plus_global_floor"])
  penalty=up(Rtotal*Rtotal/mu)
  oldPenalty=F(old["certified_RC314_correct_sign_entire_residual_penalty_upper"])
- assert penalty<oldPenalty,("one-mode source-resolved covariance did not sharpen residual")
- assert Rtotal<F(old["certified_original_entire_infinite_R_T_minus_CY_norm_upper"])
+ # The signed covariance can be adverse, and a one-mode split
+ # need not beat the previously certified whole-space bound.
+ # Preserve BOTH, and carry forward their rigorous minimum.
+ nativePenalty=penalty
+ nativeRtotal=Rtotal
+ oldR=F(old["certified_original_entire_infinite_R_T_minus_CY_norm_upper"])
+ strict=nativePenalty<oldPenalty
+ if not strict:
+  print("RC329 measured signed covariance:",float(covariance.l),float(covariance.hi) if hasattr(covariance,"hi") else float(covariance.h))
+  print("RC329 native new residual:",float(nativeRtotal),"old:",float(oldR))
+  print("RC329 native new penalty:",float(nativePenalty),"old:",float(oldPenalty))
+ Rtotal=min(nativeRtotal,oldR)
+ penalty=min(nativePenalty,oldPenalty)
  # The entire infinite Schur operator remains unknown.
  low=F(cert("323_coercivity_nogo")["original_low_quadratic_B_upper"])
  assert penalty>low
@@ -188,8 +199,11 @@ def run(reverse=False):
   inherited_represented_three_mode_residual_norm_upper=str(Rrepresented),
   complete_original_full_infinite_residual_norm_upper=str(Rtotal),
   corrected_RC314_complete_full_residual_penalty_upper=str(penalty),
+  native_degree250_split_complete_residual_norm_upper=str(nativeRtotal),
+  native_degree250_split_penalty_upper=str(nativePenalty),
   RC328_previous_complete_residual_penalty_upper=str(oldPenalty),
-  rigorous_strict_signed_outside_covariance_refinement=True,
+  measured_degree250_covariance_with_rigorous_intervals=True,
+  strict_full_residual_improvement_from_degree250_split=strict,
   finite_original_250through798_covariance_fully_computed=False,
   native_278_by_278_high_inverse_computed=False,
   full_three_dimensional_Schur_positive=False,
