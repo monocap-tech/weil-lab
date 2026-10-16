@@ -110,7 +110,7 @@ Q_{00}&Q_{02}\\Q_{02}&Q_{22}
 \end{pmatrix}.
 $$
 
-Its determinant and second Schur pivot are tested with **outward rational intervals**, not sampling. The script verifies strict positivity of the principal block and explicitly separates that from the high-eliminated Schur block.
+Its determinant and second Schur pivot are tested with **outward rational intervals**, not sampling. The resulting certificate establishes **determinant (>0.0001538789640705221)** and **second physical low pivot (>0.0038226828652162424)**; the original (Q_{22}) is enclosed approximately in ([0.1992600091,0.1992650954]). The script verifies strict positivity of the principal block and explicitly separates that from the high-eliminated Schur block.
 
 ## 5. Whole-space high action and remaining obstruction
 
@@ -137,7 +137,7 @@ $$
 \ge B_{22}^{\rm lower}-\frac{\|Tv_2\|_{D,\rm upper}^2}{\mu_e}.
 $$
 
-Whether that bound is positive is **reported**, not assumed. The mixed high-response Gram is bounded by Cauchy–Schwarz, but its *signed covariance* and the actual correction through $C^{-1}$ are not yet evaluated.
+**The resulting conservative lower bound is negative:** about (-0.03747761095816). This is an **inconclusive bound**, not a proof that the Schur diagonal is negative. The completely paid (|Tv_2|_D) upper bound is approximately **0.02018211569324**. Thus RC318's successful (P_0) scalar technique does **not** simply transfer to (P_2) with the same global high coercivity floor. The mixed high-response Gram is bounded by Cauchy–Schwarz, but its *signed covariance* and the actual correction through $C^{-1}$ are not yet evaluated.
 
 **No full $2\times2$ Schur positivity claim is made from a positive $2\times2$ original low matrix.** This distinction is essential because the low determinant is small and coupling to the high complement may alter its inertia.
 
