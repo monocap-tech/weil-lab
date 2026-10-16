@@ -1,0 +1,65 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RH": false,
+  "Stage_I_closed": false,
+  "actual_full_high_C_inverse_computed": false,
+  "certified_strict_extra_coupled_gain_over_optimal_single_mode_lower": "6955380345055387/5000000000000000000000000",
+  "exact_rational_center_prime_translation_overlap_integrals": 21,
+  "explicit_original_high_rational_2mode_Ritz_trial": [
+    "87682073613/1000000000000000",
+    "-29251286831/500000000000000"
+  ],
+  "full_278_mode_high_head_certified": false,
+  "full_high_residual_paid": false,
+  "full_signed_3D_Schur_positive": false,
+  "head_to_far_tail_action_paid": false,
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc313_prime_pole_distributions.json": "954b4892cf3b4e999e65476d7ce341021528d9e8",
+    "certificates/rpb108_rc314_fredholm_schur.json": "6496be8d20176f173c0ff8b6e393b0ccd7c6ff5b",
+    "certificates/rpb108_rc322_low_3d_gram.json": "ba344b44436c5c2d392a9feb5c6dc0c9892dfe88",
+    "certificates/rpb108_rc323_coercivity_nogo.json": "3280e450654675c09292be902a8888e69c9a75ce",
+    "certificates/rpb108_rc324_high_tail_smoothing.json": "33f73683424d6408a35aeced0bb205bdb7215686",
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9"
+  },
+  "low_R323_witness_native_high_response": {
+    "244": [
+      "166572007288596180521/5000000000000000000000000",
+      "20821500911076122487/625000000000000000000000"
+    ],
+    "246": [
+      "-201473135602228629343/10000000000000000000000000",
+      "-100736567801101515297/5000000000000000000000000"
+    ]
+  },
+  "milestone": "RC325",
+  "native_regular_high_kernel_compression_error_paid": true,
+  "next_cursor": "RC326: expand original signed finite high compression and certify head-to-tail coupling. This 2-mode original inverse is only a finite Ritz trial: full T-CY residual is uncomputed; full high C inverse and positive full 3D Schur remain open.",
+  "optimal_original_1mode244_Schur_upper_contraction_upper": "13249485368970701/5000000000000000000000000",
+  "original_CC27_signed_Weil_operator": true,
+  "original_C_2by2_determinant_strict_lower": "1779981513666783828641171/10000000000000000000000000",
+  "original_high_C_244_246_2by2_strict_positive": true,
+  "original_log_and_prime_coefficient_uncertainties_fully_paid": true,
+  "original_native_C_2by2_intervals": {
+    "244_244": [
+      "4188273406774877123162997/10000000000000000000000000",
+      "4243116612875660067924307/10000000000000000000000000"
+    ],
+    "244_246": [
+      "596328152195939469995781/10000000000000000000000000",
+      "162843261316024032207867/2500000000000000000000000"
+    ],
+    "246_246": [
+      "2175610354291278462658591/5000000000000000000000000",
+      "550808437324358172766759/1250000000000000000000000"
+    ]
+  },
+  "original_native_high_degrees": [
+    244,
+    246
+  ],
+  "original_witness_Schur_Ritz_upper": "31936288213009397799/400000000000000000000000",
+  "parent_route_head": "3022b035ef24658abefc1d192bf36db822b3329a",
+  "strict_original_2mode_Schur_upper_contraction_lower": "1616389257122087/400000000000000000000000"
+}
