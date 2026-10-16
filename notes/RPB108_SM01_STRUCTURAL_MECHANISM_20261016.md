@@ -1,7 +1,7 @@
 # RPB108 SM01 — structural mechanism: pole-absorbed coercivity, band-only no-go, exact full-negative Schur gate
 
 **Track:** NEW INDEPENDENT **SM (Structural Mechanism)**, parallel to incremental SI and native RC high-Schur.  
-**Source:** original complete signed physically supported Weil form from RC312–313, SI10–SI11, and the SI29 **focused exact-rational** pole-only validator (PR #124, focused passing Actions run 38977766432, October 16, 2026). At preparation time the historical SI29 integration regression remains open; do **not** conflate focused success with merge.  
+**Source:** original complete signed physically supported Weil form from RC312–313, SI10–SI11, and the SI29 **focused exact-rational** pole-only validator (PR #124, focused passing Actions run 38977766432, October 16, 2026). SI29 final-head push and PR regression both passed; PR #124 is merged at `86aa35d5521167fcebac4f7b231f6053284dddc3`. Distinguish the repository's checked certificate from independent peer review or Lean formalization.  
 **Status:** mathematical conditional operator theorems plus a small exact-rational sign/budget regression; not a new whole-original-form positivity theorem, not Stage I, Lean or RH.
 
 ## 1. The object that a structural argument must control
@@ -51,7 +51,7 @@ obeys the **uniform quadratic-form inequality on all \(f\)**:
 \]
 No finite-feature ansatz is needed in the conclusion.
 
-**Application from the SI29 focused rational replay, conditional on retaining its proof claims:** The validator printed \(2\langle s,A_o^{-1}s\rangle<0.9663787350758407\). Take the weaker **rational** \(L=966379/10^6\). Then
+**Application from the merged SI29 rational replay:** The validator printed \(2\langle s,A_o^{-1}s\rangle<0.9663787350758407\). Take the weaker **rational** \(L=966379/10^6\). Then
 \[
 \boxed{
 A_{\star,o}\succeq\frac{33621}{10^6} A_o
