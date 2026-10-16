@@ -17,8 +17,9 @@ Also compute its actual finite residual norm.
 All other n>=252 are rigorously charged using RC328's complete
 original source bound and RC327's actual native head-to-outside C
 cross norm, with this n250 output subtracted from BOTH budgets
-by orthogonality. This yields a strict sharpened entire-space
-residual penalty. It is a one-coordinate native covariance theorem,
+by orthogonality. This computes a genuine signed covariance, which can have the
+ADVERSE sign. The original RC328 whole-space penalty is retained
+when the sharpened split is worse. It is a one-coordinate theorem,
 NOT a paid entire finite n250..798 covariance, full inverse,
 positive 3D Schur, Stage I, F4, Lean or RH.
 """
@@ -203,6 +204,9 @@ def run(reverse=False):
   native_degree250_split_penalty_upper=str(nativePenalty),
   RC328_previous_complete_residual_penalty_upper=str(oldPenalty),
   measured_degree250_covariance_with_rigorous_intervals=True,
+  certified_strict_negative_original_degree250_covariance=True,
+  original_signed_degree250_residual_strictly_larger_than_T_source=True,
+  best_inherited_global_residual_bound_retained_when_split_is_worse=True,
   strict_full_residual_improvement_from_degree250_split=strict,
   finite_original_250through798_covariance_fully_computed=False,
   native_278_by_278_high_inverse_computed=False,
@@ -210,12 +214,12 @@ def run(reverse=False):
   full_rank317_original_Schur_positive=False,
   Stage_I_closed=False,F4=False,Lean=False,RH=False,
   next_cursor=(
-   "RC330: extend first truly signed outside covariance "
-   "to even modes 252,254,... with original prime overlap "
-   "and endpoint action; preserve joint covariance before "
-   "squaring and charge all remaining infinite high modes. "
-   "The 278x278 native high head and low three-dimensional "
-   "Schur positivity remain open."
+   "RC330: the original three-mode Ritz witness has a rigorously "
+   "ADVERSE signed covariance at its first omitted high mode 250. "
+   "Reoptimize native C on {244,246,248,250} including its genuine "
+   "C250,250 diagonal, or solve a source-sensitive residual "
+   "minimization. Then extend outside covariance to even 252+. "
+   "Full inverse and 3D Schur positivity remain OPEN."
   )
  )
 if __name__=="__main__":
@@ -228,4 +232,4 @@ if __name__=="__main__":
   assert d==json.loads(a.output.read_text(encoding="utf-8"))
  else:
   a.output.write_text(json.dumps(d,indent=2,sort_keys=True)+"\n",encoding="utf-8")
- print("RC329: signed original n250 outside Tx-CY covariance exact enclosing; entire high residual paid, full Schur and Stage I OPEN.")
+ print("RC329: certified ADVERSE original signed n250 covariance; inherited full residual retained; 3D Schur and Stage I OPEN.")
