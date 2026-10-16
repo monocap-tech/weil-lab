@@ -123,6 +123,18 @@ The pinned 192-degree RC46 regular-kernel Taylor polynomial, acting on a quartic
 
 RC321 merges the finite degree-244-through-510 **original signed endpoint+prime combined** source energy and the complete infinite complementary source norm, charging the global displacement/weight error once. It is an actual full-high $D$ response bound for the **new independent** low vector $w_4$. The full third-column source, not just a few principal matrix elements, is brought into the same canonical representation as RC318 and RC320.
 
+The validated outward rational enclosure has the following scale:
+
+| Quantity | Guaranteed upper bound |
+|---|---:|
+| Complete original signed prime-source physical $n\ge512$ Parseval tail, squared | $<3.863092\times10^{-7}$ |
+| Pinned-logarithm signed translation/weight physical $L^2$ uncertainty | $\le10^{-25}$ |
+| Full original combined finite high $D$-energy, degrees 244–510 | $<7.314163\times10^{-8}$ |
+| Full original $D$-high response norm $\|Tw_4\|_D$ | $<2.816560\times10^{-4}$ |
+| **Full original high-response energy $\|Tw_4\|_D^2$** | **$<7.933010\times10^{-8}$** |
+
+The $D$-high response bound is calculated for the original signed *combined* polynomial direction and covers **all** even high coordinates, not merely degrees through 510. Its raw bound is substantially smaller than RC319's separate $P_2$ response, although RC320's quadratic difference has a still smaller high output.
+
 However, a small high response is **not yet** a certificate of a positive $3\times3$ Schur form. That requires the full **original signed low $P_0/P_2/P_4$ matrix**, its cross-covariance with the existing positive two-dimensional block, and a strict Loewner/Schur determinant.
 
 **RC322 next:** compute the original signed low matrix involving $P_4$, then combine that low Gram with the complete certified $w_4$ high response and RC320's two-dimensional Schur block; explicitly pay the off-diagonals and test a true positive three-dimensional determinant. The remaining even and odd dimensions remain open.
