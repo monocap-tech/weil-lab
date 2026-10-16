@@ -92,12 +92,12 @@ The SI11 exact-rational validator regenerates the full SI10 protected interval c
 | 10 | 1003 | \(<162\) | Still vacuous |
 | 12 | 1121 | \(<41\) | Still vacuous |
 | 16 | 1367 | \(<2.527\) | Still vacuous |
-| 20 | *validator output* | \(<0.158\) | At least a nontrivial matrix target is possible |
-| 21 | *validator output* | \(<0.079\) | Conditional finite gate asks for \(\lambda_{\max}<0.921\) |
-| 24 | *validator output* | \(<0.0099\) | Conditional finite gate asks for \(\lambda_{\max}<0.9901\) |
+| **20** | **1561** | \(<0.158\) | At least a nontrivial matrix target is possible |
+| **21** | **1631** | \(<0.079\) | Conditional finite gate asks for \(\lambda_{\max}<0.921\) |
+| **24** | **1781** | \(<0.0099\) | Conditional finite gate asks for \(\lambda_{\max}<0.9901\) |
 | 32 | 2151 | \(<0.000039\) | Very small inverse perturbation budget |
 
-The table entries are **upper error bounds**, not lower bounds or measurements of the actual negative operator norm. Specifically, \(\eta_9/\kappa\approx323.35\) does not prove the true approximation fails; it proves this *coarse perturbative criterion* does not certify a matrix threshold at rank 939. SI11 checks the exact rational inequalities and dynamically prints the previously unpublished \(b=20,21,24\) dimensions.
+The table entries are **upper error bounds**, not lower bounds or measurements of the actual negative operator norm. Specifically, \(\eta_9/\kappa\approx323.35\) does not prove the true approximation fails; it proves this *coarse perturbative criterion* does not certify a matrix threshold at rank 939. The first passing Actions replay certified the previously unpublished \(b=20,21,24\) sufficient dimensions **1561, 1631 and 1781**; these are now exact mandatory rank assertions in the validator. The physical operator-norm error bounds are, respectively, \(0.0001578852262\), \(0.0000789426131\), and \(0.0000098678267\), each strict with exact rational enclosures. These are *not* measured finite Birman–Schwinger matrix eigenvalues.
 
 ## 4. Correct-sign supported inverse response: the actual matrix obligation
 
