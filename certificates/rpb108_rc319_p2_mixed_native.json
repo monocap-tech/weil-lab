@@ -1,0 +1,46 @@
+{
+  "F4": false,
+  "Lean": false,
+  "P0_Schur_diagonal_positive_inherited_RC318": true,
+  "P2_D_normalized_complete_high_source_norm_upper": "807284627729368522573851/40000000000000000000000000",
+  "P2_D_normalized_complete_high_source_squared_upper": "50914724231886337571493999/125000000000000000000000000000",
+  "P2_D_normalized_conservative_Schur_diagonal_lower": "-18738805479079716268487279/500000000000000000000000000",
+  "P2_D_normalized_native_B22_lower": "37584902393336400509646041/1000000000000000000000000000",
+  "RH": false,
+  "Stage_I_closed": false,
+  "direct_P0_P2_prime_cross_reproduces_selfadjoint_symmetry": true,
+  "full_P0_P2_high_eliminated_Schur_2by2_positive": false,
+  "full_rank317_principal_Schur_positive": false,
+  "fully_paid_high_Tv0_Tv2_Gram_abs_upper": "146223577503743833019503/1000000000000000000000000000",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc313_prime_pole_distributions.json": "954b4892cf3b4e999e65476d7ce341021528d9e8",
+    "certificates/rpb108_rc314_fredholm_schur.json": "6496be8d20176f173c0ff8b6e393b0ccd7c6ff5b",
+    "certificates/rpb108_rc315_low_mode_sign.json": "a8cd974c8218e18943dda0082f48cca36a3350a8",
+    "certificates/rpb108_rc318_p0_signed_schur.json": null,
+    "certificates/rpb108_rc46_native_archimedean_head.json": "be1a1a4ef8a6cfb41b96a8c29e72aa5f102298c9"
+  },
+  "milestone": "RC319",
+  "next_cursor": "RC320: use signed mixed-source covariance and a nonzero multi-high trial to improve the P0/P2 Schur 2x2 lower Loewner bound. Low principal 2x2 positivity alone cannot establish high-eliminated 2x2 positivity; odd 195 and remaining even 120 coordinates remain open.",
+  "number_of_even_legendre_coefficients_p2": 256,
+  "original_CC27_signed_source": true,
+  "original_P0_P2_low_principal_block_strictly_positive": true,
+  "original_P0_P2_physical_low_diagonal_P2": [
+    "99630004557265746377001443/500000000000000000000000000",
+    "39853019075706312357126803/200000000000000000000000000"
+  ],
+  "original_P0_P2_physical_offdiagonal_div_sqrt5": [
+    "19833266632152127182149239/500000000000000000000000000",
+    "19833266632152139107069833/500000000000000000000000000"
+  ],
+  "original_P0_P2_physical_second_pivot_lower": "1911341432608121255896593/500000000000000000000000000",
+  "original_P0_P2_physical_two_by_two_determinant_lower": "76939482035261036709741/500000000000000000000000000",
+  "original_P2_prime_center_infinite_tail_squared": "657415084206584243326403/125000000000000000000000000",
+  "original_P2_prime_center_projection_below512_squared": "98439392593205652734485611/125000000000000000000000000",
+  "original_P2_prime_complete_actual_tail_squared_upper": "2629660336826338702923943/500000000000000000000000000",
+  "original_P2_prime_physical_center_norm_squared": "49548403838706118488906007/62500000000000000000000000",
+  "parent_merge": "6b7a605542b765a6555810098fca86d6610a6d13",
+  "piecewise_prime_translation_profiles": 14,
+  "prime_translation_full_L2_error_p2_upper": "23849839109/1000000000000000000000000000",
+  "signed_inverse_response_for_all_columns": false
+}
