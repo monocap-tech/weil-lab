@@ -96,7 +96,16 @@ The SI08 exact-Fraction validator rebuilds the 107 actual signed-source cluster 
 \le 2\sum_jp_j(b)+1.
 }
 \]
-SI08 selects each \(p_j(b)\) by exact rational arithmetic; the finite values are printed in the GitHub Actions transcript and must **not** be inferred from a guessed common polynomial order. At \(b=80\) CI asserts that this certified rank is *strictly below* SI06's whole-band bound of 9,473.
+The exact rational validator and CI provide the following explicit frontier:
+
+| Local Taylor error | Certified PSD rank (including exact odd pole) | Maximum local polynomial order | Entire negative-operator norm error |
+|---|---:|---:|---:|
+| \(2^{-40}\) | \(2503\) | 28 | \(<2^{-32}\) |
+| \(2^{-64}\) | \(3541\) | 36 | \(<2^{-56}\) |
+| \(2^{-80}\) | \(4165\) | 41 | \(<2^{-72}\) |
+| \(2^{-96}\) | \(4757\) | 45 | \(<2^{-88}\) |
+
+All 107 positive-frequency clusters, their reflected counterparts, the complete original signed Fourier uncertainty and the exact negative odd pole are accounted for. These ranks are **sufficient upper bounds on the dimension of an explicit span**, not proven minimal ranks or numerical eigencounts. The \(2^{-80}\) choice cuts the sufficient rank from 9473 to 4165 (approximately 56%) at the expense of relaxing SI06's much stronger \(2^{-1000}\) operator-error guarantee. The rank 4165 remains ~13.8 times RC314's 301-dimensional potential-negative-sector count.
 
 This comparison is a **rank/error tradeoff**, not simultaneous domination: SI06's bound of rank 9,473 achieved error \(<2^{-1000}\), far stronger precision. SI08 reduces the rank when a more modest, still rigorous operator tolerance is sufficient.
 
