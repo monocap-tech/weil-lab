@@ -96,7 +96,7 @@ q^*M^{-1}q
 \]
 The equality case would take \(z=M^{-1}q\). SI20 obtains a *candidate* rational vector by solving with the midpoints of the exact outward Gram and overlap intervals, then checks a **lower bound on the entire variational expression with original exact rational interval operations**. Every off-diagonal term is included with its *actual coefficient sign*; no matrix determinant is silently rounded, and the candidate itself is not used as an unverified numerical equality.
 
-With the strictly certified full response upper, this gives a fully supported inequality on the original odd inverse, without replacing \(A_o^{-1}\) by unrestricted pointwise \(1/a(\xi)\). The exact rational validator explicitly asserts the reference upper bound **below 6**, compared with SI19's prior \(<18\); if final-head CI passes, its printed stronger enclosure is recorded in the PR.
+With the strictly certified full response upper, this gives a fully supported inequality on the original odd inverse, without replacing \(A_o^{-1}\) by unrestricted pointwise \(1/a(\xi)\). The exact rational validator explicitly asserts the reference upper bound **below 5**, compared with SI19's prior \(<18\). The exact-rational initial Actions replay computed the rigorous upper \(4.636884906720811\) (a decimal display of a rational bound); the validator now explicitly asserts \(<5\) before the final-head replay.
 
 ## 5. Meaning and remaining obligation
 
