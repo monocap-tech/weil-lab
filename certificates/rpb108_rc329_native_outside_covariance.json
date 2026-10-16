@@ -1,0 +1,76 @@
+{
+  "F4": false,
+  "Lean": false,
+  "RC328_previous_complete_residual_penalty_upper": "4505049482699873314161451/20000000000000000000000000000",
+  "RH": false,
+  "Stage_I_closed": false,
+  "actual_original_one_omitted_high_residual_250_interval": [
+    "262066039315075335209/10000000000000000000000000",
+    "271633756614795742267/10000000000000000000000000"
+  ],
+  "actual_signed_original_outside_covariance_b250_times_Cy250_interval": [
+    "-100786022696957/2000000000000000000000000",
+    "-26320142117709/1000000000000000000000000"
+  ],
+  "complete_one_omitted_mode_residual_norm_upper": "271633756614795742267/10000000000000000000000000",
+  "complete_original_full_infinite_residual_norm_upper": "11055793678537513311971699/10000000000000000000000000000",
+  "corrected_RC314_complete_full_residual_penalty_upper": "4505049482699873314161451/20000000000000000000000000000",
+  "exact_native_signed_prime_overlap_integrals": 21,
+  "finite_original_250through798_covariance_fully_computed": false,
+  "first_omitted_high_mode": 250,
+  "first_outside_true_Ritz_action_energy_lower": "27357564037203/25000000000000000000000000",
+  "first_outside_true_source_energy_lower": "63305150282599993/100000000000000000000000000",
+  "full_rank317_original_Schur_positive": false,
+  "full_three_dimensional_Schur_positive": false,
+  "inherited_represented_three_mode_residual_norm_upper": "16452016067573111979198311/20000000000000000000000000000000",
+  "input_git_blob_pins": {
+    "certificates/rpb108_rc129_four_vector_joint_moment.json": "33e681e688450c987993603354544fe3919b435f",
+    "certificates/rpb108_rc313_prime_pole_distributions.json": "954b4892cf3b4e999e65476d7ce341021528d9e8",
+    "certificates/rpb108_rc322_low_3d_gram.json": "ba344b44436c5c2d392a9feb5c6dc0c9892dfe88",
+    "certificates/rpb108_rc323_coercivity_nogo.json": "3280e450654675c09292be902a8888e69c9a75ce",
+    "certificates/rpb108_rc324_high_tail_smoothing.json": "33f73683424d6408a35aeced0bb205bdb7215686",
+    "certificates/rpb108_rc326_native_high_3x3_residual.json": "62a7c8fe549ed4b0d1aec799e1d4f1402ea02e06",
+    "certificates/rpb108_rc327_high_interface_residual.json": "dc6eadb88b8d148753d27318ed9a0cf5b52ad8f6",
+    "certificates/rpb108_rc328_signed_finite_tail_residual.json": "49d9daf11defd0f272865d3780f3a53d0af6e130"
+  },
+  "measured_degree250_covariance_with_rigorous_intervals": true,
+  "milestone": "RC329",
+  "native_278_by_278_high_inverse_computed": false,
+  "native_degree250_split_complete_residual_norm_upper": "176896306391995330941/160000000000000000000000",
+  "native_degree250_split_penalty_upper": "11263083089508070585913/50000000000000000000000000",
+  "next_cursor": "RC330: extend first truly signed outside covariance to even modes 252,254,... with original prime overlap and endpoint action; preserve joint covariance before squaring and charge all remaining infinite high modes. The 278x278 native high head and low three-dimensional Schur positivity remain open.",
+  "original_CC27_signed_Weil_operator": true,
+  "original_high_native_C_250_vs_244_246_248_intervals": {
+    "244": [
+      "36718399912521089741531/5000000000000000000000000",
+      "128882468033896154042837/10000000000000000000000000"
+    ],
+    "246": [
+      "226175969021019391772441/10000000000000000000000000",
+      "56365000825875269959801/2000000000000000000000000"
+    ],
+    "248": [
+      "34675994117672102552271/1000000000000000000000000",
+      "402611455427809703013931/10000000000000000000000000"
+    ]
+  },
+  "original_joint_signed_b_250_interval": [
+    "251605147567771343453/10000000000000000000000000",
+    "251605147567796942203/10000000000000000000000000"
+  ],
+  "original_native_C_y_250_interval": [
+    "-4005721809399760013/2000000000000000000000000",
+    "-2615222936825997939/2500000000000000000000000"
+  ],
+  "original_prime_log_and_moving_support_error_fully_paid": true,
+  "parent_route_head": "c6a25abccb7ee8ec1b36c27016abbaebc571fbaf",
+  "pinned_rational_three_mode_Ritz_y": [
+    "223246960799/2500000000000000",
+    "-280406182547/5000000000000000",
+    "-267785010573/10000000000000000"
+  ],
+  "remaining_252plus_Ritz_C_action_norm_upper": "5412105693149611276661/100000000000000000000000000",
+  "remaining_252plus_true_source_norm_upper": "105114681498536826836061/100000000000000000000000000",
+  "remaining_infinite_high_residual_norm_upper": "55263393595843219056361/50000000000000000000000000",
+  "strict_full_residual_improvement_from_degree250_split": false
+}
