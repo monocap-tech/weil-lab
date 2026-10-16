@@ -49,6 +49,7 @@ PINS={
  "certificates/rpb108_rc320_boundary_cancelled_schur.json":"fe8821aaba62ba50c2a8eba1a2fa0020ba818003",
  "certificates/rpb108_rc321_p4_boundary_native.json":"26eedd29ee80063c7b8ccc5f1d5de025e7050842",
  "certificates/rpb108_rc323_coercivity_nogo.json":"3280e450654675c09292be902a8888e69c9a75ce",
+ "certificates/rpb108_rc324_high_tail_smoothing.json":"33f73683424d6408a35aeced0bb205bdb7215686",
  "certificates/rpb108_rc325_native_high_2x2.json":"27f42ff30438613e335f39e232c8ac0329f1d854",
  "certificates/rpb108_rc326_native_high_3x3_residual.json":"62a7c8fe549ed4b0d1aec799e1d4f1402ea02e06",
  "certificates/rpb108_rc327_high_interface_residual.json":"dc6eadb88b8d148753d27318ed9a0cf5b52ad8f6"
