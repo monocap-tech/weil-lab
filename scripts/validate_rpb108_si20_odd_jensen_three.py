@@ -38,6 +38,22 @@ def scale(q,span):
     return times((q,q),span)
 
 
+def outward(span, digits=12):
+    """Exact outward DECIMAL rational enclosure (no float assumptions).
+
+    Large intermediate Machin/Taylor denominators are removed *after*
+    their interval proofs: the rounded interval strictly contains the
+    exact source interval and charges <10^-digits at each endpoint.
+    """
+    d=10**digits
+    a,b=span
+    aa=a*d
+    bb=b*d
+    lo=aa.numerator//aa.denominator
+    hi=-((-bb.numerator)//bb.denominator)
+    return (F(lo,d),F(hi,d))
+
+
 def midpoint(span):
     return (span[0]+span[1])/2
 
@@ -148,12 +164,12 @@ def validate():
     G=[]
     for c in CENTERS:
         a,b=averaged_q_interval(c)
-        q.append((a-qerr,b+qerr))
+        q.append(outward((a-qerr,b+qerr)))
     for i,c in enumerate(CENTERS):
         row=[]
         for j,d in enumerate(CENTERS):
             a,b=averaged_gram_interval(c,d)
-            row.append((a-gerr,b+gerr))
+            row.append(outward((a-gerr,b+gerr)))
         G.append(row)
 
     # The original sign topology must stay: q(+,-,+);
@@ -162,9 +178,6 @@ def validate():
     assert G[0][1][1]<0 and G[0][2][0]>0 and G[1][2][1]<0
 
     n=3
-    M=[[plus(G[i][j] if i!=j else G[i][j],
-             ((1/gamma[i],1/gamma[i]) if i==j else (F(0),F(0))))
-        for j in range(n)] for i in range(n)]
     M=[[(a/KAPPA + ((1/gamma[i]) if i==j else 0),
          b/KAPPA + ((1/gamma[i]) if i==j else 0))
         for j,(a,b) in enumerate(G[i])] for i in range(n)]
