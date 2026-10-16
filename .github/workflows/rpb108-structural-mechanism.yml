@@ -1,0 +1,39 @@
+name: RPB108 structural mechanism verification
+
+on:
+  push:
+    branches:
+      - 'research/rpb108-structural-mechanism-*'
+    paths:
+      - 'scripts/validate_rpb108_sm*.py'
+      - 'notes/RPB108_SM*.md'
+      - '.github/workflows/rpb108-structural-mechanism.yml'
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_sm*.py'
+      - 'notes/RPB108_SM*.md'
+      - '.github/workflows/rpb108-structural-mechanism.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-structural-mechanism:
+    name: Exact SM operator identity and boundary checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate all parallel structural mechanism checkpoints
+        run: |
+          for f in scripts/validate_rpb108_sm*.py; do
+            python -m py_compile "$f"
+            python "$f"
+          done
