@@ -39,6 +39,30 @@ $$
 
 No spurious $\sqrt{|\delta|}$ edge cost is needed. This improves over treating the $u_4$ and $u_2$ sources separately.
 
+## A uniform even-degree mechanism, not just the quartic instance
+
+For any even $d\ge2$, put $F_d=P_d-P_{d-2}$ and $f_d=\sqrt{(2d+1)/(2B)}F_d(x/B)$. The endpoint identity $P_j(\pm1)=(\pm1)^j$ implies $F_d(\pm1)=0$. Since these are finite polynomials, their zero extensions belong to $H^1(\mathbb R)$ automatically. Orthogonality and the Legendre derivative identities give the **general exact norms**
+
+$
+\|f_d\|_2^2=\frac{2(2d-1)}{2d-3},\qquad
+\|f_d'\|_2^2=\frac{(2d-1)(2d+1)}{B^2}.
+$
+
+In particular the high-mode endpoint coefficients satisfy the exact rational cancellation
+
+$
+\boxed{
+E_{n,d}-E_{n,d-2}
+=
+\frac{2(2d-1)(2n+1)}
+{(n-d)(n+d+1)(n-d+2)(n+d-1)}
+}\quad(n>d,\ n\equiv d\pmod2).
+$
+
+Consequently every adjacent-even difference has a first-order $H^1$ prime translation estimate and a cubic-decaying high endpoint coefficient. These are **analytic algebraic identities at all degrees**, not numerical extrapolations from RC321's $d=4$ calculation.
+
+This does **not** imply that a family of all adjacent-even differences automatically has a positive Schur matrix: the low signed Gram and its entire high cross-covariance still require independent certification.
+
 ## Complete native signed prime source
 
 Retain **all seven original CC27 prime powers** and both zero-extended shifts (14 translations). In the dimensionless coordinate $t=x/B$, each translated polynomial is
