@@ -67,7 +67,20 @@ For each error target \(2^{-(b-8)}\), with \(b\in\{40,64,80,96\}\):
 
 The verifier asserts equality of all imported/inherited signed source masses, full coverage, each error acceptance inequality, and monotonic nonincrease of the certified dimension relative to SI08. **No approximation lower bound is claimed:** the new ranks are sufficient dimensions for one constructive method.
 
-The exact replay prints the rank/band/error frontier, which is inserted below after final GitHub Actions verification.
+The CI-replayed exact-rational rank/error frontier is:
+
+| Maximum operator-norm error | SI08 rank bound | SI09 rank bound | SI09 positive-frequency groups | Weighted order drops | Certified safe merges |
+|---|---:|---:|---:|---:|---:|
+| \(<2^{-32}\) | 2503 | **2165** | 94 | 86 | 13 |
+| \(<2^{-56}\) | 3541 | **2949** | 84 | 98 | 23 |
+| \(<2^{-72}\) | 4165 | **3407** | 80 | 98 | 27 |
+| \(<2^{-88}\) | 4757 | **3865** | 80 | 91 | 27 |
+
+The source verifier reconstructs the original certified integrated mass \(37.59565259375\) and complete physical trace \(82.71043570625\). Each row was generated from actual rational local masses and Taylor remainder bounds with **the same operator-error threshold** as SI08. For the \(2^{-72}\) reference, the new rank is 758 lower (approximately 18.2%) and retains 80 positive-frequency groups instead of 107, with all reflected groups charged.
+
+The printed floating approximations to the outward *certified rational* physical error bounds are \(2.2750053338\times10^{-10}\), \(1.3392817730\times10^{-17}\), \(2.0411907749\times10^{-22}\), and \(3.1470306425\times10^{-27}\), respectively. Decisions and validation assertions use exact \`Fraction\` arithmetic, not these rounded decimal displays. At \(b=80\), the error is strictly below \(2^{-72}\).
+
+The local greedy order scheduler and safe-merge iteration are **constructive but not guaranteed globally rank-optimal**. A smaller effective approximation rank may exist; no claim about necessity or mathematical minimality is made.
 
 ## 4. Strategic boundary
 
