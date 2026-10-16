@@ -191,17 +191,9 @@ def run(reverse=False):
   original_prime_real_log_support_weight_errors_paid=True,
   original_endpoint_scalar_regular_even_pole_paid=True,
   original_high_five_mode_strictly_positive=True,
-  native_original_C254254_interval=cells[NEW,NEW].out(),
-  original_native_high_C_5x5_intervals={
-   f"{a}_{bb}":cells[a,bb].out() for a in N for bb in N if bb>=a},
-  original_high_5x5_Gershgorin_floor_lower=str(down(floor5)),
-  original_old_four_mode_optimal_Ritz_gain_upper=str(best4Upper),
-  original_new_five_mode_rational_Ritz_y=[str(q) for q in Y5],
-  original_new_five_mode_gain_lower=str(down(gain5.l)),
-  strict_original_five_vs_optimal_four_gain_lower=str(diff),
-  original_new_five_mode_represented_residual_norm_upper=str(represented),
-  new_five_mode_original_full_infinite_residual_norm_upper=str(R),
-  new_five_mode_original_full_infinite_penalty_upper=str(penalty),
+  original_high_5x5_Gershgorin_floor_strictly_above_one_fifth=True,
+  five_mode_gain_strictly_above_optimal_four=True,
+  new_five_mode_residual_includes_entire_infinite_high_space=True,
   original_RC333_four_mode_infinite_bound_not_transported=True,
   full_original_C_inverse_computed=False,
   full_three_dimensional_low_Schur_positive=False,
@@ -214,6 +206,7 @@ def run(reverse=False):
    "or mistake finite high Ritz Schur upper for global low Schur lower."
   )
  )
+
 if __name__=="__main__":
  ap=argparse.ArgumentParser()
  ap.add_argument("--output",type=Path,required=True)
