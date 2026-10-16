@@ -174,6 +174,11 @@ def run(reverse=False):
  penalty=up(chosen*chosen/mu)
  assert mu>0 and penalty<F(1,4000)
  assert chosen<F(3,2500)
+ # Strict signed advantage is computed on the ORIGINAL operator.
+ # The isolated degree-252 contraction is positive, not assumed
+ # from the preceding degree-250 sign on a different trial.
+ assert original_source.l>0 and Cy.l>0 and covariance.l>0
+ assert Rsplit<Rbase,("degree-252 covariance has not improved the native full residual")
  print("RC332_EXACT_INTERVAL_DIAGNOSTICS_BEGIN")
  print(json.dumps({
   "original_signed_C_252_cross":{str(m):C[m].out() for m in INPUT},
@@ -202,6 +207,17 @@ def run(reverse=False):
   native_original_endpoint_regular_pole_paid=True,
   independent_original_signed_source_252_rebuilt=True,
   original_signed_degree252_covariance_interval_evaluated=True,
+  exact_native_original_signed_C_252_high_intervals={str(m):C[m].out() for m in INPUT},
+  exact_original_signed_b252_interval=original_source.out(),
+  exact_original_four_mode_CY252_interval=Cy.out(),
+  exact_original_signed_covariance_252_interval=covariance.out(),
+  exact_original_signed_residual_252_interval=residual.out(),
+  degree252_original_covariance_strictly_positive=True,
+  original_four_mode_unsplit_infinite_residual_norm_upper=str(Rbase),
+  original_four_mode_degree252_split_residual_norm_upper=str(Rsplit),
+  strict_original_degree252_split_residual_improvement=True,
+  selected_original_whole_residual_norm_upper=str(chosen),
+  selected_original_correct_sign_full_penalty_upper=str(penalty),
   original_high_infinite_residual_254plus_paid=True,
   original_full_high_residual_norm_less_than="3/2500",
   original_correct_sign_penalty_less_than="1/4000",
