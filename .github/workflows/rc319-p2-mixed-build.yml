@@ -1,0 +1,36 @@
+name: RC319 original P2 signed-source verification
+on:
+  push:
+    branches:
+      - research/rpb108-rc319-p2-mixed-native
+    paths:
+      - "scripts/validate_rpb108_rc319_p2_mixed_native.py"
+      - ".github/workflows/rc319-p2-mixed-build.yml"
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Pinned original signed P2 complete source and mixed low Gram
+        run: |
+          python scripts/validate_rpb108_rc319_p2_mixed_native.py --output certificates/rpb108_rc319_p2_mixed_native.json
+          python scripts/validate_rpb108_rc319_p2_mixed_native.py --output certificates/rpb108_rc319_p2_mixed_native.json --replay
+      - name: Freeze complete rational certificate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add certificates/rpb108_rc319_p2_mixed_native.json
+          if ! git diff --cached --quiet; then
+            git commit -m "RC319: freeze original signed P2 mixed-source certificate"
+            git fetch origin research/rpb108-rc319-p2-mixed-native
+            git rebase origin/research/rpb108-rc319-p2-mixed-native
+            git push origin HEAD:research/rpb108-rc319-p2-mixed-native
+          fi
