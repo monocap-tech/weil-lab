@@ -114,7 +114,7 @@ def low_to_high(rows,slo,shi,err,reverse):
   for r in (list(reversed(rows)) if reverse else rows):
    z=r["z"];d=1-z
    p=([F(1)],[(3*d*d-3)/2,3*d,F(3,2)],rc321.poly_shift_F(d))
-   vals=rc323.P_intervals_at_center(z,252)
+   vals=rc323.P_intervals_at_center(z,800) # RC323 fixed precision recurrence audits n=800
    mom=rc323.multiplication_moments(n,vals)
    for i,cs in enumerate(p):
     val=sum((cs[j]*mom[j] for j in range(len(cs))),rc323.IV(0))
