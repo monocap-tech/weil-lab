@@ -32,5 +32,45 @@
   "F4": false,
   "Lean": false,
   "RH": false,
-  "next_cursor": "RC333: certify and exploit the actual native signed covariance for omitted n254 onward, preserving the original infinite residual and strict distinction between Ritz Schur upper and full low Schur lower bounds."
+  "next_cursor": "RC333: certify and exploit the actual native signed covariance for omitted n254 onward, preserving the original infinite residual and strict distinction between Ritz Schur upper and full low Schur lower bounds.",
+  "exact_native_original_signed_C_252_high_intervals": {
+    "244": [
+      "9575385648982370615341/1000000000000000000000000",
+      "75699317221098574982017/5000000000000000000000000"
+    ],
+    "246": [
+      "8076631071929985652897/10000000000000000000000000",
+      "7990688278786747435591/1250000000000000000000000"
+    ],
+    "248": [
+      "63961111794130101631303/2000000000000000000000000",
+      "375857640390229589587081/10000000000000000000000000"
+    ],
+    "250": [
+      "602225263105369463828129/10000000000000000000000000",
+      "131695934177985716341137/2000000000000000000000000"
+    ]
+  },
+  "exact_original_signed_b252_interval": [
+    "5257190268774209943/100000000000000000000000",
+    "10514380537548931861/200000000000000000000000"
+  ],
+  "exact_original_four_mode_CY252_interval": [
+    "29542096262635862083/10000000000000000000000000",
+    "10745657078083193827/2500000000000000000000000"
+  ],
+  "exact_original_signed_covariance_252_interval": [
+    "776542104955601/5000000000000000000000000",
+    "1129839276449729/5000000000000000000000000"
+  ],
+  "exact_original_signed_residual_252_interval": [
+    "482736398565088218993/10000000000000000000000000",
+    "496176930614810730967/10000000000000000000000000"
+  ],
+  "degree252_original_covariance_strictly_positive": true,
+  "original_four_mode_unsplit_infinite_residual_norm_upper": "115114758561412988638177/100000000000000000000000000",
+  "original_four_mode_degree252_split_residual_norm_upper": "115085855236380839896189/100000000000000000000000000",
+  "strict_original_degree252_split_residual_improvement": true,
+  "selected_original_whole_residual_norm_upper": "115085855236380839896189/100000000000000000000000000",
+  "selected_original_correct_sign_full_penalty_upper": "24408079996190474317581/100000000000000000000000000"
 }
