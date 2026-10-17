@@ -20,6 +20,7 @@ from validate_rpb108_si14_odd_multiband_nogo import (
 from validate_rpb108_si12_even_supported_inverse import sinh_bounds,cosh_bounds
 from validate_rpb108_si18_odd_rank_two_woodbury import add,mul,div
 from validate_rpb108_sm10_explicit_odd_cap_moments import full_upper_leaves
+from validate_rpb108_si07_negative_support_cover import ceil_fraction
 from validate_rpb108_si10_complement_positivity import KAPPA
 
 CENTER=F(19,25)
@@ -27,6 +28,18 @@ T=F(4)
 CELLS_PER_UNIT=64
 DERIVATIVE=2*PI[1]*B**2
 TAIL_UP=F(35,32)
+ROUND_DEN=10**6
+
+
+def rational_ceil(q):
+    """Safe per-cell outward upper to avoid giant Fraction aggregation."""
+    return F(ceil_fraction(q*ROUND_DEN),ROUND_DEN)
+
+
+def rational_floor(q):
+    """Safe per-cell outward lower, including nonnegative zero floor."""
+    y=q*ROUND_DEN
+    return F(y.numerator//y.denominator,ROUND_DEN)
 
 
 def absolute_upper(interval):
@@ -77,7 +90,7 @@ def true_positive_pole_upper():
     numerator=mul((F(2),F(2)),add(first,second))
     denominator=(F(1,4)+k[0]**2,F(1,4)+k[1]**2)
     overlap=div(numerator,denominator)
-    pole=2*absolute_upper(overlap)**2
+    pole=rational_ceil(2*absolute_upper(overlap)**2)
     assert 0<pole<F(17,50),float(pole) # <0.34
     return pole,overlap
 
@@ -101,6 +114,9 @@ def full_cap_lower():
             center=(l+r)/2
             amp=supported_even_fourier(center)
             amp_lower=max(F(0),absolute_lower(amp)-DERIVATIVE*(r-l)/2)
+            # Every physical Fourier amplitude is rounded DOWN before
+            # squaring and accumulation, so the finite cap lower stays valid.
+            amp_lower=rational_floor(amp_lower)
             total+=2*(h+KAPPA)*(r-l)*amp_lower**2
             selected+=1
     assert selected>0 and total>F(4),float(total)
@@ -130,9 +146,11 @@ def actual_positive_low_upper():
         mid=(l+r)/2
         m_upper=(arch_integer_upper[i//CELLS_PER_UNIT]
                  +prime_interval(mid)[1]+F(69)*(r-l)/2)
-        a_upper=max(KAPPA,m_upper)
+        a_upper=rational_ceil(max(KAPPA,m_upper))
         f_mid=supported_even_fourier(mid)
-        f_upper=absolute_upper(f_mid)+DERIVATIVE*(r-l)/2
+        f_upper=rational_ceil(absolute_upper(f_mid)+DERIVATIVE*(r-l)/2)
+        # Each local multiplier and Fourier factor is rounded UP,
+        # retaining the full continuum operator upper inequality.
         total+=2*(r-l)*a_upper*f_upper**2
         highest=max(highest,a_upper)
     assert 0<total<F(2),float(total)
