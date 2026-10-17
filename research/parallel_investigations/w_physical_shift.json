@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS15 analytic actual original whole-physical form-domain sharp thirteen-source split and exact complete signed source/complement Schur with compact positive energy-dual subtraction; source-carrier coercivity PS14 >1/6, physical cross <17 but noncompact (essential norm>=log2), signed complementary Schur positivity UNKNOWN; focused source-rational Actions and independent review pending. CC27 bridge, W-ODD-NEG, W-EVEN-FORM, full Weil and RH remain OPEN.",
+  "proof_standing": "PS16 sign-relevant whole original source Schur calibration: source gap >.323, compact source response positive with norm <869 and explicit seam >.028, strict positive complement high-energy J_C>=882 sector, parity-resolved RC315 necessary even/odd uniform margin upper ceilings .041/.14; focused exact rational CI and independent audit pending. Remaining coupled LOW-energy complement signed Schur PSD, CC27 transfer, W-ODD-NEG/W-EVEN-FORM/full Weil/RH OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS16: compute a quantitative useful approximation and certified sign of the ACTUAL complementary source Schur form Q_C-B_PC* A_P^-1 B_PC; retain every one of 24 arch Carleman seams, all seven source-to-complement prime shifts, and both correctly signed poles",
-    "PS17: independently verify exact original physical-to-CC27 D-Riesz domain/norm attachment and promote canonical W-ODD-NEG only after a strict positive whole original signed complementary Schur certificate"
+    "PS17: assemble the actual coupled low/high complementary Schur/Feshbach matrix around the small RC315 even/odd Rayleigh gap ceilings (<0.041/<0.14), retaining all 24 original arch source seams, all seven prime translations, signed poles and full source inverse; produce accepted positive finite signed margin or explicit obstruction",
+    "PS18: independently audit physical original source/schur functional analysis and certify full CC27 D-Riesz domain/norm transfer, then only promote canonical W-ODD-NEG with complete original signed complement PSD"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -151,6 +151,14 @@
       "note": "notes/RPB108_PS15_SHARP_SOURCE_SCHUR_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps15_sharp_source_schur.py",
       "limitation": "Complementary Schur PSD Q_C-B* A_P^-1 B not certified; scalar penalty <1734 is crude and no positive gap. Native CC27 D-Riesz identification, full Weil/RH open."
+    },
+    {
+      "id": "PS16",
+      "scope": "Full original signed 13-source coercivity sharpened >323/1000; genuine compact Schur penalty T_C bounded <869 with explicit nonzero seam response >0.028; actual original complementary signed Schur strictly positive on high original arch-energy J_C>=882 sector; original RC315 even/odd test vectors enforce uniform positive Schur gap upper ceilings <0.041/<0.14; negative inertia transfers from PS13",
+      "status": "Analytic true signed complement high-energy sector positivity, seam correction lower and necessary original RC315 low-mode gap limits; exact-rational replay and independent functional-analytic review pending",
+      "note": "notes/RPB108_PS16_SCHUR_GAP_CALIBRATION_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps16_schur_gap_calibration.py",
+      "limitation": "No positivity of low-energy complementary Schur or coupled low/high response. Full signed complementary PSD, CC27 D-Riesz domain/norm transfer, W-ODD-NEG, W-EVEN-FORM, original Weil and RH OPEN."
     }
   ]
 }
