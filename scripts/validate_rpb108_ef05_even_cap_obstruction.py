@@ -42,14 +42,14 @@ def absolute_lower(interval):
 def scalar_sinc_integral(q):
     """Physical Fourier transform of exp(i2pi*q*x) on [-B,B].
 
-    Return rigorous interval sin(2pi B q)/(2pi q); continuous value 2B
+    Return rigorous interval sin(2pi B q)/(pi q); continuous value 2B
     when q=0. Our cosine source has an additional factor one half.
     """
     if q==0:
         return (2*B,2*B)
     numerator=cos_sin_pi_multiple(2*B*q)[0]
-    u=2*PI[0]*q
-    v=2*PI[1]*q
+    u=PI[0]*q
+    v=PI[1]*q
     return div(numerator,(min(u,v),max(u,v)))
 
 
