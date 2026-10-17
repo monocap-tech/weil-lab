@@ -1,0 +1,21 @@
+name: SM14 original positive continuum response
+on:
+  pull_request:
+    branches: [research/rpb108-route-consolidation]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_sm14_continuum.py
+          python scripts/validate_rpb108_sm14_continuum.py
