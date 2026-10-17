@@ -1,0 +1,30 @@
+name: RPB108 SM07 original negative multiplier excess
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_sm07_true_multiplier_excess_nogo.py'
+      - 'notes/RPB108_SM07_TRUE_MULTIPLIER_EXCESS_20261016.md'
+      - '.github/workflows/rpb108-sm07-focused.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-sm07-original-negative-excess:
+    name: Full signed subband and true odd Jensen excess
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Certify SM07 true variable signed-negative excess
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm07_true_multiplier_excess_nogo.py
+          python scripts/validate_rpb108_sm07_true_multiplier_excess_nogo.py
