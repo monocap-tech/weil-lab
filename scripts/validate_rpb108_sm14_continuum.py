@@ -23,7 +23,7 @@ def run():
     for i,(numer,delta) in enumerate(S):
         d=F(numer,50)
         left,right=d-R,d+R
-        if i: assert left>S[i-1][0]/50+R
+        if i: assert left>F(S[i-1][0],50)+R
         assert all(not(left<b and a<right) for a,b in reserved)
         smallest=None
         for j in range(8):
