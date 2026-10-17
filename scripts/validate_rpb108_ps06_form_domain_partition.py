@@ -15,8 +15,6 @@ import validate_rpb108_rc315_low_mode_sign as old
 ROOT=Path(__file__).resolve().parents[1]
 B=F(11,10)
 R=2*B
-N=((2,2),(3,3),(4,2),(5,5),(7,7),(8,9))
-# NOTE N must enumerate the actual seven prime powers independently.
 ORIGINAL=((2,2),(3,3),(4,2),(5,5),(7,7),(8,2),(9,3))
 
 def run():
