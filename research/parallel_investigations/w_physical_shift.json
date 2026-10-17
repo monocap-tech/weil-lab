@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS01 identity analytically derived; scoped rational computational validation and CI pending",
+  "proof_standing": "Analytic physical parity decomposition and edge-strip two-sided non-order theorem; exact rational source replay, CI and independent audit required; no whole-operator positivity.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,9 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS02: identify physical translation overlap stratification and parity reflected blocks on the actual original form",
-    "PS03: compare candidate physical-space minorants with SI29/SM21 and EF13 on the same norms and domains",
-    "PS04: test if a certified coupled operator/Schur residual margin improves the canonical frontier; remain scoped otherwise"
+    "PS03: build and validate common Toeplitz versus prime-reflection plus arch Hankel operator blocks; exploit the fully signed parity distinction without assuming an ordering",
+    "PS04: test comparison against current SM22 or EF13 signed coupling on the same norms and domains"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -34,5 +33,20 @@
     "W_EVEN_FORM": false,
     "original_weil": false,
     "RH": false
-  }
+  },
+  "checkpoints": [
+    {
+      "id": "PS01",
+      "scope": "complete original seven-prime physically supported difference-energy form and old P0/P1 replay",
+      "status": "focused Actions previously passed; independent mathematical review outstanding",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/167"
+    },
+    {
+      "id": "PS02",
+      "scope": "exact edge-strip parity-reflection witness of non-ordering in both directions on true original signed Weil form",
+      "status": "analytic theorem and exact source-rational inequalities; focused CI and independent mathematical review pending",
+      "note": "notes/RPB108_PS02_EDGE_REFLECTION_PARITY_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps02_edge_reflection.py"
+    }
+  ]
 }
