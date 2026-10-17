@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS11 analytic source-exact sign-aware original H inverse preconditioner with 65/97-term rational norm errors, demonstrated sharp-channel leakage and exact five-mode inverse-Gram spectral reduction; significant genuine pole IMS localization gain; pending focused final-head Actions and independent mathematical review; no arch PSD, practical inverse Gram matrix, whole Weil positivity, W-ODD-NEG/W-EVEN-FORM or RH closure.",
+  "proof_standing": "PS12 analytically complete original signed physical arch IMS HS thin-support bound <8/3 and full original graph-energy-normalized IMS correction <683/1000; two-sided whole physical form-domain shifted graph localization frame; pending final-head Actions and independent review. Unshifted full Q positivity, signed Schur PSD, CC27 D-Riesz attachment, W-ODD-NEG, W-EVEN-FORM and RH remain OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS12: bound the TRUE signed archimedean IMS localization remainder in the original H energy norm, exploiting tiny physical edge supports and smooth mask cancellation; compare against prime+pole energy bound <0.303",
-    "PS13: compute rigorous usable five-channel inverse Gram operator with native arch D^{-1/2} solver and accepted finite signed Schur spectral gap, including leakage and CC27 D-Riesz domain transfer"
+    "PS13: certify actual unshifted signed Q positivity (or find an obstruction) on the inner PS12 beta-localized range, with true original seven-prime signed source and arch/poles, not just shifted G frame",
+    "PS14: attach original CC27 D-Riesz domain equivalence and compute strictly positive full signed Schur/coupled inverse Gram gap before promotion to canonical W-ODD-NEG"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -119,6 +119,14 @@
       "note": "notes/RPB108_PS11_ENERGY_INVERSE_CHANNEL_RESPONSE_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps11_energy_inverse_channel_response.py",
       "limitation": "No actual D^{-1/2} or five-channel Gram kernel evaluation, no finite-rank matrix or arch energy correction PSD, no CC27 D-Riesz transfer, no RH."
+    },
+    {
+      "id": "PS12",
+      "scope": "whole-original physical arch IMS Hilbert-Schmidt localization norm <8/3 by actual two-edge measure; entire signed seven-prime plus both poles graph-normalized IMS correction <683/1000; complete domain stable quadratic graph localization 0.317G< G[alpha f]+G[beta f]<1.683G",
+      "status": "analytic original signed whole-domain graph-frame theorem and outward-rational margin, focused Actions and independent review pending",
+      "note": "notes/RPB108_PS12_ARCH_IMS_HS_FRAME_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps12_arch_ims_hs_frame.py",
+      "limitation": "Frame refers to POSITIVE SHIFTED GRAPH G=Q+20mass only. No unshifted Weil Q positivity, complementary original signed Schur PSD, true CC27 D-Riesz norm transfer, or RH proof"
     }
   ]
 }
