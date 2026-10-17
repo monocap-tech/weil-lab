@@ -120,6 +120,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/140",
       "repo_path": "notes/RPB108_SM10_EXPLICIT_ODD_CAP_MOMENTS_20261017.md",
       "verification": "Focused original all-frequency exact rational Actions 39012671893 PASSED on source head 4518c4a3de315060c0f0db76598369d24104fb69, verifying 107 moment matrices and 890 positive rational LDL pivots. Final ledger-head integration CI and independent review separate."
+    },
+    "SM11": {
+      "kind": "exact rational original seventeen-negative-odd-mode spectral min-max rank obstruction",
+      "scope": "The original seven-prime negative-frequency operator on physical odd H has at least 17 eigenvalues strictly >0.01501148>kappa=0.001 (17 whole signed rational frequency bands; all 17x17 actual physical Jensen cross terms and sinc errors). Therefore EVERY kappa I + PSD rank<=16 positive reference, including old SM05 C16, fails to dominate the entire original negative-frequency operator; says nothing about the true full A_o or RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/142",
+      "repo_path": "notes/RPB108_SM11_RANK17_C16_NOGO_20261017.md",
+      "verification": "Focused exact-original seventeen-band Actions 39013236167 PASSED at source d2db708fd00309e8673859fa3c7805bc683c1b31, proving upper m<-0.5916624 on all bands, physical Gram lambda_min>0.9382177, Kneg lambda17>0.01501148. Final-head governance/structural CI pending and independent peer review separate; no W-ODD-NEG closure."
     }
   },
   "obligations": [
@@ -166,10 +173,11 @@
         "SM07",
         "SM09",
         "SM08",
-        "SM10"
+        "SM10",
+        "SM11"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM10/RC: the entire actual original odd negative-frequency upper operator has explicit 107 rational SPD moment blocks (4433 upper entries), 890 physical sine-Taylor source columns and full residual eta<3.014363e-10; SM08 separately certifies a nonuniform genuine negative subband with full coupling and floor>1.682631e-7. Now compute a true rigorously supported 891-source positive-vs-negative BS/Schur comparison for D=diag(2,(1+tau)C) against B_o=A_o-eta I, preserving all cross terms. Check if SM05 C16 positive reference is sufficient before scaling; compare native RC transport when not. W-ODD-NEG and full odd signed positivity remain OPEN."
+      "next_action": "SM11 excludes EVERY scalar kappa I + positive rank<=16 reference (including C16) as a route to control the full original odd K_negative: lambda17(K_neg)>0.01501148>kappa from 17 signed physically supported Jensen packets. SM10 retains explicit 890-column full negative upper-cap and eta<3.014363e-10, but its 891-source inverse/Schur finite gate must use a richer original positive-frequency lower reference (rank>=17 as a necessary condition only), a certified native RC high-Schur transport, or the actual A_o inverse. Preserve all pole/intercluster cross terms and full residual; W-ODD-NEG and RH remain OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -357,6 +365,17 @@
       ],
       "interpretation": "True signed original subwindow gives a physically supported actual variable-frequency remainder norm lower >0.013; excludes paying it by SM06's small reported scalar floor alone, not by the original full conditioned positive operator.",
       "cadence": "per-update"
+    },
+    {
+      "id": "SM11-intrinsic-C16-reference-rank-obstruction",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm11_rank17_c16_nogo.py"
+      ],
+      "interpretation": "Certifies 17 signed whole original negative odd spectral directions and universal rank<=16 scalar-reference no-go, not original A_o negativity nor the missing finite 891-source BS gate.",
+      "cadence": "on-demand"
     }
   ]
 }
