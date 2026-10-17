@@ -245,7 +245,7 @@
       "scope": "Whole original signed m = original arch + seven-prime cosine, rational interval 4096+[4,128] 3968 true-support Fourier cells and rigorous [128,infinity) reflected signed m tail + positive even pole. One-vector direct Q_e interval only; does not assert full even PSD or RH.",
       "pr": "Draft EF11 stacked after EF10",
       "repo_path": "notes/RPB108_EF11_DIRECT_SIGNED_EVEN_RAYLEIGH_20261017.md",
-      "verification": "Candidate EF11 exact signed whole Rayleigh interval final-head CI pending. Inherits independently certified EF08 positive-tail and EF10 rejected-cap result."
+      "verification": "Focused original true signed even physical Rayleigh exact rational CI SUCCESS run 39051991792 (source head ec5765a55b63b779363b9528ef9474d024bd358c). Full original Q(f) interval [-0.0695683040, 0.1663468707], INCONCLUSIVE. All even PSD/RH OPEN."
     },
     "EF12": {
       "kind": "Conditional exact original even cofinite-to-finite signed Schur via true original form Riesz lifts and certified dual-energy residuals; two positive/negative toy exact-rational sign regressions",
@@ -259,7 +259,14 @@
       "scope": "Physical u_{jk}^e=1_I*(2pi*x)^k/k!*cos(2pi*c_j*x+k*pi/2), p_j original SI10 taylor_order(width,24), sum p_j=890. Complete 973 original unresolved leaves and 107 clusters; even-pole nonnegative; original cofinite gamma=kappa-2B*T*2^-48 >.000999 on V_e-perp. Does NOT certify exceptional block PSD.",
       "pr": "EF13 draft candidate stacked on EF12",
       "repo_path": "notes/RPB108_EF13_TRUE_EVEN_PARITY_CARRIER_20261017.md",
-      "verification": "EF13 focused original signed cover replay/parity dimension and cofinite exact rational CI pending. Full 890-dim signed Schur, original operator domain closure, Weil/RH OPEN."
+      "verification": "Exact rational SI10 107-cluster, 973-leaf physical even carrier 890 columns and cofinite gamma>0.0009999999997059158, SUCCESS focused run 39053159474 on head e5a1f44667b5791041695cff08fa775bb820f9eb. Original exceptional block/Riesz/domain formalization OPEN."
+    },
+    "EF14": {
+      "kind": "True ORIGINAL signed even one-vector 4096-cell second-order midpoint quadrature with rigorous original arch Euler series and seven-prime signed m derivatives; inherits EF11 full high-frequency signed and positive pole",
+      "scope": "Physical same original cosine zero-extended. Exact original signed [0,4] second-order integration using |m''|, |F''| etc and centered original refined digamma/Gamma rational intervals, both reflected frequencies; inherited independent EF11 [4,128], [128,infinity] signed tail and true even pole. Single-vector diagnostic, not full 890x890 exceptional original even Schur PSD.",
+      "pr": "EF14 stacked draft candidate",
+      "repo_path": "notes/RPB108_EF14_SIGNED_EVEN_MIDPOINT_20261017.md",
+      "verification": "EF14 final-head exact-rational CI pending; Q(f) sign not assumed. Original signed even/whole Weil/RH OPEN."
     }
   },
   "obligations": [
@@ -344,10 +351,11 @@
         "EF10",
         "EF11",
         "EF12",
-        "EF13"
+        "EF13",
+        "EF14"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF13: replay SI10 original whole seven-prime 107-cluster signed cover and actual 24-bit parity-even V_e with 890 exact Taylor columns; certify Q_e>=gamma_e>0.000999 on V_e-perp. THEN EF14: begin actual original signed even 890x890 block via exact physical support Gram/signed frequencies/true pole, normalize carrier, and genuine complement dual-energy residuals. EF11 direct one-witness CI and full original signed Schur PSD still OPEN."
+      "next_action": "EF14: rigorous true original signed even physical witness [0,4] second-order midpoint plus inherited EF11 [4,infinity] and pole; classify whole Q_e(f) sign without conservative cap. Parallel structural critical EF15: first true original even carrier Gram and signed 890-dimensional exceptional-block data, plus residual inverse. EF11 CI SUCCESS interval inconclusive, EF13 SI10 parity carrier CI SUCCESS. No full even PSD/RH."
     },
     {
       "id": "W-WHOLE-FORM",
