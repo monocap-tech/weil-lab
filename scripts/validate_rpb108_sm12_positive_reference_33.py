@@ -14,7 +14,9 @@ from validate_rpb108_si13_odd_fourier_reference import arch_lower
 from validate_rpb108_si18_odd_rank_two_woodbury import gram
 from validate_rpb108_si21_odd_jensen_four import KAPPA
 from validate_rpb108_sm05_two_source_original_inverse import FEATURES as OLD_POSITIVE
-from validate_rpb108_sm11_rank17_c16_nogo import CENTERS as NEGATIVE_CENTERS
+from validate_rpb108_sm04_negative_packet_rank import CENTERS as SM04_NEGATIVE_CENTERS
+# Keep candidate discovery independent of the parallel SM11 branch merge.
+NEGATIVE_CENTERS=tuple(sorted(SM04_NEGATIVE_CENTERS+(F(20199,100),F(38956,100))))
 
 # These rational candidates lie near, but NEVER inside, SM11's
 # original signed-negative windows. They have to be confirmed
