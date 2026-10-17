@@ -30,3 +30,37 @@ T_{32}=2\sum_{m=0}^{31}
 The source-pinned RC315 exact outward rational coefficient replay verifies
 \(c_{\rm arch}+T_{32}-2L_0\sinh^2(B/2)>1/4\).
 Different windows retain cross-prime and cross-arch couplings, so this theorem **cannot** be summed into global positivity.
+
+## An explicit finite negative-index bound for the WHOLE original form
+
+PS11's true sign-aware original-source comparison gives \(Q[f]\ge J[f]-13\|f\|^2\) on the entire original domain. The full arch Fourier multiplier is
+\[
+j(\xi)=2\int_0^\infty k(u)(1-\cos(2\pi\xi u))du
+\ge\log(|\xi|/2)-1/\pi-1/2,\quad |\xi|\ge2.
+\]
+Choose the physical frequency cutoff \(\Lambda=2^{22}\). Source-rational \(\log2>693/1000\) and \(\pi>3\) give
+\[
+j(\xi)>L_*=\frac{41159}{3000}>13\qquad(|\xi|\ge\Lambda).
+\]
+Thus every \(f\) with \(Q[f]\le0\) obeys the necessary Fourier concentration inequality
+\[
+\int_{|\xi|\le\Lambda}|\widehat{Zf}(\xi)|^2d\xi
+\ge(1-13/L_*)\|f\|^2.
+\]
+For ANY linear subspace \(V\) of the original physical form domain on which \(Q[f]\le0\) for every \(f\in V\), choose an arbitrary finite \(L^2\)-orthonormal family \(f_1,\ldots,f_d\). Bessel applied to the exponential \(x\mapsto e^{2\pi i\xi x}\) restricted to I yields
+\[
+\sum_{j=1}^d|\widehat{Zf_j}(\xi)|^2\le |I|=11/5 .
+\]
+Integrate over the frequency band and compare with the preceding necessary mass bound:
+\[
+\boxed{d<\frac{2(11/5)2^{22}}{1-13/(41159/3000)}<352{,}000{,}000.}
+\]
+This gives a conservative **finite negative Morse-index upper bound** for the complete original signed physical form, and hence for any nonpositive subspace contained in the PS12 beta-localized range. The full physical form has compact resolvent by PS05/PS07's original log-energy compact embedding and bounded signed prime/pole perturbations. This is NOT a computed negative eigenvalue count and asserts neither existence nor absence of negative eigenvalues.
+
+## Custody and next obligation
+
+The single-window theorem and the finite-index bound make progress toward identifying the remaining **coherent multi-window low-energy** interior obstruction. They do not prove \(Q[\beta f]\ge0\) on its entire range. Both parities, the cross-window signed form, complete CC27 D-Riesz domain attachment, a verified full signed Schur positive margin, and RH stay OPEN.
+
+**PS14** should build a rigorous original low-energy coupled interior/edge Gram or Schur certificate that retains all original seven prime shifts, archimedean interactions and both signed poles. Do not promote the positive shifted PS12 frame to unshifted Weil positivity.
+
+Replay: \`python3 scripts/validate_rpb108_ps13_interior_morse_local.py\` reruns the source-pinned PS12→PS11→PS10→PS09→PS07→PS06→PS03→RC315 chain, checks the rational Bernoulli tail and strict \(\frac14\) margin, and checks the exact-rational Fourier Bessel dimension bound and W-ODD-NEG custody. Focused CI is not independent proof-level review.
