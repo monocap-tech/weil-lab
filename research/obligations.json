@@ -155,6 +155,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/145",
       "repo_path": "notes/RPB108_SM12_POSITIVE_REFERENCE_33_20261017.md",
       "verification": "Focused exact original signed SM12 Actions 39014474903 PASSED at commit 9358fd6e09222efb9dabc0fdf70ea9d7cb0e07a9; final PR head and governance CI pending. Independent mathematical scrutiny separate."
+    },
+    "SM13": {
+      "kind": "exact-rational original physically supported odd negative-packet no-go for specific C33 positive lower reference",
+      "scope": "All 17 SM11 genuine original signed-negative Jensen packets tested against all 33 actual SM12 sign-positive Jensen sources with full 561 physical Gram cross-overlaps; witness true odd g_14.42 has original Kneg quadratic >=0.019489949720533795 and C33 quadratic <=0.003806383032591049, hence Kneg-C33 quadratic >0.015683566687942744. Excludes reference C33 as complete negative domination, even before odd pole. Says nothing about positivity of actual A_o, full original signed Weil form, or RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/147",
+      "repo_path": "notes/RPB108_SM13_C33_PHYSICAL_NEGATIVE_RAYLEIGH_20261017.md",
+      "verification": "Focused exact original signed physically supported C33 Rayleigh Actions 39015294106 PASSED on source head 4bea08161b5d3b1cec86a6e2cc9f89d460a27f43, structural 39015294212 PASSED; ledger-head governance and full postmerge verification pending, and independent peer review remains separate."
     }
   },
   "obligations": [
@@ -203,10 +210,11 @@
         "SM08",
         "SM10",
         "SM11",
-        "SM12"
+        "SM12",
+        "SM13"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM12 builds true original positive rank-33 lower reference C33=C16+17 disjoint whole original signed-positive Jensen means (new 17 physical Gram eigenvalue >0.95860, positive lambda17>0.076688), circumventing SM11's necessary rank<=16 reference no-go. SM10 still supplies full 890-column negative upper cap plus eta<3.014363e-10. NEXT: compute a rigorous full supported C33 891-source (pole+all original negative Taylor sources) inverse/Schur Loewner upper with cross terms; if not positive, expand genuinely relevant original positive lanes or transfer native RC/actual A_o. No full odd Weil or RH proof."
+      "next_action": "SM13 found actual original physically supported odd g_14.42 with <g,(Kneg,o-C33)g> > 0.0156835666, ruling out unchanged 33-feature Jensen positive lower reference as terminal full-negative domination. SM11 had already ruled out every rank<=16 scalar reference. SM10's all-negative upper cap and eta<3.014363e-10 remain valid. Next investigate full original positive-frequency multiplier response on SM13 witness and the entire 890-source negative cap (not more narrow Jensen-rank counting by default), or prove native RC high-Schur-to-original-odd-carrier transfer, with all pole/cross/infinite terms. Do NOT infer negativity of true A_o or RH. W-ODD-NEG OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -418,6 +426,17 @@
         "scripts/validate_rpb108_sm12_positive_reference_33.py"
       ],
       "interpretation": "Certifies whole original signed-positive 17 new intervals, physical Gram and disjoint 33-positive-source minorant, not the missing 891-source negative Schur or full W-ODD-NEG.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM13-true-original-physical-c33-rayleigh-nogo",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm13_c33_physical_negative_rayleigh.py"
+      ],
+      "interpretation": "Shows a true supported odd Jensen source with original Kneg quadratic > C33 reference quadratic by >0.0156835, using all 561 cross terms; method-specific C33 no-go, not Weil negativity or full odd proof.",
       "cadence": "on-demand"
     }
   ]
