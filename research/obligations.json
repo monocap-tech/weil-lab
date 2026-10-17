@@ -192,11 +192,11 @@
       "verification": "Exact full original frequency source-head Actions runs 39019183798 and 39019150228 PASSED at c34370543905fa4b4081e2741b2d06bb8175895f; structural 39019183738 PASSED. Final reconciled PR head and postmerge governance pending, independent expert review separate."
     },
     "EF07": {
-      "kind": "Full global original signed refined even-cap Rayleigh interval and independent original positive energy interval on EF05 physical cosine",
-      "scope": "Exact bounds for all 973 original signed unresolved positive-frequency leaves (64 refined to 256), plus analytic high-frequency cap upper; original A_e lower from true signed positive excess, scalar floor, positive even pole and original A_e upper from full signed Fourier/log tail. Classify cap-minus-A_e as definite no-go, one-vector passes, or inconclusive ONLY after numeric exact intervals separate.",
+      "kind": "Certified full-global original signed EF06 cap and original positive supported even Rayleigh intervals on EF05 physical cosine: INCONCLUSIVE",
+      "scope": "Full original signed refined cap Q on f=cos(2π19x/25) in [0.8023309563,1.0198894827]; actual original positive A_e Q in [0.4629763897,2.6394610669]. Cap-minus-A_e in [-1.8371301105,0.5569130930], intervals overlapping => cannot certify cap feasibility NOR method-class no-go. All original 973 covered leaves, EF06 256 microcells, signed original positive surplus, positive even pole, whole >=4 analytic tail paid. No 890-source inverse or actual even positivity.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/152",
       "repo_path": "notes/RPB108_EF07_GLOBAL_EVEN_WITNESS_20261017.md",
-      "verification": "Draft PR #152, exact rational full global cap and signed actual positive comparator final-head CI pending; no full 890-source Schur, original even-form or RH claim."
+      "verification": "Focused exact-rational source-head CI Actions 39039665346 SUCCESS, first-head source blob unchanged after annotation. Final reconciled PR head EF07/inherited and obligation-governance CI replay pending. Not independent proof audit or Lean original-form formalization."
     }
   },
   "obligations": [
@@ -275,7 +275,7 @@
         "EF07"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF08: respond to EF07 certified full-global one-vector classification. CAP_NO_GO => further local signed majorant refinement in responsible original frequency bands; WITNESS_PASSES => at least 2-vector genuinely coupled supported even feasibility pilot; INCONCLUSIVE => tighten global bound and positive-energy intervals. Do not calculate 890-source inverse before a justified feasibility screen. W-EVEN-FORM remains OPEN."
+      "next_action": "EF08: tighten ACTUAL original supported even positive-form energy bounds on EF05 cosine (especially overly coarse >=4 analytic upper tail and integer-cell original archimedean bound) until a strict comparison with EF07 global refined negative cap [0.8023309563,1.0198894827] or a proved bound limitation emerges; never assert positivity or negativity from EF07 overlap. Subsequent 2-vector coupled test or refined cap as indicated. W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
