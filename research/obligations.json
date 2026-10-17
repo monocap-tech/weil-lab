@@ -246,6 +246,13 @@
       "pr": "Draft EF11 stacked after EF10",
       "repo_path": "notes/RPB108_EF11_DIRECT_SIGNED_EVEN_RAYLEIGH_20261017.md",
       "verification": "Candidate EF11 exact signed whole Rayleigh interval final-head CI pending. Inherits independently certified EF08 positive-tail and EF10 rejected-cap result."
+    },
+    "EF12": {
+      "kind": "Conditional exact original even cofinite-to-finite signed Schur via true original form Riesz lifts and certified dual-energy residuals; two positive/negative toy exact-rational sign regressions",
+      "scope": "Assume closed semibounded original even q, explicit parity-invariant finite exceptional V, actual signed cofinite q>=gamma>0 on W=Vperp, original mixed q(v,w) continuous. Original exact finite Schur S=A-q(h_i,h_j), positivity iff S>=0. With approximate lifts M and dual residual rho_i, S=M-E, 0<=E<=sum rho_i² I. Sufficient exact rational M-sum rho² I>=0; NOT instantiated for original Weil.",
+      "pr": "EF12 stacked after EF11; candidate",
+      "repo_path": "notes/RPB108_EF12_ORIGINAL_EVEN_FINITE_SCHUR_20261017.md",
+      "verification": "Exact-rational 2x3 toy algebra regression proposed; actual V, gamma, original signed matrix, infinite residual, true even PSD, whole Weil/RH OPEN."
     }
   },
   "obligations": [
@@ -328,10 +335,11 @@
         "EF08",
         "EF09",
         "EF10",
-        "EF11"
+        "EF11",
+        "EF12"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF11: directly compute rigorous whole-original even Q(f) interval on same compactly supported even cosine (signed seven-prime + arch, true whole Fourier, positive even pole, infinite tail), no conservative cap. Retain single-rayleigh vs all-operator PSD distinction. Depending on interval, improve original signed physical witness or move to direct coupled even 2x2; W-EVEN-FORM OPEN."
+      "next_action": "EF12: instantiate CONDITIONAL true original even finite signed Schur by explicit parity-preserving SI10 exceptional V and original-domain cofinite gamma, then original signed A/mixed rows, Riesz lifts and FULL-complement energy-dual residual bounds rho_i; prove M-(sum rho_i²)I PSD. The abstract EF12 identity alone is not an actual even certificate. EF11 direct one-vector source result separately required; W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",

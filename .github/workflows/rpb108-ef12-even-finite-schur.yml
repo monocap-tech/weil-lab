@@ -1,0 +1,23 @@
+name: RPB108 EF12 original even conditional finite Schur
+on:
+  pull_request:
+    branches:
+      - research/rpb108-even-form-ef11-direct-signed
+      - research/rpb108-route-consolidation
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-original-even-schur-algebra:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_ef12_even_finite_schur_algebra.py
+          python scripts/validate_rpb108_ef12_even_finite_schur_algebra.py
