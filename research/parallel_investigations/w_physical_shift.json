@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS04 analytical full original signed edge/interior offdiag L2-bounded and noncompact, explicit seam witness and exact rational envelope pending final-head CI; no source-domain projection proof, energy-dual Schur, whole Weil, RH or independent review.",
+  "proof_standing": "PS05 analytic compactness theorem for original restricted edge inverse and positive compact energy-dual Schur correction, exact original rational high-frequency tail and parent-source replays pending focused Actions/independent review; full signed edge elimination, original form-domain splitting, whole Weil and RH remain OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS05: use complete positive edge operator rather than its 0.3 scalar floor; certify energy-dual seam Carleman Schur response on native CC27/D-Riesz domain, including original prime/pole coupling",
-    "PS06: only after real energy-Schur control, compare against SM/EF 890-source and RC 301/317 D-Riesz carriers with exact norm/domain bridge"
+    "PS06: establish original signed form domain compatibility with sharp edge/middle split or construct a smooth partition preserving the CC27/D-Riesz domain",
+    "PS07: compute certified finite-rank energy-dual B_EF* A_E^-1 B_EF approximation, signed original middle block and correct subtractive Schur test; require strict PSD before promotion"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -63,6 +63,14 @@
       "note": "notes/RPB108_PS04_EDGE_SCHUR_NONCOMPACT_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps04_edge_schur_coupling.py",
       "limitation": "No complete edge Schur elimination; form-domain sharp projection transfer still open, and L2 offdiagonal noncompact"
+    },
+    {
+      "id": "PS05",
+      "scope": "native restricted original edge form has compact energy embedding; A_E inverse compact and true energy-dual seam correction B_EF* A_E^-1 B_EF positive compact, despite PS04 noncompact L2 coupling",
+      "status": "analytic compactness plus exact-rational original arch logarithmic spectral tail; focused CI and independent functional analytic domain review pending",
+      "note": "notes/RPB108_PS05_EDGE_ENERGY_DUAL_COMPACTNESS_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps05_energy_dual_compactness.py",
+      "limitation": "No sharp support-projector invariance, actual finite-rank spectral approximation or positive original Schur gate."
     }
   ]
 }
