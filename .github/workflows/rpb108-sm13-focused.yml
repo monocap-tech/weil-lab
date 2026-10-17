@@ -1,0 +1,25 @@
+name: RPB108 SM13 original odd C33 negative-packet audit
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-c33-rayleigh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_sm13_c33_physical_negative_rayleigh.py
+          python scripts/validate_rpb108_sm13_c33_physical_negative_rayleigh.py
