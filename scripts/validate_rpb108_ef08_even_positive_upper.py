@@ -67,12 +67,12 @@ def signed_original_upper_cells():
         multiplier=rational_ceil(max(KAPPA,multiplier))
         amp=supported_even_fourier(mid)
         # Exact derivative of the physical cosine-transform:
-        # |F'| <= B/(xi-z) + 1/[pi (xi-z)^2], for xi>=4.
+        # |F'| <= 2B/(xi-z) + 1/[pi (xi-z)^2], for xi>=4.
         # This frequency-sensitive bound is much sharper than
         # 2*pi*B^2 and holds for all xi in this entire cell.
         v=l-CENTER
         assert v>3
-        deriv=B/v+1/(PI[0]*v*v)
+        deriv=2*B/v+1/(PI[0]*v*v)
         fbound=rational_ceil(absolute_upper(amp)+deriv*(r-l)/2)
         original_mid+=2*(r-l)*multiplier*fbound**2
     return original_low,original_mid,cells_low,cells_high
