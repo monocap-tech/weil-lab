@@ -83,3 +83,15 @@ with 890 negative Taylor sources, odd pole and all physical intercluster couplin
 No 891-source finite positivity, W-ODD-NEG, even/whole Weil form, global original-zeta attachment or RH is established by this result. Whole-interval arithmetic and analytic original Fourier/Weil identification still warrant independent expert review.
 
 **Replay:** \`python scripts/validate_rpb108_sm12_positive_reference_33.py\`.
+
+## 4. Accepted source-head exact-rational results
+
+The focused original SM12 rational replay [Actions 39014474903](https://github.com/monocap-tech/weil-lab/actions/runs/39014474903) **PASSED** at source head \`9358fd6e09222efb9dabc0fdf70ea9d7cb0e07a9\`:
+
+- 17 entire original signed-positive real-frequency intervals, with exact rational lower multiplier **\(m>3.7676711871>\kappa+2\)**.
+- All **33** inherited and new positive bands have pairwise disjoint interiors. The original SI29/C16 bands can share a single endpoint of zero measure; that is not spectral double counting.
+- 17x17 actual physical odd Jensen Gram, every cross term paid: minimum diagonal \(>1.0884908566\), maximum off-diagonal row \(<0.1396444069\), full Gershgorin lower \(>0.95860476456\).
+- Seventeenth eigenvalue of the new **genuine original signed-positive** contribution \(>0.07668838116\).
+- Combined original positive lower reference \(C_{33}\preceq A_o\) inherits old C16 windows plus all 17 new disjoint signed-positive means; exact rank 33 by Fourier-support uniqueness and analytic continuation.
+
+These are scoped results only. **The 891-source signed-negative whole operator gate remains OPEN**, including the original odd pole, physical old/new/negative source cross-couplings, and SM10 full negative cap. Final head CI and external mathematical review are additional obligations.
