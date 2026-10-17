@@ -210,7 +210,14 @@
       "scope": "Proves original odd negative-frequency BS is positive trace-class; any eigenvalue >1 yields actual supported signed-negative witness; from SM10 derives sufficient TRUE supported 890-column mu<=999/1000. Also proves arbitrary higher-dimensional favorable high-frequency subspaces do not certify full positivity. Neither actual mu nor lambda_max(T) is bounded here.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/155",
       "repo_path": "notes/RPB108_SM17_COMPACT_ODD_SPECTRAL_GATE_20261017.md",
-      "verification": "Analytic argument recorded for review; focused Fraction budget not yet final-head CI verified. No independent peer review or Lean formalization; original full odd positivity OPEN."
+      "verification": "Merged PR #155 at f3ed70cd4b6bcdf2fdc46ddb00c84cecc89604dd, with 14/14 final-head Actions success on e218020983051dd61eee28e082ee765c66e0922c (including focused SM17, obligation governance, structural, and existing regressions). Analytic argument not independently peer-reviewed or Lean formalized. Full original 890-column mu not computed."
+    },
+    "SM18": {
+      "kind": "analytic forward-residual upper bound for original supported inverse plus exact Fraction 2x2 coupled sign regression",
+      "scope": "For original supported A_star>=kappa_star and SM10 source U, any actual forward Ritz synthesis Y in Dom(A_star) gives U* A_star^-1 U = H_Y + E* A_star^-1 E <= H_Y + kappa_star^-1 E*E; exact full-890 rational matrix sufficient gate against (999/1000) C^-1. Only the general identity and 2x2 toy arithmetic are checked; actual original Y, H, E and 890-source gate remain OPEN.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/156",
+      "repo_path": "notes/RPB108_SM18_FORWARD_RESIDUAL_ODD_GATE_20261017.md",
+      "verification": "Analytic argument and local exact rational prototype independently replayed at authoring; GitHub final-head focused and obligation governance CI pending; no actual original 890-source residual enclosure, independent peer review or Lean formalization."
     },
     "EF08": {
       "kind": "Candidate full-frequency original supported even positive-form upper: 4096 signed low cells, 3968 signed mid cells, global logarithmic tail and positive even pole",
@@ -224,7 +231,7 @@
       "scope": "Original cap weights and original physical Fourier transform unchanged. 256 [0,1] refined leaves subdivided by 4; 121 [1,4] original leaves subdivided by 16; 788 nonnegative high leaves lower 0. Same physical witness; compare cap lower to independently certified original A_e upper <877811/1e6. Strict cap-minus-A_e separation rules out this CAP method only, not original true even form or RH.",
       "pr": "Stacked candidate after EF08, see EF09 PR",
       "repo_path": "notes/RPB108_EF09_EVEN_CAP_LOWER_20261017.md",
-      "verification": "Candidate: focused EF09 source-head exact-rational whole-cell Fourier + obligation governance CI pending; EF08 independently replayed original A_e upper required. No full even original Weil certificate."
+      "verification": "Focused exact rational original physical EF09 cap lower 0.8724438013669181 (2960 subcells), SAME witness EF08 actual A_e upper <0.877811; STILL_INCONCLUSIVE. Actions 39049775807 SUCCESS on source head. No full even/Weil/RH theorem."
     }
   },
   "obligations": [
@@ -278,10 +285,11 @@
         "SM14",
         "SM15",
         "SM16",
-        "SM17"
+        "SM17",
+        "SM18"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM17 establishes original conditioned negative-frequency T=R_o A_star^-1 R_o* positive trace-class, actual negative physical witness extraction for lambda_max(T)>1, and rigorous SM10 sufficient cap threshold: true supported pole-conditioned 890-source mu=lambda_max(C^1/2 U* A_star^-1 U C^1/2)<=999/1000 implies W-ODD-NEG. COMPUTE/CERTIFY MU WITH ALL 890 ORIGINAL CROSS COUPLINGS and full infinite error; or sharpen the one-sided cap. Avoid dimension-only 3D positive-witness inflation: high-frequency positive extensions exist without whole-operator positivity. Actual mu and W-ODD-NEG OPEN."
+      "next_action": "SM18 forward-residual theorem converts the missing original all-890 supported inverse mu <=999/1000 into a sufficient exact rational PSD comparison: (999/1000) C^-1 - H_Y - (10^9/33621) E*E >=0, where Y is a physically supported trial Ritz synthesis, H_Y=U*Y+Y*U-Y*A_star Y, E=U-A_star Y. ACTUAL 890-COLUMN original forward H_Y/E*E enclosures, finite original sign/pole and infinite a^2 tail, and full PSD are UNCOMPUTED. Build validated trial Y, prove complete matrix upper and 890-dimensional PSD or detect method floor. W-ODD-NEG OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -553,6 +561,17 @@
         "scripts/validate_rpb108_sm17_compact_spectral_gate.py"
       ],
       "interpretation": "Exact Fraction conditional 890-column cap threshold and witness-sign toy regression; it does not compute mu, verify functional-analytic compactness, or prove entire original odd positivity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM18-forward-residual-original-odd-prototype",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm18_forward_residual_gate.py"
+      ],
+      "interpretation": "Checks exact rational 2x2 forward-residual inverse upper matrix and fail-closed toy SPD regression; not actual original 890-column residual data or full odd Weil positivity.",
       "cadence": "on-demand"
     }
   ]
