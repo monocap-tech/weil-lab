@@ -71,3 +71,32 @@ The validator retests both original signs on *whole* rational intervals. Exact \
 
 **Replay:** \`python scripts/validate_rpb108_sm13_c33_physical_negative_rayleigh.py\`.
 **Standing:** candidate until focused source/final-head GitHub Actions pass; independent validation of the original explicit-formula Weil reduction is separate.
+
+## Exact result (focused source-head Actions accepted)
+
+[GitHub Actions 39015294106](https://github.com/monocap-tech/weil-lab/actions/runs/39015294106) **PASSED**, evaluating all 17 original negative Jensen witness packets and all \(17\times33=561\) negative/positive true physical overlaps by exact outward-rational Gram enclosures.
+
+The strongest witness is the **original supported odd** \(g_{721/50}\) at signed-negative center \(721/50=14.42\). The actual original full negative operator's quadratic lower bound and C33's entire upper bound are
+
+\[
+\langle g_{721/50},K_{\mathrm{neg},o}g_{721/50}\rangle
+\ \ge\ 0.019489949720533795\ldots,
+\]
+\[
+\langle g_{721/50},C_{33}g_{721/50}\rangle
+\ \le\ 0.003806383032591049\ldots,
+\]
+\[
+\boxed{
+\langle g_{721/50},(K_{\mathrm{neg},o}-C_{33})g_{721/50}\rangle
+>0.015683566687942744.
+}
+\]
+
+The winning source's **C16** existing positive feature contribution is bounded above by \(0.0011026411022736343\), and its **17 newly added positive features** contribute at most \(0.0015982968559311464\), with the original \(\kappa \|g\|^2\) accounted separately. These are full physical coupling bounds, not assumptions that disjoint Fourier-frequency windows stay orthogonal on \([-B,B]\).
+
+The original whole-band signed-negative multiplier upper is \(<-0.591662489\); the new original positive-band multiplier lower is \(>3.767671187\). Both original signed statements are replayed continuously on every real frequency within their certified intervals.
+
+**Exact interpretation:** the *specific original signed-positive lower reference* \(C_{33}\) fails the necessary entire-negative domination inequality, even before the odd pole. SM13 does **not** show \(K_{\mathrm{neg},o}\not\preceq A_o\), does **not** show a negative direction of the actual original Weil form, and does **not** establish RH or its negation. Adding a finite number of narrowly chosen Jensen means is not justified as the next terminal strategy merely by increasing feature rank. The next target is a direct, rigorous positive response from the *full* original multiplier on the actual physical carrier, or an explicitly proved transport from native RC high Schur.
+
+The decimal figures above display exact rational bounds, not floating-point acceptance. Repository final-head and independent expert audit remain distinct from this accepted scoped source replay.
