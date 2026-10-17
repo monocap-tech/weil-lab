@@ -239,6 +239,13 @@
       "pr": "Pending EF10 draft PR",
       "repo_path": "notes/RPB108_EF10_EVEN_INTEGRATED_CONE_20261017.md",
       "verification": "Exact rational EF10 integrated physical Fourier cone certified unchanged conservative cap LOWER 0.879669083946 with 2960 subcells; independent original EF08 actual A_e upper <0.877811. Strict cap-method no-go margin >0.001858083946. Actions focused SUCCESS run 39050974996 on source head 948626df87a2fa3d9fbfc8d3b0eb368190c0ba13; reconciled final-head CI still required. This refutes EF06/07 cap domination ONLY, not K_true or full even Weil positivity."
+    },
+    "EF11": {
+      "kind": "Original FULL even signed one-physical-witness Rayleigh interval; actual m and original even pole, no EF04/EF06 conservative negative cap",
+      "scope": "Whole original signed m = original arch + seven-prime cosine, rational interval 4096+[4,128] 3968 true-support Fourier cells and rigorous [128,infinity) reflected signed m tail + positive even pole. One-vector direct Q_e interval only; does not assert full even PSD or RH.",
+      "pr": "Draft EF11 stacked after EF10",
+      "repo_path": "notes/RPB108_EF11_DIRECT_SIGNED_EVEN_RAYLEIGH_20261017.md",
+      "verification": "Candidate EF11 exact signed whole Rayleigh interval final-head CI pending. Inherits independently certified EF08 positive-tail and EF10 rejected-cap result."
     }
   },
   "obligations": [
@@ -320,10 +327,11 @@
         "EF07",
         "EF08",
         "EF09",
-        "EF10"
+        "EF10",
+        "EF11"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF10 certifies EF06/07 refined CAP domination fails on original supported cosine, margin >0.001858083946. DO NOT continue refining that sufficient cap or launch its 890-source inverse. EF11: pivot to genuine original signed even Q_e=A_e-K_true,e, including all frequencies/pole; distinguish original signed actual Rayleigh evidence from cap surrogates. W-EVEN-FORM OPEN; W-ODD-NEG canonical untouched."
+      "next_action": "EF11: directly compute rigorous whole-original even Q(f) interval on same compactly supported even cosine (signed seven-prime + arch, true whole Fourier, positive even pole, infinite tail), no conservative cap. Retain single-rayleigh vs all-operator PSD distinction. Depending on interval, improve original signed physical witness or move to direct coupled even 2x2; W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
