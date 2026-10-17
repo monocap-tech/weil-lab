@@ -31,3 +31,10 @@ The script reports either exact positive definiteness of this **specific 2D phys
 **Scope:** Even if SPD is proved, operator-wide W-ODD-NEG, SM10's full 890-source coupled carrier, the even/whole signed form, global original-zeta bridge, independent peer review and RH remain OPEN.
 
 Replay: python scripts/validate_rpb108_sm16_coupled_original_odd_2x2.py
+
+
+## Directed-rounding contract for 2×2 interval accumulators
+
+All 27 original sign-positive source cross terms, and all 973 original negative-frequency leaf terms, are accumulated in rational interval bounds with fixed denominator \(10^{24}\), rounding every positive diagonal upper **up**, every positive diagonal lower **down**, every mixed interval lower **down** and upper **up** at each step. Per-step rounding has absolute error \(<10^{-24}\) and the accumulated errors are already included by the repeated outward rounding. This avoids explosive growth of exact rational denominators without treating any negative-frequency leaf or physical cross coupling as zero.
+
+The separate already-merged SM15 exact 973-leaf replay is not redundantly recomputed inside the focused SM16 job; its strict one-direction certificate remains preserved in the canonical governance ledger. The SM16 test independently runs the full 973-leaf two-direction enclosure.
