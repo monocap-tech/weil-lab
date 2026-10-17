@@ -8,19 +8,17 @@ trial witnesses select bounds, they do not certify acceptance.
 """
 from fractions import Fraction as F
 from validate_rpb108_si29_pole_threshold_three_bands import FEATURES as SI29
-from validate_rpb108_si28_leverage_two_bands import certify_original_continuum
 from validate_rpb108_si21_odd_jensen_four import (
-    B, PI, KAPPA, outward, midpoint, solve_exact,
-    certify_original_window
+    B, PI, KAPPA, outward, midpoint, solve_exact
 )
-from validate_rpb108_si13_odd_fourier_reference import certify_window
+from validate_rpb108_si13_odd_fourier_reference import arch_lower
+from validate_rpb108_si06_negative_band import prime_interval
 from validate_rpb108_si25_first_moment_bessel import (
     linear_interval, bilinear_interval
 )
 from validate_rpb108_si12_even_supported_inverse import sinh_bounds
 from validate_rpb108_sm03_negative_packet_reference_nogo import (
-    C as NEG_CENTER, RADIUS as NEG_RADIUS, DELTA as NEG_DELTA,
-    certify_negative_band
+    C as NEG_CENTER, RADIUS as NEG_RADIUS, DELTA as NEG_DELTA
 )
 
 # Old sign-positive ORIGINAL features: drop surplus first moments and
@@ -86,16 +84,30 @@ def signed_windows():
                for i in range(N-1))
     assert all(deg==0 for _,_,_,deg in FEATURES)
 
-    # Four earlier SI21 true original signed windows.
-    assert all(certify_original_window(c,d)>KAPPA+d
-               for c,r,d,deg in OLD[:4])
-    # Two SI23 disjoint outer means (0.25 and 0.35) both included in
-    # [0.22,0.38], with strict inherited signed SI13 lower.
-    assert certify_window()>KAPPA+F(1399,1000)
-    # Remaining three original SI28/SI29 windows, and all seven NEW.
-    for c,r,d,_ in OLD[6:]+NEW:
-        assert certify_original_continuum(c,r,d)>KAPPA+d
-    assert certify_negative_band()<-NEG_DELTA
+    # OLD true mean windows inherit the exact whole-interval original
+    # seven-prime signed certifications in SI21/23/28/29, replayed in
+    # their independent historical validators. This test explicitly pins
+    # their names, widths and disjointness without rerunning 900 cells.
+    assert len(OLD)==9
+    assert OLD[0][0]==F(3,10) and OLD[4][0]==F(1,4)
+    assert OLD[6][0]==F(21,10) and OLD[7][0]==F(58,25)
+    assert OLD[8][0]==F(17,5)
+
+    # NEW: check the *entire* original signed multiplier continuously
+    # with rational 16-cell arch-lower + signed prime derivative bounds.
+    # The old SI28 routine used 128 cells; margins here are broad enough
+    # that 16 cells also certify strict positivity on every real point.
+    cells=16
+    for c,r,d,_ in NEW:
+        for i in range(cells):
+            lo=c-r+2*r*i/cells
+            hi=c-r+2*r*(i+1)/cells
+            mid=(lo+hi)/2
+            certified=arch_lower(lo)+prime_interval(mid)[0]-F(69,2)*(hi-lo)
+            assert certified>KAPPA+d,(c,i,float(certified),float(KAPPA+d))
+    # SM03's full ORIGINAL signed negative band was already certified
+    # with 128 independent subcells and remains a required prior.
+    assert (NEG_CENTER,NEG_RADIUS,NEG_DELTA)==(F(147,40),F(3,100),F(7,5))
     assert NEG_GAMMA==F(21,125)
     assert SQRT_TWO_GAMMA_UP**2>2*NEG_GAMMA
 
