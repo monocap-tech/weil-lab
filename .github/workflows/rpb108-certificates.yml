@@ -1,4 +1,4 @@
-name: RPB108 checkpoint verification
+name: RPB108 RC-only checkpoint replay
 
 on:
   push:
@@ -23,7 +23,7 @@ on:
   workflow_dispatch:
     inputs:
       checkpoint:
-        description: "RC checkpoint number, or latest"
+        description: "RC checkpoint number or latest RC validator (NOT global frontier)"
         required: true
         default: latest
         type: string

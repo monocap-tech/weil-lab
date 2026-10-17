@@ -1,4 +1,6 @@
-# Research Map
+# Research Map — Historical Horizon-1 topology
+
+> **Not the post-Horizon live cursor.** The Horizon-1 completion map is preserved as historical proof architecture. Current post-Horizon research priority and evidence are governed by [`research/obligations.json`](../research/obligations.json), with the progression rules in [Obligation-first progression](OBLIGATION_FIRST_PROGRESSION.md).
 
 ## Current horizon
 

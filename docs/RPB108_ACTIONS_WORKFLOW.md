@@ -1,4 +1,6 @@
-# RPB108 GitHub Actions checkpoint workflow
+# RPB108 GitHub Actions RC checkpoint workflow
+
+> **RC-only historical certificate replay.** The `latest` option selects the numerically greatest **RC validator**, not the live research obligation. Current cross-method research selection comes from [`research/obligations.json`](../research/obligations.json) and its dedicated [obligation-governance workflow](../.github/workflows/obligation-governance.yml). Both validation interfaces remain available; neither by itself proves RH.
 
 The RPB108 Route Consolidation validators already have an exact `--replay`
 mode. `.github/workflows/rpb108-certificates.yml` runs that mode on a

@@ -1,4 +1,6 @@
-# Certified completion dashboard — RC204
+# Historical certified completion dashboard — RC204
+
+> **Archived snapshot, not the active research cursor.** This document records the RC204 evaluation and its earlier comparisons. For the governing current objective, mathematical obligation, and method selection, consult [`research/obligations.json`](../research/obligations.json) and [the active frontier](ACTIVE_FRONTIER.md). Do not select the latest obligation from the largest RC number.
 
 Current research checkpoint: RC204. Latest evaluated inverse checkpoint: RC203 (six sources). Latest accepted inverse family: RC196 (five sources). Operator: the actual supported canonical M=D^-1 L at B=11/10. Exact rational data and acceptance checks are in the named certificates. Historical checkpoints remain unchanged.
 

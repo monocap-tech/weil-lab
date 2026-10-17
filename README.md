@@ -9,6 +9,12 @@ negative directions, and compact-window neutral modes.
 > **Scope:** This repository packages an independent Weil-defect theory to its
 > stated stop boundary. It does not claim a proof of the Riemann Hypothesis.
 
+## Current post-Horizon research governance
+
+**Obligation-first progression (approved 2026-10-16):** The canonical research priority is the `active_obligation` in [the obligation manifest](research/obligations.json), with [progression doctrine](docs/OBLIGATION_FIRST_PROGRESSION.md) and a [readable frontier baseline](docs/ACTIVE_FRONTIER.md). RC/SI/SM/LF numbers identify immutable historical checkpoints; no largest-number rule sets the main research target. The current obligation is original full odd negative-frequency control, **not** RH or whole-original-form closure. Git commit SHA and exact artifacts remain the authority for source custody and reproducibility.
+
+The Horizon-1 description below is a historical completed package; its research-map cursor and older RC204 dashboard are not the post-Horizon active frontier.
+
 ## Scope and separation
 
 The project separates two mathematical layers that must not be conflated:
