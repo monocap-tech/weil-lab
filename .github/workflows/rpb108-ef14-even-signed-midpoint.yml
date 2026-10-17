@@ -1,0 +1,23 @@
+name: RPB108 EF14 original signed even midpoint second-order
+on:
+  pull_request:
+    branches:
+      - research/rpb108-even-form-ef13-si10-carrier
+      - research/rpb108-route-consolidation
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-direct-signed-second-order:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_ef14_signed_even_midpoint.py
+          python scripts/validate_rpb108_ef14_signed_even_midpoint.py
