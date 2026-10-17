@@ -37,7 +37,7 @@ def even_cosine_gram(c, d):
             2 * (PI[1] if difference < 0 else PI[0]) * difference,
             2 * (PI[0] if difference < 0 else PI[1]) * difference
         )
-        assert denominator[0] > 0 and denominator[1] > 0
+        assert (denominator[0] > 0 and denominator[1] > 0) or (denominator[0] < 0 and denominator[1] < 0)
         first = div(sin_pi(2 * B * difference), denominator)
     positive_sum = c + d
     second = div(sin_pi(2 * B * positive_sum),
