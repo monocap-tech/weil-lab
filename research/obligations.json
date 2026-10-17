@@ -57,6 +57,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/128",
       "repo_path": "notes/RPB108_SM02_ODD_PARITY_PACKET_20261016.md",
       "verification": "Pending final-head GitHub Actions regression and PR verification; analytically derived from the certified SI10/SI11 original signed cover, not independently peer reviewed or formalized in Lean."
+    },
+    "SM03": {
+      "kind": "whole-interval rational signed-negative packet and physical Jensen/Gram reference-obstruction certificate",
+      "scope": "Proves K_freq,o cannot be dominated by the unchanged SI29 C14 positive reference, hence neither by pole-subtracted C14_star. Does NOT prove negativity for the original A_o or Weil form.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/129",
+      "repo_path": "notes/RPB108_SM03_NEGATIVE_PACKET_REFERENCE_NOGO_20261016.md",
+      "verification": "First 64-panel exact rational Actions run 38997855264 passed with strict obstruction margin >0.042252; final 16-panel candidate is pending its focused integration CI. Not independently peer reviewed or Lean formalized."
     }
   },
   "obligations": [
@@ -95,10 +102,11 @@
         "SM01",
         "SI10",
         "RC334",
-        "SM02"
+        "SM02",
+        "SM03"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM03/SI30: certify one actual original negative-frequency odd packet matrix/source response with complete pole cross terms, rigorous supported A_o^-1 enclosure and infinite remainder; compare 781/891/1076 odd dimensions with RC314's different 301-D metric carrier. Stop sparse-reference attempts if a certified obstruction emerges."
+      "next_action": "SM04/SI30: the unchanged SI29 14-feature lower reference is rigorously insufficient to absorb the original negative continuum (SM03). Enrich true positive-frequency reference in the directions coupled to an actual negative packet, or compute native supported A_o^{-1} via RC high Schur. Certify pole/frequency mixed finite matrix, its rigorous inverse upper and entire remainder. Do not infer negativity of A_o or Q_Weil from failure of C14."
     },
     {
       "id": "W-EVEN-FORM",
@@ -218,6 +226,17 @@
         "scripts/validate_rpb108_sm02_odd_packet_parity.py"
       ],
       "interpretation": "Checks parity-halved original signed negative-frequency physical rank and full residual budget, not the missing finite BS eigenvalue.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM03-signed-negative-packet-reference-obstruction",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm03_negative_packet_reference_nogo.py"
+      ],
+      "interpretation": "Certifies an original signed whole-frequency negative packet defeating the unchanged SI29 C14 lower reference; not a counterexample to Weil positivity or the complete BS gate.",
       "cadence": "per-update"
     }
   ]
