@@ -168,7 +168,14 @@
       "scope": "On the genuine supported even carrier, f=cos(2π(19/25)x) has rigorous <f,Kcap,e f>>4.415423238009, while actual original positive <f,A_e f><2.639461066813, including true positive even pole, every original seven-prime low-frequency cell, and entire analytic high-frequency tail. Hence EF04's original 890-source conservative cap Schur sufficient inequality is FALSE. Actual K_true,e and Q_e can still be positive; no RH refutation.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/146",
       "repo_path": "notes/RPB108_EF05_EVEN_UPPER_CAP_OBSTRUCTION_20261017.md",
-      "verification": "Exact-rational focused original signed physical-even verifier SUCCESS Actions 39015954905, source head 8429f85210417bea51fd661057036a0465679182. Companion final-head governance and inherited CI replays required after this metadata update; mathematical standing conditional on inherited original multiplier and operator identification. Independent peer review/Lean formalization not complete."
+      "verification": "Merged PR #146 at d763297f9c98a72656222162fc60d6ad0445ff88. Exact-rational EF05 physical even cap-obstruction final-head focused workflow and seven inherited/governance workflows ALL SUCCESS on source head 6a396cae5cd5a9c36c30d151fe30bf8d1535a01c; independent peer review/Lean formalization separate."
+    },
+    "EF06": {
+      "kind": "Candidate strictly sharper original signed even upper cap on [0,1] with unchanged all-frequency exterior and exact source moment covariance",
+      "scope": "Refine 64 original SI10 unresolved [0,1] leaves into 256 exact rational cells; cap_new=min(cap_old, rounded_up(κ−m_lower)_+), original arch lower at each rational leaf start and seven-prime signed whole-cell derivative. Preserve true Kneg,e<=Kcap,new,e<=Kcap,old,e globally. Test old-vs-new [0,1] physical EF05 cosine with exact Fourier bounds; original 107 clusters and 890 even sources remain. Does NOT establish global new cap<=original A_e or any finite Schur positivity.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/149",
+      "repo_path": "notes/RPB108_EF06_LOCAL_SIGNED_EVEN_CAP_20261017.md",
+      "verification": "Draft PR #149; exact rational focused EF06 and obligation-governance final-head CI pending. No full even positivity, independent peer review or Lean original-zeta attachment."
     }
   },
   "obligations": [
@@ -240,10 +247,11 @@
         "EF02",
         "EF03",
         "EF04",
-        "EF05"
+        "EF05",
+        "EF06"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF06: Replace the disproved EF04/EF05 conservative SI10 all-negative upper cap with a rigorously tighter original signed upper, paying low-frequency excess and global high-frequency tails; FIRST run the EF05 physical-even cosine witness against the new cap before investing in 890-source inverse. Alternatively prove an original native RC even-carrier transport and original positive-vs-negative finite Schur. W-EVEN-FORM stays OPEN; EF05 refutes ONLY the EF04 sufficient overestimate, not the true form."
+      "next_action": "EF07 (after EF06 final-head validation): compute rigorous FULL new signed upper-cap Rayleigh on EF05's same physical even cosine across ALL original unresolved leaves and compare to independently certified original positive-energy LOWER, before any new 890-source inverse/Schur attempt. If still overconservative, sharpen the responsible bands. W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
