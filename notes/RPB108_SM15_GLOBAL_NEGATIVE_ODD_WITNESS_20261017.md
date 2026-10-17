@@ -82,7 +82,7 @@ The sum includes every original negative-frequency leaf and excludes none withou
 
 ### Exact full-cover computational subdivision (no omitted tails)
 
-For leaves with distance \(d(c,I)\le20\), apply the locally sharpened sign bound \(w'_I\) and the SI18 rational midpoint-plus-derivative Fourier envelope above. For more remote leaves, **keep** the already certified original SI10 \(h_I+\kappa\) multiplier cap and use the all-real analytic distance envelope \(s(d(c,I))+s(c+l)+2Be\), independent of phase sampling. Every one of the original 973 leaves is included in the sum. This saves expensive exact trigonometric and archimedean evaluations at large frequency without weakening mathematical coverage. The printed remote count is an accounted-for count, not a removed-frequency count.
+For leaves with distance \(d(c,I)\le6\), apply the locally sharpened sign bound \(w'_I\) and the SI18 rational midpoint-plus-derivative Fourier envelope above. For more remote leaves, **keep** the already certified original SI10 \(h_I+\kappa\) multiplier cap and use the all-real analytic distance envelope \(s(d(c,I))+s(c+l)+2Be\), independent of phase sampling. Every one of the original 973 leaves is included in the sum. This saves expensive exact trigonometric and archimedean evaluations at large frequency without weakening mathematical coverage. The printed remote count is an accounted-for count, not a removed-frequency count.
 
 ## 3. Exact original odd pole payment and signed-witness gate
 
