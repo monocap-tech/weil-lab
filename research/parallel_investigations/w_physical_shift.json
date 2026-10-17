@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS14 scoped original signed 13-channel infinite-dimensional source Q strictly coercive (>1/6) on separately form-admissible channel components with 19 original prime edges; full signed cross/complement and native CC27 bridge still OPEN. Source-rational CI and external audit pending; W-ODD-NEG/W-EVEN-FORM/Weil/RH OPEN.",
+  "proof_standing": "PS15 analytic actual original whole-physical form-domain sharp thirteen-source split and exact complete signed source/complement Schur with compact positive energy-dual subtraction; source-carrier coercivity PS14 >1/6, physical cross <17 but noncompact (essential norm>=log2), signed complementary Schur positivity UNKNOWN; focused source-rational Actions and independent review pending. CC27 bridge, W-ODD-NEG, W-EVEN-FORM, full Weil and RH remain OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS15: compute actual original signed Q source-carrier/complement energy-dual cross and Schur remainder; establish separately form-admissible decomposition/domain compatibility and true positive complementary sign; do not discard noncompact seam",
-    "PS16: attach original CC27 D-Riesz carrier norm/domain and independently audit all complete original Weil positivity obligations before canonical W-ODD-NEG/RH promotion"
+    "PS16: compute a quantitative useful approximation and certified sign of the ACTUAL complementary source Schur form Q_C-B_PC* A_P^-1 B_PC; retain every one of 24 arch Carleman seams, all seven source-to-complement prime shifts, and both correctly signed poles",
+    "PS17: independently verify exact original physical-to-CC27 D-Riesz domain/norm attachment and promote canonical W-ODD-NEG only after a strict positive whole original signed complementary Schur certificate"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -143,6 +143,14 @@
       "note": "notes/RPB108_PS14_FULL_ORIGINAL_13CHANNEL_COERCIVITY_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps14_full_original_13channel.py",
       "limitation": "Not whole beta-interior, not complement/cross-Schur PSD, not CC27 D-Riesz domain transfer or RH. The source carrier need not reduce the whole Weil form."
+    },
+    {
+      "id": "PS15",
+      "scope": "Original full signed thirteen-source sharp characteristic domain decomposition for all physical log-form functions, 24 internal seams; complete original source/complement cross bounded <17 but noncompact in physical L2 with essential norm >=log2, and exact true signed Schur identity on full original physical form domain with positive compact energy-dual penalty B* A_P^-1 B",
+      "status": "Analytic sharp-domain and original exact Schur theorem plus exact-rational source/cross constants; focused Actions and independent proof audit pending",
+      "note": "notes/RPB108_PS15_SHARP_SOURCE_SCHUR_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps15_sharp_source_schur.py",
+      "limitation": "Complementary Schur PSD Q_C-B* A_P^-1 B not certified; scalar penalty <1734 is crude and no positive gap. Native CC27 D-Riesz identification, full Weil/RH open."
     }
   ]
 }
