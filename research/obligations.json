@@ -21,7 +21,7 @@
       "kind": "mixed analytic/exact-rational certificate",
       "scope": "Original signed Weil form positive on an explicit finite-codimensional physical complement only.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/103",
-      "repo_path": "notes/RPB108_SI10_COMPLEMENT_POSITIVITY_20261016.md",
+      "repo_path": "notes/RPB108_SI10_COMPLEMENT_POSITIVITY_20261015.md",
       "verification": "Merged research PR; not independent peer review or a complete form theorem."
     },
     "SI29": {
@@ -42,7 +42,8 @@
       "kind": "exact rational five-mode certificate",
       "scope": "Genuine signed finite five-mode Ritz gain, without improvement of full infinite residual.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/108",
-      "verification": "Merged research PR; original full Schur lower bound remains open."
+      "verification": "Merged research PR; original full Schur lower bound remains open.",
+      "repo_path": "notes/RPB108_RC334_ORIGINAL_HIGH_FIVE_RITZ_20261015.md"
     },
     "LF113": {
       "kind": "Lean compilation",
