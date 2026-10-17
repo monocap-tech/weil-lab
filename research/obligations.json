@@ -217,7 +217,14 @@
       "scope": "For original supported A_star>=kappa_star and SM10 source U, any actual forward Ritz synthesis Y in Dom(A_star) gives U* A_star^-1 U = H_Y + E* A_star^-1 E <= H_Y + kappa_star^-1 E*E; exact full-890 rational matrix sufficient gate against (999/1000) C^-1. Only the general identity and 2x2 toy arithmetic are checked; actual original Y, H, E and 890-source gate remain OPEN.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/156",
       "repo_path": "notes/RPB108_SM18_FORWARD_RESIDUAL_ODD_GATE_20261017.md",
-      "verification": "Analytic argument and local exact rational prototype independently replayed at authoring; GitHub final-head focused and obligation governance CI pending; no actual original 890-source residual enclosure, independent peer review or Lean formalization."
+      "verification": "PR #156 merged on canonical research branch at 42f6cf787616b7a437c29dacd1c62af2cdae0a50. Final PR-head Actions 15/15 PASSED at 183c76d866c2acd153aa58c8a9f41dfb0a5efd0e including focused and governance checks. Original 890-source forward action and residual remain uncomputed; no independent mathematical peer review."
+    },
+    "SM19": {
+      "kind": "original SI29 fourteen-feature pole-conditioned Woodbury upper for SM18 full forward residual; analytic theorem and exact rational coupled two-dimensional regression",
+      "scope": "Existing SI29 original physical C14<=A_o implies explicit B14=C14-2|s><s|<=A_star and B14>=kappa_star I. Full finite-data formula E*B14^-1 E = kappa^-1 D - kappa^-2 F*K^-1 F + 2/alpha z z*, retaining 14-to-890 residual couplings and correct positive pole correction. Replaces scalar SM18 error upper with no weaker original attached supported inverse upper. Original 890-column D,F,t,H_Y and PSD gate not computed; W-ODD-NEG OPEN.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/157",
+      "repo_path": "notes/RPB108_SM19_ORIGINAL_WOODBURY_RESIDUAL_20261017.md",
+      "verification": "Analytic original reference transfer and exact rational model stored; GitHub focused and governance CI pending. Does not mechanically verify 890-source original action, independently peer-review the proof or formalize in Lean."
     }
   },
   "obligations": [
@@ -272,10 +279,11 @@
         "SM15",
         "SM16",
         "SM17",
-        "SM18"
+        "SM18",
+        "SM19"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM18 forward-residual theorem converts the missing original all-890 supported inverse mu <=999/1000 into a sufficient exact rational PSD comparison: (999/1000) C^-1 - H_Y - (10^9/33621) E*E >=0, where Y is a physically supported trial Ritz synthesis, H_Y=U*Y+Y*U-Y*A_star Y, E=U-A_star Y. ACTUAL 890-COLUMN original forward H_Y/E*E enclosures, finite original sign/pole and infinite a^2 tail, and full PSD are UNCOMPUTED. Build validated trial Y, prove complete matrix upper and 890-dimensional PSD or detect method floor. W-ODD-NEG OPEN."
+      "next_action": "SM19 improves the SM18 full-890 original supported inverse upper by a certified pole-conditioned original SI29 14-feature minorant B14=C14-2ss*, giving explicit residual finite-data E*B14^-1E via 890x890 D=E*E, 14x890 F=G*E, 890-vector t=E*s, fixed 14x14 signed Woodbury K and alpha. Acceptance: (999/1000) C^-1 - H_Y - E*B14^-1 E >=0 with certified PSD bounds on ALL original columns/mixed terms and infinite high-frequency a^2 residual. ACTUAL ORIGINAL RESIDUAL COLUMN ENCLOSURES NOT YET COMPUTED. Next construct a first true physically supported source forward-action column and rigorously bound D,F,t; prioritize real data, not additional generic inverses. W-ODD-NEG OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -556,6 +564,17 @@
         "scripts/validate_rpb108_sm18_forward_residual_gate.py"
       ],
       "interpretation": "Checks exact rational 2x2 forward-residual inverse upper matrix and fail-closed toy SPD regression; not actual original 890-column residual data or full odd Weil positivity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM19-original-woodbury-residual-preconditioner",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm19_original_woodbury_residual.py"
+      ],
+      "interpretation": "Exact Fraction two-dimensional source/pole Woodbury finite-data identity and comparison to scalar SM18; original 14-source and 890-residual entries not constructed; no whole odd positivity.",
       "cadence": "on-demand"
     }
   ]
