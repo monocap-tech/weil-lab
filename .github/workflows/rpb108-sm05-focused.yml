@@ -1,0 +1,30 @@
+name: RPB108 SM05 focused original supported inverse
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_sm05_two_source_original_inverse.py'
+      - 'notes/RPB108_SM05_TWO_SOURCE_ORIGINAL_INVERSE_20261016.md'
+      - '.github/workflows/rpb108-sm05-focused.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-sm05-supported-odd-inverse:
+    name: Exact SM05 coupled odd pole / negative packet
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Certify complete SM05 original signed supported inverse
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm05_two_source_original_inverse.py
+          python scripts/validate_rpb108_sm05_two_source_original_inverse.py
