@@ -1,0 +1,28 @@
+name: RPB108 SM11 original odd rank-17 negative spectrum
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_sm11_rank17_c16_nogo.py'
+      - 'notes/RPB108_SM11_RANK17_C16_NOGO_20261017.md'
+      - '.github/workflows/rpb108-sm11-focused.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-original-negative-rank17:
+    name: Whole signed continuum and 17x17 physical Gram
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check exact 17 negative intervals and signed physical Gram
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm11_rank17_c16_nogo.py
+          python scripts/validate_rpb108_sm11_rank17_c16_nogo.py
