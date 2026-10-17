@@ -99,9 +99,11 @@ def old_positive_reference_upper():
     return negative_packet_lower,positive_upper,eps,Nlo,Nhi,weights
 
 def validate():
-    negative_m_upper=certify_negative_band()\n    assert negative_m_upper < -F(147,100)
+    negative_m_upper=certify_negative_band()
+    assert negative_m_upper < -F(147,100)
     neg,pos,eps,nlo,nhi,weights=old_positive_reference_upper()
-    assert neg>F(193,1000) and pos<F(4,25) and neg-pos>F(3,100)\n    print("SM03 original seven-prime signed multiplier whole-negative-band UPPER:",float(negative_m_upper),flush=True)
+    assert neg>F(193,1000) and pos<F(4,25) and neg-pos>F(3,100)
+    print("SM03 original seven-prime signed multiplier whole-negative-band UPPER:",float(negative_m_upper),flush=True)
     print("SM03 negative interval:",float(C-RADIUS),float(C+RADIUS),"and reflection",flush=True)
     print("SM03 true odd negative Jensen packet Gamma:",float(4*RADIUS*DELTA),flush=True)
     print("SM03 norm center true physical enclosure:",float(nlo),float(nhi),flush=True)
