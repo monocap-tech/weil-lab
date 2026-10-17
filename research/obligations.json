@@ -164,11 +164,11 @@
       "verification": "Focused exact original signed physically supported C33 Rayleigh Actions 39015294106 PASSED on source head 4bea08161b5d3b1cec86a6e2cc9f89d460a27f43, structural 39015294212 PASSED; ledger-head governance and full postmerge verification pending, and independent peer review remains separate."
     },
     "EF05": {
-      "kind": "Proposed rigorous original even supported cosine witness against EF04's overconservative full signed-negative UPPER cap",
-      "scope": "The test f(x)=cos(2π·19x/25) is designed to certify <f,Kcap,e f>>4 and <f,A_e f><3.5 with complete original seven-prime low-frequency rational upper, even positive pole and analytic infinite tail; if final-head CI passes, disproves ONLY the EF04 UPPER-CAP sufficient Schur method, not positivity of original K_true/e Weil form.",
+      "kind": "Certified original physical even cosine witness against the EF04 full signed-negative conservative UPPER cap",
+      "scope": "On the genuine supported even carrier, f=cos(2π(19/25)x) has rigorous <f,Kcap,e f>>4.415423238009, while actual original positive <f,A_e f><2.639461066813, including true positive even pole, every original seven-prime low-frequency cell, and entire analytic high-frequency tail. Hence EF04's original 890-source conservative cap Schur sufficient inequality is FALSE. Actual K_true,e and Q_e can still be positive; no RH refutation.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/146",
       "repo_path": "notes/RPB108_EF05_EVEN_UPPER_CAP_OBSTRUCTION_20261017.md",
-      "verification": "DRAFT pending final-head exact rational physical witness replay and obligation governance; not accepted as proved until those checks pass; no independent peer review or Lean formalization."
+      "verification": "Exact-rational focused original signed physical-even verifier SUCCESS Actions 39015954905, source head 8429f85210417bea51fd661057036a0465679182. Companion final-head governance and inherited CI replays required after this metadata update; mathematical standing conditional on inherited original multiplier and operator identification. Independent peer review/Lean formalization not complete."
     }
   },
   "obligations": [
@@ -243,7 +243,7 @@
         "EF05"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF06 (conditional on EF05 verifier): if the exact original even cosine witness proves the SI10 full negative UPPER cap overwhelms original positive A_e, replace the overconservative leafwise cap with a tighter original signed upper or check native RC even transport; never reuse EF04's disproved sufficient 890-source cap. If EF05 fails, correct/withdraw the pending obstruction and resume actual supported finite inverse analysis. W-EVEN-FORM remains OPEN."
+      "next_action": "EF06: Replace the disproved EF04/EF05 conservative SI10 all-negative upper cap with a rigorously tighter original signed upper, paying low-frequency excess and global high-frequency tails; FIRST run the EF05 physical-even cosine witness against the new cap before investing in 890-source inverse. Alternatively prove an original native RC even-carrier transport and original positive-vs-negative finite Schur. W-EVEN-FORM stays OPEN; EF05 refutes ONLY the EF04 sufficient overestimate, not the true form."
     },
     {
       "id": "W-WHOLE-FORM",
