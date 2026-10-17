@@ -17,7 +17,7 @@ RADIUS=F(3,100)
 DELTA=F(7,5)  # signed multiplier is <-1.4 throughout
 ARCH_TERMS=48
 NEG_CELLS=128
-POS_CELLS=64
+POS_CELLS=16
 
 def arch_upper(x):
     """Rigorous original Re psi(1/4+i*pi*x)-log(pi) upper.
