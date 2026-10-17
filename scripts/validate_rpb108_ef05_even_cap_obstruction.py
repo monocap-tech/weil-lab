@@ -119,11 +119,17 @@ def actual_positive_low_upper():
     step=F(1,CELLS_PER_UNIT)
     total=F(0)
     highest=F(0)
+    # The original archimedean Euler term is monotone on xi>=0.
+    # One upper enclosure at each integer RIGHT endpoint pays ALL
+    # contained 1/64 rational subcells. Only four expensive exact
+    # 48-term rational Euler/digamma enclosures are needed.
+    arch_integer_upper=[arch_upper(F(j+1)) for j in range(int(T))]
     for i in range(count):
         l=i*step
         r=(i+1)*step
         mid=(l+r)/2
-        m_upper=arch_upper(r)+prime_interval(mid)[1]+F(69)*(r-l)/2
+        m_upper=(arch_integer_upper[i//CELLS_PER_UNIT]
+                 +prime_interval(mid)[1]+F(69)*(r-l)/2)
         a_upper=max(KAPPA,m_upper)
         f_mid=supported_even_fourier(mid)
         f_upper=absolute_upper(f_mid)+DERIVATIVE*(r-l)/2
