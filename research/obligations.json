@@ -232,6 +232,13 @@
       "pr": "Stacked candidate after EF08, see EF09 PR",
       "repo_path": "notes/RPB108_EF09_EVEN_CAP_LOWER_20261017.md",
       "verification": "Focused exact rational original physical EF09 cap lower 0.8724438013669181 (2960 subcells), SAME witness EF08 actual A_e upper <0.877811; STILL_INCONCLUSIVE. Actions 39049775807 SUCCESS on source head. No full even/Weil/RH theorem."
+    },
+    "EF10": {
+      "kind": "Exact triangle-cone physically supported original even Fourier integral lower, same unchanged EF09 cap and 2960 subcells; no resolution increase",
+      "scope": "Integrate max(0,a-D|xi-q|)^2 exactly on each rational subcell (D outward physical Fourier Lipschitz) instead of charging whole-cell minimum. Pay both frequency signs, original 256+121 cap sources, all 788 higher leaves zero as nonnegative lower. Exact rational down12 charges. Compare with EF08 certified original A_e upper <0.877811. CAP_METHOD_NO_GO if separated ONLY for conservative cap; not original true Weil negativity.",
+      "pr": "Pending EF10 draft PR",
+      "repo_path": "notes/RPB108_EF10_EVEN_INTEGRATED_CONE_20261017.md",
+      "verification": "Exact rational EF10 integrated physical Fourier cone certified unchanged conservative cap LOWER 0.879669083946 with 2960 subcells; independent original EF08 actual A_e upper <0.877811. Strict cap-method no-go margin >0.001858083946. Actions focused SUCCESS run 39050974996 on source head 948626df87a2fa3d9fbfc8d3b0eb368190c0ba13; reconciled final-head CI still required. This refutes EF06/07 cap domination ONLY, not K_true or full even Weil positivity."
     }
   },
   "obligations": [
@@ -312,10 +319,11 @@
         "EF06",
         "EF07",
         "EF08",
-        "EF09"
+        "EF09",
+        "EF10"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF09: run strict exact-rational true physical Fourier whole-cell cap integral refinement on [0,1] and [1,4], compare to certified EF08 A_e<0.877811. If CAP_METHOD_NO_GO then discard EF06 conservative domination as a proof strategy and pivot to direct original signed even operator; if STILL_INCONCLUSIVE refine only residual dominant intervals. All sector/global original obligations OPEN."
+      "next_action": "EF10 certifies EF06/07 refined CAP domination fails on original supported cosine, margin >0.001858083946. DO NOT continue refining that sufficient cap or launch its 890-source inverse. EF11: pivot to genuine original signed even Q_e=A_e-K_true,e, including all frequencies/pole; distinguish original signed actual Rayleigh evidence from cap surrogates. W-EVEN-FORM OPEN; W-ODD-NEG canonical untouched."
     },
     {
       "id": "W-WHOLE-FORM",
