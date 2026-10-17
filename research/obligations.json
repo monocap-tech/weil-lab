@@ -71,6 +71,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/131",
       "repo_path": "notes/RPB108_SM04_NEGATIVE_PACKET_SPECTRAL_RANK_20261016.md",
       "verification": "Full structural GitHub Actions run 38999809551 passed source certificate, final branch validation is separate."
+    },
+    "SM05": {
+      "kind": "original supported odd 16-feature two-source Birman-Schwinger inverse Loewner certificate",
+      "scope": "Proves A_o >= 2|s><s|+(21/125)|g_-><g_-| on the entire original physically supported odd carrier, with full pole/one genuine continuum packet coupling. The remaining K_freq,o - (21/125)|g_-><g_-| and full W-ODD-NEG remain OPEN.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/132",
+      "repo_path": "notes/RPB108_SM05_TWO_SOURCE_ORIGINAL_INVERSE_20261016.md",
+      "verification": "First exhaustive source replay passed structural Actions run 39001092441 (source commit 268d49e149ea), with exact rational two-source row bounds <0.927606 and <0.897125. Streamlined original signed-band replay is pending final-head CI. Proof not independently peer reviewed or Lean formalized."
     }
   },
   "obligations": [
@@ -111,10 +118,11 @@
         "RC334",
         "SM02",
         "SM03",
-        "SM04"
+        "SM04",
+        "SM05"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM05/RC: certify supported original A_o inverse on the full coupled negative-frequency operator, or a richer positive carrier. SM04 excludes every scalar-floor plus rank ≤14 positive reference as a sufficient domination certificate; W-ODD-NEG remains OPEN."
+      "next_action": "SM06/RC: SM05 certifies positivity after subtracting original odd pole plus one actual continuous signed-negative packet, but not the remaining operator K_freq,o - (21/125)|g_-><g_-|. Extend the supported 16-feature inverse to multiple coupled negative packets with a rigorous residual, or use native RC high Schur after explicit carrier transport. W-ODD-NEG remains OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -257,6 +265,17 @@
       ],
       "interpretation": "Checks at least 15 original negative odd eigenvalues exceed κ; not RH or full odd Weil positivity.",
       "cadence": "per-update"
+    },
+    {
+      "id": "SM05-supported-two-source-original-odd-inverse",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm05_two_source_original_inverse.py"
+      ],
+      "interpretation": "Certifies joint original physical A_o inverse upper for odd pole and one selected whole-band negative Jensen packet; it does not control the remaining original negative continuum.",
+      "cadence": "on-demand"
     }
   ]
 }

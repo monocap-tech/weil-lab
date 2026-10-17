@@ -2,7 +2,7 @@
 
 **Canonical obligation:** W-ODD-NEG (still OPEN).  
 **Parent:** SM04 integrated as PR #131, at research head 9f62862a254a497c74e76b08592fe14d0facd28a.  
-**Evidence status:** conditional until the full 16-positive-feature rational signed Gram and dual supported-inverse certificate pass final-head CI. No full odd-frequency continuum, Stage I or RH claim.
+**Evidence status:** full original supported 16-feature, two-source exact-rational inverse certificate passed first GitHub Actions source replay `39001092441` at commit `268d49e149ea3218c1b17d609c649a7c17814c`; streamlined final-head source/obligation integration remains a separate gate. No full odd-frequency continuum, Stage I or RH claim.
 
 ## 1. Changing the kind of object certified
 
@@ -79,13 +79,27 @@ D\,V^*A_o^{-1}V\,D,\qquad D=\mathrm{diag}(\sqrt2,\sqrt{21/125}).
 \]
 Because \(\sqrt{42/125}<3/5\), exact rational Gershgorin row bounds can certify its norm strictly below one without irrational acceptance. This is the genuine original two-source **coupling** neglected by pole-only estimates.
 
-## 4. Numerical screen is not certification
+## 4. Exact-rational successful source replay, not merely a numerical screen
 
 A preliminary floating-point supported Gram screen with true Jensen means suggests a 16-feature two-source matrix near
 \[
 \begin{pmatrix}0.9140&0.00783\\ 0.00783&0.8854\end{pmatrix}
 \]
-after the \(D\) normalization. This is only a selection/feasibility screen. It neither verifies the new seven original full signed intervals nor rigorously bounds \(\widehat U\). The actual theorem is accepted **only if** the committed standard-library exact-rational verifier replays a strict \(<1\) row bound on final head.
+after the \(D\) normalization. The screen was **not** used as the certificate. GitHub Actions run `39001092441` subsequently passed the complete 16-feature exact-rational source test, including all seven original whole positive-band margins and the 16-by-16 and 16-by-2 signed physical Gram intervals. It gives the following outward upper endpoints for the **unscaled** two-source inverse matrix (V^* A_o^{-1} V):
+
+\[
+\widehat U_{00}<0.458573661,\qquad
+|\widehat U_{01}|<0.017429924,\qquad
+\widehat U_{11}<5.277776913.
+\]
+
+The rigorous rational Gershgorin weighted row ceilings are
+\[
+2\widehat U_{00}+\frac35|\widehat U_{01}|<0.927606<1,\qquad
+\frac{21}{125}\widehat U_{11}+\frac35|\widehat U_{01}|<0.897125<1.
+\]
+
+The maximum original positive-composite-Simpson remainder was below (6.418\cdot10^{-7}); the negative packet remainder was below (4.012\cdot10^{-8}). Final acceptance is conditioned on replaying the *same theorem* at the final PR head, with the signed-band optimization independently validated. In particular, these are genuine supported-inverse upper enclosures, **not** the numerical screen.
 
 ## 5. What remains after a passing SM05
 
