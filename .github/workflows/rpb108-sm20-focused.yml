@@ -1,0 +1,21 @@
+name: RPB108 SM20 actual first odd source forward residual
+on:
+  pull_request:
+    branches: [research/rpb108-route-consolidation]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-forward-source-first-column:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_sm20_original_source_forward.py
+          python -u scripts/validate_rpb108_sm20_original_source_forward.py
