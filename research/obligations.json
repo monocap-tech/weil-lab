@@ -92,6 +92,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/135",
       "repo_path": "notes/RPB108_SM07_TRUE_MULTIPLIER_EXCESS_20261016.md",
       "verification": "Focused exact-rational GitHub Actions run 39006091643 PASSED on source d07e75336a9a, verifying whole J1=[3.645,3.655] original seven-prime m upper <-2.1226920; true supported odd Jensen norm² lower >1.0954784 and ||E|| lower >0.0131457. Final-head governance/structural integration checks remain separate."
+    },
+    "EF01": {
+      "kind": "Original even parity-compression theorem and exact-rational rank/error regression (PR pending)",
+      "scope": "SI10 whole-original-form positive even complement of codimension <=469 at b=9; <=890 even finite BS directions at b=24 with complete original signed negative-frequency norm error eta/kappa<0.009868; full even finite inverse eigenvalue and cross coupling OPEN.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/136",
+      "repo_path": "notes/RPB108_EF01_EVEN_PARITY_GATE_20261016.md",
+      "verification": "Analytic reduction recorded; focused exact-rational GitHub Actions verification and PR review pending; not independently peer reviewed or formalized in Lean."
     }
   },
   "obligations": [
@@ -152,10 +159,11 @@
         "INTEGRATION"
       ],
       "evidence": [
-        "SI10"
+        "SI10",
+        "EF01"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "Recover the native even-sector decomposition and identify the missing finite block/coupling certificate."
+      "next_action": "EF02: certify an actual supported even finite inverse Gram / correctly signed low-high Schur and all cross terms, using EF01's <=890-direction b=24 gate or justify a carrier bridge to the existing native RC even high-Schur. The EF01 rank and residual alone do not prove even positivity."
     },
     {
       "id": "W-WHOLE-FORM",

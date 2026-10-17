@@ -1,0 +1,32 @@
+name: RPB108 EF01 original even parity gate
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_ef01_even_parity.py'
+      - 'notes/RPB108_EF01_EVEN_PARITY_GATE_20261016.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-ef01-even-focused.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ef01-original-even-parity:
+    name: Full original signed cover, even rank and residual
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay exact-rational even parity and original multiplier budgets
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef01_even_parity.py
+          python scripts/validate_rpb108_ef01_even_parity.py
