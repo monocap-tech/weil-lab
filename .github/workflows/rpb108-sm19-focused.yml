@@ -1,0 +1,21 @@
+name: RPB108 SM19 original SI29 Woodbury residual preconditioner
+on:
+  pull_request:
+    branches: [research/rpb108-route-consolidation]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rational-woodbury-residual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_sm19_original_woodbury_residual.py
+          python scripts/validate_rpb108_sm19_original_woodbury_residual.py
