@@ -64,7 +64,7 @@ The exact Fourier center values are enclosed by SI14's rational sine and Machin 
 On \(0\le\xi\le4\), split into 256 rational intervals of width \(1/64\). On each \(I=[l,r]\), with midpoint \(q\), use the genuine full original signed interval **upper**
 \[
 m(\xi)\le
-\operatorname{arch}_{\rm upper}(r)+p_{\rm upper}(q)
+\operatorname{arch}_{\rm upper}(\lceil r\rceil)+p_{\rm upper}(q)
 +\tfrac{69}{2}(r-l),
 \]
 where SI14's \(\operatorname{arch}_{\rm upper}\) is the rigorous full digamma Euler-series tail and SI06's \(p_{\rm upper}\) contains the actual seven signed prime powers. The archimedean part is monotone on nonnegative frequencies. Then
