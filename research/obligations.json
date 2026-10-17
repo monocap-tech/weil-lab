@@ -81,10 +81,10 @@
     },
     "SM06": {
       "kind": "Original supported odd pole plus complete constant-floor continuous negative-frequency band; 3-source Legendre Bessel and all higher-moment Banach-Taylor tail.",
-      "scope": "Subject to final-head composite replay: A_o dominates original odd pole 2|s><s| and entire 7/5-weighted continuum on J=[3.645,3.705], uniformly over the supported odd Hilbert space. The true variable signed excess (κ-m)_+-7/5 on J and all other negative bands remain OPEN; not full original Weil positivity.",
+      "scope": "Certified A_o >= 2|s><s| + 2*(7/5)*integral_[3.645,3.705]|h_xi><h_xi| dxi on entire physically supported odd H; this is one constant-weight original signed-negative band component ONLY, not the true variable original negative multiplier excess or the other negative bands. W-ODD-NEG and RH remain OPEN.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/134",
       "repo_path": "notes/RPB108_SM06_NEGATIVE_FIRST_MOMENT_20261016.md",
-      "verification": "The first exact-rational N=16 source replay passed focused Actions run 39004369440: normalized three-source row bounds <0.933854, <0.897901, <0.012028; the independent infinite-tail source passed job 117314615797 at 6.831361e-6. The optimized N=8 composite final-head replay must pass before acceptance/merge. Not independently peer reviewed or Lean formalized."
+      "verification": "Exact-rational original supported source PASSED: 16-panel focused run 39004369440; optimized 8-panel full constant-weight band focused run 39005014089; independent signed-band all-degree≥2 tail job 117314615797. Optimized BS row ceilings <0.936728, <0.900964, <0.019407; original physically supported L2 residual floor >5.6440e-5 after complete uniform 7/5-band tail. Fast structural and obligation governance checks 39005328216 and 39005328162 PASSED with identical source blobs. Not independent peer review or Lean formalization."
     }
   },
   "obligations": [

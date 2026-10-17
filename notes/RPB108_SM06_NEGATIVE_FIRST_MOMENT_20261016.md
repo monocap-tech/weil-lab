@@ -2,7 +2,7 @@
 
 **Active original-math obligation:** W-ODD-NEG, still **OPEN**.  
 **Parent:** merged SM05 and its custody reconciliation (PRs #132–133).  
-**Status:** proposed three-source exact-rational original supported inverse gate, subject to rigorous CI replay. A failure to certify the 3×3 bound is not a counterexample to RH.
+**Status:** passed original exact-rational N=16 three-source source run `39004369440`, optimized N=8 *complete uniform-band* run `39005014089`, and independent infinite-tail job `117314615797`. Full variable original negative multiplier remains open.
 
 ## 1. Exact new operator term, not a new point-sample mode
 
@@ -125,3 +125,22 @@ A_o\succeq2|s\rangle\langle s|+T_{J,\delta}.
 This controls the complete **uniform \(\delta\)-weighted component** of a genuine continuous original negative band, not the original variable \(r(\xi)\) on that band: the extra nonnegative multiplier \(r(\xi)-\delta\), as well as every other negative band, remains to be paid. The margin condition cannot be assumed merely because the three-source test gives \(\theta<1\); it must pass \(\theta<0.993\) explicitly.
 
 **Automated composite acceptance (SM06):** the final three-source checker additionally requires \(\theta<0.993\), replays the independent exact-rational infinite-tail bound, and verifies the strict residual \(L^2\) floor \((1-\theta)\kappa-\varepsilon_{J,\ge2}>0\). Only a passing *composite* source run warrants the conclusion \(A_o\succeq2|s\rangle\langle s|+T_{J,\delta}\). The true nonconstant excess \((\kappa-m)_+-\delta\) on \(J\) and all other bands are not included.
+
+
+## 5. Accepted exact-rational composite outcome
+
+The optimized eight-panel source certificate (Actions \`39005014089\`) gives a normalized 3×3 supported odd Birman–Schwinger **Loewner-majorant**, with row upper bounds
+\[
+\theta_0<0.936728,\qquad\theta_1<0.900964,\qquad
+\theta_2<0.019407.
+\]
+The independent original signed-band infinite remainder certificate (job \`117314615797\`) bounds every Legendre degree ≥2 combined by \(6.831361\times 10^{-6}\) in operator norm. Its explicitly checked composite \(L^2\) residual floor is strictly above \(5.6440\times 10^{-5}\). Therefore, conditionally on the inherited exact original seven-prime multiplier identification,
+\[
+\boxed{A_o-2|s\rangle\langle s|
+-2\frac75\int_{3.645}^{3.705}|h_\xi\rangle\langle h_\xi|d\xi
+\succeq 5.6440\times10^{-5}I}
+\]
+on the entire physically supported odd Hilbert space.
+
+**Not included:** the true original negative multiplier's variable excess
+\(((\kappa-m(\xi))_+-7/5)\mathbf1_{[3.645,3.705]}(\xi)\), its reflected excess, every other signed-negative band and the original global/even/RH bridge. The accepted inequality does *not* prove full original odd Weil positivity. GitHub Actions source replay is not independent peer review or Lean formalization.
