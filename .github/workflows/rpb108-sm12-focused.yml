@@ -1,0 +1,17 @@
+name: SM12 original signed-positive odd reference
+on:
+  pull_request:
+    branches: [research/rpb108-route-consolidation]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/validate_rpb108_sm12_positive_reference_33.py
