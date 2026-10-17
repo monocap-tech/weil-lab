@@ -47,6 +47,12 @@ class ManifestTests(unittest.TestCase):
     def test_invalid_command_rejected(self):
         self.invalid(lambda d: d["active_checks"][0].update(argv=["bash", "-c", "true"]))
 
+    def test_unknown_replay_cadence_rejected(self):
+        self.invalid(lambda d: d["active_checks"][0].update(cadence="infinite"))
+
+    def test_no_per_update_replay_rejected(self):
+        self.invalid(lambda d: [c.update(cadence="on-demand") for c in d["active_checks"]])
+
     def test_missing_evidence_rejected(self):
         self.invalid(lambda d: d["obligations"][0]["evidence"].append("UNPROVED"))
 

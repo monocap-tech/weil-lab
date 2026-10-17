@@ -19,6 +19,7 @@ ID_RE = re.compile(r"^[A-Z][A-Z0-9-]{2,64}$")
 VALID_METHODS = {"SI", "SM", "RC", "LF", "INTEGRATION"}
 VALID_STATUSES = {"open", "closed"}
 VALID_ROLES = {"retained-prerequisite", "frontier-candidate", "verification"}
+VALID_CADENCES = {"per-update", "on-demand"}
 
 
 class GovernanceError(ValueError):
@@ -135,12 +136,16 @@ def verify(data: dict, root: Path = ROOT) -> tuple[dict, list[dict]]:
             fail(f"{cid}: role must disclose whether check is a prerequisite or a candidate")
         if not isinstance(check.get("interpretation"), str) or not check["interpretation"].strip():
             fail(f"{cid}: missing limited-scope interpretation")
+        if check.get("cadence") not in VALID_CADENCES:
+            fail(f"{cid}: missing/invalid replay cadence")
         argv = check.get("argv")
         if (not isinstance(argv, list) or len(argv) != 2 or argv[0] != "python3"
                 or not isinstance(argv[1], str)
                 or not re.fullmatch(r"scripts/validate_rpb108_(?:sm|si|rc)[a-z0-9_]*\.py", argv[1])
                 or not (root / argv[1]).is_file()):
             fail(f"{cid}: unsafe or missing validation command")
+    if not any(c["cadence"] == "per-update" for c in checks):
+        fail("at least one active replay must run per update")
     return ids[active], checks
 
 
@@ -148,6 +153,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-active", action="store_true",
                         help="replay only the explicit checks declared for the active obligation")
+    parser.add_argument("--deep", action="store_true",
+                        help="also replay retained historical checks marked on-demand")
     args = parser.parse_args()
     try:
         data = json.loads(MANIFEST.read_text(encoding="utf-8"))
@@ -157,6 +164,9 @@ def main() -> int:
         print("Mathematical acceptance remains OPEN: " + active["acceptance"], flush=True)
         if args.run_active:
             for check in checks:
+                if check["cadence"] == "on-demand" and not args.deep:
+                    print(f"Retained historical check {check['id']} not rerun by default; use --deep.", flush=True)
+                    continue
                 print(f"Replay {check['id']} [{check['role']}]: {check['interpretation']}",
                       flush=True)
                 subprocess.run([sys.executable, check["argv"][1]],

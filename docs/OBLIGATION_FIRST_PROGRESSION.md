@@ -36,7 +36,7 @@ Promising new structures are valuable only if they produce a verifiable inequali
 
 ### Custody and historical interfaces
 
-Existing RC/SI/SM/LF names, notes, commit SHAs, and certificate hashes are **immutable historical provenance**; do not renumber or rewrite them. The RC `--checkpoint latest` selector means *highest RC validator for an RC replay*, never *current research obligation*. The dedicated obligation workflow reads the manifest's named active checks without inspecting the largest checkpoint number.
+Existing RC/SI/SM/LF names, notes, commit SHAs, and certificate hashes are **immutable historical provenance**; do not renumber or rewrite them. The RC `--checkpoint latest` selector means *highest RC validator for an RC replay*, never *current research obligation*. The dedicated obligation workflow reads the manifest's named active checks without inspecting the largest checkpoint number. Checks marked `per-update` replay on governance PRs; expensive retained historical checks marked `on-demand` are explicitly selected by `python scripts/verify_obligation_manifest.py --run-active --deep`. This is not a waiver of original certificate replay, which remains available in its own dedicated workflow.
 
 The [RC204 completion dashboard](RESEARCH_COMPLETION_DASHBOARD.md) and [Horizon research map](RESEARCH_MAP.md) remain historical snapshots until regenerated; they do not select the active frontier. Separate Git branches and PRs remain legitimate implementation isolation, not separate conversational jurisdictions.
 
