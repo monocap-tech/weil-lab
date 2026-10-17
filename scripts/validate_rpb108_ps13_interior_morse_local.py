@@ -65,3 +65,13 @@ def run():
     # Fourier tail. Bessel gives sum low-band <=2 Lambda |I|.
     index_upper=2*Lambda*R/mass_floor
     assert index_upper<F(352_000_000)
+
+    print("PS13 arch integral lower",float(T),flush=True)
+    print("PS13 unshifted single-window coercivity",float(q_local),flush=True)
+    print("PS13 low Fourier frequency mass fraction",float(mass_floor),flush=True)
+    print("PS13 index cap",float(index_upper),flush=True)
+    print("PS13 PASS SCOPED: local positive window, finite index bound;"
+          " whole interior and full Weil positivity OPEN.",flush=True)
+
+if __name__=="__main__":
+    run()
