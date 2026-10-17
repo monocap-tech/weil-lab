@@ -140,7 +140,7 @@
       "scope": "K_neg,e <= (1+1/65536) U C U* + eta I on full physically supported EVEN carrier, with eta<1.93e-8, C exact rational 107-block SPD covariance. Finite 890x890 original inverse Loewner D^-1-U*(A_e-eta I)^-1 U >= 0 identified but NOT established; positive even pole remains inside A_e.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/143",
       "repo_path": "notes/RPB108_EF04_EXPLICIT_EVEN_CAP_MOMENTS_20261017.md",
-      "verification": "Draft PR #143; focused exact rational original signed full cover/moments and governance final-head CI pending. Neither supported finite inverse nor complete original even form is proved; not independently peer reviewed or Lean formalized."
+      "verification": "Merged PR #143, EF01–EF04 and governance final-head Actions PASS on source head ca4ffc1a581d475b013e87a85abcb1ccf1682f5b; the original 890-source supported finite positive inverse gate was NOT certified."
     },
     "SM11": {
       "kind": "original seventeen-negative-odd-mode exact-rational spectral-rank obstruction",
@@ -155,6 +155,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/145",
       "repo_path": "notes/RPB108_SM12_POSITIVE_REFERENCE_33_20261017.md",
       "verification": "Focused exact original signed SM12 Actions 39014474903 PASSED at commit 9358fd6e09222efb9dabc0fdf70ea9d7cb0e07a9; final PR head and governance CI pending. Independent mathematical scrutiny separate."
+    },
+    "EF05": {
+      "kind": "Proposed rigorous original even supported cosine witness against EF04's overconservative full signed-negative UPPER cap",
+      "scope": "The test f(x)=cos(2π·19x/25) is designed to certify <f,Kcap,e f>>4 and <f,A_e f><3.5 with complete original seven-prime low-frequency rational upper, even positive pole and analytic infinite tail; if final-head CI passes, disproves ONLY the EF04 UPPER-CAP sufficient Schur method, not positivity of original K_true/e Weil form.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/146",
+      "repo_path": "notes/RPB108_EF05_EVEN_UPPER_CAP_OBSTRUCTION_20261017.md",
+      "verification": "DRAFT pending final-head exact rational physical witness replay and obligation governance; not accepted as proved until those checks pass; no independent peer review or Lean formalization."
     }
   },
   "obligations": [
@@ -224,10 +231,11 @@
         "EF01",
         "EF02",
         "EF03",
-        "EF04"
+        "EF04",
+        "EF05"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF05: compute an ACTUAL original physically supported even positive-inverse upper response on the 890 true cosine Taylor sources, with all intercluster crosses and the positive even pole, or prove a necessary-method obstruction for EF04's deliberately conservative cap. Test D^-1-U*(A_e-eta I)^-1 U>=0 with exact outward interval rational residual and correct sign; do not treat EF04 covariance SPD or small eta as evidence of full-even positivity."
+      "next_action": "EF06 (conditional on EF05 verifier): if the exact original even cosine witness proves the SI10 full negative UPPER cap overwhelms original positive A_e, replace the overconservative leafwise cap with a tighter original signed upper or check native RC even transport; never reuse EF04's disproved sufficient 890-source cap. If EF05 fails, correct/withdraw the pending obstruction and resume actual supported finite inverse analysis. W-EVEN-FORM remains OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
