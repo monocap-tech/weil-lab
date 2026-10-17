@@ -2,7 +2,7 @@
 
 **Active obligation:** W-ODD-NEG, remains OPEN.  
 **Parent:** SM06 merged PR #134 (head \`fb1eeb350c6ecc8acf277733d65ce046f4d32289\`).  
-**Standing:** conditional until the signed original seven-prime full-subinterval and physical Jensen rank-one lower bound pass exact rational CI. No original Weil negativity or RH counterexample is asserted.
+**Standing:** focused exact-rational signed original whole-subinterval and physical odd Jensen certificate PASSED (GitHub Actions run `39006091643`, source `d07e75336a9a`). Final-head integration and independent peer review remain distinct. No original Weil negativity or RH counterexample is asserted.
 
 ## 1. Which continuum remains after SM06?
 
@@ -71,3 +71,14 @@ Therefore **\(E\not\preceq LI\)**. It is logically impossible to absorb the true
 Compute an actual **weighted supported inverse/covariance** response for \(E\), retaining its overlap with the already absorbed odd pole and constant-weight band. In particular, prioritize original multiplier-weighted Legendre means on a certified partition of \(J\), together with all other disjoint negative subbands and a full infinite residual. The existing 16-feature positive reference may need to be enriched to accommodate this genuinely nonuniform signed packet. No stage/status promotion beyond this precise obstruction.
 
 Replay: \`python scripts/validate_rpb108_sm07_true_multiplier_excess_nogo.py\`. Exact rational replay, inherited original operator identification and independent peer review are distinct requirements.
+
+## 5. Accepted source replay
+
+GitHub Actions focused run `39006091643` returned exact rational assertions for:
+
+- Whole original seven-prime signed upper on every point of (J_1): (m(\xi)<-2.1226920<-2).
+- True original physically supported odd Jensen norm squared (\|g_1\|_2^2>1.0954784).
+- Original remaining variable-frequency operator norm (\|E\|>0.0131457).
+- The SM06 reported constant-coercivity floor is (5.644\times10^{-5}), so (\|E\|>230L).
+
+The theorem is a *method-class obstruction to paying the remainder from the scalar floor*, not a negativity claim about the full conditioned positive operator. Final CI replay must pass for canonical integration.

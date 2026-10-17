@@ -13,7 +13,8 @@
 | Intrinsic negative spectral rank | SM04: 15 original physically supported odd negative packets certify λ15(K_neg,o)>0.0151354>κ=0.001; **any** κI plus positive rank≤14 correction is insufficient to dominate the full K_neg |
 | Original supported coupled inverse | SM05: 16 positive true Jensen features give A_o >= 2|s><s| + (21/125)|g_-><g_-| jointly and uniformly on the odd carrier (first exact-rational and focused final-head SM05 source replays passed); **all other negative-frequency modes remain OPEN** |
 | Full constant-weight signed-negative band candidate | SM06: exact 8-panel composite source PASSED; A_o absorbs pole + the whole constant 7/5-weighted J=[3.645,3.705] signed-negative continuum with all higher moments paid, and supported L2 floor >5.644e-5; **not** the variable original signed multiplier on J, other negative bands, or full odd Weil |
-| Live alternative methods | SM07/RC quantify variable negative-multiplier excess on SM06 band and other negative intervals with complete supported inverse coupling; or native RC high Schur with explicit carrier transport |
+| Certified variable-excess obstruction | SM07: full original signed m(ξ)<-2.12269 on J1=[3.645,3.655]; physically supported original negative residual E after SM06's constant-weight band has ||E||>0.0131457, far greater than reported L2 floor 5.6440e-5. **Does not refute domination by full conditioned A_o** |
+| Live alternative methods | SM08/RC rigorously certify original variable signed-multiplier weighted packet covariance against full supported inverse, complete cross terms and other bands; or native RC high Schur with explicit carrier transport |
 | Separate verification | LF113 full-root Lean CI passed; original-Weil certificate attachment still open |
 | Baseline research HEAD | `953df96c900d3e533dff92f30c4eebec65fd60a6` (merged SM01) |
 | Full odd signed positivity | **OPEN** |
