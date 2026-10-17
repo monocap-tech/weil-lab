@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "W-PHYSICAL-SHIFT",
+  "title": "Original Weil Form Through Physical Autocorrelation and Translation Geometry",
+  "role": "parallel-structural-investigation",
+  "priority": "exploratory; cannot override canonical W-ODD-NEG",
+  "status": "open",
+  "active_frontier_unchanged": "W-ODD-NEG",
+  "first_checkpoint": "PS01",
+  "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
+  "proof_standing": "PS01 identity analytically derived; scoped rational computational validation and CI pending",
+  "existing_work_to_reuse": [
+    "RC313 original CC27 prime and pole distribution",
+    "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
+    "RC320 boundary-cancelled original signed translation source",
+    "SI10 original signed frequency multiplier"
+  ],
+  "failure_conditions": [
+    "incorrect norm or spectral identification",
+    "uncertified form-domain closure",
+    "prime source overlap or boundary omitted",
+    "no stronger full-operator or Schur bound than existing methods"
+  ],
+  "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
+  "next_obligations": [
+    "PS02: identify physical translation overlap stratification and parity reflected blocks on the actual original form",
+    "PS03: compare candidate physical-space minorants with SI29/SM21 and EF13 on the same norms and domains",
+    "PS04: test if a certified coupled operator/Schur residual margin improves the canonical frontier; remain scoped otherwise"
+  ],
+  "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
+  "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
+  "closures": {
+    "W_ODD_NEG": false,
+    "W_EVEN_FORM": false,
+    "original_weil": false,
+    "RH": false
+  }
+}

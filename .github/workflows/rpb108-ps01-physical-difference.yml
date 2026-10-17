@@ -1,0 +1,35 @@
+name: RPB108 PS01 original signed physical difference form
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_ps01_physical_difference_form.py"
+      - "notes/RPB108_PS01_PHYSICAL_DIFFERENCE_FORM_20261017.md"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps01-physical-difference.yml"
+  workflow_dispatch:
+
+jobs:
+  ps01-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Preserve canonical obligation
+        run: |
+          python3 - <<'PY'
+          import json
+          obj=json.load(open("research/obligations.json"))
+          parallel=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert obj["active_obligation"]=="W-ODD-NEG"
+          assert obj["objective"]["status"]=="open"
+          assert parallel["status"]=="open"
+          assert parallel["active_frontier_unchanged"]=="W-ODD-NEG"
+          PY
+      - name: Verify true original signed P0/P1 by independent physical arch series
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps01_physical_difference_form.py
+          python3 scripts/validate_rpb108_ps01_physical_difference_form.py
