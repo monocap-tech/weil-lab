@@ -12,8 +12,9 @@ positivity of the full original odd quadratic/operator or RH.
 Every accepting inequality is exact Fraction.
 """
 from fractions import Fraction as F
-from validate_rpb108_si06_negative_band import B,PI,prime_interval
+from validate_rpb108_si06_negative_band import B,PI,prime_interval,WEIGHTS,SHIFTS,ACTIVE
 from validate_rpb108_si13_odd_fourier_reference import arch_lower
+from validate_rpb108_sm03_negative_packet_reference_nogo import arch_upper
 from validate_rpb108_si18_odd_rank_two_woodbury import (
     gram,signed_odd_overlap
 )
@@ -24,6 +25,10 @@ from validate_rpb108_sm14_continuum import C,R,S,err as witness_err
 
 RN=F(1,100)
 assert C==F(721,50) and RN==F(1,100)
+# Signed seven-prime p''(xi) has exact all-real bound below.
+PRIME_M2=2*sum((WEIGHTS[n][1]*(2*PI[1]*SHIFTS[n][1])**2
+                for n in ACTIVE),F(0))
+assert F(0)<PRIME_M2<F(2000)
 
 def abs_hi(v):return max(abs(v[0]),abs(v[1]))
 
@@ -75,6 +80,8 @@ def signed_negative_global_upper():
     removed=0
     remote=0
     local=0
+    all_negative_average_leaves=0
+    average_gain=F(0)
     for l,r,h in leaves:
         # Original seven-prime lower valid at EVERY real xi in [l,r].
         # Inherited SI10 already bounds r<=h+kappa on these leaves.
@@ -84,8 +91,24 @@ def signed_negative_global_upper():
         if dist<=F(6):
             local+=1
             mid=(l+r)/2
-            lower=arch_lower(l)+prime_interval(mid)[0]-F(69,2)*(r-l)
+            pl,pu=prime_interval(mid)
+            lower=arch_lower(l)+pl-F(69,2)*(r-l)
             w=min(h+KAPPA,max(F(0),KAPPA-lower))
+            # If the ORIGINAL signed multiplier is STRICTLY below kappa
+            # at every real point of this whole leaf, the clipping
+            # r=(kappa-m)_+ disappears. Its INTEGRAL is now bounded by
+            # a centered second-order sine-phase remainder, so no
+            # unnecessary 69*width/2 first-order penalty is charged.
+            if dist<=F(2):
+                all_negative_upper=arch_upper(r)+pu+F(69,2)*(r-l)
+                if all_negative_upper<KAPPA:
+                    mean_cap=(KAPPA-arch_lower(l)-pl
+                              +PRIME_M2*(r-l)**2/24)
+                    assert mean_cap>0
+                    if mean_cap<w:
+                        average_gain+=(w-mean_cap)*(r-l)
+                        w=mean_cap
+                    all_negative_average_leaves+=1
             amp=fourier_amp_upper(l,r)
         else:
             # NO remote frequency is deleted: retain SM10's valid
@@ -111,7 +134,7 @@ def signed_negative_global_upper():
     assert whole>0 and whole<F(5)
     assert removed>=0 and near+far==whole
     strongest.sort(reverse=True)
-    return whole,old_cap,near,far,removed,strongest,clusters,local,remote
+    return whole,old_cap,near,far,removed,strongest,clusters,local,remote,all_negative_average_leaves,average_gain
 
 def pole_upper():
     q=signed_odd_overlap(C)
@@ -140,7 +163,7 @@ def original_positive_lower():
     return KAPPA*nlo+chosen,chosen
 
 def validate():
-    neg,old,near,far,removed,top,clusters,local,remote=signed_negative_global_upper()
+    neg,old,near,far,removed,top,clusters,local,remote,allneg,avg_gain=signed_negative_global_upper()
     pole,pole_iv=pole_upper()
     pos,chosen=original_positive_lower()
     signed_margin=pos-neg-pole
@@ -150,6 +173,8 @@ def validate():
     print('SM15 near +/-2 negative upper',float(near),'remote upper',float(far),flush=True)
     print('SM15 local sharpened leaves',local,'remote rigorously envelope-paid leaves',remote,flush=True)
     print('SM15 original entirely sign-protected local leaves',removed,flush=True)
+    print('SM15 fully-negative whole-real leaves with exact SECOND-ORDER average',allneg,'integrated cap mass reduction',float(avg_gain),flush=True)
+    print('SM15 signed seven-prime global second derivative upper',float(PRIME_M2),flush=True)
     print('SM15 original odd pole quadratic UPPER',float(pole),flush=True)
     print('SM15 positive whole-original A_o quadratic LOWER',float(pos),flush=True)
     print('SM15 actual original A_o-Kneg-pole Rayleigh LOWER',float(signed_margin),flush=True)
