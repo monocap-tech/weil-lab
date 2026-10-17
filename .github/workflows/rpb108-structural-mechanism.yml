@@ -23,7 +23,7 @@ jobs:
   exact-structural-mechanism:
     name: Exact SM operator identity and boundary checks
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,7 +33,11 @@ jobs:
           python-version: '3.11'
       - name: Validate all parallel structural mechanism checkpoints
         run: |
-          for f in scripts/validate_rpb108_sm*.py; do
+          # Retained fast governance checks replay original SM01–SM04
+          # and the inexpensive SM06 signed-band infinite-tail certificate.
+          # Expensive full supported inverse computations (SM05/SM06) have
+          # separate focused workflows and are on-demand in the manifest.
+          for f in scripts/validate_rpb108_sm0[1-4]*.py scripts/validate_rpb108_sm06_band_legendre_tail.py; do
             python -m py_compile "$f"
             python "$f"
           done

@@ -78,6 +78,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/132",
       "repo_path": "notes/RPB108_SM05_TWO_SOURCE_ORIGINAL_INVERSE_20261016.md",
       "verification": "The exhaustive original source Actions run 39001092441 and the focused final-head Actions run 39002124278 (head 46ab379a7145) both PASSED the exact rational two-source certificate. Final-head obligation-governance run 39002124129 PASSED. The independent full historical structural replay was still running at recovery; this does not claim independently peer-reviewed proof or Lean formalization."
+    },
+    "SM06": {
+      "kind": "Original supported odd pole plus complete constant-floor continuous negative-frequency band; 3-source Legendre Bessel and all higher-moment Banach-Taylor tail.",
+      "scope": "Certified A_o >= 2|s><s| + 2*(7/5)*integral_[3.645,3.705]|h_xi><h_xi| dxi on entire physically supported odd H; this is one constant-weight original signed-negative band component ONLY, not the true variable original negative multiplier excess or the other negative bands. W-ODD-NEG and RH remain OPEN.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/134",
+      "repo_path": "notes/RPB108_SM06_NEGATIVE_FIRST_MOMENT_20261016.md",
+      "verification": "Exact-rational original supported source PASSED: 16-panel focused run 39004369440; optimized 8-panel full constant-weight band focused run 39005014089; independent signed-band all-degree≥2 tail job 117314615797. Optimized BS row ceilings <0.936728, <0.900964, <0.019407; original physically supported L2 residual floor >5.6440e-5 after complete uniform 7/5-band tail. Fast structural and obligation governance checks 39005328216 and 39005328162 PASSED with identical source blobs. Not independent peer review or Lean formalization."
     }
   },
   "obligations": [
@@ -119,10 +126,11 @@
         "SM02",
         "SM03",
         "SM04",
-        "SM05"
+        "SM05",
+        "SM06"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM06/RC: SM05 certifies positivity after subtracting original odd pole plus one actual continuous signed-negative packet, but not the remaining operator K_freq,o - (21/125)|g_-><g_-|. Extend the supported 16-feature inverse to multiple coupled negative packets with a rigorous residual, or use native RC high Schur after explicit carrier transport. W-ODD-NEG remains OPEN."
+      "next_action": "SM07/RC: SM06's first source and infinite-tail certificates absorb the whole UNIFORM 7/5-weighted portion of signed-negative band J=[3.645,3.705], not the true variable excess r(ξ)-7/5 nor other negative intervals. Quantify remaining original signed multiplier excess and other bands against the supported conditioned inverse, using complete cross terms and rigorous infinite residuals. W-ODD-NEG stays OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -276,6 +284,28 @@
       ],
       "interpretation": "Certifies joint original physical A_o inverse upper for odd pole and one selected whole-band negative Jensen packet; it does not control the remaining original negative continuum.",
       "cadence": "on-demand"
+    },
+    {
+      "id": "SM06-first-moment-and-original-supported-band",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm06_first_negative_moment.py"
+      ],
+      "interpretation": "Tests coupled actual original odd pole plus entire constant-weight negative band through three-source supported inverse and rigorously paid degree≥2 tail; NOT the variable original negative multiplier or all other bands.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM06-exact-infinite-negative-legendre-tail",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm06_band_legendre_tail.py"
+      ],
+      "interpretation": "Exact norm bound for all higher Legendre modes of one constant-δ signed-negative original band; no inverse acceptance alone.",
+      "cadence": "per-update"
     }
   ]
 }
