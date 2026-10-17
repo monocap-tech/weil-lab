@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS05 analytic compactness theorem for original restricted edge inverse and positive compact energy-dual Schur correction, exact original rational high-frequency tail and parent-source replays pending focused Actions/independent review; full signed edge elimination, original form-domain splitting, whole Weil and RH remain OPEN.",
+  "proof_standing": "PS06 explicit full original signed physical Weil spectral form-domain stable Lipschitz additive two-edge/interior partition, graph factor <30 and nonorthogonal compatibility, pending final-head Actions and independent review; sharp characteristic projection, unconstrained edge Schur, 890 source PSD, CC27 transfer, whole Weil and RH remain OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS06: establish original signed form domain compatibility with sharp edge/middle split or construct a smooth partition preserving the CC27/D-Riesz domain",
-    "PS07: compute certified finite-rank energy-dual B_EF* A_E^-1 B_EF approximation, signed original middle block and correct subtractive Schur test; require strict PSD before promotion"
+    "PS07: build an overlap-compatible energy-dual constrained Schur representation for PS06's exact graph-domain partition and quantify genuine signed collar interactions, without inserting PS05's disjoint edge/interior operator as if it were the full cross block",
+    "PS08: only after actual native form-domain CC27 attachment, a computed finite-rank original signed Schur remainder and strict certified complementary PSD may be promoted to the main objective"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -71,6 +71,14 @@
       "note": "notes/RPB108_PS05_EDGE_ENERGY_DUAL_COMPACTNESS_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps05_energy_dual_compactness.py",
       "limitation": "No sharp support-projector invariance, actual finite-rank spectral approximation or positive original Schur gate."
+    },
+    {
+      "id": "PS06",
+      "scope": "fully original signed physical logarithmic Weil-form domain admits an explicit globally Lipschitz additive edge/interior partition χ+(1−χ)=1 with certified G=q+20mass graph-norm multiplier bound <30 on both pieces; nonorthogonal collar compatibility exact",
+      "status": "analytic bounded multiplier and exact-rational constants; focused Actions and independent review pending",
+      "note": "notes/RPB108_PS06_FORM_DOMAIN_PARTITION_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps06_form_domain_partition.py",
+      "limitation": "Proves smooth additive partition, not sharp edge projector invariance, disjoint L2 operator Schur transfer, or CC27 D-Riesz domain identification"
     }
   ]
 }
