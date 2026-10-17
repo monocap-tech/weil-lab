@@ -162,6 +162,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/147",
       "repo_path": "notes/RPB108_SM13_C33_PHYSICAL_NEGATIVE_RAYLEIGH_20261017.md",
       "verification": "Focused exact original signed physically supported C33 Rayleigh Actions 39015294106 PASSED on source head 4bea08161b5d3b1cec86a6e2cc9f89d460a27f43, structural 39015294212 PASSED; ledger-head governance and full postmerge verification pending, and independent peer review remains separate."
+    },
+    "SM14": {
+      "kind": "true original signed positive-frequency continuum lower response on SM13 physical odd witness",
+      "scope": "Thirteen rational full signed-positive original-seven-prime frequency bands, disjoint from all C33 positive supports and the negative witness, yield on the SAME true odd supported g_14.42 the original A_o quadratic >0.6677778141467603, with recovered positive continuum >0.6666741285676513. Entire band inequalities and all original physical sine Jensen overlaps rationally certified. Does NOT bound whole original Kneg above, prove signed positivity on this witness, absorb odd pole, or establish RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/148",
+      "repo_path": "notes/RPB108_SM14_ORIGINAL_POSITIVE_CONTINUUM_20261017.md",
+      "verification": "Exact signed thirteen-window source Actions 39016451490 PASSED at source head 9e78e4cad1aacb9308de19e92558e914c16507c8, minimum m lower 1.109466, physical recovered positive >0.666674; final-head checks and independent review separate."
     }
   },
   "obligations": [
@@ -211,10 +218,11 @@
         "SM10",
         "SM11",
         "SM12",
-        "SM13"
+        "SM13",
+        "SM14"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM13 found actual original physically supported odd g_14.42 with <g,(Kneg,o-C33)g> > 0.0156835666, ruling out unchanged 33-feature Jensen positive lower reference as terminal full-negative domination. SM11 had already ruled out every rank<=16 scalar reference. SM10's all-negative upper cap and eta<3.014363e-10 remain valid. Next investigate full original positive-frequency multiplier response on SM13 witness and the entire 890-source negative cap (not more narrow Jensen-rank counting by default), or prove native RC high-Schur-to-original-odd-carrier transfer, with all pole/cross/infinite terms. Do NOT infer negativity of true A_o or RH. W-ODD-NEG OPEN."
+      "next_action": "SM14: despite C33 method no-go SM13, the genuine full original A_o recovers >0.666674 extra positive continuum quadratic on that SAME physical odd g_14.42 from 13 disjoint original sign-positive windows; full A_o quadratic >0.667777. This proves missing POSITIVE response, NOT actual signed positivity on the witness: whole Kneg quadratic UPPER has not been certified. NEXT construct exact original full negative integral upper on that physical witness with entire signed multiplier, full reflected frequency tail and odd pole; if successful, lift to whole 890-source SM10 cap with all cross terms, or certify native RC transport. W-ODD-NEG and RH remain OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -437,6 +445,17 @@
         "scripts/validate_rpb108_sm13_c33_physical_negative_rayleigh.py"
       ],
       "interpretation": "Shows a true supported odd Jensen source with original Kneg quadratic > C33 reference quadratic by >0.0156835, using all 561 cross terms; method-specific C33 no-go, not Weil negativity or full odd proof.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM14-original-positive-continuum-response",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm14_continuum.py"
+      ],
+      "interpretation": "Certifies full original positive-frequency mass >0.6666 on one true odd negative witness absent from C33; not a whole Kneg upper or original Weil positivity.",
       "cadence": "on-demand"
     }
   ]
