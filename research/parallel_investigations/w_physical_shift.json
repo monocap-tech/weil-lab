@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS17 exact analytic genuine original signed complement source-Schur to finite low-energy Feshbach reduction with conditional high-response acceptance errors <1/80 (2^26) and <1/1000 (2^30); finite low matrix not evaluated, no actual positive sign established; focused exact-rational CI and independent mathematical review pending. CC27 D-Riesz transfer, W-ODD-NEG, W-EVEN-FORM, full Weil/RH remain OPEN.",
+  "proof_standing": "PS18 establishes source-exact exponential native J_C low spectral rank obstruction (PS17 uniform-cutoff method impractical), AND a true unshifted original signed complementary Schur coercivity >1/200 on an infinite-dimensional explicit source-prime-quiet physical window, retaining arch/pole source response and eliminating seven prime source shifts by exact separation. Focused rational CI and independent review pending. Couplings between distinct complement windows, full complement Schur PSD, CC27 D-Riesz bridge, W-ODD-NEG, W-EVEN-FORM, whole original Weil and RH remain OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS18: build and evaluate a certified actual original signed finite low complementary Schur/Feshbach matrix, including true J_C spectral basis, V_C prime/pole terms, source response B_PC* A_P^-1 B_PC and high response; reject absent/effective-only matrix, require strict positive eigenvalue lower > certified high correction or a concrete negative witness",
-    "PS19: independently audit the full original physical original-to-CC27 D-Riesz domain/norm identification and the signed low/high plus source-Schur analytic chain before any W-ODD-NEG/W-EVEN-FORM/RH promotion"
+    "PS19: generalize PS18's genuinely positive original signed source-aware prime-quiet complement window to a controlled partition of the full original complement, including coherent cross-window arch, all seven true prime translations, both signed poles and compact source Schur interactions; require strict global positive margin or a genuine negative witness, not spectral J_C low matrix enumeration",
+    "PS20: independently audit all physical source-Schur functional analysis and native CC27 D-Riesz norm/domain transfer, with complete original whole-form signed positivity before W-ODD-NEG/W-EVEN-FORM/RH promotion"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -167,6 +167,14 @@
       "note": "notes/RPB108_PS17_LOW_HIGH_FESHBACH_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps17_low_high_feshbach.py",
       "limitation": "No actual finite low D_LL or Feshbach eigenvalues calculated, no strict low positive margin, no practical finite-rank Gram, no native CC27 D-Riesz carrier transfer; whole signed complement, W-ODD-NEG, W-EVEN-FORM, RH OPEN."
+    },
+    {
+      "id": "PS18",
+      "scope": "True restricted original arch J_C has native spectral low rank >=2^floor(Lambda/2) for every integer Lambda>=100; specific PS17 high-response cutoffs 2^26 and 2^30 require at least 2^33554432 and 2^536870912 modes respectively; original support window [1/8,3/16] witnesses minmax and has unshifted original Q>1/4 on whole huge step subspace; original Fourier Bessel gives complementary exponential rank upper; additionally true original signed complement Schur is >1/200 on every separately form-admissible vector supported in explicit prime-quiet physical window [269/5000,1163/10000], by exact 13x7x2 prime isolation and full arch/pole source inverse bound",
+      "status": "analytic genuine J_C spectral rank impossibility theorem / exact-rational original source and cutoff gates, focused final-head Actions and independent review pending; PS17 finite matrix not computed",
+      "note": "notes/RPB108_PS18_SPECTRAL_RANK_OBSTRUCTION_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps18_spectral_rank_obstruction.py",
+      "limitation": "No positivity on the whole complement or mixed quiet/nonquiet windows, no finite native low spectral matrix or global signed Schur PSD, no CC27 D-Riesz carrier/RH; positive Schur only on specified quiet interval."
     }
   ]
 }
