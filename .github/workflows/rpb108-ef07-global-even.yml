@@ -1,0 +1,32 @@
+name: RPB108 EF07 full original even cap feasibility
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_ef07_global_even_witness.py'
+      - 'notes/RPB108_EF07_GLOBAL_EVEN_WITNESS_20261017.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-ef07-global-even.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-even-global-witness:
+    name: Full signed cap and actual positive energy intervals
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact rational original global even-cap feasibility
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef07_global_even_witness.py
+          python scripts/validate_rpb108_ef07_global_even_witness.py
