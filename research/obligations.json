@@ -187,7 +187,8 @@
         "python3",
         "scripts/validate_rpb108_sm01_pole_schur.py"
       ],
-      "interpretation": "Verifies pole-conditioning arithmetic and correct-sign Schur regression; cannot close full negative-frequency gate."
+      "interpretation": "Verifies pole-conditioning arithmetic and correct-sign Schur regression; cannot close full negative-frequency gate.",
+      "cadence": "per-update"
     },
     {
       "id": "SI29-pole-replay",
@@ -197,7 +198,8 @@
         "python3",
         "scripts/validate_rpb108_si29_pole_threshold_three_bands.py"
       ],
-      "interpretation": "Replays pole-only certificate, not full original odd signed positivity."
+      "interpretation": "Replays pole-only certificate, not full original odd signed positivity.",
+      "cadence": "on-demand"
     }
   ]
 }
