@@ -225,6 +225,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/153",
       "repo_path": "notes/RPB108_EF08_EVEN_POSITIVE_UPPER_20261017.md",
       "verification": "Focused exact-rational EF08 all-frequency positive-upper and 11 inherited/governance workflows SUCCESS on head 3fe385799e5c6ef13c11e3adc679c2fa51ee062b (Actions 39042303083). Certified upper <0.877810282; same-vector cap lower >0.8023309563, difference lower = -0.0754793250, so STILL_INCONCLUSIVE; reconciled post-SM17 merge-head workflows require fresh replay. No full even/Weil/RH theorem."
+    },
+    "EF09": {
+      "kind": "Candidate strict supported physical cosine one-vector refined EF06 conservative even cap integral lower: 1024 low + 1936 mid rational subcells",
+      "scope": "Original cap weights and original physical Fourier transform unchanged. 256 [0,1] refined leaves subdivided by 4; 121 [1,4] original leaves subdivided by 16; 788 nonnegative high leaves lower 0. Same physical witness; compare cap lower to independently certified original A_e upper <877811/1e6. Strict cap-minus-A_e separation rules out this CAP method only, not original true even form or RH.",
+      "pr": "Stacked candidate after EF08, see EF09 PR",
+      "repo_path": "notes/RPB108_EF09_EVEN_CAP_LOWER_20261017.md",
+      "verification": "Focused exact rational original physical EF09 cap lower 0.8724438013669181 (2960 subcells), SAME witness EF08 actual A_e upper <0.877811; STILL_INCONCLUSIVE. Actions 39049775807 SUCCESS on source head. No full even/Weil/RH theorem."
     }
   },
   "obligations": [
@@ -304,10 +311,11 @@
         "EF05",
         "EF06",
         "EF07",
-        "EF08"
+        "EF08",
+        "EF09"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF09: refine physically supported SAME witness original negative-cap Rayleigh LOWER on [0,4], especially 121 EF07 [1,4] cells, using strict whole-cell Fourier enclosure; compare with independently certified EF08 full original positive upper <0.877810282. If strict cap-lower > positive-upper, the EF06 conservative cap is METHOD-CLASS NO-GO ONLY (not original even negativity). If not, remain inconclusive and improve critical enclosures. W-EVEN-FORM OPEN; W-ODD-NEG unchanged."
+      "next_action": "EF09: run strict exact-rational true physical Fourier whole-cell cap integral refinement on [0,1] and [1,4], compare to certified EF08 A_e<0.877811. If CAP_METHOD_NO_GO then discard EF06 conservative domination as a proof strategy and pivot to direct original signed even operator; if STILL_INCONCLUSIVE refine only residual dominant intervals. All sector/global original obligations OPEN."
     },
     {
       "id": "W-WHOLE-FORM",

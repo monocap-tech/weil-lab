@@ -1,0 +1,29 @@
+name: RPB108 EF09 original even physical cap lower refinement
+on:
+  pull_request:
+    branches:
+      - research/rpb108-even-form-ef08-positive-upper
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_ef09_even_cap_lower_refinement.py'
+      - 'notes/RPB108_EF09_EVEN_CAP_LOWER_20261017.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-ef09-even-cap-lower.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  supported-even-original-cap-lower:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact-rational true-physical-cap local refinement
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef09_even_cap_lower_refinement.py
+          python scripts/validate_rpb108_ef09_even_cap_lower_refinement.py
