@@ -50,6 +50,13 @@
       "scope": "Certificate transport and concrete trial interfaces; no final original Weil-form attachment.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/36",
       "verification": "Open draft PR; full-root CI passed at LF113. Not a full formal proof of RH."
+    },
+    "SM02": {
+      "kind": "analytic parity-compression theorem and exact-rational dimension/error regression",
+      "scope": "Original supported odd negative-frequency Taylor packet approximation with <=1+sum_j p_j dimensions, unchanged all-frequency signed residual; full finite pole/frequency matrix still open.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/128",
+      "repo_path": "notes/RPB108_SM02_ODD_PARITY_PACKET_20261016.md",
+      "verification": "Pending final-head GitHub Actions regression and PR verification; analytically derived from the certified SI10/SI11 original signed cover, not independently peer reviewed or formalized in Lean."
     }
   },
   "obligations": [
@@ -87,10 +94,11 @@
         "SI29",
         "SM01",
         "SI10",
-        "RC334"
+        "RC334",
+        "SM02"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM02 seek a non-tautological weighted observability/frame bound; SI30 test genuine negative-frequency modes with complete coupling; RC335 offers an independent high-Schur comparison."
+      "next_action": "SM03/SI30: certify one actual original negative-frequency odd packet matrix/source response with complete pole cross terms, rigorous supported A_o^-1 enclosure and infinite remainder; compare 781/891/1076 odd dimensions with RC314's different 301-D metric carrier. Stop sparse-reference attempts if a certified obstruction emerges."
     },
     {
       "id": "W-EVEN-FORM",
@@ -200,6 +208,17 @@
       ],
       "interpretation": "Replays pole-only certificate, not full original odd signed positivity.",
       "cadence": "on-demand"
+    },
+    {
+      "id": "SM02-original-odd-packet-rank-and-residual",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm02_odd_packet_parity.py"
+      ],
+      "interpretation": "Checks parity-halved original signed negative-frequency physical rank and full residual budget, not the missing finite BS eigenvalue.",
+      "cadence": "per-update"
     }
   ]
 }
