@@ -1,0 +1,23 @@
+name: RPB108 EF11 original even TRUE signed Rayleigh interval
+on:
+  pull_request:
+    branches:
+      - research/rpb108-even-form-ef10-integrated-cone
+      - research/rpb108-route-consolidation
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-direct-even-signed-rayleigh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_ef11_true_signed_even_rayleigh.py
+          python scripts/validate_rpb108_ef11_true_signed_even_rayleigh.py
