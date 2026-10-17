@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS06 explicit full original signed physical Weil spectral form-domain stable Lipschitz additive two-edge/interior partition, graph factor <30 and nonorthogonal compatibility, pending final-head Actions and independent review; sharp characteristic projection, unconstrained edge Schur, 890 source PSD, CC27 transfer, whole Weil and RH remain OPEN.",
+  "proof_standing": "PS07 analytical exact original signed IMS identity; physical remainder bounded <40 but noncompact due true log2 prime shift; whole graph-energy-conjugated IMS remainder compact, exact-rational geometry/constant CI and independent review pending. W-ODD-NEG, W-EVEN-FORM, true full Schur, complete CC27 domain bridge and RH remain OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS07: build an overlap-compatible energy-dual constrained Schur representation for PS06's exact graph-domain partition and quantify genuine signed collar interactions, without inserting PS05's disjoint edge/interior operator as if it were the full cross block",
-    "PS08: only after actual native form-domain CC27 attachment, a computed finite-rank original signed Schur remainder and strict certified complementary PSD may be promoted to the main objective"
+    "PS08: build certified finite-rank approximation of the entire signed energy-conjugated IMS remainder, with prime shifts and poles included, and isolate numerical bad eigenvalues on true original carrier",
+    "PS09: attach accepted strictly positive complementary Schur matrix and full CC27 D-Riesz domain equivalence before promoting to W-ODD-NEG/W-EVEN-FORM"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -79,6 +79,14 @@
       "note": "notes/RPB108_PS06_FORM_DOMAIN_PARTITION_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps06_form_domain_partition.py",
       "limitation": "Proves smooth additive partition, not sharp edge projector invariance, disjoint L2 operator Schur transfer, or CC27 D-Riesz domain identification"
+    },
+    {
+      "id": "PS07",
+      "scope": "exact original signed nonlocal quadratic IMS localization with cosine/sine masks, mass cancellation, compact arch correction, rank-six pole correction, noncompact isolated log2 signed prime translation essential norm >0.49, and compact graph-energy-conjugated full remainder",
+      "status": "analytic operator decomposition and exact-rational source/geometry checks; focused CI and independent review pending",
+      "note": "notes/RPB108_PS07_ORIGINAL_IMS_LOCALIZATION_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps07_ims_localization.py",
+      "limitation": "No finite original signed Schur PSD, no native CC27/D-Riesz domain transfer, no quantitative small eigenvalue bound; quadratic IMS is not additive/orthogonal decomposition"
     }
   ]
 }
