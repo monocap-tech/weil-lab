@@ -1,0 +1,27 @@
+name: RPB108 SM15 global negative odd witness and pole
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_sm15_global_negative_witness.py'
+      - 'notes/RPB108_SM15_GLOBAL_NEGATIVE_ODD_WITNESS_20261017.md'
+      - '.github/workflows/rpb108-sm15-focused.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_sm15_global_negative_witness.py
+          python scripts/validate_rpb108_sm15_global_negative_witness.py

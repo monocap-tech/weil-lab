@@ -183,6 +183,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/149",
       "repo_path": "notes/RPB108_EF06_LOCAL_SIGNED_EVEN_CAP_20261017.md",
       "verification": "Draft PR #149; exact rational focused EF06 and obligation-governance final-head CI pending. No full even positivity, independent peer review or Lean original-zeta attachment."
+    },
+    "SM15": {
+      "kind": "exact-rational entire original negative signed-frequency integral UPPER and original odd pole UPPER, strict positive Rayleigh witness",
+      "scope": "On the genuine original physically supported odd g_14.42, original A_o quadratic lower >0.6677778141467603, entire original Kneg,o quadratic upper <0.6197408947233872, original odd pole quadratic upper <0.0001569581696523687; original complete signed quadratic >0.0478799612537206. Whole negative positive-frequency cover 973 leaves in 107 clusters and full high-frequency exterior, with 122 sharpened local and 851 globally paid remote leaves, 17 strictly-negative leaves using exact rational SECOND-ORDER integrated multipliers. Strictly one Rayleigh direction; NOT full W-ODD-NEG, operator-wide positivity, or RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/150",
+      "repo_path": "notes/RPB108_SM15_GLOBAL_NEGATIVE_ODD_WITNESS_20261017.md",
+      "verification": "Exact full original frequency source-head Actions runs 39019183798 and 39019150228 PASSED at c34370543905fa4b4081e2741b2d06bb8175895f; structural 39019183738 PASSED. Final reconciled PR head and postmerge governance pending, independent expert review separate."
     }
   },
   "obligations": [
@@ -233,10 +240,11 @@
         "SM11",
         "SM12",
         "SM13",
-        "SM14"
+        "SM14",
+        "SM15"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM14: despite C33 method no-go SM13, the genuine full original A_o recovers >0.666674 extra positive continuum quadratic on that SAME physical odd g_14.42 from 13 disjoint original sign-positive windows; full A_o quadratic >0.667777. This proves missing POSITIVE response, NOT actual signed positivity on the witness: whole Kneg quadratic UPPER has not been certified. NEXT construct exact original full negative integral upper on that physical witness with entire signed multiplier, full reflected frequency tail and odd pole; if successful, lift to whole 890-source SM10 cap with all cross terms, or certify native RC transport. W-ODD-NEG and RH remain OPEN."
+      "next_action": "SM15 has a strict +0.0478799612537206 certified original signed odd Rayleigh margin on ONE true supported g_14.42, after the ENTIRE actual original Kneg,o quadratic upper 0.619740895 and odd pole upper 0.000156958 are paid against original A_o lower 0.667777814. It requires second-order INTEGRATED signed multiplier bounds on 17 fully negative leaves and full 973-leaf + high-frequency exterior coverage. NEXT generalize this cancellation to a genuinely coupled physical finite odd subspace, handling mixed quadratic/polarization, all 890 SM10 negative Taylor source columns, exact odd pole, and full infinite residual; pursue native RC bridge only with proved original physical transport. Neither this one-dimensional positivity nor EF06 closes W-ODD-NEG, whole Weil or RH."
     },
     {
       "id": "W-EVEN-FORM",
@@ -472,6 +480,17 @@
         "scripts/validate_rpb108_sm14_continuum.py"
       ],
       "interpretation": "Certifies full original positive-frequency mass >0.6666 on one true odd negative witness absent from C33; not a whole Kneg upper or original Weil positivity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM15-original-whole-negative-odd-witness",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm15_global_negative_witness.py"
+      ],
+      "interpretation": "Exact signed original complete-negative-frequency physical Rayleigh upper, original odd pole and strictly positive signed witness at 14.42; ONLY one odd direction, no full BS/Schur.",
       "cadence": "on-demand"
     }
   ]
