@@ -82,3 +82,45 @@ def run():
         assert F(0)<x<F(32)
         T64+=2*(1-x/32)**32/lam
     assert carch.lo+T64>F(8,3),float(carch.lo+T64)
+
+    # Off-channel original arch kernel -k(|x-y|), x in one source
+    # interval and y in another. All distances >=g=0.1-delta.
+    # Exact k(u)<=1/(2u)+1, Schur row integral <=12delta*k(g).
+    g=F(1,10)-delta.hi
+    assert g>F(17,175)
+    arch_cross=12*delta.hi*(1+F(1)/(2*g))
+    assert arch_cross<F(1,4),float(arch_cross)
+
+    # The original positive even pole is retained safely by
+    # dropping it only in this Q LOWER bound. Original odd pole
+    # costs at most 2*measure(union)*sinh(B/2)^2.
+    sn,cs=old.sinh_cosh_iv(B/2)
+    odd_cost=26*delta.hi*sn.hi**2
+    assert odd_cost<F(1,30),float(odd_cost)
+
+    original_gap=carch.lo+T64
+    # Strict SOURCE margin on the entire infinite-dimensional
+    # supported thirteen-channel ORIGINAL signed form.
+    lower_cert=F(8,3)-F(11,5)-F(1,4)-F(1,30)
+    assert lower_cert==F(11,60)>F(1,6)
+    assert original_gap-F(11,5)-arch_cross-odd_cost>F(1,6)
+
+    print("PS14 thirteen original physical intervals",len(offsets),flush=True)
+    print("PS14 exact min offset gap",float(sep),flush=True)
+    print("PS14 full original 19 prime edges",len(edges),flush=True)
+    print("PS14 full original 19-edge signed prime W-square row bound",
+          float(rowmax),flush=True)
+    print("PS14 true original arch 64-term integrated tail",float(T64),flush=True)
+    print("PS14 true original arch diagonal+carch lower",float(original_gap),flush=True)
+    print("PS14 true off-channel original arch norm bound",float(arch_cross),flush=True)
+    print("PS14 true signed odd pole bound",float(odd_cost),flush=True)
+    print("PS14 certified entire-source original unshifted Q gap",
+          float(original_gap-F(11,5)-arch_cross-odd_cost),flush=True)
+    print("PS14 PASS SCOPED: Q>1/6 L2 mass on complete 13-channel"
+          " PS10 source carrier with separately admissible pieces,"
+          " including all 19 actual original signed prime edges."
+          " Whole interior complement/cross-Schur, CC27 D-Riesz"
+          " attachment, W-ODD-NEG and RH OPEN.",flush=True)
+
+if __name__=="__main__":
+    run()
