@@ -218,6 +218,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/156",
       "repo_path": "notes/RPB108_SM18_FORWARD_RESIDUAL_ODD_GATE_20261017.md",
       "verification": "Analytic argument and local exact rational prototype independently replayed at authoring; GitHub final-head focused and obligation governance CI pending; no actual original 890-source residual enclosure, independent peer review or Lean formalization."
+    },
+    "EF08": {
+      "kind": "Candidate full-frequency original supported even positive-form upper: 4096 signed low cells, 3968 signed mid cells, global logarithmic tail and positive even pole",
+      "scope": "Same physical even cosine f=cos(2π19x/25). 0..4 original signed arch+7prime fine upper; 4..128 signed arch+prime original interval plus correct physical Fourier derivative; |xi|>=128 entire positive log Fourier tail <(16+7 ln_hi2)/512<0.05. Compare actual original A_e upper to EF07 complete refined negative cap lower >0.8023309563, classify method CAP_NO_GO only on strict certified separation; otherwise INCONCLUSIVE. NOT full even Q positivity or negativity.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/153",
+      "repo_path": "notes/RPB108_EF08_EVEN_POSITIVE_UPPER_20261017.md",
+      "verification": "Focused exact-rational EF08 all-frequency positive-upper and 11 inherited/governance workflows SUCCESS on head 3fe385799e5c6ef13c11e3adc679c2fa51ee062b (Actions 39042303083). Certified upper <0.877810282; same-vector cap lower >0.8023309563, difference lower = -0.0754793250, so STILL_INCONCLUSIVE; reconciled post-SM17 merge-head workflows require fresh replay. No full even/Weil/RH theorem."
     }
   },
   "obligations": [
@@ -296,10 +303,11 @@
         "EF04",
         "EF05",
         "EF06",
-        "EF07"
+        "EF07",
+        "EF08"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF08: tighten ACTUAL original supported even positive-form energy bounds on EF05 cosine (especially overly coarse >=4 analytic upper tail and integer-cell original archimedean bound) until a strict comparison with EF07 global refined negative cap [0.8023309563,1.0198894827] or a proved bound limitation emerges; never assert positivity or negativity from EF07 overlap. Subsequent 2-vector coupled test or refined cap as indicated. W-EVEN-FORM OPEN."
+      "next_action": "EF09: refine physically supported SAME witness original negative-cap Rayleigh LOWER on [0,4], especially 121 EF07 [1,4] cells, using strict whole-cell Fourier enclosure; compare with independently certified EF08 full original positive upper <0.877810282. If strict cap-lower > positive-upper, the EF06 conservative cap is METHOD-CLASS NO-GO ONLY (not original even negativity). If not, remain inconclusive and improve critical enclosures. W-EVEN-FORM OPEN; W-ODD-NEG unchanged."
     },
     {
       "id": "W-WHOLE-FORM",
