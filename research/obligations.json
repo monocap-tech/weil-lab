@@ -222,7 +222,7 @@
     "SM19": {
       "kind": "original SI29 fourteen-feature pole-conditioned Woodbury upper for SM18 full forward residual; analytic theorem and exact rational coupled two-dimensional regression",
       "scope": "Existing SI29 original physical C14<=A_o implies explicit B14=C14-2|s><s|<=A_star and B14>=kappa_star I. Full finite-data formula E*B14^-1 E = kappa^-1 D - kappa^-2 F*K^-1 F + 2/alpha z z*, retaining 14-to-890 residual couplings and correct positive pole correction. Replaces scalar SM18 error upper with no weaker original attached supported inverse upper. Original 890-column D,F,t,H_Y and PSD gate not computed; W-ODD-NEG OPEN.",
-      "pr": "https://github.com/monocap-tech/weil-lab/pull/157",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/159",
       "repo_path": "notes/RPB108_SM19_ORIGINAL_WOODBURY_RESIDUAL_20261017.md",
       "verification": "Analytic original reference transfer and exact rational model stored; GitHub focused and governance CI pending. Does not mechanically verify 890-source original action, independently peer-review the proof or formalize in Lean."
     }
