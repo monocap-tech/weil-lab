@@ -196,14 +196,28 @@
       "scope": "Full original signed refined cap Q on f=cos(2π19x/25) in [0.8023309563,1.0198894827]; actual original positive A_e Q in [0.4629763897,2.6394610669]. Cap-minus-A_e in [-1.8371301105,0.5569130930], intervals overlapping => cannot certify cap feasibility NOR method-class no-go. All original 973 covered leaves, EF06 256 microcells, signed original positive surplus, positive even pole, whole >=4 analytic tail paid. No 890-source inverse or actual even positivity.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/152",
       "repo_path": "notes/RPB108_EF07_GLOBAL_EVEN_WITNESS_20261017.md",
-      "verification": "Merged PR #152 at 94527c66c0e05afe545a1b6fbe9d5188309a547a. Final-head exact rational EF07 and ten inherited/governance workflows ALL SUCCESS on 9756dacddf647156c1c6702aac6800adfdebfec4. Original even complete form remains open."
+      "verification": "Focused exact-rational source-head CI Actions 39039665346 SUCCESS, first-head source blob unchanged after annotation. Final reconciled PR head EF07/inherited and obligation-governance CI replay pending. Not independent proof audit or Lean original-form formalization."
+    },
+    "SM16": {
+      "kind": "exact-rational all-original signed physically supported odd 2-by-2 strict positivity with all Fourier and pole cross terms",
+      "scope": "Entire original odd signed quadratic is strictly positive on the full 2D physical span{g_14.42,g_17.00}: 27 disjoint original sign-positive real bands; all 973 negative-frequency leaves (141 local, 832 distant) including 29 wholly negative integrated second-order signed masses; all true physical mixed Fourier terms, complete infinite sign-protected exterior, exact paid odd pole. Signed M11>0.0497582664, M22>0.6016538939, M12 in [-0.0424129132,+0.0335755293], exact rational determinant lower >0.02813839958. This is NOT full odd original positivity, 890-source Schur, even form or RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/154",
+      "repo_path": "notes/RPB108_SM16_COUPLED_ORIGINAL_ODD_2X2_20261017.md",
+      "verification": "Exact source-head two-dimensional rational Actions 39042858319 PASSED, on 52963096fa3a8237038a166c345a4cec0cf7fc1b; source-head structural 39042253978 PASSED. Full final-head governance and independent mathematical review separate."
+    },
+    "SM17": {
+      "kind": "analytic compact conditioned odd BS theorem and exact-rational conditional full-cap acceptance budget",
+      "scope": "Proves original odd negative-frequency BS is positive trace-class; any eigenvalue >1 yields actual supported signed-negative witness; from SM10 derives sufficient TRUE supported 890-column mu<=999/1000. Also proves arbitrary higher-dimensional favorable high-frequency subspaces do not certify full positivity. Neither actual mu nor lambda_max(T) is bounded here.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/155",
+      "repo_path": "notes/RPB108_SM17_COMPACT_ODD_SPECTRAL_GATE_20261017.md",
+      "verification": "Analytic argument recorded for review; focused Fraction budget not yet final-head CI verified. No independent peer review or Lean formalization; original full odd positivity OPEN."
     },
     "EF08": {
       "kind": "Candidate full-frequency original supported even positive-form upper: 4096 signed low cells, 3968 signed mid cells, global logarithmic tail and positive even pole",
       "scope": "Same physical even cosine f=cos(2π19x/25). 0..4 original signed arch+7prime fine upper; 4..128 signed arch+prime original interval plus correct physical Fourier derivative; |xi|>=128 entire positive log Fourier tail <(16+7 ln_hi2)/512<0.05. Compare actual original A_e upper to EF07 complete refined negative cap lower >0.8023309563, classify method CAP_NO_GO only on strict certified separation; otherwise INCONCLUSIVE. NOT full even Q positivity or negativity.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/153",
       "repo_path": "notes/RPB108_EF08_EVEN_POSITIVE_UPPER_20261017.md",
-      "verification": "Draft PR #153; focused exact-rational signed positive all-frequency and governance final-head CI pending; no complete 890-source physical inverse, whole original even positivity, Lean or RH theorem."
+      "verification": "Focused exact-rational EF08 all-frequency positive-upper and 11 inherited/governance workflows SUCCESS on head 3fe385799e5c6ef13c11e3adc679c2fa51ee062b (Actions 39042303083). Certified upper <0.877810282; same-vector cap lower >0.8023309563, difference lower = -0.0754793250, so STILL_INCONCLUSIVE; reconciled post-SM17 merge-head workflows require fresh replay. No full even/Weil/RH theorem."
     }
   },
   "obligations": [
@@ -255,10 +269,12 @@
         "SM12",
         "SM13",
         "SM14",
-        "SM15"
+        "SM15",
+        "SM16",
+        "SM17"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM15 has a strict +0.0478799612537206 certified original signed odd Rayleigh margin on ONE true supported g_14.42, after the ENTIRE actual original Kneg,o quadratic upper 0.619740895 and odd pole upper 0.000156958 are paid against original A_o lower 0.667777814. It requires second-order INTEGRATED signed multiplier bounds on 17 fully negative leaves and full 973-leaf + high-frequency exterior coverage. NEXT generalize this cancellation to a genuinely coupled physical finite odd subspace, handling mixed quadratic/polarization, all 890 SM10 negative Taylor source columns, exact odd pole, and full infinite residual; pursue native RC bridge only with proved original physical transport. Neither this one-dimensional positivity nor EF06 closes W-ODD-NEG, whole Weil or RH."
+      "next_action": "SM17 establishes original conditioned negative-frequency T=R_o A_star^-1 R_o* positive trace-class, actual negative physical witness extraction for lambda_max(T)>1, and rigorous SM10 sufficient cap threshold: true supported pole-conditioned 890-source mu=lambda_max(C^1/2 U* A_star^-1 U C^1/2)<=999/1000 implies W-ODD-NEG. COMPUTE/CERTIFY MU WITH ALL 890 ORIGINAL CROSS COUPLINGS and full infinite error; or sharpen the one-sided cap. Avoid dimension-only 3D positive-witness inflation: high-frequency positive extensions exist without whole-operator positivity. Actual mu and W-ODD-NEG OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -283,7 +299,7 @@
         "EF08"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF09: after EF08 exact final-head outcome, resolve same-vector refined signed negative-cap vs true original positive energy. If separated CAP_NO_GO, improve overconservative EF06 cap or pivot to direct original signed; if still overlapping, refine sharp [0,4] positive upper and/or cap lower using correct true physical Fourier derivatives, before launching 890-source inverse. W-EVEN-FORM OPEN."
+      "next_action": "EF09: refine physically supported SAME witness original negative-cap Rayleigh LOWER on [0,4], especially 121 EF07 [1,4] cells, using strict whole-cell Fourier enclosure; compare with independently certified EF08 full original positive upper <0.877810282. If strict cap-lower > positive-upper, the EF06 conservative cap is METHOD-CLASS NO-GO ONLY (not original even negativity). If not, remain inconclusive and improve critical enclosures. W-EVEN-FORM OPEN; W-ODD-NEG unchanged."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -507,6 +523,28 @@
         "scripts/validate_rpb108_sm15_global_negative_witness.py"
       ],
       "interpretation": "Exact signed original complete-negative-frequency physical Rayleigh upper, original odd pole and strictly positive signed witness at 14.42; ONLY one odd direction, no full BS/Schur.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM16-original-full-coupled-odd-2x2",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm16_coupled_original_odd_2x2.py"
+      ],
+      "interpretation": "Certifies strict 2x2 physical original complete signed odd positivity including all 973 negative Fourier leaves, mixed terms and original pole; only this 2D subspace, not full W-ODD-NEG.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM17-compact-odd-conditional-cap-budget",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm17_compact_spectral_gate.py"
+      ],
+      "interpretation": "Exact Fraction conditional 890-column cap threshold and witness-sign toy regression; it does not compute mu, verify functional-analytic compactness, or prove entire original odd positivity.",
       "cadence": "on-demand"
     }
   ]

@@ -1,0 +1,21 @@
+name: RPB108 SM17 compact original odd conditional spectral gate
+on:
+  pull_request:
+    branches: [research/rpb108-route-consolidation]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-odd-conditional-cap-budget:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_sm17_compact_spectral_gate.py
+          python scripts/validate_rpb108_sm17_compact_spectral_gate.py
