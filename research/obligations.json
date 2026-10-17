@@ -231,7 +231,14 @@
       "scope": "Original seven-prime a^2 high-frequency tail, first actual SM10 source trial Y0=lambda u0, residual D00, all 14 physical SI29 cross-Grams and true odd pole t0. No other 889 columns nor whole inverse are checked.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/161",
       "repo_path": "notes/RPB108_SM20_ORIGINAL_FIRST_SOURCE_FORWARD_20261017.md",
-      "verification": "Focused final-head original-source rational replay and governance CI not yet confirmed; no independent review. Whole odd positivity OPEN."
+      "verification": "PR #161 merged at 4124894a84cc8ef0c938b85bc3cb1cbe22108a77 after 17/17 final-head Actions success at 8515c123c85efaabace8cea6bae14ce300794c5d. First-original-source only: center 37/64, original graph upper 1311.246224..., Ritz reduction 8.00527e-13 and 14 SI29 source/pole overlaps. No 890-source inverse or independent mathematical review."
+    },
+    "SM21": {
+      "kind": "first-original-source SI29 fourteen-feature positive-energy Rayleigh certificate and optimized supported forward residual",
+      "scope": "For original SM10 first physical odd Taylor source u0 at c=37/64, reconstruct true SI29 14-feature positive original form lower and paid odd pole upper, derive q_L and improve SM20 first-column supported Ritz residual D00 upper by q_L^2/M0 while retaining all a^2 exterior and 14 signed source/pole interactions. Does not bound remaining 889 columns or original full Schur.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/164",
+      "repo_path": "notes/RPB108_SM21_NATIVE_SOURCE_RAYLEIGH_20261017.md",
+      "verification": "Exact Fraction source-specific rational job and final-head governance CI pending; no original full 890-column inverse, independent mathematical review or Lean proof."
     }
   },
   "obligations": [
@@ -288,10 +295,11 @@
         "SM17",
         "SM18",
         "SM19",
-        "SM20"
+        "SM20",
+        "SM21"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM20 establishes a method for the first actual original supported source forward residual and explicit SI29 cross-Gram enclosures. Next: certify its final-head Actions, audit usefulness of the very small scalar Ritz gain, and develop strong localized original supported action estimates for remaining 889 sources and all cross terms. Full SM19 890x890 PSD, W-ODD-NEG, RH OPEN."
+      "next_action": "SM21 computes SI29's genuinely original fourteen-source positive Rayleigh lower on SM10's actual first negative-frequency Taylor source, subtracting original odd pole, and optimizes its nonzero graph-domain forward Ritz trial. Inspect certified quantitative ratio versus weak SM20 scalar damping; NEXT evaluate true SM19 pole-correct Woodbury residual upper for this first column with complete original mixed Gram, then develop a useful coupled supported Ritz family rather than 889 independent microscopic scalings. Actual original all-890 inverse/Schur PSD and W-ODD-NEG remain OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -594,6 +602,17 @@
         "scripts/validate_rpb108_sm20_original_source_forward.py"
       ],
       "interpretation": "First actual original source a^2 tail, D00, 14 source intervals and pole t0; not full 890-source inverse.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM21-original-source-local-si29-positive-energy",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm21_native_source_rayleigh.py"
+      ],
+      "interpretation": "Exact Fraction first actual SM10 source 14-feature SI29 supported Rayleigh lower with true pole and improved single-column forward residual; no all-890 inverse spectral threshold.",
       "cadence": "on-demand"
     }
   ]
