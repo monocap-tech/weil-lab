@@ -1,0 +1,38 @@
+name: RPB108 EF03 original even full-negative upper cap
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_ef03_even_full_upper_carrier.py'
+      - 'scripts/validate_rpb108_ef02_even_negative_spectral_rank.py'
+      - 'notes/RPB108_EF03_EVEN_FULL_UPPER_CARRIER_20261016.md'
+      - 'notes/RPB108_EF02_EVEN_NEGATIVE_SPECTRAL_RANK_20261016.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-ef03-even-upper.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-original-even-cap:
+    name: Entire original signed cap, parity rank, cross terms
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reconcile EF02 true original signed even negative spectral rank
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef02_even_negative_spectral_rank.py
+          python scripts/validate_rpb108_ef02_even_negative_spectral_rank.py
+      - name: Certify entire original even upper cap and finite-gate error budget
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef03_even_full_upper_carrier.py
+          python scripts/validate_rpb108_ef03_even_full_upper_carrier.py
