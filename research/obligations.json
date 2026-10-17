@@ -224,7 +224,14 @@
       "scope": "Existing SI29 original physical C14<=A_o implies explicit B14=C14-2|s><s|<=A_star and B14>=kappa_star I. Full finite-data formula E*B14^-1 E = kappa^-1 D - kappa^-2 F*K^-1 F + 2/alpha z z*, retaining 14-to-890 residual couplings and correct positive pole correction. Replaces scalar SM18 error upper with no weaker original attached supported inverse upper. Original 890-column D,F,t,H_Y and PSD gate not computed; W-ODD-NEG OPEN.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/159",
       "repo_path": "notes/RPB108_SM19_ORIGINAL_WOODBURY_RESIDUAL_20261017.md",
-      "verification": "Analytic original reference transfer and exact rational model stored; GitHub focused and governance CI pending. Does not mechanically verify 890-source original action, independently peer-review the proof or formalize in Lean."
+      "verification": "Merged PR #159 at 35e8ef7bd5a2245773049532fa76b661948fa3f8; final-head 16/16 Actions passed. Only the rational prototype was executed; 890-column inverse remains open."
+    },
+    "SM20": {
+      "kind": "original supported first negative-Taylor source graph-tail and forward residual column",
+      "scope": "Original seven-prime a^2 high-frequency tail, first actual SM10 source trial Y0=lambda u0, residual D00, all 14 physical SI29 cross-Grams and true odd pole t0. No other 889 columns nor whole inverse are checked.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/161",
+      "repo_path": "notes/RPB108_SM20_ORIGINAL_FIRST_SOURCE_FORWARD_20261017.md",
+      "verification": "Focused final-head original-source rational replay and governance CI not yet confirmed; no independent review. Whole odd positivity OPEN."
     }
   },
   "obligations": [
@@ -280,10 +287,11 @@
         "SM16",
         "SM17",
         "SM18",
-        "SM19"
+        "SM19",
+        "SM20"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM19 improves the SM18 full-890 original supported inverse upper by a certified pole-conditioned original SI29 14-feature minorant B14=C14-2ss*, giving explicit residual finite-data E*B14^-1E via 890x890 D=E*E, 14x890 F=G*E, 890-vector t=E*s, fixed 14x14 signed Woodbury K and alpha. Acceptance: (999/1000) C^-1 - H_Y - E*B14^-1 E >=0 with certified PSD bounds on ALL original columns/mixed terms and infinite high-frequency a^2 residual. ACTUAL ORIGINAL RESIDUAL COLUMN ENCLOSURES NOT YET COMPUTED. Next construct a first true physically supported source forward-action column and rigorously bound D,F,t; prioritize real data, not additional generic inverses. W-ODD-NEG OPEN."
+      "next_action": "SM20 establishes a method for the first actual original supported source forward residual and explicit SI29 cross-Gram enclosures. Next: certify its final-head Actions, audit usefulness of the very small scalar Ritz gain, and develop strong localized original supported action estimates for remaining 889 sources and all cross terms. Full SM19 890x890 PSD, W-ODD-NEG, RH OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -575,6 +583,17 @@
         "scripts/validate_rpb108_sm19_original_woodbury_residual.py"
       ],
       "interpretation": "Exact Fraction two-dimensional source/pole Woodbury finite-data identity and comparison to scalar SM18; original 14-source and 890-residual entries not constructed; no whole odd positivity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM20-original-first-source-forward",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm20_original_source_forward.py"
+      ],
+      "interpretation": "First actual original source a^2 tail, D00, 14 source intervals and pole t0; not full 890-source inverse.",
       "cadence": "on-demand"
     }
   ]
