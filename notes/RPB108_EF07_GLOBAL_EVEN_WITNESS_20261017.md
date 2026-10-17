@@ -2,7 +2,7 @@
 
 **Obligation:** W-EVEN-FORM, explicitly scoped; canonical W-ODD-NEG remains active.
 **Parent:** EF06 merged [PR #149](https://github.com/monocap-tech/weil-lab/pull/149) at e5e61ffadf43992fbbde5520e09871d64308bdc2.
-**Standing:** full-global original supported Rayleigh interval pilot. The sign of the separation is to be determined by **final-head exact-rational verification**, not assumed. There is no entire even-form, full Weil, global-bridge or RH proof.
+**Standing:** full-global original supported Rayleigh interval pilot, **INCONCLUSIVE**, as certified by first exact-rational focused Actions run 39039665346 (SUCCESS). Final reconciled head replay and governance still required. No entire even-form, whole Weil, global bridge or RH proof.
 
 ## What EF06 did and did not establish
 
@@ -76,3 +76,27 @@ The validator prints the explicit result and enforces all input coverage, correc
 **Next EF08:** act on the actual EF07 classification: tighten the offending signed band(s) if no-go, sharpen the separation estimates if inconclusive, or construct a small genuine supported two-or-more-vector coupled feasibility test if the single-vector check passes. In every case W-EVEN-FORM, original full Weil form, the global bridge, Lean attachment and RH remain OPEN.
 
 **Replay:** python3 scripts/validate_rpb108_ef07_global_even_witness.py. The exact rational arithmetic does not replace independent mathematical review of the inherited explicit formula/operator model.
+
+
+## Exact certified first-head output and next precise discriminator
+
+The source-head exact-rational validator completed SUCCESS in [Actions run 39039665346](https://github.com/monocap-tech/weil-lab/actions/runs/39039665346). Outward-rounded weaker decimal displays of its exact rational values:
+
+| Actual physically supported quadratic | Certified interval |
+|---|---|
+| Old global SI10 cap | \( (4.4830788631,\ 6.2674922325) \) |
+| New EF06 global signed cap | \( (0.8023309563,\ 1.0198894827) \) |
+| New cap on [0,1] | \( (0.7346753311,\ 0.8250031001) \) |
+| New cap on [1,4] | \( (0.0676556251,\ 0.1766616950) \) |
+| New cap beyond 4 | \( [0,\ 0.0182246877) \) |
+| Original positive even pole | \( (0.3159515033,\ 0.3159520001) \) |
+| Actual original positive \(A_e\) (all frequencies) | \( (0.4629763897,\ 2.6394610669) \) |
+| New cap minus \(A_e\) | \( (-1.8371301105,\ 0.5569130930) \) |
+
+**Classification: INCONCLUSIVE.** The intervals overlap. The new cap is not shown to dominate the actual positive operator, and the actual positive operator is not shown to dominate the new cap. This uncertainty is about the **same real quadratic function**, not a basis or missing mixed term.
+
+A diagnostic bound is that a stronger original positive upper below the refined-cap lower \(0.8023309563\) would certify a further **upper-cap method obstruction**, whereas a sharper original positive lower above the refined-cap upper \(1.0198894827\) would certify **single-vector cap feasibility**. Neither is currently established by the above exact bounds. Independently, tightening both intervals could establish either ordering.
+
+**Next EF08:** sharpen the actual signed positive-energy bound (especially the loose analytic Fourier tail \(\le35/32\) and coarse integer-cell archimedean upper) on this same physical even cosine; compare against EF07's strict global cap bounds. It is not justified to launch the 890-source inverse without resolving this feasibility interval or proving an alternate direct original operator route.
+
+This classification is a result of exact rational source arithmetic and inherited analytic inequalities; independent review of the original multiplier identity remains necessary.
