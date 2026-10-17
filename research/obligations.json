@@ -197,6 +197,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/152",
       "repo_path": "notes/RPB108_EF07_GLOBAL_EVEN_WITNESS_20261017.md",
       "verification": "Focused exact-rational source-head CI Actions 39039665346 SUCCESS, first-head source blob unchanged after annotation. Final reconciled PR head EF07/inherited and obligation-governance CI replay pending. Not independent proof audit or Lean original-form formalization."
+    },
+    "SM16": {
+      "kind": "exact-rational all-original signed physically supported odd 2-by-2 strict positivity with all Fourier and pole cross terms",
+      "scope": "Entire original odd signed quadratic is strictly positive on the full 2D physical span{g_14.42,g_17.00}: 27 disjoint original sign-positive real bands; all 973 negative-frequency leaves (141 local, 832 distant) including 29 wholly negative integrated second-order signed masses; all true physical mixed Fourier terms, complete infinite sign-protected exterior, exact paid odd pole. Signed M11>0.0497582664, M22>0.6016538939, M12 in [-0.0424129132,+0.0335755293], exact rational determinant lower >0.02813839958. This is NOT full odd original positivity, 890-source Schur, even form or RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/154",
+      "repo_path": "notes/RPB108_SM16_COUPLED_ORIGINAL_ODD_2X2_20261017.md",
+      "verification": "Exact source-head two-dimensional rational Actions 39042858319 PASSED, on 52963096fa3a8237038a166c345a4cec0cf7fc1b; source-head structural 39042253978 PASSED. Full final-head governance and independent mathematical review separate."
     }
   },
   "obligations": [
@@ -248,10 +255,11 @@
         "SM12",
         "SM13",
         "SM14",
-        "SM15"
+        "SM15",
+        "SM16"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM15 has a strict +0.0478799612537206 certified original signed odd Rayleigh margin on ONE true supported g_14.42, after the ENTIRE actual original Kneg,o quadratic upper 0.619740895 and odd pole upper 0.000156958 are paid against original A_o lower 0.667777814. It requires second-order INTEGRATED signed multiplier bounds on 17 fully negative leaves and full 973-leaf + high-frequency exterior coverage. NEXT generalize this cancellation to a genuinely coupled physical finite odd subspace, handling mixed quadratic/polarization, all 890 SM10 negative Taylor source columns, exact odd pole, and full infinite residual; pursue native RC bridge only with proved original physical transport. Neither this one-dimensional positivity nor EF06 closes W-ODD-NEG, whole Weil or RH."
+      "next_action": "SM16 certified strict SPD ORIGINAL complete signed odd form on genuinely coupled physical 2D span{g_14.42,g_17}, with original entire Kneg 973-leaf Fourier mixed interval and exact odd pole paid: M11>0.0497582664, M22>0.6016538939, |M12|<0.042412914, determinant lower >0.02813839958. NEXT extend via 3+ independent physically supported odd frequency directions with a rigorously certified full mixed Gram/Schur (using 27+ disjoint original sign-positive sources and second-order negative integrated continuum), while preserving all tails and coupling. Do not promote a 2D subspace to 890-source whole-odd BS, whole Weil, global bridge or RH. W-ODD-NEG OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -499,6 +507,17 @@
         "scripts/validate_rpb108_sm15_global_negative_witness.py"
       ],
       "interpretation": "Exact signed original complete-negative-frequency physical Rayleigh upper, original odd pole and strictly positive signed witness at 14.42; ONLY one odd direction, no full BS/Schur.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM16-original-full-coupled-odd-2x2",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm16_coupled_original_odd_2x2.py"
+      ],
+      "interpretation": "Certifies strict 2x2 physical original complete signed odd positivity including all 973 negative Fourier leaves, mixed terms and original pole; only this 2D subspace, not full W-ODD-NEG.",
       "cadence": "on-demand"
     }
   ]
