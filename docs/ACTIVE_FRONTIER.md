@@ -33,6 +33,4 @@ The exact remaining odd-sector test is
 
 where `R_o` is the **original** negative-frequency analysis operator on the physical odd carrier. The Schur formula is an equivalence, **not** a proof that this inequality holds. The missing result includes the entire negative-frequency family, all cross couplings and the infinite residual.
 
-**Next progress event:** SM16 certifies strictly positive definite original signed odd 2×2 physical matrix on the genuine span{g_14.42,g_17.00}, with determinant margin >0.02813839958 and all Fourier cross/odd-pole terms included. Extend to 3+ independent physical directions with certified signed offdiagonal continuum/Schur, then eventually to SM10's whole 890-column original negative cap and infinite remainder. Full W-ODD-NEG, even/whole Weil, RH OPEN.
-
-For current code HEAD, use the live Git branch. For current research priority, use `active_obligation`. For exact acceptance, see its `acceptance` field. This file should be reconciled whenever the active obligation is changed.
+**Next progress event:** Certify the true full 890-column pole-conditioned supported inverse cap eigenvalue mu from SM17, retaining every original cross term and SM10's infinite residual. The conditional sufficient test mu <= 999/1000 has been checked arithmetically, but mu itself is unknown. Full W-ODD-NEG remains OPEN.
