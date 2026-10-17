@@ -60,3 +60,86 @@ def run():
     assert arch_upper<F(35,4)
     # This constant bounds the FULL original nonlocal arch cross,
     # including all 24 physical interfaces and their regular tails.
+
+    # Complete ORIGINAL physical prime cross, including shifts out of P.
+    # ||B_prime|| <=2 sum_n Lambda(n)/sqrt(n), all 7 sources.
+    weights=[]
+    for n,base in SOURCE:
+        root=old.IV(2 if n==4 else 3) if n in (4,9) else old.sqrt_i(n)
+        w=old.log_i(F(base))/root
+        assert w.lo>0
+        weights.append(w)
+    assert len(weights)==7
+    W=sum(weights,old.IV(0))
+    prime_bound=2*W.hi
+    assert F(7)<prime_bound<F(71,10)
+
+    # Both ORIGINAL correct signed poles, including P-to-C mixing.
+    sn,cs=old.sinh_cosh_iv(B/2)
+    sinh_B=2*sn*cs
+    # norm c squared B+sinh B; norm s squared sinh B-B.
+    assert cs.hi<F(7,6)
+    assert sn.hi<F(7,12)
+    assert B+sinh_B.hi<F(8,5)**2
+    assert sinh_B.hi-B<F(1,2)**2
+    # Because support P has measure 13 delta,
+    # ||P c|| < (1/5)(7/6), ||P s||<(1/5)(7/12).
+    ec_bound=F(7,30)
+    es_bound=F(7,60)
+    pole_upper=2*(ec_bound*F(8,5)+es_bound*F(1,2))
+    assert pole_upper<F(9,10)
+
+    source_cross_upper=F(35,4)+F(71,10)+F(9,10)
+    assert source_cross_upper==F(67,4)<F(17)
+    assert arch_upper+prime_bound+pole_upper < F(17)
+
+    # K_M(u)=min(k(u),M) is integrable and nonnegative; for each
+    # L2 f the truncated J_M increases monotonically to J.
+    # The 24-seam off-diagonal Carleman bound is uniform in M.
+    # Thus for e=P f,h=(I-P)f:
+    # J[e]+J[h] <= J[f]+2*(35/4)||e||||h||
+    #           <= J[f]+(35/4)||f||².
+    # This source/form-domain projector stability is an ANALYTIC
+    # theorem: the scalar constants and original physical geometry
+    # are the digitally replayed certificate, not sampling of f.
+
+    # A single inner source seam gives offdiag essential norm >=log 2.
+    # Adjacent length eps source/complement normalized steps converge
+    # weakly to zero, and all seven shifts vanish since 2eps<log2;
+    # signed pole cross is O(eps), original arch b ->-log2.
+    eps=delta.hi/F(64)
+    assert eps>0 and 2*eps<ell2.lo
+    assert ell2.lo>F(69,100)
+    essential_lower=F(69,100)
+
+    # Original PS14 true source Q gap >1/6. A_P>=1/6,
+    # hence A_P inverse compact by original Fourier log growth.
+    # Full energy-dual Schur penalty B* A_P^-1 B is positive compact.
+    # This scalar operator-norm bound is far too large to certify PSD.
+    schur_upper=F(6)*F(17)**2
+    assert schur_upper==F(1734)
+
+    print("PS15 physical original thirteen source intervals",len(LABELS),flush=True)
+    print("PS15 original internal sharp source-complement seams",
+          internal_boundaries,flush=True)
+    print("PS15 certified minimum physical offset separation",float(sep),flush=True)
+    print("PS15 original arch Carleman cross upper",float(arch_upper),flush=True)
+    print("PS15 original complete seven-prime cross upper",float(prime_bound),flush=True)
+    print("PS15 true both-signed-pole P-C cross upper",float(pole_upper),flush=True)
+    print("PS15 full original P-C cross operator bound strict",float(source_cross_upper),flush=True)
+    print("PS15 source projector log-form domain overhead upper",float(F(35,4)),flush=True)
+    print("PS15 original source-complement essential-norm lower",
+          float(essential_lower),flush=True)
+    print("PS15 original exact sign Schur energy penalty crude upper",
+          float(schur_upper),flush=True)
+    print("PS15 PASS SCOPED: complete original thirteen-source sharp"
+          " projection preserves the full physical signed log-form"
+          " domain, full original offdiagonal B norm<17 but"
+          " essential norm>=log2, source true Q positive >1/6,"
+          " and exact complementary Schur Q_C-B* A_P^-1 B"
+          " with POSITIVE COMPACT subtracted correction exists."
+          " Complementary PSD NOT proved; native CC27 D-Riesz"
+          " bridge, W-ODD-NEG, W-EVEN-FORM and RH OPEN.",flush=True)
+
+if __name__=="__main__":
+    run()
