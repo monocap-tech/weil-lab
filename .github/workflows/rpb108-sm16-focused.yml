@@ -1,0 +1,21 @@
+name: RPB108 SM16 coupled original physical odd 2x2
+on:
+  pull_request:
+    branches: [research/rpb108-route-consolidation]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  two-dimensional-signed-original-odd:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_sm16_coupled_original_odd_2x2.py
+          python scripts/validate_rpb108_sm16_coupled_original_odd_2x2.py
