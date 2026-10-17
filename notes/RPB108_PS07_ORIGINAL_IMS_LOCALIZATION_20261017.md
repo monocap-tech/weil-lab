@@ -19,7 +19,7 @@ Then
 \]
 Both are globally Lipschitz and bounded between 0 and 1. Their Lipschitz bound is \(A=\pi/\delta<2048\). PS06's original-form energy multiplier argument extends to them. On the original physical logarithmic spectral form domain \(\mathcal D\), for \(G[f]=Q[f]+20\|f\|_2^2\),
 \[
-\boxed{G[\alpha f]<11G[f],\qquad G[\beta f]<11G[f]\quad(f\ne0).}
+\boxed{G[\alpha f]<31G[f],\qquad G[\beta f]<31G[f]\quad(f\ne0).}
 \]
 Here \(Q\) is **unchanged**:
 \[
@@ -62,7 +62,7 @@ R[f]={}&
 \]
 This identity follows by expanding each **zero-extended actual original** difference energy and signed autocorrelation. The signs are not inferred from a positive auxiliary operator. \(\eta\) is nonnegative pointwise, but the integral involves \(f(x)\overline{f(y)}\), so **neither \(R\ge0\) nor \(R\le0\) is implied**.
 
-The scalar \(L^2\) cross term of the PS06 additive partition is absent here because this is a quadratic rather than linear partition.
+Unlike PS06's additive partition, this is a quadratic IMS embedding: in general \(f\neq\alpha f+\beta f\). The scalar \(L^2\) term cancels because \(\alpha^2+\beta^2=1\); no fictitious orthogonal or additive identity is used.
 
 ## 3. Rigorous bounded/compact decomposition
 
