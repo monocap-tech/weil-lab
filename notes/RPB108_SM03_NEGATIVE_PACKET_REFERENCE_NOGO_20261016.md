@@ -69,7 +69,7 @@ For every original SI29 positive frequency interval \(J_j=[c_j-\rho_j,c_j+\rho_j
 \[
 v_j=\sup_{\xi\in J_j}|\langle h_{c_-},h_\xi\rangle|+2Be.
 \]
-The validator rigorously encloses \(v_j\) by partitioning each positive window, evaluating SI18's **supported sine Gram** at rational midpoints and paying the global Lipschitz derivative \(2\pi_{\rm hi}B^2\) on each half cell. For a degree-zero true Jensen mean \(|\langle g_-,g_j\rangle|\le v_j\); for a degree-one normalized Legendre moment \(|\langle g_-,g_j\rangle|\le(3/2)v_j\). These are whole-band upper bounds, **not** a Gaussian heuristic or midpoint-only evaluation.
+The validator rigorously encloses \(v_j\) by partitioning each positive window into 16 exact subcells, evaluating SI18's **supported sine Gram** at rational midpoints and paying the global Lipschitz derivative \(2\pi_{\rm hi}B^2\) on each half cell. For a degree-zero true Jensen mean \(|\langle g_-,g_j\rangle|\le v_j\); for a degree-one normalized Legendre moment \(|\langle g_-,g_j\rangle|\le(3/2)v_j\). These are whole-band upper bounds, **not** a Gaussian heuristic or midpoint-only evaluation.
 
 Therefore
 \[
