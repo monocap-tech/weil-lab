@@ -106,6 +106,20 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/139",
       "repo_path": "notes/RPB108_SM09_ENTIRE_NEGATIVE_UPPER_CARRIER_20261016.md",
       "verification": "Original all-frequency exact rational focused run 39011941429 PASSED on source head adbbdc696897b420c624051b3d85735d09079d34; structural mechanism run 39011941375 PASSED. Final post-ledger head verification and independent peer review are separate; does not close W-ODD-NEG."
+    },
+    "SM08": {
+      "kind": "exact-rational original physically supported five-source coupled inverse plus both infinite Legendre tails",
+      "scope": "Original A_o absorbs odd pole, complete constant 7/5-weighted J=[3.645,3.705] continuum, and additional constant 3/5-weighted J1=[3.645,3.655] continuum simultaneously with all five source cross terms; derived residual L2 floor >1.682631e-7. This is only one nonuniform two-level lower suboperator of full variable negative multiplier; full W-ODD-NEG remains open.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/137",
+      "repo_path": "notes/RPB108_SM08_COUPLED_VARIABLE_NEGATIVE_20261016.md",
+      "verification": "Exact 16-panel final-head focused GitHub Actions 39011691075 PASSED at head 4127224443069734e759d9fc30ab483c3d540cca (five rational LDL pivots positive, 2 infinite tails <6.831736871e-6); structural 39011691068 PASSED; merged research PR #137 at 9e609c97bdce9b1f033b38f3ce2dcae9183c5146. Not independent review or Lean."
+    },
+    "SM10": {
+      "kind": "exact-rational full-original-negative explicit odd Taylor moment covariance, globally coupled residual",
+      "scope": "Replaces abstract SM09 physical P K_cap P by explicit original 107-cluster 890-column physically supported sine-Taylor synthesis U and 107 exact rational positive definite Hankel blocks C (4433 distinct moment entries), with K_neg,o <= (1+1/1024) U C U* + eta I, eta=3.014362544201399e-10. The actual 891-source original positive-vs-negative coupled Birman-Schwinger/Schur inequality is NOT proved.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/140",
+      "repo_path": "notes/RPB108_SM10_EXPLICIT_ODD_CAP_MOMENTS_20261017.md",
+      "verification": "Focused original all-frequency exact rational Actions 39012671893 PASSED on source head 4518c4a3de315060c0f0db76598369d24104fb69, verifying 107 moment matrices and 890 positive rational LDL pivots. Final ledger-head integration CI and independent review separate."
     }
   },
   "obligations": [
@@ -150,10 +164,12 @@
         "SM05",
         "SM06",
         "SM07",
-        "SM09"
+        "SM09",
+        "SM08",
+        "SM10"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM09: the entire original r=(kappa-m)_+ negative-frequency operator now has a certified global Loewner UPPER carrier on an at-most-890-dimensional odd physical Taylor space, plus a full infinite residual <3.014363e-10 at b=24, tau=1/1024. Next prove a true supported finite positive-vs-negative coupled Schur/BS inequality for (1+tau)P K_cap P jointly with original odd pole and the remaining (I-P) scalar tail, using all cross terms and original A_o; recover native RC transport if competitive. SM08 is an independent selected-variable-subband candidate, not a prerequisite. No full odd positivity or RH claim."
+      "next_action": "SM10/RC: the entire actual original odd negative-frequency upper operator has explicit 107 rational SPD moment blocks (4433 upper entries), 890 physical sine-Taylor source columns and full residual eta<3.014363e-10; SM08 separately certifies a nonuniform genuine negative subband with full coupling and floor>1.682631e-7. Now compute a true rigorously supported 891-source positive-vs-negative BS/Schur comparison for D=diag(2,(1+tau)C) against B_o=A_o-eta I, preserving all cross terms. Check if SM05 C16 positive reference is sufficient before scaling; compare native RC transport when not. W-ODD-NEG and full odd signed positivity remain OPEN."
     },
     {
       "id": "W-EVEN-FORM",

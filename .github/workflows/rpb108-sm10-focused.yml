@@ -1,0 +1,31 @@
+name: RPB108 SM10 explicit all-negative odd Taylor moment covariance
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_sm10_explicit_odd_cap_moments.py'
+      - 'notes/RPB108_SM10_EXPLICIT_ODD_CAP_MOMENTS_20261017.md'
+      - '.github/workflows/rpb108-sm10-focused.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sm10-exact-global-moments:
+    name: Exact 107 original signed-frequency moment blocks and full tail
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Certify entire original odd cap moments and global residual
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm10_explicit_odd_cap_moments.py
+          python scripts/validate_rpb108_sm10_explicit_odd_cap_moments.py
