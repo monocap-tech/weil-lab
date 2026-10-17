@@ -1,0 +1,36 @@
+name: RPB108 PS07 exact original signed IMS localization
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_ps07_ims_localization.py"
+      - "notes/RPB108_PS07_ORIGINAL_IMS_LOCALIZATION_20261017.md"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps07-ims-localization.yml"
+  workflow_dispatch:
+
+jobs:
+  ps07-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Recheck actual original edge and graph parents, then IMS bounds
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps07_ims_localization.py
+          python3 scripts/validate_rpb108_ps07_ims_localization.py
+      - name: Confirm scoped governance without proof promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          m=json.load(open("research/obligations.json"))
+          p=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert p["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert p["status"]=="open"
+          assert all(value is False for value in p["closures"].values())
+          PY
