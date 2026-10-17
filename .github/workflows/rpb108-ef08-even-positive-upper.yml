@@ -1,0 +1,32 @@
+name: RPB108 EF08 full signed original even positive upper
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_ef08_even_positive_upper.py'
+      - 'notes/RPB108_EF08_EVEN_POSITIVE_UPPER_20261017.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-ef08-even-positive-upper.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-even-positive-sharpening:
+    name: Signed 4096+3968 cells and true 128-infinity tail
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check original signed full-spectrum upper and cap comparison
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef08_even_positive_upper.py
+          python scripts/validate_rpb108_ef08_even_positive_upper.py
