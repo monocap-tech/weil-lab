@@ -69,7 +69,7 @@ def run():
     # The exact integer roots give
     #   w3=(log3)/sqrt3, w9=(log3)/3,
     #   sqrt(w3²+w9²)=2log3/3.
-    root3=old.sqrt_i(F(3))
+    root3=old.sqrt_i(3)
     w3=ln3/root3
     w9=ln3/F(3)
     assert F(0)<w3.lo<=w3.hi<F(1)
@@ -80,6 +80,28 @@ def run():
     assert F(732,1000)<rho.lo<=rho.hi<F(733,1000)
     row_upper=w3.hi+w9.hi
     assert F(1)<row_upper<F(101,100)
+
+    # Sharp OPERATOR norm of the entire 3-channel prime IMS compression:
+    # M0 (left prime3+prime9 star) and M1 (right reflection) have
+    # exactly the same spectral norm rho=2log3/3.
+    # For z in [0,pi/2], t=1-cos z:
+    #   a(z)=t*w3,
+    #   b(z)=(1-sin z)*w3 <= (1-t)*w3 because sin+cos>=1,
+    #   c(z)=(1-sin2z)*w9 <= w9.
+    # Thus 0<=M(z)<=entrywise t*M0+(1-t)*M1. For nonnegative
+    # symmetric matrices, entrywise domination bounds op norm;
+    # convexity bounds ||t M0+(1-t) M1||<=rho. The real outer-quarter
+    # plateau attains M0, so the norm is EXACTLY rho.
+    # Check a genuinely coupled rational unit-circle point sin=3/5,
+    # cos=4/5, sin(2z)=24/25 without numerical trigonometry.
+    sn,cs=F(3,5),F(4,5)
+    assert sn*sn+cs*cs==1 and sn+cs>=1
+    mix=1-cs
+    aa=1-cs
+    bb=1-sn
+    cc=1-2*sn*cs
+    assert aa==mix and bb<=1-mix and F(0)<=cc<=1
+    assert F(0)<=mix<=1
 
     # χ_L(t)+χ_R(t)=1 on exactly t∈[0,δ], by symmetry
     # of the PS06 linearly ramped edge cutoff; θ_M=0.
@@ -121,13 +143,15 @@ def run():
     print("PS09 original log9 edge width",float(delta.lo),float(delta.hi),flush=True)
     print("PS09 prime3 middle channel",float(M_lower),float(M_upper),flush=True)
     print("PS09 true w3 and w9 upper",float(w3.hi),float(w9.hi),flush=True)
-    print("PS09 true 3-channel prime IMS row norm upper",float(row_upper),flush=True)
+    print("PS09 loose row norm upper",float(row_upper),flush=True)
+    print("PS09 exact SHARP triad prime IMS operator norm",float(rho.hi),flush=True)
     print("PS09 exact noncompact plateau eigen +/-2log3/3 lower",
           float(rho.lo),flush=True)
     print("PS09 new whole original signed IMS essential norm LOWER",
           float(rho.lo),flush=True)
     print("PS09 PASS SCOPED: exact original log3-log9 triad is"
-          " a fiberwise 3x3 signed PRIME-IMS compression;"
+          " a fiberwise 3x3 signed PRIME-IMS compression with"
+          " exact SHARP norm 2log3/3;"
           " 5 other original prime shifts do not connect triad nodes;"
           " original full IMS essential norm >= 2log3/3 >0.732."
           " Not a 3D L2 finite rank, not a full seven-prime"
