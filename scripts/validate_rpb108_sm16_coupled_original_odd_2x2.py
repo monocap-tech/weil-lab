@@ -21,7 +21,7 @@ from validate_rpb108_sm10_explicit_odd_cap_moments import full_upper_leaves
 from validate_rpb108_sm14_continuum import C,R,S
 from validate_rpb108_sm15_global_negative_witness import (
  RN,PRIME_M2,sinc_amp_bound,sinc_deriv_bound,min_distance,
- witness_err,original_positive_lower,signed_negative_global_upper,pole_upper
+ witness_err
 )
 
 C2=F(17)
@@ -33,6 +33,16 @@ NEW=((1660,3),(1665,3),(1670,3),(1675,2),(1680,1),(1685,1),
 
 def abs_hi(iv):
     return max(abs(iv[0]),abs(iv[1]))
+
+GRID=10**24
+
+def floor_grid(x):
+    q=x.numerator*GRID
+    return F(q//x.denominator,GRID)
+
+def ceil_grid(x):
+    q=x.numerator*GRID
+    return F(-(-q//x.denominator),GRID)
 
 def product(a,b):
     v=(a[0]*b[0],a[0]*b[1],a[1]*b[0],a[1]*b[1])
@@ -81,13 +91,13 @@ def positive_2x2(bands):
         q=overlap(C2,d,RN,r)
         c11=gain*sqmin(p)
         c22=gain*sqmin(q)
-        a11+=c11
-        a22+=c22
+        a11=floor_grid(a11+c11)
+        a22=floor_grid(a22+c22)
         if k<13:from_first+=c11
         else:from_second+=c22
         pq=product(p,q)
-        alo+=gain*pq[0]
-        ahi+=gain*pq[1]
+        alo=floor_grid(alo+gain*pq[0])
+        ahi=ceil_grid(ahi+gain*pq[1])
     return (a11,a22,(alo,ahi)),from_first,from_second
 
 def overlap_leaf(c,left,right):
@@ -136,18 +146,18 @@ def original_negative_2x2():
         a=overlap_leaf(C,l,r)
         b=overlap_leaf(C2,l,r)
         factor=2*(r-l)
-        upper[0]+=factor*w*abs_hi(a)**2
-        upper[1]+=factor*w*abs_hi(b)**2
+        upper[0]=ceil_grid(upper[0]+factor*w*abs_hi(a)**2)
+        upper[1]=ceil_grid(upper[1]+factor*w*abs_hi(b)**2)
         xy=product(a,b)
         if xy[0]>=0:
-            mixed[0]+=factor*rmin*xy[0]
-            mixed[1]+=factor*w*xy[1]
+            mixed[0]=floor_grid(mixed[0]+factor*rmin*xy[0])
+            mixed[1]=ceil_grid(mixed[1]+factor*w*xy[1])
         elif xy[1]<=0:
-            mixed[0]+=factor*w*xy[0]
-            mixed[1]+=factor*rmin*xy[1]
+            mixed[0]=floor_grid(mixed[0]+factor*w*xy[0])
+            mixed[1]=ceil_grid(mixed[1]+factor*rmin*xy[1])
         else:
-            mixed[0]+=factor*w*xy[0]
-            mixed[1]+=factor*w*xy[1]
+            mixed[0]=floor_grid(mixed[0]+factor*w*xy[0])
+            mixed[1]=ceil_grid(mixed[1]+factor*w*xy[1])
     assert near+far==len(leaves)
     assert mixed[0]<=mixed[1]
     return upper,tuple(mixed),near,far,fully
@@ -170,12 +180,10 @@ def run():
            p12[1]-n12[0]+pole12)
     upper_cross=abs_hi(cross)
     det=d1*d2-upper_cross**2
-    # Compatibility regression: exact SM15's independent full witness
-    # must still be strictly positive (new 2x2 lower may be looser).
-    oldpos,_=original_positive_lower()
-    oldneg,*_=signed_negative_global_upper()
-    oldpole,_=pole_upper()
-    assert oldpos-oldneg-oldpole>F(47,1000)
+    # SM15's independent full one-direction certificate is already
+    # pinned in the merged source-head and governed CI; SM16 uses it
+    # analytically but does not redundantly run the costly 973-leaf
+    # integration twice in the same focused 2x2 job.
     print('SM16 actual original physical odd centers',tuple(map(str,CENTERS)),flush=True)
     print('SM16 original sign-positive disjoint source bands',len(bands),flush=True)
     print('SM16 original sign-positive minimum margin',float(min_sign),flush=True)
@@ -189,6 +197,7 @@ def run():
           'mixed abs UPPER',float(pole12),flush=True)
     print('SM16 complete original signed 2x2 diagonal LOWER',float(d1),float(d2),flush=True)
     print('SM16 complete original signed mixed interval',tuple(map(float,cross)),flush=True)
+    print('SM16 outward directed exact grid denominator',GRID,flush=True)
     print('SM16 certified 2x2 determinant LOWER',float(det),flush=True)
     if d1>0 and d2>0 and det>0:
         print('SM16 PASS (SCOPED FULL 2D ORIGINAL SIGNED ODD POSITIVITY): '
