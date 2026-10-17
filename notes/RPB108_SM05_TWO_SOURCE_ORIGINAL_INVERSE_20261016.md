@@ -2,7 +2,7 @@
 
 **Canonical obligation:** W-ODD-NEG (still OPEN).  
 **Parent:** SM04 integrated as PR #131, at research head 9f62862a254a497c74e76b08592fe14d0facd28a.  
-**Evidence status:** full original supported 16-feature, two-source exact-rational inverse certificate passed first GitHub Actions source replay `39001092441` at commit `268d49e149ea3218c1b17d609c649a7c17814c`; streamlined final-head source/obligation integration remains a separate gate. No full odd-frequency continuum, Stage I or RH claim.
+**Evidence status:** full original supported 16-feature, two-source exact-rational inverse certificate passed first GitHub Actions source replay `39001092441` at commit `268d49e149ea3218c1b17d609c649a7c17814c`; the final-head focused original-source replay (`39002124278`) and obligation-governance replay (`39002124129`) both passed. No full odd-frequency continuum, Stage I or RH claim.
 
 ## 1. Changing the kind of object certified
 
@@ -99,11 +99,11 @@ The rigorous rational Gershgorin weighted row ceilings are
 \frac{21}{125}\widehat U_{11}+\frac35|\widehat U_{01}|<0.897125<1.
 \]
 
-The maximum original positive-composite-Simpson remainder was below (6.418\cdot10^{-7}); the negative packet remainder was below (4.012\cdot10^{-8}). Final acceptance is conditioned on replaying the *same theorem* at the final PR head, with the signed-band optimization independently validated. In particular, these are genuine supported-inverse upper enclosures, **not** the numerical screen.
+The maximum original positive-composite-Simpson remainder was below (6.418\cdot10^{-7}); the negative packet remainder was below (4.012\cdot10^{-8}). That same theorem and its streamlined signed-band implementation passed on the final PR head in focused run `39002124278`; its associated obligation-governance check also passed. In particular, these are genuine supported-inverse upper enclosures, **not** the numerical screen.
 
 ## 5. What remains after a passing SM05
 
-This result, if certified, would show the **full original positive operator**, via a correctly supported lower reference, defeats the original odd pole and *at least one actual continuous negative-frequency Jensen packet in combination*, for every odd physical input. It would be a genuine joint-signed inequality, but the difference
+The accepted exact-rational replay certifies that the **full original positive operator**, via a correctly supported lower reference, defeats the original odd pole and *at least one actual continuous negative-frequency Jensen packet in combination*, for every odd physical input. It would be a genuine joint-signed inequality, but the difference
 \[
 K_{{\rm freq},o}-\frac{21}{125}|g_-\rangle\langle g_-|
 \succeq0

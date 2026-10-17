@@ -77,7 +77,7 @@
       "scope": "Proves A_o >= 2|s><s|+(21/125)|g_-><g_-| on the entire original physically supported odd carrier, with full pole/one genuine continuum packet coupling. The remaining K_freq,o - (21/125)|g_-><g_-| and full W-ODD-NEG remain OPEN.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/132",
       "repo_path": "notes/RPB108_SM05_TWO_SOURCE_ORIGINAL_INVERSE_20261016.md",
-      "verification": "First exhaustive source replay passed structural Actions run 39001092441 (source commit 268d49e149ea), with exact rational two-source row bounds <0.927606 and <0.897125. Streamlined original signed-band replay is pending final-head CI. Proof not independently peer reviewed or Lean formalized."
+      "verification": "The exhaustive original source Actions run 39001092441 and the focused final-head Actions run 39002124278 (head 46ab379a7145) both PASSED the exact rational two-source certificate. Final-head obligation-governance run 39002124129 PASSED. The independent full historical structural replay was still running at recovery; this does not claim independently peer-reviewed proof or Lean formalization."
     }
   },
   "obligations": [
