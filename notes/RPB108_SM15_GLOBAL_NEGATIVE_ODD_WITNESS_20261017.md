@@ -128,3 +128,18 @@ SM15 prints these three rigorous numbers and distinguishes a strict positive low
 **Reproduction:** \`python scripts/validate_rpb108_sm15_global_negative_witness.py\`.
 
 **Status:** candidate until focused final-head Actions run and ledger acceptance. The inherited original Weil/explicit-formula identification and the analytic-sign assumptions warrant independent mathematical audit; certified software replay is not a peer-reviewed RH proof.
+
+## Verified SM15 source-head conclusion (October 17, 2026)
+
+The exact rational acceptance replay [Actions 39019183798](https://github.com/monocap-tech/weil-lab/actions/runs/39019183798) **PASSED**, independently corroborated by [39019150228](https://github.com/monocap-tech/weil-lab/actions/runs/39019150228), with:
+
+| Rigorous original-supported quadratic estimate | Rational bound, displayed as decimal |
+| --- | ---: |
+| \( \langle g,A_o g\rangle\), lower | \(0.6677778141467603\) |
+| \( \langle g,K_{\rm neg,o}g\rangle\), upper | \(0.6197408947233872\) |
+| Odd pole \(2|\langle s,g\rangle|^2\), upper | \(0.0001569581696524\) |
+| **Original signed odd Rayleigh**, lower | **\(0.0478799612537206>0\)** |
+
+All 973 original uncertain positive-frequency leaves are retained or proven positive; the full exterior \(\xi\ge896\) is protected by SI10's original sign certificate. Exactly 122 local leaves use sharper all-real signed and physical Gram bounds, and 851 more distant leaves use globally safe analytic physical frequency-distance envelopes. On 17 local leaves the original multiplier is certified wholly below \(\kappa\), permitting the centered second-order **integrated** negative multiplier upper; the remaining leaves retain valid pointwise caps. This removes an unnecessary first-derivative overestimate and changes the signed Rayleigh lower margin from an inconclusive negative number to a strict positive number.
+
+**Proof scope: only this one true supported odd direction** \(g(x)=\sin(2\pi (721/50)x)\operatorname{sinc}(2\pi x/100)\), with original pole and complete negative-frequency contribution paid. The inequality on one direction does **not** establish the whole original odd signed operator's positivity, its 891-source inverse, whole Weil positivity, the global RH attachment, or RH. The focused final reconciled-head and governance suite are separate from the source replay. The inherited analytic original explicit-formula identification remains subject to independent mathematical verification.

@@ -168,7 +168,7 @@
       "scope": "On the genuine supported even carrier, f=cos(2π(19/25)x) has rigorous <f,Kcap,e f>>4.415423238009, while actual original positive <f,A_e f><2.639461066813, including true positive even pole, every original seven-prime low-frequency cell, and entire analytic high-frequency tail. Hence EF04's original 890-source conservative cap Schur sufficient inequality is FALSE. Actual K_true,e and Q_e can still be positive; no RH refutation.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/146",
       "repo_path": "notes/RPB108_EF05_EVEN_UPPER_CAP_OBSTRUCTION_20261017.md",
-      "verification": "Exact-rational focused original signed physical-even verifier SUCCESS Actions 39015954905, source head 8429f85210417bea51fd661057036a0465679182. Companion final-head governance and inherited CI replays required after this metadata update; mathematical standing conditional on inherited original multiplier and operator identification. Independent peer review/Lean formalization not complete."
+      "verification": "Merged PR #146 at d763297f9c98a72656222162fc60d6ad0445ff88. Exact-rational EF05 physical even cap-obstruction final-head focused workflow and seven inherited/governance workflows ALL SUCCESS on source head 6a396cae5cd5a9c36c30d151fe30bf8d1535a01c; independent peer review/Lean formalization separate."
     },
     "SM14": {
       "kind": "true original signed positive-frequency continuum lower response on SM13 physical odd witness",
@@ -176,6 +176,20 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/148",
       "repo_path": "notes/RPB108_SM14_ORIGINAL_POSITIVE_CONTINUUM_20261017.md",
       "verification": "Exact signed thirteen-window source Actions 39016451490 PASSED at source head 9e78e4cad1aacb9308de19e92558e914c16507c8, minimum m lower 1.109466, physical recovered positive >0.666674; final-head checks and independent review separate."
+    },
+    "EF06": {
+      "kind": "Candidate strictly sharper original signed even upper cap on [0,1] with unchanged all-frequency exterior and exact source moment covariance",
+      "scope": "Refine 64 original SI10 unresolved [0,1] leaves into 256 exact rational cells; cap_new=min(cap_old, rounded_up(κ−m_lower)_+), original arch lower at each rational leaf start and seven-prime signed whole-cell derivative. Preserve true Kneg,e<=Kcap,new,e<=Kcap,old,e globally. Test old-vs-new [0,1] physical EF05 cosine with exact Fourier bounds; original 107 clusters and 890 even sources remain. Does NOT establish global new cap<=original A_e or any finite Schur positivity.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/149",
+      "repo_path": "notes/RPB108_EF06_LOCAL_SIGNED_EVEN_CAP_20261017.md",
+      "verification": "Draft PR #149; exact rational focused EF06 and obligation-governance final-head CI pending. No full even positivity, independent peer review or Lean original-zeta attachment."
+    },
+    "SM15": {
+      "kind": "exact-rational entire original negative signed-frequency integral UPPER and original odd pole UPPER, strict positive Rayleigh witness",
+      "scope": "On the genuine original physically supported odd g_14.42, original A_o quadratic lower >0.6677778141467603, entire original Kneg,o quadratic upper <0.6197408947233872, original odd pole quadratic upper <0.0001569581696523687; original complete signed quadratic >0.0478799612537206. Whole negative positive-frequency cover 973 leaves in 107 clusters and full high-frequency exterior, with 122 sharpened local and 851 globally paid remote leaves, 17 strictly-negative leaves using exact rational SECOND-ORDER integrated multipliers. Strictly one Rayleigh direction; NOT full W-ODD-NEG, operator-wide positivity, or RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/150",
+      "repo_path": "notes/RPB108_SM15_GLOBAL_NEGATIVE_ODD_WITNESS_20261017.md",
+      "verification": "Exact full original frequency source-head Actions runs 39019183798 and 39019150228 PASSED at c34370543905fa4b4081e2741b2d06bb8175895f; structural 39019183738 PASSED. Final reconciled PR head and postmerge governance pending, independent expert review separate."
     }
   },
   "obligations": [
@@ -226,10 +240,11 @@
         "SM11",
         "SM12",
         "SM13",
-        "SM14"
+        "SM14",
+        "SM15"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM14: despite C33 method no-go SM13, the genuine full original A_o recovers >0.666674 extra positive continuum quadratic on that SAME physical odd g_14.42 from 13 disjoint original sign-positive windows; full A_o quadratic >0.667777. This proves missing POSITIVE response, NOT actual signed positivity on the witness: whole Kneg quadratic UPPER has not been certified. NEXT construct exact original full negative integral upper on that physical witness with entire signed multiplier, full reflected frequency tail and odd pole; if successful, lift to whole 890-source SM10 cap with all cross terms, or certify native RC transport. W-ODD-NEG and RH remain OPEN."
+      "next_action": "SM15 has a strict +0.0478799612537206 certified original signed odd Rayleigh margin on ONE true supported g_14.42, after the ENTIRE actual original Kneg,o quadratic upper 0.619740895 and odd pole upper 0.000156958 are paid against original A_o lower 0.667777814. It requires second-order INTEGRATED signed multiplier bounds on 17 fully negative leaves and full 973-leaf + high-frequency exterior coverage. NEXT generalize this cancellation to a genuinely coupled physical finite odd subspace, handling mixed quadratic/polarization, all 890 SM10 negative Taylor source columns, exact odd pole, and full infinite residual; pursue native RC bridge only with proved original physical transport. Neither this one-dimensional positivity nor EF06 closes W-ODD-NEG, whole Weil or RH."
     },
     {
       "id": "W-EVEN-FORM",
@@ -248,10 +263,11 @@
         "EF02",
         "EF03",
         "EF04",
-        "EF05"
+        "EF05",
+        "EF06"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF06: Replace the disproved EF04/EF05 conservative SI10 all-negative upper cap with a rigorously tighter original signed upper, paying low-frequency excess and global high-frequency tails; FIRST run the EF05 physical-even cosine witness against the new cap before investing in 890-source inverse. Alternatively prove an original native RC even-carrier transport and original positive-vs-negative finite Schur. W-EVEN-FORM stays OPEN; EF05 refutes ONLY the EF04 sufficient overestimate, not the true form."
+      "next_action": "EF07 (after EF06 final-head validation): compute rigorous FULL new signed upper-cap Rayleigh on EF05's same physical even cosine across ALL original unresolved leaves and compare to independently certified original positive-energy LOWER, before any new 890-source inverse/Schur attempt. If still overconservative, sharpen the responsible bands. W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -464,6 +480,17 @@
         "scripts/validate_rpb108_sm14_continuum.py"
       ],
       "interpretation": "Certifies full original positive-frequency mass >0.6666 on one true odd negative witness absent from C33; not a whole Kneg upper or original Weil positivity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM15-original-whole-negative-odd-witness",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm15_global_negative_witness.py"
+      ],
+      "interpretation": "Exact signed original complete-negative-frequency physical Rayleigh upper, original odd pole and strictly positive signed witness at 14.42; ONLY one odd direction, no full BS/Schur.",
       "cadence": "on-demand"
     }
   ]
