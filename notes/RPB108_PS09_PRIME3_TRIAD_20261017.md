@@ -61,15 +61,29 @@ c(z)=w_9(1-\sin2z).
 \]
 No other original prime powers contribute **within this 3-channel compression**; the original arch remainder and signed rank-one poles are retained separately, not discarded.
 
-Because \(0\le z\le\pi/2\) gives \(\sin z+\cos z\ge1\), and \(0\le1-\sin2z\le1\), each row sum of the **nonnegative symmetric** matrix \(M(z)\) is bounded by \(w_3+w_9\). Hence for every profile \(\mathbf f\),
+The fiber norm has an **exact sharp value**. Define the endpoint matrices
+\[
+M_0=\begin{pmatrix}0&w_3&w_9\\w_3&0&0\\w_9&0&0\end{pmatrix},
+\qquad
+M_1=\begin{pmatrix}0&0&w_9\\0&0&w_3\\w_9&w_3&0\end{pmatrix}.
+\]
+Their operator norms are both \(\rho=\sqrt{w_3^2+w_9^2}=2\log3/3\).
+For \(t=1-\cos z\in[0,1]\), the **nonnegative entries** of \(M(z)\) satisfy the entrywise matrix inequality
+\[
+0\le M(z)\le tM_0+(1-t)M_1.
+\]
+Indeed \(b(z)=w_3(1-\sin z)\le w_3\cos z=(1-t)w_3\) because \(\sin z+\cos z\ge1\); and \(c(z)=w_9(1-\sin2z)\le w_9\). For symmetric matrices with nonnegative entries, entrywise order bounds the spectral norm (apply the quadratic form to componentwise absolute values), and the operator norm is convex. Hence
 \[
 \boxed{
-|\langle \mathbf f,M\mathbf f\rangle|
-\le(w_3+w_9)\|\mathbf f\|_{L^2(T;\mathbb C^3)}^2,
-\qquad w_3+w_9<101/100.
+\|M(z)\|_{\rm op}\le\rho=\frac{2\log3}{3}
+\quad\text{for every }z\in[0,\pi/2].
 }
 \]
-This is a rigorous *operator bound on the true three-channel prime compression*, independent of any spatial Fourier discretization.
+Because \(M(z)=M_0\) on a positive-measure outer-quarter plateau, this bound is **attained**:
+\[
+\boxed{\|P_T\mathcal R_{\rm prime}P_T\|_{\rm op}=\frac{2\log3}{3}.}
+\]
+This is the exact sharp *operator norm on the three-channel original prime compression*, independent of any spatial Fourier discretization. It does not bound the uncompressed seven-prime source.
 
 ## 3. Exact analytically diagonalized plateau and essential-norm improvement
 
