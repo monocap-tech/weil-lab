@@ -61,10 +61,12 @@ def check_reference_disjointness():
     assert len(set(old))==len(old)
     all_bands=sorted(old+new)
     assert len(all_bands)==33
-    assert all(all_bands[j][1]<all_bands[j+1][0]
+    assert all(all_bands[j][1]<=all_bands[j+1][0]
                for j in range(len(all_bands)-1)),(
                    "New positive source overlaps another original C16 interval",
                    all_bands)
+    # SI29's inherited adjacent intervals can share endpoints (null measure).
+    # Pairwise disjoint interiors suffice for Fourier support uniqueness.
     # Since true sinc-sine means are real entire functions of x with
     # disjoint compact frequency supports (including reflections), all
     # 33 physical features are linearly independent on any open x interval
