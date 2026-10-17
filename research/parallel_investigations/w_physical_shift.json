@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS08 analytic quantitative original seven-prime graph-conjugated IMS Galerkin residual <3/4 at explicit impossible-to-compute rank 2^8206, exact rational source/method limit replay pending final-head CI and independent mathematical review; actual 890-source Schur, full domain transfer, W-ODD-NEG, W-EVEN-FORM and RH remain OPEN.",
+  "proof_standing": "PS09 exact log3-log9 triad fiberwise original prime IMS compression and sharper full IMS physical essential norm >=2log3/3, source-rational CI and external review pending; no practical finite-rank Schur, no CC27 bridge, W-ODD-NEG, W-EVEN-FORM, original Weil or RH closure.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS09: devise energy-adapted low-rank physical basis that beats naive 2^8206 cellwise Galerkin, compute true original signed projected IMS/source matrix and certify inverse-energy residual with realistic rank",
-    "PS10: certify a positive complementary Schur gap under the full original physical form and establish CC27 D-Riesz norm/domain transfer before promoting any RH or whole Weil standing"
+    "PS10: construct the full overlap-aware physical seven-prime channel adjacency graph with shifted edge intervals, capturing interactions outside the exact n3/n9 triad",
+    "PS11: combine prime channel-graph geometry with native energy inverse, compact arch/pole and mathematically accepted residuals to seek a computationally feasible certified full original signed Schur PSD"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -95,6 +95,14 @@
       "note": "notes/RPB108_PS08_QUANTITATIVE_GALERKIN_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps08_quantitative_galerkin.py",
       "limitation": "No actual matrix entries or spectral inertia, inverse-energy solve, accepted Schur PSD, native CC27 D-Riesz bridge, or RH. Existing scalar logarithmic Fourier tail method is noncompetitive."
+    },
+    {
+      "id": "PS09",
+      "scope": "exact log9=2log3 physical three-channel original signed prime IMS fiber compression, explicit 3x3 matrix with plateau eigenvalues ±2log3/3, full IMS essential-norm lower >0.732; other five prime shifts excluded only within compressed triad",
+      "status": "exact analytic source/geometry structural result; focused Actions and independent review pending; not full prime graph or finite-rank L2 approximation",
+      "note": "notes/RPB108_PS09_PRIME3_TRIAD_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps09_prime3_triad.py",
+      "limitation": "Three channels are infinite-dimensional L2 fibers, global cross-triad couplings remain, arch and poles compact but nonzero, signed full Schur PSD and CC27 transfer open"
     }
   ]
 }
