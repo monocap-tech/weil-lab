@@ -81,7 +81,7 @@ def signed_negative_global_upper():
         # Local arch lower at l (not unit j) plus prime exact phase
         # produces a potentially sharper independent upper for r.
         dist=min_distance(l,r,C)
-        if dist<=F(20):
+        if dist<=F(6):
             local+=1
             mid=(l+r)/2
             lower=arch_lower(l)+prime_interval(mid)[0]-F(69,2)*(r-l)
