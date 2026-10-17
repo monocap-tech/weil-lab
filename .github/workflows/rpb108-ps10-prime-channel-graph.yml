@@ -1,0 +1,37 @@
+name: RPB108 PS10 complete original seven-prime IMS channel graph
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_ps10_full_prime_graph.py"
+      - "notes/RPB108_PS10_FULL_PRIME_CHANNEL_GRAPH_20261017.md"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps10-prime-channel-graph.yml"
+  workflow_dispatch:
+
+jobs:
+  ps10-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Replay true original source chain and certify full prime graph
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps10_full_prime_graph.py
+          python3 scripts/validate_rpb108_ps10_full_prime_graph.py
+      - name: Canonical W-ODD-NEG and no RH promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          m=json.load(open("research/obligations.json"))
+          p=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert p["id"]=="W-PHYSICAL-SHIFT"
+          assert p["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert p["status"]=="open"
+          assert all(v is False for v in p["closures"].values())
+          PY
