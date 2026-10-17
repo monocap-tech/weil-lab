@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS10 analytic exact complete original seven-prime IMS physical channel graph and sharp norm/essential norm, rigorous source-rational verification pending focused final-head Actions and independent review. Arch/pole energy inverse, CC27 domain attachment, full signed Schur, W-ODD-NEG, W-EVEN-FORM, original Weil positivity and RH remain OPEN.",
+  "proof_standing": "PS11 analytic source-exact sign-aware original H inverse preconditioner with 65/97-term rational norm errors, demonstrated sharp-channel leakage and exact five-mode inverse-Gram spectral reduction; significant genuine pole IMS localization gain; pending focused final-head Actions and independent mathematical review; no arch PSD, practical inverse Gram matrix, whole Weil positivity, W-ODD-NEG/W-EVEN-FORM or RH closure.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS11: quantify original energy-inverse compression of exactly identified five-mode prime IMS fiber, including spectral leakage outside 13 source channels; carry compact arch and both signed pole remainders with certified residuals",
-    "PS12: only promote an independently checked complete original signed Schur PSD margin on accepted CC27 D-Riesz norm/domain transfer, not just prime IMS graph closure"
+    "PS12: bound the TRUE signed archimedean IMS localization remainder in the original H energy norm, exploiting tiny physical edge supports and smooth mask cancellation; compare against prime+pole energy bound <0.303",
+    "PS13: compute rigorous usable five-channel inverse Gram operator with native arch D^{-1/2} solver and accepted finite signed Schur spectral gap, including leakage and CC27 D-Riesz domain transfer"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -111,6 +111,14 @@
       "note": "notes/RPB108_PS10_FULL_PRIME_CHANNEL_GRAPH_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps10_full_prime_graph.py",
       "limitation": "This is full PRIME-IMS defect only; arch kernel and pole terms, true graph inverse H^{-1/2}, original full Weil positivity, CC27 D-Riesz transfer and completed Schur remain OPEN."
+    },
+    {
+      "id": "PS11",
+      "scope": "original signed H=J+20+V has sign-respecting H>J+7 and full source relative preconditioner norm <13/20; 65/97-term true inverse Neumann norm tails; prove nonzero leakage of 13-channel sharp physical support; exact isospectral five-mode inverse Gram sandwich; source-support IMS two-pole norm <549/800",
+      "status": "analytic native physical original-operator statement and outward exact-rational constants; final-head Actions and independent review pending",
+      "note": "notes/RPB108_PS11_ENERGY_INVERSE_CHANNEL_RESPONSE_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps11_energy_inverse_channel_response.py",
+      "limitation": "No actual D^{-1/2} or five-channel Gram kernel evaluation, no finite-rank matrix or arch energy correction PSD, no CC27 D-Riesz transfer, no RH."
     }
   ]
 }
