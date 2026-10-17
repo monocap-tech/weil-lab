@@ -1,0 +1,32 @@
+name: RPB108 EF04 exact original even negative moment cap
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_ef04_explicit_even_cap_moments.py'
+      - 'notes/RPB108_EF04_EXPLICIT_EVEN_CAP_MOMENTS_20261017.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-ef04-even-moments.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-ef04-even-moments:
+    name: All original signed even moments and physical cross-tail
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate explicit original signed even covariance and global tail
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef04_explicit_even_cap_moments.py
+          python scripts/validate_rpb108_ef04_explicit_even_cap_moments.py

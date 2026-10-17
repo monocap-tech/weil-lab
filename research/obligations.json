@@ -126,14 +126,21 @@
       "scope": "On the physical even carrier, λ15(K_freq,e)>0.015252638>kappa; any kappa I plus <=14 positive directions, including the actual even pole, cannot dominate entire negative-frequency operator. No negative witness against Q_e or full even positivity.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/141",
       "repo_path": "notes/RPB108_EF02_EVEN_NEGATIVE_SPECTRAL_RANK_20261016.md",
-      "verification": "Same exact source blobs as successful EF02-focused Actions 39011589598, EF01 39011589607 and governance 39011589579 from former conflicting draft PR #138; being reconciled in PR #141 and requiring final-head CI. Not independently peer reviewed or Lean formalized."
+      "verification": "EF02 complete even signed-negative 15-packet exact rational focused Actions 39013189917 SUCCESS, retained within merged PR #141 at 63473e43739a; not independent peer review or Lean formalization."
     },
     "EF03": {
       "kind": "Analytic original supported even whole-negative-frequency Loewner UPPER carrier and exact-rational parity rank/global Young-tail gate",
       "scope": "True complete K_neg,e <= (1+tau)P K_cap,e P+delta(I-P), on physical even carrier; b=24 dim<=890, tau=1/65536, delta<1.93e-8 and delta/kappa<1.93e-5. A sufficient finite true-supported inverse cap eigenvalue threshold 0.99996 is NOT certified.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/141",
       "repo_path": "notes/RPB108_EF03_EVEN_FULL_UPPER_CARRIER_20261016.md",
-      "verification": "Draft PR; focused original signed rational cap/EF02 replay and governance final-head checks pending. Exact Loewner reduction is not the missing full finite inverse positivity, RH or independent peer review."
+      "verification": "EF03 original full signed even cap source-focused Actions 39013190045 SUCCESS, EF01/EF02 and governance final-head workflows SUCCESS; merged PR #141 at 63473e43739a. Full finite 890-source original inverse still OPEN; no independent peer review."
+    },
+    "EF04": {
+      "kind": "Original even full signed-negative cap source factorization: 107 exact rational SPD Hankel frequency moment blocks and 890 physical even Taylor sources",
+      "scope": "K_neg,e <= (1+1/65536) U C U* + eta I on full physically supported EVEN carrier, with eta<1.93e-8, C exact rational 107-block SPD covariance. Finite 890x890 original inverse Loewner D^-1-U*(A_e-eta I)^-1 U >= 0 identified but NOT established; positive even pole remains inside A_e.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/143",
+      "repo_path": "notes/RPB108_EF04_EXPLICIT_EVEN_CAP_MOMENTS_20261017.md",
+      "verification": "Draft PR #143; focused exact rational original signed full cover/moments and governance final-head CI pending. Neither supported finite inverse nor complete original even form is proved; not independently peer reviewed or Lean formalized."
     }
   },
   "obligations": [
@@ -200,10 +207,11 @@
         "SI10",
         "EF01",
         "EF02",
-        "EF03"
+        "EF03",
+        "EF04"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF04: actually certify the full finite cap matrix M_cap,e and actual supported positive inverse G_e (with all cross entries and positive even pole), prove (1+1/65536)λmax(M_cap^(1/2) G_e M_cap^(1/2))+δ_24/κ<=1, or exhibit a rigorous cap/reference obstruction and pivot to a sharper cap/native RC carrier. The EF03 δ bound alone does not close W-EVEN-FORM."
+      "next_action": "EF05: compute an ACTUAL original physically supported even positive-inverse upper response on the 890 true cosine Taylor sources, with all intercluster crosses and the positive even pole, or prove a necessary-method obstruction for EF04's deliberately conservative cap. Test D^-1-U*(A_e-eta I)^-1 U>=0 with exact outward interval rational residual and correct sign; do not treat EF04 covariance SPD or small eta as evidence of full-even positivity."
     },
     {
       "id": "W-WHOLE-FORM",
