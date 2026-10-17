@@ -163,3 +163,81 @@ This is true for arbitrarily enormous \(M\), with all seven physical prime autoc
 Run \`python3 scripts/validate_rpb108_ps18_spectral_rank_obstruction.py\`. It replays PS17→PS16→PS15→...→RC315 source; verifies the original complement window and kernel inequalities, *symbolic* enormous min–max lower and Bessel upper rank statements, exact signed high-response necessary *method thresholds*, PS13 local unshifted positivity witness, and W-ODD-NEG/no-RH-promotion custody. The analytic min–max proof is not machine-formalized just by successful rational CI.
 
 **Status:** PS18 closes the **feasibility diagnosis of the PS17 spectral-cutoff approach**, not the actual finite low signed Schur PSD. Original full complementary Schur positivity, canonical odd/even obligations, CC27 D-Riesz and RH remain OPEN.
+
+## 8. New positive sign result: an entire prime-quiet complementary Schur window
+
+The rank diagnosis above also suggests a *positive* use for PS13's local coercivity: choose a window where **none of the seven original prime shifts reaches the thirteen-source carrier**, then bound the true signed source-response subtraction quantitatively rather than merely bounding the original \(Q\).
+
+The exact source-rational witness is
+\[
+J_{\rm quiet}=\left[\frac{269}{5000},\,\frac{1163}{10000}\right]
+=[0.0538,0.1163],\qquad |J_{\rm quiet}|=\frac1{16}.
+\]
+It lies entirely in the original PS15 complement \(C\), strictly between source intervals \(I_3\) and \(I_4\). For **every** one of the 13 exact source interval labels \(r\) and **all seven** \(n\in\{2,3,4,5,7,8,9\}\), check the two translated sets \(J_{\rm quiet}\pm\log n\). Outward original-source log interval arithmetic verifies that **each is disjoint from \(I_r\)**, with minimum strict separation exceeding \(1/20000\). Therefore
+\[
+\boxed{B_{\rm prime,PC}h=0\qquad
+(\operatorname{supp}h\subset J_{\rm quiet}).}
+\]
+This is a complete original **source-to-complement prime cross statement**, not a claim that global original prime shifts are absent.
+
+The source/complement **archimedean** kernel remains \(-k(|x-y|)\). Define \(d_r=\operatorname{dist}(I_r,J_{\rm quiet})>0\). Because \(k(u)\) decreases and satisfies \(k(u)\le1/(2u)+1\), the **entire original arch** mixed operator restricted to this window has
+\[
+\begin{aligned}
+\|P B_{\rm arch}1_{J_{\rm quiet}}\|_{\rm HS}^2
+&=\sum_{r\in\mathscr O}\int_{I_r}\!\int_{J_{\rm quiet}}
+k(|x-y|)^2\,dy\,dx\\
+&\le\delta|J_{\rm quiet}|
+\sum_{r\in\mathscr O}\left(1+\frac1{2d_r}\right)^2
+<\left(\frac7{40}\right)^2.
+\end{aligned}
+\]
+Every source interval appears in the **exact rational** sum; no boundary or off-channel arch interaction is discarded.
+
+For the original correctly signed even/odd rank-one poles, \(|\operatorname{supp}P|=13\delta\), and the source-rational bounds
+\[
+\sqrt{13\delta}<\frac{19}{100},\quad
+\cosh(B/2)<\frac{29}{25},\quad
+\sinh(B/2)<\frac{29}{50},
+\]
+\[
+\cosh(\sup J_{\rm quiet}/2)<\frac{501}{500},
+\quad
+\sinh(\sup J_{\rm quiet}/2)<\frac{59}{1000}
+\]
+give the true complete source-to-window pole bound
+\[
+\|P B_{\rm pole}1_{J_{\rm quiet}}\|
+\le 2\big(\|Pc\|\|1_{J_{\rm quiet}}c\|
++\|Ps\|\|1_{J_{\rm quiet}}s\|\big)
+<\frac{23}{200}.
+\]
+Together with exact prime-cross disappearance,
+\[
+\boxed{
+\|B_{PC}1_{J_{\rm quiet}}\|
+<\frac7{40}+\frac{23}{200}
+=\frac{29}{100}.
+}
+\]
+The PS16 source positivity \(A_P>\frac{323}{1000}I\) controls the **genuine full original energy-dual subtraction**
+\[
+\langle h,T_Ch\rangle
+=\langle B_{PC}h,A_P^{-1}B_{PC}h\rangle
+<\frac{(29/100)^2}{323/1000}\|h\|^2
+<\frac{261}{1000}\|h\|^2.
+\]
+For every original-form-admissible \(h\) supported in \(J_{\rm quiet}\), PS13's same-original-form 32-term digamma certificate gives \(Q_C[h]=Q[h]>\frac{133}{500}\|h\|^2\). The resulting **true unshifted original complementary Schur** theorem is
+\[
+\boxed{
+\mathfrak S_C[h]
+=Q_C[h]-\langle h,T_Ch\rangle
+>
+\left(\frac{133}{500}-\frac{(29/100)^2}{323/1000}\right)\|h\|^2
+>\frac1{200}\|h\|^2.
+}
+\]
+**This is genuine signed complementary Schur positivity on an infinite-dimensional, separately admissible window subspace**, even after eliminating the complete original thirteen-source block. The proof retains all original source archimedean and both pole couplings, and rules out all seven prime-to-source terms by exact physical geometry.
+
+It is **not** whole complementary positivity: multiple quiet/nonquiet windows may have cross interactions, and the original complement contains functions outside this one interval. The theorem also does not imply that the \(J_C\) low spectral projection of this window stays in the window. It nevertheless provides an explicit **coercive source-aware local module** to use in PS19 instead of brute native low-energy eigenspace enumeration.
+
+The validator independently checks every source-to-quiet prime shift and every arch-distance/pole interval constant with exact rational arithmetic. Passing its focused CI certifies its scoped inequalities; this theorem still requires independent proof review before any main-objective promotion.
