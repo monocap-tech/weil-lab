@@ -1,0 +1,30 @@
+name: RPB108 SM06 focused original odd three-source inverse
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_sm06_first_negative_moment.py'
+      - 'notes/RPB108_SM06_NEGATIVE_FIRST_MOMENT_20261016.md'
+      - '.github/workflows/rpb108-sm06-focused.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-sm06-supported-odd-inverse:
+    name: Exact original pole, negative mean and moment
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Certify SM06 supported odd 3-source Birman-Schwinger
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm06_first_negative_moment.py
+          python scripts/validate_rpb108_sm06_first_negative_moment.py
