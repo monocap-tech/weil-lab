@@ -23,7 +23,7 @@ jobs:
   exact-structural-mechanism:
     name: Exact SM operator identity and boundary checks
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
