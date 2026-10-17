@@ -1,0 +1,21 @@
+name: RPB108 SM21 original first-source SI29 energy
+on:
+  pull_request:
+    branches: [research/rpb108-route-consolidation]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-supported-first-source-rayleigh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_sm21_native_source_rayleigh.py
+          python -u scripts/validate_rpb108_sm21_native_source_rayleigh.py
