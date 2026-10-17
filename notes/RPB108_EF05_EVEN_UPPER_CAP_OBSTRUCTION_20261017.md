@@ -2,7 +2,7 @@
 
 **Obligation:** W-EVEN-FORM, explicitly scoped local work; canonical W-ODD-NEG remains active and unaffected.
 **Parent:** EF04 merged PR #143, research integration HEAD 9cc3c190161c8cc9bcf4fda14d5717c7de6ba555.
-**Standing:** proposed exact-rational method-class obstruction; final-head focused CI replay required before certification. A negative result for an *upper-envelope sufficient method*, NEVER a negative original Weil-form witness.
+**Standing:** exact-rational original-supported-even method-class obstruction PASSED, focused EF05 Actions run 39015954905 at research-PR source head 8429f85210417bea51fd661057036a0465679182. Final-head post-note/governance replay and independent peer review remain separate. This is a negative result for an *upper-envelope sufficient method*, NEVER a negative original Weil-form witness.
 
 ## 1. The method to test, and what would refute it
 
@@ -127,3 +127,15 @@ Indeed \(0\le r\le w\) generally strictly, and EF04's cap is deliberately overco
 **Next EF06 action:** replace the overconservative SI10 cellwise cap with a **tighter upper** of the true negative multiplier, especially at low frequencies, while still preserving rigorous global signed tails. Before building another expensive full-source inverse, test the same physical witness for the new cap. Alternatively use an explicitly proved native RC even-source transport; do not reattempt the disproved EF04 inequality.
 
 Replay: python3 scripts/validate_rpb108_ef05_even_cap_obstruction.py. Final-head Actions checks arithmetic and inherited analytic Fourier/upper-symbol facts; not independent peer review or Lean original-zeta formalization.
+
+## 4. Focused exact-rational certificate values
+
+GitHub Actions [EF05 focused run 39015954905](https://github.com/monocap-tech/weil-lab/actions/runs/39015954905) completed **SUCCESS** on the source head before this evidence annotation. With outward lower rounding for cap amplitudes, upper rounding for all signed-original positive cells, and four monotone archimedean integer endpoint enclosures:
+
+- The complete original supported positive energy satisfies `⟨f,A_e f⟩ < 2.639461066813` (displayed outward rounded upward).
+- The complete original cap already satisfies `⟨f,K_cap,e f⟩ > 4.415423238009` using only 64 rational SI10 low-frequency leaves plus reflections.
+- The strict method-obstruction margin is `⟨f,(K_cap,e−A_e)f⟩ > 1.775962171196` (displayed weaker downward rounding).
+- The original even positive pole is **included**, with certified contribution `<0.315952`.
+- The entire high-frequency positive Fourier tail is charged by `<35/32=1.09375`; every signed-original low-frequency cell uses a whole-continuum upper bound.
+
+These stronger actual certified margins replace the weaker rational acceptance `cap>4`, `A<7/2`, `gap>1/2`. The previous EF04 cap-positive sufficient method is therefore **mathematically obstructed conditional on the inherited original explicit-formula/operator identity**, while the actual even Weil form and RH remain OPEN.
