@@ -1,0 +1,32 @@
+name: RPB108 EF05 original even cap obstruction
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_ef05_even_cap_obstruction.py'
+      - 'notes/RPB108_EF05_EVEN_UPPER_CAP_OBSTRUCTION_20261017.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-ef05-even-cap-obstruction.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-even-cap-obstruction:
+    name: Exact physical even witness, positive upper and cap lower
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Certify exact original signed EF05 conservative-cap no-go
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef05_even_cap_obstruction.py
+          python scripts/validate_rpb108_ef05_even_cap_obstruction.py

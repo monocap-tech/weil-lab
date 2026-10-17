@@ -140,7 +140,7 @@
       "scope": "K_neg,e <= (1+1/65536) U C U* + eta I on full physically supported EVEN carrier, with eta<1.93e-8, C exact rational 107-block SPD covariance. Finite 890x890 original inverse Loewner D^-1-U*(A_e-eta I)^-1 U >= 0 identified but NOT established; positive even pole remains inside A_e.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/143",
       "repo_path": "notes/RPB108_EF04_EXPLICIT_EVEN_CAP_MOMENTS_20261017.md",
-      "verification": "Draft PR #143; focused exact rational original signed full cover/moments and governance final-head CI pending. Neither supported finite inverse nor complete original even form is proved; not independently peer reviewed or Lean formalized."
+      "verification": "Merged PR #143, EF01–EF04 and governance final-head Actions PASS on source head ca4ffc1a581d475b013e87a85abcb1ccf1682f5b; the original 890-source supported finite positive inverse gate was NOT certified."
     },
     "SM11": {
       "kind": "original seventeen-negative-odd-mode exact-rational spectral-rank obstruction",
@@ -162,6 +162,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/147",
       "repo_path": "notes/RPB108_SM13_C33_PHYSICAL_NEGATIVE_RAYLEIGH_20261017.md",
       "verification": "Focused exact original signed physically supported C33 Rayleigh Actions 39015294106 PASSED on source head 4bea08161b5d3b1cec86a6e2cc9f89d460a27f43, structural 39015294212 PASSED; ledger-head governance and full postmerge verification pending, and independent peer review remains separate."
+    },
+    "EF05": {
+      "kind": "Certified original physical even cosine witness against the EF04 full signed-negative conservative UPPER cap",
+      "scope": "On the genuine supported even carrier, f=cos(2π(19/25)x) has rigorous <f,Kcap,e f>>4.415423238009, while actual original positive <f,A_e f><2.639461066813, including true positive even pole, every original seven-prime low-frequency cell, and entire analytic high-frequency tail. Hence EF04's original 890-source conservative cap Schur sufficient inequality is FALSE. Actual K_true,e and Q_e can still be positive; no RH refutation.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/146",
+      "repo_path": "notes/RPB108_EF05_EVEN_UPPER_CAP_OBSTRUCTION_20261017.md",
+      "verification": "Exact-rational focused original signed physical-even verifier SUCCESS Actions 39015954905, source head 8429f85210417bea51fd661057036a0465679182. Companion final-head governance and inherited CI replays required after this metadata update; mathematical standing conditional on inherited original multiplier and operator identification. Independent peer review/Lean formalization not complete."
     }
   },
   "obligations": [
@@ -232,10 +239,11 @@
         "EF01",
         "EF02",
         "EF03",
-        "EF04"
+        "EF04",
+        "EF05"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF05: compute an ACTUAL original physically supported even positive-inverse upper response on the 890 true cosine Taylor sources, with all intercluster crosses and the positive even pole, or prove a necessary-method obstruction for EF04's deliberately conservative cap. Test D^-1-U*(A_e-eta I)^-1 U>=0 with exact outward interval rational residual and correct sign; do not treat EF04 covariance SPD or small eta as evidence of full-even positivity."
+      "next_action": "EF06: Replace the disproved EF04/EF05 conservative SI10 all-negative upper cap with a rigorously tighter original signed upper, paying low-frequency excess and global high-frequency tails; FIRST run the EF05 physical-even cosine witness against the new cap before investing in 890-source inverse. Alternatively prove an original native RC even-carrier transport and original positive-vs-negative finite Schur. W-EVEN-FORM stays OPEN; EF05 refutes ONLY the EF04 sufficient overestimate, not the true form."
     },
     {
       "id": "W-WHOLE-FORM",
