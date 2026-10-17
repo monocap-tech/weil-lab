@@ -7,8 +7,8 @@
 | Objective | RH via original-zeta Weil-form program |
 | Active obligation | `W-ODD-NEG`: complete signed negative-frequency odd-sector control |
 | Accepted prerequisite | SI29: `2<s,A_o^-1 s><0.966379<1` for the odd pole alone |
-| Structural reduction | SM01: pole-absorbed coercivity and exact remaining negative-frequency Schur gate |\n| New reduction | SM02: odd-parity physical packet rank at b=24 <=891 (versus 1781 full-space), with unchanged original negative-frequency error; coupled finite matrix open |
-| Live alternative methods | SM03/SI30 actual odd signed finite packet response; RC335 native high-Schur |
+| Structural reduction | SM01: pole-absorbed coercivity and exact remaining negative-frequency Schur gate |\n| New reduction | SM02: odd-parity physical packet rank at b=24 <=891 (versus 1781 full-space), with unchanged original negative-frequency error; coupled finite matrix open |\n| Sparse reference obstruction | SM03: full original signed negative-frequency interval J=[3.645,3.705] defeats unchanged 14-feature C14 reference (certified margin >0.03 on a physical odd Jensen packet); this is not an original Weil-negative witness |
+| Live alternative methods | SM04/SI30 enriched true positive carrier and coupled original inverse; RC native high-Schur |
 | Separate verification | LF113 full-root Lean CI passed; original-Weil certificate attachment still open |
 | Baseline research HEAD | `953df96c900d3e533dff92f30c4eebec65fd60a6` (merged SM01) |
 | Full odd signed positivity | **OPEN** |
