@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "objective": {
+    "id": "RH",
+    "statement": "Establish the Riemann Hypothesis through an independently auditable original-zeta Weil-form argument.",
+    "status": "open"
+  },
+  "governance": {
+    "canonical_frontier": "active_obligation",
+    "selection": "Choose the highest-priority actionable open obligation from the dependency graph, not the numerically greatest checkpoint or the last conversation topic. Any change of active_obligation requires a justified manifest edit.",
+    "ranking_note": "priority is an explicit research judgement, not proof standing or numerical progress.",
+    "closure_rule": "Close only upon evidence meeting the stated mathematical acceptance condition on the original object, support, domain and norm. A reformulation, numerical screen, partial sector bound, or passing CI alone is insufficient.",
+    "evidence_rule": "Keep mathematical standing separate from CI state, Lean coverage and independent review. Never treat another method's checkpoint as automatic transfer of scope.",
+    "thread_rule": "Unqualified NF advances the canonical active obligation; explicitly scoped local requests retain their scope. Method pivots need no new conversation but must preserve custody and update the manifest.",
+    "no_automatic_promotion": true
+  },
+  "active_obligation": "W-ODD-NEG",
+  "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
+  "evidence": {
+    "SI10": {
+      "kind": "mixed analytic/exact-rational certificate",
+      "scope": "Original signed Weil form positive on an explicit finite-codimensional physical complement only.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/103",
+      "repo_path": "notes/RPB108_SI10_COMPLEMENT_POSITIVITY_20261016.md",
+      "verification": "Merged research PR; not independent peer review or a complete form theorem."
+    },
+    "SI29": {
+      "kind": "exact-rational certificate and operator comparison",
+      "scope": "Original physically supported odd rank-one pole-only gate 2<s,A_o^-1 s><0.966379<1.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/124",
+      "repo_path": "notes/RPB108_SI29_POLE_THRESHOLD_20261016.md",
+      "verification": "Merged research PR with focused and regression CI; not full negative-frequency control."
+    },
+    "SM01": {
+      "kind": "conditional analytic operator theorem and rational regression",
+      "scope": "Pole-absorbed odd coercivity, bounded positive-band-only no-go, and exact full-negative Schur equivalence.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/125",
+      "repo_path": "notes/RPB108_SM01_STRUCTURAL_MECHANISM_20261016.md",
+      "verification": "Merged research PR; the full negative-frequency inequality remains open."
+    },
+    "RC334": {
+      "kind": "exact rational five-mode certificate",
+      "scope": "Genuine signed finite five-mode Ritz gain, without improvement of full infinite residual.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/108",
+      "verification": "Merged research PR; original full Schur lower bound remains open."
+    },
+    "LF113": {
+      "kind": "Lean compilation",
+      "scope": "Certificate transport and concrete trial interfaces; no final original Weil-form attachment.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/36",
+      "verification": "Open draft PR; full-root CI passed at LF113. Not a full formal proof of RH."
+    }
+  },
+  "obligations": [
+    {
+      "id": "W-ODD-POLE",
+      "statement": "Absorb the original signed odd rank-one pole on the actual physically supported carrier.",
+      "status": "closed",
+      "depends_on": [],
+      "priority": null,
+      "methods": [
+        "SI",
+        "SM"
+      ],
+      "evidence": [
+        "SI29",
+        "SM01"
+      ],
+      "acceptance": "A_o-2|s><s| is positive with a uniform rigorous form floor on the full physical odd carrier.",
+      "next_action": "Preserve the SI29 and SM01 certificates; do not reopen absent a scope or verification defect."
+    },
+    {
+      "id": "W-ODD-NEG",
+      "statement": "Control the entire original negative-frequency operator after odd pole absorption, including coupling and a certified infinite remainder.",
+      "status": "open",
+      "depends_on": [
+        "W-ODD-POLE"
+      ],
+      "priority": 1,
+      "methods": [
+        "SM",
+        "SI",
+        "RC"
+      ],
+      "evidence": [
+        "SI29",
+        "SM01",
+        "SI10",
+        "RC334"
+      ],
+      "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
+      "next_action": "SM02 seek a non-tautological weighted observability/frame bound; SI30 test genuine negative-frequency modes with complete coupling; RC335 offers an independent high-Schur comparison."
+    },
+    {
+      "id": "W-EVEN-FORM",
+      "statement": "Certify the entire original supported even-sector Weil form on the required domain.",
+      "status": "open",
+      "depends_on": [],
+      "priority": 2,
+      "methods": [
+        "SI",
+        "RC",
+        "INTEGRATION"
+      ],
+      "evidence": [
+        "SI10"
+      ],
+      "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
+      "next_action": "Recover the native even-sector decomposition and identify the missing finite block/coupling certificate."
+    },
+    {
+      "id": "W-WHOLE-FORM",
+      "statement": "Assemble full original Weil-form positivity from compatible parity results, domains and all couplings.",
+      "status": "open",
+      "depends_on": [
+        "W-ODD-NEG",
+        "W-EVEN-FORM"
+      ],
+      "priority": 4,
+      "methods": [
+        "INTEGRATION",
+        "RC",
+        "SI",
+        "SM"
+      ],
+      "evidence": [
+        "SI10"
+      ],
+      "acceptance": "A correctly scoped complete-domain positivity theorem for the original Weil form, with all finite/infinite and boundary terms discharged.",
+      "next_action": "Await sector-level certificates while auditing that decomposition and original-domain hypotheses compose."
+    },
+    {
+      "id": "W-GLOBAL-BRIDGE",
+      "statement": "Prove required continuation, carrier transfer, and global equivalence for the original-zeta argument.",
+      "status": "open",
+      "depends_on": [
+        "W-WHOLE-FORM"
+      ],
+      "priority": 5,
+      "methods": [
+        "INTEGRATION",
+        "RC"
+      ],
+      "evidence": [],
+      "acceptance": "Discharge all remaining global hypotheses and transfer the established original-form theorem to the exact zeta/RH-facing criterion.",
+      "next_action": "Inventory F4 and global-attachment premises without claiming they are consequences of a local certificate."
+    },
+    {
+      "id": "W-RH",
+      "statement": "Complete an independently auditable proof or counterexample addressing RH.",
+      "status": "open",
+      "depends_on": [
+        "W-GLOBAL-BRIDGE"
+      ],
+      "priority": 6,
+      "methods": [
+        "INTEGRATION"
+      ],
+      "evidence": [],
+      "acceptance": "Original-zeta theorem and every necessary mathematical and logical implication are proved and checked; no conditional interfaces remain.",
+      "next_action": "Remain open until the actual-zeta global bridge is discharged."
+    },
+    {
+      "id": "LF-ORIGINAL-ATTACH",
+      "statement": "Connect the Lean certificate-transport chain to concrete original Weil-form numerical and analytic certificates.",
+      "status": "open",
+      "depends_on": [],
+      "priority": 3,
+      "methods": [
+        "LF",
+        "INTEGRATION"
+      ],
+      "evidence": [
+        "LF113"
+      ],
+      "acceptance": "A compiled concrete theorem reaching the original canonical Weil form with checked matrix/enclosure/residual premises, not only generic interfaces.",
+      "next_action": "Attach concrete polynomial trials, source/moment identities and checked residual data. Formalization is a parallel verification goal, not silently a prerequisite for the mathematical RH theorem."
+    }
+  ],
+  "active_checks": [
+    {
+      "id": "SM01-sign-and-budget-regression",
+      "obligation_id": "W-ODD-NEG",
+      "role": "retained-prerequisite",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm01_pole_schur.py"
+      ],
+      "interpretation": "Verifies pole-conditioning arithmetic and correct-sign Schur regression; cannot close full negative-frequency gate."
+    },
+    {
+      "id": "SI29-pole-replay",
+      "obligation_id": "W-ODD-NEG",
+      "role": "retained-prerequisite",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_si29_pole_threshold_three_bands.py"
+      ],
+      "interpretation": "Replays pole-only certificate, not full original odd signed positivity."
+    }
+  ]
+}
