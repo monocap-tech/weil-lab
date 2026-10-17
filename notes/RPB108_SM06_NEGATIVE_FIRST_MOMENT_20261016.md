@@ -62,9 +62,9 @@ The exact-rational validator encloses all physical entries of \(H,Q,P\), includi
 3(4\beta^3+\beta^4),\quad\beta=2\pi_{\rm hi}rB,\quad
 \varepsilon_1\le\frac{3(4\beta^3+\beta^4)}{180}(2/16)^4.
 \]
-The accepted upper bound is not built from an unsupported whole-line reciprocal or a finite-cutoff inverse.
+The accepted upper bound is not built from an unsupported whole-line reciprocal or a finite-cutoff inverse. Crucially, the entrywise intervals enclose the entries of the **explicit Loewner-majorant matrix**, not the entries of the true supported inverse response; the true response is dominated by that majorant in PSD order.
 
-The actual real symmetric normalized 3-by-3 Birman–Schwinger response is \(D V^*A_o^{-1}VD\). The proof computes an interval-enclosed symmetric **upper bound on each actual scalar entry**, then uses rational upper weights
+The actual real symmetric normalized 3-by-3 Birman–Schwinger response is \(D V^*A_o^{-1}VD\). The proof encloses the entries of that explicit symmetric **Loewner majorant**, then uses rational upper weights
 \[
 \sqrt{2(21/125)}<29/50,\quad
 \sqrt{2(7/125)}<67/200,\quad

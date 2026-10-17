@@ -249,9 +249,10 @@ def validate():
     assert all(U[i][i][1]>0 for i in range(3))
     # The exact operator being tested is
     # A_o -2|s><s| -γ0|g0><g0| -γ1|g1><g1|.
-    # The REAL supported inverse response is enclosed componentwise
-    # by the rational signed 3x3 U above. We use interval Gershgorin
-    # on the normalized BS matrix, preserving all three cross terms.
+    # U encloses the entries of an explicit LOEWNER MAJORANT for the
+    # true inverse-response matrix; it does NOT generally enclose each
+    # actual off-diagonal scalar entry. Gershgorin is applied to that
+    # majorant and transported to the true BS matrix by Loewner order.
     off01=CROSS_01*abs_hi(U[0][1])
     off02=CROSS_02*abs_hi(U[0][2])
     off12=CROSS_12*abs_hi(U[1][2])
