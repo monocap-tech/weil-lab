@@ -126,6 +126,109 @@ def run():
     assert window_length==F(1,16)
     assert window_length<ln2.lo
 
+
+    # NEW PS18 TRUE SIGN CERTIFICATE: a fixed prime-quiet window in
+    # the *actual* source complement carries POSITIVE original Schur,
+    # not just positive unshifted Q before subtracting source response.
+    #
+    # Jq=[269/5000,1163/10000] has EXACT width 1/16 and lies
+    # between the original log3 and log4 source intervals.
+    qlo,qhi=F(269,5000),F(1163,10000)
+    assert qhi-qlo==F(1,16)
+    assert B-ln3.lo<qlo and ln4.lo-B>qhi
+    sources=sorted(labels)
+    src_log={t:(old.IV(0) if t==1 else old.log_i(t)) for t in sources}
+    shifts={n:old.log_i(F(n)) for n,_ in SOURCE}
+    # Every one of 13*7*2 original signed prime P-to-Jq shift
+    # configurations is STRICTLY disjoint, with certified clearance.
+    smallest_shift_gap=None
+    for t in sources:
+        src_start_lo=src_log[t].lo-B
+        src_end_hi=src_log[t].hi-B+delta.hi
+        for n,shift in shifts.items():
+            for sign in (-1,1):
+                if sign==1:
+                    shifted_lo=qlo+shift.lo
+                    shifted_hi=qhi+shift.hi
+                else:
+                    shifted_lo=qlo-shift.hi
+                    shifted_hi=qhi-shift.lo
+                d=max(src_start_lo-shifted_hi,shifted_lo-src_end_hi)
+                assert d>0,("PS18 source-to-quiet original prime SHIFT OVERLAP",t,n,sign,float(d))
+                smallest_shift_gap=d if smallest_shift_gap is None else min(smallest_shift_gap,d)
+    assert smallest_shift_gap>F(1,20000)
+
+    # Complete original arch source-to-quiet mixed kernel -k(|x-y|).
+    # Source intervals are all disjoint from Jq. For each source
+    # interval r, let d_r be its certified nearest separation.
+    # Since k is decreasing and <=1/(2d)+1,
+    # ||P k C_Jq||_HS² <=δ*|Jq| Σ_r [1/(2d_r)+1]^2.
+    hs_arch_sq=F(0)
+    for t in sources:
+        src_lo=src_log[t].lo-B
+        src_hi=src_log[t].hi-B+delta.hi
+        d=max(qlo-src_hi,src_lo-qhi)
+        assert d>0
+        hs_arch_sq+=delta.hi*(qhi-qlo)*(1+F(1)/(2*d))**2
+    assert hs_arch_sq < F(7,40)**2,(
+        "PS18 TRUE source-quiet arch HS too large",float(hs_arch_sq))
+
+    # Source positive-even/negative-odd original pole cross:
+    # ||P c||≤sqrt(13δ)*cosh(B/2) and likewise s. For h supported
+    # Jq, ||1_Jq c||≤sqrt(|Jq|)*cosh(qhi/2), similarly sinh(qhi/2).
+    sn,cs=old.sinh_cosh_iv(B/2)
+    snq,csq=old.sinh_cosh_iv(qhi/2)
+    assert F(13)*delta.hi<F(19,100)**2
+    assert cs.hi<F(29,25) and sn.hi<F(29,50)
+    assert csq.hi<F(501,500) and snq.hi<F(59,1000)
+    # sqrt source measure <.19, sqrt quiet length exactly .25:
+    pole_bound=2*((F(19,100)*F(29,25))*(F(1,4)*F(501,500))
+             +(F(19,100)*F(29,50))*(F(1,4)*F(59,1000)))
+    assert pole_bound<F(23,200),float(pole_bound)
+
+    # All original prime P-to-quiet terms are IDENTICALLY ZERO.
+    # So entire actual signed B_PC restricted to quiet interval:
+    # ||B_PC|_Jq|| < ||B_arch||_HS+||B_pole|| <.175+.115=.29.
+    quiet_cross=F(7,40)+F(23,200)
+    assert quiet_cross==F(29,100)
+    # PS16 SOURCE A_P >323/1000, with all 19 internal prime edges.
+    # Thus genuine positive compact source energy-dual Schur cost
+    # on each quiet h is <(.29)^2/.323 * ||h||².
+    quiet_penalty=quiet_cross**2/F(323,1000)
+    assert quiet_penalty<F(261,1000),float(quiet_penalty)
+
+    # PS13 original *unshifted* Q local certificate is >0.266
+    # for EVERY function of support length <=1/16, not just steps.
+    # Check its exact 32-term original digamma tail here again.
+    carch=-old.gamma_iv()-pi/2-3*ln2-old.log_i(pi)
+    tail32=F(0)
+    Lq=F(1,16)
+    for m in range(32):
+        nu=F(4*m+1,2)
+        x=nu*Lq
+        assert 0<x<32
+        tail32+=2*(1-x/32)**32/nu
+    quiet_original_Q_margin=carch.lo+tail32-2*Lq*sn.hi**2
+    assert quiet_original_Q_margin>F(133,500),float(quiet_original_Q_margin)
+
+    # This is the ACTUAL complementary source Schur, including
+    # full physical arch Carleman cross and original both signed
+    # poles. No unproved finite compression or seam omission.
+    schur_quiet_margin=F(133,500)-quiet_penalty
+    assert schur_quiet_margin>F(1,200),(
+        "PS18 quiet TRUE complementary Schur positive margin FAILED",
+        float(schur_quiet_margin))
+    # For ALL admissible h supported in Jq:
+    # S_C[h]=Q_C[h]-<h,B* A_P^-1 B h> >1/200 ||h||².
+    print("PS18 original prime quiet source-shift minimum clearance",
+          float(smallest_shift_gap),flush=True)
+    print("PS18 TRUE quiet source arch HS square upper",float(hs_arch_sq),flush=True)
+    print("PS18 TRUE quiet original both-pole cross upper",float(pole_bound),flush=True)
+    print("PS18 true quiet source-energy Schur penalty upper",float(quiet_penalty),flush=True)
+    print("PS18 original unshifted quiet Q lower",float(quiet_original_Q_margin),flush=True)
+    print("PS18 TRUE complementary signed quiet Schur lower >",
+          float(schur_quiet_margin),flush=True)
+
     print("PS18 true complement physical window [1/8,3/16] length",
           str(window_length),flush=True)
     print("PS18 general native arch spectral LOW rank for integer Lambda>=100:"
