@@ -47,3 +47,19 @@ Even if its strict \(>1/2\) target passes, **W-ODD-NEG and RH remain OPEN**. The
 
 **Reproduction:** \`python scripts/validate_rpb108_sm14_continuum.py\`.
 **Standing:** scoped mathematical proposal until focused exact-original GitHub Actions and final-head replays pass; original Weil identification requires independent expert audit.
+
+## Certified source-head replay
+
+Focused [Actions run 39016451490](https://github.com/monocap-tech/weil-lab/actions/runs/39016451490) **PASSED** using exact rational accepting comparisons.
+
+On the actual odd physical \(g_{721/50}\), with all selected bands disjoint from C33:
+\[
+\sum_{j=1}^{13}4r\delta_j|\langle g,p_j\rangle|^2
+>0.6666741285676513,
+\qquad
+\langle g,A_o g\rangle>0.6677778141467603.
+\]
+
+The smallest certified original signed multiplier lower over the complete thirteen intervals was \(m(\xi)>1.1094660777955563\), and each interval exceeded its own prescribed \(\kappa+\delta_j\). The C33 response upper on the **same** physical test was \(0.003806383032591049\). These figures display rational bound endpoints and are *not floating-point proof decisions*.
+
+This recovers positive original continuum mass omitted by the specific C33 lower reference. The result supplies **no upper on the entire original \(K_{\mathrm{neg},o}\)** and cannot infer that the actual signed form is positive on \(g\). A fully coupled original positive-vs-negative Schur and odd pole absorption remain outstanding.
