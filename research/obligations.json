@@ -99,6 +99,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/136",
       "repo_path": "notes/RPB108_EF01_EVEN_PARITY_GATE_20261016.md",
       "verification": "Analytic reduction recorded; focused exact-rational GitHub Actions verification and PR review pending; not independently peer reviewed or formalized in Lean."
+    },
+    "SM09": {
+      "kind": "complete original odd negative-multiplier upper-carrier reduction with exact-rational global cover and Taylor residual",
+      "scope": "On entire original physically supported odd Hilbert space, K_neg,o <= (1+1/1024) P K_cap,o P + epsilon(I-P), for a parity-adapted 890-dimensional b=24 Taylor space, epsilon <3.014363e-10; all signed negative-frequency bands, positive/negative mirrors, and low/high couplings are included. Full finite positive-vs-negative Schur and odd pole absorption not established.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/139",
+      "repo_path": "notes/RPB108_SM09_ENTIRE_NEGATIVE_UPPER_CARRIER_20261016.md",
+      "verification": "Original all-frequency exact rational focused run 39011941429 PASSED on source head adbbdc696897b420c624051b3d85735d09079d34; structural mechanism run 39011941375 PASSED. Final post-ledger head verification and independent peer review are separate; does not close W-ODD-NEG."
     }
   },
   "obligations": [
@@ -142,10 +149,11 @@
         "SM04",
         "SM05",
         "SM06",
-        "SM07"
+        "SM07",
+        "SM09"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM08/RC: SM07 rigorously proves the original variable-multiplier excess E=K_freq,o-T_[3.645,3.705],7/5 has norm >0.0131457, far above SM06's 5.6440e-5 reported scalar floor, so scalar-floor-only residual absorption is impossible. Construct weighted original signed-negative interval packet covariance with supported conditioned inverse, preserving all pole/constant-band cross terms and remaining signed continuum. No evidence original Q is negative; W-ODD-NEG remains OPEN."
+      "next_action": "SM09: the entire original r=(kappa-m)_+ negative-frequency operator now has a certified global Loewner UPPER carrier on an at-most-890-dimensional odd physical Taylor space, plus a full infinite residual <3.014363e-10 at b=24, tau=1/1024. Next prove a true supported finite positive-vs-negative coupled Schur/BS inequality for (1+tau)P K_cap P jointly with original odd pole and the remaining (I-P) scalar tail, using all cross terms and original A_o; recover native RC transport if competitive. SM08 is an independent selected-variable-subband candidate, not a prerequisite. No full odd positivity or RH claim."
     },
     {
       "id": "W-EVEN-FORM",

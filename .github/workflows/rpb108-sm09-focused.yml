@@ -1,0 +1,31 @@
+name: RPB108 SM09 original full negative upper carrier
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_sm09_entire_negative_upper_carrier.py'
+      - 'notes/RPB108_SM09_ENTIRE_NEGATIVE_UPPER_CARRIER_20261016.md'
+      - '.github/workflows/rpb108-sm09-focused.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sm09-full-negative-upper:
+    name: Original all-frequency upper cover, physical odd rank and full residual
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Certify global signed negative upper-envelope carrier
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm09_entire_negative_upper_carrier.py
+          python scripts/validate_rpb108_sm09_entire_negative_upper_carrier.py
