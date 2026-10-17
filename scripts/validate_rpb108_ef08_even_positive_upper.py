@@ -36,12 +36,15 @@ def signed_original_upper_cells():
     """Whole m, all seven prime-power terms, no sampled sign claim."""
     # arch_upper is a rigorous original signed digamma Euler/Tail upper
     # and the archimedean function increases for xi>=0.
-    arch_low=[arch_upper(F(k+1,LOW_ARCH_GROUP))
+    arch_low=[rational_ceil(arch_upper(F(k+1,LOW_ARCH_GROUP)))
               for k in range(int(LOW_RIGHT*LOW_ARCH_GROUP))]
-    arch_high=[arch_upper(F(k+1))
+    arch_high=[rational_ceil(arch_upper(F(k+1)))
                for k in range(int(LOW_RIGHT),int(HIGH_RIGHT))]
     original_low=F(0)
     original_mid=F(0)
+    prime_width_loss_lo=rational_ceil(F(69,2*LOW_SUBDIV))
+    physical_width_loss_lo=rational_ceil(DERIVATIVE/(2*LOW_SUBDIV))
+    prime_width_loss_hi=rational_ceil(F(69,2*HIGH_SUBDIV))
     cells_low=int(LOW_RIGHT*LOW_SUBDIV)
     for i in range(cells_low):
         l=F(i,LOW_SUBDIV)
@@ -49,10 +52,10 @@ def signed_original_upper_cells():
         mid=(l+r)/2
         # An original-sign m UPPER on every full 1/1024 cell.
         group=i*LOW_ARCH_GROUP//LOW_SUBDIV
-        multiplier=arch_low[group]+prime_interval(mid)[1]+F(69)*(r-l)/2
-        multiplier=rational_ceil(max(KAPPA,multiplier))
+        multiplier=arch_low[group]+rational_ceil(prime_interval(mid)[1])+prime_width_loss_lo
+        multiplier=max(KAPPA,multiplier)
         amp=supported_even_fourier(mid)
-        fbound=rational_ceil(absolute_upper(amp)+DERIVATIVE*(r-l)/2)
+        fbound=rational_ceil(absolute_upper(amp))+physical_width_loss_lo
         original_low+=2*(r-l)*multiplier*fbound**2
 
     cells_high=int((HIGH_RIGHT-LOW_RIGHT)*HIGH_SUBDIV)
@@ -63,8 +66,8 @@ def signed_original_upper_cells():
         group=l.numerator//l.denominator-int(LOW_RIGHT)
         # On [4,128] use the integer-right-end original arch upper,
         # paying the ENTIRE original seven-prime signed phase fluctuation.
-        multiplier=arch_high[group]+prime_interval(mid)[1]+F(69)*(r-l)/2
-        multiplier=rational_ceil(max(KAPPA,multiplier))
+        multiplier=arch_high[group]+rational_ceil(prime_interval(mid)[1])+prime_width_loss_hi
+        multiplier=max(KAPPA,multiplier)
         amp=supported_even_fourier(mid)
         # Exact derivative of the physical cosine-transform:
         # |F'| <= 2B/(xi-z) + 1/[pi (xi-z)^2], for xi>=4.
@@ -73,7 +76,7 @@ def signed_original_upper_cells():
         v=l-CENTER
         assert v>3
         deriv=2*B/v+1/(PI[0]*v*v)
-        fbound=rational_ceil(absolute_upper(amp)+deriv*(r-l)/2)
+        fbound=rational_ceil(absolute_upper(amp))+rational_ceil(deriv*(r-l)/2)
         original_mid+=2*(r-l)*multiplier*fbound**2
     return original_low,original_mid,cells_low,cells_high
 
