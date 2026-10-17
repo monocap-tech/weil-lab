@@ -1,0 +1,31 @@
+name: RPB108 SM08 coupled original variable odd-negative band
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_sm08_coupled_excess.py'
+      - 'notes/RPB108_SM08_COUPLED_VARIABLE_NEGATIVE_20261016.md'
+      - '.github/workflows/rpb108-sm08-focused.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sm08-coupled-original-odd:
+    name: Exact five-source covariance, LDL and both infinite tails
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: SM08 exact coupled signed-original supported certificate
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm08_coupled_excess.py
+          python scripts/validate_rpb108_sm08_coupled_excess.py
