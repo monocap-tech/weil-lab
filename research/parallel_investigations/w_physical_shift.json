@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS13 unshifted original signed Q local short-support positive and explicit full-physical nonpositive subspace finite-index cap; strict source-rational gates under focused review, not entire beta interior or signed complement positivity. W-ODD-NEG, W-EVEN-FORM, complete CC27 bridge and RH remain OPEN.",
+  "proof_standing": "PS14 scoped original signed 13-channel infinite-dimensional source Q strictly coercive (>1/6) on separately form-admissible channel components with 19 original prime edges; full signed cross/complement and native CC27 bridge still OPEN. Source-rational CI and external audit pending; W-ODD-NEG/W-EVEN-FORM/Weil/RH OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS14: certify actual nonlocal multi-window interior beta-localized original signed low-energy response including seven true prime translations, arch and both signed poles; compute a rigorously accepted finite-dimensional Schur/PSD margin, not just shifted graph stability or one-window coercivity",
-    "PS15: attach the complete original CC27 D-Riesz domain/norm carrier and independently verify a whole signed Weil positive gate before any promotion of canonical W-ODD-NEG or RH"
+    "PS15: compute actual original signed Q source-carrier/complement energy-dual cross and Schur remainder; establish separately form-admissible decomposition/domain compatibility and true positive complementary sign; do not discard noncompact seam",
+    "PS16: attach original CC27 D-Riesz carrier norm/domain and independently audit all complete original Weil positivity obligations before canonical W-ODD-NEG/RH promotion"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -135,6 +135,14 @@
       "note": "notes/RPB108_PS13_INTERIOR_MORSE_LOCAL_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps13_interior_morse_local.py",
       "limitation": "Not a full beta-range positivity or a computed low-sector matrix; all cross-window original arch and prime interactions remain, unshifted complete Weil, CC27 D-Riesz and RH open."
+    },
+    {
+      "id": "PS14",
+      "scope": "unshifted entire original physically supported signed Weil quadratic Q coercive >1/6 on the full infinite-dimensional PS10 thirteen-interval source carrier with separately form-admissible channel components; all 19 true prime translation edges (six additional to IMS graph) plus arch across channels and both signed poles retained",
+      "status": "analytic original full-source coercivity certificate with exact rational 13-channel source separation, 19-edge weighted matrix square, arch 64-term tail and signed pole; focused final-head CI and independent mathematical review pending",
+      "note": "notes/RPB108_PS14_FULL_ORIGINAL_13CHANNEL_COERCIVITY_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps14_full_original_13channel.py",
+      "limitation": "Not whole beta-interior, not complement/cross-Schur PSD, not CC27 D-Riesz domain transfer or RH. The source carrier need not reduce the whole Weil form."
     }
   ]
 }
