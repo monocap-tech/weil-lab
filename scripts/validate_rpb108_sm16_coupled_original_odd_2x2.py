@@ -122,7 +122,7 @@ def original_negative_2x2():
             near+=1
             mid=(l+r)/2
             pl,pu=prime_interval(mid)
-            w=min(w,max(F(0),KAPPA-arch_lower(l)-pl-F(-69,2)*(r-l)))
+            w=min(w,max(F(0),KAPPA-arch_lower(l)-pl+F(69,2)*(r-l)))
             if dl<=F(2):
                 upperm=arch_upper(r)+pu+F(69,2)*(r-l)
                 if upperm<KAPPA:
