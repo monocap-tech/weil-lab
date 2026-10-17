@@ -1,0 +1,36 @@
+name: RPB108 PS04 original edge Schur Carleman noncompactness
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_ps04_edge_schur_coupling.py"
+      - "notes/RPB108_PS04_EDGE_SCHUR_NONCOMPACT_20261017.md"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps04-edge-schur.yml"
+  workflow_dispatch:
+
+jobs:
+  ps04-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Exact rational original signed Carleman cross certificate
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps04_edge_schur_coupling.py
+          python3 scripts/validate_rpb108_ps04_edge_schur_coupling.py
+      - name: Validate original objective remains open and scoped
+        run: |
+          python3 - <<'PY'
+          import json
+          manifest=json.load(open("research/obligations.json"))
+          parallel=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert manifest["active_obligation"]=="W-ODD-NEG"
+          assert manifest["objective"]["status"]=="open"
+          assert parallel["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert parallel["status"]=="open"
+          assert all(v is False for v in parallel["closures"].values())
+          PY
