@@ -73,19 +73,32 @@ def signed_negative_global_upper():
     near=F(0)
     far=F(0)
     removed=0
+    remote=0
+    local=0
     for l,r,h in leaves:
         # Original seven-prime lower valid at EVERY real xi in [l,r].
         # Inherited SI10 already bounds r<=h+kappa on these leaves.
         # Local arch lower at l (not unit j) plus prime exact phase
         # produces a potentially sharper independent upper for r.
-        mid=(l+r)/2
-        lower=arch_lower(l)+prime_interval(mid)[0]-F(69,2)*(r-l)
-        w=min(h+KAPPA,max(F(0),KAPPA-lower))
+        dist=min_distance(l,r,C)
+        if dist<=F(20):
+            local+=1
+            mid=(l+r)/2
+            lower=arch_lower(l)+prime_interval(mid)[0]-F(69,2)*(r-l)
+            w=min(h+KAPPA,max(F(0),KAPPA-lower))
+            amp=fourier_amp_upper(l,r)
+        else:
+            # NO remote frequency is deleted: retain SM10's valid
+            # original-sign global cap, and use the phase-independent
+            # analytic sinc distance envelope on the WHOLE leaf.
+            remote+=1
+            w=h+KAPPA
+            amp=(sinc_amp_bound(dist)+sinc_amp_bound(C+l)
+                 +2*B*witness_err(RN))
         assert F(0)<=w<=h+KAPPA
         if w==0:
             removed+=1
             continue
-        amp=fourier_amp_upper(l,r)
         # Actual Kneg,o=2 int_0^infty r(xi)|h_xi><h_xi|dxi.
         term=2*(r-l)*w*amp**2
         old_cap+=2*(r-l)*(h+KAPPA)*amp**2
@@ -93,11 +106,12 @@ def signed_negative_global_upper():
         if l<=C+F(2) and r>=C-F(2):near+=term
         else:far+=term
         strongest.append((term,l,r,w,amp))
+    assert local+remote==len(leaves)
     assert whole<=old_cap
     assert whole>0 and whole<F(5)
     assert removed>=0 and near+far==whole
     strongest.sort(reverse=True)
-    return whole,old_cap,near,far,removed,strongest,clusters
+    return whole,old_cap,near,far,removed,strongest,clusters,local,remote
 
 def pole_upper():
     q=signed_odd_overlap(C)
@@ -126,7 +140,7 @@ def original_positive_lower():
     return KAPPA*nlo+chosen,chosen
 
 def validate():
-    neg,old,near,far,removed,top,clusters=signed_negative_global_upper()
+    neg,old,near,far,removed,top,clusters,local,remote=signed_negative_global_upper()
     pole,pole_iv=pole_upper()
     pos,chosen=original_positive_lower()
     signed_margin=pos-neg-pole
@@ -134,6 +148,7 @@ def validate():
     print('SM15 whole original Kneg odd quadratic upper',float(neg),flush=True)
     print('SM15 old SM10 envelope with same physical amplitude',float(old),flush=True)
     print('SM15 near +/-2 negative upper',float(near),'remote upper',float(far),flush=True)
+    print('SM15 local sharpened leaves',local,'remote rigorously envelope-paid leaves',remote,flush=True)
     print('SM15 original entirely sign-protected local leaves',removed,flush=True)
     print('SM15 original odd pole quadratic UPPER',float(pole),flush=True)
     print('SM15 positive whole-original A_o quadratic LOWER',float(pos),flush=True)
