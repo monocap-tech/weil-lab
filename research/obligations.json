@@ -196,7 +196,14 @@
       "scope": "Full original signed refined cap Q on f=cos(2π19x/25) in [0.8023309563,1.0198894827]; actual original positive A_e Q in [0.4629763897,2.6394610669]. Cap-minus-A_e in [-1.8371301105,0.5569130930], intervals overlapping => cannot certify cap feasibility NOR method-class no-go. All original 973 covered leaves, EF06 256 microcells, signed original positive surplus, positive even pole, whole >=4 analytic tail paid. No 890-source inverse or actual even positivity.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/152",
       "repo_path": "notes/RPB108_EF07_GLOBAL_EVEN_WITNESS_20261017.md",
-      "verification": "Focused exact-rational source-head CI Actions 39039665346 SUCCESS, first-head source blob unchanged after annotation. Final reconciled PR head EF07/inherited and obligation-governance CI replay pending. Not independent proof audit or Lean original-form formalization."
+      "verification": "Merged PR #152 at 94527c66c0e05afe545a1b6fbe9d5188309a547a. Final-head exact rational EF07 and ten inherited/governance workflows ALL SUCCESS on 9756dacddf647156c1c6702aac6800adfdebfec4. Original even complete form remains open."
+    },
+    "EF08": {
+      "kind": "Candidate full-frequency original supported even positive-form upper: 4096 signed low cells, 3968 signed mid cells, global logarithmic tail and positive even pole",
+      "scope": "Same physical even cosine f=cos(2π19x/25). 0..4 original signed arch+7prime fine upper; 4..128 signed arch+prime original interval plus correct physical Fourier derivative; |xi|>=128 entire positive log Fourier tail <(16+7 ln_hi2)/512<0.05. Compare actual original A_e upper to EF07 complete refined negative cap lower >0.8023309563, classify method CAP_NO_GO only on strict certified separation; otherwise INCONCLUSIVE. NOT full even Q positivity or negativity.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/153",
+      "repo_path": "notes/RPB108_EF08_EVEN_POSITIVE_UPPER_20261017.md",
+      "verification": "Draft PR #153; focused exact-rational signed positive all-frequency and governance final-head CI pending; no complete 890-source physical inverse, whole original even positivity, Lean or RH theorem."
     }
   },
   "obligations": [
@@ -272,10 +279,11 @@
         "EF04",
         "EF05",
         "EF06",
-        "EF07"
+        "EF07",
+        "EF08"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF08: tighten ACTUAL original supported even positive-form energy bounds on EF05 cosine (especially overly coarse >=4 analytic upper tail and integer-cell original archimedean bound) until a strict comparison with EF07 global refined negative cap [0.8023309563,1.0198894827] or a proved bound limitation emerges; never assert positivity or negativity from EF07 overlap. Subsequent 2-vector coupled test or refined cap as indicated. W-EVEN-FORM OPEN."
+      "next_action": "EF09: after EF08 exact final-head outcome, resolve same-vector refined signed negative-cap vs true original positive energy. If separated CAP_NO_GO, improve overconservative EF06 cap or pivot to direct original signed; if still overlapping, refine sharp [0,4] positive upper and/or cap lower using correct true physical Fourier derivatives, before launching 890-source inverse. W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
