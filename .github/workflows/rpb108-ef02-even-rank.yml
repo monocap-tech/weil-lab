@@ -1,0 +1,32 @@
+name: RPB108 EF02 even signed-negative spectral rank
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_ef02_even_negative_spectral_rank.py'
+      - 'notes/RPB108_EF02_EVEN_NEGATIVE_SPECTRAL_RANK_20261016.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-ef02-even-rank.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-ef02-even-spectral-rank:
+    name: True signed bands, 15 physical even packets and Gram
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay exact rational original even negative spectral rank
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef02_even_negative_spectral_rank.py
+          python scripts/validate_rpb108_ef02_even_negative_spectral_rank.py

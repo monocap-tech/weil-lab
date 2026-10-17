@@ -120,6 +120,20 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/140",
       "repo_path": "notes/RPB108_SM10_EXPLICIT_ODD_CAP_MOMENTS_20261017.md",
       "verification": "Focused original all-frequency exact rational Actions 39012671893 PASSED on source head 4518c4a3de315060c0f0db76598369d24104fb69, verifying 107 moment matrices and 890 positive rational LDL pivots. Final ledger-head integration CI and independent review separate."
+    },
+    "EF02": {
+      "kind": "Actual original supported even 15-negative-packet spectral rank and rank<=14 positive-reference method obstruction; exact-rational signed continuum and even cosine Gram",
+      "scope": "On the physical even carrier, λ15(K_freq,e)>0.015252638>kappa; any kappa I plus <=14 positive directions, including the actual even pole, cannot dominate entire negative-frequency operator. No negative witness against Q_e or full even positivity.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/141",
+      "repo_path": "notes/RPB108_EF02_EVEN_NEGATIVE_SPECTRAL_RANK_20261016.md",
+      "verification": "Same exact source blobs as successful EF02-focused Actions 39011589598, EF01 39011589607 and governance 39011589579 from former conflicting draft PR #138; being reconciled in PR #141 and requiring final-head CI. Not independently peer reviewed or Lean formalized."
+    },
+    "EF03": {
+      "kind": "Analytic original supported even whole-negative-frequency Loewner UPPER carrier and exact-rational parity rank/global Young-tail gate",
+      "scope": "True complete K_neg,e <= (1+tau)P K_cap,e P+delta(I-P), on physical even carrier; b=24 dim<=890, tau=1/65536, delta<1.93e-8 and delta/kappa<1.93e-5. A sufficient finite true-supported inverse cap eigenvalue threshold 0.99996 is NOT certified.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/141",
+      "repo_path": "notes/RPB108_EF03_EVEN_FULL_UPPER_CARRIER_20261016.md",
+      "verification": "Draft PR; focused original signed rational cap/EF02 replay and governance final-head checks pending. Exact Loewner reduction is not the missing full finite inverse positivity, RH or independent peer review."
     }
   },
   "obligations": [
@@ -184,10 +198,12 @@
       ],
       "evidence": [
         "SI10",
-        "EF01"
+        "EF01",
+        "EF02",
+        "EF03"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF02: certify an actual supported even finite inverse Gram / correctly signed low-high Schur and all cross terms, using EF01's <=890-direction b=24 gate or justify a carrier bridge to the existing native RC even high-Schur. The EF01 rank and residual alone do not prove even positivity."
+      "next_action": "EF04: actually certify the full finite cap matrix M_cap,e and actual supported positive inverse G_e (with all cross entries and positive even pole), prove (1+1/65536)λmax(M_cap^(1/2) G_e M_cap^(1/2))+δ_24/κ<=1, or exhibit a rigorous cap/reference obstruction and pivot to a sharper cap/native RC carrier. The EF03 δ bound alone does not close W-EVEN-FORM."
     },
     {
       "id": "W-WHOLE-FORM",
