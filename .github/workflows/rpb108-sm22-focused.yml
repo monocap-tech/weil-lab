@@ -1,0 +1,21 @@
+name: RPB108 SM22 actual first source inverse reference
+on:
+  pull_request:
+    branches: [research/rpb108-route-consolidation]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-odd-first-source-inverse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_sm22_first_original_inverse_reference.py
+          python -u scripts/validate_rpb108_sm22_first_original_inverse_reference.py
