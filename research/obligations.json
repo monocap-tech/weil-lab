@@ -63,7 +63,7 @@
       "scope": "Proves K_freq,o cannot be dominated by the unchanged SI29 C14 positive reference, hence neither by pole-subtracted C14_star. Does NOT prove negativity for the original A_o or Weil form.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/129",
       "repo_path": "notes/RPB108_SM03_NEGATIVE_PACKET_REFERENCE_NOGO_20261016.md",
-      "verification": "First 64-panel exact rational Actions run 38997855264 passed with strict obstruction margin >0.042252; final 16-panel candidate is pending its focused integration CI. Not independently peer reviewed or Lean formalized."
+      "verification": "Exact-rational structural Actions passed: 64-subcell full reference regression run 38997855264; final 16-subcell run 38998179599 and final-head obligation-governance run 38998179609. On the 16-subcell replay m_J upper <-1.4798698, true negative packet lower >0.1935774, all-14 C14 reference upper <0.1555540, and strict obstruction margin >0.0380235. Not independent peer review or Lean formalization."
     }
   },
   "obligations": [

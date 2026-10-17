@@ -82,7 +82,7 @@ whereas
 \langle g_-,K_{{\rm freq},o}g_-\rangle
 \ge4\rho_-\delta_-(1-e)^4 N^2=:L.
 \]
-The exact rational acceptance is \(0<U<L\), with deliberately weaker robust rational thresholds \(L>193/1000\), \(U<4/25\) and \(L-U>3/100\). The first 64-subcell version passed GitHub Actions run `38997855264` with stricter enclosures \(m_{J}^{\rm upper}<-1.4798698\), \(L>0.1935774\), \(U<0.1513254\) and \(L-U>0.0422520\); the current 16-subcell replay must independently establish the retained weaker rational thresholds. This deliberately discards the helpful *negative* pole term from the comparison and keeps all fourteen **positive** reference components, including the two original degree-one moments. No inverse, omitted cross Gram, or unknown \(A_o\) action is substituted.
+The exact rational acceptance is \(0<U<L\), with deliberately weaker robust rational thresholds \(L>193/1000\), \(U<4/25\) and \(L-U>3/100\). The first 64-subcell version passed GitHub Actions run `38997855264` with stricter enclosures \(m_{J}^{\rm upper}<-1.4798698\), \(L>0.1935774\), \(U<0.1513254\) and \(L-U>0.0422520\); the 16-subcell final-head replay did independently establish the weaker rational thresholds (structural run `38998179599`; obligation-governance run `38998179609`), with signed negative packet lower `>0.1935774`, full fourteen-feature reference upper `<0.1555540` and obstruction margin `>0.0380235`. This deliberately discards the helpful *negative* pole term from the comparison and keeps all fourteen **positive** reference components, including the two original degree-one moments. No inverse, omitted cross Gram, or unknown \(A_o\) action is substituted.
 
 ## 4. Consequence: sparse-reference method-class no-go
 
