@@ -43,9 +43,11 @@ def run():
     assert 2 * a.lo > log8.hi
     assert all(logs[n].hi <= log8.hi < 2 * a.lo for n, _ in PRIMES if n < 9)
     assert all(0 < logs[n].lo < logs[n].hi < R for n, _ in PRIMES)
-    assert weights[9].lo == (old.log_i(F(3)) / 3).lo
-    assert weights[9].hi == (old.log_i(F(3)) / 3).hi
-    assert weights[9].lo > F(1, 3)
+    # old.sqrt_i(9) conservatively encloses the exact sqrt(9)=3;
+    # for the actual n=9 prime weight use that exact integer root.
+    w9 = old.log_i(F(3)) / 3
+    assert weights[9].lo <= w9.lo <= w9.hi <= weights[9].hi
+    assert w9.lo > F(1, 3)
 
     # Exact hyperbolic enclosure on 0<B/2<1: c²+s²=cosh(B).
     s, c = old.sinh_cosh_iv(B / 2)
@@ -55,7 +57,6 @@ def run():
     # A_H=SUM_j |<h,e^(-(2j+1/2)t)>|² >= 0.
     # Since t,s in J and a>1, k(t+s)<2 and hence A_H<=2*delta.
     # Original poles: 0<=P<=8*delta*cosh(B).
-    w9 = weights[9]
     even_below_odd_margin = 4 * w9.lo - 8 * delta.hi * cosh_B.hi
     odd_below_even_margin = 4 * w9.lo - 8 * delta.hi
 
@@ -74,8 +75,8 @@ def run():
     test_delta = F(1, 400)
     assert test_delta * (1 / test_delta) == 1
     assert F(12) / test_delta ** 3 * (test_delta ** 3 / 12) == 1
-    for x in [F(-1, 2), F(-1, 4), F(0), F(1, 4), F(1, 2)]:
-        assert -x == (-x)  # antisymmetric coordinate after reflection
+    for z in [F(0), F(1, 4), F(1, 2), F(3, 4), F(1)]:
+        assert (F(1) - z - F(1, 2)) == -(z - F(1, 2))
 
     print("PS02 true log9 overlap delta outward", str(delta.lo), str(delta.hi),flush=True)
     print("PS02 positive-half edge a", str(a.lo), str(a.hi), flush=True)
