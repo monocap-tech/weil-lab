@@ -18,6 +18,7 @@ from validate_rpb108_si25_first_moment_bessel import (
     linear_interval, bilinear_interval
 )
 from validate_rpb108_si12_even_supported_inverse import sinh_bounds
+from validate_rpb108_sm06_band_legendre_tail import validate as certify_constant_band_tail
 from validate_rpb108_sm03_negative_packet_reference_nogo import (
     C as NEG_CENTER, RADIUS as NEG_RADIUS, DELTA as NEG_DELTA
 )
@@ -267,11 +268,22 @@ def validate():
           float(maxtau),float(neg_tau),float(moment_tau),flush=True)
     print("SM06: 3x3 weighted Birman-Schwinger Gershgorin ROW upper:",
           float(row0),float(row1),float(row2),flush=True)
-    assert max(row0,row1,row2)<1, (
-        "SM06 coupled first-moment BS threshold not certified",
+    theta=max(row0,row1,row2)
+    assert theta<F(993,1000), (
+        "SM06 full constant-weight negative BAND margin not certified",
         float(row0),float(row1),float(row2))
-    print("SM06 PASS: exact original odd A_o dominates pole + negative band mean + first Legendre moment",flush=True)
-    print("SM06 is not full band absorption: higher Legendre modes, other bands and full K residual OPEN",flush=True)
+    tail_eps=certify_constant_band_tail()
+    # Since BS_max <= theta, the original positive support obeys
+    # A_o-2ss* - gamma0*g0*g0* - gamma1*g1*g1*
+    #    >= (1-theta)*A_o >= (1-theta)*kappa*I.
+    # The exact complete delta-weighted higher Legendre continuum is
+    # <=tail_eps*I, so this positive floor pays the WHOLE remainder.
+    remaining_floor=(1-theta)*KAPPA-tail_eps
+    assert remaining_floor>0
+    print("SM06: after original full constant-weight negative BAND residual, certified L2 floor LOWER:",
+          float(remaining_floor),flush=True)
+    print("SM06 PASS: A_o dominates original odd pole + entire uniform delta=7/5 negative-frequency band",flush=True)
+    print("SM06 leaves actual variable (kappa-m)-delta excess on band, other signed bands and entire W-ODD-NEG open",flush=True)
 
 if __name__=="__main__":
     validate()

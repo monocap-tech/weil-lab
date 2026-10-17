@@ -50,6 +50,7 @@ def validate():
     print("SM06-T mean/first moment exact weights:",float(gamma0),float(gamma1),flush=True)
     print("SM06-T conditional three-source BS row ceiling needed:",float(gate),flush=True)
     print("SM06-T excludes extra actual r(xi)-delta on J and all other signed-negative intervals; W-ODD-NEG OPEN.",flush=True)
+    return operator_tail_upper
 
 if __name__=="__main__":
     validate()

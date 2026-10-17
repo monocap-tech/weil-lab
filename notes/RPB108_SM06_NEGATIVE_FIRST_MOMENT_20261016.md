@@ -123,3 +123,5 @@ which absorbs **all** of \(R_{J,\ge2}\). Hence that *conditional* gate would cer
 A_o\succeq2|s\rangle\langle s|+T_{J,\delta}.
 \]
 This controls the complete **uniform \(\delta\)-weighted component** of a genuine continuous original negative band, not the original variable \(r(\xi)\) on that band: the extra nonnegative multiplier \(r(\xi)-\delta\), as well as every other negative band, remains to be paid. The margin condition cannot be assumed merely because the three-source test gives \(\theta<1\); it must pass \(\theta<0.993\) explicitly.
+
+**Automated composite acceptance (SM06):** the final three-source checker additionally requires \(\theta<0.993\), replays the independent exact-rational infinite-tail bound, and verifies the strict residual \(L^2\) floor \((1-\theta)\kappa-\varepsilon_{J,\ge2}>0\). Only a passing *composite* source run warrants the conclusion \(A_o\succeq2|s\rangle\langle s|+T_{J,\delta}\). The true nonconstant excess \((\kappa-m)_+-\delta\) on \(J\) and all other bands are not included.
