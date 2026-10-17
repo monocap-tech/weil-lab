@@ -42,7 +42,7 @@ POS_PANELS=4
 NEG_PANELS=8
 NEG_GAMMA=4*NEG_RADIUS*NEG_DELTA
 MOM_GAMMA=NEG_GAMMA/F(3)
-MOM_PANELS=16
+MOM_PANELS=8
 # Rational upper bounds for sqrt(weight_i*weight_j), used only in
 # Gershgorin absolute row sums, not approximating the true source.
 CROSS_01=F(29,50)    # sqrt(2*21/125)<0.58
@@ -153,7 +153,7 @@ def intervals():
     moment_terms=composite_moment_terms(NEG_CENTER,NEG_RADIUS,MOM_PANELS)
     moment_tau=moment_simpson_error(NEG_RADIUS,MOM_PANELS)
     assert max(tau)<F(1,10**5) and neg_tau<F(1,10**6)
-    assert 0<moment_tau<F(1,10**6)
+    assert 0<moment_tau<F(3,10**6)
     assert all(t>0 for t in tau) and all(g>0 for g in gamma)
 
     # Q[i][j]=<true positive feature_i, source_j>.

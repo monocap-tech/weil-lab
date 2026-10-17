@@ -57,10 +57,10 @@ V^*A_o^{-1}V
 \]
 The positive missing dual residual \((Q-MZ)^*M^{-1}(Q-MZ)\) is not dropped as a negative error; the displayed sign is the upper bound.
 
-The exact-rational validator encloses all physical entries of \(H,Q,P\), including **all three cross-source entries** \((s,g_0)\), \((s,g_1)\), \((g_0,g_1)\), using original supported sine/sinh intervals and signed composite Simpson enclosures. The new degree-one moment uses sixteen rational Simpson subpanels; its fourth derivative is bounded by
+The exact-rational validator encloses all physical entries of \(H,Q,P\), including **all three cross-source entries** \((s,g_0)\), \((s,g_1)\), \((g_0,g_1)\), using original supported sine/sinh intervals and signed composite Simpson enclosures. The new degree-one moment uses eight rational Simpson subpanels; its fourth derivative is bounded by
 \[
 3(4\beta^3+\beta^4),\quad\beta=2\pi_{\rm hi}rB,\quad
-\varepsilon_1\le\frac{3(4\beta^3+\beta^4)}{180}(2/16)^4.
+\varepsilon_1\le\frac{3(4\beta^3+\beta^4)}{180}(2/8)^4.
 \]
 The accepted upper bound is not built from an unsupported whole-line reciprocal or a finite-cutoff inverse. Crucially, the entrywise intervals enclose the entries of the **explicit Loewner-majorant matrix**, not the entries of the true supported inverse response; the true response is dominated by that majorant in PSD order.
 
