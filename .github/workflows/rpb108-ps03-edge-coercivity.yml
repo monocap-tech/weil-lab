@@ -1,0 +1,37 @@
+name: RPB108 PS03 uniform original edge coercivity
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_ps03_edge_coercivity.py"
+      - "notes/RPB108_PS03_EDGE_COERCIVITY_20261017.md"
+      - ".github/workflows/rpb108-ps03-edge-coercivity.yml"
+      - "research/parallel_investigations/w_physical_shift.json"
+  workflow_dispatch:
+
+jobs:
+  ps03-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify original full edge-subspace strict signed margin
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps03_edge_coercivity.py
+          python3 scripts/validate_rpb108_ps03_edge_coercivity.py
+      - name: Confirm canonical custody and no proof promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          manifest=json.load(open("research/obligations.json"))
+          parallel=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert manifest["active_obligation"]=="W-ODD-NEG"
+          assert manifest["objective"]["status"]=="open"
+          assert parallel["id"]=="W-PHYSICAL-SHIFT"
+          assert parallel["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert parallel["status"]=="open"
+          assert all(not v for v in parallel["closures"].values())
+          PY

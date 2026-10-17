@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "Analytic physical parity decomposition and edge-strip two-sided non-order theorem; exact rational source replay, CI and independent audit required; no whole-operator positivity.",
+  "proof_standing": "PS03 analytic entire original signed edge-supported infinite-dimensional subspace coercivity >3/10 with exact-rational gap/constant replay pending CI; no full-space or even/odd whole positivity, no Schur cross-block, no independent mathematical review.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS03: build and validate common Toeplitz versus prime-reflection plus arch Hankel operator blocks; exploit the fully signed parity distinction without assuming an ordering",
-    "PS04: test comparison against current SM22 or EF13 signed coupling on the same norms and domains"
+    "PS04: certify the full mixed physical Schur coupling between uniformly positive edge subspace and its complement, including exact domain and arch spectral form; see whether edge elimination strictly improves SM/EF or RC bounds",
+    "PS05: compare the edge projector against RC314 D-Riesz low carrier and SI10 L2 Taylor carrier only under certified norm/domain transfer"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -47,6 +47,14 @@
       "status": "analytic theorem and exact source-rational inequalities; focused CI and independent mathematical review pending",
       "note": "notes/RPB108_PS02_EDGE_REFLECTION_PARITY_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps02_edge_reflection.py"
+    },
+    {
+      "id": "PS03",
+      "scope": "uniform original signed Weil lower >3/10 ||g||² on infinite-dimensional two-edge support subspace, both parities and mixed parity",
+      "status": "analytic supported-gap theorem and exact-rational certificate; focused final-head Actions and independent review pending",
+      "note": "notes/RPB108_PS03_EDGE_COERCIVITY_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps03_edge_coercivity.py",
+      "limitation": "Does not bound cross Schur response of edge subspace against its complement"
     }
   ]
 }
