@@ -84,6 +84,29 @@ The sum includes every original negative-frequency leaf and excludes none withou
 
 For leaves with distance \(d(c,I)\le6\), apply the locally sharpened sign bound \(w'_I\) and the SI18 rational midpoint-plus-derivative Fourier envelope above. For more remote leaves, **keep** the already certified original SI10 \(h_I+\kappa\) multiplier cap and use the all-real analytic distance envelope \(s(d(c,I))+s(c+l)+2Be\), independent of phase sampling. Every one of the original 973 leaves is included in the sum. This saves expensive exact trigonometric and archimedean evaluations at large frequency without weakening mathematical coverage. The printed remote count is an accounted-for count, not a removed-frequency count.
 
+### Integrated multiplier improvement on strictly negative leaves
+
+Within two frequency units of the original witness, test an additional independent **upper** certificate
+\[
+\overline m_I:={\rm arch}_{\rm upper}(r)+p_{\rm upper}(u)+69|I|/2<\kappa.
+\]
+This proves \(m(\xi)<\kappa\) for **every real** \(\xi\in I\), so \(r(\xi)=\kappa-m(\xi)\) has no clipping on that leaf. Let the original seven-prime phase part be \(p(\xi)=-2\sum_n w_n\cos(2\pi\xi\log n)\). Its actual second derivative has the exact global rational upper
+\[
+M_2=2\sum_n(w_n)_{\rm upper}(2\pi_{\rm upper}(\log n)_{\rm upper})^2.
+\]
+The centered Taylor remainder integrates with vanishing linear term, proving
+\[
+\frac1{|I|}\int_I p(\xi)\,d\xi
+\ge p_{\rm lower}(u)-M_2|I|^2/24.
+\]
+Since the original archimedean part is increasing,
+\[
+\frac1{|I|}\int_I r(\xi)\,d\xi
+\le \kappa-{\rm arch}_{\rm lower}(l)
+-p_{\rm lower}(u)+M_2|I|^2/24.
+\]
+With \(U_I\) still a full-leaf bound for the physical Fourier amplitude, one can use this **integrated** mass upper instead of the less competitive pointwise cap. It is valid even though the pointwise multiplier differs linearly from the midpoint by a much larger amount; the linear variation cancels under integration. Only certified wholly negative leaves use this shortcut. All others keep the original safe pointwise bound.
+
 ## 3. Exact original odd pole payment and signed-witness gate
 
 The original odd pole is \(2|\langle s,g\rangle|^2\), \(s(x)=\sinh(x/2)\). SI18's exact supported center response yields
