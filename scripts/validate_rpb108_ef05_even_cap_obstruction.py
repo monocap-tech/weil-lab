@@ -110,7 +110,7 @@ def full_cap_lower():
 def actual_positive_low_upper():
     """Exact all-continuum (not sampled) a=max(m,kappa) upper [0,4].
 
-    Archimedean contribution monotone, evaluated at right endpoint;
+    Archimedean contribution monotone, bounded at enclosing integer right endpoint;
     whole seven-prime signed cosine upper at midpoint with global
     |p'|<69 remainder; true physically supported Fourier moment
     covered by derivative max 2pi B² at each rational subcell.
