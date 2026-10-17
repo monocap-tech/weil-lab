@@ -25,12 +25,16 @@ from validate_rpb108_sm07_true_multiplier_excess_nogo import (
 )
 
 THETA=F(993,1000)
+# The initial 8-panel first-moment source replay failed ONLY because the
+# interval norm-radius bound (0.12176) overwhelmed the finite LDL margin;
+# use 16-panel moments to lower quadrature uncertainty by 16x.
+MOMENT_PANELS=16
 # Source columns: s, broad mean, broad first moment, narrow mean, narrow first moment.
 SOURCE_DATA=(
     (NEG_CENTER,NEG_RADIUS,False,NEG_PANELS),
-    (NEG_CENTER,NEG_RADIUS,True,MOM_PANELS),
+    (NEG_CENTER,NEG_RADIUS,True,MOMENT_PANELS),
     (EX_CENTER,EX_RADIUS,False,NEG_PANELS),
-    (EX_CENTER,EX_RADIUS,True,MOM_PANELS),
+    (EX_CENTER,EX_RADIUS,True,MOMENT_PANELS),
 )
 WEIGHTS=(
     F(2),
