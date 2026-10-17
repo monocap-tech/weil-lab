@@ -238,7 +238,14 @@
       "scope": "For original SM10 first physical odd Taylor source u0 at c=37/64, reconstruct true SI29 14-feature positive original form lower and paid odd pole upper, derive q_L and improve SM20 first-column supported Ritz residual D00 upper by q_L^2/M0 while retaining all a^2 exterior and 14 signed source/pole interactions. Does not bound remaining 889 columns or original full Schur.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/164",
       "repo_path": "notes/RPB108_SM21_NATIVE_SOURCE_RAYLEIGH_20261017.md",
-      "verification": "Exact Fraction source-specific rational job and final-head governance CI pending; no original full 890-column inverse, independent mathematical review or Lean proof."
+      "verification": "PR #164 merged at 4561d7cc538fdb82f73dceb3db755800009b818b; 18/18 final-head GitHub Actions success on 4239131b05273ae593c13b58bc66bb4ac6d8b04b. Original first source conditioned energy >0.2668981393553 and strict Ritz D00 upper improvement 5.432588898e-5 (>6.78e7 times SM20's tiny reduction). No 890-column inverse or independent peer review."
+    },
+    "SM22": {
+      "kind": "actual supported first SM10 odd source full SI29 14-feature variational inverse upper and SM21 residual inverse-energy enclosures",
+      "scope": "For original first SM10 source c=37/64, use entire signed original SI29 true 14x14 physical Gram and 14 overlaps to certify K^-1 correction lower by rational dual, hence C14^-1 first-source UPPER, then B14^-1 original odd-pole correct upper using SI29 alpha; for actual SM21 forward residual derive rational Young upper in B14^-1 energy with SM20 original a^2 all-frequency tail. Full 890x890 source inverse, all residual cross terms and W-ODD-NEG still OPEN.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/165",
+      "repo_path": "notes/RPB108_SM22_FIRST_ORIGINAL_INVERSE_REFERENCE_20261017.md",
+      "verification": "Exact Fraction actual original first-source validator, focused final-head Actions and obligation governance CI pending. No independently reviewed original 890-source gate or Lean attachment; W-ODD-NEG OPEN."
     }
   },
   "obligations": [
@@ -296,10 +303,11 @@
         "SM18",
         "SM19",
         "SM20",
-        "SM21"
+        "SM21",
+        "SM22"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM21 computes SI29's genuinely original fourteen-source positive Rayleigh lower on SM10's actual first negative-frequency Taylor source, subtracting original odd pole, and optimizes its nonzero graph-domain forward Ritz trial. Inspect certified quantitative ratio versus weak SM20 scalar damping; NEXT evaluate true SM19 pole-correct Woodbury residual upper for this first column with complete original mixed Gram, then develop a useful coupled supported Ritz family rather than 889 independent microscopic scalings. Actual original all-890 inverse/Schur PSD and W-ODD-NEG remain OPEN."
+      "next_action": "SM22 attempts the first ACTUAL original SI29 14-feature supported inverse UPPER on actual SM10 first source c=37/64, paying all fourteen true physical means/moments, complete signed 14x14 Gram, original pole with correct Sherman-Morrison sign, and bounding SM21 actual forward residual in SI29 reference inverse energy. VERIFY numeric competitiveness on focused CI; then compute tighter signed original full Woodbury residual 14-source cross/pole terms on this column, and develop 890-source coupled Ritz transport. No single-source result closes full original 890-column W-ODD-NEG."
     },
     {
       "id": "W-EVEN-FORM",
@@ -613,6 +621,17 @@
         "scripts/validate_rpb108_sm21_native_source_rayleigh.py"
       ],
       "interpretation": "Exact Fraction first actual SM10 source 14-feature SI29 supported Rayleigh lower with true pole and improved single-column forward residual; no all-890 inverse spectral threshold.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM22-original-first-source-SI29-inverse",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm22_first_original_inverse_reference.py"
+      ],
+      "interpretation": "Actual SM10 source first-column supported SI29 14-feature full-Gram rational variational inverse upper, correct odd pole and rational Young residual upper; not full 890-source inverse or W-ODD-NEG.",
       "cadence": "on-demand"
     }
   ]
