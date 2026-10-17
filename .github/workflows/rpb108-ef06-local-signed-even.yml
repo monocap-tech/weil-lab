@@ -1,0 +1,32 @@
+name: RPB108 EF06 sharper original even local cap
+
+on:
+  pull_request:
+    branches:
+      - research/rpb108-route-consolidation
+    paths:
+      - 'scripts/validate_rpb108_ef06_local_even_signed_cap.py'
+      - 'notes/RPB108_EF06_LOCAL_SIGNED_EVEN_CAP_20261017.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-ef06-local-signed-even.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-signed-even-majorant:
+    name: Exact original signed cap refinement and same even witness
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay exact-rational original signed EF06 [0,1] microcap and full residual
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef06_local_even_signed_cap.py
+          python scripts/validate_rpb108_ef06_local_even_signed_cap.py
