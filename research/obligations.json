@@ -64,6 +64,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/129",
       "repo_path": "notes/RPB108_SM03_NEGATIVE_PACKET_REFERENCE_NOGO_20261016.md",
       "verification": "Exact-rational structural Actions passed: 64-subcell full reference regression run 38997855264; final 16-subcell run 38998179599 and final-head obligation-governance run 38998179609. On the 16-subcell replay m_J upper <-1.4798698, true negative packet lower >0.1935774, all-14 C14 reference upper <0.1555540, and strict obstruction margin >0.0380235. Not independent peer review or Lean formalization."
+    },
+    "SM04": {
+      "kind": "15-band exact rational original odd negative operator rank certificate",
+      "scope": "λ15(K_freq,o)>14/1000>κ; rules out every κI+rank≤14 positive reference, not original A_o or RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/131",
+      "repo_path": "notes/RPB108_SM04_NEGATIVE_PACKET_SPECTRAL_RANK_20261016.md",
+      "verification": "Full structural GitHub Actions run 38999809551 passed source certificate, final branch validation is separate."
     }
   },
   "obligations": [
@@ -103,10 +110,11 @@
         "SI10",
         "RC334",
         "SM02",
-        "SM03"
+        "SM03",
+        "SM04"
       ],
       "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM04/SI30: the unchanged SI29 14-feature lower reference is rigorously insufficient to absorb the original negative continuum (SM03). Enrich true positive-frequency reference in the directions coupled to an actual negative packet, or compute native supported A_o^{-1} via RC high Schur. Certify pole/frequency mixed finite matrix, its rigorous inverse upper and entire remainder. Do not infer negativity of A_o or Q_Weil from failure of C14."
+      "next_action": "SM05/RC: certify supported original A_o inverse on the full coupled negative-frequency operator, or a richer positive carrier. SM04 excludes every scalar-floor plus rank ≤14 positive reference as a sufficient domination certificate; W-ODD-NEG remains OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -237,6 +245,17 @@
         "scripts/validate_rpb108_sm03_negative_packet_reference_nogo.py"
       ],
       "interpretation": "Certifies an original signed whole-frequency negative packet defeating the unchanged SI29 C14 lower reference; not a counterexample to Weil positivity or the complete BS gate.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM04-negative-odd-spectral-rank",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm04_negative_packet_rank.py"
+      ],
+      "interpretation": "Checks at least 15 original negative odd eigenvalues exceed κ; not RH or full odd Weil positivity.",
       "cadence": "per-update"
     }
   ]
