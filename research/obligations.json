@@ -96,7 +96,7 @@
     "EF01": {
       "kind": "Original even parity-compression theorem and exact-rational rank/error regression (PR pending)",
       "scope": "SI10 whole-original-form positive even complement of codimension <=469 at b=9; <=890 even finite BS directions at b=24 with complete original signed negative-frequency norm error eta/kappa<0.009868; full even finite inverse eigenvalue and cross coupling OPEN.",
-      "pr": "pending",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/136",
       "repo_path": "notes/RPB108_EF01_EVEN_PARITY_GATE_20261016.md",
       "verification": "Analytic reduction recorded; focused exact-rational GitHub Actions verification and PR review pending; not independently peer reviewed or formalized in Lean."
     }
