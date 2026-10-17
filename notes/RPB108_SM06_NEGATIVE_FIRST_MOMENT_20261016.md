@@ -87,3 +87,39 @@ A passing first-moment test absorbs one more *independent continuous-frequency d
 Replay: \`python scripts/validate_rpb108_sm06_first_negative_moment.py\`.
 
 **Acceptance:** exact rational final-head source checks, preserving all true supported domains, and a consistent canonical obligation ledger. Independent peer review or Lean formalization is separate.
+
+
+## 4. A rigorously paid *infinite* Legendre remainder on this band
+
+An additional exact rational replay, \`scripts/validate_rpb108_sm06_band_legendre_tail.py\`, proves a full infinite-dimensional tail bound for the **constant certified negative floor** \(\delta=7/5\) on \(J_-\). Let
+\[
+T_{J,\delta}:=2\delta\int_{c-r}^{c+r}|h_\xi\rangle\langle h_\xi|d\xi.
+\]
+The exact Legendre decomposition gives
+\[
+T_{J,\delta}=\frac{21}{125}|g_0\rangle\langle g_0|
++\frac7{125}|g_1\rangle\langle g_1|+R_{J,\ge2},
+\quad R_{J,\ge2}\succeq0.
+\]
+For any odd physically supported \(f\), the orthogonal Legendre projection error is no greater than the affine Taylor approximation error of \(v(u)=\langle f,h_{c+ru}\rangle\). Since \(E[u^4]=1/5\) and
+\(\|h''_\xi\|_2^2\le(2\pi_{\rm hi})^4(2B^5/5)\),
+\[
+\boxed{
+0\preceq R_{J,\ge2}\preceq
+\varepsilon_{J,\ge2}I,\qquad
+\varepsilon_{J,\ge2}
+=\frac{\delta r^5(2\pi_{\rm hi})^4 2B^5}{25}
+<7\cdot10^{-6}.
+}
+\]
+This is a **whole-infinite-tail** statement, not an order-truncation assumption. It is valid on the original supported odd Hilbert space, conditional only on SM03's inherited certified interval and the explicit Taylor/Parseval estimate.
+
+If the certified three-source normalized BS **largest row upper** \(\theta\) satisfies \(\theta<993/1000\), then
+\(A_o-2|s\rangle\langle s|-\gamma_0|g_0\rangle\langle g_0|
+-\gamma_1|g_1\rangle\langle g_1|\succeq(1-\theta)A_o
+\succeq(1-\theta)\kappa I>7\cdot10^{-6}I\),
+which absorbs **all** of \(R_{J,\ge2}\). Hence that *conditional* gate would certify
+\[
+A_o\succeq2|s\rangle\langle s|+T_{J,\delta}.
+\]
+This controls the complete **uniform \(\delta\)-weighted component** of a genuine continuous original negative band, not the original variable \(r(\xi)\) on that band: the extra nonnegative multiplier \(r(\xi)-\delta\), as well as every other negative band, remains to be paid. The margin condition cannot be assumed merely because the three-source test gives \(\theta<1\); it must pass \(\theta<0.993\) explicitly.
