@@ -253,6 +253,13 @@
       "pr": "EF12 stacked after EF11; candidate",
       "repo_path": "notes/RPB108_EF12_ORIGINAL_EVEN_FINITE_SCHUR_20261017.md",
       "verification": "Exact-rational 2x3 toy algebra regression proposed; actual V, gamma, original signed matrix, infinite residual, true even PSD, whole Weil/RH OPEN."
+    },
+    "EF13": {
+      "kind": "Original SI10 protected 107 positive signed-frequency clusters and explicit parity-even 890-column physical modulated polynomial Taylor carrier, 24-bit exact-rational cofinite original Q_e gamma",
+      "scope": "Physical u_{jk}^e=1_I*(2pi*x)^k/k!*cos(2pi*c_j*x+k*pi/2), p_j original SI10 taylor_order(width,24), sum p_j=890. Complete 973 original unresolved leaves and 107 clusters; even-pole nonnegative; original cofinite gamma=kappa-2B*T*2^-48 >.000999 on V_e-perp. Does NOT certify exceptional block PSD.",
+      "pr": "EF13 draft candidate stacked on EF12",
+      "repo_path": "notes/RPB108_EF13_TRUE_EVEN_PARITY_CARRIER_20261017.md",
+      "verification": "EF13 focused original signed cover replay/parity dimension and cofinite exact rational CI pending. Full 890-dim signed Schur, original operator domain closure, Weil/RH OPEN."
     }
   },
   "obligations": [
@@ -336,10 +343,11 @@
         "EF09",
         "EF10",
         "EF11",
-        "EF12"
+        "EF12",
+        "EF13"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF12: instantiate CONDITIONAL true original even finite signed Schur by explicit parity-preserving SI10 exceptional V and original-domain cofinite gamma, then original signed A/mixed rows, Riesz lifts and FULL-complement energy-dual residual bounds rho_i; prove M-(sum rho_i²)I PSD. The abstract EF12 identity alone is not an actual even certificate. EF11 direct one-vector source result separately required; W-EVEN-FORM OPEN."
+      "next_action": "EF13: replay SI10 original whole seven-prime 107-cluster signed cover and actual 24-bit parity-even V_e with 890 exact Taylor columns; certify Q_e>=gamma_e>0.000999 on V_e-perp. THEN EF14: begin actual original signed even 890x890 block via exact physical support Gram/signed frequencies/true pole, normalize carrier, and genuine complement dual-energy residuals. EF11 direct one-witness CI and full original signed Schur PSD still OPEN."
     },
     {
       "id": "W-WHOLE-FORM",

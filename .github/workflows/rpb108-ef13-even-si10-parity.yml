@@ -1,0 +1,23 @@
+name: RPB108 EF13 original even explicit SI10 parity carrier
+on:
+  pull_request:
+    branches:
+      - research/rpb108-even-form-ef12-true-schur
+      - research/rpb108-route-consolidation
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-carrier-and-cofinite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m py_compile scripts/validate_rpb108_ef13_even_si10_parity_carrier.py
+          python scripts/validate_rpb108_ef13_even_si10_parity_carrier.py
