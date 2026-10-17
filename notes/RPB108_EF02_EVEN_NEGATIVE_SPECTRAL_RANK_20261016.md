@@ -71,10 +71,16 @@ The focused exact-rational validator requires the deliberately weaker inequaliti
 \]
 By min–max and the full original Loewner minorant,
 \[
-\boxed{\lambda_{15}(K_e)>
-(2/125)(93/100)>3/200=0.015>\kappa=0.001.}
+\lambda_{15}(K_e)\ge(2/125)\lambda_{\min}(H)
+>(2/125)(93/100)=0.01488>\kappa=0.001.
 \]
-The last stronger threshold is separately checked against the *unrounded* exact rational Gershgorin bound rather than deduced from \(93/100\), which alone would only yield 0.01488. These are eigenvalue **lower bounds for the negative part** \(K_e\), not for the complete signed \(Q_e\).
+The exact-rational validator **separately** requires the stronger
+unrounded Gershgorin threshold \(\lambda_{\min}(H)>15/16=0.9375\).
+Only with that independently checked bound do we conclude
+\[
+\boxed{\lambda_{15}(K_e)>3/200=0.015>\kappa.}
+\]
+The stronger threshold is not inferred from \(93/100\) alone. These are eigenvalue **lower bounds for the negative part** \(K_e\), not for the complete signed \(Q_e\).
 
 ## 4. Uniform method-class obstruction, *including the positive even pole*
 
