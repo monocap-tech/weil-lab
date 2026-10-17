@@ -106,7 +106,7 @@ def run():
     print("SM20 true physical source norm2",float(nlo),float(nhi),flush=True)
     print("SM20 entire original a^2 graph tail upper",float(TAIL_A2),flush=True)
     print("SM20 all-frequency true original A_star source norm2 upper",float(m_upper),flush=True)
-    print("SM20 actual nonzero physical Ritz scale",str(lam),float(lam),flush=True)
+    print("SM20 actual nonzero physical Ritz scale",float(lam),flush=True)
     print("SM20 certified residual D00 interval",float(dlo),float(dhi),flush=True)
     print("SM20 strict improvement against original norm upper",float(delta),flush=True)
     print("SM20 original pole <s,E0> interval",float(t[0]),float(t[1]),flush=True)
