@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS07 analytical exact original signed IMS identity; physical remainder bounded <40 but noncompact due true log2 prime shift; whole graph-energy-conjugated IMS remainder compact, exact-rational geometry/constant CI and independent review pending. W-ODD-NEG, W-EVEN-FORM, true full Schur, complete CC27 domain bridge and RH remain OPEN.",
+  "proof_standing": "PS08 analytic quantitative original seven-prime graph-conjugated IMS Galerkin residual <3/4 at explicit impossible-to-compute rank 2^8206, exact rational source/method limit replay pending final-head CI and independent mathematical review; actual 890-source Schur, full domain transfer, W-ODD-NEG, W-EVEN-FORM and RH remain OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS08: build certified finite-rank approximation of the entire signed energy-conjugated IMS remainder, with prime shifts and poles included, and isolate numerical bad eigenvalues on true original carrier",
-    "PS09: attach accepted strictly positive complementary Schur matrix and full CC27 D-Riesz domain equivalence before promoting to W-ODD-NEG/W-EVEN-FORM"
+    "PS09: devise energy-adapted low-rank physical basis that beats naive 2^8206 cellwise Galerkin, compute true original signed projected IMS/source matrix and certify inverse-energy residual with realistic rank",
+    "PS10: certify a positive complementary Schur gap under the full original physical form and establish CC27 D-Riesz norm/domain transfer before promoting any RH or whole Weil standing"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -87,6 +87,14 @@
       "note": "notes/RPB108_PS07_ORIGINAL_IMS_LOCALIZATION_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps07_ims_localization.py",
       "limitation": "No finite original signed Schur PSD, no native CC27/D-Riesz domain transfer, no quantitative small eigenvalue bound; quadratic IMS is not additive/orthogonal decomposition"
+    },
+    {
+      "id": "PS08",
+      "scope": "fully quantitative but astronomically large original signed graph-normalized IMS Galerkin P_N K P_N, N=2^8206, operator norm residual <443149/614400<3/4, parity-preserving, no matrix allocation",
+      "status": "analytic finite-rank theorem and exact-rational original source/remainder check; focused CI and independent audit pending; numerically impractical method",
+      "note": "notes/RPB108_PS08_QUANTITATIVE_GALERKIN_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps08_quantitative_galerkin.py",
+      "limitation": "No actual matrix entries or spectral inertia, inverse-energy solve, accepted Schur PSD, native CC27 D-Riesz bridge, or RH. Existing scalar logarithmic Fourier tail method is noncompetitive."
     }
   ]
 }
