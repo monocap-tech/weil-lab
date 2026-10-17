@@ -83,4 +83,4 @@ This is an **existence** statement, not an explicit all-rational SM17 3D certifi
 
 **Next actionable calculation:** bound the true supported \(G=C^{1/2}U^*A_*^{-1}UC^{1/2}\) on **all 890 columns**, pole conditioned and coupled, or rigorously improve the SM10 cap. Seek a certified \(\mu\) lower than the displayed sufficient threshold (or directly bound top spectrum of \(T\)). Do not prioritize arbitrary 3D witness inflation over that obligation.
 
-Exact arithmetic replay: \`python scripts/validate_rpb108_sm17_compact_spectral_gate.py\`. This replay does not formalize the analytic proofs.
+Exact arithmetic replay: `python scripts/validate_rpb108_sm17_compact_spectral_gate.py`. This replay does not formalize the analytic proofs.
