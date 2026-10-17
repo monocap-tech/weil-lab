@@ -1,0 +1,38 @@
+name: RPB108 PS02 original edge reflection parity no-go
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_ps02_edge_reflection.py"
+      - "notes/RPB108_PS02_EDGE_REFLECTION_PARITY_20261017.md"
+      - ".github/workflows/rpb108-ps02-edge-reflection.yml"
+      - "research/parallel_investigations/w_physical_shift.json"
+  workflow_dispatch:
+
+jobs:
+  ps02-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Exact original prime and arch reflection witness bounds
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps02_edge_reflection.py
+          python3 scripts/validate_rpb108_ps02_edge_reflection.py
+      - name: No automatic promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          manifest=json.load(open("research/obligations.json"))
+          parallel=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert manifest["active_obligation"]=="W-ODD-NEG"
+          assert manifest["objective"]["status"]=="open"
+          assert parallel["status"]=="open"
+          assert parallel["closures"]["W_ODD_NEG"] is False
+          assert parallel["closures"]["W_EVEN_FORM"] is False
+          assert parallel["closures"]["original_weil"] is False
+          assert parallel["closures"]["RH"] is False
+          PY
