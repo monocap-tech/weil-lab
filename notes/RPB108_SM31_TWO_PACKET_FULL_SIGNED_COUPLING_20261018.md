@@ -111,3 +111,46 @@ The original SM10 full seven-prime negative cap and its moment covariance still 
 **SM32:** if the 2D determinant passes, enlarge to a complete, rigorously coupled original signed-packet block with original full negative 973-leaf mixed physical overlaps, actual positive continuum-source and odd pole, and a certified orthogonal complement. If it fails, refine signed per-leaf cross integrals instead of adding more independent positive diagonal certificates. **Only** a full original odd Hilbert-domain operator inequality \(W_o\succeq0\), or the equivalent all-frequency \(R_oA_*^{-1}R_o^*\preceq I\), will discharge PS36 O1/O2. Original even E1–E4, whole Weil, native CC27 D-Riesz/RH remain OPEN.
 
 Replay: \`python3 scripts/validate_rpb108_sm31_two_packet_full_signed_coupling.py\`; mathematical original operator/Fourier-domain identification independently audited, not asserted by CI.
+
+
+## 6. Accepted original true two-packet result — focused CI and strict physical spectral floor
+
+**First SM31 focused Actions run 39157529845: PASSED**, including all 973 original signed-negative leaves integrated on each vector, the exact common-leaf mixed multiplier response, fifteen original truly positive signed-frequency source overlaps, and the negative odd pole's full mixed energy. Reported *decimal displays of exactly compared rational bounds*:
+
+| True original signed odd restriction quantity | Certified rational-bound display |
+|---|---:|
+| SM14 genuine thirteen positive-band \(P_{11}\) lower | \(>0.6666741285\) |
+| SM30 genuine two remote positive-band \(P_{22}\) lower | \(>0.3120637804\) |
+| **All fifteen** signed positive-source offdiagonal upper \(|P_{12}|\) | \(<0.0140550460\) |
+| Original **entire 973-leaf** negative form first packet upper | \(<0.619740895\) |
+| Original **entire 973-leaf** negative form remote packet upper | \(<0.207606727\) |
+| Original **entire 973-leaf** mixed negative cross upper | \(<0.003926138\) |
+| Original negative odd pole first/remote quadratic upper | \(<0.000156959\), \(<0.000001859\) |
+| Original negative odd pole **mixed** upper | \(<0.000017140\) |
+| Certified signed diagonal lower \(d_1\) | \(>0.0467762756\) |
+| Certified signed diagonal lower \(d_2\) | \(>0.1044551953\) |
+| Entire signed mixed upper \(M\) | \(<0.017998324\) |
+| **Complete signed original 2×2 determinant lower** \(d_1d_2-M^2\) | \(>0.0045620853\) |
+
+The first run proves that the conservative original full-signed \(2\times 2\) lower is strictly positive definite; the source revision now mandates simpler, independently robust **exact rational thresholds**:
+\[
+d_1>\frac9{200},\qquad
+d_2>\frac1{10},\qquad
+M<\frac{19}{1000},\qquad
+d_1d_2-M^2>\frac4{1000}.
+\]
+Consequently, for **every real coefficient pair** \(a,b\), with the *same original supported physical odd basis vectors*,
+\[
+\boxed{
+Q_o[ag_1+bg_2]>
+\frac1{40}(a^2+b^2).
+}
+\]
+Since \(|g_j(x)|\le1\) on the true physical interval of length \(2B=11/5\), the elementary physical norm comparison \(\|ag_1+bg_2\|_2^2\le4B(a^2+b^2)\) supplies the **actual original two-dimensional physical coercivity**
+\[
+\boxed{
+Q_o[f]>\frac1{176}\|f\|_{L^2([-11/10,11/10])}^2,
+\quad 0\ne f\in\operatorname{span}\{g_{14.42},g_{389.56}\}.
+}
+\]
+This is a genuine true-original coupled **two-dimensional** spectral estimate, not two one-vector inequalities and not the full original odd operator. **No bound on the full orthogonal complement or on the 890-source Birman–Schwinger operator follows.** The updated focused Actions and independent inherited full signed Fourier/physical-domain analytic review are separate acceptance gates.
