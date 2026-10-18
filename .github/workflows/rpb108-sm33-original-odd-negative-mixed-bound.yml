@@ -1,0 +1,38 @@
+name: RPB108 SM33 original odd negative source-to-complement mixed coupling
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_SM33_ORIGINAL_ODD_NEGATIVE_MIXED_BOUND_20261018.md"
+      - "scripts/validate_rpb108_sm33_original_odd_negative_mixed_bound.py"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm33-original-odd-negative-mixed-bound.yml"
+  workflow_dispatch:
+
+jobs:
+  sm33-original-negative-mixed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Original all-973 negative leaves, 107 per-cluster odd Taylor, true complete negative cross
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm33_original_odd_negative_mixed_bound.py
+          python3 scripts/validate_rpb108_sm33_original_odd_negative_mixed_bound.py
+      - name: Mandatory complete original O1 O2 signed Schur remains OPEN
+        run: |
+          python3 - <<'PY'
+          import json
+          x=json.load(open("research/obligations.json"))
+          assert x["active_obligation"]=="W-ODD-NEG"
+          assert x["objective"]["status"]=="open"
+          assert x["governance"]["no_automatic_promotion"] is True
+          o=next(y for y in x["obligations"] if y["id"]=="W-ODD-NEG")
+          assert o["status"]=="open"
+          assert all(y in o["evidence"] for y in ("SM31","SM32","SM33"))
+          assert "O1/O2" in o["acceptance"]
+          assert "full_original_odd_negative_mixed_acceptance" in x["governance"]
+          PY
