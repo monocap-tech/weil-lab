@@ -1,0 +1,39 @@
+name: RPB108 PS35 original even ground positive cell masses
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_PS35_ORIGINAL_GROUND_POSITIVE_CELL_MASS_20261018.md"
+      - "scripts/validate_rpb108_ps35_original_ground_positive_cell_mass.py"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps35-original-ground-positive-cell-mass.yml"
+  workflow_dispatch:
+
+jobs:
+  ps35-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: PS35 exact rational original even ground direct generator test and 16 physical cell masses
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps35_original_ground_positive_cell_mass.py
+          python3 scripts/validate_rpb108_ps35_original_ground_positive_cell_mass.py
+      - name: Preserve full original source obligation and signed Weil/RH OPEN
+        run: |
+          python3 - <<'PY'
+          import json
+          g=json.load(open("research/obligations.json"))
+          p=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert g["active_obligation"]=="W-ODD-NEG"
+          assert g["objective"]["status"]=="open"
+          assert g["governance"]["no_automatic_promotion"] is True
+          assert p["id"]=="W-PHYSICAL-SHIFT"
+          assert p["status"]=="open"
+          assert p["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert p["checkpoints"][-1]["id"]=="PS35"
+          assert all(v is False for v in p["closures"].values())
+          PY
