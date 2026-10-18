@@ -1,0 +1,58 @@
+name: RPB108 SM38 original negative leafwise Fourier attribution (numerical only)
+
+on:
+  pull_request:
+    paths:
+      - "scripts/sm38_original_negative_leafwise_quadrature.py"
+      - "notes/RPB108_SM38_ORIGINAL_LEAFWISE_NEGATIVE_FOURIER_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm38-original-leafwise-negative.yml"
+  workflow_dispatch:
+
+jobs:
+  original-odd-negative-leafwise:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pilot-only quadrature dependencies
+        run: python -m pip install numpy scipy
+      - name: Original analytic supported odd sine amplitudes, all 973 negative real leaves, old/new 890 cap comparison
+        run: |
+          python -m py_compile scripts/sm38_original_negative_leafwise_quadrature.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/sm38_original_negative_leafwise_quadrature.py
+      - name: Fail-closed full original 470 source, Weil RH and interval quadrature status
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open("artifacts/sm38_original_negative_leafwise_pilot.json"))
+          assert r["status"]=="NONCERTIFYING_ANALYTIC_TRANSFORM_LEAFWISE_FOURIER_QUADRATURE"
+          assert r["canonical_odd_O1_O2"]=="open"
+          assert r["true_original_signed_negative_frequency_leaves"]==973
+          assert r["true_original_refined_envelope_subcells"]==3892
+          assert r["original_negative_moment_blocks"]==107
+          assert r["original_negative_cap_physical_columns"]==890
+          assert r["quadrature_orders"]==[8,16,32]
+          assert len(r["cases"])==3
+          assert all(c["math_certificate"] is False for c in r["cases"])
+          assert all(c["actual_selected_sources"]==25 for c in r["cases"])
+          assert r["analytic_supported_odd_sine_transform_tested_against_spatial_quad"] is True
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          o=next(x for x in m["obligations"] if x["id"]=="W-ODD-NEG")
+          assert o["status"]=="open" and "O1/O2" in o["acceptance"]
+          assert all(t in o["evidence"] for t in ("SM36","SM37","SM38"))
+          assert "sm38_leafwise_negative_fourier_pilot" in m["governance"]
+          PY
+      - name: Upload NONCERTIFYING original negative-frequency quadrature diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm38-original-negative-leafwise-analytic-source-pilot
+          path: artifacts/sm38_original_negative_leafwise_pilot.json
+          if-no-files-found: warn
