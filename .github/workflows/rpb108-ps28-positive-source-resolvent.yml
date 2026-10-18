@@ -1,0 +1,37 @@
+name: RPB108 PS28 original positive source-resolvent effective even pole
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_ps28_positive_source_resolvent.py"
+      - "notes/RPB108_PS28_POSITIVE_SOURCE_RESOLVENT_20261017.md"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps28-positive-source-resolvent.yml"
+  workflow_dispatch:
+
+jobs:
+  ps28-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Original source chain plus even resolvent geometry and two-sided rational bounds
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps28_positive_source_resolvent.py
+          python3 scripts/validate_rpb108_ps28_positive_source_resolvent.py
+      - name: Keep original odd/even signs and RH OPEN
+        run: |
+          python3 - <<'PY'
+          import json
+          m=json.load(open("research/obligations.json"))
+          p=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert p["id"]=="W-PHYSICAL-SHIFT"
+          assert p["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert p["status"]=="open"
+          assert all(flag is False for flag in p["closures"].values())
+          PY
