@@ -1,0 +1,38 @@
+name: RPB108 SM25 original odd coupled two-source inverse
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_SM25_COUPLED_ORIGINAL_TWO_SOURCE_INVERSE_20261018.md"
+      - "scripts/validate_rpb108_sm25_coupled_original_two_source_inverse.py"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm25-coupled-original-two-source-inverse.yml"
+  workflow_dispatch:
+
+jobs:
+  sm25-true-original-coupled:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: SM25 true signed original SI29 14x2 and coupled two-source Loewner envelope
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm25_coupled_original_two_source_inverse.py
+          python3 scripts/validate_rpb108_sm25_coupled_original_two_source_inverse.py
+      - name: PS36 complete signed odd operator O1/O2 remains OPEN
+        run: |
+          python3 - <<'PY'
+          import json
+          o=json.load(open("research/obligations.json"))
+          assert o["active_obligation"]=="W-ODD-NEG"
+          assert o["objective"]["status"]=="open"
+          assert o["governance"]["no_automatic_promotion"] is True
+          odd=next(v for v in o["obligations"] if v["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open"
+          assert "SM24" in odd["evidence"] and "SM25" in odd["evidence"]
+          assert "O1/O2" in odd["acceptance"]
+          assert "complete_operator_odd_acceptance" in o["governance"]
+          PY
