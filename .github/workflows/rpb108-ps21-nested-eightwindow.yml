@@ -1,0 +1,37 @@
+name: RPB108 PS21 true nested eight-window original signed Schur
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_ps21_nested_eightwindow.py"
+      - "notes/RPB108_PS21_NESTED_EIGHTWINDOW_20261017.md"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps21-nested-eightwindow.yml"
+  workflow_dispatch:
+
+jobs:
+  ps21-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Original seven-prime signed nested Schur source and exact geometric test
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps21_nested_eightwindow.py
+          python3 scripts/validate_rpb108_ps21_nested_eightwindow.py
+      - name: Keep global residual positivity and W-ODD-NEG OPEN
+        run: |
+          python3 - <<'PY'
+          import json
+          m=json.load(open("research/obligations.json"))
+          p=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert p["id"]=="W-PHYSICAL-SHIFT"
+          assert p["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert p["status"]=="open"
+          assert all(flag is False for flag in p["closures"].values())
+          PY
