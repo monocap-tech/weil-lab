@@ -211,9 +211,18 @@ def one_run(n,pad,infos,sources,cap,orders,mass,total):
         # Direct sampled original K integral is diagnostic only.
         nsampled=c.T@kfreq@c
         nsampled=(nsampled+nsampled.T)/2
+        direct_eigs=linalg.eigh(nsampled,G0,eigvals_only=True,
+                                 check_finite=True)
         ratio=float(np.linalg.norm(ncap-nsampled)/
                     max(np.linalg.norm(nsampled),1e-30))
+        directmax=float(direct_eigs[-1])
+        # Cap-vs-direct is meaningful only as double sampled
+        # diagnostic. Neither is a certified true resolvent bound.
         resolved={"pole_trial_tau":tau,
+             "max_generalized_direct_sample_negative_eigenvalue":directmax,
+             "cap_to_direct_sample_max_eigenvalue_ratio":
+                 float(eigen_cap[-1]/max(directmax,1e-30)),
+             "theta_51_over_56":THETA,
              "pole_sherman_morrison_relative_diff":relative_pole,
              "min_generalized_Astar_eigenvalue":float(eigen_astar[0]),
              "max_generalized_cap_trial_eigenvalue":float(eigen_cap[-1]),
