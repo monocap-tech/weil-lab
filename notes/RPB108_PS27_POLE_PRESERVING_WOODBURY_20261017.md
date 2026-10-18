@@ -163,18 +163,19 @@ More strongly, because \(\mathfrak S_C^{(0)}[h_C]<0\), the even pole-free form h
 \]
 This index equality is **conditional**, not established: PS27 certifies only the lower bound \(\ge1\).
 
-If \(d\ne0\), define \(\phi=d/\|d\|_2\). Positivity of the **true** original even source Schur is then exactly equivalent to BOTH:
+**Form-domain custody:** The effective vector \(d\) is known to be even and in \(L^2(C)\), but the source-response vector \(B_0^*A_0^{-1}c_P\) need NOT belong to the original logarithmic form domain. We therefore do NOT assume \(d/\|d\|\) is a form-admissible vector.
+
+If \(d\ne0\), density of the original even form domain in even \(L^2(C)\) guarantees the existence of an **admissible even** \(e\in\mathcal D_C\) with \(\langle d,e\rangle=1\), by rescaling a vector with nonzero overlap. Every even admissible \(h\) decomposes uniquely as \(h=a e+k\), \(a=\langle d,h\rangle\), \(k\in K_{\rm eff}\), and the original positive-even-pole contribution is exactly \(\alpha|a|^2\).
+
+Positivity of the **true** original even source Schur is equivalent to BOTH:
 \[
-\boxed{\mathfrak S_C^{(0)}[k]\ge0\quad(k\in K_{\rm eff}),}
+\boxed{\mathfrak S_C^{(0)}[k]\ge0\quad(k\in K_{\rm eff})}
 \]
+and
 \[
-\boxed{
-\inf_{k\in K_{\rm eff}}
-\big(\mathfrak S_C^{(0)}[\phi+k]
-+\alpha\|d\|_2^2\big)\ge0.
-}
+\boxed{\inf_{k\in K_{\rm eff}}\big(\mathfrak S_C^{(0)}[e+k]+\alpha\big)\ge0.}
 \]
-These are true domain-level variational conditions, with the same original seven signed prime powers, digamma kernel and negative odd pole as above. They do not require a fabricated inverse on \(K_{\rm eff}\), and the infimum remains meaningful if the orthogonal form has null modes. If \(d=0\), the negative even pole-free witness shows whole even \(\mathfrak S_C\ge0\) is impossible; hence \(d\ne0\) is necessary for a future positive original even proof, **not separately asserted as proven here**.
+These are exact domain-level variational conditions retaining every original signed prime, digamma and pole term. They require neither unproved regularity of \(d\) nor a fabricated inverse on \(K_{\rm eff}\); the infimum remains well-defined even if the orthogonal form has null modes. If \(d=0\), the negative even auxiliary witness shows that full even \(\mathfrak S_C\ge0\) is impossible. Thus \(d\ne0\) is **necessary** for a future positive original even proof, but is not separately established here.
 
 The three remaining substantive gates are **(i)** odd original signed source Schur positivity, **(ii)** even effective-pole-orthogonal pole-free signed positivity, and **(iii)** the coherent one-scalar effective-pole compensation. None is proved in PS27. The same original CC27 D-Riesz native domain/norm transfer and independent analytic audit remain necessary.
 
