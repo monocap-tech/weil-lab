@@ -46,3 +46,23 @@ Only after measuring that true cross, and controlling the entire corrected middl
 SM33: measure a rigorous complete original signed Fourier/source **mixed C norm or full finite 470×470 corrected form** on the parity-reduced SI10 carrier; alternatively certify the true 890-column SM10 all-frequency Birman–Schwinger gate. Preserve true support, seven-prime signed multiplier, negative odd pole, all couplings and infinite residual. Whole original odd O1/O2 and RH stay OPEN; exact Actions checks are not independent analytic review.
 
 Replay: `python3 scripts/validate_rpb108_sm32_parity_cofinite_odd_schur.py`.
+
+
+## Verified focused spectral cutoff and exact low-spectrum consequence
+
+Original signed seven-prime SI10 b9 replay **39158999410 passed**. It recovered exactly **973** original unresolved frequency leaves, **107** original frequency clusters, **9,261** protected-positive cells, and **469** odd projected modulated-polynomial generators (**260** with even k using sine, **209** with odd k using cosine), plus **one** actual odd pole generator. Thus the explicit exceptional original odd physical source has **dimension at most 470**.
+
+The exact-rational originally protected complement coefficient is strictly greater than
+\[
+\mu_{\rm actual}=0.0006842295476675033\ldots
+>\mu=\frac{17}{25000}.
+\]
+(The printed decimal is an approximation to the exact rational comparison.)
+
+A further original complete-operator **minimax consequence** is that for the selfadjoint lower-semibounded closed form realization of the original supported odd signed operator,
+\[
+\boxed{
+\operatorname{rank}\mathbf1_{(-\infty,\,17/25000)}(W_o)\le470.
+}
+\]
+Indeed, any spectral subspace strictly below that threshold has negative quadratic for \(W_o-\mu I\) on each nonzero vector. If its dimension exceeded 470 it would contain a nonzero physical vector orthogonal to the entire \(E_9^{\rm odd}\), contradicting the inherited certified positivity \(Q_o[f]>\mu\|f\|^2\) there. In the usual min–max eigenvalue ordering this means **\(\lambda_{471}(W_o)\ge17/25000\)** whenever that eigenvalue is defined; it also excludes essential spectrum strictly below the threshold. This stronger **original low-spectrum localization** is still not the required \(W_o\succeq0\): up to 470 exceptional eigenvalues, including negative and zero ones, remain unclassified, and the entire corrected finite source/coupling Schur gate is OPEN.
