@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS21: sharpen true original source-aware six-window versus full uncovered-complement energy-dual coupling including every genuine Carleman seam and all seven prime translations; quantify a usable small nested Schur penalty and a true residual sign, or produce a mathematically certified negative witness",
-    "PS22: independent analytic audit of original two-level physical Schur domain identities and exact native CC27 D-Riesz norm/domain transfer; promote W-ODD-NEG, W-EVEN-FORM, whole Weil or RH only on strictly accepted whole residual signed positive certificate"
+    "PS22: evaluate full eight-window-to-remaining original signed coupling and residual Schur sign",
+    "PS23: independently audit original signed form and complete CC27 D-Riesz transfer before canonical promotion"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -191,6 +191,14 @@
       "note": "notes/RPB108_PS20_SIXWINDOW_NESTED_SCHUR_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps20_sixwindow_nested_schur.py",
       "limitation": "Residual signed nested Schur positivity UNKNOWN; penalty bound <878 too coarse. No CC27 D-Riesz transfer or full original Weil/W-ODD-NEG/W-EVEN-FORM/RH closure."
+    },
+    {
+      "id": "PS21",
+      "scope": "Original signed nested Schur positive >7/5 on reflected two-window residual; combined eight-window source Schur >2/3, including all three true log2 links, arch, signed poles and two successive inverse responses.",
+      "status": "Scoped analytic theorem and rational checks; final-head CI and independent review pending",
+      "note": "notes/RPB108_PS21_NESTED_EIGHTWINDOW_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps21_nested_eightwindow.py",
+      "limitation": "Whole complement sign, CC27 D-Riesz, W-ODD-NEG, W-EVEN-FORM and RH open."
     }
   ]
 }
