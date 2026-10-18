@@ -1,0 +1,38 @@
+name: RPB108 SM30 true remote positive continuum and complete signed negative diagnostic
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_SM30_REMOTE_ORIGINAL_POSITIVE_RESCUE_20261018.md"
+      - "scripts/validate_rpb108_sm30_remote_original_positive_rescue.py"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm30-remote-original-positive-rescue.yml"
+  workflow_dispatch:
+
+jobs:
+  sm30-remote-original-positive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Original seven-prime remote sign-positive real bands and true entire odd-negative diagnostic
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm30_remote_original_positive_rescue.py
+          python3 scripts/validate_rpb108_sm30_remote_original_positive_rescue.py
+      - name: Preserve PS36 canonical complete operator O1 O2 and all RH open
+        run: |
+          python3 - <<'PY'
+          import json
+          g=json.load(open("research/obligations.json"))
+          assert g["active_obligation"]=="W-ODD-NEG"
+          assert g["objective"]["status"]=="open"
+          assert g["governance"]["no_automatic_promotion"] is True
+          odd=next(x for x in g["obligations"] if x["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open"
+          assert all(x in odd["evidence"] for x in ("SM27","SM28","SM29","SM30"))
+          assert "O1/O2" in odd["acceptance"]
+          assert "remote_frequency_coverage" in g["governance"]
+          PY
