@@ -12,7 +12,10 @@
     "closure_rule": "Close only upon evidence meeting the stated mathematical acceptance condition on the original object, support, domain and norm. A reformulation, numerical screen, partial sector bound, or passing CI alone is insufficient.",
     "evidence_rule": "Keep mathematical standing separate from CI state, Lean coverage and independent review. Never treat another method's checkpoint as automatic transfer of scope.",
     "thread_rule": "Unqualified NF advances the canonical active obligation; explicitly scoped local requests retain their scope. Method pivots need no new conversation but must preserve custody and update the manifest.",
-    "no_automatic_promotion": true
+    "no_automatic_promotion": true,
+    "typed_spectral_acceptance_ref": "research/typed_spectral_acceptance.json",
+    "typed_positivity_rule": "Original object/form domain/norm, parity, signed primes and poles, full source/cross/infinite residual, proof tier and evidence state required for every positivity claim; components and coupled local subspaces cannot be automatically promoted to complete original parity operators.",
+    "residual_spectral_acceptance_rule": "Before W-EVEN-FORM promotion prove original even pole-free source Schur ind_-=1 (lambda1>=0), PSD on complete phi0-orthogonal remainder, nullspace/effective d angle Delta>0 and alpha Delta>=|lambda0|; before W-ODD-NEG promotion prove complete signed original odd operator PSD or equivalent all-negative-frequency Birman Schwinger/complete-source Schur with all cross and infinite residual."
   },
   "active_obligation": "W-ODD-NEG",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -239,6 +242,14 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/164",
       "repo_path": "notes/RPB108_SM21_NATIVE_SOURCE_RAYLEIGH_20261017.md",
       "verification": "Exact Fraction source-specific rational job and final-head governance CI pending; no original full 890-column inverse, independent mathematical review or Lean proof."
+    },
+    "PS36": {
+      "kind": "typed-positivity/composition mathematical acceptance contract and exact Fraction finite algebra; NOT an original spectral proof",
+      "scope": "Original even source-eliminated pole-free index E1, full orthogonal remainder E2, exact effective source d null/Delta E3 and compensated even closure E4; entire odd W-ODD-NEG O1/O2 with all signed frequency/source/cross/infinite remainder; whole parity and CC27 native RH composition C1/C2. Every new sign gate OPEN.",
+      "pr": "pending draft PR",
+      "repo_path": "notes/RPB108_PS36_TYPED_SPECTRAL_ACCEPTANCE_20261018.md",
+      "machine_gate_ref": "research/typed_spectral_acceptance.json",
+      "verification": "Focused CI pending; finite Fraction counterexamples and governance checks do not certify original lambda1, Delta, whole odd PSD or RH."
     }
   },
   "obligations": [
@@ -296,10 +307,11 @@
         "SM18",
         "SM19",
         "SM20",
-        "SM21"
+        "SM21",
+        "PS36"
       ],
-      "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM21 computes SI29's genuinely original fourteen-source positive Rayleigh lower on SM10's actual first negative-frequency Taylor source, subtracting original odd pole, and optimizes its nonzero graph-domain forward Ritz trial. Inspect certified quantitative ratio versus weak SM20 scalar damping; NEXT evaluate true SM19 pole-correct Woodbury residual upper for this first column with complete original mixed Gram, then develop a useful coupled supported Ritz family rather than 889 independent microscopic scalings. Actual original all-890 inverse/Schur PSD and W-ODD-NEG remain OPEN."
+      "acceptance": "PS36 mandatory O1–O2 complete ORIGINAL supported odd signed form PSD, including the negative odd pole and all negative-frequency packets, full low/high/source and frequency cross terms, and rigorously paid infinite residual: equivalently R_o(A_o-2|s><s|)^-1 R_o* <= I on the COMPLETE original negative-frequency carrier or an exact entire source-eliminated odd Schur >=0 on the actual original odd form domain. Components, selected positive subbands/Ritz directions, and unassembled finite 890-source estimates insufficient; see research/typed_spectral_acceptance.json.",
+      "next_action": "Canonical W-ODD-NEG stays primary. Complete SM original 890-source coupled inverse/Schur with full signed negative-frequency carrier and certified infinite residual, or full ORIGINAL source-first odd operator positivity with retained odd pole and proven domain bridge. PS36 O1/O2 prohibit componentwise promotion."
     },
     {
       "id": "W-EVEN-FORM",
@@ -310,7 +322,8 @@
       "methods": [
         "SI",
         "RC",
-        "INTEGRATION"
+        "INTEGRATION",
+        "PS"
       ],
       "evidence": [
         "SI10",
@@ -320,10 +333,11 @@
         "EF04",
         "EF05",
         "EF06",
-        "EF07"
+        "EF07",
+        "PS36"
       ],
-      "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF08: tighten ACTUAL original supported even positive-form energy bounds on EF05 cosine (especially overly coarse >=4 analytic upper tail and integer-cell original archimedean bound) until a strict comparison with EF07 global refined negative cap [0.8023309563,1.0198894827] or a proved bound limitation emerges; never assert positivity or negativity from EF07 overlap. Subsequent 2-vector coupled test or refined cap as indicated. W-EVEN-FORM OPEN."
+      "acceptance": "PS36 mandatory typed gates E1–E4: establish negative index exactly one for ORIGINAL full seven-prime pole-free even source-eliminated L (lambda1>=0), attach complete original phi0^perp PSD on its exact form domain and correctly classify ker L, certify true source-renormalized d perpendicular to ker L, beta=<b,Lplus^-1 b>, Delta=a²−|lambda0| beta>0, then alpha Delta>=|lambda0| with original alpha=2/(1+2<cP,A0^-1 cP>), recompose actual source block A0 and restored even pole. Component/local windows/ground mass alone insufficient; see research/typed_spectral_acceptance.json.",
+      "next_action": "PS36 E1 first: rigorous full ORIGINAL even source Schur lambda1>=0 or actual second negative eigenmode with all seven primes, complete B0*A0^-1 B0 and infinite residual. Then E2 complete ground-orthogonal PSD, E3 nullspace/Delta and E4 full coherent effective-pole compensation. PS34/35 local positivity and nonconcentration do not discharge E1–E4. Keep W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
