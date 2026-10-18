@@ -255,7 +255,31 @@ def one_case(n,pad,orders=(4,8,16)):
                   " complete matrix numerically inconsistent;"
                   " investigate original physical grid aliasing"
                   " before using any sampled ratio.",flush=True)
+    # Numerical-only engineering diagnosis; not an interval
+    # source Fourier integral or original spectral certificate.
+    q8,q16=quad[1],quad[2]
+    a=q8["direct_leafwise_true_negative_generalized_max"]
+    bmax=q16["direct_leafwise_true_negative_generalized_max"]
+    relative_gauss_drift=abs(a-bmax)/max(abs(bmax),1e-30)
+    assert relative_gauss_drift<1e-3,(
+        "SM38 inadequate leafwise Gauss convergence",relative_gauss_drift)
+    assert q16["signed_envelope_inflation"]>5
+    assert q16["moment_synthesis_inflation"]<1.05
+    assert q16["direct_leafwise_true_negative_generalized_max"]>THETA
+    print("SM38 DIAGNOSIS NUMERICAL ONLY: Gauss8/16"
+          " original leafwise relative change",relative_gauss_drift,
+          "signed-envelope-only spectral inflation",
+          q16["signed_envelope_inflation"],
+          "moment/Young additional ratio",
+          q16["moment_synthesis_inflation"],
+          "FFT direct/leafwise direct",
+          q16["fft_to_leafwise_true_ratio"],
+          "=> MULTIPLIER ENVELOPE dominates selected-source"
+          " original signed-negative cap excess; no O1/O2.",
+          flush=True)
     return {
+      "gauss8_to_16_relative_direct_change":relative_gauss_drift,
+      "numerical_bottleneck":"ORIGINAL_REAL_FREQUENCY_MULTIPLIER_ENVELOPE",
       "original_pilot_source_count":len(sources),
       "physical_grid":n,"positive_fourier_fft_padding":pad,
       "original_negative_clusters":107,
