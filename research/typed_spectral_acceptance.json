@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "id": "RPB108-PS36-TYPED-SPECTRAL-ACCEPTANCE",
+  "authority": "Mandatory scoped mathematical acceptance contract; does not supersede research/obligations.json canonical active_obligation",
+  "effective_checkpoint": "PS36",
+  "canonical_active_obligation": "W-ODD-NEG",
+  "objective": "RH",
+  "objective_status": "open",
+  "no_automatic_promotion": true,
+  "scope_levels": [
+    {
+      "id": "COMPONENT",
+      "tier": 1,
+      "closure_eligible": false,
+      "meaning": "local positive windows, pole-only, one vector, one positive or negative frequency band"
+    },
+    {
+      "id": "COUPLED_SUBSPACE",
+      "tier": 2,
+      "closure_eligible": false,
+      "meaning": "actual signed finite coupled subspaces with stated external residual; cannot silently promote"
+    },
+    {
+      "id": "COMPLETE_COMPLEMENT",
+      "tier": 3,
+      "closure_eligible": false,
+      "meaning": "complete original source-eliminated operator with all physical low/high and source response"
+    },
+    {
+      "id": "COMPLETE_PARITY",
+      "tier": 4,
+      "closure_eligible": true,
+      "meaning": "all original even OR all original odd supported form including relevant signed pole"
+    },
+    {
+      "id": "WHOLE_SIGNED_WEIL",
+      "tier": 5,
+      "closure_eligible": true,
+      "meaning": "both complete original parities plus valid domain/norm composition"
+    },
+    {
+      "id": "NATIVE_TRANSFER_RH",
+      "tier": 6,
+      "closure_eligible": true,
+      "meaning": "independently accepted CC27 D-Riesz and original explicit-formula/RH attachment"
+    }
+  ],
+  "typed_components": {
+    "original_carrier": "physical interval I=[-11/10,11/10], PS15 true 13-channel P and sharp complement C",
+    "arch_operator": "original full zero-extended digamma difference form J_C with original logarithmic form domain",
+    "primes": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+    ],
+    "even_pole_policy": "remove +2|cosh(x/2)><cosh(x/2)| BEFORE true A0 source Schur, then restore exact +alpha|d><d|",
+    "odd_pole_policy": "retain ORIGINAL negative -2|sinh(x/2)><sinh(x/2)| in entire odd operator",
+    "even_pole_free": "L=J_C+V_{0,C}-B0* A0^-1 B0 restricted to original even C",
+    "true_source": "A0>1997/9000 I with complete original seven primes; original mixed B0, true bounded A0^-1",
+    "restored_even": "S_even=L+alpha|d><d|, d=c_C-B0* A0^-1 c_P, alpha=2/(1+2<c_P,A0^-1 c_P>)",
+    "parity_rule": "reflection invariant original support and form; parity cross zero only with demonstrated same original domain",
+    "odd_complete": "W_o=A_o-2|s><s|-R_o*R_o, A_star=A_o-2|s><s|>0; equivalently true source-first full odd Schur",
+    "norms": "original closed form domain and physical L2 spectrum, with native CC27 D-Riesz later independently"
+  },
+  "proven_scoped_baseline": {
+    "gate": "E0_ORIGINAL_NEGATIVE_WITNESS",
+    "status": "proved_conditional_on_inherited_analytic_premises",
+    "mathematical_statement": "original even pole-free source Schur lambda0< -4.359740 and ind_-(L)>=1; simple nonnegative ground conditional on PS29 functional analytic review",
+    "evidence": [
+      "PS27",
+      "PS29",
+      "RC315"
+    ],
+    "limitation": "Does not establish ind_-(L)=1; no orthogonal remainder or pole margin"
+  },
+  "gates": {
+    "E1_NEGATIVE_INDEX": {
+      "status": "open",
+      "scope": "COMPLETE_COMPLEMENT",
+      "mathematical_target": "ind_-(L)=1 iff original lambda1>=0 given simple lambda0<0",
+      "required_evidence": [
+        "full original compact-resolvent spectral/minmax or valid full Feshbach bound",
+        "all seven original primes and exact B0*A0^-1 B0 retained",
+        "entire C even form domain and all orthogonal/infinite residual couplings certified"
+      ],
+      "forbidden_shortcuts": [
+        "simple/nonnegative ground alone",
+        "PS18/PS34 positive local windows",
+        "PS32/33/35 ground nonconcentration",
+        "finite toy or positive subspace only"
+      ]
+    },
+    "E2_FULL_GROUND_ORTHOGONAL_REMAINDER": {
+      "status": "open",
+      "scope": "COMPLETE_COMPLEMENT",
+      "mathematical_target": "L restricted to phi0^perp is PSD on full original even closed quadratic form domain; track N=ker L separately",
+      "required_evidence": [
+        "same-original-operator lambda1>=0 or direct full orthogonal PSD proof",
+        "all cross and infinite complement controlled",
+        "no assumption L_+^-1 when lambda1=0 without projecting N"
+      ],
+      "forbidden_shortcuts": [
+        "sampled finite positive gram without residual",
+        "eigenfunction positive implies orthogonal complement positive"
+      ]
+    },
+    "E3_EFFECTIVE_POLE_NULL_AND_ANGLE": {
+      "status": "open",
+      "scope": "COMPLETE_COMPLEMENT",
+      "mathematical_target": "d perpendicular ker L and Delta=a²-|lambda0| beta>0, a=<d,phi0>, beta=<b,L_+^-1 b>, b=P_Hplus d",
+      "prerequisites": [
+        "E1_NEGATIVE_INDEX",
+        "E2_FULL_GROUND_ORTHOGONAL_REMAINDER"
+      ],
+      "required_evidence": [
+        "same true PS27 source-renormalized d, not c_C",
+        "nullspace classification",
+        "complete positive inverse response beta including all modes and residual",
+        "strict Delta>0"
+      ],
+      "forbidden_shortcuts": [
+        "PS32/33 positive but tiny a bound",
+        "nonzero a without beta",
+        "effective pole orthogonal remainder confused with phi0 orthogonal remainder"
+      ]
+    },
+    "E4_POLE_COMPENSATION_AND_EVEN_COMPLETE": {
+      "status": "open",
+      "scope": "COMPLETE_PARITY",
+      "mathematical_target": "alpha Delta>=|lambda0| with strict Delta>0; original S_even=L+alpha dd* PSD",
+      "prerequisites": [
+        "E1_NEGATIVE_INDEX",
+        "E2_FULL_GROUND_ORTHOGONAL_REMAINDER",
+        "E3_EFFECTIVE_POLE_NULL_AND_ANGLE"
+      ],
+      "required_evidence": [
+        "original exact A0>0 and PS15 source Schur composition",
+        "complete original alpha, d, lambda0, beta, Delta enclosures",
+        "actual original even form full domain including all signed seven primes and even pole"
+      ],
+      "forbidden_shortcuts": [
+        "component positive pole alone",
+        "local windows",
+        "taking alpha as original +2 after source elimination",
+        "strict coercivity if nullspace remains"
+      ]
+    },
+    "O1_COMPLETE_ODD_SIGNED_OPERATOR": {
+      "status": "open",
+      "scope": "COMPLETE_PARITY",
+      "mathematical_target": "W_o=A_o-2ss*-R_o*R_o PSD on complete original odd physical carrier; equivalently R_o A_star^-1 R_o* <= I in complete true original frequency carrier",
+      "prerequisites": [],
+      "required_evidence": [
+        "whole original negative-frequency family, positive multiplier, original negative odd pole",
+        "all cross interactions and complete infinite residual included",
+        "same-domain signed Loewner with original physical supported operator",
+        "if source-first route, prove exact source/frequency carrier identification"
+      ],
+      "forbidden_shortcuts": [
+        "SI29 odd pole-only",
+        "SM05/06/08 selected subbands",
+        "SM15/16 positive one or two vectors",
+        "SM17/18/19 uncomputed 890-column inverse"
+      ]
+    },
+    "O2_COMPLETE_ODD_RESIDUAL_SPECTRAL_CLASSIFICATION": {
+      "status": "open",
+      "scope": "COMPLETE_PARITY",
+      "mathematical_target": "classify or exclude complete original odd negative spectrum after all original source/high-low/positive-negative couplings, sufficient for O1",
+      "required_evidence": [
+        "verified original complete-operator PSD, or equivalent bounded spectral inertia including infinite complement",
+        "cross terms between negative bands and entire true positive operator",
+        "source elimination and residual consistent in same original domain"
+      ],
+      "forbidden_shortcuts": [
+        "small componentwise errors not assembled as global Loewner",
+        "positive finite test subspace",
+        "unverified spectral bridge"
+      ]
+    },
+    "C1_PARITY_COMPOSITION": {
+      "status": "open",
+      "scope": "WHOLE_SIGNED_WEIL",
+      "mathematical_target": "original whole signed Weil form PSD from both complete even and odd PSD and verified original parity domain/norm decomposition",
+      "prerequisites": [
+        "E4_POLE_COMPENSATION_AND_EVEN_COMPLETE",
+        "O1_COMPLETE_ODD_SIGNED_OPERATOR",
+        "O2_COMPLETE_ODD_RESIDUAL_SPECTRAL_CLASSIFICATION"
+      ],
+      "required_evidence": [
+        "original reflection invariance and parity-orthogonal form decomposition",
+        "complete original signed Weil on original domain, not surrogate positivity"
+      ],
+      "forbidden_shortcuts": [
+        "one parity only",
+        "local positive subsets in both parities without full operators",
+        "unsupported cross parity cancellation"
+      ]
+    },
+    "C2_NATIVE_DOMAIN_AND_RH": {
+      "status": "open",
+      "scope": "NATIVE_TRANSFER_RH",
+      "mathematical_target": "accepted CC27 native D-Riesz and original-zeta explicit-formula bridge from full Weil positivity to RH",
+      "prerequisites": [
+        "C1_PARITY_COMPOSITION"
+      ],
+      "required_evidence": [
+        "separate native carrier/domain/norm theorem and independent audit",
+        "original zeta explicit formula and RH equivalence attachment"
+      ],
+      "forbidden_shortcuts": [
+        "complete physical signed Weil without accepted CC27 native domain/norm bridge",
+        "formal Lean tests not connected to original zeta explicit formula",
+        "research CI alone"
+      ]
+    }
+  },
+  "analytical_review": "pending",
+  "machine_regression": "pending",
+  "semantic_status": "acceptance_contracted_open",
+  "closure_flags": {
+    "E1": false,
+    "E2": false,
+    "E3": false,
+    "E4": false,
+    "O1": false,
+    "O2": false,
+    "C1": false,
+    "C2": false,
+    "RH": false
+  },
+  "guidance": "The existing typed-positivity composition framework remains intact; no pass of a finite Fraction algebra checker changes mathematical sign status without actual original infinite-dimensional evidence."
+}

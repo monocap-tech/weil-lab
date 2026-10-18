@@ -1,0 +1,44 @@
+name: RPB108 PS36 typed complete-operator spectral acceptance
+
+on:
+  pull_request:
+    paths:
+      - "research/typed_spectral_acceptance.json"
+      - "research/obligations.json"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - "docs/ACTIVE_FRONTIER.md"
+      - "notes/RPB108_PS36_TYPED_SPECTRAL_ACCEPTANCE_20261018.md"
+      - "scripts/validate_rpb108_ps36_typed_spectral_acceptance.py"
+      - ".github/workflows/rpb108-ps36-typed-spectral-acceptance.yml"
+  workflow_dispatch:
+
+jobs:
+  ps36-fail-closed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Exact rational E1-E4 and O1-O2 complete-operator obstruction tests
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps36_typed_spectral_acceptance.py
+          python3 scripts/validate_rpb108_ps36_typed_spectral_acceptance.py
+      - name: Machine-readable typed gates and zero proof promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          x=json.load(open("research/typed_spectral_acceptance.json"))
+          g=json.load(open("research/obligations.json"))
+          p=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert g["active_obligation"]==x["canonical_active_obligation"]=="W-ODD-NEG"
+          assert g["objective"]["status"]==x["objective_status"]=="open"
+          assert p["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert p["checkpoints"][-1]["id"]=="PS36"
+          assert p["spectral_acceptance_ref"]=="research/typed_spectral_acceptance.json"
+          assert x["semantic_status"]=="acceptance_contracted_open"
+          assert all(entry["status"]=="open" for entry in x["gates"].values())
+          assert not any(x["closure_flags"].values())
+          assert not any(p["closures"].values())
+          PY

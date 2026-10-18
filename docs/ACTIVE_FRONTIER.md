@@ -1,5 +1,25 @@
 # Canonical live frontier — 2026-10-16 baseline
 
+## PS36 — Mandatory typed spectral acceptance (October 18, 2026)
+
+The **machine-readable mandatory gate ledger** is [research/typed_spectral_acceptance.json](../research/typed_spectral_acceptance.json), with its rationale in [PS36](../notes/RPB108_PS36_TYPED_SPECTRAL_ACCEPTANCE_20261018.md). This amends closure criteria, not prior evidence, and does **not** change the canonical active W-ODD-NEG obligation.
+
+| Original complete-operator gate | Current status | Acceptance |
+| --- | --- | --- |
+| E0 original even pole-free negative witness | **Scoped known**, analytic audit still required | Original PS27/29 \(L\) has \(\lambda_0<0\), \(\mathrm{ind}_-(L)\ge1\). Ground simplicity does **not** exclude additional negatives. |
+| **E1** exact original even negative index | **OPEN** | \(\mathrm{ind}_-(L)=1\), equivalently original \(\lambda_1\ge0\); all seven original primes, true source response and full infinite residual |
+| **E2** complete orthogonal remainder | **OPEN** | \(L|_{\phi_0^\perp}\succeq0\) on the **whole original form domain**; classify \(\ker L\), do not infer from positive local windows or mass |
+| **E3** actual effective pole angle | **OPEN** | \(d\perp\ker L\), \(\beta=\langle b,L_+^{-1}b\rangle\) **full**, \(\Delta=a^2-|\lambda_0|\beta>0\) for source-renormalized \(d\) |
+| **E4** restored complete even form | **OPEN** | \(\alpha\Delta\ge|\lambda_0|\), with true \(\alpha=2/(1+2\langle c_P,A_0^{-1}c_P\rangle)\), plus original source/domain Schur composition |
+| **O1 / O2** original complete odd sign and residual | **OPEN** | Whole original \(A_o-2|s\rangle\langle s|-R_o^*R_o\succeq0\), or exact complete source-first odd Schur; all negative-frequency bands/cross/infinite residual |
+| **C1 / C2** whole Weil and native bridge | **OPEN** | Both complete parity sectors, original cross-zero/domain attachment, separate CC27 D-Riesz and explicit-formula/RH transfer |
+
+**Typed composition rule:** source-only, local-window, selected-frequency, coupled finite subspace, complete original complement, complete original parity, whole signed Weil, and native RH are **different proof scopes**. Full source Schur subtracts \(B^*A^{-1}B\), and any blockwise composition must include all mixed terms; simple positive ground, local positivity, ground nonconcentration, pole-only absorption and selected Ritz tests do not close E1–E4 or O1/O2. A passing finite exact-rational Actions test validates the contract and sample algebra, *not* the unresolved original spectral inequalities.
+
+**Current target:** classify the original full even pole-free source Schur second eigenvalue (one negative direction or actual second negative witness), then prove the original complete remainder and pole margin. In parallel, canonical **W-ODD-NEG** retains the complete signed-negative odd operator obligation. No original even/odd/whole Weil, native CC27 D-Riesz, or RH closure is asserted.
+
+---
+
 **Read [the obligation manifest](../research/obligations.json) for the authoritative active obligation.** This is a human-oriented baseline, not an independent mutable HEAD or a claim of automatic synchronization.
 
 | Field | Current baseline |
