@@ -12,7 +12,8 @@
     "closure_rule": "Close only upon evidence meeting the stated mathematical acceptance condition on the original object, support, domain and norm. A reformulation, numerical screen, partial sector bound, or passing CI alone is insufficient.",
     "evidence_rule": "Keep mathematical standing separate from CI state, Lean coverage and independent review. Never treat another method's checkpoint as automatic transfer of scope.",
     "thread_rule": "Unqualified NF advances the canonical active obligation; explicitly scoped local requests retain their scope. Method pivots need no new conversation but must preserve custody and update the manifest.",
-    "no_automatic_promotion": true
+    "no_automatic_promotion": true,
+    "complete_operator_odd_acceptance": "Preserve PS36 typed positivity and composition: W-ODD-NEG O1/O2 cannot close from SM25 2-source or other componentwise finite operators; only the full original odd physical signed operator with ALL negative-frequency, pole, source, cross and infinite residual terms certified may discharge it."
   },
   "active_obligation": "W-ODD-NEG",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -260,6 +261,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/198",
       "repo_path": "notes/RPB108_SM24_ORIGINAL_RESIDUAL_INVERSE_CANCELLATION_20261017.md",
       "verification": "Original source physical continuous 14x14 SI29 Gram/variational witness exact Fraction replay, signed odd pole, original graph M and actual λ; finite 3x2 rational matrix identity and Loewner surrogate distinction. Focused Actions and independent mathematical audit required; W-ODD-NEG and RH OPEN."
+    },
+    "SM25": {
+      "kind": "Actual original physically supported coupled 2-source odd inverse Loewner upper with all fourteen SI29 signed positive reference features, complete signed original physical source Gram and SM10 full eta coefficient",
+      "scope": "On ACTUAL first two distinct original SM10 degree-zero odd source columns U2, exact-rational full 14x2 signed physical overlap, complete 14x14 source Gram and true 2x2 sine Gram produce certified coupled 2x2 Loewner U2*A_star^-1 U2<=T2 and shifted U2*(A_star−eta I)^-1 U2<=T2/(1−eta/kappa_star). Explicit true first two SM10 negative moment block used to check ONLY a PRINCIPAL 2x2 sufficient comparison. Does not compute remaining 888 source directions, whole 890×890 Schur, full odd W-ODD-NEG, any even E1–E4 or RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/206",
+      "repo_path": "notes/RPB108_SM25_COUPLED_ORIGINAL_TWO_SOURCE_INVERSE_20261018.md",
+      "verification": "Exact signed rational true physical interval/matrix and 2x2 coupled Loewner focused Actions pending; inherited SI29/SM10 original functional analysis awaits independent review. Passing scoped CI cannot close original full odd operator."
     }
   },
   "obligations": [
@@ -318,10 +326,12 @@
         "SM19",
         "SM20",
         "SM21",
-        "SM22"
+        "SM22",
+        "SM24",
+        "SM25"
       ],
-      "acceptance": "Prove R_o (A_o-2|s><s|)^-1 R_o* <= I on the actual odd negative-frequency carrier, with all cross terms and full infinite residual, or an equivalent certified full odd signed inequality.",
-      "next_action": "SM22 attempts the first ACTUAL original SI29 14-feature supported inverse UPPER on actual SM10 first source c=37/64, paying all fourteen true physical means/moments, complete signed 14x14 Gram, original pole with correct Sherman-Morrison sign, and bounding SM21 actual forward residual in SI29 reference inverse energy. VERIFY numeric competitiveness on focused CI; then compute tighter signed original full Woodbury residual 14-source cross/pole terms on this column, and develop 890-source coupled Ritz transport. No single-source result closes full original 890-column W-ODD-NEG."
+      "acceptance": "PS36 complete-operator O1/O2 gate: prove ORIGINAL supported full odd signed W_o=A_o-2|s><s|−K_neg,o >=0 on full physical domain, equivalently R_o (A_o-2|s><s|)^-1 R_o*<=I on entire true original negative-frequency carrier, with all original positive/negative cross couplings and infinite residual (or exact original full source-first odd Schur). A 2-column principal inverse block from SM25 or 890-column partial modules are NOT full-operator acceptance.",
+      "next_action": "Canonical SM26 under PS36 O1/O2: build a complete blockwise LOEWNER upper for all 890 physically supported SM10 odd sine-Taylor columns, including all 107 original negative moment blocks, original SI29 positive source/cross overlaps, true pole-conditioning, and full eta infinite-frequency residual. SM25 proves only true first TWO coupled original inverse columns and does NOT certify 890×890 matrix or whole odd signed Weil sign. Seek verifiable non-componentwise full residual spectral classification."
     },
     {
       "id": "W-EVEN-FORM",
@@ -647,6 +657,17 @@
       ],
       "interpretation": "Actual SM10 source first-column supported SI29 14-feature full-Gram rational variational inverse upper, correct odd pole and rational Young residual upper; not full 890-source inverse or W-ODD-NEG.",
       "cadence": "on-demand"
+    },
+    {
+      "id": "SM25-true-original-coupled-two-source-inverse",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm25_coupled_original_two_source_inverse.py"
+      ],
+      "interpretation": "Checks first two ACTUAL SM10 source columns and full signed physical 14x14 SI29 Gram/2x2 source Gram for a genuine coupled original pole-conditioned inverse Loewner upper with eta paid. This is a necessary principal coupled block only; PS36 O1/O2 complete all-negative-frequency odd operator and RH OPEN.",
+      "cadence": "per-update"
     }
   ]
 }
