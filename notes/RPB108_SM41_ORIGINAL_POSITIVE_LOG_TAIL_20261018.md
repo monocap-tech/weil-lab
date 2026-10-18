@@ -128,7 +128,7 @@ Replay: \`python3 scripts/validate_rpb108_sm41_original_positive_log_tail.py\`. 
 
 The **first SM41 workflow run 39176160687 failed**, **not** because of the exact original analytic high-logarithmic positive Fourier tail. All three source-complete 25-direction exact rational high-tail bounds and the original all-470 elementary IBP bound computed and printed. The numerical original LOW band failed its intentional Gauss8/16 convergence gate: relative matrix Frobenius drift **0.02352266152534048** when applying each Gauss rule across entire **unit-width** frequency cells. This demonstrates why a high-frequency tail certificate cannot justify trusting a coarse low-band quadrature.
 
-The implementation now subdivides **every original low-frequency unit interval into four subcells** before applying Gauss8 and Gauss16 and **retains the same strict numerical drift acceptance <0.001**. It does not weaken the numerical gate or recast an untrusted low-band as a proof. Independently it uses the existing SI06 exact, much more economical outward rational upper \(\log2<347/500\) to prove \(\log\Lambda<q(347/500)\) for the power-of-two cutoffs. This avoids multi-hundred-digit 128-term fractions in source certificate records while preserving rigorous outward bounds.
+The first revision subdivided **each unit interval into four subcells**, reducing Gauss8/16 drift to 0.0010056123, narrowly above the strict 0.001 numerical acceptance. The final revision uses **eight subcells per unit frequency interval**, keeping the same strict 0.001 gate (not weakening it). It does not weaken the numerical gate or recast an untrusted low-band as a proof. Independently it uses the existing SI06 exact, much more economical outward rational upper \(\log2<347/500\) to prove \(\log\Lambda<q(347/500)\) for the power-of-two cutoffs. This avoids multi-hundred-digit 128-term fractions in source certificate records while preserving rigorous outward bounds.
 
 ### First run's exact high-tail figures, prior to the economical rational tightening
 
@@ -149,3 +149,30 @@ These first-run decimals used the tighter exact 128-term SI06 rational log2 uppe
 The original naive all-470 supported-source derivative integration-by-parts scalar form high tail at 4096 was **approximately \(3.01\times10^6\)**. This valid but extremely loose number is decisive computational evidence that **we cannot scale the same scalar IBP technique from 25 to 470**. Full 470 requires analytic \emph{higher-degree polynomial-source Fourier transforms} and matrix-weighted tail bounds, not a blind larger source solve.
 
 Full original W-ODD-NEG O1/O2, even E1–E4, whole Weil, CC27 and RH remain OPEN. A passing revised numerical Gauss check does NOT prove the original low-band matrix without rigorous quadrature-error enclosures.
+
+
+## SM41 passing original positive source-tail and low-band diagnostic
+
+**Focused GitHub Actions 39176458907 — PASSED** on the final script with original seven-prime rational bounds, true supported original 25 source transforms, all 470 original polynomial/pole directions in the conservative fallback, and improved original low-band eight-subcell quadrature.
+
+The exact **25-source upper source-transform square sum** is \(E=202/25\). Using the economical exact upward bound \(\log2<347/500\), the rigorous original high Fourier tail Loewner/strong multiplier coefficient ceilings are:
+
+| True original positive Fourier HIGH tail, all selected 25 source coefficients | \(\Lambda=2048\) | \(\Lambda=4096\) | \(\Lambda=8192\) |
+|---|---:|---:|---:|
+| Source-form \(0\preceq T^{A_o}_\Lambda\preceq\delta_A I_{25}\) | **0.20226828125** | **0.1038721875** | **0.0533051171875** |
+| Squared strong multiplier \(\|\mathbf1_{\rm high} a_o\widehat g\|_2^2\le\delta_{A^2}\|z\|^2\) | **5.1928357465625** | **2.738692265** | **1.442383532890625** |
+
+**These are true original high-tail analytic upper bounds (conditional on inherited full Fourier/domain identification), not actual strong Galerkin residuals or full source stiffness matrices.** The full original 470 polynomial/pole-source IBP scalar form-tail bound at 4096 is about **3,010,087.7**, proving how numerically ineffective the straightforward all-direction IBP scaling would be.
+
+The first **NUMERICAL NONCERTIFYING** source-analytic positive low band calculations, now using **eight Gauss subcells per unit frequency**, give:
+
+| Original positive \(A_o\) selected 25-source low-band diagnostics | Band 0–2048 | Band 0–4096 |
+|---|---:|---:|
+| Gauss8 vs Gauss16 full matrix relative Frobenius difference | **0.0001818606** | **0.0001818547** |
+| Numerical Gauss16 source stiffness raw-basis smallest eigenvalue | 0.00737615 | 0.00738275 |
+| Numerical Gauss16 source stiffness raw-basis largest eigenvalue | 5.13377 | 5.13400 |
+| Numerical sampled pole-conditioned low-band raw-basis smallest eigenvalue | 0.00735898 | 0.00736539 |
+
+The Gauss8/16 agreement is useful numerical evidence of *stability*, NOT a rigorous low-frequency integral enclosure: the original positive multiplier \(a_o=\max(\kappa,m)\) has non-smooth transitions at \(m=\kappa\), the digamma and cosine evaluations are float64, and neither an interval quadrature bound nor full original pole source Gram enclosure has passed.
+
+**Next SM42:** rigorous low-band positive source matrix interval enclosure, including whole-real digamma/quadrature and all \(m=\kappa\) transitions, plus certified physical source Gram and true original pole-conditioned denominator. For all 470 original directions avoid the ~3-million norm scalar IBP bound with analytic higher-degree Fourier transforms / matrix-weighted tails and certified source preconditioning. Only after full original \(A_*\) inverse and strong residual may the 470×470 generalized \(51/56\) or exact corrected Schur original O1/O2 gate be evaluated. Even, Weil, CC27 and RH remain **OPEN**.
