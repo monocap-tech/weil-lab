@@ -181,6 +181,73 @@ def generalized_max(m,g):
         check_finite=True)[-1])
 
 
+
+def dominant_original_signed_envelope_hotspots(
+        refined,infos,sources,coeff,g,order=32,top=12):
+    """NUMERICAL selected-source dominant upper-envelope mode: localize
+    the actual original 107-cluster physical-frequency surplus.
+
+    The same full 25-source generalized top *envelope* vector is
+    normalized in g=Z*Astar_sampled*Z, then integrated against
+    true formula (kappa-m)+ vs SM37 exact-formula signed upper
+    weight over EVERY original refined real-frequency subcell.
+    This is a pilot-targeting score ONLY, never a verified
+    interval eigenvector or an entire 470-source bound.
+    """
+    nenv,_=original_fourier_integral(
+        refined,infos,sources,coeff,order,"sm37-envelope")
+    eig,vec=linalg.eigh(nenv,g,check_finite=True)
+    mode=vec[:,-1]
+    assert abs(float(mode@g@mode)-1.)<1e-7
+    physical_coeff=coeff@mode
+    records=[]
+    total_true=0.
+    total_env=0.
+    for j,cluster in enumerate(refined):
+        cells=[(a,b,float(h)+KAPPA_FLOAT)
+               for a,b,h in cluster]
+        nodes,weights=nodes_for_cells(cells,order)
+        amplitudes=(exact_formula_physical_sine_amplitudes(
+            nodes,infos,sources)@physical_coeff)
+        true=np.maximum(KAPPA_FLOAT-original_multiplier(nodes),0.)
+        env=np.repeat(np.array([c[2] for c in cells]),order)
+        q2=2*weights*amplitudes**2
+        t=float(np.sum(q2*true))
+        e=float(np.sum(q2*env))
+        gap=e-t
+        assert gap>=-1e-6*max(e,1.),(j,gap,e,t)
+        total_true+=t
+        total_env+=e
+        records.append({
+            "original_cluster_index":j,
+            "frequency_low":float(cluster[0][0]),
+            "frequency_high":float(cluster[-1][1]),
+            "original_refined_cell_count":len(cluster),
+            "dominant_mode_upper_envelope_energy":e,
+            "dominant_mode_original_signed_direct_energy":t,
+            "signed_envelope_excess":gap,
+        })
+    records.sort(key=lambda z:z["signed_envelope_excess"],reverse=True)
+    assert abs(total_env-float(eig[-1]))<1e-5*max(1,total_env)
+    total_gap=total_env-total_true
+    assert total_gap>0
+    for rec in records[:top]:
+        rec["fraction_of_total_surplus"]=(
+            rec["signed_envelope_excess"]/total_gap)
+    return {
+      "role":"NONCERTIFYING_25_SOURCE_DOMINANT_MODE_LEVERAGE_MAP",
+      "frequency_quadrature_order":order,
+      "true_original_cluster_count":len(refined),
+      "dominant_envelope_generalized_max":float(eig[-1]),
+      "direct_energy_on_same_envelope_dominant_mode":total_true,
+      "envelope_energy_on_same_dominant_mode":total_env,
+      "total_original_signed_envelope_excess":total_gap,
+      "top_clusters":records[:top],
+      "top_cluster_surplus_fraction":sum(
+          z["signed_envelope_excess"] for z in records[:top])/total_gap
+    }
+
+
 def one_case(n,pad,original,refined,orders,infos,sources,mass,total,
              newtotal,orders_gauss):
     x,dx,v=physical_columns(n,infos,sources)
@@ -238,6 +305,9 @@ def one_case(n,pad,original,refined,orders,infos,sources,mass,total,
     assert capmax>=last_new-1e-5*max(1,capmax),(
         "Original SM10 full Taylor cap should dominate original envelope",
         capmax,last_new)
+    hotspots=(dominant_original_signed_envelope_hotspots(
+        refined,infos,sources,c,g,order=32)
+        if n==8192 and pad==8 else None)
     return {
       "status":"NONCERTIFYING_NUMERICAL_SELECTED_25_SOURCE_PILOT",
       "physical_grid":n,"fft_padding":pad,
@@ -266,6 +336,7 @@ def one_case(n,pad,original,refined,orders,infos,sources,mass,total,
       "sm37_taylor_cap_to_direct_ratio":capmax/max(last_d,1e-30),
       "original_theta_51_over_56":THETA,
       "math_certificate":False,
+      "original_signed_frequency_hotspots":hotspots,
     }
 
 
