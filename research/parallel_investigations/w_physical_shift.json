@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS27 original signed physical pre-pole source A0 proven strictly positive >1997/9000, true source Schur factors EXACTLY as pole-free S0_C plus renormalized positive even rank-one alpha|<d,h>|² with 3994/2907<alpha<=2 and d=c_C−B0* A0^-1 c_P, not naive c_C. Original auxiliary pole-free S0_C has explicitly negative projected even constant witness <−4.35974, not a counterexample to original Q. Actual odd sign, even effective-pole K_eff sign, coherent even scalar, CC27 D-Riesz, W-ODD-NEG/W-EVEN-FORM and RH remain OPEN; CI and independent mathematical audit pending.",
+  "proof_standing": "PS28 proves analytically in the ORIGINAL even pole-free thirteen-source form that v=A0^-1 cP is nonnegative (positive-resolvent cone by all seven original negative prime kernels, original digamma modulus contraction, and zero odd pole on even forms). Therefore true renormalized effective even pole d=c_C-B0* v>=c_C>=1 a.e. on original complement C; canonical form-domain-safe even scalar e exists explicitly. Strict source-rational BV/digamma test gives 169/240000<t<455/1997 and 3994/2907<alpha<240000/120169, rather than just an abstract positive scalar. Exact-rational CI and independent math review pending; the original odd sign, even K_eff and one scalar, native CC27 D-Riesz, W-ODD-NEG/W-EVEN-FORM/whole Weil/RH remain OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS28: evaluate or rigorously bound the actual original pre-pole source resolvent A0^-1 c_P and effective even pole vector d=c_C−B0* A0^-1 c_P, with a source-aware finite computational representation; then certify even K_eff=d-orthogonal original pole-free sign and one scalar variational infimum or a real original negative witness",
-    "PS29: separate full original odd source-Schur positivity with negative odd pole retained, independently audit functional-analytic Woodbury and native CC27 D-Riesz norm/domain transfer before W-ODD-NEG/W-EVEN-FORM/full Weil/RH promotion"
+    "PS29: use proven original effective d>=c_C and canonical admissible even scalar representative e to obtain a rigorous signed even K_eff pole-orthogonal positivity certificate and/or exact one-dimensional variational scalar, without losing seven original prime interactions and source response; alternatively exhibit a valid original negative witness",
+    "PS30: establish actual W-ODD-NEG signed odd source Schur positivity with the negative odd pole retained, and independently audit cone-preserving resolvent and native CC27 D-Riesz domain/norm transfer before any full Weil/RH promotion"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -247,6 +247,14 @@
       "note": "notes/RPB108_PS27_POLE_PRESERVING_WOODBURY_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps27_pole_preserving_woodbury.py",
       "limitation": "Effective d and source resolvent A0^-1 c_P NOT explicitly evaluated, even K_eff sign/variational scalar and odd positivity OPEN. Negative witness belongs solely to pole-free auxiliary source Schur. Original CC27 D-Riesz norm/domain, W-ODD-NEG/W-EVEN-FORM, whole Weil and RH OPEN."
+    },
+    {
+      "id": "PS28",
+      "scope": "True original physical EVEN pole-free source resolvent A0^-1 positivity preserving by exact digamma/7-prime form modulus contraction and original signed parity, with source v=A0^-1c_P nonnegative and disjoint source-complement pre-pole B0* v<=0. Therefore exact source-renormalized positive even-pole vector d=c_C-B0* A0^-1 c_P>=c_C>=1 a.e., nonzero and even, ||d||²>757/350. Canonical original-form-admissible even representative e=(1_C u0)/<d,1_Cu0> normalized <d,e>=1, mass<350/757. Source-rational original digamma BV variational trial bounds 169/240000<t=<c_P,A0^-1 c_P><455/1997, yielding 3994/2907<alpha=2/(1+2t)<240000/120169; coherent positive pole contribution to h_C>2.9 but not global sign.",
+      "status": "Scoped analytic original even source-cone positivity and effective pole domination theorem plus exact rational source/TV bound checks; focused final-head Actions and independent functional analytic audit pending",
+      "note": "notes/RPB108_PS28_POSITIVE_SOURCE_RESOLVENT_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps28_positive_source_resolvent.py",
+      "limitation": "No explicit numerical A0^-1 c_P or effective d spectral solve, no global sign of even effective-pole-orthogonal K_eff nor coherent scalar variational infimum, no odd signed Schur PSD. Native CC27 D-Riesz and W-ODD-NEG/W-EVEN-FORM/whole Weil/RH OPEN."
     }
   ]
 }
