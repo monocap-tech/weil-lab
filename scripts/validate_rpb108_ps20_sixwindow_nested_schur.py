@@ -32,6 +32,18 @@ v=F(1,6)
 def iv(lo,hi=None):
     return old.IV(lo,hi)
 
+# Exact-rational outward geometry grid: source logarithms are proved
+# by the pinned RC315 220-term enclosure, then all repeated 1092
+# incidence / 78 kernel calculations use conservative 10^-15 bounds.
+# This avoids enormous denominators without using floating-point tests.
+GRID=10**15
+def snap(q):
+    return F(q.numerator*GRID//q.denominator, GRID)
+def ceilgrid(q):
+    return F(-((-q.numerator*GRID)//q.denominator),GRID)
+def snap_iv(x):
+    return iv(snap(x.lo),ceilgrid(x.hi))
+
 def run():
     ps19.run()
     gov=json.loads((ROOT/"research/obligations.json").read_text())
@@ -60,16 +72,17 @@ def run():
         (iv(a+ln2.lo,a+ln2.hi),iv(b+ln2.lo,b+ln2.hi))
     ]
     assert len(wins)==6 and 6*w==F(3,64)
+    wins=[(snap_iv(lo),snap_iv(hi)) for lo,hi in wins]
     for lo,hi in wins:
         assert -B<lo.lo<=lo.hi<hi.lo<=hi.hi<B
-        assert w<=hi.hi-lo.lo<w+F(1,10**25)
+        assert w<=hi.hi-lo.lo<w+F(1,10**12)
     for i in range(5):
         assert wins[i][1].hi < wins[i+1][0].lo
     assert -(v+w)==-v-w and -(b+ln2.lo)==-b-ln2.lo
 
-    logs={r:(iv(0) if r==1 else old.log_i(r)) for r in LABELS}
-    source=[(r,iv(-B+logs[r].lo,-B+logs[r].hi),
-                 iv(-B+logs[r].lo+delta.lo,-B+logs[r].hi+delta.hi))
+    logs={r:(iv(0) if r==1 else snap_iv(old.log_i(r))) for r in LABELS}
+    source=[(r,snap_iv(iv(-B+logs[r].lo,-B+logs[r].hi)),
+                 snap_iv(iv(-B+logs[r].lo+delta.lo,-B+logs[r].hi+delta.hi)))
                  for r in LABELS]
     assert len(source)==13
 
@@ -88,7 +101,7 @@ def run():
 
     # COMPLETE 6*13*7*2=1092 original source/window signed
     # prime-translation checks, not a replacement by PS10 IMS graph.
-    shifts={n:old.log_i(F(n)) for n,_ in SOURCES}
+    shifts={n:snap_iv(old.log_i(F(n))) for n,_ in SOURCES}
     min_shift_gap=None
     count=0
     for lo,hi in wins:
