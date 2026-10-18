@@ -67,3 +67,51 @@ Reuse the SAME SM38/SM39 original 25 physically supported odd selected sources a
 **Next SM41** must read the measured original whole-real envelope improvement before allocating another refinement. If the cap approaches direct physical Kneg, prioritize rigorous original full positive digamma tail and true 470-source strong residual. Otherwise isolate the remaining local signed prime/cos envelope and source-specific real-frequency leverage. In no case infer even E1–E4, whole Weil, CC27 D-Riesz or RH from a scoped negative cap. All remain OPEN.
 
 Focused replay: python3 scripts/validate_rpb108_sm40_endpoint_curvature_negative_cap.py. The JSON carries exact rational negative-cap results and clearly marked **NONCERTIFYING** selected-source calculations. Independent complete original operator mathematical audit remains necessary.
+
+
+## Exact SM40 measured certificate and numerical engineering result
+
+The **initial focused GitHub Actions run 39174698156 PASSED**. This was a genuinely original whole-real seven-prime exact-rational cap replay on all 3,892 true negative source subcells and full 107 source covariance blocks with **890 exact strictly positive rational LDL pivots**. The exact original all-real SI06 prime second-derivative ceiling is
+\[
+D_2=721.9871980207835\ldots
+\]
+(the decimal is for display; the code's exact Fraction value is authoritative). Every original 1/256-wide subcell pays the small maximum curvature interpolation allowance
+\[
+D_2(b-a)^2/8\le0.001377081295053069\ldots
+\]
+instead of the old original SM39 SI06 global first derivative 69 cost of \(69/(2\cdot256)\approx0.13477\) over a full narrow cell. The new endpoint-value minimum still prices real local signed-prime variation.
+
+**Complete-original true negative-cap certified arithmetic (subject to inherited operator premises):**
+
+| Exact entire ORIGINAL signed seven-prime cap | SM39 | SM40 | Improvement |
+| --- | ---: | ---: | ---: |
+| Reflected signed whole-negative multiplier envelope mass | 18.73146440625 | **16.772529359375** | **−1.958935046875 (−10.458%)** |
+| All original 107 moment clusters / 890 physically supported source columns | 107 / 890 | **107 / 890** | unchanged |
+| All strict Fraction SPD LDL pivots | 890 | **890 PASS** | exact full source cross |
+| Original real subcells with stricter whole-real envelope | — | **2,549 of 3,892** | exact whole-cell inequalities |
+| Complete infinite Taylor error eta | ~1.500647e−10 | smaller, exact rational computed | strict Loewner monotonic |
+
+The final revision after this initial PASS adds **mandatory exact-Fraction assertions**
+\[
+T_{40}<\frac9{10}T_{39},\qquad T_{39}-T_{40}>\frac{19}{10},\qquad
+\#\{\text{strictly improved subcells}\}>2500.
+\]
+A separate final-head CI replay is required for those new checks.
+
+**SAME selected 25 genuine original supported odd sources, same UNCERTIFIED sampled pole-conditioned positive Galerkin reference, numerical Gauss16 at every one of the original 3,892 true signed subcells:**
+
+| Selected original trial generalized maximum (NONCERTIFYING) | Grid 4,096 pad×4 | Grid 8,192 pad×8 |
+| --- | ---: | ---: |
+| Source-analytic direct original signed Kneg (SM38) | **0.964650176** | **0.972928650** |
+| SM39 old signed seven-prime envelope only | 1.109609656 | 1.125944263 |
+| SM40 NEW signed original envelope only | **1.002153245** | **1.011056722** |
+| SM39 old full 107-block 890 Taylor/Young cap | 1.110693182 | 1.127043781 |
+| SM40 NEW full 890-source cap | **1.003131964** | **1.012044086** |
+| NEW cap divided by same direct original signed negative response | **1.039892×** | **1.040204×** |
+| SM34 full-470 ORIGINAL sufficient gate theta=51/56 | 0.910714286 | 0.910714286 |
+
+**Interpretation:** the first original-source SM36 upper cap was ~10.7× its coarsely sampled direct Kneg; SM38 identified the conservative seven-prime real-frequency envelope, SM39 drove the inflation down to ~1.15×, and SM40's exact endpoint-curvature argument brings it to **~1.04×** on the SAME *selected noncertifying 25-source trial*. This is a significant algorithmic/certificate efficiency gain, but it does **not** mean the entire 470-source original \(\mathsf N\preceq(51/56)\mathsf G\) has passed.
+
+**Critical strategy update for SM41:** Further refinements to the already near-matched signed-negative cap have declining marginal value. Both the direct sampled original Kneg selected-source maximum **0.965–0.973** and new certified-negative-cap selected-source maximum **1.003–1.012** still exceed the **sufficient** full-source theta \(51/56\approx0.911\). These are NOT true 470-source generalized eigenvalues, and a failed sufficient test does not disprove signed odd positivity. The highest-value next effort is a **genuine rigorous full positive archimedean logarithmic-frequency tail and supported-source \(A_o\)/\(A_*\) form evaluation**, improved Galerkin original 470-source residual, and ultimately the **complete original odd corrected Feshbach spectral sign**, rather than blindly adding more negative subcells.
+
+All actual original W-ODD-NEG O1/O2, even E1–E4, signed whole Weil, native CC27 D-Riesz, RH remain OPEN. An independent analytical audit is essential.
