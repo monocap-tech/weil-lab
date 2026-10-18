@@ -62,7 +62,7 @@ def derivative_base_overlap(y):
     small=np.abs(t)<0.02
     z=t[small]
     v[small]=B*(2*np.pi*B)*(
-        -z/3+z**3/30-z**5/(-840)+z**7/45360
+        -z/3+z**3/30-z**5/840+z**7/45360
     )
     u=t[~small]
     v[~small]=B*(2*np.pi*B)*(u*np.cos(u)-np.sin(u))/u**2
@@ -113,9 +113,13 @@ def validate_physical_transforms(infos,sources):
                               else np.cos(2*np.pi*c*x))
             # Oscillatory integral on original interval. Tight
             # scipy quad is only a NUMERICAL cross-validation.
+            # QUADPACK oscillatory-weight quadrature resolves the
+            # genuinely original remote 389/882 sine frequencies,
+            # unlike naively integrating ~1000 periods with 600 bins.
             val,err=integrate.quad(
-                lambda x:2*f(x)*np.sin(2*np.pi*xi*x),
-                0.,B,epsabs=1e-10,epsrel=1e-10,limit=600)
+                lambda x:2*f(x),
+                0.,B,weight="sin",wvar=2*np.pi*xi,
+                epsabs=1e-10,epsrel=1e-10,limit=200)
             assert abs(a-val)<4e-7+5*err,(typ,k,xi,a,val,err)
     # Odd sine Fourier convention normalized by Parseval; DO NOT
     # drop the 2 for negative mirrored frequency in all integrals.
