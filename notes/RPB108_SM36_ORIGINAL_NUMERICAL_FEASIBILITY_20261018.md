@@ -119,3 +119,32 @@ The GitHub Actions pilot ran the **actual SI10 source formulas**, selected **25 
 The original \(m(\xi)=\Re\psi(1/4+i\pi\xi)-\log\pi+\text{seven signed prime terms}\) has logarithmic positive high-frequency growth. None of the above sampled values constitutes a complete original \(A_o\) form, a verified \(A_o^{-1}\), or a rigorous high-frequency tail approximation. The Parseval consistency check verifies FFT bookkeeping **only**.
 
 **Immediate next computation:** the pilot implementation is being extended to report the **direct sampled negative-frequency generalized maximum** next to the conservative 890-cap maximum on the *same* selected trial. That isolates cap inflation from sample-space spectral difficulty. If the direct-negative trial also exceeds \(51/56\), enlarge/recondition the *actual Galerkin trial* and refine the original positive-frequency quadrature; if the direct-negative trial is low but the cap remains high, sharpen original negative cap weights with signed real-frequency subcell enclosures or a complete negative-frequency-weighted inverse error rather than overrefining the positive solve. Either way, the **complete 470D original interval Loewner** remains unmeasured.
+
+
+## 6. Matched direct-negative response: the decisive cap-inflation diagnosis
+
+The updated SM36 pilot **also PASSED** in focused run **39167018012**, using the same actual 25 original odd physical sources, identical sampled original positive resolvent trial, and comparing:
+\[
+\text{direct sampled }\;N_{\rm direct}^{\rm trial}=Z^*K_-^{\rm sampled}Z
+\quad\text{against}\quad
+\text{original SM10 CAP }\;\widehat N_{\rm cap}^{\rm trial}
+=Z^*(UDU^*+\eta I)Z.
+\]
+For clarity, neither quantity is a rigorously certified original full continuum matrix, and \(Z\) is only a **25-source Galerkin approximation**, not the required true 470-source \(A_*^{-1}J\).
+
+| Same pilot setting | Direct sampled negative generalized maximum | SM10 cap generalized maximum | Inflating factor |
+|---|---:|---:|---:|
+| 4096 original physical, 4× Fourier padding | 0.997100712 | 10.688198176 | 10.7193× |
+| 8192 original physical, 4× Fourier padding | 0.997100617 | 10.688195097 | 10.7193× |
+| 8192 original physical, 8× Fourier padding | 0.999835397 | 10.863857837 | 10.8656× |
+
+The SM34 **sufficient whole-odd threshold** is \(\theta=51/56=0.9107142857\ldots\).
+
+**Required interpretation:**
+
+1. **Upper-cap inflation is structural and large on this pilot:** the complete existing SM10 890-column negative cap is ~10.7× the direct sampled generalized maximum, even after applying both to exactly the same source solutions. The near 8.3× difference in the complete source-negative Frobenius matrix corroborates this but is a distinct measure.
+2. **The direct sampled trial itself is not yet under the sufficient threshold:** it is \(\sim0.997\)–\(1.000>\theta\). This does NOT establish an original odd negative eigenvalue or disprove Weil/RH. Galerkin approximation of the **inverse**, omitted positive-frequency Fourier tail, lack of original strong residual certification, and incompleteness of the 470 source basis prevent such a conclusion. Additionally the threshold is sufficient, not necessary.
+3. **A brute-force 470-source scalar \(10^{-12}\) residual is premature.** Even perfecting the strong residual without changing the upper-cap formulation would not make this sampled **finite pilot** pass the strict sufficient matrix criterion.
+4. **Next feasible structural/computational optimization:** refine the original signed-negative \(K_-\) upper with narrower **whole-real rigorously signed subcells**, recompute all original 107 block moment covariances and signed physical response, and compare their trial generalized maximum to the *same* direct sampled \(K_-\). Independently enrich the true \(A_o\) Galerkin trial basis and rigorously control frequency-grid and \(|\xi|\to\infty\) positive logarithmic tail. Source coordinate conditioning was not the immediate 25-vector obstacle.
+
+A passing numerical workflow is therefore **valuable negative engineering evidence about the current acceptance route**, not a signed exceptional Schur theorem. Whole original O1/O2, even E1–E4, Weil/CC27/RH remain OPEN.
