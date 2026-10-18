@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS24 source-rational analytic recursive signed seam-absorption acceptance criterion and true second-generation noncompact collar demonstration: improved 10-window source Schur >9/50; full twice-eliminated original signed residual >45 on reflected outer collars width 2^-192; coupled 12-window source Schur >1/8 with all original prime, arch, signed poles and inverse response accounted for. NOT a complete covering due vanishingly tiny widths; CI and independent review pending. Full signed residual positivity, CC27 D-Riesz, W-ODD-NEG/W-EVEN-FORM, Weil/RH remain OPEN.",
+  "proof_standing": "PS25 source-pinned analytic original signed full 12-window infinite-dimensional componentwise Z-majorant, second-generation physical width 1/2048 NONSHRINKING (vs PS24 2^-192), true Carleman + prime + pole + original source inverse paid, exact weighted rational matrix positivity candidate >1/4, final-head CI and independent audit PENDING. Source+12-window physical length coverage <5%, all remaining global signed complement Schur, CC27 bridge, W-ODD-NEG/W-EVEN-FORM/full Weil/RH OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS25: investigate a NONSHRINKING practical finite-scale original digamma/Carleman seam absorption and exact region coverage with all genuine seven-prime inter-region overlaps, both poles, full source-adjusted inverse, and sign-relevant complete residual gap; avoid useless repeated microscopic collars that leave most of the complement uncovered",
-    "PS26: independently audit actual original physical logarithmic form-domain Schur reductions and full CC27 D-Riesz native domain/norm transfer, and permit W-ODD-NEG/W-EVEN-FORM/RH promotion only after entire residual signed PSD actually certified"
+    "PS26: extend the exact componentwise original signed source-aware Z-matrix/weighted-diagonal-dominance method from the twelve finite-scale physically positive windows to a PRACTICAL actual partition of the ENTIRE uncovered original complement, rigorously including all genuine prime shift link operators and noncompact arch seams; require accepted positive whole signed Schur margin or a genuine negative witness, respecting RC315 small even gap ceiling",
+    "PS27: independent operator-domain proof audit and native CC27 D-Riesz domain/norm isomorphism attached to a genuinely certified full signed residual positive theorem before W-ODD-NEG/W-EVEN-FORM/Weil/RH promotion"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -223,6 +223,14 @@
       "note": "notes/RPB108_PS24_SECOND_GENERATION_SEAM_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps24_second_generation_seam.py",
       "limitation": "Tiny second-generation width 2^-192 shows local repeatability only, NOT a finite physical complement covering or positive global residual; original CC27 D-Riesz, W-ODD-NEG, W-EVEN-FORM, complete Weil/RH OPEN."
+    },
+    {
+      "id": "PS25",
+      "scope": "Exact original-source full signed 12-window componentwise Z-matrix majorant across FOUR genuinely noncompact Carleman arch seams and THREE original log2 prime edges, using a nonshrinking second-generation collar width 1/2048 rather than PS24's 2^-192. All 2184 original 12-window/13-source signed prime translations checked disjoint; all 462 internal prime pairs tested including two measure-zero touches. Complete original signed arch inter-window kernels bounded using improved integrated separated-Hilbert-Schmidt formula, correct both pole signs and full source-energy inverse rank-one scalar subtraction included. Exact rational weighted diagonal-dominance integer witness gives strict source-eliminated original Schur >1/4 mass on the full infinite-dimensional reflection-invariant 12-window support.",
+      "status": "New source-true analytic 12-window scalar majorant and prospective exact-rational weighted row certificate; final-head Actions and independent mathematical review pending",
+      "note": "notes/RPB108_PS25_FINITE_SCALE_MAJORANT_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps25_finite_scale_majorant.py",
+      "limitation": "Less than 5% of physical whole interval length is included even with 13-source; remaining full signed complementary Schur PSD and CC27 D-Riesz carrier, W-ODD-NEG/W-EVEN-FORM, whole Weil/RH OPEN."
     }
   ]
 }
