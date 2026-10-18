@@ -172,9 +172,13 @@ def run():
     # Rank-one positive update may remove at most ONE negative
     # independent direction. If S_C >=0 EVEN, then necessarily
     # ind-(S0_C,e)==1 and S0_C>=0 on K_eff.
-    # If d!=0: phi=d/||d||. Exact original even sign criterion:
+    # If d!=0, D_C,even is dense in L2(C),even. Thus choose
+    # an ADMISSIBLE even e in the logarithmic form domain with
+    # <d,e>=1. Do NOT assume d itself is in the form domain:
+    # B0* A0^-1 c_P is merely known to be an L2 vector.
+    # Exact original even sign criterion:
     # S0_C>=0 on K_eff AND
-    # inf_{k in K_eff} (S0_C[phi+k]+alpha||d||²)>=0.
+    # inf_{k in K_eff} (S0_C[e+k]+alpha)>=0.
     # NO positive K_eff or scalar infimum is computed in PS27.
     # d=0 would leave the explicit negative S0_C even direction
     # uncorrected and hence is impossible IF full even S_C PSD.
