@@ -1,0 +1,39 @@
+name: RPB108 PS34 original prime quiet even ground-mass
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_PS34_PRIME_QUIET_GROUND_MASS_20261018.md"
+      - "scripts/validate_rpb108_ps34_prime_quiet_ground_mass.py"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps34-prime-quiet-ground-mass.yml"
+  workflow_dispatch:
+
+jobs:
+  ps34-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Exact original prime-quiet even Schur and ground-mass rational checks
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps34_prime_quiet_ground_mass.py
+          python3 scripts/validate_rpb108_ps34_prime_quiet_ground_mass.py
+      - name: Never promote original signed Weil or RH from PS34 scoped local result
+        run: |
+          python3 - <<'PY'
+          import json
+          g=json.load(open("research/obligations.json"))
+          p=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert g["active_obligation"]=="W-ODD-NEG"
+          assert g["objective"]["status"]=="open"
+          assert g["governance"]["no_automatic_promotion"] is True
+          assert p["id"]=="W-PHYSICAL-SHIFT"
+          assert p["status"]=="open"
+          assert p["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert p["checkpoints"][-1]["id"]=="PS34"
+          assert all(flag is False for flag in p["closures"].values())
+          PY
