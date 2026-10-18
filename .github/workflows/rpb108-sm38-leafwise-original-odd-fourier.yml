@@ -1,0 +1,59 @@
+name: RPB108 SM38 original odd leafwise Fourier cap decomposition (noncertifying)
+
+on:
+  pull_request:
+    paths:
+      - "scripts/sm38_leafwise_original_odd_fourier_audit.py"
+      - "notes/RPB108_SM38_LEAFWISE_ORIGINAL_ODD_FOURIER_AUDIT_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm38-leafwise-original-odd-fourier.yml"
+  workflow_dispatch:
+
+jobs:
+  sm38-original-leafwise:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install original Fourier pilot dependencies
+        run: python -m pip install numpy scipy
+      - name: All 3892 actual original signed source subcells and source-analytic odd Fourier
+        run: |
+          python -m py_compile scripts/sm38_leafwise_original_odd_fourier_audit.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/sm38_leafwise_original_odd_fourier_audit.py
+      - name: Fail-closed numerical-only and entire Weil odd RH still OPEN
+        run: |
+          python - <<'PY'
+          import json
+          a=json.load(open("artifacts/sm38_leafwise_original_odd_fourier.json"))
+          assert a["status"]=="ORIGINAL_ANALYTIC_SOURCE_LEAFWISE_NUMERICAL_DIAGNOSTIC_ONLY"
+          assert a["canonical_odd_O1_O2"]=="open"
+          assert a["quadrature_status"]=="NONCERTIFYING_FLOAT64_NOT_INTERVAL_PROOF"
+          assert a["original_source_carrier"]==470 and a["pilot_source_count"]==25
+          assert a["negative_original_signed_leaves"]==973
+          assert a["certified_SM37_original_subcells"]==3892
+          assert a["original_complete_negative_moment_columns"]==890
+          assert len(a["cases"])==2
+          assert all(x["numerical_only"] is True for x in a["cases"])
+          assert all(len(x["quadrature_orders"])==3 for x in a["cases"])
+          assert all(y["true_operator_sign_certified"] is False
+                     for x in a["cases"] for y in x["quadrature_orders"])
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          o=next(z for z in m["obligations"] if z["id"]=="W-ODD-NEG")
+          assert o["status"]=="open" and "O1/O2" in o["acceptance"]
+          assert all(z in o["evidence"] for z in ("SM36","SM37","SM38"))
+          assert "sm38_leafwise_original_fourier_diagnostic" in m["governance"]
+          PY
+      - name: Upload noncertifying exact-source leafwise Fourier cap decomposition
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm38-original-leafwise-fourier-diagnostic-NONCERTIFYING
+          path: artifacts/sm38_leafwise_original_odd_fourier.json
+          if-no-files-found: warn
