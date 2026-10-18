@@ -1,0 +1,59 @@
+name: RPB108 SM42 exact original supported odd Gram and low-band gate
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm42_original_physical_gram_and_low_gate.py"
+      - "notes/RPB108_SM42_EXACT_PHYSICAL_GRAM_CROSSING_SAFE_LOW_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm42-exact-source-gram-low-gate.yml"
+  workflow_dispatch:
+
+jobs:
+  sm42-original-source-gram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install optional numerical preconditioner dependencies
+        run: python -m pip install numpy scipy
+      - name: Exact original source 25x25 Gram and rational-preconditioned strict whole-matrix interval positivity
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm42_original_physical_gram_and_low_gate.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm42_original_physical_gram_and_low_gate.py
+      - name: Assert no positive-Gauss, full odd, Weil or RH promotion
+        run: |
+          python - <<'PY'
+          import json
+          v=json.load(open("artifacts/sm42_exact_original_25_source_gram_and_low_gate.json"))
+          assert v["status"]=="CERTIFIED_EXACT_ORIGINAL_25_PHYSICAL_GRAM_AND_COARSE_CROSSING_SAFE_LOW_OPERATOR"
+          assert v["canonical_W_ODD_NEG"]=="OPEN"
+          assert v["real_original_source_count"]==25
+          a=v["actual_original_25_source_gram"]
+          assert a["certified_entire_original_25x25_physical_gram_SPD"] is True
+          assert a["original_source_dimension"]==25
+          assert a["min_preconditioned_gershgorin_margin_float"]>0
+          c=v["original_positive_low_band_coarse_operator_gate"]
+          assert c["entire_original_low_band_cutoff"]==4096
+          assert c["full_low_frequency_quad_error_certified"] is False
+          assert c["true_original_Astar_resolvent_certified"] is False
+          assert len(v["missing_original_complete_odd_acceptance"])>=5
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          odd=next(x for x in m["obligations"] if x["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open" and "O1/O2" in odd["acceptance"]
+          assert all(x in odd["evidence"] for x in ("SM40","SM41","SM42"))
+          assert "sm42_true_original_physical_gram_crossing_safe_low_gate" in m["governance"]
+          PY
+      - name: Upload scoped exact source Gram and coarse positive low-band certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm42-true-original-25-gram-crossing-safe-positive-low-only
+          path: artifacts/sm42_exact_original_25_source_gram_and_low_gate.json
+          if-no-files-found: warn
