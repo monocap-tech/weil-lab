@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS26 identifies a partition-INDEPENDENT proof-method obstruction: any full-complement PS25-type scalar Z-majorant that discards the genuine positive EVEN rank-one pole is necessarily non-PSD, by a pinned RC315 constant test on actual sharp source-complement h. The pole-dropped SURROGATE has upper <-4.2, while actual original Schur sign stays UNKNOWN; >99.05% of even pole is a necessary part of any positive pole-scaled source Schur surrogate. Exact parity + c_C-orthogonal even/rank-one variational reduction now governs the next investigation. Final-head CI and independent audit PENDING. Actual W-ODD-NEG/W-EVEN-FORM/full Weil, native CC27 D-Riesz and RH OPEN.",
+  "proof_standing": "PS27 original signed physical pre-pole source A0 proven strictly positive >1997/9000, true source Schur factors EXACTLY as pole-free S0_C plus renormalized positive even rank-one alpha|<d,h>|² with 3994/2907<alpha<=2 and d=c_C−B0* A0^-1 c_P, not naive c_C. Original auxiliary pole-free S0_C has explicitly negative projected even constant witness <−4.35974, not a counterexample to original Q. Actual odd sign, even effective-pole K_eff sign, coherent even scalar, CC27 D-Riesz, W-ODD-NEG/W-EVEN-FORM and RH remain OPEN; CI and independent mathematical audit pending.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS27: construct a globally parity-resolved original physical carrier retaining the POSITIVE EVEN pole coherently: certify original source Schur on even c_C-orthogonal form domain and odd sector separately, and compute the one-dimensional even variational infimum before asserting true original global positivity; retaining <99.05% even pole is structurally impossible on source-complement",
-    "PS28: independent mathematical audit of the original physical/CC27 D-Riesz carrier norm/domain correspondence and complete signed whole-domain positivity only if all odd, even pole-orthogonal and coherent scalar gates actually close; never present pole-dropped negative direction as RH counterexample"
+    "PS28: evaluate or rigorously bound the actual original pre-pole source resolvent A0^-1 c_P and effective even pole vector d=c_C−B0* A0^-1 c_P, with a source-aware finite computational representation; then certify even K_eff=d-orthogonal original pole-free sign and one scalar variational infimum or a real original negative witness",
+    "PS29: separate full original odd source-Schur positivity with negative odd pole retained, independently audit functional-analytic Woodbury and native CC27 D-Riesz norm/domain transfer before W-ODD-NEG/W-EVEN-FORM/full Weil/RH promotion"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -239,6 +239,14 @@
       "note": "notes/RPB108_PS26_EVEN_POLE_GLOBAL_NO_GO_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps26_even_pole_global_no_go.py",
       "limitation": "Only pole-dropped SURROGATE is proved negative, not the ORIGINAL signed Weil form or true source Schur. Even pole-orthogonal positivity, coherent scalar, odd original sign, CC27 D-Riesz, W-ODD-NEG/W-EVEN-FORM, whole Weil and RH OPEN."
+    },
+    {
+      "id": "PS27",
+      "scope": "Actual same-original-source PRE-POLE source block A0=A_P−2|c_P><c_P| strictly positive >1997/9000; exact source-first Schur Woodbury S_C=S0_C+alpha|<d,h>|², d=c_C−B0* A0^-1 c_P (true renormalized effective even pole), alpha=2/(1+2<c_P,A0^-1 c_P>) with 3994/2907<alpha<=2. Original pole-free source-Schur S0_C has explicit negative normalized constant projection witness <−4.35974 (auxiliary only). Source pole-even parity reduction identifies effective K_eff=d^perp and one variational scalar; odd sector unchanged. Strict rational checks and exact finite block identity replay.",
+      "status": "Source-pinned analytic original positive-pole Woodbury factorization, exact rational source lower and coefficient gates; final-head Actions and independent mathematical audit pending",
+      "note": "notes/RPB108_PS27_POLE_PRESERVING_WOODBURY_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps27_pole_preserving_woodbury.py",
+      "limitation": "Effective d and source resolvent A0^-1 c_P NOT explicitly evaluated, even K_eff sign/variational scalar and odd positivity OPEN. Negative witness belongs solely to pole-free auxiliary source Schur. Original CC27 D-Riesz norm/domain, W-ODD-NEG/W-EVEN-FORM, whole Weil and RH OPEN."
     }
   ]
 }
