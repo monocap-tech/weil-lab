@@ -194,6 +194,11 @@
       "required_evidence": [
         "original reflection invariance and parity-orthogonal form decomposition",
         "complete original signed Weil on original domain, not surrogate positivity"
+      ],
+      "forbidden_shortcuts": [
+        "one parity only",
+        "local positive subsets in both parities without full operators",
+        "unsupported cross parity cancellation"
       ]
     },
     "C2_NATIVE_DOMAIN_AND_RH": {
@@ -206,6 +211,11 @@
       "required_evidence": [
         "separate native carrier/domain/norm theorem and independent audit",
         "original zeta explicit formula and RH equivalence attachment"
+      ],
+      "forbidden_shortcuts": [
+        "complete physical signed Weil without accepted CC27 native domain/norm bridge",
+        "formal Lean tests not connected to original zeta explicit formula",
+        "research CI alone"
       ]
     }
   },
