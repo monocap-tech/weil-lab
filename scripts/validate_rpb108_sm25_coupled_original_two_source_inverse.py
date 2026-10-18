@@ -180,7 +180,7 @@ def finite_coupling_countertest():
     # Signed Gram uncertainty e01 requires DIAGONAL slack:
     e=F(1,20)
     E=[[F(0),e],[e,F(0)]]
-    safe=[[e,e],[e,e]]  # upper of E is diag(e,e)+off true E
+    safe=[[e,F(0)],[F(0),e]]  # PSD upper of both +/- offdiag E
     assert psd2(sub(safe,E))
     assert psd2(add(safe,E))
     return e
