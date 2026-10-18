@@ -1,0 +1,38 @@
+name: RPB108 SM23 coupled true odd residual reference
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm23_coupled_residual_reference.py"
+      - "notes/RPB108_SM23_COUPLED_RESIDUAL_REFERENCE_20261017.md"
+      - "research/obligations.json"
+      - "docs/ACTIVE_FRONTIER.md"
+      - ".github/workflows/rpb108-sm23-focused.yml"
+  workflow_dispatch:
+
+jobs:
+  sm23-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: SM22 original first-source signed inverse source regression
+        run: |
+          python3 scripts/validate_rpb108_sm22_first_original_inverse_reference.py
+      - name: SM23 exact-Fraction coupled matrix, rank-null floor and rational Loewner upper
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm23_coupled_residual_reference.py
+          python3 scripts/validate_rpb108_sm23_coupled_residual_reference.py
+      - name: Original W-ODD-NEG and RH remain OPEN
+        run: |
+          python3 - <<'PY'
+          import json
+          v=json.load(open("research/obligations.json"))
+          assert v["active_obligation"]=="W-ODD-NEG"
+          assert v["objective"]["status"]=="open"
+          assert v["governance"]["no_automatic_promotion"] is True
+          assert "SM23" in v["evidence"]
+          PY
