@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS29 derives analytically for the TRUE even pole-free original thirteen-source Schur the compact-resolvent, strict modulus and simple negative ground-eigenvalue property; PS28 d>=c_C>=1 forces nonzero overlap with that ground mode. Exact rank-one spectral criterion reduces even PSD to lambda1>=0, annihilation of zero modes by d, and Delta=a²−|lambda0|<b,Lplus^-1 b>>0 with alpha Delta>=|lambda0|. PS28 true source alpha bounds give exact sufficient/obstruction corridors Delta/|lambda0|>=2907/3994 (sufficient) and <=120169/240000 (impossible). THESE ORIGINAL SPECTRAL QUANTITIES ARE NOT CALCULATED; no even K_eff/scalar positivity, odd positivity, whole signed Weil, CC27 D-Riesz or RH closure. PS29 exact Fraction algebra CI is not independent proof audit.",
+  "proof_standing": "PS30 develops an exact ORIGINAL pole-free even Schur weighted ground-state transform conditional on standard ground-state irreducibility and domain-core facts: PS28 A0 inverse cone positivity and negative original source/complement B0 yield source-mediated R=B0* A0^-1 B0 positivity preserving on the even cone, so the true ground-shifted form splits into nonnegative digamma jump, all 7 original prime jumps, and nonnegative source-mediated jump terms. The uncomputed second eigenvalue sign becomes a weighted nonlocal Poincare lower threshold >=|lambda0|>4.359740. The original uniform k>=3/10 combined only with an unproved L∞ ground bound cannot certify that threshold: the resulting conditional constant-floor lower certificate is <=33/50<0.66. No lambda1, pole-angle Delta, actual weighted Poincare coefficient, W-ODD-NEG/W-EVEN-FORM/whole Weil/CC27 D-Riesz/RH closure. Focused Fraction regression and independent functional-analysis audit outstanding.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS30: on the original even source Schur, certify sign of second eigenvalue lambda1; prove d annihilates any zero eigenspace; calculate actual source-renormalized pole overlap a, positive-spectrum response beta, and margin Delta/|lambda0| against PS29 exact rational thresholds using the seven original shifts. Alternatively give genuine original signed negative witness. PS29 only proved conditional spectral equivalences.",
-    "Continue canonical W-ODD-NEG original odd Schur with the negative signed odd pole retained; independent functional-analysis and CC27 D-Riesz review remain necessary for any whole signed Weil/RH promotion."
+    "PS31 scoped to the ORIGINAL seven-prime even pole-free Schur: certify a true weighted nonlocal Poincare constant on genuine source complement for actual positive ground phi0 with full short-distance digamma kernel, 7 prime edges and source-mediated nonlocal jump. Prove lambda1>=0 or exhibit a true original second negative eigenmode; the mere constant-k lower cannot suffice. Then resolve PS29 effective d nullspace and alpha/Delta coherent pole angle.",
+    "Canonical W-ODD-NEG remains the primary active obligation and is not demoted by the explicitly scoped PS continuation; independently audit PS28 source cone, PS29 ground-state compactness, PS30 positive-semigroup irreducibility, and native CC27 D-Riesz transfer prior to full Weil/RH promotion."
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -263,6 +263,14 @@
       "note": "notes/RPB108_PS29_EVEN_SPECTRAL_GROUND_MODE_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps29_even_spectral_ground_mode.py",
       "limitation": "No original lambda1, a, beta, Delta or m computed; no actual positivity of K_eff or coherent scalar, no original odd signed Schur positivity; native CC27 D-Riesz, W-ODD-NEG/W-EVEN-FORM, whole signed Weil and RH OPEN."
+    },
+    {
+      "id": "PS30",
+      "scope": "True original 7-prime source-eliminated even pole-free Schur L=J_C+carch mass−2 prime correlations−R, R=B0* A0^-1 B0. PS28 genuine even source A0^-1 positivity-preserving and B0 negativity-preserving imply R positivity preserving on even cone (stronger than operator PSD). Using PS29 simple bottom phi0>=0, irreducible strictly positive arch kernel implies phi0>0 a.e.; exact analytic ground-state transformed L[phi0 g]−lambda0||phi0g||² equals nonnegative original digamma jump + all seven positive-weight prime jump + source-mediated R jump term. Therefore lambda1>=0 iff actual weighted nonlocal Poincare constant >=|lambda0|. Original RC315 source Schur witness certifies lambda0<-4.359740. Since original k(u)>3/10 for 0<u<=11/5, naive conditional L∞-based constant-floor only Poincare lower cannot exceed 33/50; cannot close this gate without singular kernel/prime/source structure. Exact rational finite source-Schur ground-transform and threshold replay, independent analytic audit pending.",
+      "status": "Analytic original physical ground-state jump identity, irreducibility/strict ground positivity and source-response cone argument documented; exact-Fraction source-Schur toy algebra and original RC315 scale gates with focused Actions pending; independent proof audit required.",
+      "note": "notes/RPB108_PS30_GROUND_STATE_GAP_20261018.md",
+      "replay": "python3 scripts/validate_rpb108_ps30_ground_state_gap.py",
+      "limitation": "Actual phi0 and full weighted Poincare minimum not evaluated, lambda1 sign unresolved, no effective pole Delta/coherent scalar, no original odd sign, CC27 D-Riesz, W-ODD-NEG, W-EVEN-FORM, original complete signed Weil or RH closure. Ground irreducibility and transformed form-core require independent functional analysis review."
     }
   ]
 }
