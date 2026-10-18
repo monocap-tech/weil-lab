@@ -81,7 +81,8 @@ TRIG_ERR=F(1,10**12)
 
 def rational_round(t):
     # nearest integer with exact rational arithmetic
-    return (2*t+1).__floor__()//2 if False else (t+F(1,2)).numerator//(t+F(1,2)).denominator
+    v=t+F(1,2)
+    return v.numerator//v.denominator
 
 def sin_cos_period(q):
     """Certified sine/cos(2pi*q) interval, q exact rational.
@@ -234,17 +235,30 @@ def exact_verified_preconditioned_gram(g):
     assert min(margins)>0,("verified Gram SPD FAILED",float(min(margins)))
     # Matrix congruence by Q is valid, invertibility: Q^THQ
     # positive definite implies Q must be full rank.
+    # Export short outward decimal RATIONAL enclosures, not gigantic
+    # thousands-of-digit exact intermediate fractions. Original
+    # Fraction proof runs to completion BEFORE rounding summaries.
+    S=10**12
+    def up(q):return F(-(-q.numerator*S//q.denominator),S)
+    def down(q):return F(q.numerator*S//q.denominator,S)
+    rawmargin=min(margins)/qs**2
+    pole_lo=down(g[-1][-1].l)
+    pole_hi=up(g[-1][-1].h)
+    assert up(em)>=em and down(rawmargin)<=rawmargin
+    assert down(rawmargin)>0 and pole_hi>=g[-1][-1].h
     return {
        "certified_entire_original_25x25_physical_gram_SPD":True,
-       "exact_max_entry_interval_error":str(em),
-       "exact_preconditioned_gershgorin_margin_times_qscale2":
-           str(min(margins)),
+       "outward_max_entry_interval_error_upper":str(up(em)),
+       "outward_preconditioned_gershgorin_lower":
+           str(down(rawmargin)),
        "min_preconditioned_gershgorin_margin_float":
-           float(min(margins))/qs**2,
+           float(rawmargin),
        "preconditioner_quantization":str(F(1,qs)),
        "original_source_dimension":n,
-       "original_pole_norm_exact_interval":[str(g[-1][-1].l),str(g[-1][-1].h)],
-       "certifying_method":"exact rational whole 25x25 interval Gram and rational-preconditioned strict Gershgorin"
+       "original_pole_norm_exact_formula":"sinh(11/10)-11/10",
+       "original_pole_norm_outward_interval":
+           [str(pole_lo),str(pole_hi)],
+       "certifying_method":"exact rational whole 25x25 interval Gram and rational-preconditioned strict Gershgorin; outward decimal summary rounded only after proof"
     }
 
 
@@ -312,7 +326,7 @@ def main():
        "canonical_W_ODD_NEG":"OPEN",
        "real_original_source_count":25,
        "actual_original_25_source_gram":gram,
-       "actual_original_odd_pole_norm":gram["original_pole_norm_exact_interval"],
+       "actual_original_odd_pole_norm":gram["original_pole_norm_outward_interval"],
        "original_positive_low_band_coarse_operator_gate":crossing,
        "missing_original_complete_odd_acceptance":[
          "useful tight low-band positive digamma-seven-prime 25x25 interval Gauss remainder",
