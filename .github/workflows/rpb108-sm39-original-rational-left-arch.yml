@@ -1,0 +1,60 @@
+name: RPB108 SM39 rational-left original digamma full signed negative cap
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm39_rational_left_arch_cap.py"
+      - "notes/RPB108_SM39_RATIONAL_LEFT_ARCH_ORIGINAL_CAP_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm39-original-rational-left-arch.yml"
+  workflow_dispatch:
+
+jobs:
+  sm39-rational-left-full-negative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install numerical pilot dependencies
+        run: python -m pip install numpy scipy
+      - name: All original 3892 signed subcell left arch rational bounds 107 source blocks and 890 exact pivot tests
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm39_rational_left_arch_cap.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm39_rational_left_arch_cap.py
+      - name: Enforce whole-original odd acceptance remains OPEN despite stronger negative cap
+        run: |
+          python - <<'PY'
+          import json
+          v=json.load(open("artifacts/sm39_original_rational_left_arch_cap.json"))
+          assert v["status"]=="EXACT_ORIGINAL_SUBCELL_LOEWER_CERTIFICATE_AND_NONCERTIFYING_25D_RITZ"
+          assert v["canonical_odd_O1_O2"]=="open"
+          assert v["proof_scope"]=="ORIGINAL_TRUE_WHOLE_NEGATIVE_KNEG_UPPER_ONLY"
+          a=v["original_exact_Fraction_enclosure"]
+          assert a["original_parent_negative_leaves"]==973
+          assert a["signed_rational_subcells"]==3892
+          assert a["original_signed_covariance_blocks"]==107
+          assert a["original_odd_negative_columns"]==890
+          assert a["certified_full_moment_SPD_pivots"]==890
+          assert a["subcells_with_strict_weight_gain"]>0
+          assert len(v["same_source_numerical_pilot"])==2
+          assert all(x["rigorous"] is False and x["certifies_entire_W_odd"] is False
+                     for x in v["same_source_numerical_pilot"])
+          d=json.load(open("research/obligations.json"))
+          assert d["active_obligation"]=="W-ODD-NEG"
+          assert d["objective"]["status"]=="open"
+          assert d["governance"]["no_automatic_promotion"] is True
+          o=next(y for y in d["obligations"] if y["id"]=="W-ODD-NEG")
+          assert o["status"]=="open" and "O1/O2" in o["acceptance"]
+          assert all(x in o["evidence"] for x in ("SM37","SM38","SM39"))
+          assert "sm39_original_rational_left_arch" in d["governance"]
+          PY
+      - name: Upload exact rational cap stats and noncertifying original source pilot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm39-original-rational-arch-cap-and-NONCERTIFYING-pilot
+          path: artifacts/sm39_original_rational_left_arch_cap.json
+          if-no-files-found: warn
