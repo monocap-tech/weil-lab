@@ -1,0 +1,60 @@
+name: RPB108 SM40 original endpoint-curvature seven-prime negative cap
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm40_endpoint_curvature_negative_cap.py"
+      - "notes/RPB108_SM40_ENDPOINT_CURVATURE_SEVEN_PRIME_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm40-endpoint-curvature-seven-prime.yml"
+  workflow_dispatch:
+
+jobs:
+  sm40-original-endpoint-curvature:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install numerical-only selected-source benchmark dependencies
+        run: python -m pip install numpy scipy
+      - name: Original exact seven-prime real endpoint cosine and p-second derivative, full 107 covariance/890 pivots
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm40_endpoint_curvature_negative_cap.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm40_endpoint_curvature_negative_cap.py
+      - name: Reject original signed odd and Weil/RH automatic promotion
+        run: |
+          python - <<'PY'
+          import json
+          f=json.load(open("artifacts/sm40_endpoint_curvature_original_cap.json"))
+          assert f["status"]=="EXACT_ORIGINAL_ENDPOINT_CURVATURE_FULL_KNEG_UPPER_PLUS_NUMERICAL_DIAGNOSTIC"
+          assert f["canonical_original_W_ODD_NEG"]=="OPEN"
+          s=f["exact_original_complete_negative_operator_cap"]
+          assert s["original_signed_negative_parent_leaves"]==973
+          assert s["all_original_signed_subcells"]==3892
+          assert s["original_complete_clusters"]==107
+          assert s["unchanged_original_taylor_columns"]==890
+          assert s["original_exact_SPD_pivots"]==890
+          assert s["adversarial_endpoint_curvature_test"]=="PASSED"
+          assert int(s["strictly_improved_subcells"])>0
+          assert len(f["numerical_same_actual_original_25_source_pilot"])==2
+          assert all(r["numerical_only"] is True and r["certifies_original_odd_O1_O2"] is False
+                     for r in f["numerical_same_actual_original_25_source_pilot"])
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          odd=next(o for o in m["obligations"] if o["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open" and "O1/O2" in odd["acceptance"]
+          assert all(x in odd["evidence"] for x in ("SM38","SM39","SM40"))
+          assert "sm40_original_endpoint_curvature_negative_cap" in m["governance"]
+          PY
+      - name: Upload exact original full-negative cap and NONCERTIFYING source spectra
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm40-original-curvature-complete-negative-cap-and-NONCERTIFYING-pilot
+          path: artifacts/sm40_endpoint_curvature_original_cap.json
+          if-no-files-found: warn
