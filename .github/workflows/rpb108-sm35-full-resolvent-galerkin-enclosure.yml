@@ -1,0 +1,39 @@
+name: RPB108 SM35 exact original 470 source resolvent Galerkin full matrix gate
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_SM35_FULL_ORIGINAL_RESOLVENT_GALERKIN_ENCLOSURE_20261018.md"
+      - "scripts/validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure.py"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm35-full-resolvent-galerkin-enclosure.yml"
+  workflow_dispatch:
+
+jobs:
+  sm35-original-full-galerkin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Original entire 470-source geometry, 973/890 negative cap and coupled residual Galerkin Loewner
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure.py
+          python3 scripts/validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure.py
+      - name: Fail closed on unmeasured true 470 generalized spectral test and entire original O1 O2
+        run: |
+          python3 - <<'PY'
+          import json
+          g=json.load(open("research/obligations.json"))
+          assert g["active_obligation"]=="W-ODD-NEG"
+          assert g["objective"]["status"]=="open"
+          assert g["governance"]["no_automatic_promotion"] is True
+          odd=next(o for o in g["obligations"] if o["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open"
+          assert all(k in odd["evidence"] for k in ("SM33","SM34","SM35"))
+          assert "O1/O2" in odd["acceptance"]
+          assert "original_odd_470_galerkin_residual_gate" in g["governance"]
+          assert "UNMEASURED" in g["governance"]["original_odd_470_galerkin_residual_gate"]
+          PY
