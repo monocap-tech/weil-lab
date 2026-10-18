@@ -94,3 +94,39 @@ The **new original full cap** and its exact signed multiplier real-subcell proof
 Canonical W-ODD-NEG PS36 O1/O2 complete original odd positivity, even E1–E4, full signed Weil, native CC27 D-Riesz and RH remain **OPEN**. The exact seven-prime signed support/zero-extension mathematical identification and infinite-domain assumptions require independent analytic audit.
 
 Replay: \`python3 scripts/validate_rpb108_sm37_refined_original_negative_cap.py\`. Its output JSON in \`artifacts/sm37_refined_original_negative_cap.json\` is a *mixture* of exact-rational certified **negative-cap weights** and clearly tagged **NONCERTIFYING** sampled Ritz diagnostics. A passing CI does not establish original whole-Weil positivity.
+
+
+## Focused complete original cap arithmetic — actual pass and targeted engineering diagnosis
+
+**First SM37 focused GitHub Actions run 39168027689 PASSED**, including 3,892 exact original signed seven-prime whole-real subcell bounds, 107 exact new rational covariance blocks and **all 890 strict SPD LDL pivots**, SAME 890 physical source functions, and smaller rigorously recomputed \(\eta\). The exact rational enclosure results (decimals are printed approximations) are:
+
+| Actual original complete negative cap | SM10 original | SM37 refined | Change |
+|---|---:|---:|---:|
+| Original unresolved half-frequency cells | 973 | **3,892 subcells** | Four per old cell |
+| Clusters / true sine-Taylor columns | 107 / 890 | **107 / 890** | **Unchanged** |
+| Whole signed negative-envelope **cap weight mass** | **37.62605884375** | **27.227999359375** | **−10.398059484375 (−27.6353%)** |
+| Exact original full infinite Taylor residual \(\eta\) | \(3.01436254420\times10^{-10}\) | **\(2.18133559412\times10^{-10}\)** | **−27.6353%** |
+| Rigorous operator relation | \(K_-\preceq\widehat K_{\rm SM10}\) | **\(K_-\preceq\widehat K_{\rm SM37}\preceq\widehat K_{\rm SM10}\)** | Improved *whole* Loewner bound |
+
+The subsequent source revision mandates two additional **exact Fraction** results:
+\[
+\boxed{T_{\rm new}<\tfrac34 T_{\rm old},\qquad
+T_{\rm old}-T_{\rm new}>10.}
+\]
+These new checks are stronger than the initial exact monotonicity assertion and warrant a separate final-head CI rerun.
+
+### Re-evaluate the SAME 25 genuine-original-source Galerkin sampled trial
+
+| Same selected original physical source trial | 4096, pad×4 | 8192, pad×4 | 8192, pad×8 |
+|---|---:|---:|---:|
+| Direct sampled original negative response generalized maximum | **0.997101** | **0.997101** | **0.999835** |
+| Prior SM10 complete negative cap maximum | 10.688198 | 10.688195 | 10.863858 |
+| **New SM37 complete negative cap maximum** | **9.826764** | **9.826759** | **9.985352** |
+| Refined/original cap generalized maximum | **0.919403** | **0.919403** | **0.919135** |
+| New cap inflation vs direct sampled negative | **9.8553×** | **9.8553×** | **9.9870×** |
+
+The *genuine original signed cap* improved **27.6% in full integrated weight and full infinite error**, yet the selected numerical generalized eigenvalue of its cap fell only **8.1%**. The mismatch is important: **uniform subcell tightening is useful but insufficient to resolve the ≈10× cap inflation** on this pilot. Further refinements should prioritize frequencies by their actual source *spectral leverage* and investigate whether source Taylor/Young minorants, high-frequency physical sine cancellation, positive-resolvent trial inadequacy, and full frequency quadrature explain the remaining spectral discrepancy.
+
+Even the matched **direct sampled** negative response is 0.997–1.000, above the **sufficient** true-original whole odd \(\theta=51/56\approx0.910714\). It remains noncertifying and is *not* a proof of original odd indefiniteness, as the 25-source positive resolvent is Galerkin sampled with no original strong residual or logarithmic high-frequency tail paid. A failed sufficient reference likewise cannot determine the exact full corrected Feshbach sign.
+
+**SM38 highest-value next action:** separate the residual ~9.9× conservatism into (a) exact whole-real envelope shape on original negative-frequency support, (b) source Taylor moment/block synthesis and Young \((1+\tau)\), and (c) physical trial Fourier interpolation and positive resolvent approximation. Target the dominant term before any 470-source expansion. In parallel the missing original \(A_o\) positive archimedean high-frequency tail is still a mandatory rigorous acceptance item. No RH/Weil/odd sign promotion.
