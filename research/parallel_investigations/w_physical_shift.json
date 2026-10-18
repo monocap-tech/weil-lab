@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS19 analytic original signed full source-eliminated complementary Schur >27/20 on reflection-invariant infinite-dimensional 4-window carrier with TWO actual n2 internal signed prime couplings, all 728 source cross-prime shifts verified absent, nonzero arch and both pole/source inverse paid; focused final-head CI and independent mathematical review pending. Global complementary Schur sign, native CC27 D-Riesz bridge, W-ODD-NEG, W-EVEN-FORM, whole Weil and RH remain OPEN.",
+  "proof_standing": "PS20 advances PS19 four to six positive coupled original Schur windows (>7/6) and assembles the exact full true signed nested Schur to all remaining physical complement with 1092 prime-shift exclusions, 15 nonzero window arch cross, full source response; physical W/rest coupling noncompact, energy-dual penalty compact positive <878 but residual sign OPEN. Final-head CI and independent mathematical audit pending; CC27 bridge, W-ODD-NEG/W-EVEN-FORM/full original Weil/RH OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS20: build an exact original source-aware complement partition extending the true four-window positive module, quantify its nonlocal cross to uncovered complement including all seven original prime shifts, original digamma, both poles and source inverse; produce rigorous whole signed complementary Schur margin or a negative witness, not another isolated positivity island",
-    "PS21: external analytic audit and original physical-to-CC27 D-Riesz carrier norm/domain bridge after full complement sign certification before any W-ODD-NEG/W-EVEN-FORM/whole Weil/RH promotion"
+    "PS21: sharpen true original source-aware six-window versus full uncovered-complement energy-dual coupling including every genuine Carleman seam and all seven prime translations; quantify a usable small nested Schur penalty and a true residual sign, or produce a mathematically certified negative witness",
+    "PS22: independent analytic audit of original two-level physical Schur domain identities and exact native CC27 D-Riesz norm/domain transfer; promote W-ODD-NEG, W-EVEN-FORM, whole Weil or RH only on strictly accepted whole residual signed positive certificate"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -183,6 +183,14 @@
       "note": "notes/RPB108_PS19_COUPLED_QUIET_FOURBLOCK_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps19_coupled_quiet_fourblock.py",
       "limitation": "Entire complement not covered; nonlocal coupling to the complement of four windows not certified positive. Original CC27 D-Riesz domain/norm transfer, full Weil/RH, W-ODD-NEG/W-EVEN-FORM open."
+    },
+    {
+      "id": "PS20",
+      "scope": "Original signed complete source-eliminated complementary Schur S_C strictly >7/6 L2 on an infinite-dimensional 6-window parity-invariant physical module extending PS19; all 1092 original source-to-window prime shifts checked absent, real two internal log2 links and every 15 original inter-window arch kernel kept, both signed poles and complete 13-source inverse paid. Exact second-level source-aware signed Schur onto ENTIRE uncovered complement with all arch, seven primes, poles and compact source mediated cross retained, noncompact W/rest physical seam essential norm >=log2 and positive compact nested penalty <878.",
+      "status": "analytic positive module + second-level exact signed domain-compatible Schur with rational source/geometry/cross bounds, focused final-head CI and independent mathematical review pending",
+      "note": "notes/RPB108_PS20_SIXWINDOW_NESTED_SCHUR_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps20_sixwindow_nested_schur.py",
+      "limitation": "Residual signed nested Schur positivity UNKNOWN; penalty bound <878 too coarse. No CC27 D-Riesz transfer or full original Weil/W-ODD-NEG/W-EVEN-FORM/RH closure."
     }
   ]
 }
