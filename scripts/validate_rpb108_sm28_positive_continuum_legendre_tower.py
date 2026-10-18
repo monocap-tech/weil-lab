@@ -192,8 +192,11 @@ def run():
     print("SM28 complete original 107 negative moment blocks and"
           " 890 Taylor source columns still untested as full inverse",
           nblocks,ncolumns,flush=True)
+    # Exact Fraction comparison above is authoritative; the rational
+    # numerator/denominator can exceed Python's safe string-digit
+    # formatting limit, so report a readable decimal AFTER acceptance.
     print("SM28 original same witness 13 extra whole positive band"
-          " Jensen response >2/3 rational value",extra,flush=True)
+          " Jensen response >2/3 (display only)",float(extra),flush=True)
     print("SM28 exact degree-1 Hilbert Legendre Parseval model",exact,
           "degree-2 genuinely positive variance",variance,flush=True)
     print("SM28 PASS SCOPED: TRUE ORIGINAL thirteen signed positive"
