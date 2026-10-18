@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS31 develops exact original EVEN ground-state digamma positive exponential layers k(u)=sum_j exp(-(2j+1/2)u), sharp reflection quotient kernel k(|x-y|)+k(x+y), and a rigorous CONDITIONAL finite q-cell weighted graph/within-cell variance Loewner certificate for second even gap >=rho once TRUE normalized ground phi0 mass and W_N=K_N/(2phi0(x)phi0(y)) physical lower entries are evaluated. R and 7 original prime transformed jump terms remain nonnegative but not numerically measured. Strict original first-order parity kernel floor bound 4/7<k(B)<24/35 and even global scalar-floor guaranteed certificate ceiling <264/175 cannot reach necessary |lambda0|>4.359740. Source-pinned true original crude spectral envelope also certifies |lambda0|<1406: need a gap bound at least actual |lambda0|, not merely 4.359740. Exact rational finite toy models are not actual original second eigenvalue or pole angle; analytic ground-cone/form-core review open, W-EVEN-FORM/W-ODD-NEG/RH OPEN.",
+  "proof_standing": "PS32 obtains a first quantitative, albeit extremely coarse, TRUE ORIGINAL pole-free even Schur ground-eigenfunction localization from PS17/PS27/PS29 genuine source operator bounds plus PS18 original digamma Fourier multiplier. RC315 phi0 eigenvalue λ0<-4.359740 and original bounded perturbation T=13+539/90+(1403/80)^2/(1997/9000)<1406 imply actual J[phi0]<T-4.359740<1401. At X=2^8096, original j(ξ)>(8095)*693/1000-5/6>5604, so true normalized ground Fourier high mass<1/4 and low mass>3/4. Every original measurable physical set E of measure≤1/(128X) has phi0² mass<25/64; every reflected half-set A of measure≤1/(256X) has original even ground μ(A)<25/64. Fourier low mass and PS28 d>=1 plus phi0>=0 give quantitative actual ground-effective-pole overlap a²>3/(8X), alpha a²>(3994/2907)*3/(8X). Scale astronomical; NO practical PS31 physical graph cell weights, no lambda1 sign, PS29 Delta or coherent scalar, W-EVEN-FORM/W-ODD-NEG/original Weil/CC27/RH closure. Analytic premises need independent review, dedicated exact rational CI pending.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS32 explicitly scoped: compute TRUE original even pole-free ground eigenvector phi0 physical mass enclosures on C+ and certified lower kernel W_N entries (and original seven-prime/source contributions if feasible), then test finite graph Poincare Loewner and sharpen |lambda0| upper. Failure of graph sufficient bound is NOT failure of lambda1>=0. The exponential layer sum is positive, not a spectral sign proof.",
-    "Independent review and possible stronger short-range weighted singular-kernel intra-cell coercivity or alternative one-negative-index certificate if finite graph is uncompetitive. PS29 still requires nullspace/effective d overlap, Delta and alpha coherent pole-angle after lambda1 >=0. Canonical W-ODD-NEG still primary obligation; original Weil, CC27 D-Riesz and RH OPEN."
+    "PS33 explicitly PS scoped: use the true original even pole-free ground eigen-equation, positivity preserving source resolvent, nonlocal arch kernel, seven-prime/source coupling to obtain a certified macroscopic cell-mass or local ground upper envelope strong enough for PS31 W_N graph (or direct original one-negative-index minmax). PS32 frequency-only concentration threshold |E|≈2^-8096 is not computationally useful; merely increasing bandwidth worsens physical resolution. Resolve actual lambda1 and ground pole-angle Delta separately; do not declare W-EVEN-FORM sign.",
+    "Audit PS17/18 Fourier symbol, PS27 pole-free source bounds, PS28 d>=1 and PS29 simple positive ground assumptions. Preserve W-ODD-NEG canonical priority and full RH/CC27 D-Riesz safeguards."
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -279,6 +279,14 @@
       "note": "notes/RPB108_PS31_EVEN_MULTISCALE_GAP_20261018.md",
       "replay": "python3 scripts/validate_rpb108_ps31_even_multiscale_gap.py",
       "limitation": "No certified physical ground phi0 L∞/bin masses/local spectral envelopes, no measured w_ij, no original second spectral sign, effective-pole Delta or alpha scalar, no even/odd original signed Weil positivity, CC27 D-Riesz or RH closure."
+    },
+    {
+      "id": "PS32",
+      "scope": "For true original physically supported seven-prime pole-free even source Schur L with normalized PS29 phi0≥0 and λ0<-4.359740, PS17 V_C>-13, PS27 A0>1997/9000, ||B0||<1403/80 and true removed cosh pole ||c_C||²<539/180 imply genuine original logarithmic arch energy J[phi0]<T-4.359740<1401 where T=13+539/90+(1403/80)²/(1997/9000). PS18 true original Fourier j(ξ)>log(|ξ|/2)-5/6 at high frequency plus log2>693/1000 yields j>5604 for |ξ|>=2^8096, so actual ground Fourier exterior mass<1/4, interior mass>3/4. Fourier-band limited Cauchy yields true original phi0² mass<25/64 for any physical E with |E|<=1/(128·2^8096), and original even half-ground μ(A)<25/64 when |A|<=1/(256·2^8096). In addition PS28 exact original d>=1 and positivity of phi0 imply genuine quantitative effective-even-pole ground coupling a²=<d,phi0>²>3/(8·2^8096), alpha a²>(3994/2907)*3/(8·2^8096). Extremely weak actual source ground localization; NOT a macroscopic PS31 graph mass, second eigenvalue sign or Delta positivity.",
+      "status": "Scoped genuine ORIGINAL pole-free even Schur eigenfunction logarithmic energy / Fourier-tail / microscopic physical mass / effective-pole quantitative overlap analytic certificate with exact Fraction constant regression, dependent on inherited infinite-dimensional premises and independent audit; focused Actions pending.",
+      "note": "notes/RPB108_PS32_ORIGINAL_GROUND_FOURIER_MASS_20261018.md",
+      "replay": "python3 scripts/validate_rpb108_ps32_original_ground_fourier_mass.py",
+      "limitation": "X=2^8096 astronomical, no original physical macroscopic graph cell phi0 or W_N values; no lambda1 sign, no effective-pole Delta or coherent scalar, no original odd/even Weil PSD, native CC27 D-Riesz transfer or RH closure. Independent functional-analysis review of original PS17/18 and PS27–30 assumptions required."
     }
   ]
 }
