@@ -13,7 +13,8 @@
     "evidence_rule": "Keep mathematical standing separate from CI state, Lean coverage and independent review. Never treat another method's checkpoint as automatic transfer of scope.",
     "thread_rule": "Unqualified NF advances the canonical active obligation; explicitly scoped local requests retain their scope. Method pivots need no new conversation but must preserve custody and update the manifest.",
     "no_automatic_promotion": true,
-    "complete_operator_odd_acceptance": "Preserve PS36 typed positivity and composition: W-ODD-NEG O1/O2 cannot close from SM25 2-source or other componentwise finite operators; only the full original odd physical signed operator with ALL negative-frequency, pole, source, cross and infinite residual terms certified may discharge it."
+    "complete_operator_odd_acceptance": "Preserve PS36 typed positivity and composition: W-ODD-NEG O1/O2 cannot close from SM25 2-source or other componentwise finite operators; only the full original odd physical signed operator with ALL negative-frequency, pole, source, cross and infinite residual terms certified may discharge it.",
+    "full_cap_reference_nogo": "SM26: an unchanged original SI29 B14=κI+PSD rank≤14−2ss* cannot certify complete W-ODD-NEG via SM10 890-source cap: its own complete surrogate spectral index has >=3 negatives. Never infer true A_star sign from an indefinite lower surrogate."
   },
   "active_obligation": "W-ODD-NEG",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -268,6 +269,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/206",
       "repo_path": "notes/RPB108_SM25_COUPLED_ORIGINAL_TWO_SOURCE_INVERSE_20261018.md",
       "verification": "Exact signed rational true physical interval/matrix and 2x2 coupled Loewner focused Actions pending; inherited SI29/SM10 original functional analysis awaits independent review. Passing scoped CI cannot close original full odd operator."
+    },
+    "SM26": {
+      "kind": "Actual original seventeen-packet to complete 890-source SI29 reference Schur negative-inertia obstruction",
+      "scope": "Original physically supported odd K_neg SM11 17 independent continuous signed-negative Jensen packets imply K_neg>8/625 on a true 17-dimensional subspace, and the original SI29 B14=κI+PSD rank≤14−2ss* has at least 3-dimensional feature-null intersection with it. On this original subspace B14−K_neg<−59/5000, and SM10's ALL original 890-source negative cap +η yields B14−η−UDU*<−59/5000. Complete original block Schur inertia gives NEGATIVE INDEX at least 3 for the FULL 890×890 B14-conditioned SURROGATE source Schur D^-1−U*(B14−η)^-1U. DOES NOT show negative inertia for TRUE A*=A_o−2ss* (which can have extra positive continuum), and does not resolve complete W-ODD-NEG O1/O2. Reroute beyond old unchanged C14 reference.",
+      "pr": "pending draft PR",
+      "repo_path": "notes/RPB108_SM26_FULL_CAP_14_SOURCE_INDEX_OBSTRUCTION_20261018.md",
+      "verification": "Exact-rational original SM11 17 signed continuous windows/Gram, SI29 κ/14 rank/negative odd pole, SM10 true entire 107 blocks/890 sources/infinite η, finite full-block Schur inertia model; focused Actions and independent mathematical review pending. O1/O2 and RH OPEN."
     }
   },
   "obligations": [
@@ -328,10 +336,11 @@
         "SM21",
         "SM22",
         "SM24",
-        "SM25"
+        "SM25",
+        "SM26"
       ],
       "acceptance": "PS36 complete-operator O1/O2 gate: prove ORIGINAL supported full odd signed W_o=A_o-2|s><s|−K_neg,o >=0 on full physical domain, equivalently R_o (A_o-2|s><s|)^-1 R_o*<=I on entire true original negative-frequency carrier, with all original positive/negative cross couplings and infinite residual (or exact original full source-first odd Schur). A 2-column principal inverse block from SM25 or 890-column partial modules are NOT full-operator acceptance.",
-      "next_action": "Canonical SM26 under PS36 O1/O2: build a complete blockwise LOEWNER upper for all 890 physically supported SM10 odd sine-Taylor columns, including all 107 original negative moment blocks, original SI29 positive source/cross overlaps, true pole-conditioning, and full eta infinite-frequency residual. SM25 proves only true first TWO coupled original inverse columns and does NOT certify 890×890 matrix or whole odd signed Weil sign. Seek verifiable non-componentwise full residual spectral classification."
+      "next_action": "SM27 (canonical) under PS36 complete original O1/O2: SM26 proves the ORIGINAL FULL 890x890 SI29 B14-conditioned SURROGATE Schur has >=3 negative eigenvalues, a complete-preconditioner method no-go despite SM25 true coupled two-source success. Do NOT assemble 890x890 inverse solely from unchanged 14 positive source features. Expand ORIGINAL signed positive continuum response beyond rank14 with explicit complete all-frequency/source/pole coupled residual (note standalone C33 already has SM13 packet obstruction), or find a direct full A_star inverse/odd source-first Loewner proof. Required closure remains complete true W_o PSD with ALL original negative frequency, source, cross and infinite residual terms."
     },
     {
       "id": "W-EVEN-FORM",
@@ -667,6 +676,17 @@
         "scripts/validate_rpb108_sm25_coupled_original_two_source_inverse.py"
       ],
       "interpretation": "Checks first two ACTUAL SM10 source columns and full signed physical 14x14 SI29 Gram/2x2 source Gram for a genuine coupled original pole-conditioned inverse Loewner upper with eta paid. This is a necessary principal coupled block only; PS36 O1/O2 complete all-negative-frequency odd operator and RH OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM26-full-original-negative-cap-surrogate-index",
+      "obligation_id": "W-ODD-NEG",
+      "role": "method-obstruction",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm26_full_cap_14_source_index_obstruction.py"
+      ],
+      "interpretation": "Original 17 continuous signed-negative windows, full 890-column SM10 cap and source-independent dimension/inertia theorem imply >=3 negative modes in full SI29 14-feature SURROGATE cap Schur; does NOT imply negativity of actual A_star or original Weil. PS36 O1/O2 still OPEN.",
       "cadence": "per-update"
     }
   ]
