@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS23 analytic original twice-eliminated signed Schur positive >9/10 on reflected physical residual collars directly adjacent to 8-window module across TWO genuine noncompact arch Carleman seams, and combined source-eliminated ten-window original signed Schur >1/8 on a reflection-symmetric infinite-dimensional carrier; 588 source/U-to-collar signed prime cases include two EXACT measure-zero boundary contacts. Pending final-head exact-rational CI and independent audit. Entire remaining residual sign, native CC27 D-Riesz domain bridge, W-ODD-NEG/W-EVEN-FORM/whole Weil/RH OPEN.",
+  "proof_standing": "PS24 source-rational analytic recursive signed seam-absorption acceptance criterion and true second-generation noncompact collar demonstration: improved 10-window source Schur >9/50; full twice-eliminated original signed residual >45 on reflected outer collars width 2^-192; coupled 12-window source Schur >1/8 with all original prime, arch, signed poles and inverse response accounted for. NOT a complete covering due vanishingly tiny widths; CI and independent review pending. Full signed residual positivity, CC27 D-Riesz, W-ODD-NEG/W-EVEN-FORM, Weil/RH remain OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS24: extend exact Carleman-seam-collar local positivity into a geometry-driven original signed complement covering argument, paying complete inter-collar arch and all original prime/pole/source-and-eight-window response interactions; certify strictly positive entire residual or a genuine negative witness, not just another isolated physical module",
-    "PS25: independent analytic audit and native original-CC27 D-Riesz domain/norm equivalence before canonical W-ODD-NEG/W-EVEN-FORM/full Weil/RH promotion"
+    "PS25: investigate a NONSHRINKING practical finite-scale original digamma/Carleman seam absorption and exact region coverage with all genuine seven-prime inter-region overlaps, both poles, full source-adjusted inverse, and sign-relevant complete residual gap; avoid useless repeated microscopic collars that leave most of the complement uncovered",
+    "PS26: independently audit actual original physical logarithmic form-domain Schur reductions and full CC27 D-Riesz native domain/norm transfer, and permit W-ODD-NEG/W-EVEN-FORM/RH promotion only after entire residual signed PSD actually certified"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -215,6 +215,14 @@
       "note": "notes/RPB108_PS23_CARLEMAN_SEAM_COLLARS_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps23_carleman_seam_collars.py",
       "limitation": "Full remaining original signed residual remains OPEN; no whole complement PSD, complete physical-to-CC27 D-Riesz norm/domain bridge, W-ODD-NEG/W-EVEN-FORM, whole Weil or RH proof."
+    },
+    {
+      "id": "PS24",
+      "scope": "certified algebraic original-signed infinite-dimensional Carleman seam-absorption determinant criterion and an ACTUAL SECOND generation of two directly touching physical collars of exact width 2^-192; all 644 original thirteen-source/ten-window prime translations checked disjoint; original logarithmic digamma local lower via k(u)>1/(4u), full noncompact 2-corner Carleman, 26+18 original arch distances, both correctly signed poles and original source inverse paid. Ten-window positive margin strengthened >9/50; true source+ten-window-eliminated residual signed Schur >45 on second-generation collars and full combined twelve-window reflection-invariant original source-adjusted signed Schur >1/8.",
+      "status": "Scoped analytic original physical second-generation interface positivity and rational proof obligations; focused final-head CI and independent mathematical review pending",
+      "note": "notes/RPB108_PS24_SECOND_GENERATION_SEAM_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps24_second_generation_seam.py",
+      "limitation": "Tiny second-generation width 2^-192 shows local repeatability only, NOT a finite physical complement covering or positive global residual; original CC27 D-Riesz, W-ODD-NEG, W-EVEN-FORM, complete Weil/RH OPEN."
     }
   ]
 }
