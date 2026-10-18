@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS20 advances PS19 four to six positive coupled original Schur windows (>7/6) and assembles the exact full true signed nested Schur to all remaining physical complement with 1092 prime-shift exclusions, 15 nonzero window arch cross, full source response; physical W/rest coupling noncompact, energy-dual penalty compact positive <878 but residual sign OPEN. Final-head CI and independent mathematical audit pending; CC27 bridge, W-ODD-NEG/W-EVEN-FORM/full original Weil/RH OPEN.",
+  "proof_standing": "PS22 analytic true complete signed original eight-window pivot A_U>19/20; full source-aware eight-window/rest Schur with all actual original cross and noncompact seams, positive compact second penalty <1253, actual twice-eliminated high-arch-energy residual J>=2135 positive, and necessary RC315 even/odd global residual positive-gap ceilings <0.043/<0.16. Entire low/mixed residual PSD, CC27 D-Riesz carrier, W-ODD-NEG/W-EVEN-FORM, whole Weil and RH remain OPEN; exact source CI and independent review pending.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS22: evaluate full eight-window-to-remaining original signed coupling and residual Schur sign",
-    "PS23: independently audit original signed form and complete CC27 D-Riesz transfer before canonical promotion"
+    "PS23: obtain sign-relevant original high/low and mixed residual energy-dual coupling after both source and eight-window Schur reductions; exploit genuinely positive local modules or compact response to certify the remaining low original signed residual, with strict margin below RC315 even upper ceiling 0.043, or produce an actual negative witness",
+    "PS24: external functional-analytic audit plus native CC27 D-Riesz norm/domain attachment, combined with an accepted whole residual PSD, before any promotion of canonical W-ODD-NEG/W-EVEN-FORM/RH"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -199,6 +199,14 @@
       "note": "notes/RPB108_PS21_NESTED_EIGHTWINDOW_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps21_nested_eightwindow.py",
       "limitation": "Whole complement sign, CC27 D-Riesz, W-ODD-NEG, W-EVEN-FORM and RH open."
+    },
+    {
+      "id": "PS22",
+      "scope": "Full original signed source-eliminated eight-window operator A_U sharpened >19/20 by exact 2x2 coercivity determinant; entire domain-compatible residual Schur on all uncovered complement assembled with 16 original Carleman seams, all 7 real prime shifts, both signed poles and compact original source response; physical cross noncompact essential norm >=log2 but bounded <69/2, positive compact nested penalty <1253. True twice-eliminated original signed residual positive on high genuine arch energy J_Z>=2135; RC315 even/odd necessary residual uniform positive gap upper ceilings <0.043/<0.16.",
+      "status": "Scoped analytic full original residual reduction and exact-rational constants; final-head Actions and independent mathematical review pending",
+      "note": "notes/RPB108_PS22_EIGHTWINDOW_RESIDUAL_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps22_eightwindow_residual.py",
+      "limitation": "No positivity of complete low/mixed residual signed Schur; nested norm bound <1253 too coarse. Native CC27 D-Riesz carrier, W-ODD-NEG/W-EVEN-FORM, whole original Weil positivity, RH OPEN."
     }
   ]
 }
