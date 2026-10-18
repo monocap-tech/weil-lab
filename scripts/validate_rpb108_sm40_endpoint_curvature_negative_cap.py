@@ -132,6 +132,11 @@ def refined_original_endpoint_curvature():
     assert mass_new<=oldmass
     assert weight_reduction==oldmass-mass_new
     assert improved>0 and mass_new>0
+    # SM40 entire ORIGINAL seven-prime FULL operator cap:
+    # observed strict improvements are mandatory EXACT Fraction.
+    assert 10*mass_new < 9*oldmass
+    assert weight_reduction > F(19,10)
+    assert improved > 2500
 
     pivots=0
     for cluster,p in zip(refined,orders):
@@ -217,6 +222,10 @@ def original_same_25_source_probe(previous,new,orders,stats,n,pad,gauss=16):
     assert values["SM40_envelope_only"]<=values["SM39_envelope_only"]+1e-7
     assert values["SM40_full_890_moment_cap"]<=values["SM39_full_890_moment_cap"]+1e-7
     assert newmeta["columns"]==890 and newmeta["blocks"]==107
+    # NUMERICAL engineering gate ONLY: cannot establish full odd
+    # PSD or negate it from a selected 25D Ritz spectral test.
+    assert values["SM40_full_890_moment_cap"]/values["same_original_leafwise_direct"] < 1.05
+    assert values["SM40_full_890_moment_cap"] > THETA
     return {
       "physical_grid":n,"FFT_positive_padding":pad,
       "selected_actual_original_source_count":25,
