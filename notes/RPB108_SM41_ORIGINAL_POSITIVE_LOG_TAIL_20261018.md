@@ -122,3 +122,30 @@ SM41's scoped acceptance is: prove original all-real \(\max(\kappa,m)\le17+\log|
 **SM42:** rigorously enclose the original positive **low-band** digamma/prime matrix and pole coupling, using all actual original supported physical odd sine source transforms and partitioning at non-smooth crossings of \(m=\kappa\). Then combine that independent exact low-band error with SM41's whole-real high tail into a true interval \(A_o\) source matrix. For full 470, derive higher-degree source-specific Fourier transform bounds and certified Gram basis transformations to replace the impractical scalar IBP tail; implement an original strong resolvent residual and entire 470-source generalized original \(51/56\) or exact corrected Schur gate. Canonical W-ODD-NEG O1/O2, even E1–E4, whole signed Weil, CC27 D-Riesz, RH all **OPEN**, independent full original Fourier/closed operator-domain audit required.
 
 Replay: \`python3 scripts/validate_rpb108_sm41_original_positive_log_tail.py\`. Exact Fraction source high-tail bounds in the JSON are mathematically distinct from the **noncertifying numerical low-band Gauss matrices**.
+
+
+## Focused engineering correction after the first run
+
+The **first SM41 workflow run 39176160687 failed**, **not** because of the exact original analytic high-logarithmic positive Fourier tail. All three source-complete 25-direction exact rational high-tail bounds and the original all-470 elementary IBP bound computed and printed. The numerical original LOW band failed its intentional Gauss8/16 convergence gate: relative matrix Frobenius drift **0.02352266152534048** when applying each Gauss rule across entire **unit-width** frequency cells. This demonstrates why a high-frequency tail certificate cannot justify trusting a coarse low-band quadrature.
+
+The implementation now subdivides **every original low-frequency unit interval into four subcells** before applying Gauss8 and Gauss16 and **retains the same strict numerical drift acceptance <0.001**. It does not weaken the numerical gate or recast an untrusted low-band as a proof. Independently it uses the existing SI06 exact, much more economical outward rational upper \(\log2<347/500\) to prove \(\log\Lambda<q(347/500)\) for the power-of-two cutoffs. This avoids multi-hundred-digit 128-term fractions in source certificate records while preserving rigorous outward bounds.
+
+### First run's exact high-tail figures, prior to the economical rational tightening
+
+The actual 25 original supported odd pilot sources consist of **16 sine \(k=0\)**, **8 \(x\cos\), \(k=1\)** and **the original sinh pole**. Hence
+\[
+E=16(1/2)^2+8(7/10)^2+(2/5)^2
+=\boxed{202/25=8.08}.
+\]
+The original TRUE rational maximum SI10 cluster center is \(113013/128=882.9140625\), so every cutoff \(\Lambda=2048,4096,8192\) lies beyond **twice every source center**.
+
+| True original 25-source **high-frequency-only** operator scalar ceiling | 2048 | 4096 | 8192 |
+| --- | ---: | ---: | ---: |
+| Positive \(A_o\) source **FORM tail** \(\delta_A I\) | 0.2022 | 0.1038 | 0.0533 |
+| Squared **strong \(A_o\) Fourier multiplier tail** \(\delta_{A^2}I\) | 5.189 | 2.737 | 1.441 |
+
+These first-run decimals used the tighter exact 128-term SI06 rational log2 upper. The revised simpler strict outward bound \(\log2<347/500\) yields slightly **larger**, still rigorous tail ceilings. No high-tail number is a rigorous enclosure of the *low-frequency* source integral, the whole original \(A_*\) pole-conditioned resolvent, or entire 470 signed odd spectral sign.
+
+The original naive all-470 supported-source derivative integration-by-parts scalar form high tail at 4096 was **approximately \(3.01\times10^6\)**. This valid but extremely loose number is decisive computational evidence that **we cannot scale the same scalar IBP technique from 25 to 470**. Full 470 requires analytic \emph{higher-degree polynomial-source Fourier transforms} and matrix-weighted tail bounds, not a blind larger source solve.
+
+Full original W-ODD-NEG O1/O2, even E1–E4, whole Weil, CC27 and RH remain OPEN. A passing revised numerical Gauss check does NOT prove the original low-band matrix without rigorous quadrature-error enclosures.
