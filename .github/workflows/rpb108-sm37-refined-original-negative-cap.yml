@@ -1,0 +1,55 @@
+name: RPB108 SM37 exact original signed seven-prime refined negative cap
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm37_refined_original_negative_cap.py"
+      - "notes/RPB108_SM37_REFINED_ORIGINAL_NEGATIVE_MOMENT_CAP_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm37-refined-original-negative-cap.yml"
+  workflow_dispatch:
+
+jobs:
+  sm37-refined-original-negative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pilot-only scipy and numpy
+        run: python -m pip install numpy scipy
+      - name: Exact original full signed seven-prime 973x4 real subcell/890 SPD cap and SAME actual original selected-source pilot
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm37_refined_original_negative_cap.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm37_refined_original_negative_cap.py
+      - name: Check exact cap and fail-close original full odd and Weil RH
+        run: |
+          python - <<'PY'
+          import json
+          f=json.load(open("artifacts/sm37_refined_original_negative_cap.json"))
+          assert f["status"]=="SCOPED_CERTIFIED_CAP_ENCLOSURE_WITH_NONCERTIFYING_RITZ"
+          assert f["canonical_odd_O1_O2"]=="open"
+          s=f["refined_exact_rational_cap"]
+          assert s["original_leaves"]==973 and s["new_subcells"]==3892
+          assert s["clusters"]==107 and s["source_columns"]==890
+          assert s["exact_spd_pivots"]==890
+          assert len(f["original_pilot_comparisons"])==3
+          assert all(z["math_certifying"] is False for z in f["original_pilot_comparisons"])
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          o=next(x for x in m["obligations"] if x["id"]=="W-ODD-NEG")
+          assert o["status"]=="open" and "O1/O2" in o["acceptance"]
+          assert all(x in o["evidence"] for x in ("SM35","SM36","SM37"))
+          assert "sm37_refined_original_cap" in m["governance"]
+          PY
+      - name: Upload exact subcell totals and NONCERTIFYING matched pilot Ritz
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm37-original-refined-negative-cap-and-noncertifying-pilot
+          path: artifacts/sm37_refined_original_negative_cap.json
+          if-no-files-found: warn
