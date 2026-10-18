@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS35: using the actual original zero-extended digamma generator and positivity-preserving EVEN source response R=B0* A0^-1 B0 from PS28/30, plus the genuine seven original negative signed prime off-diagonal terms, a Lipschitz even tent on each of sixteen explicit physical C+ prime-quiet cells H_j=[269/5000+j/256,269/5000+(j+1)/256] yields ORIGINAL ||(L−λ0)g_j||<175 and original outside-cell (L−λ0)g_j≤−3/2560. True PS29 normalized nonnegative pole-free even ground λ0∈(−1406,−4.359740) and PS33 actual original global L1²>3/(8000·2^2025) force genuine lower μ(H_j)>3/(8000·2^2061)>0 for EACH of sixteen macroscopic length-1/256 source-complement cells, and sum μ(Jquiet)>3/(500·2^2061). Unlike PS34 this original ground mass INSIDE every specified cell does not require unknown characteristic cut of phi0. Bounds far too small to certify PS31 graph weights or lambda1, Delta, W-EVEN-FORM, W-ODD-NEG, signed Weil, native CC27 D-Riesz or RH. Independent original analytical audit including true source-cone positivity and generator test domain required; focused CI pending.",
+  "proof_standing": "PS36 preserves existing typed-positivity/composition modules, but makes original full residual spectral classification an explicit REQUIRED acceptance gate, NOT a claim of a sign result. Actual original source-eliminated pole-free EVEN L has a certified negative direction, simple negative ground conditional PS29, but ind_-(L)=1/lambda1>=0 and complete phi0^perp PSD remain OPEN (E1/E2). Original d=c_C-B0*A0^-1c_P, nullspace annihilation, full beta inverse and Delta=a²−|lambda0|beta>0, plus alpha Delta>=|lambda0| remain OPEN (E3/E4). Full odd W-ODD-NEG must prove entire original supported W_o=A_o-2ss*-K_neg,o>=0 or complete all-negative-frequency BS/source Schur with all true cross and infinite remainder (O1/O2), not componentwise positivity. Whole signed Weil composition and native CC27 D-Riesz/RH remain OPEN. Exact Fraction countermodels show a simple positive ground may coexist with 3 negative eigenvalues and no finite positive pole can fix a null-coupled or Delta=0 obstruction. PS34/35 local positive windows/ground nonconcentration are scoped evidence only; all global closure flags false.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS36 explicitly scoped W-PHYSICAL-SHIFT: improve PS35 sixteen-cell quantified TRUE original even ground positive masses from astronomically weak dyadic Fourier L1 lower, preferably via ground eigenfunction equation and physical source-resolvent/arch jump Harnack or strong original one-negative-index minmax. Evaluate original PS31 W_N spectral graph only after useful physical weights and original |lambda0| upper exist; existing microscopic positivity is NOT a graph sign certificate.",
-    "Independently audit PS28 positivity-preserving even source resolvent and B0 cone sign, PS29 ground eigenfunction, PS30 full digamma+seven-prime+R jump order, PS33 Fourier global original L1 and PS35 Lipschitz tent generator domain, all original sourced equations. PS34 own focused CI must be checked before claiming it passed. Canonical W-ODD-NEG, W-EVEN-FORM, signed Weil/CC27/RH remain OPEN."
+    "PS37 (if explicitly PS scoped) prioritize acceptance-gate E1: certify actual original even pole-free source Schur second eigenvalue sign lambda1>=0 or construct second genuine negative eigenmode, preserving J_C, all 7 original primes, the full A0^-1 source correction, and low/high residual. E2 must attach a full form-domain phi0^perp PSD certificate; PS31 graph is conditional until original physical kernel/ground weights are measured.",
+    "After E1/E2, prove d perpendicular ker L, original spectral beta and strict Delta>0, alpha Delta>=|lambda0| for even restored sign E3/E4. In parallel canonical W-ODD-NEG O1/O2 requires complete odd source-/frequency-operator control with full negative-frequency residual and source/cross couplings. No local positive windows or nonconcentration promotion. Maintain independent original analytic audit and CC27 D-Riesz/RH gates."
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -311,6 +311,16 @@
       "note": "notes/RPB108_PS35_ORIGINAL_GROUND_POSITIVE_CELL_MASS_20261018.md",
       "replay": "python3 scripts/validate_rpb108_ps35_original_ground_positive_cell_mass.py",
       "limitation": "Only exponentially weak per-cell positive lower, no useful original PS31 graph w_ij or lambda1 bound; no effective-pole Delta/coherent scalar, original even W-EVEN-FORM, W-ODD-NEG, whole signed Weil, native CC27 D-Riesz or RH closure. Requires independent original source cone, generator domain and spectral theorem audit."
+    },
+    {
+      "id": "PS36",
+      "scope": "Typed-positivity and complete-operator original spectral CLASSIFICATION ACCEPTANCE CONTRACT (not new sign theorem): PS27/29 actual original even pole-free source-eliminated L has ind_->=1 and simple negative ground, but exact ind_-=1 iff lambda1>=0 OPEN (E1); full original phi0 orthogonal remainder PSD OPEN (E2); true source-renormalized d=c_C−B0*A0^-1c_P nullspace, beta=<b,Lplus^-1b>, Delta=a²−|lambda0|beta>0 OPEN (E3); complete restored even alpha Delta>=|lambda0| and true source/domain composition OPEN (E4). Canonical original odd O1/O2 full signed W_o=A_o−2ss*−Kneg including all negative bands, cross terms and entire infinite complement, or original complete source-first odd Schur, OPEN. Component positive windows, odd pole-only, selected Ritz directions, nonconcentration all insufficient. Whole original Weil/CC27 D-Riesz/RH OPEN. Exact finite rational countermodels test why simple positive ground can have multiple negative modes, positive blocks need true Schur, and null coupling/Delta=0 obstruct finite rank-one compensation.",
+      "status": "Mandatory machine-readable fail-closed mathematical acceptance gates added, with exact rational finite spectral/coupling counterexamples; no original lambda1, orthogonal full operator, effective delta, full odd sign proved; focused Actions and independent analytic audit pending.",
+      "note": "notes/RPB108_PS36_TYPED_SPECTRAL_ACCEPTANCE_20261018.md",
+      "replay": "python3 scripts/validate_rpb108_ps36_typed_spectral_acceptance.py",
+      "acceptance_ledger": "research/typed_spectral_acceptance.json",
+      "limitation": "No new original spectral index upper to 1, no true complete phi0^perp positivity or d-pole spectral beta/Delta/alpha margin, no whole odd negative-frequency operator PSD/infinite Schur, no physical whole Weil/CC27 native transfer/RH proof. PS34/35 local positivity/ground masses remain typed lower evidence, cannot fill spectral gates."
     }
-  ]
+  ],
+  "spectral_acceptance_ref": "research/typed_spectral_acceptance.json"
 }
