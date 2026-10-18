@@ -265,7 +265,7 @@
     "SM25": {
       "kind": "Actual original physically supported coupled 2-source odd inverse Loewner upper with all fourteen SI29 signed positive reference features, complete signed original physical source Gram and SM10 full eta coefficient",
       "scope": "On ACTUAL first two distinct original SM10 degree-zero odd source columns U2, exact-rational full 14x2 signed physical overlap, complete 14x14 source Gram and true 2x2 sine Gram produce certified coupled 2x2 Loewner U2*A_star^-1 U2<=T2 and shifted U2*(A_star−eta I)^-1 U2<=T2/(1−eta/kappa_star). Explicit true first two SM10 negative moment block used to check ONLY a PRINCIPAL 2x2 sufficient comparison. Does not compute remaining 888 source directions, whole 890×890 Schur, full odd W-ODD-NEG, any even E1–E4 or RH.",
-      "pr": "pending draft PR",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/206",
       "repo_path": "notes/RPB108_SM25_COUPLED_ORIGINAL_TWO_SOURCE_INVERSE_20261018.md",
       "verification": "Exact signed rational true physical interval/matrix and 2x2 coupled Loewner focused Actions pending; inherited SI29/SM10 original functional analysis awaits independent review. Passing scoped CI cannot close original full odd operator."
     }
@@ -327,6 +327,7 @@
         "SM20",
         "SM21",
         "SM22",
+        "SM24",
         "SM25"
       ],
       "acceptance": "PS36 complete-operator O1/O2 gate: prove ORIGINAL supported full odd signed W_o=A_o-2|s><s|−K_neg,o >=0 on full physical domain, equivalently R_o (A_o-2|s><s|)^-1 R_o*<=I on entire true original negative-frequency carrier, with all original positive/negative cross couplings and infinite residual (or exact original full source-first odd Schur). A 2-column principal inverse block from SM25 or 890-column partial modules are NOT full-operator acceptance.",
