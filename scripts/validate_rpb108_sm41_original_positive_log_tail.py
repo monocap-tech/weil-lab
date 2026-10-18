@@ -201,16 +201,16 @@ def full_470_supported_IBP_tail(cutoff):
             "whole_470_operator_sign_certified":False}
 
 
-def low_band_original_positive_form(infos,sources,cutoff,order,subcells=4):
+def low_band_original_positive_form(infos,sources,cutoff,order,subcells=8):
     """Numerical-only original analytic-source low frequency stiffness.
 
-    Divide EVERY original unit frequency interval into 4 finer
+    Divide EVERY original unit frequency interval into 8 finer
     subcells. One-cell Gauss8 failed honest convergence (2.35%
     drift against Gauss16), due to rapid original signed prime
     phases and source transforms. Keep hard 8-vs-16 gate, don't
     hide coarse quadrature error or infer a rigorous interval.
     """
-    assert subcells>=4 and cutoff%1==0
+    assert subcells>=8 and cutoff%1==0
     nodes,weights=np.polynomial.legendre.leggauss(order)
     width=1./subcells
     cells=np.arange(cutoff*subcells,dtype=float)*width
@@ -234,7 +234,7 @@ def numerical_selected_25_pilot(infos,sources,cutoff,tail):
           "gauss_order":q,
           "source_count":25,
           "original_low_frequency_band":[0,cutoff],
-          "quadrature_subcells_per_unit_frequency":4,
+          "quadrature_subcells_per_unit_frequency":8,
           "minimum_eigenvalue_raw_basis":float(eig[0]),
           "maximum_eigenvalue_raw_basis":float(eig[-1]),
           "source_tridiagonal_or_disjoint_band_proxy":False,
