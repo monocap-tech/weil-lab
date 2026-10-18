@@ -186,21 +186,21 @@ def run():
           "far",float(far),flush=True)
     print("SM30 TRUE ORIGINAL negative odd pole quadratic UPPER",
           float(pole),flush=True)
+    # Original complete signed odd 973-leaf negative response and
+    # original negative odd pole were both PAID, not inferred from
+    # selected negative packets. This is a mandatory TRUE original
+    # one-vector strict sign certificate; it is NOT O1/O2.
+    assert margin>F(1,10),(
+        "SM30 original whole-frequency single-vector positivity failed",
+        float(margin))
     print("SM30 original true signed whole-minus-two-band"
-          " diagnostic physical Rayleigh LOWER",float(margin),flush=True)
-    if margin>0:
-        print("SM30 PASS SCOPED WHOLE-ORIGINAL SINGLE-VECTOR POSITIVE:"
-              " actual entire signed odd original W_o(g389.56)>0,"
-              " every original negative frequency and odd pole paid."
-              " DOES NOT prove full original odd operator PSD.",
-              flush=True)
-    else:
-        print("SM30 PASS SCOPED POSITIVE FREQUENCY COVERAGE:"
-              " genuine remote positive response >3/10 but"
-              " existing global negative UPPER is not yet"
-              " sufficiently small to prove even this single"
-              " true original whole-form positive witness.",
-              flush=True)
+          " diagnostic physical Rayleigh LOWER",float(margin),
+          ">1/10 EXACT FRACTION",flush=True)
+    print("SM30 PASS SCOPED WHOLE-ORIGINAL SINGLE-VECTOR POSITIVE:"
+          " actual entire signed odd original W_o(g389.56)>1/10,"
+          " every original negative frequency and odd pole paid."
+          " DOES NOT prove full original odd operator PSD.",
+          flush=True)
     nblocks,ncols=full_original_cap_standing()
     print("SM30 full complete original SM10 negative cap retained",
           nblocks,ncols,"eta<kappa_star; NO full coupled inverse PSD",
