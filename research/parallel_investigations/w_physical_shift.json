@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS25 source-pinned analytic original signed full 12-window infinite-dimensional componentwise Z-majorant, second-generation physical width 1/2048 NONSHRINKING (vs PS24 2^-192), true Carleman + prime + pole + original source inverse paid, exact weighted rational matrix positivity candidate >1/4, final-head CI and independent audit PENDING. Source+12-window physical length coverage <5%, all remaining global signed complement Schur, CC27 bridge, W-ODD-NEG/W-EVEN-FORM/full Weil/RH OPEN.",
+  "proof_standing": "PS26 identifies a partition-INDEPENDENT proof-method obstruction: any full-complement PS25-type scalar Z-majorant that discards the genuine positive EVEN rank-one pole is necessarily non-PSD, by a pinned RC315 constant test on actual sharp source-complement h. The pole-dropped SURROGATE has upper <-4.2, while actual original Schur sign stays UNKNOWN; >99.05% of even pole is a necessary part of any positive pole-scaled source Schur surrogate. Exact parity + c_C-orthogonal even/rank-one variational reduction now governs the next investigation. Final-head CI and independent audit PENDING. Actual W-ODD-NEG/W-EVEN-FORM/full Weil, native CC27 D-Riesz and RH OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS26: extend the exact componentwise original signed source-aware Z-matrix/weighted-diagonal-dominance method from the twelve finite-scale physically positive windows to a PRACTICAL actual partition of the ENTIRE uncovered original complement, rigorously including all genuine prime shift link operators and noncompact arch seams; require accepted positive whole signed Schur margin or a genuine negative witness, respecting RC315 small even gap ceiling",
-    "PS27: independent operator-domain proof audit and native CC27 D-Riesz domain/norm isomorphism attached to a genuinely certified full signed residual positive theorem before W-ODD-NEG/W-EVEN-FORM/Weil/RH promotion"
+    "PS27: construct a globally parity-resolved original physical carrier retaining the POSITIVE EVEN pole coherently: certify original source Schur on even c_C-orthogonal form domain and odd sector separately, and compute the one-dimensional even variational infimum before asserting true original global positivity; retaining <99.05% even pole is structurally impossible on source-complement",
+    "PS28: independent mathematical audit of the original physical/CC27 D-Riesz carrier norm/domain correspondence and complete signed whole-domain positivity only if all odd, even pole-orthogonal and coherent scalar gates actually close; never present pole-dropped negative direction as RH counterexample"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -231,6 +231,14 @@
       "note": "notes/RPB108_PS25_FINITE_SCALE_MAJORANT_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps25_finite_scale_majorant.py",
       "limitation": "Less than 5% of physical whole interval length is included even with 13-source; remaining full signed complementary Schur PSD and CC27 D-Riesz carrier, W-ODD-NEG/W-EVEN-FORM, whole Weil/RH OPEN."
+    },
+    {
+      "id": "PS26",
+      "scope": "Partition-independent original signed source-complement Z-majorant no-go: dropping positive even rank-one pole gives explicit genuine negative SURROGATE direction h=1_C original RC315 normalized constant, B_C[h]<-4.2 after full true source Schur, while before source whole Q without even pole < -4.3. ANY globally valid pole-dropped physical block norm lower matrix must be indefinite regardless of resolution. Necessity: >99.05% positive pole retained after original source Schur, >99.08% on original Q. Exact parity split and one-coherent-even-scalar variational Feshbach gate identified (odd signed pole separate).",
+      "status": "Scoped source-pinned analytic universal no-go for current full-cover algorithm and parity-aware successor obligation; final-head exact-rational CI and independent mathematical review pending",
+      "note": "notes/RPB108_PS26_EVEN_POLE_GLOBAL_NO_GO_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps26_even_pole_global_no_go.py",
+      "limitation": "Only pole-dropped SURROGATE is proved negative, not the ORIGINAL signed Weil form or true source Schur. Even pole-orthogonal positivity, coherent scalar, odd original sign, CC27 D-Riesz, W-ODD-NEG/W-EVEN-FORM, whole Weil and RH OPEN."
     }
   ]
 }
