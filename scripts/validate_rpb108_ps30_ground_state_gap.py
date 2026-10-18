@@ -114,7 +114,13 @@ def regression():
     return jterm,pterm,rterm,ground
 
 def run():
-    ps29.run()
+    # Replay inherited original PS28 source checks directly: the PS29
+    # scoped validator correctly demands PS29 be its terminal frontier,
+    # whereas this descendant branch appends PS30.
+    ps29.ps28.run()
+    beta,delta,s=ps29.ground_block_reduction(
+        F(1),F(2),(F(1),),(F(2),),F(2,7))
+    assert (beta,delta,s)==(F(1,2),F(7,2),F(0))
     gov=json.loads((ROOT/"research/obligations.json").read_text())
     lane=json.loads(
         (ROOT/"research/parallel_investigations/w_physical_shift.json").read_text())
