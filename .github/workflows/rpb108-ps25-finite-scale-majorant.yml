@@ -1,0 +1,37 @@
+name: RPB108 PS25 original finite-scale twelve-window signed Schur
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_ps25_finite_scale_majorant.py"
+      - "notes/RPB108_PS25_FINITE_SCALE_MAJORANT_20261017.md"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps25-finite-scale-majorant.yml"
+  workflow_dispatch:
+
+jobs:
+  ps25-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Full original source replay and exact 12-window weighted signed Z-matrix proof
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps25_finite_scale_majorant.py
+          python3 scripts/validate_rpb108_ps25_finite_scale_majorant.py
+      - name: Retain W-ODD-NEG and global uncovered Schur OPEN
+        run: |
+          python3 - <<'PY'
+          import json
+          m=json.load(open("research/obligations.json"))
+          p=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert p["id"]=="W-PHYSICAL-SHIFT"
+          assert p["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert p["status"]=="open"
+          assert all(v is False for v in p["closures"].values())
+          PY
