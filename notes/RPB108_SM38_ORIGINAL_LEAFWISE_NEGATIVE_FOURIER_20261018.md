@@ -95,3 +95,45 @@ A PASS in SM38 means the original-source closed-form amplitude is implemented co
 **SM39 next:** use the SM38 attribution results to choose either (a) a new tighter original all-real signed multiplier envelope weighted by the true physical source response (if envelope dominates), (b) a improved original frequency-local Taylor/Young comparison (if moment cap dominates), or (c) rigorously enclosed independent real-frequency quadrature (if FFT undersampling dominates). Then independently certify the **positive** original digamma full logarithmic Fourier tail and the actual original full strong \(A_o/A_*\) resolvent residual before any complete 470-source spectral acceptance. Preserve W-ODD-NEG O1/O2, even E1–E4, whole signed Weil, CC27/RH **OPEN**.
 
 Replay: \`python3 scripts/sm38_original_negative_leafwise_quadrature.py\`; workflow uploads \`artifacts/sm38_original_negative_leafwise_pilot.json\` as **NONCERTIFYING** numerical evidence.
+
+
+## 4. Actual focused initial numerical findings — the dominant source of inflation identified
+
+The first SM38 run exposed a **failure of independent high-frequency QUADPACK oscillatory integration** (max-subdivision and roundoff flag). This was correctly treated as an inconclusive independent numeric check, NOT a failed analytic source formula. Replacing that particular cross-check with independent high-density physical-space composite Simpson integration (131073 physical nodes) fixed the numerical validation. The second run **39170637129 PASSED** on the 25 genuine original supported source pilot and all three matched settings.
+
+Every reported eigenvalue below is **NUMERICAL, noncertifying**; SI06/SM37's underlying original real-frequency upper envelope and original exact rational 890-moment cap remain the separate rigorous statements.
+
+| Same original 25-source Galerkin trial | 4096 physical, padding×4 | 8192 physical, padding×4 | 8192 physical, padding×8 |
+|---|---:|---:|---:|
+| Old **coarse FFT** sampled genuine signed negative generalized max | 0.997100712 | 0.997100617 | 0.999835397 |
+| **NEW original negative physical sine Fourier direct 973-leaf Gauss32** max | **0.964651302** | **0.964651410** | **0.972929928** |
+| Original old SM10 signed multiplier envelope on exact physical Fourier amplitudes | 10.677776197 | 10.677768979 | 10.853260397 |
+| Original new SM37 signed multiplier envelope on exact physical Fourier amplitudes | **9.817182283** | **9.817173075** | **9.975611617** |
+| Full original SM37 890-column Taylor/Young/η cap (sampled physical overlaps) | **9.826764138** | **9.826758843** | **9.985352056** |
+| SM37 envelope / direct original negative leafwise | **10.1769×** | **10.1769×** | **10.2532×** |
+| Original Taylor cap / its OWN original envelope | **1.000976×** | **1.000976×** | **1.000976×** |
+
+The original full true-formula negative integrated mass at Gauss32 is **16.0168938464** (compared with SI10/SM10 original envelope cap mass 37.62605884375 and SM37 **refined** envelope cap mass 27.227999359375). **Mass ratios are not generalized eigenvalue ratios**; the physical source Fourier response weights each frequency very unevenly.
+
+Direct negative leafwise Gauss16→Gauss32 generalized maximum changed only by **\(4.1\)–\(4.3\times10^{-6}\)**; this checks numerical stability but is **NOT** an outward truncation error certificate.
+
+### Important causal ranking on the SAME 25-source pilot
+
+1. **Genuine ORIGINAL multiplier envelope dominates remaining cap conservatism:** the SM37 weighted original upper envelope's largest generalized Ritz is ~10.18–10.25× the leafwise direct original signed multiplier integral. This holds even with the *same analytic physical-source Fourier transforms*. The gap cannot be primarily ascribed to Taylor/Young.
+2. **Original Taylor/Young/η cap contributes only about \(0.0976\%\)** above its *own* genuine multiplier envelope (ratio ~1.000976), close to the inherited Young \(1+\tau=1+1/1024\). Thus changing source Taylor order, globally tiny η or its whole-series moment assembly first would miss the dominant bottleneck in this pilot.
+3. **Coarse FFT was indeed biased, but secondary:** the FFT direct negative generalized max was about 2.8–3.4% above the independently leafwise-integrated true-formula one. The true-formula negative frequency support is narrower than the original FFT bins, but that explains only a small part of the apparent >10× gap.
+4. The positive-pole-conditioned original **trial** \(Z\) still uses the FFT stiffness without an original logarithmic arch tail/residual certificate. Both the direct leafwise ~0.965–0.973 and refined-envelope ~9.82–9.98 are numerical tests on **25 selected original directions only**, not generalized eigenvalues of the real entire 470 source original \(A_*^{-1}\). The direct leafwise trial also lies above the *sufficient* full-operator threshold \(51/56\approx0.9107\), which **does not** prove original odd indefiniteness.
+
+### Concrete SM39 computation prioritized by the evidence
+
+The new SM38 source revision also computes a **frequency-leverage map** along the **largest generalized eigenvector of the refined envelope** on the same 25-source Galerkin basis:
+\[
+\Delta_j(v)=2\int_{J_j}
+[w_{\rm SM37}(\xi)-(\kappa-m(\xi))_+]\,
+|\langle Zv,\sin(2\pi\xi x)\rangle|^2\,d\xi.
+\]
+For every one of the 107 original clusters, numerically evaluate \(\Delta_j(v)\) across all four-way refined cells and sort the clusters by *actual original signed-envelope excess weighted by the problematic physical response*. This directly identifies the few frequency clusters to attack with tighter certified **whole-real pointwise signed multiplier enclosures**, rather than another indiscriminate 3892→15568 uniform subdivision.
+
+The leverage map is also **NUMERICAL ONLY** (neither a true 470D eigenvector nor an outward interval bound). Its focused final-head run will record the exact top cluster locations and concentration. If the gap is not concentrated, a new operator inequality sharper than piecewise \(\kappa-m\) upper may be needed, including a safe signed cancellations scheme at the complete matrix level.
+
+The mandatory independent certification of the ORIGINAL **positive archimedean digamma logarithmic high-frequency Fourier tail**, complete physical 470-source positive resolvent and strong Galerkin residual remains essential before whole W-ODD-NEG O1/O2 acceptance. No even, Weil, CC27/RH promotion follows.
