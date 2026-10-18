@@ -1,0 +1,59 @@
+name: RPB108 SM41 original arch positive log Fourier tail and odd sources
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm41_original_positive_log_tail.py"
+      - "notes/RPB108_SM41_ORIGINAL_POSITIVE_LOG_TAIL_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm41-original-positive-log-tail.yml"
+  workflow_dispatch:
+
+jobs:
+  sm41-original-positive-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install numerical low-band diagnostic dependencies
+        run: python -m pip install numpy scipy
+      - name: Exact all-real original positive digamma-log tail and 25 supported odd source form/strong residual
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm41_original_positive_log_tail.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm41_original_positive_log_tail.py
+      - name: Fail closed on uncaptured low-band and full original odd/Weil/RH
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("artifacts/sm41_original_arch_log_tail.json"))
+          assert d["status"]=="CERTIFIED_ACTUAL_ORIGINAL_POSITIVE_LOG_HIGH_TAIL_SELECTED_SOURCES_ONLY"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["rigorous_original_multiplier_tail"]["original_full_digamma_and_all_seven_primes"] is True
+          assert [x["cutoff"] for x in d["actual_original_supported_25_source_tail"]]==[2048,4096,8192]
+          assert all(x["source_dims"]==25 and x["proves_original_positive_tail_for_selected_25"] is True
+                     and x["proves_actual_original_470_resolvent"] is False
+                     for x in d["actual_original_supported_25_source_tail"])
+          assert d["original_complete_470_source_coarse_IBP_upper"]["original_complete_source_count"]==470
+          assert len(d["same_original_selected_25_numerical_low_band"])==2
+          assert all(x["numerical_only"] is True and x["full_original_positive_stiffness_certified"] is False
+                     for x in d["same_original_selected_25_numerical_low_band"])
+          assert len(d["incomplete_acceptance"])>=5
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          odd=next(o for o in m["obligations"] if o["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open" and "O1/O2" in odd["acceptance"]
+          assert all(z in odd["evidence"] for z in ("SM39","SM40","SM41"))
+          assert "sm41_original_positive_arch_tail" in m["governance"]
+          PY
+      - name: Publish exact positive high-tail / numerical low-band separated JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm41-true-original-positive-log-high-tail-and-NONCERTIFYING-low-band
+          path: artifacts/sm41_original_arch_log_tail.json
+          if-no-files-found: warn
