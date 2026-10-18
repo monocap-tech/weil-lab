@@ -1,0 +1,39 @@
+name: RPB108 SM34 genuine original odd positive-energy dual full Schur
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_SM34_POSITIVE_ENERGY_DUAL_SCHUR_20261018.md"
+      - "scripts/validate_rpb108_sm34_positive_energy_dual_schur.py"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm34-positive-energy-dual-schur.yml"
+  workflow_dispatch:
+
+jobs:
+  sm34-original-energy-dual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Original 973 signed negative leaves, true Astar-energy dual splitting and relative whole Schur
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm34_positive_energy_dual_schur.py
+          python3 scripts/validate_rpb108_sm34_positive_energy_dual_schur.py
+      - name: Preserve whole ORIGINAL odd 470 generalized 51-56 acceptance OPEN
+        run: |
+          python3 - <<'PY'
+          import json
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          odd=next(o for o in m["obligations"] if o["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open"
+          assert all(t in odd["evidence"] for t in ("SM32","SM33","SM34"))
+          assert "O1/O2" in odd["acceptance"]
+          assert "positive_energy_dual_odd_gate" in m["governance"]
+          assert "UNMEASURED" in m["governance"]["positive_energy_dual_odd_gate"]
+          PY
