@@ -84,6 +84,9 @@ def full_original_clusterwise_negative_mixed():
     leakage=2*B*weighted_squared
     worst_leak=2*B*mass*COMMON_REMAINDER**2
     assert 0<leakage<worst_leak
+    # Strict source-specific original negative-frequency leakage
+    # improvement from the full 107 weighted Taylor cluster errors.
+    assert leakage<F(1,15000)
     # The positive frequency Kneg is globally bounded from true
     # physical support, without any 470-source orthonormalization.
     H=2*B*mass
@@ -92,12 +95,14 @@ def full_original_clusterwise_negative_mixed():
     assert 0<gamma2<rough_gamma2
     assert H<F(83) and rough_gamma2<F(27,1000)
     assert gamma2<CROSS2_MAX
+    assert gamma2<F(11,2000) # STRICT original measured mixed² upper
 
     # Complete original D=Q Wodd Q >=mu I, so 0<=D^-1<=mu^-1 I.
     # This controls *only* Cminus*D^-1 Cminus, never full signed C.
     correction=gamma2/MU
     assert MU==F(17,25000)
     assert correction<NEG_CORRECTION_MAX
+    assert correction<F(81,10) # exact measured original negative-only D^-1 response
 
     # Uniform true original SI10 complete SIGNED complement has
     # original full protected-positive multiplier and all negative
