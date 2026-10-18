@@ -1,0 +1,39 @@
+name: RPB108 PS33 original optimized even ground/pole overlap
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_PS33_OPTIMIZED_ORIGINAL_GROUND_POLE_OVERLAP_20261018.md"
+      - "scripts/validate_rpb108_ps33_optimized_original_ground_pole_overlap.py"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps33-optimized-ground-pole-overlap.yml"
+  workflow_dispatch:
+
+jobs:
+  ps33-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: True original source PS33 optimal dyadic overlap exact Fraction validation
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps33_optimized_original_ground_pole_overlap.py
+          python3 scripts/validate_rpb108_ps33_optimized_original_ground_pole_overlap.py
+      - name: Keep both original parity and Weil/RH positivity unpromoted
+        run: |
+          python3 - <<'PY'
+          import json
+          a=json.load(open("research/obligations.json"))
+          b=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert a["active_obligation"]=="W-ODD-NEG"
+          assert a["objective"]["status"]=="open"
+          assert a["governance"]["no_automatic_promotion"] is True
+          assert b["id"]=="W-PHYSICAL-SHIFT"
+          assert b["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert b["status"]=="open"
+          assert b["checkpoints"][-1]["id"]=="PS33"
+          assert all(v is False for v in b["closures"].values())
+          PY
