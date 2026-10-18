@@ -129,7 +129,11 @@ def odd_pilot_tail_enclosure(infos,sources,cutoff):
     energy=sum((x*x for x in u),F(0))
     # Exact SI06 infinite series ln2 rational upper, no float:
     power=cutoff.bit_length()-1
-    log_up=power*LN[2][1]
+    # Exact outward RATIONAL cap already proved by SI06:
+    # ln2 < 347/500. Avoid transporting the enormous exact
+    # 128-term LN denominator through every source bound.
+    assert LN[2][1]<F(347,500)
+    log_up=power*F(347,500)
     assert F(0)<log_up and F(2)**power==cutoff
     form=2*energy*(ARCH_PLUS_C+1+log_up)/cutoff
     v=ARCH_PLUS_C+log_up
@@ -184,7 +188,7 @@ def full_470_supported_IBP_tail(cutoff):
     l2+=pole_var*pole_var
     num+=1
     assert num==470
-    logup=(cutoff.bit_length()-1)*LN[2][1]
+    logup=(cutoff.bit_length()-1)*F(347,500)
     form=2*l2*(ARCH_PLUS_C+1+logup)/cutoff
     # Large value is not a proof that no better matrix-weighted
     # bound exists: it exposes the insufficiency of one scalar
@@ -197,17 +201,22 @@ def full_470_supported_IBP_tail(cutoff):
             "whole_470_operator_sign_certified":False}
 
 
-def low_band_original_positive_form(infos,sources,cutoff,order):
-    """Numerical-only direct source-analytic original low band.
+def low_band_original_positive_form(infos,sources,cutoff,order,subcells=4):
+    """Numerical-only original analytic-source low frequency stiffness.
 
-    Exact physical odd generator Fourier FORMULAS (SM38), numerical
-    digamma, sin, Gauss-Legendre; NO interval quadrature proof.
+    Divide EVERY original unit frequency interval into 4 finer
+    subcells. One-cell Gauss8 failed honest convergence (2.35%
+    drift against Gauss16), due to rapid original signed prime
+    phases and source transforms. Keep hard 8-vs-16 gate, don't
+    hide coarse quadrature error or infer a rigorous interval.
     """
+    assert subcells>=4 and cutoff%1==0
     nodes,weights=np.polynomial.legendre.leggauss(order)
-    cells=np.arange(cutoff,dtype=float)
-    xi=(cells[:,None]+0.5*(nodes[None,:]+1)).ravel()
-    dw=np.broadcast_to(0.5*weights[None,:],
-                       (cutoff,order)).ravel()
+    width=1./subcells
+    cells=np.arange(cutoff*subcells,dtype=float)*width
+    xi=(cells[:,None]+0.5*width*(nodes[None,:]+1)).ravel()
+    dw=np.broadcast_to((width/2)*weights[None,:],
+                       (cutoff*subcells,order)).ravel()
     m=original_multiplier(xi)
     ap=np.maximum(float(KAPPA),m)
     T=supported_odd_sine_transform(xi,infos,sources)
@@ -225,6 +234,7 @@ def numerical_selected_25_pilot(infos,sources,cutoff,tail):
           "gauss_order":q,
           "source_count":25,
           "original_low_frequency_band":[0,cutoff],
+          "quadrature_subcells_per_unit_frequency":4,
           "minimum_eigenvalue_raw_basis":float(eig[0]),
           "maximum_eigenvalue_raw_basis":float(eig[-1]),
           "source_tridiagonal_or_disjoint_band_proxy":False,
