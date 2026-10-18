@@ -1,0 +1,35 @@
+name: RPB108 SM24 original odd true inverse-residual cancellation
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm24_original_residual_inverse_cancellation.py"
+      - "notes/RPB108_SM24_ORIGINAL_RESIDUAL_INVERSE_CANCELLATION_20261017.md"
+      - "research/obligations.json"
+      - "docs/ACTIVE_FRONTIER.md"
+      - ".github/workflows/rpb108-sm24-focused.yml"
+  workflow_dispatch:
+
+jobs:
+  sm24-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: True original physical first-source SI29 14-feature inverse and exact cancellation
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm24_original_residual_inverse_cancellation.py
+          python3 scripts/validate_rpb108_sm24_original_residual_inverse_cancellation.py
+      - name: Retain W-ODD-NEG and RH open
+        run: |
+          python3 - <<'PY'
+          import json
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          assert "SM24" in m["evidence"]
+          PY
