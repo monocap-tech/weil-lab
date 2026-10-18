@@ -1,0 +1,38 @@
+name: RPB108 SM31 original full-signed odd two-packet coupled spectral matrix
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_SM31_TWO_PACKET_FULL_SIGNED_COUPLING_20261018.md"
+      - "scripts/validate_rpb108_sm31_two_packet_full_signed_coupling.py"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm31-two-packet-full-signed-coupling.yml"
+  workflow_dispatch:
+
+jobs:
+  sm31-true-original-two-packet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Exact true original full 973-leaf coupled odd negative cross, 15 positive bands and odd pole
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm31_two_packet_full_signed_coupling.py
+          python3 scripts/validate_rpb108_sm31_two_packet_full_signed_coupling.py
+      - name: Fail closed on PS36 O1 O2 full original odd and Weil/RH
+        run: |
+          python3 - <<'PY'
+          import json
+          g=json.load(open("research/obligations.json"))
+          assert g["active_obligation"]=="W-ODD-NEG"
+          assert g["objective"]["status"]=="open"
+          assert g["governance"]["no_automatic_promotion"] is True
+          odd=next(x for x in g["obligations"] if x["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open"
+          assert all(t in odd["evidence"] for t in ("SM28","SM29","SM30","SM31"))
+          assert "O1/O2" in odd["acceptance"]
+          assert "coupled_original_odd_scope" in g["governance"]
+          PY
