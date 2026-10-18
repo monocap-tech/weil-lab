@@ -69,3 +69,45 @@ SM39: follow the *measured* dominant discrepancy. If FFT sampling dominates, use
 Whole original odd W-ODD-NEG O1/O2, even E1–E4, signed Weil positivity, native CC27 D-Riesz and RH remain OPEN. Independent signed Fourier/form-domain analytic audit also required.
 
 Replay: python3 scripts/sm38_leafwise_original_odd_fourier_audit.py
+
+
+## 5. First actual full negative leafwise run: causal decomposition is decisive
+
+**First focused GitHub Actions run 39172268117 PASSED** with the real original 25-source selected support, all 973 original seven-prime negative leaves / 3892 signed subcells, true source-analytic supported Fourier amplitudes, all 107 original negative moment blocks/890 source columns, and independent 4/8/16 Gauss frequency quadrature (still FLOAT / NONCERTIFYING). It compared all matrices against the exact SAME sampled original pole-conditioned positive trial.
+
+**Generalized maximum in each same 25-source trial:**
+
+| Numerically evaluated negative-frequency quadratic | Physical 4096, FFT pad×4 | Physical 8192, FFT pad×8 |
+|---|---:|---:|
+| Previous **sparse-FFT direct original** signed-negative K | 0.997101 | 0.999835 |
+| NEW **leafwise analytic-source direct original** signed-negative K (Gauss16) | **0.964650** | **0.972929** |
+| NEW original SM37 signed-envelope-only full physical frequency integral | **9.817182** | **9.975612** |
+| Old original SM10 signed-envelope-only full physical frequency integral | 10.677776 | 10.853260 |
+| New original SM37 full 890-column Taylor/Young source cap | **9.826764** | **9.985352** |
+| Old original SM10 full moment source cap | 10.688198 | 10.863858 |
+| SM34 sufficient WHOLE ORIGINAL source threshold | 0.910714 | 0.910714 |
+
+**Where the remaining inflation lives (same physical matrix/source trial):**
+
+- **FFT sampling:** sparse FFT overestimated the leafwise direct generalized maximum by only **3.36%** (pad×4) / **2.77%** (pad×8). Thus the previous FFT was imperfect, but **not the primary source** of the near-10× cap excess.
+- **Real-frequency signed negative ENVELOPE:** the certified SM37 envelope-only response had a sampled generalized maximum **10.177×** (pad×4) / **10.253×** (pad×8) the leafwise true-formula original signed-negative response. This is the **dominant measured bottleneck**.
+- **Taylor/moment/Young synthesis:** the exact-formula 107-block/890-column source cap exceeded the corresponding envelope-only sampled generalized maximum by just **1.000976×** (pad×4) / **1.000976×** (pad×8), practically all of which is consistent with the mandatory Young factor \(1+\tau=1+1/1024\).
+- **Actual signed negative weight integrated mass** from numerical leafwise Gauss16: **16.016884** (full reflected signed axis); SM37 certified envelope full mass **27.227999** and SM10 original full envelope mass **37.626059**. Global mass comparison alone cannot explain spectral 10× inflation; source-frequency leverage is essential.
+- **Frequency Gauss stability:** direct leafwise generalized max at 4096 grid: order4 \(0.964653974\), order8 \(0.964647176\), order16 \(0.964650176\); at 8192 grid: \(0.972933367\), \(0.972924904\), \(0.972928650\). This is a useful numerical convergence test but **NOT** an interval Gauss error bound.
+- **Numerical Loewner residual caution:** new cap minus envelope-only sampled matrix shows a small negative eigenvalue \(-1.04\times10^{-5}\) at 4096 physical grid and \(-4.90\times10^{-7}\) at 8192; this is consistent with spatial physical-overlap discretization/aliasing rather than a rigorous failure of the independently certified SM37 cap. Do **NOT** use these float matrices to prove a true Loewner inequality.
+
+**Outcome:** SM38 measured the remaining computational inefficiency and found it **principally in the conservative ORIGINAL signed seven-prime multiplier ENVELOPE**, not in the 890-column moment/Taylor machinery. Broad improvements to the latter are a poor next allocation. Increasing Fourier FFT zero-padding alone likewise would not resolve the main excess.
+
+### New, precisely targeted mathematical SM39 direction
+
+The current SM37 real-cell envelope uses \(\operatorname{arch}_{\rm SI07}(\lfloor a\rfloor)\), held constant across each integer interval \([j,j+1]\), PLUS a 69-derivative prime correction. The archive source implementation writes the arch lower explicitly as a sum of positive increasing rational terms and a logarithmic tail lower:
+\[
+\mathcal A_{\rm lo}(t)=
+\sum_{k=0}^{63}
+\frac{(Yt)^2}{(k+1/4)((k+1/4)^2+(Yt)^2)}
++\frac12\log_{\rm lo}\!\left(1+\left(\frac{Yt}{64+1/4}\right)^2\right)-C_{\rm up},
+\quad Y=333/106<\pi.
+\]
+Because the physical arch \(\Re\psi(1/4+i\pi t)-\log\pi\) is increasing for \(t\ge0\) by its convergent positive term expansion, **a rational subcell-left endpoint** \(t=a\), instead of its integer floor \(j=\lfloor a\rfloor\), is a valid target for a tighter ORIGINAL whole-real lower (provided the inherited SI07 exact log-rational bound and monotonicity are audited). This addresses the main source of *global envelope slack* without increasing the original negative Taylor rank.
+
+**SM39 acceptance proposal:** implement and certify this original **left-endpoint archimedean lower** at each true signed source subcell, with the same original SI06 exact all-seven-prime midpoint lower and derivative, take its minimum with the SM37 certified old subcell weight, and repeat the exact **107-block/890-pivot** SPD full-operator cap check. Then rerun the SAME 25-source analytic negative Fourier integral and envelope-only response; focus additional refinement on subcells with largest eigenvector-weighted response. No original full O1/O2, even E1–E4, Weil, CC27/RH proof promotion.
