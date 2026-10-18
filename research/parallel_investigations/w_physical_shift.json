@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS32 obtains a first quantitative, albeit extremely coarse, TRUE ORIGINAL pole-free even Schur ground-eigenfunction localization from PS17/PS27/PS29 genuine source operator bounds plus PS18 original digamma Fourier multiplier. RC315 phi0 eigenvalue λ0<-4.359740 and original bounded perturbation T=13+539/90+(1403/80)^2/(1997/9000)<1406 imply actual J[phi0]<T-4.359740<1401. At X=2^8096, original j(ξ)>(8095)*693/1000-5/6>5604, so true normalized ground Fourier high mass<1/4 and low mass>3/4. Every original measurable physical set E of measure≤1/(128X) has phi0² mass<25/64; every reflected half-set A of measure≤1/(256X) has original even ground μ(A)<25/64. Fourier low mass and PS28 d>=1 plus phi0>=0 give quantitative actual ground-effective-pole overlap a²>3/(8X), alpha a²>(3994/2907)*3/(8X). Scale astronomical; NO practical PS31 physical graph cell weights, no lambda1 sign, PS29 Delta or coherent scalar, W-EVEN-FORM/W-ODD-NEG/original Weil/CC27/RH closure. Analytic premises need independent review, dedicated exact rational CI pending.",
+  "proof_standing": "PS33 derives and EXACT-RATIONALLY OPTIMIZES a true ORIGINAL PS29 even ground/effective-pole quantitative overlap bound using PS32's genuine J[phi0]<M=T−4.359740 and PS18 original logarithmic Fourier symbol. For dyadic X=2^e, s_e=(e−1)*693/1000−5/6, p_e=1−M/s_e when s_e>M, gives actual a²=<d,phi0>²>p_e/2^(e+1). Exact Fraction finite differences establish e=2025 uniquely optimal for this dyadic certificate, with p2025>3/4000; actual a²>3/(8000·2^2025), alpha a²>(3994/2907)·3/(8000·2^2025), >2^6071/1000 times earlier PS32 actual a² lower. This is a *tiny* yet genuinely stronger ORIGINAL ground-pole coupling, not a practical physical graph measure, true lambda1 sign, or Delta>0. PS32 larger X=2^8096 nonconcentration remains valid and distinct. Original signed odd/even Weil positivity, CC27 D-Riesz, RH OPEN, independent PS17–PS32 infinite-dimensional proof audit required; focused PS33 exact CI pending.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS33 explicitly PS scoped: use the true original even pole-free ground eigen-equation, positivity preserving source resolvent, nonlocal arch kernel, seven-prime/source coupling to obtain a certified macroscopic cell-mass or local ground upper envelope strong enough for PS31 W_N graph (or direct original one-negative-index minmax). PS32 frequency-only concentration threshold |E|≈2^-8096 is not computationally useful; merely increasing bandwidth worsens physical resolution. Resolve actual lambda1 and ground pole-angle Delta separately; do not declare W-EVEN-FORM sign.",
-    "Audit PS17/18 Fourier symbol, PS27 pole-free source bounds, PS28 d>=1 and PS29 simple positive ground assumptions. Preserve W-ODD-NEG canonical priority and full RH/CC27 D-Riesz safeguards."
+    "PS34 scoped: strengthen PS31's original pole-free even spectral gap or effective pole angle by using true ground eigenfunction equation, original PS28 positivity preserving source resolvent and genuine nonlocal jump kernel to certify a macroscopic physical interval Harnack/mass bound, or a direct original one-negative-index proof. Pure PS18 original digamma log-energy dyadic Fourier overlap bounds optimized at PS33 e=2025 remain exponentially weak and cannot certify Delta or PS31 graph.",
+    "Preserve canonical W-ODD-NEG open and seek independent analytic audit of PS17/18 original Fourier source bounds, PS27/28 pole-free source cone, PS29/30 ground eigenfunction domain/irreducibility, PS31 weighted Poincare graph and PS32/33 derived true pole overlap."
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -287,6 +287,14 @@
       "note": "notes/RPB108_PS32_ORIGINAL_GROUND_FOURIER_MASS_20261018.md",
       "replay": "python3 scripts/validate_rpb108_ps32_original_ground_fourier_mass.py",
       "limitation": "X=2^8096 astronomical, no original physical macroscopic graph cell phi0 or W_N values; no lambda1 sign, no effective-pole Delta or coherent scalar, no original odd/even Weil PSD, native CC27 D-Riesz transfer or RH closure. Independent functional-analysis review of original PS17/18 and PS27–30 assumptions required."
+    },
+    {
+      "id": "PS33",
+      "scope": "Actual original pole-free even Schur normalized nonnegative PS29 ground phi0 and true effective PS28 pole d>=1: from PS32 original J[phi0]<M=T−4.359740 with T=13+539/90+(1403/80)^2/(1997/9000) and PS18 original j(ξ)>s_e=(e−1)*693/1000−5/6 for |ξ|>=2^e, obtain actual low Fourier fraction p_e=1−M/s_e>0 and a²=<d,phi0>²>p_e/2^(e+1). Exact Fraction s2023<=M<s2024, p2025>2p2024, p2026<2p2025 and positive decreasing increments show e=2025 unique optimum among integer dyadic splits. Original p2025>3/4000 yields true a²>3/(8000·2^2025), alpha a²>(3994/2907)*3/(8000·2^2025), >2^6071/1000 times old PS32 a² lower. This optimizes an enormously weak L1 / coherent original pole coupling and does NOT compute actual phi0, lambda1, beta, Delta, physical PS31 graph cells or positivity.",
+      "status": "Scoped true original even ground/effective-pole quantitative dyadic optimization exact rational result, dependent on inherited original PS17/18/27–32 analytic premises; scoped focused Actions and independent audit pending; all RH/sign closure flags false.",
+      "note": "notes/RPB108_PS33_OPTIMIZED_ORIGINAL_GROUND_POLE_OVERLAP_20261018.md",
+      "replay": "python3 scripts/validate_rpb108_ps33_optimized_original_ground_pole_overlap.py",
+      "limitation": "Positive bound 3/(8000·2^2025) still exponentially minuscule, NOT a pole-angle Delta or coherent scalar certificate; no macroscopic ground cell mass / W_N values or original lambda1 sign. W-ODD-NEG/W-EVEN-FORM/whole Weil/CC27 D-Riesz/RH OPEN."
     }
   ]
 }
