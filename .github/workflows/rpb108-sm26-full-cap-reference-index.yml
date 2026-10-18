@@ -1,0 +1,39 @@
+name: RPB108 SM26 full original cap SI29 surrogate spectral index
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_SM26_FULL_CAP_14_SOURCE_INDEX_OBSTRUCTION_20261018.md"
+      - "scripts/validate_rpb108_sm26_full_cap_14_source_index_obstruction.py"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm26-full-cap-reference-index.yml"
+  workflow_dispatch:
+
+jobs:
+  sm26-original-surrogate-inertia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Original SM11 17-negative-packet plus SM10 full 890-source index transfer
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm26_full_cap_14_source_index_obstruction.py
+          python3 scripts/validate_rpb108_sm26_full_cap_14_source_index_obstruction.py
+      - name: No method obstruction may promote a true original odd Weil negative witness
+        run: |
+          python3 - <<'PY'
+          import json
+          g=json.load(open("research/obligations.json"))
+          assert g["active_obligation"]=="W-ODD-NEG"
+          assert g["objective"]["status"]=="open"
+          assert g["governance"]["no_automatic_promotion"] is True
+          assert "SM24" in g["evidence"] and "SM25" in g["evidence"] and "SM26" in g["evidence"]
+          odd=next(x for x in g["obligations"] if x["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open"
+          assert "O1/O2" in odd["acceptance"]
+          assert "SM24" in odd["evidence"] and "SM25" in odd["evidence"] and "SM26" in odd["evidence"]
+          assert "full_cap_reference_nogo" in g["governance"]
+          PY
