@@ -50,10 +50,8 @@ def original_multiplier(xi):
     arch=np.real(special.digamma(0.25+1j*np.pi*x))-np.log(np.pi)
     prime=np.zeros_like(x)
     for n,p in ACTIVE.items():
-        prime-=2*np.log(n)/np.sqrt(n)*np.cos(2*np.pi*x*np.log(n))
-        # Active[n] is the prime p(n), and the numerator is log(p(n)).
-        prime+=2*(np.log(n)-np.log(p))/np.sqrt(n)*np.cos(
-            2*np.pi*x*np.log(n))
+        # SI06 ACTIVE[n] is p(n); prime coefficient log(p(n))/sqrt(n).
+        prime-=2*np.log(p)/np.sqrt(n)*np.cos(2*np.pi*x*np.log(n))
     return arch+prime
 
 
