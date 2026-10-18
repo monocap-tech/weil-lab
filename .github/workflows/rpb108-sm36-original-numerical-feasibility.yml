@@ -1,0 +1,59 @@
+name: RPB108 SM36 actual original odd numerical feasibility (noncertifying)
+
+on:
+  pull_request:
+    paths:
+      - "scripts/sm36_original_odd_numerical_pilot.py"
+      - "notes/RPB108_SM36_ORIGINAL_NUMERICAL_FEASIBILITY_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm36-original-numerical-feasibility.yml"
+  workflow_dispatch:
+
+jobs:
+  original-odd-numerical-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: .github/workflows/rpb108-sm36-original-numerical-feasibility.yml
+      - name: Install numerical pilot dependencies
+        run: python -m pip install numpy scipy
+      - name: Explore actual original 107-cluster sources, sampled full Fourier A0 and 890 cap
+        run: |
+          python -m py_compile scripts/sm36_original_odd_numerical_pilot.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/sm36_original_odd_numerical_pilot.py
+      - name: Preserve noncertifying status and full original odd acceptance OPEN
+        run: |
+          python - <<'PY'
+          import json
+          p="artifacts/sm36_original_numerical_pilot.json"
+          r=json.load(open(p))
+          assert r["status"]=="NUMERICAL_EXPLORATION_ONLY_NOT_WHOLE_OPERATOR_CERTIFICATE"
+          assert r["canonical_odd_O1_O2"]=="open"
+          assert r["source_count_entire"]==470
+          assert r["original_negative_clusters"]==107
+          assert r["original_negative_cap_columns"]==890
+          assert len(r["cases"])==3
+          assert all(x["pilot_sources"]>=16 for x in r["cases"])
+          assert len(r["missing_certificate"])>=5
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          odd=next(x for x in m["obligations"] if x["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open"
+          assert all(s in odd["evidence"] for s in ("SM33","SM34","SM35","SM36"))
+          assert "O1/O2" in odd["acceptance"]
+          assert "sm36_feasibility_only" in m["governance"]
+          PY
+      - name: Upload original numerical source and grid diagnostics (NOT certificate)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm36-original-source-numerical-feasibility-only
+          path: artifacts/sm36_original_numerical_pilot.json
+          if-no-files-found: warn
