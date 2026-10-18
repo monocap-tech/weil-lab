@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS18 establishes source-exact exponential native J_C low spectral rank obstruction (PS17 uniform-cutoff method impractical), AND a true unshifted original signed complementary Schur coercivity >1/200 on an infinite-dimensional explicit source-prime-quiet physical window, retaining arch/pole source response and eliminating seven prime source shifts by exact separation. Focused rational CI and independent review pending. Couplings between distinct complement windows, full complement Schur PSD, CC27 D-Riesz bridge, W-ODD-NEG, W-EVEN-FORM, whole original Weil and RH remain OPEN.",
+  "proof_standing": "PS19 analytic original signed full source-eliminated complementary Schur >27/20 on reflection-invariant infinite-dimensional 4-window carrier with TWO actual n2 internal signed prime couplings, all 728 source cross-prime shifts verified absent, nonzero arch and both pole/source inverse paid; focused final-head CI and independent mathematical review pending. Global complementary Schur sign, native CC27 D-Riesz bridge, W-ODD-NEG, W-EVEN-FORM, whole Weil and RH remain OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS19: generalize PS18's genuinely positive original signed source-aware prime-quiet complement window to a controlled partition of the full original complement, including coherent cross-window arch, all seven true prime translations, both signed poles and compact source Schur interactions; require strict global positive margin or a genuine negative witness, not spectral J_C low matrix enumeration",
-    "PS20: independently audit all physical source-Schur functional analysis and native CC27 D-Riesz norm/domain transfer, with complete original whole-form signed positivity before W-ODD-NEG/W-EVEN-FORM/RH promotion"
+    "PS20: build an exact original source-aware complement partition extending the true four-window positive module, quantify its nonlocal cross to uncovered complement including all seven original prime shifts, original digamma, both poles and source inverse; produce rigorous whole signed complementary Schur margin or a negative witness, not another isolated positivity island",
+    "PS21: external analytic audit and original physical-to-CC27 D-Riesz carrier norm/domain bridge after full complement sign certification before any W-ODD-NEG/W-EVEN-FORM/whole Weil/RH promotion"
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -175,6 +175,14 @@
       "note": "notes/RPB108_PS18_SPECTRAL_RANK_OBSTRUCTION_20261017.md",
       "replay": "python3 scripts/validate_rpb108_ps18_spectral_rank_obstruction.py",
       "limitation": "No positivity on the whole complement or mixed quiet/nonquiet windows, no finite native low spectral matrix or global signed Schur PSD, no CC27 D-Riesz carrier/RH; positive Schur only on specified quiet interval."
+    },
+    {
+      "id": "PS19",
+      "scope": "true original unshifted complementary Schur strictly >27/20 L2 on entire infinite-dimensional reflection-symmetric four-window physical complement carrier, including TWO genuine log2 original signed prime couplings between its windows, complete cross-window arch, both signed original poles, and actual thirteen-source inverse response; all 728 original source-to-four-window prime shifts certified disjoint with exact rational clearances",
+      "status": "analytic four-window domain-compatible original signed Schur theorem and original-source exact-rational 728-case/cross-kernel/pole validation; focused final-head Actions and independent review pending",
+      "note": "notes/RPB108_PS19_COUPLED_QUIET_FOURBLOCK_20261017.md",
+      "replay": "python3 scripts/validate_rpb108_ps19_coupled_quiet_fourblock.py",
+      "limitation": "Entire complement not covered; nonlocal coupling to the complement of four windows not certified positive. Original CC27 D-Riesz domain/norm transfer, full Weil/RH, W-ODD-NEG/W-EVEN-FORM open."
     }
   ]
 }
