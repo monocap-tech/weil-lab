@@ -126,3 +126,34 @@ The focused **exact Fraction** validator reconstructs the original SI10 all-real
 **SM34:** measure the missing **complete true ORIGINAL positive-frequency/archimedean mixed operator** \(C_+=Q(A_+-\kappa I)P\), including high Fourier-frequency logarithmic growth, exact signed physical basis Gram conditioning and all 470 exceptional directions, or bypass its norm by directly certifying the entire corrected \(S_E\). Do **not** infer a valid \(C_+\) operator norm from its positivity, local positive bands, first two packets, or an unbounded Fourier multiplier evaluated only on sample frequencies. The canonical alternative remains the complete 890-negative-source \(R_oA_*^{-1}R_o^*\preceq I\) physical supported inverse.
 
 Replay: \`python3 scripts/validate_rpb108_sm33_original_odd_negative_mixed_bound.py\`. All numerical original envelope checks are source arithmetic; the Hilbert-space spectral/physical domain proof must be independently audited.
+
+
+## Focused initial source replay: measured exact-rational original coupling budget
+
+The **first SM33 focused Actions run 39161626926 PASSED**. Exact rational decisions (numbers below are decimal *displays only*, not roundoff-certified substitute comparisons) are:
+
+| Entire true original ODD negative-frequency quantity | Rational-bound display |
+| --- | ---: |
+| Original unresolved signed negative leaves / clusters | **973 / 107** |
+| Original complete signed multiplier negative mass \(M\) | 37.59565259375 |
+| True original global \(K_-\) norm ceiling \(H_{\rm neg}=2BM\) | 82.71043570625 |
+| Maximum of 107 cluster-specific b9 Taylor errors | 0.001681282837 |
+| Common b9 worst-case Taylor error | 0.001953125 |
+| **Entire original \(QK_-Q\) leakage upper** \(\varepsilon_{\rm neg}\) | **0.00006624610913** |
+| Prior common-error leakage upper | 0.00031551527293 |
+| **Entire original physical 470-to-infinite negative cross squared norm** \(\Gamma_-^2\) | **0.005479244550** |
+| Prior common-error cross squared-norm upper | 0.026096405696 |
+| **Negative-only complete \(D^{-1}\) response upper** \(\Gamma_-^2/\mu\) | **8.057712573** |
+| Original signed infinite complement \(\mu_{\mathrm{actual}}\) | 0.0006842295477 |
+
+The post-run validator revision makes the sharper original all-frequency weighted inequalities **mandatory exact Fraction gates**:
+\[
+\boxed{
+\varepsilon_{\rm neg}<\frac1{15000},\qquad
+\|QK_-P\|^2<\frac{11}{2000},\qquad
+\|C_-^*D^{-1}C_-\|<\frac{81}{10}.
+}
+\]
+These inequalities are on the **complete** original negative-frequency mixed component, with every cluster included and no reliance on a 470-basis condition number. The improvement over the common-error squared cross bound is roughly a factor of \(4.76\).
+
+**Important interpretation:** the upper \(8.1\) on the negative-only inverse correction is far too conservative to assert a positive entire corrected finite Schur automatically. Crucially, the still-unmeasured **positive archimedean/high-frequency mixed map** \(C_+\) and all its interference with \(C_-\) must be included. Neither positivity on SM31's original 2D block nor the entire original cofinite positive complement makes this correction disappear. The strict full original O1/O2 spectral classification remains OPEN; independent Fourier/form-domain review is also pending.
