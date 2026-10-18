@@ -132,7 +132,7 @@ def run():
     assert R<F(3,2)**2
     cC_norm_upper=F(7,4)
     b0_upper=F(67,4)+F(2)*F(9,40)*cC_norm_upper
-    assert b0_upper==F(701,40)<F(18)
+    assert b0_upper==F(1403,80)<F(18)
     d_diff_upper=b0_upper*F(1)/a0_lower*F(9,40)
     assert d_diff_upper<F(18)
     # Finite but intentionally NOT a small perturbation:
