@@ -137,3 +137,37 @@ For every one of the 107 original clusters, numerically evaluate \(\Delta_j(v)\)
 The leverage map is also **NUMERICAL ONLY** (neither a true 470D eigenvector nor an outward interval bound). Its focused final-head run will record the exact top cluster locations and concentration. If the gap is not concentrated, a new operator inequality sharper than piecewise \(\kappa-m\) upper may be needed, including a safe signed cancellations scheme at the complete matrix level.
 
 The mandatory independent certification of the ORIGINAL **positive archimedean digamma logarithmic high-frequency Fourier tail**, complete physical 470-source positive resolvent and strong Galerkin residual remains essential before whole W-ODD-NEG O1/O2 acceptance. No even, Weil, CC27/RH promotion follows.
+
+
+## 5. Final-head SAME-TRIAL frequency leverage map — the SM39 target is exceptionally concentrated
+
+The updated **final-head focused SM38 Actions run 39171010719 PASSED**, including the complete 107-cluster same-trial frequency-leverage calculation (same 8,192 physical/8× FFT-padded **sampled positive trial**, selected genuine SI10 25-source basis, original physical analytic sine amplitudes and original Gauss32 signed-negative frequency support). Its **noncertifying** dominant-envelope generalized eigenvalue is \(9.9756116173\ldots\), and the *true-formula direct negative integral on that SAME envelope eigenvector* is \(0.9607943044\ldots\). The original refined signed-envelope excess on the eigenvector is \(\Delta=9.0148173129\ldots\).
+
+Numerically, that surplus is **not spread across the original 107 signed-negative frequency clusters**:
+
+| True original negative-frequency cluster | Original frequency interval | Envelope-minus-actual physical energy on same sampled eigenvector | Fraction of total excess |
+|---|---|---:|---:|
+| **0** | **[0, 1.15625]** | **8.9766991713** | **99.57716%** |
+| 1 | [1.265625, 2.03125] | 0.0368036556 | 0.40826% |
+| 2 | [2.453125, 3.171875] | 0.0010351280 | 0.01148% |
+| All remaining 104 original clusters combined | Rest of original real negative support | approximately 0.00027936 | approximately 0.00310% |
+
+The first cluster alone comprises **296 of the 3,892 refined original whole-real subcells** and contributes \(9.8926931245\ldots\) of the total \(9.9756116173\ldots\) original refined envelope energy on the worst numerical mode, while the corresponding true-formula signed-negative original Fourier energy from this cluster is only \(0.9159939532\ldots\).
+
+**This is the concrete SM39 frontier: tighten the original zero-to-1.15625 real-frequency ARCHIMEDEAN lower bound, not the Taylor approximation or the remote prime source bands.** In SI07,
+\[
+\mathrm{arch\_lower\_cell}(j)
+= \sum_{k=0}^{63}\frac{y_j^2}
+{(k+1/4)((k+1/4)^2+y_j^2)}
++\tfrac12\log_{\rm lower}\bigl(1+(y_j/(64+1/4))^2\bigr)-C_{\rm upper},
+\quad y_j=\mathrm{YFAC}\cdot j,
+\]
+and this same integer-endpoint lower is used for EVERY \(\xi\in[j,j+1]\), including nearly the whole dominant original cluster inside \([0,1]\). Each rational summand and the logarithmic tail lower are increasing with \(y\ge0\); consequently the **same SI07 exact rational expression evaluated at the actual SUBCELL LEFT ENDPOINT** \(a\) yields an improved, valid original whole-real arch lower for every \(\xi\ge a\), without changing the multiplier or truncating its original Fourier domain:
+\[
+\boxed{\mathrm{arch}_{\rm original}(\xi)
+\ge \mathrm{arch}_{\rm lower}(a)
+\quad(\xi\in[a,b],\ a\ge0).}
+\]
+This is an analytically grounded **SM39 development proposal**, not yet a newly CI-verified operator bound. SM39 should implement \(\mathrm{arch}_{\rm lower}(a)\) using the inherited SI07 *outward-rational* \(64\)-term tail and integer-to-rational monotonicity proof, retaining the SI06 complete **seven-prime** phase interval and its 69 derivative payment on every subcell. The first pass should target **cluster 0** while leaving all other SM37 original intervals unchanged, then recompute the **same original 107 exact full covariance blocks/890 original source columns and true global 24-bit \(\eta\)**, verify \(K_-\preceq\widehat K_{\rm SM39}\preceq\widehat K_{\rm SM37}\) on the entire original odd carrier, and rerun the matched 25-source physical envelope generalized upper. A larger improvement on the first cluster would confirm the practical benefit before extending this rational arch procedure to other 106 clusters.
+
+**Mandatory caution:** all cluster leverage values and physical eigenvectors above are numerical 25-source pilot data and are NOT global eigenvalues, lower/upper certified 470D generalized source spectra, or complete original signed odd positivity. The original SI07 signed real-frequency mathematical arch monotonicity, SI06 prime intervals, SM37 exact upper, and complete original \(A_o\) logarithmic high-frequency tail/strong physical Galerkin residual must undergo independent mathematical audit. W-ODD-NEG O1/O2, even E1–E4, Weil, CC27/RH all **OPEN**.
