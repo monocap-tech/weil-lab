@@ -111,6 +111,10 @@ def refined_signed_original_cap(subcells=SUBCELLS):
     assert n_refined==973*subcells and len(refined)==107
     assert mass_old_check==total_old
     assert mass_new<total_old
+    # ACTUAL ORIGINAL strict whole-cap mass improvement, exact
+    # rather than a float64 comparison or selected Ritz sign:
+    assert mass_new*4<total_old*3
+    assert total_old-mass_new>F(10)
     assert upper_gap_sum==total_old-mass_new
     orders=[taylor_order(c[-1][1]-c[0][0],BITS)[0]
             for c in refined]
