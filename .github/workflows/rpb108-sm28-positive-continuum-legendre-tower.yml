@@ -1,0 +1,38 @@
+name: RPB108 SM28 original positive continuum Legendre and exact infinite tail
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_SM28_POSITIVE_CONTINUUM_LEGENDRE_TOWER_20261018.md"
+      - "scripts/validate_rpb108_sm28_positive_continuum_legendre_tower.py"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm28-positive-continuum-legendre-tower.yml"
+  workflow_dispatch:
+
+jobs:
+  sm28-true-positive-continuum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Original signed thirteen real positive continuum bands and full infinite Legendre p2 residual
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm28_positive_continuum_legendre_tower.py
+          python3 scripts/validate_rpb108_sm28_positive_continuum_legendre_tower.py
+      - name: Fail closed on PS36 whole original odd sign and signed Weil RH
+        run: |
+          python3 - <<'PY'
+          import json
+          g=json.load(open("research/obligations.json"))
+          assert g["active_obligation"]=="W-ODD-NEG"
+          assert g["objective"]["status"]=="open"
+          assert g["governance"]["no_automatic_promotion"] is True
+          o=next(x for x in g["obligations"] if x["id"]=="W-ODD-NEG")
+          assert o["status"]=="open"
+          assert all(s in o["evidence"] for s in ("SM26","SM27","SM28"))
+          assert "O1/O2" in o["acceptance"]
+          assert "positive_continuum_decomposition" in g["governance"]
+          PY
