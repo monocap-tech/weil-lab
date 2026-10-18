@@ -43,7 +43,10 @@ def run():
 
     ell9=old.log_i(F(9))
     ell2=old.log_i(F(2))
-    ell400=old.log_i(F(400))
+    # 400=2**4*5**2. Direct atanh(log400) with K=220 is
+    # too coarse because (400-1)/(400+1) nearly equals one.
+    # Source-rational identity below gives a tight enclosure.
+    ell400=F(4)*old.log_i(F(2))+F(2)*old.log_i(F(5))
     pi=old.pi_iv()
     sh,ch=old.sinh_cosh_iv(B/2)
     delta=old.IV(R-ell9.hi,R-ell9.lo)
