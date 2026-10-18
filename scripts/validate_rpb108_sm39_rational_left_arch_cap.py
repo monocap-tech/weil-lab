@@ -137,6 +137,11 @@ def new_original_arch_left_cap():
     assert mass_from_arch==prev_stats["new_total_cap_mass"]-mass_new
     assert mass_new>0
     assert mass_new<prev_stats["new_total_cap_mass"]
+    # Actual observed SM39 full ORIGINAL exact-Fraction improvements
+    # become hard certificate assertions, not float pilot claims.
+    assert mass_new*10<prev_stats["new_total_cap_mass"]*7
+    assert mass_from_arch>F(8)
+    assert n_improved>2700
 
     # EXACT full 107 original source covariances; all cross
     # entries integrated rationally (not diagonal samples).
@@ -226,6 +231,10 @@ def same_original_25_source_pilot(prev,new,orders,stats,n,pad,gauss=16):
     # envelope dominance independently proves operator order.
     assert a<=b+1e-8*max(b,1)
     assert c<=d+1e-8*max(d,1)
+    # Observed sampled pilot spectral contraction -- NOT a theorem
+    # about the original full signed odd operator.
+    assert a/b<0.12 and c/d<0.12
+    assert c>THETA # scoped original selected trial not yet below gate
     return {
       "physical_grid":n,"FFT_positive_padding":pad,
       "source_count":len(source),"gauss_order":gauss,
