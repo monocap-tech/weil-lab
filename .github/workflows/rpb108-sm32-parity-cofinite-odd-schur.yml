@@ -1,0 +1,38 @@
+name: RPB108 SM32 original odd parity cofinite spectral index and whole Schur
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_SM32_PARITY_COFINITE_ODD_SCHUR_20261018.md"
+      - "scripts/validate_rpb108_sm32_parity_cofinite_odd_schur.py"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm32-parity-cofinite-odd-schur.yml"
+  workflow_dispatch:
+
+jobs:
+  sm32-original-full-cofinite-odd:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Entire original seven-prime SI10 physical cover, odd parity index and true infinite complement
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm32_parity_cofinite_odd_schur.py
+          python3 scripts/validate_rpb108_sm32_parity_cofinite_odd_schur.py
+      - name: Fail closed on correct-sign original odd complete Schur, even and Weil RH
+        run: |
+          python3 - <<'PY'
+          import json
+          j=json.load(open("research/obligations.json"))
+          assert j["active_obligation"]=="W-ODD-NEG"
+          assert j["objective"]["status"]=="open"
+          assert j["governance"]["no_automatic_promotion"] is True
+          o=next(x for x in j["obligations"] if x["id"]=="W-ODD-NEG")
+          assert o["status"]=="open"
+          assert all(x in o["evidence"] for x in ("SM29","SM30","SM31","SM32"))
+          assert "O1/O2" in o["acceptance"]
+          assert "parity_cofinite_original_odd_gate" in j["governance"]
+          PY

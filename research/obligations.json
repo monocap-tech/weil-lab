@@ -17,7 +17,8 @@
     "full_cap_reference_nogo": "SM26: unchanged B14 SI29 full original 890-source surrogate Schur index>=3. SM27: unchanged expanded C33 890-source positive-only surrogate Schur index>=1 by true original signed packet. Both are METHOD no-go; true full original Ao and Astar signed odd operator sign remains unclassified. No rank increase or componentwise test promotes O1/O2.",
     "positive_continuum_decomposition": "SM28: true 13 continuous positive-frequency bands decomposed into exact 26 original Legendre moments plus strictly positive infinite-rank tail. SM29: even keeping the ENTIRE infinite-frequency positive continuum of those 13 windows and full original SI29 pole-conditioned B14, a true remote 389.56 original negative packet yields strict >3/200 deficit and full 890-source surrogate negative index>=1. Thus frequency COVERAGE is a separate required acceptance dimension: no local Legendre-order increase repairs the unchanged band selection. TRUE Astar may be larger; original O1/O2 complete odd form stays OPEN, no surrogate promotion.",
     "remote_frequency_coverage": "SM30: two genuine original whole-real signed-positive frequency intervals [389.35,389.41] and [389.72,389.78] restore positive continuum near original negative packet 389.56, with exact original physical >0.312063 positive response. Entire original signed-negative Kneg over all 973 leaves (<0.207607 on same g) plus true original negative odd pole (<1.859e-6) yield exact original full signed form W_o(g)>1/10 on ONE physically supported original Jensen source; no whole odd O1/O2 890 source/cross/orthogonal residual, whole signed Weil or RH promotion.",
-    "coupled_original_odd_scope": "SM31: true ORIGINAL signed odd full 973 negative-frequency leaves, 15 signed-positive real-band Jensen source responses and full original pole charged on the GENUINE 2D physical span of g14.42,g389.56. Exact positive 2x2 determinant>4/1000 and original physical L2 coercivity Q_o[f]>1/176||f||² on this 2D span; all 890 other source modes, full orthogonal remainder/cross and PS36 O1/O2 remain OPEN. No promotion to signed whole Weil/CC27/RH."
+    "coupled_original_odd_scope": "SM31: true ORIGINAL signed odd full 973 negative-frequency leaves, 15 signed-positive real-band Jensen source responses and full original pole charged on the GENUINE 2D physical span of g14.42,g389.56. Exact positive 2x2 determinant>4/1000 and original physical L2 coercivity Q_o[f]>1/176||f||² on this 2D span; all 890 other source modes, full orthogonal remainder/cross and PS36 O1/O2 remain OPEN. No promotion to signed whole Weil/CC27/RH.",
+    "parity_cofinite_original_odd_gate": "SM32: original SI10 exact full seven-prime signed protected b9 physical finite exception dim<=939 projects by genuine even multiplier/support reflection to <=470 original odd supported physical source directions incl original negative odd pole s. Entire ORIGINAL odd E9^perp has signed Q_o[f]>17/25000 ||f||² and original odd negative index<=470, NOT zero. Full W-ODD-NEG acceptance requires strict original complete finite E9 Schur A-C*D^-1 C>=0 with ALL original infinite cross; separately SM31 original two-packet positive G is not presumed E9 member, augmented dim<=472 and cross not yet bounded. True full O1/O2, even E1–E4, whole Weil, native CC27 and RH remain OPEN."
   },
   "active_obligation": "W-ODD-NEG",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -314,6 +315,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/212",
       "repo_path": "notes/RPB108_SM31_TWO_PACKET_FULL_SIGNED_COUPLING_20261018.md",
       "verification": "First SM31 focused Actions 39157529845 PASS, full original signed 2x2 exact Fraction determinant decimal about 0.004562085372. Updated source makes simplified exact rational determinant >4/1000 and 2D physical norm spectral lower >1/176 mandatory; final-head focused Actions rerun pending. Independent inherited whole signed original Fourier/physical domain review required."
+    },
+    "SM32": {
+      "kind": "Genuine ORIGINAL odd parity cofinite whole-operator negative-index UPPER ≤470 and full original positive infinite physical complement, with correct-sign exact finite-complement Feshbach acceptance; O1/O2 remains OPEN",
+      "scope": "Original SI10 signed seven-prime full Weil protected-positive b9 973 exact unresolved original leaves and 107 original physical Taylor clusters have full exceptional source dimension <=939, all original odd-pole s included. Reflection parity projects each +/- frequency x^k modulation pair to ONE original physically supported real odd x^k sin(2π c x) when k even or x^k cos(2π c x) when k odd, and includes original s. Thus explicit genuine original odd exceptional span E9 has dim<=sum_j p_j+1<=470. SI10 original full signed physical cofinite floor Q_o[f]>17/25000 ||f||² on all odd E9^perp; original odd negative index <=470 (not 0). Complete original O1/O2 equivalent to original corrected E9 finite-dimensional Feshbach A-C*D^-1 C PSD, subtracting FULL infinite mixed C with D>=17/25000. SM31 genuine coupled positive 2D G may NOT be assumed subset E9; augmented E9+G dimension<=472 and original full infinite complement remains positive. Strict conditional coupling norm² budget 17/4400000 needed just to preserve positive G block after eliminating infinite complement; unmeasured. No full original corrected finite PSD, no whole odd/Weil/RH.",
+      "pr": "pending draft PR",
+      "repo_path": "notes/RPB108_SM32_PARITY_COFINITE_ODD_SCHUR_20261018.md",
+      "verification": "Focused exact-rational original SI10 b9 whole-real signed seven-prime protected cover/973 leaves/107 clusters/Taylor counts and physical margin, parity source arithmetic, full minus-sign Feshbach 2×2 countermodels and explicit conditional cross budget; Actions/independent analytic review pending. Does not evaluate true full 470×470 corrected exceptional Schur or 890×890 original negative-cap inverse."
     }
   },
   "obligations": [
@@ -380,10 +388,11 @@
         "SM28",
         "SM29",
         "SM30",
-        "SM31"
+        "SM31",
+        "SM32"
       ],
       "acceptance": "PS36 complete-operator O1/O2 gate: prove ORIGINAL supported full odd signed W_o=A_o-2|s><s|−K_neg,o >=0 on full physical domain, equivalently R_o (A_o-2|s><s|)^-1 R_o*<=I on entire true original negative-frequency carrier, with all original positive/negative cross couplings and infinite residual (or exact original full source-first odd Schur). A 2-column principal inverse block from SM25 or 890-column partial modules are NOT full-operator acceptance.",
-      "next_action": "SM32 canonical W-ODD-NEG PS36 O1/O2: SM31 now gives a genuinely ORIGINAL full-seven-prime signed odd TWO-PACKET coupled source subspace Q_o[f]>1/176||f||² with all entire 973 signed-negative frequency leaves and complete original pole/cross charged. Do NOT promote this 2D PSD to whole W_o: prove entire orthogonal complement and its coupling with this 2D physical subspace, ultimately original complete 890-source negative-cap/true A_star inverse Loewner with full η and source domain. Consider full Feshbach Schur onto 2D and rigorously certified infinite residual. E1-E4 even, whole Weil, native CC27 D-Riesz, RH stay OPEN."
+      "next_action": "SM33 canonical W-ODD-NEG PS36 O1/O2: SM32 proves strict TRUE original odd signed form positive on a closed physical L² complement of an explicitly defined original odd source space E9 of DIMENSION<=470 (parity compression of SI10 full 939 dimensions), so original complete odd negative index<=470. Remaining acceptance is COMPLETE true corrected finite exceptional Schur S_E9 = P W_o P - (Q W_o P)* (Q W_o Q)^-1 (Q W_o P)>=0 (Q complement has true original floor>17/25000), retaining EVERY signed physical source, pole, low/high and infinite cross term. SM31 genuine positive two-packet G not presumed contained in E9; augmented E9+G dimension<=472 and positive infinity remain, but its true cross not bounded. Compute original full mixed C or direct all 890-source actual pole-conditioned A_star^-1 and classify residual; odd O1/O2 OPEN. Even E1-E4, whole Weil, native CC27/RH OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -785,6 +794,17 @@
         "scripts/validate_rpb108_sm31_two_packet_full_signed_coupling.py"
       ],
       "interpretation": "EXACT TRUE original supported odd signed physical 2x2 quadratic g14.42/g389.56 including fifteen original seven-prime signed-positive whole-real Jensen bands, all 973 original signed negative Fourier leaves, exact original odd pole and mixed cross. Strict determinant if true is 2D-only positive; full 890 and orthogonal remainder O1/O2 remain OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM32-original-parity-cofinite-negative-index-schur",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm32_parity_cofinite_odd_schur.py"
+      ],
+      "interpretation": "Replays SI10 entire original signed seven-prime real-frequency protected cover and b9 Taylor physical source, parity-compacts full 939 source to <=470 original odd source, original Q_odd>=17/25000 on true entire odd orthogonal infinite complement so genuine odd negative index<=470. Includes correct-sign entire coupled Feshbach E9 470 acceptance and augmented original SM31 2D G cross budget; all full original W-ODD-NEG O1/O2 remain OPEN.",
       "cadence": "per-update"
     }
   ]
