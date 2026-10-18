@@ -189,9 +189,10 @@ def run():
     # fail-closed PS33 assertion would reject valid PS34.
     ps33.ps32.ps31.ps30.ps29.ps28.run()
     assert all(v>0 for v in ps33.ps32.ps31.ps30.regression())
-    _,_,_,improvement=ps33.optimize_dyadic(
-        ps33.ps32.exact_original_analytic_constants()[1]
-    ) if False else (None,None,None,None)
+    T,M,jsym=ps33.ps32.exact_original_analytic_constants()
+    assert T>0 and M>0 and jsym>0
+    p24,p25,p26,overlap,optimized,improvement=ps33.optimize_dyadic(M)
+    assert optimized>0 and improvement>1 and p25>p24
     gov=json.loads((ROOT/"research/obligations.json").read_text())
     lane=json.loads(
         (ROOT/"research/parallel_investigations/w_physical_shift.json").read_text())
