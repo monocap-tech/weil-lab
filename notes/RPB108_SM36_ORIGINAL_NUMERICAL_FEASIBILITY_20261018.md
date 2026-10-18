@@ -89,3 +89,33 @@ Interpretation:
 **Important honesty:** An apparent generalized eigenvalue above \(51/56\) here is also **not** a rigorous obstruction to positivity of the original operator: it could reflect the 890-source upper cap, a low-dimensional Galerkin reference, missing residual corrections, or numerical quadrature error. A value below \(51/56\) is **not** a proof either.
 
 **SM37** should prioritize: (i) a rigorous analytic representation and certified tail for the original unbounded archimedean positive Fourier form; (ii) verified physical Gram/source coordinate conditioning and pole-resolvent interval; (iii) a useful frequency-weighted **strong residual** with actual original \(A_o\), then (iv) scale to all 470 odd source generators only if proven feasible. No guarantee of RH is claimed.
+
+
+## 5. First actual original numerical pilot — reported measurements (run 39166845041, PASSED)
+
+The GitHub Actions pilot ran the **actual SI10 source formulas**, selected **25 real original supported odd source directions**, computed the **original 107-block/890-column physical overlap and moment-cap response**, and uploaded the JSON diagnostic artifact. The original multiplier sign anchors matched their previously certified sign directions; the *exploratory double-precision* numerical measurements were:
+
+| Pilot quantity | 4096 physical / ×4 FFT | 8192 physical / ×4 FFT | 8192 physical / ×8 FFT |
+|---|---:|---:|---:|
+| Original selected physical source count | 25 | 25 | 25 |
+| Physical source Gram condition | 115.599 | 115.601 | 115.601 |
+| Sampled pole-free positive stiffness condition | 676.284 | 676.070 | 687.503 |
+| Parseval grid consistency relative error | \(1.16\times10^{-15}\) | \(1.24\times10^{-15}\) | \(7.59\times10^{-16}\) |
+| Trial pole denominator \(\tau_V\) | 0.640678 | 0.640693 | 0.633099 |
+| Direct vs Sherman–Morrison finite pole solve difference | \(7.17\times10^{-15}\) | \(2.77\times10^{-15}\) | \(9.10\times10^{-15}\) |
+| Sampled original pole-restored smallest generalized trial stiffness eigenvalue | 0.452711 | 0.452713 | 0.443207 |
+| Complete original SM10 **cap** sampled trial generalized eigenvalue max | **10.68820** | **10.68820** | **10.86386** |
+| Cap vs sampled direct negative matrix relative Frobenius difference | **8.309** | **8.309** | **8.415** |
+| Original cap columns / covariance blocks | 890 / 107 | 890 / 107 | 890 / 107 |
+| Original exact-formula \(\eta\) included in float cap | \(3.01436\times10^{-10}\) | same | same |
+
+**Interpretation and critical practical redirection:**
+- The selected original source space is **not ill-conditioned enough to explain current failure**: physical Gram \(\sim116\), sampled stiffness \(\sim680\). This does NOT establish conditioning for all 470 source directions, which could be much worse.
+- The Sherman–Morrison **algebra and implementation** agree within floating roundoff on the selected finite trial. The *true infinite-dimensional pole correction* remains separately certified only by SI29.
+- The negative 890-source **upper-cap trial** has generalized max \(\sim10.7\)-10.9, far **above** SM34's sufficient true generalized threshold \(\theta=51/56\approx0.911\). This **does not prove that the true original odd operator is indefinite**; it is a very conservative cap tested on incomplete, sampled Galerkin solutions and lacks the actual strong residual.
+- The conservative cap is numerically substantially larger than the **direct sampled original negative-frequency matrix**, relative Frobenius discrepancy \(>8\). Thus blindly tightening the \(10^{-12}\)-scale positive-resolvent scalar residual would **not** be a sensible first use of compute. The cap's sharpness and direct-negative physics must be separated.
+- Doubling physical resolution at fixed padding barely changes the spectral metric here, whereas **doubling Fourier zero padding** shifts the cap generalized eigenvalue from 10.688 to 10.864 and the finite pole denominator from 0.64069 to 0.63310. This diagnoses finite-frequency quadrature/aliasing sensitivity. More stringent independent padding convergence and a rigorous Fourier-grid integration/tail enclosure are needed.
+
+The original \(m(\xi)=\Re\psi(1/4+i\pi\xi)-\log\pi+\text{seven signed prime terms}\) has logarithmic positive high-frequency growth. None of the above sampled values constitutes a complete original \(A_o\) form, a verified \(A_o^{-1}\), or a rigorous high-frequency tail approximation. The Parseval consistency check verifies FFT bookkeeping **only**.
+
+**Immediate next computation:** the pilot implementation is being extended to report the **direct sampled negative-frequency generalized maximum** next to the conservative 890-cap maximum on the *same* selected trial. That isolates cap inflation from sample-space spectral difficulty. If the direct-negative trial also exceeds \(51/56\), enlarge/recondition the *actual Galerkin trial* and refine the original positive-frequency quadrature; if the direct-negative trial is low but the cap remains high, sharpen original negative cap weights with signed real-frequency subcell enclosures or a complete negative-frequency-weighted inverse error rather than overrefining the positive solve. Either way, the **complete 470D original interval Loewner** remains unmeasured.
