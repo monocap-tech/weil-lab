@@ -49,3 +49,81 @@ For **every nonzero form-admissible six-window vector**, not just piecewise cons
 }
 \]
 The six-window carrier is infinite-dimensional and reflection-invariant. This is genuine original **unshifted source-eliminated Schur positivity** on an *enlarged connected-by-arch and connected-by-prime* module, valid in both parities. It does NOT imply a comparable global Schur gap; the RC315 even low mode precludes a global lower gap larger than 0.041.
+
+## II. The exact original signed Schur AFTER eliminating all six windows
+
+Inside the original PS15 source complement \(C\), denote the just-proved-positive six-window carrier by \(W=L^2(\mathcal W)\) and the **actual uncovered complement** by \(R_*=L^2(C\setminus\mathcal W)\). The PS15 truncated-kernel/Carleman sharp projector proof applies to **each of these six real interfaces**; hence the full original physical form domain splits as
+\[
+\mathcal D_C=(\mathcal D_C\cap W)\oplus(\mathcal D_C\cap R_*).
+\]
+The already source-eliminated signed Schur form is \(\mathfrak S_C=Q_C-T_C\). Let \(A_W\) be its restricted strictly positive self-adjoint operator on \(W\); Part I proves \(A_W>7/6\). Its inverse is compact by original physical logarithmic Fourier-energy compact embedding and bounded perturbations, including the original compact source response \(T_C\).
+
+The WHOLE true \(W/R_*\) mixed operator of this **source-eliminated** Schur is
+\[
+\widetilde B=B^{Q}_{W,R_*}-1_W T_C1_{R_*}.
+\]
+The FIRST term retains every original nonlocal digamma W/rest interaction, all seven physical W/rest prime translations and the TWO signed poles; the SECOND retains the complete compact thirteen-source-mediated interaction. Neither is discarded.
+
+Source-rational conservative operator envelopes:
+\[
+\begin{aligned}
+\|B^{Q}_{W,R_*;\rm arch}\|&<6
+&&\text{(six two-sided Carleman outputs)},\\
+\|B^{Q}_{W,R_*;\rm prime}\|&<71/10
+&&\text{(all seven genuine prime powers)},\\
+\|B^{Q}_{W,R_*;\rm poles}\|&<1
+&&\text{(both original signed poles)},\\
+\|1_W T_C1_{R_*}\|
+&\le\|B_{P,W}\|\|A_P^{-1}\|\|B_{P,R_*}\|\\
+&<\frac{31}{100}\frac{1000}{323}\frac{67}{4}<17.
+\end{aligned}
+\]
+Thus \(\|\widetilde B\|<311/10<32\). The original physical W/rest arch output bound uses the same genuine \(1/(2(s+t))\) interface singularity and regular tail as PS15.
+
+**Crucially this is NOT compact in physical \(L^2\).** Choose normalized adjacent \(\epsilon\)-step indicators on opposing sides of one window/rest internal boundary. They converge weakly to zero. Their *original* arch mixed form tends to \(-\log2\); all seven genuine prime shift correlations vanish if \(2\epsilon<\log2\), and both signed pole terms are \(O(\epsilon)\). Because \(T_C\) is compact on \(L^2(C)\), its matrix element on this weakly-null sequence tends to zero. Therefore
+\[
+\boxed{\|\widetilde B\|_{\rm essential}\ge\log2>0.69.}
+\]
+One cannot approximate the raw original coupling in unweighted physical operator norm by arbitrarily accurate finite-rank matrices.
+
+However the **nested positive energy-dual penalty** is compact:
+\[
+\boxed{T_{R_*}^{(2)}
+=\widetilde B^* A_W^{-1}\widetilde B\ge0,\quad
+\text{compact},\quad
+\|T_{R_*}^{(2)}\|
+<\frac{32^2}{7/6}=\frac{6144}{7}<878.}
+\]
+The upper bound is too large to imply residual positivity. The complete **correct signed residual** is
+\[
+\boxed{
+\mathfrak S_{R_*}[r]
+=\mathfrak S_C[r]-\langle r,T_{R_*}^{(2)}r\rangle,
+\quad r\in\mathcal D_C\cap R_*.
+}
+\]
+For every original physical \(p\in\mathcal D_P,\ w\in\mathcal D_C\cap W,\ r\in\mathcal D_C\cap R_*\), the EXACT twice-completed-square identity reads
+\[
+\begin{aligned}
+Q[p+w+r]
+&=\|A_P^{1/2}(p+A_P^{-1}B_{PC}(w+r))\|^2\\
+&\qquad+\|A_W^{1/2}(w+A_W^{-1}\widetilde Br)\|^2
++\mathfrak S_{R_*}[r].
+\end{aligned}
+\]
+All operators refer to the SAME original zero-extended physical form, including full prime, arch and signed pole source. Thus
+\[
+\boxed{Q\ge0\ \text{on its complete original physical domain}
+\iff \mathfrak S_{R_*}\ge0\ \text{on its true uncovered residual domain}.}
+\]
+**This is an exact equivalence, NOT a certification that the residual has the required sign.**
+
+## III. Consequences and custody
+
+The four-window module of PS19 has been **strictly enlarged** to an interacting six-window module and a TRUE whole-domain second-level Schur now records precisely how it couples to the remainder. This is directly responsive to the main obligation of assessing *cross-module* interactions, rather than collecting isolated positive tests.
+
+The residual contains noncompact digamma seams, genuinely nonzero prime connections, and energy-dual source and six-window penalties. Its sign is open; the conservative penalty bound \(<878\) is far too weak. A new proof needs a sharper source- and six-window-energy estimate, gap-compatible with the RC315 even necessary upper ceiling below 0.041, or a certified negative witness.
+
+**Next PS21:** sharpen the full original energy-dual \(W/R_*\) response, particularly physical seams, and construct a sign-relevant residual low-energy Gram/Feshbach without PS17's exponential spectral enumeration. Independent CC27 D-Riesz norm/domain attachment and external mathematical audit are mandatory before W-ODD-NEG, W-EVEN-FORM or RH promotion.
+
+**Replay:** \`python3 scripts/validate_rpb108_ps20_sixwindow_nested_schur.py\` reruns PS19→...→RC315 true original source; explicitly checks 1092 source/window signed prime-shift configurations, 15 window/window digamma interactions, two genuine \(\log2\) edges, all 78 source/window arch distances, both original signed poles and source energy inverse, conservative W/rest all-prime/Carleman/pole/source coupling, full original form-domain custody and exact Schur minus sign. GitHub Actions validates the rational gates; it is not an independent formal proof of all analytic operator identities.
