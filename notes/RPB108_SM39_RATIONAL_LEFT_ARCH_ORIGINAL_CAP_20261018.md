@@ -98,3 +98,56 @@ Independently, the real original positive \(A_o\) digamma logarithmic high-frequ
 **Custody:** no original W-ODD-NEG O1/O2 sign certificate, original even E1–E4 positivity, whole Weil positivity, native CC27 D-Riesz or RH promotion. Exact rational interval tests still require independent original Fourier/closed-form-domain analysis.
 
 Replay: \`python3 scripts/validate_rpb108_sm39_rational_left_arch_cap.py\`; output in \`artifacts/sm39_original_rational_left_arch_cap.json\` keeps source-certified rational values separate from **NONCERTIFYING** sampled pilot Ritz.
+
+
+## First SM39 fully scoped exact-rational outcome — real breakthrough in cap efficiency
+
+The initial focused GitHub Actions run **39173765061 PASSED** on the original SI10/SM37 **3892 rational signed-real frequency subcells**, original complete seven-prime SI06 signed midpoint bounds, rational SI07 left-endpoint digamma arch, all 107 original cluster moment covariances, **all 890 exact rational SPD LDL pivots**, and the full original 24-bit Taylor-infinite residual.
+
+| Whole-original signed-negative cap quantity | SM37 | SM39 | Improvement |
+| --- | ---: | ---: | ---: |
+| **Original complete signed envelope mass** | 27.227999359375 | **18.73146440625** | **−8.496534953125 (−31.205%)** |
+| True entire Taylor error residual η | 2.181335594123035e−10 | **1.500646797442107e−10** | **−31.205%** |
+| Strictly improved signed-real subcells | — | **2728 of 3892** | Original certified genuine real intervals |
+| Physical sine-Taylor source columns | 890 | **890 unchanged** | No dropped source directions |
+| Entire rational covariance LDL pivots | 890 | **890 strict positive** | Every original cross paid |
+
+The original full-negative **operator-level** enclosure strengthens:
+\[
+0\preceq K_{\neg,o}
+\preceq\widehat K_{\rm SM39}
+\preceq\widehat K_{\rm SM37}
+\preceq\widehat K_{\rm SM10}.
+\]
+SM39's strict full signed cap weight reduction is a rational operator-certificate outcome (conditional on inherited true original Fourier/domain premises), not a sampled eigenvalue. Following this first PASS, the validator was strengthened to require **exact Fraction**:
+\[
+\boxed{
+T_{39}<\frac{7}{10}T_{37},\qquad
+T_{37}-T_{39}>8,\qquad
+\#\{\text{strictly improved true subcells}\}>2700.
+}
+\]
+Those are **new final-head** checks whose separate CI rerun must be verified.
+
+### SAME original 25-source selected trial — spectacular spectral response
+
+| Generalized spectral maximum, same selected approximate original 25-source \(A_*\)-Galerkin solve | Grid 4096, pad×4 | Grid 8192, pad×8 |
+| --- | ---: | ---: |
+| **SM38 direct source-analytic leafwise original true-formula Kneg** | 0.964650 | 0.972929 |
+| SM37 old original certified signed-envelope-only | 9.817182 | 9.975612 |
+| **NEW SM39 original certified signed-envelope-only** | **1.109610** | **1.125944** |
+| SM37 old full 890-source covariance/Young cap | 9.826764 | 9.985352 |
+| **NEW SM39 full 890-source covariance/Young cap** | **1.110693** | **1.127044** |
+| True **sufficient 470-source** acceptance \(\theta=51/56\) | 0.910714 | 0.910714 |
+
+The SM39 full 890-source cap selected-source generalized maximum is **88.70% lower** than SM37 in the SAME sampled trial. This is a much larger source-weighted gain than its 31.2% global mass reduction, emphasizing the value of **original-frequency-specific** rigorous arch estimates.
+
+The SM39 trial cap is now only about **1.151×** (4096) / **1.158×** (8192) the SAME SM38 leafwise direct selected-source negative response, rather than SM37's ≈10.2×. The **remaining discrepancy is a practical local certificate target**, not a proof that the whole odd operator has crossed its critical generalized spectral gate. Both the selected direct \(\sim0.965–0.973\) and its new conservative cap \(1.11–1.13\) remain ABOVE the sufficient threshold \(51/56\sim0.911\). The SM34 gate itself is sufficient, not necessary; failure does **not** establish original Wodd negativity.
+
+The sampled new moment cap minus envelope-only matrix had a small negative minimal eigenvalue \(-3.70\times10^{-6}\) at grid4096 and \(-2.16\times10^{-7}\) at grid8192. This is a **numerical physical-grid quadrature discrepancy**, consistent with SM38; the strict true original rational pointwise cap / whole-form Loewner order was proved independently under inherited premises. **Do not promote these sampled eigenvalues to certified original spectrum**.
+
+### SM40 now has a better-informed target
+
+Further improvement should attack the residual **~15–16% original cap-to-direct selected-source inflation** by refining the **SI06 original seven-prime derivative allowance 69** to rigorous *local* derivatives on each original rational signed subcell, with exact log/π/√n sin/cos ranges and complete real interval coverage. That may improve the full accepted negative cap without modifying the original 890 sine-Taylor source factoring. In parallel, certify the original positive archimedean logarithmic high-frequency tail and actual all-470 source pole-conditioned \(A_*\) inverse strong residual. No substitute 25-source Ritz sample may close complete O1/O2, even E1–E4, whole signed Weil, CC27 or RH.
+
+**Run status:** first genuine-source exact-rational cap and sample benchmark CI 39173765061 PASSED. Post-run strengthened exact-source and scoped numerical thresholds **require an independent final-head CI replay**, which must be reported accurately.
