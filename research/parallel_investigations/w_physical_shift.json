@@ -8,7 +8,7 @@
   "active_frontier_unchanged": "W-ODD-NEG",
   "first_checkpoint": "PS01",
   "first_checkpoint_claim": "Exact supported signed physical difference-energy identity; independently recalculate the archimedean P0/P1 difference integrals and compare certified original signed diagonals against RC315",
-  "proof_standing": "PS30 develops an exact ORIGINAL pole-free even Schur weighted ground-state transform conditional on standard ground-state irreducibility and domain-core facts: PS28 A0 inverse cone positivity and negative original source/complement B0 yield source-mediated R=B0* A0^-1 B0 positivity preserving on the even cone, so the true ground-shifted form splits into nonnegative digamma jump, all 7 original prime jumps, and nonnegative source-mediated jump terms. The uncomputed second eigenvalue sign becomes a weighted nonlocal Poincare lower threshold >=|lambda0|>4.359740. The original uniform k>=3/10 combined only with an unproved L∞ ground bound cannot certify that threshold: the resulting conditional constant-floor lower certificate is <=33/50<0.66. No lambda1, pole-angle Delta, actual weighted Poincare coefficient, W-ODD-NEG/W-EVEN-FORM/whole Weil/CC27 D-Riesz/RH closure. Focused Fraction regression and independent functional-analysis audit outstanding.",
+  "proof_standing": "PS31 develops exact original EVEN ground-state digamma positive exponential layers k(u)=sum_j exp(-(2j+1/2)u), sharp reflection quotient kernel k(|x-y|)+k(x+y), and a rigorous CONDITIONAL finite q-cell weighted graph/within-cell variance Loewner certificate for second even gap >=rho once TRUE normalized ground phi0 mass and W_N=K_N/(2phi0(x)phi0(y)) physical lower entries are evaluated. R and 7 original prime transformed jump terms remain nonnegative but not numerically measured. Strict original first-order parity kernel floor bound 4/7<k(B)<24/35 and even global scalar-floor guaranteed certificate ceiling <264/175 cannot reach necessary |lambda0|>4.359740. Source-pinned true original crude spectral envelope also certifies |lambda0|<1406: need a gap bound at least actual |lambda0|, not merely 4.359740. Exact rational finite toy models are not actual original second eigenvalue or pole angle; analytic ground-cone/form-core review open, W-EVEN-FORM/W-ODD-NEG/RH OPEN.",
   "existing_work_to_reuse": [
     "RC313 original CC27 prime and pole distribution",
     "RC315 true zero-extended autocorrelations and signed P0/P1 witness",
@@ -23,8 +23,8 @@
   ],
   "promotability": "requires an independently certified original-operator inequality or useful coupled finite Schur improvement, not dimension reduction or positive sample alone",
   "next_obligations": [
-    "PS31 scoped to the ORIGINAL seven-prime even pole-free Schur: certify a true weighted nonlocal Poincare constant on genuine source complement for actual positive ground phi0 with full short-distance digamma kernel, 7 prime edges and source-mediated nonlocal jump. Prove lambda1>=0 or exhibit a true original second negative eigenmode; the mere constant-k lower cannot suffice. Then resolve PS29 effective d nullspace and alpha/Delta coherent pole angle.",
-    "Canonical W-ODD-NEG remains the primary active obligation and is not demoted by the explicitly scoped PS continuation; independently audit PS28 source cone, PS29 ground-state compactness, PS30 positive-semigroup irreducibility, and native CC27 D-Riesz transfer prior to full Weil/RH promotion."
+    "PS32 explicitly scoped: compute TRUE original even pole-free ground eigenvector phi0 physical mass enclosures on C+ and certified lower kernel W_N entries (and original seven-prime/source contributions if feasible), then test finite graph Poincare Loewner and sharpen |lambda0| upper. Failure of graph sufficient bound is NOT failure of lambda1>=0. The exponential layer sum is positive, not a spectral sign proof.",
+    "Independent review and possible stronger short-range weighted singular-kernel intra-cell coercivity or alternative one-negative-index certificate if finite graph is uncompetitive. PS29 still requires nullspace/effective d overlap, Delta and alpha coherent pole-angle after lambda1 >=0. Canonical W-ODD-NEG still primary obligation; original Weil, CC27 D-Riesz and RH OPEN."
   ],
   "replay": "python3 scripts/validate_rpb108_ps01_physical_difference_form.py",
   "canonical_object": "original signed seven-prime physically supported Weil quadratic form, including both rank-one poles",
@@ -271,6 +271,14 @@
       "note": "notes/RPB108_PS30_GROUND_STATE_GAP_20261018.md",
       "replay": "python3 scripts/validate_rpb108_ps30_ground_state_gap.py",
       "limitation": "Actual phi0 and full weighted Poincare minimum not evaluated, lambda1 sign unresolved, no effective pole Delta/coherent scalar, no original odd sign, CC27 D-Riesz, W-ODD-NEG, W-EVEN-FORM, original complete signed Weil or RH closure. Ground irreducibility and transformed form-core require independent functional analysis review."
+    },
+    {
+      "id": "PS31",
+      "scope": "Actual original even PS30 pole-free Schur ground transform has exact positive digamma exponential layers k(u)=sum_{j>=0} exp(-(2j+1/2)u); even reflection quotient is K(x,y)=k(|x-y|)+k(x+y) for x,y in true physical C+. Layerwise inequality K_N>=2k_N(B) sharpens uniform parity floor. Certified Taylor rational 4/7<k(B)<24/35 yields any conditional L∞ uniform-floor-only gap certificate <264/175, far beneath necessary |lambda0|>4.359740. Exact finite q-cell weighted graph gate based on TRUE original mu=2phi0² dx and W_N=K_N/(2phi0(x)phi0(y)): if min_i sum_j w_ij mu_j>=rho and G-rho(diag mu−mu muT)>=0, then lambda1−lambda0>=rho. Actual physical phi0/mu_i/w_ij not evaluated; rational toy finite regression only. Source-pinned full V_C bound -13, PS27 cross/source A0 and removed even pole yield TRUE original coarse spectral envelope |lambda0|<1406; necessity 4.359740 not sufficient acceptance alone.",
+      "status": "Scoped original even analytic reflection/exponential decomposition and exact conditional finite weighted graph Loewner variance formula, with exact Fraction toy regression and source-constant bounds; focused Actions/independent proof audit pending. No actual original lambda1 or physical graph weights calculated.",
+      "note": "notes/RPB108_PS31_EVEN_MULTISCALE_GAP_20261018.md",
+      "replay": "python3 scripts/validate_rpb108_ps31_even_multiscale_gap.py",
+      "limitation": "No certified physical ground phi0 L∞/bin masses/local spectral envelopes, no measured w_ij, no original second spectral sign, effective-pole Delta or alpha scalar, no even/odd original signed Weil positivity, CC27 D-Riesz or RH closure."
     }
   ]
 }
