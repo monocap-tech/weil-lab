@@ -88,3 +88,25 @@ The complete odd-operator acceptance requires the true \(W_o\succeq0\) on the **
 **SM31 acceptance-directed:** use the remote-original signed band coverage to assemble a genuinely complete positive-frequency covering and all mixed physical source Grams, or derive a direct complete original pole-conditioned \(A_*^{-1}\) spectral estimate. The existing original SM10 107-block 890-column negative cap is the unmodified acceptance carrier. If the remote whole-negative replay is conservative, sharpen its **global** Fourier estimate before adding more one-direction positive source bands.
 
 Replay: \`python3 scripts/validate_rpb108_sm30_remote_original_positive_rescue.py\`. All decisions use exact \`Fraction\` comparisons, not decimal displays; focused Actions and independent infinite-dimensional/signed-original identification audit are separate.
+
+
+## 5. ACCEPTED focused replay — true original full signed odd single-vector margin
+
+Initial focused Actions run **39156447242 PASS** on the source head preceding the explicit 1/10 acceptance promotion. The exact original arithmetic outputs (decimals are DISPLAY ONLY of exact rational bounds) were:
+
+| Original g at signed-negative center 389.56 | Rigorous one-vector bound |
+|---|---:|
+| True original signed m minimum on [389.35,389.41] | > 4.872627963 |
+| True original signed m minimum on [389.72,389.78] | > 6.003843810 |
+| Actual original positive physical contribution, left J | > 0.1614074978 |
+| Actual original positive physical contribution, right J | > 0.1506562825 |
+| Total **genuine original positive A_o lower** (two new whole bands) | > **0.3120637804** |
+| **Entire** original signed seven-prime negative \(K_{\neg,o}\) physical quadratic upper (all 973 leaves) | < **0.2076067268** |
+| Entire original negative odd pole quadratic upper | < **0.00000185836** |
+| **Full TRUE ORIGINAL signed odd** quadratic lower on this physical \(g\) | > **0.1044551953** |
+
+The follow-up source revision makes the exact (not decimal) comparison
+\[
+\boxed{\langle g,W_o g\rangle>\frac1{10}}
+\]
+a **mandatory exact-rational assertion**. This is stronger than a surrogate positive-reference assertion: the actual original negative seven-prime operator has been globally upper-bounded on this one vector, and the true negative odd pole has been paid in full. The positivity result is only for the original **one-dimensional** span \(\mathbb Rg\); it is *not* O1/O2, not an assertion about \(g^\perp\), the entire original 890-source negative cap inverse, or the native CC27-to-RH transfer. Independent review of inherited Fourier and domain identifications remains mandatory.
