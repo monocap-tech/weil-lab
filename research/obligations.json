@@ -16,7 +16,8 @@
     "complete_operator_odd_acceptance": "Preserve PS36 typed positivity and composition: W-ODD-NEG O1/O2 cannot close from SM25 2-source or other componentwise finite operators; only the full original odd physical signed operator with ALL negative-frequency, pole, source, cross and infinite residual terms certified may discharge it.",
     "full_cap_reference_nogo": "SM26: unchanged B14 SI29 full original 890-source surrogate Schur index>=3. SM27: unchanged expanded C33 890-source positive-only surrogate Schur index>=1 by true original signed packet. Both are METHOD no-go; true full original Ao and Astar signed odd operator sign remains unclassified. No rank increase or componentwise test promotes O1/O2.",
     "positive_continuum_decomposition": "SM28: true 13 continuous positive-frequency bands decomposed into exact 26 original Legendre moments plus strictly positive infinite-rank tail. SM29: even keeping the ENTIRE infinite-frequency positive continuum of those 13 windows and full original SI29 pole-conditioned B14, a true remote 389.56 original negative packet yields strict >3/200 deficit and full 890-source surrogate negative index>=1. Thus frequency COVERAGE is a separate required acceptance dimension: no local Legendre-order increase repairs the unchanged band selection. TRUE Astar may be larger; original O1/O2 complete odd form stays OPEN, no surrogate promotion.",
-    "remote_frequency_coverage": "SM30: two genuine original whole-real signed-positive frequency intervals [389.35,389.41] and [389.72,389.78] restore positive continuum near original negative packet 389.56, with exact original physical >0.312063 positive response. Entire original signed-negative Kneg over all 973 leaves (<0.207607 on same g) plus true original negative odd pole (<1.859e-6) yield exact original full signed form W_o(g)>1/10 on ONE physically supported original Jensen source; no whole odd O1/O2 890 source/cross/orthogonal residual, whole signed Weil or RH promotion."
+    "remote_frequency_coverage": "SM30: two genuine original whole-real signed-positive frequency intervals [389.35,389.41] and [389.72,389.78] restore positive continuum near original negative packet 389.56, with exact original physical >0.312063 positive response. Entire original signed-negative Kneg over all 973 leaves (<0.207607 on same g) plus true original negative odd pole (<1.859e-6) yield exact original full signed form W_o(g)>1/10 on ONE physically supported original Jensen source; no whole odd O1/O2 890 source/cross/orthogonal residual, whole signed Weil or RH promotion.",
+    "coupled_original_odd_scope": "SM31: true ORIGINAL signed odd full 973 negative-frequency leaves, 15 signed-positive real-band Jensen source responses and full original pole charged on the GENUINE 2D physical span of g14.42,g389.56. Exact positive 2x2 determinant>4/1000 and original physical L2 coercivity Q_o[f]>1/176||f||² on this 2D span; all 890 other source modes, full orthogonal remainder/cross and PS36 O1/O2 remain OPEN. No promotion to signed whole Weil/CC27/RH."
   },
   "active_obligation": "W-ODD-NEG",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -306,6 +307,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/211",
       "repo_path": "notes/RPB108_SM30_REMOTE_ORIGINAL_POSITIVE_RESCUE_20261018.md",
       "verification": "SM30 first source PR Actions run 39156447242 PASS with full original 973 negative leaves, both true positive intervals and odd pole, computed rational lower margin about 0.1044551953. Updated validator makes actual original <g,W_o g>>1/10 exact Fraction mandatory; updated source-head rerun pending. Independent analytic review pending."
+    },
+    "SM31": {
+      "kind": "Accepted scoped TRUE ORIGINAL entire seven-prime signed odd TWO-DIMENSIONAL coupled coercivity, physically supported, all 973 negative leaves/mixed source and original odd pole charged",
+      "scope": "Original genuine supported odd physical 2D span of g14.42 and g389.56: original 15 signed-positive whole-real Jensen bands give diagonals >0.666674 and >0.312063 and signed cross upper <0.014056; entire true original 973-leaf signed Kneg gives separate diagonals <0.619741 and <0.207607 and fully coupled entire negative mixed cross <0.003927, original odd pole diagonals <0.000156959 and <0.000001859 and pole mixed <0.00001714. Combined true ORIGINAL signed form full 2x2 lower d1>9/200, d2>1/10, M<19/1000, det>4/1000. Thus Q_o[a*g14.42+b*g389.56]>1/40*(a²+b²)>=1/176*||a*g14.42+b*g389.56||² on this ACTUAL 2D physical subspace. PS36 O1/O2 original complete odd full 890-source/orthogonal residual, even E1-E4, full Weil and RH OPEN.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/212",
+      "repo_path": "notes/RPB108_SM31_TWO_PACKET_FULL_SIGNED_COUPLING_20261018.md",
+      "verification": "First SM31 focused Actions 39157529845 PASS, full original signed 2x2 exact Fraction determinant decimal about 0.004562085372. Updated source makes simplified exact rational determinant >4/1000 and 2D physical norm spectral lower >1/176 mandatory; final-head focused Actions rerun pending. Independent inherited whole signed original Fourier/physical domain review required."
     }
   },
   "obligations": [
@@ -371,10 +379,11 @@
         "SM27",
         "SM28",
         "SM29",
-        "SM30"
+        "SM30",
+        "SM31"
       ],
       "acceptance": "PS36 complete-operator O1/O2 gate: prove ORIGINAL supported full odd signed W_o=A_o-2|s><s|−K_neg,o >=0 on full physical domain, equivalently R_o (A_o-2|s><s|)^-1 R_o*<=I on entire true original negative-frequency carrier, with all original positive/negative cross couplings and infinite residual (or exact original full source-first odd Schur). A 2-column principal inverse block from SM25 or 890-column partial modules are NOT full-operator acceptance.",
-      "next_action": "SM31 canonical W-ODD-NEG PS36 full original O1/O2: SM30 certifies an actual TRUE original complete seven-prime signed odd form positive on the remote 389.56 physical Jensen source with exact lower >1/10, paying all original 973 signed-negative leaves and the genuine negative odd pole. This is ONLY ONE physical Rayleigh direction, not the operator on g^perp, 890 original Taylor negative sources, all source/cross and infinite residual; construct entire original A_star^-1 vs original UDU*+eta Loewner or complete signed spectral Schur including offdiag and infinite residual. Do not infer from one-vector successes or local windows. Original E1–E4, Weil, CC27/RH remain OPEN."
+      "next_action": "SM32 canonical W-ODD-NEG PS36 O1/O2: SM31 now gives a genuinely ORIGINAL full-seven-prime signed odd TWO-PACKET coupled source subspace Q_o[f]>1/176||f||² with all entire 973 signed-negative frequency leaves and complete original pole/cross charged. Do NOT promote this 2D PSD to whole W_o: prove entire orthogonal complement and its coupling with this 2D physical subspace, ultimately original complete 890-source negative-cap/true A_star inverse Loewner with full η and source domain. Consider full Feshbach Schur onto 2D and rigorously certified infinite residual. E1-E4 even, whole Weil, native CC27 D-Riesz, RH stay OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -765,6 +774,17 @@
         "scripts/validate_rpb108_sm30_remote_original_positive_rescue.py"
       ],
       "interpretation": "True original complete signed-positive whole frequency [389.35,389.41] and [389.72,389.78] 2-band operator response on original SM11 389.56 physical Jensen packet >3/10 with all signed physical overlaps. Additionally tests original complete 973-leaf negative odd cap and actual odd pole on same packet, but this remains ONE original vector, not whole odd O1/O2 890-source spectral positivity.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM31-true-original-two-packet-entire-signed-coupling",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm31_two_packet_full_signed_coupling.py"
+      ],
+      "interpretation": "EXACT TRUE original supported odd signed physical 2x2 quadratic g14.42/g389.56 including fifteen original seven-prime signed-positive whole-real Jensen bands, all 973 original signed negative Fourier leaves, exact original odd pole and mixed cross. Strict determinant if true is 2D-only positive; full 890 and orthogonal remainder O1/O2 remain OPEN.",
       "cadence": "per-update"
     }
   ]
