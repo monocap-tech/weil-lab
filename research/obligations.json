@@ -15,7 +15,8 @@
     "no_automatic_promotion": true,
     "complete_operator_odd_acceptance": "Preserve PS36 typed positivity and composition: W-ODD-NEG O1/O2 cannot close from SM25 2-source or other componentwise finite operators; only the full original odd physical signed operator with ALL negative-frequency, pole, source, cross and infinite residual terms certified may discharge it.",
     "full_cap_reference_nogo": "SM26: unchanged B14 SI29 full original 890-source surrogate Schur index>=3. SM27: unchanged expanded C33 890-source positive-only surrogate Schur index>=1 by true original signed packet. Both are METHOD no-go; true full original Ao and Astar signed odd operator sign remains unclassified. No rank increase or componentwise test promotes O1/O2.",
-    "positive_continuum_decomposition": "SM28: true 13 continuous positive-frequency bands decomposed into exact 26 original Legendre moments plus strictly positive infinite-rank tail. SM29: even keeping the ENTIRE infinite-frequency positive continuum of those 13 windows and full original SI29 pole-conditioned B14, a true remote 389.56 original negative packet yields strict >3/200 deficit and full 890-source surrogate negative index>=1. Thus frequency COVERAGE is a separate required acceptance dimension: no local Legendre-order increase repairs the unchanged band selection. TRUE Astar may be larger; original O1/O2 complete odd form stays OPEN, no surrogate promotion."
+    "positive_continuum_decomposition": "SM28: true 13 continuous positive-frequency bands decomposed into exact 26 original Legendre moments plus strictly positive infinite-rank tail. SM29: even keeping the ENTIRE infinite-frequency positive continuum of those 13 windows and full original SI29 pole-conditioned B14, a true remote 389.56 original negative packet yields strict >3/200 deficit and full 890-source surrogate negative index>=1. Thus frequency COVERAGE is a separate required acceptance dimension: no local Legendre-order increase repairs the unchanged band selection. TRUE Astar may be larger; original O1/O2 complete odd form stays OPEN, no surrogate promotion.",
+    "remote_frequency_coverage": "SM29 full original 13-band positive continuum around 14 fails at original remote 389.56 negative packet. SM30 certifies genuine whole-real positive seven-prime continuum [389.35,389.41] and [389.72,389.78] near remote true original negative 389.56 and positive physical response >3/10 on that packet, and audits entire negative frequencies and odd pole on same vector. This is NOT complete original W-ODD-NEG O1/O2 and cannot alter full Weil/RH without complete actual A_star inverse 890-source spectral acceptance."
   },
   "active_obligation": "W-ODD-NEG",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -298,6 +299,13 @@
       "pr": "pending draft PR",
       "repo_path": "notes/RPB108_SM29_HIGH_FREQUENCY_FULL_CONTINUUM_NOGO_20261018.md",
       "verification": "Exact Fraction original SM11 full 17 negative real bands, original SI29 source degree0/1 fourteen features and 12 intervals, original SM14 all 13 continuous signed-positive windows and total delta35, uniform physical sinc/sine high-frequency remote bound and strict deficit >3/200, original full SM10 107/890/eta, finite FULL coupled block Schur inertia. Focused Actions/independent mathematical review pending; no original odd full sign theorem."
+    },
+    "SM30": {
+      "kind": "True original additional sign-positive real frequency continuum at remote 389.56 negative packet with entire seven-prime negative and exact odd pole single-vector audit",
+      "scope": "Original SM11 physically supported remote signed-negative true Jensen packet g389.56. Two NEW disjoint original all-real signed-positive intervals [389.35,389.41] and [389.72,389.78] are proved by exact eight-seven-prime+arch signed 16-cell derivative certificates m>kappa+2. Actual signed original physical sine Gram/true Jensen sinc perturb yields <g,(T_L+T_R)g>3/10 for true full positive within-band continuum operators. Replay independent SM15 entire original negative 973-leaf physical odd Fourier upper on SAME remote g and true negative odd pole before making ANY original signed-positive single-vector conclusion. SM10 entire original 107-block/890-column negative cap retained; no global A_star inverse/odd O1/O2 PSD, full original even E1-E4, whole Weil, native CC27 or RH promotion.",
+      "pr": "pending draft PR",
+      "repo_path": "notes/RPB108_SM30_REMOTE_ORIGINAL_POSITIVE_RESCUE_20261018.md",
+      "verification": "Exact signed original whole-real positive bands and signed physical overlaps, entire original seven-prime negative cap/all 973 leaves and pole on same source, full SM10 890/eta custody. Focused CI pending; analytical original signed Fourier identification requires independent review."
     }
   },
   "obligations": [
@@ -362,10 +370,11 @@
         "SM26",
         "SM27",
         "SM28",
-        "SM29"
+        "SM29",
+        "SM30"
       ],
       "acceptance": "PS36 complete-operator O1/O2 gate: prove ORIGINAL supported full odd signed W_o=A_o-2|s><s|−K_neg,o >=0 on full physical domain, equivalently R_o (A_o-2|s><s|)^-1 R_o*<=I on entire true original negative-frequency carrier, with all original positive/negative cross couplings and infinite residual (or exact original full source-first odd Schur). A 2-column principal inverse block from SM25 or 890-column partial modules are NOT full-operator acceptance.",
-      "next_action": "SM30 PS36 complete O1/O2 (canonical W-ODD-NEG): SM29 proves the TRUE original SI29 B14 plus ENTIRE positive-frequency CONTINUUM on all thirteen SM14 bands around frequency14 (including all infinite Legendre moments) fails at original signed-negative remote packet 389.56 with strict physical margin >3/200, so its FULL 890-source SM10 conditioned surrogate has negative index>=1. Additional Legendre truncation order on these bands cannot change the method no-go. Expand original signed-positive frequency COVERAGE near SM11 high negative windows (SM12 has sign-positive center389.26 but only one Jensen mean); prove all-real sign, true physical cross coupling, odd pole, all negative 890 columns and infinite eta in complete PSD operator. Or work directly with complete actual original Ao inverse, not any lower reference. Do not infer negativity of true W_o from indefinite lower surrogate. W-ODD-NEG O1/O2 OPEN."
+      "next_action": "SM31 canonical W-ODD-NEG original complete operator O1/O2: SM30 adds truly original sign-positive remote continuum near 389.56 [389.35,389.41] and [389.72,389.78] with original full seven-prime m>kappa+2 and supported physical negative-packet positive response >3/10. Existing SM14 13-band local continuum and SM12 remote positive bands alone cannot close global signed odd O1/O2. Construct the COMPLETE original A_star pole-conditioned odd positive-frequency operator response versus ALL 890 original negative source/cross/infinite eta directions; retain full real frequency COVERAGE, not just more local Legendre modes. Check full true operator residual spectral index and no surrogate promotion. E1-E4 even, whole Weil, CC27/RH stay OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -745,6 +754,17 @@
         "scripts/validate_rpb108_sm29_high_frequency_full_continuum_nogo.py"
       ],
       "interpretation": "TRUE original remote negative 389.56 packet versus FULL SI29 pole-conditioned B14+13 original entire positive real continuum bands. Exact uniform physical sign/overlap yields Kneg−F13>3/200 on packet; original SM10 complete 890 source/infinite eta implies entire F13-conditioned surrogate Schur index>=1, NOT true original Astar/Wodd negativity. O1/O2 full operator gate OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM30-true-original-remote-positive-continuum-and-global-negative-witness",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm30_remote_original_positive_rescue.py"
+      ],
+      "interpretation": "True original complete signed-positive whole frequency [389.35,389.41] and [389.72,389.78] 2-band operator response on original SM11 389.56 physical Jensen packet >3/10 with all signed physical overlaps. Additionally tests original complete 973-leaf negative odd cap and actual odd pole on same packet, but this remains ONE original vector, not whole odd O1/O2 890-source spectral positivity.",
       "cadence": "per-update"
     }
   ]
