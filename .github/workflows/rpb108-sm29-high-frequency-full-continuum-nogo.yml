@@ -1,0 +1,38 @@
+name: RPB108 SM29 high frequency remote full positive continuum no-go
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_SM29_HIGH_FREQUENCY_FULL_CONTINUUM_NOGO_20261018.md"
+      - "scripts/validate_rpb108_sm29_high_frequency_full_continuum_nogo.py"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm29-high-frequency-full-continuum-nogo.yml"
+  workflow_dispatch:
+
+jobs:
+  sm29-original-remote-full-continuum:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Real original remote negative frequency packet versus ALL thirteen continuum bands and entire 890 cap
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_sm29_high_frequency_full_continuum_nogo.py
+          python3 scripts/validate_rpb108_sm29_high_frequency_full_continuum_nogo.py
+      - name: Fail closed on original complete odd Weil source/Schur and RH
+        run: |
+          python3 - <<'PY'
+          import json
+          g=json.load(open("research/obligations.json"))
+          assert g["active_obligation"]=="W-ODD-NEG"
+          assert g["objective"]["status"]=="open"
+          assert g["governance"]["no_automatic_promotion"] is True
+          odd=next(x for x in g["obligations"] if x["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open"
+          assert all(s in odd["evidence"] for s in ("SM26","SM27","SM28","SM29"))
+          assert "O1/O2" in odd["acceptance"]
+          assert "positive_continuum_decomposition" in g["governance"]
+          PY

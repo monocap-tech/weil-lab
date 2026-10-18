@@ -15,7 +15,7 @@
     "no_automatic_promotion": true,
     "complete_operator_odd_acceptance": "Preserve PS36 typed positivity and composition: W-ODD-NEG O1/O2 cannot close from SM25 2-source or other componentwise finite operators; only the full original odd physical signed operator with ALL negative-frequency, pole, source, cross and infinite residual terms certified may discharge it.",
     "full_cap_reference_nogo": "SM26: unchanged B14 SI29 full original 890-source surrogate Schur index>=3. SM27: unchanged expanded C33 890-source positive-only surrogate Schur index>=1 by true original signed packet. Both are METHOD no-go; true full original Ao and Astar signed odd operator sign remains unclassified. No rank increase or componentwise test promotes O1/O2.",
-    "positive_continuum_decomposition": "SM28 retains all actual original positive-frequency continuum inside 13 certified signed-positive whole-real windows by Hilbert-valued Legendre Parseval: infinite strictly positive physical covariance tail. Positive tail norm upper <3/10000 is NOT a spectral floor; finite 26+14 source approximation does not alone close original W-ODD-NEG. All original seven-prime odd pole and 890 negative source/cross/infinite residual must be coupled in complete physical O1/O2."
+    "positive_continuum_decomposition": "SM28: true 13 continuous positive-frequency bands decomposed into exact 26 original Legendre moments plus strictly positive infinite-rank tail. SM29: even keeping the ENTIRE infinite-frequency positive continuum of those 13 windows and full original SI29 pole-conditioned B14, a true remote 389.56 original negative packet yields strict >3/200 deficit and full 890-source surrogate negative index>=1. Thus frequency COVERAGE is a separate required acceptance dimension: no local Legendre-order increase repairs the unchanged band selection. TRUE Astar may be larger; original O1/O2 complete odd form stays OPEN, no surrogate promotion."
   },
   "active_obligation": "W-ODD-NEG",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -291,6 +291,13 @@
       "pr": "pending draft PR",
       "repo_path": "notes/RPB108_SM28_POSITIVE_CONTINUUM_LEGENDRE_TOWER_20261018.md",
       "verification": "Focused exact-rational original SM14 whole-real signed positive window/disjoint source and SM15 physical witness, SI29 original pole floor, SM10 original 107-block/890 signed negative cap and p=2 entire infinite Legendre source Taylor tail. Inherited Fourier analytic/entire-function operator positivity requires independent proof audit; scoped CI does not certify full negative-frequency operator positivity."
+    },
+    "SM29": {
+      "kind": "Complete original SM28 thirteen positive-Fourier-band CONTINUUM reference remote-frequency deficit, and complete original SM10 890-source continuum-conditioned surrogate Schur inertia obstruction",
+      "scope": "Genuine original SM11 signed seven-prime whole-real negative Jensen packet at center 38956/100=389.56, physical odd g=sin(2pi c x)sinc(2pi ρx), ρ=1/100. Uniform exact all-real original physical sine Gram decay on every SI29 14-source degree-zero/first moment band and entire thirteen SM14 positive bands (<frequency20) yields |<g,hξ>|<3/1000, including EVERY exact infinite Legendre moment. Original SI29 B14=κI+14 signed-positive features−2ss* and complete original FULL positive continuum T13 then satisfy <g,(Kneg−(B14+T13))g>3/200, with odd pole counted with subtractive sign. Original SM10 full 107-block/890-column cap Kneg≤UDU*+eta I transfers to NEGATIVE INDEX>=1 for whole original 890-source B14+T13−eta conditioned SURROGATE Schur by exact bounded Schur inertia. TRUE original Astar >=B14+T13 may be positive on g via additional original positive frequency windows; full odd W-ODD-NEG O1/O2 and even E1-E4/Weil/RH remain OPEN.",
+      "pr": "pending draft PR",
+      "repo_path": "notes/RPB108_SM29_HIGH_FREQUENCY_FULL_CONTINUUM_NOGO_20261018.md",
+      "verification": "Exact Fraction original SM11 full 17 negative real bands, original SI29 source degree0/1 fourteen features and 12 intervals, original SM14 all 13 continuous signed-positive windows and total delta35, uniform physical sinc/sine high-frequency remote bound and strict deficit >3/200, original full SM10 107/890/eta, finite FULL coupled block Schur inertia. Focused Actions/independent mathematical review pending; no original odd full sign theorem."
     }
   },
   "obligations": [
@@ -354,10 +361,11 @@
         "SM25",
         "SM26",
         "SM27",
-        "SM28"
+        "SM28",
+        "SM29"
       ],
       "acceptance": "PS36 complete-operator O1/O2 gate: prove ORIGINAL supported full odd signed W_o=A_o-2|s><s|−K_neg,o >=0 on full physical domain, equivalently R_o (A_o-2|s><s|)^-1 R_o*<=I on entire true original negative-frequency carrier, with all original positive/negative cross couplings and infinite residual (or exact original full source-first odd Schur). A 2-column principal inverse block from SM25 or 890-column partial modules are NOT full-operator acceptance.",
-      "next_action": "SM29 canonical PS36 O1/O2: genuine ORIGINAL positive continuum recovered at SM28 for thirteen disjoint positive signed-frequency intervals, as exact whole infinite Legendre towers; true SI29 B14 + 13 full positive bands source-first odd pole reference Astar>=B14+ΣT13, with 26 exact P0/P1 physical sources and strict infinite positive tail ||R>=2||<3/10000. Construct full original 890-column SM10 negative-cap versus complete 40-source-plus-positive-tail original inverse matrix and all cross/107 block interactions with original full η and same original physical form domain. Do not treat scalar positive tail upper as a lower-coercivity correction; do not infer full W-ODD-NEG from a finite reference or a single rescued witness. Complete signed positive half-line operator Astar and 890-source global PSD O1/O2 remain OPEN."
+      "next_action": "SM30 PS36 complete O1/O2 (canonical W-ODD-NEG): SM29 proves the TRUE original SI29 B14 plus ENTIRE positive-frequency CONTINUUM on all thirteen SM14 bands around frequency14 (including all infinite Legendre moments) fails at original signed-negative remote packet 389.56 with strict physical margin >3/200, so its FULL 890-source SM10 conditioned surrogate has negative index>=1. Additional Legendre truncation order on these bands cannot change the method no-go. Expand original signed-positive frequency COVERAGE near SM11 high negative windows (SM12 has sign-positive center389.26 but only one Jensen mean); prove all-real sign, true physical cross coupling, odd pole, all negative 890 columns and infinite eta in complete PSD operator. Or work directly with complete actual original Ao inverse, not any lower reference. Do not infer negativity of true W_o from indefinite lower surrogate. W-ODD-NEG O1/O2 OPEN."
     },
     {
       "id": "W-EVEN-FORM",
@@ -726,6 +734,17 @@
         "scripts/validate_rpb108_sm28_positive_continuum_legendre_tower.py"
       ],
       "interpretation": "True original 13 whole sign-positive physical continuous-frequency band operators have exact infinite rank Legendre source tower; rigorous n>=2 full positive tail operator norm <3/10000 and strict positive quadratic on nonzero physical odd vectors. Includes odd pole original B14 and full SM10 890 negative/infinite eta but NO full 890 inverse Loewner O1/O2 positivity.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM29-remote-positive-continuum-coverage-nogo",
+      "obligation_id": "W-ODD-NEG",
+      "role": "method-obstruction",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm29_high_frequency_full_continuum_nogo.py"
+      ],
+      "interpretation": "TRUE original remote negative 389.56 packet versus FULL SI29 pole-conditioned B14+13 original entire positive real continuum bands. Exact uniform physical sign/overlap yields Kneg−F13>3/200 on packet; original SM10 complete 890 source/infinite eta implies entire F13-conditioned surrogate Schur index>=1, NOT true original Astar/Wodd negativity. O1/O2 full operator gate OPEN.",
       "cadence": "per-update"
     }
   ]
