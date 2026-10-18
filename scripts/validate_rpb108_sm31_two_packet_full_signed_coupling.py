@@ -178,11 +178,24 @@ def true_original_global_test():
     # The EXACT TRUE ORIGINAL signed quadratic for every linear
     # combination obeys Q[a*g1+b*g2] >=d1 a² - 2M|ab| +d2 b².
     # No positivity claim absent the full 2x2 determinant sign.
-    assert d1>0,("inherited SM15 original 14.42 ray inconclusive",float(d1))
+    assert d1>F(9,200),("original signed low 14.42 source margin inadequate",float(d1))
     assert d2>F(1,10),("inherited SM30 remote 389.56 ray mismatch",float(d2))
+    assert fullmixed<F(19,1000),("original mixed signed cap too large",float(fullmixed))
+    assert determinant>F(4,1000),("original full signed 2x2 spectral determinant inadequate",float(determinant))
+    # Complete signed original physical two-source coercivity, not
+    # merely a positive determinant on two separate singletons:
+    # min(d1,d2)-M >9/200-19/1000=13/500>1/40.
+    floor_coeff=min(d1,d2)-fullmixed
+    assert floor_coeff>F(1,40)
+    # |g_k(x)|<=1 on actual physical I=[-11/10,11/10].
+    # Thus ||a g1+b g2||² <=4B(a²+b²)=22/5 (a²+b²).
+    # Consequently Q_o[f] >1/176 ||f||² on this ACTUAL
+    # 2D subspace, no statement on its full orthogonal remainder.
+    physical_floor=F(1,40)/(4*B)
+    assert physical_floor==F(1,176)
     assert plow>0 and premote>0 and negmixed>=0
     assert posmixed>=0 and polemixed>=0
-    return dict(poslow=poslow,posremote=posremote,posmixed=posmixed,
+    return dict(floor_coeff=floor_coeff,physical_floor=physical_floor,poslow=poslow,posremote=posremote,posmixed=posmixed,
                 nlow=nlow,nremote=nremote,negmixed=negmixed,
                 plow=plow,premote=premote,polemixed=polemixed,
                 pole_young_t=t,d1=d1,d2=d2,M=fullmixed,
@@ -214,7 +227,8 @@ def run():
           "14.42 and 389.56, full signed operator",flush=True)
     for k in ("poslow","posremote","posmixed","nlow",
               "nremote","negmixed","plow","premote",
-              "polemixed","pole_young_t","d1","d2","M","det"):
+              "polemixed","pole_young_t","d1","d2","M","det",
+              "floor_coeff","physical_floor"):
         print("SM31",k,"exact rational verified, decimal display",
               float(t[k]),flush=True)
     print("SM31 actual negative entire original 973-leaf"
@@ -222,6 +236,14 @@ def run():
           t["bookkeeping2"],flush=True)
     print("SM31 full original signed 2x2 robust lower matrix",
           "[[d1,-M],[-M,d2]], positive definite?",t["strict"],flush=True)
+    assert t["strict"] and t["floor_coeff"]>F(1,40)
+    assert t["physical_floor"]==F(1,176)
+    print("SM31 PASS mandatory EXACT true original odd on span"
+          " Q_o[a g14.42+b g389.56]>1/40*(a²+b²)"
+          " >=1/176*||a g14.42+b g389.56||²"
+          " with ALL 973 negative-frequency leaves and odd pole"
+          " + mixed physical source cross PAID; entire"
+          " orthogonal complement/890-source O1/O2 OPEN",flush=True)
     if t["strict"]:
         assert t["d1"]*t["d2"]>t["M"]**2
         print("SM31 PASS SCOPED: TRUE ORIGINAL FULL SIGNED ODD"
