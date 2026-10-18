@@ -1,0 +1,39 @@
+name: RPB108 PS32 original even ground Fourier mass and effective pole
+
+on:
+  pull_request:
+    paths:
+      - "notes/RPB108_PS32_ORIGINAL_GROUND_FOURIER_MASS_20261018.md"
+      - "scripts/validate_rpb108_ps32_original_ground_fourier_mass.py"
+      - "research/parallel_investigations/w_physical_shift.json"
+      - ".github/workflows/rpb108-ps32-original-ground-fourier-mass.yml"
+  workflow_dispatch:
+
+jobs:
+  ps32-scoped:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: PS32 original even ground Fourier mass and effective-pole overlap exact Fraction replay
+        run: |
+          python3 -m py_compile scripts/validate_rpb108_ps32_original_ground_fourier_mass.py
+          python3 scripts/validate_rpb108_ps32_original_ground_fourier_mass.py
+      - name: Preserve original odd, even, Weil and RH open research obligations
+        run: |
+          python3 - <<'PY'
+          import json
+          m=json.load(open("research/obligations.json"))
+          p=json.load(open("research/parallel_investigations/w_physical_shift.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          assert p["id"]=="W-PHYSICAL-SHIFT"
+          assert p["active_frontier_unchanged"]=="W-ODD-NEG"
+          assert p["checkpoints"][-1]["id"]=="PS32"
+          assert p["status"]=="open"
+          assert all(x is False for x in p["closures"].values())
+          PY
