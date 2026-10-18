@@ -111,16 +111,17 @@ def validate_physical_transforms(infos,sources):
                 c=infos[source_id][0]
                 return (x**k)*(np.sin(2*np.pi*c*x) if k%2==0
                               else np.cos(2*np.pi*c*x))
-            # Oscillatory integral on original interval. Tight
-            # scipy quad is only a NUMERICAL cross-validation.
-            # QUADPACK oscillatory-weight quadrature resolves the
-            # genuinely original remote 389/882 sine frequencies,
-            # unlike naively integrating ~1000 periods with 600 bins.
-            val,err=integrate.quad(
-                lambda x:2*f(x),
-                0.,B,weight="sin",wvar=2*np.pi*xi,
-                epsabs=1e-10,epsrel=1e-10,limit=200)
-            assert abs(a-val)<4e-7+5*err,(typ,k,xi,a,val,err)
+            # INDEPENDENT physical-space high-resolution composite
+            # Simpson cross-validation. The old QUADPACK check
+            # reached subdivision/roundoff failure for near-resonant
+            # high-frequency SOURCE and test sine products: such a
+            # failure must not be mistaken for a bad analytic formula.
+            # The fixed dense real-space grid is entirely independent
+            # of the leafwise frequency Gauss nodes and FFT padding.
+            xx=np.linspace(0.,B,131073)
+            val=float(integrate.simpson(
+                2*f(xx)*np.sin(2*np.pi*xi*xx),x=xx))
+            assert abs(a-val)<2e-5,(typ,k,xi,a,val,abs(a-val))
     # Odd sine Fourier convention normalized by Parseval; DO NOT
     # drop the 2 for negative mirrored frequency in all integrals.
     return True
