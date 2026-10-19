@@ -108,3 +108,93 @@ The pilot checks whether the source-aware entire-source Loewner epsilon contract
 SM44 should rigorously enclose the original selected physically supported \(C_I=2\int_I T T^*\) with validated source-analytic Fourier integration (or an exact time-domain sinc kernel plus rigorous quadrature), and combine this with the SM43 certified whole-real **multiplier** error. For the complement of source windows, use adaptive source-leverage weight error targets and certified log high tail from SM41. When **all** [0,4096] is covered with a numerically usable enclosure and the high positive tail is added, certify the genuine full 25-source positive \(A_o\) source stiffness and true odd pole-conditioned \(A_*\) and strong residual before attempting all 470 original degree-k sources.
 
 Original signed W-ODD-NEG complete O1/O2, original even E1–E4, whole signed Weil, native CC27 D-Riesz and RH all **OPEN**, as is the independent original Fourier/closed-form-domain mathematical audit. A passing SM43 interval-envelope replay is NOT RH proof, complete odd positivity, or a certified full positive resolvent.
+
+
+## 5. Initial original constant-weight certificate passed, but proves the need for a *second-order* reference
+
+First focused GitHub Actions run **39180315885 PASSED** the whole-real source-window **constant-step** certificate and exact operator-level Loewner error:
+\[
+|\mathcal W|=\frac{1029}{64}=16.078125,\qquad
+\begin{array}{c|cc}
+& \text{mesh}\le1/4&\text{mesh}\le1/8\\
+\hline
+\text{real signed-original positive cells}&65&129\\
+\text{possible }m=\kappa\text{ cells}&55&44\\
+\text{certified entire source-window }|\Delta A|\preceq\epsilon I_{25}
+&\boxed{\epsilon<192.726657761}&\boxed{\epsilon<81.189344451}
+\end{array}
+\]
+This is a **real mathematical error enclosure under inherited Fourier premises**, not the difference between floating Gaussian integrations. However, \(\epsilon=81.2\) remains **much too large** to certify true positive source stiffness or original complete odd sign. It is not evidence of the magnitude of the true numerical error: it measures conservatism of the complete source/Cauchy and multiplier envelopes. Uniformly pushing that original **piecewise-CONSTANT** method to a spectral tolerance would be computationally impractical.
+
+### New SM43A mathematical development: interpolate the SIGNED original multiplier, *then* apply its positive part
+
+Instead of approximating the genuinely variable positive weight by a constant on each source frequency cell, let \(m_\ell(a),m_u(a),m_\ell(b),m_u(b)\) be the exactly rational original endpoint signed seven-prime/digamma enclosures obtained from existing SI06/SM39/SM43. Define signed rational midpoint endpoints \(q_a=(m_\ell(a)+m_u(a))/2\), \(q_b=(m_\ell(b)+m_u(b))/2\), the original signed-multiplier **affine reference**
+\[
+q_I(\xi)=(1-t)q_a+tq_b,\qquad t=(\xi-a)/(b-a),
+\]
+and its **positive reference**
+\[
+\boxed{w_I^{\rm aff}(\xi)=\max\{\kappa,q_I(\xi)\}.}
+\]
+This reference is piecewise affine with **at most one rational crossing inside a cell**, regardless of how many actual crossings the original multiplier has.
+
+Unlike \(a_o=\max(\kappa,m)\), the underlying original signed \(m\) is smooth. Write the original digamma-arch positive sum with \(v=k+1/4\), \(t=\pi\xi\):
+\[
+\mathcal A(\xi)=\text{constant}+\sum_{k\ge0}
+\frac{t^2}{v(v^2+t^2)}.
+\]
+Its actual second derivative summands obey
+\[
+\left|\frac{d^2}{dt^2}
+\frac{t^2}{v(v^2+t^2)}\right|
+=\left|\frac{2v(v^2-3t^2)}{(v^2+t^2)^3}\right|
+\le\frac{6}{(v^2+t^2)^{3/2}}.
+\]
+Using monotonicity of \((v^2+t^2)^{-3/2}\), for the entire real frequency \(\xi\ge a\ge1\), SI06 exact \(\pi_{\rm lo},\pi_{\rm hi}\) give the rational bound
+\[
+\boxed{
+|\mathcal A''(\xi)|\le D_{\rm arch}(a)
+:=6\pi_{\rm hi}^2\left[
+\frac{4}{(1/4)^2+(\pi_{\rm lo}a)^2}
++\frac{1}{(\pi_{\rm lo}a)^2}
+\right].
+}
+\]
+For the initial physical band near \(\xi=0\), use the separate globally valid finite bound \(6\pi_{\rm hi}^2(64+8)\), avoiding a division by zero. The entire original signed seven-prime contribution obeys SM40's exact real \(|p''|\le D_2\). Thus
+\[
+\boxed{|m''(\xi)|\le D_I:=D_2+D_{\rm arch}(a)\quad\text{for every real }\xi\in[a,b].}
+\]
+Classical endpoint linear interpolation implies \(|m(\xi)-\mathrm{interp}(m(a),m(b))|\le D_I(b-a)^2/8\), and original endpoint signed multiplier uncertainties contribute at most \(\tfrac12 W_I\), where
+\(W_I=\max(m_u(a)-m_\ell(a),m_u(b)-m_\ell(b))\). The positive-part map is **1-Lipschitz**, including at arbitrarily many actual \(m=\kappa\) crossings:
+\[
+\boxed{
+|a_o(\xi)-w_I^{\rm aff}(\xi)|
+\le\frac{W_I}{2}+\frac{D_I(b-a)^2}{8}.
+}
+\]
+If the entire signed m is proved below \(\kappa\), both the true a_o and the rational affine reference are the constant \(\kappa\), and the error is **exactly zero**.
+
+The complete original 25-source coupled operator error on the same frequency-window union \(\mathcal W\) is
+\[
+\boxed{
+-\epsilon_{\mathcal W}^{\rm aff}I_{25}\preceq
+A_{o,\mathcal W}
+-\sum_{I\subset\mathcal W}
+2\int_I w_I^{\rm aff}(\xi)T(\xi)T(\xi)^*\,d\xi
+\preceq\epsilon_{\mathcal W}^{\rm aff}I_{25},
+}
+\]
+where the exact rational computed error is
+\[
+\boxed{
+\epsilon_{\mathcal W}^{\rm aff}
+=\sum_I 2|I|\left(\frac{W_I}{2}
++\frac{D_I|I|^2}{8}\right)
+\sum_{j=1}^{25}s_{j,I}^2
+}
+\]
+(with zero replacement on certified \(a_o=\kappa\) constant cells).
+
+This **removes the O(h) first-derivative oscillation fee** of SM43's constant weights, replaces it by a true original **O(h²) second-order curvature fee** plus rational endpoint interval uncertainty, and handles **every actual sign crossing** without root-finding. The reference *still* contains the true Fourier source cell integrals, which have **NOT YET** been rigorously evaluated. The complement of the chosen 16 original source frequency windows in [0,4096] is likewise OPEN. The follow-up SM43A code computes and compares the new exact source-coupled error against the original \(\epsilon<81.19\) bound at the same mesh, and is required by the updated focused CI.
+
+**SM44 decision:** if the new certified affine error is materially tighter, integrate its **piecewise rational affine positive weight** against actual source-supported Fourier sine products using validated quadrature or an analytic sinc-kernel method, and expand source-leverage cells until the true complete original low positive band is covered. The rank-one odd pole and original high logarithmic tail remain separate and must be assembled with the true source stiffness. Nothing here is a complete original Wodd O1/O2 or RH certificate.
