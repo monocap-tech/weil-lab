@@ -39,7 +39,10 @@ jobs:
           assert d["baseline_true_original_positive_bands"]==17
           assert d["new_disjoint_signed_positive_bands"]==32
           assert d["new_certified_positive_candidate_cells"]>=32
-          assert F(d["NEW_true_original_adaptive_positive_source2_gain_lower"])>F(0)
+          assert F(d["NEW_true_original_adaptive_positive_source2_gain_lower"])>F(9,100)
+          assert F(d["NEW_full_25source_Loewner_error_paid_source2_gain_lower"])>F(9,100)
+          assert F(d["true_original_low_positive_full_25source_new_Loewner_error_up"])<F(1,500)
+          assert F(d["NEW_15band_minus_full25source_Loewner_lower_reference_gap_source2_up"])<-F(7,100)
           assert F(d["NEW_original_15band_minus_adaptive_reference_source2_gap"]) < F(d["old_original_SM48_nonpole_reference_deficit_source2"])
           assert not d["complete_original_negative_frequency_cap_and_470_Astar_inverse"]
           assert not d["complete_original_odd_O1_O2_even_Weil_CC27_RH"]
