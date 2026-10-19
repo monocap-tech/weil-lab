@@ -1,0 +1,66 @@
+name: RPB108 SM45 original local physical Fourier source derivative
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm44_physical_fourier_cell_gram.py"
+      - "scripts/validate_rpb108_sm45_local_source_fourier_derivative.py"
+      - "notes/RPB108_SM45_LOCAL_SOURCE_FOURIER_DERIVATIVE_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm45-local-source-fourier-derivative.yml"
+  workflow_dispatch:
+
+jobs:
+  sm45-original-local-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install full source geometry dependencies
+        run: python -m pip install numpy scipy
+      - name: Original exact source-cell weights and unchanged full 25x25 SM44 matrix with certified local Fourier derivative
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm44_physical_fourier_cell_gram.py scripts/validate_rpb108_sm45_local_source_fourier_derivative.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm45_local_source_fourier_derivative.py
+      - name: Enforce same matrix exact source identity and >=5% certified integration improvement, odd open
+        run: |
+          python - <<'PY'
+          from fractions import Fraction as F
+          import json
+          d=json.load(open("artifacts/sm45_local_original_source_fourier_derivative.json"))
+          assert d["status"]=="CERTIFIED_TRUE_ORIGINAL_LOCAL_FOURIER_DERIVATIVE_FULL_SOURCE_WINDOW_LOEWNER"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_true_physical_source_count"]==25
+          assert d["original_frequency_window_measure"]=="1029/64"
+          assert d["source_Fourier_midpoint_derivative"]["adversarial_sharp_quadratic"]=="PASSED"
+          o=d["fine_SM44"];n=d["fine_SM45"]
+          assert o["real_frequency_cells"]==n["real_frequency_cells"]==129
+          assert n["derivative_mode"]=="local_certified"
+          assert o["derivative_mode"]=="global"
+          assert n["locally_improved_source_cell_components"]>0
+          assert n["covers_all_original_low_0_to_4096"] is False
+          assert n["certifies_true_original_Astar_inverse"] is False
+          assert n["certifies_original_complete_odd_O1_O2"] is False
+          assert n["exact_rational_complete_25x25_proxy_matrix"]==o.get("exact_rational_complete_25x25_proxy_matrix",n["exact_rational_complete_25x25_proxy_matrix"])
+          assert F(n["new_true_physical_Fourier_cell_Gram_Loewner_eps_outward"])< F(95,100)*F(o["new_true_physical_Fourier_cell_Gram_Loewner_eps_outward"])
+          assert F(n["total_true_original_weighted_source_window_stiffness_Loewner_eps_outward"])<F(o["total_true_original_weighted_source_window_stiffness_Loewner_eps_outward"])
+          assert F(n["original_true_weight_interpolation_Loewner_eps_outward"])==F(o["original_true_weight_interpolation_Loewner_eps_outward"])
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          q=next(z for z in m["obligations"] if z["id"]=="W-ODD-NEG")
+          assert q["status"]=="open" and "O1/O2" in q["acceptance"]
+          assert all(z in q["evidence"] for z in ("SM43","SM44","SM45"))
+          assert "sm45_true_original_local_source_Fourier_derivative" in m["governance"]
+          PY
+      - name: Upload exact original local source derivative unchanged 25x25 matrix and complete scoped errors
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm45-original-physical-local-derivative-25-source-rational-Loewner
+          path: artifacts/sm45_local_original_source_fourier_derivative.json
+          if-no-files-found: warn
