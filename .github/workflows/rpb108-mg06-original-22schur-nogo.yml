@@ -46,6 +46,8 @@ jobs:
           assert not d["SM65_actual_negative_mode_identified"]
           assert not d["SM65_actual_signed_Schur_PSD_certified"]
           assert d["original_actual_source25_negative_index_upper_from_SM63"]==22
+          assert d["independent_SM64_passing_four_source_actions_run_id"]==39323057878
+          assert d["original_actual_source25_negative_index_upper_from_SM64"]==21
           assert d["complete_original_470_source_Astar_inverse_and_infinite_remainder"]=="OPEN"
           assert d["odd_even_Weil_CC27_RH"]=="OPEN"
           assert d["independent_original_Fourier_closed_domain_premise_audit"]=="OPEN"
