@@ -53,3 +53,14 @@ The Sylvester conditions remain full positive leading 2x2 coupled block and stri
 Initial focused CI is pending. If anisotropic errors recover further pole margin, this provides a new direction for source-aware matrix certificates on the complete 25-support source space. Whether or not it improves, **the actual original negative index, the orthogonal remainder, 470 original Astar inverse/strong residual and complete W-ODD-NEG O1/O2 remain OPEN**; the even operator, Weil positivity, CC27 and RH also remain OPEN. Independent original physical Fourier/domain mathematical audit remains outstanding.
 
 The next substantive route after this trial-space diagnostics is a complete-operator bound on the orthogonal remainder and true spectral inertia; trial-space error optimization cannot itself replace those acceptance gates.
+
+
+## Exact finite-dimensional negative-index ceiling
+
+The complete true original signed odd three-source form Q satisfies Q >= L, with L a rigorously computed full symmetric 3x3 lower. Its first two leading Sylvester minors are strictly positive. The inertia decomposition over its 2x2 positive leading block and its exact real Schur S=det L/det L_2 gives:
+
+- If S>0, L is strictly positive definite and Q is strictly positive on this exact physical **three-dimensional** span.
+- If S=0, L is positive semidefinite and Q has **negative index zero** on this three-dimensional span (a possible zero direction remains).
+- If S<0, L has precisely two positive and one negative eigenvalues, and the min-max/inertia comparison Q >= L proves **negative index of Q on this three-dimensional trial space is at most one**. It does NOT prove a true negative direction exists.
+
+This is a mathematically justified finite-dimensional index CEILING, not a complete-operator original odd negative-index theorem. The orthogonal complement and all original 25 supported/470-source directions must be classified independently to accept canonical W-ODD-NEG O1/O2. The validator and Actions explicitly prevent any promotion from this 3D ceiling to the complete operator.
