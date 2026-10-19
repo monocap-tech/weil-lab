@@ -40,6 +40,15 @@ from sm36_original_odd_numerical_pilot import ROOT,geometry,select_sources
 N=25
 POLE=24
 POWERS=(11,12,13,16,20,24,30,36,40,48,56)
+EXPORT=10**12
+def up(x):
+    x=F(x)
+    return F(-((-x.numerator*EXPORT)//x.denominator),EXPORT)
+def down(x):
+    x=F(x)
+    return F((x.numerator*EXPORT)//x.denominator,EXPORT)
+def interval_out(x):
+    return I(down(x.l),up(x.h))
 def abs_up(x):
     return max(abs(x.l),abs(x.h))
 def positive_gap(x):
@@ -68,7 +77,7 @@ def derivative_intervals_and_D3(sources,clusters):
             # xcos: f''=-2w sin -w²*x cos, f'''=-3w² cos+w³*x sin
             majorant.append(4*wup+8*B*wup*wup+2*B*B*wup**3)
     assert len(derivative)==len(majorant)==N
-    return derivative,majorant
+    return [interval_out(x) for x in derivative],[up(x) for x in majorant]
 
 def derivative_remainder_tail(k,D2):
     """Exact whole-real complete source strong squared tail of xi^-3 remainder."""
@@ -115,7 +124,7 @@ def main():
     infos,*_=geometry()
     sources=select_sources(infos)
     assert len(sources)==N and sources[POLE][0]=="pole"
-    b=boundary_intervals(sources,clusters)
+    b=[interval_out(x) for x in boundary_intervals(sources,clusters)]
     d,D3=derivative_intervals_and_D3(sources,clusters)
     assert b[POLE].l>0 and d[POLE].l>0
     candidates=[]
@@ -125,6 +134,7 @@ def main():
         if gap>0:candidates.append((gap,q,det))
     assert candidates,"MISSING independently certified physical derivative trace"
     gap,pivot,det=max(candidates,key=lambda v:(v[0],-v[1]))
+    gap=down(gap)
     assert pivot!=POLE and gap>0
     R=tuple(i for i in range(N) if i not in (POLE,pivot))
     assert len(R)==23
@@ -136,21 +146,24 @@ def main():
     # exact cancellation is a symbolic consequence of the formulas.
     aa=[];cc=[];Dcancel=[]
     for i in R:
-        A=(abs_up(b[i])*abs_up(d[pivot])
-           +abs_up(b[pivot])*abs_up(d[i]))/gap
-        C=(abs_up(b[POLE])*abs_up(d[i])
-           +abs_up(b[i])*abs_up(d[POLE]))/gap
+        A=up((abs_up(b[i])*abs_up(d[pivot])
+           +abs_up(b[pivot])*abs_up(d[i]))/gap)
+        C=up((abs_up(b[POLE])*abs_up(d[i])
+           +abs_up(b[i])*abs_up(d[POLE]))/gap)
         aa.append(A);cc.append(C)
-        Dcancel.append(D3[i]+A*D3[POLE]+C*D3[pivot])
+        Dcancel.append(up(D3[i]+A*D3[POLE]+C*D3[pivot]))
     assert len(Dcancel)==23 and all(x>0 for x in Dcancel)
-    D2=sum((x*x for x in D3),F(0))
-    Dkernel2=sum((x*x for x in Dcancel),F(0))
-    bmid=[x.mid() for x in b]; dmid=[x.mid() for x in d]
-    berr=[x.width()/2 for x in b];derr=[x.width()/2 for x in d]
+    D2=up(sum((x*x for x in D3),F(0)))
+    Dkernel2=up(sum((x*x for x in Dcancel),F(0)))
+    bmid=[down(x.mid()) for x in b];dmid=[down(x.mid()) for x in d]
+    berr=[max(abs(x.l-v),abs(x.h-v)) for x,v in zip(b,bmid)]
+    derr=[max(abs(x.l-v),abs(x.h-v)) for x,v in zip(d,dmid)]
+    assert all(x.l>=v-e and x.h<=v+e for x,v,e in zip(b,bmid,berr))
+    assert all(x.l>=v-e and x.h<=v+e for x,v,e in zip(d,dmid,derr))
     bm2=sum((x*x for x in bmid),F(0))
     dm2=sum((x*x for x in dmid),F(0))
-    be2=sum((x*x for x in berr),F(0))
-    de2=sum((x*x for x in derr),F(0))
+    be2=up(sum((x*x for x in berr),F(0)))
+    de2=up(sum((x*x for x in derr),F(0)))
     assert bm2>0 and dm2>0
     eta=F(1,64)
     check=[]
@@ -159,13 +172,13 @@ def main():
         j0=jump_scalar_sharp(k) # 1/xi with actual cos oscillation
         j1=derivative_jump_weight(k) # 1/xi² with sin phase paid
         rem=derivative_remainder_tail(k,D2)
-        kernel=derivative_remainder_tail(k,Dkernel2)
+        kernel=up(derivative_remainder_tail(k,Dkernel2))
         # Three full-frequency terms; (x+y+z)^2 <=3(x²+y²+z²).
         # Interval rational endpoint enclosures: (bm+delta)^2
         # <=(1+eta)bm bm^T+(1+1/eta)||delta||² I.
-        alpha=3*(1+eta)*j0
-        beta=3*(1+eta)*j1
-        diag=3*((1+1/eta)*(j0*be2+j1*de2)+rem)
+        alpha=up(3*(1+eta)*j0)
+        beta=up(3*(1+eta)*j1)
+        diag=up(3*((1+1/eta)*(j0*be2+j1*de2)+rem))
         new=alpha*bm2+beta*dm2+diag
         old=F(odd_pilot_tail_enclosure(infos,sources,2**k)[
             "exact_strong_multiplier_tail_squared_norm_upper"])
@@ -201,7 +214,7 @@ def main():
       "exact_value_derivative_boundary_map_rank":2,
       "independent_second_trace_pivot_source_index":pivot,
       "first_trace_pivot_source_index":POLE,
-      "exact_rational_second_trace_det_interval":[str(det.l),str(det.h)],
+      "exact_rational_second_trace_det_interval":[str(down(det.l)),str(up(det.h))],
       "strict_abs_determinant_lower":str(gap),
       "exact_23D_dual_boundary_vanishing_source_indices":list(R),
       "true_original_23D_dual_trace_kernel_dimension":23,
