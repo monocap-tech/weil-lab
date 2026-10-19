@@ -26,8 +26,11 @@ jobs:
       - name: Exact-rational third-tail and scoped source kernel gate
         run: |
           python - <<'PY'
-          import json
+          import json,sys
           from fractions import Fraction as F
+          # Reparse exact certificate rationals without decimal digit truncation.
+          if hasattr(sys, "set_int_max_str_digits"):
+              sys.set_int_max_str_digits(0)
           d=json.load(open("artifacts/mg11_original_dual_boundary_kernel.json"))
           assert d["canonical_W_ODD_NEG"]=="OPEN"
           assert d["source_count"]==25
