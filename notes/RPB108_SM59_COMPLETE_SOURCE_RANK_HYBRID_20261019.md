@@ -34,3 +34,19 @@ The exact finite-source next obligation is the true 23-dimensional signed Schur 
 The entire SI10 973-leaf true signed-negative Fourier operator admits BOTH SM57's source-cap diagonal UPPER and SM58's full-source affine covariance UPPER. On each individual original signed real leaf one may select either fully valid Loewner UPPER. Choosing smaller exact-rational TRACE on each leaf yields an independent 25-source upper with raw trace no larger than either original entire trace. That alone is NOT Loewner dominance or inertia positivity. Additional independently valid source2, source17 and pole24 diagonal-targeted leaf selections are allowed, with full exact 25×25 signed LOWER and true rational inertia acceptance. No actual negative witness may be inferred from negative lower eigenvalues.
 
 The complete 470-source Astar inverse, infinite original odd orthogonal remainder, O1/O2, even E1-E4, full Weil form, CC27 and RH remain OPEN. Independent original Fourier/form-domain and SI10 negative-support mathematical audit is separate from Actions.
+
+
+## SM59A accepted; SM59B exact replay diagnosis
+
+SM59A original genuine 25-source actual negative-index bound <=23 passed focused Actions 39291146139 and subsequent retest, conditional on the inherited Fourier/form-domain identification. It does NOT classify the infinite-dimensional odd operator.
+
+SM59B initial Actions 39291145784 and diagnostic Actions 39294023306 completed all original 973 negative real-frequency leaves but failed an overly broad dictionary equality on original signed LOWER inertia. Diagnostic logs prove exact agreement of the SM58 original passing reference on the positive/negative/zero inertia (1,24,0), rational signed trace, source2 and source17 signed diagonals, and complete negative-upper trace. The earlier mismatch was only an expanded inertia dictionary containing additional exact 1x1 and 2x2 pivot counts, whereas the pinned summary contained the first three counts. The corrected check requires those three counts, exact pivot accounting, signed trace, source diagonal values and negative-upper trace; mathematical checks are not discarded.
+
+For stronger fail-closed provenance, the original passing SM58 Actions artifact 12201213066 was independently extracted. Canonical exact-rational SHA256 hashes of ALL 625 entries each are now pinned and checked during full SM59B recomputation:
+
+- Original 25x25 entire true-coupled signed-negative Fourier UPPER: 53c17a9abb8efb4d2497eaf4fd060219353bdd2d42e056276ec3a911521f0af4.
+- Original 25x25 true signed LOWER matrix: 6ed78ff8b3bdd01bf8d84f467d3d1ad26ea16f8c5f21fc53eebaf0b720a9c684.
+
+Both complete matrix hashes are computed from canonical JSON serialization of the original full 25x25 rational entry strings, not approximate floating-point values. SM59B cannot accept any leafwise hybrid negative UPPER until BOTH match the passing SM58 baseline. This verifies computational reproducibility, not the inherited source Fourier/form-domain analytic premises.
+
+All full original 470-source inverse and strong orthogonal remainder, W-ODD-NEG complete O1/O2, even positivity, Weil/CC27/RH and independent premise audit remain OPEN.
