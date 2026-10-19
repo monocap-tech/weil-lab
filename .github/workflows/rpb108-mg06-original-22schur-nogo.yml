@@ -1,0 +1,58 @@
+name: mg06-original-22schur-inertia-no-go
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg06_sm65_22schur_inertia_nogo.py'
+      - 'scripts/validate_rpb108_sm62_full25_338signed_positive.py'
+      - 'scripts/validate_rpb108_sm65_original_22schur_anisotropic.py'
+      - 'notes/RPB108_MG06_ORIGINAL_22SCHUR_INERTIA_NOGO_20261019.md'
+      - 'certificates/rpb108_sm58_full25_signed_summary.json'
+      - '.github/workflows/rpb108-mg06-original-22schur-nogo.yml'
+  workflow_dispatch:
+
+jobs:
+  mg06-source22-schur-inertia-no-go:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact full-original SM58 SM62 replay and universal Schur no-go
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg06_sm65_22schur_inertia_nogo.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg06_sm65_22schur_inertia_nogo.py
+      - name: Fail-closed inertia floor and rank acceptance
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("artifacts/mg06_sm65_original_22D_schur_inertia_no_go.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["SM58_original_all625_negative_and_signed_hashes_replayed"]
+          assert d["SM62_original_all625_signed_lower_hash_replayed"]
+          assert d["SM62_original_full25_lower_inertia"]=={"positive":2,"negative":23,"zero":0}
+          assert d["SM63_independent_true_signed_positive_anchor"]==[1,2,17]
+          assert d["original_Schur_complement_dimension"]==22
+          assert d["forced_negative_lower_reference_dimension_from_codimension"]==20
+          r=d["SM62_coordinate_complement_lower_inertia"]
+          assert sum(r.values())==22 and r["negative"]>=20
+          assert d["actual_forced_negative_lower_reference_dimension"]==r["negative"]
+          assert d["minimal_rank_of_added_PSD_corrective_lower_gain_needed_to_reach_PSD"]==r["negative"]
+          assert d["all_PSD_Schur_subtractions_preserve_at_least_forced_negative_lower_count"]
+          assert d["even_zero_Schur_compensation_cannot_certify_PSD_with_SM62_lower"]
+          assert not d["SM65_actual_negative_mode_identified"]
+          assert not d["SM65_actual_signed_Schur_PSD_certified"]
+          assert d["original_actual_source25_negative_index_upper_from_SM63"]==22
+          assert d["independent_SM64_passing_four_source_actions_run_id"]==39323057878
+          assert d["original_actual_source25_negative_index_upper_from_SM64"]==21
+          assert d["complete_original_470_source_Astar_inverse_and_infinite_remainder"]=="OPEN"
+          assert d["odd_even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_closed_domain_premise_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg06-original-22schur-inertia-no-go
+          path: artifacts/mg06_sm65_original_22D_schur_inertia_no_go.json
