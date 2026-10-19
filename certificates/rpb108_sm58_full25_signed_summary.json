@@ -51,5 +51,8 @@
   "best_original_25x25_signed_LOWER_projected_2x2_det": "-470823069386807976357/200000000000000000000000",
   "negative_entire_upper_trace_coupled": "1299524585115/100000000000",
   "negative_entire_upper_trace_SM57_diagonal": "86419118373857/1000000000000",
-  "interpretation": "SM58 signed LOWER is not the actual original 25-source quadratic form. Its 1-positive/24-negative inertia is only a reference. Genuine SM52 two-source original odd positive plane remains independently rigorous."
+  "interpretation": "SM58 signed LOWER is not the actual original 25-source quadratic form. Its 1-positive/24-negative inertia is only a reference. Genuine SM52 two-source original odd positive plane remains independently rigorous.",
+  "original_full25_signed_lower_all_625_entries_sha256": "6ed78ff8b3bdd01bf8d84f467d3d1ad26ea16f8c5f21fc53eebaf0b720a9c684",
+  "original_full25_coupled_negative_upper_all_625_entries_sha256": "53c17a9abb8efb4d2497eaf4fd060219353bdd2d42e056276ec3a911521f0af4",
+  "canonical_matrix_hash_serialization": "SHA-256 of JSON UTF-8 string of 25x25 arrays of Python Fraction.str entries; json.dumps(rows,separators=(',',':'),ensure_ascii=True). Recorded from original SM58 PASSING Actions artifact 12201213066."
 }
