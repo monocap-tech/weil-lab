@@ -152,7 +152,7 @@ def main():
             "true_actual_21D_signed_Schur_LOWER":[[str(x) for x in row] for row in S]
         })
     best=min(options,key=lambda x:(x["true_actual_21D_Schur_LOWER_inertia"]["negative"],
-               -F(x["full_coupled_penalty_exact_trace"])))
+               F(x["full_coupled_penalty_exact_trace"])))
     # Numerical lower inertia is reference-only, NEVER an actual
     # original signed negative witness, even if fully negative.
     out={
