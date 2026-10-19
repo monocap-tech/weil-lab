@@ -198,3 +198,39 @@ where the exact rational computed error is
 This **removes the O(h) first-derivative oscillation fee** of SM43's constant weights, replaces it by a true original **O(h²) second-order curvature fee** plus rational endpoint interval uncertainty, and handles **every actual sign crossing** without root-finding. The reference *still* contains the true Fourier source cell integrals, which have **NOT YET** been rigorously evaluated. The complement of the chosen 16 original source frequency windows in [0,4096] is likewise OPEN. The follow-up SM43A code computes and compares the new exact source-coupled error against the original \(\epsilon<81.19\) bound at the same mesh, and is required by the updated focused CI.
 
 **SM44 decision:** if the new certified affine error is materially tighter, integrate its **piecewise rational affine positive weight** against actual source-supported Fourier sine products using validated quadrature or an analytic sinc-kernel method, and expand source-leverage cells until the true complete original low positive band is covered. The rank-one odd pole and original high logarithmic tail remain separate and must be assembled with the true source stiffness. Nothing here is a complete original Wodd O1/O2 or RH certificate.
+
+
+## 6. SM43A affine-only **failed** its first comparison; exact cellwise hybrid improves logical method
+
+The first stronger-method CI run **39181243583 completed FAILURE** after the original SM43 constant-cell validator passed, because the **pure signed-affine reference was not universally tighter**. This was a legitimate mathematical/regression failure of the *proposed efficiency improvement*, not a contradiction of its still-valid analytic interpolation inequality.
+
+| Whole-original source-window positive form upper error (actual selected 25-source Loewner; not exact source stiffness) | max mesh 1/4 | max mesh 1/8 |
+|---|---:|---:|
+| Original SM43 certified constant reference | **192.726657761** | **81.189344451** |
+| SM43A valid **affine-only** reference | **319.400275716** | **81.779824557** |
+
+The original low window [0,1] can carry a large conservative digamma arch curvature, and a global second-derivative bound can be wasteful even though the interpolation remainder scales as \(h^2\). **Do not claim affine-only beat SM43.** The failed strict check was correct.
+
+**Mathematical correction (new replay):** both the constant original SM43 reference and SM43A signed-affine positive-part reference have independently certified REAL-cell original \(a_o(\xi)\) error bounds and pay all actual physical source cross in the same original 25-dimensional Loewner norm. Therefore on EACH rational original cell \(I\), choose
+\[
+r_I(\xi)=
+\begin{cases}
+\max(\kappa,q_I^{\rm signed,aff}(\xi))&
+ \text{if }\epsilon_{I,\mathrm{aff}}<\epsilon_{I,\mathrm{constant}},\\
+(\ell_I+u_I)/2&\text{otherwise}.
+\end{cases}
+\]
+The selection is based **only on EXACT RATIONAL certified error bounds**, not floating numerical performance. It preserves either reference's whole-real original multiplier error and all kinks. The complete original source-window hybrid reference \(B_{\mathcal W}^{\rm hybrid}=2\sum_I\int_I r_I(\xi)T(\xi)T(\xi)^*d\xi\) therefore obeys
+\[
+\boxed{
+-\epsilon_{\mathcal W}^{\rm hybrid}I_{25}
+\preceq A_{o,\mathcal W}-B_{\mathcal W}^{\rm hybrid}
+\preceq\epsilon_{\mathcal W}^{\rm hybrid}I_{25},
+\quad
+\epsilon_{\mathcal W}^{\rm hybrid}
+=\sum_I\min(\epsilon_{I,\rm constant},\epsilon_{I,\rm aff}).
+}
+\]
+Mathematically, \(\epsilon_{\rm hybrid}\le\min(\epsilon_{\rm all\ constant},\epsilon_{\rm all\ affine})\) and this **can strictly outperform both** if different cells favor different references. It is an exact **full 25-source coupled Loewner** result, not componentwise optimism.
+
+The updated strict CI checks that the hybrid actually uses both original exact reference types on the 1/8 mesh and produces a verified strict decrease below original constant-cell \(81.189344451\). **Still open:** no cell reference \(\int_I r_I TT^*\) has been interval integrated and the rest of the true original positive [0,4096] low band is not covered; full Ao/Astar, entire 470-source resolvent, signed Wodd/even/Weil/CC27/RH remain OPEN.
