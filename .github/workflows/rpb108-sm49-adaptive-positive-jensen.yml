@@ -1,0 +1,67 @@
+name: RPB108 SM49 original source-adaptive positive Jensen
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm49_adaptive_positive_jensen.py"
+      - "notes/RPB108_SM49_ADAPTIVE_POSITIVE_JENSEN_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm49-adaptive-positive-jensen.yml"
+  workflow_dispatch:
+
+jobs:
+  sm49-original-positive-25-source-adaptive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install original SI10 rational-source dependencies
+        run: python -m pip install numpy scipy
+      - name: Exact real signed-positive search and original complete physical 25-source matrix
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm49_adaptive_positive_jensen.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm49_adaptive_positive_jensen.py
+      - name: Fail closed on true signed-source directional gain and all original proof obligations
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/sm49_original_25source_adaptive_positive_jensen.json"))
+          assert d["status"]=="CERTIFIED_ORIGINAL_SOURCE_ADAPTIVE_EXTRA_POSITIVE_JENSEN_25SOURCE_ONLY"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["true_original_positive_low_band"]=="[0,4096]"
+          assert d["source_count"]==25
+          assert d["all_original_25_source_cross_included"] and d["actual_sinh_pole_retained"]
+          assert d["focus_original_signed_deficit_witness_source_index"]==2
+          assert d["baseline_true_original_positive_bands"]==17
+          assert d["new_disjoint_signed_positive_bands"]==32
+          assert d["new_certified_positive_candidate_cells"]>=32
+          assert F(d["NEW_true_original_adaptive_positive_source2_gain_lower"])>F(9,100)
+          assert F(d["NEW_full_25source_Loewner_error_paid_source2_gain_lower"])>F(9,100)
+          assert F(d["true_original_low_positive_full_25source_new_Loewner_error_up"])<F(1,500)
+          assert F(d["NEW_15band_minus_full25source_Loewner_lower_reference_gap_source2_up"])<-F(7,100)
+          assert F(d["NEW_original_15band_minus_adaptive_reference_source2_gap"]) < F(d["old_original_SM48_nonpole_reference_deficit_source2"])
+          assert not d["complete_original_negative_frequency_cap_and_470_Astar_inverse"]
+          assert not d["complete_original_odd_O1_O2_even_Weil_CC27_RH"]
+          for key in ("full_25x25_new_rational_positive_adaptive_matrix",
+                      "full_25x25_total_original_low_one_sided_lower_matrix"):
+              M=d[key]
+              assert len(M)==25 and all(len(row)==25 for row in M)
+              assert all(F(M[i][j])==F(M[j][i]) for i in range(25) for j in range(25))
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          odd=next(o for o in m["obligations"] if o["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open" and "O1/O2" in odd["acceptance"]
+          PY
+      - name: Publish complete 25-source outward rational source-adaptive matrix
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm49-original-adaptive-whole-positive-low-25-source-rational
+          path: artifacts/sm49_original_25source_adaptive_positive_jensen.json
+          if-no-files-found: warn
