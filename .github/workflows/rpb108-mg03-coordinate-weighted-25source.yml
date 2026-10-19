@@ -1,0 +1,64 @@
+name: mg03-original-coordinate-weighted-25source
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg03_coordinate_weighted_25source.py'
+      - 'scripts/validate_rpb108_mg02_young_source_enclosure.py'
+      - 'scripts/validate_rpb108_sm62_full25_338signed_positive.py'
+      - 'notes/RPB108_MG03_COORDINATE_WEIGHTED_25SOURCE_20261019.md'
+      - 'certificates/rpb108_sm58_full25_signed_summary.json'
+      - '.github/workflows/rpb108-mg03-coordinate-weighted-25source.yml'
+  workflow_dispatch:
+
+jobs:
+  mg03-original-directional-25source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact complete-source weighted Gershgorin certificate
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg03_coordinate_weighted_25source.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg03_coordinate_weighted_25source.py
+      - name: Verify scoped method gate without theorem promotion
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg03_weighted_original_25source_directions.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["exact_SM58_original_full625_matrix_hashes_replayed"]
+          assert d["whole_original_973_negative_leaves_unchanged"]
+          assert d["original_odd_pole_charged_once"]
+          assert d["old_original_49_positive_windows_unchanged"]
+          assert d["new_original_338_positive_windows_unchanged"]
+          assert d["complete_25D_source_mixed_couplings_all_paid"]
+          assert d["weighted_Gershgorin_rational_whole_operator_order_proved"]
+          assert [c["cell_count"] for c in d["checkpoints"]]==[96,192,288,338]
+          for policy,cnt in d["choice_counts"].items():
+              assert sum(cnt.values())==338
+          for v in d["nonnegative_exact_local_objective_gains"].values():
+              assert F(v)>=0
+          for c in d["checkpoints"]:
+              for p in c["policies"].values():
+                  assert sum(p["25D_lower_inertia"].values())==25
+                  assert sum(p["23D_lower_inertia"].values())==23
+                  assert F(p["complete_25D_outward_export_fee"])>=0
+          assert d["interpretation"] in (
+              "SPECTRAL_DIRECTIONAL_METHOD_IMPROVEMENT",
+              "NO_23D_INERTIA_IMPROVEMENT")
+          assert not d["MG03_certifies_actual_negative_eigenvectors"]
+          assert not d["MG03_certifies_complete_25D_source_PSD"]
+          assert not d["MG03_certifies_true_signed_23D_Schur_PSD"]
+          assert d["complete_470_source_Astar_and_infinite_odd_remainder"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg03-original-weighted-25source
+          path: artifacts/mg03_weighted_original_25source_directions.json
