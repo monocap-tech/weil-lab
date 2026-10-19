@@ -1,0 +1,72 @@
+name: RPB108 SM57 original entire signed-negative 25 physical sources
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm57_original_25source_negative_upper.py'
+      - 'notes/RPB108_SM57_COMPLETE_ORIGINAL_25SOURCE_SIGNED_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm57-original-complete-25source.yml'
+  workflow_dispatch:
+jobs:
+  sm57-original-25source-negative-upper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact physical source dependencies
+        run: pip install numpy scipy
+      - name: Prove original whole-negative 973 real leaves, 25 true source caps and signed full matrix
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm57_original_25source_negative_upper.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm57_original_25source_negative_upper.py
+      - name: Fail closed complete source negative-upper and original operator limits
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm57_original_complete_negative_25source_signed_lower.json'))
+          assert d['status']=='SCOPED_TRUE_ORIGINAL_COMPLETE_25SOURCE_SIGNED_LOEWNER_LOWER_AND_NEGATIVE_UPPER'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['original_actual_supported_source_count']==25
+          assert d['original_negative_true_whole_real_cover_clusters']==107
+          assert d['original_negative_true_whole_real_cover_leaves']==973
+          assert d['original_negative_full_supported_source_count']==25
+          assert d['original_negative_total_width_exact']=='973/64'
+          assert d['all_original_25x25_mixed_source_coefficients_paid']
+          assert d['full_original_negative_frequency_operator_upper_on_all_25']
+          assert d['original_negative_all25_complete_Cauchy_row_majorant']
+          assert d['original_positive_inherited_strict_real_signed_windows']==49
+          assert d['original_true_physical_sinh_pole_rankone_full25_upper']
+          assert len(d['original_negative_full25_Loewner_upper_diagonal'])==25
+          assert all(F(x)>0 for x in d['original_negative_full25_Loewner_upper_diagonal'])
+          assert F(d['complete_original_signed_25x25_matrix_outward_export_fee'])>=0
+          assert F(d['original_pole_full25_Loewner_upper_rounding_fee'])>=0
+          L=[[F(x) for x in row] for row in d['original_complete_25source_signed_lower_matrix']]
+          assert len(L)==25 and all(len(row)==25 for row in L)
+          assert all(L[i][j]==L[j][i] for i in range(25) for j in range(25))
+          inertia=d['original_complete_25source_rational_LOWER_exact_inertia']
+          assert inertia['positive']+inertia['negative']+inertia['zero']==25
+          assert inertia['exact_1x1_congruence_pivots']+2*inertia['exact_2x2_congruence_pivots']+inertia['zero']==25
+          assert d['certified_original_actual_25source_negative_index_UPPER_bound']==inertia['negative']
+          assert not d['original_actual_25source_negative_index_EXACTLY_classified']
+          assert not d['original_true_negative_index_exactly_known']
+          assert not d['original_25source_signed_PSD_certified']
+          assert not d['complete_original_odd_orthogonal_complement_classified']
+          assert not d['original_470source_Astar_inverse_and_O1O2_closed']
+          assert not d['even_Weil_CC27_RH_closed']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(x for x in m['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Upload original entire 25-source negative upper and signed lower
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm57-original-all25-negative-upper-signed-matrix
+          path: artifacts/sm57_original_complete_negative_25source_signed_lower.json
+          if-no-files-found: warn
