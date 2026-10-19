@@ -182,7 +182,7 @@ def main():
             "matrix":compact
         })
     best=min(tested,key=lambda x:(x["true_signed_lower_inertia"]["negative"],
-                   -x["true_signed_lower_trace"]))
+                   -F(x["true_signed_lower_trace"])))
     chosen=best["matrix"]
     best_t=F(best["mix_with_SM57_diagonal_negative_UPPER"])
     assert all(chosen[i][j]==chosen[j][i] for i in range(N) for j in range(N))
