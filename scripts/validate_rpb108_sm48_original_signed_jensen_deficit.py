@@ -212,6 +212,10 @@ def main():
     # Do not rely merely on the maximizing search: original actual
     # source coordinate #2 by itself supplies an EXACT signed witness
     # against SM47's *lower reference*, even without pole subtraction.
+    assert Nmat[2][2]-errN>F(195,10000),(
+        "Original #2 negative source band lower not certified")
+    assert Lref[2][2]<F(217,100000),(
+        "Original #2 SM47 positive reference upper of displayed lower not certified")
     assert Nmat[2][2]-errN-Lref[2][2]>F(17,1000),(
         "Original single supported source #2 deficit not certified",
         float(Nmat[2][2]-errN-Lref[2][2]))
