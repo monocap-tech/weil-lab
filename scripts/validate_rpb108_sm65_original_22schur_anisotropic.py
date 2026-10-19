@@ -188,6 +188,16 @@ def main():
       "original_physical_Gram_interval_total_upper_error":str(gramfee),
       "actual_positive_anchor_signed_Gershgorin_eigen_lower":str(ell),
       "actual_mixed_physical_source_pairs_full_count":66,
+      "true_original_25source_complete_signed_LOWER_rational":[
+           [str(z) for z in row] for row in L],
+      "true_original_25source_two_sided_difference_upper_diagonal":[
+           str(E[i][i]) for i in range(N)],
+      "true_original_3source_anchor_signed_LOWER_rational":[
+           [str(x) for x in row] for row in A],
+      "true_original_22coordinate_signed_LOWER_rational":[
+           [str(L[i][j]) for j in R] for i in R],
+      "actual_original_3x22_mixed_source_absolute_UPPER_matrix":[
+           [str(bound[i,j]) for j in R] for i in P],
       "actual_source_anchor_mixed_row_absolute_bounds":[str(rowsums[i]) for i in P],
       "actual_source_mixed_max_absolute_bound":str(up(max(bound.values()))),
       "actual_22D_anisotropic_schur_diagonal_penalty_upper":[

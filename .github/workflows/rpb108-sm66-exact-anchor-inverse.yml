@@ -1,0 +1,91 @@
+name: RPB108 SM66 original exact inverse positive 4plane 21D Schur
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm66_exact_anchor_inverse_schur.py'
+      - 'scripts/validate_rpb108_sm65_original_22schur_anisotropic.py'
+      - 'notes/RPB108_SM66_EXACT_ANCHOR_INVERSE_SCHUR_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm66-exact-anchor-inverse.yml'
+  workflow_dispatch:
+jobs:
+  original-signed-exact-anchor-inverse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 59
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact original Fourier dependencies
+        run: pip install numpy scipy
+      - name: Reprove SM65 true actual 66 source mixed intervals and SM66 complete positive 4D inverse Schur
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm65_original_22schur_anisotropic.py scripts/validate_rpb108_sm66_exact_anchor_inverse_schur.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm66_exact_anchor_inverse_schur.py
+      - name: Fail closed exact inverse and full Schur 21D source scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm66_actual_original_21D_signed_schur_four_source_inverse.json'))
+          assert d['status']=='SCOPED_ACTUAL_ORIGINAL_21D_SIGNED_SCHUR_FOUR_SOURCE_EXACT_INVERSE'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['verified_all_original_SM65_full_source25_signed_two_sided_replay']
+          assert d['verified_SM62_original_signed_25source_all625_hash']=='87594b103a0575f1d5945e37cf16917c5184573acb6d305709b09d9eafb9971c'
+          assert d['verified_original_SM64_positive_4source_exact_matrix_sha256']=='a597efeaddbf690c82a8a1274fc4ba3e15d6a31eb3594db502e7f8c15544ce42'
+          assert d['source_SM64_true_original_signed_4plane_focused_Actions']==39323057878
+          assert d['true_original_positive_physical_anchor_sources']==[1,2,17,22]
+          assert d['true_original_remaining_physical_source_indices']==[i for i in range(25) if i not in (1,2,17,22)]
+          assert d['true_original_remaining_source_dimension']==21
+          assert d['true_actual_original_mixed_source_pairs_count']==84
+          p=[F(x) for x in d['original_positive_anchor_four_exact_rational_LDL_pivots']]
+          assert len(p)==4 and min(p)>0
+          A=[[F(x) for x in row] for row in d['original_positive_anchor_full_4x4_exact_inverse']]
+          assert len(A)==4 and all(len(row)==4 for row in A)
+          assert all(A[i][j]==A[j][i] for i in range(4) for j in range(4))
+          rows=[F(x) for x in d['actual_all84_mixed_cross_row_sum_bounds']]
+          weighted=[F(x) for x in d['full_inverse_weighted_mixed_anchor_source_row_sums']]
+          assert len(rows)==len(weighted)==4
+          assert all(x>0 for x in rows+weighted)
+          assert F(d['original_positive_anchor_Gershgorin_lower'])>0
+          newer=[F(x) for x in d['actual_21D_full_inverse_anisotropic_schur_penalty']]
+          old=[F(x) for x in d['actual_21D_Gershgorin_anisotropic_schur_penalty']]
+          assert len(newer)==len(old)==21
+          assert all(x>=0 for x in newer+old)
+          assert d['full_inverse_diagonal_UPPER_dominates_ell_scheme']==all(a<=b for a,b in zip(newer,old))
+          assert d['full_inverse_directions_not_worse_count']==sum(a<=b for a,b in zip(newer,old))
+          assert F(d['full_inverse_schur_penalty_sum'])==sum(newer)
+          assert F(d['Gershgorin_schur_penalty_sum'])==sum(old)
+          assert F(d['full_inverse_schur_penalty_max'])==max(newer)
+          assert F(d['Gershgorin_schur_penalty_max'])==max(old)
+          S=[[F(x) for x in row] for row in d['full_inverse_TRUE_signed_21D_Schur_LOEWNer_lower']]
+          assert len(S)==21 and all(len(r)==21 for r in S)
+          assert all(S[i][j]==S[j][i] for i in range(21) for j in range(21))
+          assert F(d['full_inverse_true_Schur_lower_rational_export_fee'])>=0
+          assert F(d['Gershgorin_true_Schur_lower_rational_export_fee'])>=0
+          for key in ('original_signed_coordinate_reference_21D_inertia',
+                      'full_inverse_TRUE_schur_21D_LOWER_inertia',
+                      'Gershgorin_TRUE_schur_21D_LOWER_inertia'):
+              assert sum(d[key][k] for k in ('positive','negative','zero'))==21
+          assert not d['ACTUAL_21D_signed_Schur_PSD_certified']
+          assert not d['ACTUAL_21D_signed_Schur_negative_index_exactly_classified']
+          assert d['verified_original_ACTUAL_25source_negative_index_upper_SM64']==21
+          assert not d['complete_original_infinite_odd_negative_index_classified']
+          assert not d['original_470_Astar_inverse_strong_orthogonal_remainder']
+          assert not d['W_ODD_NEG_O1O2_even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(o for o in m['obligations'] if o['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Preserve full original 84 cross and true 22D source Schur certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm66-actual-original-source21-four-anchor-inverse
+          path: |
+            artifacts/sm65_original_actual_22D_Schur_anisotropic.json
+            artifacts/sm66_actual_22D_exact_anchor_inverse_schur.json
+          if-no-files-found: warn
