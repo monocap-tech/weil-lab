@@ -254,10 +254,13 @@ def one_mesh(step,centers,sources,windows):
                for i in range(n) for j in range(n))
     eps=weight_error+new_fourier
     assert eps>0
-    # The chosen rational matrix is a sum of positive-weight
-    # original Fourier Gram integrals of rational affine source
-    # functions (or constants), hence PSD; signs of its entries
-    # or raw eigenvalues do not replace that proof.
+    # The IDEAL unrounded reference is an integral of positive
+    # weight times original rational affine-source outer products
+    # and is PSD. Independent rational quantization of J0,J1,J2
+    # is NOT automatically PSD-preserving: the complete moment
+    # rounding error has been explicitly paid above. Never claim
+    # a certified PSD sign for the quantized matrix without a
+    # separate full-matrix rational PSD check.
     return {
        "max_cell_width":str(step),
        "original_supported_source_dimension":n,
