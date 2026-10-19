@@ -16,7 +16,7 @@ positive delta source Jensen lower is valid because the NEW local
 signed reference delta-w <= delta <= original m, with w>=0.
 No original signed cell or exceptional pole is counted twice.
 
-Select up to 96 cells based on rigorous TRUE sinh-pole source
+Select up to 256 cells based on rigorous TRUE sinh-pole source
 Jensen contribution, but certify FULL 3x3 original sin/xcos/sinh
 Fourier mean and all cross through SM53 pair_cell. Construct
   L54 = L53 + sum 2h delta vv^T - eps_full I,
@@ -48,7 +48,7 @@ DEN=10**12
 N=3
 WIDTH=F(1,32)
 END=F(13)
-MAX_EXTRA=96
+MAX_EXTRA=256
 def up(x):return ceil_rat(x,DEN)
 def down(x):return floor_rat(x,DEN)
 
@@ -118,7 +118,8 @@ def discover_new_real_positive(centers,sources):
     assert len(candidates)>0
     candidates.sort(key=lambda v:(-v[0],v[1]))
     chosen=candidates[:MAX_EXTRA]
-    assert len(chosen)>0
+    assert len(chosen)>96 and len(chosen)==len(candidates),(
+      'Not all source-pole positive real cells were selected',len(chosen),len(candidates))
     cells=sorted((x[1],x[2]) for x in chosen)
     assert all(cells[i][1]<=cells[i+1][0] for i in range(len(cells)-1))
     assert all(b<=END and a>=0 for a,b in cells)
