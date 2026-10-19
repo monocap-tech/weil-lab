@@ -1,0 +1,67 @@
+name: RPB108 SM46 actual original affine physical Fourier source window
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm46_affine_physical_fourier_source.py"
+      - "notes/RPB108_SM46_AFFINE_PHYSICAL_FOURIER_SOURCE_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm46-original-affine-Fourier-source.yml"
+  workflow_dispatch:
+
+jobs:
+  sm46-original-source-affine-full:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install geometry and rational interval dependencies
+        run: python -m pip install numpy scipy
+      - name: True original signed source affine Fourier positive matrix and 25-source whole-window Loewner
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm46_affine_physical_fourier_source.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm46_affine_physical_fourier_source.py
+      - name: Enforce strict meaningful source error gain without whole odd spectral promotion
+        run: |
+          python - <<'PY'
+          from fractions import Fraction as F
+          import json
+          a=json.load(open("artifacts/sm46_original_source_affine_physical_fourier.json"))
+          assert a["status"]=="CERTIFIED_SCOPED_TRUE_ORIGINAL_AFFINE_PHYSICAL_FOURIER_FULL_25x25_SOURCE_WINDOW"
+          assert a["canonical_original_W_ODD_NEG"]=="OPEN"
+          assert "SM43A/SM45" in a["true_original_seven_prime_digamma_positive_weight"]
+          assert a["whole_original_positive_low_0_to_4096_certified"] is False
+          assert a["full_original_Astar_inverse_strong_residual_certified"] is False
+          assert a["full_original_odd_Wodd_O1_O2_certified"] is False
+          assert a["even_E1_E4_Weil_CC27_RH_certified"] is False
+          c=a["coarse_mesh"];f=a["fine_mesh"]
+          assert c["original_true_frequency_cell_count"]==65
+          assert f["original_true_frequency_cell_count"]==129
+          assert c["original_supported_source_dimension"]==25
+          assert f["original_supported_source_dimension"]==25
+          assert f["same_source_centered_window_measure"]=="1029/64"
+          assert f["source_reference_choices"]["SM46_source_affine"]>0
+          assert f["source_reference_choices"]["SM45_midpoint"]>=0
+          assert len(f["exact_complete_rational_original_25x25_source_matrix"])==25
+          assert all(len(row)==25 for row in f["exact_complete_rational_original_25x25_source_matrix"])
+          assert F(f["SM46_new_source_affine_Fourier_cell_error_exact_outward"])<F(95,100)*F(f["SM45_original_midpoint_Fourier_cell_error_exact_outward"])
+          assert F(f["SM46_complete_original_selected_source_window_Loewner_error_exact_outward"]) < F(c["SM46_complete_original_selected_source_window_Loewner_error_exact_outward"])
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          odd=next(x for x in m["obligations"] if x["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open" and "O1/O2" in odd["acceptance"]
+          assert all(k in odd["evidence"] for k in ("SM44","SM45","SM46"))
+          assert "sm46_original_source_affine_physical_Fourier" in m["governance"]
+          PY
+      - name: Publish scoped original rational full 25×25 source-affine matrix certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm46-original-true-source-affine-Fourier-25x25-matrix-only
+          path: artifacts/sm46_original_source_affine_physical_fourier.json
+          if-no-files-found: warn
