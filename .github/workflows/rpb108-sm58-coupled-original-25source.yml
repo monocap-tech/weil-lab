@@ -1,0 +1,76 @@
+name: RPB108 SM58 original 25-source coupled negative Fourier upper
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm58_original_coupled_25negative.py'
+      - 'notes/RPB108_SM58_COUPLED_ORIGINAL_25NEGATIVE_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm58-coupled-original-25source.yml'
+  workflow_dispatch:
+jobs:
+  sm58-all-original-25source-negative-coupled:
+    runs-on: ubuntu-latest
+    timeout-minutes: 58
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original analytic Fourier dependencies
+        run: python -m pip install numpy scipy
+      - name: Certify original whole negative support and coupled source Fourier affine upper
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm58_original_coupled_25negative.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm58_original_coupled_25negative.py
+      - name: Require entire original 25x25 Loewner coverage and exact spectral-scope gate
+        run: |
+          python - <<'PY'
+          from fractions import Fraction as F
+          import json
+          d=json.load(open("artifacts/sm58_original_complete_coupled_negative_25source.json"))
+          assert d["status"]=="SCOPED_ORIGINAL_FULL_25SOURCE_COUPLED_NEGATIVE_FOURIER_UPPER_AND_SIGNED_LOWER"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_real_supported_physical_source_count"]==25
+          assert d["whole_negative_true_original_operator_coupled_upper_proved"]
+          assert d["original_entire_pole_rankone_upper_paid"]
+          assert d["whole_original_negative_frequency_leaves"]==973
+          assert d["whole_original_negative_frequency_clusters"]==107
+          assert d["true_original_25source_full_coupled_Fourier_and_derivatives"]
+          assert d["original_SM57_diagonal_comparison"]["same_original_negative_frequency_leaves"]==973
+          U=[[F(v) for v in row] for row in d["full_25source_negative_frequency_coupled_upper_rational"]]
+          assert len(U)==25 and all(len(r)==25 for r in U)
+          assert all(U[i][j]==U[j][i] for i in range(25) for j in range(25))
+          assert all(U[i][i]>=0 for i in range(25))
+          assert F(d["negative_full25_source_coupled_rational_export_upper_fee"])>=0
+          assert F(d["total_original_negative_weighted_affine_source_Gram_error"])>=0
+          tests=d["convex_true_negative_upper_mixing_tested"]
+          assert len(tests)==5
+          assert [F(a["mix_with_SM57_diagonal_negative_UPPER"]) for a in tests]==[F(0),F(1,4),F(1,2),F(3,4),F(1)]
+          for a in tests:
+              inertia=a["true_signed_lower_inertia"]
+              assert sum(inertia[k] for k in ("positive","negative","zero"))==25
+              assert inertia["exact_1x1_congruence_pivots"]+2*inertia["exact_2x2_congruence_pivots"]+inertia["zero"]==25
+              assert F(a["rational_lower_matrix_outward_fee"])>=0
+          L=[[F(z) for z in row] for row in d["chosen_true_signed_lower_25source_rational_matrix"]]
+          assert len(L)==25 and all(len(r)==25 for r in L)
+          assert all(L[i][j]==L[j][i] for i in range(25) for j in range(25))
+          inertia=d["chosen_true_signed_lower_25source_exact_inertia"]
+          assert sum(inertia[k] for k in ("positive","negative","zero"))==25
+          assert d["certified_actual_original_25source_restricted_negative_index_UPPER"]==inertia["negative"]
+          assert not d["exact_original_25source_actual_negative_index_proved"]
+          assert not d["complete_infinite_original_odd_negative_index_proved"]
+          assert not d["complete_original_470source_Astar_and_orthogonal_remainder"]
+          assert not d["original_odd_O1O2_even_Weil_CC27_RH"]
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"]
+          assert next(x for x in m["obligations"] if x["id"]=="W-ODD-NEG")["status"]=="open"
+          PY
+      - name: Publish complete original 25x25 negative source covariance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm58-original-full25-coupled-negative-upper
+          path: artifacts/sm58_original_complete_coupled_negative_25source.json
+          if-no-files-found: warn
