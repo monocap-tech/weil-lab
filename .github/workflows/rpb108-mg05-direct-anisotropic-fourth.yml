@@ -31,7 +31,16 @@ jobs:
           from fractions import Fraction as F
           from sys import path
           path.insert(0,"scripts")
-          from validate_rpb108_mg05_anisotropic_direct_four_source import leading_minors
+          from validate_rpb108_mg05_anisotropic_direct_four_source import (
+              leading_minors,apply_fees,empty_fees,zero)
+          # Fail closed if outside NEGATIVE covariance upper accidentally
+          # subtracts the source uncertainty instead of adding it.
+          smoke=empty_fees()
+          for key in smoke: smoke[key]=[F(2)]*4
+          upper=apply_fees(zero(),smoke,sign=+1)
+          lower=apply_fees(zero(),smoke,sign=-1)
+          assert all(upper["scalar"][i][i]==2 for i in range(4))
+          assert all(lower["scalar"][i][i]==-2 for i in range(4))
           d=json.load(open("artifacts/mg05_anisotropic_direct_four_source.json"))
           assert d["canonical_W_ODD_NEG"]=="OPEN"
           assert d["actual_original_source_indices"]==[1,2,17,22]
