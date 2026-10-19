@@ -1,0 +1,69 @@
+name: RPB108 SM54 original pole-adaptive disjoint signed positive Jensen
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm54_original_pole_adaptive_Jensen.py'
+      - 'certificates/rpb108_sm53_true_original_signed_3source.json'
+      - 'notes/RPB108_SM54_POLE_ADAPTIVE_SIGNED_POSITIVE_20261018.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm54-original-pole-adaptive.yml'
+  workflow_dispatch:
+jobs:
+  sm54-original-pole-adaptive-3source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original physical Fourier dependencies
+        run: pip install numpy scipy
+      - name: Prove disjoint original signed positive low bands on three real supported sources
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm54_original_pole_adaptive_Jensen.py
+          OPENBLAS_NUM_THREADS=2 python scripts/validate_rpb108_sm54_original_pole_adaptive_Jensen.py
+      - name: Fail closed full signed matrix, exact pole Schur and canonical original open obligations
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm54_original_signed_pole_adaptive_3source.json'))
+          assert d['status']=='CERTIFIED_SCOPED_ORIGINAL_3SOURCE_POLE_ADAPTIVE_POSITIVE_JENSEN_LOWER'
+          assert d['original_W_ODD_NEG']=='OPEN'
+          assert d['original_input_source_indices']==[2,17,24]
+          assert d['original_3source_current_core']==['13','16']
+          assert d['whole_real_scan_cells']==416
+          assert d['new_selected_real_positive_outside_old_core_and_all_old_positive_bands']>0
+          assert d['new_selected_real_positive_outside_old_core_and_all_old_positive_bands']<=96
+          assert d['new_all_original_source_cross_included']
+          assert F(d['new_3x3_pole_diagonal_improvement_lower'])>0
+          assert F(d['new_full_3x3_positive_mean_error_up'])>=0
+          assert F(d['new_3x3_complete_export_outward_row_error'])>=0
+          L=[[F(q) for q in row] for row in d['new_complete_original_3x3_true_signed_LOEWNER_lower']]
+          assert len(L)==3 and all(len(row)==3 for row in L)
+          assert all(L[i][j]==L[j][i] for i in range(3) for j in range(3))
+          a=L[0][0]
+          b=a*L[1][1]-L[0][1]**2
+          c=(a*(L[1][1]*L[2][2]-L[1][2]**2)
+             -L[0][1]*(L[1][0]*L[2][2]-L[1][2]*L[2][0])
+             +L[0][2]*(L[1][0]*L[2][1]-L[1][1]*L[2][0]))
+          assert [a,b,c]==[F(x) for x in d['original_new_3source_signed_leading_principal_minors']]
+          assert d['full_original_3source_positive_definite_certified']==(a>0 and b>0 and c>0)
+          if a>0 and b>0:
+              assert F(d['new_original_true_signed_lower_effective_pole_Schur_margin'])==c/b
+          assert not d['entire_original_25_odd_source_PSD_negative_index_certified']
+          assert not d['complete_original_470_source_residual_O1O2_even_Weil_CC27_RH_certified']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(z for z in m['obligations'] if z['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Publish exact scoped original 3D signed pole-SCHUR lower
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm54-original-signed-three-source-adaptive-pole
+          path: artifacts/sm54_original_signed_pole_adaptive_3source.json
+          if-no-files-found: warn
