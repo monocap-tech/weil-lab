@@ -1,0 +1,87 @@
+name: RPB108 SM67 original 21D coupled PSD covariance Schur
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm67_full_coupled_covariance_21schur.py'
+      - 'scripts/validate_rpb108_sm65_original_22schur_anisotropic.py'
+      - 'notes/RPB108_SM67_FULL_COUPLED_PSD_COVARIANCE_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm67-full-coupled-source21-schur.yml'
+  workflow_dispatch:
+jobs:
+  actual-original-source21-coupled-PSD-Schur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 59
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install complete original analytic Fourier dependencies
+        run: pip install numpy scipy
+      - name: Recompute original source25 and full coupled 21D actual Schur bounds
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm65_original_22schur_anisotropic.py scripts/validate_rpb108_sm66_exact_anchor_inverse_schur.py scripts/validate_rpb108_sm67_full_coupled_covariance_21schur.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm67_full_coupled_covariance_21schur.py
+      - name: Fail closed full 21D true signed covariance / lower matrix vs infinite odd operator
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm67_original_actual_21D_coupled_psd_covariance_schur.json'))
+          assert d['status']=='SCOPED_ORIGINAL_ACTUAL_21D_SIGNED_SCHUR_FULL_COUPLED_PSD_COVARIANCE_UPPER'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['verified_original_SM65_true_complete_25D_two_sided_replay']
+          assert d['verified_original_SM62_true_full_25D_signed_lower_SHA256']=='87594b103a0575f1d5945e37cf16917c5184573acb6d305709b09d9eafb9971c'
+          assert d['verified_original_SM64_true_positive_4x4_signed_anchor_SHA256']=='a597efeaddbf690c82a8a1274fc4ba3e15d6a31eb3594db502e7f8c15544ce42'
+          assert d['verified_original_SM64_actions_run']==39323057878
+          assert d['true_original_full25_error_covariance_exact_inertia']=={'positive':25,'negative':0,'zero':0}
+          assert d['true_positive_anchor_original_source_indices']==[1,2,17,22]
+          assert d['original_complement_real_source_indices']==[i for i in range(25) if i not in (1,2,17,22)]
+          assert d['true_actual_original_signed_cross_coefficients_covered']==84
+          assert len(d['positive_anchor_full_exact_inverse_four_pivots'])==4
+          assert all(F(x)>0 for x in d['positive_anchor_full_exact_inverse_four_pivots'])
+          assert F(d['positive_anchor_covariance_trace_sigma'])>0
+          assert d['source_positive_anchor_lower_complete_4x4_inverse_verified']
+          assert d['complete_original_signed_21D_psd_covariance_majorization']
+          assert d['original_covariance_21x21_offdiagonal_entries_retained']==441
+          assert d['original_old_exact_inverse_diagonal_source21_penalties_reproduced']
+          grid=['1/8','1/4','1/2','1','2','4','8']
+          assert d['tested_all_rational_Young_parameters']==grid
+          opts=d['all_true_full_coupled_Schur_lower_options']
+          assert len(opts)==7
+          for x in opts:
+              assert x['young_parameter'] in grid
+              assert x['true_full_coupled_21D_penalty_matrix_PSD']
+              assert F(x['full_coupled_penalty_exact_trace'])>=0
+              assert F(x['old_exact_inverse_diagonal_penalty_trace'])>=0
+              assert sum(x['coupled_vs_exact_diagonal_difference_inertia'][k] for k in ('positive','negative','zero'))==21
+              assert x['coupled_upper_dominated_by_exact_inverse_diagonal_Loewner']==(x['coupled_vs_exact_diagonal_difference_inertia']['negative']==0)
+              assert sum(x['true_actual_21D_Schur_LOWER_inertia'][k] for k in ('positive','negative','zero'))==21
+              assert F(x['source21_symmetric_outward_rational_compaction_fee'])>=0
+          assert d['best_parameter'] in grid
+          S=[[F(z) for z in row] for row in d['best_true_signed_Schur_lower_21D_rational']]
+          assert len(S)==21 and all(len(row)==21 for row in S)
+          assert all(S[i][j]==S[j][i] for i in range(21) for j in range(21))
+          assert sum(d['best_lower_rational_21D_reference_inertia'][k] for k in ('positive','negative','zero'))==21
+          assert d['verified_original_ACTUAL_25D_signed_negative_index_upper_SM64']==21
+          assert not d['ACTUAL_source21_Schur_PSD_certified']
+          assert not d['ACTUAL_source21_Schur_negative_index_exactly_classified']
+          assert not d['complete_original_infinite_odd_negative_index_classified']
+          assert not d['original_470_Astar_inverse_strong_orthogonal_remainder']
+          assert not d['original_odd_O1O2_even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(o for o in m['obligations'] if o['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Retain full original source covariance 21D coupled Schur artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm67-original-source21-full-covariance-Schur
+          path: |
+            artifacts/sm65_original_actual_22D_Schur_anisotropic.json
+            artifacts/sm67_original_actual_21D_coupled_psd_covariance_schur.json
+          if-no-files-found: warn
