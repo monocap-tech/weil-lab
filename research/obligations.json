@@ -43,7 +43,8 @@
     "sm52_original_coupled_sin_xcos_direct_signed": "SM52 preserves original W-ODD-NEG active obligation, exact 2x2 source-coupled original signed seven-prime/digamma core + exhaustive original 3892 exterior negative cap, disjoint signed-positive Jensen windows, original physical sinh pole rankone upper. Any determinant acceptance only on genuine 2D sin/xcos supported source subspace; no claim original full 25/470 PSD, all-operator odd index/complement, even, Weil, CC27 or RH.",
     "sm52_original_true_signed_two_source": " SM52 actual full 2x2 signed original source trial positivity certified by focused CI 39205091881 with two positive Sylvester minors: diagonals1.070559452403 and1.437706842403, offdiag0.003816, det1.539136088063. One genuine 2D trial subspace only, full negative index and all original Wodd/even Weil/RH OPEN.",
     "sm53_original_three_source_pole": "SM53 3x3 original signed direct source sin/xcos/sinh input with complete exterior negative and true pole, full rational Sylvester conditional gate. W-ODD-NEG and RH OPEN.",
-    "sm52c_physical_two_source_coercivity": "SM52C exact physical supported original signed 2D L2 coercivity 69/200 based on verified SM52 full 2x2 Loewner matrix, rigorous sin/xcos norm upper 4631/1500. Original W-ODD-NEG full odd/even, 25/470 source inverse/inertia, Weil/CC27/RH OPEN."
+    "sm52c_physical_two_source_coercivity": "SM52C exact physical supported original signed 2D L2 coercivity 69/200 based on verified SM52 full 2x2 Loewner matrix, rigorous sin/xcos norm upper 4631/1500. Original W-ODD-NEG full odd/even, 25/470 source inverse/inertia, Weil/CC27/RH OPEN.",
+    "sm54_original_signed_pole_adaptive": "SM54 actual complete true signed original SM53 3x3 lower under W-ODD-NEG; add genuine separate original seven-prime/digamma strictly sign-positive pole-adaptive source Jensen frequency windows [0,13], disjoint from earlier 49 positive bands and [13,16] core, certify all original 3x3 cross and full outward Loewner error and effective pole Schur. Not an original full 25/470 signed PSD or negative index theorem; even, Weil CC27 RH remain OPEN. First passing focused source CI 39212101376: 96 genuine disjoint pole-adaptive original true-positive cells, full 3x3 error charged; effective pole Schur LOWER improved -0.288957971125 to -0.070585452483 (75.57%). Still NOT actual odd spectral negativity or 3D positivity; SM54B exhaustive 243-cell candidate test pending."
   },
   "active_obligation": "W-ODD-NEG",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -500,13 +501,20 @@
       "scope": "Original SI10 25 physical source subspan {e2, same-center xcos, actual sinh pole}; all 768 direct signed real core cells, original full 973 parent/3892 subcell negative frequency upper outside core, disjoint old17+new32 Jensen positive outer, real physical pole rank-one upper from SM42 Gram, exact 3x3 Loewner errors and full Sylvester minors. Negative LOWER minors do not prove actual negative eigenvalues. Full odd/even signed operator, 470 Astar strong residual, Weil/CC27/RH remain open.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/236",
       "repo_path": "notes/RPB108_SM53_SIGNED_THREE_SOURCE_POLE_20261018.md",
-      "verification": "Focused CI pending, independent mathematical audit open."
+      "verification": "Complete original physical sin/xcos/sinh-pole true signed 3×3 Loewner LOWER Actions 39208056922 SUCCESS, all full signed real intervals and pole, full original Gram independence; diagonal lower [1.070112612818,1.437260002818,-0.288691147182], first 2×2 minor +1.538015495058376, final 3×3 determinant -0.4444218370103127. Actual full 3D signed positivity NOT certified by this lower, and negative lower determinant is NOT actual negative eigenvalue/index. Recovered clean stack PR236; previous conflicted PR235 closed. External mathematical audit open."
     },
     "SM52C": {
       "kind": "Exact-rational physical L2 coercivity corollary of independently focused-CI verified complete original coupled SM52 2x2 signed source lower.",
       "scope": "True original supported SI10 sine source2 and original same-center xcos source17 (original physical B=11/10), SM52 original signed lower matrix CI39205091881 proves full 2x2 PD with offdiag. Exact Gershgorin min=1066743452403/10^12; entire physical Gram trace <=4631/1500. Hence signed Wodd(h)>=69/200 ||h||_L2^2 on 2D span only. Full original 25/470 odd negative index/Schur, even/Weil/CC27/RH remain open. Inherited Fourier/form-domain identity and math audit separate.",
       "repo_path": "notes/RPB108_SM52C_TWO_SOURCE_L2_20261018.md",
-      "verification": "Pinned exact SM52 39205091881 source matrix and standalone exact-Fraction replay under lightweight SM52C Actions pending."
+      "verification": "Standalone fully exact rational physical L² coercivity on original SM52 genuine sin/xcos 2D signed trial space passed Actions 39208057040: coefficient Gershgorin ell=1066743452403/10^12, physical Gram trace upper=4631/1500, strict signed >=69/200 ||h||², exact rational margin ell-(69/200)*(4631/1500)=1613452403/10^12. Complete 25/470 odd spectrum, even, Weil/RH open."
+    },
+    "SM54": {
+      "kind": "First focused exact original signed 3x3 pole-adaptive 96-window Loewner improvement CERTIFIED, 243-cell saturation extension pending",
+      "scope": "SM53 full true signed whole-frequency original 3x3 lower on real SI10 input original sin source2/xcos source17/sinh pole source24, including original signed negative complete SI10 cover and original exceptional rank-one penalty, PASSED CI but pole diagonal negative on LOWER matrix, not actual negative direction. SM54 selects up to 96 true sign-positive 1/32 real-frequency [0,13] cells with original SI06 all-seven-prime/digamma SM39/SM40 certified continuous signed lower; every candidate disjoint from all old 17 SM12 and 32 SM49 credited positive bands and [13,16] SM53 signed core, no double counting. Rank by rigorous original pole Fourier Jensen gain, but certify each added band with original full physical 3x3 signed Fourier mean outer and complete full 3x3 Loewner fee from SM53 pair_cell, including all sine/xcos/pole cross; add to SM53 pinned proven complete signed lower, not a lower/lower source reference. Exact Schur complement of positive 2x2 leading block and three exact Sylvester minors classify original 3D trial positivity only if all positive. Full 25/470 original signed odd negative index/complement/Schur, even, Weil CC27 RH open.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/237",
+      "repo_path": "notes/RPB108_SM54_POLE_ADAPTIVE_SIGNED_POSITIVE_20261018.md",
+      "verification": "SM54 source 96-window focused Actions 39212101376 SUCCESS at head fb8791d8158d65d6eeabad22a7a6e604a9b40139, all original real signed whole-cell sign checks and 3x3 coupled full-matrix-error Schur acceptance passed. 416 scanned original rational [0,13] whole-real cells, 9 overlap old 49 sign-positive bands discarded, 153 nonpositive signed lower rejected; 254 strictly original signed m>1/5 new eligible cells, 243 strictly positive certified sinh-pole Jensen mean scores, selected top 96. Complete original 3x3 source physical signed Loewner full mean error 0.002881972529; original pole lower diagonal improved -0.288691147182 to -0.070102889773 (+0.218588257409), effective signed pole lower Schur -0.288957971125 to -0.070585452483, 75.57% improvement, STILL nonpositive lower and actual 3D sign INCONCLUSIVE. All 25/470 original odd negative index/inverse/orthogonal remainder and even/Weil/CC27/RH open. SM54B strengthens check to use all 243 beneficial disjoint original signed cells; final-head CI pending. Independent mathematical audit separate."
     }
   },
   "obligations": [
@@ -597,7 +605,8 @@
         "SM51",
         "SM52",
         "SM52C",
-        "SM53"
+        "SM53",
+        "SM54"
       ],
       "acceptance": "PS36 complete-operator O1/O2 gate: prove ORIGINAL supported full odd signed W_o=A_o-2|s><s|−K_neg,o >=0 on full physical domain, equivalently R_o (A_o-2|s><s|)^-1 R_o*<=I on entire true original negative-frequency carrier, with all original positive/negative cross couplings and infinite residual (or exact original full source-first odd Schur). A 2-column principal inverse block from SM25 or 890-column partial modules are NOT full-operator acceptance.",
       "next_action": "SM47 ORIGINAL W-ODD-NEG complete signed odd O1/O2: SM46 has now PASSED focused Actions 39188053816 with first fully explicit original 25×25 source-AFFINE rational positive source-window Fourier matrix and exact whole-coupled source Loewner epsilon. Same 16 selected original physically supported odd SI10 source-centered windows measure1029/64, 65/129 real rational cells. At fine1/8, SM45 source Fourier error130.916→SM46 31.368 (−76.04%), source positive scalar seven-prime/digamma weight interpolation unchanged45.611, combined true original source-window form error76.979 vs former SM45 176.527 (−56.39%); ALL 129 cells choose strictly better exact source-affine and all 25 source cross retained. NEXT PRIMARY: cover the missing near-entire original positive LOW [0,4096] real frequency using adaptive source-leverage and verified positive scalar envelopes/physical Fourier source Gram per cell, and seek rigorous source/matrix-weighted positive multiplier interpolation correction (45.611 now > Fourier 31.368) instead of uniform scalar Cauchy. This will still require rigorous high-frequency original log-digamma tail from SM41, exact original physical Gram/pole SM42, source basis and coercivity preconditioning, strong original Astar inverse/residual; expand all original selected 25 to genuine 470 high polynomial source degrees and certify entire complete original odd negative Kneg vs Astar Loewner 51/56 or true corrected Schur. Wodd original O1/O2/even E1-E4/full signed Weil/CC27 D-Riesz/RH remain OPEN. Do not treat this selected source-window certificate or rational proxy (independently quantized J moments need not preserve PSD) as full operator sign."
@@ -1255,6 +1264,17 @@
         "scripts/validate_rpb108_sm52c_original_L2_coercivity.py"
       ],
       "interpretation": "Replays passing original SM52 2x2 signed physical source Loewner lower, true original sin/xcos physical norm trace ceiling, and exact Q>=69/200||h||² on this 2D span only. Does not promote whole original Wodd/even/Weil/RH.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM54-original-signed-pole-adaptive-disjoint-3source",
+      "obligation_id": "W-ODD-NEG",
+      "role": "scoped-original-entire-signed-3source-improved-pole-schur-lower",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm54_original_pole_adaptive_Jensen.py"
+      ],
+      "interpretation": "Passing true original SM53 3x3 signed pole-included lower, up to 96 previously unused true original SI06 seven-prime/digamma whole-real positive signed cells [0,13], disjoint from 49 known SM12+SM49 bands and direct signed [13,16]. True physical sin/xcos/sinh input and complete source Fourier means/Loewner fee, exact effective Schur. A negative lower Schur does NOT prove original odd negative index; full 25/470/even/Weil RH remain open. First 96-cell complete original 3x3 signed full-matrix proof Actions 39212101376 PASS, effective pole lower Schur -0.070585452483 still inconclusive. Exhaustive 243-cell source-positive candidate run is next CI; original full odd/even/Weil RH stay OPEN.",
       "cadence": "on-demand"
     }
   ]
