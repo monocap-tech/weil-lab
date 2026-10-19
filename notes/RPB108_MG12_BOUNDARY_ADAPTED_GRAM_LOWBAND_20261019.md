@@ -2,6 +2,14 @@
 
 October 19, 2026. Stacked on passing MG11 #260. W-ODD-NEG, complete even/Weil/CC27/RH, and independent analytic Fourier/domain audit remain OPEN.
 
+## Verified method-gate outcome — October 19, 2026
+
+The first dedicated whole calculation **PASSED** GitHub Actions [39343097995](https://github.com/monocap-tech/weil-lab/actions/runs/39343097995), with exact original physical 23-source eigenvalue lower floor **0.020429750736**, independently reproduced MG11 nonpole pivot index 23, and first strict positive low-band certificate among tested dyadic cutoffs at **2^16**.
+
+At cutoff **2^20**, the conservative entire original positive-energy-scaled strong action upper is **82018597753.99704**. This is a ratio of rigorous COARSE bounds, NOT the actual source strong Galerkin residual norm or a negative-eigenvalue assertion.
+
+**MG12 decision: ACCEPT physical Gram/domain-relative basis transform, REJECT this coarse whole-low-band scalar strong-action bound as quantitatively viable for the MG07 51/56 source-470 residual gate.** The next method investigation should estimate the actual low-frequency coupled (A_*^2) and (A_*) source forms/real-source residual with certified adaptive frequency integration, physical cross terms and the SI29 preconditioner, rather than further increase endpoint derivative peeling alone.
+
 ## First genuinely transformed physical inner product
 
 MG11 proved that the exact original supported odd physical source endpoint values b_i=f_i(B) and endpoint derivatives d_i=f_i'(B) have rank two. With pivot q=23 and the original sinh pole s at index 24, define Delta=b_s*d_q-b_q*d_s, a_i=(b_i*d_q-b_q*d_i)/Delta and c_i=(b_s*d_i-b_i*d_s)/Delta. The 23 true physical functions h_i=f_i-a_i*s-c_i*f_q vanish at both endpoints together with their first derivatives. The coefficients are exact analytic values, enclosed by SM42 rational intervals rather than replaced by sample values.
