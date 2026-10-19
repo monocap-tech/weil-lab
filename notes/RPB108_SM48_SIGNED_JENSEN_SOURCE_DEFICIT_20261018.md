@@ -91,3 +91,36 @@ Focused code must show: original full 15 negative whole-real windows, original f
 If this gate passes, SM48 is **negative evidence for the 17-window *lower reference*, not for original Weil positivity**. The next useful SM49 target is a source-adaptive **whole-positive response** in the negative-packet geometry (or direct original complete inverse/schur residual), with an exact matrix-weighted error rather than a global scalar fee. A higher-dimensional original source expansion must carry its own true physical Fourier identities and complete complement residual.
 
 **Before GitHub Actions verification:** no SM48 quantitative acceptance or proof-reference obstruction is claimed. Original Fourier/closed-domain identification and external mathematical audit remain separate.
+
+## Verified first complete original signed-source execution
+
+**GitHub Actions [39191354830](https://github.com/monocap-tech/weil-lab/actions/runs/39191354830) completed SUCCESS at source head d881aa1477509bd6c63b9d79ea19f8bc57ccc556.** All exact-rational source, matrix, signed real-window and scope checks passed (not merely Python syntax). The new record:
+
+| Certified source matrix/object | Outward full-coupling scalar fee |
+| --- | ---: |
+| SM47 complete original positive low [0,4096] 25-source lower | \(132769427841/500000000000000\), approximately \(0.000265538856\) |
+| NEW original true 15-band negative source-mean lower | \(59935997/1000000000000\), approximately \(0.000059935997\) |
+| Actual original sinh-pole rank-one upper comparison error | \(80001/1000000000000\), approximately \(0.000000080001\) |
+
+**Decisive witness without subtracting the pole:** Original supported SI10 source *coordinate index 2* (zero-based, a genuine selected sine cluster) has, with **the complete original signed negative 15-band lower** and **the entire SM47 positive-low reference**,
+
+\[
+\begin{aligned}
+\langle e_2,(N_{15}-\epsilon_N I)e_2\rangle
+&\gtrsim 0.019501318476,\\
+\langle e_2,L_{47}e_2\rangle
+&\lesssim 0.002168100628,\\
+\langle e_2,(N_{15}-\epsilon_N I-L_{47})e_2\rangle
+&> 17/1000.
+\end{aligned}
+\]
+
+These decimal signs summarize exact independently outward-rounded rational enclosures; the actual certifier compares exact Fractions and proves the strict \(17/1000\) gap. The strongest among the 625 checked normalized one/two-source vectors is also \(e_2\), with measured exact comparison approximately **0.01733321784822** per coefficient norm squared.
+
+The pole-aware lower-reference diagnostic has an even larger maximal normalized deficit, approximately **0.33072387141209** at \(z=e_{16}-e_{24}\) (where source 24 is the actual sinh pole). This value still concerns **only the lower reference**; it is **not** a negative eigenvalue or a Rayleigh witness for the true whole original signed Weil operator.
+
+**What changed structurally:** the SM47 proof-reference deficiency already occurs *before* pole subtraction. Thus it cannot be fixed merely by certifying exceptional-pole compensation. What must improve is captured **original positive spectral mass on the negative-packet source geometry** or the full source-conditioned original positive inverse. All 25 genuine source Fourier cross couplings were present; this is not a diagonal truncation.
+
+**Custody:** The focused source head d881 CI passed. Subsequent strengthening at heads 1ac4a520, 36b6eceb and 812d5a4e makes the original source-coordinate provenance explicit and fail-closes on rigorous \(17/1000\) and \(33/100\) bounds. Final-head workflow must be checked independently. This is not peer review or Lean formalization.
+
+**No automatic mathematical promotion:** Entire original W-ODD-NEG O1/O2, actual full original negative cap/inverse, 470 source strong residual, even E1–E4, signed Weil, CC27 and RH all remain OPEN.
