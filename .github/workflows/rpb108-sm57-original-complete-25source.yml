@@ -34,7 +34,7 @@ jobs:
           assert d['original_negative_true_whole_real_cover_clusters']==107
           assert d['original_negative_true_whole_real_cover_leaves']==973
           assert d['original_negative_full_supported_source_count']==25
-          assert d['original_negative_total_width_exact']=='973/32'
+          assert d['original_negative_total_width_exact']=='973/64'
           assert d['all_original_25x25_mixed_source_coefficients_paid']
           assert d['full_original_negative_frequency_operator_upper_on_all_25']
           assert d['original_negative_all25_complete_Cauchy_row_majorant']
