@@ -206,10 +206,18 @@ def main():
         Lref,Nmat,errN,q,errPole)
     # Fail-closed strong METHOD-NOGO gate. We do NOT call this an
     # original full-form negative witness: no original positive upper.
-    assert best_pos[0]>0, (
-        "SM48 did not find a certified source Rayleigh deficit of SM47",
+    assert best_pos[0]>F(17,1000), (
+        "SM48 genuine original positive-reference deficiency did not meet strict 17/1000 threshold",
         float(best_pos[0]))
-    assert best_star[0]>=best_pos[0] or best_star[0]>0
+    # Do not rely merely on the maximizing search: original actual
+    # source coordinate #2 by itself supplies an EXACT signed witness
+    # against SM47's *lower reference*, even without pole subtraction.
+    assert Nmat[2][2]-errN-Lref[2][2]>F(17,1000),(
+        "Original single supported source #2 deficit not certified",
+        float(Nmat[2][2]-errN-Lref[2][2]))
+    assert best_star[0]>F(33,100), (
+        "Original pole-aware reference gap did not exceed 33/100",
+        float(best_star[0]))
     result={
       "status":"CERTIFIED_ORIGINAL_25SOURCE_SM47_LOWER_REFERENCE_SIGNED_NEGATIVE_DEFICIT_ONLY",
       "canonical_W_ODD_NEG":"OPEN",
