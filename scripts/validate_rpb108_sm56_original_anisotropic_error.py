@@ -247,6 +247,17 @@ def calculate():
       "best_true_original_3x3_signed_LOEWNER_leading_minors":[
            str(best[0][0]),str(original_minor),str(determinant)],
       "strict_original_3source_positive_definite_certified":determinant>0,
+      # Inertia comparison is valid on the SAME THREE-SOURCE
+      # physical trial space: W_actual >= L_best, the leading
+      # 2x2 L block is PD. The LDL Schur third pivot is det/minor2.
+      # Thus L_best has at most one negative direction, and the
+      # actual signed W restricted to this 3D span has negative
+      # index at most one by the min-max/inertia monotonicity
+      # theorem. This DOES NOT classify the full odd operator!
+      "certified_actual_original_signed_3source_negative_index_upper_bound":
+            0 if determinant>=0 else 1,
+      "certified_actual_original_signed_3source_negative_index_exactly_one":False,
+      "certified_complete_original_odd_operator_negative_index_upper_bound":None,
       "entire_25source_odd_index_and_strong_residual_closed":False,
       "original_470source_Astar_inverse_O1O2_even_Weil_CC27_RH":False,
       "independent_original_physical_Fourier_domain_audit":"OPEN",
