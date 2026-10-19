@@ -73,5 +73,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sm59b-original-25source-leafwise-negative-upper
-          path: artifacts/sm59b_original_25source_leafwise_negative_upper.json
+          path: |
+            artifacts/sm59b_original_25source_leafwise_negative_upper.json
+            artifacts/sm59b_original_replay_diagnostic.json
           if-no-files-found: warn
