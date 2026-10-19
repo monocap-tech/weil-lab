@@ -1,0 +1,75 @@
+name: RPB108 SM64 direct original fourth positive physical source
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm64_direct_fourth_source_odd.py'
+      - 'notes/RPB108_SM64_DIRECT_FOURTH_POSITIVE_SOURCE_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm64-direct-fourth-source.yml'
+  workflow_dispatch:
+jobs:
+  original-direct-four-source-signed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 59
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original analytic Fourier interval dependencies
+        run: pip install numpy scipy
+      - name: Compute complete original full-real signed odd physical four-source lower
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm64_direct_fourth_source_odd.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm64_direct_fourth_source_odd.py
+      - name: Fail closed fourth source positive plane and full odd-operator distinction
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm64_original_direct_signed_positive_four_source.json'))
+          assert d['status']=='SCOPED_ORIGINAL_TRUE_SIGNED_FOURTH_SOURCE_4D_ACCEPTANCE'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['actual_original_source_indices']==[1,2,17,22]
+          assert d['actual_original_source_dimension']==25
+          assert d['sine1_center_differs_from_sine2_xcos17']
+          assert d['original_physical_four_source_Gram_strict_SPD']
+          assert d['original_disjoint_new_signed_positive_windows']==338
+          assert d['new_original_full25_sign_positive_disjoint_cells']==338
+          assert d['true_positive_real_windows_outside_core']>=338
+          assert d['original_signed_core_cells']==768
+          assert d['whole_original_negative_parent_leaves']==973
+          assert d['original_negative_quartered_cells']==3892
+          assert d['original_true_sinh_exceptional_pole_upper_paid']
+          assert F(d['original_3source_pole_upper_error'])>=0
+          assert F(d['full_original_signed_4source_LOEWNER_export_fee'])>=0
+          L=[[F(z) for z in row] for row in d['entire_original_signed_4x4_LOEWNER_lower']]
+          assert len(L)==4 and all(len(row)==4 for row in L)
+          assert all(L[i][j]==L[j][i] for i in range(4) for j in range(4))
+          def det(a):
+              n=len(a)
+              if n==1:return a[0][0]
+              return sum(((-1 if k%2 else 1)*a[0][k]*det([[a[i][j] for j in range(n) if j!=k] for i in range(1,n)]) for k in range(n)),F(0))
+          minors=[det([row[:k] for row in L[:k]]) for k in range(1,5)]
+          assert minors==[F(z) for z in d['full_original_signed_4source_exact_sylvester_minors']]
+          four_positive=all(x>0 for x in minors)
+          assert four_positive==d['full_original_signed_4source_lower_positive_definite_certified']
+          assert d['original_actual_true_signed_fourth_positive_plane_dimension_certified']==(4 if four_positive else 3)
+          assert d['original_actual_25D_negative_index_upper_if_certified']==(21 if four_positive else 22)
+          assert not d['actual_signed_source25_negative_index_EXACTLY_classified']
+          assert not d['entire_infinite_original_odd_negative_index_classified']
+          assert not d['original470_Astar_inverse_and_orthogonal_remainder']
+          assert not d['odd_O1O2_even_Weil_CC27_RH']
+          ledger=json.load(open('research/obligations.json'))
+          assert ledger['active_obligation']=='W-ODD-NEG'
+          assert ledger['objective']['status']=='open'
+          assert ledger['governance']['no_automatic_promotion']
+          assert next(o for o in ledger['obligations'] if o['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Retain original 4D full signed physical-source exact lower and Sylvester minors
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm64-original-fourth-source-signed-4D
+          path: artifacts/sm64_original_direct_signed_positive_four_source.json
+          if-no-files-found: warn
