@@ -1,0 +1,75 @@
+name: RPB108 SM63 direct original different-center third positive source
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm63_direct_third_source_odd.py'
+      - 'notes/RPB108_SM63_DIRECT_THIRD_POSITIVE_SOURCE_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm63-direct-original-third-source.yml'
+  workflow_dispatch:
+jobs:
+  original-true-signed-independent-third-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 59
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original exact interval Fourier dependencies
+        run: pip install numpy scipy
+      - name: Recompute original full real signed three source physical kernel and pole
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm63_direct_third_source_odd.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm63_direct_third_source_odd.py
+      - name: Fail closed exact 3source full mixed Sylvester and index scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm63_original_direct_signed_positive_three_source.json'))
+          assert d['status']=='SCOPED_ORIGINAL_TRUE_SIGNED_DIFFERENT_CENTER_THIRD_SOURCE_3D_ACCEPTANCE'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['actual_original_source_indices']==[1,2,17]
+          assert d['actual_original_source_dimension']==25
+          assert d['sine1_center_differs_from_sine2_xcos17']
+          assert d['original_physical_three_source_Gram_strict_SPD']
+          assert d['original_disjoint_new_signed_positive_windows']==338
+          assert d['new_original_full25_sign_positive_disjoint_cells']==338
+          assert d['true_positive_real_windows_outside_core']>=338
+          assert d['original_signed_core_cells']==768
+          assert d['whole_original_negative_parent_leaves']==973
+          assert d['original_negative_quartered_cells']==3892
+          assert d['original_true_sinh_exceptional_pole_upper_paid']
+          assert F(d['original_3source_pole_upper_error'])>=0
+          assert F(d['full_original_signed_3source_LOEWNer_export_fee'])>=0
+          L=[[F(z) for z in row] for row in d['entire_original_signed_3x3_LOEWNer_lower']]
+          assert len(L)==3 and all(len(row)==3 for row in L)
+          assert all(L[i][j]==L[j][i] for i in range(3) for j in range(3))
+          m1=L[0][0]
+          m2=L[0][0]*L[1][1]-L[0][1]**2
+          m3=(L[0][0]*(L[1][1]*L[2][2]-L[1][2]*L[2][1])
+              -L[0][1]*(L[1][0]*L[2][2]-L[1][2]*L[2][0])
+              +L[0][2]*(L[1][0]*L[2][1]-L[1][1]*L[2][0]))
+          assert [m1,m2,m3]==[F(z) for z in d['full_original_signed_3source_exact_sylvester_minors']]
+          three_positive=m1>0 and m2>0 and m3>0
+          assert three_positive==d['full_original_signed_3source_lower_positive_definite_certified']
+          assert d['original_actual_true_signed_third_positive_plane_dimension_certified']==(3 if three_positive else 2)
+          assert d['original_actual_25D_negative_index_upper_if_certified']==(22 if three_positive else 23)
+          assert not d['actual_signed_source25_negative_index_EXACTLY_classified']
+          assert not d['entire_infinite_original_odd_negative_index_classified']
+          assert not d['original470_Astar_inverse_and_orthogonal_remainder']
+          assert not d['odd_O1O2_even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(o for o in m['obligations'] if o['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Preserve all original true signed 3source mixed matrix and exact minors
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm63-original-third-positive-source-signed-3D
+          path: artifacts/sm63_original_direct_signed_positive_three_source.json
+          if-no-files-found: warn
