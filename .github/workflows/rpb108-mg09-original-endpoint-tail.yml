@@ -1,0 +1,63 @@
+name: mg09-certified-original-endpoint-tail-budget
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg09_original_endpoint_tail_budget.py'
+      - 'scripts/validate_rpb108_sm41_original_positive_log_tail.py'
+      - 'notes/RPB108_MG09_CERTIFIED_ENDPOINT_TAIL_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-mg09-original-endpoint-tail.yml'
+  workflow_dispatch:
+
+jobs:
+  mg09-certified-original-source-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Recompute original source geometry and exact high-tail inequalities
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg09_original_endpoint_tail_budget.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg09_original_endpoint_tail_budget.py
+      - name: Fail closed on unpaid endpoint jump and whole-operator claims
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg09_original_endpoint_tail_budget.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_selected_source_count"]==25
+          assert d["original_source_types"]=={"sin":16,"xcos":8,"pole":1}
+          assert d["original_all_107_cluster_geometry_replayed"]
+          assert d["original_SM41_log_multiplier_majorant_replayed"]
+          assert F(d["exact_original_source_derivative_majorant_squared_sum"])>0
+          assert d["source_dependent_frequency_centers_used"]
+          assert d["original_zero_extension_endpoints_not_silently_discarded"]
+          assert d["boundary_jump_tail_is_unpaid_and_must_be_integrated"]
+          assert d["source_tail_remainder_has_quadratic_Fourier_amplitude_decay"]
+          assert [x["cutoff_power"] for x in d["dyadic_checkpoints"]]==[
+              11,12,13,16,20,24,30,36,40,48,56]
+          for x in d["dyadic_checkpoints"]:
+              assert F(x["SM41_entire_original_strong_tail_upper"])>0
+              assert F(x["MG09_endpoint_peeled_remainder_strong_tail_upper"])>0
+          assert len(d["illustrative_cutoff_crossings"])==4
+          for c in d["illustrative_cutoff_crossings"]:
+              assert c["endpoint_jump_contribution_still_requires_separate_rigorous_treatment"]
+              assert c["SM41_first_dyadic_k_for_entire_strong_tail"]>=11
+              assert c["MG09_first_dyadic_k_for_ONLY_PEELED_REMAINDER"]>=11
+          assert not d["entire_original_strong_tail_improved_by_peeled_remainder_alone"]
+          assert not d["original_25_source_Galerkin_stiffness_certified"]
+          assert not d["original_470_source_strong_residual_certified"]
+          assert not d["actual_470_source_51_over_56_gate_passed"]
+          assert d["complete_odd_even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg09-original-endpoint-peeled-tail
+          path: artifacts/mg09_original_endpoint_tail_budget.json
