@@ -114,8 +114,12 @@ def empty_fees():
     return {k:[F(0)]*N for k in POLICIES}
 def empty_counts():
     return {k:0 for k in POLICIES if k!="scalar"}
-def apply_fees(raw,fees):
-    return {key:[[raw[i][j]-(up(fee[i]) if i==j else F(0))
+def apply_fees(raw,fees,sign=-1):
+    # Positive signed contributions are LOWER -> subtract error.
+    # Negative-frequency covariance is an UPPER -> ADD error.
+    # Mixing these signs would invalidate the signed Loewner sandwich.
+    assert sign in (-1,1)
+    return {key:[[raw[i][j]+(sign*up(fee[i]) if i==j else F(0))
                      for j in range(N)] for i in range(N)]
             for key,fee in fees.items()}
 def diffmat(A,B):
@@ -231,7 +235,7 @@ def original_true_outside_negative(calc):
             accum(raw,A,gamma)
             choose_error(v,d,er,(r-l)/2,gamma,ea,fees,chosen)
     assert inside+outside==3892
-    return apply_fees(raw,fees),{
+    return apply_fees(raw,fees,sign=+1),{
        "whole_original_negative_parent_leaves":973,
        "original_negative_quartered_cells":3892,
        "negative_subcells_outside_core":outside,
