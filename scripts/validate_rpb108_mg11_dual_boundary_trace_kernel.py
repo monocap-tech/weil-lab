@@ -41,6 +41,10 @@ N=25
 POLE=24
 POWERS=(11,12,13,16,20,24,30,36,40,48,56)
 EXPORT=10**12
+TAIL_EXPORT=10**100
+def up_tail(x):
+    x=F(x)
+    return F(-((-x.numerator*TAIL_EXPORT)//x.denominator),TAIL_EXPORT)
 def up(x):
     x=F(x)
     return F(-((-x.numerator*EXPORT)//x.denominator),EXPORT)
@@ -172,13 +176,13 @@ def main():
         j0=jump_scalar_sharp(k) # 1/xi with actual cos oscillation
         j1=derivative_jump_weight(k) # 1/xi² with sin phase paid
         rem=derivative_remainder_tail(k,D2)
-        kernel=up(derivative_remainder_tail(k,Dkernel2))
+        kernel=up_tail(derivative_remainder_tail(k,Dkernel2))
         # Three full-frequency terms; (x+y+z)^2 <=3(x²+y²+z²).
         # Interval rational endpoint enclosures: (bm+delta)^2
         # <=(1+eta)bm bm^T+(1+1/eta)||delta||² I.
-        alpha=up(3*(1+eta)*j0)
-        beta=up(3*(1+eta)*j1)
-        diag=up(3*((1+1/eta)*(j0*be2+j1*de2)+rem))
+        alpha=up_tail(3*(1+eta)*j0)
+        beta=up_tail(3*(1+eta)*j1)
+        diag=up_tail(3*((1+1/eta)*(j0*be2+j1*de2)+rem))
         new=alpha*bm2+beta*dm2+diag
         old=F(odd_pilot_tail_enclosure(infos,sources,2**k)[
             "exact_strong_multiplier_tail_squared_norm_upper"])
