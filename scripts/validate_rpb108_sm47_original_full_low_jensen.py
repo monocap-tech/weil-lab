@@ -163,6 +163,12 @@ def main():
     h,eps_h=full_original_rational_gram(physical_gram)
     P,eps_p,local_improvements,max_rad,bands,signed_lower=build_original_positive_jensen(
         centers,sources)
+    # Compress giant exact interval denominators only *after* the
+    # full Fraction proof. Upward rounding preserves the original
+    # whole-matrix Loewner inequality and keeps artifact entries finite.
+    eps_h=ceil_rat(eps_h,10**12)
+    eps_p=ceil_rat(eps_p,10**12)
+    max_rad=ceil_rat(max_rad,10**12)
     n=25
     total_err=KAPPA*(TAIL+eps_h)+eps_p
     lower=[[KAPPA*h[i][j]+P[i][j]-(total_err if i==j else F(0))
