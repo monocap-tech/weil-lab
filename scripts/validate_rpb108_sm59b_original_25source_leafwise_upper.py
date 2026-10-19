@@ -30,7 +30,7 @@ supported 25D negative index <=23 from an SM52 coupled positive
 LOWER without real mixed-source estimates. Full odd source-
 eliminated infinite remainder, O1/O2, even/Weil/CC27/RH OPEN.
 """
-import argparse,json
+import argparse,json,hashlib
 from fractions import Fraction as F
 from validate_rpb108_si06_negative_band import B
 from validate_rpb108_si10_complement_positivity import KAPPA
@@ -202,6 +202,14 @@ def calculate():
     # from the source artifact, not a floating approximation.
     original_coupled=options["original_SM58_coupled"][1]
     assert rawtrace(original_coupled)==F(pin["negative_entire_upper_trace_coupled"])
+    def matrix_hash(matrix):
+        canonical=json.dumps([[str(x) for x in row] for row in matrix],
+                             separators=(",",":"),ensure_ascii=True)
+        return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    original_coupled_sha256=matrix_hash(original_coupled)
+    assert original_coupled_sha256==pin[
+        "original_full25_coupled_negative_upper_all_625_entries_sha256"], (
+        "SM58 true negative full 625-entry UPPER replay mismatch: FAIL CLOSED")
     assert sum((up(x,OUT) for x in [options["original_SM57_diagonal"][0][i][i] for i in range(N)]),F(0))>=F(pin["negative_entire_upper_trace_SM57_diagonal"])
     gram,actual,pole=original_full_25_physical_interval_gram()
     assert actual==sources
@@ -260,6 +268,10 @@ def calculate():
     assert original["source2_original_lower"]==pin["best_original_25x25_signed_LOWER_projected_2x2"][0][0]
     assert original["source17_original_lower"]==pin["best_original_25x25_signed_LOWER_projected_2x2"][1][1]
     assert original["original_full_source_negative_upper_trace"]==pin["negative_entire_upper_trace_coupled"]
+    original_lower_sha256=matrix_hash(original["full_signed_lower_matrix"])
+    assert original_lower_sha256==pin[
+        "original_full25_signed_lower_all_625_entries_sha256"], (
+        "SM58 signed original full 625-entry LOWER replay mismatch: FAIL CLOSED")
     best=min(accepted,key=lambda x:(
       x["exact_rational_signed_LOWER_inertia"]["negative"],
       -F(x["original_full_signed_lower_trace"])
@@ -271,6 +283,9 @@ def calculate():
       "actual_physical_source_count":25,
       **stats,
       "source_verified_SM58_25source_Actions_id":39281588617,
+      "source_full_625_entry_true_negative_upper_replay_sha256":original_coupled_sha256,
+      "source_full_625_entry_true_signed_lower_replay_sha256":original_lower_sha256,
+      "source_all_625_negative_upper_and_signed_lower_entries_match_SM58":True,
       "source_verified_SM57_25source_Actions_id":39275848672,
       "all_full25_original_true_negative_frequency_upper_options_valid":True,
       "signed_positive_full25_LOWER_provenance":positivestats,
