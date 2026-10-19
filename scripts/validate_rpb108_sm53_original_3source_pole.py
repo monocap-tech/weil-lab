@@ -266,6 +266,13 @@ def main():
         for j in range(3):
             final[i][j]=core[i][j]-negative[i][j]+positive[i][j]-pole[i][j]
     assert all(final[i][j]==final[j][i] for i in range(3) for j in range(3))
+    q=[[quantize(final[i][j]) for j in range(3)] for i in range(3)]
+    assert all(q[i][j]==q[j][i] for i in range(3) for j in range(3))
+    export_error=up(max(sum(abs(final[i][j]-q[i][j])
+                            for j in range(3)) for i in range(3)))
+    final=[[q[i][j]-(export_error if i==j else F(0))
+            for j in range(3)] for i in range(3)]
+    assert all(final[i][j]==final[j][i] for i in range(3) for j in range(3))
     minor2=final[0][0]*final[1][1]-final[0][1]**2
     det=(final[0][0]*(final[1][1]*final[2][2]-final[1][2]*final[2][1])
        -final[0][1]*(final[1][0]*final[2][2]-final[1][2]*final[2][0])
