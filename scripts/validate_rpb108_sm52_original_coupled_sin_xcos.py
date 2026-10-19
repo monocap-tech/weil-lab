@@ -242,6 +242,18 @@ def main():
         for j in range(2):
             final[i][j]=core[i][j]-negative[i][j]+positive[i][j]-pole[i][j]
     assert final[0][1]==final[1][0]
+    # Exact original rational matrix entries may have enormous
+    # denominators. Compress ONLY after deriving the full original
+    # signed Loewner theorem. Quantize symmetrically, then subtract
+    # a rigorous max-row-sum error I, so the exported small rational
+    # matrix is STILL a certified whole 2x2 original LOWER.
+    q=[[quantize(final[i][j]) for j in range(2)] for i in range(2)]
+    assert q[0][1]==q[1][0]
+    scalar_fee=up(max(sum(abs(final[i][j]-q[i][j])
+                          for j in range(2)) for i in range(2)))
+    final=[[q[i][j]-(scalar_fee if i==j else F(0))
+            for j in range(2)] for i in range(2)]
+    assert final[0][1]==final[1][0]
     det=final[0][0]*final[1][1]-final[0][1]**2
     strict_pd=final[0][0]>0 and det>0
     result={
@@ -250,6 +262,7 @@ def main():
       "physical_original_sine_source_index":ix[0],
       "same_original_cluster_xcos_source_index":ix[1],
       "common_original_center":str(center),
+      "complete_2x2_export_rational_Loewner_rounding_fee":str(scalar_fee),
       "true_original_source_total_carrier_dimension":25,
       **cs,**ns,**ps,
       "original_2x2_true_pole_Loewner_error_upper":str(poleeps),
