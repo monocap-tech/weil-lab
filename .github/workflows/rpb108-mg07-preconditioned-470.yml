@@ -1,0 +1,51 @@
+name: mg07-full470-reference-weighted-galerkin
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg07_preconditioned_470_residual.py'
+      - 'notes/RPB108_MG07_FULL470_REFERENCE_RESIDUAL_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-mg07-preconditioned-470.yml'
+  workflow_dispatch:
+
+jobs:
+  mg07-original-470-preconditioned-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Verify original geometry and full coupled matrix theorem
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg07_preconditioned_470_residual.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg07_preconditioned_470_residual.py
+      - name: Fail closed on unresolved original full operator
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg07_470_preconditioned_residual.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_exceptional_source_count"]==470
+          assert d["original_negative_cap_columns"]==890
+          assert d["original_true_positive_reference_features"]==14
+          assert F(d["original_kappa_star"])==F(33621,10**9)
+          assert F(d["whole_odd_sufficient_theta"])==F(51,56)
+          assert F(d["feature_and_pole_orthogonal_ratio_to_old"])==F(33621,10**6)
+          assert F(d["old_t1_scalar_residual_coefficient"])>F(d["feature_and_pole_orthogonal_coefficient"])
+          assert d["toy"]["exact_full_coupled_two_source_test"]
+          assert F(d["toy"]["strict_reference_residual_gain_trace"])>0
+          assert not d["whole470_schur_acceptance_certified"]
+          assert not d["original_complete_residual_physical_Grams_computed"]
+          assert not d["entire_original_odd_negative_index_classified"]
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_Fourier_and_form_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg07-full470-reference-residual-gate
+          path: artifacts/mg07_470_preconditioned_residual.json
