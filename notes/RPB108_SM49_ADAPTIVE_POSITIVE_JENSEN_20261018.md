@@ -68,3 +68,28 @@ A focused validator and GitHub Actions will rerun original SM12, SM04, SM42/SM46
 The canonical complete original **W-ODD-NEG O1/O2**, 470 original polynomial sources and full pole-conditioned Astar inverse/strong residual, even sector **E1–E4**, original Weil positivity, CC27 and RH all remain **OPEN**. The inherited original Fourier/closed-domain identification and independent peer review are not supplied by GitHub Actions.
 
 **Next decision after the actual numbers:** If source-conditioned extra true-positive mass produces material directional gain, extend coverage to all important negative packet directions and require an *entire* original source-coupled Schur margin. If the directional rescue is too small, optimize whole-real positive selection against full original inverse response, not by further arbitrary narrow window count. No complete-operator promotion from diagonal gains.
+
+
+## First source-adaptive original certificate — focused CI PASS
+
+**First GitHub Actions focused run [39192702260](https://github.com/monocap-tech/weil-lab/actions/runs/39192702260) SUCCESS**, verifying the original whole-real adaptive positive search, all 25 original supported physical sources and 625 matrix entries, all old 15 true-negative/17 true-positive source constraints, original sinc Fourier source mean enclosures, exact rational outward full Loewner error, and strict e2 source-directed gain.
+
+| Original-source SM49 metric | Focused output |
+| --- | ---: |
+| Newly certified original signed-positive whole-real candidate cells | **365** |
+| Selected disjoint exterior positive Jensen cells | **32** |
+| Original signed SM48 e2 witness Fourier source center | **1845/128 = 14.4140625** |
+| New original 25×25 global Loewner scalar fee | **1750720061/1000000000000 ≈ 0.001750720061** |
+| New independently tight source2 directional fee | **40598563/250000000000 ≈ 0.000162394252** |
+| Original SM48 e2 positive-lower-reference deficit vs 15-band negative lower | approximately **+0.0173332178482** |
+| New certified positive gain on that actual original e2 | approximately **+0.0945442126163**, using directional fee |
+| New e2 reference gap against retained 15-band negative **lower** | approximately **−0.0772109947681** |
+| Strict source-local second-frequency-derivative improvements | **768** |
+
+**Further comparison using the stronger standard:** Even using the **entire 25×25 Loewner scalar error** instead of the source-specific directional fee, the newly captured original-positive lower gain on e2 is approximately \(+0.0929558868\). Therefore the old \(+0.01733\) source-reference deficit changes to approximately **\(-0.07562\)** with the complete matrix error paid. This stronger exact inequality was subsequently made a fail-closed acceptance gate in the validator and workflow; its final-head run is separate from the initial successful run.
+
+**What this does and does not establish.** The previously demonstrated **SM48 reference insufficiency along e2 is repaired** by actual missing original positive spectral mass. That conclusion is about comparing the new *positive LOWER* and the same 15-band *negative LOWER*, not the **full actual negative-frequency operator**; satisfying it does not certify even this source's full true signed Weil value. In particular, the entire actual original 25×25 \(P_{\rm add}-\epsilon_{\rm add}I\) is not automatically PSD: resolving one or several source directions never proves full source-space or 470-source operator positivity. No original odd spectral index/exceptional pole compensation, entire original W-ODD-NEG, even sector, Weil/CC27 or RH is proved.
+
+**Next obligation, conditional on independent acceptance:** Test the new complete source-coupled **original positive lower** against a certified original negative-frequency **UPPER** on the same 25-source carrier, including pole subtraction, and quantify spectral/complement margins. Only that direction of the inequalities is capable of certifying actual signed positivity. If successful locally, extend the original 470 genuine sources and strong residual to the full physical domain; a 15-band negative LOWER is not sufficient for complete operator acceptance.
+
+**Custody:** first substantive focused CI 39192702260 passed. Added stronger complete-matrix-error-paid witness threshold in subsequent draft commits; post-report head CI and independent mathematical audit remain separate, and all canonical operator obligations stay OPEN.
