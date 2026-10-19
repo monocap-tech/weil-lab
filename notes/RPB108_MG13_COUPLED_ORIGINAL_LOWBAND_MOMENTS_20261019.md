@@ -17,3 +17,14 @@ The factor two covers both Fourier frequency signs for real odd sources. Both co
 This is a selected-panel low-frequency moment certificate only, NOT the entire [0,Lambda] band. The second source moment is for A_o squared. The true Astar squared additionally contains original pole cross-response terms and is NOT certified by these panels. The original strong Galerkin residual, entire 470-source resolvent, odd/even/Weil/CC27 and RH remain open.
 
 Decision: measure matrix error versus rank-one source response. If intervals are too loose, improve coupled affine source transforms rather than scaling the panel count indiscriminately. When useful, extend both moments across the entire low band with MG11 certified high tail and build the actual Astar strong residual.
+
+## Accepted exact-rational method-gate result
+
+The dedicated GitHub Actions run [39344407722](https://github.com/monocap-tech/weil-lab/actions/runs/39344407722) **PASSED** all original 24-channel moment and no-theorem-promotion checks.
+
+On the 24 original coupled real-frequency panels, the complete certified first positive moment source matrix had lower-reference trace **−0.003790888628** and upper-reference trace **+0.006270752428**. The complete second (A_o-squared) moment source matrix had lower-reference trace **−0.000003827808** and upper-reference trace **+0.000006305924**.
+
+Both lower-reference traces are negative, which is compatible with an actual positive-semidefinite source moment because the lower references are conservative. This is not an actual negative mode or signed odd positivity result.
+
+**Decision: ACCEPT the construction of complete 24-channel first and second original Fourier source-moment sandwiches on the test regions; REDESIGN the per-cell approximation to improve spectral usefulness.** Existing pointwise midpoints and whole-matrix uniform covariance errors are too coarse to establish positive lower traces even on these 24 selected cells. Next method gate: integrate the certified AFFINE frequency variation in each source and use correlated whole-matrix error enclosures, while preserving the original multiplier, actual physical pole, and source cross terms. Only after such selected-panel tests improve should the whole [0,Lambda] low band and true Astar strong residual be attempted.
+
