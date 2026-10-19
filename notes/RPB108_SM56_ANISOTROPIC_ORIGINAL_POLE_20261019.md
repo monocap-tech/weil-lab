@@ -64,3 +64,27 @@ The complete true original signed odd three-source form Q satisfies Q >= L, with
 - If S<0, L has precisely two positive and one negative eigenvalues, and the min-max/inertia comparison Q >= L proves **negative index of Q on this three-dimensional trial space is at most one**. It does NOT prove a true negative direction exists.
 
 This is a mathematically justified finite-dimensional index CEILING, not a complete-operator original odd negative-index theorem. The orthogonal complement and all original 25 supported/470-source directions must be classified independently to accept canonical W-ODD-NEG O1/O2. The validator and Actions explicitly prevent any promotion from this 3D ceiling to the complete operator.
+
+
+## First original focused certificate — Actions 39270413282 SUCCESS
+
+The complete original source Fourier and all-cross rational validator **passed** its first focused GitHub Actions run 39270413282 on the initial SM56 source head, before later documentation and the explicit three-dimensional index-ceiling acceptance was committed. It exactly reconstructed the complete nine-entry rational SM55 signed 3x3 lower matrix from original Actions 39265951866, and rechecked all 242 original signed-positive disjoint real cells.
+
+| Whole-source SM56 comparison | Exact verified result |
+| --- | ---: |
+| SM55 original scalar-error effective pole Schur lower | -0.05844255830940901 |
+| Uniformly switched all 242 cells to anisotropic fees | -0.05844493343464814 |
+| **Exact per-cell choice between TWO valid full-source lower bounds** | **-0.058397346915907374** |
+| Strict certified improved complete signed 3x3 Schur margin | **>0.000045211393** |
+| Cells using source-componentwise fees | **84** |
+| Cells retaining existing scalar original fee | **158** |
+| Cells whose individual pole component fee was smaller anisotropically | **84** |
+| Cells whose pole component fee was larger anisotropically | **158** |
+| Total original 242-cell pole scalar approximation fee | 0.000888965145 |
+| Total original 242-cell pole anisotropic approximation fee | 0.000891564161 |
+
+This proves an important *limited* structural observation: **anisotropic error fees are not uniformly better**, even for the pole coordinate, but exact source-targeted error selection can strengthen the *entire* original 3x3 signed lower. This is a sound mathematical improvement after retaining every original real signed frequency source cell, previous negative upper, original exceptional rank-one pole, and all mixed physical source terms.
+
+The resulting lower's original signed Sylvester third determinant remains strictly negative, so **three-source PD is still NOT established**. The original odd form may or may not have any actual negative vector in this span. The lower's strictly positive leading original sine/xcos 2x2 minor does, by finite-dimensional inertia monotonicity, imply **actual original signed negative index at most one on this 3-dimensional physical span**, not on the complete odd operator.
+
+First substantive Actions passed; subsequent code added explicit scoped negative-index checking and this research note. Final PR-head Actions and independent original Fourier/domain premise audit remain separately pending. No complete operator positive or negative index theorem has been promoted.
