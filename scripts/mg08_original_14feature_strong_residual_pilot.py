@@ -18,7 +18,7 @@ import argparse,json
 from pathlib import Path
 import numpy as np
 from scipy import linalg
-from validate_rpb108_sm36_original_odd_numerical_pilot import (
+from sm36_original_odd_numerical_pilot import (
  ROOT,B_FLOAT,KAPPA_FLOAT,THETA,original_multiplier,geometry,
  select_sources,physical_columns,fourier_form,all_source_negative_cap)
 from validate_rpb108_si29_pole_threshold_three_bands import FEATURES
