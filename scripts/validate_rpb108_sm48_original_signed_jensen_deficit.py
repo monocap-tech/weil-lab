@@ -44,7 +44,7 @@ from validate_rpb108_sm42_original_physical_gram_and_low_gate import (
     original_full_25_physical_interval_gram, hyperbolic_interval
 )
 from validate_rpb108_sm43_positive_cell_envelope import (
-    ROOT, original_source_centered_windows, ceil_rat
+    ROOT, original_source_centered_windows, ceil_rat, floor_rat
 )
 from validate_rpb108_sm44_physical_fourier_cell_gram import (
     sqrt_upper, original_exact_physical_fourier_midpoint,
@@ -115,7 +115,7 @@ def original_15_negative_source_lower(centers,sources):
         for j in range(i): matrix[i][j]=matrix[j][i]
     assert all(matrix[i][i]>=0 for i in range(N))
     assert all(matrix[i][j]==matrix[j][i] for i in range(N) for j in range(N))
-    return matrix,qceil(eps),qceil(-orig_upper),used_local,witnesses
+    return matrix,qceil(eps),floor_rat(-orig_upper,DEN),used_local,witnesses
 
 
 def pole_outer_majorant(physical_gram,Hq):
