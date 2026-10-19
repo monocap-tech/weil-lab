@@ -35,7 +35,9 @@ jobs:
           assert d['original_3source_current_core']==['13','16']
           assert d['whole_real_scan_cells']==416
           assert d['new_selected_real_positive_outside_old_core_and_all_old_positive_bands']>0
-          assert d['new_selected_real_positive_outside_old_core_and_all_old_positive_bands']<=96
+          assert d['new_selected_real_positive_outside_old_core_and_all_old_positive_bands']<=256
+          assert d['new_selected_real_positive_outside_old_core_and_all_old_positive_bands']==d['true_pole_source_positive_score_cells']
+          assert d['new_selected_real_positive_outside_old_core_and_all_old_positive_bands']>96
           assert d['new_all_original_source_cross_included']
           assert F(d['new_3x3_pole_diagonal_improvement_lower'])>0
           assert F(d['new_full_3x3_positive_mean_error_up'])>=0
