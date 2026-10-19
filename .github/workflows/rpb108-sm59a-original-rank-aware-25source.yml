@@ -1,0 +1,65 @@
+name: RPB108 SM59A original rank-aware 25-source index bound
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm59a_rank_aware_25source.py'
+      - 'certificates/rpb108_sm58_full25_signed_summary.json'
+      - 'notes/RPB108_SM59_COMPLETE_SOURCE_RANK_HYBRID_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm59a-original-rank-aware-25source.yml'
+  workflow_dispatch:
+jobs:
+  original-25source-rank-aware:
+    runs-on: ubuntu-latest
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact physical Gram dependencies
+        run: pip install numpy scipy
+      - name: Replay original complete 25D physical Gram and rank-positive subspace
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm59a_rank_aware_25source.py
+          OPENBLAS_NUM_THREADS=2 python scripts/validate_rpb108_sm59a_rank_aware_25source.py
+      - name: Fail closed on finite 25D index and entire odd-operator distinction
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm59a_original_25source_rank_aware_negative_index.json'))
+          assert d['status']=='CERTIFIED_SCOPED_ORIGINAL_25SOURCE_RANK_AWARE_NEGATIVE_INDEX_CEILING_23'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['original_physical_25source_gram_SPD_certified']
+          assert d['original_physical_25source_independent_dimension']==25
+          assert F(d['source_gram_exact_preconditioned_margin'])>0
+          assert d['sm58_entire_negative_coupled_upper_accepted_Actions_id']==39281588617
+          assert d['sm57_entire_negative_diagonal_upper_accepted_Actions_id']==39275848672
+          assert d['sm58_complete_lower_reference_exact_inertia']=={'positive':1,'negative':24,'zero':0}
+          assert d['sm52_original_positive_physical_source_indices']==[2,17]
+          assert F(d['sm52_original_exact_sylvester_2x2_determinant'])>0
+          assert d['sm52_2source_signed_positive_definite']
+          assert d['sm52_2source_physical_L2_coercivity']=='69/200'
+          assert d['original_true_signed_25source_positive_subspace_dimension_AT_LEAST']==2
+          assert d['original_true_signed_25source_negative_index_upper_bound']==23
+          assert d['improvement_vs_only_SM58_lower_negative_index_ceiling']==1
+          assert d['sm58_lower_misses_strict_positive_2source_inequality']
+          assert not d['source_25D_actual_negative_index_exact_classification']
+          assert d['actual_odd_infinite_dimensional_negative_index_bound'] is None
+          assert not d['actual_complete_source_eliminated_odd_O1O2']
+          assert not d['original_470_Astar_inverse_strong_residual']
+          assert not d['even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(x for x in m['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Retain exact 25-dimensional scoped index witness
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm59a-original-rank-aware-25source-index23
+          path: artifacts/sm59a_original_25source_rank_aware_negative_index.json
+          if-no-files-found: warn

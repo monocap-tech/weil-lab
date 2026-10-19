@@ -1,0 +1,82 @@
+name: RPB108 SM59B original 25-source per-leaf coupled Fourier UPPER
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm59b_original_25source_leafwise_upper.py'
+      - 'certificates/rpb108_sm58_full25_signed_summary.json'
+      - 'notes/RPB108_SM59_COMPLETE_SOURCE_RANK_HYBRID_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm59b-original-leafwise-25source.yml'
+  workflow_dispatch:
+jobs:
+  original-25source-negative-leafwise:
+    runs-on: ubuntu-latest
+    timeout-minutes: 59
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install analytic interval Fourier dependencies
+        run: pip install numpy scipy
+      - name: Recompute every original 25-dimensional negative source leaf with true full matrix error
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm59b_original_25source_leafwise_upper.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm59b_original_25source_leafwise_upper.py
+      - name: Fail closed whole source proof, exact inertia, and original infinite-operator obligations
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/sm59b_original_25source_leafwise_negative_upper.json"))
+          assert d["status"]=="CERTIFIED_SCOPED_ORIGINAL_25SOURCE_PER_LEAF_COUPLED_NEGATIVE_UPPER_AUDIT"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["actual_physical_source_count"]==25
+          assert d["all_original_negative_whole_real_leaves"]==973
+          assert d["negative_107_original_clusters"]==107
+          assert F(d["negative_one_sided_width"])==F(973,64)
+          assert d["source_verified_SM58_25source_Actions_id"]==39281588617
+          assert d["source_full_625_entry_true_negative_upper_replay_sha256"]=="53c17a9abb8efb4d2497eaf4fd060219353bdd2d42e056276ec3a911521f0af4"
+          assert d["source_full_625_entry_true_signed_lower_replay_sha256"]=="6ed78ff8b3bdd01bf8d84f467d3d1ad26ea16f8c5f21fc53eebaf0b720a9c684"
+          assert d["source_all_625_negative_upper_and_signed_lower_entries_match_SM58"]
+          assert d["source_verified_SM57_25source_Actions_id"]==39275848672
+          assert d["source_coupled_original_25x25_all_mixed_entries_charged"]
+          assert d["all_full25_original_true_negative_frequency_upper_options_valid"]
+          assert d["true_physical_sinh_pole_upper_paid_once"]
+          assert all(0<=z<=973 for z in d["per_leaf_cap_selection_counts"].values())
+          assert F(d["locally_trace_chosen_exact_negative_raw_trace"])<=F(d["pure_coupled_exact_negative_raw_trace"])
+          assert F(d["locally_trace_chosen_exact_negative_raw_trace"])<=F(d["pure_diagonal_exact_negative_raw_trace"])
+          assert len(d["all_methods_complete_25source_signed_lower_inertia"])==6
+          for m in d["all_methods_complete_25source_signed_lower_inertia"]:
+              inert=m["exact_rational_signed_LOWER_inertia"]
+              assert sum(inert[x] for x in ("positive","negative","zero"))==25
+              assert inert["exact_1x1_congruence_pivots"]+2*inert["exact_2x2_congruence_pivots"]+inert["zero"]==25
+              assert F(m["negative_matrix_outward_export_fee"])>=0
+              assert F(m["signed_lower_outward_export_fee"])>=0
+          L=[[F(x) for x in row] for row in d["best_complete_25source_rational_signed_lower_matrix"]]
+          assert len(L)==25 and all(len(row)==25 for row in L)
+          assert all(L[i][j]==L[j][i] for i in range(25) for j in range(25))
+          inertia=d["best_original_25source_reference_signed_lower_exact_inertia"]
+          assert sum(inertia[x] for x in ("positive","negative","zero"))==25
+          assert d["best_lower_negative_index_upper_on_restricted_source25"]==inertia["negative"]
+          assert d["independently_proved_actual_original_25D_negative_index_upper_from_SM52_plane"]==23
+          assert d["best_available_actual_original_25D_negative_index_upper"]==min(23,inertia["negative"])
+          assert not d["actual_original_25D_index_exactly_classified"]
+          assert not d["original_infinite_odd_operator_negative_index_classified"]
+          assert not d["original_full470_Astar_odd_O1O2_orthogonal_remainder"]
+          assert not d["even_Weil_CC27_RH"]
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"]
+          assert next(z for z in m["obligations"] if z["id"]=="W-ODD-NEG")["status"]=="open"
+          PY
+      - name: Upload original source-coupled negative leafwise signed matrices
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm59b-original-25source-leafwise-negative-upper
+          path: |
+            artifacts/sm59b_original_25source_leafwise_negative_upper.json
+            artifacts/sm59b_original_replay_diagnostic.json
+          if-no-files-found: warn
