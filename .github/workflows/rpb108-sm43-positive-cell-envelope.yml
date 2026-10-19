@@ -1,0 +1,75 @@
+name: RPB108 SM43 original positive whole-real source-window cell error
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm43_positive_cell_envelope.py"
+      - "scripts/validate_rpb108_sm43_positive_affine_error.py"
+      - "notes/RPB108_SM43_ORIGINAL_POSITIVE_CELL_ENVELOPE_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm43-positive-cell-envelope.yml"
+  workflow_dispatch:
+
+jobs:
+  sm43-positive-cell-envelope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install source geometry and numerical-only dependencies
+        run: python -m pip install numpy scipy
+      - name: Exact true original whole-real positive multiplier cell interval and complete 25-source error
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm43_positive_cell_envelope.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm43_positive_cell_envelope.py
+      - name: Exact original second-order signed-affine positive multiplier interpolation across all kappa crossings
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm43_positive_affine_error.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm43_positive_affine_error.py
+      - name: Fail closed on uncomputed Fourier cell Gram and full original odd/Weil/RH
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("artifacts/sm43_original_positive_cell_error.json"))
+          assert d["status"]=="CERTIFIED_TRUE_ORIGINAL_SOURCE_WINDOW_POSITIVE_INTERVAL_ENVELOPE_ONLY"
+          assert d["canonical_original_odd_O1_O2"]=="OPEN"
+          for z in (d["coarse_step"],d["finer_step"]):
+              assert z["same_25_original_odd_sources"]==25
+              assert z["all_midpoint_cell_Gram_integrals_rigorously_evaluated"] is False
+              assert z["covers_all_original_0_to_4096_low_band"] is False
+              assert z["noncertifying_float_Gauss_used_in_proof"] is False
+              assert z["all_real_frequency_cells_certified"]>=16
+          assert d["finer_step"]["certified_whole_25x25_window_Loewner_error_I_float"]<d["coarse_step"]["certified_whole_25x25_window_Loewner_error_I_float"]
+          assert len(d["original_25_source_frequency_window_union"])>=1
+          assert len(d["what_remains"])>=4
+          a=json.load(open("artifacts/sm43_original_affine_positive_error.json"))
+          assert a["status"]=="CERTIFIED_TRUE_ORIGINAL_POSITIVE_SOURCE_WINDOW_ADAPTIVE_CONSTANT_AFFINE_ERROR_ONLY"
+          assert a["canonical_original_odd_O1_O2"]=="OPEN"
+          assert a["refined_step"]["certified_full_25x25_hybrid_reference_error_float"] < a["first_step"]["certified_full_25x25_hybrid_reference_error_float"]
+          from fractions import Fraction
+          assert Fraction(a["refined_step"]["certified_full_25x25_hybrid_reference_Loewner_error_outward"]) < Fraction(a["constant_step_refined_error_outward"])
+          assert a["refined_step"]["cells_using_sm43A_signed_affine_reference"]>0
+          assert a["refined_step"]["cells_using_verified_original_constant_reference"]>0
+          assert a["refined_step"]["reference_integrals_certified"] is False
+          assert a["refined_step"]["complete_original_low_0_to_4096_certified"] is False
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          o=next(x for x in m["obligations"] if x["id"]=="W-ODD-NEG")
+          assert o["status"]=="open" and "O1/O2" in o["acceptance"]
+          assert all(z in o["evidence"] for z in ("SM41","SM42","SM43"))
+          assert "sm43_true_original_source_centered_positive_cell_envelope" in m["governance"]
+          PY
+      - name: Upload true exact rational scoped positive multiplier envelope and full error budget
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm43-original-positive-25-source-window-multiplier-Loewner-error-only
+          path: |
+            artifacts/sm43_original_positive_cell_error.json
+            artifacts/sm43_original_affine_positive_error.json
+          if-no-files-found: warn
