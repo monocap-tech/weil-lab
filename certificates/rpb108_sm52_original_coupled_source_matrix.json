@@ -1,0 +1,22 @@
+{
+  "source": "GitHub Actions 39205091881, sm52-original-coupled-sin-xcos-signed-matrix",
+  "original_head": "45780c198f066c8f5934721e16244136940152b2",
+  "source_indices": [
+    2,
+    17
+  ],
+  "source_center": "1845/128",
+  "matrix": [
+    [
+      "1070559452403/1000000000000",
+      "477/125000"
+    ],
+    [
+      "477/125000",
+      "1437706842403/1000000000000"
+    ]
+  ],
+  "rounding_fee": "7597/1000000000000",
+  "original_sylvester_determinant": "1539136088063001900644409/1000000000000000000000000",
+  "interpretation": "Verified SM52 original signed odd complete two-physical-source Loewner lower. This is a finite trial-space certificate conditional on inherited SI06/SM42 Fourier/form identities; not global original Wodd positivity."
+}
