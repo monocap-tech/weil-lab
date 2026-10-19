@@ -34,14 +34,18 @@ jobs:
           assert a["canonical_W_ODD_NEG"]=="OPEN"
           assert a["original_source_dimension"]==25
           assert a["original_pole_source_index"]==24
+          descriptors=a["original_true_supported_source_coordinate_descriptors"]
+          assert len(descriptors)==25
+          assert descriptors[2]["source_type"]=="cluster"
+          assert descriptors[24]["source_type"]=="pole"
           assert a["original_positive_window_count"]==17
           assert a["original_negative_real_window_count"]==15
           assert a["true_original_signed_negative_15band_lower_certified"]
           assert not a["actual_complete_original_negative_frequency_upper_certified"]
           assert a["original_positive_low_0_to_4096_complete_one_sided_lower"]
           assert a["exact_original_25source_rayleigh_tests"]==625
-          assert F(a["nonpole_reference_best_signed_deficit_per_source_norm2_rational_lower"])>0
-          assert F(a["pole_conditioned_reference_best_signed_deficit_per_source_norm2_rational_lower"])>0
+          assert F(a["nonpole_reference_best_signed_deficit_per_source_norm2_rational_lower"])>F(17,1000)
+          assert F(a["pole_conditioned_reference_best_signed_deficit_per_source_norm2_rational_lower"])>F(33,100)
           assert a["original_local_true_Tsecond_source_improvements_positive"]>0
           assert a["original_local_true_Tsecond_source_improvements_negative"]>0
           for k in ("full_25x25_rational_positive_reference_matrix",
