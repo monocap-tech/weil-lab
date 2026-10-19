@@ -250,7 +250,16 @@ def calculate():
     diagnostic_path.parent.mkdir(parents=True,exist_ok=True)
     diagnostic_path.write_text(json.dumps(diagnostic,indent=2)+"\\n")
     print("SM59B PINNED FULL SOURCE MATRIX REPLAY DIAGNOSTIC:",json.dumps(diagnostic),flush=True)
-    assert original["exact_rational_signed_LOWER_inertia"]==reference, "Original complete 25D baseline inertia mismatch: FAIL CLOSED"
+    actual_inertia=original["exact_rational_signed_LOWER_inertia"]
+    assert {k:actual_inertia[k] for k in ("positive","negative","zero")}==reference, (
+        "Original complete 25D baseline inertia mismatch: FAIL CLOSED")
+    assert (actual_inertia["exact_1x1_congruence_pivots"]
+            +2*actual_inertia["exact_2x2_congruence_pivots"]
+            +actual_inertia["zero"]==N)
+    assert original["original_full_signed_lower_trace"]==pin["best_original_25x25_signed_LOWER_trace"]
+    assert original["source2_original_lower"]==pin["best_original_25x25_signed_LOWER_projected_2x2"][0][0]
+    assert original["source17_original_lower"]==pin["best_original_25x25_signed_LOWER_projected_2x2"][1][1]
+    assert original["original_full_source_negative_upper_trace"]==pin["negative_entire_upper_trace_coupled"]
     best=min(accepted,key=lambda x:(
       x["exact_rational_signed_LOWER_inertia"]["negative"],
       -F(x["original_full_signed_lower_trace"])
