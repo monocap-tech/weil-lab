@@ -1,0 +1,39 @@
+{
+  "provenance": "SM53 original physical signed 3x3 Loewner lower Actions 39208056922 SUCCESS, source head b8e90a61520ad86af3d91898fb70010f19c92deb",
+  "source_run_id": 39208056922,
+  "original_source_indices": [
+    2,
+    17,
+    24
+  ],
+  "center": "1845/128",
+  "core": [
+    "13",
+    "16"
+  ],
+  "matrix": [
+    [
+      "535056306409/500000000000",
+      "477/125000",
+      "1234803/100000000"
+    ],
+    [
+      "477/125000",
+      "718630001409/500000000000",
+      "-1332411/100000000"
+    ],
+    [
+      "1234803/100000000",
+      "-1332411/100000000",
+      "-144345573591/500000000000"
+    ]
+  ],
+  "original_pole_physical_vector": [
+    "-398287/50000000",
+    "-1088691/100000000",
+    "23564747/100000000"
+  ],
+  "original_first_two_principal_minor": "384503873764594005730281/250000000000000000000000",
+  "original_full_determinant": "-55552729626289084625953316032609071/125000000000000000000000000000000000",
+  "note": "Full original actual signed odd physical 3x3 lower, true exceptional pole charged, all original negative frequencies already paid. Newly added positive windows must be disjoint from SM53 old 49 windows and signed core."
+}
