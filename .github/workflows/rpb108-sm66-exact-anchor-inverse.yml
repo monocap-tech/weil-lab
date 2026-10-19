@@ -1,0 +1,84 @@
+name: RPB108 SM66 original exact inverse positive 3plane 22D Schur
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm66_exact_anchor_inverse_schur.py'
+      - 'scripts/validate_rpb108_sm65_original_22schur_anisotropic.py'
+      - 'notes/RPB108_SM66_EXACT_ANCHOR_INVERSE_SCHUR_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm66-exact-anchor-inverse.yml'
+  workflow_dispatch:
+jobs:
+  original-signed-exact-anchor-inverse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 59
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact original Fourier dependencies
+        run: pip install numpy scipy
+      - name: Reprove SM65 true actual 66 source mixed intervals and SM66 complete positive 3D inverse Schur
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm65_original_22schur_anisotropic.py scripts/validate_rpb108_sm66_exact_anchor_inverse_schur.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm66_exact_anchor_inverse_schur.py
+      - name: Fail closed exact inverse and full Schur 22D source scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm66_actual_22D_exact_anchor_inverse_schur.json'))
+          assert d['status']=='SCOPED_TRUE_ORIGINAL_22D_SCHUR_FULL_EXACT_3SOURCE_ANCHOR_INVERSE'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['verified_original_source_25D_SM65_full_replay']
+          assert d['verified_original_SM63_signed_actual_3plane']
+          assert d['positive_anchor_true_original_source_indices']==[1,2,17]
+          assert d['remaining_true_original_physical_source_indices']==[i for i in range(25) if i not in (1,2,17)]
+          assert d['actual_full_cross_pair_bounds_count']==66
+          assert F(d['original_positive_anchor_exact_determinant'])>0
+          assert d['original_positive_anchor_inverse_verified_exact']
+          A=[[F(x) for x in row] for row in d['original_true_3x3_anchor_inverse_full_rational']]
+          assert len(A)==3 and all(len(row)==3 for row in A)
+          assert all(A[i][j]==A[j][i] for i in range(3) for j in range(3))
+          row=[F(x) for x in d['actual_all_cross_row_sum_bounds']]
+          weighted=[F(x) for x in d['inverse_weighted_anchor_cross_row_sums']]
+          assert len(row)==len(weighted)==3
+          assert all(x>0 for x in row+weighted)
+          new=[F(x) for x in d['true_original_22D_exact_inverse_schur_diagonal_upper']]
+          old=[F(x) for x in d['old_original_SM65_ell_diagonal_upper']]
+          assert len(new)==len(old)==22
+          assert all(x>=0 for x in new+old)
+          assert d['all22_inverse_penalty_not_larger_than_SM65']==all(x<=y for x,y in zip(new,old))
+          assert d['penalty_directions_improved_count']==sum(x<=y for x,y in zip(new,old))
+          assert F(d['new_exact_inverse_penalty_max'])==max(new)
+          assert F(d['new_exact_inverse_penalty_sum'])==sum(new)
+          assert F(d['old_ell_penalty_max'])==max(old)
+          assert F(d['old_ell_penalty_sum'])==sum(old)
+          S=[[F(x) for x in row] for row in d['new_exact_inverse_LOEWNER_signed_Schur_lower_rational']]
+          assert len(S)==22 and all(len(r)==22 for r in S)
+          assert all(S[i][j]==S[j][i] for i in range(22) for j in range(22))
+          assert F(d['new_full22_symmetric_outward_compaction_fee'])>=0
+          for n in ('new_exact_inverse_lower_reference_inertia','old_ell_lower_reference_inertia'):
+              assert sum(d[n][k] for k in ('positive','negative','zero'))==22
+          assert not d['actual_true_22D_signed_Schur_PSD_certified']
+          assert not d['actual_true_22D_signed_Schur_exact_negative_index_classified']
+          assert d['verified_actual_original_source25_negative_index_upper_SM63']==22
+          assert not d['original_infinite_odd_negative_index_classified']
+          assert not d['original_470_Astar_inverse_and_strong_orthogonal_remainder']
+          assert not d['original_odd_O1O2_even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(o for o in m['obligations'] if o['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Preserve full original 66 cross and true 22D source Schur certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm66-actual-original-source22-exact-anchor-inverse
+          path: |
+            artifacts/sm65_original_actual_22D_Schur_anisotropic.json
+            artifacts/sm66_actual_22D_exact_anchor_inverse_schur.json
+          if-no-files-found: warn
