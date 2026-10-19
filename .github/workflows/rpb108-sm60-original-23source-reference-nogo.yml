@@ -1,0 +1,65 @@
+name: RPB108 SM60 original 23-source reference Schur no-go
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm60_23complement_lower_nogo.py'
+      - 'notes/RPB108_SM60_ORIGINAL_23SOURCE_REFERENCE_NOGO_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm60-original-23source-reference-nogo.yml'
+  workflow_dispatch:
+jobs:
+  original-23source-reference-no-go:
+    runs-on: ubuntu-latest
+    timeout-minutes: 48
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install analytic original-source dependencies
+        run: pip install numpy scipy
+      - name: Reconstruct SM58 original full 25-source signed matrix and exact 23-dimensional reference
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm60_23complement_lower_nogo.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm60_23complement_lower_nogo.py
+      - name: Fail closed on 23D lower-reference negative-definiteness vs true operator classification
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm60_original_23source_complement_lower_nogo.json'))
+          assert d['status']=='CERTIFIED_ORIGINAL_23SOURCE_REFERENCE_LOWER_NEGATIVE_DEFINITE_NOGO_ONLY'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['physical_original_source_count']==25
+          assert d['remaining_coordinate_dimension']==23
+          assert d['actual_true_signed_positive_plane_original_indices']==[2,17]
+          assert d['remaining_original_coordinate_source_indices']==[i for i in range(25) if i not in (2,17)]
+          assert d['verified_SM58_Actions_id']==39281588617
+          assert d['all_625_entire_original_negative_UPPER_entries_exact_replay']
+          assert d['all_625_original_signed_LOWER_entries_exact_replay']
+          assert {k:d['complete_SM58_original_lower_inertia'][k] for k in ('positive','negative','zero')}=={'positive':1,'negative':24,'zero':0}
+          piv=[F(x) for x in d['23D_original_signed_LOWER_REFERENCE_exact_negative_LDL_pivots']]
+          assert len(piv)==23 and max(piv)<0
+          assert d['23D_original_signed_LOWER_REFERENCE_strict_negative_definite']
+          assert d['23D_original_signed_LOWER_REFERENCE_positive_directions']==0
+          assert not d['23D_ACTUAL_original_signed_complement_negative_definite_proved']
+          assert not d['23D_ACTUAL_original_signed_complement_positive_proved']
+          assert not d['23D_ACTUAL_signed_Schur_complement_C_minus_Bt_Ainverse_B_certified']
+          assert d['actual_original_25D_source_negative_index_upper_SM59A']==23
+          assert not d['actual_original_25D_source_negative_index_EXACTLY_classified']
+          assert not d['complete_original_infinite_odd_negative_index_classified']
+          assert not d['complete_original_470_Astar_inverse_orthogonal_remainder']
+          assert not d['original_odd_O1O2_even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(x for x in m['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Upload exact 23D reference negative LDL certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm60-original-23D-reference-complement-negative-no-go
+          path: artifacts/sm60_original_23source_complement_lower_nogo.json
+          if-no-files-found: warn
