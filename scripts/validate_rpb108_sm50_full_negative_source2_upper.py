@@ -170,7 +170,7 @@ def main():
           down(signed_dir)),
       "full25error_actual_original_signed_source2_positive_certified":
           actual_signed_certificate,
-      "source2_true_original_signed_positive_iff_strict_Rayleigh_bound":True,
+      "source2_actual_signed_positive_claim_requires_strict_certified_lower":True,
       "complete_true_original_negative_upper_on_same_source":True,
       "original_high_positive_tail_discarded_only_nonnegative":True,
       "all_25_source_coupled_signed_operator_PSD_certified":False,
