@@ -86,6 +86,10 @@ def compute_negative(centers,sources):
     assert 0<=new_mass<=mass
     assert 0<=integrated<=weightonly<=baseline
     assert improved_weights>0 and integrated<baseline
+    # Stronger method acceptance: verified full-original complete negative
+    # scalar bound improves by >30%, without omitting any of 973 leaves.
+    assert 10*integrated<7*baseline
+    assert selected_aff>=2500 and second_improved>=2500
     return {
        "parent_true_original_negative_leaves":973,
        "refined_true_original_negative_subcells":973*SUB,
