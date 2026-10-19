@@ -161,5 +161,5 @@ def main():
       "signed_lower":neg["refined_entire_original_signed_source2_Rayleigh_lower"],
       "certified":certified,
       "even_Weil_RH":"OPEN"
-    },flush=True))
+    }),flush=True)
 if __name__=="__main__": main()
