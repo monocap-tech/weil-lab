@@ -223,10 +223,6 @@ def main():
         out,export=outward_compact_matrix(true_low)
         inertia=exact_symmetric_25source_inertia(out)
         R=[[out[i][j] for j in COORD_REM] for i in COORD_REM]
-        inertia_R=exact_symmetric_25source_inertia(
-            [[R[i][j] if i==j else R[i][j] for j in range(23)]
-             for i in range(23)]+[[F(0)]*25 for _ in ()]
-        ) if False else None
         # Exact square-free 23D inertia via rational 1x1/2x2
         # congruence implemented with a dimension-generic helper.
         rcounts=exact_inertia_general(R)
@@ -248,7 +244,7 @@ def main():
     best=min(choices,key=lambda a:(a["whole_25D_signed_lower_exact_inertia"]["negative"],
                       -F(a["signed_lower_trace"])))
     out={
-     "status":"SCOPED_ORIGINAL_338_NEW_TRUE_SIGNED_POSITIVE_WINDOWS_FULL_25SOURCE_LOEWNer_LOWER",
+     "status":"SCOPED_ORIGINAL_338_NEW_TRUE_SIGNED_POSITIVE_WINDOWS_FULL_25SOURCE_LOEWNER_LOWER",
      "canonical_W_ODD_NEG":"OPEN",
      "whole_real_negative_operator_973_leaves_and_original_pole_unchanged":True,
      "original_source_count":25,
