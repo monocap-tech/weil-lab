@@ -1,0 +1,39 @@
+name: RPB108 SM52C exact original two-source physical L2 coercivity
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm52c_original_L2_coercivity.py'
+      - 'certificates/rpb108_sm52_original_coupled_source_matrix.json'
+      - 'notes/RPB108_SM52C_TWO_SOURCE_L2_20261018.md'
+      - '.github/workflows/rpb108-sm52c-L2-coercivity.yml'
+  workflow_dispatch:
+jobs:
+  sm52c-exact-physical-source-coercivity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact source-coupled physical L2 coercivity and full-operator fail-closed gate
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm52c_original_L2_coercivity.py
+          python scripts/validate_rpb108_sm52c_original_L2_coercivity.py
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          x=json.load(open("artifacts/sm52c_original_2source_L2_coercivity.json"))
+          assert x["status"]=="CERTIFIED_ORIGINAL_SIGNED_ODD_TWO_SOURCE_PHYSICAL_L2_COERCIVITY_ONLY"
+          assert x["original_W_ODD_NEG"]=="OPEN"
+          assert x["same_original_source_indices"]==[2,17]
+          assert x["certified_original_supported_two_source_L2_coercivity"]=="69/200"
+          assert F(x["strict_exact_rational_margin"])>0
+          assert not x["complete_original_25source_signed_PSD"]
+          assert not x["complete_original_470source_Astar_inverse"]
+          assert x["original_entire_odd_O1O2_even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - name: Publish scoped original 2D physical coercivity certificate
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm52c-original-two-source-L2-coercivity
+          path: artifacts/sm52c_original_2source_L2_coercivity.json
