@@ -1,0 +1,70 @@
+name: RPB108 SM55 original hierarchical signed three-source pole Schur
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm55_hierarchical_signed_pole.py'
+      - 'certificates/rpb108_sm54_96_window_3source_signed.json'
+      - 'notes/RPB108_SM55_HIERARCHICAL_POLE_SCHUR_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm55-hierarchical-original-pole.yml'
+  workflow_dispatch:
+jobs:
+  sm55-original-signed-hierarchical-3source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 58
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original physical Fourier dependencies
+        run: pip install numpy scipy
+      - name: Original full signed source triple and rational multi-resolution pole-Schur certification
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm55_hierarchical_signed_pole.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm55_hierarchical_signed_pole.py
+      - name: Fail closed on sign-positive disjointness, original full-error Schur and all full-operator obligations
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm55_original_hierarchical_signed_pole_3source.json'))
+          assert d['status']=='CERTIFIED_SCOPED_ORIGINAL_SIGNED_3SOURCE_HIERARCHICAL_POLE_SCHUR_LOWER'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['source_indices']==[2,17,24]
+          assert d['original_coarse_real_frequency_cells']==416
+          assert d['whole_original_positive_coarse_cells']==243
+          assert d['old_original_SM54_positive_coarse_cells_already_credited']==96
+          assert d['old_coarse_signed_positive_but_not_credited']==147
+          assert d['refinement_factor_on_old_coarse_rejections']==8
+          assert d['new_exact_real_signed_refined_cells_examined']==1384
+          assert d['new_refined_true_real_signed_positive_cells']>0
+          assert d['new_full_3x3_error_paid_candidates_best_prefix_count']>0
+          assert d['new_full_3x3_error_paid_candidates_best_prefix_count'] <= d['new_full_3x3_error_paid_candidates_total_count']
+          assert d['rigorously_increased_complete_3x3_effective_pole_margin']
+          assert F(d['exact_signed_pole_schur_strict_margin_improvement'])>0
+          L=[[F(z) for z in row] for row in d['exact_original_three_source_signed_LOEWNER_lower_matrix']]
+          assert len(L)==3 and all(len(row)==3 for row in L)
+          assert all(L[i][j]==L[j][i] for i in range(3) for j in range(3))
+          a=L[0][0]; minor2=a*L[1][1]-L[0][1]**2
+          det=(a*(L[1][1]*L[2][2]-L[1][2]**2)
+              -L[0][1]*(L[1][0]*L[2][2]-L[1][2]*L[2][0])
+              +L[0][2]*(L[1][0]*L[2][1]-L[1][1]*L[2][0]))
+          assert [a,minor2,det]==[F(z) for z in d['exact_new_lower_3x3_leading_principal_minors']]
+          assert a>0 and minor2>0
+          assert d['source_three_dimensional_original_signed_positive_definite_certified']==(det>0)
+          assert not d['complete_original_25source_odd_inertia_certified']
+          assert not d['complete_original_470_source_Astar_O1O2_even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(z for z in m['obligations'] if z['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Preserve exact signed source-matrix and Schur prefix certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm55-original-hierarchical-signed-pole-3source
+          path: artifacts/sm55_original_hierarchical_signed_pole_3source.json
+          if-no-files-found: warn
