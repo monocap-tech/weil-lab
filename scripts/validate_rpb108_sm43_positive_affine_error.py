@@ -50,7 +50,21 @@ from validate_rpb108_sm43_positive_cell_envelope import (
 )
 
 A=F(1,4)
-LOWARCH=6*PI[1]*PI[1]*(F(64)+F(8))
+# Exact true ORIGINAL digamma derivative:
+# d²/dt² [t²/(v(v²+t²))] = 2v(v²-3t²)/(v²+t²)^3.
+# For r=t²/v²>=0, |1-3r| <=(1+r)^3; therefore
+# |f''|<=2/v³, globally INCLUDING t=0. Sum the first
+# 64 exact rational v=k+1/4; integral upper for the
+# decreasing k>=64 tail is integral from k=63 to infinity,
+# giving 1/[2(63+1/4)^2]. Multiply by π_upper².
+# This is >3x tighter than the previous valid 6*(64+8)
+# rational global bound and is pivotal at original low [0,1].
+_ARCH_K=64
+_GLOBAL_ARCH_TERM=sum((F(1)/(F(k)+A)**3
+                      for k in range(_ARCH_K)),F(0))
+_GLOBAL_ARCH_TAIL=F(1,2*(F(_ARCH_K-1)+A)**2)
+LOWARCH=2*PI[1]*PI[1]*(_GLOBAL_ARCH_TERM+_GLOBAL_ARCH_TAIL)
+assert F(1100)<LOWARCH<F(1400)
 
 
 def arch_second_derivative_whole_real_upper(left):
