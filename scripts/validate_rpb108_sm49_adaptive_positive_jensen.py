@@ -223,12 +223,21 @@ def main():
     gain_focus=Padd[FOCUS][FOCUS]-eps_e2
     new_lower=oldlower+gain_focus
     new_gap=neg_lower-new_lower
+    # Crucially: even the GLOBAL 25-source Loewner error, not only
+    # the tighter direction-specific fee, resolves SM48's original
+    # nonpole 15-band source2 *reference* gap.
+    global_gain_focus=Padd[FOCUS][FOCUS]-eps_add
+    global_new_gap=old_gap-global_gain_focus
     assert old_gap>F(17,1000),(
         "SM48 exact original signed source-2 reference gap disappeared",
         float(old_gap))
     assert gain_focus>F(1,1000000),(
         "Adaptive original signed-positive source search supplied no meaningful rigorous e2 lower gain",float(gain_focus))
-    assert new_gap<old_gap
+    assert gain_focus>F(9,100) and new_gap<-F(7,100),(
+        "Actual original source2 adaptive directional reference rescue did not clear prior 15band deficit")
+    assert global_gain_focus>F(9,100) and global_new_gap<-F(7,100),(
+        "Global full 25x25 original source Loewner fee too weak to clear source2 reference deficit")
+    assert eps_add<F(1,500)
     # Full-matrix lower valid even if scalar error makes the extra
     # displayed lower matrix indefinite in some directions.
     full_low_lower=[
@@ -264,6 +273,10 @@ def main():
           qfloor(gain_focus)),
       "NEW_original_15band_minus_adaptive_reference_source2_gap":str(
           qceil(new_gap)),
+      "NEW_full_25source_Loewner_error_paid_source2_gain_lower":str(
+          qfloor(global_gain_focus)),
+      "NEW_15band_minus_full25source_Loewner_lower_reference_gap_source2_up":str(
+          qceil(global_new_gap)),
       "exact_fraction_strict_positive_gain":True,
       "new_original_local_second_derivative_strict_improvements":improved,
       "full_25x25_new_rational_positive_adaptive_matrix":[
@@ -289,6 +302,7 @@ def main():
        "old_reference_deficit":float(old_gap),
        "certified_source2_extra_positive_gain":float(gain_focus),
        "new_source2_reference_gap":float(new_gap),
+       "full25_global_error_paid_source2_reference_gap":float(global_new_gap),
        "source_derivative_improvements":improved,
        "original_complete_odd_Weil_RH":"OPEN"
     }),flush=True)
