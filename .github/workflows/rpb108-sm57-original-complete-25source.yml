@@ -47,6 +47,11 @@ jobs:
           L=[[F(x) for x in row] for row in d['original_complete_25source_signed_lower_matrix']]
           assert len(L)==25 and all(len(row)==25 for row in L)
           assert all(L[i][j]==L[j][i] for i in range(25) for j in range(25))
+          inertia=d['original_complete_25source_rational_LOWER_exact_inertia']
+          assert inertia['positive']+inertia['negative']+inertia['zero']==25
+          assert inertia['exact_1x1_congruence_pivots']+2*inertia['exact_2x2_congruence_pivots']+inertia['zero']==25
+          assert d['certified_original_actual_25source_negative_index_UPPER_bound']==inertia['negative']
+          assert not d['original_actual_25source_negative_index_EXACTLY_classified']
           assert not d['original_true_negative_index_exactly_known']
           assert not d['original_25source_signed_PSD_certified']
           assert not d['complete_original_odd_orthogonal_complement_classified']
