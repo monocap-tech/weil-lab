@@ -17,7 +17,7 @@ Each chosen window then uses the exact original **full three-source** SM53 physi
 L_{54}=L_{53}+\sum_{I\in\mathcal J_{54}} 2|I|\delta_I v_Iv_I^T
 -\left(\sum_I 2|I|\delta_I\epsilon_{I,\mathrm{mean}}\right)I_3.
 \]
-Because every newly chosen interval has strictly positive signed original multiplier, its SM53 negative cap contribution was zero. The original source Fourier signed baseline there was otherwise discarded, so the entire addition is legitimate and neither the original rank-one exceptional pole nor any existing signed real interval is double counted.
+Every newly chosen interval satisfies the true signed original multiplier bound \(m(\xi)\ge\delta_I>0\). SM53 did not credit its positive frequency contribution; its conservative exterior negative upper \(w_I\ge0\) might nonetheless have charged a spurious negative amount. Adding the Jensen lower is still valid cellwise: \(-w_I\int_I|Tz|^2+\delta_I|I||\overline{Tz}|^2\le(\delta_I-w_I)\int_I|Tz|^2\le\int_I m(\xi)|Tz|^2\), using Jensen and \(m\ge\delta_I\). Thus no assumption that the inherited negative cap vanishes is required, and neither any previously credited positive interval nor the exceptional pole is counted twice.
 
 The final exact rational matrix is symmetrically quantized with a **full max-row-sum Loewner error**, giving a genuine smaller-denominator full 3×3 lower. Its leading original sine/xcos block \(A\) must be PD, and the exact effective pole-source Schur margin is
 \[
