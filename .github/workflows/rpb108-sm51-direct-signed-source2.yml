@@ -1,0 +1,55 @@
+name: RPB108 SM51 original source2 direct signed complete exterior
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm51_direct_signed_source2.py'
+      - 'notes/RPB108_SM51_DIRECT_SIGNED_SOURCE2_20261018.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm51-direct-signed-source2.yml'
+  workflow_dispatch:
+jobs:
+  sm51-original-signed-source2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original supported source libraries
+        run: pip install numpy scipy
+      - name: Check full real signed core and exhaustively bounded exterior
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm51_direct_signed_source2.py
+          OPENBLAS_NUM_THREADS=2 python scripts/validate_rpb108_sm51_direct_signed_source2.py
+      - name: Verify original complete signed scope and no theorem promotion
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm51_true_original_signed_source2_direct_core.json'))
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['original_physical_odd_carrier_source_count']==25
+          assert d['certified_whole_real_signed_core_cells']==768
+          assert d['original_total_negative_leaves']==973
+          assert d['whole_original_negative_subcells']==3892
+          assert d['original_negative_subcells_inside_direct_signed_core']+d['original_negative_subcells_outside_core_upper_paid']==3892
+          assert d['positive_bands_outside_direct_core_used']+d['positive_bands_overlapping_core_discarded']==49
+          assert F(d['entire_original_negative_outside_core_upper'])>=0
+          signed=F(d['true_original_direct_signed_source2_Rayleigh_lower'])
+          if d['true_original_one_source_signed_positive_certified']:assert signed>0
+          else:assert signed<=0
+          assert not d['whole_true_original_25x25_signed_PSD_certified']
+          assert not d['complete_original_470_source_odd_O1O2_even_Weil_CC27_RH_certified']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert next(x for x in m['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Publish actual signed source2 rational summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm51-original-direct-signed-source2
+          path: artifacts/sm51_true_original_signed_source2_direct_core.json
+          if-no-files-found: warn
