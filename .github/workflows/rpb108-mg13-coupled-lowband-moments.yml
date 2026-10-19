@@ -1,0 +1,63 @@
+name: mg13-original-coupled-lowband-moments
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg13_true_coupled_lowband_moments.py'
+      - 'notes/RPB108_MG13_COUPLED_ORIGINAL_LOWBAND_MOMENTS_20261019.md'
+      - '.github/workflows/rpb108-mg13-coupled-lowband-moments.yml'
+  workflow_dispatch:
+
+jobs:
+  mg13-original-coupled-moments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact original full-source frequency cell moment matrices
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg13_true_coupled_lowband_moments.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg13_true_coupled_lowband_moments.py
+      - name: Require exact 24-channel two-moment scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg13_true_coupled_original_lowband_moments.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_true_odd_supported_source_count"]==25
+          assert d["boundary_adapted_sources"]==23
+          assert d["physical_odd_sinh_pole_explicit_channel"]
+          assert d["coupled_Fourier_channels_with_pole"]==24
+          assert d["original_MG11_endpoint_pivots"]==[23,24]
+          assert d["original_complete_25D_physical_Gram_recomputed"]
+          assert d["actual_true_original_signed_digamma_prime_multiplier_enclosed"]
+          assert d["all_original_24x24_mixed_Fourier_source_terms_covered"]
+          assert d["both_true_original_moments_certified_on_selected_panels"]
+          assert d["actual_original_disjoint_signed_frequency_cells"]==24
+          for which in ("one","two"):
+              L=[[F(z) for z in row] for row in d["certified_moment_"+which+"_lower"]]
+              U=[[F(z) for z in row] for row in d["certified_moment_"+which+"_upper"]]
+              assert len(L)==len(U)==24
+              assert all(len(r)==24 for r in L+U)
+              for i in range(24):
+                  assert U[i][i]>=L[i][i]
+                  for j in range(24):
+                      assert L[i][j]==L[j][i] and U[i][j]==U[j][i]
+          assert d["strong_moment_is_Ao_squared_not_Astar_squared"]
+          assert d["original_Astar_squared_full_pole_cross_terms_still_open"]
+          assert not d["full_0_to_2pow12_low_band_covered"]
+          assert not d["original_complete_23D_Astar_and_Astar_squared_certified"]
+          assert not d["original_23D_strong_Galerkin_residual_certified"]
+          assert not d["original_470_source_resolvent_certified"]
+          assert d["original_odd_even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg13-original-two-moment-coupled
+          path: artifacts/mg13_true_coupled_original_lowband_moments.json
