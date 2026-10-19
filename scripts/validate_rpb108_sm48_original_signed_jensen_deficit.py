@@ -217,6 +217,11 @@ def main():
       "original_negative_real_window_count":15,
       "original_source_dimension":N,
       "original_pole_source_index":N-1,
+      "original_true_supported_source_coordinate_descriptors":[
+          {"index":i,"source_type":kind,"source_cluster_index":j,
+           "source_degree":k,
+           "original_signed_frequency_center":str(centers[j]) if j>=0 else None}
+          for i,(kind,j,k) in enumerate(sources)],
       "original_positive_low_0_to_4096_complete_one_sided_lower":True,
       "actual_complete_original_negative_frequency_upper_certified":False,
       "true_original_signed_negative_15band_lower_certified":True,
