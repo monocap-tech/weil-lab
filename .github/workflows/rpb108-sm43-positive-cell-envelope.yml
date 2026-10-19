@@ -48,7 +48,7 @@ jobs:
           a=json.load(open("artifacts/sm43_original_affine_positive_error.json"))
           assert a["status"]=="CERTIFIED_TRUE_ORIGINAL_POSITIVE_SOURCE_WINDOW_ADAPTIVE_CONSTANT_AFFINE_ERROR_ONLY"
           assert a["canonical_original_odd_O1_O2"]=="OPEN"
-          assert a["refined_step"]["certified_full_25x25_hybrid_reference_error_float"] < a["first_step"]["certified_full_25x25_affine_reference_error_float"]
+          assert a["refined_step"]["certified_full_25x25_hybrid_reference_error_float"] < a["first_step"]["certified_full_25x25_hybrid_reference_error_float"]
           from fractions import Fraction
           assert Fraction(a["refined_step"]["certified_full_25x25_hybrid_reference_Loewner_error_outward"]) < Fraction(a["constant_step_refined_error_outward"])
           assert a["refined_step"]["cells_using_sm43A_signed_affine_reference"]>0
