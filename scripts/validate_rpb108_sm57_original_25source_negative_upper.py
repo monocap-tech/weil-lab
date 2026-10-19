@@ -105,7 +105,9 @@ def complete_original_negative_upper_diagonal(centers,sources):
         maxweight=max(maxweight,weight)
         strict_positive_cells+=1
     assert strict_positive_cells==973
-    assert width==W
+    # SI10 W counts BOTH signed-frequency halves; our integral is
+    # twice the positive real half, but width itself is one-sided.
+    assert 2*width==W and width==F(973,64)
     assert mass>=total_mass
     assert len(D)==N and all(x>0 for x in D)
     # Source2 diagonal bound cannot be smaller than the actual
