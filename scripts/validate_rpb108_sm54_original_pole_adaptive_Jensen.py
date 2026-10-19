@@ -9,9 +9,12 @@ Discover additional *previously UNCOUNTED* whole-real original
 signed-positive windows on [0,13), each rigorously m_original(xi)>delta
 via original SI06 seven-prime+SM39 arch/SM40 curvature. Exclude
 every earlier 17 SM12 + 32 SM49 accepted source-positive interval.
-Those nonoverlapping windows were DROPPED (not upper charged) in
-SM53's full signed lower, so new true positive spectral mass can
-be ADDED without any double counting.
+Those nonoverlapping windows were not POSITIVELY credited in
+SM53's full signed lower. Its exterior negative upper may still
+pay a conservative nonnegative weight w on a cell: adding a true
+positive delta source Jensen lower is valid because the NEW local
+signed reference delta-w <= delta <= original m, with w>=0.
+No original signed cell or exceptional pole is counted twice.
 
 Select up to 96 cells based on rigorous TRUE sinh-pole source
 Jensen contribution, but certify FULL 3x3 original sin/xcos/sinh
