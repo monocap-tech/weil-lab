@@ -155,6 +155,8 @@ def main():
     assert all(F(checkpoints[i]["MG10_true_exact_boundary_kernel24_strong_upper"])>
                F(checkpoints[i+1]["MG10_true_exact_boundary_kernel24_strong_upper"])
                for i in range(10))
+    first_better=next((c["cutoff_power"] for c in checkpoints
+                      if c["full25_scalar_improvement_over_SM41"]),None)
     out={
       "status":"CERTIFIED_CONDITIONAL_ORIGINAL_25_SOURCE_FULL_STRONG_TAIL_RANK_ONE_PLUS_I",
       "canonical_W_ODD_NEG":"OPEN",
@@ -187,6 +189,7 @@ def main():
       "even_Weil_CC27_RH":"OPEN",
       "independent_original_Fourier_form_domain_audit":"OPEN",
       "dyadic_checkpoints":checkpoints,
+      "first_tested_dyadic_power_where_MG10_full25_scalar_beats_SM41":first_better,
       "interpretation":"Entire selected true original 25D A_o strong Fourier high tail has a rigorous complete matrix rank-one-plus-I upper; its common endpoint-jump trace rank=1. On the exact physical 24D trace kernel, the WHOLE high tail has fast O((log cutoff)^2/cutoff^3) bound. Still no low-frequency or Galerkin residual / original full470 proof."
     }
     dest=ROOT/args.output
@@ -197,6 +200,11 @@ def main():
        "k12_SM41_whole":checkpoints[1]["SM41_whole25_float"],
        "k12_MG10_rank1_plus_I_whole":checkpoints[1]["MG10_whole25_float"],
        "k12_exact_kernel24":checkpoints[1]["MG10_exact_kernel24_float"],
+       "k20_MG10_full25":checkpoints[4]["MG10_whole25_float"],
+       "k20_SM41_full25":checkpoints[4]["SM41_whole25_float"],
+       "k24_MG10_full25":checkpoints[5]["MG10_whole25_float"],
+       "k24_SM41_full25":checkpoints[5]["SM41_whole25_float"],
+       "first_tested_improved_dyadic_power":first_better,
        "actual_resolvent_odd_Weil_RH":"OPEN"
     }),flush=True)
 if __name__=="__main__":main()
