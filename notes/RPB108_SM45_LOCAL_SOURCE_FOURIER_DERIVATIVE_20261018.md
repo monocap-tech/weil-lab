@@ -85,3 +85,23 @@ SM45 is **not** the original complete positive LOW form on \([0,4096]\) because 
 SM46 decision rule: inspect whether the new local physical Fourier derivative correction materially closes the source-window quadrature error. If scalar Cauchy overpricing still dominates, derive preconditioned/matrix-weighted frequency-cell error or higher-order true original source transform Taylor proxy; do **not** merely shrink the signed scalar multiplier envelope. Extend frequency coverage to all real \([0,4096]\), handle all true 470 original degree-\(k\) supported source Fourier transforms, certify actual complete original \(A_*\) inverse/strong residual and 470-dimensional \(51/56\) or corrected full Schur. Canonical odd O1/O2, even E1–E4, Weil positivity, native CC27 and RH remain **OPEN**. Independent original Fourier/closed-domain analytic audit remains required.
 
 Replay \`python3 scripts/validate_rpb108_sm45_local_source_fourier_derivative.py\`; output JSON contains exact rational before/after full source-window Loewner fees and the **same** full 25×25 rational matrix. Mathematical source formulas are auditable independently from output and CI.
+
+
+## Verified actual-original full 25-source CI and remaining acceptance
+
+**First SM45 focused GitHub Actions run 39184177196 completed SUCCESS**, including exact TRUE original midpoint F1/F2/pole_xcos rational Fourier derivative bounds at every real original source-window cell, complete source second-derivative Taylor remainders, and strict identical **all 625 rational SM44 original source stiffness proxy matrix entries** on both frequency meshes. Original SM43A exact signed digamma-plus-all-seven-prime multiplier error is mathematically and numerically EXACTLY unchanged. The full 25×25 source cross and all true supported pole couplings remain priced.
+
+| Mathematically certified original selected 25-source positive source-window Loewner error in raw source coordinates | Mesh1/4: 65 cells SM44 → SM45 | Mesh1/8: 129 cells SM44 → SM45 |
+|---|---:|---:|
+| Original SM43A original true signed multiplier interpolation fee | 179.349827 → **179.349827** | 45.610847 → **45.610847** |
+| Full original physical source Fourier CELL integration fee | 4646.433685 → **806.427340** | 1268.842380 → **130.916378** |
+| **Complete 25×25 source WINDOW matrix Loewner fee** | 4825.783512 → **985.777167** | 1314.453228 → **176.527225** |
+| Original source-cell components strictly helped by local derivative | **1625 / 1625** | **3225 / 3225** |
+| Sum of original source Fourier amplitude-cell error relative to former global derivative bound | 1 → **0.316167** | 1 → **0.168907** |
+| Complete same rational source stiffness matrix | **exact entrywise identical** | **exact entrywise identical** |
+
+At mesh1/8, the exact original source physical Fourier-cell fee decreases by **89.68%** and the overall true positive source-window stiffness error by **86.57%**. This is a rigorous consequence of the valid whole-real original local derivative bounds, not a refined sampled eigenvalue or loss of cross contributions. The 5% formal gate passed by a substantial margin.
+
+**The bottleneck has shifted again:** remaining fine source-window physical Fourier-cell integration error **130.916** is only about **2.87×** the original signed multiplier error **45.611**, versus SM44's ≈27.82×. However the combined rigorous raw-source-coordinate Loewner fee **176.527** still dwarfs the unchanged rational matrix diagonal range **0.355686–4.653812**, so it cannot yield a positive coercive bound or original true Astar inverse. The remaining feasible mathematical improvement is a **matrix/source-conditioned error bound**, improved actual source Fourier variation through linearized (not midpoint-constant) true supported transforms, and tighter original seven-prime/digamma source-weight cell envelopes. Crucially, the larger untouched deficiency is still **the rest of the original positive LOW frequency 0–4096 outside the selected windows** plus the all-470 original source resolvent and its strong residual.
+
+**SM46 proposed acceptance:** move from the scalar \(I_{25}\) source-Cauchy allowance to an exact/interval full 25×25 PSD matrix source variation error, possibly using exact SM42 true source Gram preconditioning; insist on strict original spectral-form lowering in verified physical norm and complete original true Fourier-cell coverage, rather than optimizing a selected numerical Ritz sign. The original W-ODD-NEG O1/O2, even E1–E4, full signed Weil, CC27 and RH remain OPEN. This first scoped SM45 CI passed; any subsequent note/manifest-only source revisions require a separate final-head CI check.
