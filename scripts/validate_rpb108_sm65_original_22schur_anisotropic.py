@@ -192,6 +192,8 @@ def main():
            [str(z) for z in row] for row in L],
       "true_original_25source_two_sided_difference_upper_diagonal":[
            str(E[i][i]) for i in range(N)],
+      "true_original_25source_two_sided_difference_UPPER_matrix":[
+           [str(E[i][j]) for j in range(N)] for i in range(N)],
       "true_original_3source_anchor_signed_LOWER_rational":[
            [str(x) for x in row] for row in A],
       "true_original_22coordinate_signed_LOWER_rational":[
