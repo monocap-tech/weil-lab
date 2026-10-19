@@ -1,0 +1,57 @@
+name: mg02-adaptive-young-original-25source
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg02_young_source_enclosure.py'
+      - 'scripts/validate_rpb108_sm62_full25_338signed_positive.py'
+      - 'notes/RPB108_MG02_ADAPTIVE_YOUNG_SOURCE_METHOD_20261019.md'
+      - 'research/obligations.json'
+      - 'certificates/rpb108_sm58_full25_signed_summary.json'
+      - '.github/workflows/rpb108-mg02-adaptive-young-25source.yml'
+  workflow_dispatch:
+
+jobs:
+  mg02-adaptive-original-young-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact original complete-source Young vs scalar replay
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg02_young_source_enclosure.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg02_young_source_enclosure.py
+      - name: Check method gate scope and exact checkpoint accounting
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg02_adaptive_young_full25_source.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["baseline_original_SM58_625_entry_hashes_replayed"]
+          assert d["new_disjoint_original_positive_windows"]==338
+          assert d["all_625_original_source_cross_terms_charged"]
+          assert d["strict_young_selected_cells"]>0
+          assert sum(d["choice_counts"].values())==338
+          assert F(d["certified_raw_23_trace_gain_before_compaction"])>0
+          assert [c["cell_count"] for c in d["checkpoints"]]==[96,192,288,338]
+          for c in d["checkpoints"]:
+              assert sum(c["young_25_lower_inertia"].values())==25
+              assert sum(c["young_23_lower_inertia"].values())==23
+              assert sum(c["scalar_25_lower_inertia"].values())==25
+              assert sum(c["scalar_23_lower_inertia"].values())==23
+              assert F(c["adaptive_trace_advantage"])>=-23*(
+                  F(c["young_export_fee"])+F(c["scalar_export_fee"]))
+          assert not d["actual_25D_source_positive_definite_certified"]
+          assert not d["actual_signed_23D_schur_positive_certified"]
+          assert d["original_470_Astar_inverse_and_infinite_complement"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg02-original-young-25source
+          path: artifacts/mg02_adaptive_young_full25_source.json
