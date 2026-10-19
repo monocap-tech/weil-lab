@@ -231,7 +231,26 @@ def calculate():
           "full_signed_lower_matrix":L
         })
     original=next(x for x in accepted if x["name"]=="original_SM58_coupled")
-    assert original["exact_rational_signed_LOWER_inertia"]==pin["original_25x25_signed_lower_inertia_for_each_diagonal_mix"]["0"]
+    reference=pin["original_25x25_signed_lower_inertia_for_each_diagonal_mix"]["0"]
+    diagnostic={
+      "original_25source_replay_inertia":original["exact_rational_signed_LOWER_inertia"],
+      "pinned_SM58_replay_inertia":reference,
+      "original_replay_trace":original["original_full_signed_lower_trace"],
+      "pinned_SM58_replay_trace":pin["best_original_25x25_signed_LOWER_trace"],
+      "original_replay_source2":original["source2_original_lower"],
+      "pinned_SM58_replay_source2":pin["best_original_25x25_signed_LOWER_projected_2x2"][0][0],
+      "original_replay_source17":original["source17_original_lower"],
+      "pinned_SM58_replay_source17":pin["best_original_25x25_signed_LOWER_projected_2x2"][1][1],
+      "original_replay_neg_upper_trace":original["original_full_source_negative_upper_trace"],
+      "pinned_SM58_neg_upper_trace":pin["negative_entire_upper_trace_coupled"],
+      "original_replay_diag_signs":[1 if original["full_signed_lower_matrix"][i][i]>0 else -1 if original["full_signed_lower_matrix"][i][i]<0 else 0 for i in range(N)],
+      "pinned_reference_best_mix":pin["best_original_25x25_signed_LOWER_selected_mix"]
+    }
+    diagnostic_path=ROOT/"artifacts/sm59b_original_replay_diagnostic.json"
+    diagnostic_path.parent.mkdir(parents=True,exist_ok=True)
+    diagnostic_path.write_text(json.dumps(diagnostic,indent=2)+"\\n")
+    print("SM59B PINNED FULL SOURCE MATRIX REPLAY DIAGNOSTIC:",json.dumps(diagnostic),flush=True)
+    assert original["exact_rational_signed_LOWER_inertia"]==reference, "Original complete 25D baseline inertia mismatch: FAIL CLOSED"
     best=min(accepted,key=lambda x:(
       x["exact_rational_signed_LOWER_inertia"]["negative"],
       -F(x["original_full_signed_lower_trace"])
