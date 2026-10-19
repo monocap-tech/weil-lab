@@ -1,0 +1,72 @@
+name: RPB108 SM53 original coupled signed sin-xcos three-source
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm53_original_3source_pole.py'
+      - 'notes/RPB108_SM53_SIGNED_THREE_SOURCE_POLE_20261018.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm53-coupled-signed-three-source.yml'
+  workflow_dispatch:
+jobs:
+  sm53-original-coupled-three-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original supported odd Fourier dependencies
+        run: pip install numpy scipy
+      - name: True original signed direct coupled source matrix with exterior negative and real pole
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm53_original_3source_pole.py
+          OPENBLAS_NUM_THREADS=2 python scripts/validate_rpb108_sm53_original_3source_pole.py
+      - name: Fail closed coupled original Schur prerequisite and all original obligation scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          a=json.load(open('artifacts/sm53_original_direct_signed_3source_pole_matrix.json'))
+          assert a['status']=='CERTIFIED_SCOPED_ORIGINAL_TRUE_ODD_SIGNED_3SOURCE_LOWER_WITH_POLE_INPUT'
+          assert a['canonical_W_ODD_NEG']=='OPEN'
+          assert a['true_original_source_total_carrier_dimension']==25
+          assert a['physical_original_sine_source_index']==2
+          assert a['same_original_cluster_xcos_source_index']!=2
+          assert a['original_input_sinh_pole_source_index']==24
+          assert a['common_original_center']=='1845/128'
+          assert a['whole_original_signed_core_real_cells']==768
+          assert a['original_positive_signed_core_cells']+a['original_negative_signed_core_cells']==768
+          assert a['original_negative_parent_leaves']==973
+          assert a['original_negative_3892_rational_subcells']==3892
+          assert a['negative_subcells_inside_direct_signed_core']+a['negative_subcells_outside_direct_core']==3892
+          assert a['true_disjoint_original_SM12_SM49_positive_total']==49
+          assert a['original_exterior_positive_windows_counted']+a['positive_windows_overlapping_signed_core_discarded']==49
+          a22=a['exact_original_restricted_3x3_LOEWNER_lower_matrix']
+          assert len(a22)==3 and all(len(row)==3 for row in a22)
+          assert all(F(a22[i][j])==F(a22[j][i]) for i in range(3) for j in range(3))
+          x=[[F(t) for t in row] for row in a22]
+          second=x[0][0]*x[1][1]-x[0][1]**2
+          det=(x[0][0]*(x[1][1]*x[2][2]-x[1][2]*x[2][1])
+              -x[0][1]*(x[1][0]*x[2][2]-x[1][2]*x[2][0])
+              +x[0][2]*(x[1][0]*x[2][1]-x[1][1]*x[2][0]))
+          assert second==F(a['signed_original_3x3_leading_second_principal_minor'])
+          assert det==F(a['signed_original_3x3_exact_rational_determinant'])
+          if a['true_original_3x3_signed_positive_definite_certified']:
+              assert x[0][0]>0 and second>0 and det>0
+          else:assert x[0][0]<=0 or second<=0 or det<=0
+          assert not a['full_true_original_25x25_signed_PSD_certified']
+          assert not a['full_original_470source_Astar_inverse_O1O2_even_Weil_CC27_RH_certified']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(x for x in m['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Publish genuine original 3x3 signed Loewner certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm53-original-coupled-sin-xcos-signed-matrix
+          path: artifacts/sm53_original_direct_signed_3source_pole_matrix.json
+          if-no-files-found: warn
