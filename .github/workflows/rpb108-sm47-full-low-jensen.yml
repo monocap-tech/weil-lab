@@ -1,0 +1,66 @@
+name: RPB108 SM47 original full-low 25-source Jensen lower
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm47_original_full_low_jensen.py"
+      - "notes/RPB108_SM47_FULL_LOW_JENSEN_SOURCE_20261018.md"
+      - ".github/workflows/rpb108-sm47-full-low-jensen.yml"
+  workflow_dispatch:
+
+jobs:
+  sm47-original-whole-low-source-jensen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install original-source geometry dependencies
+        run: python -m pip install numpy scipy
+      - name: Original whole-low source Jensen and complete exact rational 25x25 lower
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm47_original_full_low_jensen.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm47_original_full_low_jensen.py
+      - name: Fail closed on scope, exact positive source gain, and missing original spectral theorem
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p="artifacts/sm47_original_full_low_25_source_jensen_lower.json"
+          d=json.load(open(p))
+          assert d["status"]=="CERTIFIED_SCOPED_ORIGINAL_25_SOURCE_WHOLE_LOW_ONE_SIDED_JENSEN_LOWER"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_positive_low_frequency_region"]=="[0,4096]"
+          assert d["entire_true_original_low_lower_bound_certified"] is True
+          assert d["entire_low_two_sided_stiffness_certified"] is False
+          assert d["all_470_original_Astar_inverse_certified"] is False
+          assert d["complete_original_odd_O1_O2_certified"] is False
+          assert d["original_even_E1_E4_Weil_CC27_RH_certified"] is False
+          assert d["original_genuine_signed_positive_windows"]==17
+          assert d["actual_original_source_dimension"]==25
+          assert F(d["SM42_high_frequency_tail_raw_upper_I"])==F(101,25600)
+          assert F(d["original_17_positive_band_25x25_mean_Gram_error_exact_up"])<F(1,10)
+          assert d["original_source_directions_with_Jensen_gain_above_full_band_matrix_error"]>0
+          for key in ("exact_rational_full_25x25_original_low_lower_matrix",
+                      "exact_rational_17_window_positive_25x25_reference_matrix"):
+              A=d[key]
+              assert len(A)==25 and all(len(row)==25 for row in A)
+              assert all(F(A[i][j])==F(A[j][i])
+                         for i in range(25) for j in range(25))
+          manifest=json.load(open("research/obligations.json"))
+          assert manifest["active_obligation"]=="W-ODD-NEG"
+          assert manifest["objective"]["status"]=="open"
+          assert manifest["governance"]["no_automatic_promotion"] is True
+          odd=next(o for o in manifest["obligations"] if o["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open"
+          assert "O1/O2" in odd["acceptance"]
+          PY
+      - name: Publish scoped original complete-low source lower artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm47-original-25source-whole-low-one-sided-jensen-matrix
+          path: artifacts/sm47_original_full_low_25_source_jensen_lower.json
+          if-no-files-found: warn
