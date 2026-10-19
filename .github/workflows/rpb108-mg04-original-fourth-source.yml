@@ -1,0 +1,65 @@
+name: mg04-original-direct-fourth-source
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg04_direct_fourth_source.py'
+      - 'scripts/validate_rpb108_sm63_direct_third_source_odd.py'
+      - 'notes/RPB108_MG04_DIRECT_FOURTH_SOURCE_20261019.md'
+      - '.github/workflows/rpb108-mg04-original-fourth-source.yml'
+      - 'research/obligations.json'
+  workflow_dispatch:
+
+jobs:
+  mg04-direct-original-fourth-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Recalculate complete four physical sources and exact Sylvester minors
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg04_direct_fourth_source.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg04_direct_fourth_source.py
+      - name: Enforce scoped exact-rational acceptance
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg04_original_direct_signed_fourth_source.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["actual_original_source_indices"]==[1,2,17,0]
+          assert d["actual_original_source_dimension"]==25
+          assert d["original_physical_four_source_Gram_strict_SPD"]
+          assert d["all_three_source_cluster_centers_respected"]
+          assert d["inherited_SM63_three_source_focused_actions_run"]==39314851844
+          assert d["original_disjoint_new_signed_positive_windows"]==338
+          assert d["original_signed_core_cells"]==768
+          assert d["whole_original_negative_parent_leaves"]==973
+          assert d["original_negative_quartered_cells"]==3892
+          assert d["original_true_sinh_exceptional_pole_upper_paid"]
+          assert d["true_positive_real_windows_outside_core"]>=338
+          L=[[F(x) for x in row] for row in d["entire_original_signed_4x4_LOEWNer_lower"]]
+          assert len(L)==4 and all(len(row)==4 for row in L)
+          assert all(L[i][j]==L[j][i] for i in range(4) for j in range(4))
+          from sys import path
+          path.insert(0,"scripts")
+          from validate_rpb108_mg04_direct_fourth_source import leading_minors
+          mins=leading_minors(L)
+          assert mins==[F(x) for x in d["full_original_signed_4source_exact_sylvester_minors"]]
+          is_pd=all(m>0 for m in mins)
+          assert is_pd==d["full_original_signed_4source_lower_positive_definite_certified"]
+          assert d["original_actual_25D_negative_index_upper_if_certified"]==(21 if is_pd else 22)
+          assert not d["actual_signed_source25_negative_index_EXACTLY_classified"]
+          assert not d["entire_infinite_original_odd_negative_index_classified"]
+          assert not d["original470_Astar_inverse_and_orthogonal_remainder"]
+          assert not d["odd_O1O2_even_Weil_CC27_RH"]
+          assert d["independent_original_fourier_form_domain_premise_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg04-original-direct-fourth-source
+          path: artifacts/mg04_original_direct_signed_fourth_source.json
