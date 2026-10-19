@@ -49,6 +49,7 @@ from validate_rpb108_sm43_positive_cell_envelope import (
 from validate_rpb108_sm42_original_physical_gram_and_low_gate import (
     original_full_25_physical_interval_gram)
 from validate_rpb108_sm44_physical_fourier_cell_gram import sqrt_upper
+from validate_rpb108_sm41_original_positive_log_tail import mathematical_global_original_positive_multiplier_majorant
 from validate_rpb108_sm47_original_full_low_jensen import full_original_rational_gram
 from validate_rpb108_sm57_original_25source_negative_upper import (
     original_positive_low_25,pole_outer_upper,
@@ -84,10 +85,18 @@ def exact_23_lower_compact(M):
     assert symmetric(out)
     return out,fee
 
-def true_full25_analytic_signed_upper(gram):
+def true_full25_analytic_signed_upper(gram,centers,sources):
     """True Q<=U from SM41 whole-frequency Ao and SM42 full Gram."""
+    # Replay the inherited original WHOLE-REAL analytic majorant,
+    # not a numerical cutoff model for the tail.
+    assert mathematical_global_original_positive_multiplier_majorant()
     assert LN[2][1]<F(347,500)
     cutoff=4096
+    assert len(sources)==25 and len(centers)>=1
+    assert cutoff>=2*max(centers)
+    assert sum(k=='cluster' and degree==0 for k,j,degree in sources)==16
+    assert sum(k=='cluster' and degree==1 for k,j,degree in sources)==8
+    assert sum(k=='pole' for k,j,degree in sources)==1
     assert cutoff==2**12
     log_upper=12*F(347,500)
     alpha=F(17)+log_upper
@@ -135,7 +144,7 @@ def main():
     L,Lfee=outward_compact_matrix(L_exact)
     assert fingerprint(L)==pin[
         "original_full25_signed_lower_all_625_entries_sha256"]
-    U,alpha,tail,epsH=true_full25_analytic_signed_upper(G)
+    U,alpha,tail,epsH=true_full25_analytic_signed_upper(G,centers,sources)
     E=[[U[i][j]-L[i][j] for j in range(N)] for i in range(N)]
     assert symmetric(E)
     assert all(E[i][i]>=0 for i in range(N))
