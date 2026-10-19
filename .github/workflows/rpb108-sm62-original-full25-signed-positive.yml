@@ -1,0 +1,80 @@
+name: RPB108 SM62 original full25 338 signed-positive Fourier windows
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm62_full25_338signed_positive.py'
+      - 'notes/RPB108_SM62_FULL25_338_SIGNED_WINDOWS_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm62-original-full25-signed-positive.yml'
+  workflow_dispatch:
+jobs:
+  full-original-25source-positive-lift:
+    runs-on: ubuntu-latest
+    timeout-minutes: 59
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install physical Fourier exact interval dependencies
+        run: pip install numpy scipy
+      - name: Recompute original 96 plus 242 whole-real signed-positive source windows on all 25 sources
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm62_full25_338signed_positive.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm62_full25_338signed_positive.py
+      - name: Fail closed on disjoint real sign, full source25 error and actual odd-operator scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm62_original_338_signed_positive_full25_lower.json'))
+          assert d['status']=='SCOPED_ORIGINAL_338_NEW_TRUE_SIGNED_POSITIVE_WINDOWS_FULL_25SOURCE_LOEWNER_LOWER'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['original_source_count']==25
+          assert d['whole_real_negative_operator_973_leaves_and_original_pole_unchanged']
+          assert d['original_25x25_SM58_negative_upper_hash_replayed']
+          assert d['original_25x25_SM58_signed_lower_hash_replayed']
+          assert d['original_baseline_49_positive_windows_already_paid']
+          assert d['new_original_full25_sign_positive_disjoint_cells']==338
+          assert d['sm54_selected_disjoint_signed_cells']==96
+          assert d['sm55_selected_additional_signed_cells']==242
+          assert d['new_source_positive_checked']==338
+          assert d['new_source_positive_by_original_front']=={'SM54_96':96,'SM55_242':242}
+          assert d['sm55_original_refined_real_signed_cells_examined']==1384
+          assert d['new_original_25source_signed_positive_added_only_excess_over_kappa']
+          assert d['new_original_25source_complete_Fourier_offdiagonals_and_outward_errors_paid']
+          assert F(d['total_338_original_full25_mean_Loewner_error'])>=0
+          checks=d['checkpoints_inertias']
+          assert len(checks)==4
+          assert [x['count'] for x in checks]==[96,192,288,338]
+          for x in checks:
+              inert=x['whole_25D_signed_lower_exact_inertia']
+              rem=x['23D_coordinate_complement_lower_exact_inertia']
+              assert sum(inert[k] for k in ('positive','negative','zero'))==25
+              assert sum(rem[k] for k in ('positive','negative','zero'))==23
+              assert F(x['complete_25D_source_positive_added_mean_Loewner_fee'])>=0
+              assert F(x['signed_full25_outward_rational_rounding_fee'])>=0
+          assert d['best_checkpoint'] in (96,192,288,338)
+          L=[[F(x) for x in row] for row in d['best_complete_signed_25D_LOWER_matrix']]
+          assert len(L)==25 and all(len(row)==25 for row in L)
+          assert all(L[i][j]==L[j][i] for i in range(25) for j in range(25))
+          assert d['best_actual_source25_negative_index_upper_via_LOWER']==d['best_complete_original_25D_signed_LOWER_inertia']['negative']
+          assert d['best_total_original_25D_negative_index_upper']==min(23,d['best_actual_source25_negative_index_upper_via_LOWER'])
+          assert d['actual_original_25D_source_negative_index_upper_SM59A']==23
+          assert not d['actual_signed_23D_Schur_PSD_or_index_certified']
+          assert not d['complete_infinite_original_odd_negative_index_certified']
+          assert not d['original_470_Astar_inverse_and_strong_orthogonal_remainder']
+          assert not d['even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(o for o in m['obligations'] if o['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Preserve complete 25D signed lower and 23D compression inertia
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm62-original-338-real-positive-windows-all25
+          path: artifacts/sm62_original_338_signed_positive_full25_lower.json
+          if-no-files-found: warn
