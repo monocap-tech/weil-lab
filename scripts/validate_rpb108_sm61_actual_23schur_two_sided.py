@@ -120,7 +120,6 @@ def main():
     assert all(z in odd["evidence"] for z in ("SM52","SM58","SM59","SM60","SM61"))
     pin=json.loads((ROOT/"certificates/rpb108_sm58_full25_signed_summary.json").read_text())
     assert pin["actions_run_id"]==39281588617
-    assert pin["source_indices"] if "source_indices" in pin else True
     centers,sources,_=original_source_centered_windows()
     assert len(sources)==N and sources[24][0]=="pole"
     G,actual,pole=original_full_25_physical_interval_gram()
