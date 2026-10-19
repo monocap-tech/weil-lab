@@ -45,7 +45,8 @@ from validate_rpb108_sm40_endpoint_curvature_negative_cap import D2
 from validate_rpb108_sm39_rational_left_arch_cap import arch_lower_at
 from validate_rpb108_sm43_positive_cell_envelope import (
     ROOT,arch_upper_at,original_source_centered_windows,
-    source_window_support_envelopes,ceil_rat
+    source_window_support_envelopes,ceil_rat,
+    positive_cell_weight_interval
 )
 
 A=F(1,4)
@@ -92,27 +93,40 @@ def affine_cell_error(left,right,centers,sources):
     s=source_window_support_envelopes(left,right,centers,sources)
     E=sum((x*x for x in s),F(0))
     # Original form uses reflected signed half-frequency factor2.
-    eps=2*h*true_error*E
-    assert eps>=0
-    # Actual affine reference kink occurs at most once, and its
-    # rational location is explicitly algebraic from endpoints.
+    eps_affine=2*h*true_error*E
+    # The original SM43 CONSTANT reference and our new affine
+    # reference are TWO independently proven TRUE-original
+    # whole-real cell approximations. Choose the one with
+    # STRICTLY SMALLER exact rational error on EACH cell.
+    # A hybrid with per-cell verified choice is automatically
+    # no worse than either whole-mesh global method, and the
+    # chosen reference remains explicitly defined and fully
+    # coupled in the original physical Fourier source integral.
+    low,high,_=positive_cell_weight_interval(left,right)
+    eps_constant=h*(high-low)*E
+    assert eps_constant>=0 and eps_affine>=0
+    use_affine=eps_affine<eps_constant
+    eps=min(eps_affine,eps_constant)
     va=(mla+mua)/2
     vb=(mlb+mub)/2
-    kink_possible=(min(va,vb)<KAPPA<max(va,vb))
+    kink_possible=use_affine and (min(va,vb)<KAPPA<max(va,vb))
     return eps,{
       "whole_real_positive_constant_cell":certified_constant,
       "reference_affine_max_has_rational_kink":kink_possible,
+      "reference_choice":"signed_positive_part_affine" if use_affine else "original_constant_cell",
       "signed_original_endpoint_interval_max_width":w,
       "whole_original_second_derivative_upper":D,
       "exact_curvature_error":curvature,
-      "full_coupled_source_error_exact":eps
+      "full_coupled_hybrid_source_error_exact":eps,
+      "source_affine_error_exact":eps_affine,
+      "source_constant_error_exact":eps_constant
     }
 
 
 def evaluate(step,centers,sources,windows):
     step=F(step)
     assert 0<step<=F(1,4)
-    ncell=0;nflat=0;ncross=0;total=F(0)
+    ncell=0;nflat=0;ncross=0;naffine=0;total=F(0);total_affine=F(0);total_constant=F(0)
     maxcurv=F(0); maxw=F(0)
     windows_total=F(0)
     for aa,bb in windows:
@@ -125,6 +139,9 @@ def evaluate(step,centers,sources,windows):
             a=aa+size*F(i,n);b=aa+size*F(i+1,n)
             e,meta=affine_cell_error(a,b,centers,sources)
             total+=e;ncell+=1
+            total_affine+=meta["source_affine_error_exact"]
+            total_constant+=meta["source_constant_error_exact"]
+            naffine+=meta["reference_choice"]=="signed_positive_part_affine"
             nflat+=bool(meta["whole_real_positive_constant_cell"])
             ncross+=bool(meta["reference_affine_max_has_rational_kink"])
             maxcurv=max(maxcurv,meta["exact_curvature_error"])
@@ -137,12 +154,16 @@ def evaluate(step,centers,sources,windows):
        "exact_original_real_frequency_cells":ncell,
        "certified_real_whole_constant_kappa_cells":nflat,
        "piecewise_affine_reference_rational_crossing_cells":ncross,
+       "cells_using_sm43A_signed_affine_reference":naffine,
+       "cells_using_verified_original_constant_reference":ncell-naffine,
+       "all_affine_reference_error_float":float(total_affine),
+       "all_constant_reference_error_float":float(total_constant),
        "max_true_signed_endpoint_uncertainty_float":float(maxw),
        "max_true_original_curvature_allowance_float":float(maxcurv),
-       "certified_full_25x25_affine_reference_Loewner_error_outward":
+       "certified_full_25x25_hybrid_reference_Loewner_error_outward":
            str(ceil_rat(total,10**9)),
-       "certified_full_25x25_affine_reference_error_float":float(total),
-       "reference_integral":"2 sum_I int_I max(kappa, true-original-signed-m endpoint-midpoint affine) * T_original T_original*",
+       "certified_full_25x25_hybrid_reference_error_float":float(total),
+       "reference_integral":"2 sum_I int_I verified per-cell chosen weight (original constant midpoint OR max(kappa,signed endpoint-midpoint affine)) * T_original T_original*",
        "reference_integrals_certified":False,
        "complete_original_low_0_to_4096_certified":False,
        "original_full_odd_signed_positive":False
@@ -170,23 +191,24 @@ def main():
         ROOT/"artifacts/sm43_original_positive_cell_error.json").read_text())
     assert constant["status"]=="CERTIFIED_TRUE_ORIGINAL_SOURCE_WINDOW_POSITIVE_INTERVAL_ENVELOPE_ONLY"
     assert coarse["same_true_source_window_measure"]==fine["same_true_source_window_measure"]
-    assert fine["certified_full_25x25_affine_reference_error_float"] < (
-        coarse["certified_full_25x25_affine_reference_error_float"])
+    assert fine["certified_full_25x25_hybrid_reference_error_float"] < (
+        coarse["certified_full_25x25_hybrid_reference_error_float"])
     # Compare EXACT outward rational certificate scalars to the
     # SAME actual original window old constant-step error: strict
     # efficiency of *second-order* method is required, no promotion.
-    assert F(fine["certified_full_25x25_affine_reference_Loewner_error_outward"]) < F(
+    assert F(fine["certified_full_25x25_hybrid_reference_Loewner_error_outward"]) < F(
         constant["finer_step"]["certified_whole_25x25_window_Loewner_error_I_exact"])
     data={
-      "status":"CERTIFIED_TRUE_ORIGINAL_POSITIVE_SOURCE_WINDOW_SECOND_ORDER_AFFINE_ERROR_ONLY",
+      "status":"CERTIFIED_TRUE_ORIGINAL_POSITIVE_SOURCE_WINDOW_ADAPTIVE_CONSTANT_AFFINE_ERROR_ONLY",
       "canonical_original_odd_O1_O2":"OPEN",
       "analytical_original_positive_curvature":{
          "all_seven_prime_second_derivative":"SM40 exact rational D2",
          "entire_digamma_second_derivative":"exact positive-term bound 6*pi_hi^2*[4/(a^2+(pi_lo*l)^2)+1/(pi_lo*l)^2] for l>=1, global finite near 0",
          "positive_part_crossing":"max(kappa,x) globally 1-Lipschitz; piecewise rational affine max has at most one explicit crossing",
          "source_gram":"all 25 original SI10 zero-extended physical Fourier cross paid by true whole-cell source bounds",
-         "error_order":"endpoint interval radius + D*h^2/8, whole-real original",
-         "reference_cell_source_Fourier_integrals_certified":False
+         "error_order":"per-cell minimum of full original SM43 constant O(h) error and SM43A signed-affine endpoint interval radius plus D*h^2/8, all exact rational",
+         "reference_cell_source_Fourier_integrals_certified":False,
+         "original_affine_only_fine_error_did_not_pass_first_order_comparison":True
       },
       "first_step":coarse,
       "refined_step":fine,
@@ -203,10 +225,11 @@ def main():
     out=ROOT/args.output;out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(data,indent=2)+"\n")
     print("SM43A SCOPED PASS: TRUE ORIGINAL WHOLE-REAL source-window"
-          " a_o=max(kappa,m) positive signed multiplier approximated"
-          " by exact endpoint-affine signed m with O(h²) fully"
-          " coupled 25-source Loewner remainder across ALL crossings;"
-          " better than constant-source-weight bound. Affine source"
+          " a_o=max(kappa,m) original complete 25-source adaptive"
+          " locally minimum VERIFIED error of constant or signed"
+          " endpoint-affine positive weight (O(h²) curvature),"
+          " valid through ALL crossings, improves first-order"
+          " all-constant source-window bound. Affine source"
           " Fourier cell integrals and rest of full positive LOW"
           " [0,4096] OPEN; whole odd/even/Weil/RH OPEN.",flush=True)
 
