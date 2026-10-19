@@ -1,0 +1,76 @@
+name: mg11-original-dual-boundary-trace
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg11_dual_boundary_trace_kernel.py'
+      - 'scripts/validate_rpb108_mg10_rank_one_endpoint_source_tail.py'
+      - 'notes/RPB108_MG11_DUAL_BOUNDARY_TRACE_KERNEL_20261019.md'
+      - '.github/workflows/rpb108-mg11-dual-boundary-trace.yml'
+  workflow_dispatch:
+
+jobs:
+  mg11-original-dual-boundary-trace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact original physical 25D rank-two boundary and third remainder
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg11_dual_boundary_trace_kernel.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg11_dual_boundary_trace_kernel.py
+      - name: Exact-rational third-tail and scoped source kernel gate
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg11_original_dual_boundary_kernel.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["source_count"]==25
+          assert d["original_107_SI10_physical_clusters_replayed"]
+          assert d["all_original_sources_odd_on_common_support"]
+          assert d["source_types"]=={"sin":16,"xcos":8,"pole":1}
+          assert d["original_exact_endpoints_from_SM42"]
+          assert d["original_boundary_value_rank"]==1
+          assert d["exact_value_derivative_boundary_map_rank"]==2
+          p=d["independent_second_trace_pivot_source_index"]
+          assert 0<=p<24
+          assert d["first_trace_pivot_source_index"]==24
+          det=[F(x) for x in d["exact_rational_second_trace_det_interval"]]
+          assert det[0]<=det[1] and det[0]*det[1]>0
+          assert F(d["strict_abs_determinant_lower"])>0
+          assert len(d["exact_23D_dual_boundary_vanishing_source_indices"])==23
+          assert d["true_original_23D_dual_trace_kernel_dimension"]==23
+          assert len(d["complete_source_boundary_value_rational_midpoints"])==25
+          assert len(d["complete_source_boundary_derivative_rational_midpoints"])==25
+          assert len(d["exact_23_kernel_pivot_pole_coefficient_upper"])==23
+          assert len(d["exact_23_kernel_pivot_other_coefficient_upper"])==23
+          assert F(d["exact_original_third_derivative_majorant_squared_sum"])>0
+          assert F(d["boundary_corrected_23source_third_derivative_majorant_squared_sum"])>0
+          assert [r["cutoff_power"] for r in d["dyadic_checkpoints"]]==[
+              11,12,13,16,20,24,30,36,40,48,56]
+          for c in d["dyadic_checkpoints"]:
+              a=F(c["MG11_full25_rank1_endpoint_value_weight"])
+              b=F(c["MG11_full25_rank1_endpoint_derivative_weight"])
+              e=F(c["MG11_full25_isotropic_interval_and_third_remainder"])
+              assert min(a,b,e)>0
+              bm=[F(x) for x in d["complete_source_boundary_value_rational_midpoints"]]
+              dm=[F(x) for x in d["complete_source_boundary_derivative_rational_midpoints"]]
+              m=a*sum(x*x for x in bm)+b*sum(x*x for x in dm)+e
+              assert m==F(c["MG11_full25_valid_scalar_operator_upper"])
+              assert F(c["MG11_exact_dual_trace_kernel23_entire_strong_upper"])>0
+          assert not d["quantitative_full470_dual_trace_tail_certified"]
+          assert not d["original_low_frequency_stiffness_certified"]
+          assert not d["original_strong_Galerkin_residual_certified"]
+          assert not d["true_original_470_source_51_over_56_gate_passed"]
+          assert d["complete_odd_even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg11-original-dual-boundary-trace
+          path: artifacts/mg11_original_dual_boundary_kernel.json
