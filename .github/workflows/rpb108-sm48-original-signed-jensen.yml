@@ -1,0 +1,66 @@
+name: RPB108 SM48 original signed 25-source Jensen reference gate
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm48_original_signed_jensen_deficit.py"
+      - "notes/RPB108_SM48_SIGNED_JENSEN_SOURCE_DEFICIT_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm48-original-signed-jensen.yml"
+  workflow_dispatch:
+
+jobs:
+  sm48-original-signed-25source-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install inherited original SI10 geometry dependencies
+        run: python -m pip install numpy scipy
+      - name: Certify original signed 15band/17band full 25x25 Jensen reference gap
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm48_original_signed_jensen_deficit.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm48_original_signed_jensen_deficit.py
+      - name: Assert exact reference-only no-go and preserve true original obligation
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          a=json.load(open("artifacts/sm48_original_25source_signed_jensen_deficit.json"))
+          assert a["status"]=="CERTIFIED_ORIGINAL_25SOURCE_SM47_LOWER_REFERENCE_SIGNED_NEGATIVE_DEFICIT_ONLY"
+          assert a["canonical_W_ODD_NEG"]=="OPEN"
+          assert a["original_source_dimension"]==25
+          assert a["original_pole_source_index"]==24
+          assert a["original_positive_window_count"]==17
+          assert a["original_negative_real_window_count"]==15
+          assert a["true_original_signed_negative_15band_lower_certified"]
+          assert not a["actual_complete_original_negative_frequency_upper_certified"]
+          assert a["original_positive_low_0_to_4096_complete_one_sided_lower"]
+          assert a["exact_original_25source_rayleigh_tests"]==625
+          assert F(a["nonpole_reference_best_signed_deficit_per_source_norm2_rational_lower"])>0
+          assert F(a["pole_conditioned_reference_best_signed_deficit_per_source_norm2_rational_lower"])>0
+          assert a["original_local_true_Tsecond_source_improvements_positive"]>0
+          assert a["original_local_true_Tsecond_source_improvements_negative"]>0
+          for k in ("full_25x25_rational_positive_reference_matrix",
+                    "full_25x25_rational_negative_15band_reference_matrix",
+                    "full_25x25_rational_positive_low_lower_matrix"):
+              M=a[k]
+              assert len(M)==25 and all(len(x)==25 for x in M)
+              assert all(F(M[i][j])==F(M[j][i]) for i in range(25) for j in range(25))
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          odd=next(x for x in m["obligations"] if x["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open" and "O1/O2" in odd["acceptance"]
+          PY
+      - name: Publish scoped original signed Jensen reference-only artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm48-original-full-25source-signed-jensen-reference-deficit-only
+          path: artifacts/sm48_original_25source_signed_jensen_deficit.json
+          if-no-files-found: warn
