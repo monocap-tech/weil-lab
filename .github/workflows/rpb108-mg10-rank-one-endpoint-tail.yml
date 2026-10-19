@@ -1,0 +1,70 @@
+name: mg10-original-rank-one-endpoint-tail
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg10_rank_one_endpoint_source_tail.py'
+      - 'scripts/validate_rpb108_mg09_original_endpoint_tail_budget.py'
+      - 'scripts/validate_rpb108_sm42_original_physical_gram_and_low_gate.py'
+      - 'notes/RPB108_MG10_RANK_ONE_BOUNDARY_JUMP_20261019.md'
+      - '.github/workflows/rpb108-mg10-rank-one-endpoint-tail.yml'
+  workflow_dispatch:
+
+jobs:
+  mg10-original-rank-one-endpoint-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact original 25D rank-one endpoint and full strong high tail
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg10_rank_one_endpoint_source_tail.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg10_rank_one_endpoint_source_tail.py
+      - name: Fail-closed original full matrix and 24D null-kernel acceptance
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg10_original_rank_one_endpoint_tail.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_source_count"]==25
+          assert d["exact_source_odd_parity_and_common_support"]
+          assert d["original_107_cluster_geometry_replayed"]
+          assert d["source_types"]=={"sin":16,"xcos":8,"pole":1}
+          assert d["actual_boundary_trace_vector_nonzero"]
+          assert d["original_boundary_trace_rank"]==1
+          assert d["true_original_endpoint_vanishing_source_subspace_dimension"]==24
+          assert d["exact_trig_certification_from_SM42"]
+          assert F(d["original_pole_endpoint_interval"][0])>0
+          b=d["rational_trace_midpoint"]
+          assert len(b)==25 and len(d["exact_physical_boundary_trace_intervals"])==25
+          assert F(d["complete_trace_midpoint_squared_norm"])==sum(
+              F(z)**2 for z in b)
+          assert F(d["complete_trace_interval_radius_squared_norm"])>=0
+          assert F(d["24_boundary_vanishing_corrected_source_remainder_D2"])>0
+          assert d["whole25_high_frequency_strong_action_tail_certified"]
+          assert d["kernel24_high_frequency_strong_action_tail_certified"]
+          assert [x["cutoff_power"] for x in d["dyadic_checkpoints"]]==[
+              11,12,13,16,20,24,30,36,40,48,56]
+          for row in d["dyadic_checkpoints"]:
+              alpha=F(row["MG10_full25_rank_one_rational_center_coefficient"])
+              beta=F(row["MG10_full25_isotropic_remainder_and_interval_fee"])
+              assert alpha>0 and beta>0
+              m2=F(d["complete_trace_midpoint_squared_norm"])
+              assert F(row["MG10_full25_valid_scalar_operator_norm_upper"])==alpha*m2+beta
+              assert F(row["MG10_true_exact_boundary_kernel24_strong_upper"])>0
+          assert not d["original_low_frequency_strong_action_certified"]
+          assert not d["actual_original_25_source_strong_Galerkin_residual_certified"]
+          assert not d["actual_full470_source_residual_and_inverse_certified"]
+          assert not d["actual_full470_51_over_56_gate_passed"]
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg10-original-rank-one-endpoint-high-tail
+          path: artifacts/mg10_original_rank_one_endpoint_tail.json
