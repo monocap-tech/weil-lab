@@ -12,6 +12,10 @@ n_+(L_{62})=2,\quad n_-(L_{62})=23,\quad n_0(L_{62})=0.
 
 SM63 separately proved actual original signed strict positivity on **g1,g2,g17**, lowering actual restricted V25 negative-index ceiling to 22. SM65 then forms the true 22-dimensional Schur lower by taking the principal complementary block of **L62** and subtracting a nonnegative diagonal compensation for 66 actual mixed source entries. This is a valid **actual Schur inequality** conditional on inherited form/Fourier premises, but positivity of this LOWER is the acceptance question.
 
+## Independently verified newer actual source result
+
+SM64 **passed all 42 final-head checks**, including focused original direct signed fourth-source Actions 39323057878: its physical original [g1,g2,g17,g22] 4x4 signed lower has strictly positive exact Sylvester minors, approximately (0.510771828331, 0.549326416966, 0.793717093530, 0.015689275128). Conditional on inherited Fourier/domain premises, the actual original V25 negative-index ceiling improves to **21**. This is stronger than SM63's earlier actual ceiling 22, but does **not** revise the SM62 full 25D LOWER reference's exact inertia (2 positive,23 negative); the MG06 no-go remains applicable to SM65's fixed L62_R minus a positive-semidefinite Schur penalty. Both statements are consistent.
+
 ## Universal dimension-and-Loewner no-go
 
 Let \(V\) be the full 25-dimensional physical source coordinate space, let \(N\) be its 23-dimensional L62-negative definite subspace, and let \(R\subset V\) be ANY 22-dimensional complementary coordinate subspace to any three independent source anchors. By Grassmann's inequality,
