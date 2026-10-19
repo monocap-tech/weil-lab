@@ -1,0 +1,73 @@
+name: RPB108 SM61 actual signed 23D Schur two-sided full-source gate
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm61_actual_23schur_two_sided.py'
+      - 'notes/RPB108_SM61_ACTUAL_SIGNED_23D_SCHUR_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm61-actual-signed-23schur.yml'
+  workflow_dispatch:
+jobs:
+  actual-original-signed-23D-Schur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 58
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original physical Fourier dependencies
+        run: pip install numpy scipy
+      - name: Prove true entire-source signed two-sided bounds and actual Schur compensation
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm61_actual_23schur_two_sided.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm61_actual_23schur_two_sided.py
+      - name: Fail closed on all actual 2x23 crosses and infinite odd operator limitations
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm61_actual_original_23D_signed_Schur_two_sided.json'))
+          assert d['status']=='CERTIFIED_ACTUAL_ORIGINAL_23D_SIGNED_SCHUR_TWO_SIDED_LOWER_NO_POSITIVITY'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['original_physical_source_count']==25
+          assert d['original_positive_anchor_source_indices']==[2,17]
+          assert d['actual_source_coordinate_complement_indices']==[i for i in range(25) if i not in (2,17)]
+          assert d['actual_coordinate_complement_dimension']==23
+          assert d['original_all625_negative_UPPER_hash_replay']
+          assert d['original_all625_signed_LOWER_hash_replay']
+          assert d['original_full_signed_LOWER_accepted_SM58_Actions_id']==39281588617
+          assert d['original_analytic_low_band_cutoff']==4096
+          assert F(d['original_analytic_low_band_alpha'])==F(17)+12*F(347,500)
+          assert F(d['original_analytic_high_tail_operator_upper_I'])>0
+          assert d['original_full25_signed_two_sided_Loewner_enclosure']
+          assert F(d['original_2x2_actual_positive_anchor_Loewner_Gershgorin_lower'])>0
+          assert d['actual_source_mixed_cross_interval_pairs_certified']==46
+          assert F(d['actual_source_mixed_cross_max_absolute_bound'])>0
+          assert F(d['actual_source_mixed_cross_Frobenius_squared_upper'])>0
+          assert F(d['actual_Schur_negative_compensation_upper_I'])>0
+          assert F(d['actual_Schur_23x23_lower_outward_compaction_fee'])>=0
+          S=[[F(x) for x in row] for row in d['actual_signed_23D_Schur_true_LOEWNer_lower_matrix']]
+          assert len(S)==23 and all(len(row)==23 for row in S)
+          assert all(S[i][j]==S[j][i] for i in range(23) for j in range(23))
+          piv=[F(x) for x in d['actual_signed_23D_Schur_LOWER_reference_negative_pivots']]
+          assert len(piv)==23 and max(piv)<0
+          assert not d['ACTUAL_original_23D_signed_Schur_PSD_certified']
+          assert not d['ACTUAL_original_23D_signed_Schur_negative_index_classified']
+          assert d['original_actual_25D_source_negative_index_upper_bound']==23
+          assert not d['actual_complete_infinite_original_odd_negative_index_classified']
+          assert not d['original_470_source_Astar_strong_inverse_and_orthogonal_remainder']
+          assert not d['original_odd_O1O2_even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(x for x in m['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Retain original 46-cross-source Schur certificate and exact lower
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm61-original-actual-signed-23D-Schur-two-sided
+          path: artifacts/sm61_actual_original_23D_signed_Schur_two_sided.json
+          if-no-files-found: warn
