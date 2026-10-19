@@ -96,3 +96,24 @@ This fully certified new stiffness enclosure covers only \(\mathcal W\) of measu
 **SM45 direction:** inspect the actually measured complete physical Fourier source-cell integration error (as distinct from the 45.6 original multiplier error) and improve dominant source-conditioned frequency cells, plus extend **ALL missing intervals** of the true original positive LOW \([0,4096]\) without dropping the actual original physical source cross, then combine SM41 high tail and SM42 pole. No auto promotion. Full original Fourier/closed-domain analytic audit remains an independent requirement.
 
 Replay: \`python3 scripts/validate_rpb108_sm44_physical_fourier_cell_gram.py\`. JSON outputs a complete original 25×25 rational proxy and independent outward rational source error budgets, all explicitly scoped.
+
+
+## First actual complete original-source-window Fourier-cell arithmetic — focused CI PASS
+
+**Initial SM44 GitHub Actions run 39182539323 completed SUCCESS**, with the true original SM43A adaptive constant/affine reference, SM42 original physical Fourier source midpoint trigonometric/hyperbolic intervals, complete all-source cross terms, rational weights, and source-frequency Lipschitz error. The real 25×25 rational matrix proxy was fully instantiated (all 625 entries, not just approximate sample spectrum), with strict outward rational Loewner errors; original true low [0,4096] outside source windows remains OPEN.
+
+| Whole-real ORIGINAL selected 25-source-window actual positive stiffness enclosure | 65 cells, max 1/4 | 129 cells, max 1/8 |
+| --- | ---: | ---: |
+| True original selected source-window measure | 1029/64 | 1029/64 |
+| **Entire source-coupled SM43A true signed multiplier error** | **179.349827188** | **45.610847484** |
+| **NEW TRUE original supported physical Fourier-cell Gram integration error** | **4646.433685035** | **1268.842380325** |
+| **FULL true 25×25 source-window Loewner error to complete explicit rational matrix** | **4825.783512224** | **1314.453227809** |
+| True original Fourier midpoint interval uncertainty (maximum) | 5×10⁻⁹ | 5×10⁻⁹ |
+| Exact rational computed matrix diagonal range (not spectrum) | [0.53605, 5.31354] | [0.35569, 4.65382] |
+| Affine-weight cell choices / constant-weight choices | 41 / 24 | 116 / 13 |
+
+**Important:** The **entire original 25×25 physical Fourier source cell integral is now actually enclosed**, conditional on inherited original Fourier/domain formulas. But the scalar Loewner error is *enormous* relative to the computed raw-basis diagonal scale of the proxy matrix. The original FFT/Gauss-only positive source stiffness error was not mathematically controlled; SM44 successfully imposes that control but **does not produce a usable coercive lower**. Its error shrinks by 72.76% under the 1/4→1/8 refinement, demonstrating consistency, not spectral closure.
+
+The measured bottleneck has now shifted: at mesh1/8, the **Fourier midpoint integration error 1268.842** is **27.82×** the source multiplier approximation error **45.611**. Further tuning the multiplier-cell bounds alone is no longer the efficient allocation. The dominant conservatism comes from paying global original 25-source physical Fourier derivative bounds \(2\pi B^2\) or \(4\pi B^3/3\) on **all resonant and remote cells** and then a scalar \(\|z\|^2\)-Cauchy fee for the complete 25-source carrier.
+
+**SM45 correct next direction:** certify *local* physical Fourier source derivative envelopes via exact supported original sinc/sinc-prime/sinh differentiated formulas or interval derivative integrations, possibly degree-2 midpoint Taylor remainder, and replace scalar global-source error with a matrix/source-scaled preconditioned Loewner fee. Keep the exact full 25×25 rational source cross and all frequency cells. In parallel cover all **missing** original positive low 0..4096 frequency intervals using source-tail leverage and source-resonance-aware adaptive blocks, combine with SM41 exact true positive high log tail and SM42 exact original physical Gram/pole, and eventually scale to all 470 degree-k original source directions. Complete original odd W-ODD-NEG O1/O2, even E1–E4, signed Weil, native CC27, RH all **OPEN**. No RH or whole-operator sign is inferable from this scoped passing CI.
