@@ -1,0 +1,66 @@
+name: mg12-original-23d-boundary-physical-gram
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg12_double_trace_gram_lowband.py'
+      - 'scripts/validate_rpb108_mg11_dual_boundary_trace_kernel.py'
+      - 'notes/RPB108_MG12_BOUNDARY_ADAPTED_GRAM_LOWBAND_20261019.md'
+      - '.github/workflows/rpb108-mg12-double-trace-gram.yml'
+  workflow_dispatch:
+
+jobs:
+  mg12-original-23d-gram-lowband:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact true source interval gram and crossing-safe low-frequency bound
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg12_double_trace_gram_lowband.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg12_double_trace_gram_lowband.py
+      - name: Verify accepted source23 scope and exact low frequency inequalities
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg12_original_double_trace_physical_gram_lowband.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_physical_source_count"]==25
+          assert d["original_physical_boundary_adapted_source_count"]==23
+          assert d["original_pole_index"]==24
+          assert d["independently_recognized_MG11_second_trace_pivot"]==23
+          assert d["exact_source_value_derivative_trace_matrix_rank"]==2
+          assert d["original_107_source_cluster_geometry_replayed"]
+          assert d["original_exact_SM42_full_25_physical_source_Gram_recomputed"]
+          assert d["original_full_23x23_transformed_physical_Gram_all_529_entries_covered"]
+          assert d["complete_transformed_physical_Gram_SPD_certified_exact_rational"]
+          assert d["original_transformed_coefficients_are_enclosed_not_sampled"]
+          assert d["exact_source23_pole_coupling_all_entries_paid"]
+          assert F(d["certified_source23_coefficient_eigen_floor"])>0
+          assert F(d["true_source23_third_derivative_majorant_squared_sum"])>0
+          assert [x["cutoff_power"] for x in d["dyadic_checkpoints"]]==[12,16,20,24,30]
+          for x in d["dyadic_checkpoints"]:
+              e0=F(x["exact_transformed_L2_high_tail_upper_multiple_I23"])
+              ea=F(x["exact_transformed_Ao_strong_high_tail_upper_multiple_I23"])
+              assert min(e0,ea)>0
+              assert x["original_low_band_Ao_strict_PSD_from_eigen_floor"] == (
+                  F(x["original_low_band_Ao_coefficient_eigen_lower"])>0)
+              assert F(x["reference_energy_lower_from_SI29"])>0
+              assert F(x["complete_original_Astar_strong_action_scalar_upper"])>0
+              assert F(x["strong_action_to_energy_coarse_ratio"])>0
+          assert d["original_low_band_Ao_strong_action_full_interval_certified"]
+          assert not d["original_complete_Astar_Galerkin_strong_residual_certified"]
+          assert not d["original470_source_strong_residual_and_inverse_certified"]
+          assert not d["original_signed_negative_cap_and_full470_51over56_gate_passed"]
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_closed_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg12-original-23source-physical-gram-lowband
+          path: artifacts/mg12_original_double_trace_physical_gram_lowband.json
