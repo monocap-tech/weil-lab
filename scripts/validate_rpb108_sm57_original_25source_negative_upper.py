@@ -185,6 +185,58 @@ def outward_compact_matrix(A,den=OUTPUT_DEN):
     assert err>=max(row_errors)
     return out,err
 
+def exact_symmetric_25source_inertia(matrix):
+    """Exact rational Sylvester inertia via full symmetric congruences.
+
+    For L<=W_actual on this genuine 25-source coefficient space,
+    min-max ensures n_negative(W_actual)<=n_negative(L).
+    Failure of L PSD is NOT proof of any actual negative direction.
+    No full odd-operator claim follows, because the orthogonal
+    infinite-dimensional remainder is not covered.
+    """
+    a=[row[:] for row in matrix]
+    n=len(a)
+    assert n==N and all(len(row)==N for row in a)
+    p=q=z=0
+    pivots_1=0;pivots_2=0
+    while n:
+        assert all(a[i][j]==a[j][i] for i in range(n) for j in range(n))
+        diag=next((i for i in range(n) if a[i][i]!=0),None)
+        if diag is not None:
+            if diag:
+                a[0],a[diag]=a[diag],a[0]
+                for row in a:row[0],row[diag]=row[diag],row[0]
+            pivot=a[0][0]
+            if pivot>0:p+=1
+            else:q+=1
+            rest=[[a[i][j]-a[i][0]*a[0][j]/pivot
+                   for j in range(1,n)] for i in range(1,n)]
+            a=rest
+            n-=1;pivots_1+=1
+            continue
+        # Every diagonal is zero; any offdiagonal b!=0
+        # gives a 2x2 pivot [[0,b],[b,0]] with one +, one -.
+        ij=next(((i,j) for i in range(n) for j in range(i+1,n)
+                  if a[i][j]!=0),None)
+        if ij is None:
+            z+=n
+            break
+        ii,jj=ij
+        permutation=[ii,jj]+[k for k in range(n) if k not in (ii,jj)]
+        b=[[a[i][j] for j in permutation] for i in permutation]
+        pivot=b[0][1]
+        assert b[0][0]==b[1][1]==0 and pivot!=0
+        a=[[b[i][j]-(b[i][0]*b[1][j]+b[i][1]*b[0][j])/pivot
+            for j in range(2,n)] for i in range(2,n)]
+        n-=2
+        p+=1;q+=1;pivots_2+=1
+    assert p+q+z==N
+    assert pivots_1+2*pivots_2+z==N
+    return {"positive":p,"negative":q,"zero":z,
+            "exact_1x1_congruence_pivots":pivots_1,
+            "exact_2x2_congruence_pivots":pivots_2}
+
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--output",
@@ -214,6 +266,7 @@ def main():
     assert all(L[i][j]==L[j][i] for i in range(N) for j in range(N))
     # Do NOT call negative diagonal of this LOWER an actual negative vector!
     diag=[L[i][i] for i in range(N)]
+    inertia=exact_symmetric_25source_inertia(L)
     count_positive=sum(x>0 for x in diag)
     # Source2/17 are already positively classified by SM52 on a much
     # sharper 2D signed real source basis; the full-25 envelope may
@@ -234,6 +287,9 @@ def main():
           [str(x) for x in row] for row in L],
        "original_signed_25source_lower_diagonal":[str(down(x)) for x in diag],
        "signed_lower_diagonal_positive_entry_count_not_a_PSD_claim":count_positive,
+       "original_complete_25source_rational_LOWER_exact_inertia":inertia,
+       "certified_original_actual_25source_negative_index_UPPER_bound":inertia["negative"],
+       "original_actual_25source_negative_index_EXACTLY_classified":False,
        "original_true_negative_index_exactly_known":False,
        "original_25source_signed_PSD_certified":False,
        "complete_original_odd_orthogonal_complement_classified":False,
@@ -252,6 +308,8 @@ def main():
        "positive_low_source2_lower":str(down(positive[2][2])),
        "true_signed_full25_lower_source2":str(down(L[2][2])),
        "signed_lower_positive_diagonal_count":count_positive,
+       "signed_lower_negative_inertia":inertia["negative"],
+       "signed_lower_zero_inertia":inertia["zero"],
        "actual_entire_odd_index":"OPEN",
        "even_Weil_RH":"OPEN"
     }),flush=True)
