@@ -109,13 +109,13 @@ If this gate passes, SM48 is **negative evidence for the 17-window *lower refere
 \langle e_2,(N_{15}-\epsilon_N I)e_2\rangle
 &\gtrsim 0.019501318476,\\
 \langle e_2,L_{47}e_2\rangle
-&\lesssim 0.002168100628,\\
+&< 0.00217,\\
 \langle e_2,(N_{15}-\epsilon_N I-L_{47})e_2\rangle
 &> 17/1000.
 \end{aligned}
 \]
 
-These decimal signs summarize exact independently outward-rounded rational enclosures; the actual certifier compares exact Fractions and proves the strict \(17/1000\) gap. The strongest among the 625 checked normalized one/two-source vectors is also \(e_2\), with measured exact comparison approximately **0.01733321784822** per coefficient norm squared.
+These simple rational numerical thresholds are checked directly in exact Fraction arithmetic, as is the strict \(17/1000\) gap. The separate decimal diagnostic values are approximations, not themselves outward lower enclosures. The strongest among the 625 checked normalized one/two-source vectors is also \(e_2\), with measured exact comparison approximately **0.01733321784822** per coefficient norm squared.
 
 The pole-aware lower-reference diagnostic has an even larger maximal normalized deficit, approximately **0.33072387141209** at \(z=e_{16}-e_{24}\) (where source 24 is the actual sinh pole). This value still concerns **only the lower reference**; it is **not** a negative eigenvalue or a Rayleigh witness for the true whole original signed Weil operator.
 
