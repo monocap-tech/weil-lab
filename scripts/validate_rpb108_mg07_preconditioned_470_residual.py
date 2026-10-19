@@ -15,6 +15,15 @@ from validate_rpb108_si29_pole_threshold_three_bands import FEATURES
 def diag(xs):
  return [[F(xs[i]) if i==j else F(0) for j in range(len(xs))] for i in range(len(xs))]
 def string_matrix(A):return [[str(x) for x in r] for r in A]
+def strict_spd3(A):
+ assert len(A)==3 and all(len(row)==3 for row in A)
+ assert all(A[i][j]==A[j][i] for i in range(3) for j in range(3))
+ d1=A[0][0]
+ d2=d1*A[1][1]-A[0][1]**2
+ d3=(A[0][0]*(A[1][1]*A[2][2]-A[1][2]**2)
+      -A[0][1]*(A[0][1]*A[2][2]-A[1][2]*A[0][2])
+      +A[0][2]*(A[0][1]*A[1][2]-A[1][1]*A[0][2]))
+ return d1>0 and d2>0 and d3>0
 def exact_model():
  # 3D physical toy with one positive SI29-style feature, rank-one
  # pole, a 2-source coupled nonzero strong Galerkin residual.
@@ -50,7 +59,7 @@ def exact_model():
  assert Qref==mm(mm(transpose(Q),inv(B)),Q)
  assert Fq!=[[0,0]] and zq!=[[0],[0]]
  Ai=inv(A);K=scale(H,eye(3))
- assert psd2(sub(inv(B),Ai))
+ assert strict_spd3(sub(inv(B),Ai))
  assert psd2(sub(scale(1/ks,E),DB))
  G0=mm(mm(transpose(Z),A),Z)
  G=mm(mm(transpose(J),Ai),J)
