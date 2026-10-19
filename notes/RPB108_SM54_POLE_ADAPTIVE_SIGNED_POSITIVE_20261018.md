@@ -30,3 +30,29 @@ Strict positive three-source Sylvester minors would prove actual signed odd posi
 CI must verify 416 source candidate cells, whole-real sign positivity, disjointness from all 49 inherited positive windows and original [13,16] signed core, outward physical source transform mean bounds for all three input directions and all mixed terms, strictly improved pole-source lower after paying the full 3×3 Loewner error, exact rational Schur/minors, and no mathematical promotion. Original 25-source odd PSD/negative index, 470-source complete inverse/orthogonal remainder, odd O1/O2, even E1–E4, full Weil positivity, CC27 and RH remain OPEN. Independent original Fourier/form-domain mathematical audit remains distinct from passing GitHub Actions.
 
 The next complete-operator investigation must classify the actual residual pole/effective Schur and entire orthogonal remainder; polishing a single 3D lower cannot substitute for that.
+
+
+## SM54 focused original 3D certificate — initial 96 cells VERIFIED
+
+Original source focused GitHub Actions [39212101376](https://github.com/monocap-tech/weil-lab/actions/runs/39212101376) completed **SUCCESS** on original source head fb8791d8158d65d6eeabad22a7a6e604a9b40139, both mathematical and fail-closed governance steps. Complete original three-source signed odd 3×3 source carrier and actual exceptional pole retained, all original 3×3 cross and outward errors charged.
+
+Of **416** scanned rational whole-real cells on [0,13], **9** intersected the earlier 49 positive bands and were excluded, **153** failed strict original continuous signed lower >1/5, leaving **254 true signed-positive new** cells. Exactly **243** had strict original pole-source Jensen mean positive gain. The first deterministic strongest **96** provided:
+
+| Certified original source measure | Full-error-paid result |
+| --- | ---: |
+| SM53 original pole-source signed lower diagonal | \(-0.288691147182\) |
+| SM54 original 96-window signed lower pole diagonal | \(-0.070102889773\) |
+| SM54 full-matrix-error-paid pole diagonal gain | \(+0.218588257409\) |
+| Extra original signed-positive 3×3 mean Loewner fee | \(0.002881972529\) |
+| Complete rational output matrix outward row error | \(0.000000009773\) |
+| SM53 original effective pole Schur lower | \(-0.288957971125\) approximately |
+| SM54 original effective pole Schur lower | \(-0.070585452483\) approximately |
+| Reduction of original three-source lower-certificate Schur shortfall | **75.57%** |
+
+This is a genuine improvement to the **true original signed 3×3 Loewner LOWER**, not an actual classification of the true pole eigenvalue. The remaining negative *lower* Schur margin of \(-0.07058545\) is INCONCLUSIVE about signed odd positivity and the actual negative index.
+
+### SM54B next source calculation: exhaust the available real-positive candidates
+
+The initial selection cap of 96 was arbitrary for the purpose of classifying the method's adequacy. The next source revision sets the cap to 256 and **requires selecting all 243 strictly pole-beneficial whole-real candidates**, still excluding all old 49 bands and original directly signed core. The strengthened focused CI checks that selection is exhaustive. This tests whether simple nonoverlapping source-adaptive Jensen can fully close the three-source Schur reference or whether additional **signed-core integration / pole-direction inverse geometry** is necessary.
+
+All original full 25/470 source complete odd negative-index/Schur remainder, even E1–E4, signed Weil, CC27 and RH remain OPEN. The original Fourier/form-domain mathematical premises are inherited, not independently audited by passing GitHub Actions. No whole-operator promotion.
