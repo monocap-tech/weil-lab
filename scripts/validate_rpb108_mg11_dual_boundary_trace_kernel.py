@@ -15,8 +15,15 @@ A second whole-25D rank-two-plus-I high-tail Loewner bound pays both
 endpoint oscillatory terms AND the remainder. No low-frequency
 stiffness, real Galerkin strong residual, complete 470D or RH proof.
 """
-import argparse,json
+import argparse,json,sys
 from fractions import Fraction as F
+
+# This validator emits exact, outward-enclosed Fraction numerators and
+# denominators. The 23-source coupled kernel can legitimately exceed
+# CPython's 4300-digit decimal conversion limit. Preserve the full exact
+# integers in the artifact rather than truncating or floating them.
+if hasattr(sys, "set_int_max_str_digits"):
+    sys.set_int_max_str_digits(0)
 from validate_rpb108_si06_negative_band import B,PI,LN
 from validate_rpb108_si10_complement_positivity import protected_inner_cover
 from validate_rpb108_sm42_original_physical_gram_and_low_gate import (
