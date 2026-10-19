@@ -84,7 +84,7 @@ def pair_cell(centers,sources,indices,l,r):
     ch=hyperbolic_interval(B/2,'cosh')
     for k in indices:
         typ,j,degree=sources[k]
-        assert typ=="cluster" and centers[j]==c
+        assert (typ=="pole" and k==24) or (typ=="cluster" and centers[j]==c)
         if typ=='pole':
             val=pole_sin(mid,sh,ch)
             deriv=2*pi*pole_xcos(mid,sh,ch)
@@ -247,7 +247,7 @@ def main():
     for i in range(3):
         for j in range(3):
             final[i][j]=core[i][j]-negative[i][j]+positive[i][j]-pole[i][j]
-    assert final[0][1]==final[1][0]
+    assert all(final[i][j]==final[j][i] for i in range(3) for j in range(3))
     minor2=final[0][0]*final[1][1]-final[0][1]**2
     det=(final[0][0]*(final[1][1]*final[2][2]-final[1][2]*final[2][1])
        -final[0][1]*(final[1][0]*final[2][2]-final[1][2]*final[2][0])
@@ -278,7 +278,7 @@ def main():
       "full_true_original_25x25_signed_PSD_certified":False,
       "full_original_470source_Astar_inverse_O1O2_even_Weil_CC27_RH_certified":False,
       "independent_fourier_closed_form_domain_audit":"OPEN",
-      "interpretation":"All original signed frequency and exceptional pole effects certified on the exact same-center sin/xcos 2D source span. A failed 3x3 LOWER PSD gate is inconclusive about actual signed inertia; independent full 25/470 and odd/even Weil/RH remain open."
+      "interpretation":"All original signed frequency and exceptional pole effects certified on the exact original supported sin/xcos/sinh-pole 3D source span. A failed 3x3 LOWER PSD gate is inconclusive about actual signed inertia; independent full 25/470 and odd/even Weil/RH remain open."
     }
     dest=ROOT/args.output;dest.parent.mkdir(parents=True,exist_ok=True)
     dest.write_text(json.dumps(result,indent=2)+"\n")
@@ -290,7 +290,7 @@ def main():
       "signed_lower_offdiag":float(final[0][1]),
       "lower_determinant":float(det),
       "actual_coupled_3source_PD_certified":strict_pd,
-      "source2_sm51_positive_inherited":True,
+      "SM51_actual_original_signed_source2_positive_certified_separately":True,
       "whole_25source_Weil_RH":"OPEN"
     }),flush=True)
 
