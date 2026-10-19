@@ -256,7 +256,7 @@ def calculate():
     }
     diagnostic_path=ROOT/"artifacts/sm59b_original_replay_diagnostic.json"
     diagnostic_path.parent.mkdir(parents=True,exist_ok=True)
-    diagnostic_path.write_text(json.dumps(diagnostic,indent=2)+"\\n")
+    diagnostic_path.write_text(json.dumps(diagnostic,indent=2)+"\n")
     print("SM59B PINNED FULL SOURCE MATRIX REPLAY DIAGNOSTIC:",json.dumps(diagnostic),flush=True)
     actual_inertia=original["exact_rational_signed_LOWER_inertia"]
     assert {k:actual_inertia[k] for k in ("positive","negative","zero")}==reference, (
