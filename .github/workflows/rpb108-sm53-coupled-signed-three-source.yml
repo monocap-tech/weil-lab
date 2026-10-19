@@ -34,6 +34,8 @@ jobs:
           assert a['physical_original_sine_source_index']==2
           assert a['same_original_cluster_xcos_source_index']!=2
           assert a['original_input_sinh_pole_source_index']==24
+          assert a['true_original_three_supported_physical_sources_independent']
+          assert all(F(z)>0 for z in a['physical_3x3_Gram_rational_lower_leading_principal_minors'])
           assert a['common_original_center']=='1845/128'
           assert a['whole_original_signed_core_real_cells']==768
           assert a['original_positive_signed_core_cells']+a['original_negative_signed_core_cells']==768
