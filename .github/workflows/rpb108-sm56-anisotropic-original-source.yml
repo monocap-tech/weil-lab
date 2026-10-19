@@ -54,6 +54,9 @@ jobs:
           assert [a,minor2,det]==[F(v) for v in d['best_true_original_3x3_signed_LOEWNER_leading_minors']]
           assert new==det/minor2
           assert d['strict_original_3source_positive_definite_certified']==(det>0)
+          assert d['certified_actual_original_signed_3source_negative_index_upper_bound']==(0 if det>=0 else 1)
+          assert not d['certified_actual_original_signed_3source_negative_index_exactly_one']
+          assert d['certified_complete_original_odd_operator_negative_index_upper_bound'] is None
           assert not d['entire_25source_odd_index_and_strong_residual_closed']
           assert not d['original_470source_Astar_inverse_O1O2_even_Weil_CC27_RH']
           m=json.load(open('research/obligations.json'))
