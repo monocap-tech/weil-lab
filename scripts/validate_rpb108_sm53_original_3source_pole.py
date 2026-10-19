@@ -289,7 +289,7 @@ def main():
       "true_original_three_supported_physical_sources_independent":True,
       "physical_3x3_Gram_full_Loewner_error_upper":str(up(gerr)),
       "physical_3x3_Gram_rational_lower_leading_principal_minors":[
-         str(gp1),str(gp2),str(gp3)],
+         str(down(x)) for x in (gp1,gp2,gp3)],
       **cs,**ns,**ps,
       "original_3x3_true_pole_Loewner_error_upper":str(poleeps),
       "true_original_pole_rational_vector":[str(q) for q in poleq],
