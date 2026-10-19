@@ -42,6 +42,9 @@ jobs:
           baseline=F(d["original_full_negative_973parent_sinc_upper"])
           refined=F(d["true_original_complete_negative_source2_upper"])
           assert F(0)<=refined<baseline
+          assert 10*refined<7*baseline
+          assert d["source_frequency_affine_integration_cells_selected"]>=2500
+          assert d["source_second_derivative_strict_improvements"]>=2500
           assert F(d["full25error_original_positiveLOW_source2_lower"])>0
           lower=F(d["refined_entire_original_signed_source2_Rayleigh_lower"])
           if d["true_original_source2_signed_positivity_certified"]:
