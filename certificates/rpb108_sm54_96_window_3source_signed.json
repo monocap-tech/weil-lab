@@ -1,0 +1,32 @@
+{
+  "source": "SM54 first 96-window focused Actions 39212101376 SUCCESS original signed original 3x3 exact rational outward Loewner lower",
+  "run_id": 39212101376,
+  "source_branch_head": "fb8791d8158d65d6eeabad22a7a6e604a9b40139",
+  "source_indices": [
+    2,
+    17,
+    24
+  ],
+  "physical_center": "1845/128",
+  "original_chosen_cells": 96,
+  "complete_signed_original_3source_LOEWNER_lower": [
+    [
+      "1070229270227/1000000000000",
+      "196953/50000000",
+      "128071/12500000"
+    ],
+    [
+      "196953/50000000",
+      "1438949960227/1000000000000",
+      "-234833/10000000"
+    ],
+    [
+      "128071/12500000",
+      "-234833/10000000",
+      "-70102889773/1000000000000"
+    ]
+  ],
+  "schur_exact": "-108700950941313347725432935764442917/1539990849633229285261529000000000000",
+  "mean_Loewner_error_up": "2881972529/1000000000000",
+  "notes": "Previous original signed pole and negative spectrum already charged once; new SM55 cells must be outside 96 selected SM54 positive bands, all 49 old SM12/SM49 windows, and original [13,16] signed core. This 3x3 is a certified LOWER, not the actual signed matrix."
+}
