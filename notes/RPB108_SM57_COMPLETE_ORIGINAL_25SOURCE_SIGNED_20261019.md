@@ -93,3 +93,17 @@ This is the **first full original 25-source signed-source lower built from a tru
 The validator **does not** claim full 25-source signed PSD, a negative-index value, the remaining original 470-source Astar inverse or its strong orthogonal residual, W-ODD-NEG O1/O2, even E1–E4, full Weil positivity, CC27 or RH. Those require the genuine full signed operator's negative upper and orthogonal-complement positivity as separate acceptance gates. The inherited SI06/SM42 physical Fourier/form-domain identities and support certificates still require independent mathematical audit: passing GitHub Actions checks the encoded exact rational consequences, not their external validity.
 
 **Next mathematical priority:** replace the coarse 25-source Cauchy diagonal \(D_{57}\) by a genuine frequency-coupled physical Fourier matrix upper (or prove positivity of its orthogonal complement), rather than overinterpreting a negative \(L_{57}\).
+
+
+## Recovery and exact 25-source inertia gate
+
+The first focused SM57 Actions 39273770072 did **not** pass. It stopped at a leaf-width bookkeeping assertion. Original SI10's returned W=973/32 is **twice** the one-sided sum of 973 retained positive-frequency leaf widths, whereas SM57's width variable accumulates just that positive half. The correct invariant is 2 width=W, with width=973/64; the integral and original negative-frequency quadratic form already use the factor 2. This is a mistaken checker invariant, not a mathematical failure of the leaf amplitude inequality. The script and CI now require the correct two-sided accounting; a subsequent focused Actions pass is still required before this new 25-source result is accepted.
+
+The same SM57 branch now adds **exact full symmetric rational inertia** of the compact outward source matrix L57, using fractional congruence elimination. Nonzero diagonal pivots update via the exact 1×1 Schur complement; if a remaining principal diagonal is identically zero, a nonzero off-diagonal gives an exact 2×2 indefinite symmetric pivot. The result classifies the inertia of the **reference LOWER** without relying on numerical float eigenvalues.
+
+Because \(W_{\mathrm{odd},25}\succeq L_{57}\), the min–max principle proves the precise finite-trial-space ceiling
+\[
+n_-(W_{\mathrm{odd}}\big|_{\operatorname{span}\{g_0,\ldots,g_{24}\}})
+\ \le\ n_-(L_{57}).
+\]
+If \(n_-(L_{57})=25\), this is trivially true and not a useful improvement. Negative pivots of L57 **never** demonstrate negative vectors of the actual signed operator, nor classify its index exactly. Most importantly this is **not** a negative-index ceiling for the complete infinite-dimensional odd operator or its 470-source/Astar/orthogonal complement.
