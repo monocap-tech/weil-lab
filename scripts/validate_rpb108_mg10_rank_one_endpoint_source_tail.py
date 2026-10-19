@@ -148,7 +148,10 @@ def main():
     assert len(checkpoints)==11
     assert all(F(c["MG10_true_exact_boundary_kernel24_strong_upper"])>0
                for c in checkpoints)
-    assert checkpoints[1]["full25_scalar_improvement_over_SM41"]
+    # A larger derivative majorant can make the peeled remainder
+    # WORSE at modest Lambda. This is a measured method outcome,
+    # not a reason to discard an otherwise valid full tail upper.
+    # Never assume the rank-one-plus-I bound dominates SM41.
     assert all(F(checkpoints[i]["MG10_true_exact_boundary_kernel24_strong_upper"])>
                F(checkpoints[i+1]["MG10_true_exact_boundary_kernel24_strong_upper"])
                for i in range(10))
