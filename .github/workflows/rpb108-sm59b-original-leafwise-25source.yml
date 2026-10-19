@@ -36,6 +36,9 @@ jobs:
           assert d["negative_107_original_clusters"]==107
           assert F(d["negative_one_sided_width"])==F(973,64)
           assert d["source_verified_SM58_25source_Actions_id"]==39281588617
+          assert d["source_full_625_entry_true_negative_upper_replay_sha256"]=="53c17a9abb8efb4d2497eaf4fd060219353bdd2d42e056276ec3a911521f0af4"
+          assert d["source_full_625_entry_true_signed_lower_replay_sha256"]=="6ed78ff8b3bdd01bf8d84f467d3d1ad26ea16f8c5f21fc53eebaf0b720a9c684"
+          assert d["source_all_625_negative_upper_and_signed_lower_entries_match_SM58"]
           assert d["source_verified_SM57_25source_Actions_id"]==39275848672
           assert d["source_coupled_original_25x25_all_mixed_entries_charged"]
           assert d["all_full25_original_true_negative_frequency_upper_options_valid"]
