@@ -1,0 +1,55 @@
+{
+  "provenance": "Passing SM58 full25 original signed coupling GitHub Actions 39281588617, head f59a1640d0e6b54177e9d53cb8401fba5156c8bb",
+  "actions_run_id": 39281588617,
+  "artifact_id": 12201213066,
+  "artifact_json_sha256": "568d088af18a705748c4ed5d04a9baf2f2d7a0dc2f8994f1914bb3bc8eabb9d7",
+  "whole_negative_original_leaves": 973,
+  "original_supported_source_count": 25,
+  "source_positive_lower_original_2x2_indices": [
+    2,
+    17
+  ],
+  "original_25x25_signed_lower_inertia_for_each_diagonal_mix": {
+    "0": {
+      "positive": 1,
+      "negative": 24,
+      "zero": 0
+    },
+    "1": {
+      "positive": 0,
+      "negative": 25,
+      "zero": 0
+    },
+    "1/4": {
+      "positive": 0,
+      "negative": 25,
+      "zero": 0
+    },
+    "1/2": {
+      "positive": 0,
+      "negative": 25,
+      "zero": 0
+    },
+    "3/4": {
+      "positive": 0,
+      "negative": 25,
+      "zero": 0
+    }
+  },
+  "best_original_25x25_signed_LOWER_selected_mix": "0",
+  "best_original_25x25_signed_LOWER_trace": "-6378473882167/500000000000",
+  "best_original_25x25_signed_LOWER_projected_2x2": [
+    [
+      "-92795932881/125000000000",
+      "8861246001/200000000000"
+    ],
+    [
+      "8861246001/200000000000",
+      "13169803/25000000000"
+    ]
+  ],
+  "best_original_25x25_signed_LOWER_projected_2x2_det": "-470823069386807976357/200000000000000000000000",
+  "negative_entire_upper_trace_coupled": "1299524585115/100000000000",
+  "negative_entire_upper_trace_SM57_diagonal": "86419118373857/1000000000000",
+  "interpretation": "SM58 signed LOWER is not the actual original 25-source quadratic form. Its 1-positive/24-negative inertia is only a reference. Genuine SM52 two-source original odd positive plane remains independently rigorous."
+}
