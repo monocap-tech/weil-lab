@@ -75,10 +75,13 @@ def source_derivative_constants(sources,clusters):
  assert kinds["pole"]==1
  return ds,kinds
 
-def cutoff_needed(method,target,D2,srcs,infos,start=11,stop=99):
+def dyadic_full_SM41_strong(k,E2):
+ assert k>=11
+ v=F(ARCH_PLUS_C)+F(k)*F(347,500)
+ return 2*E2*(v*v+2*v+2)/F(2**k)
+def cutoff_needed(method,target,D2,E2,start=11,stop=99):
  for k in range(start,stop+1):
-  x=(F(odd_pilot_tail_enclosure(infos,srcs,2**k)[
-       "exact_strong_multiplier_tail_squared_norm_upper"])
+  x=(dyadic_full_SM41_strong(k,E2)
      if method=="unpeeled" else dyadic_strong_from_D(k,D2))
   if x<=target:return k
  raise AssertionError("no crossover within search; increase range")
@@ -119,13 +122,15 @@ def main():
  ds,kind=source_derivative_constants(srcs,clusters)
  assert kind=={"sin":16,"xcos":8,"pole":1}
  D2=sum((d*d for d in ds),F(0))
- assert D2>0
+ E2=kind["sin"]*F(1,2)**2+kind["xcos"]*F(7,10)**2+kind["pole"]*F(2,5)**2
+ assert E2==F(202,25) and D2>0
  checkpoints=[]
  for k in (11,12,13,16,20,24,30,36,40,48,56):
   baseline=odd_pilot_tail_enclosure(infos,srcs,2**k)
   assert baseline["proves_original_positive_tail_for_selected_25"]
   assert baseline["source_dims"]==25
   slow=F(baseline["exact_strong_multiplier_tail_squared_norm_upper"])
+  assert slow==dyadic_full_SM41_strong(k,E2)
   fast=dyadic_strong_from_D(k,D2)
   assert slow>0 and fast>0
   checkpoints.append({
@@ -139,8 +144,8 @@ def main():
           F(311,10**14))
  crossings=[]
  for target in targets:
-  slow_k=cutoff_needed("unpeeled",target,D2,srcs,infos)
-  fast_k=cutoff_needed("peeled",target,D2,srcs,infos)
+  slow_k=cutoff_needed("unpeeled",target,D2,E2)
+  fast_k=cutoff_needed("peeled",target,D2,E2)
   crossings.append({
    "illustrative_coefficient_l2_squared_tail_target":str(target),
    "SM41_first_dyadic_k_for_entire_strong_tail":slow_k,
