@@ -1,0 +1,71 @@
+name: mg05-anisotropic-direct-original-fourth-source
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg05_anisotropic_direct_four_source.py'
+      - 'scripts/validate_rpb108_sm64_direct_fourth_source_odd.py'
+      - 'notes/RPB108_MG05_ANISOTROPIC_DIRECT_FOURTH_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-mg05-direct-anisotropic-fourth.yml'
+  workflow_dispatch:
+
+jobs:
+  mg05-true-signed-fourth-anisotropic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Direct full-source anisotropic vs scalar exact signed calculation
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg05_anisotropic_direct_four_source.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg05_anisotropic_direct_four_source.py
+      - name: Fail-closed independent all-policy proof accounting
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          from sys import path
+          path.insert(0,"scripts")
+          from validate_rpb108_mg05_anisotropic_direct_four_source import leading_minors
+          d=json.load(open("artifacts/mg05_anisotropic_direct_four_source.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["actual_original_source_indices"]==[1,2,17,22]
+          assert d["original_physical_four_source_Gram_strict_SPD"]
+          assert d["original_disjoint_new_signed_positive_windows"]==338
+          assert d["original_signed_core_cells"]==768
+          assert d["whole_original_negative_parent_leaves"]==973
+          assert d["original_negative_quartered_cells"]==3892
+          assert d["true_positive_real_windows_outside_core"]>=338
+          assert d["original_true_sinh_exceptional_pole_upper_paid"]
+          assert d["true_signed_original_same_integral_all_policies"]
+          assert d["four_full_source_error_policies"]==["scalar","trace","fourth","parent3"]
+          records=d["policy_records"]
+          strict=[]
+          for name in d["four_full_source_error_policies"]:
+              c=records[name]
+              L=[[F(x) for x in row] for row in c["source4_signed_LOEWNer_lower"]]
+              assert len(L)==4 and all(len(row)==4 for row in L)
+              assert all(L[i][j]==L[j][i] for i in range(4) for j in range(4))
+              mins=leading_minors(L)
+              assert mins==[F(x) for x in c["exact_sylvester_minors"]]
+              strict.append(all(z>0 for z in mins))
+              assert c["strict_PD"]==strict[-1]
+              assert F(c["full_outward_rounding_fee"])>=0
+          assert any(strict)==d["any_complete_four_source_lower_strict_PD"]
+          assert d["original_actual_25D_negative_index_ceiling_if_verified"]==(21 if any(strict) else 22)
+          assert d["inherited_independent_SM63_true_positive_plane_dimension"]==3
+          assert not d["complete_original_25source_negative_index_EXACTLY_classified"]
+          assert not d["entire_infinite_original_odd_negative_index_classified"]
+          assert not d["original470_Astar_inverse_and_orthogonal_remainder"]
+          assert not d["odd_O1O2_even_Weil_CC27_RH"]
+          assert d["independent_original_fourier_form_domain_premise_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg05-true-original-fourth-anisotropic
+          path: artifacts/mg05_anisotropic_direct_four_source.json
