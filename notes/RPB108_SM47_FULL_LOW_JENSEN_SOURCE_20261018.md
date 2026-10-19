@@ -91,3 +91,17 @@ This is **not** a claim that the original operator has only one negative directi
 New focused Python validator: `scripts/validate_rpb108_sm47_original_full_low_jensen.py`. GitHub Actions workflow: `.github/workflows/rpb108-sm47-full-low-jensen.yml`. The artifact exports the rational 25×25 lower and positive-source matrices and exact errors. **Until the focused PR-head Actions pass, all new numeric acceptance values remain unverified and should not be promoted.**
 
 **Next gate SM48:** confront the resulting **complete original** 25×25 lower matrix with the original negative-cap source directions, and determine whether the Jensen positive subspace and original pole-conditioned inverse can be certified with a residual relative to the original physical Gram. Extend to all 470 original sources only with verified original (k>1) physical transforms and complete Schur residual. A 17-window gain by itself does not close W-ODD-NEG.
+
+## First verified focused execution (source head 691a6043)
+
+**GitHub Actions run [39190147371](https://github.com/monocap-tech/weil-lab/actions/runs/39190147371): SUCCESS.** Both original full-low exact rational 25-source Jensen validator and all fail-closed scope checks completed. The former initial run 39189958127 had already passed the mathematical acceptance predicates but failed solely on Python 3.11's 4300-digit integer-string serialization cap. That was corrected by outward **upward** rational quantization of the *already computed* complete error bounds before writing the 625-entry matrix. This correction does not reduce any certified fee.
+
+- All **17 original SM12 true signed-positive REAL bands** revalidated, all on [0,4096] and mutually disjoint.
+- Complete **25×25 rational lower** and **25×25 rational positive Jensen reference** formed with all original 16 sine, 8 xcos and actual sinh pole sources and cross terms.
+- Full original 25-source physical Gram matrix row-sum enclosure `epsilon_H <= 39591/500000000000` (approximately 0.000000079182).
+- Seventeen-source Jensen Fourier-mean Gram **full-matrix** enclosure `epsilon_P <= 32699183/125000000000` (approximately **0.000261593464**).
+- Total including actual SM42 full-low Fourier high-tail `epsilon_total <= 33192357/125000000000` (approximately **0.000265538856**).
+- **12 of 25 original physical source-coordinate diagonal gains** overcome this *total* scalar fee; 408 certified strict true source-local second-derivative improvements.
+- These are original *one-sided* lower figures, **not comparable as the same matrix error** to SM46's 76.9788 two-sided selected-window approximation. Full 25-source spectral positivity and complete all-470 odd signed operator are not established.
+
+**Custody:** first substantive Actions passed on source head 691a6043. This appended report and manifest reconciliation are documentation/governance changes; final post-report PR-head CI must pass separately. Independent mathematical audit and original-domain identities remain inherited premises, not freshly peer-reviewed proofs.
