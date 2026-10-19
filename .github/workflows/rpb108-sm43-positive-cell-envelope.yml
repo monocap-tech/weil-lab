@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "scripts/validate_rpb108_sm43_positive_cell_envelope.py"
+      - "scripts/validate_rpb108_sm43_positive_affine_error.py"
       - "notes/RPB108_SM43_ORIGINAL_POSITIVE_CELL_ENVELOPE_20261018.md"
       - "research/obligations.json"
       - ".github/workflows/rpb108-sm43-positive-cell-envelope.yml"
@@ -24,6 +25,10 @@ jobs:
         run: |
           python -m py_compile scripts/validate_rpb108_sm43_positive_cell_envelope.py
           OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm43_positive_cell_envelope.py
+      - name: Exact original second-order signed-affine positive multiplier interpolation across all kappa crossings
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm43_positive_affine_error.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm43_positive_affine_error.py
       - name: Fail closed on uncomputed Fourier cell Gram and full original odd/Weil/RH
         run: |
           python - <<'PY'
@@ -40,6 +45,14 @@ jobs:
           assert d["finer_step"]["certified_whole_25x25_window_Loewner_error_I_float"]<d["coarse_step"]["certified_whole_25x25_window_Loewner_error_I_float"]
           assert len(d["original_25_source_frequency_window_union"])>=1
           assert len(d["what_remains"])>=4
+          a=json.load(open("artifacts/sm43_original_affine_positive_error.json"))
+          assert a["status"]=="CERTIFIED_TRUE_ORIGINAL_POSITIVE_SOURCE_WINDOW_SECOND_ORDER_AFFINE_ERROR_ONLY"
+          assert a["canonical_original_odd_O1_O2"]=="OPEN"
+          assert a["refined_step"]["certified_full_25x25_affine_reference_error_float"] < a["first_step"]["certified_full_25x25_affine_reference_error_float"]
+          from fractions import Fraction
+          assert Fraction(a["refined_step"]["certified_full_25x25_affine_reference_Loewner_error_outward"]) < Fraction(a["constant_step_refined_error_outward"])
+          assert a["refined_step"]["reference_integrals_certified"] is False
+          assert a["refined_step"]["complete_original_low_0_to_4096_certified"] is False
           m=json.load(open("research/obligations.json"))
           assert m["active_obligation"]=="W-ODD-NEG"
           assert m["objective"]["status"]=="open"
@@ -54,5 +67,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sm43-original-positive-25-source-window-multiplier-Loewner-error-only
-          path: artifacts/sm43_original_positive_cell_error.json
+          path: |
+            artifacts/sm43_original_positive_cell_error.json
+            artifacts/sm43_original_affine_positive_error.json
           if-no-files-found: warn
