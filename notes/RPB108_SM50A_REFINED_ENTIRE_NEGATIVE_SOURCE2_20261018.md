@@ -67,3 +67,42 @@ The focused SM50A validator reconstructs all 973 original parents, 3,892 real si
 If still too conservative, investigate source-targeted signed multiplier interpolation or capture more original positive continuum; do not convert a lower/upper certificate gap into a claim of actual negativity.
 
 Complete original 25×25 signed odd PSD/inertia, 470-source conditioned Astar inverse and strong residual, W-ODD-NEG O1/O2, even E1–E4, original Weil positivity, CC27 and RH remain **OPEN**. Inherited Fourier/form-domain identities and external mathematical audit remain separate from Actions.
+
+
+## Focused SM50A numerical certificate — accepted on original 3892 real subcells
+
+**October 18 local / October 19 UTC · GitHub Actions [39198050550](https://github.com/monocap-tech/weil-lab/actions/runs/39198050550) SUCCESS** on source commit \`e71881b4eb3a66a403a4f296fdf78d6aead73c75\`. Both exact-rational original source computation and fail-closed numerical/obligation checks passed. The initial two source runs, 39194778387 and 39194832919, had finished all computations and written artifacts, but failed from an output-only Python \`json.dumps(..., flush=True)\` typo; this was corrected to \`print(..., flush=True)\`. No mathematical acceptance check had failed. The corrected focused run passed.
+
+| Original entire negative spectrum, same physical e₂ | Outward bound |
+| --- | ---: |
+| Original SM50 973-parent complete negative upper | \`214803569513/250000000000\` = **0.859214278052** |
+| Original SM50A 3892-subcell improved signed *weight only* + sinc | \`76189799421/125000000000\` = **0.609518395368** |
+| Original SM50A 3892-subcell signed weight + true Fourier affine-square | \`144542118733/250000000000\` = **0.578168474932** |
+| Same original SM49 complete 25-source-error positive LOW e₂ lower | \`47561993717/500000000000\` = **0.095123987434** |
+| Genuine SM42 exceptional-pole penalty upper | \`126906031/1000000000000\` = **0.000126906031** |
+| First original SM50 signed lower | \`-764217196649/1000000000000\` = **−0.764217196649** |
+| New entire-negative original SM50A signed lower | \`-483171393529/1000000000000\` = **−0.483171393529** |
+
+*These are outward rational enclosures, not floating-source FFT approximations.* All **973** original parent negative leaves and **107** original source clusters remain included, partitioned into **3,892** true whole-real subcells. The improved sign-cell upper is strict on 3,892 subcells. Full physical sine Fourier affine mean-square rather than the whole-cell sinc supremum was chosen on **2,549** subcells, and local second derivative estimates improved on **2,549** subcells. The final original full-negative scalar cap is **32.7096% smaller** than the first SM50 cap; a strengthened exact gate \(10U_{50A}<7U_{50}\) (more than 30% gain), plus at least 2,500 source-affine cells, is now in the validator and workflow. The first pass preceded this strengthened gate; its final PR-head Actions must be checked independently.
+
+**Scope is crucial:** The certified bound of **−0.483171393529 is a LOWER bound on the true original signed odd form along this single source**. It is still negative and therefore gives *no* negativity or positivity conclusion about the actual signed form. In particular, it is **not** an original off-line zero, evidence against RH, a negative odd spectral index, or full signed Weil positivity.
+
+## Structural lesson and next true-operator strategy
+
+Most of the improved bound comes from **signed-weight localization** (0.859214→0.609518); physical source-integral sharpening contributes an additional 0.031350. Another indiscriminate refinement of the negative leaf integration is unlikely to be the highest-value *first* next move.
+
+For the *same* original scalar source \(g_2\), the exact pointwise identity holds everywhere:
+
+\[
+\underbrace{\max\{\kappa,m(\xi)\}}_{\text{original positive}}
+-\underbrace{(\kappa-m(\xi))_+}_{\text{original negative}}
+=m(\xi).
+\]
+
+The next original-source investigation should exploit this exact signed cancellation directly on the source's Fourier-dominant frequency band, rather than separately estimate a small positive LOWER and a large negative UPPER before subtraction. A rigorous source-targeted signed real-frequency cell integral can use:
+- original whole-real signed *lower* \(m_{\rm lo}(I)\) from rational arch-left and seven-prime second-derivative/interpolation bounds;
+- if \(m_{\rm lo}(I)\ge0\), a certified LOWER on \(\int_I|T_2|^2\), e.g. Jensen with rigorous physical Fourier mean interval;
+- if \(m_{\rm lo}(I)<0\), a certified UPPER on \(\int_I|T_2|^2\), e.g. SM50A affine-square with full remainder;
+- remaining outer negative frequencies bounded ABOVE from the exhaustive original negative-cover cap; outside original high-frequency sign-safe domain the signed contribution is nonnegative.
+
+The weighted signed sum must retain **every real frequency** without double counting. This is a **proposed next gate**, not a claimed new signed-form certificate. In parallel or afterwards, the complete original 25×25 signed matrix, 470 physical source residual, exceptional-pole Schur, and orthogonal complement remain independent acceptance obligations.
