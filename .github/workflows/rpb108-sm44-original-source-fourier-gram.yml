@@ -1,0 +1,64 @@
+name: RPB108 SM44 true original full physical Fourier-cell source Gram
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm44_physical_fourier_cell_gram.py"
+      - "notes/RPB108_SM44_ORIGINAL_SOURCE_FOURIER_CELL_GRAM_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm44-original-source-fourier-gram.yml"
+  workflow_dispatch:
+
+jobs:
+  sm44-original-physical-fourier-gram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install geometry and numerical preconditioner dependencies
+        run: python -m pip install numpy scipy
+      - name: Verify TRUE original 25-source rational Fourier cell midpoint and all 25x25 Gram cross with exact Loewner
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm44_physical_fourier_cell_gram.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm43_positive_cell_envelope.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm43_positive_affine_error.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm44_physical_fourier_cell_gram.py
+      - name: Fail closed on incomplete low band and original whole odd or RH
+        run: |
+          python - <<'PY'
+          from fractions import Fraction as F
+          import json
+          d=json.load(open("artifacts/sm44_original_physical_fourier_cell_gram.json"))
+          assert d["status"]=="CERTIFIED_SELECTED_ORIGINAL_POSITIVE_SOURCE_WINDOW_FULL_25x25_RATIONAL_PROXY_WITH_ERROR"
+          assert d["canonical_original_odd_O1_O2"]=="OPEN"
+          assert d["proof_scope"]=="SOURCE_CENTERED_WINDOWS_ONLY_NOT_ENTIRE_POSITIVE_LOW_0_TO_4096"
+          a=d["coarse_mesh"];b=d["fine_mesh"]
+          assert a["real_frequency_cells"]==65 and b["real_frequency_cells"]==129
+          assert a["true_original_source_count"]==b["true_original_source_count"]==25
+          assert b["exact_full_matrix_proxy_entries_rational"] is True
+          assert len(b["exact_rational_complete_25x25_proxy_matrix"])==25
+          assert all(len(r)==25 for r in b["exact_rational_complete_25x25_proxy_matrix"])
+          assert b["covers_all_original_low_0_to_4096"] is False
+          assert b["certifies_true_original_Astar_inverse"] is False
+          assert b["certifies_original_complete_odd_O1_O2"] is False
+          assert F(b["new_true_physical_Fourier_cell_Gram_Loewner_eps_outward"])<F(a["new_true_physical_Fourier_cell_Gram_Loewner_eps_outward"])
+          assert F(b["total_true_original_weighted_source_window_stiffness_Loewner_eps_outward"])<F(a["total_true_original_weighted_source_window_stiffness_Loewner_eps_outward"])
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          odd=next(z for z in m["obligations"] if z["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open" and "O1/O2" in odd["acceptance"]
+          assert all(z in odd["evidence"] for z in ("SM42","SM43","SM44"))
+          assert "sm44_true_original_fourier_cell_gram" in m["governance"]
+          PY
+      - name: Upload complete true-original source rational matrix and explicit scoped errors
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm44-original-full-25-source-rational-physical-Fourier-cell-gram-only
+          path: artifacts/sm44_original_physical_fourier_cell_gram.json
+          if-no-files-found: warn
