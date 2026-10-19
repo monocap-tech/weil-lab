@@ -174,7 +174,7 @@ def main():
  sources=select_sources(infos)
  assert len(sources)==25
  # Probe a second grid to expose sampled physical / Fourier errors.
- cases=[(2048,4)] if args.quick else [(2048,4),(4096,4)]
+ cases=[(4096,4)] if args.quick else [(4096,4),(8192,4)]
  results=[]
  for n,pad in cases:
   row=main_run(n,pad,infos,sources,cap,orders,mass,total)
@@ -184,7 +184,6 @@ def main():
   assert row["sampled_source_weak_residual_relative"]<1e-5
   assert row["sampled_strong_residual_squared_trace"]>=0
   assert row["sampled_SI29_pole_denominator"]>0
-  assert all(np.isfinite(list(q.values())[1]) for q in [] )
   results.append(row)
   print("MG08 original-SI29 sampled strong residual:",json.dumps({
    "physical_n":n,"pad":pad,
