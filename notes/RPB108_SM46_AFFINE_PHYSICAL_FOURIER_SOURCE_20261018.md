@@ -101,3 +101,28 @@ This would produce a complete original physical 25×25 rational source-window po
 **SM47:** inspect measured cellwise constant-versus-affine selection and remaining full 25×25 errors. If source window error is still excessive, target matrix/source-scaled Loewner and exact analytic higher-order source transforms. Independently extend true original positive low integration over **ALL real frequencies** \([0,4096]\) and develop all 470 original higher-k source derivatives before attempting the complete corrected Schur. Preserve the canonical W-ODD-NEG acceptance gates and independent original Fourier/form-domain audit.
 
 Replay \`python3 scripts/validate_rpb108_sm46_affine_physical_fourier_source.py\`, generating an explicit rational 25×25 matrix and exact Loewner budget in \`artifacts/sm46_original_source_affine_physical_fourier.json\`.
+
+
+## Verified original full 25-source affine matrix outcome — focused CI PASS
+
+**Focused GitHub Actions run 39188053816 completed SUCCESS**. The validator exercised original SI06/SM42 exact physical Fourier F1/F2/F3 and true sinh-pole intervals, whole-real original spatial-moment third derivatives, exact SM43A true original signed seven-prime/digamma positive reference with its kappa crossings, and all complete 25×25 source interactions through the new exact-rational J0/J1/J2 Fourier affine Gram.
+
+| True ORIGINAL 25-source physical positive stiffness enclosure, SAME selected source windows | Mesh 1/4 (65 cells) | Mesh 1/8 (129 cells) |
+| --- | ---: | ---: |
+| Original SM43A certified multiplier interpolation error (UNCHANGED) | 179.349827188 | 45.610847484 |
+| SM45 entire physical Fourier cell error | 806.427339532 | 130.916377828 |
+| **SM46 entire true Fourier affine cell error** | **293.077803158** | **31.367937056** |
+| **New COMPLETE 25×25 source-window Loewner error** | **472.427630347** | **76.978784539** |
+| Genuine original cells using the certified affine source instead of midpoint | 65/65 | **129/129** |
+| Strictly improved selected source-cell component bounds | 1625/1625 | **3225/3225** |
+| Maximum rigorous midpoint derivative uncertainty | 6e-9 | 6e-9 |
+
+On the SAME original frequency-window union of measure 1029/64, the fine-source Fourier integration error decreased **76.04%**, and total error decreased **56.39%** from the previous SM45 176.527225 to **76.978785**. Strict exact Fraction >5% improvement and cell-width refinement regression PASSED. All genuine original signed seven-prime multipliers, source centers, 25 physical supported sin/xcos/sinh odd directions, and their cross terms preserved.
+
+The new genuine explicit full 25×25 source-affine rational matrix P46 differs from previous midpoint matrix P44. **The unrounded positive-weight affine-source integral is PSD, but independently quantizing J0/J1/J2 need not preserve PSD of the rational displayed proxy.** SM46 pays ALL moment quantization errors in the full Loewner epsilon; do NOT infer proxy PSD or true coercivity from a positive-looking numerical spectrum.
+
+**Interpretation:** Remaining true original multiplier interpolation scalar fee **45.611** now exceeds physical Fourier cell error **31.368**. The full coupled source-window scalar error **76.979** is still much too large relative to physical source matrix scale for a rigorously positive pole-conditioned original Astar inverse. Crucially, this certificate remains on ONLY selected original source-centered windows, not entire original LOW [0,4096]. It does not close W-ODD-NEG O1/O2, even E1-E4, whole Weil positivity, CC27 D-Riesz or RH.
+
+**SM47 mathematical next:** extend original 25-source physically supported Fourier positive matrix coverage to ALL true real low-frequency cells outside source-centered windows, using adaptive source-frequency leverage and certified signed seven-prime/digamma positive envelopes; tighten the **now-dominant multiplier form error** with original source/matrix-aware bounds, not just uniform scalar steps; combine completed low source matrix with SM41 certified original high log tail and SM42 true physical Gram/pole. Then scale from 25 selected to all 470 genuine original higher-degree odd generators and certify entire original Astar inverse/strong residual and complete coupled odd Loewner/Schur. An independent full original Fourier/closed-domain audit is still required.
+
+**Verification note:** Initial substantive original exact-rational source-affine CI PASS 39188053816; subsequent mathematical-clarification comments, note and governance updates require separate final-head CI verification.
