@@ -40,7 +40,7 @@ from validate_rpb108_sm42_original_physical_gram_and_low_gate import (
     original_full_25_physical_interval_gram, hyperbolic_interval
 )
 from validate_rpb108_sm43_positive_cell_envelope import (
-    ROOT, original_source_centered_windows, ceil_rat
+    ROOT, original_source_centered_windows, ceil_rat, floor_rat
 )
 from validate_rpb108_sm44_physical_fourier_cell_gram import (
     quantize, sqrt_upper, original_exact_physical_fourier_midpoint,
@@ -174,7 +174,7 @@ def main():
     # Jensen means must be controlled more tightly.
     assert eps_p<F(1,10),("SM47 original 17-window mean Loewner budget too large",
                           float(eps_p))
-    positive_diag=[i for i in range(n) if P[i][i]>eps_p]
+    positive_diag=[i for i in range(n) if P[i][i]>total_err]
     assert positive_diag,("No actual 25-source diagonal with resolved gain",
                           float(eps_p),float(max(P[i][i] for i in range(n))))
     result={
@@ -183,7 +183,7 @@ def main():
        "original_positive_low_frequency_region":"[0,4096]",
        "entire_low_accounted_for_by":"SM42 global kappa Parseval floor and rigorous high tail; omit all other nonnegative excess; SM12 disjoint certified real positive windows yield Jensen gain",
        "original_genuine_signed_positive_windows":17,
-       "original_SM12_signed_multiplier_lower_exact_outward":str(ceil_rat(signed_lower,10**6)),
+       "original_SM12_signed_multiplier_lower_exact_outward":str(floor_rat(signed_lower,10**6)),
        "actual_original_source_dimension":25,
        "physical_sources":"16 zero-extended sin, 8 zero-extended xcos, 1 actual sinh pole",
        "true_original_spectral_lower":"A_low_25 >= kappa*Hq + P - (kappa*(2E/4096+eps_H)+eps_P)*I25",
