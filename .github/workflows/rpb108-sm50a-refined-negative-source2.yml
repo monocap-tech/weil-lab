@@ -1,0 +1,69 @@
+name: RPB108 SM50A original complete negative source2 refined rational upper
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm50a_refined_full_negative_source2.py"
+      - "notes/RPB108_SM50A_REFINED_ENTIRE_NEGATIVE_SOURCE2_20261018.md"
+      - ".github/workflows/rpb108-sm50a-refined-negative-source2.yml"
+  workflow_dispatch:
+
+jobs:
+  sm50a-entire-original-negative-source2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install SI10 supported physical Fourier dependencies
+        run: python -m pip install numpy scipy
+      - name: Certify all original signed negative 3892 subcells with physical source-affine mean square
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm50a_refined_full_negative_source2.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm50a_refined_full_negative_source2.py
+      - name: Fail closed original complete-negative upper and true signed-source sign
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/sm50a_original_refined_negative_source2.json"))
+          assert d["status"]=="SCOPED_TRUE_ORIGINAL_3892SUBCELL_COMPLETE_NEGATIVE_SOURCE2_UPPER"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["parent_true_original_negative_leaves"]==973
+          assert d["refined_true_original_negative_subcells"]==3892
+          assert d["all_107_original_negative_clusters_retained"]
+          assert d["original_physical_odd_source_index"]==2
+          assert d["original_sine_source_center"]=="1845/128"
+          assert d["original_weight_improved_subcells"]>0
+          assert d["source_frequency_affine_integration_cells_selected"]>=0
+          assert d["exact_rational_refinement_strict"]
+          baseline=F(d["original_full_negative_973parent_sinc_upper"])
+          refined=F(d["true_original_complete_negative_source2_upper"])
+          assert F(0)<=refined<baseline
+          assert 10*refined<7*baseline
+          assert d["source_frequency_affine_integration_cells_selected"]>=2500
+          assert d["source_second_derivative_strict_improvements"]>=2500
+          assert F(d["full25error_original_positiveLOW_source2_lower"])>0
+          lower=F(d["refined_entire_original_signed_source2_Rayleigh_lower"])
+          if d["true_original_source2_signed_positivity_certified"]:
+              assert lower>0
+          else:assert lower<=0
+          assert d["whole_original_negative_frequency_upper_not_15band_lower"]
+          assert not d["whole_true_25x25_odd_signed_PSD_certified"]
+          assert not d["original_470_Astar_resolvent_O1O2_even_Weil_CC27_RH_certified"]
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"]
+          odd=next(x for x in m["obligations"] if x["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open" and "O1/O2" in odd["acceptance"]
+          PY
+      - name: Publish scoped exact rational full-negative original source2 result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm50a-original-entire-3892-negative-source2-refinement
+          path: artifacts/sm50a_original_refined_negative_source2.json
+          if-no-files-found: warn

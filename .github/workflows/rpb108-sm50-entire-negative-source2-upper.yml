@@ -1,0 +1,67 @@
+name: RPB108 SM50 original entire negative-frequency source2 upper
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate_rpb108_sm50_full_negative_source2_upper.py"
+      - "notes/RPB108_SM50_COMPLETE_NEGATIVE_SOURCE2_UPPER_20261018.md"
+      - "research/obligations.json"
+      - ".github/workflows/rpb108-sm50-entire-negative-source2-upper.yml"
+  workflow_dispatch:
+
+jobs:
+  sm50-original-entire-negative-source2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install original supported source dependencies
+        run: python -m pip install numpy scipy
+      - name: Entire original negative full 973-leaf upper and pole-corrected source2
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm50_full_negative_source2_upper.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm50_full_negative_source2_upper.py
+      - name: Strict original full-negative coverage, correct comparison direction and open operator obligations
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          a=json.load(open("artifacts/sm50_original_complete_negative_upper_source2.json"))
+          assert a["status"]=="SCOPED_TRUE_ORIGINAL_FULL_NEGATIVE_973LEAF_SOURCE2_UPPER"
+          assert a["canonical_W_ODD_NEG"]=="OPEN"
+          assert a["actual_original_odd_source_dimension"]==25
+          assert a["original_genuine_sine_source_index"]==2
+          assert a["genuine_original_sine_frequency_center"]=="1845/128"
+          assert a["true_original_negative_frequency_leaves"]==973
+          assert a["original_negative_cover_clusters"]==107
+          assert a["complete_true_original_negative_upper_on_same_source"]
+          assert a["original_high_positive_tail_discarded_only_nonnegative"]
+          assert F(a["true_original_whole_negative_frequency_source2_form_upper"]) >= 0
+          assert F(a["true_original_whole_negative_frequency_source2_form_upper"]) < F(a["independent_crude_original_negative_source_upper"])
+          assert F(a["SM49_baseline_plus_adaptive_positiveLOW_true_full25error_source2_lower"])>0
+          assert F(a["true_original_physical_sinh_pole_rankone_source2_penalty_upper"])>=0
+          signed=F(a["full25error_entire_original_signed_odd_source2_Rayleigh_lower"])
+          if a["full25error_actual_original_signed_source2_positive_certified"]:
+              assert signed>0
+          else:
+              assert signed<=0
+          assert not a["all_25_source_coupled_signed_operator_PSD_certified"]
+          assert not a["original_complete_470_Astar_inverse_strong_residual_certified"]
+          assert not a["original_entire_odd_O1_O2_even_Weil_CC27_RH_certified"]
+          m=json.load(open("research/obligations.json"))
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          assert m["governance"]["no_automatic_promotion"] is True
+          odd=next(o for o in m["obligations"] if o["id"]=="W-ODD-NEG")
+          assert odd["status"]=="open" and "O1/O2" in odd["acceptance"]
+          PY
+      - name: Publish scoped entire original negative source2 and signed-gate certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm50-original-entire-973-negative-source2-upper
+          path: artifacts/sm50_original_complete_negative_upper_source2.json
+          if-no-files-found: warn
