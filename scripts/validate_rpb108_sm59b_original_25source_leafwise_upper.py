@@ -267,7 +267,7 @@ def calculate():
     assert original["original_full_signed_lower_trace"]==pin["best_original_25x25_signed_LOWER_trace"]
     assert original["source2_original_lower"]==pin["best_original_25x25_signed_LOWER_projected_2x2"][0][0]
     assert original["source17_original_lower"]==pin["best_original_25x25_signed_LOWER_projected_2x2"][1][1]
-    assert original["original_full_source_negative_upper_trace"]==pin["negative_entire_upper_trace_coupled"]
+    assert F(original["original_full_source_negative_upper_trace"])==F(pin["negative_entire_upper_trace_coupled"]), "Exact rational original full negative-upper trace mismatch"
     original_lower_sha256=matrix_hash(original["full_signed_lower_matrix"])
     assert original_lower_sha256==pin[
         "original_full25_signed_lower_all_625_entries_sha256"], (
