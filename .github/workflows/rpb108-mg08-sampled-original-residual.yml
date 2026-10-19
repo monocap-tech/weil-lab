@@ -1,0 +1,62 @@
+name: mg08-sampled-original-si29-residual
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/mg08_original_14feature_strong_residual_pilot.py'
+      - 'scripts/sm36_original_odd_numerical_pilot.py'
+      - 'notes/RPB108_MG08_ORIGINAL_14FEATURE_RESIDUAL_PILOT_20261019.md'
+      - '.github/workflows/rpb108-mg08-sampled-original-residual.yml'
+  workflow_dispatch:
+
+jobs:
+  mg08-sampled-original-residual-feasibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Sample original physical strong residual and fourteen true features
+        run: |
+          python -m py_compile scripts/mg08_original_14feature_strong_residual_pilot.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/mg08_original_14feature_strong_residual_pilot.py
+      - name: Enforce numerical-only interpretation
+        run: |
+          python - <<'PY'
+          import json,math
+          d=json.load(open("artifacts/mg08_original_14feature_sampled_residual_pilot.json"))
+          assert d["status"]=="SAMPLED_ORIGINAL_PHYSICAL_SOURCE_RESIDUAL_FEASIBILITY_ONLY"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_exceptional_total_sources"]==470
+          assert d["pilot_source_count"]==25
+          assert d["original_complete_negative_cap_columns"]==890
+          assert d["original_true_reference_features"]==14
+          assert [r["physical_samples"] for r in d["cases"]]==[4096,8192]
+          for r in d["cases"]:
+              assert r["source_count"]==25
+              assert r["all_14_original_true_feature_functions_sampled"]
+              assert r["original_feature_degrees"]=={"0":12,"1":2}
+              assert r["sampled_full_negative_cap_columns"]==890
+              assert r["sampled_full_negative_cap_blocks"]==107
+              assert r["sampled_14_feature_overlap_frobenius"]>0
+              assert r["sampled_strong_residual_squared_trace"]>0
+              assert r["sampled_source_weak_residual_relative"]<1e-5
+              assert r["sampled_Woodbury_two_path_relative"]<1e-5
+              assert r["sampled_SI29_pole_denominator"]>0
+              for t in r["sampled_t_scores"]:
+                  assert math.isfinite(t["reference_weighted_max_generalized"])
+                  assert math.isfinite(t["old_scalar_max_generalized"])
+              assert not r["sampled_complete_470_acceptance_evaluated"]
+          assert not d["original_Galerkin_strong_residual_actual_470_CERTIFIED"]
+          assert not d["original_unbounded_log_fourier_tail_rigorously_enclosed"]
+          assert not d["original_real_frequencies_and_domains_certified"]
+          assert not d["actual_complete_470_resolvent_gate_passed"]
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg08-sampled-original-si29-residual
+          path: artifacts/mg08_original_14feature_sampled_residual_pilot.json
