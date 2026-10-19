@@ -1,0 +1,71 @@
+name: RPB108 SM56 original source-anisotropic signed three-source pole Schur
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm56_original_anisotropic_error.py'
+      - 'certificates/rpb108_sm55_original_242prefix_3source_lower.json'
+      - 'notes/RPB108_SM56_ANISOTROPIC_ORIGINAL_POLE_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm56-anisotropic-original-source.yml'
+  workflow_dispatch:
+jobs:
+  sm56-original-anisotropic-signed-3source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install physical Fourier exact interval dependencies
+        run: pip install numpy scipy
+      - name: Recompute 242 original signed physical mean vectors and componentwise complete source errors
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm56_original_anisotropic_error.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm56_original_anisotropic_error.py
+      - name: Fail closed on true original 3x3 signed Schur, all cross, and source-only scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm56_original_anisotropic_signed_pole_3source.json'))
+          assert d['status']=='CERTIFIED_ORIGINAL_SCOPED_THREE_SOURCE_ANISOTROPIC_LOEWNER_ERROR_SCHUR_AUDIT'
+          assert d['original_W_ODD_NEG']=='OPEN'
+          assert d['source_indices']==[2,17,24]
+          assert d['replayed_SM55_Actions_id']==39265951866
+          assert d['exact_complete_original_SM55_signed_lower_replayed']
+          assert d['new_genuine_positive_real_cells_reenclosed']==242
+          assert d['complete_original_3x3_1source_mean_cross_checked']
+          assert d['whole_real_signpositive_and_disjointness_inherited_and_rechecked_by_SM55_candidates']
+          assert sum(d['number_error_lower_certificates_selected'].values())==242
+          old=F(d['scalar_signed_pole_schur_exact'])
+          new=F(d['new_best_original_complete_3x3_schur_exact'])
+          assert new>=old
+          assert d['strict_original_signed_complete_3x3_schur_improvement_over_SM55']==(new>old)
+          mat=[[F(x) for x in row] for row in d['best_true_original_3x3_signed_LOEWNER_lower']]
+          assert len(mat)==3 and all(len(row)==3 for row in mat)
+          assert all(mat[i][j]==mat[j][i] for i in range(3) for j in range(3))
+          a=mat[0][0]
+          minor2=a*mat[1][1]-mat[0][1]**2
+          det=(a*(mat[1][1]*mat[2][2]-mat[1][2]**2)
+             -mat[0][1]*(mat[1][0]*mat[2][2]-mat[1][2]*mat[2][0])
+             +mat[0][2]*(mat[1][0]*mat[2][1]-mat[1][1]*mat[2][0]))
+          assert a>0 and minor2>0
+          assert [a,minor2,det]==[F(v) for v in d['best_true_original_3x3_signed_LOEWNER_leading_minors']]
+          assert new==det/minor2
+          assert d['strict_original_3source_positive_definite_certified']==(det>0)
+          assert not d['entire_25source_odd_index_and_strong_residual_closed']
+          assert not d['original_470source_Astar_inverse_O1O2_even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(x for x in m['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Upload whole-source original rational certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm56-original-3source-anisotropic-Loewner-Schur
+          path: artifacts/sm56_original_anisotropic_signed_pole_3source.json
+          if-no-files-found: warn
