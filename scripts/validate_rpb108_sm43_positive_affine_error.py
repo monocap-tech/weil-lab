@@ -175,7 +175,6 @@ def main():
     # Compare EXACT outward rational certificate scalars to the
     # SAME actual original window old constant-step error: strict
     # efficiency of *second-order* method is required, no promotion.
-    from fractions import Fraction as F
     assert F(fine["certified_full_25x25_affine_reference_Loewner_error_outward"]) < F(
         constant["finer_step"]["certified_whole_25x25_window_Loewner_error_I_exact"])
     data={
