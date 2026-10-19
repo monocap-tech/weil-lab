@@ -34,3 +34,10 @@ The first focused Actions run must replay **both all-entry matrix hashes**, exac
 What genuinely advances after SM60 is the **search directive**: strengthening the current coarse global signed 25×25 lower through more loose whole-source rounding is insufficient to certify the 23D residual without new operator-specific mixed estimates. Required: actual source-coupled B and C enclosure with the positive sine/xcos A block, proper signed Schur inertia/compensation, then original 470-source Astar strong inverse and all infinite odd residual; the even operator, Weil form, CC27 and RH remain OPEN.
 
 SM59B leafwise whole-source negative UPPER is a separate branch ancestor; its exact 625-entry baseline replay and end-to-end full-source CI remain pending at this drafting point. SM60 does not quietly assume that optimization succeeded. Original Fourier/form-domain identification is inherited and still requires independent mathematical audit.
+
+
+## Exploratory exact-fraction pivot calculation (independent of focused CI)
+
+The original SM58 passing Actions artifact (12201213066) was independently inspected. Computing 23 successive Schur pivots on its rational 23-coordinate principal submatrix produced **23 strictly negative fractions** with no singular pivot. For orientation only, their approximate range is from −4.798310567304 to −0.014344025610. These decimal values are *not* the proof; the required acceptance is strict negativity of every exact Fraction pivot and exact SHA256 replay of both original 625-entry matrices in the focused Actions workflow.
+
+The original full 25×25 signed lower remains a lower reference, not a negative witness for the actual operator. A passing no-go certificate will block inappropriate promotion of the source-complement sign and direct future work toward the actual signed 23D cross/remainder Schur bounds.
