@@ -1,0 +1,76 @@
+name: RPB108 SM65 original actual 22D source-anisotropic signed Schur
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm65_original_22schur_anisotropic.py'
+      - 'notes/RPB108_SM65_ACTUAL_22D_ANISOTROPIC_SCHUR_20261019.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-sm65-actual-22schur-anisotropic.yml'
+  workflow_dispatch:
+jobs:
+  original-actual-22D-anisotropic-Schur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 59
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install exact physical Fourier dependencies
+        run: pip install numpy scipy
+      - name: Prove original 66 actual source cross bounds and anisotropic 22D signed Schur
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm65_original_22schur_anisotropic.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_sm65_original_22schur_anisotropic.py
+      - name: Fail closed original three-plane, source-coupled error, 22D Schur and full odd scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/sm65_original_actual_22D_Schur_anisotropic.json'))
+          assert d['status']=='SCOPED_ACTUAL_ORIGINAL_22D_SIGNED_SCHUR_ANISOTROPIC_LOWER_NO_POSITIVITY'
+          assert d['canonical_W_ODD_NEG']=='OPEN'
+          assert d['verified_original_SM58_negative_and_signed_all625_replay']
+          assert d['verified_original_SM62_complete_signed_all625_replay']
+          assert d['verified_original_SM63_direct_positive_3x3_replay']
+          assert d['original_source_count']==25
+          assert d['positive_original_signed_physical_anchor']==[1,2,17]
+          assert d['remaining_original_signed_source_indices']==[i for i in range(25) if i not in (1,2,17)]
+          assert d['remaining_signed_source_dimension']==22
+          assert d['actual_mixed_physical_source_pairs_full_count']==66
+          assert len(d['actual_source_anchor_mixed_row_absolute_bounds'])==3
+          assert all(F(x)>0 for x in d['actual_source_anchor_mixed_row_absolute_bounds'])
+          assert F(d['actual_positive_anchor_signed_Gershgorin_eigen_lower'])>0
+          assert F(d['actual_source_mixed_max_absolute_bound'])>0
+          assert F(d['verified_338_positive_window_source25_Loewner_fee'])>=0
+          assert F(d['source25_lower_complete_rational_export_fee'])>=0
+          assert F(d['true_actual_22D_signed_Schur_lower_export_fee'])>=0
+          penalties=[F(x) for x in d['actual_22D_anisotropic_schur_diagonal_penalty_upper']]
+          assert len(penalties)==22 and all(x>0 for x in penalties)
+          assert F(d['actual_22D_anisotropic_penalty_max'])==max(penalties)
+          assert F(d['actual_22D_anisotropic_penalty_sum'])==sum(penalties)
+          assert F(d['actual_22D_isotropic_schur_comparison_penalty'])>0
+          S=[[F(x) for x in row] for row in d['true_actual_22D_signed_Schur_LOEWNER_lower_rational']]
+          assert len(S)==22 and all(len(row)==22 for row in S)
+          assert all(S[i][j]==S[j][i] for i in range(22) for j in range(22))
+          for name in ('original_22D_coordinate_reference_lower_inertia','actual_Schur_anisotropic_LOWER_inertia','actual_Schur_isotropic_LOWER_inertia'):
+              assert sum(d[name][x] for x in ('positive','negative','zero'))==22
+          assert not d['actual_original_22D_signed_Schur_PSD_certified']
+          assert not d['actual_original_22D_signed_Schur_negative_index_exactly_classified']
+          assert d['actual_original_25D_source_negative_index_upper_SM63']==22
+          assert not d['infinite_original_odd_negative_index_classified']
+          assert not d['original_470_Astar_inverse_and_strong_orthogonal_remainder']
+          assert not d['odd_O1O2_even_Weil_CC27_RH']
+          m=json.load(open('research/obligations.json'))
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert m['governance']['no_automatic_promotion']
+          assert next(o for o in m['obligations'] if o['id']=='W-ODD-NEG')['status']=='open'
+          PY
+      - name: Upload original actual 22D signed Schur all-66-cross certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sm65-original-actual22D-anisotropic-Schur
+          path: artifacts/sm65_original_actual_22D_Schur_anisotropic.json
+          if-no-files-found: warn
