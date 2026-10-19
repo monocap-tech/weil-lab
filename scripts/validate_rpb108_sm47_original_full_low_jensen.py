@@ -144,7 +144,7 @@ def build_original_positive_jensen(centers,sources):
     assert all(matrix[i][i]>=0 for i in range(n))
     # Matrix P is PSD by exact Gram factorization, but P-eps*I
     # is NOT claimed PSD on its kernel.
-    return matrix,eps,local_second_improvements,max_single_rad,bands
+    return matrix,eps,local_second_improvements,max_single_rad,bands,signed_lower
 
 
 def main():
@@ -161,7 +161,7 @@ def main():
     physical_gram,gram_sources,pole=original_full_25_physical_interval_gram()
     assert sources==gram_sources
     h,eps_h=full_original_rational_gram(physical_gram)
-    P,eps_p,local_improvements,max_rad,bands=build_original_positive_jensen(
+    P,eps_p,local_improvements,max_rad,bands,signed_lower=build_original_positive_jensen(
         centers,sources)
     n=25
     total_err=KAPPA*(TAIL+eps_h)+eps_p
@@ -183,7 +183,7 @@ def main():
        "original_positive_low_frequency_region":"[0,4096]",
        "entire_low_accounted_for_by":"SM42 global kappa Parseval floor and rigorous high tail; omit all other nonnegative excess; SM12 disjoint certified real positive windows yield Jensen gain",
        "original_genuine_signed_positive_windows":17,
-       "original_SM12_signed_multiplier_lower_outward":str(ceil_rat(signed_lower_if_needed(),10**6)) if False else "SM12 check_new_positive_windows() passed, > kappa+2",
+       "original_SM12_signed_multiplier_lower_exact_outward":str(ceil_rat(signed_lower,10**6)),
        "actual_original_source_dimension":25,
        "physical_sources":"16 zero-extended sin, 8 zero-extended xcos, 1 actual sinh pole",
        "true_original_spectral_lower":"A_low_25 >= kappa*Hq + P - (kappa*(2E/4096+eps_H)+eps_P)*I25",
