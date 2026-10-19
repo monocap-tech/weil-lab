@@ -237,6 +237,24 @@ def main():
     ix,center=pair_source(centers,sources)
     H,originalsources,_=original_full_25_physical_interval_gram()
     assert sources==originalsources
+    # Independently certify physical source independence: 3x3 true
+    # original SI10 supported Gram H_J from rigorous SM42 intervals,
+    # all cross entries, full outward scalar Loewner rounding.
+    G=[[H[i][j] for j in ix] for i in ix]
+    Gq=[[quantize(x.mid()) for x in row] for row in G]
+    gerr=max(sum(max(abs(G[i][j].l-Gq[i][j]),
+                     abs(G[i][j].h-Gq[i][j])) for j in range(3))
+             for i in range(3))
+    Glow=[[Gq[i][j]-(gerr if i==j else F(0))
+           for j in range(3)] for i in range(3)]
+    gp1=Glow[0][0]
+    gp2=Glow[0][0]*Glow[1][1]-Glow[0][1]**2
+    gp3=(Glow[0][0]*(Glow[1][1]*Glow[2][2]-Glow[1][2]*Glow[2][1])
+        -Glow[0][1]*(Glow[1][0]*Glow[2][2]-Glow[1][2]*Glow[2][0])
+        +Glow[0][2]*(Glow[1][0]*Glow[2][1]-Glow[1][1]*Glow[2][0]))
+    assert gp1>0 and gp2>0 and gp3>0, (
+        "Original true three-source physical independence NOT certified",
+        float(gp1),float(gp2),float(gp3))
     chosen,ncand,_,_=original_adaptive_candidate_cells(centers,sources)
     assert len(chosen)==32
     core,cs=signed_core(centers,sources,ix)
@@ -261,6 +279,10 @@ def main():
       "original_input_sinh_pole_source_index":ix[2],
       "common_original_center":str(center),
       "true_original_source_total_carrier_dimension":25,
+      "true_original_three_supported_physical_sources_independent":True,
+      "physical_3x3_Gram_full_Loewner_error_upper":str(up(gerr)),
+      "physical_3x3_Gram_rational_lower_leading_principal_minors":[
+         str(gp1),str(gp2),str(gp3)],
       **cs,**ns,**ps,
       "original_3x3_true_pole_Loewner_error_upper":str(poleeps),
       "true_original_pole_rational_vector":[str(q) for q in poleq],
