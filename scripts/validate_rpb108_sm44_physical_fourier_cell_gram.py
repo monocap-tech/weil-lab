@@ -48,7 +48,7 @@ from math import isqrt
 from validate_rpb108_si06_negative_band import PI,B,prime_interval
 from validate_rpb108_si10_complement_positivity import KAPPA
 from validate_rpb108_sm42_original_physical_gram_and_low_gate import (
-    F0,F1,pole_sin,hyperbolic_interval
+    F0,F1,F2,pole_sin,pole_xcos,hyperbolic_interval,I
 )
 from validate_rpb108_sm39_rational_left_arch_cap import arch_lower_at
 from validate_rpb108_sm43_positive_cell_envelope import (
@@ -119,6 +119,59 @@ def original_physical_source_lipschitz(sources):
         res.append(L)
     return res
 
+def local_source_first_derivative_at_midpoint(xi,centers,sources,pole_hyp):
+    """RIGOROUS ORIGINAL physical sine-transform derivative intervals.
+
+    Each true source T_g(xi)=int_-B^B g(x)sin(2*pi*xi*x) dx.
+    Derive exact original frequency derivative from the SAME
+    SI06/SM42 rational trig antiderivatives:
+      sin(c): T'=pi(F1(c-xi)+F1(c+xi))
+      xcos(c):T'=pi(F2(xi+c)+F2(xi-c))
+      sinh:   T'=2*pi*pole_xcos(xi).
+    The true values are in exact rational I intervals, including
+    every cancellation; NEVER infer source-window derivative from
+    finite sampled differences.
+    """
+    xi=F(xi)
+    sh,ch=pole_hyp
+    pii=I(PI[0],PI[1])
+    out=[]
+    for typ,j,k in sources:
+        if typ=="pole":
+            deriv=2*pii*pole_xcos(xi,sh,ch)
+        elif k==0:
+            c=centers[j]
+            deriv=pii*(F1(c-xi)+F1(c+xi))
+        elif k==1:
+            c=centers[j]
+            deriv=pii*(F2(xi+c)+F2(xi-c))
+        else:
+            raise AssertionError("SM45 local physical derivative only verified for actual selected k=0,1/pole.")
+        out.append(max(abs(deriv.l),abs(deriv.h)))
+    assert len(out)==25 and all(x>=0 for x in out)
+    return out
+
+
+def original_full_second_derivative_upper(sources):
+    """True original frequency second derivative for supported odd sources.
+
+    T''=-(2*pi)^2 int x^2 g(x) sin(2*pi*xi*x) dx.
+    Genuine original supported sin(c)/sinh pole: |g|<=1,
+    integral |x^2| <= 2*B^3/3. Genuine xcos(c):
+    |g|<=|x|, integral |x|^3=B^4/2.
+    """
+    factor=4*PI[1]*PI[1]
+    result=[]
+    for typ,j,k in sources:
+        if typ=="pole" or k==0:
+            result.append(factor*2*B**3/3)
+        elif k==1:
+            result.append(factor*B**4/2)
+        else:raise AssertionError("unverified source k>1 cannot be included in SM45")
+    assert len(result)==25 and all(x>0 for x in result)
+    return result
+
+
 def affine_positive_weight_mean(va,vb):
     """Exact rational ∫_0^1 max(kappa,va+(vb-va)t) dt."""
     va=F(va);vb=F(vb)
@@ -159,10 +212,15 @@ def partition(windows,step):
         for i in range(n):
             yield aa+F(i,n)*size,aa+F(i+1,n)*size
 
-def compute(step,centers,sources,windows):
+def compute(step,centers,sources,windows,derivative_mode="global"):
     n=len(sources)
     gram=[[F(0) for _ in range(n)] for _ in range(n)]
+    assert derivative_mode in ("global","local_certified")
     lips=original_physical_source_lipschitz(sources)
+    curvatures=original_full_second_derivative_upper(sources) if derivative_mode=="local_certified" else None
+    source_error_global_sum=F(0)
+    source_error_local_sum=F(0)
+    locally_improved_component_count=0
     sh=hyperbolic_interval(B/2,"sinh")
     ch=hyperbolic_interval(B/2,"cosh")
     true_weight_error=F(0)
@@ -184,7 +242,25 @@ def compute(step,centers,sources,windows):
         point=original_exact_physical_fourier_midpoint(
             midpoint,centers,sources,(sh,ch))
         sup=source_window_support_envelopes(a,b,centers,sources)
-        E=[rad+L*h/2 for (v,rad),L in zip(point,lips)]
+        baseline_error=[rad+L*h/2 for (v,rad),L in zip(point,lips)]
+        source_error_global_sum+=sum(baseline_error,F(0))
+        if derivative_mode=="local_certified":
+            mid_derivative=local_source_first_derivative_at_midpoint(
+                midpoint,centers,sources,(sh,ch))
+            # Taylor around EXACT rational midpoint: for ALL
+            # original real xi on this cell,
+            # |T(xi)-T(mid)|<=Dmid*h/2+K*h^2/8.
+            # Both this and the original SM44 global-Lipschitz
+            # bound are independent certified upper bounds.
+            E=[min(e, rad+d*h/2+K*h*h/8)
+               for e,(v,rad),d,K in zip(
+                   baseline_error,point,mid_derivative,curvatures)]
+        else:
+            E=baseline_error
+        locally_improved_component_count+=sum(
+            x<y for x,y in zip(E,baseline_error))
+        source_error_local_sum+=sum(E,F(0))
+        assert all(x<=y and x>=0 for x,y in zip(E,baseline_error))
         e2=sum((x*x for x in E),F(0))
         s2=sum((x*x for x in sup),F(0))
         mids=[v for v,rad in point]
@@ -221,6 +297,10 @@ def compute(step,centers,sources,windows):
     assert all(gram[i][j]==gram[j][i] for i in range(n) for j in range(n))
     return {
         "max_frequency_cell_width":str(step),
+        "derivative_mode":derivative_mode,
+        "locally_improved_source_cell_components":locally_improved_component_count,
+        "certified_local_vs_global_source_amplitude_error_sum_ratio_float":
+            float(source_error_local_sum/source_error_global_sum),
         "true_original_source_count":25,
         "actual_true_source_window_measure":str(sum((b-a for a,b in windows),F(0))),
         "real_frequency_cells":ncell,
