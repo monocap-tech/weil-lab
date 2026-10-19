@@ -135,6 +135,8 @@ def main():
         "SM65_actual_negative_mode_identified":False,
         "SM65_actual_signed_Schur_PSD_certified":False,
         "original_actual_source25_negative_index_upper_from_SM63":22,
+        "independent_SM64_passing_four_source_actions_run_id":39323057878,
+        "original_actual_source25_negative_index_upper_from_SM64":21,
         "complete_original_470_source_Astar_inverse_and_infinite_remainder":"OPEN",
         "odd_even_Weil_CC27_RH":"OPEN",
         "independent_original_Fourier_closed_domain_premise_audit":"OPEN",
@@ -148,7 +150,7 @@ def main():
         "forced_22D_LOWER_negative_inertia_floor":dimension_floor,
         "exact_22D_coordinate_LOWER_negative_inertia":complement["negative"],
         "minimal_positive_patch_rank":complement["negative"],
-        "actual_odd_index22_ceiling":22,
+        "actual_source25_index_ceiling_independent_SM64":21,
         "whole_odd_Weil_RH":"OPEN"
     }),flush=True)
 if __name__=="__main__":
