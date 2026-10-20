@@ -1,0 +1,58 @@
+name: mg25-exact-robust-source-aware-mixed-residual
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg25_robust_source_aware_residual.py'
+      - 'notes/RPB108_MG25_ROBUST_SOURCE_AWARE_RESIDUAL_GATE_20261019.md'
+      - '.github/workflows/rpb108-mg25-robust-mixed-source.yml'
+  workflow_dispatch:
+jobs:
+  mg25-exact-mixed-source-criterion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact rational nonscalar source trial and noncommuting rank-one pole regression
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg25_robust_source_aware_residual.py
+          python scripts/validate_rpb108_mg25_robust_source_aware_residual.py
+      - name: Independently reject incorrect original-operator and full470 promotion
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as Q
+          d=json.load(open("artifacts/mg25_source_aware_mixed_residual_algebraic_gate.json"))
+          assert d["status"]=="EXACT_FRACTION_SOURCE_AWARE_ROBUST_RESIDUAL_ALGEBRA_GATE"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["source_geometry_general_mixed_B_trial_verified_on_surrogate"]
+          assert d["full_rank_one_pole_mixed_source_action_verified_on_surrogate"]
+          assert d["both_mixed_cross_terms_are_mandatory"]
+          assert d["exact_Loewner_uncertainty_opnorm_paid"]
+          assert d["adverse_uncertainty_refuses_promotion"]
+          a,b=d["pilot_cases"]
+          assert a["fixture"]=="tight_coupled_pole"
+          assert b["fixture"]=="wide_adversarial_bracket"
+          assert a["full_mixed_S_pole_identity_exact"]
+          assert b["full_mixed_S_pole_identity_exact"]
+          assert a["true_original_operator_mode"] is False
+          assert b["true_original_operator_mode"] is False
+          assert a["surrogate_dimension"]==b["surrogate_dimension"]==3
+          assert a["trial_B_is_full_matrix_not_scalar"]
+          assert Q(a["certified_one_step_squared_residual_gap"])>Q(9,10)
+          assert a["strict_source_one_step_contraction"] is True
+          assert b["strict_source_one_step_contraction"] is False
+          assert Q(b["certified_one_step_squared_residual_gap"])==0
+          for key in ("mg24_original_coupled_matrix_inputs_accepted",
+                      "actual_original_full_frequency_24D_trial_certified",
+                      "actual_original_470D_trial_certified"):
+              assert d[key] is False
+          assert d["independent_original_Fourier_and_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg25-robust-source-aware-fraction-regression
+          path: artifacts/mg25_source_aware_mixed_residual_algebraic_gate.json
