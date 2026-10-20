@@ -347,6 +347,11 @@ def main():
         "source_channels":N,"panels":result["source_panel_cell_count"],
         "choice_counts":result["adaptive_selection_counts"],
         "gains":result["certified_method_comparison"],
+        "exact_lower_reference_inertia":{
+            policy:{
+                order:result["policies"][policy][order]["lower_reference_exact_inertia"]
+                for order in ORDERS}
+            for policy in POLICIES},
         "method":result["interpretation"],
         "complete_original_odd_even_Weil_RH":"OPEN"
     }),flush=True)
