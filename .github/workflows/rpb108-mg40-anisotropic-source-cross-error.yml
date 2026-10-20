@@ -1,0 +1,180 @@
+name: mg40-original-anisotropic-complete-source-cross-error
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg40_anisotropic_source_cross_error.py'
+      - 'notes/RPB108_MG40_ANISOTROPIC_ORIGINAL_SOURCE_20261020.md'
+      - '.github/workflows/rpb108-mg40-anisotropic-source-cross-error.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-full-frequency-anisotropic-cross-error:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Pin accepted MG24 true original complete-source pole moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Pin accepted MG29 true original 16 and 32-cell moment enclosures
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Pin MG30 accepted original anchored scalar and nonscalar source baseline
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39442984941
+          name: mg30-true-original-24D-anchored-mixed-source-gate
+          github-token: ${{ github.token }}
+          path: artifacts/mg30_verified
+      - name: Exact source cross-error block PSD regression
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg40_anisotropic_source_cross_error.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg40_anisotropic_source_cross_error.py --self-test
+      - name: Original whole-spectrum 24D MG40 source-aware matrix calculation
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg40_anisotropic_source_cross_error.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg30-json artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json
+      - name: Independent exact rational original full 24x24 residual matrix replay
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          sys.path.insert(0,"scripts")
+          from validate_rpb108_mg25_original24_robust_trial import original_H24_from_physical_source
+          from validate_rpb108_mg25_robust_source_aware_residual import (
+              T,mm,plus,sub,mul,Id,shift,norm_upper,gersh_lower,psd)
+          from validate_rpb108_mg30_anchored_nonscalar_residual import anchored_upper
+          a24=json.load(open("artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json"))
+          a29=json.load(open("artifacts/mg29_verified/mg29_original_direct_third_drift.json"))
+          a30=json.load(open("artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json"))
+          d=json.load(open("artifacts/mg40_original_anisotropic_cross_error.json"))
+          assert d["status"]=="ORIGINAL_MG40_ANISOTROPIC_FULL_SOURCE_G_CROSS_ERROR_GATE"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert [d["MG24_accepted_run"],d["MG29_accepted_run"],d["MG30_accepted_run"]]==[39378465438,39440914565,39442984941]
+          for label in ("true_original_SI10_25physical_23adapted_plus_sinh_pole24D",
+            "full_original_real_frequency_Gstar_Sstar_enclosed",
+            "original_signed_arch_prime7_multiplier_and_pole_inherited",
+            "true_original_block_PSD_cross_uncertainty_lemma",
+            "source_uncertainty_full_matrix_not_isotropic_only",
+            "baseline_MG30_candidate_selection_kept_as_fallback",
+            "exact_rational_full_24D_source_Gersh_decisions"):
+              assert d[label],label
+          assert [(r["mesh_cells"],r["cutoff_k"]) for r in d["scenarios"]]==[
+              (16,12),(16,16),(32,12),(32,16)]
+          def read(M):
+              m=[[Q(v) for v in row] for row in M]
+              assert len(m)==24 and all(len(row)==24 for row in m)
+              return m
+          def trace(M):return sum((M[i][i] for i in range(24)),Q(0))
+          Hmid,Hrad,Herr=original_H24_from_physical_source()
+          assert Herr==Q(a24["physical_Gram_Loewner_row_error"])
+          Hlo=sub(Hmid,mul(Herr,Id(24)))
+          Hup=plus(Hmid,mul(Herr,Id(24)))
+          cases_count=0;source_success=False
+          for sc in d["scenarios"]:
+              k=sc["cutoff_k"];mesh=sc["mesh_cells"]
+              m=next(x for x in a29["meshes"] if x["mesh_cells"]==mesh)
+              c=next(x for x in m["full_original_frequency_scenarios"]
+                     if x["cutoff_k"]==k)
+              base=next(x for x in a30["scenarios"]
+                        if x["mesh_cells"]==mesh and x["cutoff_k"]==k)
+              LG=read(c["full_original_Gstar_lower"])
+              UG=read(c["full_original_Gstar_upper"])
+              US=read(c["full_original_Sstar_upper"])
+              E=mul(Q(1,2),sub(UG,LG))
+              Gc=mul(Q(1,2),plus(UG,LG))
+              assert E==T(E) and psd(E)
+              assert psd(US)
+              assert sc["MG30_all_original_candidate_margins_replayed_exactly"]
+              assert sc["original_G_error_E_exact_PSD"]
+              assert sc["original_Sstar_upper_exact_PSD"]
+              assert sc["accepted_candidate_count"]==base["candidate_count"]
+              results=sc["all_rational_candidate_results"]
+              assert len(results)==len(base["trials"])
+              selected_by_name={}
+              for row,old in zip(results,base["trials"]):
+                  cases_count+=1
+                  assert row["name"]==old["name"]
+                  t=Q(row["source_anchor_t"])
+                  B=read(row["B_original_exact_rational"])
+                  D=sub(B,mul(t,Id(24)))
+                  core=plus(sub(sub(Hup,mul(2*t,LG)),
+                      plus(mm(Gc,D),mm(T(D),Gc))),mm(mm(T(B),US),B))
+                  accepted=anchored_upper(Hlo,Hup,LG,UG,US,t,B)
+                  assert Q(old["gershgorin_margin"])==accepted["margin"]
+                  fee0=2*norm_upper(E)*norm_upper(D)
+                  Uold=shift(core,fee0)
+                  assert Q(row["old_isotropic_fee"])==fee0
+                  assert gersh_lower(sub(Hlo,Uold))==Q(row["old_MG30_original_signed_Gersh"])
+                  selected=Uold
+                  if row["selected_method"]=="matrix_Young":
+                      eta=Q(row["selected_eta"])
+                      assert eta>0 and any(v for r in D for v in r)
+                      fee=plus(mul(eta,E),mul(1/eta,mm(mm(T(D),E),D)))
+                      selected=plus(core,fee)
+                      assert trace(fee)==Q(row["selected_uncertainty_fee_trace"])
+                  else:
+                      assert row["selected_method"]=="MG30_isotropic"
+                      assert row["selected_eta"] is None
+                  assert selected==T(selected)
+                  assert trace(selected)==Q(row["selected_original_full_upper_trace"])
+                  margin=gersh_lower(sub(Hlo,selected))
+                  assert margin==Q(row["selected_original_signed_Gersh"])
+                  assert margin>=accepted["margin"]
+                  assert margin-accepted["margin"]==Q(row["signed_Gersh_improvement"])
+                  assert row["strict_24D_original_source_contraction"]==(margin>0)
+                  assert len(row["tested_nonscalar_matrix_Young_etas"])==(
+                      0 if not any(v for r in D for v in r) else 9)
+                  for er in row["tested_nonscalar_matrix_Young_etas"]:
+                      eta=Q(er["eta"])
+                      f=plus(mul(eta,E),mul(1/eta,mm(mm(T(D),E),D)))
+                      U=plus(core,f)
+                      assert trace(U)==Q(er["full_original_24D_upper_trace"])
+                      assert trace(f)==Q(er["uncertainty_fee_trace"])
+                      assert gersh_lower(sub(Hlo,U))==Q(er["exact_Gershgorin_margin"])
+                      assert er["strict_source_contraction"]==(Q(er["exact_Gershgorin_margin"])>0)
+                  selected_by_name[row["name"]]=selected
+                  source_success |= margin>0
+              best_non=next(x for x in results if x["name"]==sc["best_nonscalar_name"])
+              assert best_non["nonscalar_original_B"]
+              assert Q(best_non["selected_original_signed_Gersh"])==Q(sc["best_nonscalar_margin"])
+              U=read(sc["best_nonscalar_upper_FULL24"])
+              A=read(sc["best_nonscalar_Hlo_minus_upper_FULL24"])
+              assert U==selected_by_name[best_non["name"]]
+              assert A==sub(Hlo,U)
+              assert gersh_lower(A)==Q(sc["best_nonscalar_margin"])
+              assert Q(sc["best_any_signed_Gersh"])==max(Q(x["selected_original_signed_Gersh"]) for x in results)
+          assert cases_count>=28
+          assert source_success==d["any_strict_original_24D_source_contraction"]
+          assert not d["all_original_470D_inverse_certified"]
+          assert not d["signed_original_negative_51over56_cap_certified"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          print("Independent MG40 original 24D matrix Young replays:",cases_count,"source positivity:",source_success)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg40-original-anisotropic-G-cross-source-24D
+          path: artifacts/mg40_original_anisotropic_cross_error.json
+          if-no-files-found: ignore
