@@ -1,0 +1,113 @@
+name: mg35-psd-monotone-original-frequency-remainder
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg35_psd_monotone_remainder_guard.py'
+      - 'notes/RPB108_MG35_PSD_MONOTONE_REMAINDER_GUARD_20261020.md'
+      - '.github/workflows/rpb108-mg35-psd-monotone-remainder.yml'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  original-psd-monotone-rational-remainder:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve verified MG33 true original disjoint complete-frequency source residual certificates
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39462301107
+          name: mg33-original-disjoint-24D-joint-residual
+          github-token: ${{ github.token }}
+          path: artifacts/mg33_verified
+      - name: Retrieve verified MG34 exact original frequency marginal-cost audit
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39467773045
+          name: mg34-original-marginal-frequency-cost-audit
+          github-token: ${{ github.token }}
+          path: artifacts/mg34_verified
+      - name: Certified PSD-frequency inclusion and original full-frequency trace-only guard
+        run: |
+          test -s artifacts/mg33_verified/mg33_original_disjoint_joint_residual.json
+          test -s artifacts/mg34_verified/mg34_original_frequency_marginal_diagnostics.json
+          python -m py_compile scripts/validate_rpb108_mg35_psd_monotone_remainder_guard.py
+          python scripts/validate_rpb108_mg35_psd_monotone_remainder_guard.py --verified-mg33-json artifacts/mg33_verified/mg33_original_disjoint_joint_residual.json --verified-mg34-json artifacts/mg34_verified/mg34_original_frequency_marginal_diagnostics.json
+      - name: Independent rational phase accounting, source scope and fail-closed spectral gate
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg35_original_monotone_PSD_remainder_guard.json"))
+          assert d["status"]=="ORIGINAL_MG35_PSD_MONOTONE_REMAINDER_UPPER_TRACE_GUARD"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["verified_original_MG33_run"]==39462301107
+          assert d["verified_original_MG34_run"]==39467773045
+          assert d["original_source_25physical_23adapted_plus_true_sinh_pole"]
+          assert d["actual_original_true_joint_residual_pole_and_signed_multiplier_inherited"]
+          assert d["actual_Fourier_measured_sectors_are_nested_disjoint"]
+          assert d["actual_original_residual_remainder_covariance_PSD_monotonicity"]
+          assert d["all_prior_verified_remainder_uppers_remain_valid_on_smaller_sets"]
+          assert d["chosen_omitted_remainder_upper_is_existing_valid_Loewner_matrix"]
+          assert d["selected_remainder_upper_trace_nonincreasing_with_added_frequency_sectors"]
+          assert d["no_spectral_PSD_clipping_of_indefinite_Loewner_lower"]
+          assert d["exact_2D_invalid_PSD_diagonal_clipping_regression"]
+          assert d["all_four_original_rational_trial_cases_accounted_exactly"]
+          assert d["PSD_safe_full_original_residual_upper_TRACE_only"]
+          assert len(d["scenarios"])==4
+          for c in d["scenarios"]:
+              assert c["cutoff_k"] in (12,16)
+              assert c["actual_original_true_23pluspole_24D"]
+              assert c["signed_arch_plus_seven_prime_and_pole_preserved_by_inheritance"]
+              assert c["same_exact_original_MG30_response_B_all_variants"]
+              stages=c["full_original_frequency_upper_trace_scenarios"]
+              assert [x["frequency_set"] for x in stages]==[
+                  "MG32_prefix_only","MG33_contiguous_0to8",
+                  "MG33_hybrid_with_MG19"]
+              assert F(c["baseline_complete_upper_trace"])==F(
+                  stages[0]["original_MG33_complete_frequency_upper_trace"])
+              assert F(c["guarded_hybrid_complete_upper_trace"])==F(
+                  stages[-1]["selected_valid_complete_frequency_upper_trace"])
+              assert F(c["guarded_hybrid_over_baseline_trace"])==(
+                  F(c["guarded_hybrid_complete_upper_trace"])/
+                  F(c["baseline_complete_upper_trace"]))
+              assert c["guarded_hybrid_beats_original_hybrid_trace"]
+              assert not c["guarded_hybrid_beats_original_MG32_prefix_baseline"]
+              prev=None
+              for j,x in enumerate(stages):
+                  assert x["source_trace_not_Loewner_matrix_comparison"]
+                  assert x["PSD_frequency_remainder_inclusion_proves_validity"]
+                  assert x["original_source_B_held_fixed"]
+                  assert x["no_partial_470D_spectral_conclusion"]
+                  assert len(x["original_valid_omitted_upper_sources"])==j+1
+                  best=min(F(a) for a in x["original_valid_omitted_upper_sources"].values())
+                  assert F(x["selected_PSD_monotone_remainder_upper_trace"])==best
+                  assert F(x["selected_valid_complete_frequency_upper_trace"])==(
+                       F(x["measured_disjoint_joint_residual_upper_trace"])+best)
+                  assert F(x["rigorously_reduced_original_upper_trace"])==(
+                       F(x["original_MG33_complete_frequency_upper_trace"])-
+                       F(x["selected_valid_complete_frequency_upper_trace"]))
+                  assert F(x["rigorously_reduced_original_upper_trace"])>=0
+                  if prev is not None:assert best<=prev
+                  prev=best
+              assert not c["source_residual_gap_certified"]
+              assert c["MG33_exact_full_matrix_Gershgorin_not_recomputed"]
+          assert not d["new_full_original_24D_matrix_Loewner_margin_tested"]
+          assert not d["source_residual_strict_positive_gap_certified"]
+          assert not d["original_470D_strong_inverse_certified"]
+          assert not d["signed_original_negative_51over56_cap_certified"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg35-true-original-PSD-monotone-remainder-guard
+          path: artifacts/mg35_original_monotone_PSD_remainder_guard.json
