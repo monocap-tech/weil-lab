@@ -1,0 +1,88 @@
+name: mg16-original-weighted-affine-moments
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg16_weighted_affine_source_moments.py'
+      - 'notes/RPB108_MG16_WEIGHTED_SOURCE_MOMENTS_20261019.md'
+      - '.github/workflows/rpb108-mg16-weighted-source-moments.yml'
+  workflow_dispatch:
+
+jobs:
+  mg16-original-weighted-source-moments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Original SM46 J0 J1 J2 weighted 24-channel two-source-moment matrices
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg16_weighted_affine_source_moments.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg16_weighted_affine_source_moments.py
+      - name: Independent fail-closed exact 24D moment and spectrum gate
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          from sys import path
+          path.insert(0,"scripts")
+          from validate_rpb108_sm62_full25_338signed_positive import exact_inertia_general
+          d=json.load(open("artifacts/mg16_original_weighted_source_moments.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["source25_original_physical_and_true_pole"]
+          assert d["boundary_adapted_source_count"]==23
+          assert d["coupled_source_channels"]==24
+          assert d["selected_original_real_frequency_cells"]==24
+          assert d["same_original_24_cells_as_MG15"]
+          assert d["original_107_cluster_physical_sources_replayed"]
+          assert d["original_true_SM43A_multiplier_reference_J012"]
+          assert d["original_reference_squared_weight_J012_exact"]
+          assert d["complete_original_source_pole_mixed_matrices"]
+          assert d["exact_reference_covariance_vv_vd_dd"]
+          assert d["sourcewise_diagonal_error_and_true_multiplier_gap_paid"]
+          assert d["full_MG15_independent_exact_matrix_and_inertia_replay"]
+          assert len(d["tau_candidates"])==7
+          assert len(d["cell_diagnostics"])==24
+          assert sum(d["SM43A_reference_choices"].values())==24
+          assert (0<=d["certified_exact_constant_kappa_cells"]<=24)
+          assert (0<=d["nonflat_weighted_reference_cells"]<=24)
+          assert (0<=d["nonzero_weight_reference_gap_cells"]<=24)
+          assert d["certified_exact_constant_kappa_cells"]==24
+          assert d["nonflat_weighted_reference_cells"]==0
+          assert d["nonzero_weight_reference_gap_cells"]==0
+          assert d["entire_24cell_exact_flat_multiplier_method_no_go"]
+          assert d["entire_MG15_MG16_original_24x24_lower_and_upper_matrices_identical"]
+          assert len(d["complete_candidate_matrices"])==8
+          for order in ("one","two"):
+              assert sum(d["selected_tau_counts"][order].values())==24
+              m=d["comparison_to_MG15"][order]
+              assert m["MG15_lower_reference_exact_inertia"]=={
+                  "positive":3,"negative":21,"zero":0}
+              for p in d["complete_candidate_matrices"].values():
+                  r=p[order]
+                  L=[[F(x) for x in row] for row in r["complete_24x24_lower"]]
+                  U=[[F(x) for x in row] for row in r["complete_24x24_upper"]]
+                  assert len(L)==len(U)==24
+                  assert all(len(row)==24 for row in L+U)
+                  assert F(r["lower_trace"])==sum(L[i][i] for i in range(24))
+                  assert F(r["upper_trace"])==sum(U[i][i] for i in range(24))
+                  assert all(L[i][j]==L[j][i] and U[i][j]==U[j][i]
+                             for i in range(24) for j in range(24))
+                  assert all(U[i][i]>=L[i][i] for i in range(24))
+                  i=exact_inertia_general(L)
+                  assert r["lower_exact_inertia"]==dict(zip(
+                      ("positive","negative","zero"),i))
+          assert not d["whole_frequency_zero_to_cutoff_covered"]
+          assert not d["original_Astar_squared_pole_action_completed"]
+          assert not d["original_true_23D_Galerkin_strong_residual_certified"]
+          assert d["actual_470_source_resolvent_and_infinite_odd_remainder"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_closed_domain_premises_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg16-original-weighted-source-moments
+          path: artifacts/mg16_original_weighted_source_moments.json
