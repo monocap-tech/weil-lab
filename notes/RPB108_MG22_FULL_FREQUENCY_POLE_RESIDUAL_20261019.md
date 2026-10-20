@@ -60,3 +60,19 @@ All rational comparisons and dyadic cutoff optimization are exact and validated 
 These **are genuine complete original frequency one-step scalar Galerkin residual upper bounds** for the physically supported 23D source map \(J=F\). They are **not** useful numerical *inverse* bounds if their squares remain extremely close to one. In particular \(R_tz\) lies in the ambient infinite-dimensional \(L^2\), and generally does **not** lie in the finite source frame; the finite-frame estimate cannot be iterated to claim a global contraction, Neumann-series inverse or convergence. The pilot \(J=F\) is also not the original full 470-dimensional MG07 right-hand-side map.
 
 The acceptance criterion is quantitative: report both gaps below unity for all original dyadic cutoffs, and the certified improvement from removing the pole on \(V_0\); do NOT promote these to 51/56 signed negative source cap, full470 inverse, original odd/even Weil or RH. The controlling next calculation must integrate the coupled complete low-frequency source action and original pole mixed cross responses to produce sufficiently sharp \(G_*,S_*\) matrices and a true relevant 470-source strong Galerkin residual.
+
+
+## MG22 accepted exact-rational numerical method-gate result
+
+The calculation-bearing and independent scope checks **PASSED** focused [GitHub Actions 39370234994](https://github.com/monocap-tech/weil-lab/actions/runs/39370234994), commit 17900ece2e71bc47d69e4f6754affd5c41af91d0. The original true physical 25D source Gram, 23D double-boundary transform, all physical pole overlaps, and a strictly separated nonzero overlap witness were reconstructed. Therefore the true physical 22D pole-null subspace exists.
+
+Among originally tested 2^12, 2^16, 2^20, 2^24, 2^30 cutoffs, both complete-frequency scalar-trial upper bounds selected cutoff **2^12**. They prove the following actual one-step finite-source relative residual-squared inequalities, conditional on the inherited original Fourier/form/operator coercivity lemmas:
+
+- Full true original 23D Astar source frame, t_star=κ_star/K_star: \(||Fz-t_\star A_*Fz||²/||Fz||²\le 1-\delta_\star\), with certified rational **δ_star ≈5.722919722192653×10⁻¹⁶**.
+- Genuine source 22D pole-null subspace, t_0=κ/K_0 and Astar h=Ao h exactly: ratio² ≤1−δ_0 with certified rational **δ_0 ≈1.012671231756979×10⁻¹²**.
+
+The pole-null certificate improves the conservative one-step squared-residual gap by roughly **1.77×10³**. The first attempt failed only because MG11's generic 10⁻¹² decimal export rounding erased a rigorously positive smaller gap; fixed by preserving the EXACT rational quotient α²/K after K was rounded outward.
+
+**Disposition:** ACCEPT the 22D exact physical pole-null decomposition and complete-frequency, real-domain one-step residual upper. REJECT coarse scalar frequency/strong-action bounds as a quantitatively useful original 470D resolvent method: even the better source-22 residual-squared upper is indistinguishably near 1 for a practical inverse margin. Most importantly, the finite source frame is NOT invariant under residual \(I-tA_*\); finite-frame inequality cannot be iterated on all L². Do not claim Neumann iteration, inverse, signed negative-cap 51/56, even/Weil or RH.
+
+The next frontier is a complete **coupled original Gstar/Sstar source matrix** and actual source470 trial residual, not another scalar pole-aware repetition. The genuine analytic pole-null 22D reduction remains a useful structural decomposition to preserve when calculating coupled matrices.
