@@ -1,0 +1,115 @@
+name: mg29-adapted-third-original-source-curvature
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg29_adapted_third_curvature.py'
+      - 'notes/RPB108_MG29_ADAPTED_THIRD_SOURCE_CURVATURE_20261020.md'
+      - '.github/workflows/rpb108-mg29-adapted-third-curvature.yml'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  original-third-derivative-24D:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted original MG24 complete-frequency source matrices
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve original MG26 [0,4] mass closure
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39380800739
+          name: mg26-original-contiguous-24D-prefix-mass-closure
+          github-token: ${{ github.token }}
+          path: artifacts/mg26_verified
+      - name: Retrieve accepted original MG28 exact rational direct second derivative replay
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39438064440
+          name: mg28-actual-original-direct-curvature-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg28_verified
+      - name: Exact original 16/32 mesh adapted third derivatives and complete-frequency Gstar/Sstar
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg26_verified/mg26_contiguous_original_24D_mass_closure.json
+          test -s artifacts/mg28_verified/mg28_direct_adapted_source_curvature.json
+          python -m py_compile scripts/validate_rpb108_mg29_adapted_third_curvature.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg29_adapted_third_curvature.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg26-json artifacts/mg26_verified/mg26_contiguous_original_24D_mass_closure.json --verified-mg28-json artifacts/mg28_verified/mg28_direct_adapted_source_curvature.json
+      - name: Independently enforce original source closure and no 470D spectral promotion
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg29_original_direct_third_drift.json"))
+          assert d["status"]=="ORIGINAL_ADAPTED_THIRD_FOURIER_SOURCE_MOMENT_REFINEMENT"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["mg24_original_accepted_run"]==39378465438
+          assert d["mg26_original_accepted_run"]==39380800739
+          assert d["mg28_original_accepted_run"]==39438064440
+          assert d["pole_third_analytically_differentiated_from_original_formula"]
+          assert d["all_true_original_source_third_derivatives_combined_before_absolute"]
+          assert d["true_original_fourth_drift_paid_on_every_cell"]
+          assert d["actual_source_24D_moments_on_0to4_prefix"]
+          assert d["MG28_16_cell_verbatim_trace_width_replay"]
+          assert d["whole_original_frequency_pole_source_moments_enclosed"]
+          assert [m["mesh_cells"] for m in d["meshes"]]==[16,32]
+          for mesh in d["meshes"]:
+              m=mesh["mesh_cells"]
+              assert mesh["contiguous_positive_band"]==["0","4"]
+              assert mesh["same_actual_original_SI10_23pluspole_sources"]
+              assert mesh["derivative_interval_full_real_cell_certified"]
+              assert mesh["measured_source_cell_pairs"]==m*24
+              assert mesh["source_radii_monotone_each_true_cell"]
+              assert 0<=mesh["strictly_improved_source_cell_pairs"]<=m*24
+              assert Q(mesh["total_source_radius_MG28"])>=Q(mesh["total_source_radius_MG29"])
+              assert all(Q(x)>=0 for x in mesh["per_source_radius_improvement"])
+              for key in ("mass","one","two"):
+                  p=mesh["prefix_widths"][key]
+                  w=Q(p["mg29_direct_third_trace_width"])
+                  old=Q(p["mg28_same_mesh_trace_width"])
+                  assert old>0 and w>=0
+                  assert Q(p["new_over_mg28_width"])==w/old
+                  assert p["strict_improvement"]==(w<old)
+                  assert w<=old, "exact per-source radius contraction must preserve MG28 Young error widths"
+              assert [x["cutoff_k"] for x in mesh["full_original_frequency_scenarios"]]==[12,16]
+              for case in mesh["full_original_frequency_scenarios"]:
+                  assert case["original_complete_frequency_and_true_pole"]
+                  assert case["new_strict_matrix_scalar_residual_certified"]==(
+                      Q(case["new_weak_scalar_residual_Gershgorin_margin"])>0)
+                  for key in ("Gstar","Sstar"):
+                      old=Q(case[key+"_same_mesh_28_width"])
+                      new=Q(case[key+"_29_width"])
+                      assert new>=0 and old>0
+                      assert Q(case[key+"_29_over_28_width"])==new/old
+                      assert new<=old
+                      assert Q(case[key+"_29_over_MG24_width"])>=0
+                      for bound in ("lower","upper"):
+                          A=[[Q(y) for y in row] for row in case["full_original_"+key+"_"+bound]]
+                          assert len(A)==24 and all(len(row)==24 for row in A)
+                          assert A==[list(row) for row in zip(*A)]
+          assert d["not_entire_low_frequency_band_integrated"]
+          assert not d["original_470D_strong_residual_certified"]
+          assert not d["signed_odd_negative_51over56_cap_certified"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg29-original-adapted-third-24D-source-intervals
+          path: artifacts/mg29_original_direct_third_drift.json
