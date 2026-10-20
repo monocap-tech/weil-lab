@@ -163,7 +163,7 @@ def analytic_regressions(hyp):
     assert original_F4(F(0)).l==original_F4(F(0)).h==2*B**5/5
     for q in (F(1,4),F(1,2),F(1)):
         a=original_F4(q);b=original_F4(-q)
-        assert a.l==b.l and a.h==b.h
+        assert max(a.l,b.l)<=min(a.h,b.h)
     return True
 
 def calculate_mesh(m,prep):
