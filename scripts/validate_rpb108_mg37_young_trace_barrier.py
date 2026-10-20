@@ -121,9 +121,15 @@ def independent_self_test():
 
 def main():
     ap=argparse.ArgumentParser()
-    ap.add_argument("--verified-mg36-json",required=True)
+    ap.add_argument("--verified-mg36-json")
+    ap.add_argument("--self-test",action="store_true")
     ap.add_argument("--output",default="artifacts/mg37_original_exact_young_barrier.json")
     a=ap.parse_args()
+    assert independent_self_test()
+    if a.self_test:
+        print("MG37 exact rational Young infimum algebra self-test PASS")
+        return
+    assert a.verified_mg36_json,"MG36 accepted original artifact is required"
     mg36=json.loads((ROOT/a.verified_mg36_json).read_text())
     assert mg36["status"]=="ORIGINAL_MG36_DIRECT_BAND_RESIDUAL_FULL24_MATRIX_GATE"
     assert mg36["canonical_W_ODD_NEG"]=="OPEN"
