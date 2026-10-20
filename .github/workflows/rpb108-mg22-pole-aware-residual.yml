@@ -1,0 +1,77 @@
+name: mg22-original-full-frequency-pole-aware-residual
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg22_pole_aware_complete_frequency_residual.py'
+      - 'notes/RPB108_MG22_FULL_FREQUENCY_POLE_RESIDUAL_20261019.md'
+      - '.github/workflows/rpb108-mg22-pole-aware-residual.yml'
+  workflow_dispatch:
+jobs:
+  mg22-original-pole-aware-residual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Recompute original 25D physical Gram and 23D whole-frequency pole-aware strong residual
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg22_pole_aware_complete_frequency_residual.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg22_pole_aware_complete_frequency_residual.py
+      - name: Independently verify complete-frequency two scalar residual bounds and no theorem promotion
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg22_full_frequency_pole_aware_scalar_residual.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_SI10_physical_source_count"]==25
+          assert d["original_true_boundary_adapted_source_dimension"]==23
+          assert d["original_pole_source_index"]==24
+          assert d["original_boundary_nonpole_pivot"]==23
+          assert d["complete_original_physical_Gram_recomputed_exact_intervals"]
+          assert d["strict_original_H23_positive_interval_Gershgorin"]
+          assert F(d["original_physical_Gram_coefficient_eigen_floor"])>0
+          assert F(d["original_pole_nonzero_overlap_interval_witness"]["gap_from_zero_positive_dyadic_lower"])>0
+          assert d["original_exact_pole_null_hyperplane_dimension"]==22
+          assert d["original_23D_actual_true_Astar_scalar_trial_residual"]
+          assert d["original_22D_pole_null_actual_true_Ao_scalar_trial_residual"]
+          assert d["original_full_frequency_tail_and_low_band_paid"]
+          assert F(d["original_source_global_kappa_star"])==F(33621,10**9)
+          assert F(d["original_positive_multiplier_floor_kappa"])==F(1,1000)
+          assert [x["original_cutoff_k"] for x in d["dyadic_case_bounds"]]==[12,16,20,24,30]
+          for x in d["dyadic_case_bounds"]:
+              assert x["every_frequency_included_in_strong_upper"]
+              assert x["scalar_trial_not_full_resolvent_or_iterable"]
+              ell=F(x["original_true_physical_Gram_eigen_floor"])
+              Uo=F(x["actual_pole_free_strong_source_coeff_upper"])
+              Us=F(x["actual_pole_corrected_strong_source_coeff_upper"])
+              k0=F(x["pole_null_Ao_strong_relative_upper_K0"])
+              ks=F(x["full_Astar_strong_relative_upper_Kstar"])
+              a0=F(d["original_positive_multiplier_floor_kappa"])
+              aa=F(d["original_source_global_kappa_star"])
+              assert k0>=Uo/ell and ks>=Us/ell
+              assert F(x["pole_null_actual_scalar_trial_coefficient_t"])==a0/k0
+              assert F(x["full_actual_scalar_trial_coefficient_t"])==aa/ks
+              delta0=F(x["pole_null_residual_squared_gap_from_one_lower"])
+              deltas=F(x["full_residual_squared_gap_from_one_lower"])
+              assert 0<delta0<=a0*a0/k0<1
+              assert 0<deltas<=aa*aa/ks<1
+              assert F(x["pole_null_certified_relative_residual_squared_upper"])==1-delta0
+              assert F(x["full_certified_relative_residual_squared_upper"])==1-deltas
+              assert delta0>deltas
+          assert not d["actual_470_source_J_and_Y_strong_residual_certified"]
+          assert not d["finite_source_residual_stays_in_F_subspace"]
+          assert not d["repeated_finite_frame_residual_bound_proves_Neumann_convergence"]
+          assert not d["actual_source23_full_Gstar_Sstar_fine_matrices_computed"]
+          assert not d["full_original_signed_negative_cap_51over56_accepted"]
+          assert d["complete_even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_full_original_Fourier_and_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg22-original-pole-aware-full-frequency-residual
+          path: artifacts/mg22_full_frequency_pole_aware_scalar_residual.json
