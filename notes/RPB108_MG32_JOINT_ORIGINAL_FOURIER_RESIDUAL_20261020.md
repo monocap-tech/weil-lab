@@ -1,3 +1,22 @@
+## Verified result — MG32 direct full-frequency joint residual
+
+[GitHub Actions #39459624082](https://github.com/monocap-tech/weil-lab/actions/runs/39459624082) **PASSED** the actual original 32-cell 24D joint Fourier source residual computation and independently audited the result artifact. It reconstructed the MG29 original 32-cell source Taylor radius sum exactly; all actual original source/multiplier/pole interval contributions were included. The result did **not** certify source contraction for any tested case.
+
+| cutoff | accepted MG30 rational trial B | directly integrated [0,4] residual covariance UPPER TRACE | missing all-frequencies residual covariance UPPER TRACE | complete Rupper trace | signed Gershgorin margin | strict source contraction |
+|---|---|---:|---:|---:|---:|---|
+| 2^12 | MG24 scalar baseline | 25.5473383 | 37.9574024 | 63.5047407 | -18.7375624 | NO |
+| 2^12 | regularized nonscalar ridge 1/10 blend 1/4 | 26.8722093 | 42.7524864 | 69.6246957 | -23.0617003 | NO |
+| 2^16 | MG24 scalar baseline | 25.5473426 | 37.9574026 | 63.5047452 | -18.7375621 | NO |
+| 2^16 | regularized nonscalar ridge 1/10 blend 1/4 | 26.7299897 | 42.8409496 | 69.5709394 | -23.0292772 | NO |
+
+The proven upper TRACE is the sum of two rigorously Loewner-enclosed positive original-frequency sectors, but neither quantity is an actual measured residual norm. The omitted-frequency residual upper trace is about 60% of the combined scalar baseline upper trace. The complete residual bound is **far weaker as a contraction criterion** than MG30's negative Gershgorin margins of order 10^-7. This is an explicit **NO-GO for the current narrow-prefix + coarse Young complement method**, NOT for joint residual covariance as a mathematical approach.
+
+**Next acceptance frontier MG33:** Extend direct joint residual integration to the other *important original source energy bands*, preserving the existing MG29 [0,4] source information and the original MG24 selected panels, with a rigorous nonoverlapping frequency split. Only the genuinely remaining unmeasured mass should incur a crude complement Young charge. Alternatively derive a sharper multiplier-centered polynomial bound on the unmeasured low band. Do not merely increase the number of cells inside [0,4]; the complement dominates the current full-frequency certificate. Audit every original pole/cross term and source-metric spectral positivity separately.
+
+The underlying operator, its true residual and the original signed odd Schur form have NOT been classified by this negative matrix sufficient bound. W-ODD-NEG, true all-470 strong inverse, negative signed 51/56 cap, independent Fourier/form-domain audit, complete odd/even/Weil/CC27/RH remain OPEN.
+
+---
+
 # MG32 — Direct joint original Fourier source residual covariance
 
 October 20, 2026. Stacked on [MG31 #280](https://github.com/monocap-tech/weil-lab/pull/280). The accepted MG31 full family exact rational Rayleigh audit found a NEGATIVE direction of EACH of MG30's 36 **conservative** original 24D source residual LOWER CERTIFICATE matrices. That is a method failure, **not** a spectral negative direction for the true source residual or signed Weil operator. Coordinate changes cannot repair those particular 36 bound matrices; MG32 retains correlations discarded before forming a square.
@@ -61,4 +80,4 @@ MG32 must pass calculation-bearing Actions and separate exact rational no-promot
 
 If MG32’s full-frequency residual still fails, advance by sharper *joint omitted-frequency* treatment (e.g. actual MG24 disjoint nonflat panels plus MG29 prefix, or broad adaptive lowband), not by attempting another congruence on MG31’s proven-negative conservative matrices.
 
-**CI pending.**
+**CI PASSED for the original source method, with no certified contraction.**
