@@ -126,14 +126,14 @@ jobs:
                   assert Q(cell["radii_l2_squared"])>=0
                   assert cell["valid_full_matrix_not_trace_only"]
               A={}
-              for key in ("new_direct_band_FULL24",
+              for key in ("new_direct_band_FULL24_upper",
                           "full_original_Rupper_FULL24",
                           "full_original_Hlo_minus_Rupper_FULL24"):
                   a=[[Q(v) for v in row] for row in s[key]]
                   assert len(a)==24 and all(len(row)==24 for row in a)
                   assert a==[list(row) for row in zip(*a)]
                   A[key]=a
-              assert sum(A["new_direct_band_FULL24"][i][i] for i in range(24))==Q(
+              assert sum(A["new_direct_band_FULL24_upper"][i][i] for i in range(24))==Q(
                   s["new_MG36_joint_4to8_upper_trace"])
               assert sum(A["full_original_Rupper_FULL24"][i][i] for i in range(24))==Q(
                   s["MG36_complete_original_Rupper_trace"])
@@ -150,6 +150,7 @@ jobs:
           assert d["complete_even_Weil_CC27_RH"]=="OPEN"
           PY
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: mg36-true-original-direct-band-24D-full-residual
           path: artifacts/mg36_original_joint_4to8_fullmatrix.json
