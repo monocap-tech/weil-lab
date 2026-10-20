@@ -46,3 +46,21 @@ The validator regenerates the MG17 original scout and full exact source matrices
 If the relative method beats constant (or at least absolute weighted) in lower-reference inertia or has improved directional margins, continue to refine the remaining weak source directions. If theta is too large and lambda_-=0, reject this particular cellwise relative bound and seek source-correlated multiplier remainder instead. Do NOT shift to whole 470 source or original RH claims.
 
 Only selected original 24 real-frequency cells are covered; original complete Astar² pole action, full [0,Lambda] low band, genuine source23 Galerkin residual, complete full 470 inverse/infinite odd complement and even/Weil/CC27/RH remain OPEN. Independent original Fourier/form-domain audit remains OPEN.
+
+
+## Final accepted exact-rational MG18 result
+
+Focused GitHub Actions [39355874992](https://github.com/monocap-tech/weil-lab/actions/runs/39355874992) **PASSED** the full true-original source first and second moment rational computation, exact MG17 same-panel constant/absolute method replay and independent 24D exact lower-reference inertia checks.
+
+On the SAME 24 rigorously nonconstant original frequency cells, complete source/pole matrices have:
+
+| Comparison with same-panel constant bound | First \(A_o\) moment | Second \(A_o^2\) moment |
+|---|---:|---:|
+| Relative LOWER-reference trace gain | +3115445033/250000000000 (~+0.012462) | +2573853639/31250000000 (~+0.082363) |
+| Relative UPPER-reference trace reduction | +4125459873/250000000000 (~+0.016502) | +5668611171/50000000000 (~+0.113372) |
+| Relative lower-reference inertia | 3 positive, 21 negative | 3 positive, 21 negative |
+| Negative lower-reference directions recovered | 0 | 0 |
+
+MG18 therefore **successfully reverses MG17's adverse absolute-weight error budget** without changing the original Fourier multiplier, selected source space, or frequency panels. Its exact relative upper/lower Loewner matrix traces are greatly improved, but neither complete rational lower reference is PSD.
+
+**MG18 method decision:** ACCEPT relative whole-source multiplier-error charging as an effective enclosure improvement; REJECT it as standalone sufficient to close the spectral gate. Next compare with MG19's independent tighter whole-cell reference intersection, then distinguish ideal affine source rank from certified uncertainty loss. No original entire-band Astar², 470D residual/inverse or full odd/even/Weil/RH result follows.
