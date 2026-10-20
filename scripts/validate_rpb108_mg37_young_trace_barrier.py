@@ -94,6 +94,31 @@ def analyze_cell(cell):
        "new_complete24_fullmatrix_certified":False
     }
 
+def independent_self_test():
+    """Exact standalone proof-path regression, independent of MG36 artifact."""
+    test=[
+       ("4","33/8","6","1","26","4","9","25","3/2"),
+       ("4","33/8","0","1","18","9","0","9",None),
+    ]
+    for left,right,radii,tau,upper,P,E,inf,optimal_t in test:
+        c={"left":left,"right":right,"radii_l1":radii,
+           "old_Young_tau":tau,
+           "old_directional_Young_raw_trace":upper}
+        d=analyze_cell(c)
+        assert F(d["reconstructed_original_joint_affine_P_trace"])==F(P)
+        assert F(d["reconstructed_original_interval_remainder_E_trace"])==F(E)
+        assert F(d["infimum_Young_trace_exact_rational_lower"])<=F(inf)
+        assert F(d["infimum_Young_trace_exact_rational_upper"])>=F(inf)
+        assert F(d["proposed_certified_Young_upper_raw_trace"])>=F(inf)
+        if optimal_t is not None:
+            assert F(d["best_exact_rational_proposed_tau"])==F(optimal_t)
+            assert F(d["proposed_certified_Young_upper_raw_trace"])==F(inf)
+    for x in (F(0),F(1),F(2),F(16,9),F(5,7),F(10**90,13)):
+        lo,hi=lower_upper_sqrt_rational(x)
+        assert lo*lo<=x<=hi*hi
+        assert hi-lo<=F(1,SCALE)
+    return True
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--verified-mg36-json",required=True)
