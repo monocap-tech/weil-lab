@@ -1,0 +1,117 @@
+name: mg25-exact-robust-source-aware-mixed-residual
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg25_robust_source_aware_residual.py'
+      - 'notes/RPB108_MG25_ROBUST_SOURCE_AWARE_RESIDUAL_GATE_20261019.md'
+      - '.github/workflows/rpb108-mg25-robust-mixed-source.yml'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  mg25-exact-mixed-source-criterion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact rational nonscalar source trial and noncommuting rank-one pole regression
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg25_robust_source_aware_residual.py
+          python scripts/validate_rpb108_mg25_robust_source_aware_residual.py
+      - name: Independently reject incorrect original-operator and full470 promotion
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as Q
+          d=json.load(open("artifacts/mg25_source_aware_mixed_residual_algebraic_gate.json"))
+          assert d["status"]=="EXACT_FRACTION_SOURCE_AWARE_ROBUST_RESIDUAL_ALGEBRA_GATE"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["source_geometry_general_mixed_B_trial_verified_on_surrogate"]
+          assert d["full_rank_one_pole_mixed_source_action_verified_on_surrogate"]
+          assert d["both_mixed_cross_terms_are_mandatory"]
+          assert d["exact_Loewner_uncertainty_opnorm_paid"]
+          assert d["adverse_uncertainty_refuses_promotion"]
+          a,b=d["pilot_cases"]
+          assert a["fixture"]=="tight_coupled_pole"
+          assert b["fixture"]=="wide_adversarial_bracket"
+          assert a["full_mixed_S_pole_identity_exact"]
+          assert b["full_mixed_S_pole_identity_exact"]
+          assert a["true_original_operator_mode"] is False
+          assert b["true_original_operator_mode"] is False
+          assert a["surrogate_dimension"]==b["surrogate_dimension"]==3
+          assert a["trial_B_is_full_matrix_not_scalar"]
+          assert Q(a["certified_one_step_squared_residual_gap"])>Q(9,10)
+          assert a["strict_source_one_step_contraction"] is True
+          assert b["strict_source_one_step_contraction"] is False
+          assert Q(b["certified_one_step_squared_residual_gap"])==0
+          for key in ("mg24_original_coupled_matrix_inputs_accepted",
+                      "actual_original_full_frequency_24D_trial_certified",
+                      "actual_original_470D_trial_certified"):
+              assert d[key] is False
+          assert d["independent_original_Fourier_and_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - name: Retrieve verified MG24 full original frequency 24D enclosure certificate
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Evaluate actual-original 24D non-scalar mixed source trials, rigorously
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          python -m py_compile scripts/validate_rpb108_mg25_original24_robust_trial.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg25_original24_robust_trial.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+      - name: Independent exact no-promotion and all-frequency source-aware gate
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg25_original24_robust_source_aware_gate.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["verified_MG24_run_id"]==39378465438
+          assert d["genuine_complete_frequency_original_Gstar_Sstar_brackets_used"]
+          assert d["actual_25D_physical_Gram_reconstructed"]
+          assert d["true_original_24_channel_basis"]
+          assert d["matrix_mixed_Loewner_uncertainty_paid_in_all_trials"]
+          assert len(d["dyadic_cases"])==3
+          assert [v["cutoff_k"] for v in d["dyadic_cases"]]==[12,16,20]
+          for v in d["dyadic_cases"]:
+              assert v["original_24D_true_physical_Gram_reconstructed"]
+              assert v["original_MG24_brackets_are_complete_frequency"]
+              assert v["trial_count"]>=1
+              for case in v["cases"]:
+                  assert case["original_complete_frequency_pole_corrected"]
+                  assert case["rational_B_verified"]
+                  assert case["not_full470_inverse"]
+                  assert F(case["G_Loewner_halfwidth_opnorm_upper"])>=0
+                  assert F(case["B_opnorm_upper"])>=0
+                  gap=F(case["relative_residual_squared_gap_certified"])
+                  assert 0<=gap<=1
+                  assert case["strict_source_one_step_contraction_passed"]==(gap>0)
+              assert F(v["best_source_aware_strict_gap"])==max(
+                  F(c["relative_residual_squared_gap_certified"]) for c in v["cases"])
+          assert F(d["best_original_24D_source_gap"])==max(
+              F(v["best_source_aware_strict_gap"]) for v in d["dyadic_cases"])
+          assert d["original_24D_weak_strict_contraction_obtained"]==(
+              F(d["best_original_24D_source_gap"])>0)
+          assert not d["actual_original_470D_resolvent"]
+          assert not d["full_original_signed_51over56_cap"]
+          assert not d["finite_source_subspace_invariant"]
+          assert d["independent_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg25-source-aware-and-original-24D-method-gate
+          path: |
+            artifacts/mg25_source_aware_mixed_residual_algebraic_gate.json
+            artifacts/mg25_original24_robust_source_aware_gate.json
