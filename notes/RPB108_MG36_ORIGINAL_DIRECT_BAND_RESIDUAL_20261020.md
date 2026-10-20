@@ -1,3 +1,19 @@
+## Initial MG36 calculation completed; corrected independent audit pending
+
+The first original calculation-bearing GitHub Actions [#39491388570](https://github.com/monocap-tech/weil-lab/actions/runs/39491388570) **completed the mathematical 24D calculation** (approx. 26 minutes) but the subsequent independent schema audit failed with `KeyError: 'new_direct_band_FULL24'` because the calculation correctly exported `new_direct_band_FULL24_upper`. The CI-only key mismatch is corrected in commit `e92d8aa5deaf833659e7a78a0ca1674057069e43`; the complete corrected run is [#39495457084](https://github.com/monocap-tech/weil-lab/actions/runs/39495457084). The workflow now uploads its actual original full24 artifact even if a later check fails, preventing evidence loss.
+
+**Observed initial genuine-original calculation (not yet independent final-head accepted):**
+- All four k=12/16 scalar/nonscalar cases picked the **old Young upper for all 32/32 true [4,8] frequency cells**. The new row-Gersh full matrix alternative has zero raw trace gain.
+- Complete original frequency Rupper/MG32 original baseline upper TRACE: **1.079140031** scalar k12, **1.075301992** nonscalar k12; scalar k16 **1.079140033**, nonscalar k16 **1.074993358**.
+- Exact full24 Gershgorin sufficient lower margins: **−19.348148927** scalar k12, **−23.409195060** nonscalar k12, scalar k16 **−19.348148676**, nonscalar k16 **−23.377755156**.
+- No tested source 24D strict residual contraction. Negative certificate margin is NOT a negative eigenmode of the actual original operator.
+
+The method is a measured-band NO-GO, independently of the schema correction. Mathematical next frontier is a **frozen-source continuous Young parameter barrier audit**, rather than adding more untested row-error upper envelopes. MG37 [draft PR #286](https://github.com/monocap-tech/weil-lab/pull/286) stages exact rational per-cell infimum computations but requires accepted MG36 full24 artifact before any original numerical claim.
+
+Canonical original 470D strong inverse, signed odd 51/56 cap, complete odd/even/Weil/CC27/RH and independent original Fourier/form/domain audit all remain OPEN.
+
+---
+
 # MG36 — Original [4,8] direct joint covariance, full 24D source matrices
 
 October 20, 2026. Stacked on independently accepted [MG35 #284](https://github.com/monocap-tech/weil-lab/pull/284). The immediate original obligation remains W-ODD-NEG. In MG33, adding source-frequency [4,8] with 32 original physical interval cells increased the joint residual upper trace by about +5.03 for the scalar B, while its sourcewise-Young physical mass lower also made the omitted remainder upper ~+0.70 worse. MG35 repaired the nonmonotone omitted-mass *method* using valid old remainder Loewner-upper reuse, but the [4,8] measured *direct* residual upper remains large. MG36 addresses that latter cost **without modifying any original source identity**.
@@ -58,4 +74,4 @@ The accepted MG35 artifact stores trace-only diagnostics, so the MG36 calculatio
 
 Even a strict positive original 24D source residual would not prove source-subspace invariance, a full 470D strong inverse, the original signed odd 51/56 negative cap, even/Weil/CC27/RH or independent Fourier/form/domain identification.
 
-**Actions acceptance: PENDING.**
+**Corrected Actions #39495457084: pending independent verification.**
