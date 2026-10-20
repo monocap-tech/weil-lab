@@ -1,3 +1,24 @@
+## Verified MG30 original full-frequency 24D outcome
+
+The first full Actions #39442704928 failed only at the result summary field-name mismatch, after all actual candidate and pole/Loewner computations. This was corrected in commit `9f438f42c35c2d0a735d199236441eb9a5ba991b`.
+
+[Corrected Actions #39442984941](https://github.com/monocap-tech/weil-lab/actions/runs/39442984941) **PASSED** complete original 24D calculation, exact-rational anchored mixed uncertainty audits, independent acceptance/fail-closed verification, and uploaded artifact `mg30-true-original-24D-anchored-mixed-source-gate` (ID `12274353241`).
+
+| Genuine original source prefix | Cutoff | Exact rational candidate trials | Nonscalar trials | Best certified Gershgorin lower margin | Strict source contraction |
+|---|---:|---:|---:|---:|---|
+| 16 cells | 2^12 | 9 | 6 | -9.34278855374e-8 | NO |
+| 16 cells | 2^16 | 9 | 6 | -2.04475135855e-7 | NO |
+| 32 cells | 2^12 | 9 | 6 | **-9.14882439327e-8** | NO |
+| 32 cells | 2^16 | 9 | 6 | -2.00213803867e-7 | NO |
+
+Each finite trial was evaluated with the *complete original frequency* pole-corrected MG29 Gstar/Sstar source envelopes and original physical Gram, not merely with the positive prefix. The anchored subtraction pays the scalar `-2tG` by `LG` instead of the full spectral interval operator-norm charge. Nevertheless the stricter exact source-Gershgorin criterion was **nonpositive on every tested trial**; best certified squared-residual gap is exactly zero.
+
+**Mathematical interpretation:** This certifies a method NO-GO for the **finite candidate family under its tested Gershgorin sufficient inequality**, not a negative spectral mode. Magnitudes of signed Gershgorin row losses cannot be interpreted as distances to positive definiteness without source-metric conditioning. An appropriate next structural acceptance test is an **independently verified rational source-coordinate preconditioner / congruence witness** on the resulting full original 24D matrix `Hlo-Rupper`, before further Fourier tessellation. Such a test must certify the congruence exactly; a positive floating eigensolver diagnostic is not a proof. The alternative is an original same-basis disjoint MG24/MG29 panel hybrid with frequency nonoverlap and independent Loewner acceptance.
+
+**Still OPEN:** Original full 470D strong residual, negative signed 51/56 cap, odd/even/Weil/CC27/RH and independent original Fourier/form/domain acceptance.
+
+---
+
 # MG30 — Original anchored nonscalar source-residual acceptance on MG29
 
 October 20, 2026. Stacked on [MG29 #278](https://github.com/monocap-tech/weil-lab/pull/278), both original calculation-bearing runs passed. MG29's original 32-cell direct-adapted-third-derivative complete-frequency pole-corrected Gstar/Sstar **trace widths** reached 1.0356–1.0728 times the independently certified MG24 benchmark, yet no strict scalar matrix contraction was proved. MG30 tests whether actual nonscalar source geometry overcomes this.
@@ -48,4 +69,4 @@ If MG30 yields no strict source contraction, prioritize hybrid disjoint MG24 sel
 
 **Existing canonical obligations remain OPEN:** W-ODD-NEG; true original all-470 `J-AstarY` strong inverse, signed original odd 51/56 negative cap; independent Fourier/form-domain identification; complete even/Weil/CC27/RH.
 
-**CI acceptance: PENDING.**
+**CI acceptance: PASSED with no certified 24D source contraction.**
