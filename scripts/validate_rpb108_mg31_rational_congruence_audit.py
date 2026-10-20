@@ -185,10 +185,12 @@ def main():
             anchor=Q(baseline["scalar_trial_t"])
             candidates={name:(t,B) for name,t,B
                         in case_candidates(Gc,US,anchor)}
-            selected=list(dict.fromkeys(
-                ["MG24_scalar_t",old["best_trial"],
-                 old["best_nonscalar_trial"]]))
-            selected=[name for name in selected if name is not None]
+            # Exhaust the ENTIRE accepted MG30 finite candidate family,
+            # not just scalar/best/best-nonscalar summaries. A proof of
+            # negative A for each does not extend to untested matrices B.
+            selected=[trial["name"] for trial in old["trials"]]
+            assert len(selected)==old["candidate_count"]==9
+            assert len(selected)==len(set(selected))
             tests=[]
             for name in selected:
                 assert name in candidates,("MG30 candidate drift",name)
@@ -226,6 +228,7 @@ def main():
                 "tests":tests})
     assert [(x["mesh_cells"],x["cutoff_k"]) for x in report]==[
         (16,12),(16,16),(32,12),(32,16)]
+    assert sum(x["tested_candidate_count"] for x in report)==36
     certpos=sum(t["strict_source_residual_contraction_certified"]
                 for x in report for t in x["tests"])
     neg=sum(t["rational_matrix_congruence_outcome"]==
