@@ -1,0 +1,135 @@
+name: mg37-original-source-Young-trace-barrier
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg37_young_trace_barrier.py'
+      - 'notes/RPB108_MG37_EXACT_YOUNG_TRACE_BARRIER_20261020.md'
+      - '.github/workflows/rpb108-mg37-original-young-barrier.yml'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  exact-original-full-frequency-source-barrier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact standalone Young calculus regression
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg37_young_trace_barrier.py
+          python scripts/validate_rpb108_mg37_young_trace_barrier.py --self-test
+      - name: Require pinned corrected MG36 original 24D full matrix acceptance
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          # The downstream check must not consume a run that has not passed
+          # ALL independent exact-rational MG36 matrix acceptance gates.
+          import json,os,subprocess,time
+          repo=os.environ["GITHUB_REPOSITORY"]
+          run="39495457084"
+          for check in range(75):
+              response=subprocess.check_output(
+                  ["gh","api",f"repos/{repo}/actions/runs/{run}"])
+              d=json.loads(response)
+              if d["status"]=="completed":
+                  assert d["conclusion"]=="success", "Original MG36 accepted run failed"
+                  assert d["head_sha"]=="e92d8aa5deaf833659e7a78a0ca1674057069e43"
+                  print("Original MG36 accepted independent full24 matrix gate:",run,flush=True)
+                  break
+              print("Prerequisite original MG36 not yet accepted:",d["status"],flush=True)
+              time.sleep(60)
+          else:
+              raise AssertionError("MG36 prerequisite must pass before any MG37 original calculation")
+          PY
+      - name: Retrieve accepted original MG36 24D full frequency matrix and 128 cell diagnostics
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39495457084
+          name: mg36-true-original-direct-band-24D-full-residual
+          github-token: ${{ github.token }}
+          path: artifacts/mg36_verified
+      - name: Original rational Young 32-cell infimum barrier across 4 original trials
+        run: |
+          test -s artifacts/mg36_verified/mg36_original_joint_4to8_fullmatrix.json
+          python scripts/validate_rpb108_mg37_young_trace_barrier.py --verified-mg36-json artifacts/mg36_verified/mg36_original_joint_4to8_fullmatrix.json
+      - name: Independently recheck exact rational infima, true original scope, nonpromotion
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg37_original_exact_young_barrier.json"))
+          assert d["status"]=="ORIGINAL_MG37_FROZEN_YOUNG_PARAMETER_TRACE_BARRIER_AUDIT"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["verified_MG36_run_id"]==39495457084
+          assert d["original_25_SI10_23adapted_plus_sinh_pole_channels"]
+          assert d["same_original_signed_seven_prime_arch_frequency_moments_inherited"]
+          assert d["source_remainder_true_PSD_pole_corrected_full_frequency_inherited"]
+          assert d["all_original_4to8_cells_and_4_trial_cases_audited"]
+          assert d["exact_rational_Young_infimum_sqrt_certificates"]
+          assert d["young_optimizers_only_trace_candidate_not_fullmatrix_certificates"]
+          assert [(x["cutoff_k"],x["original_rational_trial"]) for x in d["scenarios"]]==[
+              (12,"MG24_scalar_t"),(12,"matrix_ridge_1/10_blend_1/4"),
+              (16,"MG24_scalar_t"),(16,"matrix_ridge_1/10_blend_1/4")]
+          assert len(d["scenarios"])==4
+          for s in d["scenarios"]:
+              assert s["original_23adapted_plus_genuine_pole_source"]
+              assert s["all_real_original_frequency_remainder_held_fixed"]
+              assert s["source_Taylor_radii_and_multiplier_cell_intervals_held_fixed"]
+              assert len(s["all_32_source_cells"])==32
+              cells=s["all_32_source_cells"]
+              old=low=up=proposed=F(0)
+              for c in cells:
+                  a,b=map(F,c["true_original_disjoint_4to8_frequency_cell"])
+                  w=b-a
+                  assert F(4)<=a<b<=F(8)
+                  P=F(c["reconstructed_original_joint_affine_P_trace"])
+                  E=F(c["reconstructed_original_interval_remainder_E_trace"])
+                  tau=F(c["original_MG36_exported_valid_Young_tau"])
+                  tnew=F(c["best_exact_rational_proposed_tau"])
+                  f0=F(c["original_valid_Young_raw_upper_trace"])
+                  fnew=F(c["proposed_certified_Young_upper_raw_trace"])
+                  lo=F(c["infimum_Young_trace_exact_rational_lower"])
+                  hi=F(c["infimum_Young_trace_exact_rational_upper"])
+                  assert P>=0 and E>=0 and tau>0 and tnew>0
+                  assert f0==(1+tau)*P+(1+1/tau)*E
+                  assert fnew==(1+tnew)*P+(1+1/tnew)*E
+                  assert lo<=hi and lo<=fnew<=f0
+                  assert c["floating_numbers_used_in_proof"] is False
+                  assert c["new_complete24_fullmatrix_certified"] is False
+                  old+=f0;low+=lo;up+=hi;proposed+=fnew
+              assert old==F(s["old_MG36_band_raw_Young_trace"])
+              assert low==F(s["optimal_all_cell_Young_infimum_lower_trace"])
+              assert up==F(s["optimal_all_cell_Young_infimum_upper_trace"])
+              assert proposed==F(s["best_rational_tau_all_cells_raw_upper_trace"])
+              assert 0<=low<=up and low<=proposed<=old
+              rest=F(s["fixed_prefix_plus_remainder_upper_trace"])
+              prior=F(s["old_MG36_full_original_source_residual_upper_trace"])
+              band=F(s["old_MG36_direct_band_upper_trace"])
+              baseline=F(s["MG32_original_prefix_only_complete_upper_trace"])
+              barrier=F(s["MG37_full_source_Young_family_lower_TRACE_barrier"])
+              candidate=F(s["MG37_fixed_export_raw_candidate_TRACE"])
+              assert rest==prior-band
+              assert barrier==rest+low and candidate==rest+proposed
+              assert barrier<=candidate<=prior
+              assert s["unattainable_under_frozen_assumptions_if_barrier_ge_MG32"]==(barrier>=baseline)
+              assert not s["new_complete24_Gershgorin_margin_proved"]
+              assert s["470D_operator_strong_inverse_not_proved"]
+          assert not d["complete_24D_matrix_positive_residual_certified"]
+          assert not d["original_470D_strong_inverse_certified"]
+          assert not d["signed_original_51over56_negative_cap_certified"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["complete_even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg37-original-Young-exact-4case-trace-barrier
+          path: artifacts/mg37_original_exact_young_barrier.json
+          if-no-files-found: ignore
