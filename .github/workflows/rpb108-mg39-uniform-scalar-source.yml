@@ -1,0 +1,151 @@
+name: mg39-original-complete-source-uniform-scalar-feasibility
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg39_uniform_scalar_source_gate.py'
+      - 'notes/RPB108_MG39_UNIFORM_SCALAR_SOURCE_GATE_20261020.md'
+      - '.github/workflows/rpb108-mg39-uniform-scalar-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-uniform-scalar-source-24D:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Pin accepted MG24 original complete-real-frequency coupled pole source moment enclosure
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Pin accepted MG29 original third derivative complete-frequency source moment enclosure
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Pin accepted MG30 original anchored residual source trials
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39442984941
+          name: mg30-true-original-24D-anchored-mixed-source-gate
+          github-token: ${{ github.token }}
+          path: artifacts/mg30_verified
+      - name: Exact scalar quadratic algebra regression
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg39_uniform_scalar_source_gate.py
+          python scripts/validate_rpb108_mg39_uniform_scalar_source_gate.py --self-test
+      - name: Original all-frequency true 24D MG24/MG29 scalar continuum Loewner audit
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg39_uniform_scalar_source_gate.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg30-json artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json
+      - name: Independent exact rational original 24D continuum endpoint witness validation
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          from pathlib import Path
+          mg24=json.load(open("artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json"))
+          mg29=json.load(open("artifacts/mg29_verified/mg29_original_direct_third_drift.json"))
+          mg30=json.load(open("artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json"))
+          d=json.load(open("artifacts/mg39_original_uniform_scalar_source_gate.json"))
+          assert d["status"]=="ORIGINAL_MG39_CONTINUUM_SCALAR_SOURCE_ENCLOSURE_FEASIBILITY"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert [d["verified_MG24_original_run"],d["verified_MG29_original_run"],d["verified_MG30_original_run"]]==[39378465438,39440914565,39442984941]
+          assert d["original_physical_25_SI10_sources_and_23plus_sinh_pole_24D"]
+          assert d["same_original_source_basis_for_both_complete_frequency_brackets"]
+          assert d["convex_Loewner_bracket_interpolation_valid"]
+          assert d["two_endpoint_negative_all_t_quadratic_implies_interval_no_go"]
+          assert d["floating_eigenvectors_only_proposed_rational_witnesses"]
+          assert [(c["MG29_original_mesh"],c["cutoff_k"]) for c in d["cases"]]==[
+                 (16,12),(16,16),(32,12),(32,16)]
+          err=Q(mg24["physical_Gram_Loewner_row_error"])
+          assert err>0
+          def dot(v,M):
+              return sum((v[i]*M[i][j]*v[j] for i in range(24)
+                          for j in range(24)),Q(0))
+          allok=True
+          for c in d["cases"]:
+              k=c["cutoff_k"];mesh=c["MG29_original_mesh"]
+              row24=next(x for x in mg24["cases"] if x["cutoff_k"]==k)
+              row29=next(x for x in next(x for x in mg29["meshes"]
+                            if x["mesh_cells"]==mesh)["full_original_frequency_scenarios"]
+                            if x["cutoff_k"]==k)
+              row30=next(x for x in mg30["scenarios"]
+                         if x["mesh_cells"]==mesh and x["cutoff_k"]==k)
+              assert c["original_MG30_scalar_fixed_t_rational_margin_replayed"]
+              assert c["original_signed_arch_plus_seven_prime_complete_frequency"]
+              assert c["physical_source_23adapted_plus_genuine_sinh_pole"]
+              assert not c["no_non_scalar_B_or_full470_or_RH_classification"] is False
+              assert Q(c["original_scalar_MG24_t"])==Q(row24["scalar_trial_t"])
+              LG24=[[Q(x) for x in row] for row in row24["complete_Gstar_lower"]]
+              US24=[[Q(x) for x in row] for row in row24["complete_Sstar_upper"]]
+              LG29=[[Q(x) for x in row] for row in row29["full_original_Gstar_lower"]]
+              US29=[[Q(x) for x in row] for row in row29["full_original_Sstar_upper"]]
+              n=c["lambda_partition_denominator"]
+              assert n in (16,64)
+              assert len(c["intervals"])==n
+              witnessed=0
+              for i,r in enumerate(c["intervals"]):
+                  if r is None:
+                      allok=False
+                      continue
+                  assert r["interval"]==[str(Q(i,n)),str(Q(i+1,n))]
+                  assert r["uniform_all_t_nonnegative_and_lambda_in_interval_no_go"]
+                  assert not r["true_operator_negative_mode_inferred"]
+                  v=[Q(x) for x in r["nonzero_original_24D_rational_direction"]]
+                  assert len(v)==24 and any(v)
+                  D=2*err*sum((x*x for x in v),Q(0))
+                  assert D==Q(r["exact_positive_Hupper_minus_Hlower_direction"])>0
+                  assert len(r["endpoints"])==2
+                  b0,b1=dot(v,LG24),dot(v,LG29)
+                  c0,c1=dot(v,US24),dot(v,US29)
+                  for ep,lam in zip(r["endpoints"],[Q(i,n),Q(i+1,n)]):
+                      b=(1-lam)*b0+lam*b1
+                      cc=(1-lam)*c0+lam*c1
+                      assert ep["lambda"]==str(lam)
+                      assert Q(ep["b"])==b and Q(ep["c"])==cc>=0
+                      assert ep["full_scalar_t_continuum_strict_negative"]
+                      if b<=0:
+                          assert Q(ep["max_signed_margin"])==-D<0
+                          assert Q(ep["exact_peak_t"])==0
+                      else:
+                          assert cc>0
+                          assert Q(ep["exact_peak_t"])==b/cc
+                          assert Q(ep["max_signed_margin"])==-D+b*b/cc<0
+                  witnessed+=1
+              assert witnessed==c["number_uniform_rational_witnessed_intervals"]
+              assert n-witnessed==c["number_unresolved_lambda_intervals"]
+              assert c["scalar_t_nonnegative_continuum_and_source_moment_blend_full_coverage"]==(witnessed==n)
+              assert c["tested_rational_direction_proposals"]>=24
+          assert d["uniform_all_t_all_blends_certified_in_every_case"]==all(
+              c["scalar_t_nonnegative_continuum_and_source_moment_blend_full_coverage"]
+              for c in d["cases"])
+          assert d["this_is_not_a_negative_mode_of_actual_signed_odd_operator"]
+          assert not d["full_original_470D_source_inverse_certified"]
+          assert not d["original_signed_51over56_negative_cap_certified"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["complete_even_Weil_CC27_RH"]=="OPEN"
+          print("Independent original MG39 exact-rational continuum witness replay PASS; full coverage:",allok)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg39-original-all-scalar-complete-frequency-feasibility
+          path: artifacts/mg39_original_uniform_scalar_source_gate.json
+          if-no-files-found: ignore
