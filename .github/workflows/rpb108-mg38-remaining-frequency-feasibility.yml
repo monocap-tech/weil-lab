@@ -1,0 +1,152 @@
+name: mg38-original-whole-frequency-remainder-feasibility
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg38_remaining_frequency_feasibility.py'
+      - 'notes/RPB108_MG38_ORIGINAL_REMAINDER_FEASIBILITY_20261020.md'
+      - '.github/workflows/rpb108-mg38-remaining-frequency-feasibility.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-original-24D-source-matrix-comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Pin accepted original complete-frequency MG24 moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Pin accepted 32-cell original MG29 physical source moment brackets
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Pin accepted original MG30 all-frequency nonscalar matrix residual
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39442984941
+          name: mg30-true-original-24D-anchored-mixed-source-gate
+          github-token: ${{ github.token }}
+          path: artifacts/mg30_verified
+      - name: Pin independently verified original MG36 complete-frequency 24D residual matrix
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39495457084
+          name: mg36-true-original-direct-band-24D-full-residual
+          github-token: ${{ github.token }}
+          path: artifacts/mg36_verified
+      - name: Exact original full-matrix independent moment-vs-band and ideal remainder gate
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json
+          test -s artifacts/mg36_verified/mg36_original_joint_4to8_fullmatrix.json
+          python -m py_compile scripts/validate_rpb108_mg38_remaining_frequency_feasibility.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg38_remaining_frequency_feasibility.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg30-json artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json --verified-mg36-json artifacts/mg36_verified/mg36_original_joint_4to8_fullmatrix.json
+      - name: Independent exact Fraction matrix proof-witness and non-promotion audit
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg38_original_remaining_frequency_feasibility.json"))
+          assert d["status"]=="ORIGINAL_MG38_WHOLE_FREQUENCY_REMAINDER_FEASIBILITY_GATE"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_MG24_accepted_run"]==39378465438
+          assert d["original_MG29_accepted_run"]==39440914565
+          assert d["original_MG30_accepted_run"]==39442984941
+          assert d["original_MG36_accepted_run"]==39495457084
+          assert d["original_TRUE_25physical_23adapted_plus_genuine_pole"]
+          assert d["original_all_real_frequency_moment_enclosure_independent_of_MG36"]
+          assert d["original_full_24D_rational_upper_matrices_compared"]
+          assert d["actual_original_pole_and_arch_prime7_source_retained"]
+          assert d["no_trace_to_Loewner_claim"]
+          assert d["rational_rayleigh_or_congruence_required_for_inertia"]
+          assert d["all_four_MG30_original_anchored_margins_replayed_exactly"]
+          assert d["original_zero_remainder_best_case_is_only_a_necessary_gate"]
+          assert [(c["cutoff_k"],c["original_MG30_source_trial"]) for c in d["cases"]]==[
+              (12,"MG24_scalar_t"),(12,"matrix_ridge_1/10_blend_1/4"),
+              (16,"MG24_scalar_t"),(16,"matrix_ridge_1/10_blend_1/4")]
+          labels={"NEGATIVE_RATIONAL_RAYLEIGH_WITNESS","POSITIVE_RATIONAL_CONGRUENCE_WITNESS",
+                   "POSITIVE_EXACT_GERSHGORIN","INCONCLUSIVE"}
+          for c in d["cases"]:
+              assert c["original_source_23adapted_plus_genuine_pole"]
+              assert c["MG30_complete_original_frequency_first_second_moments"]
+              assert c["MG36_complete_original_frequency_pole_residual"]
+              assert c["no_trace_to_Loewner_promotion"]
+              assert c["new_band_upper_itself_original_PSD"]
+              assert not c["original_complete_operator_negative_mode_proved"]
+              assert not c["new_full_470D_inverse_proved"]
+              tr30=Q(c["MG30_original_24D_full_residual_UPPER_trace"])
+              tr36=Q(c["MG36_original_24D_full_residual_UPPER_trace"])
+              assert tr30>0 and tr36>0
+              assert Q(c["MG36_minus_MG30_upper_full24_trace"])==tr36-tr30
+              assert Q(c["MG36_to_MG30_full_upper_trace_ratio"])==tr36/tr30
+              matrices=[]
+              for key in ("MG36_minus_MG30_upper_FULL24",
+                          "necessary_Hlo_minus_band_alone_FULL24"):
+                  M=[[Q(x) for x in row] for row in c[key]]
+                  assert len(M)==24 and all(len(row)==24 for row in M)
+                  assert M==[list(x) for x in zip(*M)]
+                  matrices.append(M)
+              assert sum(matrices[0][i][i] for i in range(24))==Q(
+                  c["MG36_minus_MG30_upper_full24_trace"])
+              for M,(kind,w) in zip(matrices,[
+                 (c["MG36_minus_MG30_upper_full24_inertia_gate"],
+                  c["MG36_minus_MG30_witness"]),
+                 (c["necessary_Hlo_minus_band_alone_inertia_gate"],
+                  c["necessary_Hlo_minus_band_alone_witness"])]):
+                  assert kind in labels
+                  if kind=="NEGATIVE_RATIONAL_RAYLEIGH_WITNESS":
+                      v=[Q(x) for x in w["vector"]]
+                      assert len(v)==24 and any(v)
+                      signed=sum((v[i]*M[i][j]*v[j]
+                          for i in range(24) for j in range(24)),Q(0))
+                      assert signed==Q(w["strict_exact_negative_quadratic"])<0
+                      assert w["original_24D_vector"]
+                  elif kind=="POSITIVE_RATIONAL_CONGRUENCE_WITNESS":
+                      from sys import path
+                      path.insert(0,"scripts")
+                      from validate_rpb108_mg25_robust_source_aware_residual import (
+                          mm,T,gersh_lower)
+                      W=[[Q(x) for x in row]
+                          for row in w["exact_rational_congruence_basis"]]
+                      assert len(W)==24 and all(len(row)==24 for row in W)
+                      C=mm(mm(T(W),M),W)
+                      assert C==T(C)
+                      assert gersh_lower(C)==Q(
+                          w["exact_congruence_Gershgorin_positive"])>0
+                      assert w["rational_basis_full_rank_by_positivity"]
+                  elif kind=="POSITIVE_EXACT_GERSHGORIN":
+                      m=min(M[i][i]-sum((abs(M[i][j]) for j in range(24)
+                              if i!=j),Q(0)) for i in range(24))
+                      assert m==Q(w["exact_Gershgorin_lower"])>0
+                  else:
+                      assert w=={}
+          assert not d["original_470D_strong_inverse_proved"]
+          assert not d["original_signed_51over56_negative_cap_proved"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["complete_even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg38-original-whole-source-matrix-feasibility-gate
+          path: artifacts/mg38_original_remaining_frequency_feasibility.json
+          if-no-files-found: ignore
