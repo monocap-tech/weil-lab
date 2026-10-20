@@ -135,7 +135,7 @@ def main():
             encoded=tuple(x for row in B for x in row)
             if encoded in seen:continue
             seen.add(encoded)
-            check=residual_upper(Hlo,Hup,LG,UG,US,B)
+            check=residual_upper(Hlo,Hup,LG,UG,US,B,verified_original_brackets=True)
             outcomes.append({
                "trial":name,
                "original_complete_frequency_pole_corrected":True,
