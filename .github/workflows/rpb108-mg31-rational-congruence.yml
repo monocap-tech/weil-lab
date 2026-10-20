@@ -1,0 +1,125 @@
+name: mg31-original-rational-residual-congruence
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg31_rational_congruence_audit.py'
+      - 'notes/RPB108_MG31_RATIONAL_CONGRUENCE_AUDIT_20261020.md'
+      - '.github/workflows/rpb108-mg31-rational-congruence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-rational-congruence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted complete-frequency original MG24 source brackets
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve original MG29 32-cell high-curvature precision certificate
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Retrieve accepted MG30 original nonscalar residual candidates
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39442984941
+          name: mg30-true-original-24D-anchored-mixed-source-gate
+          github-token: ${{ github.token }}
+          path: artifacts/mg30_verified
+      - name: Rebuild original residual matrices and exact rational congruence/negative Rayleigh gates
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json
+          python -m py_compile scripts/validate_rpb108_mg31_rational_congruence_audit.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg31_rational_congruence_audit.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg30-json artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json
+      - name: Independent fail-closed witness and scope assertion
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg31_original_residual_rational_congruence.json"))
+          assert d["status"]=="ORIGINAL_24D_RATIONAL_CONGRUENCE_AND_NEGATIVE_WITNESS_AUDIT"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["mg24_original_accepted_run"]==39378465438
+          assert d["mg29_original_accepted_run"]==39440914565
+          assert d["mg30_original_accepted_run"]==39442984941
+          assert d["actual_24D_original_residual_matrix_reconstructed"]
+          assert d["signed_original_complete_frequency_Gstar_Sstar_inherited"]
+          assert d["full_original_physical_Gram_and_pole_inherited"]
+          assert d["rational_grid_error_charged_by_exact_Loewner_diagonal"]
+          assert d["rational_congruence_positive_only_if_exact_Gersh_positive"]
+          assert d["negative_direction_only_if_exact_rational_Rayleigh_upper_negative"]
+          assert d["floating_eigenvectors_merely_rationalized_proposals"]
+          assert [(r["mesh_cells"],r["cutoff_k"]) for r in d["tested_original_scenarios"]]==[
+                   (16,12),(16,16),(32,12),(32,16)]
+          labels=("CERTIFIED_POSITIVE_RESIDUAL_BOUND_MATRIX",
+                  "CERTIFIED_NEGATIVE_DIRECTION_OF_RESIDUAL_BOUND_MATRIX",
+                  "INCONCLUSIVE")
+          pos=neg=inc=0
+          for s in d["tested_original_scenarios"]:
+              assert s["actual_original_24D_complete_frequency"]
+              assert s["original_SI10_23_boundary_plus_sinh_pole"]
+              assert s["MG30_accepted_trial_exact_replayed"]
+              assert s["tested_candidate_count"]==len(s["tests"])==9
+              for t in s["tests"]:
+                  assert t["verified_MG30_margin_replayed"]
+                  assert t["coordinate_dependent_Gershgorin_not_inertia"]
+                  assert not t["original_true_operator_spectral_index_proved"]
+                  result=t["rational_matrix_congruence_outcome"]
+                  assert result in labels
+                  assert t["strict_source_residual_contraction_certified"]==(result==labels[0])
+                  attempts=t["attempts"]
+                  assert 1<=len(attempts)<=2
+                  assert attempts[-1]["classification"]==result
+                  assert all(a["precision_denominator"] in ("1000000000000000000",
+                          "1000000000000000000000000") for a in attempts)
+                  if result==labels[0]:
+                      pos+=1
+                      a=attempts[-1]
+                      assert F(a["rational_congruence_Gershgorin_lower"])>0
+                      assert a["full_rank_basis_proved_by_positive_congruence"]
+                      W=[[F(y) for y in row] for row in a["rational_change_of_basis"]]
+                      assert len(W)==24 and all(len(row)==24 for row in W)
+                  elif result==labels[1]:
+                      neg+=1
+                      a=attempts[-1]
+                      assert F(a["negative_direction_exact_upper"])<0
+                      assert F(a["negative_rayleigh_upper_bound"])<0
+                      assert not a["operator_negative_mode_proved"]
+                      assert len(a["negative_direction_vector"])==24
+                      assert any(F(v) for v in a["negative_direction_vector"])
+                  else:inc+=1
+          assert pos+neg+inc==36
+          assert (pos,neg,inc)==(
+             d["number_certified_positive_residual_bounds"],
+             d["number_certified_negative_directions_of_bound_matrix"],
+             d["number_unresolved_coordinate_tests"])
+          assert not d["actual_original_470D_resolvent_certified"]
+          assert not d["signed_original_negative_51over56_cap_certified"]
+          assert not d["complete_original_operator_spectral_inertia_certified"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg31-original-exact-rational-congruence-witnesses
+          path: artifacts/mg31_original_residual_rational_congruence.json
