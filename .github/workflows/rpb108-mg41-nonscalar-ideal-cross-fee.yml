@@ -1,0 +1,207 @@
+name: mg41-original-nonscalar-ideal-cross-fee-gate
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg41_ideal_cross_error_feasibility.py'
+      - 'notes/RPB108_MG41_NONSCALE_IDEAL_CROSS_FEE_20261020.md'
+      - '.github/workflows/rpb108-mg41-nonscalar-ideal-cross-fee.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-nonscalar-ideal-error:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Pin verified MG24 true original complete-frequency H and pole source matrices
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Pin verified MG29 original 16 and 32-cell true G/S first and second source moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Pin independently accepted MG40 original nonscalar source matrix trial enclosures
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39513403010
+          name: mg40-original-anisotropic-G-cross-source-24D
+          github-token: ${{ github.token }}
+          path: artifacts/mg40_verified
+      - name: Exact original synthetic optimistic-cross-fee witness regression
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg41_ideal_cross_error_feasibility.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg41_ideal_cross_error_feasibility.py --self-test
+      - name: Complete original source 24D necessary nonscalar feasibility calculation
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg40_verified/mg40_original_anisotropic_cross_error.json
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg41_ideal_cross_error_feasibility.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg40-json artifacts/mg40_verified/mg40_original_anisotropic_cross_error.json
+      - name: Independent original source full matrix H/G/S reconstruction and exact rational witnesses
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          sys.path.insert(0,"scripts")
+          from validate_rpb108_mg25_original24_robust_trial import original_H24_from_physical_source
+          from validate_rpb108_mg25_robust_source_aware_residual import (
+            T,mm,plus,sub,mul,Id,gersh_lower,psd)
+          mg24=json.load(open("artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json"))
+          mg29=json.load(open("artifacts/mg29_verified/mg29_original_direct_third_drift.json"))
+          mg40=json.load(open("artifacts/mg40_verified/mg40_original_anisotropic_cross_error.json"))
+          data=json.load(open("artifacts/mg41_original_ideal_cross_error_feasibility.json"))
+          assert data["status"]=="ORIGINAL_MG41_NONSCALE_IDEAL_G_CROSS_FEE_FEASIBILITY"
+          assert data["canonical_W_ODD_NEG"]=="OPEN"
+          assert [data["verified_MG24_run"],data["verified_MG29_run"],
+                  data["verified_MG40_run"]]==[39378465438,39440914565,39513403010]
+          assert data["original_true_SI10_25physical_23adapted_plus_sinh_pole24D"]
+          assert data["complete_original_frequency_pole_corrected_source"]
+          assert data["mixed_original_G_error_fee_PSD_and_exact"]
+          assert data["zero_fee_only_necessary_feasibility_gate"]
+          assert data["no_negative_original_operator_mode_inferred"]
+          assert [(s["mesh_cells"],s["cutoff_k"]) for s in data["scenarios"]]==[
+              (16,12),(16,16),(32,12),(32,16)]
+          def read(a):
+              M=[[Q(x) for x in r] for r in a]
+              assert len(M)==24 and all(len(r)==24 for r in M)
+              return M
+          def dot(v,A):
+              return sum((v[i]*A[i][j]*v[j] for i in range(24)
+                          for j in range(24)),Q(0))
+          def exact_ldl_pivots(A):
+              assert A==T(A)
+              W=[list(r) for r in A]
+              piv=[]
+              for k in range(24):
+                  d=W[k][k]
+                  if d<=0:return None
+                  piv.append(d)
+                  for i in range(k+1,24):
+                      for j in range(i,24):
+                          W[j][i]-=W[i][k]*W[j][k]/d
+                          W[i][j]=W[j][i]
+              return piv
+          Hmid,Hrad,Herr=original_H24_from_physical_source()
+          assert Herr==Q(mg24["physical_Gram_Loewner_row_error"])
+          Hlo=sub(Hmid,mul(Herr,Id(24)))
+          Hup=plus(Hmid,mul(Herr,Id(24)))
+          total=0;negative=positive=inconclusive=0
+          for sc in data["scenarios"]:
+              mesh=sc["mesh_cells"];k=sc["cutoff_k"]
+              old=next(x for x in mg40["scenarios"]
+                       if x["mesh_cells"]==mesh and x["cutoff_k"]==k)
+              m=next(x for x in mg29["meshes"] if x["mesh_cells"]==mesh)
+              orig=next(x for x in m["full_original_frequency_scenarios"]
+                        if x["cutoff_k"]==k)
+              LG=read(orig["full_original_Gstar_lower"])
+              UG=read(orig["full_original_Gstar_upper"])
+              US=read(orig["full_original_Sstar_upper"])
+              E=mul(Q(1,2),sub(UG,LG))
+              Gc=mul(Q(1,2),plus(LG,UG))
+              assert psd(E) and psd(US)
+              originals={x["name"]:x for x in old["all_rational_candidate_results"]}
+              assert sc["tested_original_nonscalar_B_count"]==6
+              assert len(sc["trials"])==6
+              count={"NEGATIVE_EXACT_RATIONAL_RAYLEIGH":0,
+                     "POSITIVE_EXACT_RATIONAL_LDL":0,"INCONCLUSIVE":0}
+              for row in sc["trials"]:
+                  total+=1
+                  assert row["name"] in originals
+                  archived=originals[row["name"]]
+                  assert archived["nonscalar_original_B"]
+                  assert row["original_24D_nonscalar_response"]
+                  assert row["MG40_selected_method"]==archived["selected_method"]
+                  t=Q(row["anchor_t"])
+                  B=read(archived["B_original_exact_rational"])
+                  D=sub(B,mul(t,Id(24)))
+                  assert any(q for r in D for q in r)
+                  core=plus(sub(sub(Hup,mul(2*t,LG)),
+                      plus(mm(Gc,D),mm(T(D),Gc))),mm(mm(T(B),US),B))
+                  ideal=sub(Hlo,core)
+                  assert ideal==T(ideal)
+                  if archived["selected_method"]=="matrix_Young":
+                      eta=Q(archived["selected_eta"])
+                      assert eta>0
+                      fee=plus(mul(eta,E),mul(1/eta,mm(mm(T(D),E),D)))
+                  else:
+                      fee=mul(Q(archived["old_isotropic_fee"]),Id(24))
+                  assert psd(fee)
+                  assert gersh_lower(sub(ideal,fee))==Q(
+                      row["MG40_selected_Gersh_margin"])==Q(
+                      archived["selected_original_signed_Gersh"])
+                  assert gersh_lower(ideal)==Q(
+                      row["optimistic_zero_G_cross_fee_Gersh_margin"])
+                  assert row["MG40_mixed_error_fee_is_PSD"]
+                  kind=row["ideal_zero_G_cross_fee_status"]
+                  assert kind in count
+                  count[kind]+=1
+                  if kind=="NEGATIVE_EXACT_RATIONAL_RAYLEIGH":
+                      negative+=1
+                      w=row["exact_rational_ideal_witness"]
+                      v=[Q(x) for x in w["rational_vector"]]
+                      assert len(v)==24 and any(v)
+                      neg=dot(v,ideal)
+                      assert neg==Q(w["exact_negative_quadratic"])<0
+                      cost=dot(v,fee)
+                      assert cost>=0
+                      info=row["witness_decomposition"]
+                      assert info["even_zero_cross_error_fee_cannot_rescue_this_fixed_B"]
+                      assert neg==Q(info["optimistic_ideal_signed_quadratic"])
+                      assert cost==Q(info["accepted_extra_mixed_G_PSD_fee_on_witness"])
+                      assert neg-cost==Q(info["actual_certified_matrix_quadratic"])
+                  elif kind=="POSITIVE_EXACT_RATIONAL_LDL":
+                      positive+=1
+                      piv=exact_ldl_pivots(ideal)
+                      assert piv is not None and len(piv)==24
+                      assert piv==[Q(x) for x in row[
+                         "exact_rational_ideal_witness"]["exact_positive_schur_pivots"]]
+                      assert row["witness_decomposition"] is None
+                  else:
+                      inconclusive+=1
+                      assert row["exact_rational_ideal_witness"]=={}
+                      assert row["witness_decomposition"] is None
+                  assert not row["original_complete_operator_negative_mode_proved"]
+              assert count==sc["classification_counts"]
+              assert sc["every_tested_nonscalar_B_fee_only_refinement_obstructed"]==(
+                   count["NEGATIVE_EXACT_RATIONAL_RAYLEIGH"]==6)
+              assert sc["true_original_23adapted_plus_sinh_pole"]
+              assert sc["all_real_frequency_source_H_G_S_enclosed"]
+              assert sc["original_signed_arch_seven_prime_pole_retained"]
+              assert sc["MG40_full_24D_selected_margins_exactly_replayed"]
+          assert total==data["total_tested_nonscalar_B"]==24
+          assert negative+positive+inconclusive==total
+          assert data["all_tested_nonscalar_B_fee_only_refinement_obstructed"]==all(
+             s["every_tested_nonscalar_B_fee_only_refinement_obstructed"]
+             for s in data["scenarios"])
+          assert not data["source_24D_strict_residual_contraction_certified"]
+          assert not data["full_original_470D_strong_inverse_certified"]
+          assert not data["signed_original_51over56_negative_cap_certified"]
+          assert data["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert data["complete_even_Weil_CC27_RH"]=="OPEN"
+          print("Independent original MG41 full source 24D exact quadratics PASS:",
+                {"total":total,"negative":negative,"positive":positive,
+                 "inconclusive":inconclusive})
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg41-original-ideal-cross-fee-24D-feasibility
+          path: artifacts/mg41_original_ideal_cross_error_feasibility.json
+          if-no-files-found: ignore
