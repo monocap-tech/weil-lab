@@ -75,16 +75,15 @@ def source_scalar_trial_case(physical_trace_upper,ell,g,pole_norm,tail,k):
     Ks=up(full_action_scalar/ell)
     assert 0<KAPPA_STAR<KAPPA
     assert K0>=KAPPA*KAPPA and Ks>=KAPPA_STAR*KAPPA_STAR
-    delta0=down(KAPPA*KAPPA/K0)
-    deltas=down(KAPPA_STAR*KAPPA_STAR/Ks)
+    # MG11's generic down() rounds to 1e-12, but the true
+    # squared contraction gaps may be far SMALLER. Exact Fraction
+    # preserves a positive rational lower instead of rounding to zero.
+    # K0 and Ks have already been rounded UP rigorously.
+    delta0=KAPPA*KAPPA/K0
+    deltas=KAPPA_STAR*KAPPA_STAR/Ks
     assert 0<delta0<1 and 0<deltas<1
-    t0=down(KAPPA/K0)
-    ts=down(KAPPA_STAR/Ks)
-    # A rounded-down positive trial coefficient has no WORSE
-    # bound than the exact optimum:
-    # 1-2*alpha*t + K*t² <= 1-alpha²/K if t<=alpha/K?
-    # In general rounding down DOES worsen it. Export exact
-    # t=alpha/K as rational; keep separate outward delta bounds.
+    # The optimum scalar coefficients are kept exactly rational.
+    # Even slight rounding would spoil their optimal bound.
     t0=KAPPA/K0
     ts=KAPPA_STAR/Ks
     assert 0<t0 and 0<ts
