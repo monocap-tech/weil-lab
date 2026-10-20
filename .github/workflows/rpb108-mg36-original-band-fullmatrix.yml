@@ -1,0 +1,156 @@
+name: mg36-original-band-24D-direct-covariance
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg36_direct_band_fullmatrix.py'
+      - 'notes/RPB108_MG36_ORIGINAL_DIRECT_BAND_RESIDUAL_20261020.md'
+      - '.github/workflows/rpb108-mg36-original-band-fullmatrix.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-complete-frequency-residual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Accepted MG24 original complete-frequency source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Accepted MG29 original 32-cell true source moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Accepted MG30 nonscalar original source candidates
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39442984941
+          name: mg30-true-original-24D-anchored-mixed-source-gate
+          github-token: ${{ github.token }}
+          path: artifacts/mg30_verified
+      - name: Accepted MG32 original joint 0-4 Fourier residual
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39459624082
+          name: mg32-actual-original-joint-24D-Fourier-residual
+          github-token: ${{ github.token }}
+          path: artifacts/mg32_verified
+      - name: Accepted MG33 original 0-8 disjoint full-frequency residual
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39462301107
+          name: mg33-original-disjoint-24D-joint-residual
+          github-token: ${{ github.token }}
+          path: artifacts/mg33_verified
+      - name: Accepted MG35 PSD monotone omitted-frequency upper selection
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39488378664
+          name: mg35-true-original-PSD-monotone-remainder-guard
+          github-token: ${{ github.token }}
+          path: artifacts/mg35_verified
+      - name: Original source full matrix row-Gersh error remainder vs old Young on 4-8
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg36_direct_band_fullmatrix.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg36_direct_band_fullmatrix.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg30-json artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json --verified-mg32-json artifacts/mg32_verified/mg32_joint_original_source_residual.json --verified-mg33-json artifacts/mg33_verified/mg33_original_disjoint_joint_residual.json --verified-mg35-json artifacts/mg35_verified/mg35_original_monotone_PSD_remainder_guard.json
+      - name: Independent original 24x24 exact rational full-matrix, trace and fail-closed acceptance
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg36_original_joint_4to8_fullmatrix.json"))
+          assert d["status"]=="ORIGINAL_MG36_DIRECT_BAND_RESIDUAL_FULL24_MATRIX_GATE"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["verified_MG24_run_id"]==39378465438
+          assert d["verified_MG29_run_id"]==39440914565
+          assert d["verified_MG30_run_id"]==39442984941
+          assert d["verified_MG32_run_id"]==39459624082
+          assert d["verified_MG33_run_id"]==39462301107
+          assert d["verified_MG35_run_id"]==39488378664
+          assert d["original_true_25_SI10_physical_23adapted_plus_sinh_pole"]
+          assert d["sourcewise_original_residual_4to8_combined_before_squaring"]
+          assert d["actual_original_signed_arch_prime7_multiplier_every_cell"]
+          assert d["matrix_entrywise_remainder_row_Gershgorin_proof"]
+          assert d["new_complete_24D_original_residual_UPPER_matrices_exported"]
+          assert d["exact_MG32_MG33_MG35_original_trace_replay"]
+          assert d["PSD_monotone_full_matrix_original_remainder_reuse"]
+          assert d["all_true_real_frequencies_accounted_for"]
+          assert [(x["cutoff_k"],x["source_trial"]) for x in d["scenarios"]]==[
+              (12,"MG24_scalar_t"),
+              (12,"matrix_ridge_1/10_blend_1/4"),
+              (16,"MG24_scalar_t"),
+              (16,"matrix_ridge_1/10_blend_1/4")]
+          def Gersh(M):
+              return min(M[i][i]-sum((abs(M[i][j]) for j in range(24)
+                          if j!=i),Q(0)) for i in range(24))
+          for s in d["scenarios"]:
+              assert s["original_23adapted_plus_true_pole_channels"]
+              assert s["complete_real_frequency_and_original_multiplier"]
+              assert s["original_Fourier_source_Taylor_reconstructed_on_4to8"]
+              assert s["PSD_safe_remainder_chosen_from"]=="MG32_0to4"
+              assert Q(s["rigorous_original_direct_band_trace_gain"])>=0
+              assert Q(s["new_direct_band_over_MG33_trace"])<=1
+              assert Q(s["MG36_complete_original_Rupper_trace"])<=Q(
+                  s["MG35_guarded_0to8_complete_upper_trace"])
+              assert s["full_original_470D_signed_cap_not_certified"]
+              info=s["original_band_cells"]
+              assert sum(info["methods"].values())==32
+              assert len(info["per_cell"])==32
+              assert Q(info["exact_raw_trace_improvement"])>=0
+              assert Q(info["original_old_raw_trace"])-Q(
+                  info["new_raw_trace"])==Q(info["exact_raw_trace_improvement"])
+              for cell in info["per_cell"]:
+                  assert Q(cell["selected_raw_trace"])==min(
+                      Q(cell["old_directional_Young_raw_trace"]),
+                      Q(cell["direct_row_Gersh_raw_trace"]))
+                  assert Q(cell["radii_l1"])>=0
+                  assert Q(cell["radii_l2_squared"])>=0
+                  assert cell["valid_full_matrix_not_trace_only"]
+              A={}
+              for key in ("new_direct_band_FULL24_upper",
+                          "full_original_Rupper_FULL24",
+                          "full_original_Hlo_minus_Rupper_FULL24"):
+                  a=[[Q(v) for v in row] for row in s[key]]
+                  assert len(a)==24 and all(len(row)==24 for row in a)
+                  assert a==[list(row) for row in zip(*a)]
+                  A[key]=a
+              assert sum(A["new_direct_band_FULL24_upper"][i][i] for i in range(24))==Q(
+                  s["new_MG36_joint_4to8_upper_trace"])
+              assert sum(A["full_original_Rupper_FULL24"][i][i] for i in range(24))==Q(
+                  s["MG36_complete_original_Rupper_trace"])
+              margin=Gersh(A["full_original_Hlo_minus_Rupper_FULL24"])
+              assert margin==Q(s["full_original_24D_strict_Gershgorin_margin"])
+              assert s["strict_original_source_contraction"]==(margin>0)
+              gap=Q(s["full_original_24D_squared_source_gap"])
+              assert 0<=gap<=1 and (gap>0)==(margin>0)
+          assert d["any_strict_24D_source_residual_contraction"]==any(
+              x["strict_original_source_contraction"] for x in d["scenarios"])
+          assert not d["true_original_470D_strong_inverse"]
+          assert not d["signed_original_51over56_odd_negative_cap"]
+          assert d["independent_Fourier_form_domain_audit"]=="OPEN"
+          assert d["complete_even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg36-true-original-direct-band-24D-full-residual
+          path: artifacts/mg36_original_joint_4to8_fullmatrix.json
