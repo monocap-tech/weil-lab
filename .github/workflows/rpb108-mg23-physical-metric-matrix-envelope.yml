@@ -1,0 +1,85 @@
+name: mg23-original-physical-metric-matrix-envelope
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg23_physical_metric_matrix_envelope.py'
+      - 'notes/RPB108_MG23_PHYSICAL_METRIC_MATRIX_ENVELOPE_20261019.md'
+      - '.github/workflows/rpb108-mg23-physical-metric-matrix-envelope.yml'
+  workflow_dispatch:
+jobs:
+  mg23-original-physical-metric-source-envelope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Recompute true original 25D Gram and complete-frequency 23D H-metric envelope
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg23_physical_metric_matrix_envelope.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg23_physical_metric_matrix_envelope.py
+      - name: Independent exact Fraction algebra and strict no-promotion checks
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          if hasattr(sys,'set_int_max_str_digits'):sys.set_int_max_str_digits(0)
+          d=json.load(open('artifacts/mg23_original_physical_metric_matrix_envelope.json'))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["true_double_boundary_source_frame_dimension"]==23
+          assert d["true_pole_null_dimension"]==22
+          assert d["true_pole_overlap_nonzero_interval_witness"]
+          assert d["full_original_physical_25D_Gram_interval_recomputed"]
+          assert d["H23_strict_positive_verified"]
+          assert d["complete_frequency_matrix_Loewner_envelope_theorem_used"]
+          assert d["matrix_envelope_uses_exact_true_H_and_b_symbolically"]
+          ell=F(d["H23_coeff_eigen_floor"])
+          sigma=F(d["original_pole_sigma_upper"])
+          kap=F(d["original_positive_Ao_energy_floor"])
+          kapstar=F(d["original_pole_corrected_Astar_energy_floor"])
+          assert ell>0 and sigma>0 and kap==F(1,1000)
+          assert kapstar==F(33621,10**9)
+          cases=d["dyadic_cases"]
+          assert [x["original_cutoff_k"] for x in cases]==[12,16,20,24,30]
+          for x in cases:
+              assert x["every_original_frequency_paid"]
+              assert x["not_iterable_as_finite_frame_contraction"]
+              M=F(x["original_low_multiplier_M"])
+              tau=F(x["complete_original_strong_high_tail_tau"])
+              eta=F(x["chosen_Young_eta"])
+              k0=F(x["new_pole_null_relative_K0"])
+              kfull_candidate=F(x["new_rank_one_full_relative_Kstar"])
+              kfull=F(x["accepted_full_relative_Kstar_with_MG22_fallback"])
+              old0=F(x["mg22_old_pole_null_K0"])
+              oldfull=F(x["mg22_old_full_Kstar"])
+              assert tau>=0 and M>0 and eta>0
+              assert k0>=M*M+tau/ell and k0<old0
+              assert kfull_candidate>=(1+eta)*k0+4*(1+1/eta)*sigma*sigma
+              assert kfull==min(kfull_candidate,oldfull)
+              assert F(x["new_pole_null_trial_t0"])==kap/k0
+              assert F(x["new_full_trial_tstar"])==kapstar/kfull
+              delta0=F(x["pole_null_strict_residual_squared_gap"])
+              deltafull=F(x["full_strict_residual_squared_gap"])
+              assert delta0==kap*kap/k0
+              assert deltafull==kapstar*kapstar/kfull
+              assert 0<delta0<1 and 0<deltafull<1
+              assert F(x["pole_null_residual_squared_upper"])==1-delta0
+              assert F(x["full_residual_squared_upper"])==1-deltafull
+              assert F(x["pole_null_gain_vs_MG22"])>1
+              assert F(x["full_gain_vs_MG22"])>=1
+          for flag in ("actual_coupled_original_Gstar_computed",
+                       "actual_coupled_original_Sstar_computed",
+                       "MG07_full_470D_source_J_and_Y_residual_certified",
+                       "finite_frame_residual_invariant",
+                       "global_Neumann_inverse_certified",
+                       "original_signed_51over56_cap_certified"):
+              assert not d[flag]
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_Fourier_form_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg23-complete-original-physical-metric-coupled-envelope
+          path: artifacts/mg23_original_physical_metric_matrix_envelope.json
