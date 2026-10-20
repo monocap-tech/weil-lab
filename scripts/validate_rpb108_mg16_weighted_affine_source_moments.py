@@ -286,10 +286,20 @@ def run():
                 "whole_matrix_upper_export_fee":str(uf)
             }
     baseline=previous["candidate_matrices"]["adaptive"]
+    all_flat_exact=(certified_flat_kappa_cells==24 and
+                    reference_multiplier_nonflat_cells==0 and
+                    nonzero_multiplier_reference_gap_cells==0)
+    assert all_flat_exact, (
+        "MG16 selected pilot unexpectedly entered a nonconstant multiplier regime; "
+        "the fixed-panel no-op method gate must be re-evaluated")
     gain={}
     for order in ORDERS:
         best=result["weighted_best"][order]
         old=baseline[order]
+        # This is a FULL 576-entry assertion on BOTH exact lower
+        # and upper original source moment Loewner matrices.
+        assert best["complete_24x24_lower"]==old["complete_24x24_lower"]
+        assert best["complete_24x24_upper"]==old["complete_24x24_upper"]
         gain[order]={
             "MG15_lower_reference_exact_inertia":old["lower_exact_inertia"],
             "MG16_weighted_lower_reference_exact_inertia":best["lower_exact_inertia"],
@@ -318,6 +328,8 @@ def run():
         "exact_reference_covariance_vv_vd_dd":True,
         "sourcewise_diagonal_error_and_true_multiplier_gap_paid":True,
         "full_MG15_independent_exact_matrix_and_inertia_replay":True,
+        "entire_24cell_exact_flat_multiplier_method_no_go":all_flat_exact,
+        "entire_MG15_MG16_original_24x24_lower_and_upper_matrices_identical":True,
         "whole_frequency_zero_to_cutoff_covered":False,
         "original_Astar_squared_pole_action_completed":False,
         "original_true_23D_Galerkin_strong_residual_certified":False,
