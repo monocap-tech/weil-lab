@@ -54,3 +54,25 @@ The test also records midpoint-only and derivative-only exact rational ranks. It
 - In either case this is a method-diagnostic result, **not a Galerkin residual, actual 470 source inverse, odd/even Weil or RH theorem**. Original infinite-dimensional complement and domains must be addressed independently.
 
 All calculations replay the original nonflat frequency panel scout and exact physical source transforms, with no numerical eigenvalue tests substituted for rational proof.
+
+
+## MG20 verified method result — source span is NOT the missing mechanism
+
+Focused GitHub Actions [39366482406](https://github.com/monocap-tech/weil-lab/actions/runs/39366482406) **PASSED** after replacing a prohibitively expensive exact 24D rational LDL / Gaussian elimination with a mathematically exact 24D modular determinant witness. Independent CI replays modular Gaussian elimination on the exported full-rank 24x24 residue witness. A modular nonsingular determinant of rational entries with invertible denominators proves a nonzero rational determinant; this is a FULL original rational reference rank certificate, not numerical rank inference.
+
+Verified rational original 24-channel source-affine frame:
+
+| Original nonflat source panel reference | Certified dimension |
+|---|---:|
+| Original 24 midpoint source vectors alone | **24/24** |
+| Original 24 first-derivative source vectors alone | **24/24** |
+| Combined 48 original rational source value/derivative vectors | **24/24** |
+| Exact positive ideal first \(A_o\) affine reference inertia | **(24+,0−,0)** |
+| Exact positive ideal second \(A_o^2\) affine reference inertia | **(24+,0−,0)** |
+| Actual original certified LOWER-reference inertia (MG18) | **(3+,21−,0)** |
+
+The ideal covariance for \(p=1,2\) is strictly positive definite **without** needing an explicit enormous rational 24D LDL factor: on every cell the 2×2 exact weighted \(J_0,J_1,J_2\) Gram is strictly positive, and at least one 24×24 submatrix of the affine source frame has a nonzero rational determinant proved by exact modular arithmetic. Consequently the full weighted ideal affine reference is SPD.
+
+**This is NOT the true original \(A_o\) or \(A_o^2\) matrix.** The rational ideal source vectors omit the real Fourier-source midpoint/derivative uncertainty and true multiplier mismatch; it has NO quantitative lower bound on the actual original source Gram. Its 24 positive directions therefore cannot be substituted for the certified reference's 3 positive directions.
+
+**Method-gate decision:** The nonflat panel selection and its original rational source-affine frame already span all 24 pilot directions, separately with values and derivatives. Therefore further changing the panel selection **solely to recover source-rank** is not indicated. The actual method obstruction is SOURCE/MULTIPLIER ERROR ENVELOPE dominance, and the next meaningful obligation is a correlated error analysis and full-band pole-corrected strong residual. No original 470D odd/even/Weil/RH theorem follows.
