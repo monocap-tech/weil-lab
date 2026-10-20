@@ -35,18 +35,38 @@ jobs:
           assert d["original_source_channels"]==24
           assert d["true_original_nonflat_frequency_cells_verified"]==24
           assert d["same_true_original_nonflat_cells_as_MG17_MG18_MG19"]
-          a=d["rational_source_midpoint_only_rank"]
-          b=d["rational_source_derivative_only_rank"]
+          a=d["rational_source_midpoint_rank_lower_bound"]
+          b=d["rational_source_derivative_rank_lower_bound"]
           c=d["rational_source_affine_combined_rank"]
-          assert 0<=a<=c<=24 and 0<=b<=c<=24
+          assert 0<=a<=c==24 and 0<=b<=c==24
+          witness=d["modular_source_affine_rank_witness"]
+          p=witness["prime"]
+          assert p in (2147483647,2147483629,1000000007,1000000009,998244353,2305843009213693951)
+          assert witness["rank_lower_bound"]==24
+          assert len(witness["independent_row_indices"])==24
+          assert len(set(witness["independent_row_indices"]))==24
+          assert all(0<=j<48 for j in witness["independent_row_indices"])
+          mat=[[int(x)%p for x in row] for row in witness["independent_row_residues"]]
+          assert len(mat)==24 and all(len(row)==24 for row in mat)
+          # Independent standard column-pivot modular Gaussian replay.
+          for k in range(24):
+              pivot=next((i for i in range(k,24) if mat[i][k]%p),None)
+              assert pivot is not None,("mod-p 24D witness singular",k)
+              mat[k],mat[pivot]=mat[pivot],mat[k]
+              inv=pow(mat[k][k],-1,p)
+              for i in range(k+1,24):
+                  factor=mat[i][k]*inv%p
+                  for j in range(k,24):
+                      mat[i][j]=(mat[i][j]-factor*mat[k][j])%p
+          assert d["true_exact_affine_24D_ideal_reference_inertia_by_positive_Gram"]
           for name in ("one","two"):
               r=d["weighted_ideal_first_second_source_reference"][name]
               inertia=r["exact_affine_reference_inertia"]
-              assert sum(inertia.values())==24
-              assert inertia["positive"]==c and inertia["negative"]==0
-              assert r["ideal_affine_reference_rank"]==c
-              assert F(r["exact_positive_affine_reference_trace"])>0
+              assert inertia=={"positive":24,"negative":0,"zero":0}
+              assert r["ideal_affine_reference_rank"]==24
+              assert F(r["certified_positive_affine_reference_trace_lower"])>0
               assert r["weighted_moment_strict_positive_every_cell"]
+              assert r["ideal_inertia_proved_by_modular_full_rank_and_positive_exact_weight_moments"]
           assert d["all_24_original_affine_cells_positive_moment_Gram"]
           assert d["all_576_mixed_source_entries_preserved_in_affine_reference"]
           assert d["all_source_and_multiplier_remainder_omitted_from_ideal_reference"]
