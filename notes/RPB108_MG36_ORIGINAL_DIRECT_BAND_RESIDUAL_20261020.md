@@ -1,3 +1,15 @@
+## MG36 — final accepted result
+
+[Actions #39495457084](https://github.com/monocap-tech/weil-lab/actions/runs/39495457084) **PASSED** full original 24x24 matrix construction and independent exact rational audit; final subsequent docs-only [Actions #39496651009](https://github.com/monocap-tech/weil-lab/actions/runs/39496651009) also **PASSED**. Calculation-bearing accepted artifact `mg36-true-original-direct-band-24D-full-residual` (ID `12298813929`).
+
+All four original k=12/16 scalar/nonscalar source trials selected the inherited directional Young full-matrix upper rather than MG36's row-Gersh covariance bound in **32/32 [4,8] cells**; zero direct-band trace gain. The exact full-real-frequency full24 residual upper/bound Gersh margins remain **negative**, with signed margins scalar k12 `-19.3481489270`, nonscalar k12 `-23.4091950599`, scalar k16 `-19.3481486761`, nonscalar k16 `-23.3777551558`. No strict original 24D source contraction. These are negative lower **sufficient certificate margins**, not original operator negative modes.
+
+A subsequent structural audit on independently accepted MG35 [Actions #39499065697](https://github.com/monocap-tech/weil-lab/actions/runs/39499065697) proves the entire current frozen-MG32-remainder variant cannot produce a tighter full-frequency upper *in Loewner order*, even with infinitely sharp measurement of the added [4,8] band, because it adds an extra PSD source residual upper onto an unchanged MG32 full residual upper. Therefore the **next method must improve the omitted-frequency full matrix upper** (or reconstruct a different jointly integrated full-frequency enclosure), not endlessly optimize newly added-band errors.
+
+W-ODD-NEG, full original 470D inverse, signed 51/56 odd cap, independent Fourier/form-domain and even/Weil/CC27/RH remain OPEN.
+
+---
+
 ## Initial MG36 calculation completed; corrected independent audit pending
 
 The first original calculation-bearing GitHub Actions [#39491388570](https://github.com/monocap-tech/weil-lab/actions/runs/39491388570) **completed the mathematical 24D calculation** (approx. 26 minutes) but the subsequent independent schema audit failed with `KeyError: 'new_direct_band_FULL24'` because the calculation correctly exported `new_direct_band_FULL24_upper`. The CI-only key mismatch is corrected in commit `e92d8aa5deaf833659e7a78a0ca1674057069e43`; the complete corrected run is [#39495457084](https://github.com/monocap-tech/weil-lab/actions/runs/39495457084). The workflow now uploads its actual original full24 artifact even if a later check fails, preventing evidence loss.
