@@ -84,7 +84,7 @@ def moments_reference(left,right,centers,sources):
                  F(1) if n==0 else F(0)) for n in range(3)],
             eps if p==1 else eps*(2*ref+eps))
          for p in (1,2)},{
-           "type":choice,"reference_max":ref,
+           "type":choice,"reference_max":ref,"reference_min":ref,
            "original_weight_error":eps}
     assert choice=="signed_positive_part_affine"
     mla=arch_lower_at(left)+prime_interval(left)[0]
@@ -121,6 +121,7 @@ def moments_reference(left,right,centers,sources):
     assert result[1][0]==J
     assert result[1][0][0]>0 and result[2][0][0]>0
     return result,{"type":choice,"reference_max":refmax,
+                   "reference_min":max(KAPPA,min(va,vb)),
                    "original_weight_error":eps}
 
 def add_sym_cross(A,v,d,coef):

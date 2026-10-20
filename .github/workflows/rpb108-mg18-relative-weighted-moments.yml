@@ -1,0 +1,77 @@
+name: mg18-original-relative-weight-two-moments
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg18_original_relative_weighted_two_moments.py'
+      - 'scripts/validate_rpb108_mg16_weighted_affine_source_moments.py'
+      - 'notes/RPB108_MG18_RELATIVE_WEIGHTED_MOMENTS_20261019.md'
+      - '.github/workflows/rpb108-mg18-relative-weighted-moments.yml'
+  workflow_dispatch:
+jobs:
+  mg18-real-original-relative-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact full MG17 replay and relative original weight three-way test
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg18_original_relative_weighted_two_moments.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg18_original_relative_weighted_two_moments.py
+      - name: Fail-closed full 24 source Loewner and 24D inertia acceptance
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          import sys
+          sys.path.insert(0,"scripts")
+          from validate_rpb108_sm62_full25_338signed_positive import exact_inertia_general
+          d=json.load(open("artifacts/mg18_original_relative_weighted_two_moments.json"))
+          assert d["status"]=="SCOPED_NONFLAT_ORIGINAL_RELATIVE_WEIGHT_FULL_SOURCE_TWO_MOMENTS"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["selected_new_nonflat_cells"]==24
+          assert d["true_source_count"]==25
+          assert d["true_boundary_adapted_source_count"]==23
+          assert d["original_pole_included"]
+          assert d["all_24_coupled_source_channels_retained"]
+          assert d["strict_original_weight_relative_enclosure_regression"]
+          assert d["MG17_absolute_same_cell_exact_replay_matched"]
+          assert d["same_new_nonflat_cell_family_used_for_both_comparisons"]
+          assert d["original_true_nonflat_multiplier_certified_each_cell"]
+          assert d["SM43A_true_signed_affine_J1_nonzero_each_cell"]
+          for moment in ("one","two"):
+              comp=d["same_cell_method_comparison"][moment]
+              for family in ("constant","weighted","relative"):
+                  m=d["actual_original_coupled_source_matrices"][family][moment]
+                  L=[[F(x) for x in row] for row in m["lower"]]
+                  U=[[F(x) for x in row] for row in m["upper"]]
+                  assert len(L)==len(U)==24
+                  assert all(len(r)==24 for r in L+U)
+                  assert all(L[i][j]==L[j][i] and U[i][j]==U[j][i] 
+                             for i in range(24) for j in range(24))
+                  assert all(U[i][i]>=L[i][i] for i in range(24))
+                  assert F(m["lower_trace"])==sum(L[i][i] for i in range(24))
+                  assert F(m["upper_trace"])==sum(U[i][i] for i in range(24))
+                  inertia=exact_inertia_general(L)
+                  assert m["lower_exact_inertia"]==dict(zip(
+                      ("positive","negative","zero"),inertia))
+              assert comp["same_cell_constant_lower_inertia"]=={
+                  "positive":3,"negative":21,"zero":0}
+              assert comp["same_cell_weighted_lower_inertia"]==(
+                  {"positive":3,"negative":21,"zero":0}
+                   if moment=="one" else
+                   {"positive":2,"negative":22,"zero":0})
+          assert not d["source_moments_cover_complete_low_band"]
+          assert not d["original_Astar_squared_pole_correction_certified"]
+          assert not d["original_strong_Galerkin_residual_certified"]
+          assert not d["original_full470_odd_operator_certified"]
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_domain_premises_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg18-original-relative-weight-complete-source
+          path: artifacts/mg18_original_relative_weighted_two_moments.json
