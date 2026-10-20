@@ -79,7 +79,7 @@ jobs:
               assert s["actual_original_24D_complete_frequency"]
               assert s["original_SI10_23_boundary_plus_sinh_pole"]
               assert s["MG30_accepted_trial_exact_replayed"]
-              assert s["tested_candidate_count"]==len(s["tests"])>=1
+              assert s["tested_candidate_count"]==len(s["tests"])==9
               for t in s["tests"]:
                   assert t["verified_MG30_margin_replayed"]
                   assert t["coordinate_dependent_Gershgorin_not_inertia"]
@@ -108,6 +108,7 @@ jobs:
                       assert len(a["negative_direction_vector"])==24
                       assert any(F(v) for v in a["negative_direction_vector"])
                   else:inc+=1
+          assert pos+neg+inc==36
           assert (pos,neg,inc)==(
              d["number_certified_positive_residual_bounds"],
              d["number_certified_negative_directions_of_bound_matrix"],
