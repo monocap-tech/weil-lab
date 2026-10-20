@@ -1,0 +1,58 @@
+name: mg17-original-nonflat-positive-multiplier-scout
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg17_nonflat_multiplier_scout.py'
+      - 'notes/RPB108_MG17_ORIGINAL_NONFLAT_PANELS_20261019.md'
+      - '.github/workflows/rpb108-mg17-nonflat-scout.yml'
+  workflow_dispatch:
+
+jobs:
+  mg17-original-nonflat-scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact signed original digamma and seven-prime nonflat panel witness
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg17_nonflat_multiplier_scout.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg17_nonflat_multiplier_scout.py
+      - name: Fail closed on true original nonconstancy and result scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg17_original_nonflat_multiplier_scout.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["actual_original_25_source_catalog_replayed"]
+          assert d["selected_cell_count"]>=8
+          assert d["selected_cell_count"]==len(d["selected_nonflat_original_cells"])
+          assert d["every_selected_cell_proves_original_true_nonconstancy"]
+          assert d["every_selected_cell_true_positive_multiplier_strictly_above_floor"]
+          assert d["selected_cells_disjoint"]
+          for p in d["selected_nonflat_original_cells"]:
+              assert 0<=F(p["left"])<F(p["right"])<=4096
+              assert p["original_true_above_kappa_entire_panel"]
+              assert p["true_multiplier_nonconstant_endpoint_witness"]
+              assert p["reference_affine_selected"]
+              assert p["reference_J1_nonzero"]
+              assert F(p["reference_weight_J1"])!=0
+              x,y=p["endpoint_original_signed_intervals"]
+              a,b=map(F,x); c,e=map(F,y)
+              assert a<=b and c<=e
+              assert b<c or e<a
+          assert not d["complete_original_low_band_certified"]
+          assert not d["original_Astar_squared_and_Galerkin_residual_certified"]
+          assert d["full_original_470_odd_inverse"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_Fourier_and_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg17-original-nonflat-frequency-panels
+          path: artifacts/mg17_original_nonflat_multiplier_scout.json
