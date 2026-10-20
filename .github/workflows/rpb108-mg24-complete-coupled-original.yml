@@ -1,0 +1,109 @@
+name: mg24-original-complete-frequency-coupled-moment-enclosures
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg24_complete_original_coupled_source_enclosures.py'
+      - 'notes/RPB108_MG24_COMPLETE_FREQUENCY_COUPLED_SOURCE_ENCLOSURES_20261019.md'
+      - '.github/workflows/rpb108-mg24-complete-coupled-original.yml'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  original-coupled-source-moment-24D:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Fetch accepted original MG19 independent exact-rational certificate
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39363425186
+          name: mg19-original-intersected-relative-weight
+          github-token: ${{ github.token }}
+          path: artifacts/mg19_verified
+      - name: Reconstruct complete physical 24D Gstar/Sstar from verified MG19
+        run: |
+          test -s artifacts/mg19_verified/mg19_original_intersected_relative_weighted_moments.json
+          python -m py_compile scripts/validate_rpb108_mg24_complete_original_coupled_source_enclosures.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg24_complete_original_coupled_source_enclosures.py --verified-mg19-json artifacts/mg19_verified/mg19_original_intersected_relative_weighted_moments.json
+      - name: Independently check pole terms, full-frequency budgets and no spectral promotion
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg24_full_original_coupled_24source_matrix_enclosures.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_physical_SI10_source_count"]==25
+          assert d["physical_23D_plus_genuine_pole_channel_dimension"]==24
+          assert d["original_24D_physical_Gram_verified_positive"]
+          assert F(d["original_24D_Gram_ell"])>0
+          assert d["true_original_source_pole_response_c_enclosed"]
+          assert d["true_complete_original_pole_Gstar_Sstar_Loewner_bracket"]
+          assert d["selected_MG19_original_source_lower_replayed"]
+          assert d["unselected_lowband_paid_by_global_multiplier_majorant"]
+          assert d["whole_real_highband_paid_by_SM41_source_tails"]
+          b=[F(x) for x in d["original_pole_b_center"]]
+          eb=[F(x) for x in d["original_pole_b_radii"]]
+          sigma=F(d["pole_sigma_center"])
+          esigma=F(d["pole_sigma_radius"])
+          assert len(b)==len(eb)==24
+          assert sigma==b[-1] and esigma==eb[-1]
+          assert sigma>esigma>=0
+          assert [c["cutoff_k"] for c in d["cases"]]==[12,16,20]
+          for c in d["cases"]:
+              assert c["all_original_frequencies_covered_by_selected_L_and_whole_U"]
+              assert not c["actual_Go_and_So_values_computed"]
+              M=F(c["original_global_lowband_majorant_M"])
+              tailG=F(c["complete_original_form_tail_rational"])
+              tailS=F(c["complete_original_strong_tail_rational"])
+              assert M>0 and 0<tailG<tailS
+              Lg=[[F(x) for x in row] for row in c["complete_Gstar_lower"]]
+              Ug=[[F(x) for x in row] for row in c["complete_Gstar_upper"]]
+              Ls=[[F(x) for x in row] for row in c["complete_Sstar_lower"]]
+              Us=[[F(x) for x in row] for row in c["complete_Sstar_upper"]]
+              Lgo=[[F(x) for x in row] for row in c["MG19_selected_Go_lower"]]
+              Lso=[[F(x) for x in row] for row in c["MG19_selected_So_lower"]]
+              Ugo=[[F(x) for x in row] for row in c["complete_original_Go_upper"]]
+              Uso=[[F(x) for x in row] for row in c["complete_original_So_upper"]]
+              t=F(c["scalar_trial_t"])
+              gap=F(c["fallback_one_step_squared_residual_gap"])
+              assert gap>0 and gap<1 and t>0
+              assert c["not_a_full470_residual"]
+              cmid=[F(x) for x in c["pole_response_c_mid"]]
+              crad=[F(x) for x in c["pole_response_c_radius"]]
+              T=[[F(x) for x in row] for row in c["pole_mixed_exact_interval_correction_center"]]
+              eT=F(c["pole_mixed_correction_row_error"])
+              ebb=F(c["pole_gram_outer_row_error"])
+              assert len(cmid)==len(crad)==24 and eT>=0 and ebb>=0
+              for i in range(24):
+                  assert crad[i]>=0
+                  assert Lg[i][i] == Lgo[i][i] -2*b[i]*b[i]-2*ebb
+                  assert Ug[i][i] == Ugo[i][i] -2*b[i]*b[i]+2*ebb
+                  assert Ls[i][i] == Lso[i][i]+T[i][i]-eT
+                  assert Us[i][i] == Uso[i][i]+T[i][i]+eT
+                  for j in range(24):
+                      assert Lg[i][j]==Lg[j][i] and Ug[i][j]==Ug[j][i]
+                      assert Ls[i][j]==Ls[j][i] and Us[i][j]==Us[j][i]
+                      assert T[i][j]==-2*(cmid[i]*b[j]+b[i]*cmid[j])+4*sigma*b[i]*b[j]
+              # The G and S brackets are complete-frequency Loewner
+              # encLOSURES, not matrix element equalities or true operator entries.
+              assert not c["actual_Go_and_So_values_computed"]
+          for flag in ("actual_full_original_Gstar_Sstar_matrices_evaluated_exactly",
+                        "MG07_actual_full470_source_residual_certified",
+                        "signed_original_negative_cap_51over56",
+                        "finite_frame_invariant_under_residual"):
+              assert not d[flag]
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg24-original-full-frequency-coupled-source-brackets
+          path: artifacts/mg24_full_original_coupled_24source_matrix_enclosures.json
