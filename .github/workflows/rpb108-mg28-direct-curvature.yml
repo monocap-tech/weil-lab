@@ -1,0 +1,98 @@
+name: mg28-direct-adapted-source-Fourier-curvature
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg28_direct_adapted_curvature.py'
+      - 'notes/RPB108_MG28_DIRECT_ADAPTED_SOURCE_CURVATURE_20261020.md'
+      - '.github/workflows/rpb108-mg28-direct-curvature.yml'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  true-original-source-second-derivative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Fetch accepted MG24 full original source moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Fetch accepted MG26 original prefix-mass certificates
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39380800739
+          name: mg26-original-contiguous-24D-prefix-mass-closure
+          github-token: ${{ github.token }}
+          path: artifacts/mg26_verified
+      - name: Direct actual original transformed 24D second-derivative interval and full-frequency moments
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg28_direct_adapted_curvature.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg28_direct_adapted_curvature.py --verified-mg26-json artifacts/mg26_verified/mg26_contiguous_original_24D_mass_closure.json --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+      - name: Independent exact arithmetic and fail-closed original spectral acceptance
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg28_direct_adapted_source_curvature.json"))
+          assert d["status"]=="ORIGINAL_DIRECT_ADAPTED_CURVATURE_MOMENT_CERTIFICATE"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["verified_MG24_run_id"]==39378465438
+          assert d["verified_MG26_run_id"]==39380800739
+          assert d["physical_25_source_catalog_24_adapted_channels"]
+          assert d["true_original_sinh_pole_second_interval_included"]
+          assert d["direct_transformed_second_derivative_with_original_coefficients"]
+          assert d["third_derivative_drift_paid"]
+          assert d["all_real_frequencies_closed_with_original_mass_and_SM41_tails"]
+          assert [p["cell_count"] for p in d["partitions"]]==[8,16]
+          for p in d["partitions"]:
+              assert p["measured_positive_prefix"]==["0","4"]
+              assert p["24_original_23pluspole_channels"]
+              assert p["true_transformed_second_derivative_midpoints_used"]
+              assert p["pole_second_analytic_interval_parity_regression"]
+              assert p["no_float_derivatives_used"]
+              assert len(p["per_cell"])==p["cell_count"]
+              assert Q(p["source_radius_total_reduction"])>=0
+              assert Q(p["sum_new_source_radii"])<=Q(p["sum_old_source_radii"])
+              assert Q(p["source_curvature_direct_total"])<=Q(p["source_curvature_old_total"])
+              assert all(Q(x["source_radius_new_sum"])<=Q(x["source_radius_old_sum"]) for x in p["per_cell"])
+              for name in ("mass","one","two"):
+                  c=p["prefix_trace_width_comparison"][name]
+                  w=Q(c["new_bracket_trace_width"])
+                  old=Q(c["verified_MG26_trace_width"])
+                  assert w>=0 and old>0
+                  assert Q(c["new_to_MG26_width_ratio"])==w/old
+                  assert c["strict_trace_width_improvement"]==(w<old)
+                  for key in ("new_lower","new_upper"):
+                      A=[[Q(x) for x in row] for row in c[key]]
+                      assert len(A)==24 and all(len(r)==24 for r in A)
+                      assert A==list(map(list,zip(*A)))
+              assert [c["cutoff_k"] for c in p["complete_original_frequency_scenarios"]]==[12,16]
+              for c in p["complete_original_frequency_scenarios"]:
+                  assert c["full_original_frequencies_accounted_for"]
+                  assert c["mass_complement_used_not_whole_Gram_duplicate"]
+                  assert c["pole_certificate"]["true_Sstar_cross_terms_paid"]
+                  for key in ("Gstar","Sstar"):
+                      ratio=Q(c[key+"_width_ratio_to_MG26"])
+                      assert ratio>=0
+                  assert c["new_strict_matrix_scalar_residual_certified"]==(
+                      Q(c["new_weak_scalar_residual_Gershgorin_margin"])>0)
+          assert not d["new_original_470D_signed_cap_certified"]
+          assert d["independent_original_Fourier_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg28-actual-original-direct-curvature-brackets
+          path: artifacts/mg28_direct_adapted_source_curvature.json
