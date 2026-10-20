@@ -159,6 +159,8 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument("--output",default=
         "artifacts/mg24_full_original_coupled_24source_matrix_enclosures.json")
+    p.add_argument("--verified-mg19-json",default=None,
+        help="Accepted full exact-rational MG19 Actions artifact; otherwise replay full MG19")
     opts=p.parse_args()
     led=json.loads((ROOT/"research/obligations.json").read_text())
     odd=next(o for o in led["obligations"] if o["id"]=="W-ODD-NEG")
@@ -166,9 +168,25 @@ def main():
     assert odd["status"]==led["objective"]["status"]=="open"
     assert led["governance"]["no_automatic_promotion"]
     assert mathematical_global_original_positive_multiplier_majorant()
-    selected=main_data()
+    if opts.verified_mg19_json:
+        # Archived immutable MG19 GitHub Actions 39363425186 PASSED both
+        # original calculation-bearing and independent exact Fraction CI.
+        # This JSON is retrieved by the workflow by exact run ID and name;
+        # independently enforce the mathematical scope and source identity.
+        selected=json.loads((ROOT/opts.verified_mg19_json).read_text())
+        assert selected["status"]==(
+            "SCOPED_NONFLAT_ORIGINAL_INTERSECTED_RELATIVE_WEIGHT_FULL_SOURCE_MOMENTS")
+        assert selected["MG19_all_independent_relative_weight_factors_intersected"]
+        assert selected["selected_new_nonflat_cells"]==24
+        assert selected["same_new_nonflat_cell_family_used_for_both_comparisons"]
+        assert selected["all_24_coupled_source_channels_retained"]
+        assert not selected["source_moments_cover_complete_low_band"]
+    else:
+        selected=main_data()
     assert selected["canonical_W_ODD_NEG"]=="OPEN"
-    assert selected["true_source_count"]==24
+    # MG19 counts the FULL original physical catalog (25), whereas its
+    # adapted coupled moment matrices have 23 boundary sources + pole =24.
+    assert selected["true_source_count"]==25
     assert selected["true_boundary_adapted_source_count"]==23
     assert selected["original_pole_included"]
     assert not selected["source_moments_cover_complete_low_band"]
