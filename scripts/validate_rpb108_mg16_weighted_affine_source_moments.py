@@ -157,7 +157,7 @@ def weighted_lower_trace(C,J0,eta,width,q,r,tau):
 def exact_weighted_regression():
     # Reference integral of (1+t)^2 * [v+d*t]^2, with nonzero
     # off-diagonal mixed source components.
-    left=F(-1,3);right=F(2,3)
+    left=F(0);right=F(1)
     for p in (1,2):
         J=[poly_integral(n,p,F(1),F(1),left,right)
            for n in range(3)]
@@ -169,7 +169,7 @@ def exact_weighted_regression():
         # Polynomial evaluation at 4 points gives an independent
         # exact interpolation proof for degree<=4.
         def poly_eval(t,i,j):
-            return (1+t)**p*(v[i]+d[i]*t)*(v[j]+d[j]*t)
+            return (1+t)**p*(v[i]+d[i]*(t-F(1,2)))*(v[j]+d[j]*(t-F(1,2)))
         nodes=[F(-2),F(-1),F(0),F(1),F(2)]
         for i,j in ((0,0),(0,1),(1,1)):
             vals=[poly_eval(t,i,j) for t in nodes]
@@ -178,8 +178,10 @@ def exact_weighted_regression():
             total=F(0)
             for m in range(p+1):
                 coeff=F(comb(p,m))
-                terms=((0,v[i]*v[j]),
-                       (1,v[i]*d[j]+v[j]*d[i]),
+                vi=v[i]-d[i]/2
+                vj=v[j]-d[j]/2
+                terms=((0,vi*vj),
+                       (1,vi*d[j]+vj*d[i]),
                        (2,d[i]*d[j]))
                 for n,x in terms:
                     degree=n+m
