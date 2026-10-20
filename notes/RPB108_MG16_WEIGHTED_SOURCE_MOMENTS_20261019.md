@@ -42,3 +42,20 @@ If the lower-reference inertia remains 21 negative, the next methodological targ
 Reproduce:
 
   OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg16_weighted_affine_source_moments.py
+
+
+## Verified result — fundamental flat-multiplier pilot obstruction
+
+The original MG16 arithmetic passed GitHub Actions [39351668605](https://github.com/monocap-tech/weil-lab/actions/runs/39351668605) and its independent 24D rational inertia replay. A subsequent diagnostic rerun [39352050679](https://github.com/monocap-tech/weil-lab/actions/runs/39352050679) ALSO PASSED and revealed the exact cause of non-improvement:
+
+- All **24 of the 24 selected genuine source-frequency cells** use SM43A's original_constant_cell reference.
+- On ALL 24 cells, the reference weight is **exactly kappa**, and the certified pointwise reference/true-multiplier error is **zero**. Therefore the true original positive multiplier itself is identically kappa on each of these frequency cells.
+- **Zero** cells have a nonflat certified weight reference; **zero** cells have a nonzero multiplier-reference error.
+- The MG16 true source first-moment and A_o² second-moment lower and upper TRACE results are IDENTICAL to MG15, with same exact reference inertias (3 positive, 21 negative, 0 zero).
+- A final fail-closed amendment verifies the **full 24x24 LOWER and UPPER rational matrices** agree entry-by-entry with independently recomputed MG15 on both moments, not just the traces or inertias.
+
+**Formal methodological inference:** when w_true=w_ref=kappa on an entire panel, its exact J1=0 and J0=kappa*h, J2=kappa*h³/12; all weighted first/second affine moment schemes reduce identically to the existing constant-weight source-affine scheme, provided source-error schemes and tau values agree. Therefore **reoptimizing multiplier-weighted source moments cannot improve the fixed original 24-cell lower reference**, no matter how accurate the moment integration is. This is a local **method no-go conditioned on the fixed selected panels**, not a no-go for the original full Fourier band or the actual signed operator.
+
+**MG16 disposition:** ACCEPT exact analytic weighted first/second moment infrastructure; REJECT the *existing 24 selected cells* as a discriminating test of multiplier-source correlation. The next method should select original frequency cells with **certified nonconstant a_o(xi)** (including actual seven-prime/digamma variation and any kappa crossing), carry all original physical source cross terms, and compare spectral inertia with the unchanged source-affine baseline. This is more fundamental than further tightening an error budget where the original weight is identically constant.
+
+Full low-frequency integration, the actual pole-corrected Astar² and original 470-source Galerkin residual, complete signed odd/even Weil and RH remain OPEN.
