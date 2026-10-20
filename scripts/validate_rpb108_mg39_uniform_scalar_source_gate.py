@@ -153,15 +153,41 @@ def exact_2D_regression():
     assert a["exact_peak_t"]=="0"
     return True
 
-def certificate_for_interval(left,right,L24,L29,S24,S29,Herr,candidates):
-    for v in candidates:
-        d,a,b=eval_endpoint(v,left,right,L24,L29,S24,S29,Herr)
-        if a["full_scalar_t_continuum_strict_negative"] and b[
-                "full_scalar_t_continuum_strict_negative"]:
+def directional_profile(v,L24,L29,S24,S29,Herr):
+    nv=sum((x*x for x in v),F(0))
+    assert nv>0
+    return {"v":v,"d":2*Herr*nv,
+            "b0":dot(v,L24),"b1":dot(v,L29),
+            "c0":dot(v,S24),"c1":dot(v,S29)}
+
+def profile_endpoint(profile,lam):
+    d=profile["d"]
+    b=(1-lam)*profile["b0"]+lam*profile["b1"]
+    c=(1-lam)*profile["c0"]+lam*profile["c1"]
+    assert d>0 and c>=0
+    if b<=0:
+        sup=-d;t0=F(0)
+    elif c>0:
+        sup=-d+b*b/c;t0=b/c
+    else:
+        return {"lambda":str(lam),"b":str(b),"c":str(c),
+                "full_scalar_t_continuum_strict_negative":False,
+                "max_signed_margin":None,"exact_peak_t":None}
+    return {"lambda":str(lam),"b":str(b),"c":str(c),
+            "full_scalar_t_continuum_strict_negative":sup<0,
+            "max_signed_margin":str(sup),"exact_peak_t":str(t0)}
+
+def certificate_for_interval(left,right,profiles):
+    for profile in profiles:
+        a=profile_endpoint(profile,left)
+        if not a["full_scalar_t_continuum_strict_negative"]:continue
+        b=profile_endpoint(profile,right)
+        if b["full_scalar_t_continuum_strict_negative"]:
             return {
                 "interval":[str(left),str(right)],
-                "nonzero_original_24D_rational_direction":[str(x) for x in v],
-                "exact_positive_Hupper_minus_Hlower_direction":str(d),
+                "nonzero_original_24D_rational_direction":[
+                    str(x) for x in profile["v"]],
+                "exact_positive_Hupper_minus_Hlower_direction":str(profile["d"]),
                 "endpoints":[a,b],
                 "uniform_all_t_nonnegative_and_lambda_in_interval_no_go":True,
                 "true_operator_negative_mode_inferred":False}
@@ -175,6 +201,10 @@ def audit_case(k,mesh,L24,S24,L29,S29,Herr,t0,old30case):
     assert old30case["strict_source_contraction_obtained"] is False
     candidates=list(candidate_vectors(L24,L29,S24,S29))
     assert candidates
+    # Cache exact directional quadratics ONCE, not 24x24 Fraction
+    # matrix multiplication afresh for every lambda interval.
+    profiles=[directional_profile(v,L24,L29,S24,S29,Herr)
+              for v in candidates]
     # The MG30 exact fixed-t scalar certificate is replayed here.
     Hcharge=mul(2*Herr,Id(N))
     for lam,L,S in ((F(0),L24,S24),(F(1),L29,S29)):
@@ -187,8 +217,7 @@ def audit_case(k,mesh,L24,S24,L29,S29,Herr,t0,old30case):
         slices=[]
         for j in range(n):
             left,right=F(j,n),F(j+1,n)
-            w=certificate_for_interval(
-                 left,right,L24,L29,S24,S29,Herr,candidates)
+            w=certificate_for_interval(left,right,profiles)
             slices.append(w)
         successes=sum(x is not None for x in slices)
         winners=slices
