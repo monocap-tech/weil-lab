@@ -107,7 +107,9 @@ def signed_exact_matrix_gate(A):
                 m=gersh_lower(congr)
                 if m>0:
                     positive={"exact_congruence_Gershgorin_positive":str(m),
-                        "rational_basis_full_rank_by_positivity":True}
+                        "rational_basis_full_rank_by_positivity":True,
+                        "exact_rational_congruence_basis":[
+                            [str(v) for v in row] for row in R]}
                     break
     if negative is not None:return "NEGATIVE_RATIONAL_RAYLEIGH_WITNESS",negative
     if positive is not None:return "POSITIVE_RATIONAL_CONGRUENCE_WITNESS",positive
@@ -209,10 +211,14 @@ def analysis(old24,old29,old30,old36):
           "MG36_minus_MG30_upper_full24_trace":str(trace(compare)),
           "MG36_minus_MG30_upper_full24_inertia_gate":order,
           "MG36_minus_MG30_witness":witness,
+          "MG36_minus_MG30_upper_FULL24":[
+              [str(q) for q in row] for row in compare],
           "no_trace_to_Loewner_promotion":True,
           "new_MG36_band_only_upper_trace":str(trace(V)),
           "necessary_Hlo_minus_band_alone_inertia_gate":ideal_status,
           "necessary_Hlo_minus_band_alone_witness":ideal_witness,
+          "necessary_Hlo_minus_band_alone_FULL24":[
+              [str(q) for q in row] for row in ideal],
           "new_band_upper_itself_original_PSD":True,
           "original_complete_operator_negative_mode_proved":False,
           "new_full_470D_inverse_proved":False})
