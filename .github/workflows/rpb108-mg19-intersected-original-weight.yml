@@ -26,6 +26,10 @@ jobs:
           import json
           from fractions import Fraction as F
           import sys
+          # Exact-rational source matrices can legitimately contain
+          # >4300-digit integers. Python 3.11's text-conversion guard
+          # is an I/O limit, not a mathematical precision bound.
+          sys.set_int_max_str_digits(0)
           sys.path.insert(0,"scripts")
           from validate_rpb108_sm62_full25_338signed_positive import exact_inertia_general
           d=json.load(open("artifacts/mg19_original_intersected_relative_weighted_moments.json"))
