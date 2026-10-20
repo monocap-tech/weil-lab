@@ -18,3 +18,19 @@ The witness is stringent:
 MG17A is only a *panel-design certificate*, not a source moment. A passing scout means at least eight analytically verified original nonflat cells exist and are exported for the next coupled 24×24 weighted source-moment comparison against an independently certified same-cell constant-source method. It does NOT assert an improved spectral reference index without actually calculating one. If it cannot find eight, the candidate grid/multiplier proof bounds must be redesigned rather than claiming a physical obstruction or RH result.
 
 The theorem acceptance remains original full 470 source signed odd negative-index and complement positivity, complete even pole compensation, Weil and RH. No source count expansion is authorized by this scout alone.
+
+
+## MG17 exact calculation — verified adverse method outcome
+
+Dedicated full two-moment Actions [39354119529](https://github.com/monocap-tech/weil-lab/actions/runs/39354119529) **PASSED** the nonflat original-multiplier scout, entire 24-channel source-affine moment calculation, and exact independent rational 24D source-matrix inertia replay. Among 36 rational candidate panels, 24 satisfy all four independent analytic nonconstancy tests (disjoint true signed endpoint intervals, whole-cell original a_o>kappa, original SM43A affine reference selected, original J1 != 0).
+
+The genuine SAME-PANEL frequency-weighting experiment shows the weighted reference is NOT an improvement over the constant-multiplier envelope at this stage:
+
+- First original A_o source moment: weighted-minus-constant LOWER trace = **-0.008043** (exact \`-31422287/3906250000\`); upper-reference reduction = **-0.003242** (negative means weighted upper grew). Both exact lower reference inertias are **(3 positive,21 negative,0 zero)**.
+- Second original A_o² moment: weighted-minus-constant LOWER trace = **-0.02998155912** (exact \`-374769489/12500000000\`); upper-reference reduction = **+0.005428191844**. The weighted LOWER reference loses one positive direction: **(2 positive,22 negative,0 zero)** versus same-cell constant **(3 positive,21 negative,0 zero)**.
+
+All these negative directions are from conservative LOWER matrices; they are **not actual operator negative eigenvectors**. No complete [0,Lambda] low-frequency coverage or original 470D operator result is implied.
+
+**Method disposition:** MG17 succeeds decisively as an experimental design correction (real nonflat original multiplier). However, MG16's *absolute pointwise multiplier-error* payment via \`width*eta D_q\` is expensive and obscures the potential positive weight/source correlation. Next method should replace the absolute penalty by a certified RELATIVE original multiplier comparison \`lambda_- w_ref <= w_true <= lambda_+ w_ref\` and apply it to the full weighted source covariance matrix, with independently replayed same-panel constant and absolute-weight baselines. Only if spectral lower-reference inertia improves should nonflat pilot expansion be authorized.
+
+Complete original signed odd/even, Weil/CC27 and RH remain OPEN.
