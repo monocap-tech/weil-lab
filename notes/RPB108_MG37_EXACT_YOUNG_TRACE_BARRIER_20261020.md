@@ -1,3 +1,14 @@
+## Implementation / verification checkpoint
+
+- [PR #286](https://github.com/monocap-tech/weil-lab/pull/286) contains the exact original-source Young infimum diagnostic, separate self-contained mathematical regressions, and independently audited downstream calculation workflow.
+- [MG37 standalone Actions #39497690630](https://github.com/monocap-tech/weil-lab/actions/runs/39497690630): **PASS**, including exact rational isqrt enclosures, a two-source synthetic exact optimal tau case P=4,E=9, and zero-error boundary.
+- [MG37 original-data Actions #39497690829](https://github.com/monocap-tech/weil-lab/actions/runs/39497690829): **DEPENDENCY GATE ACTIVE**. The workflow requires BOTH successful completion and exact commit SHA of corrected MG36 Actions [#39495457084](https://github.com/monocap-tech/weil-lab/actions/runs/39495457084), then downloads its genuine full24 original artifact, verifies all 4 original B/cutoff cases and 32 source cells each (128 exact interval-cell trace infimum checks).
+- Neither mathematical core selftest success nor the queued original-data workflow is a certificate that MG37's actual original-source trace barrier is above or below MG32. No original numerical Young-barrier value is claimed until the full accepted artifact is produced.
+
+The underlying actual 470-source inverse, signed 51/56 odd cap, complete even/Weil/CC27/RH and independently accepted Fourier/domain identification remain OPEN.
+
+---
+
 # MG37 — Exact Young-parameter trace barrier in the original joint residual
 
 October 20, 2026. Stacked on [MG36 PR #285](https://github.com/monocap-tech/weil-lab/pull/285). MG36's original source integral finished in its first Actions run #39491388570, but the independent audit failed solely on an exported full-matrix key mismatch. The actual calculation proved that **32/32 original [4,8] cells** preferred MG32 sourcewise Young to MG36's new covariance-error row-Gersh bound, for all tested original scalar/nonscalar B at k=12,16. Complete-source Gershgorin lower margins remain negative (~-19.35 scalar, ~-23.41 nonscalar). MG36 has corrected its schema, and its final accepted Actions proof is a strict prerequisite for this diagnostic.
