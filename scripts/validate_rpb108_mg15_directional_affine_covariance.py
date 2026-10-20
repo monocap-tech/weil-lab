@@ -281,6 +281,9 @@ def main():
  print("MG15 original directional covariance result:",json.dumps({
    "sources":N,"cells":data["actual_selected_original_cell_count"],
    "method_comparison":data["method_comparison"],
+   "candidate_lower_inertias":{
+      name:{order:pair[order]["lower_exact_inertia"] for order in ORDERS}
+      for name,pair in data["candidate_matrices"].items()},
    "selection":data["adaptive_choice_counts"],
    "original_470_odd_even_Weil_RH":"OPEN"
  }),flush=True)
