@@ -1,0 +1,91 @@
+name: mg34-original-marginal-source-mass-cost
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg34_marginal_frequency_audit.py'
+      - 'notes/RPB108_MG34_MARGINAL_SOURCE_MASS_COST_20261020.md'
+      - '.github/workflows/rpb108-mg34-marginal-source-mass.yml'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  original-exact-marginal-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve accepted original MG33 complete disjoint joint-source certificate
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39462301107
+          name: mg33-original-disjoint-24D-joint-residual
+          github-token: ${{ github.token }}
+          path: artifacts/mg33_verified
+      - name: Exact original signed marginal spectral vs trace audit
+        run: |
+          test -s artifacts/mg33_verified/mg33_original_disjoint_joint_residual.json
+          python -m py_compile scripts/validate_rpb108_mg34_marginal_frequency_audit.py
+          python scripts/validate_rpb108_mg34_marginal_frequency_audit.py --verified-mg33-json artifacts/mg33_verified/mg33_original_disjoint_joint_residual.json
+      - name: Independent exact-Fraction phase conservation and no-promotional spectral status
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg34_original_frequency_marginal_diagnostics.json"))
+          assert d["status"]=="ORIGINAL_MG33_EXACT_MARGINAL_FREQUENCY_METHOD_DIAGNOSIS"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["verified_original_MG33_run"]==39462301107
+          assert d["original_MG33_output_artifact_id"]==12284751583
+          assert d["source_basis_true_25physical_23pluspole"]
+          assert d["all_trial_response_matrices_held_fixed_across_frequency_variants"]
+          assert d["three_original_complete_frequency_source_bounds_compared"]
+          assert d["exact_additive_measured_vs_complement_trace_decomposition"]
+          assert d["Gershgorin_source_metric_acceptance_separate_from_trace"]
+          assert len(d["original_rational_trial_marginals"])==4
+          for row in d["original_rational_trial_marginals"]:
+              assert row["true_original_23pluspole_and_complete_frequency"]
+              assert row["source_Fourier_operator_spectrum_not_classified"]
+              assert row["cutoff_k"] in (12,16)
+              a,b=row["band_then_nonoverlap_original_site_marginals"]
+              assert [x["added_original_frequency_sector"] for x in (a,b)]==[
+                  "new_band","MG19_panels"]
+              assert Q(row["hybrid_upper_trace"])-Q(
+                  row["MG32_baseline_upper_trace"])==sum(
+                  (Q(x["delta_complete_residual_upper_trace"]) for x in (a,b)),Q(0))
+              assert Q(row["hybrid_Gershgorin_margin"])-Q(
+                  row["MG32_baseline_Gershgorin_margin"])==sum(
+                  (Q(x["Gershgorin_margin_change"]) for x in (a,b)),Q(0))
+              for x in (a,b):
+                  assert x["independent_rational_trace_balance_exact"]
+                  assert Q(x["added_joint_residual_upper_trace"])>=0
+                  assert Q(x["delta_complete_residual_upper_trace"])==(
+                      Q(x["added_joint_residual_upper_trace"])+
+                      Q(x["delta_unmeasured_residual_upper_trace"]))
+                  assert x["remaining_upper_trace_increased_despite_fewer_unmeasured_frequencies"]==(
+                      Q(x["delta_unmeasured_residual_upper_trace"])>0)
+                  assert x["strict_trace_improvement"]==(
+                      Q(x["delta_complete_residual_upper_trace"])<0)
+                  assert x["strict_Gershgorin_improvement"]==(
+                      Q(x["Gershgorin_margin_change"])>0)
+                  assert x["trace_and_Gershgorin_order_not_equivalent"]
+                  assert x["band_measurement_not_a_negative_operator_witness"]
+          assert not d["strict_24D_source_contraction_in_any_test"]
+          assert d["new_4to8_band_complement_upper_trace_increased_in_all_trials"]
+          assert not d["new_4to8_band_gave_strict_trace_improvement_in_any_trial"]
+          assert d["two_MG19_original_nonflat_panels_gave_strict_trace_improvement_in_all_trials"]
+          assert not d["two_MG19_panels_gave_Gershgorin_improvement_in_any_trial"]
+          assert not d["original_470D_strong_inverse_proved"]
+          assert not d["signed_original_51over56_negative_cap_proved"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg34-original-marginal-frequency-cost-audit
+          path: artifacts/mg34_original_frequency_marginal_diagnostics.json
