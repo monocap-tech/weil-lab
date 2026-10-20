@@ -54,6 +54,23 @@ MESHES=(16,32)
 PHYS=25
 POLE=24
 PIVOT=23
+INTERVAL_EXPORT_DEN=10**12
+
+def outward_interval(x):
+    """Exact enclosing rational quantization; NEVER nearest-point sampling.
+
+    Bounds by at most 10^-12 per endpoint, reducing huge SI06 Taylor
+    numerator/denominator growth before 24D source/matrix arithmetic.
+    """
+    d=INTERVAL_EXPORT_DEN
+    lo=x.l*d;hi=x.h*d
+    lower=F(lo.numerator//lo.denominator,d)
+    upper=F(-(-hi.numerator//hi.denominator),d)
+    assert lower<=x.l<=x.h<=upper
+    return I(lower,upper)
+
+def f3_enclosed(q):
+    return outward_interval(original_F3(q))
 
 def original_F4(q):
     """Int[-B,B] x^4 cos(2*pi*q*x) dx via exact rational trig.
@@ -65,9 +82,9 @@ def original_F4(q):
     if q==0:return I(2*B**5/5)
     sn,cs=sin_cos_period(B*q)
     w=omega(q)
-    return 2*(B**4*sn/w + 4*B**3*cs/(w*w)
+    return outward_interval(2*(B**4*sn/w + 4*B**3*cs/(w*w)
               -12*B**2*sn/(w**3) -24*B*cs/(w**4)
-              +24*sn/(w**5))
+              +24*sn/(w**5)))
 
 def pole_third_frequency_interval(xi,hyp):
     """Third derivative of original SM42 sinh pole source Fourier T_s.
@@ -95,7 +112,7 @@ def pole_third_frequency_interval(xi,hyp):
           +6*N1*(D1**2)/(den**3)
           +6*N*D1*D2/(den**3)-6*N*(D1**3)/(den**4))
     pi=I(PI[0],PI[1])
-    return 8*pi*pi*pi*term
+    return outward_interval(8*pi*pi*pi*term)
 
 def original_third_midpoint(mid,centers,sources,hyp):
     """True original 25 generator T''' intervals, INCLUDING pole."""
@@ -107,13 +124,13 @@ def original_third_midpoint(mid,centers,sources,hyp):
             interval=pole_third_frequency_interval(mid,hyp)
         elif k==0:
             c=centers[j]
-            interval=factor*(original_F3(c+mid)+original_F3(c-mid))
+            interval=factor*(f3_enclosed(c+mid)+f3_enclosed(c-mid))
         elif k==1:
             c=centers[j]
             interval=factor*(original_F4(mid+c)+original_F4(mid-c))
         else:
             raise AssertionError("unverified source polynomial degree")
-        result.append(interval)
+        result.append(outward_interval(interval))
     assert len(result)==PHYS
     return result
 
