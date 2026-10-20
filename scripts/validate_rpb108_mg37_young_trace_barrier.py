@@ -77,7 +77,7 @@ def analyze_cell(cell):
     optimum_cost,optimum_t=min(
         ((exact_young_cost(P,E,t),t) for t in proposals if t>0),
         key=lambda q:(q[0],q[1]))
-    assert optimum_lo<=optimum_hi<=optimum_cost<=actual
+    # The rational SQRT upper may lie above a near-optimal rational\n    # candidate; it bounds the INFIMUM, not each candidate from below.\n    assert optimum_lo<=optimum_hi and optimum_lo<=optimum_cost<=actual
     return {
        "true_original_disjoint_4to8_frequency_cell":[cell["left"],cell["right"]],
        "original_MG36_exported_valid_Young_tau":str(tau),
@@ -129,7 +129,7 @@ def main():
                           for c in cells),F(0))
         assert oldsum==F(info["original_old_raw_trace"])
         assert oldsum==F(info["new_raw_trace"])
-        assert 0<=lowersum<=uppersum<=candidatesum<=oldsum
+        assert 0<=lowersum<=uppersum and lowersum<=candidatesum<=oldsum
         full=F(scenario["MG36_complete_original_Rupper_trace"])
         band=F(scenario["new_MG36_joint_4to8_upper_trace"])
         baseline=F(scenario["MG32_baseline_complete_upper_trace"])
