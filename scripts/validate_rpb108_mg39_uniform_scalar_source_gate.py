@@ -240,7 +240,7 @@ def audit_case(k,mesh,L24,S24,L29,S29,Herr,t0,old30case):
 def main():
     p=argparse.ArgumentParser()
     for k in ("mg24","mg29","mg30"):
-        p.add_argument("--verified-"+k+"-json",required=True)
+        p.add_argument("--verified-"+k+"-json")
     p.add_argument("--output",default="artifacts/mg39_original_uniform_scalar_source_gate.json")
     p.add_argument("--self-test",action="store_true")
     args=p.parse_args()
@@ -248,6 +248,7 @@ def main():
     if args.self_test:
         print("MG39 exact scalar quadratic regression PASS")
         return
+    assert all(getattr(args,"verified_"+k+"_json") for k in ("mg24","mg29","mg30")), "All accepted original artifacts are mandatory for source conclusions"
     old24=json.loads((ROOT/args.verified_mg24_json).read_text())
     old29=json.loads((ROOT/args.verified_mg29_json).read_text())
     old30=json.loads((ROOT/args.verified_mg30_json).read_text())
