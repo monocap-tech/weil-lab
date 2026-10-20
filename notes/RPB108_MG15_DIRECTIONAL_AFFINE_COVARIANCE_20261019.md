@@ -50,3 +50,19 @@ Only 24 selected physical original frequency cells are enclosed. The complete lo
 
 Reproduction:
 OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg15_directional_affine_covariance.py
+
+
+## Measured MG15 result and acceptance
+
+GitHub Actions [39350281314](https://github.com/monocap-tech/weil-lab/actions/runs/39350281314) PASSED the full 24-channel original two-moment rational calculation, exact MG14 all-576-entry matrix replay, weighted Young regression, independently reconstructed source-affine panels, and exact 24D rational lower inertia for all candidates.
+
+The source-dependent diagonal error bound is selected instead of the MG14 scalar error on ALL 24 original real-frequency cells in BOTH moments.
+
+| Original source moment | MG14 lower trace | MG15 adaptive lower trace | MG14 upper trace | MG15 adaptive upper trace |
+|---|---:|---:|---:|---:|
+| A_o source first | +0.000922070208 | +0.001186541164 | +0.001562232156 | +0.001299148280 |
+| A_o² source second | +0.000000886848 | +0.000001149424 | +0.000001594504 | +0.000001332340 |
+
+Despite these rigorous matrix enclosure trace improvements, exact affine-reference lower inertia remains **(3 positive, 21 negative, 0 zero)** for BOTH moments. MG14 was already (3+,21−,0). The source-dependent error family therefore improves **trace and interval width but NOT the accepted spectral positive-direction count** in the selected trace-maximizing policy. Other tau candidates are recomputed and their exact reference inertias exported independently for diagnosis.
+
+**MG15 method decision:** ACCEPT the validity and modest improvement of source-directional full Loewner errors; DO NOT promote positive trace to positive definiteness or infer actual negative source eigenmodes from conservative negative references. The next method should target spectral weak directions directly, using SM46 weight moments J0,J1,J2 and source-correlated remainder Gram / preconditioned matrix enclosures rather than further splitting every error into an identical scalar or diagonal source fee. The complete frequency band, actual Astar² original pole response, full source470 strong inverse/negative cap, canonical odd/even, Weil and RH remain OPEN.
