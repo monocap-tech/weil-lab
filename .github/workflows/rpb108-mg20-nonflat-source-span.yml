@@ -1,0 +1,85 @@
+name: mg20-exact-original-nonflat-source-span
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg20_ideal_nonflat_source_span.py'
+      - 'notes/RPB108_MG20_ORIGINAL_NONFLAT_SOURCE_SPAN_20261019.md'
+      - '.github/workflows/rpb108-mg20-nonflat-source-span.yml'
+  workflow_dispatch:
+jobs:
+  mg20-ideal-original-nonflat-span:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact original 48x24 rational response span and 24x24 weighted source Gram
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg20_ideal_nonflat_source_span.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg20_ideal_nonflat_source_span.py
+      - name: Fail-closed rational source reference rank versus true operator status
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg20_ideal_original_nonflat_source_span.json"))
+          assert d["status"]=="EXACT_IDEAL_NONFLAT_ORIGINAL_SOURCE_REFERENCE_SPAN_GATE"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["original_physical_source_catalog_25"]
+          assert d["double_boundary_adapted_sources"]==23
+          assert d["original_odd_sinh_pole_channel"]
+          assert d["original_source_channels"]==24
+          assert d["true_original_nonflat_frequency_cells_verified"]==24
+          assert d["same_true_original_nonflat_cells_as_MG17_MG18_MG19"]
+          a=d["rational_source_midpoint_rank_lower_bound"]
+          b=d["rational_source_derivative_rank_lower_bound"]
+          c=d["rational_source_affine_combined_rank"]
+          assert 0<=a<=c==24 and 0<=b<=c==24
+          witness=d["modular_source_affine_rank_witness"]
+          p=witness["prime"]
+          assert p in (2147483647,2147483629,1000000007,1000000009,998244353,2305843009213693951)
+          assert witness["rank_lower_bound"]==24
+          assert len(witness["independent_row_indices"])==24
+          assert len(set(witness["independent_row_indices"]))==24
+          assert all(0<=j<48 for j in witness["independent_row_indices"])
+          mat=[[int(x)%p for x in row] for row in witness["independent_row_residues"]]
+          assert len(mat)==24 and all(len(row)==24 for row in mat)
+          # Independent standard column-pivot modular Gaussian replay.
+          for k in range(24):
+              pivot=next((i for i in range(k,24) if mat[i][k]%p),None)
+              assert pivot is not None,("mod-p 24D witness singular",k)
+              mat[k],mat[pivot]=mat[pivot],mat[k]
+              inv=pow(mat[k][k],-1,p)
+              for i in range(k+1,24):
+                  factor=mat[i][k]*inv%p
+                  for j in range(k,24):
+                      mat[i][j]=(mat[i][j]-factor*mat[k][j])%p
+          assert d["true_exact_affine_24D_ideal_reference_inertia_by_positive_Gram"]
+          for name in ("one","two"):
+              r=d["weighted_ideal_first_second_source_reference"][name]
+              inertia=r["exact_affine_reference_inertia"]
+              assert inertia=={"positive":24,"negative":0,"zero":0}
+              assert r["ideal_affine_reference_rank"]==24
+              assert F(r["certified_positive_affine_reference_trace_lower"])>0
+              assert r["weighted_moment_strict_positive_every_cell"]
+              assert r["ideal_inertia_proved_by_modular_full_rank_and_positive_exact_weight_moments"]
+          assert d["all_24_original_affine_cells_positive_moment_Gram"]
+          assert d["all_576_mixed_source_entries_preserved_in_affine_reference"]
+          assert d["all_source_and_multiplier_remainder_omitted_from_ideal_reference"]
+          assert d["original_true_24_channel_lower_reference_inertia_still_unsolved_by_ideal_rank"]
+          assert len(d["cell_source_diagnostics"])==24
+          assert not d["complete_original_low_band_certified"]
+          assert not d["genuine_Astar_squared_source_moment_certified"]
+          assert not d["actual_strong_Galerkin_residual_certified"]
+          assert d["original_470D_odd_operator_complete"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["original_Fourier_form_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg20-original-nonflat-ideal-affine-source-span
+          path: artifacts/mg20_ideal_original_nonflat_source_span.json
