@@ -77,7 +77,9 @@ def analyze_cell(cell):
     optimum_cost,optimum_t=min(
         ((exact_young_cost(P,E,t),t) for t in proposals if t>0),
         key=lambda q:(q[0],q[1]))
-    # The rational SQRT upper may lie above a near-optimal rational\n    # candidate; it bounds the INFIMUM, not each candidate from below.\n    assert optimum_lo<=optimum_hi and optimum_lo<=optimum_cost<=actual
+    # The rational square-root upper encloses the infimum; a near-
+    # optimal rational candidate can fall below this sqrt upper.
+    assert optimum_lo<=optimum_hi and optimum_lo<=optimum_cost<=actual
     return {
        "true_original_disjoint_4to8_frequency_cell":[cell["left"],cell["right"]],
        "original_MG36_exported_valid_Young_tau":str(tau),
