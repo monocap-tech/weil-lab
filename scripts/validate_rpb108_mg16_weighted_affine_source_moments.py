@@ -55,7 +55,7 @@ from validate_rpb108_sm43_positive_cell_envelope import (
 from validate_rpb108_sm62_full25_338signed_positive import exact_inertia_general
 from validate_rpb108_si06_negative_band import PI
 
-POLICIES=("weighted_best","weighted_adaptive")
+POLICIES=("weighted_best",)
 CHOSEN_TAUS=TAUS
 
 def poly_integral(n,p,a,b,lo,hi):
@@ -136,21 +136,6 @@ def covariance_matrices(v,d,J):
     add_sym_cross(A,v,d,j1)
     add_rank_one(A,d,j2)
     return sym(A)
-
-def weight_matrix_cell(matrices,policy,order,C,J0,eta,q,r,tau):
-    assert 0<tau<1 and J0>0 and eta>=0
-    lo,hi=matrices[policy][order]
-    S=sum(r,F(0));Q=sum(q,F(0))
-    for i in range(N):
-        for j in range(i,N):
-            lo[i][j]+=2*(1-tau)*C[i][j]
-            hi[i][j]+=2*(1+tau)*C[i][j]
-    for i in range(N):
-        lo[i][i]-=2*((1/tau-1)*J0*S*r[i] + eta*Q*q[i]*F(0))
-        hi[i][i]+=2*((1+1/tau)*J0*S*r[i] + eta*Q*q[i]*F(0))
-    # eta is a *pointwise* multiplier mismatch, so the mismatch
-    # integral has width factor supplied separately below.
-    return S,Q
 
 def true_cell_add(matrices,policy,order,C,J0,eta,width,q,r,tau):
     assert width>0
@@ -259,11 +244,6 @@ def run():
             for name,t in zip(choices,CHOSEN_TAUS):
                 true_cell_add(matrices,name,order,C,J[0],eta,width,q,r,t)
             true_cell_add(matrices,"weighted_best",order,C,J[0],eta,
-                          width,q,r,best_tau)
-            # 'adaptive' is presently weighted-best in each cell;
-            # an earlier MG15 independent valid global source
-            # lower may still be chosen after comparing whole matrices.
-            true_cell_add(matrices,"weighted_adaptive",order,C,J[0],eta,
                           width,q,r,best_tau)
             diag[order+"_weighted_J"]=[str(z) for z in J]
             diag[order+"_squared_radii"] = str(sum((x*x for x in r),F(0)))
