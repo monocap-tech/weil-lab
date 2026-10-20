@@ -54,6 +54,7 @@ from validate_rpb108_sm46_affine_physical_fourier_source import (
     original_midpoint_derivative_intervals,
     original_third_spatial_moment
 )
+from validate_rpb108_sm62_full25_338signed_positive import exact_inertia_general
 
 POLICIES = ("midpoint", "affine", "adaptive")
 ORDERS = ("one", "two")
@@ -245,9 +246,18 @@ def source_panel_run():
             L,U,erlo,erhi=finalize(out[policy][order])
             tlo=sum((L[i][i] for i in range(N)),F(0))
             thi=sum((U[i][i] for i in range(N)),F(0))
+            lo_inertia=exact_inertia_general(L)
+            hi_inertia=exact_inertia_general(U)
+            assert sum(lo_inertia)==sum(hi_inertia)==N
             rows[order]={
                 "lower_trace":str(tlo),
                 "upper_trace":str(thi),
+                "lower_reference_exact_inertia":{
+                    "positive":lo_inertia[0],"negative":lo_inertia[1],
+                    "zero":lo_inertia[2]},
+                "upper_reference_exact_inertia":{
+                    "positive":hi_inertia[0],"negative":hi_inertia[1],
+                    "zero":hi_inertia[2]},
                 "complete_24x24_lower":[[str(x) for x in r] for r in L],
                 "complete_24x24_upper":[[str(x) for x in r] for r in U],
                 "whole_matrix_outward_lower_rounding":str(erlo),
@@ -279,7 +289,13 @@ def source_panel_run():
             "affine_selected_cells":count[order]["affine"],
             "midpoint_selected_cells":count[order]["midpoint"],
             "affine_lower_reference_trace_positive":F(aa["lower_trace"])>0,
-            "adaptive_lower_reference_trace_positive":F(zz["lower_trace"])>0
+            "adaptive_lower_reference_trace_positive":F(zz["lower_trace"])>0,
+            "affine_lower_reference_PSD_certified":
+                aa["lower_reference_exact_inertia"]["negative"]==0
+                and aa["lower_reference_exact_inertia"]["zero"]==0,
+            "adaptive_lower_reference_PSD_certified":
+                zz["lower_reference_exact_inertia"]["negative"]==0
+                and zz["lower_reference_exact_inertia"]["zero"]==0
         }
     interpretation=(
         "DIRECTIONAL_AFFINE_SOURCE_MOMENT_METHOD_IMPROVEMENT"
@@ -307,6 +323,8 @@ def source_panel_run():
         "policies":policies,
         "adaptive_selection_counts":count,
         "certified_method_comparison":gain,
+        "exact_24D_lower_reference_spectral_classification_completed":True,
+        "no_negative_lower_reference_direction_claimed_as_actual_negative":True,
         "interpretation":interpretation,
         "complete_low_band_zero_to_cutoff_certified":False,
         "genuine_original_Astar_squared_pole_response_certified":False,
