@@ -1,3 +1,24 @@
+## Verified MG26 outcome — original exact-rational Actions
+
+[GitHub Actions #39380800739](https://github.com/monocap-tech/weil-lab/actions/runs/39380800739) passed BOTH the original 24-channel calculation and independent exact-Fraction acceptance assertions; artifact ID `12245042398`. The original 25-generator Gram was rebuilt and the same verified MG24 full-frequency artifact was used for comparison.
+
+Ratios of MG26 **complete original-frequency pole-corrected matrix trace-width** to the previously accepted MG24 matrix trace-width:
+
+| Original positive prefix partition | k=12 Gstar | k=12 Sstar | k=16 Gstar | k=16 Sstar |
+|---|---:|---:|---:|---:|
+| 8 cells over [0,4] | 1769.9405x | 1903.2069x | 1642.1382x | 1691.7369x |
+| 16 cells over [0,4] | 39.5545x | 38.3729x | 37.4092x | 35.5318x |
+
+**NO-GO for this coarse affine/Young prefix budget:** the 16-cell refinement sharpens the MG26 source bounds substantially versus its 8-cell version, but even the finer complete-frequency Gstar/Sstar enclosure remains about **35–40 times wider** than MG24's already insufficient envelopes. No tested k and partition certified a strict complete 24D source residual margin. This is NOT a failure of the true mass-closure operator inequality and is NOT negative spectral evidence; it identifies the excessive source Taylor/Young error cost of the current finite prefix enclosures.
+
+**Acceptance**: the exact whole-cell Fourier source and original signed multiplier *enclosure*, full 24-channel source mass/first/second moments on the actual contiguous [0,4] prefix, correct global remaining-mass and high-frequency tail budgets, and complete rank-one sinh-pole mixed correction are verified. Do not characterize MG26 as a sharp full-lowband numerical integration or a 470D inverse. Directly extending this same coarse discretization is not justified without a quantitative, sourcewise error-budget localization test.
+
+**Next MG27 method decision**: diagnose sourcewise Taylor value/derivative radii, Young tau diagonal penalties and multiplier-width effects separately; prioritize an error-controlled source-specific adaptive mesh or a non-Young PSD covariance representation. A positive spectral conclusion may be promoted only by a direct complete-original source residual / signed 470D acceptance gate.
+
+**Unchanged:** W-ODD-NEG, original all-470 negative 51/56 cap, original Fourier/form/domain identification, complete odd/even/Weil/CC27 and RH are OPEN.
+
+---
+
 # MG26 — Contiguous original-frequency source moment mass closure (pilot)
 
 October 19, 2026 (LA). Stacked on [MG25 #274](https://github.com/monocap-tech/weil-lab/pull/274), the verified nonscalar 24D source-aware trial **no-go for the currently loose MG24 enclosures**. This MG26 pilot does NOT claim to have finished the full low-frequency integral or the original 470D signed 51/56 gate.
@@ -69,4 +90,4 @@ MG26 first produces complete 24x24 source mass / first / second moments on both 
 
 Strict no-promotion holds: full low band is **not yet integrated**; only the contiguous [0,4] prefix is. Full original 470D strong inverse, signed original 51/56 cap, independent signed Fourier/form/domain audit, complete odd/even/Weil/CC27/RH remain **OPEN**.
 
-**Actions verification: PENDING.**
+**Actions verification: PASSED with adverse sharpness / no contraction, see verified outcome above.**
