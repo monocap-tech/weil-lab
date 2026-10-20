@@ -1,3 +1,22 @@
+## MG37 — complete verified two-gate conclusion
+
+**Original-source Young arithmetic:** [Actions #39499065523](https://github.com/monocap-tech/weil-lab/actions/runs/39499065523) **PASSED**, including independent exact Fraction audit of 128 original 32-cell × four rational B/cutoff source traces, original accepted MG36 full24 certificate [Actions #39495457084](https://github.com/monocap-tech/weil-lab/actions/runs/39495457084), complete-original-frequency physical pole/source scope and no spectral promotion. Accepted artifact `mg37-original-Young-exact-4case-trace-barrier` ID `12298393388`. Earlier MG37 original-data [Actions #39497690829](https://github.com/monocap-tech/weil-lab/actions/runs/39497690829) also passed (artifact ID `12298883726`), and standalone [#39497690630](https://github.com/monocap-tech/weil-lab/actions/runs/39497690630) passed.
+
+| Original true source B | cutoff | MG32 complete upper trace benchmark | rigorous theoretical BEST Young-family full trace lower bound (optimistically free future rounding) |
+|---|---|---:|---:|
+| scalar tI | 2^12 | 63.50474075 | **67.22924788** |
+| nonscalar ridge | 2^12 | 69.62469569 | **73.46733842** |
+| scalar tI | 2^16 | 63.50474524 | **67.22925259** |
+| nonscalar ridge | 2^16 | 69.57093939 | **73.39942798** |
+
+**Original structural Loewner obstruction:** [Actions #39499065697](https://github.com/monocap-tech/weil-lab/actions/runs/39499065697) **PASSED** independent exact-Fraction four-case audit against separately accepted MG35, artifact `mg37-original-source-frozen-remainder-no-go` ID `12299416443`. The actual MG35 selected omitted-frequency upper for [4,8]/MG19 additions is THE SAME original MG32 omitted upper. Thus the NEW complete upper MATRIX is exactly old complete upper PLUS an additional original measured-band PSD upper. This cannot improve the full residual upper in Loewner order and its trace is strictly larger in all four cases, **independently of the Young optimal tau computation**. The structural no-go is stronger than a poor finite tau estimate.
+
+**Correct interpretation:** This is a method impossibility for the fixed inherited remainder and fixed actual source-residual covariance decomposition, not an operator negative mode, not evidence about the truth/falsity of RH, and not a no-go for new independent omitted-frequency bounds. MG38 should prioritize a genuine sharp *original remaining-frequency joint covariance* certificate; it must demonstrate a full 24D matrix improvement before repeating any full 470D signed-inverse attempt.
+
+W-ODD-NEG, full 470D strong inverse, 51/56 odd signed cap, independent Fourier/domain, even/Weil/CC27/RH remain OPEN.
+
+---
+
 ## Implementation / verification checkpoint
 
 - [PR #286](https://github.com/monocap-tech/weil-lab/pull/286) contains the exact original-source Young infimum diagnostic, separate self-contained mathematical regressions, and independently audited downstream calculation workflow.
