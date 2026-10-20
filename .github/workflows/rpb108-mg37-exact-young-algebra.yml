@@ -1,0 +1,28 @@
+name: mg37-exact-Young-infimum-standalone-algebra
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg37_young_trace_barrier.py'
+      - 'notes/RPB108_MG37_EXACT_YOUNG_TRACE_BARRIER_20261020.md'
+      - '.github/workflows/rpb108-mg37-exact-young-algebra.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-rational-algebra-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile and exact-rational proof-path self-test
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg37_young_trace_barrier.py
+          python scripts/validate_rpb108_mg37_young_trace_barrier.py --self-test
+      - name: Explicitly confirm no original MG36 dependent certificate is emitted
+        run: |
+          test ! -e artifacts/mg37_original_exact_young_barrier.json
+          grep -q 'MG36 accepted original artifact is required' scripts/validate_rpb108_mg37_young_trace_barrier.py
+          grep -q 'new_complete24_Gershgorin_margin_proved' scripts/validate_rpb108_mg37_young_trace_barrier.py
