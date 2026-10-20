@@ -180,8 +180,6 @@ def audit_partition(m,old,prepared):
               for i in range(DIM)],reverse=True)
         assert sum((sum(source_sums[key][i].values(),F(0))
                     for i in range(DIM)),F(0))==raw
-        assert sum((sum((F(0) for _ in ()),F(0))
-                    for _ in range(0)),F(0))==0
         assert all(sums[key][k]>=0 for k in CATS)
         out[key]={
             "certified_original_MG26_prefix_trace_width":str(measured),
@@ -190,7 +188,8 @@ def audit_partition(m,old,prepared):
             "categories_upper":{k:cap(sums[key][k]) for k in CATS},
             "dominant_error_category":dominant,
             "dominant_error_share_lower":
-                str(F(sums[key][dominant]/measured).limit_denominator(10**9))
+                str(F((sums[key][dominant]/measured).numerator*10**9//
+                       (sums[key][dominant]/measured).denominator,10**9))
                 if measured>0 else "0",
             "per_cell":region_sums[key],
             "top_6_source_trace_width_contributors":[
