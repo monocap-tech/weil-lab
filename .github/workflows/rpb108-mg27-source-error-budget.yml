@@ -1,0 +1,86 @@
+name: mg27-original-source-error-budget-audit
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg27_source_error_budget_audit.py'
+      - 'notes/RPB108_MG27_SOURCEWISE_ERROR_BUDGET_20261019.md'
+      - '.github/workflows/rpb108-mg27-source-error-budget.yml'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  mg27-actual-source-error-attribution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Fetch verified original MG26 exact-rational prefix mass and weighted moment matrices
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39380800739
+          name: mg26-original-contiguous-24D-prefix-mass-closure
+          github-token: ${{ github.token }}
+          path: artifacts/mg26_verified
+      - name: Reconstruct original Fourier-source Taylor and Young error on each full physical [0,4] cell
+        run: |
+          test -s artifacts/mg26_verified/mg26_contiguous_original_24D_mass_closure.json
+          python -m py_compile scripts/validate_rpb108_mg27_source_error_budget_audit.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg27_source_error_budget_audit.py --verified-mg26-json artifacts/mg26_verified/mg26_contiguous_original_24D_mass_closure.json
+      - name: Independently enforce original exact-source trace-width reconstruction and no spectral promotion
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg27_original_prefix_error_budget_audit.json"))
+          assert d["status"]=="ORIGINAL_MG26_EXACT_SOURCE_ERROR_BUDGET_ATTRIBUTION"
+          assert d["verified_MG26_run_id"]==39380800739
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["MG26_exact_preexport_width_replay_passed"]
+          assert d["same_original_SI10_25generator_23pluspole_source_basis"]
+          assert d["true_original_arch_prime7_interval_weight_paid"]
+          assert d["actual_contiguous_positive_prefix"]==["0","4"]
+          assert d["error_fees_classified_exact_rational_before_export"]
+          assert [p["count"] for p in d["partitions"]]==[8,16]
+          cats=("multiplier_width","affine_Young","source_value_interval",
+                "source_derivative_interval","source_curvature","source_rounding")
+          for partition in d["partitions"]:
+              assert partition["exact_original_contiguous_frequency_coverage"]==["0","4"]
+              assert partition["source_basis_original_23boundary_plus_pole"]
+              m=partition["count"]
+              assert len(partition["source_radius_samples"])==m
+              for key in ("mass","one","two"):
+                  data=partition["source_moments"][key]
+                  assert data["rational_sum_partition_matches_verified_MG26"]
+                  assert data["tau_count_matches_verified_MG26"]
+                  assert len(data["per_cell"])==m
+                  assert data["dominant_error_category"] in cats
+                  W=F(data["certified_original_MG26_prefix_trace_width"])
+                  assert W>0
+                  assert 0<=F(data["outward_export_rounding_fee_upper"])<=W
+                  assert all(F(data["categories_upper"][c])>=0 for c in cats)
+                  assert sum(F(data["categories_upper"][c]) for c in cats)>=0
+                  assert len(data["top_6_source_trace_width_contributors"])==6
+                  assert all(0<=v["channel"]<=23 for v in data["top_6_source_trace_width_contributors"])
+          for key in ("mass","one","two"):
+              r=d["method_diagnosis"][key]
+              assert r["dominant_8_cell_charge"] in cats
+              assert r["dominant_16_cell_charge"] in cats
+              assert F(r["width_improvement_8_to_16"])>0
+              assert r["no_extrapolated_32_cell_acceptance"]
+          assert not d["MG26_original_complete_frequency_Gstar_Sstar_brackets_sharpened"]
+          assert not d["new_complete_original_24D_strict_residual"]
+          assert not d["actual_470D_signed_original_cap"]
+          assert d["independent_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg27-original-24D-source-error-attribution
+          path: artifacts/mg27_original_prefix_error_budget_audit.json
