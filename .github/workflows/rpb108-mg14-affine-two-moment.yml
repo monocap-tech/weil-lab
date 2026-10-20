@@ -1,0 +1,76 @@
+name: mg14-original-affine-coupled-two-moments
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg14_affine_original_two_moments.py'
+      - 'scripts/validate_rpb108_mg13_true_coupled_lowband_moments.py'
+      - 'notes/RPB108_MG14_AFFINE_COUPLED_TWO_MOMENTS_20261019.md'
+      - '.github/workflows/rpb108-mg14-affine-two-moment.yml'
+  workflow_dispatch:
+
+jobs:
+  mg14-original-affine-two-moment-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Exact original 24-channel affine two-moment matrices with MG13 replay
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg14_affine_original_two_moments.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg14_affine_original_two_moments.py
+      - name: Fail-closed scoped original two-moment full matrix acceptance
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("artifacts/mg14_original_affine_coupled_moments.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["MG13_final_head_passing_actions_run"]==39344652841
+          assert d["physical_original_source_count"]==25
+          assert d["boundary_adapted_source_count"]==23
+          assert d["original_odd_sinh_pole_included_as_channel"]
+          assert d["total_coupled_source_channels"]==24
+          assert d["source_panel_cell_count"]==24
+          assert d["same_original_true_a_o_multiplier_and_pole_as_MG13"]
+          assert d["genuine_original_Fourier_affine_midpoint_derivative_intervals"]
+          assert d["all_576_mixed_source_covariances_preserved"]
+          assert d["rational_complete_source_affine_Taylor_error_paid"]
+          assert d["second_moment_is_Ao_squared_not_Astar_squared"]
+          assert len(d["source_cell_Fourier_diagnostics"])==24
+          assert sorted(d["policies"])==["adaptive","affine","midpoint"]
+          for order in ("one","two"):
+              cnt=d["adaptive_selection_counts"][order]
+              assert cnt["midpoint"]+cnt["affine"]==24
+              for policy in ("midpoint","affine","adaptive"):
+                  p=d["policies"][policy][order]
+                  L=[[F(x) for x in row] for row in p["complete_24x24_lower"]]
+                  U=[[F(x) for x in row] for row in p["complete_24x24_upper"]]
+                  assert len(L)==len(U)==24
+                  assert all(len(row)==24 for row in L+U)
+                  assert F(p["lower_trace"])==sum(L[i][i] for i in range(24))
+                  assert F(p["upper_trace"])==sum(U[i][i] for i in range(24))
+                  for i in range(24):
+                      assert U[i][i]>=L[i][i]
+                      for j in range(24):
+                          assert L[i][j]==L[j][i] and U[i][j]==U[j][i]
+                  assert F(p["whole_matrix_outward_lower_rounding"])>=0
+                  assert F(p["whole_matrix_outward_upper_rounding"])>=0
+          assert d["interpretation"] in (
+              "DIRECTIONAL_AFFINE_SOURCE_MOMENT_METHOD_IMPROVEMENT",
+              "NO_MATERIAL_LOWER_TRACE_GAIN_FROM_AFFINE_ON_TEST_PANELS")
+          assert not d["complete_low_band_zero_to_cutoff_certified"]
+          assert not d["genuine_original_Astar_squared_pole_response_certified"]
+          assert not d["genuine_original_23D_strong_Galerkin_residual_certified"]
+          assert d["original_full470_resolvent_and_infinite_odd_remainder"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg14-original-affine-two-moment
+          path: artifacts/mg14_original_affine_coupled_moments.json
