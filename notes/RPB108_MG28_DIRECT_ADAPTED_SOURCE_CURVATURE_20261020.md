@@ -1,3 +1,22 @@
+## Verified MG28 result — direct original curvature computation
+
+[Actions #39438064440](https://github.com/monocap-tech/weil-lab/actions/runs/39438064440) **PASSED** the original complete source/pole calculation and independent exact-Fraction/no-promotion checks (artifact `mg28-actual-original-direct-curvature-brackets`). The analytic nonsingular original sinh pole T'' interval was used and the 23 original double-boundary-adapted source second derivatives were combined before taking absolute values.
+
+| Original [0,4] partition | Improved source/cell channels | New/old H_C bracket trace-width | New/old G_C | New/old S_C |
+|---|---:|---:|---:|---:|
+| 8 equal cells | **0** | **1.000000** | **1.000000** | **1.000000** |
+| 16 equal cells | **384 / 384** | **0.715006632** | **0.712776122** | **0.710265087** |
+
+**Complete-frequency pole-corrected coupled source bracket widths, 16 cells:**
+- At cutoff `2^12`: Gstar **0.719596932×** MG26, Sstar **0.697700236×** MG26.
+- At cutoff `2^16`: Gstar **0.719982410×** MG26, Sstar **0.699062655×** MG26.
+
+The 8-cell result means the independently verified older MG26 curvature bound dominates this direct midpoint+third drift bound on **every** tested channel at that coarse cell size. At 16 cells, retaining cancellation yields a strict improvement on **all 384 source/cell pairs**, reducing the sum of source Taylor radii by about **30.07202033**. This is a real certified improvement in **trace-width precision**; it does NOT itself certify a positive residual. MG26's prior roughly 35–40× wider-than-MG24 bracket deficiency is reduced in scale but not eliminated: the new 16-cell whole-frequency matrices are still far less sharp than MG24.
+
+**Next method frontier:** directly certify the *adapted third derivative* too, or combine MG24 selected panels with the MG28 contiguous-prefix mass enclosures in a same-basis joint split to avoid discarding already accepted nonflat-cell lower information. If using multi-resolution cell widths, test actual error budgets; do not infer improvement from the 8-cell result. Independent original Fourier/form-domain identification, entire 470-source strong inverse and signed 51/56 negative cap, complete odd/even/Weil/CC27 and RH all remain **OPEN**.
+
+---
+
 # MG28 — Directly certify the original adapted Fourier second derivative
 
 October 20, 2026. Stacked on verified [MG27 PR #276](https://github.com/monocap-tech/weil-lab/pull/276). MG27 established that source Fourier curvature, *not signed multiplier-width*, dominates the uncompetitive MG26 8-/16-cell [0,4] positive-frequency source moment trace widths. This MG28 trial must measure whether preserving actual source cancellation inside the second derivative reduces those certified errors.
@@ -33,4 +52,4 @@ Rebuild three 24D source moment Loewner brackets on [0,4] (unweighted H_C, first
 
 Report exact rational ratio to MG26 for all three prefix moment widths, and compare whole-original-frequency pole-corrected Gstar/Sstar bracket widths at k=12 and 16. A trace-width reduction does not automatically imply Loewner dominance, inverse existence, 24D strict residual, signed 470D cap or RH; certify such claims separately.
 
-**Acceptance pending** for actual MG28 CI. No automatic claim that keeping cancellation yields a meaningful improvement. W-ODD-NEG; full original 470D strong residual and signed 51/56 negative cap; independent original Fourier/form-domain audit; complete odd/even/Weil/CC27/RH remain OPEN.
+**Acceptance: PASSED original 24D interval and comparison checks.** No automatic claim that keeping cancellation yields a meaningful improvement. W-ODD-NEG; full original 470D strong residual and signed 51/56 negative cap; independent original Fourier/form-domain audit; complete odd/even/Weil/CC27/RH remain OPEN.
