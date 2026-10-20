@@ -1,0 +1,81 @@
+name: mg15-original-directional-affine-covariance
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg15_directional_affine_covariance.py'
+      - 'notes/RPB108_MG15_DIRECTIONAL_AFFINE_COVARIANCE_20261019.md'
+      - '.github/workflows/rpb108-mg15-directional-affine.yml'
+  workflow_dispatch:
+
+jobs:
+  mg15-original-directional-covariance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Original 24-channel two-moment directional vs scalar MG14 full matrix
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg15_directional_affine_covariance.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg15_directional_affine_covariance.py
+      - name: Fail closed on exact original full-matrix inertias and operator scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          from sys import path
+          path.insert(0,"scripts")
+          from validate_rpb108_sm62_full25_338signed_positive import exact_inertia_general
+          d=json.load(open("artifacts/mg15_original_directional_affine_covariance.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["MG14_verified_actions_run"]==39346488631
+          assert d["original_physical_source_count"]==25
+          assert d["original_boundary_adapted_dimension"]==23
+          assert d["original_sinh_pole_channel_included"]
+          assert d["complete_physical_fourier_source_channels"]==24
+          assert d["same_24_frequency_cells_as_MG14"]
+          assert d["actual_selected_original_cell_count"]==24
+          assert d["all_576_mixed_source_terms_preserved"]
+          assert d["exact_MG14_full_24x24_baseline_replayed"]
+          assert d["full_per_source_affine_Taylor_radii_used"]
+          assert d["directional_Young_positive_semidefinite_envelope_regression"]
+          assert len(d["tau_candidates"])==7
+          assert len(d["per_cell_diagnostics"])==24
+          assert sorted(d["candidate_matrices"])==sorted(
+              ["scalar","directional_best","adaptive"]+
+              ["tau_1_64","tau_1_32","tau_1_16","tau_1_8","tau_1_4","tau_1_2","tau_3_4"])
+          for moment in ("one","two"):
+              c=d["adaptive_choice_counts"][moment]
+              assert c["scalar"]+c["directional"]==24
+              for family in d["candidate_matrices"].values():
+                  p=family[moment]
+                  L=[[F(x) for x in row] for row in p["complete_24x24_lower"]]
+                  U=[[F(x) for x in row] for row in p["complete_24x24_upper"]]
+                  assert len(L)==len(U)==24
+                  assert all(len(row)==24 for row in L+U)
+                  assert F(p["lower_trace"])==sum(L[i][i] for i in range(24))
+                  assert F(p["upper_trace"])==sum(U[i][i] for i in range(24))
+                  assert all(L[i][j]==L[j][i] and U[i][j]==U[j][i]
+                             for i in range(24) for j in range(24))
+                  assert all(U[i][i]>=L[i][i] for i in range(24))
+                  i=exact_inertia_general(L)
+                  assert p["lower_exact_inertia"]==dict(zip(
+                      ("positive","negative","zero"),i))
+              assert d["method_comparison"][moment]["MG14_original_lower_reference_exact_inertia"]=={
+                  "positive":3,"negative":21,"zero":0}
+          assert d["original_first_and_second_moments_scoped_only"]
+          assert d["original_second_moment_Ao_squared_not_Astar_squared"]
+          assert not d["whole_0_to_cutoff_original_frequency_covered"]
+          assert not d["original_full23_Galerkin_residual_certified"]
+          assert d["full_470_source_strong_inverse_and_odd_remainder"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_closed_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg15-original-directional-covariance
+          path: artifacts/mg15_original_directional_affine_covariance.json
