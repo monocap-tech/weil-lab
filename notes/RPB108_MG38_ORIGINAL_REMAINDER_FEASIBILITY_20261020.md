@@ -1,3 +1,24 @@
+## Verified MG38 original full-matrix outcome — October 20, 2026
+
+Original calculation [Actions #39507961568](https://github.com/monocap-tech/weil-lab/actions/runs/39507961568) PASSED. Then the stronger independent [Actions #39508270844](https://github.com/monocap-tech/weil-lab/actions/runs/39508270844) **PASSED**, exporting actual exact rational **full 24×24 signed comparison matrices**, full original Hlo minus *band-only* matrices, every negative rational Rayleigh vector, and complete rational congruence bases; the separate CI auditor reconstructs each decisive sign by exact Fraction matrix multiplication. Accepted artifact `mg38-original-whole-source-matrix-feasibility-gate`, ID `12305011490`. Previous first-pass artifact ID `12304262899` did not include independent full-matrix witness replay; the stronger audit supersedes it.
+
+| original B trial | cutoff k | independently accepted original MG30 complete-source Rupper trace | independent MG36 complete-source Rupper trace | exact rational signed Loewner comparison of U36−U30 | exact necessary Hlo−V[4,8] |
+|---|---:|---:|---:|---|---|
+| scalar tI | 12 | 29.77298323 | 68.53050791 | **strictly POSITIVE** by rational congruence | negative rational Rayleigh witness |
+| nonscalar ridge | 12 | 88.57726616 | 74.86757399 | negative Rayleigh witness for U36−U30; MG30 NOT Loewner-smaller | negative rational Rayleigh witness |
+| scalar tI | 16 | 29.77298340 | 68.53051285 | **strictly POSITIVE** by rational congruence | negative rational Rayleigh witness |
+| nonscalar ridge | 16 | 86.91331301 | 74.78829773 | negative Rayleigh witness for U36−U30; MG30 NOT Loewner-smaller | negative rational Rayleigh witness |
+
+**Critical verified inference 1 — source-matrix full-spectrum superiority (scalar only):** At both original k=12 and 16, `U36−U30 ≻0` is an exact rational positive-definite matrix theorem for these two separately certified upper bounds on the genuine original-source residual. This is stronger than a mere TRACE comparison. In nonscalar cases, U36−U30 has an exact negative Rayleigh witness: do NOT infer either reverse Loewner ordering or that an actual operator has a negative mode.
+
+**Critical verified inference 2 — necessary source-certificate feasibility no-go:** In **all four** actual B/cutoff scenarios `Hlo−V_[4,8]` has an exact rational negative quadratic witness. Given that any additional measured-prefix/omitted-frequency residual covariance **upper** is necessarily PSD, for the CURRENT Hlo and current selected measured-band upper V, no arbitrarily good new remainder-only bound can produce `Hlo−(V+P) ≻0`. Even a formal P=0 cannot make this particular conservative source-certificate matrix strictly positive. This statement does NOT say the actual physical Gram H-Ractual^*Ractual is negative: Hlo and V are conservative interval bounds and may be very loose.
+
+**MG39 route recommendation:** The original complete-source MG30 scalar bound is already massively stronger than MG36 in full matrix order, but MG30's exact positive source-contraction acceptance margin still fails narrowly. Focus on original **joint H/Gstar/Sstar source-moment uncertainty**, exact signed source residual and robust eigenvalue acceptance on the MG30 matrix, rather than direct extra-band Young/radius refinements. An important acceptance requirement is that every newly proposed bound be no worse than the independently certified original MG30 scalar matrix in an actual Loewner (not only trace) comparison, or separately prove its strict positive residual source gap.
+
+W-ODD-NEG, original full 470D inverse, signed 51/56 odd negative cap, independently audited source Fourier/form/domain, complete even/Weil/CC27/RH still **OPEN**.
+
+---
+
 # MG38 — Original whole-spectrum source-residual benchmark and remainder feasibility
 
 October 20, 2026. Stacked on accepted [MG37 #286](https://github.com/monocap-tech/weil-lab/pull/286). The verified MG37 source covariance structural no-go states that retaining the exact MG32 omitted-frequency upper after measuring [4,8] gives `U_new = U_MG32 + U_band`, with U_band PSD. Therefore further tuning of **only** the added-band certificate cannot improve the complete residual upper in Loewner order. The four original-source exact Young optimal trace barriers also remain above MG32.
@@ -48,4 +69,4 @@ Require accepted pinned Actions original MG24 #39378465438, MG29 #39440914565, M
 
 W-ODD-NEG, original all-470 strong inverse, signed negative 51/56 cap, independently audited Fourier/form/domain, full even/Weil/CC27/RH remain **OPEN**.
 
-**CI pending.**
+**MG38 calculation and independent exact rational matrix-witness CI PASSED; no source contraction.**
