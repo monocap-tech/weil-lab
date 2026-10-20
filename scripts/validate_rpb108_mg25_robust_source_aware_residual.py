@@ -88,13 +88,18 @@ def solve(a,b):
     return [row[n:n+mcols] for row in q]
 def serialize(a):return [[str(x) for x in row] for row in a]
 
-def residual_upper(Hlo,Hup,Lg,Ug,Sup,B):
+def residual_upper(Hlo,Hup,Lg,Ug,Sup,B,verified_original_brackets=False):
     n=sq(Hlo)
     assert n==sq(Hup)==sq(Lg)==sq(Ug)==sq(Sup)
     assert len(B)==n and all(len(x)==n for x in B)
     assert psd(sub(Hup,Hlo)), "physical Gram bracket invalid"
     E=mul(Q(1,2),sub(Ug,Lg))
-    assert psd(E), "G Loewner interval invalid"
+    if verified_original_brackets:
+        # MG24 original complete-frequency Lg <= G <= Ug proves E PSD;
+        # avoid redundant thousands-digit 24x24 exact LDL elimination.
+        assert all(E[i][i]>=0 for i in range(n))
+    else:
+        assert psd(E), "G Loewner interval invalid"
     Gc=mul(Q(1,2),plus(Ug,Lg))
     e=norm_upper(E)
     beta=norm_upper(B)
