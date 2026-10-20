@@ -1,0 +1,110 @@
+name: mg32-direct-original-joint-Fourier-residual
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg32_joint_fourier_residual.py'
+      - 'notes/RPB108_MG32_JOINT_ORIGINAL_FOURIER_RESIDUAL_20261020.md'
+      - '.github/workflows/rpb108-mg32-joint-original-residual.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  actual-original-joint-24D-residual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted MG24 original complete-frequency source moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve accepted MG29 direct third-derivative 32-cell original source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Retrieve accepted MG30 nonscalar exact rational trial family
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39442984941
+          name: mg30-true-original-24D-anchored-mixed-source-gate
+          github-token: ${{ github.token }}
+          path: artifacts/mg30_verified
+      - name: Original full-frequency joint pole-corrected 24D Fourier residual calculation
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json
+          python -m py_compile scripts/validate_rpb108_mg32_joint_fourier_residual.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg32_joint_fourier_residual.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg30-json artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json
+      - name: Independent output and strict spectral no-promotion gate
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg32_joint_original_source_residual.json"))
+          assert d["status"]=="ORIGINAL_JOINT_24D_SOURCE_RESIDUAL_FOURIER_PREFIX_AND_TAIL_GATE"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["MG24_accepted_run"]==39378465438
+          assert d["MG29_accepted_run"]==39440914565
+          assert d["MG30_accepted_run"]==39442984941
+          assert d["original_25_physical_SI10_generators_and_23pluspole_channels"]
+          assert d["genuine_original_rank_one_sinh_pole_inside_residual_before_squaring"]
+          assert d["direct_original_full_32_cell_Fourier_source_residual_measured"]
+          assert d["true_original_prime7_arch_multiplier_interval_in_joint_integrand"]
+          assert d["same_MG29_true_affine_source_curvature_replayed_exactly"]
+          assert d["unmeasured_original_real_frequencies_closed_using_physical_mass"]
+          assert d["whole_original_SM41_high_source_strong_tail_paid"]
+          assert d["all_24D_source_crosses_included"]
+          assert [x["cutoff_k"] for x in d["scenarios"]]==[12,16]
+          results=[]
+          for case in d["scenarios"]:
+              assert case["MG29_true_source_cells"]==32
+              assert case["original_true_prefix"]==["0","4"]
+              assert case["original_complete_frequency_tail_bound"]
+              assert case["nonscalar_candidate_included"]
+              for t in case["trials"]:
+                  results.append(t)
+                  assert t["source_response_rational_matrix"]
+                  assert t["original_24D_complete_frequency_pole_included"]
+                  assert t["direct_contiguous_prefix_source_residual_covariance"]
+                  assert t["whole_original_operator_470D_not_certified"]
+                  assert Q(t["prefix_direct_residual_upper_trace"])>=0
+                  assert Q(t["original_missing_frequency_upper_trace"])>=0
+                  assert Q(t["full_original_residual_upper_trace"])==(
+                    Q(t["prefix_direct_residual_upper_trace"])+
+                    Q(t["original_missing_frequency_upper_trace"]))
+                  assert t["strict_source_residual_contraction"]==(
+                    Q(t["joint_original_residual_Gershgorin_margin"])>0)
+                  assert Q(t["certified_source_gap"])>=0
+                  assert (Q(t["certified_source_gap"])>0)==t["strict_source_residual_contraction"]
+                  assert Q(t["source_joint_interval_radius_l1_sum"])>=0
+                  assert Q(t["pole_uncertainty_complement_charge"])>=0
+                  assert sum(t["cellwise_original_joint_tau_counts"].values())==32
+          assert len(results)==d["number_original_rational_trials"]>=2
+          assert d["source_24D_strict_residual_certified"]==any(
+              t["strict_source_residual_contraction"] for t in results)
+          assert d["source_basis_is_not_operator_invariant"]
+          assert not d["full_original_470D_strong_inverse"]
+          assert not d["signed_original_51over56_negative_cap"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg32-actual-original-joint-24D-Fourier-residual
+          path: artifacts/mg32_joint_original_source_residual.json
