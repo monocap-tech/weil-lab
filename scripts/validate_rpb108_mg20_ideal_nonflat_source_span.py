@@ -28,6 +28,8 @@ separately from the rigorous error-envelope bottleneck.
 import argparse
 import json
 from fractions import Fraction as F
+import sys
+sys.set_int_max_str_digits(0)
 from validate_rpb108_mg17_nonflat_multiplier_scout import scout
 from validate_rpb108_mg16_weighted_affine_source_moments import (
     ROOT,N,PHYS,PIVOT,POLE,B,ORDERS,
@@ -42,28 +44,59 @@ from validate_rpb108_mg16_weighted_affine_source_moments import (
 )
 from validate_rpb108_sm62_full25_338signed_positive import exact_inertia_general
 
-def exact_rank(rows,n):
-    """Fraction row-echelon rank with pivot elimination in source space."""
-    pivots={}
-    for original in rows:
-        x=[F(z) for z in original]
-        assert len(x)==n
-        for p in sorted(pivots):
-            if x[p]:
-                t=x[p]
-                q=pivots[p]
-                for j in range(p,n):
-                    x[j]-=t*q[j]
-        for p in range(n):
-            if x[p]:
-                t=x[p]
-                for j in range(p,n):
-                    x[j]/=t
-                pivots[p]=x
+PRIMES=(2147483647,2147483629,1000000007,1000000009,998244353,2305843009213693951)
+
+def modular_rank(rows,n,p):
+    """Exact reduction of rational source vectors to F_p, with
+    a nonzero 24x24 witness when full rank; never infer missing rank
+    from a rank-deficient modular reduction.
+    """
+    assert len(rows)>=n and all(len(row)==n for row in rows)
+    A=[]
+    for row in rows:
+        z=[]
+        for x in row:
+            x=F(x)
+            den=x.denominator%p
+            if den==0:
+                return None
+            z.append((x.numerator%p)*pow(den,-1,p)%p)
+        A.append(z)
+    basis={}
+    ids={}
+    for ix,row in enumerate(A):
+        x=row[:]
+        for pivot in sorted(basis):
+            if x[pivot]:
+                factor=x[pivot]
+                base=basis[pivot]
+                for j in range(pivot,n):
+                    x[j]=(x[j]-factor*base[j])%p
+        for pivot in range(n):
+            if x[pivot]:
+                inv=pow(x[pivot],-1,p)
+                for j in range(pivot,n):
+                    x[j]=(x[j]*inv)%p
+                basis[pivot]=x
+                ids[pivot]=ix
                 break
-        if len(pivots)==n:
-            break
-    return sorted(pivots)
+        if len(basis)==n:break
+    pivots=sorted(basis)
+    witness_ids=[ids[i] for i in pivots]
+    return {"prime":p,"rank_lower_bound":len(pivots),
+            "independent_row_indices":witness_ids,
+            "independent_row_residues":[A[i] for i in witness_ids]}
+
+def certified_modular_rank(rows,n):
+    best=None
+    for prime in PRIMES:
+        got=modular_rank(rows,n,prime)
+        if got is None:continue
+        if best is None or got["rank_lower_bound"]>best["rank_lower_bound"]:
+            best=got
+        if got["rank_lower_bound"]==n:break
+    assert best is not None, "all modular primes divide a source denominator"
+    return best
 
 def full_original_reference():
     sites=scout()
@@ -81,8 +114,8 @@ def full_original_reference():
          hyperbolic_interval(B/2,"cosh"))
     k2=original_full_second_derivative_upper(sources)
     k3=original_third_spatial_moment(sources)
-    R={p:zero() for p in (1,2)}
     vals=[];derivatives=[];details=[]
+    reference_trace_lower={1:None,2:None}
     for site in sites["selected_nonflat_original_cells"]:
         left,right=F(site["left"]),F(site["right"])
         width=right-left;half=width/2;mid=(left+right)/2
@@ -109,34 +142,40 @@ def full_original_reference():
             # A genuinely positive weight on a full nonzero-width
             # interval gives strictly positive 2x2 moment Gram.
             assert gramdet>0
-            cell=covariance_matrices(v,slopes,J)
-            for i in range(N):
-                for j in range(N):
-                    R[p][i][j]+=2*cell[i][j]
+            # A direct, analytic, exact rational source-trace lower:
+            # smallest eigen of the 2x2 weight Gram >= det/trace,
+            # hence any nonzero (v_i,d_i) contributes positively.
+            # This does NOT claim it lower bounds the true source form.
+            if reference_trace_lower[p] is None:
+                i=next((i for i in range(N) if v[i] or slopes[i]),None)
+                if i is not None:
+                    reference_trace_lower[p]=2*gramdet*(
+                        v[i]**2+slopes[i]**2)/(J[0]+J[2])
             diag["moment_"+str(p)+"_strict_positive_determinant"]=True
             diag["moment_"+str(p)+"_J1"]=str(J[1])
         details.append(diag)
-    rank_values=exact_rank(vals,N)
-    rank_derivatives=exact_rank(derivatives,N)
-    rank_combined=exact_rank(vals+derivatives,N)
-    assert len(rank_combined)>=len(rank_values) and len(rank_combined)>=len(rank_derivatives)
+    rank_values=certified_modular_rank(vals,N)
+    rank_derivatives=certified_modular_rank(derivatives,N)
+    rank_combined=certified_modular_rank(vals+derivatives,N)
+    assert rank_combined["rank_lower_bound"]>=rank_values["rank_lower_bound"]
+    assert rank_combined["rank_lower_bound"]>=rank_derivatives["rank_lower_bound"]
+    assert rank_combined["rank_lower_bound"]==N, (
+        "No full 24D modular witness found: inconclusive source-span gate, "
+        "not an actual rank-deficiency proof",rank_combined)
+    # Each reference-weight 2x2 moment Gram is strictly SPD.
+    # Hence R_p=2 sum_j B_j^T J_j^p B_j is SPD exactly when the
+    # 48x24 rational affine source frame B has rank 24.
     data={}
     for p in (1,2):
-        A=R[p]
-        assert all(A[i][j]==A[j][i] for i in range(N) for j in range(N))
-        inertia=exact_inertia_general(A)
-        assert sum(inertia)==N and inertia[1]==0
-        # The ideal weighted affine reference is positive semidefinite
-        # by construction, independent of source/multiplier uncertainty.
-        assert inertia[0]==len(rank_combined), (
-            "ideal rational weighted affine moment rank mismatch",p,inertia,rank_combined)
+        lower=reference_trace_lower[p]
+        assert lower is not None and lower>0
         data["one" if p==1 else "two"]={
-            "exact_affine_reference_inertia":dict(zip(
-                ("positive","negative","zero"),inertia)),
-            "exact_positive_affine_reference_trace":str(
-                sum(A[i][i] for i in range(N))),
-            "ideal_affine_reference_rank":inertia[0],
-            "weighted_moment_strict_positive_every_cell":True
+            "exact_affine_reference_inertia":{
+                "positive":N,"negative":0,"zero":0},
+            "certified_positive_affine_reference_trace_lower":str(lower),
+            "ideal_affine_reference_rank":N,
+            "weighted_moment_strict_positive_every_cell":True,
+            "ideal_inertia_proved_by_modular_full_rank_and_positive_exact_weight_moments":True
         }
     return {
         "status":"EXACT_IDEAL_NONFLAT_ORIGINAL_SOURCE_REFERENCE_SPAN_GATE",
@@ -147,9 +186,11 @@ def full_original_reference():
         "original_source_channels":N,
         "true_original_nonflat_frequency_cells_verified":24,
         "same_true_original_nonflat_cells_as_MG17_MG18_MG19":True,
-        "rational_source_midpoint_only_rank":len(rank_values),
-        "rational_source_derivative_only_rank":len(rank_derivatives),
-        "rational_source_affine_combined_rank":len(rank_combined),
+        "rational_source_midpoint_rank_lower_bound":rank_values["rank_lower_bound"],
+        "rational_source_derivative_rank_lower_bound":rank_derivatives["rank_lower_bound"],
+        "rational_source_affine_combined_rank":rank_combined["rank_lower_bound"],
+        "modular_source_affine_rank_witness":rank_combined,
+        "true_exact_affine_24D_ideal_reference_inertia_by_positive_Gram":True,
         "weighted_ideal_first_second_source_reference":data,
         "all_24_original_affine_cells_positive_moment_Gram":True,
         "all_576_mixed_source_entries_preserved_in_affine_reference":True,
@@ -162,7 +203,7 @@ def full_original_reference():
         "even_Weil_CC27_RH":"OPEN",
         "original_Fourier_form_domain_audit":"OPEN",
         "cell_source_diagnostics":details,
-        "interpretation":"Exact positive rank of rational affine SOURCE REFERENCE, not a lower certificate for actual original source operator. Compare with MG19 LOWER reference 3+/21- as an error-envelope geometry audit."
+        "interpretation":"Exact 24D rational affine REFERENCE rank from mod-p nonzero determinant plus analytic positive 2x2 weighted moments. This proves ideal reference SPD, not a lower bound for the true original source operator or an RH result."
     }
 
 def main():
@@ -174,10 +215,11 @@ def main():
     output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text(json.dumps(d,indent=2)+"\n")
     print("MG20 ideal original nonflat affine source span:",json.dumps({
-        "v_rank":d["rational_source_midpoint_only_rank"],
-        "d_rank":d["rational_source_derivative_only_rank"],
+        "v_rank_floor":d["rational_source_midpoint_rank_lower_bound"],
+        "d_rank_floor":d["rational_source_derivative_rank_lower_bound"],
         "combined_rank":d["rational_source_affine_combined_rank"],
         "ideal_moments":d["weighted_ideal_first_second_source_reference"],
+        "modular_witness_prime":d["modular_source_affine_rank_witness"]["prime"],
         "complete_actual_odd_even_Weil_RH":"OPEN"
     }),flush=True)
 
