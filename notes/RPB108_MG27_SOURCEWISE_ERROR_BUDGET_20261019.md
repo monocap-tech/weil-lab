@@ -1,3 +1,19 @@
+## Verified MG27 original-source numerical diagnosis
+
+[Actions #39382180841](https://github.com/monocap-tech/weil-lab/actions/runs/39382180841) and the corrected presentation-only [Actions #39382268611](https://github.com/monocap-tech/weil-lab/actions/runs/39382268611) both **PASSED** original 24D source Fourier replay and independent exact rational fee-conservation audits against accepted MG26 Actions #39380800739.
+
+| True original prefix source moment | Certified MG26 8-to-16-cell trace-width gain | Dominant 8-cell charge | Dominant 16-cell charge |
+|---|---:|---|---|
+| unweighted H_C | 22.23060610169781× | source curvature | source curvature |
+| first positive G_C | 57.19786729550779× | source curvature | source curvature |
+| second positive S_C | 142.21960027169948× | source curvature | source curvature |
+
+**Structural conclusion:** The limiting budget is the **actual transformed-source Fourier second-derivative/Taylor curvature cap**, compounded by sourcewise Young loss; it is **not** primarily the certified original signed multiplier interval width. A legitimate next-method candidate is to enclose each *adapted combination's second derivative directly* (preserving source cancellation) rather than summing absolute second-derivative caps of the original sine/xcos/pole generators before applying Taylor. Any claimed improvement must be verified on the actual original 23+pole vector, not on an idealized test surrogate.
+
+**Still OPEN:** MG26 complete-frequency Gstar/Sstar sharpness; original 470D strong inverse and signed 51/56 cap; complete original odd/even, Weil/CC27 and RH. This audit alone changes no operator theorem.
+
+---
+
 # MG27 — Original-source error-budget attribution against verified MG26
 
 October 19, 2026 local. Stacked on [MG26 #275](https://github.com/monocap-tech/weil-lab/pull/275). This is an **original physical source error audit**, not a new spectral positivity or RH theorem.
@@ -41,4 +57,4 @@ Require:
 
 MG27 does not improve existing Gstar/Sstar original whole-frequency Loewner enclosures. The original full 470 strong residual, signed 51/56 negative cap, independent Fourier/form/domain audit, complete odd/even/Weil/CC27 and RH remain OPEN.
 
-**CI acceptance: pending.**
+**CI acceptance: PASSED, limited to original-source error accounting.**
