@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'scripts/validate_rpb108_mg17_nonflat_multiplier_scout.py'
+      - 'scripts/validate_rpb108_mg17_nonflat_source_moments.py'
       - 'notes/RPB108_MG17_ORIGINAL_NONFLAT_PANELS_20261019.md'
       - '.github/workflows/rpb108-mg17-nonflat-scout.yml'
   workflow_dispatch:
@@ -52,7 +53,58 @@ jobs:
           assert d["even_Weil_CC27_RH"]=="OPEN"
           assert d["independent_Fourier_and_domain_audit"]=="OPEN"
           PY
+      - name: Compare true original weighted vs constant source moments on same nonflat panels
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg17_nonflat_source_moments.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg17_nonflat_source_moments.py
+      - name: Exact 24D same-cell full Loewner and spectral gate
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          from sys import path
+          path.insert(0,"scripts")
+          from validate_rpb108_sm62_full25_338signed_positive import exact_inertia_general
+          d=json.load(open("artifacts/mg17_original_nonflat_coupled_two_moments.json"))
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["nonflat_original_multiplier_sites_replayed"]
+          assert d["true_source_count"]==25
+          assert d["true_boundary_adapted_source_count"]==23
+          assert d["original_pole_included"]
+          assert d["all_24_coupled_source_channels_retained"]
+          assert d["same_new_nonflat_cell_family_used_for_both_comparisons"]
+          assert d["selected_new_nonflat_cells"]>=8
+          assert d["original_true_nonflat_multiplier_certified_each_cell"]
+          assert d["SM43A_true_signed_affine_J1_nonzero_each_cell"]
+          assert d["true_original_weight_mismatch_paid"]
+          assert d["source_Taylor_error_paid_in_both_comparisons"]
+          for order in ("one","two"):
+              assert sum(d["tau_selection_counts"]["weighted"][order].values())==d["selected_new_nonflat_cells"]
+              assert sum(d["tau_selection_counts"]["constant"][order].values())==d["selected_new_nonflat_cells"]
+              for family in ("constant","weighted"):
+                  m=d["actual_original_coupled_source_matrices"][family][order]
+                  L=[[F(x) for x in row] for row in m["lower"]]
+                  U=[[F(x) for x in row] for row in m["upper"]]
+                  assert len(L)==len(U)==24
+                  assert all(len(r)==24 for r in L+U)
+                  assert all(L[i][j]==L[j][i] and U[i][j]==U[j][i]
+                             for i in range(24) for j in range(24))
+                  assert all(U[i][i]>=L[i][i] for i in range(24))
+                  assert F(m["lower_trace"])==sum(L[i][i] for i in range(24))
+                  assert F(m["upper_trace"])==sum(U[i][i] for i in range(24))
+                  inertia=exact_inertia_general(L)
+                  assert m["lower_exact_inertia"]==dict(zip(
+                      ("positive","negative","zero"),inertia))
+          assert not d["source_moments_cover_complete_low_band"]
+          assert not d["original_Astar_squared_pole_correction_certified"]
+          assert not d["original_strong_Galerkin_residual_certified"]
+          assert not d["original_full470_odd_operator_certified"]
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_domain_premises_audit"]=="OPEN"
+          PY
       - uses: actions/upload-artifact@v4
         with:
-          name: mg17-original-nonflat-frequency-panels
-          path: artifacts/mg17_original_nonflat_multiplier_scout.json
+          name: mg17-original-nonflat-frequency-panels-and-moments
+          path: |
+            artifacts/mg17_original_nonflat_multiplier_scout.json
+            artifacts/mg17_original_nonflat_coupled_two_moments.json
