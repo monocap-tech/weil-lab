@@ -1,0 +1,160 @@
+name: mg33-original-disjoint-joint-frequency-sectors
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg33_disjoint_joint_residual.py'
+      - 'notes/RPB108_MG33_DISJOINT_ORIGINAL_JOINT_RESIDUAL_20261020.md'
+      - '.github/workflows/rpb108-mg33-disjoint-source-residual.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-disjoint-joint-source-24D:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Fetch MG19 exact original nonflat 24-site geometry
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39363425186
+          name: mg19-original-intersected-relative-weight
+          github-token: ${{ github.token }}
+          path: artifacts/mg19_verified
+      - name: Fetch accepted MG24 complete-frequency pole source matrices
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Fetch accepted MG29 true original third derivative moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Fetch accepted MG30 true original rational response matrices
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39442984941
+          name: mg30-true-original-24D-anchored-mixed-source-gate
+          github-token: ${{ github.token }}
+          path: artifacts/mg30_verified
+      - name: Fetch accepted MG32 original 32-cell prefix joint residuals
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39459624082
+          name: mg32-actual-original-joint-24D-Fourier-residual
+          github-token: ${{ github.token }}
+          path: artifacts/mg32_verified
+      - name: Certify original true joint residual on measured disjoint frequency sectors
+        run: |
+          test -s artifacts/mg19_verified/mg19_original_intersected_relative_weighted_moments.json
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json
+          test -s artifacts/mg32_verified/mg32_joint_original_source_residual.json
+          python -m py_compile scripts/validate_rpb108_mg33_disjoint_joint_residual.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg33_disjoint_joint_residual.py --verified-mg19-json artifacts/mg19_verified/mg19_original_intersected_relative_weighted_moments.json --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg30-json artifacts/mg30_verified/mg30_original_24D_anchored_source_aware_residual.json --verified-mg32-json artifacts/mg32_verified/mg32_joint_original_source_residual.json
+      - name: Independent exact all-frequency partition audit and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg33_original_disjoint_joint_residual.json"))
+          assert d["status"]=="ORIGINAL_DISJOINT_THREE_SECTOR_JOINT_SOURCE_RESIDUAL_GATE"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["verified_MG19_run_id"]==39363425186
+          assert d["verified_MG24_run_id"]==39378465438
+          assert d["verified_MG29_run_id"]==39440914565
+          assert d["verified_MG30_run_id"]==39442984941
+          assert d["verified_MG32_run_id"]==39459624082
+          assert d["true_original_source_SI10_25physical_23pluspole_dimension24"]
+          assert d["all_real_frequency_sectors_disjoint_original_source"]
+          assert d["negative_frequency_mirror_included_by_exact_cell_factor_two"]
+          assert d["entire_MG32_original_32_cell_baseline_replayed_exactly"]
+          assert d["new_original_band_4to8_contiguous_32cells"]
+          assert d["MG19_original_nonflat_verified_24site_catalog_used"]
+          n=d["MG19_selected_nonoverlapping_panels_after8"]
+          assert 0<=n<=24
+          assert d["MG19_selected_panels_below8_not_double_counted"]==24-n
+          measured=d["measured_frequency_sectors"]
+          assert len(measured)==3
+          assert measured[0]=={"type":"contiguous","left":"0","right":"4","cells":32}
+          assert measured[1]=={"type":"contiguous","left":"4","right":"8","cells":32}
+          assert measured[2]["cells"]==n
+          sites=[[Q(x),Q(y)] for x,y in measured[2]["sites"]]
+          assert len(sites)==n
+          assert all(Q(8)<=a<b for a,b in sites)
+          assert all(sites[i][1]<sites[i+1][0] for i in range(n-1))
+          assert Q(d["selected_original_MG19_additional_positive_frequency_width"])==sum(
+              (b-a for a,b in sites),Q(0))
+          assert d["actual_original_source_fourier_Taylor_third_fourth_on_every_new_cell"]
+          assert d["actual_prime7_arch_signed_original_multiplier_on_every_new_cell"]
+          assert d["full_original_24D_pole_corrected_joint_residual_on_measured_cells"]
+          assert d["remaining_all_original_frequencies_closed_by_physical_source_mass"]
+          assert d["complete_original_SM41_strong_source_high_tails_paid"]
+          assert [r["cutoff_k"] for r in d["original_rational_trial_cutoffs"]]==[12,16]
+          test_count=0; strict=0
+          for c in d["original_rational_trial_cutoffs"]:
+              assert c["same_accepted_MG32_actual_original_trial_B"]
+              assert c["actual_original_24D_23pluspole_basis"]
+              assert c["all_full_frequency_SM41_original_strong_tails_paid"]
+              assert len(c["trials"])==2
+              for t in c["trials"]:
+                  assert t["source_matrix_rationalized"]
+                  assert len(t["all_three_rigorous_complete_frequency_variants"])==3
+                  var=t["all_three_rigorous_complete_frequency_variants"]
+                  assert [x["variant"] for x in var]==[
+                       "MG32_prefix_only","MG33_contiguous_0to8",
+                       "MG33_hybrid_with_MG19"]
+                  base,band,hy=var
+                  assert Q(t["hybrid_upper_trace_over_baseline"])==(
+                      Q(hy["upper_trace"])/Q(base["upper_trace"]))
+                  assert Q(t["hybrid_Gershgorin_improvement_vs_MG32"])==(
+                      Q(hy["strict_Gershgorin_margin"])-
+                      Q(base["strict_Gershgorin_margin"]))
+                  assert Q(t["contiguous_0to8_Gershgorin_improvement_vs_MG32"])==(
+                      Q(band["strict_Gershgorin_margin"])-
+                      Q(base["strict_Gershgorin_margin"]))
+                  assert t["strict_original_24D_source_contraction"]==any(
+                      q["strict_24D_source_contraction"] for q in var)
+                  for q in var:
+                      test_count+=1
+                      strict+=int(q["strict_24D_source_contraction"])
+                      assert q["true_original_pole_inside_residual"]
+                      assert q["complete_original_real_frequency_upper"]
+                      assert q["physical_disjoint_frequency_partition"]
+                      assert Q(q["upper_trace"])>0
+                      assert Q(q["remaining_original_frequency_upper_trace"])>=0
+                      assert 0<=Q(q["remaining_fraction_of_total_upper_trace"])<=1
+                      assert Q(q["upper_trace"])==sum(
+                          (Q(z) for z in q["frequency_contributions_upper_trace"].values()),Q(0)
+                          )+Q(q["remaining_original_frequency_upper_trace"])
+                      assert q["strict_24D_source_contraction"]==(
+                          Q(q["strict_Gershgorin_margin"])>0)
+                      assert q["complete_original_470D_inverse_certified"] is False
+          assert test_count==12
+          assert strict==d["original_24D_source_strict_contraction_count"]
+          assert not d["full_original_470D_strong_inverse_certified"]
+          assert not d["signed_original_negative_51over56_cap_certified"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg33-original-disjoint-24D-joint-residual
+          path: artifacts/mg33_original_disjoint_joint_residual.json
