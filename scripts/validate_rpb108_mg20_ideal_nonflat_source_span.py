@@ -98,6 +98,15 @@ def certified_modular_rank(rows,n):
     assert best is not None, "all modular primes divide a source denominator"
     return best
 
+def strict_positive_dyadic_lower(x):
+    """Small exact rational witness, avoiding multi-thousand-digit I/O."""
+    x=F(x)
+    assert x>0
+    k=max(0,x.denominator.bit_length()-x.numerator.bit_length()+2)
+    y=F(1,2**k)
+    assert 0<y<=x
+    return y,k
+
 def full_original_reference():
     sites=scout()
     assert sites["selected_cell_count"]==24
@@ -172,7 +181,8 @@ def full_original_reference():
         data["one" if p==1 else "two"]={
             "exact_affine_reference_inertia":{
                 "positive":N,"negative":0,"zero":0},
-            "certified_positive_affine_reference_trace_lower":str(lower),
+            "certified_positive_affine_reference_trace_lower":str(strict_positive_dyadic_lower(lower)[0]),
+            "certified_positive_affine_trace_dyadic_exponent":strict_positive_dyadic_lower(lower)[1],
             "ideal_affine_reference_rank":N,
             "weighted_moment_strict_positive_every_cell":True,
             "ideal_inertia_proved_by_modular_full_rank_and_positive_exact_weight_moments":True
