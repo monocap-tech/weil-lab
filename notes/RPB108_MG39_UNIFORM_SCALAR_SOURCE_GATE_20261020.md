@@ -1,3 +1,31 @@
+## Accepted original-source result — entire scalar-continuum obstruction
+
+[GitHub Actions #39510824340](https://github.com/monocap-tech/weil-lab/actions/runs/39510824340) **PASSED** independently audited exact-Fraction original source calculation and saved artifact `mg39-original-all-scalar-complete-frequency-feasibility` (ID `12305786682`), using pinned independently accepted original MG24 #39378465438, MG29 #39440914565 and MG30 #39442984941.
+
+| MG29 mesh | Original frequency cutoff | Rational blend intervals | Intervals with an exact nonzero rational 24D source witness uniform for every scalar t>=0 |
+|---|---|---:|---:|
+| 16 | 2^12 | 16 | **16/16** |
+| 16 | 2^16 | 16 | **16/16** |
+| 32 | 2^12 | 16 | **16/16** |
+| 32 | 2^16 | 16 | **16/16** |
+
+This certifies a genuine **continuum-wide method no-go**. For each interval of the mixing parameter `lambda`, the same exact rational vector `v` satisfies
+
+```
+vᵀ(Hlo-Hup+2t[(1-lambda)LG24+lambda LG29]
+       -t²[(1-lambda)US24+lambda US29])v < 0
+```
+
+for **ALL REAL scalar t >=0 AND all REAL lambda inside that interval**. The proof uses exact source `d=2Herr||v||²>0`, `b0=vᵀLG24v`, `b1=vᵀLG29v`, `c0=vᵀUS24v`, `c1=vᵀUS29v`, an exact `-d+⁠max(b,0)²/c<0` endpoint quadratic supremum (or `-d<0` for b<=0), and the fact that at fixed t the directional quadratic is affine in lambda. The rational vector may differ from interval to interval. Checking all 16 adjacent interval endpoints therefore certifies uncountably many scalar/moment-blend pairs, not just 16 points.
+
+All witnesses and their endpoint signed maxima were independently recomputed from the ORIGINAL pinned full-frequency 24x24 rational pole-corrected source moment matrices and source Gram error. Original MG30 fixed-scalar Gershgorin margins were independently replayed.
+
+**Correct meaning:** No nonnegative scalar source response `B=tI` and no convex interpolation between the independently accepted original MG24/MG29 complete-source moment enclosures can yield a strictly positive *particular conservative residual lower-bound matrix*. This does NOT prove actual source residual negativity, a negative spectral direction of the original operator, universal obstruction to better nonconvex/correlated moment estimates or nonscalar B, the original 470D strong inverse, signed 51/56 negative cap, complete odd/even/Weil/CC27/RH.
+
+**MG40 mathematical priority:** Return to the genuine complete-frequency coupled source covariance and test nonscalar response trial constructions with a provably sharper robust `Gstar/Sstar` cross-moment enclosure, or a fundamentally new source-frame argument. Simply optimizing a scalar parameter or interpolating these two existing moment brackets is structurally exhausted.
+
+---
+
 # MG39 — Original-source uniform scalar feasibility across full-frequency moments
 
 October 20, 2026. Stacked on [MG38 #287](https://github.com/monocap-tech/weil-lab/pull/287). The MG38 original-source Actions #39508270844 and its final-head #39508452145 passed: the complete original MG30 scalar source residual bound is Loewner-tighter than the MG36 direct-band upper, but all tested accepted scalar/nonscalar source contraction criteria remain nonpositive. MG37 exact original data also ruled out merely tuning Young parameters in the frozen remainder method.
@@ -46,4 +74,4 @@ Pinned data-bearing GitHub Actions: MG24 #39378465438, MG29 #39440914565, MG30 #
 
 If scalar uniformly excluded, the next frontier should improve *correlations in the actual original first/second source moment enclosure*, or construct independently certified nonscalar response witnesses, rather than repeat scalar sampling or direct-band Young refinements.
 
-**MG39 CI: PENDING.**
+**MG39 original-source CI: PASSED; full four-case continuum coverage.**
