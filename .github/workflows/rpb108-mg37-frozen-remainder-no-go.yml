@@ -1,0 +1,84 @@
+name: mg37-original-structural-double-charge-no-go
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg37_frozen_remainder_no_go.py'
+      - 'notes/RPB108_MG37_EXACT_YOUNG_TRACE_BARRIER_20261020.md'
+      - '.github/workflows/rpb108-mg37-frozen-remainder-no-go.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-frozen-remainder-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve independently accepted original MG35 PSD-guarded source certificate
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39488378664
+          name: mg35-true-original-PSD-monotone-remainder-guard
+          github-token: ${{ github.token }}
+          path: artifacts/mg35_verified
+      - name: Certify exact original B-specific double charge Loewner obstruction
+        run: |
+          test -s artifacts/mg35_verified/mg35_original_monotone_PSD_remainder_guard.json
+          python -m py_compile scripts/validate_rpb108_mg37_frozen_remainder_no_go.py
+          python scripts/validate_rpb108_mg37_frozen_remainder_no_go.py --verified-mg35-json artifacts/mg35_verified/mg35_original_monotone_PSD_remainder_guard.json
+      - name: Independent exact rational four-case accounting and no spectral promotion
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg37_original_frozen_remainder_no_go.json"))
+          assert d["status"]=="ORIGINAL_MG37_FROZEN_REMAINDER_DOUBLE_CHARGE_NO_GO"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["verified_MG35_run"]==39488378664
+          assert d["MG35_genuine_original_24D_23pluspole_benchmark"]
+          assert d["true_covariance_frequency_partition_additivity_used"]
+          assert d["all_selected_omitted_upper_matrices_equal_to_MG32_original"]
+          assert d["all_measured_band_additions_are_original_PSD_upper_matrices"]
+          assert d["new_complete_source_upper_is_old_upper_plus_PSD"]
+          assert d["new_complete_source_upper_cannot_improve_old_in_Loewner_order"]
+          assert d["true_four_case_rational_trace_identity_verified"]
+          assert d["actual_MG37_continuous_Young_numerical_barrier_awaits_MG36"]
+          assert [(x["cutoff_k"],x["original_rational_trial"]) for x in d["scenarios"]]==[
+              (12,"MG24_scalar_t"),(12,"matrix_ridge_1/10_blend_1/4"),
+              (16,"MG24_scalar_t"),(16,"matrix_ridge_1/10_blend_1/4")]
+          for x in d["scenarios"]:
+              a,b,c=x["scenarios"]
+              assert [s["frequency_set"] for s in (a,b,c)]==[
+                 "MG32_prefix_only","MG33_contiguous_0to8",
+                 "MG33_hybrid_with_MG19"]
+              assert x["all_measured_added_covariances_upper_PSD"]
+              assert x["full_matrix_Loewner_nonimprovement_structural_proof"]
+              base=Q(x["MG32_complete_upper_trace"])
+              assert Q(a["exact_new_measured_band_upper_trace"])==0
+              assert Q(x["MG35_guarded_complete_upper_trace"])==base+Q(c["exact_new_measured_band_upper_trace"])
+              for y in (a,b,c):
+                  m=Q(y["exact_new_measured_band_upper_trace"])
+                  t=Q(y["exact_total_residual_upper_trace_increase"])
+                  assert m==t and m>=0
+                  assert y["inherited_original_remainder_upper_unchanged"]
+                  assert y["not_smaller_full_upper_in_Loewner_order"]
+                  assert y["exact_trace_identity_passed"]
+                  assert not y["strict_24D_contraction_proved_by_this_order_argument"]
+              assert Q(b["exact_new_measured_band_upper_trace"])>0
+              assert Q(c["exact_new_measured_band_upper_trace"])>0
+          assert not d["original_source_residual_24D_positive_gap_certified"]
+          assert not d["original_470D_strong_inverse_certified"]
+          assert not d["signed_original_51over56_negative_cap_certified"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["complete_even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg37-original-source-frozen-remainder-no-go
+          path: artifacts/mg37_original_frozen_remainder_no_go.json
