@@ -6,6 +6,9 @@ on:
       - 'notes/RPB108_MG24_COMPLETE_FREQUENCY_COUPLED_SOURCE_ENCLOSURES_20261019.md'
       - '.github/workflows/rpb108-mg24-complete-coupled-original.yml'
   workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
 jobs:
   original-coupled-source-moment-24D:
     runs-on: ubuntu-latest
@@ -16,10 +19,19 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install numpy scipy
-      - name: Recompute MG19 true selected moment matrices and complete physical 24D Gstar/Sstar enclosures
+      - name: Fetch accepted original MG19 independent exact-rational certificate
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39363425186
+          name: mg19-original-intersected-relative-weight
+          github-token: ${{ github.token }}
+          path: artifacts/mg19_verified
+      - name: Reconstruct complete physical 24D Gstar/Sstar from verified MG19
         run: |
+          test -s artifacts/mg19_verified/mg19_original_intersected_relative_weighted_moments.json
           python -m py_compile scripts/validate_rpb108_mg24_complete_original_coupled_source_enclosures.py
-          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg24_complete_original_coupled_source_enclosures.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg24_complete_original_coupled_source_enclosures.py --verified-mg19-json artifacts/mg19_verified/mg19_original_intersected_relative_weighted_moments.json
       - name: Independently check pole terms, full-frequency budgets and no spectral promotion
         run: |
           python - <<'PY'
