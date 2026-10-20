@@ -1,0 +1,50 @@
+name: mg21-exact-complete-pole-and-residual-algebra
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg21_complete_pole_residual_algebra.py'
+      - 'notes/RPB108_MG21_FINITE_SOURCE_ANALYTIC_POSITIVITY_AND_RESIDUAL_20261019.md'
+      - '.github/workflows/rpb108-mg21-complete-pole-residual.yml'
+  workflow_dispatch:
+jobs:
+  mg21-true-complete-pole-residual-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact rational source, pole and residual identity regression
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg21_complete_pole_residual_algebra.py
+          python scripts/validate_rpb108_mg21_complete_pole_residual_algebra.py
+      - name: Ensure no original odd/even/Weil theorem promoted from toy algebra
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open("artifacts/mg21_exact_pole_and_residual_identities.json"))
+          assert d["status"]=="EXACT_RATIONAL_POLE_SOURCE_AND_RESIDUAL_IDENTITY_REGRESSION"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["finite_surrogate_ambient_dimension"]==6
+          assert d["finite_surrogate_source_dimension"]==4
+          for key in ("genuine_sinh_pole_analog_is_explicit_source_channel",
+                      "original_pole_gram_column_identity_passed",
+                      "original_pole_Ao_response_column_identity_passed",
+                      "complete_Gstar_Go_minus_2bbstar_identity_passed",
+                      "complete_Sstar_Aostar_squared_mixed_pole_identity_passed",
+                      "complete_strong_residual_RstarR_identity_passed",
+                      "dropping_mixed_pole_cross_terms_detected_as_wrong"):
+              assert d[key]
+          for key in ("analytic_original_compact_support_Fourier_uniqueness_proved_by_script",
+                      "original_physical_24channel_quantitative_gamma_computed",
+                      "complete_original_low_frequency_band_and_tail_integrated",
+                      "original_full470_source_Galerkin_strong_residual_certified"):
+              assert not d[key]
+          assert d["signed_complete_odd_even_Weil_CC27_RH"]=="OPEN"
+          assert d["independent_original_Fourier_form_and_domain_audit"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg21-complete-pole-residual-algebra-regression
+          path: artifacts/mg21_exact_pole_and_residual_identities.json
