@@ -46,6 +46,10 @@ jobs:
           assert d["full_MG15_independent_exact_matrix_and_inertia_replay"]
           assert len(d["tau_candidates"])==7
           assert len(d["cell_diagnostics"])==24
+          assert sum(d["SM43A_reference_choices"].values())==24
+          assert (0<=d["certified_exact_constant_kappa_cells"]<=24)
+          assert (0<=d["nonflat_weighted_reference_cells"]<=24)
+          assert (0<=d["nonzero_weight_reference_gap_cells"]<=24)
           assert len(d["complete_candidate_matrices"])==8
           for order in ("one","two"):
               assert sum(d["selected_tau_counts"][order].values())==24
