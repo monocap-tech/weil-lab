@@ -266,7 +266,7 @@ def main():
         "analytic_nonscalar_rank_one_pole_surrogate_regression":True,
         "floating_solvers_only_propose_never_prove":True,
         "original_24D_any_strict_source_contraction":
-            best["strict_source_contraction"],
+            any(x["strict_source_contraction_obtained"] for x in scenarios),
         "best_original_24D_signed_Gershgorin_margin":
             best["best_signed_Gershgorin_margin"],
         "best_original_24D_source_squared_gap":
