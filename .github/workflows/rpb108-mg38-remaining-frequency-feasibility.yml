@@ -98,22 +98,45 @@ jobs:
               assert tr30>0 and tr36>0
               assert Q(c["MG36_minus_MG30_upper_full24_trace"])==tr36-tr30
               assert Q(c["MG36_to_MG30_full_upper_trace_ratio"])==tr36/tr30
-              for kind,w in [
+              matrices=[]
+              for key in ("MG36_minus_MG30_upper_FULL24",
+                          "necessary_Hlo_minus_band_alone_FULL24"):
+                  M=[[Q(x) for x in row] for row in c[key]]
+                  assert len(M)==24 and all(len(row)==24 for row in M)
+                  assert M==[list(x) for x in zip(*M)]
+                  matrices.append(M)
+              assert sum(matrices[0][i][i] for i in range(24))==Q(
+                  c["MG36_minus_MG30_upper_full24_trace"])
+              for M,(kind,w) in zip(matrices,[
                  (c["MG36_minus_MG30_upper_full24_inertia_gate"],
                   c["MG36_minus_MG30_witness"]),
                  (c["necessary_Hlo_minus_band_alone_inertia_gate"],
-                  c["necessary_Hlo_minus_band_alone_witness"])]:
+                  c["necessary_Hlo_minus_band_alone_witness"])]):
                   assert kind in labels
                   if kind=="NEGATIVE_RATIONAL_RAYLEIGH_WITNESS":
-                      assert Q(w["strict_exact_negative_quadratic"])<0
-                      assert len(w["vector"])==24
-                      assert any(Q(x) for x in w["vector"])
+                      v=[Q(x) for x in w["vector"]]
+                      assert len(v)==24 and any(v)
+                      signed=sum((v[i]*M[i][j]*v[j]
+                          for i in range(24) for j in range(24)),Q(0))
+                      assert signed==Q(w["strict_exact_negative_quadratic"])<0
                       assert w["original_24D_vector"]
                   elif kind=="POSITIVE_RATIONAL_CONGRUENCE_WITNESS":
-                      assert Q(w["exact_congruence_Gershgorin_positive"])>0
+                      from sys import path
+                      path.insert(0,"scripts")
+                      from validate_rpb108_mg25_robust_source_aware_residual import (
+                          mm,T,gersh_lower)
+                      W=[[Q(x) for x in row]
+                          for row in w["exact_rational_congruence_basis"]]
+                      assert len(W)==24 and all(len(row)==24 for row in W)
+                      C=mm(mm(T(W),M),W)
+                      assert C==T(C)
+                      assert gersh_lower(C)==Q(
+                          w["exact_congruence_Gershgorin_positive"])>0
                       assert w["rational_basis_full_rank_by_positivity"]
                   elif kind=="POSITIVE_EXACT_GERSHGORIN":
-                      assert Q(w["exact_Gershgorin_lower"])>0
+                      m=min(M[i][i]-sum((abs(M[i][j]) for j in range(24)
+                              if i!=j),Q(0)) for i in range(24))
+                      assert m==Q(w["exact_Gershgorin_lower"])>0
                   else:
                       assert w=={}
           assert not d["original_470D_strong_inverse_proved"]
