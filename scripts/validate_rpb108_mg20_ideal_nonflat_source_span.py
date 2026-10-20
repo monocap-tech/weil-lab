@@ -119,7 +119,7 @@ def full_original_reference():
     rank_values=exact_rank(vals,N)
     rank_derivatives=exact_rank(derivatives,N)
     rank_combined=exact_rank(vals+derivatives,N)
-    assert rank_combined>=rank_values and rank_combined>=rank_derivatives
+    assert len(rank_combined)>=len(rank_values) and len(rank_combined)>=len(rank_derivatives)
     data={}
     for p in (1,2):
         A=R[p]
