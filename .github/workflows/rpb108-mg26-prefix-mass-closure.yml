@@ -1,0 +1,101 @@
+name: mg26-original-contiguous-prefix-mass-closure
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg26_contiguous_prefix_mass_closure.py'
+      - 'notes/RPB108_MG26_CONTIGUOUS_PREFIX_MASS_CLOSURE_20261019.md'
+      - '.github/workflows/rpb108-mg26-prefix-mass-closure.yml'
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: read
+jobs:
+  original-prefix-coupled-source-24D:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted true-original MG24 complete-frequency coupled moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Compute original contiguous [0,4] true-source H/G/S coupled moment cells and complement
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          python -m py_compile scripts/validate_rpb108_mg26_contiguous_prefix_mass_closure.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg26_contiguous_prefix_mass_closure.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+      - name: Independent exact rational original prefix and complete-frequency proof obligation checks
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg26_contiguous_original_24D_mass_closure.json"))
+          assert d["status"]=="ORIGINAL_CONTIGUOUS_PREFIX_COUPLED_MASS_CLOSURE_24D"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["verified_MG24_run_id"]==39378465438
+          assert d["true_contiguous_prefix_rational_cell_integrals"]
+          assert d["measured_prefix_positive_frequency_upper"]=="4"
+          assert d["remaining_all_frequencies_certified_with_original_physical_mass"]
+          assert d["all_original_prime7_arch_multiplier_cell_bounds"]
+          assert d["true_original_pole_mixed_response_paid"]
+          assert d["not_entire_low_band_numerically_integrated"]
+          assert [x["cell_count"] for x in d["partitions"]]==[8,16]
+          def mat(a):
+              return [[F(x) for x in row] for row in a]
+          def tr(a):return sum(a[i][i] for i in range(len(a)))
+          for p in d["partitions"]:
+              m=p["cell_count"]
+              assert p["true_coverage_no_gaps_or_overlaps"]
+              assert p["actual_original_contiguous_positive_band"]==["0","4"]
+              assert p["number_physical_generators"]==25
+              assert p["number_coupled_transformed_sources"]==24
+              assert p["all_576_source_cross_terms_paid"]
+              for key in ("mass","one","two"):
+                  q=p["prefix_moments"][key]
+                  L,U=mat(q["lower"]),mat(q["upper"])
+                  assert len(L)==len(U)==24
+                  assert all(len(row)==24 for row in L+U)
+                  assert all(L[i][j]==L[j][i] and U[i][j]==U[j][i]
+                             for i in range(24) for j in range(24))
+                  assert F(q["lower_trace"])==tr(L)
+                  assert F(q["upper_trace"])==tr(U)
+                  assert tr(U)>=tr(L)
+                  assert sum(int(n) for n in p["weighted_Young_tau_choice_counts"][key].values())==m
+              assert [c["cutoff_k"] for c in p["complete_original_frequency_scenarios"]]==[12,16]
+              for c in p["complete_original_frequency_scenarios"]:
+                  assert c["full_original_frequencies_accounted_for"]
+                  assert c["mass_complement_used_not_whole_Gram_duplicate"]
+                  assert F(c["measured_positive_frequency_fraction"])==F(4,2**c["cutoff_k"])
+                  for key in ("Gstar","Sstar"):
+                      L=mat(c["whole_"+key+"_lower"])
+                      U=mat(c["whole_"+key+"_upper"])
+                      assert len(L)==len(U)==24
+                      assert all(L[i][j]==L[j][i] and U[i][j]==U[j][i]
+                                 for i in range(24) for j in range(24))
+                      w=F(c["new_"+key+"_bracket_width_trace"])
+                      old=F(c["old_MG24_"+key+"_bracket_width_trace"])
+                      assert w==tr([[U[i][j]-L[i][j] for j in range(24)] for i in range(24)])
+                      assert old>0 and w>=0
+                      assert F(c[key+"_width_ratio_new_to_MG24"])==w/old
+                  assert c["pole_certificate"]["true_Sstar_cross_terms_paid"]
+                  assert c["new_strict_matrix_scalar_residual_certified"]==(
+                      F(c["new_weak_scalar_residual_Gershgorin_margin"])>0)
+          assert not d["original_470D_strong_residual_certified"]
+          assert not d["original_signed_negative_51over56_cap_certified"]
+          assert d["source_24D_is_not_invariant_for_resolvent"]
+          assert d["independent_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg26-original-contiguous-24D-prefix-mass-closure
+          path: artifacts/mg26_contiguous_original_24D_mass_closure.json
