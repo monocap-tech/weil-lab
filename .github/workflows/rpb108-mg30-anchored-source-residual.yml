@@ -1,0 +1,99 @@
+name: mg30-anchored-original-nonscalar-source-residual
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg30_anchored_nonscalar_residual.py'
+      - 'notes/RPB108_MG30_ANCHORED_NONSCALE_SOURCE_RESIDUAL_20261020.md'
+      - '.github/workflows/rpb108-mg30-anchored-source-residual.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-coupled-nonscalar-residual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted original MG24 24D complete-frequency source brackets
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve accepted original MG29 direct adapted third derivative and 32-cell brackets
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Exact original 24D anchored mixed nonscalar strong source residual gates
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          python -m py_compile scripts/validate_rpb108_mg30_anchored_nonscalar_residual.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg30_anchored_nonscalar_residual.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json
+      - name: Independent exact result audit, anchor uncertainty and no spectral promotion
+        run: |
+          python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/mg30_original_24D_anchored_source_aware_residual.json"))
+          assert d["status"]=="ORIGINAL_24D_ANCHORED_NONSCALE_MIXED_RESIDUAL_GATE"
+          assert d["canonical_W_ODD_NEG"]=="OPEN"
+          assert d["verified_original_MG24_run_id"]==39378465438
+          assert d["verified_original_MG29_run_id"]==39440914565
+          assert d["original_complete_frequency_24D_true_pole_brackets"]
+          assert d["original_physical_25D_Gram_reconstructed"]
+          assert d["true_23pluspole_channels"]
+          assert d["scalar_G_error_charged_with_lower_Loewner_not_operator_norm"]
+          assert d["nonscalar_mixed_G_error_paid_with_2normE_normD"]
+          assert d["exact_Fraction_matrix_acceptance"]
+          assert d["analytic_nonscalar_rank_one_pole_surrogate_regression"]
+          assert d["floating_solvers_only_propose_never_prove"]
+          assert [(s["mesh_cells"],s["cutoff_k"]) for s in d["scenarios"]]==[
+              (16,12),(16,16),(32,12),(32,16)]
+          for s in d["scenarios"]:
+              assert s["genuine_original_24D_pole_corrected_complete_frequency"]
+              assert s["source_basis_23boundary_plus_original_sinh_pole"]
+              assert s["H_G_S_same_physical_source_basis"]
+              assert s["original_signed_multiplier_seven_prime_plus_arch_inherited"]
+              assert s["candidate_count"]==len(s["trials"])>=3
+              assert s["nonscalar_candidate_count"]==sum(
+                  t["nonscalar_B"] for t in s["trials"])
+              assert s["trials"][0]["name"]=="MG24_scalar_t"
+              best=max(Q(t["gershgorin_margin"]) for t in s["trials"])
+              assert Q(s["best_signed_Gershgorin_margin"])==best
+              assert s["strict_source_contraction_obtained"]==(best>0)
+              assert s["best_trial"] in [t["name"] for t in s["trials"]]
+              for t in s["trials"]:
+                  margin=Q(t["gershgorin_margin"])
+                  gap=Q(t["certified_source_residual_squared_gap"])
+                  assert 0<=gap<=1
+                  assert t["strict_source_contraction"]==(margin>0)
+                  assert (gap>0)==(margin>0)
+                  assert Q(t["mixed_uncertainty_charge"])==(
+                       2*Q(t["G_uncertainty_norm_upper"])*Q(t["B_minus_anchor_norm"]))
+                  assert t["full_original_operator_470D"] is False
+          best=max(Q(s["best_signed_Gershgorin_margin"]) for s in d["scenarios"])
+          assert Q(d["best_original_24D_signed_Gershgorin_margin"])==best
+          assert d["original_24D_any_strict_source_contraction"]==(best>0)
+          assert not d["actual_full_original_470D_strong_residual_certified"]
+          assert not d["signed_original_negative_51over56_cap_certified"]
+          assert not d["finite_source_subspace_is_invariant"]
+          assert d["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert d["even_Weil_CC27_RH"]=="OPEN"
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg30-true-original-24D-anchored-mixed-source-gate
+          path: artifacts/mg30_original_24D_anchored_source_aware_residual.json
