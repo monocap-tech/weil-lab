@@ -81,7 +81,7 @@ def verify(d):
                 "exact_total_residual_upper_trace_increase":str(full-baseline),
                 "not_smaller_full_upper_in_Loewner_order":True,
                 "exact_trace_identity_passed":True,
-                "can_establish_stricter_24D_source_contraction":False})
+                "strict_24D_contraction_proved_by_this_order_argument":False})
         results.append({
            "cutoff_k":sc["cutoff_k"],
            "original_rational_trial":sc["original_rational_trial"],
