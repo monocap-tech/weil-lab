@@ -216,6 +216,10 @@ def run():
               for name in names}
     selected={order:{name:0 for name in choices} for order in ORDERS}
     diagnostics=[]
+    reference_choices={"original_constant_cell":0,"signed_positive_part_affine":0}
+    certified_flat_kappa_cells=0
+    reference_multiplier_nonflat_cells=0
+    nonzero_multiplier_reference_gap_cells=0
     for left,right,region in panels:
         width=right-left
         mid=(left+right)/2
@@ -232,6 +236,16 @@ def run():
         q=[abs(v[i])+half*abs(d[i])+r[i] for i in range(N)]
         assert all(x>=0 for x in q)
         results,meta=moments_reference(left,right,centers,sources)
+        reference_choices[meta["type"]]+=1
+        if meta["original_weight_error"]>0:
+            nonzero_multiplier_reference_gap_cells+=1
+        first_mom=results[1][0]
+        flat=(first_mom[0]==KAPPA*width and first_mom[1]==0 and
+              first_mom[2]==KAPPA*width**3/12)
+        if not flat:
+            reference_multiplier_nonflat_cells+=1
+        if flat and meta["original_weight_error"]==0:
+            certified_flat_kappa_cells+=1
         diag={"cell_left":str(left),"cell_right":str(right),
               "region":region,"reference_kind":meta["type"],
               "multiplier_mismatch":str(meta["original_weight_error"])}
@@ -313,6 +327,10 @@ def run():
         "tau_candidates":[str(t) for t in CHOSEN_TAUS],
         "selected_tau_counts":selected,
         "cell_diagnostics":diagnostics,
+        "SM43A_reference_choices":reference_choices,
+        "certified_exact_constant_kappa_cells":certified_flat_kappa_cells,
+        "nonflat_weighted_reference_cells":reference_multiplier_nonflat_cells,
+        "nonzero_weight_reference_gap_cells":nonzero_multiplier_reference_gap_cells,
         "complete_candidate_matrices":result,
         "comparison_to_MG15":gain,
         "decision":"Evaluate exact lower inertia vs MG15. If 21 weak lower directions persist, investigate correlated Fourier remainder Gram and full-band geometry rather than assume true negative operator modes."
@@ -330,6 +348,10 @@ def main():
         "cells":data["selected_original_real_frequency_cells"],
         "results":data["comparison_to_MG15"],
         "selected":data["selected_tau_counts"],
+        "reference_choices":data["SM43A_reference_choices"],
+        "flat_kappa_cells":data["certified_exact_constant_kappa_cells"],
+        "nonflat_reference_cells":data["nonflat_weighted_reference_cells"],
+        "nonzero_reference_gap_cells":data["nonzero_weight_reference_gap_cells"],
         "complete_odd_even_Weil_RH":"OPEN"
     }),flush=True)
 if __name__=="__main__":
