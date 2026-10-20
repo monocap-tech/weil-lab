@@ -50,6 +50,11 @@ jobs:
           assert (0<=d["certified_exact_constant_kappa_cells"]<=24)
           assert (0<=d["nonflat_weighted_reference_cells"]<=24)
           assert (0<=d["nonzero_weight_reference_gap_cells"]<=24)
+          assert d["certified_exact_constant_kappa_cells"]==24
+          assert d["nonflat_weighted_reference_cells"]==0
+          assert d["nonzero_weight_reference_gap_cells"]==0
+          assert d["entire_24cell_exact_flat_multiplier_method_no_go"]
+          assert d["entire_MG15_MG16_original_24x24_lower_and_upper_matrices_identical"]
           assert len(d["complete_candidate_matrices"])==8
           for order in ("one","two"):
               assert sum(d["selected_tau_counts"][order].values())==24
