@@ -158,7 +158,7 @@ def main():
         part=calculate_mesh(mesh,prep)
         meshparts[mesh]=part
         archive=next(x for x in m29["meshes"] if x["mesh_cells"]==mesh)
-        assert part["sum_29_radii"]==Q(archive["total_source_radius_MG29"])
+        assert Q(part["sum_29_radii"])==Q(archive["total_source_radius_MG29"])
         for key in ("mass","one","two"):
             actual=part["matrices"]["mg29_third"][key]["trace_width"]
             assert actual==Q(archive["prefix_widths"][key]["mg29_direct_third_trace_width"])
