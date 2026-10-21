@@ -105,10 +105,10 @@ jobs:
           assert out["all_reported_matrix_signs_require_exact_rational_LDL_or_Rayleigh"]
           assert [(x["mesh_cells"],x["cutoff_k"]) for x in out["scenarios"]]==[
               (16,12),(16,16),(32,12),(32,16)]
-          def read(x):
+          def read(x, require_symmetric=True):
               A=[[F(t) for t in row] for row in x]
               assert len(A)==24 and all(len(row)==24 for row in A)
-              assert A==T(A)
+              if require_symmetric:assert A==T(A)
               return A
           def trace(A):
               return sum((A[i][i] for i in range(24)),F(0))
@@ -147,8 +147,10 @@ jobs:
               old=next(t for t in c40["all_rational_candidate_results"]
                        if t["name"]==case["source_response_name"])
               assert case["source_anchor_t"]==old["source_anchor_t"]
-              B=read(case["exact_original_rational_B"])
-              assert B==read(old["B_original_exact_rational"])
+              # Nonscalar response B is not required to be symmetric;
+              # only source moment and residual Gram matrices are.
+              B=read(case["exact_original_rational_B"],False)
+              assert B==read(old["B_original_exact_rational"],False)
               t=F(old["source_anchor_t"]);D=sub(B,mul(t,Id(24)))
               assert any(v for row in D for v in row)
               LG0=read(c24["complete_Gstar_lower"])
