@@ -1,0 +1,64 @@
+name: mg48-complete-frequency-joint-multiplier-covariance
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg48_joint_multiplier_covariance.py'
+      - 'scripts/validate_rpb108_mg48_independent_joint_replay.py'
+      - 'notes/RPB108_MG48_JOINT_MULTIPLIER_COVARIANCE_20261021.md'
+      - '.github/workflows/rpb108-mg48-joint-multiplier-covariance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-complete-source-joint-multiplier-24D:
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve independently accepted original MG24 global tail
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve independently accepted original MG46 missing source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39638393721
+          name: mg46-original-complete-missing-GS-256-matrix-audit
+          github-token: ${{ github.token }}
+          path: artifacts/mg46_verified
+      - name: Retrieve independently accepted final-head MG47 source covariance
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39663431182
+          name: mg47-original-conditioned-864-whole-missing-GS-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg47_verified
+      - name: Compile and validate pinned exact source records
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg48_joint_multiplier_covariance.py scripts/validate_rpb108_mg48_independent_joint_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json
+          test -s artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json
+      - name: Construct original 864 complete-frequency joint polynomial source uppers
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg48_joint_multiplier_covariance.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg46-json artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json
+      - name: Independently reconstruct 864 full exact 24D original candidate matrices
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg48_independent_joint_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg46-json artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json --verified-mg48-json artifacts/mg48_joint_multiplier_source_covariance.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg48-original-joint-multiplier-864-source-matrices
+          path: artifacts/mg48_joint_multiplier_source_covariance.json
+          if-no-files-found: ignore
