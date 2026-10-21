@@ -67,7 +67,7 @@ def diag(values):
     R=[[Q(0) for _ in range(N)] for _ in range(N)]
     for i in range(N):R[i][i]=values[i]
     return R
-def recombine(Hup,HClo,HCup,bmid,brad,B,k,tau1,tau2):
+def recombine(Hlo,Hup,HClo,HCup,bmid,brad,B,k,tau1,tau2):
     """Exact original omitted-frequency source residual candidate family."""
     Hremup=sub(Hup,HClo)
     assert Hremup==T(Hremup)
@@ -93,7 +93,7 @@ def recombine(Hup,HClo,HCup,bmid,brad,B,k,tau1,tau2):
     ds_sum=sum(ds,Q(0))
     directionalfee=diag([4*massP*ds[i]*ds_sum for i in range(N)])
     assert psd(scalarfee) and psd(directionalfee)
-    Hremlo=sub(Hlower,HCup)
+    Hremlo=sub(Hlo,HCup)
     lows={
        "PSD_zero":diag([Q(0)]*N),
        "kappa_missing_mass":mul(KAPPA,Hremlo),
@@ -142,7 +142,6 @@ def main():
     assert m45["total_original_exact_rays"]==12
     Hmid,Hrad,Herr=original_H24_from_physical_source()
     assert Herr==Q(m24["physical_Gram_Loewner_row_error"])
-    global Hlower
     Hlower=sub(Hmid,mul(Herr,Id(N)))
     Hupper=plus(Hmid,mul(Herr,Id(N)))
     bmid=[Hmid[i][P] for i in range(N)]
@@ -171,7 +170,7 @@ def main():
         original_band,sourceR,chosen_taus=m32.joint_prefix_upper(
             cells,bmid,brad,B)
         candidates,Hremup,Sup,Gup,ds,fee0,fee1=recombine(
-            Hupper,HClo,HCup,bmid,brad,B,k,tau1,tau2)
+            Hlower,Hupper,HClo,HCup,bmid,brad,B,k,tau1,tau2)
         baseline_lower=sub(Hlower,plus(original_band,oldrem))
         oldmargin=gersh_lower(baseline_lower)
         tests=[]
