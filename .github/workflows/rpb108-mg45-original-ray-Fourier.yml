@@ -1,0 +1,78 @@
+name: mg45-original-signed-physical-Fourier-ray-correlation
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg45_direct_original_ray_fourier.py'
+      - 'scripts/validate_rpb108_mg45_independent_ray_replay.py'
+      - 'notes/RPB108_MG45_ORIGINAL_RAY_FOURIER_CORRELATIONS_20261020.md'
+      - '.github/workflows/rpb108-mg45-original-ray-Fourier.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  genuine-original-full-frequency-source-residual-ray:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Pin accepted original mg24 source evidence
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Pin accepted original mg29 source evidence
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Pin accepted original mg32 source evidence
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39459624082
+          name: mg32-actual-original-joint-24D-Fourier-residual
+          github-token: ${{ github.token }}
+          path: artifacts/mg32_verified
+      - name: Pin accepted original mg43 source evidence
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39522608989
+          name: mg43-original-independent-G-S-full24-source-grid
+          github-token: ${{ github.token }}
+          path: artifacts/mg43_verified
+      - name: Pin accepted original mg44 source evidence
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39542236311
+          name: mg44-original-exact-coupled-source-directional-12-ray-audit
+          github-token: ${{ github.token }}
+          path: artifacts/mg44_verified
+      - name: Original signed Fourier-cell coupling selftest
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg45_direct_original_ray_fourier.py scripts/validate_rpb108_mg45_independent_ray_replay.py
+          OPENBLAS_NUM_THREADS=2 python scripts/validate_rpb108_mg45_direct_original_ray_fourier.py --self-test
+      - name: New exact original physical source integrand and complete-frequency complement
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg45_direct_original_ray_fourier.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg32-json artifacts/mg32_verified/mg32_joint_original_source_residual.json --verified-mg43-json artifacts/mg43_verified/mg43_original_independent_G_S_matrix_blend.json --verified-mg44-json artifacts/mg44_verified/mg44_original_exact_directional_coupled_source.json
+      - name: Independent original source Fourier/pole 384-cell algebra and complement replay
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg45_independent_ray_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg32-json artifacts/mg32_verified/mg32_joint_original_source_residual.json --verified-mg43-json artifacts/mg43_verified/mg43_original_independent_G_S_matrix_blend.json --verified-mg44-json artifacts/mg44_verified/mg44_original_exact_directional_coupled_source.json --verified-mg45-json artifacts/mg45_original_joint_ray_fourier_residual.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg45-original-signed-source-Fourier-ray-384-cells
+          path: artifacts/mg45_original_joint_ray_fourier_residual.json
+          if-no-files-found: ignore
