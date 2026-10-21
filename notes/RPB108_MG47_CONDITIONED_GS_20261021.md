@@ -1,3 +1,22 @@
+## MG47 ACCEPTED result — exact original conditioned G/S source-matrix audit
+
+**Calculation and independent Actions verification [#39647001900](https://github.com/monocap-tech/weil-lab/actions/runs/39647001900) PASSED**, with complete independent reconstruction of **864 actual original rational 24×24 remainder-plus-direct source matrices** (216 per source case), all four selection comparisons with MG43 and MG46, exact rational source inertia witnesses, and 12 original MG45 directional probes. Artifact `mg47-original-conditioned-864-whole-missing-GS-source-matrices`, ID **12368224485**. Both the main and independent auditors reconstruct MG29's actual unpoled first/second original source moments (not retained in full matrix form in the compact MG29 artifact), then replay the archived MG29 original whole-frequency pole-corrected results before using them.
+
+| Genuine original source mesh | cutoff | independently accepted MG43 whole-source Gersh lower | MG46 measured-plus-omitted lower | MG47 NEW conditioned omitted source lower | selected whole-source method |
+|---|---:|---:|---:|---:|---|
+| 16 | 12 | **−1.3146427911** | −23.5378520490 | −56.5433084417 | MG43 |
+| 16 | 16 | **−1.4906207885** | −24.3754671028 | −60.8518883477 | MG43 |
+| 32 | 12 | **−1.1941733535** | −23.3976529332 | −56.4841599953 | MG43 |
+| 32 | 16 | **−1.3130469460** | −24.2759854700 | −60.8408440405 | MG43 |
+
+The independent audit accepted **all 864 exact reconstructed candidate source upper matrices** as formulas derived from previously valid original Loewner enclosures and checked their matrix entries, Gersh margins and traces. The coarse interval subtraction `G_whole−G_C` and `S_whole−S_C` produces new mathematically valid physical omitted-frequency constraints, but the resulting independently bounded source uncertainty remains too large to compete with MG43's accepted WHOLE-frequency source estimate. All four selected full-source conservative lower matrices are MG43's; each has a separately verified **exact negative rational Rayleigh witness**. The number of strict original 24D source contraction certificates is **ZERO**. There is no inference of negativity of the actual physical residual or signed original Weil operator.
+
+The additional convex interpolation of complete-source matrix UPPERS is valid in Loewner order, but no tested MG43↔MG47 mixture surpasses MG43 on the signed Gersh criterion. This finite original matrix family does NOT prove optimality of MG43, nor rule out stronger genuine correlated source moments or a different nonscalar response. There was **no new original physical Fourier measurement**; the contribution is certified reconstruction and exhaustion of an explicit whole-minus-measured bound family.
+
+**MG48 frontier:** move away from separate moment envelope subtraction. Seek a genuinely NEW original signed *joint* residual or frequency-conditioned moment inequality that preserves a shared multiplier/source covariance relation, including the high-frequency tail and pole, and compare with MG43 by full rational matrix sign. Avoid a new recursion of wide independently extremized G/S enclosures. All original-470, signed 51/56, independent Fourier/form/domain, even/Weil/CC27/RH remain OPEN.
+
+---
+
 # MG47 — Independent original whole-minus-measured first/second moments conditioned on the genuine omitted spectrum
 
 October 21, 2026. Stacked on MG46 [PR #295](https://github.com/monocap-tech/weil-lab/pull/295), whose original complete-frequency exact-rational 256-case calculation [Actions #39638393721](https://github.com/monocap-tech/weil-lab/actions/runs/39638393721) and final-head [Actions #39641040044](https://github.com/monocap-tech/weil-lab/actions/runs/39641040044) both PASSED. MG46 retained genuine original first-moment G and second-moment S cross terms over ALL omitted frequencies, strictly improving MG32's old measured-plus-missing sufficient source matrix bounds, but still weaker than MG43's independent whole-frequency source enclosures.
@@ -60,4 +79,4 @@ MG29's archived accepted artifact contains the pole-corrected Gstar/Sstar matric
 
 **Scope:** This constructs no new physical Fourier generator measurements and proves no exact full original spectral negative index. Even if a finite source certificate became positive it would NOT prove 470D strong inverse, signed odd 51/56 cap, independent Fourier/form/domain identification, even/Weil/CC27/RH. All remain OPEN.
 
-**Computation-bearing Actions and independent full-matrix replay PENDING.**
+**MG47 calculation and independent 864-matrix actual-source exact rational audit PASSED. No strict source contraction.**
