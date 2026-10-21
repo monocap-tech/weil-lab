@@ -187,7 +187,13 @@ def main():
                     assert item["selected_method"]=="MG30_isotropic"
                     fee=mul(F(item["old_isotropic_fee"]),Id(N))
                 assert psd(fee)
-                assert gersh_lower(sub(ideal,fee))==actual_margin
+                actual=sub(ideal,fee)
+                assert gersh_lower(actual)==actual_margin
+                # Independently classify the ACTUAL certified source
+                # matrix: a negative Gersh lower is NOT an eigenvalue.
+                actual_kind,actual_witness=classify_ideal(actual)
+                assert actual_kind in ("NEGATIVE_EXACT_RATIONAL_RAYLEIGH",
+                   "POSITIVE_EXACT_RATIONAL_LDL","INCONCLUSIVE")
                 # For exact negative witness quantify the maximum
                 # unavoidable obstruction and the separately
                 # charged uncertainty on its same source direction.
@@ -215,14 +221,24 @@ def main():
                     "exact_rational_ideal_witness":w,
                     "witness_decomposition":decomposition,
                     "MG40_mixed_error_fee_is_PSD":True,
+                    "actual_MG40_source_certificate_inertia_gate":actual_kind,
+                    "actual_MG40_source_certificate_exact_witness":actual_witness,
+                    "actual_MG40_source_strict_positive_LDL_certified":
+                          actual_kind=="POSITIVE_EXACT_RATIONAL_LDL",
                     "original_complete_operator_negative_mode_proved":False})
             assert len(trials)==src["accepted_candidate_count"]-3==6
             counts={
                 kind:sum(x["ideal_zero_G_cross_fee_status"]==kind for x in trials)
                 for kind in ("NEGATIVE_EXACT_RATIONAL_RAYLEIGH",
                              "POSITIVE_EXACT_RATIONAL_LDL","INCONCLUSIVE")}
+            actual_counts={
+                kind:sum(x["actual_MG40_source_certificate_inertia_gate"]==kind
+                         for x in trials)
+                for kind in ("NEGATIVE_EXACT_RATIONAL_RAYLEIGH",
+                             "POSITIVE_EXACT_RATIONAL_LDL","INCONCLUSIVE")}
             scenarios.append({
                "mesh_cells":mesh,"cutoff_k":k,
+               "actual_MG40_certificate_inertia_counts":actual_counts,
                "true_original_23adapted_plus_sinh_pole":True,
                "all_real_frequency_source_H_G_S_enclosed":True,
                "original_signed_arch_seven_prime_pole_retained":True,
@@ -249,7 +265,9 @@ def main():
       "all_tested_nonscalar_B_fee_only_refinement_obstructed":
           all(s["every_tested_nonscalar_B_fee_only_refinement_obstructed"]
               for s in scenarios),
-      "source_24D_strict_residual_contraction_certified":False,
+      "source_24D_strict_residual_contraction_certified":any(
+          x["actual_MG40_source_strict_positive_LDL_certified"]
+          for scenario in scenarios for x in scenario["trials"]),
       "full_original_470D_strong_inverse_certified":False,
       "signed_original_51over56_negative_cap_certified":False,
       "independent_original_Fourier_form_domain_audit":"OPEN",
@@ -265,9 +283,17 @@ def main():
               "NEGATIVE_EXACT_RATIONAL_RAYLEIGH"],
         "ideal_positive":s["classification_counts"][
               "POSITIVE_EXACT_RATIONAL_LDL"],
-        "inconclusive":s["classification_counts"]["INCONCLUSIVE"]}
+        "inconclusive":s["classification_counts"]["INCONCLUSIVE"],
+        "actual_fee_bearing_negative":s[
+            "actual_MG40_certificate_inertia_counts"]["NEGATIVE_EXACT_RATIONAL_RAYLEIGH"],
+        "actual_fee_bearing_positive":s[
+            "actual_MG40_certificate_inertia_counts"]["POSITIVE_EXACT_RATIONAL_LDL"],
+        "actual_fee_bearing_inconclusive":s[
+            "actual_MG40_certificate_inertia_counts"]["INCONCLUSIVE"]}
         for s in scenarios],
         "all_nonscalar_fee_only_obstructed":
          out["all_tested_nonscalar_B_fee_only_refinement_obstructed"],
+        "any_actual_24D_source_LDL_positive":
+         out["source_24D_strict_residual_contraction_certified"],
         "original_470D_even_Weil_RH":"OPEN"}),flush=True)
 if __name__=="__main__":main()
