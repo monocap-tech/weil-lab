@@ -142,7 +142,7 @@ def main():
     assert m45["status"]=="ORIGINAL_MG45_SIGNED_SOURCE_RAY_FOURIER_RESIDUAL_LINEARIZATION"
     Hmid,Hrad,Herr=original_H24_from_physical_source()
     assert Herr==Q(m24["physical_Gram_Loewner_row_error"])
-    Hlo=sub(Hmid,mul(-Herr,Id(N))) if False else sub(Hmid,mul(Herr,Id(N)))
+    Hlo=sub(Hmid,mul(Herr,Id(N)))
     Hup=plus(Hmid,mul(Herr,Id(N)))
     bmid=[Hmid[i][P] for i in range(N)]
     brad=[Hrad[i][P] for i in range(N)]
@@ -156,7 +156,7 @@ def main():
     GCU=mat(measured["one"]["upper_matrix"])
     SCL=mat(measured["two"]["lower_matrix"])
     assert psd(sub(GCU,GCL))
-    assert psd(SCL) or True # Valid Loewner lower need not PSD after conservative rounding.
+    assert SCL==T(SCL) # A Loewner lower need not be PSD.
     m32.cutoff_tail={x["cutoff_k"]:Q(x["complete_original_strong_tail_rational"])
                      for x in m24["cases"]}
     scenarios=[]
