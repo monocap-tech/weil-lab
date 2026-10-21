@@ -1,0 +1,91 @@
+name: mg47-original-whole-minus-measured-conditioned-GS
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg47_conditioned_original_moments.py'
+      - 'scripts/validate_rpb108_mg47_independent_conditioned_replay.py'
+      - 'notes/RPB108_MG47_CONDITIONED_GS_20261021.md'
+      - '.github/workflows/rpb108-mg47-conditioned-original-GS.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  actual-physical-original-24D-whole-minus-measured-moments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve independently accepted original mg24 source data
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve independently accepted original mg29 source data
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Retrieve independently accepted original mg32 source data
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39459624082
+          name: mg32-actual-original-joint-24D-Fourier-residual
+          github-token: ${{ github.token }}
+          path: artifacts/mg32_verified
+      - name: Retrieve independently accepted original mg43 source data
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39522608989
+          name: mg43-original-independent-G-S-full24-source-grid
+          github-token: ${{ github.token }}
+          path: artifacts/mg43_verified
+      - name: Retrieve independently accepted original mg45 source data
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39544081287
+          name: mg45-original-signed-source-Fourier-ray-384-cells
+          github-token: ${{ github.token }}
+          path: artifacts/mg45_verified
+      - name: Retrieve independently accepted original mg46 source data
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39638393721
+          name: mg46-original-complete-missing-GS-256-matrix-audit
+          github-token: ${{ github.token }}
+          path: artifacts/mg46_verified
+      - name: Compile main and separate independent original source replay
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg47_conditioned_original_moments.py scripts/validate_rpb108_mg47_independent_conditioned_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg32_verified/mg32_joint_original_source_residual.json
+          test -s artifacts/mg43_verified/mg43_original_independent_G_S_matrix_blend.json
+          test -s artifacts/mg45_verified/mg45_original_joint_ray_fourier_residual.json
+          test -s artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json
+      - name: Reconstruct accepted MG29 true unpoled source moments and certify 864 valid original full24 residuals
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg47_conditioned_original_moments.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg32-json artifacts/mg32_verified/mg32_joint_original_source_residual.json --verified-mg43-json artifacts/mg43_verified/mg43_original_independent_G_S_matrix_blend.json --verified-mg45-json artifacts/mg45_verified/mg45_original_joint_ray_fourier_residual.json --verified-mg46-json artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json
+      - name: Independent original MG29 reconstruction and exact full24 matrix source/inertia audit
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg47_independent_conditioned_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg32-json artifacts/mg32_verified/mg32_joint_original_source_residual.json --verified-mg43-json artifacts/mg43_verified/mg43_original_independent_G_S_matrix_blend.json --verified-mg45-json artifacts/mg45_verified/mg45_original_joint_ray_fourier_residual.json --verified-mg46-json artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json --verified-mg47-json artifacts/mg47_original_conditioned_missing_moments.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg47-original-conditioned-864-whole-missing-GS-source-matrices
+          path: artifacts/mg47_original_conditioned_missing_moments.json
+          if-no-files-found: ignore
