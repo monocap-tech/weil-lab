@@ -1,3 +1,25 @@
+## MG41 accepted actual-original 24D exact inertia separation
+
+**[Actions #39519080670](https://github.com/monocap-tech/weil-lab/actions/runs/39519080670) PASSED**, including full independent reconstruction of original (H_{⁠lo},H_{⁠up},G_{\ast},S_{\ast}), every original nonscalar response B from independently accepted MG40, each PSD mixed-G fee and the **exact rational classification of BOTH the optimistic zero-fee matrix and the actual fee-bearing accepted MG40 lower certificate**. Artifact `mg41-original-ideal-cross-fee-24D-feasibility`, ID **12310486082**. The earlier initial successful [Actions #39518679957](https://github.com/monocap-tech/weil-lab/actions/runs/39518679957) verified ideal cores only; final stronger run additionally classifies the actual fee-bearing matrices.
+
+| MG29 original source mesh | cutoff | original nonscalar B trials | ideal M_ideal exact positive rational LDL | actual MG40 M_ideal−F exact NEGATIVE rational Rayleigh | inconclusive |
+|---|---|---:|---:|---:|---:|
+| 16 | 2^12 | 6 | **6/6** | **6/6** | 0 |
+| 16 | 2^16 | 6 | **6/6** | **6/6** | 0 |
+| 32 | 2^12 | 6 | **6/6** | **6/6** | 0 |
+| 32 | 2^16 | 6 | **6/6** | **6/6** | 0 |
+| **Total** | | **24** | **24/24** | **24/24** | **0** |
+
+For each fixed B, `M_ideal=Hlo-U_core` was proven **strictly positive definite** via all 24 positive EXACT rational LDL Schur pivots. This means the existing fixed response B and the currently frozen original physical H/G/S center information **could** support positivity if the mixed G uncertainty payment were zero. It is an optimistic necessary-condition result, not actual source contraction.
+
+Independently, the **actual** accepted MG40 source lower matrix `M_actual=M_ideal-F`, with the genuine PSD anisotropic/isotropic uncertainty fee `F≽0`, has an exact rational nonzero v with `v^T M_actual v<0` in **all 24** tested cases. The CI verifier reconstructed each v, fee F, original M matrices and negative signs and distinguished these from Gershgorin lower bounds. Therefore MG40's failed positivity is NOT merely an artifact of Gershgorin nonsharpness; the actual present **conservative source lower matrices** fail positivity.
+
+**MG42 frontier:** mathematically quantify how much directional mixed-G uncertainty can be safely paid while preserving `M_ideal-F\succ0`. For each exact rational B, evaluate generalized PSD domination `F\prec M_ideal` or an independently certified rational upper threshold; use directional source matrices rather than more scalar trace tuning. Pursue new correlated first-/second-moment information or a stronger nonscalar B. The **24 original tested B** have a true fee budget gap under currently certified envelopes. This result does NOT exclude alternate B or tighter original moment information.
+
+The actual signed original Weil operator's spectral index, all-470 inverse, signed 51/56 odd cap, independently audited Fourier/form/domain, complete even/Weil/CC27/RH remain **OPEN**. A negative source **lower certificate** has no logical implication that the true residual or original signed operator is negative.
+
+---
+
 # MG41 — Original nonscalar ideal mixed-first-moment error feasibility
 
 October 20, 2026. Stacked on [MG40 PR #289](https://github.com/monocap-tech/weil-lab/pull/289), verified in original source Actions #39513403010 with final-head Actions #39513848796. MG40 improved six exact rational nonscalar response margins per original MG29 mesh/cutoff by using the complete matrix-valued source first-moment uncertainty fee
@@ -36,4 +58,4 @@ The main branching question is: **does the nonscalar positivity obstruction live
 
 Canonical W-ODD-NEG, true original all-470 strong inverse, signed odd 51/56 negative cap, independently audited original Fourier/form/domain, complete even/Weil/CC27/RH all remain **OPEN**.
 
-**Calculation and independent CI pending.**
+**MG41 accepted original double-inertia audit; no actual source contraction.**
