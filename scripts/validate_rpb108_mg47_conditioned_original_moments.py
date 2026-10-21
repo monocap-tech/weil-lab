@@ -38,6 +38,8 @@ from validate_rpb108_mg25_robust_source_aware_residual import (
     Id,T,mm,plus,sub,mul,shift,gersh_lower,psd)
 from validate_rpb108_mg41_ideal_cross_error_feasibility import classify_ideal
 from validate_rpb108_mg23_physical_metric_matrix_envelope import KAPPA
+from validate_rpb108_mg26_contiguous_prefix_mass_closure import original_partition_preparation
+from validate_rpb108_mg29_adapted_third_curvature import calculate_mesh,original_scenarios
 N=24;P=23
 ETAS=(Q(1,4),Q(1))
 GAMMAS=(Q(1,4),Q(1))
@@ -54,7 +56,7 @@ def diag(ds):
     R=[[Q(0)]*N for _ in range(N)]
     for i in range(N):R[i][i]=ds[i]
     return R
-def extrapolate(Hlo,Hup,HClo,HCup,GCL,GCU,SCL,m24,m29,k,mesh):
+def extrapolate(Hlo,Hup,HClo,HCup,GCL,GCU,SCL,m24,whole29,k,mesh):
     mass=sub(Hup,HClo)
     assert mass==T(mass) and psd(mass)
     M=Q(17)+Q(347*k,500)
@@ -76,9 +78,7 @@ def extrapolate(Hlo,Hup,HClo,HCup,GCL,GCU,SCL,m24,m29,k,mesh):
         "MG24_whole_minus_measured":sub(
             mat(row24["complete_original_So_upper"]),SCL),
     }
-    row29=next(x for x in next(q for q in m29["meshes"]
-        if q["mesh_cells"]==mesh)["full_original_frequency_scenarios"]
-        if x["cutoff_k"]==k)
+    row29=next(x for x in whole29[mesh] if x["cutoff_k"]==k)
     Glo["MG29_whole_minus_measured"]=sub(mat(row29["whole_Go_lower"]),GCU)
     Gup["MG29_whole_minus_measured"]=sub(mat(row29["whole_Go_upper"]),GCL)
     Sup["MG29_whole_minus_measured"]=sub(mat(row29["whole_So_upper"]),SCL)
@@ -150,8 +150,31 @@ def main():
     assert [str(x) for x in brad]==m24["original_pole_b_radii"]
     cells,HClo,HCup,radius,oldtau=m32.exact_original_cells()
     assert len(cells)==32
-    measured=next(x for x in m29["meshes"] if x["mesh_cells"]==32)[
-       "matrices"]["mg29_third"]
+    # Reconstruct MG29's original unpoled prefix and whole G/S
+    # matrices, which MG29's accepted compact artifact did not store.
+    prep=original_partition_preparation()
+    meshparts={};whole29={}
+    for mesh in (16,32):
+        part=calculate_mesh(mesh,prep)
+        meshparts[mesh]=part
+        archive=next(x for x in m29["meshes"] if x["mesh_cells"]==mesh)
+        assert part["sum_29_radii"]==Q(archive["total_source_radius_MG29"])
+        for key in ("mass","one","two"):
+            actual=part["matrices"]["mg29_third"][key]["trace_width"]
+            assert actual==Q(archive["prefix_widths"][key]["mg29_direct_third_trace_width"])
+        recon=original_scenarios(part,m24,Hmid,Herr,bmid,brad,
+                                 bmid[P],brad[P])["mg29_third"]
+        assert len(recon)==2
+        for row in recon:
+            old=next(x for x in archive["full_original_frequency_scenarios"]
+                     if x["cutoff_k"]==row["cutoff_k"])
+            for key in ("Gstar","Sstar"):
+                assert enc(row["whole_"+key+"_lower"])==old[
+                    "full_original_"+key+"_lower"]
+                assert enc(row["whole_"+key+"_upper"])==old[
+                    "full_original_"+key+"_upper"]
+        whole29[mesh]=recon
+    measured=meshparts[32]["matrices"]["mg29_third"]
     GCL=mat(measured["one"]["lower_matrix"])
     GCU=mat(measured["one"]["upper_matrix"])
     SCL=mat(measured["two"]["lower_matrix"])
@@ -173,7 +196,7 @@ def main():
         direct,sourceR,choices=m32.joint_prefix_upper(cells,bmid,brad,B)
         assert direct==mat(r46["original_MG32_direct_band_24D_upper"])
         mass,Ls,Us,Ss=extrapolate(
-            Hlo,Hup,HClo,HCup,GCL,GCU,SCL,m24,m29,k,mesh)
+            Hlo,Hup,HClo,HCup,GCL,GCU,SCL,m24,whole29,k,mesh)
         candidates,ds=make_uppers(mass,Ls,Us,Ss,B,bmid,brad)
         alltests=[];scored=[]
         for lname,uname,sname,eta,gamma,pname,upper in candidates:
