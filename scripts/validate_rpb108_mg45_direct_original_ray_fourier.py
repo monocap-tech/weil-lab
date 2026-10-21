@@ -59,7 +59,8 @@ def qf(v,A):
 def matrix_vector(A,v):
     assert len(A)==N and all(len(row)==N for row in A)
     return [vec_dot(row,v) for row in A]
-def one_cell(z,u,bmid,brad,cell):
+def one_cell(z,B,bmid,brad,cell):
+    u=matrix_vector(B,z)
     left,right,lo,hi,v,d,r=cell
     assert left<right and 0<lo<=hi and len(v)==len(d)==len(r)==N
     width=right-left;half=width/2
@@ -80,8 +81,7 @@ def one_cell(z,u,bmid,brad,cell):
     # enclosure and project its absolute error radii on this z.
     prior=Q(0)
     for j in range(N):
-        cij=lambda i:Q(i==j)-a0*u_dummy[i] if False else Q(0)
-        bj=sum((bmid[i]*mg_B[i][j] for i in range(N)),Q(0))
+        bj=sum((bmid[i]*B[i][j] for i in range(N)),Q(0))
         rowrad=sum((r[i]*abs(Q(i==j)-a0*mg_B[i][j]
              +(2*bj if i==P else Q(0))) for i in range(N)),Q(0))
         weight=da*sum((abs(mg_B[i][j])*
@@ -107,10 +107,7 @@ def one_cell(z,u,bmid,brad,cell):
 # Deliberately avoid an implicit/global B parameter at acceptance:
 # the full B is supplied through this wrapper.
 def cell_bounds(z,B,bmid,brad,cell):
-    global mg_B
-    mg_B=B
-    u=matrix_vector(B,z)
-    return one_cell(z,u,bmid,brad,cell)
+    return one_cell(z,B,bmid,brad,cell)
 def synthetic_regression():
     Z=[Q(0)]*N;Z[0]=Q(1);Z[1]=Q(-1)
     B=[[Q(i==j) for j in range(N)] for i in range(N)]
