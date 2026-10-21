@@ -1,0 +1,224 @@
+name: mg42-original-exact-relative-mixed-G-uncertainty-budget
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg42_relative_source_uncertainty_budget.py'
+      - 'notes/RPB108_MG42_RELATIVE_SOURCE_UNCERTAINTY_BUDGET_20261020.md'
+      - '.github/workflows/rpb108-mg42-relative-source-uncertainty.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-full-24D-relative-source-uncertainty:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted MG24 original complete source H and pole moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve accepted MG29 original source G/S moment brackets
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Retrieve accepted MG40 original nonscalar matrix responses
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39513403010
+          name: mg40-original-anisotropic-G-cross-source-24D
+          github-token: ${{ github.token }}
+          path: artifacts/mg40_verified
+      - name: Retrieve accepted MG41 original ideal-positive and fee-bearing negative inertia
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39519080670
+          name: mg41-original-ideal-cross-fee-24D-feasibility
+          github-token: ${{ github.token }}
+          path: artifacts/mg41_verified
+      - name: Test synthetic exact rational relative source fee threshold
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg42_relative_source_uncertainty_budget.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg42_relative_source_uncertainty_budget.py --self-test
+      - name: Certify four original full-frequency 24D source relative fee budget intervals
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg40_verified/mg40_original_anisotropic_cross_error.json
+          test -s artifacts/mg41_verified/mg41_original_ideal_cross_error_feasibility.json
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg42_relative_source_uncertainty_budget.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg40-json artifacts/mg40_verified/mg40_original_anisotropic_cross_error.json --verified-mg41-json artifacts/mg41_verified/mg41_original_ideal_cross_error_feasibility.json
+      - name: Independent source H/G/S reconstruction, complete fee and exact rational bracket witness audit
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python - <<'PY'
+          import json,sys
+          from fractions import Fraction as Q
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          sys.path.insert(0,"scripts")
+          from validate_rpb108_mg25_original24_robust_trial import original_H24_from_physical_source
+          from validate_rpb108_mg25_robust_source_aware_residual import (
+              Id,T,mm,plus,sub,mul,psd)
+          source24=json.load(open("artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json"))
+          source29=json.load(open("artifacts/mg29_verified/mg29_original_direct_third_drift.json"))
+          source40=json.load(open("artifacts/mg40_verified/mg40_original_anisotropic_cross_error.json"))
+          source41=json.load(open("artifacts/mg41_verified/mg41_original_ideal_cross_error_feasibility.json"))
+          data=json.load(open("artifacts/mg42_original_relative_uncertainty_budget.json"))
+          assert data["status"]=="ORIGINAL_MG42_EXACT_RELATIVE_SOURCE_G_ERROR_FEE_BUDGET"
+          assert data["canonical_W_ODD_NEG"]=="OPEN"
+          assert [data["MG24_verified_original_run"],data["MG29_verified_original_run"],
+                  data["MG40_verified_original_run"],data["MG41_verified_original_run"]]==[
+                  39378465438,39440914565,39513403010,39519080670]
+          for key in ("original_SI10_25physical_23adapted_plus_true_sinh_pole24D",
+              "signed_arch_seven_prime_complete_original_frequency_inherited",
+              "exact_ideal_source_SPD_and_actual_fee_bearing_negative_replayed",
+              "scaled_fee_PSD_monotone_source_matrix_family",
+              "rational_LDL_and_negative_Rayleigh_bracket_endpoints",
+              "all_four_best_MG40_nonscalar_responses_accounted",
+              "all_24_MG41_original_nonscalar_ideal_positive_actual_negative",
+              "counterfactual_fee_scaling_not_proof_of_real_strict_contraction"):
+              assert data[key],key
+          assert len(data["scenarios"])==4
+          assert [(c["mesh_cells"],c["cutoff_k"]) for c in data["scenarios"]]==[
+              (16,12),(16,16),(32,12),(32,16)]
+          def read(A):
+              a=[[Q(x) for x in row] for row in A]
+              assert len(a)==24 and all(len(row)==24 for row in a)
+              return a
+          def quad(v,A):
+              assert len(v)==24 and len(A)==24
+              return sum((v[i]*A[i][j]*v[j] for i in range(24)
+                          for j in range(24)),Q(0))
+          def ldl_pivots(a):
+              assert a==T(a)
+              W=[list(row) for row in a]
+              piv=[]
+              for i in range(24):
+                  p=W[i][i]
+                  if p<=0:return None
+                  piv.append(p)
+                  for j in range(i+1,24):
+                      for k in range(j,24):
+                          W[k][j]-=W[j][i]*W[k][i]/p
+                          W[j][k]=W[k][j]
+              return piv
+          mid,rad,Herr=original_H24_from_physical_source()
+          assert Herr==Q(source24["physical_Gram_Loewner_row_error"])
+          Hlo=sub(mid,mul(Herr,Id(24)))
+          Hup=plus(mid,mul(Herr,Id(24)))
+          checks=0
+          for case in data["scenarios"]:
+              k=case["cutoff_k"];mesh=case["mesh_cells"]
+              row40=next(q for q in source40["scenarios"]
+                         if q["mesh_cells"]==mesh and q["cutoff_k"]==k)
+              row41=next(q for q in source41["scenarios"]
+                         if q["mesh_cells"]==mesh and q["cutoff_k"]==k)
+              assert case["original_nonscalar_B"]==row40["best_nonscalar_name"]
+              trial=next(q for q in row40["all_rational_candidate_results"]
+                         if q["name"]==case["original_nonscalar_B"])
+              archived41=next(q for q in row41["trials"]
+                              if q["name"]==case["original_nonscalar_B"])
+              B=read(trial["B_original_exact_rational"])
+              t=Q(trial["source_anchor_t"])
+              D=sub(B,mul(t,Id(24)))
+              src=next(q for q in source29["meshes"] if q["mesh_cells"]==mesh)
+              moments=next(q for q in src["full_original_frequency_scenarios"]
+                           if q["cutoff_k"]==k)
+              LG=read(moments["full_original_Gstar_lower"])
+              UG=read(moments["full_original_Gstar_upper"])
+              US=read(moments["full_original_Sstar_upper"])
+              E=mul(Q(1,2),sub(UG,LG))
+              assert psd(E) and psd(US)
+              Gc=mul(Q(1,2),plus(UG,LG))
+              core=plus(sub(sub(Hup,mul(2*t,LG)),
+                         plus(mm(Gc,D),mm(T(D),Gc))),mm(mm(T(B),US),B))
+              ideal=sub(Hlo,core)
+              if trial["selected_method"]=="matrix_Young":
+                  eta=Q(trial["selected_eta"])
+                  fee=plus(mul(eta,E),mul(1/eta,mm(mm(T(D),E),D)))
+              else:
+                  assert trial["selected_method"]=="MG30_isotropic"
+                  fee=mul(Q(trial["old_isotropic_fee"]),Id(24))
+              assert fee==read(case["complete_24D_PSD_mixed_G_fee_matrix"])
+              assert ideal==read(case["complete_24D_ideal_source_matrix"])
+              assert psd(fee)
+              piv=ldl_pivots(ideal)
+              assert piv is not None and [str(p) for p in piv]==archived41[
+                 "exact_rational_ideal_witness"]["exact_positive_schur_pivots"]
+              low=Q(case["exact_ratio_fee_scale_positive_below_or_equal"])
+              high=Q(case["exact_ratio_fee_scale_negative_above_or_equal"])
+              assert Q(0)<=low<high<=Q(1)
+              assert high-low==Q(case["certified_fee_scale_threshold_width"])
+              assert Q(case["sufficient_relative_fee_reduction_at_least"])==1-low
+              assert Q(case["necessary_relative_fee_reduction_more_than"])==1-high
+              for typ,bound,cert in [
+                 ("low",low,case["lower_exact_positive_LDL_certificate"]),
+                 ("high",high,case["upper_exact_negative_Rayleigh_certificate"])]:
+                  assert Q(cert["scalar"])==bound
+                  M=sub(ideal,mul(bound,fee))
+                  if typ=="low":
+                      p=ldl_pivots(M)
+                      assert p is not None
+                      assert [str(x) for x in p]==cert[
+                         "positive_exact_rational_pivots"]
+                      assert cert["certified_strict_full24_source_positive"]
+                  else:
+                      v=[Q(x) for x in cert["rational_source_direction"]]
+                      assert len(v)==24 and any(v)
+                      assert quad(v,M)==Q(cert["exact_negative_quadratic"])<0
+                      assert cert["source_matrix_fails_positive_definiteness"]
+                  checks+=1
+              attempts=case["exact_dyadic_bisection_checks"]
+              assert 0<=len(attempts)<=5
+              assert case["bisection_rounds_resolved"]==sum(
+                  x["classification"]!="INCONCLUSIVE" for x in attempts)
+              for step in attempts:
+                  alpha=Q(step["tested_scale"])
+                  M=sub(ideal,mul(alpha,fee))
+                  c=step["certificate"]
+                  assert Q(c["scalar"])==alpha
+                  if step["classification"]=="EXACT_POSITIVE_LDL":
+                      p=ldl_pivots(M)
+                      assert p is not None
+                      assert [str(x) for x in p]==c[
+                        "positive_exact_rational_pivots"]
+                      assert c["certified_strict_full24_source_positive"]
+                  elif step["classification"]=="EXACT_NEGATIVE_RAYLEIGH":
+                      v=[Q(x) for x in c["rational_source_direction"]]
+                      assert len(v)==24 and any(v)
+                      assert quad(v,M)==Q(c["exact_negative_quadratic"])<0
+                      assert c["source_matrix_fails_positive_definiteness"]
+                  else:
+                      assert step["classification"]=="INCONCLUSIVE"
+                      assert step==attempts[-1]
+                  checks+=1
+              assert case["actual_current_fee_scale_one_has_negative_direction"]
+              assert case["hypothetically_reduced_fee_not_currently_rigorous_for_original_G"]
+              assert case["full_470D_inverse_and_RH_not_proved"]
+          assert checks>=8
+          assert not data["real_original_24D_source_strict_contraction_certified"]
+          assert not data["true_original_470D_strong_inverse_certified"]
+          assert not data["signed_original_51over56_negative_cap_certified"]
+          assert data["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert data["complete_even_Weil_CC27_RH"]=="OPEN"
+          print("MG42 independent actual-original exact source fee threshold endpoints and bisection passes:",checks)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg42-original-four-nonscalar-relative-PSD-fee-thresholds
+          path: artifacts/mg42_original_relative_uncertainty_budget.json
+          if-no-files-found: ignore
