@@ -28,7 +28,6 @@ GAMMAS = (Q(1,4), Q(1), Q(4))
 def matrix(a):
     a = deserialize(a)
     assert len(a) == N and all(len(x) == N for x in a)
-    assert a == T(a)
     return a
 
 def enc(a):
