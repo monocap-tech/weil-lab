@@ -109,7 +109,7 @@ def main():
     for mesh in (16,32):
         part=calculate_mesh(mesh,prep)
         archive=next(x for x in m29["meshes"] if x["mesh_cells"]==mesh)
-        assert part["sum_29_radii"]==Q(archive["total_source_radius_MG29"])
+        assert Q(part["sum_29_radii"])==Q(archive["total_source_radius_MG29"])
         for label in ("mass","one","two"):
             assert part["matrices"]["mg29_third"][label]["trace_width"]==Q(
                archive["prefix_widths"][label]["mg29_direct_third_trace_width"])
