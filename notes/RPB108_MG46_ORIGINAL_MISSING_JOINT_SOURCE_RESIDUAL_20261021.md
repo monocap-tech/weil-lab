@@ -1,3 +1,24 @@
+## MG46 — independently accepted original complete-spectrum source matrix result
+
+[Original complete-frequency MG46 calculation AND independent **256** exact 24×24 rational matrix replay, Actions #39638393721](https://github.com/monocap-tech/weil-lab/actions/runs/39638393721) **PASSED**. The independent Actions step additionally reconstituted all four original genuine SI10/MG11 measured [0,4] physical Fourier source matrices, original omitted physical mass, full original G/S multiplier brackets, all rank-one pole fees and exact 24×24 source inertia witnesses, and all **12** archived MG45 scalar rays from the pinned source artifacts. Accepted output artifact **mg46-original-complete-missing-GS-256-matrix-audit**, ID **12364532424**.
+
+| Original MG29 mesh | cutoff k | MG32 measured-direct + OLD omitted upper: exact Gersh sufficient lower | MG46 same measured-direct + NEW omitted G/S cross upper: exact Gersh lower | Strict improvement | Selected conservative source lower matrix |
+|---|---:|---:|---:|---:|---|
+| 16 | 12 | -25.16286363 | **-23.53785205** | **+1.62501158** | exact negative rational Rayleigh |
+| 16 | 16 | -25.41339559 | **-24.37546710** | **+1.03792849** | exact negative rational Rayleigh |
+| 32 | 12 | -25.80922595 | **-23.39765293** | **+2.41157301** | exact negative rational Rayleigh |
+| 32 | 16 | -25.77731188 | **-24.27598547** | **+1.50132641** | exact negative rational Rayleigh |
+
+**All four** independently validated new omitted-frequency Loewner upper matrices were selected over the old MG32 complement on the declared full-matrix sufficient margin; no candidate was selected by a trace-as-Loewner comparison. Their full complete-original-source \(H_{\rm lo}-U\) lower certificates nonetheless each have an independently checked exact negative rational quadratic witness. The certified strict source contraction count is **0**. The projected new genuine physical complete-frequency scalar upper is **not stricter than MG45** on any of the 12 anchored rays, because MG45 already intersects its measured-band bound with the independently tighter MG44 full-spectrum bound.
+
+**Comparability warning:** The MG46 margin improvement is relative to MG32's *specific original direct [0,4] full24 upper plus original MG32 omitted remainder*, NOT relative to MG43's best globally mixed source-moment candidate. MG43's Gersh deficits are approximately -1.31 to -1.49 on its 16-cell cases and -1.19 to -1.31 on its 32-cell cases, and are still much closer to positivity than the MG46 measured-plus-omitted source upper. It would be misleading to call MG46 the strongest currently accepted whole-source contraction certificate. MG46 nevertheless proves that the former **omitted-frequency bound itself was avoidably coarse** and that the new fully valid joint remainder G/S construction strictly improves the MG32-derived full24 matrix sufficient test across all four original scenarios.
+
+This is a **new valid whole omitted-spectrum 24×24 Loewner estimate**, not a new physical Fourier source sample, a finite-source invariance theorem, an actual odd-spectrum negative index, a 470D strong inverse, signed odd 51/56 cap, independent original Fourier/form/domain closure, complete even/Weil/CC27/RH or RH. All remain OPEN.
+
+**MG47 logical frontier:** Compare and combine MG46's validated **new omitted G/S cross covariance** with MG43's original full-frequency first-/second-moment sufficient estimates on the SAME source vectors, preserving distinct independently valid 24D **whole-source** uppers without taking an unjustified matrix minimum. The central unresolved issue is to derive a genuinely tighter joint original remainder physical covariance, or a provable more informative 24D PSD intersection from the accepted correlated first-/second-moment constraints. Source-ray scalars are not a substitute for a simultaneous full24 matrix inequality.
+
+---
+
 # MG46 — Original complete omitted-frequency source covariance with retained G/S cross moments
 
 October 21, 2026. Stacked on independently verified [MG45 PR #294](https://github.com/monocap-tech/weil-lab/pull/294), original Actions #39544081287. MG45 showed strict original Fourier source residual cancellation improvement in all 12 measured [0,4] rational rays, yet its complete-real-frequency upper remained worse than MG44 in every case. MG32's extremely conservative complete **omitted** frequency Young bound is the relevant bottleneck.
@@ -84,4 +105,4 @@ A separate verification executable independently reconstitutes all **256** sourc
 
 MG46 does **not** establish the original source-subspace invariance, 470D strong inverse, signed odd 51/56 negative cap, independent Fourier/form/domain, complete even/Weil/CC27/RH or RH.
 
-**CI PENDING.**
+**MG46 original complete-frequency calculation and independent exact-rational 256-matrix CI PASSED; no strict source contraction.**
