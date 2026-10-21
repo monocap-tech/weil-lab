@@ -1,3 +1,27 @@
+## MG45 accepted genuine-original source Fourier result — October 20, 2026
+
+[MG45 original physical Fourier calculation AND independent exact-rational replay, Actions #39544081287](https://github.com/monocap-tech/weil-lab/actions/runs/39544081287) **PASSED** on the corrected source head. The first workflow attempt #39543982157 failed at synthetic self-test only because a stale implementation variable reference \`mg_B\` had not been replaced with the explicit general original B; the corrected run successfully passed the self-test and both original-data calculation and independent audit.
+
+Accepted output artifact: \`mg45-original-signed-source-Fourier-ray-384-cells\` **ID 12320672115**.
+
+| Original MG29 mesh | cutoff k | Genuine rational rays tested | Strictly sharper original signed [0,4] Fourier-cell covariance bound | STRICTLY sharper COMPLETE-frequency bound than MG44 | Nonnegative certified complete source-ray lower |
+|---|---:|---:|---:|---:|---:|
+| 16 | 12 | 3 | **3/3** | **0/3** | 0/3 |
+| 16 | 16 | 3 | **3/3** | **0/3** | 0/3 |
+| 32 | 12 | 3 | **3/3** | **0/3** | 0/3 |
+| 32 | 16 | 3 | **3/3** | **0/3** | 0/3 |
+| **Total** | | **12** | **12/12** | **0/12** | **0/12** |
+
+The independently coded verifier rebuilt all **384** original 32-cell signed physical Fourier source residual inequalities and all four genuine-pole complete-frequency MG32 omitted-frequency Loewner complements, and checked every computed scalar and original response B/source direction with exact Fraction. The independently certified analytic cell bound preserves source-vector cancellation \`v·Bz\` and \`d·Bz\` before taking original SM43 multiplier interval error absolute values; its original source error radius is strictly smaller than the accepted projected old MG32 coordinatewise radius on all 12 tested rays at the integrated-prefix level.
+
+**Method limitation now isolated:** Direct original signed \`[0,4]\` source Fourier correlation measurably improves the low-frequency component of each tested source residual, but the independently accepted **remaining-frequency** MG32 mass/SM41/pole Young upper is too costly to make the resulting complete-frequency scalar residual upper smaller than MG44's separately valid complete-source bound. MG45 accepts only the scalar minimum of two independent full-real-frequency source uppers and therefore reports **zero complete-frequency improvement** and **zero directional source positivity** for all tested rays.
+
+This is a new, rigorous **physical original Fourier source-row** calculation, not an algebraic reweighting of existing first/second global moment matrices, but **it is still only source-ray scoped**. In particular, there is NO new simultaneous full24 Loewner upper from 12 scalar tests, no proof of original all-470 strong inverse or signed 51/56 odd cap, no independent Fourier/form/domain, no complete even/Weil/CC27/RH, and certainly no RH theorem.
+
+**MG46 next acceptance target:** Improve the ACTUAL original omitted-frequency source residual covariance in a way that **subtracts already measured frequency mass from the remainder without double-charge** and retains the signed joint residual. MG35/MG37 established that naively adding another PSD measured-band upper while retaining MG32's untouched remainder cannot improve in Loewner order. Future work must demonstrate a genuine smaller original missing-frequency full24 matrix, or new complete-spectrum coupled source variance information; not more local [0,4] radius tuning.
+
+---
+
 # MG45 — Direct original signed Fourier ray residual before absolute errors
 
 October 20, 2026. Stacked on verified MG44 [PR #293](https://github.com/monocap-tech/weil-lab/pull/293) (accepted original actual 12-ray exact source inequalities [Actions #39542236311](https://github.com/monocap-tech/weil-lab/actions/runs/39542236311)). MG44 improved source residual UPPER projections on all 12 accepted negative Rayleigh rays, but not a single conservative source ray LOWER cleared zero. Its underlying MG24/MG29 global first/second original moment brackets, even when combined by exact block Cauchy-Schwarz, may have discarded cancellations from the original signed Fourier generator itself.
@@ -50,4 +74,4 @@ This constitutes **genuinely new direct original correlated source-residual info
 
 ## Disposition
 
-Independent original Actions: PENDING.
+Independent original Actions PASSED; verified 384 true original signed source-cell inequalities, 12 improved prefixes, no full-frequency gain or source contraction.
