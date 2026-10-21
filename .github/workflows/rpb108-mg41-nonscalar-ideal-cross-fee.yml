@@ -121,6 +121,7 @@ jobs:
               assert len(sc["trials"])==6
               count={"NEGATIVE_EXACT_RATIONAL_RAYLEIGH":0,
                      "POSITIVE_EXACT_RATIONAL_LDL":0,"INCONCLUSIVE":0}
+              actual_count=dict.fromkeys(count,0)
               for row in sc["trials"]:
                   total+=1
                   assert row["name"] in originals
@@ -177,7 +178,30 @@ jobs:
                       inconclusive+=1
                       assert row["exact_rational_ideal_witness"]=={}
                       assert row["witness_decomposition"] is None
+                  # Reconstruct the actual MG40 conservative source
+                  # matrix independently and classify full inertia with
+                  # rational signs, not the signed Gershgorin lower bound.
+                  actual=sub(ideal,fee)
+                  actual_kind=row["actual_MG40_source_certificate_inertia_gate"]
+                  actual_w=row["actual_MG40_source_certificate_exact_witness"]
+                  assert actual_kind in actual_count
+                  actual_count[actual_kind]+=1
+                  assert row["actual_MG40_source_strict_positive_LDL_certified"]==(
+                      actual_kind=="POSITIVE_EXACT_RATIONAL_LDL")
+                  if actual_kind=="NEGATIVE_EXACT_RATIONAL_RAYLEIGH":
+                      av=[Q(x) for x in actual_w["rational_vector"]]
+                      assert len(av)==24 and any(av)
+                      assert dot(av,actual)==Q(
+                          actual_w["exact_negative_quadratic"])<0
+                  elif actual_kind=="POSITIVE_EXACT_RATIONAL_LDL":
+                      apiv=exact_ldl_pivots(actual)
+                      assert apiv is not None and len(apiv)==24
+                      assert apiv==[Q(q) for q in
+                          actual_w["exact_positive_schur_pivots"]]
+                  else:
+                      assert actual_w=={}
                   assert not row["original_complete_operator_negative_mode_proved"]
+              assert actual_count==sc["actual_MG40_certificate_inertia_counts"]
               assert count==sc["classification_counts"]
               assert sc["every_tested_nonscalar_B_fee_only_refinement_obstructed"]==(
                    count["NEGATIVE_EXACT_RATIONAL_RAYLEIGH"]==6)
@@ -190,7 +214,9 @@ jobs:
           assert data["all_tested_nonscalar_B_fee_only_refinement_obstructed"]==all(
              s["every_tested_nonscalar_B_fee_only_refinement_obstructed"]
              for s in data["scenarios"])
-          assert not data["source_24D_strict_residual_contraction_certified"]
+          assert data["source_24D_strict_residual_contraction_certified"]==any(
+              q["actual_MG40_source_strict_positive_LDL_certified"]
+              for sc in data["scenarios"] for q in sc["trials"])
           assert not data["full_original_470D_strong_inverse_certified"]
           assert not data["signed_original_51over56_negative_cap_certified"]
           assert data["independent_original_Fourier_form_domain_audit"]=="OPEN"
