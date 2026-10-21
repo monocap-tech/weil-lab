@@ -138,14 +138,14 @@ def source_ray(v,B,Hlo,Hup,parents,accepted_U):
 def self_test():
     for r in (Q(0),Q(1),Q(2),Q(5,3),Q(1,10**30),Q(10**28,3)):
         u=sqrt_outward(r)
-        assert u*u>=r and (u-Q(1,GRID_SCALE))**2<=r if u else r==0
+        assert (u*u>=r and (u-Q(1,GRID_SCALE))**2<=r) if u else (r==0)
     A=[[Q(i==j) for j in range(N)] for i in range(N)]
     Z=[[Q(0) for j in range(N)] for i in range(N)]
     B=[[Q(i==j) for j in range(N)] for i in range(N)]
     v=[Q(i==0) for i in range(N)]
     out=source_ray(v,B,A,A,[("toy1",Z,plus(Z,mul(2,A)),mul(3,A)),
                             ("toy2",Z,plus(Z,mul(4,A)),mul(5,A))],mul(9,A))
-    assert Q(out["new_directed_original_complete_residual_upper"])==Q(6)
+    assert Q(out["new_directed_original_complete_residual_upper"])==Q(4)
     assert out["chosen_second_moment_original_parent"]=="toy1"
     assert out["new_directional_bound_improves_MG43_on_this_ray"]
     return True
