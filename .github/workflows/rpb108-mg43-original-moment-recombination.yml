@@ -1,0 +1,227 @@
+name: mg43-original-independent-G-S-moment-source-trial
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg43_independent_moment_blend.py'
+      - 'notes/RPB108_MG43_ORIGINAL_G_S_INDEPENDENT_BLEND_20261020.md'
+      - '.github/workflows/rpb108-mg43-original-moment-recombination.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  true-original-full-source-moment-cross-mix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Pin MG24 accepted true original complete-spectrum first/second source moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Pin MG29 accepted genuine original full-frequency adapted source moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Pin MG40 accepted original anisotropic nonscalar response source matrices
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39513403010
+          name: mg40-original-anisotropic-G-cross-source-24D
+          github-token: ${{ github.token }}
+          path: artifacts/mg40_verified
+      - name: Pin MG41 accepted ideal and actual exact original nonscalar inertia
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39519080670
+          name: mg41-original-ideal-cross-fee-24D-feasibility
+          github-token: ${{ github.token }}
+          path: artifacts/mg41_verified
+      - name: Pin MG42 original exact scaled mixed-G fee budgets
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39520549337
+          name: mg42-original-four-nonscalar-relative-PSD-fee-thresholds
+          github-token: ${{ github.token }}
+          path: artifacts/mg42_verified
+      - name: Exact independent Loewner G and S rational interpolation regression
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg43_independent_moment_blend.py
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg43_independent_moment_blend.py --self-test
+      - name: Recombine independent genuine original full-spectrum first/second source moment bounds for nonscalar B
+        run: |
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg40_verified/mg40_original_anisotropic_cross_error.json
+          test -s artifacts/mg41_verified/mg41_original_ideal_cross_error_feasibility.json
+          test -s artifacts/mg42_verified/mg42_original_relative_uncertainty_budget.json
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg43_independent_moment_blend.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg40-json artifacts/mg40_verified/mg40_original_anisotropic_cross_error.json --verified-mg41-json artifacts/mg41_verified/mg41_original_ideal_cross_error_feasibility.json --verified-mg42-json artifacts/mg42_verified/mg42_original_relative_uncertainty_budget.json
+      - name: Independently reconstruct complete original 24x24 mixed source matrix, exact sampled margins and signed proof witnesses
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
+          sys.path.insert(0,"scripts")
+          from validate_rpb108_mg25_original24_robust_trial import original_H24_from_physical_source
+          from validate_rpb108_mg25_robust_source_aware_residual import (
+              Id,T,mm,plus,sub,mul,gersh_lower,psd)
+          src={}
+          for n in ("mg24","mg29","mg40","mg41","mg42"):
+              filename={"mg24":"mg24_full_original_coupled_24source_matrix_enclosures.json",
+                "mg29":"mg29_original_direct_third_drift.json",
+                "mg40":"mg40_original_anisotropic_cross_error.json",
+                "mg41":"mg41_original_ideal_cross_error_feasibility.json",
+                "mg42":"mg42_original_relative_uncertainty_budget.json"}[n]
+              src[n]=json.load(open(f"artifacts/{n}_verified/{filename}"))
+          out=json.load(open("artifacts/mg43_original_independent_G_S_matrix_blend.json"))
+          assert out["status"]=="ORIGINAL_MG43_INDEPENDENT_COUPLED_G_S_LOEWNER_PARAMETER_RECOMBINATION"
+          assert out["canonical_W_ODD_NEG"]=="OPEN"
+          assert [out[x] for x in ("MG24_verified_original_run",
+             "MG29_verified_original_run","MG40_verified_original_run",
+             "MG41_verified_original_run","MG42_verified_original_run")]==[
+                39378465438,39440914565,39513403010,39519080670,39520549337]
+          assert out["original_25physical_23adapted_plus_true_sinh_pole24D"]
+          assert out["same_original_full_frequency_seven_prime_arch_and_pole_basis"]
+          assert out["G_first_and_S_second_Loewner_brackets_independently_mixed"]
+          assert out["all_540_grid_candidates_exact_rational_source_uppers"]
+          assert not out["new_independent_original_Fourier_measurements_added"]
+          assert out["float_candidate_ranking_never_used_as_proof"]
+          assert out["all_reported_matrix_signs_require_exact_rational_LDL_or_Rayleigh"]
+          assert [(x["mesh_cells"],x["cutoff_k"]) for x in out["scenarios"]]==[
+              (16,12),(16,16),(32,12),(32,16)]
+          def read(x, require_symmetric=True):
+              A=[[F(t) for t in row] for row in x]
+              assert len(A)==24 and all(len(row)==24 for row in A)
+              if require_symmetric:assert A==T(A)
+              return A
+          def trace(A):
+              return sum((A[i][i] for i in range(24)),F(0))
+          def quad(v,A):
+              return sum((v[i]*A[i][j]*v[j] for i in range(24)
+                      for j in range(24)),F(0))
+          def exact_ldl(A):
+              W=[list(r) for r in A];p=[]
+              for k in range(24):
+                  q=W[k][k]
+                  if q<=0:return None
+                  p.append(q)
+                  for i in range(k+1,24):
+                      for j in range(i,24):
+                          W[j][i]-=W[i][k]*W[j][k]/q
+                          W[i][j]=W[j][i]
+              return p
+          def interp(A,B,x):
+              return plus(mul(1-x,A),mul(x,B))
+          Hmid,Hrad,Herr=original_H24_from_physical_source()
+          assert Herr==F(src["mg24"]["physical_Gram_Loewner_row_error"])
+          Hlo=sub(Hmid,mul(Herr,Id(24)))
+          Hup=plus(Hmid,mul(Herr,Id(24)))
+          trials_checked=0; positives=0
+          for case in out["scenarios"]:
+              mesh,k=case["mesh_cells"],case["cutoff_k"]
+              c24=next(c for c in src["mg24"]["cases"] if c["cutoff_k"]==k)
+              c29=next(c for c in next(q for q in src["mg29"]["meshes"]
+                        if q["mesh_cells"]==mesh)["full_original_frequency_scenarios"]
+                        if c["cutoff_k"]==k)
+              c40=next(c for c in src["mg40"]["scenarios"]
+                       if c["mesh_cells"]==mesh and c["cutoff_k"]==k)
+              c42=next(c for c in src["mg42"]["scenarios"]
+                       if c["mesh_cells"]==mesh and c["cutoff_k"]==k)
+              assert case["source_response_name"]==c42["original_nonscalar_B"]==c40["best_nonscalar_name"]
+              old=next(t for t in c40["all_rational_candidate_results"]
+                       if t["name"]==case["source_response_name"])
+              assert case["source_anchor_t"]==old["source_anchor_t"]
+              # Nonscalar response B is not required to be symmetric;
+              # only source moment and residual Gram matrices are.
+              B=read(case["exact_original_rational_B"],False)
+              assert B==read(old["B_original_exact_rational"],False)
+              t=F(old["source_anchor_t"]);D=sub(B,mul(t,Id(24)))
+              assert any(v for row in D for v in row)
+              LG0=read(c24["complete_Gstar_lower"])
+              UG0=read(c24["complete_Gstar_upper"])
+              US0=read(c24["complete_Sstar_upper"])
+              LG1=read(c29["full_original_Gstar_lower"])
+              UG1=read(c29["full_original_Gstar_upper"])
+              US1=read(c29["full_original_Sstar_upper"])
+              assert psd(sub(UG0,LG0)) and psd(sub(UG1,LG1))
+              assert psd(US0) and psd(US1)
+              diagnostics=case["all_grid_candidate_trace_and_Gersh_diagnostics"]
+              assert len(diagnostics)==135
+              for entry in diagnostics:
+                  a,b,eta=(F(entry["original_G_blend_alpha"]),
+                           F(entry["original_S_blend_beta"]),
+                           F(entry["valid_matrix_Young_eta"]))
+                  assert a in (0,F(1,4),F(1,2),F(3,4),1)
+                  assert b in (0,F(1,2),1)
+                  assert eta in (F(1,64),F(1,16),F(1,4),F(1,2),1,2,4,16,64)
+                  LG=interp(LG0,LG1,a)
+                  UG=interp(UG0,UG1,a)
+                  US=interp(US0,US1,b)
+                  E=mul(F(1,2),sub(UG,LG))
+                  Gc=mul(F(1,2),plus(UG,LG))
+                  # PSD follows from two independent source moment bounds,
+                  # no entrywise max/min or unproved Loewner matrix join.
+                  # Check anchors at first use, then rely on convex identity.
+                  core=plus(sub(sub(Hup,mul(2*t,LG)),
+                      plus(mm(Gc,D),mm(T(D),Gc))),mm(mm(T(B),US),B))
+                  fee=plus(mul(eta,E),
+                       mul(1/eta,mm(mm(T(D),E),D)))
+                  U=plus(core,fee)
+                  M=sub(Hlo,U)
+                  assert M==T(M)
+                  assert trace(U)==F(entry["full_original_24D_upper_trace"])
+                  assert gersh_lower(M)==F(entry["exact_signed_Gershgorin_lower"])
+                  if a==F(case["new_G_blend_alpha"]) and b==F(case["new_S_blend_beta"]) and eta==F(case["new_matrix_eta"]):
+                      assert U==read(case["original_24D_new_upper_matrix"])
+                      assert M==read(case["original_24D_new_source_lower_matrix"])
+                  trials_checked+=1
+              M=read(case["original_24D_new_source_lower_matrix"])
+              kind=case["full24_exact_inertia_classification"]
+              proof=case["full24_exact_inertia_witness"]
+              if kind=="POSITIVE_EXACT_RATIONAL_LDL":
+                  piv=exact_ldl(M)
+                  assert piv is not None
+                  assert piv==[F(x) for x in proof["exact_positive_schur_pivots"]]
+                  assert case["narrow_actual_original_24D_source_contraction_certified"]
+                  positives+=1
+              elif kind=="NEGATIVE_EXACT_RATIONAL_RAYLEIGH":
+                  v=[F(x) for x in proof["rational_vector"]]
+                  assert len(v)==24 and any(v)
+                  assert quad(v,M)==F(proof["exact_negative_quadratic"])<0
+                  assert not case["narrow_actual_original_24D_source_contraction_certified"]
+              else:
+                  assert kind=="INCONCLUSIVE" and proof=={}
+                  assert not case["narrow_actual_original_24D_source_contraction_certified"]
+              assert case["new_certificate_on_prior_negative_source_ray"]==str(
+                  quad([F(x) for x in case["source_MG40_negative_original_ray_on_previous_enclosure"]],M))
+              assert not case["original_470D_inverse_not_proved"] is False
+          assert trials_checked==540
+          assert out["any_strict_original_24D_source_contraction"]==(positives>0)
+          assert not out["full_original_470D_strong_inverse_certified"]
+          assert not out["signed_original_51over56_negative_cap_certified"]
+          assert out["independent_original_Fourier_form_domain_audit"]=="OPEN"
+          assert out["complete_even_Weil_CC27_RH"]=="OPEN"
+          print("MG43 independently rebuilt full original source 24D matrix grid:",trials_checked,"exact SPD certificates:",positives)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg43-original-independent-G-S-full24-source-grid
+          path: artifacts/mg43_original_independent_G_S_matrix_blend.json
+          if-no-files-found: ignore
