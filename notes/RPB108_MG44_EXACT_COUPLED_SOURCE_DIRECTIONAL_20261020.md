@@ -1,3 +1,25 @@
+## MG44 — independently accepted original-source 12-ray outcome
+
+[Actions #39542236311](https://github.com/monocap-tech/weil-lab/actions/runs/39542236311) **PASSED** original source construction and independent exact rational replay of all 12 directions, their original pole-inclusive MG24/MG29 full real frequency H/G/S moment inputs, exact outward integer square-root, and archived MG43 true original 24×24 upper projections. Accepted artifact **mg44-original-exact-coupled-source-directional-12-ray-audit** ID **12320121918**.
+
+| Original MG29 mesh | cutoff | Independently accepted exact rational source rays tested | Sharper source-residual scalar upper than MG43 | Certified nonnegative directional lower |
+|---|---:|---:|---:|---:|
+| 16 | 2^12 | 3 | **3/3** | 0/3 |
+| 16 | 2^16 | 3 | **3/3** | 0/3 |
+| 32 | 2^12 | 3 | **3/3** | 0/3 |
+| 32 | 2^16 | 3 | **3/3** | 0/3 |
+| **TOTAL** | | **12** | **12/12 strict** | **0/12** |
+
+MG44's two-parent Cauchy directional original-source residual upper strictly beats each accepted MG43 full source matrix upper when projected on the 12 archived exact rays, but its exact source Hlo-minus-new-upper scalar margin remains NEGATIVE for all 12. The source-specific gain is genuine and verified, yet insufficient to clear any of the tested directions. A strictly negative conservative lower scalar is NOT a true residual negative eigenmode, and the fact that all 12 inspected rays have improved uppers does not create a source-wide Loewner upper. There is **NO actual original 24D source contraction**.
+
+The endpoint convex-mixing result is mathematical rather than a grid claim: within the independent accepted MG24/MG29 directional first/second moment Cauchy bound, max over all convex first-moment blend parameters alpha occurs at an endpoint because the geometric mean is concave; min over second-moment upper beta likewise occurs at one of its two endpoints by affinity. MG44 uses both parental directional constraints separately rather than inventing a full24 matrix minimum.
+
+**MG45 target:** new original complete-frequency coupled moment/cross-source information, not more convex MG24/MG29 blending. A genuinely stronger source estimate should attack the specific exact rational Rayleigh v and Bv source correlations that MG44 could not clear; test whether new full24 Loewner upper or an independently certified jointly integrated residual matrix closes these source directions. Preserve all original pole, signed arch/seven-prime, high-frequency and domain/form obligations.
+
+Original all-470 strong inverse, signed odd 51/56 cap, original Fourier/form/domain, complete even/Weil/CC27/RH remain OPEN.
+
+---
+
 # MG44 — Exact original-source directional coupled residual bounds
 
 October 20, 2026. Stacked on MG43 PR #292, whose original full-source calculation and independent all-540-matrix check passed Actions #39522608989, and final-head verification #39523329157.
@@ -59,4 +81,4 @@ An independently run Actions audit REBUILDS all 12 directional original source v
 
 Important: A nonnegative lower bound on any of these 12 rays is a directional result only, never full 24D strict matrix positivity. A negative source LOWER-certificate scalar is not a negative eigenmode of the actual original Weil operator. No new full original 470D inverse, signed odd 51/56 negative cap, complete even/Weil/CC27/RH, or independent original Fourier/form/domain closure is proved. Canonical W-ODD-NEG remains OPEN.
 
-CI pending.
+Accepted calculation and independent original exact rational 12-ray source audit PASSED; no complete source positivity.
