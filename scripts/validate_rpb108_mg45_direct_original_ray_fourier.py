@@ -82,11 +82,11 @@ def one_cell(z,B,bmid,brad,cell):
     prior=Q(0)
     for j in range(N):
         bj=sum((bmid[i]*B[i][j] for i in range(N)),Q(0))
-        rowrad=sum((r[i]*abs(Q(i==j)-a0*mg_B[i][j]
+        rowrad=sum((r[i]*abs(Q(i==j)-a0*B[i][j]
              +(2*bj if i==P else Q(0))) for i in range(N)),Q(0))
-        weight=da*sum((abs(mg_B[i][j])*
+        weight=da*sum((abs(B[i][j])*
             (abs(v[i])+half*abs(d[i])+r[i]) for i in range(N)),Q(0))
-        perr=sum((brad[i]*abs(mg_B[i][j]) for i in range(N)),Q(0))
+        perr=sum((brad[i]*abs(B[i][j]) for i in range(N)),Q(0))
         prior+=abs(z[j])*(rowrad+weight+2*vp*perr)
     assert rho<=prior
     primary=2*width*(center*center+width*width*slope*slope/12
