@@ -1,0 +1,73 @@
+name: mg50-new-original-4to8-physical-source-covariance
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg50_actual_4to8_source_covariance.py'
+      - 'scripts/validate_rpb108_mg50_independent_4to8_replay.py'
+      - 'notes/RPB108_MG50_ORIGINAL_4TO8_SOURCE_20261021.md'
+      - '.github/workflows/rpb108-mg50-original-4to8-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-actual-4to8-source-and-independent-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 95
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted MG24 original whole-frequency tail
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve accepted MG46 original remainder source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39638393721
+          name: mg46-original-complete-missing-GS-256-matrix-audit
+          github-token: ${{ github.token }}
+          path: artifacts/mg46_verified
+      - name: Retrieve accepted MG47 original physical moment enclosures
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39663431182
+          name: mg47-original-conditioned-864-whole-missing-GS-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg47_verified
+      - name: Retrieve accepted MG48 joint multiplier source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39685179933
+          name: mg48-original-joint-multiplier-864-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg48_verified
+      - name: Compile independent source analyses and check accepted artifacts
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg50_actual_4to8_source_covariance.py scripts/validate_rpb108_mg50_independent_4to8_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json
+          test -s artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json
+          test -s artifacts/mg48_verified/mg48_joint_multiplier_source_covariance.json
+      - name: Measure NEW original 4-to-8 physical Fourier source and complete 24D residual
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg50_actual_4to8_source_covariance.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg46-json artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json --verified-mg48-json artifacts/mg48_verified/mg48_joint_multiplier_source_covariance.json
+      - name: Independently remeasure 4-to-8 original source and reconstruct all 864 matrices
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg50_independent_4to8_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg46-json artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json --verified-mg48-json artifacts/mg48_verified/mg48_joint_multiplier_source_covariance.json --verified-mg50-json artifacts/mg50_actual_original_4to8_source_covariance.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg50-original-new-4to8-Fourier-864-complete-source-matrices
+          path: artifacts/mg50_actual_original_4to8_source_covariance.json
+          if-no-files-found: ignore
