@@ -1,6 +1,23 @@
+## MG48 independent exact-rational result — VERIFIED (research-level)
+
+[MG48 Actions #39685179933](https://github.com/monocap-tech/weil-lab/actions/runs/39685179933) **PASSED**: main construction and independent ungrouped-polynomial replay of all **864 exact original 24×24 rational residual upper candidate matrices**, including all four final selected exact rational inertia classifications. Accepted artifact `mg48-original-joint-multiplier-864-source-matrices` (ID **12386391118**).
+
+| True original case | MG43 accepted whole-source Gersh lower | MG48 new joint-multiplier Gersh lower | selected complete-source method |
+|---|---:|---:|---|
+| 16 cells, k12 | **−1.3146427911** | −23.9349003598 | MG43 |
+| 16 cells, k16 | **−1.4906207885** | −24.5654207178 | MG43 |
+| 32 cells, k12 | **−1.1941733535** | −23.3104401617 | MG43 |
+| 32 cells, k16 | **−1.3130469460** | −24.0860150298 | MG43 |
+
+**0 strict source contraction certificates**. MG48 improves on MG47's separate conditioned subtraction by a large amount, and improves MG46's particular measured-plus-omitted construction modestly for the 32-cell cases, but fails to beat MG43's independently proven whole-frequency Loewner upper in every case. The selected conservative lower matrix is unchanged MG43, whose exact negative rational witness disproves positivity of *that lower certificate only*. The original residual and Weil operator have no established negative mode from this result.
+
+**MG49 next frontier:** diagnose matrix-level loss in MG48's positive charges on the actual MG43 witness rays, comparing measured direct, omitted mass, first-moment interval/Young, high-tail, and true pole uncertainty against the MG43 whole-frequency upper. Then target newly certified local multiplier/source covariance on the OMITTED band instead of reblending the old whole G/S moment brackets. Original 470D inverse, signed 51/56, independent Fourier/form/domain, complete even/Weil/CC27/RH remain OPEN.
+
+---
+
 # MG48 — Joint physical multiplier covariance, original complete-frequency 24D source
 
-**Status: proposed exact-rational calculation; NOT independently accepted until CI finishes.**
+**Status: accepted exact rational calculation and independent Actions replay, with NO MG43 improvement.**
 Stacked on independently verified MG47 PR #296 (final-head Actions #39663431182).
 The MG47 accepted complete-source method is MG43 in every scenario. Its
 conservative lower matrices have exact negative rational Rayleigh witnesses;
@@ -117,9 +134,7 @@ negative conservative lower certificate is never physical negativity.
 No alleged matrix minimum is taken; no source-ray upper is promoted to
 a simultaneous Loewner result.
 
-**Until computation AND independent CI both pass:** all numerical
-margins, any claimed improvements over MG43, and the new 24D
-contraction gate are UNVERIFIED. Even a positive original 24D source
+**Verified computational conclusion:** all 864 exact rational matrices and their independent audit passed. MG43 remains selected in all four cases. No 24D contraction. Even a positive original 24D source
 certificate would NOT establish the original 470D inverse, signed
 odd 51/56 cap, independent Fourier/form/domain, even/Weil/CC27 or RH.
 All these obligations remain OPEN.
