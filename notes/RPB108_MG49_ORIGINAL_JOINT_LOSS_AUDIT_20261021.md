@@ -1,6 +1,23 @@
+## MG49 — VERIFIED original loss attribution, four exact certificate rays
+
+[MG49 Actions #39721785284](https://github.com/monocap-tech/weil-lab/actions/runs/39721785284) **PASSED**, including a distinct independent complete original ungrouped-polynomial replay of all four exact 24×24 residual upper decompositions and their MG43 witness-ray signed rational charges. Artifact `mg49-exact-original-four-ray-source-loss-decomposition` ID **12401118652**.
+
+| Original scenario | certified MG43 conservative lower on original rational witness | MG48 new coupled lower on SAME witness | MG48 arithmetic counterfactual after deleting all four listed fees, NOT CERTIFICATE | largest positive fee on that ray |
+|---|---:|---:|---:|---|
+| 16/k12 | −0.1784161889 | −3.9188622764 | −2.8245328983 | G uncertainty P0 |
+| 16/k16 | −0.2021311755 | −3.9900789490 | −2.8068484240 | G uncertainty P0 |
+| 32/k12 | −0.1697002798 | −3.9650491642 | −2.8680948049 | G uncertainty P0 |
+| 32/k16 | −0.1902574284 | −4.0449742793 | −2.8507786976 | G uncertainty P0 |
+
+**Structural diagnosis, limited to the four archived original rational source rays and the four selected MG48 response matrices:** Even the counterfactual elimination of BOTH G-moment Young uncertainty fees, high-tail fee, and true pole fee would leave a strictly negative quadratic lower on every ray. Therefore *eliminating these four charges while leaving all other MG48 terms fixed* cannot close its original 24D source positivity gate. This is not a mathematically permitted fee elimination and proves no negative eigenmode for the true original physical operator. It does NOT rule out a better B, an alternative simultaneous 24D certificate, or genuine new original Fourier information.
+
+The remaining signed H/G center and measured/direct structural cancellation must be examined. **MG50:** derive and certify genuinely new local original omitted-band multiplier/source covariance information that addresses both mass and signed center; avoid further fee-only optimization or blind moment recombination. All 470D inverse, signed 51/56, independent Fourier/form/domain, even/Weil/CC27/RH remain OPEN.
+
+---
+
 # MG49 — Exact original complete-source joint covariance loss audit
 
-**Status:** Implementation committed. No MG49 results accepted until independent Actions CI passes.
+**Status:** Independently accepted original exact-rational diagnosis; no new original contraction.
 
 ## Motivation and inherited verified result
 
