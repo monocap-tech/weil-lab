@@ -1,6 +1,25 @@
+## MG50 — INDEPENDENTLY VERIFIED genuine NEW original Fourier measurement
+
+[MG50 Actions #39727680095](https://github.com/monocap-tech/weil-lab/actions/runs/39727680095) **PASSED**, including independent reconstruction of all 32 genuinely NEW original positive-frequency 4-to-8 source cells and their 24×24 mass/first-moment matrices, direct residual, and all **864 complete-original-frequency exact rational candidate source uppers**, plus final selected exact inertia witness. Accepted artifact `mg50-original-new-4to8-Fourier-864-complete-source-matrices` ID **12405630108**.
+
+| True original source case | MG43 accepted full-source Gersh lower | MG48 joint-frequency bound | MG50 NEW measured-4-to-8 full-source bound | selected valid complete-source method |
+|---|---:|---:|---:|---|
+| 16/k12 | **−1.3146427911** | −23.9349003598 | −24.1887384404 | MG43 |
+| 16/k16 | **−1.4906207885** | −24.5654207178 | −24.8340174120 | MG43 |
+| 32/k12 | **−1.1941733535** | −23.3104401617 | −23.9413516473 | MG43 |
+| 32/k16 | **−1.3130469460** | −24.0860150298 | −24.7512065036 | MG43 |
+
+**0 original strict 24D source contraction certificates.** This is genuinely new original physical Fourier source information on [4,8], but its chosen complete-source Loewner upper is **not competitive** with MG43 and is **worse on the stated sufficient Gersh margin** than MG48's conditioned bound in all four cases. Certification of an additional frequency band does NOT guarantee monotone improvement when interval radii, young fees and distinct valid upper constructions vary. No negative true original physical spectral direction follows.
+
+**MG51 appropriate next test:** matched-parameter comparison of original MG48 and MG50 complete 24D uppers on accepted MG43 exact rational witness rays. Isolate the 4-to-8 new direct residual, the improvement/change in the residual omitted upper and the net algebraic difference. Test the source matrix sign and flag non-Loewner differences; avoid claiming an indefinite difference is monotone improvement. Do not perform an unexplained larger frequency mesh sweep.
+
+All original 470D inverse, signed 51/56, independent Fourier/form/domain, even/Weil/CC27/RH remain OPEN.
+
+---
+
 # MG50 — NEW original 4-to-8 physical Fourier source measurement
 
-**Status: proposed original-frequency calculation; no numerical or spectral result accepted until independent Actions verification passes.** Parent MG49 independently accepted in Actions #39721785284 and final-head #39722033648, PR #298.
+**Status: independently accepted exact original-frequency calculation, with NO improvement over MG43 or MG48 on the sufficient Gersh criterion.** Parent MG49 independently accepted in Actions #39721785284 and final-head #39722033648, PR #298.
 
 ## Critical methodological change
 
@@ -83,6 +102,6 @@ certificate. Neither a negative witness on a conservative source lower
 nor a numerically negative margin proves a true original operator
 negative mode.
 
-**All numerical outcomes pending independent CI.** No automatic
+**Original 32-cell new-band and all 864 full24 rational matrices independently accepted; no original 24D contraction.** No automatic
 promotion to original 470D strong inverse, signed 51/56 odd cap,
 independent Fourier/form/domain, even/Weil/CC27 or RH. All remain OPEN.
