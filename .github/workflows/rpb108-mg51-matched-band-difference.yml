@@ -1,0 +1,82 @@
+name: mg51-matched-original-band-difference-audit
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg51_matched_original_band_difference.py'
+      - 'scripts/validate_rpb108_mg51_independent_difference_replay.py'
+      - 'notes/RPB108_MG51_MATCHED_BAND_DIFFERENCE_20261021.md'
+      - '.github/workflows/rpb108-mg51-matched-band-difference.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-matched-24D-band-difference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Accepted original MG24 complete source and tail
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Accepted original MG46 omitted source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39638393721
+          name: mg46-original-complete-missing-GS-256-matrix-audit
+          github-token: ${{ github.token }}
+          path: artifacts/mg46_verified
+      - name: Accepted original MG47 conditioned source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39663431182
+          name: mg47-original-conditioned-864-whole-missing-GS-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg47_verified
+      - name: Accepted original MG48 complete joint multiplier
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39685179933
+          name: mg48-original-joint-multiplier-864-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg48_verified
+      - name: Accepted original MG50 new 4to8 Fourier source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39727680095
+          name: mg50-original-new-4to8-Fourier-864-complete-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg50_verified
+      - name: Compile and check pinned independent verified artifacts
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg51_matched_original_band_difference.py scripts/validate_rpb108_mg51_independent_difference_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json
+          test -s artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json
+          test -s artifacts/mg48_verified/mg48_joint_multiplier_source_covariance.json
+          test -s artifacts/mg50_verified/mg50_actual_original_4to8_source_covariance.json
+      - name: Exact original full24 matched MG48 MG50 band-difference decomposition
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg51_matched_original_band_difference.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg46-json artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json --verified-mg48-json artifacts/mg48_verified/mg48_joint_multiplier_source_covariance.json --verified-mg50-json artifacts/mg50_verified/mg50_actual_original_4to8_source_covariance.json
+      - name: Independently replay all ungrouped original 24D matrix difference components
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg51_independent_difference_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg46-json artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json --verified-mg48-json artifacts/mg48_verified/mg48_joint_multiplier_source_covariance.json --verified-mg50-json artifacts/mg50_verified/mg50_actual_original_4to8_source_covariance.json --verified-mg51-json artifacts/mg51_original_matched_band_difference.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg51-original-matched-8-source-band-difference-matrices
+          path: artifacts/mg51_original_matched_band_difference.json
+          if-no-files-found: ignore
