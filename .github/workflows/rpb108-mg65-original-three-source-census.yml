@@ -1,0 +1,46 @@
+name: mg65-original-three-source-exact-gap-loss-census
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg65_3D_gap_obstruction_census.py'
+      - 'scripts/validate_rpb108_mg65_independent_gap_census.py'
+      - 'notes/RPB108_MG65_ORIGINAL_THREESOURCE_GAP_CENSUS_20261023.md'
+      - '.github/workflows/rpb108-mg65-original-three-source-census.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-original-3D-physical-source-obstruction-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Pin MG64 genuine original physical 3D source mean producer artifact
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 40002249165
+          name: mg64-original-55cell-physical-three-source-Jensen-exact-Gram
+          github-token: ${{ github.token }}
+          path: artifacts/mg64_verified
+      - name: Compile both independent 3x3 rational obstruction diagnostic scripts
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg65_3D_gap_obstruction_census.py scripts/validate_rpb108_mg65_independent_gap_census.py
+          test -s artifacts/mg64_verified/mg64_original_three_source_Jensen.json
+      - name: Quantify all 252 original exact rational center mean gaps and per-direction improvement requirements
+        run: |
+          python scripts/validate_rpb108_mg65_3D_gap_obstruction_census.py --verified-mg64-json artifacts/mg64_verified/mg64_original_three_source_Jensen.json
+      - name: Independent full arithmetic recheck of all 252 original 3D Gram determinant/e2 Frobenius error ratios
+        run: |
+          python scripts/validate_rpb108_mg65_independent_gap_census.py --verified-mg64-json artifacts/mg64_verified/mg64_original_three_source_Jensen.json --verified-mg65-json artifacts/mg65_original_3D_source_gap_census.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg65-original-252-exact-three-source-gap-loss-audit
+          path: artifacts/mg65_original_3D_source_gap_census.json
+          if-no-files-found: ignore
