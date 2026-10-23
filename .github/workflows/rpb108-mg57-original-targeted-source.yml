@@ -1,0 +1,64 @@
+name: mg57-original-targeted-strong-action-source-refinement
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg57_pole_coupled_targeted_cells.py'
+      - 'scripts/validate_rpb108_mg57_independent_pole_refinement_replay.py'
+      - 'notes/RPB108_MG57_ORIGINAL_TARGETED_POLE_MULTIPLIER_20261023.md'
+      - '.github/workflows/rpb108-mg57-original-targeted-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-shared-pole-and-targeted-fourier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted original physical pole column and Gram
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve accepted original MG29 physical Taylor/Fourier source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Retrieve independently accepted original MG56 genuine corrected strong moment
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39894269994
+          name: mg56-original-0to4-true-pole-corrected-strong-action-24D-band-lower
+          github-token: ${{ github.token }}
+          path: artifacts/mg56_verified
+      - name: Compile and pin original exact physical input archives
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg57_pole_coupled_targeted_cells.py scripts/validate_rpb108_mg57_independent_pole_refinement_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+          test -s artifacts/mg56_verified/mg56_original_corrected_strong_band_lower.json
+      - name: Compute original pole-coupled 32-cell and true newly refined 41-cell strong-action lower
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg57_pole_coupled_targeted_cells.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg56-json artifacts/mg56_verified/mg56_original_corrected_strong_band_lower.json
+      - name: Independent original full 24D rational moment and twelve new physical Fourier cells replay
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg57_independent_pole_refinement_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg56-json artifacts/mg56_verified/mg56_original_corrected_strong_band_lower.json --verified-mg57-json artifacts/mg57_targeted_true_strong_action_refinement.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg57-original-coupled-pole-and-twelve-new-physical-fourier-cells
+          path: artifacts/mg57_targeted_true_strong_action_refinement.json
+          if-no-files-found: ignore
