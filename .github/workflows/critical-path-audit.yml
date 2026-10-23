@@ -1,0 +1,51 @@
+name: Weil-Lab critical-path obligation audit
+on:
+  pull_request:
+    paths:
+      - 'research/obligations.json'
+      - 'docs/CRITICAL_PATH_RESET_20261023.md'
+      - 'docs/ACTIVE_FRONTIER.md'
+      - 'docs/OBLIGATION_FIRST_PROGRESSION.md'
+      - '.github/workflows/critical-path-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-proof-obligation-custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify canonical obligation graph, evidence registry and status
+        run: |
+          python -m unittest discover -s scripts -p test_obligation_manifest.py -v
+          python scripts/verify_obligation_manifest.py
+      - name: Verify audit reset preserves open theorem status and quantitative constants
+        run: |
+          python - <<'PY'
+          from fractions import Fraction as F
+          from pathlib import Path
+          import json
+          m=json.loads(Path("research/obligations.json").read_text())
+          assert m["active_obligation"]=="W-ODD-NEG"
+          assert m["objective"]["status"]=="open"
+          obs={x["id"]:x for x in m["obligations"]}
+          assert obs["W-ODD-POLE"]["status"]=="closed"
+          assert obs["W-ODD-NEG"]["status"]=="open"
+          assert obs["W-EVEN-FORM"]["status"]=="open"
+          assert obs["W-WHOLE-FORM"]["status"]=="open"
+          assert obs["W-GLOBAL-BRIDGE"]["status"]=="open"
+          assert obs["W-RH"]["status"]=="open"
+          s=obs["W-ODD-NEG"]["next_action"]
+          assert "470-source" in s and "MG source-dimensional" in s
+          assert F(33621,10**9)**2==F(1130371641,10**18)
+          assert F(1,15000)/F(17,25000)==F(5,51)
+          assert F(51,56)+F(5,56)==1
+          audit=Path("docs/CRITICAL_PATH_RESET_20261023.md").read_text()
+          for term in ("G0", "N0cap", "DB", "Kminus", "CC27", "STOP", "full24"):
+            assert term.lower() in audit.lower(),term
+          print("Critical-path audit governance PASS; entire signed odd/even/Weil/RH remain open.")
+          PY
