@@ -109,6 +109,10 @@ Separate mathematically incomplete requirements remain: [EF07](../notes/RPB108_E
 
 **Quantitative discipline:** the MG07 target is a matrix **Loewner** comparison on the entire 470-dimensional original source space; a diagonal, 24D isolated source lower, matrix TRACE decrease, one Rayleigh direction, or a scalar residual constant on another source family is not a substitute. In particular, the true 470D signed deficit cannot be numerically computed while `G0,N0cap,DB` on the SAME original trial are missing.
 
+### Newly isolated source-domain sublemma (conditional; no signed gate)
+
+The original SM35 470 generator functions are zero-extended compactly supported odd polynomial sine/cosine sources and the genuine supported sinh(x/2) pole. [The October 23 domain lemma](../notes/RPB108_ODD470_STRONG_DOMAIN_20261023.md) explicitly pays the endpoint jumps and proves an exact whole-470 scalar high-frequency multiplier-action bound S_(o,|xi|>=1) <= 650 sum(C_j^2) I470 using SM41's original a_o(xi)<=17+log|xi|. Together with bounded low frequencies, this establishes strong-domain source membership **under the claimed supported Fourier-form realization**, not independent identification of that realization with the actual original Weil form. The bound is extremely coarse and does not improve the required MG07 same-trial negative-cap or residual slack. An exact-rational geometry/envelope replay is included in critical-path CI. No theorem-status changes.
+
 ## D. Why dimensional strong-action expansion does not enter the controlling inequality
 
 With an original strong-domain physical source F and any rational matrix B of compatible dimensions:
