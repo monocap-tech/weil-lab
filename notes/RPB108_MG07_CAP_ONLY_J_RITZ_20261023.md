@@ -68,6 +68,48 @@ In raw source coordinates this is congruent to
 \]
 The residual term is **not** discarded merely because cap-only feasibility simplifies. The entire analytic operator-realization transfer, even sector, CC27, global Weil bridge and RH remain open.
 
-## D. Proof custody
+## D. Strong-residual elimination: a complete inverse-free raw-source MG07 gate
 
-[Exact-rational replay](../scripts/validate_rpb108_mg07_cap_only_source_congruence.py) verifies the algebra on a noncommuting rational SPD triple \(H,A_J,C_J\), a positive normalized reserve and an explicit negative-source-ray counterexample. The script reuses the genuine SM35 source-count / cap geometry check but does **not** evaluate \(A_J\) or \(C_J\) for 470 true sources. Required next calculation: original raywise cap-versus-whole-action scalar certificates; advance to the complete Loewner test only if no method-specific obstruction is found.
+The same special Ritz space produces a stronger simplification than the cap-only test. Define the *physical* orthogonal projection \(P_J=JH^{-1}J^*\) onto the exact original \(470\)-dimensional source space and
+\[
+ E=(I-P_J)A_\star J
+   =A_\star J-JH^{-1}A_J,\qquad J^*E=0.
+\]
+Because \(Q^{-1}=H^{-1}A_J\), the **actual complete strong residual** obeys
+\[
+ R=J-A_\star Z
+  =J-A_\star JQ
+  =-EQ.
+\]
+Write the full original strong-action moment \(S_J=(A_\star J)^*(A_\star J)\). Exact projection algebra yields
+\[
+ \boxed{E^*E=S_J-A_JH^{-1}A_J\succeq0.}
+\]
+This is the *Schur complement of the physical source Gram* in the combined source/action Gram. It is a covariance measuring failure of source-space invariance under \(A_\star\), **not** merely the qualitative positive definiteness of \(S_J\). An upper bound for it is useful; an isolated lower bound for \(S_J\) is not.
+
+Let \(B_{14}\succ0\) be the unchanged original SI29/SM19 pole-conditioned lower reference and \(H_-=\|K_-\|_{\mathrm{certified}}\), with the original MG07 coefficient \(H_-/\kappa_\star\). Then
+\[
+ D_B=R^*B_{14}^{-1}R
+   =Q^* E^*B_{14}^{-1}EQ.
+\]
+Thus **the complete fixed-\(V=\operatorname{ran}J\) MG07 sufficient matrix gate**, not just its cap-only part, is exactly equivalent by invertible congruence to
+\[
+ \boxed{
+ (1+t)C_J+
+ (1+t^{-1})\frac{H_-}{\kappa_\star}
+ E^*B_{14}^{-1}E
+ \preceq\frac{51}{56}A_J
+ \quad\text{for ONE uniform }t>0.
+ }
+\]
+There is no \(A_J^{-1}\) in this *raw-source inequality*. Its residual term depends on the **physical** inverse \(H^{-1}\), the complete original whole-frequency first and second action/source Grams, the 14 true SI29 feature overlaps, and the true pole. The actual operator \(A_\star\), not a compressed replacement, is retained in \(E\).
+
+Because \(s\) is a column of \(J\), the source orthogonality also gives \(E^*s=0\). The **positive** pole-inverse correction in \(B_{14}^{-1}\) need not vanish, since generally \(E^*C_{14}^{-1}s\ne0\). This forbids incorrectly dropping the pole term from the Woodbury residual.
+
+For a controlled first screen, keep the exact raw cap-only \(T_J=(51/56)A_J-C_J\). If it fails on one rigorous original physical source ray, do not compute \(E^*B_{14}^{-1}E\) for this fixed \(V\)/cap pair. If \(T_J\succ0\), evaluate the complete original \(E\)-covariance and SI29 feature/pole response and test the boxed inequality, preserving every coupled cross term.
+
+**Proof custody:** the exact-rational regression now also uses a nontrivial 4-dimensional positive-operator model with a 3-source physical synthesis, nonzero orthogonal strong residual, positive reference \(B\preceq A\), and a nonzero cap. It independently checks \(J^*E=0\), \(R=-EQ\), the strong-action Schur covariance, and full MG07 Loewner congruence. This is an algebraic regression, NOT a computation of the actual 470-dimensional source/action matrices.
+
+## E. Proof custody
+
+[Exact-rational replay](../scripts/validate_rpb108_mg07_cap_only_source_congruence.py) verifies the algebra on a noncommuting rational SPD triple \(H,A_J,C_J\), a positive normalized reserve and an explicit negative-source-ray counterexample. The script also checks source-orthogonal strong-residual and full MG07 matrix congruence on a rational 4D/3-source model; it reuses the genuine SM35 source-count / cap geometry check but does **not** evaluate \(A_J\) or \(C_J\) for 470 true sources. Required next calculation: original raywise cap-versus-whole-action scalar certificates; advance to the complete Loewner test only if no method-specific obstruction is found.
