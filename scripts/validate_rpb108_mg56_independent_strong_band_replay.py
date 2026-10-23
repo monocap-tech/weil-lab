@@ -144,7 +144,11 @@ def main():
   previous=rd(next(x for x in a24["cases"] if x["cutoff_k"]==k)["complete_Sstar_lower"])
   assert exact_psd(mul(-1,previous))
   assert comparison["old_full_original_MG24_lower_is_negative_semidefinite"]
-  assert comparison["new_strong_band_lower_minus_MG24_lower_PSD"]==exact_psd(sub(L,previous)) if comparison["new_strong_band_lower_minus_MG24_lower_PSD"] else True
+  try:
+   newer_dominates=exact_psd(sub(L,previous))
+  except AssertionError:
+   newer_dominates=False
+  assert comparison["new_strong_band_lower_minus_MG24_lower_PSD"]==newer_dominates
   assert str(sum(previous[i][i] for i in range(N)))==comparison["old_lower_trace"]
   assert sum(previous[i][i]>0 for i in range(N))==comparison["strict_positive_diagonal_directions_old"]
   assert len(positive)==comparison["strict_positive_diagonal_directions_new"]
