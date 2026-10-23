@@ -1,3 +1,26 @@
+## MG55 independently VERIFIED — entire inherited response-certification convex hull obstructed
+
+[MG55 final-head Actions #39889500230](https://github.com/monocap-tech/weil-lab/actions/runs/39889500230) **PASSED**, producer plus separately authored independent physical-24D reconstruction, 18 distinct rational changed-response full original frequency covariance uppers, 36 original strong-moment curvature PSD matrices, original Gram identity and **COMMON EXACT RATIONAL NEGATIVE SOURCE WITNESS** on ALL four historical original MG43 upper certificates.
+
+Artifact `mg55-original-four-response-homotopy-full24-matrices` ID **12473723043**.
+
+| Certified original MG43 response | exact conservative source lower on common rational ray e0 (rounded) |
+|---|---:|
+| mesh16/k12 | −0.1784161889 |
+| mesh16/k16 | −0.2021311755 |
+| mesh32/k12 | −0.1697002798 |
+| mesh32/k16 | −0.1902574284 |
+
+The witness is the **first coordinate vector** of the common original 24D adapted-source frame; exact fractions are stored in the artifact and independently verified.
+
+The physical changed-response whole-frequency Jensen construction is RIGOROUS, yet all **18 finite tested pairwise response blends** show 0 improvements beyond best archived MG43 Gersh sufficient lower and **0 original source positive-definite lower certificates**. More importantly, the common strictly negative rational witness means the **ENTIRE CONTINUOUS four-vertex convex hull of these inherited original complete-frequency CERTIFICATE upper matrices** fails original 24D strict source positivity, for every nonnegative barycentric response weight (not merely 18 cases). A new sharper upper for an intermediate response or response outside the hull is **NOT** ruled out; no claim about actual original Weil operator negative spectral index or RH.
+
+The original MG24 complete physical pole-corrected strong-action moment lower `L_*<=S_*=(A_*F)^*(A_*F)` is itself NEGATIVE SEMIDEFINITE for both k12 and k16 by independent exact rational PSD of `-L_*`. Therefore `-theta(1-theta) DeltaB^T L_* DeltaB` is an exact PSD penalty on the convex response upper, and **cannot supply curvature-based gain**. The intrinsic PSD `S_*>=0` is a strictly better available lower. This identifies a specific new obligation: obtain a quantitatively useful positive original pole-corrected strong-action moment lower `S_*` or construct a response B outside the inherited convex hull with newly certified **globally coupled whole-frequency** upper.
+
+**Status:** independent original 24D finite-response and continuous inherited-certificate-hull audit ACCEPTED; **no source contraction**. Original 470D inverse, signed odd 51/56, independent Fourier/form/domain, even/Weil/CC27/RH all remain OPEN.
+
+---
+
 ## Stronger MG55 acceptance: entire convex hull of archived certificates
 
 **Common-rational-ray theorem, conditional on independent Actions replay:** Let the four accepted original MG43 full-frequency source residual upper matrices be `U_1,...,U_4`. Their certificate lowers use the SAME true original Gram lower `Hlo`. The exact rational ray already accepted as a negative conservative-source witness in the first MG43 scenario is ALSO exactly negative on each of the other three accepted source-lower matrices `Hlo-U_i`.
@@ -16,7 +39,7 @@ The independent verifier proves all four rational source-ray projections strictl
 
 # MG55 — Original physical 24D changed-response homotopy audit
 
-**Status: code and mathematical proof submitted, numerical acceptance PENDING independent GitHub Actions.** Parent [MG54 PR #303](https://github.com/monocap-tech/weil-lab/pull/303) independently certified a TWO-SIDED obstruction for the fixed MG52 response B and additive direct plus remainder architecture. MG55 changes that response rather than grinding either bound.
+**Status: independently verified exact rational original-source changed-response gate; no 24D contraction.** Parent [MG54 PR #303](https://github.com/monocap-tech/weil-lab/pull/303) independently certified a TWO-SIDED obstruction for the fixed MG52 response B and additive direct plus remainder architecture. MG55 changes that response rather than grinding either bound.
 
 ## Source-affine response identity and physically VALID interpolation
 
