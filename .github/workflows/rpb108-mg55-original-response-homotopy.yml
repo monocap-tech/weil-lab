@@ -1,0 +1,55 @@
+name: mg55-original-24D-response-homotopy
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg55_original_response_homotopy.py'
+      - 'scripts/validate_rpb108_mg55_independent_response_homotopy.py'
+      - 'notes/RPB108_MG55_ORIGINAL_RESPONSE_HOMOTOPY_20261023.md'
+      - '.github/workflows/rpb108-mg55-original-response-homotopy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-source-response-homotopy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted original complete strong moments and true pole
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve four accepted MG43 original response endpoints and source witnesses
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39663431182
+          name: mg47-original-conditioned-864-whole-missing-GS-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg47_verified
+      - name: Compile and pin original verified archives
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg55_original_response_homotopy.py scripts/validate_rpb108_mg55_independent_response_homotopy.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json
+      - name: Construct exact valid complete-frequency changed-response source uppers and curvature
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg55_original_response_homotopy.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json
+      - name: Independently reconstruct all 18 changed-response matrices and 36 strong curvature sign gates
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg55_independent_response_homotopy.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json --verified-mg55-json artifacts/mg55_original_response_homotopy.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg55-original-four-response-homotopy-full24-matrices
+          path: artifacts/mg55_original_response_homotopy.json
+          if-no-files-found: ignore
