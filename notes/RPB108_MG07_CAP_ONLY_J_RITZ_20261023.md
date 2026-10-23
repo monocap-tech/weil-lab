@@ -106,6 +106,35 @@ There is no \(A_J^{-1}\) in this *raw-source inequality*. Its residual term depe
 
 Because \(s\) is a column of \(J\), the source orthogonality also gives \(E^*s=0\). The **positive** pole-inverse correction in \(B_{14}^{-1}\) need not vanish, since generally \(E^*C_{14}^{-1}s\ne0\). This forbids incorrectly dropping the pole term from the Woodbury residual.
 
+### Exact finite moment formula for the complete SI29-weighted defect
+
+Write the **true fourteen-feature SI29 operator reference** in SM19 notation as
+\[
+ C_{14}=\kappa I+G\Gamma G^*,\quad
+ B_{14}=C_{14}-2|s\rangle\langle s|,\quad
+ M=\Gamma^{-1}+\kappa^{-1}G^*G,\quad
+ \alpha=1-2\langle s,C_{14}^{-1}s\rangle>0.
+\]
+Define the genuine full action/source correlations \(F=G^*E\in\mathbb C^{14\times470}\) and \(q=G^*s\in\mathbb C^{14}\). Since \(E^*s=0\), the exact **positive** inverse-pole response is
+\[
+ z=E^*C_{14}^{-1}s=-\kappa^{-2}F^*M^{-1}q.
+\]
+Therefore the complete original preconditioned source-orthogonal defect has the **finite data identity**
+\[
+ \boxed{\begin{aligned}
+ E^*B_{14}^{-1}E={}&
+ \kappa^{-1}(S_J-A_JH^{-1}A_J)\\
+ &-\kappa^{-2}F^*M^{-1}F\\
+ &+\frac{2}{\alpha\kappa^4}
+   F^*M^{-1}qq^*M^{-1}F .
+ \end{aligned}}
+\]
+The second term is NEGATIVE and the last is POSITIVE; neither may be sign-flipped or independently dropped in a claimed exact certificate. The last generally survives even though \(E^*s=0\). In particular,
+\[
+ F=G^*A_\star J-G^*JH^{-1}A_J,
+\]
+so the computational inputs are *full physical* \(H,A_J,S_J\), all fourteen SI29 source-to-action and source-to-source cross matrices, the original feature/pole Gram, and the complete same-cap \(C_J\). No \(A_J^{-1}\) appears in the controlling original-source Loewner matrix. This does **not** supply numerical sharpness: all high-frequency/action/cap data must still be rigorously enclosed.
+
 For a controlled first screen, keep the exact raw cap-only \(T_J=(51/56)A_J-C_J\). If it fails on one rigorous original physical source ray, do not compute \(E^*B_{14}^{-1}E\) for this fixed \(V\)/cap pair. If \(T_J\succ0\), evaluate the complete original \(E\)-covariance and SI29 feature/pole response and test the boxed inequality, preserving every coupled cross term.
 
 **Proof custody:** the exact-rational regression now also uses a nontrivial 4-dimensional positive-operator model with a 3-source physical synthesis, nonzero orthogonal strong residual, positive reference \(B\preceq A\), and a nonzero cap. It independently checks \(J^*E=0\), \(R=-EQ\), the strong-action Schur covariance, and full MG07 Loewner congruence. This is an algebraic regression, NOT a computation of the actual 470-dimensional source/action matrices.
