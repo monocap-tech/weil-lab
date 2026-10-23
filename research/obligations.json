@@ -516,7 +516,8 @@
     "SM52C": {
       "kind": "Exact-rational physical L2 coercivity corollary of independently focused-CI verified complete original coupled SM52 2x2 signed source lower.",
       "scope": "True original supported SI10 sine source2 and original same-center xcos source17 (original physical B=11/10), SM52 original signed lower matrix CI39205091881 proves full 2x2 PD with offdiag. Exact Gershgorin min=1066743452403/10^12; entire physical Gram trace <=4631/1500. Hence signed Wodd(h)>=69/200 ||h||_L2^2 on 2D span only. Full original 25/470 odd negative index/Schur, even/Weil/CC27/RH remain open. Inherited Fourier/form-domain identity and math audit separate.",
-      "repo_path": "notes/RPB108_SM52C_TWO_SOURCE_L2_20261018.md",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/236",
+    "repo_path": "notes/RPB108_SM52C_TWO_SOURCE_L2_20261018.md",
       "verification": "Standalone fully exact rational physical L² coercivity on original SM52 genuine sin/xcos 2D signed trial space passed Actions 39208057040: coefficient Gershgorin ell=1066743452403/10^12, physical Gram trace upper=4631/1500, strict signed >=69/200 ||h||², exact rational margin ell-(69/200)*(4631/1500)=1613452403/10^12. Complete 25/470 odd spectrum, even, Weil/RH open."
     },
     "SM54": {
