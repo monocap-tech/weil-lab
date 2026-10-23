@@ -1,6 +1,25 @@
+## MG54 — ACCEPTED independent original 24D two-sided fixed-source obstruction
+
+[MG54 Actions #39887717605](https://github.com/monocap-tech/weil-lab/actions/runs/39887717605) **PASSED** exact rational construction and separately authored full 24×24 original matrix PSD / source witness replay, all four cases. Artifact `mg54-original-two-sided-source-24D-budget-frontier` ID **12473033332**.
+
+| Original source case | archived original source Hlo on MG43 rational witness | accepted full direct 0–8 upper on witness | accepted full remaining | maximum equal hypothetical retention `h/(d+r)` | fixed-method direct-only/remainder-only |
+|---|---:|---:|---:|---:|---|
+| 16/k12 | 1.730451361179 | 3.374941553582 | 2.500047346490 | **0.294545469040** | Both mathematically insufficient |
+| 16/k16 | 1.730451361179 | 3.366671362349 | 2.578160986671 | **0.291084972558** | Both mathematically insufficient |
+| 32/k12 | 1.730451361179 | 3.427222850311 | 2.505064293580 | **0.291700539641** | Both mathematically insufficient |
+| 32/k16 | 1.730451361179 | 3.407695905339 | 2.601505982206 | **0.287966920327** | Both mathematically insufficient |
+
+The independently verified exact rational source matrices `D` and `R` are BOTH positive semidefinite. **Even a hypothetical ZERO R cannot rescue the accepted fixed D**, and MG53 independently proved that hypothetical ZERO D cannot rescue accepted fixed R, on all four exact rational witnesses. Thus an independently improved only-D or only-R PSD source upper cannot establish original source 24D contraction for **this exact fixed response B plus additive D+R proof family**.
+
+The necessary budget line `alpha*d+beta*r <= h` is a **counterfactual arithmetic condition only**. The 28.8–29.5% equal factor does not correspond to a new physical valid residual upper. Nor would positivity on the four rays establish full 24D positivity. No original actual signed Weil operator negative direction is proved.
+
+**MG55 new axis:** change original nonscalar response B, or obtain a new physically valid coupled whole-real-frequency source upper not constrained to the fixed individually estimated D+R pieces. Stop separately grinding MG52 direct and MG48 remainder coefficients. All original 24D source contraction, 470D inverse, signed odd 51/56, independent Fourier/form/domain, even/Weil/CC27/RH remain OPEN.
+
+---
+
 # MG54 — Two-sided original source budget / joint-method necessity
 
-**Status: new fixed-response structural diagnostic implemented; independent exact-rational CI PENDING.** Parent MG53 [Actions #39886275002](https://github.com/monocap-tech/weil-lab/actions/runs/39886275002) independently established four-case original source direct-only no-go within the **fixed MG52 nonscalar B and complete remaining-frequency upper**.
+**Status: independently VERIFIED exact original-source restricted two-sided impossibility, no new physical spectral conclusion.** Parent MG53 [Actions #39886275002](https://github.com/monocap-tech/weil-lab/actions/runs/39886275002) independently established four-case original source direct-only no-go within the **fixed MG52 nonscalar B and complete remaining-frequency upper**.
 
 ## New question, not answered by MG53
 
