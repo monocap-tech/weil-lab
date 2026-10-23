@@ -1,0 +1,55 @@
+name: mg56-original-strong-action-24D-band-lower
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg56_corrected_strong_band_lower.py'
+      - 'scripts/validate_rpb108_mg56_independent_strong_band_replay.py'
+      - 'notes/RPB108_MG56_ORIGINAL_STRONG_BAND_LOWER_20261023.md'
+      - '.github/workflows/rpb108-mg56-strong-action-band-lower.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-pole-corrected-strong-action-band:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted original MG24 entire action moment and pole
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve independent MG29 true original 32 Fourier cells
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39440914565
+          name: mg29-original-adapted-third-24D-source-intervals
+          github-token: ${{ github.token }}
+          path: artifacts/mg29_verified
+      - name: Compile and pin original exact physical archives
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg56_corrected_strong_band_lower.py scripts/validate_rpb108_mg56_independent_strong_band_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg29_verified/mg29_original_direct_third_drift.json
+      - name: Derive genuine ORIGINAL pole-corrected strong action 0–4 moment lower
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg56_corrected_strong_band_lower.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json
+      - name: Independently reconstruct all original strong-action source affine cell quadratics and full24 moments
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg56_independent_strong_band_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg29-json artifacts/mg29_verified/mg29_original_direct_third_drift.json --verified-mg56-json artifacts/mg56_original_corrected_strong_band_lower.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg56-original-0to4-true-pole-corrected-strong-action-24D-band-lower
+          path: artifacts/mg56_original_corrected_strong_band_lower.json
+          if-no-files-found: ignore
