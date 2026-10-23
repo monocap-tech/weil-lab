@@ -164,6 +164,12 @@ Thus if `x>=theta` on a certified ray, no residual improvement alone can rescue 
 
 **Failure criterion:** An exact negative/zero `Delta0` witness after valid physical matrix assembly means abandon further MG57–67-style local source-strong lower refinements as a way to rescue THAT fixed cap and Z. Move to sharper true-original negative cap, different original trial geometry, or direct actual finite energy-dual signed Schur. If `Delta0>0` but feasible DB margin is not within measured reach, quantify the relative residual deficit and change inverse/resolvent or joint-source geometry rather than iterating Fourier subcell counts.
 
+### Cap-only inverse elimination on the canonical source Ritz space
+
+The first natural 470D trial can be taken as the exact Astar-Galerkin response within V=ran(J), where J is the original SM35 exceptional physical source synthesis, H=J*J, AJ=J*Astar J>0 and CJ=J*Kcap J>=0. Since Z=J AJ^-1 H and Q=AJ^-1 H is invertible, the entire cap-only matrix is exactly Delta0=Q*[(51/56)AJ-CJ]Q. Thus the first same-trial cap-only positivity decision requires NO original inverse/residual computation: check (51/56)AJ-CJ>0 in the raw original source coordinates. A rational physical source v with v*[(51/56)AJ-CJ]v<=0 is a rigorous STOP witness for this **specific** original J-Ritz geometry and chosen negative cap; it is not a negative witness for true Wodd and does not exclude enriched trial spaces or a sharper cap. Full spectrum positive certification still requires all 470 coupled source coefficients and a normalized Loewner margin, and successful cap-only certification still requires matched DB and one uniform t.
+
+See [the exact algebra and fail-closed ray analysis](../notes/RPB108_MG07_CAP_ONLY_J_RITZ_20261023.md). The new validator checks a noncommuting rational 3D toy and original 470/890 geometry, not the uncomputed original 470D stiffness or cap.
+
 ## G. Acceptance doctrine and stopping rules
 
 A new calculation is a critical-path advance **only if** it (i) discharges an OPEN original theorem, (ii) improves an explicit term of the complete acceptance Loewner inequality on its exact shared 470D source/response, (iii) proves a precisely scoped method-class impossibility, or (iv) supplies concrete original-operator domain/inverse/covariance data indispensable to one of those gates. Otherwise archive it as exploratory.
