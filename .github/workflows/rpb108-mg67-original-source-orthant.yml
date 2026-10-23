@@ -1,0 +1,45 @@
+name: mg67-original-three-source-orthant-copositive-rational
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg67_original_orthant_copositive.py'
+      - 'scripts/validate_rpb108_mg67_independent_orthant_replay.py'
+      - 'notes/RPB108_MG67_ORIGINAL_SOURCE_ORTHANT_20261023.md'
+      - '.github/workflows/rpb108-mg67-original-source-orthant.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-3D-physical-source-orthant:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Pin independently verified MG66 original 55-cell physical Fourier source Q and R
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 40022012105
+          name: mg66-original-six-real-physical-three-source-directional-sign-covariances
+          github-token: ${{ github.token }}
+          path: artifacts/mg66_verified
+      - name: Compile independent rational source-orthant calculations and check physical-source archive
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg67_original_orthant_copositive.py scripts/validate_rpb108_mg67_independent_orthant_replay.py
+          test -s artifacts/mg66_verified/mg66_original_3D_sign_covariance.json
+      - name: Exactly minimize all 24 original physical-source error forms over nonnegative coefficient simplex
+        run: |
+          python scripts/validate_rpb108_mg67_original_orthant_copositive.py --verified-mg66-json artifacts/mg66_verified/mg66_original_3D_sign_covariance.json
+      - name: Independently recompute all 24 signed-cone extrema with distinct barycentric formula
+        run: |
+          python scripts/validate_rpb108_mg67_independent_orthant_replay.py --verified-mg66-json artifacts/mg66_verified/mg66_original_3D_sign_covariance.json --verified-mg67-json artifacts/mg67_original_source_orthant_copositive.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg67-original-24-physical-three-source-orthant-extrema
+          path: artifacts/mg67_original_source_orthant_copositive.json
+          if-no-files-found: ignore
