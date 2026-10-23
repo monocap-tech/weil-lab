@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+"""W-ODD-NEG: original SM36 cap-only ray SCOUT, never a proof.
+
+Build same-original-source sampled AJ and 890-column CJ, prefer minimum
+physical source support for a rational candidate violating theta AJ-CJ.
+All FFT, quadrature, high-frequency and float errors are UNCONTROLLED.
+"""
+import argparse,json,math
+from itertools import combinations
+from pathlib import Path
+import numpy as np
+from scipy import linalg
+from sm36_original_odd_numerical_pilot import (
+    geometry,select_sources,physical_columns,fourier_form,
+    all_source_negative_cap)
+from validate_rpb108_si10_complement_positivity import protected_inner_cover
+from validate_rpb108_sm34_positive_energy_dual_schur import CLEAN_THRESHOLD
+
+ROOT=Path(__file__).resolve().parents[1]
+THETA=float(CLEAN_THRESHOLD)
+
+def descriptors(infos,sources):
+    clusters,*_=protected_inner_cover()
+    assert len(clusters)==107
+    result=[]
+    for typ,j,k in sources:
+        if typ=="pole":
+            result.append(dict(kind="original_supported_sinh_pole",
+                               cluster_index=None,degree=None,
+                               exact_center=None))
+        else:
+            a,b,_=clusters[j]
+            center=(a+b)/2
+            assert abs(float(center)-infos[j][0])<1e-10
+            result.append(dict(kind="original_polynomial_sine" if k%2==0
+                               else "original_polynomial_cosine",
+                               cluster_index=int(j),degree=int(k),
+                               exact_center=str(center)))
+    return result
+
+def matrices(n,pad,infos,sources,cap,orders,mass,total):
+    x,dx,v=physical_columns(n,infos,sources)
+    H=(v.T@v)*dx
+    H=(H+H.T)/2
+    Ao,Kdirect,_,info=fourier_form(v,dx,pad)
+    b=(v.T@np.sinh(x/2))*dx
+    A=Ao-2*np.outer(b,b)
+    A=(A+A.T)/2
+    C,ci=all_source_negative_cap(
+        v,x,dx,cap,orders,np.eye(len(sources)),H,mass,total)
+    C=(C+C.T)/2
+    assert ci["columns"]==890 and ci["blocks"]==107
+    ev=linalg.eigvalsh(A,H)
+    assert ev[0]>0
+    return A,C,Kdirect,dict(nphysical=n,pad=pad,
+            nyquist=float(info["nyquist"]),
+            frequency_step=float(info["freq_step"]),
+            condition_H=float(np.linalg.cond(H)),
+            min_A_over_H=float(ev[0]),eta=float(ci["eta"]))
+
+def integer_ray(x,dim):
+    x=np.asarray(x,dtype=float)
+    x=x/max(float(np.max(np.abs(x))),1e-30)
+    ints=np.rint(16384*x).astype(np.int64)
+    assert ints.size==dim and np.any(ints)
+    g=math.gcd(*[abs(int(z)) for z in ints if z])
+    ints//=g
+    if ints[np.nonzero(ints)[0][0]]<0:ints=-ints
+    return tuple(int(z) for z in ints)
+
+def ray_ratio(A,C,K,v):
+    x=np.asarray(v,dtype=float)
+    d=float(x@A@x)
+    assert d>0
+    return dict(cap_A=float(x@C@x/d),
+                direct_negative_A=float(x@K@x/d),
+                theta_minus_cap_ratio=float(THETA-x@C@x/d))
+
+def candidate(inds,A,C):
+    vals,vecs=linalg.eigh(C[np.ix_(inds,inds)],
+                          A[np.ix_(inds,inds)])
+    vec=np.zeros(A.shape[0],dtype=float)
+    vec[list(inds)]=vecs[:,-1]
+    z=integer_ray(vec,len(vec))
+    return z,ray_ratio(A,C,np.zeros_like(C),z)["cap_A"]
+
+def main():
+    p=argparse.ArgumentParser()
+    p.add_argument("--quick",action="store_true")
+    p.add_argument("--output",default="artifacts/w_odd_neg_cap_ray_scout.json")
+    args=p.parse_args()
+    infos,cap,orders,mass,_,total=geometry()
+    sources=select_sources(infos)
+    descriptions=descriptors(infos,sources)
+    dim=len(sources)
+    grids=[(4096,4),(8192,4)] if args.quick else [
+           (4096,4),(8192,4),(8192,8)]
+    runs=[matrices(n,pad,infos,sources,cap,orders,mass,total)
+          for n,pad in grids]
+    A,C,_,_=runs[-1]
+    summaries=[]
+    chosen=None
+    for k in (1,2,3):
+        best=None
+        for inds in combinations(range(dim),k):
+            z,high=candidate(inds,A,C)
+            grid_ratios=[ray_ratio(a,c,d,z)["cap_A"] for a,c,d,_ in runs]
+            score=min(grid_ratios)
+            if best is None or score>best["lowest_grid_cap_A"]:
+                best=dict(support_count=k,source_indices=list(inds),
+                          rational_nonzero_coefficients=[
+                              [int(i),str(z[i])] for i in inds if z[i]],
+                          highest_resolution_cap_A=high,
+                          lowest_grid_cap_A=score,
+                          grid_cap_A=grid_ratios)
+        summaries.append(best)
+        print("SMALL SUPPORT",k,"best min cap/A",
+              best["lowest_grid_cap_A"],"indices",
+              best["source_indices"],flush=True)
+        if chosen is None and best["lowest_grid_cap_A"]>THETA+0.1:
+            chosen=[0]*dim
+            for i,z in best["rational_nonzero_coefficients"]:
+                chosen[i]=int(z)
+            break
+    eig,vecs=linalg.eigh(C,A)
+    full=integer_ray(vecs[:,-1],dim)
+    if chosen is None:chosen=list(full)
+    replays=[dict(grid=m,ray=ray_ratio(a,c,d,chosen))
+             for a,c,d,m in runs]
+    result=dict(status="NUMERICAL_DISCOVERY_ONLY_NOT_PROOF",
+                canonical_obligation="W-ODD-NEG OPEN",
+                original_total_sources=470,original_cap_columns=890,
+                theta=str(CLEAN_THRESHOLD),pilot_dim=dim,
+                physical_sources=descriptions,
+                minimum_support_search=summaries,
+                sampled_full_pilot_generalized_max=float(eig[-1]),
+                sampled_rationalized_full_pilot_ratios=[
+                    ray_ratio(a,c,d,full)["cap_A"] for a,c,d,_ in runs],
+                selected_original_physical_ray=[
+                    dict(source=descriptions[i],coefficient=str(z))
+                    for i,z in enumerate(chosen) if z],
+                selected_independent_grid_replays=replays,
+                complete_frequency_Astar_bound_certified=False,
+                full_890_cap_energy_lower_certified=False,
+                rigorous_original_ray_witness_certified=False,
+                signed_odd_even_Weil_CC27_RH="OPEN")
+    target=ROOT/args.output
+    target.parent.mkdir(parents=True,exist_ok=True)
+    target.write_text(json.dumps(result,indent=2)+"\n")
+    print("RATIONAL_RAY_CANDIDATE",json.dumps(dict(
+        sources=result["selected_original_physical_ray"],
+        grid_checks=replays),sort_keys=True),flush=True)
+    print("NOT A CERTIFICATE: full original odd theorem OPEN",flush=True)
+
+if __name__=="__main__":
+    main()
