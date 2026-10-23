@@ -1,6 +1,33 @@
+## MG56 — Independently VERIFIED original corrected-action lower, strictly negative-definite (a method no-go)
+
+Original full24 true physical strong-action source production and distinct independent replay [Actions #39894269994](https://github.com/monocap-tech/weil-lab/actions/runs/39894269994) **PASSED**. Original 32-cell corrected [0,4] Fourier lower artifact `mg56-original-0to4-true-pole-corrected-strong-action-24D-band-lower` ID **12475648897**.
+
+A separate exact rational two-implementation structural/attribution check [Actions #39895407054](https://github.com/monocap-tech/weil-lab/actions/runs/39895407054) **PASSED** (forward and reverse full24 strict-positive LDL of `-L_[0,4]`, full trace decomposition and physical cell attribution). Audit artifact `mg56-original-strong-action-exact-negative-lower-error-census` ID **12476233679**.
+
+| Accepted result | Value |
+|---|---:|
+| New true original pole-corrected strong-action band LOWER trace | −360.680532369788 |
+| New full24 strong lower Gershgorin estimate | −33.847273281487 |
+| Positive original coordinate directions certified | **0/24** |
+| New 24D lower inertia | **STRICTLY NEGATIVE DEFINITE**, independently certified |
+| Archived MG24 k12 full-strong LOWER trace | −6339.904841877821 |
+| Archived MG24 k16 full-strong LOWER trace | −6794.957104231404 |
+| New band lower minus each accepted MG24 full-strong lower | **PSD in BOTH cases** |
+| Exact raw 32-cell affine strong-action source signal trace | +4.996571884566 |
+| Exact raw 32-cell Young error-charge trace | **365.677104215189** |
+| Three physical cells [1/8,1/2] share of the full error charge | **78.8933861581%** |
+
+**Interpretation:** The new original physical action lower improves both MG24 old full source lower matrices in Loewner order, but it remains **strictly negative definite**, not merely indefinite. Since the TRUE physical strong-action moment satisfies `S_*=(A_*F)^*(A_*F)>=0`, the trivial zero matrix is already a STRICTLY BETTER full24 lower than this entire new MG56 certificate. Thus this candidate gives **no useful positive curvature for any response difference direction** and cannot repair MG55's response convex-hull bounds. A strictly negative **conservative LOWER** matrix is NOT a negative source physical action/eigenmode, and makes no claim about RH.
+
+**Method-level cause:** This is a massive **error-bound loss**, not evidence of negative physical strong energy. For accepted 32 true original positive-frequency cells, raw physical source affine signal contributes approximately 5.0 to trace, whereas independently charged source/multiplier/pole remainder radii induce approximately 365.7 in diagonal Young penalties. Just the adjacent original positive real-frequency cells [1/8,1/4], [1/4,3/8], [3/8,1/2] are responsible for 78.9% of those charges. Merely shrinking arbitrary other cells or revisiting scalar tau searches cannot resolve the main obstruction efficiently.
+
+**MG57 should localize and recombine the SAME-CELL pole/strong-multiplier error** specifically in those three cells. First establish how much of the large error radius is due to multiplier interval, original adapted-source Taylor drift, and independent global pole-column uncertainty, with an independent certified numerical attribution. Then pursue a new band moment enclosure that retains the **joint physical source/pole cross covariance** before diagonal Young domination. A positive exact rational 24×24 action-moment lower is still a distinct open obligation, and the other 470D/odd 51/56/even/Weil/RH gates remain OPEN.
+
+---
+
 # MG56 — Genuine original pole-corrected strong-action 24D Fourier-band lower
 
-**Status: mathematically derived implementation, exact numerical and independent verification PENDING CI.** Parent [MG55 #304](https://github.com/monocap-tech/weil-lab/pull/304) independently verified the 18 original changed-response Jensen certificates and showed its inherited MG24 whole-frequency original action-second-moment lower was negative semidefinite. MG56 tackles that exact obligation by constructing **NEW** original action-second-moment information, rather than searching response blends again.
+**Status: independently VERIFIED original action source Loewner certificate; strongly NEGATIVE DEFINITE, hence dominated by the intrinsic zero PSD lower.** Parent [MG55 #304](https://github.com/monocap-tech/weil-lab/pull/304) independently verified the 18 original changed-response Jensen certificates and showed its inherited MG24 whole-frequency original action-second-moment lower was negative semidefinite. MG56 tackles that exact obligation by constructing **NEW** original action-second-moment information, rather than searching response blends again.
 
 ## Actual original operator and physical Fourier formula
 
