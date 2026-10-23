@@ -1,3 +1,38 @@
+## MG63 independently VERIFIED — last original coordinate source two-plane positivity certified
+
+[MG63 producer and separately authored exact rational physical source independent replay, Actions #39997475198](https://github.com/monocap-tech/weil-lab/actions/runs/39997475198) **PASSED**. Accepted original physical proof archive `mg63-original-55-physical-source-coordinate5-multicell-Jensen` ID **12521006713**.
+
+**Core theorem of this certificate construction:** The last MG62-uncertified original adapted source-coordinate plane `span(v,e5)` now has a **strict positive lower for the ORIGINAL physical pole-corrected strong-action moment** under the verified 55-cell Fourier source and inherited source/form assumptions. MG62 had independently certified the other 23 coordinate two-planes. With MG63 **all 24 distinct source coordinate TWO-PLANES span(v,e_i) individually have certified 2D strictly positive restrictions**. These plane-wise inequalities CANNOT be assembled into a global 24D coercivity result without cross/complement control, and prove at most the pre-existing rank-at-least-two conclusion for Sstar.
+
+### New exact numerical acceptance
+
+| Actual original physical-source test | Accepted result |
+|---|---:|
+| Original 55-cell physical frequency sampling, SI10/MG11 + true pole | Unchanged |
+| Original coordinate-5 subspace | `span(v,e5)`, v5=0, ||v||²=82 |
+| Rational anchor rescalings tested | 6 |
+| Exact-rational producer candidate original cell subsets evaluated | **422** |
+| Independently reconstructed selected best source subsets | **60**, one per scale/subset-size |
+| Rescalings attaining strict 2D source positivity | **5/6** (all except v/18) |
+| Distinct subset sizes attaining success at scale v/256 | 2, 3, 4, 6, 8, 12, 16 |
+| **Best exact accepted 2D source coefficient-norm lower** | **≈2.40786945774614×10⁻⁶** |
+| Best source gauge | `(v/256,e5)` |
+| Best selected positive physical cell subset size | **12** |
+| Best selected exact physical cell indices in accepted 55-cell frame | **[1,2,11,12,14,17,18,19,20,21,22,23]** |
+| Best strict original exact singular-gap L−E, rounded | **≈1.05995037085224×10⁻⁵** |
+| Explicit TWO-cell positivity achievable? | **YES**, already at v/256 |
+| Taking all 55 cells as a single conservative Frobenius budget | Still fails; proof uses selected physical frequency subsets |
+
+**Independent replay** verified the same original physical SI10/MG11 source Fourier cells, true pole column, common signed multiplier and corrected-action physical mean radii on all 60 archived selected source subset certificates. Every selected strict rational Jensen inequality and source-coefficient normalization was rechecked. The acceptance of positive coordinate-5 source-plane coercivity is therefore INDEPENDENTLY VERIFIED, not a floating sample. The exploratory subset proposal is not exhaustive; the 422 producer subsets and 60 selected independent replays are distinct counts and must not be conflated.
+
+A valid simpler physical two-cell exact witness at gauge v/256 uses original frequency intervals **[5/32,3/16]** and **[23/32,47/64]**, with direct original exact rational center Gram singular lower approximately **2.31003417925662×10⁻⁶**, rigorously enclosed original perturbation energy at most **1.70734782670556×10⁻⁷**, and exact source-plane coefficient coercivity at least **4.94676958265526×10⁻⁷**. This was also separately reconstructed from the two accepted original physical cell archives. The 12-cell mixed-band witness above is stronger.
+
+**Structural lesson:** MG61's norm-balanced gauges (v/9 and v/18) severely overpaid source-moment uncertainty for coordinate 5 because the actual physical action of e5 was much smaller than v's. Scaling v by 1/256 balances the physical Fourier-action amplitudes and lets the exact multiband mean signal remain full-rank. Restricting to well-chosen physical cells keeps the Frobenius error paid only where the source mean carries independent information. Neither reweighting changes the ORIGINAL operator or the underlying two-plane.
+
+**MG64 frontier:** begin with a genuinely THREE-dimensional original source-restricted action moment, using selected 3+ distinct original Fourier-cell means and a 3×3 exact rational singular-gap/Schur-coupling proof; or design a complete original 24×24 source mean matrix with rigorously certified min singular gap. Do not infer full24 source coercivity from success on all 24 overlapping planes. Explicitly distinguish moment rank expansion from residual source contraction, original 470D inverse, signed odd 51/56, independent Fourier/form/domain and even/Weil/CC27/RH, ALL OPEN.
+
+---
+
 # MG63 — Original coordinate-5 multi-Fourier-cell Jensen singular-gap gate
 
 **Status: submitted for independent original physical-source exact-rational verification, pending CI.**
