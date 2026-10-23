@@ -1,0 +1,82 @@
+name: mg53-original-direct-band-zero-ceiling-audit
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg53_original_direct_band_zero_ceiling.py'
+      - 'scripts/validate_rpb108_mg53_independent_zero_ceiling_replay.py'
+      - 'notes/RPB108_MG53_FIXED_REMAINDER_DIRECT_CEILING_20261022.md'
+      - '.github/workflows/rpb108-mg53-direct-band-zero-ceiling.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-fixed-remnant-optimistic-direct-ceiling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted original MG24 physical source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve MG46 original unmeasured source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39638393721
+          name: mg46-original-complete-missing-GS-256-matrix-audit
+          github-token: ${{ github.token }}
+          path: artifacts/mg46_verified
+      - name: Retrieve MG47 accepted original whole source and ray witnesses
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39663431182
+          name: mg47-original-conditioned-864-whole-missing-GS-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg47_verified
+      - name: Retrieve MG50 original new measured 4-to-8 Fourier cells
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39727680095
+          name: mg50-original-new-4to8-Fourier-864-complete-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg50_verified
+      - name: Retrieve MG52 accepted original same-cell source-vector covariance
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39813976498
+          name: mg52-original-samecell-vector-multiplier-24D-PSD-gain
+          github-token: ${{ github.token }}
+          path: artifacts/mg52_verified
+      - name: Compile and pin original source artifacts
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg53_original_direct_band_zero_ceiling.py scripts/validate_rpb108_mg53_independent_zero_ceiling_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json
+          test -s artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json
+          test -s artifacts/mg50_verified/mg50_actual_original_4to8_source_covariance.json
+          test -s artifacts/mg52_verified/mg52_original_samecell_multiplier_cancellation.json
+      - name: Exact original fixed-remainder 24D direct-only zero-ceiling test
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg53_original_direct_band_zero_ceiling.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg46-json artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json --verified-mg50-json artifacts/mg50_verified/mg50_actual_original_4to8_source_covariance.json --verified-mg52-json artifacts/mg52_verified/mg52_original_samecell_multiplier_cancellation.json
+      - name: Independent exact PSD and zero-direct rational ray replay
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg53_independent_zero_ceiling_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg46-json artifacts/mg46_verified/mg46_original_joint_missing_frequency_residual.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json --verified-mg50-json artifacts/mg50_verified/mg50_actual_original_4to8_source_covariance.json --verified-mg52-json artifacts/mg52_verified/mg52_original_samecell_multiplier_cancellation.json --verified-mg53-json artifacts/mg53_original_direct_band_zero_ceiling.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg53-original-direct-band-zero-ceiling-four-source-cases
+          path: artifacts/mg53_original_direct_band_zero_ceiling.json
+          if-no-files-found: ignore
