@@ -1,0 +1,73 @@
+name: mg62-original-physical-two-cell-jensen-2D-singular-gap
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg62_two_cell_jensen_gap.py'
+      - 'scripts/validate_rpb108_mg62_independent_two_cell_jensen.py'
+      - 'notes/RPB108_MG62_TWO_CELL_ORIGINAL_JENSEN_20261023.md'
+      - '.github/workflows/rpb108-mg62-two-cell-jensen.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-physical-two-frequency-cell-2D:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Original MG24 true pole source Gram
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Original MG57 41-cell physical corrected action Fourier source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39897754515
+          name: mg57-original-coupled-pole-and-twelve-new-physical-fourier-cells
+          github-token: ${{ github.token }}
+          path: artifacts/mg57_verified
+      - name: Original MG58 true 55-cell signed multiplier Fourier source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39902364126
+          name: mg58-original-true-adaptive-physical-47-55-cell-2D-strong-moment
+          github-token: ${{ github.token }}
+          path: artifacts/mg58_verified
+      - name: Independent MG61 accepted 48 orthogonal source 2D gauge failures
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39963056297
+          name: mg61-original55-48-orthogonal-source-2D-gauge-certificates
+          github-token: ${{ github.token }}
+          path: artifacts/mg61_verified
+      - name: Compile and pin original independent physical source archives
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg62_two_cell_jensen_gap.py scripts/validate_rpb108_mg62_independent_two_cell_jensen.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json
+          test -s artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json
+          test -s artifacts/mg61_verified/mg61_original_two_plane_orthogonal_gauge.json
+      - name: Propose physical frequency cell pairs and prove 144 original Jensen 2D singular gaps using exact rationals
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg62_two_cell_jensen_gap.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg61-json artifacts/mg61_verified/mg61_original_two_plane_orthogonal_gauge.json
+      - name: Independently regenerate all original 55 Fourier sources and verify 144 rational 2D cell-pair determinant and source norm gates
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg62_independent_two_cell_jensen.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg61-json artifacts/mg61_verified/mg61_original_two_plane_orthogonal_gauge.json --verified-mg62-json artifacts/mg62_original_two_cell_Jensen_source_plane.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg62-original-two-real-Fourier-cell-Jensen-144-exact-source-2D-singular-gaps
+          path: artifacts/mg62_original_two_cell_Jensen_source_plane.json
+          if-no-files-found: ignore
