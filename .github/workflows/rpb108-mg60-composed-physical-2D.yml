@@ -1,0 +1,73 @@
+name: mg60-original-composed-physical-refinement-and-projected-two-plane
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg60_composed_projected_adaptive_2D.py'
+      - 'scripts/validate_rpb108_mg60_independent_composed_2D_replay.py'
+      - 'notes/RPB108_MG60_COMPOSED_TRUE_SOURCE_2D_20261023.md'
+      - '.github/workflows/rpb108-mg60-composed-physical-2D.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-composed-two-dimensional-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted original 24D physical pole column and source Gram
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve independently accepted original MG57 true 41-source cells
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39897754515
+          name: mg57-original-coupled-pole-and-twelve-new-physical-fourier-cells
+          github-token: ${{ github.token }}
+          path: artifacts/mg57_verified
+      - name: Retrieve independently verified original MG58 true physical 47 and 55-cell refinements
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39902364126
+          name: mg58-original-true-adaptive-physical-47-55-cell-2D-strong-moment
+          github-token: ${{ github.token }}
+          path: artifacts/mg58_verified
+      - name: Retrieve independently verified original MG59 correlation-preserving 2D source moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39905695260
+          name: mg59-original-physical-preprojected-strong-action-2D-source-gram
+          github-token: ${{ github.token }}
+          path: artifacts/mg59_verified
+      - name: Compile and pin all four accepted original physical-source archives
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg60_composed_projected_adaptive_2D.py scripts/validate_rpb108_mg60_independent_composed_2D_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json
+          test -s artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json
+          test -s artifacts/mg59_verified/mg59_original_projected_two_plane_action_moments.json
+      - name: Compose original physically refined Fourier with projected 2D correlated multiplier and pole on 50 planes
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg60_composed_projected_adaptive_2D.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg59-json artifacts/mg59_verified/mg59_original_projected_two_plane_action_moments.json
+      - name: Independent original 47 and 55 true physical cells and all 50 exact rational projected strong 2D Gram replay
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg60_independent_composed_2D_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg59-json artifacts/mg59_verified/mg59_original_projected_two_plane_action_moments.json --verified-mg60-json artifacts/mg60_combined_refined_projected_original_2D_source.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg60-original-composed-physical-47-55-cell-50-projective-2D-source
+          path: artifacts/mg60_combined_refined_projected_original_2D_source.json
+          if-no-files-found: ignore
