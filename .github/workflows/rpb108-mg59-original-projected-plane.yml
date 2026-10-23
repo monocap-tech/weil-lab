@@ -1,0 +1,55 @@
+name: mg59-original-physical-projected-2D-strong-action-source
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg59_projected_true_action_plane.py'
+      - 'scripts/validate_rpb108_mg59_independent_projected_plane.py'
+      - 'notes/RPB108_MG59_ORIGINAL_PROJECTED_TWO_PLANE_20261023.md'
+      - '.github/workflows/rpb108-mg59-original-projected-plane.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-action-moment-physical-two-plane:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted original physical source Gram and true sinh pole
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve independently accepted 41-cell true original Fourier strong-action source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39897754515
+          name: mg57-original-coupled-pole-and-twelve-new-physical-fourier-cells
+          github-token: ${{ github.token }}
+          path: artifacts/mg57_verified
+      - name: Compile producer and independently authored physical 2D full-source replay
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg59_projected_true_action_plane.py scripts/validate_rpb108_mg59_independent_projected_plane.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json
+      - name: Project genuine original pole-corrected action physically before bound on 10 distinct two-source planes
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg59_projected_true_action_plane.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json
+      - name: Independently rederive original projected scalar multiplier/pole source error and exact two-plane rational certificate
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg59_independent_projected_plane.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg59-json artifacts/mg59_original_projected_two_plane_action_moments.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg59-original-physical-preprojected-strong-action-2D-source-gram
+          path: artifacts/mg59_original_projected_two_plane_action_moments.json
+          if-no-files-found: ignore
