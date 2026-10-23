@@ -90,7 +90,7 @@ def main():
    "MG57_negative_certificate_lower_first_coordinate_quadratic":str(neg),
    "one_dimensional_source_strong_action_coercivity_CERTIFIED":True,
    "full24_original_strong_action_coercivity_NOT_certified":True,
-   "GLOBAL_rank_one_Loewner_lower_NOT inferred_from_single_ray":True,
+   "GLOBAL_rank_one_Loewner_lower_NOT_inferred_from_single_ray":True,
    "negative_conservative_lower_direction_NOT_actual_negative_operator_mode":True,
    "actual_full470_inverse_NOT_proved":True,
    "original_signed_51over56_cap_NOT_proved":True,
