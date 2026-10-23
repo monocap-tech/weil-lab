@@ -76,6 +76,18 @@ def main():
   endpoints.append({"case":case,"B":B,"U":U,"lower":L,"ray":ray,
       "label":str(case["mesh_cells"])+"/k"+str(case["cutoff_k"])})
  best_g=max(gersh_lower(e["lower"]) for e in endpoints)
+ # MUCH STRONGER THAN A FINITE GRID TEST: find one rational vector
+ # whose original source-lower quadratic is strictly negative on ALL
+ # four independently accepted original MG43 endpoint matrices.
+ # Hence for ANY nonnegative barycentric weights summing to one,
+ # qf(v,Hlo-sum w_i U_i)=sum w_i*qf(v,Hlo-U_i)<0.
+ # Thus the ENTIRE convex hull of these four ARCHIVED CERTIFICATE
+ # uppers fails the 24D source positivity gate, even though it bounds
+ # R(sum w_i B_i) for the changed physical original response.
+ common_ray=endpoints[0]["ray"]
+ common_charges=[quadratic(common_ray,e["lower"]) for e in endpoints]
+ assert all(x<0 for x in common_charges)
+ assert all(common_ray==e["ray"] for e in endpoints)
  # Independently accepted ORIGINAL full-action lower strong moment Sstar,
  # including actual pole mixed terms and the entire high tail.
  lowmoments={}
@@ -164,6 +176,10 @@ def main():
        for e in endpoints],
    "archived_MG24_strong_moment_lower_is_negative_semidefinite":lowmoments,
    "original_all_18_pairwise_rational_response_blends_evaluated":True,
+   "original_common_negative_exact_rational_source_ray":[str(x) for x in common_ray],
+   "original_common_negative_exact_source_lower_quadratics":[str(x) for x in common_charges],
+   "whole_four_endpoint_convex_response_certificate_hull_obstructed":True,
+   "all_nonnegative_barycentric_response_weights_covered_by_affine_identity":True,
    "original_all_36_strong_curvature_sign_tests":True,
    "best_archived_original_Gersh":str(best_g),
    "strict_full24_Gersh_improvements":sum(r["strict_improvement_vs_best_archived"] for r in rows),
