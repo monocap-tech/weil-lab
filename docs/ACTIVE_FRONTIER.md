@@ -2,6 +2,8 @@
 
 > **Complete J-Ritz reduction (conditional on original realization):** With physical source Gram H=J*J and AJ=J*Astar J, the orthogonal strong-action defect E=Astar J-J H^-1 AJ satisfies J*E=0 and E*E=(Astar J)*(Astar J)-AJ H^-1 AJ. The whole MG07 gate for V=ran(J) is congruent to (1+t)CJ+(1+t^-1)(Hminus/kappa_star)E*B14^-1 E <=(51/56)AJ for one uniform t. This is an analytic operator identity, not evaluated true 470-source data.
 >
+> **Existing original SM36 warning (noncertifying):** The 25-source original physical/890-cap float pilot found max cap/Ritz ratios 10.6882, 10.6882 and 10.8639, against theta=51/56. This is a strong reason to seek a rigorous method-specific nonpositive ray BEFORE paying for the complete MG07 inverse residual. The new standalone numerical scout searches smallest 1-, 2-, or 3-generator original rational coefficient witnesses with replay on several grids; no original signed operator witness or certificate yet. [Source/cap-ray scout](../notes/RPB108_ODD_CAP_RAY_SCOUT_20261023.md).
+>
 > **Canonical initial Ritz simplification:** For the original SM35 470-source J-space, the cap-only test on the exact Astar-Galerkin solution Z=J(J*Astar J)^-1(J*J) is equivalent by congruence to `(51/56)(J*Astar J) - (J*Kcap J) > 0`. First seek a rigorous signed rational physical source ray against an entirely matched original all-frequency positive-action upper and full 890-cap lower; a failed ray stops only this J-space/cap method. See [inverse-free source Ritz note](../notes/RPB108_MG07_CAP_ONLY_J_RITZ_20261023.md). No original ray has yet been physically certified; MG07/residual and the complete odd theorem remain OPEN.
 
 # Canonical live frontier — 2026-10-16 baseline
