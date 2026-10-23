@@ -1,0 +1,73 @@
+name: mg52-original-samecell-multiplier-vector-cancellation
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg52_samecell_multiplier_cancellation.py'
+      - 'scripts/validate_rpb108_mg52_independent_samecell_replay.py'
+      - 'notes/RPB108_MG52_ORIGINAL_SAMECELL_MULTIPLIER_20261022.md'
+      - '.github/workflows/rpb108-mg52-original-samecell-cancellation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-direct-multiplier-source-coupling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve MG24 accepted original source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve MG47 accepted original whole and omitted source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39663431182
+          name: mg47-original-conditioned-864-whole-missing-GS-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg47_verified
+      - name: Retrieve MG48 accepted complete joint multiplier
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39685179933
+          name: mg48-original-joint-multiplier-864-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg48_verified
+      - name: Retrieve MG50 accepted genuinely new source Fourier cells
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39727680095
+          name: mg50-original-new-4to8-Fourier-864-complete-source-matrices
+          github-token: ${{ github.token }}
+          path: artifacts/mg50_verified
+      - name: Compile scripts and pin original accepted artifacts
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg52_samecell_multiplier_cancellation.py scripts/validate_rpb108_mg52_independent_samecell_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json
+          test -s artifacts/mg48_verified/mg48_joint_multiplier_source_covariance.json
+          test -s artifacts/mg50_verified/mg50_actual_original_4to8_source_covariance.json
+      - name: Construct strictly improved original direct [4,8] source Loewner upper
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg52_samecell_multiplier_cancellation.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json --verified-mg48-json artifacts/mg48_verified/mg48_joint_multiplier_source_covariance.json --verified-mg50-json artifacts/mg50_verified/mg50_actual_original_4to8_source_covariance.json
+      - name: Independently reconstruct original same-cell residual radii and PSD matrix improvement
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg52_independent_samecell_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg47-json artifacts/mg47_verified/mg47_original_conditioned_missing_moments.json --verified-mg48-json artifacts/mg48_verified/mg48_joint_multiplier_source_covariance.json --verified-mg50-json artifacts/mg50_verified/mg50_actual_original_4to8_source_covariance.json --verified-mg52-json artifacts/mg52_original_samecell_multiplier_cancellation.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg52-original-samecell-vector-multiplier-24D-PSD-gain
+          path: artifacts/mg52_original_samecell_multiplier_cancellation.json
+          if-no-files-found: ignore
