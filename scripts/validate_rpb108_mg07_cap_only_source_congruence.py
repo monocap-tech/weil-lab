@@ -8,16 +8,16 @@ Z=J A_J^{-1} H obeys Z*(J-Astar Z)=0. With theta=51/56,
 theta*(Z*Astar Z) - Z*Kcap Z
 = (A_J^{-1}H)^* (theta*A_J-C_J)(A_J^{-1}H).
 
-Therefore cap-only feasibility on this precise trial space is equivalent
+Moreover E=(I-J H^{-1}J*)Astar J satisfies J*E=0 and\nR=-E(A_J^{-1}H). The FULL MG07 inequality is congruent to\n(1+t)C_J+(1+1/t)(Hminus/kstar)E*B14^{-1}E <= theta*A_J.\nThe strong-action residual covariance is exactly\nE*E=(Astar J)*(Astar J)-A_J H^{-1} A_J.\nTherefore cap-only feasibility on this precise trial space is equivalent
 to theta*A_J-C_J>0; a certified nonpositive rational source ray rules
 out this fixed cap and Galerkin trial, NOT the true signed Weil operator.
-The original full 470D physical stiffness and cap are NOT evaluated.
+The original full 470D physical stiffness, strong-action moment, and cap are NOT evaluated.
 """
 import json
 from fractions import Fraction as F
 from pathlib import Path
 from validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure import (
- ROOT,mat,transpose,mm,scale,add,sub,inv,quad,
+ ROOT,mat,transpose,mm,scale,add,sub,inv,eye,quad,
  actual_original_basis_and_cap_geometry)
 from validate_rpb108_sm34_positive_energy_dual_schur import CLEAN_THRESHOLD
 
@@ -84,6 +84,58 @@ def exact_toy():
       "negative_direction_not_actual_original_operator":True
     }
 
+def complete_gate_exact_toy():
+    # A fully coupled rational finite-dimensional positive operator
+    # with a 3-source physical synthesis J in a 4D carrier.
+    # The source/strong-domain representation is illustrative only.
+    J=mat([[1,0,0],[F(1,3),1,0],[0,F(1,4),1],[0,0,0]])
+    Aop=mat([[4,F(1,3),0,F(1,5)],
+             [F(1,3),3,F(1,4),F(1,7)],
+             [0,F(1,4),5,F(1,11)],
+             [F(1,5),F(1,7),F(1,11),2]])
+    pole_reference=eye(4)
+    w=mat([[1],[2],[0],[1]])
+    Kcap=add(scale(F(1,8),eye(4)),
+             scale(F(1,100),mm(w,transpose(w))))
+    theta=CLEAN_THRESHOLD
+    assert strict_spd(sub(Aop,pole_reference))
+    assert strict_spd(Kcap)
+    H=mm(transpose(J),J)
+    AJ=mm(mm(transpose(J),Aop),J)
+    CJ=mm(mm(transpose(J),Kcap),J)
+    SJ=mm(mm(transpose(J),mm(Aop,Aop)),J)
+    assert strict_spd(H) and strict_spd(AJ)
+    Q=mm(inv(AJ),H)
+    Z=mm(J,Q)
+    R=sub(J,mm(Aop,Z))
+    # E=(I-P_J) Astar J is the full source-orthogonal strong action.
+    E=sub(mm(Aop,J),mm(J,mm(inv(H),AJ)))
+    zero=mat([[0,0,0],[0,0,0],[0,0,0]])
+    assert mm(transpose(J),E)==zero
+    assert R==scale(-1,mm(E,Q))
+    variance=sub(SJ,mm(mm(AJ,inv(H)),AJ))
+    assert variance==mm(transpose(E),E)
+    # The FULL MG07 reference-weighted gate is congruent to a
+    # raw-source gate requiring no explicit Astar inverse response.
+    Hneg=F(1,2); kstar=F(1); t=F(1)
+    DB=mm(transpose(R),R) # toy reference B14=I <= Aop
+    EBE=mm(transpose(E),E)
+    source_gate=sub(scale(theta,AJ),
+        add(scale(1+t,CJ),scale((1+1/t)*Hneg/kstar,EBE)))
+    trial_gate=sub(scale(theta,mm(mm(transpose(Z),Aop),Z)),
+        add(scale(1+t,mm(mm(transpose(Z),Kcap),Z)),
+            scale((1+1/t)*Hneg/kstar,DB)))
+    assert trial_gate==mm(mm(transpose(Q),source_gate),Q)
+    assert strict_spd(source_gate) and strict_spd(trial_gate)
+    return {
+      "complete_raw_source_gate_congruence":True,
+      "strong_residual_orthogonal_to_all_sources":True,
+      "strong_action_schur_variance_exact":True,
+      "strict_full_toy_source_gate":True,
+      "reference_B_below_A_for_this_toy":True,
+      "full_original_470_operator_data_measured":False
+    }
+
 def run():
     g=actual_original_basis_and_cap_geometry()
     assert g["source_dim"]==470 and g["cap_columns"]==890
@@ -102,7 +154,8 @@ def run():
       "true_original_ray_witness_computed":False,
       "general_enlarged_trial_method_nogo":False,
       "odd_even_CC27_Weil_RH":"OPEN",
-      "exact_rational_algebra_toy":exact_toy()
+      "exact_rational_algebra_toy":exact_toy(),
+      "complete_source_orthogonal_residual_toy":complete_gate_exact_toy()
     }
     print(json.dumps(record,indent=2))
     print("PASS scoped congruence: no original 470D cap-only result claimed.")
