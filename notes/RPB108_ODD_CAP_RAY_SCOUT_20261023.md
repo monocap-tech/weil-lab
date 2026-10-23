@@ -1,0 +1,26 @@
+# NF — Original 25-source pilot: smallest cap-only stopping ray
+
+**October 23, 2026. Active W-ODD-NEG OPEN. This is strictly a numerical feasibility investigation, not a certificate.**
+
+## Historical evidence to exploit
+
+The successful SM36 original-source numerical pilot (PR #217, GitHub Actions run 39167260822) sampled the genuine 107-block/890-column SM10 negative cap on 25 actual original odd polynomial and sinh sources. Its three original grid configurations returned maximum generalized cap/Ritz ratios 10.688198, 10.688195 and 10.863858, while its sampled direct negative-energy ratios were 0.997101, 0.997101 and 0.999835. The whole odd sufficient threshold is 51/56 = 0.9107142857142857. These are float, not outward-rational enclosures.
+
+If Jp denotes the 25 actual physical original source functions, Ap=Jp*Astar Jp, Cp=Jp*Kcap Jp, Hp=Jp*Jp, the exact Galerkin change of coordinates Zp=Jp Ap^-1 Hp is invertible. Thus the generalized cap ratio on Zp equals that on Jp by exact congruence. The SM36 pilot therefore points to a potential **fixed-890-cap source Ritz method obstruction** before any expensive inverse-residual calculation, but proves none.
+
+## Rational physical-ray discovery
+
+The script scripts/scout_rpb108_w_odd_neg_cap_ray.py computes a full matched sampled raw 25-by-25 Ap and Cp, including the original seven-prime multiplier sampled to the FFT Nyquist, full SI29-style pole-corrected source stiffness, all 107 SM10 cap blocks and 890 polynomial columns, plus the cap infinite remainder eta. It progressively tests single original physical generators, two-generator spans and three-generator spans (then a full pilot eigenvector), always converting coefficients to genuine integers and recording the **exact rational** cluster center and polynomial degree.
+
+The same rational integer vector is then replayed on 4096x4, 8192x4 and 8192x8 grids, and compared with the sampled direct-negative cap. In particular the script records any minimum-support ray with sampled cap/A ratio above theta+0.1 on every tested grid. Outputs go to artifacts/w_odd_neg_cap_ray_scout.json and CI log.
+
+The computation is **NOT proof**: FFT aliasing, finite truncation, pole integral quadrature, digamma/trigonometric rounding, physical source integrals, floating Hankel moments and correlation errors are uncontrolled. No exact original 470-source \(A_J,C_J\) is being certified or promoted.
+
+The **next proof** (if a clear candidate emerges) is to certify the SAME rational original physical f=Jv with a rigorous complete-frequency **upper** for its positive-pole Astar action and a rigorous same-original-890-cap **lower** for its cap energy:
+\[
+ \frac{51}{56}\langle f,A_\star f\rangle
+  -\langle f,K_{\mathrm{cap}}f\rangle\le0.
+\]
+That would reject only the exact fixed original V=ran(J)/890-cap Ritz construction, *not* the true signed odd operator, an enriched Galerkin trial or a sharper alternative cap. Without this enclosure the original theorem remains OPEN.
+
+**Custody:** a separate explicitly noncertifying workflow runs the scout on PR changes. This result stays outside any proof acceptance promotion.
