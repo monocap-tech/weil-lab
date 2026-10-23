@@ -1,0 +1,46 @@
+name: W-ODD-NEG original physical cap-only ray scout (NUMERICAL ONLY)
+on:
+  pull_request:
+    paths:
+      - 'scripts/scout_rpb108_w_odd_neg_cap_ray.py'
+      - 'notes/RPB108_ODD_CAP_RAY_SCOUT_20261023.md'
+      - '.github/workflows/w_odd_neg_cap_ray_scout.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-cap-ray-noncertifying:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numerical dependencies
+        run: pip install numpy scipy
+      - name: Compile and run original 25-source same-cap ray scout
+        env:
+          OPENBLAS_NUM_THREADS: '2'
+          OMP_NUM_THREADS: '2'
+        run: |
+          python -m py_compile scripts/scout_rpb108_w_odd_neg_cap_ray.py
+          python scripts/scout_rpb108_w_odd_neg_cap_ray.py
+      - name: Fail closed on data promotion
+        run: |
+          python - <<'PY'
+          import json
+          with open('artifacts/w_odd_neg_cap_ray_scout.json') as handle:
+              a=json.load(handle)
+          assert a['status']=='NUMERICAL_DISCOVERY_ONLY_NOT_PROOF'
+          assert a['canonical_obligation']=='W-ODD-NEG OPEN'
+          assert a['original_total_sources']==470
+          assert a['original_cap_columns']==890
+          assert not a['rigorous_original_ray_witness_certified']
+          assert a['signed_odd_even_Weil_CC27_RH']=='OPEN'
+          print('PASS noncertifying original physical ray discovery; W-ODD-NEG OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: original-odd-cap-ray-discovery-NOT-PROOF
+          path: artifacts/w_odd_neg_cap_ray_scout.json
