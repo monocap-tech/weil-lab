@@ -152,7 +152,7 @@ def main():
             and F(c["physical_third_beta"])==beta)
   match=next(c["best_exact_source_3D_subset"]
              for c in prev["best_certificate_per_subset_size"]
-             if c["original_physical_cell_indices"]==indices)
+             if c["best_exact_source_3D_subset"]["original_physical_cell_indices"]==indices)
   assert encoded(Qm)==[[match["center_gram_00"],match["center_gram_01"],match["center_gram_02"]],
                         [match["center_gram_01"],match["center_gram_11"],match["center_gram_12"]],
                         [match["center_gram_02"],match["center_gram_12"],match["center_gram_22"]]]
