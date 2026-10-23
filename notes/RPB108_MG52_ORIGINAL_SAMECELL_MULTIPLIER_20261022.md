@@ -1,6 +1,23 @@
+## MG52 independently verified: strict but small same-cell PSD upper improvement
+
+[MG52 Actions #39813976498](https://github.com/monocap-tech/weil-lab/actions/runs/39813976498) **PASSED**, original 32-cell source multiplier cancellation and independent four-case exact rational 24D full-frequency PSD replays. Artifact `mg52-original-samecell-vector-multiplier-24D-PSD-gain` ID **12444906442**.
+
+| Original case | MG50 Gersh | MG52 improved Gersh | PSD full-upper reduction trace | same MG43 witness-ray gain | selected valid method |
+|---|---:|---:|---:|---:|---|
+| 16/k12 | −24.1887384404 | −24.1886299849 | 0.002577290072 | 0.000425399653 | MG43 whole |
+| 16/k16 | −24.8340174120 | −24.8339180584 | 0.002247307280 | 0.000394432295 | MG43 whole |
+| 32/k12 | −23.9413516473 | −23.9409059127 | 0.009751036932 | 0.000878869968 | MG43 whole |
+| 32/k16 | −24.7512065036 | −24.7508113164 | 0.008601657072 | 0.000784260253 | MG43 whole |
+
+The same-cell source-vector cancellation is a rigorously valid tightening and the PSD difference survives exact outward-rational compaction, but its benefit is very small compared with the accepted complete-source deficits. **0 original source 24D contractions.**
+
+**MG53 next:** audit an exact fixed-method **direct-measured-band zero ceiling** on MG43's rational witness for MG52. Since any valid original direct covariance upper must be PSD, if the *optimistic* source lower with the entire direct [4,8] upper set to ZERO remains exactly negative on a known rational witness, refining **only** that direct-band upper cannot establish full original source contraction with all other MG52 terms held fixed. Also test hypothetically deleting both measured bands to classify the remaining source deficit. Zero-band diagnostics are NEVER valid original residual uppers; this is a restricted method-family obstruction, not a negative original operator mode or a universal impossibility theorem.
+
+---
+
 # MG52 — Genuine original 24D same-cell source-vector multiplier cancellation
 
-**Status: mathematically derived exact rational candidate. Numerical results and acceptance PENDING independent GitHub Actions.** Stacked on independently verified MG51 PR #300, MG50 #299.
+**Status: independently verified exact rational original-source PSD upper tightening with no source contraction.** Stacked on independently verified MG51 PR #300, MG50 #299.
 
 ## Verified motivation
 
