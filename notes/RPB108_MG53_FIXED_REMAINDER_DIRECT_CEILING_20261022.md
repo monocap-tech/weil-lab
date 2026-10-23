@@ -1,6 +1,25 @@
+## MG53 — Independently VERIFIED fixed-MG52 measured-band no-go
+
+[MG53 Actions #39886275002](https://github.com/monocap-tech/weil-lab/actions/runs/39886275002) **PASSED** exact rational original 24D source audit AND independently implemented full24 direct PSD/nonzero rational witness replay in all four source scenarios. Accepted artifact `mg53-original-direct-band-zero-ceiling-four-source-cases` ID **12471839711**.
+
+| Actual original source case | MG52 valid conservative source lower on archived MG43 rational witness | optimistic ZERO [4,8] direct upper ceiling (NOT valid residual upper) | optimistic ZERO both [0,4] and [4,8] direct uppers ceiling (NOT valid residual upper) |
+|---|---:|---:|---:|
+| 16/k12 | −4.1445375389 | −3.9753872594 | −0.7695959853 |
+| 16/k16 | −4.2143809878 | −4.0459474735 | −0.8477096255 |
+| 32/k12 | −4.2018357827 | −4.0213167101 | −0.7746129324 |
+| 32/k16 | −4.2787505264 | −4.1007038738 | −0.8710546210 |
+
+Both direct original 24×24 source uppers are independently EXACT-RATIONAL PSD. Thus for fixed original MG52 source response B and fixed `U_rest`, **NO mathematically valid improvement of ONLY the original [4,8] direct covariance upper can establish source 24D positivity** in any of the four accepted cases; more strongly, NO improvement of solely [0,8] direct covariance uppers suffices either, since even their invalid optimistic ZERO residual ceilings retain negative exact rational witnesses. This is a mathematically legitimate no-go for a **precisely restricted method class**, not a universal source or original signed Weil operator spectral statement. **There is no original operator negative-eigenmode claim.**
+
+**Research consequence:** stop spending primary effort on MG50–52 direct-band refinements while the original `U_rest`/B architecture remains fixed. Return to genuinely new globally correlated **original omitted-frequency mass–first-moment source** information or a different original response architecture, with a full original 24×24 exact Loewner gate. Do not interpret the local direct-band impossibility as an RH obstruction.
+
+All original source 24D contraction, original 470D strong inverse, signed 51/56 odd cap, independent original Fourier/form/domain, even/Weil/CC27/RH still OPEN.
+
+---
+
 # MG53 — Original 24D fixed-remainder direct-band repair ceiling
 
-**Status:** Proposed structural diagnostic. No numerical claim is accepted until GitHub Actions independently replays the entire exact rational audit. Parent MG52 passed its original four-case proof-valid [4,8] same-cell multiplier cancellation and independent full24 Loewner replay in Actions #39813976498, but its PSD improvement was at most ~0.00975 trace on the four archived original source scenarios, far smaller than the inherited source certificate deficits.
+**Status:** Independently verified fixed-method structural impossibility result, with no original full-operator sign claim. Parent MG52 passed its original four-case proof-valid [4,8] same-cell multiplier cancellation and independent full24 Loewner replay in Actions #39813976498, but its PSD improvement was at most ~0.00975 trace on the four archived original source scenarios, far smaller than the inherited source certificate deficits.
 
 ## Precise mathematical question
 
