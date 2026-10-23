@@ -102,7 +102,7 @@ def main():
  assert out["true_physical_pole_corrected_strong_action_unchanged"]
  assert out["float_only_proposes_original_cell_subsets"]
  assert out["original_genuine_physical_Fourier_cell_count"]==55
- assert len(out["cases"])==out["trial_source_plane_count"]
+ assert len(out["cases"])==out["trial_original_source_plane_count"]
  assert tuple(out["trial_source_coordinate_axes"])==(0,1,2,11,20,23)
  assert dot(V,V)==82 and V[5]==0
  cells=physical55(files["mg57"],files["mg58"])
