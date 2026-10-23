@@ -1,0 +1,73 @@
+name: mg64-original-physical-three-source-Jensen-singular-gap
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg64_three_source_jensen.py'
+      - 'scripts/validate_rpb108_mg64_independent_three_source_replay.py'
+      - 'notes/RPB108_MG64_ORIGINAL_THREESOURCE_JENSEN_20261023.md'
+      - '.github/workflows/rpb108-mg64-original-three-source.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-original-three-source-Jensen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve certified original MG24 pole-source Gram
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve verified original MG57 physical source Fourier baseline
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39897754515
+          name: mg57-original-coupled-pole-and-twelve-new-physical-fourier-cells
+          github-token: ${{ github.token }}
+          path: artifacts/mg57_verified
+      - name: Retrieve verified original MG58 genuine 55-cell signed-action source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39902364126
+          name: mg58-original-true-adaptive-physical-47-55-cell-2D-strong-moment
+          github-token: ${{ github.token }}
+          path: artifacts/mg58_verified
+      - name: Retrieve verified original MG63 coordinate-five strict two-source result
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39997475198
+          name: mg63-original-55-physical-source-coordinate5-multicell-Jensen
+          github-token: ${{ github.token }}
+          path: artifacts/mg63_verified
+      - name: Compile independently authored three-dimensional proof implementations
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg64_three_source_jensen.py scripts/validate_rpb108_mg64_independent_three_source_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json
+          test -s artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json
+          test -s artifacts/mg63_verified/mg63_original_e5_multicell_Jensen.json
+      - name: Original 55-cell true pole-corrected three-source physical Fourier Jensen exact rational positive gap
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg64_three_source_jensen.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg63-json artifacts/mg63_verified/mg63_original_e5_multicell_Jensen.json
+      - name: Independent regeneration of genuine original Fourier source cells and all exact 3x3 source Jensen Gram determinants
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg64_independent_three_source_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg63-json artifacts/mg63_verified/mg63_original_e5_multicell_Jensen.json --verified-mg64-json artifacts/mg64_original_three_source_Jensen.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg64-original-55cell-physical-three-source-Jensen-exact-Gram
+          path: artifacts/mg64_original_three_source_Jensen.json
+          if-no-files-found: ignore
