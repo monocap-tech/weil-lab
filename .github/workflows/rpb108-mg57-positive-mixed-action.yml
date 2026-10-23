@@ -1,0 +1,55 @@
+name: mg57-original-certified-positive-mixed-action-direction
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg57_positive_mixed_direction.py'
+      - 'scripts/validate_rpb108_mg57_independent_mixed_direction.py'
+      - 'notes/RPB108_MG57_MIXED_STRONG_POSITIVITY_20261023.md'
+      - '.github/workflows/rpb108-mg57-positive-mixed-action.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  certified-original-24D-strong-action-mixed-ray:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve accepted original corrected strong action MG56 source lower
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39894269994
+          name: mg56-original-0to4-true-pole-corrected-strong-action-24D-band-lower
+          github-token: ${{ github.token }}
+          path: artifacts/mg56_verified
+      - name: Retrieve independently accepted true 41-cell physical source MG57 lower
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39897754515
+          name: mg57-original-coupled-pole-and-twelve-new-physical-fourier-cells
+          github-token: ${{ github.token }}
+          path: artifacts/mg57_verified
+      - name: Compile and pin original exact rational physical source matrices
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg57_positive_mixed_direction.py scripts/validate_rpb108_mg57_independent_mixed_direction.py
+          test -s artifacts/mg56_verified/mg56_original_corrected_strong_band_lower.json
+          test -s artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json
+      - name: Prove original mixed-source positive quadratic and forward signed full24 rational inertia
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg57_positive_mixed_direction.py --verified-mg56-json artifacts/mg56_verified/mg56_original_corrected_strong_band_lower.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json
+      - name: Independently prove reverse full24 inertia and two positive exact integer rays
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg57_independent_mixed_direction.py --verified-mg56-json artifacts/mg56_verified/mg56_original_corrected_strong_band_lower.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg57-mixed-json artifacts/mg57_exact_positive_mixed_source_witness.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg57-original-strong-action-one-positive-mixed-source-direction
+          path: artifacts/mg57_exact_positive_mixed_source_witness.json
+          if-no-files-found: ignore
