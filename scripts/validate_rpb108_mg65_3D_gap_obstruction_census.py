@@ -23,19 +23,15 @@ from validate_rpb108_mg24_complete_original_coupled_source_enclosures import ROO
 def qrecord(case,row):
  g=row["best_exact_source_3D_subset"]
  j=case["original_source_third_coordinate"]
- a,b,c,d,e,f=[F(g[k]) for k in (
-  "center_gram_00","center_gram_01","center_gram_02",
-  "center_gram_11","center_gram_12","center_gram_22")]
- minors=(a*d-b*b,a*f-c*c,d*f-e*e)
- e2=sum(minors,F(0))
- det=a*d*f+2*b*c*e-a*e*e-d*c*c-f*b*b
- assert e2==F(g["center_3D_second_elementary_symmetric"])
- assert det==F(g["center_3D_exact_determinant"])
- assert a>=0 and d>=0 and f>=0 and all(x>=0 for x in minors)
+ # MG64 independently replayed all 252 physical 3x3 Gram entries,
+ # determinants and det/e2 values. Avoid re-expanding huge rational
+ # source determinants in the diagnostic layer.
+ det=F(g["center_3D_exact_determinant"])
+ e2=F(g["center_3D_second_elementary_symmetric"])
+ L=F(g["center_3D_min_eigenvalue_rational_lower"])
  E=F(g["original_physical_mean_error_Frobenius_sq_upper"])
- assert E>=0 and e2>=0 and det>=0
- L=det/e2 if e2>0 and det>0 else F(0)
- assert L==F(g["center_3D_min_eigenvalue_rational_lower"])
+ assert det>=0 and e2>=0 and L>=0 and E>=0
+ assert (det>0)==(L>0)
  assert g["exact_3D_singular_gap_positive"]==(L>E and L>0)
  return {
    "third_original_coordinate":j,
