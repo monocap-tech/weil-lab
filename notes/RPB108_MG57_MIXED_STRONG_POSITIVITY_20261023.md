@@ -1,6 +1,6 @@
 # MG57 — CERTIFIED positive mixed original strong-action source direction
 
-**Status: exact-rational producer and independent opposite-elimination replay pending Actions acceptance.** This report closes an important missed distinction in the original MG57 41-cell moment audit.
+**Status: ACCEPTED — [exact-rational forward and independent reverse full24 inertia plus two positive integer witnesses passed Actions #39899504128](https://github.com/monocap-tech/weil-lab/actions/runs/39899504128). Artifact `mg57-original-strong-action-one-positive-mixed-source-direction` ID 12478286881.** This report closes an important missed distinction in the original MG57 41-cell moment audit.
 
 ## The positive result is one-dimensional, NOT 24D coercivity
 
@@ -47,4 +47,4 @@ Two separate original source sign validators:
 - Forward exact rational 24x24 signed LDL (all nonzero pivots) proves old MG56 and MG57 pole-only 0+/24−, new full 41-cell MG57 1+/23−. Independently checks explicit short-integer v positive quadratic, norm82 and exact 1D constant.
 - Completely separate reverse-order rational LDL proves the SAME full24 inertia and checks a SECOND short-integer positive source vector as well as the negative original coordinate of the conservative lower. No direct import of the forward mixed-sign script.
 
-The next objective is to expand this strictly positive physical corrected-action source subspace and certify a positive definite lower on a **specific response-difference subspace**, without promoting 1D positivity to full 24D coercivity.
+The next objective, MG58, is to expand this strictly positive physical corrected-action source subspace and certify a positive definite lower on a **specific response-difference subspace**, without promoting 1D positivity to full 24D coercivity.
