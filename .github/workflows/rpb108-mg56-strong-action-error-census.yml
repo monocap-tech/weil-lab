@@ -1,0 +1,44 @@
+name: mg56-original-strong-action-24D-error-census
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg56_exact_error_census.py'
+      - 'scripts/validate_rpb108_mg56_independent_error_census.py'
+      - '.github/workflows/rpb108-mg56-strong-action-error-census.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-24D-pole-action-error-diagnosis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Retrieve independently accepted original MG56 physical strong-action moments
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39894269994
+          name: mg56-original-0to4-true-pole-corrected-strong-action-24D-band-lower
+          github-token: ${{ github.token }}
+          path: artifacts/mg56_verified
+      - name: Compile and verify accepted exact rational source archive
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg56_exact_error_census.py scripts/validate_rpb108_mg56_independent_error_census.py
+          test -s artifacts/mg56_verified/mg56_original_corrected_strong_band_lower.json
+      - name: Exact 24D forward LDL sign and original physical source-band loss census
+        run: |
+          python scripts/validate_rpb108_mg56_exact_error_census.py --verified-mg56-json artifacts/mg56_verified/mg56_original_corrected_strong_band_lower.json
+      - name: Independently verify reverse exact LDL and original three-cell Young-charge localization
+        run: |
+          python scripts/validate_rpb108_mg56_independent_error_census.py --verified-mg56-json artifacts/mg56_verified/mg56_original_corrected_strong_band_lower.json --verified-mg56-census-json artifacts/mg56_strong_lower_negative_definite_error_census.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg56-original-strong-action-exact-negative-lower-error-census
+          path: artifacts/mg56_strong_lower_negative_definite_error_census.json
+          if-no-files-found: ignore
