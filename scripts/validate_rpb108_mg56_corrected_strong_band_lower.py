@@ -89,7 +89,7 @@ def main():
  assert a24["status"]=="ORIGINAL_COMPLETE_FREQUENCY_24CHANNEL_COUPLED_SOURCE_MATRIX_ENCLOSURES"
  assert a29["status"]=="ORIGINAL_ADAPTED_THIRD_FOURIER_SOURCE_MOMENT_REFINEMENT"
  assert a24["canonical_W_ODD_NEG"]==a29["canonical_W_ODD_NEG"]=="OPEN"
- assert a29["verified_MG24_run_id"]==39378465438
+ assert a29["mg24_original_accepted_run"]==39378465438
  hm,hr,he=original_H24_from_physical_source()
  assert he==Q(a24["physical_Gram_Loewner_row_error"])
  bmid=[hm[i][P] for i in range(N)]
