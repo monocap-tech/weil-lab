@@ -48,4 +48,4 @@ The original digamma-plus-seven-prime multiplier is continuous and bounded on th
 
 **Still open:** independent identification of the project's claimed original Weil/odd form with that Fourier-form realization, and the complete same-trial actual 470×470 \(G_0\), \(N_{0,\mathrm{cap}}\) and \(D_B\) matrices with rational Loewner control. Neither signed odd positivity nor RH follows.
 
-**Replay:** \`python scripts/validate_rpb108_odd470_strong_domain_tail.py\`. Rational geometry/envelope computations are checked; the analytic integration-by-parts and operator-representation argument still require human proof review.
+**Replay:** `python scripts/validate_rpb108_odd470_strong_domain_tail.py`. Rational geometry/envelope computations are checked; the analytic integration-by-parts and operator-representation argument still require human proof review.
