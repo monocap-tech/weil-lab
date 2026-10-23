@@ -87,6 +87,18 @@ Write the full original strong-action moment \(S_J=(A_\star J)^*(A_\star J)\). E
 \]
 This is the *Schur complement of the physical source Gram* in the combined source/action Gram. It is a covariance measuring failure of source-space invariance under \(A_\star\), **not** merely the qualitative positive definiteness of \(S_J\). An upper bound for it is useful; an isolated lower bound for \(S_J\) is not.
 
+### Pole cancellation in the source-orthogonal action (not in the reference inverse)
+
+There is a further exact gain because the original sinh pole \(s\) is **itself a column of \(J\)**. The original positive pole-free operator satisfies \(A_o=A_\star+2|s\rangle\langle s|\). Since \(P_J s=s\),
+\[
+ \boxed{E=(I-P_J)A_\star J=(I-P_J)A_oJ.}
+\]
+The raw Ritz stiffness **still contains** the actual pole correction:
+\[
+ A_J=J^*A_oJ-2bb^*,\qquad b=J^*s.
+\]
+Only the source-orthogonal **action defect** is pole-independent. The positive pole-dependent inverse response \(E^*B_{14}^{-1}E\) still includes the SI29 Schur/Woodbury correction shown below; no componentwise positivity inference is licensed. The rational regression now verifies both pole cancellation identities on a model where the pole lies exactly inside the physical source span.
+
 Let \(B_{14}\succ0\) be the unchanged original SI29/SM19 pole-conditioned lower reference and \(H_-=\|K_-\|_{\mathrm{certified}}\), with the original MG07 coefficient \(H_-/\kappa_\star\). Then
 \[
  D_B=R^*B_{14}^{-1}R
