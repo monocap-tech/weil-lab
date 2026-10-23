@@ -95,6 +95,19 @@ def main():
   assert qf(ray,sub(hlo,U))==Q(base["selected_exact_inertia_witness"]["exact_negative_quadratic"])<0
   endpoints.append((B,U,g))
  assert len(endpoints)==4
+ # Independent continuum certificate obstruction. By the affine
+ # residual identity and PSD strong moment, SUM w_i U_i bounds the
+ # ORIGINAL whole operator residual for the changed B(w). If a single
+ # accepted rational source ray is negative for ALL four Hlo-U_i,
+ # it stays negative under EVERY convex combination (not merely
+ # the tested finite set of 18 weights).
+ common=[Q(x) for x in a47["scenarios"][0]["selected_exact_inertia_witness"]["rational_vector"]]
+ charges=[qf(common,sub(hlo,u)) for _,u,_ in endpoints]
+ assert len(common)==N and any(common) and all(z<0 for z in charges)
+ assert [str(x) for x in common]==mg55["original_common_negative_exact_rational_source_ray"]
+ assert [str(x) for x in charges]==mg55["original_common_negative_exact_source_lower_quadratics"]
+ assert mg55["whole_four_endpoint_convex_response_certificate_hull_obstructed"]
+ assert mg55["all_nonnegative_barycentric_response_weights_covered_by_affine_identity"]
  L={}
  for k in (12,16):
   source=next(r for r in a24["cases"] if r["cutoff_k"]==k)
