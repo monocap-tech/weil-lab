@@ -85,20 +85,24 @@ def exact_toy():
     }
 
 def complete_gate_exact_toy():
-    # A fully coupled rational finite-dimensional positive operator
-    # with a 3-source physical synthesis J in a 4D carrier.
-    # The source/strong-domain representation is illustrative only.
+    # Exact nontrivial SI29-style feature + true in-source pole model.
+    # A positive ORIGINAL-STYLE Hilbert operator, source map 4x3.
     J=mat([[1,0,0],[F(1,3),1,0],[0,F(1,4),1],[0,0,0]])
     Aop=mat([[4,F(1,3),0,F(1,5)],
              [F(1,3),3,F(1,4),F(1,7)],
              [0,F(1,4),5,F(1,11)],
              [F(1,5),F(1,7),F(1,11),2]])
-    pole_reference=eye(4)
+    g=mat([[F(1,2)],[0],[F(1,2)],[F(1,2)]])
+    pole=mat([[0],[0],[F(1,4)],[0]])  # is 1/4 of J's third column
+    assert pole==scale(F(1,4),[[row[2]] for row in J])
+    gamma=F(1,2);kappa=F(1)
+    Cref=add(eye(4),scale(gamma,mm(g,transpose(g))))
+    Bref=sub(Cref,scale(2,mm(pole,transpose(pole))))
+    assert strict_spd(Bref) and strict_spd(sub(Aop,Bref))
     w=mat([[1],[2],[0],[1]])
     Kcap=add(scale(F(1,8),eye(4)),
              scale(F(1,100),mm(w,transpose(w))))
     theta=CLEAN_THRESHOLD
-    assert strict_spd(sub(Aop,pole_reference))
     assert strict_spd(Kcap)
     H=mm(transpose(J),J)
     AJ=mm(mm(transpose(J),Aop),J)
@@ -112,14 +116,29 @@ def complete_gate_exact_toy():
     E=sub(mm(Aop,J),mm(J,mm(inv(H),AJ)))
     zero=mat([[0,0,0],[0,0,0],[0,0,0]])
     assert mm(transpose(J),E)==zero
+    assert mm(transpose(E),pole)==mat([[0],[0],[0]])
     assert R==scale(-1,mm(E,Q))
     variance=sub(SJ,mm(mm(AJ,inv(H)),AJ))
     assert variance==mm(transpose(E),E)
-    # The FULL MG07 reference-weighted gate is congruent to a
-    # raw-source gate requiring no explicit Astar inverse response.
-    Hneg=F(1,2); kstar=F(1); t=F(1)
-    DB=mm(transpose(R),R) # toy reference B14=I <= Aop
-    EBE=mm(transpose(E),E)
+    # Correct-sign SI29 Woodbury reference: positive-source feature
+    # inverse correction NEGATIVE, conditioned pole correction POSITIVE.
+    M=add([[1/gamma]],mm(transpose(g),g))
+    Mi=inv(M)
+    Ci=sub(eye(4),mm(mm(g,Mi),transpose(g)))
+    alpha=F(1)-2*mm(mm(transpose(pole),Ci),pole)[0][0]
+    assert alpha==F(39,44)>0
+    Fr=mm(transpose(g),E)
+    q=mm(transpose(g),pole)
+    z=scale(-1,mm(mm(transpose(Fr),Mi),q))
+    assert any(row[0]!=0 for row in z)
+    EBE=add(sub(variance,mm(mm(transpose(Fr),Mi),Fr)),
+            scale(2/alpha,mm(z,transpose(z))))
+    assert EBE==mm(mm(transpose(E),inv(Bref)),E)
+    DB=mm(mm(transpose(R),inv(Bref)),R)
+    assert DB==mm(mm(transpose(Q),EBE),Q)
+    # Full MG07 reference-weighted gate, no fictitious cancellation
+    # of SI29's pole correction even though E*pole=0.
+    Hneg=F(1,2);kstar=F(1);t=F(1)
     source_gate=sub(scale(theta,AJ),
         add(scale(1+t,CJ),scale((1+1/t)*Hneg/kstar,EBE)))
     trial_gate=sub(scale(theta,mm(mm(transpose(Z),Aop),Z)),
@@ -129,9 +148,11 @@ def complete_gate_exact_toy():
     assert strict_spd(source_gate) and strict_spd(trial_gate)
     return {
       "complete_raw_source_gate_congruence":True,
-      "strong_residual_orthogonal_to_all_sources":True,
+      "strong_residual_orthogonal_to_all_sources_and_pole":True,
       "strong_action_schur_variance_exact":True,
       "strict_full_toy_source_gate":True,
+      "SI29_style_Woodbury_feature_pole_response_exact":True,
+      "nonzero_pole_inverse_correction_despite_orthogonal_pole":True,
       "reference_B_below_A_for_this_toy":True,
       "full_original_470_operator_data_measured":False
     }
