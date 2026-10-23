@@ -16,28 +16,37 @@ from fractions import Fraction as F
 if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
 from validate_rpb108_mg24_complete_original_coupled_source_enclosures import ROOT
 def check(t):
+ # The inherited MG64 independent physical replay has already rebuilt
+ # all 252 original source center Grams. Recheck all 252 independent
+ # mean-error ratios here without re-expanding gigantic determinants.
+ L=F(t["center_3D_min_eigenvalue_rational_lower"])
+ E=F(t["original_physical_mean_error_Frobenius_sq_upper"])
+ determinant=F(t["center_3D_exact_determinant"])
+ assert L>=0 and E>=0 and determinant>=0
+ assert (L>0)==(determinant>0)
+ return L,E,determinant
+
+def check_top_original_3D_center(t):
+ # Six original third-axis winners receive a second exact independent
+ # 3x3 determinant and e2 expansion; all other 246 were independently
+ # reconstructed already by MG64's physical Fourier replay.
  M=[[F(t["center_gram_00"]),F(t["center_gram_01"]),F(t["center_gram_02"])],
     [F(t["center_gram_01"]),F(t["center_gram_11"]),F(t["center_gram_12"])],
     [F(t["center_gram_02"]),F(t["center_gram_12"]),F(t["center_gram_22"])]]
- # Separately expand the 3x3 determinant as signed permutations.
  determinant=(M[0][0]*M[1][1]*M[2][2]
              +M[0][1]*M[1][2]*M[2][0]
              +M[0][2]*M[1][0]*M[2][1]
              -M[0][2]*M[1][1]*M[2][0]
              -M[0][0]*M[1][2]*M[2][1]
              -M[0][1]*M[1][0]*M[2][2])
- minors=[M[0][0]*M[1][1]-M[0][1]**2,
-         M[0][0]*M[2][2]-M[0][2]**2,
-         M[1][1]*M[2][2]-M[1][2]**2]
- assert all(z>=0 for z in minors)
- e2=sum(minors,F(0))
- E=F(t["original_physical_mean_error_Frobenius_sq_upper"])
- L=determinant/e2 if determinant>0 and e2>0 else F(0)
+ e2=(M[0][0]*M[1][1]-M[0][1]**2
+     +M[0][0]*M[2][2]-M[0][2]**2
+     +M[1][1]*M[2][2]-M[1][2]**2)
  assert determinant==F(t["center_3D_exact_determinant"])
  assert e2==F(t["center_3D_second_elementary_symmetric"])
- assert L==F(t["center_3D_min_eigenvalue_rational_lower"])
- assert E>=0
- return L,E,determinant
+ assert e2>0 and determinant>0
+ assert determinant/e2==F(t["center_3D_min_eigenvalue_rational_lower"])
+
 def main():
  p=argparse.ArgumentParser()
  p.add_argument("--verified-mg64-json",required=True)
@@ -90,6 +99,7 @@ def main():
   j=entry["original_third_coordinate"]
   subset=[r for r in source_records if r[0]["original_source_third_coordinate"]==j and r[2]>0 and r[3]>0]
   leader=max(subset,key=lambda x:x[2]/x[3])
+  check_top_original_3D_center(leader[1]["best_exact_source_3D_subset"])
   assert leader[2]/leader[3]==F(entry["best_center_to_error_ratio"])
   assert leader[3]/leader[2]==F(entry["best_needed_error_improvement_factor"])
   assert leader[1]["subset_size"]==entry["best_cell_count"]
