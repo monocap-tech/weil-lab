@@ -1,0 +1,82 @@
+name: mg66-original-directional-three-source-sign-covariance
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg66_original_directional_sign_covariance.py'
+      - 'scripts/validate_rpb108_mg66_independent_sign_covariance.py'
+      - 'notes/RPB108_MG66_ORIGINAL_SIGN_COVARIANCE_20261023.md'
+      - '.github/workflows/rpb108-mg66-original-directional-sign.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-3D-source-sign-covariant-mean-error:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Accepted original MG24 source Gram and true sinh pole
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Accepted original MG57 physical Fourier-source baseline
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39897754515
+          name: mg57-original-coupled-pole-and-twelve-new-physical-fourier-cells
+          github-token: ${{ github.token }}
+          path: artifacts/mg57_verified
+      - name: Accepted original MG58 true 55 Fourier-source cells
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39902364126
+          name: mg58-original-true-adaptive-physical-47-55-cell-2D-strong-moment
+          github-token: ${{ github.token }}
+          path: artifacts/mg58_verified
+      - name: Accepted original MG64 independently replayed genuine source 3D Grams
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 40005133753
+          name: mg64-original-55cell-physical-three-source-Jensen-exact-Gram
+          github-token: ${{ github.token }}
+          path: artifacts/mg64_verified
+      - name: Independently accepted MG65 252 rational three-source gap census
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 40007193988
+          name: mg65-original-252-exact-three-source-gap-loss-audit
+          github-token: ${{ github.token }}
+          path: artifacts/mg65_verified
+      - name: Check accepted original source archives and compile independent source proof scripts
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg66_original_directional_sign_covariance.py scripts/validate_rpb108_mg66_independent_sign_covariance.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json
+          test -s artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json
+          test -s artifacts/mg64_verified/mg64_original_three_source_Jensen.json
+          test -s artifacts/mg65_verified/mg65_original_3D_source_gap_census.json
+      - name: Compute true original physical source directional error matrix and all signed 3x3 rational Loewner gates
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg66_original_directional_sign_covariance.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg64-json artifacts/mg64_verified/mg64_original_three_source_Jensen.json --verified-mg65-json artifacts/mg65_verified/mg65_original_3D_source_gap_census.json
+      - name: Independent original Fourier source reconstruction and exact 24 sign-matrix source 3D Gram verification
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg66_independent_sign_covariance.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg65-json artifacts/mg65_verified/mg65_original_3D_source_gap_census.json --verified-mg66-json artifacts/mg66_original_3D_sign_covariance.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg66-original-six-real-physical-three-source-directional-sign-covariances
+          path: artifacts/mg66_original_3D_sign_covariance.json
+          if-no-files-found: ignore
