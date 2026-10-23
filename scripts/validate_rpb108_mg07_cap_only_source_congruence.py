@@ -117,6 +117,14 @@ def complete_gate_exact_toy():
     zero=mat([[0,0,0],[0,0,0],[0,0,0]])
     assert mm(transpose(J),E)==zero
     assert mm(transpose(E),pole)==mat([[0],[0],[0]])
+    # The true pole is INSIDE ran(J): the source-orthogonal action
+    # defect is exactly independent of the rank-one pole correction.
+    Ao=add(Aop,scale(2,mm(pole,transpose(pole))))
+    AJ_o=mm(mm(transpose(J),Ao),J)
+    E_o=sub(mm(Ao,J),mm(J,mm(inv(H),AJ_o)))
+    assert E_o==E
+    b=mm(transpose(J),pole)
+    assert AJ==sub(AJ_o,scale(2,mm(b,transpose(b))))
     assert R==scale(-1,mm(E,Q))
     variance=sub(SJ,mm(mm(AJ,inv(H)),AJ))
     assert variance==mm(transpose(E),E)
