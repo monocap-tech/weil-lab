@@ -1,0 +1,73 @@
+name: mg63-original-coordinate5-multicell-source-Jensen
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg63_original_e5_multicell.py'
+      - 'scripts/validate_rpb108_mg63_independent_e5_multicell.py'
+      - 'notes/RPB108_MG63_ORIGINAL_E5_MULTICELL_20261023.md'
+      - '.github/workflows/rpb108-mg63-original-e5-multicell.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-physical-e5-source-multicell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Pinned original MG24 physical pole Gram
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Pinned original MG57 actual 41-cell Fourier source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39897754515
+          name: mg57-original-coupled-pole-and-twelve-new-physical-fourier-cells
+          github-token: ${{ github.token }}
+          path: artifacts/mg57_verified
+      - name: Pinned original MG58 true 55-cell physical multiplier/source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39902364126
+          name: mg58-original-true-adaptive-physical-47-55-cell-2D-strong-moment
+          github-token: ${{ github.token }}
+          path: artifacts/mg58_verified
+      - name: Independently accepted MG62 original two-cell Jensen source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39982014166
+          name: mg62-original-two-real-Fourier-cell-Jensen-144-exact-source-2D-singular-gaps
+          github-token: ${{ github.token }}
+          path: artifacts/mg62_verified
+      - name: Verify all original source certificates pinned and scripts compile
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg63_original_e5_multicell.py scripts/validate_rpb108_mg63_independent_e5_multicell.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json
+          test -s artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json
+          test -s artifacts/mg62_verified/mg62_original_two_cell_Jensen_source_plane.json
+      - name: Original e5 plane source 2 to 55 actual Fourier cells and exact rational Jensen singular gap
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg63_original_e5_multicell.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg62-json artifacts/mg62_verified/mg62_original_two_cell_Jensen_source_plane.json
+      - name: Independently rebuild all true original 55 cells and exact coordinate5 physical multi-cell Jensen source inequalities
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg63_independent_e5_multicell.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg62-json artifacts/mg62_verified/mg62_original_two_cell_Jensen_source_plane.json --verified-mg63-json artifacts/mg63_original_e5_multicell_Jensen.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg63-original-55-physical-source-coordinate5-multicell-Jensen
+          path: artifacts/mg63_original_e5_multicell_Jensen.json
+          if-no-files-found: ignore
