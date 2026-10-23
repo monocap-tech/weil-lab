@@ -1,3 +1,19 @@
+## Stronger MG55 acceptance: entire convex hull of archived certificates
+
+**Common-rational-ray theorem, conditional on independent Actions replay:** Let the four accepted original MG43 full-frequency source residual upper matrices be `U_1,...,U_4`. Their certificate lowers use the SAME true original Gram lower `Hlo`. The exact rational ray already accepted as a negative conservative-source witness in the first MG43 scenario is ALSO exactly negative on each of the other three accepted source-lower matrices `Hlo-U_i`.
+
+For ANY four nonnegative rational OR real weights `w_i>=0`, `sum w_i=1`, the changed response `B(w)=sum w_i B_i` is physical and affine, and the Jensen source residual inequality gives the original complete-frequency valid upper `U(w)=sum w_i U_i`. The same rational ray v satisfies
+
+```
+v^T [Hlo-U(w)] v = sum_i w_i v^T(Hlo-U_i)v < 0.
+```
+
+Therefore the **ENTIRE continuous convex hull of the FOUR INHERITED ORIGINAL MG43 WHOLE-FREQUENCY UPPER CERTIFICATES** cannot prove original 24D source contraction, not just the finite tested weights. This is a rigorous restricted-certificate-hull obstruction. It does NOT rule out a different response outside the hull or a **new sharper operator-dependent upper** for a response *inside* the hull. No negative physical original Weil operator spectral mode follows from negative values in conservative source LOWER matrices.
+
+The independent verifier proves all four rational source-ray projections strictly negative with no floats, and rechecks each original physical 24×24 source frame and endpoint.
+
+---
+
 # MG55 — Original physical 24D changed-response homotopy audit
 
 **Status: code and mathematical proof submitted, numerical acceptance PENDING independent GitHub Actions.** Parent [MG54 PR #303](https://github.com/monocap-tech/weil-lab/pull/303) independently certified a TWO-SIDED obstruction for the fixed MG52 response B and additive direct plus remainder architecture. MG55 changes that response rather than grinding either bound.
