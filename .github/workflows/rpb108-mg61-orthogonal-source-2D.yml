@@ -1,0 +1,73 @@
+name: mg61-original-balanced-orthogonal-source-2D
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg61_orthogonalized_2D_gauge.py'
+      - 'scripts/validate_rpb108_mg61_independent_2D_gauge_replay.py'
+      - 'notes/RPB108_MG61_ORIGINAL_ORTHOGONAL_GAUGE_20261023.md'
+      - '.github/workflows/rpb108-mg61-orthogonal-source-2D.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-55cell-balanced-projected-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Retrieve original physical MG24 pole source Gram
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39378465438
+          name: mg24-original-full-frequency-coupled-source-brackets
+          github-token: ${{ github.token }}
+          path: artifacts/mg24_verified
+      - name: Retrieve accepted physical MG57 41-cell source baseline
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39897754515
+          name: mg57-original-coupled-pole-and-twelve-new-physical-fourier-cells
+          github-token: ${{ github.token }}
+          path: artifacts/mg57_verified
+      - name: Retrieve accepted original MG58 true physical 55-cell new Fourier source
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39902364126
+          name: mg58-original-true-adaptive-physical-47-55-cell-2D-strong-moment
+          github-token: ${{ github.token }}
+          path: artifacts/mg58_verified
+      - name: Retrieve independent MG60 exact 50 source-plane failure audit
+        uses: actions/download-artifact@v4
+        with:
+          repository: monocap-tech/weil-lab
+          run-id: 39959456013
+          name: mg60-original-composed-physical-47-55-cell-50-projective-2D-source
+          github-token: ${{ github.token }}
+          path: artifacts/mg60_verified
+      - name: Compile producer and independent true original 24-source verifier
+        run: |
+          python -m py_compile scripts/validate_rpb108_mg61_orthogonalized_2D_gauge.py scripts/validate_rpb108_mg61_independent_2D_gauge_replay.py
+          test -s artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json
+          test -s artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json
+          test -s artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json
+          test -s artifacts/mg60_verified/mg60_combined_refined_projected_original_2D_source.json
+      - name: Test exact original orthogonalized and balanced 55cell physical projected action on 48 source-plane gauges
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg61_orthogonalized_2D_gauge.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg60-json artifacts/mg60_verified/mg60_combined_refined_projected_original_2D_source.json
+      - name: Independent physical original 55cell rebuild and 48 full 2D exact source moment gauges
+        run: |
+          OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg61_independent_2D_gauge_replay.py --verified-mg24-json artifacts/mg24_verified/mg24_full_original_coupled_24source_matrix_enclosures.json --verified-mg57-json artifacts/mg57_verified/mg57_targeted_true_strong_action_refinement.json --verified-mg58-json artifacts/mg58_verified/mg58_original_targeted_2D_strong_moment.json --verified-mg60-json artifacts/mg60_verified/mg60_combined_refined_projected_original_2D_source.json --verified-mg61-json artifacts/mg61_original_two_plane_orthogonal_gauge.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg61-original55-48-orthogonal-source-2D-gauge-certificates
+          path: artifacts/mg61_original_two_plane_orthogonal_gauge.json
+          if-no-files-found: ignore
