@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""W-ODD-NEG: original SM36 cap-only ray SCOUT, never a proof.
+"""W-ODD-NEG: original SM40 cap-only ray SCOUT, never a proof.
 
-Build same-original-source sampled AJ and 890-column CJ, prefer minimum
+Build same-original-source sampled AJ and best certified SM40 890-column CJ, prefer minimum
 physical source support for a rational candidate violating theta AJ-CJ.
 All FFT, quadrature, high-frequency and float errors are UNCONTROLLED.
 """
@@ -15,6 +15,9 @@ from sm36_original_odd_numerical_pilot import (
     all_source_negative_cap)
 from validate_rpb108_si10_complement_positivity import protected_inner_cover
 from validate_rpb108_sm34_positive_energy_dual_schur import CLEAN_THRESHOLD
+from validate_rpb108_sm40_endpoint_curvature_negative_cap import (
+    refined_original_endpoint_curvature
+)
 
 ROOT=Path(__file__).resolve().parents[1]
 THETA=float(CLEAN_THRESHOLD)
@@ -89,7 +92,15 @@ def main():
     p.add_argument("--quick",action="store_true")
     p.add_argument("--output",default="artifacts/w_odd_neg_cap_ray_scout.json")
     args=p.parse_args()
-    infos,cap,orders,mass,_,total=geometry()
+    infos,old_cap,old_orders,mass,_,old_total=geometry()
+    sm39_cap,cap,orders,cap_stats=refined_original_endpoint_curvature()
+    assert len(old_cap)==len(sm39_cap)==len(cap)==107
+    assert orders==old_orders and sum(orders)==890
+    assert cap_stats['all_original_signed_subcells']==3892
+    assert cap_stats['original_exact_SPD_pivots']==890
+    assert cap_stats['new_SM40_signed_envelope_mass']<cap_stats['old_SM39_signed_envelope_mass']
+    assert cap_stats['new_SM40_full_Taylor_eta']<cap_stats['old_SM39_full_Taylor_eta']
+    total=float(cap_stats['new_SM40_signed_envelope_mass'])
     sources=select_sources(infos)
     descriptions=descriptors(infos,sources)
     dim=len(sources)
@@ -130,6 +141,10 @@ def main():
     result=dict(status="NUMERICAL_DISCOVERY_ONLY_NOT_PROOF",
                 canonical_obligation="W-ODD-NEG OPEN",
                 original_total_sources=470,original_cap_columns=890,
+                chosen_original_complete_negative_cap='SM40_ENDPOINT_CURVATURE',
+                chosen_SM40_subcells=3892,
+                SM40_entire_cap_mass=str(cap_stats['new_SM40_signed_envelope_mass']),
+                SM40_exact_890_pivots=cap_stats['original_exact_SPD_pivots'],
                 theta=str(CLEAN_THRESHOLD),pilot_dim=dim,
                 physical_sources=descriptions,
                 minimum_support_search=summaries,
@@ -150,6 +165,7 @@ def main():
     print("RATIONAL_RAY_CANDIDATE",json.dumps(dict(
         sources=result["selected_original_physical_ray"],
         grid_checks=replays),sort_keys=True),flush=True)
+    print("SM40 SELECTED: exact cap ref rebuilt; candidate ray only",flush=True)
     print("NOT A CERTIFICATE: full original odd theorem OPEN",flush=True)
 
 if __name__=="__main__":
