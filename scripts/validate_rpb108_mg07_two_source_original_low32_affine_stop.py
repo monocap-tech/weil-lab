@@ -168,6 +168,51 @@ def kink_affine_branch_lower(intercept,slope,v,d,h,eps,E):
         -THETA*intercept,-THETA*slope,v,d,h,eps,E)
     return max(minus,plus)
 
+def affine_weight_square_antiderivative(t,w0,w1,v,d):
+    """Exact rational polynomial primitive, true physical no quadrature."""
+    return (w0*v*v*t
+        +(2*w0*v*d+w1*v*v)*t*t/2
+        +(w0*d*d+2*w1*v*d)*t**3/3
+        +w1*d*d*t**4/4)
+
+def kink_piecewise_exact_lower(intercept,slope,v,d,h,eps,E):
+    """Integrate convex κ kink EXACTLY for affine signed multiplier.
+
+    For original m_*(t)=intercept+slope*t, wθ(m_*(t))
+    is piecewise affine with exact rational transition time
+    t*=(κ-intercept)/slope. The integral of wθ(m_*) *
+    (v+d*t)^2 is a rational quartic primitive on at most two
+    pieces. Actual m and physical Fourier are controlled by the
+    SAME global errors eps and E as sign-stable cells.
+    """
+    assert h>0 and eps>=0 and E>=0
+    lo=-h/2;hi=h/2
+    knots=[lo,hi]
+    if slope!=0:
+        crossing=(KAPPA-intercept)/slope
+        if lo<crossing<hi:knots=[lo,crossing,hi]
+    integral=F(0)
+    for a,b in zip(knots,knots[1:]):
+        middle=intercept+slope*(a+b)/2
+        if middle<KAPPA:
+            w0=(1-THETA)*KAPPA-intercept
+            w1=-slope
+        else:
+            w0=-THETA*intercept
+            w1=-THETA*slope
+        integral+=(affine_weight_square_antiderivative(
+                    b,w0,w1,v,d)
+                  -affine_weight_square_antiderivative(
+                    a,w0,w1,v,d))
+    mass=h*v*v+h**3/F(12)*d*d
+    supT=abs(v)+abs(d)*h/2
+    minus0=(1-THETA)*KAPPA-intercept
+    plus0=-THETA*intercept
+    supW=max(abs(minus0)+abs(slope)*h/2,
+             abs(plus0)+THETA*abs(slope)*h/2)+eps
+    error=eps*mass+supW*h*E*(2*supT+E)
+    return integral-error
+
 def cell_kink_lower(weight_floor,v,d,E,h):
     """Safe even across any m=kappa crossing inside the REAL cell."""
     assert h>0 and E>=0
@@ -236,6 +281,32 @@ def regression_cell_integral_adversarial():
     affine_lower=kink_affine_branch_lower(
         KAPPA,s_cross,amp,F(0),hcross,F(0),F(0))
     assert affine_lower<=true_int
+    piecewise=kink_piecewise_exact_lower(
+        KAPPA,s_cross,amp,F(0),hcross,F(0),F(0))
+    assert piecewise==true_int and piecewise>affine_lower
+    assert kink_piecewise_exact_lower(
+        KAPPA,-s_cross,amp,F(0),hcross,F(0),F(0))==true_int
+    # Non-centered crossing, nonlinear linear-Fourier square.
+    # Independent primitive integrates exact branch polynomials.
+    hm=F(1,3)
+    mm=KAPPA+F(1,300)
+    sm=F(1,20)
+    vv=F(3,2);dd=F(-2,3)
+    cross=(KAPPA-mm)/sm
+    assert -hm/2<cross<hm/2
+    wminus=((1-THETA)*KAPPA-mm,-sm)
+    wplus=(-THETA*mm,-THETA*sm)
+    independent=(
+      affine_weight_square_antiderivative(
+          cross,*wminus,vv,dd)
+      -affine_weight_square_antiderivative(
+          -hm/2,*wminus,vv,dd)
+      +affine_weight_square_antiderivative(
+          hm/2,*wplus,vv,dd)
+      -affine_weight_square_antiderivative(
+          cross,*wplus,vv,dd))
+    assert kink_piecewise_exact_lower(
+        mm,sm,vv,dd,hm,F(0),F(0))==independent
     # GENUINE kink inside the cell; lower must not use a smooth
     # branch across m=kappa. Exact integral on both halves with
     # a constant true physical Fourier packet.
@@ -390,8 +461,13 @@ def exact_scalar(quick=False):
                     weight_floor,v,d,E,h)
                 convex_kink=kink_affine_branch_lower(
                     intercept,slope,v,d,h,eps,E)
-                # Either independently proven lower may win.
-                contribution=max(constant_kink,convex_kink)
+                exact_kink=kink_piecewise_exact_lower(
+                    intercept,slope,v,d,h,eps,E)
+                # All three individually paid whole-real original
+                # enclosures; take the strongest without guessing
+                # the unknown actual crossing location.
+                contribution=max(constant_kink,convex_kink,
+                                 exact_kink)
             certified_cell=below(2*contribution,10**6)
             out[index]+=certified_cell
             band_sums[band_index][index]+=certified_cell
@@ -463,6 +539,8 @@ def exact_scalar(quick=False):
        "exact_straddling_kappa_kink_adversarial_regression":True,
        "original_kappa_kink_is_exact_maximum_two_affine_branches":True,
        "crossing_cells_use_stronger_certified_convex_branch_lower":True,
+       "crossing_cells_use_exact_piecewise_rational_kappa_intersection":True,
+       "crossing_piecewise_independent_polynomial_regression":True,
        "true_odd_pole_subtraction_and_high_LOG_tail_paid":True,
        "source_only_J470_Ritz_matched_SM40_cap_method_if_passed":
             ("OBSTRUCTED_ONLY_ON_THIS_SUFFICIENT_METHOD"
