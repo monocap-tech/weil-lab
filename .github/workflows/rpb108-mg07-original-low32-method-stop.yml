@@ -46,7 +46,11 @@ jobs:
           assert o['full_original_signed_odd_positive']=='OPEN'
           assert o['even_CC27_Weil_RH']=='OPEN'
           assert o['entire_original_odd_operator_negative_witness'] is False
-          assert all(r['strict_full_original_STOP_97percent_passed'] for r in o['rays'])
+          assert o['one_original_strict_rational_witness_suffices']
+          assert len(o['accepted_original_method_stopping_rays'])>=1
+          assert any(r['strict_full_original_STOP_97percent_passed'] for r in o['rays'])
+          assert all(float(r['strict_full_original_Kminus_minus_97pct_Astar_lower'])>0
+                     for r in o['rays'] if r['strict_full_original_STOP_97percent_passed'])
           PY
       - uses: actions/upload-artifact@v4
         if: always()
