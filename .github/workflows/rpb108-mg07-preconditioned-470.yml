@@ -5,6 +5,8 @@ on:
     paths:
       - 'scripts/validate_rpb108_mg07_preconditioned_470_residual.py'
       - 'scripts/validate_rpb108_mg07_global_negative_sup.py'
+      - 'scripts/validate_rpb108_mg07_augmented_si29_trial.py'
+      - 'notes/RPB108_MG07_SI29_AUGMENTED_TRIAL_20261023.md'
       - 'notes/RPB108_MG07_GLOBAL_NEGATIVE_SUP_20261023.md'
       - 'notes/RPB108_MG07_FULL470_REFERENCE_RESIDUAL_20261019.md'
       - 'research/obligations.json'
@@ -25,6 +27,7 @@ jobs:
         run: |
           python -m py_compile scripts/validate_rpb108_mg07_preconditioned_470_residual.py scripts/validate_rpb108_mg07_global_negative_sup.py
           python scripts/validate_rpb108_mg07_global_negative_sup.py
+          python scripts/validate_rpb108_mg07_augmented_si29_trial.py
           OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg07_preconditioned_470_residual.py
       - name: Fail closed on unresolved original full operator
         run: |
