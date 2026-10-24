@@ -53,6 +53,18 @@ def true_feature_absolute_moments(c,r,degree):
 
 def bounds():
     assert len(FEATURES)==14
+    # Keep the EXACT original SI21->SI24->SI25->SI27->SI28->SI29
+    # TRUE CONTINUOUS feature centers/radii/degrees in custody.
+    expected=[
+      (F(3,10),F(1,50),0), (F(19,25),F(1,50),0),
+      (F(6,5),F(1,50),0), (F(33,20),F(1,50),0),
+      (F(1,4),F(3,100),0), (F(7,20),F(3,100),0),
+      (F(1,4),F(3,100),1), (F(7,20),F(3,100),1),
+      (F(221,100),F(1,50),0), (F(21,10),F(1,50),0),
+      (F(58,25),F(1,50),0),
+      (F(18,25),F(1,50),0), (F(14,5),F(1,50),0),
+      (F(17,5),F(1,50),0)]
+    assert [(c,r,deg) for c,r,d,deg in FEATURES]==expected
     assert B==F(11,10)
     assert PI[0]>PI_LO and PI[1]<PI_UP
     assert LN[2][1]<LN2_UP
