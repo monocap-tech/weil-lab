@@ -254,19 +254,15 @@ def exact_scalar(quick=False):
               if r["strict_full_original_STOP_97percent_passed"]]
     if not quick:
         assert total==256+31*64==2240
-        # ONE exact physical ray suffices to reject this chosen
-        # 470-source J-only Ritz/SM40-cap sufficient method.
-        # Requiring both rays would silently impose a stronger and
-        # irrelevant research acceptance condition.
-        assert len(accepted)>=1, (
-            "No strictly positive original signed ray certified; "
-            "J-only Ritz method obstruction remains OPEN",stop)
+        # ONE exact physical ray suffices; DO NOT assert until
+        # AFTER saving exact rational diagnostics as a CI artifact.
         for ray in stop:
             if ray["strict_full_original_STOP_97percent_passed"]:
                 assert F(ray["strict_full_original_Kminus_minus_97pct_Astar_lower"])>0
     return {
        "status":("SMOKE_TEST_NOT_CERTIFYING" if quick else
-          "CONDITIONAL_EXACT_ORIGINAL_JONLY_RITZ_CAP_METHOD_STOP"),
+          ("CONDITIONAL_EXACT_ORIGINAL_JONLY_RITZ_CAP_METHOD_STOP"
+           if accepted else "EXACT_ORIGINAL_LOW32_INCONCLUSIVE_NO_STOP")),
        "original_exact_seven_prime_multiplier":True,
        "full_rational_digamma_positive_terms_and_tail":True,
        "quarter_gamma_harmonic_integral_bracket":True,
@@ -275,7 +271,8 @@ def exact_scalar(quick=False):
        "all_real_kink_crossings_paid":True,
        "true_odd_pole_subtraction_and_high_LOG_tail_paid":True,
        "source_only_J470_Ritz_matched_SM40_cap_method_if_passed":
-            "OBSTRUCTED_ONLY_ON_THIS_SUFFICIENT_METHOD",
+            ("OBSTRUCTED_ONLY_ON_THIS_SUFFICIENT_METHOD"
+             if accepted else "OPEN_NOT_CERTIFIED"),
        "true_SI29_augmented_484D_method":"NOT_TESTED",
        "entire_original_odd_operator_negative_witness":False,
        "full_original_signed_odd_positive":"OPEN",
@@ -304,4 +301,10 @@ def main():
           "source-only Ritz stopping result",
           [(r["ray"],r["strict_full_original_STOP_97percent_passed"],
             r["display_lower"]) for r in o["rays"]],flush=True)
+    # Exact artifact is now preserved on failure/inconclusive.
+    # This assertion is NEVER waived for a full certificate run.
+    if not q.quick:
+        assert o["accepted_original_method_stopping_rays"], (
+            "Exact low32 method-stop FAILED: no certified strict "
+            "positive ray. See retained artifact "+str(path))
 if __name__=="__main__":main()
