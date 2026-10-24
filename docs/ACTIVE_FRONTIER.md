@@ -2,6 +2,9 @@
 
 > **Complete J-Ritz reduction (conditional on original realization):** With physical source Gram H=J*J and AJ=J*Astar J, the orthogonal strong-action defect E=Astar J-J H^-1 AJ satisfies J*E=0 and E*E=(Astar J)*(Astar J)-AJ H^-1 AJ. The whole MG07 gate for V=ran(J) is congruent to (1+t)CJ+(1+t^-1)(Hminus/kappa_star)E*B14^-1 E <=(51/56)AJ for one uniform t. This is an analytic operator identity, not evaluated true 470-source data.
 >
+> **Newest conditional original whole-operator optimization:** SI06's positive digamma-series structure and all original seven prime-power coefficients give the exact global pointwise norm Kminus<=Hinf I, Hinf=871887/70000≈12.45553, with no frequency truncation. Corrected old SM33 mass norm was 82.77733; original SM40 integrated mass norm 36.89956. MG07's complete 470-source original reference-weighted residual now uses Hinf/kstar, reducing residual penalty by >6.64×. Combined with the properly paid SM33 b9 leakage ε, the conditional negative-only Γ² and old complement response are <0.000828 and <1.217, not the obsolete 0.0055 and 8.1. Original operator ID, full 470 residual and signed odd/even/RH remain open. [Proof and code](../notes/RPB108_MG07_GLOBAL_NEGATIVE_SUP_20261023.md).
+>
+>
 > **October 23 inherited SM33 Kminus repair — PRECONDITION FOR ALL SCHUR CLAIMS:** SM33 previously upper-bounded (kappa-m)+ using only SI10 h>=(-m)+, omitting +kappa on each of 973 unresolved leaves. Its reported Hminus=82.71043570625 and epsilon=0.00006624610913 were underpaid. The corrected same-470 original bound integrates h+kappa on all 107 clusters, yields exact full norm Hminus=82.77732945625, and exact conservative epsilon<1/15000, preserving SM34 theta=51/56; sharper same-source threshold theta>14/15 remains a conditional consequence. SM33/SM34/SM35/MG07 replay is now an explicit CI acceptance prerequisite; PR remains DRAFT. [Full repair note](../notes/RPB108_SM33_KAPPA_LEAKAGE_REPAIR_20261023.md).
 >
 >
