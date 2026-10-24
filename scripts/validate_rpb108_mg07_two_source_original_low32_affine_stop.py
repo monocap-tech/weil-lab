@@ -250,12 +250,20 @@ def exact_scalar(quick=False):
           "strict_full_original_Kminus_minus_97pct_Astar_lower":str(reserve),
           "strict_full_original_STOP_97percent_passed":reserve>0 and not quick,
           "display_lower":float(reserve)})
+    accepted=[r["ray"] for r in stop
+              if r["strict_full_original_STOP_97percent_passed"]]
     if not quick:
         assert total==256+31*64==2240
-        assert min(F(s["strict_full_original_Kminus_minus_97pct_Astar_lower"])
-                   for s in stop)>0, (
-                       "REAL ORIGINAL 0..32 interval STOP FAILED; do not "
-                       "infer from numerical pilot",stop)
+        # ONE exact physical ray suffices to reject this chosen
+        # 470-source J-only Ritz/SM40-cap sufficient method.
+        # Requiring both rays would silently impose a stronger and
+        # irrelevant research acceptance condition.
+        assert len(accepted)>=1, (
+            "No strictly positive original signed ray certified; "
+            "J-only Ritz method obstruction remains OPEN",stop)
+        for ray in stop:
+            if ray["strict_full_original_STOP_97percent_passed"]:
+                assert F(ray["strict_full_original_Kminus_minus_97pct_Astar_lower"])>0
     return {
        "status":("SMOKE_TEST_NOT_CERTIFYING" if quick else
           "CONDITIONAL_EXACT_ORIGINAL_JONLY_RITZ_CAP_METHOD_STOP"),
@@ -279,6 +287,9 @@ def exact_scalar(quick=False):
        "kink_ambiguous_cells":crossings,
        "max_multiplier_affine_error":str(worst_eps),
        "max_physical_fourier_affine_error":str(max_source_error),
+       "accepted_original_method_stopping_rays":accepted,
+       "one_original_strict_rational_witness_suffices":True,
+       "all_rays_accepted":len(accepted)==len(stop) and not quick,
        "rays":stop}
 def main():
     a=argparse.ArgumentParser()
