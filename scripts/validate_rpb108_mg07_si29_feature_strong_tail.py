@@ -81,7 +81,7 @@ def bounds():
     # = ((17+log Lambda)^2+2(17+log Lambda)+2)/Lambda.
     integral=(a*a+2*a+2)/LAMBDA
     assert integral>0
-    tv=[]; tails=[]; tails_2ibp=[]; features=[]; degrees=[]
+    tv=[]; tails=[]; tails_2ibp=[]; tails_phase=[]; features=[]; degrees=[]
     for j,(c,r,d,degree) in enumerate(FEATURES):
         assert isinstance(c,F) and isinstance(r,F)
         assert isinstance(d,F) and d>0
@@ -106,22 +106,39 @@ def bounds():
         # |hat(g)(xi)| <= beta/|xi| for |xi|>=LAMBDA,
         # retaining the genuine boundary value, and paying
         # derivative boundary and interior second derivative.
-        beta=(boundary/PI_LO +
-             (derivative_boundary+second_integral)/
-               (4*PI_LO*PI_LO*LAMBDA))
+        second_correction=(derivative_boundary+second_integral)/(
+            4*PI_LO*PI_LO*LAMBDA)
+        beta=boundary/PI_LO+second_correction
         U2=2*beta*beta*integral
-        assert F(0)<U2<U
+        # For degree-zero *TRUE* continuous Jensen average,
+        # g0(B)=sin(2*pi*c*B)*sinc(2*pi*r*B).
+        # |sinc|<=1 and |sin(pi*y)|<=pi*dist(y,Z).
+        # This gives a sharper rational endpoint upper without
+        # any point-sampled multiplier or irrational trig rounding.
+        if degree==0:
+            y=2*c*B
+            nearest=(y+F(1,2)).numerator//(y+F(1,2)).denominator
+            assert abs(y-nearest)<=F(1,2)
+            phase_boundary=min(F(1),PI_UP*abs(y-nearest))
+        else:
+            phase_boundary=boundary
+        beta_phase=phase_boundary/PI_LO+second_correction
+        Uphase=2*beta_phase*beta_phase*integral
+        assert F(0)<Uphase<=U2<U
         tv.append(V);tails.append(U);tails_2ibp.append(U2)
+        tails_phase.append(Uphase)
         degrees.append(degree)
         features.append({"index":j,"c":str(c),"r":str(r),
           "degree":degree,"true_continuous_L1_mass":str(mass),
           "true_continuous_abs_first_moment":str(moment),
           "variation_upper":str(V),
           "endpoint_true_feature_upper":str(boundary),
+          "endpoint_phase_refined_true_feature_upper":str(phase_boundary),
           "second_physical_derivative_L1_upper":str(second_integral),
           "two_IBP_Fourier_beta":str(beta),
           "old_variation_squared_tail_upper":str(U),
-          "new_two_IBP_squared_strong_tail_upper":str(U2)})
+          "new_two_IBP_squared_strong_tail_upper":str(U2),
+          "new_two_IBP_phase_refined_strong_tail_upper":str(Uphase)})
     assert len(tv)==len(tails)==14
     assert degrees.count(1)==2 and degrees.count(0)==12
     block=sum(tails,F(0))
@@ -130,6 +147,10 @@ def bounds():
     assert F(4,5)<improved<F(81,100)
     assert block/improved>F(175)
     assert len(tails_2ibp)==14
+    refined=sum(tails_phase,F(0))
+    assert F(3,5)<refined<F(31,50)
+    assert refined<improved
+    assert block/refined>F(230)
     # Independent rational metadata audit: original 14 true
     # c-values (not Simpson sample nodes) give conservative
     # combined squared-log-action tail about 143.1645 at 2048.
@@ -151,6 +172,10 @@ def bounds():
       "new_two_IBP_true_14_feature_strong_tail_upper":str(improved),
       "new_two_IBP_true_14_feature_strong_tail_decimal_display":float(improved),
       "two_IBP_improvement_factor":str(block/improved),
+      "phase_refined_two_IBP_14_feature_tail_upper":str(refined),
+      "phase_refined_two_IBP_14_feature_tail_decimal":float(refined),
+      "phase_refined_total_improvement_factor":str(block/refined),
+      "actual_Jensen_mean_phase_endpoint_inequality_used":True,
       "true_first_moment_endpoint_cancellation_paid":True,
       "new_tail_only_domain_and_action_upper_not_MG07_residual":True,
       "tail_bound_is_not_a_small_MG07_residual":True,
