@@ -217,6 +217,30 @@ def regression_cell_integral_adversarial():
     assert cell_kink_lower(F(1),F(3),F(1),F(1,4),h)>=0
     return True
 
+def regression_true_odd_Fourier_zero():
+    """Independent physical-moment normalization at the origin.
+
+    For any zero-extended REAL odd source, the genuine sine
+    transform T(0)=0 and T'(0)=2*pi*int x*f(x)dx.
+    Explicit sine and sinh physical moments must overlap the
+    SI42 true Fourier derivative intervals, not a sampled FFT.
+    """
+    sh=hyperbolic_interval(B/2,"sinh")
+    ch=hyperbolic_interval(B/2,"cosh")
+    u,v,du,dv=qbasis(F(0),sh,ch)
+    assert u.l<=0<=u.h and v.l<=0<=v.h
+    # Direct original sine first moment (SI42 F1 primitive).
+    du_original=2*I(PI[0],PI[1])*F1(CENTER)
+    # Direct analytic hyperbolic identity:
+    # int_{-B}^B x*sinh(x/2) dx =
+    #       4 B cosh(B/2) - 8 sinh(B/2).
+    pole_moment=4*B*ch-8*sh
+    dv_original=2*I(PI[0],PI[1])*pole_moment
+    assert du.l>0 and dv.l>0
+    assert du.l<=du_original.h and du_original.l<=du.h
+    assert dv.l<=dv_original.h and dv_original.l<=dv.h
+    return True
+
 def regression_affine_signed_quadratic():
     """Independent exact polynomial moments and kink-monotonic checks."""
     # Integrate (2+3t)*(5-7t)^2 exactly on [-h/2,h/2].
@@ -241,6 +265,7 @@ def exact_scalar(quick=False):
     assert CENTER==F(37,64) and B==F(11,10)
     assert regression_affine_signed_quadratic()
     assert regression_cell_integral_adversarial()
+    assert regression_true_odd_Fourier_zero()
     assert KAPPA==F(1,1000) and THETA==F(97,100)
     # True SI06 7-power signed multiplier at frequency 0 is
     # strongly negative, with no sample or new digamma assumption.
@@ -349,6 +374,7 @@ def exact_scalar(quick=False):
        "full_rational_digamma_positive_terms_and_tail":True,
        "quarter_gamma_harmonic_integral_bracket":True,
        "original_physical_Fourier_exact_T_and_Tprime_interval":True,
+       "independent_origin_sine_pole_physical_moment_identity":True,
        "original_arch_and_prime_whole_REAL_second_curvature_paid":True,
        "all_real_kink_crossings_paid":True,
        "independent_sextic_polynomial_cell_lower_regression":True,
