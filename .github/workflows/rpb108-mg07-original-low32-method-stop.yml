@@ -50,6 +50,8 @@ jobs:
           assert o['true_original_signed_smooth_multiplier_identity'] == 'Astar-Kminus = m(D)-2ss*'
           assert o['true_original_signed_high_frequency_support_from_SI10']
           assert o['SI10_negative_high_tail_mass_exact']=='1204033883/32000000'
+          assert all(F(r['SI10_support_mass_tail_improvement_factor'])>20
+                     for r in o['rays'])
           from fractions import Fraction as F
           for ray in o['rays']:
             if ray['true_original_signed_odd_ray_positive_if_strict']:
