@@ -114,3 +114,24 @@ The repository's critical-path manifest was also independently preflighted after
 
 The exact original 2,240-cell low-band CI remains subject to real GitHub Actions results and independent original Fourier/domain scrutiny; no accepted stop theorem is claimed until those conditions are met.
 
+
+
+## Further Oct 24 independent algebra/physical normalization checks
+
+The original 2,240-cell enclosure has a subtle potential failure mode: an algebraic error in the affine integrand or a sign/normalization error in the true sine/sinh transform could produce a spurious strictly positive final margin. These are now explicitly tested before any of the costly original signed-frequency cells run.
+
+The signed-cell lower bound was factored into a pure exact-rational \`cell_affine_exact_lower\` routine. Four deliberately adverse *true* sextic integrands were constructed by multiplying a genuinely curved rational signed multiplier
+\(m(t)=m_0+m_1t+\alpha(t^2-h^2/4)\)
+by the square of a genuinely curved rational physical proxy
+\(T(t)=v+dt+\beta(t^2-h^2/4)\).
+The exact integrands were integrated independently, coefficient by coefficient, over symmetric cells. The rational lower bound was below the true result on all four tests, including both signs of the physical weight. A separate test imposes a **real kink \(m=\kappa\) inside the cell**, uses the two different analytic branches of \(w_{97/100}(m)\), and verifies the more conservative kink-cell lower remains valid. All four sextic comparisons were independently reproduced locally with strictly positive gaps; none is an original frequency certificate.
+
+A second exact check holds SI42's supported **odd Fourier normalization** accountable at \(\xi=0\): \(T_u(0)=T_s(0)=0\) and
+\[
+ T_u'(0)=2\pi F_1(c),\qquad
+ T_s'(0)=2\pi\left[4B\cosh(B/2)-8\sinh(B/2)\right],
+\]
+with \(c=37/64\), using the actual SI42 sine and true original sinh physical integrals. The calculated SI42 analytic \`qbasis\` derivative intervals must overlap these independently stated first moments and have the correct positive sign. This is a check on the Fourier factors, not a numerical sample.
+
+These regressions run in BOTH \`--quick\` and full exact modes; failure halts acceptance. New exact signed/rational proof work therefore remains the **original 2,240 real frequency cells**, not further selected-source sampling.
+
