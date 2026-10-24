@@ -213,3 +213,36 @@ After the COMPLETE multiplier/physical Fourier error payment and exact integrati
 An exact Fraction regression independently tests the identity on six rational multiplier values including m=kappa, and the genuinely crossing m(t)=kappa+t/50 for t in [-1/8,1/8] with constant physical Fourier value T=2. Its true exact integral is -761/800000; the best affine lower is -97/100000, with positive gap 3/160000. This was independently checked locally; it is NOT a 2240-cell original source-ray proof.
 
 The full source-only MG07/SM40 method-stop is certified only when one true original rational source ray has a strictly POSITIVE complete lower. This improvement does not establish any original odd negative direction, universal odd/even positivity, Weil bridge, or RH.
+
+
+### Further strengthening: EXACT rational κ crossing inside affine model
+
+The affine-minorant bound is globally valid but still loses the benefit of integrating the maximum **inside** the integral. For every original real-frequency cell \(I=[l,r]\), define \(t=\xi-(l+r)/2\), cell width \(h=r-l\), and the actual certified rational endpoint-affine multiplier \(m_*(t)=m_0+m_1t\). The crossing \(m_*(t)=\kappa\), when \(m_1\neq0\), lies at the **exact rational** location
+\[
+ t_*=(\kappa-m_0)/m_1.
+\]
+Split \([-h/2,h/2]\) into one or two rational subintervals at \(t_*\), if it lies strictly inside. On each piece the original signed stopping weight is a known affine polynomial:
+\[
+ w_\theta(m_*(t))=
+ \begin{cases}
+ (1-\theta)\kappa-m_0-m_1t,&m_*(t)<\kappa,\\
+ -\theta m_0-\theta m_1t,&m_*(t)>\kappa.
+ \end{cases}
+\]
+With the same original physical Fourier linear packet \(T_*(t)=v+dt\), the primitive of \((w_0+w_1t)(v+dt)^2\) is exactly
+\[
+ F(t)=w_0v^2t+\frac{2w_0vd+w_1v^2}{2}t^2
+  +\frac{w_0d^2+2w_1vd}{3}t^3
+  +\frac{w_1d^2}{4}t^4.
+\]
+Thus the **entire modeled kink integral** is determined by at most two exact rational quartic differences. Pay the already certified full original multiplier error \(\varepsilon_I\) using global 1-Lipschitz continuity of \(w_\theta\) and the physical Fourier error \(E_I\) using a global weight envelope:
+\[
+ \varepsilon_I\int_I T_*^2+
+ (\sup_I|w_\theta(m_*)|+\varepsilon_I)
+ h E_I(2\sup_I|T_*|+E_I).
+\]
+Every term is outward and exact. Even if the exact crossing of the TRUE \(m\) differs from \(t_*\), this error envelope remains valid: there is **no assumption** that the true crossing equals the affine model crossing. Keep the best of this whole-real piecewise bound, the two independent globally affine minorants, and the original conservative constant floor.
+
+An independent Fraction check confirms the modeled kink integral is \(-761/800000\) for \(m_*(t)=\kappa+t/50\), \(T_*(t)=2\), \(h=1/4\), including the reverse-slope case. An off-center rational crossing with a nonconstant original Fourier-linear proxy independently matches exact quartic antiderivative assembly: \(-248438569/87480000000\). These are algebraic implementation tests, NOT evaluations of original \([0,32]\) Fourier cells.
+
+The dedicated 2240-cell exact job must still complete with a strictly positive original source-ray lower before we claim any source-only Ritz/SM40 sufficient-method obstruction. Universal signed odd/even positivity and RH remain OPEN.
