@@ -190,6 +190,45 @@ An independent exact rational evaluation gives
 \(U_{\rm old}\approx143.16449697594868\), a \(177.57\)-fold tighter bound.
 The amended existing true-feature script computes each \(b_j,q_j,\beta_j\) and individually verifies \(U_j^{(2{\rm IBP})}<U_j^{(\mathrm{variation})}\). This is a **substantive original whole-tail bound**; still, **it does not bound the orthogonal strong residual** \(R=(I-A_\star P_{V,A})J\), nor any low-frequency feature-action Gram. The tiny MG07 Young-discriminant residual reserve remains OPEN.
 
+### Exact rational phase-distance refinement: the actual 14-tail falls below 0.611
+
+The previous two-IBP bound keeps \(|g_{c,r,0}(B)|\le1\) for every true Jensen mean. But the actual continuous integral has an exact closed form
+\[
+ g_{c,r,0}(B)=
+ \sin(2\pi cB)\,
+ \frac{\sin(2\pi rB)}{2\pi rB}.
+\]
+Since \(|\sin x/x|\le1\), and for any rational \(y\) and nearest integer \(k\),
+\[
+ |\sin(\pi y)|=|\sin(\pi(y-k))|
+ \le \pi_{\rm up}|y-k|,\qquad
+ \pi_{\rm up}=22/7,
+\]
+the physical endpoint for each degree-zero Jensen mean admits the **fully rational** bound
+\[
+ |g_{c,r,0}(B)|\le
+ b_{c,r,0}^{\rm phase}:=
+ \min\{1,\pi_{\rm up}\operatorname{dist}(2cB,\mathbb Z)\}.
+\]
+This requires only the TRUE rational SI29 center \(c\), not any Simpson approximation, rational trigonometric Taylor table or frequency sampling. For both degree-one SI25 moments retain the independently proved cancellation bound \(2\pi_{\rm up}rB\).
+
+Replace \(b_j\) in the previous \(\beta_j\) formula by this smaller \(b_j^{\rm phase}\), retaining **all** derivative boundary and interior second-derivative error payments. The amended exact validator checks, for each of all 14 original SI29 features,
+\[
+ 0<U_j^{\rm phase}\le U_j^{\rm two\ IBP}
+   <U_j^{\rm variation}.
+\]
+The complete 14D original high-frequency squared strong-action tail then obeys
+\[
+ \boxed{\frac35<
+  U_{\rm phase}:=\sum_jU_j^{\rm phase}<\frac{31}{50}
+  \quad (\Lambda=2048),\qquad
+  \frac{U_{\rm old}}{U_{\rm phase}}>230.}
+\]
+An independent exact-Fraction evaluation gives
+\(U_{\rm phase}\approx0.6105522440017588\), compared with the earlier true-feature variation \(143.16449697594868\) (about **234.48-fold** better). The previous two-IBP upper \(0.8062237969742718\) remains separately replayed as a regression.
+
+**Scope:** This controls the *entire* 14D genuine SI29 added-feature high-frequency \(A_o^2\) action form; it is not a relative bound for the Galerkin residual \(J-A_\star Z\), since no entire-frequency action cancellation or low-frequency 484-by-470 Gram has yet been enclosed. It also does not compute the \(\operatorname{ran}(J,G)\) orthogonal projection or establish the strict Young gate.
+
 No Simpson approximation is used to define an actual augmented trial vector. An independent review of the inherited SM41 original whole-frequency \(A_o\) realization is still necessary before promoting the strong-domain statement to a completed original-operator certificate.
 
 ## 5. Exact rational Young-parameter fail-fast test and the very demanding residual budget
