@@ -10,6 +10,8 @@ on:
       - 'scripts/verify_rpb108_sm33_kappa_paid_scalar.py'
       - 'scripts/validate_rpb108_sm33_original_odd_negative_mixed_bound.py'
       - 'scripts/validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure.py'
+      - 'scripts/validate_rpb108_mg07_global_negative_sup.py'
+      - 'notes/RPB108_MG07_GLOBAL_NEGATIVE_SUP_20261023.md'
       - 'notes/RPB108_SM33_KAPPA_LEAKAGE_REPAIR_20261023.md'
       - 'scripts/validate_rpb108_mg07_cap_only_source_congruence.py'
       - 'notes/RPB108_MG07_CAP_ONLY_J_RITZ_20261023.md'
@@ -38,6 +40,7 @@ jobs:
           python scripts/validate_rpb108_sm33_original_odd_negative_mixed_bound.py
           python scripts/validate_rpb108_sm34_positive_energy_dual_schur.py
           python scripts/validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure.py
+          python scripts/validate_rpb108_mg07_global_negative_sup.py
           python scripts/validate_rpb108_mg07_preconditioned_470_residual.py
       - name: Verify inverse-free Ritz cap-only congruence and fail-closed source ray
         run: python scripts/validate_rpb108_mg07_cap_only_source_congruence.py
