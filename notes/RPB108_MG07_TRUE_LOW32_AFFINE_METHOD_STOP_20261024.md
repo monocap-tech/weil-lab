@@ -99,3 +99,18 @@ A separate float64 evaluation of the *same proposed analytical lower formulas* (
 The full exact Python script [original low32 affine stop](../scripts/validate_rpb108_mg07_two_source_original_low32_affine_stop.py) was committed with a dedicated [90-minute verification workflow](../.github/workflows/rpb108-mg07-original-low32-method-stop.yml) and two modes. \`--quick\` is an **inconclusive smoke test** and cannot set the stop flag; full mode requires every original rational cell and **strictly positive** exact final lower for the selected original rays. Failure leaves method obstruction and all theorem obligations OPEN.
 
 **Next: inspect the focused exact workflow log; if it passes, record the rational positive margin and open a review of the inherited SI06/SM42 Fourier/domain identities, instead of declaring Weil or RH. If it fails, tighten only the independently identified failing finite-frequency bounds and leave the canonical signed odd theorem OPEN.**
+
+## October 24 verification-control repairs (latest branch)
+
+Review of the first exact acceptance implementation exposed two **proof-process** errors, fixed before accepting any stopping result.
+
+First, an original \(J\)-only Ritz/SM40 sufficient gate is universally quantified over **source rays**, so a rigorous **single** counter-ray suffices. The first acceptance code mistakenly required **both** archived source rays to pass. It now uses the existential condition \(\exists f\in\{f_{\rm direct},f_{\rm cap}\}\) with a strictly positive **exact Fraction lower margin**. Every other ray's result remains recorded independently and unpromoted. The CI postcondition now agrees with the logical quantifier.
+
+Second, an inconclusive exact run initially raised before saving its rational output. The corrected code now writes its full result artifact first, with explicit status \`EXACT_ORIGINAL_LOW32_INCONCLUSIVE_NO_STOP\` and the original method status \`OPEN_NOT_CERTIFIED\` when no ray passes, then exits with an assertion failure in full mode. In addition to both final margins, the artifact now preserves five rigorously rounded contribution totals for \([0,1],[1,4],[4,8],[8,16],[16,32]\), whose exact sum is checked against each ray's entire low-band bound. This allows a failed proof to be repaired at the offending original frequency region, without substituting numerical evidence or accumulating unrelated scalar certificates.
+
+An independent \`scipy\` numerical quadrature over the original \([0,32]\) signed multiplier (not used for any theorem) found preliminary \(K_--0.97 A_\star\) signed margins before the small >32 correction of about \(+5.70\times10^6\) on the direct-selected ray and \(+3.58\times10^5\) on the cap-selected ray. This reinforces the *plausibility* of the interval proof but does not say its outward rational lower will succeed.
+
+The repository's critical-path manifest was also independently preflighted after correcting its schema: all 63 declared active-check commands and all 77 evidence records whose entries contain repository paths resolve to actual repository files. The 34 legacy descriptive check roles have valid canonical \`verification\` roles while preserving the original limitation in \`scope_role\`; four case-sensitive/legacy file naming exceptions now pass a restricted allowlist/pattern with new adversarial path-security tests. This is **governance**, not mathematical sign verification.
+
+The exact original 2,240-cell low-band CI remains subject to real GitHub Actions results and independent original Fourier/domain scrutiny; no accepted stop theorem is claimed until those conditions are met.
+
