@@ -88,9 +88,9 @@ def new_threshold():
     assert mass_eff<=mass_old+KAPPA*W
     eps_eff=2*B*weighted_eff
     old_missing_kappa_upper=2*B*KAPPA*W*F(1,2**(2*BITS))
-    assert old['leak']<F(66247,10**9)
-    assert old['leak']+old_missing_kappa_upper<F(1,15000)
-    assert F(0)<eps_eff<=old['leak']+old_missing_kappa_upper<F(1,15000)
+    assert old['legacy_h_only_leakage_UNDERPAID']<F(66247,10**9)
+    assert old['legacy_h_only_leakage_UNDERPAID']+old_missing_kappa_upper<F(1,15000)
+    assert F(0)<eps_eff<=old['leak']<F(1,15000)
     mu_eff=KAPPA-eps_eff
     assert mu_eff>F(0) and mu_eff>MU
     threshold=mu_eff/(mu_eff+eps_eff)
@@ -99,7 +99,7 @@ def new_threshold():
     # Independently sharpen the global Knegative operator norm
     # using the SAME all-frequency true effective step envelope.
     H_eff=2*B*mass_eff
-    assert H_eff<=old["neg_global_norm"]+2*B*KAPPA*W
+    assert H_eff<=old["neg_global_norm"]
     result={
        "status":"CONDITIONAL_EXACT_ORIGINAL_470D_COMPLEMENT_SCHUR_THRESHOLD",
        "canonical_W_ODD_NEG":"OPEN",
@@ -111,12 +111,13 @@ def new_threshold():
        "old_SM33_negative_mass":str(mass_old),
        "refined_real_subcells_strict_smaller":strict_weight,
        "clusters_strictly_improved":strictly_refined_clusters,
-       "old_SM33_epsilon_UNDERPAID_kappa":str(old["leak"]),
+       "old_SM33_epsilon_UNDERPAID_kappa":str(old['legacy_h_only_leakage_UNDERPAID']),
+       "old_SM33_epsilon_REPAIRED_kappa":str(old["leak"]),
        "old_SM33_missing_kappa_leakage_exact_upper":str(old_missing_kappa_upper),
        "old_SM33_missing_kappa_global_norm_upper":str(2*B*KAPPA*W),
-       "old_SM33_Knegative_norm_missing_kappa":True,
+       "old_SM33_Knegative_norm_has_been_repaired":True,
        "new_all470_complement_epsilon":str(eps_eff),
-       "certified_fully_paid_old_SI10_epsilon_upper":str(old["leak"]+old_missing_kappa_upper),
+       "certified_fully_paid_old_SI10_epsilon_upper":str(old["leak"]),
        "old_SM34_mu_floor":str(MU),
        "new_positive_signed_complement_mu":str(mu_eff),
        "old_SM34_threshold":str(CLEAN_THRESHOLD),
@@ -124,7 +125,7 @@ def new_threshold():
        "new_threshold_decimal_display":float(threshold),
        "guaranteed_exceeds_14_over_15":True,
        "new_original_whole_Knegative_norm_upper":str(H_eff),
-       "old_original_whole_Knegative_norm_underpaid_kappa":str(old["neg_global_norm"]),
+       "old_original_whole_Knegative_norm_repaired_kappa":str(old["neg_global_norm"]),
        "full470_G_N_evaluated":False,
        "entire_odd_even_Weil_CC27_RH":"OPEN",
        "independent_form_domain_identification_audit":"OPEN"
