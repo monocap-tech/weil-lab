@@ -135,3 +135,46 @@ with \(c=37/64\), using the actual SI42 sine and true original sinh physical int
 
 These regressions run in BOTH \`--quick\` and full exact modes; failure halts acceptance. New exact signed/rational proof work therefore remains the **original 2,240 real frequency cells**, not further selected-source sampling.
 
+
+
+## NF — Dual original-ray sign diagnostic (independent of the sufficient-method stop)
+
+A crucial distinction deserves an additional **true original signed-form** computation, not merely an explanatory disclaimer. By the exact original whole-frequency definitions,
+\[
+  A_o=\max(\kappa,m)(D),\quad K_-=(\kappa-m)_+(D),\quad
+  A_\star=A_o-2ss^*,
+\]
+the identity
+\[
+ \boxed{W_o=A_\star-K_-=m(D)-2ss^*}
+\]
+holds on the common original form domain. It is an *exact pointwise identity*, including at \(m=\kappa\). The true signed multiplier \(m\) itself has no artificial truncation kink.
+
+The updated same **2240 original real [0,32] cells** now independently enclose \(2\int_0^{32}m(\xi)|T_f(\xi)|^2\,d\xi\) from below using the already certified endpoint-affine \(m\), the same physically exact SI42 sine–sinh Fourier midpoint and first derivative, and the same all-real curvature and source error. This direct signed-energy lower has **no kink-cell branch**, because \(m\) is smooth. It is independently accumulated, saved for each of the same five frequency regions and arithmetically checked against its total.
+
+For all \(|\xi|\ge32\), SI06's full seven-prime-power bound and nonnegative digamma series give the original pointwise
+\[
+  m(\xi)\ge -M_0,\qquad
+  M_0=\frac{4707}{875}+\frac{70751}{10000}.
+\]
+The original endpoint-cancelled two-source Fourier transform bound \(|T_f(\xi)|\le \beta_{32}/|\xi|\), *already established without FFT sampling*, then implies
+\[
+ 2\int_{32}^\infty m(\xi)|T_f(\xi)|^2d\xi
+ \ge -M_0\,\frac{2\beta_{32}^2}{32}.
+\]
+The exact **upper** original sinh pole subtraction is independently paid. Thus, denoting the certified original signed low-cell lower by \(L_{\rm signed}\) and original physical pole upper by \(P_{\rm hi}\),
+\[
+ \boxed{\langle f,W_of\rangle\ge
+ L_{\rm signed}-\frac{2M_0\beta_{32}^2}{32}-P_{\rm hi}.}
+\]
+A strictly positive exact rational right side proves the **selected physical ray** is positive under the true signed original odd operator. It does **not** prove odd positivity on all sources, its orthogonal complement, the even sector or RH. A nonpositive lower remains INCONCLUSIVE, not proof of a negative ray.
+
+If a single ray establishes simultaneously
+\[
+  \langle f,K_-f\rangle>0.97\langle f,A_\star f\rangle
+  \quad\text{and}\quad
+  \langle f,W_of\rangle>0,
+\]
+then it gives a rigorous original-operator **false negative for the selected source-only Ritz/SM40-cap sufficient method**: the method fails on a ray whose genuine signed energy is nevertheless strictly positive. This is strictly stronger interpretive evidence about the chosen *proof method*, not an RH resolution.
+
+The implementation makes this signed positivity an **independent optional, fail-closed recorded result**, not an additional mandatory assertion for the original one-ray method STOP. It retains the separate exact lower margin and full five-region decomposition and explicitly verifies the pointwise algebra \(\max(\kappa,m)-(\kappa-m)_+=m\) on adversarial rational values across the kink. The dedicated CI verifies that any positive signed-ray flag is supported by its own strictly positive exact Fraction lower. At time of authoring, the full GitHub exact 2240-cell job is still QUEUED; neither margin is certified as passed.
