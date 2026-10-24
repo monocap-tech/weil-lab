@@ -1,0 +1,58 @@
+name: MG07 original low32 two-ray signed affine method STOP
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg07_two_source_original_low32_affine_stop.py'
+      - 'scripts/validate_rpb108_mg07_two_source_original_physical_pole_input.py'
+      - 'scripts/validate_rpb108_mg07_two_source_endpoint_log_tail.py'
+      - 'scripts/validate_rpb108_mg07_two_source_stop_low_band_reduction.py'
+      - 'notes/RPB108_MG07_TRUE_LOW32_AFFINE_METHOD_STOP_20261024.md'
+      - 'research/obligations.json'
+      - '.github/workflows/rpb108-mg07-original-low32-method-stop.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-exact-low32-signed-ray:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original Fourier interval dependencies
+        run: pip install numpy scipy
+      - name: Verify exact original high-tail and pole anchor
+        run: |
+          python scripts/validate_rpb108_mg07_two_source_original_physical_pole_input.py > /dev/null
+          python scripts/validate_rpb108_mg07_two_source_endpoint_log_tail.py > /dev/null
+          python scripts/validate_rpb108_mg07_two_source_stop_low_band_reduction.py > /dev/null
+      - name: Exact signed-original low32 quick arithmetic smoke
+        run: |
+          OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/validate_rpb108_mg07_two_source_original_low32_affine_stop.py --quick --output artifacts/mg07_original_low32_QUICK_SMOKE_NONCERTIFYING.json
+      - name: Verify true original 2240-cell signed-method STOP with all errors
+        run: |
+          OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/validate_rpb108_mg07_two_source_original_low32_affine_stop.py
+          python - <<'PY'
+          import json
+          o=json.load(open('artifacts/mg07_two_source_original_low32_interval.json'))
+          assert o['status']=='CONDITIONAL_EXACT_ORIGINAL_JONLY_RITZ_CAP_METHOD_STOP'
+          assert o['rational_cells']==2240
+          assert o['true_SI29_augmented_484D_method']=='NOT_TESTED'
+          assert o['full_original_signed_odd_positive']=='OPEN'
+          assert o['even_CC27_Weil_RH']=='OPEN'
+          assert o['entire_original_odd_operator_negative_witness'] is False
+          assert all(r['strict_full_original_STOP_97percent_passed'] for r in o['rays'])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-low32-signed-2240-cell-rigorous-or-inconclusive
+          path: |
+            artifacts/mg07_two_source_original_low32_interval.json
+            artifacts/mg07_original_low32_QUICK_SMOKE_NONCERTIFYING.json
+          if-no-files-found: warn
