@@ -11,9 +11,22 @@ from validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure import (
 from validate_rpb108_sm17_compact_spectral_gate import KAPPA_STAR
 from validate_rpb108_sm34_positive_energy_dual_schur import CLEAN_THRESHOLD
 from validate_rpb108_si29_pole_threshold_three_bands import FEATURES
+from validate_rpb108_mg07_global_negative_sup import exact_bound
 
 def diag(xs):
  return [[F(xs[i]) if i==j else F(0) for j in range(len(xs))] for i in range(len(xs))]
+def psd3(X):
+ # Exact principal-minor criterion for 3x3 symmetric PSD; all
+ # principal minors, not only leading minors (the latter test PD).
+ assert len(X)==3 and all(len(row)==3 for row in X)
+ assert all(X[i][j]==X[j][i] for i in range(3) for j in range(3))
+ if any(X[i][i]<0 for i in range(3)):return False
+ if any(X[i][i]*X[j][j]-X[i][j]**2<0
+        for i,j in ((0,1),(0,2),(1,2))):return False
+ a,b,c=X[0][0],X[1][1],X[2][2]
+ x,y,z=X[0][1],X[0][2],X[1][2]
+ return a*b*c+2*x*y*z-a*z*z-b*y*y-c*x*x>=0
+
 def string_matrix(A):return [[str(x) for x in r] for r in A]
 def exact_model():
  # 3D physical toy with one positive SI29-style feature, rank-one
@@ -50,7 +63,9 @@ def exact_model():
  assert Qref==mm(mm(transpose(Q),inv(B)),Q)
  assert Fq!=[[0,0]] and zq!=[[0],[0]]
  Ai=inv(A);K=scale(H,eye(3))
- assert psd2(sub(inv(B),Ai))
+ assert psd3(sub(inv(B),Ai))
+ assert psd3(diag([0,1,0])) # singular PSD passes
+ assert not psd3(mat([[1,2,0],[2,1,0],[0,0,1]])) # negative minor rejected
  assert psd2(sub(scale(1/ks,E),DB))
  G0=mm(mm(transpose(Z),A),Z)
  G=mm(mm(transpose(J),Ai),J)
@@ -83,10 +98,15 @@ def main():
  assert g["source_dim"]==470 and g["cap_columns"]==890
  assert len(FEATURES)==14
  k=F(1,1000);ks=KAPPA_STAR;theta=CLEAN_THRESHOLD
- H=g["full_negative_norm"]
+ Hmass=g["full_negative_norm"]
+ global_negative=exact_bound()
+ H=F(global_negative["original_negative_norm_upper"])
+ assert H==F(871887,70000) and H<Hmass
  assert ks==F(33621,10**9) and theta==F(51,56)
  assert k*(1-F(966379,10**6))==ks
- assert F(80)<H<F(83)
+ assert F(12)<H<F(13)
+ assert Hmass==F(13244372713,160000000)
+ assert Hmass/H>F(6)
  old=2*H/ks**2;new=2*H/ks
  orthogonal=new/k
  assert orthogonal/old==ks/k==F(33621,10**6)
@@ -100,6 +120,10 @@ def main():
   "original_kappa_star":str(ks),
   "whole_odd_sufficient_theta":str(theta),
   "original_full_negative_norm_upper":str(H),
+  "original_global_negative_norm_method":"SI06 whole-real digamma/prime supremum",
+  "prior_repaired_mass_based_norm_upper":str(Hmass),
+  "new_global_negative_norm_improvement_factor":str(Hmass/H),
+  "t1_prior_repaired_mass_reference_residual_coefficient":str(2*Hmass/ks),
   "old_t1_scalar_residual_coefficient":str(old),
   "new_t1_operator_reference_coefficient":str(new),
   "feature_and_pole_orthogonal_coefficient":str(orthogonal),

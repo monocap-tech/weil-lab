@@ -4,6 +4,13 @@ on:
   pull_request:
     paths:
       - 'scripts/validate_rpb108_mg07_preconditioned_470_residual.py'
+      - 'scripts/validate_rpb108_mg07_global_negative_sup.py'
+      - 'scripts/validate_rpb108_mg07_augmented_si29_trial.py'
+      - 'scripts/validate_rpb108_mg07_si29_feature_strong_tail.py'
+      - 'scripts/validate_rpb108_mg07_pole_aligned_si29_tail.py'
+      - 'scripts/validate_rpb108_mg07_augmented_young_ray_gate.py'
+      - 'notes/RPB108_MG07_SI29_AUGMENTED_TRIAL_20261023.md'
+      - 'notes/RPB108_MG07_GLOBAL_NEGATIVE_SUP_20261023.md'
       - 'notes/RPB108_MG07_FULL470_REFERENCE_RESIDUAL_20261019.md'
       - 'research/obligations.json'
       - '.github/workflows/rpb108-mg07-preconditioned-470.yml'
@@ -21,7 +28,12 @@ jobs:
       - run: pip install numpy scipy
       - name: Verify original geometry and full coupled matrix theorem
         run: |
-          python -m py_compile scripts/validate_rpb108_mg07_preconditioned_470_residual.py
+          python -m py_compile scripts/validate_rpb108_mg07_preconditioned_470_residual.py scripts/validate_rpb108_mg07_global_negative_sup.py
+          python scripts/validate_rpb108_mg07_global_negative_sup.py
+          python scripts/validate_rpb108_mg07_augmented_si29_trial.py
+          python scripts/validate_rpb108_mg07_si29_feature_strong_tail.py
+          python scripts/validate_rpb108_mg07_pole_aligned_si29_tail.py
+          python scripts/validate_rpb108_mg07_augmented_young_ray_gate.py
           OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/validate_rpb108_mg07_preconditioned_470_residual.py
       - name: Fail closed on unresolved original full operator
         run: |
@@ -35,6 +47,9 @@ jobs:
           assert d["original_true_positive_reference_features"]==14
           assert F(d["original_kappa_star"])==F(33621,10**9)
           assert F(d["whole_odd_sufficient_theta"])==F(51,56)
+          assert F(d["original_full_negative_norm_upper"])==F(871887,70000)
+          assert F(d["prior_repaired_mass_based_norm_upper"])==F(13244372713,160000000)
+          assert F(d["new_global_negative_norm_improvement_factor"])>6
           assert F(d["feature_and_pole_orthogonal_ratio_to_old"])==F(33621,10**6)
           assert F(d["old_t1_scalar_residual_coefficient"])>F(d["feature_and_pole_orthogonal_coefficient"])
           assert d["toy"]["exact_full_coupled_two_source_test"]
