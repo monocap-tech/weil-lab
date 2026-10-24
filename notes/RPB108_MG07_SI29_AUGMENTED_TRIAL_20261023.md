@@ -73,47 +73,65 @@ This is a **470-by-470 Loewner gate** assembled from at most 484 trial columns; 
 
 The new self-contained Fraction test, \`scripts/validate_rpb108_mg07_augmented_si29_trial.py\`, constructs a 4D physical SPD \(A\), positive pole-conditioned SI29-style \(B=I+gg^*-2ss^*\) with \(A\succeq B\), and two original source columns \(J\) containing \(s\). On the **old** trial \(V=\operatorname{ran}J\), the nonzero Galerkin residual is orthogonal to \(s\) but **not** to \(g\); the exact \(R^*B^{-1}R\) differs from \(R^*R\). On the enriched trial \(V=\operatorname{span}(J,g)\), the nonzero strong residual is orthogonal to both, and the equality \(R^*B^{-1}R=R^*R\) holds *entrywise* exactly. The test independently reconstructs \(R^*R\) from \(H_J,W,Q,S_T\). This is a finite rational structural regression, not a certificate of any original real 470-column Fourier moment.
 
-## 4. Original strong-domain admission of all 14 SI29 features
+## 4. ORIGINAL strong-domain admission: true Jensen integrals, not the SI25 Simpson proxies
 
-Unlike merely declaring \(G\) bounded as a reference synthesis, the original augmented Galerkin calculation needs each **real physical SI29 supported feature** \(g_j\) in \(\operatorname{Dom}A_\star\), so that the actual whole-source cross \(T^*A_\star^2T\) is finite.
+**Correction of the first trial-domain implementation.** The first checker treated the SI25 function \`feature_terms(c,r,degree)\` as if it *defined* the true SI29 features. It does not: SI24 and SI25 explicitly label those finite rational nodes and signed weights as **Simpson quadrature approximations**, and pay nonzero error in the actual Gram. They must **not** be substituted for the vectors generating the SI29 positive-reference operator. The original version of the strong-domain script therefore did not establish admission of all true reference features. It has been replaced.
 
-SI29 features are explicit rational finite composite-Simpson combinations of the original supported odd sine packets:
-\[
- g_j(x)=1_{[-B,B]}(x)\sum_k w_{jk}\sin(2\pi\nu_{jk}x),
- \qquad B=11/10.
-\]
-The exact rational \(w_{jk},\nu_{jk}\) are returned by the ORIGINAL SI29 \`feature_terms(c,r,degree)\`, including both the degree-zero positive Jensen means and degree-one first moments. No generic fictitious 14-dimensional source is substituted.
-
-Set \(\pi_{\rm lo}=333/106<\pi\) and \(\pi_{\rm up}=22/7>\pi\). The zero extension has variation controlled, including boundary jumps, by the explicit **rational** number
-\[
- V_j:=2\sum_k|w_{jk}|+
-     4\pi_{\rm up}B\sum_k|w_{jk}|\,|\nu_{jk}|.
-\]
-Integration by parts against \(e^{-2\pi i\xi x}\), including its boundary terms, gives for every \(\xi\ne0\)
-\[
- |\widehat{g_j}(\xi)|\le\frac{V_j}{2\pi|\xi|}.
-\]
-SM41's original entire high-frequency positive multiplier upper states \(a_o(\xi)\le17+\log|\xi|\) for \(|\xi|\ge1\). Thus, at \(\Lambda=2048\), with \(\log\Lambda<11(347/500)\), the genuine whole signed-frequency strong-action squared tail satisfies
+For each of the original 14 SI29 triples \((c,r,d,\mathrm{degree})\), with \(c>r>0\), the **actual** supported odd feature has one of the two continuous-frequency definitions
 \[
 \begin{aligned}
- \int_{|\xi|\ge\Lambda}
- a_o(\xi)^2|\widehat{g_j}(\xi)|^2d\xi
- &\le
- \frac{V_j^2}{2\pi_{\rm lo}^2\Lambda}
- \left[(17+\log\Lambda)^2+
- 2(17+\log\Lambda)+2\right]\\
- &<U_j\in\mathbb Q,
+g_{c,r,0}(x)
+ &=1_{[-B,B]}(x)\,\frac12\int_{-1}^1
+   \sin(2\pi(c+ru)x)\,du,\\
+g_{c,r,1}(x)
+ &=1_{[-B,B]}(x)\,\frac32\int_{-1}^1
+   u\sin(2\pi(c+ru)x)\,du,\qquad B=\frac{11}{10}.
 \end{aligned}
 \]
-where the rational \(U_j\) substitutes the stated outward \(\log\Lambda,\pi_{\rm lo}\) bounds. For any 14 coefficients \(z\), Cauchy gives the **complete Loewner bound**
+Only the two original SI25 first moments have degree one. The SI29 \(\Gamma\) weights and the physical vectors \(g_j\) are unchanged. We need **no quadrature** to obtain their absolute frequency-weight mass and first moment:
 \[
- \boxed{\int_{|\xi|\ge\Lambda}
- a_o(\xi)^2|\widehat{Gz}(\xi)|^2 d\xi
- \le\left(\sum_{j=1}^{14}U_j\right)\|z\|_2^2.}
+\begin{array}{c|cc}
+ &m_j=\int_{-1}^{1}|w_j(u)|\,du&
+ p_j=\int_{-1}^{1}|w_j(u)|(c+ru)\,du\\ \hline
+\mathrm{degree}=0 &1&c\\
+\mathrm{degree}=1 &3/2&3c/2
+\end{array}
 \]
-In particular **all fourteen new trial vectors belong to the original \(A_o\) strong domain**, since their Fourier transforms are bounded at finite frequencies, and the original pole correction is bounded. This is an analytic fact conditional on the original signed Fourier realization and SM41 high-frequency multiplier bound, not a proof of the finite low-frequency action Gram.
+In degree one the \(u|u|\) term cancels by exact symmetry. Hence \(g_j\) is absolutely continuous on \([-B,B]\); its zero extension has at most two boundary jumps, and its total variation is bounded by the rational
+\[
+ V_j=2m_j+4\pi_{\rm up}B\,p_j,\qquad
+ \pi_{\rm up}=\frac{22}{7}.
+\]
+Distributional integration by parts, now applied to the **true Jensen function**, yields for every nonzero frequency
+\[
+ |\widehat g_j(\xi)|\le \frac{V_j}{2\pi_{\rm lo}|\xi|},
+ \quad\pi_{\rm lo}=\frac{333}{106}.
+\]
 
-The companion exact script [SI29 strong-tail checker](../scripts/validate_rpb108_mg07_si29_feature_strong_tail.py) computes every \(V_j,U_j\) from the actual SI29 rational feature coefficients; it records the combined 14-by-14 upper without rounding down and explicitly keeps the original low-frequency and full 470-residual gates OPEN. It does **not** assume the tiny SM41 selected-25 tail also applies to all 14 reference features.
+Conditional on the original SM41 whole-high-frequency multiplier inequality
+\(0\le a_o(\xi)\le17+\log|\xi|\) for \(|\xi|\ge2048\), the true supported feature's squared **strong-action** high-frequency tail obeys
+\[
+ \int_{|\xi|\ge\Lambda} a_o(\xi)^2|\widehat g_j(\xi)|^2\,d\xi
+ \le U_j:=
+ \frac{V_j^2}{2\pi_{\rm lo}^2\Lambda}
+ \big[(17+L)^2+2(17+L)+2\big],
+ \quad\Lambda=2048,\quad L=\frac{11\cdot347}{500}.
+\]
+The exact integral identity behind this is
+\(\int_\Lambda^\infty(17+\log\xi)^2\xi^{-2}d\xi
+=\Lambda^{-1}[(17+\log\Lambda)^2+2(17+\log\Lambda)+2]\).
+This proves every **true** \(g_j\) belongs to the original \(\operatorname{Dom}A_o\), and hence \(\operatorname{Dom}A_\star\), once the original multiplier/domain identification is justified: low-frequency \(a_o\) is bounded on compact frequency sets and the rank-one pole is bounded.
+
+For the complete added 14-dimensional trial block, Cauchy–Schwarz gives the exact full-matrix bound
+\[
+ 0\preceq\int_{|\xi|\ge2048}
+  a_o(\xi)^2\,\widehat G(\xi)^*
+    \widehat G(\xi)\,d\xi
+ \preceq\left(\sum_{j=1}^{14} U_j\right)I_{14}.
+\]
+The **repaired checker** [true SI29 feature strong-tail replay](../scripts/validate_rpb108_mg07_si29_feature_strong_tail.py) now imports only the actual SI29 \(c,r,d,\mathrm{degree}\) metadata, derives exact continuous masses \(1\) and \(3/2\), and reconstructs rational \(V_j,U_j\) without \`feature_terms\`. It deliberately reports the whole 14-by-14 low-frequency action Gram and augmented original 484-by-470 residual as OPEN.
+
+No Simpson approximation is used to define an actual augmented trial vector. An independent review of the inherited SM41 original whole-frequency \(A_o\) realization is still necessary before promoting the strong-domain statement to a completed original-operator certificate.
 
 ## 5. Exact rational Young-parameter fail-fast test and the very demanding residual budget
 
