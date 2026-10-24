@@ -29,7 +29,13 @@ def exact_audit():
     H_SM40=2*B*mass_SM40
     assert mass_SM40==F(1073441879,64000000)
     assert H_SM40==F(11807860669,320000000)
-    assert H/H_SM40>2
+    # Additional certified SI06 all-real SUP norm, conditional on
+    # the original signed Fourier/domain realization.
+    const_arch=F(29,50)+F(11,7)+3*F(347,500)+F(573,500)
+    Hsup=KAPPA+const_arch+F(70751,10000)
+    assert const_arch==F(4707,875)
+    assert Hsup==F(871887,70000)
+    assert Hsup<H_SM40 and H/Hsup>6
     d_coarse=2*B*KAPPA*W/2**18
     assert d_coarse==F(10703,41943040000)
     e_coarse=EPS_H_UP+d_coarse
@@ -45,9 +51,16 @@ def exact_audit():
     assert theta>t_coarse
     cross=H*e_sharp; correction=cross/MU_OLD
     assert cross<F(11,2000) and correction<F(81,10)
+    new_cross=Hsup*e_sharp
+    new_schur=new_cross/MU_OLD
+    assert new_cross<F(1,1000) and new_schur<F(5,4)
     return {
      "status":"SCALAR_EXACT_ONLY_CONDITIONAL_ON_ORIGINAL_CLUSTER_PREMISES",
      "H_repaired":str(H),"H_SM40":str(H_SM40),
+     "H_uniform_SI06":str(Hsup),
+     "SI06_mixed_squared_conditional_upper":str(new_cross),
+     "SI06_negative_only_Schur_conditional_upper":str(new_schur),
+     "uniform_gain_over_repaired_mass":str(H/Hsup),
      "repaired_H_over_SM40_factor":str(H/H_SM40),
      "SM40_exact_mass_premise_not_replayed":True,
      "epsilon_coarse_upper":str(e_coarse),
