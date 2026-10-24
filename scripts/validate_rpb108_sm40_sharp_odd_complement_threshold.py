@@ -96,6 +96,11 @@ def new_threshold():
     assert cap_order_strictly_greater_than_b9>0
     assert strict_weight>0 and strictly_refined_clusters>0
     assert mass_eff<=mass_old+KAPPA*W
+    # SM40 was pointwise truncated against its SAME parent SM10
+    # h+kappa upper on each real cell. The effective min is therefore
+    # exactly the entire original SM40 cap envelope mass.
+    assert mass_eff==stats["new_SM40_signed_envelope_mass"]
+    assert mass_eff==F(1073441879,64000000)
     eps_eff=2*B*weighted_eff
     old_missing_kappa_upper=2*B*KAPPA*W*F(1,2**(2*BITS))
     assert old['legacy_h_only_leakage_UNDERPAID']<F(66247,10**9)
@@ -109,7 +114,8 @@ def new_threshold():
     # Independently sharpen the global Knegative operator norm
     # using the SAME all-frequency true effective step envelope.
     H_eff=2*B*mass_eff
-    assert H_eff<=old["neg_global_norm"]
+    assert H_eff==F(11807860669,320000000)<old["neg_global_norm"]
+    assert old["neg_global_norm"]/H_eff>F(2)
     result={
        "status":"CONDITIONAL_EXACT_ORIGINAL_470D_COMPLEMENT_SCHUR_THRESHOLD",
        "canonical_W_ODD_NEG":"OPEN",
@@ -136,6 +142,7 @@ def new_threshold():
        "new_threshold_decimal_display":float(threshold),
        "guaranteed_exceeds_14_over_15":True,
        "new_original_whole_Knegative_norm_upper":str(H_eff),
+       "repaired_old_over_SM40_negative_norm_factor":str(old["neg_global_norm"]/H_eff),
        "old_original_whole_Knegative_norm_repaired_kappa":str(old["neg_global_norm"]),
        "full470_G_N_evaluated":False,
        "entire_odd_even_Weil_CC27_RH":"OPEN",
