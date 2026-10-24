@@ -94,6 +94,9 @@ def full_original_clusterwise_negative_mixed():
     assert norm_source_count+1==470
     assert nontrivial>0 and strict_improvements==nontrivial
     assert max_rem<COMMON_REMAINDER
+    # Certified sharper maximum b9 remainder, originally reported
+    # ~0.001681282837, needed to preserve strict mixed H*eps gate.
+    assert max_rem<F(16813,10**7)
 
     # Full ORIGINAL signed negative multiplier integral weight mass,
     # including BOTH +/- mirrored frequency halves. Odd sine packet
@@ -118,6 +121,14 @@ def full_original_clusterwise_negative_mixed():
     rough_gamma2=H*worst_leak
     assert 0<gamma2<rough_gamma2
     assert H<F(83) and rough_gamma2<F(27,1000)
+    # A second independent exact upper uses old h-only epsilon bound,
+    # 107 uniform sharpened Taylor errors and fully-paid H(kappa).
+    # This proves strict <11/2000 without relying on coincidentally
+    # close numerical display values.
+    conservative_eps=F(66247,10**9)+2*B*KAPPA*width*F(16813,10**7)**2
+    assert leakage<conservative_eps<F(1,15000)
+    assert H*conservative_eps<F(11,2000)
+    assert H*conservative_eps/MU<F(81,10)
     assert gamma2<CROSS2_MAX
     assert gamma2<F(11,2000) # STRICT original measured mixed² upper
 
