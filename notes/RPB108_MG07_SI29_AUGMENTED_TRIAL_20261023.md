@@ -229,6 +229,89 @@ An independent exact-Fraction evaluation gives
 
 **Scope:** This controls the *entire* 14D genuine SI29 added-feature high-frequency \(A_o^2\) action form; it is not a relative bound for the Galerkin residual \(J-A_\star Z\), since no entire-frequency action cancellation or low-frequency 484-by-470 Gram has yet been enclosed. It also does not compute the \(\operatorname{ran}(J,G)\) orthogonal projection or establish the strict Young gate.
 
+### Structural optimization: pole-aligned, endpoint-zero basis for the SAME augmented trial space
+
+The previous \(\sim0.61055\) tail is a bound for the **unchanged true SI29 features**. There is a much sharper way to represent the **same Galerkin trial space** using the genuine odd pole that is already included among the original 470 sources:
+\[
+ s(x)=\sinh(x/2),\qquad
+ \alpha_j:=\frac{g_j(B)}{s(B)},\qquad
+ \boxed{\widetilde g_j=g_j-\alpha_j s,\quad B=11/10.}
+\]
+Both \(g_j\) and \(s\) are genuine original odd supported physical functions. Thus \(\widetilde g_j(B)=\widetilde g_j(-B)=0\) **exactly**, and
+\[
+\boxed{
+\operatorname{span}(J,G_{\rm SI29})
+=\operatorname{span}(J,\widetilde G_{\rm SI29}).
+}
+\]
+This is an invertible triangular **change of basis modulo the source space**, NOT a change to SI29's rank-14 positive reference \(B_{14}\), the original 470-source SM34 criterion, or the full signed operator. The coefficients \(\alpha_j\) are analytic real numbers, not presumed rational; they need only be **enclosed**, not replaced by Simpson proxies.
+
+Why this helps: for any odd \(h=\widetilde g_j\) with \(h(\pm B)=0\), two integrations by parts give
+\[
+ |\widehat h(\xi)|\le
+ \frac{2|h'(B)|+\int_{-B}^{B}|h''(x)|\,dx}
+      {4\pi^2|\xi|^2}.
+\]
+The entire \(O(1/|\xi|)\) boundary jump of the original truncated Jensen vectors has now vanished. Let \(m_j=1\) for a true Jensen mean and \(3/2\) for a true first moment, with the exact \(p_j=m_jc_j\), \(q_j=m_j(c_j+r_j)^2\). Use the just-proved exact rational real endpoint upper \(b_j\) for \(|g_j(B)|\), where
+\[
+ b_j=\begin{cases}
+ \min(1,\pi_{\rm up}\operatorname{dist}(2c_jB,\mathbb Z)),
+ &\mathrm{degree}=0,\\
+ 2\pi_{\rm up}r_jB,&\mathrm{degree}=1.
+ \end{cases}
+\]
+Because \(\sinh(B/2)\ge B/2\), \(|\alpha_j|\le2b_j/B\). The exact geometric power-series majorant
+\[
+ \cosh(B/2)\le\frac1{1-B^2/8}
+ =\frac{800}{679}<\frac65
+\]
+bounds both pole derivatives. We obtain
+\[
+\begin{aligned}
+ 2|\widetilde g_j'(B)|+
+ \int_{-B}^{B}|\widetilde g_j''|
+ &\le 4\pi_{\rm up}p_j+
+        8B\pi_{\rm up}^{2}q_j+
+        \frac{2b_j}{B}\left(2\frac65-1\right)
+ =:D_j,\\
+ |\widehat{\widetilde g_j}(\xi)|
+ &\le \gamma_j|\xi|^{-2},\qquad
+ \gamma_j=\frac{D_j}{4\pi_{\rm lo}^2}.
+\end{aligned}
+\]
+**All** physical endpoint derivative terms, the interior second derivative, and the original pole correction are paid. No high-frequency value of the signed multiplier was dropped.
+
+For \(\Lambda\ge2048\), put \(A_\Lambda=17+\log\Lambda\), with the SI06 outward rational upper on \(\log\Lambda\). The exact integral
+\[
+ \int_\Lambda^\infty
+  \frac{(17+\log\xi)^2}{\xi^4}d\xi
+ =\frac{A_\Lambda^2+\frac23A_\Lambda+\frac29}{3\Lambda^3}
+\]
+and the whole-real original SM41 upper \(a_o(\xi)\le17+\log|\xi|\) yield the **complete** 14-dimensional strong-action high-frequency Loewner certificate
+\[
+ \boxed{
+ 0\preceq
+  \mathcal T_{\widetilde G,|\xi|\ge\Lambda}
+ \preceq
+ \left[\sum_{j=1}^{14}
+   \frac{2\gamma_j^2}{3\Lambda^3}
+   \left(A_\Lambda^2+\frac23A_\Lambda+\frac29\right)
+ \right]I_{14}.
+ }
+\]
+The new exact script [pole-aligned SI29 checker](../scripts/validate_rpb108_mg07_pole_aligned_si29_tail.py) checks all 14 true Jensen metadata and exact arithmetic, compares with the two previous true-feature tail bounds, and certifies
+\[
+\boxed{
+ U_{\rm pole\text{-}aligned}(2048)<\frac3{40000}
+ =0.000075;\qquad
+ U_{\rm pole\text{-}aligned}(8192)<\frac7{5000000}
+ =0.0000014.
+}
+\]
+Independent Fraction evaluation gives \(U_{\rm pole\text{-}aligned}(2048)\approx 7.4634548636\times10^{-5}\), roughly **1.9 million times** smaller than the historical \(\sim143\) variation bound on the old unaligned coordinate block, and over 8,000 times smaller than its sharp \(\sim0.61055\) true-feature bound. Such numbers compare **different bases of the SAME trial space**, not intrinsic operator norms or actual Galerkin residuals; neither the source Gram conditioning nor the complete low-frequency \(\widetilde G\)-action covariance has been certified.
+
+This is a concrete structural preconditioning direction: compute original 484-trial strong-action matrices in the endpoint-zero pole-aligned basis, where the problematic high-log tail becomes much smaller. **Do not** conclude the MG07 Young-parameter reserve or full odd positivity from the reduced high-frequency component alone.
+
 No Simpson approximation is used to define an actual augmented trial vector. An independent review of the inherited SM41 original whole-frequency \(A_o\) realization is still necessary before promoting the strong-domain statement to a completed original-operator certificate.
 
 ## 5. Exact rational Young-parameter fail-fast test and the very demanding residual budget
