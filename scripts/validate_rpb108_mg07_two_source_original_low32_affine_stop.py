@@ -39,7 +39,7 @@ from pathlib import Path
 from functools import lru_cache
 import json,argparse
 from validate_rpb108_si06_negative_band import (
-    PI,LN,B,prime_interval,log_rational_bounds)
+    PI,LN,B,prime_interval,log_rational_bounds,CONST_UP,TWOC)
 from validate_rpb108_si10_complement_positivity import KAPPA
 from validate_rpb108_sm40_endpoint_curvature_negative_cap import D2
 from validate_rpb108_sm43_positive_affine_error import (
@@ -284,6 +284,7 @@ def exact_scalar(quick=False):
     }
     reduction=exact_reduction()
     out=[F(0)]*len(RAYS)
+    signed_true_low=[F(0)]*len(RAYS)
     total=0;stable=0;crossings=0
     worst_eps=F(0);max_source_error=F(0)
     # Preserve exact five-region diagnostics even if strict method
@@ -291,6 +292,14 @@ def exact_scalar(quick=False):
     band_ranges=((F(0),F(1)),(F(1),F(4)),(F(4),F(8)),
                  (F(8),F(16)),(F(16),F(32)))
     band_sums=[[F(0)]*len(RAYS) for _ in band_ranges]
+    true_signed_band_sums=[[F(0)]*len(RAYS) for _ in band_ranges]
+    assert CONST_UP==F(4707,875)
+    assert 0<TWOC<F(70751,10000)
+    # Entire signed Fourier multiplier m(ξ) on ALL real
+    # frequencies: SI06 positive digamma series and seven
+    # original prime powers give m >= -M0 pointwise.
+    M0=CONST_UP+F(70751,10000)
+    assert M0>0
     for left,right in cells(quick):
         band_index=next(i for i,(lo,hi) in enumerate(band_ranges)
                         if lo<=left and right<=hi)
@@ -342,15 +351,44 @@ def exact_scalar(quick=False):
             certified_cell=below(2*contribution,10**6)
             out[index]+=certified_cell
             band_sums[band_index][index]+=certified_cell
+            # Independent smooth SIGNED-WEIL scalar lower:
+            # Astar - Kminus = m(D) - 2ss*, exactly,
+            # with no kink in the original multiplier m.
+            # The same all-real affine m and true physical
+            # T bounds apply, but use w0=m_mid and w1=slope.
+            true_cell=below(2*cell_affine_exact_lower(
+                intercept,slope,v,d,h,eps,E),10**6)
+            signed_true_low[index]+=true_cell
+            true_signed_band_sums[band_index][index]+=true_cell
         total+=1
     assert all(sum(band_sums[k][i] for k in range(len(band_ranges)))==out[i]
                for i in range(len(RAYS)))
+    assert all(sum(true_signed_band_sums[k][i]
+                   for k in range(len(band_ranges)))==signed_true_low[i]
+               for i in range(len(RAYS)))
     stop=[]
-    for (a,b,label),r,v in zip(RAYS,reduction["rays"],out):
+    for index,((a,b,label),r,v) in enumerate(zip(
+            RAYS,reduction["rays"],out)):
         assert r["ray"]==label
         const=F(r["certified_strict_low_band_difference_threshold"])
         reserve=v-const
+        beta=F(r["original_odd_Fourier_beta_at_32"])
+        pole_hi=F(r["certified_pole_payment_upper"])
+        # Fourier tail: ∫_{|ξ|>32}|T_f(ξ)|² <= 2 beta²/32,
+        # m(ξ)>=-(CONST_UP+TWOC) for every original real ξ.
+        signed_high_negative_budget=M0*2*beta*beta/F(32)
+        signed_energy_lower=(
+            signed_true_low[index]-signed_high_negative_budget-pole_hi)
+        signed_ray_positive=signed_energy_lower>0 and not quick
         stop.append({
+          "true_original_signed_odd_energy_lower":str(signed_energy_lower),
+          "true_original_signed_odd_ray_positive_if_strict":
+              signed_ray_positive,
+          "true_original_signed_low_0_32_lower":
+              str(signed_true_low[index]),
+          "all_real_original_signed_high_tail_negative_budget":
+              str(signed_high_negative_budget),
+          "true_original_sinh_pole_subtraction_upper":str(pole_hi),
           "ray":label,"sine_coefficient":a,"pole_coefficient":b,
           "true_whole_original_signed_combination_LOW_lower":str(v),
           "exact_high_tail_minus_pole_threshold":str(const),
@@ -384,6 +422,12 @@ def exact_scalar(quick=False):
             ("OBSTRUCTED_ONLY_ON_THIS_SUFFICIENT_METHOD"
              if accepted else "OPEN_NOT_CERTIFIED"),
        "true_SI29_augmented_484D_method":"NOT_TESTED",
+       "independent_true_original_signed_ray_positive_count":sum(
+          int(r["true_original_signed_odd_ray_positive_if_strict"])
+          for r in stop),
+       "true_original_signed_smooth_multiplier_identity":
+          "Astar-Kminus = m(D)-2ss*",
+       "true_original_signed_high_frequency_lower_from_SI06":True,
        "entire_original_odd_operator_negative_witness":False,
        "full_original_signed_odd_positive":"OPEN",
        "even_CC27_Weil_RH":"OPEN",
@@ -394,6 +438,13 @@ def exact_scalar(quick=False):
        "kink_ambiguous_cells":crossings,
        "max_multiplier_affine_error":str(worst_eps),
        "max_physical_fourier_affine_error":str(max_source_error),
+       "true_original_signed_odd_low32_lower_by_frequency_region":[
+         {"region":str(lo)+".."+str(hi),
+          "ray_signed_lower_contributions":{
+             RAYS[i][2]:str(true_signed_band_sums[k][i])
+             for i in range(len(RAYS))}}
+         for k,(lo,hi) in enumerate(band_ranges)
+       ],
        "exact_original_certified_low32_lower_by_frequency_region":[
          {"region":str(lo)+".."+str(hi),
           "ray_lower_contributions":{RAYS[i][2]:str(band_sums[k][i])
