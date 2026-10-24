@@ -14,6 +14,7 @@ on:
       - 'scripts/validate_rpb108_mg07_augmented_si29_trial.py'
       - 'scripts/validate_rpb108_mg07_si29_feature_strong_tail.py'
       - 'scripts/validate_rpb108_mg07_pole_aligned_si29_tail.py'
+      - 'scripts/validate_rpb108_mg07_two_source_original_physical_pole_input.py'
       - 'scripts/validate_rpb108_mg07_augmented_young_ray_gate.py'
       - 'notes/RPB108_MG07_SI29_AUGMENTED_TRIAL_20261023.md'
       - 'notes/RPB108_MG07_GLOBAL_NEGATIVE_SUP_20261023.md'
@@ -50,6 +51,7 @@ jobs:
           python scripts/validate_rpb108_mg07_augmented_si29_trial.py
           python scripts/validate_rpb108_mg07_si29_feature_strong_tail.py
           python scripts/validate_rpb108_mg07_pole_aligned_si29_tail.py
+          python scripts/validate_rpb108_mg07_two_source_original_physical_pole_input.py
           python scripts/validate_rpb108_mg07_augmented_young_ray_gate.py
       - name: Verify inverse-free Ritz cap-only congruence and fail-closed source ray
         run: python scripts/validate_rpb108_mg07_cap_only_source_congruence.py
