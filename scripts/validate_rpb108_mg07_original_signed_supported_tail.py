@@ -40,6 +40,11 @@ def support_tail():
     assert mass==mneg+KAPPA*width==MASS_EXACT
     assert F(37)<mass<F(38)
     assert 0<TWOC<F(70751,10000)
+    # Adversarial exact integral and two-sign normalization:
+    # original one positive leaf [32,64] of weight 1 costs
+    # 2*(1/32-1/64)=1/32, NOT 1/64 or 2/32.
+    assert 2*(F(1,32)-F(1,64))==F(1,32)
+    assert 2*(F(1,32)-F(1,64)) < 2*(F(64)-F(32))/F(32**2)
     # Every actual original SI10 positive-frequency leaf I=[l,r]
     # bounds Kminus by its genuine h+kappa. Integrate the full
     # Fourier 1/xi² decay on I∩[32,∞), not a global cutoff max:
