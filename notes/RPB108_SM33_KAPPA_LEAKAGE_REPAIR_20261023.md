@@ -38,7 +38,7 @@ The same conservative paid epsilon bound gives a **more explicit conditional SM3
  =\frac{122355426341}{131072000000}
  \approx0.9334978205947876.
 \]
-This strengthens the old \(51/56\) necessary numerical target and is based only on original SM33 b9 estimates plus the paid \(\kappa\). The numerical threshold is not accepted as a completed certified replay until the amended SM33 exact Fraction assertion has executed successfully and the inherited operator/domain identity has been independently reviewed.
+This improves the old \(51/56\) sufficient numerical acceptance threshold and is based only on original SM33 b9 estimates plus the paid \(\kappa\). The numerical threshold is not accepted as a completed certified replay until the amended SM33 exact Fraction assertion has executed successfully and the inherited operator/domain identity has been independently reviewed.
 
 SM35 now consumes this corrected value and propagates it into MG07. The SM34 **qualitative** \(51/56\) sufficient criterion survives because the fully paid \(\varepsilon<1/15000\) is preserved; its exact nonorthogonal Schur algebra is not otherwise changed. The sharper same-470 source-space \(\theta=1-\varepsilon/\kappa>14/15\) also remains logically available, conditional on the original physical/Fourier realization. No original \(470\times470\) signed gate is thereby evaluated.
 
