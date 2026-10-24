@@ -2,6 +2,9 @@
 
 > **Complete J-Ritz reduction (conditional on original realization):** With physical source Gram H=J*J and AJ=J*Astar J, the orthogonal strong-action defect E=Astar J-J H^-1 AJ satisfies J*E=0 and E*E=(Astar J)*(Astar J)-AJ H^-1 AJ. The whole MG07 gate for V=ran(J) is congruent to (1+t)CJ+(1+t^-1)(Hminus/kappa_star)E*B14^-1 E <=(51/56)AJ for one uniform t. This is an analytic operator identity, not evaluated true 470-source data.
 >
+> **New exact complement-floor theorem (conditional on inherited original realization):** On the SAME original SM34 470-source exceptional complement, the pole vanishes and Ao>=kappa=1/1000 while Q Kminus Q<=epsilon I. Therefore D_F>=kappa-epsilon, and SM34's scalar sufficient generalized ratio improves from theta=51/56 to theta_new=1-epsilon/kappa>14/15. This costs **zero new generators**. A focused exact Fraction replay now refines the SAME 107 cluster-specific b9 epsilon using the pointwise minimum of ORIGINAL SI10 and certified SM40 3892-subcell negative weights, potentially raising theta further. No numeric theta_eff or 470D signed margin claimed until verified. [Full proof and exact replay](../notes/RPB108_SM40_SHARP_ODD_COMPLEMENT_THRESHOLD_20261023.md).
+>
+>
 > **Two different obstruction targets:** Rigorous v*[(51/56)AJ-C_SM40]v<=0 rejects the specific 890-cap source Ritz sufficient test; stronger v*[(51/56)AJ-J*Kminus J]v<=0 would reject ANY cap at the present theta=51/56 on the same Ritz space. SM38/SM40 direct ratios ~0.965–0.973 are numerical only and do not imply actual signed operator negativity. The standalone SM40 scout now searches both signals on 1/2/3 physical source support. Remain obligation-first: improve the leakage factor/theta or Ritz geometry if direct obstruction becomes rigorous.
 >
 >
