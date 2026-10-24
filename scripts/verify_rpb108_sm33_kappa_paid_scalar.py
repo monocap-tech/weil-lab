@@ -22,6 +22,14 @@ def exact_audit():
     H=2*B*mass
     assert mass==F(1204033883,32000000)
     assert H==F(13244372713,160000000)<83
+    # Original SM40 source certificate previously verified exact
+    # signed negative envelope mass across 3,892 original real cells.
+    # This stdlib scalar regression does not replay that certificate.
+    mass_SM40=F('16.772529359375')
+    H_SM40=2*B*mass_SM40
+    assert mass_SM40==F(1073441879,64000000)
+    assert H_SM40==F(11807860669,320000000)
+    assert H/H_SM40>2
     d_coarse=2*B*KAPPA*W/2**18
     assert d_coarse==F(10703,41943040000)
     e_coarse=EPS_H_UP+d_coarse
@@ -39,7 +47,10 @@ def exact_audit():
     assert cross<F(11,2000) and correction<F(81,10)
     return {
      "status":"SCALAR_EXACT_ONLY_CONDITIONAL_ON_ORIGINAL_CLUSTER_PREMISES",
-     "H_repaired":str(H),"epsilon_coarse_upper":str(e_coarse),
+     "H_repaired":str(H),"H_SM40":str(H_SM40),
+     "repaired_H_over_SM40_factor":str(H/H_SM40),
+     "SM40_exact_mass_premise_not_replayed":True,
+     "epsilon_coarse_upper":str(e_coarse),
      "epsilon_sharp_upper":str(e_sharp),
      "squared_mixed_upper":str(cross),
      "negative_only_schur_upper":str(correction),
