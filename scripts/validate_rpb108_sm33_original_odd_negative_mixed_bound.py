@@ -47,6 +47,13 @@ def full_original_clusterwise_negative_mixed():
     assert len(clusters)==107
     assert width==F(973,32) and F(0)<mass<F(38)
     assert B==F(11,10) and KAPPA==F(1,1000) and BITS==9
+    # Adversarial REAL frequency cell: the old h-only inequality is false.
+    # At m=kappa/2>0 the SI10 -m height may be h=0, but
+    # Knegative=(kappa-m)_+=kappa/2 is STILL strictly positive.
+    m_adversarial=KAPPA/2
+    h_adversarial=F(0)
+    assert max(F(0),KAPPA-m_adversarial)>h_adversarial
+    assert max(F(0),KAPPA-m_adversarial)<=h_adversarial+KAPPA
 
     mass_check=F(0)
     mass_full_corrected=F(0)
