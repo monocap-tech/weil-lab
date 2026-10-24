@@ -313,3 +313,72 @@ STOP test \(K_--0.97A_\star>0\). A strict original ray
 sign is accepted only after its own full rational low32 margin
 passes. No full 470-dimensional, universal odd/even, Weil or RH
 positivity is inferred.
+
+
+### Sharper still: exact reciprocal Fourier decay integrated leaf by leaf
+
+The first SI10 support-weighted original signed high-tail bound conservatively
+replaced \(\xi^{-2}\) by \(32^{-2}\) on the **entire** negative-frequency
+support. We can use the true original SI10 rational endpoints instead.
+
+For each of the 973 originally certified positive-half unresolved leaves
+\(I=[a_I,b_I]\) with complete original cap weight \(w_I=h_I+\kappa\),
+take \(\ell_I=\max(32,a_I)\) and discard \(I\) when \(b_I\le32\).
+On the two-sign whole-frequency negative tail, the exact contribution
+obeys
+\[
+ 2\int_{\ell_I}^{b_I}
+  w_I\,\frac{\beta_{32}^2}{\xi^2}\,d\xi
+ = 2\beta_{32}^2w_I
+ \left(\frac1{\ell_I}-\frac1{b_I}\right).
+\]
+Consequently, define the **fully rational SI10 reciprocal envelope**
+\[
+\boxed{S_{32}:=
+  2\!\!\sum_{\substack{I\text{ original SI10}\\b_I>32}}
+  (h_I+\kappa)
+  \left(\frac1{\max(32,a_I)}-\frac1{b_I}\right).}
+\]
+Then the complete original physical signed negative high-frequency
+contribution satisfies
+\[
+\boxed{
+ \int_{|\xi|>32}(-m(\xi))_+
+      |\widehat f(\xi)|^2\,d\xi
+ \le \beta_{32}^2 S_{32}.}
+\]
+This is an EXACT rational sum over the inherited original 973 leaves,
+not a quadrature or an invented cap. SI10's two-frequency-sign
+reflection is paid by the displayed factor 2 and **must not be paid
+again**. Neither the 107 clusters nor their underlying source geometry
+changes.
+
+Let \(M_{32}=2\sum_{I:b_I>32}(h_I+\kappa)
+(b_I-\max(32,a_I))\). Every counted interval satisfies
+\(\ell_I>0\), and so
+\[
+ 0<S_{32}<\frac{M_{32}}{32^2}
+  <\frac{M_{\mathrm{SI10}}}{32^2},\qquad
+ M_{\mathrm{SI10}}=\frac{1204033883}{32000000}<38.
+\]
+These are **strict rational checks** in the updated
+[original support-tail validator](../scripts/validate_rpb108_mg07_original_signed_supported_tail.py),
+which also checks an independent hand-integrated
+positive-frequency leaf \([32,64]\) and verifies the two-sign
+normalization.
+
+The true original \([0,32]\) signed ray validator now uses
+\(\beta_{32}^2S_{32}\) in its optional \(W_o\)-ray-positive margin.
+It retains **both** the earlier SI10
+\(M_{\mathrm{SI10}}\beta_{32}^2/1024\) and the yet coarser SI06
+uniform tail as independent rational comparisons. This yields a
+genuine monotone certificate improvement without any additional
+original-operator assumptions, spectral approximation, source
+truncation or heuristic low-frequency signs.
+
+The dedicated low32 GitHub Actions workflow must still replay the
+whole calculation and find an exact positive lower for either
+method-obstruction ray; even if it does, **only** the original
+source-only \(J\)-Ritz/SM40 sufficient route is rejected.
+The independent signed-positivity ray status, universal odd/even
+operator and RH remain separately gated.
