@@ -63,6 +63,8 @@ def run():
         assert derivative_abs<F(19200) if label.startswith("direct") else derivative_abs<F(4850)
         naive_u=F(a,2)+F(2*b,5)
         assert naive_u>endpoint_abs/PI_LO
+        norm_lo=F(anchor["complete_true_physical_norm_squared_interval"][0])
+        assert norm_lo>0
         budgets={}
         for power in (11,12,13,14):
             cutoff=F(2**power)
@@ -77,6 +79,11 @@ def run():
             unaligned_form=2*naive_u**2*(A+1)/cutoff
             improvement=unaligned_form/form
             assert improvement>F(7000)
+            relative_form=form/norm_lo
+            relative_strong=strong/norm_lo
+            if power==11:
+                assert relative_form<F(1,500000)
+                assert relative_strong<F(1,20000)
             if power==11:
                 if label.startswith("direct"):
                     assert form<F(500) and strong<F(13000)
@@ -88,6 +95,8 @@ def run():
                 "Ao_squared_strong_tail_upper":str(strong),
                 "naive_uncancelled_form_upper":str(unaligned_form),
                 "rigorous_improvement_factor":str(improvement),
+                "Ao_form_tail_over_true_L2_norm_upper":str(relative_form),
+                "Ao_squared_strong_tail_over_true_L2_norm_upper":str(relative_strong),
                 "display_form_tail_upper":float(form),
                 "display_squared_strong_tail_upper":float(strong)
             }
