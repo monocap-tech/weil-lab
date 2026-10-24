@@ -50,6 +50,20 @@ class ManifestTests(unittest.TestCase):
     def test_unknown_replay_cadence_rejected(self):
         self.invalid(lambda d: d["active_checks"][0].update(cadence="infinite"))
 
+    def test_unrecognized_role_rejected(self):
+        # Historical evidence categories are preserved separately as
+        # scope_role; the declared role is always one of the three
+        # schema-recognized classifications, and invalid labels fail.
+        self.invalid(lambda d: d["active_checks"][0].update(role="method-obstruction"))
+
+    def test_scoped_historical_roles_preserve_limited_interpretation(self):
+        scoped=[c for c in self.base["active_checks"] if "scope_role" in c]
+        self.assertGreaterEqual(len(scoped), 30)
+        self.assertTrue(all(c["role"]=="verification" and
+                            isinstance(c["scope_role"],str) and
+                            c["scope_role"] and c["interpretation"]
+                            for c in scoped))
+
     def test_no_per_update_replay_rejected(self):
         self.invalid(lambda d: [c.update(cadence="on-demand") for c in d["active_checks"]])
 
