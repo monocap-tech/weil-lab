@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'scripts/validate_rpb108_mg07_two_source_original_low32_affine_stop.py'
+      - 'scripts/validate_rpb108_mg07_original_signed_supported_tail.py'
       - 'scripts/validate_rpb108_mg07_two_source_original_physical_pole_input.py'
       - 'scripts/validate_rpb108_mg07_two_source_endpoint_log_tail.py'
       - 'scripts/validate_rpb108_mg07_two_source_stop_low_band_reduction.py'
@@ -31,6 +32,7 @@ jobs:
           python scripts/validate_rpb108_mg07_two_source_original_physical_pole_input.py > /dev/null
           python scripts/validate_rpb108_mg07_two_source_endpoint_log_tail.py > /dev/null
           python scripts/validate_rpb108_mg07_two_source_stop_low_band_reduction.py > /dev/null
+          python scripts/validate_rpb108_mg07_original_signed_supported_tail.py > /dev/null
       - name: Exact signed-original low32 quick arithmetic smoke
         run: |
           OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/validate_rpb108_mg07_two_source_original_low32_affine_stop.py --quick --output artifacts/mg07_original_low32_QUICK_SMOKE_NONCERTIFYING.json
@@ -46,6 +48,8 @@ jobs:
           assert o['full_original_signed_odd_positive']=='OPEN'
           assert o['even_CC27_Weil_RH']=='OPEN'
           assert o['true_original_signed_smooth_multiplier_identity'] == 'Astar-Kminus = m(D)-2ss*'
+          assert o['true_original_signed_high_frequency_support_from_SI10']
+          assert o['SI10_negative_high_tail_mass_exact']=='1204033883/32000000'
           from fractions import Fraction as F
           for ray in o['rays']:
             if ray['true_original_signed_odd_ray_positive_if_strict']:
