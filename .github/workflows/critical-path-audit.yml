@@ -7,6 +7,9 @@ on:
       - 'docs/ACTIVE_FRONTIER.md'
       - 'docs/OBLIGATION_FIRST_PROGRESSION.md'
       - 'scripts/validate_rpb108_odd470_strong_domain_tail.py'
+      - 'scripts/validate_rpb108_sm33_original_odd_negative_mixed_bound.py'
+      - 'scripts/validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure.py'
+      - 'notes/RPB108_SM33_KAPPA_LEAKAGE_REPAIR_20261023.md'
       - 'scripts/validate_rpb108_mg07_cap_only_source_congruence.py'
       - 'notes/RPB108_MG07_CAP_ONLY_J_RITZ_20261023.md'
       - 'notes/RPB108_ODD470_STRONG_DOMAIN_20261023.md'
@@ -27,6 +30,12 @@ jobs:
         run: |
           python -m unittest discover -s scripts -p test_obligation_manifest.py -v
           python scripts/verify_obligation_manifest.py
+      - name: Check corrected full original Knegative h+kappa leakage and dependent Schur/MG07 source geometry
+        run: |
+          python scripts/validate_rpb108_sm33_original_odd_negative_mixed_bound.py
+          python scripts/validate_rpb108_sm34_positive_energy_dual_schur.py
+          python scripts/validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure.py
+          python scripts/validate_rpb108_mg07_preconditioned_470_residual.py
       - name: Verify inverse-free Ritz cap-only congruence and fail-closed source ray
         run: python scripts/validate_rpb108_mg07_cap_only_source_congruence.py
       - name: Check actual 470 physical source strong-domain tail (conditional)
