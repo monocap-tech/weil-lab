@@ -178,3 +178,17 @@ If a single ray establishes simultaneously
 then it gives a rigorous original-operator **false negative for the selected source-only Ritz/SM40-cap sufficient method**: the method fails on a ray whose genuine signed energy is nevertheless strictly positive. This is strictly stronger interpretive evidence about the chosen *proof method*, not an RH resolution.
 
 The implementation makes this signed positivity an **independent optional, fail-closed recorded result**, not an additional mandatory assertion for the original one-ray method STOP. It retains the separate exact lower margin and full five-region decomposition and explicitly verifies the pointwise algebra \(\max(\kappa,m)-(\kappa-m)_+=m\) on adversarial rational values across the kink. The dedicated CI verifies that any positive signed-ray flag is supported by its own strictly positive exact Fraction lower. At time of authoring, the full GitHub exact 2240-cell job is still QUEUED; neither margin is certified as passed.
+
+
+### Numerical scale warning for the independent signed-positive ray diagnostic
+
+The 0.97 **method-stop** is deliberately separated from the \(1.00\) **true signed positivity** check. An independent noncertifying numerical quadrature of the genuine original signed multiplier \(m(\xi)\), using analytic physical sine/sinh Fourier transforms rather than the truncated SI29 Galerkin response, gives:
+
+| Original rational ray | \(2\int_0^{32} m(\xi)T_f(\xi)^2d\xi-2\langle f,s\rangle^2\) | Sampled additional \(2\int_{32}^{2048}m(\xi)T_f^2d\xi\) |
+|---|---:|---:|
+| Direct-selected \(12001u+16384s\) | approximately \(+39,605\) | approximately \(+2,403\) |
+| Cap-selected \(3013u+4096s\) | approximately \(+2,526\) | approximately \(+124\) |
+
+These are **float/quadrature**, neither original operator certificates nor guaranteed signs. The rigorous universally valid SI06 \(m\ge -M_0\) tail lower beyond \(32\) with the current two-IBP \(\beta_{32}\) costs approximately \(153{,}000\) and \(9{,}100\), respectively. This is larger than the observed signed margins; so the *optional* signed-positive outcome is plausibly INCONCLUSIVE even if the rigorous primary method-stop \(K_--0.97A_\star>0\) succeeds. A more discriminating signed-positive certificate would need its own sharper negative-tail localization or further \(32<\xi<128\) true signed integral work. The current NF **does not** authorize delaying the simpler method-obstruction test for that optional objective.
+
+The script reports each signed-ray result only when its own rational lower is positive and otherwise leaves its sign unknown. It must NEVER interpret failure of that lower bound as a negative original odd direction or an RH claim.
