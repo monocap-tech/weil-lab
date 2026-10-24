@@ -16,6 +16,11 @@ Original physical zero-extension distributional variation <=
 SM41 original all-frequency high tail a_o(xi)<=17+ln |xi|
 then yields exact-rational high-frequency squared strong-action
 tail of each TRUE SI29 feature, and a full 14-source Loewner sum.
+A SECOND integration by parts retains the genuine boundary value
+and bounds the interior second derivative. The two real odd SI25
+first moments have endpoint bound |g1(B)|<=2*pi_upper*r*B,
+not generic variation mass 3/2. This gives a much tighter but
+still full-original conditional 14D strong-action tail.
 This remains conditional on ORIGINAL SM41/A_o Fourier-domain
 identification; it is not low-frequency certification, 484x484
 Galerkin positivity, whole signed odd or RH closure.
@@ -76,7 +81,7 @@ def bounds():
     # = ((17+log Lambda)^2+2(17+log Lambda)+2)/Lambda.
     integral=(a*a+2*a+2)/LAMBDA
     assert integral>0
-    tv=[]; tails=[]; features=[]; degrees=[]
+    tv=[]; tails=[]; tails_2ibp=[]; features=[]; degrees=[]
     for j,(c,r,d,degree) in enumerate(FEATURES):
         assert isinstance(c,F) and isinstance(r,F)
         assert isinstance(d,F) and d>0
@@ -86,15 +91,45 @@ def bounds():
         V=2*mass+4*PI_UP*B*moment
         U=V*V*integral/(2*PI_LO*PI_LO)
         assert V>0 and U>0
-        tv.append(V);tails.append(U);degrees.append(degree)
+        # Apply integration by parts TWICE on the real, compactly
+        # supported TRUE Jensen function (never on Simpson proxies).
+        # |g(+/-B)| <=1 for an average (degree=0), whereas for
+        # degree=1, g(B)=3/2 * int u sin(theta+z*u)du
+        # and |g(B)| <= 3/2 * int |u|*|z*u|du = |z|,
+        # z=2*pi*r*B. Both genuine g are ODD in physical x.
+        boundary=F(1) if degree==0 else 2*PI_UP*r*B
+        # |g'(B)| <= 2*pi*moment at both endpoints.
+        # int[-B,B] |g''(x)|dx <= 8*B*pi^2 * mass*(c+r)^2.
+        second_moment_upper=mass*(c+r)**2
+        derivative_boundary=4*PI_UP*moment
+        second_integral=8*B*PI_UP*PI_UP*second_moment_upper
+        # |hat(g)(xi)| <= beta/|xi| for |xi|>=LAMBDA,
+        # retaining the genuine boundary value, and paying
+        # derivative boundary and interior second derivative.
+        beta=(boundary/PI_LO +
+             (derivative_boundary+second_integral)/
+               (4*PI_LO*PI_LO*LAMBDA))
+        U2=2*beta*beta*integral
+        assert F(0)<U2<U
+        tv.append(V);tails.append(U);tails_2ibp.append(U2)
+        degrees.append(degree)
         features.append({"index":j,"c":str(c),"r":str(r),
           "degree":degree,"true_continuous_L1_mass":str(mass),
           "true_continuous_abs_first_moment":str(moment),
-          "variation_upper":str(V),"squared_strong_tail_upper":str(U)})
+          "variation_upper":str(V),
+          "endpoint_true_feature_upper":str(boundary),
+          "second_physical_derivative_L1_upper":str(second_integral),
+          "two_IBP_Fourier_beta":str(beta),
+          "old_variation_squared_tail_upper":str(U),
+          "new_two_IBP_squared_strong_tail_upper":str(U2)})
     assert len(tv)==len(tails)==14
     assert degrees.count(1)==2 and degrees.count(0)==12
     block=sum(tails,F(0))
     assert F(143)<block<F(144)
+    improved=sum(tails_2ibp,F(0))
+    assert F(4,5)<improved<F(81,100)
+    assert block/improved>F(175)
+    assert len(tails_2ibp)==14
     # Independent rational metadata audit: original 14 true
     # c-values (not Simpson sample nodes) give conservative
     # combined squared-log-action tail about 143.1645 at 2048.
@@ -113,6 +148,11 @@ def bounds():
       "original_true_feature_budgets":features,
       "full_14by14_squared_strong_tail_Loewner_scalar_upper":str(block),
       "full_14by14_squared_strong_tail_decimal_display":float(block),
+      "new_two_IBP_true_14_feature_strong_tail_upper":str(improved),
+      "new_two_IBP_true_14_feature_strong_tail_decimal_display":float(improved),
+      "two_IBP_improvement_factor":str(block/improved),
+      "true_first_moment_endpoint_cancellation_paid":True,
+      "new_tail_only_domain_and_action_upper_not_MG07_residual":True,
       "tail_bound_is_not_a_small_MG07_residual":True,
       "14_true_features_versus_14_Simpson_proxies_distinguished":True,
       "high_frequency_action_multiplier_bound":"a_o(xi)<=17+ln|xi|",
