@@ -138,6 +138,58 @@ The **repaired checker** [true SI29 feature strong-tail replay](../scripts/valid
 \]
 at \(\Lambda=2048\) with the stated conservative variation estimate. This is a **finite domain and whole-tail Loewner certificate only**. Its magnitude is far too coarse to demonstrate the \(10^{-9}\)-scale relative residual margin needed by the existing MG07 sufficient gate. A rigorous low-frequency full matrix and much more precise projected cancellation are still indispensable.
 
+### Further exact improvement: two integrations by parts and genuine moment cancellation
+
+The first total-variation bound \(\sum U_j\approx143.1645\) is far from sharp. For the **same exact continuous Jensen functions**, let
+\[
+m_j=\int_{-1}^1|w_j(u)|\,du,\quad
+p_j=\int_{-1}^1|w_j(u)|(c_j+r_ju)\,du=m_jc_j,
+\quad q_j=m_j(c_j+r_j)^2.
+\]
+Since \(g_j\) is smooth inside its physical interval, two *distributionally correct* integrations by parts give, for every \(\xi\ne0\),
+\[
+ |\widehat g_j(\xi)|\le
+ \frac{|g_j(B)|}{\pi|\xi|}
+ +\frac{4\pi p_j+8B\pi^2q_j}{4\pi^2|\xi|^2}.
+\]
+The first term includes **both endpoint jumps**; the second includes both derivative boundary terms and the full interior \(g_j''\) integral. For each true degree-zero Jensen average \(|g_j(B)|\le1\). For a true degree-one SI25 moment, there is a **strictly better exact boundary cancellation**:
+\[
+ g_{c,r,1}(B)=\tfrac32\int_{-1}^1
+  u\sin(2\pi cB+2\pi rBu)\,du,\qquad
+ |g_{c,r,1}(B)|\le2\pi rB
+\]
+because the \(u\cos(2\pi rBu)\) term is odd and
+\(|\sin(2\pi rBu)|\le2\pi rB\,|u|\).
+This avoids the old pessimistic \(3/2\) first-moment endpoint mass.
+
+At \(\Lambda=2048\) put
+\[
+ b_j=\begin{cases}1,&\mathrm{degree}=0,\\2\pi_{\rm up}r_jB,&\mathrm{degree}=1,\end{cases}
+ \quad
+ \beta_j=\frac{b_j}{\pi_{\rm lo}}+
+ \frac{4\pi_{\rm up}p_j+8B\pi_{\rm up}^2q_j}
+ {4\pi_{\rm lo}^2\Lambda}.
+\]
+Then \(|\widehat g_j(\xi)|\le\beta_j/|\xi|\) whenever \(|\xi|\ge\Lambda\). The same SM41 high-frequency whole-action multiplier bound yields the **true** combined 14-source squared-action tail
+\[
+\boxed{
+ 0\preceq\mathcal T_{G,|\xi|\ge2048}
+ \preceq\left[\sum_{j=1}^{14}
+  \frac{2\beta_j^2}{2048}
+  \big((17+L)^2+2(17+L)+2\big)\right]I_{14},
+ \quad L=11\cdot347/500.
+}
+\]
+Substituting **only the original 14 exact SI29 metadata** gives the strict Fraction comparisons
+\[
+ \boxed{\frac45<U_{\rm improved}<\frac{81}{100},
+        \qquad \frac{U_{\rm old}}{U_{\rm improved}}>175.}
+\]
+An independent exact rational evaluation gives
+\(U_{\rm improved}\approx0.8062237969742718\), compared with
+\(U_{\rm old}\approx143.16449697594868\), a \(177.57\)-fold tighter bound.
+The amended existing true-feature script computes each \(b_j,q_j,\beta_j\) and individually verifies \(U_j^{(2{\rm IBP})}<U_j^{(\mathrm{variation})}\). This is a **substantive original whole-tail bound**; still, **it does not bound the orthogonal strong residual** \(R=(I-A_\star P_{V,A})J\), nor any low-frequency feature-action Gram. The tiny MG07 Young-discriminant residual reserve remains OPEN.
+
 No Simpson approximation is used to define an actual augmented trial vector. An independent review of the inherited SM41 original whole-frequency \(A_o\) realization is still necessary before promoting the strong-domain statement to a completed original-operator certificate.
 
 ## 5. Exact rational Young-parameter fail-fast test and the very demanding residual budget
