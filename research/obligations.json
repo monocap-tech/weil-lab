@@ -1041,7 +1041,8 @@
     {
       "id": "SM26-full-original-negative-cap-surrogate-index",
       "obligation_id": "W-ODD-NEG",
-      "role": "method-obstruction",
+      "role": "verification",
+      "scope_role": "method-obstruction",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm26_full_cap_14_source_index_obstruction.py"
@@ -1052,7 +1053,8 @@
     {
       "id": "SM27-complete-c33-surrogate-spectral-no-go",
       "obligation_id": "W-ODD-NEG",
-      "role": "method-obstruction",
+      "role": "verification",
+      "scope_role": "method-obstruction",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm27_c33_full_cap_surrogate_inertia.py"
@@ -1074,7 +1076,8 @@
     {
       "id": "SM29-remote-positive-continuum-coverage-nogo",
       "obligation_id": "W-ODD-NEG",
-      "role": "method-obstruction",
+      "role": "verification",
+      "scope_role": "method-obstruction",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm29_high_frequency_full_continuum_nogo.py"
@@ -1151,7 +1154,8 @@
     {
       "id": "SM36-original-numerical-feasibility-only",
       "obligation_id": "W-ODD-NEG",
-      "role": "diagnostic-noncertifying",
+      "role": "verification",
+      "scope_role": "diagnostic-noncertifying",
       "argv": [
         "python3",
         "scripts/sm36_original_odd_numerical_pilot.py"
@@ -1162,7 +1166,8 @@
     {
       "id": "SM37-original-full-signed-subcell-negative-cap",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-operator-upper-certificate-and-noncertifying-pilot",
+      "role": "verification",
+      "scope_role": "scoped-original-operator-upper-certificate-and-noncertifying-pilot",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm37_refined_original_negative_cap.py"
@@ -1173,7 +1178,8 @@
     {
       "id": "SM38-original-leafwise-odd-fourier-diagnostic",
       "obligation_id": "W-ODD-NEG",
-      "role": "numerical-original-source-audit-noncertifying",
+      "role": "verification",
+      "scope_role": "numerical-original-source-audit-noncertifying",
       "argv": [
         "python3",
         "scripts/sm38_leafwise_original_odd_fourier_audit.py"
@@ -1184,7 +1190,8 @@
     {
       "id": "SM39-original-rational-left-arch-full-cap",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-full-negative-operator-upper-and-noncertifying-pilot",
+      "role": "verification",
+      "scope_role": "scoped-original-full-negative-operator-upper-and-noncertifying-pilot",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm39_rational_left_arch_cap.py"
@@ -1195,7 +1202,8 @@
     {
       "id": "SM40-original-endpoint-curvature-full-negative-cap",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-complete-signed-negative-operator-upper-and-noncertifying-selected-pilot",
+      "role": "verification",
+      "scope_role": "scoped-original-complete-signed-negative-operator-upper-and-noncertifying-selected-pilot",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm40_endpoint_curvature_negative_cap.py"
@@ -1206,7 +1214,8 @@
     {
       "id": "SM41-original-positive-high-log-tail",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-full-high-frequency-positive-operator-upper-with-noncertifying-low-pilot",
+      "role": "verification",
+      "scope_role": "scoped-original-full-high-frequency-positive-operator-upper-with-noncertifying-low-pilot",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm41_original_positive_log_tail.py"
@@ -1217,7 +1226,8 @@
     {
       "id": "SM42-original-full-25-physical-gram-low-gate",
       "obligation_id": "W-ODD-NEG",
-      "role": "certified-original-selected-physical-gram-and-coarse-crossing-safe-positive-low-operator-only",
+      "role": "verification",
+      "scope_role": "certified-original-selected-physical-gram-and-coarse-crossing-safe-positive-low-operator-only",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm42_original_physical_gram_and_low_gate.py"
@@ -1228,7 +1238,8 @@
     {
       "id": "SM43-original-positive-whole-real-source-window-cells",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-certified-original-positive-cell-multiplier-Loewner-error-not-full-stiffness",
+      "role": "verification",
+      "scope_role": "scoped-certified-original-positive-cell-multiplier-Loewner-error-not-full-stiffness",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm43_positive_cell_envelope.py"
@@ -1239,7 +1250,8 @@
     {
       "id": "SM44-original-supported-full-25-cell-gram",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-selected-source-full-rational-positive-cell-matrix-and-complete-Loewner-error-not-entire-low",
+      "role": "verification",
+      "scope_role": "scoped-original-selected-source-full-rational-positive-cell-matrix-and-complete-Loewner-error-not-entire-low",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm44_physical_fourier_cell_gram.py"
@@ -1250,7 +1262,8 @@
     {
       "id": "SM45-local-original-full-25-source-Fourier-derivative",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-certified-original-selected-25-source-positive-window-Loewner-sharpening",
+      "role": "verification",
+      "scope_role": "scoped-certified-original-selected-25-source-positive-window-Loewner-sharpening",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm45_local_source_fourier_derivative.py"
@@ -1261,7 +1274,8 @@
     {
       "id": "SM46-original-affine-physical-Fourier-source-cells",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-selected-full-physical-source-positive-window-rational-affine-matrix-Loewner-error",
+      "role": "verification",
+      "scope_role": "scoped-original-selected-full-physical-source-positive-window-rational-affine-matrix-Loewner-error",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm46_affine_physical_fourier_source.py"
@@ -1272,7 +1286,8 @@
     {
       "id": "SM47-original-full-low-25-source-one-sided-Jensen",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-entire-low-25-source-one-sided-positive-lower-rational-Jensen",
+      "role": "verification",
+      "scope_role": "scoped-original-entire-low-25-source-one-sided-positive-lower-rational-Jensen",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm47_original_full_low_jensen.py"
@@ -1283,7 +1298,8 @@
     {
       "id": "SM48-original-25source-signed-Jensen-reference-deficit",
       "obligation_id": "W-ODD-NEG",
-      "role": "original-positive-lower-reference-vs-original-signed-negative-lower-method-obstruction",
+      "role": "verification",
+      "scope_role": "original-positive-lower-reference-vs-original-signed-negative-lower-method-obstruction",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm48_original_signed_jensen_deficit.py"
@@ -1294,7 +1310,8 @@
     {
       "id": "SM49-true-original-25source-source-adaptive-positive-Jensen",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-real-signed-positive-physical-source-25x25-Jensen-lower-matrix",
+      "role": "verification",
+      "scope_role": "scoped-original-real-signed-positive-physical-source-25x25-Jensen-lower-matrix",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm49_adaptive_positive_jensen.py"
@@ -1305,7 +1322,8 @@
     {
       "id": "SM50-original-entire-negative-source2-upper",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-all-negative-frequency-one-source-upper-and-actual-signed-rayleigh",
+      "role": "verification",
+      "scope_role": "scoped-original-all-negative-frequency-one-source-upper-and-actual-signed-rayleigh",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm50_full_negative_source2_upper.py"
@@ -1316,7 +1334,8 @@
     {
       "id": "SM50A-original-entire-negative-source2-refined",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-true-entire-negative-frequency-one-original-source-affine-square-upper",
+      "role": "verification",
+      "scope_role": "scoped-true-entire-negative-frequency-one-original-source-affine-square-upper",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm50a_refined_full_negative_source2.py"
@@ -1327,7 +1346,8 @@
     {
       "id": "SM51-original-direct-signed-source2",
       "obligation_id": "W-ODD-NEG",
-      "role": "original-source2-true-signed-m-core-exhaustive-outer-negative-upper",
+      "role": "verification",
+      "scope_role": "original-source2-true-signed-m-core-exhaustive-outer-negative-upper",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm51_direct_signed_source2.py"
@@ -1338,7 +1358,8 @@
     {
       "id": "SM52-original-coupled-sin-xcos-signed-form",
       "obligation_id": "W-ODD-NEG",
-      "role": "original-signed-complete-2source-cross-offdiagonal-Lowner-positive-gate",
+      "role": "verification",
+      "scope_role": "original-signed-complete-2source-cross-offdiagonal-Lowner-positive-gate",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm52_original_coupled_sin_xcos.py"
@@ -1349,7 +1370,8 @@
     {
       "id": "SM52C-original-two-source-L2-coercivity",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-real-2D-physical-L2-coercivity-corollary",
+      "role": "verification",
+      "scope_role": "scoped-original-real-2D-physical-L2-coercivity-corollary",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm52c_original_L2_coercivity.py"
@@ -1360,7 +1382,8 @@
     {
       "id": "SM54-original-signed-pole-adaptive-disjoint-3source",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-entire-signed-3source-improved-pole-schur-lower",
+      "role": "verification",
+      "scope_role": "scoped-original-entire-signed-3source-improved-pole-schur-lower",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm54_original_pole_adaptive_Jensen.py"
@@ -1371,7 +1394,8 @@
     {
       "id": "SM55-original-hierarchical-signed-three-source-pole",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-real-signpositive-refinement-complete-coupled-3source-schur",
+      "role": "verification",
+      "scope_role": "scoped-original-real-signpositive-refinement-complete-coupled-3source-schur",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm55_hierarchical_signed_pole.py"
@@ -1382,7 +1406,8 @@
     {
       "id": "SM56-original-source-anisotropic-three-source-pole",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-true-signed-3source-componentwise-Loewner-error",
+      "role": "verification",
+      "scope_role": "scoped-original-true-signed-3source-componentwise-Loewner-error",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm56_original_anisotropic_error.py"
@@ -1393,7 +1418,8 @@
     {
       "id": "SM57-original-whole-negative-spectrum-all-25-source",
       "obligation_id": "W-ODD-NEG",
-      "role": "complete-original-25-physical-source-entire-negative-upper-signed-25x25-lower",
+      "role": "verification",
+      "scope_role": "complete-original-25-physical-source-entire-negative-upper-signed-25x25-lower",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm57_original_25source_negative_upper.py"
@@ -1404,7 +1430,8 @@
     {
       "id": "SM58-original-complete-coupled-negative-25source",
       "obligation_id": "W-ODD-NEG",
-      "role": "complete-original-25physical-source-true-negative-Fourier-coupled-matrix-upper",
+      "role": "verification",
+      "scope_role": "complete-original-25physical-source-true-negative-Fourier-coupled-matrix-upper",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm58_original_coupled_25negative.py"
@@ -1415,7 +1442,8 @@
     {
       "id": "SM59A-original-25D-source-rank-aware-index23",
       "obligation_id": "W-ODD-NEG",
-      "role": "actual-source-restricted-negative-index-ceiling-by-dimension",
+      "role": "verification",
+      "scope_role": "actual-source-restricted-negative-index-ceiling-by-dimension",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm59a_rank_aware_25source.py"
@@ -1426,7 +1454,8 @@
     {
       "id": "SM59B-original-25source-negative-leafwise-hybrid",
       "obligation_id": "W-ODD-NEG",
-      "role": "full-original-25source-negative-coupled-per-leaf-upper-optimization",
+      "role": "verification",
+      "scope_role": "full-original-25source-negative-coupled-per-leaf-upper-optimization",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm59b_original_25source_leafwise_upper.py"
@@ -1437,7 +1466,8 @@
     {
       "id": "SM60-original-23D-reference-lower-no-go",
       "obligation_id": "W-ODD-NEG",
-      "role": "exact-complement-inertia-scope-diagnostic-on-25source-signed-lower",
+      "role": "verification",
+      "scope_role": "exact-complement-inertia-scope-diagnostic-on-25source-signed-lower",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm60_23complement_lower_nogo.py"
@@ -1448,7 +1478,8 @@
     {
       "id": "SM61-original-actual-signed-23D-Schur-cross",
       "obligation_id": "W-ODD-NEG",
-      "role": "original-actual-signed-mixed-source-23D-Schur-Loewner-two-sided",
+      "role": "verification",
+      "scope_role": "original-actual-signed-mixed-source-23D-Schur-Loewner-two-sided",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm61_actual_23schur_two_sided.py"
@@ -1459,7 +1490,8 @@
     {
       "id": "SM62-original-full25-338-disjoint-positive-lift",
       "obligation_id": "W-ODD-NEG",
-      "role": "whole-original-25phys-source-positive-Fourier-mean-and-complement-lower",
+      "role": "verification",
+      "scope_role": "whole-original-25phys-source-positive-Fourier-mean-and-complement-lower",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm62_full25_338signed_positive.py"
@@ -1470,7 +1502,8 @@
     {
       "id": "SM63-direct-third-positive-original-supported-3source",
       "obligation_id": "W-ODD-NEG",
-      "role": "original-direct-full-signed-real-heterogeneous-3source-third-positive-plane",
+      "role": "verification",
+      "scope_role": "original-direct-full-signed-real-heterogeneous-3source-third-positive-plane",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm63_direct_third_source_odd.py"
@@ -1481,7 +1514,8 @@
     {
       "id": "SM65-original-actual-22D-anisotropic-signed-Schur",
       "obligation_id": "W-ODD-NEG",
-      "role": "actual-original-supported-source25-positive-anchor3-complement22-anisotropic-mixed-sign-Schur",
+      "role": "verification",
+      "scope_role": "actual-original-supported-source25-positive-anchor3-complement22-anisotropic-mixed-sign-Schur",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm65_original_22schur_anisotropic.py"
