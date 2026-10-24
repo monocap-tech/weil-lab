@@ -1,0 +1,26 @@
+name: W-ODD-NEG original 470 pole-aligned strong tail
+on:
+  push:
+    branches:
+      - research/odd-neg-full-source-pole-aligned-tail
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_odd470_pole_aligned_source_tail.py'
+      - 'notes/RPB108_ODD470_POLE_ALIGNED_HIGH_TAIL_20261024.md'
+      - '.github/workflows/w_odd_neg_470_pole_aligned_tail.yml'
+  workflow_dispatch:
+
+jobs:
+  exact-original-470-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay exact rational 470-source tail
+        run: PYTHONPATH=scripts python scripts/validate_rpb108_odd470_pole_aligned_source_tail.py
+      - name: Scope reminder
+        run: |
+          echo 'High-frequency positive-multiplier tail only; no physical full residual, original signed positivity, or RH.'
