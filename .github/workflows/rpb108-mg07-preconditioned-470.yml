@@ -9,6 +9,7 @@ on:
       - 'scripts/validate_rpb108_mg07_si29_feature_strong_tail.py'
       - 'scripts/validate_rpb108_mg07_pole_aligned_si29_tail.py'
       - 'scripts/validate_rpb108_mg07_augmented_young_ray_gate.py'
+      - 'scripts/scout_rpb108_mg07_augmented_true_si29_two_source.py'
       - 'notes/RPB108_MG07_SI29_AUGMENTED_TRIAL_20261023.md'
       - 'notes/RPB108_MG07_GLOBAL_NEGATIVE_SUP_20261023.md'
       - 'notes/RPB108_MG07_FULL470_REFERENCE_RESIDUAL_20261019.md'
@@ -60,6 +61,23 @@ jobs:
           assert d["even_Weil_CC27_RH"]=="OPEN"
           assert d["independent_Fourier_and_form_domain_audit"]=="OPEN"
           PY
+      - name: NONCERTIFYING original two-source SI29 augmented numerical scout
+        run: |
+          OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/scout_rpb108_mg07_augmented_true_si29_two_source.py --quick
+          python - <<'PY'
+          import json
+          x=json.load(open("artifacts/mg07_augmented_true_si29_ray_NONCERTIFYING.json"))
+          assert x["status"].startswith("NONCERTIFYING")
+          assert not x["claim_genuine_original_470_source_G_N_loewner"]
+          assert x["odd_even_Weil_CC27_RH"]=="OPEN"
+          assert x["source_count"]==470 and x["original_source_support"]==2
+          assert x["SI29_features_true"]==14
+          assert all(y["all_Fourier_approximations_uncontrolled"] for y in x["all_tests"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mg07-augmented-original-source-ray-NONCERTIFYING
+          path: artifacts/mg07_augmented_true_si29_ray_NONCERTIFYING.json
       - uses: actions/upload-artifact@v4
         with:
           name: mg07-full470-reference-residual-gate
