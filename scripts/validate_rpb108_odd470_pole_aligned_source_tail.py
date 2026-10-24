@@ -110,7 +110,7 @@ def original():
     # upper is additive in the new at-most-484-column trial basis.
     assert augmented["same_original_trial_span_exact"]
     combined={}
-    for p in (11,12,13,16):
+    for p in (11,12,13,14):
         k=str(2**p)
         a=bound_at(data,p)
         j=F(a["aligned_source_coefficient_tail_upper"])
