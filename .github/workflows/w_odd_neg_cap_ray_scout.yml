@@ -1,4 +1,4 @@
-name: W-ODD-NEG original physical cap-only ray scout (NUMERICAL ONLY)
+name: W-ODD-NEG SM40 physical cap-only ray scout (NUMERICAL ONLY)
 on:
   pull_request:
     paths:
@@ -36,6 +36,9 @@ jobs:
           assert a['canonical_obligation']=='W-ODD-NEG OPEN'
           assert a['original_total_sources']==470
           assert a['original_cap_columns']==890
+          assert a['chosen_original_complete_negative_cap']=='SM40_ENDPOINT_CURVATURE'
+          assert a['chosen_SM40_subcells']==3892
+          assert a['SM40_exact_890_pivots']==890
           assert not a['rigorous_original_ray_witness_certified']
           assert a['signed_odd_even_Weil_CC27_RH']=='OPEN'
           print('PASS noncertifying original physical ray discovery; W-ODD-NEG OPEN')
