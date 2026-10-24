@@ -40,6 +40,32 @@ def support_tail():
     assert mass==mneg+KAPPA*width==MASS_EXACT
     assert F(37)<mass<F(38)
     assert 0<TWOC<F(70751,10000)
+    # Every actual original SI10 positive-frequency leaf I=[l,r]
+    # bounds Kminus by its genuine h+kappa. Integrate the full
+    # Fourier 1/xi² decay on I∩[32,∞), not a global cutoff max:
+    # 2*∫_l^r (h+k)/xi² dxi = 2*(h+k)*(1/l-1/r).
+    # Factor TWO is for both physical frequency signs ONLY here.
+    weighted_reciprocal=F(0)
+    high_band_mass=F(0)
+    positive_half_high_leaves=0
+    high_clusters=0
+    for cluster in clusters:
+        cluster_has_high=False
+        for l,r,h in cluster:
+            if r<=CUTOFF:continue
+            start=max(l,CUTOFF)
+            assert 0<start<r<=F(896)
+            weight=h+KAPPA
+            assert weight>=KAPPA
+            portion=2*weight*(r-start)
+            high_band_mass+=portion
+            weighted_reciprocal+=2*weight*(1/start-1/r)
+            positive_half_high_leaves+=1
+            cluster_has_high=True
+        high_clusters+=int(cluster_has_high)
+    assert F(0)<high_band_mass<mass
+    assert F(0)<weighted_reciprocal<high_band_mass/CUTOFF**2
+    assert high_clusters>0 and positive_half_high_leaves>0
     actual=run()
     result=[]
     for ray in actual["rays"]:
@@ -47,10 +73,13 @@ def support_tail():
         beta=F(ray["all_frequency_cutoff_budgets"]["32"]["exact_upper_beta"])
         # BOTH frequency signs are already included in original
         # M=2*sum_leaf hwidth, so do NOT multiply by two again.
-        supported=mass*beta*beta/(CUTOFF*CUTOFF)
+        previous_support_mass=mass*beta*beta/(CUTOFF*CUTOFF)
+        supported=weighted_reciprocal*beta*beta
         uniform=UNIFORM_UP*2*beta*beta/CUTOFF
-        assert supported>0 and uniform/supported>F(20)
-        # Follows independently from the abstract mass<38 bound.
+        assert 0<supported<previous_support_mass<uniform
+        assert uniform/supported>F(20)
+        # Weighted reciprocal 1/xi² is integrated on actual
+        # original leaves and both frequency halves EXACTLY.
         assert supported<F(38)*beta*beta/F(1024)
         result.append({
           "ray":ray["purpose"],
@@ -58,6 +87,8 @@ def support_tail():
           "original_sinh_coefficient":ray["pole_coefficient"],
           "exact_beta_at_32":str(beta),
           "entire_true_original_signed_negative_high_tail_upper":str(supported),
+          "previous_whole_SI10_mass_over_cutoff_squared_upper":str(previous_support_mass),
+          "exact_leaf_reciprocal_improvement_factor":str(previous_support_mass/supported),
           "entire_true_original_signed_negative_high_tail_decimal":float(supported),
           "previous_uniform_SI06_high_tail_upper":str(uniform),
           "certified_improvement_factor":str(uniform/supported),
@@ -71,6 +102,11 @@ def support_tail():
       "original_SI10_positive_half_clusters":107,
       "original_SI10_full_unresolved_leaves":973,
       "SI10_complete_original_two_signs_negative_cap_mass":str(mass),
+      "SI10_true_two_signs_cap_mass_above_32":str(high_band_mass),
+      "SI10_actual_half_frequency_negative_leaves_above_32":positive_half_high_leaves,
+      "SI10_original_clusters_touching_high_band":high_clusters,
+      "SI10_exact_frequency_weighted_reciprocal_integral":str(weighted_reciprocal),
+      "reciprocal_leafwise_tail_rigorous":True,
       "mass_below_38":True,
       "SI06_uniform_tail_charge_replaced_by_true_support_mass":True,
       "reused_true_2_IBP_original_physical_source_bounds":True,
