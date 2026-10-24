@@ -79,6 +79,18 @@ def exact_augmented_model():
         return R,D,DB,Q,G0
     R0,D0,DB0,_,_=response(J)
     R,D,DB,Q,G0=response(U)
+    # Pole-aligned added feature g_tilde=g-alpha*s, with s in J:
+    # change of TRIAL coordinates only. The full original reference
+    # g, not g_tilde, is still orthogonal to the augmented residual.
+    alpha=F(3,5)
+    Ualigned=sub(U,mm(s,mat([[0,0,alpha]])))
+    assert Ualigned==mat([[1,0,-F(3,20)],[0,1,0],
+                          [0,0,1],[0,0,0]])
+    Raligned,Daligned,DBaligned,Qaligned,Galigned=response(Ualigned)
+    assert Raligned==R and Daligned==D and DBaligned==DB
+    assert Galigned==G0
+    assert gram(g,Raligned)==mat([[0,0]])
+    assert gram(s,Raligned)==mat([[0,0]])
     assert gram(g,R0)!=mat([[0,0]])
     assert gram(s,R0)==mat([[0,0]])
     assert DB0!=D0
@@ -92,6 +104,8 @@ def exact_augmented_model():
       augmented_source_count=2,augmented_trial_count=3,
       augmented_strong_residual_nonzero=True,
       augmented_Binv_residual_equals_kappa_inv_L2_exactly=True,
+      pole_aligned_feature_basis_preserves_full_Galerkin_response_exactly=True,
+      original_reference_g_still_orthogonal_after_pole_alignment=True,
       original_source_470_and_SI29_14_would_give_at_most_484_trial=True,
       tested_augmented_residual_gram=[[str(x) for x in row] for row in D],
       full_original_470_residual_computed=False,
