@@ -45,6 +45,14 @@ jobs:
           assert o['true_SI29_augmented_484D_method']=='NOT_TESTED'
           assert o['full_original_signed_odd_positive']=='OPEN'
           assert o['even_CC27_Weil_RH']=='OPEN'
+          assert o['true_original_signed_smooth_multiplier_identity'] == 'Astar-Kminus = m(D)-2ss*'
+          from fractions import Fraction as F
+          for ray in o['rays']:
+            if ray['true_original_signed_odd_ray_positive_if_strict']:
+              assert F(ray['true_original_signed_odd_energy_lower'])>0
+              assert F(ray['all_real_original_signed_high_tail_negative_budget'])>0
+          assert o['independent_true_original_signed_ray_positive_count'] == sum(
+            r['true_original_signed_odd_ray_positive_if_strict'] for r in o['rays'])
           assert o['entire_original_odd_operator_negative_witness'] is False
           assert o['one_original_strict_rational_witness_suffices']
           assert len(o['accepted_original_method_stopping_rays'])>=1
