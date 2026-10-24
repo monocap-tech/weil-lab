@@ -2,6 +2,9 @@
 
 **October 23, 2026. Active W-ODD-NEG OPEN. This is strictly a numerical feasibility investigation, not a certificate.**
 
+**October 23 correction:** The original SM10 cap (25-source sampled generalized maximum up to 10.863858) was superseded in the same original 890-column geometry by the exact certified SM37/SM39/SM40 caps. The last SM40 sampled maximum was ~1.003132 at 4096×4 and ~1.012044 at 8192×8, still above theta=51/56~0.910714. SM40 lowers the inherited 107-block cap while retaining all exact physical source columns and infinite Taylor remainder. This scout now targets **SM40**, not obsolete SM10. A failure witness against SM10 alone does not stop the best available negative-cap method.
+
+
 ## Historical evidence to exploit
 
 The successful SM36 original-source numerical pilot (PR #217, GitHub Actions run 39167260822) sampled the genuine 107-block/890-column SM10 negative cap on 25 actual original odd polynomial and sinh sources. Its three original grid configurations returned maximum generalized cap/Ritz ratios 10.688198, 10.688195 and 10.863858, while its sampled direct negative-energy ratios were 0.997101, 0.997101 and 0.999835. The whole odd sufficient threshold is 51/56 = 0.9107142857142857. These are float, not outward-rational enclosures.
