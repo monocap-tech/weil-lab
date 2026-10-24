@@ -80,9 +80,14 @@ def bounds():
           "true_continuous_abs_first_moment":str(moment),
           "variation_upper":str(V),"squared_strong_tail_upper":str(U)})
     assert len(tv)==len(tails)==14
-    assert 0 in degrees and 1 in degrees
+    assert degrees.count(1)==2 and degrees.count(0)==12
     block=sum(tails,F(0))
-    assert block>0
+    assert F(143)<block<F(144)
+    # Independent rational metadata audit: original 14 true
+    # c-values (not Simpson sample nodes) give conservative
+    # combined squared-log-action tail about 143.1645 at 2048.
+    # This bound proves finite strong domain but is FAR too
+    # coarse to certify the MG07 ~1e-9 relative residual gate.
     return {
       "status":"CONDITIONAL_EXACT_RATIONAL_TRUE_CONTINUOUS_SI29_FEATURE_STRONG_TAIL",
       "original_source_dim_unchanged":470,
@@ -96,6 +101,8 @@ def bounds():
       "original_true_feature_budgets":features,
       "full_14by14_squared_strong_tail_Loewner_scalar_upper":str(block),
       "full_14by14_squared_strong_tail_decimal_display":float(block),
+      "tail_bound_is_not_a_small_MG07_residual":True,
+      "14_true_features_versus_14_Simpson_proxies_distinguished":True,
       "high_frequency_action_multiplier_bound":"a_o(xi)<=17+ln|xi|",
       "original_SM41_and_SI29_Fourier_realization_audit":"OPEN",
       "actual_14by14_low_frequency_strong_Gram":"OPEN",
