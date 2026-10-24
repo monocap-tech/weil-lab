@@ -66,7 +66,7 @@ def run():
         norm_lo=F(anchor["complete_true_physical_norm_squared_interval"][0])
         assert norm_lo>0
         budgets={}
-        for power in (11,12,13,14):
+        for power in (5,6,7,8,9,10,11,12,13,14):
             cutoff=F(2**power)
             assert cutoff>2*CENTER
             ln_hi=power*LOG2_HI
@@ -78,9 +78,16 @@ def run():
             strong=2*beta**2*(A*A+2*A+2)/cutoff
             unaligned_form=2*naive_u**2*(A+1)/cutoff
             improvement=unaligned_form/form
-            assert improvement>F(7000)
+            assert improvement>F(500)
+            if power>=11: assert improvement>F(7000)
             relative_form=form/norm_lo
             relative_strong=strong/norm_lo
+            if power==5:
+                assert relative_form<F(11,10000)
+                if label.startswith('direct'):
+                    assert form<F(264000)
+                else:
+                    assert form<F(15700)
             if power==11:
                 assert relative_form<F(1,500000)
                 assert relative_strong<F(1,20000)
