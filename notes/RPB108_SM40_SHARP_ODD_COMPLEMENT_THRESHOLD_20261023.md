@@ -73,4 +73,4 @@ For the SAME canonical \(V=\operatorname{ran}J\), the raw-source cap-only gate n
 \]
 instead of \( (51/56)A_J-C_J^{\rm SM40}\succeq0\). The original MG07 complete gate uses the SAME \(\theta_{\rm eff}\) with one uniform \(t>0\); the residual covariance and positive-feature/pole Woodbury corrections remain required. A failed new cap-only ray would reject only this fixed Ritz/cap route, while the exact corrected signed Schur and alternative approximation schemes remain available.
 
-**Replay:** \`python scripts/validate_rpb108_sm40_sharp_odd_complement_threshold.py\` (the exact Fraction audit must pass before its numerical threshold is treated as an accepted certificate). No RH assertion.
+**Replay:** `python scripts/validate_rpb108_sm40_sharp_odd_complement_threshold.py` (the exact Fraction audit must pass before its numerical threshold is treated as an accepted certificate). No RH assertion.
