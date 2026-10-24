@@ -73,7 +73,49 @@ This is a **470-by-470 Loewner gate** assembled from at most 484 trial columns; 
 
 The new self-contained Fraction test, \`scripts/validate_rpb108_mg07_augmented_si29_trial.py\`, constructs a 4D physical SPD \(A\), positive pole-conditioned SI29-style \(B=I+gg^*-2ss^*\) with \(A\succeq B\), and two original source columns \(J\) containing \(s\). On the **old** trial \(V=\operatorname{ran}J\), the nonzero Galerkin residual is orthogonal to \(s\) but **not** to \(g\); the exact \(R^*B^{-1}R\) differs from \(R^*R\). On the enriched trial \(V=\operatorname{span}(J,g)\), the nonzero strong residual is orthogonal to both, and the equality \(R^*B^{-1}R=R^*R\) holds *entrywise* exactly. The test independently reconstructs \(R^*R\) from \(H_J,W,Q,S_T\). This is a finite rational structural regression, not a certificate of any original real 470-column Fourier moment.
 
-## 4. Acceptance and next original calculation
+## 4. Original strong-domain admission of all 14 SI29 features
+
+Unlike merely declaring \(G\) bounded as a reference synthesis, the original augmented Galerkin calculation needs each **real physical SI29 supported feature** \(g_j\) in \(\operatorname{Dom}A_\star\), so that the actual whole-source cross \(T^*A_\star^2T\) is finite.
+
+SI29 features are explicit rational finite composite-Simpson combinations of the original supported odd sine packets:
+\[
+ g_j(x)=1_{[-B,B]}(x)\sum_k w_{jk}\sin(2\pi\nu_{jk}x),
+ \qquad B=11/10.
+\]
+The exact rational \(w_{jk},\nu_{jk}\) are returned by the ORIGINAL SI29 \`feature_terms(c,r,degree)\`, including both the degree-zero positive Jensen means and degree-one first moments. No generic fictitious 14-dimensional source is substituted.
+
+Set \(\pi_{\rm lo}=333/106<\pi\) and \(\pi_{\rm up}=22/7>\pi\). The zero extension has variation controlled, including boundary jumps, by the explicit **rational** number
+\[
+ V_j:=2\sum_k|w_{jk}|+
+     4\pi_{\rm up}B\sum_k|w_{jk}|\,|\nu_{jk}|.
+\]
+Integration by parts against \(e^{-2\pi i\xi x}\), including its boundary terms, gives for every \(\xi\ne0\)
+\[
+ |\widehat{g_j}(\xi)|\le\frac{V_j}{2\pi|\xi|}.
+\]
+SM41's original entire high-frequency positive multiplier upper states \(a_o(\xi)\le17+\log|\xi|\) for \(|\xi|\ge1\). Thus, at \(\Lambda=2048\), with \(\log\Lambda<11(347/500)\), the genuine whole signed-frequency strong-action squared tail satisfies
+\[
+\begin{aligned}
+ \int_{|\xi|\ge\Lambda}
+ a_o(\xi)^2|\widehat{g_j}(\xi)|^2d\xi
+ &\le
+ \frac{V_j^2}{2\pi_{\rm lo}^2\Lambda}
+ \left[(17+\log\Lambda)^2+
+ 2(17+\log\Lambda)+2\right]\\
+ &<U_j\in\mathbb Q,
+\end{aligned}
+\]
+where the rational \(U_j\) substitutes the stated outward \(\log\Lambda,\pi_{\rm lo}\) bounds. For any 14 coefficients \(z\), Cauchy gives the **complete Loewner bound**
+\[
+ \boxed{\int_{|\xi|\ge\Lambda}
+ a_o(\xi)^2|\widehat{Gz}(\xi)|^2 d\xi
+ \le\left(\sum_{j=1}^{14}U_j\right)\|z\|_2^2.}
+\]
+In particular **all fourteen new trial vectors belong to the original \(A_o\) strong domain**, since their Fourier transforms are bounded at finite frequencies, and the original pole correction is bounded. This is an analytic fact conditional on the original signed Fourier realization and SM41 high-frequency multiplier bound, not a proof of the finite low-frequency action Gram.
+
+The companion exact script [SI29 strong-tail checker](../scripts/validate_rpb108_mg07_si29_feature_strong_tail.py) computes every \(V_j,U_j\) from the actual SI29 rational feature coefficients; it records the combined 14-by-14 upper without rounding down and explicitly keeps the original low-frequency and full 470-residual gates OPEN. It does **not** assume the tiny SM41 selected-25 tail also applies to all 14 reference features.
+
+## 5. Acceptance and next original calculation
 
 This branch needs exactly: (i) original physical SI29 feature/strong-domain registration into the same Hilbert carrier as \(J\); (ii) rigorous at-most-484 trial \(A_T,L,W,S_T,C_T\) enclosures, with the real pole and arch/log tail; (iii) one uniform \(t>0\) positive 470-source Loewner margin, not just selected ray checks. The geometry is deliberately *aligned with the already-certified SI29 reference*, instead of arbitrarily adding more MG source dimensions. An inverse/reference weighted residual is no longer a separate numerical calculation.
 
