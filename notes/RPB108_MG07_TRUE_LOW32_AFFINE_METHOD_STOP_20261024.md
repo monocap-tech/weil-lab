@@ -192,3 +192,24 @@ The 0.97 **method-stop** is deliberately separated from the \(1.00\) **true sign
 These are **float/quadrature**, neither original operator certificates nor guaranteed signs. The rigorous universally valid SI06 \(m\ge -M_0\) tail lower beyond \(32\) with the current two-IBP \(\beta_{32}\) costs approximately \(153{,}000\) and \(9{,}100\), respectively. This is larger than the observed signed margins; so the *optional* signed-positive outcome is plausibly INCONCLUSIVE even if the rigorous primary method-stop \(K_--0.97A_\star>0\) succeeds. A more discriminating signed-positive certificate would need its own sharper negative-tail localization or further \(32<\xi<128\) true signed integral work. The current NF **does not** authorize delaying the simpler method-obstruction test for that optional objective.
 
 The script reports each signed-ray result only when its own rational lower is positive and otherwise leaves its sign unknown. It must NEVER interpret failure of that lower bound as a negative original odd direction or an RH claim.
+
+
+## NF — Global affine minorants remove the ambiguous κ-cell loss
+
+The exact original signed scalar stopping weight satisfies, for every REAL m and 0<theta<1,
+\[
+w_\theta(m)=(\kappa-m)_+-\theta\max(\kappa,m)
+=\boxed{\max\{(1-\theta)\kappa-m,\ -\theta m\}}.
+\]
+This is the MAXIMUM of two globally affine real-frequency functions, so each is a valid pointwise LOWER bound to the true signed weight on every frequency, including any cell crossing m=kappa. Multiplication by the nonnegative true original sine/sinh Fourier square preserves both lower comparisons.
+
+For a crossing cell with certified endpoint-affine m_*(xi), complete signed interpolation error epsilon and true original Fourier packet linearization error E, the existing cell_affine_exact_lower formula can be applied independently to each affine branch
+\[
+w_-(m_*)=(1-\theta)\kappa-m_*,\quad
+w_+(m_*)=-\theta m_*.
+\]
+After the COMPLETE multiplier/physical Fourier error payment and exact integration of each branch, take the maximum of the two certified lower values and the old constant-weight kink lower. This cannot weaken the original bound and avoids inferring differentiability of the kink. The same full epsilon is paid for both branches, conservatively since each branch is at most 1-Lipschitz in m.
+
+An exact Fraction regression independently tests the identity on six rational multiplier values including m=kappa, and the genuinely crossing m(t)=kappa+t/50 for t in [-1/8,1/8] with constant physical Fourier value T=2. Its true exact integral is -761/800000; the best affine lower is -97/100000, with positive gap 3/160000. This was independently checked locally; it is NOT a 2240-cell original source-ray proof.
+
+The full source-only MG07/SM40 method-stop is certified only when one true original rational source ray has a strictly POSITIVE complete lower. This improvement does not establish any original odd negative direction, universal odd/even positivity, Weil bridge, or RH.
