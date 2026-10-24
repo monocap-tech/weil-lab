@@ -133,9 +133,47 @@ def main():
             for i,z in best["rational_nonzero_coefficients"]:
                 chosen[i]=int(z)
             break
+    # A direct-negative (not upper-cap) obstruction to theta is stronger:
+    # even an EXACT replacement of the SM40 cap by the true Kneg could
+    # not pass theta*AJ-Kneg>=0 on this fixed Ritz space. Explore only.
+    Klast=runs[-1][2]
+    direct_summaries=[]
+    chosen_direct=None
+    for k in (1,2,3):
+        best=None
+        for inds in combinations(range(dim),k):
+            z,high=candidate(inds,A,Klast)
+            grid_ratios=[ray_ratio(a,c,d,z)["direct_negative_A"]
+                         for a,c,d,_ in runs]
+            score=min(grid_ratios)
+            if best is None or score>best["lowest_grid_direct_A"]:
+                best=dict(support_count=k,source_indices=list(inds),
+                          rational_nonzero_coefficients=[
+                              [int(i),str(z[i])] for i in inds if z[i]],
+                          highest_resolution_direct_A=high,
+                          lowest_grid_direct_A=score,
+                          grid_direct_A=grid_ratios)
+        direct_summaries.append(best)
+        print("DIRECT SUPPORT",k,"best min direct/A",
+              best["lowest_grid_direct_A"],"indices",
+              best["source_indices"],flush=True)
+        if chosen_direct is None and best["lowest_grid_direct_A"]>THETA+0.02:
+            chosen_direct=[0]*dim
+            for i,z in best["rational_nonzero_coefficients"]:
+                chosen_direct[i]=int(z)
+            break
+    direct_eigs,direct_vecs=linalg.eigh(Klast,A)
+    direct_full=integer_ray(direct_vecs[:,-1],dim)
     eig,vecs=linalg.eigh(C,A)
     full=integer_ray(vecs[:,-1],dim)
     if chosen is None:chosen=list(full)
+    cap_chosen=list(chosen)
+    # Prefer the stronger sampled DIRECT obstruction candidate when
+    # it is supported by all sampled grids; this still proves NOTHING.
+    selected_reason="SM40_CAP_ONLY_NUMERICAL_CANDIDATE"
+    if chosen_direct is not None:
+        chosen=list(chosen_direct)
+        selected_reason="TRUE_KNEG_DIRECT_NUMERICAL_CANDIDATE"
     replays=[dict(grid=m,ray=ray_ratio(a,c,d,chosen))
              for a,c,d,m in runs]
     result=dict(status="NUMERICAL_DISCOVERY_ONLY_NOT_PROOF",
@@ -148,6 +186,15 @@ def main():
                 theta=str(CLEAN_THRESHOLD),pilot_dim=dim,
                 physical_sources=descriptions,
                 minimum_support_search=summaries,
+                minimum_support_DIRECT_negative_search=direct_summaries,
+                selected_candidate_reason=selected_reason,
+                sampled_full_pilot_direct_negative_generalized_max=float(direct_eigs[-1]),
+                rationalized_direct_full_grid_ratios=[
+                    ray_ratio(a,c,d,direct_full)["direct_negative_A"]
+                    for a,c,d,_ in runs],
+                cap_candidate_even_if_direct_preferred=[
+                    dict(source=descriptions[i],coefficient=str(z))
+                    for i,z in enumerate(cap_chosen) if z],
                 sampled_full_pilot_generalized_max=float(eig[-1]),
                 sampled_rationalized_full_pilot_ratios=[
                     ray_ratio(a,c,d,full)["cap_A"] for a,c,d,_ in runs],
@@ -158,6 +205,8 @@ def main():
                 complete_frequency_Astar_bound_certified=False,
                 full_890_cap_energy_lower_certified=False,
                 rigorous_original_ray_witness_certified=False,
+                sampled_DIRECT_Knegative_not_full_operator_certificate=True,
+                all_470_original_full_operator_sign_unproved=True,
                 signed_odd_even_Weil_CC27_RH="OPEN")
     target=ROOT/args.output
     target.parent.mkdir(parents=True,exist_ok=True)
