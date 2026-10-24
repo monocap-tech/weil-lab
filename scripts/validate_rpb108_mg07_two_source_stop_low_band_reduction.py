@@ -34,8 +34,13 @@ def exact_reduction():
         hi=F(t["all_frequency_cutoff_budgets"]["32"]["Ao_positive_form_tail_upper"])
         hi_2048=F(t["all_frequency_cutoff_budgets"]["2048"]["Ao_positive_form_tail_upper"])
         assert hi>hi_2048
-        payment_lo=F(physical[
-            "genuine_Astar_pole_subtraction_2overlap_squared_interval"][0])
+        pole_interval=physical[
+            "genuine_Astar_pole_subtraction_2overlap_squared_interval"]
+        payment_lo=F(pole_interval[0])
+        payment_hi=F(pole_interval[1])
+        beta_at_32=F(t["all_frequency_cutoff_budgets"]["32"][
+            "exact_upper_beta"])
+        assert payment_lo<=payment_hi and beta_at_32>0
         norm_lo=F(physical["complete_true_physical_norm_squared_interval"][0])
         assert payment_lo>hi>0
         assert hi/norm_lo<F(11,10000)
@@ -55,6 +60,8 @@ def exact_reduction():
           "certified_positive_high_tail_upper_cutoff_2048":str(hi_2048),
           "low_band_frequency_interval":"0..32",
           "certified_pole_payment_lower":str(payment_lo),
+          "certified_pole_payment_upper":str(payment_hi),
+          "original_odd_Fourier_beta_at_32":str(beta_at_32),
           "certified_strict_low_band_difference_threshold":str(rhs),
           "required_original_low_band_comparison":
             "Kminus_low_LO-(97/100)*Ao_low_HI > threshold",
