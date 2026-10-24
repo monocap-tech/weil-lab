@@ -115,7 +115,53 @@ In particular **all fourteen new trial vectors belong to the original \(A_o\) st
 
 The companion exact script [SI29 strong-tail checker](../scripts/validate_rpb108_mg07_si29_feature_strong_tail.py) computes every \(V_j,U_j\) from the actual SI29 rational feature coefficients; it records the combined 14-by-14 upper without rounding down and explicitly keeps the original low-frequency and full 470-residual gates OPEN. It does **not** assume the tiny SM41 selected-25 tail also applies to all 14 reference features.
 
-## 5. Acceptance and next original calculation
+## 5. Exact rational Young-parameter fail-fast test and the very demanding residual budget
+
+The augmented reference simplification is structurally clean, but not automatically practical. The full MG07 bound pays
+\[
+ cR^*R,\quad c=\frac{H_\infty}{\kappa_\star\kappa}
+ =\frac{871887/70000}{(33621/10^9)(1/1000)}
+ \approx3.70468712\times10^8
+\]
+*before* the \(1+t^{-1}\) Young factor. It costs \(\approx7.40937424\times10^8\) at \(t=1\).
+
+On **any fixed original rational 470-source coefficient ray** \(v\), write
+\[
+ n=v^*Z^*K_{\rm cap}^{\rm SM40}Zv,\quad
+ d=cv^*R^*Rv,\quad g=v^*Z^*A_\star Zv>0,
+ \qquad n,d\ge0.
+\]
+The actual **single uniform \(t>0\)** Loewner gate would imply
+\[
+ (1+t)n+(1+t^{-1})d\le\theta g.
+\]
+Even allowing each ray its own *optimal* \(t\), its infimum is
+\[
+ \boxed{\inf_{t>0}\{(1+t)n+(1+t^{-1})d\}
+       =(\sqrt n+\sqrt d)^2.}
+\]
+Thus \((\sqrt n+\sqrt d)^2>\theta g\) on ONE rigorously enclosed original ray rejects this specific **augmented-trial + selected-cap + chosen-\(\theta\)** sufficient scheme for **every possible global Young parameter**, despite not showing a negative original signed direction. When \(n,d>0\), the minimizing raywise parameter is \(t=\sqrt{d/n}\), which generally depends on the ray: even if every ray can pass with its own \(t\), a single uniform \(t\) still needs whole-matrix acceptance.
+
+A rational comparison needs no square-root evaluation. For the strict raywise reserve set
+\[
+ \Delta:=\theta g-n-d .
+\]
+Then a finite \(t>0\) with strict raywise margin exists **iff**
+\[
+ \boxed{\Delta>0\quad\text{and}\quad
+ \Delta^2>4nd.}
+\]
+Failure is an exact *method-specific* stopping criterion for the strict reserve. The new standalone [exact Young feasibility checker](../scripts/validate_rpb108_mg07_augmented_young_ray_gate.py) includes the cases where one or both terms vanish and a minimizing \(t\) is only approached at a boundary, plus adversarial rational tests; it does not invent real 470-source ray energies.
+
+Independently, the nonnegative cap term and \(1+t^{-1}>1\) force a very strict **necessary residual-only** inequality for that particular sufficient gate,
+\[
+ R^*R \prec \frac{\theta\,\kappa_\star\kappa}{H_\infty}\,G_0
+\]
+(at \(\theta=51/56\) the right-hand coefficient is \(2.4583\times10^{-9}\); at the conservative kappa-paid \(\theta=0.933563906775...\), \(2.5200\times10^{-9}\)). These are **relative residual Gram** ceilings, not raw \(\|R\|\) alone, and not necessary for original odd positivity. They show why the new architecture should be tested on a few exact physical source rays before investing in a full 484-trial action/strong-moment interval computation.
+
+The first effective *computational* gate should report \(g,n,d,\Delta,\Delta^2-4nd\) together, using original SI29-augmented \(Z\), original SM40 cap and the complete original high-log strong action. This separates a genuine method stopping ray from an inefficient choice \(t=1\).
+
+## 6. Acceptance and next original calculation
 
 This branch needs exactly: (i) original physical SI29 feature/strong-domain registration into the same Hilbert carrier as \(J\); (ii) rigorous at-most-484 trial \(A_T,L,W,S_T,C_T\) enclosures, with the real pole and arch/log tail; (iii) one uniform \(t>0\) positive 470-source Loewner margin, not just selected ray checks. The geometry is deliberately *aligned with the already-certified SI29 reference*, instead of arbitrarily adding more MG source dimensions. An inverse/reference weighted residual is no longer a separate numerical calculation.
 
