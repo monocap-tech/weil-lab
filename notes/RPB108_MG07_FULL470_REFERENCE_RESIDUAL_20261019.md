@@ -1,5 +1,8 @@
 # MG07 — Full 470-source reference-weighted Galerkin residual
 
+**October 23, 2026 correction:** Use the full kappa-paid original negative norm Hminus=82.77732945625 (or the certified safe Hminus<83), NOT the earlier underpaid 82.71043570625. SM35 and MG07 source geometry are amended accordingly; this does not certify a completed 470D residual. See [SM33 negative-envelope repair](RPB108_SM33_KAPPA_LEAKAGE_REPAIR_20261023.md).
+
+
 **Status: conditional complete-operator sufficient gate, not a positivity certificate. W-ODD-NEG, even, Weil, CC27 and RH remain OPEN.**
 
 Let the genuine original positive odd operator be A = Ao - 2|s><s|. SI29/SM19 give the physical 14-feature lower B14 = C14 - 2|s><s| with A >= B14 >= kstar I, kstar=33621/10^9. SM35's complete original Galerkin residual is R=J-AZ, with Z*R=0, and its full negative K satisfies 0<=K<=H I.
