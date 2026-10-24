@@ -3,6 +3,8 @@
 **October 23, 2026 correction:** Use the full kappa-paid original negative norm Hminus=82.77732945625 (or the certified safe Hminus<83), NOT the earlier underpaid 82.71043570625. SM35 and MG07 source geometry are amended accordingly; this does not certify a completed 470D residual. See [SM33 negative-envelope repair](RPB108_SM33_KAPPA_LEAKAGE_REPAIR_20261023.md).
 
 
+**October 23, 2026 strengthening:** MG07 no longer needs the coarse full-original negative mass bound H=82.77732945625. SI06's global all-real digamma minimum and original seven prime-power coefficient sum prove a strictly uniform multiplier/operator ceiling Hinf=871887/70000≈12.455529. The MG07 code now uses THIS Hinf (with independent exact Fraction verification) in Hinf/kstar*R*B14^-1*R, reducing the reference-weighted residual charge by >6.64× without changing any source/cap dimension. This does not evaluate R or the original 470×470 gate; original physical-domain review remains open. See [global negative sup derivation](RPB108_MG07_GLOBAL_NEGATIVE_SUP_20261023.md).
+
 **Status: conditional complete-operator sufficient gate, not a positivity certificate. W-ODD-NEG, even, Weil, CC27 and RH remain OPEN.**
 
 Let the genuine original positive odd operator be A = Ao - 2|s><s|. SI29/SM19 give the physical 14-feature lower B14 = C14 - 2|s><s| with A >= B14 >= kstar I, kstar=33621/10^9. SM35's complete original Galerkin residual is R=J-AZ, with Z*R=0, and its full negative K satisfies 0<=K<=H I.
