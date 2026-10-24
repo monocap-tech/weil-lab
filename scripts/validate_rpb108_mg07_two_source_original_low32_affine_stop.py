@@ -186,7 +186,14 @@ def exact_scalar(quick=False):
     out=[F(0)]*len(RAYS)
     total=0;stable=0;crossings=0
     worst_eps=F(0);max_source_error=F(0)
+    # Preserve exact five-region diagnostics even if strict method
+    # STOP does not pass. Nothing below is a sampled sign estimate.
+    band_ranges=((F(0),F(1)),(F(1),F(4)),(F(4),F(8)),
+                 (F(8),F(16)),(F(16),F(32)))
+    band_sums=[[F(0)]*len(RAYS) for _ in band_ranges]
     for left,right in cells(quick):
+        band_index=next(i for i,(lo,hi) in enumerate(band_ranges)
+                        if lo<=left and right<=hi)
         h=right-left;mid=(left+right)/2
         ma=signed_m_at(left); mb=signed_m_at(right)
         mal=(ma[0]+ma[1])/2;mbl=(mb[0]+mb[1])/2
@@ -236,8 +243,12 @@ def exact_scalar(quick=False):
                 highT=supT+E
                 source_sq=lowT*lowT if weight_floor>=0 else highT*highT
                 contribution=h*weight_floor*source_sq
-            out[index]+=below(2*contribution,10**6)
+            certified_cell=below(2*contribution,10**6)
+            out[index]+=certified_cell
+            band_sums[band_index][index]+=certified_cell
         total+=1
+    assert all(sum(band_sums[k][i] for k in range(len(band_ranges)))==out[i]
+               for i in range(len(RAYS)))
     stop=[]
     for (a,b,label),r,v in zip(RAYS,reduction["rays"],out):
         assert r["ray"]==label
@@ -284,6 +295,12 @@ def exact_scalar(quick=False):
        "kink_ambiguous_cells":crossings,
        "max_multiplier_affine_error":str(worst_eps),
        "max_physical_fourier_affine_error":str(max_source_error),
+       "exact_original_certified_low32_lower_by_frequency_region":[
+         {"region":str(lo)+".."+str(hi),
+          "ray_lower_contributions":{RAYS[i][2]:str(band_sums[k][i])
+                                   for i in range(len(RAYS))}}
+         for k,(lo,hi) in enumerate(band_ranges)
+       ],
        "accepted_original_method_stopping_rays":accepted,
        "one_original_strict_rational_witness_suffices":True,
        "all_rays_accepted":len(accepted)==len(stop) and not quick,
