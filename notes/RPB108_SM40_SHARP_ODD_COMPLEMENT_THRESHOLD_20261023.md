@@ -1,5 +1,8 @@
 # W-ODD-NEG — The missing complement-floor improvement and refined SM40 leakage
 
+**Mandatory correction (October 23):** the original SM33 h-only leakage failed to pay the +κ part of the operator Kminus=(κ-m)+. This note and its validator now use corrected SM33 and min(h_SI10+κ,w_SM40). See [SM33 leakage repair](RPB108_SM33_KAPPA_LEAKAGE_REPAIR_20261023.md). Historical underpaid SM33 decimal measurements are not certified whole-Kminus values.
+
+
 **October 23, 2026.** Source dimension remains the genuine original \(469+1=470\). The signed odd, even, Weil/CC27 and RH obligations remain **OPEN**. Independent functional-analytic/domain identification is not waived.
 
 ## 1. An immediate strict improvement to SM34
@@ -47,14 +50,14 @@ with cluster-specific exact b9 Taylor errors \(e_j<2^{-9}\). But the *same physi
 
 On each such subcell use the pointwise minimum
 \[
- h_{\rm eff}(\xi)=\min(h_{\rm SI10}(\xi),w_{40}(\xi)).
+ h_{\rm eff}(\xi)=\min(h_{\rm SI10}(\xi)+\kappa,w_{40}(\xi)).
 \]
 Both operands are separately verified full-real upper bounds for \((\kappa-m(\xi))_+\); the minimum remains a valid whole-real upper on the SAME original true \(K_-\). Keep every mirrored negative-frequency contribution. For each original cluster define
 \[
  M_j^{\rm eff}=2\int_{J_j}h_{\rm eff}(\xi)\,d\xi,\quad
  \varepsilon_{\rm eff}=2B\sum_jM_j^{\rm eff}e_j^2.
 \]
-Then \(0\preceq Q_0K_-Q_0\preceq\varepsilon_{\rm eff}I_F\) for the original entire \(F\), **and** \(\varepsilon_{\rm eff}\le\varepsilon_{\rm SM33}<1/15000\), while the same true global \(K_-\) norm improves to \(2B\sum_jM_j^{\rm eff}\). No old cap has been silently substituted into a new Galerkin matrix.
+Then \(0\preceq Q_0K_-Q_0\preceq\varepsilon_{\rm eff}I_F\) for the original entire \(F\), **and** \(\varepsilon_{\rm eff}\le\varepsilon_{\rm SM33,\,repaired}<1/15000\), while the same true global \(K_-\) norm improves to \(2B\sum_jM_j^{\rm eff}\). No old cap has been silently substituted into a new Galerkin matrix.
 
 This directly yields the stronger exact source sufficiency threshold
 \[
