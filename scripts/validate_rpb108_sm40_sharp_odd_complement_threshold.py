@@ -40,6 +40,9 @@ def new_threshold():
     assert len(old_leaves)==len(new40)==len(prev39)==107
     assert old["source_count"]==470 and sum(orders)==890
     assert old["leaves"]==973
+    assert old['legacy_h_only_mass']==mass_old
+    assert old['mass']==mass_old+KAPPA*W
+    assert old['neg_global_norm']==2*B*(mass_old+KAPPA*W)
     assert stats["all_original_signed_subcells"]==3892
     assert stats["original_exact_SPD_pivots"]==890
     assert KAPPA==F(1,1000) and B==F(11,10)
@@ -51,6 +54,7 @@ def new_threshold():
     count_sources=1
     strict_weight=0
     strictly_refined_clusters=0
+    cap_order_strictly_greater_than_b9=0
     for parent,new,cap_order_24 in zip(old_leaves,new40,orders):
         # SM40 is exactly a FOUR-WAY refinement of each one of the
         # 973 original SM10 physical negative-frequency leaves.
@@ -63,6 +67,7 @@ def new_threshold():
         # b24: 890 negative-cap source columns and moment covariance.
         assert p<=cap_order_24 and F(0)<e<F(1,2**BITS)
         assert cap_order_24==taylor_order(end-start,24)[0]
+        cap_order_strictly_greater_than_b9+=int(cap_order_24>p)
         count_sources+=p
         local_mass=F(0)
         old_local=F(0)
@@ -88,6 +93,7 @@ def new_threshold():
         mass_eff+=local_mass
         weighted_eff+=local_mass*e*e
     assert count_sources==470 and sum(orders)==890 and num==3892
+    assert cap_order_strictly_greater_than_b9>0
     assert strict_weight>0 and strictly_refined_clusters>0
     assert mass_eff<=mass_old+KAPPA*W
     eps_eff=2*B*weighted_eff
@@ -111,6 +117,7 @@ def new_threshold():
        "original_negative_clusters":107,
        "original_signed_real_subcells":num,
        "original_SM40_cap_columns":890,
+       "b9_and_b24_orders_differ_in_clusters":cap_order_strictly_greater_than_b9,
        "new_pointwise_effective_negative_mass":str(mass_eff),
        "old_SM33_negative_mass":str(mass_old),
        "refined_real_subcells_strict_smaller":strict_weight,
