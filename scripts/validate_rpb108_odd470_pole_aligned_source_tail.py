@@ -103,13 +103,27 @@ def original():
     data=records([(c,k) for c,k,_ in original_sources])
     assert all(c==c0 and k==k0 and a==a0 for
                (c,k,a,_),(c0,k0,a0) in zip(data,original_sources))
+    from validate_rpb108_mg07_pole_aligned_si29_tail import exact_aligned_tails
+    augmented=exact_aligned_tails()
+    # Each of the 14 true continuous SI29 features is separately aligned by
+    # the SAME existing pole source. Their coordinate Loewner high-tail
+    # upper is additive in the new at-most-484-column trial basis.
+    assert augmented["same_original_trial_span_exact"]
+    combined={}
+    for p in (11,12,13,16):
+        k=str(2**p)
+        a=bound_at(data,p)
+        j=F(a["aligned_source_coefficient_tail_upper"])
+        si29=F(augmented["cutoff_tail_upper_exact"][k])
+        combined[k]=str(j+si29)
     out={
+      "augmented_484_basis_high_tail_upper":combined,
       "status":"EXACT_CONDITIONAL_ORIGINAL_470_POLE_ALIGNED_STRONG_TAIL_ONLY",
       "original_exceptional_source_dimension":470,
       "SI29_augmented_trial_dimension_upper":484,
       "original_source_space_UNCHANGED":True,
       "endpoint_alignment_coefficients_are_EXACT_real_not_rationalized":True,
-      "whole_original_high_frequency_and_pole_paid":True,
+      "positive_multiplier_high_tail_and_source_pole_envelope_paid":True,
       "original_SI10_cluster_geometry_replayed":True,
       "rational_regression":regression(),
       "cutoffs":{str(2**p):bound_at(data,p) for p in (11,12,13,16,20,24)},
