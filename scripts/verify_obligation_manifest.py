@@ -20,6 +20,16 @@ VALID_METHODS = {"SI", "SM", "RC", "LF", "INTEGRATION"}
 VALID_STATUSES = {"open", "closed"}
 VALID_ROLES = {"retained-prerequisite", "frontier-candidate", "verification"}
 VALID_CADENCES = {"per-update", "on-demand"}
+# Exact historical file names must remain executable. Preserve a
+# restricted scripts/validation-path grammar, permitting case-sensitive
+# SM52C/SM54 names, plus ONLY the two existing pre-prefix legacy pilots.
+CHECK_PATH_PATTERN = re.compile(
+    r"scripts/validate_rpb108_(?:sm|si|rc)[A-Za-z0-9_]*\.py"
+)
+LEGACY_CHECK_PATHS = {
+    "scripts/sm36_original_odd_numerical_pilot.py",
+    "scripts/sm38_leafwise_original_odd_fourier_audit.py",
+}
 
 
 class GovernanceError(ValueError):
@@ -141,7 +151,7 @@ def verify(data: dict, root: Path = ROOT) -> tuple[dict, list[dict]]:
         argv = check.get("argv")
         if (not isinstance(argv, list) or len(argv) != 2 or argv[0] != "python3"
                 or not isinstance(argv[1], str)
-                or not re.fullmatch(r"scripts/validate_rpb108_(?:sm|si|rc)[a-z0-9_]*\.py", argv[1])
+                or not (CHECK_PATH_PATTERN.fullmatch(argv[1]) or argv[1] in LEGACY_CHECK_PATHS)
                 or not (root / argv[1]).is_file()):
             fail(f"{cid}: unsafe or missing validation command")
     if not any(c["cadence"] == "per-update" for c in checks):
