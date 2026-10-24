@@ -131,6 +131,13 @@ For the complete added 14-dimensional trial block, Cauchy–Schwarz gives the ex
 \]
 The **repaired checker** [true SI29 feature strong-tail replay](../scripts/validate_rpb108_mg07_si29_feature_strong_tail.py) now imports only the actual SI29 \(c,r,d,\mathrm{degree}\) metadata, derives exact continuous masses \(1\) and \(3/2\), and reconstructs rational \(V_j,U_j\) without \`feature_terms\`. It deliberately reports the whole 14-by-14 low-frequency action Gram and augmented original 484-by-470 residual as OPEN.
 
+**Independent exact-rational budget check.** Reconstructing all 14 `SI29.FEATURES` center/degree pairs, including precisely two first moments, gives
+\[
+ \boxed{143 < \sum_{j=1}^{14} U_j <144,\qquad
+       \sum_j U_j\approx143.16449697594868}
+\]
+at \(\Lambda=2048\) with the stated conservative variation estimate. This is a **finite domain and whole-tail Loewner certificate only**. Its magnitude is far too coarse to demonstrate the \(10^{-9}\)-scale relative residual margin needed by the existing MG07 sufficient gate. A rigorous low-frequency full matrix and much more precise projected cancellation are still indispensable.
+
 No Simpson approximation is used to define an actual augmented trial vector. An independent review of the inherited SM41 original whole-frequency \(A_o\) realization is still necessary before promoting the strong-domain statement to a completed original-operator certificate.
 
 ## 5. Exact rational Young-parameter fail-fast test and the very demanding residual budget
