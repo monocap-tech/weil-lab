@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact original two-ray method-stop reduction: low-frequency ONLY.
+"""Exact original two-ray method-stop reduction: low-frequency ONLY, with main low band [0,32].
 
 For original J-only MG07 Ritz, the cap-only necessary test is
   C_SM40(f) <= theta*Astar(f).
@@ -11,7 +11,7 @@ would REFUTE ONLY the fixed J-only Ritz + SM40 sufficient method.
 This script proves the full algebra and imports the actual exact
 original physical pole and original high-log two-IBP tail certificates;
 it does NOT invent the missing two LOW integral bounds. It outputs
-the precise exact Fraction low-band required threshold:
+the precise exact Fraction low-band required threshold on [0,32]:
  Kminus_low - 97/100*Ao_low > 97/100*(T_high - PolePayment_LO).
 No unproven m-frequency quadrature is accepted as a certificate.
 """
@@ -31,12 +31,15 @@ def exact_reduction():
         assert t["purpose"]==physical["purpose"]
         assert t["sine_coefficient"]==physical["rational_sine_coefficient"]
         assert t["pole_coefficient"]==physical["rational_pole_coefficient"]
-        hi=F(t["all_frequency_cutoff_budgets"]["2048"]["Ao_positive_form_tail_upper"])
+        hi=F(t["all_frequency_cutoff_budgets"]["32"]["Ao_positive_form_tail_upper"])
+        hi_2048=F(t["all_frequency_cutoff_budgets"]["2048"]["Ao_positive_form_tail_upper"])
+        assert hi>hi_2048
         payment_lo=F(physical[
             "genuine_Astar_pole_subtraction_2overlap_squared_interval"][0])
         norm_lo=F(physical["complete_true_physical_norm_squared_interval"][0])
         assert payment_lo>hi>0
-        assert hi/norm_lo<F(1,500000)
+        assert hi/norm_lo<F(11,10000)
+        assert hi_2048/norm_lo<F(1,500000)
         rhs=THETA*(hi-payment_lo)
         if t["purpose"].startswith("direct"):
             assert F(-60000000)<rhs<F(-59000000)
@@ -49,6 +52,8 @@ def exact_reduction():
           "sinh_coefficient":t["pole_coefficient"],
           "rational_stop_comparison_theta":str(THETA),
           "certified_positive_high_tail_upper":str(hi),
+          "certified_positive_high_tail_upper_cutoff_2048":str(hi_2048),
+          "low_band_frequency_interval":"0..32",
           "certified_pole_payment_lower":str(payment_lo),
           "certified_strict_low_band_difference_threshold":str(rhs),
           "required_original_low_band_comparison":
@@ -63,7 +68,8 @@ def exact_reduction():
       "original_470_exceptional_source_map_unchanged":True,
       "SM40_theta_exact_known_strictly_less_than_97_over_100":True,
       "theta_comparison_97_over_100_is_stronger_than_original_SM40_theta":True,
-      "original_real_frequency_cutoff":2048,
+      "original_real_frequency_cutoff":32,
+      "old_high_cutoff_2048_remains_a_stronger_tail_regression":True,
       "a_o_high_frequency_operator_tail_proved_exact":True,
       "original_rank_one_odd_pole_payment_proved_exact":True,
       "all_low_frequency_integral_bounds":"OPEN",
