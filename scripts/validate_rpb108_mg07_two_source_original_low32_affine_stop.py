@@ -250,6 +250,11 @@ def regression_affine_signed_quadratic():
     independent=(w0*v*v*h+
                  (w0*d*d+2*w1*v*d)*h**3/12)
     assert analytic==independent
+    # Canonical pointwise ORIGINAL signed decomposition, including
+    # κ exactly at the kink; the direct signed diagnostic is not a
+    # substitute source or an assumed Kminus/Astar commutator.
+    for m in (F(-13),F(-1),F(0),KAPPA,F(1,2),F(9)):
+        assert max(KAPPA,m)-max(F(0),KAPPA-m)==m
     for theta in (F(97,100),F(51,56)):
         k=F(1,1000)
         def weight(m):
