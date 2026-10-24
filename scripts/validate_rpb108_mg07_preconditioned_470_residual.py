@@ -11,6 +11,7 @@ from validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure import (
 from validate_rpb108_sm17_compact_spectral_gate import KAPPA_STAR
 from validate_rpb108_sm34_positive_energy_dual_schur import CLEAN_THRESHOLD
 from validate_rpb108_si29_pole_threshold_three_bands import FEATURES
+from validate_rpb108_mg07_global_negative_sup import exact_bound
 
 def diag(xs):
  return [[F(xs[i]) if i==j else F(0) for j in range(len(xs))] for i in range(len(xs))]
@@ -97,10 +98,15 @@ def main():
  assert g["source_dim"]==470 and g["cap_columns"]==890
  assert len(FEATURES)==14
  k=F(1,1000);ks=KAPPA_STAR;theta=CLEAN_THRESHOLD
- H=g["full_negative_norm"]
+ Hmass=g["full_negative_norm"]
+ global_negative=exact_bound()
+ H=F(global_negative["original_negative_norm_upper"])
+ assert H==F(871887,70000) and H<Hmass
  assert ks==F(33621,10**9) and theta==F(51,56)
  assert k*(1-F(966379,10**6))==ks
- assert F(80)<H<F(83)
+ assert F(12)<H<F(13)
+ assert Hmass==F(13244372713,160000000)
+ assert Hmass/H>F(6)
  old=2*H/ks**2;new=2*H/ks
  orthogonal=new/k
  assert orthogonal/old==ks/k==F(33621,10**6)
@@ -114,6 +120,10 @@ def main():
   "original_kappa_star":str(ks),
   "whole_odd_sufficient_theta":str(theta),
   "original_full_negative_norm_upper":str(H),
+  "original_global_negative_norm_method":"SI06 whole-real digamma/prime supremum",
+  "prior_repaired_mass_based_norm_upper":str(Hmass),
+  "new_global_negative_norm_improvement_factor":str(Hmass/H),
+  "t1_prior_repaired_mass_reference_residual_coefficient":str(2*Hmass/ks),
   "old_t1_scalar_residual_coefficient":str(old),
   "new_t1_operator_reference_coefficient":str(new),
   "feature_and_pole_orthogonal_coefficient":str(orthogonal),
