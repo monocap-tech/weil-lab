@@ -2,6 +2,9 @@
 
 > **Complete J-Ritz reduction (conditional on original realization):** With physical source Gram H=J*J and AJ=J*Astar J, the orthogonal strong-action defect E=Astar J-J H^-1 AJ satisfies J*E=0 and E*E=(Astar J)*(Astar J)-AJ H^-1 AJ. The whole MG07 gate for V=ran(J) is congruent to (1+t)CJ+(1+t^-1)(Hminus/kappa_star)E*B14^-1 E <=(51/56)AJ for one uniform t. This is an analytic operator identity, not evaluated true 470-source data.
 >
+> **Two different obstruction targets:** Rigorous v*[(51/56)AJ-C_SM40]v<=0 rejects the specific 890-cap source Ritz sufficient test; stronger v*[(51/56)AJ-J*Kminus J]v<=0 would reject ANY cap at the present theta=51/56 on the same Ritz space. SM38/SM40 direct ratios ~0.965–0.973 are numerical only and do not imply actual signed operator negativity. The standalone SM40 scout now searches both signals on 1/2/3 physical source support. Remain obligation-first: improve the leakage factor/theta or Ritz geometry if direct obstruction becomes rigorous.
+>
+>
 > **SM40 cap supremacy / corrected NF strategy:** The source-space Ritz scout MUST use the certified original SM40 complete signed negative cap, not SM10. On SM36's same exploratory 25-source trial, SM10 cap maxima 10.6882–10.8639 were subsequently reduced by SM37/39/40 to SM40 1.003132 (4096×4) and 1.012044 (8192×8), still above theta=51/56. All ratios remain NONCERTIFYING. The new scout uses SM40's same 107 blocks, 890 physical columns and exact eta. Candidate failure of the obsolete SM10 cap is not an obstruction for SM40.
 >
 >
