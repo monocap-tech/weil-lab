@@ -246,3 +246,70 @@ Every term is outward and exact. Even if the exact crossing of the TRUE \(m\) di
 An independent Fraction check confirms the modeled kink integral is \(-761/800000\) for \(m_*(t)=\kappa+t/50\), \(T_*(t)=2\), \(h=1/4\), including the reverse-slope case. An off-center rational crossing with a nonconstant original Fourier-linear proxy independently matches exact quartic antiderivative assembly: \(-248438569/87480000000\). These are algebraic implementation tests, NOT evaluations of original \([0,32]\) Fourier cells.
 
 The dedicated 2240-cell exact job must still complete with a strictly positive original source-ray lower before we claim any source-only Ritz/SM40 sufficient-method obstruction. Universal signed odd/even positivity and RH remain OPEN.
+
+
+## NF — Original negative-support mass replaces uniform high signed-tail charge
+
+The independent signed-energy diagnostic uses the exact original form
+\[
+ W_o=A_\star-K_-=m(D)-2ss^*.
+\]
+Previously its entire high signed tail was charged with the SI06
+uniform lower \(m(\xi)\ge-M_0\), resulting in the coarse negative fee
+\(2M_0\beta_{32}^2/32\). This treated every frequency above 32 as
+potentially negative, despite already certified original negative support.
+
+The ORIGINAL SI10 signed complement certificate covers the whole
+possibly negative frequency set in exactly 973 positive-frequency
+leaves forming 107 components. Each leaf [a,b] has a rigorous
+pointwise original \(K_-=(\kappa-m)_+\) upper \(h_I+\kappa\).
+Outside these intervals the true original m is at least κ>0.
+Its exact complete two-sign weighted envelope mass is
+\[
+ \boxed{M_{\rm SI10}
+ =2\sum_I(b_I-a_I)(h_I+\kappa)
+ =\frac{1204033883}{32000000}
+ =37.62605884375<38.}
+\]
+The original supported sine-sinh physical endpoint estimate,
+including both second-derivative and jump boundary terms, gives
+\(|\widehat f(\xi)|\le\beta_{32}/|\xi|\) for all \(|\xi|\ge32\).
+Furthermore, \(m_-=(-m)_+\le(\kappa-m)_+=K_-\).
+Consequently the ENTIRE signed negative high tail obeys
+\[
+ \boxed{
+  \int_{|\xi|>32}(-m(\xi))_+
+      |\widehat f(\xi)|^2d\xi
+  \le \frac{M_{\rm SI10}\beta_{32}^2}{32^2}.}
+\]
+One must NOT multiply by an additional factor of two: SI10's exact
+mass already accounts for both positive and negative Fourier
+frequencies and their complete original signed prime/digamma support.
+The inherited original positive-complement theorem accounts for
+every frequency outside the 107 certified components, including
+all frequencies beyond 896.
+
+Relative to the original SI06 pointwise fee, the guaranteed EXACT
+improvement factor is
+\[
+ \frac{2M_0\beta_{32}^2/32}
+      {M_{\rm SI10}\beta_{32}^2/32^2}
+ =\boxed{\frac{64M_0}{M_{\rm SI10}}>20},
+ \quad M_0=\frac{4707}{875}+\frac{70751}{10000}.
+\]
+The new checker at
+[signed-support high-tail replay](../scripts/validate_rpb108_mg07_original_signed_supported_tail.py)
+recomputes SI10's 107-component/973-leaf true positive-frequency
+cover, verifies the exact two-sign rational weighted mass and
+reuses the TRUE original supported Fourier endpoint β for BOTH
+archived rational sine-sinh source rays. It has been integrated
+into the dedicated low32 CI workflow, which remains subject
+to exact external replay.
+
+This result applies ONLY to the optional signed-ray positive test
+on the original \(W_o=m(D)-2ss^*\). It does NOT loosen, substitute
+for or establish the main 2,240-cell source-only MG07 method
+STOP test \(K_--0.97A_\star>0\). A strict original ray
+sign is accepted only after its own full rational low32 margin
+passes. No full 470-dimensional, universal odd/even, Weil or RH
+positivity is inferred.
