@@ -51,14 +51,18 @@ def new_threshold():
     count_sources=1
     strict_weight=0
     strictly_refined_clusters=0
-    for parent,new,order in zip(old_leaves,new40,orders):
+    for parent,new,cap_order_24 in zip(old_leaves,new40,orders):
         # SM40 is exactly a FOUR-WAY refinement of each one of the
         # 973 original SM10 physical negative-frequency leaves.
         assert len(new)==4*len(parent)
         start,end=parent[0][0],parent[-1][1]
         assert new[0][0]==start and new[-1][1]==end
         p,e=taylor_order(end-start,BITS)
-        assert p==order and F(0)<e<F(1,2**BITS)
+        # CRITICAL: the same cluster supports TWO DISTINCT truncations:
+        # b9: 469 exceptional generators (+pole=470) and error e_j;
+        # b24: 890 negative-cap source columns and moment covariance.
+        assert p<=cap_order_24 and F(0)<e<F(1,2**BITS)
+        assert cap_order_24==taylor_order(end-start,24)[0]
         count_sources+=p
         local_mass=F(0)
         old_local=F(0)
@@ -83,7 +87,7 @@ def new_threshold():
         strictly_refined_clusters+=int(local_mass<old_local+2*KAPPA*(end-start))
         mass_eff+=local_mass
         weighted_eff+=local_mass*e*e
-    assert count_sources==470 and num==3892
+    assert count_sources==470 and sum(orders)==890 and num==3892
     assert strict_weight>0 and strictly_refined_clusters>0
     assert mass_eff<=mass_old+KAPPA*W
     eps_eff=2*B*weighted_eff
