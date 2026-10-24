@@ -77,7 +77,7 @@ def exact_arch_constant():
     # Classical elementary telescoping harmonic-integral gamma:
     # H_N-log(N+1) < gamma < H_N-log N.
     gam_lo=harmonic-log_rational_bounds(F(GAMMA_N+1))[1]
-    gam_hi=harmonic-GAMMA_N.bit_length().__sub__(1)*LN[2][0]
+    gam_hi=harmonic-log_rational_bounds(F(GAMMA_N))[0]
     assert GAMMA_N==1024 and 0<gam_lo<gam_hi<F(1)
     # psi(1/4)-ln pi= -gamma-pi/2-3ln2-lnpi.
     c_lo=gam_lo+PI[0]/2+3*LN[2][0]+log_rational_bounds(PI[0])[0]
@@ -115,15 +115,18 @@ def signed_m_at(q):
     p=prime_interval(q)
     return below(a[0]+p[0]),above(a[1]+p[1])
 
-def qinterval(mid,a,b,sh,ch):
-    """Exactly the true original source Fourier sine transform and derivative."""
-    sin0=(F0(CENTER-mid)-F0(CENTER+mid))/2
-    # d/dxi 1/2(F0(c-xi)-F0(c+xi)) =
-    # pi * (F1(c-xi)+F1(c+xi)).
-    der0=I(PI[0],PI[1])*(F1(CENTER-mid)+F1(CENTER+mid))
-    pole0=pole_sin(mid,sh,ch)
-    derpole=2*I(PI[0],PI[1])*pole_xcos(mid,sh,ch)
-    return outward(a*sin0+b*pole0),outward(a*der0+b*derpole)
+def qbasis(mid,sh,ch):
+    """TRUE original physical sine/pole Fourier packet + derivative ONCE."""
+    u=(F0(CENTER-mid)-F0(CENTER+mid))/2
+    # derivative of 1/2(F0(c-xi)-F0(c+xi)):
+    du=I(PI[0],PI[1])*(F1(CENTER-mid)+F1(CENTER+mid))
+    v=pole_sin(mid,sh,ch)
+    dv=2*I(PI[0],PI[1])*pole_xcos(mid,sh,ch)
+    return u,v,du,dv
+
+def qinterval(basis,a,b):
+    u,v,du,dv=basis
+    return outward(a*u+b*v),outward(a*du+b*dv)
 
 def cells(quick=False):
     # Focus where original source Fourier mass is substantial.
@@ -143,6 +146,10 @@ def cells(quick=False):
 def exact_scalar(quick=False):
     assert CENTER==F(37,64) and B==F(11,10)
     assert KAPPA==F(1,1000) and THETA==F(97,100)
+    # True SI06 7-power signed multiplier at frequency 0 is
+    # strongly negative, with no sample or new digamma assumption.
+    zero=signed_m_at(F(0))
+    assert F(-13)<zero[0]<=zero[1]<F(-12)
     assert F(600)<D2<F(900)
     cutoff=F(32)
     sh=hyperbolic_interval(B/2,"sinh")
@@ -185,8 +192,9 @@ def exact_scalar(quick=False):
         # below kappa: w=(1-theta)*kappa-m
         # above kappa: w=-theta*m.
         weight_floor=(1-THETA)*KAPPA-ceil if ceil<KAPPA else -THETA*ceil
+        basis=qbasis(mid,sh,ch)
         for index,(a,b,label) in enumerate(RAYS):
-            T,Tp=qinterval(mid,a,b,sh,ch)
+            T,Tp=qinterval(basis,a,b)
             v=(T[0]+T[1])/2
             d=(Tp[0]+Tp[1])/2
             ev=(T[1]-T[0])/2
