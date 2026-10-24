@@ -72,6 +72,20 @@ For a true nonnegative complement leakage \(\varepsilon_{\rm eff}\), the SM34-ty
 
 This is why the new threshold computation and the corrected SM40 ray scout are both necessary and **distinct**. Only after both full-original source-action and negative-cap data are rigorously enclosed is a pass/fail statement justified.
 
+## October 23 verification audit: separate source and cap Taylor orders
+
+A code review exposed a false assertion in the first refined leakage validator: the original SM32/SM33 **b9** exceptional source basis has 469 polynomial generators plus the pole (470 total), whereas the original SM40 **b24** negative upper has 890 covariance/Taylor columns. There is no equality of their cluster-local truncation orders. The updated validator now independently replays both Taylor orders on every one of the same 107 clusters, proves \(\sum_j p_j^{(9)}+1=470\), \(\sum_j p_j^{(24)}=890\), enforces \(p_j^{(9)}\le p_j^{(24)}\), and uses **only** the b9 approximation error \(e_j^{(9)}\) for \(QK_-Q\). It additionally checks that the inherited SM33 mass has actually paid \(\kappa\) on the full reflected width. These are implementation correctness repairs, not acceptance of the refined \(\varepsilon_{\rm eff}\) (full CI still pending).
+
+A separate stdlib-only exact Fraction regression at [verify_rpb108_sm33_kappa_paid_scalar.py](../scripts/verify_rpb108_sm33_kappa_paid_scalar.py) was executed independently. It checks the complete repaired scalar arithmetic, given the inherited full-cluster premises:
+\[
+H_-=\frac{13244372713}{160000000}=82.77732945625,\quad
+\bar\varepsilon_{\rm sharp}
+=\frac{1062977491599207}{16000000000000000000},\quad
+\theta_{\rm paid}> \frac{14937022508400793}{16000000000000000}
+=0.9335639067750495\ldots .
+\]
+It neither reconstructs the 107 true original cluster estimates nor establishes odd positivity.
+
 ## 4. What to test next
 
 The selected 25-source SM40 *noncertifying* direct negative ratios were ~0.965–0.973; the corresponding SM40 negative-cap ratios ~1.003–1.012. The sharper complement threshold could narrow or eliminate the former scalar deficit while leaving the original SM40 cap/Ritz and strong-residual obligations intact. **Do not claim that it crosses 0.973 until the new exact rational leakage run supplies a value.**
