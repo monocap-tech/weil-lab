@@ -63,7 +63,13 @@ This directly yields the stronger exact source sufficiency threshold
 \]
 This new number must be computed from all 3,892 exact rational subcells with the original matched Taylor orders. It is NOT replaced by an inferred decimal or by the sampled direct/cap ratios. The accompanying script checks the entire original geometry, all subcell coverage, original b9 errors, pointwise minimum, exact rational leakage and improved norm bound.
 
-## 3. What to test next
+## 3. The strengthened threshold does NOT erase the cap obstruction
+
+For a true nonnegative complement leakage \(\varepsilon_{\rm eff}\), the SM34-type scalar threshold \(\theta_{\rm eff}=1-\varepsilon_{\rm eff}/\kappa\) is **strictly less than one**. SM40's historical SAME-source *sampled* cap/Ritz generalized ratio reached ~1.012044, above even the formal upper ceiling of one, whereas the *sampled direct* negative ratio reached ~0.972929, below one. If a rigorously certified original physical source ray reproduces a cap/action ratio greater than one, **no improvement to the scalar complement leakage alone can salvage the fixed SM40 890-cap Ritz test**; one must tighten the negative cap, use a correlated direct negative-covariance upper on that ray, enrich the Ritz space or return to the exact corrected Schur. None of the historical sampled eigenvalues is a rigorous obstruction.
+
+This is why the new threshold computation and the corrected SM40 ray scout are both necessary and **distinct**. Only after both full-original source-action and negative-cap data are rigorously enclosed is a pass/fail statement justified.
+
+## 4. What to test next
 
 The selected 25-source SM40 *noncertifying* direct negative ratios were ~0.965–0.973; the corresponding SM40 negative-cap ratios ~1.003–1.012. The sharper complement threshold could narrow or eliminate the former scalar deficit while leaving the original SM40 cap/Ritz and strong-residual obligations intact. **Do not claim that it crosses 0.973 until the new exact rational leakage run supplies a value.**
 
