@@ -153,6 +153,21 @@ def cell_affine_exact_lower(w0,w1,v,d,h,eps,E):
     error=eps*lin_mass+w_abs*h*E*(2*supT+E)
     return baseline-error
 
+def kink_affine_branch_lower(intercept,slope,v,d,h,eps,E):
+    """Certified real-cell lower for convex signed κ-kink, no sign split.
+
+    wθ(m) = max{(1-θ)κ-m, -θ m} pointwise for all REAL m.
+    Both affine branches are individually GLOBAL lower bounds.
+    Integrate each against nonnegative TRUE |T|² using the
+    original complete multiplier/source error; take MAX of those
+    independently valid rational lowers.
+    """
+    minus=cell_affine_exact_lower(
+        (1-THETA)*KAPPA-intercept,-slope,v,d,h,eps,E)
+    plus=cell_affine_exact_lower(
+        -THETA*intercept,-THETA*slope,v,d,h,eps,E)
+    return max(minus,plus)
+
 def cell_kink_lower(weight_floor,v,d,E,h):
     """Safe even across any m=kappa crossing inside the REAL cell."""
     assert h>0 and E>=0
@@ -201,6 +216,26 @@ def regression_cell_integral_adversarial():
         w1=fac*slope
         lower=cell_affine_exact_lower(w0,w1,v,d,h,eps,E)
         assert lower<=actual, (lower,actual)
+    # wθ(m) is EXACTLY the maximum of two linear branches.
+    # Their integrals therefore give two globally valid LOWER
+    # certificates on ANY crossing cell; this is independent of
+    # declaring m above/below the κ crossing.
+    for m in (F(-13),F(-2),F(-1,100),KAPPA,F(1,50),F(1)):
+        minus=(1-THETA)*KAPPA-m
+        plus=-THETA*m
+        actual=max(F(0),KAPPA-m)-THETA*max(KAPPA,m)
+        assert actual==max(minus,plus)
+    # In crossing cells, the new affine minorant must stay below
+    # an independently integrated EXACT polynomial with a real
+    # κ crossing; split its two halves by analytic antiderivatives.
+    hcross=F(1,4)
+    s_cross=F(1,50)
+    amp=F(2)
+    true_int=amp*amp*(
+        -THETA*KAPPA*hcross + (1-THETA)*s_cross*hcross*hcross/8)
+    affine_lower=kink_affine_branch_lower(
+        KAPPA,s_cross,amp,F(0),hcross,F(0),F(0))
+    assert affine_lower<=true_int
     # GENUINE kink inside the cell; lower must not use a smooth
     # branch across m=kappa. Exact integral on both halves with
     # a constant true physical Fourier packet.
@@ -351,8 +386,12 @@ def exact_scalar(quick=False):
                     w0,w1,v,d,h,eps,E)
             else:
                 # Kink or uncertain sign: no differentiability assumed.
-                contribution=cell_kink_lower(
+                constant_kink=cell_kink_lower(
                     weight_floor,v,d,E,h)
+                convex_kink=kink_affine_branch_lower(
+                    intercept,slope,v,d,h,eps,E)
+                # Either independently proven lower may win.
+                contribution=max(constant_kink,convex_kink)
             certified_cell=below(2*contribution,10**6)
             out[index]+=certified_cell
             band_sums[band_index][index]+=certified_cell
@@ -422,6 +461,8 @@ def exact_scalar(quick=False):
        "all_real_kink_crossings_paid":True,
        "independent_sextic_polynomial_cell_lower_regression":True,
        "exact_straddling_kappa_kink_adversarial_regression":True,
+       "original_kappa_kink_is_exact_maximum_two_affine_branches":True,
+       "crossing_cells_use_stronger_certified_convex_branch_lower":True,
        "true_odd_pole_subtraction_and_high_LOG_tail_paid":True,
        "source_only_J470_Ritz_matched_SM40_cap_method_if_passed":
             ("OBSTRUCTED_ONLY_ON_THIS_SUFFICIENT_METHOD"
