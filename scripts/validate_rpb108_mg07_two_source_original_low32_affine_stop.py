@@ -143,6 +143,80 @@ def cells(quick=False):
             l=left+j*h
             yield l,l+h
 
+def cell_affine_exact_lower(w0,w1,v,d,h,eps,E):
+    """True all-real signed-cell lower, not a sampled quadrature."""
+    assert h>0 and eps>=0 and E>=0
+    baseline=h*w0*v*v+h**3/F(12)*(w0*d*d+2*w1*v*d)
+    lin_mass=h*v*v+h**3/F(12)*d*d
+    supT=abs(v)+abs(d)*h/2
+    w_abs=abs(w0)+abs(w1)*h/2+eps
+    error=eps*lin_mass+w_abs*h*E*(2*supT+E)
+    return baseline-error
+
+def cell_kink_lower(weight_floor,v,d,E,h):
+    """Safe even across any m=kappa crossing inside the REAL cell."""
+    assert h>0 and E>=0
+    lowT=max(F(0),abs(v)-abs(d)*h/2-E)
+    highT=abs(v)+abs(d)*h/2+E
+    return h*weight_floor*(lowT*lowT if weight_floor>=0
+                            else highT*highT)
+
+def polynomial_product(p,q):
+    out=[F(0)]*(len(p)+len(q)-1)
+    for i,a in enumerate(p):
+        for j,b in enumerate(q):
+            out[i+j]+=a*b
+    return out
+
+def symmetric_polynomial_integral(p,h):
+    return sum((p[j]*h**(j+1)/(2**j*(j+1))
+                for j in range(0,len(p),2)),F(0))
+
+def regression_cell_integral_adversarial():
+    """Compare certified lower with INDEPENDENT exact sextic integral."""
+    h=F(1,4)
+    k=KAPPA
+    for intercept,slope,v,d,curve,quad in (
+        (F(-2),F(1,3),F(4),F(-5),F(1,4),F(3,7)),
+        (F(3),F(-1,4),F(-5),F(7),F(-1,8),F(-2,5)),
+        (F(-3),F(-1,7),F(2),F(1,3),F(1,11),F(-1,2)),
+        (F(5),F(1,6),F(1,2),F(-3),F(-1,7),F(1,5)),
+    ):
+        # m(t)=intercept+slope*t+curve*(t*t-h*h/4).
+        # |m-m_affine|<=|curve|*h*h/4 on the WHOLE cell.
+        eps=abs(curve)*h*h/4
+        E=abs(quad)*h*h/4
+        assert intercept-abs(slope)*h/2-eps>k or (
+             intercept+abs(slope)*h/2+eps<k)
+        negative=intercept<k
+        # EXACT piecewise w(m) branch; no interval approximation.
+        w_const=((1-THETA)*k-intercept if negative
+                 else -THETA*intercept)
+        fac=F(-1) if negative else -THETA
+        wpoly=[w_const-fac*curve*h*h/4,fac*slope,fac*curve]
+        tpoly=[v-quad*h*h/4,d,quad]
+        actual=symmetric_polynomial_integral(
+            polynomial_product(wpoly,polynomial_product(tpoly,tpoly)),h)
+        w0=w_const
+        w1=fac*slope
+        lower=cell_affine_exact_lower(w0,w1,v,d,h,eps,E)
+        assert lower<=actual, (lower,actual)
+    # GENUINE kink inside the cell; lower must not use a smooth
+    # branch across m=kappa. Exact integral on both halves with
+    # a constant true physical Fourier packet.
+    slope=F(1,50);v=F(2)
+    left=(1-THETA)*k-(k-slope*h/2)
+    right=-THETA*(k+slope*h/2)
+    floor=right
+    # integrated w for left/right half, where m=k+slope*t.
+    actual=v*v*(-THETA*k*h+(1-THETA)*slope*h*h/8)
+    lower=cell_kink_lower(floor,v,F(0),F(0),h)
+    assert left>right and lower<=actual
+    # Explicit positive lower-cell weight: use MINIMUM source
+    # square, never the upper source square.
+    assert cell_kink_lower(F(1),F(3),F(1),F(1,4),h)>=0
+    return True
+
 def regression_affine_signed_quadratic():
     """Independent exact polynomial moments and kink-monotonic checks."""
     # Integrate (2+3t)*(5-7t)^2 exactly on [-h/2,h/2].
@@ -166,6 +240,7 @@ def regression_affine_signed_quadratic():
 def exact_scalar(quick=False):
     assert CENTER==F(37,64) and B==F(11,10)
     assert regression_affine_signed_quadratic()
+    assert regression_cell_integral_adversarial()
     assert KAPPA==F(1,1000) and THETA==F(97,100)
     # True SI06 7-power signed multiplier at frequency 0 is
     # strongly negative, with no sample or new digamma assumption.
@@ -233,16 +308,12 @@ def exact_scalar(quick=False):
             if negative or positive:
                 # Entire true frequency integral, exactly integrated
                 # affine signed weight against linear Fourier packet.
-                baseline=h*w0*v*v+h**3/F(12)*(w0*d*d+2*w1*v*d)
-                lin_mass=h*v*v+h**3/F(12)*d*d
-                err=eps*lin_mass+w_hi_abs*h*E*(2*supT+E)
-                contribution=baseline-err
+                contribution=cell_affine_exact_lower(
+                    w0,w1,v,d,h,eps,E)
             else:
                 # Kink or uncertain sign: no differentiability assumed.
-                lowT=max(F(0),abs(v)-abs(d)*h/2-E)
-                highT=supT+E
-                source_sq=lowT*lowT if weight_floor>=0 else highT*highT
-                contribution=h*weight_floor*source_sq
+                contribution=cell_kink_lower(
+                    weight_floor,v,d,E,h)
             certified_cell=below(2*contribution,10**6)
             out[index]+=certified_cell
             band_sums[band_index][index]+=certified_cell
@@ -280,6 +351,8 @@ def exact_scalar(quick=False):
        "original_physical_Fourier_exact_T_and_Tprime_interval":True,
        "original_arch_and_prime_whole_REAL_second_curvature_paid":True,
        "all_real_kink_crossings_paid":True,
+       "independent_sextic_polynomial_cell_lower_regression":True,
+       "exact_straddling_kappa_kink_adversarial_regression":True,
        "true_odd_pole_subtraction_and_high_LOG_tail_paid":True,
        "source_only_J470_Ritz_matched_SM40_cap_method_if_passed":
             ("OBSTRUCTED_ONLY_ON_THIS_SUFFICIENT_METHOD"
