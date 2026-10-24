@@ -50,6 +50,8 @@ from validate_rpb108_mg07_two_source_original_physical_pole_input import (
     CENTER,RAYS)
 from validate_rpb108_mg07_two_source_stop_low_band_reduction import (
     exact_reduction)
+from validate_rpb108_mg07_original_signed_supported_tail import (
+    support_tail)
 
 ROOT=Path(__file__).resolve().parents[1]
 THETA=F(97,100)
@@ -394,6 +396,8 @@ def exact_scalar(quick=False):
       for a,b,label in RAYS
     }
     reduction=exact_reduction()
+    supported=support_tail()
+    assert len(supported["rays"])==len(RAYS)==2
     out=[F(0)]*len(RAYS)
     signed_true_low=[F(0)]*len(RAYS)
     total=0;stable=0;crossings=0
@@ -496,7 +500,12 @@ def exact_scalar(quick=False):
         pole_hi=F(r["certified_pole_payment_upper"])
         # Fourier tail: ∫_{|ξ|>32}|T_f(ξ)|² <= 2 beta²/32,
         # m(ξ)>=-(CONST_UP+TWOC) for every original real ξ.
-        signed_high_negative_budget=M0*2*beta*beta/F(32)
+        previous_uniform_signed_high_negative_budget=M0*2*beta*beta/F(32)
+        assert supported["rays"][index]["ray"]==label
+        signed_high_negative_budget=F(supported["rays"][index][
+            "entire_true_original_signed_negative_high_tail_upper"])
+        assert signed_high_negative_budget>0
+        assert previous_uniform_signed_high_negative_budget/signed_high_negative_budget>20
         signed_energy_lower=(
             signed_true_low[index]-signed_high_negative_budget-pole_hi)
         signed_ray_positive=signed_energy_lower>0 and not quick
@@ -508,6 +517,11 @@ def exact_scalar(quick=False):
               str(signed_true_low[index]),
           "all_real_original_signed_high_tail_negative_budget":
               str(signed_high_negative_budget),
+          "previous_SI06_uniform_signed_high_tail_negative_budget":
+              str(previous_uniform_signed_high_negative_budget),
+          "SI10_support_mass_tail_improvement_factor":
+              str(previous_uniform_signed_high_negative_budget/
+                  signed_high_negative_budget),
           "true_original_sinh_pole_subtraction_upper":str(pole_hi),
           "ray":label,"sine_coefficient":a,"pole_coefficient":b,
           "true_whole_original_signed_combination_LOW_lower":str(v),
@@ -552,6 +566,9 @@ def exact_scalar(quick=False):
        "true_original_signed_smooth_multiplier_identity":
           "Astar-Kminus = m(D)-2ss*",
        "true_original_signed_high_frequency_lower_from_SI06":True,
+       "true_original_signed_high_frequency_support_from_SI10":True,
+       "SI10_negative_high_tail_mass_exact":supported[
+           "SI10_complete_original_two_signs_negative_cap_mass"],
        "entire_original_odd_operator_negative_witness":False,
        "full_original_signed_odd_positive":"OPEN",
        "even_CC27_Weil_RH":"OPEN",
