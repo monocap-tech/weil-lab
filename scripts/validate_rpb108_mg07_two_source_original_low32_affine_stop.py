@@ -143,8 +143,29 @@ def cells(quick=False):
             l=left+j*h
             yield l,l+h
 
+def regression_affine_signed_quadratic():
+    """Independent exact polynomial moments and kink-monotonic checks."""
+    # Integrate (2+3t)*(5-7t)^2 exactly on [-h/2,h/2].
+    w0,w1,v,d,h=F(2),F(3),F(5),F(-7),F(3,4)
+    analytic=h*w0*v*v+h**3/F(12)*(w0*d*d+2*w1*v*d)
+    # Direct polynomial expansion: constant, t² and odd terms.
+    independent=(w0*v*v*h+
+                 (w0*d*d+2*w1*v*d)*h**3/12)
+    assert analytic==independent
+    for theta in (F(97,100),F(51,56)):
+        k=F(1,1000)
+        def weight(m):
+            return max(F(0),k-m)-theta*max(k,m)
+        lo=F(-1);mid=k;hi=F(1)
+        assert weight(lo)>weight(mid)>weight(hi)
+        assert weight(mid)==-theta*k
+        assert weight(lo)==(1-theta)*k-lo
+        assert weight(hi)==-theta*hi
+    return True
+
 def exact_scalar(quick=False):
     assert CENTER==F(37,64) and B==F(11,10)
+    assert regression_affine_signed_quadratic()
     assert KAPPA==F(1,1000) and THETA==F(97,100)
     # True SI06 7-power signed multiplier at frequency 0 is
     # strongly negative, with no sample or new digamma assumption.
