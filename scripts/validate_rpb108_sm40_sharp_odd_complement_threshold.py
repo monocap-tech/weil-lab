@@ -111,6 +111,9 @@ def new_threshold():
     threshold=mu_eff/(mu_eff+eps_eff)
     assert threshold==F(1)-eps_eff/KAPPA
     assert threshold>F(14,15)>CLEAN_THRESHOLD
+    # A simple rigorous rational STOP benchmark usable by the original
+    # two-source exact low-band ray inequality (stronger than theta).
+    assert threshold<F(97,100)
     # Independently sharpen the global Knegative operator norm
     # using the SAME all-frequency true effective step envelope.
     H_eff=2*B*mass_eff
