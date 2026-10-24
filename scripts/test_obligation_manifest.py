@@ -47,6 +47,29 @@ class ManifestTests(unittest.TestCase):
     def test_invalid_command_rejected(self):
         self.invalid(lambda d: d["active_checks"][0].update(argv=["bash", "-c", "true"]))
 
+    def test_historical_case_sensitive_command_paths_valid(self):
+        # These four preexisting scripts genuinely exist on the
+        # case-sensitive repository; none should be silently skipped.
+        _, checks = gov.verify(self.base)
+        by_id = {x["id"]:x for x in checks}
+        names = (
+            "SM36-original-numerical-feasibility-only",
+            "SM38-original-leafwise-odd-fourier-diagnostic",
+            "SM52C-original-two-source-L2-coercivity",
+            "SM54-original-signed-pole-adaptive-disjoint-3source",
+        )
+        for name in names:
+            self.assertIn(name, by_id)
+            self.assertEqual(by_id[name]["argv"][0], "python3")
+
+    def test_untrusted_bare_validation_filename_rejected(self):
+        self.invalid(lambda d: d["active_checks"][0].update(
+            argv=["python3","scripts/sm99_unapproved_executable.py"]))
+
+    def test_case_sensitive_path_traversal_rejected(self):
+        self.invalid(lambda d: d["active_checks"][0].update(
+            argv=["python3","scripts/../scripts/sm36_original_odd_numerical_pilot.py"]))
+
     def test_unknown_replay_cadence_rejected(self):
         self.invalid(lambda d: d["active_checks"][0].update(cadence="infinite"))
 
