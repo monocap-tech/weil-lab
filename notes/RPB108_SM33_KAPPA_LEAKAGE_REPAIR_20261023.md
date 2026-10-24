@@ -40,6 +40,16 @@ The same conservative paid epsilon bound gives a **more explicit conditional SM3
 \]
 This improves the old \(51/56\) sufficient numerical acceptance threshold and is based only on original SM33 b9 estimates plus the paid \(\kappa\). The numerical threshold is not accepted as a completed certified replay until the amended SM33 exact Fraction assertion has executed successfully and the inherited operator/domain identity has been independently reviewed.
 
+The repaired mixed-norm/inverse bounds are independently protected by a sharper original exact b9 Taylor remainder maximum \(e_{\max}<16813/10^7\). This gives the entirely rational majorant
+\[
+ \bar\varepsilon=
+ \frac{66247}{10^9}
+ +2B\kappa W\left(\frac{16813}{10^7}\right)^2,\quad
+ H_{\rm repaired}\bar\varepsilon<\frac{11}{2000},\qquad
+ \frac{H_{\rm repaired}\bar\varepsilon}{17/25000}<\frac{81}{10}.
+\]
+All the listed scalar rational comparisons have been independently checked in the local arithmetic evaluator; the required \(e_{\max}\) and legacy leakage strict comparisons are asserted in the amended full-cluster original validator, whose CI acceptance remains pending.
+
 SM35 now consumes this corrected value and propagates it into MG07. The SM34 **qualitative** \(51/56\) sufficient criterion survives because the fully paid \(\varepsilon<1/15000\) is preserved; its exact nonorthogonal Schur algebra is not otherwise changed. The sharper same-470 source-space \(\theta=1-\varepsilon/\kappa>14/15\) also remains logically available, conditional on the original physical/Fourier realization. No original \(470\times470\) signed gate is thereby evaluated.
 
 For the refined SM40 leak computation use \(h_{\rm eff}=\min(h_{\rm SI10}+\kappa,w_{\rm SM40})\), **not** the invalid \(\min(h_{\rm SI10},w_{\rm SM40})\). This pays all original 3,892 real subcells and the complete 107 b9 remainder errors.
