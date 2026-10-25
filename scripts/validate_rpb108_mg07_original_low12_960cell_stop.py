@@ -31,6 +31,8 @@ from validate_rpb108_mg07_two_source_endpoint_log_tail import (
 from validate_rpb108_si12_even_supported_inverse import (
     sinh_bounds,cosh_bounds)
 from validate_rpb108_si14_odd_multiband_nogo import cos_sin_pi_multiple
+from validate_rpb108_si10_complement_positivity import protected_inner_cover
+from validate_rpb108_si08_multiband_rank import taylor_order
 from validate_rpb108_mg07_two_source_original_low32_affine_stop import (
     D2,KAPPA,THETA,below,above,signed_m_at,
     qbasis,qinterval,hyperbolic_interval,
@@ -80,7 +82,31 @@ def high_positive_tail12():
             "complete_original_Ao_log_tail_beyond12_upper":str(tail)})
     return tails
 
+def exact_original_J_membership():
+    """Fail closed unless both supported rays really belong to SM35's J470.
+
+    The first SM35 cluster contributes its degree-zero odd physical sine;
+    the true sinh pole is the final original J column. Do not infer
+    membership merely from the numerical scout's source labels.
+    """
+    clusters,_,_,_,_=protected_inner_cover()
+    assert len(clusters)==107
+    source_dim=1+sum(taylor_order(r-l,9)[0] for l,r,_ in clusters)
+    assert source_dim==470
+    l0,r0,_=clusters[0]
+    assert (l0+r0)/2==CENTER==F(37,64)
+    assert taylor_order(r0-l0,9)[0]>=1
+    assert len(RAYS)==2
+    assert all(a>0 and b>0 for a,b,_ in RAYS)
+    return {
+      "original_SM35_J_source_dim":source_dim,
+      "original_first_cluster_interval":[str(l0),str(r0)],
+      "original_first_degree_zero_sine_center":str((l0+r0)/2),
+      "original_true_sinh_pole_in_J":True,
+      "both_rays_exact_original_J_membership":True}
+
 def verify():
+    membership=exact_original_J_membership()
     assert regression_affine_signed_quadratic()
     assert regression_cell_integral_adversarial()
     assert regression_true_odd_Fourier_zero()
@@ -175,6 +201,7 @@ def verify():
     return {
       "status":("CONDITIONAL_EXACT_ORIGINAL_LOW12_SOURCE_ONLY_METHOD_STOP"
           if accepted else "ORIGINAL_LOW12_INCONCLUSIVE"),
+      "original_physical_J_membership":membership,
       "true_original_signed_prime_powers_all_seven":True,
       "true_original_quarter_digamma_endpoint_interval":True,
       "physical_sine_sinh_pole_source_genuine":True,
