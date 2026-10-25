@@ -114,10 +114,21 @@ def arch_at(q):
         zhi=yhi*yhi/(v*(v*v+yhi*yhi))
         lo=below(lo+zlo)
         hi=above(hi+zhi)
-    # decreasing positive integrand tail bracket:
-    # integral_K^inf f <= sum_{k=K}^inf f(k) <= integral_{K-1}^inf f
-    low_tail=log_rational_bounds(1+(ylo/(ARCH_K+alpha))**2)[0]/2
-    up_tail=log_rational_bounds(1+(yhi/(ARCH_K-1+alpha))**2)[1]/2
+    # Much sharper ORIGINAL quarter-digamma tail:
+    # g_y(v)=y²/[v(v²+y²)] is positive, decreasing and convex:
+    # g_y''(v)=2y²(6v⁴+3v²y²+y⁴)/[v³(v²+y²)³]>=0.
+    # For any decreasing convex g, trapezoid + midpoint Jensen:
+    # ∫_K^inf g(v+alpha)dv + g(K+alpha)/2
+    #   <= Σ_{k=K}^inf g(k+alpha)
+    #   <= ∫_(K-1/2)^inf g(v+alpha)dv.
+    # Each integral is exact 1/2 log(1+(y/v)^2). Monotonicity
+    # in y justifies using outward ylo/yhi from the REAL PI.
+    left=ARCH_K+alpha
+    upper_start=ARCH_K-F(1,2)+alpha
+    low_tail=(log_rational_bounds(1+(ylo/left)**2)[0]/2
+              +ylo*ylo/(2*left*(left*left+ylo*ylo)))
+    up_tail=log_rational_bounds(1+(yhi/upper_start)**2)[1]/2
+    assert 0<=low_tail<=up_tail
     low=below(lo+low_tail-c_hi)
     high=above(hi+up_tail-c_lo)
     assert low<=high
@@ -397,6 +408,12 @@ def exact_scalar(quick=False):
     assert c_hi-c_lo<F(1,1000000)
     a0_lo,a0_hi=arch_at(F(0))
     assert a0_lo<=-c_hi<=-c_lo<=a0_hi
+    # Same 64 genuine positive digamma summands; convexity
+    # reduces the WHOLE original arch endpoint interval error.
+    a1_lo,a1_hi=arch_at(F(1))
+    a32_lo,a32_hi=arch_at(F(32))
+    assert F(0)<a1_hi-a1_lo<F(1,1000000)
+    assert F(0)<a32_hi-a32_lo<F(1,20000)
     assert KAPPA==F(1,1000) and THETA==F(97,100)
     # True SI06 7-power signed multiplier at frequency 0 is
     # strongly negative, with no sample or new digamma assumption.
@@ -565,6 +582,9 @@ def exact_scalar(quick=False):
        "harmonic_N":GAMMA_N,
        "Euler_gamma_telescoping_interval_width_under_5e_minus_7":True,
        "exact_original_arch_constant_width_under_1e_minus_6":True,
+       "convex_positive_digamma_64_term_tail_midpoint_enclosed":True,
+       "arch_interval_width_at_xi_1_under_1e_minus_6":True,
+       "arch_interval_width_at_xi_32_under_5e_minus_5":True,
        "exact_arch_constant_interval":[str(q) for q in exact_arch_constant()],
        "quarter_gamma_harmonic_integral_bracket":True,
        "original_physical_Fourier_exact_T_and_Tprime_interval":True,
