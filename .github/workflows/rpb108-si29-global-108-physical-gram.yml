@@ -1,0 +1,48 @@
+name: SI29 global 108-source exact physical Gram
+
+on:
+  push:
+    paths:
+      - scripts/validate_rpb108_si29_global_sine_pole_108_gram.py
+      - .github/workflows/rpb108-si29-global-108-physical-gram.yml
+  workflow_dispatch:
+
+jobs:
+  exact-original-global-108-gram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild original SI10 source geometry and rational overlaps
+        run: python scripts/validate_rpb108_si29_global_sine_pole_108_gram.py
+      - name: Independently validate stored rational scalar acceptance
+        run: |
+          python - <<'PY'
+          from fractions import Fraction as F
+          import json
+          d=json.load(open('artifacts/si29_global_108_sine_pole_exact_gram.json'))
+          lam=F(d['Montgomery_Vaughan_global_107_sine_lower'])
+          Slo=F(d['genuine_sinh_pole_norm_lower'])
+          Shi=F(d['genuine_sinh_pole_norm_upper'])
+          q2=F(d['sum_107_exact_overlap_square_upper'])
+          residual=F(d['genuine_pole_residual_after_all_107_sines_lower'])
+          lower=F(d['complete_global_108_physical_Gram_lower'])
+          assert d['original_SI10_positive_clusters']==107
+          assert d['original_full_J_source_dim']==470
+          assert lam==F(97,670)
+          assert residual==Slo-q2/lam and residual>F(1,100)
+          assert lower==(lam*Slo-q2)/(lam+Shi)>F(1,200)
+          assert d['original_full_470_Gram']=='OPEN'
+          assert d['SI29_full_14_source_Schur']=='OPEN'
+          print('108D rational scalar identity and strict Loewner acceptance passed')
+          PY
+      - name: Retain exact 108D result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: si29-global-108-physical-gram-rational
+          path: artifacts/si29_global_108_sine_pole_exact_gram.json
+          if-no-files-found: warn
