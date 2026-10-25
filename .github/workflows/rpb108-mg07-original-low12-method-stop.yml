@@ -1,0 +1,54 @@
+name: MG07 original 960-cell low12 method STOP
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_mg07_original_low12_960cell_stop.py'
+      - 'scripts/validate_rpb108_mg07_two_source_original_low32_affine_stop.py'
+      - 'scripts/validate_rpb108_mg07_two_source_original_physical_pole_input.py'
+      - 'scripts/validate_rpb108_mg07_two_source_endpoint_log_tail.py'
+      - 'notes/RPB108_MG07_ORIGINAL_LOW12_960CELL_CERTIFICATE_20261024.md'
+      - '.github/workflows/rpb108-mg07-original-low12-method-stop.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-original-960-cell-low12:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install inherited original operator validators
+        run: pip install numpy scipy
+      - name: Run primary rigorous original 960-cell source-ray witness
+        run: |
+          OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python scripts/validate_rpb108_mg07_original_low12_960cell_stop.py
+      - name: Inspect exact rational result, not float samples
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          o=json.load(open('artifacts/mg07_true_original_low12_960cell.json'))
+          assert o['exact_rational_cells']==960
+          assert o['global_multiplier_curvature_upper']=='2300'
+          assert o['complete_original_high12_two_IBP_log_tail_paid']
+          assert o['status']=='CONDITIONAL_EXACT_ORIGINAL_LOW12_SOURCE_ONLY_METHOD_STOP'
+          assert o['strict_positive_original_method_stop_rays']
+          for ray in o['rays']:
+              lo=F(ray['complete_original_Kminus_minus_97pct_Astar_lower'])
+              assert (lo>0)==ray['certified_source_only_method_stop']
+          assert o['original_true_signed_odd_operator']=='OPEN'
+          assert o['original_SI29_augmented_trial']=='OPEN'
+          assert o['even_CC27_Weil_RH']=='OPEN'
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-low12-960-cell-rational-witness-or-diagnostic
+          path: artifacts/mg07_true_original_low12_960cell.json
+          if-no-files-found: warn
