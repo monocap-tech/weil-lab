@@ -382,3 +382,73 @@ method-obstruction ray; even if it does, **only** the original
 source-only \(J\)-Ritz/SM40 sufficient route is rejected.
 The independent signed-positivity ray status, universal odd/even
 operator and RH remain separately gated.
+
+
+## NF — Rigorous Euler-gamma and convex digamma remainder sharpening (same 2,240 cells)
+
+**This targets the original low-band multiplier endpoint bottleneck directly.** The first low32 validator used the elementary but loose harmonic bound \(H_N-\log(N+1)\le\gamma\le H_N-\log N\) at \(N=1024\), an almost \(10^{-3}\) uncertainty copied into *every* original archimedean multiplier endpoint. We can improve it by more than 2,000-fold **without evaluating another harmonic summand**.
+
+Let \(E_N=H_N-\log N-\gamma\). The finite positive logarithmic differences satisfy
+\[
+\begin{aligned}
+ E_N&=\sum_{k=N}^{\infty}g_k,\quad
+ g_k=\log(1+1/k)-1/(k+1)\\
+ &=\frac1{k+1}\int_0^1\frac{1-t}{k+t}\,dt,\\
+ \frac1{2(k+1)^2}&\le g_k\le\frac1{2k(k+1)}.
+\end{aligned}
+\]
+The upper sum telescopes. The lower sum dominates its convergent integral, giving
+\[
+ \boxed{\frac1{2(N+1)}\le E_N\le\frac1{2N}},
+ \quad
+ \boxed{
+ H_N-\log N-\frac1{2N}
+ \le\gamma\le
+ H_N-\log N-\frac1{2(N+1)}.}
+\]
+Every \(\log N\) bound comes from the existing rigorous rational SI06 logarithm routine. At \(N=1024\) the resulting true Euler-\(\gamma\) interval width is below \(1/2{,}000{,}000\), instead of roughly \(9.76\times10^{-4}\). This controls the complete original constant \(C=\gamma+\pi/2+3\log2+\log\pi\) to width below \(10^{-6}\).
+
+The remaining original positive quarter-digamma tail is
+\[
+ \sum_{k=64}^{\infty}g_y(k+\tfrac14),\quad
+ g_y(v)=\frac{y^2}{v(v^2+y^2)},\quad y=\pi\xi.
+\]
+It is nonnegative, decreasing and **strictly convex** for \(y>0\), because
+\[
+ g_y''(v)=
+ \frac{2y^2(6v^4+3v^2y^2+y^4)}
+ {v^3(v^2+y^2)^3}>0.
+\]
+For every decreasing convex integrable function \(g\), trapezoidal comparison and midpoint Jensen give
+\[
+ \int_K^\infty g(v+\alpha)\,dv+\tfrac12g(K+\alpha)
+ \le\sum_{k=K}^\infty g(k+\alpha)
+ \le\int_{K-\frac12}^\infty g(v+\alpha)\,dv.
+\]
+With \(K=64\), \(\alpha=1/4\), and the exact antiderivative
+\(\frac12\log(1+(y/v)^2)\), the improved rational bounds are
+\[
+\boxed{
+\begin{aligned}
+ \mathrm{Tail}_{\rm lo}
+ &=\tfrac12\log_{\rm lo}(1+(y_{\rm lo}/(64+\frac14))^2)
+  +\frac{y_{\rm lo}^2}
+   {2(64+\frac14)((64+\frac14)^2+y_{\rm lo}^2)},\\
+ \mathrm{Tail}_{\rm hi}
+ &=\tfrac12\log_{\rm hi}
+ (1+(y_{\rm hi}/(64-\frac12+\frac14))^2).
+\end{aligned}}
+\]
+The original SI06 rational \(\pi\) enclosure and monotonicity in \(y\) still pay every transcendental argument error.
+
+A second, independent local Fraction implementation of the SI06 rational \(\pi/\log\) bounds and all 64 original positive terms recovered these original archimedean endpoint interval widths:
+
+| Exact rational \(\xi\) | Old endpoint interval width | New endpoint interval width |
+|---|---:|---:|
+| \(0\) | \(0.000976085974\) | \(0.000000476373\) |
+| \(1\) | \(0.001014092637\) | \(0.000000695026\) |
+| \(32\) | \(0.012163960418\) | \(0.000034627522\) |
+
+Independent high-precision summation was used as a **non-proof sanity check** for the convex-tail inequalities, and agreed; *acceptance* uses only the exact Fraction inequalities derived above. The actual low32 script now asserts \(C\)-width below \(10^{-6}\), arch-endpoint width below \(10^{-6}\) at \(\xi=1\), and below \(5\times10^{-5}\) at \(\xi=32\). The original 2,240-cell signed source-ray stop criterion and both genuine physical sources remain unchanged.
+
+**Scope:** This is a substantial exact analytic improvement in every original low32 multiplier endpoint bound. The critical source-only Ritz/SM40 sufficient-method obstruction is still unproved until the full 2,240-cell exact lower sum succeeds. The true signed universal odd operator, even, CC27 and RH remain OPEN.
