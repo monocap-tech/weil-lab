@@ -33,6 +33,7 @@ from validate_rpb108_si12_even_supported_inverse import (
 from validate_rpb108_si14_odd_multiband_nogo import cos_sin_pi_multiple
 from validate_rpb108_si10_complement_positivity import protected_inner_cover
 from validate_rpb108_si08_multiband_rank import taylor_order
+from validate_rpb108_sm40_sharp_odd_complement_threshold import new_threshold
 from validate_rpb108_mg07_two_source_original_low32_affine_stop import (
     D2,KAPPA,THETA,below,above,signed_m_at,
     qbasis,qinterval,hyperbolic_interval,
@@ -107,6 +108,14 @@ def exact_original_J_membership():
 
 def verify():
     membership=exact_original_J_membership()
+    # The strict method-stop implication needs the actual ORIGINAL
+    # same-SM40 complement threshold, not a presumed decimal value.
+    sm40=new_threshold()
+    assert sm40["original_source_dim"]==470
+    assert sm40["original_SM40_cap_columns"]==890
+    assert sm40["original_signed_real_subcells"]==3892
+    threshold=F(sm40["new_sharp_sufficient_source_threshold"])
+    assert F(51,56)<threshold<THETA==F(97,100)
     assert regression_affine_signed_quadratic()
     assert regression_cell_integral_adversarial()
     assert regression_true_odd_Fourier_zero()
@@ -202,6 +211,9 @@ def verify():
       "status":("CONDITIONAL_EXACT_ORIGINAL_LOW12_SOURCE_ONLY_METHOD_STOP"
           if accepted else "ORIGINAL_LOW12_INCONCLUSIVE"),
       "original_physical_J_membership":membership,
+      "same_original_SM40_threshold_exact":str(threshold),
+      "method_test_threshold_exact":str(THETA),
+      "same_original_SM40_threshold_strictly_below_method_test":threshold<THETA,
       "true_original_signed_prime_powers_all_seven":True,
       "true_original_quarter_digamma_endpoint_interval":True,
       "physical_sine_sinh_pole_source_genuine":True,
