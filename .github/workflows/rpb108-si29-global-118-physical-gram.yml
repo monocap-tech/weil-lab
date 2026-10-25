@@ -1,0 +1,55 @@
+name: SI29 global 118 original physical Gram
+
+on:
+  push:
+    paths:
+      - scripts/validate_rpb108_si29_global_118_degree1_gram.py
+      - .github/workflows/rpb108-si29-global-118-physical-gram.yml
+  workflow_dispatch:
+
+jobs:
+  exact-global-118-physical-gram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Certify true SI10 118-source Gram, all cross blocks
+        run: python scripts/validate_rpb108_si29_global_118_degree1_gram.py
+      - name: Independently replay exact rational Schur and 2x2 acceptance
+        run: |
+          python - <<'PY'
+          from fractions import Fraction as F
+          import json
+          z=json.load(open('artifacts/si29_global_118_degree1_physical_gram.json'))
+          assert z['status']=='EXACT_RATIONAL_GLOBAL_118_ORIGINAL_PHYSICAL_GRAM'
+          assert z['base_original_dimension']==108
+          assert z['new_original_degree_one_count']==10
+          assert z['joint_original_dimension']==118
+          assert z['original_cluster_indices']==[96,98,99,100,101,102,103,104,105,106]
+          rows=z['added_sources'];assert len(rows)==10
+          assert [x['index'] for x in rows]==z['original_cluster_indices']
+          assert all(x['degree']==1 for x in rows)
+          assert all(F(x['Gershgorin_row_lower'])==
+                     F(x['diag_lower'])-F(x['off_row_abs_upper']) for x in rows)
+          d=min(F(x['Gershgorin_row_lower']) for x in rows)
+          sig=sum((F(x['cross_108_column_sq_upper']) for x in rows),F(0))
+          lam=F(z['parent_108_physical_gram_lower'])
+          assert lam>F(1,200)
+          assert d==F(z['added_10D_physical_gram_lower'])>F(41,100)
+          assert sig==F(z['complete_108_by_10_cross_Frobenius_sq_upper'])<F(2,1000)
+          assert d-sig/lam==F(z['added_10D_schur_after_108_lower'])>F(4,100)
+          assert (lam*d-sig)/(lam+d)==F(z['joint_118_physical_gram_lower'])>F(1,2000)
+          assert z['complete_470_physical_gram']=='OPEN'
+          assert z['SI29_full_14D_augmentation_schur']=='OPEN'
+          print('Independent 118D Fraction certificate acceptance PASS')
+          PY
+      - name: Retain exact 118D certificate
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: si29-global-118-physical-gram-rational
+          path: artifacts/si29_global_118_degree1_physical_gram.json
+          if-no-files-found: warn
