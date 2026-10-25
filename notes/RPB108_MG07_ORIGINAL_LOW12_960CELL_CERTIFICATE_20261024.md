@@ -65,10 +65,42 @@ A separate local Python reimplementation of the original SI06 rational \(\pi,\lo
 | \(f_d\) | \(-55,354,893.630107\) | \(<3,132,000\) | \(>+1,280,000\) |
 | \(f_c\) | \(-3,468,035.032463\) | \(<193,000\) | \(>+84,000\) |
 
-The above strict-margin displays are from the independent local implementation and rounded conservatively; **they are NOT yet the canonical repository acceptance artifact**. The original Python script, source-endpoint helper imports, and all exact rational identities must replay in GitHub Actions and be independently reviewed before promoting a formal theorem result. In particular, the local implementation uses a slightly different outward sine/cosine enclosure than SI06/SM42; the focused repository validator is the source of record for the final exact rational margins.
+The table above is retained as the **historical October 24 local pilot**. The canonical October 25 replay has now succeeded and its exact margins appear below; those accepted rational bounds supersede the pilot values. The original Fourier/domain realization and inherited analytic estimates still require independent mathematical review before promotion beyond the stated conditional operator model.
 
-The **new canonical executable** is [960-cell original low12 verifier](../scripts/validate_rpb108_mg07_original_low12_960cell_stop.py), with an isolated [focused acceptance workflow](../.github/workflows/rpb108-mg07-original-low12-method-stop.yml), exact output at \`artifacts/mg07_true_original_low12_960cell.json\`, and a strict fail-closed one-ray positive assertion. Its low-frequency numerical computation has **not yet** been reported passing by CI.
+The **new canonical executable** is [960-cell original low12 verifier](../scripts/validate_rpb108_mg07_original_low12_960cell_stop.py), with an isolated [focused acceptance workflow](../.github/workflows/rpb108-mg07-original-low12-method-stop.yml), exact output at \`artifacts/mg07_true_original_low12_960cell.json\`, and a strict fail-closed one-ray positive assertion. Its **exact Fraction 960-cell calculation and independent artifact-identity checks PASSED** on the canonical October 25 workflow at commit `59b6449f11e7fae8791d8baf35cc049ad15826a5`.
 
-If the original exact positive witness passes, the scoped mathematical conclusion is that the chosen source-only \(J_{470}\) Ritz/SM40-cap **sufficient** criterion fails on a genuine source ray: \(K_{\rm cap}\succeq K_-\) and the inherited exact SM40 source threshold \(\theta_{\rm SM40}<0.97\). It does **not** imply \(\langle f,W_of\rangle<0\), rule out SI29-augmented trial spaces, or prove universal original signed odd/even positivity, CC27/Weil or RH.
+The accepted exact positive witnesses imply, within the inherited original Hilbert/operator realization, that the fixed source-only \(J_{470}\) Ritz/SM40-cap **sufficient** criterion fails on genuine original source rays: \(K_{\rm cap}\succeq K_-\) and the inherited exact SM40 source threshold \(\theta_{\rm SM40}<0.97\). It does **not** imply \(\langle f,W_of\rangle<0\), rule out SI29-augmented trial spaces, or prove universal original signed odd/even positivity, CC27/Weil or RH.
 
-**Priority:** Verify this exact 960-cell artifact first, rather than accumulating further supporting tail certificates.
+**Priority after acceptance:** Stop further source-only cap tightening at thresholds at most 97/100 and investigate the quantitatively conditioned SI29-augmented trial, preserving the full original strong-residual obligation.
+
+## Canonical acceptance — October 25, 2026
+
+**GitHub Actions run [40194516892](https://github.com/monocap-tech/weil-lab/actions/runs/40194516892) PASSED**, including primary exact-rational execution, source-membership acceptance, full same-original SM40 threshold recomputation, independent four-region/pole/tail accounting and artifact upload. **HEAD:** `59b6449f11e7fae8791d8baf35cc049ad15826a5`. The earlier canonical run `40153888559` failed before its first cell because Python 3.11 rejected decimal serialization of a huge valid Fraction; commit `59b6449` outward-rounded the already rigorous tail upper quantities *upward* to denominator `10^12`, preserving enclosure direction and making the artifact finite.
+
+The canonical artifact `mg07_true_original_low12_960cell.json` is attached to that successful run (artifact ID `12599562140`). It records **960 cells, 49 kink-ambiguous cells**, and the exact same-SM40 threshold
+\[
+\theta_{\rm SM40}=0.9699135819561749\ldots < 97/100.
+\]
+The accepted exact-rational results (decimal displays only) are:
+
+| Ray | Low-band lower | True pole-payment lower | Entire positive high12 tail upper | **Complete method-stop lower** |
+|---|---:|---:|---:|---:|
+| \(f_d=12001u+16384s\) | -55,354,735.852717 | 61,520,771.709644 | 3,128,136.648358 | **+1,286,120.156730** |
+| \(f_c=3013u+4096s\) | -3,468,025.238223 | 3,854,985.356569 | 192,011.603355 | **+85,059.302394** |
+
+Every entry in the artifact is an outward-certified `Fraction` string. Independently replaying these stored rational components yields, for each accepted ray,
+\[
+L_{\rm full}=L_{[0,12]}+\frac{97}{100}(P_{\rm lo}-T_{\rm hi})>0.
+\]
+These lower bounds establish \(\langle f,(K_- -0.97A_\star)f\rangle>0\) for both rays **conditional on the repository's inherited original Fourier/domain and closed-operator realization**.
+
+### Stronger, cap-independent scoped stopping implication
+
+For **any** valid negative cap \(C\succeq K_-\) on the same original Hilbert space, any \(0<\theta\le0.97\), and the **fixed** trial \(V=\operatorname{ran}(J_{470})\), the positive ray in \(V\) satisfies
+\[
+\langle f,(\theta A_\star-C)f\rangle
+\le \langle f,(0.97A_\star-K_-)f\rangle<0.
+\]
+Thus no refinement of the negative **upper cap alone** can rescue that specific source-only Ritz/Young sufficient gate while its threshold stays at most \(0.97\). The nonnegative residual payment cannot reverse a failed necessary cap-only inequality. This follows from the accepted rational witnesses plus the algebraic Ritz span identity, not from a negative direction of the actual signed odd operator.
+
+**Do not overpromote:** The result does **not** establish a negative direction for \(A_\star-K_-\), does not obstruct thresholds above \(0.97\) or enriched SI29 trial spaces, and does not decide W-ODD-NEG, even-sector positivity, CC27/Weil realization, or RH. The independent mathematical audit of inherited SI06/SM41/SM43A and Fourier/domain hypotheses remains open. Leave all canonical global theorem obligations OPEN.
