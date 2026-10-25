@@ -63,15 +63,18 @@ def high_positive_tail12():
     for a,b,label in RAYS:
         endpoint=add(scl(a,sn),scl(b,sh))
         derivative=add(scl(a,mul(omega,cs)),scl(F(b,2),ch))
-        ep=abs_upper(endpoint)
-        der=abs_upper(derivative)
+        # Fractions inherited from 85+-term trig/pi series can have
+        # thousands of decimal digits. Round UP before persisting;
+        # exact outward bounds are preserved, unlike str(huge_fraction).
+        ep=above(abs_upper(endpoint),10**12)
+        der=above(abs_upper(derivative),10**12)
         if label.startswith("direct"):
             assert ep<F(425) and der<F(19200)
         else:
             assert ep<F(97) and der<F(4850)
         second=2*B*a*(2*PI_UP*CENTER)**2+b*(ch[1]-1)
-        beta=ep/PI_LO+(2*der+second)/(4*PI_LO**2*CUT)
-        tail=2*beta**2*(18+ln12hi)/CUT
+        beta=above(ep/PI_LO+(2*der+second)/(4*PI_LO**2*CUT),10**12)
+        tail=above(2*beta**2*(18+ln12hi)/CUT,10**12)
         assert beta>0 and tail>0
         if label.startswith("direct"):assert tail<F(3200000)
         else:assert tail<F(200000)
