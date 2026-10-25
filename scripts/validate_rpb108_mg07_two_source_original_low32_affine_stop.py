@@ -76,15 +76,27 @@ def maximum_abs(a,b):
 def exact_arch_constant():
     assert LN[2][0]>LO_LOG2 and LN[2][1]<HI_LOG2
     harmonic=sum((F(1,k) for k in range(1,GAMMA_N+1)),F(0))
-    # Classical elementary telescoping harmonic-integral gamma:
-    # H_N-log(N+1) < gamma < H_N-log N.
-    gam_lo=harmonic-log_rational_bounds(F(GAMMA_N+1))[1]
-    gam_hi=harmonic-log_rational_bounds(F(GAMMA_N))[0]
-    assert GAMMA_N==1024 and 0<gam_lo<gam_hi<F(1)
+    # Rigorous 2000x tighter Euler-gamma interval with the SAME N:
+    # E_N=H_N-ln(N)-gamma=sum_{k=N}^inf g_k, where
+    # g_k=ln(1+1/k)-1/(k+1)
+    #    =1/(k+1) * integral_0^1 (1-t)/(k+t) dt.
+    # Since 1/(k+1)<=1/(k+t)<=1/k,
+    # 1/[2(k+1)^2] <= g_k <= 1/[2k(k+1)].
+    # Summation, integral comparison and telescoping give
+    # 1/[2(N+1)] <= E_N <= 1/(2N).
+    # All log bounds below are original exact SI06 rationals.
+    logN_lo,logN_hi=log_rational_bounds(F(GAMMA_N))
+    gam_lo=harmonic-logN_hi-F(1,2*GAMMA_N)
+    gam_hi=harmonic-logN_lo-F(1,2*(GAMMA_N+1))
+    old_gam_lo=harmonic-log_rational_bounds(F(GAMMA_N+1))[1]
+    old_gam_hi=harmonic-logN_lo
+    assert GAMMA_N==1024 and 0<old_gam_lo<=gam_lo<gam_hi<=old_gam_hi<F(1)
+    assert 0<gam_hi-gam_lo<F(1,2000000)
+    assert (old_gam_hi-old_gam_lo)/(gam_hi-gam_lo)>F(2000)
     # psi(1/4)-ln pi= -gamma-pi/2-3ln2-lnpi.
     c_lo=gam_lo+PI[0]/2+3*LN[2][0]+log_rational_bounds(PI[0])[0]
     c_hi=gam_hi+PI[1]/2+3*LN[2][1]+log_rational_bounds(PI[1])[1]
-    assert c_lo<c_hi and c_hi-c_lo<F(1,900)
+    assert c_lo<c_hi and c_hi-c_lo<F(1,1000000)
     return below(c_lo),above(c_hi)
 
 @lru_cache(maxsize=16384)
@@ -379,6 +391,12 @@ def exact_scalar(quick=False):
     assert regression_affine_signed_quadratic()
     assert regression_cell_integral_adversarial()
     assert regression_true_odd_Fourier_zero()
+    # Source-invariant exact low32 digamma constant is now
+    # rigorously enclosed to <1e-6 rather than ~0.001.
+    c_lo,c_hi=exact_arch_constant()
+    assert c_hi-c_lo<F(1,1000000)
+    a0_lo,a0_hi=arch_at(F(0))
+    assert a0_lo<=-c_hi<=-c_lo<=a0_hi
     assert KAPPA==F(1,1000) and THETA==F(97,100)
     # True SI06 7-power signed multiplier at frequency 0 is
     # strongly negative, with no sample or new digamma assumption.
@@ -544,6 +562,10 @@ def exact_scalar(quick=False):
            if accepted else "EXACT_ORIGINAL_LOW32_INCONCLUSIVE_NO_STOP")),
        "original_exact_seven_prime_multiplier":True,
        "full_rational_digamma_positive_terms_and_tail":True,
+       "harmonic_N":GAMMA_N,
+       "Euler_gamma_telescoping_interval_width_under_5e_minus_7":True,
+       "exact_original_arch_constant_width_under_1e_minus_6":True,
+       "exact_arch_constant_interval":[str(q) for q in exact_arch_constant()],
        "quarter_gamma_harmonic_integral_bracket":True,
        "original_physical_Fourier_exact_T_and_Tprime_interval":True,
        "independent_origin_sine_pole_physical_moment_identity":True,
