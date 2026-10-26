@@ -1,0 +1,104 @@
+name: MG07 complete original physical xcos coupling
+
+on:
+  push:
+    paths:
+      - scripts/validate_rpb108_mg07_complete_xcos_coupling.py
+      - .github/workflows/rpb108-mg07-complete-xcos-coupling.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  exact-complete-mixed-coupling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Recover accepted physical anchor inverse artifact
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const crypto = require('crypto');
+            const {owner,repo} = context.repo;
+            const run_id = 40263282082, artifact_id = 12625472360;
+            const source = '67c05cc824de1cef72b7aabb4baef1437ed28bcc';
+            const digest = '2fbf18b5c449e4b1906ce578c00fdcfd823f89f3e8e4a04d7be60c085c72ab6e';
+            const run = (await github.rest.actions.getWorkflowRun({owner,repo,run_id})).data;
+            if (run.status !== 'completed' || run.conclusion !== 'success' || run.head_sha !== source)
+              throw new Error('Anchor acceptance/source mismatch');
+            const a = (await github.rest.actions.getArtifact({owner,repo,artifact_id})).data;
+            if (a.expired || a.workflow_run.id !== run_id || a.workflow_run.head_sha !== source ||
+                a.name !== 'mg07-physical-2d-anchor-inverse' || a.digest !== 'sha256:' + digest)
+              throw new Error('Anchor artifact custody mismatch');
+            const response = await github.rest.actions.downloadArtifact({owner,repo,artifact_id,archive_format:'zip'});
+            const bytes = Buffer.from(response.data);
+            if (crypto.createHash('sha256').update(bytes).digest('hex') !== digest)
+              throw new Error('Anchor archive SHA256 mismatch');
+            fs.mkdirSync('anchor-input',{recursive:true});
+            fs.writeFileSync('anchor-input/accepted.zip',bytes);
+      - name: Extract exact anchor inverse certificate
+        run: |
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          with zipfile.ZipFile('anchor-input/accepted.zip') as z:
+              raw=z.read('mg07_physical_2d_anchor_inverse.json')
+          Path('anchor-input/anchor.json').write_bytes(raw)
+          PY
+      - name: Certify original complete mixed intervals and scalar Schur lower
+        run: python scripts/validate_rpb108_mg07_complete_xcos_coupling.py --anchor anchor-input/anchor.json
+      - name: Independent complete-tail, coupling and scope accounting
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          z=json.load(open('artifacts/mg07_original_complete_xcos_coupling.json'))
+          assert z['original_lowband_cells']==7168
+          m=F(z['high12_weighted_negative_mass'])
+          beta=F(z['high12_new_source_beta'])
+          neg=F(z['high12_negative_diagonal_payment'])
+          assert 0<m<F(423,25000) and neg>=m*beta*beta
+          coeffs=[[F(v) for v in row] for row in z['anchor_packet_tail_coefficients']]
+          rcoeffs=list(map(F,z['new_source_packet_tail_coefficients']))
+          payments=list(map(F,z['high12_complete_cross_absolute_payments']))
+          mixed=[[F(v) for v in row] for row in z['complete_cross_intervals']]
+          low=[[F(v) for v in row] for row in z['lowband_signed_plus_pole_intervals']]
+          for k,c in enumerate(coeffs):
+              exact=F(0)
+              for i,a in enumerate(c):
+                  for j,b in enumerate(rcoeffs):
+                      n=i+j+1
+                      exact+=2*a*b*F(12)**(-n)*((17+4*F(347,500))/n+F(1,n*n))
+              assert payments[k]>=exact
+              assert mixed[k]==[low[k][0]-payments[k],low[k][1]+payments[k]]
+          bf,bg=[max(map(abs,row)) for row in mixed]
+          anisotropic=8000*bf*bf+24*bg*bg
+          isotropic=7100*(bf*bf+bg*bg)
+          assert anisotropic==F(z['anisotropic_schur_penalty_upper'])
+          assert isotropic==F(z['isotropic_schur_penalty_upper'])
+          penalty=min(anisotropic,isotropic)
+          assert penalty==F(z['selected_schur_penalty_upper'])
+          rlow=low[2][0]-neg
+          assert rlow==F(z['new_source_full_signed_diagonal_lower'])
+          schur=rlow-penalty
+          assert schur==F(z['complete_signed_scalar_schur_lower'])
+          assert (schur>0)==z['strict_scalar_schur_positive_certified']
+          assert z['nonpositive_lower_is_not_actual_negative_witness'] is True
+          assert z['full_remaining_468_source_and_infinite_schur']=='OPEN'
+          assert z['whole_original_odd_even_CC27_Weil_RH']=='OPEN'
+          print('Independent complete mixed accounting PASS; strict scalar Schur:',schur>0)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg07-complete-original-xcos-coupling
+          path: artifacts/mg07_original_complete_xcos_coupling.json
+          if-no-files-found: warn
