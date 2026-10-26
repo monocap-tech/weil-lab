@@ -1,0 +1,49 @@
+name: MG07 original true signed 5120-cell two-ray action
+
+on:
+  push:
+    paths:
+      - scripts/validate_rpb108_mg07_signed_two_ray_5120cell.py
+      - .github/workflows/rpb108-mg07-true-signed-two-ray.yml
+  workflow_dispatch:
+
+jobs:
+  exact-original-signed-two-rays:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: All-original smooth signed multiplier 5120-cell certificate
+        run: python scripts/validate_rpb108_mg07_signed_two_ray_5120cell.py
+      - name: Independent exact signed lowband, pole and high-negative accounting
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          z=json.load(open('artifacts/mg07_original_signed_two_ray_5120cell.json'))
+          assert z['signed_frequency_cells']==5120
+          assert z['exact_original_J_membership']['original_SM35_J_source_dim']==470
+          assert z['entire_whole_real_Knegative_high12_paid'] is True
+          assert z['status']=='EXACT_ORIGINAL_SIGNED_STOPPING_RAY_5120CELL_CERTIFICATE'
+          assert len(z['true_rays'])==2
+          for r in z['true_rays']:
+            a=F(r['signed_low0_12_original_multiplier_lower'])
+            b=F(r['genuine_original_pole_payment_upper'])
+            c=F(r['signed_high12_negative_action_upper'])
+            d=F(r['complete_original_signed_Q_odd_lower'])
+            assert a-b-c==d and d>0
+            assert r['strict_original_Q_odd_positive']
+          assert z['signed_odd_operator_positive_ON_ALL_HILBERT_SPACE']=='OPEN'
+          assert z['even_CC27_Weil_RH']=='OPEN'
+          print('Original exact two stopping-ray signed Q positive, global ODD OPEN')
+          PY
+      - name: Retain rational exact signed results even on inconclusive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mg07-true-original-signed-5120cell-result
+          path: artifacts/mg07_original_signed_two_ray_5120cell.json
+          if-no-files-found: warn
