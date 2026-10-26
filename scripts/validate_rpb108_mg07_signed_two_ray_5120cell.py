@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""NF: whole-real genuine original signed odd form on MG07 source-stop rays.
+"""NF: whole-real genuine original signed odd form on MG07 source-stop rays; 7168 adaptive cells.
 
 Certifies Q_o(f)=<f,(Ao-Kminus-2ss*)f> via exact original m(ξ):
   2∫_[0,12] m(ξ)|T_f(ξ)|² dξ - 2|<f,s>|²
@@ -34,9 +34,9 @@ CUT=F(12)
 CURVE=F(2300)
 REGIONS=(
   (F(0),F(1),F(1,4096)),
-  (F(1),F(2),F(1,256)),
-  (F(2),F(4),F(1,128)),
-  (F(4),CUT,F(1,64)),
+  (F(1),F(2),F(1,512)),
+  (F(2),F(4),F(1,256)),
+  (F(4),CUT,F(1,256)),
 )
 
 def certified_negative_high12_mass_and_packets():
@@ -120,7 +120,7 @@ def verify():
         blocks[ri][k]+=low
         running[k]+=low
       count+=1
-  assert count==4096+256+256+512==5120
+  assert count==4096+512+512+2048==7168
   out=[]
   for i,(a,b,label) in enumerate(RAYS):
     assert physical['rays'][i]['purpose']==label==tail[i]['ray']
@@ -137,7 +137,7 @@ def verify():
       'strict_original_Q_odd_positive':signed_lower>0,
       'display_lower':float(signed_lower)})
   record={
-    'status':'EXACT_ORIGINAL_SIGNED_STOPPING_RAY_5120CELL_CERTIFICATE'
+    'status':'EXACT_ORIGINAL_SIGNED_STOPPING_RAY_7168CELL_CERTIFICATE'
            if all(z['strict_original_Q_odd_positive'] for z in out)
            else 'HONEST_INCONCLUSIVE_ORIGINAL_SIGNED_RAYS',
     'exact_original_J_membership':membership,
