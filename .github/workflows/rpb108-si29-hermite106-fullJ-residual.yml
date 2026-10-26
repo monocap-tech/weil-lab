@@ -32,6 +32,12 @@ jobs:
           tr=F(11,5)*sum((x*x for x in eps),F(0))
           assert tr==F(z['full_J470_projected_SI29_14D_physical_Schur_trace_actual_bound'])
           assert tr<F(z['full_J470_projected_SI29_14D_physical_Schur_trace_upper'])
+          B=F(11,10)
+          etr=(36*2*B+(2+2*B*191)**2)*sum((x*x for x in eps),F(0))
+          assert etr==F(z['true_SI29_Astar_weighted_Schur_14D_exact_trace_majorant'])
+          assert etr<F(z['true_SI29_Astar_weighted_Schur_14D_operator_upper'])==F(2,10**37)
+          assert z['weighted_Schur_less_than_1e_25_automatic']
+          assert z['small_weighted_Schur_eigenvalue_is_NOT_SI29_success_or_failure']
           r=z['original_exact_stopping_rays']
           assert len(r)==2 and F(r[0]['actual_14D_FstarR0_vector_upper'])==F(224,10**17)
           assert F(r[1]['actual_14D_FstarR0_vector_upper'])==F(56,10**17)

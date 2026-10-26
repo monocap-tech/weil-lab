@@ -86,6 +86,34 @@ def verify():
     trace_ceiling=F(1,4*10**41)
     hs_ceiling=F(8,5*10**21)
     assert trace<trace_ceiling and trace<hs_ceiling**2
+
+    # Frequency-Hermite interpolation commutes with physical d/dx.
+    # For h(eta,x)=sin(2*pi*eta*x), the Nth eta derivative of
+    # d_x h=2*pi*eta*cos(2*pi*eta*x) is bounded by
+    # 2*pi_up*[15*(2*pi_up*|x|)^N+N*(2*pi_up*|x|)^(N-1)]
+    # on the convex hull of all first-15 nodes and SI29 bands (<15).
+    # Hence the true physical derivative of each interpolation error
+    # is at most Cx*eps_i, Cx=2*pi_up*15+N/B<191.
+    assert max(c for c,_ in first)<F(15)
+    assert max(c+r for c,r,d in actual)<F(15)
+    Cx=2*PI_UP*15+F(N,B)
+    assert Cx<F(191)
+    # Zero-extension variation <=(2+2B*191)*eps_i.
+    # Whole-original Ao form <= 36*2B*eps_i²+V_i²:
+    # low |xi|<=1 uses Ao<=36, high |xi|>=1 uses SM41
+    # Ao<=17+ln|xi| and |hat e|<=V/(2pi|xi|)<V/(6|xi|);
+    # 2*integral_1^infty (17+ln xi)/xi² dxi=36.
+    Vconst=2+2*B*F(191)
+    assert Vconst<F(423)
+    Atr=(36*2*B+Vconst*Vconst)*sum((e*e for e in errors),F(0))
+    weighted_upper=F(2,10**37)
+    assert Atr<weighted_upper
+    # The Astar-Galerkin feature Schur T is the MINIMAL Astar
+    # energy of F-G with G in J470. Since Astar<=Ao and
+    # frequency-Hermite interpolants belong to J470,
+    # 0<T<=Atr*I_14 <2e-37 I. Thus lambda_min(T)<1e-25
+    # AUTOMATICALLY: the earlier conditional threshold is too
+    # weak to distinguish viable augmentation from failure.
     # For full P_J and original R0: J*R0=0,
     # ||F*R0|| <= ||(I-P_J)F||_HS ||R0||.
     # For f=Jx and forcing y=H_phys^-1 A_J x:
@@ -145,6 +173,10 @@ def verify():
         'full_J470_projected_SI29_14D_physical_Schur_trace_upper':str(trace_ceiling),
         'full_J470_projected_SI29_14D_physical_Schur_trace_actual_bound':str(trace),
         'full_J470_projected_feature_HS_norm_upper':str(hs_ceiling),
+        'true_SI29_Astar_weighted_Schur_14D_operator_upper':str(weighted_upper),
+        'true_SI29_Astar_weighted_Schur_14D_exact_trace_majorant':str(Atr),
+        'weighted_Schur_less_than_1e_25_automatic':True,
+        'small_weighted_Schur_eigenvalue_is_NOT_SI29_success_or_failure':True,
         'original_full_Galerkin_feature_coupling_operator_bound':
            '||Fstar R0|| <= (8/5)*10^-21 ||R0||',
         'original_exact_stopping_rays':ray_data,
