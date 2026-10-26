@@ -1,4 +1,4 @@
-name: MG07 original true signed 5120-cell two-ray action
+name: MG07 original true signed 7168-cell two-ray action
 
 on:
   push:
@@ -26,10 +26,10 @@ jobs:
           import json
           from fractions import Fraction as F
           z=json.load(open('artifacts/mg07_original_signed_two_ray_5120cell.json'))
-          assert z['signed_frequency_cells']==5120
+          assert z['signed_frequency_cells']==7168
           assert z['exact_original_J_membership']['original_SM35_J_source_dim']==470
           assert z['entire_whole_real_Knegative_high12_paid'] is True
-          assert z['status']=='EXACT_ORIGINAL_SIGNED_STOPPING_RAY_5120CELL_CERTIFICATE'
+          assert z['status']=='EXACT_ORIGINAL_SIGNED_STOPPING_RAY_7168CELL_CERTIFICATE'
           assert len(z['true_rays'])==2
           for r in z['true_rays']:
             a=F(r['signed_low0_12_original_multiplier_lower'])
