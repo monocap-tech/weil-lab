@@ -143,12 +143,16 @@ def independent_series_check(nodes,features,kernel):
                 rigorous_Taylor_product_tail_payments_verified=True)
 
 def normalize(S):
+    # Construct a candidate from the midpoint only. Factoring and then
+    # inverting interval Cholesky factors loses correlations severely.
+    # The certificate is the final check against the ORIGINAL ball S.
+    S0=S.mid()
     n=S.nrows(); L=arb_mat(n,n)
     for i in range(n):
         for j in range(i+1):
-            x=S[i,j]-sum((L[i,k]*L[j,k] for k in range(j)),arb(0))
+            x=S0[i,j]-sum((L[i,k]*L[j,k] for k in range(j)),arb(0))
             if i==j:
-                assert x>0, ('unresolved Schur Cholesky pivot',i,x.str(15))
+                assert x>0, ('unresolved midpoint candidate pivot',i,x.str(15))
                 L[i,j]=x.sqrt()
             else:L[i,j]=x/L[j,j]
     I=arb_mat([[int(i==j) for j in range(n)] for i in range(n)])

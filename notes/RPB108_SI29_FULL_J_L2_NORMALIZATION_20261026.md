@@ -16,6 +16,8 @@ It then seeks a fixed exact dyadic 14x14 C such that
 
 This is physical L2 normalization of the actual full-J residual family W=(I-P_J)F C. It is not energy normalization and does not compute the Astar-projected matrix.
 
+The fixed candidate C is constructed from a Cholesky factor of the midpoint of the enclosed S, and then checked against the original full ball enclosure of S. Midpoint construction alone certifies nothing. The direct final ball check is the acceptance gate. Factoring and inverting interval Cholesky factors instead caused severe correlation loss in the first run; that failed tolerance is not a mathematical obstruction or a need for another frequency integration.
+
 ## Closed-form physical integrals
 
 Each polynomial trigonometric J source is one term x^k sin(2*pi*c*x) for even k or x^k cos(2*pi*c*x) for odd k. The pole is represented by -i sin(i*x/2). Each true mean is
