@@ -1,0 +1,49 @@
+name: SI29 true feature residual against original full J470
+
+on:
+  push:
+    paths:
+      - scripts/validate_rpb108_si29_hermite106_fullJ_residual.py
+      - .github/workflows/rpb108-si29-hermite106-fullJ-residual.yml
+  workflow_dispatch:
+
+jobs:
+  original-14d-hermite106-full-source-projection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original SI29 feature residual and operator norm ceilings
+        run: python scripts/validate_rpb108_si29_hermite106_fullJ_residual.py
+      - name: Recheck projected-gram and stopping-ray scalar acceptance
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          z=json.load(open('artifacts/si29_true14_hermite106_fullJ_projection.json'))
+          assert z['original_source_count']==470
+          assert z['Hermite_original_generator_count']==106
+          assert z['true_continuous_SI29_feature_count']==14
+          eps=list(map(F,z['exact_feature_uniform_pointwise_errors']))
+          assert len(eps)==14 and max(eps)<F(1,10**21)
+          tr=F(11,5)*sum((x*x for x in eps),F(0))
+          assert tr==F(z['full_J470_projected_SI29_14D_physical_Schur_trace_actual_bound'])
+          assert tr<F(z['full_J470_projected_SI29_14D_physical_Schur_trace_upper'])
+          r=z['original_exact_stopping_rays']
+          assert len(r)==2 and F(r[0]['actual_14D_FstarR0_vector_upper'])==F(224,10**17)
+          assert F(r[1]['actual_14D_FstarR0_vector_upper'])==F(56,10**17)
+          assert F(z['assuming_weighted_Schur_at_least_1e_25_upper_cap_margin_gain'])<1286120
+          assert z['actual_original_weighted_Schur_T']=='OPEN'
+          assert z['even_CC27_Weil_RH']=='OPEN'
+          print('Exact rational SI29 full-J geometry/residual gate PASS; signed operator OPEN')
+          PY
+      - name: Retain original 14D exact bound
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: si29-true14-hermite106-original-fullJ-residual
+          path: artifacts/si29_true14_hermite106_fullJ_projection.json
+          if-no-files-found: warn
