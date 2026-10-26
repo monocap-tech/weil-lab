@@ -1,0 +1,13 @@
+# Actual normalized SI29 energy condition ceiling
+
+W-ODD-NEG remains open. Parent custody: PR #329, head 278fe2ad04c71f45a350ff07ec5f2359318de5e6; full native solve 40385192745 and exact rational replay 40386228123. The new workflow verifies that successful native run, commit, artifact, archive SHA256 and JSON SHA256 before reusing its complete original physical projection X and exact dyadic C. No original frequency integration or 470-source solve is repeated.
+
+Let W=(F-JX)C for the actual 14 features and all original J470 sources, so 0.99I<=W*W<=1.01I. The checker encloses the entire physical derivative Gram D=W'*W' and endpoint vector v=W(B). It differentiates the original trigonometric/Laurent formulas exactly, extends the regularized integral recurrence through powers -5 and -6, and independently checks the full actual 14-feature derivative Gram using degree-255 entire Taylor polynomials and rigorous derivative-tail payments. Higher polynomial source moments use the same positive-power integration identities already checked in the accepted builder. All formulas apply on the physical interval; no distributional derivative of a zero extension is substituted for the interior derivative.
+
+For each w=Wy, oddness gives endpoint jump contribution 2|w(B)|. Cauchy-Schwarz gives variation V(w)<=2|w(B)|+sqrt(2B)||w'||, hence V(w)^2<=8|w(B)|^2+4B||w'||^2. The inherited whole-original Ao bounds, <=36 on |xi|<=1 and <=17+ln|xi| above 1, with integration by parts and 2*pi>6, give <w,Ao w><=36||w||^2+V(w)^2. Since Astar<=Ao, the actual energy-projected Schur T_A(FC), a minimum over the entire J470 space, is no larger than the energy of the admissible W. Therefore
+
+    T_A(FC) <= [36*(101/100)+8||v||^2+4B tr(D)] I.
+
+The checker extracts exact dyadic midpoint/radius endpoints for D and v, recomputes this scalar upper bound with Fraction arithmetic, and rounds it upward to a power of two. Together with the accepted inherited lower 3328479/10^11 I, this bounds the condition number of the ACTUAL energy Schur, although its entries and energy projection remain uncomputed. The local result is upper 2^33 and condition number <2.59e14; GitHub replay must pass separately before acceptance.
+
+This is a coarse condition ceiling, not a response estimate or evidence that ordinary floating arithmetic can evaluate the source representation. C has very large coefficients and physical projection cancellation still requires certified high precision. The actual Astar projection, normalized forcing and response, complete signed odd inequality, inherited original analytic/domain review, even/CC27/Weil/RH remain open. The calculation adds no source directions and makes no assertion about the sign of Astar-Kminus.
