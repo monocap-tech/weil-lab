@@ -24,6 +24,10 @@ jobs:
   mg07-original-470-preconditioned-gate:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    env:
+      # Trusted exact-rational certificates exceed Python 3.11's default
+      # 4300-digit display limit. Keep a finite cap; arithmetic is unchanged.
+      PYTHONINTMAXSTRDIGITS: '100000'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
