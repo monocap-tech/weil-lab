@@ -1,0 +1,83 @@
+name: MG07 physical signed 2D anchor inverse replay
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_mg07_physical_2d_anchor_inverse.py
+      - .github/workflows/rpb108-mg07-physical-2d-anchor-inverse.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  exact-physical-anchor-inverse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recover pinned repaired signed 2D GitHub evidence
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const crypto = require('crypto');
+            const {owner, repo} = context.repo;
+            const run_id = 40260136876;
+            const artifact_id = 12623752657;
+            const source = '8844685d3e72a3d38f943b084b6e5bc70ef3d09c';
+            const digest = '2cc62e9fe52f38b021166605e40402f3d8aa4980f1148d7e3738ca3b1afa82ea';
+            const run = (await github.rest.actions.getWorkflowRun({owner, repo, run_id})).data;
+            if (run.status !== 'completed' || run.conclusion !== 'success' || run.head_sha !== source)
+              throw new Error('Repaired 2D acceptance/source mismatch');
+            const a = (await github.rest.actions.getArtifact({owner, repo, artifact_id})).data;
+            if (a.expired || a.workflow_run.id !== run_id || a.workflow_run.head_sha !== source ||
+                a.name !== 'mg07-original-complete-signed-2d-interval-result' || a.digest !== 'sha256:' + digest)
+              throw new Error('Repaired artifact custody mismatch');
+            const response = await github.rest.actions.downloadArtifact({owner, repo, artifact_id, archive_format: 'zip'});
+            const bytes = Buffer.from(response.data);
+            if (crypto.createHash('sha256').update(bytes).digest('hex') !== digest)
+              throw new Error('Archive SHA256 mismatch');
+            fs.mkdirSync('anchor-input', {recursive: true});
+            fs.writeFileSync('anchor-input/accepted.zip', bytes);
+      - name: Extract the exact repaired signed certificate
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          with zipfile.ZipFile('anchor-input/accepted.zip') as z:
+              raw=z.read('mg07_original_signed_two_dimensional_SPD.json')
+          Path('anchor-input/signed.json').write_bytes(raw)
+          PY
+      - name: Verify original physical anchor inverse and coupling cap
+        run: python scripts/verify_rpb108_mg07_physical_2d_anchor_inverse.py --input anchor-input/signed.json
+      - name: Independently check exact diagonal Loewner reserve and open remainder
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/mg07_physical_2d_anchor_inverse.json'))
+          a,c=map(F,d['retained_diagonal_lowers'])
+          b=F(d['retained_cross_abs_upper'])
+          x,y=map(F,d['physical_anchor_diagonal_lower'])
+          u,v=map(F,d['complete_physical_anchor_inverse_diagonal_upper'])
+          assert x==1/u==F(1,8000) and y==1/v==F(1,24)
+          assert a>x and c>y
+          assert (a-x)*(c-y)-b*b==F(d['diagonal_lower_determinant_reserve'])>0
+          assert d['mixed_functionals_must_use_complete_original_form'] is True
+          assert d['original_mixed_functionals_evaluated'] is False
+          assert d['remaining_signed_schur_certified'] is False
+          assert d['SM34_energy_dual_substitution_valid'] is False
+          assert d['whole_original_odd_positivity']==d['even_CC27_Weil_RH']=='OPEN'
+          print('Independent physical 2D inverse reserve PASS; full signed Schur OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg07-physical-2d-anchor-inverse
+          path: artifacts/mg07_physical_2d_anchor_inverse.json
+          if-no-files-found: warn
