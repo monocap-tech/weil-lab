@@ -141,15 +141,22 @@ def verify():
     for j in range(i):
       mat[i][j]=mat[j][i]
       errors[i][j]=errors[j][i]
+  # Each cell baseline was rounded DOWN to denominator 10^9. The
+  # lower endpoint is already safe; the upper endpoint must pay the
+  # cumulative rounding loss (< count/10^9), independently of ceil(error).
+  rounding_upper_payment=F(count,10**9)
   signed=[
     [(
       mat[i][j]-errors[i][j]-pole[i][j][1],
-      mat[i][j]+errors[i][j]-pole[i][j][0]
+      mat[i][j]+errors[i][j]+rounding_upper_payment-pole[i][j][0]
     ) for j in range(2)] for i in range(2)
   ]
   # The high negative form is PSD, and its quadratic satisfies
   # Qneg(z) <= M2 (|z0| beta0+|z1| beta1)^2.
-  # Lower the diagonal and bound absolute offdiagonal accordingly.
+  # Discard the positive high-frequency FORM as a whole PSD term.
+  # The offdiagonal below belongs to the RETAINED form, not to the
+  # complete form (the discarded positive form can have mixed entries).
+  # Lower the retained diagonal and bound its absolute offdiagonal.
   A=signed[0][0][0]-M2*betas[0]**2
   D=signed[1][1][0]-M2*betas[1]**2
   off=maximum_abs(signed[0][1])+M2*betas[0]*betas[1]
@@ -169,7 +176,12 @@ def verify():
     'signed_lowband_plus_pole_intervals':[[[str(u),str(v)] for u,v in row] for row in signed],
     'full_signed_A_diagonal_lower':str(A),
     'full_signed_D_diagonal_lower':str(D),
+    # Legacy key retained for readers; scope is explicitly the retained form.
     'full_signed_cross_abs_upper':str(off),
+    'retained_signed_cross_abs_upper':str(off),
+    'cross_bound_scope':'lowband_plus_pole_minus_negative_high_tail',
+    'positive_high12_form_discarded_as_psd':True,
+    'lowband_baseline_rounding_upper_payment':str(rounding_upper_payment),
     'full_signed_2D_determinant_lower':str(determinant),
     'full_signed_2D_min_eigenvalue_lower':str(lower),
     'positive_original_signed_2D_certified':ok,

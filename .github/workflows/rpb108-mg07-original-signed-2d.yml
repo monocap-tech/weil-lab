@@ -28,12 +28,24 @@ jobs:
           z=json.load(open('artifacts/mg07_original_signed_two_dimensional_SPD.json'))
           A=F(z['full_signed_A_diagonal_lower'])
           D=F(z['full_signed_D_diagonal_lower'])
-          B=F(z['full_signed_cross_abs_upper'])
+          B=F(z['retained_signed_cross_abs_upper'])
+          assert z['full_signed_cross_abs_upper']==z['retained_signed_cross_abs_upper']
+          assert z['cross_bound_scope']=='lowband_plus_pole_minus_negative_high_tail'
+          assert z['positive_high12_form_discarded_as_psd'] is True
+          assert F(z['lowband_baseline_rounding_upper_payment'])==F(7168,10**9)
           det=F(z['full_signed_2D_determinant_lower'])
+          # Regression: ceil(error) need not cover floor(baseline) loss.
+          den=10**9
+          v=e=F(39,10**10)
+          floored=F((v*den).__floor__(),den)
+          rounded_error=F((e*den).__ceil__(),den)
+          assert floored+rounded_error<v+e
+          assert floored+rounded_error+F(1,den)>=v+e
           assert z['original_lowband_cell_count']==7168
           assert z['positive_original_signed_2D_certified']
           assert A>0 and D>0 and B>=0
           assert det==A*D-B*B>0
+          assert F(z['full_signed_2D_min_eigenvalue_lower'])==det/(A+D)>F(1,7100)
           assert z['original_global_signed_Wodd']=='OPEN'
           assert z['even_CC27_Weil_RH']=='OPEN'
           print('Independent original complete signed 2D determinant PASS')
