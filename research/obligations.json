@@ -313,28 +313,28 @@
     "SM26": {
       "kind": "Actual original seventeen-packet to complete 890-source SI29 reference Schur negative-inertia obstruction",
       "scope": "Original physically supported odd K_neg SM11 17 independent continuous signed-negative Jensen packets imply K_neg>8/625 on a true 17-dimensional subspace, and the original SI29 B14=κI+PSD rank≤14−2ss* has at least 3-dimensional feature-null intersection with it. On this original subspace B14−K_neg<−59/5000, and SM10's ALL original 890-source negative cap +η yields B14−η−UDU*<−59/5000. Complete original block Schur inertia gives NEGATIVE INDEX at least 3 for the FULL 890×890 B14-conditioned SURROGATE source Schur D^-1−U*(B14−η)^-1U. DOES NOT show negative inertia for TRUE A*=A_o−2ss* (which can have extra positive continuum), and does not resolve complete W-ODD-NEG O1/O2. Reroute beyond old unchanged C14 reference.",
-      "pr": "pending draft PR",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/207",
       "repo_path": "notes/RPB108_SM26_FULL_CAP_14_SOURCE_INDEX_OBSTRUCTION_20261018.md",
       "verification": "Exact-rational original SM11 17 signed continuous windows/Gram, SI29 κ/14 rank/negative odd pole, SM10 true entire 107 blocks/890 sources/infinite η, finite full-block Schur inertia model; focused Actions and independent mathematical review pending. O1/O2 and RH OPEN."
     },
     "SM27": {
       "kind": "True original C33-versus-all-negative single witness, complete original 890-source C33 conditioned Schur index obstruction, and SAME physical witness true 13-band positive-continuum recovery",
       "scope": "SM13 original 17 signed continuous negative packet against all 33 SM12 original signed-positive Jensen means, with all true physical overlaps, yields on g_{721/50} Kneg−C33>3/200. SM10 entire original 890-source UDU*+eta I dominates Kneg, so C33−eta−UDU* has a negative quadratic. Since C33>=kappa I>eta and SM10 D SPD, exact whole-block inertia proves the FULL 890×890 C33-conditioned surrogate Schur D^-1−U*(C33−eta I)^-1 U has NEGATIVE INDEX>=1 (method no-go). Original SM14/15 separately show additional disjoint positive continuum response Ao−C33>1/2 and full odd signed Q positive on SAME g, so surrogate failure is NOT true Ao/Astar/W_o negativity. PS36 original O1/O2 still OPEN.",
-      "pr": "pending draft PR",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/208",
       "repo_path": "notes/RPB108_SM27_C33_FULL_CAP_SURROGATE_INERTIA_20261018.md",
       "verification": "Focused Actions pending. Replays original SM13 signed 17-packet/full 33-feature witness, original SM10 all 107 moment blocks/890 full negative Taylor sources/eta, original SM14 13 extra whole positive real frequency windows and SM15 positive physical source lower. Exact finite Schur inertia model checks logic. Mathematical and original Fourier-domain reviews independent."
     },
     "SM28": {
       "kind": "Original thirteen entire sign-positive real-frequency continuous-band Legendre decomposition, infinite-rank strictly positive variance and full infinite positive-frequency tower upper",
       "scope": "Genuinely original signed seven-prime positive odd physical continuum on all 13 original SM14 certified disjoint real windows, disjoint SI29 fourteen supported source bands. Exact original full-band physical operators T_j=2delta_j∫|sin(2pi ξ x)><..|dξ retain infinite-dimensional within-band covariance. Original Hilbert-valued Legendre identity T_j=4r delta_j Σ_{n>=0}(2n+1)|q_jn><q_jn|; exact 26 original q_j0/q_j1 physical sources plus strictly positive infinite-rank R>=2, uniform whole original operator norm R13<3/10000 I. Astar original pole-conditioned >= B14 + Σ13 T_j >= κ_star I with the original negative odd pole counted only once. Actual same diagnostic g_721/50 extra positive response >2/3, but full original 890-source SM10 U D U*+η and source/pole/cross/infinite residual Loewner PSD O1/O2 OPEN. No RH/even sign promotion.",
-      "pr": "pending draft PR",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/209",
       "repo_path": "notes/RPB108_SM28_POSITIVE_CONTINUUM_LEGENDRE_TOWER_20261018.md",
       "verification": "Focused exact-rational original SM14 whole-real signed positive window/disjoint source and SM15 physical witness, SI29 original pole floor, SM10 original 107-block/890 signed negative cap and p=2 entire infinite Legendre source Taylor tail. Inherited Fourier analytic/entire-function operator positivity requires independent proof audit; scoped CI does not certify full negative-frequency operator positivity."
     },
     "SM29": {
       "kind": "Complete original SM28 thirteen positive-Fourier-band CONTINUUM reference remote-frequency deficit, and complete original SM10 890-source continuum-conditioned surrogate Schur inertia obstruction",
       "scope": "Genuine original SM11 signed seven-prime whole-real negative Jensen packet at center 38956/100=389.56, physical odd g=sin(2pi c x)sinc(2pi ρx), ρ=1/100. Uniform exact all-real original physical sine Gram decay on every SI29 14-source degree-zero/first moment band and entire thirteen SM14 positive bands (<frequency20) yields |<g,hξ>|<3/1000, including EVERY exact infinite Legendre moment. Original SI29 B14=κI+14 signed-positive features−2ss* and complete original FULL positive continuum T13 then satisfy <g,(Kneg−(B14+T13))g>3/200, with odd pole counted with subtractive sign. Original SM10 full 107-block/890-column cap Kneg≤UDU*+eta I transfers to NEGATIVE INDEX>=1 for whole original 890-source B14+T13−eta conditioned SURROGATE Schur by exact bounded Schur inertia. TRUE original Astar >=B14+T13 may be positive on g via additional original positive frequency windows; full odd W-ODD-NEG O1/O2 and even E1-E4/Weil/RH remain OPEN.",
-      "pr": "pending draft PR",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/210",
       "repo_path": "notes/RPB108_SM29_HIGH_FREQUENCY_FULL_CONTINUUM_NOGO_20261018.md",
       "verification": "Exact Fraction original SM11 full 17 negative real bands, original SI29 source degree0/1 fourteen features and 12 intervals, original SM14 all 13 continuous signed-positive windows and total delta35, uniform physical sinc/sine high-frequency remote bound and strict deficit >3/200, original full SM10 107/890/eta, finite FULL coupled block Schur inertia. Focused Actions/independent mathematical review pending; no original odd full sign theorem."
     },
@@ -355,7 +355,7 @@
     "SM32": {
       "kind": "Genuine ORIGINAL odd parity cofinite whole-operator negative-index UPPER ≤470 and full original positive infinite physical complement, with correct-sign exact finite-complement Feshbach acceptance; O1/O2 remains OPEN",
       "scope": "Original SI10 signed seven-prime full Weil protected-positive b9 973 exact unresolved original leaves and 107 original physical Taylor clusters have full exceptional source dimension <=939, all original odd-pole s included. Reflection parity projects each +/- frequency x^k modulation pair to ONE original physically supported real odd x^k sin(2π c x) when k even or x^k cos(2π c x) when k odd, and includes original s. Thus explicit genuine original odd exceptional span E9 has dim<=sum_j p_j+1<=470. SI10 original full signed physical cofinite floor Q_o[f]>17/25000 ||f||² on all odd E9^perp; original odd negative index <=470 (not 0). Complete original O1/O2 equivalent to original corrected E9 finite-dimensional Feshbach A-C*D^-1 C PSD, subtracting FULL infinite mixed C with D>=17/25000. SM31 genuine coupled positive 2D G may NOT be assumed subset E9; augmented E9+G dimension<=472 and original full infinite complement remains positive. Strict conditional coupling norm² budget 17/4400000 needed just to preserve positive G block after eliminating infinite complement; unmeasured. No full original corrected finite PSD, no whole odd/Weil/RH.",
-      "pr": "pending draft PR",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/213",
       "repo_path": "notes/RPB108_SM32_PARITY_COFINITE_ODD_SCHUR_20261018.md",
       "verification": "Focused exact-rational original SI10 b9 whole-real signed seven-prime protected cover/973 leaves/107 clusters/Taylor counts and physical margin, parity source arithmetic, full minus-sign Feshbach 2×2 countermodels and explicit conditional cross budget; Actions/independent analytic review pending. Does not evaluate true full 470×470 corrected exceptional Schur or 890×890 original negative-cap inverse."
     },
@@ -364,12 +364,12 @@
       "scope": "On original SM32 physically supported odd 470D b9 exceptional E9 and whole infinite original positive complement Q, SI10 all-real original signed seven-prime 973 negative leaves and 107 clusters have exact per-cluster original Taylor remainder e_j<2^-9 and true negative multiplier integrated mass M_j. Actual original Kneg satisfies QKneg Q<=2B Σ_j M_j e_j² I, Kneg<=2B Σ_j M_j I, and hence entire original mixed norm ||QKneg P||²<=Γminus²=(2B M)(2B Σ_j M_j e_j²)<27/1000. Complete true original D=QWodd Q>=17/25000 I gives original NEGATIVE-ONLY inverse correction Cminus*D^-1 Cminus<=Γminus²/(17/25000) I<40 I. Original signed full cross C=Q(Aplus−κI)P−QKnegP: κ scalar and negative odd pole cross vanish exactly, but full positive continuum/archimedean Cplus and interferences remain UNMEASURED. No actual corrected 470D Schur PSD, O1/O2 closure, even E1–E4/Weil/RH. Exact original improved weighted validated strict rational ceilings leakage<1/15000, mixed squared<11/2000, negative-only inverse<81/10, versus common worst-case squared mixed 0.0260964057.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/214",
       "repo_path": "notes/RPB108_SM33_ORIGINAL_ODD_NEGATIVE_MIXED_BOUND_20261018.md",
-      "verification": "Initial focused GitHub Actions 39161626926 PASS on exact original SI10 973 leaves/107 true cluster b9 Taylor-weighted negatives, complete original QKnegQ leakage <0.00006624610913, true 470-vs-infinite mixed squared norm <0.005479244550, negative-only complete D^-1 response <8.057712573. Revised exact Fraction mandatory thresholds leakage<1/15000, mixed squared<11/2000, inverse response<81/10; final-head Actions rerun pending. ORIGINAL full Cplus and total signed corrected 470D Schur remain UNMEASURED and independent analytic review required."
+      "verification": "Initial focused GitHub Actions 39161626926 PASS on exact original SI10 973 leaves/107 true cluster b9 Taylor-weighted negatives, historical h-only leakage display 0.00006624610913, mixed squared display 0.005479244550 and inverse response display 8.057712573; all THREE were UNDERPAID by omitting kappa on the original unresolved cells and are no longer accepted as complete Kneg bounds. October 23 amendment pays h+kappa throughout: exact conservative epsilon upper 8716573659/131072000000000 <1/15000, and corrected global Kneg norm H=82.77732945625; amended full validator/CI and independent domain audit pending. Revised exact Fraction mandatory thresholds leakage<1/15000, mixed squared<11/2000, inverse response<81/10; final-head Actions rerun pending. ORIGINAL full Cplus and total signed corrected 470D Schur remain UNMEASURED and independent analytic review required."
     },
     "SM34": {
       "kind": "Exact original positive-energy dual source split E_A=Astar^-1 E0 eliminates entire archimedean/positive-frequency and original odd-pole mixed Astar contribution; all original 973-leaf Kneg complement gives relative full Schur <5/51 and clean 51/56 sufficient whole-odd finite spectral gate",
       "scope": "Start from genuine ORIGINAL positive odd pole-conditioned selfadjoint Astar=A_o−2ss*>=κstar I and full original seven-prime Kneg. E0 actual SI10/SM32 b9 odd parity physical 470-dimensional exceptional source, F=E0^perp with true original W_o coercivity>=μ=17/25000 and Kneg leakage Q0KnegQ0<=epsilon<1/15000 from SM33 all 973 leaves/107 per-cluster Taylor errors. NEW energy dual E_A=Astar^-1 E0 gives original nonorthogonal H=E_A dotplus F via SPD finite T=P0 Astar^-1 P0; full Astar mixed form a_star(e,v)=0 exactly on all e in E_A and v in F, including original positive continuum, arch high-frequency and negative odd pole IN Astar. The ENTIRE true original signed odd cross is -<Kneg e,v>. Cauchy Kneg PSD gives full original relative inverse-response <QKneg e,D_F^-1 QKneg e><=epsilon/mu <e,Kneg e>, where D_F=W_o|F>=μI. Exact full original odd sign equivalent to finite <=470D corrected energy-dual S_A; SUFFICIENT true original 470-source generalized finite gate N(h)=<Astar^-1h,Kneg Astar^-1h> <=(51/56)*G(h)=<h,Astar^-1h> because 1+epsilon/mu<56/51. This actual original finite N/G comparison NOT computed, so W-ODD-NEG O1/O2 and even/Weil/RH OPEN.",
-      "pr": "pending draft PR",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/215",
       "repo_path": "notes/RPB108_SM34_POSITIVE_ENERGY_DUAL_SCHUR_20261018.md",
       "verification": "Exact Fraction full original SM33 973 leaves/107 cluster-weighted true leakage, κstar original positive pole floor, SI10 odd physical source dimension, rational epsilon/mu<5/51 => clean 51/56 sufficient gate. Exact selfadjoint 2x2 original-style energy dual nonorthogonal exact congruence and adversarial Schur positive-diagonal/indefinite example. Focused Actions and independent original infinite-dimensional form-domain/Fourier audit pending. No true 470D N/G generalized spectral bound yet."
     },
@@ -378,7 +378,7 @@
       "scope": "SI10 original 107 physically distinct positive clusters with original odd Taylor orders sum469, true parity 260 even-k sin +209 odd-k cos, and true original odd pole s=sinh(x/2): by exponential-polynomial uniqueness on original physical interval with distinct ±2πic_j and ±1/2 exponents, exact physical linear independent E0 dimension470, not merely <=470. Original Astar genuine entire pole-conditioned high arch/full seven-prime positive selfadjoint >=κstar=33621/1e9, Kneg genuine entire negative <=H I with H=2B M, M SI10 all 973/107 negative mass. For ANY full original Astar-energy Galerkin solve Z:R470→V⊂Dom(Astar) containing E0 and full original residual R=J-Astar Z, Galerkin Z*R=0; TRUE original G=J*Astar^-1 J =G0+R*Astar^-1 R, G0=Z*Astar Z SPD, 0<=G-G0<=κstar^-1 R*R. TRUE N=J*Astar^-1 Kneg Astar^-1 J <=(1+t)Z*Kneg Z+(1+1/t) H/κstar² R*R. Original SM10 ALL 890 true odd negative Taylor columns, 107 SPD moment covariance blocks/eta permit full N0 upper Z*U D U*Z+eta Z*Z. Sufficient entire original odd O1/O2 gate: (1+t)N0_upper+(1+1/t)H/κstar² R*R <=(51/56)G0 on ALL true 470 source coefficients, not componentwise. Actual positive 470 stiffness, residual, 890 cap overlaps and generalized eigenvalues NOT computed, so O1/O2/even/Weil/RH OPEN. With t=1, N0<=theta/4 G0, conditional original residual budget R*R <=(theta κstar²/(4H))G0 has exact coefficient between 3e-12 and4e-12, not achieved.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/216",
       "repo_path": "notes/RPB108_SM35_FULL_ORIGINAL_RESOLVENT_GALERKIN_ENCLOSURE_20261018.md",
-      "verification": "SM35 focused GitHub Actions run 39165115598 PASS on draft PR #216 head 932f87b2b9d8cb39c477c5240c408fb63ec8e4a1: 107 distinct nonzero original cluster centers, 469 source Taylor degrees (260 even-k sin +209 odd-k cos) plus original odd pole exact analytically independent source dimension 470, original 973 signed negative leaves/SM10 complete 890 columns, true original negative mass 37.59565259375 and global K bound H=82.71043570625, original κstar=33621/1e9, θ=51/56, strict conditional source-residual energy ratio 3.111595268585951e-12 in t=1 / N0≤θ/4G0 allocation; exact coupled nonzero-residual Galerkin 2-source 3D benign/adverse tests. Entire ORIGINAL actual 470 Astar stiffness, R*R and true 470 generalized spectral bound NOT EVALUATED. Final bookkeeping update rechecks CI; independent functional analytic audit pending."
+      "verification": "SM35 focused GitHub Actions run 39165115598 PASS on draft PR #216 head 932f87b2b9d8cb39c477c5240c408fb63ec8e4a1: 107 distinct nonzero original cluster centers, 469 source Taylor degrees (260 even-k sin +209 odd-k cos) plus original odd pole exact analytically independent source dimension 470, original 973 signed negative leaves/SM10 complete 890 columns, historical h-only mass 37.59565259375 and UNDERPAID global K bound H=82.71043570625; corrected original Kminus=(kappa-m)+ mass 37.62605884375 and certified conservative H=82.77732945625, original κstar=33621/1e9, θ=51/56, strict conditional source-residual energy ratio 3.111595268585951e-12 in t=1 / N0≤θ/4G0 allocation; exact coupled nonzero-residual Galerkin 2-source 3D benign/adverse tests. Entire ORIGINAL actual 470 Astar stiffness, R*R and true 470 generalized spectral bound NOT EVALUATED. Final bookkeeping update rechecks CI; independent functional analytic audit pending."
     },
     "SM36": {
       "kind": "First actual-original SOURCE NUMERICAL ENGINEERING PILOT, not mathematical certificate: 16-32 physically supported SI10 odd source functions, Fourier digamma/seven-prime sampled original A_o and full original 890-column SM10 negative moment cap",
@@ -432,7 +432,7 @@
     "SM43": {
       "kind": "TRUE ORIGINAL signed digamma-plus-seven-prime POSITIVE low frequency whole-real RATIONAL interval cell weight bounds on all real 25 SI10 selected source-centered frequency windows and [0,1], plus exact complete 25×25 source-coupled Loewner ERROR relative to piecewise-constant weight times still-unevaluated true Fourier cell Gram; full low source matrix and original full O1/O2 OPEN",
       "scope": "Same original 25 SI10 genuine zero-extended supported odd sources (16 sin,8 xcos,1 sinh odd pole). For every selected frequency real cell [a,b] in source-centered windows (16 original selected c_j±1/2 plus [0,1], merged), true exact original digamma arch monotonic lower SM39 at a and novel positive arch upper at b from first64 rational digamma sum plus tail integral upper and genuine quarter-digamma gamma>57/100 SI06 lower constant, all outward rational. SI06 original true all-seven-prime exact rational prime_interval endpoints and midpoint, intersect whole-real global derivative 69 and SM40 true second derivative D2 interpolation bounds, giving original true m(ξ) ∈ [l,u] at EVERY real ξ∈[a,b]. a_o=max(κ,m) bracketed with max(κ,l/u) including unsolved m=κ crossings. Source-specific whole real frequency cells Fourier |T_j(ξ)|<=s_{j,I} using actual original sinc/sincprime physical B=11/10 source center resonance, and odd pole sinh true support. For arbitrary 25 coupled source vector z and whole source-window original positive A_W, compare to B_W=sum ((a_lo+a_hi)/2)*C_I with C_I=2∫_I T(ξ)T(ξ)*dξ ACTUAL (defined but not yet interval evaluated), rigorous -eps I25 <= A_W−B_W <=eps I25 with eps=sum |I|(a_hi−a_lo)∑_j s_j² exact rational. This is a TRUE complete-matrix scoped weight-envelope error, not an integrated tight low stiffness: C_I uncomputed, rest of [0,4096] not covered at refined mesh. Demonstrate rigorous refinement contraction at max cell steps 1/4 and 1/8, output actual rational cap and crossing-ambiguous cell counts. Inherited SM41 high log positive tail and SM42 exact physical Gram unchanged. All original full 470 Astar/odd/even/Weil/RH OPEN. Stronger SM43A second-order original positive signed m endpoint AFFINE approximation: original digamma positive-term exact second derivative majorant (global at left<1, frequency-decaying rational at left>=1) plus original all-seven-prime SI06/SM40 D2 provides entire real |m−affine(endpoint exact m)|≤D*h²/8. Endpoint ORIGINAL signed m exact rational interval midpoint provides at most endpoint max halfwidth, and max(κ,x) is 1-Lipschitz across arbitrarily many actual κ crossings; reference weight max(κ,affine signed rational m) has at most ONE algebraically known kink in each cell. Actual 25-source full coupled Loewner error <=Σ2h*(endpoint max width/2 +D*h²/8)*Σ_j true physical Fourier source sup², improved over first SM43 constant weight O(h) on same source-centered frequency windows, compares step1/4→1/8 and previous original exact rational reference error. Source Fourier affine integrals STILL UNEVALUATED, complement of low [0,4096] still unprocessed, original all-470 Astar/odd/even/Weil/RH OPEN. Explicit negative result: signed-affine reference alone has certified epsilon81.779824557 >SM43 constant81.189344451 at mesh1/8; do NOT claim second-order globally improved. Corrected locally adaptive true original positive hybrid weight picks the per-cell independently certified reference (piecewise constant or max(kappa,signed affine)), using exact rational min of full 25-source Cauchy/Loewner errors. Entire original physical Fourier source cell integral reference still only defined and not interval computed; nonselected positive low frequencies still OPEN.",
-      "pr": "pending draft PR",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/225",
       "repo_path": "notes/RPB108_SM43_ORIGINAL_POSITIVE_CELL_ENVELOPE_20261018.md",
       "verification": "Initial focused GitHub Actions 39180315885 PASSED genuine original full real selected 25-source positive cell conservative scalar constant step weight envelopes: same source-centered window union measure1029/64, 16 merged frequency windows, 65 original 1/4 cells→129 original 1/8 cells, ambiguous m=κ 55→44 cells, exact outward complete 25x25 Loewner error <=192726657761/1e9 I →81189344451/1e9 I (raw source coefficient norm); far too loose for spectral acceptance. New SM43A exact positive signed-affine endpoint/whole-real curvature script, Loewner error O(h²) plus endpoint SI06/SI07 interval width and max(κ,x) Lipschitz, same full 25 source windows and original source cross, must beat original step error; CI pending. Both reference cell Fourier Gram integrals remain uncomputed, remaining [0,4096] not covered, no original full positive source stiffness or Wodd O1/O2 proof. SM43A first script-only CI 39180913885 FAILED Python local F scope shadowing (fixed). Next full strict mathematical comparison 39181243583 FAILED legitimately: affine-only whole-source-window Loewner error source norm mesh1/4=319.4002757156, mesh1/8=81.7798245560, WORSE than original certified constant 192.7266577601/81.1893444510. Affine interpolation math remains valid but global curvature bound weak near small ξ. New SM43A hybrid per cell selects min of TWO independently verified original whole-real constant and signed-affine error bounds as exact rational criterion, on same true original 25 source full coupled 25x25 matrix, with any nonlinear κ crossing safe; requires verified actual strict error contraction, CI pending. Neither reference source Fourier Gram cell integral evaluated; no full LOW [0,4096] sign."
     },
@@ -516,7 +516,8 @@
     "SM52C": {
       "kind": "Exact-rational physical L2 coercivity corollary of independently focused-CI verified complete original coupled SM52 2x2 signed source lower.",
       "scope": "True original supported SI10 sine source2 and original same-center xcos source17 (original physical B=11/10), SM52 original signed lower matrix CI39205091881 proves full 2x2 PD with offdiag. Exact Gershgorin min=1066743452403/10^12; entire physical Gram trace <=4631/1500. Hence signed Wodd(h)>=69/200 ||h||_L2^2 on 2D span only. Full original 25/470 odd negative index/Schur, even/Weil/CC27/RH remain open. Inherited Fourier/form-domain identity and math audit separate.",
-      "repo_path": "notes/RPB108_SM52C_TWO_SOURCE_L2_20261018.md",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/236",
+    "repo_path": "notes/RPB108_SM52C_TWO_SOURCE_L2_20261018.md",
       "verification": "Standalone fully exact rational physical L² coercivity on original SM52 genuine sin/xcos 2D signed trial space passed Actions 39208057040: coefficient Gershgorin ell=1066743452403/10^12, physical Gram trace upper=4631/1500, strict signed >=69/200 ||h||², exact rational margin ell-(69/200)*(4631/1500)=1613452403/10^12. Complete 25/470 odd spectrum, even, Weil/RH open."
     },
     "SM54": {
@@ -699,7 +700,7 @@
         "SM65"
       ],
       "acceptance": "PS36 complete-operator O1/O2 gate: prove ORIGINAL supported full odd signed W_o=A_o-2|s><s|−K_neg,o >=0 on full physical domain, equivalently R_o (A_o-2|s><s|)^-1 R_o*<=I on entire true original negative-frequency carrier, with all original positive/negative cross couplings and infinite residual (or exact original full source-first odd Schur). A 2-column principal inverse block from SM25 or 890-column partial modules are NOT full-operator acceptance.",
-      "next_action": "SM63 original full true signed physical [g1,g2,g17] strict positive 3plane PASSED Actions39314851844, all 3 exact Sylvester minors >0, hence ACTUAL restricted physical source25 negative index<=22 conditional on inherited original Fourier/form-domain identities. NEXT: test an INDEPENDENT fourth original physical supported source with complete TRUE original signed whole-real mixed Fourier + exceptional pole (e.g. candidate near highest SM62 positive-reference complement response g22), establish full 4D positive definiteness via FOUR exact Sylvester/LDL positive pivots, not by splicing unrelated signed lower matrices. Parallel requirement ACTUAL 22D Schur with anchored positive 3plane full cross estimates, then original 470-source Astar inverse/strong INFINITE orthogonal remainder to close W-ODD-NEG O1/O2. SM61 certified first coarse genuine 23D Schur source mixed penalty gamma~19424.85; SM62 certified extra338 full25 positive lower 2+/23-; full odd negative index/even/Weil CC27 RH OPEN and Fourier/domain independent audit mandatory."
+      "next_action": "Audit reset (2026-10-23): Suspend MG source-dimensional strong-action positivity expansion as a critical-path front; SI29/SM19 analytically imply Sstar >= kappa_star^2 F*F for actual strong-domain independent sources, and MG21 finite positive-frequency moment SPD is qualitative. The active W-ODD-NEG mathematical gate remains the full original odd corrected SM34 470-source signed Schur (necessary/sufficient) or the sufficient N <= (51/56) G on ALL original coefficients, including the actual full negative continuum and infinite complement. STRICT FEASIBILITY PRE-SCREEN for SI29-augmented trial (2026-10-23): this is an alternative to the source-only J-Ritz method, not a certified pass. Original full MG07 scalar c=Hinf/(kappastar*kappa)≈3.70468712e8. For any rational 470-source ray, n=Z*Kcap_SM40 Z, d=c R*R, g=Z*Astar Z>0, minimizing (1+t)n+(1+t^-1)d over t>0 gives (sqrt(n)+sqrt(d))². A STRICT raywise reserve exists iff Δ=theta*g−n−d>0 and Δ²>4nd (all exact rationals); failure on one fully certified original ray rules out THIS trial/cap/t-sufficiency only, not true signed odd positivity. At safely paid theta>0.9335639067, residual-only necessary bound D/G0<2.5200e-9 is extremely restrictive. Check small original physical rays with complete Ao/SI29/SM40 action and HIGH-LOG tail before building full 484-column moments; no actual ray tested yet. New scripts/validate_rpb108_mg07_augmented_young_ray_gate.py is algebraic test only. NF 2026-10-24 EXACT LOW12 METHOD-STOP SHORTENING: Main original signed W-ODD-NEG source-only Ritz/SM40 CAP sufficient-method necessary inequality Knegative(f)>0.97*Astar(f) is now reduced to 960 exact rational original cells in [0,12] (256 x 1/256 and 704 x 1/64) plus full original true sine/sinh two-IBP Ao high-frequency |xi|>12 log-form bound and genuine SI18 source pole. The full signed original m second derivative is conservatively <=2300 (SM40 seven-prime D2<900 + SM43A quarter-digamma LOWARCH<1400), so no region-specific curvature dependencies. Independent local exact-Fraction mirror executed ALL 960 source-ray cells and found true-original signed-method lowband lowers -55354893.630107 direct ray (12001,16384) and -3468035.032463 cap ray (3013,4096); with separately calculated conservative original physical pole and high12 action bounds, preliminary strict positive total lower >1.28e6 and >84e3 respectively. These are INDEPENDENT LOCAL FEASIBILITY, NOT REPO CI/PUBLISHED PROOF ACCEPTANCE. New script scripts/validate_rpb108_mg07_original_low12_960cell_stop.py computes exact canonical result, fails closed and stores rational artifacts; new workflow rpb108-mg07-original-low12-method-stop.yml checks outcome. PRIORITIZE THIS 960-CELL acceptance instead of old 2240-cell low32 or further auxiliary estimates. If accepted it rules out ONLY the fixed original source-only J470 Ritz+SM40 cap sufficient criterion, not signed odd negativity/alternate augmented SI29 trial or RH. W-ODD-NEG remains OPEN until acceptance and independent analytic review. See notes/RPB108_MG07_ORIGINAL_LOW12_960CELL_CERTIFICATE_20261024.md. NF 2026-10-24 DIRECT ORIGINAL LOW32 ENDPOINT PRECISION CLOSURE: The SAME original two-source 2240-cell signed method stopping test now has independently re-derived, outward exact Euler-gamma and convex quarter-digamma endpoint intervals: N=1024 harmonic-log gamma bracket via 1/[2(N+1)]<=H_N-ln N-gamma<=1/(2N) (error <5e-7); genuine SI06 64-positive-term tail g_y(v)=y²/[v(v²+y²)] is decreasing and convex, so integral_K∞ g+g(K)/2<=sum_{k>=K}g(k)<=integral_{K-1/2}∞ g. Exact rational original arch endpoint widths ξ=0 ~4.764e-7, ξ=1 ~6.95e-7 and ξ=32 ~3.463e-5 (old ~.000976, .001014, .01216), directly improving every multiplier cell without changing 2240 cells, original signed operator, physical source rays, or stop criterion. Original full low32 CI still QUEUED, J-only Ritz+SM40 method STOP NOT proved, W-ODD-NEG OPEN. See scripts/validate_rpb108_mg07_two_source_original_low32_affine_stop.py and notes/RPB108_MG07_TRUE_LOW32_AFFINE_METHOD_STOP_20261024.md. NEXT MATH AUDIT (2026-10-24): The optional TRUE original Wodd source-ray-positive check now uses SI10's exact original 107-component/973-leaf two-sign negative support cap mass M=1204033883/32000000, and an even sharper exact rational leaf-by-leaf Fourier reciprocal integral S32=2sum_{SI10 leaves with b>32}(h+KAPPA)(1/max(a,32)-1/b), 0<S32<M32/1024<M/1024. Thus the entire signed negative tail |xi|>32 is bounded by beta32^2*S32, NOT the obsolete all-real uniform SI06 2M0 beta32²/32 or coarse whole SI10 M beta32²/1024; original complete Fourier/domain assumptions inherited unchanged. This is an auxiliary strict improvement only, and **primary gate remains the 2240-cell exact low32 Knegative−0.97Astar J-only Ritz method STOP**. No job has reported a completed acceptance; W-ODD-NEG OPEN, even/CC27/RH OPEN. New exact replay scripts/validate_rpb108_mg07_original_signed_supported_tail.py, see notes/RPB108_MG07_TRUE_LOW32_AFFINE_METHOD_STOP_20261024.md. NF OCT 24 ORIGINAL LOW32 EXPLICIT INTERVAL ATTEMPT (CI PENDING): 2240 all-real rational cells covering [0,32], true original seven-prime/digamma endpoint interval and affine second-curvature payment, actual analytic SM42 sine/pole Fourier first derivative and second-moment error, original exact pole subtraction, and proved high-positive-log tail. Original rays (12001,16384) and (3013,4096) at center 37/64. Exact strict positivity on any ray would obstruct ONLY original J-only Ritz/SM40-cap sufficient method via theta_SM40<97/100; it would NOT be a signed odd negative direction, an augmented SI29-Ritz no-go, or RH. New dedicated focused 90min CI and source scripts/validate_rpb108_mg07_two_source_original_low32_affine_stop.py; original W-ODD-NEG remains OPEN until all CI checks and independent Fourier/domain review. NF EXACT REPAIR/PROOF INPUT (2026-10-24): Archived genuine original cluster0 sine at c=37/64 plus original sinh yields TWO distinct rational rays, direct Knegative (12001,16384) and cap SM40 (3013,4096). New exact Fraction SI18 physical 2x2 sin/sinh Gram, true pole subtraction 2< f,s >² and full SI14 signed endpoint cancellations + double IBP + original SM41 complete real a_o<=17+ln|xi| now certify complete original Ao POSITIVE FORM outside |xi|>32 upper <264000 direct / <15700 cap (outside 2048 <500/<26); physical norms / actual pole payments tightly enclosed. Crucially cutoff32 shrinks next original frequency integral coverage 64x vs 2048 and the tail is <11/10000 of the true physical energy. Exact SM40 theta now asserted <97/100. Strict source-only J-Ritz+SM40 method STOP reduces rigorously to ONE finite ORIGINAL frequency interval [0,32] inequality Knegative_low_LO−(97/100)*Ao_low_HI > (97/100)*(certified_Ao_high_upper−certified_true_pole_payment_lower), since Kcap_SM40>=Kneg. Both LOW integral inputs remain OPEN; next authorized work is original full seven-prime/digamma kink-safe SI43A affine finite interval source analytic Fourier SM42 signed cell upper/lower, no sampled Gauss acceptance. Script validate_rpb108_mg07_two_source_stop_low_band_reduction.py fails closed and reports exact right-hand threshold per ray. THIS IS METHOD-SPECIFIC stop and not proof of actual signed negative direction, augmented trial no-go, original odd PSD, even, CC27 or RH. See notes/RPB108_MG07_TWO_SOURCE_EXACT_PHYSICAL_POLE_AND_LOW32_20261024.md. CURRENT NF OCT 24 ACTUAL ORIGINAL RAY / METHOD STOP: On unchanged 470 original b9 sources, passing SM40 3892-subcell/890-cap exact CI 40071136137 gives fully paid theta=0.9699135819561749 (old 0.93356 merely conservative); passing MG07 finite algebra CI 40071136586 still has NO actual 470 resolvent/strong residual. Exact original 25 source SM40 scout CI passing NUMERICAL ONLY provides f=12001*sin(2pi*(37/64)x)+16384*sinh(x/2), sampled Kneg/Astar 0.99596..0.99974, less than 1 but greater than theta. New true CONTINUOUS SI29 14-feature pole-aligned augmented Galerkin float pilot with physical SVD rank 10–13 (nominal local 16, not full 484) gives sampled direct Kneg/G 0.9964..0.9991 and relative squared strong residual 4.4e-4..5.9e-4, vs necessary MG07 residual-only ratio <2.618e-9. This is NONCERTIFYING method-feasibility discovery; no signed negative direction. PRIORITY is actual rigorous 2-source STOP witness: exact entire original Astar upper and same SM40 full 890-cap lower on this rational f to reject specific J-only Ritz if Ccap(f)>theta Astar(f), then decide if true 484 SI29-augmented method warrants full matrix; do not promote odd positivity or use SVD-truncated pilot as proof. Critical path CI failed old custom roles; 34 repaired to canonical verification with scope_role preserved, rerun pending. See notes/RPB108_MG07_AUGMENTED_TRUE_SI29_TWO_SOURCE_FEASIBILITY_20261024.md. NEW SAME-TRIAL POLE-ALIGNED ORIGINAL BASIS OPTIMIZATION (2026-10-23): Because s=sinh(x/2) is already among original 470 sources J and all 14 true SI29 continuous Jensen features g_j are odd, replace augmented Galerkin TRIAL features by h_j=g_j-[g_j(B)/s(B)]s, B=11/10. Each h_j has exact zero physical endpoint values; span(J,g_1..g_14)=span(J,h_1..h_14), so original Galerkin Z,R and full SI29 reference inverse identity remain EXACTLY unchanged by basis choice (verified rational toy). Full original high-frequency SM41 Ao² true-feature action tails now decay as |xi|^-4 after two physical IBPs; exact rational SI29 continuous center-phase and odd first-moment cancellation, pole derivative payments and cosh(11/20)<6/5 establish 14D Loewner tail <3/40000 at Lambda2048 and <7/5000000 at Lambda8192, from previous 143 variation (~1.9 million-fold reduction in this COORDINATE upper). This does NOT give original 470-source strong residual, low-frequency Ao matrix, Young discriminant pass or odd positivity. FIRST ACTUAL CALCULATION: certify true original low-frequency H_T,A_T,S_T,C_T and pole/feature cross on selected 470-source rays in the SAME pole-aligned at-most-484 trial and apply exact Young Δ test; stop if ray fails. Verify scripts/validate_rpb108_mg07_pole_aligned_si29_tail.py plus exact augmented-basis invariance model in CI and independently audit SI29/SM41 physical domain. MANDATORY TRUE-SI29-TRIAL-CARRIER CORRECTION (2026-10-23): SI24/SI25 `feature_terms` are only Simpson QUADRATURE proxies for the true continuous Jensen mean and first-moment SI29 physical reference functions; the initial augmented MG07 strong-tail validator incorrectly substituted these finite sampled proxies and its claimed true-feature domain bound was NOT established. Repaired validator scripts/validate_rpb108_mg07_si29_feature_strong_tail.py uses TRUE continuous integrals with exact |w| masses 1 (mean), 3/2 (moment) and absolute first moments c and 3c/2. True zero-extended variation yields 1/|xi| Fourier bounds and combined original 14-feature strong-action squared tail 143<sum Uj<144 at Lambda=2048, conditional on original SM41 whole-real high-log action identity. This is ONLY finite strong-domain admission, wildly too coarse for ~1e-9 MG07 residual Loewner; low-frequency original action Gram and complete 484x470 residual OPEN. No Simpson proxy may be used as B14 feature in exact R*B14^-1R identity. See notes/RPB108_MG07_SI29_AUGMENTED_TRIAL_20261023.md. NEW SI29-AUGMENTED GALERKIN OPTION (2026-10-23): preserve EXACT 470 original energy-dual exceptional SOURCES J and their SM34 N/G gate, but enlarge the separate Astar-Galerkin TRIAL to span(J,G14) (rank <=484) with the SAME original fourteen physical SI29 reference features. Then R=J-Astar Z is orthogonal to J,G14 and sinh pole s, so the WHOLE reference B14 R=kappa R and R*B14^-1R=kappa^-1R*R exactly, eliminating all pole/feature inverse residual response by construction, not by omission. The new complete MG07 sufficient 470-source matrix uses SAME SM40 cap, Hinf=871887/70000, ordinary full residual Gram and one t>0; no numerical success is inferred because the scalar factor Hinf/(kappastar*kappa) is still large. Source-only theta AJ-CJ failure DOES NOT block this enriched Ritz. The exact Fraction augmented toy regression and SI29 14-feature original strong-domain/log Fourier tail replay are now mandatory before numerical 484-by-470 moment certification; independent original form-domain audit and odd/even/RH remain OPEN. See notes/RPB108_MG07_SI29_AUGMENTED_TRIAL_20261023.md. NEW WHOLE-OPERATOR MG07 GAIN (2026-10-23): SI06 positive arch digamma expansion and the full original seven prime-power absolute weight TWOC imply for EVERY original real frequency Kminus=(kappa-m)+ <= Hinf I, Hinf=871887/70000<12.456. This uniform norm improves over both corrected SM10 h+kappa mass H=82.77732945625 and certified SM40 integrated mass bound H=36.899564590625; apply Hinf/kstar to the FULL original 470-source SI29-weighted MG07 residual, improving the penalty by factor >6.64 without changing theta/cap/source. Separate Fraction validator scripts/validate_rpb108_mg07_global_negative_sup.py asserts the SI06 constants and deliberately leaves all original 470 source/action matrices and odd sign OPEN. MANDATORY PRE-ACCEPTANCE REPAIR (2026-10-23): original SM33 h-only negative leakage and Hnorm omitted +kappa for Kminus=(kappa-m)+. Correct all 107 original unresolved clusters by Mj_full=Mj_h+2*kappa*cluster_width, yielding fully paid epsilon<1/15000 under exact old<66247/1e9 and extra <10703/41943040000, and corrected Hminus=82.77732945625<83. SM33, SM34, SM35 and MG07 exact replay must pass before any strong assertion from inherited bounds. See notes/RPB108_SM33_KAPPA_LEAKAGE_REPAIR_20261023.md. NEW MATHEMATICAL PRIORITY: on SAME original 470D E0 and F=E0^perp, pole s lies in E0 and Ao>=kappa=1/1000, while entire QKminusQ<=epsilon from SM33, so the full signed complement has D_F>=kappa-epsilon. SM34 energy-dual sufficient theta therefore improves rigorously to 1-epsilon/kappa>14/15 without ANY new exceptional generators. Independently exact-rational SM40/SI10 effective h=min(hSI10,wSM40) across all 3892 original signed-real subcells gives epsilon_eff<=epsilon and hence potential further theta_eff=1-epsilon_eff/kappa; require focused validator PASS and independent original Fourier/domain audit before promoting its decimal. On the SAME current Ritz/cap method, test theta_eff AJ-C_SM40>=0 and then complete strong-residual gate, not obsolete 51/56 unless intentionally conservative. FIRST implementation obligation: use the canonical physical Galerkin trial space V=ran(J) first, with exact raw original source matrices H=J*J, AJ=J*Astar J, CJ=J*Kcap J for ONE unchanged complete original 890-column cap. The exact Galerkin response Z=J AJ^-1 H gives Delta0=(AJ^-1 H)* [(51/56)AJ-CJ] (AJ^-1 H), so initial cap-only feasibility is EQUIVALENT to (51/56)AJ-CJ>0 without computing the inverse response. FIRST seek a rigorous rational original physical source ray v with v*[(51/56)AJ-CJ]v<=0 using the **currently sharpest certified original SM40 3892-subcell/107-block/890-column cap including its matched eta**, NOT superseded SM10/SM37. Historical same-source NONCERTIFYING SM40 cap/Astar maxima ~1.003132 and 1.012044 exceed 51/56, but do not certify a witness; earlier SM10 ~10.86 was largely cured by SM39/SM40 by combining COMPLETE all-frequency Astar upper and SAME-cap lower: it stops only the fixed source-space Ritz/cap MG07 method, not other trial spaces or the actual signed operator. If no such witness, independently certify complete rational G0=Z*Astar Z, N0cap=Z*Kcap Z and positive normalized slack Delta0=(51/56)G0-N0cap >=delta G0, delta>0. A certified Delta0 nonpositive ray makes the current fixed Z/cap MG07 method impossible even with zero residual; change cap or trial, not MG source positivity. For this SAME canonical Ritz space, define E=(I-J H^-1 J*) Astar J and full strong-source Gram SJ=(Astar J)*(Astar J). The exact identities J*E=0, R=-E AJ^-1 H and E*E=SJ-AJ H^-1 AJ>=0 turn the COMPLETE MG07 sufficient inequality into (1+t)CJ+(1+1/t)(Hminus/kappa_star)E*B14^-1 E <= (51/56)AJ on the raw original source coefficients, for ONE common rational t>0. This avoids constructing AJ^-1 for the Loewner decision but still requires an independently certified full-frequency 470D AJ, CJ, SJ, E feature/pole correlations and full physical H; SPD of SJ alone gives no residual upper. Only after a full positive cap-only preflight, construct DB=R*B14^-1 R for R=J-Astar Z with complete true pole, all real frequencies, domain and 470x470 cross terms and test (1+t)N0cap+(1+1/t)(Hminus/kappa_star)DB <=(51/56)G0 for ONE rational t>0. Complete odd/even, Weil, independent source/form-domain, native CC27, global bridge and RH remain OPEN. Governance review: docs/CRITICAL_PATH_RESET_20261023.md; no numbered MG milestone as part of audit."
     },
     {
       "id": "W-EVEN-FORM",
@@ -1040,7 +1041,8 @@
     {
       "id": "SM26-full-original-negative-cap-surrogate-index",
       "obligation_id": "W-ODD-NEG",
-      "role": "method-obstruction",
+      "role": "verification",
+      "scope_role": "method-obstruction",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm26_full_cap_14_source_index_obstruction.py"
@@ -1051,7 +1053,8 @@
     {
       "id": "SM27-complete-c33-surrogate-spectral-no-go",
       "obligation_id": "W-ODD-NEG",
-      "role": "method-obstruction",
+      "role": "verification",
+      "scope_role": "method-obstruction",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm27_c33_full_cap_surrogate_inertia.py"
@@ -1073,7 +1076,8 @@
     {
       "id": "SM29-remote-positive-continuum-coverage-nogo",
       "obligation_id": "W-ODD-NEG",
-      "role": "method-obstruction",
+      "role": "verification",
+      "scope_role": "method-obstruction",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm29_high_frequency_full_continuum_nogo.py"
@@ -1150,7 +1154,8 @@
     {
       "id": "SM36-original-numerical-feasibility-only",
       "obligation_id": "W-ODD-NEG",
-      "role": "diagnostic-noncertifying",
+      "role": "verification",
+      "scope_role": "diagnostic-noncertifying",
       "argv": [
         "python3",
         "scripts/sm36_original_odd_numerical_pilot.py"
@@ -1161,7 +1166,8 @@
     {
       "id": "SM37-original-full-signed-subcell-negative-cap",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-operator-upper-certificate-and-noncertifying-pilot",
+      "role": "verification",
+      "scope_role": "scoped-original-operator-upper-certificate-and-noncertifying-pilot",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm37_refined_original_negative_cap.py"
@@ -1172,7 +1178,8 @@
     {
       "id": "SM38-original-leafwise-odd-fourier-diagnostic",
       "obligation_id": "W-ODD-NEG",
-      "role": "numerical-original-source-audit-noncertifying",
+      "role": "verification",
+      "scope_role": "numerical-original-source-audit-noncertifying",
       "argv": [
         "python3",
         "scripts/sm38_leafwise_original_odd_fourier_audit.py"
@@ -1183,7 +1190,8 @@
     {
       "id": "SM39-original-rational-left-arch-full-cap",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-full-negative-operator-upper-and-noncertifying-pilot",
+      "role": "verification",
+      "scope_role": "scoped-original-full-negative-operator-upper-and-noncertifying-pilot",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm39_rational_left_arch_cap.py"
@@ -1194,7 +1202,8 @@
     {
       "id": "SM40-original-endpoint-curvature-full-negative-cap",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-complete-signed-negative-operator-upper-and-noncertifying-selected-pilot",
+      "role": "verification",
+      "scope_role": "scoped-original-complete-signed-negative-operator-upper-and-noncertifying-selected-pilot",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm40_endpoint_curvature_negative_cap.py"
@@ -1205,7 +1214,8 @@
     {
       "id": "SM41-original-positive-high-log-tail",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-full-high-frequency-positive-operator-upper-with-noncertifying-low-pilot",
+      "role": "verification",
+      "scope_role": "scoped-original-full-high-frequency-positive-operator-upper-with-noncertifying-low-pilot",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm41_original_positive_log_tail.py"
@@ -1216,7 +1226,8 @@
     {
       "id": "SM42-original-full-25-physical-gram-low-gate",
       "obligation_id": "W-ODD-NEG",
-      "role": "certified-original-selected-physical-gram-and-coarse-crossing-safe-positive-low-operator-only",
+      "role": "verification",
+      "scope_role": "certified-original-selected-physical-gram-and-coarse-crossing-safe-positive-low-operator-only",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm42_original_physical_gram_and_low_gate.py"
@@ -1227,7 +1238,8 @@
     {
       "id": "SM43-original-positive-whole-real-source-window-cells",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-certified-original-positive-cell-multiplier-Loewner-error-not-full-stiffness",
+      "role": "verification",
+      "scope_role": "scoped-certified-original-positive-cell-multiplier-Loewner-error-not-full-stiffness",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm43_positive_cell_envelope.py"
@@ -1238,7 +1250,8 @@
     {
       "id": "SM44-original-supported-full-25-cell-gram",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-selected-source-full-rational-positive-cell-matrix-and-complete-Loewner-error-not-entire-low",
+      "role": "verification",
+      "scope_role": "scoped-original-selected-source-full-rational-positive-cell-matrix-and-complete-Loewner-error-not-entire-low",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm44_physical_fourier_cell_gram.py"
@@ -1249,7 +1262,8 @@
     {
       "id": "SM45-local-original-full-25-source-Fourier-derivative",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-certified-original-selected-25-source-positive-window-Loewner-sharpening",
+      "role": "verification",
+      "scope_role": "scoped-certified-original-selected-25-source-positive-window-Loewner-sharpening",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm45_local_source_fourier_derivative.py"
@@ -1260,7 +1274,8 @@
     {
       "id": "SM46-original-affine-physical-Fourier-source-cells",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-selected-full-physical-source-positive-window-rational-affine-matrix-Loewner-error",
+      "role": "verification",
+      "scope_role": "scoped-original-selected-full-physical-source-positive-window-rational-affine-matrix-Loewner-error",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm46_affine_physical_fourier_source.py"
@@ -1271,7 +1286,8 @@
     {
       "id": "SM47-original-full-low-25-source-one-sided-Jensen",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-entire-low-25-source-one-sided-positive-lower-rational-Jensen",
+      "role": "verification",
+      "scope_role": "scoped-original-entire-low-25-source-one-sided-positive-lower-rational-Jensen",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm47_original_full_low_jensen.py"
@@ -1282,7 +1298,8 @@
     {
       "id": "SM48-original-25source-signed-Jensen-reference-deficit",
       "obligation_id": "W-ODD-NEG",
-      "role": "original-positive-lower-reference-vs-original-signed-negative-lower-method-obstruction",
+      "role": "verification",
+      "scope_role": "original-positive-lower-reference-vs-original-signed-negative-lower-method-obstruction",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm48_original_signed_jensen_deficit.py"
@@ -1293,7 +1310,8 @@
     {
       "id": "SM49-true-original-25source-source-adaptive-positive-Jensen",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-real-signed-positive-physical-source-25x25-Jensen-lower-matrix",
+      "role": "verification",
+      "scope_role": "scoped-original-real-signed-positive-physical-source-25x25-Jensen-lower-matrix",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm49_adaptive_positive_jensen.py"
@@ -1304,7 +1322,8 @@
     {
       "id": "SM50-original-entire-negative-source2-upper",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-all-negative-frequency-one-source-upper-and-actual-signed-rayleigh",
+      "role": "verification",
+      "scope_role": "scoped-original-all-negative-frequency-one-source-upper-and-actual-signed-rayleigh",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm50_full_negative_source2_upper.py"
@@ -1315,7 +1334,8 @@
     {
       "id": "SM50A-original-entire-negative-source2-refined",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-true-entire-negative-frequency-one-original-source-affine-square-upper",
+      "role": "verification",
+      "scope_role": "scoped-true-entire-negative-frequency-one-original-source-affine-square-upper",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm50a_refined_full_negative_source2.py"
@@ -1326,7 +1346,8 @@
     {
       "id": "SM51-original-direct-signed-source2",
       "obligation_id": "W-ODD-NEG",
-      "role": "original-source2-true-signed-m-core-exhaustive-outer-negative-upper",
+      "role": "verification",
+      "scope_role": "original-source2-true-signed-m-core-exhaustive-outer-negative-upper",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm51_direct_signed_source2.py"
@@ -1337,7 +1358,8 @@
     {
       "id": "SM52-original-coupled-sin-xcos-signed-form",
       "obligation_id": "W-ODD-NEG",
-      "role": "original-signed-complete-2source-cross-offdiagonal-Lowner-positive-gate",
+      "role": "verification",
+      "scope_role": "original-signed-complete-2source-cross-offdiagonal-Lowner-positive-gate",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm52_original_coupled_sin_xcos.py"
@@ -1348,7 +1370,8 @@
     {
       "id": "SM52C-original-two-source-L2-coercivity",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-real-2D-physical-L2-coercivity-corollary",
+      "role": "verification",
+      "scope_role": "scoped-original-real-2D-physical-L2-coercivity-corollary",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm52c_original_L2_coercivity.py"
@@ -1359,7 +1382,8 @@
     {
       "id": "SM54-original-signed-pole-adaptive-disjoint-3source",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-entire-signed-3source-improved-pole-schur-lower",
+      "role": "verification",
+      "scope_role": "scoped-original-entire-signed-3source-improved-pole-schur-lower",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm54_original_pole_adaptive_Jensen.py"
@@ -1370,7 +1394,8 @@
     {
       "id": "SM55-original-hierarchical-signed-three-source-pole",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-real-signpositive-refinement-complete-coupled-3source-schur",
+      "role": "verification",
+      "scope_role": "scoped-original-real-signpositive-refinement-complete-coupled-3source-schur",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm55_hierarchical_signed_pole.py"
@@ -1381,7 +1406,8 @@
     {
       "id": "SM56-original-source-anisotropic-three-source-pole",
       "obligation_id": "W-ODD-NEG",
-      "role": "scoped-original-true-signed-3source-componentwise-Loewner-error",
+      "role": "verification",
+      "scope_role": "scoped-original-true-signed-3source-componentwise-Loewner-error",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm56_original_anisotropic_error.py"
@@ -1392,7 +1418,8 @@
     {
       "id": "SM57-original-whole-negative-spectrum-all-25-source",
       "obligation_id": "W-ODD-NEG",
-      "role": "complete-original-25-physical-source-entire-negative-upper-signed-25x25-lower",
+      "role": "verification",
+      "scope_role": "complete-original-25-physical-source-entire-negative-upper-signed-25x25-lower",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm57_original_25source_negative_upper.py"
@@ -1403,7 +1430,8 @@
     {
       "id": "SM58-original-complete-coupled-negative-25source",
       "obligation_id": "W-ODD-NEG",
-      "role": "complete-original-25physical-source-true-negative-Fourier-coupled-matrix-upper",
+      "role": "verification",
+      "scope_role": "complete-original-25physical-source-true-negative-Fourier-coupled-matrix-upper",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm58_original_coupled_25negative.py"
@@ -1414,7 +1442,8 @@
     {
       "id": "SM59A-original-25D-source-rank-aware-index23",
       "obligation_id": "W-ODD-NEG",
-      "role": "actual-source-restricted-negative-index-ceiling-by-dimension",
+      "role": "verification",
+      "scope_role": "actual-source-restricted-negative-index-ceiling-by-dimension",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm59a_rank_aware_25source.py"
@@ -1425,7 +1454,8 @@
     {
       "id": "SM59B-original-25source-negative-leafwise-hybrid",
       "obligation_id": "W-ODD-NEG",
-      "role": "full-original-25source-negative-coupled-per-leaf-upper-optimization",
+      "role": "verification",
+      "scope_role": "full-original-25source-negative-coupled-per-leaf-upper-optimization",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm59b_original_25source_leafwise_upper.py"
@@ -1436,7 +1466,8 @@
     {
       "id": "SM60-original-23D-reference-lower-no-go",
       "obligation_id": "W-ODD-NEG",
-      "role": "exact-complement-inertia-scope-diagnostic-on-25source-signed-lower",
+      "role": "verification",
+      "scope_role": "exact-complement-inertia-scope-diagnostic-on-25source-signed-lower",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm60_23complement_lower_nogo.py"
@@ -1447,7 +1478,8 @@
     {
       "id": "SM61-original-actual-signed-23D-Schur-cross",
       "obligation_id": "W-ODD-NEG",
-      "role": "original-actual-signed-mixed-source-23D-Schur-Loewner-two-sided",
+      "role": "verification",
+      "scope_role": "original-actual-signed-mixed-source-23D-Schur-Loewner-two-sided",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm61_actual_23schur_two_sided.py"
@@ -1458,7 +1490,8 @@
     {
       "id": "SM62-original-full25-338-disjoint-positive-lift",
       "obligation_id": "W-ODD-NEG",
-      "role": "whole-original-25phys-source-positive-Fourier-mean-and-complement-lower",
+      "role": "verification",
+      "scope_role": "whole-original-25phys-source-positive-Fourier-mean-and-complement-lower",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm62_full25_338signed_positive.py"
@@ -1469,7 +1502,8 @@
     {
       "id": "SM63-direct-third-positive-original-supported-3source",
       "obligation_id": "W-ODD-NEG",
-      "role": "original-direct-full-signed-real-heterogeneous-3source-third-positive-plane",
+      "role": "verification",
+      "scope_role": "original-direct-full-signed-real-heterogeneous-3source-third-positive-plane",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm63_direct_third_source_odd.py"
@@ -1480,7 +1514,8 @@
     {
       "id": "SM65-original-actual-22D-anisotropic-signed-Schur",
       "obligation_id": "W-ODD-NEG",
-      "role": "actual-original-supported-source25-positive-anchor3-complement22-anisotropic-mixed-sign-Schur",
+      "role": "verification",
+      "scope_role": "actual-original-supported-source25-positive-anchor3-complement22-anisotropic-mixed-sign-Schur",
       "argv": [
         "python3",
         "scripts/validate_rpb108_sm65_original_22schur_anisotropic.py"

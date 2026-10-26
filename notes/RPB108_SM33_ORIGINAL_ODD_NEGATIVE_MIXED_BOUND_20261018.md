@@ -1,5 +1,8 @@
 # SM33 — Quantitative complete ORIGINAL odd negative-frequency mixed Schur coupling
 
+**October 23, 2026 correction:** SM33's historical all-frequency Kminus estimate was UNDERPAID by κ per unresolved cell because Kminus=(κ-m)+, while its source-height h only upper-bounds (-m)+. The corrected validator uses h+κ; conservative exact rational leakage remains <1/15000, but old displayed ε, Hneg, Γ² and correction numbers are invalid as complete Kminus bounds. See [erratum and corrected constants](RPB108_SM33_KAPPA_LEAKAGE_REPAIR_20261023.md).
+
+
 **October 18, 2026 · canonical W-ODD-NEG · stacked on SM32 #213 (final-head focused CI PASS).**
 
 **New original operator-level quantitative result:** a rigorous **basis-independent** bound for the complete signed seven-prime negative-frequency coupling between SM32's physical odd exceptional source span (dimension at most 470) and its entire infinite-dimensional positive original odd complement, with all 973 unresolved negative-frequency leaves and all 107 actual clusters. The distinct b=9 Taylor remainder of **each original cluster** is paid in the exact-rational total. The associated **negative-only contribution** to the Feshbach inverse-response correction is bounded explicitly. The full original signed mixed operator also contains the positive archimedean/positive-frequency continuum and is **not** bounded by the negative-only number. Hence canonical O1/O2, original even E1–E4, whole signed Weil, native CC27 transfer and RH remain OPEN.

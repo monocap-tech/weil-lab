@@ -122,12 +122,14 @@ def actual_original_basis_and_cap_geometry():
     assert F(0)<ETA_UP<KAPPA_STAR
     assert Mneg==mass
     assert Mnegk==mass+KAPPA*width
-    # True original K global operator upper inherited from SM33:
-    # 2B*negative multiplier absolute mass (NOT cap mass+kW).
+    # True original Kminus=(kappa-m)_+ global norm upper inherited
+    # from CORRECTED SM33: pay h+kappa on EVERY unresolved cell.
+    # This equals the complete original SM10 cap mass Mneg+kappa*W.
     s=full_original_clusterwise_negative_mixed()
-    assert s["source_count"]==470 and s["mass"]==mass
+    assert s["source_count"]==470 and s["legacy_h_only_mass"]==mass
+    assert s["mass"]==mass+KAPPA*width==Mnegk
     H=s["neg_global_norm"]
-    assert H==2*B*mass and F(80)<H<F(83)
+    assert H==2*B*(mass+KAPPA*width) and F(80)<H<F(83)
     # Exact original resolvent-error tolerance for t=1 and
     # trial N0 <= theta/4 G0, entirely unachieved at this stage.
     threshold=CLEAN_THRESHOLD*KAPPA_STAR**2/(4*H)

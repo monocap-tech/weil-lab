@@ -1,0 +1,47 @@
+name: MG07 original full signed 2D sine-pole positivity
+
+on:
+  push:
+    paths:
+      - scripts/validate_rpb108_mg07_signed_sine_pole_2d.py
+      - .github/workflows/rpb108-mg07-original-signed-2d.yml
+  workflow_dispatch:
+
+jobs:
+  exact-original-signed-2d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install inherited spectral validator imports
+        run: pip install numpy scipy
+      - name: Full original 7168-cell 2D signed interval Gram
+        run: python scripts/validate_rpb108_mg07_signed_sine_pole_2d.py
+      - name: Independently check strict 2D SPD determinant
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          z=json.load(open('artifacts/mg07_original_signed_two_dimensional_SPD.json'))
+          A=F(z['full_signed_A_diagonal_lower'])
+          D=F(z['full_signed_D_diagonal_lower'])
+          B=F(z['full_signed_cross_abs_upper'])
+          det=F(z['full_signed_2D_determinant_lower'])
+          assert z['original_lowband_cell_count']==7168
+          assert z['positive_original_signed_2D_certified']
+          assert A>0 and D>0 and B>=0
+          assert det==A*D-B*B>0
+          assert z['original_global_signed_Wodd']=='OPEN'
+          assert z['even_CC27_Weil_RH']=='OPEN'
+          print('Independent original complete signed 2D determinant PASS')
+          PY
+      - name: Retain exact 2D attempt even if inconclusive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mg07-original-complete-signed-2d-interval-result
+          path: artifacts/mg07_original_signed_two_dimensional_SPD.json
+          if-no-files-found: warn

@@ -3,7 +3,7 @@
 
 Original signed 7-prime SI10 protected cover (973 original leaves,
 107 source clusters), odd parity E9<=470:
-  M_j = 2 sum_{leaves in J_j} h_leaf * leaf_length,
+  M_j = 2 sum_{leaves in J_j} (h_leaf + kappa) * leaf_length,
   e_j = (pi_up B width_j)^p_j / p_j! < 2^-9.
 For Q = physical odd orthogonal projection away from E9:
   0 <= Q Kneg Q <= eps_neg I,
@@ -47,8 +47,17 @@ def full_original_clusterwise_negative_mixed():
     assert len(clusters)==107
     assert width==F(973,32) and F(0)<mass<F(38)
     assert B==F(11,10) and KAPPA==F(1,1000) and BITS==9
+    # Adversarial REAL frequency cell: the old h-only inequality is false.
+    # At m=kappa/2>0 the SI10 -m height may be h=0, but
+    # Knegative=(kappa-m)_+=kappa/2 is STILL strictly positive.
+    m_adversarial=KAPPA/2
+    h_adversarial=F(0)
+    assert max(F(0),KAPPA-m_adversarial)>h_adversarial
+    assert max(F(0),KAPPA-m_adversarial)<=h_adversarial+KAPPA
 
     mass_check=F(0)
+    mass_full_corrected=F(0)
+    missing_kappa_weighted=F(0)
     weighted_squared=F(0)
     norm_source_count=0
     max_rem=F(0)
@@ -62,7 +71,13 @@ def full_original_clusterwise_negative_mixed():
         p,ej=taylor_order(r-l,BITS)
         assert p>=1 and F(0)<ej<COMMON_REMAINDER
         mass_check+=mj
-        weighted_squared+=mj*ej*ej
+        # SI10 `mj` integrates h=max(0,-m_lower), whereas the
+        # actual Kneg multiplier is (kappa-m)_+ <= h+kappa.
+        # Pay this kappa on the ENTIRE original unresolved cluster.
+        mj_full=mj+2*KAPPA*(r-l)
+        mass_full_corrected+=mj_full
+        missing_kappa_weighted+=2*KAPPA*(r-l)*ej*ej
+        weighted_squared+=mj_full*ej*ej
         norm_source_count+=p
         max_rem=max(max_rem,ej)
         if mj>0:
@@ -72,28 +87,48 @@ def full_original_clusterwise_negative_mixed():
         masses.append(mj)
 
     assert mass_check==mass
+    assert mass_full_corrected==mass+KAPPA*width
+    assert missing_kappa_weighted>0
     assert len(errors)==len(masses)==107
     assert norm_source_count==469
     assert norm_source_count+1==470
     assert nontrivial>0 and strict_improvements==nontrivial
     assert max_rem<COMMON_REMAINDER
+    # Certified sharper maximum b9 remainder, originally reported
+    # ~0.001681282837, needed to preserve strict mixed H*eps gate.
+    assert max_rem<F(16813,10**7)
 
     # Full ORIGINAL signed negative multiplier integral weight mass,
     # including BOTH +/- mirrored frequency halves. Odd sine packet
     # physical Taylor residual in each cluster bounds Q Kneg Q.
     leakage=2*B*weighted_squared
-    worst_leak=2*B*mass*COMMON_REMAINDER**2
+    worst_leak=2*B*mass_full_corrected*COMMON_REMAINDER**2
     assert 0<leakage<worst_leak
     # Strict source-specific original negative-frequency leakage
     # improvement from the full 107 weighted Taylor cluster errors.
+    # Exact original SM33 legacy leakage omitted the kappa * width
+    # payment. The repaired *actual* Kneg epsilon still obeys
+    # the inherited numerical threshold (not merely a display).
+    legacy_leak=2*B*(weighted_squared-missing_kappa_weighted)
+    assert legacy_leak<F(66247,10**9)
+    extra_upper=2*B*KAPPA*width*COMMON_REMAINDER**2
+    assert legacy_leak+extra_upper<F(1,15000)
     assert leakage<F(1,15000)
     # The positive frequency Kneg is globally bounded from true
     # physical support, without any 470-source orthonormalization.
-    H=2*B*mass
+    H=2*B*mass_full_corrected
     gamma2=H*leakage
     rough_gamma2=H*worst_leak
     assert 0<gamma2<rough_gamma2
     assert H<F(83) and rough_gamma2<F(27,1000)
+    # A second independent exact upper uses old h-only epsilon bound,
+    # 107 uniform sharpened Taylor errors and fully-paid H(kappa).
+    # This proves strict <11/2000 without relying on coincidentally
+    # close numerical display values.
+    conservative_eps=F(66247,10**9)+2*B*KAPPA*width*F(16813,10**7)**2
+    assert leakage<conservative_eps<F(1,15000)
+    assert H*conservative_eps<F(11,2000)
+    assert H*conservative_eps/MU<F(81,10)
     assert gamma2<CROSS2_MAX
     assert gamma2<F(11,2000) # STRICT original measured mixed² upper
 
@@ -113,7 +148,12 @@ def full_original_clusterwise_negative_mixed():
     return {
         "clusters":len(clusters),"leaves":nleaves,
         "accepted":naccepted,"source_count":norm_source_count+1,
-        "mass":mass,"max_e":max_rem,"leak":leakage,
+        "mass":mass_full_corrected,"legacy_h_only_mass":mass,
+        "corrected_missing_kappa_mass":KAPPA*width,
+        "legacy_h_only_leakage_UNDERPAID":legacy_leak,
+        "corrected_missing_kappa_leakage_exact":2*B*missing_kappa_weighted,
+        "corrected_missing_kappa_leakage_upper":extra_upper,
+        "max_e":max_rem,"leak":leakage,
         "coarse_leak":worst_leak,
         "neg_global_norm":H,
         "cross2":gamma2,"cross2_coarse":rough_gamma2,

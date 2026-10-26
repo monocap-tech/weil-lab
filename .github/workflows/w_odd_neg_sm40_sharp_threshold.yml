@@ -1,0 +1,45 @@
+name: W-ODD-NEG exact SM40 sharpened complement threshold
+on:
+  pull_request:
+    paths:
+      - 'scripts/validate_rpb108_sm40_sharp_odd_complement_threshold.py'
+      - 'notes/RPB108_SM40_SHARP_ODD_COMPLEMENT_THRESHOLD_20261023.md'
+      - '.github/workflows/w_odd_neg_sm40_sharp_threshold.yml'
+      - 'research/obligations.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sharp-original-schur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies for inherited exact SM40 replays
+        run: pip install numpy scipy
+      - name: Verify all original 3892 signed cells and recompute exact 470D bound
+        env:
+          OPENBLAS_NUM_THREADS: '2'
+          OMP_NUM_THREADS: '2'
+        run: |
+          python -m py_compile scripts/validate_rpb108_sm40_sharp_odd_complement_threshold.py
+          python scripts/validate_rpb108_sm40_sharp_odd_complement_threshold.py > sm40_sharp_threshold.log
+          cat sm40_sharp_threshold.log
+      - name: Keep entire signed original Weil obligation open
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          m=json.loads(Path('research/obligations.json').read_text())
+          assert m['active_obligation']=='W-ODD-NEG'
+          assert m['objective']['status']=='open'
+          assert next(x for x in m['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          print('Scoped full 470D arithmetic proof only; RH and signed odd still open.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: original-SM40-sharp-threshold-exact-arithmetic-REVIEW-REQUIRED
+          path: sm40_sharp_threshold.log

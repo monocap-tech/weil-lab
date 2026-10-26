@@ -45,3 +45,13 @@ The [RC204 completion dashboard](RESEARCH_COMPLETION_DASHBOARD.md) and [Horizon 
 Changes to `active_obligation`, dependencies, a closure status, or acceptance conditions must carry a reviewed explanation of the evidence and tradeoff. This is a governance change, not a way to relabel a gap as proved. The canonical frontier must be inspected in the same PR; CI rejects incoherent references, missing prerequisites and unsafe active command declarations.
 
 The source of truth is the manifest plus cited, checked proof artifacts. This doctrine deliberately does **not** claim RH, Stage I, whole-original-form positivity or even-sector closure.
+
+## October 23 critical-path acceptance refinement
+
+The original odd-source SI29/SM19 pole-conditioned operator floor and MG21 finite-source analytic positivity make *qualitative* positivity of independently supported finite-source strong-action moments a discharged analytic consequence, conditional on the inherited original physical source domain. Do not advance the canonical obligation by increasing the count of independently verified positive source directions without a proved connection to the genuine original signed-operator 470-source inequality.
+
+Any new computational front must **either** close a presently open original theorem, tighten an actual complete source/negative/residual Loewner term on the SAME source and trial family, prove a correctly scoped method-class ceiling, or provide original-operator domain/inverse/covariance information required by such a term. Checkpoint increments, local eigenvalue signs, trace changes and favorable diagonal source subspaces do not qualify by themselves.
+
+Under [the October 23 critical-path audit](CRITICAL_PATH_RESET_20261023.md), W-ODD-NEG remains open. Its first matched computational preflight is the original full 470-source Galerkin/cap comparison `(51/56)G0-N0cap>0`, retaining all original negative-frequency cap columns, pole, real frequencies and source cross terms. If the fixed cap/trial fails this necessary **method-specific** test, further reduction of its nonnegative inverse-residual charge cannot make the fixed MG07 inequality true. Stop refining that residual, revise the cap or trial, and independently reassess. Even a successful cap-only preflight is NOT signed-operator closure: `DB` and a single uniform rational `t>0` must still satisfy the complete MG07 matrix test, or the exact SM34 original Schur must be separately proved.
+
+Source-domain/physical Fourier identities, strong residuals, exact rational outward enclosures and independent replay remain mandatory; do not promote any branch result to a merged theorem or RH proof without the canonical complete-operator and global transfer conditions.
