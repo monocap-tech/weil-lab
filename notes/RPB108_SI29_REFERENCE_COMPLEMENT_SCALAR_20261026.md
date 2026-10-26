@@ -61,6 +61,32 @@ Equivalently, for EVERY bounded residual synthesis R with J*R=0, including ALL 4
 
 This is a full-family operator compression, not a set of scalar source tests. An exact coupled three-dimensional regression checks the pole sign, resolvent identity and two-dimensional complement cross terms; it also rejects extension outside J-perp. That algebra regression is not original-operator numerical evidence. The analytic proof above and inherited SI29/native input standing remain explicit and separate from CI.
 
+## Stronger ACTUAL normalized 14-dimensional energy Schur bound
+
+This inverse compression also gives required information about the ACTUAL Astar energy Schur; it does not evaluate its entries or matched forcing.
+
+Let S_B be the Schur complement of B14 after eliminating J, acting on QH. Since B14 is bounded and coercive and J is finite-dimensional,
+
+    S_B = (Q B14^-1 Q restricted to QH)^-1
+        >= kappa/(1+delta) I_QH.
+
+For any fixed complement vector w, taking the infimum of the Astar form over w+J and using Astar>=B14 shows Schur monotonicity S_A>=S_B. This variational comparison is valid for the inherited original form domain; it does not swap projection and inversion for Astar.
+
+Use the SAME accepted exact dyadic C and W=QFC from the native input, with W*W>=99/100 I. The actual 14x14 energy Schur for FC modulo the COMPLETE J is therefore
+
+    T_A >= (99/100) kappa/(1+delta) I
+        > (99/100001) I.
+
+The strict last rational rounding uses 100000 delta<1. PR #335's full original trial energy upper gives T_A<=W*Astar W<=44 I on these SAME last fourteen coordinates. The focused workflow therefore also pins successful Actions 40417043904 at 0e3321350980247f8cba46cdbb45b717e49ad213, artifact 12694539474; archive SHA256 e2c6017b35cd85ba404efa8013305d9e7c023d916cc1b2f96dbbcf7a7c8f772a; JSON si29_full_trial_preconditioner.json SHA256 87d6f3ae24cde489adaf9ab3ac7efa612bc82bd78c6c9e94866802fdc550052f.
+
+Consequently, with all fourteen coefficient couplings retained,
+
+    (99/100001) I <= T_A <= 44 I,
+    T_A^-1 <= (100001/99) I,
+    condition_2(T_A) <= 400004/9 < 44445.
+
+The clean lower improves the prior 3328479/10^11 by more than 29.7 times. This is original inverse information required for the normalized response, not a source-positivity count. For any matched forcing h, h*T_A^-1 h <= (100001/99)||h||^2; h itself has NOT been computed. Actual energy projection, entries and response value remain open. The improved floor is for the 14D SCHUR after eliminating J; the full 484D energy matrix still has its earlier lower bound.
+
 ## Computational consequence and scope
 
 For an EXACT Galerkin residual R=J-Astar Z whose test space CONTAINS J, J*R=0. Its original MG07 DB=R*B14^-1 R can be bounded by 1000(1+10^-500)R*R without separately computing the fourteen-feature residual Gram or the pole Woodbury correction. Conversely this FIXED reference can reduce the 1000R*R charge by at most the relative factor 10^-500. Further feature/pole correction bookkeeping cannot yield a material residual-weight improvement on this residual family.

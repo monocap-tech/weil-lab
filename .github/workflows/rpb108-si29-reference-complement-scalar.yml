@@ -1,4 +1,4 @@
-name: SI29 reference inverse on original J470 complement
+name: SI29 reference compression and actual energy Schur floor
 
 on:
   push:
@@ -35,30 +35,34 @@ jobs:
           def get(path):
               with urllib.request.urlopen(urllib.request.Request(base+path,headers=headers)) as r:
                   return json.load(r)
-          run=get('/actions/runs/'+str(NATIVE_RUN))
-          assert run['conclusion']=='success' and run['head_sha']==NATIVE_COMMIT
-          artifact=get('/actions/artifacts/'+str(NATIVE_ARTIFACT))
-          assert artifact['name']=='si29-original-full-J-L2-normalization'
-          assert artifact['workflow_run']['id']==NATIVE_RUN and artifact['workflow_run']['head_sha']==NATIVE_COMMIT
-          assert artifact['digest']=='sha256:'+ARCHIVE_SHA256 and artifact['expired'] is False
+          specs=[
+              (NATIVE_RUN,NATIVE_COMMIT,NATIVE_ARTIFACT,'si29-original-full-J-L2-normalization',ARCHIVE_SHA256,JSON_SHA256,'si29_full_J_L2_normalization.json'),
+              (40417043904,'0e3321350980247f8cba46cdbb45b717e49ad213',12694539474,'si29-full-trial-preconditioner','e2c6017b35cd85ba404efa8013305d9e7c023d916cc1b2f96dbbcf7a7c8f772a','87d6f3ae24cde489adaf9ab3ac7efa612bc82bd78c6c9e94866802fdc550052f','si29_full_trial_preconditioner.json')]
           class NoRedirect(urllib.request.HTTPRedirectHandler):
               def redirect_request(self,*args,**kwargs):return None
-          request=urllib.request.Request(base+'/actions/artifacts/'+str(NATIVE_ARTIFACT)+'/zip',headers=headers)
-          try:
-              with urllib.request.build_opener(NoRedirect).open(request) as r:data=r.read()
-          except urllib.error.HTTPError as e:
-              assert e.code in (301,302,303,307,308)
-              # Do not forward the GitHub authorization header to blob storage.
-              with urllib.request.urlopen(e.headers['Location']) as r:data=r.read()
-          assert hashlib.sha256(data).hexdigest()==ARCHIVE_SHA256
-          raw=zipfile.ZipFile(io.BytesIO(data)).read('si29_full_J_L2_normalization.json')
-          assert hashlib.sha256(raw).hexdigest()==JSON_SHA256
           Path('artifacts').mkdir(exist_ok=True)
-          Path('artifacts/si29_full_J_L2_normalization.json').write_bytes(raw)
-          print('Accepted native run/source/artifact/archive/JSON custody PASS')
+          for run_id,commit,artifact_id,name,archive_sha,json_sha,json_name in specs:
+              run=get('/actions/runs/'+str(run_id))
+              assert run['conclusion']=='success' and run['head_sha']==commit
+              artifact=get('/actions/artifacts/'+str(artifact_id))
+              assert artifact['name']==name and artifact['expired'] is False
+              assert artifact['workflow_run']['id']==run_id and artifact['workflow_run']['head_sha']==commit
+              assert artifact['digest']=='sha256:'+archive_sha
+              request=urllib.request.Request(base+'/actions/artifacts/'+str(artifact_id)+'/zip',headers=headers)
+              try:
+                  with urllib.request.build_opener(NoRedirect).open(request) as r:data=r.read()
+              except urllib.error.HTTPError as e:
+                  assert e.code in (301,302,303,307,308)
+                  # Do not forward GitHub authorization to blob storage.
+                  with urllib.request.urlopen(e.headers['Location']) as r:data=r.read()
+              assert hashlib.sha256(data).hexdigest()==archive_sha
+              raw=zipfile.ZipFile(io.BytesIO(data)).read(json_name)
+              assert hashlib.sha256(raw).hexdigest()==json_sha
+              Path('artifacts',json_name).write_bytes(raw)
+              print('Accepted run/source/artifact/archive/JSON custody PASS',run_id,artifact_id)
           PY
       - name: Compose complete reference-inverse compression with exact Fractions
-        run: python scripts/verify_rpb108_si29_reference_complement_scalar.py --certificate artifacts/si29_full_J_L2_normalization.json
+        run: python scripts/verify_rpb108_si29_reference_complement_scalar.py --certificate artifacts/si29_full_J_L2_normalization.json --trial-certificate artifacts/si29_full_trial_preconditioner.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
