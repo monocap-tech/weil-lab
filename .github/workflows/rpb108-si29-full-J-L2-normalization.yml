@@ -1,0 +1,79 @@
+name: SI29 original full-J physical residual normalization
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_si29_full_J_L2_normalization.py
+      - .github/workflows/rpb108-si29-full-J-L2-normalization.yml
+      - notes/RPB108_SI29_FULL_J_L2_NORMALIZATION_20261026.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-original-physical-projection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PYTHONINTMAXSTRDIGITS: '100000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retain and install pinned ball-arithmetic runtime
+        run: |
+          python -m pip download --only-binary=:all: --no-deps python-flint==0.8.0 -d artifacts/runtime
+          python -m pip install --no-index --find-links artifacts/runtime python-flint==0.8.0
+          sha256sum artifacts/runtime/*.whl > artifacts/runtime/SHA256SUMS
+      - name: Compute complete original physical projection and residual normalization
+        run: python scripts/verify_rpb108_si29_full_J_L2_normalization.py --bits 4096
+      - name: Independently verify exact dyadic coordinates and enclosed Schur normalization
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          from flint import arb,arb_mat,ctx
+          z=json.load(open('artifacts/si29_full_J_L2_normalization.json'))
+          ctx.prec=z['working_precision_bits']
+          def dy(x): return arb((int(x[0]),int(x[1])))
+          def ball(x): return arb(dy(x[0]),dy(x[1]))
+          S=arb_mat([[ball(v) for v in row] for row in z['physical_Schur_balls']])
+          C=arb_mat([[dy(v) for v in row] for row in z['exact_dyadic_feature_transform']])
+          N=C.transpose()*S*C
+          assert S.nrows()==S.ncols()==C.nrows()==C.ncols()==14
+          for i in range(14):
+              assert sum((abs(N[i,j]-int(i==j)).abs_upper() for j in range(14)),arb(0))<arb('1/100')
+          assert len(z['full_physical_projection_coefficient_balls'])==470
+          assert all(len(r)==14 for r in z['full_physical_projection_coefficient_balls'])
+          assert z['full_original_source_count']==470
+          assert z['normalized_physical_Schur_lower']=='99/100'
+          assert z['normalized_physical_Schur_upper']=='101/100'
+          assert F(z['normalized_Astar_energy_Schur_lower'])==F(99,100)*F(33621,10**9)
+          checks=z['independent_entire_series_validation']
+          assert checks['original_J_generators_checked']==15
+          assert checks['all_actual_SI29_features_checked']==14
+          assert checks['independent_full_comparison_dimension']==30
+          assert checks['rigorous_Taylor_product_tail_payments_verified'] is True
+          assert z['physical_full_J_projection_computed'] is True
+          for field in ('full_J_Astar_energy_projection_computed','Astar_energy_condition_number_certified','normalized_forcing_entries_computed','inverse_response_value_certified'):
+              assert z[field] is False
+          manifest=json.load(open('research/obligations.json'))
+          assert manifest['active_obligation']=='W-ODD-NEG'
+          assert next(o for o in manifest['obligations'] if o['id']=='W-ODD-NEG')['status']=='open'
+          assert z['W_ODD_NEG']=='OPEN'
+          print('Independent full-J physical normalization and conditional energy lower bound PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: si29-original-full-J-L2-normalization
+          path: artifacts/*.json
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: si29-L2-pinned-runtime
+          path: artifacts/runtime
+          if-no-files-found: warn
