@@ -1,0 +1,90 @@
+name: MG07 accepted-artifact weighted signed tail replay
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_mg07_weighted_signed_tail.py
+      - .github/workflows/rpb108-mg07-weighted-signed-tail.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  exact-weighted-tail-composition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recover and verify the accepted canonical GitHub artifact
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const crypto = require('crypto');
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const run_id = 40251400717;
+            const artifact_id = 12620838774;
+            const source = 'bf56f5ca1a17305671f58c8a5b785898a1843d55';
+            const digest = '841cd4808f25316da688085b768166901b7f526109c74bcd70ebfedb4e0044eb';
+            const run = (await github.rest.actions.getWorkflowRun({owner, repo, run_id})).data;
+            if (run.status !== 'completed' || run.conclusion !== 'success' || run.head_sha !== source)
+              throw new Error('Canonical run acceptance/source mismatch');
+            const a = (await github.rest.actions.getArtifact({owner, repo, artifact_id})).data;
+            if (a.expired || a.workflow_run.id !== run_id || a.workflow_run.head_sha !== source ||
+                a.name !== 'mg07-true-original-signed-5120cell-result' || a.digest !== 'sha256:' + digest)
+              throw new Error('Canonical artifact provenance mismatch');
+            const response = await github.rest.actions.downloadArtifact({owner, repo, artifact_id, archive_format: 'zip'});
+            const bytes = Buffer.from(response.data);
+            if (crypto.createHash('sha256').update(bytes).digest('hex') !== digest)
+              throw new Error('Canonical artifact archive SHA256 mismatch');
+            fs.mkdirSync('canonical-input', {recursive: true});
+            fs.writeFileSync('canonical-input/accepted.zip', bytes);
+            fs.writeFileSync('canonical-input/provenance.json', JSON.stringify({run_id, artifact_id, source, digest}, null, 2));
+      - name: Extract only the canonical signed result
+        run: |
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          import zipfile
+          with zipfile.ZipFile('canonical-input/accepted.zip') as z:
+              raw=z.read('mg07_original_signed_two_ray_5120cell.json')
+          assert hashlib.sha256(raw).hexdigest()=='ded28038988836dfa9cdb0ceeb0036d6efebc9c32f83faef5e904e598e155b83'
+          Path('canonical-input/signed.json').write_bytes(raw)
+          PY
+      - name: Recompute exact SI10 cover and weighted signed composition
+        run: python scripts/verify_rpb108_mg07_weighted_signed_tail.py --canonical canonical-input/signed.json
+      - name: Independent rational accounting and fail-closed scope
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/mg07_weighted_signed_tail.json'))
+          assert d['status']=='EXACT_WEIGHTED_SIGNED_TWO_RAY_COMPOSITION_PASS'
+          s=F(d['high12_weighted_inverse_square'])
+          assert 0<s<F(423,25000)
+          for r in d['rays']:
+              beta=F(r['beta'])
+              tail=F(r['weighted_tail_upper'])
+              low=F(r['unchanged_lowband'])-F(r['unchanged_pole'])-tail
+              assert tail==beta*beta*s
+              assert low==F(r['signed_lower'])>F(r['strict_display_lower'])
+          assert d['low_frequency_integration_repeated'] is False
+          assert d['extra_reflection_factor'] is False
+          assert d['inherited_analytic_assumptions_reproved'] is False
+          assert d['whole_original_odd_positivity']==d['even_CC27_Weil_RH']=='OPEN'
+          print('Independent weighted accounting PASS; global obligations OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg07-weighted-signed-tail-composition
+          path: |
+            artifacts/mg07_weighted_signed_tail.json
+            canonical-input/provenance.json
+          if-no-files-found: warn
