@@ -1,0 +1,76 @@
+name: SI29 original parity projected energy scale
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_si29_parity_projected_scale.py
+      - .github/workflows/rpb108-si29-parity-projected-scale.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  original-projected-upper-bounds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONINTMAXSTRDIGITS: '100000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay actual original Hermite106 geometry and bounds
+        run: python scripts/validate_rpb108_si29_hermite106_fullJ_residual.py
+      - name: Replay actual SI29 rational coordinates
+        run: python scripts/verify_rpb108_si29_normalized_residual_coordinates.py --source scripts/validate_rpb108_si29_hermite106_fullJ_residual.py --certificate artifacts/si29_true14_hermite106_fullJ_projection.json
+      - name: Bound full-J projected energy and matched forcing using parity
+        run: python scripts/verify_rpb108_si29_parity_projected_scale.py --source scripts/validate_rpb108_si29_hermite106_fullJ_residual.py --coordinates artifacts/si29_normalized_residual_coordinates.json
+      - name: Independently verify original projected upper-bound arithmetic
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          from math import factorial
+          z=json.load(open('artifacts/si29_parity_projected_scale.json'))
+          c=json.load(open('artifacts/si29_normalized_residual_coordinates.json'))
+          B=F(11,10); pi=F(22,7)
+          nodes=[(F(c),p) for c,p in z['selected_original_nodes']]
+          assert len(nodes)==40 and sum(p for c,p in nodes)==215
+          N=2*sum(p for c,p in nodes)
+          features=[(F(c),F(r),d) for c,r,d in c['feature_definitions']]
+          U=[[F(v) for v in row] for row in c['rational_feature_transform']]
+          errors=[]
+          for c,r,d in features:
+              # Independent factor bound by the four signed-node endpoints.
+              product=F(1)
+              for node,p in nodes:
+                  q=max(abs(t*t-node*node) for t in (c-r,c+r))
+                  assert q>=0
+                  product*=q**p
+              errors.append((F(3,2) if d else 1)*(2*pi*B)**N*product/factorial(N))
+          assert errors==list(map(F,z['actual_feature_uniform_error_upper']))
+          g=[sum((abs(U[i][j])*errors[i] for i in range(14)),F(0)) for j in range(14)]
+          assert g==list(map(F,z['actual_coordinate_uniform_error_upper']))
+          Cx=2*pi*max(c for c,p in nodes)+F(N,B)
+          trace=2*B*sum(e*e for e in g)
+          energy=sum(36*2*B*e*e+(2*e+2*B*Cx*e)**2 for e in g)
+          assert trace==F(z['full_J_L2_projected_coordinate_HS_squared_upper'])<F(3,10**59)**2
+          assert energy==F(z['full_J_Astar_projected_coordinate_Schur_trace_upper'])<F(102,10**113)
+          for row,M in zip(z['original_stopping_ray_matched_forcing_bounds'],(1400000,350000)):
+              assert F(row['actual_Gstar_R0_vector_norm_upper'])==F(3,10**59)*M
+          for field in ('exact_projected_T_or_forcing_entries_computed','projected_T_lower_bound_certified','energy_conditioning_certified','inverse_response_certified'):
+              assert z[field] is False
+          assert z['W_ODD_NEG']=='OPEN'
+          print('Independent reflected-Hermite projected-energy/forcing upper replay PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: si29-original-parity-projected-scale
+          path: |
+            artifacts/si29_parity_projected_scale.json
+            artifacts/si29_normalized_residual_coordinates.json
+            artifacts/si29_true14_hermite106_fullJ_projection.json
+          if-no-files-found: warn
