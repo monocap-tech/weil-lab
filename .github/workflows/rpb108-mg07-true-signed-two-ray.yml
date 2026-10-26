@@ -16,6 +16,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install inherited numerical validator imports
+        run: pip install numpy scipy
       - name: All-original smooth signed multiplier 5120-cell certificate
         run: python scripts/validate_rpb108_mg07_signed_two_ray_5120cell.py
       - name: Independent exact signed lowband, pole and high-negative accounting
