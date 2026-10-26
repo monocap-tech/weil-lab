@@ -1,0 +1,96 @@
+name: MG07 correlated covariance artifact replay
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_mg07_correlated_covariance.py
+      - .github/workflows/rpb108-mg07-correlated-covariance.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  exact-correlated-covariance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Recover all three accepted GitHub artifacts with source and archive custody
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs=require('fs'), crypto=require('crypto');
+            const {owner,repo}=context.repo;
+            const pins=[
+              {run:40260136876,id:12623752657,sha:'8844685d3e72a3d38f943b084b6e5bc70ef3d09c',digest:'2cc62e9fe52f38b021166605e40402f3d8aa4980f1148d7e3738ca3b1afa82ea',name:'mg07-original-complete-signed-2d-interval-result',file:'anchor'},
+              {run:40267592408,id:12627027140,sha:'74f0e4f08cef9f1e8984471eefe8c8f68587e386',digest:'31a9622e69935bc855f1117cd7d426de2f841c9886041ed50b86db722e8658d7',name:'mg07-complete-original-xcos-coupling',file:'mixed'},
+              {run:40269077200,id:12626923648,sha:'7d7c77f6e9a5cf40d3d9c3f72752205bfbc3b95c',digest:'6900ea244150c514db662d7116dcd626f25f9086c48e97e8991ac328fdb6d6d4',name:'mg07-double-endpoint-preflight',file:'jet'}
+            ];
+            fs.mkdirSync('cov-input',{recursive:true});
+            for(const p of pins){
+              const run=(await github.rest.actions.getWorkflowRun({owner,repo,run_id:p.run})).data;
+              if(run.status!=='completed'||run.conclusion!=='success'||run.head_sha!==p.sha)
+                throw new Error('Accepted run mismatch '+p.file);
+              const a=(await github.rest.actions.getArtifact({owner,repo,artifact_id:p.id})).data;
+              if(a.expired||a.workflow_run.id!==p.run||a.workflow_run.head_sha!==p.sha||
+                 a.name!==p.name||a.digest!=='sha256:'+p.digest)
+                throw new Error('Artifact mismatch '+p.file);
+              const response=await github.rest.actions.downloadArtifact({owner,repo,artifact_id:p.id,archive_format:'zip'});
+              const bytes=Buffer.from(response.data);
+              if(crypto.createHash('sha256').update(bytes).digest('hex')!==p.digest)
+                throw new Error('Archive digest mismatch '+p.file);
+              fs.writeFileSync('cov-input/'+p.file+'.zip',bytes);
+            }
+      - name: Extract exact input JSON files
+        run: |
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          for label,name in [
+            ('anchor','mg07_original_signed_two_dimensional_SPD.json'),
+            ('mixed','mg07_original_complete_xcos_coupling.json'),
+            ('jet','mg07_double_endpoint_preflight.json')]:
+              with zipfile.ZipFile('cov-input/'+label+'.zip') as z:
+                  raw=z.read(name)
+              Path('cov-input/'+label+'.json').write_bytes(raw)
+          PY
+      - name: Carry original covariance through the rational endpoint basis change
+        run: python scripts/verify_rpb108_mg07_correlated_covariance.py --anchor cov-input/anchor.json --mixed cov-input/mixed.json --jet cov-input/jet.json
+      - name: Independent determinant and fixed-information ceiling checks
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          z=json.load(open('artifacts/mg07_correlated_covariance_replay.json'))
+          def schur(case):
+              h=[[F(v) for v in row] for row in case['matrix']]
+              a,b,c=h[0];_,d,e=h[1];_,_,f=h[2]
+              minor=a*d-b*b
+              assert a>0 and minor>0
+              det=a*(d*f-e*e)-b*(b*f-e*c)+c*(b*e-d*c)
+              assert det/minor==F(case['schur_lower'])
+              return det/minor
+          assert len(z['vertex_cases'])==32 and len(z['zero_negative_tail_cases'])==8
+          paid=min(map(schur,z['vertex_cases']))
+          zero=min(map(schur,z['zero_negative_tail_cases']))
+          assert paid==F(z['correlated_complete_signed_schur_lower'])
+          assert zero==F(z['optimistic_zero_negative_tail_box_schur_lower'])
+          assert paid<zero<0
+          assert z['scalar_schur_positive_certified'] is False
+          assert z['corner_negative_is_not_original_negative_witness'] is True
+          assert z['frequency_quadrature_repeated'] is False
+          assert z['unmeasured_positive_high_form_discarded_as_whole_PSD'] is True
+          assert z['complete_original_remaining_Schur']==z['odd_even_CC27_Weil_RH']=='OPEN'
+          print('Independent correlated accounting PASS; fixed interval model cannot certify PSD')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg07-correlated-covariance-replay
+          path: artifacts/mg07_correlated_covariance_replay.json
+          if-no-files-found: warn
