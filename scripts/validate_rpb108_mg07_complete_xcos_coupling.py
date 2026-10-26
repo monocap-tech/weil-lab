@@ -131,7 +131,10 @@ def evaluate(anchor_path):
             interval=[C.qinterval(base,a,b) for a,b,_ in C.BASIS]
             rv=(F1(mid+C.CENTER)+F1(mid-C.CENTER))/2+alpha*pole_sin(mid,sh,ch)
             rd=pi*(F2(mid+C.CENTER)+F2(mid-C.CENTER))+alpha*base[3]
-            interval.append((bounds(rv),bounds(rd)))
+            # Match the anchor's outward endpoint compaction before products.
+            # Raw F1/F2/pole Fractions otherwise carry huge denominators.
+            interval.append(((C.below(rv.l,10**12),C.above(rv.h,10**12)),
+                             (C.below(rd.l,10**12),C.above(rd.h,10**12))))
             vals=[];ders=[];errs=[];mx=[]
             for k,(tv,dt) in enumerate(interval):
                 v=sum(tv)/2;d=sum(dt)/2
