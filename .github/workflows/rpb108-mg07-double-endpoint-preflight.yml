@@ -1,0 +1,85 @@
+name: MG07 double endpoint cheap preflight
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_mg07_double_endpoint_preflight.py
+      - .github/workflows/rpb108-mg07-double-endpoint-preflight.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  exact-endpoint-jet-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy scipy
+      - name: Recover pinned complete-coupling GitHub artifact
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs'), crypto = require('crypto');
+            const {owner,repo} = context.repo;
+            const run_id = 40267592408, artifact_id = 12627027140;
+            const source = '74f0e4f08cef9f1e8984471eefe8c8f68587e386';
+            const digest = '31a9622e69935bc855f1117cd7d426de2f841c9886041ed50b86db722e8658d7';
+            const run = (await github.rest.actions.getWorkflowRun({owner,repo,run_id})).data;
+            if (run.status !== 'completed' || run.conclusion !== 'success' || run.head_sha !== source)
+              throw new Error('Accepted coupling run mismatch');
+            const a = (await github.rest.actions.getArtifact({owner,repo,artifact_id})).data;
+            if (a.expired || a.workflow_run.id !== run_id || a.workflow_run.head_sha !== source ||
+                a.name !== 'mg07-complete-original-xcos-coupling' || a.digest !== 'sha256:' + digest)
+              throw new Error('Accepted coupling artifact mismatch');
+            const response = await github.rest.actions.downloadArtifact({owner,repo,artifact_id,archive_format:'zip'});
+            const bytes = Buffer.from(response.data);
+            if (crypto.createHash('sha256').update(bytes).digest('hex') !== digest)
+              throw new Error('Archive hash mismatch');
+            fs.mkdirSync('jet-input',{recursive:true});
+            fs.writeFileSync('jet-input/accepted.zip',bytes);
+      - name: Extract accepted exact complete-coupling result
+        run: |
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          with zipfile.ZipFile('jet-input/accepted.zip') as z:
+              raw=z.read('mg07_original_complete_xcos_coupling.json')
+          Path('jet-input/coupling.json').write_bytes(raw)
+          PY
+      - name: Certify endpoint matrix, coefficient intervals, cubic tail and Schur invariance
+        run: python scripts/verify_rpb108_mg07_double_endpoint_preflight.py --input jet-input/coupling.json
+      - name: Independent tail-payment ratios and fail-closed interpretation
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          z=json.load(open('artifacts/mg07_double_endpoint_preflight.json'))
+          old=json.load(open('jet-input/coupling.json'))
+          lo,hi=map(F,z['endpoint_matrix_determinant_interval'])
+          assert 0<lo<=hi
+          assert z['exact_real_fourier_decay_order']==3
+          assert z['rational_approximants_have_pure_cubic_decay'] is False
+          assert z['frequency_quadrature_repeated'] is False
+          assert z['new_complete_lowband_and_scalar_schur_certified'] is False
+          assert z['exact_schur_unchanged_under_anchor_addition'] is True
+          for r in z['measurements']:
+              for v,p,ratio in zip(old['high12_complete_cross_absolute_payments'],
+                                   r['high12_complete_mixed_absolute_upper'],
+                                   r['old_to_new_mixed_payment_ratios']):
+                  assert F(v)/F(p)==F(ratio)>10
+              assert F(old['high12_negative_diagonal_payment'])/F(r['high12_negative_diagonal_upper'])==F(r['old_to_new_negative_diagonal_ratio'])>48
+          assert z['whole_original_odd_even_CC27_Weil_RH']=='OPEN'
+          print('Independent endpoint preflight PASS; new signed Schur OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mg07-double-endpoint-preflight
+          path: artifacts/mg07_double_endpoint_preflight.json
+          if-no-files-found: warn
