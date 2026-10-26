@@ -1,0 +1,85 @@
+name: SI29 original full-J quotient rank
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_si29_full_J_quotient_rank.py
+      - .github/workflows/rpb108-si29-full-J-quotient-rank.yml
+      - notes/RPB108_SI29_FULL_J_QUOTIENT_RANK_20261026.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-original-quotient-rank:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONINTMAXSTRDIGITS: '100000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay original SI10 and actual SI29 Hermite geometry
+        run: python scripts/validate_rpb108_si29_hermite106_fullJ_residual.py
+      - name: Replay actual rational feature coordinates
+        run: python scripts/verify_rpb108_si29_normalized_residual_coordinates.py --source scripts/validate_rpb108_si29_hermite106_fullJ_residual.py --certificate artifacts/si29_true14_hermite106_fullJ_projection.json
+      - name: Check all original atoms and actual feature quotient witnesses
+        run: python scripts/verify_rpb108_si29_full_J_quotient_rank.py --source scripts/validate_rpb108_si29_hermite106_fullJ_residual.py --coordinates artifacts/si29_normalized_residual_coordinates.json
+      - name: Independently replay density rank and nonvanishing witnesses
+        run: |
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          z=json.load(open('artifacts/si29_full_J_quotient_rank.json'))
+          manifest=json.load(open('research/obligations.json'))
+          assert manifest['active_obligation']=='W-ODD-NEG'
+          assert next(x for x in manifest['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          nodes=[(F(c),p) for c,p in z['original_source_nodes']]
+          features=[(F(c),F(r),d) for c,r,d in z['feature_definitions']]
+          assert len(nodes)==107 and len(set(c for c,p in nodes))==107
+          assert sum(p for c,p in nodes)==469 and all(c>0 and p>0 for c,p in nodes)
+          assert z['annihilator_order']==940
+          windows=sorted(set((c-r,c+r) for c,r,d in features))
+          assert len(windows)==12 and all(a[1]<=b[0] for a,b in zip(windows,windows[1:]))
+          D=[[F(v) for v in row] for row in z['density_evaluation_matrix']]
+          Di=[[F(v) for v in row] for row in z['density_evaluation_matrix_inverse']]
+          assert len(D)==len(Di)==14 and all(len(row)==14 for row in D+Di)
+          for row,w in zip(D,z['spectral_witnesses']):
+              x=F(w['eta']); radius=F(w['atom_free_interior_neighborhood_radius'])
+              lo,hi=next((lo,hi) for lo,hi in windows if lo<x<hi)
+              assert radius>0 and lo<x-radius<x+radius<hi
+              product=F(1)
+              for c,p in nodes:
+                  assert abs(x-c)>radius
+                  product*=(c*c-x*x)**p
+              assert product==F(w['nonzero_nodal_product'])!=0
+              actual=[]
+              for c,r,d in features:
+                  actual.append((1/(2*r) if d==0 else 3*(x-c)/(2*r*r)) if c-r<x<c+r else F(0))
+              assert row==actual
+          for a,b in ((D,Di),(Di,D)):
+              for i in range(14):
+                  for j in range(14):
+                      assert sum((a[i][k]*b[k][j] for k in range(14)),F(0))==int(i==j)
+          assert z['actual_feature_quotient_rank_modulo_full_J470']==14
+          assert z['actual_G_quotient_rank_modulo_full_J470']==14
+          assert z['projected_T_inverse_exists_conditional_on_original_domain'] is True
+          assert z['annihilator_applied_to_zero_extensions'] is False
+          for field in ('quantitative_projected_T_lower_bound_computed','energy_conditioning_certified','normalized_forcing_entries_computed','inverse_response_value_certified','required_dense_484_inverse_for_this_rank_proof'):
+              assert z[field] is False
+          assert z['W_ODD_NEG']=='OPEN' and z['independent_analytic_domain_review']=='OPEN'
+          print('Independent original full-J spectral-density rank witness PASS')
+          print('Analytic inverse existence is conditional; numerical conditioning and response OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: si29-original-full-J-quotient-rank
+          path: |
+            artifacts/si29_full_J_quotient_rank.json
+            artifacts/si29_normalized_residual_coordinates.json
+            artifacts/si29_true14_hermite106_fullJ_projection.json
+          if-no-files-found: warn
