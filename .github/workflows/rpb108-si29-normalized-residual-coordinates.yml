@@ -1,0 +1,69 @@
+name: SI29 actual normalized Hermite residual coordinates
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_si29_normalized_residual_coordinates.py
+      - .github/workflows/rpb108-si29-normalized-residual-coordinates.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-original-residual-coordinates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # Finite cap for the exact 14x14 rational coordinate witness.
+      PYTHONINTMAXSTRDIGITS: '100000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay original SI10 geometry and actual SI29 Hermite106 bounds
+        run: python scripts/validate_rpb108_si29_hermite106_fullJ_residual.py
+      - name: Construct actual normalized residual coordinates and series-error certificate
+        run: python scripts/verify_rpb108_si29_normalized_residual_coordinates.py --source scripts/validate_rpb108_si29_hermite106_fullJ_residual.py --certificate artifacts/si29_true14_hermite106_fullJ_projection.json
+      - name: Independently verify exact coefficient normalization and original-action tails
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          from validate_rpb108_si29_hermite106_fullJ_residual import hyp_upper
+          z=json.load(open('artifacts/si29_normalized_residual_coordinates.json'))
+          M=[[F(v) for v in row] for row in z['frequency_residual_moment_matrix']]
+          U=[[F(v) for v in row] for row in z['rational_feature_transform']]
+          scales=list(map(F,z['exact_transformed_jet_scales']))
+          assert len(M)==len(U)==14 and all(len(r)==14 for r in M+U)
+          for i in range(14):
+              for j in range(14):
+                  assert sum((M[i][k]*U[k][j] for k in range(14)),F(0))==(scales[i] if i==j else 0)
+          assert all(scales)
+          B=F(11,10)
+          assert hyp_upper(B,True)-B<1
+          for r in z['series_tail_errors']:
+              e=F(r['uniform_function_tail'])
+              de=F(r['uniform_derivative_tail'])
+              V=2*e+2*B*de
+              assert e<F(1,10**95)
+              assert F(r['original_Astar_form_error_upper'])==36*2*B*e*e+V*V<F(1,10**180)
+              assert F(r['original_Astar_strong_error_squared_upper'])==2*(36**2*2*B*e*e+F(325,18)*V*V)+8*2*B*e*e<F(1,10**180)
+          assert z['full_degree639_polynomial_coefficients_materialized'] is False
+          assert z['independence_modulo_full_J470_certified'] is False
+          assert z['Astar_energy_condition_number_certified'] is False
+          assert z['actual_full_J470_energy_Schur_T_computed'] is False
+          assert z['normalized_forcing_computed'] is False
+          assert z['normalized_inverse_response_certified'] is False
+          assert z['odd_even_CC27_Weil_RH']=='OPEN'
+          print('Independent original residual coordinates/tails PASS; full energy response OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: si29-actual-normalized-residual-coordinates
+          path: |
+            artifacts/si29_normalized_residual_coordinates.json
+            artifacts/si29_true14_hermite106_fullJ_projection.json
+          if-no-files-found: warn
