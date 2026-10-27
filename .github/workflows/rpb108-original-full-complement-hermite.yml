@@ -1,0 +1,78 @@
+name: Original full complement Hermite leakage
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_original_full_complement_hermite.py
+      - scripts/verify_rpb108_original_full_complement_hermite_replay.py
+      - .github/workflows/rpb108-original-full-complement-hermite.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  complete-original-complement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONINTMAXSTRDIGITS: '100000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify unchanged open obligation
+        run: python scripts/verify_obligation_manifest.py
+      - name: Verify accepted GitHub custody and download exact native witness
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import hashlib,io,json,os,urllib.error,urllib.request,zipfile
+          from pathlib import Path
+          NATIVE_RUN=40436010764
+          NATIVE_COMMIT='3a39bfad3581364ad52b6c8b2917e55bb06e36e0'
+          NATIVE_ARTIFACT=12704426598
+          ARCHIVE_SHA256='fdaf970d18edaaaabd8e199653d1945b8f5da61b92e51e4fcfef0eba2b9721a4'
+          base='https://api.github.com/repos/monocap-tech/weil-lab'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(base+path,headers=headers)) as r:
+                  return json.load(r)
+          run=get('/actions/runs/'+str(NATIVE_RUN))
+          assert run['conclusion']=='success' and run['head_sha']==NATIVE_COMMIT
+          artifact=get('/actions/artifacts/'+str(NATIVE_ARTIFACT))
+          assert artifact['name']=='si29-full-augmented-ritz-method-stop'
+          assert artifact['workflow_run']['id']==NATIVE_RUN and artifact['workflow_run']['head_sha']==NATIVE_COMMIT
+          assert artifact['digest']=='sha256:'+ARCHIVE_SHA256 and artifact['expired'] is False
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          request=urllib.request.Request(base+'/actions/artifacts/'+str(NATIVE_ARTIFACT)+'/zip',headers=headers)
+          try:
+              with urllib.request.build_opener(NoRedirect).open(request) as r:data=r.read()
+          except urllib.error.HTTPError as e:
+              assert e.code in (301,302,303,307,308)
+              # Do not forward the GitHub authorization header to blob storage.
+              with urllib.request.urlopen(e.headers['Location']) as r:data=r.read()
+          assert hashlib.sha256(data).hexdigest()==ARCHIVE_SHA256
+          files=[('si29_full_J_L2_normalization.json','c9ee487f8abe7b633c47d2ef7d72e2cc4f7289bc794b2d8fc02bb61520b25e60'),('si29_original_negative_mixed_budget.json','a693261c31f01a4a1e11ea6400e5173435a8260b41b1f6b43aa6f67f784ccb7f'),('mg07_true_original_low12_960cell.json','4cc8e320de50918965ce1c47acbf7cdd87747bdb373c6a5da6a2ae1b3b0d8ba2')]
+          Path('artifacts').mkdir(exist_ok=True)
+          archive=zipfile.ZipFile(io.BytesIO(data))
+          for name,sha in files:
+              raw=archive.read(name)
+              assert hashlib.sha256(raw).hexdigest()==sha
+              Path('artifacts',name).write_bytes(raw)
+          print('Accepted run/source/artifact/archive and THREE matched budget inputs PASS')
+          PY
+      - name: Bound the ENTIRE original J470 complement with joint Hermite constraints
+        run: python scripts/verify_rpb108_original_full_complement_hermite.py --native-certificate artifacts/si29_full_J_L2_normalization.json --negative-certificate artifacts/si29_original_negative_mixed_budget.json --threshold-certificate artifacts/mg07_true_original_low12_960cell.json
+      - name: Independent exact all-leaf/multiplicity/threshold replay
+        run: python scripts/verify_rpb108_original_full_complement_hermite_replay.py artifacts/original_full_complement_hermite.json artifacts/si29_full_J_L2_normalization.json artifacts/si29_original_negative_mixed_budget.json artifacts/mg07_true_original_low12_960cell.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-full-complement-hermite
+          path: artifacts/*.json
+          if-no-files-found: warn
