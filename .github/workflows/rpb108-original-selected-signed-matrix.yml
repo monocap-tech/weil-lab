@@ -1,0 +1,98 @@
+name: Complete original selected signed matrix and finite Schur
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_original_signed_frequency_kernel.py
+      - scripts/verify_rpb108_original_signed_bivariate_kernel.py
+      - scripts/verify_rpb108_original_selected_signed_matrix.py
+      - scripts/verify_rpb108_original_selected_signed_matrix_validation.py
+      - scripts/verify_rpb108_original_selected_signed_matrix_replay.py
+      - certificates/rpb108_original_selected_signed_split_candidates.json
+      - .github/workflows/rpb108-original-selected-signed-matrix.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  bounded-complete-signed-matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      PYTHONINTMAXSTRDIGITS: '100000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify unchanged open obligation
+        run: python scripts/verify_obligation_manifest.py
+      - name: Verify accepted original rank custody and TEN exact JSONs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import hashlib,io,json,os,urllib.error,urllib.request,zipfile
+          from pathlib import Path
+          base='https://api.github.com/repos/monocap-tech/weil-lab'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(base+path,headers=headers)) as r:return json.load(r)
+          run=get('/actions/runs/40590794034')
+          source='bb244109b37c599ed21ee6e40016060b4aba90f5'
+          digest='bb2669985194888b2e2f7e76403be754d1a2ee631d1950c761bf15dc233cb449'
+          assert run['status']=='completed' and run['conclusion']=='success' and run['head_sha']==source
+          artifact=get('/actions/artifacts/12773198729')
+          assert artifact['name']=='original-signed-joint-frame-budget' and artifact['expired'] is False
+          assert artifact['workflow_run']['id']==40590794034 and artifact['workflow_run']['head_sha']==source
+          assert artifact['digest']=='sha256:'+digest
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          request=urllib.request.Request(base+'/actions/artifacts/12773198729/zip',headers=headers)
+          try:
+              with urllib.request.build_opener(NoRedirect).open(request) as r:data=r.read()
+          except urllib.error.HTTPError as e:
+              assert e.code in (301,302,303,307,308)
+              # Never forward GitHub authorization to blob storage.
+              with urllib.request.urlopen(e.headers['Location']) as r:data=r.read()
+          assert hashlib.sha256(data).hexdigest()==digest
+          archive=zipfile.ZipFile(io.BytesIO(data));Path('artifacts').mkdir(exist_ok=True)
+          for filename,sha in [
+            ('original_signed_joint_frame_budget.json','eececa96d8db2ab1625c79bf3a13d2ce14d2de97c921c9dec967834281f16e90'),
+            ('original_signed_refined_critical_block.json','d6e18f252ad1ce417d6d40ed96e7f2cef96c41884c2187a74d9a60d8189bf5ef'),
+            ('original_signed_frame_transport.json','e78c29dc930274e5522c665d073044a6de6ac1fee832cac65c13128f57fe80d4'),
+            ('original_signed_critical_mixed_block.json','2cb869033f2c6722d356e769f35fc0e1b041ae46a8c11360e66cd7d2c694c548'),
+            ('original_signed_kernel_validation.json','6d65f5f3d2338fb98d7f6397f4bcacd6e0c6bb0acb669b918c1fdf08e5e9bd4c'),
+            ('original_BS_pruned_rank_bound.json','9b9820a0163e5e8bf08dd1c2525c757ff67214b49a40cb093d00bc611c9ff9e2'),
+            ('original_four_mode_critical_block.json','a84b19c1fefc4e680c5c19ea643bbe5badce639374cb0a424211ee980020f922'),
+            ('si29_full_J_L2_normalization.json','c9ee487f8abe7b633c47d2ef7d72e2cc4f7289bc794b2d8fc02bb61520b25e60'),
+            ('sm40_original_envelope_method_stop.json','19af532b6bbd4a808854696b2a993e7ebd966e04da27fdd5f55e8b736668770b'),
+            ('original_BS_infinite_tail_upper.json','931e5c64db19b28201ce96958495a8bfd8337eb7ebe08096466d86db29a1f801')]:
+              raw=archive.read(filename);assert hashlib.sha256(raw).hexdigest()==sha
+              Path('artifacts',filename).write_bytes(raw)
+          print('Accepted run/source/artifact/archive and TEN matched JSONs PASS')
+          PY
+      - name: Replay accepted original reduced rank and complete leakage
+        run: python scripts/verify_rpb108_original_BS_pruned_rank_replay.py artifacts/original_BS_pruned_rank_bound.json artifacts/si29_full_J_L2_normalization.json artifacts/sm40_original_envelope_method_stop.json artifacts/original_BS_infinite_tail_upper.json
+      - name: Install pinned native arithmetic
+        run: python -m pip install python-flint==0.8.0
+      - name: Replay accepted signed block and independent validation
+        run: python scripts/verify_rpb108_original_signed_critical_mixed_replay.py artifacts/original_signed_critical_mixed_block.json artifacts/original_signed_kernel_validation.json artifacts/original_BS_pruned_rank_bound.json artifacts/original_four_mode_critical_block.json
+      - name: Replay accepted joint one-sided frame budget
+        run: python scripts/verify_rpb108_original_signed_joint_frame_budget_replay.py artifacts/original_signed_joint_frame_budget.json artifacts/original_signed_refined_critical_block.json artifacts/original_signed_frame_transport.json artifacts/original_signed_critical_mixed_block.json artifacts/original_BS_pruned_rank_bound.json artifacts/original_four_mode_critical_block.json
+      - name: Retain exact fixed coordinate candidates
+        run: cp certificates/rpb108_original_selected_signed_split_candidates.json artifacts/original_selected_signed_split_candidates.json
+      - name: Complete original selected signed matrix and matched finite Schur
+        run: python scripts/verify_rpb108_original_selected_signed_matrix.py --frame artifacts/original_signed_frame_transport.json --rank artifacts/original_BS_pruned_rank_bound.json --budget artifacts/original_signed_joint_frame_budget.json --block artifacts/original_signed_critical_mixed_block.json --candidate artifacts/original_selected_signed_split_candidates.json --output artifacts/original_selected_signed_matrix.json
+      - name: Independent coincident mixed order13 Cauchy validation
+        run: python scripts/verify_rpb108_original_selected_signed_matrix_validation.py --matrix artifacts/original_selected_signed_matrix.json --output artifacts/original_selected_signed_matrix_validation.json
+      - name: Exact matched-forcing finite Schur and mixed Cauchy replay
+        run: python scripts/verify_rpb108_original_selected_signed_matrix_replay.py artifacts/original_selected_signed_matrix.json artifacts/original_selected_signed_matrix_validation.json artifacts/original_signed_frame_transport.json artifacts/original_BS_pruned_rank_bound.json artifacts/original_signed_joint_frame_budget.json artifacts/original_signed_critical_mixed_block.json artifacts/original_selected_signed_split_candidates.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-selected-signed-matrix
+          path: artifacts/*.json
+          if-no-files-found: error

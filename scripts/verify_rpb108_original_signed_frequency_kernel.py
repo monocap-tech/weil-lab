@@ -9,7 +9,7 @@ from flint import arb,acb,acb_series,ctx
 
 class Kernel:
     def __init__(self,precision=512,laplace_terms=64):
-        assert 512<=precision<=4096 and 64<=laplace_terms<=256
+        assert 512<=precision<=4096 and 64<=laplace_terms<=384
         self.precision=precision;self.laplace_terms=laplace_terms
         ctx.prec=precision;self.pi=arb.pi();self.I=acb(0,1);self.B=acb('11/10');self.L=2*self.B
         self.pole=acb(0,'1/2');self.pp=arb('11/10').sinh()-arb('11/10')
