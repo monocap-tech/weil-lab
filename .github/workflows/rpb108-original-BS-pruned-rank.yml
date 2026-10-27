@@ -1,0 +1,79 @@
+name: Original BS selective rank pruning at fixed tail target
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_original_BS_pruned_rank.py
+      - scripts/verify_rpb108_original_BS_pruned_rank_replay.py
+      - .github/workflows/rpb108-original-BS-pruned-rank.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  exact-original-rank-allocation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PYTHONINTMAXSTRDIGITS: '100000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify unchanged open obligation
+        run: python scripts/verify_obligation_manifest.py
+      - name: Verify accepted tail custody and FIVE matched exact JSONs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import hashlib,io,json,os,urllib.error,urllib.request,zipfile
+          from pathlib import Path
+          base='https://api.github.com/repos/monocap-tech/weil-lab'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(base+path,headers=headers)) as r:return json.load(r)
+          run=get('/actions/runs/40547751923')
+          source='595f962e3e5abd4bd8ca454bfc88cd619c0fab90'
+          digest='030a07bb1b93208d22567fc51de3ef0810be930adf6e253714de58a344946f20'
+          assert run['status']=='completed' and run['conclusion']=='success' and run['head_sha']==source
+          artifact=get('/actions/artifacts/12752629674')
+          assert artifact['name']=='original-BS-infinite-tail-upper' and artifact['expired'] is False
+          assert artifact['workflow_run']['id']==40547751923 and artifact['workflow_run']['head_sha']==source
+          assert artifact['digest']=='sha256:'+digest
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          request=urllib.request.Request(base+'/actions/artifacts/12752629674/zip',headers=headers)
+          try:
+              with urllib.request.build_opener(NoRedirect).open(request) as r:data=r.read()
+          except urllib.error.HTTPError as e:
+              assert e.code in (301,302,303,307,308)
+              # Never forward GitHub authorization to blob storage.
+              with urllib.request.urlopen(e.headers['Location']) as r:data=r.read()
+          assert hashlib.sha256(data).hexdigest()==digest
+          archive=zipfile.ZipFile(io.BytesIO(data));Path('artifacts').mkdir(exist_ok=True)
+          for filename,sha in [
+            ('si29_full_J_L2_normalization.json','c9ee487f8abe7b633c47d2ef7d72e2cc4f7289bc794b2d8fc02bb61520b25e60'),
+            ('sm40_original_envelope_method_stop.json','19af532b6bbd4a808854696b2a993e7ebd966e04da27fdd5f55e8b736668770b'),
+            ('original_BS_infinite_tail_upper.json','931e5c64db19b28201ce96958495a8bfd8337eb7ebe08096466d86db29a1f801'),
+            ('si29_reference_on_J_perp.json','f1149e27da8a0e1d90e48b8ee0eb8a0a0b8ef51d0910499a7fcd19a082efca07'),
+            ('original_four_mode_critical_block.json','a84b19c1fefc4e680c5c19ea643bbe5badce639374cb0a424211ee980020f922')]:
+              raw=archive.read(filename);assert hashlib.sha256(raw).hexdigest()==sha
+              Path('artifacts',filename).write_bytes(raw)
+          print('Accepted run/source/artifact/archive and FIVE matched JSONs PASS')
+          PY
+      - name: Replay accepted COMPLETE original tail and count comparison
+        run: python scripts/verify_rpb108_original_BS_infinite_tail_replay.py artifacts/original_BS_infinite_tail_upper.json artifacts/si29_reference_on_J_perp.json artifacts/sm40_original_envelope_method_stop.json artifacts/original_four_mode_critical_block.json
+      - name: Allocate original constraints for ONE fixed tail target
+        run: python scripts/verify_rpb108_original_BS_pruned_rank.py --native artifacts/si29_full_J_L2_normalization.json --envelope artifacts/sm40_original_envelope_method_stop.json --prior artifacts/original_BS_infinite_tail_upper.json
+      - name: Independent exact all-cell, greedy trace and BS min-max replay
+        run: python scripts/verify_rpb108_original_BS_pruned_rank_replay.py artifacts/original_BS_pruned_rank_bound.json artifacts/si29_full_J_L2_normalization.json artifacts/sm40_original_envelope_method_stop.json artifacts/original_BS_infinite_tail_upper.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-BS-pruned-rank-bound
+          path: artifacts/*.json
+          if-no-files-found: error
