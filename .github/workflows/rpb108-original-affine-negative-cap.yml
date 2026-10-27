@@ -1,0 +1,82 @@
+name: Original affine negative cap anchor feasibility
+
+on:
+  push:
+    paths:
+      - scripts/verify_rpb108_original_affine_negative_cap.py
+      - scripts/verify_rpb108_original_affine_negative_cap_replay.py
+      - .github/workflows/rpb108-original-affine-negative-cap.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  bounded-original-cap-feasibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PYTHONINTMAXSTRDIGITS: '100000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify unchanged open obligation
+        run: python scripts/verify_obligation_manifest.py
+      - name: Verify both accepted GitHub custody chains and exact inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import hashlib,io,json,os,urllib.error,urllib.request,zipfile
+          from pathlib import Path
+          base='https://api.github.com/repos/monocap-tech/weil-lab'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          def get(path):
+              with urllib.request.urlopen(urllib.request.Request(base+path,headers=headers)) as r:return json.load(r)
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,*args,**kwargs):return None
+          specs=[
+            (40451367065,'30d4597b8c3fd68886899ba89e278e66de661dce',12710727196,'sm40-original-envelope-method-stop','a15f8ff4a6161f3b2a84201ec1ff7fba5591b35f29dd009422848b5bc84166c8',[
+              ('sm40_original_envelope_method_stop.json','19af532b6bbd4a808854696b2a993e7ebd966e04da27fdd5f55e8b736668770b'),
+              ('si29_original_negative_mixed_budget.json','a693261c31f01a4a1e11ea6400e5173435a8260b41b1f6b43aa6f67f784ccb7f')]),
+            (40260136876,'8844685d3e72a3d38f943b084b6e5bc70ef3d09c',12623752657,'mg07-original-complete-signed-2d-interval-result','2cc62e9fe52f38b021166605e40402f3d8aa4980f1148d7e3738ca3b1afa82ea',[
+              ('mg07_original_signed_two_dimensional_SPD.json','264fd853ca006a578d76369ac5bd4588a2097145b829fbba7036693f29b04044')])]
+          Path('artifacts').mkdir(exist_ok=True)
+          for rid,source,aid,name,digest,files in specs:
+              run=get('/actions/runs/'+str(rid))
+              assert run['status']=='completed' and run['conclusion']=='success' and run['head_sha']==source
+              artifact=get('/actions/artifacts/'+str(aid))
+              assert artifact['name']==name and artifact['expired'] is False
+              assert artifact['workflow_run']['id']==rid and artifact['workflow_run']['head_sha']==source
+              assert artifact['digest']=='sha256:'+digest
+              request=urllib.request.Request(base+'/actions/artifacts/'+str(aid)+'/zip',headers=headers)
+              try:
+                  with urllib.request.build_opener(NoRedirect).open(request) as r:data=r.read()
+              except urllib.error.HTTPError as e:
+                  assert e.code in (301,302,303,307,308)
+                  # Never forward the GitHub authorization header to blob storage.
+                  with urllib.request.urlopen(e.headers['Location']) as r:data=r.read()
+              assert hashlib.sha256(data).hexdigest()==digest
+              archive=zipfile.ZipFile(io.BytesIO(data))
+              for filename,sha in files:
+                  raw=archive.read(filename);assert hashlib.sha256(raw).hexdigest()==sha
+                  Path('artifacts',filename).write_bytes(raw)
+          print('TWO accepted run/source/artifact/archive chains and THREE matched JSONs PASS')
+          PY
+      - name: Replay inherited COMPLETE signed physical anchor Loewner lower
+        run: python scripts/verify_rpb108_mg07_physical_2d_anchor_inverse.py --input artifacts/mg07_original_signed_two_dimensional_SPD.json
+      - name: Install pinned native endpoint arithmetic
+        run: python -m pip install python-flint==0.8.0
+      - name: Build rational cap without integration or matrix assembly
+        run: python scripts/verify_rpb108_original_affine_negative_cap.py --envelope-stop artifacts/sm40_original_envelope_method_stop.json --anchor artifacts/mg07_original_signed_two_dimensional_SPD.json --negative artifacts/si29_original_negative_mixed_budget.json
+      - name: Independent exact clipping, Gram, interpolation and Young replay
+        run: python scripts/verify_rpb108_original_affine_negative_cap_replay.py artifacts/original_affine_negative_cap.json artifacts/sm40_original_envelope_method_stop.json artifacts/mg07_original_signed_two_dimensional_SPD.json artifacts/si29_original_negative_mixed_budget.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-affine-negative-cap-feasibility
+          path: artifacts/*.json
+          if-no-files-found: error
