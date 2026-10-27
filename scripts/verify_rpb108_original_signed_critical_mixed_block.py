@@ -19,11 +19,11 @@ def bounds(v,D=10**80):
     l=rat(dy(v.lower()))*D;h=rat(dy(v.upper()))*D
     return [str(F(l.numerator//l.denominator,D)),str(F(-(-h.numerator//h.denominator),D))]
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--rank',required=True);p.add_argument('--critical',required=True);p.add_argument('--output',default='artifacts/original_signed_critical_mixed_block.json');args=p.parse_args();start=time.monotonic();data={}
+    p=argparse.ArgumentParser();p.add_argument('--rank',required=True);p.add_argument('--critical',required=True);p.add_argument('--precision',type=int,default=512);p.add_argument('--laplace-terms',type=int,default=64);p.add_argument('--output',default='artifacts/original_signed_critical_mixed_block.json');args=p.parse_args();start=time.monotonic();data={}
     for name,sha in [('rank',RANK_SHA),('critical',CRITICAL_SHA)]:
         raw=Path(getattr(args,name)).read_bytes();assert hashlib.sha256(raw).hexdigest()==sha;data[name]=json.loads(raw)
     rank,critical=data['rank'],data['critical'];assert rank['retained_physical_rank_upper']==242 and rank['retained_original_pole']
-    assert flint.__version__=='0.8.0';ctx.prec=512;k=Kernel()
+    assert flint.__version__=='0.8.0';ctx.prec=args.precision;k=Kernel(args.precision,args.laplace_terms)
     spec=critical['exact_candidates'];probes=spec['probes'];assert len(probes)==4
     frequencies=list(map(F,spec['sine_frequencies']));aa=[list(map(F,p['sine_coefficients'])) for p in probes];bb=[F(p['sinh_coefficient']) for p in probes]
     basis=[]
@@ -103,11 +103,11 @@ def main():
         assert time.monotonic()-start<90,'bounded 90-second independent translated-block guard'
     sums=[sum((max(abs(F(x)) for x in row['entries'][t]['signed_interval'])**2 for row in rows),F(0)) for t in range(4)]
     mu=F(1,1000)-F(rank['pruned_physical_complement_negative_upper']);assert mu>F(98,10**5)
-    out=dict(status='CONDITIONAL_ORIGINAL_COMPLETE_RAW_SIGNED_CRITICAL_MIXED_BLOCK',rank_input_sha256=RANK_SHA,critical_input_sha256=CRITICAL_SHA,working_precision_bits=512,flint_version=flint.__version__,
+    out=dict(status='CONDITIONAL_ORIGINAL_COMPLETE_RAW_SIGNED_CRITICAL_MIXED_BLOCK',rank_input_sha256=RANK_SHA,critical_input_sha256=CRITICAL_SHA,working_precision_bits=args.precision,flint_version=flint.__version__,
       target_probe=probes[0],target_probes=probes,target_sine_frequencies=spec['sine_frequencies'],target_signed_kernel_Gram_native=targetQ,target_signed_kernel_Gram_components_native=targetComponents,target_signed_kernel_native=targetQ[0][0],
       target_signed_components_native={key:ball(value.real) for key,value in zip(['arch','prime','pole'],firstparts)},target_prior_signed_interval=critical['complete_scalar_witnesses'][0]['signed_energy_interval'],
       rows=rows,retained_source_count=242,critical_target_count=4,complete_mixed_entry_count=968,max_required_frequency_derivative_order=max(r['order'] or 0 for r in rows),maximum_native_block_radius=str(maxrad),raw_coordinate_column_squared_uppers=list(map(str,sums)),
-      Laplace_terms=64,analytic_tail_strip_imaginary_bound='3/4',Cauchy_radius='1/4',Laplace_tail_Cauchy_base_upper=str(rat(dy(k.tail))),signed_physical_selected_complement_floor=str(mu),
+      Laplace_terms=args.laplace_terms,Laplace_tail_exponent=k.tail_exponent,analytic_tail_strip_imaginary_bound='3/4',Cauchy_radius='1/4',Laplace_tail_Cauchy_base_upper=str(rat(dy(k.tail))),signed_physical_selected_complement_floor=str(mu),
       all_968_seven_prime_and_true_pole_cross_checks_passed=True,production_block_quadrature_used=False,global_source_monomial_expansion_used=False,full_physical_frame_transform_applied=False,
       raw_block_is_BS_mixed_block=False,raw_block_is_strong_residual=False,finite_BS_block_or_inverse_computed=False,critical_physical_projection_computed=False,augmented_frame_condition_certified=False,
       signed_Schur_or_global_sign_certified=False,W_ODD_NEG='OPEN',inherited_original_domain_review='OPEN',elapsed_seconds=time.monotonic()-start)

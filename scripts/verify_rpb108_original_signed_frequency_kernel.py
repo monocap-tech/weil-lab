@@ -8,14 +8,22 @@ from fractions import Fraction as F
 from flint import arb,acb,acb_series,ctx
 
 class Kernel:
-    def __init__(self):
-        ctx.prec=512;self.pi=arb.pi();self.I=acb(0,1);self.B=acb('11/10');self.L=2*self.B
+    def __init__(self,precision=512,laplace_terms=64):
+        assert 512<=precision<=4096 and 64<=laplace_terms<=256
+        self.precision=precision;self.laplace_terms=laplace_terms
+        ctx.prec=precision;self.pi=arb.pi();self.I=acb(0,1);self.B=acb('11/10');self.L=2*self.B
         self.pole=acb(0,'1/2');self.pp=arb('11/10').sinh()-arb('11/10')
         # Cauchy radius 1/4, imaginary-frequency strip <=3/4.
-        tail=(2*(-arb('511/4')*arb('11/5')).exp()/(arb('511/4')*(1-(-arb('22/5')).exp()))).upper()
-        self.tail=arb(2)**-406
-        assert tail<self.tail  # clean rational majorant, independently replayed
-        self.exps=[(-acb(str(2*j+F(1,2)))*self.L).exp() for j in range(1,64)]
+        alpha=F(2*laplace_terms)-F(1,4)
+        # exp(7/10)>2; exp(-2L)<2^-6. Both clean exponents replay
+        # by rational arithmetic, so the analytic tail scales with length.
+        m=int(alpha*F(11,5)/F(7,10));q=0
+        while 2**(q+1)*2 < alpha*F(63,64):q+=1
+        self.tail_exponent=m+q
+        tail=(2*(-arb(str(alpha))*arb('11/5')).exp()/(arb(str(alpha))*(1-(-arb('22/5')).exp()))).upper()
+        self.tail=arb(2)**(-self.tail_exponent)
+        assert tail<self.tail
+        self.exps=[(-acb(str(2*j+F(1,2)))*self.L).exp() for j in range(1,laplace_terms)]
         self.primes=[(arb(p).log()/arb(n).sqrt(),arb(n).log()) for n,p in [(2,2),(3,3),(4,2),(5,5),(7,7),(8,2),(9,3)]]
     def sin(self,z):return ((self.I*z).exp()-(-self.I*z).exp())/(2*self.I)
     def cos(self,z):return ((self.I*z).exp()+(-self.I*z).exp())/2
