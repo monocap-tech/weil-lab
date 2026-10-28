@@ -1,0 +1,17 @@
+{
+  "status": "EXACT_LOCAL_RATIONAL_FOUR_PROBE_RESIDUAL_PROJECTION_ONLY",
+  "archive_sha256": "f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0",
+  "diagnostic_sha256": "d853e2ecf665b8bb3978ee203371c07f67d050b79e7427d6c673331fd1d60ab9",
+  "parent_original_four_probe_residual_Frobenius_sq_upper": "2.3257203774613282486977909091151393E-609",
+  "direct_independent_interval_four_probe_residual_Frobenius_sq_upper": "2.3257203774613282486977909090810159E-609",
+  "physical_probe_Gram_coefficient_floor": "5.6769712210376804050273128331309022E-213",
+  "direct_projected_strong_residual_Frobenius_sq_upper": "4.0967626695775555016306557784164706E-397",
+  "parent_projected_strong_residual_Frobenius_sq_upper": "4.0967626695775555016306557784765791E-397",
+  "complete_strong_residual_Frobenius_sq_required_below": "0.0098604396",
+  "retained_four_probe_energy_operator_upper": "0.0019113001592393833409300283922031707",
+  "slightly_refined_complete_residual_Frobenius_sq_sufficient_threshold": "0.0098613159721666830447149431334793542",
+  "what_is_measured": "||P_E R||_F^2 <= ||Z-C_E Y_C||_F^2 / lambda_min(E*E), for exact physical E",
+  "what_is_NOT_measured": "||(I-P_E)R||_F^2, or complete ||R||_F^2",
+  "whole_R_bounded": false,
+  "W_ODD_NEG": "OPEN"
+}
