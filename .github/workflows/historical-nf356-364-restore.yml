@@ -49,14 +49,13 @@ jobs:
           python3 scripts/local_replay/replay_provisional_nf356_364.py \
             --offline "${RUNNER_TEMP}/historical-parents" \
             --work-dir "${RUNNER_TEMP}/historical-replay"
-      - name: Commit only restored historical files and receipt to same draft branch
+      - name: Commit verified historical notes/data/scripts and receipt (workflow added separately)
         run: |
           git add -A -- \
             notes/NF356-364_PROVISIONAL_CUSTODY_README.md \
             notes/data/provisional/ \
             notes/provisional/ \
-            scripts/local_replay/ \
-            .github/workflows/provisional-nf356-364-custody.yml
+            scripts/local_replay/
           if git diff --cached --quiet; then
             echo "All 49 historical files are already present and byte-identical."
           else
