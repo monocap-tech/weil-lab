@@ -1,0 +1,67 @@
+name: Weil-Lab NF356-364 historical custody restoration (NO theorem promotion)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/custody/restore_nf356_364_historical.py'
+      - 'notes/data/provisional/transfer/NF356-364_NONPARENT_PAYLOAD.tar.xz.b64'
+      - '.github/workflows/historical-nf356-364-restore.yml'
+permissions:
+  contents: write
+  actions: read
+jobs:
+  restore-only-on-same-repo-draft:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download three pinned original parent workflow artifacts
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "${RUNNER_TEMP}/historical-parents"
+          for spec in "12738593751:nf361-pr348-fourmode.zip" "12752629674:pr350-certificate.zip" "12776684037:pr355-exterior.zip"; do
+            id="${spec%%:*}"; name="${spec#*:}"
+            curl --fail --silent --show-error --location --retry 2 \
+              -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/${id}/zip" \
+              --output "${RUNNER_TEMP}/historical-parents/${name}"
+          done
+      - name: Reconstruct exactly 49 historical files; refuse conflicting paths
+        run: |
+          python3 scripts/custody/restore_nf356_364_historical.py \
+            --source . --destination . --artifacts-dir "${RUNNER_TEMP}/historical-parents" \
+            > "${RUNNER_TEMP}/historical-restore.log"
+          head -n 4 "${RUNNER_TEMP}/historical-restore.log"
+      - name: Verify exact historical 48-record SHA256 manifest
+        run: python3 scripts/local_replay/verify_provisional_manifest.py
+      - name: Replay nine original historical rational checks with three SHA-pinned parents
+        run: |
+          python3 scripts/local_replay/replay_provisional_nf356_364.py \
+            --offline "${RUNNER_TEMP}/historical-parents" \
+            --work-dir "${RUNNER_TEMP}/historical-replay"
+      - name: Commit only restored historical files and receipt to same draft branch
+        run: |
+          git add -A -- \
+            notes/NF356-364_PROVISIONAL_CUSTODY_README.md \
+            notes/data/provisional/ \
+            notes/provisional/ \
+            scripts/local_replay/ \
+            .github/workflows/provisional-nf356-364-custody.yml
+          if git diff --cached --quiet; then
+            echo "All 49 historical files are already present and byte-identical."
+          else
+            git -c user.name="Weil-Lab Custody Bot" \
+                -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+                commit -m "custody: restore original 49 NF356-364 files (all SHA checks + nine replays; provisional)"
+            git push origin "HEAD:${{ github.event.pull_request.head.ref }}"
+          fi
