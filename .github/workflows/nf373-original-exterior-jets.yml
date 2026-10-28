@@ -1,0 +1,51 @@
+name: Weil-Lab NF373 native original exterior endpoint jets (no Weil theorem promotion)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/verify_nf373_original_exterior_endpoint_jets.py'
+      - 'notes/provisional/NF373_ORIGINAL_MATCHED_EXTERIOR_ENDPOINT_JET_GATE.md'
+      - 'notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json'
+      - 'notes/data/provisional/nf372_pr355_fields.json'
+      - 'notes/data/provisional/nf372_nf369_fields.json'
+      - '.github/workflows/nf373-original-exterior-jets.yml'
+permissions:
+  contents: read
+jobs:
+  nf373-original-physical-projection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exact original Arb binding
+        run: pip install --only-binary=:all: python-flint==0.8.0
+      - name: Compile and execute fail-closed native 242x4 physical projection and endpoint jets
+        run: |
+          python -m py_compile scripts/verify_nf373_original_exterior_endpoint_jets.py
+          python -u scripts/verify_nf373_original_exterior_endpoint_jets.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --output artifacts/nf373_original_exterior_jets.json \
+            --bits 4096
+      - name: Fail closed on mathematical standing and scope
+        run: |
+          python - <<'PY'
+          import json
+          q=json.load(open('artifacts/nf373_original_exterior_jets.json'))
+          assert q['native_parent_physical_quotient_overlap_pass']
+          assert len(q['boundary_jets'])==4
+          assert q['full_exterior_residual_certified'] is False
+          assert q['complete_original_multiplier_high_tail_certified'] is False
+          assert q['W_ODD_NEG']==q['RH']=='OPEN'
+          print('PASS original 242-dimensional physical projection and 4 outward interval endpoint jets only')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf373-original-exterior-endpoint-report
+          path: artifacts/nf373_original_exterior_jets.json
+          if-no-files-found: ignore
