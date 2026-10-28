@@ -19,6 +19,7 @@ This commit is an **index and bounded method-stop checkpoint**, not the 49-file 
 | NF364 | Sine-only tail and one shared pole-response split | Correlated selected-space approximation |
 | NF365 | Exact physical/energy projection identity and matched f/p residual equivalence | Complete projected positive forcing |
 | NF366 | Full PR355 physical-quotient trace <2^-604; bounded Kminus transfer squared <1e-179 | Positive exterior Riesz response still open |
+| NF367 | PR355 signed+physical quotient trace yields ||QFz||_a²<2^-600||z||² and all-test signed form-dual²<2^-580||z||² | Strong Astar action and actual exterior Riesz response still open |
 
 ## Boundaries
 PR #355 accepted four-probe finite exterior correction is a Galerkin **lower** slice of the full infinite Schur. NF356's improved exterior floor is local-only. The PR #348 four-mode coupled witness certifies lambda4(Btrue)>1-3e-12 under inherited form realization; it does not establish lambda4<=1. No positive or negative full Weil sign follows from any of these.
@@ -35,3 +36,6 @@ Stop: no main merge, no closure of W-ODD-NEG, even, CC27, F4, global Weil, or RH
 ## Addendum: NF366 original-data replay
 
 The SHA-pinned original PR355 native physical quotient gram yields a four-direction Kminus transfer bound below 1e-179 in squared norm; the bounded negative operator can transfer from f to Pf, but this says nothing about unbounded Astar action. Original nested archive/JSON hashes and the exact rational check are in notes/provisional/NF366_NEGATIVE_QUOTIENT_TRANSFER.md and scripts/local_replay/nf366_negative_quotient_transfer.py. CI reruns archived-output arithmetic; it does not reproduce native Arb integration or establish original-domain acceptance.
+
+## NF367 form-topology addendum
+Using the original PR355 **signed** exterior quotient Gram as well as physical Gram, and the complete negative multiplier norm <=17, the actual four critical q=QF have Astar-form energy <2^-600 in four-column coefficient norm; their full signed form pairing has squared a-dual norm <2^-580. This *form* transfer is accepted only under the original inherited operator/form assumptions, not as a strong Astar*q bound or a complete Schur certificate. Portable exact arithmetic script: scripts/local_replay/nf367_form_quotient_transfer.py; original PR355 SHA-pinned native archive remains the parent evidence.
