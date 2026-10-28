@@ -43,3 +43,14 @@ Using the original PR355 **signed** exterior quotient Gram as well as physical G
 ## NF367 four critical modes in J242
 
 PR348's actual coupled four-dimensional original near-null plane transfers under the accepted PR355 physical projection into four independent actual J242 directions: physical projected Gram >=.98I, complete signed Rayleigh absolute upper <1.1e-16. Under PR354's conditional SPD finite selected block, its fourth smallest physical signed eigenvalue is <1.1e-16. Parent PR348 and PR355 JSON hashes are checked by the NF367 replay. This does not bound the full infinite Schur response, and neither finite selected positivity nor weak form transfer proves W-ODD-NEG.
+
+## NF368 — exact positive four-mode margin and directional stopping criterion
+
+Certified from original PR348 signed 4×4 complete matrix and PR355 original physical/signed quotient:
+- w(Fz,Fz)>5e-23||z||² on fixed original coupled critical F-plane (entire rational matrix interval, exact LDL)
+- w(PFz,PFz)>4.9e-23||z||² on its four independent physical J242 projections (NF367 form transfer)
+- The correct next sufficient 4×4 gate retains M_safe = archived rational midpoint signed Gram minus interval/projection error times I, and requires actual infinite exterior Schur upper <= M_safe
+- The optional strong mixed forcing bound ~2.195e-13 is only a scalar preflight, conditional on strong operator domain; do not convert it into another uniform-comparison campaign
+- Actual first exterior inverse, whole Schur upper, full 242D sign, original domain and RH all OPEN
+
+Proof and SHA-pinned CI replay: notes/provisional/NF368_FOUR_MODE_POSITIVE_MARGIN.md; scripts/local_replay/nf368_four_mode_margin.py. The archived parent data are validated, not re-integrated natively.
