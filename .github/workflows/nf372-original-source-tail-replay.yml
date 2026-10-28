@@ -1,17 +1,16 @@
-name: Weil-Lab NF372 exact source-tail replay (conditional, NOT theorem acceptance)
+name: Weil-Lab NF372 portable exact-rational replay (conditional, NOT original archive acceptance)
 on:
   workflow_dispatch:
   pull_request:
     paths:
       - 'GOVERNANCE.md'
-      - 'docs/OBLIGATION_FIRST_PROGRESSION.md'
       - 'scripts/nf372_exact_source_tail_and_generic_stop.py'
+      - 'scripts/local_replay/nf372_portable_parent_replay.py'
+      - 'notes/data/provisional/nf372_*_fields.json'
       - 'notes/data/provisional/NF372_replay.json'
-      - 'notes/provisional/NF372_ARCHIVE_MATCHED_TAIL_METHOD_STOP.md'
       - '.github/workflows/nf372-original-source-tail-replay.yml'
 permissions:
   contents: read
-  actions: read
 jobs:
   replay-nf372:
     runs-on: ubuntu-latest
@@ -21,7 +20,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Pin exact committed NF372 source bytes
+      - name: Require SHA-identical original NF372 source and signed extracted fields
         run: |
           python3 - <<'PY'
           import hashlib
@@ -29,34 +28,23 @@ jobs:
           expected={
             'scripts/nf372_exact_source_tail_and_generic_stop.py':'2283c2a0b7fe260d77642133f4de20c65dec62687ae61f69f0d7c0debf1c4cb3',
             'notes/provisional/NF372_ARCHIVE_MATCHED_TAIL_METHOD_STOP.md':'27e9599a41e57257b6a45c2005ff97ba9911d4ff71d3ffcf39b1e1bcc60f3836',
-            'notes/data/provisional/NF372_replay.json':'11f1b83d8a4920bb606a5a6e7b41db317bedbcd611e9abae4126eaf54e6df551'
+            'notes/data/provisional/NF372_replay.json':'11f1b83d8a4920bb606a5a6e7b41db317bedbcd611e9abae4126eaf54e6df551',
+            'notes/data/provisional/nf372_pr355_fields.json':'abd37707d585dcd54b040f1ae865a7430a9c7cba85df31131661b2e72e560770',
+            'notes/data/provisional/nf372_nf369_fields.json':'3e73a12bbd70158a461d9722dc8fc499eee8d17baf0afc9090bac5d10165e7e8',
+            'scripts/local_replay/nf372_portable_parent_replay.py':'28f8c5a7cad5087c2ba8a913cae51736940c1afecd0801c52d8b2b0b0a6c8d26'
           }
           for path,sha in expected.items():
-              assert hashlib.sha256(Path(path).read_bytes()).hexdigest()==sha, path
-          print('PASS original NF372 local exact SHA256 sources present on GitHub branch')
+              assert hashlib.sha256(Path(path).read_bytes()).hexdigest()==sha,path
+          print('PASS exact committed NF372 sources and original ZIP-extracted parent slices')
           PY
-      - name: Download two SHA-pinned immutable GitHub Actions parent archives
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      - name: Replay Fraction source-tail and method-stop checks on original pinned fields
         run: |
-          mkdir -p "${RUNNER_TEMP}/nf372-parent"
-          for spec in "12776684037:pr355.zip" "12849890537:nf369.zip"; do
-            id="${spec%%:*}"; name="${spec#*:}"
-            curl --fail --silent --show-error --location --retry 2 \
-              -H "Authorization: Bear ${GITHUB_TOKEN}" \
-              -H "Accept: application/vnd.github+json" \
-              -H "X-GitHub-Api-Version: 2022-11-28" \
-              "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/${id}/zip" \
-              --output "${RUNNER_TEMP}/nf372-parent/${name}"
-          done
-      - name: Replay original source method stop and oscillatory tail rational certificates
-        run: |
-          python3 scripts/nf372_exact_source_tail_and_generic_stop.py \
-            --pr355 "${RUNNER_TEMP}/nf372-parent/pr355.zip" \
-            --nf369 "${RUNNER_TEMP}/nf372-parent/nf369.zip" \
+          python3 scripts/local_replay/nf372_portable_parent_replay.py \
+            --pr355 notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
             --report "${RUNNER_TEMP}/NF372_replay.json"
           cmp -s "${RUNNER_TEMP}/NF372_replay.json" notes/data/provisional/NF372_replay.json
-      - name: Keep theorem status open
+      - name: Keep true obligation open; classify provenance
         run: |
           python3 - <<'PY'
           import json
@@ -64,5 +52,6 @@ jobs:
           assert q['active_obligation']=='W-ODD-NEG'
           w=next(x for x in q['obligations'] if x['id']=='W-ODD-NEG')
           assert w['status']=='open'
-          print('PASS scope: NF372 source-tail only; full infinite signed Schur, original domain and RH OPEN')
+          print('PASS portable Fraction replay; original archive ZIP SHA validated locally, NOT independently by this CI')
+          print('Full infinite exterior, original-domain audit, even/whole Weil and RH remain OPEN')
           PY

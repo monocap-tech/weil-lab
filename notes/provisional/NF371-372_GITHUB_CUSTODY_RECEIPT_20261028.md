@@ -20,3 +20,9 @@
 The owner explicitly replaced the obsolete `NO_TRANSFER` default with **GitHub custody by default, no repeated authorization**. The original NF371/NF372 local notes accurately retain their *former* local-only status as historical text. This present receipt and root `GOVERNANCE.md` govern the current repository custody; do not suppress or silently alter original snapshots. Neither `NF371` nor `NF372` changes canonical `research/obligations.json` closure: `W-ODD-NEG` remains OPEN.
 
 **Next:** evaluate the actual matched exterior correction `w_i=E(I+Y0)T e_i`, starting with direction four, using the complete correlated source coefficients, with any new pass committed on GitHub by default. Remaining 238 directions, original operator domain, even/whole Weil and RH OPEN.
+
+## GitHub Actions transport limitation and portable CI custody (subsequent correction)
+
+The initial NF372 workflow failed at GitHub Actions artifact REST download with HTTP 401, **after** confirming exact committed NF372 source SHA256s. This is a parent-artifact retrieval failure, not a mathematical counterexample. The two original 25 MB / 711 KB Actions ZIPs were separately retrieved through the connected GitHub API and SHA-verified during the local NF372 computation.
+
+To ensure **reproducible GitHub-native checks despite Actions download transport**, this additive continuation commits minimal unmodified parent JSON field slices extracted only after verifying both complete ZIP and JSON SHA256s. The new portable wrapper checks exact slice SHA256s, calls the unchanged original NF372 Fraction algorithm, and compares its output byte-for-byte to the originally recorded result. **This portable GitHub CI does not independently rerun full original archive ZIP SHA verification, native Arb computations or the whole exterior residual.** The full parent-archive checker is retained unchanged for future independent revalidation.
