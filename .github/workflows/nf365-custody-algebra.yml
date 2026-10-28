@@ -1,4 +1,4 @@
-name: NF365-NF368 provisional custody replay (NOT Weil acceptance)
+name: NF365-NF369 provisional custody replay (NOT Weil acceptance)
 on:
   workflow_dispatch:
   pull_request:
@@ -8,6 +8,8 @@ on:
       - 'scripts/local_replay/nf366_negative_quotient_transfer.py'
       - 'scripts/local_replay/nf367_form_quotient_transfer.py'
       - 'scripts/local_replay/nf368_four_mode_margin.py'
+      - 'scripts/local_replay/nf369_critical_quotient_schur_replay.py'
+      - 'scripts/verify_rpb108_nf369_critical_quotient_schur.py'
       - '.github/workflows/nf365-custody-algebra.yml'
 permissions:
   contents: read
@@ -22,7 +24,9 @@ jobs:
         run: python3 scripts/local_replay/nf365_projection_identity_check.py
   pr355-archive-replay:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
+    env:
+      PYTHONINTMAXSTRDIGITS: '100000'
     steps:
       - uses: actions/checkout@v4
       - name: Download original PR355 native artifact (do not forward auth on redirect)
@@ -41,3 +45,40 @@ jobs:
         run: python3 scripts/local_replay/nf367_form_quotient_transfer.py --offline "${RUNNER_TEMP}/nf366-pr355.zip"
       - name: SHA-pinned original four-mode NF368 positive-margin replay
         run: python3 scripts/local_replay/nf368_four_mode_margin.py --offline "${RUNNER_TEMP}/nf366-pr355.zip"
+      - name: Install pinned native Arb arithmetic for NF369
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Unpack original SHA-pinned PR355 native inputs for NF369
+        run: |
+          mkdir -p "${RUNNER_TEMP}/nf369"
+          python3 - <<'PY'
+          import zipfile,os
+          from pathlib import Path
+          target=Path(os.environ["RUNNER_TEMP"])/"nf369"
+          with zipfile.ZipFile(target.parent/"nf366-pr355.zip") as z:
+              for n in ("original_selected_signed_matrix.json","original_signed_frame_transport.json",
+                        "original_BS_pruned_rank_bound.json","original_four_mode_critical_block.json",
+                        "original_exterior_refined_mixed.json"):
+                  (target/n).write_bytes(z.read(n))
+          PY
+      - name: NF369 reconstruct actual 4D physical projection and original signed Galerkin
+        run: |
+          python3 scripts/verify_rpb108_nf369_critical_quotient_schur.py \
+            --matrix "${RUNNER_TEMP}/nf369/original_selected_signed_matrix.json" \
+            --frame "${RUNNER_TEMP}/nf369/original_signed_frame_transport.json" \
+            --rank "${RUNNER_TEMP}/nf369/original_BS_pruned_rank_bound.json" \
+            --critical "${RUNNER_TEMP}/nf369/original_four_mode_critical_block.json" \
+            --mixed "${RUNNER_TEMP}/nf369/original_exterior_refined_mixed.json" \
+            --output "${RUNNER_TEMP}/nf369/nf369_actual_critical_quotient.json"
+      - name: NF369 independent exact rational interval Schur replay
+        run: |
+          python3 scripts/local_replay/nf369_critical_quotient_schur_replay.py \
+            "${RUNNER_TEMP}/nf369/nf369_actual_critical_quotient.json" \
+            --report "${RUNNER_TEMP}/nf369/nf369_report.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf369-original-critical-four-quotient
+          path: |
+            ${{ runner.temp }}/nf369/nf369_actual_critical_quotient.json
+            ${{ runner.temp }}/nf369/nf369_report.json
+          if-no-files-found: warn
