@@ -5,6 +5,8 @@ on:
     paths:
       - '.github/workflows/nf356-364-historical-verify.yml'
       - 'notes/data/provisional/**'
+      - 'research/obligations.json'
+      - 'notes/provisional/NF356-370_HISTORICAL_CUSTODY_RECONCILIATION_20261028.md'
       - 'scripts/custody/restore_nf356_364_historical.py'
       - 'scripts/local_replay/replay_provisional_nf356_364.py'
 permissions:
@@ -45,6 +47,21 @@ jobs:
           python3 scripts/local_replay/replay_provisional_nf356_364.py \
             --offline "${RUNNER_TEMP}/historical-parents" \
             --work-dir "${RUNNER_TEMP}/historical-replay"
+      - name: Check canonical typed obligation status remains OPEN
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          obj=json.loads(Path('research/obligations.json').read_text())
+          assert obj['active_obligation']=='W-ODD-NEG'
+          w=next(x for x in obj['obligations'] if x['id']=='W-ODD-NEG')
+          assert w['status']=='open'
+          assert 'NF356_370_HISTORICAL_CUSTODY' in obj['evidence']
+          assert 'NF356_370_HISTORICAL_CUSTODY' in w['evidence']
+          assert Path('notes/provisional/NF356-370_HISTORICAL_CUSTODY_RECONCILIATION_20261028.md').is_file()
+          assert any(x['id']=='NF356-364-historical-SHA-manifest' for x in obj['active_checks'])
+          print('PASS canonical obligation graph: custody acknowledged, W-ODD-NEG OPEN')
+          PY
       - name: Audit warning — verification scope
         run: |
           echo 'PASS means byte provenance and nine inherited rational replays only.'
