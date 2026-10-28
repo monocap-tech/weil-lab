@@ -36,4 +36,15 @@ Since A_N-I=[[N²+1,N],[N,1]] has determinant 1 and positive first diagonal, A_N
 
 NF363/364 high-frequency bounds on the original critical f_i remain valid, but they cannot be silently used for p_i=Pf_i. Compute p_i using the accepted physical J242 frame, and certify its own endpoint/Fourier tail and a correlated selected-space approximation of A p_i; only then attempt the first matched positive exterior solve. The strong-action pole cancellation Qs=0 is valid but does not make Q A_o s vanish.
 
+
+## Equivalent matched implementation (important correction)
+
+It is **not mandatory** to compute the positive forcing from p=Pf rather than from the original f. The original-source solve remains valid if its exterior trial includes the physical quotient exactly. For any exterior trial y_p, put y_f=q+y_p, with q=Qf. Then
+
+  a(f-y_f,z) = a(p-y_p,z)  for every z in F∩D(a),
+
+so their complete matched residual functionals, energy error and certificates are **identical**. In particular, original f high-frequency estimates remain useful when they control the actual matched residual of f-y_f. What is invalid is treating the tiny L² norm of q as permission to omit q from the trial or to transfer f's Fourier-tail bound automatically to p.
+
+The correct bounded feasibility comparison is between two *matched* candidates: (i) certify Q A(f-y_f) for an explicitly fixed y_f∈F, or (ii) certify Q A(p-y_p) for an explicitly fixed y_p∈F, with y_f=q+y_p. Choose the representation with the better correlated analytic/error budget; neither establishes a bound without whole-frequency residual control.
+
 STOP: No new directions, no 242-dimensional inverse, no signed sign inference, no upgrade of original realization/CI status. Next: one actual projected p_i and a matched residual criterion, with all positive/negative source and infinite complement terms retained.
