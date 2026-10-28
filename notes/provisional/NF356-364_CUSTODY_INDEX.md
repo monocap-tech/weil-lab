@@ -54,3 +54,11 @@ Certified from original PR348 signed 4×4 complete matrix and PR355 original phy
 - Actual first exterior inverse, whole Schur upper, full 242D sign, original domain and RH all OPEN
 
 Proof and SHA-pinned CI replay: notes/provisional/NF368_FOUR_MODE_POSITIVE_MARGIN.md; scripts/local_replay/nf368_four_mode_margin.py. The archived parent data are validated, not re-integrated natively.
+
+## NF369 — Original critical four-mode versus actual four physical quotient probes
+
+Recompose the unchanged original J242 physical frame, accepted signed 242x242 matrix, refined signed 242x4 mixed block, and real 4x4 quotient in 4096-bit pinned native arithmetic. Exact full parent F*W F=P4+B4+B4*+CE passes; the matched inverse-action residual is independently paid. Complete original signed W is strictly positive on the eight-dimensional fixed physical span of four projected critical columns and their four quotient residuals. Independent rational 4x4 LDL proves selected four-plane Schur >5.9e-23 I and the stronger directional Loewner bound 0<=D_E<P4/8000, where D_E is the quotient-probe correction ONLY. Parent NF369 successful native CI run 40762984235, artifact 12849890537 SHA256 1bacc7ae7967d1282eb28fd9d8566204eb21ba93246f6e81b174a18cc2ab1e96; latest strengthened rational replay additionally verifies the 1/8000 bound.
+
+The exact remaining full-infinite correction is D_Q=D_E+R* C_Q^-1 R with E*R=0 in the signed exterior form dual. NO upper on this second term, original full 242D positivity, even sector, F4, CC27 or RH. Keep full 49-file historical archive transfer as separate outstanding custody obligation.
+
+See notes/provisional/NF369_ACTUAL_FOUR_QUOTIENT_SIGNED_SCHUR.md and both scripts verify_rpb108_nf369_critical_quotient_schur.py and local_replay/nf369_critical_quotient_schur_replay.py.
