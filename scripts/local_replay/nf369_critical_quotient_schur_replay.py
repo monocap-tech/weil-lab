@@ -4,6 +4,7 @@ Reads output of the original-native producer. Never promotes a finite probe to f
 """
 import argparse,json,sys
 from fractions import Fraction as F
+from decimal import Decimal,localcontext
 sys.set_int_max_str_digits(100000)
 
 def dyad(p):
@@ -70,26 +71,32 @@ def main():
     # Thus P-Dlow-delta*I <= actual Galerkin Schur <= P-Dlow.
     S=[[(P[i][j][0]-D[i][j][0],P[i][j][1]+D[i][j][1]) for j in range(4)] for i in range(4)]
     Alo,rho=lower_admissible(S,delta)
-    positive,failed_pivot=ldlt_pd(Alo)
+    certified_margin=F(59,10**24)  # 5.9e-23, in the ORIGINAL four-mode coefficient metric
+    Aquant,_=lower_admissible(S,delta+certified_margin)
+    positive,failed_pivot=ldlt_pd(Aquant)
     # A negative diagonal even in the UPPER bound is a valid finite negative extension.
     negative_axes=[i for i in range(4) if S[i][i][0]+S[i][i][1]<0]
     # The identity D_E>=D_low and genuine signed positivity of Q imply this is a method result.
+    with localcontext() as ctx:
+        ctx.prec=30
+        remainder_scientific=format(Decimal(delta.numerator)/Decimal(delta.denominator),'.12E')
     report=dict(
         standing="NF369 original 4x4 quotient Galerkin only, inherited form/domain premises",
         full_infinite_schur_upper=False,
         fixed_rank=242,original_four_mode_count=4,
         matched_projection_recomposition=True,
         quotient_schur_positive_certified=positive,
+        conditional_4d_schur_margin_lower='5.9e-23' if positive else None,
         finite_negative_extension_axis_certified=bool(negative_axes),
         negative_axes=negative_axes,
         inconclusive=not positive and not negative_axes,
         radius_operator_upper_approx=float(rho),
-        finite_probe_inverse_remainder_upper_approx=float(delta),
+        finite_probe_inverse_remainder_upper_scientific=remainder_scientific,
         conditional_original_domain_review="OPEN",
         W_ODD_NEG="OPEN",RH="OPEN")
     with open(a.report,"w") as f:json.dump(report,f,indent=2);f.write("\n")
     print("NF369 original complete four-mode/selected/quotient exact rational recomposition PASS")
-    print("Finite 4-probe Schur positive",positive,"negative axis",negative_axes,
+    print("Finite 4-probe Schur margin >5.9e-23",positive,"negative axis",negative_axes,
           "inconclusive",report["inconclusive"])
     print("Full infinite exterior Schur UPPER remains UNCOMPUTED")
 if __name__=="__main__":main()
