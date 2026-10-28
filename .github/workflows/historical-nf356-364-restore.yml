@@ -27,7 +27,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           mkdir -p "${RUNNER_TEMP}/historical-parents"
-          for spec in "12738593751:nf361-pr348-fourmode.zip" "12752629674:pr350-certificate.zip" "12776684037:pr355-exterior.zip"; do
+          for spec in "12738593751:nf361-pr348-fourmode.zip" "12770022548:pr350-certificate.zip" "12776684037:pr355-exterior.zip"; do
             id="${spec%%:*}"; name="${spec#*:}"
             curl --fail --silent --show-error --location --retry 2 \
               -H "Authorization: Bearer ${GITHUB_TOKEN}" \
