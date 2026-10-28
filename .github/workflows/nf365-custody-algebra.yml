@@ -1,4 +1,4 @@
-name: NF365-NF369 provisional custody replay (NOT Weil acceptance)
+name: NF365-NF370 provisional custody replay (NOT Weil acceptance)
 on:
   workflow_dispatch:
   pull_request:
@@ -9,6 +9,7 @@ on:
       - 'scripts/local_replay/nf367_form_quotient_transfer.py'
       - 'scripts/local_replay/nf368_four_mode_margin.py'
       - 'scripts/local_replay/nf369_critical_quotient_schur_replay.py'
+      - 'scripts/local_replay/nf370_original_source_shear_replay.py'
       - 'scripts/verify_rpb108_nf369_critical_quotient_schur.py'
       - '.github/workflows/nf365-custody-algebra.yml'
 permissions:
@@ -81,4 +82,33 @@ jobs:
           path: |
             ${{ runner.temp }}/nf369/nf369_actual_critical_quotient.json
             ${{ runner.temp }}/nf369/nf369_report.json
+          if-no-files-found: warn
+
+  nf370-original-source-shear:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PYTHONINTMAXSTRDIGITS: '100000'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve immutable original NF369 artifact (do not forward bearer)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          curl --fail --silent --show-error --location --retry 2 \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/12849890537/zip" \
+            --output "${RUNNER_TEMP}/nf370-original-nf369.zip"
+      - name: Replay exact original-source 4x4 shear and matched residual
+        run: |
+          python3 scripts/local_replay/nf370_original_source_shear_replay.py \
+            --offline "${RUNNER_TEMP}/nf370-original-nf369.zip" \
+            --report "${RUNNER_TEMP}/nf370_source_shear_report.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf370-source-shear-report
+          path: ${{ runner.temp }}/nf370_source_shear_report.json
           if-no-files-found: warn
