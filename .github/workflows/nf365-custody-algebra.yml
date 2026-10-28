@@ -1,20 +1,29 @@
-name: NF365 provisional custody algebra (NOT Weil acceptance)
+name: NF365-NF366 provisional custody replay (NOT Weil acceptance)
 on:
   workflow_dispatch:
   pull_request:
     paths:
-      - 'notes/provisional/NF356-364_CUSTODY_INDEX.md'
-      - 'notes/provisional/NF361_SCALAR_GATE_STOP.md'
-      - 'notes/provisional/NF365_ENERGY_PROJECTION_CORRECTION.md'
+      - 'notes/provisional/**'
       - 'scripts/local_replay/nf365_projection_identity_check.py'
+      - 'scripts/local_replay/nf366_negative_quotient_transfer.py'
       - '.github/workflows/nf365-custody-algebra.yml'
 permissions:
   contents: read
+  actions: read
 jobs:
   algebra:
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
-      - name: Exact rational 2x2 projection no-go regression
+      - name: Exact rational NF365 projection regression
         run: python3 scripts/local_replay/nf365_projection_identity_check.py
+  pr355-archive-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: SHA-pinned original PR355 native output and NF366 rational transfer
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/local_replay/nf366_negative_quotient_transfer.py
