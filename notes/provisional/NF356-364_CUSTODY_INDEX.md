@@ -17,7 +17,8 @@ This commit is an **index and bounded method-stop checkpoint**, not the 49-file 
 | NF362 | Directional Neumann–Feshbach convergent expansion | Actual positive exterior response moments |
 | NF363 | Exact-rational original four-sine high-frequency tail | Projected low-band and source-space transport |
 | NF364 | Sine-only tail and one shared pole-response split | Correlated selected-space approximation |
-| NF365 | Physical projection and A-energy-dual projection are different; explicit correction | Complete projected positive forcing |
+| NF365 | Exact physical/energy projection identity and matched f/p residual equivalence | Complete projected positive forcing |
+| NF366 | Full PR355 physical-quotient trace <2^-604; bounded Kminus transfer squared <1e-179 | Positive exterior Riesz response still open |
 
 ## Boundaries
 PR #355 accepted four-probe finite exterior correction is a Galerkin **lower** slice of the full infinite Schur. NF356's improved exterior floor is local-only. The PR #348 four-mode coupled witness certifies lambda4(Btrue)>1-3e-12 under inherited form realization; it does not establish lambda4<=1. No positive or negative full Weil sign follows from any of these.
@@ -30,3 +31,7 @@ The scalar method STOP is preserved in accompanying NF361 note. NF365 identifies
 - PR #355: run 40598158181; archive f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0.
 
 Stop: no main merge, no closure of W-ODD-NEG, even, CC27, F4, global Weil, or RH. Full archive copy and original numerical native/Arb review are still outstanding.
+
+## Addendum: NF366 original-data replay
+
+The SHA-pinned original PR355 native physical quotient gram yields a four-direction Kminus transfer bound below 1e-179 in squared norm; the bounded negative operator can transfer from f to Pf, but this says nothing about unbounded Astar action. Original nested archive/JSON hashes and the exact rational check are in notes/provisional/NF366_NEGATIVE_QUOTIENT_TRANSFER.md and scripts/local_replay/nf366_negative_quotient_transfer.py. CI reruns archived-output arithmetic; it does not reproduce native Arb integration or establish original-domain acceptance.
