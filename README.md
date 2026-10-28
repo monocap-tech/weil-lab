@@ -1,5 +1,10 @@
 # Weil Defect
 
+## GitHub-first custody contract (2026-10-28)
+
+**All investigations are maintained on GitHub by default without per-pass transfer authorization.** [Repository governance](GOVERNANCE.md) is the Weil-Lab-specific contract. Earlier historical `NO_TRANSFER` notes are superseded for ongoing research; source provenance and mathematical standing remain distinct.
+
+
 A public research repository for a defect-theoretic analysis of **Weil's quadratic
 form**, its finite negative-index structure, spectral screening, persistent
 negative directions, and compact-window neutral modes.

@@ -2,6 +2,10 @@
 
 **Approved 2026-10-16.** This governs ongoing post-Horizon Weil-Lab research. The canonical machine-readable authority for the *current research obligation* is [`research/obligations.json`](../research/obligations.json). The Git SHA remains the authority for *what code and certificates actually exist*. Neither authority supersedes mathematical proofs or independent verification.
 
+## Current GitHub custody contract — 2026-10-28
+
+The repository owner has explicitly directed that **every investigation is maintained on GitHub by default, with no per-pass authorization required**. `GOVERNANCE.md` is the authoritative Weil-Lab operational rule. For `NF` or ordinary continuation, make an additive research branch/commit/draft PR with source hashes, scripts and scope-typed evidence as part of the pass; do not leave research silently local. Earlier `NO_TRANSFER` language is superseded. Preserve historical data and do not automatically merge, rewrite source artifacts or promote conditional evidence to theorem closure. This repository-specific rule is not inherited from or overruled by another project's repository contract.
+
 ## Governing principle
 
 Research progression means **discharging, refining or rigorously identifying a theorem obligation** on the path to RH. It does not mean incrementing RC, SI, SM or LF checkpoint numbers. Methods do not own obligations; obligations govern methods.

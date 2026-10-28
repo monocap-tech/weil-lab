@@ -1,0 +1,68 @@
+name: Weil-Lab NF372 exact source-tail replay (conditional, NOT theorem acceptance)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'GOVERNANCE.md'
+      - 'docs/OBLIGATION_FIRST_PROGRESSION.md'
+      - 'scripts/nf372_exact_source_tail_and_generic_stop.py'
+      - 'notes/data/provisional/NF372_replay.json'
+      - 'notes/provisional/NF372_ARCHIVE_MATCHED_TAIL_METHOD_STOP.md'
+      - '.github/workflows/nf372-original-source-tail-replay.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  replay-nf372:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pin exact committed NF372 source bytes
+        run: |
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          expected={
+            'scripts/nf372_exact_source_tail_and_generic_stop.py':'2283c2a0b7fe260d77642133f4de20c65dec62687ae61f69f0d7c0debf1c4cb3',
+            'notes/provisional/NF372_ARCHIVE_MATCHED_TAIL_METHOD_STOP.md':'27e9599a41e57257b6a45c2005ff97ba9911d4ff71d3ffcf39b1e1bcc60f3836',
+            'notes/data/provisional/NF372_replay.json':'11f1b83d8a4920bb606a5a6e7b41db317bedbcd611e9abae4126eaf54e6df551'
+          }
+          for path,sha in expected.items():
+              assert hashlib.sha256(Path(path).read_bytes()).hexdigest()==sha, path
+          print('PASS original NF372 local exact SHA256 sources present on GitHub branch')
+          PY
+      - name: Download two SHA-pinned immutable GitHub Actions parent archives
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "${RUNNER_TEMP}/nf372-parent"
+          for spec in "12776684037:pr355.zip" "12849890537:nf369.zip"; do
+            id="${spec%%:*}"; name="${spec#*:}"
+            curl --fail --silent --show-error --location --retry 2 \
+              -H "Authorization: Bear ${GITHUB_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/${id}/zip" \
+              --output "${RUNNER_TEMP}/nf372-parent/${name}"
+          done
+      - name: Replay original source method stop and oscillatory tail rational certificates
+        run: |
+          python3 scripts/nf372_exact_source_tail_and_generic_stop.py \
+            --pr355 "${RUNNER_TEMP}/nf372-parent/pr355.zip" \
+            --nf369 "${RUNNER_TEMP}/nf372-parent/nf369.zip" \
+            --report "${RUNNER_TEMP}/NF372_replay.json"
+          cmp -s "${RUNNER_TEMP}/NF372_replay.json" notes/data/provisional/NF372_replay.json
+      - name: Keep theorem status open
+        run: |
+          python3 - <<'PY'
+          import json
+          q=json.load(open('research/obligations.json'))
+          assert q['active_obligation']=='W-ODD-NEG'
+          w=next(x for x in q['obligations'] if x['id']=='W-ODD-NEG')
+          assert w['status']=='open'
+          print('PASS scope: NF372 source-tail only; full infinite signed Schur, original domain and RH OPEN')
+          PY
