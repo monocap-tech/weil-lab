@@ -39,3 +39,7 @@ The SHA-pinned original PR355 native physical quotient gram yields a four-direct
 
 ## NF367 form-topology addendum
 Using the original PR355 **signed** exterior quotient Gram as well as physical Gram, and the complete negative multiplier norm <=17, the actual four critical q=QF have Astar-form energy <2^-600 in four-column coefficient norm; their full signed form pairing has squared a-dual norm <2^-580. This *form* transfer is accepted only under the original inherited operator/form assumptions, not as a strong Astar*q bound or a complete Schur certificate. Portable exact arithmetic script: scripts/local_replay/nf367_form_quotient_transfer.py; original PR355 SHA-pinned native archive remains the parent evidence.
+
+## NF367 four critical modes in J242
+
+PR348's actual coupled four-dimensional original near-null plane transfers under the accepted PR355 physical projection into four independent actual J242 directions: physical projected Gram >=.98I, complete signed Rayleigh absolute upper <1.1e-16. Under PR354's conditional SPD finite selected block, its fourth smallest physical signed eigenvalue is <1.1e-16. Parent PR348 and PR355 JSON hashes are checked by the NF367 replay. This does not bound the full infinite Schur response, and neither finite selected positivity nor weak form transfer proves W-ODD-NEG.
