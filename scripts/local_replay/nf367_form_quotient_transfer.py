@@ -9,7 +9,7 @@ import io
 import json
 import zipfile
 from fractions import Fraction as Q
-from nf366_negative_quotient_transfer import dyad, fetch, ARCHIVE_SHA, JSON_SHA
+from nf366_negative_quotient_transfer import dyad, fetch_archive, ZIP_SHA, JSON_SHA
 
 def trace_upper(matrix):
     assert len(matrix)==4 and all(len(row)==4 for row in matrix)
@@ -24,8 +24,8 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument('--offline',help='PR355 SHA-pinned original native archive ZIP')
     args=p.parse_args()
-    blob=fetch(args.offline)
-    assert hashlib.sha256(blob).hexdigest()==ARCHIVE_SHA
+    blob=fetch_archive(args.offline)
+    assert hashlib.sha256(blob).hexdigest()==ZIP_SHA
     with zipfile.ZipFile(io.BytesIO(blob)) as z:
         raw=z.read('original_exterior_scalar_floor_stop.json')
     assert hashlib.sha256(raw).hexdigest()==JSON_SHA
