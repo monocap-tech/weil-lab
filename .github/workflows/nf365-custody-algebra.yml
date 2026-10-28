@@ -23,7 +23,15 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
-      - name: SHA-pinned original PR355 native output and NF366 rational transfer
+      - name: Download original PR355 native artifact (do not forward auth on redirect)
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python3 scripts/local_replay/nf366_negative_quotient_transfer.py
+        run: |
+          curl --fail --silent --show-error --location --retry 2 \\
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \\
+            -H "Accept: application/vnd.github+json" \\
+            -H "X-GitHub-Api-Version: 2022-11-28" \\
+            "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/12776684037/zip" \\
+            --output "${RUNNER_TEMP}/nf366-pr355.zip"
+      - name: SHA-pinned PR355 native output and NF366 exact rational replay
+        run: python3 scripts/local_replay/nf366_negative_quotient_transfer.py --offline "${RUNNER_TEMP}/nf366-pr355.zip"
