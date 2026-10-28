@@ -1,0 +1,77 @@
+{
+  "scope": "Original NF370 four fixed directions; original NF369 physical quotient; PR355 32-sine sources",
+  "provenance": {
+    "pr355_zip_sha256": "f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0",
+    "nf369_zip_sha256": "1bacc7ae7967d1282eb28fd9d8566204eb21ba93246f6e81b174a18cc2ab1e96",
+    "nf369_json_sha256": "1b22cd77dd555749b8dcc41f92ddd91d982f2eca23ebf3a7638e512147b39d18",
+    "mixed_json_sha256": "19356d4be60ee492896083c1bf6be18cd8ce2da058ff60008181f56a4c3ccc23"
+  },
+  "standing": "EXACT_RATIONAL_ARCHIVE_REPLAY_ANALYTIC_METHOD_STOP",
+  "cutoff": 16777216,
+  "selected_rank": 242,
+  "directions": [
+    {
+      "direction": 1,
+      "weak_sine_test": 4,
+      "physical_matched_correction_norm_strict_upper": "1/100000000000",
+      "exact_test_coefficient_3an_minus_9a3n": "-755204265531/1000000000000",
+      "weak_second_derivative_L1_strict_lower": 12,
+      "signed_first_Fourier_endpoint_moment": "4799257/1000000000000",
+      "sine_absolute_cubic_moment_strict_upper": "100",
+      "original_sinh_coefficient": "-989/1000000000000",
+      "complete_raw_source_log_tail_strict_upper": "7515000253/3000000000000000000000",
+      "conservative_residual_individual_strict_floor": "39/1000000000000",
+      "raw_source_tail_uses_less_than_one_quarter_of_residual_budget": true,
+      "generic_second_jet_tail_lower_exceeds_individual_budget": true
+    },
+    {
+      "direction": 2,
+      "weak_sine_test": 6,
+      "physical_matched_correction_norm_strict_upper": "13/10000000000000",
+      "exact_test_coefficient_3an_minus_9a3n": "-6969279086158047/10485760000000000",
+      "weak_second_derivative_L1_strict_lower": 24,
+      "signed_first_Fourier_endpoint_moment": "-17586508943/52428800000000000",
+      "sine_absolute_cubic_moment_strict_upper": "125",
+      "original_sinh_coefficient": "11624811/52428800000000000",
+      "complete_raw_source_log_tail_strict_upper": "1501200053/2400000000000000000000",
+      "conservative_residual_individual_strict_floor": "1/125000000000",
+      "raw_source_tail_uses_less_than_one_quarter_of_residual_budget": true,
+      "generic_second_jet_tail_lower_exceeds_individual_budget": true
+    },
+    {
+      "direction": 3,
+      "weak_sine_test": 6,
+      "physical_matched_correction_norm_strict_upper": "21/500000000000000",
+      "exact_test_coefficient_3an_minus_9a3n": "317130310594008087/131072000000000000",
+      "weak_second_derivative_L1_strict_lower": 88,
+      "signed_first_Fourier_endpoint_moment": "6305322783/104857600000000000",
+      "sine_absolute_cubic_moment_strict_upper": "410",
+      "original_sinh_coefficient": "-19119841/524288000000000000",
+      "complete_raw_source_log_tail_strict_upper": "3003000223/30000000000000000000000",
+      "conservative_residual_individual_strict_floor": "7/10000000000000",
+      "raw_source_tail_uses_less_than_one_quarter_of_residual_budget": true,
+      "generic_second_jet_tail_lower_exceeds_individual_budget": true
+    },
+    {
+      "direction": 4,
+      "weak_sine_test": 3,
+      "physical_matched_correction_norm_strict_upper": "3/40000000000000",
+      "exact_test_coefficient_3an_minus_9a3n": "-740508372130585431/209715200000000000",
+      "weak_second_derivative_L1_strict_lower": 32,
+      "signed_first_Fourier_endpoint_moment": "-40060235101/1048576000000000000",
+      "sine_absolute_cubic_moment_strict_upper": "110",
+      "original_sinh_coefficient": "-9887197/524288000000000000",
+      "complete_raw_source_log_tail_strict_upper": "1503000083/30000000000000000000000",
+      "conservative_residual_individual_strict_floor": "17/50000000000000",
+      "raw_source_tail_uses_less_than_one_quarter_of_residual_budget": true,
+      "generic_second_jet_tail_lower_exceeds_individual_budget": true
+    }
+  ],
+  "genuine_matched_correction_tail_upper_computed": false,
+  "complete_original_lowband_computed": false,
+  "whole_exterior_schur_upper_computed": false,
+  "original_operator_domain_global_audit": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "github_transfer": "NOT PERFORMED"
+}

@@ -16,6 +16,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "research" / "obligations.json"
 ID_RE = re.compile(r"^[A-Z][A-Z0-9-]{2,64}$")
+# One existing historical NF356–370 custody key predates the strict identifier
+# grammar. Admit precisely this immutable custody key; do not silently rename
+# its evidence references or weaken the general id rule.
+LEGACY_EVIDENCE_IDS = {"NF356_370_HISTORICAL_CUSTODY"}
 VALID_METHODS = {"SI", "SM", "RC", "LF", "INTEGRATION"}
 VALID_STATUSES = {"open", "closed"}
 VALID_ROLES = {"retained-prerequisite", "frontier-candidate", "verification"}
@@ -29,6 +33,9 @@ CHECK_PATH_PATTERN = re.compile(
 LEGACY_CHECK_PATHS = {
     "scripts/sm36_original_odd_numerical_pilot.py",
     "scripts/sm38_leafwise_original_odd_fourier_audit.py",
+    # Exact SHA-manifest verifier introduced by the immutable NF356–364
+    # historical custody reconciliation: no generic local_replay commands.
+    "scripts/local_replay/verify_provisional_manifest.py",
 }
 
 
@@ -88,7 +95,7 @@ def verify(data: dict, root: Path = ROOT) -> tuple[dict, list[dict]]:
     if not isinstance(evidence, dict):
         fail("missing evidence registry")
     for name, item in evidence.items():
-        if not isinstance(name, str) or not ID_RE.fullmatch(name) or not isinstance(item, dict):
+        if not isinstance(name, str) or not (ID_RE.fullmatch(name) or name in LEGACY_EVIDENCE_IDS) or not isinstance(item, dict):
             fail(f"invalid evidence record: {name!r}")
         for prop in ("kind", "scope", "pr", "verification"):
             if not isinstance(item.get(prop), str) or not item[prop].strip():
