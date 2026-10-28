@@ -1,4 +1,4 @@
-name: Weil-Lab provisional NF356-364 custody replay
+name: Weil-Lab provisional NF356-364 custody replay (not mathematical acceptance)
 on:
   workflow_dispatch:
   pull_request:
@@ -12,7 +12,7 @@ permissions:
   actions: read
 jobs:
   replay:
-    name: Archived exact-rational replay only (not native sign acceptance)
+    name: Archived exact-rational replay only (NOT native sign acceptance)
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
@@ -20,13 +20,28 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Check committed provisional file SHA256 manifest
+      - name: Check committed historical SHA256 manifest
         run: python3 scripts/local_replay/verify_provisional_manifest.py
-      - name: Download SHA-pinned parents; replay select rational checks
+      - name: Download three exact SHA-pinned original parent archives
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: python3 scripts/local_replay/replay_provisional_nf356_364.py --work-dir "$RUNNER_TEMP/weil-custody"
-      - name: Save diagnostic outputs, not acceptance artifacts
+        run: |
+          mkdir -p "${RUNNER_TEMP}/historical-parents"
+          for spec in "12738593751:nf361-pr348-fourmode.zip" "12770022548:pr350-certificate.zip" "12776684037:pr355-exterior.zip"; do
+            id="${spec%%:*}"; name="${spec#*:}"
+            curl --fail --silent --show-error --location --retry 2 \
+              -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/monocap-tech/weil-lab/actions/artifacts/${id}/zip" \
+              --output "${RUNNER_TEMP}/historical-parents/${name}"
+          done
+      - name: Replay historical rational checks with pinned offline parent archives
+        run: |
+          python3 scripts/local_replay/replay_provisional_nf356_364.py \
+            --offline "${RUNNER_TEMP}/historical-parents" \
+            --work-dir "${RUNNER_TEMP}/weil-custody"
+      - name: Save diagnostic outputs, NOT acceptance artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
