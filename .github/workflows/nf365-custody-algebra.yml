@@ -10,6 +10,7 @@ on:
       - 'scripts/local_replay/nf368_four_mode_margin.py'
       - 'scripts/local_replay/nf369_critical_quotient_schur_replay.py'
       - 'scripts/local_replay/nf370_original_source_shear_replay.py'
+      - 'scripts/local_replay/nf370_dyadic_residual_budget.py'
       - 'scripts/verify_rpb108_nf369_critical_quotient_schur.py'
       - '.github/workflows/nf365-custody-algebra.yml'
 permissions:
@@ -106,6 +107,8 @@ jobs:
           python3 scripts/local_replay/nf370_original_source_shear_replay.py \
             --offline "${RUNNER_TEMP}/nf370-original-nf369.zip" \
             --report "${RUNNER_TEMP}/nf370_source_shear_report.json"
+      - name: NF370 exact dyadic whole-exterior residual budget (entry gate ONLY)
+        run: python3 scripts/local_replay/nf370_dyadic_residual_budget.py --offline "${RUNNER_TEMP}/nf370-original-nf369.zip"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
