@@ -68,6 +68,19 @@ NF369 original native CI run 40762984235 (successful at first producer/replayer 
 Producer: scripts/verify_rpb108_nf369_critical_quotient_schur.py.
 Independent verifier: scripts/local_replay/nf369_critical_quotient_schur_replay.py.
 
+
+## Exact next residual — no further finite-probe campaign
+
+Let Fext=QH carry the positive closed signed exterior form c; let B:ℝ⁴→Fext* be the actual mixed functional of the selected critical p-columns, and let E:ℝ⁴→Fext synthesize the same original physical quotient q=QF. Write CE=E* C E>0 and Y=E CE^-1 E* B (the exact Galerkin C-Riesz response). Define R=B-CY. The Galerkin stationarity identity gives **E*R=0**, in the form-dual sense. The full signed correction therefore decomposes EXACTLY:
+
+    D_Q = B* C^-1 B = D_E + R* C^-1 R.
+
+No orthogonality in physical L² is asserted for this identity; it is a positive exterior-form orthogonality. The entire remaining critical-four-plane criterion is
+
+    R* C^-1 R <= P4-D_E.
+
+The accepted exact D_E<P4/8000 leaves an explicitly positive, anisotropic matrix on the right. However, neither physical q smallness nor finite probe residuals upper-bound R* C^-1 R. A strong residual could give the sufficient bound R_strong* R_strong / mu, but only after all-frequency strong-domain realization. A form-dual upper would avoid that extra strong-domain expense. This is the unique **next** bounded obligation on the four critical projections; a further source-dimension or precision campaign is not warranted.
+
 ## Stopping rule and next obligation
 
 This is an **actual 8D finite test**, not an infinite sign result. The Galerkin correction D_E is a LOWER bound for the full correction D_Q:
