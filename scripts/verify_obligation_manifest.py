@@ -33,6 +33,9 @@ CHECK_PATH_PATTERN = re.compile(
 LEGACY_CHECK_PATHS = {
     "scripts/sm36_original_odd_numerical_pilot.py",
     "scripts/sm38_leafwise_original_odd_fourier_audit.py",
+    # Exact SHA-manifest verifier introduced by the immutable NF356–364
+    # historical custody reconciliation: no generic local_replay commands.
+    "scripts/local_replay/verify_provisional_manifest.py",
 }
 
 
