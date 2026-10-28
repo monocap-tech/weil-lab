@@ -1,0 +1,48 @@
+name: Weil-Lab NF374 native matched exterior curvature (conditional, NOT Weil acceptance)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/verify_nf374_original_matched_curvature.py'
+      - 'notes/provisional/NF374_ORIGINAL_CORRELATED_CURVATURE_GATE_20261028.md'
+      - '.github/workflows/nf374-original-matched-curvature.yml'
+permissions:
+  contents: read
+jobs:
+  original-physical-second-derivative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original Arb 0.8.0
+        run: 'pip install --only-binary=:all: python-flint==0.8.0'
+      - name: Compute full original correlated J242 derivative Gram
+        run: |
+          python -m py_compile scripts/verify_nf374_original_matched_curvature.py
+          python -u scripts/verify_nf374_original_matched_curvature.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --bits 4096 \
+            --output artifacts/nf374_original_exterior_curvature.json
+      - name: Scope verification (fail closed)
+        run: |
+          python - <<'PY'
+          import json
+          z=json.load(open('artifacts/nf374_original_exterior_curvature.json'))
+          assert len(z['nf374_curvature'])==4
+          assert z['native_parent_physical_quotient_overlap_pass']
+          assert z['complete_original_multiplier_high_tail_certified'] is False
+          assert z['full_exterior_residual_certified'] is False
+          assert z['W_ODD_NEG']==z['RH']=='OPEN'
+          print('NF374 accepted correlated-curvature measurement; direction-four gate:',z['nf374_direction_four_K_le_1over100'])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf374-original-correlated-curvature-report
+          path: artifacts/nf374_original_exterior_curvature.json
+          if-no-files-found: ignore
