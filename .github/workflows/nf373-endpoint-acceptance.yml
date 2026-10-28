@@ -1,0 +1,31 @@
+name: Weil-Lab NF373 exact endpoint and conditional curvature budget (no Weil theorem promotion)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'notes/data/provisional/NF373_native_accepted_endpoint_jets.json'
+      - 'scripts/local_replay/nf373_endpoint_curvature_budget_replay.py'
+      - 'notes/provisional/NF373_ORIGINAL_EXTERIOR_ENDPOINT_ACCEPTANCE_20261028.md'
+      - '.github/workflows/nf373-endpoint-acceptance.yml'
+permissions:
+  contents: read
+jobs:
+  exact-accepted-endpoints:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent Fraction replay of SHA-pinned original native endpoint balls and conditional gate
+        run: python3 scripts/local_replay/nf373_endpoint_curvature_budget_replay.py
+      - name: Verify canonical original theorem remains OPEN
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open('research/obligations.json'))
+          assert d['active_obligation']=='W-ODD-NEG'
+          assert next(x for x in d['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          print('PASS scoped NF373 outward endpoint inequalities; curvature/lowband/Weil/RH still OPEN')
+          PY
