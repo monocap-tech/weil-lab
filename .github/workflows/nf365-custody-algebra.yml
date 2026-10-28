@@ -1,0 +1,20 @@
+name: NF365 provisional custody algebra (NOT Weil acceptance)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'notes/provisional/NF356-364_CUSTODY_INDEX.md'
+      - 'notes/provisional/NF361_SCALAR_GATE_STOP.md'
+      - 'notes/provisional/NF365_ENERGY_PROJECTION_CORRECTION.md'
+      - 'scripts/local_replay/nf365_projection_identity_check.py'
+      - '.github/workflows/nf365-custody-algebra.yml'
+permissions:
+  contents: read
+jobs:
+  algebra:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exact rational 2x2 projection no-go regression
+        run: python3 scripts/local_replay/nf365_projection_identity_check.py
