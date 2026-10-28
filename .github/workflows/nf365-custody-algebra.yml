@@ -1,4 +1,4 @@
-name: NF365-NF366 provisional custody replay (NOT Weil acceptance)
+name: NF365-NF367 provisional custody replay (NOT Weil acceptance)
 on:
   workflow_dispatch:
   pull_request:
@@ -6,6 +6,7 @@ on:
       - 'notes/provisional/**'
       - 'scripts/local_replay/nf365_projection_identity_check.py'
       - 'scripts/local_replay/nf366_negative_quotient_transfer.py'
+      - 'scripts/local_replay/nf367_form_quotient_transfer.py'
       - '.github/workflows/nf365-custody-algebra.yml'
 permissions:
   contents: read
@@ -35,3 +36,5 @@ jobs:
             --output "${RUNNER_TEMP}/nf366-pr355.zip"
       - name: SHA-pinned PR355 native output and NF366 exact rational replay
         run: python3 scripts/local_replay/nf366_negative_quotient_transfer.py --offline "${RUNNER_TEMP}/nf366-pr355.zip"
+      - name: SHA-pinned PR355 native output and NF367 form-energy replay
+        run: python3 scripts/local_replay/nf367_form_quotient_transfer.py --offline "${RUNNER_TEMP}/nf366-pr355.zip"
