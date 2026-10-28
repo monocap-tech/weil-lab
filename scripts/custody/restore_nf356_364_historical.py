@@ -24,7 +24,7 @@ PARENTS = [
      '735ab9b78b6df9b09590ba70a8e51049aa19e73ebb526f22c58797b455cc4968',
      'original_four_mode_critical_block.json',
      'notes/data/provisional/parents/pr348_original_four_mode_critical_block.json'),
-    ('pr350-certificate.zip', 12752629674,
+    ('pr350-certificate.zip', 12770022548,
      '3389809c3a01c223b95e9dc96ea7c9dd776cb83049bb2d93a3c9d9bbad45af09',
      'original_BS_pruned_rank_bound.json',
      'notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json'),
