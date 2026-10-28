@@ -1,0 +1,250 @@
+{
+  "kind": "PROVISIONAL_PATCH_NOT_GITHUB_ACCEPTED",
+  "repo": "monocap-tech/weil-lab",
+  "upstream_head": "3a06261ae27c46f73c3687c974d7b23624ab0dd5",
+  "active_obligation": "W-ODD-NEG",
+  "status": "OPEN",
+  "archive_artifacts_not_embedded": true,
+  "records": [
+    {
+      "path": ".github/workflows/provisional-nf356-364-custody.yml",
+      "size": 1235,
+      "sha256": "070ef0dde248af73230e5a2c8b88eb4dda444c900f66102b5d9e989ee5d6fd3c"
+    },
+    {
+      "path": "notes/NF356-364_PROVISIONAL_CUSTODY_README.md",
+      "size": 5312,
+      "sha256": "ecfaa86666c346263a3211bdafcff56223cef45ca13c1fd6d313382b2c456e97"
+    },
+    {
+      "path": "notes/data/provisional/nf356_floor_local_report.json",
+      "size": 1961,
+      "sha256": "e559151310c1db697b0fea8d67e2e4b62ab53f1e45abceac64bab0a0daa0c1a7"
+    },
+    {
+      "path": "notes/data/provisional/nf356_old_cover_preflight.json",
+      "size": 17082,
+      "sha256": "766f9094dadb90df455f281e52b00500e264aa3c18fad1e791279daaf3ebdf3a"
+    },
+    {
+      "path": "notes/data/provisional/nf356_v2_aggregate_report.json",
+      "size": 2167,
+      "sha256": "1d0998a9dc203372ca62bb604087d3423ec5fe553b7c086f062a7d12ba505050"
+    },
+    {
+      "path": "notes/data/provisional/nf357_residual_entry_gate.json",
+      "size": 2561,
+      "sha256": "ec6427ca4c5cdb0e30bbf3bba9d7f045bdd19afa47343cd65e5577fe7c0c9fcc"
+    },
+    {
+      "path": "notes/data/provisional/nf358_residual_probe_projection.json",
+      "size": 1269,
+      "sha256": "47b8be00f0215c2608bff1cfe70197637f62a4dcd2bc2675e6d2646fbe3fe08d"
+    },
+    {
+      "path": "notes/data/provisional/nf359_energy_dual_entry.json",
+      "size": 14123,
+      "sha256": "09f715842c17300632455c9ecb131e09df37c10f74a74be0b6f93a98ef7641ae"
+    },
+    {
+      "path": "notes/data/provisional/nf360_energy_dual_242_report.json",
+      "size": 2985,
+      "sha256": "bf89cf75c7a742b83cd75720e70dc129817625dde82bba3c5984546e24840970"
+    },
+    {
+      "path": "notes/data/provisional/nf361_critical_transfer_no_go.json",
+      "size": 4966,
+      "sha256": "22ab3cc93f005d9047e341c6de7dd4fa5e31f7efbd19cdbedb9fe61a50432129"
+    },
+    {
+      "path": "notes/data/provisional/nf362_directional_neumann_gate.json",
+      "size": 49730,
+      "sha256": "45d236e77a5149a2d7c26edc9bc61bc780af16b80cb228af812cf0aa579f654e"
+    },
+    {
+      "path": "notes/data/provisional/nf363_critical_sine_tail_higher_report.json",
+      "size": 16040,
+      "sha256": "79abb9b399f5d1a557a2d833861d06028d3e1bb15705c99ac7d1331fcfa1984b"
+    },
+    {
+      "path": "notes/data/provisional/nf364_split_tail_exact_report.json",
+      "size": 14926,
+      "sha256": "935a8a3868060d34cb124b1288fd77cc0dcbd9b2c267a52236dff0379f0be7c1"
+    },
+    {
+      "path": "notes/data/provisional/parents/pr348_original_four_mode_critical_block.json",
+      "size": 27741,
+      "sha256": "a84b19c1fefc4e680c5c19ea643bbe5badce639374cb0a424211ee980020f922"
+    },
+    {
+      "path": "notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json",
+      "size": 199615,
+      "sha256": "9b9820a0163e5e8bf08dd1c2525c757ff67214b49a40cb093d00bc611c9ff9e2"
+    },
+    {
+      "path": "notes/data/provisional/parents/pr355_original_exterior_scalar_floor_stop.json",
+      "size": 2172925,
+      "sha256": "d853e2ecf665b8bb3978ee203371c07f67d050b79e7427d6c673331fd1d60ab9"
+    },
+    {
+      "path": "notes/provisional/NF356-364_GITHUB_DRAFT_PR_BODY.md",
+      "size": 2168,
+      "sha256": "9df8d08c92188c9e8a36e434fcd8ecb86fe3537abc9032dec0127d689827b4d4"
+    },
+    {
+      "path": "notes/provisional/NF358_WeilLab_residual_orthogonal_custody.md",
+      "size": 3886,
+      "sha256": "443d986fc34b2e96473973e3938e7ed87a19b81ec5358aad24bd911b003e01ea"
+    },
+    {
+      "path": "notes/provisional/NF359_WeilLab_energy_dual_form_gate.md",
+      "size": 7958,
+      "sha256": "42a202a2ee69bb711706a300a3eb458f56800cfbdf8bbb1d04829bc64e370012"
+    },
+    {
+      "path": "notes/provisional/WeilLab_NF360_EnergyDual242_Schur_Audit.md",
+      "size": 7194,
+      "sha256": "b1b72b12181bb77279bf70b9a6f56bcdac43143a89b90ecea6326bfa0a399438"
+    },
+    {
+      "path": "notes/provisional/WeilLab_NF361_Critical_Transfer_NoGo_20261027.md",
+      "size": 7449,
+      "sha256": "8473ea8fbeeb6875525dba9b7fd53d515d0ce4a0a166428d337390c89b0d154a"
+    },
+    {
+      "path": "notes/provisional/WeilLab_NF362_Directional_Neumann_Schur_20261027.md",
+      "size": 7941,
+      "sha256": "7a5c24b6bfe8615dfff711432e7e717b04fee83b8cdac1224d87256457d535d4"
+    },
+    {
+      "path": "notes/provisional/WeilLab_NF363_Original_Critical_Source_Tail_Cancellation_20261028.md",
+      "size": 9551,
+      "sha256": "a9cd9e2476fa4fb1e72503235b7e9e7d0ff0de967e1ef8c5f0146ccf0c0aab69"
+    },
+    {
+      "path": "notes/provisional/WeilLab_NF364_Projected_Head_and_Pole_Split_Audit_20261028.md",
+      "size": 9185,
+      "sha256": "50e015968867d75fdfa0afc25f33f4699f8a41cbbb3902fa7da2f5cc3b3926aa"
+    },
+    {
+      "path": "notes/provisional/WeilLab_NF_SmoothCorrelation_CommonForm_20261027.md",
+      "size": 8037,
+      "sha256": "2ee543ed1bc3a1ff83a2b3735812241a0b4705984b372b2a7e768e55733ea5f4"
+    },
+    {
+      "path": "notes/provisional/Weil_Lab_Dual_Route_Carrier_Audit_20261027.md",
+      "size": 6205,
+      "sha256": "41142adfa2cd577b79d5cda28ac1f72d1a958725f2e2c85b3f55b2f801ea706f"
+    },
+    {
+      "path": "notes/provisional/Weil_Lab_NF_Common_Form_Identification_Audit_20261027.md",
+      "size": 7702,
+      "sha256": "1a7cd1fdccc2244b13104df94765d760ce8f074772fc6de025c6c8319267530a"
+    },
+    {
+      "path": "notes/provisional/nf356_readonly_replay_custody.md",
+      "size": 3330,
+      "sha256": "a60b1ef5b1332097b02a5dfcddf26bc1bd6147018f133d6effb2e68af817eb7c"
+    },
+    {
+      "path": "notes/provisional/nf357_residual_entry_note.md",
+      "size": 6003,
+      "sha256": "55bc8e1b7f54285c3b7a9f7665df36ac643481bf76a4b462e1cd86d33df8a692"
+    },
+    {
+      "path": "scripts/local_replay/nf356_floor_recompose.py",
+      "size": 4001,
+      "sha256": "b7a7b79add45344078d41141ccf21f36314f760735cac2ef1290ba4cd35bea0f"
+    },
+    {
+      "path": "scripts/local_replay/nf356_four_direction_matrix_gate.py",
+      "size": 3306,
+      "sha256": "da85c21269cf54cedda5f208f2e2c47b71455bfc62ba148df52cb0a965f24686"
+    },
+    {
+      "path": "scripts/local_replay/nf356_gap_001.py",
+      "size": 4644,
+      "sha256": "ff31ac3e48af689b0c1900cb8c86c215b10ab252c167d6dff400fd5e8091bf5c"
+    },
+    {
+      "path": "scripts/local_replay/nf356_gap_001_replay.py",
+      "size": 4645,
+      "sha256": "7048b94751b4a7ea4852fa9b80ae80430e9fb49671b1355071cf7c868b562cbc"
+    },
+    {
+      "path": "scripts/local_replay/nf356_mpfr_gap_replay.py",
+      "size": 8180,
+      "sha256": "09590d18938e5a85f4d0c9efdbb2aaec08fed8ac22397bf648545c4b0d331954"
+    },
+    {
+      "path": "scripts/local_replay/nf356_old_cover_preflight.py",
+      "size": 6059,
+      "sha256": "f2717be6ffba6dec8a396ab4b7fa140ea5bb78b46facced9c11b294afeee5174"
+    },
+    {
+      "path": "scripts/local_replay/nf356_tail_exact.py",
+      "size": 1382,
+      "sha256": "dc8d2ca56e7ffa0b83ea09bbd5afa8c65572af66c4d2bc15a947e922d534d4af"
+    },
+    {
+      "path": "scripts/local_replay/nf357_residual_gate.py",
+      "size": 4742,
+      "sha256": "11b45ab901561ab65976419ec1403b3b10b719ce2b67b2f7a5cf5ebb16ff8fca"
+    },
+    {
+      "path": "scripts/local_replay/nf358_residual_probe_replay.py",
+      "size": 3669,
+      "sha256": "9c543d4d0a144a0e82ca8f609174b57a6ac6aa7264cde430092461a69923697e"
+    },
+    {
+      "path": "scripts/local_replay/nf359_energy_dual_entry.py",
+      "size": 4653,
+      "sha256": "348c88dac898cdf1ea94dcc8bac962f4ab63fc7f0aed7c231449c61edfa9b2db"
+    },
+    {
+      "path": "scripts/local_replay/nf360_energy_dual_242_preflight.py",
+      "size": 4903,
+      "sha256": "19749f23f37b1a24678378b36e32b3d6b61839570b6e656a9ce7eeab2510dad5"
+    },
+    {
+      "path": "scripts/local_replay/nf361_critical_transfer_no_go.py",
+      "size": 6005,
+      "sha256": "3b304f8ca9b585e0fbab30c0e638ed1687dae9beaaa9673db5b8f0a53603e2c0"
+    },
+    {
+      "path": "scripts/local_replay/nf362_directional_neumann_gate.py",
+      "size": 6647,
+      "sha256": "5933abd9da7797d989494123d3452d69ceb54b89139d8140214e4944c5d7228e"
+    },
+    {
+      "path": "scripts/local_replay/nf363_critical_sine_tail_higher.py",
+      "size": 3033,
+      "sha256": "48d0ac623fa5583c83481bdc4f1fcb42edcf4aac9e8f00dbd68ce8d00c80ea7a"
+    },
+    {
+      "path": "scripts/local_replay/nf363_independent_tail_replay.py",
+      "size": 1982,
+      "sha256": "3e54b7d658699f2ace0a37bb64a704c57d0077e38963d309621af6e400fb7e17"
+    },
+    {
+      "path": "scripts/local_replay/nf364_independent_replay.py",
+      "size": 2067,
+      "sha256": "b45ca2d6f1273589668464432e07eb460835b1d12d24d6bcf3f3d93a6e31f960"
+    },
+    {
+      "path": "scripts/local_replay/nf364_split_tail_exact.py",
+      "size": 4803,
+      "sha256": "9af47036ed26e6d357df4fc9a35484bc85821c34b425ea828e87031a747857de"
+    },
+    {
+      "path": "scripts/local_replay/replay_provisional_nf356_364.py",
+      "size": 5565,
+      "sha256": "633e5aad521c2d1e2483e1e95aa9a3b2845a0ebd47f0175d8bd71f0b62af3c5b"
+    },
+    {
+      "path": "scripts/local_replay/verify_provisional_manifest.py",
+      "size": 632,
+      "sha256": "0474ec70c8c0c9833487a2f17f5d8a34318e1fc5ceeede0029c76c54f5fb4285"
+    }
+  ]
+}

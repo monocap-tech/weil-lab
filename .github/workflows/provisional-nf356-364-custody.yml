@@ -1,0 +1,35 @@
+name: Weil-Lab provisional NF356-364 custody replay
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'notes/provisional/**'
+      - 'notes/data/provisional/**'
+      - 'scripts/local_replay/**'
+      - '.github/workflows/provisional-nf356-364-custody.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  replay:
+    name: Archived exact-rational replay only (not native sign acceptance)
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check committed provisional file SHA256 manifest
+        run: python3 scripts/local_replay/verify_provisional_manifest.py
+      - name: Download SHA-pinned parents; replay select rational checks
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/local_replay/replay_provisional_nf356_364.py --work-dir "$RUNNER_TEMP/weil-custody"
+      - name: Save diagnostic outputs, not acceptance artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: provisional-nf356-364-replay
+          path: ${{ runner.temp }}/weil-custody/nf*.json
+          retention-days: 30

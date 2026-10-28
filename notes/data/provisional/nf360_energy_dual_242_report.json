@@ -1,0 +1,48 @@
+{
+  "status": "EXACT_ALGEBRAIC_RETYPING_AND_INFORMATION_BOUNDARY_ONLY",
+  "source_rank": 242,
+  "positive_energy_dual_exceptional_space": "Astar^-1(J242)",
+  "original_physical_complement": "J242^perp",
+  "inherited_epsilon_exact": "1469386419616427857310615946196009036194377716819320385299597442918566872628639782785045925827694026698164382906860071731488801/87631055283272976012824598280176164972181026171693267820710585418765558073830633474201590169600000000000000000000000000000000000000",
+  "locally_replayed_mu_exact": "1951156820060017231983192222860056575840128102342000566129040019116457142665578537680464194924731400960992110452009764722610686767/195484661785762792643993334625008368014865366075315751292354382857246244933929874673218931916800000000000000000000000000000000000000",
+  "relative_infinite_Schur_cost_upper_exact": "42612206168876407862007862439684262049636953787760291173688325844638439306230553700766331849003126774246767104298942080213175229/25365038660780224015781498897180735485921665330446007359677520248513942854652520989846034534021508212492897435876126941393938927971",
+  "relative_infinite_Schur_cost_upper_decimal": 0.001679958258244802,
+  "best_conditional_finite_theta_exact": "25365038660780224015781498897180735485921665330446007359677520248513942854652520989846034534021508212492897435876126941393938927971/25407650866949100423643506759620419747971302284233767650851208574358581293958751543546800865870511339267144202980425883474152103200",
+  "best_conditional_finite_theta_decimal": 0.9983228592681779,
+  "convenient_exact_sufficient_finite_theta": "12479/12500",
+  "finite_test": "N242 <= theta G242 on every h in selected original J242",
+  "finite_test_evaluated": false,
+  "abstract_no_go_for_existing_physical_probes": {
+    "positive": {
+      "unprobed_mixed_coupling": "1/50",
+      "sampled_four_probe_like_schur": "1/625",
+      "unprobed_remainder": "1/25",
+      "full_schur_sign": "positive",
+      "full_schur_exact": "599/625",
+      "Astar_minus_kappa_positive": true,
+      "min_exact_LDL_pivot_Astar_minus_kappa": "293836777920351595057939/29882801920371641000000000"
+    },
+    "negative": {
+      "unprobed_mixed_coupling": "1/8",
+      "sampled_four_probe_like_schur": "1/625",
+      "unprobed_remainder": "25/16",
+      "full_schur_sign": "negative",
+      "full_schur_exact": "-5641/10000",
+      "Astar_minus_kappa_positive": true,
+      "min_exact_LDL_pivot_Astar_minus_kappa": "142098657645351595057939/29882801920371641000000000"
+    }
+  },
+  "relative_Schur_factor_sharp_negative_control": {
+    "Kstar_rank_one_PSD": true,
+    "epsilon": "1/10000",
+    "mu": "1/100",
+    "actual_infinite_Schur_penalty": "1/100",
+    "epsilon_over_mu_times_finite_K_energy": "1/100",
+    "saturates_bound": true
+  },
+  "caution": "counterexample is abstract; it is not an original signed Weil negative mode",
+  "native_arb_CI_for_new_mu": false,
+  "original_operator_domain_verified": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}

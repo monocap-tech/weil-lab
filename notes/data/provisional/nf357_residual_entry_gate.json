@@ -1,0 +1,56 @@
+{
+  "status": "RIGOROUS_CONDITIONAL_FOUR_SOURCE_RESIDUAL_ENTRY_GATE_NOT_DISCHARGED",
+  "scope": "four selected signed-energy directions only, NOT all 242",
+  "archive_sha256": "f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0",
+  "diagnostic_sha256": "d853e2ecf665b8bb3978ee203371c07f67d050b79e7427d6c673331fd1d60ab9",
+  "original_source_rank": 242,
+  "source_energy_coordinates": 4,
+  "conditional_exterior_floor_lower": "499/50000",
+  "signed_energy_Gram_min_lower": "99/100",
+  "four_probe_Schur_energy_op_upper": "0.001911300159239383340930",
+  "simplified_four_probe_Schur_energy_op_upper": "1/500",
+  "complete_strong_residual_required": "R = Q W (Phi - E Y_C); include every original frequency, pole, physical projector, and support",
+  "full_energy_Schur_identity": "S_full = (Y_C^* Z + Z^* Y_C - Y_C^* C_E Y_C) + R^* C_Q^{-1} R",
+  "complete_residual_Frobenius_squared_sufficient_target_exact": "24651099/2500000000",
+  "complete_residual_Frobenius_squared_sufficient_target_approx": "0.0098604396",
+  "complete_residual_Frobenius_norm_target_approx": "0.099299746...",
+  "complete_residual_calculated": false,
+  "four_probe_Schur_upper_is_NOT_full_infinite_Schur_upper": true,
+  "physical_norm_conditioning": [
+    {
+      "direction": 0,
+      "P_l2_squared_approx": "8.1079629197233E+16",
+      "physical_l2_squared_lower": "8.0268832905260E+16",
+      "physical_l2_squared_upper": "8.1890425489205E+16",
+      "physical_l2_squared_gt": "1e16",
+      "energy_gram_diag_approximately_one": true
+    },
+    {
+      "direction": 1,
+      "P_l2_squared_approx": "3.2228742088173E+22",
+      "physical_l2_squared_lower": "3.1906454667291E+22",
+      "physical_l2_squared_upper": "3.2551029509055E+22",
+      "physical_l2_squared_gt": "1e22",
+      "energy_gram_diag_approximately_one": true
+    },
+    {
+      "direction": 2,
+      "P_l2_squared_approx": "1.1131651354059E+29",
+      "physical_l2_squared_lower": "1.1020334840519E+29",
+      "physical_l2_squared_upper": "1.1242967867600E+29",
+      "physical_l2_squared_gt": "1e29",
+      "energy_gram_diag_approximately_one": true
+    },
+    {
+      "direction": 3,
+      "P_l2_squared_approx": "1.3769345032518E+34",
+      "physical_l2_squared_lower": "1.3631651582193E+34",
+      "physical_l2_squared_upper": "1.3907038482843E+34",
+      "physical_l2_squared_gt": "1e34",
+      "energy_gram_diag_approximately_one": true
+    }
+  ],
+  "full_242_selected_signed_positivity_proved_by_this_four_column_gate": false,
+  "source_domain_realization_still_open": true,
+  "W_ODD_NEG": "OPEN"
+}

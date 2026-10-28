@@ -1,0 +1,536 @@
+{
+  "scope": "ONLY original 3892-cell SM40 support, NOT all positive frequencies",
+  "inputs": [
+    "#350 retained original J242 multiplicities",
+    "#346 native 62379 original multiplier endpoint enclosures"
+  ],
+  "inherited_m_curvature_upper": "2145",
+  "test_level": "3/1000",
+  "intervals_checked": 62272,
+  "strictly_above_level": 27145,
+  "strictly_below_level": 34991,
+  "unresolved_included": 136,
+  "potential_sublevel_positive_frequency_width": "35127/4096",
+  "bounded_clusters": 64,
+  "zero_constraint_clusters_excluded": 40,
+  "projector_on_old_support_upper_exact": "1599350960666249451949130654291034839043645656768112492617036306158936291791353057065427832606081500901494831481882329/7270719346661328232875576067328764298038243557870210934068509036476710846350922691588915200000000000000000000000000000000",
+  "projector_on_old_support_upper_simple": "11/50000",
+  "new_gap_and_collar_check": "OPEN",
+  "global_Q_sublevel_upper_1_over_50": "NOT ESTABLISHED",
+  "new_full_exterior_floor": "NOT CERTIFIED",
+  "W_ODD_NEG": "OPEN",
+  "per_cluster": [
+    {
+      "cluster": 0,
+      "retained_order": 14,
+      "chosen_order": 14,
+      "lo": "0",
+      "hi": "4505/4096",
+      "unweighted_projector_payment": "138347319346880584363657846836358327932343895221573172588225748036282948343537527101298072471973160940671/89097171858410500883021539804191920441112671707587842756839530793419485793484800000000000000000000000000000000"
+    },
+    {
+      "cluster": 1,
+      "retained_order": 9,
+      "chosen_order": 9,
+      "lo": "5419/4096",
+      "hi": "4115/2048",
+      "unweighted_projector_payment": "1376793582040174668991575862254205337835850383964131103169866631515053561401740181627384263787/81298472620859074699244510904289022270385537394658200710633565421917855285248000000000000000000000"
+    },
+    {
+      "cluster": 2,
+      "retained_order": 9,
+      "chosen_order": 9,
+      "lo": "1277/512",
+      "hi": "807/256",
+      "unweighted_projector_payment": "1424084505185845045157178330530184852272782024806018561818647576626979803/257943061758503770221246942008894564537394372918307192832000000000000000000000"
+    },
+    {
+      "cluster": 3,
+      "retained_order": 5,
+      "chosen_order": 5,
+      "lo": "14519/4096",
+      "hi": "1923/512",
+      "unweighted_projector_payment": "46244683023373349114553278063554454777095011938477/105602065055751111086968664737682346725081088000000000000"
+    },
+    {
+      "cluster": 4,
+      "retained_order": 6,
+      "chosen_order": 6,
+      "lo": "17583/4096",
+      "hi": "147/32",
+      "unweighted_projector_payment": "876496615214061786690180725307963/197842530871526123634688000000000000000"
+    },
+    {
+      "cluster": 5,
+      "retained_order": 5,
+      "chosen_order": 5,
+      "lo": "11263/2048",
+      "hi": "23537/4096",
+      "unweighted_projector_payment": "284980298708290642210064762385041572943267368513/171878361093344907368113061096488194539520000000000000"
+    },
+    {
+      "cluster": 6,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "25289/4096",
+      "hi": "25845/4096",
+      "unweighted_projector_payment": "6148562049368597107984453463185491242489/9248875457430469744377895108428693504000000000"
+    },
+    {
+      "cluster": 7,
+      "retained_order": 5,
+      "chosen_order": 5,
+      "lo": "14625/2048",
+      "hi": "15101/2048",
+      "unweighted_projector_payment": "6954751775133188612721591286598322123266259617/9207769344286334323291771130169010421760000000000000"
+    },
+    {
+      "cluster": 8,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "16571/2048",
+      "hi": "16905/2048",
+      "unweighted_projector_payment": "56167585586894259093446961977539758637/36128419755587772438976152767299584000000000"
+    },
+    {
+      "cluster": 9,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "35245/4096",
+      "hi": "4499/512",
+      "unweighted_projector_payment": "998933559298353161899714048830673/245011527205320722378039230464000000000"
+    },
+    {
+      "cluster": 10,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "18789/2048",
+      "hi": "37953/4096",
+      "unweighted_projector_payment": "1784221470248764787081957819/933377246496459894773482782720000"
+    },
+    {
+      "cluster": 11,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "10143/1024",
+      "hi": "41443/4096",
+      "unweighted_projector_payment": "11703650671478464488084474807604351661/564506558681058944359002386989056000000000"
+    },
+    {
+      "cluster": 12,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "23985/2048",
+      "hi": "48749/4096",
+      "unweighted_projector_payment": "242961331773169481694361134507120220617049/36995501829721878977511580433714774016000000000"
+    },
+    {
+      "cluster": 13,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "26267/2048",
+      "hi": "53121/4096",
+      "unweighted_projector_payment": "72078193977376927379752998637391161177/144513679022351089755904611069198336000000000"
+    },
+    {
+      "cluster": 14,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "58625/4096",
+      "hi": "59431/4096",
+      "unweighted_projector_payment": "458781009666828094794139442417085233/47354242342044005091214822955154910740480"
+    },
+    {
+      "cluster": 15,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "31529/2048",
+      "hi": "15901/1024",
+      "unweighted_projector_payment": "125039711142052353800156435512509/497801198131445277212524150784000000000"
+    },
+    {
+      "cluster": 16,
+      "retained_order": 5,
+      "chosen_order": 5,
+      "lo": "70697/4096",
+      "hi": "71583/4096",
+      "unweighted_projector_payment": "10546057897588665656791542912596554870769967771123/29333906959930864190824629093800651868078080000000000000"
+    },
+    {
+      "cluster": 17,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "81741/4096",
+      "hi": "41185/2048",
+      "unweighted_projector_payment": "24897112474944897290376194345479/25068285795528950566707265536000000000"
+    },
+    {
+      "cluster": 19,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "88537/4096",
+      "hi": "89147/4096",
+      "unweighted_projector_payment": "49762533745909334191544626356049643631/45673459049039356762359975844092313600000000"
+    },
+    {
+      "cluster": 20,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "94411/4096",
+      "hi": "94683/4096",
+      "unweighted_projector_payment": "520863579799316793270187/1400065869744689842160224174080"
+    },
+    {
+      "cluster": 21,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "96545/4096",
+      "hi": "97093/4096",
+      "unweighted_projector_payment": "552926071989210514572874245424867/1604370290913852836269264994304000000000"
+    },
+    {
+      "cluster": 22,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "25161/1024",
+      "hi": "12629/512",
+      "unweighted_projector_payment": "5932431773496210990227/1367251825922548673984593920"
+    },
+    {
+      "cluster": 23,
+      "retained_order": 5,
+      "chosen_order": 5,
+      "lo": "111477/4096",
+      "hi": "14037/512",
+      "unweighted_projector_payment": "1529522082428172852433364207510832330037/7805522786701061946692378684293120000000000000"
+    },
+    {
+      "cluster": 26,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "4059/128",
+      "hi": "130615/4096",
+      "unweighted_projector_payment": "29764259167237912292877/6338465731314712576000000000"
+    },
+    {
+      "cluster": 28,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "145089/4096",
+      "hi": "145463/4096",
+      "unweighted_projector_payment": "313434441654060865684384961177/175008233718086230270028021760000000"
+    },
+    {
+      "cluster": 29,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "147341/4096",
+      "hi": "36917/1024",
+      "unweighted_projector_payment": "123779747056081182491228765159/116672155812057486846685347840000000"
+    },
+    {
+      "cluster": 31,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "159733/4096",
+      "hi": "80209/2048",
+      "unweighted_projector_payment": "823563947996799571460137892713896627/356823898820619974705937311281971200000000"
+    },
+    {
+      "cluster": 32,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "182683/4096",
+      "hi": "183441/4096",
+      "unweighted_projector_payment": "100441148090514494984270594034511392420329/18497750914860939488755790216857387008000000000"
+    },
+    {
+      "cluster": 35,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "52151/1024",
+      "hi": "208667/4096",
+      "unweighted_projector_payment": "139234453205859/3017059906617344000000"
+    },
+    {
+      "cluster": 36,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "106259/2048",
+      "hi": "212763/4096",
+      "unweighted_projector_payment": "13282904990622416486421051/158737626955180254213177344000000"
+    },
+    {
+      "cluster": 39,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "14453/256",
+      "hi": "14463/256",
+      "unweighted_projector_payment": "2357947691/824977318215680"
+    },
+    {
+      "cluster": 40,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "241779/4096",
+      "hi": "60621/1024",
+      "unweighted_projector_payment": "19158274281403139736151301048264197/6313898978939200678828643060687321432064"
+    },
+    {
+      "cluster": 41,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "67919/1024",
+      "hi": "136113/2048",
+      "unweighted_projector_payment": "4483851427562436959524772585763961/11290131173621178887180047739781120000000"
+    },
+    {
+      "cluster": 44,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "73693/1024",
+      "hi": "295021/4096",
+      "unweighted_projector_payment": "2865385107946273/15495265021916023357440"
+    },
+    {
+      "cluster": 45,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "312949/4096",
+      "hi": "313593/4096",
+      "unweighted_projector_payment": "1675048683699990311910025151423193271453/1321267922490067106339699301204099072000000000"
+    },
+    {
+      "cluster": 47,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "342811/4096",
+      "hi": "171677/2048",
+      "unweighted_projector_payment": "529350539019511652046206301321921573/1784119494103099873529686556409856000000000"
+    },
+    {
+      "cluster": 48,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "176939/2048",
+      "hi": "22131/256",
+      "unweighted_projector_payment": "257016298319/17179869184000000"
+    },
+    {
+      "cluster": 51,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "401915/4096",
+      "hi": "201181/2048",
+      "unweighted_projector_payment": "741829448379165139044413569999/116672155812057486846685347840000000"
+    },
+    {
+      "cluster": 52,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "26553/256",
+      "hi": "106371/1024",
+      "unweighted_projector_payment": "60335964050476151424539430392321383/47042213223421578696583532249088000000000"
+    },
+    {
+      "cluster": 53,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "454763/4096",
+      "hi": "113781/1024",
+      "unweighted_projector_payment": "438211285682239195858771443371/350016467436172460540056043520000000"
+    },
+    {
+      "cluster": 54,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "473221/4096",
+      "hi": "473573/4096",
+      "unweighted_projector_payment": "16238549422434317568729772369/10938014607380389391876751360000000"
+    },
+    {
+      "cluster": 56,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "124061/1024",
+      "hi": "496433/4096",
+      "unweighted_projector_payment": "33833972129023737/3017059906617344000000"
+    },
+    {
+      "cluster": 57,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "257017/2048",
+      "hi": "514113/4096",
+      "unweighted_projector_payment": "52128184743973349/337910709541142528000000"
+    },
+    {
+      "cluster": 60,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "8677/64",
+      "hi": "555603/4096",
+      "unweighted_projector_payment": "516978891695716050447/1888946593147858085478400000"
+    },
+    {
+      "cluster": 61,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "73115/512",
+      "hi": "73191/512",
+      "unweighted_projector_payment": "76683177867116786692588399000529/68909492026496453168823533568000000000"
+    },
+    {
+      "cluster": 64,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "166805/1024",
+      "hi": "667393/4096",
+      "unweighted_projector_payment": "36113302573532349583/5406571352658280448000000"
+    },
+    {
+      "cluster": 65,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "348459/2048",
+      "hi": "348669/2048",
+      "unweighted_projector_payment": "57898044363118616845455971/13021445961167130228424704000000"
+    },
+    {
+      "cluster": 68,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "384009/2048",
+      "hi": "768511/4096",
+      "unweighted_projector_payment": "140798801120115789183646021039263/1169240551655407533116415381608763228160"
+    },
+    {
+      "cluster": 69,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "827119/4096",
+      "hi": "206889/1024",
+      "unweighted_projector_payment": "2955892254318252828547547765527/350016467436172460540056043520000000"
+    },
+    {
+      "cluster": 72,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "224577/1024",
+      "hi": "449355/2048",
+      "unweighted_projector_payment": "3471221890150402088918554073/911501217281699115989729280000000"
+    },
+    {
+      "cluster": 74,
+      "retained_order": 4,
+      "chosen_order": 4,
+      "lo": "126265/512",
+      "hi": "252667/1024",
+      "unweighted_projector_payment": "438198880879426795061484375/892059747051549936764843278204928"
+    },
+    {
+      "cluster": 78,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "1170415/4096",
+      "hi": "585249/2048",
+      "unweighted_projector_payment": "232096193743648113/337910709541142528000000"
+    },
+    {
+      "cluster": 79,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "1193323/4096",
+      "hi": "1193587/4096",
+      "unweighted_projector_payment": "1550936675087148151341/5902958103587056517120000000"
+    },
+    {
+      "cluster": 80,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "156553/512",
+      "hi": "313159/1024",
+      "unweighted_projector_payment": "115413553105620583/5279854836580352000000"
+    },
+    {
+      "cluster": 82,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "661777/2048",
+      "hi": "1323797/4096",
+      "unweighted_projector_payment": "495363185941036533417/5165088340638674452480000000"
+    },
+    {
+      "cluster": 83,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "1353389/4096",
+      "hi": "1353559/4096",
+      "unweighted_projector_payment": "2296466414354161467/540657135265828044800000"
+    },
+    {
+      "cluster": 85,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "717713/2048",
+      "hi": "717839/2048",
+      "unweighted_projector_payment": "18346784664482834571/184467440737095516160000000"
+    },
+    {
+      "cluster": 87,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "1595405/4096",
+      "hi": "797915/2048",
+      "unweighted_projector_payment": "880757793023236350919633123/218760292147607787837535027200000"
+    },
+    {
+      "cluster": 90,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "889265/2048",
+      "hi": "222349/512",
+      "unweighted_projector_payment": "109161559383806690129809/667603430626244469719040000000"
+    },
+    {
+      "cluster": 92,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "954401/2048",
+      "hi": "1909005/4096",
+      "unweighted_projector_payment": "9652463234076931279/772367336094040064000000"
+    },
+    {
+      "cluster": 93,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "2020605/4096",
+      "hi": "1010485/2048",
+      "unweighted_projector_payment": "985310021306188693256427/497801198131445277212524150784"
+    },
+    {
+      "cluster": 99,
+      "retained_order": 3,
+      "chosen_order": 3,
+      "lo": "2605861/4096",
+      "hi": "651541/1024",
+      "unweighted_projector_payment": "617675083704255430557/607667478187799410659819520"
+    },
+    {
+      "cluster": 102,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "3031141/4096",
+      "hi": "189451/256",
+      "unweighted_projector_payment": "572981288913/3299909272862720000"
+    },
+    {
+      "cluster": 106,
+      "retained_order": 2,
+      "chosen_order": 2,
+      "lo": "3616337/4096",
+      "hi": "1808239/2048",
+      "unweighted_projector_payment": "12949757751708028911/5406571352658280448000000"
+    }
+  ]
+}
