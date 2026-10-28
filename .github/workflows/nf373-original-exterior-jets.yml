@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install exact original Arb binding
-        run: pip install --only-binary=:all: python-flint==0.8.0
+        run: "pip install --only-binary=:all: python-flint==0.8.0"
       - name: Compile and execute fail-closed native 242x4 physical projection and endpoint jets
         run: |
           python -m py_compile scripts/verify_nf373_original_exterior_endpoint_jets.py
