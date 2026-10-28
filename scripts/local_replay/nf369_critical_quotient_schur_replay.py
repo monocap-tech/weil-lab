@@ -74,6 +74,13 @@ def main():
     certified_margin=F(59,10**24)  # 5.9e-23, in the ORIGINAL four-mode coefficient metric
     Aquant,_=lower_admissible(S,delta+certified_margin)
     positive,failed_pivot=ldlt_pd(Aquant)
+    # Stronger anisotropic, matrix-valued bound: D_E < (1/8000) P4.
+    relative_scale=8000
+    Srel=[[(P[i][j][0]-relative_scale*D[i][j][0],
+             P[i][j][1]+relative_scale*D[i][j][1]) for j in range(4)] for i in range(4)]
+    Arel,_=lower_admissible(Srel,relative_scale*delta)
+    relative_positive,relative_fail=ldlt_pd(Arel)
+    assert relative_positive,('finite directional 1/8000 relative bound failed',relative_fail)
     # A negative diagonal even in the UPPER bound is a valid finite negative extension.
     negative_axes=[i for i in range(4) if S[i][i][0]+S[i][i][1]<0]
     # The identity D_E>=D_low and genuine signed positivity of Q imply this is a method result.
@@ -86,6 +93,7 @@ def main():
         fixed_rank=242,original_four_mode_count=4,
         matched_projection_recomposition=True,
         quotient_schur_positive_certified=positive,
+        finite_probed_exterior_relative_schur_upper='1/8000' if relative_positive else None,
         conditional_4d_schur_margin_lower='5.9e-23' if positive else None,
         finite_negative_extension_axis_certified=bool(negative_axes),
         negative_axes=negative_axes,
@@ -96,7 +104,7 @@ def main():
         W_ODD_NEG="OPEN",RH="OPEN")
     with open(a.report,"w") as f:json.dump(report,f,indent=2);f.write("\n")
     print("NF369 original complete four-mode/selected/quotient exact rational recomposition PASS")
-    print("Finite 4-probe Schur margin >5.9e-23",positive,"negative axis",negative_axes,
+    print("Finite 4-probe Schur margin >5.9e-23",positive,"finite D_E < (1/8000)P4",relative_positive,"negative axis",negative_axes,
           "inconclusive",report["inconclusive"])
     print("Full infinite exterior Schur UPPER remains UNCOMPUTED")
 if __name__=="__main__":main()
