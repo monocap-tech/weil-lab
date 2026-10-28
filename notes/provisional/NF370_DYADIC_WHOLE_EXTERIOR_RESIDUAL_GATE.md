@@ -70,3 +70,17 @@ The form-dual criterion (3) requires no strong operator domain at all, but does 
 Do not compute another 8D finite Schur or enlarge sources. Use the existing exactly specified dyadic y=E Y0 and the four rationally transformed t_i to construct a **single** certifiable whole-exterior weak residual upper (first the weakest cost direction; no assumption that its residual is small). No proof promotion. W-ODD-NEG, its remaining 238 selected directions, full even, actual-zeta transfer, and RH remain OPEN.
 
 Replay: scripts/local_replay/nf370_dyadic_residual_budget.py, SHA-pinned original NF369 native artifact; CI is an exact-rational matrix acceptance, not the uncomputed original residual acceptance.
+
+
+## Combine with the accepted NF370 original-source shear (no second forcing campaign)
+
+The companion note NF370_ORIGINAL_SOURCE_SHEAR_AND_SMOOTH_SIGNED_FORCING.md proves b=d-C E, where d(v)=w(f,v) is the **original smooth complete signed forcing** and b(v)=w(p,v). For our *fixed DYADIC* E-trial y=E Y0 (not an exact CE inverse), the residual identity is likewise **exact**:
+
+  R(z)(v)=b(z)(v)-c(EY0 z,v)
+          =d(z)(v)-c(E(I_4+Y0) z,v).
+
+The transformed tested directions are z=T e_i. Since the odd pole s belongs to J242, for all exterior v one has
+  d(z)(v)=<m(D) f_z,v>
+with the entire real signed SI10/SM41 multiplier m, no artificial max(kappa,m) crossover. This makes NF370's scalar-free residual budgets directly compatible with the smooth-source forcing implementation: evaluate **one** matched source-minus-dyadic-exterior form functional in four predeclared T-directions, keeping the full real frequency range and all seven primes. The exact p,q projection enters only through the already accepted finite E and Y0 provenance.
+
+The formula remains an *identity*, not an upper bound for its norm; it neither assumes that the finite dyadic trial is stationary nor pays the unknown R*C^-1 R.
