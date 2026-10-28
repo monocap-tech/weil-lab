@@ -124,12 +124,21 @@ def run(args):
     C=arb_mat([[dyad(Y0[i][j])+int(i==j) for j in range(4)] for i in range(4)])
     T=arb_mat([[m.a(F(v,2**20)) for v in row] for row in TNUM])
     M=C*T
+    # Exact terminating-rational outward acceptance ceilings, not displays.
+    caps=[(F(81,10**12),F(224,10**8)),
+          (F(44,10**13),F(13,10**8)),
+          (F(102,10**14),F(27,10**9)),
+          (F(78,10**14),F(21,10**9))]
     outputs=[]
     for i in range(4):
         z=[M[j,i] for j in range(4)]
         val=evaluate_endpoint(raw_nodes,probes,freqs,rawX,z,0)
         der=evaluate_endpoint(raw_nodes,probes,freqs,rawX,z,1)
-        outputs.append({'direction':i+1,'w_endpoint_interval':endpoints(val),
+        assert abs(val).upper() < m.a(caps[i][0]), ('endpoint upper failed',i+1)
+        assert abs(der).upper() < m.a(caps[i][1]), ('endpoint derivative upper failed',i+1)
+        outputs.append({'direction':i+1,'strict_rational_endpoint_cap':str(caps[i][0]),
+                        'strict_rational_derivative_cap':str(caps[i][1]),
+                        'w_endpoint_interval':endpoints(val),
                         'w_derivative_endpoint_interval':endpoints(der),
                         'w_endpoint_abs_upper':str(abs(val).upper()),
                         'w_derivative_abs_upper':str(abs(der).upper())})
