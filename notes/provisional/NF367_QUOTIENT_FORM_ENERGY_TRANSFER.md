@@ -35,3 +35,18 @@ By NF365's exact projection identity, for the exterior Riesz solutions v_f=q+v_p
 **STOP:** This does not certify the unknown positive exterior Riesz response or full directional Schur. Next gate: a genuine matched form-domain positive exterior response upper, not another physical-smallness argument. Source counts and selected J242 unchanged; original-domain, O1/O2, full Weil and RH remain OPEN.
 
 **Replay:** scripts/local_replay/nf367_form_quotient_transfer.py, pinned original #355 archive. The underlying native and sign assertions are inherited, not proved anew by Python.
+
+## Coupled four-mode transfer into genuine J242
+
+The same accepted #355 ZIP embeds PR348's *complete coupled* four-critical original form record, JSON SHA256 a84b19c1fefc4e680c5c19ea643bbe5badce639374cb0a424211ee980020f922. Its signed compression norm is sigma≈9.836565223706795e-17 (exact Fraction) and original physical Gram differs from I by <.01. Because Kminus<=17I:
+  a(Fz,Fz) = w(Fz,Fz)+k(Fz,Fz) <18||z||².
+With the NF367 signed form-dual squared error D<2^-580 and original C positive,
+  |w(PFz,PFz)-w(Fz,Fz)|
+    <= 2 sqrt(a(Fz,Fz)) sqrt(D) ||z||+tr(C)||z||²
+    < (9*2^-290+tr(C))||z||² < 2^-286||z||².
+Also ||PFz||²=||Fz||²-||QFz||²
+  >=(.99-tr(S))||z||² >.98||z||².
+
+Hence the actual four projected vectors PF_i are **independent** within J242, and on their whole four-plane
+  |w(p,p)|/||p||² < (sigma+2^-286)/(.99-tr(S)) <1.1e-16.
+Using PR354's accepted conditional selected signed positive-definite 242D restriction, the **fourth smallest selected signed L2-eigenvalue is <1.1e-16** (min-max). This is not a new sign certificate for the whole infinite operator, nor a computed full selected spectrum. It demonstrates why the complete infinite Schur correction requires sharply directional control on these near-null selected modes. The checker hashes/replays both original PR348 and PR355 JSONs with exact rational arithmetic.
