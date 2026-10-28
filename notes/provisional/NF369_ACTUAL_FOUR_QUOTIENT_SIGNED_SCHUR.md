@@ -46,6 +46,19 @@ Consequently, **the original complete signed Weil form is positive on the eight-
 
 Original archived four-mode eigenvalues are close, but the 4D physical-quotient correction does **not** exhaust the positive reserve in the critical directions. The minimal eigenvalue moves by about 2.51e-27; this decimal difference is descriptive, not a separate acceptance test.
 
+
+### Stronger exact-rational relative four-probe bound
+
+The same original rational interval matrices and matched residual admit an even more useful **matrix** certificate. The independent verifier performs a second complete 4×4 exact LDL of
+
+    P4 - 8000 D_low - 8000 rho I_4 - (full interval row error) I_4.
+
+All pivots are strictly positive. Consequently
+
+    0 <= D_E < (1/8000) P4.
+
+This bound holds on EVERY linear combination of the four original projected critical vectors and preserves the full directional covariance. In this particular finite q-space, less than 0.0125 percent of selected signed energy is spent by the exterior Schur correction. The numerical maximum generalized eigenvalue is ~0.00011202722 (display only). Importantly, D_E is still only a Galerkin **lower slice** of the full D_Q: the relative bound here does NOT control D_Q/P4, so W-ODD-NEG remains OPEN.
+
 ## Custody
 
 Accepted parent original PR355 workflow run 40598158181, archive 12776684037, ZIP SHA256 f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0.
