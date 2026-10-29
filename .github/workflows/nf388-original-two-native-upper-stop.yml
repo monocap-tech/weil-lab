@@ -1,0 +1,75 @@
+name: Weil-Lab NF388 original n513 native 2D upper STOP (RH OPEN)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf388_original_two_native_joint_upper_stop.py'
+      - 'notes/provisional/NF388_ORIGINAL_N513_JOINT_TWO_RAY_UPPER_STOP_20261029.md'
+      - 'notes/data/provisional/NF388_original_n513_artifact_receipt.json'
+      - '.github/workflows/nf388-original-two-native-upper-stop.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-original-joint-dual-upper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve original NF381 n513 SHA-pinned artifact from certified original run
+        uses: actions/download-artifact@v4
+        with:
+          name: nf381-original-two-direction-signed-result
+          run-id: 40820718599
+          repository: monocap-tech/weil-lab
+          github-token: ${{ github.token }}
+          path: artifacts/nf381-original-native
+      - name: SHA-verify actual original native and certified NF381 result
+        run: |
+          sha256sum artifacts/nf381-original-native/NF381_original_n513_signed_native.json | grep '^e0aaa0abb29c8ec75b3524ec6197c12235a7fc7fa66d76c77c4643c2ff27bffe '
+          sha256sum artifacts/nf381-original-native/NF381_original_two_direction_joint_exact.json | grep '^fad492046e351634a0ecf520a5a37d67a7e067e1a3518aef031418107a49748b '
+          python3 - <<'PY'
+          import json
+          j=json.load(open('artifacts/nf381-original-native/NF381_original_n513_signed_native.json'))
+          assert j['unfitted_n']==513 and j['original_physical_16_Gram_overlaps'] is True
+          assert j['original_signed_32_CE_BP_overlaps'] is True
+          assert j['actual_new_signed_J_v_cells']==242 and j['actual_new_signed_basis_v_cells']==33
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          print('NF388 actual native n513 original signed hash / structural checks PASS')
+          PY
+      - name: Original two-direction exact lower and upper on native data
+        run: |
+          python3 scripts/local_replay/nf381_exact_joint_information_gate.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --native-513 artifacts/nf381-original-native/NF381_original_n513_signed_native.json \
+            --output artifacts/NF388_original_joint_lower_replay.json
+          python3 scripts/local_replay/nf382_optimal_robust_joint_dual.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --native-513 artifacts/nf381-original-native/NF381_original_n513_signed_native.json \
+            --output artifacts/NF388_original_joint_robust_lower_replay.json
+          python3 scripts/local_replay/nf388_original_two_native_joint_upper_stop.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --native-513 artifacts/nf381-original-native/NF381_original_n513_signed_native.json \
+            --output artifacts/NF388_original_complete_two_ray_upper.json
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF388_original_complete_two_ray_upper.json'))
+          low=json.load(open('artifacts/NF388_original_joint_robust_lower_replay.json'))
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          assert F(low['combined_certified_joint_squared_lower']) < F(d['exact_sharper_rational_intermediate_upper_fraction_of_D']) * F(d['original_nf370_direction_four_squared_residual_budget'])
+          assert F(d['exact_sharper_rational_intermediate_upper_fraction_of_D']) < F(31,200)
+          assert d['actual_whole_original_exterior_residual_upper_computed'] is False
+          assert low['nf370_sufficient_method_obstructed'] is False
+          print('NF388 actual TWO-RAY UPPER / accepted lower consistency PASS; whole exterior OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf388-pinned-original-n513-two-ray-upper
+          path: |
+            artifacts/NF388_original_complete_two_ray_upper.json
+            artifacts/NF388_original_joint_lower_replay.json
+            artifacts/NF388_original_joint_robust_lower_replay.json
