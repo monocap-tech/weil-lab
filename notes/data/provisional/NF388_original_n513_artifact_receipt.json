@@ -1,0 +1,23 @@
+{
+  "standing": "NF388 ORIGINAL NF381 N513 NATIVE RECOVERY AND EXACT 2-RAY UPPER SOURCE RECEIPT",
+  "github_original_run": 40820718599,
+  "github_original_artifact": 12882010193,
+  "github_original_artifact_name": "nf381-original-two-direction-signed-result",
+  "github_original_artifact_zip_sha256": "193483b0c757f88f836479e5d50261b629439ed8534875feeeee66008bb121ad",
+  "original_n513_member": "NF381_original_n513_signed_native.json",
+  "original_n513_member_sha256": "e0aaa0abb29c8ec75b3524ec6197c12235a7fc7fa66d76c77c4643c2ff27bffe",
+  "original_n513_original_signed_J_v_cells": 242,
+  "original_n513_original_signed_basis_v_cells": 33,
+  "original_n513_outside_E4_mass_squared_strictly_greater": "10856/10000",
+  "original_n513_full_signed_u4_qperp_positive_strictly_less": "3110/100000000000000000",
+  "original_n512_source_member": "notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json",
+  "original_n512_source_sha256": "9d4b07fb2ca42c14ed995ddcd69811201eacb6f13f9f795a70c4b64889e9f83b",
+  "original_rank_sha256": "9b9820a0163e5e8bf08dd1c2525c757ff67214b49a40cb093d00bc611c9ff9e2",
+  "original_source_sha256": "abd37707d585dcd54b040f1ae865a7430a9c7cba85df31131661b2e72e560770",
+  "original_native_verified": "GitHub run completed success; original ZIP archive SHA checked against GH digest and both JSON member SHAs inspected locally; exact replay must SHA-pin both members",
+  "source_of_truth": "Exact original 513 native JSON remains an Actions artifact, not yet copied into the repository; this is a pinned witness receipt and reproducible retrieval contract, not native-file permanent archive",
+  "full_original_strong_residual_upper": false,
+  "original_lowband_upper": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
