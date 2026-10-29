@@ -191,7 +191,7 @@ def main(args):
       'original_multiplier_m_u4_j387_interval':interval(multiplier_moment),
       'original_j387_physical_norm_squared_interval':interval(jnorm2),
       'actual_selected_moment_discrepancy_interval':interval(discrepancy),
-      'actual_selected_moment_abs_lower':str(F(str(interval(abs_min)[0])) if False else F(int(0))),
+      'actual_selected_moment_abs_lower':interval(abs_min)[0],
       'original_NF375_fourth_cutoff':2**24,
       'original_NF375_fourth_lowband_future_target':str(tau),
       'original_NF375_fourth_highband_action_norm_upper':str(high),
@@ -203,7 +203,6 @@ def main(args):
       'W_ODD_NEG':'OPEN','RH':'OPEN'
     }
     # Preserve exact derived moment lower via native dyadic endpoint pair.
-    out['actual_selected_moment_abs_lower']=str(F(int(abs_min.man_exp()[0]))*F(2)**int(abs_min.man_exp()[1])) if hasattr(abs_min,'man_exp') else str(abs_min)
     out['minimum_lowband_norm_lower_interval']=interval(lower)
     out['candidate_method_stopped_only_if_strictly_proved']=candidate_stopped
     dest=Path(args.output);dest.parent.mkdir(parents=True,exist_ok=True)
