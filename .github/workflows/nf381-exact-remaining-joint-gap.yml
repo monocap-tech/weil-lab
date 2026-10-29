@@ -1,0 +1,38 @@
+name: Weil-Lab NF381 exact necessary source-adapted joint gap (NOT Weil acceptance)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf381_exact_remaining_information_budget.py'
+      - 'notes/data/provisional/NF381_remaining_dual_budget_exact.json'
+      - '.github/workflows/nf381-exact-remaining-joint-gap.yml'
+permissions:
+  contents: read
+jobs:
+  exact-joint-gap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reproduce original NF370/NF380 exact remaining conditional source response
+        run: |
+          python3 -m py_compile scripts/local_replay/nf381_exact_remaining_information_budget.py
+          python3 scripts/local_replay/nf381_exact_remaining_information_budget.py --output /tmp/NF381_remaining_dual_budget_exact.json
+          cmp /tmp/NF381_remaining_dual_budget_exact.json notes/data/provisional/NF381_remaining_dual_budget_exact.json
+      - name: Maintain exact scope of analytic result
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          x=json.load(open('notes/data/provisional/NF381_remaining_dual_budget_exact.json'))
+          D=F(x['original_nf370_direction_four_squared_budget'])
+          R=F(x['necessary_new_orthogonalized_squared_response_strictly_greater_than'])
+          assert D==F(2401,2*10**28) and R==F(17,20)*D
+          assert x['actual_original_b2_or_cross_Gram_measured'] is False
+          assert x['complete_original_strong_residual_upper_computed'] is False
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          print('NF381 exact joint information threshold PASS; NEW signed coupling unmeasured, W-ODD-NEG OPEN')
+          PY
