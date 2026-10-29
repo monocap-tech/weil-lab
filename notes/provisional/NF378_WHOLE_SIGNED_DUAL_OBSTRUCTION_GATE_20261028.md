@@ -69,3 +69,27 @@ PS3 demonstrated that the saved source Gram and complement scalar floor do not d
 4. Full complement inverse-response `B*C^-1B`, original operator-domain attachment, other 238 selected directions, even/whole Weil and RH **OPEN**.
 
 **Previous cursor:** NF377 physical Bessel orientation and asymptotic decoupling. **Current:** NF378 exact whole signed-response dual obstruction gate. **Next:** first native true-original full signed-kernel coupling vs physically measured Gram, **not** new source counts and not another precision-only shadow.
+
+## 6. Actual original-data result: ALL FOUR already-fitted witnesses remain uninformative even jointly
+
+The previous NF376 fit check established that each of 16 scalar signed pairings with the already-fitted exterior `E4=QF4` was tiny. NF378 now replays the **entire joint fitted subspace response**, not just four separate normalized values, with the ORIGINAL NF369 native physical Gram and complete signed mixed-action intervals. In the original selected E4 coordinates the exact fitted signed matrix is
+
+`R_E = (BP^T - CE Y0) T`,
+
+where `BP`, `CE`, `Y0`, `T` are the unchanged 4×4 parent coefficients and `S=E*E` is the original positive physical Gram. For each of the four fixed matched trials, the complete 4D signed-action dual is precisely
+
+`||P_(span E4) W u_i||² = R_E(:,i)^* S^-1 R_E(:,i)`
+
+**provided** the inherited original form identification admits the physical L² strong action. All relevant physical exterior pairing data were already collected in NF369; no new source or frequency integral is introduced.
+
+A new fail-closed **exact-Fraction** verifier independently consumes the SHA-pinned native NF369 4×4 **midpoint+radii** balls (strict slice SHA256 `8148dfed729816d3af4a5ca20798f2a3454cfd99eb53621c8cd4646f24237df8` from full parent ZIP SHA256 `1bacc7ae7967d1282eb28fd9d8566204eb21ba93246f6e81b174a18cc2ab1e96`), verifies their symmetric intersections and exact midpoint SPD pivots, and gives a positive **actual interval** physical Gram eigenvalue floor using `1/||S0^-1||∞ - ||Δ||∞`. Its rigorous interval upper for the vector `R_E` then proves, for **every** original direction i=1,...,4,
+
+`R_E(:,i)^* S^-1 R_E(:,i) < 10^-100`,
+
+hence
+
+`||P_(span E4) W u_i|| < 10^-50`.
+
+The original direction-four sufficiency thresholds are ~`3.3×10^-13`, so the complete four fitted directions jointly cannot trigger that no-go gate. This is an **actual original-data quantitative information-sufficiency STOP for reuse of the fitted E4 subspace**. It neither proves any unmeasured out-of-fit response is small nor bounds `||Q_J W u_i||` from above. It adds no claim about original odd positivity.
+
+The exact local fraction replay passed. Keep GitHub focused workflow and its pass/failure as separate reproducibility evidence; do not claim a CI success before it is reported. **Next:** compute a genuine complete-original W signed pairing against a *new out-of-fit* source-adapted exterior witness; no further fitted-E4 refinements.
