@@ -1,0 +1,205 @@
+{
+  "status": "EXACT_ORIGINAL_NF375_ANCHORED_FULL_SIGNED_DUAL_GATE_ONLY",
+  "source_sha256": "f0067870a77f3825005395ac0f6f3e928521796ef3251c04463ba402c40cb5ec",
+  "rank_sha256": "9b9820a0163e5e8bf08dd1c2525c757ff67214b49a40cb093d00bc611c9ff9e2",
+  "inherited_signed_multiplier_identification": "CONDITIONAL_ON_ORIGINAL_FORM_AND_DOMAIN",
+  "exact_pole_annihilation": "s in J242 and q in J242 physical orthogonal complement",
+  "original_selected_rank": 242,
+  "critical_directions": 4,
+  "original_cutoff_thresholds": [
+    {
+      "direction": 1,
+      "original_residual_squared_budget": "637/400000000000000000000000",
+      "direct_whole_action_obstruction_iff_normalized_coupling_squared_exceeds": "637/400000000000000000000000",
+      "cutoffs": [
+        {
+          "log2_cutoff": 20,
+          "highband_upper": "184791499941638616706330363813081161706786786637/18000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "7/250000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "688791499941638616706330363813081161706786786637/18000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 21,
+          "highband_upper": "26280142192354586861238643888120831391491942093/3600000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "1/31250000000",
+          "exact_whole_signed_dual_obstruction_threshold": "141480142192354586861238643888120831391491942093/3600000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 22,
+          "highband_upper": "10459416739067926981608165746817828251202964207/2000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "17/500000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "78459416739067926981608165746817828251202964207/2000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 23,
+          "highband_upper": "7520026049341405327394274821730693192255759079/2000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "9/250000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "79520026049341405327394274821730693192255759079/2000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 24,
+          "highband_upper": "1083083863423062032022111254931734110043955387/400000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "9/250000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "15483083863423062032022111254931734110043955387/400000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        }
+      ],
+      "best_cutoff_for_signed_form_obstruction": 20,
+      "best_full_signed_coupling_threshold": "688791499941638616706330363813081161706786786637/18000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "direction": 2,
+      "original_residual_squared_budget": "1323/20000000000000000000000000",
+      "direct_whole_action_obstruction_iff_normalized_coupling_squared_exceeds": "1323/20000000000000000000000000",
+      "cutoffs": [
+        {
+          "log2_cutoff": 20,
+          "highband_upper": "3217514776791601522150310977715368697696260454881381/1572864000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "57/10000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "12182839576791601522150310977715368697696260454881381/1572864000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 21,
+          "highband_upper": "462693162203691544960702809343112320772871677766881/314572800000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "13/2000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "2507416362203691544960702809343112320772871677766881/314572800000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 22,
+          "highband_upper": "1666741730629240637271093788655592793704560681005479/1572864000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "7/1000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "12676789730629240637271093788655592793704560681005479/1572864000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 23,
+          "highband_upper": "1201758052159877924923876480926555897600316552226083/1572864000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "73/10000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "12683665252159877924923876480926555897600316552226083/1572864000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 24,
+          "highband_upper": "173332883978002037037136425702956729130682647082859/314572800000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "73/10000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "2469714323978002037037136425702956729130682647082859/314572800000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        }
+      ],
+      "best_cutoff_for_signed_form_obstruction": 20,
+      "best_full_signed_coupling_threshold": "12182839576791601522150310977715368697696260454881381/1572864000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "direction": 3,
+      "original_residual_squared_budget": "1029/2000000000000000000000000000",
+      "direct_whole_action_obstruction_iff_normalized_coupling_squared_exceeds": "1029/2000000000000000000000000000",
+      "cutoffs": [
+        {
+          "log2_cutoff": 20,
+          "highband_upper": "5369394150438109223832478678421669013638167335538763/15728640000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "17/50000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "10717131750438109223832478678421669013638167335538763/15728640000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 21,
+          "highband_upper": "771567729430816475627480013342707834897167917571183/3145728000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "23/50000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "2218602609430816475627480013342707834897167917571183/3145728000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 22,
+          "highband_upper": "926115518743914755576538948997566980382302151437939/5242880000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "53/100000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "3704841918743914755576538948997566980382302151437939/5242880000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 23,
+          "highband_upper": "667624314071941735828535967611368928153547710552703/5242880000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "29/50000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "3708494714071941735828535967611368928153547710552703/5242880000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 24,
+          "highband_upper": "96284216056921385756719738336916201523756967544759/1048576000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "59/100000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "714944056056921385756719738336916201523756967544759/1048576000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        }
+      ],
+      "best_cutoff_for_signed_form_obstruction": 20,
+      "best_full_signed_coupling_threshold": "10717131750438109223832478678421669013638167335538763/15728640000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "direction": 4,
+      "original_residual_squared_budget": "2401/20000000000000000000000000000",
+      "direct_whole_action_obstruction_iff_normalized_coupling_squared_exceeds": "2401/20000000000000000000000000000",
+      "cutoffs": [
+        {
+          "log2_cutoff": 20,
+          "highband_upper": "2850389356588036711829238471476032212853080316741097/15728640000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "3/20000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "5209685356588036711829238471476032212853080316741097/15728640000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 21,
+          "highband_upper": "51069129382861999579323546205289122494428449655969/393216000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "1/5000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "129712329382861999579323546205289122494428449655969/393216000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 22,
+          "highband_upper": "61219678799110324179480100693488940102316698282427/655360000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "1/4000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "225059678799110324179480100693488940102316698282427/655360000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 23,
+          "highband_upper": "352831326826368237231833650389599653403720069105807/5242880000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "27/100000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "1768408926826368237231833650389599653403720069105807/5242880000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        },
+        {
+          "log2_cutoff": 24,
+          "highband_upper": "50868533440954339805613798669078614505552406773861/1048576000000000000000000000000000000000000000000000000000000000",
+          "future_lowband_target": "7/25000000000000",
+          "exact_whole_signed_dual_obstruction_threshold": "344469813440954339805613798669078614505552406773861/1048576000000000000000000000000000000000000000000000000000000000",
+          "squared_gate_below_original_budget": true
+        }
+      ],
+      "best_cutoff_for_signed_form_obstruction": 24,
+      "best_full_signed_coupling_threshold": "344469813440954339805613798669078614505552406773861/1048576000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "matrix_dual_lemma": "b*G^-1 b <= ||Q_J m(D)u||_2^2 for any independent exterior witness family with physical Gram G",
+  "directional_whole_obstruction": "b*G^-1 b > original_residual_squared_budget implies NO J242 subtraction passes the fixed sufficient strong-residual gate",
+  "directional_lowband_obstruction": "b*G^-1 b > (highband_upper + future_lowband_target)^2 implies NO J242 subtraction passes THAT fixed cutoff lowband sufficient gate",
+  "toy_single_squared": 16,
+  "toy_joint_squared": 25,
+  "toy_budget_squared": "81/4",
+  "ps3_abstract_signs": [
+    "-1/2",
+    "49/100"
+  ],
+  "actual_Weil_signed_B_vector_computed": false,
+  "actual_Weil_exterior_witness_Gram_computed_here": false,
+  "actual_lowband_integral_computed": false,
+  "actual_full_residual_obstructed": false,
+  "actual_inverse_Schur_response_computed": false,
+  "original_operator_domain_audit": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}

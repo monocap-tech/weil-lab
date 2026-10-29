@@ -1,0 +1,45 @@
+{
+  "status": "EXACT_RATIONAL_ORIGINAL_FITTED_FOUR_JOINT_SHADOW_SMALL_UPPER_ONLY",
+  "original_nf369_parent_json_sha256": "1b22cd77dd555749b8dcc41f92ddd91d982f2eca23ebf3a7638e512147b39d18",
+  "original_nf369_parent_zip_sha256": "1bacc7ae7967d1282eb28fd9d8566204eb21ba93246f6e81b174a18cc2ab1e96",
+  "exact_original_nf369_slices_sha256": "8148dfed729816d3af4a5ca20798f2a3454cfd99eb53621c8cd4646f24237df8",
+  "original_selected_rank": 242,
+  "original_fitted_exterior_rank": 4,
+  "original_critical_directions": 4,
+  "actual_native_physical_S4_interval_checked": true,
+  "exact_midpoint_spd_pivots_checked": true,
+  "exact_native_interval_Gram_lower_gt": "1e-240",
+  "exact_Gram_entry_radius_row_sum_lt": "1e-240",
+  "original_fitted_four_complete_signed_coupling_formula": "R_E=(BP^T-CE*Y0)*T",
+  "original_fitted_four_joint_signed_projection": [
+    {
+      "direction": 1,
+      "certified_joint_fitted_four_projection_squared_lt": "1e-100",
+      "certified_joint_fitted_four_projection_norm_lt": "1e-50",
+      "actual_complete_original_fitted_four_coupling_interval_checked": true
+    },
+    {
+      "direction": 2,
+      "certified_joint_fitted_four_projection_squared_lt": "1e-100",
+      "certified_joint_fitted_four_projection_norm_lt": "1e-50",
+      "actual_complete_original_fitted_four_coupling_interval_checked": true
+    },
+    {
+      "direction": 3,
+      "certified_joint_fitted_four_projection_squared_lt": "1e-100",
+      "certified_joint_fitted_four_projection_norm_lt": "1e-50",
+      "actual_complete_original_fitted_four_coupling_interval_checked": true
+    },
+    {
+      "direction": 4,
+      "certified_joint_fitted_four_projection_squared_lt": "1e-100",
+      "certified_joint_fitted_four_projection_norm_lt": "1e-50",
+      "actual_complete_original_fitted_four_coupling_interval_checked": true
+    }
+  ],
+  "original_full_exterior_witness_measured": false,
+  "original_full_exterior_signed_residual_certified": false,
+  "actual_source_adapted_unfitted_signed_coupling_computed": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}

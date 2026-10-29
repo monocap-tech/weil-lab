@@ -1,0 +1,40 @@
+name: Weil-Lab NF378 actual original fitted-four complete signed-dual upper (not Weil)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf378_fitted_four_joint_shadow.py'
+      - 'notes/data/provisional/NF378_fitted_four_joint_shadow_exact.json'
+      - 'notes/data/provisional/nf376_original_four_probe_signed_slices.json'
+      - '.github/workflows/nf378-fitted-four-joint-shadow.yml'
+permissions:
+  contents: read
+jobs:
+  original-fitted-four-joint-shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent exact Fraction original 4D mixed signed response with native physical Gram
+        run: |
+          python -m py_compile scripts/local_replay/nf378_fitted_four_joint_shadow.py
+          python scripts/local_replay/nf378_fitted_four_joint_shadow.py \
+            --slices notes/data/provisional/nf376_original_four_probe_signed_slices.json \
+            --output "${RUNNER_TEMP}/nf378_fitted.json"
+          cmp -s "${RUNNER_TEMP}/nf378_fitted.json" notes/data/provisional/NF378_fitted_four_joint_shadow_exact.json
+      - name: Guard narrow original mathematical conclusion
+        run: |
+          python - <<'PY'
+          import json
+          x=json.load(open('notes/data/provisional/NF378_fitted_four_joint_shadow_exact.json'))
+          assert x['status']=='EXACT_RATIONAL_ORIGINAL_FITTED_FOUR_JOINT_SHADOW_SMALL_UPPER_ONLY'
+          assert len(x['original_fitted_four_joint_signed_projection'])==4
+          assert all(d['certified_joint_fitted_four_projection_norm_lt']=='1e-50' for d in x['original_fitted_four_joint_signed_projection'])
+          assert not x['original_full_exterior_signed_residual_certified']
+          assert not x['actual_source_adapted_unfitted_signed_coupling_computed']
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          print('PASS actual four already-fitted original signed-dual subspace is tiny ONLY')
+          PY

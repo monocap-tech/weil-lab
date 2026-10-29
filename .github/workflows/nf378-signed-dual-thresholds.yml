@@ -1,0 +1,43 @@
+name: Weil-Lab NF378 original full signed-dual exact thresholds (not a Weil theorem)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf378_complete_signed_dual_gate.py'
+      - 'notes/data/provisional/NF378_original_full_signed_dual_thresholds.json'
+      - 'notes/provisional/NF378_WHOLE_SIGNED_DUAL_OBSTRUCTION_GATE_20261028.md'
+      - '.github/workflows/nf378-signed-dual-thresholds.yml'
+permissions:
+  contents: read
+jobs:
+  nf378-exact-signed-dual-thresholds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exactly replay original rank, 20 inherited rational thresholds, and dual-Gram algebra
+        run: |
+          python -m py_compile scripts/local_replay/nf378_complete_signed_dual_gate.py
+          python scripts/local_replay/nf378_complete_signed_dual_gate.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --output "${RUNNER_TEMP}/nf378.json"
+          cmp -s "${RUNNER_TEMP}/nf378.json" notes/data/provisional/NF378_original_full_signed_dual_thresholds.json
+      - name: Fail closed on original Weil scope
+        run: |
+          python - <<'PY'
+          import json
+          q=json.load(open('notes/data/provisional/NF378_original_full_signed_dual_thresholds.json'))
+          assert q['status']=='EXACT_ORIGINAL_NF375_ANCHORED_FULL_SIGNED_DUAL_GATE_ONLY'
+          assert len(q['original_cutoff_thresholds'])==4
+          assert all(len(z['cutoffs'])==5 for z in q['original_cutoff_thresholds'])
+          assert q['actual_Weil_signed_B_vector_computed'] is False
+          assert q['actual_lowband_integral_computed'] is False
+          assert q['actual_full_residual_obstructed'] is False
+          assert q['actual_inverse_Schur_response_computed'] is False
+          assert q['W_ODD_NEG']==q['RH']=='OPEN'
+          print('PASS exact thresholds and identities; genuine signed-coupling and theorem remain OPEN')
+          PY
