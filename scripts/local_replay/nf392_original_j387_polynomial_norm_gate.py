@@ -25,7 +25,7 @@ def evaluate(native512,nf375,j387,native390=None,output=None):
     gate=parent.read(nf375,git_sha=parent.GIT_NF375)
     assert frozen['scalar_alpha']==str(ALPHA)
     assert frozen['candidate_formula'].startswith('alpha*(121-100*x^2)')
-    assert frozen['original_j_is_nonzero'] if 'original_j_is_nonzero' in frozen else frozen['nonzero_raw_source_indices']==[0,2]
+    assert frozen['nonzero_raw_source_indices']==[0,2]
     assert frozen['endpoint_value_exact']=='0'
     # h=alpha(121-100 x^2)sin(2*pi*(37/64)x), physical support [-B,B].
     # |sin|<=1, hence norm^2<=alpha^2 integral (121-100x²)^2 dx.
@@ -71,6 +71,8 @@ def evaluate(native512,nf375,j387,native390=None,output=None):
        'original_nf390_native_selected_moment_result_supplied':native390 is not None,
        'original_nf390_native_selected_moment_outcome':earlier['nf390_native_selected_moment_result'],
        'fixed_j387_specific_candidate_stop':earlier['nf387_specific_candidate_joint_method_stopped'],
+       'fixed_j387_candidate_verdict': ('PENDING' if native390 is None else
+             'STOP' if earlier['nf387_specific_candidate_joint_method_stopped'] else 'INCONCLUSIVE'),
        'actual_original_lowband_signed_integral_computed':False,
        'actual_original_full_lowband_upper_computed':False,
        'full_original_exterior_inverse_computed':False,
