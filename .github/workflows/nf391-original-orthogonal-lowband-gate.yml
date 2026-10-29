@@ -35,7 +35,7 @@ jobs:
           assert F(d['remaining_selected_shadow_norm_upper_sufficient_for_stop'])==F(2673,10**16)
           assert F(d['native_selected_pole_corrected_moment_discrepancy_stop_threshold_strictly_below'])<F(181,10**22)
           assert d['original_nf390_selected_native_result_supplied'] is False
-          assert d['nf387_specific_candidate_joint_method_stopped'] is False
+          assert d['nf387_specific_candidate_joint_method_stopped'] is None
           assert d['W_ODD_NEG']==d['RH']=='OPEN'
           print('NF391 source-pinned combined EXACT original lowband gate PASS; selected native decision PENDING')
           PY
