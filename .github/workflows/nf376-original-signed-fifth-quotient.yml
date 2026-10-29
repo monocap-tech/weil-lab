@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install pinned original Arb interface
-        run: "pip install --only-binary=:all: python-flint==0.8.0 numpy scipy"
+        run: "pip install --only-binary=:all: python-flint==0.8.0 numpy scipy numpy scipy"
       - name: Execute physical exterior witness and genuine signed multiplier knot test
         run: |
           python3 -m py_compile scripts/verify_nf376_original_signed_lowband_probe.py
