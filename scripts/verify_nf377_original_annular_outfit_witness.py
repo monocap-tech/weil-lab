@@ -26,7 +26,7 @@ from validate_rpb108_mg07_two_source_original_low32_affine_stop import signed_m_
 B = F(11, 10)
 N = 492
 H = B / N
-SELECTED_LIMIT = F(1, 2)
+SELECTED_LIMIT = F(49, 100)  # strict margin; Bessel certifies some >=1/2
 
 def integral_sin_cos(c, maximum, endpoint):
     """Integrals 0..endpoint of x^k sin/cos(2*pi*c*x), k=0..maximum."""
@@ -122,9 +122,13 @@ def main():
     err = max((sum((abs(Nframe[i,j]-int(i==j))
                     for j in range(242)), arb(0)) for i in range(242)))
     assert err < arb('0.01')
+    identity=arb_mat([[int(i==j) for j in range(242)] for i in range(242)])
+    Ninv=Nframe.solve(identity, algorithm='lu')
+    # Precompute once; 492 rank-242 solves are unnecessary.
+    solve_selected=lambda y: D*(Ninv*(D.transpose()*y))
     V = arb_mat([[m.gram(j, f, kernel) for f in F4] for j in J])
     GF = arb_mat([[m.gram(f, g, kernel) for g in F4] for f in F4])
-    X4 = D*Nframe.solve(D.transpose()*V, algorithm='lu')
+    X4 = solve_selected(V)
     S4 = GF - V.transpose()*X4
     S4 = (S4 + S4.transpose())/2
     assert all((S4[i,j]-fball(parent['physical_quotient_Gram_native'][i][j])).contains(0)
@@ -138,7 +142,7 @@ def main():
     norm_sq = m.a(H)
     for i in candidate_order():
         bj,bf = overlaps_for_annulus(i, rows, probes, freqs, cache)
-        x = D*Nframe.solve(D.transpose()*bj, algorithm='lu')
+        x = solve_selected(bj)
         stationarity = gram*x - bj
         residual = norm_sq - (bj.transpose()*x)[0,0]
         cross = bf - V.transpose()*x
@@ -146,16 +150,16 @@ def main():
         q2 = residual - (cross.transpose()*eta)[0,0]
         visited.append(i)
         # q2 is physically after projecting out J242 plus all E4.
-        if q2.lower() > m.a(H/2):
+        if q2.lower() > m.a(H * SELECTED_LIMIT):
             selected = (i, bj, bf, x, eta, q2, residual, cross, stationarity)
             break
         if len(visited)%50 == 0:
             print('checked',len(visited),'source annuli',flush=True)
     assert selected is not None, 'FAIL: Bessel guaranteed candidate not found with strict outward enclosure'
     i,bj,bf,x,eta,q2,residual,cross,stationarity = selected
-    assert 1<=i<=N and q2.lower()>m.a(H/2)
+    assert 1<=i<=N and q2.lower()>m.a(H*SELECTED_LIMIT)
     assert q2.upper()<=norm_sq.upper()
-    print('NF377 annulus',i,'out-of-fit L2 norm fraction > 1/2, PASS',flush=True)
+    print('NF377 annulus',i,'certified physical out-of-fit L2 squared fraction > 49/100; theoretical existence >=1/2',flush=True)
 
     # Diagnostic, genuinely original signed multiplier KNOTS only.
     # The full continuum integral is a separate independent acceptance gate.
@@ -196,8 +200,8 @@ def main():
       'selected_annulus_index':i,'selected_positive_half_interval':[str(a),str(b)],
       'annulus_L2_squared_norm':str(H),
       'certified_outfit_squared_norm_units_1e320':interval_units(q2),
-      'certified_outfit_squared_norm_fraction_strict_lower':'1/2',
-      'certified_unfitted_absolute_L2_norm_lower':'sqrt(11/9840)',
+      'certified_outfit_squared_norm_fraction_strict_lower':'49/100',
+      'certified_unfitted_absolute_L2_norm_lower':'sqrt((49/100)*(11/4920))',
       'J_projected_norm_squared_units_1e320':interval_units(residual),
       'frame_Gram_16_parent_ball_overlap':True,
       'max_stationarity_residual_upper':str(max(abs(stationarity[j,0]).upper() for j in range(242))),
