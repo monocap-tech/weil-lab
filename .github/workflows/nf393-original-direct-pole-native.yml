@@ -1,0 +1,106 @@
+name: Weil-Lab NF393 direct original pole overlap and native j387 decision (RH OPEN)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf393_original_pole_source_cancellation_preflight.py'
+      - 'scripts/verify_nf390_original_j387_selected_moment.py'
+      - '.github/workflows/nf393-original-direct-pole-native.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-only-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact full original Y0T and selected pole source identity preflight
+        run: |
+          python3 -m py_compile scripts/local_replay/nf393_original_pole_source_cancellation_preflight.py
+          python3 scripts/local_replay/nf393_original_pole_source_cancellation_preflight.py \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --output artifacts/NF393_original_source_pole_identity.json
+          python3 - <<'PY'
+          import json
+          p='artifacts/NF393_original_source_pole_identity.json'
+          j=json.load(open(p))
+          assert j['original_j387_candidate_stop']=='UNDECIDED'
+          assert j['native_selected_pole_source_identity_verified'] is False
+          assert j['original_selected_signed_moment_computed'] is False
+          assert j['original_pole_correction_must_be']=='2*<F*T*e4,s>*<j387,s>'
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          print('NF393 exact source-level cancellation and pole identity PASS; native moment still needed')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf393-original-source-pole-identity
+          path: artifacts/NF393_original_source_pole_identity.json
+  pole-restored-native-original:
+    needs: source-only-exact
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pinned Arb dependencies
+        run: pip install --only-binary=:all: python-flint==0.8.0 numpy scipy
+      - name: Retrieve historical original 242 signed J matrix and original 968 mixed columns
+        env:
+          GH_${{ github.token }}: TOKEN
+        run: |
+          mkdir -p artifacts
+          curl -fL --retry 3 --retry-delay 2 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/12776684037/zip" \
+            -o artifacts/original_selected_signed_20261028.zip
+          echo 'f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0  artifacts/original_selected_signed_20261028.zip' | sha256sum -c -
+      - name: Run genuine original selected signed moment with direct original pole and identity check
+        run: |
+          python3 -m py_compile scripts/verify_nf390_original_j387_selected_moment.py
+          python3 -u scripts/verify_nf390_original_j387_selected_moment.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --archive artifacts/original_selected_signed_20261028.zip \
+            --output artifacts/NF393_original_j387_selected_pole_direct_native.json
+      - name: Apply SHA-pinned authentic NF391/NF392 candidate STOP to measured native interval
+        run: |
+          python3 scripts/local_replay/nf392_original_j387_polynomial_norm_gate.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --native390 artifacts/NF393_original_j387_selected_pole_direct_native.json \
+            --output artifacts/NF393_original_candidate_method_verdict.json
+          python3 - <<'PY'
+          import json
+          a=json.load(open('artifacts/NF393_original_j387_selected_pole_direct_native.json'))
+          b=json.load(open('artifacts/NF393_original_candidate_method_verdict.json'))
+          assert a['original_pole_overlap_source_projection_identity_verified'] is True
+          assert a['pole_restored_for_selected_test'] is True
+          assert a['fresh_original_signed_kernel_cells']==0
+          assert a['original_physical_16_Gram_overlaps'] is True
+          assert b['original_nf390_native_selected_moment_result_supplied'] is True
+          assert b['fixed_j387_candidate_verdict'] in ('STOP','INCONCLUSIVE')
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          assert b['W_ODD_NEG']==b['RH']=='OPEN'
+          print('NF393 original j387 native method-specific verdict:',b['fixed_j387_candidate_verdict'])
+          print('NF393 complete Weil domain/odd sign/RH remain OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf393-original-pole-restored-native-candidate-decision
+          path: |
+            artifacts/NF393_original_j387_selected_pole_direct_native.json
+            artifacts/NF393_original_candidate_method_verdict.json
+          if-no-files-found: ignore
