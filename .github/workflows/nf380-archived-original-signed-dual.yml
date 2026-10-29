@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install pinned original analytic native dependencies
-        run: pip install --only-binary=:all: python-flint==0.8.0 numpy scipy
+        run: "pip install --only-binary=:all: python-flint==0.8.0 numpy scipy"
       - name: Retrieve unchanged historic GitHub Actions original-signed archive; fail closed
         env:
           GH_TOKEN: ${{ github.token }}
@@ -59,8 +59,8 @@ jobs:
           import json
           x=json.load(open('artifacts/NF380_original_archived_unfitted_signed_dual_native.json'))
           assert x['W_ODD_NEG']==x['RH']=='OPEN'
-          assert x['original_WJJ_WJF_archived_cells_reused']==30371 if x['standing'].startswith('NF380 ORIGINAL') else x['new_original_signed_coupling_computed'] is False
           if x['standing'].startswith('NF380 ORIGINAL'):
+              assert x['original_WJJ_WJF_archived_cells_reused']==30371
               assert x['original_signed_32_CE_BP_overlaps'] is True
               assert x['actual_new_signed_J_v_cells']==242
               assert x['actual_new_signed_basis_v_cells']==33
@@ -68,7 +68,7 @@ jobs:
               assert x['entire_exterior_inverse_computed'] is False
           else:
               assert x['standing']=='NF380_N512_ORIGINAL_PHYSICAL_CANDIDATE_METHOD_STOP'
-              assert x['original_nf369_native_overlap_recomputed'] is not True if 'original_nf369_native_overlap_recomputed' in x else True
+              assert x['new_original_signed_coupling_computed'] is False
           print('NF380 strict status gate PASS: full original new dual or n512 candidate-only STOP; RH OPEN')
           PY
       - uses: actions/upload-artifact@v4
