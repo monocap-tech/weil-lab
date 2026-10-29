@@ -36,7 +36,14 @@ jobs:
           assert z['selected_source_count']==242 and z['original_critical_count']==4
           assert z['unfitted_candidate_n']==512
           assert z['parent_original_16_Gram_overlap']
-          assert z['original_16_CE_and_16_BP_signed_kernel_parent_overlaps']
+          if z['standing']=='NF379_FIXED_N512_PHYSICAL_ORIENTATION_METHOD_STOP':
+            assert z['physical_orientation_10pct_gate'] is False
+            assert z['native_full_signed_pairing_computed'] is False
+            assert z['original_16_CE_and_16_BP_signed_kernel_parent_overlaps'] is False
+          else:
+            assert z['physical_orientation_10pct_gate'] is True
+            assert z['native_full_signed_pairing_computed'] is True
+            assert z['original_16_CE_and_16_BP_signed_kernel_parent_overlaps'] is True
           assert z['integrated_lowband'] is False
           assert z['full_strong_residual_upper'] is False
           assert z['whole_infinite_exterior_inverse'] is False
