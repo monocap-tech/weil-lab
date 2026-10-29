@@ -1,0 +1,17 @@
+{
+  "standing": "EXACT ANALYTIC NF381 TWO-WITNESS NECESSARY SIGNAL BUDGET, NOT NEW WEIL PAIRING",
+  "original_nf370_direction_four_squared_budget": "2401/20000000000000000000000000000",
+  "nf380_single_n512_squared_dual_ratio_strictly_above": "1/7",
+  "nf380_single_n512_squared_dual_ratio_strictly_below": "3/20",
+  "necessary_new_orthogonalized_squared_response_strictly_greater_than": "40817/400000000000000000000000000000",
+  "missing_squared_fraction_of_original_budget_strictly_above": "17/20",
+  "missing_squared_fraction_of_original_budget_strictly_below": "6/7",
+  "outward_rational_lower_on_necessary_amplitude": "319440917854929787/1000000000000000000000000000000",
+  "outward_rational_upper_on_necessary_amplitude": "3194409178549297871/10000000000000000000000000000000",
+  "joint_schur_formula": "d12=b1^2/g1+(b2-c*b1/g1)^2/(g2-c^2/g1)",
+  "actual_original_b2_or_cross_Gram_measured": false,
+  "complete_original_strong_residual_upper_computed": false,
+  "operator_domain_review": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}

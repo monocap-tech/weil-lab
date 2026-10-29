@@ -1,0 +1,81 @@
+name: Weil-Lab NF381 original two-direction joint signed response (NOT Weil theorem)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/verify_nf381_original_neighbor_signed_dual.py'
+      - 'scripts/local_replay/nf381_exact_joint_information_gate.py'
+      - 'notes/provisional/NF381_TWO_DIRECTION_SIGNED_INFORMATION_GATE_20261028.md'
+      - '.github/workflows/nf381-original-two-signed-directions.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  actual-original-neighbor-response:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original pinned Arb dependencies
+        run: "pip install --only-binary=:all: python-flint==0.8.0 numpy scipy"
+      - name: Retrieve ORIGINAL SHA-pinned signed archive without replacing it
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p artifacts
+          curl -fL --retry 3 --retry-delay 2 \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/12776684037/zip" \
+            -o artifacts/original_selected_signed_20261028.zip
+          echo 'f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0  artifacts/original_selected_signed_20261028.zip' | sha256sum -c -
+      - name: Reconstruct ONE new original n513 complete arch/seven-prime/pole signed pairing
+        run: |
+          python3 -m py_compile scripts/verify_nf381_original_neighbor_signed_dual.py scripts/local_replay/nf381_exact_joint_information_gate.py
+          python3 -u scripts/verify_nf381_original_neighbor_signed_dual.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --signed-slice notes/data/provisional/nf376_original_four_probe_signed_slices.json \
+            --archive artifacts/original_selected_signed_20261028.zip \
+            --output artifacts/NF381_original_n513_signed_native.json
+      - name: Test actual original two-direction joint dual with cross-correlation payment
+        run: |
+          python3 - <<'PY'
+          import json
+          j=json.load(open('artifacts/NF381_original_n513_signed_native.json'))
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          assert j['original_512_native_source_sha256']=='9d4b07fb2ca42c14ed995ddcd69811201eacb6f13f9f795a70c4b64889e9f83b'
+          if 'METHOD STOP' in j['standing']:
+              assert j['complete_joint_512_513_dual_computed'] is False
+              print('NF381 fixed candidate n513 METHOD STOP. No joint result accepted.')
+          else:
+              assert j['unfitted_n']==513 and j['original_signed_32_CE_BP_overlaps'] is True
+              assert j['actual_new_signed_J_v_cells']==242 and j['actual_new_signed_basis_v_cells']==33
+              assert j['method_specific_sufficient_residual_obstructed'] in (False,True)
+              print('NF381 actual original n513 signed response PASS; testing joint')
+          PY
+          if python3 - <<'PY'
+          import json,sys
+          j=json.load(open('artifacts/NF381_original_n513_signed_native.json'))
+          sys.exit(1 if 'METHOD STOP' in j['standing'] else 0)
+          PY
+          then
+            python3 scripts/local_replay/nf381_exact_joint_information_gate.py \
+              --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+              --native-513 artifacts/NF381_original_n513_signed_native.json \
+              --output artifacts/NF381_original_two_direction_joint_exact.json
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf381-original-two-direction-signed-result
+          path: |
+            artifacts/NF381_original_n513_signed_native.json
+            artifacts/NF381_original_two_direction_joint_exact.json
+          if-no-files-found: ignore
