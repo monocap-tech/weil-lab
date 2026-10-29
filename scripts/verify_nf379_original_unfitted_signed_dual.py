@@ -108,6 +108,31 @@ def main():
     robust=bool(qnorm.lower()>arb('0.1') and ratio.lower()>arb('0.1'))
     print('NF379 n',n,'physical quotient',str(qnorm),'out-of-fit fraction',str(ratio),'robust',robust,flush=True)
 
+    if not robust:
+        # Information-sufficiency gate is BEFORE the expensive original W(J,J)
+        # reconstruction. This stops only the PREDECLARED n512 candidate.
+        stop={
+          'standing':'NF379_FIXED_N512_PHYSICAL_ORIENTATION_METHOD_STOP',
+          'original_rank_sha256':RANK_SHA,'original_source_sha256':PR355_SHA,
+          'nf369_fields_sha256':NF369_SHA,
+          'selected_source_count':242,'original_critical_count':4,
+          'unfitted_candidate_n':n,'parent_original_16_Gram_overlap':True,
+          'physical_q_squared_norm_interval':rational_interval(qnorm),
+          'physical_q_outside_E4_squared_norm_interval':rational_interval(orth),
+          'physical_q_outside_E4_ratio_interval':rational_interval(ratio),
+          'physical_orientation_10pct_gate':False,
+          'original_16_CE_and_16_BP_signed_kernel_parent_overlaps':False,
+          'native_full_signed_pairing_computed':False,
+          'method_specific_sufficient_residual_obstructed_by_this_witness':False,
+          'integrated_lowband':False,'full_strong_residual_upper':False,
+          'whole_infinite_exterior_inverse':False,
+          'W_ODD_NEG':'OPEN','RH':'OPEN',
+          'elapsed_seconds':time.monotonic()-st}
+        out=Path(a.output);out.parent.mkdir(parents=True,exist_ok=True)
+        out.write_text(json.dumps(stop,indent=2)+'\n')
+        print('NF379 n512 physical information method STOP; no signed kernel spent',flush=True)
+        return
+
     # Complete ORIGINAL mixed signed form, not the fitted four-zero shadow.
     # Compute only one source-adapted pairing and all its required correlations:
     # WJJ, WJ(base), WJv, W(base,v), W(base,base).
@@ -138,6 +163,7 @@ def main():
             z=hit(ci,1,cj,1,signed)[0][0];assert z.imag.contains(0)
             AV[i,j]=AV[j,i]=z.real
     print('NF379 complete W signed kernel cells constructed',round(time.monotonic()-st),flush=True)
+    ctx.prec=PREC  # preserve original signed kernel intervals, evaluate final correlated matrices at 4096 bits
     # Shared original dyadic NF369 matched 4-plane action. u4 = J X (I+Y0)T e4 - F Y0 T e4.
     Y0=arb_mat([[dyad(nf['nf369_quotient_response_exact_dyadic_coefficients'][i][j]) for j in range(4)] for i in range(4)])
     T=arb_mat([[physical.a(F(x,2**20)) for x in row] for row in TNUM]);I=arb_mat([[int(i==j) for j in range(4)] for i in range(4)])
@@ -188,6 +214,7 @@ def main():
       'physical_normal_equation_error_upper':str(statmax), 'parent_original_16_Gram_overlap':True,
       'physical_q_squared_norm_interval':rational_interval(qnorm),'physical_q_outside_E4_squared_norm_interval':rational_interval(orth),
       'physical_q_outside_E4_ratio_interval':rational_interval(ratio),'physical_orientation_10pct_gate':robust,
+      'native_full_signed_pairing_computed':True,
       'original_16_CE_and_16_BP_signed_kernel_parent_overlaps':True,
       'complete_original_signed_Wu_q_interval':rational_interval(b),
       'complete_original_signed_Wu_qperp_interval':rational_interval(bperp),
