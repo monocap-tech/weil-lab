@@ -1,0 +1,19 @@
+{
+  "status": "EXACT_RATIONAL_CERTIFIED_FITTED_FOUR_PROBE_CANCEL_ONLY",
+  "original_parent_json_sha256": "1b22cd77dd555749b8dcc41f92ddd91d982f2eca23ebf3a7638e512147b39d18",
+  "original_parent_zip_sha256": "1bacc7ae7967d1282eb28fd9d8566204eb21ba93246f6e81b174a18cc2ab1e96",
+  "portable_parent_slice_sha256": "8148dfed729816d3af4a5ca20798f2a3454cfd99eb53621c8cd4646f24237df8",
+  "original_selected_count": 242,
+  "critical_trial_count": 4,
+  "old_exterior_probe_count": 4,
+  "original_fit_coefficient_formula": "Y0\u2248CE^-1 BP^T; R_E=(BP^T-CE Y0)T",
+  "strict_all_16_original_signed_fitted_pairings_normalized_less_than": "1e-221",
+  "squared_residual_test": "max_absolute_R_ki^2 < S_kk.lower/10^442",
+  "actual_new_outside_four_probe_measured": false,
+  "lowband_continuum_integrated": false,
+  "selected_lowband_j_i_constructed": false,
+  "full_lowband_norm_certified": false,
+  "original_domain_review": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}

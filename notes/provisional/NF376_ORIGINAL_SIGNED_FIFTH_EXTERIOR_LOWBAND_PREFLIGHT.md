@@ -38,3 +38,13 @@ This is **actual original signed frequency data** and a new out-of-plane diagnos
 **Not accepted:** continuous signed lowband integration, explicit `j_i∈J242` for lowband full norm, `H_i` bound, whole infinite Schur residual, the remaining 238 selected directions, original analytic realization, even/whole Weil, RH.
 
 **Next:** Carry out an outward interval signed integral for the specific new `q5` dual witness, together with original highband payment; if it shows the sufficient individual lowband criterion cannot pass, mark only this trial/method STOP. Otherwise construct a selected lowband subtraction and calculate the actual norm, not additional point samples.
+
+## Additional exact parent replay — old four-probe reuse STOP
+
+A separate all-Fraction local audit of the SHA-verified original NF369 `BP`, `CE`, original physical exterior Gram `S` and exact dyadic `Y0` proves for **all 16** original matched pairs
+
+`|(BP^T−CE Y0)T|_(k,i)² < S_(k,k).lower / 10^442`.
+
+Equivalently, every original full-signed fitted-probe residual pairing normalized by the physical norm of the corresponding `E_k=QF_k` has absolute upper `<10^-221`. This is a strict **full-frequency finite-probe** fact, not an integrated signed low-band estimate. It shows why the original E4 cannot be reused as a genuinely new residual witness. The result is internally exact rational on a pinned, extracted **strict subset** of native NF369, with the full original ZIP/JSON SHA verification inherited from the prior NF369 archive, not independently re-downloaded by the new CI.
+
+The new independent fifth probe and true signed point tests remain a **separate native acceptance gate**. No theorem promotion is authorized by either result.
