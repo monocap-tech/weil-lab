@@ -35,6 +35,9 @@ jobs:
           x=json.load(open('artifacts/nf376_original_fifth_quotient_signed_lowband.json'))
           assert x['parent_16_original_physical_quotient_ball_overlap']
           assert len(x['actual_original_signed_point_samples'])==10
+          assert x['q5_perp_is_explicitly_constructed_in_true_original_physical_space']
+          assert x['new_q_outside_fitted_E4_relative_norm_strict_upper']=='2e-10'
+          assert all('orthogonalized_signed_two_sign_cross_integrand_units_1e320' in row for row in x['actual_original_signed_point_samples'])
           assert x['diagnostic_is_new_selected_source'] is False
           assert x['original_lowband_integrated_signed_coupling_computed'] is False
           assert x['full_original_lowband_H_i_norm_computed'] is False
