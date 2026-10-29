@@ -1,0 +1,112 @@
+name: Weil-Lab NF392 exact original j387 polynomial bound and pole-restored native decision
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf392_original_j387_polynomial_norm_gate.py'
+      - 'scripts/local_replay/nf391_original_orthogonal_lowband_moment_gate.py'
+      - 'scripts/verify_nf390_original_j387_selected_moment.py'
+      - 'notes/provisional/NF392_ORIGINAL_J387_POLYNOMIAL_NORM_NATIVE_RECOVERY_20261029.md'
+      - '.github/workflows/nf392-original-j387-norm-and-native.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: SHA-pinned original n512,NF375,real j387 Bessel+polynomial exact-rational gate
+        run: |
+          python3 -m py_compile scripts/local_replay/nf392_original_j387_polynomial_norm_gate.py scripts/local_replay/nf391_original_orthogonal_lowband_moment_gate.py
+          python3 scripts/local_replay/nf392_original_j387_polynomial_norm_gate.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --output artifacts/NF392_original_j387_polynomial_norm_source_only.json
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          j=json.load(open('artifacts/NF392_original_j387_polynomial_norm_source_only.json'))
+          assert F(j['original_polynomial_squared_integral_exact'])==F(1288408,75)
+          assert F(j['polynomial_squared_integral_sqrt_strict_upper'])==F(1311,10)
+          assert F(j['new_original_j387_absolute_moment_discrepancy_stop_strict_ceiling'])<F(131,10**22)
+          assert j['original_nf390_native_selected_moment_result_supplied'] is False
+          assert j['fixed_j387_specific_candidate_stop'] is None
+          assert j['actual_original_full_lowband_upper_computed'] is False
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          print('NF392 exact source-only true original polynomial and two-shadow stop gate PASS; native verdict UNDECIDED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf392-original-j387-polynomial-source-only
+          path: artifacts/NF392_original_j387_polynomial_norm_source_only.json
+  original-native-selected-moment:
+    needs: original-source-only
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install exactly inherited original Arb native
+        run: pip install --only-binary=:all: python-flint==0.8.0 numpy scipy
+      - name: Download historic original complete signed J archive with exact SHA pin
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p artifacts
+          curl -fL --retry 3 --retry-delay 2 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/12776684037/zip" \
+            -o artifacts/original_selected_signed_20261028.zip
+          echo 'f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0  artifacts/original_selected_signed_20261028.zip' | sha256sum -c -
+      - name: Original source-native J242 physical projection and pole-restored SIGNED selected moment
+        run: |
+          python3 -m py_compile scripts/verify_nf390_original_j387_selected_moment.py
+          python3 -u scripts/verify_nf390_original_j387_selected_moment.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --archive artifacts/original_selected_signed_20261028.zip \
+            --output artifacts/NF392_original_j387_pole_restored_native.json
+      - name: Consume original native intervals through both exact Bessel and sharpened polynomial criterion
+        run: |
+          python3 scripts/local_replay/nf392_original_j387_polynomial_norm_gate.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --native390 artifacts/NF392_original_j387_pole_restored_native.json \
+            --output artifacts/NF392_original_native_selected_moment_decision.json
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF392_original_native_selected_moment_decision.json'))
+          n=json.load(open('artifacts/NF392_original_j387_pole_restored_native.json'))
+          assert d['original_nf390_native_selected_moment_result_supplied'] is True
+          assert d['original_nf390_native_selected_moment_outcome']!='NOT PROVIDED'
+          assert d['fixed_j387_specific_candidate_stop'] in (True,False)
+          assert n['pole_restored_for_selected_test'] is True
+          assert n['fresh_original_signed_kernel_cells']==0
+          assert n['original_physical_16_Gram_overlaps'] is True
+          assert n['W_ODD_NEG']==n['RH']=='OPEN'
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF392 native original selected moment decision:',d['fixed_j387_specific_candidate_stop'])
+          print('NF392 full odd Weil/RH remain OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf392-original-pole-restored-native-decision
+          path: |
+            artifacts/NF392_original_j387_pole_restored_native.json
+            artifacts/NF392_original_native_selected_moment_decision.json
+          if-no-files-found: ignore
