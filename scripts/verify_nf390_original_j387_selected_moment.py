@@ -156,7 +156,14 @@ def main(args):
     original_Wu4_j=signed_J+signed_F
     # IMPORTANT: Wodd=P_I m(D) P_I-2|s><s|, s is the *retained* raw
     # J pole at index 241. Since j in J, pole is NOT zero.
-    u4s=(H*D*alpha+V*f)[241,0]
+    # Exact original-source identity: u4=F*T*e4-E*(I+Y0)*T*e4,
+    # E is physically J242-perpendicular and s=J[241] belongs to J242.
+    # Hence <u4,s> = <F*T*e4,s>, avoiding cancellation of the
+    # huge raw Y0*T source coefficients solely for this pole correction.
+    u4s_direct=(V*T)[241,3]
+    u4s_reconstructed=(H*D*alpha+V*f)[241,0]
+    assert (u4s_reconstructed-u4s_direct).contains(0), 'original pole identity failed'
+    u4s=u4s_direct
     js=(H*z)[241,0]
     correction=2*u4s*js
     multiplier_moment=original_Wu4_j+correction
@@ -186,6 +193,9 @@ def main(args):
       'original_physical_16_Gram_overlaps':True,
       'original_selected_frame_sha_pass':True,
       'pole_restored_for_selected_test':True,
+      'original_selected_pole_overlap_direct_original_FT_source_interval':interval(u4s_direct),
+      'original_selected_pole_overlap_reconstructed_full_match_interval':interval(u4s_reconstructed),
+      'original_pole_overlap_source_projection_identity_verified':True,
       'original_Wodd_u4_j387_interval':interval(original_Wu4_j),
       'original_pole_correction_plus_2_u4s_js_interval':interval(correction),
       'original_multiplier_m_u4_j387_interval':interval(multiplier_moment),
