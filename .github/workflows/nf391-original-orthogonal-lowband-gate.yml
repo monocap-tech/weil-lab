@@ -1,0 +1,45 @@
+name: Weil-Lab NF391 original two-orthogonal-shadow lowband necessary gate (NOT RH)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf391_original_orthogonal_lowband_moment_gate.py'
+      - 'notes/provisional/NF391_ORIGINAL_ORTHOGONAL_TWO_SHADOW_LOWBAND_GATE_20261029.md'
+      - '.github/workflows/nf391-original-orthogonal-lowband-gate.yml'
+permissions:
+  contents: read
+jobs:
+  exact-original-source-orthogonal-bessel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Actual SHA-pinned original n512 and NF375 plus real j387 exact rational combination
+        run: |
+          python3 -m py_compile scripts/local_replay/nf391_original_orthogonal_lowband_moment_gate.py
+          python3 scripts/local_replay/nf391_original_orthogonal_lowband_moment_gate.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --output artifacts/NF391_original_orthogonal_two_shadow_gate.json
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p='artifacts/NF391_original_orthogonal_two_shadow_gate.json'
+          d=json.load(open(p))
+          assert d['original_n512_SHA256']=='9d4b07fb2ca42c14ed995ddcd69811201eacb6f13f9f795a70c4b64889e9f83b'
+          assert F(d['certified_n512_orthogonal_lowband_norm_strictly_greater_than'])==F(834,10**16)
+          assert F(d['remaining_selected_shadow_norm_upper_sufficient_for_stop'])==F(2673,10**16)
+          assert F(d['native_selected_pole_corrected_moment_discrepancy_stop_threshold_strictly_below'])<F(181,10**22)
+          assert d['original_nf390_selected_native_result_supplied'] is False
+          assert d['nf387_specific_candidate_joint_method_stopped'] is None
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF391 source-pinned combined EXACT original lowband gate PASS; selected native decision PENDING')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf391-original-orthogonal-lowband-source-gate
+          path: artifacts/NF391_original_orthogonal_two_shadow_gate.json
