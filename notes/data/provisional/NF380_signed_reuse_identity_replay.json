@@ -1,0 +1,11 @@
+{
+  "RH": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "exact_independent_block_identity_checks": 8,
+  "finite_source_algebra_model_count": 4,
+  "original_WJJ_and_WJF_recomputed": false,
+  "original_operator_domains_reviewed": false,
+  "status": "PURE_FRACTION_ARCHIVED_SIGNED_BLOCK_REUSE_IDENTITY_PASS",
+  "true_original_Weil_signed_new_pairing_computed": false,
+  "true_original_physical_J242_Gram_recomputed": false
+}
