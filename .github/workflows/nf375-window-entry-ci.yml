@@ -1,0 +1,42 @@
+name: Weil-Lab NF375 original matched low-band entry cutoffs (no low-band acceptance)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf375_cutoff_reduction.py'
+      - 'notes/data/provisional/NF375_reduced_cutoff_exact.json'
+      - 'notes/data/provisional/nf372_pr355_fields.json'
+      - 'notes/data/provisional/NF374_original_correlated_curvature_native.json'
+      - 'notes/provisional/NF375_ORIGINAL_LOWBAND_WINDOW_REDUCTION_20261028.md'
+      - '.github/workflows/nf375-window-entry-ci.yml'
+permissions:
+  contents: read
+jobs:
+  exact-window-entry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original SHA-pinned 20 Fraction cutoff/budget checks
+        run: |
+          python3 scripts/local_replay/nf375_cutoff_reduction.py \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --native notes/data/provisional/NF374_original_correlated_curvature_native.json \
+            --output "${RUNNER_TEMP}/nf375.json"
+          cmp -s "${RUNNER_TEMP}/nf375.json" notes/data/provisional/NF375_reduced_cutoff_exact.json
+      - name: Assert low-band and whole theorem remain unproved
+        run: |
+          python3 - <<'PY'
+          import json
+          obj=json.load(open('notes/data/provisional/NF375_reduced_cutoff_exact.json'))
+          assert obj['measured_original_lowband'] is False
+          assert obj['original_whole_residual_certified'] is False
+          assert obj['W_ODD_NEG']==obj['RH']=='OPEN'
+          q=json.load(open('research/obligations.json'))
+          assert q['active_obligation']=='W-ODD-NEG'
+          assert next(x for x in q['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          print('PASS scoped lower cutoff only; low-band and whole Weil/RH remain OPEN')
+          PY
