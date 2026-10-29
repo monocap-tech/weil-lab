@@ -32,6 +32,9 @@ jobs:
   original-proof-obligation-custody:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      # Historical exact Fraction replay prints >4300-digit rational integers.
+      PYTHONINTMAXSTRDIGITS: '0'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -78,7 +81,10 @@ jobs:
           assert obs["W-GLOBAL-BRIDGE"]["status"]=="open"
           assert obs["W-RH"]["status"]=="open"
           s=obs["W-ODD-NEG"]["next_action"]
-          assert "470-source" in s and "MG source-dimensional" in s
+          # Cursor evolves with the accepted NF traversal; do not require October 23 labels.
+          assert isinstance(s,str) and len(s)>80
+          assert "OPEN" in s and "RH" in s
+          assert any(v.startswith("NF") for v in obs["W-ODD-NEG"]["evidence"])
           assert F(33621,10**9)**2==F(1130371641,10**18)
           assert F(1,15000)/F(17,25000)==F(5,51)
           assert F(51,56)+F(5,56)==1
