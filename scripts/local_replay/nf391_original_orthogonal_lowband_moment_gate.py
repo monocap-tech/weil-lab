@@ -51,7 +51,7 @@ def run(p512,nf375,j387,native390=None,output=None):
     assert t['W_ODD_NEG']==t['RH']=='OPEN'
     assert j['original_rank_sha256']==RANK_SHA and j['original_nf375_source_sha256']==SOURCE_SHA
     assert j['original_nf375_git_blob_sha1']==GIT_NF375
-    assert j['scale_alpha']==str(ALPHA)
+    assert j['scalar_alpha']==str(ALPHA)
     assert len(j['coefficients_raw_source_numerators'])==242
     assert j['nonzero_raw_source_indices']==[0,2]
     assert j['endpoint_value_exact']=='0'
