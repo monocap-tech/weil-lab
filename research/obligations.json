@@ -684,7 +684,7 @@
     "NF385-ORIGINAL-ONE-RAY-ENERGY-DUAL-CEILING": {
       "kind": "CERTIFIED ORIGINAL N512 FORM-DUAL SINGLE-RAY UPPER AND METHOD STOP UNDER ORIGINAL EXTERIOR FLOOR",
       "scope": "The unchanged complete original odd exterior form has c>=mu0*L2 with mu0=49/50000, and NF370 fourth dyadic energy budget d4=49/10^23 with strong budget D=mu0*d4/4. SHA-pinned original NF380 n512 signed/physical fractions imply single observed q512_perp form-dual energy b^2/c(q,q) <= b^2/(mu0*g) < 0.0362835*d4. Hence this one ray alone cannot exhaust d4 even at the smallest permitted energy. If the full direction-four energy dual is at least d4, the remaining c-orthogonal Riesz response must be >0.9637165*d4; this is CONDITIONAL, not observed. Actual c(q,q) and full inverse uncomputed. Inherited domain/representation not independently closed. Original n513, complete lowband upper, W-ODD-NEG, even, whole Weil and RH OPEN.",
-      "pr": "NF385 stacked draft PR pending link",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/370",
       "repo_path": "notes/provisional/NF385_ORIGINAL_ONE_RAY_ENERGY_DUAL_CEILING_20261028.md",
       "verification": "Independent exact BigInt rational comparison and D=mu0*d4/4 identity PASS against original n512 native report; SHA-pinned Fraction CI committed, remote result not yet accepted. Single-ray METHOD STOP only; no whole signed-form verdict."
     },
