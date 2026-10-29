@@ -14,6 +14,18 @@ Fixed unchanged supported sine `v512=1_I sin(2π(5·512/11)x)`. Let `P` project 
 
 Hence a **single** real original signed measurement no longer suffers from fitted-shadow degeneracy, but that one witness does not obstruct the NF370 sufficient method and cannot bound the entire unseen exterior strong residual from above.
 
+## Exact information-sufficiency test BEFORE new native work
+
+The already-accepted NF380 **complete original one-witness** squared dual contribution `d1=|b1|²/g1` satisfies the **independent exact Fraction** bracket `D/7<d1<3D/20`, where `D=2401/(2×10^28)` is the original NF370 fourth squared-residual budget. For ANY two physically independent exterior directions, the exact Gram-Schur identity (not a heuristic sum of separately measured witness squares) is
+
+`d_joint = d1 + |b2-(c/g1)b1|²/(g2-c²/g1)`,
+
+where `c=<q1,q2>` and `g_i=||q_i||²`. To **obstruct** the fixed NF370 sufficient small-residual method, the genuinely *new*, normalized second response therefore must exceed
+
+`|b2-(c/g1)b1|/sqrt(g2-c²/g1) > sqrt(D-d1) > sqrt(17D/20)`.
+
+The exact numeric necessary threshold is approximately **3.19×10^-13**, as independently reproduced in `scripts/local_replay/nf381_exact_remaining_information_budget.py` and the frozen Fraction report. Hence a second witness whose new *orthogonalized* normalized signal is merely of the same order as the certified n512 signal will probably not, by itself, cross the no-go threshold. This is an **acceptance feasibility filter**; it does not assert that n513 is small or large, and **must never be substituted for its actual new original signed pairing**. If the n513 native result is small, STOP the arbitrary harmonic-pair extension rather than expand a high-frequency ladder; the missing information is a source-adapted inverse/strong-action orientation.
+
 ## The minimal new information: one nearby second signed orientation and a joint Gram
 
 Do **not** rerun 30,371 archived selected/mixed signed cells. Reuse exactly the archived physical Cholesky/Householder transformed signed `WJJ`, 968 raw mixed cells `WJF`, original `WFF`, the original PR350/PR355/NF369/370 data and the NF380 original `q512` certificate. The **only new original signed kernel cells** are for the fixed supported diagnostic `v513=1_I sin(2π(5·513/11)x)`: 242 selected–v513 and 33 original sine/pole basis–v513 complete signed arch/seven-prime/pole pairings. Identical original analytic operator/form and domain assumptions apply; the diagnostic is *not* admitted as a new selected source.
