@@ -1,0 +1,91 @@
+name: Weil-Lab NF389 verified original n513 permanent research custody
+on:
+  push:
+    branches:
+      - research/nf389-native513-permanent-and-joint-refinement
+    paths:
+      - .github/workflows/nf389-original-native-permanent-custody.yml
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: nf389-original-native-archive
+  cancel-in-progress: false
+jobs:
+  sha-pinned-original-native-archive:
+    if: github.repository == 'monocap-tech/weil-lab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf389-native513-permanent-and-joint-refinement
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve original NF381 certified native signed artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nf381-original-two-direction-signed-result
+          run-id: 40820718599
+          repository: monocap-tech/weil-lab
+          github-token: {{ github.token }}
+          path: artifacts/nf389-original-native
+      - name: Verify original native SHA and preserve identical bytes
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,pathlib
+          folder=pathlib.Path('artifacts/nf389-original-native')
+          files=[
+            ('NF381_original_n513_signed_native.json','e0aaa0abb29c8ec75b3524ec6197c12235a7fc7fa66d76c77c4643c2ff27bffe','NF389_original_n513_signed_native.json'),
+            ('NF381_original_two_direction_joint_exact.json','fad492046e351634a0ecf520a5a37d67a7e067e1a3518aef031418107a49748b','NF389_original_joint_lower_exact_parent.json')
+          ]
+          dest=pathlib.Path('notes/data/provisional')
+          for name,sha,target in files:
+            raw=(folder/name).read_bytes()
+            assert hashlib.sha256(raw).hexdigest()==sha,('ORIGINAL SHA MISMATCH',name)
+            obj=json.loads(raw)
+            assert obj['W_ODD_NEG']==obj['RH']=='OPEN'
+            if name.endswith('signed_native.json'):
+              assert obj['unfitted_n']==513 and obj['original_physical_16_Gram_overlaps'] is True
+              assert obj['original_signed_32_CE_BP_overlaps'] is True
+              assert obj['actual_new_signed_J_v_cells']==242 and obj['actual_new_signed_basis_v_cells']==33
+              assert obj['original_WJJ_WJF_archived_cells_reused']==30371
+            path=dest/target
+            if path.exists():
+              assert path.read_bytes()==raw,'Refuse to rewrite an existing historical file'
+            else:
+              path.write_bytes(raw)
+            print('NF389 original-source native archive preserved',target,sha)
+          PY
+      - name: Exact original n512+n513 Gram correlation and sharpened finite upper
+        run: |
+          python3 scripts/local_replay/nf389_native513_sharper_two_ray_upper.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --original-513 notes/data/provisional/NF389_original_n513_signed_native.json \
+            --output notes/data/provisional/NF389_original_two_ray_sharper_upper_exact.json
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p='notes/data/provisional/NF389_original_two_ray_sharper_upper_exact.json'
+          j=json.load(open(p))
+          assert F(j['certified_whole_two_ray_fraction_strict_upper'])==F(307,2000)
+          assert F(j['exact_young_inequality_two_ray_fraction_upper'])==F(13809111,89984000)
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          assert j['full_original_exterior_strong_residual_upper_computed'] is False
+          print('NF389 exact two-ray upper PASS; full original strong residual OPEN')
+          PY
+      - name: Commit only additive verified research source data on this branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notes/data/provisional/NF389_original_n513_signed_native.json \
+                  notes/data/provisional/NF389_original_joint_lower_exact_parent.json \
+                  notes/data/provisional/NF389_original_two_ray_sharper_upper_exact.json
+          if git diff --cached --quiet; then
+            echo 'NF389 original native already byte-for-byte archived; nothing to commit'
+          else
+            git commit -m 'NF389 permanently archive original n513 native and exact verified two-ray replay'
+            git push origin HEAD:refs/heads/research/nf389-native513-permanent-and-joint-refinement
+          fi
