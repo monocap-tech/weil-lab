@@ -97,7 +97,7 @@ def main(args):
     for col in range(4):
         term=[]
         for t in range(33):
-            term.extend((p,k,f,v*phys.a(F(C[t,col]))) for p,k,f,v in base[t])
+            term.extend((p,k,f,v*C[t,col]) for p,k,f,v in base[t])
         Fs.append(term)
     print('NF390 reconstruct original physical 242 Gram and four matched source columns',flush=True)
     K=phys.Integrals()
