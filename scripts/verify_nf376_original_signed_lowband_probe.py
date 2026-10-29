@@ -81,9 +81,13 @@ def main():
     # Ensure fifth physical quotient is genuinely outside the original four-E plane.
     S4=arb_mat([[S[i,j] for j in range(4)] for i in range(4)])
     cross=arb_mat([[S[i,4]] for i in range(4)])
-    schur=S[4,4]-(cross.transpose()*S4.solve(cross,algorithm='lu'))[0,0]
+    eta=S4.solve(cross,algorithm='lu')
+    schur=S[4,4]-(cross.transpose()*eta)[0,0]
     assert schur.lower()>arb(0),'fifth quotient independence unresolved'
-    print('NF376 one extra Q witness independent of old E4: PASS',flush=True)
+    # Native outward conditioning observation: most of q5 is already in the
+    # FITTED E4 plane, so test the Schur-orthogonal remainder, not raw q5.
+    assert schur.upper()*arb(10**20) < 4*S[4,4].lower(), 'near-fitted ratio not established'
+    print('NF376 independent q5 and tiny outside-E4 ratio: PASS',flush=True)
     Y0=parent['nf369_quotient_response_exact_dyadic_coefficients']
     M=arb_mat([[dyad(Y0[i][j])+int(i==j) for j in range(4)] for i in range(4)])
     T=arb_mat([[m.a(F(v,2**20)) for v in row] for row in TNUM])
@@ -103,15 +107,21 @@ def main():
         u=sum(((t[j]-coeff[j])*bF[j] for j in range(4)),arb(0))
         u+=sum((bJ[i]*sum((X[i,j]*coeff[j] for j in range(4)),arb(0)) for i in range(242)),arb(0))
         q=b5-sum((X[i,4]*bJ[i] for i in range(242)),arb(0))
+        e=[bF[j]-sum((X[i,j]*bJ[i] for i in range(242)),arb(0)) for j in range(4)]
+        q_perp=q-sum((eta[j,0]*e[j] for j in range(4)),arb(0))
         ml,mh=signed_m_at(xi)
         # Finite exact signed multiplier interval at this genuine rational frequency.
         mlb=m.a(ml);mhb=m.a(mh)
         point=2*u*q
         signed=point*arb(mlb, mhb-mlb)
+        signed_perp=2*u*q_perp*arb(mlb,mhb-mlb)
         results.append({'frequency':str(xi),'signed_m_interval':[str(ml),str(mh)],
            'original_u4_Fourier_sine_amplitude_units_1e320':interval_units(u),
            'new_Qwitness_Fourier_sine_amplitude_units_1e320':interval_units(q),
            'original_signed_two_sign_cross_integrand_units_1e320':interval_units(signed),
+           'orthogonalized_q5_sine_amplitude_units_1e320':interval_units(q_perp),
+           'orthogonalized_signed_two_sign_cross_integrand_units_1e320':interval_units(signed_perp),
+           'orthogonalized_cross_integrand_strict_sign':('positive' if signed_perp.lower()>0 else 'negative' if signed_perp.upper()<0 else 'unresolved'),
            'signed_cross_integrand_strict_sign':('positive' if signed.lower()>0 else 'negative' if signed.upper()<0 else 'unresolved')})
         print('original signed lowband knot',str(xi),'signed cross',results[-1]['signed_cross_integrand_strict_sign'],flush=True)
     out={'status':'CERTIFIED_ORIGINAL_QWITNESS_AND_SIGNED_LOWBAND_POINT_SAMPLES_ONLY',
@@ -125,6 +135,8 @@ def main():
         'physical_stationarity_residual_upper':str(statmax),
         'new_q_squared_norm_units_1e320':interval_units(S[4,4]),
         'new_q_mod_E4_squared_norm_units_1e320':interval_units(schur),
+        'new_q_outside_fitted_E4_relative_norm_strict_upper':'2e-10',
+        'q5_perp_is_explicitly_constructed_in_true_original_physical_space':True,
         'actual_original_signed_point_samples':results,
         'original_lowband_integrated_signed_coupling_computed':False,
         'j_i_in_J242_constructed_for_lowband':False,
@@ -133,6 +145,6 @@ def main():
         'W_ODD_NEG':'OPEN','RH':'OPEN','elapsed_seconds':time.monotonic()-start}
     Path(args.output).parent.mkdir(parents=True,exist_ok=True)
     Path(args.output).write_text(json.dumps(out,indent=2)+'\n')
-    print('NF376 native physical outside-E witness and signed points PASS; integrated lowband OPEN',flush=True)
+    print('NF376 native physical orthogonalized outside-E witness and signed points PASS; integrated lowband OPEN',flush=True)
 
 if __name__=='__main__':main()
