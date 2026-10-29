@@ -1,0 +1,25 @@
+{
+  "status": "CERTIFIED_FINITE_SHADOW_INFORMATION_GATE_NOT_WEIL_OPERATOR_ACCEPTANCE",
+  "native_report_sha256": "da7f72f3e68005d1afe2225dffd3379c3b21cd1dfd813744b0f227130274f515",
+  "original_native_actions_zip_sha256": "05b2e0309d59dda9916808487e0bf6cb9b5f3d5010cc4d35caa3b7a576e553b9",
+  "native_github_actions_run": "40793727503",
+  "old_fitted_four_parent_json_sha256": "1b22cd77dd555749b8dcc41f92ddd91d982f2eca23ebf3a7638e512147b39d18",
+  "physical_q5_norm_sq_lower_strict_positive": true,
+  "physical_out_of_fitted_E4_norm_sq_lower_strict_positive": true,
+  "normalized_out_of_E4_mass_ratio_interval_exact": [
+    "20937926993097170670776809727808470716340522341602633567800209303688250012330349291787220380189117763270535258986249901974658866937301642640161/741364618496442146159671320335230747842100604646050441322579383843372925498553487398359272332877898498803337060265056585066475906498930415941594886206329433597989",
+    "41875853986194341341553619455616941432681044683205267135600418607376500024660698583574440760378235526541070517972499803949317733874603285280323/1482729236992884292319342640670461495684201209292100882645158767686745850997106974796718544665755796997606674120530113170132951812997860831883189772412658867195977"
+  ],
+  "normalized_out_of_E4_mass_ratio_gt": "28/1000000000000000000000",
+  "normalized_out_of_E4_mass_ratio_lt": "3/100000000000000000000",
+  "normalized_out_of_E4_norm_ratio_lt": "2/10000000000",
+  "signed_knot_positive_count": 2,
+  "signed_knot_negative_count": 8,
+  "positive_independence_does_not_certify_residual_obstruction": true,
+  "signed_lowband_integral": "OPEN",
+  "lowband_H4_residual": "OPEN",
+  "whole_infinite_schur": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_gate": "Require signed interval integral of m*uhat*conj(qhat) against true independent exterior q (or q_perp); compare > h4*norm(q) for necessary-condition STOP. Use verified alignment ratio before choosing additional probes."
+}

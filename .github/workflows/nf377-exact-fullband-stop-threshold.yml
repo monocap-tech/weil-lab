@@ -1,0 +1,44 @@
+name: Weil-Lab NF377 exact annular fullband decision threshold (conditional arithmetic only)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf377_exact_annular_fullband_stop_threshold.py'
+      - 'notes/data/provisional/NF375_reduced_cutoff_exact.json'
+      - '.github/workflows/nf377-exact-fullband-stop-threshold.yml'
+permissions:
+  contents: read
+jobs:
+  exact-fullband-threshold:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify conditional full-frequency vs lowband gate with exact Fractions
+        run: |
+          python3 -m py_compile scripts/local_replay/nf377_exact_annular_fullband_stop_threshold.py
+          python3 scripts/local_replay/nf377_exact_annular_fullband_stop_threshold.py \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --report artifacts/nf377_fullband_stop_threshold.json
+          python3 - <<'PY'
+          import json
+          x=json.load(open('artifacts/nf377_fullband_stop_threshold.json'))
+          assert x['direction_four_lowband_sufficient_target']=='3/20000000000000'
+          assert x['strict_easy_normalized_upper_to_threshold']=='3313/10000000000000000'
+          assert x['fullband_identity_with_original_signbox_pole_domain_proved'] is False
+          assert x['selected_annulus_native_certified'] is False
+          assert x['full_frequency_signed_pairing_measured'] is False
+          assert x['original_lowband_signed_dual_measured'] is False
+          assert x['NF375_method_stopped'] is False
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          print('PASS conditional exact arithmetic; NO original signed measurement')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf377-exact-conditional-fullband-stop-threshold
+          path: artifacts/nf377_fullband_stop_threshold.json
+          if-no-files-found: ignore

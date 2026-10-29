@@ -1,0 +1,37 @@
+name: Weil-Lab NF376 original fifth shadow information-sufficiency screen (NOT Weil acceptance)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf376_fifth_witness_information_gate.py'
+      - 'notes/data/provisional/NF376_native_original_fifth_quotient_signed_lowband.json'
+      - 'notes/data/provisional/NF376_fifth_witness_information_gate.json'
+      - 'notes/provisional/NF376_ORIGINAL_FIFTH_SHADOW_IDENTIFIABILITY_AUDIT_20261028.md'
+      - '.github/workflows/nf376-information-sufficiency-replay.yml'
+permissions:
+  contents: read
+jobs:
+  verify-exact-native-shadow-ratio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact independent native SHA and strict relative J242/E4 quotient ratio check
+        run: |
+          python3 scripts/local_replay/nf376_fifth_witness_information_gate.py \
+            --native notes/data/provisional/NF376_native_original_fifth_quotient_signed_lowband.json \
+            --output "${RUNNER_TEMP}/nf376_shadow_ratio.json"
+          cmp -s "${RUNNER_TEMP}/nf376_shadow_ratio.json" notes/data/provisional/NF376_fifth_witness_information_gate.json
+      - name: Fail closed on actual signed continuum and theorem status
+        run: |
+          python3 - <<'PY'
+          import json
+          x=json.load(open('notes/data/provisional/NF376_fifth_witness_information_gate.json'))
+          assert x['lowband_H4_residual']==x['whole_infinite_schur']==x['RH']=='OPEN'
+          assert x['signed_lowband_integral']=='OPEN'
+          assert x['normalized_out_of_E4_norm_ratio_lt']=='2/10000000000'
+          print('PASS original native out-of-fit ratio ONLY; no lowband residual theorem')
+          PY

@@ -1,0 +1,37 @@
+name: Weil-Lab NF376 original fitted-four signed cancellation audit (NOT lowband acceptance)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf376_four_fitted_exterior_cancellation_replay.py'
+      - 'notes/data/provisional/nf376_original_four_probe_signed_slices.json'
+      - 'notes/data/provisional/NF376_fitted_four_cancel_exact.json'
+      - '.github/workflows/nf376-fitted-four-residual-replay.yml'
+permissions:
+  contents: read
+jobs:
+  original-four-fitted-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact SHA-pinned NF369 dyadic four-probe cancellation (no floating point)
+        run: |
+          python3 scripts/local_replay/nf376_four_fitted_exterior_cancellation_replay.py \
+            --slices notes/data/provisional/nf376_original_four_probe_signed_slices.json \
+            --report "${RUNNER_TEMP}/NF376_fitted_four_cancel_exact.json"
+          cmp -s "${RUNNER_TEMP}/NF376_fitted_four_cancel_exact.json" notes/data/provisional/NF376_fitted_four_cancel_exact.json
+      - name: Scope STOP is only on reusing fitted four probes
+        run: |
+          python3 - <<'PY'
+          import json
+          v=json.load(open('notes/data/provisional/NF376_fitted_four_cancel_exact.json'))
+          assert v['strict_all_16_original_signed_fitted_pairings_normalized_less_than']=='1e-221'
+          assert not v['lowband_continuum_integrated']
+          assert not v['full_lowband_norm_certified']
+          assert v['W_ODD_NEG']==v['RH']=='OPEN'
+          print('PASS inherited four fitted E probes cancel by construction; new witness still needed')
+          PY

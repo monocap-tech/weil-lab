@@ -1,0 +1,37 @@
+name: Weil-Lab NF376 original fifth exterior exact source-frequency independence (no lowband integration)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf376_exact_fifth_exterior_independence.py'
+      - 'notes/data/provisional/NF376_fifth_exterior_independence_exact.json'
+      - '.github/workflows/nf376-fifth-exterior-independence.yml'
+permissions:
+  contents: read
+jobs:
+  independence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify original independent Q witness source frequencies (exact rational)
+        run: |
+          python3 scripts/local_replay/nf376_exact_fifth_exterior_independence.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --report "${RUNNER_TEMP}/nf376-independence.json"
+          cmp -s "${RUNNER_TEMP}/nf376-independence.json" notes/data/provisional/NF376_fifth_exterior_independence_exact.json
+      - name: Assert mathematical scope
+        run: |
+          python3 - <<'PY'
+          import json
+          a=json.load(open('notes/data/provisional/NF376_fifth_exterior_independence_exact.json'))
+          assert a['frequency_distinct_from_all_selected_J_and_original_F4']
+          assert not a['actual_signed_lowband_integral_computed']
+          assert not a['actual_lowband_H_i_norm_computed']
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          print('PASS new Q-orientation exact; lowband integral/Schur OPEN')
+          PY

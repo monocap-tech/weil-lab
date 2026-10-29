@@ -1,0 +1,53 @@
+name: Weil-Lab NF377 original annular signbox J242+E4 physical witness (no signed integral)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/verify_nf377_original_annular_outfit_witness.py'
+      - '.github/workflows/nf377-original-annular-exterior-witness.yml'
+permissions:
+  contents: read
+jobs:
+  verify-annular-physical-witness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install inherited 4096-bit original Arb interface
+        run: "pip install --only-binary=:all: python-flint==0.8.0 numpy scipy"
+      - name: Certify one explicit original physical J242+E4-out-of-fit annular witness
+        run: |
+          python3 -m py_compile scripts/verify_nf377_original_annular_outfit_witness.py
+          python3 -u scripts/verify_nf377_original_annular_outfit_witness.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --bits 4096 \
+            --output artifacts/nf377_original_annular_physical_witness.json
+      - name: Enforce scope boundary and no theorem promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          x=json.load(open('artifacts/nf377_original_annular_physical_witness.json'))
+          assert x['original_J242_count']==242 and x['fitted_four_count']==4
+          assert x['total_annuli']==492
+          assert 1<=x['selected_annulus_index']<=492
+          assert x['certified_outfit_squared_norm_fraction_strict_lower']=='49/100'
+          assert x['frame_Gram_16_parent_ball_overlap']
+          assert len(x['signed_frequency_point_samples'])==6
+          assert x['new_selected_source'] is False
+          assert x['actual_signed_lowband_continuum_integral_computed'] is False
+          assert x['actual_signed_full_frequency_pairing_computed'] is False
+          assert x['signed_exterior_Schur_upper_computed'] is False
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          print('NF377 original physical 492-candidate search scoped PASS; integral and theorem OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf377-original-annular-outfit-physical-witness
+          path: artifacts/nf377_original_annular_physical_witness.json
+          if-no-files-found: ignore
