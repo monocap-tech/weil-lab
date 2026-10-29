@@ -43,11 +43,11 @@ def run(nf369,j387,output=None):
         for k in range(4):
             n,e=Y[i][k]
             f-=F(int(n))*F(2)**int(e)*F(T4[k],2**20)
-        assert F(10**92)<abs(f)<F(10**93)
+        assert F(2*10**92)<abs(f)<F(10**93)
         v.append(f)
     # This is a raw-coordinate dynamic-range observation, NOT a proved
     # norm or signed-moment interval for the actual physically cancelled u4.
-    ratio_floor=F(10**92)/F(131,10**22)   # > 10^112 (raw/diagnostic)
+    ratio_floor=F(2*10**92)/F(131,10**22)   # > 10^112 (raw/diagnostic)
     assert ratio_floor>10**112
     out={
       'standing':'NF393 EXACT ORIGINAL NF369 RAW Y0T DYNAMIC RANGE AND CANCELLATION-FREE SELECTED ODD POLE IDENTITY',
@@ -58,7 +58,7 @@ def run(nf369,j387,output=None):
       'original_T_fourth_column_numerators':list(T4),
       'original_T_column_common_dyadic_denominator_power':20,
       'original_minus_Y0_T_fourth_column_exact_fraction':[str(a) for a in v],
-      'each_absolute_raw_F_coefficient_in_open_interval':['10^92','10^93'],
+      'each_absolute_raw_F_coefficient_in_open_interval':['2*10^92','10^93'],
       'raw_source_coordinate_to_candidate_moment_threshold_decimal_orders_exceed':112,
       'this_is_only_a_coordinate_cancellation_precision_diagnostic':True,
       'original_pole_source_identity':'<u4,s>=<F*T*e4,s>; u4=F*T*e4 - E*(I+Y0)*T*e4; E perpendicular to J242 and s in J242',
@@ -74,7 +74,7 @@ def run(nf369,j387,output=None):
     if output:
         p=Path(output);p.parent.mkdir(parents=True,exist_ok=True)
         p.write_text(json.dumps(out,indent=2)+'\n')
-    print('NF393 original four raw -Y0T fourth column magnitudes: all >1e92 and <1e93')
+    print('NF393 original four raw -Y0T fourth column magnitudes: all >2e92 and <1e93')
     print('NF393 direct pole identity structural PASS; native selected moment pending')
     return out
 
