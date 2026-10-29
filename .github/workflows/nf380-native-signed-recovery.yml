@@ -1,0 +1,38 @@
+name: Weil-Lab NF380 recovered original native signed-dual replay (NOT full Weil acceptance)
+on:
+  pull_request:
+    paths:
+      - 'notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json'
+      - 'notes/data/provisional/NF380_native_signed_response_recovery.json'
+      - 'scripts/local_replay/nf380_native_signed_response_recovery.py'
+      - '.github/workflows/nf380-native-signed-recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-recovered-one-witness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Replay exactly pinned original native witness with exact rational bounds
+        run: |
+          python3 -m py_compile scripts/local_replay/nf380_native_signed_response_recovery.py
+          python3 scripts/local_replay/nf380_native_signed_response_recovery.py \
+            --native notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --output /tmp/NF380_native_signed_response_recovery.json
+          cmp /tmp/NF380_native_signed_response_recovery.json notes/data/provisional/NF380_native_signed_response_recovery.json
+      - name: Preserve exact no-method-obstruction and open theorem scope
+        run: |
+          python3 - <<'PY'
+          import json
+          with open('notes/data/provisional/NF380_native_signed_response_recovery.json') as f: a=json.load(f)
+          assert a['actual_fixed_direction_four_method_obstruction_by_this_witness'] is False
+          assert a['source_16_physical_32_complete_signed_overlap_pass'] is True
+          assert a['whole_original_exterior_strong_residual_upper_certified'] is False
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          print('PASS recovered original native signed datum; no method obstruction; RH OPEN')
+          PY

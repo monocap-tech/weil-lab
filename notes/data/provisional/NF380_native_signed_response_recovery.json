@@ -1,0 +1,19 @@
+{
+  "standing": "INDEPENDENT EXACT FRACTION REPLAY OF ORIGINAL NF380 NATIVE ONE-WITNESS RESPONSE",
+  "source_native_json_sha256": "9d4b07fb2ca42c14ed995ddcd69811201eacb6f13f9f795a70c4b64889e9f83b",
+  "source_original_action_artifact_sha256": "a22ebb68982d783d88b22c3d18f3309f725d4840b2cb645ea90c5fc0a87a1eed",
+  "original_selected_count": 242,
+  "original_unfitted_witness_n": 512,
+  "actual_original_signed_source_orientations": 1,
+  "source_16_physical_32_complete_signed_overlap_pass": true,
+  "signed_coupling_strictly_positive": true,
+  "physical_outside_fitted_four_relative_mass_strictly_above_99_percent": true,
+  "normalized_squared_response_as_fraction_of_budget_strictly_above_1over7": true,
+  "normalized_squared_response_as_fraction_of_budget_strictly_below_3over20": true,
+  "actual_fixed_direction_four_method_obstruction_by_this_witness": false,
+  "original_signed_lowband_integral_computed": false,
+  "whole_original_exterior_strong_residual_upper_certified": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "checks": "parent SHA, frame/source/archive, original 16+32 checks, fixed n512 and 275 new signed cells, actual physical norms, actual signed interval, dual lower/upper and unchanged NF370 residual budget"
+}

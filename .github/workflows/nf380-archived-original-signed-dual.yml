@@ -1,0 +1,82 @@
+name: Weil-Lab NF380 archival original signed-dual reuse (NEW kernel ONLY, not RH)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/verify_nf380_original_archived_signed_dual.py'
+      - 'scripts/local_replay/nf380_original_archive_preflight.py'
+      - 'scripts/local_replay/nf380_signed_reuse_identity_replay.py'
+      - 'notes/provisional/NF380_ARCHIVED_ORIGINAL_SIGNED_RESPONSE_REUSE_20261028.md'
+      - '.github/workflows/nf380-archived-original-signed-dual.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-new-signed-mixed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned original analytic native dependencies
+        run: "pip install --only-binary=:all: python-flint==0.8.0 numpy scipy"
+      - name: Retrieve unchanged historic GitHub Actions original-signed archive; fail closed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p artifacts
+          curl -fL --retry 3 --retry-delay 2 \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/12776684037/zip" \
+            -o artifacts/original_selected_signed_20261028.zip
+          echo 'f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0  artifacts/original_selected_signed_20261028.zip' | sha256sum -c -
+      - name: Replay independently original archive custody and exact block identity
+        run: |
+          python3 scripts/local_replay/nf380_original_archive_preflight.py \
+            --archive artifacts/original_selected_signed_20261028.zip \
+            --output artifacts/NF380_original_archive_preflight.json
+          diff -u notes/data/provisional/NF380_original_archive_preflight.json artifacts/NF380_original_archive_preflight.json
+          python3 scripts/local_replay/nf380_signed_reuse_identity_replay.py \
+            --output artifacts/NF380_signed_reuse_identity_replay.json
+          diff -u notes/data/provisional/NF380_signed_reuse_identity_replay.json artifacts/NF380_signed_reuse_identity_replay.json
+      - name: Native original physical J242 and 275 genuinely NEW signed mixed cells
+        run: |
+          python3 -m py_compile scripts/verify_nf380_original_archived_signed_dual.py
+          python3 -u scripts/verify_nf380_original_archived_signed_dual.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --signed-slice notes/data/provisional/nf376_original_four_probe_signed_slices.json \
+            --archive artifacts/original_selected_signed_20261028.zip \
+            --output artifacts/NF380_original_archived_unfitted_signed_dual_native.json
+      - name: Distinguish full signed witness from physical candidate method STOP
+        run: |
+          python3 - <<'PY'
+          import json
+          x=json.load(open('artifacts/NF380_original_archived_unfitted_signed_dual_native.json'))
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          if x['standing'].startswith('NF380 ORIGINAL'):
+              assert x['original_WJJ_WJF_archived_cells_reused']==30371
+              assert x['original_signed_32_CE_BP_overlaps'] is True
+              assert x['actual_new_signed_J_v_cells']==242
+              assert x['actual_new_signed_basis_v_cells']==33
+              assert x['original_lowband_integral_computed'] is False
+              assert x['entire_exterior_inverse_computed'] is False
+          else:
+              assert x['standing']=='NF380_N512_ORIGINAL_PHYSICAL_CANDIDATE_METHOD_STOP'
+              assert x['new_original_signed_coupling_computed'] is False
+          print('NF380 strict status gate PASS: full original new dual or n512 candidate-only STOP; RH OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf380-original-archived-signed-response
+          path: |
+            artifacts/NF380_original_archive_preflight.json
+            artifacts/NF380_signed_reuse_identity_replay.json
+            artifacts/NF380_original_archived_unfitted_signed_dual_native.json
+          if-no-files-found: ignore
