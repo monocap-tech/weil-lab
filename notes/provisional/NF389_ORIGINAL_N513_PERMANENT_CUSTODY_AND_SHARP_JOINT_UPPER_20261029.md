@@ -41,3 +41,16 @@ The complete 512/513-only obstruction test was stopped already in NF388; NF389 s
 Input `NF389_original_n513_signed_native.json` is populated only after the archive workflow has retrieved and SHA-verified the byte-identical original Actions native. No fabricated reconstruction is allowed.
 
 **Previous NF388:** original n513 native PASS, joint full 2D upper <0.155D; external artifact only. **Current NF389:** sharper genuine original-native 2D upper <0.1535D and a pinned permanent custody workflow. **Next:** the real original NF387 dyadic j two-coordinate signed low-frequency **mismatch** integral or source-adapted physical J242 subtraction upper. If its nonnegative full-line mismatch is too large, issue a scoped sparse-candidate METHOD STOP. Do not produce further generic sine witness scans. Whole original exterior residual upper, full inverse, general analytic/operator domain attachment, other 238 selected directions, even, whole Weil and RH remain OPEN.
+
+
+## Post-workflow original source custody reconciliation (confirmed)
+
+The branch-only NF389 archive workflow **wrote all three native/report files to the research branch**. A fresh authenticated GitHub file retrieval independently confirmed:
+
+| Permanent branch path | Git blob SHA1 | Source standing |
+| --- | --- | --- |
+| `notes/data/provisional/NF389_original_n513_signed_native.json` | `c71c0dca54e5e9e0ab753485a6c6aa9dd38d4f8a` | **Byte-for-byte identical original n513 native**; SHA256 `e0aaa0abb29c8ec75b3524ec6197c12235a7fc7fa66d76c77c4643c2ff27bffe` |
+| `notes/data/provisional/NF389_original_joint_lower_exact_parent.json` | `8fb2c87dabbec96529e73207169a981e47b02753` | Byte-for-byte identical original NF381 exact rational parent; SHA256 `fad492046e351634a0ecf520a5a37d67a7e067e1a3518aef031418107a49748b` |
+| `notes/data/provisional/NF389_original_two_ray_sharper_upper_exact.json` | `704a1ae7df0c4b0d598f1e48730d86f4ac211473` | Derived source-hashed exact rational replay, `d12/D<307/2000`; `W_ODD_NEG=RH=OPEN` |
+
+The original ZIP's two member Git blob hashes were computed independently from the downloaded SHA-verified original archive and **match the new GitHub objects exactly**, which establishes byte identity, not merely metadata agreement. No old source or historical 49-file file was overwritten. This is permanent custody **on the NF389 draft research branch only**, NOT a merge into `main`. The archive commit's specific GitHub Actions overall status should be treated separately from verifying the three actual resulting files; a source-hash match and exact derived report have both been inspected.
