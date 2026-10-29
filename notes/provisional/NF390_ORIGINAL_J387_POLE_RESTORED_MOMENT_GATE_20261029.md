@@ -34,6 +34,20 @@ then **the fixed NF387 candidate h is mathematically excluded as a witness of NF
 
 Conversely if (2) cannot be proved, the single moment is inconclusive: no low-band upper follows, and a more complete signed-frequency estimate or a different selected trial may be required. This is a predeclared one-moment acceptance rule, not a scan or fabricated numerical closure.
 
+## Exact original source-only sensitivity (independent of queued native arithmetic)
+
+For the **actual** original frozen dyadic j387 (not a synthetic candidate), the exact support identity `100B²=121`, `|121-100x²|<=121`, `|sin|<=1`, and rational `2B=11/5<9/4` give
+
+`||j387||_L2(I) < 121*|alpha|*(3/2) = (363/2)*(88873/2^48) ≈ 5.7306868584e-8.`
+
+Using the **actual SHA-pinned NF375 original direction-four** highband upper and tau4=2.8e-13, exact Fraction arithmetic proves
+
+`(tau4+H4(2^24))*||j387|| < (tau4+H4(2^24))*(363/2)*88873/2^48 < 19/10^21 = 1.9e-20.`
+
+The source-only exact rational preflight uses original NF387 candidate Git blob `d705ae312be5324bff64f3a9540e30e8b8bd34dc` and original NF375 Git blob `03c709571046d3f09307614aaded9749f5a15ba1`, with no signed kernel or native Arb required. The strict rational comparison was also independently checked against the actual GitHub source endpoints.
+
+**Practical test:** if an original pole-corrected signed-selected moment interval certifies `|<m(D)u4,j387>-||j387||²|>1.9e-20`, the fixed j387 **MUST FAIL** the original NF375 physical lowband acceptance test. Conversely an interval falling below this ceiling does not certify lowband success or prove candidate optimality; the actual Fourier mismatch/infinite complement would still need work. This source-only threshold is a real verified diagnostic, but **no original selected moment has yet been accepted**.
+
 ## Original authentic signed native implementation
 
 The NF390 validator `scripts/verify_nf390_original_j387_selected_moment.py` reconstructs at 4096-bit Arb the **unchanged** original physical H=<J,J>, V=<J,F>, X=H^-1V, original rank SHA256 `9b9820a0163e5e8bf08dd1c2525c757ff67214b49a40cb093d00bc611c9ff9e2`, original PR355 source SHA256 `abd37707d585dcd54b040f1ae865a7430a9c7cba85df31131661b2e72e560770`, NF369 frozen source SHA256, and all 16 original NF369 physical quotient Gram overlap identities. It rebuilds the original dyadic physical frame `D` and demands exact original historical SHA `18ac01bba4de7ec432e419db5ed990fbfabad91c10cbcf2f61cf5666e36b430e`.
