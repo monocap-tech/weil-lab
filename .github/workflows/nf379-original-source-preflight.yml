@@ -1,0 +1,39 @@
+name: Weil-Lab NF379 exact original source and cutoff preflight (NOT native signed result)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf379_original_source_preflight.py'
+      - 'notes/data/provisional/NF379_original_source_preflight.json'
+      - '.github/workflows/nf379-original-source-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  exact-original-source-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reproduce exact SHA-pinned original source and NF375 budget algebra
+        run: |
+          python3 scripts/local_replay/nf379_original_source_preflight.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --output artifacts/NF379_original_source_preflight.json
+          cmp notes/data/provisional/NF379_original_source_preflight.json \
+              artifacts/NF379_original_source_preflight.json
+      - name: No native pairing or Weil acceptance in exact input preflight
+        run: |
+          python3 - <<'PY'
+          import json
+          z=json.load(open('artifacts/NF379_original_source_preflight.json'))
+          assert z['native_signed_pairing_computed'] is False
+          assert z['native_out_of_fit_ratio_computed'] is False
+          assert z['W_ODD_NEG']==z['RH']=='OPEN'
+          print('PASS original source and dyadic identity only')
+          PY
