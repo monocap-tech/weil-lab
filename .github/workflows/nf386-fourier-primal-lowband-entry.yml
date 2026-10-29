@@ -1,0 +1,40 @@
+name: Weil-Lab NF386 exact Fourier-primal entry checks (NOT lowband upper)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf386_original_fourier_primal_lowband_entry.py'
+      - 'notes/provisional/NF386_ORIGINAL_FOURIER_PRIMAL_LOWBAND_UPPER_ENTRY_20261028.md'
+      - '.github/workflows/nf386-fourier-primal-lowband-entry.yml'
+permissions:
+  contents: read
+jobs:
+  exact-sufficient-entry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Actual NF375 source-pin plus abstract exact Fraction inequalities
+        run: |
+          python3 -m py_compile scripts/local_replay/nf386_original_fourier_primal_lowband_entry.py
+          python3 scripts/local_replay/nf386_original_fourier_primal_lowband_entry.py \
+            --self-test \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --output artifacts/NF386_original_fourier_primal_entry.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('artifacts/NF386_original_fourier_primal_entry.json'))
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          assert len(d['full_four_direction_NF375_acceptance_checks'])==20
+          assert d['actual_original_signed_lowband_integrated'] is False
+          assert d['actual_original_selected_j_constructed'] is False
+          assert d['actual_original_fourier_error_upper_computed'] is False
+          print('NF386 source-pinned analytic entry PASS, original upper STILL OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf386-fourier-primal-entry-only
+          path: artifacts/NF386_original_fourier_primal_entry.json
