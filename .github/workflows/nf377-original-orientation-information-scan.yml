@@ -1,0 +1,51 @@
+name: Weil-Lab NF377 original physical exterior orientation scan (NOT signed lowband acceptance)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/verify_nf377_exterior_orientation_scan.py'
+      - 'notes/provisional/NF377_ORIGINAL_ORIENTATION_INFORMATION_SCAN_20261028.md'
+      - '.github/workflows/nf377-original-orientation-information-scan.yml'
+permissions:
+  contents: read
+jobs:
+  original-orientation-scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned original native interval dependency chain
+        run: "pip install --only-binary=:all: python-flint==0.8.0 numpy scipy"
+      - name: Original 242-dimensional physical and fitted-four quotient orientation scan
+        run: |
+          python3 -m py_compile scripts/verify_nf377_exterior_orientation_scan.py
+          python3 -u scripts/verify_nf377_exterior_orientation_scan.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --output artifacts/nf377_original_exterior_orientation_scan.json \
+            --bits 4096
+      - name: Mathematical scope fail-closed
+        run: |
+          python3 - <<'PY'
+          import json
+          r=json.load(open('artifacts/nf377_original_exterior_orientation_scan.json'))
+          assert r['parent_16_quotient_Gram_ball_overlaps'] is True
+          assert r['first_in_ladder_physical_out_of_fit_10pct_and_norm_10pct_n'] in r['candidates_n']
+          assert r['original_J_rank']==242 and r['unchanged_original_four_critical_probes']==4
+          assert all(x['strict_independence_proved'] for x in r['tests'])
+          for k in ('signed_multipler_coupling_measured','signed_frequency_integrated',
+                    'lowband_residual_norm_measured','whole_exterior_inverse_certified'):
+              assert r[k] is False,k
+          assert r['W_ODD_NEG']==r['RH']=='OPEN'
+          print('PASS original physical information orientation only; signed inverse response/lowband still OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf377-original-exterior-orientation-report
+          path: artifacts/nf377_original_exterior_orientation_scan.json
+          if-no-files-found: ignore
