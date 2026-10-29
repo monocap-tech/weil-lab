@@ -1,0 +1,52 @@
+name: Weil-Lab NF379 genuine original unfitted complete signed dual (NOT Weil theorem)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/verify_nf379_original_unfitted_signed_dual.py'
+      - 'notes/provisional/NF379_ORIGINAL_UNFITTED_SIGNED_DUAL_20261028.md'
+      - '.github/workflows/nf379-original-unfitted-signed-dual.yml'
+permissions:
+  contents: read
+jobs:
+  original-unfitted-signed-pair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned original native Arb interface and inherited imports
+        run: "pip install --only-binary=:all: python-flint==0.8.0 numpy scipy"
+      - name: Fail-closed actual J242 original signed kernel and exterior pairing
+        run: |
+          python3 -m py_compile scripts/verify_nf379_original_unfitted_signed_dual.py
+          python3 -u scripts/verify_nf379_original_unfitted_signed_dual.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --output artifacts/NF379_original_unfitted_signed_dual_native.json
+      - name: "Strict reporting boundary: original signed datum but no RH acceptance"
+        run: |
+          python3 - <<'PY'
+          import json
+          z=json.load(open('artifacts/NF379_original_unfitted_signed_dual_native.json'))
+          assert z['selected_source_count']==242 and z['original_critical_count']==4
+          assert z['unfitted_candidate_n']==512
+          assert z['parent_original_16_Gram_overlap']
+          assert z['original_16_CE_and_16_BP_signed_kernel_parent_overlaps']
+          assert z['integrated_lowband'] is False
+          assert z['full_strong_residual_upper'] is False
+          assert z['whole_infinite_exterior_inverse'] is False
+          assert z['W_ODD_NEG']==z['RH']=='OPEN'
+          print('NF379 original signed single-witness diagnostic captured;',
+                'method-specific obstruction =', z['method_specific_sufficient_residual_obstructed_by_this_witness'])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf379-original-unfitted-signed-dual-native
+          path: artifacts/NF379_original_unfitted_signed_dual_native.json
+          if-no-files-found: ignore
