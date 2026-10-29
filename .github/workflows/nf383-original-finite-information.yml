@@ -1,0 +1,41 @@
+name: Weil-Lab NF383 original n512 finite-information exact audit (NOT RH)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf383_original_finite_information_budget.py'
+      - 'notes/provisional/NF383_ORIGINAL_RESIDUAL_INFORMATION_BOUNDARY_20261028.md'
+      - '.github/workflows/nf383-original-finite-information.yml'
+permissions:
+  contents: read
+jobs:
+  exact-original-n512-budget:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: SHA-pinned exact Fraction original n512 budget and abstract information checks
+        run: |
+          python3 -m py_compile scripts/local_replay/nf383_original_finite_information_budget.py
+          python3 scripts/local_replay/nf383_original_finite_information_budget.py \
+            --self-test \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --output artifacts/NF383_original_n512_budget.json
+          python3 - <<'PY'
+          import json
+          j=json.load(open('artifacts/NF383_original_n512_budget.json'))
+          assert j['original_n513_measured'] is False
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          assert j['strict_original_n512_dual_share_lower']=='145133/1000000'
+          assert j['strict_original_n512_dual_share_upper']=='72567/500000'
+          assert j['strict_remaining_unmeasured_budget_fraction_lower']=='427433/500000'
+          assert j['strict_remaining_unmeasured_budget_fraction_upper']=='854867/1000000'
+          print('NF383 exact source-bound report regression PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf383-original-n512-finite-information-budget
+          path: artifacts/NF383_original_n512_budget.json
