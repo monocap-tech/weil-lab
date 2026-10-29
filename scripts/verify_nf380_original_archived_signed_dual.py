@@ -64,6 +64,13 @@ def main():
  assert 0<=sq1<F(1,10**780) and 0<=sq2<F(1,10**810)
  assert parent['selected_rank']==242 and len(source['target_probes'])==4
  freqs,C=makeF(source)
+ # The original 968 archived signed mixed columns must be the EXACT same
+ # PR355 physical four critical functions, not merely the same count/order.
+ assert [F(z) for z in mixed['target_sine_frequencies']]==freqs
+ assert len(mixed['target_probes'])==len(source['target_probes'])==4
+ for old,original in zip(mixed['target_probes'],source['target_probes']):
+  assert [F(z) for z in old['sine_coefficients']]==[F(z) for z in original['sine_coefficients']]
+  assert F(old['sinh_coefficient'])==F(original['sinh_coefficient'])
  rows=[];clusters=[];expected=[];offset=0
  for (c,mmax),keep in zip(rank['original_nodes'],rank['selected_multiplicities']):
   assert 0<=keep<=mmax
