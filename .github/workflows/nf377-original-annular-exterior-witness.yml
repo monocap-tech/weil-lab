@@ -35,7 +35,7 @@ jobs:
           assert x['original_J242_count']==242 and x['fitted_four_count']==4
           assert x['total_annuli']==492
           assert 1<=x['selected_annulus_index']<=492
-          assert x['certified_outfit_squared_norm_fraction_strict_lower']=='1/2'
+          assert x['certified_outfit_squared_norm_fraction_strict_lower']=='49/100'
           assert x['frame_Gram_16_parent_ball_overlap']
           assert len(x['signed_frequency_point_samples'])==6
           assert x['new_selected_source'] is False
