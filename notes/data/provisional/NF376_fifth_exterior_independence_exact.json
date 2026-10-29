@@ -1,0 +1,21 @@
+{
+  "status": "EXACT_SOURCE_FREQUENCY_CERTIFIED_NEW_EXTERIOR_ORIENTATION",
+  "rank_original_sha256": "9b9820a0163e5e8bf08dd1c2525c757ff67214b49a40cb093d00bc611c9ff9e2",
+  "pr355_portable_source_sha256": "abd37707d585dcd54b040f1ae865a7430a9c7cba85df31131661b2e72e560770",
+  "physical_interval": "[-11/10,11/10]",
+  "selected_original_total": 242,
+  "selected_trigonometric_generator_count": 241,
+  "selected_pole_count": 1,
+  "original_critical_probe_count": 4,
+  "original_critical_sine_harmonics": 32,
+  "diagnostic_frequency": "15",
+  "diagnostic_original_harmonic": 33,
+  "frequency_distinct_from_all_selected_J_and_original_F4": true,
+  "proof_lemma": "Uniqueness of finite exponential polynomials with distinct complex exponents on an open interval; a.e. equality of analytic source functions implies identity",
+  "consequence": "Q sin(2pi 15x) not in span(Q F1,Q F2,Q F3,Q F4)",
+  "actual_physical_quotient_norm_value_computed": false,
+  "actual_signed_lowband_integral_computed": false,
+  "actual_lowband_H_i_norm_computed": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
