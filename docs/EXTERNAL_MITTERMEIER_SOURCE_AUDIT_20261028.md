@@ -1,3 +1,5 @@
+> **PRIMARY-SOURCE REVIEW UPDATE (2026-10-28 Pacific):** The full 41-page Oct 25 v2 PDF and 55-entry reproducibility ZIP were subsequently user-provided and audited. The ZIP 54/54 internal digests passed; two exact-rational author-code replays matched their expected JSON, conditional on declared external premises. The paper explicitly discloses AI-assisted research, verification, figures and language editing. Theorem 4 supplies a fixed-form box/sign-box density argument. No NF376 signed exterior bound, method promotion or theorem closure followed. **The older unavailable-PDF statements below describe the initial discovery state, not the current state.** See [primary PDF / ZIP review](../notes/provisional/EXTERNAL_MITTERMEIER_V2_PRIMARY_PDF_ZIP_REVIEW_20261028.md).
+
 # External source audit — Mittermeier's Suzuki/Weil event-cell program
 
 **Date:** 2026-10-28 Pacific. **Type:** limited external literature/custody audit, **not an NF mathematical pass**. **Canonical obligation:** `W-ODD-NEG` OPEN. **No new source pin**, accepted lemma, workstream, branch pivot, or theorem standing.
