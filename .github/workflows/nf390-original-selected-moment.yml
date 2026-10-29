@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'scripts/verify_nf390_original_j387_selected_moment.py'
+      - 'scripts/local_replay/nf390_original_j387_moment_precision_preflight.py'
       - 'notes/provisional/NF390_ORIGINAL_J387_POLE_RESTORED_MOMENT_GATE_20261029.md'
       - '.github/workflows/nf390-original-selected-moment.yml'
 permissions:
@@ -31,6 +32,21 @@ jobs:
             "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/12776684037/zip" \
             -o artifacts/original_selected_signed_20261028.zip
           echo 'f7b64ceead7500fca389e3b994a208a6e8aae5be1fa1d0  artifacts/original_selected_signed_20261028.zip' | sha256sum -c -
+      - name: Exact original source-only candidate moment sensitivity preflight (not signed measurement)
+        run: |
+          python3 scripts/local_replay/nf390_original_j387_moment_precision_preflight.py \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --output artifacts/NF390_original_j387_source_only_precision.json
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          j=json.load(open('artifacts/NF390_original_j387_source_only_precision.json'))
+          assert F(j['moment_stop_threshold_strict_upper_exact'])<F(19,10**21)
+          assert j['actual_original_signed_selected_moment_measured'] is False
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          print('NF390 exact source-only sensitivity <1.9e-20 PASS; native moment still required')
+          PY
       - name: Original J242 physical replay and pole-restored signed selected moment
         run: |
           python3 -m py_compile scripts/verify_nf390_original_j387_selected_moment.py
@@ -58,5 +74,7 @@ jobs:
         if: always()
         with:
           name: nf390-original-j387-selected-moment
-          path: artifacts/NF390_original_j387_signed_selected_moment.json
+          path: |
+            artifacts/NF390_original_j387_source_only_precision.json
+            artifacts/NF390_original_j387_signed_selected_moment.json
           if-no-files-found: ignore
