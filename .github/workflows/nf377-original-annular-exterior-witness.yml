@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install inherited 4096-bit original Arb interface
-        run: pip install --only-binary=:all: python-flint==0.8.0 numpy scipy
+        run: "pip install --only-binary=:all: python-flint==0.8.0 numpy scipy"
       - name: Certify one explicit original physical J242+E4-out-of-fit annular witness
         run: |
           python3 -m py_compile scripts/verify_nf377_original_annular_outfit_witness.py
