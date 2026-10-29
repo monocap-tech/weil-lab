@@ -1,0 +1,38 @@
+name: Weil-Lab NF384 original n512 signed low-band lower (NOT RH)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf384_original_lowband_n512_lower.py'
+      - 'notes/provisional/NF384_ORIGINAL_SIGNED_LOWBAND_N512_LOWER_20261028.md'
+      - '.github/workflows/nf384-original-lowband-lower.yml'
+permissions:
+  contents: read
+jobs:
+  exact-original-lowband-lower:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original n512 NF380 signed and NF375 high-tail exact rational comparison
+        run: |
+          python3 -m py_compile scripts/local_replay/nf384_original_lowband_n512_lower.py
+          python3 scripts/local_replay/nf384_original_lowband_n512_lower.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --output artifacts/NF384_original_lowband_n512_lower.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('artifacts/NF384_original_lowband_n512_lower.json'))
+          assert d['original_n513_measured'] is False
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          assert [x['positive_lower_certified'] for x in d['cutoff_results']] == [False, True, True, True, True]
+          print('NF384 exact original n512 lowband norm lower PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf384-original-lowband-n512-exact
+          path: artifacts/NF384_original_lowband_n512_lower.json
