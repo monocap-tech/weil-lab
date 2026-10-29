@@ -1,0 +1,57 @@
+name: Weil-Lab NF374 independent exact matched high-tail acceptance (NOT full residual)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf374_independent_high_tail_replay.py'
+      - 'notes/data/provisional/NF374_original_correlated_curvature_native.json'
+      - 'notes/data/provisional/NF374_high_tail_exact_replay.json'
+      - 'notes/data/provisional/NF372_replay.json'
+      - 'notes/provisional/NF374_ORIGINAL_MATCHED_HIGH_TAIL_ACCEPTANCE_20261028.md'
+      - '.github/workflows/nf374-independent-high-tail-acceptance.yml'
+permissions:
+  contents: read
+jobs:
+  independent-rational-high-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify archived full native and exact source report bytes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          expected={
+            'notes/data/provisional/NF374_original_correlated_curvature_native.json':'a725a6da6bf29ce21b1955df8f4d0b35b87ff8f003d09cdff13581d1b82f7559',
+            'scripts/local_replay/nf374_independent_high_tail_replay.py':'1e1c75b67a8f9e2b99608b2abe04974623bc7edf856e557c29315f9691dd1b19',
+            'notes/data/provisional/NF374_high_tail_exact_replay.json':'61705c212e48887b454c0f6201475b50f707cb545cdfeed0d472128aae4b05a9'
+          }
+          for path,ref in expected.items():
+            assert hashlib.sha256(Path(path).read_bytes()).hexdigest()==ref,path
+          print('PASS original NF374 accepted source SHA pins')
+          PY
+      - name: Exact independent Fraction high-band and future lowband budget replay
+        run: |
+          python scripts/local_replay/nf374_independent_high_tail_replay.py \
+            --native notes/data/provisional/NF374_original_correlated_curvature_native.json \
+            --nf372 notes/data/provisional/NF372_replay.json \
+            --output "${RUNNER_TEMP}/NF374_high_tail_exact_replay.json"
+          cmp "${RUNNER_TEMP}/NF374_high_tail_exact_replay.json" notes/data/provisional/NF374_high_tail_exact_replay.json
+      - name: Keep mathematical scope OPEN
+        run: |
+          python - <<'PY'
+          import json
+          q=json.load(open('research/obligations.json'))
+          assert q['active_obligation']=='W-ODD-NEG'
+          assert next(x for x in q['obligations'] if x['id']=='W-ODD-NEG')['status']=='open'
+          r=json.load(open('notes/data/provisional/NF374_high_tail_exact_replay.json'))
+          assert r['full_frequency_residual_certified'] is False
+          assert r['infinite_exterior_schur_certified'] is False
+          assert r['low_band_matched_projection_residual_certified'] is False
+          assert r['RH']=='OPEN'
+          print('PASS four original high tails, not full Weil form, operator domain or RH')
+          PY
