@@ -30,7 +30,7 @@ jobs:
           name: nf381-original-two-direction-signed-result
           run-id: 40820718599
           repository: monocap-tech/weil-lab
-          github-token: {{ github.token }}
+          github-token: ${{ github.token }}
           path: artifacts/nf389-original-native
       - name: Verify original native SHA and preserve identical bytes
         run: |
