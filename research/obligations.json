@@ -684,7 +684,7 @@
     "NF382-OPTIMAL-ROBUST-JOINT-INFORMATION": {
       "kind": "EXACT ORIGINAL N512-PINNED PHYSICAL TWO-HARMONIC INDEPENDENCE SUFFICIENCY AND OPTIMAL ROBUST CORRELATION-PAID JOINT SIGNED LOWER; N513 NATIVE PENDING",
       "scope": "Original signed W-ODD-NEG unchanged. Original supported orthogonal n512/n513 with B=11/10 and q=(I-P_(J242+F4))v satisfy |cross|^2 <= (B-g1)(B-g2); g1+g2>B is sufficient exterior Gram SPD, with original n512 native g1 proving conservative g513>0.01446 sufficient (not measured). For certified signed magnitudes a1,a2 and upper physical norms G1,G2 and correlation cap C, exact sign-aligned robust optimal squared dual lower is (G2*a1^2-2*C*a1*a2+G1*a2^2)/(G1*G2-C^2) if both optimal weights positive, else max single squared dual. Retain NF381 independently valid grid bound as max. Original n513 signed input and exact result PENDING, full exterior strong residual upper/inverse/domain, W-ODD-NEG, even/whole Weil and RH OPEN.",
-      "pr": "NF382 STACKED DRAFT PR (see note and GitHub branch research/nf382-optimal-robust-joint-information)",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/367",
       "repo_path": "notes/provisional/NF382_OPTIMAL_ROBUST_JOINT_SIGNED_INFORMATION_GATE_20261028.md",
       "verification": "Exact analytic derivation, local 8/8 pure Fraction algebra tests PASS, scoped original NF380 SHA preflight and focused native GitHub workflow verification separately pending; no original n513 output or original joint sign verdict; no theorem promotion."
     },
