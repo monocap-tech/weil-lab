@@ -108,6 +108,25 @@ https://doi.org/10.1137/0128007
 
 Currently contextual for the general shorted-operator extension. The stable WD-T13 statement is restricted to the strictly positive/invertible-block Schur-complement setting and does not require the general theorem.
 
+## Contemporary Suzuki/event-cell and Weil-sign research — contextual leads (2026-10-28 review)
+
+### Rainer Andreas Mittermeier
+
+*Compact Weil Event Cells from Suzuki's Screw Function: Parity Polarization, Exact Enclosures, and Uniform Gram Certificates.*
+
+- Version 1, **2026-09-10**: https://doi.org/10.5281/zenodo.22687244
+- Version 2, **2026-10-25**: https://doi.org/10.5281/zenodo.23603376
+- Both deposits list separate PDF and reproducibility ZIP files.
+
+Public abstract claims: scalar Suzuki screw-function polarization into even/odd finite Gram kernels, prime-power event-cell enclosures and fixed-window realization, continuous-family finite matrix certificates and positive-core Schur diagnostics. Version 2 reports a 16-node even family at half-support L=0.8 with normalized row margins above 0.2109; it explicitly **does not** certify global Weil positivity or RH. No page-specific theorem, computation or program has been independently replayed in Weil-Lab.
+
+**Status: CONTEXTUAL / EXTERNAL LEAD, NOT LOAD-BEARING.** No imported theorem ID; no claim of mathematical equivalence to the original signed Fourier J242/NF376 exterior response. September v1 precedes our October operator investigations. The separate comparison/verification docket is [External Mittermeier Source Audit](EXTERNAL_MITTERMEIER_SOURCE_AUDIT_20261028.md).
+
+Related preprints by the same listed author, also **CONTEXTUAL / NOT LOAD-BEARING**:
+
+- *A Conductor-23 Operator Architecture for the Riemann-Weil Problem: Positive Hilbert Host, Arithmetic Observability, Common Form Domain, and Limits of Sign Transfer*, version 3 (2026-10-25): https://doi.org/10.5281/zenodo.23137105. Public abstract explicitly reports no sign-preserving Weil comparison.
+- *Recovery-Selected Weil Rectangles: Exact Prime-Power Dynamics and the Global Positivity Problem*, version 2 (2026-10-25): https://doi.org/10.5281/zenodo.23635192. Public abstract reports global viability criteria and unresolved sign transfer; neither is an infinite-tail positivity certificate.
+
 ## Citation policy
 
 The public project distinguishes:
