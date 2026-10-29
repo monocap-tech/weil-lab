@@ -95,7 +95,7 @@ def run(p512,nf375,j387,native390=None,output=None):
        'source_only_rational_moment_discrepancy_ceiling':str(MOMENT_CEILING),
        'original_nf390_selected_native_result_supplied':native390 is not None,
        'nf390_native_selected_moment_result':'NOT PROVIDED',
-       'nf387_specific_candidate_joint_method_stopped':False,
+       'nf387_specific_candidate_joint_method_stopped':None,  # no native selected moment; undecided
        'original_signed_lowband_integral_computed':False,
        'original_full_lowband_upper_computed':False,
        'whole_original_exterior_inverse_computed':False,
