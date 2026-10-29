@@ -684,7 +684,7 @@
     "NF384-ORIGINAL-SIGNED-LOWBAND-N512-LOWER": {
       "kind": "SHA-PINNED ORIGINAL N512 SIGNED PAIRING IMPLIES NONZERO LOWBAND NORM LOWER AT FOUR ORIGINAL NF375 CUTOFFS; NO UPPER",
       "scope": "On unchanged NF370 direction-four matched original u4 and actual J242, q_perp=(I-P_(J242+F4))v512 is physically orthogonal to J242; original complete signed b512 is certified positive with 16 original physical and 32 signed overlaps. Under inherited original strong-domain realization and original NF375 highband bound, H4(L;j)>=max(0,|b512|/sqrt(g512)-high4(L)) for every j in J242. Exact rational native SHA/Git blob pinned strict comparisons establish at cutoffs 2^21,2^22,2^23,2^24 respective H4 lowers 2.1e-15,3.85e-14,6.46e-14,8.34e-14, without evaluating lowband. At 2^20 the witness/high bound gives no positive lower. All five original NF375 future lowband upper targets remain unexcluded; this does not prove a lowband upper, an n513 result, complete original exterior strong residual, domain closure, W-ODD-NEG, even/whole Weil or RH.",
-      "pr": "NF384 stacked research draft PR; linked note",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/369",
       "repo_path": "notes/provisional/NF384_ORIGINAL_SIGNED_LOWBAND_N512_LOWER_20261028.md",
       "verification": "Independent exact BigInt rational comparisons passed on actual original NF380/NF375 GitHub content; SHA-pinned stdlib Fraction replay and dedicated new GitHub workflow committed, remote result separately pending. Inherited strong-domain/operator identification OPEN."
     },
