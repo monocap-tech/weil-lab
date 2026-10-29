@@ -684,7 +684,7 @@
     "NF383-ORIGINAL-RESIDUAL-INFORMATION-BOUNDARY": {
       "kind": "EXACT ORIGINAL N512 ONE-WITNESS BUDGET SHARPENING AND CONDITIONAL HILBERT RESIDUAL TAIL INFORMATION LIMIT",
       "scope": "Pinned original NF380 4096/3072-bit native n512 signed b1 and outside-fitted g1 interval with original 16/32 overlap checks yields d1=b1^2/g1 between 145133 D/10^6 and 145134 D/10^6, D=2401/(2*10^28) NF370 direction-four squared strong residual allowance. Thus remaining unmeasured one-witness allowance D-d1 between 854866 D/10^6 and 854867 D/10^6, making any second orthogonalized no-go signal strictly exceed sqrt(854866 D/10^6) approx 3.20353965638e-13. Under inherited UNPROVED strong operator/domain realization, exact Hilbert identity ||r||^2=||P_E r||^2+||(I-P_E)r||^2 identifies the missing source-adapted complement UPPER. Finite signed witness data alone bound only projected response from below, not full residual from above; abstract finite observation non-identifiability is NOT a contrary original Weil state. Original n513 signed native and full residual upper OPEN, original W-ODD-NEG/even/whole Weil and RH OPEN.",
-      "pr": "NF383 stacked draft research PR; see repo_path",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/368",
       "repo_path": "notes/provisional/NF383_ORIGINAL_RESIDUAL_INFORMATION_BOUNDARY_20261028.md",
       "verification": "Direct independent exact BigInt fraction interval comparisons on authentic SHA-pinned original NF380 JSON passed; stand-alone stdlib Fraction script committed and focused workflow pending, no new native n513 result; conditional Hilbert-space proof in note."
     },
