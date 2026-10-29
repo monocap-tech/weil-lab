@@ -1,0 +1,25 @@
+name: Weil-Lab NF382 exact robust joint-information gate (NOT original n513 result)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf382_optimal_robust_joint_dual.py'
+      - 'notes/provisional/NF382_OPTIMAL_ROBUST_JOINT_SIGNED_INFORMATION_GATE_20261028.md'
+      - '.github/workflows/nf382-robust-joint-information.yml'
+permissions:
+  contents: read
+jobs:
+  exact-robust-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact algebra fixtures and SHA-pinned actual original n512 physical independence threshold
+        run: |
+          python3 -m py_compile scripts/local_replay/nf382_optimal_robust_joint_dual.py
+          python3 scripts/local_replay/nf382_optimal_robust_joint_dual.py \
+            --self-test \
+            --preflight-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json
