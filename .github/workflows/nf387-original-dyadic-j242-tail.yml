@@ -1,0 +1,47 @@
+name: Weil-Lab NF387 actual original J242 dyadic trial and tail (NOT lowband upper)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf387_original_dyadic_j242_trial.py'
+      - 'notes/data/provisional/NF387_original_J242_dyadic_candidate.json'
+      - 'notes/provisional/NF387_ACTUAL_ORIGINAL_DYADIC_J242_TRIAL_20261028.md'
+      - '.github/workflows/nf387-original-dyadic-j242-tail.yml'
+permissions:
+  contents: read
+jobs:
+  exact-original-j242-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact original source-pinned raw J242 candidate plus curvature/tail certificate
+        run: |
+          python3 -m py_compile scripts/local_replay/nf387_original_dyadic_j242_trial.py
+          python3 scripts/local_replay/nf387_original_dyadic_j242_trial.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --output artifacts/NF387_original_J242_trial_replay.json
+          python3 - <<'PY'
+          import json
+          p=json.load(open('artifacts/NF387_original_J242_trial_replay.json'))
+          q=json.load(open('notes/data/provisional/NF387_original_J242_dyadic_candidate.json'))
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          assert p['original_operator_domain_review']=='OPEN'
+          assert p['actual_original_source_matched_signed_Fourier_mismatch_integrated'] is False
+          assert p['actual_original_lowband_norm_upper_certified'] is False
+          assert p['dyadic_raw_selected_coordinate_numerators']==q['coefficients_raw_source_numerators']
+          assert p['original_rank_sha256']==q['original_rank_sha256']
+          assert p['nf375_git_blob_sha1']==q['original_nf375_git_blob_sha1']
+          assert p['actual_j_two_endpoint_derivative_plus_curvature_upper']==q['two_endpoint_derivative_plus_curvature_upper']
+          assert p['actual_j_high_frequency_squared_tail_strict_upper']==q['candidate_selected_j_squared_fourier_tail_strict_upper']
+          assert q['endpoint_value_exact']=='0' and q['j_tail_squared_below_original_target_squared_over_64']
+          print('NF387 selected raw J242 j actual source and tail PASS; signed original lowband upper OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nf387-original-J242-dyadic-tail
+          path: artifacts/NF387_original_J242_trial_replay.json
