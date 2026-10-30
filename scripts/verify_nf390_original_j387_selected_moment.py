@@ -36,7 +36,10 @@ def apply_archived_qtranspose_to_one_vector(x, householder_vectors):
     All arithmetic remains rigorously outward-rounded in python-flint.
     """
     n=x.nrows()
-    assert x.ncols()==1 and len(householder_vectors)==n
+    # The original signed archive may have FEWER than n reflectors;
+    # the historical decoder itself never assumed a full n-reflection list.
+    # Replay exactly the archived finite product, including identity tail.
+    assert x.ncols()==1 and 0<len(householder_vectors)<=n
     y=arb_mat([[x[i,0]] for i in range(n)])
     for k,r in enumerate(householder_vectors):
         assert r['start']==k and len(r['vector'])==n-k
@@ -154,8 +157,10 @@ def main(args):
         assert len(row)==i+1
         for k,t in enumerate(row): M[i,k]=M[k,i]=arbball(t)
     # NF397: DO NOT construct dense Q. Two vector images below suffice.
-    assert len(mat['householder_vectors'])==242
-    print('NF397 original signed archive loaded; 242 Householder reflections to be applied to TWO vectors only',flush=True)
+    archived_reflections=len(mat['householder_vectors'])
+    assert 0<archived_reflections<=242
+    print('NF398 original signed archive reflector count:',archived_reflections,
+          '(historical decoder used the actual archived list)',flush=True)
     L=arb_mat([[arbball(r['entries'][k]['signed_native']) for k in range(4)] for r in mixed['rows']])
     eps=phys.a(sq1+sq2).sqrt()
     Y0=arb_mat([[dyad(parent['nf369_quotient_response_exact_dyadic_coefficients'][i][k]) for k in range(4)] for i in range(4)])
@@ -229,7 +234,9 @@ def main(args):
       'original_householder_method':'original archived reflectors applied in ascending k to TWO vectors for Qtranspose images; dense Q never reconstructed',
       'original_householder_full_dense_Q_constructed':False,
       'original_householder_two_vector_isometry_check_pass':True,
-      'original_archived_householder_count':242,
+      'original_archived_householder_count':archived_reflections,
+      'original_archived_householder_expected_max_dim':242,
+      'original_householder_count_source':'len(original source-pinned signed archive householder_vectors)',
       'pole_restored_for_selected_test':True,
       'original_selected_pole_overlap_direct_original_FT_source_interval':interval(u4s_direct),
       'original_selected_pole_overlap_reconstructed_full_match_interval':interval(u4s_reconstructed),

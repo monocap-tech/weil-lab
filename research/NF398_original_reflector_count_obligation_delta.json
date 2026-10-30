@@ -1,0 +1,11 @@
+{
+  "pass": "NF398",
+  "active": "W-ODD-NEG",
+  "prior_run": 41016847062,
+  "prior_job": 123935004523,
+  "failure": "original native assertion on householder_vectors count ==242; original archive decoder does not require full count",
+  "method": "apply all authentic archived reflectors to two source vectors; preserve signed matrix and errors",
+  "native_result": "PENDING",
+  "j387": "UNDECIDED",
+  "RH": "OPEN"
+}
