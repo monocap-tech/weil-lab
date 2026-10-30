@@ -1,0 +1,14 @@
+{
+  "pass": "NF397",
+  "standing": "ORIGINAL NATIVE EXECUTION / STRICT SELECTED METHOD VERDICT ONLY",
+  "run_id": "41016847062",
+  "source_sha": "2e15dab7c8c1738897f1a125f163c9ee60fcdc1d",
+  "native_job_result": "failure",
+  "last_saved_phase": "two-vector-native-signed-scalar",
+  "original_native_signed_selected_accepted": false,
+  "j387_method_verdict": "UNDECIDED",
+  "native_sha256": null,
+  "original_full_lowband_upper": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
