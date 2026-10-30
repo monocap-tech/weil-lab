@@ -28,10 +28,11 @@ def direct(a,Vs):
         out=[out[i]-coeff*v[i] for i in range(n)]
     return out
 
-def prove(n):
+def prove(n,count):
+    assert 0<count<=n
     # Rational reflectors with nontrivial overlaps and noncommuting order.
     Vs=[]
-    for k in range(n):
+    for k in range(count):
         v=[F(0)]*k+[F(1 if i==k else ((i+k)%3)-1, 1+((i+2*k)%3))
                       for i in range(k,n)]
         assert any(v[k:])
@@ -56,5 +57,7 @@ def prove(n):
     return n
 if __name__=='__main__':
     for n in (2,3,4,5):
-        print('NF397 EXACT Fraction Qtranspose 2-vector regression PASS at n=',prove(n))
+        for count in range(1,n+1):
+            assert prove(n,count)==n
+        print('NF398 EXACT Fraction Qtranspose 2-vector regression PASS with partial archived reflection counts at n=',n)
     print('NF397 algebraic transformation verified; native original 242 moment still OPEN')
