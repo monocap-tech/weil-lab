@@ -1,0 +1,23 @@
+{
+  "pass": "NF404",
+  "active_obligation": "W-ODD-NEG",
+  "previous": "NF403 original J242 complement LOWBAND lower >8.63e-14 and unmeasured full supported action scalar upper; NF402 support/Fourier band noncommutation STOP",
+  "original_nf401_selected_full_native_sha256": "644337986f62a3f25bb6b2005efc82f517975c84629b32b5ae8d1e5b95614515",
+  "original_selected_endpoint_source_native_sha256": "a09b22f7f653e5eb2af516a6e6104d2d1e27b525c9cdc8bc0074c212b6982c94",
+  "original_selected_endpoint_value_approx": "0.837117780757802567573",
+  "original_selected_endpoint_derivative_approx": "0.836247131524514908551",
+  "exact_original_selected_carrier_structure": "For each original center c and all prefix orders k, f_{c,k}''=-omega^2 f_{c,k}+(-1)^k 2k omega f_{c,k-1}+k(k-1) f_{c,k-2}, omega=2*pi*c; pole s''=s/4. Thus original J242 invariant under interior second derivative.",
+  "new_fourier_tail_method": "Original endpoint + derivative + original physical Gram second derivative upper permits rigorous lower on ||B_{|xi|>2^24} j*|| without high frequency quadrature; if >1e-6, all NF401 viable selected j fail original NF386 whole-line Fourier-primal sufficient method, although physical support lowband criterion remains open.",
+  "source_full_line_tail_observation_from_failed_first_run": "Native original 4096-bit computed original selected Fourier tail lower approximately 2.554680652e-5 in run #41127562921, but independent receipt failed due schema key mismatch; method STOP NOT ACCEPTED until complete rerun exact receipt SUCCESS.",
+  "accepted_selected_endpoint_ci": 41127177710,
+  "tail_exact_native_ci": "PENDING acceptance after first independent schema-key receipt failure",
+  "new_signed_kernel_cells": 0,
+  "source_original_full_supported_multiplier_power_upper": "OPEN",
+  "original_lowband_J242_perpendicular_upper": "OPEN",
+  "original_outside_support_lowband_leakage_upper": "OPEN",
+  "original_operator_domain": "GENERAL AUDIT OPEN",
+  "whole_exterior_inverse": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next": "After authentic full source exact tail STOP, retire NF386 whole-line primal bound for the original 242D admissible ball and focus true physical support-preserving residual, original NF403 scalar ||1_I m(D)u4||² or E-orthogonal remainder."
+}
