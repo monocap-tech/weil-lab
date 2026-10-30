@@ -1,0 +1,747 @@
+{
+  "snapshot_date": "2026-10-30",
+  "source_branch": "research/nf401-original-column-independent-receipt-recovery",
+  "source_pr": 387,
+  "former_active_obligation": "W-ODD-NEG",
+  "former_active_checks": [
+    {
+      "id": "SM01-sign-and-budget-regression",
+      "obligation_id": "W-ODD-NEG",
+      "role": "retained-prerequisite",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm01_pole_schur.py"
+      ],
+      "interpretation": "Verifies pole-conditioning arithmetic and correct-sign Schur regression; cannot close full negative-frequency gate.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SI29-pole-replay",
+      "obligation_id": "W-ODD-NEG",
+      "role": "retained-prerequisite",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_si29_pole_threshold_three_bands.py"
+      ],
+      "interpretation": "Replays pole-only certificate, not full original odd signed positivity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM02-original-odd-packet-rank-and-residual",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm02_odd_packet_parity.py"
+      ],
+      "interpretation": "Checks parity-halved original signed negative-frequency physical rank and full residual budget, not the missing finite BS eigenvalue.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM03-signed-negative-packet-reference-obstruction",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm03_negative_packet_reference_nogo.py"
+      ],
+      "interpretation": "Certifies an original signed whole-frequency negative packet defeating the unchanged SI29 C14 lower reference; not a counterexample to Weil positivity or the complete BS gate.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM04-negative-odd-spectral-rank",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm04_negative_packet_rank.py"
+      ],
+      "interpretation": "Checks at least 15 original negative odd eigenvalues exceed κ; not RH or full odd Weil positivity.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM05-supported-two-source-original-odd-inverse",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm05_two_source_original_inverse.py"
+      ],
+      "interpretation": "Certifies joint original physical A_o inverse upper for odd pole and one selected whole-band negative Jensen packet; it does not control the remaining original negative continuum.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM06-first-moment-and-original-supported-band",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm06_first_negative_moment.py"
+      ],
+      "interpretation": "Tests coupled actual original odd pole plus entire constant-weight negative band through three-source supported inverse and rigorously paid degree≥2 tail; NOT the variable original negative multiplier or all other bands.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM06-exact-infinite-negative-legendre-tail",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm06_band_legendre_tail.py"
+      ],
+      "interpretation": "Exact norm bound for all higher Legendre modes of one constant-δ signed-negative original band; no inverse acceptance alone.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM07-original-variable-negative-excess-nogo",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm07_true_multiplier_excess_nogo.py"
+      ],
+      "interpretation": "True signed original subwindow gives a physically supported actual variable-frequency remainder norm lower >0.013; excludes paying it by SM06's small reported scalar floor alone, not by the original full conditioned positive operator.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM11-original-signed-rank17-reference-obstruction",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm11_rank17_c16_nogo.py"
+      ],
+      "interpretation": "17 whole signed original negative-frequency windows, physical 17x17 Gram and every rank<=16 positive scalar reference exclusion; no original A_o negativity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM12-original-33-source-positive-reference",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm12_positive_reference_33.py"
+      ],
+      "interpretation": "Certifies whole original signed-positive 17 new intervals, physical Gram and disjoint 33-positive-source minorant, not the missing 891-source negative Schur or full W-ODD-NEG.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM13-true-original-physical-c33-rayleigh-nogo",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm13_c33_physical_negative_rayleigh.py"
+      ],
+      "interpretation": "Shows a true supported odd Jensen source with original Kneg quadratic > C33 reference quadratic by >0.0156835, using all 561 cross terms; method-specific C33 no-go, not Weil negativity or full odd proof.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM14-original-positive-continuum-response",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm14_continuum.py"
+      ],
+      "interpretation": "Certifies full original positive-frequency mass >0.6666 on one true odd negative witness absent from C33; not a whole Kneg upper or original Weil positivity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM15-original-whole-negative-odd-witness",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm15_global_negative_witness.py"
+      ],
+      "interpretation": "Exact signed original complete-negative-frequency physical Rayleigh upper, original odd pole and strictly positive signed witness at 14.42; ONLY one odd direction, no full BS/Schur.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM16-original-full-coupled-odd-2x2",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm16_coupled_original_odd_2x2.py"
+      ],
+      "interpretation": "Certifies strict 2x2 physical original complete signed odd positivity including all 973 negative Fourier leaves, mixed terms and original pole; only this 2D subspace, not full W-ODD-NEG.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM17-compact-odd-conditional-cap-budget",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm17_compact_spectral_gate.py"
+      ],
+      "interpretation": "Exact Fraction conditional 890-column cap threshold and witness-sign toy regression; it does not compute mu, verify functional-analytic compactness, or prove entire original odd positivity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM18-forward-residual-original-odd-prototype",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm18_forward_residual_gate.py"
+      ],
+      "interpretation": "Checks exact rational 2x2 forward-residual inverse upper matrix and fail-closed toy SPD regression; not actual original 890-column residual data or full odd Weil positivity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM19-original-woodbury-residual-preconditioner",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm19_original_woodbury_residual.py"
+      ],
+      "interpretation": "Exact Fraction two-dimensional source/pole Woodbury finite-data identity and comparison to scalar SM18; original 14-source and 890-residual entries not constructed; no whole odd positivity.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM20-original-first-source-forward",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm20_original_source_forward.py"
+      ],
+      "interpretation": "First actual original source a^2 tail, D00, 14 source intervals and pole t0; not full 890-source inverse.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM21-original-source-local-si29-positive-energy",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm21_native_source_rayleigh.py"
+      ],
+      "interpretation": "Exact Fraction first actual SM10 source 14-feature SI29 supported Rayleigh lower with true pole and improved single-column forward residual; no all-890 inverse spectral threshold.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM22-original-first-source-SI29-inverse",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm22_first_original_inverse_reference.py"
+      ],
+      "interpretation": "Actual SM10 source first-column supported SI29 14-feature full-Gram rational variational inverse upper, correct odd pole and rational Young residual upper; not full 890-source inverse or W-ODD-NEG.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM25-true-original-coupled-two-source-inverse",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm25_coupled_original_two_source_inverse.py"
+      ],
+      "interpretation": "Checks first two ACTUAL SM10 source columns and full signed physical 14x14 SI29 Gram/2x2 source Gram for a genuine coupled original pole-conditioned inverse Loewner upper with eta paid. This is a necessary principal coupled block only; PS36 O1/O2 complete all-negative-frequency odd operator and RH OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM26-full-original-negative-cap-surrogate-index",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "method-obstruction",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm26_full_cap_14_source_index_obstruction.py"
+      ],
+      "interpretation": "Original 17 continuous signed-negative windows, full 890-column SM10 cap and source-independent dimension/inertia theorem imply >=3 negative modes in full SI29 14-feature SURROGATE cap Schur; does NOT imply negativity of actual A_star or original Weil. PS36 O1/O2 still OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM27-complete-c33-surrogate-spectral-no-go",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "method-obstruction",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm27_c33_full_cap_surrogate_inertia.py"
+      ],
+      "interpretation": "Actual original SM13 signed C33 witness plus entire SM10 890-source negative cap force C33-only full 890x890 surrogate negative index>=1; original SM14/SM15 extra positive response on same actual witness disproves inference that true W_o is negative. Full original O1/O2 OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM28-original-positive-continuum-legendre-tower",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm28_positive_continuum_legendre_tower.py"
+      ],
+      "interpretation": "True original 13 whole sign-positive physical continuous-frequency band operators have exact infinite rank Legendre source tower; rigorous n>=2 full positive tail operator norm <3/10000 and strict positive quadratic on nonzero physical odd vectors. Includes odd pole original B14 and full SM10 890 negative/infinite eta but NO full 890 inverse Loewner O1/O2 positivity.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM29-remote-positive-continuum-coverage-nogo",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "method-obstruction",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm29_high_frequency_full_continuum_nogo.py"
+      ],
+      "interpretation": "TRUE original remote negative 389.56 packet versus FULL SI29 pole-conditioned B14+13 original entire positive real continuum bands. Exact uniform physical sign/overlap yields Kneg−F13>3/200 on packet; original SM10 complete 890 source/infinite eta implies entire F13-conditioned surrogate Schur index>=1, NOT true original Astar/Wodd negativity. O1/O2 full operator gate OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM30-true-original-remote-positive-continuum-and-global-negative-witness",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm30_remote_original_positive_rescue.py"
+      ],
+      "interpretation": "True original complete signed-positive whole frequency [389.35,389.41] and [389.72,389.78] 2-band operator response on original SM11 389.56 physical Jensen packet >3/10 with all signed physical overlaps. Additionally tests original complete 973-leaf negative odd cap and actual odd pole on same packet, but this remains ONE original vector, not whole odd O1/O2 890-source spectral positivity.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM31-true-original-two-packet-entire-signed-coupling",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm31_two_packet_full_signed_coupling.py"
+      ],
+      "interpretation": "EXACT TRUE original supported odd signed physical 2x2 quadratic g14.42/g389.56 including fifteen original seven-prime signed-positive whole-real Jensen bands, all 973 original signed negative Fourier leaves, exact original odd pole and mixed cross. Strict determinant if true is 2D-only positive; full 890 and orthogonal remainder O1/O2 remain OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM32-original-parity-cofinite-negative-index-schur",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm32_parity_cofinite_odd_schur.py"
+      ],
+      "interpretation": "Replays SI10 entire original signed seven-prime real-frequency protected cover and b9 Taylor physical source, parity-compacts full 939 source to <=470 original odd source, original Q_odd>=17/25000 on true entire odd orthogonal infinite complement so genuine odd negative index<=470. Includes correct-sign entire coupled Feshbach E9 470 acceptance and augmented original SM31 2D G cross budget; all full original W-ODD-NEG O1/O2 remain OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM33-original-complete-negative-frequency-mixed",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm33_original_odd_negative_mixed_bound.py"
+      ],
+      "interpretation": "Genuine original whole signed-seven-prime Kneg finite-to-infinite original odd mixing bound uses every SI10 973 negative frequency leaf and every 107 cluster-specific actual b9 Taylor source remainder. Exact full D inverse NEGATIVE-ONLY Schur correction upper. Does NOT calculate original positive arch/high continuum cross Cplus or whole corrected finite Schur; O1/O2 remain OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM34-original-positive-energy-dual-complete-schur",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm34_positive_energy_dual_schur.py"
+      ],
+      "interpretation": "Exact true ORIGINAL whole positive odd Astar inverse energy dual E_A=Astar^-1 E0 makes positive arch/pole mixed cross ZERO in nonorthogonal decomposition with unchanged original SI10 F. All 973 original seven-prime negative leaves support relative whole-infinite Schur bound epsilon/mu<5/51; clean 51/56 true 470D generalized sufficient Loewner test is UNMEASURED, full original odd O1/O2 remains OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM35-original-full-470-resolvent-galerkin",
+      "obligation_id": "W-ODD-NEG",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm35_full_original_resolvent_galerkin_enclosure.py"
+      ],
+      "interpretation": "Prove original 470 physical odd SI10 source basis analytic independence, certify exact original 973/107 negative cap/890 SM10 columns and true scalar κstar conditioning, derive genuine 470-source residual-inverse matrix bracketing theorem and its complete signed negative-cap full-matrix sufficient Loewner gate. Finite 3D matrix tests only; original true 470×470 stiffness/residual/eigenvalues are explicitly UNMEASURED and full W-ODD-NEG O1/O2 OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM36-original-numerical-feasibility-only",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "diagnostic-noncertifying",
+      "argv": [
+        "python3",
+        "scripts/sm36_original_odd_numerical_pilot.py"
+      ],
+      "interpretation": "Exploratory float64 original SI10 selected physical sources and full SM10 890 negative cap, sampled original Fourier positive stiffness and pole trial. JSON diagnostics only; no analytic/interval original operator strong residual, no 470D gate, no W-ODD-NEG O1/O2 proof.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM37-original-full-signed-subcell-negative-cap",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-operator-upper-certificate-and-noncertifying-pilot",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm37_refined_original_negative_cap.py"
+      ],
+      "interpretation": "Certifies entire ORIGINAL signed-negative seven-prime 973×4 whole-real subcell Kneg complete operator upper and monotone Loewner below SM10 via exact 107 source 890 column SPD rational moment covariances plus eta. Matched 25 selected original physical source pilot spectral maxima are NONCERTIFYING; full original odd O1/O2, even, Weil/RH OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM38-original-leafwise-odd-fourier-diagnostic",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "numerical-original-source-audit-noncertifying",
+      "argv": [
+        "python3",
+        "scripts/sm38_leafwise_original_odd_fourier_audit.py"
+      ],
+      "interpretation": "NONCERTIFYING selected 25 actual original odd physical source Gauss Fourier signed negative integral across all 3892 SI10/SM37 certified negative-source real cells, compared with original SM10/SM37 envelope-only and 890-column source moment cap; rejects source transform discrepancies. Exact formula for source Fourier does not establish original full 470 Schur PSD O1/O2.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM39-original-rational-left-arch-full-cap",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-full-negative-operator-upper-and-noncertifying-pilot",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm39_rational_left_arch_cap.py"
+      ],
+      "interpretation": "Exact original true rational 3892 signed real negative subcells strengthen SI07 digamma lower from integer floor to rational left. Whole original Kneg upper via SI06 prime full real 69 derivative, SAME 107 exact rational moment blocks/890 SPD pivots/full infinite eta <=SM37 operator upper; numerical original 25 source Gauss16 old/new envelope/moment comparison is NONCERTIFYING. Original signed odd O1/O2/even/full Weil/RH OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM40-original-endpoint-curvature-full-negative-cap",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-complete-signed-negative-operator-upper-and-noncertifying-selected-pilot",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm40_endpoint_curvature_negative_cap.py"
+      ],
+      "interpretation": "Certifies exact original whole-real seven-prime p'' global rational upper and endpoint interpolation lower on all 3892 original true signed negative subcells, full Kneg<=SM40<=SM39 Loewner via 107 original full moment blocks/890 exact positive pivots/eta. Same 25 true original odd supported source sampled generalized values NONCERTIFYING, original Wodd O1/O2 and Weil/RH OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM41-original-positive-high-log-tail",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-full-high-frequency-positive-operator-upper-with-noncertifying-low-pilot",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm41_original_positive_log_tail.py"
+      ],
+      "interpretation": "Exact rational true original seven-prime digamma + prime high log a_o bound and all 25 actual SI10 sine/xcos/pole supported source whole positive high-frequency form and squared strong multiplier L2 tail, plus loose full 470 source IBP general tail. Original low band Gauss8/16 numerical-only, no certified full Ao or entire Astar resolvent O1/O2, even, RH.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM42-original-full-25-physical-gram-low-gate",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "certified-original-selected-physical-gram-and-coarse-crossing-safe-positive-low-operator-only",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm42_original_physical_gram_and_low_gate.py"
+      ],
+      "interpretation": "EXACT true 25x25 physical Gram and odd pole cross full rational interval, strict rational-preconditioned Gershgorin, original positive low band coarse Loewner and softplus root-crossing-safe operator enclosure, NOT tight original low digamma Gaussian stiffness; original 470 Astar residual O1/O2 and RH open.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM43-original-positive-whole-real-source-window-cells",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-certified-original-positive-cell-multiplier-Loewner-error-not-full-stiffness",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm43_positive_cell_envelope.py"
+      ],
+      "interpretation": "Exact rational entire real 25-source original signed seven-prime/digamma positive frequency-cell L/U and complete 25x25 Cauchy source-coupled error eps I relative to UNEVALUATED true physical source Fourier C_I Gram over selected windows, step1/4→1/8. Does not cover entire low 0..4096 or certify C_I integral, source Ao stiffness/Astar inverse, entire original Wodd O1/O2 and RH.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM44-original-supported-full-25-cell-gram",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-selected-source-full-rational-positive-cell-matrix-and-complete-Loewner-error-not-entire-low",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm44_physical_fourier_cell_gram.py"
+      ],
+      "interpretation": "Certifies full 25x25 exact rational original physically supported odd Fourier cell Gram midpoint matrix and analytic all-source Loewner integration error, combined with SM43A exact original whole-real positive multiplier approximation across κ kink, on selected 16 source windows ONLY; not entire original 0..4096 positive low nor full original all 470 Astar/odd O1/O2/even/Weil/RH.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM45-local-original-full-25-source-Fourier-derivative",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-certified-original-selected-25-source-positive-window-Loewner-sharpening",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm45_local_source_fourier_derivative.py"
+      ],
+      "interpretation": "Certifies actual original true 25 selected odd supported SI10 source frequency-local derivative and physical second-derivative Taylor across entire real frequency cells; verifies unchanged SM44 full 25×25 rational matrix, original signed multiplier error identical and STRICT >=5% rigorous improvement of complete source-coupled Fourier-cell Loewner at fine h1/8, source-window only; no full 0..4096 true positive low or 470 true Astar inverse/full odd O1/O2/Weil/RH.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM46-original-affine-physical-Fourier-source-cells",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-selected-full-physical-source-positive-window-rational-affine-matrix-Loewner-error",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm46_affine_physical_fourier_source.py"
+      ],
+      "interpretation": "True original all-real source-affine v+d(xi-mid) complete25x25 rational Fourier Gram cells with exact J0/J1/J2 certified signed digamma/seven-prime kink-safe positive reference moments and rigorous local T''/T''' whole real error, per-cell fail closed vs SM45 verified original midpoint; output P25 rational full cross and Loewner eps smaller material >=5% original fine source-window Fourier error. Source windows only, all470 original Wodd O1/O2/even/Weil/RH remain OPEN.",
+      "cadence": "per-update"
+    },
+    {
+      "id": "SM47-original-full-low-25-source-one-sided-Jensen",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-entire-low-25-source-one-sided-positive-lower-rational-Jensen",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm47_original_full_low_jensen.py"
+      ],
+      "interpretation": "Actual original entire-low [0,4096] SM42 physical Parseval floor plus 17 SM12 whole-real signed-positive Jensen frequency averages on all original 25 SI10 sin/xcos/sinh physical sources, with full 25x25 rational lower and outward complete-operator error; focused PASS 39190147371: epsilon_P<0.000262, total<0.000266, 12 diagonal source gains resolved. This does NOT certify original complete 470-source Astar inverse, full odd O1/O2, even E1–E4, Weil/CC27/RH; independent domain audit and final-head CI separate.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM48-original-25source-signed-Jensen-reference-deficit",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "original-positive-lower-reference-vs-original-signed-negative-lower-method-obstruction",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm48_original_signed_jensen_deficit.py"
+      ],
+      "interpretation": "First true original entire signed 25-source matrix focused Actions 39191354830 PASSED: 15 SM04 all-real signed negative whole seven-prime/digamma windows and SM12 17 original positive windows, true supported SI10 16 sin, 8 xcos, sinh pole full source cross 625, exact 625 one/two-source rational Rayleigh comparisons; actual original source #2 SM47 full-low positive LOWER fails to dominate original 15-band signed-negative LOWER by >17/1000 even without pole; pole-aware reference pair gap >33/100. This proves only non-domination of the finite positive LOWER reference, NOT a true signed Weil-form negative mode, a negative index, or final complete odd O1/O2/all470 inverse/even/Weil/RH. Post-record final-head CI and external mathematical audit separate.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM49-true-original-25source-source-adaptive-positive-Jensen",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-real-signed-positive-physical-source-25x25-Jensen-lower-matrix",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm49_adaptive_positive_jensen.py"
+      ],
+      "interpretation": "Original all-seven-prime/digamma 32 new sign-certified REAL positive cells plus old SM12 17, complete physically supported 25-source full cross incl sinh pole, exact rational Fourier source-mean bounds and complete outward full Loewner fee with source2 independent directional fee; 39192702260 first Actions PASS, strict global-error-paid source2 gap closure added. Comparison only to unchanged 15-band negative LOWER does NOT prove true original odd Weil positivity or whole 470 source inverse/even/CC27/RH; independent audit and final-head CI separate.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM50-original-entire-negative-source2-upper",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-all-negative-frequency-one-source-upper-and-actual-signed-rayleigh",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm50_full_negative_source2_upper.py"
+      ],
+      "interpretation": "True original all-real 973 leaf negative-frequency upper for original physical odd source2 plus full 25-source SM49 positive LOW lower and exact pole upper. Any positivity only on e2 after strict actual signed Rayleigh bound; full 25 operator, 470 source residual, even, Weil, CC27/RH not certified.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM50A-original-entire-negative-source2-refined",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-true-entire-negative-frequency-one-original-source-affine-square-upper",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm50a_refined_full_negative_source2.py"
+      ],
+      "interpretation": "Focused exact original entire-negative 3892-subcell source2 CI 39198050550 PASS; original signed seven-prime/digamma positive-half all 973 SI10 leaves, SM39 source weights, original SM42 source F0/F1/F2 affine-square with true curvature, full negative upper 0.578168474932, compared with positive LOW 0.095123987434 and pole upper 0.000126906031, original signed e2 LOWER=-0.483171393529, sign unproved. Strong >30% exact negative upper gain check appended. Complete original full 25x25/470 O1/O2, even/Weil/CC27/RH and independent audit OPEN.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM51-original-direct-signed-source2",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "original-source2-true-signed-m-core-exhaustive-outer-negative-upper",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm51_direct_signed_source2.py"
+      ],
+      "interpretation": "Focused GitHub Actions 39201872962 PASS; original 768 complete [13,16] signed cells and 973 SI10 parent/3892 complete exterior negative cells, all source2 true rational supported Fourier/sinh pole; true actual original signed odd e2 source lower >=133828434089/125000000000>1, rigorous positive RAYLEIGH for this one physical supported source. 25/470 complete odd PSD/inertia, even, Weil, CC27/RH OPEN and independent math audit separate.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM52-original-coupled-sin-xcos-signed-form",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "original-signed-complete-2source-cross-offdiagonal-Lowner-positive-gate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm52_original_coupled_sin_xcos.py"
+      ],
+      "interpretation": "Original actual same-center sine e2 and degree-one xcos physical source full 2x2 true signed m form Loewner LOWER with all 768 original core, 973 parent/3892 signed outer subcells, 49 original signed-positive disjoint Jensen windows, actual physical sinh pole UPPER; source-pair matrix exact determinant/pivot only. Failing lower-matrix PD doesn't mean actual negative eigenvalue. Original 25/470 Wodd/even Weil CC27 RH OPEN. Focused 39205091881 PASS: complete original 2x2 rational lower strictly positive by determinant, actual physical 2D signed trial positivity only. Full original odd 25/470 and complete O1/O2 remain OPEN.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM52C-original-two-source-L2-coercivity",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-real-2D-physical-L2-coercivity-corollary",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm52c_original_L2_coercivity.py"
+      ],
+      "interpretation": "Replays passing original SM52 2x2 signed physical source Loewner lower, true original sin/xcos physical norm trace ceiling, and exact Q>=69/200||h||² on this 2D span only. Does not promote whole original Wodd/even/Weil/RH.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM54-original-signed-pole-adaptive-disjoint-3source",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-entire-signed-3source-improved-pole-schur-lower",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm54_original_pole_adaptive_Jensen.py"
+      ],
+      "interpretation": "Passing true original SM53 3x3 signed pole-included lower, up to 96 previously unused true original SI06 seven-prime/digamma whole-real positive signed cells [0,13], disjoint from 49 known SM12+SM49 bands and direct signed [13,16]. True physical sin/xcos/sinh input and complete source Fourier means/Loewner fee, exact effective Schur. A negative lower Schur does NOT prove original odd negative index; full 25/470/even/Weil RH remain open. First 96-cell complete original 3x3 signed full-matrix proof Actions 39212101376 PASS, effective pole lower Schur -0.070585452483 still inconclusive. Exhaustive 243-cell source-positive candidate run is next CI; original full odd/even/Weil RH stay OPEN.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM55-original-hierarchical-signed-three-source-pole",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-real-signpositive-refinement-complete-coupled-3source-schur",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm55_hierarchical_signed_pole.py"
+      ],
+      "interpretation": "SM54B 243-window saturation established, recurse rejected original 1/32 signed frequency cells to 1/256 real cells, no reuse of 49+96 old counted windows, evaluate source sin/xcos/sinh three-source whole-original signed lower and exact best-prefix Schur with every full3x3 error paid. Actual PD conditional positive all 3 minors, full original 25/470 odd index and even/Weil/CC27/RH remain OPEN. First full original source CI39265951866 PASS: best of 288 exact error-paid real candidates selects 242, raises original 3x3 complete signed LOWER Schur from -0.070585452483 to -0.058442558309, no full 3x3 PD or true negativity; full 25/470 W-ODD-NEG/even Weil RH OPEN.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM56-original-source-anisotropic-three-source-pole",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "scoped-original-true-signed-3source-componentwise-Loewner-error",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm56_original_anisotropic_error.py"
+      ],
+      "interpretation": "Exact full original SI10 sin2/xcos17/sinh24 3x3 physically signed original SM55 source lower replay; each of original 242 sign-positive disjoint cells has certified Fourier mean component radii and coupled symmetric entrywise interval product, row-sum diagonal Loewner charge for all 3 cross versus old scalar charge, exact complete Schur on original 3x3 and no full25/470 O1O2/even/Weil/RH promotion. Focused original full source all-cross Actions39270413282 PASS: 242 signed real window source error means independently certified; choose84 source anisotropic complete Loewner and158 scalar to improve original signed 3x3 pole Schur LOWER -0.058442558309 to -0.058397346916; actual signed source3 index<=1 ONLY on 3D physical span, full negative-index/complement and Weil/RH OPEN. Final-head CI separate.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM57-original-whole-negative-spectrum-all-25-source",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "complete-original-25-physical-source-entire-negative-upper-signed-25x25-lower",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm57_original_25source_negative_upper.py"
+      ],
+      "interpretation": "True SI10 entire 973 real negative-frequency leaves/107 clusters, original signed all-seven-prime/digamma h+κ cap, ALL original 25 physical sin/xcos/sinh source Fourier envelopes with all real-cell interval outward fees, Cauchy row domination valid for all real 25 coefficient vectors, combine full signed positiveLOW 25x25 true source lower and true exceptional physical pole rankone upper; exact true 25x25 signed Loewner lower, but no source PSD/negative index or complete 470 original Astar inverse/orthogonal remainder, odd O1/O2/even/Weil/RH.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM58-original-complete-coupled-negative-25source",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "complete-original-25physical-source-true-negative-Fourier-coupled-matrix-upper",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm58_original_coupled_25negative.py"
+      ],
+      "interpretation": "All original 973 true signed-negative SI10 leaves and all 25 genuine SM42 SI10 sin/xcos/sinh physical source Fourier midpoint+derivative vectors. Exact affine cell TT mean and complete Loewner remainder full source covariance UPPER, compared against original SM57 independent full-source diagonal majorant via valid convex mixtures. Full SM47+SM49 positive LOW and true sinh pole UPPER yield exact signed 25x25 lower; exact rational symmetric inertia gives at most source-restricted 25D negative-index ceiling, NEVER actual negative witness or full 470/infinite odd O1O2/even/Weil/RH.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM59A-original-25D-source-rank-aware-index23",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "actual-source-restricted-negative-index-ceiling-by-dimension",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm59a_rank_aware_25source.py"
+      ],
+      "interpretation": "SM57/SM58 full original 25-source actions passed; reconstruct physical SI10 25-source Gram strictly SPD, replay passing original complete signed 2D sin2/xcos17 PD and physical L2 coercivity. Actual source-restricted negative index at most 25-2=23, not exact and not full odd operator index. Never splice SM52 positive 2x2 into full SM58 lower without source-cross correction.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM59B-original-25source-negative-leafwise-hybrid",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "full-original-25source-negative-coupled-per-leaf-upper-optimization",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm59b_original_25source_leafwise_upper.py"
+      ],
+      "interpretation": "Recompute all original SI10 973 whole-real signed-negative leaves with all25 physical sine/xcos/sinh actual Fourier midpoint+derivative and rigorous full matrix error; choose per-leaf between independent SM57 diagonal cap and SM58 complete coupled upper according to exact rational trace or individual source2/source17/pole24 diagonal (not claiming Loewner dominance). Full 25source signed lower rational inertia exact. 25D true negative index <=23 independently via SM59A positive 2-plane. Full 470 source orthogonal remainder, original odd O1/O2/even/Weil CC27 RH OPEN. SM59B original first and diagnostic CI failed at expanded-versus-minimal inertia dictionary equality, resolved by exact 3-count compare plus pivot counts/trace/source diagonal equality; full original SM58 passing 25x25 negative UPPER and signed LOWER 625 entry SHA256 both pinned and required. End-to-end final-head CI pending. No actual negative witness from lower inertia.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM60-original-23D-reference-lower-no-go",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "exact-complement-inertia-scope-diagnostic-on-25source-signed-lower",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm60_23complement_lower_nogo.py"
+      ],
+      "interpretation": "Reconstruct passing SM58 all25 true-source original signed lower and negative Fourier upper, replay 625x2 exact hashes, certify exact rational 23 negative LDL pivots of reference restriction to complementary source coordinates other than original physical positive sin2/xcos17. Negative L does NOT mean actual Q negative, original 25D actual index remains <=23 and complete 23D Q Schur and 470 infinite odd operator/even/Weil/RH remain OPEN.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM61-original-actual-signed-23D-Schur-cross",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "original-actual-signed-mixed-source-23D-Schur-Loewner-two-sided",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm61_actual_23schur_two_sided.py"
+      ],
+      "interpretation": "Original SM58 genuine full25 source signed lower L and entire negative Fourier upper exact 625x2 hash replay, independent entire original Ao positive multiplier SM41+SM42 complete low and infinite tail UPPER U, full L<=Qactual<=U source25. Bound 46 actual signed anchor2 to 23D complement B crosses via PSD (Q-L) entry Cauchy; SM52 actual 2D A>=ell I positive inverse, full 23D Schur Sactual>= L_R -||B||F²/ell I with outward fee. Negative lower no true negative proof. Original 470 Astar strong remainder and W-ODD-NEG O1O2, even, Weil/CC27/RH OPEN.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM62-original-full25-338-disjoint-positive-lift",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "whole-original-25phys-source-positive-Fourier-mean-and-complement-lower",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm62_full25_338signed_positive.py"
+      ],
+      "interpretation": "Source25 exact all625 passing SM58 negative UPPER and signed LOWER SHA256 replay. Reuse old SM54 top96 and SM55 exact 242 real sign-positive window best-prefix, exclude old49 disjoint precredited bands and all overlaps, credit only delta=mlo−κ (κ Gram already included). True analytic original all25 SI10 source Fourier midpoint means, full second-frequency Taylor error, whole 25D Gram of added means with total scalar 25D Loewner fee. Four entire 25D signed lower and 23 coordinate complement exact rational inertias; negative LOWER is NOT negative actual source direction or full odd index. W-ODD-NEG complete odd/470 residual/even Weil CC27 RH OPEN.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM63-direct-third-positive-original-supported-3source",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "original-direct-full-signed-real-heterogeneous-3source-third-positive-plane",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm63_direct_third_source_odd.py"
+      ],
+      "interpretation": "Actual original full signed source g1,g2,g17 with differing supported sine centers, full signed core [13,16]768 cells, negative outside entire SI10 973/3892 cells, real signed old49+new338 strictly positive disjoint windows, original full 3x3 source analytic Fourier mean+affine errors, true sinh exceptional pole. Exact 3x3 Sylvester ALL POSITIVE accepts actual signed positive 3plane/source25 index <=22; if not, retain <=23 from SM59A, NO true negative vector inferred. Complete odd O1O2/infinite 470 strong remainder/even Weil CC27 RH open.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "SM65-original-actual-22D-anisotropic-signed-Schur",
+      "obligation_id": "W-ODD-NEG",
+      "role": "verification",
+      "scope_role": "actual-original-supported-source25-positive-anchor3-complement22-anisotropic-mixed-sign-Schur",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_sm65_original_22schur_anisotropic.py"
+      ],
+      "interpretation": "Recompute true SM58 negative upper and signed LOWER all625 exact hashes, reproduce passing SM62 full25 true signed lower with added338 source-positive windows SHA256, certify passing SM63 true original physical [1,2,17] signed lower3 exact SHA and ell>0. SM41/42 full positive original UPPER U25 gives E=U-L62>=Q-L62>=0; full 66 ACTUAL source mixed Bij Loewner Cauchy interval, weighted source-specific diagonal row penalty B^T A^-1 B<=D22 and true ACTUAL source22 Schur LOWER L62_R-D22, exact rational full 22D inertia diagnostics. Negative LOWER not actual negative mode, full original odd 470 strong remainder/even Weil CC27 RH OPEN.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "NF356-364-historical-SHA-manifest",
+      "obligation_id": "W-ODD-NEG",
+      "role": "retained-prerequisite",
+      "argv": [
+        "python3",
+        "scripts/local_replay/verify_provisional_manifest.py"
+      ],
+      "interpretation": "Byte-level historical 48-record manifest only, not native Arb replay, signed operator positivity or RH; parent-artifact plus nine replay CI in .github/workflows/nf356-364-historical-verify.yml.",
+      "cadence": "per-update"
+    }
+  ],
+  "note": "Exact preserved original odd active-check selector before EF15 obligation reassignment. The scripts, original findings, original PRs, NF401 and the odd open obligation are not deleted. To reactivate, use a reviewed manifest update; do not treat this historical roster as concurrently active."
+}
