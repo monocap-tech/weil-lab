@@ -1,0 +1,19 @@
+{
+  "pass": "NF399",
+  "source_native_sha256": "bae006e4fb542c4b0c6d184ae8cfbc2e7c924d45c89092ebda89cf0c6057c877",
+  "source_original_signed_archive_zip_sha256": "f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0",
+  "original_selected_dimension": 242,
+  "original_source_probe": "frozen NF387 j387, no new signed cells",
+  "cutoff": "16777216",
+  "candidate_norm_strict_lower": "3153944/10000000",
+  "exact_cone_lower_squared_pass": true,
+  "exact_universal_norm_squared_pass": true,
+  "exact_negative_projection_required_pass": true,
+  "excluded_candidates": "ALL j in J242 with <j,j387> >= 0; residual > 0.3153944",
+  "necessary_for_lowband_error_le_tau": "||j|| > 0.3153944 AND <j,j387> < 0",
+  "full_lowband_upper_established": false,
+  "all_J242_candidates_excluded": false,
+  "operator_domain_independently_audited": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
