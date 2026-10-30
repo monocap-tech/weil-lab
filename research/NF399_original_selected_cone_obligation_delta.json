@@ -1,0 +1,17 @@
+{
+  "pass": "NF399",
+  "active_obligation": "W-ODD-NEG",
+  "previous": "NF398 original signed moment STOP only for j387; native run 41020297471 and durable SHA-pinned evidence accepted",
+  "current": "Original J242 candidate-independent necessary cone/norm restrictions on inherited lowband approximation",
+  "method": "Cauchy dual probe of true pole-restored selected signed scalar using exact NF398 Arb intervals and certified NF375 highband H; zero new signed cells",
+  "certified_scope": "ALL j in original J242 with <j,j387> >= 0 excluded from lowband tolerance: residual >3153944/10000000; any successful j must satisfy <j,j387><0 and ||j||>3153944/10000000",
+  "standing": "EXACT SOURCE-PINNED NECESSARY METHOD GATE; CONDITIONAL ON INHERITED STRONG DOMAIN",
+  "next": "Original 242D pole-restored selected signed moment column with physical Gram projection; full lowband upper remains required",
+  "original_full_lowband_upper": "OPEN",
+  "original_J242_all_candidate_failure": false,
+  "whole_exterior_inverse": "OPEN",
+  "general_operator_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "source_native_sha256": "bae006e4fb542c4b0c6d184ae8cfbc2e7c924d45c89092ebda89cf0c6057c877"
+}
