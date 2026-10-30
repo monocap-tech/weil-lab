@@ -1,0 +1,53 @@
+name: Weil-Lab NF404 original selected pole shear exact
+on:
+  push:
+    branches: [research/nf404-original-selected-endpoint-jet]
+    paths:
+      - '.github/workflows/nf404-original-pole-shear-exact.yml'
+      - 'scripts/local_replay/nf404_original_selected_pole_shear_exact.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-selected-pole-shear:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf404-original-selected-endpoint-jet
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independent exact original source pole and selected Gram power retyping
+        run: |
+          python3 -m py_compile scripts/local_replay/nf404_original_selected_pole_shear_exact.py
+          python3 scripts/local_replay/nf404_original_selected_pole_shear_exact.py --output /tmp/NF404_original_selected_pole_shear_exact.json
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          x=json.load(open('/tmp/NF404_original_selected_pole_shear_exact.json'))
+          assert F(109,10**23)<F(x['original_selected_after_pole_shear_power_lower_exact'])
+          assert F(x['original_selected_after_pole_shear_power_upper_exact'])<F(11,10**22)
+          assert F(x['exact_sufficient_new_full_supported_centered_scalar_power_upper_target'])>F(x['original_selected_after_pole_shear_power_lower_exact'])
+          assert x['actual_original_full_supported_centered_scalar_integrated'] is False
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          PY
+      - name: Preserve exact original source pole-centering receipt
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF404_original_selected_pole_shear_exact.json
+          if test -f "$target"; then
+            cmp -s "$target" /tmp/NF404_original_selected_pole_shear_exact.json
+          else
+            cp /tmp/NF404_original_selected_pole_shear_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF404 source-exact pole shear of accepted J242 projection and centered scalar gate'
+            git pull --rebase origin research/nf404-original-selected-endpoint-jet
+            git push origin HEAD:refs/heads/research/nf404-original-selected-endpoint-jet
+          fi
