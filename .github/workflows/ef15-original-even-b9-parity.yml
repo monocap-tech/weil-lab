@@ -1,0 +1,29 @@
+name: EF15 original even b9 parity/cofinite entry
+on:
+  push:
+    branches:
+      - research/ef15-original-even-b9-parity-handoff
+  pull_request:
+    branches:
+      - research/nf401-original-column-independent-receipt-recovery
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  even-original-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay source-authentic even parity and Schur sign gate
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef15_original_even_b9_parity.py
+          python scripts/validate_rpb108_ef15_original_even_b9_parity.py
+      - name: Verify active obligation governance
+        run: |
+          python scripts/verify_obligation_manifest.py
