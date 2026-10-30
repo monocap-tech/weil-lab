@@ -1,0 +1,120 @@
+name: Weil-Lab NF394 original selected signed-native durable branch receipt (NOT RH)
+on:
+  push:
+    branches:
+      - research/nf394-native-selected-moment-durable-receipt
+    paths:
+      - .github/workflows/nf394-original-native-selected-receipt.yml
+      - scripts/local_replay/nf394_original_native_j387_receipt.py
+      - scripts/verify_nf390_original_j387_selected_moment.py
+      - scripts/local_replay/nf393_original_pole_source_cancellation_preflight.py
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: nf394-original-selected-native-custody
+  cancel-in-progress: false
+jobs:
+  authentic-original-native-selected-custody:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf394-native-selected-moment-durable-receipt'
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf394-native-selected-moment-durable-receipt
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pinned Arb / exact original source dependencies
+        run: pip install --only-binary=:all: python-flint==0.8.0 numpy scipy
+      - name: Source-only actual SHA-pinned original signed/pole input preflight
+        run: |
+          python3 -m py_compile scripts/verify_nf390_original_j387_selected_moment.py \
+            scripts/local_replay/nf393_original_pole_source_cancellation_preflight.py \
+            scripts/local_replay/nf394_original_native_j387_receipt.py
+          mkdir -p artifacts
+          python3 scripts/local_replay/nf393_original_pole_source_cancellation_preflight.py \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --output artifacts/NF394_source_only_pole_input_preflight.json
+          python3 scripts/local_replay/nf392_original_j387_polynomial_norm_gate.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --output artifacts/NF394_original_polynomial_gate_source_only.json
+      - name: Retrieve original signed selected complete J archive at fixed historical SHA
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/12776684037/zip" \
+            -o artifacts/original_selected_signed_20261028.zip
+          echo 'f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0  artifacts/original_selected_signed_20261028.zip' | sha256sum -c -
+      - name: Actual native original J242 matched signed selected moment; mandatory direct odd pole
+        run: |
+          python3 -u scripts/verify_nf390_original_j387_selected_moment.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --archive artifacts/original_selected_signed_20261028.zip \
+            --output artifacts/NF394_original_j387_pole_restored_native.json
+      - name: Verify native pole consistency and original exact candidate classification
+        run: |
+          python3 scripts/local_replay/nf394_original_native_j387_receipt.py \
+            --native artifacts/NF394_original_j387_pole_restored_native.json \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --output artifacts/NF394_original_j387_selected_native_acceptance.json
+          python3 - <<'PY'
+          import json
+          a=json.load(open('artifacts/NF394_original_j387_selected_native_acceptance.json'))
+          assert a['physical_pole_independent_overlap_intersection_pass'] is True
+          assert a['full_odd_pole_restoration_interval_intersection_pass'] is True
+          assert a['recomputed_nf391_nf392_source_native_exact_verdict'] in ('STOP','INCONCLUSIVE')
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          print('NF394 authentic original j387 native decision:',a['recomputed_nf391_nf392_source_native_exact_verdict'])
+          PY
+      - name: Archive only verified native source results on unmerged research branch
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          src=Path('artifacts')
+          dst=Path('notes/data/provisional')
+          for name in ('NF394_original_j387_pole_restored_native.json','NF394_original_j387_selected_native_acceptance.json'):
+            raw=(src/name).read_bytes()
+            p=dst/name
+            if p.exists():
+              assert p.read_bytes()==raw, 'Refuse to replace existing native result'
+            else:
+              p.write_bytes(raw)
+            print('NF394 durable source receipt',p)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notes/data/provisional/NF394_original_j387_pole_restored_native.json \
+                  notes/data/provisional/NF394_original_j387_selected_native_acceptance.json
+          if git diff --cached --quiet; then
+            echo 'Original NF394 source-native receipt already archived, no rewrite'
+          else
+            git commit -m 'NF394 permanently archive genuine original selected signed moment and exact verified method verdict'
+            git pull --rebase origin research/nf394-native-selected-moment-durable-receipt
+            git push origin HEAD:refs/heads/research/nf394-native-selected-moment-durable-receipt
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf394-original-native-selected-receipt-or-failure-evidence
+          path: |
+            artifacts/NF394_source_only_pole_input_preflight.json
+            artifacts/NF394_original_polynomial_gate_source_only.json
+            artifacts/NF394_original_j387_pole_restored_native.json
+            artifacts/NF394_original_j387_selected_native_acceptance.json
+          if-no-files-found: ignore
