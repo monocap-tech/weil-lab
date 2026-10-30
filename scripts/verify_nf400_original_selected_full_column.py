@@ -1,0 +1,390 @@
+#!/usr/bin/env python3
+"""NF400 original entire J242 signed response column, with frozen j387 check.
+
+Uses immutable ORIGINAL 242 selected signed WJJ and 968 WJF archive, 
+the unchanged original rank/source and physical J242 projection.
+No new signed kernel cells, no Fourier quadrature, no full residual upper.
+
+For h=j387 in J242, W(u4,h) != <m(D)u4,h> until the odd pole is restored:
+<m(D)u4,h> = Wodd(u4,h) + 2<u4,s><h,s>.
+Uses this scalar to certify a necessary low-band mismatch lower, and tests 
+the fixed NF387 trial against NF375's original fourth low-band target.
+"""
+import argparse, hashlib, json, zipfile, time
+from fractions import Fraction as F
+from pathlib import Path
+import flint
+from flint import arb, arb_mat, ctx
+import verify_rpb108_si29_full_J_L2_normalization as phys
+from verify_rpb108_original_signed_frame_transport import candidate
+from verify_nf374_original_matched_curvature import load,dyad,RANK_SHA,PR355_SHA,NF369_SHA,TNUM
+from verify_nf379_original_unfitted_signed_dual import makeF,PREC
+from verify_nf380_original_archived_signed_dual import (
+  ARCHIVE_SHA,M_SHA,MIX_SHA,FRAME_SHA,NF375_SHA,
+  arbball,interval,mat2_ball
+)
+
+J387_GIT_BLOB_SHA='d705ae312be5324bff64f3a9540e30e8b8bd34dc'
+B=F(11,10)
+
+def apply_archived_qtranspose_to_one_vector(x, householder_vectors):
+    """Q=H_0*H_1*...*H_(n-1) from ORIGINAL immutable signed archive.
+
+    Since H_i=I-2 v_i v_i^T/(v_i^T v_i) are symmetric,
+    Q.T*x=H_(n-1)*...*H_0*x, so apply reflections k=0..n-1
+    directly to the CURRENT vector. O(n^2) Arb vs dense Q O(n^3).
+    All arithmetic remains rigorously outward-rounded in python-flint.
+    """
+    n=x.nrows()
+    # The original signed archive may have FEWER than n reflectors;
+    # the historical decoder itself never assumed a full n-reflection list.
+    # Replay exactly the archived finite product, including identity tail.
+    assert x.ncols()==1 and 0<len(householder_vectors)<=n
+    y=arb_mat([[x[i,0]] for i in range(n)])
+    for k,r in enumerate(householder_vectors):
+        assert r['start']==k and len(r['vector'])==n-k
+        v=[dyad(pair) for pair in r['vector']]
+        norm=sum((u*u for u in v),arb(0))
+        assert norm.lower()>0
+        dot=sum((v[i]*y[k+i,0] for i in range(n-k)),arb(0))
+        gain=2*dot/norm
+        for i in range(n-k):
+            y[k+i,0]=y[k+i,0]-gain*v[i]
+    return y
+
+
+
+def archived_q_forward_to_one_vector(x, householder_vectors):
+    """Apply Q=H0...H(r-1) to one column: REVERSE application order."""
+    n=x.nrows()
+    assert x.ncols()==1 and 0<len(householder_vectors)<=n
+    y=arb_mat([[x[i,0]] for i in range(n)])
+    for k in range(len(householder_vectors)-1,-1,-1):
+        r=householder_vectors[k]
+        assert r['start']==k and len(r['vector'])==n-k
+        v=[dyad(pair) for pair in r['vector']]
+        length=sum((t*t for t in v),arb(0))
+        assert length.lower()>0
+        dot=sum((v[i]*y[k+i,0] for i in range(n-k)),arb(0))
+        factor=2*dot/length
+        for i in range(n-k):
+            y[k+i,0]=y[k+i,0]-factor*v[i]
+    return y
+
+
+def conservative_interval(x, radius):
+    assert radius.lower()>=0
+    a=x-radius
+    b=x+radius
+    return [interval(a)[0],interval(b)[1]]
+
+def read_candidate(path):
+    raw=Path(path).read_bytes()
+    git_sha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\x00'+raw).hexdigest()
+    assert git_sha==J387_GIT_BLOB_SHA
+    j=json.loads(raw)
+    assert j['original_rank_sha256']==RANK_SHA
+    assert j['original_nf375_source_sha256']==PR355_SHA
+    assert j['original_nf375_git_blob_sha1']=='03c709571046d3f09307614aaded9749f5a15ba1'
+    assert j['W_ODD_NEG']==j['RH']=='OPEN'
+    ns=j['coefficients_raw_source_numerators']
+    assert len(ns)==242 and ns[0]==-10753633 and ns[2]==8887300
+    assert all(v==0 for i,v in enumerate(ns) if i not in (0,2))
+    assert j['coefficients_dyadic_denominator_power']==48
+    return ns,j
+
+def main(args):
+    start=time.monotonic()
+    assert flint.__version__=='0.8.0'
+    ctx.prec=PREC
+    rank=load(args.rank,RANK_SHA)
+    source=load(args.source,PR355_SHA)['data']
+    parent=load(args.nf369,NF369_SHA)['data']
+    gate=load(args.nf375,NF375_SHA)
+    ns,jmeta=read_candidate(args.j387)
+    assert parent['selected_rank']==242 and len(source['target_probes'])==4
+    t4=[z for z in gate['directions'][3]['dyadic_cutoff_options'] if z['log2_cutoff']==24]
+    assert len(t4)==1 and t4[0]['exact_squared_original_individual_gate'] is True
+    tau=F(t4[0]['chosen_future_lowband_target'])
+    high=F(t4[0]['highband_upper'])
+    assert tau==F(7,25*10**12) and high>0
+    assert gate['W_ODD_NEG']==gate['RH']=='OPEN'
+    raw=Path(args.archive).read_bytes()
+    assert hashlib.sha256(raw).hexdigest()==ARCHIVE_SHA
+    with zipfile.ZipFile(args.archive) as z:
+        matrix_raw=z.read('original_selected_signed_matrix.json')
+        mixed_raw=z.read('original_exterior_refined_mixed.json')
+    assert hashlib.sha256(matrix_raw).hexdigest()==M_SHA
+    assert hashlib.sha256(mixed_raw).hexdigest()==MIX_SHA
+    mat=json.loads(matrix_raw);mixed=json.loads(mixed_raw)
+    assert mat['selected_rank']==mixed['retained_source_count']==242
+    assert mat['complete_upper_triangle_entries']==242*243//2
+    assert mixed['complete_mixed_entry_count']==968
+    assert mixed['all_968_seven_prime_and_true_pole_cross_checks_passed']
+    assert mat['Laplace_terms']==mixed['Laplace_terms']==384
+    assert mat['exact_dyadic_frame_transform_sha256']==FRAME_SHA
+    assert mat['input_sha256']['rank']==mixed['rank_input_sha256']==RANK_SHA
+    sq1=F(mat['double_frame_uniform_error_Frobenius_squared_upper'])
+    sq2=F(mat['native_matrix_radius_Frobenius_squared_upper'])
+    assert sq1>=0 and sq2>=0 and sq1+sq2<F(1,10**780)
+    freqs,C=makeF(source)
+    assert [F(z) for z in mixed['target_sine_frequencies']]==freqs
+    for old,new in zip(mixed['target_probes'],source['target_probes']):
+        assert [F(z) for z in old['sine_coefficients']]==[F(z) for z in new['sine_coefficients']]
+        assert F(old['sinh_coefficient'])==F(new['sinh_coefficient'])
+    nodes=[];expected=[];offset=0
+    for (c,maxk),count in zip(rank['original_nodes'],rank['selected_multiplicities']):
+        assert 0<=count<=maxk
+        for k in range(count):
+            nodes.append((F(c),k))
+            expected.append((offset+k,str(F(c)),k))
+        offset+=maxk
+    assert len(nodes)==241 and rank['retained_original_pole'] and offset==469
+    nodes.append((None,None));expected.append((469,None,None))
+    assert [(r['original_source_index'],r['center'],r['order']) for r in mixed['rows']]==expected
+    J=[phys.pole_terms() if c is None else phys.source_terms(c,k) for c,k in nodes]
+    base=[phys.source_terms(f,0) for f in freqs]+[phys.pole_terms()]
+    Fs=[]
+    for col in range(4):
+        term=[]
+        for t in range(33):
+            term.extend((p,k,f,v*C[t,col]) for p,k,f,v in base[t])
+        Fs.append(term)
+    print('NF390 reconstruct original physical 242 Gram and four matched source columns',flush=True)
+    K=phys.Integrals()
+    H=arb_mat(242,242)
+    for i in range(242):
+        for k in range(i+1):
+            H[i,k]=H[k,i]=phys.gram(J[i],J[k],K)
+    D=candidate(H)
+    N=D.transpose()*H*D
+    assert max(sum((abs(N[i,k]-int(i==k)) for k in range(242)),arb(0))
+               for i in range(242)) < arb('0.01')
+    digest=hashlib.sha256()
+    for i in range(242):
+        for k in range(242):
+            digest.update((json.dumps(phys.dyadic(D[i,k]),separators=(',',':'))+'\n').encode())
+    assert digest.hexdigest()==FRAME_SHA, 'original physical frame SHA changed'
+    V=arb_mat([[phys.gram(j,f,K) for f in Fs] for j in J])
+    Y=N.solve(D.transpose()*V,algorithm='lu')
+    X=D*Y
+    assert max(abs((H*X-V)[i,k]).upper() for i in range(242) for k in range(4))<arb('1e-80')
+    G=arb_mat([[phys.gram(f,g,K) for g in Fs] for f in Fs])
+    S=G-V.transpose()*X
+    S=(S+S.transpose())/2
+    for i in range(4):
+        for k in range(4):
+            assert (S[i,k]-arbball(parent['physical_quotient_Gram_native'][i][k])).contains(0)
+    print('NF390 exact original 16 physical Gram source overlaps and archive frame SHA PASS',flush=True)
+    # Original WJJ transformed basis and WJF raw-basis mixed are reused verbatim.
+    M=arb_mat(242,242)
+    for i,row in enumerate(mat['finite_transformed_signed_matrix_upper_native']):
+        assert len(row)==i+1
+        for k,t in enumerate(row): M[i,k]=M[k,i]=arbball(t)
+    # NF397: DO NOT construct dense Q. Two vector images below suffice.
+    archived_reflections=len(mat['householder_vectors'])
+    assert 0<archived_reflections<=242
+    print('NF398 original signed archive reflector count:',archived_reflections,
+          '(historical decoder used the actual archived list)',flush=True)
+    L=arb_mat([[arbball(r['entries'][k]['signed_native']) for k in range(4)] for r in mixed['rows']])
+    eps=phys.a(sq1+sq2).sqrt()
+    Y0=arb_mat([[dyad(parent['nf369_quotient_response_exact_dyadic_coefficients'][i][k]) for k in range(4)] for i in range(4)])
+    T=arb_mat([[phys.a(F(t,2**20)) for t in row] for row in TNUM])
+    I=arb_mat([[int(i==k) for k in range(4)] for i in range(4)])
+    scal=(I+Y0)*T
+    alpha=Y*arb_mat([[scal[k,3]] for k in range(4)])
+    f=arb_mat([[-(Y0*T)[k,3]] for k in range(4)])
+    z=arb_mat([[phys.a(F(n,2**48))] for n in ns])
+    assert (z.transpose()*H*z)[0,0].lower()>0
+    beta=N.solve(D.transpose()*H*z,algorithm='lu')
+    assert max(abs((D*beta-z)[i,0]).upper() for i in range(242))<arb('1e-85')
+    print('NF397 applying original archived Householder reflectors to two matched selected vectors',flush=True)
+    transformed_alpha=apply_archived_qtranspose_to_one_vector(alpha,mat['householder_vectors'])
+    transformed_beta=apply_archived_qtranspose_to_one_vector(beta,mat['householder_vectors'])
+    # Selected-vector isometry replaces expensive dense Q^T Q matrix test:
+    # exact Householder reflectors are orthogonal; these Arb checks detect
+    # a wrong order/rounding issue in the TWO specific source vectors.
+    da=(alpha.transpose()*alpha)[0,0]
+    db=(beta.transpose()*beta)[0,0]
+    dab=(alpha.transpose()*beta)[0,0]
+    da1=(transformed_alpha.transpose()*transformed_alpha)[0,0]
+    db1=(transformed_beta.transpose()*transformed_beta)[0,0]
+    dab1=(transformed_alpha.transpose()*transformed_beta)[0,0]
+    for old,new in ((da,da1),(db,db1),(dab,dab1)):
+        err=(abs(old-new)/(abs(old)+abs(da).sqrt()*abs(db).sqrt()+arb(1))).upper()
+        assert err<arb('1e-300'), 'original archived reflector two-vector isometry check failed'
+    print('NF397 original two-vector Householder isometry PASS',flush=True)
+    signed_J=mat2_ball(M,transformed_alpha,transformed_beta,eps)
+    print('NF397 original selected WJJ signed scalar with archived error payment computed',flush=True)
+    signed_F=(f.transpose()*L.transpose()*z)[0,0]
+    original_Wu4_j=signed_J+signed_F
+    # IMPORTANT: Wodd=P_I m(D) P_I-2|s><s|, s is the *retained* raw
+    # J pole at index 241. Since j in J, pole is NOT zero.
+    # Exact original-source identity: u4=F*T*e4-E*(I+Y0)*T*e4,
+    # E is physically J242-perpendicular and s=J[241] belongs to J242.
+    # Hence <u4,s> = <F*T*e4,s>, avoiding cancellation of the
+    # huge raw Y0*T source coefficients solely for this pole correction.
+    u4s_direct=(V*T)[241,3]
+    u4s_reconstructed=(H*D*alpha+V*f)[241,0]
+    assert (u4s_reconstructed-u4s_direct).contains(0), 'original pole identity failed'
+    u4s=u4s_direct
+    js=(H*z)[241,0]
+    correction=2*u4s*js
+    multiplier_moment=original_Wu4_j+correction
+    jnorm2=(z.transpose()*H*z)[0,0]
+    jnorm=jnorm2.sqrt()
+    discrepancy=multiplier_moment-jnorm2
+    abs_min=(arb(0) if discrepancy.contains(0) else min(abs(discrepancy.lower()),abs(discrepancy.upper())))
+    # For t_L= P_I F^-1(1_{|xi|<=L}m uhat4):
+    # |<t_L-j,j>| >= |<m(D)u4,j>-||j||²| - high *||j||.
+    # If this > tau*||j|| then the actual NF375 physical lowband upper
+    # is IMPOSSIBLE for this fixed j at this cutoff.
+    threshold=(phys.a(tau+high)*jnorm).upper()
+    candidate_stopped=bool(abs_min>threshold)
+    # Positive lower on actual squared Fourier-primal mismatch on whole line.
+    lower=arb(0) if abs_min<=phys.a(high)*jnorm.upper() else (abs_min-phys.a(high)*jnorm.upper())/jnorm.upper()
+
+    # NF400: full original selected response column, not 242 separate native pairings.
+    # In exact source notation:
+    #   D^T b = Q M Q^T alpha + D^T L f + 2<u4,s> D^T H e_s
+    # where b_i=<m(D)u4,J_i>, H is raw J242 physical Gram,
+    # N=D^T H D and M is the signed archive in Q-transformed frame.
+    # Q on a vector uses the archived reflectors in REVERSE application
+    # order; Q^T on a vector uses ascending application order (NF397).
+    assert archived_reflections==4  # observed and source-pinned NF398 true count
+    print('NF400 computing original 242-column D-frame signed response',flush=True)
+    signed_frame=archived_q_forward_to_one_vector(
+        M*transformed_alpha,mat['householder_vectors'])
+    raw_pole=arb_mat([[H[i,241]] for i in range(242)])
+    d_frame_signed=signed_frame + D.transpose()*L*f
+    d_frame_pole=2*u4s*(D.transpose()*raw_pole)
+    d_frame_multiplier=d_frame_signed+d_frame_pole
+
+    # Independently re-contract ALL 242 components with frozen j387 to
+    # match the original NF398 single scalar, INCLUDING the odd pole.
+    bilinear_d=(beta.transpose()*d_frame_signed)[0,0]
+    bilinear_m=(beta.transpose()*d_frame_multiplier)[0,0]
+    assert (bilinear_d-original_Wu4_j).contains(0), 'signed archive column/scalar mismatch'
+    assert (bilinear_m-multiplier_moment).contains(0), 'pole-restored column/scalar mismatch'
+    print('NF400 authentic original signed 242-column / j387 contraction PASS',flush=True)
+
+    # Actual original raw selected-source moments are H*D*N^-1 d_frame;
+    # near-isometry N remains the independently SHA-checked physical Gram.
+    N_inv_response=N.solve(d_frame_multiplier,algorithm='lu')
+    projected_norm_squared=(d_frame_multiplier.transpose()*N_inv_response)[0,0]
+    assert projected_norm_squared.lower()>0
+    projected_norm=projected_norm_squared.sqrt()
+    raw_multiplier_column=H*D*N_inv_response
+    assert ((z.transpose()*raw_multiplier_column)[0,0]-multiplier_moment).contains(0)
+
+    # The archived WJJ frame has a certified full matrix error <=eps in
+    # Frobenius norm. This gives an additive Euclidean D-frame column
+    # error <=eps||alpha|| and a physical projected-norm error paid
+    # using certified row-sum |N-I|<0.01 (lambda_min(N)>0.99).
+    archive_frame_l2_error=eps*da.sqrt()
+    physical_norm_error=archive_frame_l2_error/arb('0.99').sqrt()
+    assert physical_norm_error.upper()<arb('1e-150')
+    physical_projected_norm_interval=conservative_interval(
+        projected_norm,physical_norm_error)
+    raw_intervals=[
+        conservative_interval(raw_multiplier_column[i,0],
+            archive_frame_l2_error*(H[i,i]/arb('0.99')).sqrt())
+        for i in range(242)
+    ]
+    d_intervals=[
+        conservative_interval(d_frame_multiplier[i,0],archive_frame_l2_error)
+        for i in range(242)
+    ]
+    projection_report={
+        'standing':'NF400 original full 242D selected physical moment column; no lowband upper or odd Weil conclusion',
+        'original_native_NF398_selected_scalar_source_sha256':
+           'bae006e4fb542c4b0c6d184ae8cfbc2e7c924d45c89092ebda89cf0c6057c877',
+        'original_signed_archive_zip_sha256':ARCHIVE_SHA,
+        'original_signed_archive_matrix_sha256':M_SHA,
+        'original_signed_archive_mixed_sha256':MIX_SHA,
+        'original_frame_sha256':FRAME_SHA,
+        'original_rank_sha256':RANK_SHA,
+        'original_nf369_sha256':NF369_SHA,
+        'nf387_selected_raw_candidate_git_blob_sha1':J387_GIT_BLOB_SHA,
+        'original_dimension':242,
+        'original_archived_reflector_count':archived_reflections,
+        'source_signed_cells_reused':30371,
+        'new_signed_kernel_cells':0,
+        'full_original_physical_selected_Gram_checked':True,
+        'original_16_physical_quotient_Gram_checks':True,
+        'original_242D_signed_column_scalar_contraction_pass':True,
+        'original_242D_multiplier_column_scalar_contraction_pass':True,
+        'original_pole_restored':True,
+        'original_selected_D_frame_moment_column_outward':d_intervals,
+        'original_selected_raw_J_basis_moment_column_outward':raw_intervals,
+        'original_projected_norm_interval_outward':physical_projected_norm_interval,
+        'original_projected_norm_squared_native_interval':interval(projected_norm_squared),
+        'certified_global_source_archive_D_frame_l2_error_upper':
+           str(archive_frame_l2_error.upper()),
+        'normalization_N_row_sum_off_identity_upper':'1/100',
+        'frozen_j387_selected_moment_check_interval':interval(bilinear_m),
+        'original_complete_lowband_upper_computed':False,
+        'whole_infinite_exterior_inverse_computed':False,
+        'general_operator_domain_independently_audited':False,
+        'W_ODD_NEG':'OPEN','RH':'OPEN'
+    }
+    projection_path=Path(args.projection_output)
+    projection_path.parent.mkdir(parents=True,exist_ok=True)
+    projection_path.write_text(json.dumps(projection_report,indent=2)+'\n')
+    print('NF400 projection norm interval',physical_projected_norm_interval,flush=True)
+    out={
+      'standing':'NF390 ORIGINAL J387 SELECTED SIGNED MOMENT AND POLE-CORRECTED SINGLE-MOMENT TEST; RH OPEN',
+      'original_rank_sha256':RANK_SHA,'original_source_sha256':PR355_SHA,
+      'original_nf369_sha256':NF369_SHA,
+      'original_signed_archive_zip_sha256':ARCHIVE_SHA,
+      'original_signed_archive_matrix_sha256':M_SHA,
+      'original_signed_archive_mixed_sha256':MIX_SHA,
+      'original_frame_sha256':FRAME_SHA,
+      'nf387_selected_raw_candidate_git_blob_sha1':J387_GIT_BLOB_SHA,
+      'signed_original_archive_JJ_JF_reused_cells':30371,
+      'fresh_original_signed_kernel_cells':0,
+      'original_physical_16_Gram_overlaps':True,
+      'original_selected_frame_sha_pass':True,
+      'original_householder_method':'original archived reflectors applied in ascending k to TWO vectors for Qtranspose images; dense Q never reconstructed',
+      'original_householder_full_dense_Q_constructed':False,
+      'original_householder_two_vector_isometry_check_pass':True,
+      'original_archived_householder_count':archived_reflections,
+      'original_archived_householder_expected_max_dim':242,
+      'original_householder_count_source':'len(original source-pinned signed archive householder_vectors)',
+      'pole_restored_for_selected_test':True,
+      'original_selected_pole_overlap_direct_original_FT_source_interval':interval(u4s_direct),
+      'original_selected_pole_overlap_reconstructed_full_match_interval':interval(u4s_reconstructed),
+      'original_pole_overlap_source_projection_identity_verified':True,
+      'original_Wodd_u4_j387_interval':interval(original_Wu4_j),
+      'original_pole_correction_plus_2_u4s_js_interval':interval(correction),
+      'original_multiplier_m_u4_j387_interval':interval(multiplier_moment),
+      'original_j387_physical_norm_squared_interval':interval(jnorm2),
+      'actual_selected_moment_discrepancy_interval':interval(discrepancy),
+      'actual_selected_moment_abs_lower':interval(abs_min)[0],
+      'original_NF375_fourth_cutoff':2**24,
+      'original_NF375_fourth_lowband_future_target':str(tau),
+      'original_NF375_fourth_highband_action_norm_upper':str(high),
+      'moment_needed_threshold_upper':str(F(int(0))) if False else interval(phys.a(tau+high)*jnorm),
+      'actual_original_j387_specific_NF375_lowband_candidate_stopped':candidate_stopped,
+      'actual_original_signed_lowband_integral_computed':False,
+      'actual_full_original_lowband_upper_computed':False,
+      'full_original_exterior_infinite_inverse_computed':False,
+      'W_ODD_NEG':'OPEN','RH':'OPEN'
+    }
+    # Preserve exact derived moment lower via native dyadic endpoint pair.
+    out['minimum_lowband_norm_lower_interval']=interval(lower)
+    out['candidate_method_stopped_only_if_strictly_proved']=candidate_stopped
+    dest=Path(args.output);dest.parent.mkdir(parents=True,exist_ok=True)
+    dest.write_text(json.dumps(out,indent=2)+'\n')
+    print('NF390 signed selected moment interval',str(multiplier_moment),flush=True)
+    print('NF390 original j physical norm2 interval',str(jnorm2),flush=True)
+    print('NF390 candidate strict selected moment STOP?',candidate_stopped,flush=True)
+    print('NF390 no original continuum lowband upper; whole W-ODD-NEG/RH OPEN',flush=True)
+    print('NF390 elapsed seconds',round(time.monotonic()-start,2),flush=True)
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser()
+    for key in ('rank','source','nf369','nf375','j387','archive','output'):
+        p.add_argument('--'+key,required=True)
+    p.add_argument('--projection-output',required=True)
+    main(p.parse_args())

@@ -1,0 +1,22 @@
+{
+  "pass": "NF400",
+  "active_obligation": "W-ODD-NEG",
+  "previous": "NF399 accepted exact cone and norm gate for original J242, CI 41022059857 success",
+  "current": "Exact complete original 242D source-native pole-restored signed moment column and physical Gram projection identity; native acceptance unverified until CI",
+  "mathematical_reduction": "D^T b=Q M Q^T alpha + D^T L f + 2<u4,s>D^T H e241, b=H D (D^T H D)^-1 (D^T b), selected norm^2=(D^T b)^T (D^T H D)^-1 (D^T b)",
+  "original_signed_cells_reused": 30371,
+  "new_signed_kernel_cells": 0,
+  "original_reflector_count": 4,
+  "source_NF398_sha256": "bae006e4fb542c4b0c6d184ae8cfbc2e7c924d45c89092ebda89cf0c6057c877",
+  "standing": "ANALYTIC ORIGINAL SOURCE FINITE-COLUMN FORMULA PROVED CONDITIONAL ON ORIGINAL DOMAIN; NATIVE NUMERIC OUTPUT PENDING",
+  "next": "Native original full 242D column and projected physical norm acceptance; thereafter certify actual J242-perpendicular lowband upper (target 2.75e-13), and j* Fourier tail/domain before selected lowband acceptance",
+  "full_lowband_upper": "OPEN",
+  "whole_exterior_inverse": "OPEN",
+  "original_operator_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "complement_only_acceptance": "If original ||(I-P_J)t_L|| <= 11/40000000000000 then j*=P_J m(D)u4 satisfies ||t_L-j*||<7/25000000000000 by exact squared original highband H; full complement upper remains unmeasured",
+  "complement_exact_rational_gate": true,
+  "complement_upper_measured": false,
+  "selected_projection_fourier_tail_acceptance": "OPEN"
+}
