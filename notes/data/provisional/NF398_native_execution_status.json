@@ -1,0 +1,14 @@
+{
+  "pass": "NF398",
+  "standing": "ORIGINAL NATIVE EXECUTION / STRICT SELECTED METHOD VERDICT ONLY",
+  "run_id": "41020297471",
+  "source_sha": "ac850300dcc8559670c389d971967e93b26bcc7c",
+  "native_job_result": "success",
+  "last_saved_phase": "original-native-source-verified",
+  "original_native_signed_selected_accepted": true,
+  "j387_method_verdict": "STOP",
+  "native_sha256": "bae006e4fb542c4b0c6d184ae8cfbc2e7c924d45c89092ebda89cf0c6057c877",
+  "original_full_lowband_upper": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
