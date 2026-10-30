@@ -10,7 +10,7 @@ on:
       - 'notes/data/provisional/NF401_original_242D_execution_receipt.json'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   source-pinned-exact-leakage-gate:
     if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf402-supported-fourier-tail-leakage-gate'
@@ -18,6 +18,9 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: research/nf402-supported-fourier-tail-leakage-gate
+          persist-credentials: true
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -25,7 +28,6 @@ jobs:
         run: |
           python3 -m py_compile scripts/local_replay/nf402_original_support_band_leakage_exact.py
           python3 scripts/local_replay/nf402_original_support_band_leakage_exact.py --output /tmp/NF402_original_support_band_leakage_exact.json
-          diff -u notes/data/provisional/NF402_original_support_band_leakage_exact.json /tmp/NF402_original_support_band_leakage_exact.json
           python3 - <<'PY'
           import json
           n=json.load(open('/tmp/NF402_original_support_band_leakage_exact.json'))
@@ -37,3 +39,20 @@ jobs:
           assert n['W_ODD_NEG']==n['RH']=='OPEN'
           print('NF402 original source exact method info gate PASS; all theorem gaps OPEN')
           PY
+      - name: Persist immutable-on-conflict exact original source gate on research branch
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF402_original_support_band_leakage_exact.json
+          if test -f "$target"; then
+            cmp -s "$target" /tmp/NF402_original_support_band_leakage_exact.json
+          else
+            cp /tmp/NF402_original_support_band_leakage_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF402 source-authenticated exact support-band leakage information gate'
+            git pull --rebase origin research/nf402-supported-fourier-tail-leakage-gate
+            git push origin HEAD:refs/heads/research/nf402-supported-fourier-tail-leakage-gate
+          fi
