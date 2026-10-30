@@ -1,0 +1,2 @@
+NF396: original selected pole correction rigorously bounded: -9.5e-9 < P < -9.2e-9.
+Signed Wodd selected remainder and j387 verdict open. W-ODD-NEG and RH open.

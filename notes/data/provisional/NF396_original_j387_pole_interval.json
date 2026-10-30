@@ -1,0 +1,22 @@
+{
+  "standing": "NF396 ORIGINAL SELECTED POLE INTERVAL STRICT; SIGNED REMAINDER OPEN",
+  "original_source_git_blob": "d87cf3cb9972bed42db4c54e89a05d742499d2d0",
+  "original_j387_git_blob": "d705ae312be5324bff64f3a9540e30e8b8bd34dc",
+  "physical_FTe4_pole_interval": [
+    "723/1000",
+    "725/1000"
+  ],
+  "j387_pole_interval": [
+    "-65/10000000000",
+    "-64/10000000000"
+  ],
+  "rank_one_pole_correction_interval": [
+    "-95/10000000000",
+    "-92/10000000000"
+  ],
+  "exact_rational_check": true,
+  "original_signed_Wodd_selected_unmeasured": true,
+  "j387": "UNDECIDED",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
