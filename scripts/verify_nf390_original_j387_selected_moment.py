@@ -27,6 +27,29 @@ from verify_nf380_original_archived_signed_dual import (
 J387_GIT_BLOB_SHA='d705ae312be5324bff64f3a9540e30e8b8bd34dc'
 B=F(11,10)
 
+def apply_archived_qtranspose_to_one_vector(x, householder_vectors):
+    """Q=H_0*H_1*...*H_(n-1) from ORIGINAL immutable signed archive.
+
+    Since H_i=I-2 v_i v_i^T/(v_i^T v_i) are symmetric,
+    Q.T*x=H_(n-1)*...*H_0*x, so apply reflections k=0..n-1
+    directly to the CURRENT vector. O(n^2) Arb vs dense Q O(n^3).
+    All arithmetic remains rigorously outward-rounded in python-flint.
+    """
+    n=x.nrows()
+    assert x.ncols()==1 and len(householder_vectors)==n
+    y=arb_mat([[x[i,0]] for i in range(n)])
+    for k,r in enumerate(householder_vectors):
+        assert r['start']==k and len(r['vector'])==n-k
+        v=[dyad(pair) for pair in r['vector']]
+        norm=sum((u*u for u in v),arb(0))
+        assert norm.lower()>0
+        dot=sum((v[i]*y[k+i,0] for i in range(n-k)),arb(0))
+        gain=2*dot/norm
+        for i in range(n-k):
+            y[k+i,0]=y[k+i,0]-gain*v[i]
+    return y
+
+
 def read_candidate(path):
     raw=Path(path).read_bytes()
     git_sha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\x00'+raw).hexdigest()
@@ -130,15 +153,9 @@ def main(args):
     for i,row in enumerate(mat['finite_transformed_signed_matrix_upper_native']):
         assert len(row)==i+1
         for k,t in enumerate(row): M[i,k]=M[k,i]=arbball(t)
-    Q=arb_mat([[int(i==k) for k in range(242)] for i in range(242)])
-    for k,r in enumerate(mat['householder_vectors']):
-        assert r['start']==k and len(r['vector'])==242-k
-        v=arb_mat([[arb(0) if i<k else dyad(r['vector'][i-k])] for i in range(242)])
-        norm=(v.transpose()*v)[0,0]
-        assert norm.lower()>0
-        Q=Q-2*(Q*v)*v.transpose()/norm
-    assert max(sum((abs((Q.transpose()*Q)[i,k]-int(i==k)) for k in range(242)),arb(0))
-               for i in range(242))<arb('1e-800')
+    # NF397: DO NOT construct dense Q. Two vector images below suffice.
+    assert len(mat['householder_vectors'])==242
+    print('NF397 original signed archive loaded; 242 Householder reflections to be applied to TWO vectors only',flush=True)
     L=arb_mat([[arbball(r['entries'][k]['signed_native']) for k in range(4)] for r in mixed['rows']])
     eps=phys.a(sq1+sq2).sqrt()
     Y0=arb_mat([[dyad(parent['nf369_quotient_response_exact_dyadic_coefficients'][i][k]) for k in range(4)] for i in range(4)])
@@ -151,7 +168,24 @@ def main(args):
     assert (z.transpose()*H*z)[0,0].lower()>0
     beta=N.solve(D.transpose()*H*z,algorithm='lu')
     assert max(abs((D*beta-z)[i,0]).upper() for i in range(242))<arb('1e-85')
-    signed_J=mat2_ball(M,Q.transpose()*alpha,Q.transpose()*beta,eps)
+    print('NF397 applying original archived Householder reflectors to two matched selected vectors',flush=True)
+    transformed_alpha=apply_archived_qtranspose_to_one_vector(alpha,mat['householder_vectors'])
+    transformed_beta=apply_archived_qtranspose_to_one_vector(beta,mat['householder_vectors'])
+    # Selected-vector isometry replaces expensive dense Q^T Q matrix test:
+    # exact Householder reflectors are orthogonal; these Arb checks detect
+    # a wrong order/rounding issue in the TWO specific source vectors.
+    da=(alpha.transpose()*alpha)[0,0]
+    db=(beta.transpose()*beta)[0,0]
+    dab=(alpha.transpose()*beta)[0,0]
+    da1=(transformed_alpha.transpose()*transformed_alpha)[0,0]
+    db1=(transformed_beta.transpose()*transformed_beta)[0,0]
+    dab1=(transformed_alpha.transpose()*transformed_beta)[0,0]
+    for old,new in ((da,da1),(db,db1),(dab,dab1)):
+        err=(abs(old-new)/(abs(old)+abs(da).sqrt()*abs(db).sqrt()+arb(1))).upper()
+        assert err<arb('1e-300'), 'original archived reflector two-vector isometry check failed'
+    print('NF397 original two-vector Householder isometry PASS',flush=True)
+    signed_J=mat2_ball(M,transformed_alpha,transformed_beta,eps)
+    print('NF397 original selected WJJ signed scalar with archived error payment computed',flush=True)
     signed_F=(f.transpose()*L.transpose()*z)[0,0]
     original_Wu4_j=signed_J+signed_F
     # IMPORTANT: Wodd=P_I m(D) P_I-2|s><s|, s is the *retained* raw
@@ -192,6 +226,10 @@ def main(args):
       'fresh_original_signed_kernel_cells':0,
       'original_physical_16_Gram_overlaps':True,
       'original_selected_frame_sha_pass':True,
+      'original_householder_method':'original archived reflectors applied in ascending k to TWO vectors for Qtranspose images; dense Q never reconstructed',
+      'original_householder_full_dense_Q_constructed':False,
+      'original_householder_two_vector_isometry_check_pass':True,
+      'original_archived_householder_count':242,
       'pole_restored_for_selected_test':True,
       'original_selected_pole_overlap_direct_original_FT_source_interval':interval(u4s_direct),
       'original_selected_pole_overlap_reconstructed_full_match_interval':interval(u4s_reconstructed),
