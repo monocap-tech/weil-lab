@@ -1,0 +1,53 @@
+name: Weil-Lab NF404 original selected Fourier-tail lower
+on:
+  push:
+    branches: [research/nf404-original-selected-endpoint-jet]
+    paths:
+      - '.github/workflows/nf404-original-selected-tail.yml'
+      - 'scripts/verify_nf404_original_selected_tail_lower.py'
+      - 'scripts/local_replay/nf404_original_selected_tail_exact_receipt.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-selected-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf404-original-selected-endpoint-jet
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify original 242D source and original endpoint custody
+        run: |
+          python3 -m py_compile scripts/verify_nf404_original_selected_tail_lower.py scripts/local_replay/nf404_original_selected_tail_exact_receipt.py
+          test -s notes/data/provisional/NF404_original_selected_endpoint_native.json
+          pip install --only-binary=:all: python-flint==0.8.0
+      - name: Native original selected 242D second derivative and Fourier-tail lower
+        run: |
+          python3 -u scripts/verify_nf404_original_selected_tail_lower.py --output /tmp/NF404_original_selected_tail_native.json
+      - name: Independent exact root-free original source tail receipt
+        run: |
+          python3 scripts/local_replay/nf404_original_selected_tail_exact_receipt.py --native /tmp/NF404_original_selected_tail_native.json --output /tmp/NF404_original_selected_tail_exact_acceptance.json
+      - name: Preserve original native tail and independent exact receipt
+        run: |
+          mkdir -p notes/data/provisional
+          for n in NF404_original_selected_tail_native.json NF404_original_selected_tail_exact_acceptance.json; do
+            target=notes/data/provisional/$n
+            if test -f "$target"; then
+              cmp -s "$target" /tmp/$n
+            else
+              cp /tmp/$n "$target"
+            fi
+          done
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notes/data/provisional/NF404_original_selected_tail_native.json notes/data/provisional/NF404_original_selected_tail_exact_acceptance.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF404 original selected Fourier highband lower exact source certificate'
+            git pull --rebase origin research/nf404-original-selected-endpoint-jet
+            git push origin HEAD:refs/heads/research/nf404-original-selected-endpoint-jet
+          fi
