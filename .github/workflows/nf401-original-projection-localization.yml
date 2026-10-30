@@ -1,0 +1,59 @@
+name: Weil-Lab NF401 original projection norm and candidate ball exact
+on:
+  push:
+    branches:
+      - research/nf401-original-column-independent-receipt-recovery
+    paths:
+      - '.github/workflows/nf401-original-projection-localization.yml'
+      - 'scripts/local_replay/nf401_original_selected_projection_localization.py'
+      - 'notes/data/provisional/NF401_original_242D_selected_column_independent_acceptance.json'
+      - 'notes/data/provisional/NF401_original_242D_execution_receipt.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: nf401-original-projection-localization
+  cancel-in-progress: false
+jobs:
+  original-exact-candidate-localization:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf401-original-column-independent-receipt-recovery'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf401-original-column-independent-receipt-recovery
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original 242D source-native norm exact lower and candidate ball
+        run: |
+          python3 -m py_compile scripts/local_replay/nf401_original_selected_projection_localization.py
+          python3 scripts/local_replay/nf401_original_selected_projection_localization.py \
+            --output /tmp/NF401_original_projection_localization_exact.json
+          python3 - <<'PY'
+          import json
+          x=json.load(open('/tmp/NF401_original_projection_localization_exact.json'))
+          assert x['strict_original_rational_comparisons_pass'] is True
+          assert x['projection_norm_greater_than']=='702871967/1000000000'
+          assert x['lowband_complement_upper_measured'] is False
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          PY
+      - name: Preserve exact source-pinned candidate localization on research branch
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF401_original_projection_localization_exact.json
+          if test -e "$target"; then
+            cmp -s "$target" /tmp/NF401_original_projection_localization_exact.json
+          else
+            cp /tmp/NF401_original_projection_localization_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF401 original selected projection source-exact localization proof'
+            git pull --rebase origin research/nf401-original-column-independent-receipt-recovery
+            git push origin HEAD:refs/heads/research/nf401-original-column-independent-receipt-recovery
+          fi
