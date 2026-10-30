@@ -1,0 +1,173 @@
+name: Weil-Lab NF398 original signed scalar two-vector Householder replay
+on:
+  push:
+    branches:
+      - research/nf398-original-archived-householder-count-replay
+    paths:
+      - '.github/workflows/nf398-original-reflector-count-signed.yml'
+      - 'scripts/verify_nf390_original_j387_selected_moment.py'
+      - 'scripts/local_replay/nf397_householder_two_vector_exact_regression.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: nf398-original-reflector-count
+  cancel-in-progress: false
+jobs:
+  original-native:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf398-original-archived-householder-count-replay'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf398-original-archived-householder-count-replay
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original two-vector transformation EXACT Fraction regression
+        run: |
+          mkdir -p artifacts
+          echo exact-householder-equivalence > artifacts/phase.txt
+          python3 scripts/local_replay/nf397_householder_two_vector_exact_regression.py
+          python3 -m py_compile scripts/verify_nf390_original_j387_selected_moment.py
+          python3 scripts/local_replay/nf392_original_j387_polynomial_norm_gate.py \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --output artifacts/NF398_source_only_original_gate.json
+          echo install-original-native > artifacts/phase.txt
+      - name: Install inherited original Arb
+        run: |
+          pip install --only-binary=:all: python-flint==0.8.0 numpy scipy
+          echo recover-signed-original-archive > artifacts/phase.txt
+      - name: Recover and SHA-verify original signed J242 WJJ and WJF archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/12776684037/zip" \
+            -o artifacts/original_selected_signed_20261028.zip
+          echo 'f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0  artifacts/original_selected_signed_20261028.zip' | sha256sum -c -
+          echo two-vector-native-signed-scalar > artifacts/phase.txt
+      - name: Original J242 source-native signed scalar, exact ARCHIVED reflector count on two vectors
+        run: |
+          python3 -u scripts/verify_nf390_original_j387_selected_moment.py \
+            --rank notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json \
+            --source notes/data/provisional/nf372_pr355_fields.json \
+            --nf369 notes/data/provisional/nf372_nf369_fields.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --archive artifacts/original_selected_signed_20261028.zip \
+            --output artifacts/NF398_original_j387_selected_signed_native.json
+          echo original-native-interval-attestation > artifacts/phase.txt
+      - name: Independently verify native selected original odd pole, signed scalar, exact candidate verdict
+        run: |
+          python3 scripts/local_replay/nf394_original_native_j387_receipt.py \
+            --native artifacts/NF398_original_j387_selected_signed_native.json \
+            --original-512 notes/data/provisional/NF380_original_archived_unfitted_signed_dual_native.json \
+            --nf375 notes/data/provisional/NF375_reduced_cutoff_exact.json \
+            --j387 notes/data/provisional/NF387_original_J242_dyadic_candidate.json \
+            --output artifacts/NF398_original_j387_exact_candidate_decision.json
+          python3 - <<'PY'
+          import json
+          n=json.load(open('artifacts/NF398_original_j387_selected_signed_native.json'))
+          a=json.load(open('artifacts/NF398_original_j387_exact_candidate_decision.json'))
+          assert n['original_householder_full_dense_Q_constructed'] is False
+          assert n['original_householder_two_vector_isometry_check_pass'] is True
+          assert 0 < n['original_archived_householder_count'] <= 242
+          assert n['original_archived_householder_count'] <= n['original_archived_householder_expected_max_dim']
+          assert n['fresh_original_signed_kernel_cells']==0
+          assert a['physical_pole_independent_overlap_intersection_pass'] is True
+          assert a['recomputed_nf391_nf392_source_native_exact_verdict'] in ('STOP','INCONCLUSIVE')
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          print('NF398 native original result accepted for fixed selected j387:',
+                a['recomputed_nf391_nf392_source_native_exact_verdict'])
+          PY
+          echo original-native-source-verified > artifacts/phase.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf398-original-reflector-count-native-evidence
+          if-no-files-found: ignore
+          path: |
+            artifacts/phase.txt
+            artifacts/NF398_source_only_original_gate.json
+            artifacts/NF398_original_j387_selected_signed_native.json
+            artifacts/NF398_original_j387_exact_candidate_decision.json
+  durable-result:
+    if: always() && github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf398-original-archived-householder-count-replay'
+    needs: original-native
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf398-original-archived-householder-count-replay
+          persist-credentials: true
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: nf398-original-reflector-count-native-evidence
+          path: artifacts
+      - name: Persist typed execution status and only source-verified native evidence
+        env:
+          ORIGINAL_RESULT: ${{ needs['original-native'].result }}
+          WORKFLOW_ID: ${{ github.run_id }}
+          SOURCE_COMMIT: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import json,os,hashlib
+          from pathlib import Path
+          a=Path('artifacts')
+          a.mkdir(exist_ok=True)
+          st=os.environ['ORIGINAL_RESULT']
+          n=a/'NF398_original_j387_selected_signed_native.json'
+          d=a/'NF398_original_j387_exact_candidate_decision.json'
+          outcome='UNDECIDED'
+          if st=='success':
+              assert n.exists() and d.exists(), 'Original native PASS requires BOTH independent source-verified outputs'
+              nv=json.loads(n.read_bytes());dec=json.loads(d.read_bytes())
+              assert nv['original_householder_full_dense_Q_constructed'] is False
+              assert nv['original_householder_two_vector_isometry_check_pass'] is True
+              assert dec['physical_pole_independent_overlap_intersection_pass'] is True
+              assert dec['W_ODD_NEG']==dec['RH']=='OPEN'
+              outcome=dec['recomputed_nf391_nf392_source_native_exact_verdict']
+              assert outcome in ('STOP','INCONCLUSIVE')
+              for file in (n,d):
+                  dest=Path('notes/data/provisional')/file.name
+                  if dest.exists():
+                      assert dest.read_bytes()==file.read_bytes(),'Refuse to overwrite different native evidence'
+                  else:
+                      dest.write_bytes(file.read_bytes())
+          report={'pass':'NF398','standing':'ORIGINAL NATIVE EXECUTION / STRICT SELECTED METHOD VERDICT ONLY',
+                  'run_id':os.environ['WORKFLOW_ID'],'source_sha':os.environ['SOURCE_COMMIT'],
+                  'native_job_result':st,
+                  'last_saved_phase':(a/'phase.txt').read_text().strip() if (a/'phase.txt').exists() else 'NO_STAGE_EVIDENCE',
+                  'original_native_signed_selected_accepted':st=='success',
+                  'j387_method_verdict':outcome,
+                  'native_sha256':hashlib.sha256(n.read_bytes()).hexdigest() if st=='success' else None,
+                  'original_full_lowband_upper':False,'W_ODD_NEG':'OPEN','RH':'OPEN'}
+          path=Path('notes/data/provisional/NF398_native_execution_status.json')
+          if path.exists():
+              old=json.loads(path.read_text())
+              assert old.get('native_job_result')!='success' or old==report, 'Refuse accepted-result overwrite'
+          path.write_text(json.dumps(report,indent=2)+'\n')
+          print('NF398 authentic execution',st,'phase',report['last_saved_phase'],'candidate',outcome)
+          PY
+      - name: Commit additive typed original native or execution status on research branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notes/data/provisional/NF398_native_execution_status.json
+          for item in NF398_original_j387_selected_signed_native.json NF398_original_j387_exact_candidate_decision.json; do
+            if test -f notes/data/provisional/$item; then git add notes/data/provisional/$item; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF398 archive verified original two-vector signed native or typed execution status'
+            git pull --rebase origin research/nf398-original-archived-householder-count-replay
+            git push origin HEAD:refs/heads/research/nf398-original-archived-householder-count-replay
+          fi
