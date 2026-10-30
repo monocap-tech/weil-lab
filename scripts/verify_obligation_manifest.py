@@ -29,7 +29,7 @@ VALID_CADENCES = {"per-update", "on-demand"}
 # SM52C/SM54 names, plus ONLY the two existing pre-prefix legacy pilots.
 CHECK_PATH_PATTERN = re.compile(
     # EF15 activates a distinct original even validation family, never arbitrary scripts.
-    r"scripts/validate_rpb108_(?:sm|si|rc|ef)[A-Za-z0-9_]*\\.py"
+    r"scripts/validate_rpb108_(?:sm|si|rc|ef)[A-Za-z0-9_]*\.py"
 )
 LEGACY_CHECK_PATHS = {
     "scripts/sm36_original_odd_numerical_pilot.py",
