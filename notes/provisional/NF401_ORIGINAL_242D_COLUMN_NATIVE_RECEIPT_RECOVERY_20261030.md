@@ -17,3 +17,39 @@ A new dedicated branch-only workflow retrieves **only** the actual original NF40
 ## Scope
 
 The mathematical complete-column formula remains the NF400 finite identity. NF401 is a **source-recovery/verification** pass that either promotes the actual original 242D numerical computation to source-verified standing or records the exact remaining execution defect. No fresh original signed kernel cells, no newly invented candidate or external theorem, no main merge, no whole original odd form classification. `W-ODD-NEG`, even/whole Weil and RH OPEN.
+
+## Post-execution acceptance and mathematical consequence
+
+**Genuine source recovery now ACCEPTED.** [NF401 original-source Actions #41109578378](https://github.com/monocap-tech/weil-lab/actions/runs/41109578378) completed both native source-recovery and durable-receipt jobs **SUCCESS**. Actual original NF400 unaccepted run #41024355742 stays a recorded **FAILURE**: no retroactive run-status rewrite. Original byte-identical native 242D JSON is now permanently preserved on this NF401 unmerged branch with SHA256 `644337986f62a3f25bb6b2005efc82f517975c84629b32b5ae8d1e5b95614515`; independent exact Fraction receipt validated 242 interval rows, source/physical/pole/frame hashes, nonzero original dyadic j387 raw two-coordinate recontraction, physical Gram norm² compatibility and exact outgoing archived error-ball upper. The original ZIP digest is verified; zero new signed kernel cells. The accepted projected norm is approximately
+
+```
+||P_J m(D)u4|| = 0.7028719679151...    (original 242D physical projection)
+```
+
+This is **not** `||t_L-P_J m(D)u4||`, not original `J242^perp` mass and not an upper for the full lowband error. The inherited original strong Fourier realization and original/source domain remain separately audit-required.
+
+**New universal source-dependent candidate localization:** write `w=m(D)u4`, `t_L=w-e`, and `||e||<=H` at unchanged `Lambda=2^24`, `tau=2.8e-13`. If `j∈J242` satisfies the proposed norm lowband fit `||t_L-j||<=tau`, orthogonal projection `P_J` gives
+
+```
+||j-P_J w|| <= ||j-P_J t_L|| + ||P_J e|| <= tau+H.
+```
+
+The source-pinned accepted native interval, NF398 highband bound and exact Fraction comparisons verify
+
+```
+tau+H < 329/10^15 = 3.29e-13,
+||P_J w||_lower > 702871967/10^9 + (tau+H),
+||P_J w||_upper < 702872/10^6.
+```
+
+Hence **every** possible selected lowband fit, if one exists, must lie in the fixed physical Hilbert ball
+
+```
+||j-P_J m(D)u4|| < 3.29e-13,  ||j||>0.702871967.
+```
+
+This sharpens NF399's lower norm `>0.3153944` without scanning more selected trial vectors. All valid candidates are narrowly **localized in physical norm** around one now source-authenticated original projection. The geometric restriction is independent of how original selected raw coefficients happen to represent that vector; it is not itself a Fourier-tail or coefficient-quantization certificate.
+
+**Next stopping interface:** inspect original **Fourier high-frequency tail of this now determined selected projection**, with source coefficient dynamic range and cancellation paid outward, against the limited `3.29e-13` candidate adjustment, *and* independently assess original `J242^perp` lowband norm upper. The tail and complement are different interfaces. A large selected norm by itself does not certify failure, positivity or an RH resolution. Never invert the archived n512/n513 lower observations into a complement upper.
+
+**Permanent evidence:** `notes/data/provisional/NF401_original_242D_execution_receipt.json`, `NF401_original_242D_selected_column_source_native.json`, `NF401_original_242D_selected_column_independent_acceptance.json`, `NF401_original_j387_scalar_crosscheck_source_native.json`; new `scripts/local_replay/nf401_original_selected_projection_localization.py` and focused exact workflow. No main merge.
