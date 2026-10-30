@@ -7,6 +7,7 @@ on:
       - '.github/workflows/nf398-original-archive-count-signed.yml'
       - 'scripts/verify_nf390_original_j387_selected_moment.py'
       - 'scripts/local_replay/nf397_householder_two_vector_exact_regression.py'
+      - 'scripts/local_replay/nf398_original_archive_reflector_header.py'
   workflow_dispatch:
 permissions:
   contents: write
@@ -52,6 +53,9 @@ jobs:
             "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/12776684037/zip" \
             -o artifacts/original_selected_signed_20261028.zip
           echo 'f7b64ceead7500fca389e3b994a208a6e8aae5be3270b750ab586e5ebe1fa1d0  artifacts/original_selected_signed_20261028.zip' | sha256sum -c -
+          python3 scripts/local_replay/nf398_original_archive_reflector_header.py \
+            --archive artifacts/original_selected_signed_20261028.zip \
+            --output artifacts/NF398_original_archive_reflector_header.json
           echo two-vector-native-signed-scalar > artifacts/phase.txt
       - name: Original J242 source-native signed scalar, 242 reflectors on two vectors only
         run: |
@@ -95,6 +99,7 @@ jobs:
           path: |
             artifacts/phase.txt
             artifacts/NF398_source_only_original_gate.json
+            artifacts/NF398_original_archive_reflector_header.json
             artifacts/NF398_original_j387_selected_signed_native.json
             artifacts/NF398_original_j387_exact_candidate_decision.json
   durable-result:
