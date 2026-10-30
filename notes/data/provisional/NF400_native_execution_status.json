@@ -1,8 +1,8 @@
 {
   "pass": "NF400",
   "standing": "ORIGINAL SELECTED 242D METHOD EVIDENCE ONLY",
-  "run_id": "41023884758",
-  "source_sha": "b76c7013741d3f92e329d2abef79a37308b3ed30",
+  "run_id": "41024355742",
+  "source_sha": "0ef3078dfa15c73f35c60180cb23133c1cd6c18b",
   "native_job_result": "failure",
   "last_saved_phase": "exact-independent-column-receipt",
   "original_complete_selected_column_accepted": false,
