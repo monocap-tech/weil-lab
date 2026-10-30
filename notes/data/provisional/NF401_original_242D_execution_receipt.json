@@ -1,0 +1,19 @@
+{
+  "pass": "NF401",
+  "standing": "ORIGINAL NF400 242D NATIVE ARTIFACT RECOVERY AND INDEPENDENT ACCEPTANCE ONLY",
+  "run_id": "41109578378",
+  "source_branch_head": "42fc3d44fa42327617087fbb915c5f5a4d4edcaf",
+  "source_nf400_run_id": 41024355742,
+  "source_nf400_run_job": "original-native-column",
+  "source_nf400_run_job_conclusion": "failure_after_native_success_at_independent_fraction_parser",
+  "source_artifact_id": 12964112303,
+  "source_artifact_zip_sha256": "eda8bff1c1fa8289cc514d5956a57af2b65e1fa2cd0e4771ed68d74fcf1c7b8e",
+  "independent_native_recovery_job_result": "success",
+  "native_column_accepted": true,
+  "last_saved_phase": "original-242D-source-accepted",
+  "original_native_json_sha256": "644337986f62a3f25bb6b2005efc82f517975c84629b32b5ae8d1e5b95614515",
+  "full_lowband_upper": false,
+  "whole_exterior_inverse": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
