@@ -28,7 +28,8 @@ VALID_CADENCES = {"per-update", "on-demand"}
 # restricted scripts/validation-path grammar, permitting case-sensitive
 # SM52C/SM54 names, plus ONLY the two existing pre-prefix legacy pilots.
 CHECK_PATH_PATTERN = re.compile(
-    r"scripts/validate_rpb108_(?:sm|si|rc)[A-Za-z0-9_]*\.py"
+    # EF15 activates a distinct original even validation family, never arbitrary scripts.
+    r"scripts/validate_rpb108_(?:sm|si|rc|ef)[A-Za-z0-9_]*\.py"
 )
 LEGACY_CHECK_PATHS = {
     "scripts/sm36_original_odd_numerical_pilot.py",
