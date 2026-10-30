@@ -9,10 +9,14 @@
   "original_reflector_count": 4,
   "source_NF398_sha256": "bae006e4fb542c4b0c6d184ae8cfbc2e7c924d45c89092ebda89cf0c6057c877",
   "standing": "ANALYTIC ORIGINAL SOURCE FINITE-COLUMN FORMULA PROVED CONDITIONAL ON ORIGINAL DOMAIN; NATIVE NUMERIC OUTPUT PENDING",
-  "next": "Inspect actual source-native 242D column and projected physical norm; test source-adapted selected candidates against genuine Fourier tail and residual upper",
+  "next": "Native original full 242D column and projected physical norm acceptance; thereafter certify actual J242-perpendicular lowband upper (target 2.75e-13), and j* Fourier tail/domain before selected lowband acceptance",
   "full_lowband_upper": "OPEN",
   "whole_exterior_inverse": "OPEN",
   "original_operator_domain": "OPEN",
   "W_ODD_NEG": "OPEN",
-  "RH": "OPEN"
+  "RH": "OPEN",
+  "complement_only_acceptance": "If original ||(I-P_J)t_L|| <= 11/40000000000000 then j*=P_J m(D)u4 satisfies ||t_L-j*||<7/25000000000000 by exact squared original highband H; full complement upper remains unmeasured",
+  "complement_exact_rational_gate": true,
+  "complement_upper_measured": false,
+  "selected_projection_fourier_tail_acceptance": "OPEN"
 }
