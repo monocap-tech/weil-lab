@@ -2,9 +2,9 @@ name: Weil-Lab NF398 original signed scalar actual-archive-count two-vector repl
 on:
   push:
     branches:
-      - research/nf398-two-vector-householder-signed-replay
+      - research/nf398-original-archive-reflector-count-contract
     paths:
-      - '.github/workflows/nf398-original-two-vector-signed.yml'
+      - '.github/workflows/nf398-original-archive-count-signed.yml'
       - 'scripts/verify_nf390_original_j387_selected_moment.py'
       - 'scripts/local_replay/nf397_householder_two_vector_exact_regression.py'
   workflow_dispatch:
@@ -16,13 +16,13 @@ concurrency:
   cancel-in-progress: false
 jobs:
   original-native:
-    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf398-two-vector-householder-signed-replay'
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf398-original-archive-reflector-count-contract'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: research/nf398-two-vector-householder-signed-replay
+          ref: research/nf398-original-archive-reflector-count-contract
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -98,14 +98,14 @@ jobs:
             artifacts/NF398_original_j387_selected_signed_native.json
             artifacts/NF398_original_j387_exact_candidate_decision.json
   durable-result:
-    if: always() && github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf398-two-vector-householder-signed-replay'
+    if: always() && github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf398-original-archive-reflector-count-contract'
     needs: original-native
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: research/nf398-two-vector-householder-signed-replay
+          ref: research/nf398-original-archive-reflector-count-contract
           persist-credentials: true
       - uses: actions/download-artifact@v4
         continue-on-error: true
@@ -167,6 +167,6 @@ jobs:
           done
           if ! git diff --cached --quiet; then
             git commit -m 'NF398 archive verified original two-vector signed native or typed execution status'
-            git pull --rebase origin research/nf398-two-vector-householder-signed-replay
-            git push origin HEAD:refs/heads/research/nf398-two-vector-householder-signed-replay
+            git pull --rebase origin research/nf398-original-archive-reflector-count-contract
+            git push origin HEAD:refs/heads/research/nf398-original-archive-reflector-count-contract
           fi
