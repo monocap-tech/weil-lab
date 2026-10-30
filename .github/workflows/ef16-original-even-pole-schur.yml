@@ -1,0 +1,28 @@
+name: EF16 original even physical pole and exact Schur
+on:
+  push:
+    branches:
+      - research/ef16-original-even-pole-schur-physical-entry
+  pull_request:
+    branches:
+      - research/ef15-original-even-b9-parity-handoff
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-physical-pole:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original physical 2-source pole projection and Schur
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef16_original_even_pole_schur.py
+          python scripts/validate_rpb108_ef16_original_even_pole_schur.py
+      - name: Verify canonical even obligation
+        run: python scripts/verify_obligation_manifest.py
