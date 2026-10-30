@@ -1,0 +1,23 @@
+{
+  "pass": "NF403",
+  "active_obligation": "W-ODD-NEG",
+  "previous": "NF402 verified original support-vs-Fourier truncation noncommutation and stopped tail-only method; original NF401 full selected 242D projection independently accepted",
+  "original_nf401_native_sha256": "644337986f62a3f25bb6b2005efc82f517975c84629b32b5ae8d1e5b95614515",
+  "original_n512_sha256": "9d4b07fb2ca42c14ed995ddcd69811201eacb6f13f9f795a70c4b64889e9f83b",
+  "original_n513_sha256": "e0aaa0abb29c8ec75b3524ec6197c12235a7fc7fa66d76c77c4643c2ff27bffe",
+  "current": "Original accepted 2-ray signed 512/513 exterior Gram dual gives exact J242-perpendicular lowband LOWER >8.63e-14, while NF401 exact full 242D selected norm reduces fourth lowband UPPER to one uncomputed supported original full-action scalar upper",
+  "new_strict_lowband_complement_lower": "863/10000000000000000",
+  "method_necessary": "Original fourth lowband complement cannot vanish; signed n512+513 gives quantitative nonzero lower under inherited original strong realization",
+  "method_sufficient": "Original ||1_I m(D)u4||² <= (NF401 FULL outward selected physical norm lower endpoint)² + (11/4e13-H_original)^2 implies original physical fourth lowband ||tL-j*||<2.8e-13",
+  "second_sufficient": "Original ||(Q-P_E)w||² <= (sigma-H)^2 - (307/2000)D where E=span(q512,q513) and D=2401/(2e28)",
+  "mathematical_standing": "ANALYTIC EXACT SOURCE-SCOPE REUSED FINITE DATA, SOURCE-ONLY EXACT CI PENDING",
+  "new_signed_kernel_cells": 0,
+  "original_full_supported_multiplier_scalar_upper": "OPEN",
+  "original_exterior_two_witness_orthogonal_remainder_upper": "OPEN",
+  "full_lowband_upper": "OPEN",
+  "original_strong_operator_domain": "INHERITED; GENERAL AUDIT OPEN",
+  "whole_exterior_inverse": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next": "Original supported full-multiplier source power scalar with rigorous <1e-26 absolute precision and correlated selected subtraction, or a direct certified physical E-orthogonal remainder bound; do not repeat exterior shadow scans"
+}
