@@ -1,0 +1,11 @@
+{
+  "pass": "NF395",
+  "prior_pr": 379,
+  "native_file_found": false,
+  "acceptance_file_found": false,
+  "source_run_access": "first_50_pr_runs_only",
+  "failure_inferred": false,
+  "j387": "UNDECIDED",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
