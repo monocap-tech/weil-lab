@@ -1,0 +1,30 @@
+name: Weil-Lab NF399 original J242 cone and norm exact check
+on:
+  push:
+    branches:
+      - research/nf399-original-selected-cone-moment-gate
+    paths:
+      - '.github/workflows/nf399-original-selected-cone.yml'
+      - 'scripts/local_replay/nf399_original_selected_cone_gate.py'
+      - 'notes/data/provisional/NF399_original_selected_cone_gate.json'
+      - 'notes/data/provisional/NF398_original_j387_selected_signed_native.json'
+      - 'notes/data/provisional/NF398_original_j387_exact_candidate_decision.json'
+      - 'notes/data/provisional/NF398_native_execution_status.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-original-exact:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf399-original-selected-cone-moment-gate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact source-pinned NF398 to NF399 universal selected gate
+        run: |
+          python3 -m py_compile scripts/local_replay/nf399_original_selected_cone_gate.py
+          python3 scripts/local_replay/nf399_original_selected_cone_gate.py --output /tmp/NF399_original_selected_cone_gate.json
+          diff -u notes/data/provisional/NF399_original_selected_cone_gate.json /tmp/NF399_original_selected_cone_gate.json
