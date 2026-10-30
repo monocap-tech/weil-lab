@@ -71,3 +71,26 @@ This pass supplies an original-data full-column **producer and testable acceptan
 Even a verified projected norm or a `b` vector only characterizes the selected finite physical projection, not an upper bound on `||t_L-j||` or a lower bound beyond already measured exterior shadow information. A candidate `j` must be constrained by *both* selected projection and the original Fourier-tail/lowband acceptance, with the independent general original operator-domain audit unresolved. **`W-ODD-NEG`, even/whole Weil and RH remain OPEN.**
 
 **Repository files:** `scripts/verify_nf400_original_selected_full_column.py`, `scripts/local_replay/nf400_original_selected_column_exact_receipt.py`, `.github/workflows/nf400-original-selected-response.yml`; accepted native-only files `NF400_original_selected_column_native.json`, `NF400_original_selected_column_acceptance.json`, `NF400_original_j387_scalar_crosscheck_native.json`, typed `NF400_native_execution_status.json` (only when GitHub Actions has actually committed them).
+
+## New complement-only acceptance reduction (exact, source-dependent)
+
+There is a stronger geometric consequence of constructing the complete selected projection; it is **not** a numerical measurement. Under the same inherited supported Hilbert realization write `w=P_I m(D)u4=t_L+e`, `||e||<=H`, `P=P_{J242}`, and choose **the source-determined** `j*=Pw`. Then the selected and exterior terms are physically orthogonal:
+
+```
+t_L-j* = (I-P)t_L - P e
+||t_L-j*||² = ||(I-P)t_L||² + ||P e||²
+            <= ||(I-P)t_L||² + H².
+```
+
+The exact source-pinned NF398 highband `H` and fourth lowband norm target `tau=7/25000000000000` satisfy, by independent exact-rational comparison,
+
+```
+sigma=11/40000000000000=2.75e-13
+sigma²+H² < tau².
+```
+
+Hence **if** a future original-object certified upper gives `||(I-P)t_L|| <= sigma`, then the specific *unrestricted* selected projection `j*=P m(D)u4` satisfies `||t_L-j*||<tau`. Conversely, the selected-space least-error candidate for `t_L` itself is `P t_L`, and for every `j in J242`, `||t_L-j||>=||(I-P)t_L||`. Thus the complement is the precise **existence** obstruction for an unrestricted selected-space lowband fit, not another numerical selected trial.
+
+**Important scope:** `j*` may fail additional original *dyadic coefficient* or Fourier-tail entry requirements even if this conditional physical lowband gate passes. This identity neither provides the required `J242^perp` norm upper nor proves the original full lowband upper. Original n512/n513 exterior shadow lower observations do not supply the complement **upper**; no reversal of inequalities is permitted.
+
+Independent source-only exact replay: `python3 scripts/local_replay/nf400_original_complement_budget_exact.py`. This check verifies the source-native NF398 SHA, original cutoff, tau and highband H, and the strict rational squared budget. All new claims in this section are **conditional original-object reductions**, not native column acceptance or closure of `W-ODD-NEG`.
