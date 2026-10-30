@@ -5,7 +5,8 @@ Validates immutable original NF398 pole-restored selected native outcome
 and performs a second, raw-coefficient interval contraction with j387.
 Does not assert complete original lowband upper or original operator domain.
 """
-import argparse, hashlib, json
+import argparse, hashlib, json, re
+from decimal import Decimal
 from pathlib import Path
 from fractions import Fraction as F
 
@@ -29,6 +30,26 @@ def int_add(a,b):return a[0]+b[0],a[1]+b[1]
 def int_mul_const(a,c):
     return (a[0]*c,a[1]*c) if c>=0 else (a[1]*c,a[0]*c)
 def overlap(a,b):return max(a[0],b[0])<=min(a[1],b[1])
+
+def exact_arb_upper(text):
+    """Read recorded Arb ball in exact decimal rational arithmetic.
+
+    Historical NF400 native serialized an Arb upper bound as
+      '[decimal_scientific_midpoint +/- decimal_scientific_radius]'
+    rather than a single Fraction. The independent receipt must parse the
+    original unchanged source, and take midpoint+radius (never midpoint).
+    """
+    try:
+        return F(text)
+    except ValueError:
+        pattern = r"^\[([^\s\[\]]+)\s+\+/-\s+([^\s\[\]]+)\]$"
+        match = re.fullmatch(pattern, text.strip())
+        assert match is not None, 'unknown source interval representation'
+        mid, rad = (F(Decimal(piece)) for piece in match.groups())
+        assert rad >= 0
+        assert mid - rad <= mid + rad
+        return mid + rad
+
 
 def run(args):
     native,nsha=load(args.native)
@@ -76,13 +97,13 @@ def run(args):
     pn2=ends(native['original_projected_norm_squared_native_interval'])
     assert 0<pnorm[0]<=pnorm[1]
     assert 0<pn2[0] and pnorm[0]**2<=pn2[1] and pn2[0]<=pnorm[1]**2
-    err=F(native['certified_global_source_archive_D_frame_l2_error_upper'])
+    err=exact_arb_upper(native['certified_global_source_archive_D_frame_l2_error_upper'])
     assert 0<=err<F(1,10**150)
     assert native['normalization_N_row_sum_off_identity_upper']=='1/100'
     # Source-only NF399 dual norm lower must agree with full projected norm:
     assert pnorm[1]>F(3153944,10000000)
     out={
-       'pass':'NF400','standing':'EXACT ORIGINAL 242D COLUMN INTERVAL RECEIPT; ORIGINAL LOWBAND UPPER OPEN',
+       'pass':'NF401','standing':'INDEPENDENT EXACT ORIGINAL NF400 242D ARCHIVED COLUMN RECEIPT; ORIGINAL LOWBAND UPPER OPEN',
        'native_sha256':nsha,'source_nf398_sha256':oldsha,
        'independent_raw_two_coefficient_j387_contraction_intersection_pass':True,
        'independent_242_component_interval_parse_pass':True,
@@ -93,7 +114,7 @@ def run(args):
     }
     Path(args.output).parent.mkdir(parents=True,exist_ok=True)
     Path(args.output).write_text(json.dumps(out,indent=2)+'\n')
-    print('NF400 exact independent original raw-column/j387 contraction PASS',flush=True)
+    print('NF401 original archived NF400 242D raw-column/j387 and Arb-ball error PASS',flush=True)
 
 if __name__=='__main__':
     p=argparse.ArgumentParser()
