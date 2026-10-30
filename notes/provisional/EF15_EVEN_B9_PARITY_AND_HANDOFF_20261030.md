@@ -35,7 +35,7 @@ SI10's signed all-frequency protected-complement proof therefore yields for such
 
 `q_e(f,f) >= [kappa - 2*B*(M+kappa*W)*2**(-18)] ||f||² > (17/25000)||f||².`
 
-The `17/25000` gate (0.00068) is deliberately conservative; the original exactly computed b9 coefficient is slightly larger. This is an **even-sector original-object cofinite certificate conditional on the inherited SI10 analytic/form-domain attachment**. It does not require a surrogate cap domination over the finite source space.
+The `17/25000` gate (0.00068) is deliberately conservative. The authenticated SI10/SM10 original cover has **exact** `M+kappa*W=1204033883/32000000`; substitution gives `gamma9=28698667287/41943040000000 = 0.0006842295476675033...`, so `gamma9-17/25000>0` is an exact rational comparison. This arithmetic identity is independently recomputable without any floating-point sign test. The new EF15 full SI10 source replay remains subject to its focused CI acceptance. This is an **even-sector original-object cofinite certificate conditional on the inherited SI10 analytic/form-domain attachment**. It does not require a surrogate cap domination over the finite source space.
 
 The same exponential-polynomial uniqueness argument used in EF13, applied to distinct nonzero original centers, gives linear independence of the 469 even generators in the real physical open interval. A separate machine-checked functional-analytic proof is not claimed.
 
