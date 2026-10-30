@@ -19,7 +19,6 @@ U_L=B_L(m(D)u4)                 whole-line bandlimited response
 t_L=S U_L                       original physical supported lowband response
 w=S m(D)u4                      complete supported multiplier response
 j_* = P_J w in J242             accepted original selected physical center
-H = ||(I-S)??||  [NOT USED]      (do not identify H with outside leakage)
 H_src >= ||S B_H(m(D)u4)||      original NF375 highband bound
 tau=7/25000000000000
 rho=H_src+tau<329/10^15
