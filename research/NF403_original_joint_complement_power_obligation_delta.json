@@ -10,7 +10,7 @@
   "method_necessary": "Original fourth lowband complement cannot vanish; signed n512+513 gives quantitative nonzero lower under inherited original strong realization",
   "method_sufficient": "Original ||1_I m(D)u4||² <= (NF401 FULL outward selected physical norm lower endpoint)² + (11/4e13-H_original)^2 implies original physical fourth lowband ||tL-j*||<2.8e-13",
   "second_sufficient": "Original ||(Q-P_E)w||² <= (sigma-H)^2 - (307/2000)D where E=span(q512,q513) and D=2401/(2e28)",
-  "mathematical_standing": "ANALYTIC EXACT SOURCE-SCOPE REUSED FINITE DATA, SOURCE-ONLY EXACT CI PENDING",
+  "mathematical_standing": "EXACT SOURCE-NATIVE REUSE RATIONAL GATE CI SUCCESS #41126220549; ORIGINAL FULL ACTION SCALAR AND COMPLEMENT UPPERS OPEN",
   "new_signed_kernel_cells": 0,
   "original_full_supported_multiplier_scalar_upper": "OPEN",
   "original_exterior_two_witness_orthogonal_remainder_upper": "OPEN",
@@ -19,5 +19,6 @@
   "whole_exterior_inverse": "OPEN",
   "W_ODD_NEG": "OPEN",
   "RH": "OPEN",
-  "next": "Original supported full-multiplier source power scalar with rigorous <1e-26 absolute precision and correlated selected subtraction, or a direct certified physical E-orthogonal remainder bound; do not repeat exterior shadow scans"
+  "next": "Original supported full-multiplier source power scalar with rigorous <1e-26 absolute precision and correlated selected subtraction, or a direct certified physical E-orthogonal remainder bound; do not repeat exterior shadow scans",
+  "source_exact_run": 41126220549
 }
