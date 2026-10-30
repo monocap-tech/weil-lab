@@ -53,7 +53,7 @@ def main():
               'original_supported_physical_lowband_complement_upper_measured'):
         assert n[k] is False
     assert n['W_ODD_NEG']==n['RH']==nf398['W_ODD_NEG']==nf398['RH']=='OPEN'
-    assert n['original_source_certified_selected_highband_tail_gt_1e_minus_6'] is True
+    assert n['original_source_selected_highband_tail_gt_1e_minus_6'] is True
     assert n['original_wholeline_fourier_primal_lowband_upper_METHOD_STOP_for_any_candidate_in_NF401_ball'] is True
 
     e=abslo(n['original_selected_endpoint_value_interval'])
