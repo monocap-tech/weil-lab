@@ -11,7 +11,7 @@
   "original_selected_jstar_Fourier_tail": "UNMEASURED",
   "original_lowband_outside_interval_leakage": "UNMEASURED",
   "original_lowband_J_perp_upper": "UNMEASURED",
-  "source_exact_ci": "PENDING EXECUTION",
+  "source_exact_ci": "SUCCESS, source-pinned Actions run #41123643610, immutable-on-conflict note/data/provisional/NF402_original_support_band_leakage_exact.json persisted",
   "next": "Acquire source-specific tail lower AND actual outside leakage upper, or pivot directly to physical ||(I-P_J)t_L|| upper; keep whole-source Fourier/local support operators separate",
   "new_signed_kernel_cells": 0,
   "original_operator_domain": "INHERITED, GENERAL AUDIT OPEN",
