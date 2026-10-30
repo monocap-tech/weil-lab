@@ -1,0 +1,19 @@
+{
+  "pass": "NF401",
+  "active_obligation": "W-ODD-NEG",
+  "previous": "NF400 genuine 242D original native computation finished in run 41024355742, independent receipt failed reading Arb ball string; typed failure and original artifact preserved",
+  "original_nf400_source_run": 41024355742,
+  "original_nf400_source_head": "0ef3078dfa15c73f35c60180cb23133c1cd6c18b",
+  "original_artifact_id": 12964112303,
+  "original_artifact_zip_sha256": "eda8bff1c1fa8289cc514d5956a57af2b65e1fa2cd0e4771ed68d74fcf1c7b8e",
+  "fix": "Independent Fraction receipt parses original [mid +/- rad] with exact Decimal to Fraction and uses mid+radius upper bound",
+  "current": "Original-output replay/independent acceptance workflow and immutable typed source receipt; native outcome requires actual successful run",
+  "next": "Accept actual numerical projection if authenticated; assess physical selected projection and strict complement upper, plus Fourier-tail and domain",
+  "standing": "SOURCE RECOVERY PRECONDITION REPAIRED; NATIVE ACCEPTANCE AWAITING GENUINE CI RESULT",
+  "new_signed_kernel_cells": 0,
+  "complete_lowband_upper": false,
+  "whole_exterior_inverse": false,
+  "general_original_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
