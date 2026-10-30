@@ -1,0 +1,20 @@
+{
+  "pass": "NF402",
+  "active_obligation": "W-ODD-NEG",
+  "previous": "NF401 accepted original 242D selected norm 0.7028719679151 and all-candidate localization ||j-j*||<3.29e-13",
+  "current": "Exact original-object Hilbert support versus Fourier-band operator information limit; physical candidate Fourier tail alone cannot STOP lowband approximation",
+  "original_source_native_sha256": "644337986f62a3f25bb6b2005efc82f517975c84629b32b5ae8d1e5b95614515",
+  "original_highband_parent_sha256": "bae006e4fb542c4b0c6d184ae8cfbc2e7c924d45c89092ebda89cf0c6057c877",
+  "mathematical_theorem": "For any original j in J242 within tau of t_L=1_I U_L, and j*=P_J 1_I m(D)u4, ||B_high j*|| <= rho+sqrt(tau^2+||(1-1_I)U_L||^2), rho=H+tau<3.29e-13; certified source upper on outside leakage is needed before tail-only physical STOP.",
+  "information_limit": "For any fixed cutoff Lambda>0, restrictions of odd bandlimited functions to odd L2(I) are dense; whole-line Fourier-tail of supported j alone cannot uniformly lower-bound physical bandlimited approximation error.",
+  "original_highband_bound": "NF375 original H (not the unmeasured outside leakage)",
+  "original_selected_jstar_Fourier_tail": "UNMEASURED",
+  "original_lowband_outside_interval_leakage": "UNMEASURED",
+  "original_lowband_J_perp_upper": "UNMEASURED",
+  "source_exact_ci": "PENDING EXECUTION",
+  "next": "Acquire source-specific tail lower AND actual outside leakage upper, or pivot directly to physical ||(I-P_J)t_L|| upper; keep whole-source Fourier/local support operators separate",
+  "new_signed_kernel_cells": 0,
+  "original_operator_domain": "INHERITED, GENERAL AUDIT OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
