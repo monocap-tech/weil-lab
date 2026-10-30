@@ -8,9 +8,9 @@
   "original_selected_endpoint_derivative_approx": "0.836247131524514908551",
   "exact_original_selected_carrier_structure": "For each original center c and all prefix orders k, f_{c,k}''=-omega^2 f_{c,k}+(-1)^k 2k omega f_{c,k-1}+k(k-1) f_{c,k-2}, omega=2*pi*c; pole s''=s/4. Thus original J242 invariant under interior second derivative.",
   "new_fourier_tail_method": "Original endpoint + derivative + original physical Gram second derivative upper permits rigorous lower on ||B_{|xi|>2^24} j*|| without high frequency quadrature; if >1e-6, all NF401 viable selected j fail original NF386 whole-line Fourier-primal sufficient method, although physical support lowband criterion remains open.",
-  "source_full_line_tail_observation_from_failed_first_run": "Native original 4096-bit computed original selected Fourier tail lower approximately 2.554680652e-5 in run #41127562921, but independent receipt failed due schema key mismatch; method STOP NOT ACCEPTED until complete rerun exact receipt SUCCESS.",
+  "source_full_line_tail_observation_from_failed_first_run": "Historical failed #41127562921 retained; full source-tail result was recomputed and independent exact receipt ACCEPTED #41127751093",
   "accepted_selected_endpoint_ci": 41127177710,
-  "tail_exact_native_ci": "PENDING acceptance after first independent schema-key receipt failure",
+  "tail_exact_native_ci": "SUCCESS #41127751093, SHA-pinned original 4096-bit endpoint/derivative/J242 physical Gram, original selected Fourier tail lower >2.554680652e-5, independent root-free Fraction lower >2e-5, whole-line Fourier-primal method STOP",
   "new_signed_kernel_cells": 0,
   "source_original_full_supported_multiplier_power_upper": "OPEN",
   "original_lowband_J242_perpendicular_upper": "OPEN",
@@ -19,5 +19,13 @@
   "whole_exterior_inverse": "OPEN",
   "W_ODD_NEG": "OPEN",
   "RH": "OPEN",
-  "next": "After authentic full source exact tail STOP, retire NF386 whole-line primal bound for the original 242D admissible ball and focus true physical support-preserving residual, original NF403 scalar ||1_I m(D)u4||² or E-orthogonal remainder."
+  "next": "NF405 certify actual original positive supported scalar ||1_I[m(D)u4-a sinh(x/2)]||^2 with source-preserving cancellation-first interval integration; retire whole-line Fourier-primal trial method for all NF401 admissible candidates; no new source family or signed kernel cells.",
+  "original_selected_tail_native_sha256": "f64016929e27c3fba0c4ca4ca72cea4d159a0559271f9747f39a593ef79b8df8",
+  "first_tail_attempt": "FAILURE #41127562921 due independent receipt JSON key mismatch after original native calculation; preserved historical failure",
+  "original_selected_pole_shear_exact_ci": "SUCCESS #41128201628",
+  "fixed_dyadic_pole_coefficient": "6677356497477490213/4611686018427387904",
+  "original_selected_after_pole_shear_squared_norm_bracket": "109/10^23 < ||P_J w -a sinh(x/2)||^2 < 11/10^22; actual ≈1.0950024763e−21",
+  "new_single_positive_supported_scalar_target": "||1_I[m(D)u4-a sinh(x/2)]||^2 <= certified lower(||P_J w-a sinh(x/2)||^2) + (sigma−H)^2 ≈1.0950537731e−21; full centered scalar not measured",
+  "conditioning_improvement": "Remove known selected ~0.494 original pole energy analytically before physical integration; remaining selected energy ~1.095e−21, target residual allowance ~5.12968e−26, relative ~4.7e−5 versus uncentered ~1e−25",
+  "original_selected_pole_source_sheaR_accepted": true
 }
