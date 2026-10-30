@@ -7,6 +7,7 @@ on:
       - '.github/workflows/nf400-original-selected-response.yml'
       - 'scripts/verify_nf400_original_selected_full_column.py'
       - 'scripts/local_replay/nf400_original_selected_column_exact_receipt.py'
+      - 'scripts/local_replay/nf400_original_selected_frame_exact_regression.py'
   workflow_dispatch:
 permissions:
   contents: write
@@ -31,6 +32,8 @@ jobs:
           mkdir -p artifacts
           echo exact-source-preflight > artifacts/phase.txt
           python3 scripts/local_replay/nf399_original_selected_cone_gate.py --output artifacts/NF399_source_replay.json
+          python3 scripts/local_replay/nf397_householder_two_vector_exact_regression.py
+          python3 scripts/local_replay/nf400_original_selected_frame_exact_regression.py
           python3 -m py_compile scripts/verify_nf400_original_selected_full_column.py scripts/local_replay/nf400_original_selected_column_exact_receipt.py
           echo original-arb-install > artifacts/phase.txt
       - name: Install pinned original 4096-bit Arb
