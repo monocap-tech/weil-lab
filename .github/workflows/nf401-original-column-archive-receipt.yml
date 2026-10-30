@@ -1,0 +1,158 @@
+name: Weil-Lab NF401 source-artifact recovery and independent 242D receipt
+on:
+  push:
+    branches:
+      - research/nf401-original-column-independent-receipt-recovery
+    paths:
+      - '.github/workflows/nf401-original-column-archive-receipt.yml'
+      - 'scripts/local_replay/nf400_original_selected_column_exact_receipt.py'
+      - 'scripts/local_replay/nf401_original_arb_ball_receipt_regression.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: nf401-actual-original-242D-column
+  cancel-in-progress: false
+jobs:
+  original-source-archive-exact:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf401-original-column-independent-receipt-recovery'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf401-original-column-independent-receipt-recovery
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently regress original Arb interval receipt with exact Fraction
+        run: |
+          mkdir -p artifacts
+          echo source-only-regression > artifacts/phase.txt
+          python3 -m py_compile scripts/local_replay/nf400_original_selected_column_exact_receipt.py scripts/local_replay/nf401_original_arb_ball_receipt_regression.py
+          python3 scripts/local_replay/nf401_original_arb_ball_receipt_regression.py
+          python3 scripts/local_replay/nf399_original_selected_cone_gate.py --output artifacts/NF399_original_source_replay.json
+          echo recover-original-NF400-artifact > artifacts/phase.txt
+      - name: Recover original completed NF400 native output with immutable Actions ZIP digest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl -fL --retry 3 --retry-delay 2 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/12964112303/zip" \
+            -o artifacts/NF400_original_run_41024355742.zip
+          echo 'eda8bff1c1fa8289cc514d5956a57af2b65e1fa2cd0e4771ed68d74fcf1c7b8e  artifacts/NF400_original_run_41024355742.zip' | sha256sum -c -
+          mkdir -p artifacts/recovered
+          unzip -q artifacts/NF400_original_run_41024355742.zip -d artifacts/recovered
+          test -s artifacts/recovered/NF400_original_selected_column_native.json
+          test -s artifacts/recovered/NF400_original_j387_scalar_crosscheck_native.json
+          echo independent-original-242D-acceptance > artifacts/phase.txt
+      - name: Independently attest original 242D response without rerunning 4096-bit native
+        run: |
+          python3 scripts/local_replay/nf400_original_selected_column_exact_receipt.py \
+            --native artifacts/recovered/NF400_original_selected_column_native.json \
+            --output artifacts/NF401_original_selected_column_acceptance.json
+          python3 - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          a=Path('artifacts/recovered/NF400_original_selected_column_native.json')
+          b=Path('artifacts/NF401_original_selected_column_acceptance.json')
+          s=Path('artifacts/recovered/NF400_original_j387_scalar_crosscheck_native.json')
+          v=json.loads(a.read_bytes()); d=json.loads(b.read_bytes()); t=json.loads(s.read_bytes())
+          assert d['pass']=='NF401' and d['native_sha256']==hashlib.sha256(a.read_bytes()).hexdigest()
+          assert v['original_242D_signed_column_scalar_contraction_pass'] is True
+          assert v['original_242D_multiplier_column_scalar_contraction_pass'] is True
+          assert t['actual_original_j387_specific_NF375_lowband_candidate_stopped'] is True
+          assert d['W_ODD_NEG']==d['RH']==v['W_ODD_NEG']==v['RH']=='OPEN'
+          print('NF401 REAL original NF400 242D SHA-pinned source and exact acceptance PASS')
+          PY
+          echo original-242D-source-accepted > artifacts/phase.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf401-accepted-original-242D-source-recovery
+          if-no-files-found: ignore
+          path: |
+            artifacts/phase.txt
+            artifacts/recovered/NF400_original_selected_column_native.json
+            artifacts/recovered/NF400_original_j387_scalar_crosscheck_native.json
+            artifacts/NF401_original_selected_column_acceptance.json
+  durable-source-receipt:
+    if: always() && github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf401-original-column-independent-receipt-recovery'
+    needs: original-source-archive-exact
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf401-original-column-independent-receipt-recovery
+          persist-credentials: true
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: nf401-accepted-original-242D-source-recovery
+          path: artifacts
+      - name: Persist typed execution and accepted original native source immutably
+        env:
+          ORIGINAL_JOB_RESULT: ${{ needs['original-source-archive-exact'].result }}
+          CURRENT_RUN: ${{ github.run_id }}
+          ORIGINAL_HEAD: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,json,os
+          root=Path('artifacts')
+          ok=os.environ['ORIGINAL_JOB_RESULT']=='success'
+          a=root/'recovered/NF400_original_selected_column_native.json'
+          b=root/'NF401_original_selected_column_acceptance.json'
+          c=root/'recovered/NF400_original_j387_scalar_crosscheck_native.json'
+          if ok:
+              assert a.exists() and b.exists() and c.exists()
+              for original,desired in [
+                  (a,'NF401_original_242D_selected_column_source_native.json'),
+                  (b,'NF401_original_242D_selected_column_independent_acceptance.json'),
+                  (c,'NF401_original_j387_scalar_crosscheck_source_native.json')]:
+                  dest=Path('notes/data/provisional')/desired
+                  if dest.exists():
+                      assert dest.read_bytes()==original.read_bytes(),'Refuse source evidence overwrite'
+                  else:dest.write_bytes(original.read_bytes())
+          report={
+              'pass':'NF401',
+              'standing':'ORIGINAL NF400 242D NATIVE ARTIFACT RECOVERY AND INDEPENDENT ACCEPTANCE ONLY',
+              'run_id':os.environ['CURRENT_RUN'],
+              'source_branch_head':os.environ['ORIGINAL_HEAD'],
+              'source_nf400_run_id':41024355742,
+              'source_nf400_run_job':'original-native-column',
+              'source_nf400_run_job_conclusion':'failure_after_native_success_at_independent_fraction_parser',
+              'source_artifact_id':12964112303,
+              'source_artifact_zip_sha256':'eda8bff1c1fa8289cc514d5956a57af2b65e1fa2cd0e4771ed68d74fcf1c7b8e',
+              'independent_native_recovery_job_result':os.environ['ORIGINAL_JOB_RESULT'],
+              'native_column_accepted':ok,
+              'last_saved_phase':(root/'phase.txt').read_text().strip() if (root/'phase.txt').exists() else 'NO_STAGE_EVIDENCE',
+              'original_native_json_sha256':hashlib.sha256(a.read_bytes()).hexdigest() if ok else None,
+              'full_lowband_upper':False,
+              'whole_exterior_inverse':False,
+              'W_ODD_NEG':'OPEN','RH':'OPEN'
+          }
+          target=Path('notes/data/provisional/NF401_original_242D_execution_receipt.json')
+          if target.exists():
+              old=json.loads(target.read_text())
+              assert old.get('native_column_accepted') is not True or old==report,'Refuse successful source receipt overwrite'
+          target.write_text(json.dumps(report,indent=2)+'\n')
+          print('NF401 actual original output accepted:',ok)
+          PY
+      - name: Commit only to unmerged NF401 research branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notes/data/provisional/NF401_original_242D_execution_receipt.json
+          for n in NF401_original_242D_selected_column_source_native.json NF401_original_242D_selected_column_independent_acceptance.json NF401_original_j387_scalar_crosscheck_source_native.json; do
+            if test -f notes/data/provisional/$n; then git add notes/data/provisional/$n; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF401 authenticate original NF400 242D native source or typed recovery failure'
+            git pull --rebase origin research/nf401-original-column-independent-receipt-recovery
+            git push origin HEAD:refs/heads/research/nf401-original-column-independent-receipt-recovery
+          fi
