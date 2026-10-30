@@ -1,0 +1,39 @@
+name: Weil-Lab NF402 original support/band leakage information gate
+on:
+  push:
+    branches:
+      - research/nf402-supported-fourier-tail-leakage-gate
+    paths:
+      - '.github/workflows/nf402-support-band-leakage.yml'
+      - 'scripts/local_replay/nf402_original_support_band_leakage_exact.py'
+      - 'notes/data/provisional/NF401_original_projection_localization_exact.json'
+      - 'notes/data/provisional/NF401_original_242D_execution_receipt.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-pinned-exact-leakage-gate:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf402-supported-fourier-tail-leakage-gate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original source auth, exact rational locality and noncommutator
+        run: |
+          python3 -m py_compile scripts/local_replay/nf402_original_support_band_leakage_exact.py
+          python3 scripts/local_replay/nf402_original_support_band_leakage_exact.py --output /tmp/NF402_original_support_band_leakage_exact.json
+          diff -u notes/data/provisional/NF402_original_support_band_leakage_exact.json /tmp/NF402_original_support_band_leakage_exact.json
+          python3 - <<'PY'
+          import json
+          n=json.load(open('/tmp/NF402_original_support_band_leakage_exact.json'))
+          assert n['exact_synthetic_commutator_nonzero'] is True
+          assert n['exact_synthetic_zero_support_error_positive_Fourier_tail'] is True
+          assert n['original_candidate_tail_lower_measured'] is False
+          assert n['original_lowband_outside_support_leakage_upper_measured'] is False
+          assert n['original_complement_lowband_upper_measured'] is False
+          assert n['W_ODD_NEG']==n['RH']=='OPEN'
+          print('NF402 original source exact method info gate PASS; all theorem gaps OPEN')
+          PY
