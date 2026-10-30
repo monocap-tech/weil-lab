@@ -1,0 +1,21 @@
+{
+  "pass": "NF401",
+  "standing": "EXACT SOURCE-PINNED ORIGINAL 242D SELECTED PROJECTION LOCALIZATION; CONDITIONAL ON INHERITED STRONG DOMAIN",
+  "original_native_sha256": "644337986f62a3f25bb6b2005efc82f517975c84629b32b5ae8d1e5b95614515",
+  "original_nf398_native_sha256": "bae006e4fb542c4b0c6d184ae8cfbc2e7c924d45c89092ebda89cf0c6057c877",
+  "source_nf401_accepted_report_sha256": "4546d47d16bbcf88f7d41b1ce1255d2fcbe5dcc1b41241a3b277bf8dcbc36f02",
+  "source_run_id": 41024355742,
+  "projection_norm_greater_than": "702871967/1000000000",
+  "projection_norm_less_than": "702872/1000000",
+  "candidate_center": "P_J m(D)u4",
+  "candidate_close_fit_requires": "||j-P_J m(D)u4|| <= H+tau <329/1000000000000000 AND ||j||>702871967/1000000000",
+  "candidate_center_ball_radius_upper": "329/1000000000000000",
+  "source_lowband_target": "7/25000000000000",
+  "source_highband_bound": "50868533440954339805613798669078614505552406773861/1048576000000000000000000000000000000000000000000000000000000000",
+  "strict_original_rational_comparisons_pass": true,
+  "lowband_complement_upper_measured": false,
+  "candidate_fourier_tail_certified": false,
+  "complete_original_lowband_upper": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
