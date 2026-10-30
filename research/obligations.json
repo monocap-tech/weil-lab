@@ -842,6 +842,13 @@
       "scope": "W-EVEN-FORM: one-vector original signed even strictly positive Q interval 0.005597849.. to 0.091348079..",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/166",
       "verification": "one-vector original signed even strictly positive Q interval 0.005597849.. to 0.091348079..; Actions 39054382960 SUCCESS; not a whole-sector theorem; no fresh replay"
+    },
+    "EF15": {
+      "kind": "scoped-original-even-cofinite-parity-entry",
+      "scope": "W-EVEN-FORM, original SI10 seven-prime b9 even 469-generator cofinite lower conditional on inherited form/domain; finite Schur OPEN",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/391",
+      "verification": "EF15 author exact arithmetic candidate, source-triggered CI not yet confirmed; true analytic original signed parity argument documented, independent audit remains OPEN",
+      "repo_path": "notes/provisional/EF15_EVEN_B9_PARITY_AND_HANDOFF_20261030.md"
     }
   },
   "obligations": [
@@ -987,7 +994,8 @@
         "EF11",
         "EF12",
         "EF13",
-        "EF14"
+        "EF14",
+        "EF15"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
       "next_action": "EF15: independently replay original SI10 b9 all-frequency source cover, parity-even 469-generator cofinite floor and corrected finite Schur entry; then EF16 obtain actual original physical even Gram/signed exceptional and full complement mixed dual response. EF14's original single-vector positivity is only scoped; full 469D even corrected Schur, form-domain audit and RH OPEN."
