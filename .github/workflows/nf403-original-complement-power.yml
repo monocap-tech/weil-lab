@@ -1,0 +1,61 @@
+name: Weil-Lab NF403 original joint lowband complement power gate
+on:
+  push:
+    branches:
+      - research/nf403-original-complement-joint-budget
+    paths:
+      - '.github/workflows/nf403-original-complement-power.yml'
+      - 'scripts/local_replay/nf403_original_joint_complement_power_budget.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: nf403-original-complement-joint-power
+  cancel-in-progress: false
+jobs:
+  original-exact-scalar-gate:
+    if: github.repository == 'monocap-tech/weil-lab' && github.ref == 'refs/heads/research/nf403-original-complement-joint-budget'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf403-original-complement-joint-budget
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict original source SHA and Fraction complement bounds
+        run: |
+          python3 -m py_compile scripts/local_replay/nf403_original_joint_complement_power_budget.py
+          python3 scripts/local_replay/nf403_original_joint_complement_power_budget.py \
+            --output /tmp/NF403_original_joint_complement_power_exact.json
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          x=json.load(open('/tmp/NF403_original_joint_complement_power_exact.json'))
+          assert x['source_new_exact_strict_Jperp_lowband_lower']=='863/10000000000000000'
+          assert x['original_selected_projection_norm_interval_width_lt_1e_minus_100'] is True
+          assert F(x['source_sufficient_Jperp_full_action_power_budget'])>F(x['source_strict_joint_dual_power_upper'])
+          assert x['original_scalar_full_action_norm_upper_computed'] is False
+          assert x['original_512_513_orthogonal_remainder_upper_computed'] is False
+          assert x['original_complete_lowband_upper_computed'] is False
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          PY
+      - name: Preserve source-gated exact result on additive research branch
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF403_original_joint_complement_power_exact.json
+          if test -f "$target"; then
+            cmp -s "$target" /tmp/NF403_original_joint_complement_power_exact.json
+          else
+            cp /tmp/NF403_original_joint_complement_power_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF403 authentic original joint lowband lower and single-scalar acceptance gate'
+            git pull --rebase origin research/nf403-original-complement-joint-budget
+            git push origin HEAD:refs/heads/research/nf403-original-complement-joint-budget
+          fi
