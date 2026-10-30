@@ -76,7 +76,7 @@ def conservative_interval(x, radius):
     assert radius.lower()>=0
     a=x-radius
     b=x+radius
-    return [str(a.lower()),str(b.upper())]
+    return [interval(a)[0],interval(b)[1]]
 
 def read_candidate(path):
     raw=Path(path).read_bytes()
@@ -275,7 +275,7 @@ def main(args):
     assert projected_norm_squared.lower()>0
     projected_norm=projected_norm_squared.sqrt()
     raw_multiplier_column=H*D*N_inv_response
-    assert (z.transpose()*raw_multiplier_column)[0,0].overlaps(multiplier_moment)
+    assert ((z.transpose()*raw_multiplier_column)[0,0]-multiplier_moment).contains(0)
 
     # The archived WJJ frame has a certified full matrix error <=eps in
     # Frobenius norm. This gives an additive Euclidean D-frame column
@@ -330,7 +330,7 @@ def main(args):
     }
     projection_path=Path(args.projection_output)
     projection_path.parent.mkdir(parents=True,exist_ok=True)
-    projection_path.write_text(json.dumps(projection_report,indent=2)+'\\n')
+    projection_path.write_text(json.dumps(projection_report,indent=2)+'\n')
     print('NF400 projection norm interval',physical_projected_norm_interval,flush=True)
     out={
       'standing':'NF390 ORIGINAL J387 SELECTED SIGNED MOMENT AND POLE-CORRECTED SINGLE-MOMENT TEST; RH OPEN',
