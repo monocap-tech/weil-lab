@@ -67,8 +67,11 @@ def source_replay():
     assert 2*sum(orders9)+1 == 939
 
     total_mass = cap_mass + KAPPA*reflected_width
+    # Freeze the exact original SI10/SM10 source-cover fingerprint.
+    assert total_mass == F(1204033883, 32000000)
     gamma9 = KAPPA - 2*B*total_mass*F(1, 2**(2*BITS9))
     gamma24 = KAPPA - 2*B*total_mass*F(1, 2**(2*BITS24))
+    assert gamma9 == F(28698667287, 41943040000000)
     assert gamma9 > MU9 and gamma24 > GAMMA24_GATE
     assert gamma24 > gamma9
     # SI10 signed original even form q_e on the even physical carrier:
