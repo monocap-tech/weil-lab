@@ -94,7 +94,7 @@ def main():
         "original_selected_dimension": 242,
         "original_source_probe": "frozen NF387 j387, no new signed cells",
         "cutoff": str(n["original_NF375_fourth_cutoff"]),
-        "candidate_norm_strict_lower": str(LOWER),
+        "candidate_norm_strict_lower": "3153944/10000000",
         "exact_cone_lower_squared_pass": cone_strict,
         "exact_universal_norm_squared_pass": universal_norm_strict,
         "exact_negative_projection_required_pass": negative_projection_required,
