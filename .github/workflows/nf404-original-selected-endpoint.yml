@@ -1,0 +1,53 @@
+name: Weil-Lab NF404 original projected endpoint trace
+on:
+  push:
+    branches: [research/nf404-original-selected-endpoint-jet]
+    paths:
+      - '.github/workflows/nf404-original-selected-endpoint.yml'
+      - 'scripts/verify_nf404_original_selected_endpoint_jet.py'
+      - 'scripts/local_replay/nf404_original_selected_trace_exact_receipt.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-physical-selected-jet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf404-original-selected-endpoint-jet
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify inherited exact source and install native Arb
+        run: |
+          python3 -m py_compile scripts/verify_nf404_original_selected_endpoint_jet.py
+          python3 scripts/local_replay/nf403_original_joint_complement_power_budget.py --output /tmp/nf403.json
+          pip install --only-binary=:all: python-flint==0.8.0
+      - name: Compute original physical selected endpoint (no new signed cells)
+        run: |
+          python3 -u scripts/verify_nf404_original_selected_endpoint_jet.py --output /tmp/NF404_original_selected_endpoint_native.json
+      - name: Independently validate exact source/trace
+        run: |
+          python3 scripts/local_replay/nf404_original_selected_trace_exact_receipt.py --native /tmp/NF404_original_selected_endpoint_native.json --output /tmp/NF404_original_selected_endpoint_acceptance.json
+      - name: Commit accepted native source and exact receipt
+        run: |
+          mkdir -p notes/data/provisional
+          for n in NF404_original_selected_endpoint_native.json NF404_original_selected_endpoint_acceptance.json; do
+            target=notes/data/provisional/$n
+            if test -f "$target"; then
+              cmp -s "$target" /tmp/$n
+            else
+              cp /tmp/$n "$target"
+            fi
+          done
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notes/data/provisional/NF404_original_selected_endpoint_native.json notes/data/provisional/NF404_original_selected_endpoint_acceptance.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF404 accepted original selected 242D endpoint jet and exact receipt'
+            git pull --rebase origin research/nf404-original-selected-endpoint-jet
+            git push origin HEAD:refs/heads/research/nf404-original-selected-endpoint-jet
+          fi
