@@ -1,0 +1,15 @@
+{
+  "standing": "NF395 EXECUTION TELEMETRY; NOT MATHEMATICAL CERTIFICATE UNLESS AUTHENTIC NATIVE ACCEPTANCE EXISTS",
+  "run_id": "40998863258",
+  "source_commit_sha": "e0b1afda56b0a4436b7562df4760d8f372fd9b42",
+  "original_native_job_result": "cancelled",
+  "last_recorded_stage": "original-native-selected-moment",
+  "original_selected_native_replay_verification_complete": false,
+  "frozen_j387_candidate_verdict": "UNDECIDED",
+  "native_report_sha256": null,
+  "no_missing_job_result_interpreted_as_mathematical_failure": true,
+  "original_full_lowband_upper_computed": false,
+  "whole_exterior_inverse_computed": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
