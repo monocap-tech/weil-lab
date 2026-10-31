@@ -1,0 +1,56 @@
+name: NF420 source-exact sharpened x Taylor sign interval
+on:
+  push:
+    branches: [research/nf420-original-second-derivative-source-gram]
+    paths:
+      - '.github/workflows/nf420-original-sharpened-fraction.yml'
+      - 'scripts/local_replay/nf420_original_x_taylor_sharpened_fraction.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-original-fraction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf420-original-second-derivative-source-gram
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently sharpen true original Gram source and certify signed interval
+        run: |
+          python -m py_compile scripts/local_replay/nf420_original_x_taylor_sharpened_fraction.py
+          python -u scripts/local_replay/nf420_original_x_taylor_sharpened_fraction.py --output /tmp/nf420_sharpened.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          x=json.load(open('/tmp/nf420_sharpened.json'))
+          assert x['original_full_source_242_plus_4_retained']
+          assert x['original_arb_ball_bounds_reread_as_exact_Fraction']
+          assert x['original_true_third_derivative_L2_integer_upper']==1334
+          assert x['original_true_second_derivative_global_sup_integer_upper']==2002
+          assert x['original_true_complete_z_second_x_derivative_uniform_bound']==125457
+          assert x['original_full_support_cell6_macroscopic_Taylor_interval']==['899/1000','901/1000']
+          assert x['certified_positive_interval_radius_exact']=='1/40000000'
+          assert F(x['original_micro_interval_signed_z_lower_exact'])>0
+          assert x['original_full_z_positive_on_ENTIRE_micro_interval']
+          assert not x['original_complete_full_cell6_covered']
+          assert not x['original_NF404_complete_centered_scalar_decided']
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          PY
+      - name: Custody independent original x Taylor improvement
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF420_original_cell6_independent_sharpened_Taylor_positive_interval.json
+          cp /tmp/nf420_sharpened.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF420 exact-source proof of true original z positive over radius 2.5e-8'
+            git pull --rebase origin research/nf420-original-second-derivative-source-gram
+            git push origin HEAD:refs/heads/research/nf420-original-second-derivative-source-gram
+          fi
