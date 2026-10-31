@@ -84,10 +84,27 @@ def main():
  assert F(radius["original_native_coefficient_derivative_error_uniform_D"])<F(1,10**750)
  # Source-native u4 is f4-w4; use the validated original 4th exterior curvature.
  ctrue=full.sqrt()+arb("3e-6")
- # Source coeffs are 4096-bit mids. The original u4'' coefficient error is
- # NOT paid by NF408 S,D derivative bound, which covers only order <=1.
- # Do NOT claim native true u4'' without a separate second-derivative radius!
- # This theorem is midpoint-source-only until that second curvature radius is paid.
+ # Pay a fresh *second*-derivative source-native radius in exact rationals.
+ # Use 2*pi*|freq|<7*|freq|, |sinh(x/2)|<1, all x in [-B,B].
+ S2=F(0)
+ for (freq,k),(mid,rad) in zip(source["original_selected_generator_node_orders"],
+                              source["original_exact_native_raw_selected_coefficients_mid_radius"]):
+  rr=abs(dyad(rad))
+  if freq=="pole":
+   assert k is None
+   S2+=rr/F(4)
+  else:
+   omega=7*abs(F(freq))
+   S2+=rr*((k*(k-1)*B**(k-2) if k>=2 else 0)
+       +(2*k*omega*B**(k-1) if k else 0)+omega*omega*B**k)
+ for (mid,rad),shape in zip(source["original_exact_native_original_four_critical_coefficients_mid_radius"],
+                            source["original_source_critical_sines_and_pole_coefficients"]):
+  rr=abs(dyad(rad))
+  S2+=rr*(sum((abs(F(v))*(7*abs(w))**2 for v,w in
+                 zip(shape["sine_coefficients"],freqs)),F(0))
+          +abs(F(shape["sinh_coefficient"]))/4)
+ assert S2<F(1,10**735),("source second derivative uncertainty large",str(S2)[:120])
+ ctrue+=A(F(3,2)*S2)
  bound=1
  while not (ctrue<arb(bound)):
   bound*=2
