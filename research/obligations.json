@@ -60,7 +60,7 @@
     "ef17_source_identifiability_gate": "EF17 confirms EF16's original source physical pole projection (accepted in corrected Actions #41148545925) is insufficient to identify corrected signed Schur sign without original pole-free signed B0 and resolvent. Finite exact countermodels are expressly abstract, not actual negative Weil witnesses. Real signed mixed/source residual required in EF18.",
     "ef18_original_signed_mixed_entry": "EF18 original SI10 even source e=1_I cos(2pi 37/64 x) pole-free signed source action has a strict n2 arithmetic-translated internal jump at B-ln2, isolated from all other original 7 prime-power endpoints; archimedean pseudolocality and source domain give B0(e,V469^perp)!=0. Focused arithmetic CI separate from analytic review. No actual inverse response or matrix PSD.",
     "ef19_annihilator_quantitative_stop": "EF19 genuine original 469 even exceptional-source annihilator creates exactly orthogonal C_c∞ test. Its signed mixed pairing converges to -J as ε→0, but leading D^938 term makes ||fε||_L²²~const/ε. Original cofinite positive floor then forces the variational inverse-Schur lower obtained from this particular trial to vanish O(ε), so shrinking-bump method is STOP. Source and analytic verification classifications separate.",
-    "ef20_shift_filter": "EF20 verifies a genuine original SI10 469-even-source exact cofinite test via selfadjoint bounded finite shifts and proves minimal universal fixed-step bilateral radius 469; not numerical source coupling or normalized Schur. EF19 source/scaling CI accepted, original analytic form attachment remains reviewable. Do not promote to even PSD, and do not restart unbounded local annihilator optimization."
+    "ef20_shift_filter": "EF20 bounded native original even SI10 FIR Fh annihilates full 469 source family with optimal universal bilateral radius469. Real original fixed h source-specific signed mixed nonvanishing follows from extreme original arithmetic jump, all other translated edges excluded by rational logarithm enclosures, subject to arch pseudolocal/domain attachment; numeric inverse Schur OPEN. No point jump -> numeric norm inference."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -885,9 +885,9 @@
     },
     "EF20": {
       "kind": "original-even-finite-shift-exact-complement-and-optimal-radius",
-      "scope": "W-EVEN-FORM: original SI10 b9 469-source even exact fixed-step symmetric finite-shift test, physical compact support, sharp universal filter bilateral radius469 for h=1/2048. No original signed mixed numerator/energy denominator or finite Schur PSD.",
+      "scope": "W-EVEN-FORM: native SI10 even 469-source exact h=1/2048 selfadjoint finite-shift cofinite filter, sharp 469 bilateral radius; isolated actual original seven-prime fixed-step arithmetic source-gradient jump implies nonzero signed q0(e,Fh psi) for some even compact psi under pseudolocality. Explicit numerical numerator/denominator and Schur still OPEN.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/399",
-      "verification": "EF20 exact original source 107/469, algebraic universal degree drop, translated physical support and 938 root minimality implemented. Focused EF20 source CI pending; functional analytic/fixed-step complete signed energy verification separate.",
+      "verification": "Exact Fraction native source, universal FIR algebra, 938-root optimality, 15023 original arithmetic/physical translated edge noncollisions new source validation. Focused CI PENDING; pseudolocal and form-domain attachment needs audit, no fixed-psi normalized energy measured.",
       "repo_path": "notes/provisional/EF20_ORIGINAL_EVEN_FINITE_SHIFT_COFINITE_20261031.md"
     }
   },
@@ -1043,7 +1043,7 @@
         "EF20"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF20: native original 469 even SI10 exceptional source family admits EXACT bounded symmetric FIR finite-shift cofinite test F_h phi, with h=1/2048 and 469-step radius, avoiding Gram inversion and 938th-order physical differentiation. Proved minimum universal scalar Laurent shift radius469 from 938 distinct conjugate source roots. No finite-h original signed mixed numerator q0(e,Fh phi), energy q0(Fh phi,Fh phi), or inverse-Schur normalized positive lower certified. EF21 must test one explicitly fixed original source/step/physical bump and outward signed numerator+denominator, or stop FIR if filter conditioning prevents it; W-EVEN-FORM OPEN."
+      "next_action": "EF20: true original SI10 even F469 compact bounded h=1/2048 FIR filter; actual fixed-h extreme shifted original n=2 arithmetic jump at x*=B-ln2+469h and outward 15023 original source/physical edge exclusions give conditional TRUE signed finite-to-infinite q0(e,Fh psi)!=0 for some compact even psi. No quantified normalized source/energy; EF21 must choose explicitly fixed psi and certify full original signed q0(e,Fh psi) and q0(Fh psi,Fh psi), or source-conditioned FIR conditioning STOP. W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
