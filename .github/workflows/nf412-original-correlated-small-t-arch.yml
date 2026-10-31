@@ -1,15 +1,16 @@
-name: Weil-Lab NF412 original correlated near-zero arch kernel L2
+name: Weil-Lab NF412 original 246-component correlation information STOP
 on:
   push:
     branches: [research/nf412-original-correlated-small-t-arch]
     paths:
       - '.github/workflows/nf412-original-correlated-small-t-arch.yml'
       - 'scripts/local_replay/nf412_original_correlated_small_t_gram.py'
+      - 'scripts/local_replay/nf412_original_full_source_triangle_stop.py'
   workflow_dispatch:
 permissions:
   contents: write
 jobs:
-  original-correlated-small-t:
+  correct-source-scope:
     runs-on: ubuntu-latest
     timeout-minutes: 22
     steps:
@@ -20,39 +21,52 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Native arb runtime
+      - name: Native 4096-bit four-critical Gram diagnostic only
         run: pip install python-flint==0.8.0
-      - name: Actual original correlated four-critical analytic 32-sine physical second-derivative Gram
+      - name: Verify that four-critical Gram cannot certify full 246-component curvature
         run: |
           python -m py_compile scripts/local_replay/nf412_original_correlated_small_t_gram.py
-          python -u scripts/local_replay/nf412_original_correlated_small_t_gram.py --output /tmp/NF412_original_correlated_small_t_gram.json
+          python -u scripts/local_replay/nf412_original_correlated_small_t_gram.py --output /tmp/NF412_original_critical_only_method_stop.json
+          python - <<'PY'
+          import json
+          a=json.load(open('/tmp/NF412_original_critical_only_method_stop.json'))
+          assert a['critical_source_dimension']==4 and a['critical_sine_count']==32
+          assert a['missing_242_selected_critical_cross_covariance']
+          assert a['former_true_u4_curvature_interpretation_invalid']
+          assert a['original_true_u4_second_derivative_L2_bound_certified'] is False
+          assert a['original_true_near_t_L2_bound_certified'] is False
+          assert a['original_full_centered_scalar_certified'] is False
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          PY
+      - name: Exact full original 242+4 source triangle bound, provably too loose
+        run: |
+          python -m py_compile scripts/local_replay/nf412_original_full_source_triangle_stop.py
+          python scripts/local_replay/nf412_original_full_source_triangle_stop.py --output /tmp/NF412_original_full_source_triangle_stop.json
           python - <<'PY'
           import json
           from fractions import Fraction as F
-          r=json.load(open('/tmp/NF412_original_correlated_small_t_gram.json'))
-          assert r['critical_source_dimension']==4 and r['critical_sine_count']==32
-          assert r['original_native_source_second_derivative_radius_paid']
-          assert r['original_true_u4_second_derivative_L2_bound_certified']
-          assert r['original_true_near_t_L2_bound_certified']
-          C=F(r['original_midpoint_u4_second_derivative_L2_upper_integer'])
-          h=F(r['original_small_t_cutoff_h_exact'])
-          assert F(r['original_midpoint_near_t_zero_arch_I0_L2_upper'])==C*h*h/8
-          assert r['original_remaining_arch_t_quadrature_certified'] is False
-          assert r['original_z_cell_6_3_7_interval_certified'] is False
-          assert r['original_full_centered_scalar_certified'] is False
-          assert r['W_ODD_NEG']==r['RH']=='OPEN'
+          a=json.load(open('/tmp/NF412_original_full_source_triangle_stop.json'))
+          assert a['selected_source_generators_included']==242
+          assert a['critical_source_generators_included']==4
+          assert a['triangle_bound_exceeds_desired_error_tolerance']
+          assert F(a['true_original_small_t_I0_whole_odd_support_L2_triangle_upper_exact'])>F(9,10**17)
+          assert a['true_small_t_physical_usable_budget_certified'] is False
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
           PY
-      - name: Durable typed original t-near-zero certificate, not full z
+      - name: Preserve corrected method-stop evidence WITHOUT overwriting invalid historical green receipt
         run: |
-          target=notes/data/provisional/NF412_original_correlated_small_t_gram.json
           mkdir -p notes/data/provisional
-          if test -e "$target"; then cmp -s "$target" /tmp/NF412_original_correlated_small_t_gram.json
-          else cp /tmp/NF412_original_correlated_small_t_gram.json "$target"; fi
+          a=notes/data/provisional/NF412_original_critical_only_method_stop.json
+          b=notes/data/provisional/NF412_original_full_source_triangle_stop.json
+          if test -e "$a"; then cmp -s "$a" /tmp/NF412_original_critical_only_method_stop.json
+          else cp /tmp/NF412_original_critical_only_method_stop.json "$a"; fi
+          if test -e "$b"; then cmp -s "$b" /tmp/NF412_original_full_source_triangle_stop.json
+          else cp /tmp/NF412_original_full_source_triangle_stop.json "$b"; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add "$target"
+          git add "$a" "$b"
           if ! git diff --cached --quiet; then
-            git commit -m 'NF412 native correlated critical curvature and small-t exact L2 receipt, full z open'
+            git commit -m 'NF412 correct invalid four-critical bound, exact full original triangle method STOP'
             git pull --rebase origin research/nf412-original-correlated-small-t-arch
             git push origin HEAD:refs/heads/research/nf412-original-correlated-small-t-arch
           fi
