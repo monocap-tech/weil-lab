@@ -1,0 +1,63 @@
+{
+  "pass": "NF418",
+  "date": "2026-10-31",
+  "canonical_active_obligation": "W-ODD-NEG",
+  "status": "ACCEPTED ORIGINAL FULL-CELL COARSE ENCLOSURE plus METHOD STOP of unrefined Lipschitz sampling",
+  "original_source": "unchanged NF370 fourth u4, NF407 242 selected plus 4 critical generators, all 7 genuine signed prime powers, original B=11/10, NF404 centering",
+  "accepted": {
+    "source_curvature_from_NF413": "||u4''||L2(-B,B)<256",
+    "original_boundary_from_NF411": "|u4(B)|<1e-9, |u4'(B)|<1e-6",
+    "uniform_source_limits": "|u4'|<400, |u4|<513 on original physical support",
+    "original_exact_seams_from_NF406": true,
+    "original_cell_numbers": [
+      3,
+      6,
+      7
+    ],
+    "certified_z_derivative_bound": "|z'(x)|<30000 on the interiors of original physical cells 3,6,7",
+    "piecewise": true,
+    "source_C0_extends_to_closed_original_cells": true,
+    "full_cell_z_inherited_point_and_derivative_envelopes": true,
+    "signed_true_original_neighborhoods": {
+      "radius_exact": "1e-17",
+      "cell3": "strictly_negative around x=7/20",
+      "cell6": "strictly_positive around x=9/10",
+      "cell7": "strictly_positive around x=26/25"
+    },
+    "native_exact_source_ci": "https://github.com/monocap-tech/weil-lab/actions/runs/41231473817",
+    "receipt": "notes/data/provisional/NF418_original_hotspot_cellwide_lipschitz_envelopes_exact.json"
+  },
+  "math_ledger": {
+    "I0_derivative_max": 2200,
+    "I1_derivative_max": 2000,
+    "finite_arch_derivative_max": 7500,
+    "original_seven_signed_prime_derivative_max": 16800,
+    "original_NF404_center_derivative_max": 2,
+    "sum": 28502,
+    "chosen_safe_upper": 30000
+  },
+  "stop": {
+    "method": "unrefined pointwise source sampling + global Sobolev Lipschitz nearest-neighbor error estimate on original three hotspot cells",
+    "original_eps_L2": "9e-17",
+    "sufficient_mesh_upper": "6e-21",
+    "uniform_mesh_subinterval_count_exceeds": "5e19",
+    "status": "METHOD STOP FOR THIS CERTIFICATION RECIPE ONLY: not an information-theoretic lower bound on source-correlated cell Taylor quadrature",
+    "reason": "true certified full-cell z envelopes are order 1e3, whereas original z ~1e-11 and centered NF404 norm ~1e-21"
+  },
+  "open": {
+    "tight_original_source_correlated_z_cellwide_on_hotspots": "OPEN",
+    "remaining_five_original_positive_cells": "OPEN",
+    "original_one_sided_prime_seams_tight_error": "OPEN",
+    "original_endpoint_dlogd_tight_error": "OPEN",
+    "NF410_signed_original_p_z_cross": "OPEN",
+    "true_complete_original_centered_NF404_scalar": "OPEN",
+    "NF404_C": "UNDECIDED",
+    "fourth_J242_lowband_complement": "OPEN",
+    "domain": "OPEN",
+    "infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF419 compute source-correlated x-Taylor or Chebyshev enclosures of entire regularized arch plus signed prime translations over finite one-sided physical cells (prioritize cell 6/3), avoid naive Lipschitz mesh, then all eight and NF410 signed scalar.",
+  "custody": "new stacked research branch, additive GitHub receipts, no historical overwrite or main merge"
+}
