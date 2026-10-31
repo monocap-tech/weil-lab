@@ -1,0 +1,64 @@
+name: NF423 original 246-source simultaneous shared z(0..3) jets
+on:
+  push:
+    branches: [research/nf423-shared-original-response-jets]
+    paths:
+      - '.github/workflows/nf423-original-shared-response-jets.yml'
+      - 'scripts/local_replay/nf423_original_shared_response_jets_native.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  shared-original-source-jets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf423-shared-original-response-jets
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native Arb
+        run: pip install python-flint==0.8.0
+      - name: One simultaneous original 398 panel correlated source sweep for z through zthird
+        run: |
+          python -m py_compile scripts/local_replay/nf423_original_shared_response_jets_native.py
+          python -u scripts/local_replay/nf423_original_shared_response_jets_native.py --precision 1024 --output /tmp/nf423_original_shared.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          r=json.load(open('/tmp/nf423_original_shared.json'))
+          assert r['original_true_physical_x']=='9/10' and r['original_cell']==6
+          assert r['original_source_242_selected_plus_four_critical_preserved']
+          assert r['original_all_seven_signed_prime_branches_preserved']
+          assert r['all_four_original_derivative_orders_computed_simultaneously']==[0,1,2,3]
+          assert r['full_source_Taylor_each_rational_panel_evaluated_once_for_all_orders']
+          assert r['full_kernel_moment_weights_each_rational_panel_evaluated_once_for_all_orders']
+          assert r['full_original_shared_I0_panel_count']==38
+          assert r['full_original_shared_I1_panel_count']==360
+          assert r['original_corrected_NF422_parity_endpoint_transfer']
+          assert r['original_previous_z0_zprime_zsecond_outward_intersections_checked']
+          assert r['original_true_zthird_point_certified']
+          pairs=[list(map(F,ints)) for ints in r['original_true_full_response_z_derivatives_0_to_3_source_paid_rational_intervals']]
+          assert len(pairs)==4
+          assert all(hi>lo and hi-lo<F(1,10**18) for lo,hi in pairs)
+          assert pairs[3][0]>-1540338 and pairs[3][1]<1540338
+          assert not r['original_entire_cell6_source_interpolation_model_certified']
+          assert not r['original_NF404_complete_centered_scalar_decided']
+          assert r['W_ODD_NEG']==r['RH']=='OPEN'
+          PY
+      - name: Source-custody simultaneous original response jets
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF423_original_shared_response_jets_native.json
+          cp /tmp/nf423_original_shared.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF423 four simultaneous original complete 246-source response jets and true zthird'
+            git pull --rebase origin research/nf423-shared-original-response-jets
+            git push origin HEAD:refs/heads/research/nf423-shared-original-response-jets
+          fi
