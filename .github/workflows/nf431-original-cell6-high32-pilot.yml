@@ -1,0 +1,53 @@
+name: Weil-Lab NF431 original cell6 high-mode 32 coefficient independent gate
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/nf431-original-cell6-high32-pilot.yml'
+permissions:
+  contents: read
+jobs:
+  original-high-modes256-through287:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install 2048-bit native Arb Acb
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Verify original full 246-generator NF431 independent first 32 high modes
+        run: |
+          python3 -m py_compile scripts/local_replay/nf431_original_cell6_correlated_cheb_high_block_native.py
+          python3 scripts/local_replay/nf431_original_cell6_correlated_cheb_high_block_native.py \
+            --start 256 --stop 288 --precision 2048 \
+            --output artifacts/NF431_original_cell6_high32_256_to_287.json
+      - name: Fail closed without actual original source coefficient balls
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF431_original_cell6_high32_256_to_287.json'))
+          assert d['pass']=='NF431'
+          assert (d['mode_start_inclusive'],d['mode_stop_exclusive'])==(256,288)
+          assert [c['n'] for c in d['coefficients']]==list(range(256,288))
+          assert len(d['coefficients'])==32
+          assert all(F(c['true_original_cell6_fixed_branch_coefficient_outward_interval'][1])-
+                     F(c['true_original_cell6_fixed_branch_coefficient_outward_interval'][0])<F(1,10**25)
+                     for c in d['coefficients'])
+          assert d['original_four_selected_plus_critical_count']==246
+          assert d['original_all_five_post_seam_primes_retained']==[2,3,4,5,7]
+          assert d['original_two_neither_branches']==[8,9]
+          assert d['original_analytic_global_transfer_pointwise_NF416_overlap_pass']
+          assert not d['all_1265_coefficients_certified']
+          assert not d['true_cell6_signed_pz_and_z2_integrated']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF431 independent high32 PASS; actual J6 signed scalar still OPEN')
+          PY
+      - name: Retain accepted original source native high32 intervals
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF431-original-cell6-native-high32-256-through-287
+          path: artifacts/NF431_original_cell6_high32_256_to_287.json
+          if-no-files-found: error
