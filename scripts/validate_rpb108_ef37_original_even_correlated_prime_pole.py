@@ -14,7 +14,7 @@ on each of 8 positive-half physical cutoff cells it has
 We integrate its squared norm EXACTLY by primitive identities with
 native 10^340 integer outward interval. No free or omitted prime channel.
 The full untruncated original arch cut h_cut receives a sharper
-whole-L2 norm via 80 directed outward half-integer mode norms and
+whole-L2 norm via 100 directed outward half-integer mode norms and
 a rigorously summed infinite lambda^-3/2 plus exponential tail.
 
 No inverse Schur projection is computed. The resulting global
@@ -45,7 +45,7 @@ from validate_rpb108_ef28_pole_neutral_moment_kernel import (
 ROOT=Path(__file__).resolve().parents[1]
 NS=(2,3,4,5,7,8,9)
 MU=F(17,25000)
-ARCH_TERM_COUNT=80
+ARCH_TERM_COUNT=100
 BASE_SQ_CAP=F(7,10)
 BASE_NORM_CAP=F(17,20)
 ARCH_NORM_CAP=F(3,5)
@@ -151,9 +151,9 @@ def arch_cut_complete_l2():
         total+=upper_amp*upper_sqrt
     # Remainder sum_{m>=n} lambda^-3/2
     # <=integral_(n-1)^inf (2t+1/2)^-3/2 dt
-    # =1/sqrt(2n-3/2) < 8/100 for n=80.
-    assert n==80
-    assert F(1,2*n-F(3,2))<F(8,100)**2
+    # =1/sqrt(2n-3/2) < 71/1000 for n=100.
+    assert n==100
+    assert F(1,2*n-F(3,2))<F(71,1000)**2
     # complete higher-mode exp contribution:
     # 2sqrt B*sum e^-lambda B/lambda
     # <=(11/5) exp(-lambda_n B)/lambda_n * (16/11).
@@ -163,8 +163,8 @@ def arch_cut_complete_l2():
     assert e_n.hi<S//10**20
     exp_tail=F(11,5)*F(1,10**20)*F(1,lam_n)*F(16,11)
     assert exp_tail<F(1,10000)
-    assert total<F(513,1000),("80 original arch absolute modes exceed cap",float(total))
-    full_upper=total+F(8,100)+exp_tail
+    assert total<F(528,1000),("100 original arch absolute modes exceed cap",float(total))
+    full_upper=total+F(71,1000)+exp_tail
     assert full_upper<ARCH_NORM_CAP,("full infinite arch cutoff tail",float(full_upper))
     return total,exp_tail,full_upper
 
@@ -186,8 +186,8 @@ def main():
           ' correlated physical L2 norm squared:',full.scaled(),
           'strictly <7/10; original signed base L2 <17/20',flush=True)
     print('EF37 original complete quarter-digamma cutoff L2'
-          ' absolute 80 exact native outward modes',float(first),
-          '+ entire higher lambda tail <',float(F(8,100)+tail),
+          ' absolute 100 exact native outward modes',float(first),
+          '+ entire higher lambda tail <',float(F(71,1000)+tail),
           'total <3/5',flush=True)
     print('EF37 original full source-row reduced physical gradient'
           ' L2 <29/20=1.45; original full even cofinite projected'
