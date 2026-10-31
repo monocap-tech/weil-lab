@@ -63,6 +63,9 @@ def main():
     deriv+=C*ab(k*B**(k-1))*cosv-C*power*omega*sinv
  v_lo,v_hi=map(ab,p["original_source_u4_endpoint_interval"])
  assert not (value<v_lo or value>v_hi),"source-correlation/original endpoint mismatch"
+ # Certified rational bracket for the TRUE original derivative, paying NF408 D.
+ assert deriv > ab(-F(131,10**9))+ab(D)
+ assert deriv < ab(-F(129,10**9))-ab(D)
  pos=bool(deriv>ab(D));neg=bool(deriv<-ab(D))
  assert not(pos and neg)
  rows=[]
