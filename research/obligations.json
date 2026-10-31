@@ -958,7 +958,7 @@
     "EF29": {
       "kind": "original-even-471-mixed-vector-modulo-native-protected-source-with-rigorous-laplace-tail",
       "scope": "True SI10 source c0=37/64, 471 EF28 even physical bells: compute true signed first-source 471-entry gtilde=gprime+garch_cut=g-a_arch(c0)*h0, where h0 is an ACTUAL SI10 source row. All 6594 original ln n physical cutoff decisions strict/no partial; n8,n9 mixed vanish; original source arithmetic diagonal A_prime analytically enclosed. Original arch cutoff digamma half-integer Laplace 100 terms with rigorous <1e-19 coordinate tail, directed 340-digit fixed integer intervals, full 471-vector JSON Actions artifact; exact rational k0 grid alias scan. Original Htilde/δ/arch diagonal A_arch STILL UNCOMPUTED, no Schur sign.",
-      "pr": "https://github.com/monocap-tech/weil-lab/pull/420",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/421",
       "verification": "New actual original EF29 source 471-vector outward script/CI introduced, pending focused Actions; no original 470x471 matrix numerical source entries or residual δ, no arch A or even PSD/RH.",
       "repo_path": "notes/provisional/EF29_ORIGINAL_EVEN_MIXED_VECTOR_CUTOFF_LAPLACE_20261031.md"
     }
