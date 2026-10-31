@@ -1,0 +1,28 @@
+name: EF19 original even 469-source annihilator and cofinite signed test
+on:
+  push:
+    branches:
+      - research/ef19-original-even-annihilator-cofinite-test
+  pull_request:
+    branches:
+      - research/ef18-original-even-arithmetic-jump-mixed
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-annihilator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original seven-prime source/annihilator exact algebra
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef19_original_even_annihilator.py
+          python scripts/validate_rpb108_ef19_original_even_annihilator.py
+      - name: Original even canonical obligation consistency
+        run: python scripts/verify_obligation_manifest.py
