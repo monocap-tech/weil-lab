@@ -1,3 +1,21 @@
+# NF412 correction — supersedes the earlier proposed source-curvature certificate
+
+**CURRENT AUTHORITATIVE STATUS: FOUR-CRITICAL-ONLY APPROXIMATION IS A MATHEMATICAL METHOD STOP, NOT CERTIFIED ORIGINAL u4.**
+
+The earlier analytic estimate of the omitted t<h original I0 kernel is valid; its application to the source was WRONG. On the original NF407 physical source,
+u4=F(T-M)+J(rawX*M), equivalently u4=fTe4-(F-JX)(I+Y0)Te4.
+This contains the full 242 selected-source physical contribution alongside all four critical coefficients. Contracting only the four critical sine families and adding the small NF374 exterior w4 curvature does **not** reconstruct the true u4'' Gram: the omitted 242 components and their full mixed correlations are precisely where the huge source-scale cancellation occurs.
+
+The initial native focused run #41224653598 FAILED on a coding NameError; corrected follow-up #41224819791 SUCCESSFULLY EXECUTED but produced a **mathematically inapplicable true-u4 curvature assertion**. It is explicitly superseded, not overwritten or treated as theorem evidence. The four-critical second-derivative contribution alone has enormous power and cannot be interpreted as a bound on the true complete original u4. Thus the earlier "true original small-t L2 budget certified" flag is **FALSE**.
+
+A corrected source-exact 242+4 complete raw-function triangle computes a bona fide but extremely loose full u4'' sup/L2 upper and its resulting t<h error upper. This upper exceeds the proposed 9e-17 error budget; that is a **bound-method failure**, not a lower bound on actual u4'' or on the true t error. Its execution and durable receipt must be inspected. The original exact small-t operator inequality remains a theorem with an unclosed useful curvature input.
+
+**Actual minimal next mathematical obligation:** Evaluate the complete 246-generator source-correlated second-derivative physical Gram, including *all* 242×242 selected, 242×4 selected–critical, and 4×4 critical blocks. For the unchanged 4096-bit native source interval coefficient vector β and physical generators φ_a, enclose β^T G^(2) β, G^(2)_ab=∫_-B^B φ_a''(x) φ_b''(x)dx, with the native coefficient radii paid before declaring a bound on the true u4'' norm. The high-frequency x^k sin/cos prefix and odd sinh pole must remain present; the same-generator coefficient collapse alone is insufficient. Only then may the analytic small-t I0 bound be charged against the full norm. Continue source-correlated z cells 6,3,7 and the signed cross after this obstacle.
+
+No full continuous z, remaining t integral, NF404 cap, lowband J242-perp, domain/inverse, W-ODD-NEG or RH closure.
+
+---
+
 # NF412 — Correlated original source curvature and the near-zero archimedean kernel
 
 **2026-10-31 PT. Canonical W-ODD-NEG, exact same original fourth u4.** Preserves NF370 242 selected+4 original critical source, J242 pole center NF404, original NF407 seven prime seams, true compact real digamma kernel on support B=11/10. No new source family, signed cells, domain transfer or RH claim.
