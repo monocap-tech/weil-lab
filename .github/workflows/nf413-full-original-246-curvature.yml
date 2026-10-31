@@ -1,0 +1,59 @@
+name: Weil-Lab NF413 complete original 246-generator curvature Gram
+on:
+  push:
+    branches: [research/nf413-full-original-curvature-gram]
+    paths:
+      - '.github/workflows/nf413-full-original-246-curvature.yml'
+      - 'scripts/local_replay/nf413_original_full_246_curvature_gram_native.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  full-native-gram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf413-full-original-curvature-gram
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install outward native Arb arithmetic
+        run: pip install python-flint==0.8.0
+      - name: Original 242 selected plus 4 critical full physical second derivative Gram
+        run: |
+          python -m py_compile scripts/local_replay/nf413_original_full_246_curvature_gram_native.py
+          python -u scripts/local_replay/nf413_original_full_246_curvature_gram_native.py --output /tmp/NF413_original_full_curvature_native.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open("/tmp/NF413_original_full_curvature_native.json"))
+          assert d["original_selected_generators"]==242
+          assert d["original_critical_generator_blocks"]==4
+          assert d["original_critical_sine_frequencies"]==32
+          assert d["all_246_original_selected_selected_selected_critical_critical_critical_cross_preserved"]
+          assert d["independent_NF411_original_endpoint_derivative_overlap"]
+          assert d["native_second_derivative_error_paid_in_L2_by_3S2_over_2"]
+          assert len(d["original_small_t_I0_physical_enclosures"])==3
+          assert d["other_arch_t_integrals_rigorously_integrated"] is False
+          assert d["original_continuous_z_cells_6_3_7_certified"] is False
+          assert d["complete_original_centered_norm_certified"] is False
+          assert d["NF404_cap_decided"] is False
+          assert d["W_ODD_NEG"]==d["RH"]=="OPEN"
+          PY
+      - name: Custody true original complete 246-source Gram, not full scalar
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF413_original_full_246_source_curvature_native.json
+          if test -e "$target"; then cmp -s "$target" /tmp/NF413_original_full_curvature_native.json
+          else cp /tmp/NF413_original_full_curvature_native.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF413 complete original 246 correlated curvature native result, continuous z OPEN'
+            git pull --rebase origin research/nf413-full-original-curvature-gram
+            git push origin HEAD:refs/heads/research/nf413-full-original-curvature-gram
+          fi
