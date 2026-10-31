@@ -943,8 +943,15 @@
       "kind": "original-even-physical-pole-two-vector-schur-residual-audit",
       "scope": "W-EVEN-FORM: true first original SI10 e and EF21 fixed F469 even cofinite f, pole-free signed A/M/E and actual c=cosh(x/2) charges u,v. Exact restricted 2x2 pole-corrected S2=A-M²/E+[2/(1+2v²/E)](u-Mv/E)²; source u in (-.5,-.49), 2u² in (.48,.50), selected v<1e-700 and physical norm ||f||>1e186 give pole update Delta in (.46,.51), but A and R too wide to decide S2 or full 469D S.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/414",
-      "verification": "Native SI06/SI12/EF24 source rational trig/hyperbolic and original 107/469 FIR Laplace at lambda 1/2, 340-digit a210 norm lower, 3 exact rational 2x2 Schur identities; focused EF27 CI PENDING; full finite 469D source S and independent analytic domain audit OPEN.",
+      "verification": "EF27 source CI #41229142104 failed on float(10**372) output overflow; corrected focused #41231227149 SUCCESS, true source u=-0.49886081732, pole 2u²=0.49772423011, selected v<1e-700, restricted pole delta in (0.46,0.51), exact rational 2x2 Schur and governance PASS; Schur sign OPEN.",
       "repo_path": "notes/provisional/EF27_EVEN_POLE_CORRECTED_TWO_VECTOR_SCHUR_20261031.md"
+    },
+    "EF28": {
+      "kind": "native-even-pole-neutral-471-compact-bell-source-kernel",
+      "scope": "471 real-even C5 compact disjoint bell pairs, 469 original SI10 source constraints and one actual cosh pole constraint: guaranteed nonzero kernel; exact physical Gram dI, d=231/8388608, full original signed E<34||f||², conditional SI10 cofinite floor. Original mixed-gradient residual δ can certify negative original even direction, but actual source matrix, δ and first-source diagonal A not computed.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/415",
+      "verification": "Original SI10 107/469 source-count, rational geometry of 942 disjoint bells, derivative/Jensen bound and Fraction projection toy; focused native EF28 CI pending. Original matrix g/δ and independent analytic domain audit OPEN.",
+      "repo_path": "notes/provisional/EF28_ORIGINAL_EVEN_471_BELL_POLE_NEUTRAL_MOMENTS_20261031.md"
     }
   },
   "obligations": [
@@ -1103,10 +1110,11 @@
         "EF24",
         "EF25",
         "EF26",
-        "EF27"
+        "EF27",
+        "EF28"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF27: original even positive pole reattachment on one authentic SI10 e/F469 detector gives exact S2=A-M²/E+Delta, with true source u=<cosh,e> in (-.5,-.49), selected pole overlap v<1e-700 and source physical ||f||>1e186, thus true Delta in (.46,.51). Parent EF26 original M<0 and tiny R>1e-193 verified; source upper |A|<87 and R<3.3e6 too weak for S2 sign. This is an explicit single-source scalar Schur inference STOP, not a theorem-level obstruction. EF28 should compute conditioned original A and R or design a low-moment source-exact complement / whole finite corrected 469D matrix entry; W-EVEN-FORM OPEN; odd/whole Weil/RH OPEN."
+      "next_action": "EF28: 470 actual original SI10 even-source plus positive-pole constraints on 471 compact C5 even bell pairs guarantee nonzero source/pole-neutral cofinite kernel and exactly conditioned physical Gram. Native full signed E<34||f||². For first source g_l=q0(e,phi_l), finite δ=dist(g,range H^T) gives selected inverse response δ²/(34d) if δ>0 and sufficient negative even criterion δ²>34d*(A+2u²). Actual H/g/δ/A uncomputed. EF29 must certify true original residual/diagonal or STOP method. Full even/odd/Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1319,6 +1327,17 @@
         "scripts/validate_rpb108_ef27_even_pole_schur_audit.py"
       ],
       "interpretation": "True first original SI10 even source pole charge and native F469 selected pole overlap; restricted exact 2x2 Schur update Delta in (.46,.51) under analytic domain; bounds on A,R do not certify S2 or full 469D sign.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF28-original-even-471-bell-source-pole-moment",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef28_pole_neutral_moment_kernel.py"
+      ],
+      "interpretation": "Native 469-even-source plus pole constraints on 471 disjoint C5 even tests; physical Gram dI and actual E upper; source residual δ NOT evaluated.",
       "cadence": "per-update"
     }
   ]
