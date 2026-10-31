@@ -1,3 +1,15 @@
+# NF415 verified current disposition — original cell6 I1 ACCEPTED
+
+**Verified 2026-10-31 PT:** Original complete 242+4 source-correlated physical I1(9/10) on t∈[2/5,4] now has a native 1024bit outward Arb rational interval width <1e-70, including exact 300-degree original source Taylor tail (actual max original selected frequency 882.9140625), 48-degree kernel Taylor tail, 360 original rational panels, and original 4096bit coefficient radii. [Focused Actions #41228381747 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41228381747). Original I1≈-1.264592848005995503589668. NF414 source-exact original finite part plus this I1 yields the rigorous partial original z−I0 interval
+
+0.2944113771692838454407574207627221719871 ≤ z(9/10)−I0(9/10) ≤ 0.2944113771692838454407574207627221719872.
+
+This is **not** the true full z. Original small-t I0 t<1e-12 is pointwise <5e-17; remaining t∈[1e-12,2/5] I0 open. Direct complex-ball ±2.18e142 remains METHOD STOP; early failed high-frequency/metadata CI preserved. Next NF416 = full real original I0 on same x using cancellation-first source interval, then true full z at one point, other hotspot points/cells, signed cross and complete NF404 cap.
+
+**OPEN** full original z, all complete cells, original signed p/z cross and NF404 scalar, J242 complement, operator domain/infinite inverse, W-ODD-NEG and RH. No new signed cells/source modification/main merge.
+
+---
+
 # NF415 current frontier — true source pointwise I0 and correlation-preserving original I1
 
 2026-10-31 PT. Canonical W-ODD-NEG; original NF370 fourth u4 unchanged.
