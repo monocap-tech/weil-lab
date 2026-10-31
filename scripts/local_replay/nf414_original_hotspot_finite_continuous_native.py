@@ -59,7 +59,7 @@ class Original:
   self.terms,self.pole,self.S0=source_data(s)
   self.pi=arb.pi()
  def at(self,x):
-  assert A(-B)<=x<=A(B),('source eval outside physical support',str(x)[:90])
+  assert (A(-B)<x and x<A(B)) or x.overlaps(A(B)) or x.overlaps(A(-B)),('source eval outside physical support',str(x)[:90])
   z=A(self.pole)*(x/2).sinh()
   for f,k,v in self.terms:
    tr=A(2*f)*self.pi*x
