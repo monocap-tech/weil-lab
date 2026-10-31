@@ -1,0 +1,23 @@
+{
+  "pass": "NF415-CORRELATED-I1-RECOMPOSITION",
+  "standing": "OUTWARD ENCLOSED TRUE ORIGINAL CELL6 z KNOWN PLUS CERTIFIED I1; I0 STILL OPEN, NO TRUE COMPLETE z OR NF404 DECISION",
+  "original_original_source": "NF370 original 242-selected plus 4 critical physical u4; 7 original prime powers; B=11/10 and NF404 dyadic pole unchanged",
+  "point_x_exact": "9/10",
+  "cell": 6,
+  "source_NF414_native_blob_sha": "aae189aaf8c013a3dda0957ae6983db42e7e1207",
+  "source_NF415_I1_native_blob_sha": "ebae4d8be087673128a6c51b11c3706f5036a165",
+  "source_full_246_native_radius_paid": true,
+  "original_I1_analytic_plus_source_coeff_error_paid": true,
+  "original_z_minus_I0_rigorous_outward_decimal_lower": "0.2944113771692838454407574207627221719871",
+  "original_z_minus_I0_rigorous_outward_decimal_upper": "0.2944113771692838454407574207627221719872",
+  "decimal_digit_places": 40,
+  "original_z_equals": "z(9/10)=(z_known(9/10)+I1(9/10))+I0(9/10)",
+  "original_I0_part_from_0_to_1e12_pointwise_error_strict": "5e-17",
+  "original_I0_t_between_1e12_and_2over5": "OPEN",
+  "complete_original_z_pointwise": "OPEN",
+  "complete_original_z_cell": "OPEN",
+  "full_centered_scalar": "OPEN",
+  "NF404_sufficient_cap": "UNDECIDED",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}

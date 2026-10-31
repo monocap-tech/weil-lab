@@ -1,0 +1,60 @@
+name: Weil-Lab NF415 full original source correlated Taylor I1
+on:
+  push:
+    branches: [research/nf415-original-arch-integral-certified]
+    paths:
+      - '.github/workflows/nf415-original-correlated-taylor-I1.yml'
+      - 'scripts/local_replay/nf415_original_cell6_I1_correlated_taylor_native.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-correlated-Taylor-I1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf415-original-arch-integral-certified
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native Arb arithmetic
+        run: pip install python-flint==0.8.0
+      - name: Original 242+4 exact rational Taylor panel 6 I1 with analytic kernel and source tails
+        run: |
+          python -m py_compile scripts/local_replay/nf415_original_cell6_I1_correlated_taylor_native.py
+          python -u scripts/local_replay/nf415_original_cell6_I1_correlated_taylor_native.py --output /tmp/nf415_true_source_I1_taylor.json --precision 1024
+          python - <<'PY'
+          from fractions import Fraction as F
+          import json
+          r=json.load(open('/tmp/nf415_true_source_I1_taylor.json'))
+          assert r['original_cell']==6 and r['original_physical_x']=='9/10'
+          assert r['actual_original_I1_exact_t_interval']==['2/5','4']
+          assert r['number_of_exact_rational_symmetric_panels']==360
+          assert r['original_source_246_generator_coverage']
+          assert r['original_all_source_correlations_preserved_before_panel_integration']
+          assert r['original_cell6_I1_source_rigorous']
+          assert F(r['entire_original_I1_analytic_truncation_error_upper'])<F(1,10**40)
+          assert F(r['true_original_cell6_I1_interval_width_exact'])<F(1,10**12)
+          assert r['original_I0_t0_pointwise_error_at_h_1e12_strict_upper']=='1/20000000000000000'
+          assert not r['original_cell6_remaining_I0_above_h_integrated']
+          assert not r['true_original_z_cell6_pointwise_certified']
+          assert not r['complete_original_centered_scalar_certified']
+          assert r['W_ODD_NEG']==r['RH']=='OPEN'
+          PY
+      - name: Preserve immutable verified original I1 rational interval receipt
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF415_original_cell6_I1_correlated_taylor_native.json
+          if test -e "$target"; then cmp -s "$target" /tmp/nf415_true_source_I1_taylor.json
+          else cp /tmp/nf415_true_source_I1_taylor.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF415 certified full original source correlated cell6 I1 analytic integral, I0 and scalar OPEN'
+            git pull --rebase origin research/nf415-original-arch-integral-certified
+            git push origin HEAD:refs/heads/research/nf415-original-arch-integral-certified
+          fi

@@ -1,0 +1,58 @@
+name: Weil-Lab NF415 original arch I1 validated complex Arb
+on:
+  push:
+    branches: [research/nf415-original-arch-integral-certified]
+    paths:
+      - '.github/workflows/nf415-original-cell6-acb-integral.yml'
+      - 'scripts/local_replay/nf415_original_cell6_I1_validated_acb.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-I1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf415-original-arch-integral-certified
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native rigorous complex Arb
+        run: pip install python-flint==0.8.0
+      - name: Original x=9/10 242+4 source ACb certified I1 and pointwise t=0 error
+        run: |
+          python -m py_compile scripts/local_replay/nf415_original_cell6_I1_validated_acb.py
+          python -u scripts/local_replay/nf415_original_cell6_I1_validated_acb.py --output /tmp/nf415_original_I1.json --eval-limit 12000 --precision 1024
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p=json.load(open('/tmp/nf415_original_I1.json'))
+          assert p['original_rational_x']=='9/10'
+          assert p['I1_true_original_t_lower']=='2/5'
+          assert p['I1_true_original_t_upper']=='4'
+          assert F(p['original_pointwise_I0_0_to_h_strict_upper_exact'])==F(5,10**17)
+          assert p['full_source_I1_validation'] in (
+           'ACCEPTED_RESOLVED_INTERVAL_WITH_EXPLICIT_SOURCE_RADIUS',
+           'METHOD_STOP_ACB_FINITE_BUT_UNRESOLVED',
+           'METHOD_STOP_NONFINITE_ACB_INTERVAL','METHOD_STOP_ACB_NO_CONVERGENCE')
+          assert not p['true_complete_z_certified']
+          assert not p['original_full_centered_scalar_certified']
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          PY
+      - name: Durable native attempted original arch integral and pointwise tiny-t
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF415_original_cell6_I1_validated_acb.json
+          if test -e "$target"; then cmp -s "$target" /tmp/nf415_original_I1.json
+          else cp /tmp/nf415_original_I1.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF415 physical original 246 source t-integral verified standing, I0 and full z open'
+            git pull --rebase origin research/nf415-original-arch-integral-certified
+            git push origin HEAD:refs/heads/research/nf415-original-arch-integral-certified
+          fi
