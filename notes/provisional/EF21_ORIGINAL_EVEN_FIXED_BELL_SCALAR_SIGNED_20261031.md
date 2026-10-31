@@ -68,7 +68,27 @@ E >= mu ||f||² >= (17/25000)*(231r/512)>0.
 
 For any new rigorous full-original interval enclosures M∈[Mlo,Mhi], E∈[Elo,Ehi] with 0<Elo<=Ehi, a valid quantitative inverse-Schur lower from this explicit f is max(0,min_abs(M interval))²/Ehi. **None of these signed numerical interval enclosures has been computed yet.** An exact integrand and a valid formula do NOT constitute a certified positive lower.
 
-## 4. Remaining numerical feasibility gate and controls
+## 4. Additional sharp localization-method STOP for bounded FIR at fixed h
+
+The bounded shift construction avoids EF19's 938th physical derivatives, but **does not** make shrinking a jump detector advantageous for the normalized original signed Schur bound.
+
+Fix h=1/2048 and original F_h once and for all. Let g=P_I m(D)e be the genuine pole-free original signed physical source gradient and G=F_h g. By the original archimedean pseudolocality and finite source-translation structure, G has only finitely many internal jumps and is **locally bounded** on a fixed small neighborhood of the authentic extreme jump a=B-ln2+469h and its reflection, including its bounded one-sided limits. Thus there is a finite actual-source-dependent constant C such that |G(x)|<=C near the two supports as r approaches zero. **We do not estimate C numerically.**
+
+For the explicitly defined nonnegative even shifted-bell test psi_r, exact integrals yield ||psi_r||_1=5r/8. Hence
+
+|q0(e,F_h psi_r)|=|<F_h g,psi_r>|<=5Cr/8.
+
+The 1,878 shifted-bell supports remain disjoint for all sufficiently small radii at this SAME fixed h. Its exact norm formula provides ||F_h psi_r||² >=231r/512. The inherited original SI10/EF15 cofinite form lower q0|F>=mu I, mu=17/25000, therefore implies
+
+0 <= |q0(e,F_h psi_r)|²/q0(F_h psi_r,F_h psi_r) <= (200/231)*(C²/mu)*r -> 0 as r->0.
+
+The factor 200/231 is **exact rational** and checked by the EF21 native script. This analytic limit requires independent original arch pseudolocality/form-domain audit, just as EF18–EF20 did. It is a **method-class STOP** for shrinking smooth fixed-step FIR detectors to the arithmetic jump: the normalized Schur contribution vanishes at least linearly, notwithstanding any nonzero fixed-h original signed jump or exact source annihilation. This does NOT prove the original source mixed functional is zero, does not bound a fixed r=1/65536 test quantitatively without C, and does not close even-sector positivity.
+
+EF22 therefore must **hold the radius fixed and actually certify the original signed scalar M and E** or change to a source-conditioned nonlocal/moment-nullspace family. It must not improve the argument merely by making r smaller to isolate the jump more tightly.
+
+## 5. Remaining numerical feasibility gate and controls
+
+
 
 The 469-factor S_h can be extremely ill-conditioned even though f is bounded and physical. A deliberately **NONCERTIFYING double-precision log-amplitude preflight**, evaluated at original source-specific real frequencies 0,1,100,500,1000,1800,2048, is included in the EF21 script to expose possible extreme dynamic range without underflow; it NEVER computes M, E, a sign or an interval certificate. A wide spread would motivate a log-domain/scale-normalized interval integrator or an explicit fixed-filter STOP, not prove the original signed result. In particular the crude global |S_h|<=4^469, combined with the 1/|xi|^7 bell Fourier tail, introduces factors as large as 4^938 in naive energy-tail bounds: **do not promote such a bound as a feasible precision certificate**. A production calculation must stabilize S_h pointwise (log-amplitude and sign parity), use source-conditioned interval/adaptive frequency integration, rigorously pay original oscillatory seven-prime/arch and high-frequency tails, and preserve one common physical normalization for numerator and denominator. The derived H_r expression eliminates internal Fourier cancellation in the bump, not product-filter conditioning.
 
