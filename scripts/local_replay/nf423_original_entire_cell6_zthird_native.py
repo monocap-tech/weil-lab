@@ -73,8 +73,17 @@ def main():
  ck2=bound(k2,[1,2])
  cp1=bound(p1,[20,25,30,40,60])
  cp2=bound(p2,[1,2])
- R2=4*kpp1+4*kpp2-1/(d**3)
- cR2=bound(R2,[1000,2000,4000,8000,16000])
+ # Direct dependency-laden whole interval for K'' can produce a
+ # non-finite Arb ball. Instead use exact rational positive-t bounds:
+ # |K''(t)| <= (2/t)*((1/4+1/t)^2+1/t+1/t^2).
+ # Here t1>=2(B-R)=11/50, t2>=2(B+L)=97/25,
+ # and d>=B-R=11/100. This is uniform without an Arb
+ # interval dependency failure; source analytic A is still Arb.
+ def Ksecond_exact(t):
+  return F(2)/t*((F(1,4)+1/t)**2+1/t+1/t**2)
+ true_R2_upper=4*Ksecond_exact(2*(B-R))+4*Ksecond_exact(2*(B+L))+1/(B-R)**3
+ assert true_R2_upper<2600
+ cR2=2600
  # On actual physical knot-defined open cell6:
  # n2,3,4,5,7 POST-SEAM one translate, n8,9 NEITHER.
  # These original source branches are checked by certified knot order,
@@ -119,6 +128,8 @@ def main():
  'true_K1_strict_upper':ck1,'true_K2_strict_upper':ck2,
  'true_K1prime_strict_upper':cp1,'true_K2prime_strict_upper':cp2,
  'true_Rsecond_strict_upper':cR2,
+ 'true_Rsecond_source_kernel_rational_upper_exact':str(true_R2_upper),
+ 'true_Rsecond_direct_broad_Arb_interval_used':False,
  'true_original_source_u4_third_global_sup_strict':N3,
  'true_original_source_u4_fourth_L2_strict':N4,
  'true_original_zthird_endpoint_and_center_budget_strict':mend,
