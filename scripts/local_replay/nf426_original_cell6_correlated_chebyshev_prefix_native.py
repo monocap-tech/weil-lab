@@ -25,6 +25,7 @@ from nf415_original_cell6_I1_validated_acb import native_source
 if hasattr(sys, "set_int_max_str_digits"):
     sys.set_int_max_str_digits(0)
 B=F(11,10)
+X=F(9,10)
 C=F(91,100)
 H=F(7,100)
 CENTER=F(6677356497477490213,4611686018427387904)
@@ -75,6 +76,7 @@ def main():
     ap.add_argument('--source',default='notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json')
     ap.add_argument('--seams',default='notes/data/provisional/NF406_original_prime_support_partition_exact.json')
     ap.add_argument('--nf423',default='notes/data/provisional/NF423_original_entire_open_cell6_zthird_native.json')
+    ap.add_argument('--nf416',default='notes/data/provisional/NF416_original_cell6_full_I0_and_z_point_native.json')
     ap.add_argument('--nf425',default='scripts/local_replay/nf425_original_cell6_chebyshev_existence_exact.py')
     ap.add_argument('--output',required=True)
     ap.add_argument('--precision',type=int,default=2048)
@@ -85,10 +87,13 @@ def main():
     source,ssha=load(args.source)
     seams,ksha=load(args.seams)
     prior,psha=load(args.nf423)
+    nf416,old_point_sha=load(args.nf416)
     nf425bytes=Path(args.nf425).read_bytes()
     nf425sha=hashlib.sha256(nf425bytes).hexdigest()
     assert ssha==prior['original_nf407_source_sha256']
     assert ksha==prior['original_nf406_exact_support_seams_sha256']
+    assert nf416['original_nf407_source_sha256']==ssha
+    assert nf416['complete_original_z_pointwise_certified']
     assert source['original_dimension']==242
     assert len(source['original_exact_native_original_four_critical_coefficients_mid_radius'])==4
     assert len(source['original_source_critical_sine_frequencies'])==32
@@ -111,6 +116,7 @@ def main():
     logpi=arb.pi().log()
     pi=arb.pi()
     res=[arb(0) for _ in range(modes)]
+    physical_point=arb(0)
     image_groups=[]
     endpoint=arb(0)
     groups={}
@@ -122,6 +128,7 @@ def main():
     for rank,(f,ks) in enumerate(sorted(groups.items())):
         lam=acb(arb(0),2*pi*A(f))
         exB=(lam*A(B)).exp()
+        exX=(lam*A(X)).exp()
         base=cheb_exp(lam,K)
         deriv_D=polygamma_D(lam)
         xpolys=[base]
@@ -139,12 +146,14 @@ def main():
         for k,q in ks:
             alpha=(acb(0,-A(q)/2) if k%2==0 else acb(A(q)/2))
             endpoint+=2*(alpha*exB*R(B**k)).real
+            physical_point+=2*(alpha*exX*sum((math.comb(k,j)*deriv_D[k-j]*A(X)**j for j in range(k+1)),acb(0))).real
             for n in range(modes):
                 s=acb(0)
                 for j in range(k+1):
                     s+=math.comb(k,j)*deriv_D[k-j]*xpolys[j][n]
                 res[n]+=2*(alpha*s).real
             for i,(weight,(phase,polys)) in enumerate(zip(weights,shifted)):
+                physical_point-=weight*2*(alpha*(lam*(A(X)-hshifts[i])).exp()*(A(X)-hshifts[i])**k).real
                 for n in range(modes):
                     res[n]-=weight*2*(alpha*phase*polys[k][n]).real
             for j in range(k+1):
@@ -158,18 +167,22 @@ def main():
     plus_x=mul_xminus(plus,0)
     minus_x=mul_xminus(minus,0)
     Kpole=(A(1).digamma()+ (A(F(1,2)).digamma()))/2 -logpi-A(B)
+    physical_point+=A(pole)*(Kpole*(A(X)/2).sinh()+A(X)*(A(X)/2).cosh())
     for n in range(modes):
         # Analytically joint m0+psi(beta), beta->0, no pole split.
         res[n]+=(A(pole)*(Kpole*(plus[n]-minus[n])+plus_x[n]+minus_x[n])/2).real
     for (nprime,base),h,w in zip(PRIMES,hshifts,weights):
+        physical_point-=w*A(pole)*((A(X)-h)/2).sinh()
         pplus=(R(F(1,2))*h).exp()
         pminus=(R(F(-1,2))*h).exp()
         for n in range(modes):
             res[n]-=w*A(pole)*(pminus*plus[n]-pplus*minus[n]).real/2
     # Fixed NF404 exact dyadic centering -a sinh(x/2).
+    physical_point-=A(CENTER)*(A(X)/2).sinh()
     for n in range(modes):
         res[n]-=A(CENTER)*(plus[n]-minus[n]).real/2
     # Original endpoint v=u4(B) and original log v/2*log B/(B-x).
+    physical_point-=endpoint*((A(B)/A(B-X)).log()/2+sum(weights,arb(0)))
     D=A(B-C)
     disc=(D*D-A(H)**2).sqrt()
     Q=(D+disc)/2
@@ -207,6 +220,7 @@ def main():
         fac=( (-2*aa*R(B-C)).exp() - (-2*aa*R(B+C)).exp() )
         facalt=( (-2*aa*R(B-C)).exp() + (-2*aa*R(B+C)).exp() )
         # I_n(-s)=(-1)^n I_n(s): even n subtract right, odd add.
+        physical_point+=(total/2*((-2*aa*R(B-X)).exp()-(-2*aa*R(B+X)).exp())).real
         for n in range(modes):
             b=1 if n==0 else 2
             res[n]+=total* ((fac if n%2==0 else facalt)*
@@ -221,6 +235,11 @@ def main():
     # operator has norm <=2 for every positive coefficient index.
     # Charge 4e-45 in EACH coefficient, plus outward native ball.
     analytic_charge=F(4,10**45)
+    point_inter=enclosure(physical_point)
+    old_inter=list(map(F,nf416['original_true_full_z_cell6_at_x9over10_outward_interval']))
+    point_delta=F(1,10**45)
+    assert point_inter[0]-point_delta<=old_inter[1] and old_inter[0]<=point_inter[1]+point_delta,('NF416 independent pointwise overlap failed',[str(z)[:80] for z in point_inter],[str(z)[:80] for z in old_inter])
+    print('NF426 full global transfer original z(9/10) overlaps independent original NF416 physical integral',flush=True)
     vals=[]
     for n,v in enumerate(res):
         a,b=enclosure(v)
@@ -236,6 +255,9 @@ def main():
     out={
       'pass':'NF426','standing':'CERTIFIED ORIGINAL SOURCE-CORRELATED LOW-MODE CHEBYSHEV COEFFICIENT PREFIX ONLY; FULL CELL6 INTEGRAL OPEN',
       'source_sha256':ssha,'seams_sha256':ksha,'NF423_sha256':psha,
+      'independent_original_NF416_pointwise_parent_sha256':old_point_sha,
+      'original_analytic_global_transfer_pointwise_NF416_overlap_pass':True,
+      'native_analytic_global_transfer_pointwise_ball_str':str(physical_point)[:240],
       'NF425_exact_preflight_script_sha256':nf425sha,
       'original_four_selected_plus_critical_count':246,
       'original_true_cell6':'(log(7)-11/10,log(8)-11/10)',
