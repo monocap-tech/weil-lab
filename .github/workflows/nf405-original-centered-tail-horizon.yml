@@ -1,0 +1,55 @@
+name: Weil-Lab NF405 original centered tail horizon
+on:
+  push:
+    branches: [research/nf405-original-centered-action-tail-feasibility]
+    paths:
+      - '.github/workflows/nf405-original-centered-tail-horizon.yml'
+      - 'scripts/local_replay/nf405_original_centered_source_tail_horizon.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-exact-original-horizon:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf405-original-centered-action-tail-feasibility
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently source-verify original NF374/NF375 and NF404 centered norm
+        run: |
+          python3 -m py_compile scripts/local_replay/nf405_original_centered_source_tail_horizon.py
+          python3 scripts/local_replay/nf405_original_centered_source_tail_horizon.py --output /tmp/NF405_original_centered_horizon_exact.json
+          python3 - <<'PY'
+          from fractions import Fraction as F
+          import json
+          r=json.load(open('/tmp/NF405_original_centered_horizon_exact.json'))
+          assert r['accepted_original_k24_H_reproduced'] is True
+          assert r['first_feasible_log2_cutoff_under_half_budget']>24
+          assert not any(x['half_budget_conditional_gate'] for x in r['horizons'] if x['k']<r['first_feasible_log2_cutoff_under_half_budget'])
+          assert F(r['future_original_supported_lowband_scalar_cap'])>F(r['original_selected_centered_power_upper'])
+          assert r['actual_original_supported_lowband_centered_energy_measured'] is False
+          assert r['actual_original_full_supported_centered_power_upper'] is False
+          assert r['W_ODD_NEG']==r['RH']=='OPEN'
+          PY
+      - name: Persist only source-exact gate on unmerged branch
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF405_original_centered_horizon_exact.json
+          if test -e "$target"; then
+            cmp -s "$target" /tmp/NF405_original_centered_horizon_exact.json
+          else
+            cp /tmp/NF405_original_centered_horizon_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF405 authenticated original fourth-source highband horizon exact fractions'
+            git pull --rebase origin research/nf405-original-centered-action-tail-feasibility
+            git push origin HEAD:refs/heads/research/nf405-original-centered-action-tail-feasibility
+          fi
