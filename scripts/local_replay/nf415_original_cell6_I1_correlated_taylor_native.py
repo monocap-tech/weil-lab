@@ -92,7 +92,7 @@ def main():
  assert g['original_true_full_u4_second_derivative_L2_upper_integer']=='256'
  assert [v['cell'] for v in q['hotspot_points']]==[3,6,7]
  assert all(v['W_ODD_NEG']==v['RH']=='OPEN' for v in (s,g,q))
- ctx.prec=args.precision
+ ctx.prec=args.precisionision
  terms,pole,S0=native_source(s)
  assert len(terms)>=240
  groups={}
@@ -150,7 +150,7 @@ def main():
  'original_physical_critical_sine_and_odd_pole_retained':True,
  'source_taylor_order':NS,'kernel_taylor_order':NK,
  'number_of_exact_rational_symmetric_panels':panels,
- 'native_precision_bits':args.prec,
+ 'native_precision_bits':args.precision,
  'original_coefficient_source_sup_S0_exact':str(S0),
  'analytic_exact_source_raw_abs_U_exact':str(Uraw),
  'exact_rational_local_source_tail_upper':str(Rsource),
