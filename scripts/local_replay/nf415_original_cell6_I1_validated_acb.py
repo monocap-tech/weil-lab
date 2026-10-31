@@ -65,7 +65,7 @@ def main():
  p.add_argument('--nf414',default='notes/data/provisional/NF414_original_hotspot_finite_continuous_native.json')
  p.add_argument('--output',required=True)
  p.add_argument('--eval-limit',type=int,default=18000)
- p.add_argument('--precision',type=int,default=512)
+ p.add_argument('--precision',type=int,default=1024)
  args=p.parse_args()
  original,sha=read(args.source);p413,h413=read(args.nf413);p414,h414=read(args.nf414)
  assert p413['original_nf407_full_native_source_sha256']==sha
@@ -98,13 +98,20 @@ def main():
   record['native_integral_I1_raw_acb']=str(val)
   record['native_integral_I1_finite']=bool(val.is_finite())
   if val.is_finite():
-   # Coefficient radius for integral: true source u point error <= S0,
-   # so |u(x)-u(x-t/2)| <=2S0. Original half I1 charge ≤ S0 * int K,
-   # K<2/t for t>0 => ∫_.4^4 K < 2 log10 < 5.
+   # Coefficient radius for integral: |δu(x)-δu(x-t/2)|≤2S0
+   # and K>0, ∫_(2/5)^4 K(t)dt <2log(10)<5.
    charge=5*src.err
+   m,rad,e=val.real.mid_rad_10exp(72)
+   lo=F(int(m)-int(rad))*F(10)**int(e)-charge
+   hi=F(int(m)+int(rad))*F(10)**int(e)+charge
+   assert lo<=hi
    record['I1_coefficient_radius_analytic_upper_exact']=str(charge)
-   record['I1_true_with_native_source_error_rigorous_complex_ball']=str(val)+ ' +/- coefficient physical real 5*S0'
-   record['full_source_I1_validation']='ACCEPTED_FINITE_BALL_WITH_EXPLICIT_SOURCE_RADIUS'
+   record['I1_true_original_full_source_rational_interval']=[str(lo),str(hi)]
+   record['I1_true_interval_width_exact']=str(hi-lo)
+   # FINITE from the integrator alone is not enough to declare success.
+   # This checks a genuinely resolving outward real ball.
+   record['full_source_I1_validation']=('ACCEPTED_RESOLVED_INTERVAL_WITH_EXPLICIT_SOURCE_RADIUS'
+       if hi-lo<F(1,10**13) else 'METHOD_STOP_ACB_FINITE_BUT_UNRESOLVED')
   else:record['full_source_I1_validation']='METHOD_STOP_NONFINITE_ACB_INTERVAL'
  except Exception as e:
   record['native_integral_error']=repr(e)
@@ -116,7 +123,7 @@ def main():
  # With h=10^-12, this is <5e-17. This is pointwise unlike NF413 L2.
  assert F(256**2)<F(150**2)*3
  eps=F(50,10**18)
- assert eps==F(50)*h**F(3,2) if False else eps==F(1,2*10**16)
+ assert eps==F(5,10**17)
  record['original_pointwise_I0_0_to_h_strict_upper_exact']=str(eps)
  record['pointwise_small_t_valid_on_all_original_positive_x_with_t_less_2B_minus_2x']=True
  record['I1_analytic_integration_library']='python-flint 0.8.0 acb.integral complex ball, no unverified Gauss mesh'
