@@ -1,0 +1,42 @@
+{
+  "pass": "NF411",
+  "date": "2026-10-31",
+  "active_obligation": "W-ODD-NEG",
+  "parent": "NF410 PR #404; original source unchanged; 242 selected+4 critical, B=11/10, full signed seven prime powers, NF404 dyadic center",
+  "source_verified": {
+    "u4_B": "-1.1679864490968300703e-11 approximately; source-native Arb complete 242+4",
+    "u4_prime_B": "-1.3009713780539215248e-7 approximately; exact true signed bracket -131/10^9 < u4_prime_B < -129/10^9",
+    "source_radius": "NF408 D<1e-750 paid on full original derivative; native 4096-bit exact grouped coefficients",
+    "focused_runs": [
+      41223700547,
+      41223816902,
+      41223863735
+    ],
+    "seven_prime_seam_kinks": "All seven C0 but non-C1 in continuous z; n2,3 jump c_n u4_prime_B<0; n4,5,7,8,9 jump -c_n u4_prime_B>0.",
+    "endpoint": "z(B-d)=z(B-)-u4_prime_B*d*ln(B/d)/2+O(d); z'(B-d)=u4_prime_B*ln(B/d)/2+O(1), hence z not Lipschitz at B",
+    "leading_model_two_endpoint_strips": "T(B-d)=-u4_prime_B*d*ln(B/d)/2; for delta=B/2^24, ||T||²<3e-34<gamma²/10^8 (this model ONLY)"
+  },
+  "source_receipts": [
+    "notes/data/provisional/NF411_original_source_boundary_jet.json",
+    "notes/data/provisional/NF411_original_endpoint_dlogd_strip_exact.json"
+  ],
+  "status": {
+    "source_native_jet": "ACCEPTED",
+    "all_seven_prime_derivative_jumps": "ACCEPTED",
+    "endpoint_dlogd_asymptotic": "ANALYTIC",
+    "leading_endpoint_model_power": "SOURCE-EXACT ACCEPTED, ONLY MODEL",
+    "original_true_continuous_z_interval": "OPEN",
+    "original_cells_6_3_7_z_enclosure": "OPEN",
+    "original_all_eight_cell_cross": "OPEN",
+    "original_full_centered_power": "OPEN",
+    "nf404_C_decision": "UNDECIDED",
+    "fourth_original_J242_perp_lowband": "OPEN",
+    "domain": "OPEN",
+    "infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF412 source-correlated continuous original z interval/Taylor x/t enclosures for cells 6,3,7; spend seam-aware derivative jump and endpoint-log basis, then certify all remaining cells and compare full power vs NF404 C. No unverified global Gauss proxy.",
+  "new_signed_source_cells": 0,
+  "main_merge": false
+}
