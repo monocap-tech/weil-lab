@@ -1,0 +1,57 @@
+name: Weil-Lab NF406 original physical source rational samples
+on:
+  push:
+    branches: [research/nf406-original-physical-endpoint-log-subtraction]
+    paths:
+      - '.github/workflows/nf406-original-physical-source-samples.yml'
+      - 'scripts/verify_nf406_original_fourth_physical_source_samples.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  true-original-physical-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf406-original-physical-endpoint-log-subtraction
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original J242 physical source SHA and native 4096-bit environment
+        run: |
+          python3 -m py_compile scripts/verify_nf406_original_fourth_physical_source_samples.py
+          pip install --only-binary=:all: python-flint==0.8.0
+      - name: Certify true source u4(x) after original 242D quotient cancellation
+        run: |
+          python3 -u scripts/verify_nf406_original_fourth_physical_source_samples.py --output /tmp/NF406_original_true_u4_point_samples_native.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/NF406_original_true_u4_point_samples_native.json'))
+          assert len(d['source_rational_samples'])==8
+          assert all(x['odd_reflection_native_overlaps'] is True for x in d['source_rational_samples'])
+          assert d['original_u4_endpoint_matches_nf405_exact_signed_bounds'] is True
+          assert d['original_original_mD_u4_point_evaluated'] is False
+          assert d['original_whole_supported_centered_action_norm_integrated'] is False
+          assert d['new_signed_kernel_cells']==0
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          PY
+      - name: Persist immutable original point enclosures on research branch only
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF406_original_true_u4_point_samples_native.json
+          if test -e "$target"; then
+            cmp -s "$target" /tmp/NF406_original_true_u4_point_samples_native.json
+          else
+            cp /tmp/NF406_original_true_u4_point_samples_native.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF406 source-accepted 4096-bit original critical fourth pointwise physical profile'
+            git pull --rebase origin research/nf406-original-physical-endpoint-log-subtraction
+            git push origin HEAD:refs/heads/research/nf406-original-physical-endpoint-log-subtraction
+          fi

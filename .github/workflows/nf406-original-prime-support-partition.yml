@@ -1,0 +1,53 @@
+name: Weil-Lab NF406 original exact seven-prime support partition
+on:
+  push:
+    branches: [research/nf406-original-physical-endpoint-log-subtraction]
+    paths:
+      - '.github/workflows/nf406-original-prime-support-partition.yml'
+      - 'scripts/local_replay/nf406_original_prime_support_partition_exact.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-original-prime-seams:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf406-original-physical-endpoint-log-subtraction
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original source seven-prime physical support seam exact replay
+        run: |
+          python3 -m py_compile scripts/local_replay/nf406_original_prime_support_partition_exact.py
+          python3 scripts/local_replay/nf406_original_prime_support_partition_exact.py --output /tmp/NF406_original_prime_support_partition_exact.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/NF406_original_prime_support_partition_exact.json'))
+          assert len(d['original_prime_power_log_shifts'])==7
+          assert d['total_original_support_seam_knots_including_ends_and_zero']==17
+          assert d['number_of_open_physical_support_cells']==16
+          assert d['all_exact_intervals_disjoint'] is True
+          assert d['original_complete_centered_positive_physical_scalar_measured'] is False
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          PY
+      - name: Preserve exact original physical x-support cell partition
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF406_original_prime_support_partition_exact.json
+          if test -e "$target"; then
+            cmp -s "$target" /tmp/NF406_original_prime_support_partition_exact.json
+          else
+            cp /tmp/NF406_original_prime_support_partition_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF406 original source-exact seven-prime shift x-cell partition'
+            git pull --rebase origin research/nf406-original-physical-endpoint-log-subtraction
+            git push origin HEAD:refs/heads/research/nf406-original-physical-endpoint-log-subtraction
+          fi

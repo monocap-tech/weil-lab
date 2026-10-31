@@ -1,0 +1,55 @@
+name: Weil-Lab NF406 original physical endpoint logarithm
+on:
+  push:
+    branches: [research/nf406-original-physical-endpoint-log-subtraction]
+    paths:
+      - '.github/workflows/nf406-original-physical-endpoint-log.yml'
+      - 'scripts/local_replay/nf406_original_physical_endpoint_log_exact.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-original-log-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf406-original-physical-endpoint-log-subtraction
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original source-authenticated 4096-bit endpoint interval and exact logarithm power
+        run: |
+          python3 -m py_compile scripts/local_replay/nf406_original_physical_endpoint_log_exact.py
+          python3 scripts/local_replay/nf406_original_physical_endpoint_log_exact.py --output /tmp/NF406_original_physical_endpoint_log_exact.json
+          python3 - <<'PY'
+          from fractions import Fraction as F
+          import json
+          d=json.load(open('/tmp/NF406_original_physical_endpoint_log_exact.json'))
+          assert F(150,10**24)<F(d['original_exact_log_model_squared_norm_lower'])
+          assert F(d['original_exact_log_model_squared_norm_upper'])<F(151,10**24)
+          assert d['strict_actual_regular_part_norm_lower']=='207/10000000000000'
+          assert d['physical_endpoint_log_subtraction_required'] is True
+          assert d['original_complete_regular_part_and_cross_integrated'] is False
+          assert d['original_full_supported_centered_scalar_upper_computed'] is False
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          PY
+      - name: Persist source-only exact endpoint physical norm evidence
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF406_original_physical_endpoint_log_exact.json
+          if test -e "$target"; then
+            cmp -s "$target" /tmp/NF406_original_physical_endpoint_log_exact.json
+          else
+            cp /tmp/NF406_original_physical_endpoint_log_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF406 authenticated original physical endpoint logarithm source receipt'
+            git pull --rebase origin research/nf406-original-physical-endpoint-log-subtraction
+            git push origin HEAD:refs/heads/research/nf406-original-physical-endpoint-log-subtraction
+          fi
