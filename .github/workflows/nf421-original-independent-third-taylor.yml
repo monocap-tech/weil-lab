@@ -1,0 +1,55 @@
+name: NF421 independent original local third-order Taylor fraction audit
+on:
+  push:
+    branches: [research/nf421-local-correlated-zsecond]
+    paths:
+      - '.github/workflows/nf421-original-independent-third-taylor.yml'
+      - 'scripts/local_replay/nf421_original_local_third_taylor_fraction_replay.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-independent-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf421-local-correlated-zsecond
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-exact Fraction original full fourth Gram and second xjet independent replay
+        run: |
+          python -m py_compile scripts/local_replay/nf421_original_local_third_taylor_fraction_replay.py
+          python -u scripts/local_replay/nf421_original_local_third_taylor_fraction_replay.py --output /tmp/nf421_local_exact.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p=json.load(open('/tmp/nf421_local_exact.json'))
+          assert p['all_original_242_selected_and_4_critical_reconstructed']
+          assert p['all_original_source_second_xjet_error_bounds_recomputed_exactly']
+          assert p['original_fourth_correlated_Gram_arb_ball_reread_exactly_as_Fraction']
+          assert p['original_fourth_native_coefficient_uncertainty_paid_exactly']
+          assert p['original_macro_cell6_third_Taylor_remainder_valid']
+          assert p['original_pointwise_second_jet_certified']
+          assert F(p['original_true_z_on_micro_lower_exact'])>0
+          assert p['original_true_zsecond_micro_bound_tighter_than_NF420_global']
+          assert not p['entire_original_cell6_covered']
+          assert not p['NF404_original_entire_centered_scalar_decided']
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          PY
+      - name: Preserve independently certified true original third Taylor interval
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF421_original_local_third_taylor_independent_fraction.json
+          cp /tmp/nf421_local_exact.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF421 independent exact original 246-source local third Taylor and sign interval audit'
+            git pull --rebase origin research/nf421-local-correlated-zsecond
+            git push origin HEAD:refs/heads/research/nf421-local-correlated-zsecond
+          fi
