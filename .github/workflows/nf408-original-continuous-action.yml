@@ -1,0 +1,53 @@
+name: Weil-Lab NF408 original exact continuous physical action formula
+on:
+  push:
+    branches: [research/nf408-original-regularized-action-sampling]
+    paths:
+      - '.github/workflows/nf408-original-continuous-action.yml'
+      - 'scripts/local_replay/nf408_original_continuous_action_exact.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-original-physical-regularization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf408-original-regularized-action-sampling
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact original source strong-arch and seven real prime jump algebra
+        run: |
+          python3 -m py_compile scripts/local_replay/nf408_original_continuous_action_exact.py
+          python3 scripts/local_replay/nf408_original_continuous_action_exact.py --output /tmp/NF408_original_continuous_action_exact.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/NF408_original_continuous_action_exact.json'))
+          assert len(d['all_seven_original_prime_remainders_positive_x'])==7
+          assert d['source_original_prime_remainder_seam_continuity_formally_checked'] is True
+          assert d['stable_arch_Phi_endpoint_limit']=='ln(4/B)+pi/2'
+          assert d['original_16_cell_full_positive_scalar_rigorously_integrated'] is False
+          assert d['original_regular_z_signed_p_cross_rigorously_integrated'] is False
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          PY
+      - name: Persist original analytic cancellation-first action only
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF408_original_continuous_action_exact.json
+          if test -f "$target"; then
+            cmp -s "$target" /tmp/NF408_original_continuous_action_exact.json
+          else
+            cp /tmp/NF408_original_continuous_action_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF408 original compact digamma and 7 prime continuous regularization source exact'
+            git pull --rebase origin research/nf408-original-regularized-action-sampling
+            git push origin HEAD:refs/heads/research/nf408-original-regularized-action-sampling
+          fi
