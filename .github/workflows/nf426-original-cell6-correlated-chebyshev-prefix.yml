@@ -1,0 +1,36 @@
+name: Weil-Lab NF426 native original cell6 Chebyshev low-mode prefix
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf426_original_cell6_correlated_chebyshev_prefix_native.py'
+      - 'notes/provisional/NF426_ORIGINAL_CELL6_NATIVE_CORRELATED_LOW_MODES_20261031.md'
+      - '.github/workflows/nf426-original-cell6-correlated-chebyshev-prefix.yml'
+      - 'notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json'
+      - 'notes/data/provisional/NF406_original_prime_support_partition_exact.json'
+      - 'notes/data/provisional/NF423_original_entire_open_cell6_zthird_native.json'
+permissions:
+  contents: read
+jobs:
+  native-original-cell6-prefix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native Arb Acb library
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Compute original full-source low-mode native Chebyshev coefficients
+        run: |
+          python3 -m py_compile scripts/local_replay/nf426_original_cell6_correlated_chebyshev_prefix_native.py
+          python3 scripts/local_replay/nf426_original_cell6_correlated_chebyshev_prefix_native.py \
+             --precision 2048 --modes 4 \
+             --output artifacts/NF426_original_cell6_native_chebyshev_prefix.json
+      - name: Retain all source-pinned coefficient balls and open obligations
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF426-original-cell6-2048-image-native-cheb-low-mode-prefix
+          path: artifacts/NF426_original_cell6_native_chebyshev_prefix.json
+          if-no-files-found: error
