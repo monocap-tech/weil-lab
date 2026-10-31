@@ -72,7 +72,7 @@ def main():
  assert p414['original_nf407_source_sha256']==sha
  assert p413['original_true_full_u4_second_derivative_L2_upper_integer']=='256'
  assert all(v['W_ODD_NEG']==v['RH']=='OPEN' for v in (original,p413,p414))
- ctx.prec=args.prec
+ ctx.prec=args.precision
  src=U(original)
  x=C(F(9,10));t1=C(F(2,5));t2=C(4)
  u=src.at(x)
