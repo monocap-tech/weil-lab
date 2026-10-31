@@ -933,9 +933,9 @@
     },
     "EF26": {
       "kind": "original-even-arch-signed-physical-laplace-finite-tail-gate",
-      "scope": "W-EVEN-FORM: exact original digamma physical-translation arch mixed M_arch=2Re[e^iωB Σ_m e^-λB Λ_h(λ)cosh(λa)J_r(λ)/(λ-iω)], positive native 469-factor real Laplace Λ_h and J_r; first two terms positive, all m≥2 negative by original source θ=407π/320. Finite 340-digit outward 0..12 sum checked for negative sufficient gate, not assumed; full source CI pending. Original arch E<30||f||² previous pass; RH/Schur open.",
+      "scope": "Original SI10 fixed F469 even test: true arch M_arch<0 via first three source Laplace terms and negative remaining infinite tail; EF24 Mprime<0, hence complete pole-free original mixed M<0. EF26 additional first-source |M|²/E>1e-193 source regression pending; not finite corrected even Schur PSD/RH.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/412",
-      "verification": "Finite exact outward SI06 107 original centers 469 orders, native original digamma series converted to translation/Laplace with auditable analytic proof; 340-digit exp/trig/ln series, positive 469-factor real Laplace filter, sign-aware finite partial and all-tail sign. Focused CI pending; no full Schur PSD or independent analytic domain audit.",
+      "verification": "Original source initial run #41227005306 FAILED due unscaled 10^-723 underflow; exact common 100^469 scale repair: #41227286319 SUCCESS; source first 3 rescaled Laplace signed terms negative, all later negative via exact original c0 phase. New microscopic variational bound regression pending. Independent analytic digamma physical/source domain audit required.",
       "repo_path": "notes/provisional/EF26_ORIGINAL_EVEN_ARCH_SIGNED_LAPLACE_20261031.md"
     }
   },
@@ -1097,7 +1097,7 @@
         "EF26"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF26: true original digamma arch mixed M_arch reduced EXACTLY on SI10 original even fixed F469 FIR test to positive-factor real Laplace half-integer series with m0,m1 positive and all m>=2 negative; native 340-digit outward partial m0..12 is FINITE sufficient sign gate pending CI, no generic high-frequency oscillatory Fourier quadrature. If partial negative then full M_arch<0, combine native EF24 Mprime<0 to establish true signed original M<0; if not, record inconclusive and source-conditioned tail/conditioning. EF27 then normalize full inverse-Schur lower against real E upper and compare finite corrected even block; W-EVEN-FORM, odd, whole Weil and RH remain OPEN."
+      "next_action": "EF26 complete original SI10 fixed even F469 pole-free source mixed M=Mprime+March<0 verified from EF24 Mprime<0 and native original digamma Laplace source #41227286319 March<0. A tiny source-specific inverse-Schur lower |M|²/E>1e-193 added pending CI. EF27 needs sharper conditioned Schur comparison and positive even pole reattachment; finite 469D even Schur/odd/whole Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
