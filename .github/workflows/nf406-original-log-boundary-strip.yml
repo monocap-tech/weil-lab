@@ -1,0 +1,54 @@
+name: Weil-Lab NF406 original physical logarithmic strip allocation
+on:
+  push:
+    branches: [research/nf406-original-physical-endpoint-log-subtraction]
+    paths:
+      - '.github/workflows/nf406-original-log-boundary-strip.yml'
+      - 'scripts/local_replay/nf406_original_log_boundary_strip_exact.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-original-log-strip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf406-original-physical-endpoint-log-subtraction
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-authenticated exact logarithmic boundary layer power
+        run: |
+          python3 -m py_compile scripts/local_replay/nf406_original_log_boundary_strip_exact.py
+          python3 scripts/local_replay/nf406_original_log_boundary_strip_exact.py --output /tmp/NF406_original_log_boundary_strip_exact.json
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('/tmp/NF406_original_log_boundary_strip_exact.json'))
+          assert d['strict_original_first_log_only_strip_budget_log2']==24
+          assert len(d['rows'])==17
+          assert F(d['rows'][8]['strict_original_q_only_strip_squared_power_upper'])<F(d['allocated_log_singular_strip_budget'])
+          assert d['original_full_response_strip_integrated'] is False
+          assert d['source_exact_log_q_strip_does_not_bound_complete_g_strip'] is True
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          PY
+      - name: Persist additive exact q-only boundary strip result
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF406_original_log_boundary_strip_exact.json
+          if test -e "$target"; then
+            cmp -s "$target" /tmp/NF406_original_log_boundary_strip_exact.json
+          else
+            cp /tmp/NF406_original_log_boundary_strip_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF406 exact original q-only endpoint logarithm strip receipt'
+            git pull --rebase origin research/nf406-original-physical-endpoint-log-subtraction
+            git push origin HEAD:refs/heads/research/nf406-original-physical-endpoint-log-subtraction
+          fi
