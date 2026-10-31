@@ -1,0 +1,46 @@
+name: Weil-Lab NF430 original cell6 sharpened source E2 cutoff
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf430_original_cell6_sharper_ellipse_series_cutoff_exact.py'
+      - 'notes/provisional/NF430_ORIGINAL_CELL6_SHARPENED_ELLIPSE_SERIES_CUTOFF_20261031.md'
+      - '.github/workflows/nf430-original-cell6-sharp-ellipse.yml'
+permissions:
+  contents: read
+jobs:
+  exact-original-source-sharper-series:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-exact original 242 plus four, seven prime knots, rational E2 and cutoff
+        run: |
+          python3 -m py_compile scripts/local_replay/nf430_original_cell6_sharper_ellipse_series_cutoff_exact.py
+          python3 scripts/local_replay/nf430_original_cell6_sharper_ellipse_series_cutoff_exact.py \
+            --output artifacts/NF430_original_cell6_sharper_series_cutoff_exact.json
+      - name: Fail closed on 1009 missing modes and full signed scalar
+        run: |
+          python3 - <<'PY'
+          import json
+          a=json.load(open('artifacts/NF430_original_cell6_sharper_series_cutoff_exact.json'))
+          assert a['original_selected_plus_critical_generators']==246
+          assert a['original_prime_post_seam']==[2,3,4,5,7]
+          assert a['original_prime_neither']==[8,9]
+          assert a['Chebyshev_series_modes_required']==1265
+          assert a['modes_eliminated']==235
+          assert a['remaining_source_coefficient_modes']==1009
+          assert not a['all_1265_original_coefficients_certified']
+          assert not a['true_original_cell6_integral_certified']
+          assert not a['NF404_signed_scalar_decided']
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          print('NF430 source-exact cutoff only; original signed scalar OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF430-original-cell6-sharp-E2-1265-mode-exact
+          path: artifacts/NF430_original_cell6_sharper_series_cutoff_exact.json
+          if-no-files-found: error
