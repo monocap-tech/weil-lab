@@ -34,7 +34,7 @@ def tiny_I0_prime(groups,pole,pi):
  for n in range(nf416.NS_TINY+nf416.NH+1):powers.append(powers[-1]*tau)
  out=arb(0)
  for n in range(2,nf416.NS_TINY+1,2):
-  fac=-vals[n+1]*F(n+1,2**n)
+  fac=-vals[n+1]*(n+1)/(2**n)
   for j,h in enumerate(H):out+=fac*A(h)*powers[n+j]/(n+j)
  return out
 def I0_prime_panel(mid,groups,pole,pi,uxprime):
