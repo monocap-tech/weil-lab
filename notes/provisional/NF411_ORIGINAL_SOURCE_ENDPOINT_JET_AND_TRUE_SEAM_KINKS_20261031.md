@@ -6,7 +6,7 @@
 
 **Previous NF410:** Rigorous original p=q+r signed Taylor moments through degree 3 on all 8 positive seam cells, but no source-certified continuous z(x), full norm or NF404 decision.
 
-**Current NF411:** Rigorous native Arb 4096-bit source-coefficient-grouped evaluation of u4(B), u4'(B), paying the NF408 exact native source derivative radius D<1e-750. First focused CI #41223700547 SUCCESS; this run establishes u4'(B)<0 with attached durable source jet. The stricter bracket check -131/10^9<u4'(B)<-129/10^9 was added in subsequent focused code and requires its OWN successful rerun to promote. A separate exact-rational dlogd model strip power consumer is added. Its output must be checked before promotion.
+**Current NF411:** Rigorous native Arb 4096-bit source-coefficient-grouped evaluation of u4(B), u4'(B), paying the NF408 exact native source derivative radius D<1e-750. Focused native CI #41223700547 SUCCESS; strengthened source-error-paid rational derivative bracket CI #41223816902 SUCCESS; combined native strict-bracket plus independent exact Fraction dlogd strip model CI #41223863735 SUCCESS with durable receipts. The strict true original derivative bracket -131/10^9<u4'(B)<-129/10^9 is now accepted; the exact leading-model two-strip upper <3e-34 is accepted for THAT MODEL ONLY.
 
 **Next NF412:** Actually bound original continuous z values and Taylor remainders on source cells 6,3,7; account for seven one-sided derivative kinks and physical t integration, extend to other five cells, and only then evaluate E_true against NF404 C. Do not substitute another Gauss mesh or report a new high-order principal moment as a complete z result.
 
@@ -48,17 +48,17 @@ Let T(B-d)=-u4'(B)d ln(B/d)/2 for 0<d<δ, extended oddly at -B, with δ=B/2^24. 
 
  ||T||²_(two collars) = u4'(B)^2 δ³/6 * [L²+(2/3)L+2/9], L=ln(B/δ)=24 ln 2.
 
-Once the strict rational source interval -131/10^9<u4'(B)<-129/10^9 is verified, the exact Fraction 64-term log2 upper bracket gives L<17 and therefore
+The strict rational source interval -131/10^9<u4'(B)<-129/10^9 is source CI-certified. The exact Fraction 64-term log2 upper bracket gives L<17 and therefore
 
  ||T||² < (131/10^9)² δ³ * 301/6 < 3e-34 < gamma²/10^8.
 
-This is an unusually small source-certified *leading logarithmic jet model* power, not a complete endpoint z strip bound. The regular remainder, its correlation with p, the endpoint full energy, and all three hotspot z boxes remain UNMEASURED. The separate script and native receipt are immutable by default and only their actual successful Actions runs can promote execution standing.
+This is an unusually small source-certified *leading logarithmic jet model* power, not a complete endpoint z strip bound. The regular remainder, its correlation with p, the endpoint full energy, and all three hotspot z boxes remain UNMEASURED. The native and independent rational script both passed focused Actions #41223863735, retaining their source hashes and separate immutable-on-conflict JSON receipts.
 
 ## E. Custody / mathematical standings
 
 ACCEPTED from NF410: known original signed principal moments and selected Bessel floor.
 
-NEW NF411 accepted subject to actual successful CI: source original u4(B) and nonzero derivative, true source one-sided first-derivative seam jumps, endpoint d log d asymptotic; exact small leading model collar power after strict-bracket CI.
+NEW NF411 ACCEPTED from verified focused CI #41223700547, #41223816902, #41223863735: source original u4(B) and nonzero derivative, true source one-sided first-derivative seam jumps, endpoint d log d asymptotic; exact small leading model collar power after strict-bracket CI.
 
 OPEN: rigorous full original z(x) interval/Taylor coefficients, true nested x/t quadrature remainder, cells 6/3/7 original z and signed cross, other five cells, complete original centered scalar, NF404 sufficient threshold, fourth original lowband J242-perp upper, original general operator domain, infinite inverse, W-ODD-NEG, even/whole Weil, RH.
 
