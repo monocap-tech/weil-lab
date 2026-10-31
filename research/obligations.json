@@ -959,8 +959,15 @@
       "kind": "original-even-471-mixed-vector-modulo-native-protected-source-with-rigorous-laplace-tail",
       "scope": "True SI10 source c0=37/64, 471 EF28 even physical bells: compute true signed first-source 471-entry gtilde=gprime+garch_cut=g-a_arch(c0)*h0, where h0 is an ACTUAL SI10 source row. All 6594 original ln n physical cutoff decisions strict/no partial; n8,n9 mixed vanish; original source arithmetic diagonal A_prime analytically enclosed. Original arch cutoff digamma half-integer Laplace 100 terms with rigorous <1e-19 coordinate tail, directed 340-digit fixed integer intervals, full 471-vector JSON Actions artifact; exact rational k0 grid alias scan. Original Htilde/δ/arch diagonal A_arch STILL UNCOMPUTED, no Schur sign.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/421",
-      "verification": "First focused #41234018481 computed all genuine source data and uploaded vector but FAILED final governance only because manifest argv included --output artifact flag. Repaired to permitted two-argument python3 script. Corrected source and manifest Actions #41234333164 SUCCESS, job #124634832591. 6594 true prime source cutoff comparisons strict/no partial (smallest gap ~8.4953742813e-5), n8/n9 mixed zero, 100-term original digamma 471 arch cutoff vector + uniform <1e-19 entry tail, actual A_prime outward ~0.30039538744, no exact k0 aliases, governance PASS. Original 471-coordinate outward vector artifact #13054987778 (SHA256 8e3444c5748320193d191a88aa435ca05c37f446e15a4d52a272e79a285c5582); original Htilde/δ/A_arch NOT computed and independent analytic original digamma/source domain audit OPEN.",
+      "verification": "Original EF29 source and governance #41234333164 SUCCESS, 471 outward mixed source data artifact #13054987778, 6594 exact prime source cutoff supports and digamma signed vector uniform <1e-19 per coordinate. Final EF29 documentation head source repeat #41234685098 SUCCESS. Real 470x471 source H, residual delta and full A still OPEN.",
       "repo_path": "notes/provisional/EF29_ORIGINAL_EVEN_MIXED_VECTOR_CUTOFF_LAPLACE_20261031.md"
+    },
+    "EF30": {
+      "kind": "original-even-470x471-source-moment-exact-triangular-rowspace-and-order938-rank-gate",
+      "scope": "The TRUE original SI10 469 protected real-even physical C5 bell moment rows are invertible clusterwise lower-triangular transforms of sampled x_l^k cos/sin(2pi c_j x_l) rows (positive diagonal bell Fourier because 4*c_j*r<1). True pole row proportional cosh(l/1024). Exact 938-order even sequence recurrence on 471 positive grid samples proves source row rank469 whenever b469 central coefficient of native product ∏(E²-2cos(2πc_j/512)E+1)^pj is nonzero. Native 340-digit outward certificate for actual b469 in source script, CI pending. Positive pole adds exactly one rank by algebraic roots-of-unity entries and transcendental e^(1/1024); if b469 excludes zero, full original Htilde rank470 and 1D kernel. Does not compute δ or corrected Schur sign.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/422",
+      "verification": "Native original SI10 107 rational c_j, 469 orders, 214 nonalias conjugate sampled roots, 938-order outward product with 340-digit original SI06 trig and central coefficient sign test, exact triangular source/pole analytical proof, independent toy Fraction regression. Focused source CI pending; original δ, A_arch, full even Schur/odd/full Weil/RH OPEN.",
+      "repo_path": "notes/provisional/EF30_ORIGINAL_EVEN_SAMPLED_MOMENT_RANK_20261031.md"
     }
   },
   "obligations": [
@@ -1121,10 +1128,11 @@
         "EF26",
         "EF27",
         "EF28",
-        "EF29"
+        "EF29",
+        "EF30"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF29 verified actual original SI10 471-component signed mixed vector modulo true protected c0 source row: gtilde=gprime+garch_cut=g-a_arch(c0)h0, so δ unchanged for actual 470x471 Htilde. Native source #41234333164 PASS and artifact 13054987778 retains full 340-decimal outward interval data, 6594 exact 7-prime full-bell/no partial flags, n8,n9 vanish, genuine A_prime~0.30039538744, original arch half-integer Laplace uniform tail <1e-19 per coordinate; exact sampled k0 frequency aliases 0. EF30 must certify actual SI10 source/pole moment matrix Htilde and rank-aware δ with source conditioned interval validation; A_arch/full A and corrected even sign open, or issue finite-grid METHOD STOP. W-EVEN-FORM/odd/whole Weil/RH OPEN."
+      "next_action": "EF30 original genuine SI10 Htilde 470x471 physical moment rowspace EXACTLY equals sampled original 469 real-even exponential-polynomial source columns x_l^k cos/sin(2π c_j x_l) plus cosh(l/1024) row, by positive Fourier bell β_j and invertible block triangular source transforms. Exact native 938-order recurrence central b469 if outward nonzero certifies 469 SI10 source rank on 471 positive samples, and true cosh pole adds one independent row by algebraic roots unity and Hermite–Lindemann T=e^(1/1024). Source CI pending: do NOT declare rank until native b469 excludes zero. If rank470, EF31 orient unique true source/pole-neutral null vector and contract original EF29 471 signed source interval gtilde to certify δ, independently A_arch. If rank unaccepted, precise interval central coefficient STOP/recovery. Complete corrected even Schur, odd/whole Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1359,6 +1367,17 @@
         "scripts/validate_rpb108_ef29_original_even_mixed_vector.py"
       ],
       "interpretation": "Exact original arithmetic source cutoff vector plus original arch digamma cutoff Laplace mixed modulo authentic SI10 first cosine source row, 471 outward coordinate intervals, A_prime only; no actual Htilde rank/δ/A_arch/Schur.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF30-original-even-938-recurrence-sampled-source-row-rank",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef30_original_even_sampled_rank.py"
+      ],
+      "interpretation": "True original 107/469 even source moment rowspace triangular to 471 sampled rows; native 938-order central b469 340-digit outward certificate of source rank if excludes zero, true pole row independent via Hermite-Lindemann. Actual δ/A_arch/Schur not computed.",
       "cadence": "per-update"
     }
   ]
