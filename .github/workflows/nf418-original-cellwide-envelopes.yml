@@ -1,0 +1,64 @@
+name: NF418 original full-cell envelope and source audit
+on:
+  push:
+    branches: [research/nf418-source-global-cell-envelope]
+    paths:
+      - '.github/workflows/nf418-original-cellwide-envelopes.yml'
+      - 'scripts/local_replay/nf418_original_hotspot_cellwide_lipschitz_envelopes_exact.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-source-cell-enclosure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf418-source-global-cell-envelope
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-exact original three-cell derivative and sign-neighborhood audit
+        run: |
+          python -m py_compile scripts/local_replay/nf418_original_hotspot_cellwide_lipschitz_envelopes_exact.py
+          python -u scripts/local_replay/nf418_original_hotspot_cellwide_lipschitz_envelopes_exact.py --output /tmp/nf418_original_envelopes.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          o=json.load(open('/tmp/nf418_original_envelopes.json'))
+          assert o['original_true_full_246_generator_source_unchanged']
+          assert o['whole_original_z_derivative_piecewise_uniform_upper_integer']==30000
+          assert o['source_u_prime_global_sup_certified_upper_integer']==400
+          assert o['source_u_global_sup_certified_upper_integer']==513
+          assert len(o['original_hotspot_cellwise_envelopes'])==3
+          assert [c['original_cell'] for c in o['original_hotspot_cellwise_envelopes']]==[3,6,7]
+          assert [c['original_anchor_outward_sign'] for c in o['original_hotspot_cellwise_envelopes']]==['strict_negative','strict_positive','strict_positive']
+          for c in o['original_hotspot_cellwise_envelopes']:
+            assert c['neighborhood_in_original_cell']
+            assert c['neighborhood_same_sign_certified']
+            assert not c['entire_original_cell_sign_certified']
+            assert c['entire_cell_envelope_valid_but_NF404_precision_insufficient']
+            assert F(c['original_whole_cell_z_outward_rational_envelope_1e30'][0])<0
+            assert F(c['original_whole_cell_z_outward_rational_envelope_1e30'][1])>0
+          assert o['unrefined_lipschitz_nearest_neighbor_subintervals_over_three_cells_more_than']=='50000000000000000000'
+          assert o['global_Lipschitz_grid_is_method_stop_for_NF404']
+          assert not o['source_correlated_tight_cellwise_enclosure_certified']
+          assert not o['original_signed_NF410_p_z_cross_certified']
+          assert not o['original_NF404_complete_centered_scalar_decided']
+          assert o['W_ODD_NEG']==o['RH']=='OPEN'
+          PY
+      - name: Custody source-exact original full-cell envelope with explicit NF404 method stop
+        run: |
+          target=notes/data/provisional/NF418_original_hotspot_cellwide_lipschitz_envelopes_exact.json
+          mkdir -p notes/data/provisional
+          cp /tmp/nf418_original_envelopes.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF418 original source-certified cell envelopes and local signs, direct norm method stop'
+            git pull --rebase origin research/nf418-source-global-cell-envelope
+            git push origin HEAD:refs/heads/research/nf418-source-global-cell-envelope
+          fi
