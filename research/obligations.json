@@ -68,7 +68,8 @@
     "ef25_arch_real_energy_upper": "Actual original arch symbol inequality -8<a(xi)<8+ln(1+|xi|), EF21 fixed physical f derivative/FIR disjoint norm and Jensen give full original pole-free E=q_arch(f,f)<30||f||²; first original e strong-domain ||arch(D)e||<47, only a mixed NORM upper, not sign. Parent EF24 arithmetic source Actions #41225073437 PASS and small arithmetic-only normalized upper. Analytic audit independent, no whole even Schur/RH closure.",
     "ef26_arch_laplace": "EF26 original digamma spectral identity and native SI10 even FIR Laplace convolution give exact full signed arch mixed real positive-product half-integer series, finite signed sufficient check with all m>=2 negative. Source CI pending; no assertion of full M_arch sign until logs. Original E arch upper EF25 accepted; still no complete even Schur or RH.",
     "ef27_original_even_pole_two_vector": "Native EF26 expanded #41227759868 PASS original selected R>1e-193. EF27 attaches exact real original even positive pole to restricted original e/f matrix; true first source diagonal pole order 0.5 while selected universal FIR detector pole overlap extremely small and its rank-one restricted Schur Delta near 0.5. No sign of S2 or finite corrected 469D S_even; CI and source-domain independent review separate.",
-    "ef28_pole_neutral_moment_kernel": "Native original SI10 469 even source rows plus 1 genuine positive pole on 471 physically disjoint C5 even bells yields exact nonzero source/pole-neutral kernel, physical Gram dI, original signed E<34||f||². Actions #41231565079 SUCCESS, original numeric moment matrix and residual δ uncomputed. Clean reconciling branch after EF27 parent verified update. Full 469D even Schur and RH open."
+    "ef28_pole_neutral_moment_kernel": "Native original SI10 469 even source rows plus 1 genuine positive pole on 471 physically disjoint C5 even bells yields exact nonzero source/pole-neutral kernel, physical Gram dI, original signed E<34||f||². Actions #41231565079 SUCCESS, original numeric moment matrix and residual δ uncomputed. Clean reconciling branch after EF27 parent verified update. Full 469D even Schur and RH open.",
+    "ef29_original_source_471_vector": "EF28 clean PR419 source #41231918205 passed; EF29 computes original 471 genuine signed first-source mixed vector up to a SINGLE actual SI10 row, preserving δ exactly, by 6594 certified true prime cutoff support classifications and first 100 original digamma Laplace cutoff terms with <1e-19 uniform coordinate tail. Also genuine A_prime and k0 alias scan. Focused source CI pending; actual H matrix, δ and A_arch open, no Schur/RH claim."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -951,8 +952,15 @@
       "kind": "native-even-pole-neutral-471-compact-bell-source-kernel",
       "scope": "471 real-even C5 compact disjoint bell pairs, 469 original SI10 source constraints and one actual cosh pole constraint: guaranteed nonzero kernel; exact physical Gram dI, d=231/8388608, full original signed E<34||f||², conditional SI10 cofinite floor. Original mixed-gradient residual δ can certify negative original even direction, but actual source matrix, δ and first-source diagonal A not computed.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/419",
-      "verification": "EF28 focused original SI10 107 clusters/469 even rows + one TRUE cosh pole row, 471 rational-grid even C5 bell pairs/942 disjoint supports, exact Gram dI d=231/8388608 and derivative/physical Jensen original arch+all 7-prime E<34||f||², exact rank-nullity 470x471 and finite Fraction projection toy: Actions #41231565079 SUCCESS, job #124626681315, native manifest/governance PASS. NO actual original 470x471 moment matrix numerical entries, signed g, residual delta, original A or Schur sign; independent analytic original form audit OPEN.",
+      "verification": "Reconciled EF28 draft PR #419, first original source checks #41231565079 SUCCESS and clean repeat #41231918205 SUCCESS; authentic 107/469 source + one cosh pole row, 471 disjoint compact C5 even bell pairs, original full signed E<34||f||². Actual H/g/delta/A still uncomputed before EF29.",
       "repo_path": "notes/provisional/EF28_ORIGINAL_EVEN_471_BELL_POLE_NEUTRAL_MOMENTS_20261031.md"
+    },
+    "EF29": {
+      "kind": "original-even-471-mixed-vector-modulo-native-protected-source-with-rigorous-laplace-tail",
+      "scope": "True SI10 source c0=37/64, 471 EF28 even physical bells: compute true signed first-source 471-entry gtilde=gprime+garch_cut=g-a_arch(c0)*h0, where h0 is an ACTUAL SI10 source row. All 6594 original ln n physical cutoff decisions strict/no partial; n8,n9 mixed vanish; original source arithmetic diagonal A_prime analytically enclosed. Original arch cutoff digamma half-integer Laplace 100 terms with rigorous <1e-19 coordinate tail, directed 340-digit fixed integer intervals, full 471-vector JSON Actions artifact; exact rational k0 grid alias scan. Original Htilde/δ/arch diagonal A_arch STILL UNCOMPUTED, no Schur sign.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/421",
+      "verification": "First focused #41234018481 computed all genuine source data and uploaded vector but FAILED final governance only because manifest argv included --output artifact flag. Repaired to permitted two-argument python3 script. Corrected source and manifest Actions #41234333164 SUCCESS, job #124634832591. 6594 true prime source cutoff comparisons strict/no partial (smallest gap ~8.4953742813e-5), n8/n9 mixed zero, 100-term original digamma 471 arch cutoff vector + uniform <1e-19 entry tail, actual A_prime outward ~0.30039538744, no exact k0 aliases, governance PASS. Original 471-coordinate outward vector artifact #13054987778 (SHA256 8e3444c5748320193d191a88aa435ca05c37f446e15a4d52a272e79a285c5582); original Htilde/δ/A_arch NOT computed and independent analytic original digamma/source domain audit OPEN.",
+      "repo_path": "notes/provisional/EF29_ORIGINAL_EVEN_MIXED_VECTOR_CUTOFF_LAPLACE_20261031.md"
     }
   },
   "obligations": [
@@ -1112,10 +1120,11 @@
         "EF25",
         "EF26",
         "EF27",
-        "EF28"
+        "EF28",
+        "EF29"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF28: 470 actual original SI10 even-source plus positive-pole constraints on 471 compact C5 even bell pairs guarantee nonzero source/pole-neutral cofinite kernel and exactly conditioned physical Gram. Native full signed E<34||f||². For first source g_l=q0(e,phi_l), finite δ=dist(g,range H^T) gives selected inverse response δ²/(34d) if δ>0 and sufficient negative even criterion δ²>34d*(A+2u²). Actual H/g/δ/A uncomputed. EF29 must certify true original residual/diagonal or STOP method. Full even/odd/Weil/RH OPEN."
+      "next_action": "EF29 verified actual original SI10 471-component signed mixed vector modulo true protected c0 source row: gtilde=gprime+garch_cut=g-a_arch(c0)h0, so δ unchanged for actual 470x471 Htilde. Native source #41234333164 PASS and artifact 13054987778 retains full 340-decimal outward interval data, 6594 exact 7-prime full-bell/no partial flags, n8,n9 vanish, genuine A_prime~0.30039538744, original arch half-integer Laplace uniform tail <1e-19 per coordinate; exact sampled k0 frequency aliases 0. EF30 must certify actual SI10 source/pole moment matrix Htilde and rank-aware δ with source conditioned interval validation; A_arch/full A and corrected even sign open, or issue finite-grid METHOD STOP. W-EVEN-FORM/odd/whole Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1339,6 +1348,17 @@
         "scripts/validate_rpb108_ef28_pole_neutral_moment_kernel.py"
       ],
       "interpretation": "Native 469-even-source plus pole constraints on 471 disjoint C5 even tests; physical Gram dI and actual E upper; source residual δ NOT evaluated.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF29-original-even-471-true-signed-mixed-cutoff-laplace",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef29_original_even_mixed_vector.py"
+      ],
+      "interpretation": "Exact original arithmetic source cutoff vector plus original arch digamma cutoff Laplace mixed modulo authentic SI10 first cosine source row, 471 outward coordinate intervals, A_prime only; no actual Htilde rank/δ/A_arch/Schur.",
       "cadence": "per-update"
     }
   ]
