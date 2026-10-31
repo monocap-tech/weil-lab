@@ -173,6 +173,48 @@ def noncertifying_double_log_pilot():
           "100^469 times actual M_arch, preserving exact sign.",flush=True)
 
 
+
+def certified_complete_original_variational_lower():
+    """First original even mixed e/F source, not whole 469D Schur.
+
+    EF26 finite outward + uniform sign tail => M_arch<0;
+    independently rerun authentic EF24 SI06 original Mprime bound:
+    Mprime<-10^184. So M=M_arch+Mprime<-10^184.
+    Original EF25 E=q_arch(f,f)<30||f||².
+    Original EF21 exact ||psi||²=231r/1024, and the TRUE
+    bounded source-filter operator norm ||F_h||<=4^469.
+    Hence E<30*(231r/1024)*4^938 <10^561.
+    Variational true pole-free inverse correction >10^-193.
+    Requires mathematical source Laplace/form-domain audit.
+    """
+    from validate_rpb108_ef24_original_even_edge_intervals import (
+        recurrence_211_native, original_bell_hat_at_c0,
+        original_edge_interval
+    )
+    from validate_rpb108_ef22_original_even_prime_energy_vanish import (
+        exact_original_n2_signed_mixed_lower
+    )
+    coeff=recurrence_211_native()
+    hat=original_bell_hat_at_c0()
+    m5,_,_=original_edge_interval(5,coeff,hat)
+    m7,_,_=original_edge_interval(7,coeff,hat)
+    n2lo,n2hi,_=exact_original_n2_signed_mixed_lower()
+    mprime=I.rational_bounds(n2lo,n2hi)+m5+m7
+    assert mprime.hi< -10**184*S, ("original arithmetic lower",mprime.scaled())
+    eupper=30*F(231,1024)*R*4**938
+    assert eupper<F(10**561)
+    lower=F(10**368)/eupper
+    assert lower>F(1,10**193)
+    print("EF26 COMPLETE ORIGINAL SOURCE INVERSE-SCHUR NONZERO:",
+          "M_arch<0 from true half-integer source tail;",
+          "Mprime<-10^184 native SI06 340-digit source;",
+          "M=M_arch+Mprime<-10^184. E<10^561;",
+          "|M|²/E > 10^-193.",
+          "This is a microscopic one-source inverse correction,"
+          " NOT 469D Schur PSD or RH.",flush=True)
+
+
+
 def run():
     data=json.loads((ROOT/"research/obligations.json").read_text())
     obs={x["id"]:x for x in data["obligations"]}
@@ -184,6 +226,7 @@ def run():
     a,coss,orders,cB,sB=actual_source()
     noncertifying_double_log_pilot()
     partial=I(0)
+    certified_sign=False
     for m in range(KMAX+1):
         term,fac,real=exact_arch_term(m,a,coss,orders,cB,sB)
         partial=partial+term
@@ -196,15 +239,18 @@ def run():
                   " tail; m=",m,"all m'>m negative",
                   "full mixed M=Mprime+M_arch<0 by EF24.",
                   flush=True)
+            certified_sign=True
             break
     else:
         print("EF26 INCONCLUSIVE: finite source-pinned"
               " outward partial not negative; no tail sign"
               " of complete M_arch established from this test.",
               flush=True)
-    print("EF26 OPEN: normalized full inverse Schur quantitative"
-          " value, finite corrected even 469D Schur PSD,"
-          " independent source/domain audit, odd/whole Weil/RH.",
+    assert certified_sign, ("EF26 source finite partial did not certify"
+                            " original arch signed mixing")
+    certified_complete_original_variational_lower()
+    print("EF26 OPEN: full finite even 469D corrected Schur PSD and"
+          " original source/domain independent audit, odd/whole Weil/RH.",
           flush=True)
 
 
