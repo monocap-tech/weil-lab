@@ -1,0 +1,63 @@
+{
+  "pass": "NF423",
+  "date": "2026-10-31",
+  "active_obligation": "W-ODD-NEG",
+  "source": "Same original NF370 supported fourth u4 / NF407 true 242 selected +4 critical physical blocks, full 32 critical sine and odd pole, seven genuine signed prime powers, B=11/10, original NF404 centered dyadic term; source SHA 0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "previous": "NF422 accepted correct all-order arch source transfer and NF421 odd endpoint correction, still only local 1/500-wide zthird control",
+  "accepted": {
+    "original_single_source_shared_0_to_3_response_jet_integrator": "SUCCESS",
+    "native_source_shared_jet_run": "https://github.com/monocap-tech/weil-lab/actions/runs/41237072018",
+    "native_shared_jet_receipt": "notes/data/provisional/NF423_original_shared_response_jets_native.json",
+    "original_source_panels_evaluated_for_all_four_orders": 398,
+    "original_new_zthird_at_x0_approx": "-0.00018921708638296340393396358724",
+    "original_true_zthird_at_x0_strict_negative": true,
+    "original_z0_zprime_zsecond_native_replayed_original_parent_overlap": true,
+    "original_new_wide_macro_derivative_interval": [
+      "0.85",
+      "0.93"
+    ],
+    "original_wide_factor_vs_NF421": 40,
+    "original_wide_source_native_run": "https://github.com/monocap-tech/weil-lab/actions/runs/41237339039",
+    "original_wide_source_receipt": "notes/data/provisional/NF423_original_cell6_wide_zthird_native.json",
+    "original_entire_cell6_open_domain": "(log(7)-11/10,log(8)-11/10)",
+    "original_entire_cell6_numerical_derivative_source_envelope": true,
+    "original_entire_cell6_native_success": "https://github.com/monocap-tech/weil-lab/actions/runs/41237827945",
+    "original_entire_cell6_source_receipt": "notes/data/provisional/NF423_original_entire_open_cell6_zthird_native.json",
+    "original_full_cell6_source_uniform_third_derivative_strict_upper": 286758,
+    "original_full_cell6_source_A_absolute_upper": 4,
+    "original_full_cell6_signed_prime_weight_sum_upper": 3,
+    "original_full_cell6_source_u4_third_sup_upper": 24580,
+    "original_full_cell6_source_u4_fourth_L2_upper": 16384,
+    "original_Fraction_independent_success": "https://github.com/monocap-tech/weil-lab/actions/runs/41237980599",
+    "original_Fraction_independent_receipt": "notes/data/provisional/NF423_original_entire_cell6_shared_jets_independent_fraction.json",
+    "original_source_exact_0_to_3_tail_and_full_cell_coeff_validation": true,
+    "original_certified_positive_interval": [
+      "0.899990421783",
+      "0.900009578217"
+    ],
+    "original_certified_positive_halfwidth": "0.000009578217",
+    "original_signed_z_micro_lower_approx": "5.22415373737742599e-18",
+    "original_NF421_previous_sign_halfwidth": "0.000005469631",
+    "original_entire_open_cell6_cubic_remainder": "|z(x)-[z(0.9)+z'(0.9)(x-0.9)+0.5*z''(0.9)(x-0.9)^2]| < 286758*|x-0.9|^3/6 on true knot-defined open cell6; coarse/nondecision-quality far from anchor",
+    "original_current_conditional_full_cell_Taylor_panel_number": 667657,
+    "original_conditional_panel_halfwidth": "1e-7",
+    "original_conditional_full_cell_Taylor_only_L2_fee_upper": "4.7793e-17",
+    "original_real_full_cell_center_jet_certificates_count": 0
+  },
+  "open": {
+    "original_entire_cell6_NF404_quality_polynomial_z": "OPEN",
+    "actual_full_cell6_center_jet_enclosures": "OPEN",
+    "original_hotspots3_7": "OPEN",
+    "other_five_original_positive_cells": "OPEN",
+    "seven_signed_prime_seams_and_endpoint_dlogd": "OPEN",
+    "NF410_signed_p_z_cross_and_z2": "OPEN",
+    "NF404_entire_centered_scalar": "UNDECIDED",
+    "fourth_J242_complement": "OPEN",
+    "operator_domain_infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "even_whole_Weil": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF424 construct source-correlated high-order original x-Chebyshev/Taylor per one-sided physical cell6 with certified joint x/t remainders, shrink 667657 conditional center jets; then physical cells3,7 and remaining 5, integrate NF410 signed moments and entire NF404 scalar.",
+  "custody": "Research branch stacked draft PR on NF422, original artifacts unchanged, 4 successful focused source/independent workflows; early native Arb/K'' and independent parser CI failures preserved/repaired; no main merge."
+}
