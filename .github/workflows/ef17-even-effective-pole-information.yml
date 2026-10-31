@@ -1,0 +1,28 @@
+name: EF17 original even pole mixed information stop and signed residual gate
+on:
+  push:
+    branches:
+      - research/ef17-even-effective-pole-mixed-information-gate
+  pull_request:
+    branches:
+      - research/ef16-original-even-pole-schur-physical-entry
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  signed-mixed-information:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original-even scoped Schur information regressions
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef17_even_effective_pole_info.py
+          python scripts/validate_rpb108_ef17_even_effective_pole_info.py
+      - name: Canonical active obligation manifest
+        run: python scripts/verify_obligation_manifest.py
