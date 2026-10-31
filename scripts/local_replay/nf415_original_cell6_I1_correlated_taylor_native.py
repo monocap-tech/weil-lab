@@ -19,7 +19,7 @@ B=F(11,10)
 X=F(9,10)
 LEFT=F(2,5);RIGHT=F(4)
 STEP=F(1,100);RHO=STEP/2;RHO_S=RHO/2
-NS=160;NK=48
+NS=300;NK=48
 def enclosed(z,digits=85):
  m,r,e=z.mid_rad_10exp(digits)
  return [str(F(int(m)-int(r))*F(10)**int(e)),str(F(int(m)+int(r))*F(10)**int(e))]
@@ -99,13 +99,13 @@ def main():
  for f,k,v in terms:groups.setdefault(f,[]).append((k,v))
  grouped=sorted(groups.items())
  assert all(k<=13 for f,vs in grouped for k,v in vs)
- assert max(F(7)*abs(f)*RHO_S for f,vs in grouped)<2
+ assert max(F(7)*abs(f)*RHO_S for f,vs in grouped)<16
  # Exact full raw source triangle is used ONLY for rigorously tiny
  # local Taylor remainder, not to bound complete integral.
  Uraw=sum((abs(v)*B**k for f,k,v in terms),abs(pole))
  assert Uraw<F(10)**160,('original exact source coefficients out of envelope',str(Uraw)[:100])
  Ntail=NS-13+1
- Rsource=F(8)*Uraw*F(2)**Ntail/math.factorial(Ntail)
+ Rsource=F(3**16)*Uraw*F(16)**Ntail/math.factorial(Ntail)
  assert Rsource<F(1,10**42),('analytic source Taylor tail too large',str(Rsource)[:100])
  # Since all real panel t0>=0.4, disk |t-t0|<=t0/2
  # stays in Re(t)>=0.2. Analytic K bound <6,
