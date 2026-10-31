@@ -1,0 +1,55 @@
+name: Weil-Lab NF416 independent original I0 and z Fraction source replay
+on:
+  push:
+    branches: [research/nf416-original-cell6-regularized-I0]
+    paths:
+      - '.github/workflows/nf416-original-I0-independent-replay.yml'
+      - 'scripts/local_replay/nf416_original_I0_z_exact_independent_replay.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-independent-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf416-original-cell6-regularized-I0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original 246 source exact independent rational I0 and z replay
+        run: |
+          python -m py_compile scripts/local_replay/nf416_original_I0_z_exact_independent_replay.py
+          python -u scripts/local_replay/nf416_original_I0_z_exact_independent_replay.py --output /tmp/nf416_original_independent.json
+          python - <<'PY'
+          import json
+          p=json.load(open('/tmp/nf416_original_independent.json'))
+          assert p['original_source_generators']==246
+          assert p['original_Uraw_exact_recomputed']
+          assert p['tiny_t_source_analytic_tail_replayed']
+          assert p['regular_t_source_and_K_analytic_tails_replayed']
+          assert p['true_source_second_derivative_coefficient_radius_replayed']
+          assert p['original_full_I0_outward_interval_recomposed_with_original_NF414_NF415']
+          assert p['original_complete_z_at_x9over10_pointwise_positive_certified']
+          assert p['original_complete_z_pointwise_width_under_1e55']
+          assert p['original_entire_cellwise_z_certified'] is False
+          assert p['original_NF404_full_scalar_certified'] is False
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          PY
+      - name: Custody independent exact original source I0 and z audit
+        run: |
+          target=notes/data/provisional/NF416_original_cell6_independent_fraction_replay.json
+          mkdir -p notes/data/provisional
+          if test -e "$target"; then cmp -s "$target" /tmp/nf416_original_independent.json
+          else cp /tmp/nf416_original_independent.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF416 independent source-exact 246 derivative radius/tail and true pointwise z replay'
+            git pull --rebase origin research/nf416-original-cell6-regularized-I0
+            git push origin HEAD:refs/heads/research/nf416-original-cell6-regularized-I0
+          fi
