@@ -1,0 +1,126 @@
+{
+  "pass": "NF409",
+  "standing": "ORIGINAL TRUE PHYSICAL CONTINUOUS z TWO-FORM 205-DIGIT GAUSS EQUIVALENCE, NOT RIGOROUS QUADRATURE CERTIFICATE",
+  "original_nf407_source_coeff_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seam_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_nf408_analytic_continuous_action_sha256": "6f58626c93e093e1a0fdd4efdfd7f46862a0c4d0a7fe0978615a3ca4a5add898",
+  "source_true_original_242plus4_native_coefficient_midpoints": true,
+  "original_complete_real_seven_prime_source_restored": true,
+  "original_analytic_plus_numeric_different_forms_compared": true,
+  "difference_calibrated_against_unbounded_K_Gauss_quadrature_error": true,
+  "original_two_form_samples": [
+    {
+      "x": "11/20",
+      "original_old_direct_g": "-0.00000000000904638584148114815775894884499372418809053272",
+      "original_old_subtraction_z": "0.0000000000205892014317959181307746431681504899449778157",
+      "original_new_continuous_z": "0.0000000000205895111727342305571896517802746099607274657816642086270453",
+      "original_new_reconstructed_g": "-0.00000000000904607610054283573134394023286960417234088259376449980475923",
+      "difference_z_two_form": "3.0974093831242641500861212412001574965008166420863e-16",
+      "difference_g_two_form": "3.097409383124264150086121241200157496501262355002e-16",
+      "known_K_Gauss_kernel_error_calibration": "-3.0974093831242641500861212412001574965012930309639e-16",
+      "difference_minus_K_Gauss_kernel_error": "4.7638887758711342854330808340740248338434736688438e-56",
+      "source_original_u": "3.6643783617519598641154189836979397903533668925123",
+      "stable_source_Phi": "2.5964569570827242343426132459673160444807461098123",
+      "source_original_all_prime_branches": [
+        {
+          "n": 2,
+          "branch": "continuous-post-seam",
+          "value": "-0.135952316869885632720713072698985940867369233334"
+        },
+        {
+          "n": 3,
+          "branch": "continuous-post-seam",
+          "value": "2.3339121236043155195601773325501893505665434156"
+        },
+        {
+          "n": 4,
+          "branch": "continuous-post-seam",
+          "value": "0.0415110943063105093619528872821493044950477100683"
+        },
+        {
+          "n": 5,
+          "branch": "continuous-post-seam",
+          "value": "0.000000324537373523465797506671192587149811792166499984"
+        },
+        {
+          "n": 7,
+          "branch": "neither-shift",
+          "value": "0.0"
+        },
+        {
+          "n": 8,
+          "branch": "neither-shift",
+          "value": "0.0"
+        },
+        {
+          "n": 9,
+          "branch": "neither-shift",
+          "value": "0.0"
+        }
+      ],
+      "original_new_arch_minus_q": "-1.83625526627752480669926449253226303487206741339750659288223",
+      "original_new_prime_minus_r": "2.23947122557811391966721465380454530134403368450077117069797"
+    },
+    {
+      "x": "109/100",
+      "original_old_direct_g": "0.0000000000769470301655942807435679975402070368403913372",
+      "original_old_subtraction_z": "0.000000000141437856310180650268390595231650131307742022",
+      "original_new_continuous_z": "0.000000000141437856310181604436034155599854542293458168082187229145384",
+      "original_new_reconstructed_g": "0.0000000000769470301655952349112115579084114478261074834481570229443911",
+      "difference_z_two_form": "9.54167643560368204410985716146082187229145384e-25",
+      "difference_g_two_form": "9.541676435603682044109857161462481570229443911e-25",
+      "known_K_Gauss_kernel_error_calibration": "-9.5416764356036820441098571614626356045979284947062e-25",
+      "difference_minus_K_Gauss_kernel_error": "1.8137323064746547061854861011483652484468579359239e-55",
+      "source_original_u": "0.0000000027854055934636420001652769603927279799463736126153",
+      "stable_source_Phi": "2.8567826122739606481954961080366286807143298389314",
+      "source_original_all_prime_branches": [
+        {
+          "n": 2,
+          "branch": "continuous-post-seam",
+          "value": "-1.81667352847580209881946735374224161225550028486"
+        },
+        {
+          "n": 3,
+          "branch": "continuous-post-seam",
+          "value": "-0.0379279095323140345464769498068864448303769978655"
+        },
+        {
+          "n": 4,
+          "branch": "continuous-post-seam",
+          "value": "0.710147988748196487998940727580567165723779075909"
+        },
+        {
+          "n": 5,
+          "branch": "continuous-post-seam",
+          "value": "2.83952498199956295223788157277964774191183756602"
+        },
+        {
+          "n": 7,
+          "branch": "continuous-post-seam",
+          "value": "0.0516932212106902638397024986011974078252534639377"
+        },
+        {
+          "n": 8,
+          "branch": "continuous-post-seam",
+          "value": "0.0000520702655542220485763476119377185955963130511607"
+        },
+        {
+          "n": 9,
+          "branch": "neither-shift",
+          "value": "0.0"
+        }
+      ],
+      "original_new_arch_minus_q": "-0.91805109093171196294445104508246543123788864007733630213152",
+      "original_new_prime_minus_r": "1.74681682421588779275915684302422197697058913619349053650115"
+    }
+  ],
+  "gauss_nested_t_integrals_numerically_approximated": true,
+  "arbitrary_transcendental_roundoff_certified": false,
+  "original_pointwise_error_enclosure_certified": false,
+  "original_x_integral_and_complete_centered_norm_certified": false,
+  "original_domain_general_audit": "OPEN",
+  "new_signed_kernel_cells": 0,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "elapsed_seconds": 73.88
+}
