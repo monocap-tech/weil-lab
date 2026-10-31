@@ -57,6 +57,24 @@ This gives TWO distinct statements on the **true original source**:
 
 Crucially, failure of a SUFFICIENT negative witness condition is NOT a positive-semidefiniteness proof, nor does it exclude a genuine negative even vector even in this restricted span. The actual true energy of the kernel direction `q0(f,f)` may be much smaller than `34*d*||w||²`; the true normalized correction `delta²/(q0(f,f)/(d||w||²)*d)` and full infinite-complement Schur response remain unmeasured. We did **not** compute actual `delta` or a certified numerical kernel orientation, and we do not claim this upper-energy stop is a mathematical obstruction to all detector choices.
 
+## NEW quantitative opposite-sign acceptance target (conditional, NOT proved)
+
+For the same TRUE original unique pole/source-neutral kernel vector w, set `f=sum_l w_l phi_l`, so `||f||²=d||w||²`. Its actual pole-free energy `E=q0(f,f)>0` is currently only known between the inherited SI10 floor `mu||f||²` and EF28's 34 upper. The *actual* restricted original even 2×2 Schur is
+
+`S_restricted=A_even - |gtilde*w|²/E`.
+
+The EF32 accepted source bounds imply
+
+`|gtilde*w|²/E <= ||gtilde||²/(c*d)` **IF** the original kernel-specific lower `E>=c||f||²` is established. They also imply the necessary condition for a *negative restricted e/f witness*:
+
+`E/||f||² < ||gtilde||²/(d*A_even) < 3.720`.
+
+Consequently, **a genuine original kernel-specific lower bound `E>=4||f||²` would by itself establish strict POSITIVITY on the entire authentic 2D subspace span{e,f}, without computing w's orientation or any signed projection**:
+
+`S_restricted > 0.030997 - 3.174615e-6/(4*d) > 0.00217`.
+
+The number 4 is a **PROPOSED OPEN energy-lower target**, not a certified fact. The SI10 inherited general floor `mu=17/25000` is far smaller, and EF28's upper `E<34||f||²` cannot be substituted for a lower. Even if the restricted 2D positivity target closes, full source469, source-cross, and infinite-complement Schur positivity remain OPEN.
+
 ## Decision / next research junction
 
 EF31's exact Chebyshev kernel direction remains a valid structural certificate, but **computing its numerically delicate coefficients solely to retry the unchanged 34d sufficient-negative gate has zero mathematical value**. EF32 avoids the conditioning trap by an exact, correlation-preserving full original `||gtilde||` upper and an independently certified original first-source diagonal.
