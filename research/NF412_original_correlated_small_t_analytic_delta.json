@@ -1,0 +1,29 @@
+{
+  "pass": "NF412",
+  "date": "2026-10-31",
+  "active_obligation": "W-ODD-NEG",
+  "source_scope": "Unchanged NF370 original fourth u4, full original 242 selected+4 critical, 7 signed prime powers, B=11/10, NF404 dyadic centering",
+  "parent": "NF411 PR #405",
+  "new_analytic": {
+    "original_critical_second_derivative_physical_gram": "Exact coefficient correlation before bound. Combined original four dyadic critical source weights at 32 sine physical frequencies and the pole; full analytic physical Gram using sin-sin, sin-sinh, sinh-sinh primitive; no numerical x quadrature.",
+    "small_t_arch_I0_bound": "For h<=1/2, t1=2(B-x), ||integral_0^min(h,t1) K(t)[u(x)-(u(x+t/2)+u(x-t/2))/2]dt||_L2(0,B) <= (h^2/8) ||u''||_L2(-B,B); K(t)<2/t. Includes moving genuine original support seam.",
+    "source_radius": "Second-derivative coefficient uncertainty S2 recomputed directly from every source-native midpoint/radius; previous first-derivative D not reused.",
+    "full_odd_support_reminder": "Multiply positive-half L2 omitted bound by sqrt(2) before global energy budget."
+  },
+  "execution": {
+    "source_gram": "FOCUSED CI PENDING",
+    "source_2nd_radius": "IMPLEMENTED, PENDING CI",
+    "small_t_true_L2_numeric": "PENDING CI",
+    "hotspot_z": "OPEN",
+    "remaining_arch_x_t": "OPEN",
+    "signed_cross": "OPEN",
+    "full_centered_scalar": "OPEN",
+    "nf404_gate": "UNDECIDED",
+    "original_fourth_lowband_Jperp": "OPEN",
+    "domain": "OPEN",
+    "inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "Inspect focused native source Gram first. If successful, certify remaining physical t interval and cellwise original continuous z on cells 6,3,7 without unverified Gauss, then all eight cells and NF404 comparison."
+}
