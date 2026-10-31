@@ -1,0 +1,40 @@
+{
+  "pass": "NF419",
+  "date": "2026-10-31",
+  "canonical_obligation": "W-ODD-NEG",
+  "previous": "NF418 source-exact coarse original z cellwide envelopes on original cells3,6,7 and naive Lipschitz sampling method STOP",
+  "same_original_object": "NF370 supported fourth u4, NF407 full 242 selected plus four critical sources, all seven genuine signed prime powers, B=11/10, NF404 exact dyadic center",
+  "accepted_analytic_identity": {
+    "original_t1": "2(B-x)",
+    "original_t2": "2(B+x)",
+    "kernel": "K(t)=exp(-t/4)/(1-exp(-t))",
+    "original_endpoint": "v=u4(B), u4(-B)=-v",
+    "I0_I1_moving_boundary": "K(t1)*(v-u(x))+K(t2)*(u(x)+v)",
+    "additional_exact_identity": "Phi'(B-x)=1/(B-x)-2*K(2(B-x))",
+    "final_full_finite_plus_boundaries": "[c(x)+log(B/(B-x))/2]*u4'(x)+v*[K(t1)+K(t2)-1/(2(B-x))]",
+    "important": "Eliminates ALL standalone original u4(x) terms before numeric x-jet, preserves original cross cancellations."
+  },
+  "native_attempt": {
+    "repo_script": "scripts/local_replay/nf419_original_cell6_correlated_xjet_native.py",
+    "workflow": ".github/workflows/nf419-original-cell6-xjet.yml",
+    "point": "9/10",
+    "method": "Original 246-source derivative Taylor H=tK at 0, exact original I0 and I1 source-correlated panels, seven signed prime branch derivatives and original dyadic center",
+    "acceptance": "Native full original z'(9/10) outward width<1e-27 with source coefficient radii paid",
+    "status": "PENDING - DO NOT CLAIM ACCEPTED BEFORE FOCUSED NATIVE SUCCESS",
+    "first_failure": "Initial native Arb-Fraction multiplication type mismatch before quadrature, corrected; not a mathematical failure."
+  },
+  "open": {
+    "full_original_numeric_first_xjet": "PENDING_NATIVE",
+    "original_second_derivative_uniform_interval_remainder": "OPEN",
+    "original_tight_cellwise_x_Taylor": "OPEN",
+    "original_NF410_signed_z_p_cross": "OPEN",
+    "original_NF404_complete_centered_scalar": "UNDECIDED",
+    "original_J242_complement": "OPEN",
+    "domain": "OPEN",
+    "infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "Check focused native original first x-jet; then build genuine original x-second-derivative interval/Taylor remainder with all physical one-sided prime seams and endpoint dlogd before all eight original cells and NF404 scalar.",
+  "custody": "Stacked draft PR #420; no main merge, no source change"
+}
