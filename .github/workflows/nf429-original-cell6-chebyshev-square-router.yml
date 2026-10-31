@@ -1,0 +1,93 @@
+name: Weil-Lab NF429 original cell6 Chebyshev quadratic raw moments
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf429_original_cell6_chebyshev_square_router_native.py'
+      - 'scripts/local_replay/nf429_original_cell6_P255_partial_contraction_exact.py'
+      - 'notes/provisional/NF429_ORIGINAL_CELL6_CHEBYSHEV_QUADRATIC_MOMENT_ROUTER_20261031.md'
+      - '.github/workflows/nf429-original-cell6-chebyshev-square-router.yml'
+      - 'notes/data/provisional/NF406_original_prime_support_partition_exact.json'
+      - 'notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-raw-2999-moment-integral-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install rigorous Arb interval arithmetic
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Verify original source and seams, rational product identity, native 2999 moments
+        run: |
+          python3 -m py_compile scripts/local_replay/nf429_original_cell6_chebyshev_square_router_native.py
+          python3 scripts/local_replay/nf429_original_cell6_chebyshev_square_router_native.py \
+            --bits 2048 --output artifacts/NF429_original_cell6_raw_chebyshev_moments_2999.json
+      - name: Preserve exact original-cell raw moment intervals
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF429-original-cell6-2999-raw-Chebyshev-moments
+          path: artifacts/NF429_original_cell6_raw_chebyshev_moments_2999.json
+          if-no-files-found: error
+      - name: No premature scalar or RH closure
+        run: |
+          python3 - <<'PY'
+          import json
+          data=json.load(open('artifacts/NF429_original_cell6_raw_chebyshev_moments_2999.json'))
+          assert len(data['original_cell6_raw_Chebyshev_dx_moments_n0_to_n2998'])==2999
+          assert not data['true_original_cell6_integral_evaluated']
+          assert not data['original_nf404_complete_signed_scalar_decided']
+          assert data['W_ODD_NEG']==data['RH']=='OPEN'
+          print('PASS: new raw moments only; response coefficients and scalar remain OPEN')
+          PY
+
+  original-P255-source-artifact-signed-prefix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download immutable accepted NF428 256 original z, 1500 signed p moments and NF429 2999 raw moments
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/nf428z artifacts/nf428p artifacts/nf429j
+          gh run download 41248984553 --repo "$GITHUB_REPOSITORY" \
+            --name NF428-original-cell6-native-256-chebyshev-coefficient-intervals --dir artifacts/nf428z
+          gh run download 41248984553 --repo "$GITHUB_REPOSITORY" \
+            --name NF428-original-cell6-signed-p-chebyshev-moments-1500 --dir artifacts/nf428p
+          gh run download 41249833015 --repo "$GITHUB_REPOSITORY" \
+            --name NF429-original-cell6-2999-raw-Chebyshev-moments --dir artifacts/nf429j
+      - name: Exact Fraction signed P255 contraction with three fixed original artifact JSON digests
+        run: |
+          python3 -m py_compile scripts/local_replay/nf429_original_cell6_P255_partial_contraction_exact.py
+          python3 scripts/local_replay/nf429_original_cell6_P255_partial_contraction_exact.py \
+            --z artifacts/nf428z/NF428_original_cell6_native_cheb256.json \
+            --p artifacts/nf428p/NF428_original_cell6_signed_p_cheb_moments_1500.json \
+            --j artifacts/nf429j/NF429_original_cell6_raw_chebyshev_moments_2999.json \
+            --output artifacts/NF429_original_P255_exact_signed_partial.json
+      - name: Save original-source signed partial polynomial receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF429-original-P255-signed-partial-polynomial-NOT-true-cell-integral
+          path: artifacts/NF429_original_P255_exact_signed_partial.json
+          if-no-files-found: error
+      - name: Fail closed on incomplete original source coefficients
+        run: |
+          python3 - <<'PY'
+          import json
+          a=json.load(open('artifacts/NF429_original_P255_exact_signed_partial.json'))
+          assert a['original_partial_z_modes']==256
+          assert a['original_missing_z_modes']==1244
+          assert a['actual_original_cell6_integral_certified'] is False
+          assert a['original_NF404_full_scalar_decided'] is False
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          print("PASS 256-mode polynomial, NOT the original true z integral")
+          PY
