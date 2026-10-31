@@ -1,0 +1,41 @@
+{
+  "pass": "NF417-independent",
+  "standing": "FULL 246-source two-hotspot Fraction exact analytic error and signed z replay PASS",
+  "nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "nf413_sha256": "fe0112a100aa553f5a64087884714740db98d263305493fa0adfb2f59677c72b",
+  "nf414_sha256": "f59468d7dbd88af44f987aa8475a14930a5f9cbd9997300780ed15333f33bf7e",
+  "original_true_source_246_generator_count": 246,
+  "original_NF417_cell3_receipt_sha256": "ec7c0b669cd2aa03a72d5b40210f967c53d6c945fd8e9d70aba6a3e6a1c97936",
+  "original_NF417_cell7_receipt_sha256": "e849b2ed5b48dcb9072b911f852de75a4e1bcc24feb2a47254deec2691b73b8a",
+  "hotspot_independent_reports": [
+    {
+      "cell": 3,
+      "x": "7/20",
+      "I0_panels": 148,
+      "I1_panels": 140,
+      "source_246_exact_coefficient_radii_paid": true,
+      "complete_analytic_source_and_kernel_tails_exactly_recomputed": true,
+      "true_z_source_original_NF414_I0_I1_exactly_recomposed": true,
+      "pointwise_z_sign": "strictly-negative",
+      "complete_original_z_pointwise_certified": true,
+      "original_full_cell_L2_certified": false
+    },
+    {
+      "cell": 7,
+      "x": "26/25",
+      "I0_panels": 10,
+      "I1_panels": 416,
+      "source_246_exact_coefficient_radii_paid": true,
+      "complete_analytic_source_and_kernel_tails_exactly_recomputed": true,
+      "true_z_source_original_NF414_I0_I1_exactly_recomposed": true,
+      "pointwise_z_sign": "strictly-positive",
+      "complete_original_z_pointwise_certified": true,
+      "original_full_cell_L2_certified": false
+    }
+  ],
+  "no_Arb_or_Gauss_used_in_independent_error_replay": true,
+  "whole_original_z_cellwise_certified": false,
+  "NF404_full_centered_scalar_certified": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}

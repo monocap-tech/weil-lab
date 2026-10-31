@@ -1,0 +1,74 @@
+name: Weil-Lab NF417 complete original z at hotspot cells 3 and 7
+on:
+  push:
+    branches: [research/nf417-original-hotspots-complete-z]
+    paths:
+      - '.github/workflows/nf417-original-hotspots-full-z.yml'
+      - 'scripts/local_replay/nf417_original_hotspots_3_7_complete_z_native.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-full-pointwise-z:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [3, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf417-original-hotspots-complete-z
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Native outward Arb
+        run: pip install python-flint==0.8.0
+      - name: True unchanged original 242 plus 4 full arch I0 and I1 and signed physical z
+        run: |
+          python -m py_compile scripts/local_replay/nf417_original_hotspots_3_7_complete_z_native.py
+          python -u scripts/local_replay/nf417_original_hotspots_3_7_complete_z_native.py --cell ${{ matrix.cell }} --precision 1024 --output /tmp/nf417_original_cell${{ matrix.cell }}_z.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          from pathlib import Path
+          c=${{ matrix.cell }}
+          j=json.loads(Path(f"/tmp/nf417_original_cell{c}_z.json").read_text())
+          assert j['cell']==c
+          assert j['x']=={3:'7/20',7:'26/25'}[c]
+          assert j['full_original_242_selected_4_critical_physical_source']
+          assert j['original_prime_signed_all_7_from_NF414']
+          assert j['original_t0_singularity_removed_by_H']
+          assert j['original_I0_symmetric_both_shifts']
+          assert j['original_I1_true_one_sided_source']
+          assert j['source_tiny_order']==530 and j['H_tiny_order']==60
+          assert j['source_regular_order']==300
+          assert j['I0_regular_kernel_order']==160 and j['I1_kernel_order']==48
+          assert j['I0_regular_panels']=={3:148,7:10}[c]
+          assert j['I1_panels']=={3:140,7:416}[c]
+          for z in ('I0_tiny_integrated_error','I0_regular_integrated_error','I1_integrated_error'):
+            assert F(j[z])<F(1,10**38)
+          assert F(j['original_true_I0_width_exact'])<F(1,10**40)
+          assert F(j['original_true_I1_width_exact'])<F(1,10**39)
+          assert F(j['original_true_complete_z_pointwise_width_exact'])<F(1,10**38)
+          assert j['true_original_complete_z_pointwise_certified']
+          assert j['original_NF404_whole_scalar_certified'] is False
+          assert j['entire_original_cell_z_certified'] is False
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          PY
+      - name: Preserve native original source point certificate without replacing previous history
+        run: |
+          target=notes/data/provisional/NF417_original_cell${{ matrix.cell }}_full_z_pointwise_native.json
+          mkdir -p notes/data/provisional
+          if test -e "$target"; then cmp -s "$target" /tmp/nf417_original_cell${{ matrix.cell }}_z.json
+          else cp /tmp/nf417_original_cell${{ matrix.cell }}_z.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m "NF417 true original supported 246 source cell ${{ matrix.cell }} pointwise z, cellwide open"
+            git pull --rebase origin research/nf417-original-hotspots-complete-z
+            git push origin HEAD:refs/heads/research/nf417-original-hotspots-complete-z
+          fi
