@@ -92,7 +92,7 @@ def main():
  assert g['original_true_full_u4_second_derivative_L2_upper_integer']=='256'
  assert [v['cell'] for v in q['hotspot_points']]==[3,6,7]
  assert all(v['W_ODD_NEG']==v['RH']=='OPEN' for v in (s,g,q))
- ctx.prec=args.prec
+ ctx.prec=args.precision
  terms,pole,S0=native_source(s)
  assert len(terms)>=240
  groups={}
