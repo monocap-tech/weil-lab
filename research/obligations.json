@@ -910,7 +910,7 @@
     "EF23": {
       "kind": "original-even-signed-arithmetic-mixed-source-sparsification",
       "scope": "W-EVEN-FORM: authentic SI10 fixed f source cutoff disjoint/support root identities give exact original mixed prime channels M3=M4=M8=M9=0; surviving n2 bound plus n5 and n7 finite FIR Laurent edge sums of just 211 and 39 coefficients respectively; full M/E Schur uncomputed.",
-      "pr": "https://github.com/monocap-tech/weil-lab/pull/404",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/406",
       "verification": "New exact native SI06 original ln(n) Fraction lattice cutoff classification 13146 interactions, original 469-degree source root and 211/39 edge combinatorics, inherited EF22 n2 scoped arithmetic. Focused EF23 Actions pending; NO sign or interval accepted for M5/M7, or arch energy/mixed.",
       "repo_path": "notes/provisional/EF23_ORIGINAL_EVEN_ARITHMETIC_MIXED_SPARSE_20261031.md"
     }
