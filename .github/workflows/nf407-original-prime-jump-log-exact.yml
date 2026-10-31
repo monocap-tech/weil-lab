@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/nf407-original-prime-jump-log-exact.yml'
       - 'scripts/local_replay/nf407_original_prime_jump_log_power_exact.py'
+      - 'scripts/local_replay/nf407_original_regularized_cancellation_gate.py'
   workflow_dispatch:
 permissions:
   contents: write
@@ -22,8 +23,9 @@ jobs:
           python-version: '3.12'
       - name: Original source-pinned rational log-plus-seven-jump Hilbert norm
         run: |
-          python3 -m py_compile scripts/local_replay/nf407_original_prime_jump_log_power_exact.py
+          python3 -m py_compile scripts/local_replay/nf407_original_prime_jump_log_power_exact.py scripts/local_replay/nf407_original_regularized_cancellation_gate.py
           python3 scripts/local_replay/nf407_original_prime_jump_log_power_exact.py --output /tmp/NF407_original_prime_jump_log_power_exact.json
+          python3 scripts/local_replay/nf407_original_regularized_cancellation_gate.py --principal /tmp/NF407_original_prime_jump_log_power_exact.json --output /tmp/NF407_original_cancellation_gate_exact.json
           python3 - <<'PY'
           import json
           import sys
@@ -42,6 +44,11 @@ jobs:
           assert p['original_continuous_physical_z_squared_norm_measured'] is False
           assert p['original_full_supported_centered_scalar_upper_computed'] is False
           assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          c=json.load(open('/tmp/NF407_original_cancellation_gate_exact.json'))
+          assert F(c['necessary_continuous_regularized_z_norm_strict_lower_if_cap_passes'])==F(13,10**12)
+          assert F(c['necessary_signed_z_principal_inner_product_upper_if_cap_passes']) < -F(515,10**24)
+          assert c['original_actual_continuous_z_norm_measured'] is False
+          assert c['original_full_centered_power_upper_computed'] is False
           PY
       - name: Preserve original exact seven-prime/log model only
         run: |
@@ -52,9 +59,15 @@ jobs:
           else
             cp /tmp/NF407_original_prime_jump_log_power_exact.json "$target"
           fi
+          target2=notes/data/provisional/NF407_original_cancellation_gate_exact.json
+          if test -f "$target2"; then
+            cmp -s "$target2" /tmp/NF407_original_cancellation_gate_exact.json
+          else
+            cp /tmp/NF407_original_cancellation_gate_exact.json "$target2"
+          fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add "$target"
+          git add "$target" "$target2"
           if ! git diff --cached --quiet; then
             git commit -m 'NF407 source-exact correlated original boundary log plus all seven prime jumps'
             git pull --rebase origin research/nf407-original-regularized-physical-quadrature
