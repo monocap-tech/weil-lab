@@ -132,10 +132,14 @@ def actual_laplace_filter(lam,sourcecos,orders):
     t=2*cosh_i(lam*H)
     out=I(S)
     for u,p in zip(sourcecos,orders):
-        factor=t-2*u
+        factor=100*(t-2*u)
         assert factor.lo>0
         for _ in range(p):
             out=out*factor
+    # Positive common normalization of EVERY original Laplace term:
+    # out = 100^469 * Lambda_h(lambda), exactly. Original unscaled
+    # filter can be <<10^-340 at small lambda and must not be
+    # mistaken for the zero mathematical object.
     return out
 
 
@@ -164,6 +168,9 @@ def noncertifying_double_log_pilot():
         sign=(lam*math.cos(theta)-omega*math.sin(theta))
         pilot.append((m,round(lg,4),"+" if sign>0 else "-"))
     print("EF26 NONCERTIFYING original source double-log Lambda pilot:",pilot,flush=True)
+    print("EF26 exact common positive source scaling 100^469;",
+          "ALL displayed interval Laplace terms and partial sums are",
+          "100^469 times actual M_arch, preserving exact sign.",flush=True)
 
 
 def run():
@@ -180,7 +187,7 @@ def run():
     for m in range(KMAX+1):
         term,fac,real=exact_arch_term(m,a,coss,orders,cB,sB)
         partial=partial+term
-        print("EF26 REAL ORIGINAL arch Laplace term",m,
+        print("EF26 RESCALED (100^469) ORIGINAL arch Laplace term",m,
               "sign",term.sign(),"value",term.scaled(),
               "partial",partial.scaled(),flush=True)
         if m>=2 and partial.hi<0:
