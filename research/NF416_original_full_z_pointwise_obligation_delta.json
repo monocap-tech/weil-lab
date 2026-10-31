@@ -1,0 +1,51 @@
+{
+  "pass": "NF416",
+  "date": "2026-10-31",
+  "canonical_obligation": "W-ODD-NEG",
+  "parent": {
+    "NF414": "Original finite regularized arch and all seven signed genuine prime remainders at x=9/10, source-native coefficient-radius-paid",
+    "NF415": "Original complete I1 interval on [2/5,4] source-correlated width <1e-70",
+    "NF416": "Entire original I0 0..2/5, with no omitted interval."
+  },
+  "standing": "ACCEPTED COMPLETE TRUE ORIGINAL z POINTWISE at physical x=9/10 cell6; full cell and NF404 centered scalar still OPEN",
+  "source": "Unchanged NF370 original fourth u4, NF407 original physical 242 selected +4 critical, B=11/10; original NF404 dyadic pole centered, seven true signed prime powers.",
+  "verified_native": {
+    "run": "https://github.com/monocap-tech/weil-lab/actions/runs/41228999730",
+    "status": "SUCCESS",
+    "receipt": "notes/data/provisional/NF416_original_cell6_full_I0_and_z_point_native.json",
+    "I0": "entire true symmetric original arch I0 on [0,2/5] certified as a rigorous outward rational interval",
+    "original_I0_approx": "-0.294411377127259627297474239170374",
+    "complete_original_z_approx": "4.202421814328318159234807e-11",
+    "true_original_z_interval_width_strict": "1e-55",
+    "pointwise_sign": "STRICT POSITIVE at x=9/10 only; no cellwide positivity inferred.",
+    "physical_x": "9/10",
+    "original_cell": 6
+  },
+  "analytic_proof": {
+    "tiny_t": "t∈[0,1/50]: H=tK analytic at zero, exact full 246-source symmetric even Taylor and formal rational H quotient, source degree530/H degree60.",
+    "regular_t": "t∈[1/50,2/5]: 38 exact rational panels original x±t/2, source degree300/K degree160, analytic power integration.",
+    "source_remainder": "Original max selected frequency 882.9140625; exact rational source and kernel tails: tiny source <1e-60, tiny H <1e-100, regular source <1e-42, regular kernel <1e-60.",
+    "coefficient_radius": "Exact physical second-derivative native S2 from NF413, charged as S2*(2/5)^2/8, avoiding divergent S0/t estimate.",
+    "native": "1024bit outward Arb plus original 4096bit exact dyadic coefficient midpoint/radius; no unverified Gauss."
+  },
+  "independent_fraction_replay": {
+    "script": "scripts/local_replay/nf416_original_I0_z_exact_independent_replay.py",
+    "workflow": ".github/workflows/nf416-original-I0-independent-replay.yml",
+    "standing": "PENDING verification until independently checked."
+  },
+  "remaining": {
+    "true_complete_original_z_cell6_one_sided_interval": "OPEN",
+    "true_complete_z_points_original_cells3_7": "OPEN",
+    "remaining_original_positive_cells_1_2_4_5_8": "OPEN",
+    "NF410_signed_principal_z_cross": "OPEN",
+    "complete_original_centered_scalar": "OPEN",
+    "NF404_acceptance_cap": "UNDECIDED",
+    "fourth_original_J242_perp_lowband": "OPEN",
+    "domain": "OPEN",
+    "infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "even_whole_Weil": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF417 source-correlated full original z pointwise values on cells3 and7, then one-sided source-cell interval/Taylor enclosures for all eight; signed NF410 p/z cross and full original NF404 centered scalar decide only with rigorous complete error."
+}
