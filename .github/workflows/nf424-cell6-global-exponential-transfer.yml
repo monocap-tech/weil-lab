@@ -1,0 +1,33 @@
+name: Weil-Lab NF424 original global cell6 exponential transfer exact
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf424_original_cell6_global_exponential_transfer_exact.py'
+      - 'notes/provisional/NF424_GLOBAL_ORIGINAL_CELL6_EXPONENTIAL_TRANSFER_20261031.md'
+      - '.github/workflows/nf424-cell6-global-exponential-transfer.yml'
+      - 'notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json'
+      - 'notes/data/provisional/NF406_original_prime_support_partition_exact.json'
+      - 'notes/data/provisional/NF423_original_entire_open_cell6_zthird_native.json'
+permissions:
+  contents: read
+jobs:
+  exact-source-global-representation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact original NF407 coefficients / NF406 seams / NF423 parent and uniform 2048-image tail
+        run: |
+          python3 -m py_compile scripts/local_replay/nf424_original_cell6_global_exponential_transfer_exact.py
+          python3 scripts/local_replay/nf424_original_cell6_global_exponential_transfer_exact.py \
+            --output artifacts/NF424_original_global_cell6_exponential_transfer_exact.json
+      - name: Preserve focused source-paid NF424 exact arithmetic receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF424-original-global-cell6-exponential-transfer-exact
+          path: artifacts/NF424_original_global_cell6_exponential_transfer_exact.json
+          if-no-files-found: error
