@@ -57,7 +57,8 @@
     "sm65_actual_original_22D_anisotropic_signed_schur": "SM65 genuine ACTUAL original physical source25 Schur with verified SM63 source3 strictly positive anchor [1,2,17], SM62 full25 signed LOWER and original SM41/42 whole-frequency UPPER; all 66 P3×R22 true signed cross entries bounded by PSD E=U-L source Cauchy. Derived source-specific anisotropic weighted row-Cauchy B^T A^-1 B <= diag_j(sum_i bij sum_k bik/ell) rather than SM61 coarse scalar gamma I, with full rational outward fees and exact 22D LOWER reference inertia. Whole original odd 470 Astar inverse/strong orthogonal remainder, W-ODD-NEG O1/O2/even/Weil CC27 RH OPEN.",
     "ef15_even_pivot_review": "2026-10-30 owner-requested explicit handoff from canonical NF401 odd frontier to independent even obligation. Odd P1 remains OPEN and paused with original 64 active checks preserved verbatim in notes/data/provisional/EF15_PAUSED_ODD_ACTIVE_CHECKS_20261030.json; per-update check selector is now even-only. Even has no open dependencies and historical scoped EF11/EF13/EF14 CI success; parity 469 is the new entry gate, not positivity closure. Priority numbers unchanged; this deliberate time-boxed P2 pivot does not imply P1 discharged. See notes/provisional/EF15_EVEN_B9_PARITY_AND_HANDOFF_20261030.md.",
     "ef16_frontier_scope": "EF16 extends accepted EF15 original b9 even cofinite to ACTUAL original physical source/pole coupling and exact positive-pole finite Schur correction; full pole-free signed finite+mixed source remains OPEN; neither old NF401 nor EF14 one-vector result implies theorem closure.",
-    "ef17_source_identifiability_gate": "EF17 confirms EF16's original source physical pole projection (accepted in corrected Actions #41148545925) is insufficient to identify corrected signed Schur sign without original pole-free signed B0 and resolvent. Finite exact countermodels are expressly abstract, not actual negative Weil witnesses. Real signed mixed/source residual required in EF18."
+    "ef17_source_identifiability_gate": "EF17 confirms EF16's original source physical pole projection (accepted in corrected Actions #41148545925) is insufficient to identify corrected signed Schur sign without original pole-free signed B0 and resolvent. Finite exact countermodels are expressly abstract, not actual negative Weil witnesses. Real signed mixed/source residual required in EF18.",
+    "ef18_original_signed_mixed_entry": "EF18 original SI10 even source e=1_I cos(2pi 37/64 x) pole-free signed source action has a strict n2 arithmetic-translated internal jump at B-ln2, isolated from all other original 7 prime-power endpoints; archimedean pseudolocality and source domain give B0(e,V469^perp)!=0. Focused arithmetic CI separate from analytic review. No actual inverse response or matrix PSD."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -863,8 +864,15 @@
       "kind": "source-information-limit-and-original-signed-mixed-dual-entry",
       "scope": "W-EVEN-FORM: abstract exact countermodels show EF16 physical pole projection alone cannot determine original signed Schur; typed genuine q0(F,V) Riesz dual residual target; no original B0 measured",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/393",
-      "verification": "EF17 analytic identities and exact Fraction abstract arithmetic regression committed; actual focused EF17 CI pending. This is a METHOD-information STOP, not original operator sign.",
+      "verification": "Original exact Fraction shared-data signed-mixed information-countermodels, rank-one STOP and dual residual gate; focused Actions #41148824872 SUCCESS incl. governance on 2026-10-30. Only abstract model regression; no original B0 measured in EF17.",
       "repo_path": "notes/provisional/EF17_ORIGINAL_EVEN_EFFECTIVE_POLE_INFO_STOP_20261030.md"
+    },
+    "EF18": {
+      "kind": "original-even-pole-free-arithmetic-mixed-map-nonvanishing",
+      "scope": "W-EVEN-FORM: actual original SI10 first even source, seven-prime/power shift interior nonzero jump, strict edge isolation. Analytic pseudolocality/form core implies original signed finite-to-infinite B0 nonzero; no quantitative inverse or Schur sign.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/394",
+      "verification": "Source-pinned exact-rational physical first-cluster, original 7 prime weight/phase and noncoincidence source CI pending. Analytic pseudolocal and domain implications require independent review.",
+      "repo_path": "notes/provisional/EF18_ORIGINAL_EVEN_ARITHMETIC_MIXED_JUMP_20261030.md"
     }
   },
   "obligations": [
@@ -1013,10 +1021,11 @@
         "EF14",
         "EF15",
         "EF16",
-        "EF17"
+        "EF17",
+        "EF18"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF17: verified EF16 physical pole projection is an INFORMATION STOP for corrected full Schur sign because the effective pole source t = P_V c-B0* C0^-1 Q_V c depends on unobserved original signed mixed B0. Exact adversarial shared-data Schur countermodels and residual-energy entry gate. EF18 must compute an ACTUAL original signed pole-free mixed q0(e_i,z), for a genuinely F=V469^perp trial z, plus certified C0-residual rho, source dual beta, or an actual strict pole-free Schur index gate. Do not refine pole-only projections again. Whole W-EVEN-FORM OPEN."
+      "next_action": "EF18: genuine original pole-free m(D) arithmetic n=2 shifted support jump at x=B-ln2 on SI10 first even source (37/64), with all other prime endpoints isolated and archimedean pseudolocal smoothing interior; conditional on analytic/form-domain audit, actual original source-to-F469 signed B0 is NONZERO. Exact rational shift/weight/phase CI pending; no quantitative Schur/inverse response. EF19 must quantify Q_V m(D)e or a valid explicit F trial and its full source/residual energy. W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1119,6 +1128,17 @@
         "scripts/validate_rpb108_ef17_even_effective_pole_info.py"
       ],
       "interpretation": "Exact Fraction abstract shared-pole-data positive/negative Schur countermodels; residual energy-dual source coupling formula. METHOD information STOP of pole-only projection; does not measure original signed B0 or prove even PSD.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF18-original-even-signed-seven-prime-interior-jump",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef18_original_even_signed_shift_jump.py"
+      ],
+      "interpretation": "Actual first SI10 even source and original signed n=2 prime-shift jump with all original prime-power edge collisions excluded. Conditional analytic nonzero original finite-to-infinite mixed form; no quantitative Schur PSD.",
       "cadence": "per-update"
     }
   ]
