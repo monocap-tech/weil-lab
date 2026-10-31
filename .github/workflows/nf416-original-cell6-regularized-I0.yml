@@ -1,0 +1,65 @@
+name: Weil-Lab NF416 original complete cell6 I0 and true pointwise z
+on:
+  push:
+    branches: [research/nf416-original-cell6-regularized-I0]
+    paths:
+      - '.github/workflows/nf416-original-cell6-regularized-I0.yml'
+      - 'scripts/local_replay/nf416_original_cell6_full_I0_regularized_taylor.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-I0-complete:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf416-original-cell6-regularized-I0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install outward Arb native interval runtime
+        run: pip install python-flint==0.8.0
+      - name: Original complete supported 246-source I0 and first true complete z point
+        run: |
+          python -m py_compile scripts/local_replay/nf416_original_cell6_full_I0_regularized_taylor.py
+          python -u scripts/local_replay/nf416_original_cell6_full_I0_regularized_taylor.py --precision 1024 --output /tmp/nf416_original_full_I0.json
+          python - <<'PY'
+          from fractions import Fraction as F
+          import json
+          p=json.load(open('/tmp/nf416_original_full_I0.json'))
+          assert p['original_physical_cell']==6 and p['original_physical_x']=='9/10'
+          assert p['original_242_selected_and_4_critical_source_preserved']
+          assert p['original_zero_singularity_removed_by_H_t_equals_tK_t']
+          assert p['entire_original_source_symmetric_plus_and_minus_translation_preserved']
+          assert p['original_I0_t_interval']==['0','2/5']
+          assert p['large_panel_count']==38
+          assert p['tiny_t_source_Taylor_degree']==530
+          assert p['source_taylor_degree_large']==300
+          assert F(p['original_tiny_t_integrated_truncation_upper_exact'])<F(1,10**60)
+          assert F(p['original_large_t_integrated_truncation_upper_exact'])<F(1,10**39)
+          assert F(p['original_I0_interval_width_exact'])<F(1,10**12)
+          assert F(p['original_true_full_z_cell6_pointwise_width_exact'])<F(1,10**12)
+          assert p['complete_original_z_pointwise_certified']
+          assert not p['complete_original_z_on_full_cell6_certified']
+          assert not p['signed_original_principal_z_cross_certified']
+          assert not p['original_complete_centered_scalar_certified']
+          assert not p['NF404_acceptance_gate_decided']
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          PY
+      - name: Custody reproducible original physical I0 and z point outward receipt
+        run: |
+          target=notes/data/provisional/NF416_original_cell6_full_I0_and_z_point_native.json
+          mkdir -p notes/data/provisional
+          if test -e "$target"; then cmp -s "$target" /tmp/nf416_original_full_I0.json
+          else cp /tmp/nf416_original_full_I0.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF416 original full 246-source I0 and true pointwise z interval, cellwide scalar open'
+            git pull --rebase origin research/nf416-original-cell6-regularized-I0
+            git push origin HEAD:refs/heads/research/nf416-original-cell6-regularized-I0
+          fi
