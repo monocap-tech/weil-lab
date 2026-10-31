@@ -13,6 +13,7 @@ a true original Schur sign, or an upper bound on all cofinite methods.
 import json,sys
 from fractions import Fraction as F
 from math import factorial
+from functools import lru_cache
 from pathlib import Path
 from validate_rpb108_si06_negative_band import B,ln_bounds,log_rational_bounds
 from validate_rpb108_ef24_original_even_edge_intervals import I,S,PI,trig_pi
@@ -25,13 +26,17 @@ T=2*B
 ZERO=I(0)
 ONE=I(S)
 
+@lru_cache(maxsize=1)
+def exp250_certificate():
+    return sum((F(250)**k/factorial(k) for k in range(500)),F(0))>10**100
+
 def rigor_exp_decay(x):
     """Exact real e^(-x); original exp engine below 250, strict tail above."""
     assert x.lo>0
     if x.hi<250*S: return exp_minus(x)
     assert x.lo>=250*S
     # exp(250)>10^100 by this *finite positive rational* Taylor sum.
-    assert sum((F(250)**k/factorial(k) for k in range(500)),F(0))>10**100
+    assert exp250_certificate()
     return I(0,S//10**100)
 
 def e_covariance_single(n,s0,ct,st):
