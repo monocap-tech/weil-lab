@@ -1,0 +1,58 @@
+name: Weil-Lab NF407 source-native fourth physical coefficients
+on:
+  push:
+    branches: [research/nf407-original-regularized-physical-quadrature]
+    paths:
+      - '.github/workflows/nf407-original-source-coefficient-export.yml'
+      - 'scripts/verify_nf407_original_fourth_coefficients_native.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-fourth-native-physical-coefficients:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf407-original-regularized-physical-quadrature
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source and 4096-bit original physical Arb environment
+        run: |
+          python3 -m py_compile scripts/verify_nf407_original_fourth_coefficients_native.py
+          pip install --only-binary=:all: python-flint==0.8.0
+      - name: Export actual original fourth source under giant NF369 shear
+        run: |
+          python3 -u scripts/verify_nf407_original_fourth_coefficients_native.py --output /tmp/NF407_original_fourth_physical_coefficients_native.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/NF407_original_fourth_physical_coefficients_native.json'))
+          assert d['original_dimension']==242
+          assert len(d['original_exact_native_raw_selected_coefficients_mid_radius'])==242
+          assert len(d['original_exact_native_original_four_critical_coefficients_mid_radius'])==4
+          assert len(d['original_source_critical_sine_frequencies'])==32
+          assert d['original_u4_endpoint_matches_nf405_exact_signed_bounds'] is True
+          assert d['original_exported_coefficients_are_4096bit_arb_not_float'] is True
+          assert d['original_whole_supported_centered_action_norm_integrated'] is False
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          PY
+      - name: Persist original source-native certified physical coordinates only
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json
+          if test -f "$target"; then
+            cmp -s "$target" /tmp/NF407_original_fourth_physical_coefficients_native.json
+          else
+            cp /tmp/NF407_original_fourth_physical_coefficients_native.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF407 authenticated original fourth 242+4 physical source high precision coordinate export'
+            git pull --rebase origin research/nf407-original-regularized-physical-quadrature
+            git push origin HEAD:refs/heads/research/nf407-original-regularized-physical-quadrature
+          fi
