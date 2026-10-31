@@ -902,7 +902,7 @@
     "EF22": {
       "kind": "exact-original-seven-prime-even-FIR-self-energy-cancellation",
       "scope": "W-EVEN-FORM: ORIGINAL 7 prime-power n2,3,4,5,7,8,9 shifted EF21 even physical fixed test supports provably nonoverlap (13139 exact Fraction log/shift comparisons); q_prime(f,f)=0 exactly, denominator E=arch signed energy. Mixed q_prime(e,f) does not vanish, reduces exactly to finite physical cutoff sums with <=56 partial bells. Actual M/E arch not interval-integrated.",
-      "pr": "https://github.com/monocap-tech/weil-lab/pull/401",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/403",
       "verification": "Focused original source Fraction 13139 nonoverlaps, native 469-source/geometry and prime mixed formula in new script. CI PENDING; original form/domain independent review OPEN; no normalized Schur.",
       "repo_path": "notes/provisional/EF22_ORIGINAL_EVEN_PRIME_ENERGY_VANISH_20261031.md"
     }
