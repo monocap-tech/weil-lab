@@ -163,6 +163,34 @@ def noncertifying_filter_conditioning_pilot(centers,degrees):
     return totals
 
 
+
+def fixed_step_localization_method_stop():
+    """Exact dimensionless scaling constants; analytic boundedness audit.
+
+    Fix h and its original 469-source FIR F_h. The original signed
+    physical gradient g=P_I m(D)e has finitely many translated jumps;
+    its FIR translate G=F_h g has locally bounded one-sided values
+    at +/-a by original log-arch pseudolocality. Let |G|<=C on the
+    shrinking supports (the value of C is NOT calculated).
+    For the positive cosine-six bells:
+      ||psi_r||_1=5r/8,
+      ||F_h psi_r||_2^2>=(231/512)r,
+      |q0(e,F_h psi_r)| <= C*(5/8)r.
+    Since original cofinite q0>=mu||.||², the actual normalized
+    variational Schur trial obeys
+       |q0(e,f_r)|²/q0(f_r,f_r)
+           <= (200/231)*(C²/mu)*r ->0.
+    This is a METHOD STOP for r->0 at FIXED h; no claim about
+    the explicit r=1/65536 sign, positive cofinite Schur, or C.
+    """
+    mass_factor=F(5,8)
+    physical_floor=F(231,512)
+    coefficient=mass_factor**2/physical_floor
+    assert coefficient==F(200,231)
+    return coefficient
+
+
+
 def run():
     custody=json.loads((ROOT/"research/obligations.json").read_text())
     obligations={ob["id"]:ob for ob in custody["obligations"]}
@@ -174,6 +202,7 @@ def run():
     centers,degrees=authentic_source_replay()
     pilot=noncertifying_filter_conditioning_pilot(centers,degrees)
     mass,norm=bell_transform_identity()
+    scaled_bound=fixed_step_localization_method_stop()
     a,b,phase_lo,phase_hi,normlower=physical_support_and_disjointness()
     print("EF21 native ORIGINAL SI10 clusters:",len(centers),
           "even b9 generators",sum(degrees),"step",H,
@@ -194,6 +223,10 @@ def run():
           "*S_h(xi) dxi;",
           "E=integral_R m(xi) |H_r(xi)cos(2pi a xi)S_h(xi)|² dxi.",
           "S_h ORIGINAL 469-factor signed cosine product.",flush=True)
+    print("EF21 fixed-h shrinking-bell normalized Schur METHOD STOP:",
+          "R_r<= (",scaled_bound,")*(C²/mu)*r ->0 as r->0,"
+          " C is unmeasured actual locally bounded signed gradient."
+          " No fixed-r sign or numeric Schur lower.",flush=True)
     print("EF21 OPEN: actual original signed numerical M and E",
           "are NOT evaluated or interval-certified. E>=mu||f||²",
           "conditionally on original cofinite analytic proof.",
