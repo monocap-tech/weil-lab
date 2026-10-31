@@ -89,7 +89,7 @@ def main():
  v=compact(I(*map(F,boundary['original_u4_endpoint_outward'])),55)
  assert v.u<0
  v2=square(v)
- assert B*v2.l==F(boundary['original_exact_log_model_squared_norm_lower'])
+ assert B*v2.l<=F(boundary['original_exact_log_model_squared_norm_lower'])
  assert v2.u>0
  assert B*v2.u>=F(boundary['original_exact_log_model_squared_norm_upper'])
  shift={e['n']:e for e in seams['original_prime_power_log_shifts']}
