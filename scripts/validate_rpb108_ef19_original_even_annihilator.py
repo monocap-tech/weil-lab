@@ -126,6 +126,30 @@ def isolate_jump():
     return entry,limit_lo,limit_hi
 
 
+def normalized_schur_method_stop():
+    # theta_epsilon has amplitude epsilon^937 and two reflected,
+    # disjoint lobes of width epsilon. P(D) is EVEN and MONIC
+    # order 938: D^938 theta_epsilon amplitude epsilon^-1.
+    # Hence its squared L2 norm scales epsilon^(-1).
+    # The next highest derivative order is 936, with squared
+    # L2 norm scaling epsilon^(+3), a four-power separation.
+    # Lower-order coefficients are fixed finite constants
+    # from the original SI10 107 clusters, independent of epsilon.
+    leading_sq_exp=2*(JET_ORDER-DEGREE)+1
+    next_sq_exp=2*(JET_ORDER-(DEGREE-2))+1
+    assert leading_sq_exp==-1 and next_sq_exp==3
+    assert next_sq_exp-leading_sq_exp==4
+    # The flat compact bump theta is not a polynomial, so
+    # theta^(938) is not identically zero, giving c>0:
+    # ||f_epsilon||_2^2 ~ c/epsilon.
+    # On original F469, q0(f,f)>=mu||f||_2^2.
+    # Since q0(e,f_epsilon)->-J, the actual variational
+    # inverse-Schur lower |q0(e,f)|^2/q0(f,f)->0.
+    # The jump detector CANNOT yield a useful uniform lower
+    # by taking epsilon smaller: method-class localization STOP.
+    return leading_sq_exp,next_sq_exp
+
+
 def validate():
     custody=json.loads((ROOT/"research/obligations.json").read_text())
     ob={x["id"]:x for x in custody["obligations"]}
@@ -137,6 +161,7 @@ def validate():
     assert "EF19" in ob["W-EVEN-FORM"]["evidence"]
     c,p=source_contract()
     n,deg=annihilator_algebra(p)
+    leading,next_power=normalized_schur_method_stop()
     source,llo,lhi=isolate_jump()
     print("EF19 native actual SI10 original even carrier:",
           len(c),"clusters",n,"orders; real monic annihilator degree",
@@ -150,6 +175,11 @@ def validate():
           float(llo),float(lhi),">1/4; hence for some sufficiently"
           " small unspecified epsilon, |q0(e,f_epsilon)|>1/8",
           flush=True)
+    print("EF19 exact 938-derivative normalized-energy METHOD STOP:",
+          "leading ||f_epsilon||_2^2 exponent",leading,
+          "next-order exponent",next_power,
+          "so original cofinite Schur variational quotient ->0",
+          "as epsilon->0; NO numerical inverse correction",flush=True)
     print("EF19 SOURCE ALGEBRA PASS (conditional analytic):"
           " even compact source annihilator P(D) of order 938"
           " produces an explicit genuine F469 test family,"
