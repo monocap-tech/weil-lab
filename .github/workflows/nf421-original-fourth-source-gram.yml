@@ -1,0 +1,59 @@
+name: NF421 original fourth source analytic Gram and local third derivative
+on:
+  push:
+    branches: [research/nf421-local-correlated-zsecond]
+    paths:
+      - '.github/workflows/nf421-original-fourth-source-gram.yml'
+      - 'scripts/local_replay/nf421_original_complete_fourth_source_gram.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-fourth-gram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf421-local-correlated-zsecond
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Native Arb installation
+        run: pip install python-flint==0.8.0
+      - name: Full original fourth derivative Gram and third x derivative error
+        run: |
+          python -m py_compile scripts/local_replay/nf421_original_complete_fourth_source_gram.py
+          python -u scripts/local_replay/nf421_original_complete_fourth_source_gram.py --output /tmp/nf421_fourth.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p=json.load(open('/tmp/nf421_fourth.json'))
+          assert p['original_complete_242_selected_plus_four_critical_generators']
+          assert p['original_all_selected_critical_correlations_retained']
+          assert p['original_pole_fourth_derivative_sinh_included']
+          assert p['original_true_4th_derivative_source_basis_count']>=200
+          assert F(p['original_true_u4_fourth_derivative_L2_upper_power2'])>0
+          assert F(p['original_complete_z_third_x_derivative_uniform_upper_exact'])>0
+          assert p['original_complete_z_third_x_derivative_original_interval']==['899/1000','901/1000']
+          assert len(p['original_NF420_exact_second_to_third_arch_cancellation'])>40
+          assert p['original_true_seven_signed_primes_third_derivative_included_in_bound']
+          assert not p['original_complete_z_second_x_jet_at_9over10_certified']
+          assert not p['true_source_local_z_second_derivative_enclosure_certified']
+          assert not p['original_NF404_entire_centered_scalar_certified']
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          PY
+      - name: Preserve full original source Gram
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF421_original_fourth_source_gram_and_z_third_bound_native.json
+          cp /tmp/nf421_fourth.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF421 original fourth source Gram and third z derivative bound; full scalar open'
+            git pull --rebase origin research/nf421-local-correlated-zsecond
+            git push origin HEAD:refs/heads/research/nf421-local-correlated-zsecond
+          fi
