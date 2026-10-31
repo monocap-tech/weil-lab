@@ -1,0 +1,66 @@
+name: Weil-Lab NF431 original cell6 exact P511 signed partial polynomial
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf431_original_cell6_P511_partial_contraction_exact.py'
+      - '.github/workflows/nf431-original-cell6-P511-exact-partial.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-source-sha-pinned-512-mode-partial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch accepted original NF428/NF429/NF431 exact source interval artifacts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/low artifacts/high artifacts/p artifacts/j
+          gh run download 41248984553 --repo "$GITHUB_REPOSITORY" \
+            --name NF428-original-cell6-native-256-chebyshev-coefficient-intervals --dir artifacts/low
+          gh run download 41251524378 --repo "$GITHUB_REPOSITORY" \
+            --name NF431-original-cell6-native-high-256-through-511 --dir artifacts/high
+          gh run download 41248984553 --repo "$GITHUB_REPOSITORY" \
+            --name NF428-original-cell6-signed-p-chebyshev-moments-1500 --dir artifacts/p
+          gh run download 41250121362 --repo "$GITHUB_REPOSITORY" \
+            --name NF429-original-cell6-2999-raw-Chebyshev-moments --dir artifacts/j
+      - name: Exact Fraction original signed P511 contraction, full source hashes and 753 missing modes explicit
+        run: |
+          python3 -m py_compile scripts/local_replay/nf431_original_cell6_P511_partial_contraction_exact.py
+          python3 scripts/local_replay/nf431_original_cell6_P511_partial_contraction_exact.py \
+            --z artifacts/low/NF428_original_cell6_native_cheb256.json \
+            --z-high artifacts/high/NF431_original_cell6_cheb_coefficients_256_to_511.json \
+            --p artifacts/p/NF428_original_cell6_signed_p_cheb_moments_1500.json \
+            --j artifacts/j/NF429_original_cell6_raw_chebyshev_moments_2999.json \
+            --output artifacts/NF431_original_P511_exact_signed_partial.json
+      - name: Reject partial-vs-original complete scalar promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p='artifacts/NF431_original_P511_exact_signed_partial.json'
+          a=json.load(open(p))
+          assert a['pass']=='NF431'
+          assert a['original_partial_z_modes']==512
+          assert a['original_required_z_modes_for_true_cell6']==1265
+          assert a['original_missing_z_modes']==753
+          for key in ['original_P511_pz_outward_interval','original_P511_squared_outward_interval',
+                      'original_P511_nonprincipal_signed_2z2_plus_4pz_outward_interval']:
+              lo,hi=map(F,a[key]);assert lo<=hi and hi-lo<F(1,10**40)
+          assert F(a['original_P511_nonprincipal_signed_2z2_plus_4pz_outward_interval'][1])<0
+          assert not a['actual_original_cell6_integral_certified']
+          assert not a['original_NF404_full_scalar_decided']
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          print('NF431 exact-original P511 partial PASS; complete true z integral remains OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF431-original-P511-exact-signed-partial-NOT-true-z-integral
+          path: artifacts/NF431_original_P511_exact_signed_partial.json
+          if-no-files-found: error
