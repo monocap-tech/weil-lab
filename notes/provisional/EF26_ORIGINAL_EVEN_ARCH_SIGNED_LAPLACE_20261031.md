@@ -58,3 +58,26 @@ No main merge. Whole original even/odd/full Weil/RH OPEN.
 The FIRST focused [EF26 Actions #41227005306](https://github.com/monocap-tech/weil-lab/actions/runs/41227005306) **FAILED** when the source first-term Λ(λ₀) was smaller than the fixed-point lattice 10^-340: the native double-log pilot gave log10 Λ(λ₀)≈-723.3838, and the outward interval [0,positive] could not prove the mathematically known positive source sign. This is a finite-representation resolution failure, not a proof that Λ or any term is zero. Failure retained.
 
 **Repair:** multiply each of the exactly 469 positive real-Laplace original FIR factors by exact rational 100. Every computed source Λ̃(λ)=100^469 Λ(λ), and every computed mixed summand and partial sum is therefore exactly **100^469 times its original value**. A common strictly positive multiplier preserves ALL signs and comparisons of a finite partial with zero. Neither the source f nor the original Weil form is rescaled in mathematics; this is only the stored interval number. This removes the 10^-723 underflow without inventing additional digits or altering the genuine 107-center SI10 frequencies. The rescaled revised native CI run must pass before claiming any finite signed arch result.
+
+## Source acceptance: the complete original mixed sign and a microscopic inverse correction
+
+The corrected real-Laplace source [Actions #41227286319](https://github.com/monocap-tech/weil-lab/actions/runs/41227286319), job #124613968674, **PASSED** all exact outward source intervals and manifest/governance. The FIRST run #41227005306 failed because native unscaled Laplace Λ0~10^-723 underflowed the 10^-340 integer grid; no false zero was accepted. In the corrected native source, ALL terms are uniformly rescaled by exact positive 100^469.
+
+The following are outward-certified values of **100^469 times actual original M_arch terms**, not unscaled numbers:
+- m0 strictly positive, around +8.5689058828e208,
+- m1 strictly positive, around +5.4202924285e210,
+- m2 strictly negative, around -8.8193484315e213,
+- signed partial m0+m1+m2 strictly negative, around **-8.8138424500e213**.
+
+The original SI06/14 source phase proves every term m>=2 negative, so the entire unscaled true original arch mixed is **M_arch<0**, subject to the documented independent analytic physical digamma-source equality and domain audit. Parent EF24 independently has true original Mprime<0. Hence the complete actual original **pole-free mixed scalar** on this one fixed even F469 test satisfies M=M_arch+Mprime<0. This discharges the **SIGN of that particular complete original signed mixed coupling**; it does not discharge finite corrected Schur PSD.
+
+An additional exact original source and norm argument (new EF26 source regression PENDING CI) gives a MICROSCOPIC but strictly quantitative first-source inverse-Schur variational correction:
+
+- EF24 actual outward source Mprime<-10^184, hence M=March+Mprime<-10^184;
+- EF25 original E=qarch(f,f)<30||f||²;
+- EF21 exact ||psi||²=231r/1024 and original true source FIR bound ||Fh||<=4^469 imply E<30*(231r/1024)*4^938 <10^561;
+- therefore genuine pole-free original source/cofinite |M|²/E>10^368/10^561=**10^-193**.
+
+The new source script independently reruns EF24 outward intervals, enforces the finite arch partial negative, and checks this last rational inequality. This lower is deliberately extremely weak; no claim of a usable full finite 469D Schur sign, even-sector theorem, original even pole-reinserted Schur or RH. The one-source inverse correction must be compared with the original finite block and positive even pole rank-one in further work.
+
+**EF27 next:** promote only if the new regression is successful. Investigate a *conditioned*, substantially sharper source-normalized original M/E estimate, or prove why this universal 469-factor FIR test is intrinsically unsuitable for a decisive corrected Schur sign. Avoid a second universal-frequency mesh or untyped arithmetic push. All parent and new source/domain analytic audit remains OPEN.
