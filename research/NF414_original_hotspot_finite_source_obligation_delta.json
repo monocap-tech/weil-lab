@@ -1,0 +1,40 @@
+{
+  "pass": "NF414",
+  "date": "2026-10-31",
+  "canonical_obligation": "W-ODD-NEG",
+  "standing": "PARTIAL ORIGINAL-PHYSICAL SOURCE CERTIFICATION; NESTED ARCH INTEGRALS OPEN",
+  "source": "unchanged original NF370 supported fourth u4, NF407 242 selected + 4 critical, B=11/10, all seven prime powers and NF404 centered pole",
+  "native_source": "notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json",
+  "accepted": {
+    "original_source_4096bit_hotspot_three_values": true,
+    "true_original_prime_branches_seven_each": true,
+    "source_coefficient_radii_paid": true,
+    "finite_arch_source_part_certified": true,
+    "signed_prime_continuous_source_part_certified": true,
+    "source_radius_fraction": "embedded in NF414 native receipt",
+    "original_three_rational_hotspots": {
+      "3": "7/20",
+      "6": "9/10",
+      "7": "26/25"
+    },
+    "rigorous_rational_z_known_finite_values": "see NF414 native JSON; each finite value excludes I0/I1",
+    "focused_native_ci": "https://github.com/monocap-tech/weil-lab/actions/runs/41226734514",
+    "initial_failed_run": "https://github.com/monocap-tech/weil-lab/actions/runs/41226654206"
+  },
+  "open": {
+    "true_original_I0_I1_pointwise_integrals": "OPEN",
+    "true_complete_z_at_any_hotspot_point": "OPEN",
+    "true_complete_z_on_original_three_cells": "OPEN",
+    "all_other_five_cells": "OPEN",
+    "NF410_original_signed_principal_z_cross": "OPEN",
+    "complete_original_centered_scalar": "OPEN",
+    "NF404_cap": "UNDECIDED",
+    "original_J242_perp_lowband": "OPEN",
+    "complete_odd_operator_domain": "OPEN",
+    "infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "RH": "OPEN"
+  },
+  "method_stop": "NF413 certified near-t I0 in L2 cannot be promoted to pointwise error; NF414 finite-source exact values are not complete z. Significant finite-part order-one cancellation still required by I0+I1.",
+  "next": "NF415 certify original x/t source-integral remaining I0+I1 at x=7/20,9/10,26/25 with explicit analytical quadrature error, then one-sided cellwise Taylor intervals and all eight full scalar."
+}
