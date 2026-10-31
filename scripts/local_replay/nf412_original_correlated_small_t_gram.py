@@ -5,7 +5,7 @@ All 4 original critical source coefficients are combined in exact Fraction
 BEFORE any absolute bound. The 32 sine features + odd pole are then contracted
 against their analytic full physical second-derivative Gram at 4096-bit Arb.
 
-Controls only the small-t omitted I0 arch action in L2, not the rest of the
+Does NOT control true u4 curvature: essential 242 selected terms are absent from Gram.
 nested integral or the complete continuous z.
 """
 import argparse,hashlib,json,sys
@@ -118,7 +118,7 @@ def main():
  eps=F(9,10**17)
  out={
  "pass":"NF412",
- "standing":"SOURCE-CORRELATED 4096-BIT ORIGINAL CRITICAL CURVATURE GRAM; TRUE u4 SECOND-DERIVATIVE RADIUS PAID; CERTIFIED NEAR-t ARCH I0 L2",
+ "standing":"FOUR-CRITICAL ONLY GRAM DIAGNOSTIC; MISSING ORIGINAL 242 SELECTED CROSS AND NO TRUE SMALL-t SOURCE BUDGET",
  "original_nf407_native_source_sha256":ssha,
  "original_nf374_fourth_exterior_curvature_sha256":csha,
  "original_nf408_source_first_derivative_radius_sha256":rsha,
@@ -129,13 +129,15 @@ def main():
  "original_original_exterior_w4_second_derivative_L2_squared_under":"9e-12",
  "original_native_second_derivative_radius_sup_S2_exact":str(S2),
  "original_true_second_derivative_source_radius_paid":True,
+ "missing_242_selected_critical_cross_covariance":True,
+ "former_true_u4_curvature_interpretation_invalid":True,
  "original_midpoint_u4_second_derivative_L2_upper_integer":str(bound),
  "original_small_t_cutoff_h_exact":str(h),
  "original_midpoint_near_t_zero_arch_I0_L2_upper":str(small),
  "conditional_midpoint_near_t_bound_below_eps_quarter":small<eps/4,
  "original_native_source_second_derivative_radius_paid":True,
- "original_true_u4_second_derivative_L2_bound_certified":True,
- "original_true_near_t_L2_bound_certified":True,
+ "original_true_u4_second_derivative_L2_bound_certified":False,
+ "original_true_near_t_L2_bound_certified":False,
  "original_remaining_arch_t_quadrature_certified":False,
  "original_z_cell_6_3_7_interval_certified":False,
  "original_full_centered_scalar_certified":False,
@@ -145,6 +147,6 @@ def main():
  dest=Path(a.output);dest.parent.mkdir(parents=True,exist_ok=True)
  dest.write_text(json.dumps(out,indent=2)+"\n")
  print("NF412 midpoint-correlated critical curvature squared:",str(full)[:85])
- print("NF412 TRUE source u4'' L2 upper",bound,"small-t kernel charge",float(small))
- print("NF412 source 2nd derivative radius paid; remaining t arch, z and scalar UNDECIDED")
+ print("NF412 INVALID critical-only surrogate upper",bound,"small-t kernel charge",float(small))
+ print("NF412 242+4 source correlation missing: true tiny-t arch, z and scalar UNDECIDED")
 if __name__=="__main__":main()
