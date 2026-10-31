@@ -1,0 +1,62 @@
+name: Weil-Lab NF414 native original hotspot finite continuous source
+on:
+  push:
+    branches: [research/nf414-original-hotspot-pointwise-source-arch]
+    paths:
+      - '.github/workflows/nf414-hotspot-finite-continuous-source.yml'
+      - 'scripts/local_replay/nf414_original_hotspot_finite_continuous_native.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  finite-source-hotspots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf414-original-hotspot-pointwise-source-arch
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Native original interval arithmetic
+        run: pip install python-flint==0.8.0
+      - name: Original 242+4 physical source finite regularized arch and signed seven prime translations
+        run: |
+          python -m py_compile scripts/local_replay/nf414_original_hotspot_finite_continuous_native.py
+          python -u scripts/local_replay/nf414_original_hotspot_finite_continuous_native.py --output /tmp/NF414_original_hotspot_finite_continuous.json
+          python - <<'PY'
+          from fractions import Fraction as F
+          import json
+          r=json.load(open('/tmp/NF414_original_hotspot_finite_continuous.json'))
+          assert [v["cell"] for v in r["hotspot_points"]]==[3,6,7]
+          assert [v["rational_physical_x"] for v in r["hotspot_points"]]==["7/20","9/10","26/25"]
+          assert r['source_full_original_seven_prime_true_branch_pieces_certified']
+          assert r['arch_finite_continuous_part_at_three_hotspot_interiors_certified']
+          assert F(r['original_physical_source_coefficient_uniform_error_exact'])<F(1,10**700)
+          for cell in r["hotspot_points"]:
+            assert len(cell['all_seven_true_prime_branches'])==7
+            assert F(cell['original_z_finite_known_part_source_paid_rational_interval'][0])<F(cell['original_z_finite_known_part_source_paid_rational_interval'][1])
+            assert cell['I0_I1_nested_arch_integrals_certified'] is False
+            assert cell['true_continuous_original_z_pointwise_certified'] is False
+          assert r['original_remaining_arch_I0_I1_integrated'] is False
+          assert r['actual_true_continuous_z_on_any_hotspot_cell_certified'] is False
+          assert r['full_original_centered_scalar_certified'] is False
+          assert r['NF404_gate_decided'] is False
+          assert r['W_ODD_NEG']==r['RH']=='OPEN'
+          PY
+      - name: Durable source-native original hotspot finite receipt, true z OPEN
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF414_original_hotspot_finite_continuous_native.json
+          if test -e "$target"; then cmp -s "$target" /tmp/NF414_original_hotspot_finite_continuous.json
+          else cp /tmp/NF414_original_hotspot_finite_continuous.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF414 original finite physical z hotspot native receipt, nested integrals OPEN'
+            git pull --rebase origin research/nf414-original-hotspot-pointwise-source-arch
+            git push origin HEAD:refs/heads/research/nf414-original-hotspot-pointwise-source-arch
+          fi
