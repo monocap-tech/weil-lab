@@ -1,0 +1,63 @@
+name: NF421 original complete second x jet true signed source
+on:
+  push:
+    branches: [research/nf421-local-correlated-zsecond]
+    paths:
+      - '.github/workflows/nf421-original-second-xjet.yml'
+      - 'scripts/local_replay/nf421_original_complete_second_xjet_native.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-zsecond-jet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf421-local-correlated-zsecond
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Native Arb installation
+        run: pip install python-flint==0.8.0
+      - name: Full original second x jet I0 I1 seven signed primes
+        run: |
+          python -m py_compile scripts/local_replay/nf421_original_complete_second_xjet_native.py
+          python -u scripts/local_replay/nf421_original_complete_second_xjet_native.py --precision 1024 --output /tmp/nf421_second.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p=json.load(open('/tmp/nf421_second.json'))
+          assert p['physical_cell']==6 and p['physical_x']=='9/10'
+          assert p['original_true_complete_242_selected_4_critical_source']
+          assert p['original_full_I0_u_second_t_bounds']==['0','2/5']
+          assert p['original_full_I1_u_second_t_bounds']==['2/5','4']
+          assert p['original_full_u_second_I0_t0_analytic_H']
+          assert p['original_u_second_tiny_order']==530
+          assert p['original_u_second_regular_source_order']==300
+          assert p['original_u_second_I0_panels']==38
+          assert p['original_u_second_I1_panels']==360
+          assert len(p['original_seven_signed_prime_derivative_branches'])==7
+          assert p['original_true_moving_double_arch_cancellation_used']
+          assert p['original_NF404_dyadic_center_second_derivative_used']
+          assert F(p['true_original_complete_zsecond_at_x9over10_width_exact'])<F(1,10**26)
+          assert p['original_true_pointwise_second_x_jet_certified']
+          assert not p['original_zsecond_local_x_uniform_interval_certified']
+          assert not p['original_NF404_entire_scalar_certified']
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          PY
+      - name: Preserve full original complete second x jet
+        run: |
+          target=notes/data/provisional/NF421_original_cell6_complete_second_xjet_native.json
+          mkdir -p notes/data/provisional
+          cp /tmp/nf421_second.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF421 true original complete z second x jet, original scalar open'
+            git pull --rebase origin research/nf421-local-correlated-zsecond
+            git push origin HEAD:refs/heads/research/nf421-local-correlated-zsecond
+          fi
