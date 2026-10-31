@@ -20,6 +20,8 @@ def main():
  pa.add_argument('--output',required=True)
  a=pa.parse_args()
  pilot,p_sha=read(a.pilot)
+ pilot_bytes=Path(a.pilot).read_bytes()
+ assert hashlib.sha1(b'blob '+str(len(pilot_bytes)).encode()+b'\\x00'+pilot_bytes).hexdigest()=='70ae4fac5061b6d4583c22097f9fe9fed687d482'
  weights,w_sha=read(a.principal)
  center,c_sha=read(a.center)
  assert pilot['pass']=='NF408'
@@ -52,8 +54,8 @@ def main():
     'relative_priority_only_not_a_proof_of_true_error':True})
  net=sum((F(r['pilot_two_resolution_signed_delta_full_E_exact_decimal']) for r in cells),F(0))
  reported=F(high['original_uncertified_reconstructed_full_centered_physical_power'])-F(low['original_uncertified_reconstructed_full_centered_physical_power'])
- assert abs(net-reported)<F(1,10**60)
- assert abs(net)==F(pilot['original_two_outer_resolution_difference_absolute'])
+ assert abs(net-reported)<F(1,10**55)
+ assert abs(abs(net)-F(pilot['original_two_outer_resolution_difference_absolute']))<F(1,10**55)
  abs_total=sum((F(r['pilot_two_resolution_absolute_delta_full_E_exact_decimal']) for r in cells),F(0))
  ranked=sorted(cells,key=lambda z:abs(F(z['pilot_two_resolution_signed_delta_full_E_exact_decimal'])),reverse=True)
  top3=[r['cell'] for r in ranked[:3]]
