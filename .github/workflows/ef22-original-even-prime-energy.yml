@@ -1,0 +1,26 @@
+name: EF22 original even seven-prime energy exact vanishing
+on:
+  push:
+    branches: [research/ef22-original-even-prime-energy-exact-vanish]
+  pull_request:
+    branches: [research/ef21-original-even-fixed-cosine-bell-scalar-signed]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-seven-prime-energy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original source interval-lattice prime self-energy exact cancellation
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef22_original_even_prime_energy_vanish.py
+          python scripts/validate_rpb108_ef22_original_even_prime_energy_vanish.py
+      - name: Canonical original even obligation verification
+        run: python scripts/verify_obligation_manifest.py
