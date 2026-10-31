@@ -1,0 +1,26 @@
+name: EF24 original signed n5 n7 outward source edge intervals
+on:
+  push:
+    branches: [research/ef24-original-even-prime-edge-outward-intervals]
+  pull_request:
+    branches: [research/ef23-original-even-357-support-prefix-reduction]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-signed-prime-edge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Authentic SI10 107 source n5/n7 Chebyshev interval computation
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef24_original_even_edge_intervals.py
+          python scripts/validate_rpb108_ef24_original_even_edge_intervals.py
+      - name: Canonical even obligation source governance
+        run: python scripts/verify_obligation_manifest.py
