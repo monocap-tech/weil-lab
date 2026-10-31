@@ -76,7 +76,7 @@ def gauss_integral(fn,left,right,step,n):
  # evaluate them with high precision and compare independent n settings.
  from numpy.polynomial.legendre import leggauss
  nodes,weights=leggauss(n)
- X=[mp.mpf(repr(z)) for z in nodes]
+ X=[mp.mpf(format(float(z),'.17g')) for z in nodes]
  W=[mp.mpf(repr(z)) for z in weights]
  segments=max(1,int(mp.ceil((right-left)/step)))
  acc=mp.mpf(0)
