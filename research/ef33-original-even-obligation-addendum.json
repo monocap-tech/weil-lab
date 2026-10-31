@@ -1,0 +1,24 @@
+{
+  "checkpoint": "EF33",
+  "parent": "EF32",
+  "active_obligation": "W-EVEN-FORM",
+  "standing": "source-certified mathematical derivation, original-form domain and Poisson bridge independently auditable",
+  "parent_head": "7570bee9ad8147772eb576bcf3a51acb295d20f4",
+  "original_source": "SI10 107 clusters, 469 even sources, authentic 7 prime powers, true quarter digamma, genuine cosh pole",
+  "original_bell_count": 471,
+  "original_bell_lobes": 942,
+  "source_ci": "https://github.com/monocap-tech/weil-lab/actions/runs/41240335326",
+  "original_arch_lower": "> 6.1752599 * ||f||^2 on 471-bell span",
+  "original_prime_lower": "> -1.929655 * ||f||^2 on 471-bell span",
+  "original_complete_signed_coercivity": "> 21/5 * ||f||^2 on all 471-bell directions",
+  "original_two_source_restricted_schur_lower": "> 1/500, first SI10 source and exact 470-row kernel bell f",
+  "dependency": "EF30 rank470/kernel1; EF31 exact Chebyshev kernel; EF32 original signed gtilde² and source A_even",
+  "limitations": [
+    "No positivity proof for full 469 SI10 exceptional subspace",
+    "No original infinite complement source cross bound",
+    "No W-EVEN-FORM acceptance",
+    "Odd paused, whole Weil/RH open",
+    "Independent SI06 digamma/Form-core/Poisson review open"
+  ],
+  "next": "EF34 complete source-to-cofinite Schur/cross acceptance or scope-typed method stop"
+}
