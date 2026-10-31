@@ -55,6 +55,18 @@ It follows that
 
 The original pole-free signed mixed form `B_0:e -> [f mapsto q_0(e,f)]` therefore **does not vanish on F**. Explicitly, because the even test-function form core is dense in physical even L2 and finite orthogonal projection `P_V` preserves the original form domain, there exists a genuine even original form-domain `f=(I-P_V)phi in F` with `q_0(e,f)=<g,f> !=0`. This is an **existence result about the actual signed source-to-infinite coupling**, not a numeric Schur bound or a computed Ritz solution.
 
+### Strict but nonquantitative original Schur correction
+
+Under the same original closed-form/cofinite Riesz assumptions, the nonzero true mixed functional `b_e(w)=q_0(e,w)` on `F` has a nonzero Riesz representative `h_e∈F`, `q_0(h_e,w)=b_e(w)` for all `w∈F`. Positivity of the actual original cofinite `C_0` gives
+
+`q_0(h_e,h_e)=<b_e,C_0^(-1)b_e> >0`.
+
+Thus **the actual pole-free signed Schur correction on this specific original source is strictly positive** (and is subtracted):
+
+`S_0[e]=q_0(e,e)-<b_e,C_0^(-1)b_e> < q_0(e,e)`.
+
+This is genuine original-operator strict coupling information, not a substitute for the missing numerical lower/upper or a claim that `S_0[e]<0`. The even positive-pole update `+alpha|t><t|` must still be combined before full even sign acceptance.
+
 **Analytic review gate:** a focused CI can check the actual original source center, phase interval, prime coefficients, and isolation with exact fractions. It does not machine-prove pseudolocality or the form-core/density and closedness premises. Those are stated here for independent analytic assessment. If analytic audit does not accept them, label the full original B0 nonvanishing consequence CONDITIONAL, while retaining the certified arithmetic jump in its stated scope.
 
 ## 4. Correct stopping line and next genuinely quantitative work
