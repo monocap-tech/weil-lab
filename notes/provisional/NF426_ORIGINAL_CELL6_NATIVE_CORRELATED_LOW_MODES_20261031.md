@@ -71,3 +71,14 @@ The focused CI explicitly rejects a resulting coefficient interval width >=10^-2
 - **Always OPEN:** remaining coefficients through n=2048, complete real cell6 polynomial interval table, signed cell6 `pz` and `z²`, other seven cells, complete NF410/NF404 scalar, original fourth exterior J242 upper, `W-ODD-NEG`, even/whole Weil, domain/infinite inverse and RH.
 
 No historical source replacement or merge to main.
+
+
+## Focused native result — accepted prefix, not whole-cell integration
+
+**NF426 [Actions #41244885267 — SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41244885267) at exact research commit `990856c097444a5d488c24310b0daeddcb804e3a`.** The 2048-bit Arb run used all 99 distinct original frequency groups reconstructed from the 242 selected plus four original critical generators. Both original 2048-image endpoint families were summed source-correlated (common odd amplitude); source-native polygamma/Chebyshev arithmetic and source/analytic tail charges completed. **All four n=0,1,2,3 original fixed-cell-6 Chebyshev coefficient intervals passed the strict width <10^-25 acceptance check.**
+
+Independently, the complete analytic finite generating-function value at original physical `x=9/10` was recomposed in the **same run** from full-line source, both original image families, five physical original signed prime translations, actual endpoint logarithm and exact original centering, and its `<10^-45`-widened interval overlapped the **previously accepted separate physical I0/I1 native integral enclosure NF416**. That is a genuine cross-method check on the global transfer, not merely numerical coefficient self-consistency.
+
+The full native JSON artifact (including exact rational outward intervals) is retained by the workflow as `NF426-original-cell6-2048-image-native-cheb-low-mode-prefix`, artifact ID `13058472362`, SHA-256 `20ac16667a05d25120bb62076808067b85cb7248f15c9eef7210f89030a2da5e`. Artifact retention expires January 29, 2027; before expiration, permanently custody the actual coefficient JSON or reproduce and attach it without overwriting historical artifacts.
+
+**Now ACCEPTED:** n=0..3 source-correlated true fixed-cell6 analytic-branch Chebyshev coefficient intervals with exact source/image charges and independent NF416 pointwise overlap. **Still OPEN:** n=4..2048 coefficient intervals (2045 coefficients), entire-cell polynomial, signed original cell6 pz/z² and all downstream theorem obligations. This result is NOT permission to approximate entire cell6 by only four terms.
