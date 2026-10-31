@@ -1,0 +1,26 @@
+name: EF34 original even unseen gap Schur information gate
+on:
+  push:
+    branches: [research/ef34-original-even-unseen-gap-schur-coupling]
+  pull_request:
+    branches: [research/ef33-original-even-bell-alias-coercivity]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  genuine-original-gap-and-940-annihilator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify original EF18 jump lies in EF33 C5 gap and all 7 translated edges excluded
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef34_even_unseen_gap_schur.py
+          python scripts/validate_rpb108_ef34_even_unseen_gap_schur.py
+      - name: Verify Weil-Lab canonical obligation
+        run: python scripts/verify_obligation_manifest.py
