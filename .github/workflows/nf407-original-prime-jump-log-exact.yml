@@ -26,6 +26,8 @@ jobs:
           python3 scripts/local_replay/nf407_original_prime_jump_log_power_exact.py --output /tmp/NF407_original_prime_jump_log_power_exact.json
           python3 - <<'PY'
           import json
+          import sys
+          sys.set_int_max_str_digits(0)
           from fractions import Fraction as F
           p=json.load(open('/tmp/NF407_original_prime_jump_log_power_exact.json'))
           assert len(p['source_true_original_prime_jump_terms'])==7
