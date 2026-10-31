@@ -137,7 +137,11 @@ def source_and_projection():
 
     b0=physical_even_pole_cross(c0)
     b1=physical_even_pole_cross(c1)
-    assert b0[0]>0  # exact low original cluster pole alignment, not assumed elsewhere
+    # The ORIGINAL first cluster's signed pole overlap need not be positive.
+    # Physical projection is sign-invariant: use |b0|^2 (the exact scalar
+    # formula already encloses the signed cross). Prove nonzero modulus,
+    # not a sign inferred from the cluster order.
+    assert nonnegative_square(b0)[0] > 0
     # First-one-mode projection is a genuine exact Hilbert lower.
     projection_one=over(nonnegative_square(b0),G00)
     # Complete 2D projection b^T G^-1 b. Preserve correlation term!
