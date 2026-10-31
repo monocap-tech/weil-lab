@@ -89,6 +89,25 @@ def main():
  assert all(k%2==0 or k%2==1 for f,k in nodes if f!='pole')
  assert any(f=='pole' for f,k in nodes)
  assert len(source['original_source_critical_sines_and_pole_coefficients'])==4
+ # Re-derive the physical MOVING t-interface from independent endpoint
+ # formal symbols, not from the claimed all-order commutator.
+ # K1: original I0 upper t1'=-2, I1 lower t1'=-2,
+ # K2: original I1 upper t2'=+2.
+ # A' g(x)=(K1-K2)g(x). Coefficient tuples are exact:
+ # (K1,gx), (K1,gB), (K1,ginner),
+ # (K2,gx), (K2,g(-B)).
+ initial_boundary={
+  ('K1','gx'):-F(2)+F(1)+F(1),
+  ('K1','gB'):F(1),
+  ('K1','ginner'):F(1)-F(1),
+  ('K2','gx'):F(1)-F(1),
+  ('K2','gminusB'):-F(1)}
+ assert initial_boundary=={
+  ('K1','gx'):F(0),('K1','gB'):F(1),
+  ('K1','ginner'):F(0),('K2','gx'):F(0),
+  ('K2','gminusB'):-F(1)}
+ # This proves the original interface cancellation BEFORE substituting
+ # odd-source g(-B), so parity and moving-endpoint directions are separate.
  # Every selected source monomial is sin for even k, cos for odd k
  # by the NF407/NF413 source generator convention. Both are odd,
  # as are all critical sine and odd pole; hence all derivative parity.
@@ -120,7 +139,7 @@ def main():
  # so |K1+K2|<7, same numerical budget for the corrected sign.
  # Therefore local conservative |z'''|<1540338 remains unaffected.
  assert F(2)/F(1,3)==6 and F(2)/3<1
- assert F(16)*24580+7*16384+10 ==1540338
+ assert F(58)*24580+7*16384+10 ==1540338
  assert int(g['original_true_u4_fourth_derivative_L2_upper_power2'])==16384
  # The uniform bound holds ONLY inside true original macro interval.
  macro_l,macro_r=F(899,1000),F(901,1000)
@@ -175,6 +194,7 @@ def main():
   'same_original_242_selected_and_4_critical_odd_source':True,
   'original_odd_source_derivative_j_parity':'u4^(j)(-B)=(-1)^(j+1)u4^(j)(B)',
   'original_true_I0_I1_moving_interface_general_g':'I0[g]+I1[g] derivative contributes K(t1)*(g(B)-g(x))+K(t2)*(g(x)-g(-B))',
+  'original_physical_boundary_direct_formal_atom_check':True,
   'original_combined_arch_S_commutator':'d S[g]/dx = S[gprime]+K(t1)g(B)-K(t2)g(-B)',
   'original_finite_A_derivative_exact':'A_prime=K(t1)-K(t2)',
   'original_all_order_arch_n_formula':'S[u4^(n)]+sum_j=0..n-1 u4^(j)(B)*[(-2)^(n-1-j) K^(n-1-j)(t1)+(-1)^j 2^(n-1-j) K^(n-1-j)(t2)]-(n-1)!u4(B)/(2 d^n)',
