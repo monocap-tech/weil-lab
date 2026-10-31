@@ -94,7 +94,7 @@ def main():
  assert B*v2.u>=F(boundary['original_exact_log_model_squared_norm_upper'])
  shift={e['n']:e for e in seams['original_prime_power_log_shifts']}
  logs={n:compact(I(F(shift[n]['log_lower']),F(shift[n]['log_upper'])),36) for n in P}
- cs={n:logs[PMAP[n]]/sqrt_int(n) for n in P}
+ cs={n:compact(logs[PMAP[n]]/sqrt_int(n),60) for n in P}
  x={n:(B-logs[n] if logs[n].u<B else logs[n]-B) for n in P}
  assert all(F(0)<x[n].l<=x[n].u<B for n in P)
  # Source origin: u4(B)=v, u4(-B)=-v. Each translated prime
@@ -121,8 +121,10 @@ def main():
     'signed_mangoldt_weight_positive_interval':cs[n].out(),
     'positive_jump_location_absolute_interval':x[n].out(),
     'source_jump_amplitude_interval':(v*cs[n]).out(),
-    'original_cross_q_r_positive_term_interval':contribution.out()})
- qpower=B*v2
+    'original_cross_q_r_positive_term_interval':compact(contribution,65).out()})
+ qpower=compact(B*v2,65)
+ r_squared=compact(r_squared,65)
+ qr=compact(qr,65)
  singular_model_power=qpower+r_squared+2*qr
  assert F(15,10**23)<r_squared.l<r_squared.u<F(13,10**22)
  assert F(38,10**23)<qr.l<qr.u<F(4,10**22)
