@@ -1,0 +1,71 @@
+name: Weil-Lab NF408 original 16-cell full physical norm exploratory screen
+on:
+  push:
+    branches: [research/nf408-original-regularized-action-sampling]
+    paths:
+      - '.github/workflows/nf408-original-sixteen-cell-screen.yml'
+      - 'scripts/local_replay/nf408_original_sixteen_cell_norm_pilot.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  true-original-16-cell-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf408-original-regularized-action-sampling
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original coefficients and all 16 exact source seam cells preflight
+        run: |
+          pip install mpmath==1.3.0 numpy==2.1.3
+          python3 -m py_compile scripts/local_replay/nf408_original_sixteen_cell_norm_pilot.py
+          python3 - <<'PY'
+          import json
+          s=json.load(open('notes/data/provisional/NF406_original_prime_support_partition_exact.json'))
+          a=json.load(open('notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json'))
+          assert s['number_of_open_physical_support_cells']==16
+          assert a['original_exported_coefficients_are_4096bit_arb_not_float'] is True
+          assert a['original_dimension']==242
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          PY
+      - name: Pilot original 16-cell physical original whole-action power at TWO outer resolutions
+        run: |
+          python3 -u scripts/local_replay/nf408_original_sixteen_cell_norm_pilot.py \
+            --dps 205 --inner-nodes 14 --inner-step 1/20 --outer-a 2 --outer-b 4 \
+            --output /tmp/NF408_original_16cell_norm_pilot.json
+      - name: Treat pilot as UNCERTIFIED, never promote true original full physical upper
+        run: |
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/NF408_original_16cell_norm_pilot.json'))
+          assert d['original_all_seven_prime_support_seams_retained'] is True
+          assert d['outer_source_positive_cells']==8
+          assert len(d['pilot_resolutions'])==2
+          assert [x['original_source_full_point_evaluations'] for x in d['pilot_resolutions']]==[16,32]
+          assert d['original_source_accurate_full_integral_error_enclosed'] is False
+          assert d['original_complete_centered_physical_L2_upper_CERTIFIED'] is False
+          assert d['original_fourth_J242_complement_lowband_upper_CLOSED'] is False
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          PY
+      - name: Custody original 16-cell provisional signed norm and original-source checks
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF408_original_16cell_norm_pilot.json
+          if test -f "$target"; then
+            cmp -s "$target" /tmp/NF408_original_16cell_norm_pilot.json
+          else
+            cp /tmp/NF408_original_16cell_norm_pilot.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF408 original signed 16-cell full physical power two-resolution PILOT, no certified upper'
+            git pull --rebase origin research/nf408-original-regularized-action-sampling
+            git push origin HEAD:refs/heads/research/nf408-original-regularized-action-sampling
+          fi

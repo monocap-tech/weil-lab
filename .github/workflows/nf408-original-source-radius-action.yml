@@ -1,0 +1,57 @@
+name: Weil-Lab NF408 original native coefficient-action error exact
+on:
+  push:
+    branches: [research/nf408-original-regularized-action-sampling]
+    paths:
+      - '.github/workflows/nf408-original-source-radius-action.yml'
+      - 'scripts/local_replay/nf408_original_source_midpoint_action_error_exact.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-original-source-action-radius:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf408-original-regularized-action-sampling
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact native original source interval radii and full signed multiplier
+        run: |
+          python3 -m py_compile scripts/local_replay/nf408_original_source_midpoint_action_error_exact.py
+          python3 scripts/local_replay/nf408_original_source_midpoint_action_error_exact.py --output /tmp/NF408_original_source_midpoint_action_error_exact.json
+          python3 - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          r=json.load(open('/tmp/NF408_original_source_midpoint_action_error_exact.json'))
+          s=F(r['original_native_coefficient_value_error_uniform_S'])
+          d=F(r['original_native_coefficient_derivative_error_uniform_D'])
+          m=F(r['original_source_native_radius_full_physical_m_action_L2_error_upper'])
+          assert m==3000*(s+d)
+          assert F(0)<m<F(1,10**745)
+          assert r['original_centered_physical_quadrature_error_enclosed'] is False
+          assert r['original_full_supported_centered_scalar_upper_computed'] is False
+          assert r['W_ODD_NEG']==r['RH']=='OPEN'
+          PY
+      - name: Custody immutable exact true original source L2 input-radius certificate
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF408_original_source_midpoint_action_error_exact.json
+          if test -f "$target"; then
+            cmp -s "$target" /tmp/NF408_original_source_midpoint_action_error_exact.json
+          else
+            cp /tmp/NF408_original_source_midpoint_action_error_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF408 exact native source radius full signed m(D) physical action error'
+            git pull --rebase origin research/nf408-original-regularized-action-sampling
+            git push origin HEAD:refs/heads/research/nf408-original-regularized-action-sampling
+          fi

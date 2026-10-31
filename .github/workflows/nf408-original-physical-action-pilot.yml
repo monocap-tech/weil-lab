@@ -1,0 +1,74 @@
+name: Weil-Lab NF408 original physical action point pilot
+on:
+  push:
+    branches: [research/nf408-original-regularized-action-sampling]
+    paths:
+      - '.github/workflows/nf408-original-physical-action-pilot.yml'
+      - 'scripts/local_replay/nf408_original_compact_physical_action_pilot.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pilot-original-source-physical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf408-original-regularized-action-sampling
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original source highprecision pilot environment
+        run: |
+          pip install mpmath==1.3.0 numpy==2.1.3
+          python3 -m py_compile scripts/local_replay/nf408_original_compact_physical_action_pilot.py
+      - name: Source original interior x=B/2 pilot A (not certified)
+        run: |
+          python3 -u scripts/local_replay/nf408_original_compact_physical_action_pilot.py --x 11/20 --dps 205 --nodes 14 --step 1/20 --min-t 1/10000000000 --output /tmp/nf408_pilot_A.json
+      - name: Source original interior x=B/2 pilot B denser (not certified)
+        run: |
+          python3 -u scripts/local_replay/nf408_original_compact_physical_action_pilot.py --x 11/20 --dps 220 --nodes 20 --step 1/40 --min-t 1/10000000000 --output /tmp/nf408_pilot_B.json
+      - name: Compare pilot convergence WITHOUT promoting a certified scalar
+        run: |
+          python3 - <<'PY'
+          import json
+          from mpmath import mp
+          a=json.load(open('/tmp/nf408_pilot_A.json'))
+          b=json.load(open('/tmp/nf408_pilot_B.json'))
+          mp.dps=80
+          assert a['original_nf407_coeff_native_sha256']==b['original_nf407_coeff_native_sha256']
+          assert a['sample_physical_x']==b['sample_physical_x']=='11/20'
+          assert a['original_continuous_regularized_z_interval_certified'] is False
+          assert b['original_original_full_centered_physical_scalar_upper_computed'] is False
+          diffs={}
+          for k in ('original_arch_action_x','original_7_prime_action_x',
+                    'original_centered_g_x','original_continuous_z_x'):
+            diffs[k]=str(abs(mp.mpf(a['sample'][k])-mp.mpf(b['sample'][k])))
+          result={'pass':'NF408','standing':'UNCERTIFIED TWO-RESOLUTION SOURCE PHYSICAL-POINT PILOT; NO VALIDATED L2 OR RH',
+            'pilot_A':a,'pilot_B':b,'abs_differences':diffs,
+            'same_actual_original_source_and_support':True,
+            'actual_rigorous_integration_quadrature_error_certified':False,
+            'original_positive_centered_full_supported_scalar_measured':False,
+            'W_ODD_NEG':'OPEN','RH':'OPEN'}
+          open('/tmp/NF408_original_physical_pilot_convergence.json','w').write(json.dumps(result,indent=2)+'\n')
+          print('Original source pilot distinct-resolution deltas:',diffs)
+          PY
+      - name: Custody preliminary ORIGINAL evidence with explicit provisional status
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF408_original_physical_pilot_convergence.json
+          if test -f "$target"; then
+            cmp -s "$target" /tmp/NF408_original_physical_pilot_convergence.json
+          else
+            cp /tmp/NF408_original_physical_pilot_convergence.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF408 source-original physical action pilot two-resolution NOT certified'
+            git pull --rebase origin research/nf408-original-regularized-action-sampling
+            git push origin HEAD:refs/heads/research/nf408-original-regularized-action-sampling
+          fi
