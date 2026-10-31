@@ -86,7 +86,7 @@ def main():
  # I0[u'''] <= 2sqrt(2t1)*N4<3N4 because t1<0.6,
  # I1[u'''] <=sqrt(2)(sqrt(t2)-sqrt(t1))*N4<4N4,
  # from ||u''''||2 and true support. Explicit rational overcharges:
- assert 8*(B-L)<9 # implies 2sqrt(2*t1)<3
+ assert 16*(B-L)<9 # implies 2sqrt(2*t1)<3
  assert 2*(B+R)<F(9,2) # implies sqrt(2t2)<3<4
  N3=24580;N4=16384
  # Endpoint u''(B) <1, u'(B)<1e-6, u(B)<1e-9,
