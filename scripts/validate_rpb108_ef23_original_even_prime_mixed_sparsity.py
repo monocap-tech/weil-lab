@@ -18,6 +18,7 @@ This is exact original source arithmetic reduction, NOT a numerical
 sign/evaluation of n5,n7, arch mixed, energy or normalized Schur.
 """
 from fractions import Fraction as F
+from math import comb
 from pathlib import Path
 import json
 from validate_rpb108_si06_negative_band import SHIFTS,ACTIVE,B,WEIGHTS
@@ -114,6 +115,57 @@ def exact_fir_source_root_and_prefixes():
     return len(k5_out),len(k7_in)
 
 
+def exact_edge_coefficient_newton_recurrence():
+    """Original 469-factor FIR edge coefficients from 211 Chebyshev moments.
+
+    G(t)=prod_j(1-2*u_j*t+t*t)^pj=sum_{l=0}^{938} a_l*t^l,
+    u_j=cos(2*pi*h*c_j), native actual SI10 c_j.
+    Since z^469*S_h(z)=G(z), A_{+-469∓l}=a_l.
+    s_m=sum_j pj*Chebyshev_m(u_j);
+    l*a_l = -2 sum_{m=1}^l s_m*a_{l-m}.
+    Hence ONLY a0..a210 are required for both n5,n7.
+    Test universal identity at rational toy centers, NOT as an
+    original numerical source-sign certificate.
+    """
+    centers,orders=authentic_source_replay()
+    assert len(centers)==107 and sum(orders)==N
+    toy=[(F(1,3),3),(F(-2,5),2),(F(3,7),1)]
+    degree=2*sum(p for _,p in toy)
+    ppoly=[F(1)]
+    for u,p in toy:
+        for _ in range(p):
+            nxt=[F(0)]*(len(ppoly)+2)
+            for j,v in enumerate(ppoly):
+                nxt[j]+=v
+                nxt[j+1]-=2*u*v
+                nxt[j+2]+=v
+            ppoly=nxt
+    assert len(ppoly)==degree+1
+    def cheb(m,u):
+        if m==0:return F(1)
+        if m==1:return u
+        a,b=F(1),u
+        for _ in range(2,m+1):
+            a,b=b,2*u*b-a
+        return b
+    moments=[F(0)]
+    for n in range(1,degree+1):
+        moments.append(sum((p*cheb(n,u) for u,p in toy),F(0)))
+    recur=[F(1)]
+    for l in range(1,degree+1):
+        al=-2*sum((moments[m]*recur[l-m] for m in range(1,l+1)),F(0))/l
+        recur.append(al)
+    assert recur==ppoly
+    assert all(ppoly[k]==ppoly[degree-k] for k in range(degree+1))
+    assert 210+1==211 and 38+1==39
+    # This is an extremely loose absolute *upper* envelope,
+    # not a measurement of any genuine original coefficient.
+    assert comb(938,210)>10**215
+    assert comb(938,38)>10**67
+    return 211,39
+
+
+
 def run():
     manifest=json.loads((ROOT/"research/obligations.json").read_text())
     obs={o["id"]:o for o in manifest["obligations"]}
@@ -130,6 +182,8 @@ def run():
     assert n2lo>F(15,10000000)
     counts,checks=classify_actual_original_cutoff()
     k5,k7=exact_fir_source_root_and_prefixes()
+    rec5,rec7=exact_edge_coefficient_newton_recurrence()
+    assert (k5,k7)==(rec5,rec7)
     mass,norm=bell_transform_identity()
     assert mass>0 and norm>0
     print("EF23 actual ORIGINAL SI10 even native source c0:",C0,
@@ -150,6 +204,15 @@ def run():
           "728 included = -211 excluded (exact native source root),",
           "n7 exactly",k7,"included coefficients; still no signs.",
           flush=True)
+    print("EF23 EXACT EDGE-ONLY CHEBYSHEV RECURRENCE:",
+          "G(t)=prod(1-2cos(theta_j)t+t²)^pj;",
+          "l*a_l=-2 sum_{m=1}^l (sum_j pj*cos(m*theta_j))*a_{l-m};",
+          "only a0..a210 needed, n7 a0..a38;",
+          "Fraction toy polynomial regression PASS.",flush=True)
+    print("EF23 ABSOLUTE-BOUND CAVEAT:",
+          "comb(938,210)>1e215 and comb(938,38)>1e67;",
+          " these are NOT genuine coefficient sizes or signed"
+          " original intervals; full source phase control needed.",flush=True)
     print("EF23 exact arithmetic decomposition:",
           "M_prime=M_2+M_5+M_7;",
           "M_5=+w5*H_r(c0)*Re(exp(i omega*(ln5-a))",
