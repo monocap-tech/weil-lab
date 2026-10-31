@@ -1,0 +1,51 @@
+name: Weil-Lab NF409 original signed 16-cell numerical hotspot audit
+on:
+  push:
+    branches: [research/nf409-original-continuous-certified-entry]
+    paths:
+      - '.github/workflows/nf409-original-hotspot-audit.yml'
+      - 'scripts/local_replay/nf409_original_signed_cell_hotspot_audit.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-cell-hotspot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf409-original-continuous-certified-entry
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact arithmetic on source-provenanced original pilot decimals (provisional only)
+        run: |
+          python3 -m py_compile scripts/local_replay/nf409_original_signed_cell_hotspot_audit.py
+          python3 scripts/local_replay/nf409_original_signed_cell_hotspot_audit.py --output /tmp/NF409_original_signed_cell_hotspot.json
+          python3 - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          a=json.load(open('/tmp/NF409_original_signed_cell_hotspot.json'))
+          assert a['original_source_intermesh_top_three_cells']==[6,3,7]
+          assert F(a['intermesh_top_three_absolute_variation_fraction_exact'])>F(4,5)
+          assert a['source_original_2_node_norm_below_cap_4_node_above_cap'] is True
+          assert a['source_original_error_limit_via_mesh_comparison'] is False
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          PY
+      - name: Custody typed numerical instability, not an original mathematical norm certificate
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF409_original_signed_cell_hotspot.json
+          if test -e "$target"; then cmp -s "$target" /tmp/NF409_original_signed_cell_hotspot.json
+          else cp /tmp/NF409_original_signed_cell_hotspot.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF409 exact decimal reconstruction of original signed physical 16-cell hotspot only, pilot unverified'
+            git pull --rebase origin research/nf409-original-continuous-certified-entry
+            git push origin HEAD:refs/heads/research/nf409-original-continuous-certified-entry
+          fi
