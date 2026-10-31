@@ -72,6 +72,49 @@ def geometry_and_jump(centers):
     assert set(ACTIVE)=={2,3,4,5,7,8,9}
     return xlo,xhi,spread,min(vals),max(vals)
 
+def fixed_step_original_mixed_jump():
+    """The original n=2 arithmetic jump survives at fixed h.
+
+    The FIR extreme T_(-469h) coefficient is +1 and transports
+    the true signed jump J to x*=B-ln2+469h. Exact rational
+    log/physical edge intervals rule out ALL other collisions.
+    Original archimedean pseudolocality remains an analytic premise.
+    """
+    ll,lh=SHIFTS[2]
+    star=(B-lh+N*H,B-ll+N*H)
+    assert star[0]<star[1] and star[1]+R+N*H<B
+    def separation(a,b):
+        if a[1]<b[0]:return b[0]-a[1]
+        if b[1]<a[0]:return a[0]-b[1]
+        return F(0)
+    margin=None
+    checked=0
+    for k in range(-N,N+1):
+        delta=k*H
+        for n in sorted(ACTIVE):
+            lo,hi=SHIFTS[n]
+            right=(B-hi-delta,B-lo-delta)
+            if n==2 and k==-N:assert right==star
+            else:
+                d=separation(star,right)
+                assert d>0,("right-edge collision",n,k)
+                margin=d if margin is None else min(margin,d)
+                checked+=1
+            left=(-B+lo-delta,-B+hi-delta)
+            d=separation(star,left)
+            assert d>0,("left-edge collision",n,k)
+            margin=min(margin,d)
+            checked+=1
+        for endpoint in (B,-B):
+            d=separation(star,(endpoint-delta,endpoint-delta))
+            assert d>0,("cutoff collision",k,endpoint)
+            margin=min(margin,d)
+            checked+=1
+    assert margin is not None and margin>0
+    assert checked==(2*len(ACTIVE)+2)*(2*N+1)-1
+    return star,margin,checked
+
+
 def run():
     data=json.loads((ROOT/"research/obligations.json").read_text())
     o={x["id"]:x for x in data["obligations"]}
@@ -86,6 +129,7 @@ def run():
     # The 107 distinct conjugate root pairs have 938 total multiplicity.
     assert 2*(N-1)<multiplicity==2*N
     xl,xr,s,jlo,jhi=geometry_and_jump(c)
+    star,margin,checked=fixed_step_original_mixed_jump()
     print("EF20 original SI10 native positive centers:",len(c),
           "orders:",sum(p),"real frequency root multiplicity:",multiplicity,flush=True)
     print("EF20 fixed exact h:",H,"minimal bilateral radius:",N,
@@ -99,6 +143,14 @@ def run():
           "469D Gram inverse; ||filter||<=4^469.",flush=True)
     print("EF20 SHARP UNIVERSAL FIR ORDER: total distinct root multiplicity",
           "938; no smaller bilateral radius than 469 at this step.",flush=True)
+    print("EF20 FIXED-h original signed mixed jump x*:",float(star[0]),float(star[1]),
+          "rigorous source/boundary separation:",float(margin),
+          "checked:",checked,flush=True)
+    print("EF20 CONDITIONAL ORIGINAL MIXED NONZERO:",
+          "the true FIR-filtered signed physical gradient retains",
+          "isolated J<-1/4 at x*; for some even compact smooth psi",
+          "we have q0(e,F_h psi)!=0 at FIXED h.",
+          "No explicit signed numerator or normalized Schur.",flush=True)
     print("EF20 OPEN: finite signed mixed original q0(e,f_h),",
           "full q0(f_h,f_h), normalized inverse response, corrected",
           "Schur PSD, analytic form attachment, even/odd/whole Weil, RH.",flush=True)
