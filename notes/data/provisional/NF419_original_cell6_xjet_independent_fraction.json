@@ -1,0 +1,23 @@
+{
+  "pass": "NF419-independent",
+  "standing": "SOURCE-EXACT FRACTION REPLAY PASS OF ALL ORIGINAL FIRST X-JET ERROR BOUNDS AND EXACT MOVING-ARCH CANCELLATION",
+  "original_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "NF419_native_sha256": "33788faf753e549845acac0e616f4e4a2219fde5806b937a96d3e527705eb2ac",
+  "all_242_plus_4_original_dyadic_coefficients_reconstructed": true,
+  "all_seven_signed_prime_derivative_branches_match_NF414": true,
+  "tiny_H_source_and_regular_kernel_source_error_terms_exactly_replayed": true,
+  "original_native_source_first_and_third_derivative_radii_replayed": true,
+  "original_finite_plus_moving_arch_standalone_source_u_coefficients_exactly_zero": true,
+  "original_boundary_remaining_v_coefficients": {
+    "k1": "1",
+    "k2": "1",
+    "1_over_2d": "-1"
+  },
+  "original_zprime_9over10_rational_outward_interval_verified_positive": true,
+  "original_zprime_width_strict": "1e-27",
+  "second_x_derivative_uniform_remainder_certified": false,
+  "complete_original_cellwide_x_Taylor_certified": false,
+  "NF404_entire_centered_scalar_decided": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}

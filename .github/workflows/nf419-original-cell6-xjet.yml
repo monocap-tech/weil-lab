@@ -1,0 +1,65 @@
+name: NF419 original full source-correlated continuous x derivative
+on:
+  push:
+    branches: [research/nf419-original-correlated-x-jet]
+    paths:
+      - '.github/workflows/nf419-original-cell6-xjet.yml'
+      - 'scripts/local_replay/nf419_original_cell6_correlated_xjet_native.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-246-xjet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf419-original-correlated-x-jet
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Native Arb original source analytic Taylor
+        run: pip install python-flint==0.8.0
+      - name: Original signed complete x-derivative at physical cell6 hotspot
+        run: |
+          python -m py_compile scripts/local_replay/nf419_original_cell6_correlated_xjet_native.py
+          python -u scripts/local_replay/nf419_original_cell6_correlated_xjet_native.py --precision 1024 --output /tmp/nf419_original_xjet.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p=json.load(open('/tmp/nf419_original_xjet.json'))
+          assert p['physical_original_rational_x']=='9/10'
+          assert p['physical_original_cell']==6
+          assert p['original_same_242_selected_and_4_critical']
+          assert len(p['original_all_seven_signed_prime_derivative_branches'])==7
+          assert p['moving_original_I0_I1_boundary_exact_cancellation_formula']=='K(t1)*(u(B)-u(x))+K(t2)*(u(x)+u(B))'
+          assert p['finite_arch_plus_moving_boundary_exact_full_source_cancellation']=='(c+L/2)*uprime+u(B)*(K(t1)+K(t2)-1/(2d))'
+          assert p['algebraically_direct_and_cancelled_arch_arb_intervals_overlap']
+          assert p['original_I0_derivative_t0_analytic_H_tK']
+          assert p['original_I0_derivative_analytic_regular_panel_count']==38
+          assert p['original_I1_derivative_analytic_panel_count']==360
+          assert F(p['original_derivative_I0_tiny_integrated_error_upper_exact'])<F(1,10**50)
+          assert F(p['original_derivative_I0_regular_integrated_error_upper_exact'])<F(1,10**31)
+          assert F(p['original_derivative_I1_integrated_error_upper_exact'])<F(1,10**30)
+          assert F(p['true_original_complete_zprime_interval_width_exact'])<F(1,10**27)
+          assert p['first_order_original_x_jet_certified']
+          assert not p['complete_original_source_x_interval_second_derivative_remainder_certified']
+          assert not p['original_full_cell_x_Taylor_enclosure_certified']
+          assert not p['NF404_scalar_decided']
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          PY
+      - name: Source-custody the original first x-jet interval
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF419_original_cell6_full_xprime_native.json
+          cp /tmp/nf419_original_xjet.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF419 original complete z x-jet native interval, whole cell and NF404 OPEN'
+            git pull --rebase origin research/nf419-original-correlated-x-jet
+            git push origin HEAD:refs/heads/research/nf419-original-correlated-x-jet
+          fi
