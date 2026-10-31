@@ -1,0 +1,53 @@
+name: Weil-Lab NF409 signed principal exact cell quadrature weights
+on:
+  push:
+    branches: [research/nf409-original-continuous-certified-entry]
+    paths:
+      - '.github/workflows/nf409-original-principal-cell-integrals.yml'
+      - 'scripts/local_replay/nf409_original_principal_cell_acceptance.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-original-principal-cell-weights:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf409-original-continuous-certified-entry
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original q+r source-exact signed cell primitives and independent global check
+        run: |
+          python3 -m py_compile scripts/local_replay/nf409_original_principal_cell_acceptance.py
+          python3 scripts/local_replay/nf409_original_principal_cell_acceptance.py --output /tmp/NF409_original_principal_cell_integrals_exact.json
+          python3 - <<'PY'
+          import sys,json
+          sys.set_int_max_str_digits(0)
+          from fractions import Fraction as F
+          a=json.load(open('/tmp/NF409_original_principal_cell_integrals_exact.json'))
+          assert len(a['original_eight_positive_source_principal_integrals'])==8
+          assert a['original_global_principal_integral_independent_overlap'] is True
+          assert all(F(c['known_signed_p_integral_enclosure'][1])<0 for c in a['original_eight_positive_source_principal_integrals'])
+          assert F(a['future_L2_error_energy_charge_strict_upper']) < F(a['original_source_exterior_allowance_gamma2_exact'])/8
+          assert a['true_original_continuous_z_enclosures_generated'] is False
+          assert a['actual_original_full_centered_supported_power_upper_computed'] is False
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          PY
+      - name: Preserve accepted source-only original signed p integral weights
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF409_original_principal_cell_integrals_exact.json
+          if test -e "$target"; then cmp -s "$target" /tmp/NF409_original_principal_cell_integrals_exact.json
+          else cp /tmp/NF409_original_principal_cell_integrals_exact.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF409 exact source original signed q+r physical 8-cell integrals and z-box acceptance budget'
+            git pull --rebase origin research/nf409-original-continuous-certified-entry
+            git push origin HEAD:refs/heads/research/nf409-original-continuous-certified-entry
+          fi
