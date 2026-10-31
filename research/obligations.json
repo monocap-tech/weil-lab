@@ -965,7 +965,7 @@
     "EF30": {
       "kind": "original-even-470x471-source-moment-exact-triangular-rowspace-and-order938-rank-gate",
       "scope": "The TRUE original SI10 469 protected real-even physical C5 bell moment rows are invertible clusterwise lower-triangular transforms of sampled x_l^k cos/sin(2pi c_j x_l) rows (positive diagonal bell Fourier because 4*c_j*r<1). True pole row proportional cosh(l/1024). Exact 938-order even sequence recurrence on 471 positive grid samples proves source row rank469 whenever b469 central coefficient of native product ∏(E²-2cos(2πc_j/512)E+1)^pj is nonzero. Native 340-digit outward certificate for actual b469 in source script, CI pending. Positive pole adds exactly one rank by algebraic roots-of-unity entries and transcendental e^(1/1024); if b469 excludes zero, full original Htilde rank470 and 1D kernel. Does not compute δ or corrected Schur sign.",
-      "pr": "https://github.com/monocap-tech/weil-lab/pull/422",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/425",
       "verification": "Native original SI10 107 rational c_j, 469 orders, 214 nonalias conjugate sampled roots, 938-order outward product with 340-digit original SI06 trig and central coefficient sign test, exact triangular source/pole analytical proof, independent toy Fraction regression. Focused source CI pending; original δ, A_arch, full even Schur/odd/full Weil/RH OPEN.",
       "repo_path": "notes/provisional/EF30_ORIGINAL_EVEN_SAMPLED_MOMENT_RANK_20261031.md"
     }
