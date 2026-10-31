@@ -1,0 +1,26 @@
+name: EF35 original even first-source L2 dual cap
+on:
+  push:
+    branches: [research/ef35-original-even-source-dual-upper]
+  pull_request:
+    branches: [research/ef34-original-even-unseen-gap-schur-coupling]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-signed-gradient-l2-and-schur-dual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify original SI06/EF32 7-prime and digamma source-gradient spectral envelope
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef35_original_even_first_source_l2_dual.py
+          python scripts/validate_rpb108_ef35_original_even_first_source_l2_dual.py
+      - name: Preserve original even acceptance as OPEN
+        run: python scripts/verify_obligation_manifest.py
