@@ -66,7 +66,8 @@
     "ef23_signed_arithmetic_sparse": "Original EF22 source and governance #41221940116 PASS: exact physical seven-prime energy zero and n2 mixed positive source interval. EF23 exact SI10 native physical source-cutoff geometry and original FIR at c0 yield arithmetic mixed M2+M5+M7, rest n3,n4,n8,n9 exactly vanish. The 211/39 original edge coefficients are exact algebra not evaluated signed interval; arch and normalized Schur OPEN.",
     "ef24_source_signed_edge_interval": "Native EF24 signed original M5 NEGATIVE, M7 POSITIVE and arithmetic Mprime NEGATIVE accepted #41224768387 with 340-digit outward integer SI06 source and governance. New dimensionless physical-normalized arithmetic-only upper <1/400 from a210 original FIR source and cofinite gamma conditional on native SI10 analytic proof; revised CI pending. Arch full M/E, Schur, RH OPEN.",
     "ef25_arch_real_energy_upper": "Actual original arch symbol inequality -8<a(xi)<8+ln(1+|xi|), EF21 fixed physical f derivative/FIR disjoint norm and Jensen give full original pole-free E=q_arch(f,f)<30||f||²; first original e strong-domain ||arch(D)e||<47, only a mixed NORM upper, not sign. Parent EF24 arithmetic source Actions #41225073437 PASS and small arithmetic-only normalized upper. Analytic audit independent, no whole even Schur/RH closure.",
-    "ef26_arch_laplace": "EF26 original digamma spectral identity and native SI10 even FIR Laplace convolution give exact full signed arch mixed real positive-product half-integer series, finite signed sufficient check with all m>=2 negative. Source CI pending; no assertion of full M_arch sign until logs. Original E arch upper EF25 accepted; still no complete even Schur or RH."
+    "ef26_arch_laplace": "EF26 original digamma spectral identity and native SI10 even FIR Laplace convolution give exact full signed arch mixed real positive-product half-integer series, finite signed sufficient check with all m>=2 negative. Source CI pending; no assertion of full M_arch sign until logs. Original E arch upper EF25 accepted; still no complete even Schur or RH.",
+    "ef27_original_even_pole_two_vector": "Native EF26 expanded #41227759868 PASS original selected R>1e-193. EF27 attaches exact real original even positive pole to restricted original e/f matrix; true first source diagonal pole order 0.5 while selected universal FIR detector pole overlap extremely small and its rank-one restricted Schur Delta near 0.5. No sign of S2 or finite corrected 469D S_even; CI and source-domain independent review separate."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -935,8 +936,15 @@
       "kind": "original-even-arch-signed-physical-laplace-finite-tail-gate",
       "scope": "Original SI10 fixed F469 even test: true arch M_arch<0 via first three source Laplace terms and negative remaining infinite tail; EF24 Mprime<0, hence complete pole-free original mixed M<0. EF26 additional first-source |M|²/E>1e-193 source regression pending; not finite corrected even Schur PSD/RH.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/412",
-      "verification": "Original source initial run #41227005306 FAILED due unscaled 10^-723 underflow; exact common 100^469 scale repair: #41227286319 SUCCESS; source first 3 rescaled Laplace signed terms negative, all later negative via exact original c0 phase. New microscopic variational bound regression pending. Independent analytic digamma physical/source domain audit required.",
+      "verification": "Original original SI10 first-source signed physical arch Laplace m0+m1+m2<0 and full analytic all m>=2 negative, hence M_arch<0; original Mprime< -10^184 and E<10^561 give selected cofinite |M|²/E>10^-193. Complete expanded native Actions #41227759868 SUCCESS job #124615380124 with obligation/governance PASS. Independent original digamma/source/form-domain proof audit still OPEN.",
       "repo_path": "notes/provisional/EF26_ORIGINAL_EVEN_ARCH_SIGNED_LAPLACE_20261031.md"
+    },
+    "EF27": {
+      "kind": "original-even-physical-pole-two-vector-schur-residual-audit",
+      "scope": "W-EVEN-FORM: true first original SI10 e and EF21 fixed F469 even cofinite f, pole-free signed A/M/E and actual c=cosh(x/2) charges u,v. Exact restricted 2x2 pole-corrected S2=A-M²/E+[2/(1+2v²/E)](u-Mv/E)²; source u in (-.5,-.49), 2u² in (.48,.50), selected v<1e-700 and physical norm ||f||>1e186 give pole update Delta in (.46,.51), but A and R too wide to decide S2 or full 469D S.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/414",
+      "verification": "First focused Actions #41229142104 FAILED due Python float(10**372) reporting overflow after source u and v evaluations; corrected source script rerun #41231227149 SUCCESS (job 124625688130), exact original SI06/SI12 source u~-0.49886081732, 2u²~0.49772423, selected v<1e-700 and pole update Δ_f in (0.46,0.51), 2x2 rational Schur and governance PASS; no S2 sign or original 469D Schur.",
+      "repo_path": "notes/provisional/EF27_EVEN_POLE_CORRECTED_TWO_VECTOR_SCHUR_20261031.md"
     }
   },
   "obligations": [
@@ -1094,10 +1102,11 @@
         "EF23",
         "EF24",
         "EF25",
-        "EF26"
+        "EF26",
+        "EF27"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF26 complete original SI10 fixed even F469 pole-free source mixed M=Mprime+March<0 verified from EF24 Mprime<0 and native original digamma Laplace source #41227286319 March<0. A tiny source-specific inverse-Schur lower |M|²/E>1e-193 added pending CI. EF27 needs sharper conditioned Schur comparison and positive even pole reattachment; finite 469D even Schur/odd/whole Weil/RH OPEN."
+      "next_action": "EF27: original even positive pole reattachment on one authentic SI10 e/F469 detector gives exact S2=A-M²/E+Delta, with true source u=<cosh,e> in (-.5,-.49), selected pole overlap v<1e-700 and source physical ||f||>1e186, thus true Delta in (.46,.51). Parent EF26 original M<0 and tiny R>1e-193 verified; source upper |A|<87 and R<3.3e6 too weak for S2 sign. This is an explicit single-source scalar Schur inference STOP, not a theorem-level obstruction. EF28 should compute conditioned original A and R or design a low-moment source-exact complement / whole finite corrected 469D matrix entry; W-EVEN-FORM OPEN; odd/whole Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1299,6 +1308,17 @@
         "scripts/validate_rpb108_ef26_original_even_arch_laplace.py"
       ],
       "interpretation": "Actual original digamma arch physical mixed = half-integer real Laplace sum; true 469 source factor positive; first 2 positive rest negative; finite outward interval partial may certify original M_arch<0 only if strict. No full Schur/RH.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF27-original-even-physical-two-vector-pole-corrected-Schur",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef27_even_pole_schur_audit.py"
+      ],
+      "interpretation": "True first original SI10 even source pole charge and native F469 selected pole overlap; restricted exact 2x2 Schur update Delta in (.46,.51) under analytic domain; bounds on A,R do not certify S2 or full 469D sign.",
       "cadence": "per-update"
     }
   ]
