@@ -1,0 +1,44 @@
+name: Weil-Lab NF432 original cell6 sourcewise P511 tail exact
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf432_original_cell6_sourcewise_512_tail_exact.py'
+      - '.github/workflows/nf432-original-cell6-sourcewise-tail.yml'
+permissions:
+  contents: read
+jobs:
+  original-246-source-frequencywise-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-exact original NF407 spectral/order decomposition, NF406 true cell and NF423 boundaries
+        run: |
+          python3 -m py_compile scripts/local_replay/nf432_original_cell6_sourcewise_512_tail_exact.py
+          python3 scripts/local_replay/nf432_original_cell6_sourcewise_512_tail_exact.py \
+            --output artifacts/NF432_original_cell6_sourcewise_P511_tail_exact.json
+      - name: Original-source strict P511 uniform tail gate; full scalar still separate
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF432_original_cell6_sourcewise_P511_tail_exact.json'))
+          assert d['original_source_generators']==246
+          assert d['original_post_seam_primes']==[2,3,4,5,7]
+          assert d['original_neither_primes']==[8,9]
+          assert d['true_source_high_Chebyshev_tail_starts_at_n']==512
+          assert F(d['original_true_z_vs_original_P511_uniform_error_exact_rational_upper'])<F(1,10**20)
+          assert not d['original_full_cell6_signed_integral_evaluated_by_this_script']
+          assert not d['original_NF404_full_scalar_decided']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF432 original sourcewise high mode true-z tail PASS; sign not promoted by this job')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF432-original-cell6-sourcewise-P511-complete-true-z-tail
+          path: artifacts/NF432_original_cell6_sourcewise_P511_tail_exact.json
+          if-no-files-found: error
