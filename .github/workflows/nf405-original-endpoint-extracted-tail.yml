@@ -1,0 +1,54 @@
+name: Weil-Lab NF405 original matched endpoint-tail extraction
+on:
+  push:
+    branches: [research/nf405-original-centered-action-tail-feasibility]
+    paths:
+      - '.github/workflows/nf405-original-endpoint-extracted-tail.yml'
+      - 'scripts/local_replay/nf405_original_endpoint_extracted_tail.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-original-endpoint-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf405-original-centered-action-tail-feasibility
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact original NF374 signed endpoint with original NF375 analytic remainder
+        run: |
+          python3 -m py_compile scripts/local_replay/nf405_original_endpoint_extracted_tail.py
+          python3 scripts/local_replay/nf405_original_endpoint_extracted_tail.py --output /tmp/NF405_original_endpoint_tail_exact.json
+          python3 - <<'PY'
+          from fractions import Fraction as F
+          import json
+          q=json.load(open('/tmp/NF405_original_endpoint_tail_exact.json'))
+          assert F(q['source_original_complete_signed_endpoint_extracted_L2_remainder_upper'])<F(1,10**16)
+          assert q['original_source_exact_half_budget_with_endpoint_extraction_pass'] is True
+          assert q['full_signed_original_endpoint_principal_part_physically_evaluated'] is False
+          assert q['original_full_supported_centered_scalar_measured'] is False
+          assert q['original_lowband_J_perp_upper_measured'] is False
+          assert q['W_ODD_NEG']==q['RH']=='OPEN'
+          PY
+      - name: Preserve original signed endpoint tail exact receipt unmerged
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF405_original_endpoint_extracted_tail_exact.json
+          if test -e "$target"; then
+            cmp -s "$target" /tmp/NF405_original_endpoint_tail_exact.json
+          else
+            cp /tmp/NF405_original_endpoint_tail_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF405 original source first endpoint tail extracted exact remainder'
+            git pull --rebase origin research/nf405-original-centered-action-tail-feasibility
+            git push origin HEAD:refs/heads/research/nf405-original-centered-action-tail-feasibility
+          fi
