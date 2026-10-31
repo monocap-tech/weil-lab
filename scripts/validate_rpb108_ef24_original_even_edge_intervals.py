@@ -276,6 +276,25 @@ def run():
     v7,raw7,w7=original_edge_interval(7,coeff,hat)
     n2=I.rational_bounds(n2lo,n2hi)
     total=n2+v5+v7
+    # TRUE PHYSICAL EF21 disjoint-bell L2 identity:
+    # ||f||²=(231r/1024)*sum_{k=-469}^{469} A_k².
+    # A_{+/-259}=a210 by exact source palindrome.
+    # Thus ||f||²>=(231r/512)*a210².
+    # Original SI10/EF15 cofinite q0(f,f)>=mu||f||².
+    # The arithmetic-only mixed numerator M_prime is HUGE
+    # unnormalized, but its normalized squared coupling obeys
+    #        |M_prime|²/E <1/400
+    # WITHOUT computing E or any original arch integral.
+    # THIS IS AN UPPER ON ARITHMETIC-ONLY MIXING, NOT an
+    # inverse-Schur bound for complete M=M_prime+M_arch.
+    mu=F(17,25000)
+    norm_factor=F(231,512)*R
+    assert coeff[210].lo>0, "original a210 sign must be certified"
+    assert total.hi<0, "actual signed original arithmetic Mprime negative"
+    rawabs=total.abs_upper()
+    left=400*rawabs**2*mu.denominator*norm_factor.denominator
+    right=mu.numerator*norm_factor.numerator*coeff[210].lo**2
+    assert left<right, "normalized original arithmetic source bound not paid"
     print("EF24 true native SI10 107-center 469-order SOURCE",
           "outward integer fixed-point digits",D,"Taylor order",TAYLOR,
           flush=True)
@@ -294,6 +313,12 @@ def run():
     print("EF24 original n2 retained",n2.scaled(),
           "TOTAL arithmetic mixed ORIGINAL n2+n5+n7:",
           total.scaled(),"SIGN",total.sign(),flush=True)
+    print("EF24 EXACT original FIR PHYSICAL normalization:",
+          "A_+/-259=a210>0; ||f||²>=(231r/512)*a210².",
+          "Using ORIGINAL cofinite mu=17/25000,"
+          "the ARITHMETIC-ONLY |Mprime|²/E is strictly <1/400."
+          " This is an UPPER on arithmetic mixed contribution,"
+          " NOT a bound for FULL |M_arch+Mprime|²/E.",flush=True)
     if not v5.excludes_zero() or not v7.excludes_zero():
         print("EF24 SCOPED PRECISION STOP: rigorous signed source"
               " interval includes zero, DO NOT claim numerical n5/n7"
