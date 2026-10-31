@@ -972,6 +972,55 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/425",
       "verification": "Native SI10 107 centers, p sum469, 214 distinct rational sampled roots; 340-digit outward original degree938 P(E) central coefficient b469 interval strictly negative ~-1.2390712361e127; full original physical triangular row-equivalence and algebraic-vs-transcendental true pole proof. Focused original Actions #41236300352 SUCCESS, job #124640690086; subsequent strict quantitative source regression (-1.24e127,-1.23e127) committed and repeat CI pending. Full δ, true original A_arch and Schur OPEN; independent analytic source/domain audit.",
       "repo_path": "notes/provisional/EF30_ORIGINAL_EVEN_SAMPLED_MOMENT_RANK_20261031.md"
+    },
+    "EF31": {
+      "kind": "exact-original-470x471-even-chebyshev-kernel",
+      "scope": "Actual original 469 SI10 even source rows and true cosh pole on 471 EF28 C5 bells: exact one-dimensional nullspace generator U(B-Az) via Chebyshev T0 average, original EF30 rank470. Symbolic generator, no numeric signed residual or full even Schur.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/426",
+      "verification": "Focused native original-source Actions #41237653010 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF31_ORIGINAL_EVEN_CHEBYSHEV_EXACT_KERNEL_20261031.md"
+    },
+    "EF32": {
+      "kind": "original-even-first-source-complete-diagonal-and-471-negative-sufficient-gate-stop",
+      "scope": "Actual original first SI10 source complete seven-prime, true quarter-digamma and positive even pole diagonal source intervals A_even in (0.030997276682,0.059803834050). Genuine original signed EF29 471-vector norm²<3.174615e-6; original EF28 34d sufficient negativity gate impossible on fixed 471 bells. This is a METHOD STOP, not even PSD or complete Schur sign.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/428",
+      "verification": "Focused native original-source Actions #41238414693 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF32_ORIGINAL_EVEN_471_BELL_NEGATIVE_GATE_STOP_20261031.md"
+    },
+    "EF33": {
+      "kind": "original-even-471-bell-source-coercivity-and-restricted-two-vector-positive-schur",
+      "scope": "True original entire seven-prime plus digamma signed q0 on all genuine 471 EF28 disjoint even bells >21/5 physical norm² by full 512-alias Fourier and exact prime translation geometry. First SI10 source plus exact source/pole-neutral kernel restricted 2D Schur >1/500, independent analytic Fourier/domain attachment open. Does not prove whole even 469D Schur positivity.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/429",
+      "verification": "Focused native original-source Actions #41240653788 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF33_ORIGINAL_EVEN_471_BELL_ALIAS_COERCIVITY_20261031.md"
+    },
+    "EF34": {
+      "kind": "original-even-unseen-gap-arithmetic-jump-signed-schur-residual",
+      "scope": "Authentic original n2 first-source arithmetic jump at B-ln2 lies between EF28 bells 208/209; all translated seven-prime bell endpoints excluded by directed SI06 rational checks. Real even order940 SI10-source/pole annihilator builds nonzero original cofinite signed residual coupling after bell-kernel shorting, conditional original pseudolocality/core. Schur S_e|F=S2-eta with eta>0 but size unknown.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/433",
+      "verification": "Focused native original-source Actions #41245337303 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF34_ORIGINAL_EVEN_UNSEEN_GAP_SCHUR_INTERFACE_20261031.md"
+    },
+    "EF35": {
+      "kind": "original-first-even-source-full-signed-gradient-strong-l2-and-dual-cap",
+      "scope": "Original first cutoff cosine source in strong L2 domain of logarithmic quarter-digamma multiplier: full arch gradient norm<16, complete 7-prime norm<11 and original even pole<2; original full physical signed gradient norm<29. SI10 even cofinite mu>17/25000 gives unseen eta<21025000/17. This global upper is not decision quality and source-projected sufficient gate ||g_e-v||²<17/12500000 remains unproved.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/435",
+      "verification": "Focused native original-source Actions #41247714349 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF35_ORIGINAL_EVEN_FIRST_SOURCE_L2_DUAL_BOUND_20261031.md"
+    },
+    "EF36": {
+      "kind": "original-even-first-source-arch-protected-row-physical-cutoff-l2",
+      "scope": "Exact actual SI10 arch source row a_arch(37/64)e removed before genuine cofinite projection; complete original arch cutoff norm<15/8; full original seven-prime translated physical norm<6, true even pole<8/5. Original row-reduced gradient norm<379/40, energy-dual eta<17955125/136, still no sign/projection certificate.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/437",
+      "verification": "Focused native original-source Actions #41249267411 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF36_ORIGINAL_EVEN_SOURCE_ROW_REDUCED_L2_20261031.md"
+    },
+    "EF37": {
+      "kind": "original-even-correlated-seven-prime-pole-physical-energy-and-arch-tail",
+      "scope": "True original SI10 first source: exact 8-cell physical integration of all 7 signed prime-power translations and actual positive even pole including all cross terms gives combined L2 norm²≈0.66725385396<7/10. Exact protected arch source row removed, full actual quarter-digamma cutoff L2<3/5 with first 100 directed modes plus infinite remainder. Original source-row-reduced gradient and genuine cofinite projection norm<29/20, unseen eta<105125/34; this upper remains insufficient versus restricted S2>1/500, no original 469-source projected solve or whole even/odd/RH closure.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/441",
+      "verification": "Focused native original-source Actions #41251594441 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF37_ORIGINAL_EVEN_CORRELATED_PRIME_POLE_SOURCE_NORM_20261031.md"
     }
   },
   "obligations": [
