@@ -49,3 +49,14 @@ The sharper source-envelope proof and exact rational computation are mathematica
 Verification script: `scripts/local_replay/nf430_original_cell6_sharper_ellipse_series_cutoff_exact.py`. Focused workflow: `.github/workflows/nf430-original-cell6-sharp-ellipse.yml`. Source hash and CI receipt must be retained before numerical promotion.
 
 **Next:** source-correlated native coefficient blocks a256..a1264 or a stronger original-source high-mode tail that rigorously replaces some missing coefficients; then certify true cell6 pz/z² against original NF428/NF429 moment vectors. Permanent archive of already generated JSON remains due before Actions expiry.
+
+
+## Verified original-source exact result
+
+[Focused native/source-exact workflow #41250527809 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41250527809) at commit feb09a240aba49741b64777287746e252cf85c44. The exact 246-generator original NF407 coefficient reconstruction, original NF406 rational knot brackets, original NF423 full-cell parent, inherited NF425 digamma/Cauchy/endpoint geometry gates, and strict rational growth/cutoff tests all PASS. Failure-gate asserts exactly 1009 coefficients missing, true cell6 integral false, NF404 undecided, W-ODD-NEG/RH OPEN.
+
+**Accepted** sharpened bound: original genuine fixed-cell6 analytic E2 finite model sup <1e330; original full J6 Chebyshev SERIES n>=1265 uniform tail <1e-50; original true source/image/model total function residual <2e-45, so degree1264 (1265 modes) suffices. Original first 256 accepted natively; **1009 uncomputed**. This is more than renumbering a checkpoint: it discharges 235 previously outstanding native coefficient demands without a source switch.
+
+Native original exact JSON artifact #13060383901 (ZIP digest sha256:74baca82a1d98c84b602015866085413dd453fb4055ea9c65aefbd72df4ba6aa, expires 2027-01-29). Permanent machine-readable SHA/source/proof inequality index: `notes/data/provisional/NF430_original_cell6_sharp_ellipse_exact_custody_index.json`; this is a custody index, not a byte-for-byte copy of the larger Actions report.
+
+**Not accepted**: any new 1009 native original source-correlated coefficient intervals; the true original signed cell6 pz, z² or their signed combination; remaining original seven cells, complete NF410/NF404 scalar, fourth J242 exterior upper, original infinite complement/domain/inverse, W-ODD-NEG, even/whole Weil, RH. No merge into main.
