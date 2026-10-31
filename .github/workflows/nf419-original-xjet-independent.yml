@@ -1,0 +1,51 @@
+name: NF419 independent original 246 source xjet Fraction audit
+on:
+  push:
+    branches: [research/nf419-original-correlated-x-jet]
+    paths:
+      - '.github/workflows/nf419-original-xjet-independent.yml'
+      - 'scripts/local_replay/nf419_original_correlated_xjet_independent_fraction.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-fraction-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf419-original-correlated-x-jet
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rebuild every original coefficient-radius and analytic derivative error exactly
+        run: |
+          python -u scripts/local_replay/nf419_original_correlated_xjet_independent_fraction.py --output /tmp/nf419_independent.json
+          python - <<'PY'
+          import json
+          x=json.load(open('/tmp/nf419_independent.json'))
+          assert x['all_242_plus_4_original_dyadic_coefficients_reconstructed']
+          assert x['all_seven_signed_prime_derivative_branches_match_NF414']
+          assert x['tiny_H_source_and_regular_kernel_source_error_terms_exactly_replayed']
+          assert x['original_native_source_first_and_third_derivative_radii_replayed']
+          assert x['original_finite_plus_moving_arch_standalone_source_u_coefficients_exactly_zero']
+          assert x['original_zprime_9over10_rational_outward_interval_verified_positive']
+          assert not x['second_x_derivative_uniform_remainder_certified']
+          assert not x['complete_original_cellwide_x_Taylor_certified']
+          assert not x['NF404_entire_centered_scalar_decided']
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          PY
+      - name: Custody independent pure Fraction audit
+        run: |
+          mkdir -p notes/data/provisional
+          cp /tmp/nf419_independent.json notes/data/provisional/NF419_original_cell6_xjet_independent_fraction.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notes/data/provisional/NF419_original_cell6_xjet_independent_fraction.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF419 independently reconstruct all source x-jet radii and exact cancellation'
+            git pull --rebase origin research/nf419-original-correlated-x-jet
+            git push origin HEAD:refs/heads/research/nf419-original-correlated-x-jet
+          fi
