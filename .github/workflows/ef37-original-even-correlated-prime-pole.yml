@@ -1,0 +1,26 @@
+name: EF37 original even correlated prime-pole signed norm
+on:
+  push:
+    branches: [research/ef37-original-even-correlated-prime-pole]
+  pull_request:
+    branches: [research/ef36-original-even-row-reduced-source-gradient]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-signed-physical-correlations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original seven-prime and even-pole signed cross physical norm with full arch tail
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef37_original_even_correlated_prime_pole.py
+          python scripts/validate_rpb108_ef37_original_even_correlated_prime_pole.py
+      - name: Verify Weil-Lab open original even obligation
+        run: python scripts/verify_obligation_manifest.py
