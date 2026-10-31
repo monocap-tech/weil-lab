@@ -1,0 +1,52 @@
+{
+  "pass": "NF420",
+  "date": "2026-10-31",
+  "canonical_obligation": "W-ODD-NEG",
+  "source": "Unchanged original NF370 fourth u4, NF407 original 242 selected+4 critical generators, original full seven signed prime powers and NF404 center",
+  "accepted": {
+    "analytic_second_cancellation": "All standalone original u4'(x) terms cancel exactly between derivative of NF419 finite arch multiplier and original moving I0/I1 arch boundaries; z''=A u4''+u4'(B)(K1-K2)+u4(B)R'+I0[u4'']+I1[u4'']+P_reg''-a sinh(x/2)/4",
+    "full_246_source_4096bit_third_Gram": "ACCEPTED",
+    "native_run": "https://github.com/monocap-tech/weil-lab/actions/runs/41233592232",
+    "original_native_Gram_receipt": "notes/data/provisional/NF420_original_full_third_curvature_and_cell6_Taylor_remainder_native.json",
+    "original_full_273_even_basis_source_cross": true,
+    "original_pole_cosh_third": true,
+    "independent_exact_rational_replay": "ACCEPTED",
+    "independent_run": "https://github.com/monocap-tech/weil-lab/actions/runs/41233802188",
+    "independent_receipt": "notes/data/provisional/NF420_original_cell6_independent_sharpened_Taylor_positive_interval.json",
+    "true_original_u4_third_L2_upper_strict": 1334,
+    "true_original_u4_second_global_sup_strict": 2002,
+    "true_original_z_second_x_derivative_uniform_upper": 125457,
+    "original_physical_macro_cell6_interval": [
+      "899/1000",
+      "901/1000"
+    ],
+    "original_true_second_order_remainder": "|z(x)-z(9/10)-z'(9/10)(x-9/10)|<=125457*(x-9/10)^2/2 on original macro interval",
+    "original_cell6_strict_positive_subinterval": [
+      "35999999/40000000",
+      "36000001/40000000"
+    ],
+    "original_cell6_strict_positive_subinterval_decimals": [
+      "0.899999975",
+      "0.900000025"
+    ],
+    "original_cell6_z_micro_lower_approx": "2.818834628832705111e-12",
+    "original_cell6_z_micro_upper_approx": "8.1229601657733658073e-11",
+    "original_true_source_point_and_first_derivative_anchors": "NF416 and NF419 previously accepted",
+    "previous_NF418_sign_radius_expanded_factor": "2.5e9"
+  },
+  "remaining": {
+    "decision_quality_full_original_cell6_z": "OPEN",
+    "original_physical_cells3_7_others": "OPEN",
+    "NF411_seam_and_endpoint_quantitative": "OPEN",
+    "NF410_original_signed_p_z_and_z2": "OPEN",
+    "NF404_original_entire_centered_scalar": "UNDECIDED",
+    "fourth_J242_complement": "OPEN",
+    "domain": "OPEN",
+    "infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "even_whole_Weil": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF421 local analytic source-correlated second x-derivative jets and piecewise one-sided full physical cell Taylor models, all eight cells, true signed NF410 moments, complete original NF404 scalar acceptance.",
+  "custody": "Stacked draft GitHub research branch, unmerged, no source changes or historical artifact rewrites."
+}
