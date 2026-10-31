@@ -75,3 +75,15 @@ must be evaluated with outward rational/Arb intervals, using the exact original 
 - Expected standing split: **accepted original-source Chebyshev SERIES cutoff** if exact runner PASS; **native 64-mode prefix only accepted if native runner PASS**; original cell6 complete integral, all other cells, full NF410/NF404, original fourth exterior J242 upper, even/whole Weil, `W-ODD-NEG`, domain/infinite inverse and RH **OPEN**.
 
 No automatic main merge.
+
+
+## Focused CI outcome — both original-source gates PASSED
+
+**[NF427 original complete source focused Actions #41247665027](https://github.com/monocap-tech/weil-lab/actions/runs/41247665027) — SUCCESS**, with the two independent job conclusions:
+
+1. `original-exact-series-cutoff`: PASS. Original 246-generator NF407 source, true NF406 original J6 seam hashes, original NF423 and NF425 analytic ancestry, exact coefficient source radii, 2048-image endpoint tail, and `4·10^400/2^1500<10^-50` were replayed. Stored source-exact JSON workflow artifact `NF427-source-exact-original-cell6-series-tail-degree1499`, ID **13058804952**, digest **sha256:c158f54b2ccaae9d54dd7034d4b9b3345b70f30c788dd0d37f23c0ec41a3050d**.
+2. `original-native-cheb64`: PASS. All 64 native original source-correlated `a_0,..,a_63` source/image-paid outward rational intervals passed `width<10^-25`, at 2048-bit precision, with the original 99 distinct source-frequency groups (not 99 source generators; original 246 generators were all retained), 2048 shared image indices and complete original NF416 pointwise x=9/10 independent-overlap assertion. Stored all 64 genuine source interval balls as workflow artifact `NF427-original-cell6-source-correlated-64-native-coefficients`, ID **13059717553**, digest **sha256:828954116c736b78aec4be1b45bd5089c318ed7d79711323ad9e1295015b2670**.
+
+Both artifacts expire **2027-01-29** under the current workflow retention policy. Permanent archival of their actual interval JSON in repository custody remains explicitly OPEN; the generator and exact source hashes are committed and reproducible.
+
+**NF427 accepted scope** is (a) complete original J6 Chebyshev SERIES degree-1499 existential cutoff, strict original full-cell residual <2e-45 for the *mathematically defined* coefficient series; (b) the 64 actually calculated and outward certified original physical fixed-branch coefficient intervals. Of the 1500 required coefficients, **1436 (indices 64 through 1499)** remain uncomputed. This is **not** full-cell polynomial evaluation or a complete signed scalar. In particular, the analytic series bound controls only the **omitted modes n>=1500**; it does *not* bound the uncomputed n64..1499 by 1e-50. The original cell6 pz, z², NF410/NF404 and RH remain OPEN.
