@@ -1,0 +1,26 @@
+name: EF33 original even 471-bell signed coercivity via Fourier alias
+on:
+  push:
+    branches: [research/ef33-original-even-bell-alias-coercivity]
+  pull_request:
+    branches: [research/ef32-original-even-471-bell-residual-upper-stop]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-physical-alias-arch-and-prime-floor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original SI10 471-bell entire digamma and prime shift rational energy lower
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef33_original_even_bell_alias_floor.py
+          python scripts/validate_rpb108_ef33_original_even_bell_alias_floor.py
+      - name: Current active even obligation and governance
+        run: python scripts/verify_obligation_manifest.py
