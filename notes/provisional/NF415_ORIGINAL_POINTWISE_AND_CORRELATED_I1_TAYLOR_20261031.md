@@ -1,3 +1,13 @@
+# NF415 correction — original high-frequency obligation paid in Taylor remainder
+
+**Latest source contract supersedes the exploratory order-160 paragraph below.** Original selected source frequencies extend to **882.9140625** (not only 72). The first exact native guard rejected the false assumption 7|f|ρ_s<2, before any I1 result was promoted; that focused run failed and is preserved. On rational panels of t-width 1/100 and original shifted-source half-width ρ_s=1/400, the actual exact upper is 7|f|ρ_s<16 for every original source frequency. The corrected complete original 246-source Taylor degree is **N_s=300**, with N_s−13+1=288 and elementary bound exp(16)<3^16. Consequently the source remainder is rigorously bounded by
+
+R_source < 3^16 * Uraw * 16^288 /288! <1e-42
+
+(the final bound is verified with exact Fraction using actual original Uraw<10^160). Kernel Taylor degree N_K=48, kernel Cauchy remainder <7/40^49, all 360 original rational panels and true source coefficient-radius I1 charge remain unchanged. This correction is additive and prevents a low-frequency proxy from standing in for the actual original source. Only a subsequent focused native successful execution may certify the complete original I1.
+
+---
+
 # NF415 — Original cell-6 I1 source-correlated analytic Taylor integration; pointwise tiny-t theorem
 
 **2026-10-31 PT. Canonical W-ODD-NEG, unchanged NF370 u4; NF407 native 242 selected + four critical; NF404 center and seven signed prime powers unchanged.**
