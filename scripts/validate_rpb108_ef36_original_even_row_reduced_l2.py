@@ -157,7 +157,7 @@ def main():
     cap=scalar_original_dual()
     print('EF36 ORIGINAL same quarter-digamma exact protected-row'
           ' subtraction a_arch(c0)*e: full physical entire-series'
-          ' arch cutoff L2 <103/60<7/4; m0 strict upper',
+          ' arch cutoff L2 <37/20<15/8; m0 strict upper',
           float(arch0),'positive tail exp upper',float(expseries),
           flush=True)
     print('EF36 ORIGINAL genuine 7-prime shifted support L2'
