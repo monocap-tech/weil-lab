@@ -85,7 +85,7 @@ def main():
  assert v.u<0
  v2=square(v)
  assert v2.l==F(boundary['original_exact_log_model_squared_norm_lower'])
- assert v2.u==F(boundary['original_exact_log_model_squared_norm_upper'])/B*1 if False else v2.u>0
+ assert v2.u>0
  assert B*v2.u==F(boundary['original_exact_log_model_squared_norm_upper'])
  shift={e['n']:e for e in seams['original_prime_power_log_shifts']}
  logs={n:I(F(shift[n]['log_lower']),F(shift[n]['log_upper'])) for n in P}
