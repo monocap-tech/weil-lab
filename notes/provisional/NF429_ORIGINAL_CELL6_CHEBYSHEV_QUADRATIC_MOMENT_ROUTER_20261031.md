@@ -69,3 +69,12 @@ The optional contraction loader checks every coefficient interval index from 0 t
 - **No complete response coefficient vector is supplied** by this pass. NF429 must not claim a completed true cell6 z² or pz integral, whole NF410/NF404 signed scalar, original fourth J242 complement upper, W-ODD-NEG, even/whole Weil or RH.
 
 **Disposition:** New quadratic integration obligation becomes an exact moment-contraction problem with a finite native original-cell endpoint receipt. The 1244 missing original source-correlated z modes remain the current numerical blocker. No source swaps, no source-proxy interpolation, no main merge.
+
+
+## Focused original-native verification receipt (post-submission)
+
+**Accepted exact product-algebra and native true-cell raw moments:** [Actions #41249833015](https://github.com/monocap-tech/weil-lab/actions/runs/41249833015) **SUCCESS** on committed Git head c1b3c26191870dfc7db1e1cfbf5b05cce7f9d731. The independent exact-Fraction polynomial-product and nontrivial signed square identity tests PASS. With the original NF406 irrational log7/log8 endpoints and NF407 source-identity preflight, 2048-bit Arb produced **all 2999** actual J0..J2998 dx raw Chebyshev moment intervals, strictly width <1e-40 each. The workflow also independently asserts true_original_cell6_integral_evaluated=false, NF404 signed scalar undecided and W-ODD-NEG/RH OPEN.
+
+Source-native JSON Actions artifact: **#13061000795**, name NF429-original-cell6-2999-raw-Chebyshev-moments, ZIP digest **sha256:eab0d4968217d62d3f1b6fbf4e2077f6a82d89ad85c45d3ddf6e550abc1cb529**; retention expires **2027-01-29**. Generated interval JSON **is not yet independently committed permanently**, although the exact source, script and CI receipt are on the NF429 draft branch.
+
+**NF429 post-CI accepted:** exact Chebyshev quadratic product/contraction identity on original J6, genuine 2999 outward native raw dx Chebyshev moments, fail-closed full-input integral router. **NF429 NOT accepted:** all 1500 z coefficients (only original first 256), actual signed complete cell6 pz/z² or NF410/NF404 signed scalar, fourth exterior bound, W-ODD-NEG, even/whole Weil, RH. The 1244 missing z coefficients are not interpolated, guessed, or set to zero.
