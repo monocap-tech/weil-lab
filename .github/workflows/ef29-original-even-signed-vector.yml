@@ -1,0 +1,33 @@
+name: EF29 original signed even 471 source vector and exact physical cutoff
+on:
+  push:
+    branches: [research/ef29-original-even-mixed-vector-cutoff-laplace]
+  pull_request:
+    branches: [research/ef28-even-pole-neutral-471-bell-reconciled]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  authentic-signed-471-vector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: True SI10 original seven-prime cutoffs and signed digamma mixed 471-vector outward
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef29_original_even_mixed_vector.py
+          python scripts/validate_rpb108_ef29_original_even_mixed_vector.py --output out/ef29_original_even_mixed_vector.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ef29-original-even-471-mixed-outward
+          path: out/ef29_original_even_mixed_vector.json
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Verify actual W-EVEN-FORM manifest
+        run: python scripts/verify_obligation_manifest.py
