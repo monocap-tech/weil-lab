@@ -1,0 +1,58 @@
+name: Weil-Lab NF431 original cell6 source-correlated Chebyshev high block 256 to 511
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf431_original_cell6_correlated_cheb_high_block_native.py'
+      - 'notes/provisional/NF431_ORIGINAL_CELL6_CORRELATED_HIGH_BLOCK_20261031.md'
+      - '.github/workflows/nf431-original-cell6-native-high-256to511.yml'
+permissions:
+  contents: read
+jobs:
+  original-true-source-correlated-modes256-through511:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original high precision Arb/Acb arithmetic
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Certify complete original 246-generator response Chebyshev high modes 256 to 511
+        run: |
+          python3 -m py_compile scripts/local_replay/nf431_original_cell6_correlated_cheb_high_block_native.py
+          python3 scripts/local_replay/nf431_original_cell6_correlated_cheb_high_block_native.py \
+            --start 256 --stop 512 --precision 2048 \
+            --output artifacts/NF431_original_cell6_cheb_coefficients_256_to_511.json
+      - name: Reject incomplete/misaligned source-correlated high-block certificates
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p='artifacts/NF431_original_cell6_cheb_coefficients_256_to_511.json'
+          a=json.load(open(p))
+          assert a['pass']=='NF431'
+          assert (a['mode_start_inclusive'],a['mode_stop_exclusive'])==(256,512)
+          assert a['number_of_certified_new_high_mode_coefficients']==256
+          assert a['number_of_target_coefficients']==1265
+          assert [z['n'] for z in a['coefficients']]==list(range(256,512))
+          assert all(F(z['true_original_cell6_fixed_branch_coefficient_outward_interval'][1])-
+                     F(z['true_original_cell6_fixed_branch_coefficient_outward_interval'][0]) < F(1,10**25)
+                     for z in a['coefficients'])
+          assert a['original_all_five_post_seam_primes_retained']==[2,3,4,5,7]
+          assert a['original_two_neither_branches']==[8,9]
+          assert a['original_four_selected_plus_critical_count']==246
+          assert a['original_analytic_global_transfer_pointwise_NF416_overlap_pass'] is True
+          assert a['all_1265_coefficients_certified'] is False
+          assert a['true_cell6_signed_pz_and_z2_integrated'] is False
+          assert a['NF404_complete_signed_scalar_decided'] is False
+          assert a['W_ODD_NEG']==a['RH']=='OPEN'
+          print('NF431 PASS: true original source high block only; remaining 753 modes and scalar OPEN')
+          PY
+      - name: Retain original 256 new high Chebyshev coefficient interval certificates
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF431-original-cell6-native-high-256-through-511
+          path: artifacts/NF431_original_cell6_cheb_coefficients_256_to_511.json
+          if-no-files-found: error
