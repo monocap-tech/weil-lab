@@ -1,0 +1,79 @@
+{
+  "pass": "NF431",
+  "standing": "ACCEPTED original 246-source Chebyshev high coefficients a256..a511 and exact signed partial P511; NOT original complete z integral",
+  "repository": "monocap-tech/weil-lab",
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_true_cell6": "(log(7)-11/10,log(8)-11/10)",
+  "original_source_generator_count": 246,
+  "original_cell6_prime_branches": {
+    "post_seam": [
+      2,
+      3,
+      4,
+      5,
+      7
+    ],
+    "neither": [
+      8,
+      9
+    ]
+  },
+  "original_active_obligation": "W-ODD-NEG",
+  "original_exact_NF404_center": "6677356497477490213/4611686018427387904",
+  "native_precision_bits": 2048,
+  "certified_new_indices": {
+    "first": 256,
+    "last": 511,
+    "count": 256
+  },
+  "prior_NF428_certified_indices": {
+    "first": 0,
+    "last": 255,
+    "count": 256
+  },
+  "current_total_source_certified": 512,
+  "current_NF430_required_modes": 1265,
+  "remaining_uncertified_original_modes": 753,
+  "native_high256": {
+    "workflow_run": 41251524378,
+    "workflow_url": "https://github.com/monocap-tech/weil-lab/actions/runs/41251524378",
+    "source_head_sha": "f4086e94f9bcb8d9d79c5072697436b270bfdd4c",
+    "artifact_id": 13060884765,
+    "zip_digest_sha256": "cf2c109c9b253a4d50c8bb2f35c10704ef2ada77de6f4b0c514c8115c529588e",
+    "original_json_sha256": "10c93ca7f4b7779334fd686ef1fd348f79fe873068af3897c2a936487dbdcbf8",
+    "all_native_outward_width_below": "1e-25",
+    "independent_nf416_true_physical_x9over10_overlap": true
+  },
+  "native_high32": {
+    "workflow_run": 41251733247,
+    "workflow_url": "https://github.com/monocap-tech/weil-lab/actions/runs/41251733247",
+    "artifact_id": 13061143926,
+    "zip_digest_sha256": "5d5986d02928afd34cc6aada380e302b6acc9373add6c04b969f6d7e5968c940",
+    "original_json_sha256": "c543a4c898ef1f167fe2b65d60b4f27f11bd35c130cd3bc14388740b1ab14f37",
+    "original_abs_indices": [
+      256,
+      287
+    ],
+    "all32_interval_overlaps_with_high256_verified": true
+  },
+  "exact_P511_partial": {
+    "workflow_run": 41251809577,
+    "workflow_url": "https://github.com/monocap-tech/weil-lab/actions/runs/41251809577",
+    "artifact_id": 13061626148,
+    "zip_digest_sha256": "9d6eb44c150946cfefa25f307089eceaadc646c448f03d06b8e7ac3323a0edbd",
+    "original_json_sha256": "e04a0bc019128509afd0d6e0a37b8da9b6c397ac5260854d03f7862c3bb70418",
+    "fraction_accepted_width_less_than": "1e-40",
+    "source_signed_pz_mid_approx": "-2.8272867005838606282038858979779609463145e-22",
+    "source_z2_mid_approx": "3.5348473457388135980100367591935527607383e-22",
+    "signed_4pP_plus_2P2_mid_approx": "-4.2394521108578153167954700735247382637815e-22",
+    "rigorous_partial_signed_upper_negative": true,
+    "true_original_cell6_integral_certified": false
+  },
+  "artifacts_expire": "2027-01-29",
+  "generated_original_interval_JSON_permanently_committed": false,
+  "note": "The custody index records source and generated JSON SHA256, CI receipts and exact arithmetic signs. The full original JSON numeric endpoints remain in the linked Actions artifacts, not this summary index. A partial P511 sign does not bound missing n512..n1264 and cannot decide original full cell6 signed scalar.",
+  "NF410_NF404_full_signed_scalar_decided": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
