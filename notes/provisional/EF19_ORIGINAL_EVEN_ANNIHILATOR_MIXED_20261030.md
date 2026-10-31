@@ -67,7 +67,23 @@ Let `b_e(w)=q0(e,w)` on F and `C0=q0|_F>=mu I`, `mu=17/25000` under inherited or
 
 When the existential bound above holds, its numerator is `>1/64`. But **NO numerical Schur certificate has been obtained**, because the original signed positive denominator `q0(f_epsilon,f_epsilon)` is uncomputed and f_epsilon has very high differential order.
 
-Crucially `||f_epsilon||_{L²}` grows at least on the order of `epsilon^(-1/2)` for the leading derivative term; its energy norm is even more demanding. Sending epsilon to zero **does not** give a useful uniform normalized inverse-correction lower. Do not promote the unnormalized `>1/8` into a spectral or whole-form sign result. This high-order method is an analytic existence/custody improvement, not an efficient numeric proof algorithm.
+### Proven normalization METHOD STOP: the narrow bump worsens the real Schur bound
+
+Because `P(D)` is **monic and even order 938**, and the bump `Phi_epsilon` scales as `epsilon^937 theta((x-x0)/epsilon)`, the leading derivative `D^938 Phi_epsilon` has L²-squared norm proportional to `epsilon^(-1)`, with a strictly positive coefficient `c=(1/2)||theta^(938)||²_{L²(R)}>0` from the two reflected, disjoint lobes. The next-highest order in `P(D)` is **936**, with squared norm scaling `epsilon^(+3)`: all lower derivative coefficients are fixed, even if individually enormous. Consequently,
+
+`||f_epsilon||²_{L²(I)} = c/epsilon (1+o(1))`.
+
+By the genuinely original SI10/EF15 complement floor, conditional on its closed-form analytic proof,
+
+`q0(f_epsilon,f_epsilon) >= mu ||f_epsilon||² >= (mu*c)/(2 epsilon)` for small enough epsilon.
+
+Yet the ORIGINAL signed mixed numerator tends to the finite value `-J`. Therefore the precise true original cofinite **variational Schur lower obtained from THIS test family** satisfies
+
+`0 <= |q0(e,f_epsilon)|²/q0(f_epsilon,f_epsilon) = O(epsilon) -> 0`.
+
+This is an actual **localized-annihilator method-class STOP**: shrinking epsilon to expose the jump more cleanly makes the normalized inverse-correction certificate **worse**, not better. A raw unnormalized `>1/8` is not a useful positive lower on the inverse Schur energy (it can be altered by rescaling f). The original strict nonzero mixed operator remains correct; it is not numerically resolved by this narrow-bump limit.
+
+The exact-rational validator separately checks the formal derivative scaling exponents `-1` and `+3`. Neither these exponents nor a green workflow substitutes for a certified finite physical `q0(e,f)` and `q0(f,f)` at an explicit epsilon.
 
 **Next EF20 acceptance:** either (a) exhibit an explicitly fixed epsilon and a **certified original full signed mixed numerator and full signed positive denominator** for this exact F trial, or (b) replace order-938 annihilation by a verified lower-order/source-conditioned finite nullspace construction with both actual mixed and energy-bound measurements; then apply the original cofinite variational inequality. Do not derive a false `||B0||` floor solely from point jump magnitude, do not restart conservative-cap dominance and do not assume the 469-dimensional source Gram is well-conditioned.
 
