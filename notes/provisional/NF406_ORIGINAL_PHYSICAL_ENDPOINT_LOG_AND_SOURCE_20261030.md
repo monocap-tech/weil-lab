@@ -106,3 +106,26 @@ The true unchanged original source is `u4 = F T e4 - (F-JX)(I+Y0)Te4`, where `X=
 **Not measured:** bounded regular physical `h=g-q`, signed `<h,q>`, their original complete norm, true physical J242-perpendicular fourth lowband upper, infinite exterior form inverse, general original operator domain, W-ODD-NEG, even/whole Weil and RH. There are no new signed source kernel cells and no main merge.
 
 **Next bold NF407:** original source-correlated **regularized** compact physical integral with all signed arch/prime/pole terms, original genuine support seams and rigorous numerical error. Do not permit the q-only power bound to stand in for the full physical response.
+
+
+## E. Exact original seven-prime support discontinuity partition — accepted
+
+NF406 also source-certified the exact physical support mesh created by all **seven actual original prime-power shifts**. For each `n∈{2,3,4,5,7,8,9}`, the two `u4(x±log n)` terms enter/leave support at the precise symmetric roots
+
+```
+x = ±(B - log n),   B=11/10.
+```
+
+The pure Fraction replayer `scripts/local_replay/nf406_original_prime_support_partition_exact.py` computes genuine **rational intervals for every log n** using a 128-term positive arctanh series and explicit geometric remainder, no double/assumed ordering:
+
+```
+z=(n-1)/(n+1)
+log n =2*sum_{k>=0} z^(2k+1)/(2k+1)
+R_128 <2*z^257/(257*(1-z²)).
+```
+
+All 17 nodes (14 distinct shifted seams, one central 0, and ±B endpoints) are strictly ordered with disjoint rational outward enclosures. They partition `[-B,B]` into **16 physical open cells**, preserving the entire true signed prime multiplier. Two easily overlooked seams matter: the `n=3` steps lie approximately `±0.00138771133` from x=0, and the `n=9` translated support has a very narrow overlap `2B-log 9≈0.00277542266`, not zero. A uniform mesh that misses either is not a rigorous original source integral.
+
+Independent original-source exact arithmetic Actions [#41156302025](https://github.com/monocap-tech/weil-lab/actions/runs/41156302025) **SUCCESS**. Durable `notes/data/provisional/NF406_original_prime_support_partition_exact.json`; no original true positive norm yet measured.
+
+**NF407 quadrature contract refined:** integrate the regular `h=g-q` separately on these 16 actual physical cells, with physical original arch translated t-support seam splitting as already derived, and compute signed h/q cross separately; pay endpoint log exactly and verify all original 7 signed shifts. The native rational source-point workflow is independent and may be accepted only on its observed green result.
