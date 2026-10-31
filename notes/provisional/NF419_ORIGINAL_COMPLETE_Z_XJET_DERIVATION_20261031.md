@@ -1,3 +1,33 @@
+# NF419 additional exact correlation identity — eliminates original u(x)
+
+The full original finite arch multiplier and BOTH moving original I0/I1 boundary terms simplify much further than the initial interface cancellation.
+
+For d=B-x, t1=2d, t2=2(B+x), v=u4(B), c=psi(1/4)-ln(pi)+(J(t2)+Phi(d))/2 and L=ln(B/d), note the **elementary exact kernel identity**
+
+1/(4 sinh(d/2))+1/(4 cosh(d/2))
+=exp(d/2)/(2 sinh d)
+=exp(-d/2)/(1-exp(-2d))
+=K(t1).
+
+Therefore Phi'(d)=1/d-2 K(t1) and c'(x)=-K(t2)-1/(2d)+K(t1). Substituting into the originally differentiated finite part,
+
+A_finite'(x)=(c+L/2)u'(x)+[K(t1)-K(t2)]u(x)-v/(2d).
+
+The independently differentiated actual symmetric I0 and one-sided I1 moving boundaries sum to
+
+B_move=K(t1)(v-u(x))+K(t2)(u(x)+v).
+
+Consequently **ALL standalone u(x) dependence cancels exactly**:
+
+A_finite'+B_move
+=(c+L/2)u'(x)+v[K(t1)+K(t2)-1/(2d)].
+
+This identity retains all original physical domain limits and boundary value v, is valid on each original positive open physical cell and DOES NOT commute away the genuine seven-prime derivative seams. For full original derivative z', add original source-correlated I0[u'] + I1[u'], derivative of all seven original signed prime continuous branches, and minus the original dyadic centered pole derivative. The native script computes BOTH independent algebraic forms and checks their 1024-bit Arb enclosures overlap before promoting the reduced, correlation-preserving form. No stand-in infinite convolution, no finite-difference shadow.
+
+This is a structural advance even if the first derivative numeric CI method-stops. The residual NF419 numerical first-jet and NF420 entire x-interval second-order remainder are separately typed obligations. A bare pointwise derivative still cannot decide NF404 scalar.
+
+---
+
 # NF419 — Correlation-preserving first x-jet of true original z
 
 **Date:** 2026-10-31 PT. Canonical W-ODD-NEG unchanged; physical original NF370 fourth u4, NF407 242 selected+4 critical source functions, original seven signed prime powers, B=11/10 and NF404 pole center unchanged. This is a direct continuation of source-certified full original z at x=9/10 in NF416; NF418 coarse whole-cell envelopes supplied the need for finer source-correlated x-derivatives.
