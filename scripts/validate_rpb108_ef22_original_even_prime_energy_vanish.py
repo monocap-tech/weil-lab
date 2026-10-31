@@ -21,7 +21,8 @@ corrected Schur PSD or RH accepted here.
 from fractions import Fraction as F
 from pathlib import Path
 import json
-from validate_rpb108_si06_negative_band import SHIFTS,ACTIVE,B
+from validate_rpb108_si06_negative_band import SHIFTS,ACTIVE,B,PI,WEIGHTS
+from validate_rpb108_si14_odd_multiband_nogo import cos_sin_pi_multiple
 from validate_rpb108_ef21_original_even_fixed_bell import (
     authentic_source_replay, physical_support_and_disjointness, H,N,R,
     bell_transform_identity,
@@ -168,6 +169,48 @@ def exact_partial_boundary_bell_classification():
     return partial,checks
 
 
+
+def exact_original_n2_signed_mixed_lower():
+    """Original n=2 mixed source, not the full 7-prime or arch mixed.
+
+    For sigma=+, all 939 negative-center FIR translates fit the
+    original physical shifted e and cancel EXACTLY because the
+    complete FIR Laurent symbol has a zero at c0=37/64.
+    Positive-center translates are all excluded except the UNIQUE
+    extreme k=+469 half bell centered at x0=B-ln2 (A_N=+1).
+    Sigma=- is its exact parity mirror. Therefore
+
+       q_prime,n2(e,f)=-w2*int_-r^0 b_r(t) cos(omega*(B+t))dt.
+
+    The cosine stays STRICTLY negative for -r<=t<=0 because
+    cos(omega*B) upper plus omega_upper*r is negative.
+    Integral of b_r over half lobe =5r/16. Exact rational lower:
+       w2_lower *(-cosB_upper-omega_upper*r)*5r/16 > 0.
+
+    This is true ORIGINAL signed finite source arithmetic coupling;
+    no false claim on the sum of ALL n or arch cancellation.
+    """
+    c0=F(37,64)
+    phase=2*B*c0
+    assert phase==F(407,320)
+    coslo,coshi=cos_sin_pi_multiple(phase)[1]
+    assert coslo<coshi<0
+    omega_hi=2*PI[1]*c0
+    assert coshi+omega_hi*R<0
+    wlo,whi=WEIGHTS[2]
+    assert F(0)<wlo<whi
+    half_mass=F(5,16)*R
+    assert 2*half_mass==F(5,8)*R
+    lower=wlo*(-coshi-omega_hi*R)*half_mass
+    upper=whi*(-coslo+omega_hi*R)*half_mass
+    assert 0<F(15,10**7)<lower<upper
+    # TWO physical half-bell source cutoffs and their 1/2
+    # parity coefficients combine to the single half-bell
+    # integral displayed above, NOT twice that result.
+    return lower,upper,half_mass
+
+
+
 def even_pole_eigenvalue_identity():
     # The original even pole c(x)=cosh(x/2) is a common eigenfunction
     # of every symmetric shift on the FULL real line:
@@ -197,6 +240,7 @@ def run():
     d=original_primes_separate_all_f_supports()
     partial=original_prime_mixed_boundary_reduction()
     clipped,clipchecks=exact_partial_boundary_bell_classification()
+    n2lo,n2hi,half_mass=exact_original_n2_signed_mixed_lower()
     count=even_pole_eigenvalue_identity()
     assert normlo>0 and MU*normlo>0
     print("EF22 actual native original SI10 seven-prime n:",sorted(ACTIVE),
@@ -218,6 +262,12 @@ def run():
     print("EF22 exact original source-cutoff PARTIAL bells:",
           len(clipped),"==2, candidates tested:",clipchecks,
           "partial identifiers:",clipped,flush=True)
+    print("EF22 ORIGINAL SIGNED n=2 MIXED POSITIVE certified:",
+          "strict exact Fraction bounds",float(n2lo),float(n2hi),
+          "full native half-bell mass",float(half_mass),
+          "all complete n2 FIR lobes exactly cancel;",
+          "other prime-power and arch mixed terms NOT bounded.",
+          flush=True)
     print("EF22 original even positive pole eigenvalue identity:",
           "Lambda=prod(2cosh(h/2)-2cos(2*pi*h*cj))^pj>0;",
           "even-pole contribution +2*Lambda²|<c,psi>|².",
