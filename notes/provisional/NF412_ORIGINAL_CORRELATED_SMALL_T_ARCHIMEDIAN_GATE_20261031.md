@@ -1,3 +1,5 @@
+**Correction execution reconciled:** Focused original source-scope audit [Actions #41225033303](https://github.com/monocap-tech/weil-lab/actions/runs/41225033303) **SUCCESS**. Two separate durable receipts are present: `notes/data/provisional/NF412_original_critical_only_method_stop.json` (four-critical Gram is NOT true u4'') and `notes/data/provisional/NF412_original_full_source_triangle_stop.json` (exact true original 242+4 source triangle, bound too loose). This complete-source absolute triangle upper is of order 10^144 for ||u4''||₂ and order 10^124 for the whole-support h=10^-10 tiny-t error upper, enormously above the 9e-17 desired eps; **these are only UPPERS, not lower bounds**. Earlier green #41224819791 is superseded as to its claimed full-source norm. Correct mathematical standing is full 246 physical covariance NOT MEASURED, original z and NF404 OPEN.
+
 # NF412 correction — supersedes the earlier proposed source-curvature certificate
 
 **CURRENT AUTHORITATIVE STATUS: FOUR-CRITICAL-ONLY APPROXIMATION IS A MATHEMATICAL METHOD STOP, NOT CERTIFIED ORIGINAL u4.**
