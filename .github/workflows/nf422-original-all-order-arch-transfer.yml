@@ -1,0 +1,60 @@
+name: NF422 exact all-order original moving-arch transfer and parity audit
+on:
+  push:
+    branches: [research/nf422-original-all-order-arch-transfer]
+    paths:
+      - '.github/workflows/nf422-original-all-order-arch-transfer.yml'
+      - 'scripts/local_replay/nf422_original_all_order_arch_transfer_exact.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source-exact-all-orders:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf422-original-all-order-arch-transfer
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original full 242+4 odd-source endpoint and n=1..12 formal transfer
+        run: |
+          python -m py_compile scripts/local_replay/nf422_original_all_order_arch_transfer_exact.py
+          python -u scripts/local_replay/nf422_original_all_order_arch_transfer_exact.py --output /tmp/nf422_original_transfer.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p=json.load(open('/tmp/nf422_original_transfer.json'))
+          assert p['same_original_242_selected_and_4_critical_odd_source']
+          assert p['all_original_orders_1_through_12_inductively_replayed_exact_fraction']
+          assert [x['derivative_order'] for x in p['all_order_formal_replay']]==list(range(1,13))
+          assert p['NF421_original_analytic_third_identity_as_written_needs_correction']
+          assert p['NF421_original_conservative_third_derivative_numerical_upper_preserved']
+          assert p['NF421_verified_original_Mz3_upper_unchanged']==1540338
+          assert p['exact_original_macro_cell6_interval']==['899/1000','901/1000']
+          assert len(p['all_order_formal_replay'])==12
+          assert F(p['original_NF421_cubic_error_at_macro_interval_edge_exact'])>F(1,10000)
+          assert p['conditional_macro_panels_required_as_constructed']==10000
+          assert not p['conditional_10000_center_complete_original_second_jet_certificates_available']
+          assert F(p['conditional_macro_L2_error_strict_upper_exact'])<F(p['NF409_provisional_original_L2_error_budget_exact'])
+          assert p['original_Mz3_local_macro_only_not_entire_original_cell6']
+          assert not p['complete_original_entire_cell6_model_certified']
+          assert not p['NF404_original_complete_centered_scalar_decided']
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          PY
+      - name: Custody exact transfer and historical parity correction
+        run: |
+          target=notes/data/provisional/NF422_original_all_order_arch_transfer_exact.json
+          mkdir -p notes/data/provisional
+          cp /tmp/nf422_original_transfer.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF422 original complete all-order arch recurrence, NF421 parity correction and local coverage gate'
+            git pull --rebase origin research/nf422-original-all-order-arch-transfer
+            git push origin HEAD:refs/heads/research/nf422-original-all-order-arch-transfer
+          fi
