@@ -943,7 +943,7 @@
       "kind": "original-even-physical-pole-two-vector-schur-residual-audit",
       "scope": "W-EVEN-FORM: true first original SI10 e and EF21 fixed F469 even cofinite f, pole-free signed A/M/E and actual c=cosh(x/2) charges u,v. Exact restricted 2x2 pole-corrected S2=A-M²/E+[2/(1+2v²/E)](u-Mv/E)²; source u in (-.5,-.49), 2u² in (.48,.50), selected v<1e-700 and physical norm ||f||>1e186 give pole update Delta in (.46,.51), but A and R too wide to decide S2 or full 469D S.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/414",
-      "verification": "Native SI06/SI12/EF24 source rational trig/hyperbolic and original 107/469 FIR Laplace at lambda 1/2, 340-digit a210 norm lower, 3 exact rational 2x2 Schur identities; focused EF27 CI PENDING; full finite 469D source S and independent analytic domain audit OPEN.",
+      "verification": "First focused Actions #41229142104 FAILED due Python float(10**372) reporting overflow after source u and v evaluations; corrected source script rerun #41231227149 SUCCESS (job 124625688130), exact original SI06/SI12 source u~-0.49886081732, 2u²~0.49772423, selected v<1e-700 and pole update Δ_f in (0.46,0.51), 2x2 rational Schur and governance PASS; no S2 sign or original 469D Schur.",
       "repo_path": "notes/provisional/EF27_EVEN_POLE_CORRECTED_TWO_VECTOR_SCHUR_20261031.md"
     }
   },
