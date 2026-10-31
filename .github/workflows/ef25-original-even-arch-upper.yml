@@ -1,0 +1,26 @@
+name: EF25 original even arch mixed and complete energy upper
+on:
+  push:
+    branches: [research/ef25-original-even-arch-energy-jensen-bound]
+  pull_request:
+    branches: [research/ef24-original-even-prime-edge-outward-intervals]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-arch-upper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact SI06 original digamma global envelope and true fixed physical derivative Jensen bound
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef25_original_even_arch_upper.py
+          python scripts/validate_rpb108_ef25_original_even_arch_upper.py
+      - name: Verify canonical W-EVEN-FORM obligation
+        run: python scripts/verify_obligation_manifest.py
