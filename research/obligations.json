@@ -67,7 +67,8 @@
     "ef24_source_signed_edge_interval": "Native EF24 signed original M5 NEGATIVE, M7 POSITIVE and arithmetic Mprime NEGATIVE accepted #41224768387 with 340-digit outward integer SI06 source and governance. New dimensionless physical-normalized arithmetic-only upper <1/400 from a210 original FIR source and cofinite gamma conditional on native SI10 analytic proof; revised CI pending. Arch full M/E, Schur, RH OPEN.",
     "ef25_arch_real_energy_upper": "Actual original arch symbol inequality -8<a(xi)<8+ln(1+|xi|), EF21 fixed physical f derivative/FIR disjoint norm and Jensen give full original pole-free E=q_arch(f,f)<30||f||²; first original e strong-domain ||arch(D)e||<47, only a mixed NORM upper, not sign. Parent EF24 arithmetic source Actions #41225073437 PASS and small arithmetic-only normalized upper. Analytic audit independent, no whole even Schur/RH closure.",
     "ef26_arch_laplace": "EF26 original digamma spectral identity and native SI10 even FIR Laplace convolution give exact full signed arch mixed real positive-product half-integer series, finite signed sufficient check with all m>=2 negative. Source CI pending; no assertion of full M_arch sign until logs. Original E arch upper EF25 accepted; still no complete even Schur or RH.",
-    "ef27_original_even_pole_two_vector": "Native EF26 expanded #41227759868 PASS original selected R>1e-193. EF27 attaches exact real original even positive pole to restricted original e/f matrix; true first source diagonal pole order 0.5 while selected universal FIR detector pole overlap extremely small and its rank-one restricted Schur Delta near 0.5. No sign of S2 or finite corrected 469D S_even; CI and source-domain independent review separate."
+    "ef27_original_even_pole_two_vector": "Native EF26 expanded #41227759868 PASS original selected R>1e-193. EF27 attaches exact real original even positive pole to restricted original e/f matrix; true first source diagonal pole order 0.5 while selected universal FIR detector pole overlap extremely small and its rank-one restricted Schur Delta near 0.5. No sign of S2 or finite corrected 469D S_even; CI and source-domain independent review separate.",
+    "ef28_pole_neutral_moment_kernel": "Native original SI10 469 even source rows plus 1 genuine positive pole on 471 physically disjoint C5 even bells yields exact nonzero source/pole-neutral kernel, physical Gram dI, original signed E<34||f||². Actions #41231565079 SUCCESS, original numeric moment matrix and residual δ uncomputed. Clean reconciling branch after EF27 parent verified update. Full 469D even Schur and RH open."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -945,6 +946,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/414",
       "verification": "First focused Actions #41229142104 FAILED due Python float(10**372) reporting overflow after source u and v evaluations; corrected source script rerun #41231227149 SUCCESS (job 124625688130), exact original SI06/SI12 source u~-0.49886081732, 2u²~0.49772423, selected v<1e-700 and pole update Δ_f in (0.46,0.51), 2x2 rational Schur and governance PASS; no S2 sign or original 469D Schur.",
       "repo_path": "notes/provisional/EF27_EVEN_POLE_CORRECTED_TWO_VECTOR_SCHUR_20261031.md"
+    },
+    "EF28": {
+      "kind": "native-even-pole-neutral-471-compact-bell-source-kernel",
+      "scope": "471 real-even C5 compact disjoint bell pairs, 469 original SI10 source constraints and one actual cosh pole constraint: guaranteed nonzero kernel; exact physical Gram dI, d=231/8388608, full original signed E<34||f||², conditional SI10 cofinite floor. Original mixed-gradient residual δ can certify negative original even direction, but actual source matrix, δ and first-source diagonal A not computed.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/419",
+      "verification": "EF28 focused original SI10 107 clusters/469 even rows + one TRUE cosh pole row, 471 rational-grid even C5 bell pairs/942 disjoint supports, exact Gram dI d=231/8388608 and derivative/physical Jensen original arch+all 7-prime E<34||f||², exact rank-nullity 470x471 and finite Fraction projection toy: Actions #41231565079 SUCCESS, job #124626681315, native manifest/governance PASS. NO actual original 470x471 moment matrix numerical entries, signed g, residual delta, original A or Schur sign; independent analytic original form audit OPEN.",
+      "repo_path": "notes/provisional/EF28_ORIGINAL_EVEN_471_BELL_POLE_NEUTRAL_MOMENTS_20261031.md"
     }
   },
   "obligations": [
@@ -1103,10 +1111,11 @@
         "EF24",
         "EF25",
         "EF26",
-        "EF27"
+        "EF27",
+        "EF28"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF27: original even positive pole reattachment on one authentic SI10 e/F469 detector gives exact S2=A-M²/E+Delta, with true source u=<cosh,e> in (-.5,-.49), selected pole overlap v<1e-700 and source physical ||f||>1e186, thus true Delta in (.46,.51). Parent EF26 original M<0 and tiny R>1e-193 verified; source upper |A|<87 and R<3.3e6 too weak for S2 sign. This is an explicit single-source scalar Schur inference STOP, not a theorem-level obstruction. EF28 should compute conditioned original A and R or design a low-moment source-exact complement / whole finite corrected 469D matrix entry; W-EVEN-FORM OPEN; odd/whole Weil/RH OPEN."
+      "next_action": "EF28: 470 actual original SI10 even-source plus positive-pole constraints on 471 compact C5 even bell pairs guarantee nonzero source/pole-neutral cofinite kernel and exactly conditioned physical Gram. Native full signed E<34||f||². For first source g_l=q0(e,phi_l), finite δ=dist(g,range H^T) gives selected inverse response δ²/(34d) if δ>0 and sufficient negative even criterion δ²>34d*(A+2u²). Actual H/g/δ/A uncomputed. EF29 must certify true original residual/diagonal or STOP method. Full even/odd/Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1319,6 +1328,17 @@
         "scripts/validate_rpb108_ef27_even_pole_schur_audit.py"
       ],
       "interpretation": "True first original SI10 even source pole charge and native F469 selected pole overlap; restricted exact 2x2 Schur update Delta in (.46,.51) under analytic domain; bounds on A,R do not certify S2 or full 469D sign.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF28-original-even-471-bell-source-pole-moment",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef28_pole_neutral_moment_kernel.py"
+      ],
+      "interpretation": "Native 469-even-source plus pole constraints on 471 disjoint C5 even tests; physical Gram dI and actual E upper; source residual δ NOT evaluated.",
       "cadence": "per-update"
     }
   ]
