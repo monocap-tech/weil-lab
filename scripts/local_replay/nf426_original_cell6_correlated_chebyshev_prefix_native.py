@@ -160,7 +160,7 @@ def main():
     Kpole=(A(1).digamma()+ (A(F(1,2)).digamma()))/2 -logpi-A(B)
     for n in range(modes):
         # Analytically joint m0+psi(beta), beta->0, no pole split.
-        res[n]+=A(pole)*(Kpole*(plus[n]-minus[n])+plus_x[n]+minus_x[n])/2
+        res[n]+=(A(pole)*(Kpole*(plus[n]-minus[n])+plus_x[n]+minus_x[n])/2).real
     for (nprime,base),h,w in zip(PRIMES,hshifts,weights):
         pplus=(R(F(1,2))*h).exp()
         pminus=(R(F(-1,2))*h).exp()
