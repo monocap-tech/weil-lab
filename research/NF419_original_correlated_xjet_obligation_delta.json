@@ -50,5 +50,11 @@
     "original_finite_and_boundaries_direct_reduced_interval_overlap": true,
     "tiny_t_I0_H_analytic": true,
     "original_I0_I1_full": true
+  },
+  "independent_exact_Fraction_audit": {
+    "status": "SUCCESS",
+    "run": "https://github.com/monocap-tech/weil-lab/actions/runs/41232449149",
+    "receipt": "notes/data/provisional/NF419_original_cell6_xjet_independent_fraction.json",
+    "scope": "all original 242+4 exact dyadic source coefficients; all source and kernel Taylor tails; original seven signed branch checks; source first and third derivative radius; symbolic standalone u4(x) cancellation; true original source-positive zprime interval; NO whole-cell Taylor or NF404 scalar"
   }
 }
