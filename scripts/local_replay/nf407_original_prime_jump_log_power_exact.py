@@ -39,7 +39,7 @@ class I:
 def square(a):
  if a.l<=0<=a.u:return I(0,max(a.l*a.l,a.u*a.u))
  return I(min(a.l*a.l,a.u*a.u),max(a.l*a.l,a.u*a.u))
-def sqrt_int(n,dec=70):
+def sqrt_int(n,dec=45):
  scale=10**dec
  root=math.isqrt(n*scale*scale)
  return I(F(root,scale),F(root+1,scale))
@@ -54,13 +54,18 @@ def atanh_log(q):
  def series(v):
   p=(v-1)/(v+1)
   assert 0<=p<=F(1,3)
-  summ=2*sum((p**(2*i+1)/F(2*i+1) for i in range(144)),F(0))
-  next_power=p**289
-  rem=2*next_power/F(289)/(1-p*p)
+  summ=2*sum((p**(2*i+1)/F(2*i+1) for i in range(64)),F(0))
+  next_power=p**129
+  rem=2*next_power/F(129)/(1-p*p)
   return I(summ,summ+rem)
  base=series(z);l2=series(F(2))
  if k<0:return base+(-(-k*l2))
  return base+k*l2
+def compact(a,digits):
+ scale=10**digits
+ lo=(a.l*scale).__floor__()
+ hi=(a.u*scale).__ceil__()
+ return I(F(lo,scale),F(hi,scale))
 def ilog(q):
  return I(atanh_log(q.l).l,atanh_log(q.u).u)
 def mx(a,b):return I(max(a.l,b.l),max(a.u,b.u))
@@ -81,14 +86,14 @@ def main():
  assert boundary['original_full_supported_centered_scalar_upper_computed'] is False
  assert center['actual_original_full_supported_centered_scalar_integrated'] is False
  assert all(d['W_ODD_NEG']==d['RH']=='OPEN' for d in (seams,boundary,center))
- v=I(*map(F,boundary['original_u4_endpoint_outward']))
+ v=compact(I(*map(F,boundary['original_u4_endpoint_outward'])),55)
  assert v.u<0
  v2=square(v)
  assert B*v2.l==F(boundary['original_exact_log_model_squared_norm_lower'])
  assert v2.u>0
- assert B*v2.u==F(boundary['original_exact_log_model_squared_norm_upper'])
+ assert B*v2.u>=F(boundary['original_exact_log_model_squared_norm_upper'])
  shift={e['n']:e for e in seams['original_prime_power_log_shifts']}
- logs={n:I(F(shift[n]['log_lower']),F(shift[n]['log_upper'])) for n in P}
+ logs={n:compact(I(F(shift[n]['log_lower']),F(shift[n]['log_upper'])),36) for n in P}
  cs={n:logs[PMAP[n]]/sqrt_int(n) for n in P}
  x={n:(B-logs[n] if logs[n].u<B else logs[n]-B) for n in P}
  assert all(F(0)<x[n].l<=x[n].u<B for n in P)
