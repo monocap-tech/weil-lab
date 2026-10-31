@@ -65,7 +65,8 @@
     "ef22_prime_energy_vanish": "Exact support nonoverlap for original EF21 fixed physical 469-source even FIR bell means true original 7-prime q_prime(f,f) identically zero. This is an original-object cancellation, not dropping arithmetic by assumption: mixed prime remains finite boundary integrals. Only original arch E remains, no numerical upper, effective Schur and RH OPEN.",
     "ef23_signed_arithmetic_sparse": "Original EF22 source and governance #41221940116 PASS: exact physical seven-prime energy zero and n2 mixed positive source interval. EF23 exact SI10 native physical source-cutoff geometry and original FIR at c0 yield arithmetic mixed M2+M5+M7, rest n3,n4,n8,n9 exactly vanish. The 211/39 original edge coefficients are exact algebra not evaluated signed interval; arch and normalized Schur OPEN.",
     "ef24_source_signed_edge_interval": "Native EF24 signed original M5 NEGATIVE, M7 POSITIVE and arithmetic Mprime NEGATIVE accepted #41224768387 with 340-digit outward integer SI06 source and governance. New dimensionless physical-normalized arithmetic-only upper <1/400 from a210 original FIR source and cofinite gamma conditional on native SI10 analytic proof; revised CI pending. Arch full M/E, Schur, RH OPEN.",
-    "ef25_arch_real_energy_upper": "Actual original arch symbol inequality -8<a(xi)<8+ln(1+|xi|), EF21 fixed physical f derivative/FIR disjoint norm and Jensen give full original pole-free E=q_arch(f,f)<30||f||²; first original e strong-domain ||arch(D)e||<47, only a mixed NORM upper, not sign. Parent EF24 arithmetic source Actions #41225073437 PASS and small arithmetic-only normalized upper. Analytic audit independent, no whole even Schur/RH closure."
+    "ef25_arch_real_energy_upper": "Actual original arch symbol inequality -8<a(xi)<8+ln(1+|xi|), EF21 fixed physical f derivative/FIR disjoint norm and Jensen give full original pole-free E=q_arch(f,f)<30||f||²; first original e strong-domain ||arch(D)e||<47, only a mixed NORM upper, not sign. Parent EF24 arithmetic source Actions #41225073437 PASS and small arithmetic-only normalized upper. Analytic audit independent, no whole even Schur/RH closure.",
+    "ef26_arch_laplace": "EF26 original digamma spectral identity and native SI10 even FIR Laplace convolution give exact full signed arch mixed real positive-product half-integer series, finite signed sufficient check with all m>=2 negative. Source CI pending; no assertion of full M_arch sign until logs. Original E arch upper EF25 accepted; still no complete even Schur or RH."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -927,8 +928,15 @@
       "kind": "original-even-genuine-arch-symbol-physical-jensen-energy-upper-and-strong-mixed-bound",
       "scope": "W-EVEN-FORM: native SI10 fixed h=1/2048 r=1/65536 469 even complement f and genuine full original arch a(xi)=Re psi(1/4+i pi xi)-ln pi. Analytic digamma global -8<a(xi)<8+ln(1+|xi|), exactly ||f'||²/||f||²=(9/11)pi²/r², so E=q_arch(f,f)<30||f||² with original 7-prime energy zero; genuine source ||arch(D)e||<47 gives |M_arch|<47||f||. Does not determine signed M_arch, complete M, normalized Schur or RH.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/410",
-      "verification": "Original SI06 rational digamma global envelope and authentic EF21 107/469 source C5 physical derivative ratio, exact e^21 Jensen energy E<30||f||² and original first-source ||arch(D)e||²<2138, original mixed norm |M_arch|<47||f||; focused Actions #41225935038 SUCCESS, job #124609963859, native obligation/governance PASS. Independent analytic digamma/Jensen/source-domain proof review remains OPEN; NO signed original M_arch or complete Schur.",
+      "verification": "Native SI06/SI10 source physical derivative/Jensen original E=q_arch(f,f)<30||f||² and first-source |M_arch|<47||f|| exact Fraction gates, source governance: Actions #41225935038 SUCCESS job #124609963859; independent analytic original digamma/Jensen source-core review open.",
       "repo_path": "notes/provisional/EF25_ORIGINAL_EVEN_ARCH_ENERGY_MIXED_UPPER_20261031.md"
+    },
+    "EF26": {
+      "kind": "original-even-arch-signed-physical-laplace-finite-tail-gate",
+      "scope": "Original SI10 fixed F469 even test: true arch M_arch<0 via first three source Laplace terms and negative remaining infinite tail; EF24 Mprime<0, hence complete pole-free original mixed M<0. EF26 additional first-source |M|²/E>1e-193 source regression pending; not finite corrected even Schur PSD/RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/412",
+      "verification": "Original source initial run #41227005306 FAILED due unscaled 10^-723 underflow; exact common 100^469 scale repair: #41227286319 SUCCESS; source first 3 rescaled Laplace signed terms negative, all later negative via exact original c0 phase. New microscopic variational bound regression pending. Independent analytic digamma physical/source domain audit required.",
+      "repo_path": "notes/provisional/EF26_ORIGINAL_EVEN_ARCH_SIGNED_LAPLACE_20261031.md"
     }
   },
   "obligations": [
@@ -1085,10 +1093,11 @@
         "EF22",
         "EF23",
         "EF24",
-        "EF25"
+        "EF25",
+        "EF26"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF25 genuine original arch E for fixed SI10 F469 even test now bounded ABOVE E=q_arch(f,f)<30||f||² by global exact digamma envelope, EF21 disjoint-bell derivative ratio, Jensen and source-pinned exp21 rational check; inherited original SI10 cofinite E>=mu||f||². Actual original first e strong arch domain ||arch(D)e||<47 gives |M_arch|<47||f||, but signed M_arch unmeasured. EF24 original arithmetic Mprime<0 and arithmetic-only |Mprime|²/E<1/400 native CI accepted. EF26 must certify signed arch M_arch for original same test (or quantified conditioning STOP and low-moment alternative), then assess full |M_arch+Mprime|²/E; whole finite 469D even Schur, paused odd, whole Weil/RH OPEN."
+      "next_action": "EF26 complete original SI10 fixed even F469 pole-free source mixed M=Mprime+March<0 verified from EF24 Mprime<0 and native original digamma Laplace source #41227286319 March<0. A tiny source-specific inverse-Schur lower |M|²/E>1e-193 added pending CI. EF27 needs sharper conditioned Schur comparison and positive even pole reattachment; finite 469D even Schur/odd/whole Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1279,6 +1288,17 @@
         "scripts/validate_rpb108_ef25_original_even_arch_upper.py"
       ],
       "interpretation": "Original SI06 digamma global symbol envelope and EF21 native 469 C5 even physical derivative ratio give arch E<30||f||² and |M_arch|<47||f||; signed M_arch, complete M, normalized inverse Schur still OPEN.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF26-original-even-arch-real-laplace-signed-partial",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef26_original_even_arch_laplace.py"
+      ],
+      "interpretation": "Actual original digamma arch physical mixed = half-integer real Laplace sum; true 469 source factor positive; first 2 positive rest negative; finite outward interval partial may certify original M_arch<0 only if strict. No full Schur/RH.",
       "cadence": "per-update"
     }
   ]
