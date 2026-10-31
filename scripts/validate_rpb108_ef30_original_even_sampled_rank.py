@@ -101,10 +101,16 @@ def original_characteristic_central(centers,orders):
         a,b=poly[k],poly[2*N-k]
         assert max(a.lo,b.lo)<=min(a.hi,b.hi)
     central=poly[N]
+    # ORIGINAL source outward-rational quantitative rank certificate:
+    # -1.24*10^127 < true b469 < -1.23*10^127.
+    # Exact 340-digit directed integer bounds, not display rounding.
+    assert central.lo > -(124*10**127*S)//100
+    assert central.hi < -(123*10**127*S)//100
+    assert central.hi<0, "original native center must exclude zero"
     neighbors=[(k,poly[k].sign(),poly[k].scaled()) for k in range(N-2,N+3)]
     print("EF30 genuine original 938-order sampled shift recurrence"
           " P(E) center b469:",central.scaled(),
-          "sign",central.sign(),"interval relative precision:"
+          "sign",central.sign(),"absolute outward fixed-point precision:"
           " 10^340 fixed-point source",flush=True)
     print("EF30 native central five coefficient intervals:",neighbors,flush=True)
     if not central.excludes_zero():
