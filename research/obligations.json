@@ -950,7 +950,7 @@
     "EF28": {
       "kind": "native-even-pole-neutral-471-compact-bell-source-kernel",
       "scope": "471 real-even C5 compact disjoint bell pairs, 469 original SI10 source constraints and one actual cosh pole constraint: guaranteed nonzero kernel; exact physical Gram dI, d=231/8388608, full original signed E<34||f||², conditional SI10 cofinite floor. Original mixed-gradient residual δ can certify negative original even direction, but actual source matrix, δ and first-source diagonal A not computed.",
-      "pr": "https://github.com/monocap-tech/weil-lab/pull/418",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/419",
       "verification": "EF28 focused original SI10 107 clusters/469 even rows + one TRUE cosh pole row, 471 rational-grid even C5 bell pairs/942 disjoint supports, exact Gram dI d=231/8388608 and derivative/physical Jensen original arch+all 7-prime E<34||f||², exact rank-nullity 470x471 and finite Fraction projection toy: Actions #41231565079 SUCCESS, job #124626681315, native manifest/governance PASS. NO actual original 470x471 moment matrix numerical entries, signed g, residual delta, original A or Schur sign; independent analytic original form audit OPEN.",
       "repo_path": "notes/provisional/EF28_ORIGINAL_EVEN_471_BELL_POLE_NEUTRAL_MOMENTS_20261031.md"
     }
