@@ -20,11 +20,11 @@
     "point": "9/10",
     "method": "Original 246-source derivative Taylor H=tK at 0, exact original I0 and I1 source-correlated panels, seven signed prime branch derivatives and original dyadic center",
     "acceptance": "Native full original z'(9/10) outward width<1e-27 with source coefficient radii paid",
-    "status": "PENDING - DO NOT CLAIM ACCEPTED BEFORE FOCUSED NATIVE SUCCESS",
+    "status": "SUCCESS on latest verified focused run; previous type/API failures preserved",
     "first_failure": "Initial native Arb-Fraction multiplication type mismatch before quadrature, corrected; not a mathematical failure."
   },
   "open": {
-    "full_original_numeric_first_xjet": "PENDING_NATIVE",
+    "full_original_numeric_first_xjet": "CLOSED AT ORIGINAL x=9/10 ONLY",
     "original_second_derivative_uniform_interval_remainder": "OPEN",
     "original_tight_cellwise_x_Taylor": "OPEN",
     "original_NF410_signed_z_p_cross": "OPEN",
@@ -35,6 +35,20 @@
     "W_ODD_NEG": "OPEN",
     "RH": "OPEN"
   },
-  "next": "Check focused native original first x-jet; then build genuine original x-second-derivative interval/Taylor remainder with all physical one-sided prime seams and endpoint dlogd before all eight original cells and NF404 scalar.",
-  "custody": "Stacked draft PR #420; no main merge, no source change"
+  "next": "NF420 source-correlated second x-derivative remainder over a genuine original cell subinterval, use certified NF416 z point and NF419 x prime; then entire original cells, NF410 signed moments, NF404 full centered scalar.",
+  "custody": "Stacked draft PR #420; no main merge, no source change",
+  "accepted_native": {
+    "status": "ACCEPTED",
+    "focused_success_run": "https://github.com/monocap-tech/weil-lab/actions/runs/41232078871",
+    "receipt": "notes/data/provisional/NF419_original_cell6_full_xprime_native.json",
+    "true_original_zprime_at_x9over10_approx": "+2.84057801905924677119765028e-9",
+    "true_original_zprime_sign": "strict positive",
+    "true_original_zprime_interval_width_strict": "1e-27",
+    "all_246_original_physical_source": true,
+    "all_seven_prime_branches": true,
+    "original_moving_boundary_cancelled_before_native_integral": true,
+    "original_finite_and_boundaries_direct_reduced_interval_overlap": true,
+    "tiny_t_I0_H_analytic": true,
+    "original_I0_I1_full": true
+  }
 }
