@@ -1,0 +1,18 @@
+{
+  "pass": "NF411",
+  "standing": "EXACT RATIONAL UPPER FOR EXPLICIT ENDPOINT d log d MODEL ONLY; TRUE z AND NORM OPEN",
+  "nf411_original_source_jet_sha256": "dea07796e598a699c67b76490055bdfb17c555f631c4311bb2aeaa3aa92b6075",
+  "nf404_center_sha256": "8b9f2138bd609ce440eb5154bde789355e77b5cdb31fe34a3a99e17680d5e137",
+  "endpoint_delta_exact": "11/167772160",
+  "endpoint_true_source_derivative_absolute_upper": "131/1000000000",
+  "endpoint_log_true_upper": "17",
+  "original_two_endpoint_strips_leading_dlogd_power_upper": "12357138431/51001558014992168307916800000000000000000000",
+  "leading_model_power_below_3e_minus34": true,
+  "leading_model_power_below_gamma2_over_1e8": true,
+  "full_endpoint_regular_remainder_integrated": false,
+  "full_endpoint_p_cross_integrated": false,
+  "actual_original_continuous_z_integrated": false,
+  "original_nf404_cap_decided": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
