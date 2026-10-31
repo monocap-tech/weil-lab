@@ -1,0 +1,26 @@
+name: EF31 original SI10 even symbolic Chebyshev kernel
+on:
+  push:
+    branches: [research/ef31-original-even-chebyshev-null-generator]
+  pull_request:
+    branches: [research/ef30-original-even-exact-sampled-moment-rowspace]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-even-kernel-parameterization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact Chebyshev source/pole kernel regression and native SI10 inventory
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef31_original_even_chebyshev_kernel.py
+          python scripts/validate_rpb108_ef31_original_even_chebyshev_kernel.py --source
+      - name: Check active Weil-Lab obligation
+        run: python scripts/verify_obligation_manifest.py
