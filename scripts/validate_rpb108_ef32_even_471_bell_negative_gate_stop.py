@@ -66,7 +66,7 @@ def source_diagonal_arch():
     # All quantities below have original physical cutoff and source c0.
     ct,st=trig_pi(2*C0*T)
     s0=I.rational(B)+st/(2*OMEGA)
-    assert F(1,1)<F(s0.lo,S)<F(s0.hi,S)<F(3,2)
+    assert F(11,10)<F(s0.lo,S)<F(s0.hi,S)<F(3,2)
     # Exact gamma inequality 1/(2(M+1)) < H_M-ln M-gamma <1/(2M).
     M=1024
     h=sum((F(1,k) for k in range(1,M+1)),F(0))
