@@ -24,6 +24,7 @@ certify their sign, or supply a normalized Schur lower.
 from fractions import Fraction as F
 from pathlib import Path
 import json
+import math
 
 from validate_rpb108_si10_complement_positivity import (
     protected_inner_cover, protected_outer_band, KAPPA, B,
@@ -136,6 +137,32 @@ def authentic_source_replay():
     return centers,degrees
 
 
+
+def noncertifying_filter_conditioning_pilot(centers,degrees):
+    """Fast source-specific double precision LOG amplitude pilot ONLY.
+
+    This is NOT a signed M/E quadrature, mathematical interval,
+    or proved FIR ill-conditioning STOP. It prevents unnormalized
+    amplitude underflow from being misread as a source zero.
+    """
+    frequencies=(F(0),F(1),F(100),F(500),F(1000),F(1800),F(2048))
+    totals=[]
+    for xi in frequencies:
+        x=float(xi)
+        val=2*math.cos(2*math.pi*float(H)*x)
+        logabs=0.0
+        for cj,pj in zip(centers,degrees):
+            factor=val-2*math.cos(2*math.pi*float(H)*float(cj))
+            if factor==0.0:
+                logabs=float("-inf")
+                break
+            logabs+=pj*math.log10(abs(factor))
+        totals.append((str(xi),logabs))
+    print("EF21 NONCERTIFYING double-log spectral symbol samples",totals,
+          "no M/E integration, not acceptance evidence",flush=True)
+    return totals
+
+
 def run():
     custody=json.loads((ROOT/"research/obligations.json").read_text())
     obligations={ob["id"]:ob for ob in custody["obligations"]}
@@ -145,6 +172,7 @@ def run():
     assert all(k in obligations["W-EVEN-FORM"]["evidence"]
                for k in ("EF19","EF20","EF21"))
     centers,degrees=authentic_source_replay()
+    pilot=noncertifying_filter_conditioning_pilot(centers,degrees)
     mass,norm=bell_transform_identity()
     a,b,phase_lo,phase_hi,normlower=physical_support_and_disjointness()
     print("EF21 native ORIGINAL SI10 clusters:",len(centers),
