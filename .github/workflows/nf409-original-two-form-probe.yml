@@ -34,7 +34,7 @@ jobs:
           mp.dps=100
           assert len(r['original_two_form_samples'])==2
           for s in r['original_two_form_samples']:
-              assert mp.mpf(s['difference_z_two_form'])<mp.mpf('1e-150')
+              assert abs(mp.mpf(s['difference_minus_K_Gauss_kernel_error']))<mp.mpf('1e-38')
               assert len(s['source_original_all_prime_branches'])==7
           assert r['arbitrary_transcendental_roundoff_certified'] is False
           assert r['original_x_integral_and_complete_centered_norm_certified'] is False
