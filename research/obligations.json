@@ -934,7 +934,7 @@
     "EF26": {
       "kind": "original-even-arch-signed-physical-laplace-finite-tail-gate",
       "scope": "W-EVEN-FORM: exact original digamma physical-translation arch mixed M_arch=2Re[e^iωB Σ_m e^-λB Λ_h(λ)cosh(λa)J_r(λ)/(λ-iω)], positive native 469-factor real Laplace Λ_h and J_r; first two terms positive, all m≥2 negative by original source θ=407π/320. Finite 340-digit outward 0..12 sum checked for negative sufficient gate, not assumed; full source CI pending. Original arch E<30||f||² previous pass; RH/Schur open.",
-      "pr": "https://github.com/monocap-tech/weil-lab/pull/411",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/412",
       "verification": "Finite exact outward SI06 107 original centers 469 orders, native original digamma series converted to translation/Laplace with auditable analytic proof; 340-digit exp/trig/ln series, positive 469-factor real Laplace filter, sign-aware finite partial and all-tail sign. Focused CI pending; no full Schur PSD or independent analytic domain audit.",
       "repo_path": "notes/provisional/EF26_ORIGINAL_EVEN_ARCH_SIGNED_LAPLACE_20261031.md"
     }
