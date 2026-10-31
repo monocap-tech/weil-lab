@@ -1,0 +1,42 @@
+{
+  "pass": "NF413",
+  "date": "2026-10-31",
+  "active_obligation": "W-ODD-NEG",
+  "source": "Unchanged NF370 original fourth u4; NF407 4096bit physical source, 242 selected and 4 critical, B=11/10, seven original signed prime powers, NF404 dyadic center",
+  "parent": "NF412 draft PR #408 (critical-only mistaken source bound invalidated and corrected)",
+  "verification": {
+    "focused_workflow": "https://github.com/monocap-tech/weil-lab/actions/runs/41225707791",
+    "status": "SUCCESS",
+    "receipt": "notes/data/provisional/NF413_original_full_246_source_curvature_native.json",
+    "original_246_source_endpoint_match": "PASS independent NF411 value and derivative",
+    "original_full_source_second_derivative_Gram": "ACCEPTED",
+    "original_complete_source_second_derivative_radius": "PAID",
+    "original_u4_second_derivative_L2_upper_strict": "256",
+    "original_source_midpoint_curvature_squared_approx": "17768.0794044348253",
+    "original_small_t_0_to_1e10_positive_half_L2_upper_strict": "3.2e-19",
+    "original_small_t_0_to_1e10_whole_odd_L2_upper_strict": "4.8e-19",
+    "original_small_t_budget_below_9e17_over_8": true
+  },
+  "method": {
+    "physical_Gram": "All original source coefficient dyadic rationals exactly combined by physical generator before outward 4096bit Arb. Includes selected-selected, selected-critical, critical-critical, pole, all polynomial powers. Analytical x moment recurrence; no Gauss.",
+    "near_t_error": "Original I0 symmetric difference with K(t)<2/t: L2(0,B) ≤h²/8 ||u4''||L2(-B,B). Odd physical full-support factor sqrt2<3/2.",
+    "NF412_status": "Failed critical-only Gram theorem explicitly superseded; earlier green CI still historically preserved."
+  },
+  "status": {
+    "full_original_246_source_curvature": "ACCEPTED",
+    "genuine_original_small_t_arch_I0_error": "ACCEPTED",
+    "remaining_t_arch_I0_I1": "OPEN",
+    "z_original_hotspot_cells_6_3_7": "OPEN",
+    "z_other_five_cells": "OPEN",
+    "NF410_signed_original_z_principal_cross": "OPEN",
+    "original_full_centered_scalar": "OPEN",
+    "NF404_sufficient_cap": "UNDECIDED",
+    "fourth_original_J242_perp_lowband": "OPEN",
+    "operator_domain": "OPEN",
+    "infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "even_whole_Weil": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF414 source-correlated physical interval/Taylor evaluator for actual complete regularized z over original cells 6,3,7; pay remaining original t arch x-dependent quadrature and signed prime translations; then remaining cells, NF410 signed moments, NF404 C. No unverified Gauss."
+}
