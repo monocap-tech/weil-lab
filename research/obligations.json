@@ -63,7 +63,8 @@
     "ef20_shift_filter": "EF20 bounded native original even SI10 FIR Fh annihilates full 469 source family with optimal universal bilateral radius469. Real original fixed h source-specific signed mixed nonvanishing follows from extreme original arithmetic jump, all other translated edges excluded by rational logarithm enclosures, subject to arch pseudolocal/domain attachment; numeric inverse Schur OPEN. No point jump -> numeric norm inference.",
     "ef21_fixed_bell_quantitative_entry": "EF21 first focused CI #41218527159 passed original physical norm and exact rational source/Fourier identities. Subsequent noncertifying log-amplitude pilot and O(r) normalized fixed-h shrinking-bell method STOP are source script additions pending new CI. Original signed numerator/energy M/E uncomputed, independent pseudolocal/form-domain audit required. No Schur or RH closure.",
     "ef22_prime_energy_vanish": "Exact support nonoverlap for original EF21 fixed physical 469-source even FIR bell means true original 7-prime q_prime(f,f) identically zero. This is an original-object cancellation, not dropping arithmetic by assumption: mixed prime remains finite boundary integrals. Only original arch E remains, no numerical upper, effective Schur and RH OPEN.",
-    "ef23_signed_arithmetic_sparse": "Original EF22 source and governance #41221940116 PASS: exact physical seven-prime energy zero and n2 mixed positive source interval. EF23 exact SI10 native physical source-cutoff geometry and original FIR at c0 yield arithmetic mixed M2+M5+M7, rest n3,n4,n8,n9 exactly vanish. The 211/39 original edge coefficients are exact algebra not evaluated signed interval; arch and normalized Schur OPEN."
+    "ef23_signed_arithmetic_sparse": "Original EF22 source and governance #41221940116 PASS: exact physical seven-prime energy zero and n2 mixed positive source interval. EF23 exact SI10 native physical source-cutoff geometry and original FIR at c0 yield arithmetic mixed M2+M5+M7, rest n3,n4,n8,n9 exactly vanish. The 211/39 original edge coefficients are exact algebra not evaluated signed interval; arch and normalized Schur OPEN.",
+    "ef24_source_signed_edge_interval": "EF24 computes original 107 SI10 actual rational centers p=469 and outward original signed n5/n7 finite arithmetic mixed edge intervals using same original SI06 Machin/logarithm source methods at 10^340, source native EF23 identities. CI pending; only source-scoped arithmetic M_prime may be promoted, complete original arch M/E and RH remain OPEN."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -911,8 +912,15 @@
       "kind": "original-even-signed-arithmetic-mixed-source-sparsification",
       "scope": "W-EVEN-FORM: authentic SI10 fixed f source cutoff disjoint/support root identities give exact original mixed prime channels M3=M4=M8=M9=0; surviving n2 bound plus n5 and n7 finite FIR Laurent edge sums of just 211 and 39 coefficients respectively; full M/E Schur uncomputed.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/406",
-      "verification": "Focused actual original SI06 13146 cutoff classifications, exact native n3/n4/n8/n9 zero and M5 211/M7 39 edge, exact Fraction Chebyshev-Newton toy identity and manifest governance Actions #41224387147 SUCCESS, job #124605382107; no numerical signed M5/M7, arch M/E, Schur or RH.",
+      "verification": "Original native 13146 cutoff source checks, M3=M4=M8=M9 exact zeros, M5 211, M7 39 edge, 211-step source Newton-Chebyshev exact Fraction toy regression and canonical governance: Actions #41224387147 SUCCESS, job #124605382107. No M5/M7 values established by EF23.",
       "repo_path": "notes/provisional/EF23_ORIGINAL_EVEN_ARITHMETIC_MIXED_SPARSE_20261031.md"
+    },
+    "EF24": {
+      "kind": "original-even-signed-n5-n7-actual-source-outward-edge-intervals",
+      "scope": "W-EVEN-FORM: rigorous integer 10^340 interval arithmetic for actual original n5/n7 211/39 authentic SI10 Chebyshev-Newton edge coefficients with outward source pi,log,sqrt,trig, and full original arithmetic mixed n2+n5+n7. Does NOT evaluate original arch M/E, Schur, whole Weil/RH.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/407",
+      "verification": "Original source validator/precision 340 and outward signed M5/M7 calculation COMMITTED, focused CI PENDING; no numeric sign accepted until CI logs show excluding-zero source intervals. Independent analytic source/core proof and arch M/E OPEN.",
+      "repo_path": "notes/provisional/EF24_ORIGINAL_EVEN_SIGNED_EDGE_INTERVALS_20261031.md"
     }
   },
   "obligations": [
@@ -1067,10 +1075,11 @@
         "EF20",
         "EF21",
         "EF22",
-        "EF23"
+        "EF23",
+        "EF24"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF23: for original SI10 even first source and same EF21 fixed 469-source cofinite FIR, original seven-prime signed mixed M_prime reduces EXACTLY to M2+M5+M7 because M3=M4=M8=M9=0 via complete native FIR root or support exclusion (native original 13146 Fraction source cutoff tests). M2 exact rational positive [1.53508066e-6,1.53533975e-6] accepted EF22; n5 reduces from 728 included to 211 omitted FIR boundary coefficients using exact root, n7 needs only 39 edge coefficients. EF24 must certify honest outward signed original M5,M7 intervals with conditioning and arch M/E (E=q_arch only); full corrected even 469D Schur, odd/whole Weil/RH OPEN."
+      "next_action": "EF24: original SI10 107-center 469-order source Chebyshev-Newton 211-edge M5/39-edge M7 with TRUE SI06 pi/log/sqrt recomputed higher precision and outward integer intervals 10^340; certify actual M5/M7 signs and M_prime only after focused source CI. Original M_arch, E_arch upper, normalized inverse Schur and whole even PSD NOT solved. EF25 entry is source-conditioned arch integration only if arithmetic interval and normalized conditioning justify; otherwise precise universal FIR method STOP then low-moment cofinite test. W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1239,6 +1248,17 @@
         "scripts/validate_rpb108_ef23_original_even_prime_mixed_sparsity.py"
       ],
       "interpretation": "Authentic SI06/SI10 original seven-prime mixed cutoff lattice counts: M3=M4=M8=M9=0 exact, inherited n2 positive, remaining n5 211 edge coefficients and n7 39; numerical signs of M5/M7, M_arch and E_arch are NOT certified.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF24-original-even-n5-n7-signed-FIR-edge-intervals",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef24_original_even_edge_intervals.py"
+      ],
+      "interpretation": "Authentic original n5/n7 source arithmetic mixed 211/39 Chebyshev-Newton intervals computed by outward exact int/rational source pi/log/sqrt Taylor; original arch, total M and E/Schur uncomputed.",
       "cadence": "per-update"
     }
   ]
