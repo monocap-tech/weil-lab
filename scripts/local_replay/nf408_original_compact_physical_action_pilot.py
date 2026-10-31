@@ -27,12 +27,13 @@ def dyad_ball_mid(z):
 class Source:
  def __init__(self,s):
   self.pi=mp.pi
+  # The original NF407 export is +rawX*M for u4=F(T-M)+J(rawX*M).
   # Collect same freq in one original source physical family:
   # x^even*sin and x^odd*cos have an explicit original initial
   # polynomial prefix. Actual original 242+4 sources all retained.
   groups={}
   for node,bal in zip(s['original_selected_generator_node_orders'],s['original_exact_native_raw_selected_coefficients_mid_radius']):
-   c,k=node;v=-dyad_ball_mid(bal)
+   c,k=node;v=dyad_ball_mid(bal)
    if c=='pole':
     groups.setdefault('pole',[]).append((0,v))
    else:
