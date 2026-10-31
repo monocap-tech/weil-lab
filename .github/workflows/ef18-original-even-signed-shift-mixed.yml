@@ -1,0 +1,28 @@
+name: EF18 original even true signed prime-shift mixed nonzero source
+on:
+  push:
+    branches:
+      - research/ef18-original-even-arithmetic-jump-mixed
+  pull_request:
+    branches:
+      - research/ef17-even-effective-pole-mixed-information-gate
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-prime-shift-mixed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify authentic SI10 prime shift, noncollision and source jump
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef18_original_even_signed_shift_jump.py
+          python scripts/validate_rpb108_ef18_original_even_signed_shift_jump.py
+      - name: Verify canonical original even obligation
+        run: python scripts/verify_obligation_manifest.py
