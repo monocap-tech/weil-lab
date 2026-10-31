@@ -1,0 +1,26 @@
+name: EF30 actual SI10 even 470 by 471 exact source rank gate
+on:
+  push:
+    branches: [research/ef30-original-even-exact-sampled-moment-rowspace]
+  pull_request:
+    branches: [research/ef29-original-even-mixed-vector-cutoff-laplace]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-938-recurrence-moment-rank:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original SI10 469 row rank by order 938 central polynomial coefficient
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef30_original_even_sampled_rank.py
+          python scripts/validate_rpb108_ef30_original_even_sampled_rank.py
+      - name: Verify active original even obligation
+        run: python scripts/verify_obligation_manifest.py
