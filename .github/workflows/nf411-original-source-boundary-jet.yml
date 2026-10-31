@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/nf411-original-source-boundary-jet.yml'
       - 'scripts/local_replay/nf411_original_source_boundary_jet.py'
+      - 'scripts/local_replay/nf411_original_endpoint_dlogd_strip_exact.py'
   workflow_dispatch:
 permissions:
   contents: write
@@ -38,15 +39,29 @@ jobs:
           assert j['nf404_cap_decided'] is False
           assert j['W_ODD_NEG']==j['RH']=='OPEN'
           PY
+      - name: Exact analytic endpoint logarithmic leading-model power (not whole z)
+        run: |
+          python -m py_compile scripts/local_replay/nf411_original_endpoint_dlogd_strip_exact.py
+          python scripts/local_replay/nf411_original_endpoint_dlogd_strip_exact.py --jet /tmp/NF411_source_boundary_jet.json --output /tmp/NF411_endpoint_strip.json
+          python - <<'PY'
+          import json
+          r=json.load(open('/tmp/NF411_endpoint_strip.json'))
+          assert r['leading_model_power_below_3e_minus34'] is True
+          assert r['actual_original_continuous_z_integrated'] is False
+          assert r['original_nf404_cap_decided'] is False
+          PY
       - name: Preserve genuine source-verified jet with explicit no-transfer of norm status
         run: |
           target=notes/data/provisional/NF411_original_source_boundary_jet.json
           mkdir -p notes/data/provisional
           if test -e "$target"; then cmp -s "$target" /tmp/NF411_source_boundary_jet.json
           else cp /tmp/NF411_source_boundary_jet.json "$target"; fi
+          strip=notes/data/provisional/NF411_original_endpoint_dlogd_strip_exact.json
+          if test -e "$strip"; then cmp -s "$strip" /tmp/NF411_endpoint_strip.json
+          else cp /tmp/NF411_endpoint_strip.json "$strip"; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add "$target"
+          git add "$target" "$strip"
           if ! git diff --cached --quiet; then
             git commit -m 'NF411 source-original boundary derivative native receipt, centered norm OPEN'
             git pull --rebase origin research/nf411-original-endpoint-jet-seam-contract
