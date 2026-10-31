@@ -1,0 +1,52 @@
+name: Weil-Lab NF428 original cell6 native 256 coefficients plus 1500 signed p moments
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf428_original_cell6_correlated_cheb256_native.py'
+      - 'scripts/local_replay/nf428_original_cell6_signed_chebyshev_moments_native.py'
+      - 'notes/provisional/NF428_ORIGINAL_CELL6_CHEB256_SIGNED_MOMENTS_20261031.md'
+      - '.github/workflows/nf428-original-cell6-cheb256-signed-moments.yml'
+permissions:
+  contents: read
+jobs:
+  original-native-256-source-coefficients:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install true Arb Acb
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Evaluate full original source native 256 Chebyshev coefficient intervals and independent NF416 cross-check
+        run: |
+          python3 -m py_compile scripts/local_replay/nf428_original_cell6_correlated_cheb256_native.py
+          python3 scripts/local_replay/nf428_original_cell6_correlated_cheb256_native.py --modes 256 --precision 2048 --output artifacts/NF428_original_cell6_native_cheb256.json
+      - name: Retain original source 256 interval coefficients
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF428-original-cell6-native-256-chebyshev-coefficient-intervals
+          path: artifacts/NF428_original_cell6_native_cheb256.json
+          if-no-files-found: error
+  original-native-signed-p-moments-1500:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Arb native interval
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Certify exact original signed Chebyshev p moments through n1499 on true log7/log8 knots and NF410 parent
+        run: |
+          python3 -m py_compile scripts/local_replay/nf428_original_cell6_signed_chebyshev_moments_native.py
+          python3 scripts/local_replay/nf428_original_cell6_signed_chebyshev_moments_native.py --degree 1499 --precision 2048 --log-modes 110 --output artifacts/NF428_original_cell6_signed_p_cheb_moments_1500.json
+      - name: Retain native source original signed moment ledger
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF428-original-cell6-signed-p-chebyshev-moments-1500
+          path: artifacts/NF428_original_cell6_signed_p_cheb_moments_1500.json
+          if-no-files-found: error
