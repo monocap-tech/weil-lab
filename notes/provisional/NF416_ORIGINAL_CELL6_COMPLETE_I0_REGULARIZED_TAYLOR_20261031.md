@@ -1,3 +1,23 @@
+# NF416 VERIFIED ACCEPTANCE — first complete original z pointwise source enclosure
+
+**Focused original native run [#41228999730](https://github.com/monocap-tech/weil-lab/actions/runs/41228999730) SUCCESS**, SHA-pinned source receipt `notes/data/provisional/NF416_original_cell6_full_I0_and_z_point_native.json`. It certifies the **entire** unchanged original 246-generator symmetric I0 at x=9/10, t∈[0,2/5], not merely the near-zero truncation. Original physically supported x-t/2 and x+t/2 branches both retained, and full original seven-prime NF414 and I1 NF415 parents are preserved.
+
+The certified **complete** original cell-6 pointwise values (approximations of rigorous outward exact rational intervals) are:
+
+```
+I0(9/10) ≈ -0.294411377127259627297474239170374...
+z(9/10)  ≈ +0.00000000004202421814328318159234807...
+          ≈ +4.202421814328318159234807e-11
+```
+
+The true complete z pointwise interval width is **<10^-55** after all original source-native coefficients, tiny-t source/H tails, 38 rational regular-t source/K panels, and source second-derivative coefficient radii. It is strictly POSITIVE at this one x. This does **NOT** settle full original cell6, the other hotspot cells, signed p/z cross, centered original NF404 scalar, W-ODD-NEG or RH. The original NF415 partial z−I0 was not a complete z; NF416 now fills exactly its missing term.
+
+Native source result uses x=9/10; tiny interval [0,1/50] via analytic H(t)=tK(t) and source Taylor degree530, remaining [1/50,2/5] via 38 exact rational panels and source degree300/K degree160, outward 1024bit Arb. The entire original NF407 highest selected frequency is accounted for and source coefficient errors are paid by the genuine second-derivative S2 rather than a divergent S0/t bound. Independently exact Fraction reread of these source/error receipts is separately tracked and must not be relabeled successful until its CI is checked.
+
+**Next NF417:** Replicate this genuine complete source-correlated original z(x) pointwise enclosure on cells 3 and 7, then lift points to one-sided full-cell enclosures of z and the NF410 signed moments. NF404 C decision remains dependent on all eight physical original cells and signed cross and selected projection; no RH promotion.
+
+---
+
 # NF416 — Complete original cell-6 I0 by analytic removal of t=0 and 246-source correlated Taylor panels
 
 **2026-10-31 PT — original NF370 fourth u4 unchanged, original 242 selected+4 critical source, B=11/10, seven signed real prime powers, NF404 centered pole. Canonical W-ODD-NEG and RH remain OPEN.**
