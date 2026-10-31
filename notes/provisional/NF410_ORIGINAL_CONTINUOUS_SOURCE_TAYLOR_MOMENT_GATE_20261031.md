@@ -9,7 +9,7 @@ Research branch \`research/nf410-original-cell-taylor-moments\`, stacked on NF40
 
 **Current NF410 mathematical advance.** Explicit exact-polynomial signed principal moments M_(i,k)=∫_(cell i)(x-c_i)^k p(x) dx, k=0,1,2,3, in source-rational interval arithmetic, with all original 7 jumps retained and true physical endpoint log. New pure Fraction source-level replay proves k=0 overlap with prior independently written NF409 cell integral and global half integral. This supplies a correlation-preserving polynomial energy functional and removes the need to perform numerical x-quadrature on p, including signed z*p terms, once an original-z Taylor enclosure has been independently proved.
 
-**Not yet achieved.** No source-validated Taylor coefficients/remainders for continuous original z(x), no certified full original positive scalar upper/lower, hence NF404 gate undecided. A new CI workflow exists for the exact p polynomial moments; do not call it accepted until an actual successful run and durable output are verified.
+**Not yet achieved.** No source-validated Taylor coefficients/remainders for continuous original z(x), no certified full original positive scalar upper/lower, hence NF404 gate undecided. Focused GitHub Actions #41221502710 SUCCESS, and durable source-hashed output `notes/data/provisional/NF410_original_signed_taylor_moments.json` is present on the NF410 research branch. Independent NF409 degree-zero per-cell and global overlaps passed; this certifies the exact p moments only, not any continuous-z enclosure.
 
 ## A. The moment identity and correlation-preserving norm computation
 
@@ -78,7 +78,7 @@ The original NF408 2-node E2≈1.0055614488866898e-21 is ~8.9441027423864e-23 BE
 ## E. Source/custody standing
 
 - ACCEPTED previously: NF404 selected lower / pole shear / exact C and gamma², NF407 original principal E_p, NF408 source-native action radius, NF409 original exact k=0 signed source moments.
-- NEW NF410: exact formula and executable original-source Fraction polynomial moment producer, degree 0..3. Its CI results must be read, not inferred from code presence.
+- NEW NF410 ACCEPTED: source-exact Fraction principal polynomial moment producer, degree 0..3, all 8 cells; actual focused GitHub CI #41221502710 SUCCESS and verified durable JSON with SHA references/independent NF409 k=0 overlaps. Cells 6,3,7 certified signed k=0 moments approximately -5.961465913933598e-12, -1.648342368645410e-12, -6.510219256022535e-12 respectively. These numbers are NOT z evaluations.
 - OPEN: rigorously evaluated ORIGINAL continuous z Taylor coefficients and remainder on 6/3/7 and the other five cells; actual complete centered scalar interval; original fourth lowband J242-perp upper; complete signed infinite odd operator and domain; W-ODD-NEG and RH.
 
 **Next NF411 or continued NF410:** derive and EXECUTE source-native outward interval/Taylor evaluation of z on cells 6/3/7 including nested t integrations, integer-lattice error control and all seven translated prime supports. Never substitute an unverified full Gauss mesh. Reject a result if its certified full-energy interval falls below the NF404 selected lower. No closure promotion before the full original inequality is decided.
