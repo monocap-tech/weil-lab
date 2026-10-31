@@ -58,7 +58,8 @@
     "ef15_even_pivot_review": "2026-10-30 owner-requested explicit handoff from canonical NF401 odd frontier to independent even obligation. Odd P1 remains OPEN and paused with original 64 active checks preserved verbatim in notes/data/provisional/EF15_PAUSED_ODD_ACTIVE_CHECKS_20261030.json; per-update check selector is now even-only. Even has no open dependencies and historical scoped EF11/EF13/EF14 CI success; parity 469 is the new entry gate, not positivity closure. Priority numbers unchanged; this deliberate time-boxed P2 pivot does not imply P1 discharged. See notes/provisional/EF15_EVEN_B9_PARITY_AND_HANDOFF_20261030.md.",
     "ef16_frontier_scope": "EF16 extends accepted EF15 original b9 even cofinite to ACTUAL original physical source/pole coupling and exact positive-pole finite Schur correction; full pole-free signed finite+mixed source remains OPEN; neither old NF401 nor EF14 one-vector result implies theorem closure.",
     "ef17_source_identifiability_gate": "EF17 confirms EF16's original source physical pole projection (accepted in corrected Actions #41148545925) is insufficient to identify corrected signed Schur sign without original pole-free signed B0 and resolvent. Finite exact countermodels are expressly abstract, not actual negative Weil witnesses. Real signed mixed/source residual required in EF18.",
-    "ef18_original_signed_mixed_entry": "EF18 original SI10 even source e=1_I cos(2pi 37/64 x) pole-free signed source action has a strict n2 arithmetic-translated internal jump at B-ln2, isolated from all other original 7 prime-power endpoints; archimedean pseudolocality and source domain give B0(e,V469^perp)!=0. Focused arithmetic CI separate from analytic review. No actual inverse response or matrix PSD."
+    "ef18_original_signed_mixed_entry": "EF18 original SI10 even source e=1_I cos(2pi 37/64 x) pole-free signed source action has a strict n2 arithmetic-translated internal jump at B-ln2, isolated from all other original 7 prime-power endpoints; archimedean pseudolocality and source domain give B0(e,V469^perp)!=0. Focused arithmetic CI separate from analytic review. No actual inverse response or matrix PSD.",
+    "ef19_annihilator_quantitative_stop": "EF19 does not infer norm or inverse-Schur bound from point jump. It constructs genuine original 469-source orthogonal smooth test family via 938th differential annihilator and proves only an existential unnormalized nonzero signed mixed pairing, conditional on original pseudolocal/source domain. Requires a certified finite-epsilon normalized q0(e,f) and q0(f,f) or low-order alternative. Parent EF18 Actions #41153873998 PASS."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -873,6 +874,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/394",
       "verification": "Focused authentic original SI10 exact-rational jump/7-prime noncollision + active original-even governance Actions #41153873998 SUCCESS, job #124396271104, 2026-10-30 PT. Original source phase/J< -1/4 accepted by scoped script. Analytic pseudolocality and domain/Riesz implications remain subject to independent proof audit; no quantitative Schur acceptance.",
       "repo_path": "notes/provisional/EF18_ORIGINAL_EVEN_ARITHMETIC_MIXED_JUMP_20261030.md"
+    },
+    "EF19": {
+      "kind": "original-even-cofinite-annihilator-existential-signed-mixed-test",
+      "scope": "W-EVEN-FORM: original SI10 469-source 938th differential annihilator produces exact F test from even compact bump and original jump yields existential unnormalized |q0(e,f)|>1/8; normalized energy/Schur bound uncomputed; analytic pseudolocal/core proof audit open",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/395",
+      "verification": "Original source-pinned exact Fraction 107/469/938 algebra and inherited signed jump candidate, focused Actions pending. Distributional asymptotic and original form-domain analytic premises separately AUDIT; no explicit epsilon or normalized inverse Schur certificate.",
+      "repo_path": "notes/provisional/EF19_ORIGINAL_EVEN_ANNIHILATOR_MIXED_20261030.md"
     }
   },
   "obligations": [
@@ -1022,10 +1030,11 @@
         "EF15",
         "EF16",
         "EF17",
-        "EF18"
+        "EF18",
+        "EF19"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF18: genuine original pole-free m(D) arithmetic n=2 shifted support jump at x=B-ln2 on SI10 first even source (37/64), with all other prime endpoints isolated and archimedean pseudolocal smoothing interior; conditional on analytic/form-domain audit, actual original source-to-F469 signed B0 is NONZERO. Exact rational shift/weight/phase CI pending; no quantitative Schur/inverse response. EF19 must quantify Q_V m(D)e or a valid explicit F trial and its full source/residual energy. W-EVEN-FORM OPEN."
+      "next_action": "EF19 genuine original SI10 b9 469-source exceptional-space annihilator P(D)=product(D²+(2πcj)²)^pj, degree 938, creates an exactly orthogonal C_c∞ even F trial family; original seven-prime translated jump produces existential absolute signed mixed |q0(e,fε)|>1/8 for sufficiently small unspecified ε under analytic pseudolocality/domain proof. Point jump alone has NO numerical energy-dual Schur norm floor, and high-order fε energy diverges with shrinking ε. EF20 requires actual fixed epsilon+certified original mixed/energy denominator OR lower-order conditioning-aware exact F trial; corrected original Schur sign, whole even/odd and RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1139,6 +1148,17 @@
         "scripts/validate_rpb108_ef18_original_even_signed_shift_jump.py"
       ],
       "interpretation": "Actual first SI10 even source and original signed n=2 prime-shift jump with all original prime-power edge collisions excluded. Conditional analytic nonzero original finite-to-infinite mixed form; no quantitative Schur PSD.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF19-original-even-469-annihilator-cofinite-signed-test",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef19_original_even_annihilator.py"
+      ],
+      "interpretation": "Authentic original SI10 seven-prime 469-source 938-degree annihilator algebra, source jump and exact cofinite test existential mixed limit. Original analytic pseudolocality, fixed epsilon, quantitative energy and signed Schur positivity NOT certified.",
       "cadence": "per-update"
     }
   ]
