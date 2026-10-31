@@ -1,0 +1,58 @@
+name: NF423 independent original shared source and full cell6 fraction
+on:
+  push:
+    branches: [research/nf423-shared-original-response-jets]
+    paths:
+      - '.github/workflows/nf423-original-entire-cell6-independent.yml'
+      - 'scripts/local_replay/nf423_original_entire_cell6_shared_jets_independent_fraction.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  independent-source-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf423-shared-original-response-jets
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently rebuild original dyadic source and full signed x cubic interval
+        run: |
+          python -m py_compile scripts/local_replay/nf423_original_entire_cell6_shared_jets_independent_fraction.py
+          python -u scripts/local_replay/nf423_original_entire_cell6_shared_jets_independent_fraction.py --output /tmp/nf423_independent.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          j=json.load(open('/tmp/nf423_independent.json'))
+          assert j['original_all_242_plus_four_critical_native_dyadic_source_rebuilt']
+          assert j['original_four_shared_jets_analytic_tails_recomputed_from_exact_source']
+          assert j['original_z0_z1_z2_overlap_independently_verified']
+          assert j['original_zthird_anchor_strictly_negative']
+          assert j['original_full_cell6_knot_seam_branches_checked']
+          assert j['original_4096bit_A_native_interval_exact_fraction_reread']
+          assert j['original_full_cell6_third_derivative_uniform_upper']<1540338
+          assert F(j['original_full_z_on_signed_interval_lower_exact'])>0
+          assert j['original_positive_radius_strictly_improved_from_NF421']
+          assert j['original_full_cell6_conditional_panel_count_upper']>100000
+          assert not j['original_full_cell6_center_jets_certified']
+          assert not j['original_full_cell6_actual_z_cellwise_enclosure_certified']
+          assert not j['NF404_complete_original_centered_scalar_decided']
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          PY
+      - name: Custody independent entire original physical cell6 source audit
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF423_original_entire_cell6_shared_jets_independent_fraction.json
+          cp /tmp/nf423_independent.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF423 exact source independent original 4jet and full cell6 bound, scalar still open'
+            git pull --rebase origin research/nf423-shared-original-response-jets
+            git push origin HEAD:refs/heads/research/nf423-shared-original-response-jets
+          fi
