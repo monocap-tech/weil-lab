@@ -1,0 +1,35 @@
+{
+  "pass": "NF412-CORRECTION",
+  "date": "2026-10-31",
+  "canonical_obligation": "W-ODD-NEG",
+  "historical_original_pr": "https://github.com/monocap-tech/weil-lab/pull/408",
+  "analytic_accepted": "For original supported u4∈H²(-B,B), 0<h≤1/2, physical I0 omitted 0<t<min(h,2(B-x)) has positive-half L2 ≤h²||u4''||L2/8, with K(t)<2/t.",
+  "invalidated": {
+    "source": "Original NF412 initial green run #41224819791",
+    "mathematical_fault": "Critical-only 4-source curvature Gram plus NF374 exterior w4'' does not represent the complete NF407 original 242 selected plus 4 critical u4''; 242×242 and 242×4 physical cross remain unmeasured.",
+    "standing": "CI EXECUTED CORRECTLY BUT ORIGINAL u4 CURVATURE CERTIFICATION INVALID, SUPERSEDED",
+    "old_source_json": "notes/data/provisional/NF412_original_correlated_small_t_gram.json",
+    "old_source_json_preserved": true
+  },
+  "valid_current": {
+    "four_critical_Gram": "VALID as scoped four-critical subset only; cannot bound true original 246-source.",
+    "original_full_source_triangle": "EXACT rational source 242+4 triangle yields rigorous source u4'' upper, intended only as a method STOP because upper exceeds eps, not actual norm lower.",
+    "source_significant_cancellation": "Complete true 246-dimensional Gram must be contracted before interval bound.",
+    "source_exact_workflow": "Correction CI running until independently confirmed"
+  },
+  "remaining": {
+    "complete_original_second_derivative_246x246_Gram": "OPEN",
+    "useful_small_t_original_arch_bound": "OPEN",
+    "remaining_full_arch_t": "OPEN",
+    "continuous_z_hotspot_cells_6_3_7": "OPEN",
+    "nf410_signed_zp": "OPEN",
+    "full_centered_scalar": "OPEN",
+    "nf404_sufficient_gate": "UNDECIDED",
+    "fourth_lowband_J242_complement": "OPEN",
+    "domain": "OPEN",
+    "infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "Construct source-correlated 246-generator physical second derivative Gram using actual selected x^k sin/cos, critical 32-sine/pole and all mixed terms; pay native 4096-bit coefficient intervals and source SHA, then resume true interval z(6,3,7)."
+}
