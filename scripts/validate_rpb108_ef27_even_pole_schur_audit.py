@@ -141,7 +141,7 @@ def source_variational_and_pole_gates():
           "v*10^938:",vtilde.scaled(),
           "so 0<v<1e-700 (not full complement pole).",flush=True)
     print("EF27 native original a210",a210.scaled(),
-          "physical ||f||² lower >",float(F(10**372)),flush=True)
+          "physical ||f||² lower > 10^372 (exact rational)",flush=True)
     print("EF27 signed source/pole residual bounds:",
           "|M v/E|<1e-880, v²/E<1e-1700; exact",
           "2x2 pole-corrected Schur update Delta in (0.46,0.51).",
