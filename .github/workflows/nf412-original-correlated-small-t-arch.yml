@@ -1,0 +1,58 @@
+name: Weil-Lab NF412 original correlated near-zero arch kernel L2
+on:
+  push:
+    branches: [research/nf412-original-correlated-small-t-arch]
+    paths:
+      - '.github/workflows/nf412-original-correlated-small-t-arch.yml'
+      - 'scripts/local_replay/nf412_original_correlated_small_t_gram.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-correlated-small-t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf412-original-correlated-small-t-arch
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Native arb runtime
+        run: pip install python-flint==0.8.0
+      - name: Actual original correlated four-critical analytic 32-sine physical second-derivative Gram
+        run: |
+          python -m py_compile scripts/local_replay/nf412_original_correlated_small_t_gram.py
+          python -u scripts/local_replay/nf412_original_correlated_small_t_gram.py --output /tmp/NF412_original_correlated_small_t_gram.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          r=json.load(open('/tmp/NF412_original_correlated_small_t_gram.json'))
+          assert r['critical_source_dimension']==4 and r['critical_sine_count']==32
+          assert r['original_native_source_second_derivative_radius_paid']
+          assert r['original_true_u4_second_derivative_L2_bound_certified']
+          assert r['original_true_near_t_L2_bound_certified']
+          C=F(r['original_midpoint_u4_second_derivative_L2_upper_integer'])
+          h=F(r['original_small_t_cutoff_h_exact'])
+          assert F(r['original_midpoint_near_t_zero_arch_I0_L2_upper'])==C*h*h/8
+          assert r['original_remaining_arch_t_quadrature_certified'] is False
+          assert r['original_z_cell_6_3_7_interval_certified'] is False
+          assert r['original_full_centered_scalar_certified'] is False
+          assert r['W_ODD_NEG']==r['RH']=='OPEN'
+          PY
+      - name: Durable typed original t-near-zero certificate, not full z
+        run: |
+          target=notes/data/provisional/NF412_original_correlated_small_t_gram.json
+          mkdir -p notes/data/provisional
+          if test -e "$target"; then cmp -s "$target" /tmp/NF412_original_correlated_small_t_gram.json
+          else cp /tmp/NF412_original_correlated_small_t_gram.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF412 native correlated critical curvature and small-t exact L2 receipt, full z open'
+            git pull --rebase origin research/nf412-original-correlated-small-t-arch
+            git push origin HEAD:refs/heads/research/nf412-original-correlated-small-t-arch
+          fi
