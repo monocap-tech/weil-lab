@@ -1,0 +1,75 @@
+name: Weil-Lab NF407 original log plus seven prime jumps
+on:
+  push:
+    branches: [research/nf407-original-regularized-physical-quadrature]
+    paths:
+      - '.github/workflows/nf407-original-prime-jump-log-exact.yml'
+      - 'scripts/local_replay/nf407_original_prime_jump_log_power_exact.py'
+      - 'scripts/local_replay/nf407_original_regularized_cancellation_gate.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-exact-correlated-principal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf407-original-regularized-physical-quadrature
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original source-pinned rational log-plus-seven-jump Hilbert norm
+        run: |
+          python3 -m py_compile scripts/local_replay/nf407_original_prime_jump_log_power_exact.py scripts/local_replay/nf407_original_regularized_cancellation_gate.py
+          python3 scripts/local_replay/nf407_original_prime_jump_log_power_exact.py --output /tmp/NF407_original_prime_jump_log_power_exact.json
+          python3 scripts/local_replay/nf407_original_regularized_cancellation_gate.py --principal /tmp/NF407_original_prime_jump_log_power_exact.json --output /tmp/NF407_original_cancellation_gate_exact.json
+          python3 - <<'PY'
+          import json
+          import sys
+          sys.set_int_max_str_digits(0)
+          from fractions import Fraction as F
+          p=json.load(open('/tmp/NF407_original_prime_jump_log_power_exact.json'))
+          assert len(p['source_true_original_prime_jump_terms'])==7
+          assert p['source_all_original_prime_jumps_cancelled_from_z'] is True
+          q=p['original_log_model_q_power_interval']
+          r=p['original_prime_jump_model_r_power_interval']
+          c=p['original_signed_q_r_cross_interval']
+          s=p['original_known_q_plus_all_seven_prime_jumps_power_interval']
+          assert F(q[0])+F(r[0])+2*F(c[0])==F(s[0])
+          assert F(q[1])+F(r[1])+2*F(c[1])==F(s[1])
+          assert F(21,10**22)<F(s[0])<F(s[1])<F(22,10**22)
+          assert p['original_continuous_physical_z_squared_norm_measured'] is False
+          assert p['original_full_supported_centered_scalar_upper_computed'] is False
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          c=json.load(open('/tmp/NF407_original_cancellation_gate_exact.json'))
+          assert F(c['necessary_continuous_regularized_z_norm_strict_lower_if_cap_passes'])==F(13,10**12)
+          assert F(c['necessary_signed_z_principal_inner_product_upper_if_cap_passes']) < -F(515,10**24)
+          assert c['original_actual_continuous_z_norm_measured'] is False
+          assert c['original_full_centered_power_upper_computed'] is False
+          PY
+      - name: Preserve original exact seven-prime/log model only
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF407_original_prime_jump_log_power_exact.json
+          if test -f "$target"; then
+            cmp -s "$target" /tmp/NF407_original_prime_jump_log_power_exact.json
+          else
+            cp /tmp/NF407_original_prime_jump_log_power_exact.json "$target"
+          fi
+          target2=notes/data/provisional/NF407_original_cancellation_gate_exact.json
+          if test -f "$target2"; then
+            cmp -s "$target2" /tmp/NF407_original_cancellation_gate_exact.json
+          else
+            cp /tmp/NF407_original_cancellation_gate_exact.json "$target2"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target" "$target2"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF407 source-exact correlated original boundary log plus all seven prime jumps'
+            git pull --rebase origin research/nf407-original-regularized-physical-quadrature
+            git push origin HEAD:refs/heads/research/nf407-original-regularized-physical-quadrature
+          fi
