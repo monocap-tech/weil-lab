@@ -1,0 +1,26 @@
+name: EF26 original arch signed Laplace finite-tail sign
+on:
+  push:
+    branches: [research/ef26-original-even-arch-laplace-signed-series]
+  pull_request:
+    branches: [research/ef25-original-even-arch-energy-jensen-bound]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-arch-laplace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact SI10 469-source arch Laplace signed outward partial
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef26_original_even_arch_laplace.py
+          python scripts/validate_rpb108_ef26_original_even_arch_laplace.py
+      - name: Original canonical obligation governance
+        run: python scripts/verify_obligation_manifest.py
