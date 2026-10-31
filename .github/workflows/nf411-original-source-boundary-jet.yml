@@ -1,0 +1,54 @@
+name: Weil-Lab NF411 original source endpoint jet, not centered norm
+on:
+  push:
+    branches: [research/nf411-original-endpoint-jet-seam-contract]
+    paths:
+      - '.github/workflows/nf411-original-source-boundary-jet.yml'
+      - 'scripts/local_replay/nf411_original_source_boundary_jet.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-native-jet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf411-original-endpoint-jet-seam-contract
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native outward Arb arithmetic
+        run: pip install python-flint==0.8.0
+      - name: Original 242+4 source-correlated endpoint value and derivative
+        run: |
+          python -m py_compile scripts/local_replay/nf411_original_source_boundary_jet.py
+          python -u scripts/local_replay/nf411_original_source_boundary_jet.py --output /tmp/NF411_source_boundary_jet.json
+          python - <<'PY'
+          import json
+          j=json.load(open('/tmp/NF411_source_boundary_jet.json'))
+          assert j['original_source_selected_count']==242 and j['original_source_critical_count']==4
+          assert len(j['all_seven_original_prime_seam_derivative_identities'])==7
+          assert j['original_source_native_radii_paid_for_endpoint_derivative']
+          assert j['original_full_arch_x_t_quadrature_certified'] is False
+          assert j['original_z_interval_certified'] is False
+          assert j['original_full_centered_scalar_certified'] is False
+          assert j['nf404_cap_decided'] is False
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          PY
+      - name: Preserve genuine source-verified jet with explicit no-transfer of norm status
+        run: |
+          target=notes/data/provisional/NF411_original_source_boundary_jet.json
+          mkdir -p notes/data/provisional
+          if test -e "$target"; then cmp -s "$target" /tmp/NF411_source_boundary_jet.json
+          else cp /tmp/NF411_source_boundary_jet.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF411 source-original boundary derivative native receipt, centered norm OPEN'
+            git pull --rebase origin research/nf411-original-endpoint-jet-seam-contract
+            git push origin HEAD:refs/heads/research/nf411-original-endpoint-jet-seam-contract
+          fi
