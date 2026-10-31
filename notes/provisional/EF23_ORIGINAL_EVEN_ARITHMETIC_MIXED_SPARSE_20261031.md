@@ -39,7 +39,38 @@ For n=5, the naive exact sum has 728 coefficients k=-258,...,469. The original s
 sum_{k=-258}^{469} A_k exp(-i*omega*k*h)
   = -sum_{k=-469}^{-259} A_k exp(-i*omega*k*h).
 
-Thus the n=5 signed mixed contribution is a **211-term edge sum**, not a 728-term cancellation. For n=7 it is directly a **39-term edge sum** k=431,...,469. No signs of these two sums are asserted without actual original outward high-precision trigonometric and coefficient interval arithmetic. Their coefficients can still be enormous because of 469-factor FIR conditioning; 211 and 39 terms are an *information/computational reduction*, not guaranteed a numerical certificate.
+Thus the n=5 signed mixed contribution is a **211-term edge sum**, not a 728-term cancellation. For n=7 it is directly a **39-term edge sum** k=431,...,469. ## A second exact compression: compute ONLY 211 source-edge coefficients
+
+No signs of the two remaining sums are asserted without original outward high-precision trigonometric and coefficient interval arithmetic. The counts 211 and 39 are an *information/computational reduction*, not yet a numerical certificate.
+
+Moreover, we can obtain ALL necessary edge coefficients without constructing or convolving the entire 939-coefficient Laurent filter. Put theta_j=2*pi*h*c_j, u_j=cos(theta_j), and set
+
+  G(t)=prod_(j=1)^107 (1-2*u_j*t+t²)^p_j = sum_(l=0)^938 a_l*t^l.
+
+Since z^469*S_h(z)=G(z) and G is self-reciprocal, the extreme FIR coefficients satisfy
+
+  A_{-469+l}=A_{469-l}=a_l.
+
+Write s_m=sum_j p_j*cos(m*theta_j), an original source-specific Chebyshev moment (cos(m*theta_j)=T_m(u_j)). Taking the logarithmic derivative of G gives the **exact Newton-Chebyshev recurrence**
+
+  a_0=1,
+  l*a_l = -2*sum_(m=1)^l s_m*a_(l-m),   l>=1.
+
+Thus both surviving arithmetic edge calculations require **only a0,...,a210**, a 211-entry prefix and 211 authentic source moments. The n=7 term requires only a0,...,a38. No 939-wide convolution, 469-by-469 Gram, or infinite complement inverse is needed for these two finite original arithmetic contributions. The source code proves this formal algebra via an exact Fraction rational-Chebyshev toy regression and verifies the actual original SI10 centers/order counts; the toy coefficients are NEVER substituted for original numerical evidence.
+
+These are precisely the two signed finite sums, with omega=2*pi*c0:
+
+  M5 = +w5*H_r(c0)*Re[exp(i*omega*(ln5-a+469h))*
+            sum_(l=0)^210 a_l exp(-i*omega*l*h)],
+
+  M7 = -w7*H_r(c0)*Re[exp(i*omega*(ln7-a-469h))*
+            sum_(l=0)^38 a_l exp(+i*omega*l*h)].
+
+The first source phase simplifies to ln5-a+469h=ln10-B, since a=B-ln2+469h. Every term retains the original seven-prime/power weight convention and original source phase.
+
+**Conditioning qualification:** because G is the product of 938 complex unit-circle root factors, the loose envelope |a_l|<=binomial(938,l) permits |a210| up to over 10^215 and |a38| over 10^67. Those are merely **worst-case absolute upper bounds**, not measured native coefficient magnitudes; they demonstrate why naive interval coefficient propagation or a low-precision signed sum cannot be certified. EF24 must implement rigorously scaled trig moment/recurrence intervals and count cancellation losses before claiming a signed M5/M7 interval.
+
+
 
 **Original arithmetic identity now:**
 
@@ -54,6 +85,6 @@ while q_prime(f,f)=0 EXACTLY from EF22. Thus the full original pole-free signed 
 
 ## Correct next gate, no theorem promotion
 
-**EF24 acceptance:** Certify an honest source-pinned outward interval for the two edge-coefficient/trig sums M_5 and M_7 using stable signed high precision and error budgets; measure the ORIGINAL arch mixed and arch energy upper with a common normalization, or give a proved conditioning/precision METHOD STOP. Potential method: interval polynomial recurrence for A_k with explicit sign and cosine error; adapt to edge coefficients k>=259 and k>=431; avoid evaluating the whole 469-by-469 Gram or another thin jump localization. The point-source n2 certificate alone must NOT be treated as the whole M sign.
+**EF24 acceptance:** Certify an honest source-pinned outward interval for the two edge-coefficient/trig sums M_5 and M_7 using the 211-step exact Chebyshev-Newton recurrence, stable signed high precision and error budgets; measure the ORIGINAL arch mixed and arch energy upper with a common normalization, or give a proved conditioning/precision METHOD STOP. Potential method: interval polynomial recurrence for A_k with explicit sign and cosine error; adapt to edge coefficients k>=259 and k>=431; avoid evaluating the whole 469-by-469 Gram or another thin jump localization. The point-source n2 certificate alone must NOT be treated as the whole M sign.
 
 All original source physical/form-domain analytic review obligations remain OPEN; complete signed even 469D Schur PSD, paused odd, whole Weil and RH OPEN. Additive draft custody; no merge.
