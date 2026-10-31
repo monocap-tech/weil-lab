@@ -1,0 +1,41 @@
+{
+  "pass": "NF415",
+  "date": "2026-10-31",
+  "canonical_obligation": "W-ODD-NEG",
+  "original_source": "Unchanged NF370 u4, NF407 242 selected+4 critical, NF404 dyadic center, original B=11/10 and seven genuine prime powers",
+  "previous": "NF413 completed original source-correlated u4'' L2, NF414 certified finite regularized source at cell 3 x=7/20, 6 x=9/10, 7 x=26/25; remaining original I0 and I1 still unintegrated",
+  "accepted_analytic": {
+    "small_t_I0_pointwise_thm": "For every original x∈(0,B), 0<h≤1/2, |integral_0^min(h,2(B-x)) K(t)*(u4(x)-(u4(x+t/2)+u4(x-t/2))/2)dt| < 50h^(3/2), by exact triangular second derivative and NF413 ||u4''||L2(-B,B)<256.",
+    "cutoff": "1/1000000000000",
+    "pointwise_small_t_original_I0_error_upper_strict": "1/20000000000000000",
+    "scope": "POINTWISE original physical x, not merely L2; no certification of remaining I0/I1 or z."
+  },
+  "verified_native_pending": {
+    "script": "scripts/local_replay/nf415_original_cell6_I1_validated_acb.py",
+    "workflow": ".github/workflows/nf415-original-cell6-acb-integral.yml",
+    "point": "cell6 x=9/10",
+    "exact_t1": "2/5",
+    "exact_t2": "4",
+    "integrand": "(K(t)/2)*(u4(9/10)-u4(9/10-t/2)), original full 246 native correlated, exact dyadic physical source reconstruction",
+    "analytic_validation": "python-flint acb.integral, 1024 bit, source native coefficient radius I1 ≤5*S0",
+    "acceptance": "Require fully finite ACb integration and resolved exact rational real interval width <1e-13, not merely acb integral returning finite.",
+    "status": "PENDING FOCUSED NATIVE WORKFLOW — DO NOT PROMOTE SUCCESS WITHOUT RECEIPT"
+  },
+  "status": {
+    "small_t_pointwise": "ACCEPTED ANALYTIC",
+    "original_I1_cell6": "PENDING NATIVE; MAY METHOD-STOP",
+    "original_I0_cell6_above_h": "OPEN",
+    "original_arch_cell3_and7": "OPEN",
+    "true_z_at_any_hotspot_point": "OPEN",
+    "true_z_on_cells": "OPEN",
+    "NF410_zp_signed_cross": "OPEN",
+    "full_centered_scalar": "OPEN",
+    "NF404_C": "UNDECIDED",
+    "J242_perp": "OPEN",
+    "domain": "OPEN",
+    "inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "Verify original I1 cell6 native result; if finite + resolving, attempt original I0 for all 3 hotspot points and then source cellwise interval/Taylor. If interval not resolving, develop source-correlated analytic Taylor quadrature that controls cancellations of 246 physical generators on complex validation boxes, not unverified Gauss refinement."
+}
