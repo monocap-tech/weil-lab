@@ -32,7 +32,17 @@ jobs:
           assert not p['NF404_full_centered_scalar_certified']
           assert p['W_ODD_NEG']==p['RH']=='OPEN'
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: NF417-independent-source-audit
-          path: /tmp/nf417_independent.json
+      - name: Custody exact independent source-rational replay as immutable research receipt
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF417_original_hotspots_independent_fraction_replay.json
+          if test -e "$target"; then cmp -s "$target" /tmp/nf417_independent.json
+          else cp /tmp/nf417_independent.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF417 independently replay exact original 246 source errors and signed cell3 cell7 z intervals'
+            git pull --rebase origin research/nf417-original-hotspots-complete-z
+            git push origin HEAD:refs/heads/research/nf417-original-hotspots-complete-z
+          fi
