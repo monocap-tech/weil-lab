@@ -1,0 +1,60 @@
+{
+  "pass": "NF421",
+  "date": "2026-10-31",
+  "active_obligation": "W-ODD-NEG",
+  "original_source": "Unchanged NF370 supported fourth u4; NF407 original 242 selected plus 4 critical physical generators including original odd pole and 32 critical sines, B=11/10, all 7 signed prime powers, NF404 original dyadic center",
+  "previous": "NF420 original full third curvature Gram, quadratic Taylor remainder and strictly positive radius 2.5e-8 at x=9/10",
+  "accepted": {
+    "original_exact_third_moving_arch_cancellation": "A_prime=K(t1)-K(t2); moving original I0[u4''],I1[u4''] endpoints cancel all standalone u4''(x) in true z'''",
+    "original_fourth_full_source_correlated_analytic_Gram": "ACCEPTED",
+    "original_fourth_analytic_Gram_basis_terms": 273,
+    "original_true_u4_fourth_derivative_L2_upper": 16384,
+    "original_true_u4_third_derivative_sup_upper": 24580,
+    "original_true_complete_z_third_x_derivative_sup_upper": 1540338,
+    "original_true_macro_cell6_interval": [
+      "899/1000",
+      "901/1000"
+    ],
+    "original_Gram_native_success": "https://github.com/monocap-tech/weil-lab/actions/runs/41234718188",
+    "original_Gram_native_receipt": "notes/data/provisional/NF421_original_fourth_source_gram_and_z_third_bound_native.json",
+    "original_second_x_jet_source_integrated": "ACCEPTED",
+    "original_true_zsecond_at_x9over10_approx": "-2.98070944690804238e-8",
+    "original_second_x_jet_width_strict": "1e-26",
+    "original_second_x_jet_full_signed_seven_prime": true,
+    "original_second_x_jet_native_success": "https://github.com/monocap-tech/weil-lab/actions/runs/41234813352",
+    "original_second_x_jet_native_receipt": "notes/data/provisional/NF421_original_cell6_complete_second_xjet_native.json",
+    "original_cubic_taylor_remainder": "|z(x)-z(x0)-z'(x0)(x-x0)-z''(x0)(x-x0)^2/2|<1540338|x-x0|^3/6 for each original physical x in [899/1000,901/1000]",
+    "original_source_exact_independent_replay": "ACCEPTED",
+    "independent_success": "https://github.com/monocap-tech/weil-lab/actions/runs/41235020619",
+    "independent_receipt": "notes/data/provisional/NF421_original_local_third_taylor_independent_fraction.json",
+    "original_certified_positive_interval": [
+      "899994530369/1000000000000",
+      "900005469631/1000000000000"
+    ],
+    "original_certified_positive_interval_decimals": [
+      "0.899994530369",
+      "0.900005469631"
+    ],
+    "original_certified_positive_interval_radius": "0.000005469631",
+    "previous_certified_NF420_positive_radius": "0.000000025",
+    "sign_radius_enlargement_factor": "218.78524",
+    "strict_original_z_micro_lower_approx": "1.73389005e-17",
+    "actual_entire_new_microcell_z_positive": true
+  },
+  "open": {
+    "source_correlated_full_cell6_at_NF404_decision_precision": "OPEN",
+    "original_hotspot_cells3_7": "OPEN",
+    "other_five_original_positive_cells": "OPEN",
+    "seven_original_prime_seams_one_sided": "OPEN",
+    "original_endpoint_dlogd": "OPEN",
+    "NF410_signed_p_z_and_z_squared": "OPEN",
+    "NF404_original_whole_centered_scalar": "UNDECIDED",
+    "J242_complement": "OPEN",
+    "domain_and_infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "even_whole_Weil": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF422 local source-correlated x-dependent third derivative enclosures over one-sided original prime cells; expand analytically certified original x-Taylor/Chebyshev panels, cover all eight positive physical support cells, original NF410 signed cross and z², decide true NF404 scalar.",
+  "custody": "Stacked draft PR on NF420, additive evidence only, no main merge"
+}
