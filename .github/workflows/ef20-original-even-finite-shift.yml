@@ -1,0 +1,26 @@
+name: EF20 original even finite-shift cofinite filter
+on:
+  push:
+    branches: [research/ef20-even-finite-shift-exact-cofinite-filter]
+  pull_request:
+    branches: [research/ef19-original-even-annihilator-cofinite-test]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-filter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact native original even source shift-filter algebra
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef20_original_even_finite_shift.py
+          python scripts/validate_rpb108_ef20_original_even_finite_shift.py
+      - name: Canonical active obligation verification
+        run: python scripts/verify_obligation_manifest.py
