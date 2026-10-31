@@ -35,6 +35,8 @@ jobs:
           assert p['original_same_242_selected_and_4_critical']
           assert len(p['original_all_seven_signed_prime_derivative_branches'])==7
           assert p['moving_original_I0_I1_boundary_exact_cancellation_formula']=='K(t1)*(u(B)-u(x))+K(t2)*(u(x)+u(B))'
+          assert p['finite_arch_plus_moving_boundary_exact_full_source_cancellation']=='(c+L/2)*uprime+u(B)*(K(t1)+K(t2)-1/(2d))'
+          assert p['algebraically_direct_and_cancelled_arch_arb_intervals_overlap']
           assert p['original_I0_derivative_t0_analytic_H_tK']
           assert p['original_I0_derivative_analytic_regular_panel_count']==38
           assert p['original_I1_derivative_analytic_panel_count']==360
