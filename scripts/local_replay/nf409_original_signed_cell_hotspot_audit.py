@@ -21,7 +21,7 @@ def main():
  a=pa.parse_args()
  pilot,p_sha=read(a.pilot)
  pilot_bytes=Path(a.pilot).read_bytes()
- assert hashlib.sha1(b'blob '+str(len(pilot_bytes)).encode()+b'\\x00'+pilot_bytes).hexdigest()=='70ae4fac5061b6d4583c22097f9fe9fed687d482'
+ assert hashlib.sha1(b'blob '+str(len(pilot_bytes)).encode()+b'\x00'+pilot_bytes).hexdigest()=='70ae4fac5061b6d4583c22097f9fe9fed687d482'
  weights,w_sha=read(a.principal)
  center,c_sha=read(a.center)
  assert pilot['pass']=='NF408'
