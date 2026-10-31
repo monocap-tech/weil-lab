@@ -78,3 +78,21 @@ The optional contraction loader checks every coefficient interval index from 0 t
 Source-native JSON Actions artifact: **#13061000795**, name NF429-original-cell6-2999-raw-Chebyshev-moments, ZIP digest **sha256:eab0d4968217d62d3f1b6fbf4e2077f6a82d89ad85c45d3ddf6e550abc1cb529**; retention expires **2027-01-29**. Generated interval JSON **is not yet independently committed permanently**, although the exact source, script and CI receipt are on the NF429 draft branch.
 
 **NF429 post-CI accepted:** exact Chebyshev quadratic product/contraction identity on original J6, genuine 2999 outward native raw dx Chebyshev moments, fail-closed full-input integral router. **NF429 NOT accepted:** all 1500 z coefficients (only original first 256), actual signed complete cell6 pz/z² or NF410/NF404 signed scalar, fourth exterior bound, W-ODD-NEG, even/whole Weil, RH. The 1244 missing z coefficients are not interpolated, guessed, or set to zero.
+
+
+## Additional accepted exact 256-mode source-correlated partial contraction
+
+[Final two-job Actions #41250121362 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41250121362), head bf2fd8860ffa2f9250ac7fcbd0f54b5f0076c7da. Job 1 independently replays all 2999 true J6 raw Chebyshev moments using original NF406 knots. Job 2 downloads retained original NF428 source-correlated z coefficients n0..255, all 1500 original signed p moments, and the NF429 2999 raw moments. Each input JSON is checked by its SHA256: z d4e812d685813f8711aa4dce6422df27c301789cc23e944094c518e2f9247c3c; p bc7c98e1ac16b1147eaff91f11a6bf33ce4326d6237b5728c1987cec39f8cf25; raw J 8f83c9658dec776b84f9d013eb22d7ed1533a02e464ba975553c76210435e1d1. All source/seam parent hashes, real prime branches and OPEN flags are cross-checked.
+
+Using ONLY the first 256 accepted original source-correlated a_n, and P255=sum_(n=0)^255 a_n T_n((x-.91)/.07), the exact-Fraction outward interval contraction on the TRUE irrational J6 gives:
+
+- integral p*P255 approximately -2.82728667474878227389178042e-22;
+- integral P255² approximately 3.53484733276936353357687475e-22;
+- 4 integral p*P255 + 2 integral P255² approximately -4.23945203345640202841337218e-22, with rigorously negative upper endpoint.
+
+All three have strict outward interval width <1e-40; the full rational endpoints are in retained CI artifact. The negative sign is a statement about the FINITE POLYNOMIAL P255 ONLY. High coefficients n256..1499 are absent, not assumed zero; there is no certified P255-to-true-z tail bound. Consequently **no original full cell6 signed result or NF404 decision is established**.
+
+Final exact source-pinned P255 report Actions artifact #13061226250 (ZIP digest sha256:f0d4b284e3f84d02c70600934200d7300a214b5db13160ff8588367c9cf62846). Final source-native J0..J2998 artifact #13060823841 (ZIP digest sha256:aaa548acfbaa729d16e7f89360c52d20126bab6b5f1ca0c98df4c6927a9ee313). Both expire 2027-01-29; their generated interval JSON requires permanent repository archival. Scripts, proof architecture and source/digest pins are committed and PR remains draft.
+
+**Accepted NF429:** original exact-product integration contraction, 2999 true J6 native raw moment balls, and the strict original-source P255 signed partial-polynomial contraction. **Open:** 1244 remaining source-correlated a_n, true J6 pz and z², other seven cells, NF410/NF404 centered full scalar, fourth J242 complement upper, W-ODD-NEG, even/whole Weil, infinite inverse/domain and RH.
+
