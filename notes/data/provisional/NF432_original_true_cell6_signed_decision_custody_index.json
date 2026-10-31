@@ -1,0 +1,77 @@
+{
+  "pass": "NF432",
+  "standing": "ACCEPTED ORIGINAL TRUE CONTINUOUS CELL6 SIGNED PZ/Z², STRICT NEGATIVE NONPRINCIPAL D6; NF410/NF404 GLOBAL OPEN",
+  "active_obligation": "W-ODD-NEG",
+  "source": "NF407 original 242 selected + four critical 4096-bit dyadics",
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "physical_true_J6": "(log(7)-11/10,log(8)-11/10)",
+  "original_prime_branches": {
+    "post_seam": [
+      2,
+      3,
+      4,
+      5,
+      7
+    ],
+    "neither": [
+      8,
+      9
+    ]
+  },
+  "original_dyadic_center": "6677356497477490213/4611686018427387904",
+  "original_nf428_plus_nf431_512_series_coefficients_sha256": [
+    "d4e812d685813f8711aa4dce6422df27c301789cc23e944094c518e2f9247c3c",
+    "10c93ca7f4b7779334fd686ef1fd348f79fe873068af3897c2a936487dbdcbf8"
+  ],
+  "original_nf428_signed_p_moments_sha256": "bc7c98e1ac16b1147eaff91f11a6bf33ce4326d6237b5728c1987cec39f8cf25",
+  "original_nf429_dx_raw_moments_sha256": "8f83c9658dec776b84f9d013eb22d7ed1533a02e464ba975553c76210435e1d1",
+  "original_nf431_P511_signed_partial_sha256": "e04a0bc019128509afd0d6e0a37b8da9b6c397ac5260854d03f7862c3bb70418",
+  "original_nf432_sourcewise_tail_json_sha256": "8a1092cefad38cf6656cab5971f680a64abf24cb1b8b51e7185b8ca2ced631a4",
+  "original_nf432_true_signed_json_sha256": "79a7c5cae7ff5c74e68195b78d70bea92e80280a43ba15d255886a06c061e90c",
+  "sourcewise_original_generator_order_groups": 273,
+  "sourcewise_optimal_ellipse_counts": {
+    "rho2": 4,
+    "rho3": 3,
+    "rho4": 5,
+    "rho5": 261
+  },
+  "original_true_source_uniform_tail_strict_upper": "7/100000000000000000000000",
+  "original_true_source_uniform_tail_approx": "6.6878667687634427571914392583696442667123584979466890827807e-23",
+  "original_true_J6_pz_outward_decimal_at_1e_minus44": [
+    "-282.72867005878475771818e-24",
+    "-282.72867005798736792259e-24"
+  ],
+  "original_true_J6_z2_outward_decimal_at_1e_minus44": [
+    "353.41066866265037184969e-24",
+    "353.55880048511234775232e-24"
+  ],
+  "original_true_J6_nonprincipal_signed_4pz_plus_2z2_outward_decimal_at_1e_minus44": [
+    "-424.09334290983828717334e-24",
+    "-423.79707926172477618576e-24"
+  ],
+  "roundoff_statement": "All recorded decimal bounds are outward-rounded from the source exact-Fraction interval endpoints to absolute 1e-44; full exact rational endpoints are in GitHub Actions artifact JSON, not in this compact custody index.",
+  "verified_source_tail_run": {
+    "id": 41252454230,
+    "url": "https://github.com/monocap-tech/weil-lab/actions/runs/41252454230",
+    "conclusion": "success",
+    "artifact_id": 13062275169,
+    "zip_sha256": "b578ba350df704b48ebead950e3500be519acd1ae56b68134edca9e7c61ec3d6"
+  },
+  "verified_two_job_true_cell6_run": {
+    "id": 41252509627,
+    "url": "https://github.com/monocap-tech/weil-lab/actions/runs/41252509627",
+    "conclusion": "success",
+    "source_tail_artifact_id": 13061419183,
+    "source_tail_zip_sha256": "93786544bb3151ef6cb7984636fc34e7dfe610b8a4d01507324ecb5729f50380",
+    "true_cell6_artifact_id": 13062040759,
+    "true_cell6_zip_sha256": "118b70ded04aabe80935dd3a75cfc9c9054259ce04f29d87940d7254477ad052"
+  },
+  "artifacts_expire": "2027-01-29",
+  "complete_original_cell6_nonprincipal_signed_negative": true,
+  "original_remaining_seven_cells_integrated": false,
+  "original_full_nf410_nf404_signed_scalar_accepted": false,
+  "original_fourth_J242_exterior_upper_proved": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
