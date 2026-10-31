@@ -1,0 +1,51 @@
+name: Weil-Lab NF427 original cell6 1500-series cutoff and 64 native coefficients
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf427_original_cell6_chebyshev_series_tail_exact.py'
+      - 'scripts/local_replay/nf427_original_cell6_chebyshev_64_mode_native.py'
+      - 'notes/provisional/NF427_ORIGINAL_CELL6_SERIES_CUTOFF_AND_NATIVE_BLOCK_20261031.md'
+      - '.github/workflows/nf427-cell6-cheb-series-cutoff-native64.yml'
+permissions:
+  contents: read
+jobs:
+  original-exact-series-cutoff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Replay true original source, correct physical cell6 and 1500-series complete tail
+        run: |
+          python3 -m py_compile scripts/local_replay/nf427_original_cell6_chebyshev_series_tail_exact.py
+          python3 scripts/local_replay/nf427_original_cell6_chebyshev_series_tail_exact.py --output artifacts/NF427_original_cell6_1500_cheb_series_tail_exact.json
+      - name: Preserve exact original source 1500-coefficient cutoff certificate
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF427-source-exact-original-cell6-series-tail-degree1499
+          path: artifacts/NF427_original_cell6_1500_cheb_series_tail_exact.json
+          if-no-files-found: error
+  original-native-cheb64:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    needs: original-exact-series-cutoff
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install actual Arb Acb native arithmetic
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Original complete source correlated native 64 coefficient prefix with independent NF416 pointwise overlap
+        run: |
+          python3 -m py_compile scripts/local_replay/nf427_original_cell6_chebyshev_64_mode_native.py
+          python3 scripts/local_replay/nf427_original_cell6_chebyshev_64_mode_native.py --modes 64 --precision 2048 --output artifacts/NF427_original_cell6_native_64_cheb_coefficients.json
+      - name: Retain original source 64 rigorous outward coefficient intervals
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF427-original-cell6-source-correlated-64-native-coefficients
+          path: artifacts/NF427_original_cell6_native_64_cheb_coefficients.json
+          if-no-files-found: error
