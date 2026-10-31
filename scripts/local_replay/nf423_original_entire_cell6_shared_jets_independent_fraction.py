@@ -17,8 +17,13 @@ from nf417_original_hotspots_independent_fraction_replay import read,source_cont
 if hasattr(sys,'set_int_max_str_digits'):sys.set_int_max_str_digits(0)
 B=F(11,10);X=F(9,10);T1=F(2,5);T2=F(4)
 def arb_ball(s):
- assert s.startswith('[') and s.endswith(']') and ' +/- ' in s
- a,b=s[1:-1].split(' +/- ')
+ assert s.startswith('[') and s.endswith(']')
+ inner=s[1:-1]
+ if inner.startswith('+/- '):
+  a,b='0',inner[len('+/- '):]
+ else:
+  assert ' +/- ' in inner
+  a,b=inner.split(' +/- ')
  with localcontext() as ctx:
   ctx.prec=8000
   m=F(Decimal(a));r=F(Decimal(b))
