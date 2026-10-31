@@ -59,7 +59,7 @@
     "ef16_frontier_scope": "EF16 extends accepted EF15 original b9 even cofinite to ACTUAL original physical source/pole coupling and exact positive-pole finite Schur correction; full pole-free signed finite+mixed source remains OPEN; neither old NF401 nor EF14 one-vector result implies theorem closure.",
     "ef17_source_identifiability_gate": "EF17 confirms EF16's original source physical pole projection (accepted in corrected Actions #41148545925) is insufficient to identify corrected signed Schur sign without original pole-free signed B0 and resolvent. Finite exact countermodels are expressly abstract, not actual negative Weil witnesses. Real signed mixed/source residual required in EF18.",
     "ef18_original_signed_mixed_entry": "EF18 original SI10 even source e=1_I cos(2pi 37/64 x) pole-free signed source action has a strict n2 arithmetic-translated internal jump at B-ln2, isolated from all other original 7 prime-power endpoints; archimedean pseudolocality and source domain give B0(e,V469^perp)!=0. Focused arithmetic CI separate from analytic review. No actual inverse response or matrix PSD.",
-    "ef19_annihilator_quantitative_stop": "EF19 does not infer norm or inverse-Schur bound from point jump. It constructs genuine original 469-source orthogonal smooth test family via 938th differential annihilator and proves only an existential unnormalized nonzero signed mixed pairing, conditional on original pseudolocal/source domain. Requires a certified finite-epsilon normalized q0(e,f) and q0(f,f) or low-order alternative. Parent EF18 Actions #41153873998 PASS."
+    "ef19_annihilator_quantitative_stop": "EF19 genuine original 469 even exceptional-source annihilator creates exactly orthogonal C_c∞ test. Its signed mixed pairing converges to -J as ε→0, but leading D^938 term makes ||fε||_L²²~const/ε. Original cofinite positive floor then forces the variational inverse-Schur lower obtained from this particular trial to vanish O(ε), so shrinking-bump method is STOP. Source and analytic verification classifications separate."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -877,9 +877,9 @@
     },
     "EF19": {
       "kind": "original-even-cofinite-annihilator-existential-signed-mixed-test",
-      "scope": "W-EVEN-FORM: original SI10 469-source 938th differential annihilator produces exact F test from even compact bump and original jump yields existential unnormalized |q0(e,f)|>1/8; normalized energy/Schur bound uncomputed; analytic pseudolocal/core proof audit open",
+      "scope": "W-EVEN-FORM: original SI10 469-source 938th differential annihilator constructs exact cofinite even trial and original signed jump gives existential unnormalized |q0(e,fε)|>1/8; PROVED narrow-annihilator normalization STOP: variational inverse Schur lower O(ε)->0; finite epsilon/domain audit, original signed Schur OPEN",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/395",
-      "verification": "Original source-pinned exact Fraction 107/469/938 algebra and inherited signed jump candidate, focused Actions pending. Distributional asymptotic and original form-domain analytic premises separately AUDIT; no explicit epsilon or normalized inverse Schur certificate.",
+      "verification": "Source-pinned exact Fraction 107/469/938 algebra, arithmetic jump, and -1/+3 norm-scaling exponent checks. Focused EF19 Actions pending; distributional/asymptotic and original domain analytic proof separate. No explicitly normalized original Schur bound.",
       "repo_path": "notes/provisional/EF19_ORIGINAL_EVEN_ANNIHILATOR_MIXED_20261030.md"
     }
   },
@@ -1034,7 +1034,7 @@
         "EF19"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF19 genuine original SI10 b9 469-source exceptional-space annihilator P(D)=product(D²+(2πcj)²)^pj, degree 938, creates an exactly orthogonal C_c∞ even F trial family; original seven-prime translated jump produces existential absolute signed mixed |q0(e,fε)|>1/8 for sufficiently small unspecified ε under analytic pseudolocality/domain proof. Point jump alone has NO numerical energy-dual Schur norm floor, and high-order fε energy diverges with shrinking ε. EF20 requires actual fixed epsilon+certified original mixed/energy denominator OR lower-order conditioning-aware exact F trial; corrected original Schur sign, whole even/odd and RH OPEN."
+      "next_action": "EF19 original b9 469-source 938th-order annihilator yields exact F trial and existential nonzero original pole-free signed mixing; however L2 squared norm ~c/epsilon and raw mixed q0(e,f_epsilon)->-J, so normalized inverse Schur variational certificate O(epsilon)->0: localized-annihilator method STOP. EF20 must choose fixed epsilon with complete signed numerator+denominator or develop a physically low-order conditioning-aware original cofinite test. Even finite Schur/whole Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
