@@ -95,7 +95,6 @@ def finite_prime_prime_derivative(ux,up,v,groups,pole,pi,nf414):
   seam=abs(A(B)-h)
   assert x<seam or x>seam
   if h<A(B) and x<seam:
-   pplus=uj_at(X+F(0),groups,pole,pi) if False else nf416.original_jets(arb_to_frac_unused if False else F(0),groups,pole,pi,1) if False else None
    # Evaluate native source derivative directly at exact real Arb
    # center, high accuracy (arbitrary real log n is already outward).
    def source_der_at(y):
@@ -223,7 +222,18 @@ def main():
  k1=K(A(T1));k2=K(A(T2))
  boundary=k1*(v-ux)+k2*(ux+v)
  finite_der,prime_der,center_der,entries=finite_prime_prime_derivative(ux,up,v,grouped,pole,arb.pi(),finite['hotspot_points'][1])
- full=up_original_I0+I0_regular+I1_regular+boundary+finite_der+prime_der+center_der
+ # NF419 further EXACT cancellation: Phi'(d)=1/d-2K(2d),
+ # so (A_finite' + BOTH original moving boundaries) is
+ # (c+L/2)*u'(x)+v*(K(t1)+K(t2)-1/(2d)).
+ # This eliminates ALL standalone u(x) terms before enclosures.
+ d=A(B-X);t2=A(T2)
+ e=(-d/2).exp()
+ phi=((d/A(B))*(d/4).cosh()/(d/4).sinh()).log()+2*e.atan()
+ q=(-t2/4).exp();J2=2*(q.atanh()+q.atan())
+ c=(arb(1)/4).digamma()-arb.pi().log()+(J2+phi)/2
+ reduced_arch=(c+(A(B)/d).log()/2)*up+v*(k1+k2-1/(2*d))
+ assert (finite_der+boundary).overlaps(reduced_arch)
+ full=up_original_I0+I0_regular+I1_regular+reduced_arch+prime_der+center_der
  raw=nf415.enclosed(full,85)
  lo=F(raw[0])-E;hi=F(raw[1])+E
  assert lo<hi and hi-lo<F(1,10**27)
@@ -244,6 +254,8 @@ def main():
  'original_true_I1_derivative_original_bounds':['2/5','4'],
  'moving_original_I0_I1_boundary_exact_cancellation_formula':'K(t1)*(u(B)-u(x))+K(t2)*(u(x)+u(B))',
  'original_I0_derivative_t0_analytic_H_tK':True,
+ 'finite_arch_plus_moving_boundary_exact_full_source_cancellation':'(c+L/2)*uprime+u(B)*(K(t1)+K(t2)-1/(2d))',
+ 'algebraically_direct_and_cancelled_arch_arb_intervals_overlap':True,
  'tiny_original_source_derivative_Taylor_order':530,
  'large_original_source_derivative_Taylor_order':300,
  'original_I0_derivative_analytic_regular_panel_count':I0_panels,
