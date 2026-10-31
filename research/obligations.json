@@ -901,9 +901,9 @@
     },
     "EF22": {
       "kind": "exact-original-seven-prime-even-FIR-self-energy-cancellation",
-      "scope": "W-EVEN-FORM: genuine original fixed EF21 469-source FIR even bell, all original seven prime-power self-translates disjoint by 13139 exact Fraction log lattice checks, so q_prime(f,f)=0 exactly; original signed prime mixed reduces to complete elementary whole-bell sums with EXACTLY TWO partial source-cutoff bells, both n=2, mirrored, subject to focused verification. Original arch M and E and complete Schur OPEN.",
+      "scope": "W-EVEN-FORM: original EF21 fixed even FIR f has exact seven-prime self-energy zero (13139 rational shift checks); exactly TWO n2 partial cutoff bells, and complete n2 FIR-lobe sums vanish at authentic original c0 root, yielding strictly positive SOURCE-SPECIFIC original signed q_prime,n2(e,f)>15/10^7 certified by rational n2 weight/phase half-bell mass. Other 6 original prime mixed contributions and arch M/E remain uncomputed, no normalized Schur.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/403",
-      "verification": "Focused source exact native SI10/EF21 replay, 13139 rational original ln(n) nonoverlaps, original mixed cutoff and exactly 2 partial-bell exhaustive integer lattice checks. CI PENDING on latest code; analytic complete operator/core and arch quadrature separate; no normalized Schur.",
+      "verification": "Original 13139 native 7-prime self-shift nonoverlap checks; exact two cutoff bells; true original n2 signed half-bell mixed Fraction lower >1.5e-6. Latest focused CI PENDING; all other original mixed terms/arch positive energy interval and independent form-domain audit OPEN.",
       "repo_path": "notes/provisional/EF22_ORIGINAL_EVEN_PRIME_ENERGY_VANISH_20261031.md"
     }
   },
@@ -1061,7 +1061,7 @@
         "EF22"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF22: original signed seven-prime q_prime(f,f)=0 for unchanged EF21 fixed true F469 even test by 13139 rigorous source log shift separations; original prime mixed q_prime(e,f) reduces to full-bell elementary finite cosine sums with EXACTLY TWO partially clipped n=2 mirrored bells (new rational cutoff CI pending). Original arch energy E and mixed M not yet rigorously numerically evaluated. EF23 must control finite cosine-shift coefficient conditioning, certify original signed prime mixed and complete arch M/E; source positivity not proven, W-EVEN-FORM OPEN."
+      "next_action": "EF22 authentic original fixed even F469 test: ALL 7 signed prime self-energies zero by 13139 exact n-log support nonoverlaps; source mixed only TWO partial n2 endpoint bells, whose complete opposite lobe sums cancel via actual c0 root. Thus original signed q_prime,n2(e,f)>15/10^7 (pending focused receipt) while n3..9 original signed mixed and arch M/E remain unquantified. EF23 must certify remaining finite original prime mixed cosine sums and arch source/energy using a common rigorous scaling; NO full signed M sign or normalized Schur certificate yet. W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
