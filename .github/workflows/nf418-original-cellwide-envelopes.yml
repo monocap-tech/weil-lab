@@ -42,7 +42,7 @@ jobs:
             assert c['entire_cell_envelope_valid_but_NF404_precision_insufficient']
             assert F(c['original_whole_cell_z_outward_rational_envelope_1e30'][0])<0
             assert F(c['original_whole_cell_z_outward_rational_envelope_1e30'][1])>0
-          assert o['unrefined_lipschitz_nearest_neighbor_subintervals_over_three_cells_more_than']=='50000000000000000000'
+          assert o['unrefined_nearest_neighbor_subintervals_over_three_cells_more_than']=='50000000000000000000'
           assert o['global_Lipschitz_grid_is_method_stop_for_NF404']
           assert not o['source_correlated_tight_cellwise_enclosure_certified']
           assert not o['original_signed_NF410_p_z_cross_certified']
