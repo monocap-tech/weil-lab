@@ -47,7 +47,7 @@ def run(args):
   'source_strict_full_norm_conditional_ceiling':str(complete_cap),
   'necessary_continuous_regularized_z_norm_strict_lower_if_cap_passes':str(z_min),
   'necessary_signed_z_principal_inner_product_upper_if_cap_passes':str(cross_cap),
-  'strict_required_negative_cross_less_than':'-515/1000000000000000000000000',
+  'strict_required_negative_cross_less_than':str(-F(515,10**24)),
   'conditional_gate_statement':'IF ||g||²<=the unmeasured NF404 centered power cap, THEN ||z||>1.3e-11 and <z,q+r><-5.15e-22, where z=g-q-r',
   'original_actual_continuous_z_norm_measured':False,
   'original_actual_signed_z_principal_cross_measured':False,
