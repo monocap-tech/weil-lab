@@ -926,7 +926,7 @@
     "EF25": {
       "kind": "original-even-genuine-arch-symbol-physical-jensen-energy-upper-and-strong-mixed-bound",
       "scope": "W-EVEN-FORM: native SI10 fixed h=1/2048 r=1/65536 469 even complement f and genuine full original arch a(xi)=Re psi(1/4+i pi xi)-ln pi. Analytic digamma global -8<a(xi)<8+ln(1+|xi|), exactly ||f'||²/||f||²=(9/11)pi²/r², so E=q_arch(f,f)<30||f||² with original 7-prime energy zero; genuine source ||arch(D)e||<47 gives |M_arch|<47||f||. Does not determine signed M_arch, complete M, normalized Schur or RH.",
-      "pr": "https://github.com/monocap-tech/weil-lab/pull/408",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/410",
       "verification": "Exact Fraction original SI06 π,ln2,gamma constants and e^21 partial sum Jensen gate, first source Fourier-sinc L2 moment envelope, authentic source 107/469 physical derivative identities; focused source CI pending. Analytic digamma/Parseval/Jensen proof documented for independent review, not machine proved.",
       "repo_path": "notes/provisional/EF25_ORIGINAL_EVEN_ARCH_ENERGY_MIXED_UPPER_20261031.md"
     }
