@@ -1,0 +1,38 @@
+name: EF32 original 471-bell signed residual sufficient-gate audit
+on:
+  push:
+    branches: [research/ef32-original-even-471-bell-residual-upper-stop]
+  pull_request:
+    branches: [research/ef31-original-even-chebyshev-null-generator]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-first-source-diagonal-and-471-residual-upper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproduce complete unchanged EF29 original 471 signed source
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef29_original_even_mixed_vector.py
+          python scripts/validate_rpb108_ef29_original_even_mixed_vector.py --output out/ef32_original_replayed_ef29_signed.json
+      - name: Certify complete original digamma first-source diagonal and EF28 fixed upper-energy criterion
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef32_even_471_bell_negative_gate_stop.py
+          python scripts/validate_rpb108_ef32_even_471_bell_negative_gate_stop.py --input out/ef32_original_replayed_ef29_signed.json --output out/ef32_original_even_sufficient_gate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ef32-original-even-negative-gate-source
+          path: |
+            out/ef32_original_replayed_ef29_signed.json
+            out/ef32_original_even_sufficient_gate.json
+          retention-days: 90
+      - name: Verify canonical even obligation and governance
+        run: python scripts/verify_obligation_manifest.py
