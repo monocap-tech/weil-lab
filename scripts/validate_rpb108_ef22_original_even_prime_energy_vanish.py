@@ -116,6 +116,58 @@ def original_prime_mixed_boundary_reduction():
     return max_partial
 
 
+
+def exact_partial_boundary_bell_classification():
+    """Strict original ln(n) interval classification for EF21's ONE f.
+
+    Each shifted source e(x+sigma ln n) can only clip an EF21 bell if
+    center s*a-k*h+sigma ln n lies within radius r of endpoint ±B.
+    With r/h=1/32, only O(1) candidate lattice k per n/sigma/s/edge;
+    all excluded integer k have >h separation by elementary rounding.
+    Classify partial vs disjoint using exact source Fraction intervals.
+    """
+    l2lo,l2hi=SHIFTS[2]
+    alo,ahi=B-l2hi+N*H,B-l2lo+N*H
+    assert R/H==F(1,32)
+    partial=[]
+    checks=0
+    for n in sorted(ACTIVE):
+        lnlo,lnhi=SHIFTS[n]
+        for sigma in (-1,1):
+            for s in (-1,1):
+                b0=(alo,ahi) if s==1 else (-ahi,-alo)
+                n0=(lnlo,lnhi) if sigma==1 else (-lnhi,-lnlo)
+                for endpoint in (-B,B):
+                    dlo=b0[0]+n0[0]-endpoint
+                    dhi=b0[1]+n0[1]-endpoint
+                    assert dhi>=dlo and dhi-dlo<H/16
+                    # Need |d-kh|<r. Every integer beyond
+                    # [floor(dlo/h)-1, floor(dhi/h)+2] is >h
+                    # away, hence automatically beyond r<h/32.
+                    lower=(dlo/H).numerator//(dlo/H).denominator
+                    upper=(dhi/H).numerator//(dhi/H).denominator
+                    assert upper-lower<=1
+                    for k in range(lower-1,upper+3):
+                        if abs(k)>N:continue
+                        zlo,zhi=dlo-k*H,dhi-k*H
+                        checks+=1
+                        if zhi < -R or zlo > R:
+                            continue
+                        # The original logarithm enclosures must
+                        # identify a rigorous actually clipped bell
+                        # without an unresolved interval boundary.
+                        assert -R<zlo<=zhi<R, (
+                            "unresolved partial bell source cutoff",
+                            n,sigma,s,endpoint,k,float(zlo),float(zhi))
+                        partial.append((n,sigma,s,str(endpoint),k))
+    assert len(partial)==2,partial
+    assert set(partial)=={
+        (2,1,1,str(B),N),
+        (2,-1,-1,str(-B),-N),
+    },partial
+    return partial,checks
+
+
 def even_pole_eigenvalue_identity():
     # The original even pole c(x)=cosh(x/2) is a common eigenfunction
     # of every symmetric shift on the FULL real line:
@@ -144,6 +196,7 @@ def run():
     al,ah,phase_lo,phase_hi,normlo=physical_support_and_disjointness()
     d=original_primes_separate_all_f_supports()
     partial=original_prime_mixed_boundary_reduction()
+    clipped,clipchecks=exact_partial_boundary_bell_classification()
     count=even_pole_eigenvalue_identity()
     assert normlo>0 and MU*normlo>0
     print("EF22 actual native original SI10 seven-prime n:",sorted(ACTIVE),
@@ -162,6 +215,9 @@ def run():
           "exact finite exterior-cutoff elementary bell decomposition;",
           "at most",partial,"partially clipped bell terms.",
           "Finite sums not yet interval-evaluated.",flush=True)
+    print("EF22 exact original source-cutoff PARTIAL bells:",
+          len(clipped),"==2, candidates tested:",clipchecks,
+          "partial identifiers:",clipped,flush=True)
     print("EF22 original even positive pole eigenvalue identity:",
           "Lambda=prod(2cosh(h/2)-2cos(2*pi*h*cj))^pj>0;",
           "even-pole contribution +2*Lambda²|<c,psi>|².",
