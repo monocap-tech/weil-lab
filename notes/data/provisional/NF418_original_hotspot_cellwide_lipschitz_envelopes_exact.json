@@ -1,0 +1,113 @@
+{
+  "pass": "NF418",
+  "standing": "ACCEPTED ORIGINAL-SOURCE TRUE GLOBAL CELLWISE LIPSCHITZ ENVELOPES ON ORIGINAL CELLS 3 6 7, BUT FAR TOO LOOSE FOR NF404 SCALAR",
+  "original_nf407_246_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf411_boundary_jet_sha256": "dea07796e598a699c67b76490055bdfb17c555f631c4311bb2aeaa3aa92b6075",
+  "original_nf413_complete_curvature_sha256": "fe0112a100aa553f5a64087884714740db98d263305493fa0adfb2f59677c72b",
+  "original_nf406_certified_seam_partition_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_prior_source_point_receipt_sha256s": {
+    "3": "ec7c0b669cd2aa03a72d5b40210f967c53d6c945fd8e9d70aba6a3e6a1c97936",
+    "6": "ca5051b17d4f0e0135a32f60121c991af224f8aa1f984c7a2f732eb4ddf4351d",
+    "7": "e849b2ed5b48dcb9072b911f852de75a4e1bcc24feb2a47254deec2691b73b8a"
+  },
+  "original_true_full_246_generator_source_unchanged": true,
+  "source_u_prime_global_sup_certified_upper_integer": 400,
+  "source_u_global_sup_certified_upper_integer": 513,
+  "original_curvature_L2_upper_integer": 256,
+  "original_source_endpoint_value_abs_upper": "1/1000000000",
+  "original_source_endpoint_slope_abs_upper": "1/1000000",
+  "original_hotspot_d_lower_strict": "1/500",
+  "whole_original_z_derivative_piecewise_uniform_upper_integer": 30000,
+  "derivative_component_upper_ledger": {
+    "original_I0_derivative": 2200,
+    "original_I1_derivative": 2000,
+    "original_arch_finite_derivative": 7500,
+    "original_seven_signed_prime_continuous_derivative": 16800,
+    "original_center_derivative": 2
+  },
+  "original_true_seven_signed_prime_branches_retained": true,
+  "all_original_hotspot_cells_continuous_z_on_closure": true,
+  "original_hotspot_cellwise_envelopes": [
+    {
+      "original_cell": 3,
+      "exact_original_cell_left_label": "-B+log(4)",
+      "exact_original_cell_right_label": "B-log(2)",
+      "original_anchor_rational_x": "7/20",
+      "original_point_cert_sha256": "ec7c0b669cd2aa03a72d5b40210f967c53d6c945fd8e9d70aba6a3e6a1c97936",
+      "original_anchor_outward_sign": "strict_negative",
+      "original_cell_distance_upper_rational_1e12": "63705638881/1000000000000",
+      "original_whole_cell_z_outward_rational_envelope_1e30": [
+        "-1911169166403285794279480007997663/1000000000000000000000000000000",
+        "38223383328065541513053308340423/20000000000000000000000000000"
+      ],
+      "entire_cell_envelope_valid_but_NF404_precision_insufficient": true,
+      "certified_same_sign_neighborhood_radius_exact": "1/100000000000000000",
+      "certified_same_sign_neighborhood_z_outward_rational_envelope_1e40": [
+        "-1863725362918195302677955013/400000000000000000000000000000000000000",
+        "-10148283518238720641737218831/2500000000000000000000000000000000000000"
+      ],
+      "neighborhood_in_original_cell": true,
+      "neighborhood_same_sign_certified": true,
+      "entire_original_cell_sign_certified": false,
+      "cellwide_original_z_tight_norm_certified": false
+    },
+    {
+      "original_cell": 6,
+      "exact_original_cell_left_label": "-B+log(7)",
+      "exact_original_cell_right_label": "-B+log(8)",
+      "original_anchor_rational_x": "9/10",
+      "original_point_cert_sha256": "ca5051b17d4f0e0135a32f60121c991af224f8aa1f984c7a2f732eb4ddf4351d",
+      "original_anchor_outward_sign": "strict_positive",
+      "original_cell_distance_upper_rational_1e12": "993019271/12500000000",
+      "original_whole_cell_z_outward_rational_envelope_1e30": [
+        "-595811562598758955833186912013727/250000000000000000000000000000",
+        "595811562598779967942258553604523/250000000000000000000000000000"
+      ],
+      "entire_cell_envelope_valid_but_NF404_precision_insufficient": true,
+      "certified_same_sign_neighborhood_radius_exact": "1/100000000000000000",
+      "certified_same_sign_neighborhood_z_outward_rational_envelope_1e40": [
+        "16689687257313272636939228393/400000000000000000000000000000000000000",
+        "211621090716415907961740354913/5000000000000000000000000000000000000000"
+      ],
+      "neighborhood_in_original_cell": true,
+      "neighborhood_same_sign_certified": true,
+      "entire_original_cell_sign_certified": false,
+      "cellwide_original_z_tight_norm_certified": false
+    },
+    {
+      "original_cell": 7,
+      "exact_original_cell_left_label": "-B+log(8)",
+      "exact_original_cell_right_label": "-B+log(9)",
+      "original_anchor_rational_x": "26/25",
+      "original_point_cert_sha256": "e849b2ed5b48dcb9072b911f852de75a4e1bcc24feb2a47254deec2691b73b8a",
+      "original_anchor_outward_sign": "strict_positive",
+      "original_cell_distance_upper_rational_1e12": "60558458321/1000000000000",
+      "original_whole_cell_z_outward_rational_envelope_1e30": [
+        "-45418843740121120911681630383521/25000000000000000000000000000",
+        "454188437401249867107738230572867/250000000000000000000000000000"
+      ],
+      "entire_cell_envelope_valid_but_NF404_precision_insufficient": true,
+      "certified_same_sign_neighborhood_radius_exact": "1/100000000000000000",
+      "certified_same_sign_neighborhood_z_outward_rational_envelope_1e40": [
+        "24067494326204211035670307861/312500000000000000000000000000000000000",
+        "776159818438534753141449851553/10000000000000000000000000000000000000000"
+      ],
+      "neighborhood_in_original_cell": true,
+      "neighborhood_same_sign_certified": true,
+      "entire_original_cell_sign_certified": false,
+      "cellwide_original_z_tight_norm_certified": false
+    }
+  ],
+  "three_hotspot_total_cell_length_lower_strict": "1/3",
+  "three_hotspot_total_cell_length_upper_strict": "1",
+  "original_NF409_tentative_eps": "9/100000000000000000",
+  "unrefined_lipschitz_nearest_neighbor_mesh_sufficient_h_upper_exact": "3/500000000000000000000",
+  "unrefined_nearest_neighbor_subintervals_over_three_cells_more_than": "50000000000000000000",
+  "global_Lipschitz_grid_is_method_stop_for_NF404": true,
+  "source_correlated_tight_cellwise_enclosure_certified": false,
+  "original_signed_NF410_p_z_cross_certified": false,
+  "original_NF404_complete_centered_scalar_decided": false,
+  "original_J242_complement": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
