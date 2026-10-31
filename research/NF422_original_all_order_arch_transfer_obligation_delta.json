@@ -1,0 +1,48 @@
+{
+  "pass": "NF422",
+  "date": "2026-10-31",
+  "active_obligation": "W-ODD-NEG",
+  "source": "Unchanged NF370 supported original fourth u4, NF407 242 selected+4 critical blocks with physical odd pole, actual 7 signed prime powers and NF404 center",
+  "previous": "NF421 original second x jet, source full fourth Gram, zthird uniform <1540338 and positive original cell6 radius 5.469631e-6",
+  "accepted": {
+    "commutator": "D[S[g]]=S[gprime]+K(t1)*g(B)-K(t2)*g(-B), S[g]=A*g+I0[g]+I1[g], A'=K(t1)-K(t2)",
+    "original_endpoint_parity": "u4^(j)(-B)=(-1)^(j+1)u4^(j)(B)",
+    "all_order_formula": "S[u4^(n)]+sum_(j=0..n-1)u4^(j)(B)*[(-2)^(n-1-j)K^(n-1-j)(t1)+(-1)^j*2^(n-1-j)K^(n-1-j)(t2)]-(n-1)!u4(B)/(2d^n), n>=1, with original true prime and centered derivatives",
+    "exact_physical_boundary_atom_check": true,
+    "formal_original_derivative_orders_1_through_12": "PASS",
+    "CI": "https://github.com/monocap-tech/weil-lab/actions/runs/41235884917",
+    "receipt": "notes/data/provisional/NF422_original_all_order_arch_transfer_exact.json",
+    "corrected_NF421_endpoint": "u4''(B)*(K1+K2) in original z''' not u4''(B)*(K1-K2)",
+    "previous_NF421_absolute_zthird_bound_preserved": true,
+    "original_macro_cell6": [
+      "899/1000",
+      "901/1000"
+    ],
+    "prior_cubic_error_at_macro_edge": "0.000256723",
+    "original_full_cell6_length_strict_lower": "1/8",
+    "conditional_macro_10000_panels": {
+      "halfwidth": "1e-7",
+      "count": 10000,
+      "remaining_z_zprime_zsecond_center_certificates": "MISSING",
+      "cubic_taylor_only_L2_error_upper": "1.283615e-17",
+      "tentative_NF409_target_L2": "9e-17",
+      "not_actual_certified_macro_model": true
+    }
+  },
+  "historical_custody": "Explicit additive correction comment on prior NF421 draft PR #423, original prior receipts unchanged",
+  "open": {
+    "complete_macropanel_model": "OPEN",
+    "entire_original_cell6": "OPEN",
+    "cells3_7_and_others": "OPEN",
+    "seams_and_endpoint": "OPEN",
+    "NF410_signed_p_z_and_z2": "OPEN",
+    "NF404_entire_centered_scalar": "UNDECIDED",
+    "fourth_J242_complement": "OPEN",
+    "domain_infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "even_whole_Weil": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF423 source-correlated simultaneous high-order x-jet/Chebyshev interval model using transfer recurrence, avoid 10000 separate 398 t-integral executions; then true all positive cells and original NF410/NF404 scalar",
+  "custody": "stacked additive draft PR, no merge or source replacement"
+}
