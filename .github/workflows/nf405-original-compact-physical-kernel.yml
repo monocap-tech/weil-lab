@@ -1,0 +1,54 @@
+name: Weil-Lab NF405 original compact physical digamma action
+on:
+  push:
+    branches: [research/nf405-original-centered-action-tail-feasibility]
+    paths:
+      - '.github/workflows/nf405-original-compact-physical-kernel.yml'
+      - 'scripts/local_replay/nf405_original_compact_physical_kernel.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-source-compact-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf405-original-centered-action-tail-feasibility
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original exact source and compact kernel algebra with no new signed cells
+        run: |
+          python3 -m py_compile scripts/local_replay/nf405_original_compact_physical_kernel.py
+          python3 scripts/local_replay/nf405_original_compact_physical_kernel.py --output /tmp/NF405_original_compact_physical_kernel_exact.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/NF405_original_compact_physical_kernel_exact.json'))
+          assert d['original_compact_translation_integral_upper']=='22/5'
+          assert d['actual_original_prime_power_shifts']==[2,3,4,5,7,8,9]
+          assert d['formal_exact_fourth_power_series'] is True
+          assert d['formal_exact_source_kernel_cancellation_at_zero'] is True
+          assert d['original_full_supported_centered_norm_numeric_integration'] is False
+          assert d['new_signed_kernel_cells']==0
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          PY
+      - name: Preserve additive original source exact action geometry
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF405_original_compact_physical_kernel_exact.json
+          if test -f "$target"; then
+            cmp -s "$target" /tmp/NF405_original_compact_physical_kernel_exact.json
+          else
+            cp /tmp/NF405_original_compact_physical_kernel_exact.json "$target"
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF405 source-exact original compact physical digamma and prime action geometry'
+            git pull --rebase origin research/nf405-original-centered-action-tail-feasibility
+            git push origin HEAD:refs/heads/research/nf405-original-centered-action-tail-feasibility
+          fi
