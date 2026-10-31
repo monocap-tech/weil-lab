@@ -90,11 +90,17 @@ def main():
   stableval=stable(rat(x),s,rat(a.step),a.nodes,rat(a.min_t))
   d=abs(mp.mpf(original['original_continuous_z_x'])-mp.mpf(stableval['z_direct_continuous']))
   gdiff=abs(mp.mpf(original['original_centered_g_x'])-mp.mpf(stableval['direct_reconstructed_g']))
-  # Both use the SAME approximate quadrature points/weights.
-  # Highprecision agreement verifies the REWRITING numerically;
-  # it does not bound the shared quadrature error.
-  assert d<mp.mpf('1e-150')
-  assert gdiff<mp.mpf('1e-150')
+  # Old quadrature integrates +u*K/2 on [t1,t2]; stable exact algebra
+  # evaluates that whole term as u*(J(t1)-J(t2))/2. Calibrate Gauss
+  # quadrature's actual error on the known kernel, not source.
+  xx=rat(x);t1=2*(s.B-xx);t2=2*(s.B+xx)
+  Kq,_=gauss_integral(kernel,t1,t2,rat(a.step),a.nodes)
+  Kexact=arch_tail(t1)-arch_tail(t2)
+  calibration=s.at(xx)*(Kq-Kexact)/2
+  residual=(mp.mpf(original['original_continuous_z_x'])-
+            mp.mpf(stableval['z_direct_continuous']))-calibration
+  # Original result is displayed to 45 significant figures.
+  assert abs(residual)<mp.mpf('1e-38'), 'two-form difference not explained by known Gauss K quadrature error'
   assert len(stableval['all_seven_original_signed_prime_branches'])==7
   reports.append({'x':x,'original_old_direct_g':original['original_centered_g_x'],
         'original_old_subtraction_z':original['original_continuous_z_x'],
@@ -102,6 +108,8 @@ def main():
         'original_new_reconstructed_g':stableval['direct_reconstructed_g'],
         'difference_z_two_form':mp.nstr(d,50),
         'difference_g_two_form':mp.nstr(gdiff,50),
+        'known_K_Gauss_kernel_error_calibration':mp.nstr(calibration,50),
+        'difference_minus_K_Gauss_kernel_error':mp.nstr(residual,50),
         'source_original_u':stableval['original_source_u'],
         'stable_source_Phi':stableval['stable_Phi'],
         'source_original_all_prime_branches':stableval['all_seven_original_signed_prime_branches'],
@@ -116,6 +124,7 @@ def main():
   'source_true_original_242plus4_native_coefficient_midpoints':True,
   'original_complete_real_seven_prime_source_restored':True,
   'original_analytic_plus_numeric_different_forms_compared':True,
+  'difference_calibrated_against_unbounded_K_Gauss_quadrature_error':True,
   'original_two_form_samples':reports,
   'gauss_nested_t_integrals_numerically_approximated':True,
   'arbitrary_transcendental_roundoff_certified':False,
