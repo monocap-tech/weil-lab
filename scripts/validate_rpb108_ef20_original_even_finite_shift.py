@@ -103,12 +103,12 @@ def fixed_step_original_mixed_jump():
             left=(-B+lo-delta,-B+hi-delta)
             d=separation(star,left)
             assert d>0,("left-edge collision",n,k)
-            margin=min(margin,d)
+            margin=d if margin is None else min(margin,d)
             checked+=1
         for endpoint in (B,-B):
             d=separation(star,(endpoint-delta,endpoint-delta))
             assert d>0,("cutoff collision",k,endpoint)
-            margin=min(margin,d)
+            margin=d if margin is None else min(margin,d)
             checked+=1
     assert margin is not None and margin>0
     assert checked==(2*len(ACTIVE)+2)*(2*N+1)-1
