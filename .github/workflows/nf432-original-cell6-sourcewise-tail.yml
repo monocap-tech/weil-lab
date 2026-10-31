@@ -1,0 +1,110 @@
+name: Weil-Lab NF432 original cell6 sourcewise P511 tail exact
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf432_original_cell6_sourcewise_512_tail_exact.py'
+      - 'scripts/local_replay/nf432_original_cell6_true_signed_from_P511_exact.py'
+      - '.github/workflows/nf432-original-cell6-sourcewise-tail.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-246-source-frequencywise-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source-exact original NF407 spectral/order decomposition, NF406 true cell and NF423 boundaries
+        run: |
+          python3 -m py_compile scripts/local_replay/nf432_original_cell6_sourcewise_512_tail_exact.py
+          python3 scripts/local_replay/nf432_original_cell6_sourcewise_512_tail_exact.py \
+            --output artifacts/NF432_original_cell6_sourcewise_P511_tail_exact.json
+      - name: Original-source strict P511 uniform tail gate; full scalar still separate
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF432_original_cell6_sourcewise_P511_tail_exact.json'))
+          assert d['original_source_generators']==246
+          assert d['original_post_seam_primes']==[2,3,4,5,7]
+          assert d['original_neither_primes']==[8,9]
+          assert d['true_source_high_Chebyshev_tail_starts_at_n']==512
+          assert F(d['original_true_z_vs_original_P511_uniform_error_exact_rational_upper'])<F(1,10**20)
+          assert not d['original_full_cell6_signed_integral_evaluated_by_this_script']
+          assert not d['original_NF404_full_scalar_decided']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF432 original sourcewise high mode true-z tail PASS; sign not promoted by this job')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF432-original-cell6-sourcewise-P511-complete-true-z-tail
+          path: artifacts/NF432_original_cell6_sourcewise_P511_tail_exact.json
+          if-no-files-found: error
+
+  original-true-cell6-signed-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    needs: original-246-source-frequencywise-tail
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: NF432-original-cell6-sourcewise-P511-complete-true-z-tail
+          path: artifacts/tail
+      - name: Fetch four independent immutable ORIGINAL source interval artifacts and signed P511 receipt
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/low artifacts/high artifacts/p artifacts/j artifacts/partial
+          gh run download 41248984553 --repo "$GITHUB_REPOSITORY" \
+            --name NF428-original-cell6-native-256-chebyshev-coefficient-intervals --dir artifacts/low
+          gh run download 41251524378 --repo "$GITHUB_REPOSITORY" \
+            --name NF431-original-cell6-native-high-256-through-511 --dir artifacts/high
+          gh run download 41248984553 --repo "$GITHUB_REPOSITORY" \
+            --name NF428-original-cell6-signed-p-chebyshev-moments-1500 --dir artifacts/p
+          gh run download 41250121362 --repo "$GITHUB_REPOSITORY" \
+            --name NF429-original-cell6-2999-raw-Chebyshev-moments --dir artifacts/j
+          gh run download 41251809577 --repo "$GITHUB_REPOSITORY" \
+            --name NF431-original-P511-exact-signed-partial-NOT-true-z-integral --dir artifacts/partial
+      - name: Contract original true z signed integral with rigorous source tail and complete source pins
+        run: |
+          python3 -m py_compile scripts/local_replay/nf432_original_cell6_true_signed_from_P511_exact.py
+          python3 scripts/local_replay/nf432_original_cell6_true_signed_from_P511_exact.py \
+            --low artifacts/low/NF428_original_cell6_native_cheb256.json \
+            --high artifacts/high/NF431_original_cell6_cheb_coefficients_256_to_511.json \
+            --p artifacts/p/NF428_original_cell6_signed_p_cheb_moments_1500.json \
+            --j artifacts/j/NF429_original_cell6_raw_chebyshev_moments_2999.json \
+            --partial artifacts/partial/NF431_original_P511_exact_signed_partial.json \
+            --tail artifacts/tail/NF432_original_cell6_sourcewise_P511_tail_exact.json \
+            --output artifacts/NF432_original_true_cell6_signed_integral.json
+      - name: Accept only true complete cell6, reject complete NF404/RH promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF432_original_true_cell6_signed_integral.json'))
+          assert d['pass']=='NF432'
+          assert d['true_original_cell6_signed_integrals_decision_quality']
+          assert d['true_original_cell6_nonprincipal_signed_contribution_strict_negative']
+          lo,hi=map(F,d['true_original_cell6_nonprincipal_signed_2z2_plus_4pz_outward_interval'])
+          assert lo<=hi<0
+          assert d['original_P511_interval_polynomial_modes']==512
+          assert d['original_high_modes_n512_to_infinity_bounded_without_individual_certificates']
+          assert F(d['source_exact_true_z_minus_P511_uniform_error_rational_upper'])<F(1,10**20)
+          assert not d['original_remaining_seven_cell_signed_integrals_complete']
+          assert not d['original_NF410_NF404_whole_signed_scalar_accepted']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF432 PASS genuine ORIGINAL true J6 signed contribution <0, whole NF404/RH OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF432-original-true-complete-cell6-signed-pz-z2-intervals
+          path: artifacts/NF432_original_true_cell6_signed_integral.json
+          if-no-files-found: error
