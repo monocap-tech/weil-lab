@@ -113,6 +113,17 @@ def main():
  assert max(abs(aa0),abs(aa1))<whole['true_analytic_arch_A_absolute_strict_upper']
  assert whole['original_all_seven_real_signed_prime_branches_inside_open_cell']==['post-seam']*5+['neither']*2
  assert whole['true_active_prime_weight_strict_upper']==3
+ # Independently verify the actual full-cell R'' bound from exact
+ # rational kernel inequalities, not a dependency-collapsed Arb ball.
+ def kpp_bound(t):
+  return F(2)/t*((F(1,4)+1/t)**2+1/t+1/t**2)
+ dmin=B-F(99,100)
+ t1min=2*dmin
+ t2min=2*(B+F(21,25))
+ R2exact=4*kpp_bound(t1min)+4*kpp_bound(t2min)+1/dmin**3
+ assert R2exact==F(whole['true_Rsecond_source_kernel_rational_upper_exact'])
+ assert R2exact<whole['true_Rsecond_strict_upper']==2600
+ assert not whole['true_Rsecond_direct_broad_Arb_interval_used']
  assert whole['true_original_source_u4_third_global_sup_strict']==24580
  assert whole['true_original_source_u4_fourth_L2_strict']==16384
  MA=whole['true_analytic_arch_A_absolute_strict_upper']
@@ -157,6 +168,7 @@ def main():
  'original_zthird_anchor_strictly_negative':True,
  'original_full_cell6_knot_seam_branches_checked':True,
  'original_4096bit_A_native_interval_exact_fraction_reread':True,
+ 'original_true_Rsecond_wide_cell_exact_rational_replay':True,
  'original_full_cell6_third_derivative_uniform_upper':M,
  'original_signed_positive_interval_radius_exact':str(radius),
  'original_signed_positive_interval_exact':[str(X-radius),str(X+radius)],
