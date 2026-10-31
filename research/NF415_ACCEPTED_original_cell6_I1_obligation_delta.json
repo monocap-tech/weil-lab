@@ -1,0 +1,63 @@
+{
+  "pass": "NF415",
+  "date": "2026-10-31",
+  "obligation": "W-ODD-NEG",
+  "standing": "ORIGINAL TRUE I1 CELL6 CERTIFIED; POINTWISE TINY-t I0 CERTIFIED; FULL I0 AND COMPLETE Z / NF404 OPEN",
+  "source": "Same original NF370 fourth u4; NF407 242 selected+4 critical, original B=11/10, all seven signed primes, original NF404 dyadic center",
+  "native": {
+    "original_full_I1_focused_run": "https://github.com/monocap-tech/weil-lab/actions/runs/41228381747",
+    "result": "notes/data/provisional/NF415_original_cell6_I1_correlated_taylor_native.json",
+    "signed_finite_plus_I1_recomposition": "notes/data/provisional/NF415_original_cell6_z_known_plus_certified_I1.json",
+    "cell": 6,
+    "x": "9/10",
+    "t_interval": [
+      "2/5",
+      "4"
+    ],
+    "I1_approx": "-1.264592848005995503589668",
+    "I1_true_rational_interval_width_strict": "1e-70",
+    "true_source_full_242_selected_4_critical": true,
+    "source_correlated_native": true,
+    "source_coeff_radius_paid": true,
+    "source_taylor_degree": 300,
+    "kernel_taylor_degree": 48,
+    "original_exact_rational_panels": 360,
+    "selected_actual_max_frequency": "882.9140625",
+    "kernel_tail_upper": "7/40^49",
+    "source_tail_formula": "3^16 Uraw 16^288 / 288! <1e-42, original Uraw<10^160, |omega|*rho_s<16"
+  },
+  "analytic": {
+    "pointwise_original_I0_t0_to_h_bound": "For any 0<x<B and 0<h<=1/2, omitted 0<t<min(h,2(B-x)) has |I0|<50 h^(3/2) by exact triangle second difference and NF413 original ||u''||2<256.",
+    "cutoff_h": "1e-12",
+    "original_pointwise_I0_t0_to_h_strict_error": "5e-17"
+  },
+  "recomposition": {
+    "standing": "ACCEPTED outward interval on z(9/10)-I0(9/10), NOT z itself",
+    "lower": "0.2944113771692838454407574207627221719871",
+    "upper": "0.2944113771692838454407574207627221719872",
+    "parent_native_NF414": true,
+    "parent_true_I1_NF415": true
+  },
+  "audit": {
+    "failed_initial_acb": "A FINITE ±2.18e142 interval is a METHOD STOP, not useful I1",
+    "failed_low_freq_assumption": "Exact guard rejected original source order160 because fmax=882.914; corrected source degree300.",
+    "failed_metadata_precisions": "Python script output metadata syntax, fixed with actual native CI success; preserve original failed runs",
+    "full_norm_rh_not_promoted": true
+  },
+  "status": {
+    "original_cell6_I1": "CERTIFIED",
+    "original_small_t_I0_pointwise": "CERTIFIED",
+    "complete_cell6_I0": "OPEN",
+    "full_original_z_cell6_point": "OPEN",
+    "true_z_in_original_hotspots_3_7": "OPEN",
+    "true_cellwise_z_entire_8": "OPEN",
+    "original_NF410_signed_p_z_cross": "OPEN",
+    "original_NF404_complete_centered_scalar": "UNDECIDED",
+    "original_J242_perp_lowband": "OPEN",
+    "operator_domain": "OPEN",
+    "infinite_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF416 certify original physical I0(9/10) above 1e-12, with t=0 cancellation-first analytic or graded Taylor integration, then original complete z at cell6 single point; replicate at cells3 and7 and cellwise certification before NF404."
+}
