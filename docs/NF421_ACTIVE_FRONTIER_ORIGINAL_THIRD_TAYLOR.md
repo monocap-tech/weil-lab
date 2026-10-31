@@ -1,0 +1,17 @@
+# NF421 current original Weil-Lab frontier — 2026-10-31 PT
+
+**Canonical active W-ODD-NEG.** Unchanged original NF370 supported fourth u4, NF407 true 242 selected plus 4 critical physical source generator blocks, original pole, all seven signed prime-power translations, B=11/10, NF404 original dyadic center.
+
+**Previous NF420:** Original correlated u4''' Gram and true |z''|<125457 on original cell6 [899/1000,901/1000], source-paid z(9/10),z'(9/10), and true original z>0 on [0.899999975,0.900000025]. Entire original NF404 signed scalar OPEN.
+
+**NF421 ACCEPTED exact third moving-boundary cancellation:** Differentiating the complete ORIGINAL z'' arch with both true moving t limits, A'=K(t1)-K(t2) removes all standalone u4''(x) terms. Full original z''' retains physical I0[u4'''], I1[u4'''], original endpoint u4''(B), u4'(B),u4(B), all seven one-sided prime third-derivative branches and original center.
+
+**NF421 ACCEPTED original full fourth source 4096bit analytic Gram:** [Actions #41234718188 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41234718188). All 273 original consolidated odd-basis fourth-derivative physical terms, selected-selected/selected-critical/critical-critical analytic cross terms and odd pole sinh retained. True original ||u4''''||L2<16384 and global |u4'''|<24580. Therefore |z'''|<1540338 on genuine original physical [899/1000,901/1000], safely within certified NF406 seven prime seam brackets.
+
+**NF421 ACCEPTED complete original second x-jet:** [Actions #41234813352 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41234813352). Fully source-correlated 1024bit physical z''(9/10)≈−2.98070944690804238e−8 with strict rational interval width <1e−26. TRUE full original symmetric I0 and one-sided I1 with 530-degree analytic H(t)=tK(t) tiny domain, 38+360 original source t panels, all 7 original signed prime second derivatives and NF404 centered dyadic pole; full native source and analytic kernel error separately paid.
+
+**NF421 independent exact Fraction replay:** [Actions #41235020619 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41235020619). Reconstruct original NF407 source coefficients and native S0/S2/S4, recalculate every original second-jet error bound exactly, reread original 4096bit u4'''' Gram and u4'''(B) native balls as rational outward intervals, and compose NF416 z(9/10), NF419 z'(9/10), NF421 z''(9/10) with |R3(x)|<1540338|x-9/10|^3/6 throughout genuine original [899/1000,901/1000]. The verified exact bisection and downward rational rounding certify **true original z>0 on [0.899994530369,0.900005469631]**, positive radius 0.000005469631, **218.78524 times** NF420 certified radius, without any new point sampling or source substitutions. Exact source receipt notes/data/provisional/NF421_original_local_third_taylor_independent_fraction.json.
+
+**Still OPEN:** decision-quality complete original physical cells6,3,7 and five other positive cells; full signed seven prime seam and endpoint dlogd handling; original NF410 exact signed p-z cross and z² integration; NF404 entire centered scalar C≈1.09505e−21; fourth J242 complement; domain and infinite inverse; W-ODD-NEG, even/whole Weil and RH.
+
+**Next NF422:** local source-correlated x-dependent z''' enclosures and one-sided genuine x-Taylor/Chebyshev pieces across complete original physical cells6,3,7 and remaining five. Then original NF410 signed moments and whole NF404 scalar test. No brute Lipschitz grid, theorem promotion, source change or main merge.
