@@ -1,0 +1,26 @@
+name: EF36 original even row-reduced source L2 projection cap
+on:
+  push:
+    branches: [research/ef36-original-even-row-reduced-source-gradient]
+  pull_request:
+    branches: [research/ef35-original-even-source-dual-upper]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  authentic-first-source-cutoff-and-seven-prime-physical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate original source-row cancellation and whole physical arch/primes/pole upper
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef36_original_even_row_reduced_l2.py
+          python scripts/validate_rpb108_ef36_original_even_row_reduced_l2.py
+      - name: Confirm canonical even obligation remains open
+        run: python scripts/verify_obligation_manifest.py
