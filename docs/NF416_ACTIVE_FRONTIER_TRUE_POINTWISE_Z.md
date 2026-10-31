@@ -1,0 +1,13 @@
+# NF416 current original W-ODD-NEG frontier — 2026-10-31 PT
+
+**Canonical active:** W-ODD-NEG, unchanged original NF370 fourth u4, original signed arch and all seven prime powers. Source, physical support and NF404 center unchanged.
+
+**Previous NF415:** certified original source-correlated I1(9/10) on [2/5,4] with interval width <10^-70, and original finite plus I1 yielded only a partial z(9/10)-I0(9/10)≈0.29441137716928384544. True original I0 was still completely OPEN.
+
+**NF416 ACCEPTED:** Full original symmetric I0(9/10) on t∈[0,2/5] certified, not just the tiny-t error. Complete 242 selected+4 critical original physical source, original x±t/2 both retained. Analytic H(t)=tK(t) removal of removable t=0 singular and full source degree530/H degree60 series on 0<t<1/50; 38 source-correlated exact rational panels t∈[1/50,2/5], source degree300, K degree160. Exact Fraction analytic source/H/K tails and independent original source coefficient second derivative S2 radius; outward 1024-bit Arb. [Actions #41228999730 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41228999730), native receipt notes/data/provisional/NF416_original_cell6_full_I0_and_z_point_native.json. Accepted true I0(9/10)≈−0.294411377127259627297474239170374; combined unchanged NF414 seven-prime finite source plus accepted NF415 I1 and NF416 full I0 yields certified **original complete z(9/10)≈+4.2024218143283181592×10^-11, outward interval width <10^-55, strictly positive**. This is the FIRST complete original z pointwise enclosure from this line, not the NF408/409 numerical Gauss pilot or a four-critical surrogate.
+
+A second *independent* source-exact Fraction error/recomposition replay is included and its focused CI must be checked separately from the primary native proof. No mathematical standing promotion from the independently queued workflow until it finishes.
+
+**Next bold NF417:** replicate exact original complete z pointwise in physical hotspot cells **3** at x=7/20 and **7** at x=26/25, then validate one-sided z(x) intervals/Taylor remainders over original cells 6,3,7 and remaining five (including NF411 original seven prime derivative seams and endpoint dlogd). Combine actual NF410 exact signed p=q+r moments and complete ||z||², 2<z,p> with all x/t errors. Decide NF404 C only after full original scalar enclosure.
+
+**OPEN:** complete cell6 or other cell z models, original signed z/p cross, complete NF404 centered scalar, fourth J242-perp lowband, original domain/infinite inverse, W-ODD-NEG, even/whole Weil, RH. No new signed cells, source change, historical rewrite or main merge. This is original pointwise arithmetic progress, not an RH proof.

@@ -1,0 +1,22 @@
+{
+  "standing": "INDEPENDENT EXACT RATIONAL SOURCE-RECONSTRUCTED ERROR LEDGER AND ORIGINAL FULL POINTWISE z RECOMPOSITION PASS",
+  "original_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "nf413_sha256": "fe0112a100aa553f5a64087884714740db98d263305493fa0adfb2f59677c72b",
+  "nf414_sha256": "f59468d7dbd88af44f987aa8475a14930a5f9cbd9997300780ed15333f33bf7e",
+  "nf415_sha256": "e69a17d8364989bcf0ec9008672538d87f0c85809fe5856c1fd3ac3a934ec0e0",
+  "nf416_sha256": "ca5051b17d4f0e0135a32f60121c991af224f8aa1f984c7a2f732eb4ddf4351d",
+  "original_source_generators": 246,
+  "original_source_max_frequency_exact": "113013/128",
+  "original_Uraw_exact_recomputed": true,
+  "tiny_t_source_analytic_tail_replayed": true,
+  "regular_t_source_and_K_analytic_tails_replayed": true,
+  "true_source_second_derivative_coefficient_radius_replayed": true,
+  "original_full_I0_outward_interval_recomposed_with_original_NF414_NF415": true,
+  "original_complete_z_at_x9over10_pointwise_positive_certified": true,
+  "original_complete_z_pointwise_width_under_1e55": true,
+  "original_entire_cellwise_z_certified": false,
+  "original_NF404_full_scalar_certified": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "pass": "NF416-independent"
+}
