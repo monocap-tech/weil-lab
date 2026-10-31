@@ -60,7 +60,8 @@
     "ef17_source_identifiability_gate": "EF17 confirms EF16's original source physical pole projection (accepted in corrected Actions #41148545925) is insufficient to identify corrected signed Schur sign without original pole-free signed B0 and resolvent. Finite exact countermodels are expressly abstract, not actual negative Weil witnesses. Real signed mixed/source residual required in EF18.",
     "ef18_original_signed_mixed_entry": "EF18 original SI10 even source e=1_I cos(2pi 37/64 x) pole-free signed source action has a strict n2 arithmetic-translated internal jump at B-ln2, isolated from all other original 7 prime-power endpoints; archimedean pseudolocality and source domain give B0(e,V469^perp)!=0. Focused arithmetic CI separate from analytic review. No actual inverse response or matrix PSD.",
     "ef19_annihilator_quantitative_stop": "EF19 genuine original 469 even exceptional-source annihilator creates exactly orthogonal C_c∞ test. Its signed mixed pairing converges to -J as ε→0, but leading D^938 term makes ||fε||_L²²~const/ε. Original cofinite positive floor then forces the variational inverse-Schur lower obtained from this particular trial to vanish O(ε), so shrinking-bump method is STOP. Source and analytic verification classifications separate.",
-    "ef20_shift_filter": "EF20 bounded native original even SI10 FIR Fh annihilates full 469 source family with optimal universal bilateral radius469. Real original fixed h source-specific signed mixed nonvanishing follows from extreme original arithmetic jump, all other translated edges excluded by rational logarithm enclosures, subject to arch pseudolocal/domain attachment; numeric inverse Schur OPEN. No point jump -> numeric norm inference."
+    "ef20_shift_filter": "EF20 bounded native original even SI10 FIR Fh annihilates full 469 source family with optimal universal bilateral radius469. Real original fixed h source-specific signed mixed nonvanishing follows from extreme original arithmetic jump, all other translated edges excluded by rational logarithm enclosures, subject to arch pseudolocal/domain attachment; numeric inverse Schur OPEN. No point jump -> numeric norm inference.",
+    "ef21_fixed_bell_quantitative_entry": "EF21 first focused CI #41218527159 passed original physical norm and exact rational source/Fourier identities. Subsequent noncertifying log-amplitude pilot and O(r) normalized fixed-h shrinking-bell method STOP are source script additions pending new CI. Original signed numerator/energy M/E uncomputed, independent pseudolocal/form-domain audit required. No Schur or RH closure."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -887,8 +888,15 @@
       "kind": "original-even-finite-shift-exact-complement-and-optimal-radius",
       "scope": "W-EVEN-FORM: native SI10 even 469-source exact h=1/2048 selfadjoint finite-shift cofinite filter, sharp 469 bilateral radius; isolated actual original seven-prime fixed-step arithmetic source-gradient jump implies nonzero signed q0(e,Fh psi) for some even compact psi under pseudolocality. Explicit numerical numerator/denominator and Schur still OPEN.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/399",
-      "verification": "Exact Fraction native source, universal FIR algebra, 938-root optimality, 15023 original arithmetic/physical translated edge noncollisions new source validation. Focused CI PENDING; pseudolocal and form-domain attachment needs audit, no fixed-psi normalized energy measured.",
+      "verification": "Original SI10 107/469 even fixed h=1/2048 FIR and ALL 15,023 outward source/physical jump edge checks PASSED in corrected native Actions #41217982951 and governance. Prior Actions #41216069286 FAILED due uninitialized minimum in validator, corrected; analytic arch pseudolocal and form-domain attachment audit still separate. No normalized mixed Schur data.",
       "repo_path": "notes/provisional/EF20_ORIGINAL_EVEN_FINITE_SHIFT_COFINITE_20261031.md"
+    },
+    "EF21": {
+      "kind": "explicit-original-even-fixed-physical-bell-and-scalar-full-signed-quadrature",
+      "scope": "W-EVEN-FORM: one fixed original SI10 even 469-source FIR/C5 cosine-bell trial, exact physical all-shift L2 norm and stable Fourier transform; original signed pole-free mixed and energy are two full-real scalar integrals not yet numerically evaluated. PROVED bounded fixed-h shrinking-bell normalized variational Schur O(r) METHOD STOP (conditional original pseudolocality/form).",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/400",
+      "verification": "Original first EF21 107/469 source, 1878 shifted-bell support, exact physical norm, -45/2 rational Fourier numerator and canonical governance verified in focused Actions #41218527159 SUCCESS. Additional log-amplitude NONCERTIFYING pilot and exact 200/231 O(r) shrinking-bell method STOP added; revised focused CI PENDING. Actual signed scalar M/E not numerically bounded, independent analytic audit OPEN.",
+      "repo_path": "notes/provisional/EF21_ORIGINAL_EVEN_FIXED_BELL_SCALAR_SIGNED_20261031.md"
     }
   },
   "obligations": [
@@ -1040,10 +1048,11 @@
         "EF17",
         "EF18",
         "EF19",
-        "EF20"
+        "EF20",
+        "EF21"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF20: true original SI10 even F469 compact bounded h=1/2048 FIR filter; actual fixed-h extreme shifted original n=2 arithmetic jump at x*=B-ln2+469h and outward 15023 original source/physical edge exclusions give conditional TRUE signed finite-to-infinite q0(e,Fh psi)!=0 for some compact even psi. No quantified normalized source/energy; EF21 must choose explicitly fixed psi and certify full original signed q0(e,Fh psi) and q0(Fh psi,Fh psi), or source-conditioned FIR conditioning STOP. W-EVEN-FORM OPEN."
+      "next_action": "EF21: explicit original even source-orthogonal fixed cosine6 bell (r=1/65536, h=1/2048) and exact physical L2-norm formula; stable O(|xi|^-7) Fourier gives genuine full-real signed scalar M=q0(e,f), E=q0(f,f) entry. Fixed-h shrinking-bell localization has normalized variational Schur R_r<= (200/231)*(C²/mu)*r ->0 (C actual local signed gradient bound unmeasured): METHOD STOP against making r smaller. EF22 must certify actual original signed fixed-r M and positive energy E with outward source-conditioned integrator, or change to low-moment complement test. Whole even/odd/Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1179,6 +1188,17 @@
         "scripts/validate_rpb108_ef20_original_even_finite_shift.py"
       ],
       "interpretation": "Replays genuine SI10 b9 original 469 even source, exact constant-step symmetric filter polynomial degree drop, physical support and sharp radius. No original signed mixed physical pairing, normalized Schur or RH.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF21-original-even-fixed-bell-physical-norm-signed-integrals",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef21_original_even_fixed_bell.py"
+      ],
+      "interpretation": "Authentic original SI10 469 source, fixed physical cosine6 bell, all FIR translates disjoint, exact positive L2 norm and stable Fourier tail identity. Signed original scalar mixed and cofinite energy integrals NOT evaluated; no Schur bound.",
       "cadence": "per-update"
     }
   ]

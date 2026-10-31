@@ -1,0 +1,26 @@
+name: EF21 original even fixed cosine-bell signed Fourier quadrature entry
+on:
+  push:
+    branches: [research/ef21-original-even-fixed-cosine-bell-scalar-signed]
+  pull_request:
+    branches: [research/ef20-even-finite-shift-exact-cofinite-filter]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-fixed-bell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact native source, physical norm and cancellation-free Fourier identity
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef21_original_even_fixed_bell.py
+          python scripts/validate_rpb108_ef21_original_even_fixed_bell.py
+      - name: Verify original even obligation manifest
+        run: python scripts/verify_obligation_manifest.py
