@@ -72,7 +72,8 @@
     "ef29_original_source_471_vector": "EF28 clean PR419 source #41231918205 passed; EF29 computes original 471 genuine signed first-source mixed vector up to a SINGLE actual SI10 row, preserving δ exactly, by 6594 certified true prime cutoff support classifications and first 100 original digamma Laplace cutoff terms with <1e-19 uniform coordinate tail. Also genuine A_prime and k0 alias scan. Focused source CI pending; actual H matrix, δ and A_arch open, no Schur/RH claim.",
     "ef30_original_sampled_moment_rank": "Original SI10 physical moments on EF28 471 even C5 bells EXACT blockwise triangular-equivalent to sampled original rational-frequency exponentials. Native original 938-order polynomial central coefficient b469<0 source Actions #41236300352 SUCCESS, quantitative strict bound recheck pending; evenness plus consecutive-zero recurrence proves exact 469 source row rank. Positive even pole adds independent rank via Hermite-Lindemann, so true original Htilde 470x471 rank470/nullity1. This does not certify singular value, EF29 signed residual δ, A_arch, even Schur/RH.",
     "ef31_exact_even_chebyshev_kernel": "EF31 exact ORIGINAL 470x471 even moment nullspace symbolic parameterization from accepted EF30 rank470: let z_j=cos(2pi c_j/512), P(z)=prod(z-z_j)^p_j, t=cosh(1/1024), U=P(z)(z-t), L=Chebyshev T0 arcsine average, A=L(U), B=L(zU). Chebyshev T1..T471 coefficients of U(B-Az) span the exact original source/pole kernel. This avoids Gram inversion but does NOT provide directed numeric orientation, EF29 signed residual delta, A_arch, corrected even Schur, or RH. Genuine pole forbids any nonzero algebraic-coordinate exact neutral vector; next task is outward normalized contraction or quantitative finite-grid conditioning STOP. Algebra regression/analytic review separated; odd W-ODD-NEG remains paused OPEN.",
-    "ef32_original_even_first_source_diagonal_and_471_sufficient_stop": "EF32 ORIGINAL source SI10 e=1_[-11/10,11/10]cos(2pi37/64 x) complete genuine seven-prime and quarter-digamma signed even first-source diagonal with true cosh positive pole: 256-term exact real physical Laplace covariance and 1/(n+1/4)^2 complete scalar tail, 340-digit original SI06/EF24 outward intervals; Actions #41238414693 SUCCESS and all 471 exact original EF29 signed mixed vector regenerated. A_arch in (-0.76712234087,-0.73831578350), true A_even in (+0.030997276682,+0.059803834050), ||gtilde||²<3.174615e-6. Original physical bell d=231/8388608 implies 34*d*A_even>2.9021812e-5; therefore for ANY true original exact 470-row source/pole-neutral 471-bell w, delta²<=||gtilde||²<34*d*A_even, making only the existing EF28 E<=34d||w||² SUFFICIENT NEGATIVITY criterion categorically unachievable. Does NOT show actual restricted even sign or full 469D Schur PSD, nor rule out a better actual cofinite energy denominator or alternative detector. Source/core and digamma analytic audit independent, odd paused OPEN, whole Weil and RH OPEN. EF33 entry requires kernel-specific original energy or alternative complete even Schur, not just more precise EF31 kernel for same 34d gate."
+    "ef32_original_even_first_source_diagonal_and_471_sufficient_stop": "EF32 ORIGINAL source SI10 e=1_[-11/10,11/10]cos(2pi37/64 x) complete genuine seven-prime and quarter-digamma signed even first-source diagonal with true cosh positive pole: 256-term exact real physical Laplace covariance and 1/(n+1/4)^2 complete scalar tail, 340-digit original SI06/EF24 outward intervals; Actions #41238414693 SUCCESS and all 471 exact original EF29 signed mixed vector regenerated. A_arch in (-0.76712234087,-0.73831578350), true A_even in (+0.030997276682,+0.059803834050), ||gtilde||²<3.174615e-6. Original physical bell d=231/8388608 implies 34*d*A_even>2.9021812e-5; therefore for ANY true original exact 470-row source/pole-neutral 471-bell w, delta²<=||gtilde||²<34*d*A_even, making only the existing EF28 E<=34d||w||² SUFFICIENT NEGATIVITY criterion categorically unachievable. Does NOT show actual restricted even sign or full 469D Schur PSD, nor rule out a better actual cofinite energy denominator or alternative detector. Source/core and digamma analytic audit independent, odd paused OPEN, whole Weil and RH OPEN. EF33 entry requires kernel-specific original energy or alternative complete even Schur, not just more precise EF31 kernel for same 34d gate.",
+    "ef37_original_even_correlated_gradient": "Original SI10 e: signed genuine seven-prime/pole combined full physical squared L2 <7/10 by native 10^340 eight-cell exact primitive with all cutoff flags; complete authentic infinite quarter-digamma cutoff L2<3/5. After exact protected source row subtraction, actual cofinite L2 projection <29/20 and EF34 eta<105125/34 with inherited mu=17/25000. This source-native upper remains nondecision-quality against EF33 S2>1/500. Source check Actions #41251594441 SUCCESS; original analytic Fourier/cutoff form-domain independent review, full 469D Schur, even/odd/whole/RH OPEN. Next EF38 actual original 469-source projected gradient/energy dual."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -971,6 +972,55 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/425",
       "verification": "Native SI10 107 centers, p sum469, 214 distinct rational sampled roots; 340-digit outward original degree938 P(E) central coefficient b469 interval strictly negative ~-1.2390712361e127; full original physical triangular row-equivalence and algebraic-vs-transcendental true pole proof. Focused original Actions #41236300352 SUCCESS, job #124640690086; subsequent strict quantitative source regression (-1.24e127,-1.23e127) committed and repeat CI pending. Full δ, true original A_arch and Schur OPEN; independent analytic source/domain audit.",
       "repo_path": "notes/provisional/EF30_ORIGINAL_EVEN_SAMPLED_MOMENT_RANK_20261031.md"
+    },
+    "EF31": {
+      "kind": "exact-original-470x471-even-chebyshev-kernel",
+      "scope": "Actual original 469 SI10 even source rows and true cosh pole on 471 EF28 C5 bells: exact one-dimensional nullspace generator U(B-Az) via Chebyshev T0 average, original EF30 rank470. Symbolic generator, no numeric signed residual or full even Schur.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/426",
+      "verification": "Focused native original-source Actions #41237653010 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF31_ORIGINAL_EVEN_CHEBYSHEV_EXACT_KERNEL_20261031.md"
+    },
+    "EF32": {
+      "kind": "original-even-first-source-complete-diagonal-and-471-negative-sufficient-gate-stop",
+      "scope": "Actual original first SI10 source complete seven-prime, true quarter-digamma and positive even pole diagonal source intervals A_even in (0.030997276682,0.059803834050). Genuine original signed EF29 471-vector norm²<3.174615e-6; original EF28 34d sufficient negativity gate impossible on fixed 471 bells. This is a METHOD STOP, not even PSD or complete Schur sign.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/428",
+      "verification": "Focused native original-source Actions #41238414693 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF32_ORIGINAL_EVEN_471_BELL_NEGATIVE_GATE_STOP_20261031.md"
+    },
+    "EF33": {
+      "kind": "original-even-471-bell-source-coercivity-and-restricted-two-vector-positive-schur",
+      "scope": "True original entire seven-prime plus digamma signed q0 on all genuine 471 EF28 disjoint even bells >21/5 physical norm² by full 512-alias Fourier and exact prime translation geometry. First SI10 source plus exact source/pole-neutral kernel restricted 2D Schur >1/500, independent analytic Fourier/domain attachment open. Does not prove whole even 469D Schur positivity.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/429",
+      "verification": "Focused native original-source Actions #41240653788 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF33_ORIGINAL_EVEN_471_BELL_ALIAS_COERCIVITY_20261031.md"
+    },
+    "EF34": {
+      "kind": "original-even-unseen-gap-arithmetic-jump-signed-schur-residual",
+      "scope": "Authentic original n2 first-source arithmetic jump at B-ln2 lies between EF28 bells 208/209; all translated seven-prime bell endpoints excluded by directed SI06 rational checks. Real even order940 SI10-source/pole annihilator builds nonzero original cofinite signed residual coupling after bell-kernel shorting, conditional original pseudolocality/core. Schur S_e|F=S2-eta with eta>0 but size unknown.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/433",
+      "verification": "Focused native original-source Actions #41245337303 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF34_ORIGINAL_EVEN_UNSEEN_GAP_SCHUR_INTERFACE_20261031.md"
+    },
+    "EF35": {
+      "kind": "original-first-even-source-full-signed-gradient-strong-l2-and-dual-cap",
+      "scope": "Original first cutoff cosine source in strong L2 domain of logarithmic quarter-digamma multiplier: full arch gradient norm<16, complete 7-prime norm<11 and original even pole<2; original full physical signed gradient norm<29. SI10 even cofinite mu>17/25000 gives unseen eta<21025000/17. This global upper is not decision quality and source-projected sufficient gate ||g_e-v||²<17/12500000 remains unproved.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/435",
+      "verification": "Focused native original-source Actions #41247714349 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF35_ORIGINAL_EVEN_FIRST_SOURCE_L2_DUAL_BOUND_20261031.md"
+    },
+    "EF36": {
+      "kind": "original-even-first-source-arch-protected-row-physical-cutoff-l2",
+      "scope": "Exact actual SI10 arch source row a_arch(37/64)e removed before genuine cofinite projection; complete original arch cutoff norm<15/8; full original seven-prime translated physical norm<6, true even pole<8/5. Original row-reduced gradient norm<379/40, energy-dual eta<17955125/136, still no sign/projection certificate.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/437",
+      "verification": "Focused native original-source Actions #41249267411 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF36_ORIGINAL_EVEN_SOURCE_ROW_REDUCED_L2_20261031.md"
+    },
+    "EF37": {
+      "kind": "original-even-correlated-seven-prime-pole-physical-energy-and-arch-tail",
+      "scope": "True original SI10 first source: exact 8-cell physical integration of all 7 signed prime-power translations and actual positive even pole including all cross terms gives combined L2 norm²≈0.66725385396<7/10. Exact protected arch source row removed, full actual quarter-digamma cutoff L2<3/5 with first 100 directed modes plus infinite remainder. Original source-row-reduced gradient and genuine cofinite projection norm<29/20, unseen eta<105125/34; this upper remains insufficient versus restricted S2>1/500, no original 469-source projected solve or whole even/odd/RH closure.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/441",
+      "verification": "Focused native original-source Actions #41251594441 SUCCESS. Exact source arithmetic checks / full physical analytic-domain attachment independently audited only as explicitly stated; original complete even Schur, odd and whole Weil/RH open.",
+      "repo_path": "notes/provisional/EF37_ORIGINAL_EVEN_CORRELATED_PRIME_POLE_SOURCE_NORM_20261031.md"
     }
   },
   "obligations": [
@@ -1132,10 +1182,17 @@
         "EF27",
         "EF28",
         "EF29",
-        "EF30"
+        "EF30",
+        "EF31",
+        "EF32",
+        "EF33",
+        "EF34",
+        "EF35",
+        "EF36",
+        "EF37"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF30 accepted original SI10 470x471 rank: exact 469 physical even moment rows row-equivalent to sampled original exponential-polynomial modes; source recurrence P(E) degree938 with native b469≈-1.2390712361e127 outward strictly negative, so 471 sampled points imply source row rank469. Genuine cosh pole sample is independent by roots-of-unity algebraic rowspace vs Hermite–Lindemann e^(1/1024), hence actual Htilde rank470 and EXACT 1D kernel. Focused source #41236300352 SUCCESS, strict -1.24e127<b469<-1.23e127 recheck pending. EF31 must orient actual unique kernel and bound its contraction with EF29 original 471 signed mixed vector gtilde, not infer δ from exact rank. True A_arch and corrected Schur/odd/full Weil/RH remain OPEN."
+      "next_action": "EF37 original SI10 first-source full signed seven-prime plus actual even-pole 8-cell physical L2 correlated integral <7/10; original entire protected-row-reduced quarter-digamma cutoff L2<3/5 with 100 outward native modes and rigorously paid infinite tail; original ||P_F g_e||<29/20 and unseen full even cofinite eta<105125/34. Focused source CI Actions #41251594441 SUCCESS; original EF33 restricted S2>1/500 yet no sign comparison or true 469-source projected distance. EF38 target actual original signed physical 469-source projected L2 residual or direct energy-dual correction with all arch/primes/pole correlations. Independent digamma/Fourier/domain audit open, W-EVEN-FORM and odd/whole Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
