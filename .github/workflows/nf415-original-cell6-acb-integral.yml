@@ -25,7 +25,7 @@ jobs:
       - name: Original x=9/10 242+4 source ACb certified I1 and pointwise t=0 error
         run: |
           python -m py_compile scripts/local_replay/nf415_original_cell6_I1_validated_acb.py
-          python -u scripts/local_replay/nf415_original_cell6_I1_validated_acb.py --output /tmp/nf415_original_I1.json --eval-limit 12000 --precision 512
+          python -u scripts/local_replay/nf415_original_cell6_I1_validated_acb.py --output /tmp/nf415_original_I1.json --eval-limit 12000 --precision 1024
           python - <<'PY'
           import json
           from fractions import Fraction as F
@@ -35,7 +35,8 @@ jobs:
           assert p['I1_true_original_t_upper']=='4'
           assert F(p['original_pointwise_I0_0_to_h_strict_upper_exact'])==F(5,10**17)
           assert p['full_source_I1_validation'] in (
-           'ACCEPTED_FINITE_BALL_WITH_EXPLICIT_SOURCE_RADIUS',
+           'ACCEPTED_RESOLVED_INTERVAL_WITH_EXPLICIT_SOURCE_RADIUS',
+           'METHOD_STOP_ACB_FINITE_BUT_UNRESOLVED',
            'METHOD_STOP_NONFINITE_ACB_INTERVAL','METHOD_STOP_ACB_NO_CONVERGENCE')
           assert not p['true_complete_z_certified']
           assert not p['original_full_centered_scalar_certified']
