@@ -1,0 +1,26 @@
+name: EF27 original even two-vector corrected pole Schur audit
+on:
+  push:
+    branches: [research/ef27-even-pole-schur-residual-audit]
+  pull_request:
+    branches: [research/ef26-original-even-arch-laplace-signed-series]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-pole-schur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Native first SI10 even pole source charge, F469 pole overlap and exact Schur formula
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef27_even_pole_schur_audit.py
+          python scripts/validate_rpb108_ef27_even_pole_schur_audit.py
+      - name: Verify W-EVEN-FORM source custody
+        run: python scripts/verify_obligation_manifest.py
