@@ -14,7 +14,7 @@ import flint
 from flint import arb,arb_mat,ctx
 import verify_rpb108_si29_full_J_L2_normalization as m
 from verify_rpb108_original_signed_frame_transport import candidate
-from verify_nf374_original_matched_curvature import load,RANK_SHA,PR355_SHA,NF369_SHA,TNUM
+from verify_nf374_original_matched_curvature import load,dyad,RANK_SHA,PR355_SHA,NF369_SHA,TNUM
 from verify_nf380_original_archived_signed_dual import FRAME_SHA,interval
 
 def original_generator_value(c,k,x):
@@ -91,7 +91,7 @@ def main(args):
     assert max(abs((H*rawX-V)[i,j]).upper() for i in range(242) for j in range(4))<arb('1e-80')
     Y0=parent['nf369_quotient_response_exact_dyadic_coefficients']
     T=arb_mat([[m.a(F(v,2**20)) for v in row] for row in TNUM])
-    C=arb_mat([[m.a(F(int(v[0]),1)*F(2)**int(v[1]))+int(i==j)
+    C=arb_mat([[dyad(v)+int(i==j)
                 for j,v in enumerate(row)] for i,row in enumerate(Y0)])
     M=C*T
     sampled=[]
