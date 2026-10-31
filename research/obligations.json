@@ -55,7 +55,8 @@
     "sm62_original_full25_338_signed_positive_Jensen": "Original signed 338 true whole-real signpositive 96 SM54+242 SM55 disjoint windows [0,13] lifted from prior 3D signed evidence to ALL physical supported original 25D SI10 Fourier sources, with complete analytic mean interval/derivative full source error and ALL 625 mixed entries. Critical positivity bookkeeping: SM58 full original positive LOW already includes κ physical Gram; add only m_lower−κ excess at each new real cell. Already credited SM12 17+SM49 32 windows excluded; original 973 negative cover and genuine exceptional pole unchanged. Exact 25D and 23-coordinate genuine LOEWNer LOWER inertia diagnostics cannot imply actual negative witness or full odd operator index. Full 470 strong residual and odd O1/O2/even/Weil/CC27/RH open.",
     "sm63_direct_true_third_source_positive": "SM63 complete real physically supported 3source true odd signed source indices (1,2,17) with heterogeneous original sine centers: SI06/SM39/SM40 768 core signed cells, 973/3892 negative real outside, SM12+SM49 49 and SM54+SM55 338 disjoint real signed-positive cells, all true Fourier 3D means/affine errors, genuine physical sinh exceptional pole and true 3D Gram SPD. Exact 3 Sylvester minors strict positive ONLY accepts actual 3D signed source plane and actual source25 negative index<=22. Negative lower minors never negative actual witness; full original odd/even/Weil/RH OPEN. FIRST END-TO-END focused Actions39314851844 SUCCESS: original [1,2,17] true signed fully coupled lower Sylvester minors strictly positive 0.510849936037,0.5494504783156835,0.7939394010689756; genuine ACTUAL physical 3D positive span and finite source25 negative-index <=22 only. Infinite whole odd 470/even/Weil RH all OPEN.",
     "sm65_actual_original_22D_anisotropic_signed_schur": "SM65 genuine ACTUAL original physical source25 Schur with verified SM63 source3 strictly positive anchor [1,2,17], SM62 full25 signed LOWER and original SM41/42 whole-frequency UPPER; all 66 P3×R22 true signed cross entries bounded by PSD E=U-L source Cauchy. Derived source-specific anisotropic weighted row-Cauchy B^T A^-1 B <= diag_j(sum_i bij sum_k bik/ell) rather than SM61 coarse scalar gamma I, with full rational outward fees and exact 22D LOWER reference inertia. Whole original odd 470 Astar inverse/strong orthogonal remainder, W-ODD-NEG O1/O2/even/Weil CC27 RH OPEN.",
-    "ef15_even_pivot_review": "2026-10-30 owner-requested explicit handoff from canonical NF401 odd frontier to independent even obligation. Odd P1 remains OPEN and paused with original 64 active checks preserved verbatim in notes/data/provisional/EF15_PAUSED_ODD_ACTIVE_CHECKS_20261030.json; per-update check selector is now even-only. Even has no open dependencies and historical scoped EF11/EF13/EF14 CI success; parity 469 is the new entry gate, not positivity closure. Priority numbers unchanged; this deliberate time-boxed P2 pivot does not imply P1 discharged. See notes/provisional/EF15_EVEN_B9_PARITY_AND_HANDOFF_20261030.md."
+    "ef15_even_pivot_review": "2026-10-30 owner-requested explicit handoff from canonical NF401 odd frontier to independent even obligation. Odd P1 remains OPEN and paused with original 64 active checks preserved verbatim in notes/data/provisional/EF15_PAUSED_ODD_ACTIVE_CHECKS_20261030.json; per-update check selector is now even-only. Even has no open dependencies and historical scoped EF11/EF13/EF14 CI success; parity 469 is the new entry gate, not positivity closure. Priority numbers unchanged; this deliberate time-boxed P2 pivot does not imply P1 discharged. See notes/provisional/EF15_EVEN_B9_PARITY_AND_HANDOFF_20261030.md.",
+    "ef16_frontier_scope": "EF16 extends accepted EF15 original b9 even cofinite to ACTUAL original physical source/pole coupling and exact positive-pole finite Schur correction; full pole-free signed finite+mixed source remains OPEN; neither old NF401 nor EF14 one-vector result implies theorem closure."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -847,8 +848,15 @@
       "kind": "scoped-original-even-cofinite-parity-entry",
       "scope": "W-EVEN-FORM, original SI10 seven-prime b9 even 469-generator cofinite lower conditional on inherited form/domain; finite Schur OPEN",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/391",
-      "verification": "EF15 author exact arithmetic candidate, source-triggered CI not yet confirmed; true analytic original signed parity argument documented, independent audit remains OPEN",
+      "verification": "Original SI10 973/107 source exact Fraction b9 even 469-generator cofinite replay and canonical obligation governance BOTH PASSED in focused Actions #41129350533, job #124315993205, 2026-10-30; conditional on independent original closed-form/domain mathematical audit; full even finite Schur OPEN.",
       "repo_path": "notes/provisional/EF15_EVEN_B9_PARITY_AND_HANDOFF_20261030.md"
+    },
+    "EF16": {
+      "kind": "original-even-physical-pole-coupling-candidate",
+      "scope": "W-EVEN-FORM; actual SI10 b9 first/last physical even source pair, 2x2 Gram, real even pole cross and complete-complement pole-only leakage; exact positive rank-one Schur identity; pole-free full signed mixed Schur still OPEN",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/392",
+      "verification": "New EF16 exact Fraction original source workflow PENDING actual Actions acceptance; analytic rank-one identity derivation in note, no original finite signed PSD",
+      "repo_path": "notes/provisional/EF16_ORIGINAL_EVEN_POLE_SCHUR_20261030.md"
     }
   },
   "obligations": [
@@ -995,10 +1003,11 @@
         "EF12",
         "EF13",
         "EF14",
-        "EF15"
+        "EF15",
+        "EF16"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF15: independently replay original SI10 b9 all-frequency source cover, parity-even 469-generator cofinite floor and corrected finite Schur entry; then EF16 obtain actual original physical even Gram/signed exceptional and full complement mixed dual response. EF14's original single-vector positivity is only scoped; full 469D even corrected Schur, form-domain audit and RH OPEN."
+      "next_action": "EF16: verify authentic original SI10 469-generator even physical 2-source Gram, even positive pole overlap and complete 469D pole leakage; accept exact favorable positive rank-one Schur correction but not pole-free original signed finite block or its full mixed inverse. EF17 requires actual pole-free signed original finite/mixed response or an equivalent complete Schur gate; full W-EVEN-FORM OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1079,6 +1088,17 @@
         "scripts/validate_rpb108_ef15_original_even_b9_parity.py"
       ],
       "interpretation": "Replays original SI10 protected seven-prime b9 cover and 469 even parity source/cofinite lower. Conditional analytic domain and complete original even finite/infinite Schur remain OPEN; does not re-run EF14.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF16-original-even-physical-pole-coupling",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef16_original_even_pole_schur.py"
+      ],
+      "interpretation": "Actual original SI10 native even two-source physical Gram/pole overlaps, full-complement pole leakage and positive-pole Schur exact regression; NOT complete pole-free signed mixed Schur or whole even positivity.",
       "cadence": "per-update"
     }
   ]
