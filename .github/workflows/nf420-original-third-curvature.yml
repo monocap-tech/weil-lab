@@ -1,0 +1,61 @@
+name: NF420 original full 246 source third curvature and second x remainder
+on:
+  push:
+    branches: [research/nf420-original-second-derivative-source-gram]
+    paths:
+      - '.github/workflows/nf420-original-third-curvature.yml'
+      - 'scripts/local_replay/nf420_original_third_derivative_full_source_gram.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  full-source-third-gram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf420-original-second-derivative-source-gram
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native outward Arb interval source runtime
+        run: pip install python-flint==0.8.0
+      - name: Source-correlated original u-third Gram and true second-order x remainder
+        run: |
+          python -m py_compile scripts/local_replay/nf420_original_third_derivative_full_source_gram.py
+          python -u scripts/local_replay/nf420_original_third_derivative_full_source_gram.py --output /tmp/nf420_original.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          p=json.load(open('/tmp/nf420_original.json'))
+          assert p['unchanged_complete_original_selected_242_critical_4_source']
+          assert p['all_selected_selected_and_selected_critical_critical_critical_source_cross_retained']
+          assert p['true_original_odd_pole_u_third_derivative_cosh_included']
+          assert p['source_native_precision_bits']==4096
+          assert p['full_original_third_derivative_basis_count']>=200
+          assert p['original_true_physical_cell6_interval_exact']==['899/1000','901/1000']
+          assert p['original_x_t_moving_boundary_uprime_cancellation_exact'].startswith('A_prime=K(t1)-K(t2)')
+          assert F(p['true_original_z_second_derivative_uniform_bound_on_interval'])>0
+          assert F(p['true_original_x_second_order_Taylor_remainder_upper_exact'])>0
+          assert p['second_x_derivative_uniform_remainder_certified_on_nontrivial_cell_subinterval']
+          assert not p['original_complete_entire_cell6_covered']
+          assert not p['original_cellwise_signed_z_p_cross_integrated']
+          assert not p['original_NF404_complete_centered_scalar_decided']
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          PY
+      - name: Preserve original physical source analytic Gram and interval remainder
+        run: |
+          target=notes/data/provisional/NF420_original_full_third_curvature_and_cell6_Taylor_remainder_native.json
+          mkdir -p notes/data/provisional
+          if test -e "$target"; then cmp -s "$target" /tmp/nf420_original.json
+          else cp /tmp/nf420_original.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF420 true original 246-source u-third Gram and certified x Taylor remainder, NF404 OPEN'
+            git pull --rebase origin research/nf420-original-second-derivative-source-gram
+            git push origin HEAD:refs/heads/research/nf420-original-second-derivative-source-gram
+          fi
