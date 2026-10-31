@@ -1,0 +1,124 @@
+{
+  "pass": "NF409",
+  "standing": "UNCERTIFIED ORIGINAL NF408 TWO-MESH SIGNED CELL HOTSPOT RECONCILIATION; NO INTERVAL NOR ENCLOSING NORM",
+  "nf408_original_16cell_pilot_sha256": "8942e354919cac6bc3c7ea217f7ea8e15ae09981b67576a2e12fc5ae99dfc446",
+  "nf409_original_source_exact_p_cell_weights_sha256": "be029dd3c09c678f72a49d1ef14e7596cca10607c43a6e8660ccb1177025d718",
+  "nf404_original_center_source_sha256": "8b9f2138bd609ce440eb5154bde789355e77b5cdb31fe34a3a99e17680d5e137",
+  "all_original_eight_positive_cells": [
+    {
+      "cell": 1,
+      "from": "0",
+      "to": "B-log(3)",
+      "pilot_two_resolution_signed_delta_z2_two_sided_exact_decimal": "167799030832673514758382261311331607/250000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_2_zp_two_sided_exact_decimal": "-98234612731018843576179130182744911/1250000000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_full_E_exact_decimal": "838896919550636554948335127426475290089/1250000000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_absolute_delta_full_E_exact_decimal": "838896919550636554948335127426475290089/1250000000000000000000000000000000000000000000000000000000000000000",
+      "full_cell_inner_and_outer_quadrature_error_enclosed": false,
+      "relative_priority_only_not_a_proof_of_true_error": true
+    },
+    {
+      "cell": 2,
+      "from": "B-log(3)",
+      "to": "-B+log(4)",
+      "pilot_two_resolution_signed_delta_z2_two_sided_exact_decimal": "-8325886956538912500057279236325175374793/100000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_2_zp_two_sided_exact_decimal": "21309180453872001047555447250734879292393/250000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_full_E_exact_decimal": "988926125049439594824498319843881710821/500000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_absolute_delta_full_E_exact_decimal": "988926125049439594824498319843881710821/500000000000000000000000000000000000000000000000000000000000000",
+      "full_cell_inner_and_outer_quadrature_error_enclosed": false,
+      "relative_priority_only_not_a_proof_of_true_error": true
+    },
+    {
+      "cell": 3,
+      "from": "-B+log(4)",
+      "to": "B-log(2)",
+      "pilot_two_resolution_signed_delta_z2_two_sided_exact_decimal": "-437343487642022973033991505303719217329/1562500000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_2_zp_two_sided_exact_decimal": "1583611807638043330681549008766459144363/12500000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_full_E_exact_decimal": "-1915136093498140453590383033663294594269/12500000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_absolute_delta_full_E_exact_decimal": "1915136093498140453590383033663294594269/12500000000000000000000000000000000000000000000000000000000000",
+      "full_cell_inner_and_outer_quadrature_error_enclosed": false,
+      "relative_priority_only_not_a_proof_of_true_error": true
+    },
+    {
+      "cell": 4,
+      "from": "B-log(2)",
+      "to": "-B+log(5)",
+      "pilot_two_resolution_signed_delta_z2_two_sided_exact_decimal": "3536867394004320797940750836021252975517/31250000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_2_zp_two_sided_exact_decimal": "-22729885116360947182769593598621066694243/250000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_full_E_exact_decimal": "5565054035673619200756413089548957109893/250000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_absolute_delta_full_E_exact_decimal": "5565054035673619200756413089548957109893/250000000000000000000000000000000000000000000000000000000000000",
+      "full_cell_inner_and_outer_quadrature_error_enclosed": false,
+      "relative_priority_only_not_a_proof_of_true_error": true
+    },
+    {
+      "cell": 5,
+      "from": "-B+log(5)",
+      "to": "-B+log(7)",
+      "pilot_two_resolution_signed_delta_z2_two_sided_exact_decimal": "-3933665090692067390037664149108000357107/5000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_2_zp_two_sided_exact_decimal": "186715457383312150967622196417800718733/250000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_full_E_exact_decimal": "-199355943025824370685220220751985982447/5000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_absolute_delta_full_E_exact_decimal": "199355943025824370685220220751985982447/5000000000000000000000000000000000000000000000000000000000000",
+      "full_cell_inner_and_outer_quadrature_error_enclosed": false,
+      "relative_priority_only_not_a_proof_of_true_error": true
+    },
+    {
+      "cell": 6,
+      "from": "-B+log(7)",
+      "to": "-B+log(8)",
+      "pilot_two_resolution_signed_delta_z2_two_sided_exact_decimal": "811247789552157550131582722995492719527/2500000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_2_zp_two_sided_exact_decimal": "-79893551043170929920881089885710809153/500000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_full_E_exact_decimal": "205890017168151450263588636783469336881/1250000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_absolute_delta_full_E_exact_decimal": "205890017168151450263588636783469336881/1250000000000000000000000000000000000000000000000000000000000",
+      "full_cell_inner_and_outer_quadrature_error_enclosed": false,
+      "relative_priority_only_not_a_proof_of_true_error": true
+    },
+    {
+      "cell": 7,
+      "from": "-B+log(8)",
+      "to": "-B+log(9)",
+      "pilot_two_resolution_signed_delta_z2_two_sided_exact_decimal": "2270101006194083801123155493892067976463/5000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_2_zp_two_sided_exact_decimal": "-446656104900113428811837449608961525133/1250000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_full_E_exact_decimal": "483476586593630085875805695456221875931/5000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_absolute_delta_full_E_exact_decimal": "483476586593630085875805695456221875931/5000000000000000000000000000000000000000000000000000000000000",
+      "full_cell_inner_and_outer_quadrature_error_enclosed": false,
+      "relative_priority_only_not_a_proof_of_true_error": true
+    },
+    {
+      "cell": 8,
+      "from": "-B+log(9)",
+      "to": "+B",
+      "pilot_two_resolution_signed_delta_z2_two_sided_exact_decimal": "2530503228859244102463598133046091501/312500000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_2_zp_two_sided_exact_decimal": "66599592248570667331052004973124877509/25000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_signed_delta_full_E_exact_decimal": "269039850557310195528139855616812197589/25000000000000000000000000000000000000000000000000000000000000",
+      "pilot_two_resolution_absolute_delta_full_E_exact_decimal": "269039850557310195528139855616812197589/25000000000000000000000000000000000000000000000000000000000000",
+      "full_cell_inner_and_outer_quadrature_error_enclosed": false,
+      "relative_priority_only_not_a_proof_of_true_error": true
+    }
+  ],
+  "source_original_refinement_priority_by_unsigned_intermesh_difference": [
+    6,
+    3,
+    7,
+    5,
+    4,
+    8,
+    2,
+    1
+  ],
+  "original_source_intermesh_top_three_cells": [
+    6,
+    3,
+    7
+  ],
+  "intermesh_top_three_absolute_variation_fraction_exact": "518272773166373017091578364013854265290650000/611862175838605865166688671565173287083657589",
+  "strict_top_three_more_than_eighty_percent_of_absolute_cell_disagreement": true,
+  "original_original_nf408_two_mesh_signed_global_difference_exact_decimal": "129156985626065589106001954456521377006357589/1250000000000000000000000000000000000000000000000000000000000000000",
+  "original_original_nf408_total_absolute_cell_variation_exact_decimal": "611862175838605865166688671565173287083657589/1250000000000000000000000000000000000000000000000000000000000000000",
+  "source_original_2_node_norm_below_cap_4_node_above_cap": true,
+  "neither_source_original_mesh_estimate_is_proved_lower_or_upper": true,
+  "source_original_true_complete_centered_norm_rigorously_measured": false,
+  "source_original_error_limit_via_mesh_comparison": false,
+  "original_full_W_odd_obligation": "OPEN",
+  "new_signed_kernel_cells": 0,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
