@@ -1,0 +1,61 @@
+name: NF423 original source-wide cell6 zthird physical envelope
+on:
+  push:
+    branches: [research/nf423-shared-original-response-jets]
+    paths:
+      - '.github/workflows/nf423-original-cell6-wide-zthird.yml'
+      - 'scripts/local_replay/nf423_original_cell6_wide_interval_zthird_native.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  original-source-wide-interval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf423-shared-original-response-jets
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Arb original source envelope runtime
+        run: pip install python-flint==0.8.0
+      - name: 4096-bit original physical interval, signed prime and moving arch proof
+        run: |
+          python -m py_compile scripts/local_replay/nf423_original_cell6_wide_interval_zthird_native.py
+          python -u scripts/local_replay/nf423_original_cell6_wide_interval_zthird_native.py --output /tmp/nf423_wide.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          j=json.load(open('/tmp/nf423_wide.json'))
+          assert j['original_242_selected_plus_four_critical_unchanged']
+          assert j['full_source_all_selected_critical_correlations_from_NF421_kept']
+          assert j['original_corrected_NF422_endpoint_parity_used']
+          assert j['full_interval_native_precision_bits']==4096
+          assert j['true_original_cell6_widened_interval_exact']==['17/20','93/100']
+          assert j['original_widened_interval_ratio_to_NF421_original_macro']==40
+          assert len(j['original_full_7_signed_prime_branches_over_entire_interval'])==7
+          assert j['original_nf406_exact_one_sided_knot_brackets_strictly_excluded']
+          assert j['original_signed_active_prime_weight_strict_integer_upper']<=4
+          assert j['original_analytic_A_absolute_strict_integer_upper']<=16
+          assert j['original_full_zthird_widened_interval_strict_integer_upper']<1540338
+          assert j['original_cubic_Taylor_remainder_valid_for_every_x_in_widened_interval']
+          assert not j['original_tight_entire_cell6_z_enclosure_certified']
+          assert not j['original_NF404_centered_scalar_decided']
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          PY
+      - name: Custody exact original physical full interval
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF423_original_cell6_wide_zthird_native.json
+          cp /tmp/nf423_wide.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF423 original physical source zthird wider continuous interval 0.85..0.93, NF404 open'
+            git pull --rebase origin research/nf423-shared-original-response-jets
+            git push origin HEAD:refs/heads/research/nf423-shared-original-response-jets
+          fi

@@ -1,0 +1,59 @@
+name: NF423 true original entire open cell6 zthird certificate
+on:
+  push:
+    branches: [research/nf423-shared-original-response-jets]
+    paths:
+      - '.github/workflows/nf423-original-entire-cell6-zthird.yml'
+      - 'scripts/local_replay/nf423_original_entire_cell6_zthird_native.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  entire-original-open-cell6:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf423-shared-original-response-jets
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Arb original source envelope
+        run: pip install python-flint==0.8.0
+      - name: Full original knot-defined physical cell6 branch and source derivative bound
+        run: |
+          python -m py_compile scripts/local_replay/nf423_original_entire_cell6_zthird_native.py
+          python -u scripts/local_replay/nf423_original_entire_cell6_zthird_native.py --output /tmp/nf423_fullcell_derivative.json
+          python - <<'PY'
+          import json
+          from fractions import Fraction as F
+          j=json.load(open('/tmp/nf423_fullcell_derivative.json'))
+          assert j['original_full_242_selected_plus_four_critical_source_kept']
+          assert j['original_true_physical_cell_number']==6
+          assert j['original_true_entire_cell_open_exact_description']=='(log(7)-11/10,log(8)-11/10)'
+          assert j['native_interval_evaluated_on_strict_original_cell_superset']==['21/25','99/100']
+          assert j['native_interval_real_arb_4096bit']
+          assert j['original_all_seven_real_signed_prime_branches_inside_open_cell']==['post-seam']*5+['neither']*2
+          assert j['true_active_prime_weight_strict_upper']==3
+          assert j['original_NF422_correct_odd_derivative_endpoint_sign']
+          assert j['certified_true_entire_open_cell6_derivative_bound']
+          assert j['true_original_entire_open_cell6_zthird_uniform_strict_upper']<1540338
+          assert not j['original_true_complete_cell6_z_decision_quality_enclosure']
+          assert not j['original_NF404_complete_centered_scalar_decided']
+          assert j['W_ODD_NEG']==j['RH']=='OPEN'
+          PY
+      - name: Preserve original full open cell6 derivative source enclosure
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF423_original_entire_open_cell6_zthird_native.json
+          cp /tmp/nf423_fullcell_derivative.json "$target"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF423 true original full physical cell6 source-controlled third derivative, NF404 open'
+            git pull --rebase origin research/nf423-shared-original-response-jets
+            git push origin HEAD:refs/heads/research/nf423-shared-original-response-jets
+          fi

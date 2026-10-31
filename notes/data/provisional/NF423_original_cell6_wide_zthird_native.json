@@ -1,0 +1,74 @@
+{
+  "pass": "NF423-original-cell6-uniform-extension",
+  "standing": "FULL ORIGINAL SOURCE-CORRELATED z THIRD DERIVATIVE NATIVE INTERVAL SHARPENED OVER 40x WIDER PHYSICAL CELL6 MACRO REGION; NOT FULL CELL OR NF404",
+  "original_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_nf411_endpoint_jet_sha256": "dea07796e598a699c67b76490055bdfb17c555f631c4311bb2aeaa3aa92b6075",
+  "original_nf421_fourth_correlated_source_gram_sha256": "db7168ebe12a517c4a9deda6841aafbc44332e283da4b6571ed38a728ca6e4ce",
+  "original_nf421_previous_cubic_Taylor_sha256": "94c57974733955e6c46140b798daa00db890e4aca87e943a57d764e2278bb93f",
+  "original_nf422_corrected_all_order_transfer_sha256": "a6992b0a24ed1a7ae0a3d03440b21ced2725e08d2de0598597fd0f0271f10691",
+  "original_242_selected_plus_four_critical_unchanged": true,
+  "full_source_all_selected_critical_correlations_from_NF421_kept": true,
+  "original_corrected_NF422_endpoint_parity_used": true,
+  "full_interval_native_precision_bits": 4096,
+  "true_original_cell6_widened_interval_exact": [
+    "17/20",
+    "93/100"
+  ],
+  "true_original_cell6_widened_interval_decimal": [
+    "0.85",
+    "0.93"
+  ],
+  "original_nf406_exact_one_sided_knot_brackets_strictly_excluded": true,
+  "original_widened_interval_ratio_to_NF421_original_macro": 40,
+  "original_full_7_signed_prime_branches_over_entire_interval": [
+    {
+      "n": 2,
+      "branch": "post-seam"
+    },
+    {
+      "n": 3,
+      "branch": "post-seam"
+    },
+    {
+      "n": 4,
+      "branch": "post-seam"
+    },
+    {
+      "n": 5,
+      "branch": "post-seam"
+    },
+    {
+      "n": 7,
+      "branch": "post-seam"
+    },
+    {
+      "n": 8,
+      "branch": "neither"
+    },
+    {
+      "n": 9,
+      "branch": "neither"
+    }
+  ],
+  "original_signed_active_prime_weight_sum_arb": "[2.9262341821764090152690177439449733028509714486455813790080288395549759568472327607695870109069274315897141711618337531803818835430263646262767942136864643490662099715890254848550233145069437287956909643374756383085676306088864932996733310099196598752861159953251926670967286639551824000719961432804720728596270444570957644359366986466819782134902164951702289563966752569798769924395333684100145359579664690162207439410352785056610968348732483409785873172134842701195419420358023804035687764427251766093801999467443601125368387536768277103176356877150077758872033252256793382895401754203885193144873715015127725764389751865737683746240619302087585891353097299587734234948092719632010115555314423122970217033037965171255506224428460376603097618964435746220330057304384664529561837750067098917963852177264401782504988541282671118945077203318049444423024776177816008508248619390044162157181541138157814344446023577364357877471619886400112255073623211986142346199063300230329859186455771263147826511279102823098034823455599850739036490771160258023766553280690752597442149638754409693739022617528361974034381931318505122116812304879783503294421237719535207182971197600198966698629318742367611674006507331983711571213479102197918895920892 +/- 2.09e-1232]",
+  "original_signed_active_prime_weight_strict_integer_upper": 3,
+  "original_analytic_A_interval_arb": "[-2e+0 +/- 0.729]",
+  "original_analytic_A_absolute_strict_integer_upper": 4,
+  "original_Kprime1_strict_integer_upper": 10,
+  "original_Kprime2_strict_integer_upper": 1,
+  "original_Rsecond_strict_integer_upper": 400,
+  "original_source_u_third_sup_strict": 24580,
+  "original_source_u_fourth_L2_strict": 16384,
+  "original_full_zthird_widened_interval_strict_integer_upper": 286758,
+  "original_source_I0_u_third_bound": "3*N4",
+  "original_source_I1_u_third_bound": "4*N4",
+  "original_complete_z_centered_second_xjet_at_9over10_reused": true,
+  "original_cubic_Taylor_remainder_valid_for_every_x_in_widened_interval": true,
+  "original_widened_x_Taylor_remainder": "M*|x-9/10|^3/6",
+  "original_tight_entire_cell6_z_enclosure_certified": false,
+  "original_z_p_and_z_squared_integrated": false,
+  "original_NF404_centered_scalar_decided": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
