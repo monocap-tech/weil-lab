@@ -1,0 +1,26 @@
+name: EF28 source-native 471-bell pole-neutral exact cofinite kernel
+on:
+  push:
+    branches: [research/ef28-even-pole-neutralized-471-bell-moment-kernel]
+  pull_request:
+    branches: [research/ef27-even-pole-schur-residual-audit]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-471-bell-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Native SI10 469 source plus true even pole 471 disjoint bell exact kernel and energy
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef28_pole_neutral_moment_kernel.py
+          python scripts/validate_rpb108_ef28_pole_neutral_moment_kernel.py
+      - name: Verify original even canonical obligation
+        run: python scripts/verify_obligation_manifest.py
