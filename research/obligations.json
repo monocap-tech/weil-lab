@@ -62,7 +62,8 @@
     "ef19_annihilator_quantitative_stop": "EF19 genuine original 469 even exceptional-source annihilator creates exactly orthogonal C_c∞ test. Its signed mixed pairing converges to -J as ε→0, but leading D^938 term makes ||fε||_L²²~const/ε. Original cofinite positive floor then forces the variational inverse-Schur lower obtained from this particular trial to vanish O(ε), so shrinking-bump method is STOP. Source and analytic verification classifications separate.",
     "ef20_shift_filter": "EF20 bounded native original even SI10 FIR Fh annihilates full 469 source family with optimal universal bilateral radius469. Real original fixed h source-specific signed mixed nonvanishing follows from extreme original arithmetic jump, all other translated edges excluded by rational logarithm enclosures, subject to arch pseudolocal/domain attachment; numeric inverse Schur OPEN. No point jump -> numeric norm inference.",
     "ef21_fixed_bell_quantitative_entry": "EF21 first focused CI #41218527159 passed original physical norm and exact rational source/Fourier identities. Subsequent noncertifying log-amplitude pilot and O(r) normalized fixed-h shrinking-bell method STOP are source script additions pending new CI. Original signed numerator/energy M/E uncomputed, independent pseudolocal/form-domain audit required. No Schur or RH closure.",
-    "ef22_prime_energy_vanish": "Exact support nonoverlap for original EF21 fixed physical 469-source even FIR bell means true original 7-prime q_prime(f,f) identically zero. This is an original-object cancellation, not dropping arithmetic by assumption: mixed prime remains finite boundary integrals. Only original arch E remains, no numerical upper, effective Schur and RH OPEN."
+    "ef22_prime_energy_vanish": "Exact support nonoverlap for original EF21 fixed physical 469-source even FIR bell means true original 7-prime q_prime(f,f) identically zero. This is an original-object cancellation, not dropping arithmetic by assumption: mixed prime remains finite boundary integrals. Only original arch E remains, no numerical upper, effective Schur and RH OPEN.",
+    "ef23_signed_arithmetic_sparse": "Original EF22 source and governance #41221940116 PASS: exact physical seven-prime energy zero and n2 mixed positive source interval. EF23 exact SI10 native physical source-cutoff geometry and original FIR at c0 yield arithmetic mixed M2+M5+M7, rest n3,n4,n8,n9 exactly vanish. The 211/39 original edge coefficients are exact algebra not evaluated signed interval; arch and normalized Schur OPEN."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -903,8 +904,15 @@
       "kind": "exact-original-seven-prime-even-FIR-self-energy-cancellation",
       "scope": "W-EVEN-FORM: original EF21 fixed even FIR f has exact seven-prime self-energy zero (13139 rational shift checks); exactly TWO n2 partial cutoff bells, and complete n2 FIR-lobe sums vanish at authentic original c0 root, yielding strictly positive SOURCE-SPECIFIC original signed q_prime,n2(e,f)>15/10^7 certified by rational n2 weight/phase half-bell mass. Other 6 original prime mixed contributions and arch M/E remain uncomputed, no normalized Schur.",
       "pr": "https://github.com/monocap-tech/weil-lab/pull/403",
-      "verification": "Original 13139 native 7-prime self-shift nonoverlap checks; exact two cutoff bells; true original n2 signed half-bell mixed Fraction lower >1.5e-6. Latest focused CI PENDING; all other original mixed terms/arch positive energy interval and independent form-domain audit OPEN.",
+      "verification": "Original signed SI10 EF21 fixed physical cofinite f exact seven-prime self energy zero, 13139 native rational support nonoverlaps, exactly two n2 partial cutoff bells and genuine n2 signed mixed exact-rational range [1.535080666e-6,1.535339746e-6] (scoped). Latest Actions #41221940116 SUCCESS, canonical governance PASS; other original prime mixed, arch M/E, domain and Schur remained OPEN.",
       "repo_path": "notes/provisional/EF22_ORIGINAL_EVEN_PRIME_ENERGY_VANISH_20261031.md"
+    },
+    "EF23": {
+      "kind": "original-even-signed-arithmetic-mixed-source-sparsification",
+      "scope": "W-EVEN-FORM: authentic SI10 fixed f source cutoff disjoint/support root identities give exact original mixed prime channels M3=M4=M8=M9=0; surviving n2 bound plus n5 and n7 finite FIR Laurent edge sums of just 211 and 39 coefficients respectively; full M/E Schur uncomputed.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/404",
+      "verification": "New exact native SI06 original ln(n) Fraction lattice cutoff classification 13146 interactions, original 469-degree source root and 211/39 edge combinatorics, inherited EF22 n2 scoped arithmetic. Focused EF23 Actions pending; NO sign or interval accepted for M5/M7, or arch energy/mixed.",
+      "repo_path": "notes/provisional/EF23_ORIGINAL_EVEN_ARITHMETIC_MIXED_SPARSE_20261031.md"
     }
   },
   "obligations": [
@@ -1058,10 +1066,11 @@
         "EF19",
         "EF20",
         "EF21",
-        "EF22"
+        "EF22",
+        "EF23"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF22 authentic original fixed even F469 test: ALL 7 signed prime self-energies zero by 13139 exact n-log support nonoverlaps; source mixed only TWO partial n2 endpoint bells, whose complete opposite lobe sums cancel via actual c0 root. Thus original signed q_prime,n2(e,f)>15/10^7 (pending focused receipt) while n3..9 original signed mixed and arch M/E remain unquantified. EF23 must certify remaining finite original prime mixed cosine sums and arch source/energy using a common rigorous scaling; NO full signed M sign or normalized Schur certificate yet. W-EVEN-FORM OPEN."
+      "next_action": "EF23: for original SI10 even first source and same EF21 fixed 469-source cofinite FIR, original seven-prime signed mixed M_prime reduces EXACTLY to M2+M5+M7 because M3=M4=M8=M9=0 via complete native FIR root or support exclusion (native original 13146 Fraction source cutoff tests). M2 exact rational positive [1.53508066e-6,1.53533975e-6] accepted EF22; n5 reduces from 728 included to 211 omitted FIR boundary coefficients using exact root, n7 needs only 39 edge coefficients. EF24 must certify honest outward signed original M5,M7 intervals with conditioning and arch M/E (E=q_arch only); full corrected even 469D Schur, odd/whole Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1219,6 +1228,17 @@
         "scripts/validate_rpb108_ef22_original_even_prime_energy_vanish.py"
       ],
       "interpretation": "Genuine original SI10 even 469 FIR physical test: 13139 exact source ln(n) interval-lattice nonoverlaps give q_prime(f,f)=0; mixed prime boundary correction finite; original arch energy and M/E numeric Schur not accepted.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF23-original-even-signed-357-mixed-source-prefix",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef23_original_even_prime_mixed_sparsity.py"
+      ],
+      "interpretation": "Authentic SI06/SI10 original seven-prime mixed cutoff lattice counts: M3=M4=M8=M9=0 exact, inherited n2 positive, remaining n5 211 edge coefficients and n7 39; numerical signs of M5/M7, M_arch and E_arch are NOT certified.",
       "cadence": "per-update"
     }
   ]
