@@ -1,0 +1,40 @@
+{
+  "pass": "NF410",
+  "date": "2026-10-31",
+  "active_obligation": "W-ODD-NEG",
+  "source_scope": "NF370 original fourth u4, J242 selected plus 4 original critical; NF404 dyadic a, full real signed arch+7 prime powers, I=[-11/10,11/10]",
+  "parent": "NF409 original signed cell integral and unstable two-mesh screen; draft PR #402",
+  "exact_new": {
+    "signed_original_principal_polynomial_moment_identity_degree_0_through_3": "M_ik = integral_cell (x-c_i)^k (q+r); q moments from monotone H_j(y), r from 7 exact signed step primitives",
+    "signed_correlated_polynomial_energy": "E_T=E_p+2*sum_i integral T_i²+4*sum_ik a_ik M_ik",
+    "source_specific_piecewise_regularities": "z continuous at original prime seams but one-sided first derivative jumps +c_n u4'(B) for n=2,3, and -c_n u4'(B) for n=4,5,7,8,9",
+    "bessel_control": "||p+z||² >= ||P_J(p+z)||² >= original NF404 selected-power lower; E2 pilot falls below this rigorous lower"
+  },
+  "conditional": {
+    "taylor_validation": "Independently certify each original continuous z(x) Taylor model plus sup error delta_i over ALL cells; no cross-seam Taylor without jump treatment; endpoint x=B separate log regularity",
+    "norm_decision": "If eps²<=2 sum_i width_i delta_i², R²>=upper(E_T), true energy bracket E_T +/- (2R eps+eps²); compare whole bracket to NF404 exact cap"
+  },
+  "empirical_diagnostics": {
+    "priority": [
+      6,
+      3,
+      7
+    ],
+    "original_E2": "1.00556144888668981182994524425352576928458186e-21",
+    "original_E4": "1.10888703738754228311475e-21",
+    "original_E2_below_NF404_projected_lower_approx": "8.944102742386388e-23",
+    "original_E4_above_NF404_cap_approx": "1.3833264269120974e-23",
+    "status": "Numerical values are unverified; Bessel inconsistency established analytically for E2"
+  },
+  "status": {
+    "exact_moment_code": "COMMITTED; CI verification separately required",
+    "actual_original_continuous_z_taylor_enclosure": "OPEN",
+    "full_centered_scalar_interval": "OPEN",
+    "nf404_gate_decided": false,
+    "fourth_lowband_J242_perp_upper": "OPEN",
+    "domain_inverse": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "Run source-native interval/Taylor evaluator for the true continuous original z on cells 6,3,7, then every other cell; form full signed original energy interval and decide NF404 C. No blind Gauss refinement."
+}

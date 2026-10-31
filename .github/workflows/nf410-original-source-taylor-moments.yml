@@ -1,0 +1,52 @@
+name: Weil-Lab NF410 original signed Taylor moments (source-exact, not z certification)
+on:
+  push:
+    branches: [research/nf410-original-cell-taylor-moments]
+    paths:
+      - '.github/workflows/nf410-original-source-taylor-moments.yml'
+      - 'scripts/local_replay/nf410_original_source_taylor_moments.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exact-source-moments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf410-original-cell-taylor-moments
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original p=q+r degree 0..3 signed rational moments, independent NF409 degree-zero replay
+        run: |
+          python3 -m py_compile scripts/local_replay/nf410_original_source_taylor_moments.py
+          python3 scripts/local_replay/nf410_original_source_taylor_moments.py --output /tmp/NF410_original_signed_taylor_moments.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/NF410_original_signed_taylor_moments.json'))
+          assert d['degree']==3
+          assert len(d['original_positive_original_physical_cells'])==8
+          assert all(len(c['signed_original_p_moments_by_degree_0_to_3'])==4 for c in d['original_positive_original_physical_cells'])
+          assert all(c['degree_zero_overlap_with_independent_nf409'] for c in d['original_positive_original_physical_cells'])
+          assert d['independent_original_nf409_global_moment_overlap']
+          assert d['original_continuous_z_taylor_coefficients_certified'] is False
+          assert d['nf404_sufficient_gate_decided'] is False
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          PY
+      - name: Custody source-exact moments, explicitly exclude absent continuous z theorem
+        run: |
+          mkdir -p notes/data/provisional
+          target=notes/data/provisional/NF410_original_signed_taylor_moments.json
+          if test -e "$target"; then cmp -s "$target" /tmp/NF410_original_signed_taylor_moments.json
+          else cp /tmp/NF410_original_signed_taylor_moments.json "$target"; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$target"
+          if ! git diff --cached --quiet; then
+            git commit -m 'NF410 source-exact principal Taylor moments, original z and cap undecided'
+            git pull --rebase origin research/nf410-original-cell-taylor-moments
+            git push origin HEAD:refs/heads/research/nf410-original-cell-taylor-moments
+          fi
