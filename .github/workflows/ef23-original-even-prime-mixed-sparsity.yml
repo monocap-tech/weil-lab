@@ -1,0 +1,26 @@
+name: EF23 original even signed 357 prime mixed source reduction
+on:
+  push:
+    branches: [research/ef23-original-even-357-support-prefix-reduction]
+  pull_request:
+    branches: [research/ef22-original-even-prime-energy-exact-vanish]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-prime-mixed-sparsity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Authentic SI10 original arithmetic cutoff sparse classification
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef23_original_even_prime_mixed_sparsity.py
+          python scripts/validate_rpb108_ef23_original_even_prime_mixed_sparsity.py
+      - name: Canonical active even obligation
+        run: python scripts/verify_obligation_manifest.py
