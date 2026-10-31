@@ -1,0 +1,38 @@
+name: NF417 original source independent exact replay
+on:
+  push:
+    branches: [research/nf417-original-hotspots-complete-z]
+    paths:
+      - '.github/workflows/nf417-independent-fraction.yml'
+      - 'scripts/local_replay/nf417_original_hotspots_independent_fraction_replay.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf417-original-hotspots-complete-z
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original 246-source independent rational audit
+        run: |
+          python scripts/local_replay/nf417_original_hotspots_independent_fraction_replay.py --output /tmp/nf417_independent.json
+          python - <<'PY'
+          import json
+          p=json.load(open('/tmp/nf417_independent.json'))
+          assert p['original_true_source_246_generator_count']==246
+          assert [x['cell'] for x in p['hotspot_independent_reports']]==[3,7]
+          assert all(x['complete_original_z_pointwise_certified'] for x in p['hotspot_independent_reports'])
+          assert not p['whole_original_z_cellwise_certified']
+          assert not p['NF404_full_centered_scalar_certified']
+          assert p['W_ODD_NEG']==p['RH']=='OPEN'
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF417-independent-source-audit
+          path: /tmp/nf417_independent.json
