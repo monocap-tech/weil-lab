@@ -45,7 +45,27 @@ This exact identity eliminates all infinite-frequency prime quadrature from M. T
 
 The archimedean contribution to M still requires the original signed archimedean Fourier/physical evaluation, but only **one** full-frequency mixed integral remains instead of a seven-prime plus arch mixture. The arch energy E similarly requires one full-frequency scalar integral and a certified UPPER bound.
 
-## 3. Audit, stopping condition, next accepted original data
+## 3. A first genuine numerical ORIGINAL signed mixed source component: n=2
+
+The two partially clipped bells have a stronger consequence than merely reducing the number of residual integrals. For n=2, sigma=+, all 939 bell translates on the NEGATIVE-center lattice lie completely inside the original e(x+ln2) support, and their full-cosine integral is zero EXACTLY by the original SI10 c0=37/64 FIR root. Every positive-center lattice translate is completely excluded, except the unique extreme k=+469 bell centered at the true endpoint x0=B-ln2; precisely its t<0 half lies inside original shifted e. The sigma=- source translate is its exact parity mirror with k=-469. Both extreme source FIR coefficients are exactly +1; the two source-sign and bell-1/2 coefficients combine to ONE half-bell integral, not two.
+
+Thus the *authentic signed n=2 original pole-free mixed contribution* is exactly
+
+q_prime,n2(e,f) = -w2 * ∫_{-r}^{0} cos^6(pi*t/(2r)) cos(2*pi*c0*(B+t)) dt,
+
+where w2=ln2/sqrt2, c0=37/64, B=11/10, r=1/65536. This is NOT the whole original mixed M (which also contains n=3,4,5,7,8,9 and archimedean terms).
+
+Since the EXACT original rational cosine interval at phase 407*pi/320 has cos_hi<0, and |cos(omega(B+t))-cos(omega B)|<=omega_hi*r with omega_hi=2*pi_hi*c0, we have cos_hi+omega_hi*r<0. The exact half-bell mass is 5r/16. Hence a **strict, original source-specific positive interval**:
+
+0 < (ln2/sqrt2)_lower *[-cos_hi - omega_hi*r]*(5r/16)
+  <= q_prime,n2(e,f)
+  <= (ln2/sqrt2)_upper *[-cos_lo + omega_hi*r]*(5r/16).
+
+The new source checker requires the LOWER endpoint to exceed 15/10^7=0.0000015, using inherited SI06/14 original Fraction enclosures. The exact source CI will print the actual lower/upper decimal summaries. **This is a real quantitative signed ORIGINAL n=2 mixed contribution, not a point-jump-to-L2 inference, not a normalized inverse-Schur bound, and not evidence that the full M is positive.**
+
+## 4. Audit, stopping condition, next accepted original data
+
+
 
 This is a strong exact cancellation for the original object. It must not be mistaken for q_prime(e,f)=0 or an original positivity theorem. The genuine original pole-free Schur variational quotient remains
 
