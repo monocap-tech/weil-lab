@@ -153,5 +153,18 @@
   "original_full_E_p_principal_integrated": false,
   "original_fourth_J242_exterior_upper_closed": false,
   "W_ODD_NEG": "OPEN",
-  "RH": "OPEN"
+  "RH": "OPEN",
+  "independent_same_original_source_two_artificial_cut_contact": {
+    "standing": "ACCEPTED exact rational P511 midpoint comparisons across nonphysical rational integration cuts with both original sourcewise tails; not assumed exact equality",
+    "run_id": 41350089850,
+    "conclusion": "success",
+    "artifact_id": 13101525115,
+    "zip_sha256": "0358ec7c9ba30bec8556d17a4dded16339370dc11c329b308049ce1efbe880c0",
+    "inner_original_json_sha256": "36ed6e808fc6179d465f2b6b500ceb2d759503cdf0e629105424ff4957a18c0b",
+    "source_p511_difference_at_31_over_50_approx": "1.7150926895814688e-61",
+    "source_p511_difference_at_73_over_100_approx": "2.4554518106106534e-61",
+    "two_sided_full_sourcewise_epsilon_sum_approx": "4.872381391684271e-35",
+    "both_contact_source_response_intervals_overlap": true,
+    "both_contact_differences_strict_below": "1e-59"
+  }
 }
