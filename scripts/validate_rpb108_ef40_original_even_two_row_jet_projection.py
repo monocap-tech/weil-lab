@@ -86,7 +86,7 @@ def compute():
         hv+=2*coeff*(arch_v_ant(pts[-1],lam)-arch_v_ant(pts[0],lam))
     cos2B,sin2B=trig_pi(4*C0*B)
     ev=-B*cos2B/(2*OMEGA)+sin2B/(4*OMEGA*OMEGA)
-    vv=B**3/3-B*B*sin2B/(2*OMEGA)-B*cos2B/(2*OMEGA*OMEGA)+sin2B/(4*OMEGA**3)
+    vv=B**3/3-B*B*sin2B/(2*OMEGA)-B*cos2B/(2*OMEGA*OMEGA)+sin2B/(4*(OMEGA*OMEGA*OMEGA))
     schur=vv-ev*ev/s0
     assert schur.lo>F(1,4)*S,schur.scaled()
     assert F(schur.hi,S)<F(1,3),schur.scaled()
