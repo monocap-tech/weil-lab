@@ -195,8 +195,11 @@ def source_eight_row_schur():
 from math import isqrt
 
 Q=10**22
-EPS=F(1,10**6)
-PRIOR_SIX_CAP=F(4054,100000)
+EPS=F(1,10**8)
+PRIOR_SIX_CAP=F(79,2500)
+SQRT_CAP=F(178,1000)
+COFINITE_NORM_CAP=F(293,1000)
+ETA_CAP=F(85849,680)
 
 def midpoint_rational(interval):
     return F(((interval.lo+interval.hi)*Q)//(2*S),Q)
@@ -280,6 +283,13 @@ def main():
     low,up,C,defects=inverse_free_original_eight_response(
         G,b,full,stages[-1][2])
     maxcoeff=max(sum(abs(a) for a in row) for row in C)
+    assert maxcoeff<F(3000000)
+    assert PRIOR_SIX_CAP<SQRT_CAP*SQRT_CAP
+    assert SQRT_CAP+F(57,500)+F(1,10000)<COFINITE_NORM_CAP
+    assert COFINITE_NORM_CAP*COFINITE_NORM_CAP/MU==ETA_CAP
+    assert ETA_CAP<F(12482,85)
+    assert F(stages[6][0].lo,S)>F(1,10100000)
+    assert F(stages[7][0].lo,S)>F(7,10000000000)
     for i,(pivot,gain,residual) in enumerate(stages):
         print('EF44 exact original physical source jet',i,
               'Gram pivot',pivot.scaled(),'incremental squared gain',
@@ -299,9 +309,9 @@ def main():
     assert tail<F(57,500)+F(1,10000)
     print('EF44 entire original quarter-digamma tail m>=40'
           ' L2 fully paid <',float(tail),
-          '; strict original eight-source residual² <4054/100000,'
-          ' so inherited full cofinite ||P_F g_e||<79/250 and'
-          ' eta<12482/85 at minimum.',flush=True)
+          '; strict original eight-source residual² <79/2500,'
+          ' full original first-source cofinite ||P_F g_e||<293/1000'
+          ' and eta<85849/680=',float(ETA_CAP),flush=True)
     print('EF44 research status: 8 of 469 actual original SI10'
           ' protected even rows projected; 461 remain.'
           ' Original independent analytic Fourier/digamma/form-core'
