@@ -1,0 +1,26 @@
+name: EF45 original signed ten SI10 even source-jet projection
+on:
+  push:
+    branches: [research/ef45-original-even-ten-jet-conditioning]
+  pull_request:
+    branches: [research/ef44-original-even-eight-jet-conditioned]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-ten-jet-projection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Ten true original even protected Fourier jets, signed source and rational conditioned Gram
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef45_original_even_ten_jet_conditioning.py
+          python scripts/validate_rpb108_ef45_original_even_ten_jet_conditioning.py
+      - name: Assert canonical W-EVEN-FORM remains open
+        run: python scripts/verify_obligation_manifest.py
