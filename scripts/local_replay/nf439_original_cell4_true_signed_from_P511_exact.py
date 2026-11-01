@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """NF439 exact original TRUE continuous physical cell4 signed integral.
 
-Original NF434/435/436 512 source-native interval balls and NF436
+Original NF438/439 512 source-native interval balls and NF439
 exact rational true z-P511 uniform tail, SHA-pinned. Independent NF439
 original true signed p and raw dx Cheb moments from exact NF406
 log4-B/B-log2 seam. Source interval coefficient MIDPOINTS used for P511:
@@ -77,7 +77,7 @@ def main():
  assert len(coefficients)==N
  assert [x['n'] for x in coefficients]==list(range(N))
  # Choose exact rational MIDPOINTS of genuinely accepted source balls,
- # not intervals again: the NF436 true-z uniform error already contains
+ # not intervals again: the NF439 true-z uniform error already contains
  # 5e-45 midpoint choice for EACH coefficient. No double count.
  ca=[]
  for z in coefficients:
@@ -129,7 +129,7 @@ def main():
   'original_nf407_source_sha256':SOURCE_SHA,
   'original_nf406_seams_sha256':SEAM_SHA,
   'original_source_parent_json_sha256':dict(PINS,moments=a.moments_sha256),
-  'original_true_cell4':'(log(4)-11/10,11/10-log(2))',
+  'original_true_cell4':'(11/10-log(2),log(5)-11/10)',
   'original_active_minus_prime_powers':[2,3,4],
   'original_active_plus_prime_powers':[],
   'original_regular_response_n2_translate_multiplicity':1,
