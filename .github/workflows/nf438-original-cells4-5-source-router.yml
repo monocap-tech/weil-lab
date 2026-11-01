@@ -1,0 +1,59 @@
+name: Weil-Lab NF438 original cells4-5 regular-principal exact source router
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf438_original_cells4_5_regular_principal_geometry_exact.py'
+      - '.github/workflows/nf438-original-cells4-5-source-router.yml'
+permissions:
+  contents: read
+jobs:
+  original-cells4-5-typed-support-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original NF405/406/407 support and source geometry exact rational
+        run: |
+          python3 -m py_compile scripts/local_replay/nf438_original_cells4_5_regular_principal_geometry_exact.py
+          python3 scripts/local_replay/nf438_original_cells4_5_regular_principal_geometry_exact.py \
+            --output artifacts/NF438_original_cells4_5_regular_principal_geometry_exact.json
+      - name: Strict original physical-principal distinct support and no sign promotion
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          sys.set_int_max_str_digits(0)
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF438_original_cells4_5_regular_principal_geometry_exact.json'))
+          assert d['pass']=='NF438'
+          assert d['original_NF407_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['original_NF406_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_source_selected_plus_critical']==246
+          assert d['original_frequency_order_source_groups']==273
+          c4=d['cells']['4'];c5=d['cells']['5']
+          assert c4['original_true_seam_left']=='B-log(2)' and c4['original_true_seam_right']=='-B+log(5)'
+          assert c5['original_true_seam_left']=='-B+log(5)' and c5['original_true_seam_right']=='-B+log(7)'
+          assert c4['original_regular_z_active_minus']==c4['original_principal_r_jump_active']==[2,3,4]
+          assert c5['original_regular_z_active_minus']==c5['original_principal_r_jump_active']==[2,3,4,5]
+          assert c4['original_regular_z_active_plus']==c5['original_regular_z_active_plus']==[]
+          assert c4['original_regular_z_inactive']==c4['original_principal_r_jump_inactive']==[5,7,8,9]
+          assert c5['original_regular_z_inactive']==c5['original_principal_r_jump_inactive']==[7,8,9]
+          assert F(c4['original_NF410_original_principal_p0_interval'][1])<0
+          assert F(c5['original_NF410_original_principal_p0_interval'][1])<0
+          assert len(c4['sourcewise_admissible_Bernstein_ellipses'])==4
+          assert len(c5['sourcewise_admissible_Bernstein_ellipses'])==3
+          assert sum(c4['candidate_sourcewise_optimal_rho_counts'].values())==273
+          assert sum(c5['candidate_sourcewise_optimal_rho_counts'].values())==273
+          assert not c4['original_true_signed_cell_integral_certified']
+          assert not c5['original_true_signed_cell_integral_certified']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF438 PASS exact original cell4/5 typed branch supports, NF410 p0 and candidate ellipses; signed cells OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF438-original-cells4-5-exact-typed-geometry
+          path: artifacts/NF438_original_cells4_5_regular_principal_geometry_exact.json
+          if-no-files-found: error
