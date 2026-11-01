@@ -1,0 +1,26 @@
+name: EF43 original even exact six-jet rational normalization
+on:
+  push:
+    branches: [research/ef43-six-jet-rational-orthogonalization]
+  pull_request:
+    branches: [research/ef42-original-even-six-jet-projection]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-rational-six-jet-span:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original six-jet exact rational orthogonalization and independent signed projection
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef43_original_even_six_jet_rational_normalization.py
+          python scripts/validate_rpb108_ef43_original_even_six_jet_rational_normalization.py
+      - name: Canonical open obligation audit
+        run: python scripts/verify_obligation_manifest.py
