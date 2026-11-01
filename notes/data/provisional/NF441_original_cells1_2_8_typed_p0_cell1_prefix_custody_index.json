@@ -1,0 +1,154 @@
+{
+  "pass": "NF441",
+  "standing": "SOURCE-EXACT TYPING ORIGINAL J1/J2/J8; independently NF410-overlapping original p0 all three including exact +B log limit; J1 source-native a0..63; J1/J2 four conditional sourcewise P511 response-error candidates; whole J8 Bernstein method STOP. No new complete signed J.",
+  "parent_accepted_NF440_PR": 461,
+  "draft_PR": 462,
+  "canonical_obligation": "W-ODD-NEG",
+  "original_NF407_full_source_SHA256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_NF406_seam_SHA256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "physical_source": [
+    "n2",
+    "n3",
+    "n4",
+    "n5",
+    "n7",
+    "n8",
+    "n9"
+  ],
+  "original_NF407_242_plus_four_source": 246,
+  "original_frequency_order_groups": 273,
+  "source_original_cell1": {
+    "true_cell": "(0,11/10-log3)",
+    "regular_minus": [
+      2,
+      3
+    ],
+    "regular_plus": [
+      2,
+      3
+    ],
+    "principal_jump_active": [],
+    "p0_approx": "-5.114063341882055e-18",
+    "true_analytic_source_center": "7/10000",
+    "true_analytic_source_halfwidth": "1/1250",
+    "original_low_native_source_modes_accepted": 64,
+    "original_full_512_generator_tail_candidate_approx": "5.424880381917811e-192",
+    "conditional_true_z_minus_P511_full_bound_approx": "2.56e-42",
+    "full_512_native_coefficient_balls_certified": false,
+    "original_continuous_signed_integral_certified": false
+  },
+  "source_original_cell2": {
+    "true_cell": "(11/10-log3,log4-11/10)",
+    "regular_minus": [
+      2,
+      3
+    ],
+    "regular_plus": [
+      2
+    ],
+    "principal_jump_active": [
+      3
+    ],
+    "p0_approx": "-2.3500575408507604e-12",
+    "original_same_source_three_panel_centers": [
+      "11/200",
+      "37/250",
+      "243/1000"
+    ],
+    "original_three_panel_halfwidths": [
+      "11/200",
+      "29/500",
+      "53/1000"
+    ],
+    "original_rational_integration_cuts": [
+      "1/10",
+      "39/200"
+    ],
+    "source_generator_tail_per_panel_approx": [
+      "8.579209589013208e-57",
+      "8.076740625327836e-46",
+      "1.7936996014427878e-63"
+    ],
+    "conditional_full_true_z_P511_bounds_per_panel_approx": [
+      "2.5600000000000085e-42",
+      "2.5608076740625328e-42",
+      "2.56e-42"
+    ],
+    "original_three_panel_native_coefficients_certified": 0,
+    "original_continuous_signed_integral_certified": false
+  },
+  "source_original_cell8": {
+    "true_cell": "(log9-11/10,11/10)",
+    "regular_minus": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+    ],
+    "regular_plus": [],
+    "principal_jump_active": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8,
+      9
+    ],
+    "p0_approx": "-2.278441407791459e-13",
+    "original_true_p0_at_B_log_endpoint_integrated_by_exact_primitive_limit": true,
+    "full_cell8_log_principal_unbounded": true,
+    "full_cell8_2048_image_geometric_ratio_tends_to_one_at_B": true,
+    "full_cell8_uniform_P511_Bernstein_method_stopped": true,
+    "needs_endpoint_weighted_or_infinitely_refined_panel_representation": true,
+    "original_continuous_signed_integral_certified": false
+  },
+  "accepted_original_signed_cells": {
+    "3": "POSITIVE NF437",
+    "4": "NEGATIVE NF439",
+    "5": "NEGATIVE NF440",
+    "6": "NEGATIVE NF432"
+  },
+  "remaining_original_signed_cells_open": [
+    1,
+    2,
+    7,
+    8
+  ],
+  "original_full_NF410_NF404_global_signed_scalar_decided": false,
+  "original_principal_E_p_integrated": false,
+  "original_fourth_J242_exterior_upper_closed": false,
+  "source_focused_CI_and_artifacts": {
+    "original_exact_source_typed_geometry": {
+      "run": 41358048201,
+      "conclusion": "SUCCESS",
+      "artifact_id": 13103926969,
+      "zip_sha256": "a0ab7e09e222157d72429f7e57294b1233863b1a86091b6638b8f0b52557693e"
+    },
+    "original_principal_p0_native_independent_NF410": {
+      "run": 41358048029,
+      "conclusion": "SUCCESS",
+      "artifact_id": 13103932010,
+      "zip_sha256": "01ebc834d519fa9f552a11edd6a401a852e67fce648821fb571ec2c9ccbb4861"
+    },
+    "original_cell1_source_native_cheb64": {
+      "run": 41358651067,
+      "conclusion": "SUCCESS",
+      "artifact_id": 13104626379,
+      "zip_sha256": "6ddc103efa2ef9c4a3d8d7b0d21dfe0402adf56978fe04db67313b9b2e41c963"
+    },
+    "original_J1_J2_conditional_source_tail": {
+      "run": 41358651184,
+      "conclusion": "SUCCESS",
+      "artifact_id": 13103937745,
+      "zip_sha256": "7cbf56e14cdb61ddda0bcfe1fbba09beaf2d7190ec90831afb9c9dd4a4fcfdb2"
+    }
+  },
+  "original_full_inner_artifact_json_sha256_archived": false,
+  "artifacts_expire_at": "2027-01-30",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
