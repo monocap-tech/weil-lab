@@ -1,0 +1,26 @@
+name: EF42 original even six protected SI10 jets
+on:
+  push:
+    branches: [research/ef42-original-even-six-jet-projection]
+  pull_request:
+    branches: [research/ef41-original-even-four-row-jet-projection]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  six-original-even-jet-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original signed source and six-jet Gram exact interval verification
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef42_original_even_six_jet_projection.py
+          python scripts/validate_rpb108_ef42_original_even_six_jet_projection.py
+      - name: Governance verification
+        run: python scripts/verify_obligation_manifest.py
