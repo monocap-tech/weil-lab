@@ -46,3 +46,10 @@ Source-exact replay: `scripts/local_replay/nf430_original_cells3_7_source_branch
 **Acceptance:** correct cell3 and cell7 source branch routing, cell3 original fixed-branch analytic global transfer/existence with a 2048-image/1500-series budget, and cell7 genuinely distinct 120000-image/three-panel entry cost (only upon focused CI pass). **Not accepted:** actual cell3 or cell7 complete signed physical sector, a cell7 2048-image error claim, any cross-seam polynomial, complete NF410/NF404 scalar, fourth original J242 exterior upper, infinite inverse/domain, W-ODD-NEG, even/whole Weil or RH.
 
 No merge to main. Remain source-custody-first.
+
+
+## Verified source-exact outcome
+
+[Focused original source/physical-support Actions #41262431036](https://github.com/monocap-tech/weil-lab/actions/runs/41262431036) **SUCCESS**, confirming the NF407 original exact native dyadic source and critical pole/sines, full NF406 16-knot physical support, correct J3/J7 branch classification, NF417 independent original x=.35/1.04 physical point ancestry, original same source 2048-image cell3 tail <1e-45 and separate 120000-image conservative real entire-cell7 tail <1e-70, rational E2 cell3 ellipse and three fixed-cell7 complex panel enclosures. Source-pinned actual preflight JSON is retained in successful GitHub Actions artifact `NF430-original-physical-cells3-7-source-branch-transfer`.
+
+**Accepted NF430:** original cells3/7 branch routing; source-global image/analytic **entry conditions** for new numerical coefficient computations; exact identification of why cell7 does not inherit cell6 2048-image error or one broad E2. **Not accepted:** new actual cell3 or cell7 complete numerical Chebyshev coefficient sets; their signed continuous `pz` or `z²` integrals; complete NF410/NF404 or RH. No source table was replaced and no merge was done.
