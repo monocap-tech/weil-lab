@@ -27,7 +27,7 @@ def cheb_source_tail(f,k,c,rho,H):
  # with full original k!8^k Cauchy source-mode derivative bound.
  # 4 for Cheb coefficient series summation, paired oscillatory modes.
  return 4*10**8*abs(c)*math.factorial(k)*8**k*3**ceil(exponent)*rho**(-512)
-def branch_for_cell(n,left,right,logs):
+def branch_for_cell(n,left,right,logs,left_label,right_label):
  # original physical prime action -w_n[u(x-log n)+u(x+log n)]
  # support of u(y) is |y|<B; for 0<x<B, right translates
  # x-log n active iff x>log n-B;
@@ -35,10 +35,14 @@ def branch_for_cell(n,left,right,logs):
  L=logs[n]
  minus_lo=L[0]-B;minus_hi=L[1]-B
  plus_lo=B-L[1];plus_hi=B-L[0]
- if left>minus_hi: minus=True
+ if left_label==f'-B+log({n})':minus=True
+ elif right_label==f'-B+log({n})':minus=False
+ elif left>minus_hi: minus=True
  elif right<minus_lo:minus=False
  else:raise AssertionError(("minus translate changes inside cell",n))
- if right<plus_lo: plus=True
+ if right_label==f'B-log({n})':plus=True
+ elif left_label==f'B-log({n})':plus=False
+ elif right<plus_lo: plus=True
  elif left>plus_hi:plus=False
  else:raise AssertionError(("plus translate changes inside cell",n))
  return minus,plus
@@ -82,7 +86,7 @@ def main():
   assert C-H<leftlo and rightup<C+H
   active_minus=[];active_plus=[];neither=[]
   for n in PRIMES:
-   minus,plus=branch_for_cell(n,leftup,rightlo,logs)
+   minus,plus=branch_for_cell(n,leftup,rightlo,logs,knots[i]['label'],knots[j]['label'])
    if minus:active_minus.append(n)
    if plus:active_plus.append(n)
    if not (minus or plus):neither.append(n)
