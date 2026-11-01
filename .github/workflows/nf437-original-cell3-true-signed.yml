@@ -46,7 +46,8 @@ jobs:
       - name: Accept complete original true signed cell3 only; preserve global open obligations
         run: |
           python3 - <<'PY'
-          import json
+          import json,sys
+          sys.set_int_max_str_digits(0)
           from fractions import Fraction as F
           x=json.load(open('artifacts/NF437_original_complete_true_cell3_signed_pz_z2.json'))
           assert x['pass']=='NF437'
