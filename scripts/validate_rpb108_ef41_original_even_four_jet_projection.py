@@ -10,6 +10,8 @@ All physical integrals use the original eight seven-prime cutoff cells,
 true even pole, and all 40 signed half-integer arch cutoff modes.
 Exact outward intervals at radix 10**340 cover 4x4 Gram and response.
 The infinite m>=40 original arch tail is never dropped.
+The four-row projected finite squared norm is <47/1000,
+complete cofinite projected norm <1/3, original eta <25000/153.
 No full 469D source projector or Weil positivity is claimed.
 """
 import json
@@ -29,6 +31,9 @@ from validate_rpb108_si06_negative_band import B
 ROOT=Path(__file__).resolve().parents[1]
 ORDER=4
 MU=F(17,25000)
+FOUR_SQUARE_CAP=F(47,1000)
+FULL_NORM_CAP=F(1,3)
+ENERGY_DUAL_CAP=F(25000,153)
 
 def power(x,n):
     p=I(S)
@@ -167,6 +172,11 @@ def source_four_row_schur():
             r[i]=r[i]-A[i][k]*r[k]/pivot
     assert F(stages[0][2].hi,S)<F(63,1000)
     assert F(stages[1][2].hi,S)<F(29,500)
+    assert F(stages[2][0].lo,S)>F(1,7)
+    assert F(stages[3][0].lo,S)>F(1,40)
+    assert F(stages[2][2].hi,S)<F(56,1000)
+    assert F(stages[3][2].hi,S)<FOUR_SQUARE_CAP
+    assert FOUR_SQUARE_CAP<F(217,1000)**2
     return G,b,stages,full
 
 def main():
@@ -184,9 +194,16 @@ def main():
               'pivot',pivot.scaled(),'gain',gain.scaled(),
               'finite signed projected norm²',residual.scaled(),flush=True)
     tail=original_tail()
-    print('EF41 full genuine 469D cofinite projection bounded by'
-          ' the four-row true source residual plus infinite'
-          ' original arch cutoff tail <',float(tail),flush=True)
+    assert tail < F(57,500)+F(1,10000)
+    assert F(217,1000)+F(57,500)+F(1,10000)<FULL_NORM_CAP
+    assert FULL_NORM_CAP**2/MU==ENERGY_DUAL_CAP
+    assert ENERGY_DUAL_CAP<F(3240,17)
+    print('EF41 certified ORIGINAL finite 4-row signed physical'
+          ' projected squared L2 residual <47/1000;'
+          ' complete native 40+ infinite arch tail norm <',
+          float(tail),'so the complete 469D cofinite first-source'
+          ' projected norm <1/3 and unseen energy dual eta'
+          ' <25000/153 =',float(ENERGY_DUAL_CAP),flush=True)
     print('EF41 status: original 4 of 469 SI10 even source rows only;'
           ' true physical full signed form Schur and RH OPEN.'
           ' Independent Fourier/digamma/form-domain audit OPEN.',flush=True)
