@@ -22,7 +22,7 @@ def ceil(v):return -((-v.numerator)//v.denominator)
 def one_generator(f,k,c,rho):
  v=H*F(rho*rho-1,2*rho)
  xmax=C+H*F(rho*rho+1,2*rho)
- assert xmax<B and B-xmax>=F(1,2)
+ assert xmax<B and B-xmax>=F(92,625)
  # Shared Arch G_2048 digamma radius 1/8 around ±2*pi*i*f.
  # Re(1/4±lambda/2)>=3/16; digamma/finite image source
  # |G|<1e6 exp[(2*(22/7)*f+1/8)*Immax+1].
