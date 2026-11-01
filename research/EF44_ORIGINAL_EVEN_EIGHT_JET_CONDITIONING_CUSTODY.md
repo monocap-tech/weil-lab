@@ -1,0 +1,15 @@
+# EF44 — Eight original protected even jets: custody/verification classification
+
+Canonical active W-EVEN-FORM remains OPEN; parent EF43 PR #452 exact rational six-jet representation. EF44 branch research/ef44-original-even-eight-jet-conditioned.
+
+**Source identity:** unchanged original SI10 first frequency c0=37/64, Taylor order15. Eight literal protected real-even Fourier jets x^k*cos/sin(omega*x) for k=0..7; same original V469 (107 clusters, 469 even rows). Seven genuine signed prime/power n2,n3,n4,n5,n7,n8,n9 cutoffs, positive even cosh pole, first40 signed quarter-digamma arch physical modes, original signed 40x40 arch Gram, complete infinite m>=40 arch tail all retained.
+
+**Initial native physical findings (checked):** Original outward 340-digit exact source eight-row Gram pivots q6≈9.9555424331e-8 and q7≈7.0883034365e-10 are strictly positive. Gains g6≈0.0014661055936 and g7≈0.0075255505815; genuine original six-row finite projected square D6≈0.040533054506 and eight-row D8≈0.031541398330. Signed original first-source cofinite response is bounded using source projection contraction, not by assuming all 469 protected directions are computed.
+
+**Exact rational source conditioning:** A lower triangular rational C (all diagonal positive) maps the unchanged authentic eight source jet span onto itself. Native complete physical K=C G C^T outward interval row-sum error measured ~4.8700291e-11; initial <1e-6 accepted in Actions #41272821468; bounded denominator Q=10^22 implementation also accepted in Actions #41272902139. Max rational coefficient row L1≈2.613893e6, so future source extension must maintain explicit amplification/error budgets. Independent original K operator-order enclosure of the true signed eight-row squared response gave ~[0.031540949744,0.031541846915], containing direct monomial 0.031541398330. This is an inverse-free physical source L2 certificate, not the complete Weil cofinite energy inverse.
+
+**Strengthened original-source candidate:** Strict D8<79/2500 and K near-identity <1e-8 with seventh pivot >1/10100000 and eighth >7/10000000000; original infinite arch tail <57/500+1/10000. They imply true original first-source complete cofinite norm <293/1000 and original q-even unseen cofinite energy-dual eta<85849/680 using unchanged SI10 mu>17/25000. These require the tightened source-native final-head check PASS before promotion.
+
+**Theorem remains open:** Only 8 of original 469 protected rows measured, 461 left; the original full exceptional 469D Schur sign, true cofinite Riesz inverse response, original independent Fourier/digamma physical identity and form-domain/core audit, original W-EVEN-FORM positivity, paused W-ODD-NEG, whole Weil and RH remain OPEN. The EF33 first-source restricted positive S2>1/500 does not resolve the unseen eta even if tightened upper passes.
+
+**Next EF45:** quantify coefficient growth and original signed physical projection gain for genuine ninth/tenth first-center jets only under a verifiable conditioned source-span change of basis; otherwise formalize scoped method-conditioning STOP. No main merge, no historical overwrite.
