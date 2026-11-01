@@ -93,3 +93,25 @@ Permanent compact **source + SHA/artifact index**: `notes/data/provisional/NF440
 **Current original nonprincipal signed cell state:** NF437 J3 **POSITIVE**, NF439 J4 **NEGATIVE**, NF440 J5 **NEGATIVE**, NF432 J6 **NEGATIVE**: **four of eight original physical positive-side cells certified**. Original physical cells 1,2,7,8 OPEN. J7 remains a separate near-B endpoint collar and complex analyticity problem. Original global principal E_p, full NF410/NF404 signed test, fourth exterior J242 upper, W-ODD-NEG, even/whole Weil, inverse/domain, RH **OPEN**.
 
 **Next NF441:** Prioritize original cells1/2 and cell8 branch-type/analytic geometry under source-exact NF405/NF407 interfaces, and separately decide whether cell7 requires endpoint-specific collar decomposition. Do not substitute sourcewise generator triangle alone for full original response; do not sign the global NF410/NF404 scalar from four selected cells. Retain a compact final decision and source-hash obligation graph; no new exploratory front. No main merge.
+
+
+## Independent same-source contact at the artificial integration cuts — ACCEPTED
+
+Because the three original analytic source panels are separately recomputed, NF440 also checks the **source correlation across artificial chart boundaries**. This does not assume their Chebyshev midpoint polynomials are identical: each of the six SHA256-pinned original native coefficient blocks (512 distinct coefficients per panel) is evaluated at the two shared rational cuts by **exact Fraction Chebyshev recurrence**. Each separately certified full original `z−P511` source-tail error is paid at the contact.
+
+[Original cross-panel contact Actions #41350089850 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41350089850):
+
+```
+x = 31/50 = .62:
+ |P511_panel1(x) − P511_panel2(x)| ≈ 1.7150926895814688e−61
+
+x = 73/100 = .73:
+ |P511_panel2(x) − P511_panel3(x)| ≈ 2.4554518106106534e−61
+
+each two-sided true sourcewise z-error allowance
+ epsilon_left + epsilon_right ≈ 4.872381391684271e−35.
+```
+
+The two independently computed original-source response enclosures overlap at **both** cuts by a wide margin (differences <1e−59). These are **not exact equality claims for the finite polynomials** and the rational cut sites do not trigger additional original NF407 prime jumps. This checks inter-panel representation contact independently of signed integration and prevents an accidental change of physical source at either interface.
+
+Contact original numerical JSON SHA256 `36ed6e808fc6179d465f2b6b500ceb2d759503cdf0e629105424ff4957a18c0b`, GitHub Actions artifact #13101525115 ZIP SHA256 `0358ec7c9ba30bec8556d17a4dded16339370dc11c329b308049ce1efbe880c0`. Its immutable source and parent digest records are also appended to the permanent NF440 compact custody JSON. The contact test is a supporting independent representation check, not a fifth signed cell and not a global Weil theorem.
