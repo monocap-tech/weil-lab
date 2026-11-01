@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""EF42: exact six ORIGINAL first-cluster SI10 even Sixier-jet rows.
+"""EF42: exact six ORIGINAL first-cluster SI10 even Fourier-jet rows.
 
 Project the genuine EF39 finite signed source response H40=z+h40
 against the native SI10 protected real-even jets
@@ -11,8 +11,8 @@ All physical integrals use the original eight seven-prime cutoff cells,
 true even pole, and all 40 signed half-integer arch cutoff modes.
 Exact outward intervals at radix 10**340 cover 6x6 Gram and response.
 The infinite m>=40 original arch tail is never dropped.
-The six-row projected finite squared norm is strictly below the original four-row bound 47/1000,
-complete cofinite projected norm <1/3, original eta <25000/153 as inherited upper;
+The six-row projected finite squared norm is strictly <41/1000 (original four-row <47/1000),
+complete cofinite projected norm <8/25, original eta <2560/17 as tightened upper;
 new six-row sharper bound to be derived from verified native output.
 No full 469D source projector or Weil positivity is claimed.
 """
@@ -34,8 +34,8 @@ ROOT=Path(__file__).resolve().parents[1]
 ORDER=6
 MU=F(17,25000)
 FOUR_SQUARE_CAP=F(47,1000)
-FULL_NORM_CAP=F(1,3)
-ENERGY_DUAL_CAP=F(25000,153)
+FULL_NORM_CAP=F(8,25)
+ENERGY_DUAL_CAP=F(2560,17)
 
 def power(x,n):
     p=I(S)
@@ -149,7 +149,7 @@ def source_six_row_schur():
     centers,orders,_=original_source_and_geometry()
     assert len(centers)==107 and sum(orders)==469
     assert centers[0]==C0 and orders[0]==15 and ORDER<=orders[0]
-    # Original Sixier even real jet signs:
+    # Original Fourier even real jet signs:
     # x^0 cos, -x sin, -x^2 cos, +x^3 sin.
     # Such sign changes do not change the protected source span.
     G=gram_six()
@@ -179,9 +179,10 @@ def source_six_row_schur():
     assert F(stages[2][2].hi,S)<F(56,1000)
     assert F(stages[3][2].hi,S)<FOUR_SQUARE_CAP
     assert FOUR_SQUARE_CAP<F(217,1000)**2
-    assert F(stages[4][0].lo,S)>0
-    assert F(stages[5][0].lo,S)>0
-    assert F(stages[5][2].hi,S)<F(47,1000)
+    assert F(stages[4][0].lo,S)>F(1,1500)
+    assert F(stages[5][0].lo,S)>F(1,100000)
+    assert F(stages[4][2].hi,S)<F(43,1000)
+    assert F(stages[5][2].hi,S)<F(41,1000)
     return G,b,stages,full
 
 def main():
@@ -200,20 +201,21 @@ def main():
               'finite signed projected norm²',residual.scaled(),flush=True)
     tail=original_tail()
     assert tail < F(57,500)+F(1,10000)
-    assert F(217,1000)+F(57,500)+F(1,10000)<FULL_NORM_CAP
+    assert F(41,1000)<F(203,1000)**2
+    assert F(203,1000)+F(57,500)+F(1,10000)<FULL_NORM_CAP
     assert FULL_NORM_CAP**2/MU==ENERGY_DUAL_CAP
-    assert ENERGY_DUAL_CAP<F(3240,17)
+    assert ENERGY_DUAL_CAP<F(25000,153)
     print('EF42 original source six-row projected finite signed square',stages[-1][2].scaled(),
           ' strict improvement on original four-row projected square',stages[3][2].scaled(),flush=True)
     print('EF42 certified ORIGINAL finite 6-row signed physical'
-          ' projected squared L2 residual <47/1000;'
+          ' projected squared L2 residual <41/1000;'
           ' complete native 40+ infinite arch tail norm <',
           float(tail),'so the complete 469D cofinite first-source'
-          ' projected norm <1/3 and unseen energy dual eta'
-          ' <25000/153 =',float(ENERGY_DUAL_CAP),flush=True)
+          ' projected norm <8/25 and unseen energy dual eta'
+          ' <2560/17 =',float(ENERGY_DUAL_CAP),flush=True)
     print('EF42 status: original 6 of 469 SI10 even source rows only;'
           ' true physical full signed form Schur and RH OPEN.'
-          ' Independent Sixier/digamma/form-domain audit OPEN.',flush=True)
+          ' Independent Fourier/digamma/form-domain audit OPEN.',flush=True)
 
 if __name__=='__main__':
     main()
