@@ -196,11 +196,11 @@ def source_ten_row_schur():
 from math import isqrt
 
 Q=10**42
-EPS=F(1,10**7)
-PRIOR_EIGHT_CAP=F(79,2500)
-SQRT_CAP=F(178,1000)
-COFINITE_NORM_CAP=F(293,1000)
-ETA_CAP=F(85849,680)
+EPS=F(1,10**12)
+PRIOR_EIGHT_CAP=F(333,12500)
+SQRT_CAP=F(8161,50000)
+COFINITE_NORM_CAP=F(139,500)
+ETA_CAP=F(19321,170)
 
 def midpoint_rational(interval):
     return F(((interval.lo+interval.hi)*Q)//(2*S),Q)
@@ -284,22 +284,25 @@ def main():
     low,up,C,defects=inverse_free_original_ten_response(
         G,b,full,stages[-1][2])
     maxcoeff=max(sum(abs(a) for a in row) for row in C)
-    assert maxcoeff>0
+    assert maxcoeff>F(10**10) and maxcoeff<F(11*10**9)
     assert PRIOR_EIGHT_CAP<SQRT_CAP*SQRT_CAP
     assert SQRT_CAP+F(57,500)+F(1,10000)<COFINITE_NORM_CAP
     assert COFINITE_NORM_CAP*COFINITE_NORM_CAP/MU==ETA_CAP
-    assert ETA_CAP<F(12482,85)
+    assert ETA_CAP<F(85849,680)
     assert F(stages[6][0].lo,S)>F(1,10100000)
     assert F(stages[7][0].lo,S)>F(7,10000000000)
+    assert F(stages[8][0].lo,S)>F(3,10**12)
+    assert F(stages[9][0].lo,S)>F(15,10**15)
     assert stages[8][0].lo>0 and stages[9][0].lo>0
     assert stages[9][2].lo>0
     assert stages[9][2].hi<stages[7][2].hi
+    assert F(stages[9][2].hi,S)<PRIOR_EIGHT_CAP
     for i,(pivot,gain,residual) in enumerate(stages):
         print('EF45 exact original physical source jet',i,
               'Gram pivot',pivot.scaled(),'incremental squared gain',
               gain.scaled(),'finite signed projected L2 square',
               residual.scaled(),flush=True)
-    print('EF45 original authentic seventh and tenh jets signed'
+    print('EF45 original authentic ninth and tenth jets signed'
           ' pairings',b[8].scaled(),b[9].scaled(),flush=True)
     print('EF45 EXACT rational 10x10 protected-span preserving C;'
           ' actual outward source transformed Gram ||CGC^T-I||inf <',
@@ -313,10 +316,10 @@ def main():
     assert tail<F(57,500)+F(1,10000)
     print('EF45 entire original quarter-digamma tail m>=40'
           ' L2 fully paid <',float(tail),
-          '; projected ten-source finite signed square',stages[-1][2].scaled(),
+          '; TRUE original ten-row finite signed squared residual <333/12500,'
           ' independent upper',up.scaled(),
-          ' inherited EF44 full original cofinite ||P_F g_e||<293/1000'
-          ' and eta<85849/680=',float(ETA_CAP),flush=True)
+          ' full original cofinite ||P_F g_e||<139/500'
+          ' and eta<19321/170=',float(ETA_CAP),flush=True)
     print('EF45 research status: 10 of 469 actual original SI10'
           ' protected even rows projected; 459 remain.'
           ' Original independent analytic Fourier/digamma/form-core'
