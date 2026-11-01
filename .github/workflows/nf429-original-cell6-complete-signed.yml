@@ -1,0 +1,101 @@
+name: Weil-Lab NF429 complete original cell6 native 1500 coefficients and signed pz z2
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf429_original_cell6_correlated_cheb_shard_native.py'
+      - 'scripts/local_replay/nf429_original_complete_cell6_signed_integral_from_shards.py'
+      - '.github/workflows/nf429-original-cell6-complete-signed.yml'
+permissions:
+  contents: read
+jobs:
+  original-correlated-coefficient-shards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - start: 0
+            stop: 256
+          - start: 256
+            stop: 512
+          - start: 512
+            stop: 768
+          - start: 768
+            stop: 1024
+          - start: 1024
+            stop: 1280
+          - start: 1280
+            stop: 1500
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native Arb Acb
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Certify true original 246-generator cell6 Chebyshev series shard with NF416 overlap
+        run: |
+          python3 -m py_compile scripts/local_replay/nf429_original_cell6_correlated_cheb_shard_native.py
+          python3 scripts/local_replay/nf429_original_cell6_correlated_cheb_shard_native.py \
+             --precision 2048 --start ${{ matrix.start }} --stop ${{ matrix.stop }} \
+             --output artifacts/NF429_original_cell6_z_shard_${{ matrix.start }}_${{ matrix.stop }}.json
+      - name: Retain every native original Chebyshev interval ball with full source SHA
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF429-original-z-shard-${{ matrix.start }}-${{ matrix.stop }}
+          path: artifacts/NF429_original_cell6_z_shard_${{ matrix.start }}_${{ matrix.stop }}.json
+          if-no-files-found: error
+  original-1500-signed-p-moments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native Arb
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Independently re-evaluate all original signed principal Chebyshev moments
+        run: |
+          python3 scripts/local_replay/nf428_original_cell6_signed_chebyshev_moments_native.py \
+             --degree 1499 --precision 2048 --log-modes 110 \
+             --output artifacts/NF429_original_cell6_pmoments_1500.json
+      - name: Retain source-original 1500 signed principal moment intervals
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF429-original-1500-signed-p-moments
+          path: artifacts/NF429_original_cell6_pmoments_1500.json
+          if-no-files-found: error
+  original-complete-true-cell6-integral:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    needs:
+      - original-correlated-coefficient-shards
+      - original-1500-signed-p-moments
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native Arb
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Retrieve six source-certified z shards and principal moments from this run
+        uses: actions/download-artifact@v4
+        with:
+          pattern: NF429-original-*
+          path: artifacts/all
+          merge-multiple: true
+      - name: Independently verify complete original source coverage and bound true J6 signed pz and z squared
+        run: |
+          python3 -m py_compile scripts/local_replay/nf429_original_complete_cell6_signed_integral_from_shards.py
+          python3 scripts/local_replay/nf429_original_complete_cell6_signed_integral_from_shards.py \
+             --shards artifacts/all --moments artifacts/all/NF429_original_cell6_pmoments_1500.json \
+             --precision 2048 --output artifacts/NF429_original_complete_true_cell6_pz_zsquared.json
+      - name: Retain complete original true cell6 signed sector ledger
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF429-original-complete-true-cell6-pz-z2-sector
+          path: artifacts/NF429_original_complete_true_cell6_pz_zsquared.json
+          if-no-files-found: error
