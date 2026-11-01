@@ -1,0 +1,157 @@
+{
+  "pass": "NF440",
+  "standing": "ACCEPTED complete true original physical J5 continuous signed 4∫pz+2∫z² STRICT NEGATIVE under original SHA-pinned three-panel source and independent NF410 principal m0 aggregate; global W-ODD-NEG/RH OPEN",
+  "repo": "monocap-tech/weil-lab",
+  "draft_pr": 461,
+  "parent_pr": 460,
+  "original_true_physical_cell": "J5=(log(5)-11/10,log(7)-11/10)",
+  "rational_internal_integration_cuts": [
+    "31/50",
+    "73/100"
+  ],
+  "cuts_are_not_physical_prime_seams": true,
+  "original_NF407_full_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_NF406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_NF404_dyadic_center": "6677356497477490213/4611686018427387904",
+  "original_selected_plus_critical_sources": 246,
+  "original_critical_sines": 32,
+  "original_source_frequency_order_groups": 273,
+  "common_original_arch_endpoint_image_indices": 2048,
+  "original_regular_z_minus_active": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "original_regular_z_plus_active": [],
+  "original_principal_p_jump_active": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "original_3_panels": [
+    {
+      "index": 1,
+      "center": "113/200",
+      "halfwidth": "63/1000",
+      "outer": [
+        "251/500",
+        "157/250"
+      ],
+      "true_piece": "(log5-11/10,31/50)",
+      "coefficients": 512,
+      "signed_p_moments": 512,
+      "dx_moments": 1023,
+      "uniform_true_z_tail_approx": "2.436190695842135687e-35",
+      "true_D_piece_interval_decimal": [
+        "-1.5125346906493097669384997641096632981741061e-22",
+        "-1.5125346906492921121081975719069100037257072e-22"
+      ],
+      "mode0to255_original_json_sha256": "ac3d579ea10fe25009eafeddc174d0d88c78ff20f4ed447a9b41e4adc5c6e59e",
+      "mode256to511_original_json_sha256": "f6cd1f6d777bd9227bd1763bf98762b7867e7aa7686c38c26951461e906c7274",
+      "independent_mode0to7_original_json_sha256": "f50809db74f325f305a975b2cdb6a5770c2c2276356556eb89cac8934f647e95",
+      "sourcewise_true_tail_original_json_sha256": "7620671f67532897b8426f04afeec99c823e3e01fb971fc080693a0e1e7254e3",
+      "principal_moments_original_json_sha256": "33f17b7c777206fa021663ff0dfa031620c75a3a8ae2a97bab1c9b10a6e57df7",
+      "true_signed_piece_original_json_sha256": "37eeb33d6aa0da0f1ad2b05fe1119063a02c84d95f6f2c373bda03e54dceeab1"
+    },
+    {
+      "index": 2,
+      "center": "677/1000",
+      "halfwidth": "63/1000",
+      "outer": [
+        "307/500",
+        "37/50"
+      ],
+      "true_piece": "(31/50,73/100)",
+      "coefficients": 512,
+      "signed_p_moments": 512,
+      "dx_moments": 1023,
+      "uniform_true_z_tail_approx": "2.436190695842135687e-35",
+      "true_D_piece_interval_decimal": [
+        "-1.7569214994883056774647833984818035904116519e-22",
+        "-1.7569214994883056774647601880427296157346937e-22"
+      ],
+      "mode0to255_original_json_sha256": "0655c8900521b31f17ccf0ab8c3b98bf950ab0a8bb6f2a0872dec88ac07f286b",
+      "mode256to511_original_json_sha256": "b6194bd6af39ff7095f6a2220334383ea74967119c05acf08c73044c2ddf1378",
+      "independent_mode0to7_original_json_sha256": "0dc99e2f469d3e07a836405ae82c076b64e808fa566363ad12f8dfdcd3255cbd",
+      "sourcewise_true_tail_original_json_sha256": "bb11b50a7ad20442e08e47786933f626baae34e3f523aca09810ad669abbaa6a",
+      "principal_moments_original_json_sha256": "3bd968b4e8cc95f5948a139650ab56dfc56fca9dd4d241bd17bdc3d7a1a09a84",
+      "true_signed_piece_original_json_sha256": "4c4f38db7d84abd78e8aa5b8911d40b1d23e8919a157f72aae71665a06a7f147"
+    },
+    {
+      "index": 3,
+      "center": "789/1000",
+      "halfwidth": "63/1000",
+      "outer": [
+        "363/500",
+        "213/250"
+      ],
+      "true_piece": "(73/100,log7-11/10)",
+      "coefficients": 512,
+      "signed_p_moments": 512,
+      "dx_moments": 1023,
+      "uniform_true_z_tail_approx": "2.436190695842135687e-35",
+      "true_D_piece_interval_decimal": [
+        "-2.0238616354267658276707858592519802183449297e-22",
+        "-2.0238616354267658276706252607677267295246097e-22"
+      ],
+      "mode0to255_original_json_sha256": "c2ea899bf3a958b4e039efcad6cad68ada942b76c11dd11d2f904c444195c413",
+      "mode256to511_original_json_sha256": "e27b1021b2d279e3d611997eca81dbb2280bf2329a0483b7dc1be16284668263",
+      "independent_mode0to7_original_json_sha256": "797b8edd5911a86fdc2b043c4bb417caf160119dbb76c233189ed2a158ce6220",
+      "sourcewise_true_tail_original_json_sha256": "69384c2c0bcaaa82058c3db1c6cb34d742748366fc34306bc7ca14a35de6e969",
+      "principal_moments_original_json_sha256": "16e6ac10c0174ceb04e16c4bda51f829ff662fd65ea8c3d94a61012872b8ef3a",
+      "true_signed_piece_original_json_sha256": "17e3ab6f18582883b3d2f7dcc10bb6d65c69fd8c6b10667de0c3d5554621e143"
+    }
+  ],
+  "total_original_cell5_source_cheb_modes": 1536,
+  "total_original_cell5_signed_p_moments": 1536,
+  "total_original_cell5_raw_dx_moments": 3069,
+  "all_three_original_independent_short_padding_overlaps_pass": true,
+  "three_panel_full_NF410_original_p0_overlap_pass": true,
+  "original_total_p0_approx": "-1.0545232345192611064632199400600752038672948e-11",
+  "original_true_J5_pz_outward_interval_decimal": [
+    "-3.3655907007604695161689934200687954796872128e-22",
+    "-3.3655907007604695161689882820294104683642689e-22"
+  ],
+  "original_true_J5_z2_outward_interval_decimal": [
+    "4.0845224887387483963009523292158674059090818e-22",
+    "4.0845224887387572237161850537001377622360325e-22"
+  ],
+  "original_true_J5_D5_signed_outward_decimal": [
+    "-5.2933178255643812720740690218434471069306876e-22",
+    "-5.2933178255643636172435830207173663489850106e-22"
+  ],
+  "original_true_J5_D5_strict_negative": true,
+  "original_true_J5_D5_exact_interval_width_approx": "1.765483049e-36",
+  "source_accepted_GitHub_Actions": {
+    "native_3by3_original_source": 41348228875,
+    "sourcewise_three_exact_tails": 41348228856,
+    "three_original_principal_moment_vectors": 41348413705,
+    "three_exact_signed_and_total_NF410_aggregate": 41349130243
+  },
+  "final_original_complete_signed_artifact": {
+    "artifact_id": 13099679890,
+    "zip_sha256": "4f5888fda8fe3f78cfb10048c504e3755b07ae04963046f938fe721c6284fcbb",
+    "inner_json_sha256": "4c85a28bc79467f8e47e44a9ac365e21f25937807c497831b4a6f2d9ed1468b8"
+  },
+  "original_source_panel_json_numerical_artifacts_in_GitHub_Actions_expires": "2027-01-30",
+  "full_raw_original_19_JSON_artifacts_permanent_archive_due": true,
+  "original_signed_cells_closed": {
+    "3": "positive",
+    "4": "negative",
+    "5": "negative",
+    "6": "negative"
+  },
+  "remaining_positive_original_physical_cells": [
+    1,
+    2,
+    7,
+    8
+  ],
+  "original_full_NF410_NF404_global_signed_scalar_decided": false,
+  "original_full_E_p_principal_integrated": false,
+  "original_fourth_J242_exterior_upper_closed": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
