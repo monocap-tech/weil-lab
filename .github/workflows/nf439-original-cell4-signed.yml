@@ -1,0 +1,71 @@
+name: Weil-Lab NF439 original true J4 signed pz and z2
+on:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf439_original_cell4_true_signed_from_P511_exact.py'
+      - '.github/workflows/nf439-original-cell4-signed.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-full-J4-signed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch five source-native original immutable receipts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/low artifacts/mid artifacts/high artifacts/tail artifacts/mom
+          gh run download 41337646749 --repo "$GITHUB_REPOSITORY" --name NF438-original-cell4-true-source-native-Cheb64 --dir artifacts/low
+          gh run download 41344915569 --repo "$GITHUB_REPOSITORY" --name NF439-cell4-source-index-64to320 --dir artifacts/mid
+          gh run download 41344915569 --repo "$GITHUB_REPOSITORY" --name NF439-cell4-source-index-320to512 --dir artifacts/high
+          gh run download 41344915572 --repo "$GITHUB_REPOSITORY" --name NF439-original-cell4-sourcewise-P511-error --dir artifacts/tail
+          gh run download 41345752631 --repo "$GITHUB_REPOSITORY" --name NF439-original-true-cell4-signed-p512-and-rawdx1023 --dir artifacts/mom
+      - name: Exact original true J4 continuous pz z2 and D4
+        run: |
+          python3 -m py_compile scripts/local_replay/nf439_original_cell4_true_signed_from_P511_exact.py
+          python3 scripts/local_replay/nf439_original_cell4_true_signed_from_P511_exact.py \
+            --low artifacts/low/NF438_original_cell4_native_Cheb64.json \
+            --mid artifacts/mid/NF439_cell4_64_320.json \
+            --high artifacts/high/NF439_cell4_320_512.json \
+            --tail artifacts/tail/NF439_original_cell4_real_P511_tail.json \
+            --moments artifacts/mom/NF439_original_cell4_true_p512_dx1023_native.json \
+            --moments-sha256 cf73a1225a56e99df86a272b25ef6a17312bde0a6ec3729eab7fd10dc6bee9c2 \
+            --output artifacts/NF439_original_true_J4_continuous_signed.json
+      - name: Fail-closed true physical branch and no global sign promotion
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          sys.set_int_max_str_digits(0)
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF439_original_true_J4_continuous_signed.json'))
+          assert d['pass']=='NF439'
+          assert d['original_true_cell4']=='(11/10-log(2),log(5)-11/10)'
+          assert d['original_active_minus_prime_powers']==[2,3,4]
+          assert d['original_active_plus_prime_powers']==[]
+          assert d['original_regular_response_n2_translate_multiplicity']==1
+          assert d['original_principal_p_n2_jump_multiplicity']==1
+          assert d['original_principal_p_jump_active']==[2,3,4]
+          assert d['original_cell4_cheb_coefficient_balls']==512
+          assert d['original_complete_cell4_signed_p_moments_used']==512
+          assert d['original_complete_cell4_raw_dx_moments_used']==1023
+          assert d['original_true_cell4_signed_integral_decision_quality']
+          a,b=map(F,d['original_true_cell4_signed_4pz_plus_2z2_outward_interval'])
+          assert a<=b and b-a<F(1,10**20)
+          assert d['original_true_cell4_nonprincipal_signed_contribution_sign'] in ('positive','negative','undecided')
+          assert F(d['original_true_z_minus_original_midpoint_P511_uniform_error'])<F(1,10**38)
+          assert not d['original_NF410_NF404_global_scalar_decided']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF439 true original J4 signed continuous D4',d['original_true_cell4_nonprincipal_signed_contribution_sign'],'interval',float(a),float(b),'global RH OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF439-original-true-cell4-complete-signed
+          path: artifacts/NF439_original_true_J4_continuous_signed.json
+          if-no-files-found: error

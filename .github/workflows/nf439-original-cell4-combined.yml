@@ -1,0 +1,91 @@
+name: Weil-Lab NF439 original cell4 complete 512 coefficient and function audit
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/nf439-original-cell4-combined.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  combined-original-real-J4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download pinned original NF438 and NF439 source receipts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/low artifacts/mid artifacts/high artifacts/control artifacts/tail
+          gh run download 41337646749 --repo "$GITHUB_REPOSITORY" --name NF438-original-cell4-true-source-native-Cheb64 --dir artifacts/low
+          gh run download 41344915569 --repo "$GITHUB_REPOSITORY" --name NF439-cell4-source-index-64to320 --dir artifacts/mid
+          gh run download 41344915569 --repo "$GITHUB_REPOSITORY" --name NF439-cell4-source-index-320to512 --dir artifacts/high
+          gh run download 41344915569 --repo "$GITHUB_REPOSITORY" --name NF439-cell4-source-index-56to72 --dir artifacts/control
+          gh run download 41344915572 --repo "$GITHUB_REPOSITORY" --name NF439-original-cell4-sourcewise-P511-error --dir artifacts/tail
+      - name: Original full source 512-ball SHA, overlap and epsilon acceptance
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,sys
+          from pathlib import Path
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          pins=[
+          ('artifacts/low/NF438_original_cell4_native_Cheb64.json','ab98174c259d36df3b34f30486c3231f1d95bc90910938aab05c72d7ff4c9cc2',0,64,'NF438'),
+          ('artifacts/mid/NF439_cell4_64_320.json','289d8087a58d455ca20d6f5ce573bc5df612d38f648811b65f7f867fe3648de8',64,320,'NF439'),
+          ('artifacts/high/NF439_cell4_320_512.json','d561a19960b8d69c571a72a71b571de2479d5d615024f7fde3a275975e297cf8',320,512,'NF439'),
+          ('artifacts/control/NF439_cell4_56_72.json','11677e8d4665d1508fb92c60f5f4916bb3b142e8529186e3426a322c07ae7701',56,72,'NF439')]
+          seq=[]
+          for path,sha,a,b,tag in pins:
+              raw=Path(path).read_bytes()
+              assert hashlib.sha256(raw).hexdigest()==sha,path
+              d=json.loads(raw);seq.append(d)
+              assert d['pass']==tag
+              assert d['source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+              assert d['seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+              assert d['original_true_cell4']=='(11/10-log(2),log(5)-11/10)'
+              assert d['original_minus_translate_primes']==[2,3,4] and d['original_plus_translate_primes']==[]
+              assert d['original_signed_prime_translate_terms']==3
+              assert d['original_exact_NF404_dyadic_center']=='6677356497477490213/4611686018427387904'
+              assert d['original_independent_direct_source_n2_n3_n4_minus_only_prime_overlap_pass']
+              assert d['original_independent_direct_source_endpoint_overlap_pass']
+              assert d['common_endpoint_image_indices']==2048
+              assert [x['n'] for x in d['coefficients']]==list(range(a,b))
+              for x in d['coefficients']:
+                  lo,hi=map(F,x['true_original_cell4_fixed_branch_coefficient_outward_interval'])
+                  assert lo<=hi and hi-lo<F(1,10**44)
+          def ball(x):return tuple(map(F,x['true_original_cell4_fixed_branch_coefficient_outward_interval']))
+          def overlap(x,y):return x[0]<=y[1] and y[0]<=x[1]
+          a,b,c,control=seq
+          for n in range(56,64):assert overlap(ball(a['coefficients'][n]),ball(control['coefficients'][n-56]))
+          for n in range(64,72):assert overlap(ball(b['coefficients'][n-64]),ball(control['coefficients'][n-56]))
+          raw=Path('artifacts/tail/NF439_original_cell4_real_P511_tail.json').read_bytes()
+          assert hashlib.sha256(raw).hexdigest()=='f8abd0ae4a8ec03d8ea14c4ace4e41210b039d9a72844989f9ba636076760ef9'
+          t=json.loads(raw)
+          assert t['pass']=='NF439'
+          assert t['NF407_original_source_sha256']==a['source_sha256']
+          assert t['NF406_original_seams_sha256']==a['seams_sha256']
+          assert t['original_true_cell4']==a['original_true_cell4']
+          assert t['original_Chebyshev_accepted_prefix_count_required']==512
+          assert t['sourcewise_cheb_tail_starts_at_mode']==512
+          assert t['required_each_native_coefficient_interval_width_strict_less_than']=='1e-44'
+          assert F(t['original_all_512_native_coefficient_interval_charge'])==512*F(5,10**45)
+          epsilon=F(t['original_true_cell4_z_minus_any_accepted_P511_uniform_error_exact_upper'])
+          assert 0<epsilon<F(1,10**38)
+          assert not t['original_true_cell4_signed_pz_z2_integrated']
+          assert t['W_ODD_NEG']==t['RH']=='OPEN'
+          Path('artifacts').mkdir(exist_ok=True)
+          out={'pass':'NF439','status':'ACCEPTED ORIGINAL TRUE CELL4 P511 UNIFORM FUNCTION REPRESENTATION; SIGNED J4 OPEN',
+               'parent_json_sha256':{tag:sha for (path,sha,aa,bb,tag) in pins if False},
+               'original_source_sha256':a['source_sha256'],'original_seams_sha256':a['seams_sha256'],
+               'coefficients':512,'independent_overlap_indices':list(range(56,72)),
+               'epsilon_exact_fraction':str(epsilon),'epsilon_lt_1e_minus38':True,
+               'original_true_cell4_signed_integral_certified':False,'W_ODD_NEG':'OPEN','RH':'OPEN'}
+          Path('artifacts/NF439_cell4_full_function_receipt.json').write_text(json.dumps(out,indent=2)+'\n')
+          print('NF439 PASS all 512 source-native J4 coefficient intervals, independent source overlap, true uniform z-P511',float(epsilon),'original signed J4 OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF439-original-cell4-full512-and-true-function-audit
+          path: artifacts/NF439_cell4_full_function_receipt.json
+          if-no-files-found: error
