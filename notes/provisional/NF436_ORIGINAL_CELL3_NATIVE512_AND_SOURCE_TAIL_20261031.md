@@ -34,3 +34,23 @@ Original NF436 artifacts, original CI run #41281254385 SUCCESS:
 NF436 certifies **original cell3 512 native source coefficients**, and locally verifies the corrected source-tail envelope; it has **not computed** the original J3 signed moment vectors `∫pT_n`, the physical dx Chebyshev moment vector `∫T_n`, exact P511 signed quadratic contraction, or the complete original true `∫J3 pz`, `∫J3 z²`, `4∫pz+2∫z²`. These require true irrational NF406 seam endpoints, correctly branch-typed original p(x), and the new cell3 source P511. The NF432 true complete signed J6 result is unaffected. Original six other positive cells, cell7 near-B collar, full principal E_p and global NF410/NF404 signed scalar, fourth J242 exterior upper, W-ODD-NEG, even/whole Weil, operator inverse/domain, RH remain OPEN.
 
 **Next NF437:** First establish corrected final combined source-tail audit status, then certify original true cell3 signed p / raw dx moments on exact log4/log2 seam. Contract the complete accepted P511 coefficient vector with original signed moments and add the rigorously charged `1e−38` function tail to obtain genuine continuous original cell3 signed integral. No theorem or RH promotion from a single cell. No main merge.
+
+
+## Corrected combined immutable source/interval gate — ACCEPTED
+
+[GitHub Actions #41281611418 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41281611418): **All-original 512-mode combined certificate passed**. It re-derived the source-specific true-cell3 P511 high-mode envelope from original NF407 242+4 exact generator dyadics and original NF406 two-sided prime branches; downloaded immutable original NF434 first32, NF435 next224 and NF436 final256 numeric interval JSONs, independently checked every source SHA, true cell3 seam, both original n2 signs, exact NF404 center, all **512 distinct mode indices n0..511** and strict individual interval width <1e−44. Then it paid **5e−45 for each of 512 coefficient midpoint choices** in the exact rational uniform function bound, including native ball width.
+
+The resulting accepted original true continuous response enclosure, for `P511(t)` formed from the **midpoints of the 512 source-certified original cell3 Chebyshev interval balls**:
+
+```
+sup_{x in J3} |z(x) - P511((x-347/1000)/(61/1000))|
+    < epsilon
+epsilon ≈ 1.240272970503549037094e−39
+        < 1e−38.
+```
+
+Source-generator high-mode tail (n≥512) independently ~1.237712970503549151598e−39; charged native coefficient midpoint selection **2.56e−42**, with separately included original pole/NF404 sinh center, original endpoint logarithm, 2048-image truncation and 4096-bit source-radius charges. Optimal per original source-generator ellipse counts E2/E3/E4/E5 = 2/2/3/266. This **closes cell3 function representation**, not its original signed integral.
+
+Final corrected source-tail exact original numerical JSON: artifact **#13073760330**, ZIP SHA256 `9c65fc49858b7e661db6cc68910c821b94e08b12b79361b451f6c83003400381`, original exact rational JSON SHA256 `9bd859e79b0fe5f569abef8cb78c6dc9642123439e0e211041ad3faa34deccb7`, retained until 2027-01-30. Permanent compact source- and artifact-digest index updated at `notes/data/provisional/NF436_original_cell3_512_coefficients_and_uniform_tail_custody.json`. Previous successful original source-only tail run #41281372510 remains historical evidence but its nominal 4e−45 midpoint charge was superseded; combined audit failure #41281539329 was the proper rejection and subsequent correction, not proof of a source mismatch.
+
+**Final NF436 standing:** Original true cell3 512 Chebyshev coefficient balls and uniform complete physical response P511 enclosure <1e−38 ACCEPTED. **Original cell3 signed p and true raw dx Chebyshev moments, exact source P511 quadratic contraction and complete original true cell3 signed `4∫pz+2∫z²` remain OPEN**; likewise remaining six positive cells besides cell3/cell6, original principal E_p/full NF410/NF404, fourth exterior J242 upper, W-ODD-NEG, even/whole Weil, infinite inverse/domain and RH OPEN. Next NF437 must certify the original J3 moment vectors on exact irrational log4/log2 seams and contract the original true signed scalar. No main merge.
