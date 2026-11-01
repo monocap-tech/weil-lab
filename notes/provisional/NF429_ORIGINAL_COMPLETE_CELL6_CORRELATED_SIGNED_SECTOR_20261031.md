@@ -62,3 +62,22 @@ Focused workflow `.github/workflows/nf429-original-cell6-complete-signed.yml` ha
 **DO NOT claim NF429 complete scalar until the dependent eighth job passes and the resulting original cell6 signed-integral JSON is retained.** On partial success, report exactly which shard/job failed and classify only passing subclaims. Native scripts and mathematical identities do not themselves supply numeric evidence.
 
 Even upon complete NF429 PASS, seven original positive cells, original true complete NF410/NF404 signed scalar, original fourth J242 exterior upper, W-ODD-NEG, even/whole Weil, infinite operator domain/inverse and RH remain OPEN. No automatic main merge.
+
+
+## NF429 final focused native verification — ALL EIGHT JOBS SUCCESS
+
+The full original physical cell6 [NF429 focused Actions #41258218952](https://github.com/monocap-tech/weil-lab/actions/runs/41258218952) at exact reproducible source commit `79ec6a27d2e0734252d855aefcada682460250a1` **passed all eight jobs**: six 2048-bit original-source-correlated `z` coefficient shards n=0..1499 (each width <10^-25, independently overlapping original NF416 at x=9/10), one renewed original NF428 all-1500 signed `p` moments with NF410 overlap, and a *dependent* final exact-rational Cheb-square/true-original-irrational-knot integration. The final aggregator rechecks exact source/knots/independent source hashes and complete nonduplicated 1500 modes before acceptance. No nonrigorous Gauss x mesh.
+
+**Accepted complete original physical J6** exact outward source-signed intervals, conservatively rounded outward in the following short summaries (the precise original rational enclosures are permanently archived):
+
+- Original `∫_(J6) p(x)z(x) dx` in **[-2.827286700583861e-22, -2.827286700583860e-22]**.
+- Original `∫_(J6) z(x)^2 dx` in **[3.534847345738813e-22, 3.534847345738814e-22]**.
+- Original cell-local centered contribution `4∫pz + 2∫z²` in **[-4.239452110857816e-22, -4.239452110857815e-22]**. **Strictly negative original-cell6 local contribution**, but **not** a proof that the sum over all eight cells or the original entire Weil form is negative.
+- Native original 1500 midpoint coefficient radii sum is approximately `6.0000e-42`; charge of original NF424 source/image and NF427 series tail gives **rigorously certified `||z_true−P1499||_∞<6.003e-42`** on the complete true physical cell6. The exact full uniform-error rational ceiling is stored in the signed-sector JSON.
+- Original complete signed principal absolute-mass ceiling `∫_(J6)|p|<5.962e-12`, reusing independent p<0 original source proof. The signed cross-term uniform-error charge and the squared-energy uniform-error charge are included in the precise outward cell results.
+
+**Permanent GitHub custody also PASSED:** the separate [NF429 permanent archival workflow #41258910720](https://github.com/monocap-tech/weil-lab/actions/runs/41258910720) verified and **committed all eight actual source-original numeric JSON artifacts plus a source-SHA-256 manifest**, not merely workflow run metadata, to `notes/data/provisional/nf429-original-cell6/`. Exact archival commit [`fff8ecfd53c6ca4293704223c1c50e19827b1e79`](https://github.com/monocap-tech/weil-lab/commit/fff8ecfd53c6ca4293704223c1c50e19827b1e79). The archival validator `scripts/local_replay/nf429_original_cell6_permanent_archive_validator.py` checks all six coefficient shards' exact SHA-256 against the final integral's manifest, full 1500 coverage, the independent NF410/NF416 gates, and rigorous signs. The resulting JSON remains reproducible after Actions artifact expiration (2027-01-30).
+
+**NF429 closure classification:** ACCEPTED true original complete cell6 signed `pz`, `z²`, `4pz+2z²` and permanent coefficient/moment/scalar custody. **No numerical input from another physical cell was inferred.** Seven other original positive-side support cells (including hotspots 3,7 and the x=B singular endpoint), whole NF410/NF404 signed scalar and its acceptance threshold, original fourth exterior J242 upper, infinite complement/domain/inverse, `W-ODD-NEG`, even/whole Weil and RH **remain OPEN**.
+
+**Next NF430:** adapt this source-correlated complex analytic expression and true physical prime support router to original cell3 and cell7 (distinct signed branch patterns), and audit the x=B endpoint logarithm before the final remaining cells; only recombine a global original signed scalar after all eight original continuous integrals pass. No automatic source or theorem promotion.
