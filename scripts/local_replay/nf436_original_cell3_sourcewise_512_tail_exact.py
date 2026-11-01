@@ -32,7 +32,7 @@ def one_generator(f,k,c,rho):
  # 2 for conjugate pair, 2 for arch+prime transfer: <=4e6.
  E=(2*F(22,7)*f+F(1,8))*v+1
  # |a_n|<=2M*rho^-n and sum n>=512 <=4*M*rho^-512.
- return F(16000000)*abs(c)*math.factorial(k)*8**k*3**ceil(E)/rho**N
+ return F(400000000)*abs(c)*math.factorial(k)*8**k*3**ceil(E)/rho**N
 def main():
  p=argparse.ArgumentParser()
  p.add_argument('--source',default='notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json')
