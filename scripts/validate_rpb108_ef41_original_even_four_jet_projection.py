@@ -163,6 +163,7 @@ def source_four_row_schur():
         for i in range(k+1,ORDER):
             for j in range(i,ORDER):
                 A[i][j]=A[i][j]-A[i][k]*A[j][k]/pivot
+                A[j][i]=A[i][j]
             r[i]=r[i]-A[i][k]*r[k]/pivot
     assert F(stages[0][2].hi,S)<F(63,1000)
     assert F(stages[1][2].hi,S)<F(29,500)
