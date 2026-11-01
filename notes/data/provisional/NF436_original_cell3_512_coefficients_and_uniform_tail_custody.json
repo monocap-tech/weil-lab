@@ -1,0 +1,99 @@
+{
+  "pass": "NF436",
+  "standing": "ACCEPTED original physical cell3 512/512 source-native Chebyshev coefficients AND complete true cell3 sourcewise P511 uniform error <1e-38, with all 512 immutable coefficient interval widths combined-verified; true signed cell3 integral OPEN",
+  "canonical_obligation": "W-ODD-NEG",
+  "parent_NF435_PR": 455,
+  "current_NF436_PR": 456,
+  "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_true_cell3": "(log(4)-11/10,11/10-log(2))",
+  "active_minus_translates": [
+    2,
+    3,
+    4
+  ],
+  "active_plus_translates": [
+    2
+  ],
+  "inactive_prime_powers": [
+    5,
+    7,
+    8,
+    9
+  ],
+  "original_selected_plus_critical": 246,
+  "original_frequency_degree_groups": 273,
+  "original_NF404_center": "6677356497477490213/4611686018427387904",
+  "original_2048_common_endpoint_image_indices": 2048,
+  "native_precision_bits": 2048,
+  "nf434_coefficients_modes": "0..31",
+  "nf435_coefficients_modes": "32..255",
+  "nf436_new_coefficients_modes": "256..511",
+  "original_512_cumulative_native_coefficients_accepted": 512,
+  "independent_native_high_overlap_indices": "248..255",
+  "original_NF435_parent_224_JSON_sha256": "23be9e821235569c9b8075b3916c843376dbdd742cd71063e49025260bda7546",
+  "original_NF434_parent_32_JSON_sha256": "004ff92369474dd31aafdc81da4306f555bcdd0911985142b1e6c5f27226c9ff",
+  "nf436_high256_artifact": {
+    "run_id": 41281254385,
+    "conclusion": "success",
+    "artifact_id": 13073580530,
+    "zip_sha256": "448ce7792be6aa63dc10cbcab35f0684782e0fe99d79afe2950e5e4afe72b4ef",
+    "original_inner_JSON_sha256": "6ae216679eb44c6932a016803ff5f84698c70e708dbc9559b83cee3a7b4170cf"
+  },
+  "nf436_independent_high8_artifact": {
+    "run_id": 41281254385,
+    "conclusion": "success",
+    "artifact_id": 13072654425,
+    "zip_sha256": "ecfc79d5dbe36ce836c68d13b8840f946c78990c0b43e91e99ea2ddf16fb053e",
+    "original_inner_JSON_sha256": "ab6f8d1a104dea63f9f631673062c90037646dcdf3e2e6008c3488be27028e4f"
+  },
+  "nf436_initial_sourcewise_tail_artifact": {
+    "run_id": 41281372510,
+    "conclusion": "success_for_original_finite_source_triangle_but_midpoint_interval_charge_superseded",
+    "artifact_id": 13073103884,
+    "zip_sha256": "fe9ffc71f98207c1f94836c555a35e7ca5ac5744ea2b802db59685f46bf6b98f",
+    "original_inner_JSON_sha256": "adce047d87b033fab905066cd6b550d4cb14ea33a98003d3ce536fbf0759fdde"
+  },
+  "original_sourcewise_generator_tail_approx": "1.23771297050354915e-39",
+  "original_sourcewise_rho_best_count": {
+    "2": 2,
+    "3": 2,
+    "4": 3,
+    "5": 266
+  },
+  "original_true_z_vs_source_ball_P511_corrected_exact_rational_bound_approx": "1.240272970503549e-39",
+  "original_true_z_vs_source_ball_P511_strict_bound": "1e-38",
+  "original_512_native_interval_width_max_strict_below": "1e-44",
+  "native_halfwidth_charge_per_mode": "5e-45",
+  "original_512_interval_combined_exact_rational_local_fraction_replay": "PASS",
+  "nf436_first_combined_gate_run": 41281539329,
+  "nf436_first_combined_gate_failure": "NF436 tail script still charged nominal 4e-45 rather than required 5e-45 per native interval midpoint; corrected, not a source or branch mismatch",
+  "nf436_corrected_combined_gate_run": 41281611418,
+  "nf436_corrected_combined_gate_final_conclusion": "SUCCESS",
+  "artifacts_expire": "2027-01-30",
+  "raw_original_full_JSON_committed_permanently": false,
+  "original_true_cell3_signed_pz_z2_integrated": false,
+  "NF410_NF404_global_signed_scalar_decided": false,
+  "original_fourth_J242_exterior_upper_closed": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "nf436_corrected_combined_gate_final_url": "https://github.com/monocap-tech/weil-lab/actions/runs/41281611418",
+  "nf436_corrected_true_cell3_source_tail": {
+    "run_id": 41281611418,
+    "conclusion": "success",
+    "artifact_id": 13073760330,
+    "zip_sha256": "9c65fc49858b7e661db6cc68910c821b94e08b12b79361b451f6c83003400381",
+    "original_inner_JSON_sha256": "9bd859e79b0fe5f569abef8cb78c6dc9642123439e0e211041ad3faa34deccb7",
+    "true_z_minus_P511_upper_approx": "1.240272970503549037094e-39",
+    "original_sourcewise_generator_tail_approx": "1.237712970503549151598e-39",
+    "native_all512_halfwidth_charge_exact": "512/200000000000000000000000000000000000000000000",
+    "sourcewise_optimal_rho_counts": {
+      "2": 2,
+      "3": 2,
+      "4": 3,
+      "5": 266
+    },
+    "all_original_NF434_NF435_NF436_interval_source_and_width_gate": "PASS"
+  },
+  "original_true_cell3_P511_uniform_error_certified": true
+}

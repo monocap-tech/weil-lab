@@ -1,0 +1,99 @@
+name: Weil-Lab NF436 original true cell3 sourcewise P511 tail exact
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf436_original_cell3_sourcewise_512_tail_exact.py'
+      - '.github/workflows/nf436-original-cell3-sourcewise-tail.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-cell3-all-source-512-cheb-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact-rational NF407 original sourcewise 512-tail including BOTH n2 signed branches
+        run: |
+          python3 -m py_compile scripts/local_replay/nf436_original_cell3_sourcewise_512_tail_exact.py
+          python3 scripts/local_replay/nf436_original_cell3_sourcewise_512_tail_exact.py \
+            --output artifacts/NF436_original_cell3_P511_sourcewise_true_z_tail.json
+      - name: Strict original physical cell3 source/collar and no signed-scalar promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF436_original_cell3_P511_sourcewise_true_z_tail.json'))
+          assert d['pass']=='NF436'
+          assert d['NF407_original_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['NF406_original_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_source_selected_plus_critical_count']==246
+          assert d['original_source_frequency_degree_groups']==273
+          assert d['original_minus_translate_active']==[2,3,4]
+          assert d['original_plus_translate_active']==[2]
+          assert d['original_inactive_prime_powers']==[5,7,8,9]
+          assert sum(d['sourcewise_optimal_E2_E3_E4_E5_counts'].values())==273
+          assert d['sourcewise_cheb_tail_starts_at_mode']==512
+          assert d['original_Chebyshev_accepted_prefix_count_required']==512
+          assert F(d['original_true_cell3_z_minus_any_accepted_P511_uniform_error_exact_upper'])<F(1,10**38)
+          assert not d['original_true_cell3_signed_pz_z2_integrated']
+          assert not d['original_full_NF410_NF404_signed_scalar_decided']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF436 PASS sourcewise original real cell3 P511 model tail, conditional on separate 512 native coefficient acceptance; J3 signed scalar OPEN')
+          PY
+      - name: Fetch immutable NF434/NF435/NF436 original native interval JSON receipts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/low32 artifacts/mid224 artifacts/high256
+          gh run download 41269505735 --repo "$GITHUB_REPOSITORY" \
+            --name NF434-original-true-cell3-native-cheb32-both-n2-sides --dir artifacts/low32
+          gh run download 41280032835 --repo "$GITHUB_REPOSITORY" \
+            --name NF435-original-true-cell3-native-Chebyshev-modes32to255 --dir artifacts/mid224
+          gh run download 41281254385 --repo "$GITHUB_REPOSITORY" \
+            --name NF436-original-cell3-fullsource-native-high256-n256to511 --dir artifacts/high256
+      - name: Contract sourcewise true cell3 P511 with original 512 SHA-pinned Arb balls and paid half widths
+        run: |
+          python3 - <<'PY'
+          import json,hashlib
+          from fractions import Fraction as F
+          from pathlib import Path
+          files=[
+            ('artifacts/low32/NF434_original_true_cell3_native_cheb32.json','004ff92369474dd31aafdc81da4306f555bcdd0911985142b1e6c5f27226c9ff',0,32,'NF434'),
+            ('artifacts/mid224/NF435_original_cell3_cheb32to255_native.json','23be9e821235569c9b8075b3916c843376dbdd742cd71063e49025260bda7546',32,256,'NF435'),
+            ('artifacts/high256/NF436_original_cell3_Chebyshev_256_to_511_native.json','6ae216679eb44c6932a016803ff5f84698c70e708dbc9559b83cee3a7b4170cf',256,512,'NF436')]
+          z=json.load(open('artifacts/NF436_original_cell3_P511_sourcewise_true_z_tail.json'))
+          assert F(z['original_all_512_native_coefficient_interval_charge'])==512*F(5,10**45)
+          assert z['required_each_native_coefficient_interval_width_strict_less_than']=='1e-44'
+          for path,sha,start,stop,label in files:
+              raw=Path(path).read_bytes()
+              assert hashlib.sha256(raw).hexdigest()==sha,(path,'wrong immutable original JSON')
+              d=json.loads(raw)
+              assert d['pass']==label
+              assert d['source_sha256']==z['NF407_original_source_sha256']
+              assert d['seams_sha256']==z['NF406_original_seams_sha256']
+              assert d['original_true_cell3']==z['original_true_cell3']
+              assert d['original_minus_translate_primes']==[2,3,4]
+              assert d['original_plus_translate_primes']==[2]
+              assert d['original_neither_prime_branches']==[5,7,8,9]
+              assert d['original_independent_direct_source_both_n2_prime_overlap_pass']
+              assert d['original_independent_direct_source_endpoint_overlap_pass']
+              assert len(d['coefficients'])==stop-start
+              assert [x['n'] for x in d['coefficients']]==list(range(start,stop))
+              for x in d['coefficients']:
+                  a,b=map(F,x['true_original_cell3_fixed_branch_coefficient_outward_interval'])
+                  assert a<=b and b-a<F(1,10**44),x['n']
+          assert F(z['original_true_cell3_z_minus_any_accepted_P511_uniform_error_exact_upper'])<F(1,10**38)
+          assert not z['original_true_cell3_signed_pz_z2_integrated']
+          assert z['W_ODD_NEG']==z['RH']=='OPEN'
+          print('NF436 PASS complete 512 exact original cell3 Arb coefficient balls, all half-width charges and sourcewise true z-P511<1e-38, signed cell3 OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF436-original-cell3-true-z-P511-sourcewise-tail-exact
+          path: artifacts/NF436_original_cell3_P511_sourcewise_true_z_tail.json
+          if-no-files-found: error
