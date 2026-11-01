@@ -14,7 +14,7 @@ Exact outward intervals at radix 10**340 cover 8x8 Gram and response.
 The infinite m>=40 original arch tail is never dropped.
 This pass extends EF42/EF43 six-jet source certificates to genuine eighth order,
 retaining every seven-prime, positive-pole, signed forty-arch-mode and infinite remainder.
-An exact rational, span-preserving orthonormalizing transform is independently audited.
+An exact rational, span-preserving, fixed-denominator near-orthogonalizing transform is independently audited.
 No full 469D source projector or Weil positivity is claimed.
 """
 import json
@@ -220,8 +220,15 @@ def actual_original_eight_normalized_basis(G):
         t=isqrt((sq.numerator*Q*Q)//sq.denominator)
         assert t>0
         factor=F(Q,t)
-        v=[x*factor for x in v]
+        normalized=[x*factor for x in v]
+        # Rational coefficient budgeting: project *selection* onto a
+        # common denominator Q. The selected basis is still exact
+        # rational, lower triangular and invertible; every assertion
+        # about the ACTUAL original physical Gram is made below using
+        # full outward intervals rather than this midpoint proxy.
+        v=[F((x.numerator*Q)//x.denominator,Q) for x in normalized]
         assert v[k]>0 and all(x==0 for x in v[k+1:])
+        assert all(x.denominator<=Q for x in v)
         C.append(v)
     # C is EXACT rational lower triangular with nonzero diagonal.
     # No approximation can change the exact original protected span.
