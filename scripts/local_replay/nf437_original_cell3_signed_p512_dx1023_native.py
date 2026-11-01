@@ -165,8 +165,7 @@ def main():
   'original_nf410_nf404_global_signed_scalar_decided':False,
   'W_ODD_NEG':'OPEN','RH':'OPEN'}
  dest=Path(args.output);dest.parent.mkdir(parents=True,exist_ok=True)
- dest.write_text(json.dumps(result,indent=2)+'
-')
+ dest.write_text(json.dumps(result,indent=2)+'\n')
  print('NF437 source-original true cell3 signed p512 and dx1023 moments PASS, independent NF410 n0 overlap')
  print('original signed p0',float(F(signed[0][0])),float(F(signed[0][1])),'length',float(raw_len[0]))
  print('original physical true cell3 signed z integral NOT YET evaluated')
