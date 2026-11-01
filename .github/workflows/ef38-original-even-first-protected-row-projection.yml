@@ -1,0 +1,26 @@
+name: EF38 original even first protected SI10 source-row projection
+on:
+  push:
+    branches: [research/ef38-original-even-first-protected-source-projection]
+  pull_request:
+    branches: [research/ef37-original-even-correlated-prime-pole]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-original-even-one-row-projection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: First genuine SI10 source projection of all seven signed arithmetic translations and even pole
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef38_original_even_first_protected_row_projection.py
+          python scripts/validate_rpb108_ef38_original_even_first_protected_row_projection.py
+      - name: Fail-closed canonical original even obligation audit
+        run: python scripts/verify_obligation_manifest.py
