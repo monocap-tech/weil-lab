@@ -1,0 +1,15 @@
+# EF42 — original first SI10 six even frequency jets
+
+**2026-10-31.** Canonical W-EVEN-FORM OPEN; parent EF41 [draft PR #449](https://github.com/monocap-tech/weil-lab/pull/449), final head [Actions #41269133991](https://github.com/monocap-tech/weil-lab/actions/runs/41269133991) SUCCESS.
+
+EF42 certifies source projection onto **six** actual real-even original protected Fourier jets in the first original SI10 37/64 cluster, whose genuine Taylor order is 15: cos(omega*x), x*sin(omega*x), x²cos(omega*x), x³sin(omega*x), x⁴cos(omega*x), x⁵sin(omega*x). The original seven signed prime-power translations (2,3,4,5,7,8,9), genuine positive even cosh pole and first 40 physical quarter-digamma cutoff modes are integrated on all eight original positive-half arithmetic cells with 10^340 outward interval antiderivatives, and the complete signed EF39 40x40 arch Gram is retained.
+
+All six true original physical L2 Gram successive Schur pivots are positive; fourth ≈0.02748439, fifth ≈0.00068092005 (>1/1500), sixth ≈0.000010037139 (>1/100000). New genuine fifth and sixth original even jet squared projection gains are ≈0.0038784345 and ≈0.0023492425, respectively. Actual certified finite six-jet projected original signed physical squared response **≈0.040533054506<41/1000**, improved from original EF41 four-row ≈0.046760731501<47/1000.
+
+Original complete arch cutoff remainder m>=40 is fully paid `||h_tail||<57/500+1/10000`. Because all six original jets lie within genuine protected original V469, full original even first-source cofinite physical projection norm `||P_F g_e||<8/25`; original SI10 full signed even cofinite mu>17/25000 gives **EF34 unseen eta<2560/17≈150.588**. This is a rigorous original-source upper conditional on inherited physical Fourier/digamma and form-domain audit, not actual full inverse energy.
+
+**Structural warning:** The sixth conditional Gram pivot is smaller than the first by about five orders of magnitude; even though the source-native interval remains strictly positive, naive unscaled monomial jet expansion becomes conditioning-sensitive. Original 469-source physical projection, 463 other protected even modes, actual full cofinite Riesz response, original EF33 S2>1/500 versus unseen eta sign comparison, complete W-EVEN-FORM, paused W-ODD-NEG and Weil/RH all **OPEN**. No RH or even PSD promotion.
+
+**EF43 next:** Re-express these same authentic six protected jets in an exactly span-preserving orthogonal/normalized basis with outward interval transformations and rigorous reciprocal/conditioning budget. Then extend higher first-cluster jets only if this stable architecture supports strict projected residual certification; otherwise record a quantitative method STOP. The original prime/pole plus full arch cutoff/infinite tail must remain attached. No main merge.
+
+Detailed note: `notes/provisional/EF42_ORIGINAL_EVEN_SIX_JET_PROJECTION_20261031.md`; validator: `scripts/validate_rpb108_ef42_original_even_six_jet_projection.py`; workflow: `.github/workflows/ef42-original-even-six-jet-source.yml`.
