@@ -1,0 +1,51 @@
+name: Weil-Lab NF436 original true cell3 sourcewise P511 tail exact
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf436_original_cell3_sourcewise_512_tail_exact.py'
+      - '.github/workflows/nf436-original-cell3-sourcewise-tail.yml'
+permissions:
+  contents: read
+jobs:
+  original-cell3-all-source-512-cheb-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact-rational NF407 original sourcewise 512-tail including BOTH n2 signed branches
+        run: |
+          python3 -m py_compile scripts/local_replay/nf436_original_cell3_sourcewise_512_tail_exact.py
+          python3 scripts/local_replay/nf436_original_cell3_sourcewise_512_tail_exact.py \
+            --output artifacts/NF436_original_cell3_P511_sourcewise_true_z_tail.json
+      - name: Strict original physical cell3 source/collar and no signed-scalar promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF436_original_cell3_P511_sourcewise_true_z_tail.json'))
+          assert d['pass']=='NF436'
+          assert d['NF407_original_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['NF406_original_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_source_selected_plus_critical_count']==246
+          assert d['original_source_frequency_degree_groups']==273
+          assert d['original_minus_translate_active']==[2,3,4]
+          assert d['original_plus_translate_active']==[2]
+          assert d['original_inactive_prime_powers']==[5,7,8,9]
+          assert sum(d['sourcewise_optimal_E2_E3_E4_E5_counts'].values())==273
+          assert d['sourcewise_cheb_tail_starts_at_mode']==512
+          assert d['original_Chebyshev_accepted_prefix_count_required']==512
+          assert F(d['original_true_cell3_z_minus_any_accepted_P511_uniform_error_exact_upper'])<F(1,10**38)
+          assert not d['original_true_cell3_signed_pz_z2_integrated']
+          assert not d['original_full_NF410_NF404_signed_scalar_decided']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF436 PASS sourcewise original real cell3 P511 model tail, conditional on separate 512 native coefficient acceptance; J3 signed scalar OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF436-original-cell3-true-z-P511-sourcewise-tail-exact
+          path: artifacts/NF436_original_cell3_P511_sourcewise_true_z_tail.json
+          if-no-files-found: error
