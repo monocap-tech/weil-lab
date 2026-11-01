@@ -1,6 +1,6 @@
 {
   "pass": "NF436",
-  "standing": "ORIGINAL CELL3 a256..a511 NATIVE SOURCE ACCEPTED; COMPLETE TRUE CELL3 P511 UNIFORM TAIL EXACT RATIONAL LOCALLY RECHECKED, FINAL 512-ARTIFACT COMBINED CI PENDING; ORIGINAL CELL3 SIGNED INTEGRAL OPEN",
+  "standing": "ACCEPTED original physical cell3 512/512 source-native Chebyshev coefficients AND complete true cell3 sourcewise P511 uniform error <1e-38, with all 512 immutable coefficient interval widths combined-verified; true signed cell3 integral OPEN",
   "canonical_obligation": "W-ODD-NEG",
   "parent_NF435_PR": 455,
   "current_NF436_PR": 456,
@@ -69,12 +69,31 @@
   "nf436_first_combined_gate_run": 41281539329,
   "nf436_first_combined_gate_failure": "NF436 tail script still charged nominal 4e-45 rather than required 5e-45 per native interval midpoint; corrected, not a source or branch mismatch",
   "nf436_corrected_combined_gate_run": 41281611418,
-  "nf436_corrected_combined_gate_final_conclusion": "PENDING",
+  "nf436_corrected_combined_gate_final_conclusion": "SUCCESS",
   "artifacts_expire": "2027-01-30",
   "raw_original_full_JSON_committed_permanently": false,
   "original_true_cell3_signed_pz_z2_integrated": false,
   "NF410_NF404_global_signed_scalar_decided": false,
   "original_fourth_J242_exterior_upper_closed": false,
   "W_ODD_NEG": "OPEN",
-  "RH": "OPEN"
+  "RH": "OPEN",
+  "nf436_corrected_combined_gate_final_url": "https://github.com/monocap-tech/weil-lab/actions/runs/41281611418",
+  "nf436_corrected_true_cell3_source_tail": {
+    "run_id": 41281611418,
+    "conclusion": "success",
+    "artifact_id": 13073760330,
+    "zip_sha256": "9c65fc49858b7e661db6cc68910c821b94e08b12b79361b451f6c83003400381",
+    "original_inner_JSON_sha256": "9bd859e79b0fe5f569abef8cb78c6dc9642123439e0e211041ad3faa34deccb7",
+    "true_z_minus_P511_upper_approx": "1.240272970503549037094e-39",
+    "original_sourcewise_generator_tail_approx": "1.237712970503549151598e-39",
+    "native_all512_halfwidth_charge_exact": "512/200000000000000000000000000000000000000000000",
+    "sourcewise_optimal_rho_counts": {
+      "2": 2,
+      "3": 2,
+      "4": 3,
+      "5": 266
+    },
+    "all_original_NF434_NF435_NF436_interval_source_and_width_gate": "PASS"
+  },
+  "original_true_cell3_P511_uniform_error_certified": true
 }
