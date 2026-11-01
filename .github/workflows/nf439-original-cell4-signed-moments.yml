@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - 'scripts/local_replay/nf437_original_cell4_signed_p512_dx1023_native.py'
-      - '.github/workflows/nf437-original-cell4-signed-moments.yml'
+      - 'scripts/local_replay/nf439_original_cell4_signed_p512_dx1023_native.py'
+      - '.github/workflows/nf439-original-cell4-signed-moments.yml'
 permissions:
   contents: read
 jobs:
@@ -20,14 +20,15 @@ jobs:
         run: python3 -m pip install python-flint==0.8.0
       - name: Exact original cell4 signed p512 and raw dx1023 native moments
         run: |
-          python3 -m py_compile scripts/local_replay/nf437_original_cell4_signed_p512_dx1023_native.py
-          python3 scripts/local_replay/nf437_original_cell4_signed_p512_dx1023_native.py \
+          python3 -m py_compile scripts/local_replay/nf439_original_cell4_signed_p512_dx1023_native.py
+          python3 scripts/local_replay/nf439_original_cell4_signed_p512_dx1023_native.py \
             --precision 2048 --degree 511 --log-modes 110 \
             --output artifacts/NF439_original_cell4_true_p512_dx1023_native.json
       - name: Strict original NF407 source, NF406 true seam and independently NF410 signed p0
         run: |
           python3 - <<'PY'
-          import json
+          import json,sys
+          sys.set_int_max_str_digits(0)
           from fractions import Fraction as F
           x=json.load(open('artifacts/NF439_original_cell4_true_p512_dx1023_native.json'))
           assert x['pass']=='NF439'
