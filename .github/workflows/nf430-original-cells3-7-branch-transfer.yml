@@ -1,0 +1,30 @@
+name: Weil-Lab NF430 original physical cells 3 and 7 source branch and analytic transfer preflight
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf430_original_cells3_7_source_branch_transfer_exact.py'
+      - 'notes/provisional/NF430_ORIGINAL_CELLS3_7_BRANCH_TRANSFER_20261031.md'
+      - '.github/workflows/nf430-original-cells3-7-branch-transfer.yml'
+permissions:
+  contents: read
+jobs:
+  original-source-branch-and-ellipse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Independently replay original source dyadics, genuine seven prime seam branches, cell3 and cell7 analytic entry budgets
+        run: |
+          python3 -m py_compile scripts/local_replay/nf430_original_cells3_7_source_branch_transfer_exact.py
+          python3 scripts/local_replay/nf430_original_cells3_7_source_branch_transfer_exact.py \
+            --output artifacts/NF430_original_cells3_7_true_branch_transfer_exact.json
+      - name: Retain source-original rational branch/cost certificate
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF430-original-physical-cells3-7-source-branch-transfer
+          path: artifacts/NF430_original_cells3_7_true_branch_transfer_exact.json
+          if-no-files-found: error
