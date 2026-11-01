@@ -289,6 +289,18 @@ def main():
     assert SQRT_CAP+F(57,500)+F(1,10000)<COFINITE_NORM_CAP
     assert COFINITE_NORM_CAP*COFINITE_NORM_CAP/MU==ETA_CAP
     assert ETA_CAP<F(85849,680)
+    # Exact METHOD STOP for this certificate envelope, not lower eta.
+    # Even D=0 leaves upper B(0)=U^2/MU much larger than S2 gate.
+    U=F(1141,10000)
+    restricted_schur_gate=F(1,500)
+    envelope_floor=U*U/MU
+    assert envelope_floor==F(1301881,68000)
+    assert envelope_floor>restricted_schur_gate
+    assert U*U>MU*restricted_schur_gate
+    # The particular absolute algebraic m>=M tail bound needs
+    # M>=367648 merely to cross the necessary norm threshold.
+    assert F(1,2*367647-F(3,2))>MU*restricted_schur_gate
+    assert F(1,2*367648-F(3,2))<MU*restricted_schur_gate
     assert F(stages[6][0].lo,S)>F(1,10100000)
     assert F(stages[7][0].lo,S)>F(7,10000000000)
     assert F(stages[8][0].lo,S)>F(3,10**12)
@@ -320,6 +332,12 @@ def main():
           ' independent upper',up.scaled(),
           ' full original cofinite ||P_F g_e||<139/500'
           ' and eta<19321/170=',float(ETA_CAP),flush=True)
+    print('EF45 scoped METHOD STOP: fixed forty-mode absolute-tail'
+          ' certificate envelope EVEN at D=0 has upper',
+          float(envelope_floor),' vs EF33 restricted Schur >1/500.'
+          ' The existing absolute algebraic arch-tail formula'
+          ' would need at least M=367648 just for the norm gate.'
+          ' NOT a lower bound on actual eta.',flush=True)
     print('EF45 research status: 10 of 469 actual original SI10'
           ' protected even rows projected; 459 remain.'
           ' Original independent analytic Fourier/digamma/form-core'
