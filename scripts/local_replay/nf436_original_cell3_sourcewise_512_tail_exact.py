@@ -97,11 +97,11 @@ def main():
  source_charge=(10**12+20)*S0
  assert image<F(1,10**50) and source_charge<F(1,10**50)
  # For choosing any point inside the independently native outward
- # a_n intervals, pay the same original per-coefficient 4e-45
- # on 512 original 2048-bit source-native coefficient intervals.
- # The separately native Arb rounding radius is contained in
- # this 4e-45 outward interval charge at acceptance.
- native_coefficient_charge=512*F(4,10**45)
+ # a_n intervals, pay 5e-45 for EACH midpoint selection error.
+ # Every accepted NF434/NF435/NF436 outward Arb coefficient interval
+ # has width <1e-44; its midpoint deviation is then <5e-45.
+ # This includes native rounding beyond the nominal 4e-45 charge.
+ native_coefficient_charge=512*F(5,10**45)
  true_error=source_tail+pole_tail+log_tail+image+source_charge+native_coefficient_charge
  assert F(0)<true_error<F(1,10**38),("original cell3 source tail not decision quality",str(float(true_error)))
  out={
