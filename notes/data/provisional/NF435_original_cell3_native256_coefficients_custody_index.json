@@ -1,0 +1,66 @@
+{
+  "pass": "NF435",
+  "standing": "ACCEPTED ORIGINAL cell3 native-source correlated Chebyshev a32..a255 (224 NEW) + independent NF434 low8 overlap; TRUE cell3 signed integral OPEN",
+  "original_active_obligation": "W-ODD-NEG",
+  "parent_PR": 450,
+  "current_PR": 455,
+  "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "previous_NF434_low32_JSON_sha256": "004ff92369474dd31aafdc81da4306f555bcdd0911985142b1e6c5f27226c9ff",
+  "original_true_positive_cell3": "(log(4)-11/10,11/10-log(2))",
+  "source_generators": 246,
+  "original_critical_sines": 32,
+  "original_signed_plus_minus_n2_retained": true,
+  "original_minus_translate_prime_powers": [
+    2,
+    3,
+    4
+  ],
+  "original_plus_translate_prime_powers": [
+    2
+  ],
+  "original_neither_translate_prime_powers": [
+    5,
+    7,
+    8,
+    9
+  ],
+  "original_common_two_sided_endpoint_image_indices": 2048,
+  "original_dyadic_NF404_center": "6677356497477490213/4611686018427387904",
+  "original_native_precision_bits": 2048,
+  "verified_new_Chebyshev_mode_start_inclusive": 32,
+  "verified_new_Chebyshev_mode_stop_exclusive": 256,
+  "new_certified_coefficient_count": 224,
+  "original_NF434_accepted_previous_count": 32,
+  "cumulative_certified_cell3_coefficient_count": 256,
+  "independent_original_low8_replay_count": 8,
+  "original_direct_physical_prime_both_n2_signs_overlap_pass": true,
+  "original_direct_physical_endpoint_u4_B_overlap_pass": true,
+  "all_new_interval_width_below": "1e-25",
+  "max_original_new_interval_width_exact": "1/125000000000000000000000000000000000000000000",
+  "max_original_new_interval_width_decimal": "8e-45",
+  "focused_native_workflow_run_id": 41280032835,
+  "focused_native_workflow_url": "https://github.com/monocap-tech/weil-lab/actions/runs/41280032835",
+  "focused_native_workflow_conclusion": "success",
+  "artifact_native224": {
+    "id": 13072468167,
+    "name": "NF435-original-true-cell3-native-Chebyshev-modes32to255",
+    "zip_sha256": "3d1da585403df5aff271f45445e5f39c5b9a499c3e97a860bc0c1a2e367409fb",
+    "generated_original_JSON_sha256": "23be9e821235569c9b8075b3916c843376dbdd742cd71063e49025260bda7546"
+  },
+  "artifact_low8": {
+    "id": 13072328441,
+    "name": "NF435-original-cell3-short-padding-low8-control",
+    "zip_sha256": "fdf1b44a41a7818c016587cede61d8d5c275aaea9aab5d98a5c8295ae2b74bee",
+    "generated_original_JSON_sha256": "4fb9da6834cb1b1f0f9da8f3021bd0db48f084b9e5d032b2bcb6b406362264d6"
+  },
+  "artifact_expiry": "2027-01-30",
+  "full_original_interval_JSON_permanently_archived": false,
+  "original_cell3_complete_true_response_tail_certified": false,
+  "original_cell3_p_signed_moments_certified": false,
+  "original_cell3_dx_Chebyshev_moments_certified": false,
+  "original_true_cell3_signed_pz_z2_integrated": false,
+  "original_NF410_NF404_signed_scalar_decided": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}

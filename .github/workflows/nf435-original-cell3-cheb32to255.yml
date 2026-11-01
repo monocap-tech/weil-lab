@@ -1,0 +1,91 @@
+name: Weil-Lab NF435 original cell3 source-correlated Chebyshev block 32 to 255
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf435_original_cell3_correlated_cheb_index_block_native.py'
+      - '.github/workflows/nf435-original-cell3-cheb32to255.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-cell3-native-224-new-modes-and-overlap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native rigorously rounded Arb and Acb arithmetic
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Compute 224 ORIGINAL cell3 coefficient balls indices 32 to 255, with both n2 translates
+        run: |
+          python3 -m py_compile scripts/local_replay/nf435_original_cell3_correlated_cheb_index_block_native.py
+          python3 scripts/local_replay/nf435_original_cell3_correlated_cheb_index_block_native.py \
+            --start 32 --stop 256 --precision 2048 \
+            --output artifacts/NF435_original_cell3_cheb32to255_native.json
+      - name: Independently recompute 8 original low coefficients at shorter index padding
+        run: |
+          python3 scripts/local_replay/nf435_original_cell3_correlated_cheb_index_block_native.py \
+            --start 0 --stop 8 --precision 2048 \
+            --output artifacts/NF435_original_cell3_cheb0to7_control.json
+      - name: Fetch accepted original NF434 32-coefficient parent and verify original JSON digest
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/nf434
+          gh run download 41269505735 --repo "$GITHUB_REPOSITORY" \
+            --name NF434-original-true-cell3-native-cheb32-both-n2-sides --dir artifacts/nf434
+      - name: Strict original-source pinned overlap + new absolute indices; no partial scalar promotion
+        run: |
+          python3 - <<'PY'
+          import json,hashlib
+          from fractions import Fraction as F
+          from pathlib import Path
+          parent=Path('artifacts/nf434/NF434_original_true_cell3_native_cheb32.json').read_bytes()
+          assert hashlib.sha256(parent).hexdigest()=='004ff92369474dd31aafdc81da4306f555bcdd0911985142b1e6c5f27226c9ff'
+          p=json.loads(parent)
+          q=json.load(open('artifacts/NF435_original_cell3_cheb32to255_native.json'))
+          c=json.load(open('artifacts/NF435_original_cell3_cheb0to7_control.json'))
+          assert p['pass']=='NF434' and q['pass']==c['pass']=='NF435'
+          assert p['source_sha256']==q['source_sha256']==c['source_sha256']
+          assert p['seams_sha256']==q['seams_sha256']==c['seams_sha256']
+          assert p['original_exact_NF404_dyadic_center']==q['original_exact_NF404_dyadic_center']==c['original_exact_NF404_dyadic_center']
+          assert p['original_true_cell3']==q['original_true_cell3']==c['original_true_cell3']=='(log(4)-11/10,11/10-log(2))'
+          assert p['original_minus_translate_primes']==q['original_minus_translate_primes']==c['original_minus_translate_primes']==[2,3,4]
+          assert p['original_plus_translate_primes']==q['original_plus_translate_primes']==c['original_plus_translate_primes']==[2]
+          assert p['original_neither_prime_branches']==q['original_neither_prime_branches']==c['original_neither_prime_branches']==[5,7,8,9]
+          assert (q['mode_start_inclusive'],q['mode_stop_exclusive'])==(32,256)
+          assert (c['mode_start_inclusive'],c['mode_stop_exclusive'])==(0,8)
+          assert len(q['coefficients'])==224 and [a['n'] for a in q['coefficients']]==list(range(32,256))
+          assert len(c['coefficients'])==8 and [a['n'] for a in c['coefficients']]==list(range(8))
+          key='true_original_cell3_fixed_branch_coefficient_outward_interval'
+          def ball(x):
+              a,b=map(F,x[key]); assert a<=b and b-a<F(1,10**25)
+              return a,b
+          for a in q['coefficients']:ball(a)
+          for i,a in enumerate(c['coefficients']):
+              low,high=ball(a)
+              plo,phi=ball(p['coefficients'][i])
+              assert low<=phi and plo<=high,('NF434 independent original low mode mismatch',i)
+          for d in [q,c]:
+              assert d['original_four_selected_plus_critical_count']==246
+              assert d['original_independent_direct_source_both_n2_prime_overlap_pass']
+              assert d['original_independent_direct_source_endpoint_overlap_pass']
+              assert d['common_endpoint_image_indices']==2048
+              assert not d['true_cell3_signed_pz_and_z2_integrated']
+              assert not d['NF404_complete_signed_scalar_decided']
+              assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF435 PASS original cell3 a32..a255 (224 NEW), independent a0..a7 overlap NF434, true cell3 signed integral OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF435-original-true-cell3-native-Chebyshev-modes32to255
+          path: artifacts/NF435_original_cell3_cheb32to255_native.json
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF435-original-cell3-short-padding-low8-control
+          path: artifacts/NF435_original_cell3_cheb0to7_control.json
+          if-no-files-found: error
