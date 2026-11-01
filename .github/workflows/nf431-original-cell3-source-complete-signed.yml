@@ -1,0 +1,103 @@
+name: Weil-Lab NF431 original complete cell3 both-translation source and signed sector
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf431_original_cell3_both_translation_cheb_shard_native.py'
+      - 'scripts/local_replay/nf431_original_cell3_signed_p_cheb_moments_native.py'
+      - 'scripts/local_replay/nf431_original_complete_cell3_signed_integral_from_shards.py'
+      - '.github/workflows/nf431-original-cell3-source-complete-signed.yml'
+permissions:
+  contents: read
+jobs:
+  original-cell3-coefficient-shards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - start: 0
+            stop: 256
+          - start: 256
+            stop: 512
+          - start: 512
+            stop: 768
+          - start: 768
+            stop: 1024
+          - start: 1024
+            stop: 1280
+          - start: 1280
+            stop: 1500
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source interval Arb Acb
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Certify actual original cell3 Cheb series with n2 BOTH, n3 n4 POST and original NF417 x0.35 crosscheck
+        run: |
+          python3 -m py_compile scripts/local_replay/nf431_original_cell3_both_translation_cheb_shard_native.py
+          python3 scripts/local_replay/nf431_original_cell3_both_translation_cheb_shard_native.py \
+            --precision 2048 --start ${{ matrix.start }} --stop ${{ matrix.stop }} \
+            --output artifacts/NF431_original_cell3_z_shard_${{ matrix.start }}_${{ matrix.stop }}.json
+      - name: Retain outward genuine original cell3 coefficient balls
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF431-original-cell3-z-shard-${{ matrix.start }}-${{ matrix.stop }}
+          path: artifacts/NF431_original_cell3_z_shard_${{ matrix.start }}_${{ matrix.stop }}.json
+          if-no-files-found: error
+  original-cell3-signed-p-moments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install original Arb source interval
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Certify original cell3 all 1500 true signed p moments n3 n4 only and NF410 crosscheck
+        run: |
+          python3 -m py_compile scripts/local_replay/nf431_original_cell3_signed_p_cheb_moments_native.py
+          python3 scripts/local_replay/nf431_original_cell3_signed_p_cheb_moments_native.py \
+            --degree 1499 --precision 2048 --log-modes 110 \
+            --output artifacts/NF431_original_cell3_pmoments_1500.json
+      - name: Retain original signed p moments with NF410 parent
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF431-original-cell3-1500-signed-p-moments
+          path: artifacts/NF431_original_cell3_pmoments_1500.json
+          if-no-files-found: error
+  original-complete-cell3-true-sector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    needs:
+      - original-cell3-coefficient-shards
+      - original-cell3-signed-p-moments
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Arb
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Retrieve source-matched six original cell3 coefficient shards and signed principal moments
+        uses: actions/download-artifact@v4
+        with:
+          pattern: NF431-original-cell3-*
+          path: artifacts/all
+          merge-multiple: true
+      - name: Integrate complete original cell3 source signed pz and z squared from 1500 source coefficients and exact Cheb square
+        run: |
+          python3 -m py_compile scripts/local_replay/nf431_original_complete_cell3_signed_integral_from_shards.py
+          python3 scripts/local_replay/nf431_original_complete_cell3_signed_integral_from_shards.py \
+             --shards artifacts/all --moments artifacts/all/NF431_original_cell3_pmoments_1500.json \
+             --precision 2048 --output artifacts/NF431_original_complete_true_cell3_pz_zsquared.json
+      - name: Retain original complete cell3 continuous signed sector
+        uses: actions/upload-artifact@v4
+        with:
+          name: NF431-original-cell3-complete-true-pz-z2
+          path: artifacts/NF431_original_complete_true_cell3_pz_zsquared.json
+          if-no-files-found: error

@@ -1,0 +1,55 @@
+{
+  "pass": "NF431",
+  "standing": "PERMANENT SOURCE-PINNED ORIGINAL CELL3 ALL EIGHT ACTUAL INTERVAL JSON FILES VERIFIED",
+  "original_GitHub_Actions_run_id": 41279353773,
+  "original_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_support_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "six_native_coefficient_shards": true,
+  "all_1500_original_z_Chebyshev_coefficients_source_verified": true,
+  "all_1500_original_signed_p_moments_source_verified": true,
+  "full_original_signed_cell3_pz_z2_and_sector_certified": true,
+  "original_complete_scalar_decided": false,
+  "RH": "OPEN",
+  "files": [
+    {
+      "name": "NF431_original_cell3_z_shard_0_256.json",
+      "sha256": "246039d1eb3875aaf2df77e61add402ba42cd6a9cec1d77a105e1a6eebd37f16",
+      "bytes": 226820
+    },
+    {
+      "name": "NF431_original_cell3_z_shard_1024_1280.json",
+      "sha256": "52a533e21aa9bea071abfa4d5585db9adf3883b6a8933d074363b03828ecf961",
+      "bytes": 630966
+    },
+    {
+      "name": "NF431_original_cell3_z_shard_1280_1500.json",
+      "sha256": "fa7d8893b8b39be56060bed02450606c0831f79b2eb405c39f3e8fcd9f6068c4",
+      "bytes": 710762
+    },
+    {
+      "name": "NF431_original_cell3_z_shard_256_512.json",
+      "sha256": "56108887b10f1c404d77a8e21a6f4c040e0c108732eb4a77de88a1be14bf51f9",
+      "bytes": 231935
+    },
+    {
+      "name": "NF431_original_cell3_z_shard_512_768.json",
+      "sha256": "07635e385284d142a57a7bf61f5339207da662e42f31089782dac01705c0764e",
+      "bytes": 299810
+    },
+    {
+      "name": "NF431_original_cell3_z_shard_768_1024.json",
+      "sha256": "01a8565aa11a911cf029e4f1a5c9d9deba86f8431fbf383c1f2ee9fa528b1a55",
+      "bytes": 446591
+    },
+    {
+      "name": "NF431_original_cell3_pmoments_1500.json",
+      "sha256": "d738a16320e8cdd9323fa9918c7305f2c675b3598b0807ec44e038d4a3de1211",
+      "bytes": 888061
+    },
+    {
+      "name": "NF431_original_complete_true_cell3_pz_zsquared.json",
+      "sha256": "128ee50cc2fc7c3d830072dadbeb7c57f4722fa4ef8c776d5bbf8cc424ad1e30",
+      "bytes": 22900
+    }
+  ]
+}

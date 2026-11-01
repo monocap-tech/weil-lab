@@ -1,0 +1,43 @@
+name: Weil-Lab NF431 permanent original cell3 full native signed-sector archive
+on:
+  push:
+    branches:
+      - research/nf431-original-cell3-complete-signed-sector
+    paths:
+      - '.github/workflows/nf431-original-cell3-permanent-archive.yml'
+permissions:
+  contents: write
+  actions: read
+jobs:
+  permanent-original-cell3-source-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf431-original-cell3-complete-signed-sector
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve exact eight original cell3 native successful source-run artifact files
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41279353773
+          github-token: ${{ github.token }}
+          pattern: NF431-original-cell3-*
+          path: notes/data/provisional/nf431-original-cell3
+          merge-multiple: true
+      - name: Verify SHA source, all 1500 coefficients, NF417 point, NF410 signed principal and strict cell3 local sector
+        run: |
+          python3 -m py_compile scripts/local_replay/nf431_original_cell3_permanent_archive_validator.py
+          python3 scripts/local_replay/nf431_original_cell3_permanent_archive_validator.py
+      - name: Additively commit full original cell3 source interval JSON and manifest, no main merge
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notes/data/provisional/nf431-original-cell3/
+          git diff --cached --stat
+          git diff --cached --quiet && exit 0
+          git commit -m 'NF431: permanently custody original complete cell3 native source coefficient intervals and signed sector'
+          git push origin HEAD:refs/heads/research/nf431-original-cell3-complete-signed-sector
