@@ -1,0 +1,18 @@
+name: EF40 source-typed two-row even projection
+on:
+  push:
+    branches: [research/ef40-original-even-two-row-jet-projection]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/validate_rpb108_ef40_original_even_two_row_jet_projection.py
+      - run: python scripts/verify_obligation_manifest.py
