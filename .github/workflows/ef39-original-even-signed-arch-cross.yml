@@ -1,0 +1,26 @@
+name: EF39 original even signed arch-cross source projection
+on:
+  push:
+    branches: [research/ef39-original-even-full-arch-cross-first-row]
+  pull_request:
+    branches: [research/ef38-original-even-first-protected-source-projection]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-even-arch-prime-pole-correlation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify signed 40-mode arch-prime-pole physical Gram and infinite tail
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef39_original_even_full_arch_cross_first_row.py
+          python scripts/validate_rpb108_ef39_original_even_full_arch_cross_first_row.py
+      - name: Verify the canonical open Weil obligation
+        run: python scripts/verify_obligation_manifest.py
