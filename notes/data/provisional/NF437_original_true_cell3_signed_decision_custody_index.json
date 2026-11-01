@@ -1,0 +1,109 @@
+{
+  "pass": "NF437",
+  "standing": "ACCEPTED complete true original continuous physical cell3 signed pz and z²; signed D3 STRICT POSITIVE; global NF410/NF404 W-ODD-NEG/RH OPEN",
+  "repo": "monocap-tech/weil-lab",
+  "draft_pr": 458,
+  "parent_accepted_pr": 456,
+  "original_NF407_full_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_NF406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_physical_positive_cell": 3,
+  "original_true_cell3": "(log(4)-11/10,11/10-log(2))",
+  "original_regular_z_prime_translations": {
+    "minus": [
+      2,
+      3,
+      4
+    ],
+    "plus": [
+      2
+    ],
+    "inactive": [
+      5,
+      7,
+      8,
+      9
+    ]
+  },
+  "original_principal_r_positive_jump_terms_active": [
+    3,
+    4
+  ],
+  "original_principal_r_positive_jump_terms_inactive": [
+    2,
+    5,
+    7,
+    8,
+    9
+  ],
+  "original_two_n2_regular_translates_but_zero_n2_principal_jumps": true,
+  "source_generators": 246,
+  "source_critical_sine_frequencies": 32,
+  "source_original_NF404_dyadic_center": "6677356497477490213/4611686018427387904",
+  "source_original_common_endpoint_images": 2048,
+  "original_accepted_cell3_Chebyshev_source_modes": 512,
+  "original_accepted_cell3_signed_p_moments": 512,
+  "original_accepted_cell3_raw_dx_moments": 1023,
+  "original_true_cell3_endpoint_length_approx": "0.120558458320164071748303635625",
+  "original_true_cell3_principal_p0_approx": "-1.648342368645409920942421457642e-12",
+  "original_NF410_independent_original_principal_p0_overlap": true,
+  "original_true_z_minus_source_midpoint_P511_uniform_bound_approx": "1.240272970503549096570565174797e-39",
+  "true_original_cell3_pz_outward_decimal_conservative": [
+    "-5.135803138013452832822478228e-23",
+    "-5.135803138013452832822478227e-23"
+  ],
+  "true_original_cell3_z2_outward_decimal_conservative": [
+    "1.528104155744626211937318736e-22",
+    "1.528104155744626211937318757e-22"
+  ],
+  "true_original_cell3_D3_4pz_plus_2z2_outward_decimal_conservative": [
+    "1.001887056283871290745646182e-22",
+    "1.001887056283871290745646222e-22"
+  ],
+  "true_original_cell3_D3_strict_positive": true,
+  "true_original_cell3_D3_exact_fraction_width_approx": "3.904169585116114e-48",
+  "true_original_cell3_pz_true_z_tail_fee_approx": "2.044394485966698750085103922192e-51",
+  "true_original_cell3_z2_true_z_tail_fee_approx": "9.719536073070949625636870252477e-49",
+  "original_exact_fraction_parent_inner_SHA256": {
+    "nf434_low32": "004ff92369474dd31aafdc81da4306f555bcdd0911985142b1e6c5f27226c9ff",
+    "nf435_mid224": "23be9e821235569c9b8075b3916c843376dbdd742cd71063e49025260bda7546",
+    "nf436_high256": "6ae216679eb44c6932a016803ff5f84698c70e708dbc9559b83cee3a7b4170cf",
+    "nf436_true_cell3_P511_tail": "9bd859e79b0fe5f569abef8cb78c6dc9642123439e0e211041ad3faa34deccb7",
+    "nf437_signed_p512_dx1023": "3007009a33613eda7349f612a71f8cd3c1658e91c2d3f066e081aa6af591b179",
+    "nf437_complete_original_cell3_signed": "b772b089e5a69a94e8027fee68332d03b5248119f9b7beec0c4e8c6ec80e01d6"
+  },
+  "source_original_nf437_native_moments": {
+    "run": 41282619434,
+    "conclusion": "success",
+    "artifact": 13074326015,
+    "zip_sha256": "2db0e8b70a49decfdb57e2ed73b17687dca359952a32a67c71729879982a0a98"
+  },
+  "source_original_nf437_complete_signed": {
+    "run": 41282903842,
+    "conclusion": "success",
+    "artifact": 13073851733,
+    "zip_sha256": "d7c30cd851eb4bcb83279a7b2188e60e4add0ff070e09337da865e808f63733d"
+  },
+  "first_failed_original_p_m0_control": {
+    "run": 41282417260,
+    "reason": "WRONG principal type: twice active n2 regular z translates falsely counted in original NF407 principal r jump (which activates only at right seam); independent accepted NF410 p0 correctly rejected it."
+  },
+  "post_correction_CI_wrapper_errors": {
+    "before_final_success": "Python source string escaped newlines and then Python default 4300-digit Fraction parsing limit. Source moment and contraction mathematical stages separately passed; corrected immutable CI both success."
+  },
+  "actions_artifacts_expire": "2027-01-30",
+  "complete_generated_exact_rational_JSON_permanently_archived": false,
+  "accepted_true_original_cell6_signed_negative_from_NF432": true,
+  "accepted_true_original_cell3_signed_positive_NF437": true,
+  "remaining_positive_physical_cells_original": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8
+  ],
+  "original_complete_NF410_NF404_global_scalar_decided": false,
+  "original_fourth_J242_exterior_upper_closed": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
