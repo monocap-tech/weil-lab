@@ -61,7 +61,7 @@ def main():
   assert parent['original_independent_direct_source_both_n2_prime_overlap_pass']
   assert parent['original_independent_direct_source_endpoint_overlap_pass']
   assert parent['common_endpoint_image_indices']==2048
- assert m['original_active_weight_multiplicities']=={'2':2,'3':1,'4':1}
+ assert m['original_principal_jump_weights_active']==[3,4]\n assert m['original_principal_jump_weights_inactive']==[2,5,7,8,9]\n assert m['original_principal_jump_weight_multiplicities']=={'3':1,'4':1}\n assert m['original_regular_z_has_both_n2_translates_but_p_has_none']
  assert m['original_nf410_independent_true_cell3_signed_p0_overlap']
  assert m['number_original_signed_p_moments']==N
  assert m['number_original_raw_dx_moments']==2*N-1
@@ -129,7 +129,7 @@ def main():
   'original_true_cell3':'(log(4)-11/10,11/10-log(2))',
   'original_active_minus_prime_powers':[2,3,4],
   'original_active_plus_prime_powers':[2],
-  'original_cell3_n2_weight_multiplicity':2,
+  'original_regular_response_n2_translate_multiplicity':2,\n  'original_principal_p_n2_jump_multiplicity':0,\n  'original_principal_p_jump_active':[3,4],
   'original_NF404_dyadic_center':m['original_NF404_dyadic_center'],
   'original_cell3_cheb_coefficient_balls':N,
   'original_exact_P511_midpoints_used':True,
