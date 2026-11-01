@@ -1,0 +1,64 @@
+name: Weil-Lab NF442 original J1 source native high Cheb
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf442_original_cell1_correlated_cheb_index_block_native.py'
+      - '.github/workflows/nf442-original-cell1-native-blocks.yml'
+permissions:
+  contents: read
+jobs:
+  original-cell1-native-indexed:
+    strategy:
+      fail-fast: false
+      matrix:
+        bounds:
+          - {start: 64, stop: 320}
+          - {start: 320, stop: 512}
+          - {start: 56, stop: 72}
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install python-flint==0.8.0
+      - name: Actual original J1 full NF407 source native modes
+        run: |
+          python3 -m py_compile scripts/local_replay/nf442_original_cell1_correlated_cheb_index_block_native.py
+          python3 scripts/local_replay/nf442_original_cell1_correlated_cheb_index_block_native.py --start ${{ matrix.bounds.start }} --stop ${{ matrix.bounds.stop }} --precision 2048 --output artifacts/NF442_original_J1_${{ matrix.bounds.start }}_${{ matrix.bounds.stop }}.json
+      - name: Original J1 both n2/n3 regular signs, correct source intervals
+        env:
+          START: ${{ matrix.bounds.start }}
+          STOP: ${{ matrix.bounds.stop }}
+        run: |
+          python3 - <<'PY'
+          import json,os,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          a=int(os.environ['START']);b=int(os.environ['STOP'])
+          d=json.load(open(f'artifacts/NF442_original_J1_{a}_{b}.json'))
+          assert d['pass']=='NF442'
+          assert d['source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_true_cell1']=='(0,11/10-log(3))'
+          assert d['original_minus_translate_primes']==[2,3] and d['original_plus_translate_primes']==[2,3]
+          assert d['original_neither_prime_branches']==[4,5,7,8,9]
+          assert d['original_signed_prime_translate_terms']==4
+          assert d['original_independent_direct_source_both_n2_and_n3_prime_overlap_pass']
+          assert d['original_independent_direct_source_endpoint_overlap_pass']
+          assert d['common_endpoint_image_indices']==2048
+          assert d['original_native_precision_bits']==2048
+          assert d['mode_start_inclusive']==a and d['mode_stop_exclusive']==b
+          assert [x['n'] for x in d['coefficients']]==list(range(a,b))
+          assert all(F(x['true_original_cell1_fixed_branch_coefficient_outward_interval'][1])-F(x['true_original_cell1_fixed_branch_coefficient_outward_interval'][0])<F(1,10**44) for x in d['coefficients'])
+          assert not d['true_cell1_signed_pz_and_z2_integrated']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF442 original J1 both n2/n3 source modes',a,b,'PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF442-original-J1-source-modes-${{ matrix.bounds.start }}to${{ matrix.bounds.stop }}
+          path: artifacts/NF442_original_J1_${{ matrix.bounds.start }}_${{ matrix.bounds.stop }}.json
+          if-no-files-found: error
