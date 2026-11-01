@@ -32,7 +32,7 @@ The code `scripts/local_replay/nf437_original_cell3_signed_p512_dx1023_native.py
 `J0=H(tR−tL)`, `J1=H(tR²−tL²)/2`,
 `Jk=H[T_(k+1)/(2(k+1))−T_(k−1)/(2(k−1))]_(tL)^(tR)` for k>=2,
 
-with `tL=(log4-B-C)/H`, `tR=(B-log2-C)/H`. Original length `log(2.2/4? no): J0≈0.1205584583201640717483` (actual exact interval `(log2+B)−log4`; never replace by rational endpoint). The original endpoint log series `log(B/(B-C-Ht))=ell0+Σ_k>=1 2q^k T_k/k`, with `q=H/(B-C+sqrt((B-C)^2-H²))<1/10`, is truncated after 110 modes and its analytic tail paid as exact rational `2*(1/10)^111/[111*(1−1/10)]` plus explicit original v-source radius and true J3 length. This constructs all 512 original signed p moments and 1023 raw dx moments under rigorous outward Arb balls.
+with `tL=(log4-B-C)/H`, `tR=(B-log2-C)/H`. Original exact length `J0=(B−log2)−(log4−B)=2B−log8≈0.1205584583201640717483`, obtained from the original irrational NF406 seams (no rational surrogate endpoints). The original endpoint log series `log(B/(B-C-Ht))=ell0+Σ_k>=1 2q^k T_k/k`, with `q=H/(B-C+sqrt((B-C)^2-H²))<1/10`, is truncated after 110 modes and its analytic tail paid as exact rational `2*(1/10)^111/[111*(1−1/10)]` plus explicit original v-source radius and true J3 length. This constructs all 512 original signed p moments and 1023 raw dx moments under rigorous outward Arb balls.
 
 [Focused native signed-moment Actions #41282619434 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41282619434). Full 512 p and 1023 dx original-source native output artifact **#13074326015**, ZIP SHA256 `2db0e8b70a49decfdb57e2ed73b17687dca359952a32a67c71729879982a0a98`, generated inner original JSON SHA256 `3007009a33613eda7349f612a71f8cd3c1658e91c2d3f066e081aa6af591b179`, expires 2027-01-30.
 
