@@ -15,3 +15,20 @@
 **Next:** prioritize native a256..a511 or instead certify a cell3-specific sufficient tail at n256; then original signed p moments, raw dx moments and rigorous true complete cell3 pz/z². Keep cell7's near-B endpoint/image obstruction on its own closed/nontransferred interface. Other original six positive cells, NF410/NF404 signed global and principal `E_p`, fourth J242 exterior, W-ODD-NEG, even/whole Weil, infinite operator domain/inverse, RH remain OPEN.
 
 No main merge or transfer of wrong cell branches.
+
+
+## Verified original source-native result — NF435 ACCEPTED
+
+[Focused GitHub Actions run #41280032835](https://github.com/monocap-tech/weil-lab/actions/runs/41280032835): **SUCCESS** for the entire original cell3 high-index 32..255 coefficient run, separate low8 direct original source replay, immutable original NF434 source-parent SHA256 check and strict pairwise overlapping low modes. No missed mode index or origin shift. Both original original-source physical n2 plus/minus branches and original endpoint u4(B) independent direct source checks PASS.
+
+Actual new coefficient balls: **224** original fixed-cell3 branch Chebyshev SERIES coefficients `a32..a255`, outward 2048-bit Arb/Acb interval width **exact 8e−45** for each (strictly below 1e−25), original source and NF406 seam SHA unchanged. Already accepted NF434 a0..a31 gives **256 cumulative original physical cell3 coefficient balls a0..a255**. Original independent low 8 n0..7 from shortened series padding overlap the corresponding independently accepted NF434 native32 coefficient intervals; no numerical value was borrowed from another cell.
+
+Actual verified artifact records:
+- Original cell3 a32..a255, artifact **#13072468167**, ZIP SHA256 `3d1da585403df5aff271f45445e5f39c5b9a499c3e97a860bc0c1a2e367409fb`, generated native JSON SHA256 `23be9e821235569c9b8075b3916c843376dbdd742cd71063e49025260bda7546`.
+- Independent original cell3 a0..a7 control, artifact **#13072328441**, ZIP SHA256 `fdf1b44a41a7818c016587cede61d8d5c275aaea9aab5d98a5c8295ae2b74bee`, generated native JSON SHA256 `4fb9da6834cb1b1f0f9da8f3021bd0db48f084b9e5d032b2bcb6b406362264d6`.
+- Both generated Actions artifacts retained until **2027-01-30**, raw full JSON endpoint permanent archival STILL DUE.
+- Permanent compact SHA/source/branch/mode/verification acceptance custody: `notes/data/provisional/NF435_original_cell3_native256_coefficients_custody_index.json`.
+
+**Mathematical standing:** The new original 224 interval balls are source-certified. The original NF433 n512..infinity source-generator triangle is not a uniform `z-P255` bound, and NF435 has **not** certified an original cell3 sourcewise real function tail beyond P255, signed p moments, raw dx moments or the true complete `∫pz`, `∫z²`, and `4∫pz+2∫z²`. NF432's complete signed cell6 integration remains untouched and accepted, but does not establish the cell3 sign. Global NF410/NF404, original fourth J242 exterior, W-ODD-NEG, even/whole Weil, infinite inverse and RH remain **OPEN**.
+
+**Next NF436:** original true cell3 a256..a511 source-native block with new independent overlap; in parallel evaluate whether the original sourcewise n512 tail plus cell-specific pole, log, 2048-image/source uncertainty closes the complete function without evaluating more coefficients. Then original cell3 signed p and raw dx moments and complete true signed contraction.
