@@ -1,0 +1,54 @@
+name: Weil-Lab NF440 original J5 independent two-cut source contact
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf440_original_cell5_two_internal_cuts_source_contact_exact.py'
+      - '.github/workflows/nf440-original-cell5-contact.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-source-polynomial-contact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch source-native original J5 independent 512-mode panels and exact tails
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for p in 1 2 3; do
+            mkdir -p "artifacts/p$p/low" "artifacts/p$p/high" "artifacts/p$p/tail"
+            gh run download 41348228875 --repo "$GITHUB_REPOSITORY" --name "NF440-original-J5-p${p}-m0to256" --dir "artifacts/p$p/low"
+            gh run download 41348228875 --repo "$GITHUB_REPOSITORY" --name "NF440-original-J5-p${p}-m256to512" --dir "artifacts/p$p/high"
+            gh run download 41348228856 --repo "$GITHUB_REPOSITORY" --name "NF440-original-J5-panel${p}-sourcewise-512-tail" --dir "artifacts/p$p/tail"
+          done
+      - name: Exact Fraction true original z response contact at artificial cuts x0.62 and 0.73
+        run: |
+          python3 -m py_compile scripts/local_replay/nf440_original_cell5_two_internal_cuts_source_contact_exact.py
+          python3 scripts/local_replay/nf440_original_cell5_two_internal_cuts_source_contact_exact.py --input-root artifacts --output artifacts/NF440_J5_original_two_cut_source_contact.json
+          python3 - <<'PY'
+          import json,sys
+          sys.set_int_max_str_digits(0)
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF440_J5_original_two_cut_source_contact.json'))
+          assert d['pass']=='NF440'
+          assert d['original_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['original_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_true_cell5']=='(log(5)-11/10,log(7)-11/10)'
+          assert d['original_rational_cuts_not_prime_jumps']==['31/50','73/100']
+          assert d['panels_all_share_original_regular_minus_n2_n3_n4_n5']
+          assert [x['cut'] for x in d['original_contact_checks']]==['31/50','73/100']
+          for x in d['original_contact_checks']:
+              assert x['true_z_intervals_at_cut_overlap']
+              assert x['difference_strict_below_1e_minus59']
+              assert F(x['absolute_midpoint_P511_difference'])<F(x['two_full_source_tail_sum'])
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF440 PASS independently SHA-pinned original J5 two internal-cut same-source continuity; no new jumps')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF440-original-J5-two-artificial-cut-source-contact
+          path: artifacts/NF440_J5_original_two_cut_source_contact.json
+          if-no-files-found: error
