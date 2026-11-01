@@ -1,0 +1,49 @@
+name: Weil-Lab NF438 true original cells4/5 principal p0 independent NF410
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf438_original_cells4_5_true_principal_p0_native.py'
+      - '.github/workflows/nf438-original-cells4-5-principal-p0.yml'
+permissions:
+  contents: read
+jobs:
+  two-original-principal-source-m0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install python-flint==0.8.0
+      - name: Original true NF407 p0 in cells4/5 vs independent NF410
+        run: |
+          python3 -m py_compile scripts/local_replay/nf438_original_cells4_5_true_principal_p0_native.py
+          python3 scripts/local_replay/nf438_original_cells4_5_true_principal_p0_native.py \
+            --output artifacts/NF438_original_cells4_5_principal_p0.json
+      - name: Source exact NF407 original jumps and no signed promotion
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          sys.set_int_max_str_digits(0)
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF438_original_cells4_5_principal_p0.json'))
+          assert d['pass']=='NF438'
+          assert d['source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['cells']['4']['original_active_principal_jump_prime_powers']==[2,3,4]
+          assert d['cells']['5']['original_active_principal_jump_prime_powers']==[2,3,4,5]
+          for x in d['cells'].values():
+              assert x['original_NF410_independent_original_p0_overlap']
+              assert x['original_signed_principal_p0_negative']
+              assert F(x['original_true_principal_p0_interval'][1])<0
+              assert not x['original_true_cell_signed_pz_z2_integrated']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF438 original cells4/5 true p0 PASS independent NF410')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF438-original-cells4-5-source-native-principal-p0
+          path: artifacts/NF438_original_cells4_5_principal_p0.json
+          if-no-files-found: error

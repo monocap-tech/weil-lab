@@ -1,0 +1,38 @@
+name: Weil-Lab NF438 original cell5 source three panel feasibility
+on:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf438_original_cell5_three_panel_512_candidate_exact.py'
+      - '.github/workflows/nf438-original-cell5-3panel.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  three-panel-original-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify original three-panel source triangle
+        run: |
+          python3 -m py_compile scripts/local_replay/nf438_original_cell5_three_panel_512_candidate_exact.py
+          python3 scripts/local_replay/nf438_original_cell5_three_panel_512_candidate_exact.py --output artifacts/NF438_cell5_three_panel_source.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('artifacts/NF438_cell5_three_panel_source.json'))
+          assert d['pass']=='NF438' and len(d['panels'])==3
+          assert d['regular_minus']==d['principal_jumps']==[2,3,4,5]
+          assert d['regular_plus']==[]
+          assert all(len(x['ellipses'])==4 and sum(x['chosen_rhos'].values())==273 for x in d['panels'])
+          assert not d['full_true_cell5_signed_integral_certified']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF438 original J5 three analytic panels verified; complete signed J5 OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF438-original-cell5-three-panel-source
+          path: artifacts/NF438_cell5_three_panel_source.json
+          if-no-files-found: error

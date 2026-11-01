@@ -1,0 +1,59 @@
+name: Weil-Lab NF438 original cell4 native source correlated Chebyshev a0to63
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf438_original_cell4_native_source_cheb64.py'
+      - '.github/workflows/nf438-original-cell4-native-cheb64.yml'
+permissions:
+  contents: read
+jobs:
+  original-cell4-native-cheb64:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install rigorous native Arb/Acb
+        run: python3 -m pip install python-flint==0.8.0
+      - name: True original cell4 fixed branch source correlated a0to63
+        run: |
+          python3 -m py_compile scripts/local_replay/nf438_original_cell4_native_source_cheb64.py
+          python3 scripts/local_replay/nf438_original_cell4_native_source_cheb64.py \
+            --modes 64 --precision 2048 \
+            --output artifacts/NF438_original_cell4_native_Cheb64.json
+      - name: Source-original no sign promotion and independent prime direct source validation
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          sys.set_int_max_str_digits(0)
+          from fractions import Fraction as F
+          d=json.load(open('artifacts/NF438_original_cell4_native_Cheb64.json'))
+          assert d['pass']=='NF438'
+          assert d['source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_true_cell4']=='(11/10-log(2),log(5)-11/10)'
+          assert d['original_minus_translate_primes']==[2,3,4]
+          assert d['original_plus_translate_primes']==[]
+          assert d['original_neither_prime_branches']==[5,7,8,9]
+          assert d['original_signed_prime_translate_terms']==3
+          assert d['original_four_selected_plus_critical_count']==246
+          assert d['original_independent_direct_source_n2_n3_n4_minus_only_prime_overlap_pass']
+          assert d['original_independent_direct_source_endpoint_overlap_pass']
+          assert d['common_endpoint_image_indices']==2048
+          assert d['original_native_precision_bits']==2048
+          assert d['number_of_certified_low_mode_coefficients']==64
+          assert [x['n'] for x in d['coefficients']]==list(range(64))
+          assert all(F(x['true_original_cell4_fixed_branch_coefficient_outward_interval'][1])-F(x['true_original_cell4_fixed_branch_coefficient_outward_interval'][0])<F(1,10**25) for x in d['coefficients'])
+          assert not d['true_cell4_signed_pz_and_z2_integrated']
+          assert not d['NF404_complete_signed_scalar_decided']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF438 PASS original cell4 native 64 source modes with original 3 minus-only shifts, direct source overlap; signed cell OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF438-original-cell4-true-source-native-Cheb64
+          path: artifacts/NF438_original_cell4_native_Cheb64.json
+          if-no-files-found: error

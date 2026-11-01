@@ -1,0 +1,159 @@
+{
+  "pass": "NF438",
+  "standing": "ACCEPTED source-exact true cells4/5 regular/principal support, independent true p0 native NF410 overlap, 64 original cell4 source-native coefficients; original J5 three-panel candidate route improves 512 generator triangle. Both full true signed J4/J5 OPEN.",
+  "canonical_obligation": "W-ODD-NEG",
+  "source_exact_original_NF407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_NF406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "pr": 459,
+  "parent_pr": 458,
+  "true_cells": {
+    "4": {
+      "physical_J4": "(11/10-log(2),log(5)-11/10)",
+      "regular_minus": [
+        2,
+        3,
+        4
+      ],
+      "regular_plus": [],
+      "principal_jumps_active": [
+        2,
+        3,
+        4
+      ],
+      "principal_jumps_inactive": [
+        5,
+        7,
+        8,
+        9
+      ],
+      "original_analytic_C": "459/1000",
+      "original_analytic_H": "54/1000",
+      "admissible_rho": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "sourcewise_generator_512_tail_approx": "3.9228210283553765e-60",
+      "sourcewise_ellipse_selection": {
+        "2": 0,
+        "3": 4,
+        "4": 3,
+        "5": 266
+      },
+      "original_native_source_correlated_prefix_accepted_modes": 64,
+      "original_native_prefix_modes": "0..63",
+      "original_native_all64_coefficient_width_approx": "8e-45",
+      "original_true_principal_p0_approx": "-2.085877703188673e-12",
+      "full_true_z_minus_P511_function_tail_certified": false,
+      "true_signed_pz_z2_integrated": false
+    },
+    "5": {
+      "physical_J5": "(log(5)-11/10,log(7)-11/10)",
+      "regular_minus": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "regular_plus": [],
+      "principal_jumps_active": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "principal_jumps_inactive": [
+        7,
+        8,
+        9
+      ],
+      "single_panel_C": "678/1000",
+      "single_panel_H": "17/100",
+      "single_panel_admissible_rho": [
+        2,
+        3,
+        4
+      ],
+      "single_panel_generator_512_tail_approx": "5.077729773070616e+177",
+      "three_panel_centers": [
+        "113/200",
+        "677/1000",
+        "789/1000"
+      ],
+      "three_panel_H": "63/1000",
+      "true_internal_cuts": [
+        "31/50",
+        "73/100"
+      ],
+      "three_panel_sourcewise_generator_tail_per_panel_approx": "2.436190439842136e-35",
+      "three_panel_sourcewise_ellipse_selection_per_panel": {
+        "2": 2,
+        "3": 5,
+        "4": 0,
+        "5": 266
+      },
+      "three_panel_source_generator_tail_below_1e_minus20": true,
+      "three_panel_same_original_physical_branch": true,
+      "original_true_principal_p0_approx": "-1.0545232345192611e-11",
+      "three_panel_complete_model_image_source_error_certified": false,
+      "three_panel_native_z_coefficient_intervals_certified": false,
+      "true_signed_pz_z2_integrated": false
+    }
+  },
+  "original_source_generators": 246,
+  "original_frequency_degree_groups": 273,
+  "original_NF405_regular_action": "-sum Lambda(n)/sqrt(n)*(u4(x+logn)+u4(x-logn))",
+  "original_NF407_principal_r_action": "u4(B)*sgn(x)*sum_n w_n*1_(|x|>|B-log n|)",
+  "verification": {
+    "router": {
+      "run_id": 41337646727,
+      "conclusion": "success",
+      "artifact_id": 13096171213,
+      "zip_sha256": "e2edc8c033a8cda7a124ff95efb891aef2986492716320b9b426e0096bbed144",
+      "original_JSON_sha256": "9f8c3b379b5050c06baf355cc396689f1f686d55db9ff6721338e5330a7e8cb9"
+    },
+    "p0": {
+      "run_id": 41337646776,
+      "conclusion": "success",
+      "artifact_id": 13095668563,
+      "zip_sha256": "8a4e666211d3fd78642a1ebc00e6045f08cbeb7e575b8e44cec0734afcd8cdaa",
+      "original_JSON_sha256": "b10057b4ec7d2f028342e1ef8ea5111d7f59d01639c7c2bceb2172fa99256177"
+    },
+    "native_cell4_64": {
+      "run_id": 41337646749,
+      "conclusion": "success",
+      "artifact_id": 13095439864,
+      "zip_sha256": "76074ce0eea34d5c782b311c891990900cfa70346cf0d603a4ed00acf884d55f",
+      "original_JSON_sha256": "ab98174c259d36df3b34f30486c3231f1d95bc90910938aab05c72d7ff4c9cc2"
+    },
+    "cell5_three_panel": {
+      "run_id": 41338079319,
+      "conclusion": "success",
+      "artifact_id": 13096615070,
+      "zip_sha256": "2f3727262b0b193deb69a906c69b9cac1583c0c25bbf526ccf89dcf7f6c613ed",
+      "original_JSON_sha256": "070bef341e9f6d26f2b9b05f4a649a168c426ddb04db6a507817fd801af65f81"
+    }
+  },
+  "original_true_cell3_positive_accepted_from_NF437": true,
+  "original_true_cell6_negative_accepted_from_NF432": true,
+  "source_full_signed_cells_complete": [
+    3,
+    6
+  ],
+  "source_full_signed_cells_open": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8
+  ],
+  "source_frequency_tail_only_is_NOT_complete_true_response": true,
+  "artifacts_expiration": "2027-01-30",
+  "source_true_full_z2_pz_cell4_5_complete": false,
+  "original_global_NF410_NF404_signed_scalar_decided": false,
+  "original_fourth_J242_exterior_upper": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
