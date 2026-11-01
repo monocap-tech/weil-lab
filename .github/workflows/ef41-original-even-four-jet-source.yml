@@ -1,0 +1,26 @@
+name: EF41 original signed four protected even jet source rows
+on:
+  push:
+    branches: [research/ef41-original-even-four-row-jet-projection]
+  pull_request:
+    branches: [research/ef40-original-even-two-row-jet-projection]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  genuine-original-four-source-gram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Source-native original four jet Gram and complete signed response
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef41_original_even_four_jet_projection.py
+          python scripts/validate_rpb108_ef41_original_even_four_jet_projection.py
+      - name: Verify unchanged canonical Weil theorem obligation
+        run: python scripts/verify_obligation_manifest.py
