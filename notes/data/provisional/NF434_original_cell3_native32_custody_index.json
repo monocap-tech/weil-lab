@@ -1,0 +1,57 @@
+{
+  "pass": "NF434",
+  "standing": "ACCEPTED ORIGINAL TRUE CELL3 FIXED-BRANCH CORRELATED NATIVE CHEBYSHEV COEFFICIENTS a0..a31 AND INDEPENDENT ORIGINAL DIRECT SOURCE PRIME/ENDPOINT CHECKS; FULL CELL3 SIGNED INTEGRAL OPEN",
+  "canonical_active_obligation": "W-ODD-NEG",
+  "source_original_NF407_242selected_plus_fourcritical_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_NF406_17prime_seam_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_NF433_branch_router_script_sha256": "5013798cabac011203dfa69114cd22380d186983393cfcd37c465a51dde68655",
+  "true_positive_physical_cell3": "(log4-11/10,11/10-log2)",
+  "original_n2_both_directions": true,
+  "original_active_minus": [
+    2,
+    3,
+    4
+  ],
+  "original_active_plus": [
+    2
+  ],
+  "original_inactive": [
+    5,
+    7,
+    8,
+    9
+  ],
+  "original_prime_translate_count": 4,
+  "original_native_precision_bits": 2048,
+  "source_original_selected_plus_critical": 246,
+  "original_critical_sinh_m0_pole_removable": true,
+  "original_endpoint_image_indices": 2048,
+  "exact_NF404_dyadic_center": "6677356497477490213/4611686018427387904",
+  "analytic_fixed_branch_cheb_center": "347/1000",
+  "analytic_fixed_branch_cheb_halfwidth": "61/1000",
+  "original_native_modes_certified": 32,
+  "original_native_mode_indices": [
+    0,
+    31
+  ],
+  "all_original_cell3_coefficient_interval_widths": "8e-45",
+  "original_per_mode_analytic_source_image_charge": "4e-45",
+  "original_direct_original_sine_cosine_signed_four_prime_terms_overlap": true,
+  "original_independent_original_source_uB_endpoint_overlap": true,
+  "original_full_true_cell3_uniform_P31_tail_certified": false,
+  "original_true_cell3_signed_pz_z2_certified": false,
+  "true_cell6_signed_result_NF432_preserved": true,
+  "source_exact_workflow_run_success": 41269505735,
+  "source_exact_workflow_url": "https://github.com/monocap-tech/weil-lab/actions/runs/41269505735",
+  "source_exact_script_commit": "a50f9e9216a3a9a5cb7b58a4b00cb3e1a534e076",
+  "source_original_numeric_artifact_id": 13069060512,
+  "source_original_numeric_artifact_zip_sha256": "a61b39d455283e635ef0177a6c6b140f446021cf258b8bc821a434b2132dd5d6",
+  "source_original_numeric_json_sha256": "004ff92369474dd31aafdc81da4306f555bcdd0911985142b1e6c5f27226c9ff",
+  "artifact_retention_expiry": "2027-01-30",
+  "generated_full_exact_rational_interval_JSON_permanently_committed": false,
+  "first_failed_workflow_id": 41269454369,
+  "first_failure_classification": "import path only, no mathematical execution, repaired",
+  "global_NF410_NF404_complete_signed_scalar_decided": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
