@@ -125,6 +125,7 @@ def main():
   "original_real_cell3_2048_image_remainder":str(image),
   "original_4096bit_source_radius_charge":str(source_charge),
   "original_all_512_native_coefficient_interval_charge":str(native_coefficient_charge),
+  "required_each_native_coefficient_interval_width_strict_less_than":"1e-44",
   "original_true_cell3_z_minus_any_accepted_P511_uniform_error_exact_upper":str(true_error),
   "original_true_cell3_uniform_error_strict_below":"1e-38",
   "original_true_cell3_signed_pz_z2_integrated":False,
