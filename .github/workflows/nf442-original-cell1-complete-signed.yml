@@ -1,0 +1,70 @@
+name: Weil-Lab NF442 original true J1 complete signed 4pz plus 2z2
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf442_original_cell1_true_signed_from_P511_exact.py'
+      - '.github/workflows/nf442-original-cell1-complete-signed.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-J1-complete-signed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve six immutable original NF441/NF442 source receipts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/{low,mid,high,control,tail,moments}
+          gh run download 41358651067 --repo "$GITHUB_REPOSITORY" --name NF441-original-true-cell1-native-64 --dir artifacts/low
+          gh run download 41362698409 --repo "$GITHUB_REPOSITORY" --name NF442-original-J1-source-modes-64to320 --dir artifacts/mid
+          gh run download 41362698409 --repo "$GITHUB_REPOSITORY" --name NF442-original-J1-source-modes-320to512 --dir artifacts/high
+          gh run download 41362698409 --repo "$GITHUB_REPOSITORY" --name NF442-original-J1-source-modes-56to72 --dir artifacts/control
+          gh run download 41358651184 --repo "$GITHUB_REPOSITORY" --name NF441-original-J1-J2-conditional-512-source-tails --dir artifacts/tail
+          gh run download 41362698605 --repo "$GITHUB_REPOSITORY" --name NF442-original-J1-native-p512-rawdx1023 --dir artifacts/moments
+      - name: Validate real original J1 512 source, 16 coefficient overlaps and exact true continuous signed integral
+        run: |
+          python3 -m py_compile scripts/local_replay/nf442_original_cell1_true_signed_from_P511_exact.py
+          python3 scripts/local_replay/nf442_original_cell1_true_signed_from_P511_exact.py \
+            --low artifacts/low/NF441_original_true_J1_native64.json \
+            --mid artifacts/mid/NF442_original_J1_64_320.json \
+            --high artifacts/high/NF442_original_J1_320_512.json \
+            --control artifacts/control/NF442_original_J1_56_72.json \
+            --tail artifacts/tail/NF441_original_J1_J2_conditional_tail.json \
+            --moments artifacts/moments/NF442_original_true_J1_moments.json \
+            --output artifacts/NF442_original_true_cell1_signed.json
+      - name: Source original whole true J1 accepted sign, no global promotion
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          d=json.load(open('artifacts/NF442_original_true_cell1_signed.json'))
+          assert d['pass']=='NF442'
+          assert d['original_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['original_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_true_cell1']=='(0,11/10-log(3))'
+          assert d['original_active_regular_minus']==[2,3]
+          assert d['original_active_regular_plus']==[2,3]
+          assert d['original_active_principal_jumps']==[]
+          assert d['original_principal_jump_multiplicities']=={}
+          assert d['original_source_native_512_coefficient_balls']==512
+          assert d['original_independent_source_overlap_modes_56_to_71']
+          assert d['original_signed_p_moments_used']==512 and d['original_raw_dx_moments_used']==1023
+          assert d['original_original_nf410_p0_overlap']
+          assert F(d['original_true_z_minus_midpoint_P511_uniform_error_exact'])<F(1,10**38)
+          a,b=map(F,d['original_true_J1_signed_4pz_plus_2z2_interval'])
+          assert a<=b and b-a<F(1,10**20)
+          assert d['original_true_J1_signed_sign']=='positive' and a>0
+          assert not d['original_original_global_NF410_NF404_scalar_decided']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF442 PASS strictly positive genuine original J1 D1',float(a),float(b),'global W-ODD-NEG RH OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF442-original-true-cell1-complete-signed
+          path: artifacts/NF442_original_true_cell1_signed.json
+          if-no-files-found: error
