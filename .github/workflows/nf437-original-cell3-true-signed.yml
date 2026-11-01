@@ -1,0 +1,79 @@
+name: Weil-Lab NF437 complete true original cell3 signed pz and z2
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf437_original_cell3_true_signed_from_P511_exact.py'
+      - '.github/workflows/nf437-original-cell3-true-signed.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  source-pinned-true-original-cell3-signed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download immutable original NF434, NF435, NF436 (high, tail), NF437 moments
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/low artifacts/mid artifacts/high artifacts/tail artifacts/moments
+          gh run download 41269505735 --repo "$GITHUB_REPOSITORY" \
+            --name NF434-original-true-cell3-native-cheb32-both-n2-sides --dir artifacts/low
+          gh run download 41280032835 --repo "$GITHUB_REPOSITORY" \
+            --name NF435-original-true-cell3-native-Chebyshev-modes32to255 --dir artifacts/mid
+          gh run download 41281254385 --repo "$GITHUB_REPOSITORY" \
+            --name NF436-original-cell3-fullsource-native-high256-n256to511 --dir artifacts/high
+          gh run download 41281611418 --repo "$GITHUB_REPOSITORY" \
+            --name NF436-original-cell3-true-z-P511-sourcewise-tail-exact --dir artifacts/tail
+          gh run download 41282619434 --repo "$GITHUB_REPOSITORY" \
+            --name NF437-original-true-cell3-signed-p512-and-rawdx1023 --dir artifacts/moments
+      - name: True original signed continuous pz, z2 and 4pz+2z2 exact Fraction
+        run: |
+          python3 -m py_compile scripts/local_replay/nf437_original_cell3_true_signed_from_P511_exact.py
+          python3 scripts/local_replay/nf437_original_cell3_true_signed_from_P511_exact.py \
+            --low artifacts/low/NF434_original_true_cell3_native_cheb32.json \
+            --mid artifacts/mid/NF435_original_cell3_cheb32to255_native.json \
+            --high artifacts/high/NF436_original_cell3_Chebyshev_256_to_511_native.json \
+            --tail artifacts/tail/NF436_original_cell3_P511_sourcewise_true_z_tail.json \
+            --moments artifacts/moments/NF437_original_cell3_true_p512_dx1023_native.json \
+            --moments-sha256 3007009a33613eda7349f612a71f8cd3c1658e91c2d3f066e081aa6af591b179 \
+            --output artifacts/NF437_original_complete_true_cell3_signed_pz_z2.json
+      - name: Accept complete original true signed cell3 only; preserve global open obligations
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          sys.set_int_max_str_digits(0)
+          from fractions import Fraction as F
+          x=json.load(open('artifacts/NF437_original_complete_true_cell3_signed_pz_z2.json'))
+          assert x['pass']=='NF437'
+          assert x['original_nf407_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert x['original_nf406_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert x['original_true_cell3']=='(log(4)-11/10,11/10-log(2))'
+          assert x['original_regular_response_n2_translate_multiplicity']==2
+          assert x['original_principal_p_n2_jump_multiplicity']==0
+          assert x['original_principal_p_jump_active']==[3,4]
+          assert x['original_cell3_cheb_coefficient_balls']==512
+          assert x['original_complete_cell3_raw_dx_moments_used']==1023
+          assert x['original_complete_cell3_signed_p_moments_used']==512
+          assert F(x['original_true_z_minus_original_midpoint_P511_uniform_error'])<F(1,10**38)
+          assert x['original_true_cell3_signed_integral_decision_quality']
+          assert x['original_true_cell3_nonprincipal_signed_contribution_sign'] in ('positive','negative','undecided')
+          pz=list(map(F,x['original_true_cell3_pz_outward_interval']))
+          z2=list(map(F,x['original_true_cell3_z2_outward_interval']))
+          sign=list(map(F,x['original_true_cell3_signed_4pz_plus_2z2_outward_interval']))
+          assert sign[0]<=4*pz[1]+2*z2[1] and 4*pz[0]+2*z2[0]<=sign[1]
+          assert not x['original_NF410_NF404_global_scalar_decided']
+          assert not x['original_fourth_J242_exterior_upper_closed']
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          print('NF437 complete source-original cell3 continuous integral PASS sign=',x['original_true_cell3_nonprincipal_signed_contribution_sign'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF437-original-complete-true-cell3-signed-pz-z2
+          path: artifacts/NF437_original_complete_true_cell3_signed_pz_z2.json
+          if-no-files-found: error
