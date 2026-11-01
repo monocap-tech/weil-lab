@@ -1,0 +1,58 @@
+name: Weil-Lab NF434 original cell3 BOTH n2 prime signs native Cheb32
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf434_original_cell3_both_sided_native_cheb32.py'
+      - '.github/workflows/nf434-original-cell3-both-sided-cheb32.yml'
+permissions:
+  contents: read
+jobs:
+  original-cell3-both-sides-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source-native Arb/Acb
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Certify original source native physical cell3 a0..a31 and independent direct n2 both shifts
+        run: |
+          python3 -m py_compile scripts/local_replay/nf434_original_cell3_both_sided_native_cheb32.py
+          python3 scripts/local_replay/nf434_original_cell3_both_sided_native_cheb32.py \
+            --modes 32 --precision 2048 \
+            --output artifacts/NF434_original_true_cell3_native_cheb32.json
+      - name: Strict original NF405/406/407 source branch, interval, and no true sign promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          q=json.load(open('artifacts/NF434_original_true_cell3_native_cheb32.json'))
+          assert q['pass']=='NF434'
+          assert q['original_four_selected_plus_critical_count']==246
+          assert q['original_true_cell3']=='(log(4)-11/10,11/10-log(2))'
+          assert q['original_minus_translate_primes']==[2,3,4]
+          assert q['original_plus_translate_primes']==[2]
+          assert q['original_neither_prime_branches']==[5,7,8,9]
+          assert q['original_signed_prime_translate_terms']==4
+          assert q['original_independent_direct_source_both_n2_prime_overlap_pass']
+          assert q['original_independent_direct_source_endpoint_overlap_pass']
+          assert q['common_endpoint_image_indices']==2048
+          assert len(q['coefficients'])==q['number_of_certified_low_mode_coefficients']==32
+          assert [r['n'] for r in q['coefficients']]==list(range(32))
+          assert all(F(r['true_original_cell3_fixed_branch_coefficient_outward_interval'][1])-
+                     F(r['true_original_cell3_fixed_branch_coefficient_outward_interval'][0])<F(1,10**25)
+                     for r in q['coefficients'])
+          assert not q['entire_cell3_poly_from_coefficients_uniformly_certified']
+          assert not q['true_cell3_signed_pz_and_z2_integrated']
+          assert not q['NF410_all_eight_cells_integrated']
+          assert q['W_ODD_NEG']==q['RH']=='OPEN'
+          print('NF434 PASS original source cell3 low32 and n2 both sides; true cell3 integral OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF434-original-true-cell3-native-cheb32-both-n2-sides
+          path: artifacts/NF434_original_true_cell3_native_cheb32.json
+          if-no-files-found: error
