@@ -78,7 +78,8 @@
     "ef39_original_even_first_row_arch_cross": "Original SI10 full first-source signed seven-prime/pole plus 40 genuine arch cutoff half-integer modes integrated with all cross terms, then projected on authentic first protected e. Signed projected square <1/15, original remaining arch tail L2<57/500+1/10000; hence ||P_F g_e||<3/8 and eta<28125/136, still not sign-decisive versus restricted S2>1/500. Native Actions #41262637420 SUCCESS. 468 further protected source rows/true 469D Schur and independent full analytic review OPEN. EF40 stable multi-row or precise method STOP.",
     "ef40_original_even_two_row_projection": "Original SI10 first frequency 37/64 order 15: true even cosine e and first even frequency jet x sin are protected rows. Actual signed original full 7-prime + positive pole and first 40 arch cutoff source physical L2 2-row Gram Schur >1/4; second-source gain ~0.005257751141; original 2-row finite response squared norm <29/500, whole infinite arch paid. Complete original cofinite first-source physical projection <9/25 and eta<3240/17, still far above restricted S2>1/500. Native Actions #41265801578 SUCCESS; 467 remaining source rows, complete 469D Schur, independent original Fourier/domain review, odd/whole/RH OPEN. EF41 next additional true jets.",
     "ef41_original_even_four_jets": "Original first SI10 cluster center 37/64 order 15: four real-even genuine protected Fourier jets cos, x sin, x² cos, x³ sin. Exact native 340-digit signed seven-prime/cosh pole and first 40 quarter-digamma response, original physical 4x4 Gram positive pivots >1/40 at fourth, finite four-row true source L2 residual²<47/1000 with all infinite arch paid <57/500+1/10000; complete true cofinite ||P_Fg_e||<1/3 and eta<25000/153. EF33 restricted S2>1/500 unchanged; 465 protected source rows, full Schur, original Fourier/core independent audit remain OPEN. EF42 evaluate next exact original even source jets and conditioning budget.",
-    "ef42_original_even_six_jet_source": "Original SI10 first even center 37/64 order15; six authentic protected even Fourier jets, exact true signed seven-prime/cosh pole and first40 quarter-digamma cutoff physical correlations, native 340-digit outward six-row Gram. Five/six conditional Gram pivots >1/1500 and >1/100000, finite six-row signed projected square<41/1000, infinite original arch tail fully paid, full original first-source cofinite ||P_Fg_e||<8/25 and eta<2560/17 if final source CI passes. Gram conditioning deteriorates sharply: EF43 retype into source-span preserving orthogonal/normalized representation before escalating monomial jets. True full 469D inverse/Schur, original analytic domain audit, even, odd, whole Weil/RH OPEN."
+    "ef42_original_even_six_jet_source": "Original SI10 first even center 37/64 order15; six authentic protected even Fourier jets, exact true signed seven-prime/cosh pole and first40 quarter-digamma cutoff physical correlations, native 340-digit outward six-row Gram. Five/six conditional Gram pivots >1/1500 and >1/100000, finite six-row signed projected square<41/1000, infinite original arch tail fully paid, full original first-source cofinite ||P_Fg_e||<8/25 and eta<2560/17 if final source CI passes. Gram conditioning deteriorates sharply: EF43 retype into source-span preserving orthogonal/normalized representation before escalating monomial jets. True full 469D inverse/Schur, original analytic domain audit, even, odd, whole Weil/RH OPEN.",
+    "ef43_original_even_six_jet_rational_normalization": "Exact rational invertible lower-triangular C maps unchanged genuine first six SI10 even 37/64 jets onto identical protected source span. Actual original outward physical K=C G C^T has ||K-I||inf<1e-7 (observed ~5.94e-17) and max C coefficient row l1 ~1974.44. Independent inverse-free signed original source physical projection squared residual interval ~[0.040533010546,0.040533098465], direct EF42 ~0.040533054506, strict source cap <0.04054. With complete m>=40 arch tail, original ||P_Fg_e||<79/250 and eta<12482/85. W-EVEN-FORM OPEN, no source row added, 463 of469 remain; original 469D full Schur and independent Fourier/form-domain audit OPEN. EF44 next seventh/eighth genuine even jet using basis conditioning and coefficient growth budget."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -1061,6 +1062,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/451",
       "verification": "Native source interval Actions #41269337033 SUCCESS for all six positive Gram pivots and full original physical source response. Stricter exact rational fifth/sixth positive pivot thresholds, finite residual<41/1000 and full cofinite<8/25 assertions in follow-up focused workflow; do not promote without final-head PASS. Independent true Fourier/digamma physical identity and form-domain/core audit OPEN, original whole 469D even Schur, paused odd and Weil/RH OPEN.",
       "repo_path": "notes/provisional/EF42_ORIGINAL_EVEN_SIX_JET_PROJECTION_20261031.md"
+    },
+    "EF43": {
+      "kind": "exact-rational-span-preserving-original-six-even-source-jet-normalization",
+      "scope": "Original SI10 first protected even frequency 37/64 order15, unchanged six genuine even jet source directions v0..v5 in V469, original seven signed physical prime-power shifts, genuine positive cosh pole, complete first40 physical arch half-integer cutoff modes and entire high-arch m>=40 physical tail. EF43 constructs an EXACT rational lower-triangular invertible C by rational Gram midpoint selection; physical K=C G C^T recomputed with actual original 340-digit outward intervals has row-sum ||K-I||infty<1e-7 (measured ~5.9381585e-17), making a provably conditioned representation of literally identical six-source span. Transformed original signed source pairings h=C b and certified symmetric Gram operator bound give independent inverse-free actual same-six-source squared physical residual interval ~[0.040533010546,0.040533098465], containing EF42 direct ~0.040533054506; native strict residual <4054/100000. Complete original cofinite first-source projected L2 norm <79/250 and inherited original SI10 energy dual eta<12482/85 (mu>17/25000). Rational C coefficient max row l1 ~1974.44; 463 genuine protected modes remain. No new source direction, full 469D projection, original first-source Schur sign, even PSD, whole Weil/RH closure.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/452",
+      "verification": "First native exact original Actions #41270036096 SUCCESS with source 340-digit outward transformed K near identity, rational C exact determinant and independent signed quadratic-order bounds, original full arch tail and governance PASS. Final-head focused CI independently tracked. Original Fourier/digamma physical cutoff and form-core analytic audit remains OPEN; actual 469D q-inverse and entire even/odd/whole Weil/RH OPEN.",
+      "repo_path": "notes/provisional/EF43_ORIGINAL_EVEN_SIX_JET_RATIONAL_NORMALIZATION_20261031.md"
     }
   },
   "obligations": [
@@ -1234,10 +1242,11 @@
         "EF39",
         "EF40",
         "EF41",
-        "EF42"
+        "EF42",
+        "EF43"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF42: Six actual original SI10 first-cluster 37/64 even protected Taylor jets (order15), signed genuine n2,n3,n4,n5,n7,n8,n9 prime plus real positive even cosh pole and first40 true digamma cutoff modes. Source-native Gram fifth pivot>1/1500 and sixth pivot>1/100000; genuine signed physical six-row projected squared finite L2 response≈0.040533054506<41/1000. Entire m>=40 original arch infinity tail L2<57/500+1/10000, hence complete original cofinite first-source ||P_Fg_e||<8/25 and eta<2560/17. True full 469-source projected response, cofinite q-Riesz inverse, EF33 positive restricted S2>1/500 vs original unseen eta, complete even positivity and RH remain OPEN. EF43 next use an exactly source-span preserving orthogonal/scaled basis and rigorous conditioning/error budgets, then assess higher same-cluster source jets. Independent original Fourier/digamma/form-core audit OPEN; W-ODD-NEG paused/OPEN and whole Weil/RH OPEN."
+      "next_action": "EF43 original SI10 six genuine first-center even Fourier jets exact rational span-preserving C, true outward transformed physical Gram ||C G C^T-I||inf<1e-7 (measured ~5.938e-17), original signed source projection independently inverse-free enclosed ~[0.040533010546,0.040533098465] and strict D6<4054/100000. Complete genuine infinite m>=40 quarter-digamma arch physical tail L2<57/500+1/10000 gives full cofinite original first-source ||P_Fg_e||<79/250, unseen eta<12482/85; still far above EF33 restricted S2>1/500, original full first-source signed Schur and W-EVEN-FORM OPEN. No new source direction, 463 original protected modes unprojected. EF44 next add seventh/eighth authentic first-cluster even jets using exact span-preserving conditioned Gram, control rational C coefficient amplification and source interval errors, otherwise demonstrate scoped conditioning STOP. Independent physical Fourier/digamma and form-core audit OPEN; W-ODD-NEG paused OPEN, whole Weil and RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1538,6 +1547,17 @@
         "scripts/validate_rpb108_ef42_original_even_six_jet_projection.py"
       ],
       "interpretation": "Six actual original SI10 protected even first-cluster jets, native complete original seven-prime/pole + first 40 quarter-digamma cross and full infinite arch cutoff, exact six-row positive Gram pivots and projected squared residual <41/1000, true complete original cofinite ||P_F g_e||<8/25 and eta<2560/17. Conditional original Fourier/domain audit; not 469D projected correction, entire even positivity, odd or RH.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF43-original-even-six-jet-exact-rational-span-normalization",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef43_original_even_six_jet_rational_normalization.py"
+      ],
+      "interpretation": "Recompute true original six protected first-frequency even jet source physical Gram via exact rational invertible C; certify ||C G C^T-I|| infinity<1e-7 and independent inverse-free original signed source projection squared residual<0.04054, complete high-arch tail, cofinite eta<12482/85. Six-row representation only, no new source, full even/odd/whole Weil/RH OPEN.",
       "cadence": "on-demand"
     }
   ]
