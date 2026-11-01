@@ -61,7 +61,10 @@ def main():
   assert parent['original_independent_direct_source_both_n2_prime_overlap_pass']
   assert parent['original_independent_direct_source_endpoint_overlap_pass']
   assert parent['common_endpoint_image_indices']==2048
- assert m['original_principal_jump_weights_active']==[3,4]\n assert m['original_principal_jump_weights_inactive']==[2,5,7,8,9]\n assert m['original_principal_jump_weight_multiplicities']=={'3':1,'4':1}\n assert m['original_regular_z_has_both_n2_translates_but_p_has_none']
+ assert m['original_principal_jump_weights_active']==[3,4]
+ assert m['original_principal_jump_weights_inactive']==[2,5,7,8,9]
+ assert m['original_principal_jump_weight_multiplicities']=={'3':1,'4':1}
+ assert m['original_regular_z_has_both_n2_translates_but_p_has_none']
  assert m['original_nf410_independent_true_cell3_signed_p0_overlap']
  assert m['number_original_signed_p_moments']==N
  assert m['number_original_raw_dx_moments']==2*N-1
