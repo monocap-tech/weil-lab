@@ -1,0 +1,130 @@
+{
+  "pass": "NF442",
+  "status": "ACCEPTED original full true positive-side physical J1 continuous signed D1 >0 from authentic original NF407 source, independent native coefficients/moments and exact-Fraction tail; global NF410/NF404 W-ODD-NEG RH OPEN",
+  "repository": "monocap-tech/weil-lab",
+  "draft_pr": 463,
+  "parent_accepted_nf441_pr": 462,
+  "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_nf407_principal_source_sha256": "c68a98abdfb48cb8192d4e63347dff4baa00ebd85370721a25992aa478e0f6b7",
+  "original_nf410_parent_sha256": "208386f303d007304743a68ee8782c6c24c9872e3f10046d65627b2e10305ca8",
+  "original_nf404_dyadic_center": "6677356497477490213/4611686018427387904",
+  "original_source": "242 selected+4 critical 4096-bit dyadic coefficients, 32 critical sine modes, 273 grouped frequency/orders",
+  "physical_original_cell": "(0,11/10-log(3))",
+  "physical_original_regular_minus": [
+    2,
+    3
+  ],
+  "physical_original_regular_plus": [
+    2,
+    3
+  ],
+  "principal_original_r_jumps_active": [],
+  "principal_original_p_expression": "u4(B)/2*log(B/(B-x)), r=0 on true J1",
+  "source_Cheb_center": "7/10000",
+  "source_Cheb_halfwidth": "1/1250",
+  "actual_native_coefficients_certified": 512,
+  "source_independent_padding_overlap_indices": [
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71
+  ],
+  "original_endpoint_common_image_count": 2048,
+  "original_native_2048_bit": true,
+  "original_signed_principal_Cheb_moments": 512,
+  "original_true_dx_Cheb_moments": 1023,
+  "independent_original_nf410_signed_p0_overlap": true,
+  "original_principal_p0_approx": "-5.114063341882055e-18",
+  "original_source_generator_tail_n512_approx": "5.424880381917811e-192",
+  "original_complete_uniform_true_z_minus_P511_bound_approx": "2.5600000000000000e-42",
+  "original_complete_true_pz_conservative_interval_times_1e_minus28": [
+    "-3.36634798012631054978689393930914",
+    "-3.36634798012631054978689393930887"
+  ],
+  "original_complete_true_z2_conservative_interval_times_1e_minus24": [
+    "4.73877493283682789140041250267054",
+    "4.73877493283682789140041250267190"
+  ],
+  "original_complete_true_signed_D1_conservative_interval_times_1e_minus24": [
+    "9.47620332648160525858091024776536",
+    "9.47620332648160525858091024776807"
+  ],
+  "original_signed_D1_strict_positive": true,
+  "original_signed_exact_width_approx": "2.704063281088616e-54",
+  "original_source_numerical_receipts": {
+    "NF441_low64": {
+      "run_id": 41358651067,
+      "artifact_id": 13104626379,
+      "zip_sha256": "6ddc103efa2ef9c4a3d8d7b0d21dfe0402adf56978fe04db67313b9b2e41c963",
+      "inner_json_sha256": "895432f34bcd132752ba0d74fd2a7e5b0e81cf99b6e00216a16a1a5a1b35fac2"
+    },
+    "NF442_mid64to319": {
+      "run_id": 41362698409,
+      "artifact_id": 13105677646,
+      "zip_sha256": "d6b0928d948f558c955171ae5dff5d126188115e1418ec7e3ba5054452233d61",
+      "inner_json_sha256": "cefb041af7c8a4d11c75371d471169747170f42aa68474edd32f113ee68d8e6d"
+    },
+    "NF442_high320to511": {
+      "run_id": 41362698409,
+      "artifact_id": 13105664329,
+      "zip_sha256": "8f036652fab70729d23a3c3ee223277c1fc91cbf741833ab244316bfbb61368a",
+      "inner_json_sha256": "0296e040d0915b4a7f19445d6f123d50d6f60d4fa8cb720c53f9f27c2a3aa794"
+    },
+    "NF442_independent_control56to71": {
+      "run_id": 41362698409,
+      "artifact_id": 13105078565,
+      "zip_sha256": "abe0a4b56653d428b0e9598fcbaac9ee23e7a7cc7b268c4298adf37b003000e3",
+      "inner_json_sha256": "4ec8e6ba4236c73fafd9a867e4f20afb703e6309dcdb14640af629c0faef5f3c"
+    },
+    "NF441_conditional_source_tail_now_dischargeable": {
+      "run_id": 41358651184,
+      "artifact_id": 13103937745,
+      "zip_sha256": "7cbf56e14cdb61ddda0bcfe1fbba09beaf2d7190ec90831afb9c9dd4a4fcfdb2",
+      "inner_json_sha256": "b8c3fba2e15f29e5906729ea79de8008b6b96570ae94b70486c705f31dfdea22"
+    },
+    "NF442_true_p512_dx1023_moments": {
+      "run_id": 41362698605,
+      "artifact_id": 13106151255,
+      "zip_sha256": "568cd73a71c686d04dc6cbed3d731fdff559ee189b2351df0bd0888b048d7c6d",
+      "inner_json_sha256": "73e9f9d55dc7330e1fc35113812a3219fa8c989ad2e8fc2ba66fba80dfa49cdd"
+    },
+    "NF442_original_full_true_J1_signed": {
+      "run_id": 41363287972,
+      "artifact_id": 13106335926,
+      "zip_sha256": "dd4eea7096d78dd55242a59a1c2c32a3157e09874ae099893b34fd667ac3fdb1",
+      "inner_json_sha256": "1740d159ea4ef9f7543823e6b4c8b852ec2f0c7d6836ddcfff72d381cc31dd09"
+    }
+  },
+  "original_accepted_signed_positive_side_cells": {
+    "1": "positive NF442",
+    "3": "positive NF437",
+    "4": "negative NF439",
+    "5": "negative NF440",
+    "6": "negative NF432"
+  },
+  "original_remaining_signed_cells_open": [
+    2,
+    7,
+    8
+  ],
+  "original_NF410_NF404_global_signed_scalar_decided": false,
+  "original_principal_E_p_whole_evaluated": false,
+  "original_fourth_J242_exterior_upper_closed": false,
+  "original_W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "original_full_raw_json_permanently_archived": false,
+  "github_actions_expiry": "2027-01-30"
+}
