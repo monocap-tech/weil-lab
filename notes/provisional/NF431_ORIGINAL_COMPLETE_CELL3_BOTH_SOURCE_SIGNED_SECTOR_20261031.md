@@ -20,3 +20,21 @@
 Code: `scripts/local_replay/nf431_original_cell3_both_translation_cheb_shard_native.py`, `scripts/local_replay/nf431_original_cell3_signed_p_cheb_moments_native.py`, `scripts/local_replay/nf431_original_complete_cell3_signed_integral_from_shards.py`. Focused `.github/workflows/nf431-original-cell3-source-complete-signed.yml` generates seven genuine source-native JSON archives and one dependent signed true-sector archive only upon full PASS. Every source and certificate parent SHA is checked; original NF417 independent x=.35 crosscheck is required for each coefficient shard. No source table replacement. No main merge.
 
 **Standing before CI:** mathematical representation and source-typed original branch transfer accepted NF430; **actual cell3 numerical coefficient/cross/mass/signed sector all OPEN pending native job conclusions.** If complete native PASS, promote only cell3 signed sector; original positive-side cells 1,2,4,5,7,8, and original physical cell6 already complete => **six original cells still OPEN**, as do complete NF410/NF404, fourth J242 exterior, infinite inverse/domain, even/whole Weil, W-ODD-NEG and RH.
+
+
+## Final native CI and permanent original source custody — ACCEPTED
+
+Original focused source-native [Actions #41279353773](https://github.com/monocap-tech/weil-lab/actions/runs/41279353773) **SUCCESS** at original commit `248c3f7599a87385241fbc7cd6e3534dbb40eaca`. **All eight jobs PASS**: six 2048-bit genuine NF407 246-generator/99-frequency/2048-shared-image coefficient shards each <1e-25 wide, with the actual NF406 n2 BOTH and n3/4 POST signed source response and independent true NF417 cell3 z(7/20) physical overlap; a separate original NF410-matched 1500 signed principal moment job; and the dependent full true original cell3 signed integral job with complete n0..n1499 source SHA check, true irrational log4−B/B−log2 Chebyshev antiderivative moments through degree2998 and exact rational Cheb-square convolution.
+
+Accepted exact outward intervals conservatively displayed as:
+
+- `∫_(J3)pz∈[-3.248569430432922e-23,-3.248569430432921e-23]`.
+- `∫_(J3)z²∈[8.267801599977293e-23,8.267801599977294e-23]`.
+- **Original local cell3 `4∫pz+2∫z²∈[3.541325478222901e-23,3.541325478222902e-23]` strictly POSITIVE**, unlike original cell6 NF429's strictly negative local sector. This is not a statement about all eight original sectors.
+- Full original cell3 source + original Cheb series tail + 1500 computed coefficient radii give exact-source `sup_(J3)|z_true−P1499|<6.003e-42`, and original signed principal L1 mass upper <1.649e-12.
+
+**Permanent custody:** [NF431 archive Actions #41279734648 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41279734648), verified the actual eight source-pinned original numeric JSONs and committed them additively on the research branch at [`333701eb777dc1e0fe03fdc4213d1874a9081bc7`](https://github.com/monocap-tech/weil-lab/commit/333701eb777dc1e0fe03fdc4213d1874a9081bc7). Paths `notes/data/provisional/nf431-original-cell3/`: six actual source-native coefficients n0..1499, complete original signed p moments n0..1499, original true signed pz/z²/sector exact rational interval certificate and SHA256 manifest. Validator `scripts/local_replay/nf431_original_cell3_permanent_archive_validator.py` independently rechecks exact source, seam, true NF417 point and source-correct n2 BOTH/n3,4 POST, all modes' outward widths and strict positive local sector.
+
+**NF431 closure:** Original full continuous physical cell3 signed `pz`, `z²`, `4pz+2z²` and permanent interval JSON custody ACCEPTED. Prior NF429 cell6 negative sector remains ACCEPTED. **Original positive-side cells 1,2,4,5,7,8 remain OPEN**; original whole NF410/NF404 centered scalar and threshold, J242 fourth exterior, W-ODD-NEG, infinite inverse/domain and RH remain OPEN.
+
+**Next NF432:** genuine original cell7 near-endpoint three-panel Chebyshev/source representation and an accelerated correlated endpoint-image summation that avoids 120000 × 99 × coefficient work, with independent NF417 x=26/25 overlap and true NF406 n2,3,4,5,7,8 POST source weights. Then remaining 1,2,4,5,8 (including x=B logarithmic endpoint), before assessing global original centered scalar.
