@@ -1,0 +1,73 @@
+{
+  "pass": "NF433",
+  "standing": "ACCEPTED exact original positive cell3/7 prime support branches and valid ellipse geometry; BOTH signed cell integrals OPEN",
+  "original_NF407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_NF406_seam_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_NF405_physical_prime_action": "-sum Lambda(n)/sqrt(n)*(u4(x+log(n))+u4(x-log(n)))",
+  "original_source_selected_plus_critical": 246,
+  "original_source_frequency_order_groups": 273,
+  "original_B": "11/10",
+  "original_positive_cell3": {
+    "open_interval": "(log(4)-B,B-log(2))",
+    "minus_translate_active": [
+      2,
+      3,
+      4
+    ],
+    "plus_translate_active": [
+      2
+    ],
+    "neither": [
+      5,
+      7,
+      8,
+      9
+    ],
+    "C": "347/1000",
+    "H": "61/1000",
+    "max_ellipse_rho": "5",
+    "endpoint_clearance_E5": "743/1250",
+    "best_sourcewise_generator512_triangle_approx": "1.2377129705035492e-39",
+    "complete_z_error_proved": false
+  },
+  "original_positive_cell7": {
+    "open_interval": "(log(8)-B,log(9)-B)",
+    "minus_translate_active": [
+      2,
+      3,
+      4,
+      5,
+      7,
+      8
+    ],
+    "plus_translate_active": [],
+    "neither": [
+      9
+    ],
+    "C": "1039/1000",
+    "H": "60/1000",
+    "admissible_rhos": [
+      "11/10",
+      "9/8",
+      "7/6"
+    ],
+    "endpoint_clearance_E7over6": "1/3500",
+    "best_sourcewise_generator512_triangle_approx": "2.1393216962049023e+132",
+    "complete_z_error_proved": false
+  },
+  "original_signed_cell3_integral_certified": false,
+  "original_signed_cell7_integral_certified": false,
+  "original_complete_true_cell6_signed_integral_from_NF432_retained": true,
+  "initial_failed_run": "41258564821: strict rational knot comparison mishandled exact n2 right boundary; repaired via symbolic seam equality",
+  "focused_verified_run": "41258715260",
+  "final_frontier_commit": "215d607aa2bec02eadb8b99790b1a414e097512d",
+  "full_exact_rational_JSON_artifact_id": 13063434427,
+  "artifact_zip_sha256": "fc8d1576f7fd8c5dc99774cd5df904da9eb1ed5759332976fe0556b73581062e",
+  "original_generated_JSON_sha256": "8fa0db6b66ea2d356edf187d91ced1b1bd4eea3c8059ef1b1b248410a4e8e6ae",
+  "artifact_expires": "2027-01-30",
+  "generated_full_json_permanently_committed": false,
+  "original_seven_other_cell_integrals_remaining": 7,
+  "complete_NF410_NF404_signed_scalar": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
