@@ -1,0 +1,60 @@
+name: Weil-Lab NF439 original cell4 signed p512 and raw dx1023 moments
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf437_original_cell4_signed_p512_dx1023_native.py'
+      - '.github/workflows/nf437-original-cell4-signed-moments.yml'
+permissions:
+  contents: read
+jobs:
+  original-true-cell4-signed-and-raw-native-moments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native rigorous Arb arithmetic
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Exact original cell4 signed p512 and raw dx1023 native moments
+        run: |
+          python3 -m py_compile scripts/local_replay/nf437_original_cell4_signed_p512_dx1023_native.py
+          python3 scripts/local_replay/nf437_original_cell4_signed_p512_dx1023_native.py \
+            --precision 2048 --degree 511 --log-modes 110 \
+            --output artifacts/NF439_original_cell4_true_p512_dx1023_native.json
+      - name: Strict original NF407 source, NF406 true seam and independently NF410 signed p0
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          x=json.load(open('artifacts/NF439_original_cell4_true_p512_dx1023_native.json'))
+          assert x['pass']=='NF439'
+          assert x['original_nf407_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert x['original_nf406_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert x['original_true_cell4']=='(11/10-log(2),log(5)-11/10)'
+          assert x['original_active_minus_prime_powers']==[2,3,4]
+          assert x['original_active_plus_prime_powers']==[]
+          assert x['original_inactive_prime_powers']==[5,7,8,9]
+          assert x['original_principal_jump_weights_active']==[2,3,4]
+          assert x['original_principal_jump_weights_inactive']==[5,7,8,9]
+          assert x['original_principal_jump_weight_multiplicities']=={'2':1,'3':1,'4':1}
+          assert x['original_regular_z_has_only_n2_minus_translate_and_p_has_n2_jump']
+          assert x['original_nf410_independent_true_cell4_signed_p0_overlap']
+          assert x['original_native_precision_bits']==2048
+          assert x['number_original_signed_p_moments']==len(x['original_source_signed_p_cheb_moments_n0_to_n511'])==512
+          assert x['number_original_raw_dx_moments']==len(x['original_cell4_raw_dx_cheb_moments_n0_to_n1022'])==1023
+          assert x['original_cell4_signed_p0_negative']
+          assert F(x['original_endpoint_log_uniform_tail_exact'])<F(1,10**110)
+          assert all(F(b)-F(a)<F(1,10**25) for a,b in x['original_source_signed_p_cheb_moments_n0_to_n511'])
+          assert all(F(b)-F(a)<F(1,10**35) for a,b in x['original_cell4_raw_dx_cheb_moments_n0_to_n1022'])
+          assert not x['original_true_cell4_signed_pz_z2_integrated']
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          print('NF439 PASS original true cell4 signed p512 raw dx1023, m0 independent NF410 overlap; full true signed z integration OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF439-original-true-cell4-signed-p512-and-rawdx1023
+          path: artifacts/NF439_original_cell4_true_p512_dx1023_native.json
+          if-no-files-found: error
