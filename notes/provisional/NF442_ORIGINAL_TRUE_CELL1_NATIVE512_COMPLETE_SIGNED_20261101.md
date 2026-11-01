@@ -23,10 +23,10 @@ All 512 original source coefficient intervals width `<1e−44`, with original 20
 
 The authentic NF441 sourcewise E2–E5 273 frequency/order generator n>=512 tail on J1 was `≈5.424880381917811e−192`, far smaller than native coefficient midpoint charge. The full original 2048 image, 4096-bit source radii, removable odd pole, analytic endpoint log and **512*(5e−45)=2.56e−42** exact coefficient interval midpoint charge are included in the immutable NF441 source-tail receipt. Since **all actual 512 native source coefficient intervals have now passed and independent overlaps verify a56..71**, the formerly conditional bound is now a source-certified **actual complete original J1** uniform response bound:
 
-[
+\\[
 \sup_{x\in J_1}|z(x)-P_{511}((x-C)/H)|<10^{-38},
-quad \varepsilon\simeq2.56\times10^{-42}.
-]
+\quad \varepsilon\simeq2.56\times10^{-42}.
+\\]
 
 No original source branch changes within J1 and no unverified Gauss refinement.
 
@@ -34,10 +34,10 @@ No original source branch changes within J1 and no unverified Gauss refinement.
 
 The genuine NF407 `v=u4(B)<0` principal on J1 is
 
-[
+\\[
 p(x)=\frac{v}{2}\log\frac{B}{B-x},\quad r(x)=0
 \quad(0<x<B-\log3).
-]
+\\]
 
 Original NF441 independent p0 ≈ `−5.114063341882055e−18` was reproduced. Native 2048-bit Arb true J1 irrational right endpoint, exact zero left endpoint, source v radius and 110-mode analytic endpoint logarithm `q<1/10` produce **512** signed original `m_n=∫J1 p T_n` and **1023** original raw `J_k=∫J1 T_k dx`. Source-natively certify `∫p<0` and independent NF410 m0 overlap. No other physical principal jump is introduced. [Native original J1 p512 and raw dx1023 CI #41362698605 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41362698605).
 
@@ -45,12 +45,12 @@ Original NF441 independent p0 ≈ `−5.114063341882055e−18` was reproduced. N
 
 Choose exact rational **midpoints** of the accepted 512 source interval balls for `P511`. Do not independently resample the source; the exact 512 midpoint error is already paid by the full original uniform response epsilon. Compute `∫pP511=Σa_nm_n` in exact rational interval arithmetic, `P511²` by full Chebyshev product-to-sum `T_iT_j=(T_(i+j)+T_|i-j|)/2`, and `∫P511²=Σb_kJ_k`. For true `z=P511+δ`, `|δ|≤ε`, pay
 
-[
+\\[
 \left|\int_{J1}p\delta\right|\le\varepsilon(-m_0^{\rm lower}),
 \qquad
 \left|\int_{J1}(z^2-P_{511}^2)\right|
 \le J_0^{\rm upper}(2\varepsilon\sum_n|a_n|+\varepsilon^2).
-]
+\\]
 
 These use the actually original `p<0` and independent source-native `m0` certification. The source-original finite polynomial may have nontrivial sign but its **complete true continuous integral** has rigorously paid remainder.
 
