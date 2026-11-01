@@ -1,0 +1,124 @@
+{
+  "pass": "NF439",
+  "standing": "ACCEPTED original true continuous physical J4 signed pz/z² and D4 STRICT NEGATIVE; original global NF410/NF404 W-ODD-NEG RH OPEN",
+  "repo": "monocap-tech/weil-lab",
+  "pr": 460,
+  "parent_NF438_pr": 459,
+  "original_source_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_true_physical_J4": "(11/10-log(2),log(5)-11/10)",
+  "original_regular_z_minus": [
+    2,
+    3,
+    4
+  ],
+  "original_regular_z_plus": [],
+  "original_principal_p_jumps_active": [
+    2,
+    3,
+    4
+  ],
+  "original_NF404_dyadic_center": "6677356497477490213/4611686018427387904",
+  "original_source_generators": 246,
+  "original_source_frequency_order_groups": 273,
+  "original_matched_arch_endpoint_images": 2048,
+  "original_accepted_Cheb_series_coefficients": 512,
+  "source_2048bit_native": true,
+  "original_accepted_p_Cheb_moments": 512,
+  "original_accepted_dx_Cheb_moments": 1023,
+  "independent_NF410_p0_overlap": true,
+  "sourcewise_cheb_generator_n512_tail_approx": "3.9228210283553765e-60",
+  "original_sourcewise_frequency_optimal_rho_counts": {
+    "2": 0,
+    "3": 4,
+    "4": 3,
+    "5": 266
+  },
+  "original_true_z_minus_midpoint_P511_uniform_error_below": "1e-38",
+  "original_true_z_minus_midpoint_P511_uniform_error_approx": "2.560000000000000003923e-42",
+  "source_midpoint_charge_per_mode": "5e-45",
+  "all512_native_width_strict_below": "1e-44",
+  "original_true_J4_pz_outward_conservative_times_1e_minus23": [
+    "-2.9155472087272982032143122876",
+    "-2.9155472087272982032143122875"
+  ],
+  "original_true_J4_z2_outward_conservative_times_1e_minus23": [
+    "+4.6460000819242291910883782537",
+    "+4.6460000819242291910883782539"
+  ],
+  "original_true_J4_D4_signed_outward_conservative_times_1e_minus23": [
+    "-2.3701886710607344306804926429",
+    "-2.3701886710607344306804926427"
+  ],
+  "original_true_J4_D4_strict_negative": true,
+  "original_true_J4_D4_exact_interval_width_approx": "6.5159153668644245e-52",
+  "accepted_artifacts": {
+    "parent_nf438_first64": {
+      "run": 41337646749,
+      "id": 13095439864,
+      "zip_sha256": "76074ce0eea34d5c782b311c891990900cfa70346cf0d603a4ed00acf884d55f",
+      "json_sha256": "ab98174c259d36df3b34f30486c3231f1d95bc90910938aab05c72d7ff4c9cc2"
+    },
+    "nf439_native_modes64to319": {
+      "run": 41344915569,
+      "id": 13098802454,
+      "zip_sha256": "3a21c9b99d1d32de78135ab84f9cbcb8b85fe99b1dec0a52968d859d8c3eed60",
+      "json_sha256": "289d8087a58d455ca20d6f5ce573bc5df612d38f648811b65f7f867fe3648de8"
+    },
+    "nf439_native_modes320to511": {
+      "run": 41344915569,
+      "id": 13098554745,
+      "zip_sha256": "6a50679222cc90f7b7e57dcf46526609be5ec1aac302df90911ec4518181ad83",
+      "json_sha256": "d561a19960b8d69c571a72a71b571de2479d5d615024f7fde3a275975e297cf8"
+    },
+    "nf439_independent_short_padding_modes56to71": {
+      "run": 41344915569,
+      "id": 13097624963,
+      "zip_sha256": "36e60ccbd2a14fff8fea5dd909c8aa239ce9e49a016abb8c9039e1586898b1f3",
+      "json_sha256": "11677e8d4665d1508fb92c60f5f4916bb3b142e8529186e3426a322c07ae7701"
+    },
+    "nf439_real_sourcewise_n512_tail": {
+      "run": 41344915572,
+      "id": 13098129176,
+      "zip_sha256": "fbbae6b1e3403ac369bab2fe14d2987980abbc34ed45183dcad2f471ff559fbd",
+      "json_sha256": "f8abd0ae4a8ec03d8ea14c4ace4e41210b039d9a72844989f9ba636076760ef9"
+    },
+    "nf439_full512_uniform_audit": {
+      "run": 41345752687,
+      "id": 13099665239,
+      "zip_sha256": "8a24f5844fb5d58b96f3a5b632026b8060d83b050ec2fd10287d8413c82cd155",
+      "json_sha256": "8e0eff0071c1f55634058ac4698ce2dacda832b25c603d3b8851787bf407b8f5"
+    },
+    "nf439_true_signed_p512_rawdx1023": {
+      "run": 41345752631,
+      "id": 13099481362,
+      "zip_sha256": "8245854471253c02825d879acf68942bf998d7298c2dd79579633999de80a302",
+      "json_sha256": "cf73a1225a56e99df86a272b25ef6a17312bde0a6ec3729eab7fd10dc6bee9c2"
+    },
+    "nf439_complete_true_signed_J4": {
+      "run": 41346177728,
+      "id": 13098779373,
+      "zip_sha256": "e70e013b903f74a11d1be88f5d25330da7e671be5261563d26f1ee9eb8b7ce62",
+      "json_sha256": "5aad58e2c312d510d09c5fc129028fabebddafd6d2b305df870f574826f70eec"
+    }
+  },
+  "original_signed_cells_certified": {
+    "cell3": "positive",
+    "cell4": "negative",
+    "cell6": "negative"
+  },
+  "original_signed_cells_unfinished": [
+    1,
+    2,
+    5,
+    7,
+    8
+  ],
+  "original_NF410_NF404_global_signed_scalar_decided": false,
+  "original_principal_E_p_global_integrated": false,
+  "original_fourth_J242_exterior_upper_closed": false,
+  "raw_full_original_certificates_permanently_archived": false,
+  "actions_artifact_retention_expires": "2027-01-30",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
