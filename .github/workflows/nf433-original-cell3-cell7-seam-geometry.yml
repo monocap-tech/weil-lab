@@ -1,0 +1,53 @@
+name: Weil-Lab NF433 original cells3/7 prime branch and ellipse router
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf433_original_cell3_cell7_branch_ellipse_router_exact.py'
+      - '.github/workflows/nf433-original-cell3-cell7-seam-geometry.yml'
+permissions:
+  contents: read
+jobs:
+  source-exact-original-physical-cells3-and7:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Replay NF405 physical support, NF406 original rational seams and NF407 source
+        run: |
+          python3 -m py_compile scripts/local_replay/nf433_original_cell3_cell7_branch_ellipse_router_exact.py
+          python3 scripts/local_replay/nf433_original_cell3_cell7_branch_ellipse_router_exact.py \
+            --output artifacts/NF433_original_cells3_7_seam_ellipse_router.json
+      - name: Exact-rational branch and scope acceptance gate
+        run: |
+          python3 - <<'PY'
+          import json
+          from fractions import Fraction as F
+          o=json.load(open('artifacts/NF433_original_cells3_7_seam_ellipse_router.json'))
+          assert o['pass']=='NF433' and o['original_242_plus_four_source_count']==246
+          assert o['original_frequency_degree_groups']==273
+          a,b=o['cells']['3'],o['cells']['7']
+          assert a['original_minus_translate_active']==[2,3,4]
+          assert a['original_plus_translate_active']==[2]
+          assert a['original_neither_translate']==[5,7,8,9]
+          assert b['original_minus_translate_active']==[2,3,4,5,7,8]
+          assert b['original_plus_translate_active']==[]
+          assert b['original_neither_translate']==[9]
+          assert a['sourcewise_finite_model_512_generator_tail_less_than_1e_minus20']
+          assert not b['sourcewise_finite_model_512_generator_tail_less_than_1e_minus20']
+          for x in (a,b):
+              assert all(F(z['original_endpoint_distance_lower'])>0 for z in x['ellipses_each_with_strict_B_pole_clearance'])
+              assert not x['NF432_original_cell6_image_remainder_reusable_without_new_proof']
+              assert x['original_response_coefficient_intervals_certified']==0
+              assert not x['true_original_signed_pz_z2_integrals_certified']
+          assert o['W_ODD_NEG']==o['RH']=='OPEN'
+          print('NF433 source-exact branch geometry PASS, both true-cell signed scalar integrals remain OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF433-original-cells3-and7-exact-prime-seam-ellipse-router
+          path: artifacts/NF433_original_cells3_7_seam_ellipse_router.json
+          if-no-files-found: error
