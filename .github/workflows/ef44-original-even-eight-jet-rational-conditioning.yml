@@ -1,0 +1,26 @@
+name: EF44 original eight even SI10 source jets and rational conditioning
+on:
+  push:
+    branches: [research/ef44-original-even-eight-jet-conditioned]
+  pull_request:
+    branches: [research/ef43-six-jet-rational-orthogonalization]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-eight-protected-jet-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Eight true original SI10 even jets, signed Weil-source response and exact rational near-orthogonal Gram
+        run: |
+          python -m py_compile scripts/validate_rpb108_ef44_original_even_eight_jet_conditioning.py
+          python scripts/validate_rpb108_ef44_original_even_eight_jet_conditioning.py
+      - name: Assert W-EVEN-FORM remains open
+        run: python scripts/verify_obligation_manifest.py
