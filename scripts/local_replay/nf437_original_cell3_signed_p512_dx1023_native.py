@@ -2,7 +2,7 @@
 """NF437 original true physical CELL3 signed p and raw dx Chebyshev moments.
 
 Exact actual NF406 seams J3=(log4-B, B-log2), original NF407 u4(B)
-source interval and real original signed prime weights n2 twice+n3+n4.
+source interval and true original principal JUMP weights n3+n4 ONLY.\nThe regular response z has both n2 translates on cell3 but principal\nr(x) has n2 jump OFF until x>B-log2; NEVER conflate these.
 2048-bit native Arb enclosures of m_n=∫_J3 p(x)T_n and
 J_k=∫_J3 T_k for n<512 and k<1023, independent NF410 m0 cross-check.
 Analytic original log Cheb remainder charged; no x sampling/mesh.
@@ -15,7 +15,7 @@ from fractions import Fraction as F
 from flint import arb,ctx
 if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
 B=F(11,10);C=F(347,1000);H=F(61,1000)
-PRIMES=((2,2,2),(3,3,1),(4,2,1))
+PRIMES=((3,3,1),(4,2,1))
 SOURCE_SHA="0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce"
 SEAM_SHA="c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675"
 def read(p):
@@ -77,9 +77,9 @@ def main():
   z=list(map(F,entry['signed_mangoldt_weight_positive_interval']))
   assert ov((a,b),z),('actual original Mangoldt source mismatch',n)
   weights.append((n,mult,w))
- assert [(n,m) for n,m,w in weights]==[(2,2),(3,1),(4,1)]
+ assert [(n,m) for n,m,w in weights]==[(3,1),(4,1)]
  W=sum((w*m for n,m,w in weights),arb(0))
- assert A(1)<W<A(3)
+ assert A(0)<W<A(2)
  # Chebyshev theta primitive. Evaluate at actual irrational NF406
  # endpoints, not rational surrogate knot midpoints or Gauss samples.
  nmax=max(2*args.degree, args.degree+args.log_modes)+1
@@ -95,7 +95,7 @@ def main():
  for n,(a,b) in enumerate(raw):
   assert a<=b and b-a<F(1,10**35),(n,'original dx-moment not resolved')
   assert -raw_len[1]-F(1,10**35)<a<=b<raw_len[1]+F(1,10**35),(n,'|T_n|≤1 missing')
- # Original NF407 p(x)=v/2 log(B/(B-x)) + v*(2w2+w3+w4).
+ # Original NF407 p(x)=v/2 log(B/(B-x)) + v*(w3+w4).\n # NF407 r(x)=v*sgn(x)*sum w_n 1_(|x| > |B-log n|).\n # On original J3: n3 and n4 jump active; n2 jump is INACTIVE\n # even though both n2 u4 translations are active in regular z.
  # D=B-C, original endpoint log Cheb exact analytic coefficients.
  D=A(B-C)
  disc=(D*D-A(H)**2).sqrt()
@@ -140,7 +140,7 @@ def main():
   'source_selected_plus_critical':246,'original_NF404_dyadic_center':'6677356497477490213/4611686018427387904',
   'original_active_minus_prime_powers':[2,3,4],'original_active_plus_prime_powers':[2],
   'original_inactive_prime_powers':[5,7,8,9],
-  'original_active_weight_multiplicities':{'2':2,'3':1,'4':1},
+  'original_principal_jump_weights_active':[3,4],\n  'original_principal_jump_weights_inactive':[2,5,7,8,9],\n  'original_principal_jump_weight_multiplicities':{'3':1,'4':1},\n  'original_regular_z_has_both_n2_translates_but_p_has_none':True,
   'original_native_precision_bits':args.precision,
   'original_endpoint_v_source_interval':list(map(str,vpair)),
   'original_endpoint_v_uncertainty_charge_per_signed_moment':str(source_charge),
