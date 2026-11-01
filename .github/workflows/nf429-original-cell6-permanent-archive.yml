@@ -1,0 +1,43 @@
+name: Weil-Lab NF429 permanent archive of certified original complete cell6 intervals
+on:
+  push:
+    branches:
+      - research/nf429-original-cell6-complete-cheb-shards
+    paths:
+      - '.github/workflows/nf429-original-cell6-permanent-archive.yml'
+permissions:
+  contents: write
+  actions: read
+jobs:
+  permanently-custody-original-source-native-results:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf429-original-cell6-complete-cheb-shards
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download EXACT NF429 prior successful eight original source-numeric artifact files
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41258218952
+          github-token: ${{ github.token }}
+          pattern: NF429-original-*
+          path: notes/data/provisional/nf429-original-cell6
+          merge-multiple: true
+      - name: Validate all eight true original interval JSONs, source parents, complete 1500 modes and signed result
+        run: |
+          python3 -m py_compile scripts/local_replay/nf429_original_cell6_permanent_archive_validator.py
+          python3 scripts/local_replay/nf429_original_cell6_permanent_archive_validator.py
+      - name: Commit actual exact original coefficient and scalar JSONs to this research branch, no historic changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notes/data/provisional/nf429-original-cell6/
+          git diff --cached --stat
+          git diff --cached --quiet && exit 0
+          git commit -m 'NF429: permanently custody all 1500 original cell6 native coefficients, signed p moments and verified pz z2'
+          git push origin HEAD:refs/heads/research/nf429-original-cell6-complete-cheb-shards
