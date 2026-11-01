@@ -29,7 +29,7 @@ def main():
  ap.add_argument('--seams',default='notes/data/provisional/NF406_original_prime_support_partition_exact.json')
  ap.add_argument('--principal',default='notes/data/provisional/NF407_original_prime_jump_log_power_exact.json')
  ap.add_argument('--nf410',default='notes/data/provisional/NF410_original_signed_taylor_moments.json')
- ap.add_argument('--nf427',default='scripts/local_replay/nf427_original_cell3_chebyshev_series_tail_exact.py')
+ ap.add_argument('--nf430',default='scripts/local_replay/nf430_original_cells3_7_source_branch_transfer_exact.py')
  ap.add_argument('--precision',type=int,default=2048)
  ap.add_argument('--degree',type=int,default=1499)
  ap.add_argument('--log-modes',type=int,default=110)
@@ -39,7 +39,7 @@ def main():
  ctx.prec=args.precision
  s,ssha=read(args.source);knots,ksha=read(args.seams)
  principal,psha=read(args.principal);old,oldsha=read(args.nf410)
- pin=hashlib.sha256(Path(args.nf427).read_bytes()).hexdigest()
+ pin=hashlib.sha256(Path(args.nf430).read_bytes()).hexdigest()
  assert principal['original_nf406_seams_sha256']==ksha
  assert old['original_nf406_source_sha256']==ksha
  assert old['original_nf407_source_sha256']==psha
@@ -121,7 +121,7 @@ def main():
       'nf406_original_seams_sha256':ksha,
       'nf407_principal_jump_source_sha256':psha,
       'nf410_original_signed_Taylor_moment_parent_sha256':oldsha,
-      'nf427_series_cutoff_script_sha256':pin,
+      'nf430_exact_cell3_branch_script_sha256':pin,
       'original_full_source_generators_count':246,
       'original_signed_primes_on_cell3':[3,4],
       'original_both_shift_in_z_only':[2],
