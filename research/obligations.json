@@ -74,7 +74,8 @@
     "ef31_exact_even_chebyshev_kernel": "EF31 exact ORIGINAL 470x471 even moment nullspace symbolic parameterization from accepted EF30 rank470: let z_j=cos(2pi c_j/512), P(z)=prod(z-z_j)^p_j, t=cosh(1/1024), U=P(z)(z-t), L=Chebyshev T0 arcsine average, A=L(U), B=L(zU). Chebyshev T1..T471 coefficients of U(B-Az) span the exact original source/pole kernel. This avoids Gram inversion but does NOT provide directed numeric orientation, EF29 signed residual delta, A_arch, corrected even Schur, or RH. Genuine pole forbids any nonzero algebraic-coordinate exact neutral vector; next task is outward normalized contraction or quantitative finite-grid conditioning STOP. Algebra regression/analytic review separated; odd W-ODD-NEG remains paused OPEN.",
     "ef32_original_even_first_source_diagonal_and_471_sufficient_stop": "EF32 ORIGINAL source SI10 e=1_[-11/10,11/10]cos(2pi37/64 x) complete genuine seven-prime and quarter-digamma signed even first-source diagonal with true cosh positive pole: 256-term exact real physical Laplace covariance and 1/(n+1/4)^2 complete scalar tail, 340-digit original SI06/EF24 outward intervals; Actions #41238414693 SUCCESS and all 471 exact original EF29 signed mixed vector regenerated. A_arch in (-0.76712234087,-0.73831578350), true A_even in (+0.030997276682,+0.059803834050), ||gtilde||²<3.174615e-6. Original physical bell d=231/8388608 implies 34*d*A_even>2.9021812e-5; therefore for ANY true original exact 470-row source/pole-neutral 471-bell w, delta²<=||gtilde||²<34*d*A_even, making only the existing EF28 E<=34d||w||² SUFFICIENT NEGATIVITY criterion categorically unachievable. Does NOT show actual restricted even sign or full 469D Schur PSD, nor rule out a better actual cofinite energy denominator or alternative detector. Source/core and digamma analytic audit independent, odd paused OPEN, whole Weil and RH OPEN. EF33 entry requires kernel-specific original energy or alternative complete even Schur, not just more precise EF31 kernel for same 34d gate.",
     "ef37_original_even_correlated_gradient": "Original SI10 e: signed genuine seven-prime/pole combined full physical squared L2 <7/10 by native 10^340 eight-cell exact primitive with all cutoff flags; complete authentic infinite quarter-digamma cutoff L2<3/5. After exact protected source row subtraction, actual cofinite L2 projection <29/20 and EF34 eta<105125/34 with inherited mu=17/25000. This source-native upper remains nondecision-quality against EF33 S2>1/500. Source check Actions #41251594441 SUCCESS; original analytic Fourier/cutoff form-domain independent review, full 469D Schur, even/odd/whole/RH OPEN. Next EF38 actual original 469-source projected gradient/energy dual.",
-    "ef38_original_even_first_row_projection": "Original SI10 e source exact signed seven-prime and true cosh pole combined z: ||z||²≈0.66725385396, <z,e>≈0.79811961755, ||e||²≈1.2363494115, true original first protected-row projected residual squared <4/25. Exact arch source row lies in V469, complete remaining arch cutoff L2<3/5, hence original ||P_F g_e||<1 and eta<25000/17. CI #41258140982 SUCCESS; one of 469 original rows only, other 468 and signed arch cross/complete infinite Schur remain OPEN. EF39 full arch-base correlated projection. Independent source/domain audit open."
+    "ef38_original_even_first_row_projection": "Original SI10 e source exact signed seven-prime and true cosh pole combined z: ||z||²≈0.66725385396, <z,e>≈0.79811961755, ||e||²≈1.2363494115, true original first protected-row projected residual squared <4/25. Exact arch source row lies in V469, complete remaining arch cutoff L2<3/5, hence original ||P_F g_e||<1 and eta<25000/17. CI #41258140982 SUCCESS; one of 469 original rows only, other 468 and signed arch cross/complete infinite Schur remain OPEN. EF39 full arch-base correlated projection. Independent source/domain audit open.",
+    "ef39_original_even_first_row_arch_cross": "Original SI10 full first-source signed seven-prime/pole plus 40 genuine arch cutoff half-integer modes integrated with all cross terms, then projected on authentic first protected e. Signed projected square <1/15, original remaining arch tail L2<57/500+1/10000; hence ||P_F g_e||<3/8 and eta<28125/136, still not sign-decisive versus restricted S2>1/500. Native Actions #41262637420 SUCCESS. 468 further protected source rows/true 469D Schur and independent full analytic review OPEN. EF40 stable multi-row or precise method STOP."
   },
   "active_obligation": "W-EVEN-FORM",
   "baseline_reconciled_commit": "953df96c900d3e533dff92f30c4eebec65fd60a6",
@@ -1029,6 +1030,13 @@
       "pr": "https://github.com/monocap-tech/weil-lab/pull/444",
       "verification": "Focused original source interval Actions #41258140982 SUCCESS: 340-digit all seven physical cutoff source integrals and actual pole, optimal one-row projection, complete native EF37 infinite arch bound, governance PASS. Independent original physical Fourier/digamma source-domain audit open. No complete 469D projection, no even/odd/whole Weil or RH closure.",
       "repo_path": "notes/provisional/EF38_ORIGINAL_EVEN_FIRST_PROTECTED_SOURCE_PROJECTION_20261031.md"
+    },
+    "EF39": {
+      "kind": "original-even-first-protected-source-signed-forty-arch-mode-correlated-physical-projection",
+      "scope": "Genuine first original SI10 even source e; complete signed original seven-prime/power physical response plus actual positive cosh pole z, and original quarter-digamma physical cutoff modes m=0..39 with fully signed 40x40 arch Gram and all 8 original physical shift cells. Exact 340-digit source signed <z,h40>≈-0.14626791117, <h40,e>≈-0.07940171590, ||h40||²≈0.10540896767, original first protected-row projected squared residual ≈0.06232001255<1/15. Entire original m>=40 arch L2 tail <57/500+1/10000. True original full cofinite ||P_F g_e||<3/8 and unseen energy-dual eta<28125/136 from inherited original mu>17/25000. Only one of genuine 469 protected SI10 rows projected; complete 469D Schur sign and even PSD remain OPEN.",
+      "pr": "https://github.com/monocap-tech/weil-lab/pull/447",
+      "verification": "Native original focused Actions #41262637420 SUCCESS; 340-digit outward 8-cell original arithmetic/pole and 40-mode arch signed exact physical integrals, entire 40x40 arch Gram and infinite paid tail. Original Fourier/cutoff source/domain and pseudolocality review remains independently OPEN. No whole even/odd/Weil/RH promotion.",
+      "repo_path": "notes/provisional/EF39_ORIGINAL_EVEN_SIGNED_ARCH_PRIME_POLE_CROSS_20261031.md"
     }
   },
   "obligations": [
@@ -1198,10 +1206,11 @@
         "EF35",
         "EF36",
         "EF37",
-        "EF38"
+        "EF38",
+        "EF39"
       ],
       "acceptance": "Prove positivity in the original even sector with the full signed operator, not only a cofinite complement or isolated positive pole.",
-      "next_action": "EF38 source-pinned original first SI10 protected-row projection of all seven signed prime-power translations plus genuine even cosh pole: ||z||²≈0.66725385396, <z,e>≈0.79811961755, true one-row original L2 projected squared residual <4/25. With exact arch source row subtraction and complete arch cutoff L2<3/5, original full cofinite ||P_F g_e||<1 and unseen eta<25000/17. Source CI #41258140982 SUCCESS. This is 1 of 469 original protected rows: full first-source scalar Schur, original full 469D and W-EVEN-FORM OPEN. EF39 next actual arch cut cross with prime/pole and first protected e projection, followed by more original SI10 rows with independent conditioning/form-domain audit. Odd paused OPEN; whole Weil/RH OPEN."
+      "next_action": "EF39 genuine original first SI10 protected e shorting of full signed seven-prime/cosh pole and first 40 physical quarter-digamma cutoff modes, complete 40x40 original arch Gram and actual signed crosses. Native original projected first-row squared L2 residual <1/15; entire infinite m>=40 original arch tail L2<57/500+1/10000. Thus true first-source cofinite gradient norm<3/8, EF34 unseen eta<28125/136. Source Actions #41262637420 SUCCESS; not enough to compare eta to EF33 restricted S2>1/500 or to certify whole 469-source Schur. EF40 next a small genuine SI10 multi-row stable projected source response with certified signed physical correlations, else mathematically scoped conditioning STOP. Independent Fourier/digamma physical/domain review OPEN, odd paused, whole Weil/RH OPEN."
     },
     {
       "id": "W-WHOLE-FORM",
@@ -1458,6 +1467,17 @@
         "scripts/validate_rpb108_ef38_original_even_first_protected_row_projection.py"
       ],
       "interpretation": "Original true first protected SI10 cosine e L2 projection of all seven signed physical prime shifts and genuine positive even pole; squared one-row source residual <4/25, original eta<25000/17. NOT full 469-source projection or complete even positivity. Independent analytic cutoff/core audit remains open.",
+      "cadence": "on-demand"
+    },
+    {
+      "id": "EF39-original-even-first-row-signed-arch-cross",
+      "obligation_id": "W-EVEN-FORM",
+      "role": "frontier-candidate",
+      "argv": [
+        "python3",
+        "scripts/validate_rpb108_ef39_original_even_full_arch_cross_first_row.py"
+      ],
+      "interpretation": "Original first SI10 protected source e projection, all seven true signed prime-power translations, genuine positive even pole, first 40 signed arch physical cutoff modes with exact 40x40 Gram and full infinite arch tail. Physical projected squared residual <1/15 and eta<28125/136; not the other 468 source rows or full Schur sign.",
       "cadence": "on-demand"
     }
   ]
