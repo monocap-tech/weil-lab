@@ -37,7 +37,7 @@ jobs:
           assert x['original_active_minus_prime_powers']==[2,3,4]
           assert x['original_active_plus_prime_powers']==[2]
           assert x['original_inactive_prime_powers']==[5,7,8,9]
-          assert x['original_active_weight_multiplicities']=={'2':2,'3':1,'4':1}
+          assert x['original_principal_jump_weights_active']==[3,4]\n          assert x['original_principal_jump_weights_inactive']==[2,5,7,8,9]\n          assert x['original_principal_jump_weight_multiplicities']=={'3':1,'4':1}\n          assert x['original_regular_z_has_both_n2_translates_but_p_has_none']
           assert x['original_nf410_independent_true_cell3_signed_p0_overlap']
           assert x['original_native_precision_bits']==2048
           assert x['number_original_signed_p_moments']==len(x['original_source_signed_p_cheb_moments_n0_to_n511'])==512
