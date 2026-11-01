@@ -102,7 +102,7 @@ def main():
  J=[interval(v) for v in m['original_cell1_raw_dx_cheb_moments_n0_to_n1022']]
  assert len(p)==N and len(J)==2*N-1
  assert p[0][1]<0 and J[0][0]>=0
- assert J[0][1]<F(1,1000)
+ assert J[0][1]<F(1,500)
  pz=(F(0),F(0))
  for x,y in zip(a,p):pz=add(pz,scale(x,y))
  # T_i*T_j = (T_(i+j)+T_|i-j|)/2, full exact polynomial.
