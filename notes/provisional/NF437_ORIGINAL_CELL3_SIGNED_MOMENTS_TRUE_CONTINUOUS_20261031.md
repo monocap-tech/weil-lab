@@ -59,3 +59,28 @@ A first complete original exact-Fraction computation in Actions #41282839977 pri
 If final complete integral CI passes, **original physical cell3 complete continuous signed contribution is strictly POSITIVE**; original NF432 certified cell6 complete continuous contribution is strictly NEGATIVE. These are both original-source nonprincipal signed cell sectors, not a theorem that their sum meets NF404 or that any other cell is signed a certain way. Six remaining original positive physical cells (1,2,4,5,7,8), full principal `E_p` and original NF410/NF404 global signed scalar, fourth J242 exterior upper, W-ODD-NEG, even/whole Weil, infinite inverse/domain, RH **OPEN**. Do not merge to main.
 
 **Next NF438:** Complete remaining original six physical signed cells with a prioritization of easier interior ones 4/5 before independently solving cell7 near-B complex-ellipse/image collar; preserve cell-specific NF405/406 principal jump activation vs regular z translate support and exact source correlation. Then full NF410/NF404 signed acceptance, not a premature RH promotion.
+
+
+## Final independent original true continuous signed cell3 gate — ACCEPTED
+
+**[Focused original exact-Fraction source-pinned Actions #41282903842 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41282903842)**. Corrected wrapper disabled Python's arbitrary 4300-digit decimal-to-int threshold; this is necessary to parse the **unchanged** original ~5232-digit Fraction interval endpoints and did not alter the original Cheb polynomials or integration. The independent original signed p512/raw dx1023 source-native [Actions #41282619434 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41282619434), including original NF410 p0 overlap, is separately accepted.
+
+The full source-original **continuous** true cell3 enclosure, conservatively outward rounded from the accepted exact Fraction JSON:
+
+```
+true ∫_J3 p z ∈ [−5.135803138013452832822478228e−23,
+                 −5.135803138013452832822478227e−23]
+
+true ∫_J3 z² ∈ [1.528104155744626211937318736e−22,
+                 1.528104155744626211937318757e−22]
+
+true D3 = 4∫p z + 2∫z² ∈
+      [+1.001887056283871290745646182e−22,
+       +1.001887056283871290745646222e−22].
+```
+
+Thus **true original continuous cell3 nonprincipal signed contribution is STRICT POSITIVE**. Exact raw interval width `≈3.904169585116114e−48`. Original complete-response tail charges remain paid, with actual `epsilon≈1.240272970503549096570565174797e−39`, pz tail fee `≈2.044394485966699e−51`, and z² tail fee `≈9.71953607307095e−49`. The different signs of pz and z² are not grounds for any positivity theorem; only their exact resulting signed sum is accepted on this original physical cell.
+
+Original complete signed JSON **SHA256 `b772b089e5a69a94e8027fee68332d03b5248119f9b7beec0c4e8c6ec80e01d6`**; Actions artifact **#13073851733**, ZIP SHA256 `d7c30cd851eb4bcb83279a7b2188e60e4add0ff070e09337da865e808f63733d`, retained until 2027-01-30. Compact permanent result/source SHA custody `notes/data/provisional/NF437_original_true_cell3_signed_decision_custody_index.json`; raw full exact Fraction JSON permanent archive remains due. **No main merge**.
+
+**Standing/next:** Complete original true signed cell3 **ACCEPTED POSITIVE**, original true signed cell6 **ACCEPTED NEGATIVE**. The six remaining positive physical cells 1,2,4,5,7,8, whole `E_p` and NF410/NF404 global signed criterion, original fourth J242 exterior upper, `W-ODD-NEG`, even/whole Weil and RH **OPEN**. **NF438** should prioritize newly typed principal-jump vs regular-response branch routing on cells 4/5 and evaluate them, with cell7 near-B analyticity obstruction preserved separately.
