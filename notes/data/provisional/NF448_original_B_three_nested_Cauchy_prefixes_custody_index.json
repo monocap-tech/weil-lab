@@ -1,0 +1,90 @@
+{
+  "pass": "NF448",
+  "date": "2026-11-01 America/Los_Angeles",
+  "standing": "ACCEPTED original true J8 x=B complete 246-source correlated continuous compact I_B prefix [0,1/10], rigorously signed NEGATIVE with 4096bit native Arb source and exact outward Cauchy tail. Original remaining [1/10,4B], full z(B), D7 D8 and RH OPEN.",
+  "research_branch": "research/nf448-original-endpoint-divided-difference-native",
+  "draft_pr": 469,
+  "parent_nf447_pr": 468,
+  "original_nf407_complete_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_physical_seam_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_nf445_4096bit_native_source_sha256": "51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32",
+  "original_source_selected_plus_critical": 246,
+  "original_source_frequency_order_groups": 273,
+  "critical_sine_frequencies": 32,
+  "original_odd_sinh_pole_retained": true,
+  "original_J8_true_endpoint_B": "11/10",
+  "original_compact_I_B_definition": "I_B=1/2 int_0^(4B) K(t)[u4(B)-u4(B-t/2)] dt with K(t)=e^(-t/4)/(1-e^(-t))",
+  "original_removable_kernel": "L(t)=t K(t), G(t)=(u4(B)-u4(B-t/2))/t; integrand=L(t)G(t)/2, both entire near t=0",
+  "original_complex_source_continuation": "Used ONLY to provide rigorous Cauchy bounds; physically evaluated real source always within [-B,B]; not an added exterior physical source",
+  "original_actual_U_source_radius_charge": "1e6*S0 per prefix, explicitly paid",
+  "original_certificates": [
+    {
+      "true_panel": [
+        "0",
+        "1/1000"
+      ],
+      "true_interval_midpoint_approx": "-2.8772090059190728157181852379410810930716002254356695966e-11",
+      "strictly_negative": true,
+      "real_degree": 239,
+      "Cauchy_R": "1/100",
+      "tail_approx": "3.888888888888889e-66",
+      "width_approx": "7.777777777777778e-66",
+      "workflows_run_id": 41398443555,
+      "conclusion": "SUCCESS",
+      "original_full_JSON_sha256": "6ac7ae7278c60929a55181df183ebd702f660d6306341554b2bb4df79ff7fec0",
+      "artifact_id": 13120356052,
+      "artifact_zip_sha256": "389ca21eb451fd1cf5fc26eca3d8e0b8a2332f052973ad4aa641278bdd3e1ed6"
+    },
+    {
+      "true_panel": [
+        "0",
+        "1/100"
+      ],
+      "true_interval_midpoint_approx": "-3.0715889073188232813952134618101870475718047503453194946350e-10",
+      "strictly_negative": true,
+      "real_degree": 459,
+      "Cauchy_R": "1/25",
+      "tail_approx": "8.446416228442182e-68",
+      "width_approx": "1.6892832456884363e-67",
+      "workflows_run_id": 41398925408,
+      "conclusion": "SUCCESS",
+      "original_full_JSON_sha256": "68fefd9a08fee8aaa4e674a7b552d7a6667fc3da517ab832f608de582c06f22f",
+      "artifact_id": 13120881319,
+      "artifact_zip_sha256": "0489ef67eafcb953af810b4dfc976aa4381f7e3e05b76911a11ab1d2574fff08"
+    },
+    {
+      "true_panel": [
+        "0",
+        "1/10"
+      ],
+      "true_interval_midpoint_approx": "-1.3843279409092028599738798764958344962762923052677214817388e-7",
+      "strictly_negative": true,
+      "real_degree": 1299,
+      "Cauchy_R": "2/5",
+      "tail_approx": "2.107289028669566e-134",
+      "width_approx": "4.00000000000000000000000000421458e-107",
+      "workflows_run_id": 41399207892,
+      "conclusion": "SUCCESS",
+      "original_full_JSON_sha256": "5c4fa01cb23d2847b78d9bc3c7786e859ea7a713c466da42cf7ef1a04dda527f",
+      "artifact_id": 13120757499,
+      "artifact_zip_sha256": "05acf18e05a6979a6cb0955d384d08de3826a6bb2e2f4d1c99b4631f438f2b02",
+      "Cauchy_product_constant": "12>6/(1-R)=10"
+    }
+  ],
+  "original_source_native_precision_bits": 4096,
+  "original_Cauchy_source_absolute_envelope": "sum |c|*(B+R/2)^k+|pole|<10^160 verified exactly in each source-specific script",
+  "original_Cauchy_kernel_bound": "|t*K(t)|<6 for |t|<=1 using |(1-exp(-t))/t|>=3-e>1/4",
+  "original_true_interval_prefix_nested_signs": "both incremental (0.001,0.01) and (0.01,0.1) contributions negative by interval subtraction of authentic full prefixes",
+  "original_original_I_B_unintegrated_rest": "(1/10,4B)=(1/10,22/5)",
+  "original_I_B_full_interval_resolved": false,
+  "original_full_zB_source_certified_point": false,
+  "original_D7_signed_certified": false,
+  "original_D8_signed_certified": false,
+  "original_E_p_global": "OPEN",
+  "original_NF410_NF404_global_scalar": "OPEN",
+  "original_J242_exterior_fourth": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "original_full_raw_original_source_numerical_JSON_permanently_archived": false,
+  "next_NF": "NF449 optimized local-center analytic/Taylor/Cauchy windows for t∈[1/10,22/5], exact kinematic original source and kernel, avoid growing single-center 1300-mode to 4.4"
+}
