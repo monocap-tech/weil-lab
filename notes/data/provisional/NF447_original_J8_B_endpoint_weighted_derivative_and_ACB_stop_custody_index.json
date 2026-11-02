@@ -1,0 +1,111 @@
+{
+  "pass": "NF447",
+  "date": "2026-11-01 America/Los_Angeles",
+  "standing": "ACCEPTED source-exact original compact derivative tK endpoint kernel and true |I_B|<902, native original all seven J8 prime-power known terms near 0.8977981482264882 (2048-bit Arb), genuine full physical z(B) enclosure [-901.1022018517735,902.8977981482265]. Direct Acb integral first [1e-12,.001] returned nan+nanj, METHOD STOP. Point z(B) not resolved; full J7/J8 signed pz z2 OPEN. Global RH OPEN.",
+  "draft_pr": 468,
+  "parent_nf446_pr": 467,
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_nf445_full_source_native_sha256": "51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32",
+  "original_nf446_full_compact_source_result_SHA": "3cfd2a71adf0c7fa0d9e314a8a0c7bf9cde732d60fad4c7a2346a286f0fb150a",
+  "source_selected_plus_critical": 246,
+  "source_groups": 273,
+  "source_critical_sine_modes": 32,
+  "original_true_endpoint": "x=B=11/10, J8 one-sided physical boundary",
+  "original_complete_joint_compact_kernel_at_B": "J(B)=u4(B)[psi(1/4)-log(pi)+0.5(log(4/B)+pi/2+H(2B))]+0.5 integral_0^(4B) K(t)[u4(B)-u4(B-t/2)]dt",
+  "original_exact_removable_derivative_kernel": "I_B=1/4 integral_0^(4B) tK(t) integral_0^1 u4prime(B-theta*t/2)dtheta dt",
+  "original_K_t": "exp(-t/4)/(1-exp(-t))",
+  "original_tK_zero_limit": 1,
+  "original_source_nf413_true_U_second_derivative_L2_lt": 256,
+  "original_source_nf445_true_Uprime_B_abs_lt": "1e-6",
+  "original_endpoint_collared_original_source_native_arb_pilot": {
+    "run_id": 41393081856,
+    "conclusion": "SUCCESS (valid METHOD STOP classified)",
+    "first_true_panel": [
+      "1/1000000000000",
+      "1/1000"
+    ],
+    "acb_return": "nan + nanj",
+    "result": "METHOD_STOP_NONFINITE_OR_IMAG_NOT_ZERO",
+    "original_native_json_sha256": "468678b2c3d8f83deaebb129987d38843abf231faa250f53a4f48fb54941c4ca",
+    "artifact_id": 13117944253,
+    "zip_sha256": "cb1d440f8c390379a68d17767618bc51e2f28fe277b06e72bcc30017cba4aef5"
+  },
+  "original_exact_weighted_derivative_integral_bound": {
+    "run_id": 41393532381,
+    "conclusion": "SUCCESS",
+    "original_native_json_sha256": "ee5238adc9313428244c8f019b965bd994328f7e890e999ca45a9fd7b63c7bca",
+    "artifact_id": 13118282476,
+    "zip_sha256": "14dcc364c16a6367e53b173eebdcb08a77d6efc91f40c8ab32266d9954c25fa9",
+    "exact_bound": "2816000011/3125000",
+    "integral_abs_lt": 902,
+    "joint_arch_at_B_abs_lt": 916,
+    "full_z_B_abs_lt": 7300
+  },
+  "original_all_known_terms_native": {
+    "run_id": 41393812202,
+    "conclusion": "SUCCESS",
+    "precision_bits": 2048,
+    "original_native_json_sha256": "016b26dd713d796a99bb775a2ce6d0ba6173aff506bda609e96b0a6ab36c5164",
+    "artifact_id": 13118566824,
+    "zip_sha256": "08ef46855870d542e0d4fcd2113812e5581b556686f9b25ce0d36390e68c8145",
+    "original_von_mangoldt_prime_powers": [
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        3
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        7,
+        7
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        9,
+        3
+      ]
+    ],
+    "known_component_center_approx": "0.897798148226488214696549278262",
+    "true_z_B_conservative_enclosure_approx": [
+      "-901.1022018517735",
+      "902.8977981482265"
+    ],
+    "true_z_B_enclosure_width_lt": 1805,
+    "native_point_integral_resolved": false
+  },
+  "accepted_original_continuous_signed_cells": {
+    "1": "positive NF442",
+    "2": "positive NF443",
+    "3": "positive NF437",
+    "4": "negative NF439",
+    "5": "negative NF440",
+    "6": "negative NF432"
+  },
+  "remaining_original_signed_cells_open": [
+    7,
+    8
+  ],
+  "actual_original_J7_signed_pz_z2": "OPEN",
+  "actual_original_J8_signed_pz_z2": "OPEN",
+  "original_principal_E_p": "OPEN",
+  "original_NF410_NF404_complete_signed_scalar": "OPEN",
+  "original_fourth_J242_exterior": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_nf": "NF448 regularize true compact endpoint integrand via entire exponential divided differences and tK series to avoid first Acb nan; validate source-native integral before signed cells",
+  "permanent_full_raw_numerical_JSON_archived": false
+}
