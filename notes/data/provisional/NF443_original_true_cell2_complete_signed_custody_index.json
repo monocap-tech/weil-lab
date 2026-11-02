@@ -1,0 +1,60 @@
+{
+  "pass": "NF443",
+  "standing": "ACCEPTED: original physical J2 complete signed D2 strict positive; 6/8 original positive cells signed, J7 J8 OPEN; global W-ODD-NEG RH OPEN",
+  "draft_pr": 464,
+  "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "full_fifteen_original_source_json_sha256_manifest": "notes/data/provisional/NF443_original_cell2_fifteen_full_source_SHA_manifest.json",
+  "original_true_J2": "(11/10-log(3),log(4)-11/10)",
+  "regular_minus": [
+    2,
+    3
+  ],
+  "regular_plus": [
+    2
+  ],
+  "principal_r_active": [
+    3
+  ],
+  "cuts": [
+    "1/10",
+    "39/200"
+  ],
+  "source_native_coefficients": 1536,
+  "native_signed_p_moments": 1536,
+  "native_raw_dx_moments": 3069,
+  "independent_NF410_p0_overlap": true,
+  "original_true_J2_signed_D2_interval_conservative_x_1e_minus23": [
+    "7.73840831922860552865422461064613",
+    "7.73840831922860552865422461084580"
+  ],
+  "strict_positive": true,
+  "original_exact_width_approx": "1.996588069761e-51",
+  "original_signed_integral_run": 41373830681,
+  "original_signed_integral_artifact_id": 13109393993,
+  "original_signed_integral_json_sha256": "be53f5874e9b837b9f0a51bcf2966961c420a96ea59fccfec36a24eec1694f75",
+  "original_signed_integral_zip_sha256": "8cf089c6497df8ad59c32a7b0683ff050756bf3c53f74d52fd39a844dc463b48",
+  "signed_panel_json_sha256": [
+    "fe4fa437530d135c499a91a5da87c37f8a417c200bdf96278d0aa3fcab87acd6",
+    "3e5f45875a5b69b1293898fe3bba307ee74ac299ff2ff2347bae8c4dbf29bdb0",
+    "05caf0f94ed820e184456d08e7c176539af0cd8ad743165aa6b119f219496d18"
+  ],
+  "full_original_source_numerical_archive": "CI ARTIFACTS, permanent raw JSON DUE",
+  "accepted_original_signed_cells": {
+    "1": "positive",
+    "2": "positive",
+    "3": "positive",
+    "4": "negative",
+    "5": "negative",
+    "6": "negative"
+  },
+  "remaining_original_signed_cells": [
+    7,
+    8
+  ],
+  "original_NF410_NF404_global_scalar_decided": false,
+  "principal_E_p_global_integrated": false,
+  "original_fourth_J242_exterior_upper_closed": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}

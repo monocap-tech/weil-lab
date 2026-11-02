@@ -1,0 +1,73 @@
+name: Weil-Lab NF443 original J2 3-panel full-source native Cheb
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf443_original_cell2_three_panel_native_index.py'
+      - '.github/workflows/nf443-original-cell2-native-panels.yml'
+permissions:
+  contents: read
+jobs:
+  original-source-three-panels:
+    strategy:
+      fail-fast: false
+      matrix:
+        panel: [1, 2, 3]
+        bounds:
+          - {start: 0, stop: 256}
+          - {start: 256, stop: 512}
+          - {start: 0, stop: 8}
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original Arb/Acb native support
+        run: python3 -m pip install python-flint==0.8.0
+      - name: Full genuine original NF407 246-source 2048-image correlated panel modes
+        run: |
+          python3 -m py_compile scripts/local_replay/nf443_original_cell2_three_panel_native_index.py
+          python3 scripts/local_replay/nf443_original_cell2_three_panel_native_index.py \
+            --panel ${{ matrix.panel }} --start ${{ matrix.bounds.start }} --stop ${{ matrix.bounds.stop }} --precision 2048 \
+            --output artifacts/NF443_original_J2_panel${{ matrix.panel }}_n${{ matrix.bounds.start }}to${{ matrix.bounds.stop }}.json
+      - name: Certify original true-source identities, panel boundaries and 2048 native intervals
+        env:
+          PANEL: ${{ matrix.panel }}
+          START: ${{ matrix.bounds.start }}
+          STOP: ${{ matrix.bounds.stop }}
+        run: |
+          python3 - <<'PY'
+          import os,json,sys
+          sys.set_int_max_str_digits(0)
+          from fractions import Fraction as F
+          n=int(os.environ['PANEL']);a=int(os.environ['START']);b=int(os.environ['STOP'])
+          d=json.load(open(f'artifacts/NF443_original_J2_panel{n}_n{a}to{b}.json'))
+          assert d['pass']=='NF443'
+          assert d['source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_true_cell2']=='(11/10-log(3),log(4)-11/10)'
+          assert d['original_panel_number']==n
+          assert d['original_rational_panel_cuts_are_not_prime_seams']
+          assert d['original_same_physical_regular_branch_on_all_panels']
+          assert d['original_minus_translate_primes']==[2,3]
+          assert d['original_plus_translate_primes']==[2]
+          assert d['original_neither_prime_branches']==[4,5,7,8,9]
+          assert d['original_signed_prime_translate_terms']==3
+          assert d['original_independent_direct_source_n2_both_and_n3_minus_only_prime_overlap_pass']
+          assert d['original_independent_direct_source_endpoint_overlap_pass']
+          assert d['common_endpoint_image_indices']==2048
+          assert d['original_native_precision_bits']==2048
+          assert (d['mode_start_inclusive'],d['mode_stop_exclusive'])==(a,b)
+          assert [v['n'] for v in d['coefficients']]==list(range(a,b))
+          assert all(F(v['true_original_cell2_fixed_branch_coefficient_outward_interval'][1])-F(v['true_original_cell2_fixed_branch_coefficient_outward_interval'][0])<F(1,10**44) for v in d['coefficients'])
+          assert not d['true_cell2_signed_pz_and_z2_integrated']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF443 panel',n,'original physical cell2 native modes',a,b,'PASS; signed J2 OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF443-original-J2-p${{ matrix.panel }}-m${{ matrix.bounds.start }}to${{ matrix.bounds.stop }}
+          path: artifacts/NF443_original_J2_panel${{ matrix.panel }}_n${{ matrix.bounds.start }}to${{ matrix.bounds.stop }}.json
+          if-no-files-found: error

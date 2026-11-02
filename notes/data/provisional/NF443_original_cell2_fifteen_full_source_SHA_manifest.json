@@ -1,0 +1,37 @@
+{
+  "pass": "NF443",
+  "standing": "FIFTEEN ORIGINAL SOURCE NATIVE SHA256 RECEIPTS. ALL THREE J2 PANELS FULL COEFFICIENTS, MOMENTS, IMAGE/POLE SOURCE TAILS. SIGNED CONTINUOUS CONTRACT OPEN UNTIL CI ACCEPTANCE",
+  "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_true_J2": "(11/10-log(3),log(4)-11/10)",
+  "panel_inner_json_sha256": {
+    "1": {
+      "low": "5acf678119761d61d702de1c0e7c316392295a60e508633535a8748e77d5d1d7",
+      "high": "643fbd6ef71745a6867bf3698cbd20d159882ecefa44bf06f74da106256086a2",
+      "control": "64efb76cd0e2d9caaed678360ac67181f914093ed93f67530da8453d6d62e9b4",
+      "tail": "939b4c39788be42807bdaed7c63e14b8cf4bada55117a68c4a9c195f6a3604bc",
+      "moments": "51555e7fe77a0f27fe774473cd8242fc50bbfb38f63c1f0a698ff6bcd12dea98"
+    },
+    "2": {
+      "low": "d53083e459235de8e36dca91df2dd15f6bba594588688a62e2869e86cfc16049",
+      "high": "8ca431378bb0f3565ecbb3318dbd6d1b095b0b18b5341e368008d27d70b4ce38",
+      "control": "7b8d04028de1c789de1c9242edb014864ec3817a607d7b9d0013726c66352e02",
+      "tail": "410f8ca5d49e45c6aff29e5be006b74316068ddda23cbe9496f6082df31d941e",
+      "moments": "3387d520f619d6f7652bab441650fb7f5af52e247551ae3b3b0b8219f4597f94"
+    },
+    "3": {
+      "low": "f351aff35748dfa940eea82f35c3b5f5981fb15896e408f103de14d4ff368d5b",
+      "high": "9d0ab2101c4b45d527ee2455f832cff1a4f1719b800e735b730aa21c6f65c6ff",
+      "control": "0339868191cd8e86d1c3f1919875123775c92726c239ed67c1d6e83deb83d85a",
+      "tail": "e93b7f4f4c3ddee1793a0284e650bcb05931f8bffd6545de4eb30fc1130af6a3",
+      "moments": "f7f30b847fedfb48ace042e0cbda221df64496234bfaed0b4a1b2ea89ce008a0"
+    }
+  },
+  "run_ids": {
+    "native": 41372693541,
+    "tail": 41372693468,
+    "moments": 41372693809
+  },
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
