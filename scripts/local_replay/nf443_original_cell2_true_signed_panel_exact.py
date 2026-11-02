@@ -4,7 +4,7 @@
 Original source-certified 512 modes per panel, 2048 common images, exact
 sourcewise real response tail, 512 native p and 1023 raw dx moments;
 all parents SHA256 pinned. Exact Fraction Chebyshev product-to-sum.
-No false r jump at rational integration cuts 31/50 or 73/100.
+No false r jump at rational integration cuts 1/10 or 39/200.
 Full-cell principal NF410 p0 control follows in separate final 3-panel job.
 RH and global NF410/NF404 unchanged OPEN.
 """
@@ -114,7 +114,7 @@ def main():
  out={
   'pass':'NF443',
   'standing':'TRUE ORIGINAL J2 SINGLE PANEL CONTINUOUS SIGNED 4pz+2z2 ACCEPTED; WHOLE J2 REQUIRES AGGREGATE P0 AND 3 PANEL INTEGRAL',
-  'original_panel_number':panel,'original_true_cell2':'(log(5)-11/10,log(7)-11/10)',
+  'original_panel_number':panel,'original_true_cell2':'(11/10-log(3),log(4)-11/10)',
   'source_sha256':SOURCE,'seams_sha256':SEAMS,
   'source_parent_original_JSON_SHA256':PINS[panel],
   'original_panel_physical_piece_rational_bound_enclosures':lo['original_panel_true_piece_exact_bounds'],
