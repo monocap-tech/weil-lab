@@ -13,13 +13,14 @@ Then I_[0,h] = 1/2 integral_0^h L(t) G(t) dt.
 All 273 source freq/order modes and original sinh pole are retained.
 
 Cauchy bound: R=1/25, h=1/100; for |t|<=R,
- |u4(B-t/2)|<10^175 using source |c| absolute <10^160,
- f<883, k<=13, pi<22/7 and exp(pi*f*R)<(11/4)^112<10^50.
+ |u4(B-t/2)| <= M=4*10^160*(11/4)^112 using the genuine
+ source absolute envelope, f<883, k<=13, pi<22/7,
+ e<(11/4) and exp(pi*f*R)<(11/4)^112<10^50.
 For |t|<=1, |L(t)|<6 via 3-e>1/4.
 Therefore coefficient bound for [t^n] L(t)*G(t):
- |c_n| <= 7*10^175/R^(n+1).
-Tail of degree N-1 integral <(h/2)*7*10^175/R*(h/R)^N/(1-h/R).
-This is a rigorously tiny explicit rational charge with N=240.
+ |c_n| <= 7*M/R^(n+1), since 6/(1-R)<7.
+Tail of degree N-1 integral <(h/2)*7*M/R*(h/R)^N/(1-h/R).
+This is an explicit rational bound with N=460.
 The source dyadic coefficient radius charge is paid separately,
 with exact frequency/degree uniform derivative overcharge.
 
