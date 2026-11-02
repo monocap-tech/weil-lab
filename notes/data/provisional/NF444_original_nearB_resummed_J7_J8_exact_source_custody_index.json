@@ -58,12 +58,12 @@
   "W_ODD_NEG": "OPEN",
   "RH": "OPEN",
   "focused_native_analytic_source_CI": {
-    "run_id": 41385705229,
+    "run_id": 41385928653,
     "conclusion": "SUCCESS",
-    "artifact_id": 13114988287,
+    "artifact_id": 13115655457,
     "original_numerical_json_sha256": "c798518a34dbf61cf93b9781fafbebcb29871f4372db6c0c158b02e981ec2a34",
-    "artifact_zip_sha256": "7d25bd5f91c52087f19586985ff5761d5e693c86474a4f500dc963535a6bf2de",
-    "artifact_expiry": "2027-01-31T03:56:13Z"
+    "artifact_zip_sha256": "2004075493c00a60a3539f01fc07d516f321dc5db364fd1df7255fb2a15a6f53",
+    "artifact_expiry": "2027-01-31T03:58:59Z"
   },
   "permanent_full_raw_numerical_json_archived": false,
   "next_nf": "NF445 actual source-correlated residual R_m, higher-order 1/a_m asymptotic subtraction and quantitative near-B bounds; no naive whole J8 uniform Bernstein"
