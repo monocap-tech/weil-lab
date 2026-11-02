@@ -32,7 +32,7 @@ H=F(1,10**12)
 CUTS=(H,F(1,1000),F(1,20),F(1),4*B)
 def read(p):
  b=Path(p).read_bytes();return json.loads(b),hashlib.sha256(b).hexdigest()
-def A(v):return arb(str(v))
+def A(v):return v if isinstance(v,arb) else arb(str(v))
 def C(v):return acb(A(v))
 def enclosure(z,digits=75):
  mid,rad,e=z.mid_rad_10exp(digits)
