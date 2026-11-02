@@ -1,0 +1,57 @@
+name: Weil-Lab NF445 original correlated image Laplace residual native
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf445_original_correlated_residual_laplace_native.py'
+      - '.github/workflows/nf445-original-correlated-residual-native.yml'
+permissions:
+  contents: read
+jobs:
+  source-original-laplace-derivatives-and-correlated-Rm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install python-flint==0.8.0
+      - name: Original full NF407 dyadic source 4096-bit correlated image coefficient samples
+        run: |
+          python3 -m py_compile scripts/local_replay/nf445_original_correlated_residual_laplace_native.py
+          python3 scripts/local_replay/nf445_original_correlated_residual_laplace_native.py --precision 4096 --output artifacts/NF445_original_source_correlated_Rm_laplace.json
+      - name: Fail-closed source identity, dyadic, derivative, sample and J7 J8 signed obligations
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          d=json.load(open('artifacts/NF445_original_source_correlated_Rm_laplace.json'))
+          assert d['pass']=='NF445'
+          assert d['original_nf407_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['original_nf406_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_full_selected_and_critical_source']==246
+          assert d['original_source_groups']==273
+          assert d['original_precision_bits']==4096
+          assert d['original_nf407_u4_B_overlap']
+          a,b=map(F,d['original_source_v_analytic_carrier_interval'])
+          c,e=map(F,d['original_source_u4_B_independent_native_interval'])
+          assert a<=e and c<=b and b<0 and e<0
+          assert len(d['original_source_derivative_intervals_at_B'])==6
+          assert len(d['original_full_source_residual_real_m_samples'])==14
+          assert [z['m'] for z in d['original_full_source_residual_real_m_samples']]==[1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192]
+          assert d['original_true_B_endpoint_residual_removable']
+          assert d['original_source_complete_odd_sinh_m0_pole_stays_separate']
+          assert not d['original_actual_correlated_residual_uniform_bound_certified']
+          assert not d['original_true_J7_signed_integral_certified']
+          assert not d['original_true_J8_signed_integral_certified']
+          assert not d['original_full_NF410_NF404_signed_scalar_decided']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF445 PASS original 246 source, correlated 14 R_m and 6 endpoint derivatives at 4096 bits; uniform quantitative J7/J8 OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF445-original-correlated-Rm-Laplace-source-native
+          path: artifacts/NF445_original_source_correlated_Rm_laplace.json
+          if-no-files-found: error
