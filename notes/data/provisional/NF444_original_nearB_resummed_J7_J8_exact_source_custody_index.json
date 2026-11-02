@@ -1,0 +1,70 @@
+{
+  "pass": "NF444",
+  "standing": "ACCEPTED exact original source-linear J7/J8 near-B image resummation / log cancellation, J7/J8 n9 contact and continuous z(B). Residual M/N rigorously finite but NOT decision-quality; D7 D8 and RH OPEN.",
+  "draft_pr": 465,
+  "parent_nf443_pr": 464,
+  "original_nf407_full_246_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_nf443_native_transfer_script_sha256": "8564d78d8344a99343836c10c3e2add332405dad2662956a8e4d57d81d5d1937",
+  "original_source_groups": 273,
+  "original_source_selected_plus_critical": 246,
+  "original_regular_and_principal_j7_active_minus_and_jumps": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "original_regular_and_principal_j8_active_minus_and_jumps": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9
+  ],
+  "original_plus_translate_active_j7_j8": [],
+  "original_exact_source_image_coefficient_amplitude": "T_m=u4(B)/(m+1/4)+R_m (exact split; m=0 special pole finite)",
+  "original_resummed_universal_h_formula": "H(d)=log(coth(d/4))+2 atan(exp(-d/2))",
+  "original_resummed_boundary_limit": "lim[d->0] {H(d)-log(B/d)}=log(4/B)+pi/2",
+  "original_source_regularized_log_image_value_at_B": "u4(B)/2*(log(4/B)+pi/2-H(2B))",
+  "original_source_residual_uniform_bound_for_m_at_least1": "|R_m| <= M/(m+1/4)^2",
+  "original_source_M_exact_in_artifact": true,
+  "original_M_approx": "1.41812105824581e144",
+  "original_M_from_source_Radii_approx": "4.09317357503888e-752",
+  "original_tail_for_image_indices_m_at_least2048_approx": "3.46347797837541e140",
+  "residual_tail_decision_quality": false,
+  "original_n9_genuine_seam_contact_exact_zero": true,
+  "original_z_continuous_at_B": true,
+  "original_J8_p_L1": true,
+  "original_J8_pz_z2_integrable": true,
+  "actual_signed_original_cells_complete": {
+    "1": "positive NF442",
+    "2": "positive NF443",
+    "3": "positive NF437",
+    "4": "negative NF439",
+    "5": "negative NF440",
+    "6": "negative NF432"
+  },
+  "signed_original_cells_open": [
+    7,
+    8
+  ],
+  "NF410_NF404_complete_signed_scalar": "OPEN",
+  "original_E_p_integral": "OPEN",
+  "original_fourth_J242_exterior_upper": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "focused_native_analytic_source_CI": {
+    "run_id": 41385705229,
+    "conclusion": "SUCCESS",
+    "artifact_id": 13114988287,
+    "original_numerical_json_sha256": "c798518a34dbf61cf93b9781fafbebcb29871f4372db6c0c158b02e981ec2a34",
+    "artifact_zip_sha256": "7d25bd5f91c52087f19586985ff5761d5e693c86474a4f500dc963535a6bf2de",
+    "artifact_expiry": "2027-01-31T03:56:13Z"
+  },
+  "permanent_full_raw_numerical_json_archived": false,
+  "next_nf": "NF445 actual source-correlated residual R_m, higher-order 1/a_m asymptotic subtraction and quantitative near-B bounds; no naive whole J8 uniform Bernstein"
+}
