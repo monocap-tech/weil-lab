@@ -10,7 +10,7 @@
 
 ## Authentic source custody and distinct physical routes
 
-No new source selection, no changed frequency order and no replacement principal response: original NF407 242 selected +4 critical dyadic coefficients, all 32 critical sine frequencies, 273 distinct frequency/order groups, exact NF404 centered source and odd sinh removable pole, and NF406 physical support seams. Original source JSON SHA256 \`0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce\`; original seams JSON SHA256 \`c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675\`.
+No new source selection, no changed frequency order and no replacement principal response: original NF407 242 selected +4 critical dyadic coefficients, all 32 critical sine frequencies, 273 distinct frequency/order groups, exact NF404 centered source and odd sinh removable pole, and NF406 physical support seams. Original source JSON SHA256 `0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce`; original seams JSON SHA256 `c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675`.
 
 On J7 regular NF405 minus shifts **2,3,4,5,7,8** and plus none, independent principal NF407 r-jumps **2,3,4,5,7,8**. On J8 both add **n9**, plus still none. This must not be conflated with earlier J1/J2 branches.
 
