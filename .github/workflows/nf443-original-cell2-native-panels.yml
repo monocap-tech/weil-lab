@@ -3,8 +3,8 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - 'scripts/local_replay/nf440_original_cell2_three_panel_native_index.py'
-      - '.github/workflows/nf440-original-cell2-native-panels.yml'
+      - 'scripts/local_replay/nf443_original_cell2_three_panel_native_index.py'
+      - '.github/workflows/nf443-original-cell2-native-panels.yml'
 permissions:
   contents: read
 jobs:
@@ -28,8 +28,8 @@ jobs:
         run: python3 -m pip install python-flint==0.8.0
       - name: Full genuine original NF407 246-source 2048-image correlated panel modes
         run: |
-          python3 -m py_compile scripts/local_replay/nf440_original_cell2_three_panel_native_index.py
-          python3 scripts/local_replay/nf440_original_cell2_three_panel_native_index.py \
+          python3 -m py_compile scripts/local_replay/nf443_original_cell2_three_panel_native_index.py
+          python3 scripts/local_replay/nf443_original_cell2_three_panel_native_index.py \
             --panel ${{ matrix.panel }} --start ${{ matrix.bounds.start }} --stop ${{ matrix.bounds.stop }} --precision 2048 \
             --output artifacts/NF443_original_J2_panel${{ matrix.panel }}_n${{ matrix.bounds.start }}to${{ matrix.bounds.stop }}.json
       - name: Certify original true-source identities, panel boundaries and 2048 native intervals
