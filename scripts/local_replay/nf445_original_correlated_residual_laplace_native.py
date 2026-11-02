@@ -117,6 +117,9 @@ def calc():
   tbound=enclose(v)
   w=F(tbound[1])-F(tbound[0])
   max_t_width=max(max_t_width,w)
+  v_lo,v_hi=map(F,tbound)
+  scale=max(F(1),abs(v_lo),abs(v_hi))
+  assert w<scale*F(1,10**40),('native 4096-bit relative enclosure unexpectedly wide',m)
   values.append({
    'm':m,'a':str(F(4*m+1,4)),
    'original_source_correlated_Tm_arb_interval':tbound,
@@ -128,7 +131,9 @@ def calc():
    'derivative_1_asymptotic_remainder_not_yet_uniformly_bounded':True
   })
   print('NF445 genuine original source m',m,'T',float(v.mid().real),'R',float(R.mid().real),'a2R',float((R*a*a).mid().real),flush=True)
- assert max_t_width<F(1,10**35)
+ # The early source-correlated T_m genuinely have magnitudes up to 10^139;
+ # do NOT require tiny absolute width for a huge valid interval.
+ # Every m interval above passes strict relative width <1e-40.
  out={
   'pass':'NF445',
   'standing':'SOURCE-NATIVE ACTUAL CORRELATED ORIGINAL R_m AND EXACT LAPLACE INTEGRAL IDENTITY; UNIFORM DECISION QUALITY TAIL, J7/J8 SIGN OPEN',
@@ -141,6 +146,8 @@ def calc():
   'original_nf407_u4_B_overlap':True,
   'original_source_derivative_intervals_at_B':{str(i):enclose(v) for i,v in enumerate(derivative)},
   'original_source_M_original_NF444_approx':'1.41812105824581e144',
+  'original_native_max_absolute_outward_interval_width':str(max_t_width),
+  'original_all_Tm_sample_relative_interval_width_strict_below':'1e-40',
   'original_original_native_T_m_exact_laplace_identity':'Tm=integral_(0,infinity) e^(-(m+1/4)t) u4(B+t/2) dt, for m>=1',
   'original_correlated_R_m_exact_laplace_identity':'Rm=integral_(0,infinity) e^(-(m+1/4)t) [u4(B+t/2)-u4(B)] dt',
   'original_asymptotic_derivative_coefficients':'sum_j u4^(j)(B)/(2^j (m+1/4)^(j+1)), with remainder integral; no uniform remainder yet',
