@@ -1,0 +1,61 @@
+name: Weil-Lab NF444 original near-B resummed image and J7/J8 contact
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf444_original_nearB_universal_resummed_image_exact.py'
+      - '.github/workflows/nf444-original-nearB-resummed-contact.yml'
+permissions:
+  contents: read
+jobs:
+  source-exact-nearB-cancellation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authentic NF407 source H(d), residue, prime seam and +B continuous limit
+        run: |
+          python3 -m py_compile scripts/local_replay/nf444_original_nearB_universal_resummed_image_exact.py
+          python3 scripts/local_replay/nf444_original_nearB_universal_resummed_image_exact.py --output artifacts/NF444_original_true_nearB_resummed_J7_J8.json
+      - name: Fail closed whole signed J7/J8, RH and real source residue quantitative gate
+        run: |
+          python3 - <<'PY'
+          import sys,json
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          d=json.load(open('artifacts/NF444_original_true_nearB_resummed_J7_J8.json'))
+          assert d['pass']=='NF444'
+          assert d['original_source_SHA256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['original_seams_SHA256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_246_source_dyadic_linear_form']
+          assert d['original_source_frequency_order_groups']==273
+          assert d['original_image_index_parameter']=='a_m=m+1/4'
+          assert d['original_exact_resummed_H_d']=='log(coth(d/4))+2*atan(exp(-d/2))'
+          assert d['original_resummed_H_asymptotic']=='H(d)+log(d)->log(4)+pi/2 as d downarrow0'
+          assert d['original_continuous_fixed_source_endpoint_at_B_exists']
+          assert d['original_n9_support_seam_total_z_jump_exact_zero']
+          assert d['original_true_J8_response_bounded_on_closed_interval_by_uniform_convergence']
+          assert d['original_true_J8_p_unbounded_but_L1']
+          assert d['original_true_J8_pz_and_z2_integrable_without_sign_decision']
+          j7=d['original_cells']['7'];j8=d['original_cells']['8']
+          assert j7['original_regular_minus']==j7['original_principal_r_jumps_active']==[2,3,4,5,7,8]
+          assert j8['original_regular_minus']==j8['original_principal_r_jumps_active']==[2,3,4,5,7,8,9]
+          assert j7['original_regular_plus']==j8['original_regular_plus']==[]
+          M=F(d['original_true_source_remainder_constant_exact_rational'])
+          t=F(d['original_uniform_residual_image_tail_for_m_ge2048_exact_rational'])
+          assert M>0 and t==M/(2*(F(2048)-F(3,4)))
+          assert not d['original_source_residual_tail_decision_quality_certified']
+          assert not d['original_true_J7_signed_integral_decided']
+          assert not d['original_true_J8_signed_integral_decided']
+          assert not d['original_full_NF410_NF404_signed_scalar_decided']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF444 source-linear original endpoint RESUMMATION PASS; signed J7 J8 and global RH OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF444-original-true-nearB-resummed-J7-J8
+          path: artifacts/NF444_original_true_nearB_resummed_J7_J8.json
+          if-no-files-found: error
