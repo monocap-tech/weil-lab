@@ -1,0 +1,155 @@
+name: Weil-Lab NF443 original J2 complete 3-panel continuous signed
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf443_original_cell2_true_signed_panel_exact.py'
+      - 'notes/data/provisional/NF443_original_cell2_fifteen_full_source_SHA_manifest.json'
+      - '.github/workflows/nf443-original-cell2-complete-signed.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-true-J2-panel:
+    strategy:
+      fail-fast: false
+      matrix:
+        panel: [1, 2, 3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve all five SHA-pinned authentic source-receipts for each J2 panel
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/{low,high,control,tail,moments}
+          gh run download 41372693541 --repo "$GITHUB_REPOSITORY" --name NF443-original-J2-p${{ matrix.panel }}-m0to256 --dir artifacts/low
+          gh run download 41372693541 --repo "$GITHUB_REPOSITORY" --name NF443-original-J2-p${{ matrix.panel }}-m256to512 --dir artifacts/high
+          gh run download 41372693541 --repo "$GITHUB_REPOSITORY" --name NF443-original-J2-p${{ matrix.panel }}-m0to8 --dir artifacts/control
+          gh run download 41372693468 --repo "$GITHUB_REPOSITORY" --name NF443-original-J2-panel${{ matrix.panel }}-sourcewise-512-tail --dir artifacts/tail
+          gh run download 41372693809 --repo "$GITHUB_REPOSITORY" --name NF443-original-J2-panel${{ matrix.panel }}-principal-p512-dx1023 --dir artifacts/moments
+      - name: Original true signed 4pz+2z2 source-native exact Fraction
+        run: |
+          python3 -m py_compile scripts/local_replay/nf443_original_cell2_true_signed_panel_exact.py
+          python3 scripts/local_replay/nf443_original_cell2_true_signed_panel_exact.py \
+            --manifest notes/data/provisional/NF443_original_cell2_fifteen_full_source_SHA_manifest.json \
+            --panel ${{ matrix.panel }} \
+            --low artifacts/low/NF443_original_J2_panel${{ matrix.panel }}_n0to256.json \
+            --high artifacts/high/NF443_original_J2_panel${{ matrix.panel }}_n256to512.json \
+            --control artifacts/control/NF443_original_J2_panel${{ matrix.panel }}_n0to8.json \
+            --tail artifacts/tail/NF443_J2_panel${{ matrix.panel }}_sourcewise_true_tail.json \
+            --moments artifacts/moments/NF443_original_J2_panel${{ matrix.panel }}_principal_p512_dx1023.json \
+            --output artifacts/NF443_original_J2_true_panel${{ matrix.panel }}_signed.json
+      - name: Strict original J2 physical n2 both, n3 principal-only, whole global OPEN
+        env:
+          PANEL: ${{ matrix.panel }}
+        run: |
+          python3 - <<'PY'
+          import os,json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          n=int(os.environ['PANEL'])
+          d=json.load(open(f'artifacts/NF443_original_J2_true_panel{n}_signed.json'))
+          assert d['pass']=='NF443' and d['original_panel_number']==n
+          assert d['original_true_cell2']=='(11/10-log(3),log(4)-11/10)'
+          assert d['source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_regular_minus_active']==[2,3]
+          assert d['original_regular_plus']==[2]
+          assert d['original_principal_jump_active']==[3]
+          assert d['original_principal_jump_inactive']==[2,4,5,7,8,9]
+          assert d['original_source_native_coefficient_count']==512
+          assert d['original_independent_short_padding_overlap_n0to7']
+          assert d['original_internal_cuts_are_not_original_support_seams']==['1/10','39/200']
+          assert F(d['original_true_z_minus_P511_epsilon'])<F(1,10**38)
+          a,b=map(F,d['original_true_signed_D_piece_interval'])
+          assert a<=b and b-a<F(1,10**28)
+          assert F(d['original_true_principal_p0_interval'][1])<0
+          assert not d['full_original_true_cell2_signed_decided']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF443 PASS source-original true J2 panel',n,'signed',d['original_true_signed_D_piece_sign'],float(a),float(b))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF443-original-true-J2-signed-panel${{ matrix.panel }}
+          path: artifacts/NF443_original_J2_true_panel${{ matrix.panel }}_signed.json
+          if-no-files-found: error
+  original-whole-J2-signed-and-NF410-p0:
+    needs: original-true-J2-panel
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Immutable original three-panel integrals and separate independent NF410 source p0
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/{p1,p2,p3,source}
+          gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name NF443-original-true-J2-signed-panel1 --dir artifacts/p1
+          gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name NF443-original-true-J2-signed-panel2 --dir artifacts/p2
+          gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name NF443-original-true-J2-signed-panel3 --dir artifacts/p3
+          gh run download 41358048029 --repo "$GITHUB_REPOSITORY" --name NF441-original-true-J1-J2-J8-principal-p0 --dir artifacts/source
+      - name: Exact source-pinned J2 continuous signed D2 and independent original NF410 m0 overlap
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,sys
+          from pathlib import Path
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          def interval(v):
+              x,y=map(F,v);assert x<=y;return x,y
+          def add(x,y):return x[0]+y[0],x[1]+y[1]
+          docs=[]
+          for i in (1,2,3):
+              raw=Path(f'artifacts/p{i}/NF443_original_J2_true_panel{i}_signed.json').read_bytes()
+              z=json.loads(raw)
+              assert z['pass']=='NF443' and z['original_panel_number']==i
+              assert z['original_true_cell2']=='(11/10-log(3),log(4)-11/10)'
+              assert z['original_regular_minus_active']==[2,3] and z['original_regular_plus']==[2]
+              assert z['original_principal_jump_active']==[3]
+              docs.append((z,hashlib.sha256(raw).hexdigest()))
+          raw=Path('artifacts/source/NF441_original_true_J1_J2_J8_principal_p0.json').read_bytes()
+          base=json.loads(raw)
+          assert base['pass']=='NF441'
+          assert base['original_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert base['original_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert base['cells']['2']['independent_NF410_p0_overlap']
+          orig=interval(base['cells']['2']['source_original_p0_interval'])
+          pz=z2=D=p0=(F(0),F(0))
+          for z,digest in docs:
+              pz=add(pz,interval(z['original_signed_pz_complete_interval']))
+              z2=add(z2,interval(z['original_signed_z2_complete_interval']))
+              D=add(D,interval(z['original_true_signed_D_piece_interval']))
+              p0=add(p0,interval(z['original_true_principal_p0_interval']))
+          assert p0[0]<=orig[1] and orig[0]<=p0[1],('original J2 summed p0 mismatch NF410')
+          assert p0[1]<0 and z2[0]>0
+          assert D[0]<=D[1] and D[1]-D[0]<F(1,10**28)
+          sign='positive' if D[0]>0 else 'negative' if D[1]<0 else 'undecided'
+          out={'pass':'NF443','standing':'TRUE ORIGINAL COMPLETE J2 SIGNED CONTINUOUS D2 SOURCE-CERTIFIED' if sign!='undecided' else 'TRUE ORIGINAL J2 SIGNED INTERVAL UNDECIDED',
+           'original_true_cell2':'(11/10-log(3),log(4)-11/10)',
+           'source_sha256':base['original_source_sha256'],'seams_sha256':base['original_seams_sha256'],
+           'original_regular_minus':[2,3],'original_regular_plus':[2],
+           'original_principal_r_jumps':[3],'original_rational_cuts_not_prime_seams':['1/10','39/200'],
+           'source_original_three_panel_json_sha256':{str(i):v[1] for i,v in enumerate(docs,1)},
+           'source_original_NF441_p0_json_sha256':hashlib.sha256(raw).hexdigest(),
+           'original_full_true_J2_p0_sum_interval':list(map(str,p0)),
+           'original_independent_NF410_J2_p0_interval':list(map(str,orig)),
+           'original_NF410_p0_overlap':True,
+           'original_true_J2_pz_interval':list(map(str,pz)),
+           'original_true_J2_z2_interval':list(map(str,z2)),
+           'original_true_J2_D2_signed_interval':list(map(str,D)),
+           'original_true_J2_D2_sign':sign,
+           'original_true_J2_signed_interval_width':str(D[1]-D[0]),
+           'original_full_NF410_NF404_signed_scalar_decided':False,
+           'original_full_principal_E_p_closed':False,
+           'original_fourth_J242_exterior_closed':False,'W_ODD_NEG':'OPEN','RH':'OPEN'}
+          Path('artifacts/NF443_original_full_J2_signed.json').write_text(json.dumps(out,indent=2)+'\n')
+          print('NF443 TRUE ORIGINAL J2 D2',sign,float(D[0]),float(D[1]),'strict original p0 NF410 overlap PASS')
+          assert sign!='undecided', 'genuine original J2 signed decision still open'
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF443-original-complete-true-J2-signed-p0-NF410
+          path: artifacts/NF443_original_full_J2_signed.json
+          if-no-files-found: error
