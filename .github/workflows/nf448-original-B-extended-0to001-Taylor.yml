@@ -1,0 +1,68 @@
+name: Weil-Lab NF448 original B extended t up to 1/100 Taylor-Cauchy
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf448_original_true_B_0to001_extended_Taylor_Cauchy.py'
+      - '.github/workflows/nf448-original-B-extended-0to001-Taylor.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-full-source-extended-nearzero:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install python-flint==0.8.0
+      - name: Immutable source NF445 4096bit parent artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/nf445
+          gh run download 41387527946 --repo "$GITHUB_REPOSITORY" --name NF445-original-correlated-Rm-Laplace-source-native --dir artifacts/nf445
+          printf '%s  %s\n' 51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32 artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json | sha256sum --check
+      - name: Source 460-mode correlated extended [0,1/100] exact Taylor-Cauchy
+        run: |
+          python3 -m py_compile scripts/local_replay/nf448_original_true_B_0to001_extended_Taylor_Cauchy.py
+          python3 scripts/local_replay/nf448_original_true_B_0to001_extended_Taylor_Cauchy.py \
+            --nf445 artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json \
+            --precision 4096 --output artifacts/NF448_original_B_extended_0to001_Cauchy.json
+      - name: Original rigorous full-source integral interval and retained other obligation
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          d=json.load(open('artifacts/NF448_original_B_extended_0to001_Cauchy.json'))
+          assert d['pass']=='NF448'
+          assert d['source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_nf445_native_json_sha256']=='51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32'
+          assert d['original_source_generators_selected_plus_critical']==246
+          assert d['original_source_freq_order_groups']==273 and d['original_critical_source_sines']==32
+          assert d['precision_bits']==4096
+          assert d['original_true_panel']==['0','1/100']
+          assert d['original_source_complex_Cauchy_radius']=='1/25'
+          assert d['original_full_Taylor_degree']==459 and d['original_short_Taylor_degree']==443
+          assert d['original_compact_true_source_only']
+          assert d['original_nested_enclosures_overlap']
+          lo,hi=map(F,d['original_full_true_panel_integral_enclosure'])
+          assert lo<=hi and hi-lo<F(1,10**25)
+          assert F(d['original_true_source_tail_charge'])<F(1,10**45)
+          assert F(d['original_original_4096bit_source_radius_charge'])<F(1,10**690)
+          assert d['original_remaining_true_endpoint_integral_interval']=='(1/100,4B) OPEN'
+          assert not d['original_true_full_I_B_source_certified']
+          assert not d['original_true_J7_signed_integral_certified']
+          assert not d['original_true_J8_signed_integral_certified']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF448 true original [0,1/100] integrated:',float(lo),float(hi),'width',float(hi-lo),'global J7/J8 OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF448-original-B-extended-0to001-Cauchy
+          path: artifacts/NF448_original_B_extended_0to001_Cauchy.json
+          if-no-files-found: error
