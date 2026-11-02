@@ -61,7 +61,7 @@ def main():
  nf445,ns=read(args.nf445);nf446,fs=read(args.nf446)
  assert sh==SRC and ks==SEAMS and ns==NF445
  assert nf446['pass']=='NF446' and nf446['original_nf407_source_sha256']==SRC
- assert nf446['original_nf445_native_json_sha256']==ns
+ assert nf446['original_nf445_complete_native_source_json_sha256']==ns
  assert nf446['original_fixed_source_entire_continuation_beyond_B_not_needed'] is True
  assert nf446['original_joint_kernel_K0']=='K(t)=exp(-t/4)/(1-exp(-t))'
  assert curv['original_nf407_full_native_source_sha256']==SRC
