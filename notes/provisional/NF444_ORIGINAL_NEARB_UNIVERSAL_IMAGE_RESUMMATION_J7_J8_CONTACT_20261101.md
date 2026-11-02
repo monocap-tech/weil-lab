@@ -145,7 +145,7 @@ The original J8 principal \(p(x)\propto \log(B/(B-x))\) remains unbounded at B, 
 
 ## Status / next NF445
 
-The source-exact CI replay checks actual source and seam SHA, the original native transfer code conventions (including m=0 special pole handling, true endpoint U(B) and explicit original principal log), exact odd-series coefficients, original J7/J8 branch and jump identities, source-radius M, and the O(m^-2) tail formula. [Focused NF444 Actions #41385705229 — SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41385705229).
+The source-exact CI replay checks 128 exact odd formal-series coefficients, actual source and seam SHA, the original native transfer code conventions (including m=0 special pole handling, true endpoint U(B) and explicit original principal log), exact odd-series coefficients, original J7/J8 branch and jump identities, source-radius M, and the O(m^-2) tail formula. [Focused NF444 Actions #41385928653 — SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41385928653).
 
 **Closed mathematical obligations:**
 - Source-universal analytic extraction of near-B singular image term and its exact cancellation against the original principal logarithm.
@@ -157,5 +157,7 @@ The source-exact CI replay checks actual source and seam SHA, the original nativ
 - A **quantitatively useful** original source-correlated bound for residual \(R_m\), replacing the loose absolute M~10^144 triangle; possible exact Arb source-group residual evaluations and higher-order pole subtraction.
 - Full original true signed D7 and D8, the independent original NF410 p0/true signed moment contracts and summability of a near-B collar.
 - Original principal E_p global evaluation, full NF410/NF404 signed scalar, fourth J242 exterior upper, W-ODD-NEG, even/whole Weil/infinite inverse/domain, RH.
+
+Final accepted NF444 full native-source JSON SHA256 `c798518a34dbf61cf93b9781fafbebcb29871f4372db6c0c158b02e981ec2a34`, Actions artifact #13115655457, ZIP SHA256 `2004075493c00a60a3539f01fc07d516f321dc5db364fd1df7255fb2a15a6f53` (2027-01-31 expiry). Permanent compact [NF444 custody index](../data/provisional/NF444_original_nearB_resummed_J7_J8_exact_source_custody_index.json); full raw JSON permanent archival still due.
 
 **Next bold NF445:** compute actual **correlated** source \(R_m\) and perhaps one or more exact asymptotic 1/a_m^j coefficients, before increasing J7/J8 Chebyshev degree or inserting arbitrarily tiny endpoint collars. The certificate architecture—not merely the sampling resolution—must become quantitative. No main merge.
