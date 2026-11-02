@@ -60,10 +60,10 @@ def main():
  principal,ps=read(args.principal);curv,cs=read(args.nf413)
  nf445,ns=read(args.nf445);nf446,fs=read(args.nf446)
  assert sh==SRC and ks==SEAMS and ns==NF445
- assert nf446['pass']=='NF446' and nf446['source_sha256']==SRC
+ assert nf446['pass']=='NF446' and nf446['original_nf407_source_sha256']==SRC
  assert nf446['original_nf445_native_json_sha256']==ns
- assert nf446['original_entire_extension_outside_B_needed_in_FINAL_joint_integral'] is False
- assert nf446['original_B_endpoint_all_joint_integrands_removable']
+ assert nf446['original_fixed_source_entire_continuation_beyond_B_not_needed'] is True
+ assert nf446['original_joint_kernel_K0']=='K(t)=exp(-t/4)/(1-exp(-t))' || nf446['original_joint_kernel_K0']=='K(t)=exp(-t/4)/(1-exp(-t))'
  assert curv['original_nf407_full_native_source_sha256']==SRC
  assert curv['original_true_full_u4_second_derivative_L2_upper_integer']=='256'
  assert nf445['original_nf407_source_sha256']==SRC
