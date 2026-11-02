@@ -1,0 +1,75 @@
+name: Weil-Lab NF446 original joint digamma-image compact kernel
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf446_original_joint_digamma_image_compact_kernel_exact.py'
+      - '.github/workflows/nf446-original-joint-digamma-image-compact.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-joint-compact-source-certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install python-flint==0.8.0
+      - name: Recover exact original 4096bit derivative and endpoint source custody
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/nf445
+          gh run download 41387527946 --repo "$GITHUB_REPOSITORY" --name NF445-original-correlated-Rm-Laplace-source-native --dir artifacts/nf445
+          sha256sum artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json
+          printf '%s  %s\n' 51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32 artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json | sha256sum --check
+      - name: Original paired digamma plus both images, singular cancellation on compact source
+        run: |
+          python3 -m py_compile scripts/local_replay/nf446_original_joint_digamma_image_compact_kernel_exact.py
+          python3 scripts/local_replay/nf446_original_joint_digamma_image_compact_kernel_exact.py \
+            --nf445 artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json \
+            --output artifacts/NF446_original_true_J7_J8_compact_joint_kernel.json
+      - name: Independent exact original source and NF413 L2 bound obligations
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          x=json.load(open('artifacts/NF446_original_true_J7_J8_compact_joint_kernel.json'))
+          assert x['pass']=='NF446'
+          assert x['source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert x['seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert x['original_nf445_native_json_sha256']=='51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32'
+          assert x['original_full_246_source_count']==246 and x['original_source_group_count']==273
+          assert x['original_original_nf443_pole_m0_finite_term_retained']
+          assert x['original_exact_m0_sinh_digamma_Laurent_pole_residue_cancellation']
+          assert x['original_source_odd_reflection_used']
+          assert not x['original_entire_extension_outside_B_needed_in_FINAL_joint_integral']
+          assert x['original_true_NF413_second_derivative_L2_upper']==256
+          assert x['original_true_compact_source_derivative_sup_lt']==400
+          assert x['original_true_compact_source_sup_lt']==900
+          assert x['original_joint_arch_minus_explicit_principal_log_sup_lt']==17000
+          assert x['original_true_complete_J7_J8_physical_z_sup_lt']==25000
+          assert x['original_true_J7_J8_abs_signed_D_upper_lt']==2000000000
+          assert x['original_B_endpoint_all_joint_integrands_removable']
+          for name,expected in [('7',[2,3,4,5,7,8]),('8',[2,3,4,5,7,8,9])]:
+              c=x['original_cells'][name]
+              assert c['original_regular_minus']==expected
+              assert c['original_principal_r_jump_active']==expected
+              assert c['original_regular_plus']==[]
+              assert not c['original_signed_D_certified']
+          assert not x['original_native_source_correlated_joint_integral_numerically_enclosed']
+          assert not x['original_true_J7_J8_bounds_decision_quality']
+          assert not x['original_true_J7_signed_D_certified']
+          assert not x['original_true_J8_signed_D_certified']
+          assert x['W_ODD_NEG']==x['RH']=='OPEN'
+          print('NF446 original source-exact compact joint identity and true L2 uniform 25000 envelope PASS; D7/D8 OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF446-original-J7-J8-compact-joint-digamma-image
+          path: artifacts/NF446_original_true_J7_J8_compact_joint_kernel.json
+          if-no-files-found: error
