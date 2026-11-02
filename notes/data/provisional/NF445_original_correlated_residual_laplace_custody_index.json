@@ -1,0 +1,74 @@
+{
+  "pass": "NF445",
+  "standing": "ACCEPTED genuine original 246-source correlated Tm/Rm direct 4096bit numerical balls and exact source-linear Laplace + resummed K1 kernel architecture; NO uniform decision-quality J7/J8 bound, signed cells OPEN.",
+  "draft_pr": 466,
+  "parent_nf444_pr": 465,
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seam_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_source_selected_and_critical_count": 246,
+  "original_frequency_order_groups": 273,
+  "source_native_precision_bits": 4096,
+  "source_native_arb_relative_interval_width": "<1e-40 for all 14 sampled Tm",
+  "original_source_u4_B_approx": "-1.1679864490968300e-11",
+  "original_source_derivative_at_B_approximations": [
+    "-1.1679864490968300e-11",
+    "-1.3009713780539214e-7",
+    "-2.832884296086389e-4",
+    "-2.5600622051846447",
+    "-1.722716415115091e4",
+    "-9.301604045987576e7"
+  ],
+  "original_true_source_Tm_selected_certified_samples_approx": {
+    "1": "-3.200641935054197e139",
+    "128": "-5.2366179683731215e25",
+    "256": "-2.417117643909355e7",
+    "512": "-3.041173333414664e-4",
+    "1024": "-3.853564723407691e-10",
+    "2048": "-2.938597435004671e-13",
+    "4096": "-1.1040496286708828e-14",
+    "8192": "-2.6370311337991285e-15"
+  },
+  "original_source_Rm_selected_certified_samples_approx": {
+    "512": "-3.0411733331866533e-4",
+    "1024": "-3.853450690071191e-10",
+    "2048": "-2.8815738075618863e-13",
+    "4096": "-8.189140902889897e-15",
+    "8192": "-1.2113099349870437e-15"
+  },
+  "original_source_linear_exact_Laplace_formula": "T_m=int_0^inf exp[-(m+1/4)t] u4(B+t/2)dt (m>=1); R_m=int_0^inf exp[-(m+1/4)t](u4(B+t/2)-u4(B))dt",
+  "original_correlated_kernel_K1": "K1(s)=exp(-5s/4)/(1-exp(-s))",
+  "original_infinite_residual_image_exact_integral": "I_R(x)=1/2 int_0^inf [u4(B+t/2)-u4(B)] [K1(t+2(B-x))-K1(t+2(B+x))] dt",
+  "original_true_B_endpoint_cancellation": "source difference O(t) times K1(t)~1/t at x=B, product finite; m0 original odd sinh removable pole separately handled",
+  "original_formal_Tm_derivative_coefficients": "sum_(r=0)^(K-1) u4^(r)(B)/(2^r*(m+1/4)^(r+1)); exact remainder integral, NOT uniform numeric bound",
+  "original_source_remains_outside_B_in_integral": true,
+  "original_joint_digamma_image_cancellation_unresolved": true,
+  "original_source_correlated_m_ge8192_uniform_tail_certified": false,
+  "original_signed_J7_J8_certified": false,
+  "original_nf444_crude_M_approx": "1.41812105824581e144",
+  "original_nf444_crude_2048_tail_approx": "3.46347797837541e140",
+  "original_original_full_NF410_NF404_scalar_decided": false,
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "focused_CI": {
+    "run_id": 41387332302,
+    "conclusion": "SUCCESS",
+    "artifact_id": 13115608336,
+    "inner_original_json_sha256": "edfd1f0d2ae7c55aeb042b153a12ef2d8842553e09bf4f5078eb387a748ad7ba",
+    "zip_sha256": "c62a688929b4cabd4bf375307c6f964cb617bc64a3f246ce9653f46305e710af",
+    "expires_at": "2027-01-31T04:14:20Z"
+  },
+  "full_raw_json_permanently_archived": false,
+  "next_nf": "NF446 source-correlated joint digamma/image representation and quantitative near-B residual integral enclosure; J7/J8 signed still open",
+  "accepted_signed_original_cells": {
+    "1": "positive",
+    "2": "positive",
+    "3": "positive",
+    "4": "negative",
+    "5": "negative",
+    "6": "negative"
+  },
+  "open_original_cells": [
+    7,
+    8
+  ]
+}
