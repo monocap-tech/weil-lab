@@ -2,14 +2,14 @@
 """NF445: actual original source-correlated R_m and exact Laplace resummation.
 
 The authentic NF424 native positive-frequency endpoint image:
-T_m = ∫_0^∞ exp[-(m+1/4)t] u4(B+t/2) dt, m>=1.
-This is an EXACT source-linear identity, including the odd sinh pole.
+T_m = ∫_0^∞ exp[-(m+1/4)t] U_ent(B+t/2) dt, m>=1.
+This is an EXACT source-linear identity for U_ent, the unique entire\nfinite-generator continuation of original u4. It is NOT the physically\ncompact-supported original u4 outside |x|<B; include odd sinh pole.
 After NF444 leading v/a extraction, R_m is the SAME integral with
-u4(B+t/2)-u4(B); no termwise abs over individual generators.
+U_ent(B+t/2)-u4(B); no termwise abs over individual generators.
 Then the entire residual infinite image family m>=1 is the exact
 single correlated integral against
 K1(s)=exp(-5s/4)/(1-exp(-s)).
-Its t=0 endpoint at x=B is removable via u4(B+t/2)-v=O(t).
+Its t=0 endpoint at x=B is removable via U_ent(B+t/2)-v=O(t).
 We perform independent 4096-bit genuine Arb/Acb source endpoint
 derivatives and source-correlated T_m samples. This does NOT yet
 certify quantitative infinite-tail integral, D7/D8 or RH.
@@ -88,7 +88,7 @@ def calc():
  rat,pole2,s02=source(src)
  assert len(rat)==len(orig)==273 and pole==pole2 and s0==s02
  assert sorted((f,k,c) for f,k,c in orig)==sorted((f,k,c) for (f,k),c in rat.items())
- # Each polynomial-exponential source mode as a complex single carrier.
+ # Every polynomial-exponential mode belongs to the ORIGINAL entire\n # source generator continuation U_ent, not physical support beyond B.
  # Genuine odd source sine/cos carrier convention matched to NF443.
  carriers=[]
  pi=arb.pi()
@@ -174,12 +174,12 @@ def calc():
   'original_all_Tm_sample_relative_interval_width_strict_below':'1e-40',
   'original_formal_polynomial_laplace_source_coefficient_identity_verified_through_order13':True,
   'original_odd_sinh_integral_identity_checked_at_five_indices':True,
-  'original_original_native_T_m_exact_laplace_identity':'Tm=integral_(0,infinity) e^(-(m+1/4)t) u4(B+t/2) dt, for m>=1',
-  'original_correlated_R_m_exact_laplace_identity':'Rm=integral_(0,infinity) e^(-(m+1/4)t) [u4(B+t/2)-u4(B)] dt',
+  'original_original_native_T_m_exact_laplace_identity':'Tm=integral_(0,infinity) e^(-(m+1/4)t) U_ent(B+t/2) dt, for m>=1',
+  'original_entire_generator_continuation_outside_physical_support_used':True,\n  'original_correlated_R_m_exact_laplace_identity':'Rm=integral_(0,infinity) e^(-(m+1/4)t) [U_ent(B+t/2)-u4(B)] dt',
   'original_asymptotic_derivative_coefficients':'sum_j u4^(j)(B)/(2^j (m+1/4)^(j+1)), with remainder integral; no uniform remainder yet',
   'original_correlated_kernel_K1':'K1(s)=exp(-5s/4)/(1-exp(-s)) for s>0',
-  'original_residual_infinite_image_exact_correlated_integral':'1/2 int_0^infty [u4(B+t/2)-u4(B)] [K1(t+2(B-x))-K1(t+2(B+x))] dt',
-  'original_true_B_endpoint_residual_removable':'u4(B+t/2)-u4(B)=O(t), K1(t)=O(1/t), product bounded at t=0',
+  'original_residual_infinite_image_exact_correlated_integral':'1/2 int_0^infty [U_ent(B+t/2)-u4(B)] [K1(t+2(B-x))-K1(t+2(B+x))] dt',
+  'original_true_B_endpoint_residual_removable':'U_ent(B+t/2)-u4(B)=O(t), K1(t)=O(1/t), product bounded at t=0',
   'original_source_complete_odd_sinh_m0_pole_stays_separate':True,
   'original_full_source_residual_real_m_samples':values,
   'original_actual_correlated_residual_uniform_bound_certified':False,
