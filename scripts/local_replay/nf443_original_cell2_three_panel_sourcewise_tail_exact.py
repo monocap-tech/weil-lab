@@ -38,7 +38,7 @@ def main():
  p.add_argument('--source',default='notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json')
  p.add_argument('--seams',default='notes/data/provisional/NF406_original_prime_support_partition_exact.json')
  p.add_argument('--router',default='scripts/local_replay/nf441_original_cells1_2_8_typed_geometry_exact.py')
- p.add_argument('--indexed-native',default='scripts/local_replay/nf440_original_cell2_three_panel_native_index.py')
+ p.add_argument('--indexed-native',default='scripts/local_replay/nf443_original_cell2_three_panel_native_index.py')
  p.add_argument('--panel',type=int,required=True,choices=(1,2,3))
  p.add_argument('--output',required=True)
  a=p.parse_args()
