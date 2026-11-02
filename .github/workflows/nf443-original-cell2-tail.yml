@@ -1,0 +1,60 @@
+name: Weil-Lab NF443 original J2 3-panel exact 512 remainder
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf443_original_cell2_three_panel_sourcewise_tail_exact.py'
+      - '.github/workflows/nf443-original-cell2-tail.yml'
+permissions:
+  contents: read
+jobs:
+  original-source-three-panel-512-remainder:
+    strategy:
+      fail-fast: false
+      matrix:
+        panel: [1, 2, 3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact original NF407 sourcewise Bernstein plus full image/pole/log
+        run: |
+          python3 -m py_compile scripts/local_replay/nf443_original_cell2_three_panel_sourcewise_tail_exact.py
+          python3 scripts/local_replay/nf443_original_cell2_three_panel_sourcewise_tail_exact.py \
+            --panel ${{ matrix.panel }} --output artifacts/NF443_J2_panel${{ matrix.panel }}_sourcewise_true_tail.json
+      - name: Strict original source and decision quality conditional on all 512 source modes
+        env:
+          PANEL: ${{ matrix.panel }}
+        run: |
+          python3 - <<'PY'
+          import os,json,sys
+          sys.set_int_max_str_digits(0)
+          from fractions import Fraction as F
+          n=int(os.environ['PANEL'])
+          d=json.load(open(f'artifacts/NF443_J2_panel{n}_sourcewise_true_tail.json'))
+          assert d['pass']=='NF443' and d['original_panel_number']==n
+          assert d['NF407_original_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['NF406_original_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_true_cell2']=='(11/10-log(3),log(4)-11/10)'
+          assert d['original_minus_translate_active']==[2,3]
+          assert d['original_plus_translate_active']==[2]
+          assert d['original_inactive_prime_powers']==[4,5,7,8,9]
+          assert d['original_rational_integration_cuts_not_prime_seams']==['1/10','39/200']
+          assert d['original_Chebyshev_accepted_prefix_count_required']==512
+          assert d['sourcewise_cheb_tail_starts_at_mode']==512
+          assert sum(d['sourcewise_optimal_E2_E3_E4_E5_counts'].values())==273
+          assert F(d['original_all_512_native_coefficient_interval_charge'])==512*F(5,10**45)
+          assert F(d['original_real_cell2_2048_image_remainder'])<F(1,10**50)
+          assert F(d['original_true_cell2_z_minus_any_accepted_P511_uniform_error_exact_upper'])<F(1,10**38)
+          assert not d['original_true_cell2_signed_pz_z2_integrated']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          print('NF443 J2 true full function remainder model',n,'PASS conditional on 512 immutable source balls; signed J2 OPEN')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF443-original-J2-panel${{ matrix.panel }}-sourcewise-512-tail
+          path: artifacts/NF443_J2_panel${{ matrix.panel }}_sourcewise_true_tail.json
+          if-no-files-found: error
