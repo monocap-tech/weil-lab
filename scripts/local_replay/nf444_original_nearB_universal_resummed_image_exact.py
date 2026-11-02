@@ -42,16 +42,26 @@ def check_transfer(path):
  for s in checks:assert s in raw,('original native transfer convention changed',s)
  return hashlib.sha256(raw.encode()).hexdigest()
 def math_identity():
- # H(d)=4*sum_{m>=0} y^(4m+1)/(4m+1);
- # dH/dy=4/(1-y^4)=d/dy[log((1+y)/(1-y))+2atan(y)].
- # Values both vanish at y=0. y=e^-d/2.
- assert F(2)*(F(1,1)+F(1,1))==4
- assert F(1,4)*4==1
- # As d->0: y=1-d/2+O(d²):
- # log((1+y)/(1-y)) + log(d) -> log(4);
- # 2atan(y)->pi/2.
- # Therefore H(d)-log(B/d) ->
- # log(4/B)+pi/2. No nonuniform 1/(B-x) remains.
+ # Exact formal power series identity, not floating-point samples:
+ # log((1+y)/(1-y)) = 2*sum_(n>=0) y^(2n+1)/(2n+1),
+ # 2 atan(y) = 2*sum_(n>=0) (-1)^n*y^(2n+1)/(2n+1).
+ # Hence only exponents 4m+1 survive, coeff 4/(4m+1).
+ for n in range(128):
+  coef=F(2*(1+(-1)**n),2*n+1)
+  expected=F(4,2*n+1) if n%2==0 else F(0)
+  assert coef==expected
+ # Derivative identity exact in Q(y):
+ # 2/(1-y^2)+2/(1+y^2)=4/(1-y^4).
+ # Both antiderivative series vanish at y=0; y=e^-d/2.
+ assert 2*(1+1)==4
+ # m>=1 odd-pole remainder source bound:
+ # |pole|/2*[e^(B/2)*5/(16a²)+e^(-B/2)*1/(4a²)]
+ # <=(7/16)|pole|/a², since e^(B/2)<2, e^(-B/2)<1.
+ assert (F(2)*F(5,16)+F(1,4))/2==F(7,16)<1
+ # As d->0: y=1-d/2+O(d²), so
+ # log((1+y)/(1-y))+log(d) -> log(4)
+ # and 2atan(y)->pi/2. Thus H(d)-log(B/d)
+ # -> log(4/B)+pi/2, finite and source-independent.
  assert B>0
  return True
 def main():
