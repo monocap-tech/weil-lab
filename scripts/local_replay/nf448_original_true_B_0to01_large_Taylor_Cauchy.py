@@ -17,8 +17,8 @@ Cauchy bound: R=2/5, h=1/10; for |t|<=R,
  f<883, k<=13, pi<22/7 and exp(pi*f*R)<(11/4)^112<10^50.
 For |t|<=1, |L(t)|<6 via 3-e>1/4.
 Therefore coefficient bound for [t^n] L(t)*G(t):
- |c_n| <= 7*10^175/R^(n+1).
-Tail of degree N-1 integral <(h/2)*7*10^175/R*(h/R)^N/(1-h/R).
+ |c_n| <= 12*M/R^(n+1).
+Tail of degree N-1 integral <(h/2)*12*M/R*(h/R)^N/(1-h/R).
 This is a rigorously tiny explicit rational charge with N=240.
 The source dyadic coefficient radius charge is paid separately,
 with exact frequency/degree uniform derivative overcharge.
@@ -97,8 +97,9 @@ def main():
  assert F(3,2)**4>F(11,4)
  q=H/R
  assert q==F(1,4)
- tail=(H/F(2))*7*M/R*q**N/(1-q)
- tail_short=(H/F(2))*7*M/R*q**(N-16)/(1-q)
+ assert F(6)/(1-R)<=12
+ tail=(H/F(2))*12*M/R*q**N/(1-q)
+ tail_short=(H/F(2))*12*M/R*q**(N-16)/(1-q)
  assert tail<F(1,10**45)
  assert tail_short<F(1,10**35)
  print("NF448 original full source 273 groups, exact Taylor tail bound",float(tail),flush=True)
