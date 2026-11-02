@@ -3,7 +3,9 @@
 
 The authentic NF424 native positive-frequency endpoint image:
 T_m = ∫_0^∞ exp[-(m+1/4)t] U_ent(B+t/2) dt, m>=1.
-This is an EXACT source-linear identity for U_ent, the unique entire\nfinite-generator continuation of original u4. It is NOT the physically\ncompact-supported original u4 outside |x|<B; include odd sinh pole.
+This is an EXACT source-linear identity for U_ent, the unique entire
+finite-generator continuation of original u4. It is NOT the physically
+compact-supported original u4 outside |x|<B; include odd sinh pole.
 After NF444 leading v/a extraction, R_m is the SAME integral with
 U_ent(B+t/2)-u4(B); no termwise abs over individual generators.
 Then the entire residual infinite image family m>=1 is the exact
@@ -175,7 +177,8 @@ def calc():
   'original_formal_polynomial_laplace_source_coefficient_identity_verified_through_order13':True,
   'original_odd_sinh_integral_identity_checked_at_five_indices':True,
   'original_original_native_T_m_exact_laplace_identity':'Tm=integral_(0,infinity) e^(-(m+1/4)t) U_ent(B+t/2) dt, for m>=1',
-  'original_entire_generator_continuation_outside_physical_support_used':True,\n  'original_correlated_R_m_exact_laplace_identity':'Rm=integral_(0,infinity) e^(-(m+1/4)t) [U_ent(B+t/2)-u4(B)] dt',
+  'original_entire_generator_continuation_outside_physical_support_used':True,
+  'original_correlated_R_m_exact_laplace_identity':'Rm=integral_(0,infinity) e^(-(m+1/4)t) [U_ent(B+t/2)-u4(B)] dt',
   'original_asymptotic_derivative_coefficients':'sum_j u4^(j)(B)/(2^j (m+1/4)^(j+1)), with remainder integral; no uniform remainder yet',
   'original_correlated_kernel_K1':'K1(s)=exp(-5s/4)/(1-exp(-s)) for s>0',
   'original_residual_infinite_image_exact_correlated_integral':'1/2 int_0^infty [U_ent(B+t/2)-u4(B)] [K1(t+2(B-x))-K1(t+2(B+x))] dt',
