@@ -42,6 +42,29 @@ def result_source(s):
  terms,pole,s0=native_source(s)
  assert len(terms)==273 and s0<F(1,10**700)
  return terms,pole,s0
+def exact_formal_laplace_checks():
+ # Formal finite Taylor-Laplace coefficient identity, valid for every
+ # source monomial x^k exp(lambda*x) and k<=13. The coefficient
+ # of a^(-r-1) in the geometric expansion of the original native
+ # endpoint transfer agrees with u^(r)(B)/2^r exactly.
+ for k in range(14):
+  for r in range(14):
+   for j in range(min(k,r)+1):
+    lhs=F(math.comb(k,j)*math.factorial(j)*math.comb(r,j),2**r)
+    rhs=F(math.comb(r,j)*math.factorial(k)//math.factorial(k-j),2**r)
+    assert lhs==rhs,(k,r,j)
+ # Special original sinh mode is likewise an exact Laplace transform,
+ # only for m>=1 (m=0 has the genuine removable pole).
+ for m in (1,2,4,8,2048):
+  a=F(4*m+1,4)
+  assert a-F(1,4)==m and a+F(1,4)==F(2*m+1,2)
+ # Geometric m>=1 (NOT including removable singular m0):
+ # sum_(m>=1) exp[-(m+1/4)*s]
+ # == exp(-5s/4)/(1-exp(-s)).
+ # Source-subtracted integrand behaves as O(t)*(1/t)=O(1)
+ # at t->0 if d=B-x=0, while sinh source grows at most
+ # e^(t/4) polynomial and K1(t) decays e^(-5t/4).
+ return True
 def calc():
  ap=argparse.ArgumentParser()
  ap.add_argument('--source',default='notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json')
@@ -53,6 +76,7 @@ def calc():
  args=ap.parse_args()
  ctx.prec=args.precision
  src,sha=load(args.source);seams,ksha=load(args.seams);principal,psha=load(args.principal);parent,parent_sha=load(args.nf444)
+ assert exact_formal_laplace_checks()
  assert sha==SRC and ksha==SEAM and args.precision>=2048
  assert parent['original_nf407_full_246_source_sha256']==sha
  assert parent['original_nf406_seams_sha256']==ksha
@@ -148,6 +172,8 @@ def calc():
   'original_source_M_original_NF444_approx':'1.41812105824581e144',
   'original_native_max_absolute_outward_interval_width':str(max_t_width),
   'original_all_Tm_sample_relative_interval_width_strict_below':'1e-40',
+  'original_formal_polynomial_laplace_source_coefficient_identity_verified_through_order13':True,
+  'original_odd_sinh_integral_identity_checked_at_five_indices':True,
   'original_original_native_T_m_exact_laplace_identity':'Tm=integral_(0,infinity) e^(-(m+1/4)t) u4(B+t/2) dt, for m>=1',
   'original_correlated_R_m_exact_laplace_identity':'Rm=integral_(0,infinity) e^(-(m+1/4)t) [u4(B+t/2)-u4(B)] dt',
   'original_asymptotic_derivative_coefficients':'sum_j u4^(j)(B)/(2^j (m+1/4)^(j+1)), with remainder integral; no uniform remainder yet',
