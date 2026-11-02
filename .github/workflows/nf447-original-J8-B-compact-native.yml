@@ -1,0 +1,71 @@
+name: Weil-Lab NF447 genuine J8 B-endpoint compact joint Acb
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf447_original_joint_compact_B_endpoint_acb_native.py'
+      - '.github/workflows/nf447-original-J8-B-compact-native.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  true-original-B-joint-compact-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install python-flint==0.8.0
+      - name: Retrieve original NF445 final 4096bit source immutable endpoint data
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/nf445
+          gh run download 41387527946 --repo "$GITHUB_REPOSITORY" --name NF445-original-correlated-Rm-Laplace-source-native --dir artifacts/nf445
+          printf '%s  %s\n' 51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32 artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json | sha256sum --check
+      - name: First original true compact U x=B four-panel Acb validated analytic integral
+        run: |
+          python3 -m py_compile scripts/local_replay/nf447_original_joint_compact_B_endpoint_acb_native.py
+          python3 scripts/local_replay/nf447_original_joint_compact_B_endpoint_acb_native.py \
+            --nf445 artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json \
+            --precision 1024 --eval-limit 3000 --abs-tol 1e-16 \
+            --output artifacts/NF447_original_J8_B_compact_native.json
+      - name: Fail closed unresolved pilot; original source SHA and status taxonomy
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          d=json.load(open('artifacts/NF447_original_J8_B_compact_native.json'))
+          assert d['pass']=='NF447'
+          assert d['original_nf407_source_sha256']=='0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce'
+          assert d['original_nf406_seams_sha256']=='c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675'
+          assert d['original_nf445_native_json_sha256']=='51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32'
+          assert d['original_selected_plus_critical_source_count']==246
+          assert d['original_source_frequency_order_groups']==273
+          assert d['original_true_endpoint_x']=='11/10'
+          assert d['original_original_physical_regular_minus_primes']==[2,3,4,5,7,8,9]
+          assert d['original_original_physical_plus_primes']==[]
+          assert F(d['original_true_collar_uncomputed_absolute_charge_exact'])<F(13,10**17)
+          assert F(d['original_source_radius_charge_exact'])<F(1,10**690)
+          for part in d['original_acb_compact_joint_integral_pieces']:
+              assert part['status'] in ('ACCEPTED_FULL_ANALYTIC_ACB_INTERVAL','METHOD_STOP_FINITE_ACB_INTERVAL_TOO_WIDE','METHOD_STOP_NONFINITE_OR_IMAG_NOT_ZERO','METHOD_STOP_ACB_NO_RESOLVED_INTEGRAL')
+          if d['original_pointwise_J8_endpoint_z_source_certified']:
+              assert d['original_all_four_native_pieces_source_certified']
+              lo,hi=map(F,d['original_true_complete_J8_B_z_interval'])
+              assert lo<=hi and hi-lo<F(1,10**8)
+              print('NF447 TRUE ORIGINAL z(B) SOURCE-CERTIFIED',float(lo),float(hi))
+          else:
+              assert not d['original_complete_joint_true_source_integral_fully_resolved']
+              print('NF447 ORIGINAL J8 B ENDPOINT NATIVE METHOD STOP',d['original_acb_compact_joint_integral_pieces'][-1]['status'])
+          assert not d['original_true_J7_signed_D_certified']
+          assert not d['original_true_J8_signed_D_certified']
+          assert d['W_ODD_NEG']==d['RH']=='OPEN'
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF447-original-J8-B-joint-compact-native
+          path: artifacts/NF447_original_J8_B_compact_native.json
+          if-no-files-found: error
