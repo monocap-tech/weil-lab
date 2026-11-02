@@ -1,0 +1,77 @@
+name: Weil-Lab NF449 original B full compact certified Sobolev midpoint
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf449_original_B_sobolev_midpoint_complete_I.py'
+      - '.github/workflows/nf449-original-B-sobolev-midpoint.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-complete-compact-endpoint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install python-flint==0.8.0
+      - name: Restore immutable prior native source and integral evidence
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/{nf445,nf447,nf448}
+          gh run download 41387527946 --repo "$GITHUB_REPOSITORY" --name NF445-original-correlated-Rm-Laplace-source-native --dir artifacts/nf445
+          gh run download 41393812202 --repo "$GITHUB_REPOSITORY" --name NF447-original-J8-B-all-known-source-native --dir artifacts/nf447
+          gh run download 41399207892 --repo "$GITHUB_REPOSITORY" --name NF448-original-B-large-0to01-Cauchy --dir artifacts/nf448
+          printf '%s  %s\n' 51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32 artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json | sha256sum --check
+          printf '%s  %s\n' 016b26dd713d796a99bb775a2ce6d0ba6173aff506bda609e96b0a6ab36c5164 artifacts/nf447/NF447_original_B_all_known_terms_native.json | sha256sum --check
+          printf '%s  %s\n' 5c4fa01cb23d2847b78d9bc3c7786e859ea7a713c466da42cf7ef1a04dda527f artifacts/nf448/NF448_original_B_large_0to01_Cauchy.json | sha256sum --check
+      - name: True original 246-source joint compact remainder with rigorous midpoint Peano tail
+        run: |
+          python3 -m py_compile scripts/local_replay/nf449_original_B_sobolev_midpoint_complete_I.py
+          python3 scripts/local_replay/nf449_original_B_sobolev_midpoint_complete_I.py \
+            --nf445 artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json \
+            --nf447-known artifacts/nf447/NF447_original_B_all_known_terms_native.json \
+            --nf448 artifacts/nf448/NF448_original_B_large_0to01_Cauchy.json \
+            --nodes 4096 --cross-nodes 1024 --precision 4096 \
+            --output artifacts/NF449_original_B_full_compact_interval.json
+      - name: Fail closed exact original source proof standing and no signed-cell promotion
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/NF449_original_B_full_compact_interval.json"))
+          assert d["pass"]=="NF449"
+          assert d["original_source_SHA256"]=="0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce"
+          assert d["original_seams_SHA256"]=="c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675"
+          assert d["original_NF445_native_SHA256"]=="51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32"
+          assert d["original_NF448_prefix_SHA256"]=="5c4fa01cb23d2847b78d9bc3c7786e859ea7a713c466da42cf7ef1a04dda527f"
+          assert d["original_NF447_known_SHA256"]=="016b26dd713d796a99bb775a2ce6d0ba6173aff506bda609e96b0a6ab36c5164"
+          assert d["original_generators"]==246 and d["original_groups"]==273
+          assert d["precision_bits"]==4096
+          assert d["original_remaining_panel"]==["1/10","22/5"]
+          assert d["original_Sobolev_curvature_L1_strict_upper"]=="5384"
+          assert d["original_main_nodes"]==4096 and d["original_cross_nodes"]==1024
+          assert d["original_cross_independent_resolution_overlaps"]
+          assert F(d["original_main_exact_quadrature_error"])<F(1,1000)
+          assert F(d["original_source_dyadic_radius_charge"])<F(1,10**690)
+          x,y=map(F,d["original_complete_I_B_interval"])
+          assert x<=y and y-x<F(1,100)
+          z0,z1=map(F,d["original_complete_z_B_interval"])
+          assert z0<=z1 and z1-z0<F(1,100)
+          assert d["original_z_B_sign_by_certified_interval"] in ("POSITIVE","NEGATIVE","UNRESOLVED")
+          assert not d["original_J7_signed_integral_decided"]
+          assert not d["original_J8_signed_integral_decided"]
+          assert not d["original_full_NF410_NF404_scalar_decided"]
+          assert d["W_ODD_NEG"]==d["RH"]=="OPEN"
+          print("NF449 FULL ORIGINAL I_B PASS:",float(x),float(y),"true z(B):",float(z0),float(z1))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF449-original-B-full-compact-Sobolev-midpoint
+          path: artifacts/NF449_original_B_full_compact_interval.json
+          if-no-files-found: error
