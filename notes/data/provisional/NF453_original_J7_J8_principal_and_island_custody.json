@@ -1,0 +1,36 @@
+{
+  "pass": "NF453",
+  "standing": "ACCEPTED scoped original J7/J8 principal energies and full signed deficit lower; original J7 negative signed island. Whole signed J7 and J8 OPEN.",
+  "branch": "research/nf453-original-j7-j8-principal-energy-signed-island",
+  "pr": 474,
+  "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_source_count": 246,
+  "original_j7_ep": [
+    "3.62e-22",
+    "3.63e-22"
+  ],
+  "original_j8_ep": [
+    "1.87e-23",
+    "1.89e-23"
+  ],
+  "original_signed_D7plusD8_lower": "-7.638e-22",
+  "original_J7_signed_island_upper": "-8.6e-38",
+  "actual_J7_island_center": "26/25",
+  "actual_J7_island_radius": "1e-17",
+  "original_nf410_principal_moments_overlap": true,
+  "source_nf417_nf418_original_Z_island": true,
+  "failed_first_CI": 41571700786,
+  "failed_reason": "Fraction serialization digit cap, math assertions passed",
+  "accepted_CI": 41571928877,
+  "CI_status": "SUCCESS",
+  "job": 125706574575,
+  "artifact": 13202205679,
+  "archive_due": "2027-02-01",
+  "D7_whole": "OPEN",
+  "D8_whole": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next": "NF454 original complete signed J7/J8"
+}

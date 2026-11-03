@@ -1,0 +1,18 @@
+name: NF453 original J7 J8 principal exact replay
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  exact-original:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -X int_max_str_digits=0 scripts/local_replay/verify_nf453_original_j7_j8_principal_energy_signed_island.py --output nf453-result.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf453-exact
+          path: nf453-result.json
