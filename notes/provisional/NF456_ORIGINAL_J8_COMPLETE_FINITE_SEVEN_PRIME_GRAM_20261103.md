@@ -1,6 +1,6 @@
 # NF456 — Complete original seven-prime plus NF404-centered finite J8 source Gram
 
-2026-11-03 PT. **Standing: ACCEPTED source-native finite original J8 seven-prime+center Gram and endpoint arch cancellation, subject to final expanded strict-gate CI reconciliation; whole signed J8 OPEN.** Canonical active obligation W-ODD-NEG remains OPEN. NF456 attacks the original J8 background obligation by certifying its entire *finite arithmetic source* before attempting the coupled archimedean cancellation; **neither the whole J8 signed cell nor RH is claimed.**
+2026-11-03 PT. **Standing: ACCEPTED source-native original J8 seven-prime+center Gram and endpoint arch cancellation after full expanded strict-gate CI SUCCESS; whole signed J8 OPEN.** Canonical active obligation W-ODD-NEG remains OPEN. NF456 attacks the original J8 background obligation by certifying its entire *finite arithmetic source* before attempting the coupled archimedean cancellation; **neither the whole J8 signed cell nor RH is claimed.**
 
 ## Previous cursor → current circle → next bold
 
@@ -102,7 +102,7 @@ Focused source-native verifier: `scripts/local_replay/nf456_original_J8_all7_fin
 
 ## Source-certified quantitative outcome — original finite sector, not whole cell
 
-Focused 4096-bit source-native CI #41665640279 **SUCCESS** established all analytic/geometry bounds, original NF454/NF455 independent n9 overlap, original NF450 endpoint anchor, and the first set of strict rational acceptance brackets. The subsequent expanded strict six-prime/n9 crossing gates require their own latest-head focused CI receipt; do not assert them as passed until verified.
+Focused 4096-bit source-native CI #41665640279 **SUCCESS** established all analytic/geometry bounds, original NF454/NF455 independent n9 overlap, original NF450 endpoint anchor, and the first set of strict rational acceptance brackets. The expanded strict exact-rational six-prime/n9 crossing gates **also PASSED** focused original source-native CI #41666000124, job #126021349369. The earlier #41665640279 had passed before these additional quantitative gates. Original CI #41665115147 failed only at final Arb JSON rendering, after all original source mathematical assertions passed; output now uses explicit string conversion of native Arb values.
 
 The original genuine entire-J8 **finite arithmetic** source response has
 
@@ -169,3 +169,5 @@ z(B-d)=z(B)+[\mathcal J_U(B-d)-\mathcal J_U(B)]
 with genuine \(d\log d\) archimedean nonanalyticity and original \(n=9\) support handled in one correlated calculation. This explicitly prevents subtracting large independently bounded archimedean and arithmetic response shadows at the end.
 
 Original complete J8, complete J7, NF410/NF404 global scalar, J242 exterior, canonical W-ODD-NEG, even/whole Weil/domain and RH remain OPEN.
+
+**Final expanded quantitative receipt:** [GitHub Actions #41666000124 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41666000124); full original source-native outward report artifact #13243973730, expires 2027-02-01 (permanent raw archive DUE). Source provenance and accepted finite-sector scope are registered at `notes/data/provisional/NF456_original_J8_complete_finite_seven_prime_gram_and_archB_custody.json`. Whole J8/J7, canonical W-ODD-NEG and RH OPEN.
