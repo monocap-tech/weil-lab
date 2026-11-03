@@ -136,6 +136,8 @@ def run(args):
            for bb in (b0,b1)]
     Xlo,Xhi=min(Xvals),max(Xvals)
     assert Xlo<Xhi
+    assert -Q(3339027,10**18)<b0<b1<-Q(3339026,10**18)
+    assert -Q(5547510,10**29)<Xlo<Xhi<-Q(5547509,10**29)
     return {
         "pass":"NF454",
         "standing":"original complete-principal p cross with genuine n9-only z9 via source-native analytic log moments; whole original J8 signed OPEN",
