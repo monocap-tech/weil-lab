@@ -108,3 +108,47 @@ The related \(\int_0^{4B}h\) uses the same kernel, with local rational Taylor an
 ## Stop and next
 
 A passing script would certify the **endpoint first-order regular coefficient** of the complete physical response, not a full continuous enclosure across J8. The derivative-difference integral and its source-native proof make the endpoint matched cancellation exact at first order; the finite-\(d\) remainder still needs quantitative curvature and continuous integration. Original complete J8/J7 signed integrals, global NF410/NF404 scalar, J242 exterior, canonical W-ODD-NEG, whole Weil/infinite domain and RH remain OPEN. No main merge. Focused workflow: .github/workflows/nf458-original-J8-finitepart-native.yml.
+
+
+## Verified native original numerical finding — first successful full source replay
+
+Focused original source-native 4096-bit CI [#41680829556 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41680829556) finally evaluated the full *original* matched integral and regular endpoint finite part, including all 1600 exact physical Laplace moments and the 1150-jet true original-source prefix. The earlier two workflow failures (#41680252207 and #41680547195) were **pre-integration custody-schema field mismatches**, not mathematical failures; corrected without source or mathematical formula changes.
+
+The independently implemented original U′ at B and NF457 original seven-prime centered F′ agree. The true source-native centers are
+\[
+\begin{aligned}
+\mathcal I_\Delta&\approx-3.9616777386891187,\\
+\int_0^{4B}(K(t)-1/t)\,dt&\approx+0.8338570844093007,\\
+\boxed{\ell_{\mathcal J}}&\boxed{\approx-1.980839275303042},\\
+F'(B)&\approx-1.9808392103535541,\\
+\boxed{C_{\mathrm{reg}}=\ell_{\mathcal J}-F'(B)}
+&\boxed{\approx-6.494948795121242\times10^{-8}}.
+\end{aligned}
+\]
+
+**The first-order matched cancellation is real and source-certified.** The original joint arch finite-part derivative and seven-prime centered derivative differ by only about \(6.5\times10^{-8}\), although each has magnitude approximately \(1.9808\). The ratio of either underlying magnitude to the actual regular coefficient exceeds \(3\times10^7\). This is a *second level* of authentic source-correlated cancellation beyond NF456's large endpoint value cancellation.
+
+The endpoint expansion of the **complete original** regularized Weil response is consequently
+\[
+\boxed{
+z(B-d)-Z
+\approx (6.504856890269607\times10^{-8})d\log\frac{2B-d}{d}
+-(6.494948795121242\times10^{-8})d+o(d).
+}
+\]
+The \(o(d)\) symbol is essential; this expression is an **asymptotic identity**, NOT yet a decision-quality whole-J8 numerical interval at finite \(d\).
+
+The follow-on strict mathematical acceptance script now requires the full outward source interval gates
+\[
+-3.961677740<\mathcal I_\Delta<-3.961677737,
+\quad
+0.833857083<\int h<0.833857086,
+\]
+\[
+-1.980839276<\ell_{\mathcal J}<-1.980839274,
+\quad
+\boxed{-6.494950\times10^{-8}<C_{\rm reg}<-6.494947\times10^{-8}<0},
+\]
+and a **second original source-native shortened 1200-term Laplace tail** overlap with the complete 1600-term result, both including analytic/source input radius payments. This additional strict-gates run is pending; only on SUCCESS should the exact-rational narrow brackets be promoted to full acceptance. The first full source-native run already established the numeric center and original input/analytic tail contract.
+
+**Stop line unchanged:** Finite \(d\) matched remainder variation, complete signed original J8/J7, original NF410/NF404 global cap, canonical W-ODD-NEG, infinite-domain whole Weil and RH OPEN. The new first-order coefficient is a local genuine-source invariant, not a proof of positivity or a whole-cell signed moment.
