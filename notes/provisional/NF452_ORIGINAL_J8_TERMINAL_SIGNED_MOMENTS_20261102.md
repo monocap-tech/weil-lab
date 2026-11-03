@@ -1,6 +1,6 @@
 # Weil-Lab — NF452 original J8 terminal signed moments
 
-**Date:** 2026-11-02 PT. **Classification:** analytic proof with focused exact-rational source/receipt verification pending. The result remains scoped to the final width 1e-15 of the genuine original J8, not all of J8 or J7.
+**Date:** 2026-11-02 PT. **Classification:** ACCEPTED narrow two-sided original terminal signed moment, focused exact-rational source/receipt replay SUCCESS; independent mathematical audit separate. The result remains scoped to the final width 1e-15 of the genuine original J8, not all of J8 or J7.
 
 ## Previous cursor → current circle → next bold
 
@@ -12,7 +12,7 @@
 \boxed{7.5\times10^{-34}<D_{8,\mathrm{collar}}<9\times10^{-34}.}
 \]
 
-Do not promote until the focused GitHub source/receipt/Fraction checker has passed.
+The two-sided interval is now **ACCEPTED as a scoped original terminal contribution** after focused GitHub source/receipt/Fraction CI #41567142327 SUCCESS; this is not an acceptance of the entire J8 cell.
 
 **Next bold NF453:** Attack the remaining physical J8 bulk and whole J7 with original joint compact-source z, analytic signed principal moments and n9 contact; a terminal subintegral, even if tightly determined, does not decide the signed full cell.
 
@@ -104,6 +104,6 @@ Independent checks of elementary bounds 8/3<e<11/4 and the exact integer powers 
 
 ## Verification standing and stop line
 
-Source and seam SHA256, original 242+4 counts and critical sine count, accepted NF411 4096-bit original value/weights receipt, accepted NF450 physical z(B) signed interval, NF451 local modulus custody and n9 seam are preconditions. Verification script: scripts/local_replay/verify_nf452_original_j8_terminal_signed_moments.py; focused workflow and JSON receipt to follow, with no promotion before the actual check.
+Source and seam SHA256, original 242+4 counts and critical sine count, accepted NF411 4096-bit original value/weights receipt, accepted NF450 physical z(B) signed interval, NF451 local modulus custody and n9 seam are preconditions. Verification script: scripts/local_replay/verify_nf452_original_j8_terminal_signed_moments.py; [focused source/receipt/Fraction GitHub CI #41567142327 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41567142327), job #125691249644; source-pinned JSON report artifact #13198888338 (retained to 2027-02-01). [Permanent digest/standing index](../data/provisional/NF452_original_J8_terminal_signed_moments_custody_index.json). Two initial workflows failed due to custody schema field-name and decimal-vs-Fraction comparisons, corrected without altering the mathematical inequality; see runs #41566982401 and #41567056777. Independent mathematical audit is not claimed. The original full rational report still needs permanent archival before Actions expiration.
 
 **OPEN:** full true signed J8 and J7 continuous moments; NF410/NF404 full centered scalar; principal E_p; fourth J242 exterior, W-ODD-NEG, even/whole Weil/infinite domain, RH. No main-branch merge or historical source rewrite.
