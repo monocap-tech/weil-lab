@@ -111,8 +111,8 @@ def local_signed_integrals(ujet,kbar):
 
 def exact_rate_interval(lam):
     """Arb primitive ∫_(t0)^T e^-lam*t dt; lim lam→0 respected."""
+    if lam==0:return A(T-T0)
     lam=A(lam)
-    if lam.is_zero():return A(T-T0)
     return ((-lam*A(T0)).exp()-(-lam*A(T)).exp())/lam
 
 def bulk_full_native(terms,pole,ubprime):
@@ -173,7 +173,6 @@ def H_terminal():
     return h,tail
 
 def source_fprime(terms,pole,jet):
-    original=U(jet)
     out=-A(CENTER)*(A(B)/2).cosh()/2
     weights={}
     for x in jet["all_seven_original_prime_seam_derivative_identities"]:
