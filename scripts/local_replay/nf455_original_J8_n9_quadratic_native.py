@@ -24,6 +24,9 @@ def run(args):
     geo,gs=read(args.seams)
     jet,js=read(args.jet)
     prev,ps=read(args.nf454)
+    prior453,p453sha=read(args.nf453)
+    assert prior453["source_sha256"]==sh and prior453["seams_sha256"]==gs
+    assert prior453["CI_status"]=="SUCCESS"
     assert (sh,gs)==(SRC_SHA,SEAM_SHA)
     assert jet["nf407_source_sha256"]==sh
     assert prev["original_source_sha256"]==sh
@@ -114,12 +117,25 @@ def run(args):
     assert crosslo<crosshi<0
     partiallo,partialhi=crosslo+z9_sq_lo,crosshi+z9_sq_hi
     assert partiallo<partialhi
+    assert F(9673260,10**29)<square_lo<square_hi<F(9673261,10**29)
+    assert F(2594473,10**29)<z9_sq_lo<z9_sq_hi<F(2594474,10**29)
+    assert -F(2953037,10**29)<partiallo<partialhi<-F(2953034,10**29)
+
+    # The full principal after n9 activation has smaller squared mass:
+    # ||p+z9||² = Ep8 + 2∫p*z9 + ∫z9².
+    ep8lo,ep8hi=(F(x) for x in prior453["original_j8_ep"])
+    assert 0<ep8lo<ep8hi
+    remaininglo=ep8lo+crosslo/2+z9_sq_lo/2
+    remaininghi=ep8hi+crosshi/2+z9_sq_hi/2
+    assert F(393,10**26)<remaininglo<remaininghi<F(414,10**26)
+    assert remaininghi<ep8lo/4
 
     return {
         "pass":"NF455",
         "standing":"COMPLETE genuine original n9-only z9 SQUARED J8 contribution and combined 4p*z9+2z9² signed subexpression; NOT full original J8 D8",
         "original_source_sha256":sh,"original_seam_sha256":gs,
         "original_nf411_jet_sha256":js,"original_nf454_custody_sha256":ps,
+        "original_nf453_principal_custody_sha256":p453sha,
         "original_original_source_generators":246,
         "original_source_frequency_order_groups":273,
         "original_critical_sines":32,"original_odd_sinh_retained":True,
@@ -129,6 +145,8 @@ def run(args):
         "original_n9_2_integral_z9_squared_outward":[str(z9_sq_lo),str(z9_sq_hi)],
         "original_n9_full_principal_cross_4int_pz9_import":[str(crosslo),str(crosshi)],
         "original_n9_partial_D8_four_pz9_plus_two_z9_square_outward":[str(partiallo),str(partialhi)],
+        "original_complete_principal_after_n9_contact_energy_outward":[str(remaininglo),str(remaininghi)],
+        "original_J8_n9_contact_reduces_principal_energy_below_one_quarter":True,
         "source_320_taylor_N":N,
         "source_complex_Cauchy_M":str(M),
         "source_disk_R":str(R),
@@ -152,6 +170,7 @@ def main():
     ap.add_argument("--seams",default="notes/data/provisional/NF406_original_prime_support_partition_exact.json")
     ap.add_argument("--jet",default="notes/data/provisional/NF411_original_source_boundary_jet.json")
     ap.add_argument("--nf454",default="notes/data/provisional/NF454_original_J8_n9_contact_log_signed_custody.json")
+    ap.add_argument("--nf453",default="notes/data/provisional/NF453_original_J7_J8_principal_and_island_custody.json")
     ap.add_argument("--precision",type=int,default=4096)
     ap.add_argument("--output",required=True)
     args=ap.parse_args()
@@ -164,5 +183,6 @@ def main():
     print("NF455 true original n9 ∫ V²",*[float(F(x)) for x in q],flush=True)
     print("NF455 true original n9 2∫z9²",*[float(F(x)) for x in z],flush=True)
     print("NF455 original n9 partial D8 = 4∫p z9+2∫z9²",*[float(F(x)) for x in p],flush=True)
+    print("NF455 full original principal after n9 contact ||p+z9||²",*[float(F(x)) for x in d["original_complete_principal_after_n9_contact_energy_outward"]],flush=True)
     print("NF455 complete D7,D8, original NF404, W-ODD-NEG RH OPEN",flush=True)
 if __name__=="__main__":main()
