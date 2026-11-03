@@ -1,6 +1,6 @@
 # NF457 — Original full-J8 endpoint-matched compact response, not a separated-source shadow
 
-**November 3, 2026 PT. Standing: analytic representation/source-native numeric PENDING focused CI.**
+**November 3, 2026 PT. Standing: ACCEPTED original entire-J8 endpoint-matched compact source identity and bound, 4096-bit original numerical first jet, and true 10x original J8 signed terminal collar after focused CI.**
 Canonical machine obligation remains W-ODD-NEG; J8, J7, NF410/NF404, RH OPEN. GitHub-first stacked additive research.
 
 ## Previous cursor → current circle → next bold
@@ -180,7 +180,7 @@ z(B-d)-Z
 \end{aligned}}
 \]
 
-This establishes the exact leading \(d\log d\) coefficient of the genuine original **whole** regularized \(z\) (not the principal \(p\)). It is intrinsically non-Lipschitz at \(B\) since \(U'(B)\neq0\); it is nevertheless continuous. The sign and precise outward interval of \(-U'(B)/2\), and \(F'(B)\) with the original native source and exact NF404 pole, are conditional until focused 4096-bit CI passes. The original input dyadic source derivative uncertainty \(10000S_0\) and all genuine NF411 prime-weight interval radii are separately charged.
+This establishes the exact leading \(d\log d\) coefficient of the genuine original **whole** regularized \(z\) (not the principal \(p\)). It is intrinsically non-Lipschitz at \(B\) since \(U'(B)\neq0\); it is nevertheless continuous. The sign and precise source-native outward intervals of \(-U'(B)/2\) and \(F'(B)\), with all original coefficients and the exact NF404 pole, PASSED the focused 4096-bit original-source CI #41676938832. The leading \(d\log d\) coefficient is strictly **positive**. The original input dyadic source derivative uncertainty \(10000S_0\) and all genuine NF411 prime-weight interval radii are separately charged.
 
 ## Verification, stopping line, and custody
 
@@ -236,7 +236,7 @@ M_*&=\delta(10002+200L),\\
 \]
 No quadrature is used. Source coefficient uncertainty and all seven NF411 weight intervals are included in the inputs, not set to zero.
 
-**Pending CI acceptance gate** for the ENTIRE genuine signed original J8 \(\delta=10^{-14}\) terminal contribution is the strict two-sided interval
+**ACCEPTED after source-native + exact Fraction CI #41676938832** for the ENTIRE genuine signed original J8 \(\delta=10^{-14}\) terminal contribution is the strict two-sided interval
 \[
 \boxed{
 5.4\times10^{-33}
@@ -248,4 +248,12 @@ D_{8,\,[B-10^{-14},B]}
 \]
 The gate is deliberately **local**: even a passing certificate does not sign the complete \(J_8=(\log9-B,B)\) integral or the whole NF410/NF404 global scalar.
 
-The additional verifier scripts/local_replay/verify_nf457_original_J8_extended_signed_collar.py reads the SAME run's original NF457 native \(U(B)\) ball, NF411 weights, NF450 full physical \(Z\), NF452 older accepted collar and original NF407/NF406 SHAs, then contracts the complete signed scalar entirely with exact rational arithmetic. It is run **after** the native full-J8 matched-jet verifier in the same focused GitHub workflow. Numerical promotion only after both pass. Original full J8, J7, canonical W-ODD-NEG and RH remain OPEN.
+The additional verifier scripts/local_replay/verify_nf457_original_J8_extended_signed_collar.py reads the SAME run's original NF457 native \(U(B)\) ball, NF411 weights, NF450 full physical \(Z\), NF452 older accepted collar and original NF407/NF406 SHAs, then contracts the complete signed scalar entirely with exact rational arithmetic. It is run **after** the native full-J8 matched-jet verifier in the same focused GitHub workflow. Both verifiers PASSED focused GitHub Actions #41676938832. This promotes only the scoped entire-J8 matched modulus and extended genuine signed collar, not the full J8 sign. Original full J8, J7, canonical W-ODD-NEG and RH remain OPEN.
+
+## Final accepted source-native and extended signed receipt
+
+[Final focused original source-native + exact Fraction GitHub Actions #41676938832 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41676938832), job #126059986277. Original derivative U'(B)≈-1.3009713780539214e-7, **full original regularized z endpoint leading dlog coefficient** -U'(B)/2≈+6.504856890269607e-8, complete seven-prime+NF404 finite source derivative F'(B)≈-1.9808392103535541. Original F(B)≈+0.8977981481882494 and matched joint arch(B)≈-0.8977981486264416 overlap NF456, while independent NF450 complete z(B) remains ≈-4.381921e-10. The exact full J8 remainder |R_joint(d)|<8200d and complete modulus |z(B-d)-Z|<d*(9802+200log((2B-d)/d)) are accepted on the entire J8, but are not sufficient to certify the full signed cell integral.
+
+The enlarged, truly original **complete signed** endpoint collar of physical width 1e-14 (10 times NF452) has source-paid exact-Fraction outward interval approximately **(5.4790934470569676e-33, 1.047345991478006e-32)** and the strictly verified rational acceptance **5.4e-33 < D8_collar < 1.06e-32**. This is an actual (4pz+2z^2) continuous integral of the original whole regularized response on its collar, not a finite-sector partial contribution. The independent original NF452 collar remains valid as a subset; no claim has been made about full signed D8.
+
+Full original source/receipt JSONs (both 4096-bit matched derivative/geometry and independent exact-Fraction tenfold signed collar) are in GitHub Actions artifact **#13251091445**, expires 2027-02-01; permanent raw JSON archival remains DUE. Narrow permanent custody index: [NF457 index](../data/provisional/NF457_original_full_J8_matched_compact_and_extended_signed_collar_custody.json). Independent mathematical audit separate. No merge into main. Whole J8, J7, NF410/NF404, J242, canonical W-ODD-NEG, RH OPEN.
