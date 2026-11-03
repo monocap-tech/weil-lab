@@ -136,7 +136,7 @@ def main():
     assert 0<w0<w1<Q(1)
     # ∫ z9 = -w9*A9, and 4∫ p9*z9 = -4*v*w9^2*A9.
     values=[-w0*moment_lo,-w0*moment_hi,-w1*moment_lo,-w1*moment_hi]
-    zintlo,z inthi=min(values),max(values)
+    zintlo,zinthi=min(values),max(values)
     true_v_bounds=(v0-s0,v1+s0)
     selfproducts=[-4*vv*(ww**2)*mm for vv in true_v_bounds for ww in (w0,w1) for mm in (moment_lo,moment_hi)]
     pz9lo,pz9hi=min(selfproducts),max(selfproducts)
