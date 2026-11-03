@@ -7,9 +7,9 @@ NF450 complete Z=z(B), NF456 full finite F endpoint. Seven original weights.
 Prove rigorously over the ENTIRE physical J8 (not a tiny collar):
   z(B-d)-Z = .5 [U(B-d)-U(B)] log((2B-d)/d)
              + [F(B-d)-F(B)] + R_J(d),
-  |R_J(d)| < 7500*d,   0<d<2B-log9.
+  |R_J(d)| < 8200*d,   0<d<2B-log9.
 This improves the complete original whole-J8 modulus to
-  |z(B-d)-Z|<d*(9102+200log((2B-d)/d)).
+  |z(B-d)-Z|<d*(9802+200log((2B-d)/d)).
 Also certifies actual source-native log coefficient -.5 U'(B), F'(B),
 and a FULL original endpoint first-order expansion with explicit
 remainder; does NOT claim decision-quality J8 scalar.
@@ -76,12 +76,14 @@ def exact_algebra_preflight():
     assert common<Q(1000)
     # c0 U difference <4000d; H(b)U diff+tail <1603d;
     # the v/2 scalar log and both K-1/t edge integrals <3d.
-    total=402+201+4+1000+4000+1603+3
-    assert total==7213<7500
+    # K(t)-1/t extracted from the V/2 original common source integral:
+    # |V|<400d, |K-1/t|<=1, b-a<4B; hence remainder <880d.
+    total=402+201+4+1000+880+4000+1603+3
+    assert total==8093<8200
     # Seven genuine primes weights sum <4 and centered slope <2:
     # |F(B-d)-F(B)|<1602d, all seven original shifts physical.
     assert 400*4+2==1602
-    assert 7500+1602==9102
+    assert 8200+1602==9802
     # Original curvature gives |U(B-d)-v+d U'(B)|<=151d^(3/2)
     # as 256/sqrt(3)<151 (square check).
     assert 256**2<151**2*3
@@ -214,12 +216,12 @@ def run(args):
      "original_finite_F_B_radius_charge":str(ferr),
      "original_finite_Fprime_B_radius_charge":str(dferr),
      "original_exact_analytic_j8_matched_identity":"z(B-d)-Z=(U(B-d)-U(B))/2*log((2B-d)/d)+F(B-d)-F(B)+R_J(d)",
-     "original_matched_remainder_full_J8_strict":"|R_J(d)|<7500*d",
+     "original_matched_remainder_full_J8_strict":"|R_J(d)|<8200*d",
      "original_matched_compact_regions":"I0[0,2d]+I1[2d,4B-2d]-IB[0,4B]+original_c0+scalar_K_minus_1_over_t+original_tail+F_difference",
      "original_common_compact_source_remainder_integral_bound_d_factor_rational":str(commonbound),
-     "original_unconditional_full_J8_complete_z_modulus":"|z(B-d)-Z|<d*(9102+200*log((2B-d)/d))",
+     "original_unconditional_full_J8_complete_z_modulus":"|z(B-d)-Z|<d*(9802+200*log((2B-d)/d))",
      "original_endpoint_full_first_order_expansion":"z(B-d)-Z=-(1/2)*Uprime(B)*d*log((2B-d)/d)-Fprime(B)*d+R_first(d)",
-     "original_endpoint_first_order_full_J8_remainder":"|R_first(d)|<7500*d+76*d^(3/2)*log((2B-d)/d)+605*d^(3/2)",
+     "original_endpoint_first_order_full_J8_remainder":"|R_first(d)|<8200*d+76*d^(3/2)*log((2B-d)/d)+605*d^(3/2)",
      "original_source_curvature_L2_certified_lt":"256",
      "original_source_first_derivative_sup_certified_lt":"400",
      "original_finite_source_uniform_F_slope_lt":"1602",
