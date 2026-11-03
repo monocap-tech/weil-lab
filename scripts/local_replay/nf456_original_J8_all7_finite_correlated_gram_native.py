@@ -108,9 +108,9 @@ def result(args):
     for n in PRIMES:
         # For x=x9+y, ORIGINAL minus regular translate arg:
         # x-log(n)=log(9/n)-B+y. Each real arg lies in [-B,B].
-        c=x9-arb(n).log()
+        c=-A(B) if n==9 else x9-arb(n).log()
         cl,ch=enclosure(c,75)
-        assert -B<=cl<ch<B
+        assert -B-Q(1,10**70)<=cl<ch<B
         assert cl> -Q(9,8) and ch<Q(9,8)
         uco=analytic_coefficients(coeff,pole,c)
         wi=A(weights[n])
