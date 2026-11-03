@@ -1,6 +1,6 @@
 # NF456 — Complete original seven-prime plus NF404-centered finite J8 source Gram
 
-2026-11-03 PT. **Numerical standing PENDING focused source-native verification.** Canonical active obligation W-ODD-NEG remains OPEN. NF456 attacks the original J8 background obligation by certifying its entire *finite arithmetic source* before attempting the coupled archimedean cancellation; **neither the whole J8 signed cell nor RH is claimed.**
+2026-11-03 PT. **Standing: ACCEPTED source-native finite original J8 seven-prime+center Gram and endpoint arch cancellation, subject to final expanded strict-gate CI reconciliation; whole signed J8 OPEN.** Canonical active obligation W-ODD-NEG remains OPEN. NF456 attacks the original J8 background obligation by certifying its entire *finite arithmetic source* before attempting the coupled archimedean cancellation; **neither the whole J8 signed cell nor RH is claimed.**
 
 ## Previous cursor → current circle → next bold
 
@@ -99,3 +99,73 @@ If focused CI passes, the finite seven-prime+center source Gram, the actual six-
 **Next bold NF457:** Evaluate the *matched* original joint archimedean response **relative to its accepted endpoint anchor and finite F**, preserving complete 246-source correlation. The target is the combined (\mathcal J_U(x)+F(x)\) across entire J8 and the true signed (D_8\), not squaring two large uncoupled shadows.
 
 Focused source-native verifier: `scripts/local_replay/nf456_original_J8_all7_finite_correlated_gram_native.py`; workflow: `.github/workflows/nf456-original-J8-finite-seven-prime-gram.yml`. No merge.
+
+## Source-certified quantitative outcome — original finite sector, not whole cell
+
+Focused 4096-bit source-native CI #41665640279 **SUCCESS** established all analytic/geometry bounds, original NF454/NF455 independent n9 overlap, original NF450 endpoint anchor, and the first set of strict rational acceptance brackets. The subsequent expanded strict six-prime/n9 crossing gates require their own latest-head focused CI receipt; do not assert them as passed until verified.
+
+The original genuine entire-J8 **finite arithmetic** source response has
+
+\[
+\boxed{0.0022508888853<\int_{J_8}F(x)^2\,dx<0.0022508888855.}
+\]
+
+The full principal cross is computed with the exact original logarithmic moments, yielding
+
+\[
+\boxed{
+0.0045017777699<
+D_8[\mathrm{finite}]=4\int_{J_8}pF+2\int_{J_8}F^2
+<0.0045017777701.
+}
+\]
+
+These are **not** source-certified whole \(D_8\) signs; they are for \(F\), a single part of the original \(z\).
+
+For the complete six-prime plus centered-pole background \(G=F-z_9\), the independently constructed original source-correlated moments have approximate centers
+
+\[
+2\int_{J_8}G^2\approx0.004501777770188931,\qquad
+4\int_{J_8}Gz_9\approx+5.859447806581789\times10^{-13},
+\]
+\[
+4\int_{J_8}pG\approx-8.20658036077644\times10^{-13}.
+\]
+
+The full seven-prime plus center zeroth source moment has approximate center
+
+\[
+\int_{J_8}F\,dx\approx0.0024994296122071036.
+\]
+
+The accepted source-uniform error for the true \(F\) versus its 320-term source-midpoint polynomial, after source radius and all seven original weight intervals, is approximately \(2.498275641346088\times10^{-32}\), small compared to each displayed arithmetic-sector interval. Original coefficient/weight uncertainties have not been silently set to zero. Detailed exact outward rationals are in the source-native CI artifact, with permanent source/custody metadata in the repository.
+
+### The matched archimedean cancellation is demonstrably essential
+
+At the true physical endpoint \(B\), the original finite source is strictly positive:
+
+\[
+\boxed{0.8977981481882<F(B)<0.8977981481883.}
+\]
+
+The independent original NF450 complete-response certificate implies
+
+\[
+\boxed{-0.8977981486266<\mathcal J_U(B)<-0.8977981486263.}
+\]
+
+They nearly cancel, giving the **actual original** response \(z(B)\) between \(-4.38192141572373\times10^{-10}\) and \(-4.38192103364328\times10^{-10}\).
+
+Thus the finite sector's large positive \(D_8[\mathrm{finite}]\approx0.00450\) has **no legitimate implication** for the full original signed \(D_8\): the joint archimedean source is of opposing size, and the square/cross interaction with it must be computed **before** inferring the full signed moment.
+
+The correct next numerical carrier is an **endpoint-matched residual**
+
+\[
+z(B-d)=z(B)+[\mathcal J_U(B-d)-\mathcal J_U(B)]
++[F(B-d)-F(B)],
+\qquad 0<d<a,
+\]
+
+with genuine \(d\log d\) archimedean nonanalyticity and original \(n=9\) support handled in one correlated calculation. This explicitly prevents subtracting large independently bounded archimedean and arithmetic response shadows at the end.
+
+Original complete J8, complete J7, NF410/NF404 global scalar, J242 exterior, canonical W-ODD-NEG, even/whole Weil/domain and RH remain OPEN.
