@@ -1,0 +1,26 @@
+name: NF457 original endpoint-matched whole J8 compact source
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-j8-matched-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: True original 4096bit source derivative and full-J8 matched compact remainder
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf457_original_J8_endpoint_matched_compact_remainder_native.py --output nf457-original-J8-matched-source.json
+      - name: Entire-original z J8 signed collar 10x old source certificate
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf457_original_J8_extended_signed_collar.py --nf457 nf457-original-J8-matched-source.json --output nf457-original-J8-extended-signed-collar.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf457-original-J8-matched-source
+          path: |
+            nf457-original-J8-matched-source.json
+            nf457-original-J8-extended-signed-collar.json
+          retention-days: 90
