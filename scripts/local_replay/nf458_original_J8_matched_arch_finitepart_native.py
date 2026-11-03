@@ -130,6 +130,7 @@ def bulk_full_native(terms,pole,ubprime):
         freq[f]=(w,acb(arb(0),w*yt).exp(),acb(arb(0),w*yr).exp())
     intD=arb(0)
     intK=arb(0)
+    shortD=None
     for m in range(M):
         lam=Q(4*m+1,4)
         la=A(lam)
@@ -157,11 +158,15 @@ def bulk_full_native(terms,pole,ubprime):
         uder+=poleint
         intD+=uder-ubprime*qK
         intK+=qK
+        if m+1==1200: shortD=enclosure(intD,105)
         if (m+1)%200==0:
             print("NF458 original complete physical Laplace derivative terms",m+1,M,flush=True)
     tail=Q(800)*21*(Q(3,8)**int((Q(M)+Q(1,4))*T0))/(Q(M)+Q(1,4))
     assert tail<Q(1,10**29)
-    return intD,intK,tail,len(grouped)
+    assert shortD is not None
+    shorttail=Q(800)*21*(Q(3,8)**int((Q(1200)+Q(1,4))*T0))/(Q(1200)+Q(1,4))
+    assert shorttail<Q(1,10**22)
+    return intD,intK,tail,len(grouped),shortD,shorttail
 
 def H_terminal():
     h=arb(0)
@@ -252,7 +257,7 @@ def run(args):
 
     kbar=kbar_taylor()
     inner_small,hsmall=local_signed_integrals(jets,kbar)
-    inner_big,bigK,lap_tail,nfreq2=bulk_full_native(terms,pole,ubprime)
+    inner_big,bigK,lap_tail,nfreq2,shortD,shorttail=bulk_full_native(terms,pole,ubprime)
     assert nfreq==nfreq2==99
     # Original source coefficient discrepancy in U' derivative differences:
     # |δU''|<4e7*S0 on physical [-B,B], |δU'(B-t/2)-δU'(B)|
@@ -262,6 +267,12 @@ def run(args):
     assert radius<Q(1,10**690)
     I=inner_small+inner_big
     Ierr=lap_tail+local_err+radius
+    si0,si1=enclosure(inner_small,105)
+    fI0,fI1=enclosure(I,105)
+    shortI0=si0+shortD[0]-shorttail-local_err-radius
+    shortI1=si1+shortD[1]+shorttail+local_err+radius
+    assert shortI0<fI1+Ierr and shortI1>fI0-Ierr
+    assert shortI1-shortI0<Q(1,10**21)
 
     # ∫_0^T h(t)dt =∫_0^t0 h(t)dt +
     # ∑_(m≥0)∫_t0^T e^-(m+1/4)t dt - log(T/t0).
@@ -293,6 +304,12 @@ def run(args):
     cmin,cmax=enclosure(full,100)
     cmin-=err+FpErr;cmax+=err+FpErr
     assert cmin<cmax and -8202<cmin<cmax<8202
+    # Genuine strict original complete response 1st order coefficient,
+    # NOT just the arch joint part or finite source in isolation.
+    assert -Q(6494950,10**14)<cmin<cmax<-Q(6494947,10**14)
+    assert -Q(1980839276,10**9)<r0<r1<-Q(1980839274,10**9)
+    assert -Q(3961677740,10**9)<fI0-Ierr<fI1+Ierr<-Q(3961677737,10**9)
+    assert Q(833857083,10**9)<enclosure(Jh,100)[0]-JhErr<enclosure(Jh,100)[1]+JhErr<Q(833857086,10**9)
 
     print("NF458 original true matched derivative source integral I",float(I),flush=True)
     print("NF458 original true compact regular log-kernel ∫h",float(Jh),flush=True)
@@ -318,6 +335,10 @@ def run(args):
       "original_exact_kernel_Taylor_error":str(k_err),
       "original_source_local_integral_error":str(local_err),
       "original_Laplace_bulk_geometric_tail":str(lap_tail),
+      "original_Laplace_short1200_tail":str(shorttail),
+      "original_source_I_short1200_interval":[str(shortI0),str(shortI1)],
+      "original_short1200_cross_overlaps_full1600":True,
+      "original_complete_z_regular_coefficient_strict_negative":True,
       "original_dyadic_source_radius_integral":str(radius),
       "original_true_joint_derivative_difference_integral_I":[str(z) for z in (enclosure(I,105)[0]-Ierr,enclosure(I,105)[1]+Ierr)],
       "original_compact_h_integral":[str(z) for z in (enclosure(Jh,105)[0]-JhErr,enclosure(Jh,105)[1]+JhErr)],
