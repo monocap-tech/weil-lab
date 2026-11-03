@@ -1,6 +1,6 @@
 # Weil-Lab NF458 — Original matched J8 joint-arch finite endpoint part
 
-2026-11-03 PT. **Source-native numerical standing PENDING focused CI.** The canonical active obligation remains W-ODD-NEG. Entire original J8/J7 signed integrals, NF410/NF404 global cap, J242 exterior and RH remain OPEN.
+2026-11-03 PT. **Standing: ACCEPTED source-native complete original J8 matched regular endpoint coefficient, strictly negative; full original signed J8/J7 OPEN.** The canonical active obligation remains W-ODD-NEG. Entire original J8/J7 signed integrals, NF410/NF404 global cap, J242 exterior and RH remain OPEN.
 
 ## Previous cursor → current circle → next bold
 
@@ -138,7 +138,7 @@ z(B-d)-Z
 \]
 The \(o(d)\) symbol is essential; this expression is an **asymptotic identity**, NOT yet a decision-quality whole-J8 numerical interval at finite \(d\).
 
-The follow-on strict mathematical acceptance script now requires the full outward source interval gates
+The separately source-verified strict mathematical acceptance script has PASSED and requires the full outward source interval gates
 \[
 -3.961677740<\mathcal I_\Delta<-3.961677737,
 \quad
@@ -149,6 +149,12 @@ The follow-on strict mathematical acceptance script now requires the full outwar
 \quad
 \boxed{-6.494950\times10^{-8}<C_{\rm reg}<-6.494947\times10^{-8}<0},
 \]
-and a **second original source-native shortened 1200-term Laplace tail** overlap with the complete 1600-term result, both including analytic/source input radius payments. This additional strict-gates run is pending; only on SUCCESS should the exact-rational narrow brackets be promoted to full acceptance. The first full source-native run already established the numeric center and original input/analytic tail contract.
+and a **second original source-native shortened 1200-term Laplace tail** overlap with the complete 1600-term result, both including analytic/source input radius payments. **All additional strict rational numeric gates and the independent original M=1200 versus M=1600 source-native Laplace overlap PASSED** focused GitHub CI #41681475053, job #126075963633. The displayed outward narrow brackets are ACCEPTED. The first full source-native run #41680829556 independently established the center and source-input/analytic-tail contract.
 
 **Stop line unchanged:** Finite \(d\) matched remainder variation, complete signed original J8/J7, original NF410/NF404 global cap, canonical W-ODD-NEG, infinite-domain whole Weil and RH OPEN. The new first-order coefficient is a local genuine-source invariant, not a proof of positivity or a whole-cell signed moment.
+
+### Final strict original source acceptance and custody
+
+[Focused original 4096-bit strict source CI #41681475053 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41681475053), job #126075963633, source-native 1150-jet + 1600 physical Laplace modes, exact rational Cauchy/local Kbar bounds, original dyadic input radii, and **independently truncated 1200-source-term outward overlap**. The complete original matched joint arch slope is strictly in (-1.980839276,-1.980839274), and the complete original z regular endpoint coefficient strictly in **(-6.494950e-8,-6.494947e-8)**, hence genuinely NEGATIVE. The original endpoint logarithmic coefficient (-U'(B)/2) remains strictly POSITIVE, accepted NF457.
+
+The two independently source-certified cancellations are distinct: NF456 established the original value cancellation F(B)+J(B)=Z of magnitude ~4.38e-10; NF458 establishes the original *regular first-order* derivative cancellation (ell_{ℐ}-F'(B)=C_{m reg}) of magnitude ~6.49e-8 between quantities about -1.980839. Neither extrapolates to the whole signed J8 without finite-d remainder control. Full numerical outward report GitHub Actions artifact #13251999681 expires 2027-02-01; permanent scoped [custody index](../data/provisional/NF458_original_J8_matched_joint_arch_finitepart_source_custody.json) with raw report permanent archival DUE. No merge.
