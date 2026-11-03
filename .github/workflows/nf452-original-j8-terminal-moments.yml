@@ -1,0 +1,37 @@
+name: NF452 original J8 terminal signed moments exact replay
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/nf452-original-j8-terminal-moments.yml"
+      - "scripts/local_replay/verify_nf452_original_j8_terminal_signed_moments.py"
+      - "notes/provisional/NF452_ORIGINAL_J8_TERMINAL_SIGNED_MOMENTS_20261102.md"
+      - "notes/data/provisional/NF411_original_source_boundary_jet.json"
+      - "notes/data/provisional/NF450_original_B_complete_Laplace_native_sign_custody_index.json"
+      - "notes/data/provisional/NF451_original_J8_terminal_collar_custody_index.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-signed-terminal-moments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Complete original J8 terminal pz and z2 joint moment replay
+        run: |
+          python scripts/local_replay/verify_nf452_original_j8_terminal_signed_moments.py \
+            --output nf452-original-J8-terminal-signed-moments.json
+      - name: Preserve scope-limited exact rational interval
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf452-original-J8-terminal-moments
+          path: nf452-original-J8-terminal-signed-moments.json
+          if-no-files-found: warn
+          retention-days: 90

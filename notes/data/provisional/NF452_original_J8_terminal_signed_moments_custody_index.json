@@ -1,0 +1,57 @@
+{
+  "pass": "NF452",
+  "date": "2026-11-02 America/Los_Angeles",
+  "standing": "ACCEPTED SCOPED original J8 terminal delta=1e-15 exact signed pz+z2 TWO-SIDED interval via inherited source certification + passing Fraction CI; full J7/J8 OPEN",
+  "draft_pr": 473,
+  "branch": "research/nf452-original-j8-terminal-signed-moments",
+  "prior_branch": "research/nf451-original-j8-terminal-positive-collar",
+  "original_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_nf411_jet_receipt_path": "notes/data/provisional/NF411_original_source_boundary_jet.json",
+  "original_nf450_endpoint_custody_path": "notes/data/provisional/NF450_original_B_complete_Laplace_native_sign_custody_index.json",
+  "original_nf451_modulus_custody_path": "notes/data/provisional/NF451_original_J8_terminal_collar_custody_index.json",
+  "original_source_generators": 246,
+  "original_source_frequency_order_groups": 273,
+  "original_n9_prime_seam": "log(9)-11/10",
+  "collar_delta": "1/1000000000000000",
+  "original_n9_active_throughout_collar": true,
+  "original_principal_collar": "p(B-d)=v*(log(B/d)/2+C), C=sum n=2,3,4,5,7,8,9 actual Lambda(n)/sqrt(n)",
+  "analytic_source_modulus": "|z(B-d)-Z|<d*(14000+600*log(2B/d))",
+  "exact_endpoint_model": "D0=2 delta v Z [log(B/delta)+1+2C]+2 delta Z^2",
+  "exact_remainder_upper": "4*A_p+4*|Z|*A1+2*Mstar*A1 using rational integrals of d*log^k(B/d)",
+  "accepted_strict_outward_terminal_D8": [
+    "3/4000000000000000000000000000000000",
+    "9/10000000000000000000000000000000000"
+  ],
+  "accepted_decimals": [
+    "7.5e-34",
+    "9e-34"
+  ],
+  "initial_failing_attempts": [
+    {
+      "run_id": 41566982401,
+      "result": "FAIL custody field-name mismatch"
+    },
+    {
+      "run_id": 41567056777,
+      "result": "FAIL decimal vs Fraction custody equality"
+    }
+  ],
+  "focused_CI_final_run": 41567142327,
+  "focused_CI_job": 125691249644,
+  "focused_CI_result": "SUCCESS",
+  "report_artifact_id": 13198888338,
+  "report_artifact_name": "nf452-original-J8-terminal-moments",
+  "report_artifact_expires_at": "2027-02-01T02:36:13Z",
+  "raw_rational_JSON_permanent_archive_due": true,
+  "independent_mathematical_audit": "NOT CLAIMED",
+  "whole_original_J7_signed": "OPEN",
+  "whole_original_J8_signed": "OPEN",
+  "NF410_NF404_global": "OPEN",
+  "E_p": "OPEN",
+  "J242_fourth_exterior": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "even_whole_Weil_domain": "OPEN",
+  "RH": "OPEN",
+  "next": "NF453 complete source-correlated J8 bulk and J7 true signed moments, exact n9 contact and principal log"
+}
