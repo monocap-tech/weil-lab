@@ -148,7 +148,7 @@ def run(source_path, seams_path, nf411_path, nf450_path, nf451_path):
         "exact_original_endpoint_model":[str(model_lo),str(model_hi)],
         "original_complete_compact_remainder_integral_error_upper":str(error_bound),
         "original_terminal_D8_strict_interval":[str(D_lo),str(D_hi)],
-        "simple_strict_2sided_original_D8_collar":["75/100000000000000000000000000000000000","9/10000000000000000000000000000000000"],
+        "simple_strict_2sided_original_D8_collar":[str(Q(75,10**35)),str(Q(9,10**34))],
         "certified_original_signed_D8_collar_lower_gt_7p5e_minus34":True,
         "certified_original_signed_D8_collar_upper_lt_9e_minus34":True,
         "whole_original_J8_signed_integral":"OPEN",
