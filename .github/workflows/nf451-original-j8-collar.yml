@@ -1,0 +1,36 @@
+name: NF451 original J8 terminal collar exact replay
+
+on:
+  pull_request:
+    paths:
+      - "scripts/local_replay/verify_nf451_original_j8_terminal_collar.py"
+      - "notes/provisional/NF451_ORIGINAL_J8_TERMINAL_POSITIVE_SIGNED_COLLAR_20261102.md"
+      - ".github/workflows/nf451-original-j8-collar.yml"
+      - "notes/data/provisional/NF450_original_B_complete_Laplace_native_sign_custody_index.json"
+      - "notes/data/provisional/NF406_original_prime_support_partition_exact.json"
+      - "notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-collar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Replay unchanged original source, seam, and accepted endpoint collar
+        run: |
+          python scripts/local_replay/verify_nf451_original_j8_terminal_collar.py \
+            --output nf451-original-j8-terminal-collar-report.json
+      - name: Archive scope-limited exact rational receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nf451-original-j8-terminal-collar
+          path: nf451-original-j8-terminal-collar-report.json
+          if-no-files-found: error
+          retention-days: 90
