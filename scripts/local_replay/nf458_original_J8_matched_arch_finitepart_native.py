@@ -210,7 +210,7 @@ def run(args):
     assert nf457["original_exact_matched_joint_remainder_full_J8"]=="|R_joint(d)|<8200d"
     assert nf457["original_full_J8_complete_z_modulus"].startswith("|z(B-d)-Z|<d*(9802+200log((2B-d)/d))")
     assert nf456["original_nf404_center_exact"]==str(CENTER)
-    assert nf457["whole_original_J8_signed"]=="OPEN"
+    assert nf457["original_complete_signed_J8"]=="OPEN"
     assert nf450["original_CI_result"]=="SUCCESS"
     terms,pole,s0=native_source(src)
     assert len(terms)==273 and s0<Q(1,10**700)
