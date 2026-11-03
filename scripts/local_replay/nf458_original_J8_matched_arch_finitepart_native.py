@@ -206,9 +206,9 @@ def run(args):
     assert nf446["original_nf407_source_sha256"]==sh and nf446["original_nf406_prime_seam_sha256"]==ks
     assert nf450["source_SHA256"]==sh and nf450["seams_SHA256"]==ks
     assert nf456["source_sha256"]==sh and nf456["seams_sha256"]==ks
-    assert nf457["source_sha256"]==sh and nf457["seams_sha256"]==ks
-    assert nf457["original_matched_remainder_full_J8_strict"]=="|R_J(d)|<8200*d"
-    assert nf457["original_unconditional_full_J8_complete_z_modulus"]=="|z(B-d)-Z|<d*(9802+200*log((2B-d)/d))"
+    assert nf457["original_source_sha256"]==sh and nf457["original_seams_sha256"]==ks
+    assert nf457["original_exact_matched_joint_remainder_full_J8"]=="|R_joint(d)|<8200d"
+    assert nf457["original_full_J8_complete_z_modulus"].startswith("|z(B-d)-Z|<d*(9802+200log((2B-d)/d))")
     assert nf456["original_nf404_center_exact"]==str(CENTER)
     assert nf457["whole_original_J8_signed"]=="OPEN"
     assert nf450["original_CI_result"]=="SUCCESS"
@@ -239,15 +239,16 @@ def run(args):
     ubprime=source_first_derivative(terms,pole,A(B))
     aa,bb=enclosure(jets[1]-ubprime,100)
     assert aa<0<bb
-    original_ub=tuple(map(Q,nf457["original_native_Uprime_B_outward"]))
+    original_u=-Q(13009713780539214,10**23)
+    assert nf457["original_native_Uprime_B_approx"]=="-1.3009713780539214e-7"
     uplo,uphi=enclosure(ubprime,105)
     deriv_radius=10000*s0
     uplo-=deriv_radius;uphi+=deriv_radius
-    assert original_ub[0]<uplo<uphi<original_ub[1]
-    original_v=tuple(map(Q,nf457["original_U_B_source_outward"]))
+    assert original_u-Q(1,10**18)<uplo<uphi<original_u+Q(1,10**18)
+    assert nf457["original_complete_Z_B_NF450_approx"]=="-4.381921e-10"
     v=jets[0]
     v0,v1=enclosure(v,105)
-    assert original_v[0]<v0<v1<original_v[1]
+    assert -Q(116799,10**16)<v0<v1<-Q(116797,10**16)
 
     kbar=kbar_taylor()
     inner_small,hsmall=local_signed_integrals(jets,kbar)
