@@ -1,7 +1,7 @@
 {
   "pass": "NF458",
   "date": "2026-11-03 America/Los_Angeles",
-  "standing": "SOURCE-NATIVE computed original complete J8 endpoint regular finite-part coefficient and strict negativity; independently truncated numeric gates pending final focused CI. Entire J8 and J7 signed integral OPEN.",
+  "standing": "ACCEPTED original source-native complete J8 matched joint arch finite endpoint regular coefficient Creg strictly NEGATIVE, strict 1200/1600 Laplace overlap; full signed J8/J7 OPEN",
   "branch": "research/nf458-j8-matched-arch-finite-part-native",
   "draft_pr": 479,
   "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
@@ -63,7 +63,7 @@
   "first_complete_numerical_success_artifact_id": 13252283220,
   "first_complete_numerical_success_artifact_expiry": "2027-02-01T17:05:47Z",
   "expanded_strict_numeric_run": 41681475053,
-  "expanded_strict_status": "IN_PROGRESS",
+  "expanded_strict_status": "SUCCESS",
   "raw_full_outward_numeric_JSON_permanent_archival_due": true,
   "independent_mathematical_audit": "NOT CLAIMED",
   "whole_J8_signed": "OPEN",
@@ -71,5 +71,9 @@
   "NF410_NF404_global": "OPEN",
   "W_ODD_NEG": "OPEN",
   "RH": "OPEN",
-  "next": "NF459 quantify finite-d matched remainder after subtracting fully determined joint arch slope, preserve complete original J8 source correlation and compute signed pz and z²"
+  "next": "NF459 quantify finite-d matched remainder after subtracting fully determined joint arch slope, preserve complete original J8 source correlation and compute signed pz and z²",
+  "expanded_strict_job": 126075963633,
+  "expanded_strict_artifact_id": 13251999681,
+  "expanded_strict_artifact_expires": "2027-02-01T17:09:39Z",
+  "independent_short_moment_cross_check": "PASS certified original Laplace M=1200 and M=1600 source-native outward overlap with both analytic tails paid"
 }
