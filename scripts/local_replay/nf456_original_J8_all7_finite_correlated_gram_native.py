@@ -264,6 +264,6 @@ def main():
     args=ap.parse_args()
     d=result(args)
     out=Path(args.output);out.parent.mkdir(parents=True,exist_ok=True)
-    out.write_text(json.dumps(d,indent=2)+"\n")
+    out.write_text(json.dumps(d,indent=2,default=str)+"\n")
     print("NF456 source-native finite-sector exact-moment CI success; original whole J8 and RH OPEN",flush=True)
 if __name__=="__main__":main()
