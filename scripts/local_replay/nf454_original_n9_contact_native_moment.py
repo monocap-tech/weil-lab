@@ -112,7 +112,7 @@ def main():
     alo,ahi=enclosure(a)
     assert log9lo-B<=x9lo<=x9hi<=log9hi-B
     assert a_min<=alo<=ahi<=a_max
-    assert x9lo>A(0).mid_rad_10exp(10)[0]*Q(0) if False else True
+    assert x9lo>0
 
     src=U(s)
     v=src.at(C(B)).real
