@@ -206,6 +206,7 @@ def run(args):
      "native_precision_bits":ctx.prec,
      "original_actual_J8_distance_0_lt_d_lt":[str(dmaxlow),str(dmaxhigh)],
      "original_center_exact_NF404":str(CENTER),
+     "original_U_B_source_outward":[str(vb[0]-s0),str(vb[1]+s0)],
      "original_native_Uprime_B_outward":[str(d0),str(d1)],
      "original_original_dlog_source_coefficient_minus_half_Uprime_B":[str(k0),str(k1)],
      "original_F_B_source_outward":[str(Flo),str(Fhi)],
