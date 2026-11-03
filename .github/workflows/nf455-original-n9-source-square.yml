@@ -1,0 +1,22 @@
+name: NF455 original J8 n9 source squared signed remainder
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  exact-original-n9-square:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: Original source-native n9 square and signed decomposition, full tail paid
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf455_original_J8_n9_quadratic_native.py --output nf455-original-n9-square.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf455-original-n9-square
+          path: nf455-original-n9-square.json
+          retention-days: 90

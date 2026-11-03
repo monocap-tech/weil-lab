@@ -1,0 +1,70 @@
+{
+  "pass": "NF455",
+  "date": "2026-11-03 PT",
+  "standing": "ACCEPTED scoped original true J8 n9 source-square, strict negative PARTIAL signed D8[n9], and complete principal after n9 contact norm reduction below one quarter; entire J8 D8 OPEN",
+  "branch": "research/nf455-original-j8-n9-square-native",
+  "draft_pr": 476,
+  "original_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "true_original_source_generators": 246,
+  "original_source_frequency_order_groups": 273,
+  "critical_sines": 32,
+  "odd_sinh": true,
+  "precision_bits": 4096,
+  "original_nf454_full_principal_cross_4int_pz9_accepted": [
+    "-5.547510e-23",
+    "-5.547509e-23"
+  ],
+  "true_original_Q9_square_strict": [
+    "9.673260e-23",
+    "9.673261e-23"
+  ],
+  "Q9_approx": "9.67326018422718e-23",
+  "true_original_2int_z9_square_strict": [
+    "2.594473e-23",
+    "2.594474e-23"
+  ],
+  "z9_2square_approx": "2.5944736282272712e-23",
+  "true_original_partial_D8_n9_strict": [
+    "-2.953037e-23",
+    "-2.953034e-23"
+  ],
+  "D8_n9_partial_approx": "-2.953036e-23",
+  "original_Ep_plus_z9_strict": [
+    "3.93e-24",
+    "4.14e-24"
+  ],
+  "original_Ep_plus_z9_approx": "4.03e-24",
+  "n9_reduces_original_Ep8_to_below_one_quarter": true,
+  "original_full_Ep8_source_nf453_strict": [
+    "1.87e-23",
+    "1.89e-23"
+  ],
+  "original_n9_Jensen_checked": true,
+  "original_NF454_A9_independent_moment_overlap": true,
+  "source_analytic_architecture": "source-correlated original physical 320-coefficient n9 contact Taylor, 4096-bit exact polynomial squared moments with all 246-generator cross terms, full Cauchy tail M=1e230 ratio <3/25, independently charged original dyadic native coefficient radius",
+  "cauchy_M": "10^230",
+  "taylor_degree": 319,
+  "cauchy_radius": "1/40",
+  "cauchy_ratio_upper": "3/25",
+  "squared_analytic_remainder_less_than": "1e-50",
+  "squared_source_uncertainty_less_than": "1e-690",
+  "first_focused_run": 41661463296,
+  "first_focused_result": "SUCCESS native square; before additional strict gates",
+  "final_strict_focused_run": 41661798020,
+  "final_strict_job": 126006601227,
+  "final_strict_result": "SUCCESS",
+  "native_report_artifact_id": 13242552019,
+  "native_report_artifact_name": "nf455-original-n9-square",
+  "native_report_artifact_expiry": "2027-02-01T15:14:22Z",
+  "full_native_report_repo_archive_due": true,
+  "independent_mathematical_audit": "NOT CLAIMED",
+  "uncomputed_full_D8_terms": "4int_J8(p*z0)+4int_J8(z0*z9)+2int_J8(z0^2), where z=z0+z9",
+  "whole_J8": "OPEN",
+  "whole_J7": "OPEN",
+  "NF404_global": "OPEN",
+  "J242_exterior": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next": "NF456 construct correlation-preserving full six-prime-plus-arch z0 response on entire J8, compute cross with n9 and background squared; J7 independent"
+}
