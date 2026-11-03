@@ -1,0 +1,3 @@
+# NF455 source n9 quadratic frontier
+
+2026-11-03 PT. Focused source-native verification PENDING. Original NF407 246 source and 273 groups, NF406 genuine n9 contact, NF454 original source A9 and log-weighted p*z9 accepted. NF455 computes true original J8 n9-only square Q9=int_0^(2B-log9) [v-U(B-y)]^2dy by source-correlated 320-jet, exact polynomial square moments, 4096bit Arb, rigorous Cauchy remainder and separate original dyadic radius; independent original A9 and Jensen cross-check. Thus D8[n9 partial]=4int_J8 p*z9+2int_J8 z9^2 can be signed. The missing original full z0 background terms (4int pz0, 4int z0z9, 2int z0²), complete signed J8, complete J7, NF404, W-ODD-NEG, RH remain OPEN. Next NF456 full source-correlated background cross; no main merge.
