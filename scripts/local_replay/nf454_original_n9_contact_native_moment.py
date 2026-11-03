@@ -148,6 +148,12 @@ def main():
     constproducts=[-4*vv*ww*cc*mm for vv in true_v_bounds for ww in (w0,w1)
                    for cc in (c8lo,c8hi) for mm in (moment_lo,moment_hi)]
     constlo,consthi=min(constproducts),max(constproducts)
+    # Final quantitative gates on the genuine original n9 source moment,
+    # independent of float formatting in the diagnostic prints.
+    assert -Q(4446541,10**19)<moment_lo<moment_hi<-Q(4446540,10**19)
+    assert Q(1628341,10**19)<zintlo<zinthi<Q(1628342,10**19)
+    assert -Q(2785906,10**30)<pz9lo<pz9hi<-Q(2785905,10**30)
+    assert -Q(2691164,10**29)<constlo<consthi<-Q(2691163,10**29)
 
     out={
         "pass":"NF454",
