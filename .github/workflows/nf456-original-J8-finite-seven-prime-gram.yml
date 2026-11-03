@@ -1,0 +1,22 @@
+name: NF456 original seven-prime source-correlated finite J8 Gram
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-all-prime-finite-j8:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: Complete original J8 seven-prime plus NF404 center source-native continuous moments
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf456_original_J8_all7_finite_correlated_gram_native.py --output nf456-original-J8-finite-full-source.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf456-original-J8-seven-prime-finite-gram
+          path: nf456-original-J8-finite-full-source.json
+          retention-days: 90
