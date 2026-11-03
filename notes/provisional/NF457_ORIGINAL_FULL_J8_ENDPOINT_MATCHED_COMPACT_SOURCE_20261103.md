@@ -189,3 +189,63 @@ Independent preconditions NF407 source hash, NF406 genuine seam hash, NF411 deri
 The new **exact analytic full-J8 matched decomposition** is independent of numerical success; quantitative sign values need native verification. Original J8 signed continuous integral, original J7 signed integral, NF410/NF404 global scalar, J242 fourth exterior, canonical W-ODD-NEG, even/whole Weil/domain and RH all remain **OPEN**. The strict full original signed operator is not asserted, no main merge. Raw native JSON/Actions receipts must be archived permanently before artifact expiration.
 
 Script: \`scripts/local_replay/nf457_original_J8_endpoint_matched_compact_remainder_native.py\`. Workflow \`.github/workflows/nf457-original-J8-matched-compact.yml\`.
+
+## New quantitative consequence: true signed original J8 collar enlarged TENFOLD
+
+The full physical-J8 matched modulus above can be *integrated*, not merely stated, on the larger genuine endpoint collar \(B-10^{-14}<x<B\). This enlarges the prior NF452 genuinely source-certified \(\delta=10^{-15}\) collar by a factor of TEN, without using pointwise experimental samples.
+
+For all \(0<d\le\delta:=10^{-14}\), set \(h(d)=\log(B/d)\). Since
+\[
+\log\frac{2B-d}{d}<h(d)+\log2<h(d)+1,
+\]
+the newly established **complete original z** whole-J8 modulus implies
+\[
+|z(B-d)-Z|<M(d)=d\,[10002+200h(d)].
+\]
+\(M\) increases on this collar, since \(10002+200(h-1)>0\), and it is integrable against the exact unbounded original principal. In particular, \(z(B-d)\) remains strictly negative across the entire \(10^{-14}\) collar; the actual full seven-prime principal \(p(B-d)=v[\frac12h(d)+C_8]\) is strictly negative, with \(C_8\) the original NF411 seven outward positive weights.
+
+Define exact logarithmic moments
+\[
+L=\log(B/\delta),\quad I_0=\frac{\delta^2}2,\quad
+I_1=I_0(L+\frac12),\quad I_2=I_0(L^2+L+\frac12).
+\]
+They integrate \(d\,h^j(d)\) for \(j=0,1,2\). Compute \(L\) **rigorously with exact Fractions**, not floating log or a near-unity logarithm series, using
+\[
+L=\log(11/10)+14\log(5/4)+42\log2
+\]
+and 64 terms of the positive atanh expansion with its exact geometric tail per factor. All three ratios are rational and the largest atanh ratio is \(1/3\).
+
+The actual original signed cell contribution is
+\[
+D_{8,\delta}=\int_0^\delta[4p(B-d)z(B-d)+2z(B-d)^2]\,dd.
+\]
+Use the actual source-native \(v\) interval and the independently NF450-certified full \(Z=z(B)\), not a finite-sector proxy. Writing \(z=Z+e\), \(|e|<M\), gives
+\[
+D_{8,\delta}=D_0+\mathcal E,\quad
+D_0=2\delta v Z(L+1+2C_8)+2\delta Z^2.
+\]
+The following *explicit* error bounds include both the \(pz\) and \(z^2\) terms:
+\[
+\begin{split}
+A_1&=10002 I_0+200 I_1,\\
+A_p&=|v|_{\max}\big[100 I_2+(5001+200 C_{\max})I_1+
+ 10002 C_{\max}I_0\big],\\
+M_*&=\delta(10002+200L),\\
+|\mathcal E|&<4A_p+4|Z|_{\max}A_1+2M_*A_1.
+\end{split}
+\]
+No quadrature is used. Source coefficient uncertainty and all seven NF411 weight intervals are included in the inputs, not set to zero.
+
+**Pending CI acceptance gate** for the ENTIRE genuine signed original J8 \(\delta=10^{-14}\) terminal contribution is the strict two-sided interval
+\[
+\boxed{
+5.4\times10^{-33}
+<
+D_{8,\,[B-10^{-14},B]}
+<
+1.06\times10^{-32}.
+}
+\]
+The gate is deliberately **local**: even a passing certificate does not sign the complete \(J_8=(\log9-B,B)\) integral or the whole NF410/NF404 global scalar.
+
+The additional verifier scripts/local_replay/verify_nf457_original_J8_extended_signed_collar.py reads the SAME run's original NF457 native \(U(B)\) ball, NF411 weights, NF450 full physical \(Z\), NF452 older accepted collar and original NF407/NF406 SHAs, then contracts the complete signed scalar entirely with exact rational arithmetic. It is run **after** the native full-J8 matched-jet verifier in the same focused GitHub workflow. Numerical promotion only after both pass. Original full J8, J7, canonical W-ODD-NEG and RH remain OPEN.
