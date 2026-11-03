@@ -211,6 +211,17 @@ def result(args):
     zBlo,zBhi=map(Q,nf450["complete_z_B_outward_24_decimal"])
     assert zBhi<0
     archB=(zBlo-EF_B[1],zBhi-EF_B[0])
+    # Strict entirely rational decision gates, never a sign from float midpoint.
+    assert Q(8977981481882,10**13)<EF_B[0]<EF_B[1]<Q(8977981481883,10**13)
+    assert -Q(8977981486266,10**13)<archB[0]<archB[1]<-Q(8977981486263,10**13)
+    assert Q(22508888853,10**13)<FFiv[0]<FFiv[1]<Q(22508888855,10**13)
+    assert Q(45017777699,10**13)<partialF[0]<partialF[1]<Q(45017777701,10**13)
+    print("NF456 original complete finite G 2∫G²:",float(2*GGiv[0]),float(2*GGiv[1]),flush=True)
+    print("NF456 original true six-prime/n9 4∫G*z9:",float(4*GZiv[0]),float(4*GZiv[1]),flush=True)
+    print("NF456 original 4∫pG:",float(4*PGiv[0]),float(4*PGiv[1]),flush=True)
+    print("NF456 original extra original G signed subtotal:",float(residualG[0]),float(residualG[1]),flush=True)
+    print("NF456 original finite F zeroth moment:",float(TF[0]),float(TF[1]),flush=True)
+    print("NF456 original source sup finite error bound:",float(EF),flush=True)
     print("NF456 true original finite F(B) midpoint:",float(EF_B[0]),float(EF_B[1]),flush=True)
     print("NF456 original inferred joint arch J(B):",float(archB[0]),float(archB[1]),flush=True)
     print("NF456 original whole seven-prime/center ∫F²:",float(FFiv[0]),float(FFiv[1]),flush=True)
