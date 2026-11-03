@@ -67,7 +67,7 @@ def run(source_path, seams_path, nf411_path, nf450_path, nf451_path):
     assert collar["CI_result"] == "SUCCESS"
     assert collar["collar_width"] == str(DELTA)
     assert collar["collar_original_p_strictly_negative"]
-    assert collar["collar_z_strict_upper"] == str(-Q(4, 10**10))
+    assert Q(collar["collar_z_strict_upper"]) == -Q(4, 10**10)
 
     n9 = next(r for r in seams["original_prime_power_log_shifts"] if r["n"] == 9)
     assert 2*B - Q(n9["log_upper"]) > Q(1,1000) > DELTA
