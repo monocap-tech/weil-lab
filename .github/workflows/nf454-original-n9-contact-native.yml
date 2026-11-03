@@ -1,0 +1,26 @@
+name: NF454 original n9 native contact analytic moment
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-source-n9:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: True original 273-group n9 seam source-native analytic moment
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf454_original_n9_contact_native_moment.py --output nf454-original-n9-contact.json
+      - name: Exact original source-log B9 and full-principal n9 cross
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf454_original_n9_log_weighted_native.py --unweighted nf454-original-n9-contact.json --output nf454-original-n9-log.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf454-original-n9-native
+          path: |
+            nf454-original-n9-contact.json
+            nf454-original-n9-log.json
+          retention-days: 90
