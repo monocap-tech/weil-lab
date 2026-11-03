@@ -140,6 +140,14 @@ def main():
     true_v_bounds=(v0-s0,v1+s0)
     selfproducts=[-4*vv*(ww**2)*mm for vv in true_v_bounds for ww in (w0,w1) for mm in (moment_lo,moment_hi)]
     pz9lo,pz9hi=min(selfproducts),max(selfproducts)
+    # Actual seven-prime constant piece C8 of full original principal p,
+    # multiplied by the genuine n9 regular-source z9, not an artificial p9.
+    c8lo=sum(Q(r["c_n_positive_outward"][0]) for r in jet["all_seven_original_prime_seam_derivative_identities"])
+    c8hi=sum(Q(r["c_n_positive_outward"][1]) for r in jet["all_seven_original_prime_seam_derivative_identities"])
+    assert 3<c8lo<c8hi<4
+    constproducts=[-4*vv*ww*cc*mm for vv in true_v_bounds for ww in (w0,w1)
+                   for cc in (c8lo,c8hi) for mm in (moment_lo,moment_hi)]
+    constlo,consthi=min(constproducts),max(constproducts)
 
     out={
         "pass":"NF454",
@@ -160,6 +168,8 @@ def main():
         "actual_original_n9_boundary_A9_integral_outward":[str(moment_lo),str(moment_hi)],
         "original_z9_zeroth_moment_outward":[str(zintlo),str(zinthi)],
         "original_p9_z9_self_signed_4cross_outward":[str(pz9lo),str(pz9hi)],
+        "original_full_principal_seven_weight_constant_cross_with_z9":[str(constlo),str(consthi)],
+        "uncomputed_log_weighted_original_n9_source_moment":"OPEN",
         "A9_sign":"NEGATIVE" if moment_hi<0 else ("POSITIVE" if moment_lo>0 else "UNDECIDED"),
         "actual_original_z9_zeroth_moment_sign":"POSITIVE" if zintlo>0 else ("NEGATIVE" if zinthi<0 else "UNDECIDED"),
         "original_J8_source_increment_identity":"z9(x)=-w9*[U(x-log(9))+v]; p9=w9*v; p9+z9=-w9*U(x-log(9))",
@@ -171,5 +181,6 @@ def main():
     print("NF454 source-native n9 physical A9:",float(moment_lo),float(moment_hi),flush=True)
     print("NF454 true z9 moment:",float(zintlo),float(zinthi),flush=True)
     print("NF454 original n9 self 4*p9*z9:",float(pz9lo),float(pz9hi),flush=True)
+    print("NF454 original full-principal CONSTANT cross with n9 source:",float(constlo),float(consthi),flush=True)
     print("NF454 whole J7/J8 signed integral, W-ODD-NEG, RH OPEN",flush=True)
 if __name__=="__main__":main()
