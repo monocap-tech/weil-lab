@@ -1,6 +1,6 @@
 # Weil-Lab — NF451: original J8 terminal signed positive collar
 
-**2026-11-02 PT. Standing:** analytic quantitative theorem relative to accepted original NF413/NF418/NF445/NF446/NF450 source certificates. Pure-Fraction source and geometry replay supplied; focused GitHub CI and an independent mathematical audit remain separate. This does **not** sign the whole J7 or J8 integral.
+**2026-11-02 PT. Standing:** analytic quantitative theorem relative to accepted original NF413/NF418/NF445/NF446/NF450 source certificates. Pure-Fraction source and geometry replay supplied; focused [GitHub CI #41562046205 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41562046205), with a separate independent mathematical audit not claimed. This does **not** sign the whole J7 or J8 integral.
 
 ## Previous cursor → current circle → next bold
 
@@ -97,4 +97,4 @@ This does NOT imply \(D_8>0\): the J8 bulk has not been certified, and the colla
 
 Exact-rational source SHA, NF406 n9 bracket, original 246/273 counts, NF450 accepted outward endpoint upper, all analytic constant arithmetic, rational exponential inequality and positivity threshold are replayed by scripts/local_replay/verify_nf451_original_j8_terminal_collar.py. The replay does **not** recreate the 4096-bit NF450 source integral or reprove the NF446 compact representation: those remain separately accepted source dependencies. CI status must be stated independently; no presumed passing run.
 
-**NF451 terminal collar:** analytic proof attached, inherited source accepted, local exact arithmetic checked, focused CI pending. **Still OPEN:** original J7 and full J8 signed integrals; complete NF410/NF404 scalar; original principal E_p; J242 fourth exterior; W-ODD-NEG; even/whole Weil operator and domain; RH. Canonical W-ODD-NEG unchanged, no main merge.
+**NF451 terminal collar:** analytic proof attached, inherited source accepted, focused original-source/seam/endpoint exact Fraction CI #41562046205 SUCCESS (job #125674682388, receipt artifact #13197800769; expires 2027-02-01), with [permanent metadata custody](../data/provisional/NF451_original_J8_terminal_collar_custody_index.json). The scripted arithmetic/source checks passed; independent mathematical audit remains separate. **Still OPEN:** original J7 and full J8 signed integrals; complete NF410/NF404 scalar; original principal E_p; J242 fourth exterior; W-ODD-NEG; even/whole Weil operator and domain; RH. Canonical W-ODD-NEG unchanged, no main merge.
