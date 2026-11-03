@@ -1,0 +1,13 @@
+{
+  "pass": "NF456",
+  "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "focus": "original J8 finite 7-prime+NF404 centered source full Gram",
+  "native_CI": "PENDING",
+  "original_J8": "OPEN",
+  "original_J7": "OPEN",
+  "canonical": "W-ODD-NEG OPEN",
+  "RH": "OPEN",
+  "prior": "NF455 accepted",
+  "next": "NF457 correlated joint arch"
+}
