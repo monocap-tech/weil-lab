@@ -110,7 +110,7 @@ def run(args):
     assert nf413["original_true_full_u4_second_derivative_L2_upper_integer"]=="256"
     assert jet["nf407_source_sha256"]==sha
     assert jet["source_derivative_strict_negative"] is True
-    assert nf446["original_nf407_source_sha256"]==sha and nf446["original_nf406_seams_sha256"]==gsha
+    assert nf446["original_nf407_source_sha256"]==sha and nf446["original_nf406_prime_seam_sha256"]==gsha
     assert nf450["source_SHA256"]==sha and nf450["seams_SHA256"]==gsha
     assert nf450["original_CI_result"]=="SUCCESS"
     assert nf451["original_source_sha256"]==sha and nf451["original_seams_sha256"]==gsha
