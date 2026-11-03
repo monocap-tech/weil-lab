@@ -1,0 +1,81 @@
+name: Weil-Lab NF450 original J8 B analytic Laplace source moments
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/local_replay/nf450_original_B_exact_laplace_moments_native.py'
+      - '.github/workflows/nf450-original-B-laplace-moments.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-J8-B-exact-source-Laplace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install python-flint==0.8.0
+      - name: Original immutable prior native source, nearzero, endpoint and Sobolev archives
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p artifacts/{nf445,nf447,nf448,nf449}
+          gh run download 41387527946 --repo "$GITHUB_REPOSITORY" --name NF445-original-correlated-Rm-Laplace-source-native --dir artifacts/nf445
+          gh run download 41393812202 --repo "$GITHUB_REPOSITORY" --name NF447-original-J8-B-all-known-source-native --dir artifacts/nf447
+          gh run download 41399207892 --repo "$GITHUB_REPOSITORY" --name NF448-original-B-large-0to01-Cauchy --dir artifacts/nf448
+          gh run download 41525816249 --repo "$GITHUB_REPOSITORY" --name NF449-original-B-full-compact-Sobolev-midpoint --dir artifacts/nf449
+          printf '%s  %s\n' 51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32 artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json | sha256sum --check
+          printf '%s  %s\n' 016b26dd713d796a99bb775a2ce6d0ba6173aff506bda609e96b0a6ab36c5164 artifacts/nf447/NF447_original_B_all_known_terms_native.json | sha256sum --check
+          printf '%s  %s\n' 5c4fa01cb23d2847b78d9bc3c7786e859ea7a713c466da42cf7ef1a04dda527f artifacts/nf448/NF448_original_B_large_0to01_Cauchy.json | sha256sum --check
+          printf '%s  %s\n' 544cf413dc2e128adb869d366d5b7591a34201ffdc6d1d3c2d9f64008560e34f artifacts/nf449/NF449_original_B_full_compact_interval.json | sha256sum --check
+      - name: Exact entire ORIGINAL physical source polynomial oscillatory Laplace moments
+        run: |
+          python3 -m py_compile scripts/local_replay/nf450_original_B_exact_laplace_moments_native.py
+          python3 scripts/local_replay/nf450_original_B_exact_laplace_moments_native.py \
+            --nf445 artifacts/nf445/NF445_original_source_correlated_Rm_laplace.json \
+            --nf447-known artifacts/nf447/NF447_original_B_all_known_terms_native.json \
+            --nf448 artifacts/nf448/NF448_original_B_large_0to01_Cauchy.json \
+            --nf449 artifacts/nf449/NF449_original_B_full_compact_interval.json \
+            --precision 4096 --output artifacts/NF450_original_J8_B_full_exact_Laplace_interval.json
+      - name: Strict source, tail, independent enclosure and theorem-scope gate
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          from fractions import Fraction as F
+          sys.set_int_max_str_digits(0)
+          d=json.load(open("artifacts/NF450_original_J8_B_full_exact_Laplace_interval.json"))
+          assert d["pass"]=="NF450"
+          assert d["original_source_SHA256"]=="0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce"
+          assert d["original_seams_SHA256"]=="c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675"
+          assert d["original_nf445_native_SHA256"]=="51b8e0850c678085580940b3ab9afeff8277f446d4407c0200fb75754970db32"
+          assert d["original_nf448_prefix_SHA256"]=="5c4fa01cb23d2847b78d9bc3c7786e859ea7a713c466da42cf7ef1a04dda527f"
+          assert d["original_nf447_known_SHA256"]=="016b26dd713d796a99bb775a2ce6d0ba6173aff506bda609e96b0a6ab36c5164"
+          assert d["original_nf449_native_SHA256"]=="544cf413dc2e128adb869d366d5b7591a34201ffdc6d1d3c2d9f64008560e34f"
+          assert d["original_selected_critical_generators"]==246
+          assert d["original_frequency_order_groups"]==273
+          assert d["original_critical_sines"]==32 and d["original_odd_sinh_pole_included"]
+          assert d["original_full_Laplace_m_terms"]==384 and d["original_short_Laplace_m_terms"]==320
+          assert d["original_exact_polynomial_complex_Laplace_primitive_verified"]
+          assert d["original_short_truncation_overlaps"]
+          assert d["original_NF449_independent_Sobolev_enclosure_overlaps"]
+          assert d["original_NF449_original_zB_overlaps"]
+          assert F(d["original_exact_rational_tail_full"])<F(1,10**16)
+          assert F(d["original_exact_rational_tail_short"])<F(1,10**13)
+          assert F(d["original_source_coefficient_radius_charge"])<F(1,10**690)
+          lo,hi=map(F,d["original_full_zB_interval"])
+          assert lo<=hi and hi-lo<F(1,10**14)
+          assert d["original_zB_sign_certified_by_interval"] in ("POSITIVE","NEGATIVE","UNRESOLVED")
+          assert not d["original_true_J7_signed_integral_decided"]
+          assert not d["original_true_J8_signed_integral_decided"]
+          assert not d["original_original_NF410_NF404_global_scalar_decided"]
+          assert d["W_ODD_NEG"]==d["RH"]=="OPEN"
+          print("NF450 COMPLETE ORIGINAL J8 ENDPOINT z(B) :", float(lo), float(hi),"SIGN",d["original_zB_sign_certified_by_interval"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NF450-original-J8-B-complete-exact-Laplace
+          path: artifacts/NF450_original_J8_B_full_exact_Laplace_interval.json
+          if-no-files-found: error
