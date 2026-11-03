@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python scripts/local_replay/verify_nf453_original_j7_j8_principal_energy_signed_island.py --output nf453-result.json
+      - run: python -X int_max_str_digits=0 scripts/local_replay/verify_nf453_original_j7_j8_principal_energy_signed_island.py --output nf453-result.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
