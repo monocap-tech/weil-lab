@@ -1,0 +1,19 @@
+name: NF454 original two-cell energy gate exact replay
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  exact-reduction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify original source intervals and exact NF404 gate
+        run: python -X int_max_str_digits=0 scripts/local_replay/verify_nf454_gate.py > nf454-source-gate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf454-source-exact-reduction
+          path: nf454-source-gate.json
