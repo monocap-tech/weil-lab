@@ -1,0 +1,13 @@
+# NF457 — Verified original centered residual endpoint log peel (2026-11-04)
+
+**Standing: ACCEPTED analytic method restriction and original-source regular collar estimate. NOT a full T upper.** [Source-exact focused CI #41930033959 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41930033959), job #126924313771, artifact #13370374693 (expires 2027-02-02). Draft stacked [PR #484](https://github.com/monocap-tech/weil-lab/pull/484), no main merge. Read [proof](../notes/provisional/NF457_ORIGINAL_LOG_PEEL_AND_FINITE_SHADOW_CEILING_20261104.md), [exact verifier](../scripts/local_replay/verify_nf457_endpoint_log_peel.py), [original-source/CI custody](../notes/data/provisional/NF457_original_log_peel_info_ceiling_custody.json).
+
+Original physical centered f=w-a*s from NF404/NF456 has for genuine J8 x=B-d: f(B-d)=(u4(B)/2)log(B/d)+u4(B)C8+z(B-d). NF411 original native u4(B) is NONZERO; NF450 finite original z(B), NF451 original full-source modulus establish the regular second term is bounded on d<=1e-15 by **5.5e-10**. The true J242 selected finite sine/pole functions and actual physical q512/q513 are bounded. Consequently original residual f-P_(J242+E)f is NOT L-infinity at B; a global uniform pointwise residual error certificate is an analytic METHOD STOP. Its endpoint L2 is finite by exact log-square primitive, so this does not reject NF404.
+
+**Conditional endpoint power contract only:** Given a separately source-certified original projector bound sup_collar |P_(J242+E)f|<=9e-9 (currently OPEN), the original full ±B collar residual has squared L2 <4.01e-31 by rigorous exact rational source coefficients and the log-square primitive. The **complete bulk residual T upper has not been measured**, so neither NF404 cap nor W-ODD-NEG is accepted. This conditional collar budget is tiny relative to the NF456 T acceptance target ~3.2869e-26, but it is not an observed current bound.
+
+The finite-measurement shadow ceiling is narrowly typed: finite selected+two-witness moment data alone do not upper bound an arbitrary odd L2 common measurement fiber (245 smooth bumps versus 244 linear moment constraints). This is **not** a counterexample preserving the uniquely specified NF407 source or global analytic bounds, and does not imply original T incomputable.
+
+**Canonical open:** original source projector collar supremum, true T collar/bulk/full UPPER, whole J7/J8 E78 upper, NF404, W-ODD-NEG, even/whole Weil, infinite operator-domain transfer and RH.
+
+**Next bold NF458:** source-custodial pointwise original finite projector Pi=P_(J242+E)f on ±B terminal collar; combine with NF457 analytic log peel and source-correlated native bulk residual integration, preserving original n9 and all real physical seams.
