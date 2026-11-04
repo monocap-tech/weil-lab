@@ -1,0 +1,43 @@
+{
+  "pass": "NF455",
+  "date": "2026-11-04",
+  "standing": "ACCEPTED original whole J7+J8 physical E78 lower via NF404 242D projected L2 mass; METHOD PRECISION STOP for NF454 coarse independently bounded A; NO NF404 decision",
+  "repository": "monocap-tech/weil-lab",
+  "branch": "research/nf455-original-two-cell-projection-floor",
+  "draft_pr": 482,
+  "stacked_on": "research/nf454-original-two-cell-square-energy-gate",
+  "original_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_nf404_source": "notes/data/provisional/NF404_original_selected_pole_shear_exact.json",
+  "original_nf454_exact_source_replay": "scripts/local_replay/verify_nf454_gate.py",
+  "true_original_nonnegative_E78_lower": "2.5988e-22",
+  "strict_original_real_E78_lower": true,
+  "old_nf454_easy_sufficient_pass_rule": "E78<=2.59e-22",
+  "old_easy_sufficient_gate_feasible": false,
+  "original_selected_projection_dimension": 242,
+  "original_selected_projection_power_R_approx": "1.0950024763105536e-21",
+  "original_nf404_exact_complement_power_budget_approx": "5.1296807867614292e-26",
+  "exact_fixed_A_gap_to_nf404_E78_threshold": "gamma²/2",
+  "original_fixed_A_gap_approx": "2.5648403933807146e-26",
+  "original_nf454_A_interval_width_approx": "2.696263648107e-24",
+  "independent_A_interval_width_over_full_complement_budget_strictly_gt": 50,
+  "true_exact_equivalence": "Efull=R+||Q_J(w-a*s)||²=A+2E78; NF404 sufficient condition is (R-Rlo)+||Q_J(w-a*s)||²<=gamma²",
+  "focused_original_source_exact_CI": {
+    "run_id": 41885008833,
+    "job_id": 126767005172,
+    "status": "SUCCESS",
+    "artifact_id": 13351242029,
+    "expiry": "2027-02-02T18:13:35Z"
+  },
+  "scope_open": {
+    "E78_upper": "OPEN",
+    "NF404": "OPEN",
+    "J242_physical_complement_upper": "OPEN",
+    "J7_whole_signed": "OPEN",
+    "J8_whole_signed": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "even_whole_Weil_domain": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF456 original complete 242D physical orthogonal residual upper or correlation-preserving coupled norm difference"
+}

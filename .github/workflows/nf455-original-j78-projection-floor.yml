@@ -1,0 +1,19 @@
+name: NF455 original projection J7 J8 energy floor
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-exact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Source-native exact original NF404 projection floor
+        run: python -X int_max_str_digits=0 scripts/local_replay/verify_nf455_projection_energy_floor.py > nf455-source-verified.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf455-projection-floor
+          path: nf455-source-verified.json
