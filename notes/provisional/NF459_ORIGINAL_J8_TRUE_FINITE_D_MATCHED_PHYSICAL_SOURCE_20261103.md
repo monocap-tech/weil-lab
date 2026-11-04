@@ -1,6 +1,6 @@
 # Weil-Lab — NF459: actual original J8 finite-distance joint-source evaluation
 
-2026-11-03 PT. **Standing: mathematical construction / source-native numerical verification PENDING.** The canonical original W-ODD-NEG obligation, full original J8/J7 signed integrals, NF410/NF404 scalar, J242 exterior and RH remain OPEN.
+2026-11-03 PT. **Standing: ACCEPTED original complete physical J8 z at two finite source-certified points, independent NF450 endpoint replay and two positive continuous complete-original signed J8 islands.** The canonical original W-ODD-NEG obligation, full original J8/J7 signed integrals, NF410/NF404 scalar, J242 exterior and RH remain OPEN.
 
 ## Previous cursor → Current circle → Next bold
 
@@ -99,6 +99,73 @@ Acceptance gates require the full source/seam sha, 273 real groups, original NF4
 
 ## Stop
 
-**PENDING:** full focused 4096-bit source-native CI, original outward finite-d values, and exact signed pointwise decisions.
+**ACCEPTED after complete original source-native CI #41751478322 SUCCESS:** genuine 4096-bit original response at the original NF450 B endpoint and both nonzero physical J8 distances, plus independent exact-Fraction original positive signed island integrals (see following section).
 
 **OPEN regardless:** actual original \(\int_{J8}4pz+2z^2\), original J7, global NF410/NF404, J242 exterior, canonical W-ODD-NEG and RH. Next NF460: source-certified finite-d sign neighborhoods + correlation-preserving true J8 global high-order integral, not an unverified Gauss mesh. No main merge.
+
+
+## Quantitative NF459 source-certified true original J8 results
+
+The complete original source-native replay independently reconstructs the NF450 endpoint
+\[
+\boxed{z(B)\approx-4.38192122468351\times10^{-10},}
+\]
+**overlapping** the independently certified original NF450 exact physical endpoint interval. This is a valuable check: the NF459 finite-\(d\) evaluator is not anchored by numerically substituting NF450's z(B); it reproduces the same endpoint from all original source-native joint arch + prime-weight and centered terms.
+
+At the two **genuine nonzero physical** distances:
+
+| True J8 distance \(d=B-x\) | Full original \(z(B-d)\), actual source-native | Full original pointwise \(4pz+2z^2\) |
+|---|---:|---:|
+| \(10^{-6}\) | \(-4.3730857730447687\times10^{-10}\) | \(+5.96856400884357\times10^{-19}\) |
+| \(10^{-3}\) | \(-1.6866724499018266\times10^{-10}\) | \(+1.12365176634329\times10^{-19}\) |
+
+The narrow source-native signed point intervals, including original input, Cauchy and prime weights, lie respectively between \(5.968563908843572\times10^{-19}\) and \(5.968564108843573\times10^{-19}\), and between \(1.1236516663432928\times10^{-19}\) and \(1.123651866343293\times10^{-19}\). Both source-certified original complete \(z\) values are strictly **negative** and both complete-original signed point integrands strictly **positive**.
+
+This new **finite-\(d\) computation exposes why the endpoint first-order asymptotic is not interchangeable with the whole finite carrier.** Relative to the NF450 accepted \(Z\), NF457 \(k=-U'(B)/2\), and NF458 \(C_{\mathrm{reg}}\), the *actual* nonlinear source-correlated finite-distance residual has certified outward intervals approximately
+\[
+R_{\rm nonlinear}(10^{-6})\in
+(-1.491837,-1.453227)\times10^{-15},
+\]
+\[
+R_{\rm nonlinear}(10^{-3})\in
+(-1.661240,-1.661233)\times10^{-10}.
+\]
+The latter is substantial at the finite original scale \(d=10^{-3}\): simply extrapolating the accepted first-order endpoint coefficient across J8 would lose decisive source information. NF459 directly evaluates it, rather than shrinking the NF457 uniform \(8200d\) bound numerically without preserving the original joint source.
+
+### The finite points are promoted to actual **continuous original signed islands**
+
+The independent exact-rational verifier scripts/local_replay/verify_nf459_original_J8_true_signed_islands.py uses original NF413 full physical \(\|U''\|_{L^2}<256\), NF446 source \(\|U'\|_\infty<400\), \(\|U\|_\infty<900\), original seven-prime weight sum <4, NF404 center derivative <2, and genuine NF446 joint compact source. For
+\[
+\frac1{2\cdot10^6}\le d\le\frac3{2000}
+\]
+it differentiates **the combined original NF446 physical compact response** using genuine moving \(a=2d,b=4B-2d\) boundaries, never exterior images, and proves the elementary strict bound
+\[
+\boxed{|z'(B-d)|<26000.}
+\]
+It includes all of \(I_0\) symmetric physical source and its moving endpoint, \(I_1\) physical middle integral and BOTH moving endpoints, the full \(K-1/t\) regularization, scalar logarithm and \(H(b)\) tail, and the seven genuine original regular translates plus NF404 centering. The complete rational upper ledger is \(<25174<26000\), and source input uncertainty is already covered by the accepted NF413 and NF446 bounds.
+
+The actual original principal \(p(B-d)=v[\frac12\log(B/d)+C_8]\) satisfies \(|p|<10^{-8}\) and \(|p'|<10^{-4}\) on these tiny neighborhoods, using independently source-native original \(|v|<10^{-10}\). The true certified source points and the 26000 derivative bound give \(|z|<10^{-8}\). Thus the complete original signed point function
+\[
+S(x):=4p(x)z(x)+2z(x)^2
+\]
+obeys the **strict local Lipschitz estimate**
+\[
+\boxed{|S'(x)|<\frac1{400}.}
+\]
+
+Take original physical neighborhoods of radius \(r=10^{-18}\) around each true rational \(x=B-10^{-6}\) and \(x=B-10^{-3}\); they lie wholly within the genuine original J8 and are mutually disjoint. Direct exact-Fraction integration of the point lower bound minus \(r/400\) proves
+\[
+\boxed{\int_{|x-(B-10^{-6})|<10^{-18}}S(x)\,dx>10^{-37},}
+\]
+\[
+\boxed{\int_{|x-(B-10^{-3})|<10^{-18}}S(x)\,dx>10^{-37}.}
+\]
+The source-native rational output establishes stronger lower centers of approximately \(1.18955\times10^{-36}\) and \(2.20570\times10^{-37}\), respectively. The independent verifier also proves the original \(z<0\), \(p<0\), \(S>0\) throughout both physical islands. Their combined disjoint signed contribution is strictly \(>2\times10^{-37}\), in addition to and disjoint from NF457's original positive \(10^{-14}\) endpoint collar. **This is a verified nontrivial original continuous signed result, not a conclusion from pointwise signs alone.**
+
+### Verification standing and obligation custody
+
+The complete original 4096-bit source/native + independent exact-Fraction islands CI [#41751478322 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41751478322), job #126317338873, includes all original source/seam/prime receipts, actual genuine native 246-source/273-mode F+J values, independent original NF450 endpoint, source and kernel analytic/dyadic/weight error terms, the two actual finite-\(d\) nonlinear residuals, and both original signed *continuous* island integrations. Original outward report artifact **#13286545638**, expires 2027-02-02; permanent raw numerical archival DUE. One earlier partial attempt CI #41750741955 failed a native-Arb versus Python Fraction type mismatch **after** the original endpoint and first finite-\(d\) source mathematics had passed; corrected before the combined successful run.
+
+**No whole-cell promotion:** Although three disjoint genuine original J8 subregions are now known positive (NF457 endpoint collar plus NF459 two interior islands), all remaining J8 volume and the whole J7 signed functional are unclassified. The original NF410/NF404 global threshold, J242 exterior, canonical W-ODD-NEG, even/whole Weil and RH stay OPEN. An independent mathematical audit has not been claimed.
+
+**Next bold NF460:** Exploit the *source-preserving, finite-\(d\)* full NF446+NF459 evaluator to construct a correlation-preserving **whole-J8 representation and actual integrated moments**. Prioritize exact analytic source moments and high-order global enclosures; do not accumulate isolated sampling shadows indefinitely.
