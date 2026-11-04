@@ -1,0 +1,44 @@
+{
+  "pass": "NF456",
+  "date": "2026-11-04",
+  "standing": "ACCEPTED scoped original physical J242-plus-two-genuine-exterior-witness exact energy decomposition and source-rational intervals; original T upper OPEN",
+  "branch": "research/nf456-original-two-ray-residual-budget",
+  "parent_branch": "research/nf455-original-two-cell-projection-floor",
+  "draft_pr": 483,
+  "original_source_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_seams_nf406_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "source_original_nf389_joint_lower_sha256": "fad492046e351634a0ecf520a5a37d67a7e067e1a3518aef031418107a49748b",
+  "source_original_nf389_joint_upper_sha256": "d20c77c629d74186238609d7d26fe9e41abcf0c05bec9e8c5681eb715ef2682e",
+  "original_242D_selected": "NF404_original_selected_pole_shear_exact.json",
+  "original_physical_witness_subspace": "E=span(q512,q513) within J242 physical orthogonal complement",
+  "physical_identity": "Efull=R+d12+T=A+2E78, T=||(Q_J-P_E)w||^2 >=0",
+  "original_two_witness_power_lower_approx": "1.8191023685518214e-26",
+  "original_two_witness_power_upper_approx": "1.8427675e-26",
+  "original_full_complement_budget_approx": "5.129680786761429e-26",
+  "original_two_witness_budget_fraction_strict": [
+    "0.35",
+    "0.36"
+  ],
+  "original_whole_J7_J8_positive_E78_lower": "2.59897e-22",
+  "original_full_NF404_gate_equivalent": "(R-Rlo)+d12+T <= gamma2",
+  "necessary_for_NF404_T_at_most_approx": "3.3105784182096077e-26",
+  "source_sufficient_NF404_T_at_most_approx": "3.286913286723813e-26",
+  "source_current_T_upper": "OPEN",
+  "verification": {
+    "status": "SUCCESS",
+    "run": 41894746033,
+    "job": 126801154264,
+    "artifact": 13353474755,
+    "artifact_expiry": "2027-02-02T19:12:46Z"
+  },
+  "warning": "No new source full residual T measurement, no whole J7 J8 upper, no NF404, full original W-ODD-NEG, even/whole or RH proof. The two witness original pairing inherits source-specific strong-form realization.",
+  "remaining": {
+    "E78_upper": "OPEN",
+    "T_upper": "OPEN",
+    "J242_full_complement_upper": "OPEN",
+    "NF404": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF457 original infinite complement power T source-correlated upper or its conditional analytic ceiling"
+}

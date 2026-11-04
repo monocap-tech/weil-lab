@@ -1,0 +1,19 @@
+name: NF456 original J242 two-ray residual budget
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-source-exact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify original NF389 NF403 NF404 NF454 NF455 source identity
+        run: python -X int_max_str_digits=0 scripts/local_replay/verify_nf456_original_two_ray_residual_budget.py > nf456-source-certified.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf456-original-two-ray-residual
+          path: nf456-source-certified.json
