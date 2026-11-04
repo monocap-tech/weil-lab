@@ -1,0 +1,26 @@
+name: NF459 original full-J8 matched physical finite-distance source nodes
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-j8-matched-nodes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: Complete original J8 z and signed source at actual rational d nodes, independent NF450 B
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf459_original_J8_full_source_matched_point_native.py --output nf459-original-J8-matched-points.json
+      - name: Original complete signed J8 two rigorously positive finite interior islands
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf459_original_J8_true_signed_islands.py --nf459 nf459-original-J8-matched-points.json --output nf459-original-J8-two-signed-islands.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf459-original-J8-matched-points
+          path: |
+            nf459-original-J8-matched-points.json
+            nf459-original-J8-two-signed-islands.json
+          retention-days: 90
