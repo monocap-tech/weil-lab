@@ -1,0 +1,12 @@
+# NF456 active-frontier verification supplement — 2026-11-04
+
+**NF456: ACCEPTED scoped exact original physical two-witness residual split.** [Focused source-exact Actions #41894746033 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41894746033); job #126801154264; source result artifact #13353474755 expires 2027-02-02 UTC. All source validations read unchanged accepted NF389/NF403 genuine exterior witness records and NF404/NF454/NF455 original physical sources. Source source/CI ledger [NF456 custody](../notes/data/provisional/NF456_original_J242_two_ray_residual_custody.json).
+
+The actual original selected 242D physical projection and genuine orthogonal q512/q513 pair yield
+`A+2E78=R+d12+T`, `T=||(Q_J-P_E)w||²>=0`, where E is the true physical two-witness span in J242-perp. This is the SAME original centered response as NF455, not the finite-packet Weil positivity theorem. The original accepted two-witness energy lies in source-rational `dLOW<d12<dUP`, approximately (1.81910236855e-26, 1.8427675e-26). It occupies between 35% and 36% of the exact NF404 complement budget gamma²≈5.12968078676e-26. **New original physical J7/J8 full energy lower** `E78>2.59897e-22`, tightening NF455.
+
+The original NF404 sufficient scalar acceptance is exactly `(R-Rlo)+d12+T<=gamma²`. A **necessary** condition is `T<3.31058e-26`; a conservative **sufficient** condition is `T<=3.2869e-26` (charges NF404 selected Rhi-Rlo and NF389 dUP). The actual infinite orthogonal T upper has **NOT** been computed. Re-reading the two witnesses with more precision cannot bound the infinite unobserved complement; therefore this remains an **OPEN** theorem obligation, not an accepted original NF404 scalar.
+
+**Canonical W-ODD-NEG: OPEN**, so are full original supported J242 complement UPPER, entire J7/J8 energy UPPER, original even/whole Weil form, infinite operator/domain and RH. Source-specific strong realization inherited, not proven in this pass. [NF456 mathematical proof/custody note](../notes/provisional/NF456_ORIGINAL_J242_TWO_RAY_RESIDUAL_SPLIT_20261104.md), [verifier](../scripts/local_replay/verify_nf456_original_two_ray_residual_budget.py). Stacked draft PR #483, no main merge.
+
+**Next bold NF457:** construct an actual source-correlated upper for T=||(Q_J-P_E)w||² on the original full complement, or prove a scoped information ceiling for presently available source data. Do not infer upper from d12 alone.
