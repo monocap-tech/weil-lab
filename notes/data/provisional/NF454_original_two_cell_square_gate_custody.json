@@ -1,0 +1,57 @@
+{
+  "pass": "NF454",
+  "date": "2026-11-03",
+  "standing": "ACCEPTED exact source-rational original J1..J6 / NF410 / NF453 reduction to a single original nonnegative J7+J8 full physical energy, NOT measured",
+  "branch": "research/nf454-original-two-cell-square-energy-gate",
+  "pr": 481,
+  "base": "research/nf453-original-j7-j8-principal-energy-signed-island",
+  "source_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seams_nf406_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "previous_accepted_signed_original_cells": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "previous_signed_CI_receipts": {
+    "J1": 41363287972,
+    "J2": 41373830681,
+    "J3": 41282903842,
+    "J4": 41346177728,
+    "J5": 41349130243,
+    "J6": 41252509627
+  },
+  "exact_cap_receipt": "notes/data/provisional/NF404_original_selected_pole_shear_exact.json",
+  "exact_principal_receipt": "notes/data/provisional/NF410_original_signed_taylor_moments.json",
+  "exact_last_two_principal_receipt": "notes/data/provisional/NF453_original_J7_J8_principal_and_island_custody.json",
+  "identity": "Efull=Ep+sum(D1..D6)-2(Ep7+Ep8)+2E78 with E78 integral over positive J7 union J8 of (p+z)^2",
+  "original_J1_to_J6_D_sum_approx": "-7.8993e-22",
+  "original_NF404_full_scalar_cap_approx": "1.0950537731e-21",
+  "original_unmeasured_E78_threshold_range": [
+    "2.59e-22",
+    "2.62e-22"
+  ],
+  "sufficient_original_NF404_gate_if_E78_less_or_equal": "2.59e-22",
+  "sufficient_original_NF404_gate_rejected_if_E78_greater_or_equal": "2.62e-22",
+  "interpretation": "A rejected NF404 sufficient cap is NOT a mathematical rejection of the underlying Weil form, W-ODD-NEG, or RH.",
+  "source_exact_focused_ci": {
+    "run_id": 41753094792,
+    "job_id": 126322680439,
+    "conclusion": "success",
+    "artifact_id": 13286072934,
+    "artifact_expires": "2027-02-02T01:18:07Z"
+  },
+  "scope_open": {
+    "original_whole_J7_J8_true_E78": "OPEN",
+    "original_full_cell_D7": "OPEN",
+    "original_full_cell_D8": "OPEN",
+    "NF404": "OPEN",
+    "original_fourth_J242_exterior": "OPEN",
+    "W_ODD_NEG": "OPEN",
+    "whole_even_and_domain": "OPEN",
+    "RH": "OPEN"
+  },
+  "next": "NF455 original source-certified nonnegative J7+J8 square-energy E78 via correlation-preserving continuous physical response"
+}
