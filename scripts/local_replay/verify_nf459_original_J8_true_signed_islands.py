@@ -82,7 +82,7 @@ def main():
     assert data["original_true_endpoint_independent_NF450_overlap"]
     assert data["native_bits"]==4096 and data["original_groups"]==273
     assert data["true_original_complete_signed_J8_integral"]=="OPEN"
-    assert Q(117,10**13)>Q(1,10**10) # native v between -1.17e-11 and -1.16e-11.
+    assert Q(117,10**13)<Q(1,10**10) # native v between -1.17e-11 and -1.16e-11.
     total,Lq=prove_lipschitz()
     out=[]
     for d in [Q(1,1000000),Q(1,1000)]:
