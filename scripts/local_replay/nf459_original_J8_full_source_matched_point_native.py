@@ -252,7 +252,8 @@ def main():
             # Actual entire original signed integrand including singular
             # prime principal at THIS finite d, not a signed integral.
             p=v*(A(B)/A(d)).log()/2+v*logC
-            vtime=4*p*((zv[0]+zv[1])/2)+2*((zv[0]+zv[1])/2)**2
+            zmid=A((zv[0]+zv[1])/2)
+            vtime=4*p*zmid+2*zmid*zmid
             t0,t1=enclosure(vtime,85)
             # principal interval source/weight uncertainty overcharge.
             err=Q(1,10**26)
@@ -261,9 +262,9 @@ def main():
             zanchor=(A(ep[0])+A(ep[1]))/2
             k=A(Q(6504856890269607,10**23))
             cr=A(Q(-6494948795121242,10**23))
-            remainder=(zv[0]+zv[1])/2-zanchor-k*A(d)*xlog-cr*A(d)
+            remainder=zmid-zanchor-k*A(d)*xlog-cr*A(d)
             r0,r1=enclosure(remainder,90)
-            rerr=(ep[1]-ep[0])/2 +A(d)*Q(1,10**14)*xlog+A(d)*Q(1,10**14)+Q(1,10**26)
+            rerr=(ep[1]-ep[0])/2 +d*Q(20,10**14)+Q(1,10**26)
             r0-=rerr;r1+=rerr
             output[str(d)]={
                 "original_z_J8_true_full_outward":[str(zv[0]),str(zv[1])],
