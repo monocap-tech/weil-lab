@@ -22,10 +22,12 @@ S="0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce"
 G="c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675"
 assert nf453["source_sha256"]==nf456["original_source_nf407_sha256"]==S
 assert nf453["seams_sha256"]==nf461["source_nf406_seams_sha256"]==G
-assert nf456["source_403_sha256"]==h403 and nf456["source_404_sha256"]==h404
-assert nf461["original_nf407_source_sha256"]==S if "original_nf407_source_sha256" in nf461 else nf461["source_nf407_sha256"]==S
+assert nf456["original_source_nf407_sha256"]==S
+assert nf456["source_original_nf389_joint_lower_sha256"]==nf403["original_nf389_joint_lower_report_sha256"]
+assert nf456["source_original_nf389_joint_upper_sha256"]==nf403["original_nf389_joint_upper_report_sha256"]
+assert nf461["source_nf407_sha256"]==S
 assert nf453["D7_whole"]==nf453["D8_whole"]=="OPEN"
-assert nf456["NF404"]==nf461["nf404"]=="OPEN"
+assert nf456["remaining"]["T_upper"]=="OPEN" and "NF404" in nf461["open"]
 sl,su=v["sl"],v["su"]
 pl,pu=v["pl"],v["pu"]
 e7lo,e7hi=v["l7"],v["u7"]
