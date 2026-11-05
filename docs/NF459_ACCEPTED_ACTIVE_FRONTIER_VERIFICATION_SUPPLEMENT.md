@@ -1,0 +1,12 @@
+# NF459 — Accepted original terminal physical residual certificate (2026-11-04)
+
+**NF459 original 244D continuous-terminal physical Christoffel: ACCEPTED SOURCE-NATIVE.** Original full physical 242 selected polynomial-trigonometric jets/pole plus two genuine exterior n512,n513 Schur Gram; 4096-bit Arb, full 1e-15 positive terminal collar plus odd negative twin. [Focused native Actions #41972467007 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/41972467007), job #127063631617; source-native JSON artifact #13389698148 expires 2027-02-03 UTC. [Mathematical proof/custody](../notes/provisional/NF459_ACCEPTED_ORIGINAL_TWO_SIDED_TERMINAL_T_COLLAR_20261104.md), [typed original source/CI index](../notes/data/provisional/NF459_original_native_244D_terminal_K_custody.json).
+
+The real 244D physical selected/effective exterior Schur is source-native SPD and independently matches original n512/n513 quotient physical norms. At B=11/10, K(B)=12521.056277657585..., at B-1e-15 K=12521.056277344041.... A naive full raw interval loses original frame correlation (method stop); a 72-term original source-correlated endpoint Taylor with Cauchy radius 1e-4 and rigorous transformed remainder CERTIFIES the ENTIRE collar K in [12521.056278 +/- 6.57e-7], hence K<12996=114². No finite-point interpolation was promoted.
+
+Combining original R+d12<(3.4e-11)² gives actual true |Pi|<3.876e-9 on both collars. Original NF457 regular source bound and exact log-square primitive now certify **both physical terminal residual collars together**
+`T_collar<8e-32` (exact charged bound 7.85454433e-32). This genuinely discharges NF457's **previously conditional** endpoint projected-response hypothesis and sharpens its old conditional 4.01e-31 cap.
+
+**Still OPEN:** actual bulk T upper (on all original seams), complete T=||Q_(J242+E)f||², E78 full upper, NF404 exact scalar gate, W-ODD-NEG, even/whole Weil positivity, general operator-domain transfer and RH. CI is scoped native source verification, NOT an independent theorem proof.
+
+**Next bold NF460:** Calculate the true original source-correlated bulk residual energy (on both sides of every real support seam), with the now certified terminal collar charged <8e-32. A sufficient exact original bulk gate is T_bulk<=gamma²-dUP-(Rhi-Rlo)-8e-32, approximately 3.286905e-26. No main merge. [Draft stacked PR #486](https://github.com/monocap-tech/weil-lab/pull/486).
