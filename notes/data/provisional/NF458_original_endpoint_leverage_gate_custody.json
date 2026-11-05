@@ -1,0 +1,35 @@
+{
+  "pass": "NF458",
+  "date": "2026-11-04",
+  "standing": "accepted original jet-type and exact conditional endpoint leverage gate; K and actual collar remain OPEN",
+  "branch": "research/nf458-original-projection-collar-certified",
+  "pr": 485,
+  "rank_sha256": "9b9820a0163e5e8bf08dd1c2525c757ff67214b49a40cb093d00bc611c9ff9e2",
+  "original_jet_count": 241,
+  "retained_centers": 67,
+  "max_order": 13,
+  "pole": "sinh(x/2)",
+  "physical_augmented_dimension": 244,
+  "original_nonharmonic_example": "center=37/64 order=1",
+  "raw_exterior": [
+    512,
+    513
+  ],
+  "raw_exterior_terminal_abs_upper": "1.5e-12",
+  "centered_projection_norm_upper": "3.4e-11",
+  "sufficient_authentic_christoffel_sup_gate": "(4500/17)^2",
+  "conditional_projection_collar_abs_upper": "9e-9",
+  "conditional_two_sided_T_collar_upper": "4.01e-31",
+  "actual_K_V_sup_computed": false,
+  "actual_T_upper": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "focused_CI": {
+    "run": 41944438405,
+    "job": 126973012604,
+    "result": "SUCCESS",
+    "artifact": 13377058922
+  },
+  "next": "NF459 source native physical Gram and collar Christoffel or direct correlated projection evaluation"
+}

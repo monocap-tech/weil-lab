@@ -1,0 +1,19 @@
+name: NF458 authentic original 244D endpoint projection gate
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-exact-source-preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Authenticate original polynomial-trig rank and Christoffel acceptance gate
+        run: python -X int_max_str_digits=0 scripts/local_replay/verify_nf458_original_endpoint_leverage_gate.py > nf458-source-gate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf458-original-endpoint-gate
+          path: nf458-source-gate.json
