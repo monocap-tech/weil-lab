@@ -1,0 +1,46 @@
+{
+  "pass": "NF460",
+  "date": "2026-11-04",
+  "standing": "ACCEPTED original source-exact conditional trial bulk sufficiency and necessary norm/correlation screens; bulk T OPEN",
+  "branch": "research/nf460-bulk-trial-norm-contract",
+  "pr": 487,
+  "parent": "research/nf459-native-physical-christoffel-collar",
+  "original_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "source_rank_sha256": "9b9820a0163e5e8bf08dd1c2525c757ff67214b49a40cb093d00bc611c9ff9e2",
+  "physical_trial_dim": 244,
+  "true_positive_bulk_cells": 8,
+  "seam_prime_powers": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9
+  ],
+  "source_conditional_norm_bound": "3.4e-11",
+  "source_certified_trial_collar_bound_if_norm_passes": "8e-32",
+  "source_original_f_collar_bound": "1.3975393e-33",
+  "exact_original_bulk_trial_energy_sufficient_cap_approx": "3.286905286761429241e-26",
+  "necessary_trial_norm_lower": "3.29e-11",
+  "necessary_bulk_cosine_lower": "0.999984",
+  "zero_trial_rejected_factor_gt": 30000,
+  "actual_trial_coefficients": "OPEN",
+  "actual_bulk_squared_integral": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "focused_CI": {
+    "run": 41992676638,
+    "job": 127128376529,
+    "status": "SUCCESS",
+    "artifact": 13399160452
+  },
+  "registered_CI": {
+    "run": 41992676581,
+    "job": 127128375881,
+    "status": "SUCCESS"
+  },
+  "next": "NF461 source-original dyadic 244D candidate and direct eight-cell residual-square integration"
+}
