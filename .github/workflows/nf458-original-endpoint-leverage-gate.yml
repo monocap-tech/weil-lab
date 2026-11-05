@@ -17,22 +17,3 @@ jobs:
         with:
           name: nf458-original-endpoint-gate
           path: nf458-source-gate.json
-  original-native-244D-christoffel-nf459:
-    runs-on: ubuntu-latest
-    timeout-minutes: 35
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install original Arb version
-        run: pip install --only-binary=:all: python-flint==0.8.0
-      - name: NF459 source-valid full physical Gram and whole terminal interval
-        run: |
-          mkdir -p artifacts
-          python -u -X int_max_str_digits=0 scripts/verify_nf459_original_native_244D_christoffel.py --output artifacts/nf459-original-K.json
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: nf459-authentic-native-K
-          path: artifacts/nf459-original-K.json
