@@ -1,0 +1,15 @@
+# NF461 — Accepted authentic original J8 inner bulk slice (2026-11-05)
+
+**Standing: SOURCE-ACCEPTED scoped physical L2 upper; whole bulk OPEN.** The canonical active obligation remains W-ODD-NEG. [Focused original physical native 244D + independent exact-rational replay #42083545372 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42083545372), job #127442555344; artifact #13442466230, expires 2027-02-03. [Proof](../notes/provisional/NF461_ORIGINAL_J8_INNER_BULK_SLICE_ENERGY_20261105.md), [typed custody](../notes/data/provisional/NF461_original_cell8_inner_bulk_energy_custody.json), [independent source Fraction checker](../scripts/local_replay/verify_nf461_original_cell8_inner_slice_exact.py).
+
+**Previous:** NF459 certified true terminal d<=1e-15 two-sided residual T<8e-32. NF460 certified the seven bulk seam jumps and global H1/uniform method STOP.
+
+**Current NF461:** In the authentic source J8 (strictly to the right of original n9 support contact), extend the genuine 244D physical Gram/Schur projection Christoffel enclosure to the continuous full interval d<=1e-13. Same original 241 polynomial-trig jets, original sinh pole and two genuine n512,n513 exterior witnesses; same 4096-bit near-normal frame and 72-term source-correlated Taylor with Cauchy tail. Actual native full-interval `K_V=[12521.0563 +/- 5.38e-5]`, hence `K_V<114²` everywhere, not just at endpoints. NF403/NF404 original projection power then yields true `|Pi|<3.876e-9`.
+
+NF450 original z(B), NF451 source-valid true modulus `|z(B-d)-z(B)|<d(14000+600 log(2B/d))`, NF411 exact original v and c_n imply true original regular part after subtracting Pi has `|v*C8+z(B-d)-Pi|<8e-9` for all d<=1e-13. Exact original logarithmic squared primitive charges the **complete mirrored outer segment** d<=1e-13 `T_outer<2.6e-29` (exact rational upper 2.561492101e-29). Therefore the **NEW interior bulk slice** 1e-15<d<=1e-13 also has a true original two-sided physical squared energy upper <2.6e-29; no separate lower is claimed.
+
+**What is still OPEN:** all other interior cells, large J8 remainder, total bulk T, complete J7/J8 E78, original NF404, W-ODD-NEG, even/whole Weil, actual operator-domain generalization and RH. The sufficient residual-energy budget after charging this entire new outer segment is `3.28431328676142914e-26` for the remaining d>=1e-13 interior, not an observed upper.
+
+Original NF407 SHA 0a83cdb7..., NF406 SHA c2731e3b..., physical selected source rank SHA 9b9820a0... retained. The accepted NF458/NF459 focused workflow is reused on the NF461 descendant with source-native and independent exact-source verification. Draft [PR #489](https://github.com/monocap-tech/weil-lab/pull/489) is stacked on NF460; no main merge.
+
+**Next bold NF462:** move to a genuine source-correlated signed/physical residual *interior J8 panel* extending substantially beyond the endpoint modulus, including source-certified original NF446 joint compact kernel, original q+r+z and actual 244D Pi, then cover n9 and other physical seams cell by cell.

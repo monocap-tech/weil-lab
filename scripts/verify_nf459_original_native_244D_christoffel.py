@@ -103,6 +103,43 @@ def main(dest):
         collar_power=4*F(117,2*10**13)**2*DELTA*(36**2+2*36+2)+4*regular**2*DELTA
         assert projected_sup<F(4,10**9)
         assert collar_power<F(8,10**32)
+    # NF461: source-native enlargement into the authentic *bulk* of J8.
+    outer=F(1,10**13)
+    k_outer,tail_outer,_=certify(rows,D,N,V,S,B,outer,p)
+    print("NF461 entire extended J8 inner slice K",str(k_outer),flush=True)
+    nf461_certified=bool(passed and k_outer.upper()<p.a(114**2))
+    if nf461_certified:
+        nf451,_=load("NF451_original_J8_terminal_collar_custody_index.json")
+        nf450,_=load("NF450_original_B_complete_Laplace_native_sign_custody_index.json")
+        nf411,_=load("NF411_original_source_boundary_jet.json")
+        nf407,_=load("NF407_original_prime_jump_log_power_exact.json")
+        sourceSHA="0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce"
+        assert nf451["original_source_sha256"]==nf411["nf407_source_sha256"]==sourceSHA
+        assert nf450["source_SHA256"]==sourceSHA
+        assert nf451["analytic_modulus"]=="|z(B-d)-z(B)|<14000*d+600*d*log(2B/d)"
+        assert nf451["original_J8_seam_n9_strictly_before_collar"] is True
+        assert nf407["source_all_original_prime_jumps_cancelled_from_z"] is True
+        assert F(8,3)**32 > 2*B/outer
+        assert 2*B/outer>F(8,3)
+        v=tuple(map(F,nf407["original_source_u4_endpoint_interval"]))
+        assert -F(117,10**13)<v[0]<=v[1]<0
+        c8=sum(F(z["c_n_positive_outward"][1]) for z in
+               nf411["all_seven_original_prime_seam_derivative_identities"])
+        assert c8<F(18,5)
+        zl,zu=map(F,nf450["complete_z_B_outward_24_decimal"])
+        assert -F(44,10**11)<zl<=zu<0
+        source_mod=outer*(F(14000)+F(600)*32)
+        assert source_mod==F(33200,10**13)
+        projector=F(114)*F(34,10**12)
+        regular_outer=F(117,10**13)*c8+F(44,10**11)+source_mod+projector
+        assert regular_outer<F(8,10**9)
+        # Exact global two-sided log-square primitive on [B-outer,B].
+        original_two_sided=4*outer*(F(117,2*10**13)**2*(32*32+64+2)+F(8,10**9)**2)
+        assert original_two_sided<F(26,10**30)
+        # Original NF459 [B-1e-15,B] is included, so the new *bulk slice*
+        # [B-1e-13,B-1e-15] has a separately valid upper by monotonicity.
+        assert DELTA<outer
+        assert nf403["source_sufficient_Jperp_full_action_power_budget"]
     out={
      "pass":"NF459","standing":"REAL SOURCE-NATIVE 244D PHYSICAL GRAM/COLLAR K UPPER" if passed else "REAL SOURCE-NATIVE K ENDPOINT; TERMINAL UNIFORM GATE OPEN/METHOD STOP",
      "source_rank_sha256":hr,"working_precision_bits":4096,
@@ -119,6 +156,11 @@ def main(dest):
      "NF457_two_sided_T_collar_upper_certified":passed,
      "NF457_two_sided_T_collar_upper_if_pass":"4.01e-31",
      "original_terminal_K_lt_12996":bool(passed),
+     "NF461_outer_delta":"1e-13",
+     "NF461_whole_outer_K_Arb":str(k_outer),
+     "NF461_whole_outer_K_lt_12996":nf461_certified,
+     "NF461_original_J8_two_sided_bulk_slice_upper_if_certified":"2.6e-29",
+     "NF461_original_extended_collar_and_bulk_slice_upper_if_certified":"2.6e-29",
      "original_projector_collar_abs_lt_if_pass":"3.876e-9",
      "NF459_stronger_two_sided_T_collar_upper_if_pass":"8e-32",
      "full_T_upper":"OPEN","NF404":"OPEN","W_ODD_NEG":"OPEN","RH":"OPEN",

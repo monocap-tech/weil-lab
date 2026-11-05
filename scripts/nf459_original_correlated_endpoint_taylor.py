@@ -8,7 +8,7 @@ def certify(rows,D,N,V,S,B,delta,phys):
     M=72
     rho=F(1,10**4)
     ratio=delta/rho
-    assert ratio==F(1,10**11)
+    assert F(0)<ratio<=F(1,10**9)  # NF459 delta=1e-15, NF461 delta=1e-13
     assert F(111,100)**13<4
     assert all(c<F(883) and k<=13 for c,k in filter(None, rows))
     assert 2*F(22,7)*F(883)*rho<1
