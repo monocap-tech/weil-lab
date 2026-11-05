@@ -88,6 +88,21 @@ def main(dest):
     k_taylor,tail_error,taylor_terms=certify(rows,D,N,V,S,B,DELTA,p)
     print("NF459 original 72-term correlated full-collar K",str(k_taylor),flush=True)
     passed=bool(k_taylor.upper()<gate)
+    # Accepted original selected source + two exterior power (NF403/NF404).
+    Rhi=F(nf404["original_selected_after_pole_shear_power_upper_exact"])
+    dUP=F(nf403["source_strict_joint_dual_power_upper"])
+    assert Rhi+dUP<F(34,10**12)**2
+    if passed:
+        assert k_taylor.upper()<p.a(114**2)
+        # NF457 original source-valid terminal regular part <5.5e-10;
+        # source-verified |v|/2<117/(2*10^13), L=log(B/delta)<36.
+        nf457,_=load("NF457_original_log_peel_info_ceiling_custody.json")
+        assert nf457["original_regular_plus_actual_prime_term_strict_uniform_bound"]=="5.5e-10"
+        projected_sup=F(114)*F(34,10**12)
+        regular=projected_sup+F(55,10**11)
+        collar_power=4*F(117,2*10**13)**2*DELTA*(36**2+2*36+2)+4*regular**2*DELTA
+        assert projected_sup<F(4,10**9)
+        assert collar_power<F(8,10**32)
     out={
      "pass":"NF459","standing":"REAL SOURCE-NATIVE 244D PHYSICAL GRAM/COLLAR K UPPER" if passed else "REAL SOURCE-NATIVE K ENDPOINT; TERMINAL UNIFORM GATE OPEN/METHOD STOP",
      "source_rank_sha256":hr,"working_precision_bits":4096,
@@ -103,6 +118,9 @@ def main(dest):
      "original_terminal_K_gate_certified":passed,
      "NF457_two_sided_T_collar_upper_certified":passed,
      "NF457_two_sided_T_collar_upper_if_pass":"4.01e-31",
+     "original_terminal_K_lt_12996":bool(passed),
+     "original_projector_collar_abs_lt_if_pass":"3.876e-9",
+     "NF459_stronger_two_sided_T_collar_upper_if_pass":"8e-32",
      "full_T_upper":"OPEN","NF404":"OPEN","W_ODD_NEG":"OPEN","RH":"OPEN",
      "elapsed_seconds":round(time.monotonic()-st,2)}
     dest.parent.mkdir(parents=True,exist_ok=True)
