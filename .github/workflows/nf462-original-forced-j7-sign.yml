@@ -1,0 +1,19 @@
+name: NF462 original forced J7 signed deficit
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-source-exact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original NF454 NF456 NF453 source-rational sign gate
+        run: python -X int_max_str_digits=0 scripts/local_replay/verify_nf462_original_j7_required_signed_deficit.py --output nf462-original-signed-gate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf462-original-signed-deficit-gate
+          path: nf462-original-signed-gate.json
