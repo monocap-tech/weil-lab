@@ -5,7 +5,7 @@ from pathlib import Path
 from fractions import Fraction as F
 import flint
 from flint import arb,arb_mat,ctx
-HERE=Path(__file__).resolve().parents[1]
+HERE=Path(__file__).resolve().parent
 sys.path.insert(0,str(HERE))
 import verify_rpb108_si29_full_J_L2_normalization as p
 from verify_rpb108_original_signed_frame_transport import candidate
