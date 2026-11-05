@@ -1,0 +1,20 @@
+name: NF460 original 244D trial bulk certificate contract
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-trial-geometry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original eight-seam bulk trial and source collar gates
+        run: |
+          python -X int_max_str_digits=0 scripts/local_replay/verify_nf460_original_trial_bulk_gate.py > nf460-original-trial-contract.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf460-original-trial-bulk
+          path: nf460-original-trial-contract.json
