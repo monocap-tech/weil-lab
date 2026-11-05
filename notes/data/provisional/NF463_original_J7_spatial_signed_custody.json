@@ -1,0 +1,48 @@
+{
+  "pass": "NF463",
+  "date": "2026-11-05",
+  "standing": "ACCEPTED original source-specific enlarged J7 signed local integral and exact conditional whole-cell spatial/correlation necessities; actual D7 whole OPEN",
+  "repository": "monocap-tech/weil-lab",
+  "branch": "research/nf463-original-j7-cancellation-spatial-coverage",
+  "base": "research/nf462-forced-j7-signed-deficit-gate",
+  "draft_pr": 491,
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seam_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_physical_cell": "J7=(log8-B,log9-B)",
+  "original_anchor": "26/25",
+  "actual_local_radius": "4e-16",
+  "original_true_z_local_strict_bracket": [
+    "6.5e-11",
+    "9.0e-11"
+  ],
+  "original_true_principal_abs_local_strict_lower": "5.299e-11",
+  "original_local_D7_signed_integral_strict_bracket": [
+    "-8.4e-36",
+    "-1.65e-36"
+  ],
+  "prior_original_island_radius": "1e-17",
+  "prior_signed_island_upper": "-8.6e-38",
+  "original_J7_p_abs_global_strict_upper": "7.23e-11",
+  "nf462_necessary_D7_if_NF404_approx": "-2.03475201128440528e-22",
+  "if_NF404_negative_density_support_measure_strictly_gt": "0.0194",
+  "if_NF404_negative_density_support_fraction_of_original_J7_strictly_gt": "16%",
+  "if_NF404_original_principal_E7_cancellation_fraction_strictly_gt": "28%",
+  "if_NF404_original_whole_E7_strictly_lt": "2.613e-22",
+  "if_NF404_original_regular_z_squared_Z7_strictly_gt": "8.3e-24",
+  "source_true_whole_D7_measured": false,
+  "source_true_whole_D8_measured": false,
+  "source_true_Z7_measured": false,
+  "original_NF404_cap": "OPEN",
+  "canonical_W_ODD_NEG": "OPEN",
+  "operator_domain": "OPEN",
+  "RH": "OPEN",
+  "CI": {
+    "focused_run": 42095539786,
+    "job": 127484459474,
+    "conclusion": "SUCCESS",
+    "artifact_id": 13447457033,
+    "expires": "2027-02-03T19:36:42Z"
+  },
+  "scope": "The observed local signed island is an actual original physical integral. Spatial coverage/regular energy are conditional consequences of NF404, not measured true J7 whole-cell data.",
+  "next": "NF464 original source-correlated signed J7 macroscopic interval, rather than smaller pointwise sign islands"
+}
