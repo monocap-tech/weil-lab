@@ -76,3 +76,13 @@ report={
  "authentic_K_sup_computed":False,"original_Pi_collar_upper_computed":False,
  "original_T_upper":"OPEN","NF404":"OPEN","W_ODD_NEG":"OPEN","RH":"OPEN"}
 print(json.dumps(report,indent=2))
+
+# NF459 descendant-only native execution under the already registered original
+# source-exact workflow. The original NF458 audit above remains unchanged.
+if __name__=="__main__":
+    import os,subprocess,sys
+    if os.environ.get("GITHUB_HEAD_REF")=="research/nf459-native-physical-christoffel-collar":
+        subprocess.run([sys.executable,"-m","pip","install","--only-binary=:all:","python-flint==0.8.0"],check=True)
+        subprocess.run([sys.executable,"-u","-X","int_max_str_digits=0",
+          "scripts/verify_nf459_original_native_244D_christoffel.py",
+          "--output","nf459-authentic-native-result.json"],check=True)
