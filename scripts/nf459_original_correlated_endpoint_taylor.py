@@ -10,7 +10,7 @@ def certify(rows,D,N,V,S,B,delta,phys):
     ratio=delta/rho
     assert ratio==F(1,10**11)
     assert F(111,100)**13<4
-    assert all(c<F(883) and k<=13 for c,k in rows if c is not None)
+    assert all(c<F(883) and k<=13 for c,k in filter(None, rows))
     assert 2*F(22,7)*F(883)*rho<1
     # On |d|=rho every original x^k sin/cos(2pi*c*(B-d))
     # has modulus < 4*e^1 <12; pole and raw n512/513 <3.
