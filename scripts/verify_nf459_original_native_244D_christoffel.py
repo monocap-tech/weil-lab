@@ -84,7 +84,7 @@ def main(dest):
     print("NF459 original complete collar enclosure",str(k_all),flush=True)
     assert k_B.lower()>0 and k_left.lower()>0
     gate=p.a(F(4500,17)**2)
-    passed=bool(k_all.upper()<gate)
+    from nf459_original_correlated_endpoint_taylor import certify\n    k_taylor,tail_error,taylor_terms=certify(rows,D,N,V,S,B,DELTA,p)\n    print("NF459 original 72-term correlated full-collar K",str(k_taylor),flush=True)\n    passed=bool(k_taylor.upper()<gate)
     out={
      "pass":"NF459","standing":"REAL SOURCE-NATIVE 244D PHYSICAL GRAM/COLLAR K UPPER" if passed else "REAL SOURCE-NATIVE K ENDPOINT; TERMINAL UNIFORM GATE OPEN/METHOD STOP",
      "source_rank_sha256":hr,"working_precision_bits":4096,
@@ -92,7 +92,7 @@ def main(dest):
      "original_rank":242,"raw_exterior_n":[512,513],
      "exterior_quotient_strict_SPD":True,
      "K_B_outward":iv(k_B),"K_left_outward":iv(k_left),
-     "K_whole_terminal_collar_outward":iv(k_all),
+     "K_naive_raw_one_box_diagnostic":str(k_all),\n     "K_whole_terminal_collar_outward":iv(k_taylor),\n     "K_correlated_taylor_terms":taylor_terms,\n     "source_Cauchy_transformed_tail_upper":str(tail_error),
      "original_collar_christoffel_sufficient_gate":"(4500/17)^2",
      "original_terminal_K_gate_certified":passed,
      "NF457_two_sided_T_collar_upper_certified":passed,
