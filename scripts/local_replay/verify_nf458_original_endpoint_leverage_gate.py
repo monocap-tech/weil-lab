@@ -93,11 +93,10 @@ if __name__=="__main__":
             raise
         report["NF459_native"]=json.loads(Path("nf459-authentic-native-result.json").read_text())
         if os.environ.get("GITHUB_HEAD_REF")=="research/nf461-original-cell8-inner-slice-energy":
-            assert report["NF459_native"]["original_terminal_K_lt_12996"]
-            assert report["NF459_native"]["NF461_whole_outer_K_lt_12996"]
-            report["NF461_native"]={
-              "standing":"ACCEPTED source-native original inner J8 bulk slice bound",
-              "two_sided_original_J8_slice_T_upper":"2.6e-29",
-              "total_bulk_T_upper":"OPEN",
-              "NF404":"OPEN","W_ODD_NEG":"OPEN","RH":"OPEN"}
+            cmd_source=[sys.executable,"-X","int_max_str_digits=0",
+              "scripts/local_replay/verify_nf461_original_cell8_inner_slice_exact.py",
+              "--native","nf459-authentic-native-result.json",
+              "--output","nf461-original-source-exact-result.json"]
+            subprocess.run(cmd_source,check=True,stdout=sys.stderr,stderr=sys.stderr)
+            report["NF461_native"]=json.loads(Path("nf461-original-source-exact-result.json").read_text())
     print(json.dumps(report,indent=2))
