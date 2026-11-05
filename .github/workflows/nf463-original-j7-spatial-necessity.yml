@@ -1,0 +1,19 @@
+name: NF463 original J7 genuine island and spatial necessity
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-j7-exact-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Source-exact NF417/418 J7 interval and NF462 whole-cell necessary tests
+        run: python -X int_max_str_digits=0 scripts/local_replay/verify_nf463_original_j7_island_and_spatial_necessity.py --output nf463-original-source-j7.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf463-original-j7-source
+          path: nf463-original-source-j7.json
