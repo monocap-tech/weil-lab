@@ -51,14 +51,17 @@ def certify(rows,D,N,V,S,B,delta,phys):
     transformed=D.transpose()*raw
     extras=[coefficients(F(5*n,11),0,n) for n in (512,513)]
     d=arb(aa(delta/2),aa(delta/2))
-    def rational(y):\n        m,k=y.man_exp()\n        return F(int(m))*F(2)**int(k)\n    assert rational(d.lower())<=0 and rational(d.upper())>=delta
+    def rational(y):
+        m,k=y.man_exp()
+        return F(int(m))*F(2)**int(k)
+    assert rational(d.lower())<=0 and rational(d.upper())>=delta
     e=[arb(0) for _ in rows]
     u=[arb(0),arb(0)]
     for n in range(M-1,-1,-1):
         for i in range(242): e[i]=e[i]*d+transformed[i,n]
         for j in range(2):u[j]=u[j]*d+extras[j][n]
-    C=max((sum((abs(D[i,j]) for i in range(242)),arb(0)) for j in range(242)))
-    rem=aa(tail)*C
+    C=max(rational(sum((abs(D[i,j]) for i in range(242)),arb(0)).upper()) for j in range(242))
+    rem=aa(tail)*aa(C)
     assert rem.upper()<arb("1e-30")
     for i in range(242):e[i]+=arb(0,rem.upper())
     e=arb_mat([[v] for v in e])
