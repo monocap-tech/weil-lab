@@ -1,0 +1,44 @@
+{
+  "pass": "NF462",
+  "date": "2026-11-05",
+  "standing": "ACCEPTED exact original whole-J8 signed floor and necessary whole-J7 negative deficit conditional on NF404 cap; genuine D7,D8 integrals OPEN",
+  "branch": "research/nf462-forced-j7-signed-deficit-gate",
+  "base": "research/nf461-original-cell8-inner-slice-energy",
+  "draft_pr": 490,
+  "original_source_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_seams_nf406_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_centered_identity": "Efull=Ep+sum(D1..D6)+D7+D8=R+d12+T",
+  "original_signed_cell_identity": "D8=2(E8-Ep8), E8=int_J8(p+z)^2>=0",
+  "original_whole_D8_signed_source_floor_lower_approx": "-3.78000000000000002e-23",
+  "original_whole_D8_signed_upper": "OPEN",
+  "original_whole_J7_D7_necessary_if_NF404_cap_approx": "-2.03475201128440528e-22",
+  "necessary_negative_whole_J7_strict_magnitude_gt": "2e-22",
+  "original_K_interval_approx": [
+    "1.33632897424686175e-21",
+    "1.33662523789497706e-21"
+  ],
+  "K_interval_width_approx": "2.96263648115276487e-25",
+  "K_width_over_nf404_gamma2_approx": 5.77547922435773,
+  "old_NF454_A_width_approx": "2.6962636481e-24",
+  "original_D78_robust_sufficient_upper_approx": "-2.41571464776555816e-22",
+  "original_D78_cap_exceeded_if_above_approx": "-2.41275201128440546e-22",
+  "original_source_242_plus_two_projection_D78_floor_approx": "-2.41604570560737908e-22",
+  "fixed_same_K_floor_to_sufficient_gap_approx": "3.31057841820960771e-26",
+  "real_original_D7_and_D8_integral_measured": false,
+  "real_E78_upper_measured": false,
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "focused_CI": {
+    "run": 42091540342,
+    "job": 127470552893,
+    "conclusion": "SUCCESS",
+    "artifact": 13445876388,
+    "expires": "2027-02-03T19:11:41Z"
+  },
+  "previous_failed_run": {
+    "run": 42090730484,
+    "reason": "NF456 receipt schema lookup typo; source mathematical audit subsequently passed"
+  },
+  "next": "NF463 source-correlated actual whole original J7 signed D7 against forced -2.03475e-22 threshold; maintain J8 unknown signed contribution"
+}
