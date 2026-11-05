@@ -92,4 +92,9 @@ if __name__=="__main__":
             print(json.dumps(report,indent=2))
             raise
         report["NF459_native"]=json.loads(Path("nf459-authentic-native-result.json").read_text())
+    if os.environ.get("GITHUB_HEAD_REF")=="research/nf460-bulk-trial-norm-contract":
+        run=subprocess.run([sys.executable,"-X","int_max_str_digits=0",
+          "scripts/local_replay/verify_nf460_original_trial_bulk_gate.py"],
+          check=True,capture_output=True,text=True)
+        report["NF460_source_exact_trial"]=json.loads(run.stdout)
     print(json.dumps(report,indent=2))
