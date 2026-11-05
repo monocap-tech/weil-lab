@@ -79,7 +79,7 @@ report={
 # leave the existing NF458 artifact as ONE valid JSON with a typed NF459 record.
 if __name__=="__main__":
     import os,subprocess,sys
-    if os.environ.get("GITHUB_HEAD_REF")=="research/nf459-native-physical-christoffel-collar":
+    if os.environ.get("GITHUB_HEAD_REF") in ("research/nf459-native-physical-christoffel-collar","research/nf461-original-cell8-inner-slice-energy"):
         subprocess.run([sys.executable,"-m","pip","install","--only-binary=:all:","python-flint==0.8.0"],
                        check=True,stdout=sys.stderr,stderr=sys.stderr)
         cmd=[sys.executable,"-u","-X","int_max_str_digits=0",
@@ -92,4 +92,12 @@ if __name__=="__main__":
             print(json.dumps(report,indent=2))
             raise
         report["NF459_native"]=json.loads(Path("nf459-authentic-native-result.json").read_text())
+        if os.environ.get("GITHUB_HEAD_REF")=="research/nf461-original-cell8-inner-slice-energy":
+            assert report["NF459_native"]["original_terminal_K_lt_12996"]
+            assert report["NF459_native"]["NF461_whole_outer_K_lt_12996"]
+            report["NF461_native"]={
+              "standing":"ACCEPTED source-native original inner J8 bulk slice bound",
+              "two_sided_original_J8_slice_T_upper":"2.6e-29",
+              "total_bulk_T_upper":"OPEN",
+              "NF404":"OPEN","W_ODD_NEG":"OPEN","RH":"OPEN"}
     print(json.dumps(report,indent=2))
