@@ -257,7 +257,7 @@ def assemble(args):
     # Exact interval overlap after explicitly paying the new image tail.
     assert plo<=old[1] and old[0]<=phi, (
       "original NF470 independent joint source center mismatch",
-      str(float(plo)),str(float(phi)),str(float(old[0]),str(float(old[1])))
+      str(float(plo)),str(float(phi)),str(float(old[0])),str(float(old[1])))
     flo,fhi=map(Q,receipt["original_finite_regular_mean_interval_decimal_outward"])
     zlo=mlo+flo;zhi=mhi+fhi
     assert zlo<zhi
