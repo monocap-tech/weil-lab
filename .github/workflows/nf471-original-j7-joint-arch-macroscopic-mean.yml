@@ -1,0 +1,103 @@
+name: NF471 original J7 complete joint arch macroscopic source mean
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  central:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py native/scripts/local_replay/
+      - name: Original native digamma and special finite sinh pole mean
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py --part central --output nf471-central.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf471-original-central
+          path: native/nf471-central.json
+          retention-days: 90
+  image-chunk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        include:
+          - start: 0
+            stop: 1000
+          - start: 1000
+            stop: 2000
+          - start: 2000
+            stop: 3000
+          - start: 3000
+            stop: 4000
+          - start: 4000
+            stop: 5000
+          - start: 5000
+            stop: 6000
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py native/scripts/local_replay/
+      - name: Both original physical endpoint image families, shared source group
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py --part images --start ${{ matrix.start }} --stop ${{ matrix.stop }} --output nf471-images-${{ matrix.start }}-${{ matrix.stop }}.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf471-original-images-${{ matrix.start }}-${{ matrix.stop }}
+          path: native/nf471-images-${{ matrix.start }}-${{ matrix.stop }}.json
+          retention-days: 90
+  assemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [central, image-chunk]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf471-original-*
+          path: results
+          merge-multiple: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py native/scripts/local_replay/
+      - name: Exact Fraction interval sum and independent NF470 J7 original source check
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py --part assemble --input-dir ../results --nf470-receipt ../candidate/notes/data/provisional/NF470_original_J7_native_regular_mean_and_two_joint_points_custody.json --output ../nf471-original-J7-complete-macroscopic-mean.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf471-original-complete-macroscopic-mean
+          path: nf471-original-J7-complete-macroscopic-mean.json
+          retention-days: 90
