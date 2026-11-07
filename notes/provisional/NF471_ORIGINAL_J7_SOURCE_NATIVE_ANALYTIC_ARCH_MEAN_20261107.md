@@ -1,6 +1,6 @@
 # Weil-Lab — NF471 source-native analytic original J7 macroscopic archimedean mean
 
-**2026-11-07 PT. Standing: SOURCE-NATIVE EXECUTABLE INTEGRATION SUBMITTED; full original numerical enclosure is pending the scoped native CI.** Canonical active obligation W-ODD-NEG remains OPEN. Parent NF470 draft PR #498, focused original native numerical / signed-island successes #42408798440, #42409367212 and #42409602978. Original source NF407 SHA256 \`0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce\`, physical seam NF406 SHA256 \`c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675\`. Original NF459 native source tree pinned to \`f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05\`.
+**2026-11-07 PT. Standing: ACCEPTED SOURCE-CERTIFIED FULL ORIGINAL J7 MACROSCOPIC MEAN; mixed/quadratic signed moment still OPEN.** Canonical active obligation W-ODD-NEG remains OPEN. Parent NF470 draft PR #498, focused original native numerical / signed-island successes #42408798440, #42409367212 and #42409602978. Original source NF407 SHA256 \`0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce\`, physical seam NF406 SHA256 \`c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675\`. Original NF459 native source tree pinned to \`f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05\`.
 
 ## NF470 → NF471 genuine mathematical target
 
@@ -64,6 +64,62 @@ A passing code run must be followed by a source/evidence review before classifyi
 
 Program \`scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py\`; scope-limited parallel native workflow \`.github/workflows/nf471-original-j7-joint-arch-macroscopic-mean.yml\`. The workflow uses immutable original NF459 native tree, not an invented dependence on an unmerged NF470 branch; the candidate NF470 verified finite-mean receipt transfers by exact source SHA. Original source/no-tail/covariance obligations stay explicitly typed.
 
-**NF471 acceptance gate:** all seven native tasks complete successfully, exact Fraction assembly, \(\bar{\mathcal J}_U\) and \(\bar z\) enclosures with width <1e-17, original NF470 center overlap, all original source and seam hashes. Until then, the numerical macroscopic mean is **PENDING, not claimed**.
+**NF471 acceptance gate PASSED:** all seven native tasks completed successfully, exact Fraction assembly, \(\bar{\mathcal J}_U\) and \(\bar z\) enclosures with width <1e-17, original NF470 center overlap, original NF407/NF406 source and seam hashes. Actual rigorous enclosure and CI receipts recorded below.
 
 **Next bold NF472:** once the mean is validated, build the full original source-correlated signed mixed moment \(\int_I pz\) and source quadratic moment \(\int_I z^2\). Neither a pointwise negative island nor the signed mean closes the complete J7 or NF404. No main merge.
+
+
+## Actual original complete J7 macroscopic mean — ACCEPTED NUMERICAL RESULT
+
+[The full original native 4096-bit/6000-image source-integral and exact Fraction assembly CI #42410633241 PASSED](https://github.com/monocap-tech/weil-lab/actions/runs/42410633241), including independent overlap with the previous NF470 compact joint J(x=21/20). A first attempt #42410545916 stopped with a Python source diagnostic SyntaxError before evaluating any mathematics; the corrected run is recorded without hiding that failure.
+
+The **full original joint archimedean mean** on I=[26/25,53/50] has a rigorously coarsened outward enclosure:
+
+\[
+\boxed{
+-1.009310495916443649924629943302
+<
+\bar{\mathcal J}_U
+<
+-1.009310495916443649924629943300.
+}
+\]
+
+The native exact Fraction interval before coarsening has width approximately \(1.40000011426\cdot10^{-39}\), including all seven original Arb part charges and the source-independent \(m\ge6000\) real image tail.
+
+Combining with the **independently source-certified original six-prime regular mean** from NF470,
+
+\[
+1.0093104959470132859077764<\bar F_7<
+1.0093104959470132859077765,
+\]
+
+gives the **first complete authentic original J7 macroscopic mean**:
+
+\[
+\boxed{
+3.0569635983146456\cdot10^{-11}
+<
+\underbrace{50\int_{1.04}^{1.06}z(x)\,dx}_{\bar z}
+<
+3.0569635983146560\cdot10^{-11}.
+}
+\]
+
+This is strictly **POSITIVE** and source-certified. The native (before coarsening) \(\bar z\) interval has width approximately \(1.000000000000014\cdot10^{-25}\), dominated by the retained NF470 regular-mean source interval. The actual complete mean was computed by a cancellation of two genuine original contributions near \(\pm1.0093104959\), so independent absolute bounds would be enormously inadequate. The independent NF470 source-certified original complete J(1.05) interval overlaps the NF471 analytically integrated same-source image-transfer point interval.
+
+**Exact source custody:** [permanent machine-readable index](../data/provisional/NF471_original_J7_complete_macroscopic_mean_custody.json); final original full raw native JSON (with *uncoarsened exact Fraction endpoints*) in GitHub Actions artifact #13589071909, JSON SHA256 \`64c19b99659349e5e5fa365257d40d61d3d8f2b92353fc0546ee5bb33009b175\`, ZIP SHA256 \`fe0a512743e0519bf66b0bfdc15e39f18c0ababe66b51d0733add7a7d2a19734\`. Full raw JSON has not yet been inserted into repo; source hashes, output bounds and exact artifact digests are permanently filed. Independent mathematical audit is still distinct from native CI.
+
+### Precisely what remains
+
+The mean's positive sign is **not** the sign of the signed source energy. The original NF466 identity is
+
+\[
+D_I=4L\bar p\bar z+2L\bar z^2
++4\int_I(p-\bar p)(z-\bar z)
++2\int_I(z-\bar z)^2.
+\]
+
+The actual original mean \(\bar z\) is now certified, and the original principal mean \(\bar p\) has an exact primitive; **the source covariance and source variance are still OPEN**. We have not certified \(D_I\), full J7/J8, NF404, canonical W-ODD-NEG, or RH.
+
+**Next bold NF472:** compute the complete original source-correlated \(\int_I(p-\bar p)(z-\bar z)\) and \(\int_I(z-\bar z)^2\) using the same original-source numerical machinery, with full signed error accounting. No main merge.
