@@ -1,6 +1,6 @@
 {
   "pass": "NF470",
-  "standing": "original source-native 4096-bit physical J7 finite regular mean and complete original source point intervals; second signed island exact Fraction checker pending follow-up CI",
+  "standing": "ACCEPTED source-native J7 finite regular mean, complete original joint points, and exact-rational second negative J7 signed island; all CI SUCCESS",
   "original_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
   "original_nf406_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
   "original_nf411_source_sha256": "dea07796e598a699c67b76490055bdfb17c555f631c4311bb2aeaa3aa92b6075",
@@ -74,7 +74,7 @@
     "signed_derivative_upper": "3e-5",
     "point_signed_upper": "-3.9e-21",
     "island_integral_strict_upper": "-2e-37",
-    "verification": "exact Fraction verifier committed; CI status may change"
+    "verification": "source-receipt exact Fraction verifier PASSED in NF470 native follow-up focused run #42409367212"
   },
   "source_artifact_receipts": {
     "finite_mean": {
@@ -98,5 +98,9 @@
   "complete_original_J7_signed_integral": "OPEN",
   "NF404": "OPEN",
   "W_ODD_NEG": "OPEN",
-  "RH": "OPEN"
+  "RH": "OPEN",
+  "second_focused_CI_run_id": 42409367212,
+  "second_focused_CI_result": "SUCCESS",
+  "second_island_artifact_id": 13588499002,
+  "second_island_artifact_json_sha256": "07684b65206624195724a876656a46f9293d97956aa80c3f8ab1fdf08ba2073a"
 }
