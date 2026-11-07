@@ -1,0 +1,19 @@
+name: NF464 original J7 rearrangement macroscopic necessity
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  source-exact-original-j7:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original NF462/463 source replay and NF464 rational macro gate
+        run: python -X int_max_str_digits=0 scripts/local_replay/verify_nf464_original_j7_rearrangement_macro_gate.py --output nf464-source-macro-gate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf464-original-source-macro-gate
+          path: nf464-source-macro-gate.json
