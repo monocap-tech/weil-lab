@@ -1,0 +1,143 @@
+name: NF472 original physical J7 signed mixed and quadratic source moments
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  central:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf472_original_J7_correlated_signed_moments_native.py native/scripts/local_replay/
+      - name: Original 246-source central digamma, pole, dyadic center and principal logarithm
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf472_original_J7_correlated_signed_moments_native.py --part central --output nf472-central.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf472-original-central
+          path: native/nf472-central.json
+          retention-days: 90
+  primes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf472_original_J7_correlated_signed_moments_native.py native/scripts/local_replay/
+      - name: Original six true physical J7 negative prime translations, full 273 group
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf472_original_J7_correlated_signed_moments_native.py --part primes --output nf472-primes.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf472-original-primes
+          path: native/nf472-primes.json
+          retention-days: 90
+  image-chunk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        include:
+          - start: 0
+            stop: 1000
+          - start: 1000
+            stop: 2000
+          - start: 2000
+            stop: 3000
+          - start: 3000
+            stop: 4000
+          - start: 4000
+            stop: 5000
+          - start: 5000
+            stop: 6000
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf472_original_J7_correlated_signed_moments_native.py native/scripts/local_replay/
+      - name: Both original J7 endpoint images source-correlated Taylor coefficient block
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf472_original_J7_correlated_signed_moments_native.py --part images --start ${{ matrix.start }} --stop ${{ matrix.stop }} --output nf472-images-${{ matrix.start }}-${{ matrix.stop }}.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf472-original-images-${{ matrix.start }}-${{ matrix.stop }}
+          path: native/nf472-images-${{ matrix.start }}-${{ matrix.stop }}.json
+          retention-days: 90
+  assemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    needs: [central, primes, image-chunk]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf472-original-*
+          path: results
+          merge-multiple: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf472_original_J7_correlated_signed_moments_native.py native/scripts/local_replay/
+      - name: Original joint-source coefficients, exact rational moment intervals and NF470/471 independent overlap
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf472_original_J7_correlated_signed_moments_native.py --part assemble --input-dir ../results --nf470-receipt ../candidate/notes/data/provisional/NF470_original_J7_native_regular_mean_and_two_joint_points_custody.json --nf471-receipt ../candidate/notes/data/provisional/NF471_original_J7_complete_macroscopic_mean_custody.json --output ../nf472-original-J7-source-signed-moments.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf472-original-J7-signed-moments
+          path: nf472-original-J7-source-signed-moments.json
+          retention-days: 90
+  exact-signed-receipt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [assemble]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf472-original-J7-signed-moments
+          path: nf472-native
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently prove signed negative from complete original pz and z2 outward intervals
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf472_original_J7_signed_moments_exact.py --native nf472-native/nf472-original-J7-source-signed-moments.json
