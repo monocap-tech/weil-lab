@@ -43,7 +43,7 @@ def main():
     assert F(a["original_source_arb_coefficient_aggregate_width"])<F(1,10**40)
     assert F(a["original_source_Taylor_remainder"])<F(1,10**120)
     assert F(a["original_joint_image_real_tail"])<F(1,10**40)
-    assert F(a["certified_sup_z_minus_polynomial"])==F(1,10**28) if "/" in a["certified_sup_z_minus_polynomial"] else a["certified_sup_z_minus_polynomial"]=="1/10^28"
+    assert a["certified_sup_z_minus_polynomial"]=="1/10^28"
     pzlo,pzhi=interval(a["original_pz_normalized_mean_outward"])
     qlo,qhi=interval(a["original_z2_normalized_mean_outward"])
     dl,dh=interval(a["source_original_D_I_outward"])
