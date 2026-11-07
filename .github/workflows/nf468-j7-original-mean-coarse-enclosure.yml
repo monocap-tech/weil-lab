@@ -1,0 +1,13 @@
+name: NF468 J7 original mean coarse enclosure
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  exact-rational:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/local_replay/verify_nf468_j7_original_mean_coarse_enclosure.py
