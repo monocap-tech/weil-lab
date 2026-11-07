@@ -1,0 +1,96 @@
+{
+  "pass": "NF472",
+  "date": "2026-11-07 PT",
+  "standing": "ACCEPTED source-native genuine original J7 macroscopic signed D_I STRICT NEGATIVE; whole original J7 and NF404/W-ODD-NEG/RH remain OPEN",
+  "object": "authentic full original NF407 odd physical z and principal p, signed 4pz+2z^2 on original physical J7 subpanel",
+  "original_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "source_native_parent_sha": "f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05",
+  "original_generators": 246,
+  "original_grouped_modes": 273,
+  "original_critical_sines": 32,
+  "original_sinh_pole": true,
+  "original_minus_shift_primes": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "original_nf404_center": "6677356497477490213/4611686018427387904",
+  "physical_panel": [
+    "26/25",
+    "53/50"
+  ],
+  "panel_length": "1/50",
+  "source_Taylor_center": "21/20",
+  "source_Taylor_halfwidth": "1/100",
+  "source_Taylor_degree": 799,
+  "source_complex_R": "1/25",
+  "source_truncated_branch_M": "10^350",
+  "source_Taylor_tail_lt": "1e-120",
+  "source_image_modes": 6000,
+  "source_image_tail_lt": "1e-40",
+  "native_precision_bits": 4096,
+  "source_total_uniform_z_error_lt": "1e-28",
+  "native_coeff_radius_aggregate_approx": "4.040040400404004e-163",
+  "native_original_Taylor_tail_approx": "2.9987873781449424e-132",
+  "native_original_image_tail_approx": "5.712908376637279e-47",
+  "native_original_source_and_weight_input_error_upper_approx": "9.01e-30",
+  "original_mean_zbar_NF471_coarsened": [
+    "3.0569635983146456e-11",
+    "3.0569635983146560e-11"
+  ],
+  "original_normalized_pz_outward_coarsened": [
+    "-1.671029e-21",
+    "-1.671027e-21"
+  ],
+  "original_normalized_z2_outward_coarsened": [
+    "1.4388e-21",
+    "1.4489e-21"
+  ],
+  "original_normalized_covariance_outward_coarsened": [
+    "4.3e-24",
+    "2.44e-23"
+  ],
+  "original_normalized_variance_outward_coarsened": [
+    "4.94e-22",
+    "5.25e-22"
+  ],
+  "original_signed_D_I_outward_coarsened": [
+    "-7.6130e-23",
+    "-7.5728e-23"
+  ],
+  "original_signed_D_I_strict_sign": "NEGATIVE",
+  "sign_evidence": "independent exact-rational upper 1/50*(4 upper_mean_pz + 2 upper_mean_z2) < 0; full native D_I interval also strictly negative",
+  "source_native_ci": {
+    "run_id": 42418143102,
+    "conclusion": "SUCCESS",
+    "original_jobs": 9,
+    "source_input_hash_check": true,
+    "original_NF470_point_overlap": true,
+    "original_NF471_macroscopic_mean_overlap": true
+  },
+  "native_output_artifact": {
+    "artifact_id": 13592406397,
+    "filename": "nf472-original-J7-source-signed-moments.json",
+    "sha256": "e0d37d186579dec8b0dc572178ea95849587224caaa430a597aaaf36aeb5c587",
+    "zip_sha256": "721dac00ce8af6b88ddb18c47f034b5541119e03a34d0c04f77fb5c195642362",
+    "repository_full_raw_archival": "OPEN; original full Fraction output in GitHub Actions artifact"
+  },
+  "not_claimed": [
+    "pointwise S<0 throughout the panel",
+    "whole J7 signed",
+    "whole J8 signed",
+    "NF404 accepted",
+    "W-ODD-NEG closed",
+    "RH proof"
+  ],
+  "whole_original_J7": "OPEN",
+  "whole_original_J8": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "NF473 extend original source-correlated signed moments to remaining authentic J7 panels, decide whole D7; retain full J8 and NF404 as open"
+}
