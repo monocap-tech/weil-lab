@@ -1,0 +1,13 @@
+name: NF471 original J7 complete mean exact receipt audit
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  exact-receipt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf471_original_J7_complete_mean_custody.py
