@@ -1,0 +1,13 @@
+name: NF466 J7 correlated moment algebra
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  algebra:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/local_replay/verify_nf466_j7_correlated_moment_identity.py
