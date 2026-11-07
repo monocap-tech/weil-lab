@@ -126,3 +126,27 @@ jobs:
           name: nf473-original-J7-signed-moments
           path: nf473-original-J7-source-signed-moments.json
           retention-days: 90
+  independent-partial-union-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [assemble]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf473-original-J7-signed-moments
+          path: native-result
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently audit authentic [1,26/25] source mixed/quadratic moment sign and contiguous union with NF472
+        working-directory: candidate
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf473_original_J7_left_panel_and_partial_union_exact.py --native ../native-result/nf473-original-J7-source-signed-moments.json --output ../nf473-original-J7-adjacent-partial-union-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf473-original-J7-adjacent-partial-union-audit
+          path: nf473-original-J7-adjacent-partial-union-audit.json
+          retention-days: 90
