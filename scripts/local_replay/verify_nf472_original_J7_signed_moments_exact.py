@@ -59,7 +59,7 @@ def main():
           ("source_variance_normalized_mean_outward","original_normalized_variance_outward_coarsened"),
           ("source_original_D_I_outward","original_signed_D_I_outward_coarsened")
         ):contains(d[coarse],n[name])
-        assert F(n["certified_sup_z_minus_polynomial"])==F(1,10**28)
+        assert n["certified_sup_z_minus_polynomial"]=="1/10^28"
         assert F(n["original_source_arb_coefficient_aggregate_width"])<F(1,10**40)
         assert F(n["original_source_Taylor_remainder"])<F(1,10**120)
         assert F(n["original_joint_image_real_tail"])<F(1,10**40)
