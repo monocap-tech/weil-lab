@@ -240,7 +240,7 @@ def assemble(args):
     # Genuine original input uncertainty on physical J7:
     # original source dyadic S0<1e-700, original six prime weights total
     # uncertainty <1e-32, original |U|<900 and |v|<1.
-    eps_input=Q(901,10**32)+Q(1,10**650)
+    eps_input=Q(901,10**32)+Q(1,10**400)
     assert eps_coeff+eps_taylor+eps_image+eps_input<Q(1,10**28)
     eps_z=Q(1,10**28)
     zmeanP=moment_scalar_poly(mids)
