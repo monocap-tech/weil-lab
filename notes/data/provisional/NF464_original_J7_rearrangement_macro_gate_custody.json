@@ -1,0 +1,29 @@
+{
+  "pass": "NF464",
+  "timestamp_utc": "2026-11-07",
+  "repository": "monocap-tech/weil-lab",
+  "branch": "research/nf464-j7-rearrangement-macro-panel-gate",
+  "parent_branch": "research/nf463-original-j7-cancellation-spatial-coverage",
+  "parent_head_sha": "68864020df61d52b2627c2e93e4dfe98e3462f1a",
+  "source_original_NF407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seam_original_NF406_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "source_inherited": "NF411 endpoint v and six J7 prime jumps; NF462 source-exact necessary deficit; NF463 exact original island",
+  "standing": "Mathematically derived CONDITIONAL macroscopic negative-density measure bound; pending scoped CI verification",
+  "if_NF404_cap_original_J7_D7_below": "-2.03475e-22",
+  "if_NF404_original_J7_negative_density_meas_strictly_gt": "0.0256",
+  "if_NF404_original_J7_negative_density_fraction_strictly_gt": "21.6%",
+  "exact_rational_max_negative_capacity_of_rightmost_0_0256_strict_lt": "2.03354e-22",
+  "actual_original_J7_complete_signed_integral_measured": false,
+  "actual_original_J8_complete_signed_integral_measured": false,
+  "real_original_J7_partition_panels": 7,
+  "ellipses_rho_3_over_2_central_B_pole_clearance": true,
+  "full_complex_arch_source_tail_certified": false,
+  "CI": {
+    "status": "PENDING"
+  },
+  "canonical_obligation": "W-ODD-NEG",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next": "NF465 genuinely source-correlated signed J7 macroscopic panel integration; no more principal-only coverage refinements"
+}
