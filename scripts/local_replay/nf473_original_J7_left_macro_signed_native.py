@@ -208,8 +208,8 @@ def bounds_fraction_intervals(balls):
 
 def assemble(args):
     folder=Path(args.input_dir)
-    files=[folder/"nf472-central.json",folder/"nf472-primes.json"]
-    files.extend(folder/f"nf472-images-{m}-{m+1000}.json" for m in range(0,M,1000))
+    files=[folder/"nf473-central.json",folder/"nf473-primes.json"]
+    files.extend(folder/f"nf473-images-{m}-{m+1000}.json" for m in range(0,M,1000))
     records=[]
     for f in files:
         assert f.exists(),f"Missing source-native coefficient block {f}"
