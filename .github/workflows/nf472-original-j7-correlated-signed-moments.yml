@@ -126,3 +126,18 @@ jobs:
           name: nf472-original-J7-signed-moments
           path: nf472-original-J7-source-signed-moments.json
           retention-days: 90
+  exact-signed-receipt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [assemble]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf472-original-J7-signed-moments
+          path: nf472-native
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently prove signed negative from complete original pz and z2 outward intervals
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf472_original_J7_signed_moments_exact.py --native nf472-native/nf472-original-J7-source-signed-moments.json
