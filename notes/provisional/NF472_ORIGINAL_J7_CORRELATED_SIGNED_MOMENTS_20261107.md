@@ -1,6 +1,6 @@
 # Weil-Lab — NF472: original macroscopic J7 mixed and quadratic moments
 
-**2026-11-07 PT. Standing: original-source native signed-moment computation SUBMITTED, numeric standing PENDING CI and independent source audit.** Canonical W-ODD-NEG OPEN. Parent NF471 [draft PR #499](https://github.com/monocap-tech/weil-lab/pull/499), accepted genuine original full J7 mean \(\bar z\in(3.0569635983146456,3.0569635983146560)\cdot10^{-11}\). Original source SHA256 \`0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce\`; original NF406 physical support seam SHA256 \`c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675\`. Pinned native NF459 source tree \`f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05\`.
+**2026-11-07 PT. Standing: ACCEPTED SOURCE-NATIVE STRICTLY NEGATIVE ORIGINAL J7 MACROSCOPIC SIGNED INTEGRAL; whole original J7, NF404 and W-ODD-NEG remain OPEN.** Canonical W-ODD-NEG OPEN. Parent NF471 [draft PR #499](https://github.com/monocap-tech/weil-lab/pull/499), accepted genuine original full J7 mean \(\bar z\in(3.0569635983146456,3.0569635983146560)\cdot10^{-11}\). Original source SHA256 \`0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce\`; original NF406 physical support seam SHA256 \`c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675\`. Pinned native NF459 source tree \`f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05\`.
 
 ## Source-bearing mathematical object and functional
 
@@ -86,3 +86,64 @@ Actual program: \`scripts/local_replay/nf472_original_J7_correlated_signed_momen
 **Before successful scoped CI:** all new covariance, variance and signed \(D_I\) numerical claims are PENDING. **Regardless:** whole original J7/J8, NF404, canonical W-ODD-NEG, even/whole Weil and RH remain OPEN. No main merge.
 
 **Next bold NF473:** audit the actual original NF472 signed interval. If decisively signed, promote the macroscopic **original J7** \(D_I\) and extend correlation-preserving moments to the remaining J7 panels; do not infer whole J7 from one panel.
+
+
+## Genuine original-source numerical signed moments — NF472 ACCEPTED
+
+**Complete original native source CI [#42418143102 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42418143102):** original 4096-bit physical source central/pole, all six original 1,000-image blocks, the full six-prime original regular source, analytic Taylor coefficient assembly, source-identical NF470 center and NF471 macroscopic mean overlaps, exact rational coefficient error gates, and the original shared-source quadratic/mixed moments. The complete original native full Fraction certificate is GitHub Actions artifact **#13592406397**, JSON SHA256 \`e0d37d186579dec8b0dc572178ea95849587224caaa430a597aaaf36aeb5c587\`, ZIP SHA256 \`721dac00ce8af6b88ddb18c47f034b5541119e03a34d0c04f77fb5c195642362\`. The machine-readable permanently committed coarsened outward receipt is [NF472 source custody](../data/provisional/NF472_original_J7_macroscopic_signed_moments_custody.json). The raw uncoarsened JSON has not yet been copied to the repo; independent mathematical audit remains distinct from the successful native calculation.
+
+**Complete source-normalized original mixed moment (coarsened outward):**
+\[
+-1.671029\cdot10^{-21}<\langle pz\rangle<-1.671027\cdot10^{-21}.
+\]
+
+**Complete source-normalized original quadratic moment (coarsened outward):**
+\[
+1.4388\cdot10^{-21}<\langle z^2\rangle<1.4489\cdot10^{-21}.
+\]
+
+**Correlated source covariance and variance (conservatively coarsened outward):**
+\[
+\boxed{
+4.3\cdot10^{-24}<\operatorname{Cov}(p,z)<2.44\cdot10^{-23},\qquad
+4.94\cdot10^{-22}<\operatorname{Var}(z)<5.25\cdot10^{-22}.
+}
+\]
+Both are actually **POSITIVE**. Thus the native nonlinear signed calculation includes genuine source variance and does not assume it away.
+
+**Certified continuous signed original J7 macroscopic panel integral:**
+\[
+\boxed{
+-7.6130\cdot10^{-23}
+<
+D_I=\int_{26/25}^{53/50}(4pz+2z^2)\,dx
+<
+-7.5728\cdot10^{-23}
+<
+0.
+}
+\]
+The original uncoarsened native full result is approximately
+\[
+D_I\in(-7.6128985104171027\cdot10^{-23},\
+-7.5728977104170623\cdot10^{-23}).
+\]
+These already include the *source-wide* \(\sup|z-P|<10^{-28}\), original coefficient radii, entire omitted infinite image tail, Cauchy Taylor remainder, original logarithmic principal, and the full signed \(4pz+2z^2\) error. It is a **genuine original signed continuous integral across a 0.02-wide physical J7 panel**, not an infinitesimal negative island or a finite sample.
+
+An **independent exact Fraction signed upper witness**, reconstructing directly from the separately enclosed **complete original** mixed and quadratic moments, requires no trust in the native computed sign field:
+\[
+\begin{aligned}
+D_I&<\frac1{50}\left[4(-1.671027\cdot10^{-21})
++2(1.4489\cdot10^{-21})\right]\\
+&=\boxed{-7.572616\cdot10^{-23}<0}.
+\end{aligned}
+\]
+The separate exact rational verification file \`scripts/local_replay/verify_nf472_original_J7_signed_moments_exact.py\` audits this inequality, source IDs and, when supplied, the native uncoarsened raw artifact. Strict negativity is therefore reproducible both from the original source-native computation and from coarse outward moment enclosures.
+
+### Obligation standing / no invalid promotion
+
+**ACCEPTED:** actual original NF471 \(\bar z>0\), native original source \(\mathrm{Cov}(p,z)>0\), \(\mathrm{Var}(z)>0\), complete mixed and quadratic moments, and strict \(D_I<0\) over the entire rational panel \(I=[1.04,1.06]\) inside genuine J7.
+
+**Not established:** pointwise negativity of \(S(x)=4pz+2z^2\) at *every point* of the panel. Negative signed integral does not imply the pointwise negative set occupies the whole panel. Nor does one negative panel determine the entire physical J7 signed integral. NF464's conditional area threshold and NF462's conditional J7 required deficit remain distinct until **all** genuine J7 subpanels are integrated. Entire original J7 and J8, NF404 acceptance, canonical W-ODD-NEG, operator domain/whole Weil and RH remain OPEN. No merge.
+
+**Next bold NF473:** extend the now source-certified 800-coefficient interval-Taylor moment integrator to the other six original NF464 J7 panels, using their own typed physical supports, holomorphic radii and source-coefficient contracts; accumulate the full original signed D7 and then D8 before returning to NF404. Audit negative area and conditional deficit only on the **whole genuine source cell**, not on the already signed partial panel.
