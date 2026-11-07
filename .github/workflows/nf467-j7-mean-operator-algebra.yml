@@ -1,0 +1,13 @@
+name: NF467 J7 mean operator algebra
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  exact-algebra:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/local_replay/verify_nf467_j7_mean_operator_identity.py
