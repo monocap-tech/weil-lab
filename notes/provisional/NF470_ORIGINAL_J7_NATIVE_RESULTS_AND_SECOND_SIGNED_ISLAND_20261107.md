@@ -1,6 +1,6 @@
 # NF470 — Native original J7 numerical results and second genuine negative signed island
 
-**2026-11-07 PT. Standing: ACCEPTED source-certified original J7 finite regular mean and complete source values at two macroscopic physical points; second continuous signed island exact-rational promotion subject to its focused follow-up CI.** This result supplements [the NF470 execution preflight](NF470_ORIGINAL_J7_NATIVE_FINITE_REGULAR_MEAN_JOINT_SOURCE_NODES_20261107.md).
+**2026-11-07 PT. Standing: ACCEPTED source-certified original J7 finite regular mean and complete source values at two macroscopic physical points; second continuous signed island exact-rational promotion VERIFIED IN FOLLOW-UP CI.** This result supplements [the NF470 execution preflight](NF470_ORIGINAL_J7_NATIVE_FINITE_REGULAR_MEAN_JOINT_SOURCE_NODES_20261107.md).
 
 ## First actual original J7 macroscopic source integral
 
@@ -58,11 +58,11 @@ and hence the **actual original continuous signed integral** satisfies
 <-2\cdot10^{-37}.}
 \]
 
-The exact-rational verifier \`scripts/local_replay/verify_nf470_original_J7_second_signed_island_exact.py\` reads the full original NF470 native source receipt and checks all source/source-sha/original-prime/derivative/rational bounds, not an invented point. This signed island does **not** imply sign of the remaining macroscopic panel or whole J7. Its follow-up focused CI standing must be checked separately from the already-successful original native first run.
+The exact-rational verifier \`scripts/local_replay/verify_nf470_original_J7_second_signed_island_exact.py\` reads the full original NF470 native source receipt and checks all source/source-sha/original-prime/derivative/rational bounds, not an invented point. This signed island does **not** imply sign of the remaining macroscopic panel or whole J7. Its [follow-up source-native / exact-rational focused run #42409367212](https://github.com/monocap-tech/weil-lab/actions/runs/42409367212) completed SUCCESS.
 
 ## Stop and next
 
-**Source-numeric established:** original macroscopic finite \(F_7\) mean; original complete \(z\) and \(4pz+2z^2\) at both x=1.04 and x=1.05, including source interval uncertainties; independent NF417 anchor overlap. **Mathematically established, pending separate workflow replay:** second new negative original J7 signed continuous island at x=1.05.
+**Source-numeric established:** original macroscopic finite \(F_7\) mean; original complete \(z\) and \(4pz+2z^2\) at both x=1.04 and x=1.05, including source interval uncertainties; independent NF417 anchor overlap. **Source-native and separately CI-verified:** second new negative original J7 signed continuous island at x=1.05, radius 5e-17, integral <-2e-37.
 
 **Still OPEN:** original macroscopic arch mean \(\int_I\mathcal J_U(x)\,dx\); true \(\bar z\); covariance/variance; whole signed \(D_I,D_7,D_8\); NF404 acceptance; canonical W-ODD-NEG; RH. No main merge.
 
