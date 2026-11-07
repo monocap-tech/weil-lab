@@ -1,0 +1,19 @@
+name: NF465 J7 derivative-only resolution stop
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  exact-rational-method-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact anchor-Lipschitz resolution ceiling
+        run: python scripts/local_replay/verify_nf465_j7_lipschitz_resolution_stop.py --output nf465-resolution.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf465-resolution
+          path: nf465-resolution.json
