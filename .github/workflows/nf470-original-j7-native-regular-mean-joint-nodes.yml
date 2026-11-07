@@ -1,0 +1,67 @@
+name: NF470 original J7 native regular mean and joint compact source nodes
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  regular-mean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Fetch immutable NF459 original source-native dependency
+        uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - name: Fetch proposed NF470 evaluator
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf470_original_J7_native_regular_mean_and_joint_point.py native/scripts/local_replay/
+      - name: Evaluate genuine original six-shift regular J7 mean in 4096-bit Arb
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf470_original_J7_native_regular_mean_and_joint_point.py --mode finite-mean --output nf470-J7-original-regular-mean.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf470-j7-original-finite-regular-mean
+          path: native/nf470-J7-original-regular-mean.json
+          retention-days: 90
+  joint-node:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - x: '26/25'
+            id: left-anchor
+          - x: '21/20'
+            id: center-node
+    steps:
+      - name: Fetch immutable NF459 original source-native dependency
+        uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - name: Fetch proposed NF470 evaluator
+        uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf470_original_J7_native_regular_mean_and_joint_point.py native/scripts/local_replay/
+      - name: Evaluate actual original J7 joint compact arch source point
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf470_original_J7_native_regular_mean_and_joint_point.py --mode joint-node --x '${{ matrix.x }}' --output nf470-J7-original-joint-${{ matrix.id }}.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf470-j7-original-joint-${{ matrix.id }}
+          path: native/nf470-J7-original-joint-${{ matrix.id }}.json
+          retention-days: 90
