@@ -1,0 +1,102 @@
+{
+  "pass": "NF470",
+  "standing": "original source-native 4096-bit physical J7 finite regular mean and complete original source point intervals; second signed island exact Fraction checker pending follow-up CI",
+  "original_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_nf411_source_sha256": "dea07796e598a699c67b76490055bdfb17c555f631c4311bb2aeaa3aa92b6075",
+  "immutable_native_NF459_parent": "f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05",
+  "first_source_native_success_run_id": 42408798440,
+  "source_native_CI_3_jobs": "SUCCESS",
+  "original_source_count": 246,
+  "original_modes": 273,
+  "arb_bits": 4096,
+  "physical_J7_panel": [
+    "26/25",
+    "53/50"
+  ],
+  "original_minus_regular_support": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "original_finite_regular_mean_interval_decimal_outward": [
+    "1.0093104959470132859077764",
+    "1.0093104959470132859077765"
+  ],
+  "original_full_J7_points": {
+    "26/25": {
+      "z_interval_decimal_outward": [
+        "7.7315981843853465314120151e-11",
+        "7.7315981843853485314169818e-11"
+      ],
+      "signed_integrand_interval_decimal_outward": [
+        "-4.7531024598442938257862002e-21",
+        "-4.7531024398442938257862001e-21"
+      ],
+      "nf417_418_independent_anchor_overlap": true,
+      "joint_arch_decimal_outward": [
+        "-1.0347786142870280789793747",
+        "-1.0347786142870280789793746"
+      ],
+      "regular_finite_decimal_outward": [
+        "1.0347786143643440608232280",
+        "1.0347786143643440608232282"
+      ]
+    },
+    "21/20": {
+      "z_interval_decimal_outward": [
+        "2.2778098980578838215303694e-11",
+        "2.2778098980578858215353360e-11"
+      ],
+      "signed_integrand_interval_decimal_outward": [
+        "-3.9818639375554761576196542e-21",
+        "-3.9818639175554761576196541e-21"
+      ],
+      "joint_arch_decimal_outward": [
+        "-1.0091012190802624978331930",
+        "-1.0091012190802624978331929"
+      ],
+      "regular_finite_decimal_outward": [
+        "1.0091012191030405968137717",
+        "1.0091012191030405968137719"
+      ]
+    }
+  },
+  "new_original_J7_second_signed_island": {
+    "center": "21/20",
+    "radius": "1/20000000000000000",
+    "support": "interior original J7",
+    "source": "original 246 coefficient / 273 mode point",
+    "derivative_input": "|z'|<30000",
+    "signed_derivative_upper": "3e-5",
+    "point_signed_upper": "-3.9e-21",
+    "island_integral_strict_upper": "-2e-37",
+    "verification": "exact Fraction verifier committed; CI status may change"
+  },
+  "source_artifact_receipts": {
+    "finite_mean": {
+      "artifact_id": 13587864043,
+      "zip_sha256": "84bca6c1c741ab429e2c770a583ca2e1c668b69e850e516987da598299cea50b",
+      "json_sha256": "3afdbb4f3403a1ff4a210ff645d86be123e39bc8bfc553a91d134deb06b20618"
+    },
+    "left_anchor": {
+      "artifact_id": 13588712024,
+      "zip_sha256": "f1d6ef4607740e4a5edf83155885dcab8da38b4a8d05afb03b59100d28455a53",
+      "json_sha256": "2906fc50d11480fd8b708b5b94c628ea8fa829b339d68031e1478bd7e33a1c3f"
+    },
+    "center_node": {
+      "artifact_id": 13588990179,
+      "zip_sha256": "7d22c569733d8c081237b5f772ea657bed832a765758898f80470ef092bb4cd4",
+      "json_sha256": "35e20b512b2ceabaea6e50f6984cbc25b7d5b8c605c2be14487d0dbda5611726"
+    }
+  },
+  "exact_raw_source_json_permanent_repository_archival": "OPEN; coarsened source-certified intervals and SHA receipts kept in repo; original full raw JSON retained in workflow artifacts",
+  "complete_joint_arch_panel_mean": "OPEN",
+  "complete_original_J7_signed_integral": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN"
+}
