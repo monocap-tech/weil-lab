@@ -1,0 +1,13 @@
+name: NF469 J7 native jet order gate
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  rational-jet-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python scripts/local_replay/verify_nf469_j7_native_jet_order_gate.py
