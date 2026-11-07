@@ -1,0 +1,127 @@
+{
+  "pass": "NF473",
+  "date": "2026-11-07 PT",
+  "standing": "ACCEPTED native original physical J7 adjacent full 0.04-wide signed panel [1,26/25] STRICT NEGATIVE; original contiguous [1,53/50] partial J7 signed STRICT NEGATIVE; whole J7/J8, NF404, W-ODD-NEG, RH OPEN",
+  "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "native_source_parent": "f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05",
+  "original_source_generators": 246,
+  "original_modes": 273,
+  "original_sinh_pole": true,
+  "original_critical_sines": 32,
+  "original_regular_minus_primes": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "original_nf404_center": "6677356497477490213/4611686018427387904",
+  "original_left_panel": [
+    "1",
+    "26/25"
+  ],
+  "panel_width": "1/25",
+  "Taylor_center": "51/50",
+  "Taylor_halfwidth": "1/50",
+  "Taylor_degree": 1599,
+  "analytic_source_R": "1/25",
+  "original_Cauchy_ratio": "1/2",
+  "original_Cauchy_M": "10^350",
+  "Taylor_remainder_lt": "1e-120",
+  "original_image_modes": 6000,
+  "original_image_tail_lt": "1e-40",
+  "original_source_coefficient_aggregate_radius_approx": "4.040404004040404e-163",
+  "original_total_uniform_z_error_lt": "1e-28",
+  "original_native_bits": 4096,
+  "original_right_endpoint_NF470_compact_source_overlap": true,
+  "unmatched_disjoint_NF471_mean_overlap_claimed": false,
+  "left_panel_original_normalized_z_mean_outward": [
+    "5.7487817742125713e-11",
+    "5.7487817742125715e-11"
+  ],
+  "left_panel_original_normalized_pz_outward": [
+    "-3.040797e-21",
+    "-3.040796e-21"
+  ],
+  "left_panel_original_normalized_z2_outward": [
+    "4.538880e-21",
+    "4.548881e-21"
+  ],
+  "left_panel_source_covariance_outward": [
+    "-3.792e-23",
+    "-1.791e-23"
+  ],
+  "left_panel_source_variance_outward": [
+    "1.2240e-21",
+    "1.2541e-21"
+  ],
+  "left_panel_original_signed_D_outward": [
+    "-1.234171e-22",
+    "-1.226169e-22"
+  ],
+  "left_panel_original_signed_D_sign": "NEGATIVE",
+  "previous_NF472_adjacent_panel": [
+    "26/25",
+    "53/50"
+  ],
+  "previous_NF472_original_signed_D_outward": [
+    "-7.6130e-23",
+    "-7.5728e-23"
+  ],
+  "contiguous_partial_J7_panel": [
+    "1",
+    "53/50"
+  ],
+  "contiguous_partial_J7_length": "3/50",
+  "contiguous_partial_original_D_outward": [
+    "-1.995471e-22",
+    "-1.983449e-22"
+  ],
+  "contiguous_partial_original_D_sign": "NEGATIVE",
+  "NF464_conditional_J7_required_negative_deficit": "greater than 2.03475e-22",
+  "conditional_shortfall_until_other_panels_paid": "at least 3.9279872978844267e-24 additional negative integral needed to possibly reach required threshold if all other panels negative; stronger guarantee from current upper bound requires below -5.13000329788522895e-24 for remaining sum; other panels can add positive/negative and remain OPEN",
+  "source_CI": {
+    "failed_first_run": {
+      "run_id": 42422416678,
+      "reason": "all 8 original native source component jobs passed; source assembly had a code-only original NF472 artifact filename mistakenly retained",
+      "no_signed_claim": true
+    },
+    "accepted_run": {
+      "run_id": 42422922044,
+      "conclusion": "SUCCESS",
+      "central": true,
+      "primes": true,
+      "original_six_image_blocks": true,
+      "source_assembly": true,
+      "independent_exact_fraction_partial_union": true
+    }
+  },
+  "source_native_artifact": {
+    "id": 13594770182,
+    "filename": "nf473-original-J7-source-signed-moments.json",
+    "sha256": "e9b3bf9975d9b7d8c1ab77d6e35e14f361cd992506e89cfe5c72d07ebbcca0f8",
+    "zip_sha256": "52cd47f53699487c21487c7754d2c884e2d358102a36c81d55fe8a53677f985f"
+  },
+  "independent_fraction_artifact": {
+    "id": 13594660576,
+    "filename": "nf473-original-J7-adjacent-partial-union-audit.json",
+    "sha256": "bba03efa13351d6f9d590e7cfd9d28a90ead791ee934b6f232a6701c111cb0a3",
+    "zip_sha256": "5d042d84cedd4fbb87a9443a078cc6d9ad6cdc38bdeba74d6619a2fd8e578d44"
+  },
+  "raw_uncoarsened_native_json_repo_archival": "OPEN; full native JSON in GitHub Actions original artifact and generated conversation attachment",
+  "remaining_J7_panels": [
+    "[log(8)-B,1]",
+    "[53/50,27/25]",
+    "[27/25,109/100]",
+    "[109/100,219/200]",
+    "[219/200,log(9)-B]"
+  ],
+  "whole_J7": "OPEN",
+  "whole_J8": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "NF474 adapt the original true source interval-Taylor moment integrator to [53/50,27/25], requiring image tail M>=12000 for B-x>=1/50, check independent NF470 at x=53/50 via original native evaluator or overlapping source continuity; then complete other J7 panels"
+}
