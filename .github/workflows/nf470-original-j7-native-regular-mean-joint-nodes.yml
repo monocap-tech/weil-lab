@@ -59,9 +59,15 @@ jobs:
       - name: Evaluate actual original J7 joint compact arch source point
         working-directory: native
         run: python -u -X int_max_str_digits=0 scripts/local_replay/nf470_original_J7_native_regular_mean_and_joint_point.py --mode joint-node --x '${{ matrix.x }}' --output nf470-J7-original-joint-${{ matrix.id }}.json
+      - name: Independent exact-rational original J7 second signed island
+        if: matrix.id == 'center-node'
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 ../candidate/scripts/local_replay/verify_nf470_original_J7_second_signed_island_exact.py --source-receipt nf470-J7-original-joint-center-node.json --output nf470-J7-second-signed-island.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: nf470-j7-original-joint-${{ matrix.id }}
-          path: native/nf470-J7-original-joint-${{ matrix.id }}.json
+          path: |
+            native/nf470-J7-original-joint-${{ matrix.id }}.json
+            native/nf470-J7-second-signed-island.json
           retention-days: 90
