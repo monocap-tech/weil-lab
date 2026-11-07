@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """NF473 native original J7 adjacent left panel signed D_L via one source-coefficient Taylor carrier.
 
-Fixed genuine original J7 panel x=21/20+(1/100)*s, -1<=s<=1.
-Build all 800 coefficients of source-correlated original physical z as:
+Fixed genuine original J7 panel x=51/50+(1/50)*s, -1<=s<=1.
+Build all 1600 coefficients of source-correlated original physical z as:
  - native NF443 central digamma + special removable m0 sinh pole + principal log
  - exact native two matched original image families, 6000 source-shared modes
  - original six-minus NF405 prime regular source shifts and NF404 centering.
@@ -231,7 +231,7 @@ def assemble(args):
     # not a pointwise derivative extrapolation.
     assert eps_coeff<Q(1,10**40),("source-coefficient interval contraction unresolved",str(float(eps_coeff)))
     # Finite native spectral transfer analytic on |x-21/20|<=1/25.
-    # M_bound=10^350 (see analytic audit note), ratio H/R=1/4.
+    # M_bound=10^350 (see analytic audit note), ratio H/R=1/2.
     eps_taylor=Q(10)**350*Q(1,2)**N/(1-Q(1,2))
     assert eps_taylor<Q(1,10**120)
     # Existing NF471 strict real original image tail.
@@ -338,6 +338,10 @@ def assemble(args):
      "source_truncated_branch_Cauchy_M":"10^350",
      "certified_sup_z_minus_polynomial":"1/10^28",
      "original_source_arb_coefficient_aggregate_width":str(eps_coeff),
+     "original_panel_type":"J7 left rational panel, NF464 partition [1,26/25]",
+     "original_signed_integration_length":"1/25",
+     "source_Cauchy_ratio":"1/2",
+     "principal_log_ratio":"1/4", 
      "original_source_Taylor_remainder":str(eps_taylor),
      "original_joint_image_real_tail":str(eps_image),
      "original_source_weight_input_error_upper":str(eps_input),
