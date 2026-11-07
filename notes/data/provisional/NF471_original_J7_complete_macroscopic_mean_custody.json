@@ -1,0 +1,71 @@
+{
+  "pass": "NF471",
+  "date": "2026-11-07 PT",
+  "standing": "ACCEPTED ORIGINAL complete J7 macroscopic mean zbar; signed J7 quadratic moment remains OPEN",
+  "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "immutable_native_NF459_source_tree": "f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05",
+  "original_source_generators": 246,
+  "original_grouped_modes": 273,
+  "original_special_sinh_m0": true,
+  "original_critical_sine_modes": 32,
+  "arb_bits": 4096,
+  "physical_panel": [
+    "26/25",
+    "53/50"
+  ],
+  "panel_length": "1/50",
+  "original_joint_arch_mean_outward_coarsened": [
+    "-1.009310495916443649924629943302",
+    "-1.009310495916443649924629943300"
+  ],
+  "original_six_prime_regular_mean_outward": [
+    "1.0093104959470132859077764",
+    "1.0093104959470132859077765"
+  ],
+  "original_complete_z_mean_outward_coarsened": [
+    "3.0569635983146456e-11",
+    "3.0569635983146560e-11"
+  ],
+  "original_joint_arch_center_x_21_20_outward_coarsened": [
+    "-1.0091012190802624978331930",
+    "-1.0091012190802624978331928"
+  ],
+  "independent_NF470_compact_source_center_overlap": true,
+  "full_native_mean_width_strict_below": "1e-17",
+  "source_linear_image_modes": 6000,
+  "source_linear_image_chunks": 6,
+  "original_image_tail_rational_bound": "100*10^160/6000*(3/8)^480 < 10^-40",
+  "per_chunk_original_source_radii_and_arb_outward_charge": "1e-40",
+  "source_midpoint_input_original_S0_strict_below": "1e-700",
+  "original_arch_mean_native_width_approx": "1.40000011426e-39",
+  "original_z_mean_native_width_approx": "1.000000000000014e-25",
+  "verification": [
+    {
+      "run_id": 42410545916,
+      "status": "FAILED",
+      "reason": "Python source diagnostic SyntaxError before any numerical computation; no mathematical claim",
+      "superseded_by": 42410633241
+    },
+    {
+      "run_id": 42410633241,
+      "status": "SUCCESS",
+      "completed": true,
+      "central": true,
+      "six_image_chunks": true,
+      "exact_Fraction_assembly": true,
+      "independent_NF470_cross_check": true
+    }
+  ],
+  "final_json_artifact_id": 13589071909,
+  "final_json_filename": "nf471-original-J7-complete-macroscopic-mean.json",
+  "final_json_sha256": "64c19b99659349e5e5fa365257d40d61d3d8f2b92353fc0546ee5bb33009b175",
+  "final_zip_sha256": "fe0a512743e0519bf66b0bfdc15e39f18c0ababe66b51d0733add7a7d2a19734",
+  "full_raw_json_in_repository": "PENDING; Actions native artifact contains byte-identical complete Fraction endpoints and source metadata",
+  "full_signed_J7_panel": "OPEN",
+  "nf466_covariance_variance": "OPEN",
+  "nf404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next": "NF472 compute actual source-correlated pz and z^2 panel moments, not infer signed D_I from positive zbar or negative point islands"
+}
