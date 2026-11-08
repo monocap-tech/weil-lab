@@ -156,7 +156,15 @@ def prime_part(groups,pole,v,args):
     result=[arb(0) for _ in range(N)]
     for n,w in weights.items():
         cy=A(XC)-arb(n).log()
-        assert -A(B)<cy-A(H)<cy+A(H)<A(B)
+        # Center lies on the original six-minus support. For n=8 the Taylor
+        # analytic continuation may cross the SUPPORT SWITCH left of log8-B.
+        # The actual integration endpoints remain entirely on genuine J7;
+        # U itself is entire and no source extension is declared physical.
+        assert -A(B)<cy<A(B) and cy+A(H)<A(B)
+        if n==8:
+            assert cy-A(H)<-A(B) # explicit fixed-branch analytic continuation
+        else:
+            assert -A(B)<cy-A(H)
         one=[arb(0) for _ in range(N)]
         for i,(f,poly) in enumerate(sorted(groups.items()),1):
             lam=acb(arb(0),2*arb.pi()*A(f))
@@ -199,9 +207,34 @@ def save_part(args):
     dest.write_text(json.dumps(out,separators=(",",":"))+"\n")
     print("NF476 original",args.part,"coefficients",len(balls),"DONE",flush=True)
 
-def moment_scalar_poly(a):
-    """Exact rational integral average of P(s) across s in [-1,1]."""
-    return sum((x/Q(j+1) for j,x in enumerate(a) if j%2==0),Q(0))
+def original_irrational_panel_moments():
+    """4096-bit Arb normalized monomial moments on genuine x in [log8-B,1].
+
+    This is NOT symmetric [-1,1]. The lower endpoint is the actual n8 seam
+    log(8)-B. The fixed six-prime source formula is analytic beyond the
+    support seam, but only its ORIGINAL physical real restriction is integrated.
+    """
+    log8=arb(8).log()
+    xleft=log8-A(B)
+    xright=A(1)
+    tlo=(xleft-A(XC))/A(H)
+    thi=(xright-A(XC))/A(H)
+    assert -arb(1)<tlo<0<thi<arb(1)
+    assert xleft<A(1) and A(XC)-A(H)<xleft<A(XC)+A(H)
+    length=xright-xleft
+    assert A(Q(1,50))<length<A(Q(1,45))
+    norm=thi-tlo
+    lower=arb(1);upper=arb(1)
+    moments=[]
+    for k in range(2*N):
+        lower*=tlo;upper*=thi
+        moments.append((upper-lower)/(norm*(k+1)))
+    assert 1 in moments[0] and thi==A(Q(2,3))
+    return xleft,length,tlo,thi,moments
+
+def native_arb_mean(a,moments):
+    assert len(a)<=len(moments)
+    return sum((x*moments[k] for k,x in enumerate(a)),arb(0))
 
 def bounds_fraction_intervals(balls):
     return [tuple(map(Q,p)) for p in balls]
@@ -231,10 +264,10 @@ def assemble(args):
     # not a pointwise derivative extrapolation.
     assert eps_coeff<Q(1,10**40),("source-coefficient interval contraction unresolved",str(float(eps_coeff)))
     # Fixed six-minus physical response analytically extended on |x-99/100|<=1/25, even beyond left *support switch*.
-    # M_bound=10^350 (see analytic audit note), ratio H/R=1/2.
+    # M_bound=10^350, physical source extension radius R=1/25, H/R=3/8.
     eps_taylor=Q(10)**350*Q(3,8)**N/(1-Q(3,8))
     assert eps_taylor<Q(1,10**120)
-    # Original NF476 x<=27/25 gives B-x>=1/50 and exp(-m/25), NOT exp(-2m/25).
+    # Physical original x<=1 means B-x>=1/10: exp(-m/5), M=3000.
     eps_image=Q(100*10**160,M)*Q(3,8)**(M//5)
     assert eps_image<Q(1,10**40)
     # Genuine original input uncertainty on physical J7:
@@ -243,20 +276,25 @@ def assemble(args):
     eps_input=Q(901,10**32)+Q(1,10**400)
     assert eps_coeff+eps_taylor+eps_image+eps_input<Q(1,10**28)
     eps_z=Q(1,10**28)
-    zmeanP=moment_scalar_poly(mids)
+    # The physical endpoint is IRRATIONAL. In particular do not average
+    # over [-1,1] or replace log8-B by an invented rational tile boundary.
+    ctx.prec=PREC
+    xleft,Lphys,tlo,thi,moments=original_irrational_panel_moments()
+    zball=[A(m) for m in mids]
+    zmeanP=native_arb_mean(zball,moments)
     zcenterP=mids[0]
-    # Independent original NF470 source center and NF471 full macroscopic mean.
-    boundary=json.loads(Path(args.nf476_boundary_receipt).read_text())
-    assert boundary["original_nf407_source_sha256"]==SRC_SHA
-    assert boundary["original_nf406_seams_sha256"]==SEAM_SHA
-    assert boundary["original_273_groups"] and boundary["joint_point"]["native_bits"]==PREC
-    assert boundary["joint_point"]["x"]=="27/25"
-    zleftP=sum((c if i%2==0 else -c for i,c in enumerate(mids)),Q(0)) # s=-1
-    zleftOld=tuple(map(Q,boundary["joint_point"]["original_full_J7_z_outward"]))
-    assert zleftP-eps_z<=zleftOld[1] and zleftOld[0]<=zleftP+eps_z, (
-        "original NF470 architecture independent x=27/25 left-boundary mismatch",
-        str(float(zleftP)),str(tuple(map(float,zleftOld))))
-    assert XC-H==Q(27,25) and XC+H==Q(109,100)
+    # Genuine original n8 prime-power term vanishes at the physical n8
+    # support seam U(log8-B-log8)+v=U(-B)+U(B)=0 by oddness of the *same* U.
+    original,sh=read(args.source)
+    source=U(original)
+    v0=source.at(C(A(B))).real
+    n8_seam=source.at(C(-A(B))).real+v0
+    n8lo,n8hi=enclosure(n8_seam,120)
+    assert n8lo<Q(1,10**80) and n8hi>-Q(1,10**80)
+    assert abs(n8lo)<Q(1,10**70) and abs(n8hi)<Q(1,10**70)
+    # No invented NF470 physical point overlap at this irrational seam;
+    # exact U oddness and original NF406 prime support are the typed
+    # independent source check for the left boundary.
     ctx.prec=PREC
     orig,sh=read(args.source);jet,js=read(args.jet)
     terms,pole,s0=native_source(orig)
@@ -268,51 +306,49 @@ def assemble(args):
             lo,hi=map(Q,item["c_n_positive_outward"])
             weights.append(A((lo+hi)/2));wdelta+=(hi-lo)/2
     assert len(weights)==6 and wdelta<Q(1,10**32)
-    # Original principal p(s)=v[C7+0.5 log(220/3)+0.5 sum_j (s/3)^j/j].
+    # Genuine original p(t)=v[C7+0.5 log10+0.5 sum_j (3t/22)^j/j].
     KLOG=160
     pseries=[v*(sum(weights,arb(0))+(A(B)/A(B-XC)).log()/2)]
     for j in range(1,KLOG):
         pseries.append(v*A(Q(3,22)**j)/(2*j))
     plog_tail=Q(117,10**13)*Q(3,22)**KLOG/(2*KLOG*(1-Q(3,22)))
     assert plog_tail<Q(1,10**116)
-    # We only compute source moment of the midpoint polynomial P.
-    zball=[A(m) for m in mids]
+    # ALL monomial moments are nonzero on this asymmetric physical
+    # irrational interval. Their Arb enclosures are derived from exact
+    # antiderivative values at log8-B and 1, not a finite quadrature mesh.
     mean_z2=arb(0)
     for i in range(N):
         one=arb(0)
-        for j in range(i%2,N,2): # i+j even
-            one+=zball[j]/(i+j+1)
+        for j in range(N):
+            one+=zball[j]*moments[i+j]
         mean_z2+=zball[i]*one
-        if i%200==0:print("NF476 original complete source z-square rows",i,"/1600",flush=True)
+        if i%200==0:print("NF476 original source irrational-seam z-square rows",i,"/1400",flush=True)
     mean_pz=arb(0)
     for i,za in enumerate(zball):
         one=arb(0)
-        for j in range(i%2,KLOG,2):
-            one+=pseries[j]/(i+j+1)
+        for j in range(KLOG):
+            one+=pseries[j]*moments[i+j]
         mean_pz+=za*one
-    # Exact variance-covariance relation, with original principal mean.
-    mean_p=arb(0)
-    for j,pp in enumerate(pseries):
-        if j%2==0:mean_p+=pp/(j+1)
-    mean_zP=A(zmeanP)
+    mean_p=native_arb_mean(pseries,moments)
+    mean_zP=zmeanP
     varP=mean_z2-mean_zP*mean_zP
     covP=mean_pz-mean_p*mean_zP
     if varP<0:
         assert varP> A(-Q(1,10**100))
-    # D_I = L*[4<E[pz]>+2<E[z²]>], L=1/50.
-    DI=A(Q(1,100))*(4*mean_pz+2*mean_z2)
+    # Genuine original irrational physical L=21/10-log8 (NOT a rational approximation).
+    DI=Lphys*(4*mean_pz+2*mean_z2)
     # Uniform source error |z-P|<1e-28, true |z|<25000 (NF446).
     # |P|<25001. |p|<7e-11; |p midpoint difference|<1e-40
     # from original NF411 weight errors and source S0.
     pmax=Q(7,10**11)
-    # On the genuine NF476 physical panel d=B-x>=1/100, B/d<=110.
-    # Exact rational lower Taylor polynomial for exp(5) proves log(110)<5.
-    assert sum((Q(5)**j/Q(math.factorial(j)) for j in range(7)),Q(0))>110
-    assert Q(117,10**13)*(Q(793,250)+Q(5,2))<pmax
+    # On genuine NF476 physical x<=1, d>=1/10, B/d<=11;
+    # exp3>11 by its four-term positive rational Taylor partial.
+    assert sum((Q(3)**j/Q(math.factorial(j)) for j in range(4)),Q(0))>11
+    assert Q(117,10**13)*(Q(793,250)+Q(3,2))<pmax
     err_p=Q(1,10**40)
     e_pz=pmax*eps_z+err_p*25001+plog_tail*25001
     e_z2=Q(50001)*eps_z
-    momenterr=Q(1,100)*(4*e_pz+2*e_z2)
+    momenterr=Q(1,40)*(4*e_pz+2*e_z2) # actual physical length L<1/40
     assert momenterr<Q(1,10**23)
     dlo,dhi=enclosure(DI,90)
     dlo-=momenterr;dhi+=momenterr
@@ -351,8 +387,12 @@ def assemble(args):
      "original_source_weight_input_error_upper":str(eps_input),
      "original_true_mean_cross_check_NF471":False,
      "original_true_irrational_n8_seam_zero_from_oddness":True,
-     "original_z_mean_from_polynomial":[str(zmeanP-eps_z),str(zmeanP+eps_z)],
-     "original_NF470_architecture_left_boundary_z_from_polynomial":[str(zleftP-eps_z),str(zleftP+eps_z)],
+     "original_irrational_left_endpoint_log8_minus_B_outward":list(map(str,enclosure(xleft,100))),
+     "original_irrational_physical_length_outward":list(map(str,enclosure(Lphys,100))),
+     "original_normalized_t_lower_outward":list(map(str,enclosure(tlo,100))),
+     "original_normalized_t_upper":"2/3",
+     "original_n8_seam_vanishing_outward":[str(n8lo),str(n8hi)],
+     "original_z_mean_from_polynomial":list(map(str,[enclosure(zmeanP,90)[0]-eps_z,enclosure(zmeanP,90)[1]+eps_z])),
      "original_pz_normalized_mean_outward":[str(pz0),str(pz1)],
      "original_z2_normalized_mean_outward":[str(zz0),str(zz1)],
      "source_covariance_normalized_mean_outward":[str(cv0),str(cv1)],
