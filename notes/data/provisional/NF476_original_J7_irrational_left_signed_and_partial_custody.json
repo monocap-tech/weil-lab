@@ -1,0 +1,135 @@
+{
+  "pass": "NF476",
+  "date": "2026-11-07 PT",
+  "standing": "ACCEPTED genuine original irrational physical n8-entry [log8-B,1] full source signed NEGATIVE and five contiguous original physical J7 panels [log8-B,109/100] signed NEGATIVE; whole J7/J8 NF404 W-ODD-NEG RH OPEN",
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_native_source_parent_sha": "f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05",
+  "source_generators": 246,
+  "grouped_modes": 273,
+  "original_critical_sines": 32,
+  "original_sinh_pole": true,
+  "original_negative_regular_primes": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "original_nf404_center": "6677356497477490213/4611686018427387904",
+  "original_physical_panel": [
+    "log8-B",
+    "1"
+  ],
+  "original_principal_B": "11/10",
+  "original_length": "21/10-log8",
+  "actual_original_physical_length_approx": "0.0205584583201640717483036356254702957734995969",
+  "source_taylor_center": "99/100",
+  "source_taylor_h": "3/200",
+  "source_taylor_degree": 1399,
+  "analytic_fixed_six_prime_continuation_R": "1/25",
+  "source_cauchy_ratio": "3/8",
+  "source_cauchy_M": "10^350",
+  "actual_original_normalized_t_lower": "(log8-B-99/100)/(3/200)",
+  "actual_original_normalized_t_upper": "2/3",
+  "original_n8_seam_identity": "U(log8-B-log8)+U(B)=U(-B)+U(B)=0",
+  "n8_seam_ball_radius_approx": "6.4072338e-1089",
+  "source_taylor_remainder_approx": "7.045223928345754e-247",
+  "source_native_coefficient_ball_aggregate_radius_approx": "4.04004040044004e-163",
+  "original_matched_image_modes": 3000,
+  "original_matched_image_chunks": 3,
+  "image_tail_exact_formula": "100*10^160/3000*(3/8)^600",
+  "original_image_tail_approx": "8.742575306562591e-98",
+  "principal_log_ratio": "3/22",
+  "principal_log_center": "log(10)",
+  "principal_log_terms": 160,
+  "original_source_coefficient_and_weight_input_error_approx": "9.01e-30",
+  "uniform_actual_original_source_z_error_strict": "1e-28",
+  "original_z_normalized_mean_outward": [
+    "3.79266669073366e-11",
+    "3.79266669073367e-11"
+  ],
+  "original_pz_normalized_mean_outward": [
+    "-1.908664e-21",
+    "-1.908663e-21"
+  ],
+  "original_z2_normalized_mean_outward": [
+    "1.810694e-21",
+    "1.820695e-21"
+  ],
+  "original_covariance_normalized_mean_outward": [
+    "-4.090e-24",
+    "1.592e-23"
+  ],
+  "original_covariance_sign": "UNDECIDED (interval includes zero)",
+  "original_variance_normalized_mean_outward": [
+    "3.622e-22",
+    "3.924e-22"
+  ],
+  "original_variance_sign": "POSITIVE",
+  "original_true_irrational_signed_D_outward": [
+    "-8.255100e-23",
+    "-8.205096e-23"
+  ],
+  "original_true_signed_sign": "NEGATIVE",
+  "independent_exact_Fraction_original_signed_D_source_moments_approx": [
+    "-8.250657297669078e-23",
+    "-8.209539558690376e-23"
+  ],
+  "nf475_prior_true_original_contiguous_panel": [
+    "1",
+    "109/100"
+  ],
+  "nf475_prior_signed_D_outward": [
+    "-3.59776116e-22",
+    "-3.57973811e-22"
+  ],
+  "new_true_original_contiguous_partial_panel": [
+    "log8-B",
+    "109/100"
+  ],
+  "new_true_original_contiguous_signed_D_outward": [
+    "-4.423272e-22",
+    "-4.400247e-22"
+  ],
+  "new_partial_source_sign": "NEGATIVE",
+  "independent_exact_Fraction_contiguous_original_signed_D_approx": [
+    "-4.4232710528179752e-22",
+    "-4.4002479028179702e-22"
+  ],
+  "nf464_conditional_whole_original_J7_negative_target": "-2.03475e-22",
+  "sufficient_original_remaining_two_right_panel_signed_upper": "2.365497e-22",
+  "remaining_genuine_original_J7_physical_panels": [
+    "[109/100,219/200]",
+    "[219/200,log9-B]"
+  ],
+  "original_source_native_CI": {
+    "run_id": 42433245120,
+    "status": "SUCCESS",
+    "central": true,
+    "six_prime_source": true,
+    "three_original_matched_image_batches": true,
+    "full_irrational_analytic_source_moments": true,
+    "independent_400_term_exact_Fraction_log8_and_signed_audit": true
+  },
+  "raw_original_native_source_artifact": {
+    "id": 13598736536,
+    "filename": "nf476-original-J7-source-signed-moments.json",
+    "raw_sha256": "de5b0585bbdbf3236d23deb7814d691e172d05eadaac00a376c3a8a6b93ec44a",
+    "zip_sha256": "60751b11807b917c06401e3f133174bf6f26db17a28ea37efd15caa371d2e07f"
+  },
+  "independent_exact_Fraction_original_seam_sign_audit": {
+    "id": 13598632622,
+    "filename": "nf476-original-J7-irrational-left-seam-Fraction-audit.json",
+    "raw_sha256": "39909970d16a64f3ee19c992e7910877b962c9a2d66d6d1b67b7942cc0e41745",
+    "zip_sha256": "984c807a4df5a793f4f36d40521425dc54777ca132132da6a2dab2598fb73a1c"
+  },
+  "full_raw_source_JSON_repository_archival": "OPEN; uncoarsened 4096bit signed+independent audit JSONs in original CI artifact and conversation attached copies",
+  "whole_original_J7": "OPEN",
+  "whole_original_J8": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "NF477 source-correlated high-m matched images or compact kernel route for remaining genuine original J7 [109/100,219/200] and [219/200,log9-B], then assess full J7 NF464 conditional deficit."
+}
