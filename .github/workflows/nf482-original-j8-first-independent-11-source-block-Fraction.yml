@@ -1,0 +1,31 @@
+name: NF482 independent exact original full source J8 signed first 11 artifacts
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-original-J8-first-raw-blocks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42506659220
+          pattern: nf482a-original-source-*
+          merge-multiple: true
+          path: immutable-native-source
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent EXACT original native Arb SOURCE coefficient interval contraction, true irrational log9 principal pz and z² source-integral
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf482_J8_first_11_original_native_chunks_exact_fraction.py --source-dir immutable-native-source --output nf482-original-J8-first-true-irrational-signed-exact-source.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf482-original-J8-first-physical-Fraction-11-source-independent
+          path: nf482-original-J8-first-true-irrational-signed-exact-source.json
+          retention-days: 90

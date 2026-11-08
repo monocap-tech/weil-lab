@@ -1,0 +1,92 @@
+{
+  "pass": "NF482",
+  "date": "2026-11-08 PT",
+  "standing": "ACCEPTED: complete authentic original J8 first irrational n9-entry REAL signed integral strict POSITIVE from 4096bit source-native 11 original 273-mode blocks AND independently exact Fraction true physical pz/z² source moments; entire J8 signed upper, NF404, W-ODD-NEG, RH OPEN",
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_source_generators": 246,
+  "original_grouped_modes": 273,
+  "original_critical_sines": 32,
+  "odd_sinh_pole": true,
+  "original_seven_regular_J8_prime_power_translates": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9
+  ],
+  "true_first_J8_physical_panel": [
+    "log9-B",
+    "549/500"
+  ],
+  "genuine_first_J8_length": "1099/500-log9",
+  "original_NF478_terminal_J7_entry_seam_overlap": true,
+  "original_NF406_n9_entry_oddness": "U(-B)+U(B)=0",
+  "original_source_native_signed_D_I_outward_coarse": [
+    "4.01464043536219e-25",
+    "4.03464083536240e-25"
+  ],
+  "original_source_native_signed_D_I_SIGN": "STRICT POSITIVE",
+  "original_source_pz_normalized_mean_coarse": [
+    "-2.627000e-23",
+    "-2.626999e-23"
+  ],
+  "original_source_z2_normalized_mean_coarse": [
+    "3.115526e-22",
+    "3.125528e-22"
+  ],
+  "original_source_z_mean_approx": "4.664563332485858e-13",
+  "original_source_covariance_sign": "UNDECIDED (interval crosses zero)",
+  "original_source_variance_sign": "STRICT POSITIVE",
+  "original_source_analytic_taylor_error_approx": "4.941267246499635e-128",
+  "original_source_arb_coeff_width_approx": "4.004000040040001e-163",
+  "original_original_amplitude_geometric_image_infinity_error_approx": "4.628734786648808e-44",
+  "original_source_prime_and_dyadic_input_paid_approx": "9.01e-30",
+  "original_true_source_uniform_z_error_strict_upper": "1e-29",
+  "source_native_CI": {
+    "run": 42508615790,
+    "native_assembling_original_source_job": "SUCCESS",
+    "raw_native_result_artifact_id": 13628664269,
+    "raw_native_JSON_sha256": "7683979113e7329498f77649e3af7367fa3cb375bdb1b7fa2c94b919d5b794d0",
+    "raw_native_zip_sha256": "bcdf989ee81289e228476e2ff66376e2b74507516ab59d4f4e5ed715e48f2b25",
+    "first_native_11_source_mode_producers_run": 42506659220,
+    "first_assembler_failure": "original Fraction vs Arb endpoint comparison (type error only); corrected and replayed unchanged source artifacts",
+    "independent_original_exact_fraction_status": "SUCCESS (direct immutable raw 11-source block audit CI #42510017106)",
+    "independent_original_exact_fraction_direct_11_source_job_run": 42510017106,
+    "legacy_native_moment_second_audit_historical_failure": "first historical second audit run #42508615790 failed due unretained JSON optional metadata key, native source assembly itself SUCCESS; direct independent all-11-source exact Fraction #42510017106 PASS. Focused corrected metadata audit queued."
+  },
+  "critical_numerical_precision_note": "central digamma and earliest image first coefficient individually ~3.24e141 and cancel to ~e-11; an exploratory 90-decimal mpmath sum falsely suggested z~1.7; this was DISCARDED and replaced with exact Fraction native interval contraction and 4096bit Arb. NEVER use low-precision source-chunk arithmetic.",
+  "full_original_J8_signed_value_upper": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "NF483 integrate actual original J8 terminal [549/500,B] with exact mu0 H-principal endpoint cancellation, first 19 full-source Phi functions plus original finite 18000 matched modes and true NF406 n9 support; measure true signed D8 upper or complete Efull, NF404/W-ODD-NEG/RH stay OPEN",
+  "original_J8_first_exact_fraction_source_signed_D_coarse": [
+    "4.024640635362290e-25",
+    "4.024640635362300e-25"
+  ],
+  "original_J8_first_signed_exact_fraction_sign": "STRICT POSITIVE",
+  "original_source_pz_normalized_mean_exact_approx": "-2.62699970671838377477e-23",
+  "original_source_z2_normalized_mean_exact_approx": "3.12052697550845770826e-22",
+  "original_source_signed_D_exact_approx": "4.02464063536229418079e-25",
+  "source_exact_archive": {
+    "run_id": 42510017106,
+    "conclusion": "SUCCESS",
+    "original_source_artifact_id": 13629053472,
+    "original_source_artifact_raw_json_sha256": "100c1d0308231125585b0f391bfa8b0133898eaed27a937ff66b7c8539eb15fc",
+    "original_source_artifact_zip_sha256": "121282ca5eac93573c1171e03426ed99b05e15a445791786017e5919d384a125",
+    "method": "independent EXACT Fraction from original eleven full 4096-bit source coefficient BALL artifact JSONs, true 350/250-term rational atanh log9 and log1375/3, 70 source coefficients retained and other 1130 coefficients paid, no Gaussian mesh",
+    "retained_source_coefficients": 70,
+    "genuine_source_1130_high_degree_tail_approx": "1.3002013959032547e-68",
+    "independent_true_J8_first_sign": "POSITIVE"
+  },
+  "original_J8_first_independent_source_certified": true,
+  "original_full_original_J8_unintegrated_terminal": [
+    "549/500",
+    "B"
+  ],
+  "original_terminal_J8_NF404_conservative_sufficient_signed_upper_approx": "1.62509783079754366e-22",
+  "original_terminal_J8_NF479_bessel_forced_strict_lower_approx": "1.62476677295572269e-22"
+}

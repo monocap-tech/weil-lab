@@ -1,0 +1,71 @@
+{
+  "pass": "NF482",
+  "recovery_date": "2026-11-08 PT",
+  "standing": "ACCEPTED original source-native + INDEPENDENT EXACT-FRACTION first genuine J8 n9-entry physical signed D8A POSITIVE; complete original J8 upper and NF404 OPEN",
+  "source_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "source_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_source_generators": 246,
+  "original_grouped_modes": 273,
+  "original_critical_sines": 32,
+  "original_odd_sinh_pole": true,
+  "original_J8_seven_minus_prime_powers": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9
+  ],
+  "original_true_original_J8_first_physical_interval": [
+    "log9-B",
+    "549/500"
+  ],
+  "original_true_original_J8_first_physical_length": "1099/500-log9",
+  "original_true_J8_A_length_approx": "0.00077542266378061720950952615494859070501888435",
+  "source_shared_native_4096bit_taylor_degree": 1199,
+  "original_18k_source_matched_images": true,
+  "source_authenticated_image_tail_strict_upper": "4.628735e-44",
+  "source_original_uniform_z_minus_polynomial_strict_upper": "1e-29",
+  "original_pz_normalized_mean_approx": "-2.626999706718e-23",
+  "original_z2_normalized_mean_approx": "3.120527e-22",
+  "original_covariance_sign": "UNDECIDED (interval straddles zero)",
+  "original_variance_sign": "STRICT POSITIVE",
+  "original_first_J8_signed_D_outward_conservative": [
+    "4.014640e-25",
+    "4.034641e-25"
+  ],
+  "original_first_J8_signed_sign": "STRICT POSITIVE: native source and independent exact Fraction GitHub CI PASS",
+  "original_original_J7_right_n9_seam_overlap": true,
+  "original_n9_entry_original_source_odd_zero": "U(-B)+U(B)=0 source-Arb certified",
+  "original_NF479_full_J8_signed_inferred_lower_approx": "1.62879141359108499738213816845263063162411477e-22",
+  "original_remaining_true_J8_terminal_physical_interval": [
+    "549/500",
+    "B"
+  ],
+  "original_remaining_J8_terminal_signed_lower_derived_from_global_Bessel_and_first_source_upper_approx": "1.62475677275572260308859830368101478380504051e-22",
+  "original_remaining_J8_terminal_conservative_sufficient_upper_for_NF404_approx": "1.62508783059754356386393816081398170369734345e-22",
+  "original_remaining_J8_terminal_certain_failure_if_exceeds_approx": "1.65276216747869820147155757473518533102591098e-22",
+  "NF479_coupled_original_projector_gap_approx": "3.31057841820960775339857132966919892302933116e-26",
+  "original_first_J8_source_CI": {
+    "raw_original_source_run_id": 42506659220,
+    "eleven_original_native_components": "SUCCESS",
+    "initial_assembly": "FAILED Python Fraction/Arb comparator type mismatch, no source failure",
+    "corrected_native_assembly_run_id": 42508615790,
+    "corrected_native_assembly_status": "SUCCESS",
+    "corrected_assembly_original_signed_artifact_id": 13628664269,
+    "corrected_assembly_original_raw_JSON_SHA256": "7683979113e7329498f77649e3af7367fa3cb375bdb1b7fa2c94b919d5b794d0",
+    "corrected_assembly_original_zip_SHA256": "bcdf989ee81289e228476e2ff66376e2b74507516ab59d4f4e5ed715e48f2b25",
+    "initial_independent_exact_audit": "FAILED missing redundant non-mathematical boolean key original_first_J8_actual_signed_panel_only",
+    "independent_exact_repair": "CHECK original actual physical panel and whole_J8 OPEN fields already emitted by immutable source",
+    "independent_exact_repair_ci_run_id": 42510877480,
+    "independent_exact_repair_ci_status": "SUCCESS",
+    "independent_exact_repair_artifact_id": 13629968885,
+    "independent_exact_repair_raw_json_sha256": "d071d7607c5e47dcc8eb13b4fe0c165878c197a2be83629d0d4d7478b8f382cc"
+  },
+  "full_original_J8_value_and_signed_upper": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "Recovery follow-up: verify repaired independent exact source original NF482 A GitHub Actions #42510877480. Then NF483 original physical terminal J8 [549/500,B] requires true m<18000 matched images, full-source nineteen Φ jets and exact principal H cancellation. No full-J8 signed upper yet."
+}

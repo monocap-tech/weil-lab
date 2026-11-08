@@ -1,0 +1,36 @@
+name: NF482 exact original J8 irrational entry focused source audit
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-immutable-original-J8-first-panel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42508615790
+          name: nf482a-original-J8-first-signed-moments-immutable-replayed
+          path: native-original
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42442681343
+          name: nf478t-original-J7-signed-moments-reassembled
+          path: true-prior-J7
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original signed [log9-B,549/500] with 350-term rational log9, seven-prime physical source and source amplitude high-image tail
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf482_original_J8_first_irrational_signed_exact.py --native native-original/nf482a-original-J8-irrational-first-signed-moments.json --prior-j7 true-prior-J7/nf478t-original-J7-source-signed-moments.json --output nf482-original-J8-first-source-exact-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf482-original-J8-first-physical-independent-Fraction-success
+          path: nf482-original-J8-first-source-exact-audit.json
+          retention-days: 90
