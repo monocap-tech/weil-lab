@@ -1,0 +1,73 @@
+name: NF482 original J8 first physical source fast exact reassembly
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-J8-first-reassemble-immutable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42506659220
+          pattern: nf482a-original-source-*
+          merge-multiple: true
+          path: results
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42442681343
+          name: nf478t-original-J7-signed-moments-reassembled
+          path: prior-original-J7
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf482_original_J8_irrational_n9_entry_signed_native.py native/scripts/local_replay/
+      - name: Reassemble actual source 273 modes on TRUE original J8 irrational entry from eleven pinned successful native jobs
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf482_original_J8_irrational_n9_entry_signed_native.py --part assemble --input-dir ../results --nf478t-receipt ../prior-original-J7/nf478t-original-J7-source-signed-moments.json --nf477-tail-receipt ../candidate/notes/data/provisional/NF477_original_J7_correlated_resolvent_high_image_tail_custody.json --output nf482a-original-J8-irrational-first-signed-moments.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf482a-original-J8-first-signed-moments-immutable-replayed
+          path: native/nf482a-original-J8-irrational-first-signed-moments.json
+          retention-days: 90
+  independent-J8-original-exact:
+    needs: [original-J8-first-reassemble-immutable]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf482a-original-J8-first-signed-moments-immutable-replayed
+          path: original
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42442681343
+          name: nf478t-original-J7-signed-moments-reassembled
+          path: prior-original-J7
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact rational authentic log9 irrational J8 signed pz,z2 and physical n9 support audit
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf482_original_J8_first_irrational_signed_exact.py --native original/nf482a-original-J8-irrational-first-signed-moments.json --prior-j7 prior-original-J7/nf478t-original-J7-source-signed-moments.json --output nf482-original-J8-first-physical-exact-signed-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf482a-original-J8-first-signed-exact-immutable-replayed
+          path: nf482-original-J8-first-physical-exact-signed-audit.json
+          retention-days: 90
