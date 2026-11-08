@@ -14,8 +14,6 @@ from fractions import Fraction as Q
 if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
 ROOT=Path(__file__).resolve().parents[2]
 SRC="0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce"
-SEAM="c2731e3bc422786a28cee7e80935a6417ba1a149fba14c640675"
-# Actual full correct original seam SHA is below; avoid arbitrary truncation.
 SEAM="c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675"
 def iv(x):
     a,b=map(Q,x);assert a<=b
@@ -55,7 +53,7 @@ def main():
     assert d["original_source_Taylor_remainder"] and Q(d["original_source_Taylor_remainder"])<Q(1,10**120)
     assert Q(d["original_source_arb_coefficient_aggregate_width"])<Q(1,10**40)
     assert Q(d["original_source_weight_input_error_upper"])<Q(1,10**28)
-    assert d["certified_sup_z_minus_polynomial"]=="1/10^28"
+    assert d["certified_sup_z_minus_polynomial"]=="1/10^29"
     assert d["whole_original_J8"]==d["NF404"]==d["W_ODD_NEG"]==d["RH"]=="OPEN"
     assert tail["source_resolvent_M"]==18000 and tail["independent_exact_fraction_ci"]["status"]=="SUCCESS"
     Cm=Q(tail["complete_original_source_Tm_all_m_ge_18000_strict_upper"])
