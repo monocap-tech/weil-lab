@@ -1,6 +1,6 @@
 # Weil-Lab — NF481: eliminate conditional norm in original J8 endpoint-energy certificate
 
-**Date 2026-11-08 PT. New original 4096-bit 20-jet source native generation and independent exact-rational audit SUBMITTED.** Numeric k-threshold and squared-energy residual standing PENDING CI. Complete original J8 signed numeric value and UPPER, NF404 scalar cap, canonical W-ODD-NEG, original Weil operator/domain and RH OPEN. No main merge.
+**Date 2026-11-08 PT. ACCEPTED original 4096-bit 20-jet full-source J8 endpoint L² and UNCONDITIONAL J8 squared-energy truncation error <9.373×10⁻³³; focused native+independent exact-rational CI #42504212393 SUCCESS.** Complete original J8 signed numeric value and UPPER, NF404 scalar cap, canonical W-ODD-NEG, original Weil operator/domain and RH OPEN. No main merge.
 
 ## Previous → Current → Next bold
 
@@ -89,8 +89,67 @@ For each \(k=1,\dots,20\), a pure exact-Fraction source verifier computes this b
 
 \`scripts/local_replay/verify_nf481_original_J8_unconditional_energy_tail_exact.py\`: original SHA checks; original NF446 physical \(z\) and original NF450/451 accepted B endpoint checks; genuine NF406 seven-prime support; exact rational log9 and positive log-square; source-native 20-jet positive resolvent remainder and unconditional \(2\|w\|\epsilon+\epsilon^2\) energy charge, with no assumed comparator norm.
 
-\`.github/workflows/nf481-original-j8-20jet-source-unconditional-energy.yml\`: pinned native source 4096-bit job and independent exact-rational original physical/source audit. **Current numerical result PENDING CI**. No peer-review or NF404 cap claim from the setup.
+\`.github/workflows/nf481-original-j8-20jet-source-unconditional-energy.yml\`: pinned native source 4096-bit job and independent exact-rational original physical/source audit. **Current numerical result SOURCE-CERTIFIED by full immutable native original-source + independent exact Fraction CI SUCCESS #42504212393.** No peer-review or NF404 cap claim from the setup.
 
 **OPEN:** actual genuine original J8 source-native whole signed value and UPPER, complete original centered NF404 sufficient scalar, W-ODD-NEG, exterior J242 lowband upper, even/whole operator-domain and RH.
 
 **Next bold NF482:** preserve source full continuum: integrate the original **finite m<18000 matched images** plus exact \(\mathcal H\)-principal cancellation and actual first \(k-1\) endpoint-continuous source \(\Phi\) functions over original J8; certify the \(D_8\) signed upper or complete \(E_{\rm full}\) using the now *unconditional* original endpoint image energy fee. An image tail gate alone is not the full integral.
+
+
+## NF481 executed 20-source-jet result — ACCEPTED
+
+The [original full-source 4096-bit + independent exact physical Fraction CI #42504212393](https://github.com/monocap-tech/weil-lab/actions/runs/42504212393) passed **both jobs**. The original NF459 pinned source-native 360-resolvent evaluator was rerun on all 246 original NF407 generators/273 grouped frequency-order modes/99 frequencies plus exact odd sinh pole, exposing actual 4096-bit outward coefficients \(\mu_0,\dots,\mu_{19}\), while retaining the **full** 360-jet absolute sum, original exact positive binomial resolvent remainder and direct full original source checks at \(m=18000,36000\). The independent pure Fraction verifier checked original NF407/NF406 raw SHAs and NF446 compact physical \(|z|<25000\), NF450 real \(z(B)\), and NF451 source support, independently proved the ORIGINAL \(J8\) real length \(0<2B-\log9<1/300\) via an exact positive 100-term rational atanh(4/5) series and checked the rational positive \(\exp6\) partial for the exact **principal-square** bound \(\int_{J8^+}|p|^2<221/600\).
+
+**The unconditional genuine original physical squared-energy comparator norm is now a theorem:**
+\[
+\boxed{\|w=p+z\|_{L^2(J8^+\cup J8^-)}<2100.}
+\]
+No pointwise bound is claimed for the authentic logarithmic principal \(p(B)\); this result is \(L^2\) and is deliberately loose. Unlike NF480, **no unproved \(\|g\|\le4\cdot10^{-11}\) hypothesis** is required.
+
+### Exact source-jet sweep: k=17 first below the 10^-28 unconditional energy gate
+
+From the unchanged original 360-jet all-source remainder and the newly exposed original 20 outward 4096-bit source jets, the independent exact-Fraction sweep gives:
+
+| k source jets extracted | Original two-sided J8 high-image \(L^2\) upper | **UNCONDITIONAL J8 squared-energy fee** |
+|---:|---:|---:|
+| 12 | \(1.174850641546197\cdot10^{-26}\) | \(4.934372694494027\cdot10^{-23}\) |
+| 13 | \(6.173001051679549\cdot10^{-28}\) | \(2.592660441705411\cdot10^{-24}\) |
+| 14 | \(3.008866196834822\cdot10^{-29}\) | \(1.263723802670625\cdot10^{-25}\) |
+| 15 | \(1.397780950010017\cdot10^{-30}\) | \(5.870679990042073\cdot10^{-27}\) |
+| 16 | \(6.486092091830917\cdot10^{-32}\) | \(2.724158678568985\cdot10^{-28}\) |
+| **17** | \(2.379334969176525\cdot10^{-33}\) | **\(9.993206870541405\cdot10^{-30}\)** |
+| 18 | \(1.169786590814598\cdot10^{-35}\) | \(4.913103681421311\cdot10^{-32}\) |
+| 19 | \(5.933281994402084\cdot10^{-36}\) | \(2.491978437648875\cdot10^{-32}\) |
+| **20** | **\(2.231601306137911\cdot10^{-36}\)** | **\(9.372725485779226\cdot10^{-33}\)** |
+
+**At k=17, the original same-source remainder FIRST meets the unconditional squared-energy fee \(<10^{-28}\).** At \(k=20\), it strengthens to
+\[
+\boxed{
+\|r_{20,18000}\|_{L^2(J8^+\cup J8^-)}
+<2.231602\times10^{-36},
+}
+\]
+and hence with the *proved original physical full response* \(\|w\|_2<2100\),
+\[
+\boxed{
+\left|
+\|w\|_{L^2(J8^+\cup J8^-)}^2
+-\|g_{20}\|_{L^2(J8^+\cup J8^-)}^2
+\right|
+<
+9.372726\times10^{-33}.
+}
+\]
+Here \(g_{20}\) is the **exactly defined, but NOT yet evaluated**, original source comparator: all original finite \(m<18000\) matched images, the exact \(\mu_0=v\) original \(\mathcal H\)-principal cancellation, \(\mu_1,\ldots,\mu_{19}\) entire endpoint-compatible original analytic source moment functions, complete original NF446 central response, and original NF406 seven-minus J8 prime translations. All original NF407 dyadic source-ball uncertainty, complete all-360-resolvent binomial remainder and native 4096-bit rounding are paid. **It does not replace the full original source with twenty physical generators.**
+
+NF479's conditional NF404 selected-complement gap \(\gamma^2-d_{12,\ell}\approx3.3105784182\times10^{-26}\) is over **three million times** larger than the accepted NF481 energy truncation fee, so the *remaining high-image truncation* is no longer the precision bottleneck.
+
+### Verification, reproducibility, and remaining commitments
+
+Native source artifact **#13625998951** (\`nf481-original-J8-native-20jet-resolvent.json\`), raw JSON SHA256 \`995dd6a6533b771cb686bde05d5a4e1a21d9ccaf482547f219d1e044df3b3c14\`, ZIP SHA256 \`7156c28f9e5dd3f073cc26caffc0b7cc09b192f5d2b60bc2d1f8df690db22be7\`. Independent exact physical original NF446/log-square and 20-source-jet Fraction audit artifact **#13626504930** (\`nf481-original-J8-unconditional-energy-tail-exact-Fraction.json\`), raw JSON SHA256 \`0cb1252824422c646bdd656949f908147519188245f4658bd49092df057a06b6\`, ZIP SHA256 \`0c8e93829f342cb84993f53137b78770f9394395786e696623d63e7cdbedd752\`. Both jobs passed in [CI #42504212393](https://github.com/monocap-tech/weil-lab/actions/runs/42504212393). [Permanent source/exact proof custody](../data/provisional/NF481_original_J8_unconditional_20jet_energy_custody.json) preserves original hashes, accepted interval and error numbers and still-open duties; uncoarsened source and exact raw outputs remain in Actions and conversation artifacts, not yet fully archived in GitHub. Independent external mathematical peer review remains separate.
+
+**ACCEPTED:** true original entire J8 original 4096-bit full source twenty-jet infinite endpoint remainder and its **UNCONDITIONAL** two-sided squared-energy truncation error \(<9.373\times10^{-33}\). This upgrades NF480's conditional comparator-energy proposal into an actual source-certified precision result using original NF446 accepted full-source compact physical bound. The proof is *not* an evaluation of the comparator's energy.
+
+**Still OPEN:** actual retained finite 18,000 source images, nineteen source-correlated \(\Phi\) functions and genuine original n9 J8 regular response **signed integration**, complete \(D_8\) numerical UPPER, NF404 centered-energy scalar, W-ODD-NEG, supported J242 exterior, operator/domain, RH.
+
+**Next bold NF482:** compute the actual authentic original J8 retained comparator \(\|g_{20}\|^2\) or original full \(D_8\) upper, using exact source \(\mathcal H\)-principal cancellation, the genuine physical n9 seam and 19 analytic \(\Phi\) functions. The **unconditional truncation budget is closed**, but a scalar still requires its own evaluated original signed moments.
