@@ -1,0 +1,30 @@
+name: NF480 exact original source J8 endpoint-regularized 12-jet infinite-image L2
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-J8-source-renormalized-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42436964916
+          name: nf477-original-J7-source-correlated-high-image-tail
+          path: original-NF477-native
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay ORIGINAL native 4096-bit NF477 360-jet Arb source, subtract first twelve source-contracted jet balls and prove entire physical J8 reflected L2 residual
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf480_original_J8_endpoint_12jet_L2_exact.py --nf477-original-native-raw original-NF477-native/nf477-original-J7-high-image-resolvent-tail.json --output nf480-original-J8-endpoint-12jet-exact-Fraction-certificate.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf480-original-J8-endpoint-renormalized-12jet-exact
+          path: nf480-original-J8-endpoint-12jet-exact-Fraction-certificate.json
+          retention-days: 90
