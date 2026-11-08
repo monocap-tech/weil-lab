@@ -1,0 +1,154 @@
+name: NF482 original physical J8 first irrational n9 signed source panel
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-central-and-seven-primes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [central, primes]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf482_original_J8_irrational_n9_entry_signed_native.py native/scripts/local_replay/
+      - name: Complete original J8 source 273-mode central / genuine n2,3,4,5,7,8,9 regular prime modes
+        working-directory: native
+        env:
+          PART: ${{ matrix.part }}
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf482_original_J8_irrational_n9_entry_signed_native.py --part "$PART" --output nf482a-$PART.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf482a-original-source-${{ matrix.part }}
+          path: native/nf482a-${{ matrix.part }}.json
+          retention-days: 90
+  original-matched-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 9
+      matrix:
+        include:
+          - start: 0
+            stop: 2000
+          - start: 2000
+            stop: 4000
+          - start: 4000
+            stop: 6000
+          - start: 6000
+            stop: 8000
+          - start: 8000
+            stop: 10000
+          - start: 10000
+            stop: 12000
+          - start: 12000
+            stop: 14000
+          - start: 14000
+            stop: 16000
+          - start: 16000
+            stop: 18000
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf482_original_J8_irrational_n9_entry_signed_native.py native/scripts/local_replay/
+      - name: Authentic original 246-source 273-mode original NF443 both matched families full 2k block
+        working-directory: native
+        env:
+          START: ${{ matrix.start }}
+          STOP: ${{ matrix.stop }}
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf482_original_J8_irrational_n9_entry_signed_native.py --part images --start "$START" --stop "$STOP" --output nf482a-images-$START-$STOP.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf482a-original-source-images-${{ matrix.start }}-${{ matrix.stop }}
+          path: native/nf482a-images-${{ matrix.start }}-${{ matrix.stop }}.json
+          retention-days: 90
+  assemble-original-J8-first-signed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    needs: [original-central-and-seven-primes, original-matched-images]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf482a-original-source-*
+          merge-multiple: true
+          path: results
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42442681343
+          name: nf478t-original-J7-signed-moments-reassembled
+          path: prior-original-J7
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf482_original_J8_irrational_n9_entry_signed_native.py native/scripts/local_replay/
+      - name: Genuine original irrational n9-entry [log9-B,549/500] original source signed pz and z²
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf482_original_J8_irrational_n9_entry_signed_native.py --part assemble --input-dir ../results --nf478t-receipt ../prior-original-J7/nf478t-original-J7-source-signed-moments.json --nf477-tail-receipt ../candidate/notes/data/provisional/NF477_original_J7_correlated_resolvent_high_image_tail_custody.json --output nf482a-original-J8-irrational-first-signed-moments.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf482a-original-J8-first-signed-moments
+          path: native/nf482a-original-J8-irrational-first-signed-moments.json
+          retention-days: 90
+  independent-exact-irrational-J8-signed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    needs: [assemble-original-J8-first-signed]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf482a-original-J8-first-signed-moments
+          path: native-result
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42442681343
+          name: nf478t-original-J7-signed-moments-reassembled
+          path: prior-original-J7
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently audit original source-sha n9 seam and exact Fraction true irrational signed D_I with new source-amp image tail
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf482_original_J8_first_irrational_signed_exact.py --native native-result/nf482a-original-J8-irrational-first-signed-moments.json --prior-j7 prior-original-J7/nf478t-original-J7-source-signed-moments.json --output nf482a-original-J8-first-signed-exact-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf482a-original-J8-first-signed-independent-exact
+          path: nf482a-original-J8-first-signed-exact-audit.json
+          retention-days: 90
