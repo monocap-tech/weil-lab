@@ -214,7 +214,7 @@ def assemble(args):
     for f in files:
         assert f.exists(),f"Missing source-native coefficient block {f}"
         records.append(json.loads(f.read_text()))
-    assert [r["part"] for r in records]==["central","primes"]+["images"]*12
+    assert [r["part"] for r in records]==["central","primes"]+["images"]*9
     assert all(r["original_nf407_source_sha256"]==SRC_SHA and r["original_nf406_seams_sha256"]==SEAM_SHA for r in records)
     assert all(r["original_273_groups"] and r["native_bits"]==PREC and r["polynomial_degree"]==N-1 for r in records)
     assert [(r["original_image_index_start"],r["original_image_index_stop"]) for r in records[2:]]==[(m,m+2000) for m in range(0,M,2000)]
