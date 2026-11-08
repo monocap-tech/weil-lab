@@ -173,7 +173,7 @@ def prime_part(groups,pole,v,args):
         for j in range(N):
             result[j]-=w*(one[j]+A(pole)*sp[j])
         result[0]-=w*v
-        print("NF482-A original physical negative regular prime shift",n,"/6",flush=True)
+        print("NF482-A original physical negative regular prime shift",n,"/7",flush=True)
     return result,weights,wdelta,jsha
 
 def save_part(args):
@@ -214,10 +214,12 @@ def original_J8_true_irrational_entry_moments():
     tlo=(xleft-A(XC))/A(H)
     thi=(xright-A(XC))/A(H)
     assert A(Q(7,10000))<Lphys<A(Q(1,1000))
-    assert -arb(1)<tlo<0<thi<=arb(1)
-    assert A(XC)-A(H)<xleft<xright==A(XC)+A(H)
+    assert -arb(1)<tlo<0
+    assert XC+H==Q(549,500)  # true right physical x, exact rational
+    thi=arb(1)
+    assert A(XC)-A(H)<xleft<xright
     assert A(XC)+A(R_CAUCHY)<A(B)
-    assert A(B)-xright==A(Q(1,500))
+    assert B-Q(549,500)==Q(1,500)
     moments=[]
     lo=arb(1);hi=arb(1);den=thi-tlo
     for k in range(2*N):
@@ -270,11 +272,11 @@ def assemble(args):
     assert receipt477["pass"]=="NF477" and receipt477["source_sha256"]==SRC_SHA and receipt477["seam_sha256"]==SEAM_SHA
     assert receipt477["source_resolvent_M"]==M and receipt477["source_resolvent_N"]==360
     assert receipt477["independent_exact_fraction_ci"]["status"]=="SUCCESS"
-    Cm=Q(receipt477["source_amplitude_upper_all_m_gte_18000"])
+    Cm=Q(receipt477["complete_original_source_Tm_all_m_ge_18000_strict_upper"])
     assert Cm<Q(9,10**15)
     eps_image=Cm*Q(3,8)**(M//250)/(2*Q(1,500))
     assert eps_image<Q(1,10**40)
-    # Genuine original input uncertainty on physical J7:
+    # Genuine original input uncertainty on physical J8:
     # original source dyadic S0<1e-700, original six prime weights total
     # uncertainty <1e-32, original |U|<900 and |v|<1.
     eps_input=Q(901,10**32)+Q(1,10**400)
@@ -418,11 +420,11 @@ def assemble(args):
     }
     dest=Path(args.output);dest.parent.mkdir(parents=True,exist_ok=True)
     dest.write_text(json.dumps(result,indent=2)+"\n")
-    print("NF482-A source ORIGINAL J7 mean z",float(zmeanP),flush=True)
-    print("NF482-A source ORIGINAL J7 pz",float(pz0),float(pz1),flush=True)
-    print("NF482-A source ORIGINAL J7 z²",float(zz0),float(zz1),flush=True)
+    print("NF482-A source ORIGINAL J8 mean z",float(zmeanP),flush=True)
+    print("NF482-A source ORIGINAL J8 pz",float(pz0),float(pz1),flush=True)
+    print("NF482-A source ORIGINAL J8 z²",float(zz0),float(zz1),flush=True)
     print("NF482-A source ORIGINAL signed J7 D_I",float(dlo),float(dhi),sign,flush=True)
-    print("NF482-A original whole J7 and RH OPEN",flush=True)
+    print("NF482-A original whole J8 and RH OPEN",flush=True)
 
 def main():
     ap=argparse.ArgumentParser()
