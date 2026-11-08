@@ -299,7 +299,7 @@ def assemble(args):
     n9_entry=src.at(C(-A(B))).real+src.at(C(A(B))).real
     e0,e1=enclosure(n9_entry,120)
     assert e0<=0<=e1 and max(abs(e0),abs(e1))<Q(1,10**70)
-    assert XC-H<xleft<XC+H
+    assert A(XC)-A(H)<xleft<A(XC)+A(H)
     # Check J7 side at the original n9 boundary via an independent prior
     # physical certified original NF478-T right endpoint interval.
     previous=json.loads(Path(args.nf478t_receipt).read_text())
