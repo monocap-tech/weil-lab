@@ -250,6 +250,7 @@ def assemble(args):
     eps_z=Q(1,10**28)
     zmeanP=moment_scalar_poly(mids)
     zcenterP=mids[0]
+    zrightP=sum(mids,Q(0)) # physical new right endpoint x=219/200; exact common-source polynomial
     # Independent original NF470 source center and NF471 full macroscopic mean.
     boundary=json.loads(Path(args.nf478r_boundary_receipt).read_text())
     assert boundary["original_nf407_source_sha256"]==SRC_SHA
@@ -358,6 +359,7 @@ def assemble(args):
      "original_true_left_boundary_cross_check_original_compact":True,
      "original_z_mean_from_polynomial":[str(zmeanP-eps_z),str(zmeanP+eps_z)],
      "original_original_compact_left_boundary_z_from_polynomial":[str(zleftP-eps_z),str(zleftP+eps_z)],
+     "original_true_right_boundary_z_from_polynomial":[str(zrightP-eps_z),str(zrightP+eps_z)],
      "original_pz_normalized_mean_outward":[str(pz0),str(pz1)],
      "original_z2_normalized_mean_outward":[str(zz0),str(zz1)],
      "source_covariance_normalized_mean_outward":[str(cv0),str(cv1)],
