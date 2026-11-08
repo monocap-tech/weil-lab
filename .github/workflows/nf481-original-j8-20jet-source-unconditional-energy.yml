@@ -1,0 +1,54 @@
+name: NF481 original J8 20-jet unconditional full energy tail source certificate
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-4096bit-20jet-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: Attach original source-contracted NF481 twenty-jet extension only, preserve immutable NF459 full NF407 source
+        run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf481_original_J8_twenty_jet_source_native.py native/scripts/local_replay/
+      - name: Original 273 grouped source 360 resolvent jets at 4096bits with first TWENTY rigorous source balls
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf481_original_J8_twenty_jet_source_native.py --output ../nf481-original-J8-native-20jet-resolvent.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf481-original-J8-20jet-4096bit-source
+          path: nf481-original-J8-native-20jet-resolvent.json
+          retention-days: 90
+  independent-unconditional-energy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    needs: [original-4096bit-20jet-source]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf481-original-J8-20jet-4096bit-source
+          path: native-original
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original source 20-jet J8 L2 and unconditional full energy error with genuine NF446 z and J8 principal log square
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf481_original_J8_unconditional_energy_tail_exact.py --native native-original/nf481-original-J8-native-20jet-resolvent.json --output nf481-original-J8-unconditional-energy-tail-exact-Fraction.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf481-original-J8-unconditional-energy-exact
+          path: nf481-original-J8-unconditional-energy-tail-exact-Fraction.json
+          retention-days: 90
