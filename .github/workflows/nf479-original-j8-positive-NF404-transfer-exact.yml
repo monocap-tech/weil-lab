@@ -1,0 +1,30 @@
+name: NF479 exact original J8 forced sign and NF404 logical transfer audit
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-NF404-J8-conditional-decision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42442681289
+          name: nf478-independent-original-complete-J7-exact-Fraction
+          path: nf478-original-source
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent EXACT original source 242D projection + full J7 signed => full J8 forced positive, NF404 cap remains OPEN
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf479_original_J8_forced_positive_and_NF404_transfer_exact.py --nf478-original-raw nf478-original-source/nf478-original-complete-seven-panel-D7-exact-Fraction-audit.json --output nf479-original-J8-forced-positive-NF404-transfer-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf479-original-J8-forced-signed-positive-exact-NF404-transfer
+          path: nf479-original-J8-forced-positive-NF404-transfer-audit.json
+          retention-days: 90
