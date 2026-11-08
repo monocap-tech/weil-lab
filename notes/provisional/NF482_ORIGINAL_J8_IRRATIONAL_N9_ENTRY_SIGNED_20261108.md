@@ -71,7 +71,7 @@ Integrate the source-shared \(\langle pP\rangle\), \(\langle P^2\rangle\), sourc
 D_{8,A}=\left(\frac{1099}{500}-\log9\right)
 [4\langle pz\rangle_{I_{8,A}}+2\langle z^2\rangle_{I_{8,A}}]
 \]
-pays \(\|z-P\|_{\infty,I_{8,A}}<10^{-28}\) (all source, analytic and infinite image errors) and principal truncation plus original weight uncertainty. Output sign only from outward endpoints, never a near-seam z point sign.
+pays \(\|z-P\|_{\infty,I_{8,A}}<10^{-29}\) (all source, analytic and infinite image errors) and principal truncation plus original weight uncertainty. Output sign only from outward endpoints, never a near-seam z point sign.
 
 ## Native 4096-bit and independent exact-rational audit
 
