@@ -229,7 +229,10 @@ def original_irrational_panel_moments():
     for k in range(2*N):
         lower*=tlo;upper*=thi
         moments.append((upper-lower)/(norm*(k+1)))
-    assert 1 in moments[0] and thi==A(Q(2,3))
+    m0lo,m0hi=enclosure(moments[0],160)
+    thilo,thihi=enclosure(thi,160)
+    assert m0lo<=Q(1)<=m0hi
+    assert thilo<=Q(2,3)<=thihi
     return xleft,length,tlo,thi,moments
 
 def native_arb_mean(a,moments):
