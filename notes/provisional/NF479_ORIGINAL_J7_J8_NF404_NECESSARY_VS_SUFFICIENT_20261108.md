@@ -1,6 +1,6 @@
 # Weil-Lab — NF479: original J7 → global NF404 logical transfer and whole J8 forced sign
 
-**Date:** 2026-11-08 PT. **Pre-CI classification:** exact original-source algebraic reduction SUBMITTED for independent repository verification. A new strict entire-J8 sign is a *candidate* pending exact Fraction CI; original NF404 sufficient upper, W-ODD-NEG and RH remain OPEN. No main merge.
+**Date:** 2026-11-08 PT. **Classification: ACCEPTED exact-source entire J8 signed POSITIVE by coupled Bessel+full J7 inference, independently verified CI #42498316637 SUCCESS.** The actual J8 integral value and UPPER, original NF404 sufficient centered scalar, W-ODD-NEG and RH remain OPEN. No main merge. No main merge.
 
 ## Previous → Current → Next bold
 
@@ -113,3 +113,58 @@ The scoped workflow \`.github/workflows/nf479-original-j8-positive-NF404-transfe
 **Still OPEN:** actual original J8 complete signed integral **value and upper**, original complete centered source scalar NF404 sufficient cap decision, genuine J242 exterior lowband upper, canonical W-ODD-NEG, even sector, whole Weil operator/domain, RH.
 
 **Next bold NF480:** first obtain a source-certified true original J8 signed UPPER or genuine nonnegative J8 \(E_8\) upper with full n9 boundary and \(x=B\) logarithmic endpoint, preserving the 246-source/273-mode correlation. Because the accepted Bessel+two-ray lower already consumes all but \(\gamma^2-d_{12,\ell}\) of the NF404 budget, prioritize **coupled, high-precision global energy** rather than another loose pointwise square bound. A failed fixed sufficient scalar is NOT disproof of RH; a passing scalar alone is NOT W-ODD-NEG closure.
+
+
+## NF479 completed exact-source result — ACCEPTED
+
+The **focused source-exact GitHub Actions [CI #42498316637 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42498316637)** downloaded the *immutable* original NF478 independent uncoarsened seven-panel J7 source result from run #42442681289, checked its SHA256 \`91e007c65e8eccf84126073aac7b6a11c41d445284b2f616b6d05151340f1c1f\`, then independently replayed the original NF454 accepted J1–J6 signed and principal source arithmetic, NF403 two-ray and NF404 exact selected powers, NF453 J8 principal and the NF462 logical premise. No 4096-bit source coefficients were fitted anew or altered. All accepted original source/seam SHA contracts passed.
+
+The exact-Fraction proof produced the following **rigorous**, original-source results (displayed decimals are readable roundings; exact rational numerators and denominators are retained in the CI artifact):
+
+| Original quantity | Exact-source accepted outward value / decision |
+|---|---|
+| NF404 selected physical lower \(R_\ell\) | \(\simeq1.0950024763105536\cdot10^{-21}\) |
+| NF403 genuine joint two-ray lower \(d_{12,\ell}\) | \(\simeq1.8191023685518214\cdot10^{-26}\) |
+| NF404 centered sufficient cap \(C\) | \(\simeq1.0950537731184213\cdot10^{-21}\) |
+| \(K=E_p+\sum_{j=1}^6D_j\) | \((1.3363289742468617,1.3366252378949771)\cdot10^{-21}\) |
+| Complete genuine NF478 \(D_7\) | \((-4.069528819198466,-4.044837119198464)\cdot10^{-22}\) |
+| **NEW true whole J8 signed lower** | **\(D_8>1.62879141359108499738\cdot10^{-22}>0\)** |
+| Signed-J8 sufficient UPPER for NF404 cap | \(D_8\le1.62912247143290595816\cdot10^{-22}\) |
+| Signed-J8 certain cap failure if LOWER strictly exceeds | \(D_8>1.65677680791406039560\cdot10^{-22}\) |
+| Exact conditional \(K,D_7\)-coupled residual gap \(\gamma^2-d_{12,\ell}\) | \(3.31057841820960775340\cdot10^{-26}\) |
+| Independently intervalized \(K,D_7\) threshold separation | \(2.7654336481154437440\cdot10^{-24}\) |
+
+**First genuine complete original J8 signed *sign*:** The original J8 contribution MUST BE **STRICTLY POSITIVE**. This is not an interval integration of J8; it is the **exact** consequence
+\[
+\boxed{
+D_8
+=\|f\|^2-K-D_7
+\ge R_{\ell}+d_{12,\ell}-K_u-D_{7,u}
+>1.62879141359108499738\times10^{-22}>0.
+}
+\]
+No assumption about pointwise \(z(x)\), J8 covariance, number of native quadrature centers or terminal collar extrapolation enters the inference. The original full J8 log endpoint and exact n9 support are unchanged; they remain unintegrated.
+
+The newly certified J8 SIGN is also **opposite to the complete J7 sign**. The two original cells form a real competing signed balance: the true complete \(D_7<-4.044837\times10^{-22}\), while \(D_8>+1.628791\times10^{-22}\). The true original signed J8 upper remains UNKNOWN, so one cannot yet decide their sum or the complete centered NF404 cap.
+
+### Logic correction formally closed; scalar acceptance remains open
+
+The earlier NF462/464 \(D_7<-2.03475\times10^{-22}\) was the J7 deficit **REQUIRED IF** the NF404 sufficient cap passes. NF478 established that necessary J7 condition, not a sufficient one. **NF479 corrects that interpretation without modifying any earlier original source evidence.**
+
+The genuine full centered cap \(\|f\|^2\le C\) requires measuring or bounding the **true J8 signed UPPER**, or equivalently a high-precision **source-correlated complete full energy**. The source-exact J8 sufficient UPPER is \(1.62912247143290595816\times10^{-22}\), only
+\[
+\boxed{3.31057841820960775340\times10^{-26}}
+\]
+above the Bessel-forced lower. This small **conditional precision corridor** exists for the SAME actual \(K,D_7\); the wider \(\simeq2.76543\times10^{-24}\) independent K,D7 interval width must also be paid if the components are certified separately.
+
+If a true original source-integrated upper \(D_{8,u}\) is ≤ the exact sufficient bound, then this **particular NF404 centered scalar sufficient gate passes**. If a true source-integrated lower \(D_{8,\ell}\) is > the exact failure bound, the scalar cap fails (only this sufficient pathway; NOT RH). An interval overlapping either decision boundary remains UNDECIDED.
+
+The true original nonnegative J8 physical square energy \(E_8=\int_{J8}(p+z)^2\) has the new **source-exact inferred lower** \(E_8>1.0013957067955425\cdot10^{-22}\). A source-verified upper \(E_8\le1.0015612357164530\cdot10^{-22}\) would be a conservative sufficient scalar acceptance, whereas a lower \(E_8>1.0173884039570302\cdot10^{-22}\) would be a conservative sufficient-cap failure. These are carefully typed decision thresholds, NOT observed direct J8 square energies.
+
+**Source custody:** original focused exact [Actions #42498316637](https://github.com/monocap-tech/weil-lab/actions/runs/42498316637); independent exact raw output artifact **#13623964837**, JSON SHA256 \`55bc40f013031fa12e197eb708db32e0c26925bfdd09d731925593b2a63ab2c0\`, ZIP SHA256 \`c7059bb40604391cd6f5563cd62e3df4c47339bdb9b1b816242aa9867ec1e316\`; complete uncoarsened original 242D + two-ray + source J7 Fraction numerators and denominators retained in this artifact. [Permanent machine-readable original numerical/logic custody](../data/provisional/NF479_original_full_J8_forced_positive_NF404_transfer_custody.json) is additive. Independent mathematical peer review remains separate.
+
+**ACCEPTED:** original J8 SIGN strictly POSITIVE **by original Bessel+completed J7 inference**, not native complete J8 integration; exact logical NECESSARY-vs-SUFFICIENT correction for the earlier J7 deficit; exact NF404 J8 sufficient/failure thresholds and narrow conditional projector corridor.
+
+**OPEN:** original J8 complete signed **numeric value and upper**, true centered global NF404 full energy upper, complete J242 exterior lowband upper, canonical W-ODD-NEG, original even/whole Weil operator and domain, RH.
+
+**Next bold NF480:** target original J8 true signed UPPER or equivalent complete original global-energy interval with total **correlation-preserving precision below \(3.31058\times10^{-26}\)** at fixed actual \(K,D_7\). Preserve all NF407 original 246 generators, genuine NF406 \(n=9\) support entry, original NF450 continuous \(z(B)\), NF451 complete endpoint modulus and the integrable \(p\)-log near \(B\). Do NOT misstate an inferred positive global signed J8 *lower* as a directly integrated J8 upper.
