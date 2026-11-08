@@ -1,0 +1,108 @@
+name: NF478 original J7 source artifact reassembly and exact full D7 audit
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-R-from-immutable-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42441433981
+          pattern: nf478r-source-*
+          merge-multiple: true
+          path: results
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42441433981
+          name: nf478r-original-compact-boundary
+          path: boundary
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf478_original_J7_right_rational_signed_native.py native/scripts/local_replay/
+      - name: Reassemble ALL original R 18k image source blocks and independent compact point
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf478_original_J7_right_rational_signed_native.py --part assemble --input-dir ../results --nf478r-boundary-receipt ../boundary/nf478r-original-J7-left-boundary-point.json --nf477-tail-receipt ../candidate/notes/data/provisional/NF477_original_J7_correlated_resolvent_high_image_tail_custody.json --output nf478r-original-J7-source-signed-moments.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf478r-original-J7-signed-moments-reassembled
+          path: native/nf478r-original-J7-source-signed-moments.json
+          retention-days: 90
+  original-T-from-immutable-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    needs: [original-R-from-immutable-source]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42441433981
+          pattern: nf478t-source-*
+          merge-multiple: true
+          path: results
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf478r-original-J7-signed-moments-reassembled
+          path: right-result
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf478_original_J7_terminal_irrational_signed_native.py native/scripts/local_replay/
+      - name: Original six-minus terminal log9-B irrational physical pz/z2 with same-source R overlap
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf478_original_J7_terminal_irrational_signed_native.py --part assemble --input-dir ../results --nf478r-receipt ../right-result/nf478r-original-J7-source-signed-moments.json --nf477-tail-receipt ../candidate/notes/data/provisional/NF477_original_J7_correlated_resolvent_high_image_tail_custody.json --output nf478t-original-J7-source-signed-moments.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf478t-original-J7-signed-moments-reassembled
+          path: native/nf478t-original-J7-source-signed-moments.json
+          retention-days: 90
+  independent-exact-original-D7:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: [original-R-from-immutable-source, original-T-from-immutable-source]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf478r-original-J7-signed-moments-reassembled
+          path: right-result
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf478t-original-J7-signed-moments-reassembled
+          path: terminal-result
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reconstruct exact original seven-panel D7 with 500-term rational log9 seam and NF464 conditional gate
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf478_original_full_J7_signed_exact.py --right right-result/nf478r-original-J7-source-signed-moments.json --terminal terminal-result/nf478t-original-J7-source-signed-moments.json --output nf478-original-full-J7-exact-signed-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf478-original-full-J7-reassembled-exact-Fraction-audit
+          path: nf478-original-full-J7-exact-signed-audit.json
+          retention-days: 90
