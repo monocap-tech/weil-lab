@@ -1,0 +1,36 @@
+name: NF478 independent original seven-panel J7 raw signed exact audit
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-whole-J7:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42442091177
+          name: nf478r-original-J7-signed-moments-reassembled
+          path: right-result
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42442091177
+          name: nf478t-original-J7-signed-moments-reassembled
+          path: terminal-result
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently prove entire TRUE original J7 signed interval with rational log9 and conditional NF464 test
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf478_original_full_J7_signed_exact.py --right right-result/nf478r-original-J7-source-signed-moments.json --terminal terminal-result/nf478t-original-J7-source-signed-moments.json --output nf478-original-complete-seven-panel-D7-exact-Fraction-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf478-independent-original-complete-J7-exact-Fraction
+          path: nf478-original-complete-seven-panel-D7-exact-Fraction-audit.json
+          retention-days: 90
