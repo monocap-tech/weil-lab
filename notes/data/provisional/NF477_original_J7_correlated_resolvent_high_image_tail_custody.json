@@ -50,7 +50,7 @@
     "raw_sha256": "54442a3c342c4b2b31e912cd910fcce952198519ee3b8065a842a317283d5aee",
     "zip_sha256": "7d9caa244a143dce6f8268d940149d9f259a4206a98b99bf46f6e0bba551f7fd"
   },
-  "independent_exact_fraction_replay_status": "SCRIPT COMMITTED; separate GitHub workflow PENDING",
+  "independent_exact_fraction_replay_status": "ACCEPTED CI SUCCESS #42437368825; independently recomputed original 360-jet exact binomial remainder, source SHA, true log9 terminal distance and complete J7 image tail",
   "full_raw_JSON_repo_archival": "OPEN; native exact output retained in GitHub Actions and conversation attachment",
   "prior_five_true_signed_J7_physical_panels": "NF476 source-certified true [log8-B,109/100] signed negative",
   "remaining_two_J7_panels": [
@@ -62,5 +62,13 @@
   "NF404": "OPEN",
   "W_ODD_NEG": "OPEN",
   "RH": "OPEN",
-  "next_bold": "NF478 apply NF477 complete source-correlated m>=18000 uniform tail to original signed [1.09,1.095] and irrational terminal [1.095,log9-B], then exact full original D7 against conditional NF464."
+  "next_bold": "NF478 apply NF477 complete source-correlated m>=18000 uniform tail to original signed [1.09,1.095] and irrational terminal [1.095,log9-B], then exact full original D7 against conditional NF464.",
+  "independent_exact_fraction_ci": {
+    "run_id": 42437368825,
+    "status": "SUCCESS",
+    "source_full_native_reference_run": 42436964916,
+    "artifact_id": 13600710306,
+    "raw_json_sha256": "22709a5b9f3e35b443bffe7e53f05b4017bf675848b4b4554061ac4ccc3ac792",
+    "zip_sha256": "a984ab3330c689db5a313af18e60fac94c0f0fb4885b78c63d0d951fbf5ee62e"
+  }
 }
