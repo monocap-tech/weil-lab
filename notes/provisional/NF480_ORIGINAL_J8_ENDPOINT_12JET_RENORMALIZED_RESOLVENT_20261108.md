@@ -1,6 +1,6 @@
 # Weil-Lab — NF480: genuine original J8 endpoint-renormalized source-resolvent transfer
 
-**Date:** 2026-11-08 PT. **Original native 4096-bit source reused; exact-Fraction J8 endpoint / L2 verification SUBMITTED and PENDING scoped GitHub CI.** Canonical W-ODD-NEG, whole J8 signed UPPER, full NF404 sufficient centered scalar, operator/domain and RH OPEN. No main merge.
+**Date:** 2026-11-08 PT. **Standing: ACCEPTED original-source native+exact-Fraction J8 endpoint-renormalized 12-jet infinite-image remainder on entire physical J8, full positive-J8 L2 <8.286×10⁻²⁷; focused CI #42502455889 SUCCESS.** Canonical W-ODD-NEG, whole J8 signed UPPER, full NF404 sufficient centered scalar, operator/domain and RH OPEN. No main merge.
 
 ## Previous → Current → Next bold
 
@@ -133,8 +133,73 @@ The **comparator norm upper is not proved by NF480** and must not be silently tr
 
 \`scripts/local_replay/verify_nf480_original_J8_endpoint_12jet_L2_exact.py\` checks the archived native NF477 original raw JSON SHA, its 99 frequencies /273 modes /sinh pole /4096-bit source, unchanged NF407/NF406 and NF479 source receipts, then recomputes all 12 exact root-free residual gate witnesses from the full original 360-jet absolute weighted sum and first twelve original native source jets. Workflow \`.github/workflows/nf480-original-J8-12jet-endpoint-L2-exact.yml\` retrieves the original NF477 4096-bit raw artifact #13599714027 directly from successful Actions run #42436964916. No source changed; no new original source Gaussian quadrature, physical n9 seam model or erroneous regularity assumption.
 
-**PENDING scoped CI** before numerical acceptance. This is *independent exact Fraction replay of accepted original source-native NF477 evidence*, not a newly independently reconstructed 273-mode spectral computation or external mathematical peer review.
+**FOCUSED EXACT-FRACTION SOURCE CI SUCCESS #42502455889**. This is *independent exact Fraction replay of accepted original source-native NF477 evidence*, not a newly independently reconstructed 273-mode spectral computation or external mathematical peer review.
 
 **Still OPEN:** direct entire original J8 signed numerical integration and UPPER; actual comparator \(g_{12}\) and its exact source-correlated physical \(L^2\) energy; NF404 centered cap, whole J242 exterior lowband upper, canonical W-ODD-NEG, original whole Weil/operator domain and RH.
 
 **Next bold NF481:** use the now endpoint-compatible exact source \(\mathcal H\)/principal cancellation, genuine finite m<18000 original NF443↔NF446 two endpoint images, and eleven \(\Phi_{n,M}\) original 246-source coefficients to compute a true J8 signed upper or complete centered energy with the original n9 support and 1/m-log endpoint integrations. Do not claim J8 signed upper from a high-image residual norm alone.
+
+
+## NF480 original source result — ACCEPTED (focused CI SUCCESS)
+
+The complete original-source [GitHub Actions exact-Fraction CI #42502455889 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42502455889) ingested the immutable native 4096-bit NF477 original **360-jet full 273-mode Arb** source artifact (SHA256 \`54442a3c342c4b2b31e912cd910fcce952198519ee3b8065a842a317283d5aee\`), verified original NF407/NF406 SHAs and source pole/critical sine groups and **recomputed the exact rational 1..12 subtraction sweep** with the original positive binomial remainder. The first 11 jets do **NOT** meet the \(10^{-26}\) positive-J8 \(L^2\) gate; twelve do. This is a verified mathematical resolution condition, not a preselected finite shadow.
+
+For the true original 12-jet remainder, the exact source-bound results are:
+
+\[
+\boxed{
+W_{12}\simeq2.9586511825746995\cdot10^{-27},
+\quad
+U_{12}= \frac{W_{12}}2\left(1+\frac{18000}{12}\right)
+\simeq2.22046771252231202783\cdot10^{-24}.
+}
+\]
+Here \(W_{12}\) is the exact original finite 360-mode weighted absolute 4096-bit source coefficient remainder at m=18000 **after** extracting \(\mu_0,\ldots,\mu_{11}\) and paying the complete original infinite resolvent tail. The original high-image coefficient still has its exact full 273-mode source, rather than being approximated by twelve physical generators.
+
+**Uniform entire J8 endpoint error, including the actual \(d=0\) endpoint:**
+\[
+\boxed{
+|r_{12,18000}(B-d)|
+\le U_{12}\,e^{-36000d},
+\qquad
+U_{12}<2.220468\times10^{-24},\quad 0\le d\le2B-\log9.
+}
+\]
+
+The exact positive-J8 \(L^1\) charge is
+\[
+\boxed{\int_{J8^+}|r_{12,18000}|\,dx
+<6.167966\times10^{-29}.}
+\]
+The positive-J8 \(L^2\) root-free certified bound is
+\[
+\boxed{
+\|r_{12,18000}\|_{L^2(J8^+)}
+<8.285327285531016\times10^{-27}
+<10^{-26}.
+}
+\]
+The original **odd-reflected entire two-sided J8** corresponding to the true full centered energy has
+\[
+\boxed{
+\|r_{12,18000}\|_{L^2(J8^+\cup J8^-)}
+<1.174850641546197\times10^{-26}
+<1.175\times10^{-26}.
+}
+\]
+
+If the future **full source-original comparator** \(g_{12}\) (not computed here) is genuinely certified to obey \(\|g_{12}\|_{L^2([-B,B])}\le4\times10^{-11}\), then this entire J8 source-high-image truncation causes an energy error strictly below
+\[
+\boxed{9.399\times10^{-37}<10^{-36}.}
+\]
+This last energy comparison remains **conditional on the actual original comparator norm**: NF480 certifies the source endpoint residual, not the comparator's energy or NF404 cap. A genuine source-supported \(D_8\) upper or direct global norm interval is **still required**.
+
+**What changed relative to NF477:** NF477 bounded the complete high-image original J7 residual by leveraging \(B-x\ge d_{\min}>0\), a method that fundamentally cannot transfer unchanged to J8 at \(B-x=0\). NF480 instead removes the exact original source-leading \(\mu_0=v\) mode, carries eleven additional full-source correlation-preserving analytic moment functions through the logarithmic B endpoint, and proves the rest of the authentic infinite source has both pointwise decay in \(d\) and negligible \(L^2\) energy. It does **not** establish differentiability of those endpoint functions at \(B\) nor replace the original finite 18,000 image modes.
+
+**Focused custody:** native-parent [NF477 original 4096-bit source #42436964916 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42436964916); original NF480 source exact [Actions #42502455889 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42502455889). NF480 exact-Fraction 1..12 sweep raw output artifact #13626221010; raw JSON SHA256 \`38ea4ac48003efc4f9617813a4d2deb243148fe565374edf05ce58fcde93d0af\`; ZIP SHA256 \`821eed5c692623259e641e12d0cddf62d1e2b6b88246e2889069f90b96d08a2c\`. All 12 full exact-Fraction witnesses, original source hashes, binomial remainder and analytic L1/L2 root-free integrals are retained in the artifact. [Permanent compact machine-readable NF480 custody](../data/provisional/NF480_original_J8_endpoint_source_12jet_L2_custody.json) records accepted outward values and open standing. The full uncoarsened exact Fraction JSON remains in Actions/conversation files; full raw repo archival and independent external peer review separate OPEN items.
+
+**ACCEPTED:** ORIGINAL entire J8 B-endpoint source-resolvent high-image tail \(r_{12,18000}\) uniformly <2.221e-24 and in two-sided real \(L^2<1.175e-26\); exact original principal source logarithm cancellation; original first twelve full-source jet extraction mathematical error bound. **This DOES NOT calculate the original signed D8 whole value or upper.**
+
+**OPEN:** original finite m<18000 source-native J8 integration plus eleven analytic \(\Phi\) functions and exact principal-H log cancellation; full J8 \(D_8\) upper and NF404 global centered scalar; W-ODD-NEG; whole original Weil operator/domain and RH.
+
+**Next bold NF481:** use this accepted endpoint-compatible source image representation to evaluate the actual original J8 signed mixed and square moments or directly the complete centered energy with NF479's exact source-projection corridor. Maintain true n9 physical support and strict epistemic separation from an RH proof. No main merge.
