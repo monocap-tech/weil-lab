@@ -1,0 +1,261 @@
+name: NF478 true original J7 final two physical signed panels and complete D7
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  central-and-primes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        panel: [r, t]
+        part: [central, primes]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf478_original_J7_right_rational_signed_native.py candidate/scripts/local_replay/nf478_original_J7_terminal_irrational_signed_native.py native/scripts/local_replay/
+      - name: Contract original 246/273 source modes for authentic right/terminal panel
+        working-directory: native
+        env:
+          PANEL: ${{ matrix.panel }}
+          PART: ${{ matrix.part }}
+        run: |
+          if [ "$PANEL" = "r" ]; then
+            SCRIPT=nf478_original_J7_right_rational_signed_native.py
+          else
+            SCRIPT=nf478_original_J7_terminal_irrational_signed_native.py
+          fi
+          python -u -X int_max_str_digits=0 scripts/local_replay/$SCRIPT --part "$PART" --output nf478$PANEL-$PART.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf478${{ matrix.panel }}-source-${{ matrix.part }}
+          path: native/nf478${{ matrix.panel }}-${{ matrix.part }}.json
+          retention-days: 90
+  image-chunk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        include:
+          - panel: r
+            start: 0
+            stop: 2000
+          - panel: r
+            start: 2000
+            stop: 4000
+          - panel: r
+            start: 4000
+            stop: 6000
+          - panel: r
+            start: 6000
+            stop: 8000
+          - panel: r
+            start: 8000
+            stop: 10000
+          - panel: r
+            start: 10000
+            stop: 12000
+          - panel: r
+            start: 12000
+            stop: 14000
+          - panel: r
+            start: 14000
+            stop: 16000
+          - panel: r
+            start: 16000
+            stop: 18000
+          - panel: t
+            start: 0
+            stop: 2000
+          - panel: t
+            start: 2000
+            stop: 4000
+          - panel: t
+            start: 4000
+            stop: 6000
+          - panel: t
+            start: 6000
+            stop: 8000
+          - panel: t
+            start: 8000
+            stop: 10000
+          - panel: t
+            start: 10000
+            stop: 12000
+          - panel: t
+            start: 12000
+            stop: 14000
+          - panel: t
+            start: 14000
+            stop: 16000
+          - panel: t
+            start: 16000
+            stop: 18000
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf478_original_J7_right_rational_signed_native.py candidate/scripts/local_replay/nf478_original_J7_terminal_irrational_signed_native.py native/scripts/local_replay/
+      - name: Two original NF443 image families 2000 modes, unchanged source 273 grouped modes
+        working-directory: native
+        env:
+          PANEL: ${{ matrix.panel }}
+          START: ${{ matrix.start }}
+          STOP: ${{ matrix.stop }}
+        run: |
+          if [ "$PANEL" = "r" ]; then
+            SCRIPT=nf478_original_J7_right_rational_signed_native.py
+          else
+            SCRIPT=nf478_original_J7_terminal_irrational_signed_native.py
+          fi
+          python -u -X int_max_str_digits=0 scripts/local_replay/$SCRIPT --part images --start "$START" --stop "$STOP" --output nf478$PANEL-images-$START-$STOP.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf478${{ matrix.panel }}-source-images-${{ matrix.start }}-${{ matrix.stop }}
+          path: native/nf478${{ matrix.panel }}-images-${{ matrix.start }}-${{ matrix.stop }}.json
+          retention-days: 90
+  independent-compact-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf478_original_J7_right_boundary_compact_native.py native/scripts/local_replay/
+      - name: Independent original full NF446 compact physical point at x=109/100
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf478_original_J7_right_boundary_compact_native.py --mode joint-node --x 109/100 --output nf478r-original-J7-left-boundary-point.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf478r-original-compact-boundary
+          path: native/nf478r-original-J7-left-boundary-point.json
+          retention-days: 90
+  assemble-r:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    needs: [central-and-primes, image-chunk, independent-compact-boundary]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf478r-source-*
+          merge-multiple: true
+          path: results
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf478r-original-compact-boundary
+          path: boundary
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf478_original_J7_right_rational_signed_native.py native/scripts/local_replay/
+      - name: Genuine original [109/100,219/200] source-shared pz/z2 and signed D plus compact overlap
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf478_original_J7_right_rational_signed_native.py --part assemble --input-dir ../results --nf478r-boundary-receipt ../boundary/nf478r-original-J7-left-boundary-point.json --nf477-tail-receipt ../candidate/notes/data/provisional/NF477_original_J7_correlated_resolvent_high_image_tail_custody.json --output nf478r-original-J7-source-signed-moments.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf478r-original-J7-signed-moments
+          path: native/nf478r-original-J7-source-signed-moments.json
+          retention-days: 90
+  assemble-t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    needs: [central-and-primes, image-chunk, assemble-r]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf478t-source-*
+          merge-multiple: true
+          path: results
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf478r-original-J7-signed-moments
+          path: right-result
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf478_original_J7_terminal_irrational_signed_native.py native/scripts/local_replay/
+      - name: Genuine original irrational [219/200,log9-B] all-246-source pz/z2 and true n9 seam
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf478_original_J7_terminal_irrational_signed_native.py --part assemble --input-dir ../results --nf478r-receipt ../right-result/nf478r-original-J7-source-signed-moments.json --nf477-tail-receipt ../candidate/notes/data/provisional/NF477_original_J7_correlated_resolvent_high_image_tail_custody.json --output nf478t-original-J7-source-signed-moments.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf478t-original-J7-signed-moments
+          path: native/nf478t-original-J7-source-signed-moments.json
+          retention-days: 90
+  independent-whole-J7:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: [assemble-r, assemble-t]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf478r-original-J7-signed-moments
+          path: right-result
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf478t-original-J7-signed-moments
+          path: terminal-result
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original NF407/NF406 source and exact rational seven-panel physical D7 and NF464 gate
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf478_original_full_J7_signed_exact.py --right right-result/nf478r-original-J7-source-signed-moments.json --terminal terminal-result/nf478t-original-J7-source-signed-moments.json --output nf478-original-full-J7-exact-signed-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf478-original-full-seven-panel-J7-exact-Fraction-audit
+          path: nf478-original-full-J7-exact-signed-audit.json
+          retention-days: 90
