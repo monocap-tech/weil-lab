@@ -58,7 +58,7 @@ jobs:
     timeout-minutes: 60
     strategy:
       fail-fast: false
-      max-parallel: 6
+      max-parallel: 12
       matrix:
         include:
           - start: 0
@@ -166,4 +166,28 @@ jobs:
         with:
           name: nf474-original-J7-signed-moments
           path: nf474-original-J7-source-signed-moments.json
+          retention-days: 90
+  independent-contiguous-J7-union:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [assemble]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf474-original-J7-signed-moments
+          path: native-result
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent exact Fraction original mixed/quadratic and contiguous signed [1,27/25] audit
+        working-directory: candidate
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf474_original_J7_right_panel_and_partial_union_exact.py --native ../native-result/nf474-original-J7-source-signed-moments.json --output ../nf474-original-J7-contiguous-partial-union.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf474-original-J7-contiguous-partial-union-audit
+          path: nf474-original-J7-contiguous-partial-union.json
           retention-days: 90
