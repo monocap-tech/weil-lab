@@ -1,6 +1,6 @@
 # Weil-Lab NF477 — Original full-source high-image matched-resolvent bound (J7 terminal seam)
 
-**Date:** 2026-11-07 PT. **Standing:** source-correlated high-image original native test SUBMITTED; numerical tail status PENDING original-source CI and exact independent rational audit. The entire original J7 signed cell, J8, NF404, canonical W-ODD-NEG, whole Weil, RH remain OPEN.
+**Date:** 2026-11-07 PT. **Standing: ACCEPTED SOURCE-NATIVE original full 273-mode correlation-preserving high-image tail with genuine whole-J7 irrational-right-seam uniform error <2.124×10^{-55}; independent exact-rational GitHub audit committed, its status must be verified separately.** The entire original J7 signed cell, J8, NF404, canonical W-ODD-NEG, whole Weil, RH remain OPEN.
 
 ## Previous cursor / present source obstacle / next bold
 
@@ -116,3 +116,48 @@ The original poles, full source and both matched image families are preserved. T
 **The source-specific outcome is PENDING CI.** Irrespective of its result, **neither remaining original signed [1.09,1.095] nor [1.095,log9-B] interval is computed in this NF477 step**; whole J7/J8, NF404, W-ODD-NEG, RH stay OPEN.
 
 **Next bold NF478:** if the new correlated \(m\ge18000\) tail gate passes, use this **same** globally certified original image bound for both remaining physical J7 signed source-moment panels, assemble the true original full \(D_7\) and test NF464's conditional source deficit. If METHOD STOP, investigate why the high-order source derivatives do not admit a post-contraction scalar amplitude bound and switch to a more appropriate correlated analytic representation instead of increasing jets blindly.
+
+
+## NF477 actual original native result — SOURCE-CERTIFIED
+
+The original source-native **4096-bit [GitHub CI #42436964916 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42436964916)** calculated the complete original \(\mu_0,\ldots,\mu_{359}\) after contracting **all 273 original frequency/order modes and the odd sinh pole**, rather than taking raw generator absolute values. The exact rational whole-resolvent remainder and \(m=18000\), \(m=36000\) independent full original grouped-resolvent direct comparisons also passed.
+
+The decisive new bound, valid **for every integer \(m\ge18000\)**, is
+\[
+\boxed{|T_m|<
+8.655078527626\times10^{-16}.}
+\]
+For orientation, independent native direct source amplitudes were
+\[
+T_{18000}\approx-8.654925407041614\times10^{-16},\quad
+T_{36000}\approx-3.763572074999958\times10^{-16}.
+\]
+The full post-source-contracted 360-jet **absolute sum** was
+\(8.6550785276251414300743\times10^{-16}\). The rigorous separate, original-precontraction, exact Fraction entire-resolvent **remainder** was merely
+\[
+\boxed{R_{360}^{\rm abs}
+<6.689562192777\times10^{-137},}
+\]
+and the true NF407 source dyadic input \(S_0<10^{-700}\) adds a separately paid \(5\cdot10^{-700}/18000\) uncertainty. No hidden cancellation is required **after** the complete original \(\mu_n\) are source-contracted. The largest individual weighted jet in the accepted 360-jet sum is the **original zeroth source jet** \(\mu_0=U(B)\), but the derivative series and its full rigorous remainder were also paid, not discarded.
+
+The exact 70-term rational \(\log9=2\operatorname{atanh}(4/5)\) upper enclosure proves the genuine J7 terminal distance \(2B-\log9>11/4000\). Thus the original **complete BOTH endpoint image families'** infinite tail, uniformly for **every real physical x in the entire original J7**, has the successfully source-certified bound
+\[
+\boxed{
+\sup_{x\in J_7}
+\left|\sum_{m=18000}^\infty \frac{T_m}{2}
+\bigl(e^{-2(m+1/4)(B-x)}-e^{-2(m+1/4)(B+x)}\bigr)\right|
+<
+2.123409831352\times10^{-55}.
+}
+\]
+In particular the accepted tail is **15 orders of magnitude tighter than the requested \(10^{-40}\) gate**. No infinite-image-truncation obligation remains for the source response of these TWO right original J7 panels once they are evaluated with the correct original finite \(m<18000\) source.
+
+### Why this is a genuinely different certificate architecture
+
+Under NF475's prior *raw-generator* bound \(|T_m|<4\cdot10^{160}/m\), the right-end \(d=2B-\log9\) would have forced enormous original image cutoffs. The source-preserving 360-jet inverse-\(m\) representation instead proves **the complete authentic source amplitude is smaller than \(9\cdot10^{-16}\) for all \(m\ge18000\)**. It does not merely tighten pointwise sample bounds; it bounds the **entire remaining original infinite image response continuously**, including the irrational physical J7 terminal seam, without changing the source or NF406 support.
+
+**Custody:** [original full-native GitHub Actions run #42436964916](https://github.com/monocap-tech/weil-lab/actions/runs/42436964916), raw high-image JSON artifact #13599714027, original raw SHA256 \`54442a3c342c4b2b31e912cd910fcce952198519ee3b8065a842a317283d5aee\`, ZIP SHA256 \`7d9caa244a143dce6f8268d940149d9f259a4206a98b99bf46f6e0bba551f7fd\`. Source-custody summary and accepted outward rounded tail: [NF477 permanent receipt](../data/provisional/NF477_original_J7_correlated_resolvent_high_image_tail_custody.json). Independent exact-Fraction \`verify_nf477_original_j7_high_image_tail_exact.py\` and its immutable-native-result scoped GitHub workflow were committed; independent CI status must be checked before stating it passed. The full uncoarsened original raw result is retained in Actions artifact and conversation attachment; independent mathematical peer review is a distinct open item.
+
+**ACCEPTED:** full original infinite high-image m≥18000 physical J7 source-correlated remainder <2.12341e−55, source-preserving rigorous terminal seam and exact 360-jet resolvent. **Still OPEN:** the finite 0≤m<18000 original source integration on [1.09,1.095] and [1.095,log9-B], their true signed \(4pz+2z^2\) moments and whole \(D_7\); original J8, NF404, canonical W-ODD-NEG, whole Weil and RH. **No main merge.**
+
+**Next bold NF478:** compute actual original signed mixed/quadratic moments on the two remaining genuine J7 right intervals, reusing the uniform original m≥18000 tail certificate **without silently substituting an analytic source continuation as a physical value beyond the n9 seam**. Once both are source certified, sum with NF476's five certified panels to decide the genuine whole-J7 signed \(D_7\), then test the NF464 conditional deficit.
