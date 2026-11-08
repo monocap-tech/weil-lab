@@ -1,6 +1,6 @@
 # Weil-Lab — NF474 original signed J7 [53/50,27/25] with genuine 12000-image tail
 
-**2026-11-07. PRE-CI STANDING: source-native computation submitted; new signed result PENDING.** Parent NF473 draft PR #501, source certified strictly negative contiguous original J7 signed integral on [1,53/50] with \(-1.995471\cdot10^{-22}<D_{[1,53/50]}<-1.983449\cdot10^{-22}\). The canonical obligation W-ODD-NEG, full original J7/J8, NF404 and RH remain OPEN.
+**2026-11-07. STANDING: ACCEPTED SOURCE-NATIVE original full signed [53/50,27/25] STRICTLY NEGATIVE and exact-rational original contiguous signed [1,27/25] STRICTLY NEGATIVE. Full original J7/J8, NF404, W-ODD-NEG, RH OPEN.** Parent NF473 draft PR #501, source certified strictly negative contiguous original J7 signed integral on [1,53/50] with \(-1.995471\cdot10^{-22}<D_{[1,53/50]}<-1.983449\cdot10^{-22}\). The canonical obligation W-ODD-NEG, full original J7/J8, NF404 and RH remain OPEN.
 
 ## Original object, fixed panel and strict source custody
 
@@ -56,3 +56,111 @@ Acceptance requires source and seams hash identity, 4096-bit original source, al
 **Current: OPEN until exact source numerical CI passes.** If accepted, add NF472/NF473 genuine contiguous signed [1,53/50] to the new panel to obtain the signed original **[1,27/25] partial union**, without claiming the unresolved remainder. The other authentic original J7 panels \([\log8-B,1]\), \([27/25,109/100]\), \([109/100,219/200]\), \([219/200,\log9-B]\) remain OPEN.
 
 **Next bold NF475:** inspect the original native NF474 covariance/variance/signed D_R and exact sum to contiguous [1,27/25]; adapt the native source computation to the next physical right J7 [27/25,109/100] with its own analyticity and infinite-image tail. NF404, W-ODD-NEG, RH OPEN; no main merge.
+
+
+## NF474 original source-native numerical results — ACCEPTED
+
+The complete unchanged 246-source/273-mode, 4096-bit original source calculation **passed [GitHub Actions run #42428015936](https://github.com/monocap-tech/weil-lab/actions/runs/42428015936)**. It includes original central digamma+m0 pole, six genuine physical minus prime translates, twelve 1,000-mode common source image blocks through \(m=11999\), original principal log, exact shared source 1599-degree Taylor carrier, and a separate original compact NF470-architecture boundary response at \(x=53/50\). All original source/seam SHA identities and source-protected uniform error gates passed. The shared Taylor source endpoint at s=-1 overlaps the independently computed physical original compact-kernel point.
+
+Original source-uniform analytic error ledgers paid:
+\[
+E_{\rm Taylor}\approx4.498181067217413\times10^{-132},\quad
+E_{\rm image}\approx2.8564541883186396\times10^{-47},\quad
+E_{\rm original\,coeff\,balls}\approx4.040040400404004\times10^{-163}.
+\]
+Original coefficient and six-prime interval inputs contribute \(<9.01\times10^{-30}\); the complete source-wide uniform enclosure \(\|z-P_{1599}\|_{\infty,[53/50,27/25]}<10^{-28}\) was accepted by the native error checker.
+
+The **independent original physical compact-kernel boundary** now source-certifies:
+\[
+\boxed{
+z(53/50)\approx+1.2929196462831093\cdot10^{-11},\quad
+S(53/50)=4pz+2z^2\approx-2.582237879\cdot10^{-21}.
+}
+\]
+This is a source-native original *point* certificate, independently overlapped by the new full-panel source polynomial. It does not by itself determine the panel integral.
+
+### Complete original source moments on [1.06,1.08]
+
+The signed moment integrator produced the following **rigorously outward COARSENED** normalized intervals:
+\[
+\boxed{
+5.5101578673549\cdot10^{-11}
+<
+\bar z_{[1.06,1.08]}
+<
+5.5101578673550\cdot10^{-11}>0;
+}
+\]
+\[
+-3.231590\cdot10^{-21}
+<
+\langle pz\rangle
+<
+-3.231589\cdot10^{-21},\qquad
+3.559326\cdot10^{-21}
+<
+\langle z^2\rangle
+<
+3.569327\cdot10^{-21}.
+\]
+The **original covariance is strictly NEGATIVE** again:
+\[
+\boxed{-3.540\cdot10^{-23}<\mathrm{Cov}(p,z)<-1.539\cdot10^{-23}<0,}
+\]
+while the source variance is strictly **POSITIVE**:
+\[
+5.1314\cdot10^{-22}<\mathrm{Var}(z)<5.4315\cdot10^{-22}.
+\]
+
+The **genuine complete original continuous J7 signed integral on this macroscopic 0.02-wide panel** is
+\[
+\boxed{
+-1.161542\cdot10^{-22}
+<
+D_R=\int_{53/50}^{27/25}(4pz+2z^2)\,dx
+<
+-1.157541\cdot10^{-22}<0.
+}
+\]
+The original native uncoarsened interval is approximately
+\(D_R\in(-1.1615415309742344,-1.1575414509742304)\times10^{-22}\).
+The sign is independently reproduced *without trusting the native sign flag* from the separately outward original mixed and quadratic moment intervals:
+\[
+D_R<\frac1{50}
+\left[4(-3.231589\cdot10^{-21})+2(3.569327\cdot10^{-21})\right]
+=\boxed{-1.1575404\cdot10^{-22}<0}.
+\]
+The exact-rational independent source audit verified this strict inequality, the original source hashes, the physical boundary overlap, and the coarsened interval containment.
+
+### NEW certified contiguous original J7 signed interval [1,27/25]
+
+The **already accepted** original NF473 + NF472 contiguous physical signed [1,53/50] interval was
+\[
+-1.995471\cdot10^{-22}
+<
+D_{[1,53/50]}
+<
+-1.983449\cdot10^{-22}.
+\]
+Since the new NF474 source preserves the same genuine original J7 arithmetic support and begins **exactly** at the prior endpoint \(x=53/50\), exact-rational interval addition now gives
+\[
+\boxed{
+-3.157013\cdot10^{-22}
+<
+D_{[1,27/25]}
+=\int_1^{1.08}(4pz+2z^2)\,dx
+<
+-3.140990\cdot10^{-22}<0.
+}
+\]
+This is a single **0.08-wide original J7 continuous signed integral** encompassing three certified contiguous macroscopic subpanels. It is NOT a claim that the integrand is pointwise negative throughout.
+
+**An important change in conditional deficit bookkeeping:** NF464's *conditional full-J7 sufficient gate* required a negative integral magnitude \(>2.03475\cdot10^{-22}\). **The already-certified three-panel partial signed contribution now exceeds that magnitude.** But **the WHOLE genuine J7 signed scalar is still OPEN**: four remaining source panels can add either sign. With our **outward coarsened** partial upper \(D_{\rm part}<-3.140990\cdot10^{-22}\), it would suffice for the remaining four panels' total signed **upper** to be strictly below \(+1.106240\cdot10^{-22}\) to preserve the conditional NF464 full-J7 sufficient threshold. This is now a *positive allowable residual budget*, unlike NF473's previously required negative remainder. It does NOT automatically establish the original full J7 or NF404.
+
+### CI and source custody
+
+The complete native original-source successful run is [#42428015936](https://github.com/monocap-tech/weil-lab/actions/runs/42428015936), final full original exact-Fraction JSON artifact **#13596109625**, SHA256 \`c51ee2f4d6353a655951337295be7e4f4f48950e43293ff7f0ffa5c9a7e9487b\`, ZIP SHA256 \`75d5fe5e71e5091db704ee43f39503bd419dcb293933a8d852b9410a4ff9bcf7\`; original independent full-compact boundary artifact **#13595544241**, SHA256 \`ed8f8987d3c76eb0eaf60d36407604742d41f2e99c11b5ee9b871c5208e3e569\`. The [permanent original source custody index](../data/provisional/NF474_original_J7_right_negative_and_contiguous_partial_custody.json) retains the strict coarsened bounds, source hash, output SHA, image/taylor/Arb and source-input ledgers, and exact-rational independent proof. Full raw uncoarsened source JSON remains in GitHub Actions artifact and the conversation copy; repository archival OPEN. Independent GitHub *audit job* has been added in a later CI run; do not claim it passed unless verified independently. Distinguish original source-native CI success, exact local Fraction audit, and independent mathematical peer review.
+
+**UPDATED STANDING: ACCEPTED source-original signed D_R<0 and contiguous [1,1.08] signed partial <0; canonical W-ODD-NEG unchanged OPEN.** Remaining physical true J7 panels are \([\log8-B,1]\), \([27/25,109/100]\), \([109/100,219/200]\), \([219/200,\log9-B]\). Entire J7 and J8, NF404 sufficient gate, whole Weil/domain, RH remain OPEN. No main merge.
+
+**Next bold NF475:** evaluate the adjacent original J7 physical panel [27/25,109/100]=[1.08,1.09] with its own source-preserving analytic Taylor carrier and a paid right-approaching image tail (possibly an improved compact-kernel/matched-Laplace bound instead of a naive 24000-image expansion). Add its signed result to the certified contiguous [1,27/25] **before** evaluating whole-J7 conditional gate.
