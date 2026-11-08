@@ -1,0 +1,113 @@
+{
+  "pass": "NF478",
+  "recovered_on": "2026-11-08 PT",
+  "standing": "ACCEPTED full genuine original physical seven-panel J7 continuous signed integral STRICT NEGATIVE, NF464 conditional source J7 deficit gate PASS; W-ODD-NEG, NF404 and RH OPEN",
+  "source_original_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "source_original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "immutable_original_native_source_git": "f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05",
+  "original_source_generators": 246,
+  "original_source_grouped_modes": 273,
+  "original_critical_sines": 32,
+  "original_odd_sinh_pole": true,
+  "original_six_J7_negative_prime_translates": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "original_B": "11/10",
+  "entire_true_original_J7_physical_domain": [
+    "log8-B",
+    "log9-B"
+  ],
+  "original_prior_NF476_five_panel_interval": [
+    "log8-B",
+    "109/100"
+  ],
+  "original_prior_NF476_five_panel_signed_D_outward": [
+    "-4.423272e-22",
+    "-4.400247e-22"
+  ],
+  "original_new_rational_R_panel": [
+    "109/100",
+    "219/200"
+  ],
+  "original_new_rational_R_signed_D_outward": [
+    "4.652099e-23",
+    "4.662101e-23"
+  ],
+  "original_new_rational_R_signed_sign": "POSITIVE",
+  "original_new_rational_R_z_mean_approx": "1.611073893950676057e-10",
+  "original_new_rational_R_pz_mean_approx": "-1.068390406072433e-20",
+  "original_new_rational_R_z2_mean_approx": "2.602490788901273e-20",
+  "original_new_rational_R_covariance_sign": "UNDECIDED",
+  "original_new_rational_R_variance_sign": "POSITIVE",
+  "original_terminal_T_panel": [
+    "219/200",
+    "log9-B"
+  ],
+  "original_terminal_T_signed_D_outward": [
+    "-1.114669e-23",
+    "-1.108000e-23"
+  ],
+  "original_terminal_T_signed_sign": "NEGATIVE",
+  "original_terminal_T_length": "log9-439/200",
+  "original_terminal_T_length_approx": "0.0022245773362193827904904738450514",
+  "original_terminal_T_z_mean_approx": "1.024141076956517624e-10",
+  "original_terminal_T_pz_mean_approx": "-7.142843332141725e-21",
+  "original_terminal_T_z2_mean_approx": "1.178783136059370e-20",
+  "original_terminal_T_covariance_sign": "POSITIVE",
+  "original_terminal_T_variance_sign": "POSITIVE",
+  "original_terminal_n9_entry_seam_identity": "U(-B)+U(B)=0; n9 negative prime translate NOT present on J7 interior",
+  "original_true_terminal_log9_exact_rational_verification": "500-term positive atanh(4/5) with paid rational remainder",
+  "original_R_T_signed_sum_outward": [
+    "3.537431e-23",
+    "3.554100e-23"
+  ],
+  "original_seven_panel_J7_signed_D_outward": [
+    "-4.069530e-22",
+    "-4.044830e-22"
+  ],
+  "original_seven_panel_J7_signed_sign": "STRICT NEGATIVE",
+  "original_nf464_conditional_J7_negative_gate": "-2.03475e-22",
+  "original_nf464_conditional_J7_gate_status": "PASS under previously stated conditional NF464 sufficient scalar criterion, NOT a proof of NF404/W-ODD-NEG",
+  "original_NF477_complete_high_image_tail_uniform": "2.123409831352e-55",
+  "original_NF478_source_Taylor_degree": 1599,
+  "original_NF478_finite_matched_image_modes": 18000,
+  "original_source_uniform_error_on_both_new_panels_lt": "1e-28",
+  "source_native_CI": {
+    "original_run": 42442681347,
+    "corrected_source_reassembly_run": 42442681343,
+    "independent_exact_fraction_run": 42442681289,
+    "all_final_runs": "SUCCESS",
+    "initial_failed_reassembly_run": 42441433981,
+    "initial_failure": "bookkeeping matrix inherited 12 image blocks instead of actual 9; corrected without changing original 23 independently successful source-generator jobs",
+    "separate_initial_failed_independent_run": 42442091177,
+    "independent_failure_cause": "output key mismatch terminal normalized t lower; corrected; audit now PASSES"
+  },
+  "source_R_original_native_artifact": {
+    "id": 13602425785,
+    "json_sha256": "a21448b515bbcb47cec2b02e9ea4c149e63d4eb56c1d224cbf097d2a62a103a6",
+    "zip_sha256": "4e8f06e06faf46a5208fadafdd8340c767ae640520e17ea6dde525463a8c9c6c"
+  },
+  "source_T_original_native_artifact": {
+    "id": 13602670360,
+    "json_sha256": "e81bf6954ffd4748996486402808df2afaa1738f5b72e0fcf74d7c2010ee5169",
+    "zip_sha256": "645d6375cd309ea15d416d9022b30891dbed919710583097ae9bf3ebe1ad36cd"
+  },
+  "independent_full_J7_exact_fraction_artifact": {
+    "id": 13602272625,
+    "json_sha256": "91e007c65e8eccf84126073aac7b6a11c41d445284b2f616b6d05151340f1c1f",
+    "zip_sha256": "18a0e5b9e26e2fcbdd0058cc75097d62addd75c38cb9f61bbeb14dce124a4337"
+  },
+  "raw_uncoarsened_original_source_repo_archive": "OPEN, exact Fraction raw data retained in GitHub Actions original workflow artifacts",
+  "canonical_obligation": "W-ODD-NEG OPEN",
+  "full_J7_signed_integral": "ACCEPTED SOURCE-NATIVE",
+  "whole_J8": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "NF479 audit conditional J7-to-NF404 transfer, remaining J8/other signed source scalar and exact domain/operator W-ODD-NEG obligations; do not promote full J7 negative alone to RH"
+}
