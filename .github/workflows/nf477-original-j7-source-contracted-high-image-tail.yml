@@ -1,0 +1,31 @@
+name: NF477 true original J7 source-contracted high-image tail certificate
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  original-high-image-resolvent:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: Attach only NF471 original joint-source and NF477 original high-image evaluator to immutable native source
+        run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf477_original_J7_contracted_resolvent_high_image_tail_native.py native/scripts/local_replay/
+      - name: Contract all original 273 modes BEFORE 360-jet absolute bounds and certify complete genuine J7 irrational right-seam image tail
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf477_original_J7_contracted_resolvent_high_image_tail_native.py --output ../nf477-original-J7-high-image-resolvent-tail.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf477-original-J7-source-correlated-high-image-tail
+          path: nf477-original-J7-high-image-resolvent-tail.json
+          retention-days: 90
