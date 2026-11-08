@@ -196,3 +196,54 @@ The source NF479 actual global Bessel lower plus the accepted first-panel upper 
 These are **logical transfer thresholds**, not an observed terminal integral or a complete J8 acceptance. The genuine conditional projector gap \(\approx3.31058e-26\) still governs the required correlation-preserving resolution. Source-native NF481 entire physical endpoint twenty-jet high-image truncation is already unconditionally negligible (\(<9.373e-33\) energy), but its retained finite 18000 images and first 19 analytic full-source \(\Phi\) functions still need direct terminal integration with the exact H-principal log cancellation.
 
 **FINAL NF482 ACCEPTED:** one actual original J8 continuous signed physical integral is strictly positive at true irrational n9 entry, independently source-audited through all genuine 246/273 mode contributions. **Full J8 upper, NF404 sufficient cap, W-ODD-NEG, RH OPEN.** **Next bold NF483:** genuine original terminal J8 \([549/500,B]\) retained endpoint-renormalized source-signed energy and complete D8.
+
+
+## NF482 actual original source-native numerical result (recovered 2026-11-08)
+
+The first genuine original J8 signed physical interval is **COMPUTED**, not merely submitted. In [original 4096-bit full source run #42506659220](https://github.com/monocap-tech/weil-lab/actions/runs/42506659220), all 11 native source-generating jobs PASSED: authentic 273-mode central source, seven original J8 negative prime shifts, and nine 2000-mode groups of original BOTH matched image families, all from the pinned unmodified 246-generator NF407 source. Initial assembly failed a Python Fraction versus Arb comparison type mismatch, not an underlying source obstruction. Reusing all eleven original unchanged native source fragments, corrected genuine original physical assembly **PASSED** in [#42508615790](https://github.com/monocap-tech/weil-lab/actions/runs/42508615790), original raw source result artifact #13628664269.
+
+The original n9-active physical source signed integral is rigorously
+\[
+\boxed{
+4.0146404353621941255\times10^{-25}
+<
+D_{8,A}=\int_{\log9-B}^{549/500}(4pz+2z^2)\,dx
+<
+4.0346408353623942936\times10^{-25}>0.
+}
+\]
+This is an **actual continuous source-native signed moment**, not a pointwise sign or the full J8 cell. The true physical irrational length \(1099/500-\log9\simeq0.0007754226637806172095\) is integrated using original 4096-bit Arb asymmetric monomial primitives, not a rational-endpoint surrogate. Genuine original normalized moments:
+\[
+\langle pz\rangle_{I_{8,A}}\approx -2.626999706718\times10^{-23},\quad
+\langle z^2\rangle_{I_{8,A}}\in (3.1155268755,3.1255270756)\times10^{-22}.
+\]
+The actual original covariance interval **STRADDLES zero**, and variance is strictly positive; no covariance sign is claimed. Original full source coefficient errors, true seven J8 source-prime uncertainty, 1200 coefficient analytic remainder and original 18000-image tail yield certified uniform \(\|z-P\|_\infty<10^{-29}\) on the FIRST J8 strip. The strict source-correlated infinity error is
+\[
+\boxed{\sup_{I_{8,A}}|\text{original images }m\ge18000|<4.628735\times10^{-44},}
+\]
+using exact physical \(B-x\ge1/500\); it does NOT extend to terminal \(x=B\).
+
+The same original NF406 n9 entry at \(x=\log9-B\) is checked by source oddness \(U(-B)+U(B)=0\); its exact native seam overlaps the prior NF478 genuine original J7 terminal physical source. The original source and seam SHA contracts remain unchanged.
+
+### New **inferred** positive terminal lower from the authentic full source
+
+NF479 already certified the complete original J8 signed global source/Bessel lower \(D_8>1.62879141359108499738\times10^{-22}\). Subtracting the NEW actual source-certified first J8 physical panel upper yields for the still-unintegrated genuine original terminal \([549/500,B]\)
+\[
+\boxed{
+D_{8,T}=D_8-D_{8,A}
+>1.62475677275572260309\times10^{-22}>0.
+}
+\]
+This is a valid **whole-source global projection + directly integrated first-panel inference**, not direct original terminal quadrature or its missing upper. The conservative exact threshold required to SUFFICE for the particular NF404 centered scalar is
+\[
+\boxed{D_{8,T}\le1.62508783059754356386\times10^{-22}.}
+\]
+A certified \(D_{8,T}\) lower strictly above \(1.65276216747869820147\times10^{-22}\) would instead prove this NF404 sufficient-centered-cap path fails; neither outcome decides RH.
+
+### Audit status — do not promote prematurely
+
+The independent exact-Fraction step of #42508615790 initially FAILED because the checker read an absent *redundant* metadata flag, original_first_J8_actual_signed_panel_only. This did not affect the native 4096-bit source and signed proof: all physical interval, support, input/rounding, sign and whole-J8-OPEN fields were present. The exact checker now audits those actual native output fields directly. [New focused independent exact GitHub run #42510877480](https://github.com/monocap-tech/weil-lab/actions/runs/42510877480) was **QUEUED at recovery**, so do not report its success until verified. Local independently recomputed exact rational log9 endpoint, original source 18k-image tail and outward signed moments PASS. Native raw original source artifact #13628664269 JSON SHA256 7683979113e7329498f77649e3af7367fa3cb375bdb1b7fa2c94b919d5b794d0, ZIP SHA256 bcdf989ee81289e228476e2ff66376e2b74507516ab59d4f4e5ed715e48f2b25. [Provisional recovery source custody](../data/provisional/NF482_original_J8_first_irrational_signed_partial_native_custody.json) records signed bounds, new terminal lower, source SHAs and failed/queued audit status.
+
+**Current distinction:** source-native first original J8 panel **POSITIVE / PASS**, separate focused exact-Fraction CI **PENDING**. Entire original J8 numeric value/UPPER, direct terminal signed integration, NF404, W-ODD-NEG, domain/operator and RH OPEN. No main merge.
+
+**Next bold NF483:** genuinely integrate entire original terminal \([549/500,B]\), including exact original full-source \(\mu_0=v\) H-principal logarithmic cancellation, original finite 18k two-endpoint matched images, nineteen source-correlated continuous endpoint \(\Phi\) functions, true n9 physical support, and signed pz,z² moments. A high-image tail estimate is not itself a terminal signed upper.
