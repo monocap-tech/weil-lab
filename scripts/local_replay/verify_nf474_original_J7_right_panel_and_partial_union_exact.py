@@ -72,7 +72,7 @@ def main():
         "original_source_shared_moment_sign":signed_moments,
         "original_source_native_signed_interval":[str(dlo),str(dhi)],
         "original_source_native_sign":signed_native,
-        "independent_complete_original_pz_outward":[str(pzlo),str(pzhi],
+        "independent_complete_original_pz_outward":[str(pzlo),str(pzhi)],
         "independent_complete_original_z2_outward":[str(qlo),str(qhi)],
         "independent_fraction_moment_signed_interval":[str(directlo),str(directhi)],
         "original_nf474_physical_panel":["53/50","27/25"],
