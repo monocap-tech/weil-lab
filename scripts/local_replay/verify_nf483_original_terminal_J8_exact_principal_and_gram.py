@@ -45,19 +45,36 @@ def arb_interval(s):
     radius=F(mt.group(3))*F(10)**int(mt.group(4))
     assert radius>0
     return center-radius,center+radius
-def logpos(t,N=120):
-    """Exact positive rational interval of log(t), 1<t<=2."""
+def decimal_outward(x,places=75,upper=False):
+    """Exact-rational outward decimal carrier, preserving containment.
+
+    Essential: do NOT naively exponentiate the 500-term log9 rational
+    denominator in a second 120-term log atanh series (explodes digit
+    count without improving the decision). Pay rounding here first.
+    """
+    scale=10**places
+    y=x*scale
+    integer=y.numerator//y.denominator
+    if upper and integer*y.denominator<y.numerator:
+        integer+=1
+    return F(integer,scale)
+
+def logpos(t,N=70):
+    """Exact positive rational interval log(t), 1<t<=2, with paid rounding."""
     assert F(1)<t<=F(2)
     r=(t-1)/(t+1)
     lo=2*sum((r**(2*k+1)/F(2*k+1) for k in range(N)),F(0))
     hi=lo+2*r**(2*N+1)/(F(2*N+1)*(1-r*r))
     assert 0<lo<hi
-    return lo,hi
+    return decimal_outward(lo,70),decimal_outward(hi,70,True)
 def log9_positive(K=500):
     t=F(4,5)
     lo=2*sum((t**(2*k+1)/F(2*k+1) for k in range(K)),F(0))
     hi=lo+2*t**(2*K+1)/(F(2*K+1)*(1-t*t))
-    return lo,hi
+    # All 500 terms and their exact geometric remainder are first paid.
+    # Coarsen outward to prevent 500-rational denominators being raised
+    # to the powers of a second atanh series (irrelevant mega-integers).
+    return decimal_outward(lo,75),decimal_outward(hi,75,True)
 def J_exp_integer(lam,x):
     """Formal exponential time moment kernel, for actual source evaluations:
        lambda=0: x; lambda ≠0: (1-exp(-lambda*x))/lambda.
@@ -166,8 +183,13 @@ def main():
     assert F(1,500)<L8lo<L8hi<F(1,300)
     assert 256 < B/L8hi < B/L8lo <512
     log2lo,log2hi=logpos(F(2))
-    lrlo,lrhi=logpos(B/(256*L8hi))
-    lslo,lshi=logpos(B/(256*L8lo))
+    # First outward-coarsen the original true log9-derived ratio to 40
+    # digits. Exact log-interval monotonicity preserves containment.
+    ratio_lower=decimal_outward(B/(256*L8hi),40)
+    ratio_upper=decimal_outward(B/(256*L8lo),40,True)
+    assert F(1)<ratio_lower<ratio_upper<F(2)
+    lrlo,lrhi=logpos(ratio_lower,N=55)
+    lslo,lshi=logpos(ratio_upper,N=55)
     h8lo=8*log2lo+lrlo
     h8hi=8*log2hi+lshi
     # TRUE terminal physical [B-1/500,B].
@@ -233,6 +255,8 @@ def main():
       "original_true_terminal_J8_interval":["549/500","B"],
       "original_terminal_length":"1/500",
       "original_true_J8_length_exact_rational":[str(L8lo),str(L8hi)],
+      "original_log9_500term_with_outward_decimal_carrier_places":75,
+      "original_composed_log_ratio_outward_decimal_carrier_places":40,
       "original_full_principal_7_minus_J8_weight_set":list(PRIMES),
       "original_source_v_interval":[str(v0),str(v1)],
       "original_source_C8_interval":[str(C0),str(C1)],
