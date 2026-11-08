@@ -1,0 +1,23 @@
+name: NF483 exact original source J8 full principal and terminal Gram witness
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-J8-actual-source-principal-and-gram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original NF411 4096bit source v / all-seven J8 prime weights and true improper full J8 principal energy
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf483_original_terminal_J8_exact_principal_and_gram.py --output nf483-original-full-J8-true-principal-terminal-and-gram-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf483-original-true-J8-principal-gram-exact-Fraction
+          path: nf483-original-full-J8-true-principal-terminal-and-gram-exact.json
+          retention-days: 90
