@@ -160,7 +160,7 @@ def main():
     assert end["original_CI_result"]==mod["CI_result"]=="SUCCESS"
     assert j8A["source_nf407_sha256"]==SRC and j8A["source_nf406_seams_sha256"]==SEAM
     assert j8A["original_first_J8_source_CI"]["independent_exact_repair_ci_status"]=="SUCCESS"
-    assert nf479["source_original_nf407_sha256"]==SRC
+    assert nf479["original_nf407_source_sha256"]==SRC
     assert epold["source_sha256"]==SRC and epold["seams_sha256"]==SEAM
     assert epold["CI_status"]=="SUCCESS"
     assert end["complete_z_B_strictly_negative"]
