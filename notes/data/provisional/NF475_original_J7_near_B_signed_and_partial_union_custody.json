@@ -1,0 +1,141 @@
+{
+  "pass": "NF475",
+  "date": "2026-11-07 PT",
+  "standing": "ACCEPTED TRUE original NF407/NF406 J7 [27/25,109/100] full source-correlated mixed/quadratic signed D_I strictly NEGATIVE; continuous [1,109/100] four-panel partial signed STRICT NEGATIVE; full J7/J8, NF404, W-ODD-NEG, RH OPEN",
+  "source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "seam_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "source_native_parent": "f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05",
+  "generators": 246,
+  "grouped_modes": 273,
+  "critical_sines": 32,
+  "sinh_m0_pole": true,
+  "genuine_negative_primes": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "nf404_center": "6677356497477490213/4611686018427387904",
+  "genuine_original_J7_panel": [
+    "27/25",
+    "109/100"
+  ],
+  "physical_panel_length": "1/100",
+  "source_taylor_center": "217/200",
+  "source_taylor_halfwidth": "1/200",
+  "source_taylor_degree": 1599,
+  "source_analytic_disk_R": "1/100",
+  "source_cauchy_ratio": "1/2",
+  "source_analytic_M": "10^350",
+  "taylor_remainder_approx": "4.498181067217413e-132",
+  "genuine_image_modes": 24000,
+  "genuine_image_chunk": 2000,
+  "genuine_image_chunks": 12,
+  "original_image_real_tail_exact_formula": "100*10^160/24000*(3/8)^480",
+  "original_image_tail_approx": "1.4282270941593198e-47",
+  "last_insufficient_1000_grid_cutoff": 23000,
+  "source_arb_coeff_radius_approx": "4.04004004004004e-163",
+  "source_weight_input_error_upper_approx": "9.01e-30",
+  "uniform_source_z_error_strict": "1e-28",
+  "original_principal_log_ratio": "1/3",
+  "original_principal_log_constant": "log(220/3)",
+  "principal_series_terms": 260,
+  "principal_series_tail_approx": "2.997419649966361e-138",
+  "source_p_uniform_bound": "|p|<7e-11 from exact rational exp(5)>110 and B/(B-x)<=110",
+  "independent_source_full_compact_boundary_x": "27/25",
+  "independent_boundary_original_full_z_coarsened_outward": [
+    "8.155113475320115e-11",
+    "8.155113475320117e-11"
+  ],
+  "independent_boundary_original_full_signed_S_coarsened_outward": [
+    "-6.415571085826669e-21",
+    "-6.415571065826669e-21"
+  ],
+  "native_left_boundary_overlap": true,
+  "original_full_source_normalized_z_mean_outward": [
+    "9.954491697889955e-11",
+    "9.954491697889956e-11"
+  ],
+  "original_full_source_normalized_pz_outward": [
+    "-6.215332e-21",
+    "-6.215331e-21"
+  ],
+  "original_full_source_normalized_z2_outward": [
+    "1.022692e-20",
+    "1.023693e-20"
+  ],
+  "original_full_source_normalized_covariance_outward": [
+    "-3.01639e-23",
+    "-1.01638e-23"
+  ],
+  "original_full_source_normalized_variance_outward": [
+    "3.07730e-22",
+    "3.37732e-22"
+  ],
+  "genuine_original_signed_D_outward": [
+    "-4.4074816e-23",
+    "-4.3874811e-23"
+  ],
+  "independent_original_signed_witness_from_pz_z2_upper": "-4.387464e-23",
+  "source_original_signed_panel_sign": "NEGATIVE",
+  "prior_original_contiguous_panel": [
+    "1",
+    "27/25"
+  ],
+  "prior_original_contiguous_D_outward": [
+    "-3.157013e-22",
+    "-3.140990e-22"
+  ],
+  "new_original_contiguous_panel": [
+    "1",
+    "109/100"
+  ],
+  "new_original_contiguous_D_outward": [
+    "-3.59776116e-22",
+    "-3.57973811e-22"
+  ],
+  "new_original_contiguous_D_sign": "NEGATIVE",
+  "NF464_conditional_full_J7_negative_threshold": "-2.03475e-22",
+  "remaining_three_panel_sufficient_signed_upper": "1.54498811e-22",
+  "remaining_physical_J7_panels": [
+    "[log(8)-B,1]",
+    "[109/100,219/200]",
+    "[219/200,log(9)-B]"
+  ],
+  "source_native_ci": {
+    "first_success_run": 42429638788,
+    "corrected_log_bound_success_run": 42429671313,
+    "corrected_status": "SUCCESS",
+    "raw_output_identical_between_runs": true,
+    "central": true,
+    "primes": true,
+    "matched_image_blocks": 12,
+    "independent_physical_compact_boundary": true,
+    "source_shared_signed_assembly": true
+  },
+  "source_native_raw": {
+    "artifact_id": 13596822657,
+    "raw_filename": "nf475-original-J7-source-signed-moments.json",
+    "sha256": "fd731d7998c26c3674edb599609714aadea84690e73d3435e1de1b50cff39beb",
+    "zip_sha256": "b433497ea137588f9649cefdc3aa8b9d584b45fabf87d32df2fb5779dd434881"
+  },
+  "independent_physical_boundary_raw": {
+    "artifact_id": 13597416289,
+    "raw_sha256": "9e2ac14567e3ef96e67ccab4d9d478849c1e9432fb9b8056991d48f9bb9ce580",
+    "zip_sha256": "668d6bcd09ba8662e9f2f8f64aa459829053a4715fa7ce3123c4a3e7d1ba849f"
+  },
+  "local_independent_exact_fraction_source_sign_union_audit": {
+    "result": "PASS",
+    "audit_json_sha256": "528daf0aaa1b6e865e91fb82767e1bc3a7932cf7a33ad38eb3c464da74767af3",
+    "github_independent_audit": "PENDING after promotion commit"
+  },
+  "raw_uncoarsened_JSON_repository_archival": "OPEN; full native source evidence in original GitHub Actions artifact and conversation output",
+  "whole_J7": "OPEN",
+  "whole_J8": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "NF476 certify remaining original J7 [log8-B,1], [109/100,219/200], [219/200,log9-B], source-correlated high-m image tail near endpoint, then assess whole-J7 NF464 conditional gate"
+}

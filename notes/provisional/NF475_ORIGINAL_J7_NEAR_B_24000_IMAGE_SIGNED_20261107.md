@@ -73,3 +73,96 @@ New files:
 Upon acceptance, exact source original union \([1,109/100]\) can be constructed from NF474 accepted \([1,27/25]\) and the true new interval; still **remaining** physical J7 panels \([\log8-B,1]\), \([109/100,219/200]\), \([219/200,\log9-B]\) OPEN. J8, NF404 conditional acceptance, W-ODD-NEG, whole Weil/domain and RH OPEN; no main merge.
 
 **Next bold NF476:** register the actual signed NF475 result, audit its conditional residual budget and source covariance, then attack the next true physical panel x∈[109/100,219/200] with endpoint-specific source correlation / infinite image tail. Do not allow a passed partial-panel certificate to be promoted to full original J7.
+
+## Source-native ORIGINAL numerical result — ACCEPTED
+
+The complete pinned original 4096-bit 246-source/273-group genuine physical J7 calculation [run #42429671313 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42429671313) evaluated all twelve genuine source-correlated 2000-image blocks through m=23999, original central digamma+odd m0 pole, original six minus prime translates, exact NF404 center and true principal logarithm; the independent original NF446 **complete physical compact-kernel point** at x=27/25 also passed its own job. This succeeded after correcting a proof guard: on the new panel B/(B-x)<=110, the original bound |p|<7e-11 requires **log110<5**, established rigorously by a 7-term rational lower series for exp5>110, rather than using the previous panel's log ratio <4. The earlier initial native [run #42429638788 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42429638788) produced **byte-identical raw original numerical JSON**, with the final corrected proof guard re-run in #42429671313.
+
+The genuine independent original full-source compact J7 boundary at x=27/25 certifies
+\[
+z(27/25)\approx+8.155113475320116\cdot10^{-11},
+\qquad
+4pz+2z^2\approx-6.41557107582667\cdot10^{-21}.
+\]
+The new shared original analytic-source Taylor polynomial's left endpoint s=-1 overlaps this same-source independent physical compact-kernel result, after charging source/truncation errors.
+
+The actual original normalized macroscopic mean is **strictly positive**:
+\[
+\boxed{9.954491697889955\cdot10^{-11}<
+\bar z_{[1.08,1.09]}<
+9.954491697889956\cdot10^{-11}.}
+\]
+Its complete source-mixed and quadratic normalized moments have rigorously **outward coarsened** enclosures
+\[
+-6.215332\cdot10^{-21}<\langle pz\rangle<-6.215331\cdot10^{-21},
+\quad
+1.022692\cdot10^{-20}<\langle z^2\rangle<1.023693\cdot10^{-20}.
+\]
+The **actual original covariance** remains strictly NEGATIVE and the variance strictly POSITIVE:
+\[
+\boxed{-3.01639\cdot10^{-23}<\operatorname{Cov}(p,z)<-1.01638\cdot10^{-23}<0},
+\quad
+3.07730\cdot10^{-22}<\operatorname{Var}(z)<3.37732\cdot10^{-22}.
+\]
+
+The **complete genuine original continuous signed J7 panel** source integral is
+\[
+\boxed{-4.4074816\cdot10^{-23}<
+D_{[27/25,109/100]}
+=\int_{27/25}^{109/100}(4pz+2z^2)\,dx
+<-4.3874811\cdot10^{-23}<0.}
+\]
+The source-native raw uncoarsened interval is approximately
+\((-4.4074815534245965,-4.3874811534245764)\times10^{-23}\), with the true original source-wide uniform \(\|z-P\|_\infty<10^{-28}\), original source and prime-weight radii, and omitted original infinite matched-image tail \(1.42823\times10^{-47}\) all paid. A completely **independent exact rational sign check** using only the outward original mixed and quadratic moment intervals yields
+\[
+D_I<
+\frac1{100}\left[4(-6.215331\cdot10^{-21})+
+2(1.023693\cdot10^{-20})\right]
+=\boxed{-4.387464\cdot10^{-23}<0}.
+\]
+This does not assume source covariance or pointwise signs and cannot be mistaken for a finite sample.
+
+### Fourth contiguous original J7 source-certified signed panel
+
+NF474 previously established (along with NF472/NF473)
+\[
+-3.157013\cdot10^{-22}<
+D_{[1,27/25]}<
+-3.140990\cdot10^{-22}.
+\]
+NF475 is exactly adjacent, with unchanged genuine original NF407/NF406 hashes and physical six-minus J7 support. Exact Fraction addition of the two source-certified integrals gives
+\[
+\boxed{-3.59776116\cdot10^{-22}<
+D_{[1,109/100]}
+=\int_1^{1.09}(4pz+2z^2)\,dx
+<-3.57973811\cdot10^{-22}<0.}
+\]
+This is **four contiguous original physical J7 signed panels covering width 0.09**, not a proof the integrand is pointwise negative everywhere. Three original J7 portions still remain OPEN: \([\log8-B,1]\), \([109/100,219/200]\), \([219/200,\log9-B]\).
+
+**NF464 conditional full-J7 threshold ledger:** The partial original contribution alone has negative magnitude exceeding \(2.03475\times10^{-22}\). The entire original J7 remains open, because three unintegrated portions may offset the partial negativity. With the proven partial upper \(-3.57973811\times10^{-22}\), a **sufficient** remaining-three-panel signed upper is
+\[
+\boxed{D_{\rm remaining}<+1.54498811\times10^{-22}.}
+\]
+This allows positive residual energy, but must be certified on the actual source; it is **not** a full-J7 acceptance claim.
+
+### Cutoff minimality and infinite-image custody
+
+The inherited source-independent real near-B image envelope is
+\(
+E_M=\frac{100\cdot10^{160}}{M}(3/8)^{\lfloor M/50\rfloor}.
+\)
+Exact rational arithmetic shows \(E_{23000}\approx4.9278\times10^{-39}\) **cannot meet** \(10^{-40}\) by this envelope, whereas \(E_{24000}\approx1.42823\times10^{-47}<10^{-40}\). Thus 24,000 is the **first sufficient cutoff in 1000-mode granularity under this absolute envelope**. This is not an impossibility result for a stronger correlated tail method. On the original complex source disk, the J7 n9 seam is strictly outside because the exact positive-series lower bound
+\[
+\log9=2\sum_{k\ge0}\frac{(4/5)^{2k+1}}{2k+1}>
+2\sum_{k=0}^{9}\frac{(4/5)^{2k+1}}{2k+1}>
+439/200=B+1.095.
+\]
+The source original finite transfer analytic R=1/100 gate therefore remains typed and rigorously inside the six-minus physical branch.
+
+### Exact provenance and limits
+
+The accepted corrected native original source run is [#42429671313](https://github.com/monocap-tech/weil-lab/actions/runs/42429671313), full source JSON GitHub artifact **#13596822657**, raw SHA256 \`fd731d7998c26c3674edb599609714aadea84690e73d3435e1de1b50cff39beb\`, ZIP SHA256 \`b433497ea137588f9649cefdc3aa8b9d584b45fabf87d32df2fb5779dd434881\`. The source-native compact boundary artifact #13597416289 has raw SHA256 \`9e2ac14567e3ef96e67ccab4d9d478849c1e9432fb9b8056991d48f9bb9ce580\`, and ZIP SHA256 \`668d6bcd09ba8662e9f2f8f64aa459829053a4715fa7ce3123c4a3e7d1ba849f\`. The independent exact-Fraction original source/mean/sign/union audit was also **executed locally** on the byte-identical corrected native raw JSON and passed; its retained JSON SHA256 is \`528daf0aaa1b6e865e91fb82767e1bc3a7932cf7a33ad38eb3c464da74767af3\`. A new fast independent GitHub audit workflow is committed in this promotion; **do not report its future status as success before it actually completes**. Complete uncoarsened original raw output lives in native Actions artifact and conversation file; permanent full raw JSON repository archival remains OPEN. Independent peer mathematical review remains distinct from CI.
+
+**Accepted:** new genuine original [1.08,1.09] source covariance/variance and signed D<0, and certified contiguous signed [1,1.09] source partial D<0. **Still OPEN:** whole original J7, J8, NF404 sufficient acceptance, canonical W-ODD-NEG, whole Weil operator/domain, RH. No main merge.
+
+**Next bold NF476:** use the widened positive residual budget and already accepted original source-integral machinery to address remaining true J7 panels. Prioritize \([\log8-B,1]\) if cheap, while developing a **source-correlated high-m image tail** for \([109/100,219/200]\) and terminal seam \([219/200,\log9-B]\), where naive doubling from 24000 to 48000 and beyond becomes inefficient. Do not reassign the established signed partial to the entire J7.
