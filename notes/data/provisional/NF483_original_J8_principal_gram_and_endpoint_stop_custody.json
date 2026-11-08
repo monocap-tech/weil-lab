@@ -1,7 +1,7 @@
 {
   "pass": "NF483",
   "date": "2026-11-08 PT",
-  "standing": "SOURCE-ORIGINAL LOCAL EXACT-FRACTION ANALYTIC principal J8 integrated and finite-image signed Gram representation verified; GitHub focused exact audit QUEUED, NOT promoted to CI-ACCEPTED; true terminal signed D upper and NF404 OPEN",
+  "standing": "ACCEPTED source-original 246-generator NF411 native dyadic original v and seven authentic J8 prime-power weight analytic exact TRUE J8/terminal principal energies, plus pure exact signed 18k finite matched-image Gram algebra, independently verified exact Fraction CI SUCCESS; actual original terminal mixed/quadratic D8 upper/NF404 OPEN",
   "source_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
   "seams_nf406_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
   "original_nf411_4096bit_original_v_and_seven_exact_prime_weights": true,
@@ -46,7 +46,42 @@
   "NF404": "OPEN",
   "W_ODD_NEG": "OPEN",
   "RH": "OPEN",
-  "source_ci_run_id": 42518338647,
-  "source_ci_current_result": "QUEUED, pending; do not claim CI acceptance",
-  "next_bold": "NF484 source-correlated actual 18000 finite matched original image Gram + 19 authentic Phi endpoint functions and mixed central/seven-prime/pz to resolve original terminal signed upper"
+  "source_ci_run_id": 42536959023,
+  "source_ci_current_result": "SUCCESS",
+  "next_bold": "NF484 source-correlated actual 18000 finite matched original image Gram + 19 authentic Phi endpoint functions and mixed central/seven-prime/pz to resolve original terminal signed upper",
+  "source_ci_original_early_failures": [
+    {
+      "run_id": 42517950450,
+      "reason": "Python syntax in signed rational Gram-control I construction, before execution; no source or mathematical result"
+    },
+    {
+      "run_id": 42518338647,
+      "reason": "Same original Python syntax mismatch"
+    },
+    {
+      "run_id": 42536749743,
+      "reason": "NF479 receipt immutable key mismatch source_original_nf407_sha256 vs original_nf407_source_sha256; mathematical audit never ran to completion"
+    }
+  ],
+  "source_ci_completed_exact": {
+    "run_id": 42536959023,
+    "conclusion": "SUCCESS",
+    "jobs": 1,
+    "source_original_raw_exact_Fraction_artifact_id": 13639264991,
+    "raw_json_sha256": "82d6f43982ecaf3fa1b01b25da31a639b342c1379e3a61d7ad1242297f17fb9d",
+    "artifact_zip_sha256": "7c209d3b689848f14b173cdbef1b10bfdd486ff7864943d06aa45e08b7a34644",
+    "original_json_filename": "nf483-original-full-J8-true-principal-terminal-and-gram-exact.json"
+  },
+  "source_accepted_original_J8_full_principal_exact_outward_decimal": [
+    "1.87991766151004211986809701115647340064162053733E-23",
+    "1.87991766151004211986809701115647343015721099901E-23"
+  ],
+  "source_accepted_original_J8_terminal_principal_exact_outward_decimal": [
+    "1.41825553212960128603588229335025065652083995634E-23",
+    "1.41825553212960128603588229335025067828584294311E-23"
+  ],
+  "source_original_frozen_zB_diagnostic_method_stop_verified": true,
+  "source_original_signed_Gram_12_adversarial_Fraction_controls_verified": true,
+  "original_full_source_signed_J8_numerical_upper": "OPEN",
+  "original_terminal_signed_upper": "OPEN"
 }
