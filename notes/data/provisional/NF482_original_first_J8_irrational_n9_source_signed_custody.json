@@ -1,7 +1,7 @@
 {
   "pass": "NF482",
   "date": "2026-11-08 PT",
-  "standing": "SOURCE-NATIVE 4096-bit original J8 first irrational n9 seam panel SIGN POSITIVE, independent exact Fraction second replay QUEUED as of initial receipt; full original J8 signed upper and NF404 remain OPEN",
+  "standing": "ACCEPTED: complete authentic original J8 first irrational n9-entry REAL signed integral strict POSITIVE from 4096bit source-native 11 original 273-mode blocks AND independently exact Fraction true physical pz/z² source moments; entire J8 signed upper, NF404, W-ODD-NEG, RH OPEN",
   "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
   "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
   "original_source_generators": 246,
@@ -53,13 +53,40 @@
     "raw_native_zip_sha256": "bcdf989ee81289e228476e2ff66376e2b74507516ab59d4f4e5ed715e48f2b25",
     "first_native_11_source_mode_producers_run": 42506659220,
     "first_assembler_failure": "original Fraction vs Arb endpoint comparison (type error only); corrected and replayed unchanged source artifacts",
-    "independent_original_exact_fraction_status": "QUEUED",
-    "independent_original_exact_fraction_direct_11_source_job_run": 42510017106
+    "independent_original_exact_fraction_status": "SUCCESS (direct immutable raw 11-source block audit CI #42510017106)",
+    "independent_original_exact_fraction_direct_11_source_job_run": 42510017106,
+    "legacy_native_moment_second_audit_historical_failure": "first historical second audit run #42508615790 failed due unretained JSON optional metadata key, native source assembly itself SUCCESS; direct independent all-11-source exact Fraction #42510017106 PASS. Focused corrected metadata audit queued."
   },
   "critical_numerical_precision_note": "central digamma and earliest image first coefficient individually ~3.24e141 and cancel to ~e-11; an exploratory 90-decimal mpmath sum falsely suggested z~1.7; this was DISCARDED and replaced with exact Fraction native interval contraction and 4096bit Arb. NEVER use low-precision source-chunk arithmetic.",
   "full_original_J8_signed_value_upper": "OPEN",
   "NF404": "OPEN",
   "W_ODD_NEG": "OPEN",
   "RH": "OPEN",
-  "next_bold": "NF483 original full terminal J8 [549/500,B] finite 18000 images plus exact NF480/481 twenty source-contracted analytic functions, true B p/H singular cancellation and complete original D8 upper"
+  "next_bold": "NF483 integrate actual original J8 terminal [549/500,B] with exact mu0 H-principal endpoint cancellation, first 19 full-source Phi functions plus original finite 18000 matched modes and true NF406 n9 support; measure true signed D8 upper or complete Efull, NF404/W-ODD-NEG/RH stay OPEN",
+  "original_J8_first_exact_fraction_source_signed_D_coarse": [
+    "4.024640635362290e-25",
+    "4.024640635362300e-25"
+  ],
+  "original_J8_first_signed_exact_fraction_sign": "STRICT POSITIVE",
+  "original_source_pz_normalized_mean_exact_approx": "-2.62699970671838377477e-23",
+  "original_source_z2_normalized_mean_exact_approx": "3.12052697550845770826e-22",
+  "original_source_signed_D_exact_approx": "4.02464063536229418079e-25",
+  "source_exact_archive": {
+    "run_id": 42510017106,
+    "conclusion": "SUCCESS",
+    "original_source_artifact_id": 13629053472,
+    "original_source_artifact_raw_json_sha256": "100c1d0308231125585b0f391bfa8b0133898eaed27a937ff66b7c8539eb15fc",
+    "original_source_artifact_zip_sha256": "121282ca5eac93573c1171e03426ed99b05e15a445791786017e5919d384a125",
+    "method": "independent EXACT Fraction from original eleven full 4096-bit source coefficient BALL artifact JSONs, true 350/250-term rational atanh log9 and log1375/3, 70 source coefficients retained and other 1130 coefficients paid, no Gaussian mesh",
+    "retained_source_coefficients": 70,
+    "genuine_source_1130_high_degree_tail_approx": "1.3002013959032547e-68",
+    "independent_true_J8_first_sign": "POSITIVE"
+  },
+  "original_J8_first_independent_source_certified": true,
+  "original_full_original_J8_unintegrated_terminal": [
+    "549/500",
+    "B"
+  ],
+  "original_terminal_J8_NF404_conservative_sufficient_signed_upper_approx": "1.62509783079754366e-22",
+  "original_terminal_J8_NF479_bessel_forced_strict_lower_approx": "1.62476677295572269e-22"
 }
