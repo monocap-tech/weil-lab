@@ -47,7 +47,7 @@ def main():
     assert d["original_seven_regular_minus_prime_powers"]==[2,3,4,5,7,8,9]
     assert d["source_Cauchy_ratio"]=="2/5" and d["principal_log_ratio"]=="1/6"
     assert d["original_signed_integration_length"]=="1099/500-log9"
-    assert d["original_first_J8_actual_signed_panel_only"]
+    assert d["genuine_original_J8_panel"]==["log9-B","549/500"] and d["whole_original_J8"]=="OPEN"
     assert d["original_J7_J8_irrational_entry_seam_overlap"]
     assert d["original_true_irrational_n9_entry_seam_zero_from_oddness"]
     assert d["original_source_Taylor_remainder"] and Q(d["original_source_Taylor_remainder"])<Q(1,10**120)
