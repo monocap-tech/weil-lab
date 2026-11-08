@@ -93,7 +93,7 @@ def main():
     assert tlo<=lengthhi and lengthlo<=tup, "original irrational physical length mismatch"
     xlo,xhi=iv(end["original_irrational_right_endpoint_log9_minus_B_outward"])
     assert xlo<=loghi-F(11,10) and loglo-F(11,10)<=xhi
-    assert end["original_terminal_normalized_t_lower"]=="-11/12"
+    assert end["original_normalized_t_lower"]=="-11/12"
     thi0,thi1=iv(end["original_normalized_t_upper_outward"])
     expected0=(loglo-F(11,10)-F(10961,10000))/F(3,2500)
     expected1=(loghi-F(11,10)-F(10961,10000))/F(3,2500)
