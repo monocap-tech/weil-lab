@@ -1,0 +1,31 @@
+name: NF474 independent original signed J7 raw-artifact Fraction audit
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-raw-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch immutable successful NF474 original 4096-bit native source evidence
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 42428015936
+          name: nf474-original-J7-signed-moments
+          path: original-native
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent exact Fraction pz and z2 sign, original SHA, 12000 image tail and contiguous signed union
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf474_original_J7_right_panel_and_partial_union_exact.py --native original-native/nf474-original-J7-source-signed-moments.json --output nf474-original-J7-independent-Fraction-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf474-original-J7-independent-raw-signed-fraction-audit
+          path: nf474-original-J7-independent-Fraction-audit.json
+          retention-days: 90
