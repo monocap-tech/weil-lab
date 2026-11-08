@@ -1,0 +1,52 @@
+{
+  "pass": "NF479",
+  "date": "2026-11-08 PT",
+  "standing": "ACCEPTED original exact source/projection proof whole J8 signed integral strictly POSITIVE by coupled global Bessel lower and complete NF478 original J7; NF404 sufficient full centered cap OPEN",
+  "standing_type": "inferred source-original entire J8 signed sign; actual J8 signed integration and upper OPEN",
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_NF478_raw_full_J7_exact_source_sha256": "91e007c65e8eccf84126073aac7b6a11c41d445284b2f616b6d05151340f1c1f",
+  "authentic_physical_source_identity": "Efull=K+D7+D8, K=Ep+sum(D1..D6), Efull>=Rlo+d12lo, C=Rlo+gamma^2",
+  "original_selected_Rlo_approx": "1.0950024763105536e-21",
+  "original_two_ray_d12lo_approx": "1.8191023685518214e-26",
+  "original_NF404_exact_C_approx": "1.0950537731184213e-21",
+  "original_exact_K_outward_approx": [
+    "1.3363289742468617e-21",
+    "1.3366252378949771e-21"
+  ],
+  "original_exact_source_full_J7_outward_approx": [
+    "-4.0695288191984657e-22",
+    "-4.0448371191984640e-22"
+  ],
+  "original_full_J8_signed_D8_strict_lower_approx": "1.62879141359108499738213816845263063162411477e-22",
+  "original_full_J8_signed_sign": "STRICT POSITIVE (source-projection inferred; not directly integrated)",
+  "original_J8_signed_upper": "OPEN",
+  "original_J8_signed_sufficient_upper_for_NF404_approx": "1.62912247143290595815747802558559755151641770e-22",
+  "original_J8_signed_failure_lower_for_NF404_approx": "1.65677680791406039559709743950680117884498523e-22",
+  "original_coupled_exact_K_D7_conditional_corridor_width_approx": "3.31057841820960775339857132966919892302933116e-26",
+  "original_independent_K_D7_interval_width_approx": "2.76543364811544374396194139212036273285675333e-24",
+  "original_nonnegative_full_J8_E8_strict_lower_approx": "1.0013957067955425e-22",
+  "original_J8_E8_sufficient_upper_for_NF404_approx": "1.0015612357164530e-22",
+  "original_J8_E8_certain_failure_lower_for_NF404_approx": "1.0173884039570302e-22",
+  "logical_transfer_correction": "NF462 original whole-J7 deficit is NECESSARY for NF404 sufficient cap, not sufficient. NF478 fulfilled necessary condition only. NF479 J8 strict positive is a new unconditional original-source consequence of accepted NF403/NF404/NF454/NF478.",
+  "complete_original_J8_integral_measured": false,
+  "complete_original_NF404_cap_decided": false,
+  "original_strict_J8_sign_inference_source_certified": true,
+  "focused_CI": {
+    "run_id": 42498316637,
+    "conclusion": "SUCCESS",
+    "jobs": 1
+  },
+  "native_NF478_exact_raw_source_run": 42442681289,
+  "exact_fraction_audit_artifact": {
+    "id": 13623964837,
+    "original_json_filename": "nf479-original-J8-forced-positive-NF404-transfer-audit.json",
+    "raw_sha256": "55bc40f013031fa12e197eb708db32e0c26925bfdd09d731925593b2a63ab2c0",
+    "zip_sha256": "c7059bb40604391cd6f5563cd62e3df4c47339bdb9b1b816242aa9867ec1e316"
+  },
+  "full_uncoarsened_exact_fraction_source_audit_in_repo": "OPEN; original raw retained in GitHub Actions and conversation attachment",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "NF480 certify actual original J8 signed UPPER or source-correlated full centered Efull norm at gamma²-d12lo~3.31e-26 precision, using true n9 physical support and B logarithmic endpoint; don't mistake J8 signed lower for NF404 pass"
+}
