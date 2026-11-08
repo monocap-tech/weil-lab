@@ -1,0 +1,132 @@
+{
+  "pass": "NF474",
+  "date": "2026-11-07 PT",
+  "standing": "ACCEPTED SOURCE-NATIVE strictly NEGATIVE genuine original full J7 right signed [53/50,27/25], independent exact Fraction audit, and contiguous original [1,27/25] partial J7 signed NEGATIVE. Whole J7/J8 NF404 W-ODD-NEG RH OPEN.",
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "immutable_original_source_native_parent": "f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05",
+  "source_generators": 246,
+  "original_grouped_frequency_order_modes": 273,
+  "original_sinh_pole": true,
+  "original_critical_sine_modes": 32,
+  "original_regular_negative_prime_powers": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8
+  ],
+  "original_nf404_center": "6677356497477490213/4611686018427387904",
+  "original_true_J7_right_signed_panel": [
+    "53/50",
+    "27/25"
+  ],
+  "panel_length": "1/50",
+  "native_Taylor_center": "107/100",
+  "native_Taylor_halfwidth": "1/100",
+  "native_Taylor_degree": 1599,
+  "analytic_disk_radius": "1/50",
+  "source_Cauchy_ratio": "1/2",
+  "source_Cauchy_M": "10^350",
+  "original_Taylor_remainder_approx": "4.498181067217413e-132",
+  "source_native_Arb_coefficient_aggregate_radius_approx": "4.040040400404004e-163",
+  "original_matched_two_image_modes": 12000,
+  "original_real_image_tail_exact_formula": "(100*10^160/12000)*(3/8)^480",
+  "original_real_image_tail_approx": "2.8564541883186396e-47",
+  "original_principal_log_ratio": "1/3",
+  "native_log_taylor_terms": 260,
+  "log_series_tail_approx": "2.997419649966361e-138",
+  "original_coefficient_and_weight_input_error_approx": "9.01e-30",
+  "uniform_original_source_z_approximation_lt": "1e-28",
+  "original_normalized_z_mean_coarsened_outward": [
+    "5.5101578673549e-11",
+    "5.5101578673550e-11"
+  ],
+  "original_normalized_mixed_pz_coarsened_outward": [
+    "-3.231590e-21",
+    "-3.231589e-21"
+  ],
+  "original_normalized_quadratic_z2_coarsened_outward": [
+    "3.559326e-21",
+    "3.569327e-21"
+  ],
+  "original_normalized_covariance_coarsened_outward": [
+    "-3.540e-23",
+    "-1.539e-23"
+  ],
+  "original_normalized_variance_coarsened_outward": [
+    "5.1314e-22",
+    "5.4315e-22"
+  ],
+  "original_true_right_signed_D_coarsened_outward": [
+    "-1.161542e-22",
+    "-1.157541e-22"
+  ],
+  "independent_exact_fraction_right_signed_upper_from_coarsened_pz_z2": "-1.1575404e-22",
+  "independent_original_right_boundary_x": "53/50",
+  "original_independent_NF470_architecture_boundary_full_z_coarsened_outward": [
+    "1.29291964628310e-11",
+    "1.29291964628312e-11"
+  ],
+  "independent_original_boundary_overlap_pass": true,
+  "previous_NF473_contiguous_source_partial_panel": [
+    "1",
+    "53/50"
+  ],
+  "previous_NF473_contiguous_signed_D_coarsened_outward": [
+    "-1.995471e-22",
+    "-1.983449e-22"
+  ],
+  "new_original_contiguous_partial_panel": [
+    "1",
+    "27/25"
+  ],
+  "new_original_contiguous_signed_D_coarsened_outward": [
+    "-3.157013e-22",
+    "-3.140990e-22"
+  ],
+  "new_original_contiguous_partial_signed_sign": "NEGATIVE",
+  "NF464_conditional_full_J7_negative_gate_magnitude": "2.03475e-22",
+  "partial_upper_magnitude_already_exceeds_NF464_threshold": true,
+  "conditional_remaining_four_panels_net_signed_upper_headroom": "1.10624e-22",
+  "conditional_gate_status": "OPEN until remaining four original J7 source panels certified and total signed integral compared",
+  "original_native_CI": {
+    "run_id": 42428015936,
+    "status": "SUCCESS",
+    "central": true,
+    "original_primes": true,
+    "twelve_original_image_chunks": true,
+    "original_independent_compact_boundary": true,
+    "original_signed_assembly": true
+  },
+  "original_native_raw_source_output": {
+    "artifact_id": 13596109625,
+    "raw_filename": "nf474-original-J7-source-signed-moments.json",
+    "raw_json_sha256": "c51ee2f4d6353a655951337295be7e4f4f48950e43293ff7f0ffa5c9a7e9487b",
+    "zip_sha256": "75d5fe5e71e5091db704ee43f39503bd419dcb293933a8d852b9410a4ff9bcf7"
+  },
+  "independent_boundary_raw_source_output": {
+    "artifact_id": 13595544241,
+    "raw_json_sha256": "ed8f8987d3c76eb0eaf60d36407604742d41f2e99c11b5ee9b871c5208e3e569",
+    "zip_sha256": "172b670fa3d7540106def57fd88094499a1f29eb2f42fccf2ddf82adb129e28e"
+  },
+  "independent_local_exact_fraction_audit": {
+    "result": "PASS",
+    "audit_sha256": "c49b0d4e28e813f915fc71a368164ba1f4b988305e1d6f52cf58bc8c11e158d9",
+    "separate_GitHub_audit_workflow_result": "PENDING"
+  },
+  "full_raw_native_JSON_repo_archival": "OPEN; source-native raw in GitHub Actions artifacts and generated conversation attachment",
+  "remaining_original_J7_physical_panels": [
+    "[log(8)-B,1]",
+    "[27/25,109/100]",
+    "[109/100,219/200]",
+    "[219/200,log(9)-B]"
+  ],
+  "full_original_J7": "OPEN",
+  "full_original_J8": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "NF475 source-native signed [27/25,109/100] with an independently paid larger/smarter matched-image tail; avoid treating the partial J7 exceedance of the conditional threshold as whole-cell closure."
+}
