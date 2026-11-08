@@ -1,0 +1,30 @@
+name: NF477 exact original high-image source-resolvent witness
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-global-tail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42436964916
+          name: nf477-original-J7-source-correlated-high-image-tail
+          path: native-original
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact Fraction independent 273-mode original 360-jet resolvent remainder and irrational log9 physical J7 tail
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf477_original_j7_high_image_tail_exact.py --native native-original/nf477-original-J7-high-image-resolvent-tail.json --output nf477-original-J7-exact-rational-high-image-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf477-independent-original-J7-global-high-image-audit
+          path: nf477-original-J7-exact-rational-high-image-audit.json
+          retention-days: 90
