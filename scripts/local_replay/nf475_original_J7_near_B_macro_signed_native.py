@@ -305,7 +305,10 @@ def assemble(args):
     # |P|<25001. |p|<7e-11; |p midpoint difference|<1e-40
     # from original NF411 weight errors and source S0.
     pmax=Q(7,10**11)
-    assert Q(117,10**13)*(Q(793,250)+2)<pmax
+    # On the genuine NF475 physical panel d=B-x>=1/100, B/d<=110.
+    # Exact rational lower Taylor polynomial for exp(5) proves log(110)<5.
+    assert sum((Q(5)**j/Q(math.factorial(j)) for j in range(7)),Q(0))>110
+    assert Q(117,10**13)*(Q(793,250)+Q(5,2))<pmax
     err_p=Q(1,10**40)
     e_pz=pmax*eps_z+err_p*25001+plog_tail*25001
     e_z2=Q(50001)*eps_z
