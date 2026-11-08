@@ -121,10 +121,11 @@ def main():
     rem=F(d["exact_absolute_binomial_remainder"])
     assert F(0)<rem<F(1,10**130)
     assert F(d["source_uniform_all_m_amplitude_bound"])>=leading+rem
+    source_input_overcharge=F(5,10**700*M)
     spent=F(0);sweep=[]
     for k in range(1,21):
         spent+=abslower(jets[k-1])/F(M)**k
-        W=leading-spent+rem
+        W=leading-spent+rem+source_input_overcharge
         assert W>0
         U=W*F(M+k,2*k)
         # Same genuine original source NF480 endpoint proof:
@@ -184,6 +185,7 @@ def main():
       "source_original_full_w_sup_bound_at_B":"NONE: principal logarithm diverges",
       "source_complete_360jet_absolute_sum":str(leading),
       "source_exact_positive_binomial_resolvent_remainder":str(rem),
+      "source_original_dyadic_input_extra_overcharge":str(source_input_overcharge),
       "source_resolvent_M":M,
       "source_first_twenty_original_jet_count":20,
       "original_unconditional_energy_fee_sweep":sweep,
