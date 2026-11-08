@@ -1,7 +1,7 @@
 {
   "pass": "NF482",
   "recovery_date": "2026-11-08 PT",
-  "standing": "SOURCE-NATIVE first genuine original J8 n9-entry irrational signed panel strictly POSITIVE, 4096bit 11 original source jobs & corrected native assembly PASS; independent GitHub exact Fraction CHECK PENDING after repair of missing audit metadata-only receipt key",
+  "standing": "ACCEPTED original source-native + INDEPENDENT EXACT-FRACTION first genuine J8 n9-entry physical signed D8A POSITIVE; complete original J8 upper and NF404 OPEN",
   "source_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
   "source_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
   "original_source_generators": 246,
@@ -35,7 +35,7 @@
     "4.014640e-25",
     "4.034641e-25"
   ],
-  "original_first_J8_signed_sign": "STRICT POSITIVE (original native) — pending independent GH CI promotion",
+  "original_first_J8_signed_sign": "STRICT POSITIVE: native source and independent exact Fraction GitHub CI PASS",
   "original_original_J7_right_n9_seam_overlap": true,
   "original_n9_entry_original_source_odd_zero": "U(-B)+U(B)=0 source-Arb certified",
   "original_NF479_full_J8_signed_inferred_lower_approx": "1.62879141359108499738213816845263063162411477e-22",
@@ -59,7 +59,9 @@
     "initial_independent_exact_audit": "FAILED missing redundant non-mathematical boolean key original_first_J8_actual_signed_panel_only",
     "independent_exact_repair": "CHECK original actual physical panel and whole_J8 OPEN fields already emitted by immutable source",
     "independent_exact_repair_ci_run_id": 42510877480,
-    "independent_exact_repair_ci_status": "QUEUED — not yet accepted source-exact in this custody"
+    "independent_exact_repair_ci_status": "SUCCESS",
+    "independent_exact_repair_artifact_id": 13629968885,
+    "independent_exact_repair_raw_json_sha256": "d071d7607c5e47dcc8eb13b4fe0c165878c197a2be83629d0d4d7478b8f382cc"
   },
   "full_original_J8_value_and_signed_upper": "OPEN",
   "NF404": "OPEN",
