@@ -280,8 +280,8 @@ def assemble(args):
     # original source dyadic S0<1e-700, original six prime weights total
     # uncertainty <1e-32, original |U|<900 and |v|<1.
     eps_input=Q(901,10**32)+Q(1,10**400)
-    assert eps_coeff+eps_taylor+eps_image+eps_input<Q(1,10**28)
-    eps_z=Q(1,10**28)
+    assert eps_coeff+eps_taylor+eps_image+eps_input<Q(1,10**29)
+    eps_z=Q(1,10**29)
     # Entire original J8 first physical panel has genuine irrational LEFT
     # support at log9-B; the analytic fixed seven-minus source may extend
     # beyond support ONLY for computing local Taylor coefficients.
@@ -364,7 +364,7 @@ def assemble(args):
     e_pz=pmax*eps_z+err_p*25001+plog_tail*25001
     e_z2=Q(50001)*eps_z
     momenterr=Q(1,1000)*(4*e_pz+2*e_z2) # original true J8 physical first strip length <1/1000
-    assert momenterr<Q(1,10**23)
+    assert momenterr<Q(1,10**26)
     dlo,dhi=enclosure(DI,90)
     dlo-=momenterr;dhi+=momenterr
     pz0,pz1=enclosure(mean_pz,90);pz0-=e_pz;pz1+=e_pz
@@ -391,7 +391,7 @@ def assemble(args):
      "fixed_source_Chebyshev_or_Taylor_basis":"source-native shared coefficient x=686/625+(1/2500)t, degree 1199, physical t in [tlo,1]",
      "source_centered_Taylor_analytic_radius":"1/1000",
      "source_truncated_branch_Cauchy_M":"10^350",
-     "certified_sup_z_minus_polynomial":"1/10^28",
+     "certified_sup_z_minus_polynomial":"1/10^29",
      "original_source_arb_coefficient_aggregate_width":str(eps_coeff),
      "original_panel_type":"J8 first n9-active irrational left-seam panel, physical [log9-B,549/500]",
      "original_signed_integration_length":"1099/500-log9",
