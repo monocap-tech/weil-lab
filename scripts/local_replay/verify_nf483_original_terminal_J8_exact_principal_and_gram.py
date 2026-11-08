@@ -122,7 +122,7 @@ def exact_finite_image_gram_control():
             # Algebraic checks only: these fractions are NOT asserted
             # to equal the true physical original exp(-B), exp(-d/2).
             b=[c[m]*q**(4*m+1) for m in range(n)]
-            I=sum((c[m]*(t**(4*m+1)-b[m]/c[m]*t**(-(4*m+1)))/2 if c[m] else F(0) for m in range(n))
+            I=sum((c[m]*t**(4*m+1)-b[m]*t**(-(4*m+1)) for m in range(n)),F(0))/2
             # Avoid any new physical source contraction; identity is formal.
             convc=convolution_signed(c);convb=convolution_signed(b)
             corr=correlation_signed(c,b)
