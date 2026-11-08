@@ -120,3 +120,27 @@ jobs:
           name: nf476-original-J7-signed-moments
           path: nf476-original-J7-source-signed-moments.json
           retention-days: 90
+  exact-irrational-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: [assemble]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf476-original-J7-signed-moments
+          path: native-result
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent rational log8 physical endpoint and signed pz/z2 certificate with contiguous union
+        working-directory: candidate
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf476_original_irrational_left_seam_signed_exact.py --native ../native-result/nf476-original-J7-source-signed-moments.json --output ../nf476-original-J7-irrational-left-seam-Fraction-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf476-original-J7-irrational-seam-exact-Fraction-audit
+          path: nf476-original-J7-irrational-left-seam-Fraction-audit.json
+          retention-days: 90
