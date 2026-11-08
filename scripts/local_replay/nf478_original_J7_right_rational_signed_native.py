@@ -305,7 +305,7 @@ def assemble(args):
     if varP<0:
         assert varP> A(-Q(1,10**100))
     # D_I = (1/200)*[4<E[pz]>+2<E[z²]>], the true source signed physical rational integral.
-    DI=A(Q(1,100))*(4*mean_pz+2*mean_z2)
+    DI=A(Q(1,200))*(4*mean_pz+2*mean_z2)
     # Uniform source error |z-P|<1e-28, true |z|<25000 (NF446).
     # |P|<25001. |p|<7e-11; |p midpoint difference|<1e-40
     # from original NF411 weight errors and source S0.
