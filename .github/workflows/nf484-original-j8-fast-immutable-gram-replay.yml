@@ -1,0 +1,60 @@
+name: NF484 fast original immutable 18k source image Gram + independent replay
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-original-source-gram-reuse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42542502645
+          pattern: nf484-source-renormalized-*
+          merge-multiple: true
+          path: native-original
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: Reuse precisely 9 successful corrected 420-digit 273-mode 4096bit original source blocks from NF484 run 42542502645
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf484_original_J8_18k_renormalized_source_gram_native.py --input-dir native-original --output nf484-original-J8-terminal-exact-image-Gram-replayed.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf484-original-J8-image-Gram-immutable-replayed
+          path: nf484-original-J8-terminal-exact-image-Gram-replayed.json
+          retention-days: 90
+  exact-independent-original-source-gram:
+    needs: [exact-original-source-gram-reuse]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42542502645
+          pattern: nf484-source-renormalized-*
+          merge-multiple: true
+          path: native-original
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf484-original-J8-image-Gram-immutable-replayed
+          path: original-gram
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent all 18k source exact Fraction same-U(B) original input error proof and real terminal square Cauchy audit
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf484_original_J8_18k_source_gram_exact.py --input-dir native-original --gram original-gram/nf484-original-J8-terminal-exact-image-Gram-replayed.json --output nf484-original-J8-terminal-image-Gram-independent-source-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf484-original-J8-image-Gram-independent-Fraction-replayed
+          path: nf484-original-J8-terminal-image-Gram-independent-source-exact.json
+          retention-days: 90
