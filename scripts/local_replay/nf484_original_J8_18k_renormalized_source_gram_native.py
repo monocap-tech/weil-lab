@@ -208,7 +208,7 @@ def main():
       "genuine_original_J8_terminal_interval":["549/500","B"],
       "physical_terminal_delta":"1/500",
       "original_source_fixedpoint_precision_digits":240,\n      "original_original_source_large_low_m_modes_supported":True,\n      "original_true_finite_image_uniform_sup_original_source_bound":str(amplitude_sup),
-      "original_true_right_image_m_ge_120_geometric_discarded_upper":str(neglected_right),
+      "original_true_right_image_m_ge_360_geometric_discarded_upper":str(neglected_right),
       "original_true_right_image_geometric_discarded_upper_decimal":dec(neglected_right),
       "original_finite_image_uniform_input_native_rounding_error_upper":str(epsilonI),
       "original_finite_image_square_integral_error_charge":str(energy_fee),
