@@ -79,3 +79,29 @@ jobs:
           name: nf484-original-18k-source-correlation-renormalized-gram
           path: nf484-source-original-J8-terminal-finite-18000-renormalized-Gram.json
           retention-days: 90
+  independent-original-source-gram-exact-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    needs: [native-original-18k-source-image-amplitudes, exact-original-j8-finite-source-image-gram]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf484-source-renormalized-*
+          merge-multiple: true
+          path: original-source-coefficients
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf484-original-18k-source-correlation-renormalized-gram
+          path: original-gram
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent exact Fraction audit all 18k genuine 273-mode c_m,d_m native intervals, same original U(B), input/rational rounding/tail fee and actual J8 terminal Gram Cauchy consistency
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf484_original_J8_18k_source_gram_exact.py --input-dir original-source-coefficients --gram original-gram/nf484-source-original-J8-terminal-finite-18000-renormalized-Gram.json --output nf484-original-J8-18k-independent-source-Gram-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf484-original-J8-18k-independent-exact-source-audit
+          path: nf484-original-J8-18k-independent-source-Gram-exact.json
+          retention-days: 90
