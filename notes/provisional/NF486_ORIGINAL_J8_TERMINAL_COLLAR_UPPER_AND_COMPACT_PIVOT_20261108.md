@@ -63,7 +63,12 @@ The rest of the original terminal signed integral is now
 D_{8,T}=D_{8,[B-1/500,B-10^{-15}]}+D_{8,\mathrm{last}},
 }
 ]
-with the last term certified between the above strict endpoints. The major retained physical problem is the compact finite interval `x in [B-1/500,B-10^-15]`, on which the true principal is bounded and no improper singular endpoint remains.
+with the last term certified between the above strict endpoints. **Further strict macroscopic sign consequence (source-inferred, NOT direct physical quadrature):** accepted NF479 original whole J8 Bessel lower `D8 > 1.628791413591084997382e-22`, accepted NF482 original first irrational entry upper `D_A < 4.03464083536240e-25`, and the new true original collar upper `D_last < 1.58e-33` give by exact-rational subtraction
+\[
+\boxed{D_{8,[B-1/500,B-10^{-15}]} >
+1.624756772739922597382\times10^{-22}>0.}
+\]
+This is a **valid strict POSITIVE sign of the actual remaining physical bulk as inferred from the certified global lower**, not a native evaluation of its magnitude or an upper. The actual J8 signed upper and NF404 still require direct correlated integration. The major retained physical problem is the compact finite interval `x in [B-1/500,B-10^-15]`, on which the true principal is bounded and no improper singular endpoint remains.
 
 ## Why the next computation must change representation
 
