@@ -1,0 +1,20 @@
+name: NF488 exact original J8 physical cusp four-moment source gate
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-exact-four-moment-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exact original NF411/NF450/NF479/NF482 source SHA, 7 real prime weights, log550 rational and independent 12 symbolic R-correlation controls
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf488_original_J8_terminal_four_moment_source_gate_exact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf488-original-J8-terminal-cusp-four-moment-source-exact
+          path: nf488-original-J8-terminal-four-moment-source-exact-gate.json
+          retention-days: 90
