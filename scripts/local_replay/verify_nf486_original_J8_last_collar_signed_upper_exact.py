@@ -62,6 +62,22 @@ def main():
     # NF451 accepted genuine same-source positive signed lower:
     old_lower=F(32,10**35)
     assert F(0)<old_lower<total_upper
+    # Source-inferred positive sign of the STILL-UNEVALUATED MACROSCOPIC
+    # J8 bulk follows from accepted genuine whole J8 Bessel lower,
+    # accepted original NF482 n9 irrational first strip UPPER and
+    # the NEW genuine last collar upper. This is NOT an independent
+    # native signed bulk integral nor a bulk UPPER.
+    nf479=json.loads(Path("notes/data/provisional/NF479_original_full_J8_forced_positive_NF404_transfer_custody.json").read_text())
+    nf482=json.loads(Path("notes/data/provisional/NF482_original_first_J8_irrational_n9_source_signed_custody.json").read_text())
+    assert nf479["pass"]=="NF479" and nf482["pass"]=="NF482"
+    assert nf479["original_nf407_source_sha256"]==nf482["original_nf407_source_sha256"]==SOURCE_SHA
+    old_original_full_lower=F("1.628791413591084997382e-22")
+    assert F(nf479["original_full_J8_signed_D8_strict_lower_approx"])>old_original_full_lower
+    accepted_original_first_upper=F(nf482["original_source_native_signed_D_I_outward_coarse"][1])
+    assert accepted_original_first_upper==F("4.03464083536240e-25")
+    signed_remaining_bulk_lower=old_original_full_lower-accepted_original_first_upper-total_upper
+    assert signed_remaining_bulk_lower==F("1.624756772739922597382e-22")
+    assert signed_remaining_bulk_lower>0
     # The nearest original NF479 selected-complement corridor is
     # 3.31057841820960775340e-26; collar gross UPPER is
     # substantially smaller without any shadow decomposition.
@@ -84,6 +100,10 @@ def main():
       "original_last_collar_true_signed_upper":str(total_upper),
       "original_last_collar_original_signed_interval_open":[str(old_lower),str(total_upper)],
       "original_remaining_physical_terminal":["B-1/500","B-1/10^15"],
+      "original_original_source_inferred_remaining_bulk_strict_lower":str(signed_remaining_bulk_lower),
+      "original_bulk_sign_inference_not_direct_integration":True,
+      "original_full_J8_positive_source_dependency":"NF479",
+      "original_first_irrational_J8_panel_source_dependency":"NF482",
       "original_infinite_endpoint_not_replaced":True,
       "complete_remaining_original_J8_signed_upper":"OPEN",
       "NF404":"OPEN","W_ODD_NEG":"OPEN","RH":"OPEN",
@@ -93,6 +113,7 @@ def main():
     out.write_text(json.dumps(receipt,indent=2)+"\n")
     print("NF486 exact original last J8 signed collar ACCEPTED RELATIVE TO SOURCE DEPENDENCIES")
     print("3.2e-34 < D8_last_1e-15 < 1.58e-33")
+    print("genuine remaining J8 terminal bulk D8 > 1.624756772739922597382e-22 (source-inferred, not numerically integrated)")
     print("whole D8 upper NF404 W-ODD-NEG RH OPEN")
 if __name__=="__main__":
     main()
