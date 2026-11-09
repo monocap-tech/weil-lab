@@ -22,11 +22,20 @@ import argparse,json,sys,hashlib
 from pathlib import Path
 from fractions import Fraction as F
 from flint import arb, fmpz_poly, ctx
-from nf415_original_cell6_I1_validated_acb import A
-from nf454_original_n9_contact_native_moment import enclosure
 if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
 B=F(11,10);DELTA=F(1,500)
 M=18000;R=360;S=10**240;BITS=4096
+def A(value):
+    # Same exact Arb coercion as immutable NF415 source, now self-contained.
+    return arb(str(value))
+def enclosure(ball, decimal_digits=110):
+    # Same outward rational decimal enclosure as immutable NF454 source.
+    mid, rad, expo=ball.mid_rad_10exp(decimal_digits)
+    unit=F(10)**int(expo)
+    lo=F(int(mid)-int(rad))*unit
+    hi=F(int(mid)+int(rad))*unit
+    assert lo<=hi
+    return lo,hi
 SRC="0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce"
 SEAM="c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675"
 def iv(v):
