@@ -123,14 +123,15 @@ def main():
     each_round_source=F(2,10**230)
     epsilonI=F(1,10**224)
     # Left: 18k original source coefficient midpoint+input deltas,
-    # right: 120 coefficients and at most exp(δ(4R-1)/2)<2;
+    # right: R=360 coefficients and at most exp(δ(4R-1)/2)<5;
     # tiny remaining actual source right family. The 1/2 in I_m
     # is retained, no false all-J8 endpoint source tail.
-    bound_deltaI=(F(M,2)+R)*each_round_source+neglected_right/2
+    bound_deltaI=(F(M,2)+F(5*R,2))*each_round_source+neglected_right/2
     assert bound_deltaI<epsilonI
     # True full original finite renormalized image bound on
     # this original terminal uses ACTUAL full original source maxd,
-    # not a false uniform 1/100 low-image coefficient assumption.\n    amplitude_sup=(M+R)*maxd
+    # not a false uniform 1/100 low-image coefficient assumption.
+    amplitude_sup=(M+R)*maxd
     energy_fee=DELTA*(2*amplitude_sup*epsilonI+epsilonI**2)
     assert energy_fee<F(1,10**40)
     # All products of *signed original source data*, never absolute
