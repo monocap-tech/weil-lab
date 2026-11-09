@@ -132,6 +132,36 @@ Because the original NF411 (U'(B)<0) is strictly negative, the true original cus
 ]
 Consequently the original full physical (z) has a **nonzero logarithmic endpoint cusp**, and its left-endpoint secant derivative in (x) diverges negatively as (x\uparrow B). Any method assuming a finite derivative or ordinary analytic Taylor series of the unpeeled full (z) at (B) is not source-compatible.
 
+## Exact regularized **joint** compact evaluation formula for the next numeric pass
+
+The endpoint coefficient can be removed **inside the original source kernel**, rather than forming a large physical value and subsequently subtracting two close numbers. Let (T(y)=\int_y^\infty K(t)dt), (Q(t)=K(t)-1/t), (x=B-d), (a=2d), (b=4B-2d), and define the *joint source-comparison bracket*
+[
+\rho(d,t):=M_{B-d}(t)-M_B(t)+\frac d2U'(B).
+]
+Let (P_8(x)=\sum_{n=2,3,4,5,7,8,9} c_n[U(x-\log n)+v]) and let (C(x)) denote the unchanged exact NF404 centered sinh response, so (z(x)=\mathcal J_U(x)-P_8(x)-C(x)) on the true original J8.
+
+Then the **exact source-linear difference**, with both moving cutoffs and both endpoint images retained, is
+[
+\boxed{\begin{aligned}
+z_{\rm reg}(d)-z(B)={}&
+c_0[U(x)-v]
++\int_0^a K(t)[A_x(t)-M_B(t)]dt\\
+&-\int_b^{4B}K(t)M_B(t)dt
++\int_a^b K(t)\rho(d,t)dt\\
+&-\frac{d U'(B)}2\left[
+\log(2-d/B)+\int_a^b Q(t)dt
+\right]\\
+&+\frac v2\left[
+\log(1-d/(2B))-\int_0^a Q(t)dt-\int_b^{4B}Q(t)dt
+\right]\\
+&+[U(x)-v]T(b)+v\int_b^{4B}K(t)dt\\
+&-[P_8(x)-P_8(B)]-[C(x)-C(B)] .
+\end{aligned}}
+]
+There are **no unpaired (10^{142}) source images** and **no (d\log d) singular term** on the right. Every (U) argument lies within the genuine ([-B,B]) physical support; all endpoint weights have explicitly removable singularities. The formula is an algebraic rearrangement of accepted NF446, not a new source or a numerical value. In particular, the first small-(t) combined bracket is (O(t)), while (ho(d,t)) has the certified Hölder estimate stated above.
+
+For actual signed integration the source coefficient (U'(B)), the seven (c_n), and all occurrences of (U) must remain **jointly coupled to the exact original 246-generator source**. The expression isolates the analytic logarithm without relaxing any of the arithmetic or source-radius obligations. A verified numerical evaluator must control the integral of the regularized right-hand side and its (p z,z^2) products; this NF487 pass proves only the identity and its (13000d) error envelope.
+
 ## What this proves, what it does not
 
 This is a **complete source-correlated endpoint regularization theorem**, relying on previously accepted NF446/NF413/NF411/NF451 source identities, not another independent high-image tail bound. The exact Fraction verifier checks immutable original source/seam SHA, true NF413 256 bound, original negative NF411 derivative ball, NF451 complete component charges, all rational kernel and square-root inequalities, and moving-boundary matching with six adversarial odd-polynomial source controls.
