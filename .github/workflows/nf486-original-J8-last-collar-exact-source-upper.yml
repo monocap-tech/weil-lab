@@ -1,0 +1,20 @@
+name: NF486 original J8 last microscopic collar exact signed upper
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-exact-last-collar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Independently replay unchanged NF411 source v ball, original NF450 z endpoint, accepted NF451 physical compact modulus and exact Fraction signed upper
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf486_original_J8_last_collar_signed_upper_exact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf486-original-J8-last-collar-exact-source-upper
+          path: nf486-original-J8-last-collar-exact-source-upper.json
+          retention-days: 90
