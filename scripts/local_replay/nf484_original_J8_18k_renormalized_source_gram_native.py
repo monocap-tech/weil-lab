@@ -134,12 +134,25 @@ def main():
     # All products of *signed original source data*, never absolute
     # squares of independent source contributions.
     print("NF484 exact source integer polynomial convolutions begin",flush=True)
+    # Fixedpoint b_m eventually rounds to EXACT ZERO: at 100 decimal
+    # places the original right reflected modes near m=120 are already
+    # far smaller than 10^-100. A sparse trailing zero is NOT lost
+    # source evidence: the <=2e-50 per right-coefficient overcharge
+    # already includes EVERY m<120 exact true source value.
+    # python-flint fmpz_poly canonically trims trailing zeros. Use the
+    # actual NONZERO original right coefficient length for the
+    # convolution exponent shift, not the nominal R=120 cutoff.
+    Ractive=1
+    for j,value in enumerate(E):
+        if value:Ractive=j+1
+    assert 1<=Ractive<=R
+    right_finite=E[:Ractive]
     left=fmpz_poly(D)
-    right=fmpz_poly(E)
+    right=fmpz_poly(right_finite)
     LL=left*left
     RR=right*right
-    LR=left*fmpz_poly(E[::-1])
-    assert len(LL)==2*M-1 and len(RR)==2*R-1 and len(LR)==M+R-1
+    LR=left*fmpz_poly(right_finite[::-1])
+    assert len(LL)==2*M-1 and len(RR)==2*Ractive-1 and len(LR)==M+Ractive-1
     den=A(F(S*S))
     Il=arb(0);Ir=arb(0);Ic=arb(0)
     for s in range(len(LL)):
@@ -151,7 +164,7 @@ def main():
         if v:Ir+=A(F(v))*integral_kernel(-(2*s+1))
     for j in range(len(LR)):
         v=int(LR[j])
-        if v:Ic+=A(F(v))*integral_kernel(2*(j-(R-1)))
+        if v:Ic+=A(F(v))*integral_kernel(2*(j-(Ractive-1)))
         if (j+1)%5000==0:print("NF484 signed original image cross-correlation moments",j+1,"/",len(LR),flush=True)
     Egram=(Il+Ir-2*Ic)/(4*den)
     Elo,Ehi=enclosure(Egram,105)
@@ -165,7 +178,7 @@ def main():
     mu=arb(0)
     for m,q in enumerate(D):
         if q:mu+=A(F(q))*integral_kernel(F(4*m+1,2))
-    for m,q in enumerate(E):
+    for m,q in enumerate(right_finite):
         if q:mu-=A(F(q))*integral_kernel(-F(4*m+1,2))
     mu/=(2*A(F(S)))
     mlo,mhi=enclosure(mu,105)
@@ -180,6 +193,8 @@ def main():
       "native_original_full_4096bit_source_generator_blocks":9,
       "original_full_M_image_coefficients":M,
       "original_right_image_tail_kept_m_lt":R,
+      "original_right_image_fixedpoint_effective_length":Ractive,
+      "original_right_image_fixedpoint_trailing_zeros_pay_rounding":True,
       "original_full_source_mode_groups":273,
       "original_original_source_input_radius_total_lt":"1e-700",
       "source_original_same_v_U_B_leading_cancellation":"d_m=T_m-v/(m+1/4), v EXACT same NF407 original physical source",
