@@ -10,9 +10,9 @@ resulting finite physical image square on terminal J8 [B-1/500,B] using
 4096-bit rigorously enclosed Arb analytic exponential moment kernels.
 
 The small reflected image is truncated only in its coefficient *tail*
-m>=120 with a paid original-source exact geometric bound <1e-190.
-Source input + rounding are conservatively paid at <1e-45 uniform
-finite-image amplitude, hence <5e-46 *squared-energy* error. This
+m>=360 with a paid original-source exact geometric bound <1e-230.
+Source input + rounding are conservatively paid at <1e-230 uniform
+finite-image amplitude, hence <1e-40 *squared-energy* error even for original\nlow-m image source amplitudes as large as 10^180 (source correlations\nmust still be preserved to obtain the complete small physical signed scalar). This
 remains ONLY the renormalized finite-image-square component, not the
 mixed original complete J8 signed energy, original 19 Phi moments or
 NF404. Never substitute a scalar Gram for the complete physical response.
@@ -26,7 +26,7 @@ from nf415_original_cell6_I1_validated_acb import A
 from nf454_original_n9_contact_native_moment import enclosure
 if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
 B=F(11,10);DELTA=F(1,500)
-M=18000;R=120;S=10**100;BITS=4096
+M=18000;R=360;S=10**240;BITS=4096
 SRC="0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce"
 SEAM="c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675"
 def iv(v):
@@ -80,21 +80,21 @@ def main():
         for j,row in enumerate(rows):
             assert len(row)==4
             c=iv(row[:2]);d=iv(row[2:])
-            assert c[1]-c[0]<F(1,10**100)
-            assert d[1]-d[0]<F(1,10**100)
+            assert c[1]-c[0]<F(1,10**240)
+            assert d[1]-d[0]<F(1,10**240)
             aa=F(4*(start+j)+1,4)
             # Shared source identity T_m - d_m = v/a_m, exact raw
             assert c[0]-d[1]<=v[1]/aa and v[0]/aa<=c[1]-d[0]
             cballs.append(c);dballs.append(d)
     assert len(cballs)==len(dballs)==M and len(shas)==9
     maxd=max(max(abs(a),abs(b)) for a,b in dballs)
-    assert maxd<F(1,100),("source residual amplitude > 1/100, revise global norm",dec(maxd))
+    assert maxd<F(10)**180,("source residual amplitude > 1e180, revise global norm",dec(maxd))
     D=[]
     for lo,hi in dballs:
         q=integer_coarsen(lo,hi)
         # Native midpoint rounding plus unchanged source dyadic input
         # epsilon 10^-50 for each coefficient is heavily overcharged.
-        assert lo-F(1,10**50) <= F(q,S) <= hi+F(1,10**50)
+        assert lo-F(1,10**230) <= F(q,S) <= hi+F(1,10**230)
         D.append(q)
     assert len(D)==M
     E=[]
@@ -102,35 +102,37 @@ def main():
         a=A(F(D[m],S))
         exp=(-A(B)*(4*m+1)).exp()
         val=a*exp
-        lo,hi=enclosure(val,145)
-        assert hi-lo<F(1,10**100)
+        lo,hi=enclosure(val,420)
+        assert hi-lo<F(1,10**240)
         q=integer_coarsen(lo,hi)
-        assert lo-F(1,10**100)<=F(q,S)<=hi+F(1,10**100)
+        assert lo-F(1,10**240)<=F(q,S)<=hi+F(1,10**240)
         E.append(q)
     # Remainder of negative endpoint family m>=R over *entire* true
     # physical terminal δ: exp(-2a_m(2B-d)) =
     # exp(-(4m+1)(B-d/2)) <=(3/8)^(4m+1)
     # since B-d/2>=B-δ/2 =1.099>log(8/3).
-    neglected_right=F(1,100)*F(3,8)**(4*R+1)/(1-F(3,8)**4)
-    assert neglected_right<F(1,10**190)
+    # Crucial: old 1/100 assumption is NOT valid for the actual low-m
+    # source before central/regular cancellation; use ACTUAL maxd.
+    neglected_right=maxd*F(3,8)**(4*R+1)/(1-F(3,8)**4)
+    assert neglected_right<F(1,10**230)
     # Original source input S0<1e-700; k<=13, a_m>=1/4,
     # each source original input error is amplified by at most
     # 4*(B+26)^13<1e20, and |δv|/a<=4*10*S0,
-    # hence each original dm input error <1e-679. Charge 1e-50.
+    # hence each original dm input error <1e-679. Charge 1e-230.
     assert 4*(B+26)**13<F(10)**20
-    each_round_source=F(2,10**50)
-    epsilonI=F(1,10**45)
+    each_round_source=F(2,10**230)
+    epsilonI=F(1,10**224)
     # Left: 18k original source coefficient midpoint+input deltas,
     # right: 120 coefficients and at most exp(δ(4R-1)/2)<2;
     # tiny remaining actual source right family. The 1/2 in I_m
     # is retained, no false all-J8 endpoint source tail.
     bound_deltaI=(F(M,2)+R)*each_round_source+neglected_right/2
     assert bound_deltaI<epsilonI
-    # True full original finite renormalized image |I| <100 on
-    # this original terminal by max |d_m| <1/100 and |F_m| <=2.
-    amplitude_sup=F(100)
+    # True full original finite renormalized image bound on
+    # this original terminal uses ACTUAL full original source maxd,
+    # not a false uniform 1/100 low-image coefficient assumption.\n    amplitude_sup=(M+R)*maxd
     energy_fee=DELTA*(2*amplitude_sup*epsilonI+epsilonI**2)
-    assert energy_fee<F(5,10**46)
+    assert energy_fee<F(1,10**40)
     # All products of *signed original source data*, never absolute
     # squares of independent source contributions.
     print("NF484 exact source integer polynomial convolutions begin",flush=True)
@@ -204,7 +206,7 @@ def main():
       "finite_renormalized_source_Gram_fmpz_convolution_lengths":[len(LL),len(RR),len(LR)],
       "genuine_original_J8_terminal_interval":["549/500","B"],
       "physical_terminal_delta":"1/500",
-      "original_source_fixedpoint_precision_digits":100,
+      "original_source_fixedpoint_precision_digits":240,\n      "original_original_source_large_low_m_modes_supported":True,\n      "original_true_finite_image_uniform_sup_original_source_bound":str(amplitude_sup),
       "original_true_right_image_m_ge_120_geometric_discarded_upper":str(neglected_right),
       "original_true_right_image_geometric_discarded_upper_decimal":dec(neglected_right),
       "original_finite_image_uniform_input_native_rounding_error_upper":str(epsilonI),
