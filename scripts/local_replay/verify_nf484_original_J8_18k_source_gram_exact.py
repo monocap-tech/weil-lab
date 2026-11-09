@@ -46,7 +46,7 @@ def main():
     assert g["native_original_full_4096bit_source_generator_blocks"]==9
     assert g["actual_original_m0_sinh_pole_included"]
     assert g["original_actual_terminal_signed_D8_upper"]==g["NF404"]==g["W_ODD_NEG"]==g["RH"]=="OPEN"
-    assert g["original_true_right_image_m_ge_120_geometric_discarded_upper"]
+    assert g["original_true_right_image_m_ge_360_geometric_discarded_upper"]
     src_max=F(0)
     vov=None
     fragments=[]
@@ -83,7 +83,7 @@ def main():
     assert 4*(B+26)**13<F(10)**20
     assert (F(10)**20+40)*F(1,10**700)<F(1,10**50)
     bound_right=src_max*F(3,8)**(4*R+1)/(1-F(3,8)**4)
-    assert F(g["original_true_right_image_m_ge_120_geometric_discarded_upper"])==bound_right
+    assert F(g["original_true_right_image_m_ge_360_geometric_discarded_upper"])==bound_right
     assert bound_right<F(1,10**230)
     # Each d_m true source+native+fixed-point error <2e-230:
     # 1/2 sum left 18k plus 5x right R=360 entries incl endpoints.
