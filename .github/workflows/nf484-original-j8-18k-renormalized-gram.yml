@@ -1,0 +1,81 @@
+name: NF484 source-original 18k same-U(B) renormalized J8 finite image Gram
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-original-18k-source-image-amplitudes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    strategy:
+      fail-fast: false
+      max-parallel: 9
+      matrix:
+        include:
+          - start: 0
+            stop: 2000
+          - start: 2000
+            stop: 4000
+          - start: 4000
+            stop: 6000
+          - start: 6000
+            stop: 8000
+          - start: 8000
+            stop: 10000
+          - start: 10000
+            stop: 12000
+          - start: 12000
+            stop: 14000
+          - start: 14000
+            stop: 16000
+          - start: 16000
+            stop: 18000
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - run: cp candidate/scripts/local_replay/nf471_original_J7_joint_arch_mean_native.py candidate/scripts/local_replay/nf484_original_J8_18k_source_renormalized_amplitude_native.py native/scripts/local_replay/
+      - name: Full ORIGINAL source T_m and same-source d_m=T_m-U(B)/a_m, 4096-bit Arb, genuine two endpoints and sinh m0
+        working-directory: native
+        env:
+          START: ${{ matrix.start }}
+          STOP: ${{ matrix.stop }}
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf484_original_J8_18k_source_renormalized_amplitude_native.py --start "$START" --stop "$STOP" --output ../nf484-source-renormalized-$START-$STOP.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf484-source-renormalized-${{ matrix.start }}-${{ matrix.stop }}
+          path: nf484-source-renormalized-${{ matrix.start }}-${{ matrix.stop }}.json
+          retention-days: 90
+  exact-original-j8-finite-source-image-gram:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    needs: [native-original-18k-source-image-amplitudes]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nf484-source-renormalized-*
+          merge-multiple: true
+          path: original-source-coefficients
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: ORIGINAL 18000 source renormalized d_m exact fmpz 3-convolution and 4096-bit Arb physical terminal integrated Gram with paid true source/input epsilon
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf484_original_J8_18k_renormalized_source_gram_native.py --input-dir original-source-coefficients --output nf484-source-original-J8-terminal-finite-18000-renormalized-Gram.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf484-original-18k-source-correlation-renormalized-gram
+          path: nf484-source-original-J8-terminal-finite-18000-renormalized-Gram.json
+          retention-days: 90
