@@ -1,0 +1,14 @@
+name: NF485 exact rational original J8 principal image logarithmic moment algebra
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-rational-log-moment-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Twelve independent signed rational source-formal controls, no original-source numeric claim
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf485_J8_principal_image_log_moment_algebra_exact.py
