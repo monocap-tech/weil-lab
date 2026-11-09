@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
-          run-id: 42538706899
+          run-id: 42542502645
           pattern: nf484-source-renormalized-*
           merge-multiple: true
           path: native-original
@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install python-flint==0.8.0
-      - name: Reuse precisely 9 complete original 273-mode 4096bit signed source blocks from original NF484 native run, current corrected exact fmpz finite-image Gram code
+      - name: Reuse precisely 9 successful corrected 420-digit 273-mode 4096bit original source blocks from NF484 run 42542502645
         run: python -u -X int_max_str_digits=0 scripts/local_replay/nf484_original_J8_18k_renormalized_source_gram_native.py --input-dir native-original --output nf484-original-J8-terminal-exact-image-Gram-replayed.json
       - uses: actions/upload-artifact@v4
         if: always()
@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
-          run-id: 42538706899
+          run-id: 42542502645
           pattern: nf484-source-renormalized-*
           merge-multiple: true
           path: native-original
