@@ -1,0 +1,20 @@
+name: NF487 original J8 full joint compact endpoint log cusp exact source audit
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-joint-log-cusp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Immutable original NF411/NF413/NF451 source, exact rational cusp coefficient, kernel bounds and odd-source edge controls
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf487_original_J8_joint_compact_log_cusp_exact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf487-original-J8-joint-compact-log-cusp-exact-source
+          path: nf487-original-J8-endpoint-log-cusp-exact-source-audit.json
+          retention-days: 90
