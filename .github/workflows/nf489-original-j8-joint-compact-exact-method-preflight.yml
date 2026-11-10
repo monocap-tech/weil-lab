@@ -1,0 +1,23 @@
+name: NF489 original J8 exact joint compact physical source method preflight
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-joint-source-exact-method:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent pure exact Fraction original source SHA, n9 physical geometry, Cauchy and compact Laplace tail proof
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf489_original_J8_joint_compact_point_method_exact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf489-original-J8-joint-compact-exact-method-preflight
+          path: nf489-original-J8-joint-compact-point-exact-method-preflight.json
+          retention-days: 90
