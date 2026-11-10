@@ -38,17 +38,22 @@ def original_source_envelope(source):
     balls=source["original_exact_native_raw_selected_coefficients_mid_radius"]
     assert len(names)==len(balls)==242
     counts={}
+    polebound=F(0)
     for (freq,k),(mid,rad) in zip(names,balls):
-        assert freq!="pole" and F(0)<F(freq)<883 and 0<=k<=13
-        counts[(freq,k)]=counts.get((freq,k),0)+1
         ci=dyad(mid);eps=abs(dyad(rad))
+        if freq=="pole":
+            assert k==0
+            polebound+=abs(ci)+eps
+            error+=eps
+            continue
+        assert F(0)<F(freq)<883 and 0<=k<=13
+        counts[(freq,k)]=counts.get((freq,k),0)+1
         acc+=(abs(ci)+eps)*(B+F(1,5))**k
         error+=eps*(B+F(1,5))**k
     critical=source["original_exact_native_original_four_critical_coefficients_mid_radius"]
     shapes=source["original_source_critical_sines_and_pole_coefficients"]
     freqs=source["original_source_critical_sine_frequencies"]
     assert len(critical)==len(shapes)==4 and len(freqs)==32
-    polebound=F(0)
     for (mid,rad),shape in zip(critical,shapes):
         ci=dyad(mid);eps=abs(dyad(rad))
         for f,shape_coeff in zip(freqs,shape["sine_coefficients"]):
