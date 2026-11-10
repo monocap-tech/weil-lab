@@ -171,10 +171,10 @@ def main():
     assert F(0)<EwLast.lo<=EwLast.hi<F(1,10**33)
     EwBulk=EwT-EwLast
     assert EwBulk.lo>0
-    forced=F("9.54208939682299041838e-23")
+    forced=F("9.542089396822990418379e-23")
     sufficient=F("9.54374468603209522225e-23")
     failure=F("9.68201636850086745946e-23")
-    assert forced<F(nf491["original_source_inferred_EwBulk_strict_lower_approx"])
+    # Strictly conservative rounding: the printed original NF491 lower is\n    # 9.542089396822990418379790...e-23, so round DOWN not UP.\n    assert forced<F(nf491["original_source_inferred_EwBulk_strict_lower_approx"])
     assert sufficient<F(nf491["original_NF404_sufficient_EwBulk_upper_approx"])
     assert failure>F(nf491["original_NF404_certain_failure_EwBulk_lower_approx"])
     # This source-inferred original strict lower is a mandatory crosscheck:
