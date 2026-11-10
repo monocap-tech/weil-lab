@@ -1,0 +1,23 @@
+name: NF494 original J8 whole analytic H400 fixed-window source exact method preflight
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-source-joint-H400-exact-method:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent original raw 246-source dyadic and ninety true odd polynomial fixed-window vs moving-boundary NF446 rational H-jet controls
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf494_original_J8_analytic_H400_method_exact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf494-original-J8-analytic-H400-exact-method-preflight
+          path: nf494-original-J8-whole-H400-method-source-exact-preflight.json
+          retention-days: 90
