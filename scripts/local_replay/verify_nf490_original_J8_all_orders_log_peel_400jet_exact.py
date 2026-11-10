@@ -274,7 +274,9 @@ def main():
     seam,ss=load("notes/data/provisional/NF406_original_prime_support_partition_exact.json")
     curv,cs=load("notes/data/provisional/NF413_original_full_246_source_curvature_native.json")
     jet,js=load("notes/data/provisional/NF411_original_source_boundary_jet.json")
-    nf489,ps=load("docs/NF489_ACCEPTED_ORIGINAL_J8_TRUE_PHYSICAL_POINT_SUPPLEMENT.md")
+    accepted_nf489=Path("docs/NF489_ACCEPTED_ORIGINAL_J8_TRUE_PHYSICAL_POINT_SUPPLEMENT.md").read_bytes()
+    ps=hashlib.sha256(accepted_nf489).hexdigest()
+    assert SRC.encode() in accepted_nf489 and b"1.25793564592051847763600908183" in accepted_nf489
     assert sha==SRC and ss==SEAM
     assert orig["original_dimension"]==242 and len(orig["original_exact_native_original_four_critical_coefficients_mid_radius"])==4
     assert curv["original_nf407_full_native_source_sha256"]==jet["nf407_source_sha256"]==SRC
