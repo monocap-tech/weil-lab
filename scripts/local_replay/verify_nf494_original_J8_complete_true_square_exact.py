@@ -80,8 +80,9 @@ def main():
     assert prev["pass"]=="NF493-original-source-400-log-jets"
     assert oldh["pass"]=="NF492-original-source-exact-full-log-physical-crosscheck"
     assert nf491["pass"]=="NF491"
+    assert "original_nf406_seam_sha256" in nf491 and "original_nf406_support_sha256" not in nf491, "NF495 exact immutable NF491 schema gate"
     assert ssh==curr["original_nf407_source_sha256"]==prev["original_nf407_source_sha256"]==nf491["original_nf407_source_sha256"]==SRC
-    assert seamsha==curr["original_nf406_seams_sha256"]==prev["original_nf406_seams_sha256"]==nf491["original_nf406_support_sha256"]==SEAM
+    assert seamsha==curr["original_nf406_seams_sha256"]==prev["original_nf406_seams_sha256"]==nf491["original_nf406_seam_sha256"]==SEAM
     assert jet["nf407_source_sha256"]==nf450["source_SHA256"]==nf482["original_nf407_source_sha256"]==SRC
     assert nf483["source_ci_completed_exact"]["conclusion"]=="SUCCESS"
     assert nf482["source_exact_archive"]["conclusion"]=="SUCCESS"
