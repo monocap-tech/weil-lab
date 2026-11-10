@@ -1,6 +1,6 @@
 # NF496 — Center-invariant original J242 residual: verification supplement
 
-**2026-11-10 PT.** Original fixed-source analytical certificate of a nonzero physical complement under the unchanged selected 242-dimensional projector; **focused source-exact CI required before acceptance**. Stacked draft [PR #524](https://github.com/monocap-tech/weil-lab/pull/524), original NF407/NF406 source SHA unchanged, NF495 genuine full physical J8 independent exact source receipt #13786768945 retained.
+**2026-11-10 PT. SOURCE-EXACT SCOPED ACCEPTED:** [GitHub Actions #42873057627 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42873057627), exact source job #130029051125, raw artifact #13789998687. Original fixed-source complete physical J242 perpendicular residual and pole-center invariance rigorously checked. Stacked draft [PR #524](https://github.com/monocap-tech/weil-lab/pull/524), original NF407/NF406 source SHA unchanged, NF495 genuine full physical J8 independent exact source receipt #13786768945 retained.
 
 ## Actual original data reused
 
@@ -20,6 +20,6 @@ Then direct orthogonal Pythagoras gives the **full original physical** `||Q_J w|
 
 Any distinct supported response w+h that satisfies the same fixed J and gamma residual requirement must obey `||h||_L2(I)>1.2333e-11`. A selected-space correction j∈J or recentering along sinh(x/2) has Q_J j=0 and cannot ever help. This lower does not constrain an altered J, altered gamma, a new admissible Weil-source whose parameter-to-response map is not yet norm controlled, or global Weil sign.
 
-**Standing:** NF496 staged original-Hilbert finite projection residual theorem; actual source-exact focused CI status must be consulted. NF404 original selected complement sufficient criterion *not* RH. W-ODD-NEG, exterior alternative spans, full even/odd Weil operator/domain and RH remain OPEN. No main merge.
+**Standing:** NF496 ORIGINAL-SOURCE ACCEPTED (scoped), source-exact focused CI success; full original Hilbert finite-projection residual theorem proved, no RH theorem. NF404 original selected complement sufficient criterion *not* RH. W-ODD-NEG, exterior alternative spans, full even/odd Weil operator/domain and RH remain OPEN. No main merge.
 
 [Full mathematical derivation](../notes/provisional/NF496_ORIGINAL_CENTER_INVARIANT_J242_COMPLEMENT_NO_GO_20261110.md).
