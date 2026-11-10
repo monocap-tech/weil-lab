@@ -1,0 +1,23 @@
+name: NF491 original J8 single positive bulk square exact source gate
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-J8-bulk-positive-square-source-Fraction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Authentic original NF411/479/482/483/486/490 immutable source, true principal last square, NF404 Ebulk target, 12 exact signed-square controls and rigorously bounded midpoint method stop
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf491_original_J8_single_positive_square_gate_exact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf491-original-J8-single-positive-bulk-square-source-exact
+          path: nf491-original-J8-single-positive-bulk-square-source-exact-gate.json
+          retention-days: 90
