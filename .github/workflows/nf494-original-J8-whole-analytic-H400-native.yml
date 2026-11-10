@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+  actions: read
 jobs:
   full-original-4096bit-analytic-H400:
     runs-on: ubuntu-latest
@@ -30,4 +31,41 @@ jobs:
         with:
           name: nf494-original-J8-whole-analytic-H400-native
           path: nf494-original-J8-source-H400-joint-compact-native.json
+          retention-days: 90
+  independent-original-J8-full-whole-square:
+    needs: [full-original-4096bit-analytic-H400]
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf491-J8-positive-square-bulk-source-gate
+          path: accepted-nf491
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf494-original-J8-whole-analytic-H400-native
+          path: original-nf494-source
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42786421931
+          name: nf493-original-J8-400-true-source-log-jets-4096bit
+          path: prior-original-nf493
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42771794806
+          name: nf492-original-J8-independent-physical-H-complete-log-exact
+          path: prior-original-nf492
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently audit entire original true NF407 400 H/U coefficients, original NF492 and NF493 source, NF491 single positive bulk, exact whole original signed D8/NF404 scalar
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf494_original_J8_complete_true_square_exact.py --native original-nf494-source/nf494-original-J8-source-H400-joint-compact-native.json --nf493-native prior-original-nf493/nf493-original-J8-400-real-source-log-jets-native.json --nf492-point prior-original-nf492/nf492-independent-original-physical-H-complete-log-source-exact.json --nf491 accepted-nf491/notes/data/provisional/NF491_original_J8_true_positive_bulk_square_gate_custody_index.json --output nf494-original-J8-complete-joint-physical-square-source-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf494-original-J8-complete-physical-positive-square-and-NF404-source-exact
+          path: nf494-original-J8-complete-joint-physical-square-source-exact.json
           retention-days: 90
