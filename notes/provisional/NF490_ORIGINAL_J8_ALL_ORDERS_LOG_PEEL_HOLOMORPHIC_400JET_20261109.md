@@ -173,6 +173,53 @@ Then
 \]
 an exact finite sum of the original NF488 analytic log primitives \(\int d^jL_d^k\). This is a **source-correlation-preserving target** with a rigorous \(10^{-96}\) analytic remainder, not a computed signed \(D_8\) upper. Six adversarial signed-rational polynomial \((H,g)\) controls compare this formula against full direct multiplication in the independent exact Fraction workflow.
 
+## Direct compatibility with accepted NF491: a **single true full positive square**
+
+NF491 accepted the authentic \(J_8\) terminal identity \(D_T=2(E_{w,T}-E_{p,T})\), with \(w=p+z\), and proved that merely bounding \(|(w^2)'|\) and applying a uniform first-order midpoint rule has a prohibitive sufficient-node count. The NF490 all-orders source peel supplies a genuinely different **high-order analytic original whole-square route**, directly matching the NF491 nonnegative compact physical energy target.
+
+Indeed the real original principal is \(p=v(C_8+\tfrac12L_d)\), and the complete original joint physical response is \(z=H+gL_d\) with \(g=(U(B-d)-v)/2\). Hence an additional **exact all-orders source identity** follows:
+\[
+\boxed{
+w(B-d)=p+z
+=\underbrace{H(d)+vC_8}_{A_{\rm phys}(d)}
++\frac{U(B-d)}2\log(B/d).
+}
+\]
+**The complete original physical square's logarithmic coefficient is exactly the same original compact source \(U(B-d)/2\)**, not \(v/2\), not just \(-U'(B)/2\), and not a separately evaluated matched-image tail. This is an exact cancellation-preserving refactorization of the *whole* original Weil response.
+
+Let \(U_{400}(B-d)\) be the original source-correlated first 400 Taylor coefficients and \(H_{400}\) the genuine analytic regular part's first 400 coefficients. The original full terminal \(E_{w,T}=\int_0^{1/500}w(B-d)^2dd\) is approximated by the finite **single positive-source-square** moment
+\[
+\boxed{
+\widetilde E_{w,T,400}
+=\int_0^{1/500}
+\left[
+(H_{400}+vC_8)^2
++(H_{400}+vC_8)U_{400}L_d
++\frac14 U_{400}^2L_d^2
+\right]dd .
+}
+\]
+The three coefficient polynomials must be formed from the **joint native source contraction before rounding into independent source boxes**. Every integral is a closed finite \(I_{jk}=\int_0^\delta d^jL_d^kdd\), \(k\le2\), using accepted NF488 exact logarithmic moments; no sampling mesh or quadrature error is hidden.
+
+For the actual full physical \(w\), accepted NF446 yields \(|w|\le25007+L_d/2\) and the 400-jet comparison obeys \(|w-\widetilde w|\le E_H+E_g L_d\). Consequently the real genuine **positive-square** error is bounded by
+\[
+\begin{aligned}
+|E_{w,T}-\widetilde E_{w,T,400}|
+&\le(50014E_H)\,I_{00}+E_H I_{01}
+ +(50014E_g)\,I_{01}+E_gI_{02}\\
+&\quad+E_H^2 I_{00}+2E_HE_g I_{01}+E_g^2I_{02}\\
+&<10^{-96}.
+\end{aligned}
+\]
+This is independent of NF491's failed first-derivative mesh envelope and is much smaller than its \(1.65528921\times10^{-26}\) positive-square decision corridor. The construction applies to the **genuine improper physical terminal down to \(d=0\)**, not merely a falsely frozen last \(10^{-15}\) endpoint.
+
+To directly use NF491's certified *bulk* positive square \(E_{w,\mathrm{bulk}}\) on \(d\in[\eta,1/500]\), subtract its already accepted tiny \(E_{w,\mathrm{last}}\) on \(d\in[0,\eta]\) by a separately paid exact interval:
+\[
+E_{w,\mathrm{bulk}}=E_{w,T}-E_{w,\mathrm{last}},
+\qquad \eta=10^{-15}.
+\]
+A numerically certified \(\widetilde E_{w,T,400}\) could therefore decide the NF491/NF404 threshold. **But neither the 400 actual original \(H\)-coefficient balls nor this numerical positive square has yet been evaluated.** The \(<10^{-96}\) fee is a *proved analytic approximation bound conditional on source-custody verification*, not a signed-energy value.
+
 ## Source-native endpoint checkpoint and remaining obligations
 
 The companion native original 4096-bit job computes the actual source \(U(B-1/500)\) and \(U^{(0)},\ldots,U^{(5)}(B)\), including original odd sinh, then independent original Fraction verification combines them with the NF489 **previously accepted true physical \(z(549/500)\)** from eleven NF482 native source blocks. It will certify the genuinely physical numerical
