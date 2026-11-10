@@ -1,6 +1,6 @@
 # Weil-Lab NF491 — Genuine original J8 single positive squared-energy gate, endpoint collar paid, first-order integration METHOD STOP
 
-**2026-11-09 PT. Standing at submission: exact original-source positive-square bulk reduction with mathematical source receipts; independent exact Fraction CI PENDING. Full genuine original \(J_8\) signed upper, NF404, W-ODD-NEG, exterior J242, even/whole Weil operator/domain and RH OPEN.** Stacked draft on NF490 #518, no main merge. This does not assert the actual bulk square was integrated.
+**2026-11-09 PT. Standing: SOURCE-EXACT SCOPED ACCEPTED [focused original source/Fraction CI #42763724777 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42763724777), job #129655202622, source raw artifact #13739465506; external peer review not claimed. The true bulk-square value remains UNMEASURED. Full genuine original \(J_8\) signed upper, NF404, W-ODD-NEG, exterior J242, even/whole Weil operator/domain and RH OPEN.** Stacked draft on NF490 #518, no main merge. This does not assert the actual bulk square was integrated.
 
 ## Previous → current → next
 
@@ -119,6 +119,27 @@ All source term and original principal/first strip/last-collar fees are charged 
 \boxed{\frac{D_{\rm cap}-D_\ell}{2}\approx1.6552892091\times10^{-26}.}
 \]
 This is an acceptance gap, *not* proof that the actual square lies inside it or that NF404 passes. It is a convenient single **nonnegative** scalar target.
+
+## Verified original source numeric results and actual remaining target
+
+The successful focused original-source exact-Fraction run #42763724777 produces the genuine source-custodied values (outward exact rational intervals are retained in the raw original artifact):
+
+\[
+\begin{aligned}
+E_{p,\mathrm{last}}&\approx6.22435456609148512692452039644\times10^{-35},\\
+E_{w,\mathrm{last}}&\in(2.22243545660914851269,\ 8.52243545660914851269)\times10^{-34},\\
+(E_{w,\mathrm{bulk}})_{\rm source\ forced\ lower}
+&=9.54208939682299041838\times10^{-23}\quad\text{(strict lower)},\\
+(E_{w,\mathrm{bulk}})_{\rm NF404\ sufficient\ upper}
+&=9.54374468603209522225\times10^{-23},\\
+(E_{w,\mathrm{bulk}})_{\rm certain\ NF404\ cap\ failure\ lower}
+&=9.68201636850086745946\times10^{-23}.
+\end{aligned}
+\]
+
+The source-forced lower to sufficient-upper gap is \(1.655289209104803875\times10^{-26}\). The **actual** original source-correlated \(E_{w,\mathrm{bulk}}\) has **not** been evaluated or bounded above. These thresholds characterize what the next real numerical physical computation must certify.
+
+The exact-rational first-derivative-only uniform midpoint error estimate also passed, giving more than **78,300,999,781,159,173,258,744,054,952 nodes** to certify error below half that gap with this particular coarse global envelope. This is a **quantitative failure of the proposed first-order global bound**, not a mathematical lower bound on all validated quadrature methods.
 
 ## New sharp whole-source compact derivative extension and a quantitative midpoint METHOD STOP
 
