@@ -51,7 +51,9 @@ def main():
     assert overlap(jets[0],v)
     assert overlap(v,arb_ball(nf411["original_original_source_value_at_B_arb"]))
     assert overlap(jets[1],arb_ball(nf411["original_original_source_derivative_at_B_arb"]))
-    assert v.hi<0 and jets[1].hi<0 and jets[2].hi<0
+    assert v.hi<0 and u.lo>0 and jets[1].hi<0 and jets[2].hi<0
+    # Same original physically compact U changes sign within [B-1/500,B];
+    # consequently whole response w=p+z log coefficient U(x)/2 also crosses zero.
     assert -F(1,1000)<jets[2].lo<=jets[2].hi<0
     # Independent original accepted NF445 4096-bit first six original
     # source derivative diagnostics: source exact interval MUST agree with
