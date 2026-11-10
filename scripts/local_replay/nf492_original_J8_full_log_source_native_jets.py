@@ -68,6 +68,7 @@ def main():
     val_B=out(true_B)
     val_X=out(true_X)
     assert intersect(val_B,out(jets[0]))
+    assert val_B[1]<0 and val_X[0]>0  # genuine original source sign reversal inside J8 terminal
     jet_pairs=[out(j) for j in jets]
     assert F(-1,10**3)<jet_pairs[2][0]<=jet_pairs[2][1]<0
     assert jet_pairs[1][1]<0 and jet_pairs[0][1]<0
