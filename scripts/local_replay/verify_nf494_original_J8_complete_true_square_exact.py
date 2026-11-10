@@ -80,8 +80,9 @@ def main():
     assert prev["pass"]=="NF493-original-source-400-log-jets"
     assert oldh["pass"]=="NF492-original-source-exact-full-log-physical-crosscheck"
     assert nf491["pass"]=="NF491"
+    assert "original_nf406_seam_sha256" in nf491 and "original_nf406_support_sha256" not in nf491, "NF495 exact immutable NF491 schema gate"
     assert ssh==curr["original_nf407_source_sha256"]==prev["original_nf407_source_sha256"]==nf491["original_nf407_source_sha256"]==SRC
-    assert seamsha==curr["original_nf406_seams_sha256"]==prev["original_nf406_seams_sha256"]==nf491["original_nf406_support_sha256"]==SEAM
+    assert seamsha==curr["original_nf406_seams_sha256"]==prev["original_nf406_seams_sha256"]==nf491["original_nf406_seam_sha256"]==SEAM
     assert jet["nf407_source_sha256"]==nf450["source_SHA256"]==nf482["original_nf407_source_sha256"]==SRC
     assert nf483["source_ci_completed_exact"]["conclusion"]=="SUCCESS"
     assert nf482["source_exact_archive"]["conclusion"]=="SUCCESS"
@@ -170,10 +171,10 @@ def main():
     assert F(0)<EwLast.lo<=EwLast.hi<F(1,10**33)
     EwBulk=EwT-EwLast
     assert EwBulk.lo>0
-    forced=F("9.54208939682299041838e-23")
+    forced=F("9.542089396822990418379e-23")
     sufficient=F("9.54374468603209522225e-23")
     failure=F("9.68201636850086745946e-23")
-    assert forced<F(nf491["original_source_inferred_EwBulk_strict_lower_approx"])
+    # Strictly conservative rounding: the printed original NF491 lower is\n    # 9.542089396822990418379790...e-23, so round DOWN not UP.\n    assert forced<F(nf491["original_source_inferred_EwBulk_strict_lower_approx"])
     assert sufficient<F(nf491["original_NF404_sufficient_EwBulk_upper_approx"])
     assert failure>F(nf491["original_NF404_certain_failure_EwBulk_lower_approx"])
     # This source-inferred original strict lower is a mandatory crosscheck:
