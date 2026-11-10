@@ -1,0 +1,61 @@
+name: NF492 source-original 4096bit U(B-d) and full analytic log carrier x=549/500
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-physical-U-and-six-endpoint-jets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: Retain immutable actual original NF407 source and copy only NF492 physical native jet evaluator
+        run: cp candidate/scripts/local_replay/nf492_original_J8_full_log_source_native_jets.py native/scripts/local_replay/
+      - name: Original full-source 4096-bit actual U(B-1/500) and U^(0..5)(B), original sinh pole, paid dyadic input
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf492_original_J8_full_log_source_native_jets.py --output ../nf492-original-J8-source-physical-six-jet-native.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf492-original-J8-4096bit-full-source-log-and-six-jets
+          path: nf492-original-J8-source-physical-six-jet-native.json
+          retention-days: 90
+  independent-original-source-complete-log-physical-H:
+    needs: [original-physical-U-and-six-endpoint-jets]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf492-original-J8-4096bit-full-source-log-and-six-jets
+          path: new-original-source
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42750678917
+          name: nf489-original-J8-independent-old-NF482-physical-boundary
+          path: previous-accepted-original-physical-point
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact Fraction independent original NF411/NF445 6 jets, actual NF489 physical z, source true g full log and H real analytic at x=549/500
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf492_original_J8_complete_log_source_exact.py --native new-original-source/nf492-original-J8-source-physical-six-jet-native.json --old-nf489 previous-accepted-original-physical-point/nf489-original-NF482-first-physical-boundary-source-exact.json --output nf492-independent-original-physical-H-complete-log-source-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf492-original-J8-independent-physical-H-complete-log-exact
+          path: nf492-independent-original-physical-H-complete-log-source-exact.json
+          retention-days: 90

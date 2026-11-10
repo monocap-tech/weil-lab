@@ -1,0 +1,23 @@
+name: NF492 original J8 all-orders physical log peel 400-jet holomorphic source gate
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-exact-400jet-holomorphic-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent original full 246 dyadic source raw coefficient complex envelope, exact logarithm peel, 400-jet full physical signed Cauchy control
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf492_original_J8_all_orders_log_peel_400jet_exact.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf492-original-J8-full-log-holomorphic-400jet-exact-source
+          path: nf492-original-J8-full-log-peel-holomorphic-400-jet-exact.json
+          retention-days: 90
