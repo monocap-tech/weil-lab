@@ -1,0 +1,59 @@
+{
+  "pass": "NF490",
+  "date": "2026-11-09 America/Los_Angeles",
+  "standing": "SCOPED SOURCE-EXACT ACCEPTED: sharpened original full NF413 curvature source and NF446 physical full derivative, verified genuine positive-measure original J8 entrance signed two-sided integral; full original J8 signed upper OPEN",
+  "original_source_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_seam_nf406_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_full_246_generator_273_group_source": true,
+  "unchanged_original_m0_sinh_pole": true,
+  "original_nf413_full_u_second_derivative_L2_strict_upper": "134",
+  "original_full_compact_u_prime_sup_strict_upper": "200",
+  "original_full_compact_u_sup_strict_upper": "450",
+  "original_full_J7_J8_joint_physical_z_sup_strict_upper": "12000",
+  "original_true_J8_derivative_region": [
+    "549/500",
+    "1099/1000"
+  ],
+  "original_true_J8_physical_z_prime_abs_strict_upper": "8500",
+  "original_three_way_actual_z_at_549_over_500_strict_bracket": [
+    "-3.4e-11",
+    "-3.3e-11"
+  ],
+  "original_true_signed_interval_x": [
+    "549/500",
+    "549/500+1/1000000000000000"
+  ],
+  "original_true_integrand_4pz_plus_2z2_strict_bracket": [
+    "6.912e-21",
+    "4.9e-20"
+  ],
+  "original_J8_first_terminal_continuous_signed_interval_strict_bracket": [
+    "6.912e-36",
+    "4.9e-35"
+  ],
+  "original_source_prime_weights_n9_active": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9
+  ],
+  "original_nf489_source_native_workflow": 42750678110,
+  "original_nf489_independent_11block_workflow": 42750678917,
+  "focused_original_exact_fraction_ci": {
+    "run_id": 42759922691,
+    "job_id": 129642941562,
+    "status": "SUCCESS",
+    "artifact_id": 13737580810,
+    "artifact_name": "nf490-original-J8-genuine-physical-positive-continuous-strip"
+  },
+  "initial_failed_parser_only_run": 42759723195,
+  "original_full_J8_signed_upper": "OPEN",
+  "original_NF488_four_R_moments": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "NF491 source-correlated whole-terminal physical signed integration with certified error below NF479 3.31e-26 corridor"
+}
