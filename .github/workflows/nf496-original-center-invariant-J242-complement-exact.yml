@@ -1,0 +1,30 @@
+name: NF496 original J242 center-invariant complement quantitative no-go source exact
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-source-center-invariant-complement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42866700605
+          name: nf494-original-J8-whole-physical-square-independent-exact-source
+          path: accepted-original-nf495
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original NF404/456/478/479 and raw NF495 complete physical D8 full supported energy minus original 242D selected centered power, unchanged SHA
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf496_original_center_invariant_J242_complement_exact.py --nf495-raw accepted-original-nf495/nf494-original-J8-complete-joint-physical-square-source-exact.json --output nf496-original-source-center-invariant-complement-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf496-original-J242-center-invariant-residual-source-exact
+          path: nf496-original-source-center-invariant-complement-exact.json
+          retention-days: 90
