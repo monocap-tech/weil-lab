@@ -1,0 +1,43 @@
+name: NF490 original J8 genuine positive continuous signed entrance strip
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  full-original-j8-positive-measure-signed-strip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42750678110
+          pattern: nf489-original-J8-*
+          merge-multiple: true
+          path: verified-native-point
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42750678917
+          name: nf489-original-J8-independent-old-NF482-physical-boundary
+          path: verified-independent-original-NF482
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent original NF413 full L2 sharpened native ball, NF446 derivative moving-edge proof, three accepted NF489 original sources and exact signed physical strip integral
+        run: >-
+          python -u -X int_max_str_digits=0
+          scripts/local_replay/verify_nf490_original_J8_first_true_positive_signed_strip_exact.py
+          --native verified-native-point/nf489-original-J8-joint-compact-x549over500-native.json
+          --native-audit verified-native-point/nf489-independent-original-J8-compact-point-exact.json
+          --nf482-independent verified-independent-original-NF482/nf489-original-NF482-first-physical-boundary-source-exact.json
+          --output nf490-original-J8-genuine-first-terminal-signed-strip-source-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf490-original-J8-genuine-physical-positive-continuous-strip
+          path: nf490-original-J8-genuine-first-terminal-signed-strip-source-exact.json
+          retention-days: 90
