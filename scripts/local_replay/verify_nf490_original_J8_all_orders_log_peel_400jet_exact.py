@@ -42,7 +42,7 @@ def original_source_envelope(source):
     for (freq,k),(mid,rad) in zip(names,balls):
         ci=dyad(mid);eps=abs(dyad(rad))
         if freq=="pole":
-            assert k==0
+            assert k is None  # authentic original odd sinh pole has no monomial order
             polebound+=abs(ci)+eps
             error+=eps
             continue
