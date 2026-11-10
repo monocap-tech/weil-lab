@@ -18,7 +18,7 @@ from fractions import Fraction as F
 from pathlib import Path
 import json,hashlib,sys,argparse,math
 from verify_nf488_original_J8_terminal_four_moment_source_gate_exact import Iv,log550
-from verify_nf492_original_J8_all_orders_log_peel_400jet_exact import positive_square_polynomial_exact_controls
+from verify_nf492_original_J8_all_orders_log_peel_400jet_exact import positive_square_polynomial_exact_controls,original_source_envelope
 if hasattr(sys,"set_int_max_str_digits"):sys.set_int_max_str_digits(0)
 B=F(11,10);DELTA=F(1,500);R=F(1,25)
 SRC="0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce"
@@ -82,6 +82,11 @@ def main():
     jet,jsha=read("notes/data/provisional/NF411_original_source_boundary_jet.json")
     curv,csha=read("notes/data/provisional/NF413_original_full_246_source_curvature_native.json")
     prior,nf492sha=read("notes/data/provisional/NF450_original_B_complete_Laplace_native_sign_custody_index.json")
+    raw_abs,raw_error,pole_abs=original_source_envelope(source)
+    assert raw_abs<F(10)**160 and raw_error<F(1,10**650)
+    # Source error on the authentic fixed analytic d-disc is bounded by
+    # original full generator complex growth <10**200 from NF492.
+    assert raw_error*F(10)**200<F(1,10**450)
     assert ssh==nat["original_nf407_source_sha256"]==SRC
     assert ksha==nat["original_nf406_seams_sha256"]==SEAM
     assert jet["nf407_source_sha256"]==curv["original_nf407_full_native_source_sha256"]==prior["source_SHA256"]==SRC
@@ -104,7 +109,6 @@ def main():
     assert not nat["original_complete_original_Ew_bulk_numerically_certified"]
     assert nat["original_full_J8_D8_signed_UPPER"]==nat["NF404"]==nat["W_ODD_NEG"]==nat["RH"]=="OPEN"
     intervals=[Iv(*map(F,pair)) for pair in nat["original_real_original_U_dyadic_coefficient_ball_first_400"]]
-    v=Iv(*map(F,jet["original_original_source_value_at_B_arb"].replace("[","").replace("]","").split(" +/- "))) if False else None
     from verify_nf488_original_J8_terminal_four_moment_source_gate_exact import arb_ball
     v=arb_ball(jet["original_original_source_value_at_B_arb"])
     u0=intervals[0]
