@@ -1,0 +1,46 @@
+name: NF494 independent full ORIGINAL J8 physical square from ACCEPTED 4096bit H400 source
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-original-J8-whole-square-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: research/nf491-J8-positive-square-bulk-source-gate
+          path: accepted-nf491
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42850200418
+          name: nf494-original-J8-whole-analytic-H400-native
+          path: original-nf494-source
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42786421931
+          name: nf493-original-J8-400-true-source-log-jets-4096bit
+          path: prior-original-nf493
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42771794806
+          name: nf492-original-J8-independent-physical-H-complete-log-exact
+          path: prior-original-nf492
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Genuine original 246 source 400 H and U coefficients independent exact Fraction whole joint (p+z)^2 positive energy, last true collar, first n9 signed, NF404 original source acceptance
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf494_original_J8_complete_true_square_exact.py --native original-nf494-source/nf494-original-J8-source-H400-joint-compact-native.json --nf493-native prior-original-nf493/nf493-original-J8-400-real-source-log-jets-native.json --nf492-point prior-original-nf492/nf492-independent-original-physical-H-complete-log-source-exact.json --nf491 accepted-nf491/notes/data/provisional/NF491_original_J8_true_positive_bulk_square_gate_custody_index.json --output nf494-original-J8-complete-joint-physical-square-source-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf494-original-J8-whole-physical-square-independent-exact-source
+          path: nf494-original-J8-complete-joint-physical-square-source-exact.json
+          retention-days: 90
