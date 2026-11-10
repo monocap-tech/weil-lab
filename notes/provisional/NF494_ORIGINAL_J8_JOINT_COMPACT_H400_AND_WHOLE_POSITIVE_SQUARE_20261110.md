@@ -170,3 +170,54 @@ Only after independent exact original-source Fraction CI SUCCESS may the actual 
 **Standing:** full original \(H_{400}\) and \(U_{400}\) native source coefficients **SOURCE-NATIVE COMPUTED; independent square still PENDING**. The complete physical source energy and original \(D_8\) upper, NF404 selected scalar, W-ODD-NEG, exterior \(J_{242}\), whole even/odd Weil operator/domain, RH are **OPEN unless and until the separate exact source square CI passes**.
 
 **Next bold NF495:** independently audit the original 400 complete joint-source coefficients and whole physical square, reconcile the NF491 acceptance/certain-failure corridors without silently promoting a failed source interval, then assess the remaining exterior/odd/operator-domain RH obligations. No main merge.
+
+
+## Provisional independent local exact-Fraction full original square replay — NOT yet GitHub-promoted
+
+A fresh exact-Fraction interval replay of the **actual original NF494 successful native 400-H/400-U source artifact #13781650172**, independently accepted NF493 400 U source artifact #13749698669, NF492 accepted physical H(1/500) original source artifact #13745183499, and NF491 accepted exact physical bulk-square gate artifact #13739465506 was completed in the current investigation. This is a **local auditable calculation**, not yet the dedicated independent GitHub verification workflow's official ACCEPTED receipt. It contains no new source coefficients and pays original native input/rounding intervals, all original 400 coefficients' discarded normalized \(\ell^1\) tails, and the NF492 analytic Cauchy fees.
+
+The independent calculation used the **complete 400 original same-source H and U coefficient intervals**; all 400 U intervals overlap independently accepted NF493 original source intervals. The normalized true source envelopes were
+\[
+\|H_\delta+vC_8\|_{\ell^1}<6.319\times10^{-7},
+\qquad \|U_\delta/2\|_{\ell^1}<9.831\times10^{-8}.
+\]
+The genuine **a posteriori original source cutoff** of 102 jointly retained coefficients makes both omitted coefficient tails \(<10^{-70}\); all 400 source-native coefficient balls were inspected before choosing the cutoff. The genuine total signed-square truncation fee, including the accepted NF492 original full H and U 400 Cauchy tails, was \(<6.781\times10^{-69}\), separate from the native source coefficient radius and from the accepted last-collar width.
+
+The three true original continuous source contributions were provisionally enclosed as:
+\[
+\begin{aligned}
+E_0&\approx+7.72379738269961642718861514307\times10^{-22},\\
+E_\times&\approx-9.16570068354914523759541980402\times10^{-22},\\
+E_{\log}&\approx+3.19909910248984689873992583972\times10^{-22}.
+\end{aligned}
+\]
+**Their complete original covariance-preserving sum is positive:**
+\[
+\boxed{
+1.75719580164031808833312117876492\times10^{-22}
+<E_{w,T}<
+1.75719580164031808833312117876494\times10^{-22}
+}
+\qquad\text{PROVISIONAL LOCAL STRICT OUTWARD RATIONAL INTERVAL.}
+\]
+Subtracting the **original source-certified NF491 true last-collar** whole-square interval yields:
+\[
+\boxed{
+1.75719580163179565287651203025223\times10^{-22}
+<E_{w,\mathrm{bulk}}<
+1.75719580163809565287651203025224\times10^{-22}.
+}
+\]
+The original NF491 **certain-failure threshold** for the NF404 *selected original source's sufficient centered-energy scalar* is \(9.68201636850086745946\times10^{-23}\), far below the newly measured true original positive bulk square. Thus the local independent exact source replay indicates a **decisive failure of the selected original NF404 sufficient scalar test**, not a contradiction of RH, not a counterexample to RH, and not a result about the whole odd/even operator/domain.
+
+Using original source-accepted NF482 first n9-entry signed panel and original NF483 complete terminal principal norm, the genuine complete original signed \(J_8\) branch is provisionally
+\[
+\boxed{
+3.23476513749007820945906589885980\times10^{-22}
+<D_8<
+3.23476513749007821945906589885982\times10^{-22}.
+}
+\]
+This exceeds the source-defined NF404 certain-failure threshold \(1.656776807914060395598\times10^{-22}\) for this *specific sufficient centered acceptance gate*. **The conclusion is limited to that particular original test source/certificate route.** W-ODD-NEG, exterior \(J_{242}\), full Weil form/operator/domain, and RH all remain OPEN.
+
+**Promotion requirement:** Reproduce the local complete original source exact-Fraction computation via the focused GitHub independent CI consuming the already successful immutable NF494 native artifact and the three independently accepted original source receipts, without modifying original NF407/NF406. Until that focused job passes, label all enclosed \(E_{w,T}\), \(E_{w,\mathrm{bulk}}\), and \(D_8\) intervals **PROVISIONAL LOCAL**, rather than source-certified.
