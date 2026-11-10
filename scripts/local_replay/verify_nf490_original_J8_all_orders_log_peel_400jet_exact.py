@@ -222,13 +222,25 @@ def full_analytic_signed_error_gate():
     quadratic=2*(E_H**2*I0+2*E_H*E_g*I1+E_g**2*I2)
     total=linear+quadratic
     assert total<F(1,10**96)
+    # NF491 TRUE FULL ORIGINAL positive square w=p+z has the
+    # stronger all-orders log coefficient U(B-d)/2, exact because
+    # v/2+g(d)=U(B-d)/2. The SAME 400 source H,g jets therefore
+    # approximate the actual physical nonnegative square as a whole:
+    # w_N=H_N+vC8+(v/2+g_N)*L.
+    # |w|<=25007+L/2 (NF446 true physical original z<25000)
+    # and |w-w_N|<=E_H+E_g*L, so actual *square* integrated error:
+    positive_square_error=(
+        50014*E_H*I0+E_H*I1
+        +50014*E_g*I1+E_g*I2
+        +E_H**2*I0+2*E_H*E_g*I1+E_g**2*I2)
+    assert positive_square_error<F(1,10**96)
     # Full physical certified signed integral remains a finite
     # polynomial×L,L² exact moment of source-correlated jets:
     # p=v(C8+L/2), z_N=H_N+g_N L:
     #   L^0: 4vC8 H_N+2 H_N²
     #   L^1: 4v C8 g_N+2v H_N+4H_N*g_N
     #   L^2: 2v*g_N+2*g_N².
-    return E_H,E_g,total
+    return E_H,E_g,total,positive_square_error
 
 def signed_polynomial_exact_controls():
     # Independent finite rational polynomial/log controls for the
@@ -274,6 +286,56 @@ def signed_polynomial_exact_controls():
         assert all(l<=2 for i,l in direct)
     return checks
 
+def positive_square_polynomial_exact_controls():
+    """Independently verify full NF491 positive square before source projection."""
+    def add(a,b):
+        n=max(len(a),len(b))
+        return [(a[i] if i<len(a) else F(0))+
+                (b[i] if i<len(b) else F(0)) for i in range(n)]
+    def mul(a,b):
+        o=[F(0)]*(len(a)+len(b)-1)
+        for i,x in enumerate(a):
+            for j,y in enumerate(b): o[i+j]+=x*y
+        return o
+    cases=[
+      (F(-1,17),F(7,23),[F(-3,19),F(5,29)],[F(-1,17),F(2,31)]),
+      (F(2,11),F(5,7),[F(0),F(-13,37)],[F(2,11),F(0),F(-17,41)]),
+      (F(0),F(1,2),[F(13,17)],[F(0),F(-23,31)]),
+      (F(-11,13),F(-17,29),[F(3),F(0),F(-7,5)],[F(-11,13),F(1),F(-2),F(3)]),
+      (F(1,10**13),F(19,53),[F(-1,10**8),F(4,10**5)],[F(1,10**13),F(1,10**10),F(0)]),
+      (F(-23,101),F(17,79),[F(11,71),F(-13,73),F(19,83)],[F(-23,101),F(29,103),F(-31,107),F(37,109)])
+    ]
+    checks=0
+    for v,C,h,u in cases:
+        assert u[0]==v
+        # Direct original w=p+z from source physical whole response:
+        # p=v(C+L/2), z=H+(U-v)/2*L.
+        g=[(q-v if k==0 else q)/2 for k,q in enumerate(u)]
+        source_z={(i,0):c for i,c in enumerate(h)}
+        for i,c in enumerate(g):source_z[(i,1)]=source_z.get((i,1),F(0))+c
+        source_w=source_z.copy()
+        source_w[(0,0)]=source_w.get((0,0),F(0))+v*C
+        source_w[(0,1)]=source_w.get((0,1),F(0))+v/2
+        source_w={k:w for k,w in source_w.items() if w}
+        direct={}
+        for (i,j),x in source_w.items():
+            for (k,l),y in source_w.items():
+                key=(i+k,j+l)
+                direct[key]=direct.get(key,F(0))+x*y
+        # Independently SOURCE-REFACTORED original physical log w:
+        # w=H+v*C+(U/2)*L, square is exactly
+        # F0=(H+vC)^2, F1=(H+vC)*U, F2=U^2/4.
+        a=add(h,[v*C])
+        F0=mul(a,a)
+        F1=mul(a,u)
+        F2=[c/4 for c in mul(u,u)]
+        for ell,p in enumerate((F0,F1,F2)):
+            for i,c in enumerate(p):
+                assert direct.get((i,ell),F(0))==c,(v,C,i,ell)
+                checks+=1
+        assert all(k[1]<=2 for k in direct)
+    return checks
+
 def main():
     orig,sha=load("notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json")
     seam,ss=load("notes/data/provisional/NF406_original_prime_support_partition_exact.json")
@@ -290,9 +352,10 @@ def main():
     analytic_checks=original_all_log_algebra()
     assert analytic_checks==6*4*(5+3+1)
     assert exact_kernel_holomorphic_cauchy()
-    e_h,e_g,energy=full_analytic_signed_error_gate()
+    e_h,e_g,energy,square_energy=full_analytic_signed_error_gate()
     polychecks=signed_polynomial_exact_controls()
-    assert polychecks>50
+    squarechecks=positive_square_polynomial_exact_controls()
+    assert polychecks>50 and squarechecks>30
     out={
        "pass":"NF490",
        "standing":"SOURCE-EXACT ORIGINAL TRUE J8 ALL-ORDERS LOG PEEL + FIXED-J8 HOLOMORPHIC 400-JET ENERGY Cauchy gate ACCEPTED IF FOCUSED CI SUCCESS; original H,g numerical jets and D8 signed upper OPEN",
@@ -329,6 +392,11 @@ def main():
        "original_g_400_jet_remainder_strict_upper":str(e_g),
        "original_true_whole_terminal_signed_scalar_truncation_error_strict_upper":str(energy),
        "original_true_whole_terminal_signed_scalar_error_less_than":"1e-96",
+       "original_true_whole_terminal_positive_square_error_strict_upper":str(square_energy),
+       "original_true_whole_terminal_positive_square_error_less_than":"1e-96",
+       "original_source_all_orders_TOTAL_w_log_coefficient":"U(B-d)/2, exactly v/2+g(d)",
+       "original_true_full_terminal_positive_square_400jet_target":"Ew_T,400=int_0^(1/500)[(H400+v*C8)^2 + (H400+v*C8)*U400*L + U400^2*L^2/4]dd, L=log(B/d)",
+       "original_exact_positive_source_square_polynomial_controls":squarechecks,
        "original_true_terminal_finite_integrated_signed_polynomial":"D_T,400=int_0^(1/500)[F0(d)+F1(d)*L(d)+F2(d)*L(d)^2]dd with F0=4vC8 H400+2H400^2, F1=4vC8 g400+2v H400+4H400 g400, F2=2v g400+2g400^2",
        "original_polynomial_exact_signed_jets_controls":polychecks,
        "source_correlated_400_jets_actually_calculated":False,
@@ -339,6 +407,6 @@ def main():
     dest=Path("nf490-original-J8-full-log-peel-holomorphic-400-jet-exact.json")
     dest.write_text(json.dumps(out,indent=2)+"\n")
     print("NF490 original complete all-orders J8 exact log peel + 400 jet signed energy Cauchy controls PASS")
-    print("original source explicit 400-jet full terminal D signed analytic truncation <", "1e-96")
+    print("original source explicit 400-jet full terminal signed D and WHOLE positive square truncation <", "1e-96")
     print("original 400 source H,g numeric coefficients and actual D8 upper NF404 RH OPEN")
 if __name__=="__main__":main()
