@@ -1,0 +1,31 @@
+name: NF489 independent accepted NF482 original J8 physical endpoint from 11 full source blocks
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-first-J8-real-boundary-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42506659220
+          pattern: nf482a-original-source-*
+          merge-multiple: true
+          path: old-original-11-source
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently reassemble the actual source-native NF482 11 x 1200 polynomial balls at physical J8 x=549/500 with exact Fraction, pay complete source error, compute signed density
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf489_original_J8_legacy_nf482_boundary_source_exact.py --input-dir old-original-11-source --output nf489-original-NF482-first-physical-boundary-source-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf489-original-J8-independent-old-NF482-physical-boundary
+          path: nf489-original-NF482-first-physical-boundary-source-exact.json
+          retention-days: 90

@@ -1,0 +1,54 @@
+name: NF489 first real original J8 joint compact source-native point
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-original-source-physical-point:
+    runs-on: ubuntu-latest
+    timeout-minutes: 110
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: Copy ONLY NF489 mathematical evaluator onto immutable NF459 original native NF407 physical source tree
+        run: cp candidate/scripts/local_replay/nf489_original_J8_first_joint_compact_point_native.py native/scripts/local_replay/
+      - name: Genuine original NF446 full physical J8 x=549/500 source-cancelled 4096bit exact original 1300-source Taylor and 800-index compact Laplace moments
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf489_original_J8_first_joint_compact_point_native.py --out ../nf489-original-J8-joint-compact-x549over500-native.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf489-original-J8-joint-compact-4096bit-native
+          path: nf489-original-J8-joint-compact-x549over500-native.json
+          retention-days: 90
+  independent-original-point-source-exact:
+    needs: [actual-original-source-physical-point]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf489-original-J8-joint-compact-4096bit-native
+          path: original-physical
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact independent NF407/406/411/413/450/451 source original and two-tail numerical physical audit
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf489_original_J8_first_joint_compact_point_exact.py --native original-physical/nf489-original-J8-joint-compact-x549over500-native.json --output nf489-independent-original-J8-compact-point-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf489-original-J8-independent-source-exact-point
+          path: nf489-independent-original-J8-compact-point-exact.json
+          retention-days: 90
