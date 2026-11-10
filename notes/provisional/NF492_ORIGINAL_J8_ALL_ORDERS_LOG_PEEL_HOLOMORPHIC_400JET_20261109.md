@@ -14,6 +14,26 @@ NF489's complete unchanged original NF446 joint compact physical response at \(x
 \]
 The actual *pointwise* original signed density \(4pz+2z^2\) there is \(>1.25793564592051847763600908183\times10^{-20}>0\). **A point sign is not a cell integral sign or a complete \(J_8\) signed upper.** The source-accepted NF488 terminal analytic endpoint+cusp baseline still requires four genuinely integrated source-remnant moments.
 
+## Canonical frontier and independent actual-source checkpoint
+
+**Parallel research reconciliation:** The canonical accepted Weil-Lab head before this pass is NF491 ([PR #519](https://github.com/monocap-tech/weil-lab/pull/519)), stacked on accepted NF490 ([PR #518](https://github.com/monocap-tech/weil-lab/pull/518)). Those results already source-certified a tiny positive original continuous \(J_8\) entrance interval, sharpened compact physical derivatives, and reduced remaining NF404 to **one genuine nonnegative source-correlated bulk square**; the first-order global midpoint bound is a METHOD STOP. This NF492 all-orders construction is a distinct, higher-order replacement for that stopped quadrature bound, not a duplicated earlier NF490 claim.
+
+The new genuine original fixed-source numerical checkpoint was already independently completed by the authentic immutable NF459 tree in [original 4096-bit source-native + independent Fraction run #42769773475 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/42769773475), *before this branch's NF492 renaming*. It retains all original 246 generators, 273 groups, 32 critical sines, genuine odd sinh pole, unchanged NF407 source SHA and authentic physical \(x=549/500\). The true original source values are
+\[
+\begin{gathered}
+U(B-1/500)\approx+2.1925041442471295\times10^{-10}>0,\\
+g(1/500)=\tfrac12[U(B-1/500)-U(B)]
+\approx+1.15465139457840621315\times10^{-10},\\
+U''(B)\approx-2.83288429608638916944\times10^{-4}<0,\qquad
+\beta=U''(B)/4\approx-7.08221074021597292359\times10^{-5}<0 .
+\end{gathered}
+\]
+Combining with previously **independently source-accepted NF489** exact-Fraction original complete physical \(z(549/500)\), the all-orders **analytic regular carrier** at that genuine point is
+\[
+\boxed{H(1/500)\approx-7.61762780612701731786\times10^{-10}.}
+\]
+The complete exact-rational outward intervals are emitted by the independent source workflow artifact; these decimal figures are diagnostics, while both signs are source-certified. Because the accepted original NF411 \(U(B)=v<0\) and the genuine source now has \(U(B-1/500)>0\), continuity proves that **the coefficient \(U(B-d)/2\) of the complete original \(w=p+z\) logarithm changes sign at least once within this real original physical terminal interval.** The identity is not a frozen-endpoint approximation. This physical source root result is valid independently of any numerical claim for the whole terminal energy.
+
 ## New exact correction: the original whole logarithmic carrier is source-dependent, not merely its first jet
 
 Let \(B=11/10\), \(d=B-x\in(0,\delta]\) with \(\delta=1/500\), \(v=U(B)\), \(x=B-d\), \(a=2d\), \(b=4B-2d\). The original NF407 source \(U\) contains *all* original 242 selected plus four critical dyadic source generators / 273 grouped modes / genuine odd sinh pole, and is physically used only on the original \([-B,B]\). The original NF406 J8 regular/principal n9-active seven-power support is \(n=2,3,4,5,7,8,9\); original NF404 centered sinh is unchanged.
