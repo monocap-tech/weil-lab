@@ -266,7 +266,9 @@ def assemble_H(terms,pole,u,l,kap,tailT,jet):
         assert A(-B)<x0<A(B)
         prime=A(p).log()/A(n).sqrt()
         old=[F(a) for a in jet[str(n)]]
-        assert F(0)<old[0]<=old[1]<1 and prime.contains(A((old[0]+old[1])/2))
+        plo,phi=enc(prime,180)
+        assert F(0)<old[0]<=plo<=phi<=old[1]<1, (
+             "METHOD STOP: original exact Λ(n)/sqrt(n) 4096bit native value outside unchanged NF411 source interval",n)
         reg=original_source_jet(terms,pole,x0)
         for j in range(N):
             result[j]-=prime*(reg[j]+(u[0] if j==0 else arb(0)))
