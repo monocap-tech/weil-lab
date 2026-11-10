@@ -157,6 +157,14 @@ def main():
     true=partial+Iv(-scalar_error,scalar_error)
     assert true.lo>0,"METHOD STOP: actual original pure log square not certified positive"
     assert true.width()<F(1,10**26),"METHOD STOP: first genuine source square component too loose"
+    # Fixed, independently reproducible rigorous source numeric
+    # acceptance interval, around the observed genuine original
+    # first pure log-square component. Reject any source perturbation.
+    log_lower=F("3.19909910248984689873992583e-22")
+    log_upper=F("3.19909910248984689873992585e-22")
+    assert log_lower<true.lo<=true.hi<log_upper, (
+        "METHOD STOP: original NF493 actual source pure-log-square numeric gate")
+
     assert true.hi<F(1,100),"original genuine physical source log-square magnitude unreasonable"
     assert diagnostic_algebra_controls()==8
     assert positive_square_polynomial_exact_controls()>30
@@ -181,6 +189,8 @@ def main():
       "original_source_actual_original_uniform_U_polynomial_plus_analytic_tail_error":str(neglected+tail),
       "original_true_improper_original_0_to_1over500_log_square_moment_upper":str(moment2.hi),
       "original_true_Ulog_square_numeric_interval_outward":true.raw(),
+      "source_numeric_fixed_acceptance_lower":str(log_lower),
+      "source_numeric_fixed_acceptance_upper":str(log_upper),
       "original_true_Ulog_square_numeric_interval_decimal":true.decimal(45),
       "original_true_Ulog_square_interval_width_decimal":true.width().__str__(),
       "original_true_full_physical_square_one_source_loglog_component":"E_log = (1/4)int_0^(1/500) U(B-d)^2 log(B/d)^2 dd",
@@ -195,5 +205,6 @@ def main():
     p=Path(args.output);p.parent.mkdir(parents=True,exist_ok=True)
     p.write_text(json.dumps(result,indent=2)+"\n")
     print("NF493 original genuine one pure U(B-d)^2/4*log(B/d)^2 source component EXACT Fraction ACCEPT",*true.decimal(45),flush=True)
+    print("NF493 original ACCEPTED STRICT ORIGINAL ENERGY E_log in (3.19909910248984689873992583, 3.19909910248984689873992585)*1e-22",flush=True)
     print("NF493 true full source physical Ew_T/Ew_bulk uncomputed; original D8 upper/NF404/RH OPEN",flush=True)
 if __name__=="__main__":main()
