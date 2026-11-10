@@ -1,0 +1,55 @@
+name: NF493 actual 400 original full U(B-d) source log jets and first genuine log-square moment
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-original-4096bit-full-400-U-jets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f50e49cdc02b5e1eaacce7f8a66733fce9bc6f05
+          path: native
+      - uses: actions/checkout@v4
+        with:
+          path: candidate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original 4096bit Arb source arithmetic
+        run: pip install python-flint==0.8.0
+      - name: Copy only NF493 full original NF407 source 400-jet evaluator into immutable NF459 tree
+        run: cp candidate/scripts/local_replay/nf493_original_J8_400_true_source_log_jets_native.py native/scripts/local_replay/
+      - name: Original complete original 246-generator 273-group full source U(B-d) 400 Arb coefficient balls, direct physical U(B-d) independent check
+        working-directory: native
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf493_original_J8_400_true_source_log_jets_native.py --output ../nf493-original-J8-400-real-source-log-jets-native.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf493-original-J8-400-true-source-log-jets-4096bit
+          path: nf493-original-J8-400-real-source-log-jets-native.json
+          retention-days: 90
+  independent-full-original-source-log-square:
+    needs: [native-original-4096bit-full-400-U-jets]
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf493-original-J8-400-true-source-log-jets-4096bit
+          path: original-native
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original SHA, physical source 400 jets, native midpoint and original dyadic radius, original improper log550 and first genuine original pure U² log² square energy
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf493_original_J8_400_source_log_square_exact.py --native original-native/nf493-original-J8-400-real-source-log-jets-native.json --output nf493-original-J8-pure-Ulog-square-source-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf493-original-J8-physical-source-log-square-exact
+          path: nf493-original-J8-pure-Ulog-square-source-exact.json
+          retention-days: 90
