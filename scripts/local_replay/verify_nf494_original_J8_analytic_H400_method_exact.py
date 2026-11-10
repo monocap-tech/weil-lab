@@ -37,9 +37,9 @@ def minus_source_bivariate(a):
     for k,c in enumerate(a):
         for i in range(k+1):
             for j in range(k-i+1):
-                z=c*math.factorial(k)//math.factorial(k-i-j) if False else F(
-                      math.factorial(k),math.factorial(i)*math.factorial(j)*
-                        math.factorial(k-i-j))*B**(k-i-j)*((-1)**i)*F((-1)**j,2**j)
+                z=F(math.factorial(k),
+                    math.factorial(i)*math.factorial(j)*math.factorial(k-i-j)
+                    )*B**(k-i-j)*((-1)**i)*F((-1)**j,2**j)
                 out[i,j]=out.get((i,j),F(0))+c*z
     return out
 def direct_original_compact_H_without_log2(u,um):
