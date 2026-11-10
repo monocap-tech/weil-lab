@@ -45,7 +45,7 @@ def intersect(a,b):
     return max(a[0],b[0]),min(a[1],b[1])
 
 def ball(s):
-    m=re.fullmatch(r"\[([+-]?[0-9]+(?:\.[0-9]+)?e[+-]?[0-9]+) \+/- ([0-9]+(?:\.[0-9]+)?e[+-]?[0-9]+)\]",s)
+    m=re.fullmatch(r"\[([+-]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?) \+/- ([0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?)\]",s)
     assert m, "original Arb ball format changed"
     v,r=map(F,m.groups())
     assert r>=0
