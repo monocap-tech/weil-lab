@@ -1,0 +1,47 @@
+{
+  "pass": "NF491",
+  "date": "2026-11-09 America/Los_Angeles",
+  "standing": "ACCEPTED SCOPED original source/Fraction positive single physical J8 bulk-square NF404 gate and genuine final collar squares; true bulk square numerical value, complete D8 signed upper, NF404 W_ODD_NEG RH OPEN",
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seam_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_nf411_v_and_seven_prime_source_carrier": true,
+  "original_nf482_first_J8_signed_exact_source_accepted": true,
+  "original_nf483_J8_terminal_principal_square_source_accepted": true,
+  "original_nf486_last_1e15_original_continuous_signed_collar_source_accepted": true,
+  "original_nf490_compact_source_derivative_sharpening_accepted": true,
+  "original_true_J8_bulk_d_interval": [
+    "1/1000000000000000",
+    "1/500"
+  ],
+  "source_exact_identity": "D8=DA+Dlast+2*(EwBulk-EpBulk); EwBulk=int_eta^delta[p(B-d)+z(B-d)]^2 dd, original physical joint compact z",
+  "genuine_original_last_1e15_Ep_approx": "6.2243545660914851269245203964423e-35",
+  "genuine_original_last_1e15_Ew_strict_bracket_approx": [
+    "2.2224354566091485126924520396442e-34",
+    "8.5224354566091485126924520396442e-34"
+  ],
+  "original_source_inferred_EwBulk_strict_lower_approx": "9.5420893968229904183797908082233e-23",
+  "original_NF404_sufficient_EwBulk_upper_approx": "9.5437446860320952222547908082233e-23",
+  "original_NF404_certain_failure_EwBulk_lower_approx": "9.6820163685008674594597908082233e-23",
+  "original_EwBulk_source_acceptance_width_approx": "1.655289209104803875e-26",
+  "original_full_bulk_physical_z_derivative_strict_upper": "17000",
+  "original_bulk_true_physical_w_derivative_strict_upper": "27000",
+  "original_bulk_true_physical_w_sup_strict_upper": "12001",
+  "original_bulk_true_physical_w_square_derivative_strict_upper": "648054000",
+  "original_firstorder_uniform_midpoint_nodes_to_certify_half_gap": "78300999781159173258744054952",
+  "firstorder_method_status": "METHOD STOP for uniform ordinary midpoint on broad source-sup bounds only; high-order correlated physical compact-source integrator required",
+  "independent_exact_signed_square_adversarial_controls": 12,
+  "source_exact_ci": {
+    "run_id": 42763724777,
+    "conclusion": "SUCCESS",
+    "job_id": 129655202622,
+    "raw_artifact_id": 13739465506,
+    "artifact_name": "nf491-original-J8-single-positive-bulk-square-source-exact"
+  },
+  "source_original_raw_full_exact_fraction_interval": "Retained in GitHub Actions original independent source numeric JSON artifact; approximations here are not replacement for exact uncoarsened intervals",
+  "actual_original_J8_bulk_Ew_numerically_integrated": false,
+  "original_full_J8_signed_upper": "OPEN",
+  "NF404": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "next_bold": "NF492 validated high-order source-correlated integration of true physical (p+z)^2 on [1e-15,1/500], paying full source arithmetic and truncation to below 1.6553e-26 NF404 positive-energy gap"
+}
