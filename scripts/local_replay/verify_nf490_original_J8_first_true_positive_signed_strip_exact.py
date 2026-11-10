@@ -196,7 +196,7 @@ def main():
     # |p| on strip lies (6e-11,2.2e-10), and p<0.
     plow=F(6,10**11)
     phigh=F(22,10**11)
-    assert plow < F(1,10**11)*(3+F(6,2))
+    assert plow == F(1,10**11)*(3+F(6,2))
     assert phigh ==F(2,10**11)*(7+F(8,2))
 
     # Rigorous *continuous*, not a pointwise extrapolation:
