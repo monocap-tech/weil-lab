@@ -1,0 +1,30 @@
+name: NF497 original 4096-bit dyadic source-box response stability and projector capture necessary gate
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  exact-original-whole-source-coefficient-box-and-projector:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42873057627
+          name: nf496-original-J242-center-invariant-residual-source-exact
+          path: accepted-original-nf496
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact original NF407 full 246 dyadic-radius uncertainty, physical joint compact response norm Lipschitz and NF496 complement / enlarged projector capture bound
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf497_original_source_box_stability_and_projector_capture_exact.py --nf496-raw accepted-original-nf496/nf496-original-source-center-invariant-complement-exact.json --output nf497-original-source-box-physical-L2-stability-and-J242-capture-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf497-original-full-source-box-physical-L2-stability-projector-exact
+          path: nf497-original-source-box-physical-L2-stability-and-J242-capture-exact.json
+          retention-days: 90
