@@ -1,0 +1,42 @@
+name: NF500 independent replay of accepted original 4096bit 242 mixed source moment native artifact
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  independent-real-Machin-242-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43063534898
+          name: nf500-original-J242-full-selected-log-mixed-native
+          path: original-nf500-native
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42786421931
+          name: nf493-original-J8-400-true-source-log-jets-4096bit
+          path: original-nf493
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43053547666
+          name: nf499-original-J242-pole-smooth-log-selected-source-moment-exact
+          path: original-nf499-pole
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently source-audit TRUE original full 242 SHA-pinned selected moments and Machin real analytic independent 0/1 plus original independently exact pole 241, original smoothing and Hilbert nonimplication
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf500_original_J242_all_smooth_log_moments_source_exact.py --native original-nf500-native/nf500-original-J242-all-selected-smooth-source-moments-native.json --nf493-native original-nf493/nf493-original-J8-400-real-source-log-jets-native.json --nf499-pole original-nf499-pole/nf499-original-selected-J242-pole-smooth-log-source-moment-exact.json --output nf500-original-J242-242-mixed-log-source-independent-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf500-original-J242-242-mixed-source-independent-exact-replay
+          path: nf500-original-J242-242-mixed-log-source-independent-exact.json
+          retention-days: 90
