@@ -97,14 +97,17 @@ def selected_ordinary_coeffs(f,k):
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--nf493-native",required=True)
+    ap.add_argument("--nf499-pole",required=True)
     ap.add_argument("--output",required=True)
     opt=ap.parse_args()
     ctx.prec=PREC
     orig,sha=read("notes/data/provisional/NF407_original_fourth_physical_coefficients_native.json")
     seams,s_sha=read("notes/data/provisional/NF406_original_prime_support_partition_exact.json")
     src,nsha=read(opt.nf493_native)
+    source_pole,psha=read(opt.nf499_pole)
     assert sha==SRC and s_sha==SEAM
     assert src["pass"]=="NF493-original-source-400-log-jets"
+    assert source_pole["pass"]=="NF499-pole" and source_pole["original_nf407_source_sha256"]==SRC
     assert src["original_nf407_source_sha256"]==SRC
     assert src["original_nf406_seams_sha256"]==SEAM
     assert src["original_native_precision_bits"]==PREC
@@ -205,8 +208,9 @@ def main():
     # accepted; this anchored same ORIGINAL 4096-bit source-checks
     # no accidental half-collar or wrong parity.
     pole_lo,pole_hi=map(F,values[241]["original_true_raw_log_source_moment_outward"])
-    ref_pole=F("7.884761829535353599298005089969162e-13")
-    assert pole_lo<ref_pole<pole_hi
+    prior_pole_lo,prior_pole_hi=map(F,source_pole["original_true_raw_log_carrier_selected_pole_moment_outward"])
+    assert pole_lo<=prior_pole_hi and prior_pole_lo<=pole_hi, "METHOD STOP NF500 complete original selected pole disagrees with independently accepted NF499 exact Fraction moment"
+    assert F("7.88476182953535359929e-13")<prior_pole_lo<=prior_pole_hi<F("7.88476182953535359931e-13")
     assert pole_hi-pole_lo<F(1,10**70)
     assert pole_lo>F(0)
     phi_lo,phi_hi=map(F,values[241]["original_true_smooth_phi_selected_moment_outward"])
@@ -217,6 +221,7 @@ def main():
        "original_nf407_source_sha256":SRC,
        "original_nf406_seams_sha256":SEAM,
        "original_source_original_nf493_4096bit_full_400_U_native_json_sha256":nsha,
+       "original_original_nf499_independently_exact_pole_moment_sha256":psha,
        "original_selected_basis_242_raw_index_order":rows,
        "original_selected_242_odd_source_full_two_collar_basis_moments_outward":values,
        "original_source_accepted_raw_400_U_normalized_l1_upper":str(l1),
@@ -228,7 +233,7 @@ def main():
        "original_source_smoothing_log_carrier_to_phi_all_242_selected_row_abs_fee":str(SMOOTH_FEE),
        "original_native_source_precision_bits":PREC,
        "original_actual_source_original_true_sinh_pole_index":241,
-       "original_selected_pole_source_anchored_NF499_original_true_value":str(ref_pole),
+       "original_selected_pole_source_anchored_NF499_original_true_interval":[str(prior_pole_lo),str(prior_pole_hi)],
        "original_242_selected_mixed_moments_computed":True,
        "original_full_original_selected_242_Gram_inverse_computed":False,
        "original_full_P_J_phi_power_computed":False,
@@ -240,7 +245,7 @@ def main():
     }
     p=Path(opt.output);p.parent.mkdir(parents=True,exist_ok=True)
     p.write_text(json.dumps(result,indent=2)+"\n")
-    print("NF500 ALL 242 original raw selected log moments SOURCE NATIVE 4096bit completed, pole anchor",str(ref_pole),flush=True)
+    print("NF500 ALL 242 original raw selected log moments SOURCE NATIVE 4096bit completed, original independent pole anchor verified",flush=True)
     print("NF500 original smooth selected phi 242 moments outward fee 1e-28 each; full Q_J projector/Weil eligibility OPEN",flush=True)
 if __name__=="__main__":
     main()
