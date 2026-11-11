@@ -126,7 +126,7 @@ def main():
     rows=native["original_selected_242_odd_source_full_two_collar_basis_moments_outward"]
     assert len(rows)==242
     assert native["original_native_source_precision_bits"]==4096
-    assert native["original_each_raw_selected_moment_analytic_plus_original_dyadic_overcharge"]=="1/1000000000000000000000000000000000000000000000000000000000000000000000000000"
+    assert F(native["original_each_raw_selected_moment_analytic_plus_original_dyadic_overcharge"])==F(1,10**75)
     assert F(native["original_source_smoothing_log_carrier_to_phi_all_242_selected_row_abs_fee"])==F(1,10**28)
     assert native["original_full_original_selected_242_Gram_inverse_computed"] is False
     assert native["original_true_Q_J_w_against_Q_J_phi_capture_computed"] is False
