@@ -1,0 +1,42 @@
+name: NF498 original actual J8 endpoint log-carrier rank-one Schur trial and source-domain gate
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-source-terminal-log-carrier-exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42866700605
+          name: nf494-original-J8-whole-physical-square-independent-exact-source
+          path: accepted-original-nf495
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42786421931
+          name: nf493-original-J8-physical-source-log-square-exact
+          path: accepted-original-nf493
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42873057627
+          name: nf496-original-J242-center-invariant-residual-source-exact
+          path: accepted-original-nf496
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: True original NF407 all-source full J8 2-collar odd log carrier, independent NF493/495/496 SHA/covariance and exact rank-one L2 Gram Schur capture, endpoint H1 eligibility STOP
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf498_original_terminal_log_carrier_rankone_and_domain_exact.py --nf495-raw accepted-original-nf495/nf494-original-J8-complete-joint-physical-square-source-exact.json --nf493-raw accepted-original-nf493/nf493-original-J8-pure-Ulog-square-source-exact.json --nf496-raw accepted-original-nf496/nf496-original-source-center-invariant-complement-exact.json --output nf498-original-odd-terminal-log-carrier-physical-rankone-source-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf498-original-endpoint-log-carrier-rankone-domain-exact
+          path: nf498-original-odd-terminal-log-carrier-physical-rankone-source-exact.json
+          retention-days: 90
