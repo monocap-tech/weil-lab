@@ -162,6 +162,7 @@ def main():
     endpoint_log_coeff=v/2
     collar_asymptotic_norm_coefficient=v.sq()/2
     assert endpoint_log_coeff.hi<0 and collar_asymptotic_norm_coefficient.lo>0
+    assert F("6.8209e-23")<collar_asymptotic_norm_coefficient.lo<=collar_asymptotic_norm_coefficient.hi<F("6.8211e-23")
     assert positive_gram_controls()==8
 
     # *Every* source subcomponent from original NF495 native 400 H/U:
@@ -247,6 +248,9 @@ def main():
       "original_Q_J_w_endpoint_log_leading_coefficient_v_over2_outward":endpoint_log_coeff.raw(),
       "original_Q_J_w_endpoint_q_over_log_limit_equals_v_over2":True,
       "original_Q_J_w_endpoint_d_times_q_prime_limit_equals_v_over2":True,
+      "original_Q_J_w_two_endpoint_collars_squared_norm_over_eta_log_squared_limit_v_squared_over2_outward":collar_asymptotic_norm_coefficient.raw(),
+      "original_Q_J_w_two_endpoint_collars_squared_norm_over_eta_log_squared_limit_decimal":collar_asymptotic_norm_coefficient.decimal(44),
+      "original_endpoint_singularity_means_no_positive_fixed_collared_mass_floor_as_eta_to_zero":True,
       "original_Q_J_w_is_L2_but_unbounded_and_not_H1":True,
       "original_any_finite_entire_selected_source_enlargement_captures_q_exactly":False,
       "original_odd_log_carrier_definition":"ell(x)=sgn(x)*1_{B-1/500<abs(x)<B}*U(abs(x))/2*log(B/(B-abs(x)))",
@@ -285,6 +289,7 @@ def main():
     print("NF498 ACTUAL original J8 log-only explicit carrier optimal scalar",*opt_scalar.decimal(30),flush=True)
     print("NF498 genuine original two-collar rank-one terminal capture %",*[float(x*100) for x in (fraction.lo,fraction.hi)],flush=True)
     print("NF498 genuine one-collar residual after optimal raw log-carrier",*[float(x) for x in (remainder.lo,remainder.hi)],flush=True)
+    print("NF498 genuine J242-perp source endpoint limiting two-collar norm coefficient v^2/2",*collar_asymptotic_norm_coefficient.decimal(30),flush=True)
     print("NF498 source log-carrier and q are L2, NOT H1; true Q_J candidate coupling NOT computed, RH OPEN",flush=True)
 
 if __name__=="__main__":
