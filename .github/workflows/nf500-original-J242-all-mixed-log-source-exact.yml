@@ -1,0 +1,70 @@
+name: NF500 original 242 selected old J242 full physical Ulog mixed moments exact native
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-full-242-4096bit-selected-source-moments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42786421931
+          name: nf493-original-J8-400-true-source-log-jets-4096bit
+          path: accepted-original-nf493
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43053547666
+          name: nf499-original-J242-pole-smooth-log-selected-source-moment-exact
+          path: accepted-original-nf499-pole
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install python-flint==0.8.0
+      - name: Source-native 4096bit genuine original NF407 all 242 selected raw odd oscillators versus source actual U(B-d) L2 entire J8 true two-collar improper logarithmic carrier, basis 220 term and 400 U dyadic
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/nf500_original_J242_full_smooth_log_mixed_source_native.py --nf493-native accepted-original-nf493/nf493-original-J8-400-real-source-log-jets-native.json --nf499-pole accepted-original-nf499-pole/nf499-original-selected-J242-pole-smooth-log-source-moment-exact.json --output nf500-original-J242-all-selected-smooth-source-moments-native.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf500-original-J242-full-selected-log-mixed-native
+          path: nf500-original-J242-all-selected-smooth-source-moments-native.json
+          retention-days: 90
+  independent-original-Fraction-source-cross-moment:
+    needs: [original-full-242-4096bit-selected-source-moments]
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf500-original-J242-full-selected-log-mixed-native
+          path: original-nf500-native
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42786421931
+          name: nf493-original-J8-400-true-source-log-jets-4096bit
+          path: accepted-original-nf493
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43053547666
+          name: nf499-original-J242-pole-smooth-log-selected-source-moment-exact
+          path: accepted-original-nf499-pole
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independent actual original NF407/NF406 immutable selected 242 source row exact rational, separate Machin pi and original sin/cos index 0/1, NF499 independently exact pole index 241 controls, outward smoothing interval
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf500_original_J242_all_smooth_log_moments_source_exact.py --native original-nf500-native/nf500-original-J242-all-selected-smooth-source-moments-native.json --nf493-native accepted-original-nf493/nf493-original-J8-400-real-source-log-jets-native.json --nf499-pole accepted-original-nf499-pole/nf499-original-selected-J242-pole-smooth-log-source-moment-exact.json --output nf500-original-J242-all-selected-mixed-moments-independent-source-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf500-original-J242-all-selected-mixed-moments-independent-exact
+          path: nf500-original-J242-all-selected-mixed-moments-independent-source-exact.json
+          retention-days: 90
