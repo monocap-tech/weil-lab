@@ -1,6 +1,6 @@
 # NF500 — The complete original 242 selected mixed moments of a genuinely smooth J8 logarithmic collar
 
-**November 11, 2026 PT. Original source-native complete 242 moment algorithm submitted for independent verification; numerical promotion is strictly conditional on focused GitHub CI SUCCESS.** Stacked on scoped source-accepted NF499 PR #527. This is genuine advancement from one selected pole moment to all **242 raw selected odd physical J242 moments**. It is not an inverse-242-Gram certificate, a proof of admissible inverse Weil multiplier source, or a full Q_J capture measurement. No main merge.
+**November 11, 2026 PT. Original all-242 native moment computation SOURCE-NATIVE SUCCESS on [GitHub Actions #43063534898](https://github.com/monocap-tech/weil-lab/actions/runs/43063534898), native job #130672249336, full original source moment native artifact #13875600356. Independent exact source auditing remains a separate promotion obligation.** Stacked on scoped source-accepted NF499 PR #527. This is genuine advancement from one selected pole moment to all **242 raw selected odd physical J242 moments**. It is not an inverse-242-Gram certificate, a proof of admissible inverse Weil multiplier source, or a full Q_J capture measurement. No main merge.
 
 ## Actual original-source state and the open projection
 
@@ -114,10 +114,24 @@ The independent auditor does **not** independently recompute all 239 other trigo
 
 ## Standing and promotion condition
 
-**NF500 result pending the two-stage focused GitHub CI.** Only if BOTH the native original 242 selected-source generation and the independent source/Fraction audit pass can the **full original 242 raw and smooth mixed moment intervals** be promoted. Failure due a mismatch will be reported as a source/method stop and fixed only after tracing the actual original source; no promotion by assumption.
+**NF500 native stage passed.** The authentic original all-242 4096-bit source-native numerical file was independently preserved by GitHub Actions #43063534898 / artifact #13875600356. A separate fixed-artifact independent SHA/Fraction-custody + 110-decimal Machin real-trig audit has been staged to replay this **immutable successful native artifact** without regenerating it (rather than relying on the earlier very slow naive unrounded Fraction 8800-pair original audit). Until the independent focused job passes, call the full 242 intervals **source-native computed, independent acceptance pending**, not accepted. Failure due a mismatch will be reported as a source/method stop and fixed only after tracing the actual original source; no promotion by assumption.
 
 Even after acceptance, these intervals alone **do not** provide \(\|Q_J\phi_\varepsilon\|^2\) or the full \(\langle Q_Jw,Q_J\phi_\varepsilon\rangle\). They must be combined with the original accepted **Gram/frame** and old \(c_w\) data with rigorous correlated interval linear algebra. Nor does odd \(C_c^\infty\) *physical* regularity by itself prove membership of the original Weil source multiplier-image/whole operator graph domain.
 
 **Next bold NF501:** transform these source-native new original 242 raw moments into the exact historical original NF400/401 authentic selected frame, compute \(\|P_J\phi_\varepsilon\|^2\) and \(\langle P_Jw,P_J\phi_\varepsilon\rangle\) without using NF484's detached analytic image Gram; then certify the true whole supported \(Q_J\) capture against NF497's >99.96749% necessary criterion. Separately audit \(C_c^\infty\) physical function vs admissible original Weil multiplier test/source-range and full even/odd graph domain.
 
 W-ODD-NEG, exterior J242 alternative eligible projector, whole even/odd Weil operator/domain, RH remain OPEN. No main merge.
+
+### Actual source-native diagnostic output (not yet full Q projection)
+
+The original all-242 output contains 242 actual source-native signed moment intervals, preserving original NF407 selected raw index/frequency/order. Representative original raw two-collar moments:
+
+| Original selected index | Actual original raw basis function | Source-native moment, approximate |
+|---|---|---:|
+| 0 | \(\sin(2\pi(37/64)x)\) | \(-1.02525854264101154\times10^{-12}\) |
+| 1 | \(x\cos(2\pi(37/64)x)\) | \(-9.91093315050687125\times10^{-13}\) |
+| 14 | \(\sin(2\pi(211/128)x)\) | \(-1.26636567684459218\times10^{-12}\) |
+| 15 | \(x\cos(2\pi(211/128)x)\) | \(+5.61526752077018534\times10^{-13}\) |
+| 241 | \(\sinh(x/2)\) | \(+7.88476182953535360\times10^{-13}\) |
+
+These are original-source native numbers from the actual successful artifact, not free parameters. An independently implemented 110-digit rational-Machin/real-trig local spot check agrees with original source-native indices 0 and 1 well within the independently charged \(10^{-70}\) error, and the index-241 source moment overlaps already accepted NF499. The **GitHub** independent re-audit is still the formal promotion gate. The existence of many nonzero selected cross-moments establishes that the new smooth direction is **not** already orthogonal to old \(J_{242}\), but says nothing about the full normalized \(Q_J\) capture without the original selected Gram/frame.
