@@ -1,0 +1,53 @@
+{
+  "pass": "NF498",
+  "date": "2026-11-11 PT",
+  "standing": "ORIGINAL SOURCE-EXACT SCOPED ACCEPTED: genuine J8 terminal one-direction original U log carrier L2 pilot, NOT same as J242-perpendicular new projector capture; no RH theorem",
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "source_generators_selected": 242,
+  "source_generators_critical": 4,
+  "source_frequency_order_modes": 273,
+  "actual_odd_two_terminal_collars_source_carrier": "ell_U(x)=sgn(x)*1_{B-1/500<abs(x)<B}*U(abs(x))/2*log(B/(B-abs(x)))",
+  "source_native_complete_odd_J8_physical_w": "H(B-|x|)+v*C8+U(|x|)/2*log(B/(B-|x|)), odd extension on terminal",
+  "source_actual_e_log_squared_norm_positive_collar": "original NF493 exact E_log, separately source interval checked after NF495 all-400 native coefficient and analytic tails",
+  "source_actual_rank_one_optimal_scalar_strict_interval": [
+    "-0.432544036603229106579658",
+    "-0.432544036603229106579656"
+  ],
+  "source_actual_terminal_one_collar_capture_strict_interval": [
+    "5.98533346694936039909018476740075e-23",
+    "5.98533346694936039909018476740077e-23"
+  ],
+  "source_actual_terminal_one_collar_residual_strict_interval": [
+    "1.15866245494538204842410270202484e-22",
+    "1.15866245494538204842410270202486e-22"
+  ],
+  "source_actual_terminal_one_collar_capture_fraction_strict_interval": [
+    "0.34061847071123969291356521400628",
+    "0.34061847071123969291356521400630"
+  ],
+  "source_actual_terminal_one_collar_residual_fraction_percent_approx": "65.938152928876%",
+  "source_source_component_cross_correlation_sign": "strictly negative",
+  "original_true_U_B_nonzero_and_negative_native_NF411": true,
+  "original_Q_Jw_endpoint_leading_log_coefficient": "U(B)/2 != 0",
+  "original_Q_Jw_L2_but_not_H1_and_not_bounded": true,
+  "original_log_carrier_L2_but_not_H1_and_not_original_242_entire_source": true,
+  "original_Q_J_log_carrier_full_selected_242D_cross_moment_computed": false,
+  "original_Weil_domain_admissibility_of_log_carrier": "NOT ESTABLISHED",
+  "original_full_selected_NF404_certificate": "CERTIFIED FAIL (NF495-497 prior)",
+  "full_J242_Q_projection_capture": "OPEN / NOT measured",
+  "whole_even_odd_Weil_operator_domain": "OPEN",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "source_exact_verifier": "scripts/local_replay/verify_nf498_original_terminal_log_carrier_rankone_and_domain_exact.py",
+  "initial_independent_source_CI": {
+    "run_id": 43026495480,
+    "job_id": 130542412922,
+    "conclusion": "success",
+    "artifact_id": 13857841310,
+    "artifact_file": "nf498-original-odd-terminal-log-carrier-physical-rankone-source-exact.json",
+    "artifact_json_sha256": "350593d08381d7b9a1a80f25e2cbc30ead1d3b529fcc977f390eebd50785c569"
+  },
+  "additional_projector_invariant_end_collar_mass_v_squared_over2": "ANALYTICALLY DERIVED, supplemental latest GitHub CI pending",
+  "next_bold": "NF499: explicitly smooth source-domain candidate plus selected J242 cross-moments and actual Q_J capture; never infer whole J242 success from terminal-only rank-one ratio"
+}
