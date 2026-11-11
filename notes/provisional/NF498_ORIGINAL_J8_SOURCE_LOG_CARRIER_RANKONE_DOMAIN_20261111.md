@@ -126,6 +126,18 @@ Since \(U(B)=v\neq0\),
 \]
 Thus \(q\) is a legitimate supported **\(L^2\)** Hilbert response, but it is **unbounded and NOT in \(H^1([-B,B])\)**. The concrete \(\ell_U\) carries the same leading endpoint singularity; it is also \(L^2\), unbounded, not \(H^1\), and has a jump at the inner-collar boundary because its diagnostic definition uses a sharp indicator.
 
+The same asymptotic gives a **source-specific, projector-independent original physical endpoint mass law**. For every finite selected subspace of bounded analytic original-style generators (including J242 and finite analytic enlargements), oddness and exact logarithmic moment integration yield
+\[
+\boxed{
+\lim_{\eta\downarrow0}
+\frac{\int_{\{B-\eta<|x|<B\}} |Q_Jw(x)|^2\,dx}
+{\eta\,\log^2(B/\eta)}
+=\frac{v^2}{2}
+\approx6.82096172636911010499\times10^{-23}>0.
+}
+\]
+The constant comes from the **source-certified original NF411 endpoint \(U(B)\)**, not a free log coefficient. To prove the limit, write \(d=\eta t\) and \(q(B-d)=(v/2)\log(B/d)+O(1)+O(d\log d)\); exact integrability of \(\log^2(1/t)\) on \((0,1)\) and dominated convergence give the positive-end coefficient \(v^2/4\); oddness doubles it. This proves every finite smooth-source selected enlargement retains the same **asymptotic singularity class** but does **not** produce a positive fixed-width norm obstruction by itself, because \(\eta\log^2(B/\eta)\to0\). Therefore it cannot be used to declare the NF404 finite positive \(\gamma\) budget impossible for all such enlargements. Source-exact numerical verification checks the real original \(v^2/2\) Fraction interval.
+
 This rigorously excludes both \(q\) and \(\ell_U\) from the ORIGINAL finite analytic-generator \(J_{242}\) class, and shows that no finite enlargement using only additional **bounded \(C^1\) physical generators** can capture the singular \(q\) **exactly**. It does not exclude arbitrarily good \(L^2\) approximation by smoother source-admissible vectors or show that the desired **positive nonzero** \(\gamma\) budget is impossible. Nor is \(q\notin H^1\) automatically a theorem about the full Weil quadratic-form domain, whose exact assumptions must be checked independently.
 
 In particular, **adding \(q\) itself as a convenient 243rd selected direction is a circular Hilbert-space oracle**, not a constructed eligible source direction. Adding the explicit singular carrier \(\ell_U\) likewise does not automatically satisfy a \(C_c^\infty\), Paley–Wiener, Fourier-lowband, or full Weil operator/domain condition. A genuinely new smooth test candidate must first be constructed and verified in the correct source domain, *then* subjected to the actual 242D projected cross-moments and full \(q\)-capture test.
