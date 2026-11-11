@@ -178,3 +178,68 @@ Further, although \(\phi_\varepsilon\in C_c^\infty((-B,B))\) and \(f(y)=\phi_\va
 **Standing:** This genuinely improves NF498 by **constructing a source-tied smooth compactly supported nonzero odd physical candidate with certified terminal energy capture**, while explicitly locating the still-unmeasured original 242D projection/domain eligibility obligations. It is not a successful NF404 alternative certificate and not RH.
 
 **Next bold NF500:** compute the genuine 242 original selected mixed moments of \(\phi_\varepsilon\), or replace it by an equally explicit source-admissible candidate whose original multiplier image and domain can be independently validated. Then calculate the actual \(|\langle Q_Jw,Q_J\phi\rangle|^2/\|Q_J\phi\|^2\) and compare with NF497's source-certified \(>99.96749\%\) requirement. W-ODD-NEG, exterior \(J_{242}\), full even/odd Weil operator-domain and RH remain OPEN. No main merge.
+
+
+## Actual first old-\(J_{242}\) mixed moment: the authentic original selected odd pole
+
+The smooth source-derived candidate is **not** orthogonal to the original selected space. NF499 now computes the first actual original selected cross-moment rather than leaving all 242 of them as theoretical obligations.
+
+The original \(242\)th selected generator (zero-based index 241) is the genuine source pole \(s(x)=\sinh(x/2)\), with exact original physical squared norm
+\[
+\|s\|_{L^2([-B,B])}^2=\sinh(B)-B.
+\]
+Using oddness and the genuine two collars,
+\[
+\boxed{
+m_s=\langle s,\ell_U\rangle
+=\int_0^\delta U(B-d)\sinh((B-d)/2)\log(B/d)\,dd.
+}
+\]
+This is a **single real continuous source-original signed moment**, not a separately normalized invented sample or new lowband test. It uses exactly the original 400 source-native NF493 \(U(B-d)\) coefficient interval balls, already independently SHA-accepted. For \(t=d/\delta\), put \(a_n=u_n\delta^n\), and use
+\[
+\sinh((B-\delta t)/2)
+=\sum_{k=0}^\infty
+\frac{(-\delta/2)^k t^k}{k!}
+\begin{cases}
+\sinh(B/2),&k\ {\rm even},\\
+\cosh(B/2),&k\ {\rm odd}.
+\end{cases}
+\]
+Then the exact original moment reduces to the **improper logarithmic analytic moment**
+\[
+\boxed{
+m_s=\delta
+\sum_{n,k\ge0}
+a_n\frac{(-\delta/2)^k}{k!}S_k
+\left(\frac{\log550}{n+k+1}+\frac1{(n+k+1)^2}\right),
+}
+\]
+with the \(S_k\) original pole hyperbolic values.
+
+The independent source verifier uses: **110 actually measured original NF493 \(U\)-coefficients**, a rigorously paid original remaining 290 source-native coefficient \(\ell^1\) tail plus the NF493 infinite 400-jet analytic Cauchy bound, **20 exact-rational pole Taylor coefficients** with rigorous \(\le 3(\delta/2)^{20}/20!\) remainder, **100-term rational hyperbolic Taylor positive remainders**, and an **independent 130-term positive \(\operatorname{atanh}\)** enclosure of \(\log550=9\log2+\log(275/256)\). The entire physical moment error from omitted original source and hyperbolic Taylor terms is \(<2.523\times10^{-81}\), aside from the already retained raw coefficient input uncertainty.
+
+A standalone exact-Fraction local replay gave the true original selected pole moment
+\[
+\boxed{
+m_s\approx+7.88476182953535359929800508996916\times10^{-13}.
+}
+\]
+The submitted focused independent GitHub source-verification must **PASS** before promoting this new mixed-moment value. It is source-signed, not arbitrary.
+
+For the actual new smooth \(\phi_\varepsilon\), the already independently source-accepted smoothing bound \(\|\phi_\varepsilon-\ell_U\|<10^{-29}\) and the original certified \(\|s\|<1\) imply
+\[
+|\langle s,\phi_\varepsilon\rangle-m_s|<10^{-29}.
+\]
+Thus after independent source verification the **actual smooth** selected moment must be **strictly positive**, and the genuine old-\(J_{242}\) projection satisfies
+\[
+\boxed{
+\|P_{J_{242}}\phi_\varepsilon\|^2
+\ge\frac{|\langle s,\phi_\varepsilon\rangle|^2}{\|s\|^2}
+>2.63\times10^{-24}.
+}
+\]
+For comparison, since \(\|\phi_\varepsilon\|<2.53\times10^{-11}\), **more than 0.41% of its own energy lies in this ONE original selected direction**. This means that treating \(\phi_\varepsilon\) as already orthogonal to the old 242-dimensional selected span would make a specific mathematically false assertion. Its original pole overlap must be subtracted before discussing \(\|Q_J\phi_\varepsilon\|\).
+
+**Important boundary:** the other 241 original mixed generator moments \(\langle j_i,\phi_\varepsilon\rangle\) have **not** been computed, and neither has the complete original whole-support \(\langle Q_Jw,Q_J\phi_\varepsilon\rangle\). One nonzero old-selected-pole moment is meaningful progress toward an exact new projection but **does not decide** the NF497 99.96749% whole-perpendicular capture threshold. Full original Weil multiplier-range and operator-domain eligibility remain OPEN.
+
+**Numerical promotion:** the first independent NF499 exact-smooth terminal physical-capture workflow [#43052037962 SUCCESS](https://github.com/monocap-tech/weil-lab/actions/runs/43052037962), job #130631487452, true raw exact source artifact #13870515912 is **ACCEPTED SCOPED**. The *new second job* evaluating the selected-pole cross-moment is independently PENDING until its focused GitHub CI succeeds.
