@@ -1,7 +1,7 @@
 {
-  "pass": "NF500-native",
+  "pass": "NF500",
   "date": "2026-11-11 PT",
-  "standing": "ORIGINAL ALL 242 TRUE SOURCE SELECTED J242 TO SMOOTH J8 LOG COLLAR MOMENTS COMPUTED IN SOURCE-NATIVE 4096bit; INDEPENDENT GH CI VERIFICATION PENDING, full Q_J capture and Weil source/operator eligibility OPEN",
+  "standing": "ORIGINAL SOURCE-EXACT SCOPED ACCEPTED: complete 242 original J242 raw and smooth physical log-collar source moments native 4096bit GitHub + independent exact Fraction Machin indices0/1 and accepted pole241, all 242 SHA/shape/tail checks. Full Q_J projector and Weil multiplier-image/whole graph domain remain OPEN.",
   "original_nf407_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
   "original_nf406_seam_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
   "original_source_generators_selected": 242,
@@ -29,12 +29,19 @@
   "original_source_native_artifact_id": 13875600356,
   "original_source_native_artifact_name": "nf500-original-J242-full-selected-log-mixed-native",
   "original_source_native_raw_json_sha256": "7e261d540c8b658bced4b44d1bf998c23ef7f975fc07daa0f30ae6438dcffb05",
-  "original_independent_exact_source_Machin_first2_and_original_pole_verification": "PENDING",
+  "original_independent_exact_source_Machin_first2_and_original_pole_verification": "SUCCESS, independent exact Fraction originals 0,1 and 241 anchors, SHA and all 242 source shape/custody",
   "original_242D_Gram_frame_solve_computed": false,
   "original_actual_full_support_Q_Jw_Q_Jphi_capture_computed": false,
   "original_smooth_test_original_Weil_multiplier_source_range_and_graph_domain": "OPEN",
   "original_fixed_NF404_selected_sufficient_certificate": "CERTIFIED FAIL",
   "W_ODD_NEG": "OPEN",
   "RH": "OPEN",
-  "next_bold": "NF501 exact accepted old 242D selected Gram/frame + native 242 smooth cross moments -> actual full Q_Jw capture and source/domain eligibility"
+  "next_bold": "NF501 exact accepted old 242D selected Gram/frame + native 242 smooth cross moments -> actual full Q_Jw capture and source/domain eligibility",
+  "original_independent_github_run": 43063534898,
+  "original_independent_job_id": 130674117529,
+  "original_independent_job_conclusion": "success",
+  "original_independent_raw_artifact_id": 13875237047,
+  "original_independent_raw_json_sha256": "8f29c190554cb6ae3c835c41cf5ef346ec25fb804e2eb71f40324803a4c0bc53",
+  "original_source_native_original_242_mixed_moments_source_accepted": true,
+  "original_independently_native_recomputed_all_242_sin_cos_values": false
 }
