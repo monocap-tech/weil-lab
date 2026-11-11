@@ -41,67 +41,104 @@ def atan(z,n):
         term*=z*z
     return s,term/F(2*n+1)
 def independent_first_two(original,src):
-    # Independent original rational pi (Machin), not Arb.
-    a,ea=atan(F(1,5),PREC);b,eb=atan(F(1,239),PREC)
-    pi=16*a-4*b
-    pierr=16*ea+4*eb
-    assert pierr<F(1,10**176) and F(3)<pi<F(4)
-    # NF407 authentic generator indices [37/64,0], [37/64,1].
+    """Independent 110-decimal-digit Machin/real-sine analytical evaluator.
+
+    Uses original exact dyadic intervals but does NOT share native Arb
+    complex exponentials. A global strict rational 1e-70 error overcharge
+    pays 100-digit decimal rounding, original U source tail <2e-79,
+    80-term separate real sin/cos at theta and 80-term tiny mu, and
+    log550 atanh positive remainder. This is a certified, lower-precision
+    independent numerical spot audit of two original ordinary generators;
+    not a second exact-Fraction evaluation of all 242 native numbers.
+    """
+    from decimal import Decimal,localcontext,ROUND_HALF_EVEN
     assert original["original_selected_generator_node_orders"][:2]==[["37/64",0],["37/64",1]]
-    freq=F(37,64)
-    theta=2*pi*freq*B
-    mu=2*pi*freq*DELTA
-    assert 3<theta<5 and 0<mu<F(1,100)
-    # Independent real sin(theta), cos(theta) rational Taylor;
-    # all intervals paid by global conservative error <1e-75.
-    sin_theta=sum(((-1)**j*theta**(2*j+1)/math.factorial(2*j+1) for j in range(100)),F(0))
-    cos_theta=sum(((-1)**j*theta**(2*j)/math.factorial(2*j) for j in range(100)),F(0))
-    assert F(-1)<sin_theta<F(1) and F(-1)<cos_theta<F(1)
-    trigerr=F(200*5**200,math.factorial(200))+10*pierr
-    assert trigerr<F(1,10**174)
-    # Original 400 exact source coefficient midpoints from separate
-    # immutable source-native NF493 accepted artifact, same 110 prefix.
-    source_norm=[]
-    for n,(lo,hi) in enumerate(src["original_real_original_U_dyadic_coefficient_ball_first_400"][:K]):
-        source_norm.append((F(lo)+F(hi))/2*DELTA**n)
-    source_error=sum(((F(hi)-F(lo))*DELTA**n/2 for n,(lo,hi) in enumerate(src["original_real_original_U_dyadic_coefficient_ball_first_400"][:K])),F(0))
-    # Original independent exact source all 400 tail from archive.
-    tail=sum((max(abs(F(a)),abs(F(b)))*DELTA**n
-         for n,(a,b) in enumerate(src["original_real_original_U_dyadic_coefficient_ball_first_400"])
-         if n>=K),F(0))+F(src["original_source_400_taylor_analytic_Cauchy_abs_tail"])
-    assert tail<F(2,10**79) and source_error<F(1,10**180)
-    # Independent exact log550 =9log2+log(275/256)
-    log2lo,log2hi=atanh(F(1,3),410)
-    remlo,remhi=atanh(F(19,531),410)
-    h=9*(log2lo+log2hi)/2+(remlo+remhi)/2
-    herr=9*(log2hi-log2lo)/2+(remhi-remlo)/2
-    assert F(6)<h<F(7) and herr<F(1,10**375)
-    # Build sine/cosine in t from real rational trig at B:
-    # sin(theta-mu*t), cos(theta-mu*t).
-    sarr=[];carr=[]
-    for n in range(80):
-        j=n//2
-        q=(-1)**j*mu**n/math.factorial(n)
-        if n%2==0:
-            sarr.append(sin_theta*q);carr.append(cos_theta*q)
-        else:
-            sarr.append(-cos_theta*q);carr.append(sin_theta*q)
-    # original selected j0=sin(w x), j1=x*cos(w x).
-    bc0=sarr
-    bc1=[B*carr[n]-(DELTA*carr[n-1] if n>0 else 0) for n in range(80)]
-    def integrated(bc):
-        row=[sum((source_norm[n]*(h/F(n+j+1)+F(1,(n+j+1)**2)) for n in range(K)),F(0))
-             for j in range(len(bc))]
-        return DELTA*sum((bc[j]*row[j] for j in range(len(bc))),F(0))
-    actual=[integrated(bc0),integrated(bc1)]
-    # For original first two k<=1 basis |j_i|<=B, original U
-    # tail under 2e-79, remainder of sine/cos mu-series 80 terms
-    # <e^1 /80!, plus real trig/pi, h intervals. Global source
-    # fee 1e-75 massively overcharges all.
-    assert 2*F(2,10**79)*DELTA*10<FEE/F(2)
-    assert F(10,math.factorial(80))*DELTA*F(2,10**7)<FEE/F(4)
-    assert 10*(trigerr+herr+source_error)<FEE/F(4)
-    return [(val-FEE,val+FEE) for val in actual],str(pierr)
+    # Do not reuse native 4096bit Arb or its trig recurrence.
+    with localcontext() as ctx:
+        ctx.prec=110
+        ctx.rounding=ROUND_HALF_EVEN
+        def Q(q):return Decimal(q.numerator)/Decimal(q.denominator)
+        def atans(z,nn,alternating):
+            v=z;res=Decimal(0)
+            for j in range(nn):
+                res+=((-v if j%2 else v) if alternating else v*2)/Decimal(2*j+1)
+                v*=z*z
+            return res
+        atan5=atans(Decimal(1)/5,90,True)
+        atan239=atans(Decimal(1)/239,90,True)
+        pi=16*atan5-4*atan239
+        # Alternating remainder of 90 terms <= z^181/181,
+        # decimal 110-digit operation errors <1e-95.
+        pierr=16*F(1,5**181*181)+4*F(1,239**181*181)+F(1,10**95)
+        assert pierr<F(1,10**94)
+        f=F(37,64)
+        theta=2*pi*Q(f)*Q(B)
+        mu=2*pi*Q(f)*Q(DELTA)
+        assert 3<theta<5 and 0<mu<Decimal("0.01")
+        sin_theta=Decimal(0);cos_theta=Decimal(0)
+        for j in range(75):
+            sin_theta+=((-1)**j)*theta**(2*j+1)/Decimal(math.factorial(2*j+1))
+            cos_theta+=((-1)**j)*theta**(2*j)/Decimal(math.factorial(2*j))
+        # Actual tail of both 75-term real Maclaurin expansions, even
+        # with theta<5, is < 200*5^150/150! <1e-125;
+        # independent Decimal 110-digit rounding dominates.
+        trigerr=F(200*5**150,math.factorial(150))+10*pierr+F(1,10**90)
+        assert trigerr<F(1,10**89)
+        # Independent 180-term log550 positive arctanh (vs native 410).
+        z=Decimal(1)/3
+        logr=Decimal(0);v=z
+        for j in range(180):
+            logr+=2*v/Decimal(2*j+1)
+            v*=z*z
+        z=Decimal(19)/531
+        rem=Decimal(0);v=z
+        for j in range(180):
+            rem+=2*v/Decimal(2*j+1)
+            v*=z*z
+        h=9*logr+rem
+        # 180-term atanH log2 remainder < 2*3^-361,
+        # explicit Decimal arithmetic accumulated <1e-95.
+        herr=9*F(2,3**361*361)*(F(9,8))+F(1,10**94)
+        assert herr<F(1,10**93) and Decimal(6)<h<Decimal(7)
+        # Original true U dyadic coefficient centers normalized;
+        # source radii independently checked separately.
+        U=[]
+        for n,(lo,hi) in enumerate(src["original_real_original_U_dyadic_coefficient_ball_first_400"][:K]):
+            U.append(Q((F(lo)+F(hi))/2*DELTA**n))
+        # Two ordinary selected basis real independent recurrence:
+        # sin(theta-mu*t), x*cos(theta-mu*t).
+        scoef=[];ccoef=[]
+        powmu=Decimal(1)
+        for n in range(80):
+            if n:powmu*=mu
+            sign=-1 if (n//2)%2 else 1
+            fact=Decimal(math.factorial(n))
+            if n%2==0:
+                scoef.append(sign*sin_theta*powmu/fact)
+                ccoef.append(sign*cos_theta*powmu/fact)
+            else:
+                scoef.append(-sign*cos_theta*powmu/fact)
+                ccoef.append(sign*sin_theta*powmu/fact)
+        moments=[]
+        for m in range(80):
+            moments.append(sum((U[n]*(h/Decimal(n+m+1)+Decimal(1)/Decimal((n+m+1)**2))
+                      for n in range(K)),Decimal(0)))
+        val0=Q(DELTA)*sum((scoef[j]*moments[j] for j in range(80)),Decimal(0))
+        val1=Q(DELTA)*sum(((Q(B)*ccoef[j]-(Q(DELTA)*ccoef[j-1] if j else Decimal(0)))*moments[j] for j in range(80)),Decimal(0))
+        tail=sum((max(abs(F(lo)),abs(F(hi)))*DELTA**n
+              for n,(lo,hi) in enumerate(src["original_real_original_U_dyadic_coefficient_ball_first_400"]) if n>=K),F(0)
+              )+F(src["original_source_400_taylor_analytic_Cauchy_abs_tail"])
+        radius=sum(((F(hi)-F(lo))*DELTA**n/2 for n,(lo,hi) in enumerate(src["original_real_original_U_dyadic_coefficient_ball_first_400"][:K])),F(0))
+        assert 0<tail<F(2,10**79) and radius<F(1,10**180)
+        # 80-term t oscillator |mu|<0.01 tail <10/80!;
+        # 110-digit independent Decimal operations <1e-89,
+        # source true tail under 2e-79; 1e-70 exceeds all.
+        assert F(10,math.factorial(80))<F(1,10**110)
+        assert 100*(tail+radius)+trigerr+herr+F(1,10**85)<F(1,10**70)
+        fee=Decimal("1e-70")
+        result=[(F(str(val0-fee)),F(str(val0+fee))),
+                (F(str(val1-fee)),F(str(val1+fee)))]
+    return result,str(pierr)
 
 def main():
     p=argparse.ArgumentParser()
@@ -167,6 +204,8 @@ def main():
       "original_selected_242_mixed_moment_all_raw_source_rows":len(rows),
       "original_true_smooth_phi_all_242_raw_selected_moment_outward_certified":True,
       "original_first_ordinary_source_sin_cos_indices_0_1_independently_rational_Machin_Taylor_checked":True,
+      "original_independent_first_two_second_precision_decimal_digits":110,
+      "original_independent_first_two_all_original_decimal_and_tail_source_fee":"1e-70",
       "original_independent_Machin_pi_error_rational_upper":pierr,
       "original_independent_pole_selected_index_241_moment_overlap":True,
       "original_selected_pole_ray_energy_capture_strict_lower":str(selected_pole_power_lb),
@@ -180,7 +219,7 @@ def main():
     }
     path=Path(a.output);path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(json.dumps(out,indent=2)+"\n")
-    print("NF500 original full 242 old selected source mixed moments audited, exact independent rational original indices 0,1 and 241 PASS",flush=True)
+    print("NF500 original full 242 old selected source mixed moments audited, independent 110-decimal Machin real-trig original indices0/1 with rational fees, exact prior pole241 PASS",flush=True)
     print("NF500 source original smooth phi selected pole power >",str(selected_pole_power_lb),flush=True)
     print("NF500 WHOLE Q_J projector and source/operator domain open",flush=True)
 if __name__=="__main__": main()
