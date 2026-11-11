@@ -203,3 +203,61 @@ The accepted original NF404 sufficient physical residual gate is only one certif
 ## Independent source receipt / promotion
 
 The independently executed exact rational source verifier completed **SUCCESS**. It checks the entire unmodified original NF407 242+4 dyadic source radius envelope and original NF406 authentic support SHA, consumes the **independently accepted exact raw NF496 J242 physical complement source artifact** #13789998687, checks the exact 223-exponent complex oscillator bound, all Cauchy derivatives, joint compact-source kernel/endpoint source Lipschitz constants, exact improper positive/negative support L² factor 5951, and the NF496 original distance-to-acceptance inequality. Separately, it checks the dimension-free projector capture ratio, actual accepted NF456 two-ray upper, and eight exact rational Hilbert logical countermodels. Original source-exact artifact #13854882350 contains the unrounded Fraction bounds; [concise permanent original custody JSON](../data/provisional/NF497_original_source_dyadic_box_L2_stability_projector_capture_custody.json) pins its SHA, run and job IDs. **This promotes only the scoped original coefficient-uncertainty stability and fixed-gamma projector capture necessities. It does not construct a new admissible source/projector or prove RH.**
+
+
+## C. New quantitative parameter-space criterion for any candidate in the SAME original 246-generator carrier
+
+The tiny original dyadic input uncertainty is not a mathematical restriction on every **different** candidate source. Nevertheless we can now also derive a nontrivial necessary condition for **arbitrary new coefficient values** in the *same 242 selected+four critical original odd-generator shapes*, provided the real physical NF406 seam structure, original NF446 source-to-response operation, same J242 and original gamma are kept fixed. This is a **conditional** necessary criterion, not proof that such a candidate is an admissible Weil-source witness.
+
+Define the actual original generator-weighted real coefficient displacement
+\[
+\boxed{
+N(\Delta c)=
+\sum_{\mathrm{242\,selected\ ordinary}}
+|\Delta c_{f,k}|(B+\tfrac15)^k
++\sum_{i=1}^4|\Delta c_i|
+\left(\sum_{\nu=1}^{32}|a_{i,\nu}|+|b_{i,\sinh}|\right)
++\text{the selected pole displacement}.
+}
+\]
+Here \(a_{i,\nu},b_{i,\sinh}\) are exactly the immutable NF407 critical shape coefficients, not arbitrary invented source modes. The original selected odd sinh pole is counted with its own absolute coefficient, not a nonexistent monomial order. All original real \(\sin,\cos\) generators have frequency \(\omega=2\pi f<6000\), polynomial order \(k\le13\), and the genuine physical \(|x|\le B=11/10 <R_0=B+1/5=13/10\). Direct term-by-term real differentiation—not analytic continuation outside physical support—gives
+\[
+\boxed{
+\|\Delta U\|_\infty\le N,\qquad
+\|\Delta U'\|_\infty<6010N,\qquad
+\|\Delta U''\|_\infty<37,000,000N.
+}
+\]
+Indeed the first derivative weights are at most \(13/R_0+6000=6010\); the second are bounded by \(13\cdot12/R_0^2+2\cdot13\cdot6000/R_0+6000^2<37,000,000\). The original sinh pole and its first two derivatives are all \(<1\) in modulus on \([-B,B]\) (certified by the exact rational exponential inequality \((11/4)^3<2^5\)). This is a **signed-source independent** operator bound, valid for any real coefficient differences in these exact preserved original generator shapes.
+
+Use the authentic original NF446 joint compact physical arch–prime bounds derived in §A:
+\[
+|\Delta z(x)|<
+33N+8(6010N)+37,000,000N
+<38,000,000N,
+\]
+and with the at-most-seven authentic original principal weights
+\[
+|\Delta w(x)|<
+N[40,000,000+\log(2B/(B-x))].
+\]
+The exact physical improper integral yields
+\[
+2B\left(40,000,000^2+4(40,000,000)+5\right)
+<10^{16}.
+\]
+Therefore the genuine ORIGINAL compact supported response map from **this fixed 246-generator coefficient carrier** obeys
+\[
+\boxed{\|\Delta w\|_{L^2([-B,B])}<10^8\,N(\Delta c).}
+\]
+
+By NF496's accepted necessary **physical** difference \(>1.2333\times10^{-11}\), any truly admissible replacement inside the same original carrier that **does** satisfy the unchanged NF404 complement gate must necessarily obey
+\[
+\boxed{
+N(\Delta c)>1.2333\times10^{-19}.
+}
+\]
+
+This new threshold is much weaker than the old dyadic-box exclusion in relative terms, but it is a **genuine explicit coefficient-space displacement requirement**. It does *not* assert that such a source exists, or that an arbitrary coefficient perturbation preserves the original fourth source identities, source admissibility, norm target \(\sigma-H\), the required positivity/negativity condition, or the underlying arithmetic Weil construction. It does not apply to genuinely new generator shapes or a redesigned J/gamma. It also does not replace the stronger, directly certified \(<10^{-528}\) same-old-input-box stability bound.
+
+**Verification standing:** the source-exact independent workflow was rerun after adding this coefficient-space norm corollary; its fresh run must pass before promoting this **additional** bound. The original already-accepted first-run uncertainty-box stability and projector-capture necessities remain accepted on their earlier pinned SHA and successful run.
