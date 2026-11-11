@@ -105,12 +105,12 @@ Each of the 242 native source intervals is widened by exactly this amount for th
 The second CI job independently:
 - SHA-checks the original NF407/NF406 data, all 242 original generator/parity/index identities, the accepted NF493 raw 400-source artifact and original NF499 pole-moment artifact;
 - rederives the genuine original input 110–400 coefficients' exact raw \(\ell^1\) tail and source uncertainties from the original immutable accepted 4096-bit balls;
-- independently calculates **the first two ordinary selected sine/cosine moments** using exact rational \(\pi=16\arctan(1/5)-4\arctan(1/239)\), a **130-term** alternate rational Machin source with rigorous alternating tail, separate **100-term** rational Taylor \(\sin,\cos\) at the true \(x=B\), plus the actual normalized 110 original source coefficients and independent **410-term** rational \(\log550\);
+- independently calculates **the first two ordinary selected sine/cosine moments** using a distinct **110-decimal-place real evaluator**, \(\pi=16\arctan(1/5)-4\arctan(1/239)\) with **90-term** alternating Machin series, separate **75-term** real Taylor \(\sin,\cos\) at the true \(x=B\), plus the actual normalized 110 original coefficient midpoints and **180-term** positive-\(\operatorname{atanh}\) \(\log550\); every independent series tail, original-source coefficient radius, source 110+ tail and Decimal roundoff is overcharged by **exact rational \(10^{-70}\)** per audited integral (not mistaken for an unrounded exact-Fraction evaluation of those two trig sums);
 - verifies those independent rational indices 0 and 1 **overlap** the native original 4096-bit Arb/Acb source intervals, without copying trigonometric values;
-- independently verifies the authentic true **pole index 241** overlaps the already independently exact NF499 original pole physical moment, and that the smooth pole-ray selected energy exceeds \(2.63\times10^{-24}\);
+- independently verifies the authentic true **pole index 241** overlaps the already independently exact-Fraction NF499 original pole physical moment, and that the smooth pole-ray selected energy exceeds \(2.63\times10^{-24}\);
 - checks the other 239 source-native original row intervals against their exact original selected generator shapes, physical smoothing error and strict native/source uniform magnitude and width constraints.
 
-The independent auditor does **not** independently recompute all 239 other trigonometric moments through a second architecture. The claim is precisely **source-native 4096-bit all-242 physical moment computation with selected independent original source spot controls**, not universal 242-way independent exact evaluations.
+The independent auditor does **not** independently recompute all 239 other trigonometric moments through a second architecture. The claim is precisely **source-native 4096-bit all-242 physical moment computation with selected independent source/tail exact-rational controls and two independently rounded real-trig spot checks**, not universal 242-way independent exact evaluations.
 
 ## Standing and promotion condition
 
