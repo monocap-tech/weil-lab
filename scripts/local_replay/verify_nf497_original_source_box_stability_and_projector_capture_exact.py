@@ -39,6 +39,58 @@ def read(p):
     b=Path(p).read_bytes()
     return json.loads(b),hashlib.sha256(b).hexdigest()
 
+def finite_original_carrier_any_coefficient_displacement():
+    """Conditional ORIGINAL 246-generator coefficient-weighted L1 lower.
+
+    For ANY putatively admissible NEW coefficients in the SAME exact
+    242 selected +4 critical odd generator shapes and SAME NF406
+    physical seams, define N=sum |delta c|*(B+1/5)^k, with all four
+    critical shape sine/sinh weights. This is a weighted coefficient
+    norm, not a source admissibility theorem.
+
+    Real physical original source derivative bounds directly, no
+    huge complex continuation images:
+      M0 <= N, M1 <= 6010 N, M2 <= 37e6 N.
+    Joint NF446 physical Lipschitz and one proper log endpoint yields
+      ||delta physical w||_I < 1e8 N.
+    Therefore the SAME NF496 original selected J242/gamma necessary
+    response separation >1.2333e-11 implies
+      N > 1.2333e-19.
+    """
+    R0=B+F(1,5)
+    om=F(6000)
+    # 2*pi*f < 2*(22/7)*883 < 6000, k<=13.
+    assert 2*F(22,7)*883<om
+    first=F(13)/R0+om
+    second=F(13*12)/R0**2+2*F(13)*om/R0+om**2
+    assert first==6010 and second<F(37000000)
+    # Original fixed sinh pole real |sinh(x/2)|<1,
+    # |(sinh(x/2))'|<1 and |(..)''|<1, |x|<=B:
+    # exp(B/2)<exp(3/5)<2 from e<11/4.
+    assert B/F(2)<F(3,5) and F(11,4)**3<2**5
+    # Complete authentic joint compact NF446 arch:
+    # c0 + source small/middle+scalar+tail +7 original
+    # prime regular shifts; v principal adds <=7+L(x).
+    arch_coeff=33+8*6010+37000000
+    assert arch_coeff<38000000
+    whole_point_constant=F(40000000)
+    assert arch_coeff+7<whole_point_constant
+    # 2∫_0^B (A+log(2B/(B-x)))² dx <
+    # 2B(A²+4A+5), by log2<1. Exact rational.
+    factor=2*B*(whole_point_constant**2+4*whole_point_constant+5)
+    assert factor<10**16
+    whole_L2_constant=F(10**8)
+    return {
+       "source_original_entire_246_generator_conditional_weighted_L1_definition":
+        "N=sum_original_selected |delta c_f,k|*(B+1/5)^k + all_four_critical |delta c_i|*[sum32 |shape_sine_coefficients|+|shape_sinh_coefficient|]; original odd poles included",
+       "source_same_original_generator_span_M0_over_weighted_L1_upper":"1",
+       "source_same_original_generator_span_M1_over_weighted_L1_upper":"6010",
+       "source_same_original_generator_span_M2_over_weighted_L1_upper":"37000000",
+       "source_same_original_generator_span_physical_response_L2_over_weighted_L1_strict_upper":str(whole_L2_constant),
+       "source_same_original_generator_span_J242_gamma_repair_requires_weighted_L1_change_gt":"1.2333e-19",
+       "source_same_generator_span_new_candidate_admissibility_verified":False
+    }
+
 def source_box_stability(source):
     """Exact FULL ORIGINAL raw dyadic uncertainty -> physical response Lipschitz."""
     original_abs,original_radius,original_pole=original_source_envelope(source)
@@ -185,10 +237,12 @@ def main():
     assert nf496["W_ODD_NEG"]==nf496["RH"]=="OPEN"
     assert nf496["original_J242_perpendicular_squared_norm_definition"].startswith("||Q_J w||^2")
     stability=source_box_stability(src)
+    conditional_norm=finite_original_carrier_any_coefficient_displacement()
     required=F(nf496["original_new_physical_supported_response_L2_displacement_REQUIRED_if_fixed_J_and_gamma_strict_greater"])
     err=F(stability["original_two_arbitrary_dyadic_realizations_whole_supported_physical_response_L2_diff_strict_upper"])
     assert required==F("1.2333e-11")
     assert err==F("1e-528") and err<F(1,10**517)*required
+    assert F(conditional_norm["source_same_original_generator_span_J242_gamma_repair_requires_weighted_L1_change_gt"])==required/F(10**8)
     # Fixed original J242 and gamma cannot possibly be repaired merely
     # by selecting other numbers inside ORIGINAL certified input balls.
     gamma2=F(nf496["original_NF403_NF404_exact_gamma_squared_budget"])
@@ -222,6 +276,7 @@ def main():
        "original_nf496_accepted_source_CI_run":42873057627,
        "original_nf496_accepted_source_artifact":13789998687,
        **stability,
+       **conditional_norm,
        "original_NF496_required_physical_L2_replacement_change_strict_lower":str(required),
        "original_dyadic_input_same_box_may_rescue_original_NF404_fixed_source_gate":False,
        "original_source_rounding_input_robust_no_go_exceeds_distance_factor":"1e517",
@@ -247,6 +302,7 @@ def main():
     o=Path(args.output);o.parent.mkdir(parents=True,exist_ok=True)
     o.write_text(json.dumps(receipt,indent=2)+"\n")
     print("NF497 ORIGINAL FULL NF407 dyadic source uncertainty L2 response delta <1e-528, accepted NF496 required >1.2333e-11",flush=True)
+    print("NF497 CONDITIONAL any alternate coefficients in same authentic 246-generator span need weighted L1 movement >1.2333e-19 for same J/gamma",flush=True)
     print("NF497 original J242 new projector must capture >99.96749% of original perpendicular squared energy",flush=True)
     print("NF497 accepted NF456 TWO original rays capture <0.0118%, cannot repair current original selected geometry",flush=True)
     print("NF497 any genuinely changed source/J/gamma, W_ODD_NEG and RH OPEN",flush=True)
