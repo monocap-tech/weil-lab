@@ -1,0 +1,64 @@
+name: NF499 actual original smooth Cc-infinity log-collar trial physical source L2 rank-one gate
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-physical-smooth-log-collar-quantitative-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43026495480
+          name: nf498-original-endpoint-log-carrier-rankone-domain-exact
+          path: accepted-original-nf498
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42786421931
+          name: nf493-original-J8-physical-source-log-square-exact
+          path: accepted-original-nf493
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original 246 generator all 400 U coefficient full physical near-end source envelope, explicit odd Cc-infinity flat cutoff, exact log^2 boundary error and exact Hilbert rank-one physical terminal capture from accepted NF498 signed source Gram
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf499_original_smooth_log_collar_quantitative_capture_exact.py --nf498-raw accepted-original-nf498/nf498-original-odd-terminal-log-carrier-physical-rankone-source-exact.json --nf493-raw accepted-original-nf493/nf493-original-J8-pure-Ulog-square-source-exact.json --output nf499-original-physical-smooth-J8-log-source-capture-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf499-original-J8-smooth-log-collar-Ccinfty-rankone-source-exact
+          path: nf499-original-physical-smooth-J8-log-source-capture-exact.json
+          retention-days: 90
+
+  original-selected-J242-pole-mixed-source:
+    needs: [original-physical-smooth-log-collar-quantitative-source]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: nf499-original-J8-smooth-log-collar-Ccinfty-rankone-source-exact
+          path: original-nf499-smooth
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42786421931
+          name: nf493-original-J8-400-true-source-log-jets-4096bit
+          path: accepted-original-nf493-native
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Original 4096-bit all-400 U native coefficients, exact atanh log550, original J242 s=sinh(x/2) source-normalized moment and positive smoothed selected pole-ray projection
+        run: python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf499_original_smooth_log_collar_selected_pole_moment_exact.py --nf493-native accepted-original-nf493-native/nf493-original-J8-400-real-source-log-jets-native.json --nf499-smooth original-nf499-smooth/nf499-original-physical-smooth-J8-log-source-capture-exact.json --output nf499-original-selected-J242-pole-smooth-log-source-moment-exact.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf499-original-J242-pole-smooth-log-selected-source-moment-exact
+          path: nf499-original-selected-J242-pole-smooth-log-source-moment-exact.json
+          retention-days: 90
