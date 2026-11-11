@@ -1,0 +1,46 @@
+{
+  "pass": "NF499",
+  "date": "2026-11-11 PT",
+  "standing": "SCOPED SOURCE-EXACT ACCEPTED: explicit original 246-source-derived odd Cc-infinity compact interior two-collar smoothing and quantitative true physical terminal capture; original J242 whole projection and Weil source/operator image eligibility OPEN",
+  "original_nf407_source_sha256": "0a83cdb71c7d7d0b412f30564aff34fb560140300e02fe08b28302d940b2fcce",
+  "original_nf406_seams_sha256": "c2731e3bc422786a28cee7c058c1b41078e80935a6417ba1a149fba14c640675",
+  "original_native_source_selected_generators": 242,
+  "original_native_source_critical_generators": 4,
+  "original_native_source_freq_order_groups": 273,
+  "original_selected_odd_pole_index": 241,
+  "actual_true_original_terminal_delta": "1/500",
+  "new_explicit_smooth_epsilon": "1e-50",
+  "true_complete_original_U_Bminusd_uniform_abs_strict_upper": "2e-7",
+  "source_original_U_bound_basis": "independently source-accepted NF493 original full 400 Taylor coefficient balls + analytic remainder",
+  "explicit_smoothing_definition": "rho(t)=exp(-1/t) for t>0 else 0; S(t)=rho(t)/(rho(t)+rho(1-t)); chi(d)=S((d-eps)/eps)*S((delta-eps-d)/eps); phi(x)=sgn(x)chi(B-abs(x))U(abs(x))/2 log(B/(B-abs(x)))",
+  "smooth_phi_actual_physical_even_odd": "odd",
+  "smooth_phi_Cc_infinity_on_original_real_interval": true,
+  "smooth_phi_multiplicative_log_coordinate_Cc_infinity": true,
+  "smooth_phi_is_original_242_analytic_selected_generator": false,
+  "smooth_phi_original_source_response_Weil_image_admissibility": "NOT ESTABLISHED",
+  "source_actual_original_singular_log_template_smoothing_two_collar_L2_sq_strict_upper": "1.61864e-59",
+  "source_actual_original_singular_log_template_smoothing_two_collar_L2_strict_upper": "1e-29",
+  "source_original_full_two_collar_smooth_terminal_rankone_optimal_capture_power_strict_interval": [
+    "1.195e-22",
+    "1.20e-22"
+  ],
+  "source_original_full_two_collar_smooth_terminal_rankone_capture_fraction_strict_interval": [
+    "0.3402",
+    "0.342"
+  ],
+  "source_original_full_selected_242D_cross_moments_computed": false,
+  "source_original_full_Q_J_phi_vs_Q_J_w_capture_computed": false,
+  "source_NF404_fixed_source_old_certificate": "CERTIFIED FAIL",
+  "W_ODD_NEG": "OPEN",
+  "RH": "OPEN",
+  "first_focused_original_source_CI": {
+    "run_id": 43052037962,
+    "job_id": 130631487452,
+    "conclusion": "success",
+    "artifact_id": 13870515912,
+    "artifact_name": "nf499-original-J8-smooth-log-collar-Ccinfty-rankone-source-exact",
+    "raw_json_sha256": "5033c5a1f58981f5c406cd51aaf56ed026d5a484ad3afc9e208f165cc6e6f563"
+  },
+  "additional_original_J242_selected_pole_cross_moment": "LOCAL EXACT-FRACTION PASS, independent 2-job GitHub source CI PENDING; not yet promoted",
+  "next_bold": "NF500 actual original remaining 241 selected J242 source mixed moments and full orthogonal q capture; independently justify Weil multiplier source/domain eligibility"
+}
