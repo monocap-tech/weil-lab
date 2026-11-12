@@ -14,7 +14,7 @@ intervals through near-singular raw Gram. First project raw ell with its
 to bound normalized genuine smooth capture. This is condition invariant.
 """
 from __future__ import annotations
-import argparse,hashlib,json,sys,time
+import argparse,hashlib,json,sys,time,math
 from fractions import Fraction as F
 from pathlib import Path
 if hasattr(sys,"set_int_max_str_digits"): sys.set_int_max_str_digits(0)
@@ -24,6 +24,8 @@ import verify_rpb108_si29_full_J_L2_normalization as phys
 from verify_rpb108_original_signed_frame_transport import candidate
 from verify_nf374_original_matched_curvature import load,RANK_SHA,PR355_SHA
 from verify_nf380_original_archived_signed_dual import interval,FRAME_SHA
+sys.path.insert(0,str(Path(__file__).parent/'local_replay'))
+import nf500_original_J242_full_smooth_log_mixed_source_native as native
 
 NF401_SHA="644337986f62a3f25bb6b2005efc82f517975c84629b32b5ae8d1e5b95614515"
 NF500_SHA="7e261d540c8b658bced4b44d1bf998c23ef7f975fc07daa0f30ae6438dcffb05"
@@ -58,6 +60,7 @@ def main(opt):
     new,newsha=read(opt.nf500)
     log,logsha=read(opt.nf498)
     last,lastsha=read(opt.nf495)
+    usource,usource_sha=read(opt.nf493)
     nf404,f404=read("notes/data/provisional/NF404_original_selected_pole_shear_exact.json")
     nf478,f478=read("notes/data/provisional/NF478_original_complete_J7_signed_seven_panel_custody.json")
     nf479,f479=read("notes/data/provisional/NF479_original_full_J8_forced_positive_NF404_transfer_custody.json")
@@ -66,6 +69,10 @@ def main(opt):
     assert old["original_frame_sha256"]==FRAME_SHA and old["original_rank_sha256"]==RANK_SHA
     assert old["original_dimension"]==242 and old["original_pole_restored"] is True
     assert newsha==NF500_SHA and new["pass"]=="NF500-native"
+    assert usource["pass"]=="NF493-original-source-400-log-jets"
+    assert usource["original_nf407_source_sha256"]==SRC
+    assert usource["original_nf406_seams_sha256"]==SEAM
+    assert usource_sha==new["original_source_original_nf493_4096bit_full_400_U_native_json_sha256"]
     assert new["original_nf407_source_sha256"]==SRC
     assert new["original_nf406_seams_sha256"]==SEAM
     assert logsha==NF498_SHA and log["pass"]=="NF498"
@@ -117,37 +124,100 @@ def main(opt):
     print("NF501 source original 242 Gram, dyadic frame SHA verified",flush=True)
 
     d_old=column([ball(pair) for pair in old["original_selected_D_frame_moment_column_outward"]])
-    raw_ell=column([ball(r["original_true_raw_log_source_moment_outward"]) for r in moments])
-    d_ell=D.transpose()*raw_ell
-    x_ell=N.solve(d_ell,algorithm="lu")
-    Pell2=(d_ell.transpose()*x_ell)[0,0]
-    # NF501 initial direct propagation of independently overcharged raw
-    # NF500 1e-75 moment rows is NOT legitimate as a decision-quality
-    # physical frame interval; preserve a typed method stop and useful
-    # diagnostic instead of treating an interval sign failure as physics.
-    D_col_l1_max=max(sum((abs(D[i,j]) for i in range(242)),arb(0)) for j in range(242))
-    d_ell_bound=max(abs(d_ell[i,0]) for i in range(242))
-    print("NF501 original D-frame absolute raw-amplification maximum:",D_col_l1_max,flush=True)
-    print("NF501 D-frame log source moment interval magnitude bound:",d_ell_bound,flush=True)
-    if Pell2.lower()<0:
-        print("NF501 METHOD STOP: raw independently inflated source intervals fail positive projected-power gate; direct original source-correlated D-frame integration REQUIRED",flush=True)
+
+    # NF501R: regenerate actual original log coefficients from ONE shared
+    # source U110 and its complete original oscillator Taylor, at 4096-bit.
+    # DO NOT independently pad 242 raw generator moments before multiplying
+    # by the historical near-orthonormal D-frame. Instead apply D to the
+    # native 242 correlated finite-series midpoint balls and then pay the
+    # unchanged original U source tail in physical Hilbert norm.
+    native.D=600
+    assert opt.bits==4096
+    xs=usource["original_real_original_U_dyadic_coefficient_ball_first_400"]
+    assert len(xs)==400
+    aU=[]
+    u_tail=F(usource["original_source_400_taylor_analytic_Cauchy_abs_tail"])
+    input_error=F(0)
+    for j,(lo,hi) in enumerate(xs):
+        lo=F(lo)*native.DELTA**j
+        hi=F(hi)*native.DELTA**j
+        assert lo<=hi
+        if j<110:
+            aU.append(native.A((lo+hi)/2))
+            input_error+=(hi-lo)/2
+        else:
+            u_tail+=max(abs(lo),abs(hi))
+    assert u_tail<F(2,10**79) and input_error<F(1,10**180)
+    hlo,hhi=native.logpositive(F(1,3))
+    rlo,rhi=native.logpositive(F(19,531))
+    hlo,hhi=9*hlo+rlo,9*hhi+rhi
+    assert F(6)<hlo<hhi<F(7) and hhi-hlo<F(1,10**375)
+    h=native.A((hlo+hhi)/2)
+    # Enclose the ENTIRE original U-source uncertainty by norm contraction,
+    # using exact original ∫ log² on both real collars and the authenticated
+    # ||J D e_k||²=N_kk<1.01, no D amplification. The U uniform error
+    # is <2.1e-79, so each D-frame cross uncertainty <1e-78.
+    global_U_frame_fee=F(1,10**78)
+    assert u_tail+input_error<F(21,10**80)
+    assert (F(21,10**80)**2)*F(65,1000)/F(1,1) <global_U_frame_fee**2
+    moment_list=[]
+    for jj in range(native.D+14):
+        z=arb(0)
+        for nn in range(110):
+            den=nn+jj+1
+            z+=aU[nn]*(h/native.A(den)+native.A(F(1,den**2)))
+        moment_list.append(z)
+    native_raw=[]
+    for i,(freq,k) in enumerate(nodes):
+        series=(native.hyperpole_coeffs(native.DELTA) if freq is None
+                else native.selected_ordinary_coeffs(freq,k))
+        val=arb(0)
+        for j,tj in enumerate(series):
+            val+=tj*moment_list[j]
+        val*=native.A(native.DELTA)
+        lo,hi=map(F,moments[i]["original_true_raw_log_source_moment_outward"])
+        assert val.lower()<=native.A(hi) and val.upper()>=native.A(lo),(
+            "METHOD STOP original 600-jet midpoint vs independently original source-accepted NF500 raw",i)
+        native_raw.append(val)
+        if (i+1)%40==0: print("NF501R source-correlated actual original raw log Taylor",i+1,"/242",flush=True)
+    raw_mid=column(native_raw)
+    d_raw=D.transpose()*raw_mid
+    # One analytic per-original-basis Taylor tail, before historical D
+    # frame transport, is bounded by the original original oscillator
+    # |ω δ|<12, k<=13, exp(12)<10^6, (B+δ)^k<200.
+    source_basis_tail=F(200*10**6*12**native.D,math.factorial(native.D))
+    assert source_basis_tail<F(1,10**700)
+    D_l1=[]
+    d_padded=[]
+    for jj in range(242):
+        v=sum((abs(D[i,jj]) for i in range(242)),arb(0))
+        D_l1.append(v)
+        # Odd two-collar ||ell_U||_L1 <= M δ (h+1)
+        # with M=2e-7, delta=1/500, h<7 -> < 4e-9.
+        tail_fee=phys.a(source_basis_tail)*v*phys.a(F(4,10**9))
+        fee=phys.a(global_U_frame_fee)+tail_fee
+        d_padded.append(d_raw[jj,0]+arb(0,fee.upper()))
+    d_ell=column(d_padded)
+    D_col_l1_max=max(D_l1)
+    frame_fee_max=max(phys.a(global_U_frame_fee)+phys.a(source_basis_tail)*v*phys.a(F(4,10**9)) for v in D_l1)
+    print("NF501R direct source-correlated D-frame log cross width max:",frame_fee_max,flush=True)
+    print("NF501R historical D-frame raw basis amplification max:",D_col_l1_max,flush=True)
+    if frame_fee_max.upper()>arb("1e-30"):
+        print("NF501R METHOD STOP: direct original 600 basis Taylor remainder still amplifies beyond decision error",flush=True)
         status={
-            "pass":"NF501-preflight-method-stop",
-            "standing":"METHOD STOP: original independent 1e-75 per raw NF500 interval padding amplified by old physical near-normalized D-frame; NOT certified source projector",
-            "original_nf401_SHA256":oldsha,
-            "original_nf500_SHA256":newsha,
-            "original_nf498_SHA256":logsha,
-            "original_physical_frame_SHA256":FRAME_SHA,
-            "original_242D_raw_Gram_and_frame_reconstructed":True,
-            "raw_interval_Pell_squared_outward":interval(Pell2),
-            "original_D_frame_absolute_column_amplification_max":str(D_col_l1_max),
-            "original_D_frame_log_moment_magnitude_bound":str(d_ell_bound),
-            "actual_Q_J_ell_capture":"OPEN",
-            "next":"NF501R direct correlated U110 and original basis oscillator contraction in D frame BEFORE source error; L2 tail via near-isometry",
+            "pass":"NF501R-method-stop",
+            "standing":"Source-direct D-frame 600 Taylor insufficient against original authentic D amplification; no Hilbert decision",
+            "original_source_NF500_sha256":newsha,
+            "actual_original_D_frame_max_basis_coefficient_l1":str(D_col_l1_max),
+            "actual_D_frame_max_source_and_basis_error":str(frame_fee_max),
             "W_ODD_NEG":"OPEN","RH":"OPEN"
         }
         Path(opt.output).write_text(json.dumps(status,indent=2)+"\n")
         return
+    x_ell=N.solve(d_ell,algorithm="lu")
+    Pell2=(d_ell.transpose()*x_ell)[0,0]
+    assert Pell2.lower()>=0, "METHOD STOP NF501R correlated frame projected norm interval still cannot certify nonnegativity"
+    print("NF501R actual original 242D P_J ell squared",interval(Pell2),flush=True)
     restored=H*D*N.solve(d_old,algorithm="lu")
     for i,(lo,hi) in enumerate(old["original_selected_raw_J_basis_moment_column_outward"]):
         a,b=map(F,(lo,hi))
@@ -211,6 +281,9 @@ def main(opt):
         "original_physical_frame_SHA256":FRAME_SHA,
         "original_J242_Gram_frame_identity_verified":True,
         "original_source_selected_raw_moments_verified":242,
+        "original_source_correlated_U110_and_basisTaylor_order":native.D,
+        "original_D_frame_max_abs_source_basis_transport":str(D_col_l1_max),
+        "original_direct_D_frame_global_U_and_taylor_fee_max":str(frame_fee_max),
         "original_selected_pole_centered_energy_compatible":True,
         "true_original_P_J_ell_squared_outward":report_interval(Pell2),
         "true_original_Q_J_ell_squared_outward":report_interval(e2),
@@ -236,6 +309,7 @@ if __name__=="__main__":
     ap.add_argument("--nf500",required=True)
     ap.add_argument("--nf498",required=True)
     ap.add_argument("--nf495",required=True)
+    ap.add_argument("--nf493",required=True)
     ap.add_argument("--rank",default="notes/data/provisional/parents/pr350_original_BS_pruned_rank_bound.json")
     ap.add_argument("--source",default="notes/data/provisional/nf372_pr355_fields.json")
     ap.add_argument("--bits",type=int,default=4096)
