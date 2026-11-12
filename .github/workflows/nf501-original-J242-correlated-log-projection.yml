@@ -65,15 +65,16 @@ jobs:
           retention-days: 90
 
   independent-original-exact-Fraction-one-ray-NOGO:
-    needs: [original-242D-correlated-hilbert-projection]
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
+          run-id: 43139106161
           name: nf501-original-J242-QJ-log-projection-source-native
           path: original-nf501-native
+          github-token: ${{ github.token }}
       - uses: actions/download-artifact@v4
         with:
           run-id: 43026495480
