@@ -294,7 +294,7 @@ def main(o):
         "original_D_frame_abs_raw_amplification_max":interval(maxampl),
         "original_actual_D_frame_W_S_moment_max_absolute_fee":interval(maxfee),
         "original_actual_complete_W_D_frame_selected_moments_S_outward":[interval(dS[i,0]) for i in range(242)],
-        "original_actual_exterior_J242_D_Gram_rows_outward":[[interval(Nout[i,j]) for j in range(242)] for i in range(242)],
+        "original_actual_exterior_J242_D_Gram_rows_outward":[[phys.ball(Nout[i,j]) for j in range(242)] for i in range(242)],
         "original_actual_exterior_W_moments_D_outward":[interval(dO[i,0]) for i in range(242)],
         "original_original_W_whole_energy_outward":interval(Efull),
         "original_original_W_two_collar_energy_outward":interval(E_S),
