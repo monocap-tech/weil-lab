@@ -39,7 +39,8 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install source-matched 4096-bit Arb
-        run: pip install --only-binary=:all: python-flint==0.8.0
+        run: |
+          pip install --only-binary=:all: python-flint==0.8.0
       - name: Authenticate true original frame and true new 242 log cross moments; calculate QJ raw then contract smooth L2 uncertainty
         run: |
           python -m py_compile scripts/verify_nf501_original_J242_correlated_log_projector_native.py
