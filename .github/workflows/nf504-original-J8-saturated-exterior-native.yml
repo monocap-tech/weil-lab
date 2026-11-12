@@ -1,0 +1,64 @@
+name: NF504 original full J8 support-saturated physical quotient 4096bit source native
+on:
+  push:
+    branches:
+      - research/nf504-original-J8-saturated-quotient-native
+    paths:
+      - '.github/workflows/nf504-original-J8-saturated-exterior-native.yml'
+      - 'scripts/verify_nf504_original_J8_support_saturated_exterior_native.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-242D-entire-J8-physical-support-saturation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42850200418
+          name: nf494-original-J8-whole-analytic-H400-native
+          path: accepted-original-nf494
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42866700605
+          name: nf494-original-J8-whole-physical-square-independent-exact-source
+          path: accepted-original-nf495
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43063534898
+          name: nf500-original-J242-full-selected-log-mixed-native
+          path: accepted-original-nf500
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43139106161
+          name: nf501-original-J242-QJ-log-projection-source-native
+          path: accepted-original-nf501
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install original 4096-bit interval arithmetic
+        run: |
+          pip install --only-binary=:all: python-flint==0.8.0
+      - name: Independently re-evaluate full 242D original outside-collar Gram, complete W source mixed moments, and actual support-saturated Schur
+        run: |
+          python -m py_compile scripts/verify_nf504_original_J8_support_saturated_exterior_native.py
+          python -u -X int_max_str_digits=0 scripts/verify_nf504_original_J8_support_saturated_exterior_native.py \
+            --nf494-native accepted-original-nf494/nf494-original-J8-source-H400-joint-compact-native.json \
+            --nf495 accepted-original-nf495/nf494-original-J8-complete-joint-physical-square-source-exact.json \
+            --nf500 accepted-original-nf500/nf500-original-J242-all-selected-smooth-source-moments-native.json \
+            --nf501 accepted-original-nf501/nf501-original-242D-QJ-smooth-log-capture-native.json \
+            --output nf504-original-J8-physical-support-saturated-exterior-source-native.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf504-original-J8-full-242D-support-saturated-exterior-source-native
+          path: nf504-original-J8-physical-support-saturated-exterior-source-native.json
+          if-no-files-found: ignore
+          retention-days: 90
