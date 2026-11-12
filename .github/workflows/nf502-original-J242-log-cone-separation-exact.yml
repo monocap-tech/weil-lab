@@ -21,7 +21,7 @@ jobs:
           run-id: 43139106161
           name: nf501-original-J242-QJ-log-projection-source-native
           path: accepted-original-nf501
-          github-token: \${{ github.token }}
+          github-token: ${{ github.token }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
