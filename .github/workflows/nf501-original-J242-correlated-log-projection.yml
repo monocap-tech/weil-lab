@@ -1,5 +1,11 @@
 name: NF501 original full QJ smooth log-collar projected one-ray capture, source-native
 on:
+  push:
+    branches:
+      - research/nf501-original-J242-correlated-log-projection
+    paths:
+      - '.github/workflows/nf501-original-J242-correlated-log-projection.yml'
+      - 'scripts/verify_nf501_original_J242_correlated_log_projector_native.py'
   pull_request:
   workflow_dispatch:
 permissions:
