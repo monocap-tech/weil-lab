@@ -1,0 +1,107 @@
+name: NF501 original full QJ smooth log-collar projected one-ray capture, source-native
+on:
+  push:
+    branches:
+      - research/nf501-original-J242-correlated-log-projection
+    paths:
+      - '.github/workflows/nf501-original-J242-correlated-log-projection.yml'
+      - 'scripts/verify_nf501_original_J242_correlated_log_projector_native.py'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  original-242D-correlated-hilbert-projection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43063534898
+          name: nf500-original-J242-full-selected-log-mixed-native
+          path: accepted-original-nf500
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42786421931
+          name: nf493-original-J8-400-true-source-log-jets-4096bit
+          path: accepted-original-nf493
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43026495480
+          name: nf498-original-endpoint-log-carrier-rankone-domain-exact
+          path: accepted-original-nf498
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42866700605
+          name: nf494-original-J8-whole-physical-square-independent-exact-source
+          path: accepted-original-nf495
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source-matched 4096-bit Arb
+        run: |
+          pip install --only-binary=:all: python-flint==0.8.0
+      - name: Authenticate true original frame and true new 242 log cross moments; calculate QJ raw then contract smooth L2 uncertainty
+        run: |
+          python -m py_compile scripts/verify_nf501_original_J242_correlated_log_projector_native.py
+          python -u -X int_max_str_digits=0 scripts/verify_nf501_original_J242_correlated_log_projector_native.py \
+            --nf500 accepted-original-nf500/nf500-original-J242-all-selected-smooth-source-moments-native.json \
+            --nf498 accepted-original-nf498/nf498-original-odd-terminal-log-carrier-physical-rankone-source-exact.json \
+            --nf493 accepted-original-nf493/nf493-original-J8-400-real-source-log-jets-native.json \
+            --nf495 accepted-original-nf495/nf494-original-J8-complete-joint-physical-square-source-exact.json \
+            --output nf501-original-242D-QJ-smooth-log-capture-native.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf501-original-J242-QJ-log-projection-source-native
+          path: nf501-original-242D-QJ-smooth-log-capture-native.json
+          if-no-files-found: ignore
+          retention-days: 90
+
+  independent-original-exact-Fraction-one-ray-NOGO:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43139106161
+          name: nf501-original-J242-QJ-log-projection-source-native
+          path: original-nf501-native
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 43026495480
+          name: nf498-original-endpoint-log-carrier-rankone-domain-exact
+          path: accepted-original-nf498
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          run-id: 42866700605
+          name: nf494-original-J8-whole-physical-square-independent-exact-source
+          path: accepted-original-nf495
+          github-token: ${{ github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Independently exact-Fraction verify source SHA, centered projection, full source energy, smooth contraction and strict projected one-ray NO-GO
+        run: |
+          python -m py_compile scripts/local_replay/verify_nf501_original_J242_log_one_ray_fraction_audit.py
+          python -u -X int_max_str_digits=0 scripts/local_replay/verify_nf501_original_J242_log_one_ray_fraction_audit.py \
+            --nf501 original-nf501-native/nf501-original-242D-QJ-smooth-log-capture-native.json \
+            --nf498 accepted-original-nf498/nf498-original-odd-terminal-log-carrier-physical-rankone-source-exact.json \
+            --nf495 accepted-original-nf495/nf494-original-J8-complete-joint-physical-square-source-exact.json \
+            --output nf501-original-J242-independent-exact-Fraction-log-one-ray-NOGO.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nf501-independent-exact-Fraction-original-J242-one-ray-NOGO
+          path: nf501-original-J242-independent-exact-Fraction-log-one-ray-NOGO.json
+          if-no-files-found: ignore
+          retention-days: 90
