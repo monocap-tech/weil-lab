@@ -126,7 +126,7 @@ def main():
     recomputed_raw=divpos(square(v),qell)
     assert intersects(rawcap,recomputed_raw)
     assert F("7.60e-28")<rawcap[0]<=rawcap[1]<F("7.63e-28")
-    assert F("2.57e-25")<(-v[1])<=(-v[0])<F("2.59e-25")
+    assert F("2.5786e-25")<(-v[1])<=(-v[0])<F("2.5788e-25")
 
     # Independently reconstruct the genuine whole supported Qw²
     # from accepted ORIGINAL K + COMPLETE signed J7 + COMPLETE signed J8
@@ -150,12 +150,16 @@ def main():
     eta=F("1e-29")
     assert F(n["original_global_L2_smoothing_error_eta_upper"])==eta
     rupper=F("1.27e-11")
-    elower=F("9.34e-12")
+    elower=F("9.344e-12")
     eupper=F("9.35e-12")
     assert q2[1]<rupper*rupper
     assert elower*elower<qell[0]<=qell[1]<eupper*eupper
     assert elower>eta
     minv,maxv=absrange(v)
+    # Narrow rational brackets are source-outward and not decimal point guesses.
+    minv_guard=F("2.5786e-25")
+    maxv_guard=F("2.5788e-25")
+    assert minv_guard<minv<=maxv<maxv_guard
     assert minv>rupper*eta
     CL=(minv-rupper*eta)**2/(eupper+eta)**2
     CH=(maxv+rupper*eta)**2/(elower-eta)**2
